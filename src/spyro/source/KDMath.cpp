@@ -292,18 +292,13 @@ void KDMath_Slerp(const MKVector3 &arg1, const MKVector3 &arg2, float farg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal function overloading
-void KDMath_LocaliseVector(const MKVector3 &arg1, MKVector3 *arg2, const MKVector3 &arg3) {
-    MKVector3 result;
-    MKVector3 *sret = &result;
+MKVector3 KDMath_LocaliseVector(const MKVector3 &arg1, MKVector3 *arg2, const MKVector3 &arg3) {
     Matrix sp10;
 
     sp10.SetIdentity();
     gAssertBool = KDMath_BuildMatrixFromFwd(&sp10, arg1, arg2);
-    *(sret) = KDMath_LocaliseVector(&sp10, arg3);
-    return result;
+    return KDMath_LocaliseVector(&sp10, arg3);
 }
-#endif
 
 #if 0 // DRAFT: illegal function overloading
 void KDMath_LocaliseVector(const Matrix *arg1, const MKVector3 &arg2) {
@@ -336,10 +331,8 @@ void KDMath_LocaliseVector(const Matrix *arg1, const MKVector3 &arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal function overloading
-void KDMath_RotateVectorByYaw(const MKVector3 &arg1, float farg0) {
+MKVector3 KDMath_RotateVectorByYaw(const MKVector3 &arg1, float farg0) {
     MKVector3 result;
-    MKVector3 *sret = &result;
     Matrix sp20;
     f32 sp18;
     f32 sp14;
@@ -353,14 +346,14 @@ void KDMath_RotateVectorByYaw(const MKVector3 &arg1, float farg0) {
     temp_f3_639 = arg1.unk4;
     temp_f6_644 = arg1.unk0;
     temp_f7_653 = arg1.unk8;
-    sp10 = sp20.unk30 + ((temp_f7_653 * sp20.unk20) + ((temp_f6_644 * M2C_BITWISE(f32, sp20)) + (temp_f3_639 * sp20.unk10)));
+    sp10 = sp20.unk30 + ((temp_f7_653 * sp20.unk20) + ((temp_f6_644 * sp20.unk0) + (temp_f3_639 * sp20.unk10)));
     sp14 = sp20.unk34 + ((temp_f7_653 * sp20.unk24) + ((temp_f6_644 * sp20.unk4) + (temp_f3_639 * sp20.unk14)));
     sp18 = sp20.unk38 + ((temp_f7_653 * sp20.unk28) + ((temp_f6_644 * sp20.unk8) + (temp_f3_639 * sp20.unk18)));
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    result.unk0 = sp10;
+    result.unk4 = sp14;
+    result.unk8 = sp18;
     return result;
 }
-#endif
 
 s32 KDMath_BuildMatrixFromUp(Matrix *arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
     f64 sp88;                                       /* compiler-managed */
@@ -792,61 +785,37 @@ void KDMath_GetYaw(const Matrix *arg0) {
     KDMath_GetYaw(sp8);
 }
 
-#if 0 // DRAFT: illegal function overloading
-void KDMath_GetDirection(float farg0, float farg1) {
+MKVector3 KDMath_GetDirection(float farg0, float farg1) {
     MKVector3 result;
-    MKVector3 *sret = &result;
     Matrix sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
 
     sp20.SetRotationPitch(farg1);
     sp20.RotateYaw(&sp20, farg0);
-    sp10 = -sp20.unk20;
-    sp14 = -sp20.unk24;
-    sp18 = -sp20.unk28;
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    result.unk0 = -sp20.unk20;
+    result.unk4 = -sp20.unk24;
+    result.unk8 = -sp20.unk28;
     return result;
 }
-#endif
 
-#if 0 // DRAFT: illegal function overloading
-void KDMath_GetDirection(float farg0) {
+MKVector3 KDMath_GetDirection(float arg1) {
     MKVector3 result;
-    MKVector3 *sret = &result;
     Matrix sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
 
-    sp20.SetRotationYaw(farg0);
-    sp10 = -sp20.unk20;
-    sp14 = -sp20.unk24;
-    sp18 = -sp20.unk28;
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    sp20.SetRotationYaw(arg1);
+    result.unk0 = -sp20.unk20;
+    result.unk4 = -sp20.unk24;
+    result.unk8 = -sp20.unk28;
     return result;
 }
-#endif
 
-#if 0 // DRAFT: illegal function overloading
-void KDMath_GetDirection(const Matrix *arg1) {
+MKVector3 KDMath_GetDirection(const Matrix *arg1) {
     MKVector3 result;
-    MKVector3 *sret = &result;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
 
-    sp8 = -arg1->unk20;
-    spC = -arg1->unk24;
-    sp10 = -arg1->unk28;
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    result.unk0 = -arg1->unk20;
+    result.unk4 = -arg1->unk24;
+    result.unk8 = -arg1->unk28;
     return result;
 }
-#endif
 
 void KDMath_TurnToAngle(float arg0, float arg1, float arg2) {
     KDMath_TurnToAngle(arg0, arg1, arg2, 1.0f);
