@@ -12,56 +12,54 @@ M2C_UNK __copy(u8 *, M2C_UNK *, M2C_UNK, f64);      /* extern */
 extern M2C_UNK gb;
 static M2C_UNK flareIndex;                          /* unable to generate initializer: unknown type */
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void LensFlare::DrawSun(MKVector3 arg0, float arg1) {
-    f32 temp_f28_106;
-    f32 temp_f28_42;
-    f32 temp_f28_57;
-    f32 temp_f2_36;
-    f32 temp_f3_32;
-    f32 temp_f4_30;
-    f32 var_f30_37;
-    f32 var_f31_35;
+    f32 dx;
+    f32 dy;
+    f32 dz;
+    f32 dist;
+    f32 intensity;
+    f32 radius;
+    f32 halfSize;
+    f32 size;
 
-    temp_f4_30 = M2C_FIELD(arg0, f32 *, 4) - this->unk44;
-    temp_f3_32 = M2C_FIELD(arg0, f32 *, 0) - this->unk40;
-    var_f31_35 = 102.4f;
-    temp_f2_36 = M2C_FIELD(arg0, f32 *, 8) - this->unk48;
-    var_f30_37 = 0.0f;
-    temp_f28_42 = (temp_f2_36 * temp_f2_36) + ((temp_f3_32 * temp_f3_32) + (temp_f4_30 * temp_f4_30));
+    dy = arg0.unk4 - this->unk44;
+    dx = arg0.unk0 - this->unk40;
+    dz = arg0.unk8 - this->unk48;
+    dist = (dz * dz) + ((dx * dx) + (dy * dy));
+    radius = 102.4f;
+    intensity = 0.0f;
     MKMaterial_SetMaterial(this->unk4);
     MKPrimitive(0xC, 0);
-    if (temp_f28_42 < 102400.0f) {
-        temp_f28_57 = 640.0f * this->unk90;
-        var_f30_37 = arg1 * (1.0f - (temp_f28_42 / 102400.0f));
-        var_f31_35 = (64.0f * var_f30_37) + 102.4f;
+    if (dist < 102400.0f) {
+        halfSize = 640.0f * this->unk90;
+        intensity = arg1 * (1.0f - (dist / 102400.0f));
+        radius = (64.0f * intensity) + 102.4f;
         MKBegin(4);
-        MKSetColorF(var_f30_37, var_f30_37, var_f30_37, 1.0f);
+        MKSetColorF(intensity, intensity, intensity, 1.0f);
         MKSetTexCoord1F(0.0f, 0.0f);
-        MKSetPositionF(M2C_FIELD(arg0, f32 *, 0) - temp_f28_57, M2C_FIELD(arg0, f32 *, 4) - temp_f28_57, 0.0f);
+        MKSetPositionF(arg0.unk0 - halfSize, arg0.unk4 - halfSize, 0.0f);
         MKSetTexCoord1F(0.0f, 1.0f);
-        MKSetPositionF(M2C_FIELD(arg0, f32 *, 0) - temp_f28_57, M2C_FIELD(arg0, f32 *, 4) + temp_f28_57, 0.0f);
+        MKSetPositionF(arg0.unk0 - halfSize, arg0.unk4 + halfSize, 0.0f);
         MKSetTexCoord1F(1.0f, 0.0f);
-        MKSetPositionF(M2C_FIELD(arg0, f32 *, 0) + temp_f28_57, M2C_FIELD(arg0, f32 *, 4) - temp_f28_57, 0.0f);
+        MKSetPositionF(arg0.unk0 + halfSize, arg0.unk4 - halfSize, 0.0f);
         MKSetTexCoord1F(1.0f, 1.0f);
-        MKSetPositionF(M2C_FIELD(arg0, f32 *, 0) + temp_f28_57, M2C_FIELD(arg0, f32 *, 4) + temp_f28_57, 0.0f);
+        MKSetPositionF(arg0.unk0 + halfSize, arg0.unk4 + halfSize, 0.0f);
         MKEnd();
     }
-    temp_f28_106 = var_f31_35 * this->unk8C;
+    size = radius * this->unk8C;
     MKBegin(4);
-    MKSetColorF(var_f30_37, var_f30_37, var_f30_37, 1.0f);
+    MKSetColorF(intensity, intensity, intensity, 1.0f);
     MKSetTexCoord1F(0.0f, 0.0f);
-    MKSetPositionF(M2C_FIELD(arg0, f32 *, 0) - temp_f28_106, M2C_FIELD(arg0, f32 *, 4) - temp_f28_106, 0.0f);
+    MKSetPositionF(arg0.unk0 - size, arg0.unk4 - size, 0.0f);
     MKSetTexCoord1F(0.0f, 1.0f);
-    MKSetPositionF(M2C_FIELD(arg0, f32 *, 0) - temp_f28_106, M2C_FIELD(arg0, f32 *, 4) + temp_f28_106, 0.0f);
+    MKSetPositionF(arg0.unk0 - size, arg0.unk4 + size, 0.0f);
     MKSetTexCoord1F(1.0f, 0.0f);
-    MKSetPositionF(M2C_FIELD(arg0, f32 *, 0) + temp_f28_106, M2C_FIELD(arg0, f32 *, 4) - temp_f28_106, 0.0f);
+    MKSetPositionF(arg0.unk0 + size, arg0.unk4 - size, 0.0f);
     MKSetTexCoord1F(1.0f, 1.0f);
-    MKSetPositionF(M2C_FIELD(arg0, f32 *, 0) + temp_f28_106, M2C_FIELD(arg0, f32 *, 4) + temp_f28_106, 0.0f);
+    MKSetPositionF(arg0.unk0 + size, arg0.unk4 + size, 0.0f);
     MKEnd();
     MKEndPrimitive();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 void LensFlare::Draw() {
@@ -271,7 +269,6 @@ void LensFlare::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk15'
 void LensFlare::Update() {
     MKZRequest *temp_r31_591;
     f64 temp_f1_597;
@@ -286,14 +283,13 @@ void LensFlare::Update() {
             this->unk18 = M2C_FIELD(temp_r31_591, f64 *, 8);
             this->unk20 = temp_r31_591->unk10;
             this->unk24 = (u8) temp_r31_591->unk14;
-            __copy(&this->unk25, &temp_r31_591->unk15, 0xB, temp_f1_597);
+            __copy(&this->unk25, (M2C_UNK *) &temp_r31_591->pad15, 0xB, temp_f1_597);
             this->unk30 = (s32) temp_r31_591->unk20;
             return;
         }
         this->unk94 = temp_r3_594 - 1;
     }
 }
-#endif
 
 void LensFlare::Deinit() {
     MKZRequest *temp_r3_639;

@@ -155,13 +155,11 @@ void FrontEnd_SetFade(float arg0) {
     KDSound_SetMasterVolume(temp_f2_196 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4), temp_f2_196 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8));
 }
 
-#if 0 // DRAFT: ')' expected
 void FrontEnd_Draw() {
-    RenderContext sp20;
-    Tools_Ortho sp10;
-
     if ((void **) pFrontEndSystem != NULL) {
-        sp10.Tools_Ortho();
+        /* The asm builds Tools_Ortho inside the if and destroys it at its end, so a block-scoped local matches the calls. */
+        Tools_Ortho sp10;
+
         GameVideo_Draw(pVideo);
         if (videoFade > 0.0f) {
             MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
@@ -175,8 +173,12 @@ void FrontEnd_Draw() {
             MKEnd();
             MKEndPrimitive();
         }
-        sp20.RenderContext();
-        M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **, RenderContext *), 0x1C)(pFrontEndSystem, &sp20);
+        {
+            /* The asm builds RenderContext after the videoFade block and never destroys it. */
+            RenderContext sp20;
+
+            M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **, RenderContext *), 0x1C)(pFrontEndSystem, &sp20);
+        }
         if (fade > 0.0f) {
             MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
             MKPrimitive(0xC, 3);
@@ -193,12 +195,9 @@ void FrontEnd_Draw() {
                 fade = 0.0f;
             }
         }
-        sp10.~Tools_Ortho(-1);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void FrontEnd_Update() {
     f32 temp_f1_414;
     f32 temp_f1_432;
@@ -232,7 +231,8 @@ void FrontEnd_Update() {
             temp_r0_392 = timeout + 1;
             timeout = temp_r0_392;
             if (temp_r0_392 >= 3) {
-                ((UISystem *) pFrontEndSystem)->PushScreen(pVideoName);
+                /* pVideoName is a signed char * in the header; PushScreen takes the same bytes as const char *. */
+                ((UISystem *) pFrontEndSystem)->PushScreen((const char *) pVideoName);
                 bGoToVideo = 0;
                 pVideoName = NULL;
             }
@@ -262,12 +262,12 @@ void FrontEnd_Update() {
         return;
     }
     if (((void **) pFrontEndSystem != NULL) && ((s32) M2C_FIELD(&gb, s32 *, 0x358) == -1)) {
-        M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(), 0x18)();
+        /* Slot 0x18 takes the object in r3, so pFrontEndSystem is passed as this. */
+        M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **), 0x18)(pFrontEndSystem);
     }
 block_26:
     GameVideo_Update(pVideo);
 }
-#endif
 
 void FrontEnd_PlayBackgroundVideo(bool arg0) {
     if (arg0 != 0) {
@@ -307,10 +307,8 @@ void FrontEnd_Deinit() {
     Hud_DeinitModule();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to 'long'
 void FrontEnd_Init() {
-    s32 spC;
-    s32 sp8;
+    s32 sp8[2];
     MCLoadCheckScreen *temp_r3_666;
     MCLoadCheckScreen *temp_r3_684;
     MCLoadCheckScreen *temp_r3_702;
@@ -334,12 +332,12 @@ void FrontEnd_Init() {
     s32 temp_r29_624;
     s32 var_r31_582;
 
-    if ((s32) *gGMState.GetLastState() != 4) {
+    if (*(s32 *) gGMState.GetLastState() != 4) {
         var_r31_582 = -1;
-        if ((s32) *gGMState.GetCurrState() != 4) {
+        if (*(s32 *) gGMState.GetCurrState() != 4) {
             gGMState.unk38.HeapMarkPush();
-            GameLanguage_GetCode(-1);
-            var_r31_582 = MKPackage_QLoad(Str_Printf("frontend%s", M2C_ERROR(/* Read from unset register $r3 */), "Prologue1VideoNoTitle"), 0);
+            /* GameLanguage_GetCode is declared void, but its asm tail-calls Translation_GetLanguageCode and the caller reads r3. */
+            var_r31_582 = MKPackage_QLoad((const char *) Str_Printf("frontend%s", ((const char *(*)(int)) GameLanguage_GetCode)(-1)), 0);
 loop_4:
             if (MKPackage_QIsLoaded(var_r31_582, NULL, NULL) == 0) {
                 MKPackage_Update();
@@ -354,11 +352,12 @@ loop_4:
         if (MKHeap::Current() != NULL) {
             var_r29_633 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r29_624, NULL, 0));
         } else {
-            var_r29_633 = malloc(temp_r29_624);
+            var_r29_633 = (UIObject *) malloc(temp_r29_624);
         }
         M2C_FIELD(NoisySystem::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r29_633, NoisySystem::descriptor);
         var_r29_633->unk8 = NoisySystem::descriptor;
-        var_r29_633->Init(NoisySystem::descriptor);
+        /* Slot 8 takes only the object in r3; the asm sets no second argument. */
+        M2C_FIELD(*(void ***) var_r29_633, M2C_UNK (**)(void **), 0x8)((void **) var_r29_633);
         pFrontEndSystem = (void **) (checked_cast<NoisySystem *, UIObject>(var_r29_633));
         var_r4_659 = &UIObjectDescriptor::list;
 loop_11:
@@ -366,7 +365,7 @@ loop_11:
         if (temp_r3_666 == NULL) {
             var_r4_659->unk0 = (MCLoadCheckScreen *) MCLoadCheckScreen::descriptor;
             M2C_FIELD(MCLoadCheckScreen::descriptor, s32 *, 0x10) = 0;
-        } else if (temp_r3_666 != MCLoadCheckScreen::descriptor) {
+        } else if (temp_r3_666 != (MCLoadCheckScreen *) MCLoadCheckScreen::descriptor) {
             var_r4_659 = (UIObjectDescriptor *) &temp_r3_666->unk10;
             goto loop_11;
         }
@@ -376,7 +375,7 @@ loop_16:
         if (temp_r3_684 == NULL) {
             var_r4_676->unk0 = (MCLoadCheckScreen *) CopyrightScreen::descriptor;
             M2C_FIELD(CopyrightScreen::descriptor, s32 *, 0x10) = 0;
-        } else if (temp_r3_684 != CopyrightScreen::descriptor) {
+        } else if (temp_r3_684 != (MCLoadCheckScreen *) CopyrightScreen::descriptor) {
             var_r4_676 = (UIObjectDescriptor *) &temp_r3_684->unk10;
             goto loop_16;
         }
@@ -386,7 +385,7 @@ loop_21:
         if (temp_r3_702 == NULL) {
             var_r4_694->unk0 = (MCLoadCheckScreen *) TitleScreen::descriptor;
             M2C_FIELD(TitleScreen::descriptor, s32 *, 0x10) = 0;
-        } else if (temp_r3_702 != TitleScreen::descriptor) {
+        } else if (temp_r3_702 != (MCLoadCheckScreen *) TitleScreen::descriptor) {
             var_r4_694 = (UIObjectDescriptor *) &temp_r3_702->unk10;
             goto loop_21;
         }
@@ -396,7 +395,7 @@ loop_26:
         if (temp_r3_720 == NULL) {
             var_r4_712->unk0 = (MCLoadCheckScreen *) MainMenuScreen::descriptor;
             M2C_FIELD(MainMenuScreen::descriptor, s32 *, 0x10) = 0;
-        } else if (temp_r3_720 != MainMenuScreen::descriptor) {
+        } else if (temp_r3_720 != (MCLoadCheckScreen *) MainMenuScreen::descriptor) {
             var_r4_712 = (UIObjectDescriptor *) &temp_r3_720->unk10;
             goto loop_26;
         }
@@ -406,7 +405,7 @@ loop_31:
         if (temp_r3_738 == NULL) {
             var_r4_730->unk0 = (MCLoadCheckScreen *) LevelSelectButtons::descriptor;
             M2C_FIELD(LevelSelectButtons::descriptor, s32 *, 0x10) = 0;
-        } else if (temp_r3_738 != LevelSelectButtons::descriptor) {
+        } else if (temp_r3_738 != (MCLoadCheckScreen *) LevelSelectButtons::descriptor) {
             var_r4_730 = (UIObjectDescriptor *) &temp_r3_738->unk10;
             goto loop_31;
         }
@@ -416,7 +415,7 @@ loop_36:
         if (temp_r3_756 == NULL) {
             var_r4_748->unk0 = (MCLoadCheckScreen *) LevelSelectScreen::descriptor;
             M2C_FIELD(LevelSelectScreen::descriptor, s32 *, 0x10) = 0;
-        } else if (temp_r3_756 != LevelSelectScreen::descriptor) {
+        } else if (temp_r3_756 != (MCLoadCheckScreen *) LevelSelectScreen::descriptor) {
             var_r4_748 = (UIObjectDescriptor *) &temp_r3_756->unk10;
             goto loop_36;
         }
@@ -426,7 +425,7 @@ loop_41:
         if (temp_r3_774 == NULL) {
             var_r4_766->unk0 = (MCLoadCheckScreen *) LanguageSelectScreen::descriptor;
             M2C_FIELD(LanguageSelectScreen::descriptor, s32 *, 0x10) = 0;
-        } else if (temp_r3_774 != LanguageSelectScreen::descriptor) {
+        } else if (temp_r3_774 != (MCLoadCheckScreen *) LanguageSelectScreen::descriptor) {
             var_r4_766 = (UIObjectDescriptor *) &temp_r3_774->unk10;
             goto loop_41;
         }
@@ -436,7 +435,7 @@ loop_46:
         if (temp_r3_792 == NULL) {
             var_r4_784->unk0 = (MCLoadCheckScreen *) OptionsScreen::descriptor;
             M2C_FIELD(OptionsScreen::descriptor, s32 *, 0x10) = 0;
-        } else if (temp_r3_792 != OptionsScreen::descriptor) {
+        } else if (temp_r3_792 != (MCLoadCheckScreen *) OptionsScreen::descriptor) {
             var_r4_784 = (UIObjectDescriptor *) &temp_r3_792->unk10;
             goto loop_46;
         }
@@ -446,7 +445,7 @@ loop_51:
         if (temp_r3_810 == NULL) {
             var_r4_802->unk0 = (MCLoadCheckScreen *) CreditsScreen::descriptor;
             M2C_FIELD(CreditsScreen::descriptor, s32 *, 0x10) = 0;
-        } else if (temp_r3_810 != CreditsScreen::descriptor) {
+        } else if (temp_r3_810 != (MCLoadCheckScreen *) CreditsScreen::descriptor) {
             var_r4_802 = (UIObjectDescriptor *) &temp_r3_810->unk10;
             goto loop_51;
         }
@@ -454,13 +453,13 @@ loop_51:
         if (((UIObject *) pFrontEndSystem)->Load("frontend.ui", NULL) != 0) {
             M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **), 0x28)(pFrontEndSystem);
             M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **), 0x20)(pFrontEndSystem);
-            sp8 = 1;
-            spC = 0;
-            M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **, s32 *), 0x2C)(pFrontEndSystem, &sp8);
+            sp8[0] = 1;
+            sp8[1] = 0;
+            M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **, s32 *), 0x2C)(pFrontEndSystem, sp8);
             if (((s32) M2C_FIELD(&gb, s32 *, 0x338) != 0) && ((s32) menuLoadingState == 0)) {
                 menuLoadingState = 2;
             }
-            switch ((s32) menuLoadingState) {       /* irregular */
+            switch ((s32) menuLoadingState) {
             case 0:
                 ((UISystem *) pFrontEndSystem)->PushScreen("MainMenu");
                 ((UISystem *) pFrontEndSystem)->PushScreen("Title");
@@ -500,7 +499,6 @@ loop_51:
         }
     }
 }
-#endif
 
 void FrontEnd_cpp::__sinit() {
     frontEndStrings.UIStringTable();

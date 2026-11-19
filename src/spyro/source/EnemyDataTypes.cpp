@@ -290,7 +290,6 @@ void EnemyMovementManager::Update() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyMovementManager::Set(unsigned int arg0, int arg1, int arg2, int arg3) {
     Enemy *temp_r3_393;
 
@@ -301,11 +300,11 @@ void EnemyMovementManager::Set(unsigned int arg0, int arg1, int arg2, int arg3) 
     this->unk14 &= ~0x80;
     this->unk14 &= ~0x40;
     temp_r3_393 = this->unk0;
-    if ((temp_r3_393 != NULL) && (M2C_FIELD(temp_r3_393->__vptr, u8 (**)(), 0x148)() == 0)) {
+    /* The asm loads the vptr from offset 0x44 (MKProp's vptr offset in classes.json), then slot 0x148 with the object in r3. */
+    if ((temp_r3_393 != NULL) && (M2C_FIELD(M2C_FIELD(temp_r3_393, void ***, 0x44), u8 (**)(Enemy *), 0x148)(temp_r3_393) == 0)) {
         this->unk4 &= 0xFFFFFFF7;
     }
 }
-#endif
 
 void EnemyMovementManager::Deinit() {
     this->unk0 = NULL;
@@ -417,9 +416,8 @@ void EnemyAttack::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap *, long)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 s32 EnemyAttack::LoadLine(MKIniLine *arg0, EnemyDescriptor *arg1) {
-    s8 *sp8;
+    const char *sp8;
     f32 var_f0_805;
     f32 var_f0_835;
     f32 var_f0_944;
@@ -436,7 +434,7 @@ s32 EnemyAttack::LoadLine(MKIniLine *arg0, EnemyDescriptor *arg1) {
 
     sp8 = NULL;
     if (arg0->IsField("AnimSequence") != 0) {
-        temp_r28_633 = DataMap_GetValue(&dataMapAnimSequence, arg0->GetString(0));
+        temp_r28_633 = DataMap_GetValue(&dataMapAnimSequence, (const char *) arg0->GetString(0));
         temp_r5_637 = arg0->GetInt(1);
         if (temp_r28_633 != 0) {
             this->unk0 = (AnimSequence *) (arg1->GetAnimSequence(temp_r28_633, temp_r5_637, this->unk3C, NULL));
@@ -444,28 +442,28 @@ s32 EnemyAttack::LoadLine(MKIniLine *arg0, EnemyDescriptor *arg1) {
         return 1;
     }
     if (arg0->IsField("RefPoints") != 0) {
-        this->unk78 = (s32) arg0->unk0;
+        this->unk78 = (s32) M2C_FIELD(arg0, s16 *, 0);
         temp_r28_659 = this->unk78 * 4;
         if (MKHeap::Current() != NULL) {
             var_r3_667 = (unsigned long *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_659, NULL, 0));
         } else {
-            var_r3_667 = malloc(temp_r28_659);
+            var_r3_667 = (u32 *) malloc(temp_r28_659);
         }
         this->unk7C = var_r3_667;
         var_r27_674 = 0;
         var_r28_675 = 0;
 loop_10:
         if (var_r27_674 < (s32) this->unk78) {
-            temp_r0_685 = Tools_GetMatchingRefPointIndex(arg1->unk2C, arg0->GetString(var_r27_674));
+            temp_r0_685 = Tools_GetMatchingRefPointIndex(arg1->unk2C, (const char *) arg0->GetString(var_r27_674));
             var_r27_674 += 1;
-            *(this->unk7C + var_r28_675) = (s32) temp_r0_685;
+            M2C_FIELD(this->unk7C, s32 *, var_r28_675) = (s32) temp_r0_685;
             var_r28_675 += 4;
             goto loop_10;
         }
         return 1;
     }
     if (arg0->IsField("EnemySettings") != 0) {
-        this->unk54.LoadLine(arg0->unkC->GetSubLine(arg0));
+        this->unk54.LoadLine(((MKIni *) M2C_FIELD(arg0, void **, 0xC))->GetSubLine(arg0));
         return 1;
     }
     if (arg0->LoadString("ProjectileNode", &sp8, 0) != 0) {
@@ -476,15 +474,15 @@ loop_10:
         return 1;
     }
     if (arg0->IsField("HeroHurtType") != 0) {
-        this->unk48 = DataMap_GetValue(&heroHurtReactionTypeDataMap, arg0->GetString(0));
+        this->unk48 = DataMap_GetValue(&heroHurtReactionTypeDataMap, (const char *) arg0->GetString(0));
         return 1;
     }
     if (arg0->IsField("HeroRumbleType") != 0) {
-        this->unk4C = DataMap_GetValue(&heroRumbleTypeDataMap, arg0->GetString(0));
+        this->unk4C = DataMap_GetValue(&heroRumbleTypeDataMap, (const char *) arg0->GetString(0));
         return 1;
     }
     if (arg0->IsField("EnemyHitType") != 0) {
-        this->unk50 = DataMap_GetValue(&attackHitTypeDataMap, arg0->GetString(0));
+        this->unk50 = DataMap_GetValue(&attackHitTypeDataMap, (const char *) arg0->GetString(0));
         return 1;
     }
     if (arg0->LoadFloat("fAngleMin", &this->unk1C, 0) != 0) {
@@ -582,12 +580,11 @@ loop_10:
         return 1;
     }
     var_r30_999 = 0;
-    if ((arg0->LoadFloat("fAttackDelay", &this->unk8, 0) != 0) || (arg0->LoadFloat("fRangeMin", &this->unk14, 0) != 0) || (arg0->LoadFloat("fRangeMax", &this->unk18, 0) != 0) || (arg0->LoadFloat("iDamage", &this->unk4, 0) != 0) || (arg0->LoadInt("iAnimSet", (int *) &this->unk3C, 0) != 0) || (arg0->LoadInt("iAttackChance", (int *) &this->unk40, 0) != 0) || (arg0->LoadInt("iRunASV", (int *) &this->unk44, 0) != 0) || (arg0->LoadFloat("fProjectileSpeed", &this->unk88, 0) != 0) || (arg0->LoadFloat("fKnockbackForce", &this->unk34, 0) != 0) || (arg0->LoadFloat("fDefensiveThreshold", &this->unkC, 0) != 0) || (arg0->LoadFloat("fDefensivePenalty", &this->unk10, 0) != 0) || (DataMap_LoadLineBitfield(arg0, "uProperties", dataMapEAP, (unsigned int *) &this->unk38) != 0)) {
+    if ((arg0->LoadFloat("fAttackDelay", &this->unk8, 0) != 0) || (arg0->LoadFloat("fRangeMin", &this->unk14, 0) != 0) || (arg0->LoadFloat("fRangeMax", &this->unk18, 0) != 0) || (arg0->LoadFloat("iDamage", &this->unk4, 0) != 0) || (arg0->LoadInt("iAnimSet", (int *) &this->unk3C, 0) != 0) || (arg0->LoadInt("iAttackChance", (int *) &this->unk40, 0) != 0) || (arg0->LoadInt("iRunASV", (int *) &this->unk44, 0) != 0) || (arg0->LoadFloat("fProjectileSpeed", &this->unk88, 0) != 0) || (arg0->LoadFloat("fKnockbackForce", &this->unk34, 0) != 0) || (arg0->LoadFloat("fDefensiveThreshold", &this->unkC, 0) != 0) || (arg0->LoadFloat("fDefensivePenalty", &this->unk10, 0) != 0) || (DataMap_LoadLineBitfield(arg0, "uProperties", &dataMapEAP, (unsigned int *) &this->unk38) != 0)) {
         var_r30_999 = 1;
     }
     return var_r30_999;
 }
-#endif
 
 void EnemyAttack::Deinit() {
     u32 *temp_r31_1124;

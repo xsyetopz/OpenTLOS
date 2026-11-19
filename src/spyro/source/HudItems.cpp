@@ -21,16 +21,13 @@ void HudItem_Modified(HudItem *arg0) {
     HudItem_SetState(arg0, (HudItemState) 2, 0U);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 void HudItem_Draw(HudItem *arg0) {
-    M2C_UNK (*temp_r12_55)(s32, f32, f32);
+    void (*temp_r12_55)(s32, f32, f32);
     f32 var_f1_84;
-    s32 temp_r4_58;
 
-    temp_r12_55 = arg0->unk8;
+    temp_r12_55 = M2C_FIELD(arg0, void (**)(s32, f32, f32), 0x8);
     if (temp_r12_55 != NULL) {
-        temp_r4_58 = arg0->unk0;
-        switch (temp_r4_58) {                       /* irregular */
+        switch (arg0->unk0) {
         case 1:
             temp_r12_55(arg0->unk14, 1.0f - (arg0->unk10 / 0.5f), 1.0f);
             return;
@@ -40,23 +37,21 @@ void HudItem_Draw(HudItem *arg0) {
             } else {
                 var_f1_84 = -((arg0->unk10 * 0.5f) - 1.0f);
             }
-            temp_r12_55(arg0->unk14, var_f1_84);
+            ((void (*)(s32, f32))temp_r12_55)(arg0->unk14, var_f1_84);
             return;
         case 3:
-            temp_r12_55(arg0->unk14, arg0->unk10 / 0.5f);
+            ((void (*)(s32, f32))temp_r12_55)(arg0->unk14, arg0->unk10 / 0.5f);
             break;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 u8 HudItem_Update(HudItem *arg0) {
     s32 temp_r0_117;
     u8 (*temp_r12_156)(s32);
 
     temp_r0_117 = arg0->unk0;
-    switch (temp_r0_117) {                          /* irregular */
+    switch (temp_r0_117) {
     case 2:
         break;
     case 1:
@@ -72,17 +67,15 @@ u8 HudItem_Update(HudItem *arg0) {
         }
         break;
     }
-    temp_r12_156 = arg0->unk4;
+    temp_r12_156 = M2C_FIELD(arg0, u8 (**)(s32), 0x4);
     if ((temp_r12_156 != NULL) && (temp_r12_156(arg0->unk14) != 0) && ((u8) arg0->unk19 == 0)) {
         return 1U;
     }
     return arg0->unk19;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkC'
 void HudItem_SetState(HudItem *arg0, HudItemState arg1, bool arg2) {
-    M2C_UNK (*temp_r12_355)(s32, s32);
+    void (*temp_r12_355)(s32, s32);
     f32 var_f0_203;
     f32 var_f0_233;
     f32 var_f0_283;
@@ -190,10 +183,10 @@ block_45:
         break;
     }
     if ((s32) arg0->unk0 != temp_r6_185) {
-        temp_r12_355 = arg0->unkC;
+        /* Callback at +0xC, invoked with (unk14, previous state) as the asm does. */
+        temp_r12_355 = M2C_FIELD(arg0, void (**)(s32, s32), 0xC);
         if (temp_r12_355 != NULL) {
             temp_r12_355(arg0->unk14, temp_r6_185);
         }
     }
 }
-#endif

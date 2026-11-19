@@ -128,25 +128,24 @@ void GPDoneRender() {
     GXInvalidateTexAll();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long *' to '_GXColor'
 void __GPInitGX() {
-    s32 sp8;
+    GXColor sp8;
+    void DrawSyncHandler(unsigned short);
 
     GXSetViewport(0.0f, 0.0f, 640.0f, (f32) rmode->efbHeight, 0.0f, 1.0f);
     GXSetScissor(0U, 0U, 0x280U, (u32) rmode->efbHeight);
-    GXSetCopyFilter(rmode->aa, (u8 (*)[2]) rmode->sample_pattern[0], 1U, rmode->vfilter);
+    GXSetCopyFilter(rmode->aa, rmode->sample_pattern, 1U, rmode->vfilter);
     if ((u8) rmode->aa != 0) {
         GXSetPixelFmt(GX_PF_RGB565_Z16, GX_ZC_LINEAR);
     } else {
-        sp8 = lit_480;
-        GXSetCopyClear((GXColor) &sp8, 0xFFFFFFU);
+        *(s32 *) &sp8 = lit_480;
+        GXSetCopyClear(sp8, 0xFFFFFFU);
         GXSetPixelFmt(GX_PF_RGBA6_Z24, GX_ZC_LINEAR);
     }
     GXCopyDisp(&pBuffer, 1U);
     GXSetDispCopyGamma(GX_GM_1_0);
     GXSetDrawSyncCallback(DrawSyncHandler);
 }
-#endif
 
 void DrawSyncHandler(unsigned short arg0) {
     if (arg0 == 0) {
@@ -159,20 +158,17 @@ void DrawSyncHandler(unsigned short arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal string constant
 void __GPInitMem() {
-    s32 temp_r31_365;
     u32 temp_r31_345;
     u32 temp_ret_346;
     void *temp_r31_354;
     void *temp_r3_355;
     void *temp_r3_361;
+    s32 temp_r31_365;
 
     temp_r31_345 = OSGetPhysicalMemSize() >> 0x14U;
     temp_ret_346 = OSGetConsoleSimulatedMemSize();
-    OSReport("Simulated Memory Size = %dMB
-Physical Memory Size = %dMB
-", temp_ret_346 >> 0x14U, temp_r31_345, M2C_BITWISE(f32, temp_ret_346));
+    OSReport("Simulated Memory Size = %dMB\nPhysical Memory Size = %dMB\n", temp_ret_346 >> 0x14U, temp_r31_345);
     temp_r31_354 = OSGetArenaLo();
     temp_r3_355 = OSGetArenaHi();
     temp_r3_361 = OSInitAlloc(temp_r31_354, temp_r3_355, 1);
@@ -183,23 +179,20 @@ Physical Memory Size = %dMB
     memset(&pBuffer, 0, 0xA9600U);
     DCStoreRange(&pBuffer, 0xA9600U);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'saved_reg_r31'
 void __GPInitRenderMode(_GXRenderModeObj *arg0) {
     s32 temp_r3_402;
     u16 temp_r30_477;
     u16 var_r31_0;
     u32 temp_ret_402;
 
-    var_r31_0 = saved_reg_r31;
     if (arg0 != NULL) {
         rmode = arg0;
         return;
     }
     temp_ret_402 = VIGetTvFormat();
     temp_r3_402 = temp_ret_402;
-    switch (temp_r3_402) {                          /* irregular */
+    switch (temp_r3_402) {
     case 0:
         var_r31_0 = 0x1E0;
         rmode = &GXNtsc480IntDf;
@@ -213,7 +206,7 @@ void __GPInitRenderMode(_GXRenderModeObj *arg0) {
         rmode = &GXMpal480IntDf;
         break;
     default:
-        OSPanic("GPInit.cpp", 0x149, "GPInit: invalid TV format\n", M2C_BITWISE(f32, temp_ret_402));
+        OSPanic("GPInit.cpp", 0x149, "GPInit: invalid TV format\n");
         break;
     }
     rmode->fbWidth = 0x280;
@@ -229,16 +222,15 @@ void __GPInitRenderMode(_GXRenderModeObj *arg0) {
     rmode->viHeight = temp_r30_477;
     rmode->viYOrigin = (u16) ((s32) (var_r31_0 - temp_r30_477) / 2);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__GPInitRenderMode'
 void GPInit(_GXRenderModeObj *arg0) {
-    u16 var_r28_564;
-    u16 var_r29_559;
-    u8 *var_r30_561;
-    u8 temp_r0_567;
-    void *temp_r31_560;
-    void *temp_r6_572;
+    u16 var_r28;
+    u16 var_r29;
+    u8 *var_r30;
+    u8 *temp_r31;
+    u8 *entry;
+    u8 index;
+    u32 color;
 
     OSInit();
     LCEnable();
@@ -261,28 +253,24 @@ void GPInit(_GXRenderModeObj *arg0) {
     VISetBlack(0);
     VIFlush();
     GXDrawDone();
-    if ((M2C_UNK *) gpLogoImage == NULL) {
+    if (gpLogoImage == NULL) {
         gpLogoImage = &MKMat_MK2_Standard_CaptureTextureData;
     }
-    var_r29_559 = 0x108;
-    temp_r31_560 = gpLogoImage + 0x36;
-    var_r30_561 = (unsigned char *) (gpLogoImage + 0x436);
-loop_7:
-    if (var_r29_559 > 0x88U) {
-        var_r28_564 = 0x100;
-loop_5:
-        if (var_r28_564 < 0x180U) {
-            temp_r0_567 = *var_r30_561;
-            var_r30_561 += 1;
-            temp_r6_572 = ((u8 *) temp_r31_560) + ((temp_r0_567 * 4) & 0x3FC);
-            GXPokeARGB(var_r28_564, var_r29_559, M2C_FIELD(temp_r6_572, u8 *, 0) | ((M2C_FIELD(temp_r6_572, u8 *, 2) << 0x10) | 0xFF000000 | (M2C_FIELD(temp_r6_572, u8 *, 1) << 8)));
-            var_r28_564 += 1;
-            goto loop_5;
+    var_r29 = 0x108;
+    temp_r31 = (u8 *) gpLogoImage + 0x36;
+    var_r30 = (u8 *) gpLogoImage + 0x436;
+    while (var_r29 > 0x88U) {
+        var_r28 = 0x100;
+        while (var_r28 < 0x180U) {
+            index = *var_r30;
+            var_r30 += 1;
+            entry = temp_r31 + ((index * 4) & 0x3FC);
+            color = entry[0] | (entry[2] << 0x10) | 0xFF000000 | (entry[1] << 8);
+            GXPokeARGB(var_r28, var_r29, color);
+            var_r28 += 1;
         }
-        var_r29_559 -= 1;
-        goto loop_7;
+        var_r29 -= 1;
     }
     VIWaitForRetrace();
     GXCopyDisp(&pBuffer, 1U);
 }
-#endif

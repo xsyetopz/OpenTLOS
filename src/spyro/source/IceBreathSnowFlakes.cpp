@@ -46,16 +46,15 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp8'
 void IceBreathSnowFlakes::UpdateParticles() {
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f32 sp28;
-    f64 sp20;
+    u8 sp8[0x8];
+    f32 sp60;
+    f32 sp64;
+    f32 sp68;
+    f32 sp10;
+    f32 sp14;
     f32 sp18;
-    f64 sp10;
+    MKBaseParticleSystemDescriptor *desc;
     MKParticleChunk *var_r30_109;
     MKParticleSystem::Envelope *temp_r3_199;
     MKParticleSystem::Envelope *temp_r5_204;
@@ -66,8 +65,6 @@ void IceBreathSnowFlakes::UpdateParticles() {
     f32 temp_f5_206;
     f32 temp_f6_201;
     f32 var_f0_217;
-    f64 temp_f0_128;
-    f64 temp_f0_149;
     s32 temp_r0_200;
     s32 temp_r3_173;
     s32 temp_r3_187;
@@ -75,30 +72,30 @@ void IceBreathSnowFlakes::UpdateParticles() {
     void *temp_r29_112;
 
     this->unk128 += gUpdateTimeDelta;
-    var_r30_109 = GetFirstParticle(&unksp8);
+    var_r30_109 = GetFirstParticle((MKBaseParticleSystem::ParticleRec *) sp8);
 loop_12:
     if (var_r30_109 != NULL) {
         temp_r29_112 = var_r30_109->unk2C;
         temp_f29_116 = this->unk128 - M2C_FIELD(temp_r29_112, f32 *, 0x10);
         if (temp_f29_116 > this->unk12C) {
-            var_r30_109 = DestroyParticle(&unksp8);
+            var_r30_109 = DestroyParticle((MKBaseParticleSystem::ParticleRec *) sp8);
         } else {
-            temp_f0_128 = M2C_FIELD(temp_r29_112, f64 *, 0) * (f64) gUpdateTimeDelta;
-            sp20 = temp_f0_128;
-            sp40 = temp_f0_128;
-            sp28 = M2C_FIELD(temp_r29_112, f32 *, 8) * gUpdateTimeDelta;
-            sp48 = (f64) sp28;
-            M2C_FIELD(var_r30_109, f64 *, 0) = (f64) (M2C_FIELD(var_r30_109, f64 *, 0) + temp_f0_128);
-            var_r30_109->unk8 += (f32) sp48;
-            temp_f0_149 = M2C_FIELD(this, f64 *, 0x108) * (f64) gUpdateTimeDelta;
-            sp10 = temp_f0_149;
-            sp30 = temp_f0_149;
+            /* Position and velocity advance per lane in f32, as the paired-single asm does. */
+            sp60 = M2C_FIELD(temp_r29_112, f32 *, 0) * gUpdateTimeDelta;
+            sp64 = M2C_FIELD(temp_r29_112, f32 *, 4) * gUpdateTimeDelta;
+            M2C_FIELD(var_r30_109, f32 *, 0) += sp60;
+            M2C_FIELD(var_r30_109, f32 *, 4) += sp64;
+            sp68 = M2C_FIELD(temp_r29_112, f32 *, 8) * gUpdateTimeDelta;
+            var_r30_109->unk8 += sp68;
+            sp10 = this->unk108 * gUpdateTimeDelta;
+            sp14 = this->unk10C * gUpdateTimeDelta;
+            M2C_FIELD(temp_r29_112, f32 *, 0) += sp10;
+            M2C_FIELD(temp_r29_112, f32 *, 4) += sp14;
             sp18 = this->unk110 * gUpdateTimeDelta;
-            sp38 = (f64) sp18;
-            M2C_FIELD(temp_r29_112, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_112, f64 *, 0) + temp_f0_149);
-            M2C_FIELD(temp_r29_112, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_112, f32 *, 8) + (f32) sp38);
+            M2C_FIELD(temp_r29_112, f32 *, 8) += sp18;
             var_r30_109->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r29_112, f32 *, 0x18);
-            temp_r3_173 = M2C_FIELD(checked_cast<MKBaseParticleSystemDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80);
+            desc = checked_cast<MKBaseParticleSystemDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            temp_r3_173 = M2C_FIELD(desc, s32 *, 0x80);
             temp_f3_177 = var_r30_109->unk20;
             var_r30_109->unk20 = (f32) fmod(temp_r3_173, temp_f3_177 + this->unkF0, (f32) temp_r3_173, temp_f3_177);
             temp_r3_187 = M2C_FIELD(temp_r29_112, s32 *, 0x14);
@@ -127,14 +124,12 @@ loop_12:
             var_r30_109->unk1C = var_f0_217;
             temp_r5_237 = &this->unk134[temp_r0_200];
             var_r30_109->unk28 = M2C_FIELD(temp_r29_112, f32 *, 0x1C) * ((temp_f3_213 * temp_r5_237->unk10) + temp_r5_237->unk8);
-            var_r30_109 = GetNextParticle(&unksp8);
+            var_r30_109 = GetNextParticle((MKBaseParticleSystem::ParticleRec *) sp8);
         }
         goto loop_12;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void IceBreathSnowFlakes::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r31_277;
     void *temp_r3_274;
@@ -142,17 +137,16 @@ void IceBreathSnowFlakes::Emit(const MKVector3 &arg0, const MKVector3 &arg1, con
     temp_r3_274 = CreateParticle();
     if (temp_r3_274 != NULL) {
         temp_r31_277 = M2C_FIELD(temp_r3_274, void **, 0x2C);
-        M2C_FIELD(temp_r3_274, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-        M2C_FIELD(temp_r3_274, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
+        M2C_FIELD(temp_r3_274, f64 *, 0x0) = M2C_FIELD(&arg0, f64 *, 0x0);
+        M2C_FIELD(temp_r3_274, f64 *, 0x8) = M2C_FIELD(&arg0, f64 *, 0x8);
         M2C_FIELD(temp_r3_274, f32 *, 0x20) = 0.0f;
-        M2C_FIELD(temp_r31_277, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
-        M2C_FIELD(temp_r31_277, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD(temp_r31_277, f32 *, 0x1C) = (f32) &arg2;
+        M2C_FIELD(temp_r31_277, f64 *, 0x0) = M2C_FIELD(&arg1, f64 *, 0x0);
+        M2C_FIELD(temp_r31_277, f64 *, 0x8) = M2C_FIELD(&arg1, f64 *, 0x8);
+        M2C_FIELD(temp_r31_277, f32 *, 0x1C) = arg2;
         M2C_FIELD(temp_r31_277, f32 *, 0x20) = 1.0f;
         M2C_FIELD(temp_r31_277, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
     }
 }
-#endif
 
 void IceBreathSnowFlakes::Deinit() {
     MKParticleSystem::Deinit();

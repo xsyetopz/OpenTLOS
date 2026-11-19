@@ -193,25 +193,25 @@ void LockOnTarget::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 void *LockOnTarget::Update() {
+    LockOnTargetDescriptor *desc;
     f32 temp_f1_451;
-    s32 temp_r0_383;
-    void *temp_r31_460;
 
-    temp_r0_383 = this->unk60;
-    switch (temp_r0_383) {                          /* irregular */
+    switch (this->unk60) {
     case 1:
-        this->unk64 = -((4.0f * gUpdateTimeDelta * M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68)) - this->unk64);
+        desc = checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        this->unk64 = -((4.0f * gUpdateTimeDelta * desc->unk68) - this->unk64);
         this->unk6C += 1.570796f * gUpdateTimeDelta;
-        if (this->unk64 <= M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68)) {
+        desc = checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        if (this->unk64 <= desc->unk68) {
             this->unk60 = 2;
-            this->unk64 = M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68);
-            return;
+            desc = checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            this->unk64 = desc->unk68;
         }
         return;
     case 3:
-        this->unk74 = -((2.0f * gUpdateTimeDelta * M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68)) - this->unk74);
+        desc = checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        this->unk74 = -((2.0f * gUpdateTimeDelta * desc->unk68) - this->unk74);
         if (this->unk74 < 0.0f) {
             this->unk60 = 0;
             Disable();
@@ -223,12 +223,11 @@ void *LockOnTarget::Update() {
         if (temp_f1_451 > 6.2831855f) {
             this->unk70 = temp_f1_451 - 6.2831855f;
         }
-        temp_r31_460 = checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        this->unk64 = (0.07f * _table_sinf(this->unk70)) + M2C_FIELD(temp_r31_460, f32 *, 0x68);
+        desc = checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        this->unk64 = (0.07f * _table_sinf(this->unk70)) + desc->unk68;
         break;
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void LockOnTarget::Init() {

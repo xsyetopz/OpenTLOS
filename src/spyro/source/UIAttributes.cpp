@@ -9,7 +9,6 @@
 
 s32 stricmp(s8 *, s8 *);                            /* extern */
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 Attributes::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s32 var_r30_116;
@@ -43,29 +42,29 @@ s32 Attributes::LoadLine(UIDataLine *arg0) {
         this->unk40 |= 0x20;
         sp8 = NULL;
 loop_14:
-        ((MKIniLine *) arg0)->AsString(var_r30_116, &sp8);
+        ((MKIniLine *) arg0)->AsString(var_r30_116, (const char **) &sp8);
         if (sp8 != NULL) {
-            if (stricmp("top") == 0) {
+            if (stricmp((s8 *) "top", sp8) == 0) {
                 this->unk3C &= 3;
                 goto block_29;
             }
-            if (stricmp("middle", sp8) == 0) {
+            if (stricmp((s8 *) "middle", sp8) == 0) {
                 this->unk3C = (this->unk3C & 3) | 4;
                 goto block_29;
             }
-            if (stricmp("bottom", sp8) == 0) {
+            if (stricmp((s8 *) "bottom", sp8) == 0) {
                 this->unk3C = (this->unk3C & 3) | 8;
                 goto block_29;
             }
-            if (stricmp("left", sp8) == 0) {
+            if (stricmp((s8 *) "left", sp8) == 0) {
                 this->unk3C &= 0xC;
                 goto block_29;
             }
-            if (stricmp("centre", sp8) == 0) {
+            if (stricmp((s8 *) "centre", sp8) == 0) {
                 this->unk3C = (this->unk3C & 0xC) | 1;
                 goto block_29;
             }
-            if (stricmp("right", sp8) == 0) {
+            if (stricmp((s8 *) "right", sp8) == 0) {
                 this->unk3C = (this->unk3C & 0xC) | 2;
                 goto block_29;
             }
@@ -83,7 +82,6 @@ block_29:
     }
     return 0;
 }
-#endif
 
 void Attributes::Tween(Attributes *arg0, Attributes *arg1, float arg2) {
     MKVector4 sp28;
@@ -197,7 +195,6 @@ RenderContext::RenderContext(const RenderContext &arg0, const Attributes &arg1) 
     AddState(arg0, arg1);
 }
 
-#if 0 // DRAFT: expression syntax error
 RenderContext::RenderContext() {
     ((Matrix *) this)->SetIdentity();
     M2C_FIELD(this, f32 *, 0x40) = 1.0f;
@@ -205,4 +202,3 @@ RenderContext::RenderContext() {
     M2C_FIELD(this, f32 *, 0x48) = 1.0f;
     M2C_FIELD(this, f32 *, 0x4C) = 1.0f;
 }
-#endif

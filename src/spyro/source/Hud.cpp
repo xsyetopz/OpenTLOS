@@ -24,7 +24,6 @@ static M2C_UNK hudIconUVs;                          /* unable to generate initia
 static u8 bFixed = 1;
 static s32 lit_679 = 1;
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8'
 void Hud_DrawArc(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, const MKVector4 *arg10, const MKVector4 *arg11, Matrix *arg12, MKMaterial *arg13, float arg14, float arg15, float arg16, float arg17) {
     f32 sp14;
     f32 sp10;
@@ -34,7 +33,6 @@ void Hud_DrawArc(float arg0, float arg1, float arg2, float arg3, float arg4, flo
     f32 temp_f16_126;
     f32 temp_f29_70;
     f32 var_f1_53;
-    s32 temp_r3_85;
     s32 var_r28_103;
     s32 var_r29_77;
 
@@ -42,52 +40,46 @@ void Hud_DrawArc(float arg0, float arg1, float arg2, float arg3, float arg4, flo
     if (arg2 > var_f1_53) {
         var_f1_53 = arg2;
     }
-    temp_f29_70 = arg_sp8 - arg6;
+    temp_f29_70 = arg8 - arg6;
     var_r29_77 = (s32) ((temp_f29_70 / 6.2831855f) * var_f1_53);
-    if ((s32) lit_679 > var_r29_77) {
+    if (lit_679 > var_r29_77) {
         var_r29_77 = lit_679;
     }
     MKMaterial_SetMaterial(arg13);
-    temp_r3_85 = 0 - arg13;
-    MKPrimitive(0xC, (2 & ~((temp_r3_85 - temp_r3_85) - !M2C_CARRY)) | 1);
+    MKPrimitive(0xC, arg13 == NULL ? 3 : 1);
     if (arg12 != NULL) {
         MKSetMatrix(*arg12);
     }
     MKBegin((var_r29_77 + 1) * 2);
     var_r28_103 = 0;
-loop_16:
-    if (var_r28_103 <= var_r29_77) {
+    while (var_r28_103 <= var_r29_77) {
         temp_f16_118 = (f32) var_r28_103 / (f32) var_r29_77;
         _table_sincosf((temp_f16_118 * temp_f29_70) + arg6, sp14, spC);
-        _table_sincosf((temp_f16_118 * (arg_spC - arg7)) + arg7, sp10, sp8);
-        temp_f16_126 = ((arg_sp18 - arg_sp10) * temp_f16_118) + arg_sp10;
+        _table_sincosf((temp_f16_118 * (arg9 - arg7)) + arg7, sp10, sp8);
+        temp_f16_126 = ((arg16 - arg14) * temp_f16_118) + arg14;
         if (arg11 != NULL) {
             MKSetColorV(*arg11);
         }
         if (arg13 != NULL) {
-            MKSetTexCoord1F(temp_f16_126, arg_sp1C);
+            MKSetTexCoord1F(temp_f16_126, arg17);
         }
         MKSetPositionF((sp10 * arg4) + arg0, (sp8 * arg5) + arg1, 0.0f);
         if (arg10 != NULL) {
             MKSetColorV(*arg10);
         }
         if (arg13 != NULL) {
-            MKSetTexCoord1F(temp_f16_126, arg_sp14);
+            MKSetTexCoord1F(temp_f16_126, arg15);
         }
         MKSetPositionF((sp14 * arg2) + arg0, (spC * arg3) + arg1, 0.0f);
         var_r28_103 += 1;
-        goto loop_16;
     }
     MKEnd();
     MKEndPrimitive();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector2'
 void Hud_DrawIcon(int arg0, int arg1, const MKVector2 &arg2, const MKVector2 &arg3, const MKVector4 &arg4, float arg5, float arg6, float arg7, float arg8, bool arg9, bool arg10, const Matrix &arg11) {
-    Hud_DrawIcon(arg0, arg1, arg2.unk0, arg2.unk4, arg3.unk0, arg3.unk4, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+    Hud_DrawIcon(arg0, arg1, M2C_FIELD(&arg2, f32 *, 0x0), M2C_FIELD(&arg2, f32 *, 0x4), M2C_FIELD(&arg3, f32 *, 0x0), M2C_FIELD(&arg3, f32 *, 0x4), arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
 }
-#endif
 
 void Hud_DrawIcon(int arg0, int arg1, float arg2, float arg3, float arg4, float arg5, const MKVector4 &arg6, float arg7, float arg8, float arg9, float arg10, bool arg11, bool arg12, const Matrix &arg13) {
     Matrix sp30;
