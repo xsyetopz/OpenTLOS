@@ -89,33 +89,22 @@ void KDCameraStateStack::StateEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void *KDCameraStateStack::GetDescriptor(int arg0) {
-    s32 temp_r0_134;
-    s32 var_ctr_136;
-    s32 var_r5_135;
-    void *temp_r6_141;
+    s32 count = this->unk1C;
+    s32 offset = 0;
+    void *desc;
 
-    temp_r0_134 = this->unk1C;
-    var_r5_135 = 0;
-    var_ctr_136 = temp_r0_134;
-    if (temp_r0_134 > 0) {
-loop_1:
-        temp_r6_141 = this->unk18 + var_r5_135;
-        if (arg0 == (s32) M2C_FIELD(temp_r6_141, s32 *, 4)) {
-            return temp_r6_141;
-        }
-        var_r5_135 += 0x40;
-        var_ctr_136 -= 1;
-        if (var_ctr_136 == 0) {
-            /* Duplicate return node #4. Try simplifying control flow for better match */
-            return NULL;
-        }
-        goto loop_1;
+    if (count > 0) {
+        do {
+            desc = (u8 *) this->unk18 + offset;
+            if (arg0 == M2C_FIELD(desc, s32 *, 4)) {
+                return desc;
+            }
+            offset += 0x40;
+        } while (--count != 0);
     }
     return NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDCameraStateStack' to 'signed char *'
 void KDCameraStateStack::GetDescriptorAtIndex(int arg0) {
@@ -127,74 +116,48 @@ void KDCameraStateStack::GetObjectAtIndex(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal operand
 void KDCameraStateStack::Object::ClearData() {
-    *this = 0;
+    M2C_FIELD(this, s32 *, 0) = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 s32 KDCameraStateStack::IsStateMessage(MKMessage *arg0) {
-    s32 temp_r0_190;
-    s32 temp_r5_191;
-    s32 var_ctr_193;
-    s32 var_r4_192;
-    void *temp_r6_198;
+    s32 count = this->unk1C;
+    s32 id = arg0->unk0;
+    s32 offset = 0;
 
-    temp_r0_190 = this->unk1C;
-    temp_r5_191 = arg0->unk0;
-    var_r4_192 = 0;
-    var_ctr_193 = temp_r0_190;
-    if (temp_r0_190 > 0) {
-loop_1:
-        temp_r6_198 = this->unk18 + var_r4_192;
-        if (((s32) M2C_FIELD(temp_r6_198, s32 *, 0x38) == temp_r5_191) || ((s32) M2C_FIELD(temp_r6_198, s32 *, 0x3C) == temp_r5_191)) {
-            return 1;
-        }
-        var_r4_192 += 0x40;
-        var_ctr_193 -= 1;
-        if (var_ctr_193 == 0) {
-            /* Duplicate return node #5. Try simplifying control flow for better match */
-            return 0;
-        }
-        goto loop_1;
+    if (count > 0) {
+        do {
+            void *desc = (u8 *) this->unk18 + offset;
+            if (M2C_FIELD(desc, s32 *, 0x38) == id || M2C_FIELD(desc, s32 *, 0x3C) == id) {
+                return 1;
+            }
+            offset += 0x40;
+        } while (--count != 0);
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 s32 KDCameraStateStack::HandleStateMessage(int arg0) {
-    s32 temp_r0_223;
-    s32 var_ctr_224;
-    s32 var_r5_221;
-    void *temp_r6_229;
+    s32 count = this->unk1C;
+    s32 offset = 0;
+    void *desc;
 
-    var_r5_221 = 0;
-    temp_r0_223 = this->unk1C;
-    var_ctr_224 = temp_r0_223;
-    if (temp_r0_223 > 0) {
-loop_1:
-        temp_r6_229 = this->unk18 + var_r5_221;
-        if ((s32) M2C_FIELD(temp_r6_229, s32 *, 0x38) == arg0) {
-            Push(M2C_FIELD(temp_r6_229, s32 *, 4));
-            return 1;
-        }
-        if ((s32) M2C_FIELD(temp_r6_229, s32 *, 0x3C) == arg0) {
-            Pop(M2C_FIELD(temp_r6_229, s32 *, 4));
-            return 1;
-        }
-        var_r5_221 += 0x40;
-        var_ctr_224 -= 1;
-        if (var_ctr_224 == 0) {
-            goto block_6;
-        }
-        goto loop_1;
+    if (count > 0) {
+        do {
+            desc = (u8 *) this->unk18 + offset;
+            if (M2C_FIELD(desc, s32 *, 0x38) == arg0) {
+                Push(M2C_FIELD(desc, s32 *, 4));
+                return 1;
+            }
+            if (M2C_FIELD(desc, s32 *, 0x3C) == arg0) {
+                Pop(M2C_FIELD(desc, s32 *, 4));
+                return 1;
+            }
+            offset += 0x40;
+        } while (--count != 0);
     }
-block_6:
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void *KDCameraStateStack::PopObjectOffStack() {
