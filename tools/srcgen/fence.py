@@ -28,10 +28,12 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from castfix import fix_casts  # noqa: E402
 from inlines import MARK  # noqa: E402
 from mwcc import ROOT, diagnostics  # noqa: E402
 
 FENCE = "#if 0 // DRAFT: "
+CAST_ROUNDS = 6  # recompiles spent on castfix before fencing; each fixes every reported conversion
 
 
 def blocks(lines: list[str]) -> list[tuple[int, int]]:
@@ -97,8 +99,8 @@ def process(src: Path, root: Path, incs: list[Path], tmp: Path, rounds: int) -> 
     if src.suffix == ".h":
         unit, after = tmp / (rel.replace("/", "_") + ".cpp"), MARK
         unit.write_text(f'#include "{rel}"\n')
-    status, detail = "stuck", ""
-    for _ in range(rounds):
+    status, detail, cast_rounds = "stuck", "", CAST_ROUNDS
+    while rounds > 0:
         ok, errs = diagnostics(unit, obj, incs)
         if ok:
             status, detail = ("fenced" if FENCE in src.read_text() else "ok"), ""
@@ -107,6 +109,10 @@ def process(src: Path, root: Path, incs: list[Path], tmp: Path, rounds: int) -> 
         if not own:
             status, detail = "header", " | ".join(f"{f}:{n}: {m}" for f, n, m in errs[:1])
             break
+        if cast_rounds and fix_casts(src, own, after):
+            cast_rounds -= 1
+            continue
+        rounds -= 1
         if not fence_once(src, own, after):
             status, detail = "stuck", " | ".join(f"{f}:{n}: {m}" for f, n, m in own[:1])
             break

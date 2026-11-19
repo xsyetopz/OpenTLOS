@@ -62,6 +62,11 @@ def diagnostics(src: Path, out: Path, includes: list[Path], maxerrors: int = 50,
         elif m := re.match(r"^#\s+(\d+): ", l):
             line = int(m.group(1))
         elif l.startswith("#   Error:"):
-            msg = lines[i + 1].lstrip("# ").strip() if i + 1 < len(lines) else ""
-            errs.append((cur, line, msg))
+            # A long message wraps: "illegal implicit conversion from 'void *' to" / "'ManagedLight *'".
+            msg = []
+            for nxt in lines[i + 1:]:
+                if not nxt.startswith("#   ") or re.match(r"^#\s+\d+: |^#   (Error|Warning):", nxt):
+                    break
+                msg.append(nxt.lstrip("# ").strip())
+            errs.append((cur, line, " ".join(msg)))
     return False, errs or [("", 0, "unparsed failure")]

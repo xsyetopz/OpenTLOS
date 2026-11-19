@@ -26,6 +26,7 @@ tools/srcgen/install.sh $TMPDIR/run                # copies into src/, rebuilds,
 | Undeclared `unkspX` stack reads as typed reads inside the enclosing local (type from the asm access) | `stackslots.py` | used by `cxxconv.py` |
 | Headers | `headers.py` | `hdr/` |
 | By-value enums (no forward declaration in C++03; real header unknown) | `henums.py` | `hdr/unplaced_enums.h` |
+| C's implicit pointer and integer conversions made explicit casts on whole-statement assignments and returns, before fencing; pointer-float pairs stay errors | `castfix.py` | used by `fence.py` |
 | Fencing | `fence.py` | `fenced/`, `fence.tsv` |
 
 `fence.tsv` lists every TU with its fenced and total block counts; it is the
