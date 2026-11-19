@@ -165,23 +165,22 @@ GameData::GameData() {
     ClearData();
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 void GameData::SetSaveChunk(ChunkInfo *arg0) {
-    strcpy((s8 *) &this->unk190, arg0->unk0);
-    strcpy(&this->unk20, (s8 *) &this->unk190);
+    strcpy((char *) &this->unk190, (char *) arg0->unk0);
+    strcpy((char *) &this->unk20, (char *) &this->unk190);
 }
-#endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
-void GameData::SaveState::ClearData() {
-    memset(this, 0, 0x40U);
-    ((GameStats *) (this + 0x70))->Clear();
-    if ((s8 **) M2C_FIELD(&gb, s8 ***, 0x330) != NULL) {
-        strcpy(&(this + 0x190)->unk0, *M2C_FIELD(&gb, s8 ***, 0x330));
-        strcpy(&(this + 0x20)->unk0, &(this + 0x190)->unk0);
+void GameData::SaveState::ClearData(void) {
+    void *chunk;
+
+    memset(this, 0, 0x40);
+    ((GameStats *) ((s8 *) this + 0x70))->Clear();
+    chunk = M2C_FIELD(&gb, void **, 0x330);
+    if (chunk != NULL) {
+        strcpy((char *) this + 0x190, *(char **) chunk);
+        strcpy((char *) this + 0x20, (char *) this + 0x190);
     }
 }
-#endif
 
 void GameData::SaveState::Deinit() {
     ((CameraData *) (this + 0x60))->Deinit();
@@ -194,24 +193,22 @@ void GameData::SaveState::Init() {
     memset(this + 0x190, 0, 0x20U);
 }
 
-#if 0 // DRAFT: illegal operand
 void GameStats::SetAttacksAvailable(unsigned int arg0) {
-    s32 temp_r6_382;
-    s32 var_ctr_375;
-    s32 var_r8_373;
+    s32 offset;
+    s32 i;
+    s32 ctr;
 
-    var_r8_373 = 0;
-    var_ctr_375 = 0x10;
+    i = 0;
+    ctr = 0x10;
     do {
-        if (arg0 & (1 << var_r8_373)) {
-            temp_r6_382 = ((var_r8_373 * 8) & 0x60) + 0x60;
-            *(this + temp_r6_382) = *(this + temp_r6_382) | (1 << (var_r8_373 & 3));
+        if (arg0 & (1 << i)) {
+            offset = (i * 8) & 0x60;
+            *(s32 *) ((s8 *) this + offset + 0x60) = *(s32 *) ((s8 *) this + offset + 0x60) | (1 << (i & 3));
         }
-        var_r8_373 += 1;
-        var_ctr_375 -= 1;
-    } while (var_ctr_375 != 0);
+        i += 1;
+        ctr -= 1;
+    } while (ctr != 0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'breathDamage'
 f32 GameStats::GetBreathAttackDamage(int arg0, int arg1, int arg2) {
@@ -317,36 +314,30 @@ void GameStats::SetLevelUpPoints(int arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal operand
-void GameStats::SetEverything() {
-    s32 temp_r5_625;
-    s32 temp_r8_620;
-    s32 var_ctr_622;
-    s32 var_r10_621;
-    s32 var_r4_615;
-    s32 var_r9_613;
+void GameStats::SetEverything(void) {
+    s32 offset;
+    s32 row;
+    s32 bit;
+    s32 count;
+    s32 base;
 
-    var_r9_613 = 0;
+    row = 0;
     this->unkF8 = -1;
-    var_r4_615 = 0;
+    base = 0;
     this->unkF9 = 0xFF;
     do {
-        temp_r8_620 = var_r4_615 + 0x60;
-        var_r10_621 = 0;
-        var_ctr_622 = 4;
-loop_2:
-        temp_r5_625 = 1 << var_r10_621;
-        var_r10_621 += 1;
-        *(this + temp_r8_620) = *(this + temp_r8_620) | temp_r5_625;
-        var_ctr_622 -= 1;
-        if (var_ctr_622 != 0) {
-            goto loop_2;
-        }
-        var_r9_613 += 1;
-        var_r4_615 += 0x20;
-    } while (var_r9_613 < 4);
+        offset = base + 0x60;
+        bit = 0;
+        count = 4;
+        do {
+            *(s32 *) ((s8 *) this + offset) = *(s32 *) ((s8 *) this + offset) | (1 << bit);
+            bit += 1;
+            count -= 1;
+        } while (count != 0);
+        row += 1;
+        base += 0x20;
+    } while (row < 4);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'SpiritChange'
 void GameStats::Clear() {
@@ -394,100 +385,88 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void GameStats::LoadIni() {
-    M2C_UNK *sp68;
-    void *sp64;
-    void *sp60;
-    void *sp5C;
-    f32 *sp58;
-    MKIni sp8;
-    MKIniLine *temp_r3_765;
-    MKIniLine *temp_r3_788;
-    MKIniLine *var_r15_808;
-    MKIniLine *var_r16_794;
-    MKIniLine *var_r18_770;
-    MKIniLine *var_r20_748;
-    f32 *temp_r14_790;
-    s32 var_r17_775;
-    s32 var_r19_752;
-    s32 var_r25_810;
-    s32 var_r26_778;
-    s32 var_r27_777;
-    s32 var_r28_776;
-    s32 var_r29_755;
-    s32 var_r30_754;
-    s32 var_r31_753;
+    MKIni ini;
+    MKIniLine *sec;
+    MKIniLine *sub;
+    MKIniLine *leaf;
+    MKIniLine *upg;
+    u8 *ce;
+    u8 *secNames;
+    u8 *fldNames;
+    u8 *secDst;
+    u8 *secBank;
+    u8 *upgDst;
+    f32 *valDst;
+    s32 i;
+    s32 secSlot;
+    s32 secBankOff;
+    s32 secDstOff;
+    s32 j;
+    s32 fldSlot;
+    s32 fldBankOff;
+    s32 valOff;
+    s32 k;
 
-    if (sp8.Init("GameStats.ini", 0, NULL) != 0) {
-        var_r20_748 = sp8.GetFirstLine();
-        sp60 = &coverEffects + 0x288;
-loop_21:
-        if (var_r20_748 != NULL) {
-            var_r19_752 = 0;
-            var_r31_753 = 0;
-            var_r30_754 = 0;
-            var_r29_755 = 0;
+    ce = (u8 *) &coverEffects;
+    secNames = ce + 0x288;
+    fldNames = ce + 0x270;
+    if (ini.Init("GameStats.ini", 0, NULL) != 0) {
+        sec = ini.GetFirstLine();
+        while (sec != NULL) {
+            i = 0;
+            secSlot = 0;
+            secBankOff = 0;
+            secDstOff = 0;
             do {
-                if (var_r20_748->IsSection(*(sp60 + var_r29_755)) != 0) {
-                    temp_r3_765 = var_r20_748->unkC->GetSubLine(var_r20_748);
-                    sp64 = &coverEffects + 0x270;
-                    var_r18_770 = temp_r3_765;
-loop_18:
-                    if (var_r18_770 != NULL) {
-                        var_r17_775 = 0;
-                        var_r28_776 = 0;
-                        var_r27_777 = 0;
-                        var_r26_778 = 0;
+                if (sec->IsSection(*(const char **) (secNames + secSlot)) != 0) {
+                    sub = sec->unkC->GetSubLine(sec);
+                    secDst = ce + 0x1B0 + secDstOff;
+                    secBank = ce + 0x1F0 + secBankOff;
+                    while (sub != NULL) {
+                        j = 0;
+                        fldSlot = 0;
+                        fldBankOff = 0;
+                        valOff = 0;
                         do {
-                            if (var_r18_770->IsField(*(sp64 + var_r26_778)) != 0) {
-                                temp_r3_788 = var_r18_770->unkC->GetSubLine(var_r18_770);
-                                temp_r14_790 = (float *) (&coverEffects + 0x1B0 + var_r31_753 + var_r28_776);
-                                sp5C = &coverEffects + 0x1F0 + var_r30_754 + var_r27_777;
-                                var_r16_794 = temp_r3_788;
-                                sp58 = temp_r14_790 + 4;
-loop_15:
-                                if (var_r16_794 != NULL) {
-                                    if (var_r16_794->IsField("Upgrades") != 0) {
-                                        var_r15_808 = var_r16_794->unkC->GetSubLine(var_r16_794);
-                                        var_r25_810 = 0;
-                                        sp68 = (long *) ("Attack1");
-loop_13:
-                                        if (var_r15_808 != NULL) {
-                                            if (var_r15_808->LoadFloat(sp68 + 0x5B, ((u8 *) sp5C) + var_r25_810, 0) != 0) {
-                                                var_r25_810 += 4;
+                            if (sub->IsField(*(const char **) (fldNames + fldSlot)) != 0) {
+                                leaf = sub->unkC->GetSubLine(sub);
+                                valDst = (f32 *) (secDst + valOff);
+                                upgDst = secBank + fldBankOff;
+                                while (leaf != NULL) {
+                                    if (leaf->IsField("Upgrades") != 0) {
+                                        upg = leaf->unkC->GetSubLine(leaf);
+                                        k = 0;
+                                        while (upg != NULL) {
+                                            if (upg->LoadFloat("Damage", (f32 *) (upgDst + k), 0) != 0) {
+                                                k += 4;
                                             }
-                                            var_r15_808 = var_r15_808->unkC->GetNextLine(var_r15_808);
-                                            goto loop_13;
+                                            upg = upg->unkC->GetNextLine(upg);
                                         }
                                     }
-                                    var_r16_794->LoadFloat("InitialCost", temp_r14_790, 0);
-                                    var_r16_794->LoadFloat("OngoingCost", sp58, 0);
-                                    var_r16_794 = var_r16_794->unkC->GetNextLine(var_r16_794);
-                                    goto loop_15;
+                                    leaf->LoadFloat("InitialCost", valDst, 0);
+                                    leaf->LoadFloat("OngoingCost", (f32 *) ((u8 *) valDst + 4), 0);
+                                    leaf = leaf->unkC->GetNextLine(leaf);
                                 }
                             }
-                            var_r17_775 += 1;
-                            var_r27_777 += 0x10;
-                            var_r26_778 += 4;
-                            var_r28_776 += 8;
-                        } while (var_r17_775 < 2);
-                        var_r18_770 = var_r18_770->unkC->GetNextLine(var_r18_770);
-                        goto loop_18;
+                            j += 1;
+                            fldBankOff += 0x10;
+                            fldSlot += 4;
+                            valOff += 8;
+                        } while (j < 2);
+                        sub = sub->unkC->GetNextLine(sub);
                     }
                 }
-                var_r19_752 += 1;
-                var_r30_754 += 0x20;
-                var_r29_755 += 4;
-                var_r31_753 += 0x10;
-            } while (var_r19_752 < 4);
-            var_r20_748 = var_r20_748->unkC->GetNextLine(var_r20_748);
-            goto loop_21;
+                i += 1;
+                secBankOff += 0x20;
+                secSlot += 4;
+                secDstOff += 0x10;
+            } while (i < 4);
+            sec = sec->unkC->GetNextLine(sec);
         }
-        sp8.Deinit();
+        ini.Deinit();
     }
 }
-#endif
 
 void GameStats::Init() {
     Clear();
