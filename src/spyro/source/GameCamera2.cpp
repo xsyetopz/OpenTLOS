@@ -2481,10 +2481,10 @@ f32 GameCamera2::Resolve() {
     }
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 s32 GameCamera2::LoadDone() {
     this->unk14 = 2;
-    MKSceneManager::PropResolver_Add(*this->unk0, M2C_ERROR(/* Read from unset register $r5 */));
+    ((MKSceneManager *) this)->PropResolver_Add(*this->unk0, M2C_ERROR(/* Read from unset register $r5 */));
     KDCamera::LoadDone();
     if ((GameCamera2 *) M2C_FIELD(&gb, GameCamera2 **, 0x3B8) == NULL) {
         M2C_FIELD(&gb, GameCamera2 **, 0x3B8) = this;

@@ -2023,7 +2023,7 @@ void KDSP_Actor::Draw() {
     MKModel_Draw(this->unk38->unk8, NULL);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal type
 void KDSP_Actor::Deinit(bool arg0) {
     KDS_Message_PropEnd sp8;
     MKAnimScript *temp_r3_3586;
@@ -2037,7 +2037,7 @@ void KDSP_Actor::Deinit(bool arg0) {
     u32 temp_r3_3577;
 
     if ((((MKAnimScript *) this->unk38 != NULL) || ((MKModel *) this->unk3C != NULL)) && ((u32) this->unk30 == 0)) {
-        Shadow::Deinit();
+        ((Shadow *) this)->Deinit();
     }
     if ((void *) this->unk58 != NULL) {
         var_r3_3473 = 0;
@@ -2265,8 +2265,8 @@ void KDSP_Actor::Resolve(bool arg0, void (*arg2)(const char *, MKModel **, MKAni
         } else {
             var_r4_4009 = this->unk3C;
         }
-        Shadow::Init(var_r4_4009, NULL, 2000.0f, NULL, 1500.0f);
-        Shadow::Show(1U);
+        ((Shadow *) this)->Init(var_r4_4009, NULL, 2000.0f, NULL, 1500.0f);
+        ((Shadow *) this)->Show(1U);
     }
 }
 #endif

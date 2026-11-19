@@ -1414,7 +1414,7 @@ void Animation::Destroy() {
         this->unk10 = 0;
     }
     EnableCustomMatrices(0U);
-    MKHeap::FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+    ((MKHeap *) this)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
 }
 #endif
 

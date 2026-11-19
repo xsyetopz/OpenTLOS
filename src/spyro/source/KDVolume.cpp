@@ -37,7 +37,6 @@ u8 boundingVolume__8KDVolume[0x20] = {
     0,
 };
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDVolume::UpdateMatrix(Matrix &arg0) {
     f64 sp70;
     f64 sp68;
@@ -71,7 +70,7 @@ void KDVolume::UpdateMatrix(Matrix &arg0) {
     f32 var_f12_85;
 
     M2C_STRUCT_COPY((s32) &this->unk3C + 4, (s32) (&arg0 - 4) + 4, 0x40);
-    Matrix::Inverse(&this->unk40);
+    ((Matrix *) this)->Inverse(&this->unk40);
     temp_f0_37 = this->unk40.unk10;
     sp68 = M2C_FIELD(KDVolume::boundingVolume, f64 *, 0);
     temp_f4_41 = this->unk40.unk14;
@@ -118,7 +117,6 @@ void KDVolume::UpdateMatrix(Matrix &arg0) {
     }
     this->unk84 = var_f12_85;
 }
-#endif
 
 void KDVolume::GetCenterPos() {
     f64 sp50;

@@ -250,9 +250,7 @@ void FireTrap::Reset() {
     PropFlagsClear((unsigned int *) &this->unk10, 0x80000U);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void FireTrapDescriptor::Init() {
-    TrapDescriptor::Init();
+    ((TrapDescriptor *) this)->TrapDescriptor::Init();
     this->unkC = 0x12;
 }
-#endif

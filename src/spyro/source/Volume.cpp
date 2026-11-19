@@ -79,7 +79,6 @@ void Volume::GetRandPos() {
     this->unk8 = (f64) sp10;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void Volume::UpdateMatrix(Matrix &arg0) {
     f64 sp70;
     f64 sp68;
@@ -113,7 +112,7 @@ void Volume::UpdateMatrix(Matrix &arg0) {
     f32 var_f12_186;
 
     M2C_STRUCT_COPY((s32) (this + 0x3C) + 4, (s32) (&arg0 - 4) + 4, 0x40);
-    Matrix::Inverse(&this->unk40);
+    ((Matrix *) this)->Inverse(&this->unk40);
     temp_f0_138 = this->unk40.unk10;
     sp68 = M2C_FIELD(Volume::boundingVolume, f64 *, 0);
     temp_f4_142 = this->unk40.unk14;
@@ -160,7 +159,6 @@ void Volume::UpdateMatrix(Matrix &arg0) {
     }
     this->unk84 = var_f12_186;
 }
-#endif
 
 void Volume::Init(Matrix &arg0) {
     UpdateMatrix(arg0);

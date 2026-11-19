@@ -333,7 +333,6 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void SlimeTrailFX::Deinit() {
     MKHeap *temp_r31_491;
 
@@ -343,11 +342,9 @@ void SlimeTrailFX::Deinit() {
     } else {
         free(temp_r31_491);
     }
-    KDUniformSpline::Deinit();
+    ((KDUniformSpline *) this)->Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void SlimeTrailFX::UpdatePos(MKVector3 *arg0, const MKVector3 &arg1) {
     f64 sp10;
     f64 sp8;
@@ -397,7 +394,7 @@ loop_12:
             sp8 = M2C_FIELD(temp_r3_589, f64 *, 0);
             sp10 = M2C_FIELD(temp_r3_589, f64 *, 8);
         }
-        KDUniformSpline::AddNode(*((MKVector3 *) &sp8));
+        ((KDUniformSpline *) this)->AddNode(*((MKVector3 *) &sp8));
         var_r30_572 -= 1;
         var_r28_577 += 1;
         if (var_r30_572 < 0) {
@@ -409,7 +406,6 @@ loop_12:
         this->unk28 = 1;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void SlimeTrailFX::Draw() {
@@ -614,7 +610,7 @@ void SlimeTrailFX::Init() {
         var_r3_944 = malloc(0x190);
     }
     this->unk14 = var_r3_944;
-    KDUniformSpline::Init(0xA, 0U);
+    ((KDUniformSpline *) this)->Init(0xA, 0U);
     this->unk18 = 0;
     this->unk1C = 0;
 }

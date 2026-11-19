@@ -99,8 +99,8 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
     sp98 = temp_f1_817;
     spA0 = temp_f0_818;
     if ((temp_r5_816 != NULL) && ((u32) M2C_FIELD(temp_r5_816, u32 *, 8) != 0U)) {
-        HeroDataMessage::ClearData();
-        HeroDataMessage::Init(M2C_FIELD(this->unkC0, Matrix **, 8));
+        ((HeroDataMessage *) this)->ClearData();
+        ((HeroDataMessage *) this)->Init(M2C_FIELD(this->unkC0, Matrix **, 8));
         this->unkA8 = this->unkC0;
     } else {
         this->unk0 = arg0.unk0;

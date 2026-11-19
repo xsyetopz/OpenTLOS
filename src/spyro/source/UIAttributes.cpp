@@ -166,7 +166,7 @@ void RenderContext::AddState(const Attributes &arg0) {
         sp18 = (temp_f7_365 * this->unk28) + ((temp_f6_359 * this->unk8) + (temp_f3_351 * this->unk18));
         sp20 = (f64) sp10;
         sp28 = (f64) sp18;
-        Matrix::Translate((Matrix *) this, *((MKVector3 *) &sp20));
+        ((Matrix *) this)->Translate((Matrix *) this, *((MKVector3 *) &sp20));
     }
     if (arg0.unk40 & 4) {
         sp70.unk30 = 0.0f;
@@ -176,12 +176,12 @@ void RenderContext::AddState(const Attributes &arg0) {
         sp70.SetRotationRoll(arg0.unk20.unk8);
         sp70.RotateYaw(&sp70, arg0.unk20.unk4);
         sp70.RotatePitch(&sp70, arg0.unk20.unk0);
-        Matrix::Multiply(&sp70, (Matrix *) this);
+        ((Matrix *) this)->Multiply(&sp70, (Matrix *) this);
     }
     if (arg0.unk40 & 8) {
         sp30.SetIdentity();
         sp30.Scale4x3(&sp30, arg0.unk30);
-        Matrix::Multiply(&sp30, (Matrix *) this);
+        ((Matrix *) this)->Multiply(&sp30, (Matrix *) this);
     }
     if (arg0.unk40 & 1) {
         this->unk40 *= M2C_FIELD(&arg0, f64 *, 0);
@@ -201,9 +201,9 @@ RenderContext::RenderContext(const RenderContext &arg0, const Attributes &arg1) 
     AddState(arg0, arg1);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: expression syntax error
 RenderContext::RenderContext() {
-    Matrix::SetIdentity();
+    ((Matrix *) this)->SetIdentity();
     M2C_FIELD(this, f32 *, 0x40) = 1.0f;
     M2C_FIELD(this, f32 *, 0x44) = 1.0f;
     M2C_FIELD(this, f32 *, 0x48) = 1.0f;

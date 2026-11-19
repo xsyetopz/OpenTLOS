@@ -84,7 +84,6 @@ void SplitPath::GetVelocity(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void SplitPath::GetPosition(float arg0) {
     f32 spC;
     f32 sp8;
@@ -92,9 +91,8 @@ void SplitPath::GetPosition(float arg0) {
 
     temp_r4_106 = *((SplitPath *) (M2C_ERROR(/* Read from unset register $r4 */)))->GetPathData(arg0, &spC);
     sp8 = 0.0f;
-    KDUniformSpline::GetMeasure(spC, temp_r4_106, KDSpline_PositionMixer);
+    ((KDUniformSpline *) this)->GetMeasure(spC, temp_r4_106, KDSpline_PositionMixer);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void SplitPath::Deinit() {

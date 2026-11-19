@@ -343,7 +343,7 @@ void FuryFXFire::Deinit() {
     if (temp_r3_417 != NULL) {
         MKMaterial_Destroy(temp_r3_417);
     }
-    FuryFX::Deinit();
+    ((FuryFX *) this)->FuryFX::Deinit();
 }
 #endif
 
@@ -534,13 +534,12 @@ void FuryFXFire::UpdateDragons() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void FuryFXFire::Message(MKMessage *arg0) {
     s32 var_r29_795;
     s32 var_r31_796;
     void *temp_r30_798;
 
-    KDProp::Message(arg0);
+    ((KDProp *) this)->KDProp::Message(arg0);
     var_r29_795 = 0;
     var_r31_796 = 0;
     do {
@@ -551,7 +550,6 @@ void FuryFXFire::Message(MKMessage *arg0) {
         var_r31_796 += 0x80;
     } while (var_r29_795 < 3);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
 void *FuryFXFire::Update() {
@@ -1692,7 +1690,7 @@ loop_156:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 f32 FuryFXFire::Resolve() {
     f64 spC0;
     f64 spB8;
@@ -1733,7 +1731,7 @@ f32 FuryFXFire::Resolve() {
     s32 var_r31_3021;
     void *temp_r29_3025;
 
-    FuryFX::Resolve();
+    ((FuryFX *) this)->FuryFX::Resolve();
     sp50 = 0.0f;
     sp60 = 0.0f;
     sp38 = 1.0f;
@@ -1794,12 +1792,12 @@ f32 FuryFXFire::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FuryFXFire::Init() {
     s32 var_r29_3123;
     s32 var_r31_3124;
 
-    FuryFX::Init();
+    ((FuryFX *) this)->FuryFX::Init();
     SetDefaults();
     this->unkE0 = MKMaterial_Create("FX_FlameWall");
     this->unkE8 = NULL;

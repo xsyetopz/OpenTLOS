@@ -1116,7 +1116,7 @@ void KDSoundFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, const MK
         var_r29_2267 = 0;
     }
     sp8 = (s32) arg_sp8;
-    KDSoundPlayer::Update(arg0, arg1, var_r25_2263, arg3, arg4, arg5, var_r29_2267, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundPlayer *) this)->Update(arg0, arg1, var_r25_2263, arg3, arg4, arg5, var_r29_2267, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_r0_2381 = this->unk0;
     if ((temp_r31_2268 != temp_r0_2381) && ((temp_r31_2268 == 0) || (temp_r0_2381 != 0))) {
         if (this->unk8 > 0.0f) {

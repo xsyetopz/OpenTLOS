@@ -469,19 +469,17 @@ void MKPropDescriptor::Init() {
     this->unk18 = 0;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKProp::Deinit() {
     MKModel *temp_r3_1248;
 
     if ((s32) this->unk14 > 0) {
-        MKSceneManager::PropResolver_Remove(M2C_ERROR(/* Read from unset register $r4 */));
+        ((MKSceneManager *) this)->PropResolver_Remove(M2C_ERROR(/* Read from unset register $r4 */));
     }
     temp_r3_1248 = this->unk4;
     if (temp_r3_1248 != NULL) {
         MKModel_Destroy(temp_r3_1248);
     }
 }
-#endif
 
 void MKProp::Message(MKMessage *arg0) {
     MKModel *temp_r3_1269;
@@ -545,7 +543,7 @@ s32 MKProp::LoadLine(MKIniLine *arg0) {
             } else {
                 var_r4_1383 = *this->unk0;
             }
-            MKSceneManager::PropResolver_Add((MKProp *) var_r4_1383, M2C_ERROR(/* Read from unset register $r5 */));
+            ((MKSceneManager *) this)->PropResolver_Add((MKProp *) var_r4_1383, M2C_ERROR(/* Read from unset register $r5 */));
         }
         return 1;
     }
@@ -594,16 +592,14 @@ void MKProp::Init() {
     ((MKPropLoadInfo *) &MKProp::loadInfo)->Init();
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKPropLoadInfo::LoadDone() {
-    Matrix::SetRotationPYR(this->unk50);
-    Matrix::Scale3x3((Matrix *) this, this->unk60);
+    ((Matrix *) this)->SetRotationPYR(this->unk50);
+    ((Matrix *) this)->Scale3x3((Matrix *) this, this->unk60);
     this->unk30 = this->unk40;
     this->unk34 = this->unk44;
     this->unk38 = this->unk48;
     this->unk3C = 1.0f;
 }
-#endif
 
 s32 MKPropLoadInfo::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1542;
@@ -615,9 +611,8 @@ s32 MKPropLoadInfo::LoadLine(MKIniLine *arg0) {
     return var_r31_1542;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKPropLoadInfo::Init() {
-    Matrix::SetIdentity();
+    ((Matrix *) this)->SetIdentity();
     this->unk40 = 0.0f;
     this->unk44 = 0.0f;
     this->unk48 = 0.0f;
@@ -632,4 +627,3 @@ void MKPropLoadInfo::Init() {
     this->unk70.unk8 = 1.0f;
     this->unk70.unkC = 1.0f;
 }
-#endif

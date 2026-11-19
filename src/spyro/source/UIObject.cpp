@@ -62,7 +62,7 @@ UIContainer *UIObject::Find(const char *arg0) {
         var_r31_55 = temp_r3_83->FindChild(arg0);
     }
     if ((var_r31_55 == NULL) && (IsContainer() != 0)) {
-        var_r31_55 = UIContainer::FindChild(arg0);
+        var_r31_55 = ((UIContainer *) this)->FindChild(arg0);
     }
     if ((var_r31_55 == NULL) && (GetRoot() != NULL)) {
         var_r31_55 = ((UIContainer *) (GetRoot()))->FindChild(arg0);

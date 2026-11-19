@@ -125,28 +125,26 @@ void KDSound_SoundWall::Update(bool arg0) {
     }
     if (((u8) this->unk6C != 0) || (KDSound_IsVoicePlaying(this->unk0) != 0)) {
         sp8 = 1;
-        KDSoundFader::Update(this->unk5C, 1U, this->unk6C, NULL, (MKVector3 *) &this->unk40, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) this)->Update(this->unk5C, 1U, this->unk6C, NULL, (MKVector3 *) &this->unk40, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDSound_SoundWall::Message(MKMessage *arg0) {
-    KDSoundPlayer::Message(arg0);
+    ((KDSoundPlayer *) this)->Message(arg0);
 }
-#endif
 
 void KDSound_SoundWall::Deinit() {
     KDSound_Stop((int *) &this->unk0);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void KDSound_SoundWall::Init(KDUniformSpline *arg0, float arg1, int arg2, int arg3, int arg4, float arg5, float arg6, float arg7, float arg8) {
     KDUniformSpline sp10;
     f32 sp8;
     KDUniformSpline *temp_r4_238;
 
-    KDSoundFader::Init(arg5, arg6);
+    ((KDSoundFader *) this)->Init(arg5, arg6);
     this->unk30 = 0.0f;
     this->unk34 = 0.0f;
     this->unk38 = 0.0f;
@@ -468,7 +466,7 @@ void KDSoundFlangedFader::Stop() {
     KDSound_Stop((int *) &this->unk28);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'sin'
 void KDSoundFlangedFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, MKVector3 *arg4, unsigned int arg5, int arg6) {
     s32 sp8;
     f32 temp_f1_898;
@@ -478,7 +476,7 @@ void KDSoundFlangedFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, M
     s32 temp_r0_946;
 
     sp8 = 1;
-    KDSoundFader::Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) this)->Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp8 = 1;
     ((KDSoundFader *) &this->unk28)->Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if (arg2 != 0) {
@@ -516,15 +514,13 @@ void KDSoundFlangedFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, M
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDSoundFlangedFader::Message(MKMessage *arg0) {
-    KDSoundPlayer::Message(arg0);
+    ((KDSoundPlayer *) this)->Message(arg0);
     ((KDSoundPlayer *) &this->unk28)->Message(arg0);
     if ((s32) arg0->unk0 == -4) {
         Stop();
     }
 }
-#endif
 
 void KDSoundFlangedFader::Deinit() {
     KDSound_Stop((int *) &this->unk0);
@@ -548,12 +544,10 @@ void KDSoundFlangedFader::RecalcVariables(int arg0, float arg1, float arg2, floa
     }
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDSoundFlangedFader::Init(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
     RecalcVariables(arg0, arg1, arg2, arg3);
     this->unk6C = 0.0f;
     this->unk54 = 0.0f;
-    KDSoundFader::Init(arg4, arg5);
+    ((KDSoundFader *) this)->Init(arg4, arg5);
     ((KDSoundFader *) &this->unk28)->Init(arg4, arg5);
 }
-#endif

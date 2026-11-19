@@ -222,7 +222,7 @@ s32 SoftSweepSphere::TestPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     temp_f1_247 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + ((*(f32 *) ((u8 *) &sp140 + 0x4)) * (*(f32 *) ((u8 *) &sp140 + 0x4))));
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if ((temp_f0_169 == 0.0f) || (this->unk34 == 0.0f)) {
-        spE0.operator*(this->unk30 / std::sqrtf(temp_f1_247));
+        spE0.operator*(this->unk30 / ((std *) this)->sqrtf(temp_f1_247));
         sp40 = this->unk0 + M2C_BITWISE(f64, spE0);
         M2C_FIELD(arg1, f64 *, 0) = sp40;
         sp48 = M2C_FIELD(this, f32 *, 8) + spE0.unk8;

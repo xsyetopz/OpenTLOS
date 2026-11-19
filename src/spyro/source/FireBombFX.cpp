@@ -92,39 +92,35 @@ static s32 lit_541 = 6;
 static u8 lit_687 = 0;
 static u8 lit_762 = 1;
 
-#if 0 // DRAFT: illegal use of non-static member
 void FireBombFXDescriptor::Deinit() {
     MKMaterial_Destroy(this->unkEC);
-    KDPropExDescriptor::Deinit();
+    ((KDPropExDescriptor *) this)->KDPropExDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match
 void FireBombFXDescriptor::LoadDone() {
-    GamePropDescriptor::LoadDone();
+    ((GamePropDescriptor *) this)->GamePropDescriptor::LoadDone();
     this->unkEC = MKMaterial_Create(this->unkE8);
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 FireBombFXDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_55;
 
     var_r31_55 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("flamemat", &this->unkE8, 0) != 0) || (arg0->LoadString("trailmat", &this->unkE4, 0) != 0)) {
+    if ((((GamePropDescriptor *) this)->GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("flamemat", &this->unkE8, 0) != 0) || (arg0->LoadString("trailmat", &this->unkE4, 0) != 0)) {
         var_r31_55 = 1;
     }
     return var_r31_55;
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void FireBombFXDescriptor::Init() {
-    GamePropDescriptor::Init();
+    ((GamePropDescriptor *) this)->GamePropDescriptor::Init();
     this->unkE8 = NULL;
     this->unkE4 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, bool arg4, bool arg5, int arg6, const MKVector3 &arg7) {

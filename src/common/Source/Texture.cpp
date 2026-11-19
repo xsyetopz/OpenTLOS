@@ -502,7 +502,7 @@ void Texture::Destroy() {
         if (this == (s8 *) Texture_pTextures) {
             Texture_pTextures = this->unk80;
         }
-        MKHeap::FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+        ((MKHeap *) this)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
     }
 }
 #endif

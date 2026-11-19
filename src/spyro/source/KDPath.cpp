@@ -144,13 +144,13 @@ KDPathSegment *KDPathManager::GetPathList(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: pointer/array required
 void KDPathManager::RemovePath(KDPathSegment *arg0) {
     KDPathNode *temp_r3_335;
     KDPathNode *temp_r3_351;
     s32 temp_r3_344;
 
-    KDPathNode::Unlink();
+    ((KDPathNode *) this)->Unlink();
     ((KDPathNode *) &this->unk8)->Unlink();
     temp_r3_335 = this->unk2C;
     if (temp_r3_335 != NULL) {
@@ -222,7 +222,7 @@ loop_10:
         spB0 = (f64) sp40;
         spC0 = (f64) sp40;
         if ((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * (*(f32 *) ((u8 *) &spA8 + 0x4))))) < 10000.0f) {
-            KDPathNode::Link(var_r31_383);
+            ((KDPathNode *) this)->Link(var_r31_383);
         }
         temp_r5_421 = this->unk24;
         temp_r3_422 = var_r31_383->unk24 + ((var_r31_383->unk20 - 1) * var_r31_383->unk1C);
@@ -233,7 +233,7 @@ loop_10:
         sp98 = sp28;
         spA0 = (f64) sp30;
         if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))))) < 10000.0f) {
-            KDPathNode::Link((KDPathNode *) &var_r31_383->unk8);
+            ((KDPathNode *) this)->Link((KDPathNode *) &var_r31_383->unk8);
         }
         temp_r3_456 = var_r31_383->unk24;
         temp_r4_457 = ((u8 *) this->unk24) + ((this->unk20 - 1) * this->unk1C);
@@ -606,24 +606,20 @@ u8 KDSplinePathSegment::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDSplinePathSegment::Deinit() {
     this->unk30.Deinit();
     this->unk24 = NULL;
-    KDPathSegment::Deinit();
+    ((KDPathSegment *) this)->Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDSplinePathSegment::Init() {
-    KDPathSegment::Init();
+    ((KDPathSegment *) this)->Init();
     this->unk30.Init(0, 0U);
     this->unk44 = 0;
     this->unk45 = 0;
     this->unk1C = 0x20;
     this->unk1A = 1;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 f32 KDLocalPathSegmentProp::Resolve() {
@@ -710,14 +706,12 @@ void KDLocalPathSegmentProp::Init() {
     this->unk4C.unk34 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDLocalPathSegment::Init(KDLocalPathSegmentProp *arg0) {
-    KDPathSegment::Init();
+    ((KDPathSegment *) this)->Init();
     this->unk30 = NULL;
     this->unk1A = 2;
     this->unk34 = arg0;
 }
-#endif
 
 s32 KDPathSegmentProp::LoadDone() {
     MKProp::LoadDone();
@@ -986,7 +980,6 @@ void KDPathSegment::Deinit() {
     this->unk24 = NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDPathSegment::Init() {
     this->unk18 = -1;
     this->unk1C = 0x10;
@@ -997,10 +990,9 @@ void KDPathSegment::Init() {
     this->unk28 = NULL;
     this->unk10 = NULL;
     this->unk14 = 0;
-    KDPathNode::Init(this, 1U);
+    ((KDPathNode *) this)->Init(this, 1U);
     ((KDPathNode *) &this->unk8)->Init(this, 0U);
 }
-#endif
 
 void KDPathNode::CountBranches() {
     KDPathNode *var_r0_2009;

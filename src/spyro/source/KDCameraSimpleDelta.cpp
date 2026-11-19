@@ -44,7 +44,7 @@ void KDCameraSimpleDelta::Override::EnableSmoothPitch(float farg0, float farg1) 
     M2C_FIELD(this, f32 *, 8) = farg1;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 KDCameraSimpleDelta::IsUsingIdealDelta() {
     f64 sp48;
     f64 sp40;
@@ -76,8 +76,8 @@ u8 KDCameraSimpleDelta::IsUsingIdealDelta() {
     s32 var_r0_144;
     s32 var_r0_226;
 
-    temp_f30_85 = KDCameraDeltaStagesEx::GetZDelta();
-    temp_f1_87 = KDCameraDeltaStagesEx::GetYDelta();
+    temp_f30_85 = ((KDCameraDeltaStagesEx *) this)->GetZDelta();
+    temp_f1_87 = ((KDCameraDeltaStagesEx *) this)->GetYDelta();
     sp28 = temp_f30_85;
     sp20 = 0.0f;
     sp24 = temp_f1_87;
@@ -290,7 +290,6 @@ void KDCameraSimpleDelta::DisableDeltaOverride(float arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDCameraSimpleDelta::DisablePitchOverride(float arg0) {
     f32 temp_f0_567;
     f32 temp_f0_575;
@@ -317,7 +316,7 @@ void KDCameraSimpleDelta::DisablePitchOverride(float arg0) {
         return;
     }
     ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothPitch();
-    var_f1_590 = KDCameraDeltaStagesEx::GetPitch();
+    var_f1_590 = ((KDCameraDeltaStagesEx *) this)->GetPitch();
     temp_f0_593 = *this->unk24;
     if (var_f1_590 < temp_f0_593) {
 
@@ -332,7 +331,6 @@ void KDCameraSimpleDelta::DisablePitchOverride(float arg0) {
     }
     this->unk14 = var_f1_590;
 }
-#endif
 
 void KDCameraSimpleDelta::DisableOverride(float arg0, float arg1) {
     DisablePitchOverride(arg0);
@@ -382,7 +380,6 @@ void KDCameraSimpleDelta::EnableOverride(float arg0, float arg1, float arg2) {
     ((KDCameraDeltaStagesEx *) &this->unk14)->SetStages(arg0, arg1, arg2);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDCameraSimpleDelta::SetDeltaStages(KDCameraDeltaStages *arg0, bool arg1, bool arg2) {
     f32 temp_f0_770;
     f32 temp_f0_780;
@@ -390,7 +387,7 @@ void KDCameraSimpleDelta::SetDeltaStages(KDCameraDeltaStages *arg0, bool arg1, b
 
     ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothDelta();
     ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothPitch();
-    KDCameraDeltaStagesEx::SetStages(arg0->unk0, arg0->unk4, arg0->unk8);
+    ((KDCameraDeltaStagesEx *) this)->SetStages(arg0->unk0, arg0->unk4, arg0->unk8);
     if (arg2 != 0) {
         var_f1_769 = this->unk14;
         temp_f0_770 = *this->unk24;
@@ -415,7 +412,6 @@ void KDCameraSimpleDelta::SetDeltaStages(KDCameraDeltaStages *arg0, bool arg1, b
         this->unk34 = 0.0f;
     }
 }
-#endif
 
 void KDCameraSimpleDelta::GetDeltaVectorAtPitch(float arg0) {
     Matrix sp30;
@@ -536,18 +532,16 @@ void KDCameraSimpleDelta::ClearData() {
     ((KDCameraDeltaStagesEx *) &this->unk14)->SetStages(this->unk0, this->unk4, this->unk8);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDCameraSimpleDelta::Init(const KDCameraDeltaStages &arg0, float arg1, float arg2) {
     this->unk3C = arg1;
     this->unk40 = arg2;
-    KDCameraDeltaStagesEx::Init(&this->unk3C, &this->unk40);
-    KDCameraDeltaStagesEx::SetStages(arg0.unk0, arg0.unk4, arg0.unk8);
+    ((KDCameraDeltaStagesEx *) this)->Init(&this->unk3C, &this->unk40);
+    ((KDCameraDeltaStagesEx *) this)->SetStages(arg0.unk0, arg0.unk4, arg0.unk8);
     ((KDCameraDeltaStagesEx *) &this->unk14)->Init(&this->unk3C, &this->unk40);
     ((KDCameraDeltaStagesEx *) &this->unk14)->SetStages(arg0.unk0, arg0.unk4, arg0.unk8);
     ((KDCameraDeltaDrag *) &this->unk28)->ClearData();
     ClearData();
 }
-#endif
 
 f32 KDCameraDeltaStagesEx::GetYDelta() {
     Matrix sp20;

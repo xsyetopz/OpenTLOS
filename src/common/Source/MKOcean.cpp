@@ -32,14 +32,12 @@ void MKOcean::EndDraw(unsigned short *arg0) {
 
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKOcean::Update() {
-    MKFFTBaseType::Update();
+    ((MKFFTBaseType *) this)->Update();
     if ((u8) bWaveDataChanged != 0) {
         BuildOceanWaves();
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 void MKOcean::BuildOceanWaves() {
@@ -228,11 +226,11 @@ loop_11:
         var_r6_336 = var_r4_361;
         goto loop_11;
     }
-    MKFFTBaseType::Deinit();
+    ((MKFFTBaseType *) this)->Deinit();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: type mismatch
 void MKOcean::LoadDone() {
     MKHeap **temp_r3_421;
     f32 temp_f0_443;
@@ -246,7 +244,7 @@ void MKOcean::LoadDone() {
     s32 var_r30_399;
     void *var_r31_392;
 
-    MKFFTBaseType::LoadDone();
+    ((MKFFTBaseType *) this)->LoadDone();
     if ((u32) M2C_FIELD(&areaList, u32 *, 0) < (void *) M2C_FIELD(&areaList, void **, 4)) {
         var_r31_392 = M2C_FIELD(&areaList, void **, 4) - 0x14;
         M2C_FIELD(&areaList, void **, 4) = var_r31_392;
@@ -306,25 +304,24 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 MKOcean::LoadLine(MKIniLine *arg0) {
     s32 var_r31_500;
 
     var_r31_500 = 0;
-    if ((MKFFTBaseType::LoadLine(arg0) != 0) || (arg0->LoadFloat("Wave1XFrequency", &this->unk50D0, 0) != 0) || (arg0->LoadFloat("Wave1ZFrequency", &this->unk50D4, 0) != 0) || (arg0->LoadFloat("SmallestWaveLength", &this->unk5180, 0) != 0) || (arg0->LoadFloat("LargestWaveLength", &this->unk5184, 0) != 0) || (arg0->LoadFloat("FadeOff", &this->unk5174, 0) != 0) || (arg0->LoadFloat("WaveHeight", &this->unk5178, 0) != 0) || (arg0->LoadFloat("heightScaler", &this->unk517C, 0) != 0) || (arg0->LoadFloat("deadDistance", &this->unk521C, 0) != 0) || (arg0->LoadBool("Enabled", &this->unk520C, 0) != 0) || (arg0->LoadFloat("WobbleAmount", &this->unk5170, 0) != 0)) {
+    if ((((MKFFTBaseType *) this)->LoadLine(arg0) != 0) || (arg0->LoadFloat("Wave1XFrequency", &this->unk50D0, 0) != 0) || (arg0->LoadFloat("Wave1ZFrequency", &this->unk50D4, 0) != 0) || (arg0->LoadFloat("SmallestWaveLength", &this->unk5180, 0) != 0) || (arg0->LoadFloat("LargestWaveLength", &this->unk5184, 0) != 0) || (arg0->LoadFloat("FadeOff", &this->unk5174, 0) != 0) || (arg0->LoadFloat("WaveHeight", &this->unk5178, 0) != 0) || (arg0->LoadFloat("heightScaler", &this->unk517C, 0) != 0) || (arg0->LoadFloat("deadDistance", &this->unk521C, 0) != 0) || (arg0->LoadBool("Enabled", &this->unk520C, 0) != 0) || (arg0->LoadFloat("WobbleAmount", &this->unk5170, 0) != 0)) {
         var_r31_500 = 1;
     }
     return var_r31_500;
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKOcean::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
     s32 var_ctr_618;
     s32 var_r3_617;
     void *temp_r4_620;
 
-    MKFFTBaseType::Init(arg0, arg1, this->unk5208);
+    ((MKFFTBaseType *) this)->Init(arg0, arg1, this->unk5208);
     var_r3_617 = 0;
     var_ctr_618 = 8;
     do {
@@ -349,4 +346,3 @@ void MKOcean::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
     this->unk521C = 35.0f;
     this->unk517C = 1.0f;
 }
-#endif

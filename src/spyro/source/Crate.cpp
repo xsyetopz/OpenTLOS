@@ -120,7 +120,7 @@ u8 ShatterObject::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3)
     } else {
         var_r4_124 = arg2;
     }
-    KDShatter2::Shatter(var_r4_124, var_r5_0);
+    ((KDShatter2 *) this)->Shatter(var_r4_124, var_r5_0);
     temp_r0_130 = this->unk44;
     var_r31_131 = 0;
     if ((temp_r0_130 == 1) || (temp_r0_130 == 2)) {
@@ -134,25 +134,19 @@ u8 ShatterObject::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3)
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void ShatterObject::Draw() {
-    KDShatter2::Draw(1U);
+    ((KDShatter2 *) this)->Draw(1U);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void ShatterObject::Update() {
-    KDShatter2::Update();
+    ((KDShatter2 *) this)->Update();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void ShatterObject::Reset() {
-    KDShatter2::Reset();
+    ((KDShatter2 *) this)->Reset();
     this->unk3C = M2C_FIELD(this->unk80->unk0, f32 *, 0x20);
     this->unk6C = 0;
 }
-#endif
 
 #if 0 // DRAFT: function call 'strnicmp(signed char *, const char[1], int)' does not match
 void ShatterObject::LoadDone() {
@@ -194,7 +188,7 @@ loop_7:
     this->unk54 = temp_r4_291;
     this->unk58 = &temp_r4_291->unk24;
     this->unk5C = &temp_r4_291->unk48;
-    KDShatter2::LoadDone(this->unk80->unk4, NULL);
+    ((KDShatter2 *) this)->LoadDone(this->unk80->unk4, NULL);
 }
 #endif
 
@@ -202,19 +196,15 @@ void ShatterObject::LoadLine(MKIniLine *arg0) {
     this->unk78.LoadLine(arg0, "");
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void ShatterObject::Deinit() {
-    KDShatter2::Deinit();
+    ((KDShatter2 *) this)->Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void ShatterObject::Init(ShatterObjectDescriptor *arg0, KDPropEx *arg1) {
     this->unk7C = arg0;
     this->unk80 = (MKProp *) arg1;
-    KDShatter2::Init();
+    ((KDShatter2 *) this)->Init();
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKModel_SubObjectExists(MKModel *, SubObjectType, signed
 void ShatterObjectDescriptor::LoadDone(MKModel *arg0, const char *arg1) {

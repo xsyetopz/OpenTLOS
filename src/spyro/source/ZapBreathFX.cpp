@@ -2439,7 +2439,7 @@ void ZapBreathFX::Deinit() {
         free(temp_r31_4571);
     }
     MKModel_Destroy(this->unkE0);
-    BaseBreathFX::Deinit();
+    ((BaseBreathFX *) this)->BaseBreathFX::Deinit();
 }
 #endif
 
@@ -2460,12 +2460,11 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void ZapBreathFX::Message(MKMessage *arg0) {
     s32 var_r30_4638;
     s32 var_r31_4639;
 
-    KDProp::Message(arg0);
+    ((KDProp *) this)->KDProp::Message(arg0);
     var_r30_4638 = 0;
     var_r31_4639 = 0;
     do {
@@ -2474,7 +2473,6 @@ void ZapBreathFX::Message(MKMessage *arg0) {
         var_r31_4639 += 0x90;
     } while (var_r30_4638 < 0xA);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to
 void *ZapBreathFX::Update() {
@@ -3204,7 +3202,7 @@ f32 ZapBreathFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal type
 void ZapBreathFX::Init() {
     s32 temp_r0_5824;
     s32 var_r28_5817;
@@ -3218,7 +3216,7 @@ void ZapBreathFX::Init() {
     void *var_r3_5809;
     void *var_r3_5864;
 
-    BaseBreathFX::Init();
+    ((BaseBreathFX *) this)->BaseBreathFX::Init();
     this->unkC9 = 0;
     this->unk104 = 0.5f;
     if (MKHeap::Current() != NULL) {

@@ -947,33 +947,29 @@ void FightElevator::Init() {
     this->unk2B8 = 0;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
 void FightElevatorDescriptor::LoadDone() {
-    PlatformDescriptor::LoadDone();
+    ((PlatformDescriptor *) this)->PlatformDescriptor::LoadDone();
     this->unk130 = checked_cast<EnergyBeam *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EnergyBeam"));
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 s32 FightElevatorDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1709;
 
     var_r31_1709 = 0;
-    if ((PlatformDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "startSound", (int *) &this->unk124) != 0) || (KDSound_LoadLine(arg0, "stopSound", (int *) &this->unk128) != 0) || (KDSound_LoadLine(arg0, "moveSound", (int *) &this->unk12C) != 0)) {
+    if ((((PlatformDescriptor *) this)->PlatformDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "startSound", (int *) &this->unk124) != 0) || (KDSound_LoadLine(arg0, "stopSound", (int *) &this->unk128) != 0) || (KDSound_LoadLine(arg0, "moveSound", (int *) &this->unk12C) != 0)) {
         var_r31_1709 = 1;
     }
     return var_r31_1709;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void FightElevatorDescriptor::Init() {
-    PlatformDescriptor::Init();
+    ((PlatformDescriptor *) this)->PlatformDescriptor::Init();
     this->unk124 = 0;
     this->unk128 = 0;
     this->unk12C = 0;
 }
-#endif
 
 void FightElevator_cpp::__sinit() {
     f64 temp_f1_1800;

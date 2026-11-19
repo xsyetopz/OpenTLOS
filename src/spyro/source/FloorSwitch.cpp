@@ -536,11 +536,11 @@ void FloorSwitch::Init() {
     this->unk128 = NULL;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void FloorSwitchDescriptor::LoadDone() {
     s8 *temp_r3_989;
 
-    GamePropDescriptor::LoadDone();
+    ((GamePropDescriptor *) this)->GamePropDescriptor::LoadDone();
     temp_r3_989 = this->unk34;
     if (temp_r3_989 != NULL) {
         this->unkF8 = ((MKAnimScript *) temp_r3_989)->GetAnim("idle");
@@ -551,21 +551,18 @@ void FloorSwitchDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 s32 FloorSwitchDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1032;
 
     var_r31_1032 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "beckonSoundLoop", (int *) &this->unkEC) != 0) || (KDSound_LoadLine(arg0, "activeSoundLoop", (int *) &this->unkF0) != 0) || (KDSound_LoadLine(arg0, "dropSoundLoop", (int *) &this->unkF4) != 0) || (KDSound_LoadLine(arg0, "activationSound", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "beginActivationSound", (int *) &this->unkE4) != 0) || (arg0->LoadFloat("AnimSpeed", &this->unk108, 0) != 0)) {
+    if ((((GamePropDescriptor *) this)->GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "beckonSoundLoop", (int *) &this->unkEC) != 0) || (KDSound_LoadLine(arg0, "activeSoundLoop", (int *) &this->unkF0) != 0) || (KDSound_LoadLine(arg0, "dropSoundLoop", (int *) &this->unkF4) != 0) || (KDSound_LoadLine(arg0, "activationSound", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "beginActivationSound", (int *) &this->unkE4) != 0) || (arg0->LoadFloat("AnimSpeed", &this->unk108, 0) != 0)) {
         var_r31_1032 = 1;
     }
     return var_r31_1032;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void FloorSwitchDescriptor::Init() {
-    TrapDescriptor::Init();
+    ((TrapDescriptor *) this)->TrapDescriptor::Init();
     this->unkE4 = GS_PLACEHOLDER;
     this->unkE8 = GS_PLACEHOLDER;
     this->unkEC = GS_PLACEHOLDER;
@@ -573,7 +570,6 @@ void FloorSwitchDescriptor::Init() {
     this->unkF4 = GS_PLACEHOLDER;
     this->unk108 = 1.0f;
 }
-#endif
 
 void FloorSwitch_cpp::__sinit() {
     f64 temp_f1_1156;

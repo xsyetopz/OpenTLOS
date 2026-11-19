@@ -154,7 +154,7 @@ inline u8 KDCameraSimpleDelta::IsUsingIdealPitch() {
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier '__float_nan'
 inline f32 KDCameraSimpleDelta::GetIdealDelta() {
     f64 sp28;
     f64 sp20;
@@ -173,8 +173,8 @@ inline f32 KDCameraSimpleDelta::GetIdealDelta() {
     s32 var_r0_2102;
 
     temp_f31_2041 = this->unk28;
-    temp_f31_2043 = KDCameraDeltaStagesEx::GetZDelta() + temp_f31_2041;
-    temp_f1_2045 = KDCameraDeltaStagesEx::GetYDelta();
+    temp_f31_2043 = ((KDCameraDeltaStagesEx *) this)->GetZDelta() + temp_f31_2041;
+    temp_f1_2045 = ((KDCameraDeltaStagesEx *) this)->GetYDelta();
     sp18 = temp_f31_2043;
     sp10 = 0.0f;
     sp14 = temp_f1_2045;

@@ -1044,7 +1044,6 @@ void CutsceneSystem::LoadingInit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CutsceneSystem::Update() {
     u8 var_r31_2157;
 
@@ -1059,9 +1058,8 @@ void CutsceneSystem::Update() {
     if (var_r31_2157 != 0) {
         MKHeap::DeactivateTempMemOverride();
     }
-    CutsceneSystem::Location::Update();
+    ((CutsceneSystem::Location *) this)->Update();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 void CutsceneSystem::Deinit() {
@@ -1180,7 +1178,7 @@ void CutsceneSystem::InitModule() {
         var_r3_2397 = malloc(temp_r31_2389);
     }
     this->unk7C = var_r3_2397;
-    CutsceneSystem::Location::Init(this);
+    ((CutsceneSystem::Location *) this)->Init(this);
     this->unk1C = NULL;
     this->unkA0 = NULL;
     Level::GetWorldInfo();
@@ -1207,7 +1205,7 @@ void GameSynkerPlayer::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3)
     KDSynkerPlayer3::Init(arg0, arg1, arg2, arg3);
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_752'
+#if 0 // DRAFT: undefined identifier '__ptmf_null'
 void CutsceneSystem_cpp::__sinit() {
     s32 sp44;
     s32 sp40;

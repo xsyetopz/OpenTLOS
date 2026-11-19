@@ -236,12 +236,12 @@ inline void KDSplinePathSegment::GetVelocity(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'int' to
 inline void KDSplinePathSegment::GetPosition(float arg0) {
     f32 sp8;
 
     sp8 = 0.0f;
-    KDUniformSpline::GetMeasure(arg0, M2C_ERROR(/* Read from unset register $r4 */) + 0x30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) this)->GetMeasure(arg0, M2C_ERROR(/* Read from unset register $r4 */) + 0x30, KDSpline_PositionMixer);
 }
 #endif
 

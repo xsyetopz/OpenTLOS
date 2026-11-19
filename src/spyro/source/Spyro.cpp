@@ -7365,14 +7365,12 @@ block_90:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void Spyro::GetLastSafePos() {
     if ((s32) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x35C) > 0) {
 
     }
-    SafePosInfo::GetPos();
+    ((SafePosInfo *) this)->GetPos();
 }
-#endif
 
 void *Spyro::LastSafePosAvailable() {
     s32 temp_r0_13046;

@@ -870,7 +870,6 @@ void MKFFTNormalMap::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKFFTWaterType::Deinit() {
     Texture *temp_r3_1445;
 
@@ -886,9 +885,8 @@ void MKFFTWaterType::Deinit() {
     }
     this->unk50D0 = NULL;
     this->unk50D4.Deinit();
-    MKFFTBaseType::Deinit();
+    ((MKFFTBaseType *) this)->Deinit();
 }
-#endif
 
 void MKFFTBaseType::Deinit() {
     MKMaterial *temp_r3_1505;
@@ -1009,11 +1007,9 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKFFTWaterType::LoadDone() {
-    MKFFTBaseType::LoadDone();
+    ((MKFFTBaseType *) this)->LoadDone();
 }
-#endif
 
 void MKFFTBaseType::Update() {
     this->unk10.Update();
@@ -1028,12 +1024,12 @@ void MKFFTBaseType::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 MKFFTWaterType::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1720;
 
     var_r31_1720 = 0;
-    if ((MKFFTBaseType::LoadLine(arg0) != 0) || (arg0->LoadVector4("specularLight", &this->unk5140, 0) != 0) || (arg0->LoadFloat("specularRed", &this->unk5140.unk0, 0) != 0) || (arg0->LoadFloat("specularGreen", &this->unk5140.unk4, 0) != 0) || (arg0->LoadFloat("specularBlue", &this->unk5140.unk8, 0) != 0) || (arg0->LoadFloat("specularScale", &this->unk5120, 0) != 0) || (arg0->LoadInt("specularPower", (int *) &this->unk5154, 0) != 0) || (arg0->LoadFloat("specularVariance", &this->unk5158, 0) != 0) || (arg0->LoadBool("subTractiveBase", (u8 *) &this->unk515C, 0) != 0) || (this->unk50D4.LoadLine(arg0) != 0)) {
+    if ((((MKFFTBaseType *) this)->LoadLine(arg0) != 0) || (arg0->LoadVector4("specularLight", &this->unk5140, 0) != 0) || (arg0->LoadFloat("specularRed", &this->unk5140.unk0, 0) != 0) || (arg0->LoadFloat("specularGreen", &this->unk5140.unk4, 0) != 0) || (arg0->LoadFloat("specularBlue", &this->unk5140.unk8, 0) != 0) || (arg0->LoadFloat("specularScale", &this->unk5120, 0) != 0) || (arg0->LoadInt("specularPower", (int *) &this->unk5154, 0) != 0) || (arg0->LoadFloat("specularVariance", &this->unk5158, 0) != 0) || (arg0->LoadBool("subTractiveBase", (u8 *) &this->unk515C, 0) != 0) || (this->unk50D4.LoadLine(arg0) != 0)) {
         var_r31_1720 = 1;
     }
     return var_r31_1720;
@@ -1052,11 +1048,11 @@ u8 MKFFTBaseType::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void MKFFTWaterType::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
     Texture *temp_r3_1954;
 
-    MKFFTBaseType::Init(arg0, arg1, arg2);
+    ((MKFFTBaseType *) this)->Init(arg0, arg1, arg2);
     FixUpLinkedList();
     this->unk50D4.Init(Str_Printf("FFT_%s_Ref", arg1));
     temp_r3_1954 = Str_Printf("FFT_%s_Spec", arg1);

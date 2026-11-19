@@ -346,11 +346,11 @@ loop_55:
     }
     if ((void ***) *this->unk8 != NULL) {
         qsort(var_r26_141, 4, &SpyroTargetList::CompareTargets);
-        if (TargetContext::Get() != NULL) {
+        if (((TargetContext *) this)->Get() != NULL) {
             var_r21_528 = this->unk8;
 loop_62:
             if (((void ***) *var_r21_528 != NULL) && (var_r27_127 == NULL)) {
-                if ((void **) **var_r21_528 == TargetContext::Get()) {
+                if ((void **) **var_r21_528 == ((TargetContext *) this)->Get()) {
                     var_r27_127 = var_r21_528;
                 }
                 var_r21_528 += 4;
@@ -371,41 +371,37 @@ loop_62:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Set(int)' does not match
+#if 0 // DRAFT: ambiguous access to overloaded function
 void SpyroTargetList::ClearCurrentTarget() {
-    TargetContext::Set(NULL);
+    ((TargetContext *) this)->Set(NULL);
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void SpyroTargetList::GetCurrentTarget() {
-    TargetContext::Get();
+    ((TargetContext *) this)->Get();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 s32 SpyroTargetList::SelectTarget(bool arg0) {
     u32 temp_r0_770;
     void ****var_r31_759;
 
     var_r31_759 = UpdateTargetList();
     if ((var_r31_759 != NULL) && ((void ***) M2C_FIELD(var_r31_759, void ****, 0) != NULL)) {
-        if ((arg0 != 0) && (TargetContext::Get() != NULL)) {
+        if ((arg0 != 0) && (((TargetContext *) this)->Get() != NULL)) {
             temp_r0_770 = M2C_FIELD(var_r31_759, u32 *, 4);
             var_r31_759 += 4;
             if (temp_r0_770 == 0U) {
                 var_r31_759 = this->unk8;
             }
         }
-        TargetContext::Set((Targetable *) **var_r31_759);
+        ((TargetContext *) this)->Set((Targetable *) **var_r31_759);
     }
-    return TargetContext::Get() != NULL;
+    return ((TargetContext *) this)->Get() != NULL;
 }
-#endif
 
-#if 0 // DRAFT: function call 'Set(int)' does not match
+#if 0 // DRAFT: ambiguous access to overloaded function
 void SpyroTargetList::SetDefaults() {
-    TargetContext::Set(NULL);
+    ((TargetContext *) this)->Set(NULL);
 loop_2:
     if ((void ***) *this->unk8 != NULL) {
         this->unk8 += 4;
@@ -414,7 +410,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Set(int)' does not match
+#if 0 // DRAFT: ambiguous access to overloaded function
 void SpyroTargetList::Deinit() {
     u32 temp_r0_838;
     void ****var_r31_829;
@@ -423,7 +419,7 @@ void SpyroTargetList::Deinit() {
     void ***temp_r0_833;
     void ***temp_r0_852;
 
-    TargetContext::Set(NULL);
+    ((TargetContext *) this)->Set(NULL);
     var_r4_828 = this->unk8;
     var_r31_829 = var_r4_828;
     var_r3_830 = var_r4_828;
@@ -786,7 +782,6 @@ void SpyroRotation::YawTowards(const MKVector3 &arg0, float arg1) {
     }
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void SpyroRotation::RotateTowards(float arg0, float arg1, float arg2, float arg3) {
     f32 sp10;
     f32 spC;
@@ -804,15 +799,12 @@ void SpyroRotation::RotateTowards(float arg0, float arg1, float arg2, float arg3
         KDMath_SmoothToAngle(this->unk8, arg2, arg3, gUpdateTimeDelta);
         sp10 = M2C_ERROR(/* Read from unset register $f1 */);
     }
-    SpyroNodeHelper::SetPYR(*((MKVector3 *) &sp8));
+    ((SpyroNodeHelper *) this)->SetPYR(*((MKVector3 *) &sp8));
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void SpyroRotation::Init(MKModel *arg0, int arg1) {
-    SpyroNodeHelper::Init(arg0, arg1);
+    ((SpyroNodeHelper *) this)->Init(arg0, arg1);
 }
-#endif
 
 void SpyroTools_cpp::__sinit() {
     f32 temp_f0_1561;

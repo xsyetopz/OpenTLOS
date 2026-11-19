@@ -426,7 +426,6 @@ void MKAnimScript::JumpToPos(float arg0, int arg1) {
     }
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void MKAnimScript::Destroy() {
     if ((u8) this->unk0 != 0) {
         MKModel_Destroy(this->unk8);
@@ -434,9 +433,8 @@ void MKAnimScript::Destroy() {
     }
     this->unk8 = NULL;
     Deinit();
-    MKHeap::FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+    ((MKHeap *) this)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKAnimScript' to
 MKAnimScript *MKAnimScript::Create(const char *arg0, int arg1) {

@@ -129,25 +129,19 @@ void GameData::GetGameSettings() {
 
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void GameData::ClearData() {
-    GameData::SaveState::ClearData();
+    ((GameData::SaveState *) this)->ClearData();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void GameData::Deinit() {
-    GameData::SaveState::Deinit();
+    ((GameData::SaveState *) this)->Deinit();
     M2C_FIELD(this, s8 *, 0x1B0) = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void GameData::Init() {
-    GameData::SaveState::Init();
+    ((GameData::SaveState *) this)->Init();
     M2C_FIELD(this, s8 *, 0x1B0) = 1;
 }
-#endif
 
 void GameData::ModuleDeinit() {
     ((GameData *) GameData::gameData)->Deinit();
@@ -347,7 +341,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'SpiritChange'
 void GameStats::Clear() {
     s32 temp_r4_708;
     s32 temp_r7_703;
@@ -362,7 +356,7 @@ void GameStats::Clear() {
     this->unkF9 = 1;
     this->unkF8 = 0x21;
     this->unkF0 = 1200.0f;
-    Stat::Init(50.0f, 50.0f, NULL, NULL);
+    ((Stat *) this)->Init(50.0f, 50.0f, NULL, NULL);
     this->unk18.Init(0.0f, 999999.0f, NULL, SpiritChange);
     this->unk30.Init(30.0f, 30.0f, NULL, NULL);
     this->unk48.Init(0.0f, 150.0f, NULL, NULL);

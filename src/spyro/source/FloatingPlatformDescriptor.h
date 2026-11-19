@@ -22,7 +22,7 @@ inline FloatingPlatformDescriptor::FloatingPlatformDescriptor() {
 
 #if 0 // DRAFT: undefined identifier 'PlatformDescriptor'
 inline void FloatingPlatformDescriptor::Init() {
-    PlatformDescriptor::Init();
+    ((PlatformDescriptor *) this)->PlatformDescriptor::Init();
     this->unkC |= 2;
     M2C_FIELD(this, s8 *, 0x104) = 1;
     M2C_FIELD(this, f32 *, 0x108) = 0.25f;

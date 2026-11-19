@@ -2584,9 +2584,9 @@ f32 ElementalSpline::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 ElementalSpline::LoadLine(MKIniLine *arg0) {
-    if (SplineProp::LoadLine(arg0) != 0) {
+    if (((SplineProp *) this)->SplineProp::LoadLine(arg0) != 0) {
         return 1U;
     }
     if (arg0->LoadInt("Element", (int *) &this->unk110, 0) != 0) {
@@ -2621,7 +2621,6 @@ s32 ElementalSpline::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void ElementalSpline::Deinit() {
     MKMaterial *temp_r3_4902;
     MKMaterial *temp_r3_4907;
@@ -2636,11 +2635,10 @@ void ElementalSpline::Deinit() {
     if (temp_r3_4907 != NULL) {
         MKMaterial_Destroy(temp_r3_4907);
     }
-    SplineProp::Deinit();
+    ((SplineProp *) this)->SplineProp::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'ElementalSplineStates'
 void ElementalSpline::Init() {
     f64 sp20;
     f64 sp18;
@@ -2649,7 +2647,7 @@ void ElementalSpline::Init() {
     f32 spC;
     f32 sp8;
 
-    SplineProp::Init();
+    ((SplineProp *) this)->SplineProp::Init();
     ((KDStateMachine<ElementalSpline> *) &this->unkC0)->Init(&ElementalSplineStates, NULL);
     this->unkF4 = NULL;
     this->unkF8 = NULL;

@@ -145,11 +145,9 @@ void GoopFX::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, cons
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void GoopFX::Deinit() {
-    KDPropEx::Deinit();
+    ((KDPropEx *) this)->KDPropEx::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'P16GoopFXDescriptor'
 void GoopFX::Draw() {
@@ -163,11 +161,9 @@ void *GoopFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void GoopFX::Init() {
-    KDPropEx::Init();
+    ((KDPropEx *) this)->KDPropEx::Init();
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void GoopFXDescriptor::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector4 &arg3) {
@@ -793,11 +789,11 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 GoopFXDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
 
-    if (FXBaseDescriptor::LoadLine(arg0) != 0) {
+    if (((FXBaseDescriptor *) this)->FXBaseDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
     sp8 = NULL;
@@ -809,7 +805,7 @@ s32 GoopFXDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void GoopFXDescriptor::Init() {
     GoopFXDescriptor::Goop **temp_r3_1333;
     GoopFXDescriptor::Goop **temp_r4_1339;
@@ -817,7 +813,7 @@ void GoopFXDescriptor::Init() {
     GoopFXDescriptor::Goop **var_r5_1327;
     s32 var_ctr_1331;
 
-    FXBaseDescriptor::Init();
+    ((FXBaseDescriptor *) this)->FXBaseDescriptor::Init();
     this->unkE0 = NULL;
     if (MKHeap::Current() != NULL) {
         var_r3_1318 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x5C38, NULL, 0);

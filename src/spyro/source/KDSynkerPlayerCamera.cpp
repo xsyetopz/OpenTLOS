@@ -635,7 +635,7 @@ loop_21:
         }
         if (var_f31_1158 == 0.0f) {
             this->unk6C = 1;
-            Matrix::SetIdentity();
+            ((Matrix *) this)->SetIdentity();
             M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &sp1E0.unk3C + 4, 0x40);
             this->unk60 = Endian<float>(*(f32 *) (var_r28_966 + 0x24));
             this->unk64 = Endian<float>(*(f32 *) (var_r28_966 + 0x28));
@@ -801,7 +801,7 @@ loop_21:
             sp160 = (f32) sp160 * var_f3_1698;
             (*(f32 *) ((u8 *) &sp150 + 0x14)) *= var_f3_1698;
             sp168 = temp_f0_1709;
-            Matrix::SetIdentity();
+            ((Matrix *) this)->SetIdentity();
             this->unk0 = sp180;
             this->unk4 = (*(f32 *) ((u8 *) &sp150 + 0x34));
             this->unk8 = sp188;
@@ -889,8 +889,8 @@ loop_21:
     }
     sp1A0.SetIdentity();
     sp1A0.RotateRoll(&sp1A0, var_f29_1906);
-    Matrix::SetIdentity();
-    Matrix::SetLookAt(*((MKVector3 *) &this->unk40), *((MKVector3 *) &this->unk50));
+    ((Matrix *) this)->SetIdentity();
+    ((Matrix *) this)->SetLookAt(*((MKVector3 *) &this->unk40), *((MKVector3 *) &this->unk50));
     this->unk30 = (f32) M2C_FIELD(this, f64 *, 0x40);
     this->unk34 = M2C_FIELD(this, f32 *, 0x44);
     this->unk38 = (f32) M2C_FIELD(this, f64 *, 0x48);

@@ -1322,7 +1322,7 @@ loop_205:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: ')' expected
 void FlyingChunkPS::Init() {
     Matrix **temp_r3_2080;
     Matrix **temp_r3_2087;
@@ -1332,7 +1332,7 @@ void FlyingChunkPS::Init() {
     s32 temp_r30_2049;
     s32 var_ctr_2083;
 
-    GamePropColored::Init();
+    ((GamePropColored *) this)->GamePropColored::Init();
     temp_r30_2049 = M2C_FIELD(checked_cast<FlyingChunkPSDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8);
     if (temp_r30_2049 == 0) {
         this->unkD8 = &gEmptyPtrListDL + 4;
