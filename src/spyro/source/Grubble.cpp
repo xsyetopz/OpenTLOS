@@ -792,7 +792,6 @@ loop_50:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 f32 GrubbleCritter::Resolve() {
     s32 temp_r0_1151;
     s32 var_r3_1145;
@@ -801,16 +800,13 @@ f32 GrubbleCritter::Resolve() {
     MKProp::Resolve();
     var_r3_1145 = 0;
     var_r6_1146 = 0;
-loop_2:
-    if (var_r6_1146 < (s32) this->unk90) {
+    while (var_r6_1146 < this->unk90) {
         temp_r0_1151 = var_r3_1145 + 0x60;
         var_r6_1146 += 1;
         var_r3_1145 += 0x70;
-        *(this->unk170 + temp_r0_1151) = 0;
-        goto loop_2;
+        M2C_FIELD(this->unk170, s32 *, temp_r0_1151) = 0;
     }
 }
-#endif
 
 s32 GrubbleCritter::LoadDone() {
     s32 temp_r31_1176;
