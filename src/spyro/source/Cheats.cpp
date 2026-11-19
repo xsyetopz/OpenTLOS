@@ -25,11 +25,11 @@ void Cheats_Deinit() {
     pReceiver = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'CheatReceiver'
 void Cheats_Init() {
-    pReceiver = MKInputReceiver_Create((u8 (*)(MKInputEvent *, void *)) CheatReceiver, 0x3C, 2, NULL);
+    s32 CheatReceiver(MKInputEvent *arg0, void *arg1);
+
+    pReceiver = MKInputReceiver_Create((bool (*)(MKInputEvent *, void *)) CheatReceiver, 0x3C, 2, NULL);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 s32 CheatReceiver(MKInputEvent *arg0, void *arg1) {

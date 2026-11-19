@@ -29,19 +29,15 @@ f32 Timer_GetDHMSInSeconds(TimerInfo *arg0) {
     return (f32) (arg0->unk10 * 0x15180) + (f32) (arg0->unk0 * 0xE10) + (f32) (arg0->unk4 * 0x3C) + (f32) arg0->unk8 + ((f32) arg0->unkC / 1000.0f);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
 void Timer_GetSystemTime(TimerInfo *arg0) {
-    s32 sp8;
-    s64 temp_ret_143;
+    OSCalendarTime sp8;
 
-    temp_ret_143 = OSGetTime();
-    OSTicksToCalendarTime(temp_ret_143, (OSCalendarTime *) (u32) (u64) temp_ret_143);
-    arg0->unk0 = sp10;
-    arg0->unk4 = spC;
-    arg0->unk8 = sp8;
-    arg0->unkC = sp28;
-    arg0->unk10 = sp14;
-    arg0->unk14 = sp18 + 1;
-    arg0->unk18 = sp1C;
+    OSTicksToCalendarTime(OSGetTime(), &sp8);
+    arg0->unk0 = sp8.hour;
+    arg0->unk4 = sp8.min;
+    arg0->unk8 = sp8.sec;
+    arg0->unkC = sp8.msec;
+    arg0->unk10 = sp8.mday;
+    arg0->unk14 = sp8.mon + 1;
+    arg0->unk18 = sp8.year;
 }
-#endif

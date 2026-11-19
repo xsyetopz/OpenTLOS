@@ -26,11 +26,9 @@ void MKEnd() {
     } while (MKMaterial_BeginInternal() != 0);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 void MKSetPositionV(const MKVector3 &arg0) {
-    MKMaterial_SetVertex4F(0, arg0.unk0, arg0.unk4, arg0.unk8, 1.0f);
+    MKMaterial_SetVertex4F(0, M2C_FIELD(&arg0, f32 *, 0x0), M2C_FIELD(&arg0, f32 *, 0x4), M2C_FIELD(&arg0, f32 *, 0x8), 1.0f);
 }
-#endif
 
 void MKSetPositionF(float arg0, float arg1, float arg2) {
     MKMaterial_SetVertex4F(0, arg0, arg1, arg2, 1.0f);

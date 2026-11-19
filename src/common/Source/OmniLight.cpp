@@ -19,107 +19,93 @@ extern u8 bSuspendAll;
 extern M2C_UNK gEmptyPtrListDL;
 extern M2C_UNK *lightList;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
-    f64 sp48;                                       /* compiler-managed */
-    f64 sp40;                                       /* compiler-managed */
-    f64 sp38;
-    f64 sp30;
-    f32 sp28;
-    f64 sp20;
-    f64 sp18;
-    f64 sp10;
-    f32 sp8;
-    f32 temp_f0_143;
-    f32 temp_f5_131;
-    f32 temp_f6_125;
-    f32 temp_f7_127;
-    f32 var_f2_137;
-    f32 var_f3_35;
-    f32 var_f5_118;
-    f32 var_f6_34;
-    f64 temp_f1_149;
-    f64 temp_f2_57;
-    f64 temp_f2_63;
-    f64 temp_f2_67;
-    s32 temp_r5_86;
-    s32 var_r0_96;
+    extern f32 __float_nan;
+    const MKVector3 *arg2;
+    f32 dx;
+    f32 dy;
+    f32 dz;
+    f32 dist2;
+    f32 atten;
+    f32 inv;
+    f32 dot;
+    f32 scale;
+    f32 tmp;
+    s32 bits;
+    s32 cls;
 
-    sp20 = M2C_FIELD(&arg1, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0x10);
-    sp40 = sp20;
-    sp28 = arg1.unk8 - M2C_FIELD(&arg0, f32 *, 0x18);
-    sp48 = (f64) sp28;
-    var_f6_34 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp38 + 0xc)) * (*(f32 *) ((u8 *) &sp38 + 0xc))));
-    var_f3_35 = var_f6_34 / M2C_FIELD(&arg0, f32 *, 0x24);
-    if (var_f3_35 < 1.0f) {
-
+    dx = arg1.unk0 - M2C_FIELD(&arg0, f32 *, 0x10);
+    dy = arg1.unk4 - M2C_FIELD(&arg0, f32 *, 0x14);
+    dz = arg1.unk8 - M2C_FIELD(&arg0, f32 *, 0x18);
+    dist2 = (dz * dz) + ((dx * dx) + (dy * dy));
+    atten = dist2 / M2C_FIELD(&arg0, f32 *, 0x24);
+    if (atten < 1.0f) {
     } else {
-        var_f3_35 = 1.0f;
+        atten = 1.0f;
     }
-    if (var_f3_35 > 0.0f) {
-
+    if (atten > 0.0f) {
     } else {
-        var_f3_35 = 0.0f;
+        atten = 0.0f;
     }
-    if (var_f6_34 > 0.000001f) {
-        if (var_f6_34 > 0.0f) {
-            temp_f2_57 = __frsqrte(var_f6_34);
-            temp_f2_63 = 0.5 * temp_f2_57 * -(((f64) var_f6_34 * (temp_f2_57 * temp_f2_57)) - 3.0);
-            temp_f2_67 = 0.5 * temp_f2_63 * -(((f64) var_f6_34 * (temp_f2_63 * temp_f2_63)) - 3.0);
-            var_f6_34 = (f32) ((f64) var_f6_34 * (0.5 * temp_f2_67 * -(((f64) var_f6_34 * (temp_f2_67 * temp_f2_67)) - 3.0)));
-        } else if (var_f6_34 < M2C_BITWISE(f32, 0.0)) {
-            var_f6_34 = __float_nan;
+    if (dist2 > 0.000001f) {
+        if (dist2 > 0.0f) {
+            f64 y0;
+            f64 y1;
+            f64 y2;
+
+            y0 = __frsqrte(dist2);
+            y1 = 0.5 * y0 * -(((f64) dist2 * (y0 * y0)) - 3.0);
+            y2 = 0.5 * y1 * -(((f64) dist2 * (y1 * y1)) - 3.0);
+            dist2 = (f32) ((f64) dist2 * (0.5 * y2 * -(((f64) dist2 * (y2 * y2)) - 3.0)));
+        } else if (dist2 < 0.0f) {
+            dist2 = __float_nan;
         } else {
-            sp8 = var_f6_34;
-            temp_r5_86 = M2C_BITWISE(s32, sp8) & 0x7F800000;
-            switch (temp_r5_86) {                   /* irregular */
+            tmp = dist2;
+            bits = *(s32 *) &tmp;
+            switch (bits & 0x7F800000) {
             case 0x7F800000:
-                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
-                    var_r0_96 = 1;
+                if (bits & 0x7FFFFF) {
+                    cls = 1;
                 } else {
-                    var_r0_96 = 2;
+                    cls = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
-                    var_r0_96 = 5;
+                if (bits & 0x7FFFFF) {
+                    cls = 5;
                 } else {
-                    var_r0_96 = 3;
+                    cls = 3;
                 }
                 break;
             default:
-                var_r0_96 = 4;
+                cls = 4;
                 break;
             }
-            if (var_r0_96 == 1) {
-                var_f6_34 = __float_nan;
+            if (cls == 1) {
+                dist2 = __float_nan;
             }
         }
-        var_f5_118 = 1.0f / var_f6_34;
+        inv = 1.0f / dist2;
     } else {
-        var_f5_118 = 0.0f;
+        inv = 0.0f;
     }
-    temp_f6_125 = (*(f32 *) ((u8 *) &sp38 + 0xc)) * var_f5_118;
-    temp_f7_127 = (f32) sp40 * var_f5_118;
-    temp_f5_131 = (f32) sp48 * var_f5_118;
-    sp40 = temp_f7_127;
-    (*(f32 *) ((u8 *) &sp38 + 0xc)) = temp_f6_125;
-    var_f2_137 = (temp_f5_131 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 8)) + ((temp_f7_127 * *M2C_ERROR(/* Read from unset register $r6 */)) + (temp_f6_125 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 4)));
-    sp48 = temp_f5_131;
-    if (var_f2_137 < 0.0f) {
-        var_f2_137 = -var_f2_137;
+
+    dx = dx * inv;
+    dy = dy * inv;
+    dz = dz * inv;
+
+    /* r6 is live-in in the asm: no instruction in this function sets it. */
+    dot = (dz * M2C_FIELD(arg2, f32 *, 8)) + ((dx * M2C_FIELD(arg2, f32 *, 0)) + (dy * M2C_FIELD(arg2, f32 *, 4)));
+    if (dot < 0.0f) {
+        dot = -dot;
     }
-    temp_f0_143 = (1.0f - var_f3_35) * var_f2_137;
-    sp10 = M2C_FIELD(&arg0, f64 *, 0) * (f64) temp_f0_143;
-    temp_f1_149 = M2C_FIELD(&arg0, f64 *, 8) * (f64) temp_f0_143;
-    sp18 = temp_f1_149;
-    sp38 = temp_f1_149;
-    (*(f32 *) ((u8 *) &sp38 + 0x4)) = 1.0f;
-    this->unk0 = sp10;
-    sp30 = sp10;
-    this->unk8 = sp38;
+    scale = (1.0f - atten) * dot;
+
+    M2C_FIELD(this, f32 *, 0x0) = M2C_FIELD(&arg0, f32 *, 0x0) * scale;
+    M2C_FIELD(this, f32 *, 0x4) = M2C_FIELD(&arg0, f32 *, 0x4) * scale;
+    M2C_FIELD(this, f32 *, 0x8) = M2C_FIELD(&arg0, f32 *, 0x8) * scale;
+    M2C_FIELD(this, f32 *, 0xC) = 1.0f;
 }
-#endif
 
 s32 OmniLight_FindNearestGroup(const MKVector3 &arg0, float arg1, OmniLight **arg2, int arg3) {
     M2C_UNK spDC;
@@ -284,35 +270,28 @@ u8 OmniLight_SuspendAll(bool arg0) {
     return temp_r0_407;
 }
 
-#if 0 // DRAFT: type mismatch 'long *' and 'OmniLight *'
 void OmniLight_Destroy(OmniLight *arg0) {
-    M2C_UNK *temp_r0_441;
-    M2C_UNK *temp_r3_430;
-    M2C_UNK *temp_r5_433;
-    M2C_UNK *var_r4_425;
+    s32 *var_r4;
+    s32 *temp_r3;
+    s32 temp_r5;
 
     if ((u8) arg0->unk30 != 0) {
         arg0->unk30 = 0;
-        *OmniLight::totalEnabled -= 1;
+        *(s32 *) OmniLight::totalEnabled -= 1;
     }
-    var_r4_425 = lightList;
-loop_6:
-    temp_r0_441 = (long *) (*var_r4_425);
-    if (temp_r0_441 == NULL) {
-        return;
+    var_r4 = (s32 *) lightList;
+    while (*var_r4 != 0) {
+        if (*var_r4 == (s32) arg0) {
+            temp_r3 = (s32 *) lightList;
+            lightList = (M2C_UNK *) ((u8 *) temp_r3 + 4);
+            temp_r5 = *temp_r3;
+            *temp_r3 = *var_r4;
+            *var_r4 = temp_r5;
+            return;
+        }
+        var_r4 = (s32 *) ((u8 *) var_r4 + 4);
     }
-    if (temp_r0_441 == arg0) {
-        temp_r3_430 = lightList;
-        lightList = temp_r3_430 + 4;
-        temp_r5_433 = (long *) (*temp_r3_430);
-        *temp_r3_430 = *var_r4_425;
-        *var_r4_425 = (long) (temp_r5_433);
-        return;
-    }
-    var_r4_425 += 4;
-    goto loop_6;
 }
-#endif
 
 void OmniLight_Create() {
     M2C_UNK *temp_r31_457;

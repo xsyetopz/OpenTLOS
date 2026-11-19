@@ -77,34 +77,24 @@ void CharacterFireFX::EmitFire() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'const MKVector3 &'
 void CharacterFireFX::EmitSmoke() {
-    f64 sp28;
-    f64 sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 sp8;
-    f32 temp_f2_144;
-    void **temp_r3_129;
+    f32 vel[3];
+    f32 radius;
+    void **temp_r3;
 
     this->unk18 -= gUpdateTimeDelta;
     if (this->unk18 <= 0.0f) {
         this->unk18 = 0.1f;
-        temp_r3_129 = (void **) (GetRandomNode(NULL));
-        if (temp_r3_129 != NULL) {
-            sp8 = 0.5f * M2C_FIELD(*temp_r3_129, f32 *, 0x10);
-            temp_f2_144 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
-            sp18 = 0.0f;
-            sp10 = 0.0f;
-            sp14 = temp_f2_144;
-            sp28 = (f64) sp18;
-            sp20 = (f64) sp10;
-            gb.EmitDust(*(temp_r3_129 + 8), *((MKVector3 *) &sp20), sp8, 0.0f);
+        temp_r3 = (void **) (GetRandomNode(NULL));
+        if (temp_r3 != NULL) {
+            radius = 0.5f * M2C_FIELD(*temp_r3, f32 *, 0x10);
+            vel[0] = 0.0f;
+            vel[1] = 100.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+            vel[2] = 0.0f;
+            gb.EmitDust(*((MKVector3 *) ((u8 *) temp_r3 + 8)), *((MKVector3 *) vel), radius, 0.0f);
         }
     }
 }
-#endif
 
 void CharacterFireFX::Enable(bool arg0, float arg1) {
     if (arg0 != 0) {

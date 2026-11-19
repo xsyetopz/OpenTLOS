@@ -19,77 +19,59 @@ static MKParticleSystem::Envelope gBlizzardBreathPSEnv[5] = {
     { 1.0f, 0.0f, 1.5f, 0.0f, 0.0f },
 };
 
-#if 0 // DRAFT: undefined identifier 'unksp8'
 void BlizzardBreathPS::UpdateParticles() {
-    f64 sp28;
-    f64 sp20;
-    f32 sp18;
-    f64 sp10;
-    MKParticleChunk *var_r7_62;
-    MKParticleSystem::Envelope *temp_r3_120;
-    MKParticleSystem::Envelope *temp_r5_125;
-    MKParticleSystem::Envelope *temp_r5_158;
+    u8 sp8[0x8];
+    MKParticleChunk *var_r7;
+    void *temp_r8;
+    MKParticleSystem::Envelope *temp_r5;
+    MKParticleSystem::Envelope *temp_r5_alt;
+    f32 temp_f3;
     f32 temp_f3_134;
-    f32 temp_f3_69;
-    f32 temp_f5_127;
-    f32 temp_f6_122;
-    f32 var_f0_138;
-    f64 temp_f0_86;
-    s32 temp_r0_121;
-    s32 temp_r3_108;
-    s32 temp_r4_119;
-    void *temp_r8_65;
+    f32 temp_f0;
+    f32 sp18;
+    s32 temp_r3;
+    s32 temp_r4;
+    s32 idx;
 
     this->unk128 += gUpdateTimeDelta;
-    var_r7_62 = GetFirstParticle(&unksp8);
-loop_12:
-    if (var_r7_62 != NULL) {
-        temp_r8_65 = var_r7_62->unk2C;
-        temp_f3_69 = this->unk128 - M2C_FIELD(temp_r8_65, f32 *, 0x10);
-        if (temp_f3_69 > this->unk12C) {
-            var_r7_62 = DestroyParticle(&unksp8);
-        } else {
-            M2C_FIELD(temp_r8_65, f32 *, 4) = (f32) -((3000.0f * gUpdateTimeDelta) - M2C_FIELD(temp_r8_65, f32 *, 4));
-            temp_f0_86 = M2C_FIELD(temp_r8_65, f64 *, 0) * (f64) gUpdateTimeDelta;
-            sp10 = temp_f0_86;
-            sp20 = temp_f0_86;
-            sp18 = M2C_FIELD(temp_r8_65, f32 *, 8) * gUpdateTimeDelta;
-            sp28 = (f64) sp18;
-            M2C_FIELD(var_r7_62, f64 *, 0) = (f64) (M2C_FIELD(var_r7_62, f64 *, 0) + temp_f0_86);
-            var_r7_62->unk8 += (f32) sp28;
-            var_r7_62->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r8_65, f32 *, 0x18);
-            temp_r3_108 = M2C_FIELD(temp_r8_65, s32 *, 0x14);
-            if (temp_f3_69 > (this->unk12C * this->unk134[temp_r3_108].unk0)) {
-                M2C_FIELD(temp_r8_65, s32 *, 0x14) = (s32) (temp_r3_108 + 1);
-            }
-            temp_r4_119 = M2C_FIELD(temp_r8_65, s32 *, 0x14);
-            temp_r3_120 = this->unk134;
-            temp_r0_121 = temp_r4_119 - 1;
-            temp_f6_122 = this->unk12C;
-            temp_r5_125 = &temp_r3_120[temp_r0_121];
-            temp_f5_127 = temp_r5_125->unk0;
-            temp_f3_134 = -((temp_f6_122 * temp_f5_127) - temp_f3_69) / (temp_f6_122 * (temp_r3_120[temp_r4_119].unk0 - temp_f5_127));
-            var_r7_62->unk1C = M2C_FIELD(temp_r8_65, f32 *, 0x20) * ((temp_f3_134 * temp_r5_125->unkC) + temp_r5_125->unk4);
-            var_f0_138 = var_r7_62->unk1C;
-            if (var_f0_138 < 1.0f) {
-
-            } else {
-                var_f0_138 = 1.0f;
-            }
-            if (var_f0_138 > 0.0f) {
-
-            } else {
-                var_f0_138 = 0.0f;
-            }
-            var_r7_62->unk1C = var_f0_138;
-            temp_r5_158 = &this->unk134[temp_r0_121];
-            var_r7_62->unk28 = M2C_FIELD(temp_r8_65, f32 *, 0x1C) * ((temp_f3_134 * temp_r5_158->unk10) + temp_r5_158->unk8);
-            var_r7_62 = GetNextParticle(&unksp8);
+    var_r7 = GetFirstParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+    while (var_r7 != NULL) {
+        temp_r8 = var_r7->unk2C;
+        temp_f3 = this->unk128 - M2C_FIELD(temp_r8, f32 *, 0x10);
+        if (temp_f3 > this->unk12C) {
+            var_r7 = DestroyParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+            continue;
         }
-        goto loop_12;
+        M2C_FIELD(temp_r8, f32 *, 4) = (f32) -((3000.0f * gUpdateTimeDelta) - M2C_FIELD(temp_r8, f32 *, 4));
+        M2C_FIELD(var_r7, f32 *, 0) += M2C_FIELD(temp_r8, f32 *, 0) * gUpdateTimeDelta;
+        M2C_FIELD(var_r7, f32 *, 4) += M2C_FIELD(temp_r8, f32 *, 4) * gUpdateTimeDelta;
+        sp18 = M2C_FIELD(temp_r8, f32 *, 8) * gUpdateTimeDelta;
+        var_r7->unk8 += sp18;
+        var_r7->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r8, f32 *, 0x18);
+        temp_r3 = M2C_FIELD(temp_r8, s32 *, 0x14);
+        if (temp_f3 > (this->unk12C * this->unk134[temp_r3].unk0)) {
+            M2C_FIELD(temp_r8, s32 *, 0x14) = temp_r3 + 1;
+        }
+        temp_r4 = M2C_FIELD(temp_r8, s32 *, 0x14);
+        idx = temp_r4 - 1;
+        temp_r5 = &this->unk134[idx];
+        temp_f3_134 = -((this->unk12C * temp_r5->unk0) - temp_f3) / (this->unk12C * (this->unk134[temp_r4].unk0 - temp_r5->unk0));
+        var_r7->unk1C = M2C_FIELD(temp_r8, f32 *, 0x20) * ((temp_f3_134 * temp_r5->unkC) + temp_r5->unk4);
+        temp_f0 = var_r7->unk1C;
+        if (temp_f0 < 1.0f) {
+        } else {
+            temp_f0 = 1.0f;
+        }
+        if (temp_f0 > 0.0f) {
+        } else {
+            temp_f0 = 0.0f;
+        }
+        var_r7->unk1C = temp_f0;
+        temp_r5_alt = &this->unk134[idx];
+        var_r7->unk28 = M2C_FIELD(temp_r8, f32 *, 0x1C) * ((temp_f3_134 * temp_r5_alt->unk10) + temp_r5_alt->unk8);
+        var_r7 = GetNextParticle((MKBaseParticleSystem::ParticleRec *) sp8);
     }
 }
-#endif
 
 void BlizzardBreathPS::Deinit() {
     MKParticleSystem::Deinit();

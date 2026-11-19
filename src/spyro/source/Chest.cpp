@@ -148,11 +148,9 @@ void Chest::Init() {
     PropFlagsSet((unsigned int *) &this->unk10, 0x80000U);
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void ChestDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("Closed");
+    M2C_FIELD(this, s32 *, 0xE4) = (s32) ((MKAnimScript *) this->unk34)->GetAnim("Closed");
     this->unkE8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("Opening"));
     this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("Open"));
 }
-#endif

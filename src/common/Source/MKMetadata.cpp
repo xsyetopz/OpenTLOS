@@ -58,24 +58,16 @@ void MKMetadata_Open(const char *arg0, const char *arg1, int *arg2) {
     MKMetadata_OpenFromBuffer(MKArchive_Load(arg0, NULL, NULL, -1), NULL, arg2);
 }
 
-#if 0 // DRAFT: illegal type
 void MKMetadata_OpenFromBuffer(const void *arg0, const void *arg1, int *arg2) {
-    s32 temp_r0_134;
-    s32 temp_r5_132;
-    s32 var_r4_126;
-    s32 var_r4_145;
-    s32 var_r5_151;
-    u32 temp_r0_139;
-    u32 temp_r0_157;
-    u32 temp_r6_166;
-    u32 var_r11_150;
-    u32 var_r6_125;
-    u32 var_r8_144;
-    void *temp_r6_156;
-    void *temp_r7_129;
-    void *temp_r7_154;
-    void *temp_r9_128;
     void *var_r3_118;
+    u8 *base;
+    u32 count1;
+    u32 count2;
+    u32 i;
+    u32 j;
+    u32 k;
+    u32 word;
+    u32 off;
 
     if (MKHeap::Current() != NULL) {
         var_r3_118 = ((MKHeap *) (MKHeap::Current()))->Alloc(8, NULL, 0);
@@ -83,49 +75,26 @@ void MKMetadata_OpenFromBuffer(const void *arg0, const void *arg1, int *arg2) {
         var_r3_118 = malloc(8);
     }
     M2C_FIELD(var_r3_118, void **, 0) = (void *) (arg0);
-    var_r6_125 = 0U;
-    var_r4_126 = 0;
     M2C_FIELD(var_r3_118, void **, 4) = (void *) (arg1);
-    temp_r9_128 = M2C_FIELD(var_r3_118, void **, 0);
-    temp_r7_129 = ((u8 *) temp_r9_128) + 0x10;
-loop_5:
-    temp_r0_139 = M2C_FIELD(temp_r9_128, u32 *, 4);
-    if (var_r6_125 < temp_r0_139) {
-        temp_r5_132 = var_r4_126 + 4;
-        var_r6_125 += 1;
-        temp_r0_134 = *(temp_r7_129 + temp_r5_132);
-        var_r4_126 += 8;
-        *(temp_r7_129 + temp_r5_132) = temp_r0_134 + temp_r9_128;
-        goto loop_5;
+    base = (u8 *) M2C_FIELD(var_r3_118, void **, 0);
+    count1 = M2C_FIELD(base, u32 *, 4);
+    for (i = 0; i < count1; i++) {
+        M2C_FIELD(base, u32 *, 0x14 + i * 8) += (u32) base;
     }
-    var_r8_144 = 0U;
-    var_r4_145 = 0;
-loop_13:
-    if (var_r8_144 < (u32) M2C_FIELD(temp_r9_128, u32 *, 0xC)) {
-        var_r11_150 = 0U;
-        var_r5_151 = 0;
-loop_11:
-        temp_r6_166 = *((temp_r0_139 * 8) + M2C_FIELD(var_r3_118, void **, 0) + 0x10 + var_r4_145);
-        if (var_r11_150 < (u8) temp_r6_166) {
-            temp_r7_154 = M2C_FIELD(var_r3_118, void **, 0);
-            temp_r6_156 = (temp_r6_166 >> 8U) + temp_r7_154;
-            temp_r0_157 = *(var_r5_151 + temp_r6_156);
-            if (temp_r0_157 != 0U) {
-                *(var_r5_151 + temp_r6_156) = temp_r0_157 + temp_r7_154;
+    count2 = M2C_FIELD(base, u32 *, 0xC);
+    for (j = 0; j < count2; j++) {
+        word = M2C_FIELD(base, u32 *, 0x10 + count1 * 8 + j * 4);
+        for (k = 0; k < (word & 0xFF); k++) {
+            off = (word >> 8) + k * 4;
+            if (M2C_FIELD(base, u32 *, off) != 0) {
+                M2C_FIELD(base, u32 *, off) += (u32) base;
             }
-            var_r11_150 += 1;
-            var_r5_151 += 4;
-            goto loop_11;
         }
-        var_r8_144 += 1;
-        var_r4_145 += 4;
-        goto loop_13;
     }
     if (arg2 != NULL) {
-        *arg2 = (s32) M2C_FIELD(temp_r9_128, u32 *, 4);
+        *arg2 = (s32) count1;
     }
 }
-#endif
 
 void MKMetadata_DeinitModule() {
 
