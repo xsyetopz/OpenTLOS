@@ -552,13 +552,12 @@ block_17:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void MKProp::Init() {
     this->unk1E = 0;
     this->unk14 = 0;
     this->unk40 = 0;
     this->unk38 = NULL;
-    this->unk48 = MKResource::sWorkingChunkIndex.unk0;
+    this->unk48 = *MKResource::sWorkingChunkIndex;
     this->unk28 = NULL;
     this->unk2C = NULL;
     this->unk30 = NULL;
@@ -574,7 +573,6 @@ void MKProp::Init() {
     this->unkC = NULL;
     ((MKPropLoadInfo *) ((MKPropLoadInfo *) &MKProp::loadInfo))->Init();
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void MKPropLoadInfo::LoadDone() {

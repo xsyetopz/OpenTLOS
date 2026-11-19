@@ -9,26 +9,20 @@ void *malloc(s32);                                  /* extern */
 extern s32 baddress;
 extern u8 gbGoldMaster;
 
-#if 0 // DRAFT: expression syntax error
 static s32 black = 0;                               /* const */
 static s32 white = 0xFFFFFFFF;                      /* const */
 
 void MKHeap::SetTempMemOverrideStatus(bool arg0) {
-    MKHeap::tempMemOverride.unk0 = (MKHeap *) ((u8) this != 0);
+    *MKHeap::tempMemOverride = (u8) this != 0;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void MKHeap::DeactivateTempMemOverride() {
-    MKHeap::tempMemOverride.unk0 -= 1;
+    *MKHeap::tempMemOverride -= 1;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void MKHeap::ActivateTempMemOverride() {
-    MKHeap::tempMemOverride.unk0 += 1;
+    *MKHeap::tempMemOverride += 1;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void MKHeap::GetMemoryStatistics(int *arg0, int *arg1, int *arg2) {
@@ -69,7 +63,7 @@ u8 MKHeap::ExistsInHeap(const void *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[40]' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKHeap::FreeFromAnyHeap(void *arg0, const char *arg1, int arg2) {
     MKHeap *temp_r3_115;
     s32 var_r29_111;
@@ -79,9 +73,9 @@ void MKHeap::FreeFromAnyHeap(void *arg0, const char *arg1, int arg2) {
         var_r29_111 = 9;
         var_r31_113 = 0x24;
 loop_2:
-        temp_r3_115 = *(&MKHeap::heapList + var_r31_113);
+        temp_r3_115 = MKHeap::heapList[var_r31_113];
         if ((temp_r3_115 != NULL) && (temp_r3_115->ExistsInHeap(this) != 0)) {
-            ((MKHeap *) (*(&MKHeap::heapList + var_r31_113)))->Free(this, (s8 *) arg0, (s32) arg1);
+            ((MKHeap *) (MKHeap::heapList[var_r31_113]))->Free(this, (s8 *) arg0, (s32) arg1);
             return;
         }
         var_r29_111 -= 1;
@@ -291,11 +285,11 @@ size=%d [heapsize=%d]", arg0, this->unk4 - this->unk0));
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void MKHeap::Free(const void *arg0, const char *arg1, int arg2) {
     if (arg0 != NULL) {
-        if ((arg0 >= (u32) MKHeap::heapList.unk0->unk44) && (arg0 <= (u32) MKHeap::heapList.unk0->unk4)) {
-            ((MKHeap *) (MKHeap::heapList.unk0))->TFree(arg0, arg1, arg2);
+        if ((arg0 >= (u32) (*MKHeap::heapList)->unk44) && (arg0 <= (u32) (*MKHeap::heapList)->unk4)) {
+            ((MKHeap *) (*MKHeap::heapList))->TFree(arg0, arg1, arg2);
             return;
         }
         if ((arg0 < (MKHeap *) this->unk0) || (arg0 > (u32) this->unk44)) {
@@ -307,7 +301,7 @@ void MKHeap::Free(const void *arg0, const char *arg1, int arg2) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'long *' to
 void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
     s32 spC;
     s32 sp8;
@@ -316,8 +310,8 @@ void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
     void *var_r3_526;
 
     var_r30_478 = arg0;
-    if ((s32) MKHeap::tempMemOverride.unk0 != 0) {
-        return ((MKHeap *) (MKHeap::heapList.unk0))->TReAlloc(arg0, arg1, arg2, arg3);
+    if ((s32) *MKHeap::tempMemOverride != 0) {
+        return ((MKHeap *) (*MKHeap::heapList))->TReAlloc(arg0, arg1, arg2, arg3);
     }
     if (var_r30_478 != NULL) {
         this->unkC = this->unk8 + arg1;
@@ -340,14 +334,14 @@ void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal type
 void *MKHeap::Alloc(int arg0, const char *arg1, int arg2) {
     s32 spC;
     s32 sp8;
     void *var_r30_560;
 
-    if ((s32) MKHeap::tempMemOverride.unk0 != 0) {
-        var_r30_560 = ((MKHeap *) (MKHeap::heapList.unk0))->TAlloc(arg0, arg1, arg2, 0U);
+    if ((s32) *MKHeap::tempMemOverride != 0) {
+        var_r30_560 = ((MKHeap *) (*MKHeap::heapList))->TAlloc(arg0, arg1, arg2, 0U);
     } else {
         var_r30_560 = (void *) ((this->unkC + 0x1F) & 0xFFFFFFE0);
         this->unk8 = (s32) var_r30_560;
@@ -380,54 +374,44 @@ s32 MKHeap::Mark() {
     return this->unkC;
 }
 
-#if 0 // DRAFT: expression syntax error
 u32 MKHeap::Main() {
-    return (u32) MKHeap::heapList.unk0;
+    return *MKHeap::heapList;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 MKHeap *MKHeap::Current() {
-    if ((s32) MKHeap::currentHeap.unk0 == -1) {
+    if ((s32) *MKHeap::currentHeap == -1) {
         return NULL;
     }
-    return *(&MKHeap::heapObjects + ((s32) MKHeap::currentHeap.unk0 * 4));
+    return *(MKHeap::heapObjects + (*MKHeap::currentHeap * 4));
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 s32 MKHeap::Pop() {
     s32 temp_r0_667;
 
-    temp_r0_667 = (s32) MKHeap::currentHeap.unk0 * 4;
-    MKHeap::currentHeap.unk0 -= 1;
-    return *(&MKHeap::heapObjects + temp_r0_667);
+    temp_r0_667 = *MKHeap::currentHeap * 4;
+    *MKHeap::currentHeap -= 1;
+    return MKHeap::heapObjects[temp_r0_667];
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 void MKHeap::Push() {
-    MKHeap *temp_r5_679;
+    s32 temp_r5_679;
 
-    temp_r5_679 = MKHeap::currentHeap.unk0 + 1;
-    MKHeap::currentHeap.unk0 = temp_r5_679;
-    *(&MKHeap::heapObjects + ((s32) temp_r5_679 * 4)) = this;
+    temp_r5_679 = *MKHeap::currentHeap + 1;
+    *MKHeap::currentHeap = temp_r5_679;
+    *(MKHeap::heapObjects + (temp_r5_679 * 4)) = this;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 u32 MKHeap::GetPeak() {
-    return (u32) MKHeap::peak.unk0;
+    return *MKHeap::peak;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[40]' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKHeap::UpdatePeak() {
     MKHeap *temp_r3_708;
-    MKHeap *var_r0_746;
-    MKHeap *var_r29_704;
-    MKHeap *var_r30_703;
-    MKHeap *var_r3_739;
     s32 temp_r0_717;
     s32 temp_r4_715;
     s32 temp_r6_716;
@@ -436,17 +420,21 @@ void MKHeap::UpdatePeak() {
     s32 var_r26_705;
     s32 var_r28_706;
     s32 var_r31_701;
+    u32 var_r0_746;
+    u32 var_r29_704;
+    u32 var_r30_703;
+    u32 var_r3_739;
     void *temp_r3_714;
 
     var_r31_701 = 0;
-    var_r30_703 = NULL;
-    var_r29_704 = NULL;
+    var_r30_703 = 0U;
+    var_r29_704 = 0U;
     var_r26_705 = 0;
     var_r28_706 = 0;
     do {
-        temp_r3_708 = *(&MKHeap::heapList + var_r28_706);
+        temp_r3_708 = MKHeap::heapList[var_r28_706];
         if ((temp_r3_708 != NULL) && (temp_r3_708->IsWithinAHeap() == 0)) {
-            temp_r3_714 = *(&MKHeap::heapList + var_r28_706);
+            temp_r3_714 = MKHeap::heapList[var_r28_706];
             temp_r4_715 = M2C_FIELD(temp_r3_714, s32 *, 0xC);
             temp_r6_716 = M2C_FIELD(temp_r3_714, s32 *, 0x44);
             temp_r0_717 = M2C_FIELD(temp_r3_714, s32 *, 0);
@@ -459,24 +447,24 @@ void MKHeap::UpdatePeak() {
         var_r28_706 += 4;
     } while (var_r26_705 < 0xA);
     var_r0_733 = var_r31_701;
-    if ((s32) MKHeap::peak.unk0 > var_r31_701) {
-        var_r0_733 = (s32) MKHeap::peak.unk0;
+    if ((s32) *MKHeap::peak > var_r31_701) {
+        var_r0_733 = *MKHeap::peak;
     }
     var_r3_739 = var_r30_703;
-    MKHeap::peak.unk0 = (MKHeap *) var_r0_733;
-    if ((MKHeap *) MKHeap::mainHeapPeak.unk0 > var_r30_703) {
-        var_r3_739 = MKHeap::mainHeapPeak.unk0;
+    *MKHeap::peak = var_r0_733;
+    if ((u32) *MKHeap::mainHeapPeak > var_r30_703) {
+        var_r3_739 = *MKHeap::mainHeapPeak;
     }
     var_r0_746 = var_r29_704;
-    MKHeap::mainHeapPeak.unk0 = var_r3_739;
-    if ((MKHeap *) MKHeap::tempHeapPeak.unk0 > var_r29_704) {
-        var_r0_746 = MKHeap::tempHeapPeak.unk0;
+    *MKHeap::mainHeapPeak = var_r3_739;
+    if ((u32) *MKHeap::tempHeapPeak > var_r29_704) {
+        var_r0_746 = *MKHeap::tempHeapPeak;
     }
-    MKHeap::tempHeapPeak.unk0 = var_r0_746;
+    *MKHeap::tempHeapPeak = var_r0_746;
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[40]' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *arg4) {
     s32 sp10;
     s32 spC;
@@ -503,12 +491,12 @@ void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *
     var_r30_796 = 0;
     var_r25_798 = 0;
     do {
-        temp_r3_800 = *(&MKHeap::heapList + var_r25_798);
+        temp_r3_800 = MKHeap::heapList[var_r25_798];
         if ((temp_r3_800 != NULL) && (temp_r3_800->IsWithinAHeap() == 0)) {
             if (this != NULL) {
                 this->unk0 += 1;
             }
-            ((MKHeap *) (*(&MKHeap::heapList + var_r25_798)))->GetMemoryStatistics(&sp10, &spC, &sp8);
+            ((MKHeap *) (MKHeap::heapList[var_r25_798]))->GetMemoryStatistics(&sp10, &spC, &sp8);
             if (arg0 != NULL) {
                 *arg0 = sp10 + (spC + sp8 + *arg0);
             }
@@ -525,7 +513,7 @@ void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 u8 MKHeap::IsWithinAHeap() {
     s32 var_ctr_860;
     s32 var_r4_859;
@@ -534,7 +522,7 @@ u8 MKHeap::IsWithinAHeap() {
     var_r4_859 = 0;
     var_ctr_860 = 0xA;
 loop_1:
-    temp_r7_862 = *(&MKHeap::heapList + var_r4_859);
+    temp_r7_862 = MKHeap::heapList[var_r4_859];
     if ((temp_r7_862 != NULL) && (temp_r7_862 != this) && ((u32) M2C_FIELD(temp_r7_862, u32 *, 0) <= (MKHeap *) this->unk0) && ((u32) M2C_FIELD(temp_r7_862, u32 *, 4) >= (u32) this->unk4)) {
         return 1U;
     }
@@ -555,8 +543,8 @@ void MKHeap::RemoveHeapFromGlobalList() {
     var_r4_890 = 0;
     var_ctr_891 = 0xA;
 loop_1:
-    if ((u32) *(&MKHeap::heapList + var_r4_890) == this) {
-        *(&MKHeap::heapList + var_r4_890) = 0;
+    if ((u32) MKHeap::heapList[var_r4_890] == this) {
+        MKHeap::heapList[var_r4_890] = 0;
         return;
     }
     var_r4_890 += 4;
@@ -568,7 +556,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 void MKHeap::AddHeapToGlobalList() {
     s32 var_ctr_912;
     s32 var_r4_911;
@@ -576,8 +564,8 @@ void MKHeap::AddHeapToGlobalList() {
     var_r4_911 = 0;
     var_ctr_912 = 0xA;
 loop_1:
-    if ((u32) *(&MKHeap::heapList + var_r4_911) == 0U) {
-        *(&MKHeap::heapList + var_r4_911) = this;
+    if ((u32) MKHeap::heapList[var_r4_911] == 0U) {
+        MKHeap::heapList[var_r4_911] = this;
         return;
     }
     var_r4_911 += 4;
@@ -639,12 +627,11 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void MKHeap::InitModule() {
     s32 var_ctr_1069;
     s32 var_r3_1064;
 
-    MKHeap::currentHeap.unk0 = (MKHeap *)-1U;
+    *MKHeap::currentHeap = -1;
     System_GetCommandLineParameter("breakon", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         baddress = atoi();
@@ -652,12 +639,11 @@ void MKHeap::InitModule() {
     var_r3_1064 = 0;
     var_ctr_1069 = 0xA;
     do {
-        *(&MKHeap::heapList + var_r3_1064) = 0;
+        MKHeap::heapList[var_r3_1064] = 0;
         var_r3_1064 += 4;
         var_ctr_1069 -= 1;
     } while (var_ctr_1069 != 0);
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void __nwa(unsigned long arg0, const char *arg1, int arg2) {

@@ -543,8 +543,6 @@ s8 *Texture::Create(const char *arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void Texture::InitModule() {
-    Texture::initialised.unk0 = 1;
+    *Texture::initialised = 1;
 }
-#endif

@@ -1,7 +1,7 @@
 #include "common/Source/MKVector3.h"
 #include <m2c_macros.h>
 
-static MKVector3 zero__9MKVector3 = { 0.0f, 0.0f, 0.0f, 0.0f };
+MKVector3 zero__9MKVector3 = { 0.0f, 0.0f, 0.0f, 0.0f };
 
 #if 0 // DRAFT: pointer/array required
 void Max(const MKVector3 &arg0, const MKVector3 &arg1) {

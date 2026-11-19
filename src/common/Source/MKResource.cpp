@@ -3,15 +3,12 @@
 #include <m2c_macros.h>
 
 extern void **gMK;
-#if 0 // DRAFT: expression syntax error
-static MKResource sWorkingChunkID__10MKResource;    /* type too large by 0x28; unable to generate initializer: not enough data */
+u8 sWorkingChunkID__10MKResource[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
 
 void MKResource::InitialiseResource() {
-    this->unk20 = MKResource::sWorkingChunkID.unk0;
+    this->unk20 = *MKResource::sWorkingChunkID;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 s32 MKResource::IsResourceAvailable() {
     s32 temp_r4_38;
     s32 var_r3_39;
@@ -27,9 +24,8 @@ s32 MKResource::IsResourceAvailable() {
     }
     temp_r4_38 = this->unk20;
     var_r3_39 = 0;
-    if ((temp_r4_38 == -1) || (temp_r4_38 == (s32) MKResource::sWorkingChunkID.unk0) || ((MKHeap *) MKHeap::tempMemOverride.unk0 > 0) || (var_r31_24 != 0)) {
+    if ((temp_r4_38 == -1) || (temp_r4_38 == (s32) *MKResource::sWorkingChunkID) || ((s32) *MKHeap::tempMemOverride > 0) || (var_r31_24 != 0)) {
         var_r3_39 = 1;
     }
     return var_r3_39;
 }
-#endif

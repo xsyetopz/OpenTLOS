@@ -24,23 +24,15 @@ extern M2C_UNK gEmptyPtrList;
 extern f32 gUpdateTimeDelta;
 extern MKResource **mkAnimScriptTemplates;
 
-#if 0 // DRAFT: declaration syntax error
-static MKAnim lit_stringBase0;                         /* type too large by 0x28; unable to generate initializer: non-zero padding; const */
-static MKAnim .L_8036DAA8;                          /* type too large by 0x1E; unable to generate initializer: non-zero padding; const */
-static MKAnim .L_8036DABA;                          /* type too large by 0x1D; unable to generate initializer: non-zero padding; const */
-static MKAnim .L_8036DACD;                          /* type too large by 0x1B; unable to generate initializer: non-zero padding; const */
-static MKAnim .L_8036DAE2;                          /* type too large by 0x1A; unable to generate initializer: non-zero padding; const */
-static MKAnim .L_8036DAF8;                          /* type too large by 0x20; unable to generate initializer: non-zero padding; const */
-static MKAnim .L_8036DB08;                          /* type too large by 0x28; unable to generate initializer: non-zero padding; const */
-static MKAnim .L_8036DB10[3];                       /* extra bytes: 0x17; unable to generate initializer: non-zero padding; const */
-static MKAnimScriptedEvent pSoundEventKeyWord__19MKAnimScriptedEvent; /* type too large by 0xC; unable to generate initializer: not enough data; const */
-static MKAnimScriptedEvent pSubObjectEnableEventKeyWord__19MKAnimScriptedEvent; /* type too large by 0xC; unable to generate initializer: not enough data; const */
-static MKAnimScriptedEvent pSubObjectDisableEventKeyWord__19MKAnimScriptedEvent; /* type too large by 0xC; unable to generate initializer: not enough data; const */
-static MKAnimScriptedEvent pSubObjectEnableAllEventKeyWord__19MKAnimScriptedEvent; /* type too large by 0xC; unable to generate initializer: not enough data; const */
-static MKAnimScriptedEvent pSubObjectDisableAllEventKeyWord__19MKAnimScriptedEvent; /* type too large by 0xC; unable to generate initializer: not enough data; const */
-static MKAnimScriptedEvent pAliasMaterialEventKeyWord__19MKAnimScriptedEvent; /* type too large by 0xC; unable to generate initializer: not enough data; const */
-static MKAnimScriptedEvent pOnEnterKeyWord__19MKAnimScriptedEvent; /* type too large by 0xC; unable to generate initializer: not enough data; const */
-static MKAnimScriptedEvent pOnExitKeyWord__19MKAnimScriptedEvent; /* type too large by 0xC; unable to generate initializer: not enough data; const */
+#if 0 // DRAFT: illegal type
+u8 pSoundEventKeyWord__19MKAnimScriptedEvent[4];    /* unable to generate initializer: cannot parse "MKSound" as integer; const */
+u8 pSubObjectEnableEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DAA8 as integer; const */
+u8 pSubObjectDisableEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DABA as integer; const */
+u8 pSubObjectEnableAllEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DACD as integer; const */
+u8 pSubObjectDisableAllEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DAE2 as integer; const */
+u8 pAliasMaterialEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DAF8 as integer; const */
+u8 pOnEnterKeyWord__19MKAnimScriptedEvent[4];       /* unable to generate initializer: cannot parse .L_8036DB08 as integer; const */
+u8 pOnExitKeyWord__19MKAnimScriptedEvent[4];        /* unable to generate initializer: cannot parse .L_8036DB10 as integer; const */
 
 void MKAnimScriptTemplate::DeinitMKAnimScriptData() {
     MKAnim *temp_r30_22;
@@ -251,22 +243,22 @@ u8 MKAnimScriptedEvent::ParseCodeEvent(MKIniLine *arg0, char *arg1) {
     }
     gAssertBool = arg0->AsString(1, &sp18);
     if (strchr(sp18, 0x2E) != NULL) {
-        temp_r3_413 = sscanf(sp18, &lit_stringBase0 + 0x77, &spC, &sp8);
+        temp_r3_413 = sscanf(sp18, "%f-%f", &spC, &sp8);
         switch (temp_r3_413) {                      /* switch 1; irregular */
         case 1:                                     /* switch 1 */
             sp8 = spC;
             /* fallthrough */
         default:                                    /* switch 1 */
-            temp_r5_430 = MKAnimScriptedEvent::pSrcAnim.unk0->unkA;
-            sp14 = temp_r5_430 + (s32) (spC * (f32) (MKAnimScriptedEvent::pSrcAnim.unk0->unkC - temp_r5_430));
-            temp_r3_447 = MKAnimScriptedEvent::pSrcAnim.unk0->unkA;
-            sp10 = temp_r3_447 + (s32) (sp8 * (f32) (MKAnimScriptedEvent::pSrcAnim.unk0->unkC - temp_r3_447));
+            temp_r5_430 = M2C_FIELD(*MKAnimScriptedEvent::pSrcAnim, s16 *, 0xA);
+            sp14 = temp_r5_430 + (s32) (spC * (f32) (M2C_FIELD(*MKAnimScriptedEvent::pSrcAnim, s16 *, 0xC) - temp_r5_430));
+            temp_r3_447 = M2C_FIELD(*MKAnimScriptedEvent::pSrcAnim, s16 *, 0xA);
+            sp10 = temp_r3_447 + (s32) (sp8 * (f32) (M2C_FIELD(*MKAnimScriptedEvent::pSrcAnim, s16 *, 0xC) - temp_r3_447));
             goto block_17;
         case 0:                                     /* switch 1 */
             return 0U;
         }
     } else {
-        temp_r3_469 = sscanf(sp18, &lit_stringBase0 + 0x7D, (f32 *) &sp14, (f32 *) &sp10);
+        temp_r3_469 = sscanf(sp18, "%d-%d", (f32 *) &sp14, (f32 *) &sp10);
         switch (temp_r3_469) {                      /* switch 2; irregular */
         case 0:                                     /* switch 2 */
             sp14 = -3;
@@ -296,16 +288,16 @@ u8 MKAnimScriptedEvent::ParseFrameNo(MKIniLine *arg0) {
 
     sp8 = NULL;
     temp_r31_527 = arg0->AsString(1, &sp8);
-    sscanf(sp8, &lit_stringBase0 + 0x83, &spC);
-    if (stricmp(MKAnimScriptedEvent::pOnExitKeyWord.unk0, (s8 *) &spC) == 0) {
+    sscanf(sp8, "%s", &spC);
+    if (stricmp(*MKAnimScriptedEvent::pOnExitKeyWord, (s8 *) &spC) == 0) {
         this->unk6 = -1;
         return (u8) temp_r31_527;
     }
-    if (stricmp(MKAnimScriptedEvent::pOnEnterKeyWord.unk0, (s8 *) &spC) == 0) {
+    if (stricmp(*MKAnimScriptedEvent::pOnEnterKeyWord, (s8 *) &spC) == 0) {
         this->unk6 = -2;
         return (u8) temp_r31_527;
     }
-    this->unk6 = GetFrameOrProportion(arg0, 1, MKAnimScriptedEvent::pSrcAnim.unk0);
+    this->unk6 = GetFrameOrProportion(arg0, 1, *MKAnimScriptedEvent::pSrcAnim);
     return (u8) temp_r31_527;
 }
 #endif
@@ -317,17 +309,17 @@ u8 MKAnimScriptedEvent::ParseEventType(MKIniLine *arg0) {
 
     sp8 = NULL;
     temp_r31_583 = arg0->AsString(0, &sp8);
-    if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pSoundEventKeyWord.unk0->unk0) == 0) {
+    if (stricmp((MKAnim *) sp8, *MKAnimScriptedEvent::pSoundEventKeyWord) == 0) {
         this->unk4 = 1;
-    } else if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pSubObjectEnableEventKeyWord.unk0->unk0) == 0) {
+    } else if (stricmp((MKAnim *) sp8, *MKAnimScriptedEvent::pSubObjectEnableEventKeyWord) == 0) {
         this->unk4 = 2;
-    } else if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pSubObjectDisableEventKeyWord.unk0->unk0) == 0) {
+    } else if (stricmp((MKAnim *) sp8, *MKAnimScriptedEvent::pSubObjectDisableEventKeyWord) == 0) {
         this->unk4 = 3;
-    } else if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pSubObjectEnableAllEventKeyWord.unk0->unk0) == 0) {
+    } else if (stricmp((MKAnim *) sp8, *MKAnimScriptedEvent::pSubObjectEnableAllEventKeyWord) == 0) {
         this->unk4 = 4;
-    } else if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pSubObjectDisableAllEventKeyWord.unk0->unk0) == 0) {
+    } else if (stricmp((MKAnim *) sp8, *MKAnimScriptedEvent::pSubObjectDisableAllEventKeyWord) == 0) {
         this->unk4 = 5;
-    } else if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pAliasMaterialEventKeyWord.unk0->unk0) == 0) {
+    } else if (stricmp((MKAnim *) sp8, *MKAnimScriptedEvent::pAliasMaterialEventKeyWord) == 0) {
         this->unk4 = 6;
     } else {
         this->unk4 = 0;
@@ -812,9 +804,9 @@ loop_20:
                         temp_r3_1635 = M2C_FIELD(temp_r26_1604, s8 **, 0);
                         var_r24_1636 = 0;
                         if (temp_r3_1635 != NULL) {
-                            if (strnicmp(temp_r3_1635, &lit_stringBase0 + 0x86, 2) == 0) {
+                            if (strnicmp(temp_r3_1635, "p_", 2) == 0) {
                                 var_r24_1636 = 2;
-                            } else if (strnicmp(M2C_FIELD(temp_r26_1604, s8 **, 0), &lit_stringBase0 + 0x89, 2) == 0) {
+                            } else if (strnicmp(M2C_FIELD(temp_r26_1604, s8 **, 0), "s_", 2) == 0) {
                                 var_r24_1636 = 1;
                             }
                         }
@@ -1429,13 +1421,13 @@ loop_4:
         temp_r4_2573->unk24 += 1;
         goto block_13;
     }
-    temp_r3_2584 = Str_Printf(&lit_stringBase0 + 0x8C, arg0);
+    temp_r3_2584 = Str_Printf("%s.bbi", arg0);
     temp_ret_2587 = MKArchive_Exists(temp_r3_2584, &sp8);
     if (temp_ret_2587 != 0) {
         ReadBinary(temp_r3_2584);
         goto block_12;
     }
-    temp_ret_2600 = Str_Printf(&lit_stringBase0 + 0x93, arg0, M2C_BITWISE(f32, temp_ret_2587));
+    temp_ret_2600 = Str_Printf("%s.bad", arg0, M2C_BITWISE(f32, temp_ret_2587));
     temp_r3_2600 = temp_ret_2600;
     if (temp_r3_2600->Exists((s8 *) (u32) (u64) temp_ret_2600) != 0) {
         ((MKHeap *) (strcpy(&spC, &temp_r3_2600->unk0)))->ActivateTempMemOverride();
@@ -1631,9 +1623,9 @@ loop_10:
                 temp_r3_2934 = var_r26_2927->unk0;
                 var_r24_2935 = 0;
                 if (temp_r3_2934 != NULL) {
-                    if (strnicmp(&temp_r3_2934->unk0, &lit_stringBase0 + 0x86, 2) == 0) {
+                    if (strnicmp(&temp_r3_2934->unk0, "p_", 2) == 0) {
                         var_r24_2935 = 2;
-                    } else if (strnicmp(&var_r26_2927->unk0->unk0, &lit_stringBase0 + 0x89, 2) == 0) {
+                    } else if (strnicmp(&var_r26_2927->unk0->unk0, "s_", 2) == 0) {
                         var_r24_2935 = 1;
                     }
                     MKModel_SubObjectExists(this->unk8, (SubObjectType) var_r24_2935, &var_r26_2927->unk0->unk0, &var_r26_2927->unk8);
@@ -1721,10 +1713,6 @@ MKResource *ParseBadFile(MKIni *arg0, const char *arg1, MKModel *arg2) {
     MKAnim *var_r30_3261;
     MKAnimScriptedEvent *temp_r22_3650;
     MKAnimScriptedEvent *temp_r22_3723;
-    MKAnimScriptedEvent *temp_r3_3523;
-    MKAnimScriptedEvent *temp_r3_3543;
-    MKAnimScriptedEvent *temp_r3_3563;
-    MKAnimScriptedEvent *temp_r3_3583;
     MKAnimScriptedEvent *var_r24_3260;
     MKAnimScriptedEvent *var_r25_3254;
     MKAnimScriptedEvent *var_r27_3256;
@@ -1754,6 +1742,10 @@ MKResource *ParseBadFile(MKIni *arg0, const char *arg1, MKModel *arg2) {
     u16 temp_r6_3386;
     u32 temp_r25_3225;
     u32 temp_r3_3435;
+    void *temp_r3_3523;
+    void *temp_r3_3543;
+    void *temp_r3_3563;
+    void *temp_r3_3583;
     void *temp_r4_3826;
     void *temp_r6_3275;
     void *temp_r7_3383;
@@ -1772,14 +1764,14 @@ loop_28:
             var_r26_3062 += 1;
             var_r23_3068 = strlen(var_r25_3070->GetSectionName()) + var_r23_3068 + 1;
         } else if (var_r25_3070->GetFieldName() != NULL) {
-            if (var_r25_3070->IsField(&lit_stringBase0 + 0x9A) != 0) {
+            if (var_r25_3070->IsField("mesh") != 0) {
                 var_r23_3068 = strlen(var_r25_3070->GetString(0)) + var_r23_3068 + 1;
-            } else if (var_r25_3070->IsField(&lit_stringBase0 + 0x9F) != 0) {
+            } else if (var_r25_3070->IsField("skeleton") != 0) {
                 var_r23_3068 = strlen(var_r25_3070->GetString(0)) + var_r23_3068 + 1;
-            } else if (var_r25_3070->IsField(&lit_stringBase0 + 0xA8) != 0) {
+            } else if (var_r25_3070->IsField("anim") != 0) {
                 var_r26_3062 += 1;
                 var_r23_3068 = strlen(var_r25_3070->GetString(0)) + var_r23_3068 + 1;
-            } else if (var_r25_3070->IsField(&lit_stringBase0 + 0xAD) != 0) {
+            } else if (var_r25_3070->IsField("event") != 0) {
                 var_r23_3068 += sp40.GetStringSizeOfEvent(var_r25_3070);
                 switch (sp40.unk4) {                /* switch 1; irregular */
                 case 0:                             /* switch 1 */
@@ -1796,13 +1788,13 @@ loop_28:
                     break;
                 }
                 var_r31_3067 += 1;
-            } else if (var_r25_3070->IsField(&lit_stringBase0 + 0xB3) != 0) {
+            } else if (var_r25_3070->IsField("soundevent") != 0) {
                 sp2C = NULL;
                 var_r25_3070->AsString(0, &sp2C);
                 var_r28_3064 += 1;
                 var_r23_3068 = strlen(sp2C) + var_r23_3068 + 1;
                 var_r31_3067 += 1;
-            } else if (var_r25_3070->IsField(&lit_stringBase0 + 0xBE) != 0) {
+            } else if (var_r25_3070->IsField("subobjectevent") != 0) {
                 sp28 = NULL;
                 var_r25_3070->AsString(0, &sp28);
                 var_r29_3065 += 1;
@@ -1841,21 +1833,21 @@ loop_99:
             var_r30_3261 = temp_r6_3275 + ((temp_r5_3277 * 0x30) + 0x10);
             *var_r30_3261 = AddToStringTable(temp_r29_3262, var_r26_3268->GetSectionName());
         } else if (var_r26_3268->GetFieldName() != NULL) {
-            if (var_r26_3268->IsField(&lit_stringBase0 + 0x9A) != 0) {
+            if (var_r26_3268->IsField("mesh") != 0) {
                 var_r26_3268->GetString(0);
                 temp_r3_3305 = strrchr(0x2E);
-                if ((temp_r3_3305 != NULL) && ((strcmpi(&lit_stringBase0 + 0xCD) == 0) || (strcmpi(temp_r3_3305, &lit_stringBase0 + 0xD2) != 0))) {
+                if ((temp_r3_3305 != NULL) && ((strcmpi".ase" == 0) || (strcmpi(temp_r3_3305, ".mdl") != 0))) {
                     *temp_r3_3305 = 0;
                 }
                 M2C_FIELD(M2C_FIELD(var_r23_3234, void **, 0x34), MKAnim **, 0) = AddToStringTable(temp_r29_3262, var_r26_3268->GetString(0));
-            } else if (var_r26_3268->IsField(&lit_stringBase0 + 0x9F) != 0) {
+            } else if (var_r26_3268->IsField("skeleton") != 0) {
                 var_r26_3268->GetString(0);
                 temp_r3_3346 = strrchr(0x2E);
-                if ((temp_r3_3346 != NULL) && ((strcmpi(&lit_stringBase0 + 0xCD) == 0) || (strcmpi(temp_r3_3346, &lit_stringBase0 + 0xD7) != 0))) {
+                if ((temp_r3_3346 != NULL) && ((strcmpi".ase" == 0) || (strcmpi(temp_r3_3346, ".anm") != 0))) {
                     *temp_r3_3346 = 0;
                 }
                 M2C_FIELD(M2C_FIELD(var_r23_3234, void **, 0x34), MKAnim **, 4) = AddToStringTable(temp_r29_3262, var_r26_3268->GetString(0));
-            } else if (var_r26_3268->IsField(&lit_stringBase0 + 0xA8) != 0) {
+            } else if (var_r26_3268->IsField("anim") != 0) {
                 temp_r7_3383 = M2C_FIELD(var_r23_3234, void **, 0x34);
                 temp_r6_3386 = M2C_FIELD(temp_r7_3383, u16 *, 8);
                 M2C_FIELD(temp_r7_3383, u16 *, 8) = (u16) (temp_r6_3386 + 1);
@@ -1881,78 +1873,78 @@ loop_99:
                 temp_ret_3435 = var_r26_3268->GetString(0);
                 temp_r3_3435 = temp_ret_3435;
                 if (temp_r3_3435 != 0U) {
-                    var_r23_3433 = Str_Printf(&lit_stringBase0 + 0xDC, var_r23_3433, temp_r3_3435, &lit_stringBase0, M2C_BITWISE(f32, temp_ret_3435));
+                    var_r23_3433 = Str_Printf("%s%s", var_r23_3433, temp_r3_3435, "MKSound", M2C_BITWISE(f32, temp_ret_3435));
                 }
-                temp_r3_3455 = sscanf(var_r23_3433, &lit_stringBase0 + 0xE1, &sp24, &sp20, &sp90);
+                temp_r3_3455 = sscanf(var_r23_3433, "%d-%d,%s", &sp24, &sp20, &sp90);
                 switch (temp_r3_3455) {             /* switch 2; irregular */
                 case 0:                             /* switch 2 */
                     sp20 = 0.0f;
                     sp24 = 0.0f;
                     break;
                 case 1:                             /* switch 2 */
-                    sscanf(var_r23_3433, &lit_stringBase0 + 0xEA, &sp24, (f32 *) &sp90);
+                    sscanf(var_r23_3433, "%d,%s", &sp24, (f32 *) &sp90);
                     sp20 = sp24;
                     break;
                 }
                 var_r30_3261->unkA = M2C_BITWISE(s16, sp24);
                 var_r30_3261->unkC = M2C_BITWISE(s16, sp20);
                 var_r30_3261->unk4 = (var_r30_3261->unk4 + M2C_BITWISE(s32, sp20)) - M2C_BITWISE(s32, sp24);
-            } else if (var_r26_3268->IsField(&lit_stringBase0 + 0xAD) != 0) {
-                MKAnimScriptedEvent::pSrcAnim.unk0 = var_r30_3261;
+            } else if (var_r26_3268->IsField("event") != 0) {
+                *MKAnimScriptedEvent::pSrcAnim = var_r30_3261;
                 if (sp30.ParseEvent(var_r26_3268, temp_r29_3262) != 0) {
                     switch (sp30.unk4) {            /* switch 3; irregular */
                     case 0:                         /* switch 3 */
                         var_r25_3254 += 0x10;
-                        temp_r3_3523 = &var_r30_3261->unk10[var_r30_3261->unkE];
-                        temp_r3_3523->unk0 = (MKAnim *) sp30;
-                        temp_r3_3523->unk4 = sp30.unk4;
-                        temp_r3_3523->unk6 = sp30.unk6;
-                        temp_r3_3523->unk8 = sp30.unk8;
-                        temp_r3_3523->unkC = sp30.unkC;
+                        temp_r3_3523 = var_r30_3261->unk10 + (var_r30_3261->unkE * 0x10);
+                        M2C_FIELD(temp_r3_3523, s32 *, 0) = (s32) sp30;
+                        M2C_FIELD(temp_r3_3523, s16 *, 4) = sp30.unk4;
+                        M2C_FIELD(temp_r3_3523, s16 *, 6) = sp30.unk6;
+                        M2C_FIELD(temp_r3_3523, s32 *, 8) = sp30.unk8;
+                        M2C_FIELD(temp_r3_3523, s32 *, 0xC) = sp30.unkC;
                         var_r30_3261->unkE += 1;
                         break;
                     case 1:                         /* switch 3 */
                         var_r27_3256 += 0x10;
-                        temp_r3_3543 = &var_r30_3261->unk18[var_r30_3261->unk14];
-                        temp_r3_3543->unk0 = (MKAnim *) sp30;
-                        temp_r3_3543->unk4 = sp30.unk4;
-                        temp_r3_3543->unk6 = sp30.unk6;
-                        temp_r3_3543->unk8 = sp30.unk8;
-                        temp_r3_3543->unkC = sp30.unkC;
+                        temp_r3_3543 = var_r30_3261->unk18 + (var_r30_3261->unk14 * 0x10);
+                        M2C_FIELD(temp_r3_3543, s32 *, 0) = (s32) sp30;
+                        M2C_FIELD(temp_r3_3543, s16 *, 4) = sp30.unk4;
+                        M2C_FIELD(temp_r3_3543, s16 *, 6) = sp30.unk6;
+                        M2C_FIELD(temp_r3_3543, s32 *, 8) = sp30.unk8;
+                        M2C_FIELD(temp_r3_3543, s32 *, 0xC) = sp30.unkC;
                         var_r30_3261->unk14 += 1;
                         break;
                     default:                        /* switch 3 */
                         var_r28_3258 += 0x10;
-                        temp_r3_3563 = &var_r30_3261->unk20[var_r30_3261->unk1C];
-                        temp_r3_3563->unk0 = (MKAnim *) sp30;
-                        temp_r3_3563->unk4 = sp30.unk4;
-                        temp_r3_3563->unk6 = sp30.unk6;
-                        temp_r3_3563->unk8 = sp30.unk8;
-                        temp_r3_3563->unkC = sp30.unkC;
+                        temp_r3_3563 = var_r30_3261->unk20 + (var_r30_3261->unk1C * 0x10);
+                        M2C_FIELD(temp_r3_3563, s32 *, 0) = (s32) sp30;
+                        M2C_FIELD(temp_r3_3563, s16 *, 4) = sp30.unk4;
+                        M2C_FIELD(temp_r3_3563, s16 *, 6) = sp30.unk6;
+                        M2C_FIELD(temp_r3_3563, s32 *, 8) = sp30.unk8;
+                        M2C_FIELD(temp_r3_3563, s32 *, 0xC) = sp30.unkC;
                         var_r30_3261->unk1C += 1;
                         break;
                     case 6:                         /* switch 3 */
                         var_r24_3260 += 0x10;
-                        temp_r3_3583 = &var_r30_3261->unk28[var_r30_3261->unk24];
-                        temp_r3_3583->unk0 = (MKAnim *) sp30;
-                        temp_r3_3583->unk4 = sp30.unk4;
-                        temp_r3_3583->unk6 = sp30.unk6;
-                        temp_r3_3583->unk8 = sp30.unk8;
-                        temp_r3_3583->unkC = sp30.unkC;
+                        temp_r3_3583 = var_r30_3261->unk28 + (var_r30_3261->unk24 * 0x10);
+                        M2C_FIELD(temp_r3_3583, s32 *, 0) = (s32) sp30;
+                        M2C_FIELD(temp_r3_3583, s16 *, 4) = sp30.unk4;
+                        M2C_FIELD(temp_r3_3583, s16 *, 6) = sp30.unk6;
+                        M2C_FIELD(temp_r3_3583, s32 *, 8) = sp30.unk8;
+                        M2C_FIELD(temp_r3_3583, s32 *, 0xC) = sp30.unkC;
                         var_r30_3261->unk24 += 1;
                         break;
                     }
                 }
-            } else if (var_r26_3268->IsField(&lit_stringBase0 + 0xB3) != 0) {
+            } else if (var_r26_3268->IsField("soundevent") != 0) {
                 sp1C = NULL;
                 var_r26_3268->AsString(0, &sp1C);
                 var_r23_3616 = GetFrameOrProportion(var_r26_3268, 1, var_r30_3261);
                 sp18 = NULL;
                 var_r26_3268->AsString(1, &sp18);
-                sscanf(sp18, &lit_stringBase0 + 0x83, &sp70);
-                if (stricmp(MKAnimScriptedEvent::pOnExitKeyWord.unk0, (s8 *) &sp70) == 0) {
+                sscanf(sp18, "%s", &sp70);
+                if (stricmp(*MKAnimScriptedEvent::pOnExitKeyWord, (s8 *) &sp70) == 0) {
                     var_r23_3616 = -1;
-                } else if (stricmp(MKAnimScriptedEvent::pOnEnterKeyWord.unk0, (s8 *) &sp70) == 0) {
+                } else if (stricmp(*MKAnimScriptedEvent::pOnEnterKeyWord, (s8 *) &sp70) == 0) {
                     var_r23_3616 = -2;
                 }
                 temp_r22_3650 = &var_r30_3261->unk18[var_r30_3261->unk14];
@@ -1963,7 +1955,7 @@ loop_99:
                 temp_r22_3650->unk0 = AddToStringTable(temp_r29_3262, sp1C);
                 var_r27_3256 += 0x10;
                 var_r30_3261->unk14 += 1;
-            } else if (var_r26_3268->IsField(&lit_stringBase0 + 0xBE) != 0) {
+            } else if (var_r26_3268->IsField("subobjectevent") != 0) {
                 sp14 = NULL;
                 var_r26_3268->AsString(0, &sp14);
                 sp10 = NULL;
@@ -1971,32 +1963,32 @@ loop_99:
                 var_r23_3689 = GetFrameOrProportion(var_r26_3268, 2, var_r30_3261);
                 spC = NULL;
                 var_r26_3268->AsString(2, &spC);
-                sscanf(spC, &lit_stringBase0 + 0x83, &sp50);
-                if (stricmp(MKAnimScriptedEvent::pOnExitKeyWord.unk0, (s8 *) &sp50) == 0) {
+                sscanf(spC, "%s", &sp50);
+                if (stricmp(*MKAnimScriptedEvent::pOnExitKeyWord, (s8 *) &sp50) == 0) {
                     var_r23_3689 = -1;
-                } else if (stricmp(MKAnimScriptedEvent::pOnEnterKeyWord.unk0, (s8 *) &sp50) == 0) {
+                } else if (stricmp(*MKAnimScriptedEvent::pOnEnterKeyWord, (s8 *) &sp50) == 0) {
                     var_r23_3689 = -2;
                 }
                 temp_r22_3723 = &var_r30_3261->unk20[var_r30_3261->unk1C];
                 temp_r22_3723->unk6 = var_r23_3689;
                 temp_r22_3723->unkC = 0;
                 temp_r22_3723->unk8 = -1;
-                if (stricmp((MKAnim *) sp14, &(&lit_stringBase0 + 0xF0)->unk0, 0) == 0) {
+                if (stricmp((MKAnim *) sp14, "enable", 0) == 0) {
                     temp_r22_3723->unk4 = 2;
-                } else if (stricmp((MKAnim *) sp14, &lit_stringBase0 + 0xF7) == 0) {
+                } else if (stricmp((MKAnim *) sp14, "disable") == 0) {
                     temp_r22_3723->unk4 = 3;
                 }
                 temp_r22_3723->unk0 = AddToStringTable(temp_r29_3262, sp10);
                 var_r28_3258 += 0x10;
                 var_r30_3261->unk1C += 1;
-            } else if (var_r26_3268->IsField(&lit_stringBase0 + 0xFF) != 0) {
-                sp8 = &lit_stringBase0 + 0x105;
+            } else if (var_r26_3268->IsField("cycle") != 0) {
+                sp8 = "";
                 var_r26_3268->AsString(0, &sp8);
-                if (strcmpi(sp8, &lit_stringBase0 + 0x106) == 0) {
+                if (strcmpi(sp8, "loop") == 0) {
                     var_r30_3261->unk8 = 1;
-                } else if (strcmpi(sp8, &lit_stringBase0 + 0x10B) == 0) {
+                } else if (strcmpi(sp8, "rebound") == 0) {
                     var_r30_3261->unk8 = 2;
-                } else if (strcmpi(sp8, &lit_stringBase0 + 0x113) == 0) {
+                } else if (strcmpi(sp8, "stop") == 0) {
                     var_r30_3261->unk8 = 0;
                 } else {
                     var_r30_3261->unk8 = 0;

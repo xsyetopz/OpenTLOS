@@ -1530,7 +1530,7 @@ block_24:
         var_r22_2808 = M2C_FIELD(var_r5_2901, s32 *, 4);
         var_r23_2809 = M2C_FIELD(var_r5_2901, s32 *, 8);
     }
-    if ((var_r23_2809 > 0) && ((u8) MKCloth::clothCreateDisabled.unk0 == 0)) {
+    if ((var_r23_2809 > 0) && ((u8) *MKCloth::clothCreateDisabled == 0)) {
         arg0->unk84->unk31 = 1;
         var_r27_2928 = 0;
         var_r15_2929 = 0;
@@ -1593,7 +1593,7 @@ loop_43:
             } else {
                 var_r3_3031 = malloc(temp_r15_3023);
             }
-            M2C_FIELD(temp_r31_2996, s8 **, 0) = var_r3_3031;
+            temp_r31_2996->unk0 = var_r3_3031;
             temp_r3_3038 = temp_r31_2996->unk4;
             temp_r15_3040 = M2C_BITWISE(s32, temp_r3_3038->unk10) * 0xC;
             temp_r3_3041 = temp_r3_3038->Current();

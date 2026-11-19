@@ -462,7 +462,7 @@ MKWidgetSystem *MKWidget_CreateSystem() {
     operator new(0x80U, NULL, 0);
     var_r31_1013 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r31_1013 != NULL) {
-        var_r31_1013 = ((MKWidgetSystem *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetSystem((MKWidgetDescriptor *) &MKWidgetSystem::sMKWidgetSystemDescriptor);
+        var_r31_1013 = ((MKWidgetSystem *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetSystem((MKWidgetDescriptor *) MKWidgetSystem::sMKWidgetSystemDescriptor);
     }
     M2C_FIELD(var_r31_1013->unk4, f32 *, 0x38) = (f32) gWidgetOrthoWidth;
     M2C_FIELD(var_r31_1013->unk4, f32 *, 0x3C) = (f32) gWidgetOrthoHeight;

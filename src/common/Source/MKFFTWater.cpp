@@ -27,7 +27,48 @@ extern s8 *pSkyMapName;
 #if 0 // DRAFT: identifier 'pWaterTypes' redeclared
 static MKFFTWaterType *pWaterTypes[0xA] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
 #endif
-static MKFFTWater typesVisible__10MKFFTWater[2] = { { NULL, NULL, 0, NULL }, { NULL, NULL, 0, NULL } };
+u8 typesVisible__10MKFFTWater[0x28] = {
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+};
 #if 0 // DRAFT: identifier 'gRandomSeed' redeclared
 static s32 gRandomSeed = 0xBABECAFE;
 #endif
@@ -1050,7 +1091,7 @@ void MKFFTBaseType::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
 
     this->unkC = arg2;
     strcpy(this + 0x5072, arg1);
-    strcat(this + 0x5072, Str_Printf("%d", MKResource::sWorkingChunkID.unk0, M2C_BITWISE(f32, strcpy(&this->unk509A, arg1))));
+    strcat(this + 0x5072, Str_Printf("%d", *MKResource::sWorkingChunkID, M2C_BITWISE(f32, strcpy(&this->unk509A, arg1))));
     this->unk0 = arg0;
     temp_r3_2032 = MKModel_GetNmbrOfSubObjects(this->unk0, (SubObjectType) 0);
     temp_r29_2034 = (temp_r3_2032 + 2) * 2;
@@ -1240,7 +1281,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKFFTWater::ManagedDraw() {
     MKFFTWaterType *temp_r3_2374;
     MKFFTWaterType *var_r4_2377;
@@ -1252,8 +1293,8 @@ void MKFFTWater::ManagedDraw() {
     var_r31_2361 = 0;
     var_r26_2364 = 0;
 loop_5:
-    if (var_r26_2364 < (s32) MKFFTWater::numTypesVisible.unk0) {
-        temp_r0_2370 = *(MKFFTWater::typesVisible + var_r31_2361);
+    if (var_r26_2364 < (s32) *MKFFTWater::numTypesVisible) {
+        temp_r0_2370 = MKFFTWater::typesVisible[var_r31_2361];
         ((MKFFTBaseType *) ((MKFFTBaseType *) pWaterTypes[temp_r0_2370]))->Update();
         temp_r3_2374 = pWaterTypes[temp_r0_2370];
         temp_r3_2374->Draw(temp_r3_2374->unk50C4);
@@ -1271,7 +1312,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKFFTWater::BuildVisibleTypesList() {
     s32 temp_r0_2431;
     s32 var_ctr_2408;
@@ -1281,7 +1322,7 @@ void MKFFTWater::BuildVisibleTypesList() {
     void *var_r4_2413;
 
     var_r7_2402 = 0;
-    MKFFTWater::numTypesVisible.unk0 = NULL;
+    *MKFFTWater::numTypesVisible = 0;
     var_r8_2407 = 0;
     var_ctr_2408 = 0xA;
     do {
@@ -1294,9 +1335,9 @@ loop_4:
                 goto loop_4;
             }
             if (var_r4_2413 != NULL) {
-                temp_r0_2431 = (s32) MKFFTWater::numTypesVisible.unk0 * 4;
-                MKFFTWater::numTypesVisible.unk0 += 1;
-                *(MKFFTWater::typesVisible + temp_r0_2431) = var_r8_2407;
+                temp_r0_2431 = *MKFFTWater::numTypesVisible * 4;
+                *MKFFTWater::numTypesVisible += 1;
+                MKFFTWater::typesVisible[temp_r0_2431] = var_r8_2407;
             }
         }
         var_r8_2407 += 1;

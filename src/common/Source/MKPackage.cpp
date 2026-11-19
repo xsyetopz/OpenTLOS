@@ -160,7 +160,7 @@ s32 MKPackage_QLoadDynamic(const char *arg0, int arg1, const char *arg2) {
     }
     strcpy(temp_r31_139 + 4, var_r4_155);
     M2C_FIELD(temp_r31_139, MKHeap **, 0x124) = ((MKHeap *) (strncpy(temp_r31_139 + 0x24, arg0, 0xFFU)))->Current();
-    M2C_FIELD(temp_r31_139, s8 *, 0x128) = (s8) ((s32) MKHeap::tempMemOverride.unk0 > 0);
+    M2C_FIELD(temp_r31_139, s8 *, 0x128) = (s8) (*MKHeap::tempMemOverride > 0);
     ProcessQueue();
     return M2C_FIELD(temp_r31_139, s32 *, 0);
 }
@@ -183,7 +183,7 @@ s32 MKPackage_QLoad(const char *arg0, int arg1) {
         nextQueueHandle += 1;
     }
     M2C_FIELD(temp_r31_197, MKHeap **, 0x124) = ((MKHeap *) (strcpy(temp_r31_197 + 4, arg0)))->Current();
-    M2C_FIELD(temp_r31_197, s8 *, 0x128) = (s8) ((s32) MKHeap::tempMemOverride.unk0 > 0);
+    M2C_FIELD(temp_r31_197, s8 *, 0x128) = (s8) (*MKHeap::tempMemOverride > 0);
     ProcessQueue();
     return M2C_FIELD(temp_r31_197, s32 *, 0);
 }
@@ -221,8 +221,8 @@ loop_4:
         if ((s32) queueCount != 0) {
             activeHandle = pQueue->unk0;
             pQueue->unk124->Push();
-            temp_r31_301 = (s32) MKHeap::tempMemOverride.unk0 > 0;
-            pQueue->unk128->SetTempMemOverrideStatus((u8) MKHeap::tempMemOverride.unk0);
+            temp_r31_301 = *MKHeap::tempMemOverride > 0;
+            pQueue->unk128->SetTempMemOverrideStatus((u8) *MKHeap::tempMemOverride);
             if ((s8) (u8) pQueue->unk24 != 0) {
                 QInterface = 0;
                 MKPackage_LoadDynamic(&pQueue->unk24, 1U, &pQueue->unk4);
@@ -314,7 +314,7 @@ s32 MKPackage_Free() {
     var_r30_417 = 0;
     var_r26_418 = 0;
     if ((MKHeap *) pHeapToLoadInto != NULL) {
-        var_r26_418 = (s32) MKHeap::tempMemOverride.unk0 > 0;
+        var_r26_418 = *MKHeap::tempMemOverride > 0;
         pHeapToLoadInto->Push();
         bTempMemBeingUsed->SetTempMemOverrideStatus(M2C_ERROR(/* Read from unset register $r4 */));
     }
@@ -473,7 +473,7 @@ void MKPackage_LoadDynamic(char *arg0, bool arg1, char *arg2) {
 
     pHeapToLoadInto = arg0->Current();
     *binaryPackageName = 0;
-    bTempMemBeingUsed = (s32) MKHeap::tempMemOverride.unk0 > 0;
+    bTempMemBeingUsed = *MKHeap::tempMemOverride > 0;
     temp_r3_773 = strlen(arg0);
     packageTextSize = temp_r3_773;
     temp_r30_775 = temp_r3_773 + 1;
@@ -508,13 +508,13 @@ void MKPackage_Load(char *arg0, bool arg1) {
     u8 temp_r7_834;
 
     temp_ret_825 = arg0->Current();
-    temp_r7_834 = (s32) MKHeap::tempMemOverride.unk0 > 0;
+    temp_r7_834 = *MKHeap::tempMemOverride > 0;
     pHeapToLoadInto = temp_ret_825;
     bTempMemBeingUsed = temp_r7_834;
     *binaryPackageName = 0;
     pPackageText = NULL;
     packageTextSize = -1U;
-    strncpy(packageName, Str_Printf("%s.pkg", arg0, binaryPackageName, 0, temp_r7_834, MKHeap::tempMemOverride.unk0, M2C_BITWISE(f32, temp_ret_825)), 0x20U);
+    strncpy(packageName, Str_Printf("%s.pkg", arg0, binaryPackageName, 0, temp_r7_834, *MKHeap::tempMemOverride, M2C_BITWISE(f32, temp_ret_825)), 0x20U);
     if (((u8) gDisablePackages != 0) || (temp_ret_856 = MKArchive_Exists(packageName, (s32 *) &packageTextSize), ((temp_ret_856 == 0) != 0)) || ((s32) packageTextSize == 0)) {
         MKPackage_LoadInternal(arg1);
         return;
@@ -712,7 +712,7 @@ s32 PackageSort(const void *arg0, const void *arg1) {
     return M2C_FIELD(arg0, s32 *, 4) - M2C_FIELD(arg1, s32 *, 4);
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 void MKPackage_Update() {
     MKHeap *temp_r3_1484;
     MKHeap *temp_r3_1486;
@@ -778,7 +778,7 @@ void MKPackage_Update() {
     }
     var_r30_1314 = 0;
     if ((MKHeap *) pHeapToLoadInto != NULL) {
-        var_r30_1314 = (s32) MKHeap::tempMemOverride.unk0 > 0;
+        var_r30_1314 = *MKHeap::tempMemOverride > 0;
         pHeapToLoadInto->Push();
         bTempMemBeingUsed->SetTempMemOverrideStatus(M2C_ERROR(/* Read from unset register $r4 */));
     }
@@ -1016,7 +1016,7 @@ void MKPackage_InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
 void *PackageIntercept(const char *arg0, int *arg1, void *arg2, int *arg3) {
     MKHeap *temp_r3_1901;
     s32 temp_r0_1856;
@@ -1032,7 +1032,7 @@ void *PackageIntercept(const char *arg0, int *arg1, void *arg2, int *arg3) {
     var_r30_1836 = arg2;
     if ((s32) packageState != 0) {
         if ((s8 *) pAutoEntries != NULL) {
-            if ((MKHeap *) MKHeap::tempMemOverride.unk0 > 0) {
+            if ((s32) *MKHeap::tempMemOverride > 0) {
                 temp_r4_1854 = Str_Printf("+%s", arg0, pAutoEntries);
                 temp_r0_1856 = nmbrOfAutoEntries * 0x22;
                 nmbrOfAutoEntries += 1;

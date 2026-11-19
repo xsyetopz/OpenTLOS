@@ -38,7 +38,7 @@ void CreateWidgetWindow::CreateWidgets() {
 
     M2C_STRUCT_COPY((s32) &sp2C + 4, MKWidgetIdentityAttributes - 4 + 4, 0x58);
     this->unk8 = 0;
-    CreateWidgetWindow::placingWidget.unk0 = NULL;
+    *CreateWidgetWindow::placingWidget = 0;
     sp30 = 420.0f;
     sp34 = 20.0f;
     sp38 = 0.0f;
@@ -70,7 +70,6 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 s32 CreateWidgetWindow::CreateHook(MKWidget *arg0, unsigned int arg1, unsigned int arg2, void *arg3) {
     MKWidget *temp_r0_143;
     MKWidget *temp_r3_144;
@@ -79,7 +78,7 @@ s32 CreateWidgetWindow::CreateHook(MKWidget *arg0, unsigned int arg1, unsigned i
 
     } else if ((u16) M2C_FIELD(arg1, u16 *, 4) == 6) {
         MKWidget_SetMouseFocus(M2C_FIELD(arg2, MKWidget **, 0));
-        CreateWidgetWindow::placingWidget.unk0 = (MKWidget *)1U;
+        *CreateWidgetWindow::placingWidget = 1;
         temp_r0_143 = M2C_FIELD(arg1, MKWidget **, 0);
         temp_r3_144 = M2C_FIELD(arg2, MKWidget **, 8);
         if (temp_r0_143 != temp_r3_144) {
@@ -93,7 +92,6 @@ s32 CreateWidgetWindow::CreateHook(MKWidget *arg0, unsigned int arg1, unsigned i
     }
     return 1;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand 'MKWidget *'
 s32 CreateWidgetWindow::CreateWidgetWindowHook(MKWidget *arg0, unsigned int arg1, unsigned int arg2, void *arg3) {
@@ -118,7 +116,7 @@ s32 CreateWidgetWindow::CreateWidgetWindowHook(MKWidget *arg0, unsigned int arg1
 
     switch (arg0) {                                 /* irregular */
     case 48:
-        if ((s32) CreateWidgetWindow::placingWidget.unk0 != 0) {
+        if ((s32) *CreateWidgetWindow::placingWidget != 0) {
             MKWidget_ReleaseMouseFocus();
             MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 8), 0x64U, 0U);
             if (arg1 == 1) {

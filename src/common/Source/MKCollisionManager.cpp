@@ -542,7 +542,7 @@ loop_53:
         }
         if (var_r0_739 != 0) {
             var_r18_805 = 0;
-            if ((temp_r3_742 == NULL) || (temp_r4_807 = M2C_FIELD(temp_r4_736, void **, 8), ((temp_r4_807 == NULL) != 0)) || (M2C_FIELD(*temp_r3_742, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_807, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
+            if ((temp_r3_742 == NULL) || (temp_r4_807 = M2C_FIELD(temp_r4_736, void **, 8), ((temp_r4_807 == NULL) != 0)) || (M2C_FIELD(*temp_r3_742, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_807, s32 *, 8), *MKResource::sWorkingChunkID) != 0)) {
                 var_r18_805 = 1;
             }
             if (var_r18_805 != 0) {
@@ -606,7 +606,7 @@ loop_88:
         }
         if (var_r0_877 != 0) {
             var_r18_943 = 0;
-            if ((temp_r3_880 == NULL) || (temp_r4_945 = M2C_FIELD(temp_r4_874, void **, 8), ((temp_r4_945 == NULL) != 0)) || (M2C_FIELD(*temp_r3_880, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_945, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
+            if ((temp_r3_880 == NULL) || (temp_r4_945 = M2C_FIELD(temp_r4_874, void **, 8), ((temp_r4_945 == NULL) != 0)) || (M2C_FIELD(*temp_r3_880, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_945, s32 *, 8), *MKResource::sWorkingChunkID) != 0)) {
                 var_r18_943 = 1;
             }
             if (var_r18_943 != 0) {
@@ -846,7 +846,7 @@ loop_52:
                     }
                     if (var_r6_1184 != 0) {
                         var_r21_1250 = 0;
-                        if ((temp_r3_1187 == NULL) || (temp_r4_1252 = M2C_FIELD(temp_r4_1181, void **, 8), ((temp_r4_1252 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1187, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1252, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_1187 == NULL) || (temp_r4_1252 = M2C_FIELD(temp_r4_1181, void **, 8), ((temp_r4_1252 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1187, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1252, s32 *, 8), *MKResource::sWorkingChunkID) != 0)) {
                             var_r21_1250 = 1;
                         }
                         if (var_r21_1250 != 0) {
@@ -905,7 +905,7 @@ loop_87:
                     }
                     if (var_r6_1319 != 0) {
                         var_r21_1385 = 0;
-                        if ((temp_r3_1322 == NULL) || (temp_r4_1387 = M2C_FIELD(temp_r4_1316, void **, 8), ((temp_r4_1387 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1322, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1387, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_1322 == NULL) || (temp_r4_1387 = M2C_FIELD(temp_r4_1316, void **, 8), ((temp_r4_1387 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1322, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1387, s32 *, 8), *MKResource::sWorkingChunkID) != 0)) {
                             var_r21_1385 = 1;
                         }
                         if (var_r21_1385 != 0) {
@@ -1191,7 +1191,7 @@ loop_45:
                     }
                     if (var_r0_1672 != 0) {
                         var_r19_1738 = 0;
-                        if ((temp_r3_1675 == NULL) || (temp_r4_1740 = M2C_FIELD(temp_r4_1669, void **, 8), ((temp_r4_1740 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1675, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1740, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_1675 == NULL) || (temp_r4_1740 = M2C_FIELD(temp_r4_1669, void **, 8), ((temp_r4_1740 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1675, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1740, s32 *, 8), *MKResource::sWorkingChunkID) != 0)) {
                             var_r19_1738 = 1;
                         }
                         if (var_r19_1738 != 0) {
@@ -1275,7 +1275,7 @@ loop_82:
                     }
                     if (var_r0_1856 != 0) {
                         var_r19_1922 = 0;
-                        if ((temp_r3_1859 == NULL) || (temp_r4_1924 = M2C_FIELD(temp_r4_1853, void **, 8), ((temp_r4_1924 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1859, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1924, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_1859 == NULL) || (temp_r4_1924 = M2C_FIELD(temp_r4_1853, void **, 8), ((temp_r4_1924 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1859, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1924, s32 *, 8), *MKResource::sWorkingChunkID) != 0)) {
                             var_r19_1922 = 1;
                         }
                         if (var_r19_1922 != 0) {
@@ -1580,7 +1580,7 @@ loop_52:
                     }
                     if (var_r6_2286 != 0) {
                         var_r21_2352 = 0;
-                        if ((temp_r3_2289 == NULL) || (temp_r4_2354 = M2C_FIELD(temp_r4_2283, void **, 8), ((temp_r4_2354 == NULL) != 0)) || (M2C_FIELD(*temp_r3_2289, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_2354, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_2289 == NULL) || (temp_r4_2354 = M2C_FIELD(temp_r4_2283, void **, 8), ((temp_r4_2354 == NULL) != 0)) || (M2C_FIELD(*temp_r3_2289, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_2354, s32 *, 8), *MKResource::sWorkingChunkID) != 0)) {
                             var_r21_2352 = 1;
                         }
                         if (var_r21_2352 != 0) {
@@ -1639,7 +1639,7 @@ loop_87:
                     }
                     if (var_r6_2421 != 0) {
                         var_r21_2487 = 0;
-                        if ((temp_r3_2424 == NULL) || (temp_r4_2489 = M2C_FIELD(temp_r4_2418, void **, 8), ((temp_r4_2489 == NULL) != 0)) || (M2C_FIELD(*temp_r3_2424, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_2489, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_2424 == NULL) || (temp_r4_2489 = M2C_FIELD(temp_r4_2418, void **, 8), ((temp_r4_2489 == NULL) != 0)) || (M2C_FIELD(*temp_r3_2424, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_2489, s32 *, 8), *MKResource::sWorkingChunkID) != 0)) {
                             var_r21_2487 = 1;
                         }
                         if (var_r21_2487 != 0) {
