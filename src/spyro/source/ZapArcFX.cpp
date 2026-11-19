@@ -408,23 +408,12 @@ void ZapArcFX::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal type
 void ZapArcFX::Draw() {
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f64 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f64 sp10;
-    f64 sp8;
-    f32 temp_f31_701;
     s32 var_r28_684;
     s32 var_r31_685;
-    void *temp_r3_712;
     void *temp_r5_688;
+    f32 temp_f31_701;
+    MKVector4 sp38;
 
     var_r28_684 = 0;
     var_r31_685 = 0;
@@ -432,44 +421,27 @@ void ZapArcFX::Draw() {
         temp_r5_688 = ((u8 *) this->unkC8) + var_r31_685;
         if ((u8) M2C_FIELD(temp_r5_688, u8 *, 0x48) != 0) {
             temp_f31_701 = 1.0f - (M2C_FIELD(temp_r5_688, f32 *, 0x44) / 0.25f);
-            MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(temp_r5_688, s32 *, 0x4C), 1U, 1U);
-            MKModel_SetWorldMatrix(this->unk4, *(this->unkC8 + var_r31_685));
-            sp18 = temp_f31_701;
-            sp1C = temp_f31_701;
-            temp_r3_712 = ((u8 *) this->unkC8) + (var_r31_685 + 0x50);
-            sp20 = temp_f31_701;
-            sp24 = 1.0f;
-            sp28 = (f64) sp18;
-            sp30 = (f64) sp20;
-            sp8 = (f64) sp18 * M2C_FIELD(temp_r3_712, f64 *, 0);
-            sp10 = sp30 * M2C_FIELD(temp_r3_712, f64 *, 8);
-            sp38 = sp8;
-            sp40 = sp10;
-            MKModel_SetColor(this->unk4, *((MKVector4 *) &sp38));
+            MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(temp_r5_688, s32 *, 0x4C), 1, 1);
+            MKModel_SetWorldMatrix(this->unk4, *((Matrix *) temp_r5_688));
+            sp38.unk0 = temp_f31_701 * M2C_FIELD(temp_r5_688, f32 *, 0x50);
+            sp38.unk4 = temp_f31_701 * M2C_FIELD(temp_r5_688, f32 *, 0x54);
+            sp38.unk8 = temp_f31_701 * M2C_FIELD(temp_r5_688, f32 *, 0x58);
+            sp38.unkC = 1.0f * M2C_FIELD(temp_r5_688, f32 *, 0x5C);
+            MKModel_SetColor(this->unk4, sp38);
             MKModel_Draw(this->unk4, NULL);
         }
         var_r28_684 += 1;
         var_r31_685 += 0x60;
     } while (var_r28_684 < 0x50);
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void *ZapArcFX::Update() {
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    Matrix *temp_r3_784;
-    f32 temp_f1_783;
+    MKVector3 sp18;
     s32 temp_r5_793;
     s32 var_r30_760;
     s32 var_r31_761;
     void *temp_r3_768;
-    void *temp_r3_782;
-    void *temp_r3_792;
-    void *temp_r3_799;
+    f32 temp_f1_783;
 
     var_r30_760 = 0;
     var_r31_761 = 0;
@@ -477,37 +449,29 @@ void *ZapArcFX::Update() {
     do {
         temp_r3_768 = ((u8 *) this->unkC8) + var_r31_761;
         if ((u8) M2C_FIELD(temp_r3_768, u8 *, 0x48) != 0) {
-            sp10 = 1.0f;
             M2C_FIELD(temp_r3_768, f32 *, 0x40) = (f32) ((0.35f * gUpdateTimeDelta) + M2C_FIELD(temp_r3_768, f32 *, 0x40));
-            temp_r3_782 = this->unkC8;
-            temp_f1_783 = *(temp_r3_782 + (var_r31_761 + 0x40));
-            temp_r3_784 = (Matrix *) (((u8 *) temp_r3_782) + var_r31_761);
-            sp8 = temp_f1_783;
-            spC = temp_f1_783;
-            sp20 = (f64) sp10;
-            sp18 = (f64) sp8;
-            temp_r3_784->Scale3x3(temp_r3_784, *((MKVector3 *) &sp18));
-            temp_r3_792 = this->unkC8;
+            temp_f1_783 = M2C_FIELD(temp_r3_768, f32 *, 0x40);
+            sp18.unk0 = temp_f1_783;
+            sp18.unk4 = temp_f1_783;
+            sp18.unk8 = 1.0f;
+            ((Matrix *) temp_r3_768)->Scale3x3((Matrix *) temp_r3_768, sp18);
             temp_r5_793 = var_r31_761 + 0x44;
-            *(temp_r3_792 + temp_r5_793) = *(temp_r3_792 + temp_r5_793) + gUpdateTimeDelta;
-            temp_r3_799 = this->unkC8;
-            if (*(temp_r3_799 + temp_r5_793) >= 0.25f) {
-                *(temp_r3_799 + temp_r5_793) = 0.0f;
-                *(this->unkC8 + (var_r31_761 + 0x48)) = 0;
+            M2C_FIELD(temp_r3_768, f32 *, 0x44) = M2C_FIELD(temp_r3_768, f32 *, 0x44) + gUpdateTimeDelta;
+            if (M2C_FIELD(temp_r3_768, f32 *, 0x44) >= 0.25f) {
+                M2C_FIELD(temp_r3_768, f32 *, 0x44) = 0.0f;
+                M2C_FIELD(temp_r3_768, u8 *, 0x48) = 0;
             }
         }
         var_r30_760 += 1;
         var_r31_761 += 0x60;
     } while (var_r30_760 < 0x50);
 }
-#endif
 
 s32 ZapArcFX::LoadDone() {
     GameProp::LoadDone();
     this->unkD0 = MKModel_GetNmbrOfSubObjects(this->unk4, (SubObjectType) 0);
 }
 
-#if 0 // DRAFT: illegal type
 void ZapArcFX::Init() {
     s32 temp_r0_871;
     s32 var_ctr_868;
@@ -526,9 +490,8 @@ void ZapArcFX::Init() {
     do {
         temp_r0_871 = var_r4_864 + 0x48;
         var_r4_864 += 0x60;
-        *(this->unkC8 + temp_r0_871) = 0;
+        ((u8 *) this->unkC8)[temp_r0_871] = 0;
         var_ctr_868 -= 1;
     } while (var_ctr_868 != 0);
     this->unkCC = 0.0f;
 }
-#endif

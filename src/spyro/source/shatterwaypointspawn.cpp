@@ -130,7 +130,6 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
 s32 ShatterWaypointSpawn::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
     MKIniLine *var_r28_229;
     s32 temp_r0_199;
@@ -156,7 +155,7 @@ s32 ShatterWaypointSpawn::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
         var_r30_231 = 0;
 loop_8:
         if (var_r28_229 != NULL) {
-            var_r28_229->LoadVector3("waypoint", ((u8 *) this->unk1F8) + var_r30_231, 0);
+            var_r28_229->LoadVector3("waypoint", (MKVector3 *) (((u8 *) this->unk1F8) + var_r30_231), 0);
             var_r28_229 = var_r28_229->unkC->GetNextLine(var_r28_229);
             var_r30_231 += 0x10;
             goto loop_8;
@@ -165,7 +164,6 @@ loop_8:
     }
     return 0;
 }
-#endif
 
 s32 ShatterWaypointSpawn::LoadLine(MKIniLine *arg0) {
     s32 var_r31_269;
@@ -194,7 +192,8 @@ void ShatterWaypointSpawn::Deinit() {
     Shatterable::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Action'
+void EnemySpawnPool_Action(SpawnAction, int, MKProp **, SpawnerObject *);
+
 void ShatterWaypointSpawn::Init() {
     Shatterable::Init();
     this->unk200 = 0;
@@ -204,12 +203,9 @@ void ShatterWaypointSpawn::Init() {
     this->unk1FC = 0;
     this->unk1F8 = NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void ShatterWaypointSpawnDescriptor::Init() {
     ShatterableDescriptor::Init();
-    this->unk16C = GetSpawnEnemyType();
+    M2C_FIELD(this, s32 *, 0x16C) = GetSpawnEnemyType();
     this->unk64 |= 0x2000;
 }
-#endif
