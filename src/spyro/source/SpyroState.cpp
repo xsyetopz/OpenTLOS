@@ -54,56 +54,48 @@ void *malloc(s32);                                  /* extern */
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 
-#if 0 // DRAFT: illegal type
 s32 SpyroStateMachine::GetMedium(int arg0) {
     if ((arg0 >= 0) && (arg0 < (s32) this->unk10)) {
-        return M2C_FIELD(*(this->unk4 + (arg0 * 4)), s32 *, 0xC);
+        return M2C_FIELD(((void **) this->unk4)[arg0], s32 *, 0xC);
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void SpyroStateMachine::ProcessAnimEvent(unsigned int arg0) {
     s32 temp_r0_32;
-    void **temp_r3_37;
+    SpyroState *temp_r3_37;
 
     temp_r0_32 = this->unk8;
     if (temp_r0_32 >= 0) {
-        temp_r3_37 = *(this->unk4 + (temp_r0_32 * 4));
-        M2C_FIELD(*temp_r3_37, M2C_UNK (**)(void **), 0x20)(temp_r3_37);
+        temp_r3_37 = (SpyroState *) ((void **) this->unk4)[temp_r0_32];
+        temp_r3_37->ProcessAnimEvent(arg0);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void SpyroStateMachine::Message(MKMessage *arg0) {
     s32 temp_r0_55;
-    void **temp_r3_60;
+    SpyroState *temp_r3_60;
 
     temp_r0_55 = this->unk8;
     if (temp_r0_55 >= 0) {
-        temp_r3_60 = *(this->unk4 + (temp_r0_55 * 4));
-        M2C_FIELD(*temp_r3_60, M2C_UNK (**)(void **), 0x24)(temp_r3_60);
+        temp_r3_60 = (SpyroState *) ((void **) this->unk4)[temp_r0_55];
+        temp_r3_60->Message(arg0);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void SpyroStateMachine::Update() {
     s32 temp_r0_80;
-    void **temp_r3_85;
-    void **temp_r3_93;
+    SpyroState *temp_r3_85;
+    SpyroState *temp_r3_93;
 
     temp_r0_80 = this->unk8;
     if (temp_r0_80 >= 0) {
-        temp_r3_85 = *(this->unk4 + (temp_r0_80 * 4));
-        M2C_FIELD(*temp_r3_85, M2C_UNK (**)(void **), 0x18)(temp_r3_85);
-        temp_r3_93 = *(this->unk4 + (this->unk8 * 4));
-        M2C_FIELD(*temp_r3_93, M2C_UNK (**)(void **), 0x1C)(temp_r3_93);
+        temp_r3_85 = (SpyroState *) ((void **) this->unk4)[temp_r0_80];
+        temp_r3_85->Update();
+        temp_r3_93 = (SpyroState *) ((void **) this->unk4)[this->unk8];
+        temp_r3_93->Transition();
     }
 }
-#endif
 
 void SpyroStateMachine::SetState(int arg0, MKMessage *arg1) {
     SpyroStateMessages sp8;
@@ -115,78 +107,69 @@ void SpyroStateMachine::SetState(int arg0, MKMessage *arg1) {
     SetState(arg0, sp8);
 }
 
-#if 0 // DRAFT: illegal type
 void SpyroStateMachine::SetState(int arg0, SpyroStateMessages &arg1) {
     s32 temp_r0_144;
     s32 temp_r0_162;
-    void **temp_r3_149;
-    void **temp_r3_168;
+    SpyroState *temp_r3_149;
+    SpyroState *temp_r3_168;
 
     temp_r0_144 = this->unk8;
     if (temp_r0_144 >= 0) {
-        temp_r3_149 = *(this->unk4 + (temp_r0_144 * 4));
-        M2C_FIELD(*temp_r3_149, M2C_UNK (**)(void **), 0x14)(temp_r3_149);
+        temp_r3_149 = (SpyroState *) ((void **) this->unk4)[temp_r0_144];
+        temp_r3_149->Exit();
     }
     this->unkC = this->unk8;
     this->unk8 = arg0;
     this->unk0->OnStateChange(this->unkC, this->unk8);
     temp_r0_162 = this->unk8;
     if (temp_r0_162 >= 0) {
-        temp_r3_168 = *(this->unk4 + (temp_r0_162 * 4));
-        M2C_FIELD(*temp_r3_168, M2C_UNK (**)(void **, SpyroStateMessages *), 0x10)(temp_r3_168, &arg1);
+        temp_r3_168 = (SpyroState *) ((void **) this->unk4)[temp_r0_162];
+        temp_r3_168->Enter(arg1);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void SpyroStateMachine::Reset(int arg0, SpyroStateMessages &arg1) {
     s32 temp_r0_191;
-    void **temp_r3_196;
+    SpyroState *temp_r3_196;
 
     temp_r0_191 = this->unk8;
     if (temp_r0_191 >= 0) {
-        temp_r3_196 = *(this->unk4 + (temp_r0_191 * 4));
-        M2C_FIELD(*temp_r3_196, M2C_UNK (**)(void **), 0x14)(temp_r3_196);
+        temp_r3_196 = (SpyroState *) ((void **) this->unk4)[temp_r0_191];
+        temp_r3_196->Exit();
     }
     this->unk8 = -1;
     SetState(arg0, arg1);
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void SpyroStateMachine::Deinit() {
     s32 temp_r0_223;
     s32 var_r30_234;
     s32 var_r30_250;
     s32 var_r31_235;
     s32 var_r31_251;
-    void **temp_r3_228;
-    void **temp_r3_239;
+    SpyroState *temp_r3_228;
+    SpyroState *temp_r3_239;
     void *temp_r31_263;
 
     temp_r0_223 = this->unk8;
     if (temp_r0_223 >= 0) {
-        temp_r3_228 = *(this->unk4 + (temp_r0_223 * 4));
-        M2C_FIELD(*temp_r3_228, M2C_UNK (**)(void **), 0x14)(temp_r3_228);
+        temp_r3_228 = (SpyroState *) ((void **) this->unk4)[temp_r0_223];
+        temp_r3_228->Exit();
     }
     var_r30_234 = 0;
     var_r31_235 = 0;
-loop_4:
-    if (var_r30_234 < (s32) this->unk10) {
-        temp_r3_239 = *(this->unk4 + var_r31_235);
-        M2C_FIELD(*temp_r3_239, M2C_UNK (**)(void **), 0xC)(temp_r3_239);
+    while (var_r30_234 < (s32) this->unk10) {
+        temp_r3_239 = M2C_FIELD(this->unk4, SpyroState **, var_r31_235);
+        temp_r3_239->Deinit();
         var_r30_234 += 1;
         var_r31_235 += 4;
-        goto loop_4;
     }
     var_r30_250 = 0;
     var_r31_251 = 0;
-loop_7:
-    if (var_r30_250 < (s32) this->unk10) {
-        operator delete(*(this->unk4 + var_r31_251));
+    while (var_r30_250 < (s32) this->unk10) {
+        operator delete(M2C_FIELD(this->unk4, void **, var_r31_251));
         var_r30_250 += 1;
         var_r31_251 += 4;
-        goto loop_7;
     }
     temp_r31_263 = this->unk4;
     if (MKHeap::Current() != NULL) {
@@ -195,7 +178,6 @@ loop_7:
     }
     free(temp_r31_263);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void SpyroStateMachine::Init(Spyro *arg0, SpyroStateCreatorTableEntry *arg1, int arg2) {
@@ -245,68 +227,50 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'SpyroStateMessages' to 'long'
 s32 SpyroStateMessages::IsMessageOnList(int arg0) {
     u32 temp_r7_362;
     u32 var_r0_368;
-    u32 var_r0_388;
     u32 var_r8_363;
 
     temp_r7_362 = this->unk50;
     var_r8_363 = 0U;
-loop_6:
-    var_r0_388 = 0xA;
-    if (temp_r7_362 < 0xAU) {
-        var_r0_388 = temp_r7_362;
+    while (var_r8_363 < ((temp_r7_362 < 0xAU) ? temp_r7_362 : 0xAU)) {
+        var_r0_368 = 0xA;
+        if (temp_r7_362 < 0xAU) {
+            var_r0_368 = temp_r7_362;
+        }
+        if (arg0 == M2C_FIELD(this, s32 *, ((((var_r8_363 + (temp_r7_362 - var_r0_368)) % 10) * 8) + 4))) {
+            return 1;
+        }
+        var_r8_363 += 1;
     }
-    if (var_r8_363 >= var_r0_388) {
-        return 0;
-    }
-    var_r0_368 = 0xA;
-    if (temp_r7_362 < 0xAU) {
-        var_r0_368 = temp_r7_362;
-    }
-    if (arg0 == (s32) *(this + ((((var_r8_363 + (temp_r7_362 - var_r0_368)) % 10) * 8) + 4))) {
-        return 1;
-    }
-    var_r8_363 += 1;
-    goto loop_6;
+    return 0;
 }
-#endif
 
-#if 0 // DRAFT: identifier 'SpyroStateMessages::GetMessage(int)' redeclared was declared as: 'MKMessage * (int)' now declared as: 'long (int)'
-s32 SpyroStateMessages::GetMessage(int arg0) {
+MKMessage *SpyroStateMessages::GetMessage(int arg0) {
     u32 temp_r7_401;
     u32 var_r0_407;
     u32 var_r0_422;
-    u32 var_r0_439;
     u32 var_r8_402;
 
     temp_r7_401 = this->unk50;
     var_r8_402 = 0U;
-loop_8:
-    var_r0_439 = 0xA;
-    if (temp_r7_401 < 0xAU) {
-        var_r0_439 = temp_r7_401;
-    }
-    if (var_r8_402 >= var_r0_439) {
-        return 0;
-    }
-    var_r0_407 = 0xA;
-    if (temp_r7_401 < 0xAU) {
-        var_r0_407 = temp_r7_401;
-    }
-    if (arg0 == (s32) *(this + ((((var_r8_402 + (temp_r7_401 - var_r0_407)) % 10) * 8) + 4))) {
-        var_r0_422 = 0xA;
+    while (var_r8_402 < ((temp_r7_401 < 0xAU) ? temp_r7_401 : 0xAU)) {
+        var_r0_407 = 0xA;
         if (temp_r7_401 < 0xAU) {
-            var_r0_422 = temp_r7_401;
+            var_r0_407 = temp_r7_401;
         }
-        return *(this + (((var_r8_402 + (temp_r7_401 - var_r0_422)) % 10) * 8));
+        if (arg0 == M2C_FIELD(this, s32 *, ((((var_r8_402 + (temp_r7_401 - var_r0_407)) % 10) * 8) + 4))) {
+            var_r0_422 = 0xA;
+            if (temp_r7_401 < 0xAU) {
+                var_r0_422 = temp_r7_401;
+            }
+            return M2C_FIELD(this, MKMessage **, (((var_r8_402 + (temp_r7_401 - var_r0_422)) % 10) * 8));
+        }
+        var_r8_402 += 1;
     }
-    var_r8_402 += 1;
-    goto loop_8;
+    return 0;
 }
-#endif
 
 void SpyroStateMessages::AddMessage(int arg0) {
     void *temp_r5_459;
