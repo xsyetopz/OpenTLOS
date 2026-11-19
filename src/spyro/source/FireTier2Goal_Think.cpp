@@ -66,33 +66,29 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 extern s32 GS_MWHit1;
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, long, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, unsigned in
 u8 FireTier2Goal_Think::Update() {
     f64 sp18;
     f64 sp10;
     s32 sp8;
-    s32 temp_r3_38;
     u8 temp_r30_39;
     u8 var_r31_35;
     void *temp_r6_40;
 
     var_r31_35 = 0;
     sp8 = 0;
-    temp_r3_38 = this->unkC;
     temp_r30_39 = this->unk7C;
-    temp_r6_40 = M2C_FIELD(temp_r3_38, void **, 8);
+    temp_r6_40 = M2C_FIELD(this->unkC, void **, 8);
     sp10 = M2C_FIELD(temp_r6_40, f64 *, 0x30);
     sp18 = M2C_FIELD(temp_r6_40, f64 *, 0x38);
-    if ((((Enemy *) temp_r3_38)->InWaterVolume(*((MKVector3 *) &sp10), (int *) &sp8) != 0) && (sp8 & 1)) {
+    if ((((Enemy *) this->unkC)->InWaterVolume(*((MKVector3 *) &sp10), (int *) &sp8) != 0) && (sp8 & 1)) {
         var_r31_35 = 1;
     }
     this->unk7C = var_r31_35;
     if (((u8) this->unk7C != 0) && (temp_r30_39 == 0)) {
-        KDSound_Play3d(GS_MWHit1, M2C_FIELD(this->unkC, s32 *, 8) + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_MWHit1, (const MKVector3 *) ((s8 *) M2C_FIELD(this->unkC, void **, 8) + 0x30), 0U, -1, 0.0f, false);
     }
-    EnemyGoal_Think::Update();
+    return EnemyGoal_Think::Update();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to 'AITargetData *'
 void FireTier2Goal_Think::Arbitrate() {
@@ -367,7 +363,7 @@ loop_1:
         if (MKCollision_RayCollide(*((MKVector3 *) &spA8), *((MKVector3 *) &sp98), &spF8, (MKCollisionMode) 4, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18)) != 0) {
             M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, spF8);
             M2C_FIELD(arg1, f64 *, 8) = (f64) spF8.unk8;
-            sp48.operator*(150.0f);
+            sp48 = arg0.operator*(150.0f);
             sp8 = M2C_FIELD(arg1, f64 *, 0) + M2C_BITWISE(f64, sp48);
             M2C_FIELD(arg2, f64 *, 0) = sp8;
             sp10 = arg1->unk8 + sp48.unk8;
@@ -434,10 +430,15 @@ u8 FireTier2Goal_JumpOutOfLava::FindLavaEdgePath(const MKVector3 &arg0, MKVector
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void FireTier2Goal_JumpOutOfLava::Activate() {
-    AITargetData sp60;
-    M2C_UNK sp50;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
+    MKVector3 sp50;
     MKVector3 sp40;
     f64 sp38;
     f64 sp30;
@@ -447,7 +448,6 @@ void FireTier2Goal_JumpOutOfLava::Activate() {
     f32 sp18;
     f64 sp10;
     f32 sp8;
-    AITargetData *var_r3_874;
     Enemy *temp_r3_831;
     Enemy *temp_r3_845;
     Enemy *temp_r3_856;
@@ -458,8 +458,9 @@ void FireTier2Goal_JumpOutOfLava::Activate() {
     Goal<Enemy> *temp_r3_1115;
     Goal<Enemy> *temp_r4_1108;
     Goal<Enemy> *temp_r6_1127;
-    M2C_UNK *var_r3_902;
     MKHeap *temp_r5_915;
+    MKVector3 *var_r3_874;
+    MKVector3 *var_r3_902;
     f32 var_f2_1097;
     f32 var_f31_934;
     f32 var_f4_1033;
@@ -500,27 +501,27 @@ block_8:
         this->unk58 = 0;
         RemoveAllSubgoals();
         if (((u8) M2C_FIELD(this->unk20, u8 *, 0xB10) >> 7U) & 1) {
-            sp60.GetPos();
+            sp60 = this->unkC->unk870.GetPos();
             var_r3_874 = &sp60;
         } else {
-            var_r3_874 = (AITargetData *) &this->unkC->unk588;
+            var_r3_874 = &this->unkC->unk588;
         }
         var_r31_881 = 0;
-        sp60.unk30 = var_r3_874->unk0;
-        sp60.unk38 = M2C_FIELD(var_r3_874, f64 *, 8);
+        sp90 = M2C_FIELD(var_r3_874, f64 *, 0);
+        sp98 = M2C_FIELD(var_r3_874, f64 *, 8);
         temp_r3_885 = this->unkC;
         if (((u8) M2C_FIELD(temp_r3_885, u8 *, 0x8B8) == 2) || (temp_r3_885->unk870.unk40.Get() != NULL)) {
             var_r31_881 = 1;
         }
         if (var_r31_881 != 0) {
-            ((AITargetData *) &sp50)->GetDir();
+            sp50 = this->unkC->unk870.GetDir();
             var_r3_902 = &sp50;
         } else {
             sp40 = KDMath_GetDirection(this->unkC->unk5CC);
-            var_r3_902 = (M2C_UNK *) &sp40;
+            var_r3_902 = &sp40;
         }
-        sp60.unk20 = M2C_FIELD(var_r3_902, f64 *, 0);
-        sp60.unk28 = M2C_FIELD(var_r3_902, f64 *, 8);
+        sp80 = M2C_FIELD(var_r3_902, f64 *, 0);
+        sp88 = M2C_FIELD(var_r3_902, f64 *, 8);
         temp_r5_915 = this->unk20;
         temp_r4_916 = M2C_FIELD(temp_r5_915, u8 *, 0xB10);
         if ((temp_r4_916 >> 7U) & 1) {
@@ -537,12 +538,12 @@ block_8:
         this->unk48.unk0 = 0.0f;
         this->unk48.unk4 = 0.0f;
         this->unk48.unk8 = 0.0f;
-        if (FindLavaEdgePath(*((MKVector3 *) &sp60.unk30), &this->unk38, &this->unk48) != 0) {
+        if (FindLavaEdgePath(*((MKVector3 *) &sp90), &this->unk38, &this->unk48) != 0) {
             temp_r3_946 = this->unkC;
             var_r29_938 = 1;
             var_r31_936 = 1;
             var_f31_934 = 50.0f + temp_r3_946->GetCollisionRadius();
-        } else if ((FindLavaEdge(*((MKVector3 *) &sp60.unk20), &this->unk38, &this->unk48) != 0) || (sp20 = -(f32) sp60.unk20, sp24 = -(*(f32 *) ((u8 *) &sp60 + 0x24)), sp28 = -(f32) sp60.unk28, sp30 = (f64) sp20, sp38 = (f64) sp28, ((FindLavaEdge(*((MKVector3 *) &sp30), &this->unk38, &this->unk48) == 0) == 0))) {
+        } else if ((FindLavaEdge(*((MKVector3 *) &sp80), &this->unk38, &this->unk48) != 0) || (sp20 = -(f32) sp80, sp24 = -(*(f32 *) ((u8 *) &sp80 + 0x4)), sp28 = -(f32) sp88, sp30 = (f64) sp20, sp38 = (f64) sp28, ((FindLavaEdge(*((MKVector3 *) &sp30), &this->unk38, &this->unk48) == 0) == 0))) {
             temp_r3_985 = this->unkC;
             var_r29_938 = 1;
             var_f31_934 = 200.0f + temp_r3_985->GetCollisionRadius();
@@ -554,11 +555,11 @@ block_8:
             this->unkC->unk8C0.SetInsideRegion(1U);
             temp_f0_1015 = (f64) M2C_FIELD(this, f32 *, 0x48) - (f64) M2C_FIELD(this, f32 *, 0x38);
             sp10 = temp_f0_1015;
-            sp60.unk10 = temp_f0_1015;
+            sp70 = temp_f0_1015;
             sp18 = this->unk48.unk8 - this->unk38.unk8;
-            (*(f32 *) ((u8 *) &sp60 + 0x14)) = 0.0f;
-            sp60.unk18 = (f64) sp18;
-            var_f4_1033 = ((f32) sp60.unk18 * (f32) sp60.unk18) + (((f32) sp60.unk10 * (f32) sp60.unk10) + (0.0f * 0.0f));
+            (*(f32 *) ((u8 *) &sp70 + 0x4)) = 0.0f;
+            sp78 = (f64) sp18;
+            var_f4_1033 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (0.0f * 0.0f));
             if (var_f4_1033 > 0.0f) {
                 temp_f1_1036 = __frsqrte(var_f4_1033);
                 temp_f1_1042 = 0.5 * temp_f1_1036 * -(((f64) var_f4_1033 * (temp_f1_1036 * temp_f1_1036)) - 3.0);
@@ -621,7 +622,6 @@ block_8:
         this->unk58 = 1;
     }
 }
-#endif
 
 void FireTier2Goal_JumpOutOfLava::Deinit() {
     Goal<Enemy> *temp_r3_1157;
@@ -819,8 +819,8 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
     f64 sp88;
     f64 sp80;
     f64 sp78;
-    f64 sp68;
-    f32 sp58;
+    MKVector3 sp68;
+    MKVector3 sp58;
     f32 sp50;
     f64 sp48;
     f32 sp40;
@@ -888,11 +888,11 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
         sp30 = temp_f1_1534;
         spE0 = (f64) sp30;
         temp_f31_1546 = 150.0f + temp_r3_1515->GetCollisionRadius(temp_r4_1518, temp_f1_1534, (f32) spB0);
-        ((AITargetData *) &sp68)->GetDir();
+        sp68 = this->unkC->unk8C0.GetDir();
         temp_f0_1551 = sp68 * (f64) temp_f31_1546;
         sp18 = temp_f0_1551;
         sp78 = temp_f0_1551;
-        sp20 = sp70 * temp_f31_1546;
+        sp20 = sp68.unk8 * temp_f31_1546;
         sp80 = (f64) sp20;
         sp8 = spD8 + temp_f0_1551;
         sp10 = (f32) spE0 + (f32) sp80;
@@ -920,7 +920,7 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
         sp134 = -1;
         sp138 = 0;
         MKCollision_RayCollide(*((MKVector3 *) &spD8), *((MKVector3 *) &spC8), (MKCollisionResult *) &spE8, (MKCollisionMode) 4, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18));
-        if (((sp138 != 0) && (((AITargetData *) &sp58)->GetDir(), temp_r3_1613 = this->unkC, ((((temp_r3_1613->unkC8 * sp60) + ((temp_r3_1613->unkC0 * sp58) + (temp_r3_1613->unkC4 * sp5C))) > 0.95f) != 0))) || (this->unkC->unk8C0.GetDist() <= this->unk14)) {
+        if (((sp138 != 0) && (sp58 = this->unkC->unk8C0.GetDir(), temp_r3_1613 = this->unkC, ((((temp_r3_1613->unkC8 * sp58.unk8) + ((temp_r3_1613->unkC0 * M2C_BITWISE(f32, sp58)) + (temp_r3_1613->unkC4 * sp58.unk4))) > 0.95f) != 0))) || (this->unkC->unk8C0.GetDist() <= this->unk14)) {
             this->unk8 = 2;
         } else {
             temp_r3_1639 = this->unkC;
