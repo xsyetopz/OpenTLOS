@@ -56,6 +56,12 @@ offsets equal the asm's offsets. These rules follow MWCC:
   neither a member nor size (KDScriptProperty's 0x14 vote inside its 0x10
   KDPropertyCommandList).
 
+Two config tables override the votes, each row citing its asm evidence:
+`config/G6SE7D/class_sizes.tsv` caps a class at a proven size, and
+`class_fields.tsv` gives the full layout of a struct that m2c reaches only
+through byte arithmetic and so never votes for (`MKParticleSystem::Envelope`,
+`DataMap`). A static array of such a struct then compiles by value.
+
 `tools/srcgen/mwcc.py`'s `compile_one` compiles a probe of
 `char p[(int)&((C*)0)->field + 1];` lines, which shows where MWCC actually
 put each member.

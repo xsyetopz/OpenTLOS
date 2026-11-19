@@ -7,3 +7,5 @@ KDSpline	0x14	__construct_array in PropCreatorHelper<TrainTrack>::Create (~0x800
 UIEvent	0xC	UIScreen::LoadLine (0x801A0C48) calls UIEvent::LoadLine on this+0x68..0xBC in steps of 0xC (step >= sizeof); UIEvent::LoadLine (0x8019FC24) stores at 0x8 (sizeof >= 0xC)
 Matrix	0x40	identity__6Matrix .obj is 0x40 bytes; Projectile::SetAttachment (0x800CC560) copies it whole with an 8x lwz/stw loop
 NodeLookAtIK	0x48	Cynder::LoadDone (0x801E0F28) and SpeedwayCynder::LoadDone (0x80270ACC) call NodeLookAtIK::Init on six members each at stride 0x48; Init (0x80053CA8) stores up to 0x44
+MKParticleSystem::Envelope	0x14	CalculateEnvelope__16MKParticleSystemFv indexes elements by 0x14; gDefaultEnvelope is 0x28 with SetEnvelope count 2, gAshesPSEnv 0x64 with count 5
+DataMap	0x8	DataMap_GetName__FPC7DataMapUi steps by 0x8 (addi r5, r5, 0x8); every *DataMap table in .data is a multiple of 0x8

@@ -365,13 +365,23 @@ class Model:
         m2c types each override from its own body, so overrides disagree
         (AnimProperty* vs KDScriptProperty*), which C++ rejects. Agreement wins;
         disagreeing pointers become `void *`; otherwise the most common type.
+
+        Each function votes once, however many vtables inherit it. A value
+        beats `void`: m2c types a body that leaves r3 unset as void (an empty
+        base `GetCharacterName`), while every override returning a value
+        (`return gpTranslation_StringArray[...]`) proves the slot's type.
         """
         if not hasattr(self, "_slot_rets"):
-            groups = defaultdict(Counter)
+            fns = defaultdict(set)
             for n, c in self.classes.items():
                 for i, fn in enumerate(c.get("vtable") or []):
                     if fn != "0x00000000" and not fn.startswith("__dt__"):
-                        groups[(self.slot_root(n, i), i)][self.rets.get(fn, "void")] += 1
+                        fns[(self.slot_root(n, i), i)].add(fn)
+            # Sorted so that ties break the same way in every process (set order follows the string hash seed).
+            groups = {k: Counter(self.rets.get(fn, "void") for fn in sorted(v)) for k, v in fns.items()}
+            for votes in groups.values():
+                if len(votes) > 1:
+                    votes.pop("void", None)
             self._slot_rets = {}
             for k, votes in groups.items():
                 if len(votes) == 1:
@@ -379,7 +389,7 @@ class Model:
                 elif all(t.endswith("*") for t in votes):
                     self._slot_rets[k] = "void *"
                 else:
-                    self._slot_rets[k] = votes.most_common(1)[0][0]
+                    self._slot_rets[k] = min(votes, key=lambda t: (-votes[t], t))
         return self._slot_rets.get((self.slot_root(cls, slot), slot))
 
     def static_type(self, s: dict) -> str | None:

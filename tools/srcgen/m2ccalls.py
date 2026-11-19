@@ -17,7 +17,8 @@ from classes import qualified
 from cxxtypes import K, parse, render
 from hrender import member_name
 
-TOKEN = re.compile(r"(?<![\w@])[A-Za-z_][\w<>,]*\w(?=\s*\(|\b)")
+# A mangled name may end in `>` (`AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>`).
+TOKEN = re.compile(r"(?<![\w@])[A-Za-z_][\w<>,]*[\w>](?=\s*\(|\b)")
 CAST = re.compile(r"^\((?:const )?[\w:<>, ]+ \*+\) ?")
 OPERATORS = {"__nw": "operator new", "__nwa": "operator new[]", "__dl": "operator delete", "__dla": "operator delete[]"}
 
