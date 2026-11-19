@@ -245,16 +245,14 @@ void AITargetData::SetInsideRegion(bool arg0) {
     M2C_FIELD(this, u8 *, 0x49) = (u8) ((M2C_FIELD(this, u8 *, 0x49) & ~0x40) | ((arg0 << 6) & 0x40));
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void AITargetData::Set(const MKVector3 &arg0, bool arg1) {
     this->unk0 = M2C_FIELD(&arg0, f64 *, 0);
     M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-    this->unk40.Set(NULL);
+    this->unk40.Set((Targetable *) NULL);
     M2C_FIELD(this, s8 *, 0x48) = 2;
     M2C_FIELD(this, u8 *, 0x49) = (u8) (M2C_FIELD(this, u8 *, 0x49) | 0x80);
     M2C_FIELD(this, u8 *, 0x49) = (u8) ((M2C_FIELD(this, u8 *, 0x49) & ~4) | ((arg1 << 2) & 4));
 }
-#endif
 
 void AITargetData::Set(Targetable *arg0, bool arg1) {
     this->unk40.Set(arg0);
@@ -266,9 +264,8 @@ void AITargetData::Set(Targetable *arg0, bool arg1) {
     M2C_FIELD(this, u8 *, 0x49) = (u8) ((M2C_FIELD(this, u8 *, 0x49) & ~4) | ((arg1 << 2) & 4));
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void AITargetData::SetDefaults() {
-    this->unk40.Set(NULL);
+    this->unk40.Set((Targetable *) NULL);
     M2C_FIELD(this, f32 *, 0) = 0.0f;
     M2C_FIELD(this, f32 *, 4) = 0.0f;
     this->unk8 = 0.0f;
@@ -290,4 +287,3 @@ void AITargetData::SetDefaults() {
     M2C_FIELD(this, u8 *, 0x49) = (u8) (M2C_FIELD(this, u8 *, 0x49) & ~4);
     M2C_FIELD(this, u8 *, 0x49) = (u8) (M2C_FIELD(this, u8 *, 0x49) & ~0x20);
 }
-#endif

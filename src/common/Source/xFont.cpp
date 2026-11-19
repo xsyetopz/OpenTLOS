@@ -166,58 +166,19 @@ void XFONTSetFgColor(unsigned long arg0) {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
-void XFONTPrintf(short arg0, short arg1, char *arg2, ... arg3) {
-    s8 sp78;
-    s32 *sp74;
-    M2C_UNK *sp70;
-    s32 sp6C;
-    s16 sp6A;
-    s16 sp68;
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f64 sp28;
-    s32 sp24;
-    s32 sp20;
-    s32 sp1C;
-    s32 sp18;
-    s32 sp14;
-    s8 *sp10;
-    s32 spC;
-    s32 sp8;
+void XFONTPrintf(short arg0, short arg1, char *arg2, ...) {
+    va_list args;
+    char buf[0x104];
+    s16 x;
+    s16 y;
 
-    sp68 = arg0;
-    sp6A = arg1;
-    if (M2C_ERROR(/* Read from unset register $cr0_eq */)) {
-        sp28 = farg0;
-        sp30 = farg1;
-        sp38 = farg2;
-        sp40 = farg3;
-        sp48 = farg4;
-        sp50 = farg5;
-        sp58 = farg6;
-        sp60 = farg7;
-    }
-    sp8 = (s32) arg0;
-    spC = (s32) arg1;
-    sp10 = arg2;
-    sp14 = arg3;
-    sp18 = arg4;
-    sp1C = arg5;
-    sp20 = arg6;
-    sp24 = arg7;
-    sp6C = 0x03000000;
-    sp70 = &arg_sp8;
-    sp74 = &sp8;
-    vsprintf(&sp78, arg2, (struct _anonymous *) &sp6C);
-    XFONTputString(&sp68, &sp6A, &sp78, &XFontBitmap);
+    x = arg0;
+    y = arg1;
+    va_start(args, arg2);
+    vsprintf(buf, arg2, args);
+    va_end(args);
+    XFONTputString(&x, &y, buf, &XFontBitmap);
 }
-#endif
 
 void XFONTSetFrameBuffer(void *arg0) {
     m_xfb = (s32 *) arg0;
