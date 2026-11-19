@@ -651,15 +651,17 @@ void MoltenMetalBucketTrack::Deinit() {
     ((KDUniformSpline *) &this->unk4C.unk14)->Deinit();
 }
 
-#if 0 // DRAFT: ')' expected
 void MoltenMetalBucketTrack::Init() {
+    MoltenMetalBucket *temp_r3_bucket;
+
     MKProp::Init();
-    M2C_STRUCT_COPY((s32) (this + 0x9C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY(&this->unkA0, &Matrix::identity, 0x40);
     this->unk8 = &this->unkA0;
-    this->unk4C.unk28 = M2C_BITWISE(f32, checked_cast<MoltenMetalBucket *, MKProp>(gMK->CreateProp("MoltenMetalBucket")));
+    temp_r3_bucket = checked_cast<MoltenMetalBucket *, MKProp>(gMK->CreateProp("MoltenMetalBucket"));
+    M2C_FIELD(this, MoltenMetalBucket **, 0x74) = temp_r3_bucket;
     this->unk4C.unk2C = 0.0f;
-    M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x88) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x80) = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x88) = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unk90 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk98 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unkC = (BoundingVolume *) &this->unk4C.unk34;
@@ -667,7 +669,6 @@ void MoltenMetalBucketTrack::Init() {
     this->unkE4 = 0;
     this->unkE8 = 5.0f;
 }
-#endif
 
 void MoltenMetalBucketTrackDescriptor::Deinit() {
     MKMaterial_Destroy(this->unk80);

@@ -43,43 +43,43 @@ extern M2C_UNK gb;
 static s32 error_message[8] = { 0xFFFFFFFF, 0xFFFFFFFF, 0x66, 0x67, 0x67, 0x68, 0x65, 0x66 };
 static s32 message_575[8] = { 0xFFFFFFFF, 0x71, 0x5C, 0x60, 0x5E, 0x5F, 0x5D, 0x60 };
 
-#if 0 // DRAFT: undefined identifier 'P8UISystem'
+extern "C" int stricmp(const char *, const char *);
+
 void MCActionScreen::Abort() {
     void *temp_r5_85;
 
     if (((void *) autosaveCard != NULL) && (((u8) M2C_FIELD(autosaveCard, u8 *, 9) == 0) || ((u8) M2C_FIELD(autosaveCard, u8 *, 8) != 0))) {
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
+        ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectCard");
     }
-    if (((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 9) == 0) || ((u8) M2C_FIELD(*MemoryCardScreen::selectedCard, u8 *, 8) != 0)) {
-        *MemoryCardScreen::selectedCard = NULL;
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
+    if (((u8) M2C_FIELD(*(void **) MemoryCardScreen::selectedCard, u8 *, 9) == 0) || ((u8) M2C_FIELD(*(void **) MemoryCardScreen::selectedCard, u8 *, 8) != 0)) {
+        *(void **) MemoryCardScreen::selectedCard = NULL;
+        ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectCard");
         return;
     }
-    switch ((s32) *MCActionScreen::action) {      /* irregular */
+    switch (*(s32 *) MCActionScreen::action) {
     case 6:
-        *MemoryCardScreen::selectedFile = -1;
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectFile");
+        *(s32 *) MemoryCardScreen::selectedFile = -1;
+        ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectFile");
         return;
     case 1:
-        *MCQueryScreen::query = 6;
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCQuery");
+        *(s32 *) MCQueryScreen::query = 6;
+        ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCQuery");
         return;
     case 5:
         temp_r5_85 = ui_cast<UISystem *, UIContainer *>(GetRoot())->unk98;
-        if (stricmp(M2C_FIELD(temp_r5_85, s32 *, 4), "MCSelectFile", temp_r5_85) == 0) {
-            ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectFile");
+        if (stricmp(M2C_FIELD(temp_r5_85, const char **, 4), "MCSelectFile") == 0) {
+            ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectFile");
             return;
         }
     default:
-        if ((u32) *KDMemoryCard::numCardsPresent == 1U) {
+        if (*(u32 *) KDMemoryCard::numCardsPresent == 1U) {
             PopScreen();
             return;
         }
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
+        ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectCard");
         return;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void MCActionScreen::Update() {
@@ -792,7 +792,6 @@ void MCActionScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void MCActionScreen::Resolve() {
     UIContainer *temp_r3_1417;
     UIContainer *temp_r3_1428;
@@ -812,7 +811,7 @@ void MCActionScreen::Resolve() {
     temp_r30_1395 = this->unkE0;
     temp_r3_1396 = M2C_FIELD(temp_r30_1395, s8 **, 0x68);
     if (temp_r3_1396 != NULL) {
-        UIStringTable_Remove(temp_r3_1396);
+        UIStringTable_Remove((const char *) temp_r3_1396);
     }
     M2C_FIELD(temp_r30_1395, s8 **, 0x68) = NULL;
     M2C_FIELD(temp_r30_1395, s32 *, 0x6C) = -1;
@@ -829,7 +828,6 @@ void MCActionScreen::Resolve() {
         }
     }
 }
-#endif
 
 void MCActionScreen::FreeResources() {
     UIContainer::FreeResources();
