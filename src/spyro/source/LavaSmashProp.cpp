@@ -383,44 +383,42 @@ void LavaSmashProp::Message(MKMessage *arg0) {
     ((KDSoundPlayer *) &this->unk1A8)->Message(arg0);
 }
 
-#if 0 // DRAFT: ')' expected
 void *LavaSmashProp::Update() {
     f32 sp1C;
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    s32 sp8;
     f32 temp_f1_612;
-    void *temp_r4_577;
+    LavaSmashPropDescriptor *desc;
+    LavaSmashPropDescriptor *desc2;
 
     Shatterable::Update();
-    if ((s32) M2C_FIELD(checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x17C) != 0) {
-        temp_r4_577 = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        sp8 = 1;
-        ((KDSoundFader *) &this->unk1A8)->Update(M2C_FIELD(temp_r4_577, s32 *, 0x17C), 1U, this->unk1D0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    desc = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if (desc->unk17C != 0) {
+        desc2 = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        ((KDSoundFader *) &this->unk1A8)->Update(desc2->unk17C, 1, this->unk1D0, (MKProp *) this, NULL, 0U, -1, 1);
     }
-    if ((s32) this->unk17C == 3) {
+    if (M2C_FIELD(this, s32 *, 0x17C) == 3) {
         this->unk1FC += gUpdateTimeDelta;
         temp_f1_612 = 0.5f * (this->unk204 * (1.0f + _table_sinf(0.5f * (6.2831855f * (f32) fmod(this->unk1FC, 2.0)))));
-        sp10 = this->unk108 + temp_f1_612;
-        sp14 = this->unk10C - temp_f1_612;
-        sp18 = this->unk110 - temp_f1_612;
-        sp1C = this->unk114;
+        sp10 = M2C_FIELD(this, f32 *, 0x108) + temp_f1_612;
+        sp14 = M2C_FIELD(this, f32 *, 0x10C) - temp_f1_612;
+        sp18 = M2C_FIELD(this, f32 *, 0x110) - temp_f1_612;
+        sp1C = M2C_FIELD(this, f32 *, 0x114);
         MKModel_SetColor(this->unk4, *((MKVector4 *) &sp10));
     }
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 f32 LavaSmashProp::Resolve() {
-    void *temp_r31_644;
+    LavaSmashPropDescriptor *desc;
+    LavaSmashPropDescriptor *fade;
 
     Shatterable::Resolve();
-    temp_r31_644 = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((KDSoundFader *) &this->unk1A8)->Init(M2C_FIELD(checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x180), M2C_FIELD(temp_r31_644, f32 *, 0x184));
+    desc = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    fade = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    ((KDSoundFader *) &this->unk1A8)->Init(fade->unk180, desc->unk184);
     this->unk1D0 = 0;
 }
-#endif
 
 void LavaSmashProp::Reset() {
     Shatterable::Reset();
@@ -429,7 +427,6 @@ void LavaSmashProp::Reset() {
     this->unk1D0 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk108'
 s32 LavaSmashProp::LoadDone() {
     Shatterable::LoadDone();
     M2C_FIELD(this, f64 *, 0x1E8) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
@@ -438,9 +435,8 @@ s32 LavaSmashProp::LoadDone() {
     M2C_FIELD(this, f64 *, 0x1E0) = (f64) M2C_FIELD(this, f64 *, 0x1F0);
     M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
     M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
-    this->unk204 = 1.0f - this->unk108;
+    this->unk204 = 1.0f - M2C_FIELD(this, f32 *, 0x108);
 }
-#endif
 
 void LavaSmashProp::Deinit() {
     Shatterable::Deinit();
@@ -456,32 +452,27 @@ void LavaSmashProp::Init() {
     this->unk204 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void LavaSmashPropDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
-    this->unk16C *= 100.0f;
+    M2C_FIELD(this, f32 *, 0x16C) *= 100.0f;
     this->unk170 *= 100.0f;
     this->unk174 *= 100.0f;
     this->unk178 *= 100.0f;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 s32 LavaSmashPropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_796;
 
     var_r31_796 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("burnRadius", &this->unk16C, 0) != 0) || (arg0->LoadFloat("lavaBubbleYOffset", &this->unk170, 0) != 0) || (arg0->LoadFloat("sinkSpeed", &this->unk178, 0) != 0) || (arg0->LoadFloat("sinkDepth", &this->unk174, 0) != 0) || (arg0->LoadFloat("LavaSoundFadeIn", &this->unk180, 0) != 0) || (arg0->LoadFloat("LavaSoundFadeOut", &this->unk184, 0) != 0) || (KDSound_LoadLine(arg0, "LavaBubbleSound", (int *) &this->unk17C) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("burnRadius", &M2C_FIELD(this, f32 *, 0x16C), 0) != 0) || (arg0->LoadFloat("lavaBubbleYOffset", &this->unk170, 0) != 0) || (arg0->LoadFloat("sinkSpeed", &this->unk178, 0) != 0) || (arg0->LoadFloat("sinkDepth", &this->unk174, 0) != 0) || (arg0->LoadFloat("LavaSoundFadeIn", &this->unk180, 0) != 0) || (arg0->LoadFloat("LavaSoundFadeOut", &this->unk184, 0) != 0) || (KDSound_LoadLine(arg0, "LavaBubbleSound", (int *) &this->unk17C) != 0)) {
         var_r31_796 = 1;
     }
     return var_r31_796;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void LavaSmashPropDescriptor::Init() {
     ShatterableDescriptor::Init();
-    this->unk16C = 0.0f;
+    M2C_FIELD(this, f32 *, 0x16C) = 0.0f;
     this->unk170 = 0.0f;
     this->unk174 = 0.0f;
     this->unk178 = 0.02f;
@@ -489,4 +480,3 @@ void LavaSmashPropDescriptor::Init() {
     this->unk184 = 0.25f;
     this->unk17C = GS_PLACEHOLDER;
 }
-#endif
