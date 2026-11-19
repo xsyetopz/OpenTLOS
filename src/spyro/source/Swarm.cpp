@@ -298,43 +298,31 @@ void SwarmProp::DrawEntity(SwarmEntity *arg0, const Matrix &arg1, const MKVector
     MKEnd();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8C'
 void SwarmProp::Draw() {
     Matrix sp70;
     Matrix sp30;
-    M2C_UNK sp2C;
-    f64 sp28;
-    f64 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    SwarmEntity **var_r31_386;
-    SwarmEntity *temp_r4_396;
+    MKVector4 sp20;
+    SwarmPropDescriptor *desc;
+    SwarmEntity **cur;
 
     KDProp::Draw();
-    M2C_STRUCT_COPY((s32) &sp30.unk3C + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
-    M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) &this->unk8C + 4, 0x40);
+    M2C_STRUCT_COPY(&sp70, MKView_GetCameraMatrix(), 0x40);
+    M2C_STRUCT_COPY(&sp30, &this->unk90, 0x40);
     sp30.Multiply3x3(&sp30, &sp70);
-    MKMaterial_SetMaterial(M2C_FIELD(checked_cast<SwarmPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x90));
-    sp10 = 0.8f;
-    sp14 = 0.8f;
-    sp18 = 0.0f;
-    sp1C = 1.0f;
-    sp20 = (f64) sp10;
-    sp28 = (f64) sp18;
+    desc = checked_cast<SwarmPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    MKMaterial_SetMaterial(M2C_FIELD(desc, MKMaterial **, 0x90));
+    sp20.unk0 = 0.8f;
+    sp20.unk4 = 0.8f;
+    sp20.unk8 = 0.0f;
+    sp20.unkC = 1.0f;
     MKPrimitive(0xC, 0);
-    var_r31_386 = this->unkF4;
-loop_2:
-    temp_r4_396 = *var_r31_386;
-    if (temp_r4_396 != NULL) {
-        DrawEntity(temp_r4_396, sp30, *((MKVector4 *) &sp20), 10.0f);
-        var_r31_386 += 4;
-        goto loop_2;
+    cur = this->unkF4;
+    while (*cur != NULL) {
+        DrawEntity(*cur, sp30, sp20, 10.0f);
+        cur += 1;
     }
     MKEndPrimitive();
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void *SwarmProp::Update() {
@@ -539,129 +527,96 @@ f32 SwarmProp::Resolve() {
     MKProp::Resolve();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8C'
+extern "C" void *malloc(u32);
+extern M2C_UNK gEmptyPtrListDL;
+MKVector3 KDRand_Vector(const MKVector3 &, const MKVector3 &);
+
 s32 SwarmProp::LoadDone() {
-    f64 sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
+    f64 temp_f29;
+    f64 temp_f30;
     MKVector3 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    Matrix *temp_r3_867;
-    SwarmEntity **temp_r3_925;
-    SwarmEntity **temp_r3_932;
-    SwarmEntity **temp_r3_939;
-    SwarmEntity **temp_r4_955;
-    SwarmEntity **temp_r5_982;
-    SwarmEntity **var_r3_912;
-    SwarmEntity **var_r3_983;
-    SwarmEntity **var_r4_988;
-    SwarmEntity **var_r5_924;
-    SwarmEntity *temp_r29_958;
-    f64 temp_f29_946;
-    f64 temp_f30_949;
-    s32 temp_r0_968;
-    s32 temp_r31_890;
-    s32 var_ctr_928;
-    s32 var_ctr_966;
-    s32 var_r31_948;
-    s32 var_r3_956;
-    u32 temp_r0_985;
+    SwarmEntity **head;
+    SwarmEntity **walk;
+    SwarmEntity **end;
+    SwarmEntity **base;
+    SwarmEntity **cur;
+    SwarmEntity *entity;
+    u32 walkValue;
+    s32 n;
+    s32 i;
+    s32 count;
+    s32 spawned;
+    s32 ctr;
 
     KDProp::LoadDone();
-    M2C_STRUCT_COPY((s32) &this->unk8C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    temp_r3_867 = &this->unk90;
-    temp_r3_867->Translate(temp_r3_867, *((MKVector3 *) &MKProp::loadInfo.unk40));
-    sp18 = -500.0f;
-    sp1C = -500.0f;
-    sp20 = -500.0f;
-    this->unk8 = &this->unk90;
-    M2C_FIELD(this, f64 *, 0xD0) = (f64) sp18;
-    sp10 = 500.0f;
-    sp8 = 500.0f;
-    spC = 500.0f;
-    M2C_FIELD(this, f64 *, 0xD8) = (f64) sp20;
-    M2C_FIELD(this, f64 *, 0xE0) = (f64) sp8;
-    this->unkE8 = (f64) sp10;
-    temp_r31_890 = this->unkF0;
-    sp48 = (f64) sp18;
-    sp50 = (f64) sp20;
-    sp38 = (f64) sp8;
-    sp40 = (f64) sp10;
-    if (temp_r31_890 == 0) {
-        this->unkF4 = (SwarmEntity **) (&gEmptyPtrListDL + 4);
+    M2C_STRUCT_COPY(&this->unk90, &Matrix::identity, 0x40);
+    this->unk90.Translate(&this->unk90, *((MKVector3 *) &MKProp::loadInfo.unk40));
+    M2C_FIELD(this, Matrix **, 0x8) = &this->unk90;
+    M2C_FIELD(this, f32 *, 0xD0) = -500.0f;
+    M2C_FIELD(this, f32 *, 0xD4) = -500.0f;
+    M2C_FIELD(this, f32 *, 0xD8) = -500.0f;
+    M2C_FIELD(this, f32 *, 0xE0) = 500.0f;
+    M2C_FIELD(this, f32 *, 0xE4) = 500.0f;
+    M2C_FIELD(this, f32 *, 0xE8) = 500.0f;
+    n = this->unkF0;
+    if (n == 0) {
+        this->unkF4 = (SwarmEntity **) ((u8 *) &gEmptyPtrListDL + 4);
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_912 = (SwarmEntity **) (((MKHeap *) (MKHeap::Current()))->Alloc(((temp_r31_890 + 2) * 4) + (temp_r31_890 << 6), NULL, 0));
+            base = (SwarmEntity **) (((MKHeap *) (MKHeap::Current()))->Alloc(((n + 2) * 4) + (n << 6), NULL, 0));
         } else {
-            var_r3_912 = malloc(((temp_r31_890 + 2) * 4) + (temp_r31_890 << 6));
+            base = (SwarmEntity **) malloc(((n + 2) * 4) + (n << 6));
         }
-        this->unkF4 = var_r3_912;
-        var_r5_924 = this->unkF4;
-        temp_r3_925 = var_r5_924 + (temp_r31_890 << 6);
-        this->unkF4 = temp_r3_925;
-        *temp_r3_925 = NULL;
-        var_ctr_928 = temp_r31_890;
-        if (temp_r31_890 > 0) {
+        this->unkF4 = base;
+        cur = this->unkF4;
+        this->unkF4 = (SwarmEntity **) ((u8 *) cur + (n << 6));
+        *this->unkF4 = NULL;
+        ctr = n;
+        if (n > 0) {
             do {
-                temp_r3_932 = this->unkF4;
-                this->unkF4 = temp_r3_932 + 4;
-                M2C_FIELD(temp_r3_932, SwarmEntity ***, 4) = var_r5_924;
-                var_r5_924 += 0x40;
-                var_ctr_928 -= 1;
-            } while (var_ctr_928 != 0);
+                this->unkF4 += 1;
+                *this->unkF4 = (SwarmEntity *) cur;
+                cur = (SwarmEntity **) ((u8 *) cur + 0x40);
+                ctr -= 1;
+            } while (ctr != 0);
         }
-        temp_r3_939 = this->unkF4;
-        this->unkF4 = temp_r3_939 + 4;
-        M2C_FIELD(temp_r3_939, SwarmEntity ***, 4) = NULL;
+        this->unkF4 += 1;
+        *this->unkF4 = NULL;
     }
-    temp_f29_946 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    var_r31_948 = 0;
-    temp_f30_949 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    temp_f29 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    spawned = 0;
+    temp_f30 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
 loop_12:
-    temp_r5_982 = this->unkF4;
-    var_r3_983 = temp_r5_982;
+    head = this->unkF4;
+    walk = head;
     do {
-        temp_r0_985 = M2C_FIELD(var_r3_983, u32 *, -4);
-        var_r3_983 -= 4;
-    } while (temp_r0_985 != 0U);
-    var_r4_988 = temp_r5_982;
-loop_16:
-    if ((SwarmEntity *) *var_r4_988 != NULL) {
-        var_r4_988 += 4;
-        goto loop_16;
+        walkValue = M2C_FIELD(walk, u32 *, -4);
+        walk -= 1;
+    } while (walkValue != 0U);
+    end = head;
+    while (*end != NULL) {
+        end += 1;
     }
-    if (var_r31_948 < (s32) ((((s32) (temp_r5_982 - var_r3_983) / 4) + ((s32) (var_r4_988 - temp_r5_982) / 4)) - 1)) {
-        temp_r4_955 = this->unkF4 - 4;
-        var_r3_956 = 0;
-        this->unkF4 = temp_r4_955;
-        temp_r29_958 = *temp_r4_955;
-        temp_r29_958->unk0 = temp_f29_946;
-        temp_r29_958->unk8 = temp_f30_949;
-        temp_r29_958->unk10 = temp_f29_946;
-        temp_r29_958->unk18 = temp_f30_949;
-        temp_r29_958->unk20 = temp_f29_946;
-        temp_r29_958->unk28 = temp_f30_949;
-        temp_r29_958->unk30 = 0.0f;
-        var_ctr_966 = 3;
-        do {
-            temp_r0_968 = var_r3_956 + 0x34;
-            var_r3_956 += 4;
-            *(temp_r29_958 + temp_r0_968) = 0;
-            var_ctr_966 -= 1;
-        } while (var_ctr_966 != 0);
+    count = (s32) (head - walk) + (s32) (end - head) - 1;
+    if (spawned < count) {
+        this->unkF4 -= 1;
+        entity = *this->unkF4;
+        entity->unk0 = temp_f29;
+        entity->unk8 = temp_f30;
+        entity->unk10 = temp_f29;
+        entity->unk18 = temp_f30;
+        entity->unk20 = temp_f29;
+        entity->unk28 = temp_f30;
+        entity->unk30 = 0.0f;
+        for (i = 0; i < 3; i++) {
+            M2C_FIELD(entity, s32 *, 0x34 + (i * 4)) = 0;
+        }
         sp28 = KDRand_Vector(this->unkD0, *((MKVector3 *) &this->unkE0));
-        var_r31_948 += 1;
-        *(MKVector3 *) &temp_r29_958->unk0 = sp28;
+        spawned += 1;
+        *(MKVector3 *) &entity->unk0 = sp28;
         goto loop_12;
     }
 }
-#endif
 
 s32 SwarmProp::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
@@ -670,48 +625,45 @@ s32 SwarmProp::LoadLine(MKIniLine *arg0) {
     return arg0->LoadInt("EntityCount", (int *) &this->unkF0, 0);
 }
 
-#if 0 // DRAFT: type mismatch 'SwarmEntity *' and 'SwarmEntity **'
-void SwarmProp::Deinit() {
-    SwarmEntity **var_r31_1058;
-    SwarmEntity **var_r3_1059;
-    SwarmEntity **var_r4_1057;
-    SwarmEntity *temp_r0_1062;
-    SwarmEntity *temp_r0_1081;
-    u32 temp_r0_1067;
+extern "C" void free(void *);
+extern M2C_UNK gEmptyPtrListDL;
 
-    var_r4_1057 = this->unkF4;
-    var_r31_1058 = var_r4_1057;
-    var_r3_1059 = var_r4_1057;
-loop_3:
-    temp_r0_1067 = M2C_FIELD(var_r3_1059, u32 *, -4);
-    var_r3_1059 -= 4;
-    if (temp_r0_1067 != 0U) {
-        temp_r0_1062 = *var_r3_1059;
-        if (temp_r0_1062 < var_r31_1058) {
-            var_r31_1058 = (SwarmEntity **) temp_r0_1062;
+void SwarmProp::Deinit() {
+    SwarmEntity **head;
+    SwarmEntity **walk;
+    SwarmEntity **cur;
+    SwarmEntity *entity;
+    void *min;
+
+    head = this->unkF4;
+    min = head;
+    walk = head;
+    walk -= 1;
+    while (*walk != NULL) {
+        entity = *walk;
+        if ((void *) entity < min) {
+            min = entity;
         }
-        goto loop_3;
+        walk -= 1;
     }
-    if (var_r3_1059 != &gEmptyPtrListDL) {
-loop_9:
-        temp_r0_1081 = *var_r4_1057;
-        if (temp_r0_1081 != NULL) {
-            if (temp_r0_1081 < var_r31_1058) {
-                var_r31_1058 = (SwarmEntity **) temp_r0_1081;
+    if (walk != (SwarmEntity **) &gEmptyPtrListDL) {
+        cur = head;
+        while (*cur != NULL) {
+            entity = *cur;
+            if ((void *) entity < min) {
+                min = entity;
             }
-            var_r4_1057 += 4;
-            goto loop_9;
+            cur += 1;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1058, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free(min, NULL, 0);
         } else {
-            free(var_r31_1058);
+            free(min);
         }
     }
     this->unkF4 = NULL;
     KDProp::Deinit();
 }
-#endif
 
 void SwarmProp::Init() {
     KDProp::Init();

@@ -49,13 +49,13 @@ extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: ')' expected
 void SteamValve::Message(MKMessage *arg0) {
     s32 temp_r0_46;
+    HitHeroSndMsg *hit;
 
     GameProp::Message(arg0);
     temp_r0_46 = arg0->unk0;
-    switch (temp_r0_46) {                           /* irregular */
+    switch (temp_r0_46) {
     case 0xB5:
         this->unkDC = 1;
         this->unkD8 = this->unkD4;
@@ -67,11 +67,11 @@ void SteamValve::Message(MKMessage *arg0) {
         this->unkDD = 0;
         return;
     case 0x16:
-        M2C_FIELD(checked_cast<HitHeroSndMsg *, MKMessage>(arg0), s32 *, 8) = (s32) GS_SpyroSteamBurn1;
+        hit = checked_cast<HitHeroSndMsg *, MKMessage>(arg0);
+        hit->unk8 = GS_SpyroSteamBurn1;
         return;
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void *SteamValve::Update() {
@@ -363,17 +363,15 @@ s32 SteamValve::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 SteamValve::LoadLine(MKIniLine *arg0) {
     s32 var_r31_500;
 
     var_r31_500 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("OnTime", &this->unkD0, 0) != 0) || (arg0->LoadFloat("OffTime", &this->unkD4, 0) != 0) || (arg0->LoadFloat("StartDelay", &this->unkD8, 0) != 0) || (arg0->LoadBool("StartOn", &this->unkDC, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("OnTime", &this->unkD0, 0) != 0) || (arg0->LoadFloat("OffTime", &this->unkD4, 0) != 0) || (arg0->LoadFloat("StartDelay", &this->unkD8, 0) != 0) || (arg0->LoadBool("StartOn", (bool *) &this->unkDC, 0) != 0)) {
         var_r31_500 = 1;
     }
     return var_r31_500;
 }
-#endif
 
 void SteamValve::Deinit() {
     GameProp::Deinit();
@@ -389,9 +387,7 @@ void SteamValve::Init() {
     this->unkDD = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void SteamValveDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, "r_fxemit0");
+    M2C_FIELD(this, s32 *, 0xE4) = MKModel_GetRefPointIndex(this->unk2C, "r_fxemit0");
 }
-#endif
