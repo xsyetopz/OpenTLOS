@@ -6,7 +6,6 @@ extern u8 init_221;
 extern u8 *pPositive_220;
 static u8 lit_stringBase0[4] = { 0x2B, 0, 0x2D, 0 };   /* const */
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCommandLine' to 'unsigned long'
 void MKCommandLine::ParseArgument(char *arg0) {
     s32 var_ctr_40;
     s32 var_r28_39;
@@ -15,39 +14,35 @@ void MKCommandLine::ParseArgument(char *arg0) {
     u8 temp_r0_23;
 
     var_r27_17 = 0U;
-loop_2:
     temp_r31_22 = (signed char *) (&arg0[var_r27_17]);
     temp_r0_23 = (u8) *temp_r31_22;
-    if (((s8) temp_r0_23 != 0x2D) && ((s8) temp_r0_23 != 0x2B) && ((s8) temp_r0_23 != 0x3D) && ((s8) temp_r0_23 != 0x20) && (var_r27_17 < strlen(arg0))) {
+    while (((s8) temp_r0_23 != 0x2D) && ((s8) temp_r0_23 != 0x2B) && ((s8) temp_r0_23 != 0x3D) && ((s8) temp_r0_23 != 0x20) && (var_r27_17 < strlen(arg0))) {
         var_r27_17 += 1;
-        goto loop_2;
+        temp_r31_22 = (signed char *) (&arg0[var_r27_17]);
+        temp_r0_23 = (u8) *temp_r31_22;
     }
     var_r28_39 = 0;
     var_ctr_40 = 0x10;
-loop_8:
-    if ((u32) *(this + (var_r28_39 + 4)) == 0U) {
-        if (var_r27_17 == strlen(arg0)) {
-            M2C_FIELD((this + var_r28_39), s8 **, 8) = (signed char *) (arg0);
-        } else if (stricmp(temp_r31_22, lit_stringBase0) == 0) {
-            M2C_FIELD((this + var_r28_39), u8 **, 8) = lit_stringBase0;
-        } else if (stricmp(temp_r31_22, &lit_stringBase0[2]) == 0) {
-            M2C_FIELD((this + var_r28_39), u8 **, 8) = &lit_stringBase0[2];
-        } else if ((s32) (u8) *temp_r31_22 != 0x20) {
-            M2C_FIELD((this + var_r28_39), s8 **, 8) = (s8 *) (temp_r31_22 + 1);
+    do {
+        if (M2C_FIELD(this, u32 *, var_r28_39 + 4) == 0U) {
+            if (var_r27_17 == strlen(arg0)) {
+                M2C_FIELD(this, s8 **, var_r28_39 + 8) = (signed char *) (arg0);
+            } else if (stricmp(temp_r31_22, lit_stringBase0) == 0) {
+                M2C_FIELD(this, u8 **, var_r28_39 + 8) = lit_stringBase0;
+            } else if (stricmp(temp_r31_22, &lit_stringBase0[2]) == 0) {
+                M2C_FIELD(this, u8 **, var_r28_39 + 8) = &lit_stringBase0[2];
+            } else if ((s32) (u8) *temp_r31_22 != 0x20) {
+                M2C_FIELD(this, s8 **, var_r28_39 + 8) = (s8 *) (temp_r31_22 + 1);
+            }
+            *temp_r31_22 = 0;
+            M2C_FIELD(this, s8 **, var_r28_39 + 4) = (signed char *) (arg0);
+            this->unk0 += 1;
+            return;
         }
-        *temp_r31_22 = 0;
-        M2C_FIELD((this + var_r28_39), s8 **, 4) = (signed char *) (arg0);
-        this->unk0 += 1;
-        return;
-    }
-    var_r28_39 += 8;
-    var_ctr_40 -= 1;
-    if (var_ctr_40 == 0) {
-        return;
-    }
-    goto loop_8;
+        var_r28_39 += 8;
+        var_ctr_40 -= 1;
+    } while (var_ctr_40 != 0);
 }
-#endif
 
 u8 *MKCommandLine::GetParameter(const char *arg0, bool arg1) {
     s32 var_r31_126;
@@ -80,7 +75,6 @@ u8 *MKCommandLine::GetParameter(const char *arg0, bool arg1) {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'char *'
 void MKCommandLine::AddFromString(char *arg0) {
     s32 var_r5_187;
     s8 *temp_r3_193;
@@ -147,13 +141,12 @@ block_10:
         }
         temp_r4_223[var_r26_224] = 0;
         if (var_r26_224 != 0U) {
-            ParseArgument(temp_r4_223);
+            ParseArgument((char *) temp_r4_223);
         }
         var_r28_217 = var_r26_224 + var_r28_217 + 1;
         goto loop_21;
     }
 }
-#endif
 
 void MKCommandLine::InitFromString(char *arg0) {
     s32 var_ctr_282;
