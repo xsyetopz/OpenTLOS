@@ -20,20 +20,20 @@ extern s32 GS_PLACEHOLDER;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: pointer/array required
 void WobbleProperty::Command(int arg0) {
+    s8 *temp_r3;
+
     if (arg0 == 1) {
-        *(*KDProperty::pInstanceMem + (this->unk8 + 0xC)) = 0;
-        M2C_FIELD(*(*KDProperty::pInstanceMem + this->unk8), s8 *, 0x30) = 0;
+        *(*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 0xC)) = 0;
+        temp_r3 = *(s8 **) (*(u8 **) KDProperty::pInstanceMem + this->unk8);
+        M2C_FIELD(temp_r3, s8 *, 0x30) = 0;
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[8])' does not match 'stricmp(signed char *, long *)'
+extern "C" s32 stricmp(const char *, const char *);
 s32 WobbleProperty::ResolveCommand(const char *arg0) const {
     return stricmp(arg0, "Disable") == 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void WobbleProperty::Update() {
@@ -282,89 +282,78 @@ void WobbleProperty::ResolveInstance() {
 
 }
 
-#if 0 // DRAFT: illegal type
 void WobbleProperty::LoadDoneInstance() {
-    M2C_UNK sp1C;
+    MKModel *temp_r28;
+    u8 *temp_r29;
     f32 sp10;
-    MKModel *temp_r28_479;
-    f32 var_f4_510;
+    f32 sp20[0x10];
+    f32 var_f4;
+    f32 temp_f0;
     f64 temp_f1_513;
     f64 temp_f1_519;
     f64 temp_f1_523;
-    s32 temp_r30_486;
-    s32 temp_r3_542;
-    s32 var_r0_552;
-    void *temp_r29_484;
-    void *temp_r3_586;
+    s32 var_r0;
+    s32 temp_r3;
+    u8 *temp_r3_586;
 
-    temp_r28_479 = M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4);
-    temp_r29_484 = (void *) (*KDProperty::pInstanceMem);
-    temp_r30_486 = this->unk8;
-    *(temp_r29_484 + temp_r30_486) = MKDynamicBone_GetDynamicBone(temp_r28_479, ((Animation *) (MKModel_GetAnimation(temp_r28_479)))->GetNodeIndex(M2C_BITWISE(s8 *, this->unk14)));
-    M2C_STRUCT_COPY((s32) &sp1C + 4, M2C_FIELD(*KDProperty::pInstanceMem, s32 *, 8) - 4 + 4, 0x40);
-    var_f4_510 = (sp28 * sp28) + ((sp20 * sp20) + (sp24 * sp24));
-    if (var_f4_510 > 0.0f) {
-        temp_f1_513 = __frsqrte(var_f4_510);
-        temp_f1_519 = 0.5 * temp_f1_513 * -(((f64) var_f4_510 * (temp_f1_513 * temp_f1_513)) - 3.0);
-        temp_f1_523 = 0.5 * temp_f1_519 * -(((f64) var_f4_510 * (temp_f1_519 * temp_f1_519)) - 3.0);
-        var_f4_510 = (f32) ((f64) var_f4_510 * (0.5 * temp_f1_523 * -(((f64) var_f4_510 * (temp_f1_523 * temp_f1_523)) - 3.0)));
-    } else if (var_f4_510 < M2C_BITWISE(f32, 0.0)) {
-        var_f4_510 = __float_nan;
+    temp_r29 = *(u8 **) KDProperty::pInstanceMem;
+    temp_r28 = M2C_FIELD(temp_r29, MKModel **, 4);
+    *(void **) (temp_r29 + this->unk8) = MKDynamicBone_GetDynamicBone(temp_r28, MKModel_GetAnimation(temp_r28)->GetNodeIndex(*(const char **) &this->unk14));
+    M2C_STRUCT_COPY(sp20, *(void **) (temp_r29 + 8), 0x40);
+    var_f4 = (sp20[2] * sp20[2]) + ((sp20[0] * sp20[0]) + (sp20[1] * sp20[1]));
+    if (var_f4 > 0.0f) {
+        temp_f1_513 = __frsqrte(var_f4);
+        temp_f1_519 = 0.5 * temp_f1_513 * -(((f64) var_f4 * (temp_f1_513 * temp_f1_513)) - 3.0);
+        temp_f1_523 = 0.5 * temp_f1_519 * -(((f64) var_f4 * (temp_f1_519 * temp_f1_519)) - 3.0);
+        var_f4 = (f32) ((f64) var_f4 * (0.5 * temp_f1_523 * -(((f64) var_f4 * (temp_f1_523 * temp_f1_523)) - 3.0)));
+    } else if (var_f4 < 0.0f) {
+        var_f4 = __float_nan;
     } else {
-        sp10 = var_f4_510;
-        temp_r3_542 = M2C_BITWISE(s32, sp10) & 0x7F800000;
-        switch (temp_r3_542) {                      /* irregular */
-        case 0x7F800000:
-            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
-                var_r0_552 = 1;
+        sp10 = var_f4;
+        temp_r3 = *(s32 *) &sp10 & 0x7F800000;
+        if (temp_r3 == 0x7F800000) {
+            if (*(s32 *) &sp10 & 0x7FFFFF) {
+                var_r0 = 1;
             } else {
-                var_r0_552 = 2;
+                var_r0 = 2;
             }
-            break;
-        case 0x0:
-            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
-                var_r0_552 = 5;
+        } else if (temp_r3 == 0x0) {
+            if (*(s32 *) &sp10 & 0x7FFFFF) {
+                var_r0 = 5;
             } else {
-                var_r0_552 = 3;
+                var_r0 = 3;
             }
-            break;
-        default:
-            var_r0_552 = 4;
-            break;
+        } else {
+            var_r0 = 4;
         }
-        if (var_r0_552 == 1) {
-            var_f4_510 = __float_nan;
+        if (var_r0 == 1) {
+            var_f4 = __float_nan;
         }
     }
-    *(*KDProperty::pInstanceMem + (this->unk8 + 4)) = this->unk18 * (f32) fabs((f32) fabs(var_f4_510));
-    temp_r3_586 = (void *) (*KDProperty::pInstanceMem + this->unk8);
-    M2C_FIELD(temp_r3_586, f32 *, 8) = (f32) (this->unk20 * M2C_FIELD(temp_r3_586, f32 *, 4));
+    temp_f0 = var_f4 < 0.0f ? -var_f4 : var_f4;
+    temp_f0 = temp_f0 < 0.0f ? -temp_f0 : temp_f0;
+    *(f32 *) (temp_r29 + (this->unk8 + 4)) = this->unk18 * temp_f0;
+    temp_r3_586 = temp_r29 + this->unk8;
+    M2C_FIELD(temp_r3_586, f32 *, 8) = this->unk20 * M2C_FIELD(temp_r3_586, f32 *, 4);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 WobbleProperty::LoadLineInstance(MKIniLine *arg0) {
-    arg0->LoadString("bonename", (s8 **) &this->unk14, 0);
+    return arg0->LoadString("bonename", (const char **) &this->unk14, 0);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKIniLine *'
 void WobbleProperty::InitInstance() {
-    f32 var_r31_632;
-    void *temp_r4_629;
+    MKIniLine *var_r31;
+    u8 *temp_r4;
 
-    temp_r4_629 = (void *) (*KDProperty::pInstanceMem + this->unk8);
-    M2C_FIELD(temp_r4_629, s8 *, 0xC) = 1;
-    M2C_FIELD(temp_r4_629, s32 *, 0) = 0;
-    var_r31_632 = this->unk10;
-loop_2:
-    if (M2C_BITWISE(u32, var_r31_632) != 0U) {
-        LoadLineInstance(var_r31_632);
-        var_r31_632 = M2C_BITWISE(f32, ((MKIni *) (M2C_FIELD(var_r31_632, MKIni **, 0xC)))->GetNextLine(M2C_BITWISE(MKIniLine *, var_r31_632)));
-        goto loop_2;
+    temp_r4 = *(u8 **) KDProperty::pInstanceMem + this->unk8;
+    M2C_FIELD(temp_r4, s8 *, 0xC) = 1;
+    M2C_FIELD(temp_r4, s32 *, 0) = 0;
+    var_r31 = *(MKIniLine **) &this->unk10;
+    while (var_r31 != NULL) {
+        this->LoadLineInstance(var_r31);
+        var_r31 = M2C_FIELD(var_r31, MKIni **, 0xC)->GetNextLine(var_r31);
     }
 }
-#endif
 
 void WobbleProperty::Resolve(KDPropertySet *arg0) {
     s32 temp_r3_663;
@@ -377,20 +366,18 @@ void WobbleProperty::Resolve(KDPropertySet *arg0) {
     this->unk2C = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine *' to 'float'
 s32 WobbleProperty::LoadLine(MKIniLine *arg0) {
-    u8 var_r31_708;
+    u8 var_r31;
 
-    if (M2C_BITWISE(u32, this->unk10) == 0U) {
-        this->unk10 = M2C_BITWISE(f32, arg0);
+    if (*(u32 *) &this->unk10 == 0) {
+        *(MKIniLine **) &this->unk10 = arg0;
     }
-    var_r31_708 = 0;
-    if ((arg0->LoadFloat("collisionradius", &this->unk18, 0) != 0) || (arg0->LoadFloat("antispamDelay", &this->unk1C, 0) != 0) || (arg0->LoadFloat("HitSoundSensitivity", &this->unk20, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", (int *) &this->unk30) != 0)) {
-        var_r31_708 = 1;
+    var_r31 = 0;
+    if (((u8) arg0->LoadFloat("collisionradius", &this->unk18, 0) != 0) || ((u8) arg0->LoadFloat("antispamDelay", &this->unk1C, 0) != 0) || ((u8) arg0->LoadFloat("HitSoundSensitivity", &this->unk20, 0) != 0) || ((u8) KDSound_LoadLine(arg0, "hitSound", (int *) &this->unk30) != 0)) {
+        var_r31 = 1;
     }
-    return var_r31_708;
+    return var_r31;
 }
-#endif
 
 WobbleProperty::WobbleProperty() {
     this->unk4 = NULL;
