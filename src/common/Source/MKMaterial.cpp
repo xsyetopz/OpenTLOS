@@ -41,28 +41,25 @@ extern Texture *pMKWhiteTexture;
 extern s8 *pMatIDTable;
 extern MKMaterialUpdater *pMaterialUpdaters;
 
-#if 0 // DRAFT: ')' expected
+extern "C" s32 stricmp(const char *, const char *);
 s32 MKMaterial_GetMaterialIDMask(const char *arg0) {
     s32 var_r30_27;
     s32 var_r31_28;
 
-    if (stricmp"NONE" == 0) {
+    if (stricmp(arg0, "NONE") == 0) {
         return 0;
     }
     var_r30_27 = 0;
     var_r31_28 = 0;
-loop_6:
-    if (var_r30_27 >= (s32) materialIdCount) {
-        return 0;
+    while (var_r30_27 < (s32) materialIdCount) {
+        if (stricmp(arg0, (const char *) &pMatIDTable[var_r31_28]) == 0) {
+            return 1 << M2C_FIELD(&pMatIDTable[var_r31_28], u8 *, 0x40);
+        }
+        var_r30_27 += 1;
+        var_r31_28 += 0x41;
     }
-    if (stricmp(arg0, &pMatIDTable[var_r31_28]) == 0) {
-        return 1 << M2C_FIELD(&pMatIDTable[var_r31_28], u8 *, 0x40);
-    }
-    var_r30_27 += 1;
-    var_r31_28 += 0x41;
-    goto loop_6;
+    return 0;
 }
-#endif
 
 void MKMaterial_InitMaterialIDs() {
     s32 sp8;
@@ -157,9 +154,7 @@ void MKMaterialInternal_RemoveUpdater(MKMaterialUpdater *arg0) {
     ((MKHeap *) arg0)->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
 }
 
-#if 0 // DRAFT: identifier 'arg2' redeclared
-void MKMaterialInternal_AddUpdater(MKMaterial *arg0, void (*arg2)(MKMaterial *, void *), void *arg2) {
-    MKMaterialUpdater *temp_r0_275;
+void MKMaterialInternal_AddUpdater(MKMaterial *arg0, void (*arg1)(MKMaterial *, void *), void *arg2) {
     MKMaterialUpdater *var_r3_254;
     MKMaterialUpdater *var_r4_265;
 
@@ -170,7 +165,7 @@ void MKMaterialInternal_AddUpdater(MKMaterial *arg0, void (*arg2)(MKMaterial *, 
     }
     var_r3_254->unk0 = arg0;
     var_r3_254->unk8 = (MKHeap *) arg2;
-    var_r3_254->unk4 = (void (*)(MKMaterial *, MKHeap *)) arg1;
+    M2C_FIELD(var_r3_254, void **, 4) = (void *) arg1;
     var_r3_254->unk10 = NULL;
     var_r4_265 = pMaterialUpdaters;
     if (var_r4_265 == NULL) {
@@ -178,37 +173,30 @@ void MKMaterialInternal_AddUpdater(MKMaterial *arg0, void (*arg2)(MKMaterial *, 
         var_r3_254->unkC = NULL;
         return;
     }
-loop_7:
-    temp_r0_275 = var_r4_265->unk10;
-    if (temp_r0_275 != NULL) {
-        var_r4_265 = temp_r0_275;
-        goto loop_7;
+    while (var_r4_265->unk10 != NULL) {
+        var_r4_265 = var_r4_265->unk10;
     }
     var_r4_265->unk10 = var_r3_254;
     var_r3_254->unkC = var_r4_265;
 }
-#endif
 
 s32 MKMaterialInternal_GetCurrent() {
     return (long) (gpCurrentMaterial);
 }
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *)'
+extern "C" s32 stricmp(const char *, const char *);
 s8 *MKMaterialInternal_Find(const char *arg0) {
     s8 *var_r31_308;
 
-    var_r31_308 = (signed char *) (*(&materialList + (StringHash(arg0, 0x200) * 4)));
-loop_5:
-    if (var_r31_308 == NULL) {
-        return NULL;
+    var_r31_308 = *(s8 **) (&materialList + StringHash(arg0, 0x200) * 4);
+    while (var_r31_308 != NULL) {
+        if ((stricmp((const char *) var_r31_308, arg0) == 0) && ((u8) ((MKResource *) var_r31_308)->IsResourceAvailable() != 0)) {
+            return var_r31_308;
+        }
+        var_r31_308 = M2C_FIELD(var_r31_308, s8 **, 0x2C);
     }
-    if ((stricmp(var_r31_308, arg0) == 0) && (((MKResource *) var_r31_308)->IsResourceAvailable() != 0)) {
-        return var_r31_308;
-    }
-    var_r31_308 = M2C_FIELD(var_r31_308, s8 **, 0x2C);
-    goto loop_5;
+    return NULL;
 }
-#endif
 
 void *MKMaterialInternal_GetMaterialTypeInfoFromID(int arg0) {
     void *temp_r4_342;
@@ -227,22 +215,18 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *)'
 s32 MKMaterialInternal_GetMaterialTypeIDFromName(const char *arg0) {
     void *var_r31_365;
 
     var_r31_365 = gpMKMaterialTypeInfoList;
-loop_4:
-    if (var_r31_365 == NULL) {
-        return -1;
+    while (var_r31_365 != NULL) {
+        if (stricmp((const char *) M2C_FIELD(M2C_FIELD(var_r31_365, void **, 0), s8 **, 0), arg0) == 0) {
+            return M2C_FIELD(M2C_FIELD(var_r31_365, void **, 0), s32 *, 4);
+        }
+        var_r31_365 = M2C_FIELD(var_r31_365, void **, 4);
     }
-    if (stricmp(M2C_FIELD(M2C_FIELD(var_r31_365, void **, 0), s8 **, 0), arg0) == 0) {
-        return M2C_FIELD(M2C_FIELD(var_r31_365, void **, 0), s32 *, 4);
-    }
-    var_r31_365 = M2C_FIELD(var_r31_365, void **, 4);
-    goto loop_4;
+    return -1;
 }
-#endif
 
 s8 MKMaterial_GetParameter(MKMaterial *arg0, MKMaterialParameter arg1) {
     if ((u32) arg1 <= 7U) {
@@ -305,11 +289,9 @@ void MKMaterial_SetParameter(MKMaterial *arg0, MKMaterialParameter arg1, int arg
     }
 }
 
-#if 0 // DRAFT: illegal type
 f64 *MKMaterial_GetColor(MKMaterial *arg0) {
-    return arg0->unk24 + 0x30;
+    return (f64 *) ((s8 *) arg0->unk24 + 0x30);
 }
-#endif
 
 void MKMaterial_SetColor(MKMaterial *arg0, const MKVector4 &arg1) {
     void *temp_r5_523;
@@ -480,133 +462,126 @@ void MKMaterial_DeinitModule() {
     bMaterialDeiniting = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+extern "C" s8 *CreateFromRawData__7TextureFPCcPviiii(const char *, void *, int, int, int, int);
 void MKMaterial_InitModule() {
-    MKMaterial *temp_r3_889;
-    MKMaterialUpdater *var_r3_866;
+    void *var_r3_866;
 
     bMaterialIniting = 1;
     memset(&materialList, 0, 0x800U);
-    MKMaterial_LinkMaterial_MK2_Standard(1U);
+    MKMaterial_LinkMaterial_MK2_Standard(true);
     MKMaterial_LinkMaterial_MK2_FFTWater();
     MKMaterial_InitModule_PlatformSpecific();
     if (MKHeap::Current() != NULL) {
-        var_r3_866 = (MKMaterialUpdater *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0));
+        var_r3_866 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x400, NULL, 0);
     } else {
         var_r3_866 = malloc(0x400);
     }
     pMKWhiteMaterialData = (MatInfo *) var_r3_866;
     memset(var_r3_866, 0xFF, 0x400U);
-    pMKWhiteTexture = ((Texture *) ("MKWhite"))->CreateFromRawData(&pMKWhiteMaterialData->unk0, NULL, 0x10, 0x10, 0, M2C_ERROR(/* Read from unset register $r9 */));
-    temp_r3_889 = MKMaterial_Create"MKWhite";
-    gpMKWhiteMaterial = temp_r3_889;
-    MKMat_MK2_SetMaterialType(temp_r3_889, (MKMat_MK2_Standard_MaterialType) 3);
+    pMKWhiteTexture = (Texture *) CreateFromRawData__7TextureFPCcPviiii("MKWhite", pMKWhiteMaterialData, 0, 0x10, 0x10, 0);
+    gpMKWhiteMaterial = (MKMaterial *) MKMaterial_Create("MKWhite");
+    MKMat_MK2_SetMaterialType(gpMKWhiteMaterial, (MKMat_MK2_Standard_MaterialType) 3);
     MKMaterial_SetParameter(gpMKWhiteMaterial, (MKMaterialParameter) 0, 0);
     bMaterialIniting = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1E0'
 void MKMatInfo_Merge(MatInfo *arg0, MatInfo *arg1) {
-    if (arg1->unk1E0 & 1) {
-        strcpy(&arg0->unk80, &arg1->unk80);
-        arg0->unk1E4 = arg1->unk1E4;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x1) != 0) {
+        strcpy((char *) ((s8 *) arg0 + 0x80), (const char *) ((s8 *) arg1 + 0x80));
+        M2C_FIELD(arg0, s32 *, 0x1E4) = M2C_FIELD(arg1, s32 *, 0x1E4);
     }
-    if (arg1->unk1E0 & 2) {
-        arg0->unk24 = arg1->unk24;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x2) != 0) {
+        M2C_FIELD(arg0, s32 *, 0x24) = M2C_FIELD(arg1, s32 *, 0x24);
     }
-    if (arg1->unk1E0 & 4) {
-        arg0->unk28 = arg1->unk28;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x4) != 0) {
+        M2C_FIELD(arg0, s32 *, 0x28) = M2C_FIELD(arg1, s32 *, 0x28);
     }
-    if (arg1->unk1E0 & 8) {
-        arg0->unk30 = arg1->unk30;
-        arg0->unk38 = arg1->unk38;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x8) != 0) {
+        *(MKVector4 *) ((s8 *) arg0 + 0x30) = *(MKVector4 *) ((s8 *) arg1 + 0x30);
     }
-    if (arg1->unk1E0 & 0x10) {
-        M2C_STRUCT_COPY((s32) (arg0 + 0x3C) + 4, (s32) (arg1 + 0x3C) + 4, 0x40);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x10) != 0) {
+        *(Matrix *) ((s8 *) arg0 + 0x40) = *(Matrix *) ((s8 *) arg1 + 0x40);
     }
-    if (arg1->unk1E0 & 0x20) {
-        strcpy(&arg0->unkA0, &arg1->unkA0);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x20) != 0) {
+        strcpy((char *) ((s8 *) arg0 + 0xA0), (const char *) ((s8 *) arg1 + 0xA0));
     }
-    if (arg1->unk1E0 & 0x40) {
-        strcpy(&arg0->unkC0, &arg1->unkC0);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x40) != 0) {
+        strcpy((char *) ((s8 *) arg0 + 0xC0), (const char *) ((s8 *) arg1 + 0xC0));
     }
-    if (arg1->unk1E0 & 0x80) {
-        arg0->unk2C = arg1->unk2C;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x80) != 0) {
+        M2C_FIELD(arg0, f32 *, 0x2C) = M2C_FIELD(arg1, f32 *, 0x2C);
     }
-    if (arg1->unk1E0 & 0x100) {
-        arg0->unkE0 = arg1->unkE0;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x100) != 0) {
+        M2C_FIELD(arg0, s8 *, 0xE0) = M2C_FIELD(arg1, s8 *, 0xE0);
     }
-    if (arg1->unk1E0 & 0x200) {
-        arg0->unkE1 = arg1->unkE1;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x200) != 0) {
+        M2C_FIELD(arg0, s8 *, 0xE1) = M2C_FIELD(arg1, s8 *, 0xE1);
     }
-    if (arg1->unk1E0 & 0x400) {
-        arg0->unkE2 = arg1->unkE2;
-        arg0->unkE3 = arg1->unkE3;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x400) != 0) {
+        M2C_FIELD(arg0, s8 *, 0xE2) = M2C_FIELD(arg1, s8 *, 0xE2);
+        M2C_FIELD(arg0, s8 *, 0xE3) = M2C_FIELD(arg1, s8 *, 0xE3);
     }
-    if (arg1->unk1E0 & 0x800) {
-        arg0->unkE4 = (s8) (u8) arg1->unkE4;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x800) != 0) {
+        M2C_FIELD(arg0, s8 *, 0xE4) = M2C_FIELD(arg1, s8 *, 0xE4);
     }
-    if (arg1->unk1E0 & 0x1000) {
-        arg0->unkE5 = arg1->unkE5;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x1000) != 0) {
+        M2C_FIELD(arg0, s8 *, 0xE5) = M2C_FIELD(arg1, s8 *, 0xE5);
     }
-    if (arg1->unk1E0 & 0x2000) {
-        arg0->unkE6 = arg1->unkE6;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x2000) != 0) {
+        M2C_FIELD(arg0, s8 *, 0xE6) = M2C_FIELD(arg1, s8 *, 0xE6);
     }
-    if (arg1->unk1E0 & 0x8000) {
-        strcpy(&arg0->unkE8.unk0, &arg1->unkE8.unk0);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x8000) != 0) {
+        strcpy((char *) ((s8 *) arg0 + 0xE8), (const char *) ((s8 *) arg1 + 0xE8));
     }
-    if (arg1->unk1E0 & 0x10000) {
-        strcpy(&arg0->unkE8.unk20, &arg1->unkE8.unk20);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x10000) != 0) {
+        strcpy((char *) ((s8 *) arg0 + 0x108), (const char *) ((s8 *) arg1 + 0x108));
     }
-    if (arg1->unk1E0 & 0x20000) {
-        memcpy(&arg0->unkE8.unk40, &arg1->unkE8.unk40, 0xCU);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x20000) != 0) {
+        memcpy((s8 *) arg0 + 0x128, (s8 *) arg1 + 0x128, 0xCU);
     }
-    if (arg1->unk1E0 & 0x40000) {
-        memcpy(&arg0->unkE8.unk4C, &arg1->unkE8.unk4C, 0xCU);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x40000) != 0) {
+        memcpy((s8 *) arg0 + 0x134, (s8 *) arg1 + 0x134, 0xCU);
     }
-    if (arg1->unk1E0 & 0x80000) {
-        memcpy(&arg0->unkE8.unk58, &arg1->unkE8.unk58, 0x10U);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x80000) != 0) {
+        memcpy((s8 *) arg0 + 0x140, (s8 *) arg1 + 0x140, 0x10U);
     }
-    if (arg1->unk1E0 & 0x100000) {
-        memcpy(&arg0->unkE8.unk60.dummy[2], &arg1->unkE8.unk60.dummy[2], 0x10U);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x100000) != 0) {
+        memcpy((s8 *) arg0 + 0x150, (s8 *) arg1 + 0x150, 0x10U);
     }
-    if (arg1->unk1E0 & 0x200000) {
-        memcpy(&arg0->unkE8.unk60.dummy[6], &arg1->unkE8.unk60.dummy[6], 0x10U);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x200000) != 0) {
+        memcpy((s8 *) arg0 + 0x160, (s8 *) arg1 + 0x160, 0x10U);
     }
-    if (arg1->unk1E0 & 0x400000) {
-        memcpy(&arg0->unkE8.unk88, &arg1->unkE8.unk88, 0x24U);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x400000) != 0) {
+        memcpy((s8 *) arg0 + 0x170, (s8 *) arg1 + 0x170, 0x24U);
     }
-    if (arg1->unk1E0 & 0x800000) {
-        arg0->unk174 = arg1->unk174;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x800000) != 0) {
+        M2C_FIELD(arg0, f32 *, 0x194) = M2C_FIELD(arg1, f32 *, 0x194);
     }
-    if (arg1->unk1E0 & 0x01000000) {
-        M2C_FIELD(arg0, u8 *, 0x198) = (u8) M2C_FIELD(arg1, u8 *, 0x198);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x1000000) != 0) {
+        M2C_FIELD(arg0, s8 *, 0x198) = M2C_FIELD(arg1, s8 *, 0x198);
     }
-    if (arg1->unk1E0 & 0x04000000) {
-        M2C_FIELD(arg0, u8 *, 0x19A) = (u8) M2C_FIELD(arg1, u8 *, 0x19A);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x2000000) != 0) {
+        M2C_FIELD(arg0, s8 *, 0x199) = M2C_FIELD(arg1, s8 *, 0x199);
     }
-    if (arg1->unk1E0 & 0x02000000) {
-        M2C_FIELD(arg0, u8 *, 0x199) = (u8) M2C_FIELD(arg1, u8 *, 0x199);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x4000000) != 0) {
+        M2C_FIELD(arg0, s8 *, 0x19A) = M2C_FIELD(arg1, s8 *, 0x19A);
     }
-    if (arg1->unk1E0 & 0x4000) {
-        arg0->unkE7 = arg1->unkE7;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x4000) != 0) {
+        M2C_FIELD(arg0, s8 *, 0xE7) = M2C_FIELD(arg1, s8 *, 0xE7);
     }
-    if (arg1->unk1E0 & 0x10000000) {
-        strcpy(&arg0->unk1BC, &arg1->unk1BC);
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x10000000) != 0) {
+        strcpy((char *) ((s8 *) arg0 + 0x1BC), (const char *) ((s8 *) arg1 + 0x1BC));
     }
-    if (arg1->unk1E0 & 0x40000000) {
-        arg0->unk1DC = arg1->unk1DC;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x40000000) != 0) {
+        M2C_FIELD(arg0, s8 *, 0x1DC) = M2C_FIELD(arg1, s8 *, 0x1DC);
     }
-    if (arg1->unk1E0 & 0x80000000) {
-        arg0->unk1DD = arg1->unk1DD;
+    if ((M2C_FIELD(arg1, u32 *, 0x1E0) & 0x80000000) != 0) {
+        M2C_FIELD(arg0, s8 *, 0x1DD) = M2C_FIELD(arg1, s8 *, 0x1DD);
     }
-    arg0->unk1DE = 0;
-    arg0->unk1E0 = arg1->unk1E0;
+    M2C_FIELD(arg0, s8 *, 0x1DE) = 0;
+    M2C_FIELD(arg0, u32 *, 0x1E0) = M2C_FIELD(arg1, u32 *, 0x1E0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk20'
 void MKMatInfo_Endian(MatInfo *arg0) {
     s32 var_r29_1161;
     s32 var_r29_1173;
@@ -614,90 +589,82 @@ void MKMatInfo_Endian(MatInfo *arg0) {
     s32 var_r31_1162;
     s32 var_r31_1174;
     s32 var_r31_1188;
-    void *temp_r30_1164;
-    void *temp_r30_1176;
 
-    ByteReverse<int unsigned>(arg0->unk20);
-    ByteReverse<int>(arg0->unk24);
-    ByteReverse<int>(arg0->unk28);
-    ByteReverse<float>(arg0->unk2C);
-    ByteReverse<float>(*((f32 *) &arg0->unk30));
-    ByteReverse<float>(*(arg0 + 0x34));
-    ByteReverse<float>(*((f32 *) &arg0->unk38));
-    ByteReverse<float>(*(arg0 + 0x3C));
+    ByteReverse<int unsigned>(M2C_FIELD(arg0, unsigned int *, 0x20));
+    ByteReverse<int>(M2C_FIELD(arg0, int *, 0x24));
+    ByteReverse<int>(M2C_FIELD(arg0, int *, 0x28));
+    ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x2C));
+    ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x30));
+    ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x34));
+    ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x38));
+    ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x3C));
     var_r29_1161 = 0;
     var_r31_1162 = 0;
     do {
-        temp_r30_1164 = arg0 + var_r31_1162;
-        ByteReverse<float>(*(temp_r30_1164 + 0x128));
-        ByteReverse<float>(*(temp_r30_1164 + 0x134));
+        ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x128 + var_r31_1162));
+        ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x134 + var_r31_1162));
         var_r29_1161 += 1;
         var_r31_1162 += 4;
     } while (var_r29_1161 < 3);
     var_r29_1173 = 0;
     var_r31_1174 = 0;
     do {
-        temp_r30_1176 = arg0 + var_r31_1174;
-        ByteReverse<float>(*(temp_r30_1176 + 0x140));
-        ByteReverse<float>(*(temp_r30_1176 + 0x150));
-        ByteReverse<float>(*(temp_r30_1176 + 0x160));
+        ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x140 + var_r31_1174));
+        ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x150 + var_r31_1174));
+        ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x160 + var_r31_1174));
         var_r29_1173 += 1;
         var_r31_1174 += 4;
     } while (var_r29_1173 < 4);
     var_r30_1187 = 0;
     var_r31_1188 = 0;
     do {
-        ByteReverse<float>(*(arg0 + (var_r31_1188 + 0x170)));
+        ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x170 + var_r31_1188));
         var_r30_1187 += 1;
         var_r31_1188 += 4;
     } while (var_r30_1187 < 9);
-    ByteReverse<float>(arg0->unk174);
-    ByteReverse<int unsigned>(arg0->unk1E0);
-    ByteReverse<int unsigned>(arg0->unk1E4);
+    ByteReverse<float>(M2C_FIELD(arg0, f32 *, 0x194));
+    ByteReverse<int unsigned>(M2C_FIELD(arg0, unsigned int *, 0x1E0));
+    ByteReverse<int unsigned>(M2C_FIELD(arg0, unsigned int *, 0x1E4));
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void MKMatInfo_Init(MatInfo *arg0, const char *arg1) {
-    strcpy(&arg0->unk0, arg1);
-    arg0->unk20 = 0;
-    arg0->unk24 = 3;
-    arg0->unk28 = 3;
-    arg0->unk2C = 0.0f;
-    arg0->unk30 = M2C_FIELD(&MKVector4::one, f64 *, 0);
-    arg0->unk38 = M2C_FIELD(&MKVector4::one, f64 *, 8);
-    arg0->unk40.SetIdentity();
-    arg0->unk80 = 0;
-    arg0->unk1E4 = 0;
-    arg0->unkA0 = 0;
-    arg0->unkC0 = 0;
-    arg0->unkE0 = (u8) M2C_FIELD(&gMKDefaults, s32 *, 0x90);
-    arg0->unkE1 = 0;
-    arg0->unkE3 = 0;
-    arg0->unkE2 = 0;
-    arg0->unkE4 = 1;
-    arg0->unkE5 = 1;
-    arg0->unk1DE = 0;
-    arg0->unkE6 = 0;
-    arg0->unkE7 = 0;
-    strcpy(&arg0->unkE8.unk0, arg1);
-    arg0->unkE8.unk20 = 0;
-    memset(&arg0->unkE8.unk40, 0, 0xCU);
-    memset(&arg0->unkE8.unk4C, 0, 0xCU);
-    memset(&arg0->unkE8.unk58, 0, 0x10U);
-    memset(&arg0->unkE8.unk60.dummy[2], 0, 0x10U);
-    memset(&arg0->unkE8.unk60.dummy[6], 0, 0x10U);
-    memset(&arg0->unkE8.unk88, 0, 0x24U);
-    arg0->unk174 = 0.0f;
+    strcpy((char *) arg0, arg1);
+    M2C_FIELD(arg0, s32 *, 0x20) = 0;
+    M2C_FIELD(arg0, s32 *, 0x24) = 3;
+    M2C_FIELD(arg0, s32 *, 0x28) = 3;
+    M2C_FIELD(arg0, f32 *, 0x2C) = 0.0f;
+    *(MKVector4 *) ((s8 *) arg0 + 0x30) = MKVector4::one;
+    ((Matrix *) ((s8 *) arg0 + 0x40))->SetIdentity();
+    M2C_FIELD(arg0, s8 *, 0x80) = 0;
+    M2C_FIELD(arg0, s32 *, 0x1E4) = 0;
+    M2C_FIELD(arg0, s8 *, 0xA0) = 0;
+    M2C_FIELD(arg0, s8 *, 0xC0) = 0;
+    M2C_FIELD(arg0, s8 *, 0xE0) = (s8) M2C_FIELD(&gMKDefaults, s32 *, 0x90);
+    M2C_FIELD(arg0, s8 *, 0xE1) = 0;
+    M2C_FIELD(arg0, s8 *, 0xE3) = 0;
+    M2C_FIELD(arg0, s8 *, 0xE2) = 0;
+    M2C_FIELD(arg0, s8 *, 0xE4) = 1;
+    M2C_FIELD(arg0, s8 *, 0xE5) = 1;
+    M2C_FIELD(arg0, s8 *, 0x1DE) = 0;
+    M2C_FIELD(arg0, s8 *, 0xE6) = 0;
+    M2C_FIELD(arg0, s8 *, 0xE7) = 0;
+    strcpy((char *) ((s8 *) arg0 + 0xE8), arg1);
+    M2C_FIELD(arg0, s8 *, 0x108) = 0;
+    memset((s8 *) arg0 + 0x128, 0, 0xCU);
+    memset((s8 *) arg0 + 0x134, 0, 0xCU);
+    memset((s8 *) arg0 + 0x140, 0, 0x10U);
+    memset((s8 *) arg0 + 0x150, 0, 0x10U);
+    memset((s8 *) arg0 + 0x160, 0, 0x10U);
+    memset((s8 *) arg0 + 0x170, 0, 0x24U);
+    M2C_FIELD(arg0, f32 *, 0x194) = 0.0f;
     M2C_FIELD(arg0, s8 *, 0x198) = 0;
     M2C_FIELD(arg0, s8 *, 0x199) = 0;
     M2C_FIELD(arg0, s8 *, 0x19A) = 0;
     M2C_FIELD(arg0, s8 *, 0x19B) = 0;
     M2C_FIELD(arg0, s8 *, 0x19C) = 0;
-    strcpy(&arg0->unk1BC, "MK2_Standard");
-    arg0->unk1E0 = 0;
-    arg0->unk1DC = 0;
-    arg0->unk1DD = 0;
-    arg0->unk1E8 = 0.0f;
+    strcpy((char *) ((s8 *) arg0 + 0x1BC), "MK2_Standard");
+    M2C_FIELD(arg0, s32 *, 0x1E0) = 0;
+    M2C_FIELD(arg0, s8 *, 0x1DC) = 0;
+    M2C_FIELD(arg0, s8 *, 0x1DD) = 0;
+    M2C_FIELD(arg0, f32 *, 0x1E8) = 0.0f;
 }
-#endif
