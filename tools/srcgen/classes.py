@@ -158,7 +158,11 @@ def array_sizes(asm_root: Path) -> dict:
         for i, line in enumerate(lines):
             if not re.search(r"\tbl __construct_(new_)?array$", line):
                 continue
-            window = lines[max(0, i - 12):i]
+            # Arguments are set up after the previous call; scheduling can spread them out.
+            start = i
+            while start > max(0, i - 40) and not re.search(r"\tbl ", lines[start - 1]):
+                start -= 1
+            window = lines[start:i]
             cls = next((class_name(m.group(1)) for b in reversed(window) if (m := ARRAY_CT.search(b))), None)
             n = next((int(m.group(1), 0) for b in reversed(window) if (m := ARRAY_SIZE.search(b))), None)
             if cls and n:
