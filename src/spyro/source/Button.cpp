@@ -23,19 +23,18 @@ void Button::Message(MKMessage *arg0) {
 
     if ((s32) arg0->unk0 != 0x12) {
 
-    } else if ((((u8) M2C_FIELD(this, u8 *, 0xEC) >> 6U) & 1) && ((s32) this->unkE0 == 0) && ((temp_r3_100 = sp10 & ~0x80, sp10 = temp_r3_100, temp_r3_104 = temp_r3_100 & ~0x40, sp10 = temp_r3_104, spC = 0, sp10 = temp_r3_104 & ~0x20, sp8 = 0x6D, temp_r3_111 = arg0->unkC, M2C_FIELD(M2C_FIELD(M2C_FIELD(*temp_r3_111, void *(**)(void **, M2C_UNK), 0x2C)(temp_r3_111, 0), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8), ((((sp10 >> 7U) & 1) == 0) == 0)) || ((sp10 >> 6U) & 1))) {
-        M2C_FIELD(this, u8 *, 0xEC) = (u8) (M2C_FIELD(this, u8 *, 0xEC) | 0x80);
+    } else if ((((u8) this->unkEC >> 6U) & 1) && ((s32) this->unkE0 == 0) && ((temp_r3_100 = sp10 & ~0x80, sp10 = temp_r3_100, temp_r3_104 = temp_r3_100 & ~0x40, sp10 = temp_r3_104, spC = 0, sp10 = temp_r3_104 & ~0x20, sp8 = 0x6D, temp_r3_111 = arg0->unkC, M2C_FIELD(M2C_FIELD(M2C_FIELD(*temp_r3_111, void *(**)(void **, M2C_UNK), 0x2C)(temp_r3_111, 0), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8), ((((sp10 >> 7U) & 1) == 0) == 0)) || ((sp10 >> 6U) & 1))) {
+        this->unkEC |= 0x80;
     }
     Trap::Message(arg0);
 }
 
 void Button::Reset() {
     Trap::Reset();
-    M2C_FIELD(this, u8 *, 0xEC) = (u8) (M2C_FIELD(this, u8 *, 0xEC) & ~0x80);
+    this->unkEC &= ~0x80;
     SetState(0);
 }
 
-#if 0 // DRAFT: expression syntax error
 void Button::Update() {
     s32 temp_r0_174;
 
@@ -44,19 +43,19 @@ void Button::Update() {
     switch (temp_r0_174) {                          /* irregular */
     default:
     case 0:
-        if (((u8) M2C_FIELD(this, u8 *, 0xEC) >> 7U) & 1) {
+        if (((u8) this->unkEC >> 7U) & 1) {
             SetState(1);
         }
         break;
     case 1:
         if (this->unk80->unk2C & 1) {
-            this->unkE0.Send((MKProp *) this);
+            this->unkE4.Send((MKProp *) this);
             SetState(2);
         }
         break;
     case 2:
-        if (!(((u8) M2C_FIELD(this, u8 *, 0xEC) >> 7U) & 1)) {
-            this->unkE4.Send((MKProp *) this);
+        if (!(((u8) this->unkEC >> 7U) & 1)) {
+            this->unkE8.Send((MKProp *) this);
             SetState(3);
         }
         break;
@@ -66,9 +65,8 @@ void Button::Update() {
         }
         break;
     }
-    M2C_FIELD(this, u8 *, 0xEC) = (u8) (M2C_FIELD(this, u8 *, 0xEC) & ~0x80);
+    this->unkEC &= ~0x80;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 Button::LoadLine(MKIniLine *arg0) {
@@ -76,10 +74,10 @@ s32 Button::LoadLine(MKIniLine *arg0) {
     s32 var_r31_261;
 
     if (arg0->LoadBool("Charge", &sp8, 0) != 0) {
-        M2C_FIELD(this, u8 *, 0xEC) = (u8) ((M2C_FIELD(this, u8 *, 0xEC) & ~0x40) | ((sp8 << 6) & 0x40));
+        this->unkEC = (this->unkEC & ~0x40) | ((sp8 << 6) & 0x40);
     }
     var_r31_261 = 0;
-    if ((Trap::LoadLine(arg0) != 0) || (this->unkE0.LoadLine(arg0, "OnPressed") != 0) || (this->unkE4.LoadLine(arg0, "OnReleased") != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (this->unkE4.LoadLine(arg0, "OnPressed") != 0) || (this->unkE8.LoadLine(arg0, "OnReleased") != 0)) {
         var_r31_261 = 1;
     }
     return var_r31_261;
@@ -88,7 +86,7 @@ s32 Button::LoadLine(MKIniLine *arg0) {
 
 void Button::Init() {
     Trap::Init();
-    memset(&this->unkE8, 0, 1U);
+    memset(&this->unkEC, 0, 1U);
 }
 
 #if 0 // DRAFT: illegal use of non-static member

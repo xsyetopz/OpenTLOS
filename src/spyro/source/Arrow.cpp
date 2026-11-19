@@ -13,8 +13,8 @@ extern GameGlobals gb;
 void Arrow::Fire(const Matrix &arg0, float arg1, float arg2) {
     MKModel_SetWorldMatrix(this->unk4, arg0);
     this->unkE0 = arg1;
-    this->unkE0 = 0.0f;
-    this->unkE4 = arg2;
+    this->unkE4 = 0.0f;
+    this->unkE8 = arg2;
 }
 
 #if 0 // DRAFT: undefined identifier 'sp48'
@@ -82,11 +82,11 @@ void Arrow::Update() {
         sp40 = (f32) spA0 * temp_f29_132;
         spB0 = (f64) sp40;
         MKModel_SetPosition(this->unk4, *((MKVector3 *) &spA8));
-        this->unkE0 += gUpdateTimeDelta;
-        temp_f1_165 = this->unkE4;
+        this->unkE4 += gUpdateTimeDelta;
+        temp_f1_165 = this->unkE8;
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unkE0 == temp_f1_165) {
-            this->unkE0 = temp_f1_165;
+        if (this->unkE4 == temp_f1_165) {
+            this->unkE4 = temp_f1_165;
             Disable();
         }
         temp_r4_177 = this->unk8;

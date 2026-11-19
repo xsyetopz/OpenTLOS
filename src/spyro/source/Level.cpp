@@ -2151,9 +2151,9 @@ void TerrainInfo::LoadLine(MKIniLine *arg0) {
 #endif
 
 void ChunkInfo::DeinitEnv() {
+    MKModel *temp_r3_4098;
     MKModel *temp_r3_4105;
     MaterialInfo *var_r31_4070;
-    s8 *temp_r3_4098;
 
     var_r31_4070 = this->unk18;
 loop_2:
@@ -2168,15 +2168,15 @@ loop_2:
     ((ScreenWobbleFX *) ((ScreenWobbleFX *) (&gb + 0xB8)))->EnableSpeedEffect(0U, 0.0f, 1.0f);
     M2C_FIELD(&gb, f32 *, 0xDC) = 0.0f;
     M2C_FIELD(&gb, s8 *, 0x35D) = 0;
-    temp_r3_4098 = this->unk3C;
+    temp_r3_4098 = this->unk40;
     if (temp_r3_4098 != NULL) {
-        MKModel_Destroy((MKModel *) temp_r3_4098);
-        this->unk3C = NULL;
+        MKModel_Destroy(temp_r3_4098);
+        this->unk40 = NULL;
     }
-    temp_r3_4105 = this->unk40;
+    temp_r3_4105 = this->unk44;
     if (temp_r3_4105 != NULL) {
         MKModel_Destroy(temp_r3_4105);
-        this->unk40 = NULL;
+        this->unk44 = NULL;
     }
     if (PhrasePlayer_IsLevelIniLoaded() != 0) {
         PhrasePlayer_UnloadLevelIni();
@@ -2194,27 +2194,27 @@ void ChunkInfo::InitEnv() {
     MaterialInfo *var_r31_4172;
     f64 temp_f0_4202;
     f64 temp_f1_4201;
-    s32 temp_r3_4132;
+    s8 *temp_r3_4132;
     s8 *temp_r3_4144;
     void *temp_r4_4212;
     void *temp_r5_4200;
 
-    temp_r3_4132 = this->unk36;
-    if ((u32) temp_r3_4132 != 0U) {
-        this->unk3C = MKModel_Create((s8 *) temp_r3_4132, NULL, 2, NULL);
-        MKModel_EnableScissoring((MKModel *) this->unk3C, 1U);
+    temp_r3_4132 = this->unk38;
+    if (temp_r3_4132 != NULL) {
+        this->unk40 = MKModel_Create(temp_r3_4132, NULL, 2, NULL);
+        MKModel_EnableScissoring(this->unk40, 1U);
     }
     temp_r3_4144 = this->unk3C;
     if (temp_r3_4144 != NULL) {
-        this->unk40 = MKModel_Create(temp_r3_4144, NULL, 2, NULL);
-        MKModel_EnableScissoring(this->unk40, 1U);
+        this->unk44 = MKModel_Create(temp_r3_4144, NULL, 2, NULL);
+        MKModel_EnableScissoring(this->unk44, 1U);
     }
     FogPoints_Init(Str_Printf("", M2C_FIELD(this->unk4, s32 *, 4), "Level Options"));
     WindPoints_Init(Str_Printf("", M2C_FIELD(this->unk4, s32 *, 4), "Level Options"));
     var_r31_4172 = this->unk18;
 loop_6:
     if (var_r31_4172 != NULL) {
-        var_r31_4172->Create((MKModel *) this->unk3C);
+        var_r31_4172->Create(this->unk40);
         var_r31_4172 = var_r31_4172->unkC;
         goto loop_6;
     }
@@ -2248,7 +2248,7 @@ u8 ChunkInfo::IsLoaded() {
     s32 temp_r0_4238;
 
     temp_r0_4238 = this->unk24;
-    if (((u8) (temp_r0_4238 == 3) != 0) && ((s32) this->unk5C > 0)) {
+    if (((u8) (temp_r0_4238 == 3) != 0) && ((s32) this->unk60 > 0)) {
         this->unk24 = 1;
     }
     return temp_r0_4238 == 3;
@@ -2297,20 +2297,20 @@ void ChunkInfo::Load(const char **arg0, int arg1, bool arg2, bool arg3) {
     if (temp_r7_4308 != NULL) {
         var_r4_4316 = M2C_FIELD(temp_r7_4308, s8 **, 4);
     }
-    this->unk58 = M2C_BITWISE(f32, M2C_FIELD(*gMK, s32 (**)(void **, s8 *, s32 *, s8 **, s32, M2C_UNK, u8, u8), 0x34)(gMK, var_r4_4316, &sp10, arg0, arg1, 0, arg2, arg3));
+    this->unk5C = M2C_FIELD(*gMK, s32 (**)(void **, s8 *, s32 *, s8 **, s32, M2C_UNK, u8, u8), 0x34)(gMK, var_r4_4316, &sp10, arg0, arg1, 0, arg2, arg3);
     this->unk24 = 2;
     Use();
 }
 #endif
 
 void ChunkInfo::Dequeue() {
-    this->unk5C -= 1;
+    this->unk60 -= 1;
     this->unk24 = 0;
 }
 
 void ChunkInfo::Queue() {
     this->unk24 = 1;
-    this->unk5C += 1;
+    this->unk60 += 1;
 }
 
 #if 0 // DRAFT: undefined identifier 'pChunkPropQueue'
@@ -2330,8 +2330,8 @@ s32 ChunkInfo::LoadLine(MKIniLine *arg0) {
         } else {
             var_f1_4388 = 1.0f;
         }
-        this->unk48 = var_f1_4388;
-        return DataMap_LoadLine(arg0, "", &pChunkPropQueue + 0x98, (u32 *) &this->unk44);
+        this->unk4C = var_f1_4388;
+        return DataMap_LoadLine(arg0, "", &pChunkPropQueue + 0x98, &this->unk48);
     }
     if (arg0->IsField("") != 0) {
         temp_r3_4412 = arg0->unkC->GetSubLine(arg0);
@@ -2366,7 +2366,7 @@ loop_14:
         }
     }
     var_r31_4478 = 0;
-    if ((arg0->LoadString("", (s8 **) &this->unk36, 0) != 0) || (arg0->LoadString("", &this->unk3C, 0) != 0) || (arg0->LoadBool("", &this->unk36, 0) != 0) || (arg0->LoadInt("", &this->unk20, 0) != 0) || (arg0->LoadFloat("", &this->unk4C, 0) != 0) || (arg0->LoadFloat("", &this->unk50, 0) != 0) || (arg0->LoadFloat("", &this->unk54, 0) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0xD0, &this->unk28) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0x108, &this->unk2C) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0x130, &this->unk30) != 0)) {
+    if ((arg0->LoadString("", &this->unk38, 0) != 0) || (arg0->LoadString("", &this->unk3C, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unk36, 0) != 0) || (arg0->LoadInt("", &this->unk20, 0) != 0) || (arg0->LoadFloat("", &this->unk50, 0) != 0) || (arg0->LoadFloat("", &this->unk54, 0) != 0) || (arg0->LoadFloat("", &this->unk58, 0) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0xD0, &this->unk28) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0x108, &this->unk2C) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0x130, &this->unk30) != 0)) {
         var_r31_4478 = 1;
     }
     return var_r31_4478;
@@ -2397,14 +2397,14 @@ void ChunkInfo::Init() {
     this->unk0 = NULL;
     this->unk4 = NULL;
     this->unk8 = NULL;
-    this->unk58 = 0.0f;
+    this->unk5C = 0;
     this->unkC = 1;
-    this->unk36 = 0;
-    this->unk3C = NULL;
+    this->unk38 = NULL;
     this->unk3C = NULL;
     this->unk40 = NULL;
     this->unk44 = NULL;
-    this->unk48 = 1.0f;
+    this->unk48 = 0;
+    this->unk4C = 1.0f;
     this->unk10 = NULL;
     this->unk1C = 0;
     this->unk24 = 0;
@@ -2414,11 +2414,11 @@ void ChunkInfo::Init() {
     this->unk34 = 0;
     this->unk35 = 0;
     this->unk20 = -1;
-    this->unk5C = 0;
-    this->unk36 = 1;
-    this->unk4C = -1.0f;
+    this->unk60 = 0;
+    M2C_FIELD(this, s8 *, 0x36) = 1;
     this->unk50 = -1.0f;
     this->unk54 = -1.0f;
+    this->unk58 = -1.0f;
 }
 
 ChunkInfo *LevelInfo::GetChunkByName(const char *arg0) {

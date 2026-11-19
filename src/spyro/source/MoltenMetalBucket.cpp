@@ -543,7 +543,7 @@ void MoltenMetalBucketDescriptor::Deinit() {
     MKMaterial_Destroy(this->unkEC);
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
 void MoltenMetalBucketDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
     this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, "");

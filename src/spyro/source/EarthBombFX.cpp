@@ -987,7 +987,7 @@ void EarthBombFXDescriptor::Deinit() {
     KDPropExDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
+#if 0 // DRAFT: expression syntax error
 void EarthBombFXDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkE4 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));

@@ -74,11 +74,11 @@ void DragonBustDoor::LoadDone() {
     s32 var_r31_186;
 
     Trap::LoadDone();
-    this->unkE8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightYellow");
-    this->unkF0 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightRed");
-    this->unkF8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightGreen");
+    this->unkEC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightYellow");
+    this->unkF4 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightRed");
+    this->unkFC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightGreen");
     var_r30_184 = 0;
-    this->unk100 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightBlue");
+    this->unk104 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightBlue");
     var_r31_186 = 0;
     do {
         MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, *(this + (var_r31_186 + 0xEC)), 0U, 1U);
@@ -93,7 +93,7 @@ s32 DragonBustDoor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_215;
 
     var_r31_215 = 0;
-    if ((Trap::LoadLine(arg0) != 0) || (arg0->LoadInt("YellowSwitchID", &this->unkE8, 0) != 0) || (arg0->LoadInt("RedSwitchID", &this->unkEC, 0) != 0) || (arg0->LoadInt("GreenSwitchID", &this->unkF4, 0) != 0) || (arg0->LoadInt("BlueSwitchID", &this->unkFC, 0) != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (arg0->LoadInt("YellowSwitchID", &this->unkE8, 0) != 0) || (arg0->LoadInt("RedSwitchID", &this->unkF0, 0) != 0) || (arg0->LoadInt("GreenSwitchID", &this->unkF8, 0) != 0) || (arg0->LoadInt("BlueSwitchID", &this->unk100, 0) != 0)) {
         var_r31_215 = 1;
     }
     return var_r31_215;

@@ -23,18 +23,18 @@ void Door::Message(MKMessage *arg0) {
     temp_r0_46 = arg0->unk0;
     switch (temp_r0_46) {                           /* irregular */
     case 0xB5:
-        this->unkE0 = 1;
+        this->unkE4 = 1;
         break;
     case 0xBB:
-        this->unkE0 = 2;
-        SetState((DoorStates) this->unkE0);
+        this->unkE4 = 2;
+        SetState((DoorStates) this->unkE4);
         break;
     case 0xBC:
-        this->unkE0 = 0;
-        SetState((DoorStates) this->unkE0);
+        this->unkE4 = 0;
+        SetState((DoorStates) this->unkE4);
         break;
     case 0xB4:
-        this->unkE0 = 3;
+        this->unkE4 = 3;
         break;
     }
     Trap::Message(arg0);
@@ -45,7 +45,7 @@ void Door::Message(MKMessage *arg0) {
 void Door::Reset() {
     Trap::Reset();
     SetState((DoorStates) 0);
-    this->unkE0 = this->unkE0;
+    this->unkE4 = this->unkE0;
 }
 #endif
 
@@ -60,7 +60,7 @@ void Door::Update() {
         temp_r0_123 = this->unkE0;
         switch (temp_r0_123) {                      /* irregular */
         case 0:
-            temp_r4_136 = this->unkE0;
+            temp_r4_136 = this->unkE4;
             if (temp_r4_136 == 1) {
                 SetState((DoorStates) temp_r4_136);
                 return;
@@ -76,7 +76,7 @@ void Door::Update() {
             }
             break;
         case 2:
-            temp_r4_160 = this->unkE0;
+            temp_r4_160 = this->unkE4;
             if (temp_r4_160 == 3) {
                 SetState((DoorStates) temp_r4_160);
                 return;

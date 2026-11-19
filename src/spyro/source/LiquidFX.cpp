@@ -1945,7 +1945,7 @@ void LiquidFX::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void LiquidFXDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkE4 = checked_cast<CrashMistPS *, MKProp>(gMK->CreateProp("CrashMistPS"));

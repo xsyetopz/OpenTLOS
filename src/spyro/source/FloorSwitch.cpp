@@ -45,15 +45,15 @@ void FloorSwitch::Message(MKMessage *arg0) {
     void **temp_r3_128;
     void *temp_r3_151;
 
-    temp_r3_94 = M2C_FIELD(this, KDSoundPlayer **, 0x114);
+    temp_r3_94 = this->unk114;
     if (temp_r3_94 != NULL) {
         temp_r3_94->Message(arg0);
     }
-    temp_r3_99 = M2C_FIELD(this, KDSoundPlayer **, 0x118);
+    temp_r3_99 = this->unk118;
     if (temp_r3_99 != NULL) {
         temp_r3_99->Message(arg0);
     }
-    temp_r3_105 = this->unk114;
+    temp_r3_105 = this->unk11C;
     if (temp_r3_105 != NULL) {
         temp_r3_105->Message(arg0);
     }
@@ -65,8 +65,8 @@ void FloorSwitch::Message(MKMessage *arg0) {
         sp8 = 0x6E;
         temp_r3_128 = arg0->unkC;
         M2C_FIELD(M2C_FIELD(M2C_FIELD(*temp_r3_128, void *(**)(void **), 0x2C)(temp_r3_128), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
-        if ((sp10 != 0) && ((s32) this->unkE0 == -1)) {
-            M2C_FIELD(this, u8 *, 0xEC) = (u8) (M2C_FIELD(this, u8 *, 0xEC) | 0x80);
+        if ((sp10 != 0) && ((s32) this->unkE4 == -1)) {
+            this->unkEC |= 0x80;
         }
         break;
     case 0x4F:
@@ -78,7 +78,7 @@ void FloorSwitch::Message(MKMessage *arg0) {
         }
         break;
     case 0x50:
-        M2C_FIELD(this, u8 *, 0xEC) = (u8) (M2C_FIELD(this, u8 *, 0xEC) | 0x80);
+        this->unkEC |= 0x80;
         break;
     }
     Trap::Message(arg0);
@@ -93,36 +93,36 @@ void FloorSwitch::Reset() {
     f32 sp8;
 
     Trap::Reset();
-    M2C_FIELD(this, u8 *, 0xEC) = (u8) (M2C_FIELD(this, u8 *, 0xEC) & ~0x80);
-    M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) | 0x80);
-    M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) & ~0x40);
-    M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) & ~0x20);
-    M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) & ~0x10);
+    this->unkEC &= ~0x80;
+    this->unk110 |= 0x80;
+    this->unk110 &= ~0x40;
+    this->unk110 &= ~0x20;
+    this->unk110 &= ~0x10;
     SetState(0);
     sp8 = 1.0f;
     spC = 1.0f;
     sp10 = 1.0f;
-    M2C_FIELD(this, u8 *, 0xEC) = (u8) (M2C_FIELD(this, u8 *, 0xEC) & ~0x40);
-    M2C_FIELD(this, f64 *, 0x100) = (f64) sp8;
+    this->unkEC &= ~0x40;
+    this->unk100 = (f64) sp8;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    this->unk100 = (f64) sp10;
+    this->unk108 = (f64) sp10;
 }
 
 void FloorSwitch::Draw() {
     f64 sp10;
     f64 sp8;
+    MKMaterial *temp_r0_236;
     f64 *temp_r3_240;
-    s32 temp_r0_236;
 
-    temp_r0_236 = this->unk120.unk0;
-    if ((u32) temp_r0_236 != 0U) {
-        temp_r3_240 = MKMaterial_GetColor((MKMaterial *) temp_r0_236);
+    temp_r0_236 = this->unk128;
+    if (temp_r0_236 != NULL) {
+        temp_r3_240 = MKMaterial_GetColor(temp_r0_236);
         sp8 = M2C_FIELD(temp_r3_240, f64 *, 0);
         sp10 = M2C_FIELD(temp_r3_240, f64 *, 8);
-        MKMaterial_SetColor((MKMaterial *) this->unk120.unk0, *((MKVector4 *) &this->unkEC));
+        MKMaterial_SetColor(this->unk128, this->unkF0);
         GameProp::Draw();
-        MKMaterial_SetColor((MKMaterial *) this->unk120.unk0, *((MKVector4 *) &sp8));
+        MKMaterial_SetColor(this->unk128, *((MKVector4 *) &sp8));
         return;
     }
     GameProp::Draw();
@@ -168,7 +168,7 @@ void FloorSwitch::Update() {
     f32 sp20;
     f32 sp10;
     s32 sp8;
-    KDSoundFader *temp_r3_281;
+    KDSoundPlayer *temp_r3_281;
     MKAnimScript *temp_r3_583;
     MKAnimScript *temp_r3_652;
     MKVector3 *temp_r30_609;
@@ -191,24 +191,24 @@ void FloorSwitch::Update() {
     void *temp_r4_328;
 
     GameProp::Update();
-    temp_r3_281 = M2C_FIELD(this, KDSoundFader **, 0x114);
+    temp_r3_281 = this->unk114;
     if (temp_r3_281 != NULL) {
         KDSound_SetPitch(temp_r3_281->unk0, 1.0f);
         temp_r4_290 = checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        ((KDSoundFader *) (M2C_FIELD(this, KDSoundFader **, 0x114)))->Update(M2C_FIELD(temp_r4_290, s32 *, 0xEC), 1U, ((u8) M2C_FIELD(this, u8 *, 0x110) >> 7U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        this->unk114->Update(M2C_FIELD(temp_r4_290, s32 *, 0xEC), 1U, ((u8) this->unk110 >> 7U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
-    if ((KDSoundFader *) M2C_FIELD(this, KDSoundFader **, 0x118) != NULL) {
+    if ((KDSoundPlayer *) this->unk118 != NULL) {
         temp_r4_309 = checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        ((KDSoundFader *) (M2C_FIELD(this, KDSoundFader **, 0x118)))->Update(M2C_FIELD(temp_r4_309, s32 *, 0xF0), 1U, ((u8) M2C_FIELD(this, u8 *, 0x110) >> 6U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        this->unk118->Update(M2C_FIELD(temp_r4_309, s32 *, 0xF0), 1U, ((u8) this->unk110 >> 6U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
-    if ((KDSoundPlayer *) this->unk114 != NULL) {
+    if ((KDSoundPlayer *) this->unk11C != NULL) {
         temp_r4_328 = checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         sp8 = 1;
-        this->unk114->Update(M2C_FIELD(temp_r4_328, s32 *, 0xF4), 1U, ((u8) M2C_FIELD(this, u8 *, 0x110) >> 5U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        this->unk11C->Update(M2C_FIELD(temp_r4_328, s32 *, 0xF4), 1U, ((u8) this->unk110 >> 5U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
-    if (((u8) M2C_FIELD(this, u8 *, 0x110) >> 5U) & 1) {
+    if (((u8) this->unk110 >> 5U) & 1) {
         sp11C = 0;
         temp_f29_350 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f28_355 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -299,13 +299,13 @@ void FloorSwitch::Update() {
     switch (temp_r0_544) {                          /* switch 2; irregular */
     default:                                        /* switch 2 */
     case 0:                                         /* switch 2 */
-        if (((u8) M2C_FIELD(this, u8 *, 0xEC) >> 6U) & 1) {
-            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp108), *((MKVector3 *) &spF8), 5.0f, *((MKVector4 *) &this->unkEC), 0.0f);
+        if (((u8) this->unkEC >> 6U) & 1) {
+            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp108), *((MKVector3 *) &spF8), 5.0f, this->unkF0, 0.0f);
         }
-        if (((u8) M2C_FIELD(this, u8 *, 0xEC) >> 7U) & 1) {
+        if (((u8) this->unkEC >> 7U) & 1) {
             SetState(1);
         }
-        M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) | 0x80);
+        this->unk110 |= 0x80;
         break;
     case 1:                                         /* switch 2 */
         temp_r3_583 = this->unk80;
@@ -317,26 +317,26 @@ void FloorSwitch::Update() {
             var_r4_584 = 1;
         }
         if (var_r4_584 != 0) {
-            M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) & ~0x80);
+            this->unk110 &= ~0x80;
             if ((s32) M2C_FIELD(checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8) != 0) {
                 temp_r30_609 = this->unk8 + 0x30;
                 KDSound_Play3d(M2C_FIELD(checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8), temp_r30_609, 0U, -1, 0.0f, 0U);
             }
-            M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) | 0x40);
+            this->unk110 |= 0x40;
             SetState(2);
-            this->unk118.Send((MKProp *) this);
+            this->unk120.Send((MKProp *) this);
         }
         break;
     case 2:                                         /* switch 2 */
-        if (!(((u8) M2C_FIELD(this, u8 *, 0xEC) >> 7U) & 1)) {
+        if (!(((u8) this->unkEC >> 7U) & 1)) {
             SetState(3);
-            this->unk11C.Send((MKProp *) this);
+            this->unk124.Send((MKProp *) this);
         }
-        M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) & ~0x80);
+        this->unk110 &= ~0x80;
         break;
     case 3:                                         /* switch 2 */
         var_r4_650 = 0;
-        M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) & ~0x40);
+        this->unk110 &= ~0x40;
         temp_r3_652 = this->unk80;
         if ((temp_r3_652 != NULL) && (temp_r3_652->unk2C & 1)) {
             var_r4_650 = 1;
@@ -346,12 +346,12 @@ void FloorSwitch::Update() {
         }
         if (var_r4_650 != 0) {
             SetState(0);
-            M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) | 0x80);
+            this->unk110 |= 0x80;
         }
         break;
     }
-    if ((s32) this->unkE0 == -1) {
-        M2C_FIELD(this, u8 *, 0xEC) = (u8) (M2C_FIELD(this, u8 *, 0xEC) & ~0x80);
+    if ((s32) this->unkE4 == -1) {
+        this->unkEC &= ~0x80;
     }
 }
 #endif
@@ -364,35 +364,35 @@ void FloorSwitch::LoadDone() {
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             *M2C_ERROR(/* Read from unset register $r3 */) = 0;
         }
-        M2C_FIELD(this, KDSoundFader **, 0x114) = (KDSoundFader *) M2C_ERROR(/* Read from unset register $r3 */);
-        ((KDSoundFader *) (M2C_FIELD(this, KDSoundFader **, 0x114)))->Init(0.25f, 0.25f);
+        this->unk114 = M2C_ERROR(/* Read from unset register $r3 */);
+        this->unk114->Init(0.25f, 0.25f);
     }
     if ((s32) M2C_FIELD(checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xF0) != 0) {
         operator new(0x28U, NULL, 0);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             *M2C_ERROR(/* Read from unset register $r3 */) = 0;
         }
-        M2C_FIELD(this, KDSoundFader **, 0x118) = (KDSoundFader *) M2C_ERROR(/* Read from unset register $r3 */);
-        ((KDSoundFader *) (M2C_FIELD(this, KDSoundFader **, 0x118)))->Init(0.25f, 0.25f);
+        this->unk118 = M2C_ERROR(/* Read from unset register $r3 */);
+        this->unk118->Init(0.25f, 0.25f);
     }
     if ((s32) M2C_FIELD(checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xF4) != 0) {
         operator new(0x28U, NULL, 0);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             *M2C_ERROR(/* Read from unset register $r3 */) = 0;
         }
-        this->unk114 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk114->Init(0.25f, 0.25f);
+        this->unk11C = M2C_ERROR(/* Read from unset register $r3 */);
+        this->unk11C->Init(0.25f, 0.25f);
     }
-    this->unk120.unk0 = MKMaterial_Create("p_white_pad");
+    this->unk128 = MKMaterial_Create("p_white_pad");
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 FloorSwitch::LoadLine(MKIniLine *arg0) {
     s32 var_r31_786;
 
     var_r31_786 = 0;
-    if ((Trap::LoadLine(arg0) != 0) || (this->unk118.LoadLine(arg0, "OnPressed") != 0) || (this->unk11C.LoadLine(arg0, "OnReleased") != 0) || (arg0->LoadInt("ActivatorPropID", &this->unkE0, 0) != 0) || (arg0->LoadFloat("ActivationRange", (f32 *) &this->unkE4, 0) != 0) || (arg0->LoadVector4("SwitchColor", (MKVector4 *) &this->unkEC, 0) != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (this->unk120.LoadLine(arg0, "OnPressed") != 0) || (this->unk124.LoadLine(arg0, "OnReleased") != 0) || (arg0->LoadInt("ActivatorPropID", &this->unkE4, 0) != 0) || (arg0->LoadFloat("ActivationRange", &this->unkE8, 0) != 0) || (arg0->LoadVector4("SwitchColor", &this->unkF0, 0) != 0)) {
         var_r31_786 = 1;
     }
     return var_r31_786;
@@ -401,52 +401,52 @@ s32 FloorSwitch::LoadLine(MKIniLine *arg0) {
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void FloorSwitch::Deinit() {
+    KDSoundPlayer *temp_r31_863;
+    KDSoundPlayer *temp_r31_880;
     KDSoundPlayer *temp_r31_897;
+    KDSoundPlayer *temp_r3_859;
+    KDSoundPlayer *temp_r3_876;
     KDSoundPlayer *temp_r3_893;
-    s32 *temp_r31_863;
-    s32 *temp_r31_880;
-    s32 *temp_r3_859;
-    s32 *temp_r3_876;
+    MKMaterial *temp_r3_852;
     s32 temp_cr0_eq_864;
     s32 temp_cr0_eq_881;
     s32 temp_cr0_eq_898;
-    s32 temp_r3_852;
 
-    temp_r3_852 = this->unk120.unk0;
-    if ((u32) temp_r3_852 != 0U) {
-        MKMaterial_Destroy((MKMaterial *) temp_r3_852);
-        this->unk120.unk0 = 0;
+    temp_r3_852 = this->unk128;
+    if (temp_r3_852 != NULL) {
+        MKMaterial_Destroy(temp_r3_852);
+        this->unk128 = NULL;
     }
-    temp_r3_859 = M2C_FIELD(this, s32 **, 0x114);
+    temp_r3_859 = this->unk114;
     if (temp_r3_859 != NULL) {
-        KDSound_Stop(temp_r3_859);
-        temp_r31_863 = M2C_FIELD(this, s32 **, 0x114);
+        KDSound_Stop(&temp_r3_859->unk0);
+        temp_r31_863 = this->unk114;
         temp_cr0_eq_864 = temp_r31_863 == NULL;
         if (temp_cr0_eq_864 == 0) {
             if (temp_cr0_eq_864 == 0) {
-                KDSound_Stop(temp_r31_863);
+                KDSound_Stop(&temp_r31_863->unk0);
             }
             operator delete(temp_r31_863);
         }
-        M2C_FIELD(this, s32 **, 0x114) = NULL;
+        this->unk114 = NULL;
     }
-    temp_r3_876 = M2C_FIELD(this, s32 **, 0x118);
+    temp_r3_876 = this->unk118;
     if (temp_r3_876 != NULL) {
-        KDSound_Stop(temp_r3_876);
-        temp_r31_880 = M2C_FIELD(this, s32 **, 0x118);
+        KDSound_Stop(&temp_r3_876->unk0);
+        temp_r31_880 = this->unk118;
         temp_cr0_eq_881 = temp_r31_880 == NULL;
         if (temp_cr0_eq_881 == 0) {
             if (temp_cr0_eq_881 == 0) {
-                KDSound_Stop(temp_r31_880);
+                KDSound_Stop(&temp_r31_880->unk0);
             }
             operator delete(temp_r31_880);
         }
-        M2C_FIELD(this, s32 **, 0x118) = NULL;
+        this->unk118 = NULL;
     }
-    temp_r3_893 = this->unk114;
+    temp_r3_893 = this->unk11C;
     if (temp_r3_893 != NULL) {
         KDSound_Stop(&temp_r3_893->unk0);
-        temp_r31_897 = this->unk114;
+        temp_r31_897 = this->unk11C;
         temp_cr0_eq_898 = temp_r31_897 == NULL;
         if (temp_cr0_eq_898 == 0) {
             if (temp_cr0_eq_898 == 0) {
@@ -454,7 +454,7 @@ void FloorSwitch::Deinit() {
             }
             operator delete(temp_r31_897);
         }
-        this->unk114 = NULL;
+        this->unk11C = NULL;
     }
     GameProp::Deinit();
 }
@@ -474,32 +474,32 @@ void FloorSwitch::Init() {
     f32 sp8;
 
     Trap::Init();
-    M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) | 0x80);
+    this->unk110 |= 0x80;
     sp10 = 1.0f;
-    M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) & ~0x40);
+    this->unk110 &= ~0x40;
     sp18 = 1.0f;
-    M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) & ~0x20);
+    this->unk110 &= ~0x20;
     sp1C = 1.0f;
-    M2C_FIELD(this, u8 *, 0x110) = (u8) (M2C_FIELD(this, u8 *, 0x110) & ~0x10);
-    M2C_FIELD(this, s32 *, 0x114) = 0;
-    M2C_FIELD(this, s32 *, 0x118) = 0;
+    this->unk110 &= ~0x10;
     this->unk114 = NULL;
-    this->unkE0 = -1;
-    this->unkE4 = 0.0f;
+    this->unk118 = NULL;
+    this->unk11C = NULL;
+    this->unkE4 = -1;
+    this->unkE8 = 0.0f;
     sp20 = 1.0f;
     sp24 = 1.0f;
     M2C_FIELD(this, f64 *, 0xF0) = (f64) sp18;
     M2C_FIELD(this, f64 *, 0xF8) = (f64) sp20;
     sp8 = 1.0f;
     spC = 1.0f;
-    M2C_FIELD(this, u8 *, 0xEC) = (u8) (M2C_FIELD(this, u8 *, 0xEC) | 0x40);
-    M2C_FIELD(this, f64 *, 0x100) = (f64) sp8;
-    this->unk100 = (f64) sp10;
+    this->unkEC |= 0x40;
+    this->unk100 = (f64) sp8;
+    this->unk108 = (f64) sp10;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
-    this->unk120.unk0 = 0;
+    this->unk128 = NULL;
 }
 
 #if 0 // DRAFT: illegal use of non-static member

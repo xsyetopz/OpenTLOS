@@ -2,7 +2,6 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
-#include "common/Source/Matrix.h"
 #include "spyro/source/Ball.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDSpline.h"
@@ -167,12 +166,12 @@ static struct _struct_boulderRampGroups_0x18 boulderRampGroups[8];
 
 #if 0 // DRAFT: expression syntax error
 void BoulderRamp::BoulderSinkingExit() {
-    this->unkF4.unk10.Send((MKProp *) this);
-    ((Ball *) (M2C_BITWISE(Ball *, this->unkEC)))->SetState((Ball::State) 6);
+    this->unkF4.unk14.Send((MKProp *) this);
+    this->unkF0->SetState((Ball::State) 6);
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'sp8'
 void BoulderRamp::BoulderSinkingUpdate() {
     f64 sp70;                                       /* compiler-managed */
     f64 sp68;
@@ -183,16 +182,16 @@ void BoulderRamp::BoulderSinkingUpdate() {
     MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
+    Ball *temp_r3_126;
     MKVector3 *temp_r31_154;
-    f32 temp_r3_126;
     f32 var_f1_88;
-    s32 temp_r0_76;
+    u32 temp_r0_76;
     u32 temp_r5_79;
     void *temp_r6_78;
 
-    temp_r0_76 = this->unkE0;
-    temp_r6_78 = M2C_FIELD(this->unkEC, void **, 8);
-    temp_r5_79 = (u32) temp_r0_76 >> 0x1FU;
+    temp_r0_76 = this->unkE4;
+    temp_r6_78 = this->unkF0->unk8;
+    temp_r5_79 = temp_r0_76 >> 0x1FU;
     sp68 = M2C_FIELD(temp_r6_78, f64 *, 0x30);
     sp70 = M2C_FIELD(temp_r6_78, f64 *, 0x38);
     if ((((temp_r0_76 & 1) ^ temp_r5_79) - temp_r5_79) != 0) {
@@ -210,13 +209,13 @@ void BoulderRamp::BoulderSinkingUpdate() {
     sp10 = sp48.unk8 + sp28.unk8;
     sp60 = (f64) sp10;
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    temp_r3_126 = this->unkEC;
-    M2C_FIELD(temp_r3_126, f64 *, 0xE0) = sp68;
+    temp_r3_126 = this->unkF0;
+    temp_r3_126->unkE0 = sp68;
     sp70 = (f32) sp70 - (f32) sp60;
     M2C_FIELD(temp_r3_126, f64 *, 0xE8) = (f64) sp70;
-    this->unkE0 += 1;
-    this->unkE8 -= gUpdateTimeDelta;
-    if (this->unkE8 < 0.0f) {
+    this->unkE4 += 1;
+    this->unkEC -= gUpdateTimeDelta;
+    if (this->unkEC < 0.0f) {
         SetState((BoulderRamp::State) 3);
         if ((s32) M2C_FIELD(checked_cast<BoulderRampDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC) != 0) {
             temp_r31_154 = this->unk8 + 0x30;
@@ -227,10 +226,10 @@ void BoulderRamp::BoulderSinkingUpdate() {
 #endif
 
 void BoulderRamp::BoulderSinkingEnter() {
-    this->unkE8 = 1.8f;
+    this->unkEC = 1.8f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'sp10'
 void BoulderRamp::ReceivingBoulderUpdate() {
     f64 sp68;
     KDUniformSpline sp50;
@@ -239,36 +238,36 @@ void BoulderRamp::ReceivingBoulderUpdate() {
     MKVector3 sp20;
     f32 sp18;
     f32 sp8;
+    Ball *temp_r31_199;
+    Ball *temp_r3_231;
     MKVector3 *temp_r31_253;
     f32 temp_f0_191;
-    f32 temp_r31_199;
-    f32 temp_r3_231;
     f32 var_f3_190;
 
     var_f3_190 = 1.0f;
-    temp_f0_191 = (2.0f * gUpdateTimeDelta) + M2C_BITWISE(f32, this->unkE4);
+    temp_f0_191 = (2.0f * gUpdateTimeDelta) + this->unkE8;
     if (var_f3_190 < temp_f0_191) {
 
     } else {
         var_f3_190 = temp_f0_191;
     }
-    this->unkE4 = var_f3_190;
-    temp_r31_199 = this->unkEC;
-    if (M2C_BITWISE(u32, temp_r31_199) != 0U) {
-        sp20.operator*(M2C_FIELD(temp_r31_199, f32 *, 0x274));
-        sp30.operator*(M2C_FIELD(temp_r31_199, f32 *, 0x280));
+    this->unkE8 = var_f3_190;
+    temp_r31_199 = this->unkF0;
+    if (temp_r31_199 != NULL) {
+        sp20.operator*(M2C_BITWISE(f32, temp_r31_199->unk270));
+        sp30.operator*(temp_r31_199->unk27C);
         sp40.operator*(0.5f);
         sp8 = 0.0f;
-        sp50.GetMeasure(M2C_BITWISE(f32, this->unkE4), (Matrix *) &this->unkF0, KDSpline_PositionMixer);
+        sp50.GetMeasure(this->unkE8, &this->unkF4, KDSpline_PositionMixer);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        temp_r3_231 = this->unkEC;
+        temp_r3_231 = this->unkF0;
         sp50.unk10 = sp10;
         sp18 = sp50.unk8 + sp40.unk8;
-        M2C_FIELD(temp_r3_231, f64 *, 0xE0) = sp10;
+        temp_r3_231->unkE0 = sp10;
         sp68 = (f64) sp18;
         M2C_FIELD(temp_r3_231, f64 *, 0xE8) = (f64) sp18;
     }
-    if (M2C_BITWISE(f32, this->unkE4) == 1.0f) {
+    if (this->unkE8 == 1.0f) {
         SetState((BoulderRamp::State) 2);
         if ((s32) M2C_FIELD(checked_cast<BoulderRampDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8) != 0) {
             temp_r31_253 = this->unk8 + 0x30;
@@ -278,7 +277,7 @@ void BoulderRamp::ReceivingBoulderUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'sp58'
 void BoulderRamp::ReceivingBoulderEnter() {
     f64 spE0;
     f64 spD8;
@@ -307,7 +306,7 @@ void BoulderRamp::ReceivingBoulderEnter() {
     void *temp_r3_291;
     void *temp_r4_282;
 
-    temp_r4_282 = M2C_FIELD(this->unkEC, void **, 8);
+    temp_r4_282 = this->unkF0->unk8;
     spD8 = M2C_FIELD(temp_r4_282, f64 *, 0x30);
     spE0 = M2C_FIELD(temp_r4_282, f64 *, 0x38);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
@@ -339,20 +338,20 @@ void BoulderRamp::ReceivingBoulderEnter() {
     spB8 = sp8;
     sp10 = (f32) sp90 + (f32) sp70;
     spC0 = (f64) sp10;
+    this->unkF4.unk8 = 0.0f;
     this->unkF4.unk4 = 0.0f;
-    this->unkF4.unk0 = 0.0f;
-    this->unkF0.AddNode(*((MKVector3 *) &spD8));
-    this->unkF0.AddNode(*((MKVector3 *) &spB8));
-    this->unkF0.AddNode(*((MKVector3 *) &spC8));
-    this->unkE4 = 0.0f;
+    this->unkF4.AddNode(*((MKVector3 *) &spD8));
+    this->unkF4.AddNode(*((MKVector3 *) &spB8));
+    this->unkF4.AddNode(*((MKVector3 *) &spC8));
+    this->unkE8 = 0.0f;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Ball *' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void BoulderRamp::SetBoulder(Ball *arg0) {
     MKVector3 *temp_r31_397;
 
-    this->unkEC = M2C_BITWISE(f32, arg0);
+    this->unkF0 = arg0;
     SetState((BoulderRamp::State) 1);
     if ((s32) M2C_FIELD(checked_cast<BoulderRampDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4) != 0) {
         temp_r31_397 = this->unk8 + 0x30;
@@ -362,29 +361,29 @@ void BoulderRamp::SetBoulder(Ball *arg0) {
 #endif
 
 s32 BoulderRamp::HasBoulder() {
-    return M2C_BITWISE(s32, this->unkEC) != 0;
+    return this->unkF0 != NULL;
 }
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'BoulderRamp::State'
 void BoulderRamp::SetState(BoulderRamp::State arg1) {
-    this->unkF4.unk14.SetState(this, (s32) arg1, 0U);
+    this->unkF4.unk18.SetState(this, (s32) arg1, 0U);
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 void BoulderRamp::Update() {
-    this->unkF4.unk14.Update(this, 0);
+    this->unkF4.unk18.Update(this, 0);
     GameProp::Update();
 }
 #endif
 
 void BoulderRamp::Reset() {
-    this->unkE0 = 0;
-    this->unkE4 = 0.0f;
+    this->unkE4 = 0;
     this->unkE8 = 0.0f;
     this->unkEC = 0.0f;
+    this->unkF0 = NULL;
+    this->unkF4.unk8 = 0.0f;
     this->unkF4.unk4 = 0.0f;
-    this->unkF4.unk0 = 0.0f;
     Trap::Reset();
 }
 
@@ -413,7 +412,7 @@ loop_1:
 
 #if 0 // DRAFT: expression syntax error
 s32 BoulderRamp::LoadLine(MKIniLine *arg0) {
-    if ((Trap::LoadLine(arg0) != 0) || (this->unkF4.unk10.LoadLine(arg0, "OnSet") != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (this->unkF4.unk14.LoadLine(arg0, "OnSet") != 0)) {
         return 1;
     }
     if (arg0->IsField("group") != 0) {
@@ -424,15 +423,15 @@ s32 BoulderRamp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'Deinit'
 void BoulderRamp::Deinit() {
     s32 var_ctr_582;
     s32 var_r3_577;
     struct _struct_boulderRampGroups_0x18 *temp_r5_586;
 
-    this->unkF0.Deinit();
-    this->unkF4.unk10.Deinit();
+    this->unkF4.Deinit();
     this->unkF4.unk14.Deinit();
+    this->unkF4.unk18.Deinit();
     if ((s32) this->unkE0 < 0xFF) {
         var_r3_577 = 0;
         var_ctr_582 = 6;
@@ -449,16 +448,16 @@ void BoulderRamp::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'Init'
 void BoulderRamp::Init() {
     this->unkE0 = 0xFF;
-    this->unkE0 = 0;
-    this->unkE4 = 0.0f;
+    this->unkE4 = 0;
     this->unkE8 = 0.0f;
     this->unkEC = 0.0f;
-    this->unkF0.Init(3, 0U);
-    this->unkF4.unk10.Init();
-    Init__29KDStateMachine<11BoulderRamp>FPQ229KDStateMachine<11BoulderRamp>5StateP29KDStateMachine<11BoulderRamp>((KDStateMachine<BoulderRamp> *) &this->unkF4.unk14, (KDStateMachine<BoulderRamp>::State *) BoulderRamp::states, NULL);
+    this->unkF0 = NULL;
+    this->unkF4.Init(3, 0U);
+    this->unkF4.unk14.Init();
+    Init__29KDStateMachine<11BoulderRamp>FPQ229KDStateMachine<11BoulderRamp>5StateP29KDStateMachine<11BoulderRamp>((KDStateMachine<BoulderRamp> *) &this->unkF4.unk18, (KDStateMachine<BoulderRamp>::State *) BoulderRamp::states, NULL);
     Trap::Init();
 }
 #endif

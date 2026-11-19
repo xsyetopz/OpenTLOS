@@ -32,7 +32,7 @@ f64 fmod(f32, f64);                                 /* extern */
 M2C_UNK free(Matrix *);                             /* extern */
 Matrix *malloc(s32);                                /* extern */
 extern s32 GS_GemBounce;
-extern MKMaterial *GS_GemCollect;
+extern s32 GS_GemCollect;
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
@@ -2376,32 +2376,32 @@ void CollectableDescriptor::LoadDone() {
     f32 temp_f1_4818;
 
     MKPropDescriptor::LoadDone();
-    temp_f1_4818 = this->unkA0;
+    temp_f1_4818 = this->unkA4;
     if (temp_f1_4818 > 0.0f) {
-        this->unkA0 = temp_f1_4818 * temp_f1_4818;
+        this->unkA4 = temp_f1_4818 * temp_f1_4818;
     }
-    sp8 = this->unkA4;
-    spC = this->unkA8;
-    sp10 = this->unkAC;
+    sp8 = this->unkA8;
+    spC = this->unkAC;
+    sp10 = this->unkB0;
     sp14 = 0.0f;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     MKModel_SetColor(this->unk2C, *((MKVector4 *) &sp18));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 CollectableDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4856;
 
     var_r31_4856 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("respawnTime", &this->unk78, 0) != 0) || (arg0->LoadBool("bChangeModelColor", &this->unk66, 0) != 0) || (arg0->LoadBool("bMagnetic", (u8 *) &this->unk66, 0) != 0) || (arg0->LoadBool("bShadow", &this->unk67, 0) != 0) || (arg0->LoadFloat("timeout", &this->unk7C, 0) != 0) || (arg0->LoadFloat("spawnSpeedMultiplier", &this->unk80, 0) != 0) || (arg0->LoadFloat("magRange", &this->unkA0, 0) != 0) || (arg0->LoadFloat("sndBounceVolDropOff", (f32 *) &this->unkC0, 0) != 0) || (arg0->LoadVector4("color", (MKVector4 *) &this->unkA4, 0) != 0) || (KDSound_LoadLine(arg0, "sndCollect", (s32 *) &this->unkB8) != 0) || (KDSound_LoadLine(arg0, "sndBounce", &this->unkBC) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("respawnTime", &this->unk7C, 0) != 0) || (arg0->LoadBool("bChangeModelColor", (u8 *) &this->unk66, 0) != 0) || (arg0->LoadBool("bMagnetic", (u8 *) &this->unk68, 0) != 0) || (arg0->LoadBool("bShadow", this + 0x67, 0) != 0) || (arg0->LoadFloat("timeout", &this->unk80, 0) != 0) || (arg0->LoadFloat("spawnSpeedMultiplier", &this->unk84, 0) != 0) || (arg0->LoadFloat("magRange", &this->unkA4, 0) != 0) || (arg0->LoadFloat("sndBounceVolDropOff", &this->unkC4, 0) != 0) || (arg0->LoadVector4("color", (MKVector4 *) &this->unkA8, 0) != 0) || (KDSound_LoadLine(arg0, "sndCollect", &this->unkBC) != 0) || (KDSound_LoadLine(arg0, "sndBounce", &this->unkC0) != 0)) {
         var_r31_4856 = 1;
     }
     return var_r31_4856;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk67'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void CollectableDescriptor::Init() {
     f64 sp20;
     f64 sp18;
@@ -2412,30 +2412,30 @@ void CollectableDescriptor::Init() {
 
     MKPropDescriptor::Init();
     this->unkC = 2;
-    this->unkB8 = GS_GemCollect;
-    this->unkBC = GS_GemBounce;
-    this->unkC0 = 0.35f;
+    this->unkBC = GS_GemCollect;
+    this->unkC0 = GS_GemBounce;
+    this->unkC4 = 0.35f;
     this->unk64 = 0;
-    this->unk84 = 0.0f;
-    this->unk88 = 1.0f;
-    this->unk8C = 0.0f;
-    this->unk90 = 1.0f;
+    this->unk88 = 0.0f;
+    this->unk8C = 1.0f;
+    this->unk90 = 0.0f;
+    this->unk94 = 1.0f;
     this->unk6C = 0.785398f;
-    this->unk6C = 0.785398f;
-    this->unk70 = 6.0f;
-    this->unk74 = 2.5f;
-    this->unk78 = 0.0f;
+    this->unk70 = 0.785398f;
+    this->unk74 = 6.0f;
+    this->unk78 = 2.5f;
     this->unk7C = 0.0f;
-    this->unk80 = 1.0f;
-    this->unk67 = 1;
+    this->unk80 = 0.0f;
+    this->unk84 = 1.0f;
+    M2C_FIELD(this, s8 *, 0x67) = 1;
     M2C_FIELD(this, s8 *, 0x68) = 0;
-    this->unk94 = 0.0f;
     this->unk98 = 0;
-    this->unk66 = 1;
-    this->unk9C = 0.0f;
+    this->unk9C = 0;
+    M2C_FIELD(this, s8 *, 0x66) = 1;
+    this->unkA0 = 0.0f;
     sp8 = 1.0f;
     spC = 1.0f;
-    this->unkA0 = 0.0f;
+    this->unkA4 = 0.0f;
     sp10 = 1.0f;
     sp14 = 1.0f;
     M2C_FIELD(this, f64 *, 0xA8) = (f64) sp8;

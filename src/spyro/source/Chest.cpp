@@ -27,7 +27,7 @@ void Chest::Message(MKMessage *arg0) {
     } else {
         temp_r0_81 = this->unkE0;
         if ((temp_r0_81 == 0) || (temp_r0_81 == 2)) {
-            this->unkE0 = 0;
+            this->unkE4 = 0;
             SetState(1);
         }
     }
@@ -36,8 +36,8 @@ void Chest::Message(MKMessage *arg0) {
 
 void Chest::Reset() {
     Trap::Reset();
-    this->unkE0 = 0;
-    this->unkE4 = 0.0f;
+    this->unkE4 = 0;
+    this->unkE8 = 0.0f;
     SetState(0);
 }
 
@@ -70,11 +70,11 @@ void Chest::Update() {
             }
             break;
         case 2:
-            if ((s32) this->unkE0 < 0xA) {
-                this->unkE4 = M2C_BITWISE(f32, this->unkE4) + gUpdateTimeDelta;
+            if ((s32) this->unkE4 < 0xA) {
+                this->unkE8 += gUpdateTimeDelta;
                 M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_BITWISE(f32, this->unkE4) == 0.05f) {
-                    this->unkE4 = 0.0f;
+                if (this->unkE8 == 0.05f) {
+                    this->unkE8 = 0.0f;
                     temp_r3_172 = this->unk8;
                     sp28 = 0.0f;
                     sp2C = 150.0f;
@@ -90,12 +90,12 @@ void Chest::Update() {
                     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
                     sp38 = sp8;
-                    sp10 = M2C_FIELD(temp_r3_172, f32 *, 8) * ((200.0f * ((f32) this->unkE0 / 10.0f)) - 100.0f);
+                    sp10 = M2C_FIELD(temp_r3_172, f32 *, 8) * ((200.0f * ((f32) this->unkE4 / 10.0f)) - 100.0f);
                     sp40 = (f64) sp10;
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                     sp70 = (f32) sp70 - (f32) sp40;
-                    ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp68), 300.0f, ((3.1415927f * ((f32) this->unkE0 / 10.0f)) - KDMath_GetYaw(*(temp_r3_172 + 0x20))) - 1.5707964f);
-                    this->unkE0 += 1;
+                    ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp68), 300.0f, ((3.1415927f * ((f32) this->unkE4 / 10.0f)) - KDMath_GetYaw(*(temp_r3_172 + 0x20))) - 1.5707964f);
+                    this->unkE4 += 1;
                 }
             }
             break;

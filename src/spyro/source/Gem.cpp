@@ -378,18 +378,16 @@ void Gem::Message(MKMessage *arg0) {
     Collectable::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void GemDescriptor::Deinit() {
-    f32 temp_r3_702;
+    MKMaterial *temp_r3_702;
 
-    temp_r3_702 = this->unkD0;
-    if (M2C_BITWISE(u32, temp_r3_702) != 0U) {
-        MKMaterial_Destroy(M2C_BITWISE(MKMaterial *, temp_r3_702));
-        this->unkD0 = 0.0f;
+    temp_r3_702 = this->unkD4;
+    if (temp_r3_702 != NULL) {
+        MKMaterial_Destroy(temp_r3_702);
+        this->unkD4 = NULL;
     }
     CollectableDescriptor::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void GemDescriptor::LoadDone() {
@@ -398,10 +396,10 @@ void GemDescriptor::LoadDone() {
     void *temp_r3_743;
 
     CollectableDescriptor::LoadDone();
-    this->unkC8 = MKModel_GetNmbrOfSubObjects(this->unk2C, (SubObjectType) 0);
-    this->unkD0 = M2C_BITWISE(f32, MKMaterial_Create("p_gem_white"));
+    this->unkCC = MKModel_GetNmbrOfSubObjects(this->unk2C, (SubObjectType) 0);
+    this->unkD4 = MKMaterial_Create("p_gem_white");
     var_r5_737 = 0U;
-    this->unk66 = 0;
+    M2C_FIELD(this, s8 *, 0x66) = 0;
     var_r6_740 = 0;
 loop_2:
     if ((s8) M2C_FIELD((&fingerprintData + var_r6_740), u8 *, 8) != 0) {
@@ -411,7 +409,7 @@ loop_2:
         goto loop_2;
     }
     if (var_r5_737 != (u32) M2C_FIELD(&fingerprintData, u32 *, 0x108)) {
-        this->unkCC = 0.0f;
+        this->unkD0 = 0.0f;
     }
 }
 #endif
@@ -425,30 +423,30 @@ s32 GemDescriptor::LoadLine(MKIniLine *arg0) {
     }
     if (arg0->LoadString("gemType", &sp8, 0) != 0) {
         if (stricmp(sp8, "Health") == 0) {
-            this->unkC4 = 0.0f;
+            this->unkC8 = 0;
         } else if (stricmp(sp8, "Spirit") == 0) {
-            this->unkC4 = 1e-45f;
+            this->unkC8 = 1;
         } else if (stricmp(sp8, "Magic") == 0) {
-            this->unkC4 = 3e-45f;
+            this->unkC8 = 2;
         } else if (stricmp(sp8, "Fury") == 0) {
-            this->unkC4 = 4e-45f;
+            this->unkC8 = 3;
         }
         return 1;
     }
-    return arg0->LoadFloat("statValue", (f32 *) &this->unkCC, 0);
+    return arg0->LoadFloat("statValue", &this->unkD0, 0);
 }
 #endif
 
 void GemDescriptor::Init() {
     CollectableDescriptor::Init();
-    this->unk98 |= 0x6000;
+    this->unk9C |= 0x6000;
     this->unk6C = 6.2831855f;
-    this->unk74 = 15.0f;
-    this->unk70 = 4.0f;
-    this->unk94 = 0.0f;
-    this->unkC4 = 0.0f;
-    this->unkCC = 1.0f;
-    this->unkD0 = 0.0f;
+    this->unk78 = 15.0f;
+    this->unk74 = 4.0f;
+    this->unk98 = 0;
+    this->unkC8 = 0;
+    this->unkD0 = 1.0f;
+    this->unkD4 = NULL;
 }
 
 void Gem_cpp::__sinit() {

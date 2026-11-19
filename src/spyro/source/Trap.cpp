@@ -101,7 +101,7 @@ void Trap::GetProp() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'GetTargetableMsg'
 void Trap::Message(MKMessage *arg0) {
     Trap *var_r0_223;
     s32 temp_r0_159;
@@ -135,7 +135,7 @@ block_27:
         }
         break;
     case 0x6C:
-        this->unkD9.Send((MKProp *) this);
+        this->unkDC.Send((MKProp *) this);
         goto block_27;
     case 0x8E:
         temp_r3_221 = checked_cast<GetTargetableMsg *, MKMessage>(arg0);
@@ -191,7 +191,7 @@ s32 Trap::LoadLine(MKIniLine *arg0) {
     s32 var_r31_345;
 
     var_r31_345 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("system", (s32 *) &this->unkD4, 0) != 0) || (arg0->LoadBool("CanBeDisarmed", &this->unkD9, 0) != 0) || (this->unkD9.LoadLine(arg0, "OnDisarmed") != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("system", (s32 *) &this->unkD4, 0) != 0) || (arg0->LoadBool("CanBeDisarmed", &this->unkD9, 0) != 0) || (this->unkDC.LoadLine(arg0, "OnDisarmed") != 0)) {
         var_r31_345 = 1;
     }
     return var_r31_345;

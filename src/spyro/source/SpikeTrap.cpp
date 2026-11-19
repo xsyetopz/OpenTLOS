@@ -18,18 +18,17 @@ void SpikeTrap::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0x12) {
 
     } else {
-        M2C_FIELD(this, s8 *, 0xE4) = 1;
+        this->unkE4 = 1;
     }
     Trap::Message(arg0);
 }
 
 void SpikeTrap::Reset() {
     Trap::Reset();
-    M2C_FIELD(this, s8 *, 0xE4) = 0;
+    this->unkE4 = 0;
     SetState(0);
 }
 
-#if 0 // DRAFT: expression syntax error
 void SpikeTrap::Update() {
     s32 temp_r0_132;
 
@@ -39,19 +38,19 @@ void SpikeTrap::Update() {
         switch (temp_r0_132) {                      /* irregular */
         default:
         case 0:
-            if ((u8) M2C_FIELD(this, u8 *, 0xE4) != 0) {
+            if ((u8) this->unkE4 != 0) {
                 SetState(1);
             }
             break;
         case 1:
             if (this->unk80->unk2C & 1) {
-                this->unkE4.Send((MKProp *) this);
+                this->unkE8.Send((MKProp *) this);
                 SetState(2);
             }
             break;
         case 2:
-            if ((u8) M2C_FIELD(this, u8 *, 0xE4) == 0) {
-                this->unkE8.Send((MKProp *) this);
+            if ((u8) this->unkE4 == 0) {
+                this->unkEC.Send((MKProp *) this);
                 SetState(3);
             }
             break;
@@ -61,26 +60,23 @@ void SpikeTrap::Update() {
             }
             break;
         }
-        M2C_FIELD(this, u8 *, 0xE4) = 0U;
+        this->unkE4 = 0;
     }
 }
-#endif
 
 void SpikeTrap::LoadDone() {
     Trap::LoadDone();
 }
 
-#if 0 // DRAFT: expression syntax error
 s32 SpikeTrap::LoadLine(MKIniLine *arg0) {
     s32 var_r31_216;
 
     var_r31_216 = 0;
-    if ((Trap::LoadLine(arg0) != 0) || (this->unkE4.LoadLine(arg0, "OnPressed") != 0) || (this->unkE8.LoadLine(arg0, "OnReleased") != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (this->unkE8.LoadLine(arg0, "OnPressed") != 0) || (this->unkEC.LoadLine(arg0, "OnReleased") != 0)) {
         var_r31_216 = 1;
     }
     return var_r31_216;
 }
-#endif
 
 void SpikeTrap::Deinit() {
     GameProp::Deinit();
