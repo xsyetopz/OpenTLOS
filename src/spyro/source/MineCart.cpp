@@ -533,62 +533,54 @@ void MineCart::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal operand
 void MineCart::Init() {
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    s32 temp_r0_892;
+    MKVector3 sp8;
+    MKVector3 sp18;
     s32 var_ctr_890;
     s32 var_r3_885;
-    void *temp_r31_911;
+    s32 temp_r0_892;
+    MineCartDescriptor *temp_r31_911;
+    MineCartDescriptor *temp_r3_913;
 
     GameProp::Init();
     var_r3_885 = 0;
     this->unkC8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0xD0) = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     this->unkD8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0xE0) = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_ctr_890 = 3;
     do {
         temp_r0_892 = var_r3_885 + 0x130;
         var_r3_885 += 0x18;
-        *(this + temp_r0_892) = 0.0f;
+        M2C_FIELD(this, f32 *, temp_r0_892) = 0.0f;
         var_ctr_890 -= 1;
     } while (var_ctr_890 != 0);
-    sp8 = 0.0f;
-    spC = 0.0f;
-    sp10 = 0.0f;
+    sp8.unk0 = 0.0f;
+    sp8.unk4 = 0.0f;
+    sp8.unk8 = 0.0f;
     this->unk118 = 0.0f;
-    this->unk168 = (f64) sp8;
-    this->unk170 = (f64) sp10;
+    this->unk168 = M2C_FIELD(&sp8, f64 *, 0);
+    this->unk170 = M2C_FIELD(&sp8, f64 *, 8);
     this->unk178 = NULL;
-    sp18 = (f64) sp8;
-    sp20 = (f64) sp10;
+    sp18 = sp8;
     temp_r31_911 = checked_cast<MineCartDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((KDSoundFader *) &this->unk17C)->Init(M2C_FIELD(checked_cast<MineCartDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xE8), M2C_FIELD(temp_r31_911, f32 *, 0xEC));
+    temp_r3_913 = checked_cast<MineCartDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    ((KDSoundFader *) &this->unk17C)->Init(M2C_FIELD(temp_r3_913, f32 *, 0xE8), M2C_FIELD(temp_r31_911, f32 *, 0xEC));
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 MineCartDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_934;
 
     var_r31_934 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "travelSound", (int *) &this->unkE4) != 0) || (arg0->LoadFloat("soundfadeIn", &this->unkE8, 0) != 0) || (arg0->LoadFloat("soundfadeOut", &this->unkEC, 0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "travelSound", (int *) &M2C_FIELD(this, s32 *, 0xE4)) != 0) || (arg0->LoadFloat("soundfadeIn", &this->unkE8, 0) != 0) || (arg0->LoadFloat("soundfadeOut", &this->unkEC, 0) != 0)) {
         var_r31_934 = 1;
     }
     return var_r31_934;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void MineCartDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkE4 = 0;
+    M2C_FIELD(this, s32 *, 0xE4) = 0;
     this->unkE8 = 0.25f;
     this->unkEC = 0.25f;
 }
-#endif
