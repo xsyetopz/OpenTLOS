@@ -68,32 +68,30 @@ loop_1:
     return NULL;
 }
 
-#if 0 // DRAFT: type mismatch 'signed char *' and 'char *'
+extern "C" s32 strnicmp(s8 *, const char *, s32);
+extern "C" f64 atof(s8 *);
 void MKFont::ParseFontColours(char *arg0) {
-    s32 temp_r3_199;
-    s32 temp_r4_159;
-    s32 temp_r4_98;
-    s32 temp_r6_153;
-    s32 temp_r6_196;
-    s32 temp_r7_89;
-    s32 var_ctr_156;
-    s32 var_r3_155;
+    s8 *base = (s8 *) arg0;
     s8 *var_r31_48;
     s8 *var_r31_59;
     s8 *var_r31_80;
-    u8 temp_r0_108;
-    u8 temp_r0_121;
-    u8 temp_r0_134;
-    u8 temp_r0_147;
-    u8 temp_r0_188;
+    s32 temp_r7_89;
+    s32 temp_r4_98;
+    s32 temp_r6_153;
+    s32 var_r3_155;
+    s32 var_ctr_156;
+    s32 temp_r4_159;
+    s32 temp_r6_196;
+    s32 temp_r3_199;
+    u8 temp_r0;
 
-    var_r31_48 = (signed char *) (arg0);
-    *MKFont::currentColour = 0;
+    var_r31_48 = base;
+    *(s32 *) MKFont::currentColour = 0;
 loop_30:
     if ((s8) (u8) *var_r31_48 != 0) {
-        if (IsToken(arg0, var_r31_48 - arg0) != 0) {
+        if (IsToken(arg0, (u32) (var_r31_48 - base)) != 0) {
             var_r31_59 = var_r31_48 + 1;
-            if (strnicmp(var_r31_59, *MKFont::pColourToken, *MKFont::colourTokenLen) == 0) {
+            if (strnicmp(var_r31_59, *(char **) MKFont::pColourToken, *(s32 *) MKFont::colourTokenLen) == 0) {
 loop_5:
                 if ((s32) (u8) *var_r31_59 == 0x20) {
                     var_r31_59 += 1;
@@ -110,38 +108,38 @@ loop_11:
                     var_r31_80 += 1;
                     goto loop_11;
                 }
-                temp_r7_89 = var_r31_48 - arg0;
-                *(*MKFont::fontColours + ((*MKFont::currentColour * 0x18) + 0x10)) = temp_r7_89;
-                temp_r4_98 = *MKFont::currentColour * 0x18;
-                *(*MKFont::fontColours + (temp_r4_98 + 0x14)) = -1;
-                *(*MKFont::fontColours + (*MKFont::currentColour * 0x18)) = (f32) atof(var_r31_80, temp_r4_98, *MKFont::fontColours, -1, temp_r7_89);
+                temp_r7_89 = (s32) (var_r31_48 - base);
+                *(s32 *) (*(s8 **) MKFont::fontColours + (*(s32 *) MKFont::currentColour * 0x18 + 0x10)) = temp_r7_89;
+                temp_r4_98 = *(s32 *) MKFont::currentColour * 0x18;
+                *(s32 *) (*(s8 **) MKFont::fontColours + (temp_r4_98 + 0x14)) = -1;
+                *(f32 *) (*(s8 **) MKFont::fontColours + (*(s32 *) MKFont::currentColour * 0x18)) = (f32) atof(var_r31_80);
                 do {
-                    temp_r0_108 = (u8) *var_r31_80;
+                    temp_r0 = (u8) *var_r31_80;
                     var_r31_80 += 1;
-                } while ((s32) temp_r0_108 != 0x2C);
-                *(*MKFont::fontColours + ((*MKFont::currentColour * 0x18) + 4)) = (f32) atof(var_r31_80);
+                } while ((s32) temp_r0 != 0x2C);
+                *(f32 *) (*(s8 **) MKFont::fontColours + (*(s32 *) MKFont::currentColour * 0x18 + 4)) = (f32) atof(var_r31_80);
                 do {
-                    temp_r0_121 = (u8) *var_r31_80;
+                    temp_r0 = (u8) *var_r31_80;
                     var_r31_80 += 1;
-                } while ((s32) temp_r0_121 != 0x2C);
-                *(*MKFont::fontColours + ((*MKFont::currentColour * 0x18) + 8)) = (f32) atof(var_r31_80);
+                } while ((s32) temp_r0 != 0x2C);
+                *(f32 *) (*(s8 **) MKFont::fontColours + (*(s32 *) MKFont::currentColour * 0x18 + 8)) = (f32) atof(var_r31_80);
                 do {
-                    temp_r0_134 = (u8) *var_r31_80;
+                    temp_r0 = (u8) *var_r31_80;
                     var_r31_80 += 1;
-                } while ((s32) temp_r0_134 != 0x2C);
-                *(*MKFont::fontColours + ((*MKFont::currentColour * 0x18) + 0xC)) = (f32) atof(var_r31_80);
+                } while ((s32) temp_r0 != 0x2C);
+                *(f32 *) (*(s8 **) MKFont::fontColours + (*(s32 *) MKFont::currentColour * 0x18 + 0xC)) = (f32) atof(var_r31_80);
                 do {
-                    temp_r0_147 = (u8) *var_r31_80;
+                    temp_r0 = (u8) *var_r31_80;
                     var_r31_80 += 1;
-                } while ((s32) temp_r0_147 != 0x3E);
-                temp_r6_153 = *MKFont::currentFont - 1;
+                } while ((s32) temp_r0 != 0x3E);
+                temp_r6_153 = *(s32 *) MKFont::currentFont - 1;
                 var_r3_155 = temp_r6_153 * 0x18;
                 var_ctr_156 = temp_r6_153 + 1;
                 if (temp_r6_153 >= 0) {
 loop_21:
                     temp_r4_159 = var_r3_155 + 0x14;
-                    if ((s32) *(*MKFont::fontColours + temp_r4_159) == -1) {
-                        *(*MKFont::fontColours + temp_r4_159) = *(*MKFont::fontColours + ((*MKFont::currentColour * 0x18) + 0x10)) - 1;
+                    if (*(s32 *) (*(s8 **) MKFont::fontColours + temp_r4_159) == -1) {
+                        *(s32 *) (*(s8 **) MKFont::fontColours + temp_r4_159) = *(s32 *) (*(s8 **) MKFont::fontColours + (*(s32 *) MKFont::currentColour * 0x18 + 0x10)) - 1;
                     } else {
                         var_r3_155 -= 0x18;
                         var_ctr_156 -= 1;
@@ -150,17 +148,17 @@ loop_21:
                         }
                     }
                 }
-                strcpy(var_r31_48, var_r31_80);
-            } else if (strnicmp(var_r31_59, *MKFont::pEndColourToken, *MKFont::endColourTokenLen) == 0) {
+                strcpy((char *) var_r31_48, (const char *) var_r31_80);
+            } else if (strnicmp(var_r31_59, *(char **) MKFont::pEndColourToken, *(s32 *) MKFont::endColourTokenLen) == 0) {
                 do {
-                    temp_r0_188 = (u8) *var_r31_59;
+                    temp_r0 = (u8) *var_r31_59;
                     var_r31_59 += 1;
-                } while ((s32) temp_r0_188 != 0x3E);
-                strcpy(var_r31_48, var_r31_59);
-                temp_r6_196 = var_r31_48 - arg0;
-                temp_r3_199 = *MKFont::currentColour * 0x18;
-                *MKFont::currentColour += 1;
-                *(*MKFont::fontColours + (temp_r3_199 + 0x14)) = temp_r6_196;
+                } while ((s32) temp_r0 != 0x3E);
+                strcpy((char *) var_r31_48, (const char *) var_r31_59);
+                temp_r6_196 = (s32) (var_r31_48 - base);
+                temp_r3_199 = *(s32 *) MKFont::currentColour * 0x18;
+                *(s32 *) MKFont::currentColour += 1;
+                *(s32 *) (*(s8 **) MKFont::fontColours + (temp_r3_199 + 0x14)) = temp_r6_196;
             } else {
                 var_r31_48 = var_r31_59 + 1;
             }
@@ -170,112 +168,108 @@ loop_21:
         goto loop_30;
     }
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
+extern "C" s32 atoi(s8 *);
 s32 MKFont::ScanForToken(const char *arg0, unsigned int arg1) {
-    s8 spC;
-    s8 spB;
-    s8 sp9;
-    u8 sp8;
-    s32 temp_r0_255;
-    s32 temp_r28_333;
-    s32 temp_r31_293;
-    s32 temp_r3_258;
-    s32 temp_r3_515;
-    s32 temp_r4_439;
-    s32 temp_r5_360;
-    s32 temp_r5_403;
-    s32 temp_r5_432;
-    s32 temp_r5_469;
-    s32 temp_r7_257;
-    s32 temp_r9_361;
-    s32 temp_r9_470;
-    s32 var_ctr_365;
-    s32 var_ctr_474;
-    s32 var_r0_369;
-    s32 var_r0_478;
-    s32 var_r30_305;
-    s32 var_r31_295;
-    s32 var_r3_363;
-    s32 var_r3_472;
-    s32 var_r4_349;
-    s32 var_r4_458;
-    s8 *temp_r30_284;
-    s8 *temp_r4_448;
+    s8 spB[0x20];
+    s8 spA[2];
     s8 *temp_r5_230;
+    s8 *temp_r30_284;
+    s8 *temp_r4_267;
+    s8 *var_r3_296;
+    s8 *var_r3_306;
     s8 *temp_r5_445;
-    u8 *var_r3_296;
-    u8 *var_r3_306;
+    s8 *temp_r4_448;
+    s8 *temp_r7_364;
+    s8 *temp_r8_368;
+    s8 *temp_r3_395;
+    s8 *temp_r3_504;
+    s8 *temp_r7_473;
+    s8 *temp_r8_477;
     u8 temp_r3_234;
-    void *temp_r3_395;
-    void *temp_r3_504;
-    void *temp_r4_267;
-    void *temp_r7_364;
-    void *temp_r7_473;
-    void *temp_r8_368;
-    void *temp_r8_477;
+    s32 temp_r0_255;
+    s32 temp_r7_257;
+    s32 temp_r3_258;
+    s32 temp_r31_293;
+    s32 var_r31_295;
+    s32 var_r30_305;
+    s32 temp_r28_333;
+    s32 var_r4_349;
+    s32 var_r0_369;
+    s32 temp_r5_360;
+    s32 temp_r9_361;
+    s32 var_r3_363;
+    s32 var_ctr_365;
+    s32 temp_r5_432;
+    s32 temp_r4_439;
+    s32 var_r4_458;
+    s32 temp_r5_469;
+    s32 temp_r9_470;
+    s32 var_r3_472;
+    s32 var_ctr_474;
+    s32 var_r0_478;
+    s32 temp_r3_515;
 
-    temp_r5_230 = (signed char *) (&arg0[arg1]);
-    if ((s32) (u8) M2C_FIELD(temp_r5_230, s8 *, 0) == 0x3C) {
-        temp_r3_234 = M2C_FIELD(temp_r5_230, u8 *, 1);
-        if (((s8) temp_r3_234 != 0) && ((s8) temp_r3_234 != 0x3C) && ((arg1 == 0) || ((s32) M2C_FIELD(temp_r5_230, u8 *, -1) != 0x3C))) {
-            if (strnicmp(temp_r5_230 + 1, *MKFont::pEndToken, *MKFont::endTokenLen) == 0) {
-                temp_r0_255 = *MKFont::currentFont + 1;
+    temp_r5_230 = (s8 *) arg0 + arg1;
+    if ((s32) (u8) *temp_r5_230 == 0x3C) {
+        temp_r3_234 = (u8) temp_r5_230[1];
+        if (((s8) temp_r3_234 != 0) && ((s8) temp_r3_234 != 0x3C) && ((arg1 == 0) || ((s32) (u8) temp_r5_230[-1] != 0x3C))) {
+            if (strnicmp(temp_r5_230 + 1, *(char **) MKFont::pEndToken, *(s32 *) MKFont::endTokenLen) == 0) {
+                temp_r0_255 = *(s32 *) MKFont::currentFont + 1;
                 temp_r7_257 = temp_r0_255 * 0x14;
-                temp_r3_258 = *MKFont::endTokenLen + 2;
-                *MKFont::currentFont = temp_r0_255;
-                *(*MKFont::currentFontStack + temp_r7_257) = M2C_FIELD((*MKFont::currentFontStack + temp_r7_257), s32 *, -0x28);
-                temp_r4_267 = (void *) (*MKFont::currentFontStack + (*MKFont::currentFont * 0x14));
-                M2C_FIELD(temp_r4_267, s32 *, 4) = (s32) M2C_FIELD(temp_r4_267, s32 *, -0x24);
-                M2C_FIELD((*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)), s32 *, -8) = (s32) (arg1 - 1);
-                M2C_FIELD((*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)), s32 *, 8) = (s32) (arg1 + temp_r3_258);
+                temp_r3_258 = *(s32 *) MKFont::endTokenLen + 2;
+                *(s32 *) MKFont::currentFont = temp_r0_255;
+                *(s32 *) (*(s8 **) MKFont::currentFontStack + temp_r7_257) = *(s32 *) (*(s8 **) MKFont::currentFontStack + temp_r7_257 - 0x28);
+                temp_r4_267 = *(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14;
+                *(s32 *) (temp_r4_267 + 4) = *(s32 *) (temp_r4_267 - 0x24);
+                *(s32 *) (*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14 - 8) = (s32) (arg1 - 1);
+                *(s32 *) (*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14 + 8) = (s32) (arg1 + temp_r3_258);
                 return temp_r3_258;
             }
-            temp_r30_284 = (signed char *) (&arg0[arg1] + 1);
-            if (strnicmp(temp_r30_284, *MKFont::pStartToken, *MKFont::startTokenLen) == 0) {
-                temp_r31_293 = arg1 + *MKFont::startTokenLen;
-                *MKFont::currentFont += 1;
+            temp_r30_284 = temp_r5_230 + 1;
+            if (strnicmp(temp_r30_284, *(char **) MKFont::pStartToken, *(s32 *) MKFont::startTokenLen) == 0) {
+                temp_r31_293 = arg1 + *(s32 *) MKFont::startTokenLen;
+                *(s32 *) MKFont::currentFont += 1;
                 var_r31_295 = temp_r31_293 + 1;
-                var_r3_296 = &M2C_FIELD(&arg0[temp_r31_293], u8 *, 1);
+                var_r3_296 = (s8 *) arg0 + var_r31_295;
 loop_10:
-                if ((s32) *var_r3_296 != 0x3A) {
+                if ((s32) (u8) *var_r3_296 != 0x3A) {
                     var_r31_295 += 1;
                     var_r3_296 += 1;
                     goto loop_10;
                 }
                 var_r30_305 = var_r31_295 + 1;
-                var_r3_306 = &M2C_FIELD(&arg0[var_r31_295], u8 *, 1);
+                var_r3_306 = (s8 *) arg0 + var_r30_305;
 loop_13:
-                if ((s32) *var_r3_306 != 0x3E) {
+                if ((s32) (u8) *var_r3_306 != 0x3E) {
                     var_r30_305 += 1;
                     var_r3_306 += 1;
                     goto loop_13;
                 }
-                strncpy(&spC, arg1 + &M2C_FIELD(&arg0[*MKFont::startTokenLen], M2C_UNK *, 1), ((var_r31_295 - *MKFont::startTokenLen) - arg1) - 1);
-                (&spB)[(var_r31_295 - *MKFont::startTokenLen) - arg1] = 0;
+                strncpy((char *) (spB + 1), (const char *) ((s8 *) arg0 + (arg1 + *(s32 *) MKFont::startTokenLen + 1)), (u32) (((var_r31_295 - *(s32 *) MKFont::startTokenLen) - arg1) - 1));
+                spB[(var_r31_295 - *(s32 *) MKFont::startTokenLen) - arg1] = 0;
                 temp_r28_333 = var_r30_305 - var_r31_295;
-                *(*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)) = ((MKFont *) &spC)->Find(&spB);
-                strncpy(&spC, &arg0[var_r31_295] + 1, temp_r28_333 - 1);
-                (&spB)[temp_r28_333] = 0;
+                *(void **) (*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14) = ((MKFont *) (spB + 1))->Find((const char *) spB);
+                strncpy((char *) (spB + 1), (const char *) ((s8 *) arg0 + var_r31_295 + 1), (u32) (temp_r28_333 - 1));
+                spB[temp_r28_333] = 0;
                 var_r4_349 = 0;
-                M2C_FIELD((*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)), s32 *, 4) = atoi(&spC);
-                M2C_FIELD((*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)), s32 *, 0x10) = -1;
-                temp_r5_360 = *MKFont::currentFont - 1;
-                temp_r9_361 = *MKFont::currentFont * 0x14;
+                *(s32 *) (*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14 + 4) = atoi(spB + 1);
+                *(s32 *) (*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14 + 0x10) = -1;
+                temp_r5_360 = *(s32 *) MKFont::currentFont - 1;
+                temp_r9_361 = *(s32 *) MKFont::currentFont * 0x14;
                 var_r3_363 = temp_r5_360 * 0x14;
-                temp_r7_364 = (void *) (*MKFont::currentFontStack + temp_r9_361);
+                temp_r7_364 = *(s8 **) MKFont::currentFontStack + temp_r9_361;
                 var_ctr_365 = temp_r5_360 + 1;
                 if (temp_r5_360 >= 0) {
 loop_15:
-                    temp_r8_368 = (void *) (*MKFont::currentFontStack + var_r3_363);
-                    var_r0_369 = M2C_FIELD(temp_r8_368, s32 *, 0x10);
+                    temp_r8_368 = *(s8 **) MKFont::currentFontStack + var_r3_363;
+                    var_r0_369 = *(s32 *) (temp_r8_368 + 0x10);
                     if (var_r4_349 > var_r0_369) {
                         var_r0_369 = var_r4_349;
                     }
                     var_r4_349 = var_r0_369;
-                    if (((u32) M2C_FIELD(temp_r8_368, u32 *, 0) == (u32) M2C_FIELD(temp_r7_364, u32 *, 0)) && ((u32) M2C_FIELD(temp_r8_368, u32 *, 4) == (u32) M2C_FIELD(temp_r7_364, u32 *, 4))) {
-                        M2C_FIELD((*MKFont::currentFontStack + temp_r9_361), s32 *, 0x10) = (s32) M2C_FIELD((*MKFont::currentFontStack + var_r3_363), s32 *, 0x10);
+                    if ((*(u32 *) temp_r8_368 == *(u32 *) temp_r7_364) && (*(u32 *) (temp_r8_368 + 4) == *(u32 *) (temp_r7_364 + 4))) {
+                        *(s32 *) (temp_r7_364 + 0x10) = *(s32 *) (*(s8 **) MKFont::currentFontStack + var_r3_363 + 0x10);
                     } else {
                         var_r3_363 -= 0x14;
                         var_ctr_365 -= 1;
@@ -284,46 +278,45 @@ loop_15:
                         }
                     }
                 }
-                temp_r3_395 = (void *) (*MKFont::currentFontStack + (*MKFont::currentFont * 0x14));
-                if ((s32) M2C_FIELD(temp_r3_395, s32 *, 0x10) == -1) {
-                    M2C_FIELD(temp_r3_395, s32 *, 0x10) = (s32) (var_r4_349 + 1);
+                temp_r3_395 = *(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14;
+                if (*(s32 *) (temp_r3_395 + 0x10) == -1) {
+                    *(s32 *) (temp_r3_395 + 0x10) = var_r4_349 + 1;
                 }
-                temp_r5_403 = 0 - arg1;
-                M2C_FIELD((*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)), s32 *, -8) = (s32) ((arg1 - 1) & ((temp_r5_403 - temp_r5_403) - !M2C_CARRY));
-                M2C_FIELD((*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)), s32 *, 8) = (s32) (var_r30_305 + 1);
+                *(s32 *) (*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14 - 8) = (s32) (arg1 != 0 ? arg1 - 1 : 0);
+                *(s32 *) (*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14 + 8) = var_r30_305 + 1;
                 return (var_r30_305 - arg1) + 1;
             }
-            if (strnicmp(temp_r30_284, *MKFont::pPageToken, *MKFont::pageTokenLen) == 0) {
+            if (strnicmp(temp_r30_284, *(char **) MKFont::pPageToken, *(s32 *) MKFont::pageTokenLen) == 0) {
                 if (arg1 != 0) {
-                    temp_r5_432 = *MKFont::currentFont + 1;
-                    *MKFont::currentFont = temp_r5_432;
-                    M2C_FIELD((*MKFont::currentFontStack + (temp_r5_432 * 0x14)), s32 *, -8) = (s32) (arg1 - 1);
-                    temp_r4_439 = *MKFont::currentFont * 0x14;
-                    *(*MKFont::currentFontStack + temp_r4_439) = M2C_FIELD((*MKFont::currentFontStack + temp_r4_439), s32 *, -0x14);
+                    temp_r5_432 = *(s32 *) MKFont::currentFont + 1;
+                    *(s32 *) MKFont::currentFont = temp_r5_432;
+                    *(s32 *) (*(s8 **) MKFont::currentFontStack + temp_r5_432 * 0x14 - 8) = (s32) (arg1 - 1);
+                    temp_r4_439 = *(s32 *) MKFont::currentFont * 0x14;
+                    *(s32 *) (*(s8 **) MKFont::currentFontStack + temp_r4_439) = *(s32 *) (*(s8 **) MKFont::currentFontStack + temp_r4_439 - 0x14);
                 }
-                temp_r5_445 = (signed char *) (&arg0[arg1]);
-                temp_r4_448 = &temp_r5_445[*MKFont::pageTokenLen];
-                sp9 = 0;
-                sp8 = M2C_FIELD(temp_r4_448, u8 *, 1);
+                temp_r5_445 = temp_r5_230;
+                temp_r4_448 = temp_r5_445 + *(s32 *) MKFont::pageTokenLen;
+                spA[1] = 0;
+                spA[0] = temp_r4_448[1];
                 var_r4_458 = -1;
-                M2C_FIELD((*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)), s32 *, 4) = atoi((s8 *) &sp8, temp_r4_448, temp_r5_445);
-                M2C_FIELD((*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)), s32 *, 0x10) = -1;
+                *(s32 *) (*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14 + 4) = atoi(spA);
+                *(s32 *) (*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14 + 0x10) = -1;
                 if (arg1 != 0) {
-                    temp_r5_469 = *MKFont::currentFont - 1;
-                    temp_r9_470 = *MKFont::currentFont * 0x14;
+                    temp_r5_469 = *(s32 *) MKFont::currentFont - 1;
+                    temp_r9_470 = *(s32 *) MKFont::currentFont * 0x14;
                     var_r3_472 = temp_r5_469 * 0x14;
-                    temp_r7_473 = (void *) (*MKFont::currentFontStack + temp_r9_470);
+                    temp_r7_473 = *(s8 **) MKFont::currentFontStack + temp_r9_470;
                     var_ctr_474 = temp_r5_469 + 1;
                     if (temp_r5_469 >= 0) {
 loop_29:
-                        temp_r8_477 = (void *) (*MKFont::currentFontStack + var_r3_472);
-                        var_r0_478 = M2C_FIELD(temp_r8_477, s32 *, 0x10);
+                        temp_r8_477 = *(s8 **) MKFont::currentFontStack + var_r3_472;
+                        var_r0_478 = *(s32 *) (temp_r8_477 + 0x10);
                         if (var_r4_458 > var_r0_478) {
                             var_r0_478 = var_r4_458;
                         }
                         var_r4_458 = var_r0_478;
-                        if (((u32) M2C_FIELD(temp_r8_477, u32 *, 0) == (u32) M2C_FIELD(temp_r7_473, u32 *, 0)) && ((u32) M2C_FIELD(temp_r8_477, u32 *, 4) == (u32) M2C_FIELD(temp_r7_473, u32 *, 4))) {
-                            M2C_FIELD((*MKFont::currentFontStack + temp_r9_470), s32 *, 0x10) = (s32) M2C_FIELD((*MKFont::currentFontStack + var_r3_472), s32 *, 0x10);
+                        if ((*(u32 *) temp_r8_477 == *(u32 *) temp_r7_473) && (*(u32 *) (temp_r8_477 + 4) == *(u32 *) (temp_r7_473 + 4))) {
+                            *(s32 *) (temp_r7_473 + 0x10) = *(s32 *) (*(s8 **) MKFont::currentFontStack + var_r3_472 + 0x10);
                         } else {
                             var_r3_472 -= 0x14;
                             var_ctr_474 -= 1;
@@ -333,12 +326,12 @@ loop_29:
                         }
                     }
                 }
-                temp_r3_504 = (void *) (*MKFont::currentFontStack + (*MKFont::currentFont * 0x14));
-                if ((s32) M2C_FIELD(temp_r3_504, s32 *, 0x10) == -1) {
-                    M2C_FIELD(temp_r3_504, s32 *, 0x10) = (s32) (var_r4_458 + 1);
+                temp_r3_504 = *(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14;
+                if (*(s32 *) (temp_r3_504 + 0x10) == -1) {
+                    *(s32 *) (temp_r3_504 + 0x10) = var_r4_458 + 1;
                 }
-                temp_r3_515 = *MKFont::pageTokenLen + 3;
-                M2C_FIELD((*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)), s32 *, 8) = (s32) (arg1 + temp_r3_515);
+                temp_r3_515 = *(s32 *) MKFont::pageTokenLen + 3;
+                *(s32 *) (*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14 + 8) = arg1 + temp_r3_515;
                 return temp_r3_515;
             }
             return 1;
@@ -346,7 +339,6 @@ loop_29:
     }
     return 1;
 }
-#endif
 
 void MKFont::BuildMaterialList(const char *arg0) {
     u32 temp_r31_548;
@@ -362,45 +354,29 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: pointer/array required
 void MKFont::ResetFontStack(MKFont *arg0, unsigned int arg1) {
-    s32 temp_r0_586;
-    s32 temp_r5_584;
-    s32 temp_r7_583;
-    s32 temp_r8_582;
-    s32 var_r3_570;
-    u32 var_r30_574;
-
-    var_r3_570 = 0;
-    var_r30_574 = 0U;
-loop_2:
-    if (var_r30_574 < (u32) M2C_FIELD(&gMKDefaults, u32 *, 0xB0)) {
-        temp_r8_582 = var_r3_570 + 4;
-        temp_r7_583 = var_r3_570 + 8;
-        temp_r5_584 = var_r3_570 + 0xC;
-        *(*MKFont::currentFontStack + var_r3_570) = 0;
-        temp_r0_586 = var_r3_570 + 0x10;
-        var_r30_574 += 1;
-        var_r3_570 += 0x14;
-        *(*MKFont::currentFontStack + temp_r8_582) = 0;
-        *(*MKFont::currentFontStack + temp_r7_583) = 0;
-        *(*MKFont::currentFontStack + temp_r5_584) = M2C_FIELD(&gMKDefaults, s32 *, 0xAC);
-        *(*MKFont::currentFontStack + temp_r0_586) = 0;
-        goto loop_2;
+    s32 off = 0;
+    u32 i = 0;
+    while (i < (u32) M2C_FIELD(&gMKDefaults, u32 *, 0xB0)) {
+        M2C_FIELD(*(s8 **) MKFont::currentFontStack + off, s32 *, 0) = 0;
+        M2C_FIELD(*(s8 **) MKFont::currentFontStack + off, s32 *, 4) = 0;
+        M2C_FIELD(*(s8 **) MKFont::currentFontStack + off, s32 *, 8) = 0;
+        M2C_FIELD(*(s8 **) MKFont::currentFontStack + off, s32 *, 0xC) = M2C_FIELD(&gMKDefaults, s32 *, 0xAC);
+        M2C_FIELD(*(s8 **) MKFont::currentFontStack + off, s32 *, 0x10) = 0;
+        i += 1;
+        off += 0x14;
     }
-    *MKFont::currentFont = 0;
+    *(s32 *) MKFont::currentFont = 0;
     if (arg0 != NULL) {
-        **MKFont::currentFontStack = arg0;
-        M2C_FIELD((*MKFont::currentFontStack + (*MKFont::currentFont * 0x14)), s32 *, 4) = 0;
+        M2C_FIELD(*(s8 **) MKFont::currentFontStack, MKFont **, 0) = arg0;
+        M2C_FIELD(*(s8 **) MKFont::currentFontStack + *(s32 *) MKFont::currentFont * 0x14, s32 *, 4) = 0;
     }
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 CharInfo *MKFont::GetCharacter(const char *arg0, int *arg1, FontPage **arg2) {
     CharInfo *var_r3_703;
     FontPage *temp_r5_684;
-    s32 *temp_r4_692;
+    s8 *temp_r4_692;
     s32 temp_cr0_eq_648;
     s32 temp_r7_685;
     s32 var_r3_678;
@@ -411,9 +387,9 @@ CharInfo *MKFont::GetCharacter(const char *arg0, int *arg1, FontPage **arg2) {
 
     if (IsToken(arg0, (u32) *arg1) != 0) {
 loop_4:
-        temp_r3_646 = (signed char *) (&arg0[*arg1]);
+        temp_r3_646 = (s8 *) (arg0 + *arg1);
         temp_cr0_eq_648 = (s32) M2C_FIELD(temp_r3_646, u8 *, -1) == 0x3E;
-        if ((temp_cr0_eq_648 != 0) && ((temp_cr0_eq_648 == 0) || ((s32) (u8) M2C_FIELD(temp_r3_646, s8 *, 0) != 0x3C))) {
+        if ((temp_cr0_eq_648 != 0) && ((s32) (u8) M2C_FIELD(temp_r3_646, u8 *, 0) != 0x3C)) {
             goto block_7;
         }
         *arg1 += 1;
@@ -423,26 +399,25 @@ loop_4:
         goto loop_4;
     }
 block_7:
-    temp_r4_656 = (signed char *) (&arg0[*arg1]);
-    temp_r3_657 = (u8) M2C_FIELD(temp_r4_656, s8 *, 0);
-    if ((((s32) temp_r3_657 == 0x3C) && ((s32) M2C_FIELD(temp_r4_656, u8 *, 1) == 0x3C)) || (((s8) temp_r3_657 == 0x3E) && ((s32) M2C_FIELD(temp_r4_656, u8 *, 1) == 0x3E))) {
+    temp_r4_656 = (s8 *) (arg0 + *arg1);
+    temp_r3_657 = (u8) M2C_FIELD(temp_r4_656, u8 *, 0);
+    if ((((s32) temp_r3_657 == 0x3C) && ((s32) M2C_FIELD(temp_r4_656, u8 *, 1) == 0x3C)) || (((s32) (s8) temp_r3_657 == 0x3E) && ((s32) M2C_FIELD(temp_r4_656, u8 *, 1) == 0x3E))) {
         *arg1 += 1;
     }
     var_r3_678 = 0;
     var_ctr_680 = M2C_FIELD(&gMKDefaults, u32 *, 0xB0);
-    if ((u32) M2C_FIELD(&gMKDefaults, u32 *, 0xB0) > 0U) {
+    if (var_ctr_680 > 0U) {
 loop_13:
-        temp_r5_684 = (FontPage *) (*MKFont::currentFontStack + var_r3_678);
+        temp_r5_684 = (FontPage *) (*(s8 **) MKFont::currentFontStack + var_r3_678);
         temp_r7_685 = *arg1;
         if (((u32) temp_r5_684->unk8 <= (u32) temp_r7_685) && ((u32) temp_r5_684->unkC >= (u32) temp_r7_685)) {
-            temp_r4_692 = temp_r5_684->unk0;
+            temp_r4_692 = (s8 *) temp_r5_684->unk0;
             if (temp_r4_692 != NULL) {
-                var_r3_703 = M2C_FIELD(*(*temp_r4_692 + (temp_r5_684->unk4 * 4)), s32 *, 0x28) + (((u8) arg0[temp_r7_685] << 5) & 0x1FE0);
+                var_r3_703 = (CharInfo *) (M2C_FIELD(*(s8 **) (*(s8 **) temp_r4_692 + temp_r5_684->unk4 * 4), s32 *, 0x28) + (((u8) arg0[temp_r7_685] << 5) & 0x1FE0));
                 if (arg2 != NULL) {
                     *arg2 = temp_r5_684;
                     return var_r3_703;
                 }
-                /* Duplicate return node #20. Try simplifying control flow for better match */
                 return var_r3_703;
             }
         }
@@ -457,7 +432,6 @@ block_19:
     var_r3_703 = NULL;
     return var_r3_703;
 }
-#endif
 
 u8 MKFont::IsToken(const char *arg0, unsigned int arg1) {
     s8 *temp_r6_728;
@@ -473,17 +447,15 @@ u8 MKFont::IsToken(const char *arg0, unsigned int arg1) {
     return 0U;
 }
 
-#if 0 // DRAFT: pointer/array required
 f32 MKFont::GetWidthOfCharacter(char arg0, CharInfo *arg1, FontPage *arg2) {
     if ((u8) arg0 > 0x20U) {
-        if ((s32) arg1->unk1C != 0) {
-            return arg1->unk18 + M2C_FIELD(*(*arg2->unk0 + (arg2->unk4 * 4)), f32 *, 8);
+        if (arg1->unk1C != 0) {
+            return arg1->unk18 + M2C_FIELD(*(s8 **) (*(s8 **) arg2->unk0 + arg2->unk4 * 4), f32 *, 8);
         }
-        return M2C_FIELD(*(*arg2->unk0 + (arg2->unk4 * 4)), f32 *, 0xC);
+        return M2C_FIELD(*(s8 **) (*(s8 **) arg2->unk0 + arg2->unk4 * 4), f32 *, 0xC);
     }
-    return M2C_FIELD(*(*arg2->unk0 + (arg2->unk4 * 4)), f32 *, 0xC);
+    return M2C_FIELD(*(s8 **) (*(s8 **) arg2->unk0 + arg2->unk4 * 4), f32 *, 0xC);
 }
-#endif
 
 f32 MKFont::DrawString2dWrapped(const char *arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, unsigned int arg7) {
     Matrix sp10;
@@ -1153,179 +1125,135 @@ f32 MKFont::GetScale(float arg0) {
     return arg0 / GetHeight();
 }
 
-#if 0 // DRAFT: pointer/array required
 f32 MKFont::GetHeight() {
-    return M2C_FIELD(**this, f32 *, 0x24);
+    return M2C_FIELD(*(s8 **) *(s8 **) this, f32 *, 0x24);
 }
-#endif
 
-#if 0 // DRAFT: function call 'MKMaterial_Destroy(long)' does not match 'MKMaterial_Destroy(MKMaterial *)'
+extern "C" void free(void *);
 void MKFont::Destroy() {
-    M2C_UNK *temp_r30_2084;
-    M2C_UNK *temp_r30_2104;
-    M2C_UNK *temp_r30_2118;
-    s32 temp_r0_2073;
-    s32 var_r29_2076;
-    s32 var_r31_2077;
-    u32 *temp_r3_2137;
-    u32 *var_r4_2132;
-    u32 temp_r0_2148;
-    u32 temp_r5_2140;
+    s32 var_r29;
+    s32 var_r31;
+    s8 *temp_r30;
+    void **entry;
+    void *temp_r5;
+    s32 temp_r0;
 
-    temp_r0_2073 = M2C_FIELD(this, s32 *, 0x2C) - 1;
-    M2C_FIELD(this, s32 *, 0x2C) = temp_r0_2073;
-    if (temp_r0_2073 == 0) {
-        var_r29_2076 = 0;
-        var_r31_2077 = 0;
-loop_6:
-        if (var_r29_2076 < (s32) this->unk8) {
-            MKMaterial_Destroy(*(M2C_FIELD(this, M2C_UNK **, 4) + var_r31_2077));
-            temp_r30_2084 = (long *) (*(M2C_FIELD(this, M2C_UNK **, 0) + var_r31_2077));
+    temp_r0 = M2C_FIELD(this, s32 *, 0x2C) - 1;
+    M2C_FIELD(this, s32 *, 0x2C) = temp_r0;
+    if (temp_r0 == 0) {
+        var_r29 = 0;
+        var_r31 = 0;
+        while (var_r29 < (s32) M2C_FIELD(this, s32 *, 8)) {
+            MKMaterial_Destroy(*(MKMaterial **) (M2C_FIELD(this, s8 **, 4) + var_r31));
+            temp_r30 = *(s8 **) (M2C_FIELD(this, s8 **, 0) + var_r31);
             if (MKHeap::Current() != NULL) {
-                ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_2084, NULL, 0);
+                ((MKHeap *) (MKHeap::Current()))->Free(temp_r30, NULL, 0);
             } else {
-                free(temp_r30_2084);
+                free(temp_r30);
             }
-            var_r29_2076 += 1;
-            var_r31_2077 += 4;
-            goto loop_6;
+            var_r29 += 1;
+            var_r31 += 4;
         }
-        temp_r30_2104 = M2C_FIELD(this, M2C_UNK **, 4);
+        temp_r30 = M2C_FIELD(this, s8 **, 4);
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_2104, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30, NULL, 0);
         } else {
-            free(temp_r30_2104);
+            free(temp_r30);
         }
-        temp_r30_2118 = M2C_FIELD(this, M2C_UNK **, 0);
+        temp_r30 = M2C_FIELD(this, s8 **, 0);
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_2118, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30, NULL, 0);
         } else {
-            free(temp_r30_2118);
+            free(temp_r30);
         }
-        var_r4_2132 = (unsigned long *) (*MKFont::fontList);
-loop_17:
-        temp_r0_2148 = *var_r4_2132;
-        if (temp_r0_2148 == 0U) {
-
-        } else {
-            if (temp_r0_2148 == this) {
-                temp_r3_2137 = (unsigned long *) (*MKFont::fontList);
-                *MKFont::fontList = (unsigned char) (temp_r3_2137 + 4);
-                temp_r5_2140 = *temp_r3_2137;
-                *temp_r3_2137 = *var_r4_2132;
-                *var_r4_2132 = temp_r5_2140;
+        entry = *(void ***) MKFont::fontList;
+        while (*entry != NULL) {
+            if (*entry == (void *) this) {
+                void **head = *(void ***) MKFont::fontList;
+                *(s8 **) MKFont::fontList = (s8 *) head + 4;
+                temp_r5 = *head;
+                *head = *entry;
+                *entry = temp_r5;
                 return;
             }
-            var_r4_2132 += 4;
-            goto loop_17;
+            entry += 1;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'stricmp(unsigned char *, MKFont *)' does not match 'stricmp(long, MKFont *)'
+extern "C" s32 stricmp(s8 *, const char *);
 void *MKFont::Find(const char *arg0) {
-    void **var_r31_2167;
-    void *temp_r3_2180;
-
-    var_r31_2167 = (void **) (*MKFont::fontList);
-loop_4:
-    temp_r3_2180 = *var_r31_2167;
-    if (temp_r3_2180 == NULL) {
-        return NULL;
+    void **entry = *(void ***) MKFont::fontList;
+    while (*entry != NULL) {
+        if (stricmp((s8 *) *entry + 0xC, (const char *) this) == 0) {
+            return *entry;
+        }
+        entry += 1;
     }
-    if (stricmp(((u8 *) temp_r3_2180) + 0xC, this) == 0) {
-        return *var_r31_2167;
-    }
-    var_r31_2167 += 4;
-    goto loop_4;
+    return NULL;
 }
-#endif
 
-#if 0 // DRAFT: identifier 'MKFont::Create(const char *)' redeclared was declared as: 'MKFont * (const char *)' now declared as: 'void * (const char *)'
-void *MKFont::Create(const char *arg0) {
-    MKMaterial *temp_r3_2288;
-    TextCharStrip **temp_r6_2281;
-    TextCharStrip **temp_ret_2250;
-    TextCharStrip **temp_ret_2254;
-    TextCharStrip **var_r3_2236;
-    TextCharStrip **var_r3_2250;
-    TextCharStrip *temp_r7_2282;
-    f32 var_f1_2200;
-    f32 var_f1_2250;
-    s32 temp_ret_2226;
-    s32 var_r28_2260;
-    s8 *temp_r3_2272;
-    s8 *temp_ret_2272;
-    u32 var_r26_2259;
-    u32 var_r30_2211;
-    void *temp_r4_2208;
-    void *temp_r6_2283;
-    void *temp_ret_2200;
-    void *var_r31_2201;
+MKFont *MKFont::Create(const char *arg0) {
+    s8 *var_r31;
+    s8 *temp_r4;
+    s8 *temp_r3;
+    s8 *temp_r6;
+    s8 *temp_r7;
+    s8 *temp_ret;
+    MKMaterial *temp_r25;
+    u32 var_r30;
+    u32 var_r26;
+    s32 var_r28;
 
-    temp_ret_2200 = Find(arg0);
-    var_f1_2200 = M2C_BITWISE(f32, temp_ret_2200);
-    var_r31_2201 = temp_ret_2200;
-    if (var_r31_2201 != NULL) {
-        M2C_FIELD(var_r31_2201, s32 *, 0x2C) = (s32) (M2C_FIELD(var_r31_2201, s32 *, 0x2C) + 1);
+    var_r31 = (s8 *) Find(arg0);
+    if (var_r31 != NULL) {
+        M2C_FIELD(var_r31, s32 *, 0x2C) = M2C_FIELD(var_r31, s32 *, 0x2C) + 1;
     } else {
-        temp_r4_2208 = (void *) (*MKFont::fontList);
-        var_r30_2211 = 0;
-        *MKFont::fontList = (unsigned char) (((u8 *) temp_r4_2208) - 4);
-        var_r31_2201 = M2C_FIELD(temp_r4_2208, void **, -4);
-loop_4:
-        temp_ret_2226 = MKArchive_Exists(Str_Printf("%s%d%s", this, var_r30_2211, ".fnt", var_f1_2200), NULL);
-        var_f1_2200 = M2C_BITWISE(f32, temp_ret_2226);
-        if (temp_ret_2226 != 0) {
-            var_r30_2211 += 1;
-            goto loop_4;
+        temp_r4 = *(s8 **) MKFont::fontList;
+        var_r30 = 0;
+        *(s8 **) MKFont::fontList = temp_r4 - 4;
+        var_r31 = M2C_FIELD(temp_r4, s8 **, -4);
+        while (MKArchive_Exists((const char *) Str_Printf("%s%d%s", this, var_r30, ".fnt"), NULL) != 0) {
+            var_r30 += 1;
         }
         if (MKHeap::Current() != NULL) {
-            var_r3_2236 = (TextCharStrip **) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r30_2211 * 4, NULL, 0));
+            temp_r3 = (s8 *) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r30 * 4, NULL, 0));
         } else {
-            var_r3_2236 = malloc(var_r30_2211 * 4);
+            temp_r3 = (s8 *) malloc(var_r30 * 4);
         }
-        M2C_FIELD(var_r31_2201, TextCharStrip ***, 4) = var_r3_2236;
+        M2C_FIELD(var_r31, s8 **, 4) = temp_r3;
         if (MKHeap::Current() != NULL) {
-            temp_ret_2250 = (TextCharStrip **) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r30_2211 * 4, NULL, 0));
-            var_f1_2250 = M2C_BITWISE(f32, temp_ret_2250);
-            var_r3_2250 = temp_ret_2250;
+            temp_r3 = (s8 *) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r30 * 4, NULL, 0));
         } else {
-            temp_ret_2254 = malloc(var_r30_2211 * 4);
-            var_f1_2250 = M2C_BITWISE(f32, temp_ret_2254);
-            var_r3_2250 = temp_ret_2254;
+            temp_r3 = (s8 *) malloc(var_r30 * 4);
         }
-        M2C_FIELD(var_r31_2201, TextCharStrip ***, 0) = var_r3_2250;
-        var_r26_2259 = 0U;
-        var_r28_2260 = 0;
-loop_13:
-        if (var_r26_2259 < var_r30_2211) {
-            temp_ret_2272 = MKArchive_Load(Str_Printf("%s%d%s", this, var_r26_2259, ".fnt", var_f1_2250), NULL, NULL, -1);
-            temp_r3_2272 = temp_ret_2272;
-            M2C_FIELD(temp_r3_2272, void **, 0x28) = (void *) (temp_r3_2272 + M2C_FIELD(temp_r3_2272, void **, 0x28));
-            *(M2C_FIELD(var_r31_2201, TextCharStrip ***, 0) + var_r28_2260) = (TextCharStrip *) (temp_r3_2272);
-            temp_r6_2281 = M2C_FIELD(var_r31_2201, TextCharStrip ***, 0);
-            temp_r7_2282 = *temp_r6_2281;
-            temp_r6_2283 = *(temp_r6_2281 + var_r28_2260);
-            M2C_FIELD(temp_r6_2283, f32 *, 0xC) = (f32) M2C_FIELD(temp_r7_2282, f32 *, 0xC);
-            temp_r3_2288 = MKMaterial_Create(Str_Printf("%s%d", this, var_r26_2259, temp_r6_2283, temp_r7_2282, M2C_BITWISE(f32, temp_ret_2272)));
-            MKMaterial_SetParameter(temp_r3_2288, (MKMaterialParameter) 1, 1);
-            MKMaterial_SetParameter(temp_r3_2288, (MKMaterialParameter) 2, 1);
-            MKMaterial_SetParameter(temp_r3_2288, (MKMaterialParameter) 0, 0);
-            var_f1_2250 = M2C_BITWISE(f32, MKMat_MK2_SetMaterialType(temp_r3_2288, (MKMat_MK2_Standard_MaterialType) 3));
-            var_r26_2259 += 1;
-            *(M2C_FIELD(var_r31_2201, TextCharStrip ***, 4) + var_r28_2260) = (TextCharStrip *) (temp_r3_2288);
-            var_r28_2260 += 4;
-            goto loop_13;
+        M2C_FIELD(var_r31, s8 **, 0) = temp_r3;
+        var_r26 = 0U;
+        var_r28 = 0;
+        while (var_r26 < var_r30) {
+            temp_ret = MKArchive_Load((const char *) Str_Printf("%s%d%s", this, var_r26, ".fnt"), NULL, NULL, -1);
+            temp_r3 = temp_ret;
+            M2C_FIELD(temp_r3, s32 *, 0x28) = (s32) temp_r3 + M2C_FIELD(temp_r3, s32 *, 0x28);
+            *(s8 **) (M2C_FIELD(var_r31, s8 **, 0) + var_r28) = temp_r3;
+            temp_r6 = M2C_FIELD(var_r31, s8 **, 0);
+            temp_r7 = *(s8 **) temp_r6;
+            temp_r6 = *(s8 **) (M2C_FIELD(var_r31, s8 **, 0) + var_r28);
+            M2C_FIELD(temp_r6, f32 *, 0xC) = M2C_FIELD(temp_r7, f32 *, 0xC);
+            temp_r25 = (MKMaterial *) MKMaterial_Create((const char *) Str_Printf("%s%d", this, var_r26));
+            MKMaterial_SetParameter(temp_r25, (MKMaterialParameter) 1, 1);
+            MKMaterial_SetParameter(temp_r25, (MKMaterialParameter) 2, 1);
+            MKMaterial_SetParameter(temp_r25, (MKMaterialParameter) 0, 0);
+            MKMat_MK2_SetMaterialType(temp_r25, (MKMat_MK2_Standard_MaterialType) 3);
+            var_r26 += 1;
+            *(MKMaterial **) (M2C_FIELD(var_r31, s8 **, 4) + var_r28) = temp_r25;
+            var_r28 += 4;
         }
-        M2C_FIELD(var_r31_2201, s32 *, 0x2C) = 1;
-        M2C_FIELD(var_r31_2201, u32 *, 8) = var_r30_2211;
-        strcpy(((u8 *) var_r31_2201) + 0xC, (s8 *) this);
+        M2C_FIELD(var_r31, s32 *, 0x2C) = 1;
+        M2C_FIELD(var_r31, u32 *, 8) = var_r30;
+        strcpy((char *) (var_r31 + 0xC), (const char *) this);
     }
-    return (MKFont *) (var_r31_2201);
+    return (MKFont *) var_r31;
 }
-#endif
 
 #if 0 // DRAFT: function call 'strlen(unsigned char)' does not match 'strlen(const char *)'
 void Font_cpp::__sinit() {
