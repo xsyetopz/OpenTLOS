@@ -447,7 +447,7 @@ void SwampTier3Goal_Summon::PositionSpawnPoints() {
     f64 sp1D8;
     f64 sp1D0;
     f64 sp1C0;
-    f64 sp1B0;
+    MKVector3 sp1B0;
     f64 sp1A8;
     f64 sp1A0;
     f64 sp198;
@@ -795,9 +795,8 @@ loop_45:
         temp_f30_1175 = MKVector3::up.unk8;
 loop_51:
         if (var_r20_1154 < temp_r29_664) {
-            KDMath_GetDirection(var_f16_1153);
-            sp2A0.unk30 = sp1B0;
-            sp2A0.unk38 = sp1B8;
+            sp1B0 = KDMath_GetDirection(var_f16_1153);
+            *(MKVector3 *) &sp2A0.unk30 = sp1B0;
             temp_f0_1187 = (f64) sp2A0.unk30 * 5.61841903e-315;
             spE0 = temp_f0_1187;
             sp1A0 = temp_f0_1187;

@@ -24,6 +24,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
@@ -74,7 +75,7 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     f64 sp110;
     f64 sp108;
     f64 sp100;
-    f64 spF0;
+    MKVector3 spF0;
     f64 spE8;
     f64 spE0;
     f64 spD8;
@@ -177,11 +178,11 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     MKModel_SetColor(this->unk4, *((MKVector4 *) &this->unkB0));
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
         sp174 = 0;
-        MKVector(1.0f, 1.0f, 1.0f);
+        spF0 = MKVector(1.0f, 1.0f, 1.0f);
         sp40 = spF0 * 5.56078426e-315;
         sp170 = 0x417;
         sp178 = sp40;
-        sp48 = spF8 * 150.0f;
+        sp48 = spF0.unk8 * 150.0f;
         sp188 = 1;
         sp180 = (f64) sp48;
         sp100 = sp40;

@@ -86,6 +86,7 @@
 #include "common/Source/Str.h"
 #include "spyro/source/GameConsole.h"
 #include "spyro/source/InGame.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -2408,7 +2409,7 @@ block_72:
                                 this->unk40 |= 0x10;
                             }
                         } else if (((temp_r5_3946->unkC8 * temp_f4_3942) + ((temp_r5_3946->unkC0 * temp_f6_3939) + (temp_r5_3946->unkC4 * temp_f5_3940))) > 0.0f) {
-                            KDMath_GetReflectedVector(sp158, *((MKVector3 *) &temp_r5_3946->unk598));
+                            sp158 = KDMath_GetReflectedVector(*((MKVector3 *) &temp_r5_3946->unk598), *((MKVector3 *) &sp1C8));
                             spB8 = -M2C_BITWISE(f32, sp158);
                             spBC = -sp158.unk4;
                             spC0 = -sp158.unk8;
@@ -3531,9 +3532,8 @@ loop_5:
                 sp18 = temp_f1_6224;
                 sp30 = sp10;
                 sp38 = temp_f1_6224;
-                Normalise(sp40);
-                M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp40);
-                M2C_FIELD(arg1, f64 *, 8) = (f64) sp40.unk8;
+                sp40 = Normalise(*((MKVector3 *) &sp30));
+                M2C_FIELD(arg1, MKVector3 *, 0) = sp40;
                 return 1U;
             }
             var_r4_6165 += 0x58;

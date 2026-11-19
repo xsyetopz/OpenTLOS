@@ -23,6 +23,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDSound.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK acos(f32, f32, f32, f32);                   /* extern */
@@ -220,9 +221,8 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         sp148 = temp_f1_296;
         sp70 = (f32) sp20 - arg0->unk38;
         sp150 = (f64) sp70;
-        Normalise(sp158);
-        sp178.unk20 = M2C_BITWISE(f64, sp158);
-        sp178.unk28 = (f64) sp158.unk8;
+        sp158 = Normalise(*((MKVector3 *) &sp148));
+        *(MKVector3 *) &sp178.unk20 = sp158;
         arg0->unk88 = 1;
     } else {
         sp88 = sp178.unk30 - M2C_FIELD(arg0, f64 *, 0x30);
@@ -279,9 +279,8 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         sp118 = temp_f1_417;
         sp60 = (f32) sp178.unk38 - arg0->unk38;
         sp120 = (f64) sp60;
-        Normalise(sp128);
-        sp178.unk20 = M2C_BITWISE(f64, sp128);
-        sp178.unk28 = (f64) sp128.unk8;
+        sp128 = Normalise(*((MKVector3 *) &sp118));
+        *(MKVector3 *) &sp178.unk20 = sp128;
         spF8.operator*(var_f29_336);
         sp48 = M2C_FIELD(arg0, f64 *, 0x30) + M2C_BITWISE(f64, spF8);
         arg0->unk88 = 0;
@@ -311,8 +310,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         spD8 = (f64) sp38;
         spE0 = (f64) sp40;
         KDMath_Smooth<MKVector3>(spE8, *((MKVector3 *) &spD8), (f32) var_r29_486 / 3.0f, 1.0f);
-        sp178.unk10 = M2C_BITWISE(f64, spE8);
-        sp178.unk18 = (f64) spE8.unk8;
+        *(MKVector3 *) &sp178.unk10 = spE8;
         var_f4_531 = ((f32) sp178.unk18 * (f32) sp178.unk18) + (((f32) sp178.unk10 * (f32) sp178.unk10) + ((*(f32 *) ((u8 *) &sp178 + 0x14)) * (*(f32 *) ((u8 *) &sp178 + 0x14))));
         if (var_f4_531 > 0.000001f) {
             if (var_f4_531 > 0.0f) {
@@ -695,7 +693,7 @@ loop_63:
             sp44 = ((f32) spA8 * temp_f3_1324) - ((f32) spA0 * (f32) spE8);
             spB8 = (f64) sp48;
             spB0 = (f64) sp40;
-            Normalise(spC0);
+            spC0 = Normalise(*((MKVector3 *) &spB0));
             temp_f12_1358 = -sp100;
             temp_f11_1360 = -(*(f32 *) ((u8 *) &spF8 + 0xc));
             temp_f10_1361 = -sp108;

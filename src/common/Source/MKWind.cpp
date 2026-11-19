@@ -1,6 +1,8 @@
 #include "common/Source/MKWind.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/StdMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: identifier '_sinTable' redeclared was declared as: 'unsigned char[4100]' now declared as: 'long'
@@ -11,8 +13,10 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern MKWind wind;
 
-#if 0 // DRAFT: pointer/array required
-void MKWind_GetVelocity(const MKVector3 &arg0) {
+#if 0 // DRAFT: illegal function overloading
+void MKWind_GetVelocity(const MKVector3 &arg1) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp18;                                       /* compiler-managed */
     f64 sp10;                                       /* compiler-managed */
     f32 sp8;                                        /* compiler-managed */
@@ -31,7 +35,7 @@ void MKWind_GetVelocity(const MKVector3 &arg0) {
         temp_r4_31 = &(&wind)[var_r5_22];
         temp_f0_33 = M2C_FIELD(temp_r4_31, f32 *, 4);
         var_r5_22 += 0x28;
-        temp_r0_51 = (s32) (325.9493f * ((M2C_FIELD(&wind, f32 *, 0x190) * M2C_FIELD(temp_r4_31, f32 *, 0x20)) + ((M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 8) * M2C_FIELD(temp_r4_31, f32 *, 8)) + ((*M2C_ERROR(/* Read from unset register $r4 */) * M2C_FIELD(temp_r4_31, f32 *, 0)) + (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 4) * temp_f0_33)))));
+        temp_r0_51 = (s32) (325.9493f * ((M2C_FIELD(&wind, f32 *, 0x190) * M2C_FIELD(temp_r4_31, f32 *, 0x20)) + ((arg1.unk8 * M2C_FIELD(temp_r4_31, f32 *, 8)) + ((arg1.unk0 * M2C_FIELD(temp_r4_31, f32 *, 0)) + (arg1.unk4 * temp_f0_33)))));
         sp8 = *(&_sinTable + ((temp_r0_51 * 4) & 0xFFC));
         sp8 = M2C_BITWISE(s32, sp8) | ((temp_r0_51 << 0x15) & 0x80000000);
         temp_f6_60 = M2C_FIELD(temp_r4_31, f32 *, 0x24) * M2C_BITWISE(f32, sp8);
@@ -40,8 +44,9 @@ void MKWind_GetVelocity(const MKVector3 &arg0) {
         sp18 = (temp_f6_60 * M2C_FIELD(temp_r4_31, f32 *, 0x18)) + (f32) sp18;
         var_ctr_29 -= 1;
     } while (var_ctr_29 != 0);
-    M2C_FIELD(&arg0, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) sp18;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    return result;
 }
 #endif
 
@@ -49,7 +54,7 @@ void MKWind_GetVelocity(const MKVector3 &arg0) {
 void MKWind::Init(float arg0, float arg1, float arg2, float arg3, const MKVector3 &arg4, float arg5) {
     f64 sp38;
     f64 sp30;
-    f64 sp20;
+    MKVector3 sp20;
     f32 sp18;
     f64 sp10;
     f32 spC;
@@ -198,10 +203,10 @@ void MKWind::Init(float arg0, float arg1, float arg2, float arg3, const MKVector
         temp_f22_302 = _table_sinf(temp_f21_297) * temp_f22_299;
         temp_f23_305 = _table_sinf(temp_f23_295);
         temp_f24_308 = _table_sinf(var_f24_281);
-        MKVector(_table_sinf(temp_f21_297) * temp_f24_308, temp_f23_305, temp_f22_302);
+        sp20 = MKVector(_table_sinf(temp_f21_297) * temp_f24_308, temp_f23_305, temp_f22_302);
         sp10 = sp20 * (f64) var_f28_111;
         M2C_FIELD(temp_r27_273, f64 *, 0) = sp10;
-        sp18 = sp28 * var_f28_111;
+        sp18 = sp20.unk8 * var_f28_111;
         sp30 = sp10;
         sp38 = (f64) sp18;
         M2C_FIELD(temp_r27_273, f64 *, 8) = (f64) sp18;

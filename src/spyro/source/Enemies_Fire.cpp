@@ -75,6 +75,7 @@
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_OBHit;
@@ -659,7 +660,7 @@ void FireTier2Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spF0'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 s32 FireTier1::SelectMoveToWallPos(const MKVector3 &arg0, const MKVector3 &arg1, MKVector3 *arg2) {
     MKCollisionResult sp138;
     f64 sp130;
@@ -670,7 +671,7 @@ s32 FireTier1::SelectMoveToWallPos(const MKVector3 &arg0, const MKVector3 &arg1,
     f64 sp108;
     f64 sp100;
     f64 spF8;
-    f64 spE8;
+    MKVector3 spE8;
     MKVector3 spD8;
     f64 spD0;
     f64 spC8;
@@ -710,12 +711,11 @@ s32 FireTier1::SelectMoveToWallPos(const MKVector3 &arg0, const MKVector3 &arg1,
     f64 temp_f0_1231;
     f64 temp_f0_1251;
 
-    KDRand_UnitVector();
+    spE8 = KDRand_UnitVector();
     temp_f6_1143 = arg1.unk0;
     temp_f5_1144 = arg1.unk4;
     temp_f7_1146 = arg1.unk8;
-    sp128 = spE8;
-    sp130 = spF0;
+    *(MKVector3 *) &sp128 = spE8;
     if (((temp_f7_1146 * temp_f7_1146) + ((temp_f6_1143 * temp_f6_1143) + (temp_f5_1144 * temp_f5_1144))) <= 0.000001f) {
         return 0;
     }
@@ -729,9 +729,8 @@ s32 FireTier1::SelectMoveToWallPos(const MKVector3 &arg0, const MKVector3 &arg1,
     spC8 = temp_f0_1179;
     sp10 = (f32) sp130 - (f32) spC0;
     spD0 = (f64) sp10;
-    Normalise(spD8);
-    sp128 = M2C_BITWISE(f64, spD8);
-    sp130 = (f64) spD8.unk8;
+    spD8 = Normalise(*((MKVector3 *) &spC8));
+    *(MKVector3 *) &sp128 = spD8;
     temp_f0_1197 = sp128 * 5.5769738e-315;
     sp78 = temp_f0_1197;
     spA8 = temp_f0_1197;

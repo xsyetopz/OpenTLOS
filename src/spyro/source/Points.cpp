@@ -101,7 +101,9 @@ void WindPoints_Update(const MKVector3 &arg0, WindInfo *arg1) {
 #endif
 
 #if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match 'MKVector3::operator*(float)const '
-void WindPoints_Blend(const WindPointInfo &arg0, const WindPointInfo &arg1, float arg2) {
+void WindPoints_Blend(const WindPointInfo &arg1, const WindPointInfo &arg2, float farg0) {
+    WindPointInfo result;
+    WindPointInfo *sret = &result;
     f32 sp68;
     f64 sp60;
     f64 sp58;
@@ -114,17 +116,18 @@ void WindPoints_Blend(const WindPointInfo &arg0, const WindPointInfo &arg1, floa
     f64 sp8;
     f32 temp_f31_656;
 
-    temp_f31_656 = 1.0f - arg2;
-    __ml(temp_f31_656, sp18);
-    __ml(arg2, sp28);
+    temp_f31_656 = 1.0f - farg0;
+    sp18 = __ml(temp_f31_656, *(MKVector3 *) (&arg2 + 0x10));
+    sp28 = __ml(farg0, *(MKVector3 *) (&arg1 + 0x10));
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     sp38 = sp8;
     sp10 = sp28.unk8 + sp18.unk8;
     sp58 = sp8;
     sp40 = (f64) sp10;
     sp60 = (f64) sp10;
-    sp68 = (arg2 * M2C_FIELD(&arg1, f32 *, 0x20)) + (temp_f31_656 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 0x20));
-    M2C_STRUCT_COPY((s32) (&arg0 - 4) + 4, (s32) &sp44 + 4, 0x30);
+    sp68 = (farg0 * M2C_FIELD(&arg1, f32 *, 0x20)) + (temp_f31_656 * M2C_FIELD(&arg2, f32 *, 0x20));
+    M2C_STRUCT_COPY((s32) (sret - 4) + 4, (s32) &sp44 + 4, 0x30);
+    return result;
 }
 #endif
 
@@ -224,7 +227,7 @@ void FogPoints_Update(const MKVector3 &arg0, FogInfo *arg1) {
     sp20 = arg1->unk10;
     sp28 = arg1->unk0;
     sp2C = arg1->unk4;
-    fog.GetValueAt(arg0, &sp8, FogPoints_Blend);
+    fog.GetValueAt(arg0, &sp8, (FogPointInfo (*)(FogPointInfo *, FogPointInfo *, f32)) FogPoints_Blend);
     arg1->unk8 = sp18;
     arg1->unk10 = sp20;
     arg1->unk0 = sp28;
@@ -233,7 +236,9 @@ void FogPoints_Update(const MKVector3 &arg0, FogInfo *arg1) {
 #endif
 
 #if 0 // DRAFT: function call 'operator*(float, MKVector4)' does not match 'MKVector4::operator*(float)const '
-FogPointInfo FogPoints_Blend(const FogPointInfo &arg0, const FogPointInfo &arg1, float arg2) {
+void FogPoints_Blend(const FogPointInfo &arg1, const FogPointInfo &arg2, float farg0) {
+    FogPointInfo result;
+    FogPointInfo *sret = &result;
     f32 sp6C;
     f32 sp68;
     f64 sp60;
@@ -246,22 +251,20 @@ FogPointInfo FogPoints_Blend(const FogPointInfo &arg0, const FogPointInfo &arg1,
     f64 sp10;
     f64 sp8;
     f32 temp_f31_1687;
-    void *temp_r31_1684;
 
-    temp_r31_1684 = M2C_ERROR(/* Read from unset register $r5 */);
-    temp_f31_1687 = 1.0f - arg2;
-    __ml(temp_f31_1687, sp18);
-    __ml(arg2, sp28);
+    temp_f31_1687 = 1.0f - farg0;
+    sp18 = __ml(temp_f31_1687, *(MKVector4 *) (&arg2 + 0x10));
+    sp28 = __ml(farg0, *(MKVector4 *) (&arg1 + 0x10));
     sp8 = M2C_FIELD(&sp28, f64 *, 0) + M2C_BITWISE(f64, sp18);
     sp10 = M2C_FIELD(&sp28, f64 *, 8) + (f64) sp18.unk8;
     sp38 = sp8;
     sp40 = sp10;
     sp58 = sp8;
     sp60 = sp10;
-    sp68 = (arg2 * M2C_FIELD(&arg1, f32 *, 0x20)) + (temp_f31_1687 * M2C_FIELD(temp_r31_1684, f32 *, 0x20));
-    sp6C = (arg2 * M2C_FIELD(&arg1, f32 *, 0x24)) + (temp_f31_1687 * M2C_FIELD(temp_r31_1684, f32 *, 0x24));
-    M2C_STRUCT_COPY((s32) (&arg0 - 4) + 4, (s32) &sp44 + 4, 0x30);
-    return (FogPointInfo) &sp28;
+    sp68 = (farg0 * M2C_FIELD(&arg1, f32 *, 0x20)) + (temp_f31_1687 * M2C_FIELD(&arg2, f32 *, 0x20));
+    sp6C = (farg0 * M2C_FIELD(&arg1, f32 *, 0x24)) + (temp_f31_1687 * M2C_FIELD(&arg2, f32 *, 0x24));
+    M2C_STRUCT_COPY((s32) (sret - 4) + 4, (s32) &sp44 + 4, 0x30);
+    return result;
 }
 #endif
 

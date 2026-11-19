@@ -42,6 +42,7 @@
 #include "common/Source/MKDynamicBone.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_PLACEHOLDER;
@@ -168,7 +169,7 @@ void *WobbleProp::Update() {
     if (temp_f31_209 < temp_f29_193) {
         M2C_FIELD(temp_r5_188, f64 *, 0x10) = (f64) M2C_FIELD(temp_r5_188, f64 *, 0);
         M2C_FIELD(temp_r5_188, f64 *, 0x18) = (f64) M2C_FIELD(temp_r5_188, f32 *, 8);
-        Normalise(sp68);
+        sp68 = Normalise(*((MKVector3 *) &spA8));
         sp78.operator*(temp_f28_174);
         sp8 = spB8 + M2C_BITWISE(f64, sp78);
         temp_r3_231 = this->unkC8;

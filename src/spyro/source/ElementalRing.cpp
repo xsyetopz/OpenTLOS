@@ -36,6 +36,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(KDSoundFlangedFader **);               /* extern */
@@ -438,7 +439,7 @@ loop_2:
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *ElementalRing::Update() {
     s8 sp189;
     s8 sp188;
@@ -462,10 +463,10 @@ void *ElementalRing::Update() {
     f64 sp128;
     f64 sp120;
     f64 sp118;
-    f64 sp108;
+    MKVector3 sp108;
     f64 sp100;
     f64 spF8;
-    f64 spE8;
+    MKVector3 spE8;
     f64 spE0;
     f64 spD8;
     f64 spD0;
@@ -546,11 +547,11 @@ loop_40:
                 break;
             case 1:
                 temp_f31_764 = gUpdateTimeDelta;
-                MKVector(4.0f, 1.0f, 4.0f);
+                sp108 = MKVector(4.0f, 1.0f, 4.0f);
                 temp_f0_770 = sp108 * (f64) temp_f31_764;
                 sp28 = temp_f0_770;
                 sp118 = temp_f0_770;
-                sp30 = sp110 * temp_f31_764;
+                sp30 = sp108.unk8 * temp_f31_764;
                 sp120 = (f64) sp30;
                 M2C_FIELD(temp_r31_1068, f64 *, 0x80) = (f64) (M2C_FIELD(temp_r31_1068, f64 *, 0x80) + temp_f0_770);
                 M2C_FIELD(temp_r31_1068, f32 *, 0x88) = (f32) (M2C_FIELD(temp_r31_1068, f32 *, 0x88) + (f32) sp120);
@@ -580,11 +581,11 @@ loop_40:
                 }
                 temp_f30_830 = gUpdateTimeDelta;
                 temp_f1_834 = M2C_FIELD(temp_r31_1068, f32 *, 0xB0) * (0.1f + (1.0f - (var_f0_810 / temp_f1_811)));
-                MKVector(temp_f1_834, 0.0f, temp_f1_834);
+                spE8 = MKVector(temp_f1_834, 0.0f, temp_f1_834);
                 temp_f0_839 = spE8 * (f64) temp_f30_830;
                 sp18 = temp_f0_839;
                 spF8 = temp_f0_839;
-                sp20 = spF0 * temp_f30_830;
+                sp20 = spE8.unk8 * temp_f30_830;
                 sp100 = (f64) sp20;
                 M2C_FIELD(temp_r31_1068, f64 *, 0x80) = (f64) (M2C_FIELD(temp_r31_1068, f64 *, 0x80) + temp_f0_839);
                 M2C_FIELD(temp_r31_1068, f32 *, 0x88) = (f32) (M2C_FIELD(temp_r31_1068, f32 *, 0x88) + (f32) sp100);

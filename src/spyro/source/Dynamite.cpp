@@ -60,6 +60,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern DataMap ElementTypeDataMap;
@@ -243,7 +244,7 @@ void *Dynamite::Update() {
     f64 sp110;
     f64 sp108;
     f64 spF8;
-    f64 spE8;
+    MKVector3 spE8;
     f32 spE0;
     f64 spD8;
     f32 spD0;
@@ -580,11 +581,11 @@ void *Dynamite::Update() {
         sp1C = MKRand_Float((int *) &gViewSeed, 1.5f, 3.0f);
         ((SparksPS *) (M2C_FIELD(&gb, SparksPS **, 0x84)))->Emit(sp1C8, *((MKVector3 *) &sp138), sp1C);
     }
-    MKVector(0.0f, 50.0f, 0.0f);
+    spE8 = MKVector(0.0f, 50.0f, 0.0f);
     ((MKProp *) &spF8)->GetPos();
-    sp38 = spF8 + spE8;
+    sp38 = spF8 + M2C_BITWISE(f64, spE8);
     this->unk198 = sp38;
-    sp40 = sp100 + spF0;
+    sp40 = sp100 + spE8.unk8;
     sp108 = sp38;
     sp110 = (f64) sp40;
     this->unk1A0 = (f64) sp40;
@@ -594,21 +595,21 @@ void *Dynamite::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Dynamite::SetInitialState() {
     f64 sp40;
     f64 sp38;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     this->unk188.unk4 = 1;
-    MKVector(0.0f, 50.0f, 0.0f);
+    sp18 = MKVector(0.0f, 50.0f, 0.0f);
     ((MKProp *) &sp28)->GetPos();
-    sp8 = sp28 + sp18;
+    sp8 = sp28 + M2C_BITWISE(f64, sp18);
     this->unk198 = sp8;
-    sp10 = sp30 + sp20;
+    sp10 = sp30 + sp18.unk8;
     sp38 = sp8;
     this->unk1A0 = (f64) sp10;
     this->unk17C = 0.0f;

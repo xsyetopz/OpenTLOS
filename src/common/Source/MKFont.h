@@ -57,12 +57,12 @@ public:
 };
 
 f32 MKFont_DrawStringJustified(MKFont *, const char *, const MKVector3 &, float, float, FontJustify, float, const MKVector4 &, int, const Matrix &);
-void MKFont_GetCharPosJustified(MKFont *, const char *, int, float, float, FontJustify, float);
+MKVector3 MKFont_GetCharPosJustified(MKFont *, const char *, int, float, float, FontJustify, float);
 void MKFont_GetNextWrapPoint(MKFont *, const char *, float, float, int *);
 void MKFont_DrawDebugStringF(const char *, float, float, float, const MKVector4 &, int, MKFont *);
 f32 MKFont_DrawString(MKFont *, const char *, const MKVector3 &, float, const MKVector4 &, int, const Matrix &);
 s32 MKFont_GetNumRenderableChars(const char *, int);
-void MKFont_GetCharPos(MKFont *, const char *, int, float);
+MKVector3 MKFont_GetCharPos(MKFont *, const char *, int, float);
 f32 MKFont_CalculateWidth(MKFont *, const char *, float, float, int, float *);
 f32 MKFontInternal_CalcHeightAndScale(MKFont *, float, float *);
 f32 MKFont_GetHeight(MKFont *);

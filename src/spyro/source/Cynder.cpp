@@ -118,6 +118,7 @@
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/PhrasePlayer.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 acos(f32);                                      /* extern */
@@ -185,16 +186,16 @@ void Cynder::TriggerFury() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Cynder::UpdateFuryPowerUp() {
     f64 spF8;
     f64 spF0;
     f64 spE8;
     f64 spE0;
-    f64 spD0;
+    MKVector3 spD0;
     f64 spC8;
     f64 spC0;
-    f64 spB0;
+    MKVector3 spB0;
     MKVector3 spA0;
     f64 sp98;
     f64 sp90;
@@ -251,20 +252,20 @@ void Cynder::UpdateFuryPowerUp() {
         }
         this->unkF70 = var_f0_278;
         if ((s32) this->unkF24 == 8) {
-            MKVector(0.0f, 300.0f, 0.0f);
-            sp20 = M2C_FIELD(this, f64 *, 0x588) + spD0;
+            spD0 = MKVector(0.0f, 300.0f, 0.0f);
+            sp20 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, spD0);
             spE0 = sp20;
-            sp28 = this->unk588.unk8 + spD8;
+            sp28 = this->unk588.unk8 + spD0.unk8;
             this->unkF60 = (f32) spE0;
             spE8 = (f64) sp28;
             this->unkF64 = (*(f32 *) ((u8 *) &spE0 + 0x4));
             this->unkF68 = (f32) spE8;
             this->unkF6C = 1.0f;
         } else {
-            MKVector(0.0f, 300.0f, 0.0f);
-            sp10 = M2C_FIELD(this, f64 *, 0x588) + spB0;
+            spB0 = MKVector(0.0f, 300.0f, 0.0f);
+            sp10 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, spB0);
             spC0 = sp10;
-            sp18 = this->unk588.unk8 + spB8;
+            sp18 = this->unk588.unk8 + spB0.unk8;
             this->unkF60 = (f32) spC0;
             spC8 = (f64) sp18;
             this->unkF64 = (*(f32 *) ((u8 *) &spC0 + 0x4));
@@ -285,7 +286,7 @@ void Cynder::UpdateFuryPowerUp() {
             sp98 = (f64) sp68;
             sp80 = (f64) sp50;
             sp88 = (f64) sp58;
-            KDRand_Vector(spA0, *((MKVector3 *) &sp90));
+            spA0 = KDRand_Vector(*((MKVector3 *) &sp90), *((MKVector3 *) &sp80));
             temp_f0_376 = spA0 * (f64) temp_f29_355;
             sp40 = temp_f0_376;
             spF0 = temp_f0_376;
@@ -483,7 +484,7 @@ void Cynder::CalcLandingFlightPathData() {
     sp1C0.unk20 = sp180;
     sp1C0.unk28 = sp188;
     sp160.GetVelocity(var_f28_602);
-    Normalise(*((MKVector3 *) &sp160.unk10));
+    *((MKVector3 *) &sp160.unk10) = Normalise(*((MKVector3 *) &sp160));
     sp210 = M2C_BITWISE(f64, sp160.unk10);
     sp218 = sp178;
     sp30 = (MKVector3::up.unk4 * (f32) sp218) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp210 + 0x4)));
@@ -1426,10 +1427,9 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
 s32 Cynder::GetAttackHeading(EnemyAttack *arg0, MKVector3 *arg1) {
     AITargetData sp18;
-    f64 sp8;
+    MKVector3 sp8;
     f32 temp_f0_2480;
     f32 temp_f28_2466;
     f32 temp_f29_2456;
@@ -1472,9 +1472,8 @@ s32 Cynder::GetAttackHeading(EnemyAttack *arg0, MKVector3 *arg1) {
                         var_f1_2506 -= 6.2831855f;
                     }
                 }
-                KDMath_GetDirection(temp_f29_2456 + KDMath_GetSmallestAngle(var_f1_2506, temp_f28_2466));
-                M2C_FIELD(arg1, f64 *, 0) = sp8;
-                M2C_FIELD(arg1, f64 *, 8) = sp10;
+                sp8 = KDMath_GetDirection(temp_f29_2456 + KDMath_GetSmallestAngle(var_f1_2506, temp_f28_2466));
+                M2C_FIELD(arg1, MKVector3 *, 0) = sp8;
                 return 1;
             }
             goto block_19;
@@ -1484,7 +1483,6 @@ s32 Cynder::GetAttackHeading(EnemyAttack *arg0, MKVector3 *arg1) {
 block_19:
     return 0;
 }
-#endif
 
 s32 Cynder::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     MKModel_CalculateNodeWorldPosition(this->unk4, this->unkCF8, arg1);
@@ -1738,8 +1736,7 @@ block_34:
         temp_r29_2982 = checked_cast<CameraLockOnTargetableGetTarget *, MKMessage>(arg0);
         MKModel_CalculateNodeWorldPosition(this->unk4, this->unkD9C, &sp70);
         M2C_FIELD(temp_r29_2982, s8 *, 0x18) = 1;
-        M2C_FIELD(temp_r29_2982, f64 *, 8) = M2C_BITWISE(f64, sp70);
-        M2C_FIELD(temp_r29_2982, f64 *, 0x10) = (f64) sp70.unk8;
+        M2C_FIELD(temp_r29_2982, MKVector3 *, 8) = sp70;
         goto block_34;
     case 5:
         temp_r3_2996 = checked_cast<BreathHitMessage *, MKMessage>(arg0);
@@ -2067,7 +2064,7 @@ void Cynder::CalculateDiveTrajectory() {
         sp1B0.unk40 = temp_f0_3413;
         sp28 = this->unk588.unk8 - (f32) M2C_FIELD(this, f64 *, 0xD40);
         sp1B0.unk40.unk8 = (f64) sp28;
-        Normalise(sp200);
+        sp200 = Normalise(*((MKVector3 *) &sp1B0.unk40));
         sp210.operator*(2000.0f);
         sp50 = this->unkD38 + M2C_BITWISE(f64, sp210);
         this->unkD28 = sp50;
@@ -2080,7 +2077,7 @@ void Cynder::CalculateDiveTrajectory() {
         sp1B0.unk20 = temp_f0_3449;
         sp48 = (f32) M2C_FIELD(this, f64 *, 0xD30) - this->unk588.unk8;
         sp1B0.unk28 = (f64) sp48;
-        Normalise(*((MKVector3 *) &sp1B0.unk30));
+        *((MKVector3 *) &sp1B0.unk30) = Normalise(*((MKVector3 *) &sp1B0.unk20));
         this->unkD18 = (f64) sp1B0.unk30;
         this->unkD20 = (f64) sp1B0.unk38;
         return;
@@ -2261,7 +2258,7 @@ void Cynder::CheckAnimEvents() {
                 sp90 = (f64) sp30;
                 sp78 = (f64) sp18;
                 sp80 = (f64) sp20;
-                KDRand_Vector(sp98, *((MKVector3 *) &sp88));
+                sp98 = KDRand_Vector(*((MKVector3 *) &sp88), *((MKVector3 *) &sp78));
                 temp_f0_3784 = sp98 * 5.676053805e-315;
                 sp8 = temp_f0_3784;
                 spA8 = temp_f0_3784;
@@ -2901,7 +2898,7 @@ void Cynder::SetDefaults() {
     this->unkF14 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double' Too many errors printed, aborting program
 void Cynder::UpdateCollisionItems() {
     f64 sp60;
     f64 sp58;
@@ -3021,7 +3018,7 @@ f32 Cynder::Resolve() {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 Cynder::LoadDone() {
-    f64 sp8;
+    MKVector3 sp8;
     CynderBossGoal_Think *temp_r30_5434;
     CynderConcurrentGoal_Think *temp_r30_5399;
     s32 temp_r0_5578;
@@ -3136,9 +3133,8 @@ s32 Cynder::LoadDone() {
     this->unkC88 = 2.8274333f;
     this->unkD98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "Weapon06");
     this->unkD9C = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Spine03");
-    KDMath_GetDirection(this->unkEAC);
-    M2C_FIELD(this, f64 *, 0xEA8) = sp8;
-    M2C_FIELD(this, f64 *, 0xEB0) = sp10;
+    sp8 = KDMath_GetDirection(this->unkEAC);
+    M2C_FIELD(this, MKVector3 *, 0xEA8) = sp8;
     temp_r3_5635 = this->unkA38->GetAnimSequence(0xA, 0x140, 0, NULL);
     if (temp_r3_5635 != NULL) {
         this->unkEB8 = M2C_FIELD(temp_r3_5635, f64 *, 8);

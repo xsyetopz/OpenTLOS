@@ -24,6 +24,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 *KDSpline_PositionMixer;
@@ -295,8 +296,7 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     this->unk10 = M2C_FIELD(arg0, f64 *, 0);
     this->unk18 = M2C_FIELD(arg0, f64 *, 8);
     KDMath_Smooth<MKVector3>(sp98, *((MKVector3 *) &this->unk20), 1.0f, 0.25f);
-    this->unk20 = M2C_BITWISE(f64, sp98);
-    this->unk28 = (f64) sp98.unk8;
+    *(MKVector3 *) &this->unk20 = sp98;
     this->unk0 = M2C_FIELD(arg2, f64 *, 0);
     this->unk8 = M2C_FIELD(arg2, f64 *, 8);
     this->unk38 = 0.0f;
@@ -551,17 +551,15 @@ void ElectricBeam::UpdateWiggleBones() {
             sp58 = ((f32) sp148 * sp1F8) + ((temp_f5_1026 * sp1D8) + (sp144 * sp1E8));
             spE0 = (f64) sp50;
             spE8 = (f64) sp58;
-            Normalise(spF0);
-            sp130.unk10 = M2C_BITWISE(f64, spF0);
-            sp148 = (f64) spF0.unk8;
+            spF0 = Normalise(*((MKVector3 *) &spE0));
+            *(MKVector3 *) &sp130.unk10 = spF0;
             sp48 = ((f32) sp180 * sp144) - ((*(f32 *) ((u8 *) &sp180 + 0x4)) * (f32) sp130.unk10);
             sp44 = ((f32) sp188 * (f32) sp130.unk10) - ((f32) sp180 * (f32) sp148);
             sp40 = ((*(f32 *) ((u8 *) &sp180 + 0x4)) * (f32) sp148) - ((f32) sp188 * sp144);
             spC8 = (f64) sp48;
             spC0 = (f64) sp40;
-            Normalise(spD0);
-            sp170 = M2C_BITWISE(f64, spD0);
-            sp178 = (f64) spD0.unk8;
+            spD0 = Normalise(*((MKVector3 *) &spC0));
+            *(MKVector3 *) &sp170 = spD0;
             sp38 = ((f32) sp130.unk10 * (*(f32 *) ((u8 *) &sp170 + 0x4))) - (sp144 * (f32) sp170);
             sp34 = ((f32) sp148 * (f32) sp170) - ((f32) sp130.unk10 * (f32) sp178);
             sp30 = (sp144 * (f32) sp178) - ((f32) sp148 * (*(f32 *) ((u8 *) &sp170 + 0x4)));
@@ -610,7 +608,7 @@ void ElectricBeam::UpdateWiggleBone(MKDynamicBone *arg0, void *arg1) {
     ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this, MKModel **, 0x24))))->SetCustomMatrix((s32) temp_r31_1256, &sp10, (AnimationMatrixPosition) 4, 0U);
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKAnimScript *' to 'const char *'
 void ElectricBeam::Init() {
     Animation sp8;
     MKAnim *var_r4_1304;
@@ -649,7 +647,7 @@ void ElectricBeam::Init() {
         MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk44, (s32) temp_r24_1331), (void (*)(MKDynamicBone *, void *)) &ElectricBeam::UpdateWiggleBone, ((u8 *) temp_r26_1339) + 0x60);
         temp_r5_1350 = ((u8 *) temp_r26_1339) + 0x6C;
         M2C_STRUCT_COPY((s32) ((u8 *) temp_r5_1350) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        var_r5_1315 = (MKAnimScript *) (((u8 *) temp_r5_1350) + 0x40);
+        var_r5_1315 = ((u8 *) temp_r5_1350) + 0x40;
         var_r25_1318 += 1;
         var_r30_1322 += 0x50;
     } while (var_r25_1318 < 4);

@@ -23,6 +23,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -260,9 +261,8 @@ loop_20:
                 spD8 = temp_f0_350;
                 sp20 = (f32) sp190 - (f32) temp_r30_144->unk38;
                 spE0 = (f64) sp20;
-                Normalise(spE8);
-                M2C_FIELD(temp_r30_144, f64 *, 0x40) = M2C_BITWISE(f64, spE8);
-                M2C_FIELD(temp_r30_144, f64 *, 0x48) = (f64) spE8.unk8;
+                spE8 = Normalise(*((MKVector3 *) &spD8));
+                M2C_FIELD(temp_r30_144, MKVector3 *, 0x40) = spE8;
                 KDMath_BuildMatrixFromFwd(temp_r30_144, *(temp_r30_144 + 0x40), (MKVector3 *) &sp198);
             }
             break;
@@ -436,7 +436,7 @@ loop_27:
         spA8 = (f64) sp38;
         sp90 = (f64) sp20;
         sp98 = (f64) sp28;
-        KDRand_Vector(spB0, *((MKVector3 *) &spA0));
+        spB0 = KDRand_Vector(*((MKVector3 *) &spA0), *((MKVector3 *) &sp90));
         temp_f1_658 = M2C_BITWISE(f32, spB0);
         var_f4_665 = (spB0.unk8 * spB0.unk8) + ((temp_f1_658 * temp_f1_658) + (spB0.unk4 * spB0.unk4));
         if (var_f4_665 > 1e-12f) {

@@ -54,6 +54,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/PhrasePlayer.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 *KDSpline_PositionMixer;
@@ -653,7 +654,7 @@ void Sparx::CalculateLongIdle2Spline() {
     f64 spC0;
     f64 spB8;
     f64 spB0;
-    f64 spA0;
+    MKVector3 spA0;
     f64 sp98;
     f64 sp90;
     f64 sp88;
@@ -849,10 +850,10 @@ loop_35:
     sp58 = temp_f4_1336 + (f32) spE8;
     spF8 = (f64) sp58;
     if (MKCollision_RayCollide(*((MKVector3 *) &spF0), *((MKVector3 *) &spD0), &this->unk220, (MKCollisionMode) 7, 0x04000000) != 0) {
-        MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 500.0f, 1500.0f), 0.0f);
-        sp10 = M2C_FIELD(this, f64 *, 0x220) + spA0;
+        spA0 = MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 500.0f, 1500.0f), 0.0f);
+        sp10 = M2C_FIELD(this, f64 *, 0x220) + M2C_BITWISE(f64, spA0);
         this->unk1B8 = sp10;
-        sp18 = this->unk220.unk8 + spA8;
+        sp18 = this->unk220.unk8 + spA0.unk8;
         spB0 = sp10;
         spB8 = (f64) sp18;
         this->unk1C0 = (f64) sp18;
@@ -1459,8 +1460,7 @@ void *Sparx::Update() {
         Clamp<MKVector4>(spC0, *((MKVector4 *) &spB0), *((MKVector4 *) &sp130.unk20));
         KDMath_Smooth<MKVector4>(spE0, *((MKVector4 *) &spD0), 1.0f, gUpdateTimeDelta);
         temp_r3_2631 = this->unk98;
-        temp_r3_2631->unkD8 = M2C_BITWISE(f64, spE0);
-        temp_r3_2631->unkE0 = (f64) spE0.unk8;
+        *(MKVector4 *) &temp_r3_2631->unkD8 = spE0;
         return;
     }
     temp_r6_2638 = this->unk98;
@@ -1470,8 +1470,7 @@ void *Sparx::Update() {
     sp88 = temp_r6_2638->unkE0;
     KDMath_Smooth<MKVector4>(sp90, *((MKVector4 *) &sp80), 1.0f, gUpdateTimeDelta);
     temp_r3_2653 = this->unk98;
-    temp_r3_2653->unkD8 = M2C_BITWISE(f64, sp90);
-    temp_r3_2653->unkE0 = (f64) sp90.unk8;
+    *(MKVector4 *) &temp_r3_2653->unkD8 = sp90;
 }
 #endif
 

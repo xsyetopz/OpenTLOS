@@ -24,6 +24,7 @@
 #include "common/Source/StdMath.h"
 #include "common/Source/system_extras.h"
 #include "common/gc/MKMaterial_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: identifier 'MKGrass_cameraPos' redeclared was declared as: 'float' now declared as: 'long'
@@ -610,11 +611,11 @@ loop_21:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void MKGrass_SetWindDirection(const MKVector3 &arg0, float arg1) {
     MKVector3 sp8;
 
-    Normalise(sp8);
+    sp8 = Normalise(arg0);
     M2C_FIELD(&MKGrass_windDirection, f32 *, 0) = M2C_BITWISE(f32, sp8);
     M2C_FIELD(&MKGrass_windDirection, f32 *, 4) = sp8.unk4;
     M2C_FIELD(&MKGrass_windDirection, f32 *, 8) = sp8.unk8;

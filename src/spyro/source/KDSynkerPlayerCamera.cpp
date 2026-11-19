@@ -25,6 +25,7 @@
 #include "common/Source/Str.h"
 #include "common/Source/system_extras.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(u32 *);                                /* extern */
@@ -641,18 +642,15 @@ loop_21:
             this->unk64 = Endian<float>(*(f32 *) (var_r28_966 + 0x28));
             this->unk68 = Endian<float>(*(f32 *) (var_r28_966 + 0x2C));
         } else {
-            InterpolateLinear(sp140, *((MKVector3 *) &sp220), var_f31_1158);
-            Normalise(sp150);
-            sp180 = M2C_BITWISE(f64, sp150);
-            sp188 = (f64) sp150.unk8;
-            InterpolateLinear(sp120, *((MKVector3 *) &sp220.unk10), var_f31_1158);
-            Normalise(sp130);
-            sp170 = M2C_BITWISE(f64, sp130);
-            sp178 = (f64) sp130.unk8;
-            InterpolateLinear(sp100, *((MKVector3 *) &sp220.unk20), var_f31_1158);
-            Normalise(sp110);
-            sp160 = M2C_BITWISE(f64, sp110);
-            sp168 = (f64) sp110.unk8;
+            sp140 = InterpolateLinear(*((MKVector3 *) &sp220), *((MKVector3 *) &sp1E0), var_f31_1158);
+            sp150 = Normalise(sp140);
+            *(MKVector3 *) &sp180 = sp150;
+            sp120 = InterpolateLinear(*((MKVector3 *) &sp220.unk10), *((MKVector3 *) &sp1E0.unk10), var_f31_1158);
+            sp130 = Normalise(sp120);
+            *(MKVector3 *) &sp170 = sp130;
+            sp100 = InterpolateLinear(*((MKVector3 *) &sp220.unk20), *((MKVector3 *) &sp1E0.unk20), var_f31_1158);
+            sp110 = Normalise(sp100);
+            *(MKVector3 *) &sp160 = sp110;
             sp64 = ((f32) sp168 * (f32) sp180) - ((f32) sp160 * (f32) sp188);
             sp68 = ((f32) sp160 * (*(f32 *) ((u8 *) &sp150 + 0x34))) - ((*(f32 *) ((u8 *) &sp150 + 0x14)) * (f32) sp180);
             sp60 = ((*(f32 *) ((u8 *) &sp150 + 0x14)) * (f32) sp188) - ((f32) sp168 * (*(f32 *) ((u8 *) &sp150 + 0x34)));
@@ -814,7 +812,7 @@ loop_21:
             this->unk24 = (*(f32 *) ((u8 *) &sp150 + 0x14));
             this->unk28 = temp_f0_1709;
             this->unk2C = 0.0f;
-            InterpolateLinear(spC0, *((MKVector3 *) &sp220.unk30), var_f31_1158);
+            spC0 = InterpolateLinear(*((MKVector3 *) &sp220.unk30), *((MKVector3 *) &sp1E0.unk30), var_f31_1158);
             this->unk30 = M2C_BITWISE(f32, spC0);
             this->unk34 = spC0.unk4;
             this->unk38 = spC0.unk8;
@@ -831,7 +829,7 @@ loop_21:
         }
         this->unk40 = (f64) M2C_FIELD(this, f32 *, 0x30);
         this->unk48 = (f64) M2C_FIELD(this, f32 *, 0x38);
-        __ml(50.0f, spA0);
+        spA0 = __ml(50.0f, *((MKVector3 *) &this->unk20));
         sp30 = this->unk40 + M2C_BITWISE(f64, spA0);
         this->unk50 = sp30;
         sp38 = (f32) M2C_FIELD(this, f64 *, 0x48) + spA0.unk8;

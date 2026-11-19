@@ -27,6 +27,7 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/KDSound.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKVector3 *);                          /* extern */
@@ -140,7 +141,7 @@ void LightningStrikeFX::Strike() {
     sp140 = (f64) spC0;
     sp128 = (f64) spA8;
     sp130 = (f64) spB0;
-    KDRand_Vector(sp148, *((MKVector3 *) &sp138));
+    sp148 = KDRand_Vector(*((MKVector3 *) &sp138), *((MKVector3 *) &sp128));
     temp_f1_82 = M2C_BITWISE(f32, sp148);
     var_f4_90 = (sp148.unk8 * sp148.unk8) + ((temp_f1_82 * temp_f1_82) + (sp148.unk4 * sp148.unk4));
     if (var_f4_90 > 1e-12f) {
@@ -210,7 +211,7 @@ void LightningStrikeFX::Strike() {
         sp100 = (f64) sp70;
         spE8 = (f64) sp58;
         spF0 = (f64) sp60;
-        KDRand_Vector(sp108, *((MKVector3 *) &spF8));
+        sp108 = KDRand_Vector(*((MKVector3 *) &spF8), *((MKVector3 *) &spE8));
         temp_f1_231 = M2C_BITWISE(f32, sp108);
         var_f4_238 = (sp108.unk8 * sp108.unk8) + ((temp_f1_231 * temp_f1_231) + (sp108.unk4 * sp108.unk4));
         if (var_f4_238 > 1e-12f) {
@@ -388,9 +389,11 @@ s32 LightningStrikeFX::LoadDone() {
     f32 temp_f9_720;
     f64 temp_f0_625;
     s32 var_r30_574;
+    s32 var_r31_576;
 
     MKProp::LoadDone();
     var_r30_574 = 0;
+    var_r31_576 = 0;
     sp60 = 1e11f;
     sp64 = 1e11f;
     sp68 = 1e11f;
@@ -407,13 +410,12 @@ s32 LightningStrikeFX::LoadDone() {
     this->unk78 = (f64) sp58;
 loop_2:
     if (var_r30_574 < (s32) this->unk50) {
-        Min(spD0, *((MKVector3 *) &this->unk60));
-        this->unk60 = M2C_BITWISE(f64, spD0);
-        this->unk68 = (f64) spD0.unk8;
-        Max(spC0, *((MKVector3 *) &this->unk70));
+        spD0 = Min(*((MKVector3 *) &this->unk60), *(this->unk4C + var_r31_576));
+        *(MKVector3 *) &this->unk60 = spD0;
+        spC0 = Max(*((MKVector3 *) &this->unk70), *(this->unk4C + var_r31_576));
         var_r30_574 += 1;
-        this->unk70 = M2C_BITWISE(f64, spC0);
-        this->unk78 = (f64) spC0.unk8;
+        var_r31_576 += 0x10;
+        *(MKVector3 *) &this->unk70 = spC0;
         goto loop_2;
     }
     temp_f0_625 = this->unk70 - this->unk60;
@@ -549,7 +551,7 @@ void LightningStrikeFXDescriptor::FlashLightningLight(const MKVector3 &arg0) {
     }
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, float arg3) {
     MKVector3 sp180;
     MKVector3 sp170;
@@ -641,10 +643,9 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
         sp158 = (f64) sp38;
         sp160 = (f64) sp40;
         sp168 = (f64) sp48;
-        KDRand_Vector(sp170, *((MKVector3 *) &sp160));
-        Normalise(sp180);
-        M2C_FIELD(temp_r31_955, f64 *, 0) = M2C_BITWISE(f64, sp180);
-        M2C_FIELD(temp_r31_955, f64 *, 8) = (f64) sp180.unk8;
+        sp170 = KDRand_Vector(*((MKVector3 *) &sp160), *((MKVector3 *) &sp150));
+        sp180 = Normalise(sp170);
+        M2C_FIELD(temp_r31_955, MKVector3 *, 0) = sp180;
         sp90 = M2C_FIELD(&arg1, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0);
         sp140 = sp90;
         sp98 = arg1.unk8 - arg0.unk8;

@@ -503,14 +503,14 @@ u8 MKCollision_SweepSphereCollide(const MKVector3 &arg0, const MKVector3 &arg1, 
     sp2C = arg2;
     sp80 = (f64) sp30;
     sp78 = (f64) sp28;
-    Min(sp58, arg0);
+    sp58 = Min(arg0, arg1);
     sp18 = sp58 - sp78;
     sp68 = sp18;
     sp20 = sp58.unk8 - (f32) sp80;
     sp88 = sp18;
     sp70 = (f64) sp20;
     sp90 = (f64) sp20;
-    Max(sp38, arg0);
+    sp38 = Max(arg0, arg1);
     sp8 = sp38 + sp78;
     sp10 = sp38.unk8 + (f32) sp80;
     sp48 = sp8;
@@ -611,7 +611,6 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 MKCollision_RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionResult *arg2, MKCollisionMode arg3, int arg4) {
     u8 spF0;
     s32 spEC;
@@ -666,13 +665,11 @@ u8 MKCollision_RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, MKCollis
     u8 var_r0_992;
     u8 var_r31_936;
 
-    Min(sp18, arg0);
-    sp28 = M2C_BITWISE(f64, sp18);
-    sp30 = (f64) sp18.unk8;
-    Max(sp8, arg0);
+    sp18 = Min(arg0, arg1);
+    *(MKVector3 *) &sp28 = sp18;
+    sp8 = Max(arg0, arg1);
     var_r31_936 = 0;
-    sp38 = M2C_BITWISE(f64, sp8);
-    sp40 = (f64) sp8.unk8;
+    *(MKVector3 *) &sp38 = sp8;
     var_r30_941 = managers;
     spA0 = 0.0f;
     spA4 = 0.0f;
@@ -765,7 +762,6 @@ loop_13:
     }
     return var_r31_936;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'MKPtrList'
 void MKCollision_RemoveManager(MKCollisionManager *arg0) {

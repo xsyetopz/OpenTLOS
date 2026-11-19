@@ -16,6 +16,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/KDSound.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(u16 *);                                /* extern */
@@ -483,7 +484,7 @@ void KDShatter2::SetHitPlane(int arg0) {
     f64 sp58;
     f64 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f32 sp30;
     f64 sp28;
     f32 sp20;
@@ -538,10 +539,10 @@ loop_2:
     if (MKCollision_RayCollide(*(temp_r30_831 + 0x40), *((MKVector3 *) &sp88), &spA8, (MKCollisionMode) 7, this->unk30) != 0) {
         M2C_FIELD(temp_r30_831, f32 *, 0x70) = (f64) spA8.unk10;
         M2C_FIELD(temp_r30_831, f32 *, 0x78) = (f64) spA8.unk18;
-        MKVector(0.0f, temp_f1_893, 0.0f);
-        sp8 = M2C_BITWISE(f64, spA8) + sp38;
+        sp38 = MKVector(0.0f, temp_f1_893, 0.0f);
+        sp8 = M2C_BITWISE(f64, spA8) + M2C_BITWISE(f64, sp38);
         M2C_FIELD(temp_r30_831, f32 *, 0x80) = sp8;
-        sp10 = spA8.unk8 + sp40;
+        sp10 = spA8.unk8 + sp38.unk8;
         sp48 = sp8;
         sp50 = (f64) sp10;
         M2C_FIELD(temp_r30_831, f32 *, 0x88) = (f64) sp10;
@@ -563,7 +564,7 @@ void KDShatter2::SetInitialGroundPlane() {
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    f64 sp58;
+    MKVector3 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -619,12 +620,12 @@ loop_5:
             temp_r29_1029 = temp_r3_1056 + var_r31_1025;
             M2C_FIELD(temp_r29_1029, f64 *, 0x70) = spA8;
             M2C_FIELD(temp_r29_1029, f64 *, 0x78) = spB0;
-            MKVector(0.0f, GetRadius(M2C_FIELD(temp_r29_1029, s32 *, 0xA0)), 0.0f);
-            sp8 = sp98 + sp58;
+            sp58 = MKVector(0.0f, GetRadius(M2C_FIELD(temp_r29_1029, s32 *, 0xA0)), 0.0f);
+            sp8 = sp98 + M2C_BITWISE(f64, sp58);
             var_r30_1023 += 1;
             var_r31_1025 += 0xB0;
             M2C_FIELD(temp_r29_1029, f64 *, 0x80) = sp8;
-            sp10 = (f32) spA0 + sp60;
+            sp10 = (f32) spA0 + sp58.unk8;
             sp68 = sp8;
             sp70 = (f64) sp10;
             M2C_FIELD(temp_r29_1029, f64 *, 0x88) = (f64) sp10;
@@ -699,10 +700,9 @@ loop_9:
                 sp30 = (f64) sp10;
                 sp38 = (f64) sp18;
                 sp40 = (f64) sp20;
-                KDRand_Vector(sp48, *((MKVector3 *) &sp38));
-                Normalise(sp58);
-                M2C_FIELD(temp_r26_1109, f64 *, 0x60) = M2C_BITWISE(f64, sp58);
-                M2C_FIELD(temp_r26_1109, f64 *, 0x68) = (f64) sp58.unk8;
+                sp48 = KDRand_Vector(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
+                sp58 = Normalise(sp48);
+                M2C_FIELD(temp_r26_1109, MKVector3 *, 0x60) = sp58;
                 M2C_FIELD(temp_r26_1109, f32 *, 0x6C) = (f32) this->unk14;
             } else {
                 var_r6_1117 += 1;

@@ -49,6 +49,7 @@ s32 KDClothProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
+#if 0 // DRAFT: pointer/array required
 void KDClothDescriptor::Update(MKModel *arg0) {
     MKVector3 sp18;
     MKVector3 sp8;
@@ -56,7 +57,7 @@ void KDClothDescriptor::Update(MKModel *arg0) {
 
     if ((s32) this->unk18 >= 0) {
         MKModel_GetPosition(arg0);
-        MKWind_GetVelocity(sp18);
+        sp18 = MKWind_GetVelocity(*(M2C_ERROR(/* Read from unset register $r3 */)));
         ((MKCloth *) (MKModel_GetClothSubObject(arg0, this->unk18)))->SetForce(1, sp18, 1);
         return;
     }
@@ -64,12 +65,13 @@ void KDClothDescriptor::Update(MKModel *arg0) {
 loop_4:
     if (var_r31_153 < MKModel_GetNmbrOfSubObjects(arg0, (SubObjectType) 2)) {
         MKModel_GetPosition(arg0);
-        MKWind_GetVelocity(sp8);
+        sp8 = MKWind_GetVelocity(*(M2C_ERROR(/* Read from unset register $r3 */)));
         ((MKCloth *) (MKModel_GetClothSubObject(arg0, var_r31_153)))->SetForce(1, sp8, 1);
         var_r31_153 += 1;
         goto loop_4;
     }
 }
+#endif
 
 void KDClothDescriptor::Apply(MKModel *arg0) {
     f64 sp40;

@@ -306,9 +306,8 @@ void SpyroLedgeGrabState::Message(MKMessage *arg0) {
         M2C_FIELD(this, f32 *, 0x30) = (f64) sp20;
         sp48 = (f64) sp18;
         sp50 = (f64) sp20;
-        KDMath_RotateVectorByYaw(sp28, M2C_FIELD(M2C_FIELD(temp_r3_474, void **, 0xC), f32 *, 4));
-        M2C_FIELD(this, f64 *, 0x38) = M2C_BITWISE(f64, sp28);
-        M2C_FIELD(this, f64 *, 0x40) = (f64) sp28.unk8;
+        sp28 = KDMath_RotateVectorByYaw(this->unk38, M2C_FIELD(M2C_FIELD(temp_r3_474, void **, 0xC), f32 *, 4));
+        M2C_FIELD(this, MKVector3 *, 0x38) = sp28;
         return;
     case 36:
         this->unk10->TryChangeState(1U, 6U, NULL, 0U);

@@ -81,7 +81,7 @@ public:
 };
 
 MKMaterial * Tools_GetMatchingMaterial(MKModel *, const char *);
-void Tools_CalculateVelocity(const MKVector3 &, const MKVector3 &, float, float);
+MKVector3 Tools_CalculateVelocity(const MKVector3 &, const MKVector3 &, float, float);
 s32 Tools_GetPointDistanceFromLine(const MKVector3 &, const MKVector3 &, const MKVector3 &, float *);
 void Tools_UnPauseAll(void);
 void Tools_ResetEachInstance(MKPropDescriptor *);
@@ -92,15 +92,15 @@ void Tools_GetClosestSplineTime(KDUniformSpline *, const MKVector3 &, int);
 f32 Tools_GetClosestSplineTime(KDUniformSpline *, const MKVector3 &, int, float, float);
 void Tools_EnableWideScreen(bool);
 s32 Tools_Line2DToCircleIntersect(const MKVector3 &, const MKVector3 &, const MKVector3 &, float, float &);
-void Tools_GetClosestPtOnLine2D(const MKVector3 &, const MKVector3 &, const MKVector3 &);
+MKVector3 Tools_GetClosestPtOnLine2D(const MKVector3 &, const MKVector3 &, const MKVector3 &);
 s32 Tools_Line2DToLine2DIntersect(const MKVector3 &, const MKVector3 &, const MKVector3 &, const MKVector3 &, float *);
 void Tools_UpdateSphereCollideResults(MKCollisionResult *, int, const MKVector3 &);
 void Tools_SetMatrixScale(Matrix *, float);
 s32 Tools_GetFloor(const MKVector3 &, float, float *);
 f32 Tools_CylinderTest(const MKVector3 &, const MKVector3 &, float, const MKVector3 &);
 void Tools_TestFloor(const MKVector3 &, MKCollisionResult *, float, MKCollisionMode);
-void Tools_GroundColor(MKCollisionResult *);
-void Tools_GetGradient(const MKVector3 &);
+MKVector3 Tools_GroundColor(MKCollisionResult *);
+MKVector3 Tools_GetGradient(const MKVector3 &);
 void Tools_GetDateString(TimerInfo *);
 s32 Tools_GetTimeInSeconds(void);
 u16 Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *, const char *);

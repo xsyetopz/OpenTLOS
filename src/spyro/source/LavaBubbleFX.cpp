@@ -30,6 +30,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKModel_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -73,10 +74,10 @@ void LavaBubbleFX::Deinit() {
 void LavaBubbleFX::CreateBubble(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp80;
     f64 sp78;
-    f64 sp68;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
-    f64 sp48;
+    MKVector3 sp48;
     f64 sp40;
     f64 sp38;
     f32 sp30;
@@ -124,11 +125,11 @@ loop_1:
         M2C_FIELD(temp_r4_137, f64 *, 0) = temp_f5_113;
         M2C_FIELD(temp_r4_137, f64 *, 8) = temp_f4_116;
         M2C_FIELD((this->unkC8 + var_r29_97), f32 *, 0x40) = -50.0f;
-        MKVector(0.0f, 5.0f, 0.0f);
-        sp28 = M2C_FIELD(&arg0, f64 *, 0) + sp68;
+        sp68 = MKVector(0.0f, 5.0f, 0.0f);
+        sp28 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp68);
         temp_r3_154 = this->unkC8 + (var_r29_97 + 0x60);
         M2C_FIELD(temp_r3_154, f64 *, 0) = sp28;
-        sp30 = arg0.unk8 + sp70;
+        sp30 = arg0.unk8 + sp68.unk8;
         sp78 = sp28;
         M2C_FIELD(temp_r3_154, f64 *, 8) = (f64) sp30;
         sp80 = (f64) sp30;
@@ -138,12 +139,12 @@ loop_1:
         if (temp_r4_170 != NULL) {
             M2C_FIELD(temp_r4_170, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_170, u8 *, 0x31) | 0x40);
             temp_r4_181 = this->unkC8 + var_r29_97;
-            MKVector(0.0f, (25.0f * M2C_FIELD(temp_r4_181, f32 *, 0x24)) + M2C_FIELD(temp_r4_181, f32 *, 0x40), 0.0f);
+            sp48 = MKVector(0.0f, (25.0f * M2C_FIELD(temp_r4_181, f32 *, 0x24)) + M2C_FIELD(temp_r4_181, f32 *, 0x40), 0.0f);
             temp_r3_187 = this->unkC8 + var_r29_97;
-            sp18 = M2C_FIELD(temp_r3_187, f64 *, 0) + sp48;
+            sp18 = M2C_FIELD(temp_r3_187, f64 *, 0) + M2C_BITWISE(f64, sp48);
             temp_r3_196 = M2C_FIELD(temp_r3_187, void **, 0x5C);
             M2C_FIELD(temp_r3_196, f64 *, 0) = sp18;
-            sp20 = M2C_FIELD(temp_r3_187, f32 *, 8) + sp50;
+            sp20 = M2C_FIELD(temp_r3_187, f32 *, 8) + sp48.unk8;
             M2C_FIELD(temp_r3_196, f64 *, 8) = (f64) sp20;
             sp8 = 0.75f;
             spC = 0.5f;
@@ -361,7 +362,7 @@ void LavaBubbleFX::Draw() {
     M2C_UNK sp3C;
     f64 sp38;
     f64 sp30;
-    f64 sp20;
+    MKVector3 sp20;
     f32 sp18;
     f64 sp10;
     s32 var_r29_533;
@@ -377,11 +378,11 @@ void LavaBubbleFX::Draw() {
         if (((u8) M2C_FIELD(temp_r3_536, u8 *, 0x3C) != 0) && (M2C_FIELD(temp_r3_536, f32 *, 0x38) < 1.0f) && (M2C_FIELD(temp_r3_536, f32 *, 0x40) > -150.0f)) {
             M2C_STRUCT_COPY((s32) &sp3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp40.Scale3x3(&sp40, *(this->unkC8 + (var_r29_533 + 0x10)));
-            MKVector(0.0f, *(this->unkC8 + (var_r29_533 + 0x40)), 0.0f);
+            sp20 = MKVector(0.0f, *(this->unkC8 + (var_r29_533 + 0x40)), 0.0f);
             temp_r3_574 = this->unkC8 + var_r29_533;
-            sp10 = M2C_FIELD(temp_r3_574, f64 *, 0) + sp20;
+            sp10 = M2C_FIELD(temp_r3_574, f64 *, 0) + M2C_BITWISE(f64, sp20);
             sp30 = sp10;
-            sp18 = M2C_FIELD(temp_r3_574, f32 *, 8) + sp28;
+            sp18 = M2C_FIELD(temp_r3_574, f32 *, 8) + sp20.unk8;
             sp38 = (f64) sp18;
             sp40.unk30 = (f32) sp30;
             sp40.unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
@@ -407,14 +408,14 @@ void *LavaBubbleFX::Update() {
     MKVector3 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
-    f64 sp1D0;
+    MKVector3 sp1D0;
     f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
     f64 sp1B0;
     f64 sp1A8;
     f64 sp1A0;
-    M2C_UNK sp190;
+    MKVector4 sp190;
     f64 sp188;
     f64 sp180;
     f64 sp178;
@@ -428,11 +429,11 @@ void *LavaBubbleFX::Update() {
     f64 sp138;
     f64 sp130;
     MKVector3 sp120;
-    M2C_UNK sp110;
+    MKVector3 sp110;
     f64 sp108;
     f64 sp100;
     MKVector3 spF0;
-    M2C_UNK spE0;
+    MKVector3 spE0;
     f32 spD8;
     f64 spD0;
     f32 spC8;
@@ -596,15 +597,15 @@ void *LavaBubbleFX::Update() {
                 sp218 = (f64) sp68;
                 temp_r4_734 = this->unkC8 + var_r27_655;
                 if ((u32) M2C_FIELD(temp_r4_734, u32 *, 0x5C) != 0U) {
-                    MKVector(0.0f, (25.0f * M2C_FIELD(temp_r4_734, f32 *, 0x24)) + M2C_FIELD(temp_r4_734, f32 *, 0x40), 0.0f);
+                    sp1D0 = MKVector(0.0f, (25.0f * M2C_FIELD(temp_r4_734, f32 *, 0x24)) + M2C_FIELD(temp_r4_734, f32 *, 0x40), 0.0f);
                     temp_r3_746 = this->unkC8;
                     temp_r4_747 = temp_r3_746 + var_r27_655;
-                    temp_f0_750 = M2C_FIELD(temp_r4_747, f64 *, 0) + sp1D0;
+                    temp_f0_750 = M2C_FIELD(temp_r4_747, f64 *, 0) + M2C_BITWISE(f64, sp1D0);
                     sp50 = temp_f0_750;
                     temp_r0_752 = var_r27_655 + 0x5C;
                     temp_r3_757 = *(temp_r3_746 + temp_r0_752);
                     sp1E0 = temp_f0_750;
-                    sp58 = M2C_FIELD(temp_r4_747, f32 *, 8) + sp1D8;
+                    sp58 = M2C_FIELD(temp_r4_747, f32 *, 8) + sp1D0.unk8;
                     M2C_FIELD(temp_r3_757, f64 *, 0) = temp_f0_750;
                     M2C_FIELD(temp_r3_757, f64 *, 8) = (f64) sp58;
                     temp_r3_765 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
@@ -668,7 +669,7 @@ void *LavaBubbleFX::Update() {
                     sp1B8 = (f64) sp48;
                     M2C_FIELD(temp_r4_885, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_885, f64 *, 0) + sp1B0);
                     M2C_FIELD(temp_r4_885, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_885, f32 *, 8) + (f32) sp1B8);
-                    MKVector(0.5f, 0.25f, 0.0f, 1.0f);
+                    sp190 = MKVector(0.5f, 0.25f, 0.0f, 1.0f);
                     sp30 = M2C_FIELD(&sp190, f64 *, 0) * (f64) temp_f28_699;
                     sp38 = M2C_FIELD(&sp190, f64 *, 8) * (f64) temp_f28_699;
                     temp_r0_911 = var_r27_655 + 0x5C;
@@ -794,7 +795,7 @@ void *LavaBubbleFX::Update() {
                     var_f0_1153 = 0.0f;
                 }
                 *(temp_r4_1149 + temp_r0_1147) = var_f0_1153;
-                MKVector(100.0f, 100.0f, 100.0f);
+                spE0 = MKVector(100.0f, 100.0f, 100.0f);
                 spF0.operator*(gUpdateTimeDelta);
                 temp_r4_1181 = this->unkC8 + (var_r27_655 + 0x10);
                 temp_f0_1184 = M2C_FIELD(temp_r4_1181, f64 *, 0) + M2C_BITWISE(f64, spF0);
@@ -802,9 +803,9 @@ void *LavaBubbleFX::Update() {
                 sp100 = temp_f0_1184;
                 sp18 = M2C_FIELD(temp_r4_1181, f32 *, 8) + spF0.unk8;
                 sp108 = (f64) sp18;
-                MKVector(0.0f, 0.0f, 0.0f);
-                Min(sp20, *((MKVector3 *) &sp100));
-                Max(sp120, sp20);
+                sp110 = MKVector(0.0f, 0.0f, 0.0f);
+                sp20 = Min(*((MKVector3 *) &sp100), spE0);
+                sp120 = Max(sp20, sp110);
                 temp_r6_1210 = var_r27_655 + 0x58;
                 temp_r7_1212 = this->unkC8 + (var_r27_655 + 0x10);
                 temp_r5_1214 = var_r27_655 + 0x4C;

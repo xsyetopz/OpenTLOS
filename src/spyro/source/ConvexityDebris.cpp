@@ -37,6 +37,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -269,23 +270,23 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 s32 ConvexityDebris::LoadDone() {
     f64 spF0;
     f64 spE8;
     MKVector3 spD8;
     MKVector3 spC8;
-    M2C_UNK spB8;
+    MKVector3 spB8;
     f64 spB0;
     f64 spA8;
     MKVector3 sp98;
     MKVector3 sp88;
-    M2C_UNK sp78;
+    MKVector3 sp78;
     f64 sp70;
     f64 sp68;
     MKVector3 sp58;
     MKVector3 sp48;
-    M2C_UNK sp38;
+    MKVector3 sp38;
     f32 sp30;
     f64 sp28;
     f32 sp20;
@@ -313,18 +314,18 @@ loop_4:
         temp_r30_469 = temp_r3_467->unk0;
         if (temp_r30_469 != NULL) {
             temp_r30_469->unk68 = var_f27_458;
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(spD8, spC8);
+            spB8 = MKVector(1.0f, 1.0f, 1.0f);
+            spC8 = MKVector(-1.0f, -1.0f, -1.0f);
+            spD8 = KDRand_Vector(spC8, spB8);
             sp28 = spD8 * 5.370091495e-315;
             M2C_FIELD(temp_r30_469, f64 *, 0x38) = sp28;
             sp30 = spD8.unk8 * 6.2831855f;
             spE8 = sp28;
             spF0 = (f64) sp30;
             M2C_FIELD(temp_r30_469, f64 *, 0x40) = (f64) sp30;
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp98, sp88);
+            sp78 = MKVector(1.0f, 1.0f, 1.0f);
+            sp88 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp98 = KDRand_Vector(sp88, sp78);
             sp18 = sp98 * 5.328646264e-315;
             M2C_FIELD(temp_r30_469, f64 *, 0x28) = sp18;
             sp20 = sp98.unk8 * 3.1415927f;
@@ -332,9 +333,9 @@ loop_4:
             temp_r30_469->unk30 = (f64) sp20;
             spB0 = (f64) sp20;
             temp_f31_533 = this->unk70;
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp58, sp48);
+            sp38 = MKVector(1.0f, 1.0f, 1.0f);
+            sp48 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp58 = KDRand_Vector(sp48, sp38);
             sp8 = sp58 * (f64) temp_f31_533;
             M2C_FIELD(temp_r30_469, f64 *, 0x48) = sp8;
             sp10 = sp58.unk8 * temp_f31_533;

@@ -66,6 +66,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -727,7 +728,7 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
     f64 spC8;
     f64 spC0;
     f64 spB8;
-    f64 spA8;
+    MKVector3 spA8;
     f32 spA0;
     f32 sp9C;
     f32 sp98;
@@ -861,11 +862,11 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
                 sp14C = 0;
                 temp_f23_1422 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 temp_f25_1427 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f25_1427, temp_f23_1422);
+                spA8 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f25_1427, temp_f23_1422);
                 sp18 = spA8 * 5.398241246e-315;
                 sp148 = 0x417;
                 sp150 = sp18;
-                sp20 = spB0 * 10.0f;
+                sp20 = spA8.unk8 * 10.0f;
                 sp160 = 1;
                 sp158 = (f64) sp20;
                 spB8 = sp18;

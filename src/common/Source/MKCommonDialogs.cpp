@@ -8,6 +8,7 @@
 #include "common/Source/MKWidgets.h"
 #include "common/Source/MKWidgetsInternal.h"
 #include "common/Source/Texture.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s8 *MKWIDGETTYPE_BUTTON;
@@ -111,7 +112,7 @@ s32 CreateWidgetWindow::CreateWidgetWindowHook(MKWidget *arg0, unsigned int arg1
     MKVector3 sp58;
     f64 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
@@ -135,9 +136,9 @@ s32 CreateWidgetWindow::CreateWidgetWindowHook(MKWidget *arg0, unsigned int arg1
                 if ((M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u8 (**)(), 0x2C)() != 0) && (MKWidget_IsDescendant(temp_r30_204, M2C_FIELD(arg2, MKWidget **, 0)) == 0) && (temp_r30_204 != (MKWidget *) M2C_FIELD(arg2, MKWidget **, 0))) {
                     M2C_STRUCT_COPY((s32) &sp84 + 4, MKWidgetIdentityAttributes - 4 + 4, 0x58);
                     MKWidget_GetLocalMousePos(temp_r30_204, &sp58);
-                    MKVector(0.0f, 0.0f, 0.0f);
-                    sp18 = M2C_BITWISE(f64, sp58) - sp38;
-                    sp20 = sp58.unk8 - sp40;
+                    sp38 = MKVector(0.0f, 0.0f, 0.0f);
+                    sp18 = M2C_BITWISE(f64, sp58) - M2C_BITWISE(f64, sp38);
+                    sp20 = sp58.unk8 - sp38.unk8;
                     sp10 = 0.0f;
                     sp8 = 80.0f;
                     spC = 32.0f;

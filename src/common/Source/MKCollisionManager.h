@@ -66,5 +66,5 @@ public:
     /* 0x038 */ u8 unk38;
 };
 
-void GetInterpolatedColorFromPoly(const MKVector3 &, const MKVector3 *);
+MKVector3 GetInterpolatedColorFromPoly(const MKVector3 &, const MKVector3 *);
 #endif  // COMMON_SOURCE_MKCOLLISIONMANAGER_H

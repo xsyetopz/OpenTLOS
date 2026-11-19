@@ -11,6 +11,7 @@
 #include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 fmod(s32, f32, f32, f32);                       /* extern */
@@ -33,7 +34,7 @@ void WeatherConvexityPS::UpdateParticles() {
     f64 sp68;
     f64 sp60;
     MKVector3 sp50;
-    M2C_UNK sp40;
+    MKVector3 sp40;
     f32 sp38;
     f64 sp30;
     f32 sp28;
@@ -90,7 +91,7 @@ loop_12:
             temp_f25_140 = 3.0f * (6.2831855f * (temp_f28_81 / this->unk12C));
             temp_f26_143 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
             temp_f27_147 = _table_sinf((0.25f * temp_f25_140) + 1.5707964f);
-            MKVector(_table_sinf(temp_f25_140), 0.0f, temp_f27_147);
+            sp40 = MKVector(_table_sinf(temp_f25_140), 0.0f, temp_f27_147);
             sp50.operator*(100.0f * temp_f26_143);
             temp_f0_161 = sp50 * (f64) temp_f29_137;
             sp10 = temp_f0_161;

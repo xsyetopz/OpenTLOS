@@ -41,6 +41,7 @@
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 SPYRO_BOUNCE_Y_SPEED;
@@ -887,8 +888,7 @@ block_6:
             sp1B8 = sp148;
             sp1C0 = sp150;
             KDMath_Dampen<MKVector3>(sp138, 2.0f, gUpdateTimeDelta);
-            this->unk40 = M2C_BITWISE(f64, sp138);
-            this->unk48 = (f64) sp138.unk8;
+            *(MKVector3 *) &this->unk40 = sp138;
             var_f1_1548 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * (*(f32 *) ((u8 *) &sp1B8 + 0x4))));
             if (var_f1_1548 > 0.0f) {
                 temp_f2_1551 = __frsqrte(var_f1_1548);
@@ -970,9 +970,8 @@ block_6:
             sp118 = temp_f0_1691;
             sp40 = (f32) sp1C0 + (f32) M2C_FIELD(this, f64 *, 0x48);
             sp120 = (f64) sp40;
-            ClampMagnitude(sp128, var_f1_1548);
-            sp1B8 = M2C_BITWISE(f64, sp128);
-            sp1C0 = (f64) sp128.unk8;
+            sp128 = ClampMagnitude(*((MKVector3 *) &sp118), var_f1_1548);
+            *(MKVector3 *) &sp1B8 = sp128;
             this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp1B8), 3800.0f);
             if ((u8) M2C_FIELD(this, u8 *, 0x2E) != 0) {
                 var_f1_1718 = 3.5f;

@@ -37,6 +37,7 @@
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_PLACEHOLDER;
@@ -108,13 +109,13 @@ void *SnowballTree::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 SnowballTree::LoadDone() {
     MKVector3 sp48;
     f64 sp40;
     f64 sp38;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     s32 temp_r29_251;
@@ -123,13 +124,13 @@ s32 SnowballTree::LoadDone() {
     void *temp_r3_267;
 
     KDProp::LoadDone();
-    MKVector(0.0f, 600.0f, 0.0f);
+    sp18 = MKVector(0.0f, 600.0f, 0.0f);
     ((MKProp *) &sp28)->GetPos();
-    sp8 = sp28 + sp18;
+    sp8 = sp28 + M2C_BITWISE(f64, sp18);
     var_r28_232 = 0;
     var_r31_234 = 0;
     M2C_FIELD(this, f64 *, 0xA0) = sp8;
-    sp10 = sp30 + sp20;
+    sp10 = sp30 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(this, f64 *, 0xA8) = (f64) sp10;

@@ -31,6 +31,7 @@
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
@@ -402,16 +403,15 @@ s32 SpyroCollisionObject::Update(MKVector3 *arg0, float arg1, bool arg2) {
 
 #if 0 // DRAFT: undefined identifier 'arg_sp8'
 void SpyroCollisionObject::Init(ColObjDescriptor *arg0, const MKVector3 &arg1, bool arg2, MKCollisionInfo *arg3, bool arg4, bool arg5, unsigned int arg6, MKProp *arg7, bool arg8) {
-    f64 sp10;
+    MKVector3 sp10;
     s32 spC;
     s32 sp8;
 
     sp8 = arg_sp8;
     spC = (s32) arg_spC;
     CollisionObject::Init(arg0, arg1, arg2, arg3, arg4, arg5, arg6, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
-    MKVector(0.0f, M2C_FIELD(this->unk460, f32 *, 4), 0.0f);
-    this->unk480 = sp10;
-    this->unk488 = sp18;
+    sp10 = MKVector(0.0f, M2C_FIELD(this->unk460, f32 *, 4), 0.0f);
+    *(MKVector3 *) &this->unk480 = sp10;
     this->unk47C = 20.0f;
     this->unk478 = 20.0f;
 }

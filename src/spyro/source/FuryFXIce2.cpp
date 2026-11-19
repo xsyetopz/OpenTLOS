@@ -42,6 +42,7 @@
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/KDSound.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(Matrix **);                            /* extern */
@@ -110,7 +111,7 @@ void FuryFXIce2::TargetAndSpawnIceSpear() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
     f64 sp128;                                      /* compiler-managed */
     f64 sp120;
@@ -130,7 +131,7 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
     MKVector3 spA0;
     MKVector3 sp90;
     MKVector3 sp80;
-    M2C_UNK sp70;
+    MKVector3 sp70;
     f32 sp68;
     f32 sp64;
     f32 sp60;
@@ -178,9 +179,8 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
             spE8 = (f64) sp58;
             spF0 = (f64) sp60;
             spF8 = (f64) sp68;
-            KDRand_Vector(sp100, *((MKVector3 *) &spF0));
-            sp120 = M2C_BITWISE(f64, sp100);
-            sp128 = (f64) sp100.unk8;
+            sp100 = KDRand_Vector(*((MKVector3 *) &spF0), *((MKVector3 *) &spE0));
+            *(MKVector3 *) &sp120 = sp100;
             M2C_STRUCT_COPY(temp_r31_168, &Matrix::identity, 0x40);
             sp30 = (f32) sp120;
             sp34 = 3.0f;
@@ -250,9 +250,9 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
             M2C_FIELD(temp_r31_168, f32 *, 0x54) = 1.0f;
             M2C_FIELD(temp_r31_168, Targetable **, 0x58) = arg0;
             if ((Targetable *) M2C_FIELD(temp_r31_168, Targetable **, 0x58) == NULL) {
-                MKVector(1.0f, 0.0f, 1.0f);
-                MKVector(-1.0f, 0.0f, -1.0f);
-                KDRand_Vector(sp90, sp80);
+                sp70 = MKVector(1.0f, 0.0f, 1.0f);
+                sp80 = MKVector(-1.0f, 0.0f, -1.0f);
+                sp90 = KDRand_Vector(sp80, sp70);
                 spA0.operator*(2000.0f);
                 sp10 = this->unk98 + M2C_BITWISE(f64, spA0);
                 M2C_FIELD(temp_r31_168, f64 *, 0x40) = sp10;
@@ -310,7 +310,7 @@ void FuryFXIce2::UpdateIceSpears() {
     f64 sp130;
     MKVector3 sp120;
     MKVector3 sp110;
-    M2C_UNK sp100;
+    MKVector3 sp100;
     f64 spF8;
     f64 spF0;
     f64 spE8;
@@ -407,9 +407,9 @@ loop_56:
                         sp1D0 = M2C_FIELD(temp_r30_934, f64 *, 0x40);
                         sp1D8 = M2C_FIELD(temp_r30_934, f64 *, 0x48);
                     }
-                    MKVector(1.0f, 0.0f, 1.0f);
-                    MKVector(-1.0f, 0.0f, -1.0f);
-                    KDRand_Vector(sp120, sp110);
+                    sp100 = MKVector(1.0f, 0.0f, 1.0f);
+                    sp110 = MKVector(-1.0f, 0.0f, -1.0f);
+                    sp120 = KDRand_Vector(sp110, sp100);
                     temp_f0_537 = sp120 * 5.53552857e-315;
                     sp40 = temp_f0_537;
                     sp130 = temp_f0_537;

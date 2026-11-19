@@ -65,6 +65,7 @@
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -468,8 +469,7 @@ void AssaultCannon::EmitShootingFX() {
         temp_r3_530 = M2C_FIELD(M2C_FIELD(gb.unk2A0, void **, 0x44), void *(**)(void *), 0x3C)(gb.unk2A0);
         if (temp_r3_530 != NULL) {
             temp_r30_533 = M2C_FIELD(temp_r3_530, void **, 0x2C);
-            M2C_FIELD(temp_r3_530, f64 *, 0) = M2C_BITWISE(f64, sp70);
-            M2C_FIELD(temp_r3_530, f64 *, 8) = (f64) sp70.unk8;
+            M2C_FIELD(temp_r3_530, MKVector3 *, 0) = sp70;
             M2C_FIELD(temp_r3_530, f32 *, 0x20) = 0.0f;
             M2C_FIELD(temp_r3_530, f32 *, 0x28) = 0.0f;
             sp10 = (f64) sp60 * 5.634608575e-315;
@@ -576,7 +576,7 @@ void AssaultCannon::StateDeadUpdate() {
         spB8 = (f64) sp78;
         spA0 = (f64) sp60;
         spA8 = (f64) sp68;
-        KDRand_Vector(spC0, *((MKVector3 *) &spB0));
+        spC0 = KDRand_Vector(*((MKVector3 *) &spB0), *((MKVector3 *) &spA0));
         temp_f0_694 = spC0 * 5.51933903e-315;
         sp50 = temp_f0_694;
         spD0 = temp_f0_694;
@@ -732,7 +732,7 @@ void AssaultCannon::StateFireUpdate() {
     f64 sp348;
     f64 sp340;
     HeroInterface sp330;
-    f64 sp320;
+    MKVector3 sp320;
     f64 sp318;
     f64 sp310;
     f64 sp308;
@@ -1520,11 +1520,11 @@ void AssaultCannon::StateFireUpdate() {
                 M2C_FIELD(this, f64 *, 0x230) = (f64) M2C_FIELD(temp_r3_2036, f64 *, 0x30);
                 M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(temp_r3_2036, f64 *, 0x38);
             }
-            MKVector(0.0f, 100.0f, 0.0f);
+            sp320 = MKVector(0.0f, 100.0f, 0.0f);
             sp330.GetPos();
-            sp70 = sp330 + sp320;
+            sp70 = sp330 + M2C_BITWISE(f64, sp320);
             this->unk240 = sp70;
-            sp78 = sp338 + sp328;
+            sp78 = sp338 + sp320.unk8;
             sp340 = sp70;
             sp348 = (f64) sp78;
             this->unk248 = (f64) sp78;
@@ -1959,7 +1959,7 @@ void AssaultCannon::StateFireUpdate() {
             sp4B0 = temp_f0_2983;
             spC8 = (f32) sp238 * temp_f28_2878;
             sp4B8 = (f64) spC8;
-            Normalise(sp200);
+            sp200 = Normalise(*((MKVector3 *) &sp4B0));
             temp_f0_2998 = sp200 * 5.439686476e-315;
             sp40 = temp_f0_2998;
             sp210 = temp_f0_2998;
@@ -1967,7 +1967,7 @@ void AssaultCannon::StateFireUpdate() {
             sp218 = (f64) sp48;
             M2C_FIELD(this, f64 *, 0x230) = (f64) (M2C_FIELD(this, f64 *, 0x230) + temp_f0_2998);
             this->unk230.unk8 += (f32) sp218;
-            Tools_CalculateVelocity(sp1F0, this->unk230, temp_f28_2878, -1960.0f);
+            sp1F0 = Tools_CalculateVelocity(this->unk230, *((MKVector3 *) &this->unk240), temp_f28_2878, -1960.0f);
             temp_f1_3022 = M2C_BITWISE(f64, sp1F0);
             sp4B0 = temp_f1_3022;
             sp4B8 = (f64) sp1F0.unk8;
@@ -3071,20 +3071,20 @@ u64 AssaultCannon::UpdateTurning(MKVector3 arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 AssaultCannon::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     void *temp_r4_4848;
 
-    MKVector(0.0f, 100.0f, 0.0f);
+    sp18 = MKVector(0.0f, 100.0f, 0.0f);
     temp_r4_4848 = ((u8 *) this->unk8) + 0x30;
-    sp8 = M2C_FIELD(temp_r4_4848, f64 *, 0) + sp18;
+    sp8 = M2C_FIELD(temp_r4_4848, f64 *, 0) + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD(temp_r4_4848, f32 *, 8) + sp20;
+    sp10 = M2C_FIELD(temp_r4_4848, f32 *, 8) + sp18.unk8;
     sp28 = sp8;
     sp30 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -3092,20 +3092,20 @@ s32 AssaultCannon::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 AssaultCannon::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     void *temp_r4_4886;
 
-    MKVector(0.0f, 100.0f, 0.0f);
+    sp18 = MKVector(0.0f, 100.0f, 0.0f);
     temp_r4_4886 = ((u8 *) this->unk8) + 0x30;
-    sp8 = M2C_FIELD(temp_r4_4886, f64 *, 0) + sp18;
+    sp8 = M2C_FIELD(temp_r4_4886, f64 *, 0) + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD(temp_r4_4886, f32 *, 8) + sp20;
+    sp10 = M2C_FIELD(temp_r4_4886, f32 *, 8) + sp18.unk8;
     sp28 = sp8;
     sp30 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -3195,7 +3195,7 @@ void AssaultCannon::Draw() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp220'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void AssaultCannon::Message(MKMessage *arg0) {
     f64 sp260;
     f64 sp258;
@@ -3205,7 +3205,7 @@ void AssaultCannon::Message(MKMessage *arg0) {
     f64 sp238;
     f64 sp230;
     f64 sp228;
-    f64 sp218;
+    MKVector3 sp218;
     f64 sp210;
     f64 sp208;
     f64 sp200;
@@ -3337,12 +3337,12 @@ void AssaultCannon::Message(MKMessage *arg0) {
             sp10C = 200.0f;
             sp210 = (f64) sp110;
             sp208 = (f64) sp108;
-            KDRand_UnitVectorXZ();
+            sp218 = KDRand_UnitVectorXZ();
             temp_f0_5208 = sp218 * 5.5769738e-315;
             sp128 = temp_f0_5208;
             sp228 = temp_f0_5208;
             temp_r3_5215 = ((u8 *) this->unk8) + 0x30;
-            sp130 = sp220 * 200.0f;
+            sp130 = sp218.unk8 * 200.0f;
             sp230 = (f64) sp130;
             temp_f0_5221 = M2C_FIELD(temp_r3_5215, f64 *, 0) + temp_f0_5208;
             sp118 = temp_f0_5221;

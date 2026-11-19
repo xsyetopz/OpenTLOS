@@ -696,8 +696,7 @@ loop_24:
         this->unkAC += 10.0f * gUpdateTimeDelta * this->unkCC;
         this->unkB0 += 2.0f * gUpdateTimeDelta;
         KDMath_Smooth<MKVector4>(spC0, *((MKVector4 *) &this->unk68), 0.5f, gUpdateTimeDelta);
-        M2C_FIELD(this, f32 *, 0x68) = M2C_BITWISE(f64, spC0);
-        M2C_FIELD(this, f32 *, 0x70) = (f64) spC0.unk8;
+        *(MKVector4 *) &M2C_FIELD(this, f32 *, 0x68) = spC0;
         temp_r3_1267 = this->unkD0;
         if (temp_r3_1267 != NULL) {
             temp_r3_1267->unk10 = M2C_FIELD(this, f64 *, 0x50);

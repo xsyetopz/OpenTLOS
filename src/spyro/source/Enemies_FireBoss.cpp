@@ -97,6 +97,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/PhrasePlayer.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 s32 atoi(s8 *);                                     /* extern */
@@ -118,7 +119,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 static M2C_UNK lit_750;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_751;                                /* unable to generate initializer: unknown type; const */
 
@@ -128,16 +129,16 @@ void FireBoss::TriggerExplosion() {
     f64 sp48;
     f64 sp40;
     f64 sp30;
-    f64 sp20;
+    MKVector3 sp20;
     f32 sp18;
     f64 sp10;
     s32 sp8;
 
-    MKVector(0.0f, 400.0f, 0.0f);
+    sp20 = MKVector(0.0f, 400.0f, 0.0f);
     ((MKProp *) &sp30)->GetPos();
-    sp10 = sp30 + sp20;
+    sp10 = sp30 + M2C_BITWISE(f64, sp20);
     sp50 = sp10;
-    sp18 = sp38 + sp28;
+    sp18 = sp38 + sp20.unk8;
     sp40 = sp10;
     sp58 = (f64) sp18;
     sp8 = 1;
@@ -747,9 +748,8 @@ void FireBoss::HurtHero() {
         sp40.unk28 = (f64) sp28;
         sp40.unk20 = (f64) sp20;
         sp40.GetDir();
-        KDMath_Slerp(sp30, *((MKVector3 *) &this->unkC0), ((f32) sp40.unk28 * sp40.unk8) + (((f32) sp40.unk20 * M2C_BITWISE(f32, sp40)) + ((*(f32 *) ((u8 *) &sp40 + 0x24)) * (*(f32 *) ((u8 *) &sp40 + 0x4)))));
-        sp40.unk10 = M2C_BITWISE(f64, sp30);
-        sp40.unk18 = (f64) sp30.unk8;
+        sp30 = KDMath_Slerp(*((MKVector3 *) &this->unkC0), *((MKVector3 *) &sp40.unk20), ((f32) sp40.unk28 * sp40.unk8) + (((f32) sp40.unk20 * M2C_BITWISE(f32, sp40)) + ((*(f32 *) ((u8 *) &sp40 + 0x24)) * (*(f32 *) ((u8 *) &sp40 + 0x4)))));
+        *(MKVector3 *) &sp40.unk10 = sp30;
         var_f4_1120 = ((f32) sp40.unk18 * (f32) sp40.unk18) + (((f32) sp40.unk10 * (f32) sp40.unk10) + ((*(f32 *) ((u8 *) &sp40 + 0x14)) * (*(f32 *) ((u8 *) &sp40 + 0x14))));
         if (var_f4_1120 > 0.000001f) {
             if (var_f4_1120 > 0.0f) {
@@ -1405,16 +1405,15 @@ void FireBoss::CreateTurnSplines(int arg0, int arg1, int arg2, float arg3, float
     temp_r27_2450->AddNode(*((MKVector3 *) &sp150));
     sp1C = 0.0f;
     spF0.GetMeasure((0.5f * temp_f28_2459) + arg3, (Matrix *) &this->unkB38, KDSpline_PositionMixer);
-    InterpolateLinear(*((MKVector3 *) &spF0.unk10), *((MKVector3 *) &sp150), 0.75f);
+    *((MKVector3 *) &spF0.unk10) = InterpolateLinear(*((MKVector3 *) &sp150), *((MKVector3 *) &spF0), 0.75f);
     sp120.unk10 = M2C_BITWISE(f64, spF0.unk10);
     sp138 = sp108;
     temp_r27_2450->AddNode(*((MKVector3 *) &sp120.unk10));
-    InterpolateLinear(spE0, *((MKVector3 *) &sp150), 0.5f);
-    sp120.unk10 = M2C_BITWISE(f64, spE0);
-    sp138 = (f64) spE0.unk8;
+    spE0 = InterpolateLinear(*((MKVector3 *) &sp150), *((MKVector3 *) &sp140), 0.5f);
+    *(MKVector3 *) &sp120.unk10 = spE0;
     sp18 = 0.0f;
     spC0.GetMeasure((1.3f * temp_f28_2459) + arg3, (Matrix *) &this->unkB38, KDSpline_PositionMixer);
-    InterpolateLinear(*((MKVector3 *) &spC0.unk10), *((MKVector3 *) &sp120.unk10), 0.9f);
+    *((MKVector3 *) &spC0.unk10) = InterpolateLinear(*((MKVector3 *) &sp120.unk10), *((MKVector3 *) &spC0), 0.9f);
     sp120.unk10 = M2C_BITWISE(f64, spC0.unk10);
     sp138 = spD8;
     temp_r27_2450->AddNode(*((MKVector3 *) &sp120.unk10));
@@ -1441,18 +1440,17 @@ void FireBoss::CreateTurnSplines(int arg0, int arg1, int arg2, float arg3, float
     sp140 = temp_f1_2598;
     sp148 = temp_f0_2599;
     temp_r26_2465->AddNode(*((MKVector3 *) &sp150));
-    InterpolateLinear(sp90, *((MKVector3 *) &sp150), 0.5f);
-    sp120.unk10 = M2C_BITWISE(f64, sp90);
-    sp138 = (f64) sp90.unk8;
+    sp90 = InterpolateLinear(*((MKVector3 *) &sp150), *((MKVector3 *) &sp140), 0.5f);
+    *(MKVector3 *) &sp120.unk10 = sp90;
     spC = 0.0f;
     sp70.GetMeasure((1.7f * temp_f28_2459) + var_f29_2568, (Matrix *) &this->unkB38, KDSpline_PositionMixer);
-    InterpolateLinear(*((MKVector3 *) &sp70.unk10), *((MKVector3 *) &sp120.unk10), 0.9f);
+    *((MKVector3 *) &sp70.unk10) = InterpolateLinear(*((MKVector3 *) &sp120.unk10), *((MKVector3 *) &sp70), 0.9f);
     sp120.unk10 = M2C_BITWISE(f64, sp70.unk10);
     sp138 = sp88;
     temp_r26_2465->AddNode(*((MKVector3 *) &sp120.unk10));
     sp8 = 0.0f;
     sp50.GetMeasure((2.5f * temp_f28_2459) + var_f29_2568, (Matrix *) &this->unkB38, KDSpline_PositionMixer);
-    InterpolateLinear(*((MKVector3 *) &sp50.unk10), *((MKVector3 *) &sp140), 0.75f);
+    *((MKVector3 *) &sp50.unk10) = InterpolateLinear(*((MKVector3 *) &sp140), *((MKVector3 *) &sp50), 0.75f);
     sp120.unk10 = M2C_BITWISE(f64, sp50.unk10);
     sp138 = sp68;
     temp_r26_2465->AddNode(*((MKVector3 *) &sp120.unk10));
@@ -1729,7 +1727,7 @@ void FireBoss::CreateInsideSplines() {
     temp_f27_3083 = MKVector3::up.unk0;
     do {
         sp1C = 0.0f;
-        temp_r27_3093 = (Matrix *) (this + (var_r28_3078 + 0xB4C));
+        temp_r27_3093 = this + (var_r28_3078 + 0xB4C);
         sp1D8.GetMeasure(0.2f, temp_r27_3093, KDSpline_PositionMixer);
         sp20 = 0.0f;
         ((KDUniformSpline *) &sp1D8.unk10)->GetMeasure(0.8f, temp_r27_3093, KDSpline_PositionMixer);
@@ -1780,7 +1778,7 @@ void FireBoss::CreateInsideSplines() {
             var_f21_3125 = 0.0f;
         }
         temp_r26_3198 = this + var_r29_3076;
-        temp_r25_3200 = (Matrix *) (((u8 *) temp_r26_3198) + 0xC70);
+        temp_r25_3200 = ((u8 *) temp_r26_3198) + 0xC70;
         temp_f5_3201 = (f32) sp268 * var_f2_3191;
         temp_f4_3203 = (*(f32 *) ((u8 *) &sp260 + 0xc)) * var_f2_3191;
         temp_f3_3205 = (f32) sp270 * var_f2_3191;
@@ -1855,11 +1853,11 @@ void FireBoss::CreateOutsideSpline() {
     f64 spD0;
     f64 spC8;
     MKVector3 spB8;
-    M2C_UNK spA8;
+    MKVector3 spA8;
     f64 spA0;
     f64 sp98;
     MKVector3 sp88;
-    M2C_UNK sp78;
+    MKVector3 sp78;
     f32 sp70;
     f32 sp6C;
     f32 sp68;
@@ -1908,7 +1906,7 @@ void FireBoss::CreateOutsideSpline() {
     temp_f28_3433 = KDMath_GetYaw(*((MKVector3 *) &sp118));
     var_r30_3436 = 0;
     do {
-        KDMath_GetDirection((-0.19634955f * (f32) var_r30_3436) + temp_f28_3433);
+        spA8 = KDMath_GetDirection((-0.19634955f * (f32) var_r30_3436) + temp_f28_3433);
         spB8.operator*(3000.0f);
         sp18 = sp128 + M2C_BITWISE(f64, spB8);
         spC8 = sp18;
@@ -1919,7 +1917,7 @@ void FireBoss::CreateOutsideSpline() {
         this->unkB38.AddNode(*((MKVector3 *) &sp108));
         var_r30_3436 += 1;
     } while (var_r30_3436 < 0x20);
-    KDMath_GetDirection(temp_f28_3433);
+    sp78 = KDMath_GetDirection(temp_f28_3433);
     sp88.operator*(3000.0f);
     sp8 = sp128 + M2C_BITWISE(f64, sp88);
     sp98 = sp8;
@@ -1931,11 +1929,11 @@ void FireBoss::CreateOutsideSpline() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 FireBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     void **temp_r3_3518;
@@ -1944,10 +1942,10 @@ s32 FireBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     if (M2C_FIELD(*temp_r3_3518, u8 (**)(void **, M2C_UNK), 0x3C)(temp_r3_3518, 0x71) != 0) {
         MKModel_CalculateRefPointWorldPosition(this->unkD10.unk4, this->unkD10.unk220, arg1);
     } else {
-        MKVector(0.0f, 0.5f * GetCollisionHeight(), 0.0f);
-        sp8 = M2C_FIELD(this, f64 *, 0x588) + sp18;
+        sp18 = MKVector(0.0f, 0.5f * GetCollisionHeight(), 0.0f);
+        sp8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp18);
         M2C_FIELD(arg1, f64 *, 0) = sp8;
-        sp10 = this->unk588.unk8 + sp20;
+        sp10 = this->unk588.unk8 + sp18.unk8;
         sp28 = sp8;
         sp30 = (f64) sp10;
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -1956,11 +1954,11 @@ s32 FireBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 FireBoss::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     void **temp_r3_3576;
@@ -1969,10 +1967,10 @@ s32 FireBoss::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     if (M2C_FIELD(*temp_r3_3576, u8 (**)(void **, M2C_UNK), 0x3C)(temp_r3_3576, 0x71) != 0) {
         MKModel_CalculateRefPointWorldPosition(this->unkD10.unk4, this->unkD10.unk220, arg1);
     } else {
-        MKVector(0.0f, 0.5f * GetCollisionHeight(), 0.0f);
-        sp8 = M2C_FIELD(this, f64 *, 0x588) + sp18;
+        sp18 = MKVector(0.0f, 0.5f * GetCollisionHeight(), 0.0f);
+        sp8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp18);
         M2C_FIELD(arg1, f64 *, 0) = sp8;
-        sp10 = this->unk588.unk8 + sp20;
+        sp10 = this->unk588.unk8 + sp18.unk8;
         sp28 = sp8;
         sp30 = (f64) sp10;
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -2705,7 +2703,7 @@ loop_11:
         this->unk3D8 = arg0->GetNmbrOfSubLines();
         temp_r25_5083 = this->unk3D8 * 0xC;
         if (MKHeap::Current() != NULL) {
-            var_r3_5091 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5083, NULL, 0));
+            var_r3_5091 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5083, NULL, 0);
         } else {
             var_r3_5091 = malloc(temp_r25_5083);
         }
@@ -2718,14 +2716,14 @@ loop_31:
                 *(this->unk3DC + var_r27_5104) = var_r28_5102->GetNmbrOfSubLines();
                 temp_r25_5118 = *(this->unk3DC + var_r27_5104) * 4;
                 if (MKHeap::Current() != NULL) {
-                    var_r3_5126 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5118, NULL, 0));
+                    var_r3_5126 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5118, NULL, 0);
                 } else {
                     var_r3_5126 = malloc(temp_r25_5118);
                 }
                 *(this->unk3DC + (var_r27_5104 + 4)) = var_r3_5126;
                 temp_r25_5137 = *(this->unk3DC + var_r27_5104) * 4;
                 if (MKHeap::Current() != NULL) {
-                    var_r3_5145 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5137, NULL, 0));
+                    var_r3_5145 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5137, NULL, 0);
                 } else {
                     var_r3_5145 = malloc(temp_r25_5137);
                 }

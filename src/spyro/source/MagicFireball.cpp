@@ -48,6 +48,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_IceOrgeMagicExplode;
@@ -105,7 +106,7 @@ void *MagicFireball::Update() {
     MKVector3 spA8;
     MKVector3 sp98;
     MKVector3 sp88;
-    M2C_UNK sp78;
+    MKVector3 sp78;
     f64 sp70;
     f64 sp68;
     f64 sp60;
@@ -218,9 +219,9 @@ void *MagicFireball::Update() {
     temp_r3_308 = M2C_FIELD(M2C_FIELD(temp_r3_304, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_304);
     if (temp_r3_308 != NULL) {
         temp_r28_313 = M2C_FIELD(temp_r3_308, void **, 0x2C);
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, -1.0f, -1.0f);
-        KDRand_Vector(sp98, sp88);
+        sp78 = MKVector(1.0f, 1.0f, 1.0f);
+        sp88 = MKVector(-1.0f, -1.0f, -1.0f);
+        sp98 = KDRand_Vector(sp88, sp78);
         spA8.operator*(25.0f);
         sp38 = sp130.unk30 + M2C_BITWISE(f64, spA8);
         M2C_FIELD(temp_r3_308, f64 *, 0) = sp38;
@@ -273,7 +274,7 @@ void *MagicFireball::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MagicFireball::Collided(MKCollisionResult &arg0) {
     s8 sp2A9;
     s8 sp2A8;
@@ -325,7 +326,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     MKVector3 sp178;
     MKVector3 sp168;
     MKVector3 sp158;
-    M2C_UNK sp148;
+    MKVector3 sp148;
     f64 sp140;
     f64 sp138;
     f64 sp130;
@@ -333,7 +334,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     MKVector3 sp118;
     MKVector3 sp108;
     MKVector3 spF8;
-    M2C_UNK spE8;
+    MKVector3 spE8;
     f64 spE0;
     f64 spD8;
     f64 spD0;
@@ -401,9 +402,9 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
         temp_r3_509 = M2C_FIELD(M2C_FIELD(temp_r3_505, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_505);
         if (temp_r3_509 != NULL) {
             temp_r25_514 = M2C_FIELD(temp_r3_509, void **, 0x2C);
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp168, sp158);
+            sp148 = MKVector(1.0f, 1.0f, 1.0f);
+            sp158 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp168 = KDRand_Vector(sp158, sp148);
             sp178.operator*(25.0f);
             sp58 = sp1C0.unk30 + M2C_BITWISE(f64, sp178);
             M2C_FIELD(temp_r3_509, f64 *, 0) = sp58;
@@ -423,9 +424,9 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
             sp140 = (f64) sp50;
             M2C_FIELD(temp_r3_509, f64 *, 0x18) = (f64) sp50;
             M2C_FIELD(temp_r3_509, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f)));
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp108, spF8);
+            spE8 = MKVector(1.0f, 1.0f, 1.0f);
+            spF8 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp108 = KDRand_Vector(spF8, spE8);
             sp118.operator*(500.0f);
             sp38 = sp1A8 + M2C_BITWISE(f64, sp118);
             M2C_FIELD(temp_r25_514, f64 *, 0) = sp38;

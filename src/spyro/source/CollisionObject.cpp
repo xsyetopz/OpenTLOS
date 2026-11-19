@@ -40,6 +40,7 @@
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern void **gMK;
@@ -87,7 +88,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'NProjection'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg1, float arg2, ContextInfo *arg3, MKCollisionResult *arg4, const MKVector3 &arg5) {
     f64 sp208;
     f64 sp200;
@@ -196,9 +197,8 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
         sp190 = temp_f0_289;
         spA8 = arg1->unk8 * arg2;
         sp198 = (f64) spA8;
-        NProjection(sp1A0, *((MKVector3 *) &sp190));
-        M2C_FIELD(arg0, f64 *, 0) = M2C_BITWISE(f64, sp1A0);
-        M2C_FIELD(arg0, f64 *, 8) = (f64) sp1A0.unk8;
+        sp1A0 = NProjection(*((MKVector3 *) &sp190), arg5);
+        M2C_FIELD(arg0, MKVector3 *, 0) = sp1A0;
         temp_f4_314 = M2C_FIELD(temp_r31_275, f32 *, 0x18);
         temp_f29_317 = -((arg0->unk8 * temp_f4_314) + ((arg0->unk0 * M2C_FIELD(temp_r31_275, f32 *, 0x10)) + (arg0->unk4 * M2C_FIELD(temp_r31_275, f32 *, 0x14))));
         sp14 = temp_f29_317;
@@ -218,9 +218,8 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
             sp160 = temp_f0_359;
             sp88 = arg1->unk8 * arg2;
             sp168 = (f64) sp88;
-            NProjection(sp170, *((MKVector3 *) &sp160));
-            M2C_FIELD(arg0, f64 *, 0) = M2C_BITWISE(f64, sp170);
-            M2C_FIELD(arg0, f64 *, 8) = (f64) sp170.unk8;
+            sp170 = NProjection(*((MKVector3 *) &sp160), arg5);
+            M2C_FIELD(arg0, MKVector3 *, 0) = sp170;
             temp_f5_376 = arg4->unk18;
             temp_f8_377 = M2C_FIELD(temp_r31_275, f32 *, 0x10);
             temp_f1_378 = M2C_FIELD(temp_r31_275, f32 *, 0x18);
@@ -272,10 +271,9 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
         sp110 = temp_f0_487;
         sp58 = arg1->unk8 * arg2;
         sp118 = (f64) sp58;
-        NProjection(sp120, *((MKVector3 *) &sp110));
+        sp120 = NProjection(*((MKVector3 *) &sp110), arg5);
         var_f5_502 = 0.0f;
-        M2C_FIELD(arg0, f64 *, 0) = M2C_BITWISE(f64, sp120);
-        M2C_FIELD(arg0, f64 *, 8) = (f64) sp120.unk8;
+        M2C_FIELD(arg0, MKVector3 *, 0) = sp120;
         sp1D0 = (f64) M2C_FIELD(temp_r31_275, f32 *, 0x10);
         sp1D8 = (f64) M2C_FIELD(temp_r31_275, f32 *, 0x18);
         (*(f32 *) ((u8 *) &sp1C8 + 0xc)) = 0.0f;

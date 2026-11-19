@@ -30,6 +30,7 @@
 #include "spyro/source/ManagedLight.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
@@ -59,7 +60,7 @@ void Torch::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *Torch::Update() {
     f64 sp188;
     f64 sp180;
@@ -77,7 +78,7 @@ void *Torch::Update() {
     f64 sp120;
     f64 sp118;
     f64 sp110;
-    f64 sp100;
+    MKVector3 sp100;
     f64 spF8;
     f64 spF0;
     f64 spE8;
@@ -191,10 +192,10 @@ void *Torch::Update() {
         sp128 = (f64) sp78;
         temp_f27_252 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f28_257 = MKRand_Float((int *) &gViewSeed, -0.1f, 0.1f);
-        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_257, temp_f27_252);
+        sp100 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_257, temp_f27_252);
         sp20 = sp100 * 5.398241246e-315;
         sp40 = 1.0f;
-        sp28 = sp108 * 10.0f;
+        sp28 = sp100.unk8 * 10.0f;
         sp44 = 1.0f;
         sp48 = 1.0f;
         sp4C = 1.0f;

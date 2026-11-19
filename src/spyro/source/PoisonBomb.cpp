@@ -103,7 +103,7 @@ void PoisonBomb::EmitPoisonTrail() {
     sp50 = (f64) sp30;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    KDRand_Vector(sp58, *((MKVector3 *) &sp48));
+    sp58 = KDRand_Vector(*((MKVector3 *) &sp48), *((MKVector3 *) &sp38));
     temp_f0_107 = sp58 * 5.53552857e-315;
     sp8 = temp_f0_107;
     sp68 = temp_f0_107;

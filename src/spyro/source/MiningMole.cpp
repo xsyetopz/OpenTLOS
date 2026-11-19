@@ -69,6 +69,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_MoleLeaderCandleLP1;
@@ -92,14 +93,14 @@ void Exhumor::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *Exhumor::Update() {
     MKVector3 sp88;
     f64 sp80;
     f64 sp78;
     MKVector3 sp68;
     MKVector3 sp58;
-    M2C_UNK sp48;
+    MKVector3 sp48;
     f64 sp40;
     f64 sp38;
     f32 sp30;
@@ -116,9 +117,9 @@ void *Exhumor::Update() {
 
     Enemy::Update();
     MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkB10, &sp88);
-    MKVector(1.0f, 1.0f, 1.0f);
-    MKVector(-1.0f, -1.0f, -1.0f);
-    KDRand_Vector(sp68, sp58);
+    sp48 = MKVector(1.0f, 1.0f, 1.0f);
+    sp58 = MKVector(-1.0f, -1.0f, -1.0f);
+    sp68 = KDRand_Vector(sp58, sp48);
     temp_f0_131 = sp68 * 5.263544247e-315;
     sp18 = temp_f0_131;
     sp78 = temp_f0_131;
@@ -215,7 +216,7 @@ void *MiningMoleLeader::Update() {
     f64 sp98;
     MKVector3 sp88;
     MKVector3 sp78;
-    M2C_UNK sp68;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
     f32 sp50;
@@ -304,9 +305,9 @@ void *MiningMoleLeader::Update() {
     M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(this, f64 *, 0xE8);
     this->unk6B5 |= 0x40;
     MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkB10, &spB8);
-    MKVector(1.0f, 1.0f, 1.0f);
-    MKVector(-1.0f, -1.0f, -1.0f);
-    KDRand_Vector(sp88, sp78);
+    sp68 = MKVector(1.0f, 1.0f, 1.0f);
+    sp78 = MKVector(-1.0f, -1.0f, -1.0f);
+    sp88 = KDRand_Vector(sp78, sp68);
     temp_f0_519 = sp88 * 5.263544247e-315;
     sp18 = temp_f0_519;
     sp98 = temp_f0_519;

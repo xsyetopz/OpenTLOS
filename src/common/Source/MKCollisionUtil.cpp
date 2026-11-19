@@ -8,6 +8,7 @@
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
 #include "unplaced_enums.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 static M2C_UNK lit_736;                                /* unable to generate initializer: unknown type; const */
@@ -265,10 +266,9 @@ u8 MKCollision_SweepSphereToEdge(const MKCollisionRay &arg0, const MKVector3 &ar
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
                 if ((temp_f1_374 == 0.0f) && (temp_f1_374 <= 1.0f)) {
                     arg3->unk40 = sp150;
-                    InterpolateLinear(spA0, arg1, temp_f1_374);
-                    M2C_FIELD(arg3, f64 *, 0) = M2C_BITWISE(f64, spA0);
-                    M2C_FIELD(arg3, f64 *, 8) = (f64) spA0.unk8;
-                    InterpolateLinear(sp80, *((MKVector3 *) arg0.unk20), arg3->unk40);
+                    spA0 = InterpolateLinear(arg1, arg2, temp_f1_374);
+                    M2C_FIELD(arg3, MKVector3 *, 0) = spA0;
+                    sp80 = InterpolateLinear(*((MKVector3 *) arg0.unk20), *((MKVector3 *) arg0.unk30), arg3->unk40);
                     sp10 = sp80 - M2C_FIELD(arg3, f64 *, 0);
                     M2C_FIELD(arg3, f64 *, 0x10) = sp10;
                     sp18 = sp80.unk8 - arg3->unk8;
@@ -1238,7 +1238,7 @@ u8 SweepToPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const 
         spA8 = (f64) sp28;
         M2C_FIELD(arg5, f64 *, 0x18) = (f64) sp28;
         sp70.operator*(arg2);
-        InterpolateLinear(sp80, arg0, temp_f31_1828);
+        sp80 = InterpolateLinear(arg0, arg1, temp_f31_1828);
         sp10 = sp80 - M2C_BITWISE(f64, sp70);
         M2C_FIELD(arg5, f64 *, 0) = sp10;
         sp18 = sp80.unk8 - sp70.unk8;
@@ -1252,7 +1252,7 @@ u8 SweepToPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const 
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
+#if 0 // DRAFT: illegal type
 void MKCollisionEllipsoid::GetTotalAABB(MKCollisionEllipsoid *arg0, int arg1) {
     f64 sp40;
     f64 sp38;
@@ -1261,21 +1261,24 @@ void MKCollisionEllipsoid::GetTotalAABB(MKCollisionEllipsoid *arg0, int arg1) {
     MKVector3 sp18;
     MKVector3 sp8;
     s32 var_r28_1898;
+    s32 var_r31_1899;
+    void *temp_r29_1910;
 
     var_r28_1898 = 0;
+    var_r31_1899 = 0;
     sp28 = arg0->unk90;
     sp30 = M2C_FIELD(arg0, f64 *, 0x98);
     sp38 = arg0->unkA0;
     sp40 = M2C_FIELD(arg0, f64 *, 0xA8);
 loop_2:
     if (var_r28_1898 < arg1) {
-        Min(sp18, *((MKVector3 *) &sp28));
-        sp28 = M2C_BITWISE(f64, sp18);
-        sp30 = (f64) sp18.unk8;
-        Max(sp8, *((MKVector3 *) &sp38));
+        temp_r29_1910 = arg0 + var_r31_1899;
+        sp18 = Min(*((MKVector3 *) &sp28), *(temp_r29_1910 + 0x90));
+        *(MKVector3 *) &sp28 = sp18;
+        sp8 = Max(*((MKVector3 *) &sp38), *(temp_r29_1910 + 0xA0));
         var_r28_1898 += 1;
-        M2C_FIELD(&sp38, f64 *, 0) = M2C_BITWISE(f64, sp8);
-        M2C_FIELD(&sp38, f64 *, 8) = (f64) sp8.unk8;
+        var_r31_1899 += 0xB0;
+        M2C_FIELD(&sp38, MKVector3 *, 0) = sp8;
         goto loop_2;
     }
     M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &sp18.unkC + 4, 0x20);
@@ -1328,17 +1331,14 @@ void MKCollisionEllipsoid::CreateAABB(Matrix *arg0) {
     if (arg0 != NULL) {
         sp150.Multiply(&sp150, arg0);
     }
-    VectorAbs(sp100);
-    sp140 = M2C_BITWISE(f64, sp100);
-    sp148 = (f64) sp100.unk8;
-    VectorAbs(spF0);
-    sp130 = M2C_BITWISE(f64, spF0);
-    sp138 = (f64) spF0.unk8;
-    VectorAbs(spE0);
-    sp120 = M2C_BITWISE(f64, spE0);
-    sp128 = (f64) spE0.unk8;
-    Max(spA0, *((MKVector3 *) &sp130));
-    Max(spB0, *((MKVector3 *) &sp140));
+    sp100 = VectorAbs(*((MKVector3 *) &sp150));
+    *(MKVector3 *) &sp140 = sp100;
+    spF0 = VectorAbs(*((MKVector3 *) &sp150.unk10));
+    *(MKVector3 *) &sp130 = spF0;
+    spE0 = VectorAbs(*((MKVector3 *) &sp150.unk20));
+    *(MKVector3 *) &sp120 = spE0;
+    spA0 = Max(*((MKVector3 *) &sp130), *((MKVector3 *) &sp120));
+    spB0 = Max(*((MKVector3 *) &sp140), spA0);
     temp_f0_2013 = sp140 + sp130;
     sp50 = temp_f0_2013;
     spC0 = temp_f0_2013;
@@ -1456,9 +1456,9 @@ void MKSweptBox::SetAABB(Matrix &arg0, const MKVector3 &arg1, const MKVector3 &a
     sp1A0 = (f64) sp90;
     sp188 = M2C_FIELD(&arg0, f64 *, 0x30);
     sp190 = M2C_FIELD(&arg0, f64 *, 0x38);
-    VectorAbs(sp138);
-    VectorAbs(sp148);
-    VectorAbs(sp158);
+    sp138 = VectorAbs(*((MKVector3 *) &sp198));
+    sp148 = VectorAbs(*((MKVector3 *) &sp1A8));
+    sp158 = VectorAbs(*((MKVector3 *) &sp1B8));
     temp_f0_2164 = sp158 + M2C_BITWISE(f64, sp148);
     sp78 = temp_f0_2164;
     sp168 = temp_f0_2164;
@@ -1485,9 +1485,8 @@ void MKSweptBox::SetAABB(Matrix &arg0, const MKVector3 &arg1, const MKVector3 &a
     spF8 = temp_f0_2210;
     sp40 = (f32) sp190 - (f32) sp180;
     sp100 = (f64) sp40;
-    Min(sp128, *((MKVector3 *) &sp118));
-    this->unk930 = M2C_BITWISE(f64, sp128);
-    this->unk938 = (f64) sp128.unk8;
+    sp128 = Min(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8));
+    *(MKVector3 *) &this->unk930 = sp128;
     sp28 = sp178 * (f64) arg3;
     sp30 = temp_f30_2191;
     spC8 = sp28;
@@ -1501,9 +1500,8 @@ void MKSweptBox::SetAABB(Matrix &arg0, const MKVector3 &arg1, const MKVector3 &a
     sp10 = (f32) sp190 + (f32) sp180;
     spB8 = sp8;
     spC0 = (f64) sp10;
-    Max(spE8, *((MKVector3 *) &spD8));
-    this->unk940 = M2C_BITWISE(f64, spE8);
-    this->unk948 = (f64) spE8.unk8;
+    spE8 = Max(*((MKVector3 *) &spD8), *((MKVector3 *) &spB8));
+    *(MKVector3 *) &this->unk940 = spE8;
 }
 #endif
 
@@ -1620,9 +1618,9 @@ void MKCollisionBox::Init(const Matrix &arg0, const MKVector3 &arg1, unsigned in
     sp220 = (f64) spE0;
     sp208 = M2C_FIELD(this, f64 *, 0x30);
     sp210 = M2C_FIELD(this, f64 *, 0x38);
-    VectorAbs(sp1B8);
-    VectorAbs(sp1C8);
-    VectorAbs(sp1D8);
+    sp1B8 = VectorAbs(*((MKVector3 *) &sp218));
+    sp1C8 = VectorAbs(*((MKVector3 *) &sp228));
+    sp1D8 = VectorAbs(*((MKVector3 *) &sp238));
     temp_f0_2367 = sp1D8 + M2C_BITWISE(f64, sp1C8);
     spC8 = temp_f0_2367;
     sp1E8 = temp_f0_2367;
@@ -1718,8 +1716,10 @@ void MKCollisionBox::Init(const Matrix &arg0, const MKVector3 &arg1, unsigned in
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
-void VectorAbs(const MKVector3 &arg0) {
+#if 0 // DRAFT: illegal function overloading
+void VectorAbs(const MKVector3 &arg1) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -1727,27 +1727,28 @@ void VectorAbs(const MKVector3 &arg0) {
     f32 var_f2_2559;
     f32 var_f3_2566;
 
-    var_f2_2559 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 8);
+    var_f2_2559 = arg1.unk8;
     if (var_f2_2559 < 0.0f) {
         var_f2_2559 = -var_f2_2559;
     }
-    var_f3_2566 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 4);
+    var_f3_2566 = arg1.unk4;
     if (var_f3_2566 < 0.0f) {
         var_f3_2566 = -var_f3_2566;
     }
-    var_f1_2572 = *M2C_ERROR(/* Read from unset register $r4 */);
+    var_f1_2572 = arg1.unk0;
     if (var_f1_2572 < 0.0f) {
         var_f1_2572 = -var_f1_2572;
     }
     sp8 = var_f1_2572;
     spC = var_f3_2566;
     sp10 = var_f2_2559;
-    M2C_FIELD(&arg0, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: illegal operand Too many errors printed, aborting program
+#if 0 // DRAFT: illegal operand
 void MKCollisionRay::Init(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, unsigned int arg3) {
     f64 spA0;
     f64 sp98;
@@ -1790,14 +1791,14 @@ void MKCollisionRay::Init(const MKVector3 &arg0, const MKVector3 &arg1, float ar
     sp90 = (f64) sp30;
     sp98 = (f64) sp38;
     spA0 = (f64) sp40;
-    Min(sp68, *((MKVector3 *) &this->unk20));
+    sp68 = Min(*((MKVector3 *) &this->unk20), *((MKVector3 *) &this->unk30));
     sp18 = sp68 - sp98;
     this->unk0 = sp18;
     sp20 = sp68.unk8 - (f32) spA0;
     sp78 = sp18;
     sp80 = (f64) sp20;
     this->unk8 = (f64) sp20;
-    Max(sp48, *((MKVector3 *) &this->unk20));
+    sp48 = Max(*((MKVector3 *) &this->unk20), *((MKVector3 *) &this->unk30));
     sp8 = sp48 + sp98;
     this->unk10 = sp8;
     sp10 = sp48.unk8 + (f32) spA0;
@@ -1808,7 +1809,6 @@ void MKCollisionRay::Init(const MKVector3 &arg0, const MKVector3 &arg1, float ar
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKCollision_CalcAABB(Matrix *arg0, const MKCollisionAABB &arg1, MKCollisionAABB *arg2) {
     f64 spC0;                                       /* compiler-managed */
     f64 spB8;
@@ -1833,6 +1833,7 @@ void MKCollision_CalcAABB(Matrix *arg0, const MKCollisionAABB &arg1, MKCollision
     f32 sp10;
     f32 spC;
     f32 sp8;
+    MKVector3 *temp_r30_2779;
     f32 temp_f0_2696;
     f32 temp_f3_2697;
     f32 temp_f6_2730;
@@ -1842,6 +1843,7 @@ void MKCollision_CalcAABB(Matrix *arg0, const MKCollisionAABB &arg1, MKCollision
     f64 temp_f5_2688;
     s32 var_ctr_2724;
     s32 var_r29_2767;
+    s32 var_r31_2769;
     s32 var_r5_2695;
     void *temp_r4_2728;
 
@@ -1890,21 +1892,21 @@ void MKCollision_CalcAABB(Matrix *arg0, const MKCollisionAABB &arg1, MKCollision
         var_ctr_2724 -= 1;
     } while (var_ctr_2724 != 0);
     var_r29_2767 = 1;
+    var_r31_2769 = 0x10;
     M2C_FIELD(arg2, f64 *, 0) = sp48;
     M2C_FIELD(arg2, f64 *, 8) = sp50;
     M2C_FIELD(arg2, f64 *, 0x10) = sp48;
     M2C_FIELD(arg2, f64 *, 0x18) = sp50;
     do {
-        Min(sp28, *((MKVector3 *) arg2));
-        M2C_FIELD(arg2, f64 *, 0) = M2C_BITWISE(f64, sp28);
-        M2C_FIELD(arg2, f64 *, 8) = (f64) sp28.unk8;
-        Max(sp18, *((MKVector3 *) &arg2->unk10));
+        temp_r30_2779 = (MKVector3 *) (&sp48 + var_r31_2769);
+        sp28 = Min(*((MKVector3 *) arg2), *temp_r30_2779);
+        M2C_FIELD(arg2, MKVector3 *, 0) = sp28;
+        sp18 = Max(*((MKVector3 *) &arg2->unk10), *temp_r30_2779);
         var_r29_2767 += 1;
-        M2C_FIELD(arg2, f64 *, 0x10) = M2C_BITWISE(f64, sp18);
-        M2C_FIELD(arg2, f64 *, 0x18) = (f64) sp18.unk8;
+        var_r31_2769 += 0x10;
+        M2C_FIELD(arg2, MKVector3 *, 0x10) = sp18;
     } while (var_r29_2767 < 8);
 }
-#endif
 
 s32 MKCollision_ResolveMaterialNameToID(const char *arg0) {
     MKResource *temp_r3_2821;

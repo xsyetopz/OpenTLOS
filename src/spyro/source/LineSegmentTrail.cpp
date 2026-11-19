@@ -343,8 +343,7 @@ void LineSegmentTrail::UpdateTrail(LSTrail *arg0) {
                 sp58 = (f64) sp8;
                 sp60 = (f64) sp10;
                 Clamp<MKVector4>(spA8, *((MKVector4 *) &sp98), *((MKVector4 *) &sp88));
-                arg0->unk8 = M2C_BITWISE(f64, spA8);
-                arg0->unk10 = (f64) spA8.unk8;
+                *(MKVector4 *) &arg0->unk8 = spA8;
                 if (M2C_FIELD(arg0, f32 *, 0x14) <= 0.01f) {
                     FreeActiveTrail(arg0);
                 }

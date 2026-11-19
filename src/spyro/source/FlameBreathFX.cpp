@@ -68,6 +68,7 @@
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 ceil(f32);                                      /* extern */
@@ -152,14 +153,14 @@ u8 FlameBreathFX::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, co
     f64 sp2A0;                                      /* compiler-managed */
     f64 sp298;
     f64 sp290;
-    M2C_UNK sp280;
+    MKVector3 sp280;
     f64 sp278;
     f64 sp270;
     f64 sp268;
     f64 sp260;
     f64 sp258;
     f64 sp250;
-    f64 sp240;
+    MKVector3 sp240;
     f64 sp238;
     f64 sp230;
     MKVector3 sp220;
@@ -191,7 +192,7 @@ u8 FlameBreathFX::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, co
     f64 sp148;
     f64 sp140;
     MKVector3 sp130;
-    f64 sp120;
+    MKVector3 sp120;
     f32 sp118;
     f64 sp110;
     f32 sp108;
@@ -288,11 +289,11 @@ u8 FlameBreathFX::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, co
         M2C_FIELD(temp_r3_141->__vptr, M2C_UNK (**)(), 0x30)();
         if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
             sp2B4 = 0;
-            MKVector(1.0f, 1.0f, 1.0f);
+            sp240 = MKVector(1.0f, 1.0f, 1.0f);
             sp30 = sp240 * 5.49408334e-315;
             sp2B0 = 0x417;
             sp2B8 = sp30;
-            sp38 = sp248 * 50.0f;
+            sp38 = sp240.unk8 * 50.0f;
             sp2C8 = 1;
             sp2C0 = (f64) sp38;
             sp250 = sp30;
@@ -427,10 +428,9 @@ loop_57:
                 goto loop_57;
             }
         }
-        if ((var_r23_261 != NULL) && (M2C_FIELD(*var_r23_261, u8 (**)(TargetManager **, MKVector3 *, M2C_UNK *), 0x2C)(var_r23_261, &arg0, &sp280) != 0)) {
-            Tools_CalculateVelocity(sp220, arg0, var_f27_186, -1960.0f);
-            sp290 = M2C_BITWISE(f64, sp220);
-            sp298 = (f64) sp220.unk8;
+        if ((var_r23_261 != NULL) && (M2C_FIELD(*var_r23_261, u8 (**)(TargetManager **, MKVector3 *, MKVector3 *), 0x2C)(var_r23_261, &arg0, &sp280) != 0)) {
+            sp220 = Tools_CalculateVelocity(arg0, sp280, var_f27_186, -1960.0f);
+            *(MKVector3 *) &sp290 = sp220;
         } else {
             temp_f2_488 = this->unkA0;
             temp_f0_491 = (f64) M2C_FIELD(&arg1, f32 *, 0) * (f64) temp_f2_488;
@@ -486,9 +486,8 @@ loop_57:
                 sp270 = (f64) sp2D0;
                 sp278 = (f64) sp2D8;
             }
-            Tools_CalculateVelocity(sp1C0, arg0, var_f27_186, -1960.0f);
-            sp290 = M2C_BITWISE(f64, sp1C0);
-            sp298 = (f64) sp1C0.unk8;
+            sp1C0 = Tools_CalculateVelocity(arg0, *((MKVector3 *) &sp270), var_f27_186, -1960.0f);
+            *(MKVector3 *) &sp290 = sp1C0;
         }
         sp98 = 0.0f;
         sp90 = 0.0f;
@@ -569,17 +568,17 @@ loop_57:
         temp_r4_788 = this->unkA8;
         if (temp_r4_788 != NULL) {
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_788, 1U);
-            MKVector(0.0f, 300.0f, 0.0f);
+            sp120 = MKVector(0.0f, 300.0f, 0.0f);
             sp130.operator*(500.0f);
             temp_f0_807 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp130);
             sp10 = temp_f0_807;
             sp140 = temp_f0_807;
             sp18 = arg0.unk8 + sp130.unk8;
             sp148 = (f64) sp18;
-            sp20 = sp140 + sp120;
+            sp20 = sp140 + M2C_BITWISE(f64, sp120);
             temp_r3_825 = this->unkA8;
             sp150 = sp20;
-            sp28 = (f32) sp148 + sp128;
+            sp28 = (f32) sp148 + sp120.unk8;
             temp_r3_825->unk10 = sp20;
             temp_r3_825->unk18 = (f64) sp28;
             temp_r3_831 = temp_r3_825->unk3C;
@@ -696,7 +695,7 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
     f64 sp748;
     f64 sp740;
     f64 sp738;
-    f64 sp728;
+    MKVector3 sp728;
     f64 sp720;
     f64 sp718;
     f64 sp710;
@@ -767,7 +766,7 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
     f64 sp500;
     f64 sp4F8;
     MKVector3 sp4E8;
-    f64 sp4D8;
+    MKVector3 sp4D8;
     f64 sp4D0;
     f64 sp4C8;
     f64 sp4C0;
@@ -1267,11 +1266,11 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
             this->unk148.unk104 = 0.5f;
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp8AC = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp728 = MKVector(1.0f, 1.0f, 1.0f);
                 sp98 = sp728 * 5.49408334e-315;
                 sp8A8 = 0x417;
                 sp8B0 = sp98;
-                spA0 = sp730 * 50.0f;
+                spA0 = sp728.unk8 * 50.0f;
                 sp8C0 = 1;
                 sp8B8 = (f64) spA0;
                 sp738 = sp98;
@@ -1515,7 +1514,7 @@ block_64:
                 sp5C0 = (f64) sp220;
                 sp5A8 = (f64) sp208;
                 sp5B0 = (f64) sp210;
-                KDRand_Vector(sp5C8, *((MKVector3 *) &sp5B8));
+                sp5C8 = KDRand_Vector(*((MKVector3 *) &sp5B8), *((MKVector3 *) &sp5A8));
                 temp_f0_1972 = sp5C8 + M2C_FIELD(&arg2, f64 *, 0);
                 sp1F8 = temp_f0_1972;
                 sp5D8 = temp_f0_1972;
@@ -1603,17 +1602,17 @@ block_64:
         temp_r4_2178 = this->unkA8;
         if (temp_r4_2178 != NULL) {
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2178, 1U);
-            MKVector(0.0f, 300.0f, 0.0f);
+            sp4D8 = MKVector(0.0f, 300.0f, 0.0f);
             sp4E8.operator*(0.5f * sp2C);
             temp_f0_2199 = M2C_FIELD(&arg1, f64 *, 0) + M2C_BITWISE(f64, sp4E8);
             sp38 = temp_f0_2199;
             sp4F8 = temp_f0_2199;
             sp40 = arg1.unk8 + sp4E8.unk8;
             sp500 = (f64) sp40;
-            sp68 = sp4F8 + sp4D8;
+            sp68 = sp4F8 + M2C_BITWISE(f64, sp4D8);
             temp_r3_2217 = this->unkA8;
             sp508 = sp68;
-            sp70 = (f32) sp500 + sp4E0;
+            sp70 = (f32) sp500 + sp4D8.unk8;
             temp_r3_2217->unk10 = sp68;
             temp_r3_2217->unk18 = (f64) sp70;
             temp_r3_2223 = temp_r3_2217->unk3C;
@@ -1765,7 +1764,7 @@ loop_144:
             sp420 = (f64) spE0;
             sp408 = (f64) spC8;
             sp410 = (f64) spD0;
-            KDRand_Vector(sp428, *((MKVector3 *) &sp418));
+            sp428 = KDRand_Vector(*((MKVector3 *) &sp418), *((MKVector3 *) &sp408));
             temp_f0_2535 = sp428 + M2C_FIELD(&arg2, f64 *, 0);
             spB8 = temp_f0_2535;
             sp438 = temp_f0_2535;
@@ -1858,7 +1857,6 @@ void FlameBreathFX::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to 'double'
 void *FlameBreathFX::Update() {
     f64 sp300;
     f64 sp2F8;
@@ -2170,8 +2168,7 @@ void *FlameBreathFX::Update() {
             sp2E8 = sp68;
             sp2F0 = temp_f0_3107;
             KDMath_Smooth<MKVector4>(sp298, this->unkC8, 0.5f, 1.0f);
-            M2C_FIELD(this, f64 *, 0xC8) = M2C_BITWISE(f64, sp298);
-            M2C_FIELD(this, f64 *, 0xD0) = (f64) sp298.unk8;
+            M2C_FIELD(this, MKVector4 *, 0xC8) = sp298;
             temp_r3_3123 = this->unkA8;
             temp_r3_3123->unk20 = M2C_FIELD(this, f64 *, 0xC8);
             temp_r3_3123->unk28 = M2C_FIELD(this, f64 *, 0xD0);
@@ -2259,8 +2256,7 @@ void *FlameBreathFX::Update() {
             sp2D8 = sp8;
             sp2E0 = temp_f0_3289;
             KDMath_Smooth<MKVector4>(sp268, this->unkC8, 0.5f, 1.0f);
-            M2C_FIELD(this, f64 *, 0xC8) = M2C_BITWISE(f64, sp268);
-            M2C_FIELD(this, f64 *, 0xD0) = (f64) sp268.unk8;
+            M2C_FIELD(this, MKVector4 *, 0xC8) = sp268;
             temp_r3_3305 = this->unkA8;
             temp_r3_3305->unk20 = M2C_FIELD(this, f64 *, 0xC8);
             temp_r3_3305->unk28 = M2C_FIELD(this, f64 *, 0xD0);
@@ -2309,7 +2305,6 @@ void *FlameBreathFX::Update() {
     }
     this->unk138 = 2.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[11]' to 'signed char *'
 f32 FlameBreathFX::Resolve() {

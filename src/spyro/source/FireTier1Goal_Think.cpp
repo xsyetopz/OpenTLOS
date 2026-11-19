@@ -61,6 +61,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -688,7 +689,7 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
                 M2C_FIELD(temp_r4_1197, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f32 *, 8);
                 temp_r4_1197->unk6B5 |= 0x40;
                 ((AITargetData *) &sp118)->GetDir();
-                __ml(((MKVector3 *) &this->unkC->unk80)->Magnitude(), sp128);
+                sp128 = __ml(((MKVector3 *) &this->unkC->unk80)->Magnitude(), *((MKVector3 *) &sp118));
                 sp18 = sp128 * 5.28426686e-315;
                 temp_r3_1220 = this->unkC;
                 sp138 = sp18;
@@ -702,7 +703,7 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
                 temp_f1_1245 = _table_sinf(2.3561945f);
                 if ((temp_f27_1244 > temp_f1_1245) || (temp_f27_1244 < -temp_f1_1245)) {
                     spE8.GetDir();
-                    __ml(((MKVector3 *) &this->unkC->unk80)->Magnitude(), *((MKVector3 *) &spE8.unk10));
+                    *((MKVector3 *) &spE8.unk10) = __ml(((MKVector3 *) &this->unkC->unk80)->Magnitude(), *((MKVector3 *) &spE8));
                     temp_r4_1262 = this->unkC;
                     M2C_FIELD(temp_r4_1262, f64 *, 0x598) = spE8.unk10;
                     M2C_FIELD(temp_r4_1262, f64 *, 0x5A0) = spE8.unk18;
@@ -918,9 +919,8 @@ u8 EnemyGoal_FlyToTarget::Update() {
                             sp30 = (MKVector3::up.unk0 * spEC) - (MKVector3::up.unk4 * spE8);
                             spF8 = (f64) sp28;
                             sp100 = (f64) sp30;
-                            Normalise(sp108);
-                            sp138.unk20 = M2C_BITWISE(f64, sp108);
-                            sp138.unk28 = (f64) sp108.unk8;
+                            sp108 = Normalise(*((MKVector3 *) &spF8));
+                            *(MKVector3 *) &sp138.unk20 = sp108;
                             temp_f0_1670 = sp138.unk20 * (f64) temp_f29_1639;
                             sp68 = temp_f0_1670;
                             spB8 = temp_f0_1670;

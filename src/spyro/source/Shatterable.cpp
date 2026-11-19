@@ -66,6 +66,7 @@
 #include "spyro/source/DataMap.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/PropFlags.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 ceil(s32, f32);                                 /* extern */
@@ -99,20 +100,20 @@ static M2C_UNK unshatteredNames;
 
 static s32 lit_1509 = 0;
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 Shatterable::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     void *temp_r4_23;
 
-    MKVector(0.0f, 150.0f, 0.0f);
+    sp18 = MKVector(0.0f, 150.0f, 0.0f);
     temp_r4_23 = ((u8 *) this->unk8) + 0x30;
-    sp8 = M2C_FIELD(temp_r4_23, f64 *, 0) + sp18;
+    sp8 = M2C_FIELD(temp_r4_23, f64 *, 0) + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD(temp_r4_23, f32 *, 8) + sp20;
+    sp10 = M2C_FIELD(temp_r4_23, f32 *, 8) + sp18.unk8;
     sp28 = sp8;
     sp30 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -537,7 +538,7 @@ loop_31:
             sp838 = (f64) sp3C8;
             sp840 = (f64) sp3D0;
             sp848 = (f64) sp3D8;
-            KDRand_Vector(sp850, *((MKVector3 *) &sp840));
+            sp850 = KDRand_Vector(*((MKVector3 *) &sp840), *((MKVector3 *) &sp830));
             temp_f0_180 = sp850 + M2C_FIELD(&arg1, f64 *, 0);
             sp3B0 = temp_f0_180;
             sp8B0 = temp_f0_180;
@@ -600,7 +601,7 @@ loop_31:
             sp7F8 = (f64) sp398;
             sp7E0 = (f64) sp380;
             sp7E8 = (f64) sp388;
-            KDRand_Vector(sp800, *((MKVector3 *) &sp7F0));
+            sp800 = KDRand_Vector(*((MKVector3 *) &sp7F0), *((MKVector3 *) &sp7E0));
             sp370 = sp800 * 5.370091495e-315;
             sp368 = -1.0f;
             sp358 = 1.0f;
@@ -615,7 +616,7 @@ loop_31:
             sp7B8 = (f64) sp368;
             sp7A0 = (f64) sp350;
             sp7A8 = (f64) sp358;
-            KDRand_Vector(sp7C0, *((MKVector3 *) &sp7B0));
+            sp7C0 = KDRand_Vector(*((MKVector3 *) &sp7B0), *((MKVector3 *) &sp7A0));
             temp_f0_336 = sp7C0 * 5.370091495e-315;
             sp340 = temp_f0_336;
             sp7D0 = temp_f0_336;
@@ -641,7 +642,7 @@ loop_55:
             sp778 = (f64) sp328;
             sp780 = (f64) sp330;
             sp788 = (f64) sp338;
-            KDRand_Vector(sp790, *((MKVector3 *) &sp780));
+            sp790 = KDRand_Vector(*((MKVector3 *) &sp780), *((MKVector3 *) &sp770));
             temp_f0_398 = sp790 + M2C_FIELD(&arg1, f64 *, 0);
             sp310 = temp_f0_398;
             sp8A0 = temp_f0_398;
@@ -704,7 +705,7 @@ loop_55:
             sp738 = (f64) sp2F8;
             sp720 = (f64) sp2E0;
             sp728 = (f64) sp2E8;
-            KDRand_Vector(sp740, *((MKVector3 *) &sp730));
+            sp740 = KDRand_Vector(*((MKVector3 *) &sp730), *((MKVector3 *) &sp720));
             sp2D0 = sp740 * 5.370091495e-315;
             sp2C8 = -1.0f;
             sp2B8 = 1.0f;
@@ -719,7 +720,7 @@ loop_55:
             sp6F8 = (f64) sp2C8;
             sp6E0 = (f64) sp2B0;
             sp6E8 = (f64) sp2B8;
-            KDRand_Vector(sp700, *((MKVector3 *) &sp6F0));
+            sp700 = KDRand_Vector(*((MKVector3 *) &sp6F0), *((MKVector3 *) &sp6E0));
             temp_f0_554 = sp700 * 5.370091495e-315;
             sp2A0 = temp_f0_554;
             sp710 = temp_f0_554;
@@ -745,7 +746,7 @@ loop_79:
             sp6B8 = (f64) sp288;
             sp6C0 = (f64) sp290;
             sp6C8 = (f64) sp298;
-            KDRand_Vector(sp6D0, *((MKVector3 *) &sp6C0));
+            sp6D0 = KDRand_Vector(*((MKVector3 *) &sp6C0), *((MKVector3 *) &sp6B0));
             temp_f0_616 = sp6D0 + M2C_FIELD(&arg1, f64 *, 0);
             sp270 = temp_f0_616;
             sp890 = temp_f0_616;
@@ -808,7 +809,7 @@ loop_79:
             sp678 = (f64) sp258;
             sp660 = (f64) sp240;
             sp668 = (f64) sp248;
-            KDRand_Vector(sp680, *((MKVector3 *) &sp670));
+            sp680 = KDRand_Vector(*((MKVector3 *) &sp670), *((MKVector3 *) &sp660));
             sp230 = sp680 * 5.370091495e-315;
             sp228 = -1.0f;
             sp218 = 1.0f;
@@ -823,7 +824,7 @@ loop_79:
             sp638 = (f64) sp228;
             sp620 = (f64) sp210;
             sp628 = (f64) sp218;
-            KDRand_Vector(sp640, *((MKVector3 *) &sp630));
+            sp640 = KDRand_Vector(*((MKVector3 *) &sp630), *((MKVector3 *) &sp620));
             temp_f0_772 = sp640 * 5.370091495e-315;
             sp200 = temp_f0_772;
             sp650 = temp_f0_772;
@@ -849,7 +850,7 @@ loop_103:
             sp5F8 = (f64) sp1E8;
             sp600 = (f64) sp1F0;
             sp608 = (f64) sp1F8;
-            KDRand_Vector(sp610, *((MKVector3 *) &sp600));
+            sp610 = KDRand_Vector(*((MKVector3 *) &sp600), *((MKVector3 *) &sp5F0));
             temp_f0_834 = sp610 + M2C_FIELD(&arg1, f64 *, 0);
             sp1D0 = temp_f0_834;
             sp880 = temp_f0_834;
@@ -912,7 +913,7 @@ loop_103:
             sp5B8 = (f64) sp1B8;
             sp5A0 = (f64) sp1A0;
             sp5A8 = (f64) sp1A8;
-            KDRand_Vector(sp5C0, *((MKVector3 *) &sp5B0));
+            sp5C0 = KDRand_Vector(*((MKVector3 *) &sp5B0), *((MKVector3 *) &sp5A0));
             sp190 = sp5C0 * 5.370091495e-315;
             sp188 = -1.0f;
             sp178 = 1.0f;
@@ -927,7 +928,7 @@ loop_103:
             sp578 = (f64) sp188;
             sp560 = (f64) sp170;
             sp568 = (f64) sp178;
-            KDRand_Vector(sp580, *((MKVector3 *) &sp570));
+            sp580 = KDRand_Vector(*((MKVector3 *) &sp570), *((MKVector3 *) &sp560));
             temp_f0_990 = sp580 * 5.370091495e-315;
             sp160 = temp_f0_990;
             sp590 = temp_f0_990;
@@ -953,7 +954,7 @@ loop_127:
             sp538 = (f64) sp148;
             sp540 = (f64) sp150;
             sp548 = (f64) sp158;
-            KDRand_Vector(sp550, *((MKVector3 *) &sp540));
+            sp550 = KDRand_Vector(*((MKVector3 *) &sp540), *((MKVector3 *) &sp530));
             temp_f0_1052 = sp550 + M2C_FIELD(&arg1, f64 *, 0);
             sp130 = temp_f0_1052;
             sp870 = temp_f0_1052;
@@ -1016,7 +1017,7 @@ loop_127:
             sp4F8 = (f64) sp118;
             sp4E0 = (f64) sp100;
             sp4E8 = (f64) sp108;
-            KDRand_Vector(sp500, *((MKVector3 *) &sp4F0));
+            sp500 = KDRand_Vector(*((MKVector3 *) &sp4F0), *((MKVector3 *) &sp4E0));
             spF0 = sp500 * 5.370091495e-315;
             spE8 = -1.0f;
             spD8 = 1.0f;
@@ -1031,7 +1032,7 @@ loop_127:
             sp4B8 = (f64) spE8;
             sp4A0 = (f64) spD0;
             sp4A8 = (f64) spD8;
-            KDRand_Vector(sp4C0, *((MKVector3 *) &sp4B0));
+            sp4C0 = KDRand_Vector(*((MKVector3 *) &sp4B0), *((MKVector3 *) &sp4A0));
             temp_f0_1208 = sp4C0 * 5.370091495e-315;
             spC0 = temp_f0_1208;
             sp4D0 = temp_f0_1208;
@@ -1057,7 +1058,7 @@ loop_151:
             sp478 = (f64) spA8;
             sp480 = (f64) spB0;
             sp488 = (f64) spB8;
-            KDRand_Vector(sp490, *((MKVector3 *) &sp480));
+            sp490 = KDRand_Vector(*((MKVector3 *) &sp480), *((MKVector3 *) &sp470));
             temp_f0_1270 = sp490 + M2C_FIELD(&arg1, f64 *, 0);
             sp90 = temp_f0_1270;
             sp860 = temp_f0_1270;
@@ -1120,7 +1121,7 @@ loop_151:
             sp438 = (f64) sp78;
             sp420 = (f64) sp60;
             sp428 = (f64) sp68;
-            KDRand_Vector(sp440, *((MKVector3 *) &sp430));
+            sp440 = KDRand_Vector(*((MKVector3 *) &sp430), *((MKVector3 *) &sp420));
             sp50 = sp440 * 5.370091495e-315;
             sp48 = -1.0f;
             sp38 = 1.0f;
@@ -1135,7 +1136,7 @@ loop_151:
             sp3F8 = (f64) sp48;
             sp3E0 = (f64) sp30;
             sp3E8 = (f64) sp38;
-            KDRand_Vector(sp400, *((MKVector3 *) &sp3F0));
+            sp400 = KDRand_Vector(*((MKVector3 *) &sp3F0), *((MKVector3 *) &sp3E0));
             temp_f0_1426 = sp400 * 5.370091495e-315;
             sp20 = temp_f0_1426;
             sp410 = temp_f0_1426;
@@ -1276,7 +1277,7 @@ void Shatterable::SetSmashPropState(SmashPropState arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *' Too many errors printed, aborting program
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void Shatterable::DestroyShatterable() {
     s32 spC;
     s32 sp8;
@@ -1297,7 +1298,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier '__vptr' Too many errors printed, aborting program
 void Shatterable::PlatformDetach() {
     s32 sp18;
     s8 sp14;
@@ -1381,7 +1382,7 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
     f64 sp48;
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -1522,11 +1523,11 @@ loop_32:
             if (temp_f4_2379 != 0.0f) {
                 sp5C = 0;
                 temp_f31_2389 = 100.0f * temp_f4_2379;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp28 = MKVector(1.0f, 1.0f, 1.0f);
                 sp8 = sp28 * (f64) temp_f31_2389;
                 sp58 = 0x417;
                 sp60 = sp8;
-                sp10 = sp30 * temp_f31_2389;
+                sp10 = sp28.unk8 * temp_f31_2389;
                 sp70 = 1;
                 sp68 = (f64) sp10;
                 sp38 = sp8;

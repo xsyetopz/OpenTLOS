@@ -42,6 +42,7 @@
 #include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_DragonStatueEnd;
@@ -223,7 +224,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void DragonStatue::EmitCrudAbovePlayer() {
     f64 sp88;                                       /* compiler-managed */
     f64 sp80;
@@ -231,7 +232,7 @@ void DragonStatue::EmitCrudAbovePlayer() {
     f64 sp70;
     f64 sp68;
     f64 sp60;
-    f64 sp50;
+    MKVector3 sp50;
     f64 sp48;
     f64 sp40;
     f32 sp38;
@@ -260,11 +261,11 @@ loop_2:
         (*(f32 *) ((u8 *) &sp80 + 0x4)) += 200.0f;
         temp_f27_457 = MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f);
         temp_f28_462 = MKRand_Float((int *) &gViewSeed, 4.0f, 6.0f);
-        MKVector(MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f), temp_f28_462, temp_f27_457);
+        sp50 = MKVector(MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f), temp_f28_462, temp_f27_457);
         temp_f0_473 = sp50 * 5.53552857e-315;
         sp10 = temp_f0_473;
         sp60 = temp_f0_473;
-        sp18 = sp58 * 100.0f;
+        sp18 = sp50.unk8 * 100.0f;
         sp68 = (f64) sp18;
         sp80 += temp_f0_473;
         sp88 = (f32) sp88 + (f32) sp68;
@@ -313,7 +314,7 @@ u8 DragonStatue::IsDown() {
     return (u8) (this->unk100 == 1);
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void DragonStatue::Message(MKMessage *arg0) {
     s8 spE5;
     s8 spE4;
@@ -326,7 +327,7 @@ void DragonStatue::Message(MKMessage *arg0) {
     s32 spB8;
     f64 spB0;
     f64 spA8;
-    f64 sp98;
+    MKVector3 sp98;
     f64 sp90;
     f64 sp88;
     f64 sp80;
@@ -361,9 +362,9 @@ void DragonStatue::Message(MKMessage *arg0) {
         spBC = 0;
         sp88 = this->unkD8;
         sp90 = M2C_FIELD(this, f64 *, 0xE0);
-        MKVector(0.7f, 0.7f, 0.7f);
+        sp98 = MKVector(0.7f, 0.7f, 0.7f);
         sp28 = sp98 * 5.398241246e-315;
-        sp30 = spA0 * 10.0f;
+        sp30 = sp98.unk8 * 10.0f;
         spB8 = 0x419;
         spD0 = sp28;
         spD8 = (f64) sp30;

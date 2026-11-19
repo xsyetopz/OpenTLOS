@@ -60,6 +60,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -78,7 +79,7 @@ u8 EarthBossGoal_MoveToTarget::Update() {
     f64 sp48;
     f64 sp40;
     MKVector3 sp30;
-    M2C_UNK sp20;
+    MKVector3 sp20;
     f32 sp18;
     f64 sp10;
     f32 sp8;
@@ -177,7 +178,7 @@ u8 EarthBossGoal_MoveToTarget::Update() {
     if ((((MKAnimScript *) this->unkC->unk630)->CheckEvent(9) != 0) || (((MKAnimScript *) this->unkC->unk630)->CheckEvent(0xA) != 0)) {
         temp_f31_199 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unkC->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
         (*(s32 *) ((u8 *) &sp50 + 0x14)) = 0;
-        MKVector(0.05f, 0.8f, 0.05f);
+        sp20 = MKVector(0.05f, 0.8f, 0.05f);
         sp30.operator*(500.0f);
         sp10 = sp30 * (f64) temp_f31_199;
         sp50.unk10 = 0x417;
@@ -539,7 +540,7 @@ u8 EarthBossGoal_MeleeAttack3::Update() {
     f64 sp40;
     f64 sp38;
     MKVector3 sp28;
-    M2C_UNK sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     Enemy *temp_r3_1005;
@@ -552,7 +553,7 @@ u8 EarthBossGoal_MeleeAttack3::Update() {
     if (((MKAnimScript *) this->unkC->unk630)->CheckEvent(1) != 0) {
         temp_f31_967 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unkC->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
         sp4C = 0;
-        MKVector(0.05f, 0.8f, 0.05f);
+        sp18 = MKVector(0.05f, 0.8f, 0.05f);
         sp28.operator*(500.0f);
         sp8 = sp28 * (f64) temp_f31_967;
         sp48 = 0x417;
@@ -678,7 +679,7 @@ u8 EarthBossGoal_MeleeAttack2::Update() {
     f64 sp40;
     f64 sp38;
     MKVector3 sp28;
-    M2C_UNK sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     AnimSequence *temp_r4_1242;
@@ -743,7 +744,7 @@ u8 EarthBossGoal_MeleeAttack2::Update() {
     if (((MKAnimScript *) this->unkC->unk630)->CheckEvent(1) != 0) {
         temp_f31_1352 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unkC->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
         sp4C = 0;
-        MKVector(0.05f, 0.8f, 0.05f);
+        sp18 = MKVector(0.05f, 0.8f, 0.05f);
         sp28.operator*(500.0f);
         sp8 = sp28 * (f64) temp_f31_1352;
         sp48 = 0x417;

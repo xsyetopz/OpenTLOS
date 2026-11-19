@@ -115,7 +115,7 @@ void MagmaSquirt::Draw() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void *MagmaSquirt::Update() {
     f64 sp140;
     f64 sp138;
@@ -163,6 +163,7 @@ void *MagmaSquirt::Update() {
     s32 sp8;
     MKVector3 *temp_r3_423;
     MKVector3 *temp_r4_213;
+    MKVector3 *temp_r5_216;
     ManagedLight *temp_r3_440;
     ManagedLight *temp_r4_420;
     f32 temp_f1_439;
@@ -182,113 +183,115 @@ void *MagmaSquirt::Update() {
     Projectile::Update();
     if ((u8) this->unk15C != 0) {
         temp_r4_213 = this->unk154;
-        if ((temp_r4_213 != NULL) && ((MKVector3 *) this->unk158 != NULL)) {
-            Tools_CalculateVelocity(sp128, *temp_r4_213, 2000.0f, -1500.0f);
-            sp88 = 0.5f;
-            sp8C = 0.5f;
-            sp90 = 1.5f;
-            sp138 = M2C_BITWISE(f64, sp128);
-            sp140 = (f64) sp128.unk8;
-            sp118 = (f64) sp88;
-            sp120 = (f64) sp90;
-            sp8 = this->unk164;
-            spC = this->unk168;
-            this->unk150->Emit(lit_664, *this->unk154, *((MKVector3 *) &sp138), *((MKVector3 *) &sp118), 3.0f, this->unk158->unk4, 1U, &this->unk170, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
-            sp78 = -1.0f;
-            sp7C = -1.0f;
-            sp80 = -1.0f;
-            spB8 = (f64) sp78;
-            spC0 = (f64) sp80;
-            sp68 = spB8 * 5.139208556e-315;
-            sp60 = 1.0f;
-            sp58 = 1.0f;
-            sp5C = 1.0f;
-            sp70 = (f32) spC0 * 0.125f;
-            sp98 = (f64) sp58;
-            spC8 = sp68;
-            spD0 = (f64) sp70;
-            spA0 = (f64) sp60;
-            temp_f0_279 = sp98 * 5.139208556e-315;
-            sp48 = temp_f0_279;
-            spA8 = temp_f0_279;
-            sp50 = (f32) spA0 * 0.125f;
-            spB0 = (f64) sp50;
-            KDRand_Vector(spD8, *((MKVector3 *) &spC8));
-            var_f4_300 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + ((*(f32 *) ((u8 *) &sp138 + 0x4)) * (*(f32 *) ((u8 *) &sp138 + 0x4))));
-            if (var_f4_300 > 1e-12f) {
-                if (var_f4_300 > 0.0f) {
-                    temp_f1_306 = __frsqrte(var_f4_300);
-                    temp_f1_312 = 0.5 * temp_f1_306 * -(((f64) var_f4_300 * (temp_f1_306 * temp_f1_306)) - 3.0);
-                    temp_f1_316 = 0.5 * temp_f1_312 * -(((f64) var_f4_300 * (temp_f1_312 * temp_f1_312)) - 3.0);
-                    var_f4_300 = (f32) ((f64) var_f4_300 * (0.5 * temp_f1_316 * -(((f64) var_f4_300 * (temp_f1_316 * temp_f1_316)) - 3.0)));
-                } else if (var_f4_300 < M2C_BITWISE(f32, 0.0)) {
-                    var_f4_300 = __float_nan;
-                } else {
-                    sp10 = var_f4_300;
-                    temp_r3_335 = M2C_BITWISE(s32, sp10) & 0x7F800000;
-                    switch (temp_r3_335) {          /* irregular */
-                    case 0x7F800000:
-                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
-                            var_r0_345 = 1;
-                        } else {
-                            var_r0_345 = 2;
-                        }
-                        break;
-                    case 0x0:
-                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
-                            var_r0_345 = 5;
-                        } else {
-                            var_r0_345 = 3;
-                        }
-                        break;
-                    default:
-                        var_r0_345 = 4;
-                        break;
-                    }
-                    if (var_r0_345 == 1) {
+        if (temp_r4_213 != NULL) {
+            temp_r5_216 = this->unk158;
+            if (temp_r5_216 != NULL) {
+                sp128 = Tools_CalculateVelocity(*temp_r4_213, *temp_r5_216, 2000.0f, -1500.0f);
+                sp88 = 0.5f;
+                sp8C = 0.5f;
+                sp90 = 1.5f;
+                *(MKVector3 *) &sp138 = sp128;
+                sp118 = (f64) sp88;
+                sp120 = (f64) sp90;
+                sp8 = this->unk164;
+                spC = this->unk168;
+                this->unk150->Emit(lit_664, *this->unk154, *((MKVector3 *) &sp138), *((MKVector3 *) &sp118), 3.0f, this->unk158->unk4, 1U, &this->unk170, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+                sp78 = -1.0f;
+                sp7C = -1.0f;
+                sp80 = -1.0f;
+                spB8 = (f64) sp78;
+                spC0 = (f64) sp80;
+                sp68 = spB8 * 5.139208556e-315;
+                sp60 = 1.0f;
+                sp58 = 1.0f;
+                sp5C = 1.0f;
+                sp70 = (f32) spC0 * 0.125f;
+                sp98 = (f64) sp58;
+                spC8 = sp68;
+                spD0 = (f64) sp70;
+                spA0 = (f64) sp60;
+                temp_f0_279 = sp98 * 5.139208556e-315;
+                sp48 = temp_f0_279;
+                spA8 = temp_f0_279;
+                sp50 = (f32) spA0 * 0.125f;
+                spB0 = (f64) sp50;
+                spD8 = KDRand_Vector(*((MKVector3 *) &spC8), *((MKVector3 *) &spA8));
+                var_f4_300 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + ((*(f32 *) ((u8 *) &sp138 + 0x4)) * (*(f32 *) ((u8 *) &sp138 + 0x4))));
+                if (var_f4_300 > 1e-12f) {
+                    if (var_f4_300 > 0.0f) {
+                        temp_f1_306 = __frsqrte(var_f4_300);
+                        temp_f1_312 = 0.5 * temp_f1_306 * -(((f64) var_f4_300 * (temp_f1_306 * temp_f1_306)) - 3.0);
+                        temp_f1_316 = 0.5 * temp_f1_312 * -(((f64) var_f4_300 * (temp_f1_312 * temp_f1_312)) - 3.0);
+                        var_f4_300 = (f32) ((f64) var_f4_300 * (0.5 * temp_f1_316 * -(((f64) var_f4_300 * (temp_f1_316 * temp_f1_316)) - 3.0)));
+                    } else if (var_f4_300 < M2C_BITWISE(f32, 0.0)) {
                         var_f4_300 = __float_nan;
+                    } else {
+                        sp10 = var_f4_300;
+                        temp_r3_335 = M2C_BITWISE(s32, sp10) & 0x7F800000;
+                        switch (temp_r3_335) {      /* irregular */
+                        case 0x7F800000:
+                            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
+                                var_r0_345 = 1;
+                            } else {
+                                var_r0_345 = 2;
+                            }
+                            break;
+                        case 0x0:
+                            if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
+                                var_r0_345 = 5;
+                            } else {
+                                var_r0_345 = 3;
+                            }
+                            break;
+                        default:
+                            var_r0_345 = 4;
+                            break;
+                        }
+                        if (var_r0_345 == 1) {
+                            var_f4_300 = __float_nan;
+                        }
                     }
+                    var_f3_367 = 1.0f / var_f4_300;
+                } else {
+                    var_f3_367 = 0.0f;
                 }
-                var_f3_367 = 1.0f / var_f4_300;
-            } else {
-                var_f3_367 = 0.0f;
-            }
-            sp18 = (f32) sp138 * var_f3_367;
-            sp1C = (*(f32 *) ((u8 *) &sp138 + 0x4)) * var_f3_367;
-            sp20 = (f32) sp140 * var_f3_367;
-            spE8 = (f64) sp18;
-            spF0 = (f64) sp20;
-            temp_f0_387 = (f64) sp18 + M2C_BITWISE(f64, spD8);
-            sp38 = temp_f0_387;
-            spF8 = temp_f0_387;
-            sp40 = (f32) spF0 + spD8.unk8;
-            sp100 = (f64) sp40;
-            temp_f0_399 = temp_f0_387 * 5.65176949e-315;
-            sp28 = temp_f0_399;
-            sp108 = temp_f0_399;
-            sp30 = (f32) sp100 * 700.0f;
-            sp110 = (f64) sp30;
-            sp14 = MKRand_Float((int *) &gViewSeed, 5.0f, 7.0f);
-            ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*this->unk154, *((MKVector3 *) &sp108), sp14);
-            temp_r4_420 = this->unk160;
-            if (temp_r4_420 != NULL) {
-                temp_r3_423 = this->unk154;
-                temp_r4_420->unk10 = M2C_FIELD(temp_r3_423, f64 *, 0);
-                temp_r4_420->unk18 = M2C_FIELD(temp_r3_423, f64 *, 8);
-                temp_r4_428 = temp_r4_420->unk3C;
-                if (temp_r4_428 != NULL) {
-                    M2C_FIELD(temp_r4_428, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_423, f64 *, 0);
-                    M2C_FIELD(temp_r4_428, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_423, f64 *, 8);
-                }
-                temp_f1_439 = MKRand_Float((int *) &gViewSeed, 500.0f, 600.0f);
-                temp_r3_440 = this->unk160;
-                temp_r3_440->unk38 = temp_f1_439;
-                temp_r3_442 = temp_r3_440->unk3C;
-                if (temp_r3_442 != NULL) {
-                    M2C_FIELD(temp_r3_442, f32 *, 0x20) = temp_f1_439;
-                    M2C_FIELD(temp_r3_442, f32 *, 0x24) = (f32) (temp_f1_439 * temp_f1_439);
-                    M2C_FIELD(temp_r3_442, f32 *, 0x28) = (f32) (1.0f / temp_f1_439);
-                    M2C_FIELD(temp_r3_442, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_442, f32 *, 0x24));
+                sp18 = (f32) sp138 * var_f3_367;
+                sp1C = (*(f32 *) ((u8 *) &sp138 + 0x4)) * var_f3_367;
+                sp20 = (f32) sp140 * var_f3_367;
+                spE8 = (f64) sp18;
+                spF0 = (f64) sp20;
+                temp_f0_387 = (f64) sp18 + M2C_BITWISE(f64, spD8);
+                sp38 = temp_f0_387;
+                spF8 = temp_f0_387;
+                sp40 = (f32) spF0 + spD8.unk8;
+                sp100 = (f64) sp40;
+                temp_f0_399 = temp_f0_387 * 5.65176949e-315;
+                sp28 = temp_f0_399;
+                sp108 = temp_f0_399;
+                sp30 = (f32) sp100 * 700.0f;
+                sp110 = (f64) sp30;
+                sp14 = MKRand_Float((int *) &gViewSeed, 5.0f, 7.0f);
+                ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*this->unk154, *((MKVector3 *) &sp108), sp14);
+                temp_r4_420 = this->unk160;
+                if (temp_r4_420 != NULL) {
+                    temp_r3_423 = this->unk154;
+                    temp_r4_420->unk10 = M2C_FIELD(temp_r3_423, f64 *, 0);
+                    temp_r4_420->unk18 = M2C_FIELD(temp_r3_423, f64 *, 8);
+                    temp_r4_428 = temp_r4_420->unk3C;
+                    if (temp_r4_428 != NULL) {
+                        M2C_FIELD(temp_r4_428, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_423, f64 *, 0);
+                        M2C_FIELD(temp_r4_428, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_423, f64 *, 8);
+                    }
+                    temp_f1_439 = MKRand_Float((int *) &gViewSeed, 500.0f, 600.0f);
+                    temp_r3_440 = this->unk160;
+                    temp_r3_440->unk38 = temp_f1_439;
+                    temp_r3_442 = temp_r3_440->unk3C;
+                    if (temp_r3_442 != NULL) {
+                        M2C_FIELD(temp_r3_442, f32 *, 0x20) = temp_f1_439;
+                        M2C_FIELD(temp_r3_442, f32 *, 0x24) = (f32) (temp_f1_439 * temp_f1_439);
+                        M2C_FIELD(temp_r3_442, f32 *, 0x28) = (f32) (1.0f / temp_f1_439);
+                        M2C_FIELD(temp_r3_442, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_442, f32 *, 0x24));
+                    }
                 }
             }
         }

@@ -57,6 +57,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_SpyroEarthFuryFall;
@@ -66,7 +67,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SquishBoulder::EmitLandingEffects() {
     Matrix sp310;
     M2C_UNK sp30C;
@@ -100,12 +101,12 @@ void SquishBoulder::EmitLandingEffects() {
     f64 sp240;
     f64 sp238;
     f64 sp230;
-    f64 sp220;
+    MKVector3 sp220;
     f64 sp218;
     f64 sp210;
     f64 sp208;
     f64 sp200;
-    f64 sp1F0;
+    MKVector3 sp1F0;
     MKVector3 sp1E0;
     f64 sp1D8;
     f64 sp1D0;
@@ -121,10 +122,10 @@ void SquishBoulder::EmitLandingEffects() {
     f64 sp180;
     f64 sp178;
     f64 sp170;
-    f64 sp160;
+    MKVector3 sp160;
     f64 sp158;
     f64 sp150;
-    f64 sp140;
+    MKVector3 sp140;
     f32 sp138;
     f32 sp134;
     f32 sp130;
@@ -256,10 +257,10 @@ void SquishBoulder::EmitLandingEffects() {
     temp_r3_224 = M2C_FIELD(M2C_FIELD(temp_r3_220, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_220);
     if (temp_r3_224 != NULL) {
         temp_r27_229 = M2C_FIELD(temp_r3_224, void **, 0x2C);
-        MKVector(0.0f, 100.0f, 0.0f);
-        sp80 = M2C_FIELD(this, f64 *, 0x290) + sp220;
+        sp220 = MKVector(0.0f, 100.0f, 0.0f);
+        sp80 = M2C_FIELD(this, f64 *, 0x290) + M2C_BITWISE(f64, sp220);
         M2C_FIELD(temp_r3_224, f64 *, 0) = sp80;
-        sp88 = this->unk260.unk38 + sp228;
+        sp88 = this->unk260.unk38 + sp220.unk8;
         sp230 = sp80;
         M2C_FIELD(temp_r3_224, f64 *, 8) = (f64) sp88;
         M2C_FIELD(temp_r3_224, f32 *, 0x20) = 0.0f;
@@ -280,11 +281,11 @@ void SquishBoulder::EmitLandingEffects() {
     }
     var_r29_281 = 0;
     do {
-        MKVector(0.0f, 100.0f, 0.0f);
-        sp60 = M2C_FIELD(this, f64 *, 0x290) + sp1F0;
+        sp1F0 = MKVector(0.0f, 100.0f, 0.0f);
+        sp60 = M2C_FIELD(this, f64 *, 0x290) + M2C_BITWISE(f64, sp1F0);
         sp48 = 1.0f;
         sp58 = -1.0f;
-        sp68 = this->unk260.unk38 + sp1F8;
+        sp68 = this->unk260.unk38 + sp1F0.unk8;
         sp40 = 1.0f;
         sp44 = 1.0f;
         sp50 = -1.0f;
@@ -297,9 +298,8 @@ void SquishBoulder::EmitLandingEffects() {
         sp1C8 = (f64) sp48;
         sp1D0 = (f64) sp50;
         sp1D8 = (f64) sp58;
-        KDRand_Vector(sp1E0, *((MKVector3 *) &sp1D0));
-        sp2C0 = M2C_BITWISE(f64, sp1E0);
-        sp2C8 = (f64) sp1E0.unk8;
+        sp1E0 = KDRand_Vector(*((MKVector3 *) &sp1D0), *((MKVector3 *) &sp1C0));
+        *(MKVector3 *) &sp2C0 = sp1E0;
         temp_f0_328 = sp2C0 * 5.60222949e-315;
         spE0 = temp_f0_328;
         sp1B0 = temp_f0_328;
@@ -377,10 +377,10 @@ void SquishBoulder::EmitLandingEffects() {
     sp290 = (f64) sp90;
     KDMath_BuildMatrixFromFwd(&sp310, *((MKVector3 *) &sp2A0), (MKVector3 *) &sp290);
     sp310.Scale3x3(&sp310, 2.5f);
-    MKVector(0.0f, 200.0f, 0.0f);
-    sp30 = M2C_FIELD(this, f64 *, 0x290) + sp160;
+    sp160 = MKVector(0.0f, 200.0f, 0.0f);
+    sp30 = M2C_FIELD(this, f64 *, 0x290) + M2C_BITWISE(f64, sp160);
     sp170 = sp30;
-    sp38 = this->unk260.unk38 + sp168;
+    sp38 = this->unk260.unk38 + sp160.unk8;
     sp178 = (f64) sp38;
     sp310.unk30 = (f32) sp170;
     sp310.unk34 = (*(f32 *) ((u8 *) &sp170 + 0x4));
@@ -389,11 +389,11 @@ void SquishBoulder::EmitLandingEffects() {
     gb.unk1C0.StartWarp(&sp310);
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
         sp2F4 = 0;
-        MKVector(0.0f, 1.0f, 0.0f);
+        sp140 = MKVector(0.0f, 1.0f, 0.0f);
         sp20 = sp140 * 5.676053805e-315;
         sp2F0 = 0x417;
         sp2F8 = sp20;
-        sp28 = sp148 * 1000.0f;
+        sp28 = sp140.unk8 * 1000.0f;
         sp308 = 1;
         sp300 = (f64) sp28;
         sp150 = sp20;

@@ -17,6 +17,7 @@
 #include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -74,14 +75,14 @@ void MKCollisionCapsuleItem::Update() {
     sp2C = temp_f1_101;
     sp80 = (f64) sp30;
     sp78 = (f64) sp28;
-    Min(sp58, this->unk60);
+    sp58 = Min(this->unk60, this->unk70);
     sp18 = sp58 - sp78;
     this->unk10 = sp18;
     sp20 = sp58.unk8 - (f32) sp80;
     sp68 = sp18;
     sp70 = (f64) sp20;
     this->unk18 = (f64) sp20;
-    Max(sp38, this->unk60);
+    sp38 = Max(this->unk60, this->unk70);
     sp8 = sp38 + sp78;
     this->unk20 = sp8;
     sp10 = sp38.unk8 + (f32) sp80;
@@ -305,7 +306,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
     if (var_f28_348 > arg1->unk40) {
         var_r27_180 = 1;
         arg1->unk44 = (s32) this->unk54;
-        Normalise(spE8);
+        spE8 = Normalise(*((MKVector3 *) &sp158));
         sp38 = -M2C_BITWISE(f32, spE8);
         sp3C = -spE8.unk4;
         sp40 = -spE8.unk8;
@@ -339,7 +340,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'InterpolateLinear'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp148;
     f64 sp140;
@@ -470,9 +471,8 @@ s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResul
     temp_f4_637 = arg0.unk50 + this->unkA0;
     sp138 = (f64) sp28;
     if ((((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp130 + 0x4)) * (*(f32 *) ((u8 *) &sp130 + 0x4))))) < (temp_f4_637 * temp_f4_637)) {
-        InterpolateLinear(spC0, this->unk80, var_f1_578);
-        M2C_FIELD(arg1, f64 *, 0x20) = M2C_BITWISE(f64, spC0);
-        M2C_FIELD(arg1, f64 *, 0x28) = (f64) spC0.unk8;
+        spC0 = InterpolateLinear(this->unk80, *((MKVector4 *) &this->unk90), var_f1_578);
+        M2C_FIELD(arg1, MKVector4 *, 0x20) = spC0;
         arg1->unk44 = (s32) this->unk54;
         M2C_FIELD(arg1, f64 *, 0x10) = sp130;
         M2C_FIELD(arg1, f64 *, 0x18) = sp138;
@@ -740,14 +740,14 @@ void MKCollisionCapsuleItem::Init(MKVector3 *arg0, MKVector3 *arg1, float arg2, 
     sp2C = temp_f1_1410;
     sp80 = (f64) sp30;
     sp78 = (f64) sp28;
-    Min(sp58, this->unk60);
+    sp58 = Min(this->unk60, this->unk70);
     sp18 = sp58 - sp78;
     this->unk10 = sp18;
     sp20 = sp58.unk8 - (f32) sp80;
     sp68 = sp18;
     sp70 = (f64) sp20;
     this->unk18 = (f64) sp20;
-    Max(sp38, this->unk60);
+    sp38 = Max(this->unk60, this->unk70);
     sp8 = sp38 + sp78;
     this->unk20 = sp8;
     sp10 = sp38.unk8 + (f32) sp80;
@@ -771,13 +771,13 @@ void MKCollisionSphereItem::GetRadius() {
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKCollisionSphereItem::Update() {
     f64 sp90;
     f64 sp88;
     f64 sp80;
     f64 sp78;
-    f64 sp68;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -795,11 +795,11 @@ void MKCollisionSphereItem::Update() {
     f32 temp_f1_1508;
     f64 temp_f0_1519;
 
-    MKVector(0.0f, this->unk88, 0.0f);
+    sp68 = MKVector(0.0f, this->unk88, 0.0f);
     temp_r3_1493 = this->unk80;
-    sp28 = M2C_FIELD(temp_r3_1493, f64 *, 0) + sp68;
+    sp28 = M2C_FIELD(temp_r3_1493, f64 *, 0) + M2C_BITWISE(f64, sp68);
     this->unk60 = sp28;
-    sp30 = temp_r3_1493->unk8 + sp70;
+    sp30 = temp_r3_1493->unk8 + sp68.unk8;
     sp78 = sp28;
     this->unk68 = (f64) sp30;
     temp_f1_1508 = this->unk84;
@@ -985,8 +985,8 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
     sp240 = (f64) sp130;
     sp1D8 = (f64) sp118;
     sp1E0 = (f64) sp120;
-    Min(sp108, *((MKVector3 *) &sp238));
-    Max(sp1E8, sp108);
+    sp108 = Min(*((MKVector3 *) &sp238), (&arg0 + 0x950)->unk0);
+    sp1E8 = Max(sp108, *((MKVector3 *) &sp1D8));
     sp228 = M2C_BITWISE(f64, sp1E8);
     temp_f2_1642 = this->unk84;
     sp230 = (f64) sp1E8.unk8;
@@ -1697,7 +1697,6 @@ s32 MKCollisionSphereItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKCollision_RayToSphere'
 s32 MKCollisionSphereItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     M2C_FIELD(arg1, f64 *, 0x20) = (f64) this->unk70;
     M2C_FIELD(arg1, f64 *, 0x28) = (f64) this->unk78;
@@ -1705,9 +1704,7 @@ s32 MKCollisionSphereItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionR
     arg1->unk44 = (s32) this->unk54;
     MKCollision_RayToSphere(arg0, *((MKVector3 *) &this->unk60), this->unk84, arg1);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'MKCollision_RayToSphere'
 s32 MKCollisionSphereItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     M2C_FIELD(arg1, f64 *, 0x20) = (f64) this->unk70;
     M2C_FIELD(arg1, f64 *, 0x28) = (f64) this->unk78;
@@ -1715,7 +1712,6 @@ s32 MKCollisionSphereItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *a
     arg1->unk44 = (s32) this->unk54;
     MKCollision_RayToSphere(arg0, *((MKVector3 *) &this->unk60), this->unk84, arg1);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKCollisionInfo *' to 'MKVector3 *'
 void MKCollisionSphereItem::Init(MKVector3 *arg0, float arg1, float arg2, const MKVector4 &arg3, MKCollisionMode arg4, MKCollisionInfo *arg5, int arg6, unsigned int arg7, MKCollisionManager *arg8) {
@@ -1723,7 +1719,7 @@ void MKCollisionSphereItem::Init(MKVector3 *arg0, float arg1, float arg2, const 
     f64 sp88;
     f64 sp80;
     f64 sp78;
-    f64 sp68;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -1744,10 +1740,10 @@ void MKCollisionSphereItem::Init(MKVector3 *arg0, float arg1, float arg2, const 
     this->unk70 = M2C_FIELD(&arg3, f64 *, 0);
     this->unk78 = M2C_FIELD(&arg3, f64 *, 8);
     this->unk88 = arg2;
-    MKVector(0.0f, this->unk88, 0.0f);
-    sp28 = M2C_FIELD(arg0, f64 *, 0) + sp68;
+    sp68 = MKVector(0.0f, this->unk88, 0.0f);
+    sp28 = M2C_FIELD(arg0, f64 *, 0) + M2C_BITWISE(f64, sp68);
     this->unk60 = sp28;
-    sp30 = arg0->unk8 + sp70;
+    sp30 = arg0->unk8 + sp68.unk8;
     sp78 = sp28;
     this->unk68 = (f64) sp30;
     this->unk8 = arg5;

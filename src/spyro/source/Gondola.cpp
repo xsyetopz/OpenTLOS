@@ -45,6 +45,7 @@
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/PhrasePlayer.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 s32 stricmp(s8 *);                                  /* extern */
@@ -231,7 +232,7 @@ void Gondola::UpdateMove() {
     f64 sp270;
     MKVector3 sp260;
     MKVector3 sp250;
-    f64 sp240;
+    MKVector3 sp240;
     f64 sp238;
     f64 sp230;
     f64 sp228;
@@ -649,13 +650,13 @@ void Gondola::UpdateMove() {
             sp108 = (f32) sp298 * var_f0_757;
             sp3C0 = (f64) sp100;
             sp3C8 = (f64) sp108;
-            MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.0f, 2000.0f), 0.0f);
-            __ml(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), sp250);
+            sp240 = MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.0f, 2000.0f), 0.0f);
+            sp250 = __ml(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), *((MKVector3 *) &sp3C0));
             sp260.operator*(2000.0f);
-            temp_f0_903 = sp260 + sp240;
+            temp_f0_903 = sp260 + M2C_BITWISE(f64, sp240);
             sp80 = temp_f0_903;
             sp270 = temp_f0_903;
-            sp88 = sp260.unk8 + sp248;
+            sp88 = sp260.unk8 + sp240.unk8;
             sp278 = (f64) sp88;
             temp_f3_915 = sp3E0 + temp_f0_903;
             sp3E0 = temp_f3_915;

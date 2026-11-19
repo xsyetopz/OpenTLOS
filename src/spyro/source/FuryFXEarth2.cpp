@@ -52,6 +52,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -198,7 +199,7 @@ void FuryFXEarth2::EmitTimedSparks() {
         spC8 = (f64) sp78;
         spB0 = (f64) sp60;
         spB8 = (f64) sp68;
-        KDRand_Vector(spD0, *((MKVector3 *) &spC0));
+        spD0 = KDRand_Vector(*((MKVector3 *) &spC0), *((MKVector3 *) &spB0));
         temp_f0_231 = spD0 * 5.61841903e-315;
         sp50 = temp_f0_231;
         spE0 = temp_f0_231;
@@ -334,8 +335,8 @@ loop_2:
             sp68 = (f64) sp18;
             sp70 = (f64) sp20;
             temp_f25_446 = MKRand_Float((int *) &gViewSeed, 0.3f, 1.0f);
-            KDRand_Vector(sp88, *((MKVector3 *) &sp78));
-            KDRand_Vector(spB8, *((MKVector3 *) &spA8));
+            sp88 = KDRand_Vector(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68));
+            spB8 = KDRand_Vector(*((MKVector3 *) &spA8), *((MKVector3 *) &sp98));
             ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xA4)))->Emit(*((MKVector3 *) &spF8), *((MKVector3 *) &spC8), spB8, sp88, temp_f25_446, this->unkD0, 4, NULL);
             var_r29_358 += 4;
             goto loop_2;
@@ -344,7 +345,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FuryFXEarth2::SpawnVortexElement() {
     Matrix spF0;
     M2C_UNK spEC;
@@ -394,11 +394,10 @@ void FuryFXEarth2::SpawnVortexElement() {
                 sp88 = (f64) sp38;
                 sp90 = (f64) sp40;
                 sp98 = (f64) sp48;
-                KDRand_Vector(spA0, *((MKVector3 *) &sp90));
+                spA0 = KDRand_Vector(*((MKVector3 *) &sp90), *((MKVector3 *) &sp80));
                 sp18 = 6.2831855f;
                 sp28 = 0.0f;
-                M2C_FIELD(temp_r31_521, f64 *, 0) = M2C_BITWISE(f64, spA0);
-                M2C_FIELD(temp_r31_521, f64 *, 8) = (f64) spA0.unk8;
+                M2C_FIELD(temp_r31_521, MKVector3 *, 0) = spA0;
                 sp10 = 6.2831855f;
                 sp14 = 6.2831855f;
                 sp20 = 0.0f;
@@ -407,9 +406,8 @@ void FuryFXEarth2::SpawnVortexElement() {
                 sp58 = (f64) sp18;
                 sp60 = (f64) sp20;
                 sp68 = (f64) sp28;
-                KDRand_Vector(sp70, *((MKVector3 *) &sp60));
-                M2C_FIELD(temp_r31_521, f64 *, 0x10) = M2C_BITWISE(f64, sp70);
-                M2C_FIELD(temp_r31_521, f64 *, 0x18) = (f64) sp70.unk8;
+                sp70 = KDRand_Vector(*((MKVector3 *) &sp60), *((MKVector3 *) &sp50));
+                M2C_FIELD(temp_r31_521, MKVector3 *, 0x10) = sp70;
                 M2C_FIELD(temp_r31_521, f32 *, 0x20) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
                 M2C_FIELD(temp_r31_521, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 3.1415927f, 6.2831855f);
                 M2C_FIELD(temp_r31_521, f32 *, 0x28) = -200.0f;
@@ -425,7 +423,6 @@ void FuryFXEarth2::SpawnVortexElement() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void FuryFXEarth2::DrawVortex() {
@@ -565,7 +562,7 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FuryFXEarth2::UpdateLightPosition(float arg0, float arg1) {
     f64 sp90;
     f64 sp88;
@@ -575,7 +572,7 @@ void FuryFXEarth2::UpdateLightPosition(float arg0, float arg1) {
     f64 sp68;
     f64 sp60;
     f64 sp58;
-    f64 sp48;
+    MKVector3 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -606,16 +603,16 @@ void FuryFXEarth2::UpdateLightPosition(float arg0, float arg1) {
         sp88 = temp_f0_950;
         sp30 = (f32) sp80 * arg0;
         sp90 = (f64) sp30;
-        MKVector(0.0f, arg1, 0.0f);
-        temp_f0_966 = this->unkA0 + temp_f0_950;
+        sp48 = MKVector(0.0f, arg1, 0.0f);
+        temp_f0_966 = this->unkA0 + sp88;
         sp8 = temp_f0_966;
         sp58 = temp_f0_966;
         sp10 = this->unkA8 + (f32) sp90;
         sp60 = (f64) sp10;
-        sp18 = sp58 + sp48;
+        sp18 = sp58 + M2C_BITWISE(f64, sp48);
         temp_r3_984 = this->unkCC;
         sp68 = sp18;
-        sp20 = (f32) sp60 + sp50;
+        sp20 = (f32) sp60 + sp48.unk8;
         temp_r3_984->unk10 = sp18;
         temp_r3_984->unk18 = (f64) sp20;
         temp_r3_990 = temp_r3_984->unk3C;
@@ -825,12 +822,12 @@ void *FuryFXEarth2::Update() {
     f64 sp160;
     f64 sp158;
     f64 sp150;
-    f64 sp140;
+    MKVector3 sp140;
     f64 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
-    f64 sp110;
+    MKVector3 sp110;
     f32 sp108;
     f32 sp104;
     f32 sp100;
@@ -1056,7 +1053,7 @@ loop_49:
                     sp198 = (f64) sp98;
                     sp180 = (f64) sp80;
                     sp188 = (f64) sp88;
-                    KDRand_Vector(sp1A0, *((MKVector3 *) &sp190));
+                    sp1A0 = KDRand_Vector(*((MKVector3 *) &sp190), *((MKVector3 *) &sp180));
                     temp_f0_1649 = sp1A0 * 5.634608575e-315;
                     sp70 = temp_f0_1649;
                     sp1B0 = temp_f0_1649;
@@ -1110,11 +1107,11 @@ loop_49:
             KDSound_Play3d(GS_Rumble3, M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), s32 *, 8) + 0x30, 0U, -1, 0.0f, 0U);
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp274 = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp140 = MKVector(1.0f, 1.0f, 1.0f);
                 sp20 = sp140 * 5.56078426e-315;
                 sp270 = 0x417;
                 sp278 = sp20;
-                sp28 = sp148 * 150.0f;
+                sp28 = sp140.unk8 * 150.0f;
                 sp288 = 1;
                 sp280 = (f64) sp28;
                 sp150 = sp20;
@@ -1129,11 +1126,11 @@ loop_49:
             sp138 = (f64) sp38;
             ((ScreenWobbleFX *) (&gb + 0xB8))->EnableScreenFlash(*((MKVector4 *) &sp130), 3.0f * gUpdateTimeDelta);
             if ((ManagedLight *) this->unkCC != NULL) {
-                MKVector(0.0f, 500.0f, 0.0f);
-                sp10 = this->unkA0 + sp110;
+                sp110 = MKVector(0.0f, 500.0f, 0.0f);
+                sp10 = this->unkA0 + M2C_BITWISE(f64, sp110);
                 temp_r3_1846 = this->unkCC;
                 sp120 = sp10;
-                sp18 = this->unkA8 + sp118;
+                sp18 = this->unkA8 + sp110.unk8;
                 temp_r3_1846->unk10 = sp10;
                 temp_r3_1846->unk18 = (f64) sp18;
                 temp_r3_1852 = temp_r3_1846->unk3C;

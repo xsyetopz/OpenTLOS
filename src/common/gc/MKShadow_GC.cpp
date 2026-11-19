@@ -20,6 +20,7 @@
 #include "common/Source/MKMat_MK2_Standard.h"
 #include "common/Source/MKView.h"
 #include "common/gc/MKMaterial_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(Matrix *);                             /* extern */
@@ -172,12 +173,10 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
             sp98 = temp_f0_269;
             sp50 = spB8.unk8 - (f32) sp100;
             spA0 = (f64) sp50;
-            Normalise(spA8);
-            spE8 = M2C_BITWISE(f64, spA8);
-            spF0 = (f64) spA8.unk8;
+            spA8 = Normalise(*((MKVector3 *) &sp98));
+            *(MKVector3 *) &spE8 = spA8;
         }
-        spD8 = M2C_BITWISE(f64, spB8);
-        spE0 = (f64) spB8.unk8;
+        *(MKVector3 *) &spD8 = spB8;
         if (arg5 != 0) {
             sp78.operator*(arg2);
             sp38 = spF8 + M2C_BITWISE(f64, sp78);

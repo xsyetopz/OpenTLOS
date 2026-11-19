@@ -339,7 +339,7 @@ loop_52:
                 sp110 = (f64) spB0;
                 spF8 = (f64) sp98;
                 sp100 = (f64) spA0;
-                KDRand_Vector(sp118, *((MKVector3 *) &sp108));
+                sp118 = KDRand_Vector(*((MKVector3 *) &sp108), *((MKVector3 *) &spF8));
                 temp_f0_452 = sp118 * 5.49408334e-315;
                 sp88 = temp_f0_452;
                 sp128 = temp_f0_452;
@@ -368,7 +368,7 @@ loop_52:
                     spC8 = (f64) sp58;
                     spD0 = (f64) sp60;
                     temp_r25_515 = checked_cast<ClusterBombDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-                    KDRand_Vector(spD8, *((MKVector3 *) &spC8));
+                    spD8 = KDRand_Vector(*((MKVector3 *) &spC8), *((MKVector3 *) &spB8));
                     ((Explosion3 *) (M2C_FIELD(temp_r25_515, Explosion3 **, 0x60)))->Trigger(*temp_r28_593, 2.0f, 1U, 0U, spD8, NULL);
                     sp198.unk4 = 0;
                     temp_f27_536 = ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(0, 1, 3);

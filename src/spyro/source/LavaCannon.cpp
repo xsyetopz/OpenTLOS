@@ -365,9 +365,8 @@ void *LavaCannon::Update() {
             sp58 = (f64) sp18;
             sp60 = (f64) sp20;
             MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x190), &this->unk1F8);
-            Tools_CalculateVelocity(sp48, this->unk1F8, 5000.0f, -1960.0f);
-            M2C_FIELD(this, f64 *, 0x218) = M2C_BITWISE(f64, sp48);
-            M2C_FIELD(this, f64 *, 0x220) = (f64) sp48.unk8;
+            sp48 = Tools_CalculateVelocity(this->unk1F8, *(this + ((this->unk228 * 0x10) + 0x1A8)), 5000.0f, -1960.0f);
+            M2C_FIELD(this, MKVector3 *, 0x218) = sp48;
             this->unk230 = KDMath_GetPitch(this->unk218);
             this->unk234 = KDMath_GetYaw(this->unk218);
             if ((u8) this->unk238 == 0) {

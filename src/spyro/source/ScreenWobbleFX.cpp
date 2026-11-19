@@ -101,8 +101,8 @@ loop_2:
         sp30 = (f64) sp10;
         sp38 = (f64) sp18;
         sp40 = (f64) sp20;
-        KDRand_Vector(sp48, *((MKVector3 *) &sp38));
-        __ml(gUpdateTimeDelta, sp58);
+        sp48 = KDRand_Vector(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
+        sp58 = __ml(gUpdateTimeDelta, sp48);
         temp_r3_141 = ((u8 *) this->unk0) + (((var_r29_113 + var_r31_111) * 0x38) + 0x20);
         M2C_FIELD(temp_r3_141, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_141, f64 *, 0) + M2C_BITWISE(f64, sp58));
         var_r29_113 += 1;

@@ -41,6 +41,7 @@
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -221,9 +222,8 @@ loop_8:
         sp1A8 *= temp_f31_292;
         (*(f32 *) ((u8 *) &sp98 + 0x4)) = 0.0f;
         spA0 = (f64) sp1A8;
-        ClampMagnitude(sp68, this->unk12C);
-        sp98 = M2C_BITWISE(f64, sp68);
-        spA0 = (f64) sp68.unk8;
+        sp68 = ClampMagnitude(*((MKVector3 *) &sp98), this->unk12C);
+        *(MKVector3 *) &sp98 = sp68;
         temp_f30_315 = this->unk130 / this->unk12C;
         sp98 *= (f64) temp_f30_315;
         spA0 = (f32) spA0 * temp_f30_315;

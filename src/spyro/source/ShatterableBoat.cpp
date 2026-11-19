@@ -49,6 +49,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 s32 stricmp(s8 *);                                  /* extern */
@@ -80,20 +81,20 @@ void ShatterableBoat::SetDefaults() {
     Update();
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 ShatterableBoat::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     void *temp_r4_191;
 
-    MKVector(0.0f, 100.0f, 0.0f);
+    sp18 = MKVector(0.0f, 100.0f, 0.0f);
     temp_r4_191 = ((u8 *) this->unk8) + 0x30;
-    sp8 = M2C_FIELD(temp_r4_191, f64 *, 0) + sp18;
+    sp8 = M2C_FIELD(temp_r4_191, f64 *, 0) + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD(temp_r4_191, f32 *, 8) + sp20;
+    sp10 = M2C_FIELD(temp_r4_191, f32 *, 8) + sp18.unk8;
     sp28 = sp8;
     sp30 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -101,20 +102,20 @@ s32 ShatterableBoat::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 ShatterableBoat::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     void *temp_r4_229;
 
-    MKVector(0.0f, 100.0f, 0.0f);
+    sp18 = MKVector(0.0f, 100.0f, 0.0f);
     temp_r4_229 = ((u8 *) this->unk8) + 0x30;
-    sp8 = M2C_FIELD(temp_r4_229, f64 *, 0) + sp18;
+    sp8 = M2C_FIELD(temp_r4_229, f64 *, 0) + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD(temp_r4_229, f32 *, 8) + sp20;
+    sp10 = M2C_FIELD(temp_r4_229, f32 *, 8) + sp18.unk8;
     sp28 = sp8;
     sp30 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -350,7 +351,7 @@ void ShatterableBoat::EmitWaterSpray() {
     MKVector3 sp158;
     MKVector3 sp148;
     MKVector3 sp138;
-    M2C_UNK sp128;
+    MKVector3 sp128;
     MKVector3 sp118;
     MKVector3 sp108;
     f64 sp100;
@@ -494,9 +495,9 @@ loop_2:
         sp100 = (f64) sp10;
         sp108.operator*(4000.0f);
         sp118.operator*(temp_f31_768);
-        MKVector(1.0f, 2.0f, 1.0f);
-        MKVector(-1.0f, 0.0f, -1.0f);
-        KDRand_Vector(sp148, sp138);
+        sp128 = MKVector(1.0f, 2.0f, 1.0f);
+        sp138 = MKVector(-1.0f, 0.0f, -1.0f);
+        sp148 = KDRand_Vector(sp138, sp128);
         sp158.operator*(2000.0f);
         sp68 = sp158 + M2C_BITWISE(f64, sp118);
         temp_r3_814 = this->unk240;
@@ -859,7 +860,7 @@ void *ShatterableBoat::Update() {
     MKVector3 sp210;
     MKVector3 sp200;
     MKVector3 sp1F0;
-    M2C_UNK sp1E0;
+    MKVector3 sp1E0;
     MKVector3 sp1D0;
     MKVector3 sp1C0;
     f64 sp1B8;
@@ -871,7 +872,7 @@ void *ShatterableBoat::Update() {
     MKVector3 sp180;
     MKVector3 sp170;
     MKVector3 sp160;
-    M2C_UNK sp150;
+    MKVector3 sp150;
     MKVector3 sp140;
     MKVector3 sp130;
     f64 sp128;
@@ -1102,9 +1103,9 @@ loop_42:
             sp1B8 = (f64) sp48;
             sp1C0.operator*(4000.0f);
             sp1D0.operator*(temp_f28_1757);
-            MKVector(1.0f, 2.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp200, sp1F0);
+            sp1E0 = MKVector(1.0f, 2.0f, 1.0f);
+            sp1F0 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp200 = KDRand_Vector(sp1F0, sp1E0);
             sp210.operator*(1000.0f);
             sp80 = sp210 + M2C_BITWISE(f64, sp1D0);
             temp_r3_1803 = this->unk240;
@@ -1116,8 +1117,7 @@ loop_42:
             temp_r3_1815 = M2C_FIELD(temp_r3_1803->__vptr, void *(**)(MKProp *, f64), 0x3C)(temp_r3_1803, sp80);
             if (temp_r3_1815 != NULL) {
                 temp_r25_1818 = M2C_FIELD(temp_r3_1815, void **, 0x2C);
-                M2C_FIELD(temp_r3_1815, f64 *, 0) = M2C_BITWISE(f64, sp2A0);
-                M2C_FIELD(temp_r3_1815, f64 *, 8) = (f64) sp2A0.unk8;
+                M2C_FIELD(temp_r3_1815, MKVector3 *, 0) = sp2A0;
                 M2C_FIELD(temp_r3_1815, f32 *, 0x20) = 0.0f;
                 M2C_FIELD(temp_r3_1815, f32 *, 0x28) = 0.0f;
                 temp_f0_1833 = 3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -1167,9 +1167,9 @@ loop_49:
             sp128 = (f64) sp38;
             sp130.operator*(4000.0f);
             sp140.operator*(temp_f28_1906);
-            MKVector(1.0f, 2.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp170, sp160);
+            sp150 = MKVector(1.0f, 2.0f, 1.0f);
+            sp160 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp170 = KDRand_Vector(sp160, sp150);
             sp180.operator*(1000.0f);
             sp60 = sp180 + M2C_BITWISE(f64, sp140);
             temp_r3_1952 = this->unk240;
@@ -1181,8 +1181,7 @@ loop_49:
             temp_r3_1964 = M2C_FIELD(temp_r3_1952->__vptr, void *(**)(MKProp *, f64), 0x3C)(temp_r3_1952, sp60);
             if (temp_r3_1964 != NULL) {
                 temp_r26_1967 = M2C_FIELD(temp_r3_1964, void **, 0x2C);
-                M2C_FIELD(temp_r3_1964, f64 *, 0) = M2C_BITWISE(f64, sp2A0);
-                M2C_FIELD(temp_r3_1964, f64 *, 8) = (f64) sp2A0.unk8;
+                M2C_FIELD(temp_r3_1964, MKVector3 *, 0) = sp2A0;
                 M2C_FIELD(temp_r3_1964, f32 *, 0x20) = 0.0f;
                 M2C_FIELD(temp_r3_1964, f32 *, 0x28) = 0.0f;
                 temp_f0_1982 = 3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);

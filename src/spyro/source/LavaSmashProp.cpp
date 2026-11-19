@@ -241,7 +241,7 @@ void LavaSmashProp::PostShatter() {
         sp1D8 = (f64) sp78;
         sp1C0 = (f64) sp60;
         sp1C8 = (f64) sp68;
-        KDRand_Vector(sp1E0, *((MKVector3 *) &sp1D0));
+        sp1E0 = KDRand_Vector(*((MKVector3 *) &sp1D0), *((MKVector3 *) &sp1C0));
         temp_f0_166 = sp1E0 * 5.49408334e-315;
         sp50 = temp_f0_166;
         sp1F0 = temp_f0_166;
@@ -253,8 +253,7 @@ void LavaSmashProp::PostShatter() {
         sp48 = this->unk1E0 + (f32) sp1F8;
         sp208 = (f64) sp48;
         KDMath_Smooth<MKVector3>(sp210, this->unk1E8, 2.0f, gUpdateTimeDelta);
-        M2C_FIELD(this, f64 *, 0x1E8) = M2C_BITWISE(f64, sp210);
-        M2C_FIELD(this, f64 *, 0x1F0) = (f64) sp210.unk8;
+        M2C_FIELD(this, MKVector3 *, 0x1E8) = sp210;
         this->unk1F8 += M2C_FIELD(temp_r30_29, f32 *, 0x178) * gUpdateTimeDelta;
         temp_f1_203 = this->unk1F8;
         if (temp_f1_203 <= M2C_FIELD(temp_r30_29, f32 *, 0x174)) {
@@ -281,7 +280,7 @@ void LavaSmashProp::PostShatter() {
             sp198 = (f64) spF8;
             sp180 = (f64) spE0;
             sp188 = (f64) spE8;
-            KDRand_Vector(sp1A0, *((MKVector3 *) &sp190));
+            sp1A0 = KDRand_Vector(*((MKVector3 *) &sp190), *((MKVector3 *) &sp180));
             temp_f1_255 = M2C_BITWISE(f32, sp1A0);
             var_f4_263 = (sp1A0.unk8 * sp1A0.unk8) + ((temp_f1_255 * temp_f1_255) + (sp1A0.unk4 * sp1A0.unk4));
             if (var_f4_263 > 1e-12f) {
@@ -368,7 +367,7 @@ void LavaSmashProp::PostShatter() {
         sp118 = (f64) sp18;
         sp120 = (f64) sp20;
         sp128 = (f64) sp28;
-        KDRand_Vector(sp130, *((MKVector3 *) &sp120));
+        sp130 = KDRand_Vector(*((MKVector3 *) &sp120), *((MKVector3 *) &sp110));
         temp_f1_433 = M2C_BITWISE(f64, sp130);
         sp270 = 0x417;
         sp278 = temp_f1_433;

@@ -19,6 +19,7 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/ShotgunWarpFX.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -313,10 +314,9 @@ loop_2:
             sp30 = (f64) sp10;
             sp38 = (f64) sp18;
             sp40 = (f64) sp20;
-            KDRand_Vector(sp48, *((MKVector3 *) &sp38));
+            sp48 = KDRand_Vector(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
             temp_r3_402 = this->unk4 + (var_r30_345 + 0x30);
-            M2C_FIELD(temp_r3_402, f64 *, 0) = M2C_BITWISE(f64, sp48);
-            M2C_FIELD(temp_r3_402, f64 *, 8) = (f64) sp48.unk8;
+            M2C_FIELD(temp_r3_402, MKVector3 *, 0) = sp48;
             *(this->unk8 + (this->unkC * 4)) = this->unk4 + var_r30_345;
             this->unkC += 1;
             return;
@@ -451,7 +451,7 @@ void HeatDistortPS::Update() {
     f64 sp60;
     f64 sp58;
     MKVector3 sp48;
-    M2C_UNK sp38;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
@@ -503,7 +503,7 @@ loop_11:
             this->unkC -= 1;
         } else {
             temp_f27_743 = MKRand_Float((int *) &gViewSeed, 6.2831855f, 6.2831855f);
-            MKVector(MKRand_Float((int *) &gViewSeed, 3.1415927f, 3.1415927f), temp_f27_743, 0.0f);
+            sp38 = MKVector(MKRand_Float((int *) &gViewSeed, 3.1415927f, 3.1415927f), temp_f27_743, 0.0f);
             sp48.operator*(gUpdateTimeDelta);
             temp_f0_759 = sp48 * 5.263544247e-315;
             sp18 = temp_f0_759;

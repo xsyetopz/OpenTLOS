@@ -613,8 +613,7 @@ void FlameBreathBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3
     spA8 = (f64) sp58;
     if (MKCollision_RayCollide(*((MKVector3 *) &this->unkA8), *((MKVector3 *) &spA0), (MKCollisionResult *) &sp150, (MKCollisionMode) 7, 0) != 0) {
         KDMath_Smooth<MKVector4>(sp80, this->unkF0, 1.0f, 0.5f);
-        M2C_FIELD(this, f64 *, 0xF0) = M2C_BITWISE(f64, sp80);
-        M2C_FIELD(this, f64 *, 0xF8) = (f64) sp80.unk8;
+        M2C_FIELD(this, MKVector4 *, 0xF0) = sp80;
         this->unkF0.unkC = 1.0f;
     }
 }
@@ -746,8 +745,7 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     this->unk88 = M2C_FIELD(arg0, f64 *, 0);
     this->unk90 = M2C_FIELD(arg0, f64 *, 8);
     KDMath_Smooth<MKVector3>(sp250, *((MKVector3 *) &this->unkB8), 1.0f, 0.125f);
-    this->unkB8 = M2C_BITWISE(f64, sp250);
-    this->unkC0 = (f64) sp250.unk8;
+    *(MKVector3 *) &this->unkB8 = sp250;
     this->unk78 = M2C_FIELD(arg2, f64 *, 0);
     this->unk80 = M2C_FIELD(arg2, f64 *, 8);
     this->unkC8.unk8 = 0.0f;
@@ -775,8 +773,7 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     sp58 = (f32) M2C_FIELD(this, f64 *, 0x90) + (f32) sp228;
     sp238 = (f64) sp58;
     KDMath_Smooth<MKVector3>(sp240, *((MKVector3 *) &this->unk98), 1.0f, 0.5f);
-    this->unk98 = M2C_BITWISE(f64, sp240);
-    this->unkA0 = (f64) sp240.unk8;
+    *(MKVector3 *) &this->unk98 = sp240;
     this->unkC8.AddNode(*((MKVector3 *) &this->unk98));
     temp_f0_1160 = this->unkB8 - this->unk88;
     sp40 = temp_f0_1160;
@@ -800,8 +797,7 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     sp18 = (f32) M2C_FIELD(this, f64 *, 0x90) + (f32) sp1D8;
     sp1E8 = (f64) sp18;
     KDMath_Smooth<MKVector3>(sp1F0, *((MKVector3 *) &this->unkA8), 1.0f, 0.25f);
-    this->unkA8 = M2C_BITWISE(f64, sp1F0);
-    this->unkB0 = (f64) sp1F0.unk8;
+    *(MKVector3 *) &this->unkA8 = sp1F0;
     this->unkC8.AddNode(*((MKVector3 *) &this->unkA8));
     this->unkC8.AddNode(*((MKVector3 *) &this->unkB8));
     var_r4_1223 = 1;
@@ -888,8 +884,7 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     sp1A8 = (f64) spE8;
     if (MKCollision_RayCollide(*((MKVector3 *) &this->unkA8), *((MKVector3 *) &sp1A0), (MKCollisionResult *) &sp280, (MKCollisionMode) 7, 0) != 0) {
         KDMath_Smooth<MKVector4>(sp180, this->unkF0, 1.0f, 0.5f);
-        M2C_FIELD(this, f64 *, 0xF0) = M2C_BITWISE(f64, sp180);
-        M2C_FIELD(this, f64 *, 0xF8) = (f64) sp180.unk8;
+        M2C_FIELD(this, MKVector4 *, 0xF0) = sp180;
         this->unkF0.unkC = 1.0f;
     }
     spD8 = -1.0f;
@@ -902,7 +897,7 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     sp138 = (f64) spD8;
     sp120 = (f64) spC0;
     sp128 = (f64) spC8;
-    KDRand_Vector(sp140, *((MKVector3 *) &sp130));
+    sp140 = KDRand_Vector(*((MKVector3 *) &sp130), *((MKVector3 *) &sp120));
     temp_f0_1428 = sp140 * 5.53552857e-315;
     spB0 = temp_f0_1428;
     sp150 = temp_f0_1428;

@@ -57,6 +57,7 @@
 #include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_CrystalLP1;
@@ -199,7 +200,7 @@ s32 CheckPoint::LoadDone() {
     f64 sp40;
     f64 sp38;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     MKModel *temp_r3_391;
@@ -252,11 +253,11 @@ s32 CheckPoint::LoadDone() {
     sp50 = M2C_FIELD(temp_r5_436, f64 *, 0x38);
     M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *, f64 *, void *, f64), 0x28)(&this->unk100, &sp48, temp_r5_436, temp_f1_439);
     if ((u8) this->unk1C1 == 0) {
-        MKVector(300.0f, 0.0f, 0.0f);
+        sp18 = MKVector(300.0f, 0.0f, 0.0f);
         ((MKProp *) &sp28)->GetPos();
-        sp8 = sp28 - sp18;
+        sp8 = sp28 - M2C_BITWISE(f64, sp18);
         this->unkF0 = sp8;
-        sp10 = sp30 - sp20;
+        sp10 = sp30 - sp18.unk8;
         sp38 = sp8;
         sp40 = (f64) sp10;
         this->unkF8 = (f64) sp10;

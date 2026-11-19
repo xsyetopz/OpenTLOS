@@ -51,7 +51,7 @@ public:
     /* 0x010 */ u8 unk10;
 };
 
-void KDSpline_GetMeasure(const MKVector3 &, const MKVector3 &, const MKVector3 &, const MKVector3 &, float, Matrix *);
+MKVector3 KDSpline_GetMeasure(const MKVector3 &, const MKVector3 &, const MKVector3 &, const MKVector3 &, float, Matrix *);
 extern Matrix splinePosMixer;
 extern u8 splineVelMixer[0x40];
 extern u8 splineAccMixer[0x40];

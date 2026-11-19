@@ -476,9 +476,8 @@ loop_26:
             spC0 = sp30;
             sp118 = (f64) sp38;
             spC8 = (f64) sp38;
-            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_623->unk3C8);
-            sp130 = M2C_BITWISE(f64, spA0);
-            sp138 = (f64) spA0.unk8;
+            spA0 = KDMath_Slerp(*((MKVector3 *) &sp130), *((MKVector3 *) &sp120), 6.2831855f / (f32) temp_r6_623->unk3C8);
+            *(MKVector3 *) &sp130 = spA0;
             M2C_FIELD(*(this->unk4 + (var_r28_596 + 0x84)), s32 *, 4) = 0x40004200;
             temp_r5_659 = this->unk4;
             temp_r5_659->unk2C0.AddSpawnPoint(temp_r5_659 + (var_r28_596 + 0x80));
@@ -521,9 +520,8 @@ loop_31:
             sp80 = sp10;
             sp118 = (f64) sp18;
             sp88 = (f64) sp18;
-            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_735->unk3CC);
-            sp130 = M2C_BITWISE(f64, sp60);
-            sp138 = (f64) sp60.unk8;
+            sp60 = KDMath_Slerp(*((MKVector3 *) &sp130), *((MKVector3 *) &sp120), 6.2831855f / (f32) temp_r6_735->unk3CC);
+            *(MKVector3 *) &sp130 = sp60;
             M2C_FIELD(*(this->unk4 + (var_r28_701 + 0x84)), s32 *, 4) = 0x40004200;
             temp_r5_771 = this->unk4;
             temp_r5_771->unk310.AddSpawnPoint(temp_r5_771 + (var_r28_701 + 0x80));
@@ -1205,9 +1203,8 @@ loop_26:
             spC0 = sp30;
             sp118 = (f64) sp38;
             spC8 = (f64) sp38;
-            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_2117->unk3C8);
-            sp130 = M2C_BITWISE(f64, spA0);
-            sp138 = (f64) spA0.unk8;
+            spA0 = KDMath_Slerp(*((MKVector3 *) &sp130), *((MKVector3 *) &sp120), 6.2831855f / (f32) temp_r6_2117->unk3C8);
+            *(MKVector3 *) &sp130 = spA0;
             M2C_FIELD(*(this->unk4 + (var_r28_2090 + 0x84)), s32 *, 4) = 0x10004200;
             temp_r5_2153 = this->unk4;
             temp_r5_2153->unk2C0.AddSpawnPoint(temp_r5_2153 + (var_r28_2090 + 0x80));
@@ -1250,9 +1247,8 @@ loop_31:
             sp80 = sp10;
             sp118 = (f64) sp18;
             sp88 = (f64) sp18;
-            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_2229->unk3CC);
-            sp130 = M2C_BITWISE(f64, sp60);
-            sp138 = (f64) sp60.unk8;
+            sp60 = KDMath_Slerp(*((MKVector3 *) &sp130), *((MKVector3 *) &sp120), 6.2831855f / (f32) temp_r6_2229->unk3CC);
+            *(MKVector3 *) &sp130 = sp60;
             M2C_FIELD(*(this->unk4 + (var_r28_2195 + 0x84)), s32 *, 4) = 0x10004200;
             temp_r5_2265 = this->unk4;
             temp_r5_2265->unk310.AddSpawnPoint(temp_r5_2265 + (var_r28_2195 + 0x80));
@@ -2048,9 +2044,8 @@ loop_26:
             spC0 = sp30;
             sp118 = (f64) sp38;
             spC8 = (f64) sp38;
-            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_3822->unk3C8);
-            sp130 = M2C_BITWISE(f64, spA0);
-            sp138 = (f64) spA0.unk8;
+            spA0 = KDMath_Slerp(*((MKVector3 *) &sp130), *((MKVector3 *) &sp120), 6.2831855f / (f32) temp_r6_3822->unk3C8);
+            *(MKVector3 *) &sp130 = spA0;
             M2C_FIELD(*(this->unk4 + (var_r28_3795 + 0x84)), s32 *, 4) = 0x20004200;
             temp_r5_3858 = this->unk4;
             temp_r5_3858->unk2C0.AddSpawnPoint(temp_r5_3858 + (var_r28_3795 + 0x80));
@@ -2093,9 +2088,8 @@ loop_31:
             sp80 = sp10;
             sp118 = (f64) sp18;
             sp88 = (f64) sp18;
-            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_3934->unk3CC);
-            sp130 = M2C_BITWISE(f64, sp60);
-            sp138 = (f64) sp60.unk8;
+            sp60 = KDMath_Slerp(*((MKVector3 *) &sp130), *((MKVector3 *) &sp120), 6.2831855f / (f32) temp_r6_3934->unk3CC);
+            *(MKVector3 *) &sp130 = sp60;
             M2C_FIELD(*(this->unk4 + (var_r28_3900 + 0x84)), s32 *, 4) = 0x20004200;
             temp_r5_3970 = this->unk4;
             temp_r5_3970->unk310.AddSpawnPoint(temp_r5_3970 + (var_r28_3900 + 0x80));
@@ -3348,9 +3342,8 @@ loop_26:
             spC0 = sp30;
             sp118 = (f64) sp38;
             spC8 = (f64) sp38;
-            KDMath_Slerp(spA0, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_6387->unk3C8);
-            sp130 = M2C_BITWISE(f64, spA0);
-            sp138 = (f64) spA0.unk8;
+            spA0 = KDMath_Slerp(*((MKVector3 *) &sp130), *((MKVector3 *) &sp120), 6.2831855f / (f32) temp_r6_6387->unk3C8);
+            *(MKVector3 *) &sp130 = spA0;
             M2C_FIELD(*(this->unk4 + (var_r28_6360 + 0x84)), s32 *, 4) = 0x08004200;
             temp_r5_6423 = this->unk4;
             temp_r5_6423->unk2C0.AddSpawnPoint(temp_r5_6423 + (var_r28_6360 + 0x80));
@@ -3393,9 +3386,8 @@ loop_31:
             sp80 = sp10;
             sp118 = (f64) sp18;
             sp88 = (f64) sp18;
-            KDMath_Slerp(sp60, *((MKVector3 *) &sp130), 6.2831855f / (f32) temp_r6_6499->unk3CC);
-            sp130 = M2C_BITWISE(f64, sp60);
-            sp138 = (f64) sp60.unk8;
+            sp60 = KDMath_Slerp(*((MKVector3 *) &sp130), *((MKVector3 *) &sp120), 6.2831855f / (f32) temp_r6_6499->unk3CC);
+            *(MKVector3 *) &sp130 = sp60;
             M2C_FIELD(*(this->unk4 + (var_r28_6465 + 0x84)), s32 *, 4) = 0x08004200;
             temp_r5_6535 = this->unk4;
             temp_r5_6535->unk310.AddSpawnPoint(temp_r5_6535 + (var_r28_6465 + 0x80));
@@ -4501,7 +4493,7 @@ void DojoController::StateDojoStatueUpUpdate() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *' Too many errors printed, aborting program
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void DojoController::StateDojoStatueUpEnter() {
     s8 sp3A;
     s8 sp39;
@@ -5864,34 +5856,28 @@ loop_17:
             spF8 = M2C_FIELD(arg1, f64 *, 8);
         } else if ((arg4 != 0) && (arg5 != 0)) {
             if (var_r30_11274 & 1) {
-                KDMath_Slerp(spB0, *((MKVector3 *) arg2), arg6 * (f32) (var_r30_11274 / 2));
-                spD0 = M2C_BITWISE(f64, spB0);
-                spD8 = (f64) spB0.unk8;
+                spB0 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &spE0), arg6 * (f32) (var_r30_11274 / 2));
+                *(MKVector3 *) &spD0 = spB0;
             } else {
-                KDMath_Slerp(spA0, *((MKVector3 *) arg2), -(arg6 * (f32) (var_r30_11274 / 2)));
-                spD0 = M2C_BITWISE(f64, spA0);
-                spD8 = (f64) spA0.unk8;
+                spA0 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &spE0), -(arg6 * (f32) (var_r30_11274 / 2)));
+                *(MKVector3 *) &spD0 = spA0;
             }
         } else if (arg5 != 0) {
             if (var_r30_11274 & 1) {
-                KDMath_Slerp(sp90, *((MKVector3 *) arg2), arg6 * (f32) (var_r30_11274 / 2));
-                spD0 = M2C_BITWISE(f64, sp90);
-                spD8 = (f64) sp90.unk8;
+                sp90 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &spE0), arg6 * (f32) (var_r30_11274 / 2));
+                *(MKVector3 *) &spD0 = sp90;
             } else {
-                KDMath_Slerp(sp80, *((MKVector3 *) arg2), -(arg6 * (f32) (var_r30_11274 / 2)));
-                spD0 = M2C_BITWISE(f64, sp80);
-                spD8 = (f64) sp80.unk8;
+                sp80 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &spE0), -(arg6 * (f32) (var_r30_11274 / 2)));
+                *(MKVector3 *) &spD0 = sp80;
             }
         } else {
             temp_r3_11385 = var_r30_11274 + 1;
             if (temp_r3_11385 & 1) {
-                KDMath_Slerp(sp70, *((MKVector3 *) arg2), (arg6 * 0.5f) + (arg6 * (f32) (temp_r3_11385 / 2)));
-                spD0 = M2C_BITWISE(f64, sp70);
-                spD8 = (f64) sp70.unk8;
+                sp70 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &spE0), (arg6 * 0.5f) + (arg6 * (f32) (temp_r3_11385 / 2)));
+                *(MKVector3 *) &spD0 = sp70;
             } else {
-                KDMath_Slerp(sp60, *((MKVector3 *) arg2), (arg6 * 0.5f) - (arg6 * (f32) (temp_r3_11385 / 2)));
-                spD0 = M2C_BITWISE(f64, sp60);
-                spD8 = (f64) sp60.unk8;
+                sp60 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &spE0), (arg6 * 0.5f) - (arg6 * (f32) (temp_r3_11385 / 2)));
+                *(MKVector3 *) &spD0 = sp60;
             }
         }
         temp_f2_11432 = spD0 * (f64) arg3;
@@ -6338,34 +6324,28 @@ loop_19:
                     sp150 = M2C_FIELD(arg1, f64 *, 8);
                 } else if ((arg4 != 0) && (arg5 != 0)) {
                     if (var_r29_12133 & 1) {
-                        KDMath_Slerp(sp108, *((MKVector3 *) arg2), arg6 * (f32) (var_r29_12133 / 2));
-                        sp128 = M2C_BITWISE(f64, sp108);
-                        sp130 = (f64) sp108.unk8;
+                        sp108 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), arg6 * (f32) (var_r29_12133 / 2));
+                        *(MKVector3 *) &sp128 = sp108;
                     } else {
-                        KDMath_Slerp(spF8, *((MKVector3 *) arg2), -(arg6 * (f32) (var_r29_12133 / 2)));
-                        sp128 = M2C_BITWISE(f64, spF8);
-                        sp130 = (f64) spF8.unk8;
+                        spF8 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), -(arg6 * (f32) (var_r29_12133 / 2)));
+                        *(MKVector3 *) &sp128 = spF8;
                     }
                 } else if (arg5 != 0) {
                     if (var_r29_12133 & 1) {
-                        KDMath_Slerp(spE8, *((MKVector3 *) arg2), arg6 * (f32) (var_r29_12133 / 2));
-                        sp128 = M2C_BITWISE(f64, spE8);
-                        sp130 = (f64) spE8.unk8;
+                        spE8 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), arg6 * (f32) (var_r29_12133 / 2));
+                        *(MKVector3 *) &sp128 = spE8;
                     } else {
-                        KDMath_Slerp(spD8, *((MKVector3 *) arg2), -(arg6 * (f32) (var_r29_12133 / 2)));
-                        sp128 = M2C_BITWISE(f64, spD8);
-                        sp130 = (f64) spD8.unk8;
+                        spD8 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), -(arg6 * (f32) (var_r29_12133 / 2)));
+                        *(MKVector3 *) &sp128 = spD8;
                     }
                 } else {
                     temp_r3_12239 = var_r29_12133 + 1;
                     if (temp_r3_12239 & 1) {
-                        KDMath_Slerp(spC8, *((MKVector3 *) arg2), (arg6 * 0.5f) + (arg6 * (f32) (temp_r3_12239 / 2)));
-                        sp128 = M2C_BITWISE(f64, spC8);
-                        sp130 = (f64) spC8.unk8;
+                        spC8 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), (arg6 * 0.5f) + (arg6 * (f32) (temp_r3_12239 / 2)));
+                        *(MKVector3 *) &sp128 = spC8;
                     } else {
-                        KDMath_Slerp(spB8, *((MKVector3 *) arg2), (arg6 * 0.5f) - (arg6 * (f32) (temp_r3_12239 / 2)));
-                        sp128 = M2C_BITWISE(f64, spB8);
-                        sp130 = (f64) spB8.unk8;
+                        spB8 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), (arg6 * 0.5f) - (arg6 * (f32) (temp_r3_12239 / 2)));
+                        *(MKVector3 *) &sp128 = spB8;
                     }
                 }
                 temp_f1_12286 = sp128 * (f64) arg3;
@@ -6412,34 +6392,28 @@ loop_39:
             } else if ((arg4 != 0) && (arg5 != 0)) {
                 temp_r3_12365 = var_r29_12344 - 1;
                 if (temp_r3_12365 & 1) {
-                    KDMath_Slerp(sp98, *((MKVector3 *) arg2), arg6 * (f32) (temp_r3_12365 / 2));
-                    sp128 = M2C_BITWISE(f64, sp98);
-                    sp130 = (f64) sp98.unk8;
+                    sp98 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), arg6 * (f32) (temp_r3_12365 / 2));
+                    *(MKVector3 *) &sp128 = sp98;
                 } else {
-                    KDMath_Slerp(sp88, *((MKVector3 *) arg2), -(arg6 * (f32) (temp_r3_12365 / 2)));
-                    sp128 = M2C_BITWISE(f64, sp88);
-                    sp130 = (f64) sp88.unk8;
+                    sp88 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), -(arg6 * (f32) (temp_r3_12365 / 2)));
+                    *(MKVector3 *) &sp128 = sp88;
                 }
             } else if (arg5 != 0) {
                 if (var_r29_12344 & 1) {
-                    KDMath_Slerp(sp78, *((MKVector3 *) arg2), arg6 * (f32) (var_r29_12344 / 2));
-                    sp128 = M2C_BITWISE(f64, sp78);
-                    sp130 = (f64) sp78.unk8;
+                    sp78 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), arg6 * (f32) (var_r29_12344 / 2));
+                    *(MKVector3 *) &sp128 = sp78;
                 } else {
-                    KDMath_Slerp(sp68, *((MKVector3 *) arg2), -(arg6 * (f32) (var_r29_12344 / 2)));
-                    sp128 = M2C_BITWISE(f64, sp68);
-                    sp130 = (f64) sp68.unk8;
+                    sp68 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), -(arg6 * (f32) (var_r29_12344 / 2)));
+                    *(MKVector3 *) &sp128 = sp68;
                 }
             } else {
                 temp_r3_12454 = var_r29_12344 + 2;
                 if (temp_r3_12454 & 1) {
-                    KDMath_Slerp(sp58, *((MKVector3 *) arg2), arg6 * (f32) (temp_r3_12454 / 2));
-                    sp128 = M2C_BITWISE(f64, sp58);
-                    sp130 = (f64) sp58.unk8;
+                    sp58 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), arg6 * (f32) (temp_r3_12454 / 2));
+                    *(MKVector3 *) &sp128 = sp58;
                 } else {
-                    KDMath_Slerp(sp48, *((MKVector3 *) arg2), -(arg6 * (f32) (temp_r3_12454 / 2)));
-                    sp128 = M2C_BITWISE(f64, sp48);
-                    sp130 = (f64) sp48.unk8;
+                    sp48 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp138), -(arg6 * (f32) (temp_r3_12454 / 2)));
+                    *(MKVector3 *) &sp128 = sp48;
                 }
             }
             temp_f1_12498 = sp128 * (f64) arg3;
@@ -6455,7 +6429,7 @@ loop_39:
             sp40 = (f64) sp10;
             M2C_FIELD(M2C_FIELD(temp_r20_12506, void **, 0x84), u32 *, 4) = arg7;
             this->unk310.AddSpawnPoint(((u8 *) temp_r20_12506) + 0x80);
-            temp_r21_12521 = ((u8 *) temp_r20_12506) + 0x90;
+            temp_r21_12521 = (Matrix *) (((u8 *) temp_r20_12506) + 0x90);
             temp_r21_12521->SetIdentity();
             M2C_FIELD(temp_r20_12506, f32 *, 0xC0) = (f32) sp148;
             M2C_FIELD(temp_r20_12506, f32 *, 0xC4) = (*(f32 *) ((u8 *) &sp148 + 0x4));

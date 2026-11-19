@@ -90,6 +90,7 @@
 #include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_EnemyBurnLP;
@@ -208,7 +209,7 @@ void Enemy::Message(MKMessage *arg0) {
     f64 sp140;
     f64 sp138;
     f64 sp128;
-    f64 sp118;
+    MKVector3 sp118;
     f32 sp110;
     f64 sp108;
     f32 sp100;
@@ -437,8 +438,8 @@ block_409:
                 var_r26_280 = 8;
                 temp_f31_294 = GetCollisionRadius();
                 sp378.GetPos();
-                KDMath_Sub2D(*((MKVector3 *) &sp378.unk10), *((MKVector3 *) &sp448));
-                Normalise(*((MKVector3 *) &sp378.unk20));
+                *((MKVector3 *) &sp378.unk10) = KDMath_Sub2D(*((MKVector3 *) &sp448), *((MKVector3 *) &sp378));
+                *((MKVector3 *) &sp378.unk20) = Normalise(*((MKVector3 *) &sp378.unk10));
                 ((MKVector3 *) &sp378.unk30)->operator*(temp_f31_294);
                 ((MKProp *) &sp378.unk40)->GetPos();
                 temp_f0_315 = sp378.unk40 + M2C_BITWISE(f64, sp378.unk30);
@@ -545,8 +546,8 @@ block_103:
                             var_r26_280 = 8;
                             temp_f31_545 = GetCollisionRadius();
                             sp308.GetPos();
-                            KDMath_Sub2D(*((MKVector3 *) &sp308.unk10), *((MKVector3 *) &sp448));
-                            Normalise(*((MKVector3 *) &sp308.unk20));
+                            *((MKVector3 *) &sp308.unk10) = KDMath_Sub2D(*((MKVector3 *) &sp448), *((MKVector3 *) &sp308));
+                            *((MKVector3 *) &sp308.unk20) = Normalise(*((MKVector3 *) &sp308.unk10));
                             ((MKVector3 *) &sp308.unk30)->operator*(temp_f31_545);
                             ((MKProp *) &sp308.unk40)->GetPos();
                             sp58 = sp308.unk40 + M2C_BITWISE(f64, sp308.unk30);
@@ -577,7 +578,7 @@ block_103:
                     sp2E8 = temp_f0_624;
                     sp110 = (f32) sp450 - (f32) sp2E0;
                     sp2F0 = (f64) sp110;
-                    Normalise(sp2F8);
+                    sp2F8 = Normalise(*((MKVector3 *) &sp2E8));
                     temp_r3_637 = this->unk8;
                     sp438 = M2C_BITWISE(f64, sp2F8);
                     sp48 = -M2C_FIELD(temp_r3_637, f32 *, 0x20);
@@ -682,7 +683,7 @@ block_199:
                         sp2A8 = temp_f0_873;
                         sp100 = M2C_FIELD(temp_r3_812, f32 *, 0x18) - (f32) sp2A0;
                         sp2B0 = (f64) sp100;
-                        Normalise(sp2B8);
+                        sp2B8 = Normalise(*((MKVector3 *) &sp2A8));
                         temp_r3_886 = this->unk8;
                         sp418 = M2C_BITWISE(f64, sp2B8);
                         sp38 = -M2C_FIELD(temp_r3_886, f32 *, 0x20);
@@ -1214,11 +1215,11 @@ block_199:
         goto block_409;
     case 166:                                       /* switch 1 */
         temp_r25_2386 = checked_cast<GetConvexFuryTargetPosMsg *, MKMessage>(arg0);
-        MKVector(0.0f, 150.0f, 0.0f);
+        sp118 = MKVector(0.0f, 150.0f, 0.0f);
         ((MKProp *) &sp128)->GetPos();
-        sp18 = sp128 + sp118;
+        sp18 = sp128 + M2C_BITWISE(f64, sp118);
         M2C_FIELD(temp_r25_2386, f64 *, 8) = sp18;
-        sp20 = sp130 + sp120;
+        sp20 = sp130 + sp118.unk8;
         sp138 = sp18;
         sp140 = (f64) sp20;
         M2C_FIELD(temp_r25_2386, f64 *, 0x10) = (f64) sp20;

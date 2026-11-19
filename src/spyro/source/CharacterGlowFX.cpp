@@ -22,6 +22,7 @@
 #include "common/Source/MKView.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
@@ -364,9 +365,8 @@ loop_49:
                 sp128 = temp_f0_554;
                 sp70 = M2C_FIELD(temp_r4_551, f32 *, 8) - (f32) sp2B0;
                 sp130 = (f64) sp70;
-                Normalise(sp138);
-                sp278 = M2C_BITWISE(f64, sp138);
-                sp280 = (f64) sp138.unk8;
+                sp138 = Normalise(*((MKVector3 *) &sp128));
+                *(MKVector3 *) &sp278 = sp138;
                 spE4 = 1.0f;
                 spD8 = M2C_FIELD(this, f32 *, 0x28) * temp_f26_159;
                 spDC = M2C_FIELD(this, f32 *, 0x2C) * temp_f26_159;

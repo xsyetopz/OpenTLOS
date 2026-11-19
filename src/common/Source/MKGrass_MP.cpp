@@ -698,13 +698,13 @@ void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType 
     s8 *sp10;
     f32 spC;
     f32 sp8;
+    MKVector3 *temp_r3_1245;
+    MKVector3 *temp_r3_1274;
+    MKVector3 *temp_r3_1360;
     f32 temp_f3_1284;
     f32 var_f29_1241;
     f32 var_f4_1291;
     f32 var_f4_1416;
-    f64 *temp_r3_1245;
-    f64 *temp_r3_1274;
-    f64 *temp_r3_1360;
     f64 temp_f0_1248;
     f64 temp_f0_1372;
     f64 temp_f0_1400;
@@ -784,15 +784,13 @@ loop_55:
 loop_36:
                         if (var_r21_1246 < (s32) arg1->unk8) {
                             MKModel_ExploreCalculateVertex(arg1, var_r21_1246);
-                            Min(sp88, *((MKVector3 *) &spB8));
-                            spB8 = M2C_BITWISE(f64, sp88);
-                            spC0 = (f64) sp88.unk8;
-                            Max(sp78, *((MKVector3 *) &spB8));
+                            sp88 = Min(*((MKVector3 *) &spB8), *arg1->unk18);
+                            *(MKVector3 *) &spB8 = sp88;
+                            sp78 = Max(*((MKVector3 *) &spB8), *arg1->unk18);
                             temp_r3_1274 = arg1->unk18;
-                            spA8 = M2C_BITWISE(f64, sp78);
-                            spB0 = (f64) sp78.unk8;
+                            *(MKVector3 *) &spA8 = sp78;
                             sp98 -= M2C_FIELD(temp_r3_1274, f64 *, 0);
-                            temp_f3_1284 = (f32) spA0 - (f32) M2C_FIELD(temp_r3_1274, f64 *, 8);
+                            temp_f3_1284 = (f32) spA0 - temp_r3_1274->unk8;
                             spA0 = temp_f3_1284;
                             var_f4_1291 = (temp_f3_1284 * temp_f3_1284) + (((f32) sp98 * (f32) sp98) + ((*(f32 *) ((u8 *) &sp98 + 0x4)) * (*(f32 *) ((u8 *) &sp98 + 0x4))));
                             if (var_f4_1291 > 0.0f) {
@@ -923,11 +921,11 @@ s16 CalculateGrassVertex(GrassVertex *arg0, GrassStrip *arg1, MeshChunkExplorer 
     f32 sp18;
     f64 sp10;
     f64 sp8;
+    MKVector3 *temp_r4_1548;
     f32 temp_f3_1558;
     f32 temp_f6_1565;
     f32 temp_f7_1571;
     f64 *temp_r3_1603;
-    f64 *temp_r4_1548;
     f64 *var_r3_1559;
     f64 *var_r3_1613;
     f64 temp_f0_1611;
@@ -936,19 +934,19 @@ s16 CalculateGrassVertex(GrassVertex *arg0, GrassStrip *arg1, MeshChunkExplorer 
     s32 var_r27_1638;
 
     temp_r4_1548 = arg2->unk18;
-    temp_r23_1556 = (s16) (u16) M2C_FIELD(temp_r4_1548, s32 *, 0) + (s16) (u16) M2C_FIELD(temp_r4_1548, s32 *, 8);
+    temp_r23_1556 = (s16) M2C_BITWISE(u16, temp_r4_1548->unk0) + (s16) M2C_BITWISE(u16, temp_r4_1548->unk8);
     if (arg7 != NULL) {
-        temp_f3_1558 = M2C_FIELD(temp_r4_1548, f32 *, 4);
+        temp_f3_1558 = temp_r4_1548->unk4;
         var_r3_1559 = &sp48;
-        temp_f6_1565 = M2C_BITWISE(f32, M2C_FIELD(temp_r4_1548, s32 *, 0));
-        temp_f7_1571 = M2C_BITWISE(f32, M2C_FIELD(temp_r4_1548, s32 *, 8));
+        temp_f6_1565 = temp_r4_1548->unk0;
+        temp_f7_1571 = temp_r4_1548->unk8;
         sp18 = arg7->unk30 + ((temp_f7_1571 * arg7->unk20) + ((temp_f6_1565 * arg7->unk0) + (temp_f3_1558 * arg7->unk10)));
         sp1C = arg7->unk34 + ((temp_f7_1571 * arg7->unk24) + ((temp_f6_1565 * arg7->unk4) + (temp_f3_1558 * arg7->unk14)));
         sp20 = arg7->unk38 + ((temp_f7_1571 * arg7->unk28) + ((temp_f6_1565 * arg7->unk8) + (temp_f3_1558 * arg7->unk18)));
         sp48 = (f64) sp18;
         sp50 = (f64) sp20;
     } else {
-        var_r3_1559 = temp_r4_1548;
+        var_r3_1559 = (f64 *) temp_r4_1548;
     }
     arg0->unk0 = M2C_FIELD(var_r3_1559, f64 *, 0);
     arg0->unk8 = M2C_FIELD(var_r3_1559, f64 *, 8);

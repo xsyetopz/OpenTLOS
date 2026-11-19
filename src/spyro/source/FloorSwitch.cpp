@@ -44,6 +44,7 @@
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_PLACEHOLDER;
@@ -159,7 +160,7 @@ void FloorSwitch::Draw() {
     GameProp::Draw();
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *FloorSwitch::Update() {
     s8 sp130;
     f64 sp128;
@@ -172,7 +173,7 @@ void *FloorSwitch::Update() {
     f64 spF8;
     f64 spF0;
     f64 spE8;
-    f64 spD8;
+    MKVector3 spD8;
     f64 spD0;
     f64 spC8;
     f64 spC0;
@@ -249,10 +250,10 @@ void *FloorSwitch::Update() {
         sp11C = 0;
         temp_f29_350 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f28_355 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_355, temp_f29_350);
+        spD8 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_355, temp_f29_350);
         sp18 = spD8 * 5.398241246e-315;
         sp118 = 0x417;
-        sp20 = spE0 * 10.0f;
+        sp20 = spD8.unk8 * 10.0f;
         sp120 = sp18;
         sp128 = (f64) sp20;
         sp130 = 1;
@@ -270,7 +271,7 @@ void *FloorSwitch::Update() {
     spA0 = (f64) sp80;
     sp88 = (f64) sp68;
     sp90 = (f64) sp70;
-    KDRand_Vector(spA8, *((MKVector3 *) &sp98));
+    spA8 = KDRand_Vector(*((MKVector3 *) &sp98), *((MKVector3 *) &sp88));
     temp_f1_412 = M2C_BITWISE(f32, spA8);
     var_f4_420 = (spA8.unk8 * spA8.unk8) + ((temp_f1_412 * temp_f1_412) + (spA8.unk4 * spA8.unk4));
     if (var_f4_420 > 1e-12f) {

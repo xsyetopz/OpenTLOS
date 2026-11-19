@@ -56,6 +56,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/GameEnums.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -269,7 +270,7 @@ u8 EnemyGoal_AttackProjectile::Update() {
         sp1E8 = temp_f0_184;
         sp80 = (f32) M2C_FIELD(this, f64 *, 0x40) - (f32) sp1E0;
         sp1F0 = (f64) sp80;
-        Normalise(sp1F8);
+        sp1F8 = Normalise(*((MKVector3 *) &sp1E8));
         temp_f1_197 = M2C_BITWISE(f64, sp1F8);
         sp228.unk20 = temp_f1_197;
         sp228.unk28 = (f64) sp1F8.unk8;
@@ -313,7 +314,7 @@ u8 EnemyGoal_AttackProjectile::Update() {
         sp168.GetDir();
         ((MKVector3 *) &sp168.unk10)->operator*(temp_f30_305);
         temp_r3_313 = this->unkC;
-        MKVector(0.0f, temp_r3_313->GetCollisionHeight(), 0.0f);
+        *((MKVector3 *) &sp168.unk20) = MKVector(0.0f, temp_r3_313->GetCollisionHeight(), 0.0f);
         ((MKProp *) &sp168.unk30)->GetPos();
         temp_f0_329 = sp168.unk30 + (f64) sp168.unk20;
         sp8 = temp_f0_329;

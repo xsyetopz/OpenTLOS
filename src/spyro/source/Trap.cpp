@@ -36,6 +36,7 @@
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/TrapSystem.h"
 #include "unplaced_templates.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f32 Trap::GetCollisionHeight() {
@@ -102,7 +103,7 @@ s32 Trap::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     sp28.unk10 = temp_f0_80;
     sp10 = arg0.unk8 - M2C_BITWISE(f32, sp28.unk8);
     sp28.unk18 = (f64) sp10;
-    Normalise(*((MKVector3 *) &sp28.unk20));
+    *((MKVector3 *) &sp28.unk20) = Normalise(*((MKVector3 *) &sp28.unk10));
     ((MKVector3 *) &sp28.unk30)->operator*(100.0f);
     ((MKProp *) &sp28.unk40)->GetPos();
     sp18 = sp28.unk40 + M2C_BITWISE(f64, sp28.unk30);

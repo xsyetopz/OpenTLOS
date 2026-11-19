@@ -1169,7 +1169,6 @@ loop_24:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SMTree::LinkUpRow(int arg0, int arg1, int arg2) {
     f64 sp90;
     f64 sp88;
@@ -1214,12 +1213,10 @@ loop_5:
         sp58 = temp_f0_1939;
         sp30 = M2C_FIELD(var_r29_1916, f32 *, 0x38) + M2C_FIELD(var_r29_1916, f32 *, 0x48);
         sp60 = (f64) sp30;
-        Max(sp48, *((MKVector3 *) &sp58));
-        sp38 = M2C_BITWISE(f64, sp48);
-        sp40 = (f64) sp48.unk8;
-        Min(sp78, *(MKVector3 *) (var_r29_1916 + 0x30));
-        M2C_FIELD(var_r30_1915, f64 *, 0) = M2C_BITWISE(f64, sp78);
-        M2C_FIELD(var_r30_1915, f64 *, 8) = (f64) sp78.unk8;
+        sp48 = Max(*((MKVector3 *) &sp58), *((MKVector3 *) &sp68));
+        *(MKVector3 *) &sp38 = sp48;
+        sp78 = Min(*(MKVector3 *) (var_r29_1916 + 0x30), *((MKVector3 *) var_r29_1916));
+        M2C_FIELD(var_r30_1915, MKVector3 *, 0) = sp78;
         sp8 = sp38 - M2C_FIELD(var_r30_1915, f64 *, 0);
         M2C_FIELD(var_r30_1915, f64 *, 0x10) = sp8;
         sp10 = (f32) sp40 - var_r30_1915->unk8;
@@ -1240,7 +1237,6 @@ loop_5:
         goto loop_5;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'arg_sp50'
 void SMTree::PairUp(int arg0, int arg1, int arg2) {

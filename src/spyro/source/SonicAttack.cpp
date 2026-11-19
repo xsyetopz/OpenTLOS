@@ -39,6 +39,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -195,7 +196,7 @@ loop_24:
             sp10 = -M2C_BITWISE(f32, temp_r30_362->unk28);
             sp58 = (f64) sp8;
             sp60 = (f64) sp10;
-            Normalise(sp68);
+            sp68 = Normalise(*((MKVector3 *) &sp58));
             sp78.operator*(3000.0f);
             temp_f0_190 = sp78 * (f64) temp_f29_175;
             sp28 = temp_f0_190;

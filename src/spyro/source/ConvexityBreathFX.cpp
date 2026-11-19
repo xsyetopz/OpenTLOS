@@ -58,6 +58,7 @@
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(Matrix **);                            /* extern */
@@ -207,7 +208,7 @@ s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVect
     MKVector3 spC8;
     MKVector3 spB8;
     MKVector3 spA8;
-    M2C_UNK sp98;
+    MKVector3 sp98;
     f64 sp90;
     f64 sp88;
     f32 sp80;
@@ -430,16 +431,16 @@ loop_32:
     var_r28_698 = 0;
     do {
         temp_f31_704 = MKRand_Float((int *) &gViewSeed, 50.0f, 2000.0f);
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, -1.0f, -1.0f);
-        KDRand_Vector(spB8, spA8);
+        sp98 = MKVector(1.0f, 1.0f, 1.0f);
+        spA8 = MKVector(-1.0f, -1.0f, -1.0f);
+        spB8 = KDRand_Vector(spA8, sp98);
         spC8.operator*(0.5f);
         temp_f0_725 = (f64) sp178 + M2C_BITWISE(f64, spC8);
         sp18 = temp_f0_725;
         spD8 = temp_f0_725;
         sp20 = sp180 + spC8.unk8;
         spE0 = (f64) sp20;
-        Normalise(spE8);
+        spE8 = Normalise(*((MKVector3 *) &spD8));
         sp28 = spE8 * (f64) temp_f31_704;
         spF8 = sp28;
         sp30 = spE8.unk8 * temp_f31_704;

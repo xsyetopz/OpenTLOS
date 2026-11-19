@@ -38,6 +38,7 @@
 #include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -233,7 +234,6 @@ void PlatformObject::UpdateRotationMatrix() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'ClampMagnitude'
 void PlatformObject::UpdateTilt() {
     f64 sp20;                                       /* compiler-managed */
     f64 sp18;
@@ -272,9 +272,8 @@ void PlatformObject::UpdateTilt() {
                 sp18 = (f64) M2C_FIELD(temp_r4_326, f32 *, 0x50);
                 sp20 = (f64) M2C_FIELD(temp_r4_326, f32 *, 0x58);
                 (*(f32 *) ((u8 *) &sp18 + 0x4)) = 0.0f;
-                ClampMagnitude(sp8, temp_r5_321->unk4);
-                sp18 = M2C_BITWISE(f64, sp8);
-                sp20 = (f64) sp8.unk8;
+                sp8 = ClampMagnitude(*((MKVector3 *) &sp18), temp_r5_321->unk4);
+                *(MKVector3 *) &sp18 = sp8;
                 temp_r3_354 = this->unk0;
                 temp_f31_357 = temp_r3_354->unk0 / temp_r3_354->unk4;
                 sp18 *= (f64) temp_f31_357;
@@ -322,7 +321,6 @@ void PlatformObject::UpdateTilt() {
         this->unk10 = (var_f2_430 * (0.0f - temp_f1_440)) + temp_f1_440;
     }
 }
-#endif
 
 void PlatformObject::EndUpdate() {
     s32 temp_r31_525;

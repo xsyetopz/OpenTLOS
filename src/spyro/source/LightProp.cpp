@@ -39,7 +39,6 @@ void LightProp::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void LightProp::SetOrientation(Matrix *arg0) {
     MKVector3 sp28;
     f64 sp20;
@@ -57,12 +56,10 @@ void LightProp::SetOrientation(Matrix *arg0) {
     if ((ManagedLight *) this->unkC8 != NULL) {
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkE0, &sp28);
         temp_r3_78 = this->unkC8;
-        temp_r3_78->unk10 = M2C_BITWISE(f64, sp28);
-        temp_r3_78->unk18 = (f64) sp28.unk8;
+        *(MKVector3 *) &temp_r3_78->unk10 = sp28;
         temp_r3_83 = temp_r3_78->unk3C;
         if (temp_r3_83 != NULL) {
-            M2C_FIELD(temp_r3_83, f64 *, 0x10) = M2C_BITWISE(f64, sp28);
-            M2C_FIELD(temp_r3_83, f64 *, 0x18) = (f64) sp28.unk8;
+            M2C_FIELD(temp_r3_83, MKVector3 *, 0x10) = sp28;
         }
         sp8 = 0.0f;
         temp_r3_94 = this->unkC8;
@@ -80,7 +77,6 @@ void LightProp::SetOrientation(Matrix *arg0) {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to 'double'
 void *LightProp::Update() {

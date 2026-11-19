@@ -49,6 +49,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern MKSceneManager *gMK;
@@ -153,12 +154,12 @@ void *FallingDustProp::Update() {
     f64 sp210;
     MKVector3 sp200;
     MKVector3 sp1F0;
-    M2C_UNK sp1E0;
+    MKVector3 sp1E0;
     f64 sp1D8;
     f64 sp1D0;
     MKVector3 sp1C0;
     MKVector3 sp1B0;
-    M2C_UNK sp1A0;
+    MKVector3 sp1A0;
     f64 sp198;
     f64 sp190;
     MKVector3 sp180;
@@ -166,7 +167,7 @@ void *FallingDustProp::Update() {
     f64 sp170;
     MKVector3 sp160;
     MKVector3 sp150;
-    M2C_UNK sp140;
+    MKVector3 sp140;
     f64 sp138;
     f64 sp130;
     MKVector3 sp120;
@@ -174,7 +175,7 @@ void *FallingDustProp::Update() {
     f64 sp110;
     MKVector3 sp100;
     MKVector3 spF0;
-    M2C_UNK spE0;
+    MKVector3 spE0;
     f32 spD8;
     f64 spD0;
     f32 spC8;
@@ -315,18 +316,18 @@ void *FallingDustProp::Update() {
                 sp320 = sp70;
                 sp238 = (f64) sp78;
                 sp328 = (f64) sp78;
-                MKVector(1.0f, 1.0f, 1.0f);
-                MKVector(-1.0f, -1.0f, -1.0f);
-                KDRand_Vector(sp200, sp1F0);
+                sp1E0 = MKVector(1.0f, 1.0f, 1.0f);
+                sp1F0 = MKVector(-1.0f, -1.0f, -1.0f);
+                sp200 = KDRand_Vector(sp1F0, sp1E0);
                 sp60 = sp200 * 5.328646264e-315;
                 sp210 = sp60;
                 sp68 = sp200.unk8 * 3.1415927f;
                 sp2F0 = sp60;
                 sp218 = (f64) sp68;
                 sp2F8 = (f64) sp68;
-                MKVector(0.5f, -0.5f, 0.5f);
-                MKVector(-0.5f, -1.0f, -0.5f);
-                KDRand_Vector(sp1C0, sp1B0);
+                sp1A0 = MKVector(0.5f, -0.5f, 0.5f);
+                sp1B0 = MKVector(-0.5f, -1.0f, -0.5f);
+                sp1C0 = KDRand_Vector(sp1B0, sp1A0);
                 sp50 = sp1C0 * 5.676053805e-315;
                 sp1D0 = sp50;
                 sp58 = sp1C0.unk8 * 1000.0f;
@@ -341,9 +342,9 @@ void *FallingDustProp::Update() {
                 sp320 = sp40;
                 sp198 = (f64) sp48;
                 sp328 = (f64) sp48;
-                MKVector(0.25f, -0.5f, 0.25f);
-                MKVector(-0.25f, -1.0f, -0.25f);
-                KDRand_Vector(sp160, sp150);
+                sp140 = MKVector(0.25f, -0.5f, 0.25f);
+                sp150 = MKVector(-0.25f, -1.0f, -0.25f);
+                sp160 = KDRand_Vector(sp150, sp140);
                 sp30 = sp160 * 5.717499035e-315;
                 sp170 = sp30;
                 sp38 = sp160.unk8 * 2000.0f;
@@ -383,9 +384,9 @@ void *FallingDustProp::Update() {
                     sp2A0 = sp20;
                     sp138 = (f64) sp28;
                     sp2A8 = (f64) sp28;
-                    MKVector(0.5f, 0.1f, 0.5f);
-                    MKVector(-0.5f, 0.1f, -0.5f);
-                    KDRand_Vector(sp100, spF0);
+                    spE0 = MKVector(0.5f, 0.1f, 0.5f);
+                    spF0 = MKVector(-0.5f, 0.1f, -0.5f);
+                    sp100 = KDRand_Vector(spF0, spE0);
                     sp10 = sp100 * 5.676053805e-315;
                     temp_r3_571 = M2C_FIELD(temp_r31_161, void **, 0x70);
                     sp110 = sp10;

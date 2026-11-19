@@ -187,16 +187,15 @@ s32 Projectile::CreateInstance(ProjectileType arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
+#if 0 // DRAFT: ')' expected
 void Projectile::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, int arg4, int arg5) {
     MKVector3 sp8;
     MKVector3 *temp_r31_322;
     s32 var_r0_295;
 
     MKModel_SetPosition(this->unk4, arg0);
-    Tools_CalculateVelocity(sp8, arg0, arg2, -1960.0f);
-    this->unkC8 = M2C_BITWISE(f64, sp8);
-    this->unkD0 = (f64) sp8.unk8;
+    sp8 = Tools_CalculateVelocity(arg0, arg1, arg2, -1960.0f);
+    *(MKVector3 *) &this->unkC8 = sp8;
     this->unk14C |= 0x80;
     this->unk14C |= 0x40;
     this->unk130 = arg3;

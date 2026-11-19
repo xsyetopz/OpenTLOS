@@ -85,6 +85,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK __destroy_arr(M2C_UNK *, FuryFXFire::DragonStruct *(*)(FuryFXFire::DragonStruct *, s16), M2C_UNK, M2C_UNK); /* extern */
@@ -170,7 +171,7 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    f64 sp58;
+    MKVector3 sp58;
     f64 sp50;
     f64 sp48;
     f32 sp44;
@@ -238,12 +239,12 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
             sp80 = (f64) sp30;
             sp78 = (f64) sp28;
             temp_r3_198->Scale3x3(temp_r3_198, *((MKVector3 *) &sp78));
-            MKVector(0.0f, 600.0f, 0.0f);
-            temp_f0_217 = (f64) M2C_FIELD(&arg0, f32 *, 0) - sp58;
+            sp58 = MKVector(0.0f, 600.0f, 0.0f);
+            temp_f0_217 = (f64) M2C_FIELD(&arg0, f32 *, 0) - M2C_BITWISE(f64, sp58);
             sp18 = temp_f0_217;
             var_r3_219 = 0;
             sp68 = temp_f0_217;
-            sp20 = arg0.unk8 - sp60;
+            sp20 = arg0.unk8 - sp58.unk8;
             this->unk90.unk30 = (f32) sp68;
             sp70 = (f64) sp20;
             this->unk90.unk34 = (*(f32 *) ((u8 *) &sp68 + 0x4));
@@ -610,19 +611,19 @@ void *FuryFXFire::Update() {
     f64 sp810;
     f64 sp808;
     f64 sp800;
-    f64 sp7F0;
+    MKVector3 sp7F0;
     f64 sp7E8;
     f64 sp7E0;
     MKVector3 sp7D0;
-    M2C_UNK sp7C0;
+    MKVector3 sp7C0;
     f64 sp7B8;
     f64 sp7B0;
     MKVector3 sp7A0;
-    M2C_UNK sp790;
-    M2C_UNK sp780;
+    MKVector3 sp790;
+    MKVector3 sp780;
     f64 sp778;
     f64 sp770;
-    f64 sp760;
+    MKVector3 sp760;
     f64 sp758;
     f64 sp750;
     f64 sp748;
@@ -638,18 +639,18 @@ void *FuryFXFire::Update() {
     f64 sp6F8;
     f64 sp6F0;
     MKVector3 sp6E0;
-    M2C_UNK sp6D0;
+    MKVector3 sp6D0;
     f64 sp6C8;
     f64 sp6C0;
     MKVector3 sp6B0;
-    M2C_UNK sp6A0;
-    M2C_UNK sp690;
+    MKVector3 sp6A0;
+    MKVector3 sp690;
     f64 sp688;
     f64 sp680;
-    f64 sp670;
+    MKVector3 sp670;
     f64 sp668;
     f64 sp660;
-    f64 sp650;
+    MKVector3 sp650;
     f64 sp648;
     f64 sp640;
     f64 sp638;
@@ -665,22 +666,22 @@ void *FuryFXFire::Update() {
     f64 sp5E8;
     f64 sp5E0;
     MKVector3 sp5D0;
-    M2C_UNK sp5C0;
+    MKVector3 sp5C0;
     f64 sp5B8;
     f64 sp5B0;
     MKVector3 sp5A0;
-    M2C_UNK sp590;
-    M2C_UNK sp580;
+    MKVector3 sp590;
+    MKVector3 sp580;
     MKVector3 sp570;
-    M2C_UNK sp560;
+    MKVector3 sp560;
     f64 sp558;
     f64 sp550;
     MKVector3 sp540;
-    M2C_UNK sp530;
-    M2C_UNK sp520;
+    MKVector3 sp530;
+    MKVector3 sp520;
     f64 sp518;
     f64 sp510;
-    f64 sp500;
+    MKVector3 sp500;
     f64 sp4F8;
     f64 sp4F0;
     f64 sp4E8;
@@ -689,22 +690,22 @@ void *FuryFXFire::Update() {
     f64 sp4D0;
     f64 sp4C8;
     f64 sp4C0;
-    f64 sp4B0;
+    MKVector3 sp4B0;
     f64 sp4A8;
     f64 sp4A0;
     f64 sp498;
     f64 sp490;
-    f64 sp480;
+    MKVector3 sp480;
     f64 sp478;
     f64 sp470;
-    f64 sp460;
+    MKVector3 sp460;
     MKVector3 sp450;
-    M2C_UNK sp440;
+    MKVector3 sp440;
     f64 sp438;
     f64 sp430;
     MKVector3 sp420;
-    M2C_UNK sp410;
-    M2C_UNK sp400;
+    MKVector3 sp410;
+    MKVector3 sp400;
     f64 sp3F8;
     f64 sp3F0;
     f64 sp3E8;
@@ -1054,11 +1055,11 @@ void *FuryFXFire::Update() {
                 } while (var_r28_1141 < 3);
                 if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                     sp8E4 = 0;
-                    MKVector(1.0f, 1.0f, 1.0f);
+                    sp7F0 = MKVector(1.0f, 1.0f, 1.0f);
                     sp160 = sp7F0 * 5.56078426e-315;
                     sp8E0 = 0x417;
                     sp8E8 = sp160;
-                    sp168 = sp7F8 * 150.0f;
+                    sp168 = sp7F0.unk8 * 150.0f;
                     sp8F8 = 1;
                     sp8F0 = (f64) sp168;
                     sp800 = sp160;
@@ -1082,19 +1083,18 @@ void *FuryFXFire::Update() {
                 gb.unkB8.AddRandomWobbleForce(1.0f);
                 var_r26_1238 += 1;
             } while (var_r26_1238 < 5);
-            MKVector(3.0f, 5.0f, 3.0f);
-            MKVector(6.0f, 0.0f, 6.0f);
+            sp780 = MKVector(3.0f, 5.0f, 3.0f);
+            sp790 = MKVector(6.0f, 0.0f, 6.0f);
             sp7A0.operator*(gUpdateTimeDelta);
             temp_f0_1265 = (f64) M2C_FIELD(this, f32 *, 0xD0) + M2C_BITWISE(f64, sp7A0);
             sp70 = temp_f0_1265;
             sp7B0 = temp_f0_1265;
             sp78 = this->unkD8 + sp7A0.unk8;
             sp7B8 = (f64) sp78;
-            MKVector(0.0f, 0.0f, 0.0f);
-            Min(sp150, *((MKVector3 *) &sp7B0));
-            Max(sp7D0, sp150);
-            M2C_FIELD(this, f32 *, 0xD0) = M2C_BITWISE(f64, sp7D0);
-            M2C_FIELD(this, f32 *, 0xD8) = (f64) sp7D0.unk8;
+            sp7C0 = MKVector(0.0f, 0.0f, 0.0f);
+            sp150 = Min(*((MKVector3 *) &sp7B0), sp780);
+            sp7D0 = Max(sp150, sp7C0);
+            *(MKVector3 *) &M2C_FIELD(this, f32 *, 0xD0) = sp7D0;
             if (this->unk100 <= 0.0f) {
                 this->unk100 = 1.5f;
                 if ((u8) this->unk2F1 != 0) {
@@ -1117,11 +1117,11 @@ void *FuryFXFire::Update() {
                     sp8C4 = 0;
                     temp_f20_1360 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     temp_f21_1365 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-                    MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f21_1365, temp_f20_1360);
+                    sp760 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f21_1365, temp_f20_1360);
                     sp140 = sp760 * 5.398241246e-315;
                     sp8C0 = 0x417;
                     sp8C8 = sp140;
-                    sp148 = sp768 * 10.0f;
+                    sp148 = sp760.unk8 * 10.0f;
                     sp8D8 = 1;
                     sp8D0 = (f64) sp148;
                     sp770 = sp140;
@@ -1198,28 +1198,27 @@ loop_71:
             }
             break;
         case 3:
-            MKVector(5.0f, 50.0f, 5.0f);
-            MKVector(-1.0f, 4.0f, -1.0f);
+            sp690 = MKVector(5.0f, 50.0f, 5.0f);
+            sp6A0 = MKVector(-1.0f, 4.0f, -1.0f);
             sp6B0.operator*(gUpdateTimeDelta);
             temp_f0_1604 = (f64) M2C_FIELD(this, f32 *, 0xD0) + M2C_BITWISE(f64, sp6B0);
             sp60 = temp_f0_1604;
             sp6C0 = temp_f0_1604;
             sp68 = this->unkD8 + sp6B0.unk8;
             sp6C8 = (f64) sp68;
-            MKVector(0.1f, 0.0f, 0.1f);
-            Min(sp130, *((MKVector3 *) &sp6C0));
-            Max(sp6E0, sp130);
-            M2C_FIELD(this, f32 *, 0xD0) = M2C_BITWISE(f64, sp6E0);
-            M2C_FIELD(this, f32 *, 0xD8) = (f64) sp6E0.unk8;
+            sp6D0 = MKVector(0.1f, 0.0f, 0.1f);
+            sp130 = Min(*((MKVector3 *) &sp6C0), sp690);
+            sp6E0 = Max(sp130, sp6D0);
+            *(MKVector3 *) &M2C_FIELD(this, f32 *, 0xD0) = sp6E0;
             temp_r4_1631 = this->unkF4;
             if (temp_r4_1631 != NULL) {
                 temp_r4_1631->unk24 = this->unkD4;
-                MKVector(0.0f, 75.0f * this->unkD4, 0.0f);
-                temp_f0_1646 = M2C_FIELD(this, f64 *, 0xC0) + sp670;
+                sp670 = MKVector(0.0f, 75.0f * this->unkD4, 0.0f);
+                temp_f0_1646 = M2C_FIELD(this, f64 *, 0xC0) + M2C_BITWISE(f64, sp670);
                 sp120 = temp_f0_1646;
                 temp_r3_1652 = this->unkF4;
                 temp_r3_1652->unk0 = temp_f0_1646;
-                sp128 = this->unk90.unk38 + sp678;
+                sp128 = this->unk90.unk38 + sp670.unk8;
                 sp680 = temp_f0_1646;
                 temp_r3_1652->unk8 = (f64) sp128;
                 temp_r3_1659 = this->unkF4;
@@ -1238,11 +1237,11 @@ loop_71:
                 sp8A4 = 0;
                 temp_f20_1696 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 temp_f21_1701 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f21_1701, temp_f20_1696);
+                sp650 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f21_1701, temp_f20_1696);
                 sp110 = sp650 * 5.398241246e-315;
                 sp8A0 = 0x417;
                 sp8A8 = sp110;
-                sp118 = sp658 * 10.0f;
+                sp118 = sp650.unk8 * 10.0f;
                 sp8B8 = 1;
                 sp8B0 = (f64) sp118;
                 sp660 = sp110;
@@ -1318,41 +1317,39 @@ loop_87:
             return;
         case 4:
             if ((u8) this->unk2F0 != 0) {
-                MKVector(5.0f, 50.0f, 5.0f);
-                MKVector(-2.0f, 0.0f, -2.0f);
+                sp580 = MKVector(5.0f, 50.0f, 5.0f);
+                sp590 = MKVector(-2.0f, 0.0f, -2.0f);
                 sp5A0.operator*(gUpdateTimeDelta);
                 temp_f0_1943 = (f64) M2C_FIELD(this, f32 *, 0xD0) + M2C_BITWISE(f64, sp5A0);
                 sp50 = temp_f0_1943;
                 sp5B0 = temp_f0_1943;
                 sp58 = this->unkD8 + sp5A0.unk8;
                 sp5B8 = (f64) sp58;
-                MKVector(0.05f, 0.0f, 0.05f);
-                Min(sp100, *((MKVector3 *) &sp5B0));
-                Max(sp5D0, sp100);
-                M2C_FIELD(this, f32 *, 0xD0) = M2C_BITWISE(f64, sp5D0);
-                M2C_FIELD(this, f32 *, 0xD8) = (f64) sp5D0.unk8;
+                sp5C0 = MKVector(0.05f, 0.0f, 0.05f);
+                sp100 = Min(*((MKVector3 *) &sp5B0), sp580);
+                sp5D0 = Max(sp100, sp5C0);
+                *(MKVector3 *) &M2C_FIELD(this, f32 *, 0xD0) = sp5D0;
             } else {
-                MKVector(5.0f, 50.0f, 5.0f);
-                MKVector(-2.0f, -3.0f, -2.0f);
+                sp520 = MKVector(5.0f, 50.0f, 5.0f);
+                sp530 = MKVector(-2.0f, -3.0f, -2.0f);
                 sp540.operator*(gUpdateTimeDelta);
                 temp_f0_1989 = (f64) M2C_FIELD(this, f32 *, 0xD0) + M2C_BITWISE(f64, sp540);
                 sp40 = temp_f0_1989;
                 sp550 = temp_f0_1989;
                 sp48 = this->unkD8 + sp540.unk8;
                 sp558 = (f64) sp48;
-                MKVector(0.05f, 0.0f, 0.05f);
-                Min(spF0, *((MKVector3 *) &sp550));
-                Max(sp570, spF0);
-                M2C_FIELD(this, f32 *, 0xD0) = M2C_BITWISE(f64, sp570);
-                M2C_FIELD(this, f32 *, 0xD8) = (f64) sp570.unk8;
+                sp560 = MKVector(0.05f, 0.0f, 0.05f);
+                spF0 = Min(*((MKVector3 *) &sp550), sp520);
+                sp570 = Max(spF0, sp560);
+                *(MKVector3 *) &M2C_FIELD(this, f32 *, 0xD0) = sp570;
             }
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp884 = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp500 = MKVector(1.0f, 1.0f, 1.0f);
                 spE0 = sp500 * 5.634608575e-315;
                 sp880 = 0x417;
                 sp888 = spE0;
-                spE8 = sp508 * 500.0f;
+                spE8 = sp500.unk8 * 500.0f;
                 sp898 = 1;
                 sp890 = (f64) spE8;
                 sp510 = spE0;
@@ -1416,10 +1413,10 @@ loop_87:
                 sp4D8 = (f64) spD8;
                 sp4D0 = (f64) spD0;
                 sp900.Scale3x3(&sp900, *((MKVector3 *) &sp4D0));
-                MKVector(0.0f, 300.0f, 0.0f);
-                spC0 = M2C_FIELD(this, f64 *, 0xC0) + sp4B0;
+                sp4B0 = MKVector(0.0f, 300.0f, 0.0f);
+                spC0 = M2C_FIELD(this, f64 *, 0xC0) + M2C_BITWISE(f64, sp4B0);
                 sp4C0 = spC0;
-                spC8 = this->unk90.unk38 + sp4B8;
+                spC8 = this->unk90.unk38 + sp4B0.unk8;
                 sp4C8 = (f64) spC8;
                 sp900.unk30 = (f32) sp4C0;
                 sp900.unk34 = (*(f32 *) ((u8 *) &sp4C0 + 0x4));
@@ -1489,11 +1486,11 @@ loop_87:
                 }
             }
             if ((ManagedLight *) this->unkE8 != NULL) {
-                MKVector(0.0f, 500.0f, 0.0f);
-                spA0 = M2C_FIELD(this, f64 *, 0xC0) + sp480;
+                sp480 = MKVector(0.0f, 500.0f, 0.0f);
+                spA0 = M2C_FIELD(this, f64 *, 0xC0) + M2C_BITWISE(f64, sp480);
                 temp_r3_2418 = this->unkE8;
                 sp490 = spA0;
-                spA8 = this->unk90.unk38 + sp488;
+                spA8 = this->unk90.unk38 + sp480.unk8;
                 temp_r3_2418->unk10 = spA0;
                 temp_r3_2418->unk18 = (f64) spA8;
                 temp_r3_2424 = temp_r3_2418->unk3C;
@@ -1529,11 +1526,11 @@ loop_87:
                     M2C_FIELD(temp_r3_2458, f32 *, 0x28) = (f32) (1.0f / temp_f1_2456);
                     M2C_FIELD(temp_r3_2458, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_2458, f32 *, 0x24));
                 }
-                MKVector(0.0f, 17000.0f * temp_f4_2454, 0.0f);
-                sp90 = M2C_FIELD(this, f64 *, 0xC0) + sp460;
+                sp460 = MKVector(0.0f, 17000.0f * temp_f4_2454, 0.0f);
+                sp90 = M2C_FIELD(this, f64 *, 0xC0) + M2C_BITWISE(f64, sp460);
                 temp_r3_2485 = this->unkE8;
                 sp470 = sp90;
-                sp98 = this->unk90.unk38 + sp468;
+                sp98 = this->unk90.unk38 + sp460.unk8;
                 temp_r3_2485->unk10 = sp90;
                 temp_r3_2485->unk18 = (f64) sp98;
                 temp_r3_2491 = temp_r3_2485->unk3C;
@@ -1543,19 +1540,18 @@ loop_87:
                     M2C_FIELD(temp_r3_2491, f64 *, 0x18) = (f64) sp98;
                 }
             }
-            MKVector(500.0f, 500.0f, 500.0f);
-            MKVector(20.0f, -10.0f, 20.0f);
+            sp400 = MKVector(500.0f, 500.0f, 500.0f);
+            sp410 = MKVector(20.0f, -10.0f, 20.0f);
             sp420.operator*(gUpdateTimeDelta);
             temp_f0_2515 = (f64) M2C_FIELD(this, f32 *, 0xD0) + M2C_BITWISE(f64, sp420);
             sp30 = temp_f0_2515;
             sp430 = temp_f0_2515;
             sp38 = this->unkD8 + sp420.unk8;
             sp438 = (f64) sp38;
-            MKVector(0.1f, 0.0f, 0.1f);
-            Min(sp80, *((MKVector3 *) &sp430));
-            Max(sp450, sp80);
-            M2C_FIELD(this, f32 *, 0xD0) = M2C_BITWISE(f64, sp450);
-            M2C_FIELD(this, f32 *, 0xD8) = (f64) sp450.unk8;
+            sp440 = MKVector(0.1f, 0.0f, 0.1f);
+            sp80 = Min(*((MKVector3 *) &sp430), sp400);
+            sp450 = Max(sp80, sp440);
+            *(MKVector3 *) &M2C_FIELD(this, f32 *, 0xD0) = sp450;
             if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && (var_f27_2435 <= 0.5f) && ((u8) this->unk2F1 == 0)) {
                 sp834 = 0;
                 temp_f1_2559 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), f32 (**)(), 0x54)();

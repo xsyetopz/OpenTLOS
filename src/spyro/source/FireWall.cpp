@@ -22,6 +22,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -77,7 +78,7 @@ void FireWall::Draw() {
     f64 spC0;
     f64 spB8;
     f64 spB0;
-    f32 spA0;
+    MKVector3 spA0;
     f64 sp98;
     f64 sp90;
     f64 sp88;
@@ -106,6 +107,7 @@ void FireWall::Draw() {
     f32 temp_f0_458;
     f32 temp_f19_560;
     f32 temp_f24_210;
+    f32 temp_f2_353;
     f32 var_f0_542;
     f32 var_f18_218;
     f32 var_f21_167;
@@ -250,10 +252,11 @@ loop_83:
                     (*(f32 *) ((u8 *) &spD8 + 0x1c)) *= var_f3_332;
                     spF8 = (f32) spF8 * var_f3_332;
                 }
-                MKVector(0.0f, 1.0f, 0.0f);
-                sp24 = (spA8 * spF0) - (spA0 * spF8);
-                sp20 = (spA4 * spF8) - (spA8 * (*(f32 *) ((u8 *) &spD8 + 0x1c)));
-                sp28 = (spA0 * (*(f32 *) ((u8 *) &spD8 + 0x1c))) - (spA4 * spF0);
+                spA0 = MKVector(0.0f, 1.0f, 0.0f);
+                temp_f2_353 = M2C_BITWISE(f32, spA0);
+                sp24 = (spA0.unk8 * spF0) - (temp_f2_353 * spF8);
+                sp20 = (spA0.unk4 * spF8) - (spA0.unk8 * (*(f32 *) ((u8 *) &spD8 + 0x1c)));
+                sp28 = (temp_f2_353 * (*(f32 *) ((u8 *) &spD8 + 0x1c))) - (spA0.unk4 * spF0);
                 spE0 = (f64) sp20;
                 spE8 = (f64) sp28;
                 spB0 = (f64) sp20;
@@ -551,7 +554,7 @@ s32 FireWall::LoadLine(MKIniLine *arg0) {
     f64 sp120;
     f64 sp118;
     f64 sp110;
-    f32 sp100;
+    MKVector3 sp100;
     f64 spF8;
     f64 spF0;
     f64 spE8;
@@ -603,6 +606,7 @@ s32 FireWall::LoadLine(MKIniLine *arg0) {
     f32 temp_f1_1695;
     f32 temp_f21_1025;
     f32 temp_f23_1198;
+    f32 temp_f2_1351;
     f32 temp_f2_1596;
     f32 temp_f3_1483;
     f32 var_f0_1129;
@@ -839,10 +843,11 @@ loop_130:
                     sp160.unk10 = M2C_BITWISE(f32, sp160.unk10) * var_f3_1331;
                     sp174 *= var_f3_1331;
                     sp178 = (f32) sp178 * var_f3_1331;
-                    MKVector(0.0f, 1.0f, 0.0f);
-                    sp54 = (sp108 * sp160.unk10) - (sp100 * sp178);
-                    sp50 = (sp104 * sp178) - (sp108 * sp174);
-                    sp58 = (sp100 * sp174) - (sp104 * sp160.unk10);
+                    sp100 = MKVector(0.0f, 1.0f, 0.0f);
+                    temp_f2_1351 = M2C_BITWISE(f32, sp100);
+                    sp54 = (sp100.unk8 * sp160.unk10) - (temp_f2_1351 * sp178);
+                    sp50 = (sp100.unk4 * sp178) - (sp100.unk8 * sp174);
+                    sp58 = (temp_f2_1351 * sp174) - (sp100.unk4 * sp160.unk10);
                     sp160.unk10 = (f64) sp50;
                     sp178 = (f64) sp58;
                     sp110 = (f64) sp50;

@@ -65,6 +65,7 @@
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "spyro/source/SpyroHud.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 asin(f32);                                      /* extern */
@@ -529,7 +530,7 @@ void SteamTrain::StateRamUpdate() {
                     sp138.unk3C = (*(f32 *) ((u8 *) &spF8 + 0x4));
                     sp138.unk40 = (f32) sp100;
                     sp138.__vptr = 0.0f;
-                    Normalise(spD8);
+                    spD8 = Normalise(*((MKVector3 *) &sp138.unk38));
                     temp_f7_605 = M2C_BITWISE(f32, sp138.unk4C.unk4);
                     temp_f2_606 = M2C_BITWISE(f32, spD8);
                     temp_f9_607 = M2C_BITWISE(f32, sp138.unk4C);
@@ -714,7 +715,7 @@ void SteamTrain::StateChaseUpdate() {
                     sp144 = (*(f32 *) ((u8 *) &spD8 + 0x4));
                     sp148 = (f32) spE0;
                     sp14C = 0.0f;
-                    Normalise(spB8);
+                    spB8 = Normalise(*((MKVector3 *) &sp140));
                     temp_f2_923 = M2C_BITWISE(f32, spB8);
                     sp13C = 0.0f;
                     sp14C = 0.0f;
@@ -880,7 +881,7 @@ void SteamTrain::StateFallBackUpdate() {
         sp124 = (*(f32 *) ((u8 *) &spD0 + 0x4));
         sp128 = (f32) spD8;
         sp12C = 0.0f;
-        Normalise(spB0);
+        spB0 = Normalise(*((MKVector3 *) &sp120));
         temp_f2_1192 = M2C_BITWISE(f32, spB0);
         sp11C = 0.0f;
         sp12C = 0.0f;
@@ -1110,7 +1111,7 @@ void SteamTrain::StateFleeUpdate() {
             sp134 = (*(f32 *) ((u8 *) &spD0 + 0x4));
             sp138 = (f32) spD8;
             sp13C = 0.0f;
-            Normalise(spB0);
+            spB0 = Normalise(*((MKVector3 *) &sp130));
             temp_f2_1568 = M2C_BITWISE(f32, spB0);
             sp12C = 0.0f;
             sp13C = 0.0f;
@@ -1669,13 +1670,13 @@ void SteamTrainEffects::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
     ((Animation *) (MKModel_GetAnimation(this->unk24)))->SetCustomMatrix((s32) temp_r31_2757, &sp30, (AnimationMatrixPosition) 4, 0U);
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void SteamTrainEffects::UpdateAnimEvents() {
     f64 sp50;
     f64 sp48;
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -1706,10 +1707,10 @@ void SteamTrainEffects::UpdateAnimEvents() {
                 M2C_FIELD(temp_r3_2797, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
                 temp_f30_2821 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 temp_f29_2826 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
-                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f29_2826, temp_f30_2821);
+                sp28 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f29_2826, temp_f30_2821);
                 sp8 = sp28 * 5.65986426e-315;
                 M2C_FIELD(temp_r29_2802, f64 *, 0) = sp8;
-                sp10 = sp30 * 800.0f;
+                sp10 = sp28.unk8 * 800.0f;
                 sp38 = sp8;
                 sp40 = (f64) sp10;
                 M2C_FIELD(temp_r29_2802, f64 *, 8) = (f64) sp10;
@@ -1846,11 +1847,11 @@ void SteamTrainEffects::EmitSparks(const MKVector3 &arg0) {
     ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(arg0, *((MKVector3 *) &spA0), sp8, *((MKVector4 *) &sp70), -1000.0f);
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void SteamTrainEffects::EmitSmoke() {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     MKVector3 *temp_r3_3134;
@@ -1864,10 +1865,10 @@ void SteamTrainEffects::EmitSmoke() {
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk200, temp_r3_3134);
         M2C_FIELD(temp_r3_3134, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_3134, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
-        MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f), 0.0f);
+        sp18 = MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f), 0.0f);
         sp8 = sp18 * 5.61841903e-315;
         M2C_FIELD(temp_r30_3137, f64 *, 0) = sp8;
-        sp10 = sp20 * 400.0f;
+        sp10 = sp18.unk8 * 400.0f;
         sp28 = sp8;
         sp30 = (f64) sp10;
         M2C_FIELD(temp_r30_3137, f64 *, 8) = (f64) sp10;
@@ -1909,11 +1910,11 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void SteamTrainEffects::EmitSteam() {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     MKVector3 *temp_r3_3262;
@@ -1927,10 +1928,10 @@ void SteamTrainEffects::EmitSteam() {
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk200, temp_r3_3262);
         M2C_FIELD(temp_r3_3262, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_3262, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
-        MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f), 0.0f);
+        sp18 = MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f), 0.0f);
         sp8 = sp18 * 5.61841903e-315;
         M2C_FIELD(temp_r30_3265, f64 *, 0) = sp8;
-        sp10 = sp20 * 400.0f;
+        sp10 = sp18.unk8 * 400.0f;
         sp28 = sp8;
         sp30 = (f64) sp10;
         M2C_FIELD(temp_r30_3265, f64 *, 8) = (f64) sp10;
@@ -1941,14 +1942,14 @@ void SteamTrainEffects::EmitSteam() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void SteamTrainEffects::UpdateEffects() {
     f64 sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
     MKVector3 sp38;
-    M2C_UNK sp28;
+    MKVector3 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -1984,7 +1985,7 @@ void SteamTrainEffects::UpdateEffects() {
         M2C_FIELD(temp_r3_3339, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_3339, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         temp_f31_3361 = this->unk224;
-        MKVector(0.0f, 0.0f, -MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f));
+        sp28 = MKVector(0.0f, 0.0f, -MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f));
         sp38.operator*(1000.0f);
         sp8 = sp38 * (f64) temp_f31_3361;
         M2C_FIELD(temp_r30_3344, f64 *, 0) = sp8;
@@ -2335,7 +2336,7 @@ void UpdateLookAtBone(MKDynamicBone *arg0, void *arg1) {
         spD8 = temp_f0_4054;
         sp30 = (f32) sp140 - (f32) sp150;
         spE0 = (f64) sp30;
-        Normalise(spE8);
+        spE8 = Normalise(*((MKVector3 *) &spD8));
         temp_f0_4069 = spE8 * (f64) temp_f31_4044;
         sp58 = temp_f0_4069;
         spF8 = temp_f0_4069;
@@ -2350,7 +2351,7 @@ void UpdateLookAtBone(MKDynamicBone *arg0, void *arg1) {
         sp1AC = 0.0f;
         spA8 = (f64) sp18;
         spB0 = (f64) sp20;
-        Normalise(spB8);
+        spB8 = Normalise(*((MKVector3 *) &spA8));
         sp48 = -M2C_BITWISE(f32, spB8);
         sp4C = -spB8.unk4;
         sp50 = -spB8.unk8;
@@ -2365,7 +2366,7 @@ void UpdateLookAtBone(MKDynamicBone *arg0, void *arg1) {
         sp1CC = 0.0f;
         sp88 = (f64) sp38;
         sp90 = (f64) sp40;
-        Normalise(sp98);
+        sp98 = Normalise(*((MKVector3 *) &sp88));
         sp1B0 = M2C_BITWISE(f32, sp98);
         sp1B4 = sp98.unk4;
         sp1B8 = sp98.unk8;

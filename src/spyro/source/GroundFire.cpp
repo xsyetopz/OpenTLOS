@@ -160,7 +160,7 @@ loop_8:
             sp90 = (f64) sp60;
             sp78 = (f64) sp48;
             sp80 = (f64) sp50;
-            KDRand_Vector(sp98, *((MKVector3 *) &sp88));
+            sp98 = KDRand_Vector(*((MKVector3 *) &sp88), *((MKVector3 *) &sp78));
             temp_f0_172 = sp98 * (f64) temp_f25_159;
             sp38 = temp_f0_172;
             spA8 = temp_f0_172;

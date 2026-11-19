@@ -960,7 +960,7 @@ loop_24:
         spA8 = (f64) sp38;
         sp90 = (f64) sp20;
         sp98 = (f64) sp28;
-        KDRand_Vector(spB0, *((MKVector3 *) &spA0));
+        spB0 = KDRand_Vector(*((MKVector3 *) &spA0), *((MKVector3 *) &sp90));
         temp_f1_1437 = M2C_BITWISE(f32, spB0);
         var_f4_1444 = (spB0.unk8 * spB0.unk8) + ((temp_f1_1437 * temp_f1_1437) + (spB0.unk4 * spB0.unk4));
         if (var_f4_1444 > 1e-12f) {

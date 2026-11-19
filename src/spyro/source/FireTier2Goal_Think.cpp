@@ -438,7 +438,7 @@ u8 FireTier2Goal_JumpOutOfLava::FindLavaEdgePath(const MKVector3 &arg0, MKVector
 void FireTier2Goal_JumpOutOfLava::Activate() {
     AITargetData sp60;
     M2C_UNK sp50;
-    M2C_UNK sp40;
+    MKVector3 sp40;
     f64 sp38;
     f64 sp30;
     f32 sp28;
@@ -516,8 +516,8 @@ block_8:
             ((AITargetData *) &sp50)->GetDir();
             var_r3_902 = &sp50;
         } else {
-            KDMath_GetDirection(this->unkC->unk5CC);
-            var_r3_902 = &sp40;
+            sp40 = KDMath_GetDirection(this->unkC->unk5CC);
+            var_r3_902 = (M2C_UNK *) &sp40;
         }
         sp60.unk20 = M2C_FIELD(var_r3_902, f64 *, 0);
         sp60.unk28 = M2C_FIELD(var_r3_902, f64 *, 8);

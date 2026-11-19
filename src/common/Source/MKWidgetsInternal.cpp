@@ -25,6 +25,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include "common/gc/MKView_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 atof(f32);                                      /* extern */
@@ -45,10 +46,12 @@ extern s32 gWidgetCursor;
 extern u8 gWidgetDebug;
 extern f32 gWidgetOrthoHeight;
 extern f32 gWidgetOrthoWidth;
-extern s8 *gpDebugFont;
+extern MKFont *gpDebugFont;
 extern MKWidgetDescriptor *pDescriptorList;
 extern void *pHookEntryRoot;
-extern MKWidgetScissorRect *pScissorRectStack;
+#if 0 // DRAFT: identifier 'pScissorRectStack' redeclared was declared as: 'MKWidgetScissorRect *' now declared as: 'MKVector3 *'
+extern MKVector3 *pScissorRectStack;
+#endif
 extern MKMaterial *pWidgetBlank;
 extern f32 timestamp;
 #if 0 // DRAFT: identifier 'gMKWidgetMetrics' redeclared was declared as: 'unsigned char[736]' now declared as: 'long'
@@ -952,7 +955,7 @@ void MKWidgetFoldupFrame::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3' Too many errors printed, aborting program
 MKWidget *MKWidgetFoldupFrame::TestPoint(MKVector3 *arg0) {
     f64 sp20;
     f64 sp18;
@@ -1875,7 +1878,7 @@ s32 MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     MKEndPrimitive();
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MKWidgetEditable::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKVector3 sp118;
     f64 sp110;
@@ -1889,10 +1892,10 @@ s32 MKWidgetEditable::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 spC8;
     f64 spC0;
     f64 spB8;
-    f64 spA8;
+    MKVector3 spA8;
     f64 spA0;
     f64 sp98;
-    f64 sp88;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
     f64 sp70;
@@ -1986,10 +1989,10 @@ block_56:
     case 0x3A:                                      /* switch 1 */
         temp_r28_3620 = MKWidgetContainer::MessageHandler(arg0, arg1);
         MKWidget_GetPos((MKWidget *) this, &sp118);
-        MKVector(4.0f, 4.0f, 0.0f);
-        sp28 = M2C_BITWISE(f64, sp118) + spA8;
+        spA8 = MKVector(4.0f, 4.0f, 0.0f);
+        sp28 = M2C_BITWISE(f64, sp118) + M2C_BITWISE(f64, spA8);
         M2C_FIELD(this, f64 *, 0x30) = sp28;
-        sp30 = sp118.unk8 + spB0;
+        sp30 = sp118.unk8 + spA8.unk8;
         spB8 = sp28;
         M2C_FIELD(this, f64 *, 0x38) = (f64) sp30;
         this->unk51 = 1;
@@ -1999,10 +2002,10 @@ block_56:
         return temp_r28_3620;
     case 0x4:                                       /* switch 1 */
         if ((MKWidget *) this->unk28 != NULL) {
-            MKVector(4.0f, 4.0f, 0.0f);
-            sp18 = M2C_FIELD(arg1, f64 *, 0) + sp88;
+            sp88 = MKVector(4.0f, 4.0f, 0.0f);
+            sp18 = M2C_FIELD(arg1, f64 *, 0) + M2C_BITWISE(f64, sp88);
             M2C_FIELD(this, f64 *, 0x30) = sp18;
-            sp20 = (f32) M2C_FIELD(arg1, f64 *, 8) + sp90;
+            sp20 = (f32) M2C_FIELD(arg1, f64 *, 8) + sp88.unk8;
             sp98 = sp18;
             M2C_FIELD(this, f64 *, 0x38) = (f64) sp20;
             this->unk51 = 1;
@@ -2223,7 +2226,6 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'signed char **' Too many errors printed, aborting program
 s32 MKWidgetColor::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 sp14;
     s8 **sp10;
@@ -2241,7 +2243,7 @@ s32 MKWidgetColor::MessageHandler(unsigned int arg0, unsigned int arg1) {
         sp8 = this;
         spC = 1;
         spE = 0;
-        sp10 = ((u8 *) this->unk4) + 0x68;
+        sp10 = (signed char **) (((u8 *) this->unk4) + 0x68);
         sp14 = 0;
         MKWidget_SendMessage((MKWidget *) this, 0x39U, (u32) &sp8);
         break;
@@ -2258,7 +2260,6 @@ s32 MKWidgetColor::MessageHandler(unsigned int arg0, unsigned int arg1) {
     }
     MKWidget::MessageHandler(arg0, arg1);
 }
-#endif
 
 #if 0 // DRAFT: cannot construct MKWidgetColor's base class 'MKWidget'
 MKWidgetColor::MKWidgetColor(MKWidgetDescriptor *arg0) {
@@ -2413,7 +2414,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MKWidgetTabStrip::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 sp134;
     s32 sp130;
@@ -2429,7 +2430,7 @@ s32 MKWidgetTabStrip::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidgetTabStrip *spB8;
     f64 spB0;
     f64 spA8;
-    f64 sp98;
+    MKVector3 sp98;
     f64 sp90;
     f64 sp88;
     f64 sp80;
@@ -2493,11 +2494,11 @@ loop_22:
             spC8 = 0.0f;
             spCC = 26.0f;
             spD0 = 0.0f;
-            MKVector(0.0f, 26.0f, 0.0f);
+            sp98 = MKVector(0.0f, 26.0f, 0.0f);
             temp_r3_4575 = (signed char **) (((u8 *) this->unk4) + 0x38);
-            sp8 = M2C_FIELD(temp_r3_4575, f64 *, 0) - sp98;
+            sp8 = M2C_FIELD(temp_r3_4575, f64 *, 0) - M2C_BITWISE(f64, sp98);
             spA8 = sp8;
-            sp10 = M2C_FIELD(temp_r3_4575, f32 *, 8) - spA0;
+            sp10 = M2C_FIELD(temp_r3_4575, f32 *, 8) - sp98.unk8;
             spF8 = sp8;
             spB0 = (f64) sp10;
             sp100 = (f64) sp10;
@@ -2528,7 +2529,7 @@ loop_26:
         if (var_r24_4661 < temp_r26_4664) {
             sp48 = 0.0f;
             sp4C = 26.0f;
-            temp_r4_4677 = (signed char **) (((u8 *) this->unk4) + 0x38);
+            temp_r4_4677 = ((u8 *) this->unk4) + 0x38;
             sp50 = 0.0f;
             sp78 = (f64) sp48;
             sp80 = (f64) sp50;
@@ -2650,8 +2651,8 @@ void MKWidgetTextBox::BuildMetaData(int arg0) {
 void MKWidgetTextBox::FindCaretPos() {
     f64 sp30;
     f64 sp28;                                       /* compiler-managed */
-    MKFont sp18;
-    MKFont sp8;
+    MKVector3 sp18;
+    MKVector3 sp8;
     f32 temp_f0_5102;
     f32 temp_f1_5082;
     f32 temp_f1_5101;
@@ -2712,19 +2713,17 @@ void MKWidgetTextBox::FindCaretPos() {
     if (var_r31_5030 != NULL) {
 
     } else {
-        var_r31_5030 = gpDebugFont;
+        var_r31_5030 = (s8 *) gpDebugFont;
     }
     if (IsFlagSet(0x200U) != 0) {
-        MKFont_GetCharPosJustified(&sp18, var_r31_5030, M2C_FIELD(this->unk4, s32 *, 0x68), temp_f31_5034, temp_f28_5035, (FontJustify) this->unk44, var_f30_5021);
-        sp28 = M2C_BITWISE(f64, sp18);
-        sp30 = M2C_BITWISE(f64, sp18.unk8);
+        sp18 = MKFont_GetCharPosJustified((MKFont *) var_r31_5030, M2C_FIELD(this->unk4, s8 **, 0x68), this->unk44, temp_f31_5034, temp_f28_5035, (FontJustify) 0, var_f30_5021);
+        *(MKVector3 *) &sp28 = sp18;
         if ((f32) sp28 > temp_f31_5034) {
             sp28 = temp_f31_5034;
         }
     } else {
-        MKFont_GetCharPos(&sp8, var_r31_5030, M2C_FIELD(this->unk4, s32 *, 0x68), var_f30_5021);
-        sp28 = M2C_BITWISE(f64, sp8);
-        sp30 = M2C_BITWISE(f64, sp8.unk8);
+        sp8 = MKFont_GetCharPos((MKFont *) var_r31_5030, M2C_FIELD(this->unk4, s8 **, 0x68), this->unk44, var_f30_5021);
+        *(MKVector3 *) &sp28 = sp8;
     }
     this->unk3C = (f32) sp28;
     this->unk40 = (*(f32 *) ((u8 *) &sp18 + 0x14));
@@ -2777,7 +2776,7 @@ s32 MKWidgetTextBox::GetCharIndexFromPoint(const MKVector3 &arg0) {
     if (var_r31_5153 != NULL) {
 
     } else {
-        var_r31_5153 = gpDebugFont;
+        var_r31_5153 = (s8 *) gpDebugFont;
     }
     temp_r0_5160 = M2C_FIELD(temp_r3_5146, s32 *, 0x78);
     if (temp_r0_5160 != 0) {
@@ -2867,14 +2866,14 @@ s32 MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
     f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
-    f64 sp1A8;
+    MKVector3 sp1A8;
     f64 sp1A0;
     f64 sp198;
     f64 sp190;
     f64 sp188;
     f64 sp180;
     f64 sp178;
-    MKFont sp168;
+    MKVector3 sp168;
     f64 sp160;
     f64 sp158;
     f64 sp150;
@@ -3050,12 +3049,12 @@ s32 MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
         if (var_r31_5509 != NULL) {
 
         } else {
-            var_r31_5509 = gpDebugFont;
+            var_r31_5509 = (s8 *) gpDebugFont;
         }
-        MKVector(var_f31_5338, var_f31_5338, 0.0f);
-        sp18 = M2C_FIELD(arg0, f64 *, 0x30) + sp1A8;
+        sp1A8 = MKVector(var_f31_5338, var_f31_5338, 0.0f);
+        sp18 = M2C_FIELD(arg0, f64 *, 0x30) + M2C_BITWISE(f64, sp1A8);
         spA8 = temp_f27_5508;
-        sp20 = arg0->unk38 + sp1B0;
+        sp20 = arg0->unk38 + sp1A8.unk8;
         spAC = temp_f27_5508;
         spB0 = 0.0f;
         sp248 = sp18;
@@ -3094,10 +3093,10 @@ s32 MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
                     var_r0_5606 = temp_r3_5607;
                 }
                 var_r27_5626 = var_r0_5606 - var_r28_5611;
-                MKFont_GetCharPosJustified(&sp168, var_r31_5509, (s32) M2C_FIELD(this->unk4, s8 **, 0x68), var_f29_5501, temp_f28_5512, (FontJustify) var_r28_5611, var_f30_5487);
+                sp168 = MKFont_GetCharPosJustified((MKFont *) var_r31_5509, M2C_FIELD(this->unk4, s8 **, 0x68), var_r28_5611, var_f29_5501, temp_f28_5512, (FontJustify) 0, var_f30_5487);
                 sp218 = M2C_BITWISE(f64, sp168);
-                var_r28_5637 = M2C_FIELD(this->unk4, s8 **, 0x68) + var_r28_5611;
-                sp220 = M2C_BITWISE(f64, sp168.unk8);
+                var_r28_5637 = &M2C_FIELD(this->unk4, s8 **, 0x68)[var_r28_5611];
+                sp220 = (f64) sp168.unk8;
                 if (IsFlagSet(8U) != 0) {
                     var_r3_5643 = MKWidget_GetMetric(4);
                 } else {
@@ -3559,9 +3558,8 @@ block_94:
     case 0x2E:                                      /* switch 1 */
         if ((u8) this->unk4C != 0) {
             MKWidget_GetLocalMousePos((MKWidget *) this, &sp98);
-            Max(sp48, sp98);
-            sp98 = M2C_BITWISE(f64, sp48);
-            sp98.unk8 = (f64) sp48.unk8;
+            sp48 = Max(sp98, MKVector3::zero);
+            *(MKVector3 *) &sp98 = sp48;
             this->unk44 = GetCharIndexFromPoint(sp98);
             FindCaretPos();
         } else {
@@ -4185,7 +4183,7 @@ void MKWidgetListBox::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetRenderContext' to 'MKWidgetRenderContext *'
+#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetRenderContext' to 'MKWidgetRenderContext *' Too many errors printed, aborting program
 void MKWidgetListBox::Draw(MKWidgetRenderContext arg0) {
     M2C_UNK sp100;
     M2C_UNK spFC;
@@ -4249,9 +4247,9 @@ void MKWidgetListBox::Draw(MKWidgetRenderContext arg0) {
                 MKSetBaseColorV(*((s32) arg0 + 0x40));
                 MKSetMatrix(*((Matrix *) arg0));
                 if (IsFlagSet(8U) != 0) {
-                    var_r3_7654 = (MKVector4 *) (MKWidget_GetMetric(4));
+                    var_r3_7654 = MKWidget_GetMetric(4);
                 } else {
-                    var_r3_7654 = (MKVector4 *) (MKWidget_GetMetric(5));
+                    var_r3_7654 = MKWidget_GetMetric(5);
                 }
                 temp_f0_7662 = M2C_BITWISE(f64, sp90) + (f64) sp90.unk10;
                 sp30 = temp_f0_7662;
@@ -4648,7 +4646,6 @@ void MKWidgetScrollableFrame::CheckScrollBarRequirements() {
     MKWidget_Resize(&this->unk208, *((MKVector3 *) &sp30));
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKWidgetScrollableFrame::GetChildrenRange(MKVector3 *arg0, MKVector3 *arg1) {
     MKVector3 sp38;
     MKVector3 sp28;
@@ -4680,9 +4677,8 @@ void MKWidgetScrollableFrame::GetChildrenRange(MKVector3 *arg0, MKVector3 *arg1)
     var_r31_8681 = this->unk28;
 loop_5:
     if (var_r31_8681 != NULL) {
-        Min(sp38, *arg0);
-        M2C_FIELD(arg0, f64 *, 0) = M2C_BITWISE(f64, sp38);
-        M2C_FIELD(arg0, f64 *, 8) = (f64) sp38.unk8;
+        sp38 = Min(*arg0, *(MKVector3 *) (var_r31_8681->unk4 + 8));
+        M2C_FIELD(arg0, MKVector3 *, 0) = sp38;
         temp_r3_8693 = var_r31_8681->unk4;
         temp_r5_8694 = temp_r3_8693 + 0x38;
         temp_r3_8695 = temp_r3_8693 + 8;
@@ -4691,14 +4687,12 @@ loop_5:
         sp18 = temp_f0_8698;
         sp10 = M2C_FIELD(temp_r3_8695, f32 *, 8) + M2C_FIELD(temp_r5_8694, f32 *, 8);
         sp20 = (f64) sp10;
-        Max(sp28, *arg1);
-        M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp28);
-        M2C_FIELD(arg1, f64 *, 8) = (f64) sp28.unk8;
+        sp28 = Max(*arg1, *((MKVector3 *) &sp18));
+        M2C_FIELD(arg1, MKVector3 *, 0) = sp28;
         var_r31_8681 = var_r31_8681->unk1C;
         goto loop_5;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetScrollableFrame::TestPoint(MKVector3 *arg0) {
@@ -4782,8 +4776,8 @@ void MKWidgetScrollableFrame::UpdateState() {
         sp10 = temp_f5_8800;
         sp48 = sp8;
         sp50 = (f64) sp10;
-        Max(sp88, *((MKVector3 *) &sp78));
-        Min(sp98, sp88);
+        sp88 = Max(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58));
+        sp98 = Min(sp88, *((MKVector3 *) &sp48));
         M2C_FIELD(this, f64 *, 0x30) = (f64) (M2C_FIELD(this, f64 *, 0x30) + M2C_BITWISE(f64, sp98));
         this->unk38 += sp98.unk8;
         return;
@@ -5122,7 +5116,7 @@ MKWidget *MKWidgetScrollBar::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'WidgetDrawBevel(MKVector3, MKVector3, float, void, MKVector4, unsigned int, unsigned int)' does not match 'WidgetDrawBevel(const MKVector3 &, con
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKVector4 *'
 s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp150;
     M2C_UNK sp14C;
@@ -5190,7 +5184,7 @@ s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
             sp50 = (0.5f * temp_f2_9649) - 2.0f;
             sp54 = (0.25f * temp_f2_9649) - 2.0f;
             spA0 = (f64) sp50;
-            temp_r29_9658 = (MKVector4 *) (MKWidget_GetMetric(1));
+            temp_r29_9658 = MKWidget_GetMetric(1);
             WidgetDrawBevel(*((MKVector3 *) &spA0), *((MKVector3 *) &sp90), 2.0f, *(MKWidget_GetMetric(0)), *temp_r29_9658, 1U, 0U);
         } else {
             sp28 = 0.0f;
@@ -5204,7 +5198,7 @@ s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
             sp30 = (0.25f * temp_f2_9689) - 2.0f;
             sp34 = (0.5f * temp_f2_9689) - 2.0f;
             sp80 = (f64) sp30;
-            temp_r29_9698 = (MKVector4 *) (MKWidget_GetMetric(1));
+            temp_r29_9698 = MKWidget_GetMetric(1);
             WidgetDrawBevel(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70), 2.0f, *(MKWidget_GetMetric(0)), *temp_r29_9698, 1U, 0U);
         }
     } else {
@@ -5544,7 +5538,7 @@ block_139:
             sp168 = this;
             sp16C = 1;
             sp16E = 0;
-            sp170 = (signed char **) (((u8 *) this->unk4) + 0x68);
+            sp170 = ((u8 *) this->unk4) + 0x68;
             sp174 = 0;
             MKWidget_SendMessage((MKWidget *) this, 0x39U, (u32) &sp168);
         }
@@ -5760,7 +5754,7 @@ void MKWidgetThumb::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: function call 'WidgetDrawBevel(MKVector3, MKVector3, float, void, MKVector4, unsigned int, unsigned int)' does not match 'WidgetDrawBevel(const MKVector3 &, con
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKVector4 *'
 s32 MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
     MKVector4 *temp_r31_10768;
     s8 **temp_r30_10765;
@@ -5772,13 +5766,13 @@ s32 MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
     MKSetMatrix(*((Matrix *) arg0));
     WidgetDrawBox(MKVector3::zero, *(MKVector3 *) (((u8 *) this->unk4) + 0x38), 0x1A);
     temp_r30_10765 = this->unk4;
-    temp_r31_10768 = (MKVector4 *) (MKWidget_GetMetric(1));
+    temp_r31_10768 = MKWidget_GetMetric(1);
     WidgetDrawBevel(MKVector3::zero, *(MKVector3 *) (temp_r30_10765 + 0x38), 1.0f, *(MKWidget_GetMetric(0)), *temp_r31_10768, 0U, 0U);
     MKEndPrimitive();
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'signed char **'
 s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp1F0;                                      /* compiler-managed */
     f64 sp1E8;
@@ -5866,15 +5860,15 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(arg1, f64 *, 0);
         this->unk30 = M2C_FIELD(arg1, f64 *, 8);
         sp168.operator*(0.5f);
-        temp_r4_10829 = (signed char **) (((u8 *) this->unk4) + 8);
+        temp_r4_10829 = ((u8 *) this->unk4) + 8;
         sp78 = M2C_FIELD(temp_r4_10829, f64 *, 0) + M2C_BITWISE(f64, sp168);
         sp178 = sp78;
         sp80 = M2C_FIELD(temp_r4_10829, f32 *, 8) + sp168.unk8;
         sp1E8 = sp78;
         sp180 = (f64) sp80;
         sp1F0 = (f64) sp80;
-        Max(sp148, *((MKVector3 *) &sp1E8));
-        Min(sp158, sp148);
+        sp148 = Max(*((MKVector3 *) &sp1E8), *((MKVector3 *) &this->unk28));
+        sp158 = Min(sp148, *((MKVector3 *) &this->unk38));
         temp_f1_10852 = M2C_BITWISE(f64, sp158);
         sp1E8 = temp_f1_10852;
         sp1F0 = (f64) sp158.unk8;
@@ -5899,8 +5893,8 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         sp1D8 = sp58;
         sp130 = (f64) sp60;
         sp1E0 = (f64) sp60;
-        Max(spF8, *((MKVector3 *) &sp1D8));
-        Min(sp108, spF8);
+        spF8 = Max(*((MKVector3 *) &sp1D8), *((MKVector3 *) &this->unk28));
+        sp108 = Min(spF8, *((MKVector3 *) &this->unk38));
         temp_f1_10916 = M2C_BITWISE(f64, sp108);
         sp1D8 = temp_f1_10916;
         sp1E0 = (f64) sp108.unk8;
@@ -5967,8 +5961,8 @@ block_23:
             spC0 = (f64) sp20;
             sp1A8 = M2C_BITWISE(f64, sp1A8) + temp_f0_11024;
             sp1A8.unk8 += (f32) spC0;
-            Max(sp98, *((MKVector3 *) &sp1A8));
-            Min(spA8, sp98);
+            sp98 = Max(*((MKVector3 *) &sp1A8), *((MKVector3 *) &this->unk28));
+            spA8 = Min(sp98, *((MKVector3 *) &this->unk38));
             temp_f1_11049 = M2C_BITWISE(f64, spA8);
             sp1A8 = temp_f1_11049;
             sp1A8.unk8 = (f64) spA8.unk8;
@@ -6805,7 +6799,7 @@ s32 MKWidgetString::Render(MKWidgetRenderContext *arg0) {
         if (var_r31_12576 != NULL) {
 
         } else {
-            var_r31_12576 = (MKFont *) gpDebugFont;
+            var_r31_12576 = gpDebugFont;
         }
         if (IsFlagSet(0x100U) != 0) {
             var_f3_12589 = M2C_FIELD(this->unk4, f32 *, 0x3C);
@@ -8233,7 +8227,7 @@ loop_4:
         } else {
             var_r3_15338 = "";
         }
-        MKFont_DrawDebugStringF(var_r3_15338, 10.0f, 10.0f, 0.0f, MKVector4::one, -1, (MKFont *) gpDebugFont);
+        MKFont_DrawDebugStringF(var_r3_15338, 10.0f, 10.0f, 0.0f, MKVector4::one, -1, gpDebugFont);
         temp_f31_15356 = 10.0f + M2C_ERROR(/* Read from unset register $f1 */);
         var_r3_15358 = *this->unk50->unk4;
         if (var_r3_15358 != NULL) {
@@ -8241,7 +8235,7 @@ loop_4:
         } else {
             var_r3_15358 = "";
         }
-        MKFont_DrawDebugStringF(var_r3_15358, 10.0f, temp_f31_15356, 0.0f, MKVector4::one, -1, (MKFont *) gpDebugFont);
+        MKFont_DrawDebugStringF(var_r3_15358, 10.0f, temp_f31_15356, 0.0f, MKVector4::one, -1, gpDebugFont);
         temp_r3_15377 = this->unk4C;
         temp_f31_15379 = temp_f31_15356 + M2C_ERROR(/* Read from unset register $f1 */) + 10.0f;
         if (temp_r3_15377 != NULL) {
@@ -8254,7 +8248,7 @@ loop_4:
         } else {
             var_r3_15382 = "";
         }
-        MKFont_DrawDebugStringF(var_r3_15382, 10.0f, temp_f31_15379, 0.0f, MKVector4::one, -1, (MKFont *) gpDebugFont);
+        MKFont_DrawDebugStringF(var_r3_15382, 10.0f, temp_f31_15379, 0.0f, MKVector4::one, -1, gpDebugFont);
         temp_r3_15404 = this->unk4C;
         temp_f31_15405 = temp_f31_15379 + M2C_ERROR(/* Read from unset register $f1 */);
         if (temp_r3_15404 != NULL) {
@@ -8267,18 +8261,18 @@ loop_4:
         } else {
             var_r3_15409 = "";
         }
-        MKFont_DrawDebugStringF(var_r3_15409, 10.0f, temp_f31_15405, 0.0f, MKVector4::one, -1, (MKFont *) gpDebugFont);
+        MKFont_DrawDebugStringF(var_r3_15409, 10.0f, temp_f31_15405, 0.0f, MKVector4::one, -1, gpDebugFont);
         temp_r3_15431 = this->unk50;
         temp_f31_15436 = temp_f31_15405 + M2C_ERROR(/* Read from unset register $f1 */) + 10.0f;
         temp_r3_15431->GetLocalToWorldMatrix(&spC0);
-        MKFont_DrawDebugStringF(Str_Printf("", (u32) (u64) MKWidget_SendMessage(this->unk50, 9U, (u32) &sp90), sp90, sp94, sp98), 10.0f, temp_f31_15436, 0.0f, MKVector4::one, -1, (MKFont *) gpDebugFont);
+        MKFont_DrawDebugStringF(Str_Printf("", (u32) (u64) MKWidget_SendMessage(this->unk50, 9U, (u32) &sp90), sp90, sp94, sp98), 10.0f, temp_f31_15436, 0.0f, MKVector4::one, -1, gpDebugFont);
         sp90 = spF0;
         temp_f31_15465 = temp_f31_15436 + M2C_ERROR(/* Read from unset register $f1 */);
         sp98 = spF8;
-        MKFont_DrawDebugStringF(Str_Printf("", sp90, sp94, sp98), 10.0f, temp_f31_15465, 0.0f, MKVector4::one, -1, (MKFont *) gpDebugFont);
+        MKFont_DrawDebugStringF(Str_Printf("", sp90, sp94, sp98), 10.0f, temp_f31_15465, 0.0f, MKVector4::one, -1, gpDebugFont);
         temp_f31_15481 = temp_f31_15465 + M2C_ERROR(/* Read from unset register $f1 */);
-        MKFont_DrawDebugStringF(Str_Printf("", (u32) M2C_BITWISE(u64, MKWidget_GetLocalMousePos(this->unk50, (MKVector3 *) &sp90)), sp90, sp94), 10.0f, temp_f31_15481, 0.0f, MKVector4::one, -1, (MKFont *) gpDebugFont);
-        MKFont_DrawDebugStringF(Str_Printf("", this->unk5C, this->unk60, MKWidget_GetLocalMousePos(this->unk50, (MKVector3 *) &sp90)), 10.0f, temp_f31_15481 + M2C_ERROR(/* Read from unset register $f1 */), 0.0f, MKVector4::one, -1, (MKFont *) gpDebugFont);
+        MKFont_DrawDebugStringF(Str_Printf("", (u32) M2C_BITWISE(u64, MKWidget_GetLocalMousePos(this->unk50, (MKVector3 *) &sp90)), sp90, sp94), 10.0f, temp_f31_15481, 0.0f, MKVector4::one, -1, gpDebugFont);
+        MKFont_DrawDebugStringF(Str_Printf("", this->unk5C, this->unk60, MKWidget_GetLocalMousePos(this->unk50, (MKVector3 *) &sp90)), 10.0f, temp_f31_15481 + M2C_ERROR(/* Read from unset register $f1 */), 0.0f, MKVector4::one, -1, gpDebugFont);
     }
     MKView_Pop();
 }
@@ -9257,12 +9251,14 @@ void WidgetDrawBevel(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, c
 }
 #endif
 
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3 *' to 'MKWidgetScissorRect *'
 void PopScissorRect() {
-    pScissorRectStack = pScissorRectStack->unk20;
+    pScissorRectStack = M2C_FIELD(pScissorRectStack, MKVector3 **, 0x20);
     ApplyScissorRect();
 }
+#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
+#if 0 // DRAFT: function call 'Max(MKVector3, MKWidgetScissorRect)' does not match 'Max(const MKVector3 &, const MKVector3 &)'
 u8 PushScissorRect(MKWidgetScissorRect *arg0) {
     f64 sp40;
     f64 sp38;
@@ -9272,13 +9268,11 @@ u8 PushScissorRect(MKWidgetScissorRect *arg0) {
     f64 sp8;
     f64 temp_f0_17442;
 
-    if ((MKWidgetScissorRect *) pScissorRectStack != NULL) {
-        Max(sp28, *((MKVector3 *) arg0));
-        arg0->unk0 = M2C_BITWISE(f64, sp28);
-        arg0->unk8 = (f64) sp28.unk8;
-        Min(sp18, arg0->unk10);
-        M2C_FIELD(arg0, f64 *, 0x10) = M2C_BITWISE(f64, sp18);
-        M2C_FIELD(arg0, f64 *, 0x18) = (f64) sp18.unk8;
+    if ((MKVector3 *) pScissorRectStack != NULL) {
+        sp28 = Max(*((MKVector3 *) arg0), *pScissorRectStack);
+        *(MKVector3 *) &arg0->unk0 = sp28;
+        sp18 = Min(arg0->unk10, *(pScissorRectStack + 0x10));
+        M2C_FIELD(arg0, MKVector3 *, 0x10) = sp18;
     }
     temp_f0_17442 = M2C_FIELD(arg0, f64 *, 0x10) - arg0->unk0;
     sp8 = temp_f0_17442;
@@ -9286,8 +9280,8 @@ u8 PushScissorRect(MKWidgetScissorRect *arg0) {
     sp10 = arg0->unk10.unk8 - (f32) M2C_FIELD(arg0, f64 *, 8);
     sp40 = (f64) sp10;
     if (((f32) sp38 > 0.0001f) && ((*(f32 *) ((u8 *) &sp38 + 0x4)) > 0.0001f)) {
-        arg0->unk20 = pScissorRectStack;
-        pScissorRectStack = arg0;
+        arg0->unk20 = (MKWidgetScissorRect *) pScissorRectStack;
+        pScissorRectStack = (MKVector3 *) arg0;
         ApplyScissorRect();
         return 1U;
     }
@@ -9295,18 +9289,20 @@ u8 PushScissorRect(MKWidgetScissorRect *arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk4'
 void ApplyScissorRect() {
     f32 temp_f28_17510;
     f32 temp_f30_17495;
 
-    if ((MKWidgetScissorRect *) pScissorRectStack != NULL) {
-        temp_f30_17495 = M2C_FIELD(pScissorRectStack, f32 *, 4);
-        temp_f28_17510 = M2C_FIELD(pScissorRectStack, f32 *, 0);
-        GXSetScissor((u32) ((f32) M2C_FIELD(&gDisplay, s32 *, 0x10) * (temp_f28_17510 / gWidgetOrthoWidth)), (u32) ((f32) M2C_FIELD(&gDisplay, s32 *, 0x14) * (temp_f30_17495 / gWidgetOrthoHeight)), (u32) ((f32) M2C_FIELD(&gDisplay, s32 *, 0x10) * ((pScissorRectStack->unk10.unk0 - temp_f28_17510) / gWidgetOrthoWidth)), (u32) ((f32) M2C_FIELD(&gDisplay, s32 *, 0x14) * ((pScissorRectStack->unk10.unk4 - temp_f30_17495) / gWidgetOrthoHeight)));
+    if ((MKVector3 *) pScissorRectStack != NULL) {
+        temp_f30_17495 = pScissorRectStack->unk4;
+        temp_f28_17510 = pScissorRectStack->unk0;
+        GXSetScissor((u32) ((f32) M2C_FIELD(&gDisplay, s32 *, 0x10) * (temp_f28_17510 / gWidgetOrthoWidth)), (u32) ((f32) M2C_FIELD(&gDisplay, s32 *, 0x14) * (temp_f30_17495 / gWidgetOrthoHeight)), (u32) ((f32) M2C_FIELD(&gDisplay, s32 *, 0x10) * ((M2C_FIELD(pScissorRectStack, f32 *, 0x10) - temp_f28_17510) / gWidgetOrthoWidth)), (u32) ((f32) M2C_FIELD(&gDisplay, s32 *, 0x14) * ((M2C_FIELD(pScissorRectStack, f32 *, 0x14) - temp_f30_17495) / gWidgetOrthoHeight)));
         return;
     }
     GXSetScissor(0U, 0U, M2C_FIELD(&gDisplay, s32 *, 0x10) - 1, M2C_FIELD(&gDisplay, s32 *, 0x14) - 1);
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'sp'
 void MKWidget_LoadHierarchy(const char *arg0, MKWidgetContainer *arg1) {
@@ -9420,7 +9416,7 @@ void MKWidget_AddToDescriptorList(MKWidgetDescriptor *arg0) {
     pDescriptorList = arg0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetEditable * (MKWidget::*)()const ' to 'MKWidget * (*)()' Too many errors printed, aborting program
+#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetEditable * (MKWidget::*)()const ' to 'MKWidget * (*)()'
 void MKWidgetsInternal_cpp::__sinit() {
     f32 sp2F4;
     f32 sp2F0;

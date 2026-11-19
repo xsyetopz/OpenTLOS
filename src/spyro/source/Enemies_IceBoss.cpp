@@ -96,6 +96,7 @@
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/PhrasePlayer.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 s32 atoi(s8 *);                                     /* extern */
@@ -223,13 +224,13 @@ void IceBoss::CalcSubObjWorldMatrix(int arg0, Matrix *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 IceBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     Matrix sp50;
     f64 sp48;
     f64 sp40;
     f64 sp30;
-    f64 sp20;
+    MKVector3 sp20;
     f32 sp18;
     f64 sp10;
 
@@ -240,11 +241,11 @@ s32 IceBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
         return 1;
     }
     if (arg1 != NULL) {
-        MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
+        sp20 = MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
         ((MKProp *) &sp30)->GetPos();
-        sp10 = sp30 + sp20;
+        sp10 = sp30 + M2C_BITWISE(f64, sp20);
         M2C_FIELD(arg1, f64 *, 0) = sp10;
-        sp18 = sp38 + sp28;
+        sp18 = sp38 + sp20.unk8;
         sp40 = sp10;
         sp48 = (f64) sp18;
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp18;
@@ -511,7 +512,7 @@ void IceBoss::UpdateFormShield() {
             spB0 = (f64) sp70;
             sp98 = (f64) sp58;
             spA0 = (f64) sp60;
-            KDRand_Vector(spB8, *((MKVector3 *) &spA8));
+            spB8 = KDRand_Vector(*((MKVector3 *) &spA8), *((MKVector3 *) &sp98));
             temp_f0_861 = spB8 * 5.222099017e-315;
             sp48 = temp_f0_861;
             spC8 = temp_f0_861;
@@ -627,7 +628,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spE0'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void IceBoss::CheckAnimEvents() {
     Matrix sp160;
     f64 sp150;
@@ -644,7 +645,7 @@ void IceBoss::CheckAnimEvents() {
     f64 spF8;
     f64 spF0;
     f64 spE8;
-    f64 spD8;
+    MKVector3 spD8;
     f64 spD0;
     f64 spC8;
     f64 spC0;
@@ -708,10 +709,10 @@ void IceBoss::CheckAnimEvents() {
         sp60 = sp160.unk38 + (f32) sp110;
         sp150 = (f64) sp60;
         do {
-            KDRand_UnitVectorXZ();
+            spD8 = KDRand_UnitVectorXZ();
             sp48 = spD8 * 5.60222949e-315;
             spE8 = sp48;
-            sp50 = spE0 * 300.0f;
+            sp50 = spD8.unk8 * 300.0f;
             sp138 = sp48;
             spF0 = (f64) sp50;
             sp140 = (f64) sp50;
@@ -870,7 +871,7 @@ void IceBoss::UpdateFormWeapon() {
             spB0 = (f64) sp70;
             sp98 = (f64) sp58;
             spA0 = (f64) sp60;
-            KDRand_Vector(spB8, *((MKVector3 *) &spA8));
+            spB8 = KDRand_Vector(*((MKVector3 *) &spA8), *((MKVector3 *) &sp98));
             temp_f0_1545 = spB8 * 5.222099017e-315;
             sp48 = temp_f0_1545;
             spC8 = temp_f0_1545;
@@ -1530,12 +1531,12 @@ void IceBoss::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *IceBoss::Update() {
     f64 sp48;
     f64 sp40;
     f64 sp30;
-    f64 sp20;
+    MKVector3 sp20;
     f32 sp18;
     f64 sp10;
     s32 sp8;
@@ -1555,11 +1556,11 @@ void *IceBoss::Update() {
     if (IsIceKing() != 0) {
         UpdatePhrasesAndSounds();
     }
-    MKVector(0.0f, 400.0f, 0.0f);
+    sp20 = MKVector(0.0f, 400.0f, 0.0f);
     ((MKProp *) &sp30)->GetPos();
-    sp10 = sp30 + sp20;
+    sp10 = sp30 + M2C_BITWISE(f64, sp20);
     this->unkF80 = sp10;
-    sp18 = sp38 + sp28;
+    sp18 = sp38 + sp20.unk8;
     sp40 = sp10;
     sp48 = (f64) sp18;
     this->unkF88 = (f64) sp18;
@@ -1766,7 +1767,7 @@ loop_32:
             M2C_FIELD(temp_r6_3375, f64 *, 0) = sp68;
             sp180 = (f64) sp70;
             M2C_FIELD(temp_r6_3375, f64 *, 8) = (f64) sp70;
-            KDMath_Slerp(sp138, *((MKVector3 *) arg2), 0.7853982f);
+            sp138 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp1A8), 0.7853982f);
             sp148.operator*(temp_f30_3360);
             sp58 = sp1B8 + M2C_BITWISE(f64, sp148);
             sp60 = (f32) sp1C0 + sp148.unk8;
@@ -1783,7 +1784,7 @@ loop_32:
             sp128 = sp48;
             sp130 = (f64) sp50;
             M2C_FIELD(temp_r6_3421, f64 *, 8) = (f64) sp50;
-            KDMath_Slerp(spE8, *((MKVector3 *) arg2), -0.7853982f);
+            spE8 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp1A8), -0.7853982f);
             spF8.operator*(temp_f30_3360);
             sp38 = sp1B8 + M2C_BITWISE(f64, spF8);
             sp40 = (f32) sp1C0 + spF8.unk8;

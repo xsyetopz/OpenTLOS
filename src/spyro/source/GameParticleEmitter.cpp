@@ -56,6 +56,7 @@
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern MKSceneManager *gMK;
@@ -74,7 +75,7 @@ void PointDirEmitter::SetDirection(const MKVector3 &arg0) {
     this->unk20 = M2C_FIELD(&arg0, f64 *, 8);
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector3 *arg2, MKVector4 *arg3) {
     Matrix sp100;
     M2C_UNK spFC;
@@ -82,7 +83,7 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
     f64 spE8;
     f64 spE0;
     f64 spD8;
-    f64 spC8;
+    MKVector3 spC8;
     f64 spC0;
     f64 spB8;
     MKVector3 spA8;
@@ -143,11 +144,11 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
         }
         temp_f29_75 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f28_80 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_80, temp_f29_75);
+        spC8 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_80, temp_f29_75);
         temp_f0_91 = spC8 * (f64) var_f27_64;
         sp28 = temp_f0_91;
         spD8 = temp_f0_91;
-        sp30 = spD0 * var_f27_64;
+        sp30 = spC8.unk8 * var_f27_64;
         spE0 = (f64) sp30;
         M2C_FIELD(arg0, f64 *, 0) = (f64) (M2C_FIELD(arg0, f64 *, 0) + temp_f0_91);
         arg0->unk8 += (f32) spE0;
@@ -167,7 +168,7 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
         spA0 = (f64) sp70;
         sp88 = (f64) sp58;
         sp90 = (f64) sp60;
-        KDRand_Vector(spA8, *((MKVector3 *) &sp98));
+        spA8 = KDRand_Vector(*((MKVector3 *) &sp98), *((MKVector3 *) &sp88));
         temp_f1_148 = M2C_BITWISE(f32, spA8);
         var_f4_156 = (spA8.unk8 * spA8.unk8) + ((temp_f1_148 * temp_f1_148) + (spA8.unk4 * spA8.unk4));
         if (var_f4_156 > 1e-12f) {
@@ -301,7 +302,7 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
     MKVector3 spD8;
     f64 spD0;
     f64 spC8;
-    f64 spB8;
+    MKVector3 spB8;
     MKVector3 spA8;
     f64 spA0;
     f64 sp98;
@@ -427,11 +428,11 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             }
             temp_f31_647 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f28_652 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_652, temp_f31_647);
+            spB8 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_652, temp_f31_647);
             temp_f0_663 = spB8 * (f64) var_f29_636;
             sp38 = temp_f0_663;
             spC8 = temp_f0_663;
-            sp40 = spC0 * var_f29_636;
+            sp40 = spB8.unk8 * var_f29_636;
             spD0 = (f64) sp40;
             M2C_FIELD(arg0, f64 *, 0) = (f64) (M2C_FIELD(arg0, f64 *, 0) + temp_f0_663);
             arg0->unk8 += (f32) spD0;
@@ -454,9 +455,8 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             sp98 = temp_f0_706;
             sp30 = sp128.unk8 - sp138.unk8;
             spA0 = (f64) sp30;
-            Normalise(spA8);
-            M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, spA8);
-            M2C_FIELD(arg1, f64 *, 8) = (f64) spA8.unk8;
+            spA8 = Normalise(*((MKVector3 *) &sp98));
+            M2C_FIELD(arg1, MKVector3 *, 0) = spA8;
             break;
         case 1:
             temp_f31_731 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -467,9 +467,8 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             sp1C = temp_f29_736;
             sp80 = (f64) sp20;
             sp78 = (f64) sp18;
-            Normalise(sp88);
-            M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp88);
-            M2C_FIELD(arg1, f64 *, 8) = (f64) sp88.unk8;
+            sp88 = Normalise(*((MKVector3 *) &sp78));
+            M2C_FIELD(arg1, MKVector3 *, 0) = sp88;
             break;
         case 2:
             M2C_FIELD(arg1, f64 *, 0) = (f64) this->unk18;

@@ -54,6 +54,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_TeslaTowerAlarm;
@@ -559,9 +560,8 @@ void TeslaTower::DrawLightCone() {
     sp1D0 = temp_f5_812;
     sp138 = (f64) sp28;
     sp140 = (f64) sp30;
-    Normalise(sp148);
-    sp1A8 = M2C_BITWISE(f64, sp148);
-    sp1B0 = (f64) sp148.unk8;
+    sp148 = Normalise(*((MKVector3 *) &sp138));
+    *(MKVector3 *) &sp1A8 = sp148;
     sp20 = (sp1C8 * (*(f32 *) ((u8 *) &sp1A8 + 0x4))) - ((*(f32 *) ((u8 *) &sp1C0 + 0xc)) * (f32) sp1A8);
     sp1C = (sp1D0 * (f32) sp1A8) - (sp1C8 * (f32) sp1B0);
     sp18 = ((*(f32 *) ((u8 *) &sp1C0 + 0xc)) * (f32) sp1B0) - (sp1D0 * (*(f32 *) ((u8 *) &sp1A8 + 0x4)));
@@ -850,6 +850,7 @@ s32 TeslaTower::LoadDone() {
     f64 sp20;
     f64 sp18;
     f64 sp10;
+    MKVector3 *temp_r29_1519;
     f32 temp_f25_1474;
     f32 temp_f29_1454;
     f32 temp_f3_1598;
@@ -864,7 +865,6 @@ s32 TeslaTower::LoadDone() {
     f64 temp_f3_1501;
     s32 var_r28_1502;
     s32 var_r30_1504;
-    void *temp_r29_1519;
     void *temp_r3_1429;
     void *temp_r3_1436;
     void *temp_r5_1435;
@@ -894,10 +894,9 @@ s32 TeslaTower::LoadDone() {
     temp_f2_1481 = M2C_FIELD(this, f64 *, 0xE0);
     this->unkE0.unk8 = (f32) (((f64) M2C_FIELD(temp_r6_1473, f32 *, 8) * temp_f2_1481) + (((f64) M2C_FIELD(temp_r6_1473, f32 *, 0x18) * temp_f2_1481) + (((f64) M2C_FIELD(temp_r6_1473, f32 *, 0x28) * (f64) temp_f25_1474) + (f64) M2C_FIELD(temp_r6_1473, f32 *, 0x38))));
     M2C_FIELD(this, f64 *, 0xE0) = (f64) ((M2C_FIELD(temp_r6_1473, f64 *, 0) * temp_f2_1481) + ((M2C_FIELD(temp_r6_1473, f64 *, 0x10) * temp_f2_1481) + ((M2C_FIELD(temp_r6_1473, f64 *, 0x20) * (f64) temp_f25_1474) + M2C_FIELD(temp_r6_1473, f64 *, 0x30))));
-    Min(sp160, *((MKVector3 *) &this->unkD0));
-    sp190 = M2C_BITWISE(f64, sp160);
-    sp198 = (f64) sp160.unk8;
-    Max(sp150, *((MKVector3 *) &this->unkD0));
+    sp160 = Min(*((MKVector3 *) &this->unkD0), this->unkE0);
+    *(MKVector3 *) &sp190 = sp160;
+    sp150 = Max(*((MKVector3 *) &this->unkD0), this->unkE0);
     temp_f3_1501 = M2C_BITWISE(f64, sp150);
     var_r28_1502 = 0;
     var_r30_1504 = 0;
@@ -909,20 +908,18 @@ s32 TeslaTower::LoadDone() {
     M2C_FIELD(this, f64 *, 0xE8) = (f64) sp150.unk8;
 loop_2:
     if (var_r28_1502 < M2C_BITWISE(s32, this->unk90.unk4)) {
-        temp_r29_1519 = (void *) (M2C_BITWISE(s32, this->unk90.unkC) + var_r30_1504);
-        Min(sp140, *((MKVector3 *) &this->unkD0));
-        this->unkD0 = M2C_BITWISE(f64, sp140);
-        this->unkD8 = (f64) sp140.unk8;
-        sp80 = M2C_FIELD(temp_r29_1519, f32 *, 0);
-        sp84 = 800.0f + M2C_FIELD(temp_r29_1519, f32 *, 4);
-        sp88 = M2C_FIELD(temp_r29_1519, f32 *, 8);
+        temp_r29_1519 = (MKVector3 *) (M2C_BITWISE(s32, this->unk90.unkC) + var_r30_1504);
+        sp140 = Min(*((MKVector3 *) &this->unkD0), *temp_r29_1519);
+        *(MKVector3 *) &this->unkD0 = sp140;
+        sp80 = temp_r29_1519->unk0;
+        sp84 = 800.0f + temp_r29_1519->unk4;
+        sp88 = temp_r29_1519->unk8;
         sp120 = (f64) sp80;
         sp128 = (f64) sp88;
-        Max(sp130, this->unkE0);
+        sp130 = Max(this->unkE0, *((MKVector3 *) &sp120));
         var_r28_1502 += 1;
         var_r30_1504 += 0x20;
-        M2C_FIELD(this, f64 *, 0xE0) = M2C_BITWISE(f64, sp130);
-        M2C_FIELD(this, f64 *, 0xE8) = (f64) sp130.unk8;
+        M2C_FIELD(this, MKVector3 *, 0xE0) = sp130;
         goto loop_2;
     }
     sp70 = 400.0f;
@@ -961,10 +958,9 @@ loop_2:
     spE0 = (f64) sp40;
     spE8 = (f64) sp48;
     M2C_FIELD(this, f64 *, 0xE8) = (f64) sp48;
-    Min(spD0, *((MKVector3 *) &this->unkD0));
-    sp20 = M2C_BITWISE(f64, spD0);
-    sp28 = (f64) spD0.unk8;
-    Max(spC0, *((MKVector3 *) &this->unkD0));
+    spD0 = Min(*((MKVector3 *) &this->unkD0), this->unkE0);
+    *(MKVector3 *) &sp20 = spD0;
+    spC0 = Max(*((MKVector3 *) &this->unkD0), this->unkE0);
     sp10 = M2C_BITWISE(f64, spC0);
     this->unkD0 = sp20;
     sp18 = (f64) spC0.unk8;

@@ -55,6 +55,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -123,7 +124,7 @@ void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector
             sp68 = (f64) sp38;
             sp50 = (f64) sp20;
             sp58 = (f64) sp28;
-            KDRand_Vector(sp70, *((MKVector3 *) &sp60));
+            sp70 = KDRand_Vector(*((MKVector3 *) &sp60), *((MKVector3 *) &sp50));
             temp_f1_89 = M2C_BITWISE(f32, sp70);
             var_f4_97 = (sp70.unk8 * sp70.unk8) + ((temp_f1_89 * temp_f1_89) + (sp70.unk4 * sp70.unk4));
             if (var_f4_97 > 1e-12f) {
@@ -360,7 +361,7 @@ void *EarthBreathWhirlWinds::Update() {
     f64 sp230;
     f64 sp228;
     f64 sp220;
-    f64 sp210;
+    MKVector3 sp210;
     MKVector3 sp200;
     f64 sp1F8;
     f64 sp1F0;
@@ -489,10 +490,9 @@ loop_59:
                 sp168 = (f64) sp48;
                 sp170 = (f64) sp50;
                 sp178 = (f64) sp58;
-                KDRand_Vector(sp180, *((MKVector3 *) &sp170));
-                Normalise(sp190);
-                M2C_FIELD(temp_r3_972, f64 *, 0) = M2C_BITWISE(f64, sp190);
-                M2C_FIELD(temp_r3_972, f64 *, 8) = (f64) sp190.unk8;
+                sp180 = KDRand_Vector(*((MKVector3 *) &sp170), *((MKVector3 *) &sp160));
+                sp190 = Normalise(sp180);
+                M2C_FIELD(temp_r3_972, MKVector3 *, 0) = sp190;
                 M2C_FIELD(temp_r3_972, f32 *, 0x20) = 0.0f;
                 M2C_FIELD(temp_r3_972, f32 *, 0x28) = 0.0f;
                 temp_f21_1013 = MKRand_Float((int *) &gViewSeed, 100.0f, 500.0f);
@@ -637,7 +637,7 @@ loop_56:
             sp288 = (f64) sp138;
             sp270 = (f64) sp120;
             sp278 = (f64) sp128;
-            KDRand_Vector(sp290, *((MKVector3 *) &sp280));
+            sp290 = KDRand_Vector(*((MKVector3 *) &sp280), *((MKVector3 *) &sp270));
             temp_f0_593 = sp290 * 5.5769738e-315;
             sp110 = temp_f0_593;
             sp2A0 = temp_f0_593;
@@ -655,7 +655,7 @@ loop_56:
             sp248 = (f64) sp108;
             sp230 = (f64) spF0;
             sp238 = (f64) spF8;
-            KDRand_Vector(sp250, *((MKVector3 *) &sp240));
+            sp250 = KDRand_Vector(*((MKVector3 *) &sp240), *((MKVector3 *) &sp230));
             temp_f0_637 = sp250 * 5.5769738e-315;
             spE0 = temp_f0_637;
             sp260 = temp_f0_637;
@@ -666,11 +666,11 @@ loop_56:
             if ((this->unk58 <= 0.0f) && ((u8) M2C_FIELD(temp_r29_962, u8 *, 0x108) != 0)) {
                 var_r24_666 = 0;
                 do {
-                    MKVector(0.0f, 25.0f, 0.0f);
-                    sp80 = M2C_FIELD(temp_r29_962, f64 *, 0xD0) + sp210;
+                    sp210 = MKVector(0.0f, 25.0f, 0.0f);
+                    sp80 = M2C_FIELD(temp_r29_962, f64 *, 0xD0) + M2C_BITWISE(f64, sp210);
                     sp68 = 1.0f;
                     sp78 = -1.0f;
-                    sp88 = temp_r29_962->unkD8 + sp218;
+                    sp88 = temp_r29_962->unkD8 + sp210.unk8;
                     sp60 = 1.0f;
                     sp64 = 1.0f;
                     sp70 = -1.0f;
@@ -683,9 +683,8 @@ loop_56:
                     sp1E8 = (f64) sp68;
                     sp1F0 = (f64) sp70;
                     sp1F8 = (f64) sp78;
-                    KDRand_Vector(sp200, *((MKVector3 *) &sp1F0));
-                    sp2D0 = M2C_BITWISE(f64, sp200);
-                    sp2D8 = (f64) sp200.unk8;
+                    sp200 = KDRand_Vector(*((MKVector3 *) &sp1F0), *((MKVector3 *) &sp1E0));
+                    *(MKVector3 *) &sp2D0 = sp200;
                     temp_f0_712 = sp2D0 * 5.58344962e-315;
                     spD0 = temp_f0_712;
                     sp1D0 = temp_f0_712;

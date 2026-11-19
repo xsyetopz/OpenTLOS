@@ -45,6 +45,7 @@
 #include "common/Source/Str.h"
 #include "common/Source/Timer.h"
 #include "common/gc/MKMaterial_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -124,8 +125,10 @@ Tools_Ortho::Tools_Ortho() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
-void Tools_CalculateVelocity(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, float arg3) {
+#if 0 // DRAFT: illegal function overloading
+void Tools_CalculateVelocity(const MKVector3 &arg1, const MKVector3 &arg2, float farg0, float farg1) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp48;
     f64 sp40;
     f64 sp38;
@@ -145,10 +148,10 @@ void Tools_CalculateVelocity(const MKVector3 &arg0, const MKVector3 &arg1, float
     s32 temp_r6_211;
     s32 var_r0_221;
 
-    temp_f0_161 = *M2C_ERROR(/* Read from unset register $r5 */) - M2C_FIELD(&arg1, f64 *, 0);
+    temp_f0_161 = M2C_FIELD(&arg2, f64 *, 0) - M2C_FIELD(&arg1, f64 *, 0);
     sp20 = temp_f0_161;
     sp40 = temp_f0_161;
-    sp28 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 8) - arg1.unk8;
+    sp28 = arg2.unk8 - arg1.unk8;
     (*(f32 *) ((u8 *) &sp40 + 0x4)) = 0.0f;
     sp48 = (f64) sp28;
     var_f6_179 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (0.0f * 0.0f));
@@ -186,19 +189,20 @@ void Tools_CalculateVelocity(const MKVector3 &arg0, const MKVector3 &arg1, float
         }
     }
     if (var_f6_179 > 0.0f) {
-        temp_f6_245 = var_f6_179 / arg2;
+        temp_f6_245 = var_f6_179 / farg0;
         temp_f3_247 = 1.0f / temp_f6_245;
         sp10 = sp40 * (f64) temp_f3_247;
         sp18 = (f32) sp48 * temp_f3_247;
         sp30 = sp10;
         sp38 = (f64) sp18;
-        (*(f32 *) ((u8 *) &sp30 + 0x4)) = -((0.5f * arg3 * temp_f6_245) - ((M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 4) - arg1.unk4) / temp_f6_245));
-        M2C_FIELD(&arg0, f64 *, 0) = sp30;
-        M2C_FIELD(&arg0, f64 *, 8) = (f64) sp18;
-        return;
+        (*(f32 *) ((u8 *) &sp30 + 0x4)) = -((0.5f * farg1 * temp_f6_245) - ((arg2.unk4 - arg1.unk4) / temp_f6_245));
+        M2C_FIELD(sret, f64 *, 0) = sp30;
+        M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+        return result;
     }
-    M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    return result;
 }
 #endif
 
@@ -458,7 +462,7 @@ loop_3:
             sp18 = temp_f8_637;
             sp60 = sp10;
             sp68 = (f64) sp18;
-            ClampMagnitude(sp70, sp8);
+            sp70 = ClampMagnitude(*((MKVector3 *) &sp60), sp8);
             sp30 = sp90 + M2C_BITWISE(f64, sp70);
             M2C_FIELD(&arg1, f64 *, 0) = sp30;
             sp38 = (f32) sp98 + sp70.unk8;
@@ -493,7 +497,7 @@ void DoPush(PushOutResult *arg0, MKVector3 &arg1, int arg2, float &arg3, float a
     f64 spA8;
     f64 spA0;
     f64 sp98;
-    f32 sp88;
+    MKVector3 sp88;
     f32 sp80;
     f64 sp78;
     f32 sp70;
@@ -521,6 +525,7 @@ void DoPush(PushOutResult *arg0, MKVector3 &arg1, int arg2, float &arg3, float a
     f32 temp_f2_785;
     f32 temp_f4_990;
     f32 temp_f6_856;
+    f32 temp_f8_932;
     f64 temp_f0_805;
     f64 temp_f0_965;
     f64 temp_f4_831;
@@ -596,10 +601,11 @@ loop_3:
                     sp120.unk2C = 0.0f;
                     sp120.Transpose3x3(&sp120);
                     sp120.Inverse(&sp120);
-                    MKVector(1.0f, 1.0f, 1.0f);
-                    sp18 = (sp90 * sp120.unk20) + ((sp88 * M2C_BITWISE(f32, sp120)) + (sp8C * sp120.unk10));
-                    sp1C = (sp90 * sp120.unk24) + ((sp88 * sp120.unk4) + (sp8C * sp120.unk14));
-                    sp20 = (sp90 * sp120.unk28) + ((sp88 * sp120.unk8) + (sp8C * sp120.unk18));
+                    sp88 = MKVector(1.0f, 1.0f, 1.0f);
+                    temp_f8_932 = M2C_BITWISE(f32, sp88);
+                    sp18 = (sp88.unk8 * sp120.unk20) + ((temp_f8_932 * M2C_BITWISE(f32, sp120)) + (sp88.unk4 * sp120.unk10));
+                    sp1C = (sp88.unk8 * sp120.unk24) + ((temp_f8_932 * sp120.unk4) + (sp88.unk4 * sp120.unk14));
+                    sp20 = (sp88.unk8 * sp120.unk28) + ((temp_f8_932 * sp120.unk8) + (sp88.unk4 * sp120.unk18));
                     sp98 = (f64) sp18;
                     spA0 = (f64) sp20;
                     sp108 = (f64) sp18;
@@ -1095,8 +1101,10 @@ s32 Tools_Line2DToCircleIntersect(const MKVector3 &arg0, const MKVector3 &arg1, 
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
-void Tools_GetClosestPtOnLine2D(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
+#if 0 // DRAFT: illegal function overloading
+void Tools_GetClosestPtOnLine2D(const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -1123,34 +1131,35 @@ void Tools_GetClosestPtOnLine2D(const MKVector3 &arg0, const MKVector3 &arg1, co
     sp10 = arg2.unk8 - temp_f5_2133;
     sp48 = (f64) sp8;
     sp50 = (f64) sp10;
-    sp20 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 8) - temp_f5_2133;
-    sp18 = *M2C_ERROR(/* Read from unset register $r6 */) - temp_f4_2122;
+    sp20 = arg3.unk8 - temp_f5_2133;
+    sp18 = arg3.unk0 - temp_f4_2122;
     sp1C = 0.0f;
     temp_f4_2155 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))));
     sp60 = (f64) sp20;
     sp58 = (f64) sp18;
     if (temp_f4_2155 == 0.0f) {
-        M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(&arg2, f32 *, 0);
-        M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(&arg2, f32 *, 8);
-        return;
+        M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&arg2, f32 *, 0);
+        M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&arg2, f32 *, 8);
+        return result;
     }
     temp_f1_2173 = (((f32) sp60 * (f32) sp50) + (((f32) sp58 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))) / temp_f4_2155;
     if (temp_f1_2173 < 0.0f) {
-        M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(&arg1, f32 *, 0);
-        M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(&arg1, f32 *, 8);
-        return;
+        M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&arg1, f32 *, 0);
+        M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&arg1, f32 *, 8);
+        return result;
     }
     if (temp_f1_2173 > 1.0f) {
-        M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(&arg2, f32 *, 0);
-        M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(&arg2, f32 *, 8);
-        return;
+        M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&arg2, f32 *, 0);
+        M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&arg2, f32 *, 8);
+        return result;
     }
-    __ml(temp_f1_2173, sp38);
+    sp38 = __ml(temp_f1_2173, *((MKVector3 *) &sp48));
     temp_f0_2196 = (f64) M2C_FIELD(&arg1, f32 *, 0) + M2C_BITWISE(f64, sp38);
     sp28 = temp_f0_2196;
-    M2C_FIELD(&arg0, f64 *, 0) = temp_f0_2196;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_2196;
     sp30 = arg1.unk8 + sp38.unk8;
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) sp30;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp30;
+    return result;
 }
 #endif
 
@@ -1215,7 +1224,7 @@ s32 Tools_Line2DToLine2DIntersect(const MKVector3 &arg0, const MKVector3 &arg1, 
     return 1;
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()' Too many errors printed, aborting program
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Tools_UpdateSphereCollideResults(MKCollisionResult *arg0, int arg1, const MKVector3 &arg2) {
     f64 sp40;
     f64 sp38;
@@ -1242,7 +1251,7 @@ loop_4:
         sp18 = temp_f0_2342;
         sp10 = temp_f30_2332 - M2C_FIELD(temp_r30_2340, f32 *, 8);
         sp20 = (f64) sp10;
-        Normalise(sp28);
+        sp28 = Normalise(*((MKVector3 *) &sp18));
         temp_f5_2354 = M2C_BITWISE(f64, sp28);
         sp38 = temp_f5_2354;
         sp40 = (f64) sp28.unk8;
@@ -1453,7 +1462,10 @@ void Tools_TestFloor(const MKVector3 &arg0, MKCollisionResult *arg1, float arg2,
     MKCollision_RayCollide(arg0, *((MKVector3 *) &sp18), var_r4_0, arg3, 0);
 }
 
-void Tools_GroundColor(MKCollisionResult *arg0) {
+#if 0 // DRAFT: illegal function overloading
+void Tools_GroundColor(MKCollisionResult *arg1) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp48;
     f64 sp40;
     s32 sp3C;
@@ -1484,7 +1496,7 @@ void Tools_GroundColor(MKCollisionResult *arg0) {
     sp20 = (f64) sp10;
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
-    if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), u8 *, 0x50) != 0) && (temp_r3_2707 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 0x48), ((temp_r3_2707 == NULL) == 0)) && (var_r31_2710 = M2C_FIELD(temp_r3_2707, void **, 8), ((var_r31_2710 == NULL) == 0))) {
+    if (((u8) arg1->unk50 != 0) && (temp_r3_2707 = arg1->unk48, ((temp_r3_2707 == NULL) == 0)) && (var_r31_2710 = M2C_FIELD(temp_r3_2707, void **, 8), ((var_r31_2710 == NULL) == 0))) {
 
     } else {
         var_r31_2710 = NULL;
@@ -1503,9 +1515,9 @@ void Tools_GroundColor(MKCollisionResult *arg0) {
         sp30 = ((f32) sp48 * temp_f31_2696) + ((f32) sp30 * temp_f6_2742);
     } else {
         temp_f6_2761 = 1.0f - temp_f31_2696;
-        sp28 = (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x20) * temp_f31_2696) + (sp28 * temp_f6_2761);
-        (*(f32 *) ((u8 *) &sp20 + 0xc)) = (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x24) * temp_f31_2696) + ((*(f32 *) ((u8 *) &sp20 + 0xc)) * temp_f6_2761);
-        sp30 = (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x28) * temp_f31_2696) + (sp30 * temp_f6_2761);
+        sp28 = (arg1->unk20 * temp_f31_2696) + (sp28 * temp_f6_2761);
+        (*(f32 *) ((u8 *) &sp20 + 0xc)) = (arg1->unk24 * temp_f31_2696) + ((*(f32 *) ((u8 *) &sp20 + 0xc)) * temp_f6_2761);
+        sp30 = (arg1->unk28 * temp_f31_2696) + (sp30 * temp_f6_2761);
     }
     if (sp28 > 1.0f) {
         sp28 = 1.0f;
@@ -1516,12 +1528,16 @@ void Tools_GroundColor(MKCollisionResult *arg0) {
     if (sp30 > 1.0f) {
         sp30 = 1.0f;
     }
-    M2C_FIELD(arg0, f64 *, 0) = (f64) sp28;
-    M2C_FIELD(arg0, f64 *, 8) = (f64) sp30;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp28;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp30;
+    return result;
 }
+#endif
 
-#if 0 // DRAFT: pointer/array required
-void Tools_GetGradient(const MKVector3 &arg0) {
+#if 0 // DRAFT: illegal function overloading
+void Tools_GetGradient(const MKVector3 &arg1) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp88;
     f64 sp80;
     f64 sp78;
@@ -1557,11 +1573,11 @@ void Tools_GetGradient(const MKVector3 &arg0) {
 
     var_f0_2812 = 0.0f;
     sp58 = 0.0f;
-    temp_f7_2815 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 8);
+    temp_f7_2815 = arg1.unk8;
     sp50 = 0.0f;
-    temp_f10_2818 = *M2C_ERROR(/* Read from unset register $r4 */);
+    temp_f10_2818 = arg1.unk0;
     sp88 = (f64) sp58;
-    temp_f8_2820 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 4);
+    temp_f8_2820 = arg1.unk4;
     sp54 = 1.0f;
     sp80 = (f64) sp50;
     sp44 = (temp_f7_2815 * (f32) sp80) - (temp_f10_2818 * (f32) sp88);
@@ -1573,9 +1589,9 @@ void Tools_GetGradient(const MKVector3 &arg0) {
         sp30 = 0.0f;
         sp34 = 0.0f;
         sp38 = 0.0f;
-        M2C_FIELD(&arg0, f64 *, 0) = (f64) sp30;
-        M2C_FIELD(&arg0, f64 *, 8) = (f64) sp38;
-        return;
+        M2C_FIELD(sret, f64 *, 0) = (f64) sp30;
+        M2C_FIELD(sret, f64 *, 8) = (f64) sp38;
+        return result;
     }
     sp10 = (temp_f8_2820 * (f32) sp78) - (temp_f7_2815 * (*(f32 *) ((u8 *) &sp70 + 0x4)));
     sp14 = (temp_f7_2815 * (f32) sp70) - (temp_f10_2818 * (f32) sp78);
@@ -1622,8 +1638,9 @@ void Tools_GetGradient(const MKVector3 &arg0) {
     sp24 = (*(f32 *) ((u8 *) &sp60 + 0x4)) * var_f0_2812;
     sp20 = (f32) sp60 * var_f0_2812;
     sp28 = (f32) sp68 * var_f0_2812;
-    M2C_FIELD(&arg0, f64 *, 0) = (f64) sp20;
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) sp28;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp28;
+    return result;
 }
 #endif
 

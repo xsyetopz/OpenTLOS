@@ -99,6 +99,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 acos(f32);                                      /* extern */
@@ -299,8 +300,8 @@ void Enemy::ChillFx_Update() {
     f64 sp60;
     f64 sp58;
     MKVector3 sp48;
-    M2C_UNK sp38;
-    f64 sp28;
+    MKVector3 sp38;
+    MKVector3 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp1C;
@@ -378,12 +379,12 @@ void Enemy::ChillFx_Update() {
                 sp68 = temp_f5_555;
                 sp70 = temp_f4_556;
                 M2C_FIELD(temp_r3_549, f32 *, 0x1C) = 1.0f;
-                MKVector(0.0f, MKRand_Float((int *) &gViewSeed, -50.0f, 25.0f), 0.0f);
-                KDRand_UnitVectorXZ();
+                sp28 = MKVector(0.0f, MKRand_Float((int *) &gViewSeed, -50.0f, 25.0f), 0.0f);
+                sp38 = KDRand_UnitVectorXZ();
                 sp48.operator*(150.0f);
-                sp8 = sp48 + sp28;
+                sp8 = sp48 + M2C_BITWISE(f64, sp28);
                 M2C_FIELD(temp_r28_554, f64 *, 0) = sp8;
-                sp10 = sp48.unk8 + sp30;
+                sp10 = sp48.unk8 + sp28.unk8;
                 sp58 = sp8;
                 sp60 = (f64) sp10;
                 M2C_FIELD(temp_r28_554, f64 *, 8) = (f64) sp10;
@@ -573,7 +574,7 @@ void Enemy::ThawIfFrozen() {
             sp58 = (f64) sp38;
             sp40 = (f64) sp20;
             sp48 = (f64) sp28;
-            KDRand_Vector(sp60, *((MKVector3 *) &sp50));
+            sp60 = KDRand_Vector(*((MKVector3 *) &sp50), *((MKVector3 *) &sp40));
             temp_f0_953 = sp60 * 5.676053805e-315;
             sp10 = temp_f0_953;
             sp70 = temp_f0_953;
@@ -790,9 +791,8 @@ void Enemy::UpdateLighting() {
         sp80 = (f32) sp80 * var_f5_1408;
         (*(f32 *) ((u8 *) &sp70 + 0x14)) *= var_f5_1408;
         sp88 = (f32) sp88 * var_f5_1408;
-        KDMath_Slerp(sp40, *((MKVector3 *) &this->unk600), 6.2831855f * gUpdateTimeDelta);
-        M2C_FIELD(this, f64 *, 0x600) = M2C_BITWISE(f64, sp40);
-        M2C_FIELD(this, f64 *, 0x608) = (f64) sp40.unk8;
+        sp40 = KDMath_Slerp(*((MKVector3 *) &this->unk600), *((MKVector3 *) &sp80), 6.2831855f * gUpdateTimeDelta);
+        M2C_FIELD(this, MKVector3 *, 0x600) = sp40;
     }
 }
 #endif
@@ -1059,7 +1059,7 @@ void Enemy::FindAndZapFriends(BreathHitMessage *arg0) {
     MKVector3 sp100;
     f64 spF8;
     f64 spF0;
-    f64 spE0;
+    MKVector3 spE0;
     MKVector3 spD0;
     f64 spC8;
     f64 spC0;
@@ -1312,11 +1312,11 @@ loop_56:
                         MKRand_Float(0.0f, 1.0f);
                         MKRand_Float(0.25f, 1.0f);
                         MKRand_Float(0.0f, 1.0f);
-                        MKVector(M2C_ERROR(/* Read from unset register $f1 */), M2C_ERROR(/* Read from unset register $f1 */), M2C_ERROR(/* Read from unset register $f1 */));
+                        spE0 = MKVector(M2C_ERROR(/* Read from unset register $f1 */), M2C_ERROR(/* Read from unset register $f1 */), M2C_ERROR(/* Read from unset register $f1 */));
                         temp_f0_2374 = spE0 * M2C_BITWISE(f64, spD0);
                         sp20 = temp_f0_2374;
                         spF0 = temp_f0_2374;
-                        sp28 = spE8 * spD0.unk8;
+                        sp28 = spE0.unk8 * spD0.unk8;
                         spF8 = (f64) sp28;
                         sp100.operator*(0.5f);
                         temp_f0_2391 = sp100 + spF0;
@@ -1368,7 +1368,7 @@ void Enemy::DoBlockFx(unsigned int arg0, const MKVector3 &arg1) {
     MKVector3 sp78;
     MKVector3 sp68;
     MKVector3 sp58;
-    M2C_UNK sp48;
+    MKVector3 sp48;
     f64 sp40;
     f64 sp38;
     f32 sp34;
@@ -1410,9 +1410,9 @@ void Enemy::DoBlockFx(unsigned int arg0, const MKVector3 &arg1) {
     var_r28_2618 = 0;
     spC0 = M2C_FIELD(&arg1, f64 *, 8);
     do {
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, 0.0f, -1.0f);
-        KDRand_Vector(sp68, sp58);
+        sp48 = MKVector(1.0f, 1.0f, 1.0f);
+        sp58 = MKVector(-1.0f, 0.0f, -1.0f);
+        sp68 = KDRand_Vector(sp58, sp48);
         sp78.operator*(0.5f);
         sp8 = sp78 + M2C_FIELD(this, f64 *, 0xC0);
         spA8 = sp8;
@@ -3214,8 +3214,7 @@ loop_68:
                 sp80 = (f32) sp80 * var_f5_6162;
             }
             temp_r3_6260 = this->unkA30->unk0 + var_r21_6111;
-            M2C_FIELD(temp_r3_6260, f64 *, 0) = M2C_BITWISE(f64, sp68);
-            M2C_FIELD(temp_r3_6260, f64 *, 8) = (f64) sp68.unk8;
+            M2C_FIELD(temp_r3_6260, MKVector3 *, 0) = sp68;
             if (var_r29_6091 != 0) {
                 var_r25_6264 = 0;
                 var_r19_6265 = 0;
@@ -6079,20 +6078,20 @@ void Enemy::SetAnim(MKAnim *arg0, float arg1, float arg2, float arg3, unsigned i
     this->unk6B4 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 Enemy::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
-    MKVector(0.0f, 0.5f * GetCollisionHeight(), 0.0f);
+    sp18 = MKVector(0.0f, 0.5f * GetCollisionHeight(), 0.0f);
     ((MKProp *) &sp28)->GetPos();
-    sp8 = sp28 + sp18;
+    sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp20;
+    sp10 = sp30 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -6100,12 +6099,12 @@ s32 Enemy::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 Enemy::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     u32 temp_r4_12034;
@@ -6114,11 +6113,11 @@ s32 Enemy::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     if (temp_r4_12034 != -1U) {
         MKModel_CalculateNodeWorldPosition(this->unk4, (s32) temp_r4_12034, arg1);
     } else {
-        MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
+        sp18 = MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
         ((MKProp *) &sp28)->GetPos();
-        sp8 = sp28 + sp18;
+        sp8 = sp28 + M2C_BITWISE(f64, sp18);
         M2C_FIELD(arg1, f64 *, 0) = sp8;
-        sp10 = sp30 + sp20;
+        sp10 = sp30 + sp18.unk8;
         sp38 = sp8;
         sp40 = (f64) sp10;
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;

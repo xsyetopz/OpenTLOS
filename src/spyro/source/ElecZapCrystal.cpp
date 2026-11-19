@@ -234,7 +234,7 @@ loop_10:
                 sp88 = (f64) sp48;
                 sp70 = (f64) sp30;
                 sp78 = (f64) sp38;
-                KDRand_Vector(sp90, *((MKVector3 *) &sp80));
+                sp90 = KDRand_Vector(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70));
                 temp_f0_340 = sp90 * 5.717499035e-315;
                 sp20 = temp_f0_340;
                 spA0 = temp_f0_340;

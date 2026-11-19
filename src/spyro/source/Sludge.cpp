@@ -37,6 +37,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_GrowthExtra1;
@@ -59,18 +60,18 @@ void *Sludge::Update() {
     f64 sp130;
     f64 sp128;
     MKVector3 sp118;
-    M2C_UNK sp108;
+    MKVector3 sp108;
     f64 sp100;
     f64 spF8;
-    f64 spE8;
-    f64 spD8;
+    MKVector3 spE8;
+    MKVector3 spD8;
     f64 spD0;
     f64 spC8;
     MKVector3 spB8;
     MKVector3 spA8;
     MKVector3 sp98;
     MKVector3 sp88;
-    M2C_UNK sp78;
+    MKVector3 sp78;
     f64 sp70;
     f64 sp68;
     f32 sp60;
@@ -166,7 +167,7 @@ void *Sludge::Update() {
         temp_f31_180 = gUpdateTimeDelta;
         temp_f30_185 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
         temp_f29_190 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
-        MKVector(MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f), temp_f29_190, temp_f30_185);
+        sp108 = MKVector(MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f), temp_f29_190, temp_f30_185);
         sp118.operator*(3.0f);
         temp_f0_205 = sp118 * (f64) temp_f31_180;
         sp38 = temp_f0_205;
@@ -192,12 +193,12 @@ void *Sludge::Update() {
         if (var_f1_248 < 0.0f) {
             var_f1_248 = -var_f1_248;
         }
-        MKVector(var_f1_248, var_f30_242, 0.25f * var_f29_232);
-        MKVector(1.0f, 1.0f, 1.0f);
-        temp_f0_267 = spE8 + spD8;
+        spD8 = MKVector(var_f1_248, var_f30_242, 0.25f * var_f29_232);
+        spE8 = MKVector(1.0f, 1.0f, 1.0f);
+        temp_f0_267 = spE8 + M2C_BITWISE(f64, spD8);
         sp28 = temp_f0_267;
         spF8 = temp_f0_267;
-        sp30 = spF0 + spE0;
+        sp30 = spE8.unk8 + spD8.unk8;
         sp100 = (f64) sp30;
         sp170.Scale3x3(&sp170, *((MKVector3 *) &spF8));
         sp170.unk30 = sp1B0.unk30;
@@ -206,9 +207,9 @@ void *Sludge::Update() {
         sp170.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, sp170);
     }
-    MKVector(1.0f, 0.0f, 1.0f);
-    MKVector(-1.0f, 0.0f, -1.0f);
-    KDRand_Vector(sp98, sp88);
+    sp78 = MKVector(1.0f, 0.0f, 1.0f);
+    sp88 = MKVector(-1.0f, 0.0f, -1.0f);
+    sp98 = KDRand_Vector(sp88, sp78);
     spA8.operator*(500.0f);
     spB8.operator*(0.5f);
     sp18 = spB8 + M2C_BITWISE(f64, spA8);
@@ -228,7 +229,7 @@ void *Sludge::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Sludge::Collided(MKCollisionResult &arg0) {
     s8 sp2E9;
     s8 sp2E8;
@@ -281,7 +282,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     MKVector3 sp1A8;
     MKVector3 sp198;
     MKVector3 sp188;
-    M2C_UNK sp178;
+    MKVector3 sp178;
     f64 sp170;
     f64 sp168;
     f64 sp160;
@@ -290,7 +291,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     MKVector3 sp138;
     MKVector3 sp128;
     MKVector3 sp118;
-    M2C_UNK sp108;
+    MKVector3 sp108;
     f64 sp100;
     f64 spF8;
     f64 spF0;
@@ -355,9 +356,9 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     }
     var_r26_422 = 0;
     do {
-        MKVector(1.0f, 1.5f, 1.0f);
-        MKVector(-1.0f, 1.0f, -1.0f);
-        KDRand_Vector(sp198, sp188);
+        sp178 = MKVector(1.0f, 1.5f, 1.0f);
+        sp188 = MKVector(-1.0f, 1.0f, -1.0f);
+        sp198 = KDRand_Vector(sp188, sp178);
         sp1A8.operator*(3000.0f);
         sp1B8.operator*(2.0f);
         sp48 = sp1B8 + M2C_BITWISE(f64, sp1A8);
@@ -378,9 +379,9 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     } while (var_r26_422 < 5);
     var_r26_486 = 0;
     do {
-        MKVector(1.0f, 1.5f, 1.0f);
-        MKVector(-1.0f, 1.0f, -1.0f);
-        KDRand_Vector(sp128, sp118);
+        sp108 = MKVector(1.0f, 1.5f, 1.0f);
+        sp118 = MKVector(-1.0f, 1.0f, -1.0f);
+        sp128 = KDRand_Vector(sp118, sp108);
         sp138.operator*(1000.0f);
         sp148.operator*(0.5f);
         sp38 = sp148 + M2C_BITWISE(f64, sp138);

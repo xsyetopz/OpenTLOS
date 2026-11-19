@@ -50,6 +50,7 @@
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 atan2(f32, f32);                                /* extern */
@@ -860,7 +861,7 @@ void Collectable::SpawningState() {
     MKVector3 sp58;
     MKVector3 sp48;
     MKVector3 sp38;
-    M2C_UNK sp28;
+    MKVector3 sp28;
     f32 sp20;
     f64 sp18;
     f32 sp10;
@@ -934,9 +935,9 @@ void Collectable::SpawningState() {
                 M2C_FIELD(this, f64 *, 0x60) = (f64) (M2C_FIELD(this, f64 *, 0x60) + temp_f0_1916);
                 this->unk60.unk8 += (f32) sp80;
                 if (this->unk138 > temp_f5_1901) {
-                    MKVector(1.0f, 1.0f, 1.0f);
-                    MKVector(-1.0f, -1.0f, -1.0f);
-                    KDRand_Vector(sp48, sp38);
+                    sp28 = MKVector(1.0f, 1.0f, 1.0f);
+                    sp38 = MKVector(-1.0f, -1.0f, -1.0f);
+                    sp48 = KDRand_Vector(sp38, sp28);
                     sp58.operator*(3.1415927f);
                     sp8 = sp58 * 5.304989477e-315;
                     this->unkA0 = sp8;
@@ -1004,7 +1005,7 @@ block_32:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState' Too many errors printed, aborting program
+#if 0 // DRAFT: illegal implicit conversion from 'int' to 'CollectableState'
 void Collectable::SlidingState() {
     f64 sp30;
     f64 sp28;
@@ -1037,7 +1038,7 @@ void Collectable::SlidingState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double' Too many errors printed, aborting program
 u8 Collectable::FindGround() {
     MKCollisionResult sp90;
     f64 sp88;
@@ -1283,7 +1284,7 @@ void Collectable::SpawnDynamic(const MKVector3 &arg0) {
     f64 sp40;
     f64 sp38;
     MKVector3 sp28;
-    M2C_UNK sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     f32 temp_f31_2694;
@@ -1295,7 +1296,7 @@ void Collectable::SpawnDynamic(const MKVector3 &arg0) {
     this->unk138 = 0.0f;
     this->unk13C = 0;
     temp_f31_2694 = MKRand_Float((int *) &gViewSeed, 100.0f, 280.0f);
-    KDRand_UnitVector();
+    sp18 = KDRand_UnitVector();
     sp28.operator*(temp_f31_2694);
     sp8 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp28);
     this->unk90 = sp8;
@@ -1488,7 +1489,7 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
     MKVector3 spD0;
     MKVector3 spC0;
     MKVector3 spB0;
-    M2C_UNK spA0;
+    MKVector3 spA0;
     f64 sp98;
     f64 sp90;
     f64 sp88;
@@ -1552,9 +1553,9 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
         this->unk10 &= 0xFFFFFFF7;
         this->unkFC = this->unk124->unk80;
         if ((s32) this->unk124->unk9C & 0x4000) {
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(spC0, spB0);
+            spA0 = MKVector(1.0f, 1.0f, 1.0f);
+            spB0 = MKVector(-1.0f, -1.0f, -1.0f);
+            spC0 = KDRand_Vector(spB0, spA0);
             spD0.operator*(3.1415927f);
             sp10 = spD0 * 5.304989477e-315;
             this->unkA0 = sp10;
@@ -1877,7 +1878,7 @@ void Collectable::DrawLocator() {
     MKShape_DrawLine(*((MKVector3 *) &this->unk50), *((MKVector3 *) &sp8), this->unk124->unk88, MKVector4::one, Matrix::identity);
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Collectable::DrawShadow() {
     f64 sp2F0;
     f64 sp2E8;
@@ -2007,9 +2008,8 @@ void Collectable::DrawShadow() {
     (*(f32 *) ((u8 *) &sp278 + 0x4)) = this->unkDC;
     sp258 = (f64) spD8;
     sp260 = (f64) spE0;
-    Normalise(sp268);
-    sp298 = M2C_BITWISE(f64, sp268);
-    sp2A0 = (f64) sp268.unk8;
+    sp268 = Normalise(*((MKVector3 *) &sp258));
+    *(MKVector3 *) &sp298 = sp268;
     temp_f6_3887 = this->unk88;
     temp_f8_3891 = this->unk84;
     temp_f10_3893 = this->unk80;

@@ -71,6 +71,7 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK __destroy_arr(u8 *, BurnPoint *(*)(BurnPoint *, s16), M2C_UNK, M2C_UNK); /* extern */
@@ -95,16 +96,16 @@ void GunPowderFuse::EmitBurn(float arg0) {
     KDUniformSpline spD8;
     f64 spD0;
     f64 spC8;
-    f64 spB8;
+    MKVector3 spB8;
     f64 spB0;
     f64 spA8;
     MKVector3 sp98;
-    M2C_UNK sp88;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    f64 sp58;
+    MKVector3 sp58;
     f32 sp50;
     f64 sp48;
     f32 sp40;
@@ -133,10 +134,10 @@ void GunPowderFuse::EmitBurn(float arg0) {
     spF8 = M2C_BITWISE(f64, spD8);
     sp100 = (f64) spD8.unk8;
     temp_f29_88 = 100.0f * (this->unkB4 / 20.0f);
-    KDRand_UnitVectorXZ();
+    spB8 = KDRand_UnitVectorXZ();
     sp28 = spB8 * (f64) temp_f29_88;
     spD8.unk10 = sp28;
-    sp30 = spC0 * temp_f29_88;
+    sp30 = spB8.unk8 * temp_f29_88;
     spC8 = sp28;
     spF0 = (f64) sp30;
     temp_f3_105 = this->unkB4;
@@ -149,8 +150,8 @@ void GunPowderFuse::EmitBurn(float arg0) {
     temp_f29_135 = MKRand_Float((int *) &gViewSeed, -temp_f2_128 / 10.0f, temp_f2_128 / 10.0f);
     temp_f2_140 = this->unkB4;
     temp_f28_141 = MKRand_Float((int *) &gViewSeed, 0.0f, this->unkB4);
-    MKVector(MKRand_Float((int *) &gViewSeed, -temp_f2_140 / 10.0f, temp_f2_140 / 10.0f), temp_f28_141, temp_f29_135);
-    Normalise(sp98);
+    sp88 = MKVector(MKRand_Float((int *) &gViewSeed, -temp_f2_140 / 10.0f, temp_f2_140 / 10.0f), temp_f28_141, temp_f29_135);
+    sp98 = Normalise(sp88);
     sp18 = sp98 * 5.634608575e-315;
     spD8.unk10 = sp18;
     sp20 = sp98.unk8 * 500.0f;
@@ -158,11 +159,11 @@ void GunPowderFuse::EmitBurn(float arg0) {
     spF0 = (f64) sp20;
     spB0 = (f64) sp20;
     temp_f31_170 = this->unkB4;
-    KDRand_UnitVectorXZ();
+    sp58 = KDRand_UnitVectorXZ();
     temp_f0_174 = sp58 * (f64) temp_f31_170;
     sp48 = temp_f0_174;
     sp68 = temp_f0_174;
-    sp50 = sp60 * temp_f31_170;
+    sp50 = sp58.unk8 * temp_f31_170;
     sp70 = (f64) sp50;
     temp_f0_185 = spF8 + temp_f0_174;
     sp38 = temp_f0_185;

@@ -90,6 +90,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_DDEarthSpawn;
@@ -219,10 +220,10 @@ void CynderTier3::EmitClubEffects() {
     MKVector3 sp5F8;
     MKVector3 sp5E8;
     MKVector3 sp5D8;
-    M2C_UNK sp5C8;
+    MKVector3 sp5C8;
     f64 sp5C0;
     f64 sp5B8;
-    f64 sp5A8;
+    MKVector3 sp5A8;
     f64 sp5A0;
     f64 sp598;
     f64 sp590;
@@ -230,10 +231,10 @@ void CynderTier3::EmitClubEffects() {
     MKVector3 sp578;
     MKVector3 sp568;
     MKVector3 sp558;
-    M2C_UNK sp548;
+    MKVector3 sp548;
     f64 sp540;
     f64 sp538;
-    f64 sp528;
+    MKVector3 sp528;
     f64 sp520;
     f64 sp518;
     f64 sp510;
@@ -241,24 +242,24 @@ void CynderTier3::EmitClubEffects() {
     MKVector3 sp4F8;
     MKVector3 sp4E8;
     MKVector3 sp4D8;
-    M2C_UNK sp4C8;
+    MKVector3 sp4C8;
     f64 sp4C0;
     f64 sp4B8;
-    f64 sp4A8;
+    MKVector3 sp4A8;
     f64 sp4A0;
     f64 sp498;
     f64 sp490;
     f64 sp488;
     f64 sp480;
     f64 sp478;
-    f64 sp468;
+    MKVector3 sp468;
     f64 sp460;
     f64 sp458;
     MKVector3 sp448;
     MKVector3 sp438;
     MKVector3 sp428;
-    M2C_UNK sp418;
-    f64 sp408;
+    MKVector3 sp418;
+    MKVector3 sp408;
     f64 sp400;
     f64 sp3F8;
     f64 sp3F0;
@@ -268,10 +269,10 @@ void CynderTier3::EmitClubEffects() {
     MKVector3 sp3C8;
     MKVector3 sp3B8;
     MKVector3 sp3A8;
-    M2C_UNK sp398;
+    MKVector3 sp398;
     f64 sp390;
     f64 sp388;
-    f64 sp378;
+    MKVector3 sp378;
     f64 sp370;
     f64 sp368;
     f64 sp360;
@@ -279,10 +280,10 @@ void CynderTier3::EmitClubEffects() {
     MKVector3 sp348;
     MKVector3 sp338;
     MKVector3 sp328;
-    M2C_UNK sp318;
+    MKVector3 sp318;
     f64 sp310;
     f64 sp308;
-    f64 sp2F8;
+    MKVector3 sp2F8;
     f64 sp2F0;
     f64 sp2E8;
     f64 sp2E0;
@@ -290,10 +291,10 @@ void CynderTier3::EmitClubEffects() {
     MKVector3 sp2C8;
     MKVector3 sp2B8;
     MKVector3 sp2A8;
-    M2C_UNK sp298;
+    MKVector3 sp298;
     f64 sp290;
     f64 sp288;
-    f64 sp278;
+    MKVector3 sp278;
     f64 sp270;
     f64 sp268;
     f64 sp260;
@@ -301,10 +302,10 @@ void CynderTier3::EmitClubEffects() {
     MKVector3 sp248;
     MKVector3 sp238;
     MKVector3 sp228;
-    M2C_UNK sp218;
+    MKVector3 sp218;
     f64 sp210;
     f64 sp208;
-    f64 sp1F8;
+    MKVector3 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
@@ -401,9 +402,9 @@ void CynderTier3::EmitClubEffects() {
         switch (temp_r0_210) {                      /* irregular */
         case 0:
             if (gb.unk30C >= this->unkB50) {
-                MKVector(1.0f, 1.0f, 1.0f);
-                MKVector(-1.0f, -1.0f, -1.0f);
-                KDRand_Vector(sp5E8, sp5D8);
+                sp5C8 = MKVector(1.0f, 1.0f, 1.0f);
+                sp5D8 = MKVector(-1.0f, -1.0f, -1.0f);
+                sp5E8 = KDRand_Vector(sp5D8, sp5C8);
                 sp5F8.operator*(temp_f26_209);
                 sp128 = sp5F8 * 5.222099017e-315;
                 sp608 = sp128;
@@ -411,10 +412,10 @@ void CynderTier3::EmitClubEffects() {
                 sp628 = sp128;
                 sp610 = (f64) sp130;
                 sp630 = (f64) sp130;
-                MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f), 0.0f);
+                sp5A8 = MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f), 0.0f);
                 sp118 = sp5A8 * 5.634608575e-315;
                 sp5B8 = sp118;
-                sp120 = sp5B0 * 500.0f;
+                sp120 = sp5A8.unk8 * 500.0f;
                 sp618 = sp118;
                 sp5C0 = (f64) sp120;
                 sp620 = (f64) sp120;
@@ -427,9 +428,9 @@ void CynderTier3::EmitClubEffects() {
                 gb.unk240.Emit(*((MKVector3 *) &sp598), *((MKVector3 *) &sp618), temp_f1_288, 0.75f);
                 this->unkB50 = gb.unk30C + MKRand_Float((int *) &gViewSeed, 0.375f, 0.75f);
             }
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp568, sp558);
+            sp548 = MKVector(1.0f, 1.0f, 1.0f);
+            sp558 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp568 = KDRand_Vector(sp558, sp548);
             sp578.operator*(temp_f26_209);
             sp108 = sp578 * 5.222099017e-315;
             sp588 = sp108;
@@ -437,10 +438,10 @@ void CynderTier3::EmitClubEffects() {
             sp628 = sp108;
             sp590 = (f64) sp110;
             sp630 = (f64) sp110;
-            MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f), 0.0f);
+            sp528 = MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f), 0.0f);
             spF8 = sp528 * 5.634608575e-315;
             sp538 = spF8;
-            sp100 = sp530 * 500.0f;
+            sp100 = sp528.unk8 * 500.0f;
             sp618 = spF8;
             sp540 = (f64) sp100;
             sp620 = (f64) sp100;
@@ -451,9 +452,9 @@ void CynderTier3::EmitClubEffects() {
             sp1C0 = this->unkB18.unk8 + (f32) sp630;
             sp520 = (f64) sp1C0;
             ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp518), *((MKVector3 *) &sp618), sp20);
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp4E8, sp4D8);
+            sp4C8 = MKVector(1.0f, 1.0f, 1.0f);
+            sp4D8 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp4E8 = KDRand_Vector(sp4D8, sp4C8);
             sp4F8.operator*(temp_f26_209);
             spE8 = sp4F8 * 5.222099017e-315;
             sp508 = spE8;
@@ -461,11 +462,11 @@ void CynderTier3::EmitClubEffects() {
             sp628 = spE8;
             sp510 = (f64) spF0;
             sp630 = (f64) spF0;
-            MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f), 0.0f);
+            sp4A8 = MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f), 0.0f);
             spD8 = sp4A8 * 5.634608575e-315;
             sp198 = 0.5f;
             sp19C = 0.33f;
-            spE0 = sp4B0 * 500.0f;
+            spE0 = sp4A8.unk8 * 500.0f;
             sp1A0 = 0.1f;
             sp1A4 = 1.0f;
             sp4B8 = spD8;
@@ -486,10 +487,10 @@ void CynderTier3::EmitClubEffects() {
             if (gb.unk30C >= this->unkB50) {
                 var_r27_498 = 0;
                 do {
-                    KDRand_UnitVector();
+                    sp468 = KDRand_UnitVector();
                     spC8 = sp468 * 5.65986426e-315;
                     sp478 = spC8;
-                    spD0 = sp470 * 800.0f;
+                    spD0 = sp468.unk8 * 800.0f;
                     sp618 = spC8;
                     sp480 = (f64) spD0;
                     sp620 = (f64) spD0;
@@ -499,9 +500,9 @@ void CynderTier3::EmitClubEffects() {
                 var_r27_534 = 0;
 loop_17:
                 if (var_r27_534 < MKRand_Int((int *) &gViewSeed, 1, 3)) {
-                    MKVector(1.0f, 1.0f, 1.0f);
-                    MKVector(-1.0f, -1.0f, -1.0f);
-                    KDRand_Vector(sp438, sp428);
+                    sp418 = MKVector(1.0f, 1.0f, 1.0f);
+                    sp428 = MKVector(-1.0f, -1.0f, -1.0f);
+                    sp438 = KDRand_Vector(sp428, sp418);
                     sp448.operator*(temp_f26_209);
                     spB8 = sp448 * 5.180653787e-315;
                     sp458 = spB8;
@@ -509,13 +510,12 @@ loop_17:
                     sp628 = spB8;
                     sp460 = (f64) spC0;
                     sp630 = (f64) spC0;
-                    KDRand_UnitVector();
+                    sp408 = KDRand_UnitVector();
                     sp178 = 1.0f;
                     sp17C = 0.0f;
                     sp180 = 0.2f;
                     sp184 = 1.0f;
-                    sp618 = sp408;
-                    sp620 = sp410;
+                    *(MKVector3 *) &sp618 = sp408;
                     sp3E8 = (f64) sp178;
                     sp3F0 = (f64) sp180;
                     sp18 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
@@ -533,9 +533,9 @@ loop_17:
             }
             break;
         case 2:
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp3B8, sp3A8);
+            sp398 = MKVector(1.0f, 1.0f, 1.0f);
+            sp3A8 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp3B8 = KDRand_Vector(sp3A8, sp398);
             sp3C8.operator*(temp_f26_209);
             spA8 = sp3C8 * 5.222099017e-315;
             sp3D8 = spA8;
@@ -543,10 +543,10 @@ loop_17:
             sp628 = spA8;
             sp3E0 = (f64) spB0;
             sp630 = (f64) spB0;
-            KDRand_UnitVector();
+            sp378 = KDRand_UnitVector();
             sp98 = sp378 * 5.56078426e-315;
             sp388 = sp98;
-            spA0 = sp380 * 150.0f;
+            spA0 = sp378.unk8 * 150.0f;
             sp618 = sp98;
             sp390 = (f64) spA0;
             sp620 = (f64) spA0;
@@ -576,9 +576,9 @@ loop_17:
             break;
         case 3:
             if (gb.unk30C >= this->unkB50) {
-                MKVector(1.0f, 1.0f, 1.0f);
-                MKVector(-1.0f, -1.0f, -1.0f);
-                KDRand_Vector(sp338, sp328);
+                sp318 = MKVector(1.0f, 1.0f, 1.0f);
+                sp328 = MKVector(-1.0f, -1.0f, -1.0f);
+                sp338 = KDRand_Vector(sp328, sp318);
                 sp348.operator*(temp_f26_209);
                 sp78 = sp348 * 5.222099017e-315;
                 sp358 = sp78;
@@ -586,10 +586,10 @@ loop_17:
                 sp628 = sp78;
                 sp360 = (f64) sp80;
                 sp630 = (f64) sp80;
-                KDRand_UnitVectorXZ();
+                sp2F8 = KDRand_UnitVectorXZ();
                 sp68 = sp2F8 * 5.53552857e-315;
                 sp308 = sp68;
-                sp70 = sp300 * 100.0f;
+                sp70 = sp2F8.unk8 * 100.0f;
                 sp618 = sp68;
                 sp310 = (f64) sp70;
                 sp620 = (f64) sp70;
@@ -603,9 +603,9 @@ loop_17:
                 ((FallingLeaves *) (M2C_FIELD(checked_cast<CynderTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), FallingLeaves **, 0x2B8)))->Emit(*((MKVector3 *) &sp2E8), *((MKVector3 *) &sp618), sp14, sp10, 1U);
                 this->unkB50 = gb.unk30C + MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
             }
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp2B8, sp2A8);
+            sp298 = MKVector(1.0f, 1.0f, 1.0f);
+            sp2A8 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp2B8 = KDRand_Vector(sp2A8, sp298);
             sp2C8.operator*(temp_f26_209);
             sp58 = sp2C8 * 5.222099017e-315;
             sp2D8 = sp58;
@@ -613,10 +613,10 @@ loop_17:
             sp628 = sp58;
             sp2E0 = (f64) sp60;
             sp630 = (f64) sp60;
-            KDRand_UnitVectorXZ();
+            sp278 = KDRand_UnitVectorXZ();
             sp48 = sp278 * 5.56078426e-315;
             sp288 = sp48;
-            sp50 = sp280 * 150.0f;
+            sp50 = sp278.unk8 * 150.0f;
             sp618 = sp48;
             sp290 = (f64) sp50;
             sp620 = (f64) sp50;
@@ -627,9 +627,9 @@ loop_17:
             sp160 = this->unkB18.unk8 + (f32) sp630;
             sp270 = (f64) sp160;
             gb.EmitSmallRocks(*((MKVector3 *) &sp268), *((MKVector3 *) &sp618), spC);
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp238, sp228);
+            sp218 = MKVector(1.0f, 1.0f, 1.0f);
+            sp228 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp238 = KDRand_Vector(sp228, sp218);
             sp248.operator*(temp_f26_209);
             sp38 = sp248 * 5.222099017e-315;
             sp258 = sp38;
@@ -637,11 +637,11 @@ loop_17:
             sp628 = sp38;
             sp260 = (f64) sp40;
             sp630 = (f64) sp40;
-            KDRand_UnitVector();
+            sp1F8 = KDRand_UnitVector();
             sp28 = sp1F8 * 5.60222949e-315;
             sp138 = 0.0f;
             sp13C = 1.0f;
-            sp30 = sp200 * 300.0f;
+            sp30 = sp1F8.unk8 * 300.0f;
             sp140 = 0.0f;
             sp144 = 1.0f;
             sp208 = sp28;
@@ -828,7 +828,7 @@ void CynderTier3Descriptor::Init() {
     this->unk2B4 = GS_PLACEHOLDER;
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void CynderTier2Train::UpdateMovementCustom() {
     Matrix sp80;
     Matrix sp40;
@@ -841,17 +841,17 @@ void CynderTier2Train::UpdateMovementCustom() {
     MKModel_GetRefPointMatrix(M2C_FIELD(temp_r3_1468, MKModel **, 0), M2C_FIELD(temp_r3_1468, s32 *, 4) + M2C_FIELD(temp_r3_1468, s32 *, 8), &sp80, 1U);
     M2C_FIELD(this, f64 *, 0x588) = (f64) sp80.unk30;
     M2C_FIELD(this, f64 *, 0x590) = (f64) sp80.unk38;
-    Normalise(sp30);
+    sp30 = Normalise(*((MKVector3 *) &sp80));
     sp80 = M2C_BITWISE(f32, sp30);
     sp80.unk4 = sp30.unk4;
     sp80.unk8 = sp30.unk8;
     sp80.unkC = 0.0f;
-    Normalise(sp20);
+    sp20 = Normalise(*((MKVector3 *) &sp80.unk10));
     sp80.unk10 = M2C_BITWISE(f32, sp20);
     sp80.unk14 = sp20.unk4;
     sp80.unk18 = sp20.unk8;
     sp80.unk1C = 0.0f;
-    Normalise(sp10);
+    sp10 = Normalise(*((MKVector3 *) &sp80.unk20));
     sp80.unk20 = M2C_BITWISE(f32, sp10);
     sp80.unk24 = sp10.unk4;
     sp80.unk28 = sp10.unk8;
@@ -1223,7 +1223,7 @@ s32 CynderTier1::TryFreezeBall() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp3E0'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void CynderTier1::CheckAnimEvents() {
     f64 sp478;
     f64 sp470;
@@ -1244,64 +1244,64 @@ void CynderTier1::CheckAnimEvents() {
     M2C_UNK sp3F8;
     f64 sp3F0;
     f64 sp3E8;
-    f64 sp3D8;
+    MKVector3 sp3D8;
     f64 sp3D0;
     f64 sp3C8;
-    f64 sp3B8;
+    MKVector3 sp3B8;
     f64 sp3B0;
     f64 sp3A8;
-    f64 sp398;
+    MKVector3 sp398;
     f64 sp390;
     f64 sp388;
-    f64 sp378;
+    MKVector3 sp378;
     f64 sp370;
     f64 sp368;
-    f64 sp358;
+    MKVector3 sp358;
     f64 sp350;
     f64 sp348;
     MKVector3 sp338;
     MKVector3 sp328;
     MKVector3 sp318;
-    M2C_UNK sp308;
+    MKVector3 sp308;
     f64 sp300;
     f64 sp2F8;
-    f64 sp2E8;
+    MKVector3 sp2E8;
     f64 sp2E0;
     f64 sp2D8;
     f64 sp2D0;
     f64 sp2C8;
     MKVector3 sp2B8;
-    M2C_UNK sp2A8;
+    MKVector3 sp2A8;
     f64 sp2A0;
     f64 sp298;
     f64 sp290;
     f64 sp288;
-    f64 sp278;
+    MKVector3 sp278;
     f64 sp270;
     f64 sp268;
     f64 sp260;
     f64 sp258;
-    f64 sp248;
+    MKVector3 sp248;
     f64 sp240;
     f64 sp238;
     f64 sp230;
     f64 sp228;
     f64 sp220;
     f64 sp218;
-    f64 sp208;
+    MKVector3 sp208;
     f64 sp200;
     f64 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
     f64 sp1D8;
-    f64 sp1C8;
+    MKVector3 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
-    f64 sp1A8;
+    MKVector3 sp1A8;
     f64 sp1A0;
     f64 sp198;
-    f64 sp188;
+    MKVector3 sp188;
     f32 sp184;
     f32 sp180;
     f32 sp17C;
@@ -1410,10 +1410,10 @@ loop_50:
                     KDSound_Play3d(GS_DDFireSpawn, &this->unk588, 0U, -1, 0.0f, 0U);
                     var_r23_2375 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp3D8 = KDRand_UnitVectorXZ();
                         sp108 = sp3D8 * 5.61841903e-315;
                         sp3E8 = sp108;
-                        sp110 = sp3E0 * 400.0f;
+                        sp110 = sp3D8.unk8 * 400.0f;
                         sp428 = sp108;
                         sp3F0 = (f64) sp110;
                         sp430 = (f64) sp110;
@@ -1430,10 +1430,10 @@ loop_50:
                     } while (var_r23_2375 < 0x1E);
                     var_r23_2430 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp3B8 = KDRand_UnitVectorXZ();
                         spF8 = sp3B8 * 5.61841903e-315;
                         sp3C8 = spF8;
-                        sp100 = sp3C0 * 400.0f;
+                        sp100 = sp3B8.unk8 * 400.0f;
                         sp428 = spF8;
                         sp3D0 = (f64) sp100;
                         sp430 = (f64) sp100;
@@ -1443,10 +1443,10 @@ loop_50:
                     } while (var_r23_2430 < 0xF);
                     var_r23_2468 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp398 = KDRand_UnitVectorXZ();
                         spE8 = sp398 * 5.61841903e-315;
                         sp3A8 = spE8;
-                        spF0 = sp3A0 * 400.0f;
+                        spF0 = sp398.unk8 * 400.0f;
                         sp428 = spE8;
                         sp3B0 = (f64) spF0;
                         sp430 = (f64) spF0;
@@ -1460,10 +1460,10 @@ loop_50:
                     KDSound_Play3d(GS_DDIceSpawn, &this->unk588, 0U, -1, 0.0f, 0U);
                     var_r23_2517 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp378 = KDRand_UnitVectorXZ();
                         spD8 = sp378 * 5.60222949e-315;
                         sp388 = spD8;
-                        spE0 = sp380 * 300.0f;
+                        spE0 = sp378.unk8 * 300.0f;
                         sp428 = spD8;
                         sp390 = (f64) spE0;
                         sp430 = (f64) spE0;
@@ -1474,10 +1474,10 @@ loop_50:
                     } while (var_r23_2517 < 0x14);
                     var_r23_2557 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp358 = KDRand_UnitVectorXZ();
                         spC8 = sp358 * 5.49408334e-315;
                         sp368 = spC8;
-                        spD0 = sp360 * 50.0f;
+                        spD0 = sp358.unk8 * 50.0f;
                         sp428 = spC8;
                         sp370 = (f64) spD0;
                         sp430 = (f64) spD0;
@@ -1485,9 +1485,9 @@ loop_50:
                         temp_r3_2584 = M2C_FIELD(M2C_FIELD(gb.unk2A0, void **, 0x44), void *(**)(void *), 0x3C)(gb.unk2A0);
                         if (temp_r3_2584 != NULL) {
                             temp_r22_2589 = M2C_FIELD(temp_r3_2584, void **, 0x2C);
-                            MKVector(1.0f, 2.0f, 1.0f);
-                            MKVector(-1.0f, 0.0f, -1.0f);
-                            KDRand_Vector(sp328, sp318);
+                            sp308 = MKVector(1.0f, 2.0f, 1.0f);
+                            sp318 = MKVector(-1.0f, 0.0f, -1.0f);
+                            sp328 = KDRand_Vector(sp318, sp308);
                             sp338.operator*(50.0f);
                             spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp338);
                             M2C_FIELD(temp_r3_2584, f64 *, 0) = spB8;
@@ -1525,10 +1525,10 @@ loop_50:
                     KDSound_Play3d(GS_DDElecSpawn, &this->unk588, 0U, -1, 0.0f, 0U);
                     var_r21_2710 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp2E8 = KDRand_UnitVectorXZ();
                         spA8 = sp2E8 * 5.65986426e-315;
                         sp2F8 = spA8;
-                        spB0 = sp2F0 * 800.0f;
+                        spB0 = sp2E8.unk8 * 800.0f;
                         sp428 = spA8;
                         sp300 = (f64) spB0;
                         sp430 = (f64) spB0;
@@ -1562,7 +1562,7 @@ loop_34:
                             sp458 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
                             sp460 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
                             temp_f15_2817 = -_table_sinf((f32) sp468 + temp_f15_2803) * (f32) sp458;
-                            MKVector(_table_sinf(temp_f15_2803) * (f32) sp460, 0.0f, temp_f15_2817);
+                            sp2A8 = MKVector(_table_sinf(temp_f15_2803) * (f32) sp460, 0.0f, temp_f15_2817);
                             sp2B8.operator*(var_f17_2761);
                             sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2B8);
                             sp16C = 0.0f;
@@ -1588,10 +1588,10 @@ loop_34:
                     } while (var_r21_2760 < 5);
                     var_r21_2881 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp278 = KDRand_UnitVectorXZ();
                         sp88 = sp278 * 5.65986426e-315;
                         sp288 = sp88;
-                        sp90 = sp280 * 800.0f;
+                        sp90 = sp278.unk8 * 800.0f;
                         sp428 = sp88;
                         sp290 = (f64) sp90;
                         sp430 = (f64) sp90;
@@ -1610,10 +1610,10 @@ loop_34:
                     temp_f16_2931 = MKVector3::up.unk8;
                     var_r21_2934 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp248 = KDRand_UnitVectorXZ();
                         sp78 = sp248 * 5.61841903e-315;
                         sp258 = sp78;
-                        sp80 = sp250 * 400.0f;
+                        sp80 = sp248.unk8 * 400.0f;
                         sp428 = sp78;
                         sp260 = (f64) sp80;
                         sp430 = (f64) sp80;
@@ -1636,10 +1636,10 @@ loop_34:
                     temp_f17_3003 = MKVector3::up.unk8;
                     var_r21_3006 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp208 = KDRand_UnitVectorXZ();
                         sp68 = sp208 * 5.49408334e-315;
                         sp218 = sp68;
-                        sp70 = sp210 * 50.0f;
+                        sp70 = sp208.unk8 * 50.0f;
                         sp428 = sp68;
                         sp220 = (f64) sp70;
                         sp430 = (f64) sp70;
@@ -1661,10 +1661,10 @@ loop_34:
                     } while (var_r21_3006 < 0xF);
                     var_r21_3078 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp1C8 = KDRand_UnitVectorXZ();
                         sp58 = sp1C8 * 5.60222949e-315;
                         sp1D8 = sp58;
-                        sp60 = sp1D0 * 300.0f;
+                        sp60 = sp1C8.unk8 * 300.0f;
                         sp428 = sp58;
                         sp1E0 = (f64) sp60;
                         sp430 = (f64) sp60;
@@ -1675,10 +1675,10 @@ loop_34:
                     } while (var_r21_3078 < 0x1E);
                     var_r21_3118 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp1A8 = KDRand_UnitVectorXZ();
                         sp48 = sp1A8 * 5.61841903e-315;
                         sp1B8 = sp48;
-                        sp50 = sp1B0 * 400.0f;
+                        sp50 = sp1A8.unk8 * 400.0f;
                         sp428 = sp48;
                         sp1C0 = (f64) sp50;
                         sp430 = (f64) sp50;
@@ -1689,10 +1689,10 @@ loop_34:
                     } while (var_r21_3118 < 5);
                     var_r21_3159 = 0;
                     do {
-                        KDRand_UnitVectorXZ();
+                        sp188 = KDRand_UnitVectorXZ();
                         sp38 = sp188 * 5.60222949e-315;
                         sp198 = sp38;
-                        sp40 = sp190 * 300.0f;
+                        sp40 = sp188.unk8 * 300.0f;
                         sp428 = sp38;
                         sp1A0 = (f64) sp40;
                         sp430 = (f64) sp40;

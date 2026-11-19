@@ -57,6 +57,7 @@
 #include "spyro/source/DataMap.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -480,7 +481,7 @@ loop_20:
                     sp368 = (f64) sp1C8;
                     sp350 = (f64) sp1B0;
                     sp358 = (f64) sp1B8;
-                    KDRand_Vector(sp370, *((MKVector3 *) &sp360));
+                    sp370 = KDRand_Vector(*((MKVector3 *) &sp360), *((MKVector3 *) &sp350));
                     temp_f0_507 = sp370 * 5.64367472e-315;
                     sp1A0 = temp_f0_507;
                     sp380 = temp_f0_507;
@@ -653,7 +654,7 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void IceBossStomp::EmitSnowRing() {
     f64 sp70;
     f64 sp68;
@@ -662,7 +663,7 @@ void IceBossStomp::EmitSnowRing() {
     f64 sp50;
     f64 sp48;
     MKVector3 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -696,11 +697,11 @@ void IceBossStomp::EmitSnowRing() {
             M2C_FIELD(temp_r3_1012, f64 *, 8) = (f64) M2C_FIELD(temp_r4_1015, f64 *, 0x38);
             M2C_FIELD(temp_r3_1012, f32 *, 0x20) = 0.0f;
             M2C_FIELD(temp_r3_1012, f32 *, 0x28) = 0.0f;
-            MKVector(0.0f, 300.0f, 0.0f);
+            sp28 = MKVector(0.0f, 300.0f, 0.0f);
             sp38.operator*(2000.0f);
-            sp8 = sp38 + sp28;
+            sp8 = sp38 + M2C_BITWISE(f64, sp28);
             M2C_FIELD(temp_r28_1017, f64 *, 0) = sp8;
-            sp10 = sp38.unk8 + sp30;
+            sp10 = sp38.unk8 + sp28.unk8;
             sp48 = sp8;
             M2C_FIELD(temp_r28_1017, f64 *, 8) = (f64) sp10;
             sp50 = (f64) sp10;
@@ -811,7 +812,7 @@ void IceBossStomp::SpawnIceCrystal(const MKVector3 &arg0) {
                 spA8 = (f64) sp68;
                 sp90 = (f64) sp50;
                 sp98 = (f64) sp58;
-                KDRand_Vector(spB0, *((MKVector3 *) &spA0));
+                spB0 = KDRand_Vector(*((MKVector3 *) &spA0), *((MKVector3 *) &sp90));
                 temp_f0_1222 = spB0 * 5.64367472e-315;
                 sp40 = temp_f0_1222;
                 spC0 = temp_f0_1222;
@@ -934,13 +935,13 @@ void *IceBossStomp::Update() {
     f64 sp1E8;
     f64 sp1E0;
     f64 sp1D8;
-    f64 sp1C8;
+    MKVector3 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
     f64 sp1B0;
     f64 sp1A8;
     MKVector3 sp198;
-    M2C_UNK sp188;
+    MKVector3 sp188;
     f32 sp180;
     f64 sp178;
     f32 sp170;
@@ -1243,12 +1244,12 @@ block_22:
         }
     }
     if ((ManagedLight *) this->unk160 != NULL) {
-        MKVector(0.0f, 500.0f, 0.0f);
+        sp1C8 = MKVector(0.0f, 500.0f, 0.0f);
         temp_r3_1813 = ((u8 *) this->unk8) + 0x30;
-        sp28 = M2C_FIELD(temp_r3_1813, f64 *, 0) + sp1C8;
+        sp28 = M2C_FIELD(temp_r3_1813, f64 *, 0) + M2C_BITWISE(f64, sp1C8);
         temp_r3_1822 = this->unk160;
         sp1D8 = sp28;
-        sp30 = M2C_FIELD(temp_r3_1813, f32 *, 8) + sp1D0;
+        sp30 = M2C_FIELD(temp_r3_1813, f32 *, 8) + sp1C8.unk8;
         temp_r3_1822->unk10 = sp28;
         temp_r3_1822->unk18 = (f64) sp30;
         temp_r3_1828 = temp_r3_1822->unk3C;
@@ -1285,7 +1286,7 @@ block_22:
             sp32C = 0;
             temp_f26_1909 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f28_1914 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_1914, temp_f26_1909);
+            sp188 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_1914, temp_f26_1909);
             sp198.operator*(50.0f);
             sp18 = sp198 * (f64) temp_f27_1901;
             sp328 = 0x417;

@@ -22,11 +22,12 @@
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void FXBase::Burst(const MKVector3 &arg0) {
     Matrix sp130;
     M2C_UNK sp12C;
@@ -38,14 +39,14 @@ void FXBase::Burst(const MKVector3 &arg0) {
     f64 sp100;
     MKVector3 spF0;
     MKVector3 spE0;
-    M2C_UNK spD0;
+    MKVector3 spD0;
     f64 spC8;
     f64 spC0;
     f64 spB8;
     f64 spB0;
     f64 spA8;
     f64 spA0;
-    f32 sp90;
+    MKVector3 sp90;
     f64 sp88;
     f64 sp80;
     f64 sp78;
@@ -72,6 +73,7 @@ void FXBase::Burst(const MKVector3 &arg0) {
     f32 temp_f29_109;
     f32 temp_f2_182;
     f32 temp_f30_48;
+    f32 temp_f7_121;
     f64 temp_f0_175;
     s32 var_r28_41;
     void *temp_r30_37;
@@ -82,9 +84,9 @@ void FXBase::Burst(const MKVector3 &arg0) {
 loop_2:
     if (var_r28_41 < (s32) M2C_FIELD(temp_r30_37, s32 *, 0xC0)) {
         temp_f30_48 = MKRand_Float((int *) &gViewSeed, M2C_FIELD(temp_r30_37, f32 *, 0xD0), M2C_FIELD(temp_r30_37, f32 *, 0xD4));
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, 0.0f, -1.0f);
-        KDRand_Vector(spF0, spE0);
+        spD0 = MKVector(1.0f, 1.0f, 1.0f);
+        spE0 = MKVector(-1.0f, 0.0f, -1.0f);
+        spF0 = KDRand_Vector(spE0, spD0);
         sp40 = spF0 * (f64) temp_f30_48;
         sp100 = sp40;
         sp48 = spF0.unk8 * temp_f30_48;
@@ -101,10 +103,11 @@ loop_2:
         spC0 = (f64) sp30;
         sp130.RotatePYR(&sp130, *((MKVector3 *) &spC0));
         temp_f29_109 = MKRand_Float((int *) &gViewSeed, M2C_FIELD(temp_r30_37, f32 *, 0xC8), M2C_FIELD(temp_r30_37, f32 *, 0xCC));
-        MKVector(0.0f, 1.0f, 0.0f);
-        sp10 = sp130.unk30 + ((sp98 * sp130.unk20) + ((sp90 * M2C_BITWISE(f32, sp130)) + (sp94 * sp130.unk10)));
-        sp14 = sp130.unk34 + ((sp98 * sp130.unk24) + ((sp90 * sp130.unk4) + (sp94 * sp130.unk14)));
-        sp18 = sp130.unk38 + ((sp98 * sp130.unk28) + ((sp90 * sp130.unk8) + (sp94 * sp130.unk18)));
+        sp90 = MKVector(0.0f, 1.0f, 0.0f);
+        temp_f7_121 = M2C_BITWISE(f32, sp90);
+        sp10 = sp130.unk30 + ((sp90.unk8 * sp130.unk20) + ((temp_f7_121 * M2C_BITWISE(f32, sp130)) + (sp90.unk4 * sp130.unk10)));
+        sp14 = sp130.unk34 + ((sp90.unk8 * sp130.unk24) + ((temp_f7_121 * sp130.unk4) + (sp90.unk4 * sp130.unk14)));
+        sp18 = sp130.unk38 + ((sp90.unk8 * sp130.unk28) + ((temp_f7_121 * sp130.unk8) + (sp90.unk4 * sp130.unk18)));
         spA0 = (f64) sp10;
         spA8 = (f64) sp18;
         sp20 = spA0 * (f64) temp_f29_109;

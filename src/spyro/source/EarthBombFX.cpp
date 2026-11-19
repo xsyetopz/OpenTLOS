@@ -59,6 +59,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_SpyroEarthAttack5LP;
@@ -272,12 +273,12 @@ void EarthBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollis
     f64 sp2D0;
     f64 sp2C8;
     f64 sp2C0;
-    f64 sp2B0;
+    MKVector3 sp2B0;
     f64 sp2A8;
     f64 sp2A0;
     f64 sp298;
     f64 sp290;
-    f64 sp280;
+    MKVector3 sp280;
     MKVector3 sp270;
     f64 sp268;
     f64 sp260;
@@ -293,10 +294,10 @@ void EarthBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollis
     f64 sp210;
     f64 sp208;
     f64 sp200;
-    f64 sp1F0;
+    MKVector3 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
-    f64 sp1D0;
+    MKVector3 sp1D0;
     f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
@@ -506,11 +507,11 @@ loop_18:
     temp_r3_629 = M2C_FIELD(M2C_FIELD(temp_r3_625, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_625);
     if (temp_r3_629 != NULL) {
         temp_r26_634 = M2C_FIELD(temp_r3_629, void **, 0x2C);
-        MKVector(0.0f, 100.0f, 0.0f);
+        sp2B0 = MKVector(0.0f, 100.0f, 0.0f);
         temp_r4_639 = ((u8 *) this->unk8) + 0x30;
-        sp80 = M2C_FIELD(temp_r4_639, f64 *, 0) + sp2B0;
+        sp80 = M2C_FIELD(temp_r4_639, f64 *, 0) + M2C_BITWISE(f64, sp2B0);
         M2C_FIELD(temp_r3_629, f64 *, 0) = sp80;
-        sp88 = M2C_FIELD(temp_r4_639, f32 *, 8) + sp2B8;
+        sp88 = M2C_FIELD(temp_r4_639, f32 *, 8) + sp2B0.unk8;
         sp2C0 = sp80;
         M2C_FIELD(temp_r3_629, f64 *, 8) = (f64) sp88;
         M2C_FIELD(temp_r3_629, f32 *, 0x20) = 0.0f;
@@ -531,12 +532,12 @@ loop_18:
     }
     var_r27_687 = 0;
     do {
-        MKVector(0.0f, 100.0f, 0.0f);
+        sp280 = MKVector(0.0f, 100.0f, 0.0f);
         temp_r4_697 = ((u8 *) this->unk8) + 0x30;
-        sp60 = M2C_FIELD(temp_r4_697, f64 *, 0) + sp280;
+        sp60 = M2C_FIELD(temp_r4_697, f64 *, 0) + M2C_BITWISE(f64, sp280);
         sp48 = 1.0f;
         sp58 = -1.0f;
-        sp68 = M2C_FIELD(temp_r4_697, f32 *, 8) + sp288;
+        sp68 = M2C_FIELD(temp_r4_697, f32 *, 8) + sp280.unk8;
         sp40 = 1.0f;
         sp44 = 1.0f;
         sp50 = -1.0f;
@@ -549,9 +550,8 @@ loop_18:
         sp258 = (f64) sp48;
         sp260 = (f64) sp50;
         sp268 = (f64) sp58;
-        KDRand_Vector(sp270, *((MKVector3 *) &sp260));
-        sp350 = M2C_BITWISE(f64, sp270);
-        sp358 = (f64) sp270.unk8;
+        sp270 = KDRand_Vector(*((MKVector3 *) &sp260), *((MKVector3 *) &sp250));
+        *(MKVector3 *) &sp350 = sp270;
         temp_f0_736 = sp350 * 5.60222949e-315;
         sp130 = temp_f0_736;
         sp240 = temp_f0_736;
@@ -630,11 +630,11 @@ loop_18:
     sp320 = (f64) spE0;
     KDMath_BuildMatrixFromFwd(&sp3A0, *((MKVector3 *) &sp330), (MKVector3 *) &sp320);
     sp3A0.Scale3x3(&sp3A0, var_f27_375);
-    MKVector(0.0f, 100.0f * var_f27_375, 0.0f);
+    sp1F0 = MKVector(0.0f, 100.0f * var_f27_375, 0.0f);
     temp_r4_925 = ((u8 *) this->unk8) + 0x30;
-    sp30 = M2C_FIELD(temp_r4_925, f64 *, 0) + sp1F0;
+    sp30 = M2C_FIELD(temp_r4_925, f64 *, 0) + M2C_BITWISE(f64, sp1F0);
     sp200 = sp30;
-    sp38 = M2C_FIELD(temp_r4_925, f32 *, 8) + sp1F8;
+    sp38 = M2C_FIELD(temp_r4_925, f32 *, 8) + sp1F0.unk8;
     sp208 = (f64) sp38;
     sp3A0.unk30 = (f32) sp200;
     sp3A0.unk34 = (*(f32 *) ((u8 *) &sp200 + 0x4));
@@ -643,11 +643,11 @@ loop_18:
     ((ExplosionWarpFX *) (&gb + 0x1C0))->StartWarp(&sp3A0);
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
         sp384 = 0;
-        MKVector(1.0f, 1.0f, 1.0f);
+        sp1D0 = MKVector(1.0f, 1.0f, 1.0f);
         sp20 = sp1D0 * 5.593163344e-315;
         sp380 = 0x417;
         sp388 = sp20;
-        sp28 = sp1D8 * 250.0f;
+        sp28 = sp1D0.unk8 * 250.0f;
         sp398 = 1;
         sp390 = (f64) sp28;
         sp1E0 = sp20;
@@ -772,7 +772,7 @@ void *EarthBombFX::Update() {
     MKVector3 sp248;
     f64 sp240;
     f64 sp238;
-    f64 sp228;
+    MKVector3 sp228;
     f64 sp220;
     f64 sp218;
     MKVector3 sp208;
@@ -918,7 +918,7 @@ void *EarthBombFX::Update() {
         sp290 = (f64) sp1A0;
         sp278 = (f64) sp188;
         sp280 = (f64) sp190;
-        KDRand_Vector(sp298, *((MKVector3 *) &sp288));
+        sp298 = KDRand_Vector(*((MKVector3 *) &sp288), *((MKVector3 *) &sp278));
         temp_f0_1222 = sp298 * 5.49408334e-315;
         sp178 = temp_f0_1222;
         sp2A8 = temp_f0_1222;
@@ -951,11 +951,11 @@ void *EarthBombFX::Update() {
         sp318 = spA8;
         sp260 = (f64) spB0;
         sp320 = (f64) spB0;
-        MKVector(0.0f, -1960.0f, 0.0f);
+        sp228 = MKVector(0.0f, -1960.0f, 0.0f);
         temp_f0_1298 = sp228 * (f64) temp_f30_1288;
         sp98 = temp_f0_1298;
         sp238 = temp_f0_1298;
-        spA0 = sp230 * temp_f30_1288;
+        spA0 = sp228.unk8 * temp_f30_1288;
         sp240 = (f64) spA0;
         this->unkD0 += temp_f0_1298;
         var_r30_1316 = 0;
@@ -982,7 +982,7 @@ void *EarthBombFX::Update() {
         sp384 = -1;
         sp388 = 0;
         sp308 = sp318;
-        sp310 = (f64) spB0;
+        sp310 = sp320;
         temp_f31_1350 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f30_1355 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp148 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -1071,9 +1071,8 @@ void *EarthBombFX::Update() {
         sp1F0 = (f64) sp80;
         sp1F8 = (f64) sp88;
         sp200 = (f64) sp90;
-        KDRand_Vector(sp208, *((MKVector3 *) &sp1F8));
-        sp2D8 = M2C_BITWISE(f64, sp208);
-        sp2E0 = (f64) sp208.unk8;
+        sp208 = KDRand_Vector(*((MKVector3 *) &sp1F8), *((MKVector3 *) &sp1E8));
+        *(MKVector3 *) &sp2D8 = sp208;
         temp_f0_1563 = sp2D8 * 5.439686476e-315;
         sp128 = temp_f0_1563;
         sp1D8 = temp_f0_1563;
@@ -1149,8 +1148,7 @@ void *EarthBombFX::Update() {
             sp2C8 = sp18;
             sp2D0 = temp_f0_1704;
             KDMath_Smooth<MKVector4>(sp1A8, this->unk108, 0.5f, 1.0f);
-            M2C_FIELD(this, f64 *, 0x108) = M2C_BITWISE(f64, sp1A8);
-            M2C_FIELD(this, f64 *, 0x110) = (f64) sp1A8.unk8;
+            M2C_FIELD(this, MKVector4 *, 0x108) = sp1A8;
             temp_r3_1720 = this->unk100;
             temp_r3_1720->unk20 = M2C_FIELD(this, f64 *, 0x108);
             temp_r3_1720->unk28 = M2C_FIELD(this, f64 *, 0x110);

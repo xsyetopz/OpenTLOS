@@ -137,8 +137,8 @@ block_4:
         KDSound_Play3d(GS_PitTrapFall, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         var_r30_121 = 0;
         do {
-            __ml(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), spF0);
-            __ml(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), sp100);
+            spF0 = __ml(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), sp160);
+            sp100 = __ml(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), sp170);
             temp_f0_139 = M2C_BITWISE(f64, sp180) + M2C_BITWISE(f64, sp100);
             sp20 = temp_f0_139;
             sp110 = temp_f0_139;
@@ -159,8 +159,8 @@ block_4:
             spE8 = (f64) sp88;
             spE0 = (f64) sp80;
             ((FallingLeaves *) gb.unk234)->Emit(*((MKVector3 *) &sp150), *((MKVector3 *) &spE0), 10.0f, spC, 1U);
-            __ml(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), spA0);
-            __ml(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), spB0);
+            spA0 = __ml(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), sp160);
+            spB0 = __ml(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), sp170);
             temp_f0_203 = M2C_BITWISE(f64, sp180) + M2C_BITWISE(f64, spB0);
             sp10 = temp_f0_203;
             spC0 = temp_f0_203;

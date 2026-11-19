@@ -725,7 +725,6 @@ u8 ElecTier2Goal_GroundMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void ElecTier2Goal_GroundMode::Activate() {
     MKVector3 sp8;
     ElecTier2 *temp_r3_1373;
@@ -743,15 +742,13 @@ void ElecTier2Goal_GroundMode::Activate() {
         AddSubgoal((Goal<Enemy> *) this->unk2C);
         AddSubgoal((Goal<Enemy> *) this->unk28);
         temp_r3_1385 = this->unk2C;
-        M2C_FIELD(temp_r3_1385, f64 *, 0x18) = M2C_BITWISE(f64, sp8);
-        M2C_FIELD(temp_r3_1385, f64 *, 0x20) = (f64) sp8.unk8;
+        M2C_FIELD(temp_r3_1385, MKVector3 *, 0x18) = sp8;
     }
     AddSubgoal((Goal<Enemy> *) this->unk24);
     temp_r4_1394 = this->unk24;
     M2C_FIELD(temp_r4_1394, s32 *, 0x14) = 0;
     M2C_FIELD(temp_r4_1394, s32 *, 0x18) = 1;
 }
-#endif
 
 void ElecTier2Goal_GroundMode::Deinit() {
     Goal<Enemy> *temp_r3_1414;

@@ -365,14 +365,14 @@ void SoftSweepSphere::GetBoundingBox(MKCollisionAABB *arg0) {
     sp2C = temp_f1_523;
     sp80 = (f64) sp30;
     sp78 = (f64) sp28;
-    Min(sp58, *((MKVector3 *) this));
+    sp58 = Min(*((MKVector3 *) this), *((MKVector3 *) &this->unk10));
     sp18 = sp58 - sp78;
     M2C_FIELD(arg0, f64 *, 0) = sp18;
     sp20 = sp58.unk8 - (f32) sp80;
     sp68 = sp18;
     sp70 = (f64) sp20;
     M2C_FIELD(arg0, f64 *, 8) = (f64) sp20;
-    Max(sp38, *((MKVector3 *) this));
+    sp38 = Max(*((MKVector3 *) this), *((MKVector3 *) &this->unk10));
     sp8 = sp38 + sp78;
     M2C_FIELD(arg0, f64 *, 0x10) = sp8;
     sp10 = sp38.unk8 + (f32) sp80;
@@ -1193,7 +1193,6 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MKCloth::UpdatePosition() {
     f32 sp40;
     f32 sp3C;
@@ -1300,19 +1299,16 @@ loop_17:
             temp_r28_1895->unk4 += temp_f31_1888 * ((-((temp_f12_1930 * ((clothFaceEffect * temp_f28_1916) + (temp_f9_1924 * temp_f7_1936))) - sp3C) * temp_f31_1888) + temp_f1_1911);
             temp_r28_1895->unk8 += temp_f31_1888 * ((-((temp_f12_1930 * ((clothFaceEffect * temp_f27_1920) + (temp_f11_1928 * temp_f7_1936))) - sp40) * temp_f31_1888) + temp_f2_1914);
         }
-        Min(sp18, *temp_r28_1895);
-        M2C_FIELD(this, f32 *, 0x10) = M2C_BITWISE(f64, sp18);
-        M2C_FIELD(this, f32 *, 0x18) = (f64) sp18.unk8;
-        Max(sp8, *temp_r28_1895);
+        sp18 = Min(*temp_r28_1895, *((MKVector3 *) &this->unk10));
+        *(MKVector3 *) &M2C_FIELD(this, f32 *, 0x10) = sp18;
+        sp8 = Max(*temp_r28_1895, *((MKVector3 *) &this->unk20));
         var_r29_1889 += 1;
         var_r30_1890 += 0x38;
-        M2C_FIELD(this, f32 *, 0x20) = M2C_BITWISE(f64, sp8);
-        M2C_FIELD(this, f32 *, 0x28) = (f64) sp8.unk8;
+        *(MKVector3 *) &M2C_FIELD(this, f32 *, 0x20) = sp8;
         goto loop_17;
     }
     ApplyCollision();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKCollisionAABB' to 'float'
 void MKCloth::IncludeCollision() {
@@ -1387,7 +1383,10 @@ void MKCloth::IncludeCollision() {
     MKModel **temp_r4_2532;
     MKModel **temp_r6_2362;
     MKModel **temp_r6_2450;
+    MKVector3 *temp_r25_2215;
     MKVector3 *temp_r26_2205;
+    MKVector3 *temp_r4_2460;
+    MKVector3 *temp_r4_2481;
     SoftSweepSphere *temp_r3_2020;
     f32 temp_f0_2189;
     f32 temp_f0_2424;
@@ -1522,19 +1521,20 @@ void MKCloth::IncludeCollision() {
             M2C_FIELD(temp_r26_2205, u8 *, 0x4C) = (u8) (M2C_FIELD(temp_r26_2205, u8 *, 0x4C) & ~0x20);
             if (((u8) M2C_FIELD(temp_r26_2205, u8 *, 0x4C) >> 6U) & 1) {
                 temp_f1_2214 = M2C_FIELD(temp_r26_2205, f32 *, 0x40);
+                temp_r25_2215 = temp_r26_2205 + 0x10;
                 spB0 = temp_f1_2214;
                 spA8 = temp_f1_2214;
                 spAC = temp_f1_2214;
                 sp1D0 = (f64) spB0;
                 sp1C8 = (f64) spA8;
-                Min(sp158, *temp_r26_2205);
+                sp158 = Min(*temp_r26_2205, *temp_r25_2215);
                 sp68 = sp158 - sp1C8;
                 sp168 = sp68;
                 sp70 = sp158.unk8 - (f32) sp1D0;
                 sp208 = sp68;
                 sp170 = (f64) sp70;
                 sp210 = (f64) sp70;
-                Max(sp138, *temp_r26_2205);
+                sp138 = Max(*temp_r26_2205, *temp_r25_2215);
                 sp58 = sp138 + sp1C8;
                 var_r0_2251 = 0;
                 sp218 = sp58;
@@ -1625,19 +1625,21 @@ loop_69:
             *(temp_r6_2450 + temp_r5_2451) = *(temp_r6_2450 + temp_r5_2451) & ~0x20;
             temp_r4_2458 = this->unkC0;
             temp_f1_2459 = *(temp_r4_2458 + (var_r27_2447 + 0x40));
+            temp_r4_2460 = (MKVector3 *) (temp_r4_2458 + var_r27_2447);
             sp90 = temp_f1_2459;
             sp88 = temp_f1_2459;
             sp8C = temp_f1_2459;
             sp1B0 = (f64) sp90;
             sp1A8 = (f64) sp88;
-            Min(spE8, *(temp_r4_2458 + var_r27_2447));
+            spE8 = Min(*temp_r4_2460, *(temp_r4_2460 + 0x10));
             sp38 = spE8 - sp1A8;
             spF8 = sp38;
+            temp_r4_2481 = (MKVector3 *) (this->unkC0 + var_r27_2447);
             sp40 = spE8.unk8 - (f32) sp1B0;
             sp1E8 = sp38;
             sp100 = (f64) sp40;
             sp1F0 = (f64) sp40;
-            Max(spC8, *(this->unkC0 + var_r27_2447));
+            spC8 = Max(*temp_r4_2481, *(temp_r4_2481 + 0x10));
             sp28 = spC8 + sp1A8;
             var_r0_2493 = 0;
             sp1F8 = sp28;
@@ -1962,11 +1964,9 @@ void MKCloth::UpdateGlobalCollisionPrims() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to 'ClothNode **' Too many errors printed, aborting program
 ClothNode **MKCloth::GetName() {
-    return M2C_FIELD(this, s32 *, 4) + 0x30;
+    return (ClothNode **) (M2C_FIELD(this, s32 *, 4) + 0x30);
 }
-#endif
 
 void MKCloth::SetIterations(int arg0) {
     this->unkD8 = arg0;
@@ -2290,7 +2290,7 @@ void MKCloth::SetInternalCollisionSphere(int arg0, const MKVector4 &arg1) {
     M2C_FIELD(temp_r3_3558, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
 }
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKModel **' Too many errors printed, aborting program
 void MKCloth::CreateInternalCollisionSpheres(int arg0) {
     MKModel **temp_r5_3593;
     MKModel **var_r3_3580;
@@ -2299,7 +2299,7 @@ void MKCloth::CreateInternalCollisionSpheres(int arg0) {
     s32 var_r4_3586;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_3580 = (MKModel **) (((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x18, NULL, 0));
+        var_r3_3580 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x18, NULL, 0);
     } else {
         var_r3_3580 = malloc(arg0 * 0x18);
     }
@@ -2621,7 +2621,7 @@ loop_15:
                 sp18 = M2C_BITWISE(f64, sp18) - M2C_FIELD(temp_r25_4065, f64 *, 0);
                 sp18.unk8 -= M2C_FIELD(temp_r25_4065, f32 *, 8);
                 temp_r6_4079 = M2C_FIELD(this, void **, 4);
-                __ml(1.0f - *(M2C_FIELD(temp_r6_4079, s32 *, 4) + ((*(M2C_FIELD(temp_r6_4079, s32 *, 0xC) + (var_r26_4044 + 0x20)) << 5) + 0x14)), sp8);
+                sp8 = __ml(1.0f - *(M2C_FIELD(temp_r6_4079, s32 *, 4) + ((*(M2C_FIELD(temp_r6_4079, s32 *, 0xC) + (var_r26_4044 + 0x20)) << 5) + 0x14)), sp18);
                 M2C_FIELD(temp_r25_4065, f64 *, 0) = (f64) (M2C_FIELD(temp_r25_4065, f64 *, 0) + M2C_BITWISE(f64, sp8));
                 M2C_FIELD(temp_r25_4065, f32 *, 8) = (f32) (M2C_FIELD(temp_r25_4065, f32 *, 8) + sp8.unk8);
             }
@@ -2970,7 +2970,7 @@ loop_66:
             temp_r4_4713 = (void *) (M2C_FIELD(this, s32 *, 0) + (temp_r3_4711 * 0x38));
             sp58 = M2C_BITWISE(f64, sp58) - M2C_FIELD(temp_r4_4713, f64 *, 0);
             sp58.unk8 -= M2C_FIELD(temp_r4_4713, f32 *, 8);
-            __ml(1.0f - *(M2C_FIELD(temp_r5_4707, s32 *, 4) + ((temp_r3_4711 << 5) + 0x14)), sp48);
+            sp48 = __ml(1.0f - *(M2C_FIELD(temp_r5_4707, s32 *, 4) + ((temp_r3_4711 << 5) + 0x14)), sp58);
             temp_r3_4737 = M2C_FIELD(this, s32 *, 0) + (*(M2C_FIELD(M2C_FIELD(this, void **, 4), s32 *, 0xC) + (var_r28_4687 + 0x20)) * 0x38);
             M2C_FIELD(temp_r3_4737, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_4737, f64 *, 0) + M2C_BITWISE(f64, sp48));
             M2C_FIELD(temp_r3_4737, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_4737, f32 *, 8) + sp48.unk8);
@@ -3585,17 +3585,15 @@ loop_9:
         spF8 = temp_f0_5760;
         sp60 = (f32) M2C_FIELD(this, f64 *, 0x18) + (f32) M2C_FIELD(this, f64 *, 0x28);
         sp100 = (f64) sp60;
-        Min(sp108, *((MKVector3 *) &this->unk10));
-        sp148 = M2C_BITWISE(f64, sp108);
-        sp150 = (f64) sp108.unk8;
+        sp108 = Min(*((MKVector3 *) &this->unk10), *((MKVector3 *) &spF8));
+        *(MKVector3 *) &sp148 = sp108;
         temp_f0_5782 = this->unk10 + this->unk20;
         sp48 = temp_f0_5782;
         spD8 = temp_f0_5782;
         sp50 = (f32) M2C_FIELD(this, f64 *, 0x18) + (f32) M2C_FIELD(this, f64 *, 0x28);
         spE0 = (f64) sp50;
-        Max(spE8, *((MKVector3 *) &this->unk10));
-        sp138 = M2C_BITWISE(f64, spE8);
-        sp140 = (f64) spE8.unk8;
+        spE8 = Max(*((MKVector3 *) &this->unk10), *((MKVector3 *) &spD8));
+        *(MKVector3 *) &sp138 = spE8;
         sp160.InverseSimple(&sp160);
         var_r28_5803 = 0;
         var_r29_5804 = 0;
@@ -3626,16 +3624,14 @@ loop_15:
             spC0 = (f64) sp30;
             sp118 = (f64) sp28;
             sp120 = (f64) sp30;
-            Min(sp98, *((MKVector3 *) &sp128));
-            Min(spA8, *((MKVector3 *) &sp148));
-            sp148 = M2C_BITWISE(f64, spA8);
-            sp150 = (f64) spA8.unk8;
-            Max(sp78, *((MKVector3 *) &sp128));
-            Max(sp88, *((MKVector3 *) &sp138));
+            sp98 = Min(*((MKVector3 *) &sp128), *((MKVector3 *) &sp118));
+            spA8 = Min(*((MKVector3 *) &sp148), sp98);
+            *(MKVector3 *) &sp148 = spA8;
+            sp78 = Max(*((MKVector3 *) &sp128), *((MKVector3 *) &sp118));
+            sp88 = Max(*((MKVector3 *) &sp138), sp78);
             var_r28_5803 += 1;
             var_r29_5804 += 0xF8;
-            sp138 = M2C_BITWISE(f64, sp88);
-            sp140 = (f64) sp88.unk8;
+            *(MKVector3 *) &sp138 = sp88;
             goto loop_15;
         }
         this->unk10 = sp148;

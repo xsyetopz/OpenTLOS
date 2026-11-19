@@ -115,7 +115,7 @@ loop_5:
             ((BoundingRegion *) &sp120)->GetPos((s32) &this->unk10);
             sp170 = sp120;
             sp178 = sp128;
-            Tools_GetClosestPtOnLine2D(sp110, *((MKVector3 *) &sp180), *((MKVector3 *) &sp170));
+            sp110 = Tools_GetClosestPtOnLine2D(*((MKVector3 *) &sp180), *((MKVector3 *) &sp170), arg0);
             temp_f4_81 = M2C_BITWISE(f64, sp110);
             sp160 = temp_f4_81;
             sp168 = (f64) sp110.unk8;
@@ -137,7 +137,7 @@ loop_5:
         ((BoundingRegion *) &spF0)->GetPos((s32) &this->unk10);
         sp170 = spF0;
         sp178 = spF8;
-        Tools_GetClosestPtOnLine2D(spE0, *((MKVector3 *) &sp180), *((MKVector3 *) &sp170));
+        spE0 = Tools_GetClosestPtOnLine2D(*((MKVector3 *) &sp180), *((MKVector3 *) &sp170), arg0);
         temp_f4_129 = M2C_BITWISE(f64, spE0);
         sp160 = temp_f4_129;
         sp168 = (f64) spE0.unk8;
@@ -508,7 +508,7 @@ s32 EnemyRegion::TryChangeRegion(const MKVector3 &arg0) {
     s32 sp74;
     KDPathIterator sp68;
     KDPathManager sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
@@ -517,6 +517,7 @@ s32 EnemyRegion::TryChangeRegion(const MKVector3 &arg0) {
     f32 temp_f3_900;
     f32 temp_f6_906;
     f32 temp_f7_912;
+    f64 temp_f1_892;
     s32 temp_cr0_eq_857;
     void *temp_r3_891;
 
@@ -536,12 +537,13 @@ s32 EnemyRegion::TryChangeRegion(const MKVector3 &arg0) {
         sp8C = 0.0f;
         ((BoundingRegion *) &sp74)->Init((KDLocalPathSegment *) sp38);
         if (((BoundingRegion *) &sp74)->IsPointWithin(arg0) != 0) {
-            PolygonCentroid((KDPathSegment *) &sp28);
+            sp28 = PolygonCentroid((KDPathSegment *) (KDLocalPathSegment *) sp38);
             temp_r3_891 = ((KDLocalPathSegment *) sp38)->unk30;
-            sp38.unk20 = sp28;
-            sp38.unk28 = sp30;
-            sp38.unk10 = sp28;
-            sp38.unk18 = sp30;
+            temp_f1_892 = M2C_BITWISE(f64, sp28);
+            sp38.unk20 = temp_f1_892;
+            sp38.unk28 = (f64) sp28.unk8;
+            sp38.unk10 = temp_f1_892;
+            sp38.unk18 = (f64) sp28.unk8;
             if (temp_r3_891 != NULL) {
                 temp_f3_900 = M2C_BITWISE(f32, sp38.unk14);
                 temp_f6_906 = M2C_BITWISE(f32, sp38.unk10);
@@ -566,9 +568,8 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
 void EnemyRegion::SetupRegion(KDLocalPathSegment *arg0) {
-    f64 sp8;
+    MKVector3 sp8;
 
     this->unk31 = 0;
     this->unk30 = 0;
@@ -579,19 +580,17 @@ void EnemyRegion::SetupRegion(KDLocalPathSegment *arg0) {
     if (arg0 != NULL) {
         ((BoundingRegion *) &this->unk10)->Init(arg0);
         this->unk30 = PolygonWindingOrderIsClockWise((KDPathSegment *) arg0);
-        PolygonCentroid((KDPathSegment *) &sp8);
-        this->unk0 = sp8;
-        this->unk8 = sp10;
+        sp8 = PolygonCentroid((KDPathSegment *) arg0);
+        *(MKVector3 *) &this->unk0 = sp8;
         this->unk31 = 1;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDPathManager' to 'long'
 void EnemyRegion::SetupRegion(const MKVector3 &arg0, float arg1) {
     KDPathIterator sp68;
     KDPathManager sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
@@ -600,6 +599,7 @@ void EnemyRegion::SetupRegion(const MKVector3 &arg0, float arg1) {
     f32 temp_f3_1059;
     f32 temp_f6_1065;
     f32 temp_f7_1071;
+    f64 temp_f1_1051;
     s32 temp_cr0_eq_1033;
     void *temp_r3_1050;
 
@@ -618,12 +618,13 @@ void EnemyRegion::SetupRegion(const MKVector3 &arg0, float arg1) {
         ((BoundingRegion *) &this->unk10)->Init((KDLocalPathSegment *) sp68);
         if (((BoundingRegion *) &this->unk10)->IsPointWithin(arg0) != 0) {
             this->unk30 = PolygonWindingOrderIsClockWise((KDPathSegment *) (KDLocalPathSegment *) sp68);
-            PolygonCentroid((KDPathSegment *) &sp28);
+            sp28 = PolygonCentroid((KDPathSegment *) (KDLocalPathSegment *) sp68);
             temp_r3_1050 = ((KDLocalPathSegment *) sp68)->unk30;
-            sp38.unk20 = sp28;
-            sp38.unk28 = sp30;
-            sp38.unk10 = sp28;
-            sp38.unk18 = sp30;
+            temp_f1_1051 = M2C_BITWISE(f64, sp28);
+            sp38.unk20 = temp_f1_1051;
+            sp38.unk28 = (f64) sp28.unk8;
+            sp38.unk10 = temp_f1_1051;
+            sp38.unk18 = (f64) sp28.unk8;
             if (temp_r3_1050 != NULL) {
                 temp_f3_1059 = M2C_BITWISE(f32, sp38.unk14);
                 temp_f6_1065 = M2C_BITWISE(f32, sp38.unk10);
@@ -686,12 +687,13 @@ u8 PolygonWindingOrderIsClockWise(KDPathSegment *arg0) {
     return (u8) ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU);
 }
 
-#if 0 // DRAFT: illegal type
-void PolygonCentroid(KDPathSegment *arg0) {
+#if 0 // DRAFT: illegal function overloading
+void PolygonCentroid(KDPathSegment *arg1) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;                                        /* compiler-managed */
-    KDPathSegment *temp_r30_1217;
     f32 temp_f1_1220;
     f32 temp_f2_1249;
     f32 temp_f2_1283;
@@ -721,11 +723,10 @@ void PolygonCentroid(KDPathSegment *arg0) {
     void *temp_r6_1242;
     void *temp_r8_1234;
 
-    temp_r30_1217 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_f1_1220 = PolygonArea(temp_r30_1217);
+    temp_f1_1220 = PolygonArea(arg1);
     var_f0_1221 = 0.0f;
     var_r9_1222 = 0;
-    temp_r5_1223 = temp_r30_1217->unk20;
+    temp_r5_1223 = arg1->unk20;
     sp8 = 0.0f;
     spC = 0.0f;
     sp10 = 0.0f;
@@ -733,8 +734,8 @@ void PolygonCentroid(KDPathSegment *arg0) {
     if (temp_r5_1223 > 0) {
         do {
             temp_r3_1231 = var_r9_1222 + 1;
-            temp_r7_1232 = temp_r30_1217->unk1C;
-            temp_r8_1234 = temp_r30_1217->unk24;
+            temp_r7_1232 = arg1->unk1C;
+            temp_r8_1234 = arg1->unk24;
             temp_r0_1237 = (temp_r3_1231 / temp_r5_1223) * temp_r5_1223;
             temp_r4_1238 = var_r9_1222 * temp_r7_1232;
             var_r9_1222 += 1;
@@ -751,8 +752,8 @@ void PolygonCentroid(KDPathSegment *arg0) {
             var_ctr_1227 -= 1;
         } while (var_ctr_1227 != 0);
     }
-    temp_r4_1263 = temp_r30_1217->unk24;
-    temp_r3_1269 = ((u8 *) temp_r4_1263) + ((temp_r5_1223 - 1) * temp_r30_1217->unk1C);
+    temp_r4_1263 = arg1->unk24;
+    temp_r3_1269 = ((u8 *) temp_r4_1263) + ((temp_r5_1223 - 1) * arg1->unk1C);
     temp_f7_1272 = M2C_FIELD(temp_r3_1269, f32 *, 4) - M2C_FIELD(temp_r4_1263, f32 *, 4);
     temp_f6_1274 = M2C_FIELD(temp_r3_1269, f32 *, 0) - M2C_FIELD(temp_r4_1263, f32 *, 0);
     temp_f5_1275 = M2C_FIELD(temp_r3_1269, f32 *, 8) - M2C_FIELD(temp_r4_1263, f32 *, 8);
@@ -769,8 +770,9 @@ void PolygonCentroid(KDPathSegment *arg0) {
     sp8 = (f64) sp8 * (f64) temp_f31_1301;
     sp10 *= temp_f31_1301;
     spC = var_f0_1221 / (f32) temp_r5_1223;
-    arg0->unk0 = sp8;
-    arg0->unk8 = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
 #endif
 

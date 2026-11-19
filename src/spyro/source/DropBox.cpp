@@ -47,6 +47,7 @@
 #include "common/Source/Str.h"
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_DBIceShake;
@@ -508,7 +509,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *DropBox::Update() {
     s8 sp271;
     s8 sp270;
@@ -544,14 +545,14 @@ void *DropBox::Update() {
     f64 sp150;
     f64 sp148;
     f64 sp140;
-    f64 sp130;
+    MKVector3 sp130;
     f64 sp128;
     f64 sp120;
     f64 sp118;
     f64 sp110;
     f64 sp108;
     f64 sp100;
-    f64 spF0;
+    MKVector3 spF0;
     f64 spE8;
     f64 spE0;
     f64 spD8;
@@ -621,11 +622,11 @@ void *DropBox::Update() {
     switch (temp_r0_913) {                          /* switch 1; irregular */
     case 1:                                         /* switch 1 */
         temp_f29_927 = gUpdateTimeDelta;
-        MKVector(0.0f, -3000.0f, 0.0f);
+        sp130 = MKVector(0.0f, -3000.0f, 0.0f);
         temp_f0_933 = sp130 * (f64) temp_f29_927;
         sp40 = temp_f0_933;
         sp140 = temp_f0_933;
-        sp48 = sp138 * temp_f29_927;
+        sp48 = sp130.unk8 * temp_f29_927;
         sp148 = (f64) sp48;
         M2C_FIELD(this, f64 *, 0x1A8) = (f64) (M2C_FIELD(this, f64 *, 0x1A8) + temp_f0_933);
         this->unk1B0 += (f32) sp148;
@@ -648,11 +649,11 @@ void *DropBox::Update() {
             (*(f32 *) ((u8 *) &sp170 + 0x4)) = temp_f0_1019;
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp184 = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                spF0 = MKVector(1.0f, 1.0f, 1.0f);
                 sp30 = spF0 * 5.593163344e-315;
                 sp180 = 0x417;
                 sp188 = sp30;
-                sp38 = spF8 * 250.0f;
+                sp38 = spF0.unk8 * 250.0f;
                 sp198 = 1;
                 sp190 = (f64) sp38;
                 sp100 = sp30;

@@ -14,9 +14,10 @@
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/SplineTools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal explicit conversion from 'SplitPath' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void SpeedWay::GetPathMatrix(float arg0) {
     f32 sp1EC;
     f32 sp1E8;
@@ -86,23 +87,19 @@ void SpeedWay::GetPathMatrix(float arg0) {
     f64 temp_f0_90;
 
     sp160.GetPosition(arg0);
-    sp1A0 = M2C_BITWISE(f64, sp160);
-    sp1A8 = sp160.unk8;
+    *(SplitPath *) &sp1A0 = sp160;
     sp150.GetPosition(arg0);
-    sp190 = M2C_BITWISE(f64, sp150);
-    sp198 = sp150.unk8;
+    *(SplitPath *) &sp190 = sp150;
     sp140.GetVelocity(arg0);
-    sp180 = M2C_BITWISE(f64, sp140);
-    sp188 = sp140.unk8;
+    *(SplitPath *) &sp180 = sp140;
     sp130.GetVelocity(arg0);
-    sp170 = M2C_BITWISE(f64, sp130);
-    sp178 = sp130.unk8;
+    *(SplitPath *) &sp170 = sp130;
     temp_f0_90 = sp190 - sp1A0;
     sp70 = temp_f0_90;
     sp110 = temp_f0_90;
     sp78 = (f32) sp198 - (f32) sp1A8;
     sp118 = (f64) sp78;
-    Normalise(sp120);
+    sp120 = Normalise(*((MKVector3 *) &sp110));
     sp1B0 = M2C_BITWISE(f32, sp120);
     sp1B4 = sp120.unk4;
     sp1B8 = sp120.unk8;
@@ -112,7 +109,7 @@ void SpeedWay::GetPathMatrix(float arg0) {
     spE0 = temp_f0_113;
     sp28 = (f32) sp188 + (f32) sp178;
     spE8 = (f64) sp28;
-    Normalise(spF0);
+    spF0 = Normalise(*((MKVector3 *) &spE0));
     sp60 = -M2C_BITWISE(f32, spF0);
     sp64 = -spF0.unk4;
     sp68 = -spF0.unk8;
@@ -127,7 +124,7 @@ void SpeedWay::GetPathMatrix(float arg0) {
     sp1DC = 0.0f;
     spC0 = (f64) sp50;
     spC8 = (f64) sp58;
-    Normalise(spD0);
+    spD0 = Normalise(*((MKVector3 *) &spC0));
     temp_f6_166 = M2C_BITWISE(f32, spD0);
     sp1C0 = temp_f6_166;
     sp1C4 = spD0.unk4;
@@ -138,7 +135,7 @@ void SpeedWay::GetPathMatrix(float arg0) {
     sp1CC = 0.0f;
     spA0 = (f64) sp40;
     spA8 = (f64) sp48;
-    Normalise(spB0);
+    spB0 = Normalise(*((MKVector3 *) &spA0));
     sp1B0 = M2C_BITWISE(f32, spB0);
     sp1B4 = spB0.unk4;
     sp1B8 = spB0.unk8;

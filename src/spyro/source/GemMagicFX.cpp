@@ -556,7 +556,7 @@ loop_66:
                 sp1C8 = (f64) spF8;
                 sp1B0 = (f64) spE0;
                 sp1B8 = (f64) spE8;
-                KDRand_Vector(sp1D0, *((MKVector3 *) &sp1C0));
+                sp1D0 = KDRand_Vector(*((MKVector3 *) &sp1C0), *((MKVector3 *) &sp1B0));
                 temp_f0_694 = sp1D0 * 5.398241246e-315;
                 spD0 = temp_f0_694;
                 sp1E0 = temp_f0_694;
@@ -593,7 +593,7 @@ loop_66:
                         sp188 = (f64) spA8;
                         sp170 = (f64) sp90;
                         sp178 = (f64) sp98;
-                        KDRand_Vector(sp190, *((MKVector3 *) &sp180));
+                        sp190 = KDRand_Vector(*((MKVector3 *) &sp180), *((MKVector3 *) &sp170));
                         temp_f0_778 = sp190 * 5.676053805e-315;
                         sp80 = temp_f0_778;
                         sp210 = temp_f0_778;
@@ -691,9 +691,8 @@ loop_66:
                     var_r28_543->unk0 = temp_r4_942;
                 } else {
                     temp_f24_956 = 1.0f - (temp_r29_993->unk38 / 0.5f);
-                    KDMath_Slerp(sp130, *((MKVector3 *) &temp_r29_993->unk10), 0.75f * temp_f24_956);
-                    M2C_FIELD(temp_r29_993, f64 *, 0x10) = M2C_BITWISE(f64, sp130);
-                    M2C_FIELD(temp_r29_993, f64 *, 0x18) = (f64) sp130.unk8;
+                    sp130 = KDMath_Slerp(*((MKVector3 *) &temp_r29_993->unk10), *((MKVector3 *) &sp220), 0.75f * temp_f24_956);
+                    M2C_FIELD(temp_r29_993, MKVector3 *, 0x10) = sp130;
                     temp_f27_967 = gUpdateTimeDelta;
                     sp110.operator*((1000.0f * temp_f24_956) + 1000.0f);
                     temp_f0_971 = sp110 * (f64) temp_f27_967;

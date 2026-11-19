@@ -66,6 +66,7 @@
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -274,9 +275,8 @@ void Character::ClearHorizForces() {
         this->unkA8 = 0.0f;
         return;
     }
-    __ml(temp_f1_346, sp8);
-    M2C_FIELD(this, f32 *, 0xA0) = M2C_BITWISE(f64, sp8);
-    M2C_FIELD(this, f32 *, 0xA8) = (f64) sp8.unk8;
+    sp8 = __ml(temp_f1_346, *((MKVector3 *) &this->unkD0));
+    *(MKVector3 *) &M2C_FIELD(this, f32 *, 0xA0) = sp8;
 }
 #endif
 
@@ -368,12 +368,10 @@ void Character::UpdateRotation() {
         M2C_FIELD(this, f64 *, 0xE0) = sp120;
         M2C_FIELD(this, f64 *, 0xE8) = sp128;
     }
-    KDMath_Slerp(sp110, *((MKVector3 *) &this->unkC0), temp_f31_442);
-    M2C_FIELD(this, f64 *, 0xC0) = M2C_BITWISE(f64, sp110);
-    M2C_FIELD(this, f64 *, 0xC8) = (f64) sp110.unk8;
-    KDMath_Slerp(sp100, *((MKVector3 *) &this->unkD0), temp_f31_442);
-    M2C_FIELD(this, f64 *, 0xD0) = M2C_BITWISE(f64, sp100);
-    M2C_FIELD(this, f64 *, 0xD8) = (f64) sp100.unk8;
+    sp110 = KDMath_Slerp(*((MKVector3 *) &this->unkC0), *((MKVector3 *) &this->unkE0), temp_f31_442);
+    M2C_FIELD(this, MKVector3 *, 0xC0) = sp110;
+    sp100 = KDMath_Slerp(*((MKVector3 *) &this->unkD0), *((MKVector3 *) &this->unkF0), temp_f31_442);
+    M2C_FIELD(this, MKVector3 *, 0xD0) = sp100;
     temp_f6_480 = this->unkD8;
     temp_f9_482 = this->unkD0;
     sp70 = -this->unkC0;
@@ -440,7 +438,7 @@ void Character::UpdateRotation() {
         sp10 = ((*(f32 *) ((u8 *) &sp130 + 0x4)) * temp_f3_603) - ((f32) sp138 * temp_f7_606);
         spB8 = (f64) sp18;
         spB0 = (f64) sp10;
-        Normalise(spC0);
+        spC0 = Normalise(*((MKVector3 *) &spB0));
         sp40 = -M2C_BITWISE(f32, spC0);
         sp44 = -spC0.unk4;
         sp48 = -spC0.unk8;
@@ -460,9 +458,8 @@ void Character::UpdateRotation() {
     sp24 = ((f32) sp88 * (f32) sp130) - ((f32) sp80 * (f32) sp138);
     sp98 = (f64) sp28;
     sp90 = (f64) sp20;
-    Normalise(spA0);
-    M2C_FIELD(this, f64 *, 0xD0) = M2C_BITWISE(f64, spA0);
-    M2C_FIELD(this, f64 *, 0xD8) = (f64) spA0.unk8;
+    spA0 = Normalise(*((MKVector3 *) &sp90));
+    M2C_FIELD(this, MKVector3 *, 0xD0) = spA0;
 }
 #endif
 
@@ -623,7 +620,7 @@ MKVector3 *Character::UpdateVelocity() {
         temp_f5_940 = this->unk598;
         temp_f6_944 = this->unk5A0;
         if (((temp_f6_944 * M2C_FIELD((u8) &MKVector3::up, f32 *, 8)) + ((temp_f5_940 * M2C_FIELD((u8) &MKVector3::up, f32 *, 0)) + (temp_f4_938 * M2C_FIELD((u8) &MKVector3::up, f32 *, 4)))) < -1500.0f) {
-            __ml((temp_f6_944 * this->unkD8) + ((temp_f5_940 * this->unkD0) + (temp_f4_938 * this->unkD4)), sp80);
+            sp80 = __ml((temp_f6_944 * this->unkD8) + ((temp_f5_940 * this->unkD0) + (temp_f4_938 * this->unkD4)), *((MKVector3 *) &this->unkD0));
             M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) - M2C_BITWISE(f64, sp80));
             var_r3_705 = (u8) &MKVector3::up;
             this->unk5A0 -= sp80.unk8;
@@ -794,9 +791,8 @@ void Character::StopMovement(bool arg0) {
     }
     temp_f1_1240 = (this->unk5A0 * this->unkD8) + ((this->unk598 * this->unkD0) + (this->unk59C * this->unkD4));
     if (temp_f1_1240 < 0.0f) {
-        __ml(temp_f1_1240, sp8);
-        M2C_FIELD(this, f32 *, 0x598) = M2C_BITWISE(f64, sp8);
-        M2C_FIELD(this, f32 *, 0x5A0) = (f64) sp8.unk8;
+        sp8 = __ml(temp_f1_1240, *((MKVector3 *) &this->unkD0));
+        *(MKVector3 *) &M2C_FIELD(this, f32 *, 0x598) = sp8;
     } else {
         this->unk598 = 0.0f;
         this->unk59C = 0.0f;
@@ -806,7 +802,7 @@ void Character::StopMovement(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan' Too many errors printed, aborting program
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void Character::UpdateMovementArbitrary() {
     MKCollisionResult sp310;
     f64 sp308;
@@ -1010,7 +1006,7 @@ void Character::UpdateMovementArbitrary() {
                 sp48 = (sp310.unk10 * (*(f32 *) ((u8 *) &sp260 + 0x4))) - (sp310.unk14 * (f32) sp260);
                 sp270 = (f64) sp40;
                 sp278 = (f64) sp48;
-                Normalise(sp280);
+                sp280 = Normalise(*((MKVector3 *) &sp270));
                 temp_f2_1507 = -var_f26_1301;
                 spD0 = sp280 * temp_f2_1507;
                 sp290 = spD0;
@@ -1197,7 +1193,7 @@ void Character::UpdateMovementNormal() {
     this->unk110.unk440 = NULL;
     temp_f1_1942 = (this->unk5A0 * this->unkD8) + ((this->unk598 * this->unkD0) + (this->unk59C * this->unkD4));
     if (!(((u8) this->unk6B5 >> 4U) & 1) && (temp_f1_1942 < 0.0f) && ((s32) this->unk110.unk16C > 0) && ((MKProp *) this->unk63C == NULL) && (this->unk5F0 & 1)) {
-        __ml(temp_f1_1942, sp38);
+        sp38 = __ml(temp_f1_1942, *((MKVector3 *) &this->unkD0));
         M2C_FIELD(this, f32 *, 0x598) = (f64) ((f64) M2C_FIELD(this, f32 *, 0x598) - M2C_BITWISE(f64, sp38));
         this->unk5A0 -= sp38.unk8;
         temp_f31_1970 = gUpdateTimeDelta;
@@ -1681,24 +1677,27 @@ void Character::LerpModelColour(const MKVector4 &arg0, float arg1) {
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 void Character::FindGroundColour(bool arg0, bool arg1) {
-    MKCollisionResult sp30;
+    MKCollisionResult sp40;
+    MKVector3 sp30;
     f64 sp28;
     f64 sp20;
-    f64 sp10;
+    MKVector3 sp10;
     u8 spC;
     MKCollisionInfo *sp8;
     MKCollisionInfo *temp_r4_2861;
+    MKCollisionResult *var_r4_2843;
     s32 temp_r3_2836;
     void *temp_r6_2870;
 
     temp_r3_2836 = this->unk110.unk16C;
     if (temp_r3_2836 > 0) {
         if (temp_r3_2836 != 0) {
-
+            var_r4_2843 = (MKCollisionResult *) (this + ((temp_r3_2836 - 1) * 0x58) + 0x118);
+        } else {
+            var_r4_2843 = NULL;
         }
-        Tools_GroundColor(&sp30);
-        this->unk50 = M2C_BITWISE(f64, sp30);
-        this->unk58 = (f64) sp30.unk8;
+        sp30 = Tools_GroundColor(var_r4_2843);
+        *(MKVector3 *) &this->unk50 = sp30;
         return;
     }
     if (!(((u8) this->unk6B5 >> 4U) & 1) && (arg0 != 0)) {
@@ -1711,28 +1710,27 @@ void Character::FindGroundColour(bool arg0, bool arg1) {
         temp_r6_2870 = this->unk8;
         sp20 = M2C_FIELD(temp_r6_2870, f64 *, 0x30);
         sp28 = M2C_FIELD(temp_r6_2870, f64 *, 0x38);
-        FindAnyCollisionPosY(*((MKVector3 *) &sp20), 1000.0f, *((MKCollisionResult *) &sp30.unk10));
+        FindAnyCollisionPosY(*((MKVector3 *) &sp20), 1000.0f, sp40);
         if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-            Tools_GroundColor((MKCollisionResult *) &sp10);
-            this->unk50 = sp10;
-            this->unk58 = sp18;
+            sp10 = Tools_GroundColor(&sp40);
+            *(MKVector3 *) &this->unk50 = sp10;
             if (arg1 != 0) {
                 this->unk110.unk16C = 1;
-                this->unk110.unk8 = (f64) sp30.unk10;
-                this->unk110.unk10 = (f64) sp30.unk18;
-                this->unk110.unk18 = (f64) sp30.unk20;
-                this->unk110.unk20 = (f64) sp30.unk28;
-                this->unk110.unk28 = (f64) sp30.unk30;
-                this->unk110.unk30 = M2C_BITWISE(f64, sp30.unk38);
-                this->unk110.unk38 = sp30.unk40;
-                this->unk110.unk3C = M2C_BITWISE(f32, sp30.unk44);
-                this->unk110.unk40 = (s32) sp30.unk48;
-                this->unk110.unk44 = sp30.unk4C;
-                this->unk110.unk48 = M2C_BITWISE(f32, sp30.unk50);
-                this->unk110.unk4C = sp84;
-                this->unk110.unk50 = sp88;
-                this->unk110.unk54 = sp8C;
-                this->unk110.unk58 = sp90;
+                this->unk110.unk8 = M2C_BITWISE(f64, sp40);
+                this->unk110.unk10 = (f64) sp40.unk8;
+                this->unk110.unk18 = (f64) sp40.unk10;
+                this->unk110.unk20 = (f64) sp40.unk18;
+                this->unk110.unk28 = (f64) sp40.unk20;
+                this->unk110.unk30 = (f64) sp40.unk28;
+                this->unk110.unk38 = sp40.unk30;
+                this->unk110.unk3C = sp40.unk34;
+                this->unk110.unk40 = sp40.unk38;
+                this->unk110.unk44 = sp40.unk3C;
+                this->unk110.unk48 = sp40.unk40;
+                this->unk110.unk4C = sp40.unk44;
+                this->unk110.unk50 = sp40.unk48;
+                this->unk110.unk54 = sp40.unk4C;
+                this->unk110.unk58 = sp40.unk50;
             }
         } else {
             M2C_FIELD(this, f64 *, 0x50) = 1.0f;
@@ -2433,7 +2431,7 @@ loop_28:
                 temp_r5_4302 = this->unk8;
                 sp8 = M2C_FIELD(temp_r5_4302, f64 *, 0x30);
                 sp10 = M2C_FIELD(temp_r5_4302, f64 *, 0x38);
-                MKWind_GetVelocity(sp18);
+                sp18 = MKWind_GetVelocity(*((MKVector3 *) &sp8));
                 ((MKCloth *) (MKModel_GetClothSubObject(this->unk4, var_r28_4299)))->SetForce(1, sp18, -1);
                 var_r28_4299 += 1;
                 goto loop_28;
@@ -2515,7 +2513,7 @@ f32 Character::Resolve() {
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 Character::LoadDone() {
     f64 sp20;
-    f64 sp10;
+    MKVector3 sp10;
     s32 spC;
     Character *sp8;
     MKModel *temp_r3_4494;
@@ -2576,9 +2574,8 @@ s32 Character::LoadDone() {
     M2C_FIELD(this, f64 *, 0x5C0) = sp28;
     M2C_FIELD(this, f64 *, 0x588) = (f64) M2C_FIELD(this, f64 *, 0x5B8);
     M2C_FIELD(this, f64 *, 0x590) = (f64) M2C_FIELD(this, f64 *, 0x5C0);
-    KDMath_GetDirection(NormaliseAngle(this->unk5CC));
-    M2C_FIELD(this, f64 *, 0x5C8) = sp10;
-    M2C_FIELD(this, f64 *, 0x5D0) = sp18;
+    sp10 = KDMath_GetDirection(NormaliseAngle(this->unk5CC));
+    M2C_FIELD(this, MKVector3 *, 0x5C8) = sp10;
     M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(this, f64 *, 0x5C8);
     M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(this, f64 *, 0x5D0);
     M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(this, f64 *, 0xC0);
@@ -2623,7 +2620,7 @@ s32 Character::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand Too many errors printed, aborting program
+#if 0 // DRAFT: illegal operand
 void Character::Deinit() {
     MKMaterial *temp_r3_4790;
     SB2 *temp_r3_4766;
@@ -2665,7 +2662,7 @@ void Character::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: ')' expected Too many errors printed, aborting program
 void Character::Init() {
     void *temp_r4_4861;
     void *var_r3_4851;

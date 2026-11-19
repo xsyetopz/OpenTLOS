@@ -19,6 +19,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -101,7 +102,7 @@ void CrashSparkPS::Draw() {
     f64 sp180;
     f64 sp178;
     MKVector4 sp168;
-    M2C_UNK sp158;
+    MKVector4 sp158;
     f32 sp150;
     f32 sp14C;
     f32 sp148;
@@ -423,7 +424,7 @@ void CrashSparkPS::Draw() {
             sp370 = (f32) sp370 + temp_f1_637;
             MKSetMatrix(Matrix::identity);
             temp_f14_665 = MKRand_Float((int *) &gViewSeed, 0.2f, 1.0f);
-            MKVector(1.0f, 1.0f, 0.8f, 1.0f);
+            sp158 = MKVector(1.0f, 1.0f, 0.8f, 1.0f);
             sp168.operator*(temp_f14_665);
             sp58 = M2C_FIELD(&sp168, f64 *, 0) * (f64) temp_f1_488;
             sp60 = M2C_FIELD(&sp168, f64 *, 8) * (f64) temp_f1_488;
@@ -454,11 +455,11 @@ void CrashSparkPS::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *CrashSparkPS::Update() {
     f64 sp58;
     f64 sp50;
-    f64 sp40;
+    MKVector3 sp40;
     f64 sp38;
     f64 sp30;
     f32 sp28;
@@ -488,11 +489,11 @@ loop_6:
                 M2C_FIELD(temp_r3_837, s8 *, 0x34) = 0;
             }
             temp_f31_848 = gUpdateTimeDelta;
-            MKVector(0.0f, -980.0f, 0.0f);
+            sp40 = MKVector(0.0f, -980.0f, 0.0f);
             temp_f0_854 = sp40 * (f64) temp_f31_848;
             sp20 = temp_f0_854;
             sp50 = temp_f0_854;
-            sp28 = sp48 * temp_f31_848;
+            sp28 = sp40.unk8 * temp_f31_848;
             temp_r3_865 = ((u8 *) this->unk4C) + ((sp8 * 0x50) + 0x20);
             sp58 = (f64) sp28;
             M2C_FIELD(temp_r3_865, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_865, f64 *, 0) + temp_f0_854);

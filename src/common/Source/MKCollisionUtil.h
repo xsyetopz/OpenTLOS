@@ -150,7 +150,7 @@ u8 MKCollision_SweepSphereTest(const MKCollisionRay &, MKVector3 *, MKCollisionR
 u8 MKCollision_SphereTest(const MKCollisionRay &, MKVector3 *, MKCollisionResult *, int, MKCollisionDirection);
 s32 MKCollision_Clip3D(const MKVector3 &, const MKVector3 &, const MKVector3 &, float &, float &);
 u8 Clip(float, float, float, float &, float &);
-void VectorAbs(const MKVector3 &);
+MKVector3 VectorAbs(const MKVector3 &);
 void MKCollision_CalcAABB(Matrix *, const MKCollisionAABB &, MKCollisionAABB *);
 s32 MKCollision_ResolveMaterialNameToID(const char *);
 #endif  // COMMON_SOURCE_MKCOLLISIONUTIL_H

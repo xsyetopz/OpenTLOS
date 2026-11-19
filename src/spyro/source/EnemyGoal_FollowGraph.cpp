@@ -613,8 +613,7 @@ u8 EnemyGoal_GraphSummonWall::Update() {
     MKModel_CalculateRefPointWorldPosition(this->unkC->unk4, M2C_FIELD(M2C_FIELD(checked_cast<CynderTier3 *, Enemy>(this->unkC), void **, 0xA38), s32 *, 0x280), &sp10);
     var_r30_1132 = 0;
     temp_r3_1136 = M2C_FIELD(M2C_FIELD(this->unk10, void **, 0xB0), void **, 0x24);
-    M2C_FIELD(temp_r3_1136, f64 *, 0) = M2C_BITWISE(f64, sp10);
-    M2C_FIELD(temp_r3_1136, f64 *, 8) = (f64) sp10.unk8;
+    M2C_FIELD(temp_r3_1136, MKVector3 *, 0) = sp10;
     temp_r29_1139 = this->unkC;
     if (((Character *) temp_r29_1139)->HasAnimFinished() != 0) {
         temp_r4_1144 = temp_r29_1139->unkA50;
@@ -693,11 +692,11 @@ u8 EnemyGoal_GraphTurn::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp48'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void EnemyGoal_GraphTurn::Activate() {
     f64 sp58;
     f64 sp50;
-    f64 sp40;
+    MKVector3 sp40;
     f64 sp38;
     f64 sp30;
     f32 sp28;
@@ -733,9 +732,8 @@ void EnemyGoal_GraphTurn::Activate() {
     this->unkC->unk640->GraphFollowingOff();
     temp_r4_1365 = this->unkC->unk640;
     temp_r4_1365->unk464 &= ~0x80;
-    KDMath_GetDirection(this->unk20 - 3.1415927f);
-    this->unk10 = sp40;
-    this->unk18 = sp48;
+    sp40 = KDMath_GetDirection(this->unk20 - 3.1415927f);
+    *(MKVector3 *) &this->unk10 = sp40;
     temp_f2_1377 = (f32) M2C_FIELD(this, f64 *, 0x10);
     temp_f1_1378 = M2C_FIELD(this, f32 *, 0x14);
     temp_f3_1379 = (f32) M2C_FIELD(this, f64 *, 0x18);
@@ -2127,7 +2125,7 @@ u8 EnemyGoal_FollowGraph::Update() {
     f64 sp68;
     f64 sp60;
     f64 sp50;
-    f64 sp40;
+    MKVector3 sp40;
     f32 sp30;
     f32 sp28;
     f64 sp20;
@@ -2675,9 +2673,8 @@ block_190:
                     temp_r4_5402->unkA84 = temp_r4_5402->unk640->unk44C;
                 }
                 M2C_STRUCT_COPY((s32) &spFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                KDMath_GetDirection(((f32) this->unkC->unkA84->unk48 / 57.295776f) - 3.1415927f);
-                sp80 = sp40;
-                sp88 = sp48;
+                sp40 = KDMath_GetDirection(((f32) this->unkC->unkA84->unk48 / 57.295776f) - 3.1415927f);
+                *(MKVector3 *) &sp80 = sp40;
                 sp70 = M2C_FIELD(&MKVector3::up, f64 *, 0);
                 sp78 = M2C_FIELD(&MKVector3::up, f64 *, 8);
                 KDMath_BuildMatrixFromFwd(&sp100, *((MKVector3 *) &sp80), (MKVector3 *) &sp70);

@@ -375,7 +375,7 @@ void Gem::CollectEffects() {
     sp3C = var_f0_529;
     sp130 = (f64) sp30;
     sp138 = (f64) sp38;
-    KDRand_Vector(sp160, *((MKVector3 *) &sp150));
+    sp160 = KDRand_Vector(*((MKVector3 *) &sp150), *((MKVector3 *) &sp140));
     temp_f1_547 = M2C_BITWISE(f32, sp160);
     var_f4_555 = (sp160.unk8 * sp160.unk8) + ((temp_f1_547 * temp_f1_547) + (sp160.unk4 * sp160.unk4));
     if (var_f4_555 > 1e-12f) {

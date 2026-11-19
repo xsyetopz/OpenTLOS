@@ -49,6 +49,7 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern MKSceneManager *gMK;
@@ -283,7 +284,7 @@ s32 LiquidFX::Emit(const int &arg0, const MKVector3 &arg1, const MKVector3 &arg2
     f64 sp68;
     f64 sp60;
     f64 sp58;
-    f64 sp48;
+    MKVector3 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -382,9 +383,9 @@ s32 LiquidFX::Emit(const int &arg0, const MKVector3 &arg1, const MKVector3 &arg2
     M2C_FIELD(temp_r4_517, f64 *, 8) = (f64) sp20;
     temp_f29_524 = MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f);
     temp_f30_529 = MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f);
-    MKVector(MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f), temp_f30_529, temp_f29_524);
+    sp48 = MKVector(MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f), temp_f30_529, temp_f29_524);
     sp8 = sp48 * 5.081185235e-315;
-    sp10 = sp50 * 0.05f;
+    sp10 = sp48.unk8 * 0.05f;
     temp_r3_554 = this + ((this->unk3F5C * 0xA0) + 0x118);
     M2C_FIELD(temp_r3_554, f64 *, 0) = sp8;
     M2C_FIELD(temp_r3_554, f64 *, 8) = (f64) sp10;
@@ -533,10 +534,10 @@ void LiquidFX::Draw() {
     f64 sp900;
     f64 sp8F8;
     f64 sp8F0;
-    f64 sp8E0;
+    MKVector3 sp8E0;
     f64 sp8D8;
     f64 sp8D0;
-    f64 sp8C0;
+    MKVector3 sp8C0;
     f64 sp8B0;
     f64 sp8A0;
     f64 sp890;
@@ -838,7 +839,7 @@ void LiquidFX::Draw() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    Matrix *temp_r19_1274;
+    MKVector3 *temp_r19_1274;
     f32 temp_f0_1509;
     f32 temp_f14_1423;
     f32 temp_f1_1683;
@@ -1068,22 +1069,22 @@ loop_2:
                     spAE8 = M2C_FIELD(temp_r3_1081, f64 *, 8);
                     sp3F38 = (f64) (0.05f * _table_sinf((f32) spAF8));
                     sp3F40 = (f64) (0.05f * _table_sinf((*(f32 *) ((u8 *) &spAF0 + 0x4))));
-                    MKVector(0.05f * _table_sinf((f32) spAF0), (f32) sp3F40, (f32) sp3F38);
+                    sp8E0 = MKVector(0.05f * _table_sinf((f32) spAF0), (f32) sp3F40, (f32) sp3F38);
                     temp_r3_1103 = &spCE0 + temp_r16_1073;
                     sp1F0 = M2C_FIELD(temp_r3_1103, f64 *, 0) + sp8E0;
                     sp8F0 = sp1F0;
-                    sp1F8 = M2C_FIELD(temp_r3_1103, f32 *, 8) + sp8E8;
+                    sp1F8 = M2C_FIELD(temp_r3_1103, f32 *, 8) + sp8E0.unk8;
                     spAF0 = sp1F0;
                     sp8F8 = (f64) sp1F8;
                     spAF8 = (f64) sp1F8;
                     sp3F48 = (f64) (0.05f * _table_sinf((f32) spAE8));
                     sp3F50 = (f64) (0.05f * _table_sinf((*(f32 *) ((u8 *) &spAE0 + 0x4))));
-                    MKVector(0.05f * _table_sinf((f32) spAE0), (f32) sp3F50, (f32) sp3F48);
+                    sp8C0 = MKVector(0.05f * _table_sinf((f32) spAE0), (f32) sp3F50, (f32) sp3F48);
                     temp_r3_1135 = &spCE0 + temp_r19_1079;
                     sp1E0 = M2C_FIELD(temp_r3_1135, f64 *, 0) + sp8C0;
                     var_f16_1146 = 5.263544247e-315;
                     sp8D0 = sp1E0;
-                    sp1E8 = M2C_FIELD(temp_r3_1135, f32 *, 8) + sp8C8;
+                    sp1E8 = M2C_FIELD(temp_r3_1135, f32 *, 8) + sp8C0.unk8;
                     spAE0 = sp1E0;
                     sp8D8 = (f64) sp1E8;
                     spAE8 = (f64) sp1E8;
@@ -1145,12 +1146,11 @@ loop_2:
                     spBA0.unk38 = (f32) spAB8;
                     spBA0.unk3C = 1.0f;
 loop_39:
-                    temp_r19_1274 = (Matrix *) (&spCA0 + var_r30_1265);
-                    ApplyMatrix(sp840, temp_r19_1274);
+                    temp_r19_1274 = (MKVector3 *) (&spCA0 + var_r30_1265);
+                    sp840 = ApplyMatrix(*temp_r19_1274, &spBE0);
                     temp_r6_1280 = &spC60 + var_r30_1265;
-                    M2C_FIELD(temp_r6_1280, f64 *, 0) = M2C_BITWISE(f64, sp840);
-                    M2C_FIELD(temp_r6_1280, f64 *, 8) = (f64) sp840.unk8;
-                    ApplyMatrix(sp830, temp_r19_1274);
+                    M2C_FIELD(temp_r6_1280, MKVector3 *, 0) = sp840;
+                    sp830 = ApplyMatrix(*temp_r19_1274, &spBA0);
                     temp_r3_1290 = &spC20 + var_r30_1265;
                     var_r16_1263 += 1;
                     M2C_FIELD(temp_r3_1290, f64 *, 0) = M2C_BITWISE(f64, sp830);
@@ -1350,13 +1350,11 @@ loop_62:
                     sp7B0 = temp_f0_1708;
                     sp188 = M2C_FIELD(temp_r4_1705, f32 *, 0xD0) - M2C_FIELD(temp_r14_1650, f32 *, 0xD0);
                     sp7B8 = (f64) sp188;
-                    Normalise(sp7C0);
-                    spA40 = M2C_BITWISE(f64, sp7C0);
-                    spA48 = (f64) sp7C0.unk8;
+                    sp7C0 = Normalise(*((MKVector3 *) &sp7B0));
+                    *(MKVector3 *) &spA40 = sp7C0;
                 } else {
-                    Normalise(sp7A0);
-                    spA40 = M2C_BITWISE(f64, sp7A0);
-                    spA48 = (f64) sp7A0.unk8;
+                    sp7A0 = Normalise(*(temp_r14_1650 + 0xD8));
+                    *(MKVector3 *) &spA40 = sp7A0;
                 }
                 sp178 = 0.0f;
                 sp170 = 0.0f;
@@ -1368,9 +1366,8 @@ loop_62:
                 sp168 = ((f32) sp770 * (*(f32 *) ((u8 *) &spA40 + 0x4))) - ((*(f32 *) ((u8 *) &sp770 + 0x4)) * (f32) spA40);
                 sp780 = (f64) sp160;
                 sp788 = (f64) sp168;
-                Normalise(sp790);
-                spA20 = M2C_BITWISE(f64, sp790);
-                spA28 = (f64) sp790.unk8;
+                sp790 = Normalise(*((MKVector3 *) &sp780));
+                *(MKVector3 *) &spA20 = sp790;
                 var_f8_1779 = M2C_FIELD(temp_r14_1650, f32 *, 0x14C);
                 sp158 = ((f32) spA40 * (*(f32 *) ((u8 *) &spA20 + 0x4))) - ((*(f32 *) ((u8 *) &spA40 + 0x4)) * (f32) spA20);
                 sp154 = ((f32) spA48 * (f32) spA20) - ((f32) spA40 * (f32) spA28);
@@ -1648,7 +1645,7 @@ loop_62:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *LiquidFX::Update() {
     u8 sp360;
     s32 sp35C;
@@ -1679,7 +1676,7 @@ void *LiquidFX::Update() {
     f64 sp2A8;
     f64 sp2A0;
     f64 sp298;
-    f64 sp288;
+    MKVector3 sp288;
     f64 sp280;
     f64 sp278;
     f64 sp270;
@@ -1904,12 +1901,12 @@ void *LiquidFX::Update() {
             if ((u8) M2C_FIELD(temp_r27_2717, u8 *, 0x158) != 0) {
                 if ((u8) M2C_FIELD(temp_r27_2717, u8 *, 0x159) == 0) {
                     temp_f29_2729 = gUpdateTimeDelta;
-                    MKVector(0.0f, -3000.0f * M2C_FIELD(temp_r27_2717, f32 *, 0xFC), 0.0f);
+                    sp288 = MKVector(0.0f, -3000.0f * M2C_FIELD(temp_r27_2717, f32 *, 0xFC), 0.0f);
                     temp_f0_2734 = sp288 * (f64) temp_f29_2729;
                     spE8 = temp_f0_2734;
                     temp_r26_2736 = (double *) (((u8 *) temp_r27_2717) + 0xD8);
                     sp298 = temp_f0_2734;
-                    spF0 = sp290 * temp_f29_2729;
+                    spF0 = sp288.unk8 * temp_f29_2729;
                     sp2A0 = (f64) spF0;
                     *temp_r26_2736 += temp_f0_2734;
                     temp_r25_2748 = ((u8 *) temp_r27_2717) + 0xC8;
@@ -2279,9 +2276,8 @@ void *LiquidFX::Update() {
                             sp1E8 = temp_f0_3448;
                             sp50 = (f32) sp1E0 + (f32) sp1C0;
                             sp1F0 = (f64) sp50;
-                            Normalise(sp1F8);
-                            M2C_FIELD(temp_r27_2717, f32 *, 0x138) = M2C_BITWISE(f64, sp1F8);
-                            M2C_FIELD(temp_r24_3267, f64 *, 8) = (f64) sp1F8.unk8;
+                            sp1F8 = Normalise(*((MKVector3 *) &sp1E8));
+                            *(MKVector3 *) &M2C_FIELD(temp_r27_2717, f32 *, 0x138) = sp1F8;
                             M2C_FIELD(temp_r24_3267, f64 *, 0) = (f64) (M2C_FIELD(temp_r24_3267, f64 *, 0) * 5.67443485e-315);
                             M2C_FIELD(temp_r27_2717, f32 *, 0x140) = (f32) (M2C_FIELD(temp_r27_2717, f32 *, 0x140) * 980.0f);
                         }
@@ -2570,7 +2566,7 @@ void LiquidFXDescriptor::Init() {
     if ((LiquidFXDescriptor *) *LiquidFXDescriptor::pFirstDesc != NULL) {
         (*LiquidFXDescriptor::pFirstDesc)->unkEC = this;
     }
-    *LiquidFXDescriptor::pFirstDesc = this;
-    this->unkE8 = gMK->GetWorkingChunk();
+    *LiquidFXDescriptor::pFirstDesc = (unsigned char) (this);
+    this->unkE8 = (long) (gMK->GetWorkingChunk());
 }
 #endif

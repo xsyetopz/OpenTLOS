@@ -102,6 +102,7 @@
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -237,7 +238,7 @@ u8 ZapBreathFX::ShootZapMissile(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 spA0;
     f64 sp98;
     f64 sp90;
-    f64 sp80;
+    MKVector3 sp80;
     f32 sp78;
     f64 sp70;
     f32 sp68;
@@ -437,7 +438,7 @@ loop_49:
         spF0 = temp_f0_469;
         sp38 = arg1.unk8 + (f32) spE8;
         spF8 = (f64) sp38;
-        Normalise(sp100);
+        sp100 = Normalise(*((MKVector3 *) &spF0));
         temp_f2_484 = M2C_BITWISE(f64, sp100);
         temp_r3_487 = ((u8 *) this->unkAC) + (var_r29_434 + 0x10);
         M2C_FIELD(temp_r3_487, f64 *, 0) = temp_f2_484;
@@ -501,11 +502,11 @@ loop_49:
         this->unkCC->Emit(arg0, *((MKVector3 *) &spB0), 5.0f, (MKVector4) &spA0);
         if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
             sp144 = 0;
-            MKVector(1.0f, 1.0f, 1.0f);
+            sp80 = MKVector(1.0f, 1.0f, 1.0f);
             sp10 = sp80 * 5.49408334e-315;
             sp140 = 0x417;
             sp148 = sp10;
-            sp18 = sp88 * 50.0f;
+            sp18 = sp80.unk8 * 50.0f;
             sp158 = 1;
             sp150 = (f64) sp18;
             sp90 = sp10;
@@ -958,12 +959,11 @@ void ZapBreathFX::UpdateZapMissiles() {
                     sp438 = (f32) sp438 * var_f2_899;
                     if (var_f25_953 > 5.0f) {
                         temp_r26_1038 = ((u8 *) this->unkAC) + var_r27_718;
-                        Normalise(sp340);
-                        KDMath_Slerp(sp350, sp340, 0.5f * -((M2C_FIELD(temp_r26_1038, f32 *, 0x40) * 0.25f) - 1.0f));
+                        sp340 = Normalise(*(temp_r26_1038 + 0x10));
+                        sp350 = KDMath_Slerp(sp340, *((MKVector3 *) &sp430), 0.5f * -((M2C_FIELD(temp_r26_1038, f32 *, 0x40) * 0.25f) - 1.0f));
                         temp_r4_1052 = var_r27_718 + 0x10;
                         temp_r3_1055 = ((u8 *) this->unkAC) + temp_r4_1052;
-                        M2C_FIELD(temp_r3_1055, f64 *, 0) = M2C_BITWISE(f64, sp350);
-                        M2C_FIELD(temp_r3_1055, f64 *, 8) = (f64) sp350.unk8;
+                        M2C_FIELD(temp_r3_1055, MKVector3 *, 0) = sp350;
                         temp_r3_1066 = ((u8 *) this->unkAC) + temp_r4_1052;
                         var_f6_1072 = ((f32) sp418 * (f32) sp418) + (((f32) sp410 * (f32) sp410) + ((*(f32 *) ((u8 *) &sp410 + 0x4)) * (*(f32 *) ((u8 *) &sp410 + 0x4))));
                         var_f4_1078 = (sp438 * M2C_FIELD(temp_r3_1066, f32 *, 8)) + ((sp430 * M2C_FIELD(temp_r3_1066, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp428 + 0xc)) * M2C_FIELD(temp_r3_1066, f32 *, 4)));
@@ -1072,11 +1072,10 @@ void ZapBreathFX::UpdateZapMissiles() {
                         } while (var_r25_1310 < 0x14);
                     }
                 } else {
-                    Normalise(sp300);
-                    KDMath_Slerp(sp310, sp300, 0.075f);
+                    sp300 = Normalise(*(temp_r26_745 + 0x10));
+                    sp310 = KDMath_Slerp(sp300, *(temp_r26_745 + 0x20), 0.075f);
                     temp_r3_1368 = ((u8 *) this->unkAC) + (var_r27_718 + 0x10);
-                    M2C_FIELD(temp_r3_1368, f64 *, 0) = M2C_BITWISE(f64, sp310);
-                    M2C_FIELD(temp_r3_1368, f64 *, 8) = (f64) sp310.unk8;
+                    M2C_FIELD(temp_r3_1368, MKVector3 *, 0) = sp310;
                     temp_r3_1374 = ((u8 *) this->unkAC) + var_r27_718;
                     var_f2_1383 = (M2C_FIELD(temp_r3_1374, f32 *, 0x28) * M2C_FIELD(temp_r3_1374, f32 *, 0x18)) + ((M2C_FIELD(temp_r3_1374, f32 *, 0x20) * M2C_FIELD(temp_r3_1374, f32 *, 0x10)) + (M2C_FIELD(temp_r3_1374, f32 *, 0x24) * M2C_FIELD(temp_r3_1374, f32 *, 0x14)));
                     if (var_f2_1383 < 0.0f) {
@@ -1332,7 +1331,7 @@ void ZapBreathFX::UpdateZapMissiles() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector4'
 u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const float &arg3, const int &arg4, bool arg5) {
     MKCollisionResult spAC0;
     MKCollisionResult spA68;
@@ -1404,19 +1403,19 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     MKVector3 sp6B0;
     f64 sp6A8;
     f64 sp6A0;
-    f64 sp690;
+    MKVector4 sp690;
     MKVector3 sp680;
     MKVector3 sp670;
     MKVector3 sp660;
     MKVector3 sp650;
-    M2C_UNK sp640;
+    MKVector3 sp640;
     MKVector3 sp630;
     MKVector3 sp620;
-    f64 sp610;
+    MKVector4 sp610;
     MKVector3 sp600;
     MKVector3 sp5F0;
     MKVector3 sp5E0;
-    M2C_UNK sp5D0;
+    MKVector3 sp5D0;
     MKVector3 sp5C0;
     f64 sp5B8;
     f64 sp5B0;
@@ -1455,12 +1454,12 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     MKVector3 sp3F0;
     MKVector3 sp3E0;
     MKVector3 sp3D0;
-    M2C_UNK sp3C0;
+    MKVector3 sp3C0;
     MKVector4 sp3B0;
     MKVector3 sp3A0;
-    M2C_UNK sp390;
+    MKVector3 sp390;
     MKVector3 sp380;
-    M2C_UNK sp370;
+    MKVector3 sp370;
     MKVector3 sp360;
     MKVector3 sp350;
     MKVector3 sp340;
@@ -1469,12 +1468,12 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     MKVector3 sp310;
     MKVector3 sp300;
     MKVector3 sp2F0;
-    M2C_UNK sp2E0;
+    MKVector3 sp2E0;
     MKVector4 sp2D0;
     MKVector3 sp2C0;
-    M2C_UNK sp2B0;
+    MKVector3 sp2B0;
     MKVector3 sp2A0;
-    M2C_UNK sp290;
+    MKVector3 sp290;
     MKVector3 sp280;
     MKVector3 sp270;
     MKVector3 sp260;
@@ -1483,14 +1482,14 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     MKVector3 sp230;
     MKVector3 sp220;
     MKVector3 sp210;
-    M2C_UNK sp200;
+    MKVector3 sp200;
     f64 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
     f64 sp1D8;
     f64 sp1D0;
-    f64 sp1C0;
+    MKVector3 sp1C0;
     MKVector3 sp1B0;
     f64 sp1A8;
     f64 sp1A0;
@@ -1508,8 +1507,8 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     f64 sp128;
     f64 sp120;
     MKVector3 sp110;
-    M2C_UNK sp100;
-    f64 spF0;
+    MKVector3 sp100;
+    MKVector3 spF0;
     f64 spE8;
     f64 spE0;
     f64 spD8;
@@ -1517,7 +1516,7 @@ u8 ZapBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
     f64 spC8;
     f64 spC0;
     MKVector3 spB0;
-    f64 spA0;
+    MKVector3 spA0;
     MKVector3 sp90;
     f64 sp88;
     f64 sp80;
@@ -1703,21 +1702,19 @@ loop_22:
                     goto loop_22;
                 }
                 if (var_r15_2041 != 0) {
-                    MKVector(1.0f, 1.0f, 1.0f, 1.0f);
-                    sp6A0 = sp690;
-                    sp6A8 = sp698;
+                    sp690 = MKVector(1.0f, 1.0f, 1.0f, 1.0f);
+                    *(MKVector4 *) &sp6A0 = sp690;
                     sp18 = MKRand_Float((int *) &gViewSeed, 6.0f, 10.0f);
-                    MKVector(0.0f, 0.0f, 0.0f);
+                    sp6B0 = MKVector(0.0f, 0.0f, 0.0f);
                     this->unkCC->Emit(arg1, sp6B0, sp18, (MKVector4) &sp6A0);
                     var_r17_2170 = 0;
                     do {
-                        MKVector(1.0f, 1.0f, 1.0f);
-                        MKVector(-1.0f, -1.0f, -1.0f);
-                        KDRand_Vector(sp660, sp650);
+                        sp640 = MKVector(1.0f, 1.0f, 1.0f);
+                        sp650 = MKVector(-1.0f, -1.0f, -1.0f);
+                        sp660 = KDRand_Vector(sp650, sp640);
                         sp670.operator+(sp660);
                         sp680.operator*(500.0f);
-                        sp840 = M2C_BITWISE(f64, sp680);
-                        sp848 = (f64) sp680.unk8;
+                        *(MKVector3 *) &sp840 = sp680;
                         ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(arg1, *((MKVector3 *) &sp840), 0.5f, 0U);
                         var_r17_2170 += 1;
                     } while (var_r17_2170 < 6);
@@ -1757,14 +1754,12 @@ loop_22:
     if (temp_cr0_eq_2314 != 0) {
         M2C_STRUCT_COPY((s32) &sp9CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         sp9D0.SetRotationYaw(-0.43633232f);
-        ApplyMatrix(sp630, (Matrix *) &sp820);
-        sp820 = M2C_BITWISE(f64, sp630);
-        sp828 = (f64) sp630.unk8;
+        sp630 = ApplyMatrix(*((MKVector3 *) &sp820), &sp9D0);
+        *(MKVector3 *) &sp820 = sp630;
         M2C_STRUCT_COPY((s32) &sp9CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         sp9D0.SetRotationYaw(0.43633232f);
-        ApplyMatrix(sp620, (Matrix *) &sp810);
-        sp810 = M2C_BITWISE(f64, sp620);
-        sp818 = (f64) sp620.unk8;
+        sp620 = ApplyMatrix(*((MKVector3 *) &sp810), &sp9D0);
+        *(MKVector3 *) &sp810 = sp620;
     }
     var_r28_2376 = 0;
     var_r27_2378 = 0;
@@ -1776,12 +1771,11 @@ loop_22:
     sp7F8 = sp818;
     DisableMissileLight(NULL);
     if ((ManagedLight *) this->unkB0 != NULL) {
-        MKVector(1.0f, 1.0f, 0.0f, 1.0f);
-        this->unkE8 = sp610;
-        this->unkF0 = sp618;
+        sp610 = MKVector(1.0f, 1.0f, 0.0f, 1.0f);
+        *(MKVector4 *) &this->unkE8 = sp610;
         this->unkB0->SetColor(*((MKVector4 *) &this->unkE8));
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(this->unkB0, 1U);
-        MKVector(0.0f, 400.0f, 0.0f);
+        sp5D0 = MKVector(0.0f, 400.0f, 0.0f);
         sp5E0.operator*(500.0f);
         sp5F0.operator+(arg1);
         sp600.operator+(sp5F0);
@@ -1832,8 +1826,7 @@ loop_64:
                 sp5B0 = M2C_FIELD(temp_r6_2552, f64 *, 0x30);
                 sp5B8 = M2C_FIELD(temp_r6_2552, f64 *, 0x38);
                 sp5C0.operator-(*((MKVector3 *) &sp5B0));
-                sp7C0 = M2C_BITWISE(f64, sp5C0);
-                sp7C8 = (f64) sp5C0.unk8;
+                *(MKVector3 *) &sp7C0 = sp5C0;
                 temp_f1_2566 = ((MKVector3 *) &sp7C0)->Normalise();
                 if ((temp_f1_2566 <= var_f28_2432) && (temp_f1_2566 < var_f29_2515) && ((((f32) sp7C8 * (f32) sp828) + (((f32) sp7C0 * (f32) sp820) + ((*(f32 *) ((u8 *) &sp7C0 + 0x4)) * (*(f32 *) ((u8 *) &sp820 + 0x4))))) > 0.0f)) {
                     var_f29_2515 = temp_f1_2566;
@@ -1860,8 +1853,7 @@ loop_81:
                     sp590 = M2C_FIELD(temp_r6_2645, f64 *, 0x30);
                     sp598 = M2C_FIELD(temp_r6_2645, f64 *, 0x38);
                     sp5A0.operator-(*((MKVector3 *) &sp590));
-                    sp7B0 = M2C_BITWISE(f64, sp5A0);
-                    sp7B8 = (f64) sp5A0.unk8;
+                    *(MKVector3 *) &sp7B0 = sp5A0;
                     temp_f1_2659 = ((MKVector3 *) &sp7B0)->Normalise();
                     if ((temp_f1_2659 <= var_f28_2432) && (temp_f1_2659 < var_f29_2606) && ((((f32) sp7B8 * (f32) sp818) + (((f32) sp7B0 * (f32) sp810) + ((*(f32 *) ((u8 *) &sp7B0 + 0x4)) * (*(f32 *) ((u8 *) &sp810 + 0x4))))) > 0.0f)) {
                         var_f29_2606 = temp_f1_2659;
@@ -1881,12 +1873,10 @@ loop_81:
     }
     sp570.operator*(var_f28_2432);
     sp580.operator+(arg1);
-    sp7A0 = M2C_BITWISE(f64, sp580);
-    sp7A8 = (f64) sp580.unk8;
+    *(MKVector3 *) &sp7A0 = sp580;
     sp550.operator*(var_f28_2432);
     sp560.operator+(arg1);
-    sp790 = M2C_BITWISE(f64, sp560);
-    sp798 = (f64) sp560.unk8;
+    *(MKVector3 *) &sp790 = sp560;
     if ((var_r15_2510 != NULL) && (((Enemy *) (((Enemy *(*)(TargetManager **)) (*var_r15_2510)->unk8.unk4)(var_r15_2510)))->IsFrozen() == 0) && (((((Enemy *) (((Enemy *(*)(TargetManager **)) (*var_r15_2510)->unk8.unk4)(var_r15_2510)))->IsKnockedDown() == 0) && (temp_r22_2312 == 0)) || (temp_r22_2312 > 0)) && (this->unk100 <= 0.0f)) {
         M2C_FIELD(*var_r15_2510, M2C_UNK (**)(TargetManager **, MKVector3 *, f64 *), 0x2C)(var_r15_2510, &arg1, &sp7A0);
         sp540.operator-(*((MKVector3 *) &sp7A0));
@@ -1907,8 +1897,7 @@ loop_81:
             var_f1_2799 = MKInput_GetState(0x11, (MKInputDevices) M2C_FIELD(temp_r3_2772, s32 *, 0), NULL, NULL);
         }
         sp530.operator*(var_f1_2799);
-        sp780 = M2C_BITWISE(f64, sp530);
-        sp788 = (f64) sp530.unk8;
+        *(MKVector3 *) &sp780 = sp530;
         temp_f1_2816 = ((MKVector3 *) &sp780)->Normalise();
         if ((temp_f1_2816 > 0.25f) && (temp_r22_2312 >= 0)) {
             sp950.unk4 = 0;
@@ -1947,8 +1936,7 @@ loop_81:
                 sp4E0.operator-(*((MKVector3 *) &sp790));
                 var_r27_2378 = 1;
                 var_r25_2382 = 1;
-                sp7F0 = M2C_BITWISE(f64, sp4E0);
-                sp7F8 = (f64) sp4E0.unk8;
+                *(MKVector3 *) &sp7F0 = sp4E0;
                 if (temp_f1_2816 > 0.25f) {
                     sp910.unk4 = 0;
                     temp_r5_2956 = (*var_r16_2512)->unk8.unk0(var_r16_2512)->unk8;
@@ -1957,8 +1945,7 @@ loop_81:
                     sp4A0.operator-();
                     sp4B0.operator*(300.0f);
                     sp4D0.operator+(*((MKVector3 *) &sp4C0));
-                    sp760 = M2C_BITWISE(f64, sp4D0);
-                    sp768 = (f64) sp4D0.unk8;
+                    *(MKVector3 *) &sp760 = sp4D0;
                     sp910.Init(NULL, *((MKVector3 *) &sp760), 0.0f, 0, 8, 0x20U, NULL, 3.0f);
                     if (M2C_FIELD(*var_r16_2512, u8 (**)(TargetManager **), 0x18)(var_r16_2512) != 0) {
                         temp_r3_2999 = checked_cast<Enemy *, MKProp>((*var_r16_2512)->unk8.unk0(var_r16_2512));
@@ -1991,8 +1978,7 @@ loop_81:
                 sp490.operator-(*((MKVector3 *) &sp480));
                 var_r19_3111 = 0;
                 var_r17_3113 = 0;
-                M2C_FIELD(this, f64 *, 0x118) = M2C_BITWISE(f64, sp490);
-                M2C_FIELD(this, f64 *, 0x120) = (f64) sp490.unk8;
+                M2C_FIELD(this, MKVector3 *, 0x118) = sp490;
 loop_133:
                 if (var_r19_3111 < temp_r14_3049) {
                     temp_r18_3123 = (*var_r15_2510)->unk8.unk0(var_r15_2510);
@@ -2020,8 +2006,7 @@ loop_133:
                 sp458 = M2C_FIELD(temp_r5_3199, f64 *, 0x38);
                 sp440.operator*(var_f26_3187);
                 sp460.operator-(*((MKVector3 *) &sp450));
-                M2C_FIELD(this, f64 *, 0x118) = M2C_BITWISE(f64, sp460);
-                M2C_FIELD(this, f64 *, 0x120) = (f64) sp460.unk8;
+                M2C_FIELD(this, MKVector3 *, 0x118) = sp460;
                 temp_r18_3223 = MKCollision_SphereCollide(*((MKVector3 *) &sp7A0), 100.0f, &spAC0, 5, (MKCollisionMode) 2, 0);
                 var_r19_3224 = 0;
                 var_r14_3225 = 0;
@@ -2048,8 +2033,7 @@ loop_147:
             var_r28_2376 = 1;
             sp7A8 = (f64) spA68.unk8;
             sp410.operator-(*((MKVector3 *) &sp7A0));
-            sp800 = M2C_BITWISE(f64, sp410);
-            sp808 = (f64) sp410.unk8;
+            *(MKVector3 *) &sp800 = sp410;
             ((MKVector3 *) &sp800)->Normalise();
             sp7E0 = (f64) spA68.unk10;
             sp7E8 = (f64) spA68.unk18;
@@ -2077,8 +2061,7 @@ loop_147:
             var_r27_2378 = 1;
             sp798 = (f64) spA10.unk8;
             sp3E0.operator-(*((MKVector3 *) &sp7A0));
-            sp7F0 = M2C_BITWISE(f64, sp3E0);
-            sp7F8 = (f64) sp3E0.unk8;
+            *(MKVector3 *) &sp7F0 = sp3E0;
             ((MKVector3 *) &sp7F0)->Normalise();
             sp7D0 = (f64) spA10.unk10;
             sp7D8 = (f64) spA10.unk18;
@@ -2101,30 +2084,27 @@ loop_147:
         do {
             temp_f26_3408 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f27_3413 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_3413, temp_f26_3408);
+            sp3C0 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_3413, temp_f26_3408);
             sp3D0.operator*(1000.0f);
-            sp750 = M2C_BITWISE(f64, sp3D0);
-            sp758 = (f64) sp3D0.unk8;
+            *(MKVector3 *) &sp750 = sp3D0;
             sp14 = MKRand_Float((int *) &gViewSeed, 4.0f, 6.0f);
-            MKVector(1.0f, 1.0f, 0.4f, 1.0f);
+            sp3B0 = MKVector(1.0f, 1.0f, 0.4f, 1.0f);
             ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp7A0), *((MKVector3 *) &sp750), sp14, sp3B0, -500.0f);
             var_r16_3401 += 1;
         } while (var_r16_3401 < 5);
         temp_f26_3455 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f27_3460 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
-        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_3460, temp_f26_3455);
+        sp390 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_3460, temp_f26_3455);
         sp3A0.operator*(2000.0f);
         ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp7A0), sp3A0, 3.0f, 0U);
         if (var_r26_2380 == 0) {
             this->unkA00->AddNode(*((MKVector3 *) &sp7A0), *((MKVector3 *) &sp7E0));
             if (MKRand_Int((int *) &gViewSeed, 0, 3) == 0) {
-                MKVector(0.0f, 1.0f, 0.0f);
-                Cross(sp380, *((MKVector3 *) &sp7E0));
-                sp740 = M2C_BITWISE(f64, sp380);
-                sp748 = (f64) sp380.unk8;
-                Cross(sp360, *((MKVector3 *) &sp740));
-                sp730 = M2C_BITWISE(f64, sp360);
-                sp738 = (f64) sp360.unk8;
+                sp370 = MKVector(0.0f, 1.0f, 0.0f);
+                sp380 = Cross(*((MKVector3 *) &sp7E0), sp370);
+                *(MKVector3 *) &sp740 = sp380;
+                sp360 = Cross(*((MKVector3 *) &sp740), *((MKVector3 *) &sp7E0));
+                *(MKVector3 *) &sp730 = sp360;
                 temp_f26_3518 = MKRand_Float((int *) &gViewSeed, 0.3f, 0.5f);
                 temp_f27_3523 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 temp_f28_3528 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -2145,30 +2125,27 @@ loop_147:
         do {
             temp_f26_3573 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f27_3578 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_3578, temp_f26_3573);
+            sp2E0 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_3578, temp_f26_3573);
             sp2F0.operator*(200.0f);
-            sp750 = M2C_BITWISE(f64, sp2F0);
-            sp758 = (f64) sp2F0.unk8;
+            *(MKVector3 *) &sp750 = sp2F0;
             sp10 = MKRand_Float((int *) &gViewSeed, 4.0f, 6.0f);
-            MKVector(1.0f, 1.0f, 0.4f, 1.0f);
+            sp2D0 = MKVector(1.0f, 1.0f, 0.4f, 1.0f);
             ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp790), *((MKVector3 *) &sp750), sp10, sp2D0, -500.0f);
             var_r16_3566 += 1;
         } while (var_r16_3566 < 5);
         temp_f26_3620 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f27_3625 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
-        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_3625, temp_f26_3620);
+        sp2B0 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_3625, temp_f26_3620);
         sp2C0.operator*(1000.0f);
         ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp790), sp2C0, 3.0f, 0U);
         if (var_r25_2382 == 0) {
             this->unkA04->AddNode(*((MKVector3 *) &sp790), *((MKVector3 *) &sp7D0));
             if (MKRand_Int((int *) &gViewSeed, 0, 3) == 0) {
-                MKVector(0.0f, 1.0f, 0.0f);
-                Cross(sp2A0, *((MKVector3 *) &sp7D0));
-                sp720 = M2C_BITWISE(f64, sp2A0);
-                sp728 = (f64) sp2A0.unk8;
-                Cross(sp280, *((MKVector3 *) &sp720));
-                sp710 = M2C_BITWISE(f64, sp280);
-                sp718 = (f64) sp280.unk8;
+                sp290 = MKVector(0.0f, 1.0f, 0.0f);
+                sp2A0 = Cross(*((MKVector3 *) &sp7D0), sp290);
+                *(MKVector3 *) &sp720 = sp2A0;
+                sp280 = Cross(*((MKVector3 *) &sp720), *((MKVector3 *) &sp7D0));
+                *(MKVector3 *) &sp710 = sp280;
                 temp_f26_3683 = MKRand_Float((int *) &gViewSeed, 0.3f, 0.5f);
                 temp_f27_3688 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 temp_f28_3693 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -2196,7 +2173,7 @@ loop_147:
             this->unk7E8 = sp798;
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp874 = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp200 = MKVector(1.0f, 1.0f, 1.0f);
                 sp210.operator*(50.0f);
                 sp870.Init(sp210, 1U);
                 M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, ShakeCameraMessage *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp870);
@@ -2224,9 +2201,8 @@ loop_182:
             }
         } else {
             M2C_STRUCT_COPY((s32) &sp890.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            MKVector(0.0f, 1.0f, 0.0f);
-            sp700 = sp1C0;
-            sp708 = sp1C8;
+            sp1C0 = MKVector(0.0f, 1.0f, 0.0f);
+            *(MKVector3 *) &sp700 = sp1C0;
             KDMath_BuildMatrixFromFwd(&sp8D0, arg2, (MKVector3 *) &sp700);
             var_r16_3836 = 0;
             var_r14_3840 = 0;
@@ -2240,9 +2216,8 @@ loop_182:
                     sp6F0 = _table_sinf(this->unkA0C + temp_f25_3860);
                     sp6F4 = temp_f26_3865;
                     sp6F8 = 0.0f;
-                    ApplyMatrix(sp1B0, (Matrix *) &sp6F0);
-                    sp6F0 = M2C_BITWISE(f64, sp1B0);
-                    sp6F8 = (f64) sp1B0.unk8;
+                    sp1B0 = ApplyMatrix(*((MKVector3 *) &sp6F0), &sp8D0);
+                    *(MKVector3 *) &sp6F0 = sp1B0;
                     sp6F0 *= 5.49408334e-315;
                     sp6F8 = (f32) sp6F8 * 50.0f;
                 } else {
@@ -2253,8 +2228,7 @@ loop_182:
                 sp170 = sp820;
                 sp178 = sp828;
                 sp180.operator+(*((MKVector3 *) &sp7A0));
-                sp190 = M2C_BITWISE(f64, sp180);
-                sp198 = (f64) sp180.unk8;
+                *(MKVector3 *) &sp190 = sp180;
                 sp1A0 = temp_f27_3843;
                 sp1A8 = temp_f29_3845;
                 ((ElectricBeam *) (this + (var_r14_3840 + 0x1C0)))->UpdateBeam((MKVector3) &sp1A0, (MKVector3) &sp190, (MKVector3) &sp170);
@@ -2272,9 +2246,8 @@ loop_182:
                     sp6F0 = _table_sinf(this->unkA0C + temp_f25_3935);
                     sp6F4 = temp_f26_3940;
                     sp6F8 = 0.0f;
-                    ApplyMatrix(sp160, (Matrix *) &sp6F0);
-                    sp6F0 = M2C_BITWISE(f64, sp160);
-                    sp6F8 = (f64) sp160.unk8;
+                    sp160 = ApplyMatrix(*((MKVector3 *) &sp6F0), &sp8D0);
+                    *(MKVector3 *) &sp6F0 = sp160;
                     sp6F0 *= 5.49408334e-315;
                     sp6F8 = (f32) sp6F8 * 50.0f;
                 } else {
@@ -2285,8 +2258,7 @@ loop_182:
                 sp120 = sp810;
                 sp128 = sp818;
                 sp130.operator+(*((MKVector3 *) &sp790));
-                sp140 = M2C_BITWISE(f64, sp130);
-                sp148 = (f64) sp130.unk8;
+                *(MKVector3 *) &sp140 = sp130;
                 sp150 = temp_f30_3918;
                 sp158 = temp_f29_3920;
                 ((ElectricBeam *) (this + (var_r14_3921 + 0x1C0)))->UpdateBeam((MKVector3) &sp150, (MKVector3) &sp140, (MKVector3) &sp120);
@@ -2309,16 +2281,15 @@ loop_198:
             }
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp854 = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp100 = MKVector(1.0f, 1.0f, 1.0f);
                 sp110.operator*(50.0f);
                 sp850.Init(sp110, 1U);
                 M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, ShakeCameraMessage *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp850);
             }
         }
         M2C_STRUCT_COPY((s32) &sp88C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        MKVector(0.0f, 1.0f, 0.0f);
-        sp6E0 = spF0;
-        sp6E8 = spF8;
+        spF0 = MKVector(0.0f, 1.0f, 0.0f);
+        *(MKVector3 *) &sp6E0 = spF0;
         KDMath_BuildMatrixFromFwd(&sp890, *((MKVector3 *) &sp820), (MKVector3 *) &sp6E0);
         var_r17_4073 = 0;
         var_r14_4075 = 0;
@@ -2339,31 +2310,26 @@ loop_208:
                 sp6D0 = _table_sinf(this->unkA08 + temp_f30_4112);
                 sp6D4 = temp_f26_4117;
                 sp6D8 = 0.0f;
-                ApplyMatrix(spB0, (Matrix *) &sp6D0);
-                sp6D0 = M2C_BITWISE(f64, spB0);
-                sp6D8 = (f64) spB0.unk8;
-                MKVector(0.0f, 0.0f, 0.0f);
-                sp6C0 = spA0;
-                sp6C8 = spA8;
+                spB0 = ApplyMatrix(*((MKVector3 *) &sp6D0), &sp890);
+                *(MKVector3 *) &sp6D0 = spB0;
+                spA0 = MKVector(0.0f, 0.0f, 0.0f);
+                *(MKVector3 *) &sp6C0 = spA0;
                 if (var_r15_2510 == NULL) {
                     temp_f26_4150 = -_table_sinf(1.5707964f + ((3.0f * this->unkA0C) + temp_f30_4112));
                     sp6C0 = _table_sinf(this->unkA0C + temp_f30_4112);
                     (*(f32 *) ((u8 *) &sp6B0 + 0x14)) = temp_f26_4150;
                     sp6C8 = 0.0f;
-                    ApplyMatrix(sp90, (Matrix *) &sp6C0);
-                    sp6C0 = M2C_BITWISE(f64, sp90);
-                    sp6C8 = (f64) sp90.unk8;
+                    sp90 = ApplyMatrix(*((MKVector3 *) &sp6C0), &sp890);
+                    *(MKVector3 *) &sp6C0 = sp90;
                     sp6C0 *= 5.49408334e-315;
                     sp6C8 = (f32) sp6C8 * 50.0f;
                 }
                 sp20.operator*(0.5f);
                 sp30.operator+(*((MKVector3 *) &sp820));
-                Normalise(sp40);
-                sp50 = M2C_BITWISE(f64, sp40);
-                sp58 = (f64) sp40.unk8;
+                sp40 = Normalise(sp30);
+                *(MKVector3 *) &sp50 = sp40;
                 sp60.operator+(*((MKVector3 *) &sp7A0));
-                sp70 = M2C_BITWISE(f64, sp60);
-                sp78 = (f64) sp60.unk8;
+                *(MKVector3 *) &sp70 = sp60;
                 sp80 = M2C_FIELD(&arg1, f64 *, 0);
                 sp88 = M2C_FIELD(&arg1, f64 *, 8);
                 ((ElectricBeam *) (this + (var_r14_4075 + 0x1C0)))->UpdateBeam((MKVector3) &sp80, (MKVector3) &sp70, (MKVector3) &sp50);
@@ -2474,7 +2440,7 @@ void ZapBreathFX::Message(MKMessage *arg0) {
     } while (var_r30_4638 < 0xA);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to 'double'
+#if 0 // DRAFT: illegal operand
 void *ZapBreathFX::Update() {
     f64 sp360;
     f64 sp358;
@@ -2750,8 +2716,7 @@ loop_2:
             sp358 = spD8;
             sp360 = temp_f0_4831;
             KDMath_Smooth<MKVector4>(sp308, *((MKVector4 *) &this->unkE8), 0.75f, 1.0f);
-            this->unkE8 = M2C_BITWISE(f64, sp308);
-            this->unkF0 = (f64) sp308.unk8;
+            *(MKVector4 *) &this->unkE8 = sp308;
             temp_r3_4847 = this->unkB0;
             temp_r3_4847->unk20 = this->unkE8;
             temp_r3_4847->unk28 = this->unkF0;
@@ -2788,8 +2753,7 @@ loop_2:
             sp2E8 = (f64) spC8;
             sp2F0 = (f64) spD0;
             KDMath_Smooth<MKVector4>(sp2F8, *((MKVector4 *) &this->unkE8), 0.5f, 15.0f * gUpdateTimeDelta);
-            this->unkE8 = M2C_BITWISE(f64, sp2F8);
-            this->unkF0 = (f64) sp2F8.unk8;
+            *(MKVector4 *) &this->unkE8 = sp2F8;
             temp_r3_4919 = this->unkB0;
             temp_r3_4919->unk20 = this->unkE8;
             temp_r3_4919->unk28 = this->unkF0;
@@ -2879,8 +2843,7 @@ loop_33:
                 sp348 = sp68;
                 sp350 = temp_f0_5088;
                 KDMath_Smooth<MKVector4>(sp2B8, *((MKVector4 *) &this->unkE8), 0.75f, 1.0f);
-                this->unkE8 = M2C_BITWISE(f64, sp2B8);
-                this->unkF0 = (f64) sp2B8.unk8;
+                *(MKVector4 *) &this->unkE8 = sp2B8;
                 temp_r3_5104 = this->unkB0;
                 temp_r3_5104->unk20 = this->unkE8;
                 temp_r3_5104->unk28 = this->unkF0;
@@ -2990,8 +2953,7 @@ loop_54:
                 sp338 = sp8;
                 sp340 = temp_f0_5303;
                 KDMath_Smooth<MKVector4>(sp288, *((MKVector4 *) &this->unkE8), 0.75f, 1.0f);
-                this->unkE8 = M2C_BITWISE(f64, sp288);
-                this->unkF0 = (f64) sp288.unk8;
+                *(MKVector4 *) &this->unkE8 = sp288;
                 temp_r3_5319 = this->unkB0;
                 temp_r3_5319->unk20 = this->unkE8;
                 temp_r3_5319->unk28 = this->unkF0;

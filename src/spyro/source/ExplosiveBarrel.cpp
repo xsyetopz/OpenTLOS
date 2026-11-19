@@ -64,6 +64,7 @@
 #include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_TNTBarrelExplode;
@@ -151,12 +152,12 @@ void ExplosiveBarrel::TriggerShatterFX() {
     f64 spD8;
     f64 spD0;
     f64 spC8;
-    f64 spB8;
+    MKVector3 spB8;
     f64 spB0;
     f64 spA8;
     f64 spA0;
     f64 sp98;
-    f64 sp88;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
     f32 sp70;
@@ -210,11 +211,11 @@ void ExplosiveBarrel::TriggerShatterFX() {
         sp120 = M2C_FIELD(temp_r4_249, f64 *, 0x38);
         temp_f26_258 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f27_263 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
-        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_263, temp_f26_258);
+        spB8 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_263, temp_f26_258);
         temp_f0_274 = spB8 * 5.53552857e-315;
         sp28 = temp_f0_274;
         spC8 = temp_f0_274;
-        sp30 = spC0 * 100.0f;
+        sp30 = spB8.unk8 * 100.0f;
         spD0 = (f64) sp30;
         sp118 += temp_f0_274;
         sp120 = (f32) sp120 + (f32) spD0;
@@ -241,11 +242,11 @@ void ExplosiveBarrel::TriggerShatterFX() {
         sp100 = M2C_FIELD(temp_r4_342, f64 *, 0x38);
         temp_f26_351 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f27_356 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
-        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_356, temp_f26_351);
+        sp88 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_356, temp_f26_351);
         temp_f0_367 = sp88 * 5.53552857e-315;
         sp18 = temp_f0_367;
         sp98 = temp_f0_367;
-        sp20 = sp90 * 100.0f;
+        sp20 = sp88.unk8 * 100.0f;
         spA0 = (f64) sp20;
         spF8 += temp_f0_367;
         sp100 = (f32) sp100 + (f32) spA0;

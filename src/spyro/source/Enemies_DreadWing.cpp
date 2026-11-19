@@ -68,6 +68,7 @@
 #include "unplaced_templates.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern void **gMK;
@@ -179,7 +180,7 @@ void DreadWing::UpdateDropBox() {
     MKVector3 sp68;
     f64 sp60;
     f64 sp58;
-    f64 sp48;
+    MKVector3 sp48;
     f32 sp40;
     f64 sp38;
     f32 sp30;
@@ -261,10 +262,10 @@ void DreadWing::UpdateDropBox() {
         (*(f32 *) ((u8 *) &spA0 + 0xc)) *= var_f8_319;
         spB0 = (f32) spB0 * var_f8_319;
         KDMath_BuildMatrixFromFwd(&sp100, *((MKVector3 *) &spA8), (MKVector3 *) &sp98);
-        MKVector(0.0f, -860.00006f, 0.0f);
-        sp18 = spB8 + sp48;
+        sp48 = MKVector(0.0f, -860.00006f, 0.0f);
+        sp18 = spB8 + M2C_BITWISE(f64, sp48);
         sp58 = sp18;
-        sp20 = (f32) spC0 + sp50;
+        sp20 = (f32) spC0 + sp48.unk8;
         sp60 = (f64) sp20;
         sp100.unk30 = (f32) sp58;
         sp100.unk34 = (*(f32 *) ((u8 *) &sp58 + 0x4));

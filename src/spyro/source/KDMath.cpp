@@ -17,8 +17,10 @@ f32 KDMath_GetTurningCircleRadius(float arg0, float arg1) {
     return 0.0f;
 }
 
-#if 0 // DRAFT: pointer/array required
-void KDMath_NormalisedSlerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
+#if 0 // DRAFT: illegal function overloading
+void KDMath_NormalisedSlerp(const MKVector3 &arg1, const MKVector3 &arg2, float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp88;                                       /* compiler-managed */
     f64 sp80;                                       /* compiler-managed */
     f64 sp78;
@@ -52,10 +54,8 @@ void KDMath_NormalisedSlerp(const MKVector3 &arg0, const MKVector3 &arg1, float 
     f64 temp_f1_177;
     s32 temp_r3_196;
     s32 var_r0_206;
-    void *temp_r31_46;
 
-    temp_r31_46 = M2C_ERROR(/* Read from unset register $r5 */);
-    var_f30_58 = (arg1.unk8 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 8)) + ((arg1.unk0 * *M2C_ERROR(/* Read from unset register $r5 */)) + (arg1.unk4 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 4)));
+    var_f30_58 = (arg1.unk8 * arg2.unk8) + ((arg1.unk0 * arg2.unk0) + (arg1.unk4 * arg2.unk4));
     if (var_f30_58 < 1.0f) {
 
     } else {
@@ -67,13 +67,13 @@ void KDMath_NormalisedSlerp(const MKVector3 &arg0, const MKVector3 &arg1, float 
         var_f30_58 = -1.0f;
     }
     if ((1.0f - var_f30_58) <= 0.000001f) {
-        M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(temp_r31_46, f64 *, 0);
-        M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(temp_r31_46, f64 *, 8);
-        return;
+        M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&arg2, f32 *, 0);
+        M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&arg2, f32 *, 8);
+        return result;
     }
     temp_f26_87 = (f32) acos(var_f30_58);
-    temp_f29_91 = _table_sinf(temp_f26_87 * (1.0f - arg2));
-    temp_f28_94 = _table_sinf(temp_f26_87 * arg2);
+    temp_f29_91 = _table_sinf(temp_f26_87 * (1.0f - farg0));
+    temp_f28_94 = _table_sinf(temp_f26_87 * farg0);
     temp_f1_96 = _table_sinf(temp_f26_87);
     var_f2_97 = 0.000001f;
     if (var_f2_97 > temp_f1_96) {
@@ -81,10 +81,10 @@ void KDMath_NormalisedSlerp(const MKVector3 &arg0, const MKVector3 &arg1, float 
     } else {
         var_f2_97 = temp_f1_96;
     }
-    temp_f0_105 = M2C_FIELD(temp_r31_46, f64 *, 0) * (f64) temp_f28_94;
+    temp_f0_105 = (f64) M2C_FIELD(&arg2, f32 *, 0) * (f64) temp_f28_94;
     sp10 = temp_f0_105;
     sp50 = temp_f0_105;
-    sp18 = (f32) M2C_FIELD(temp_r31_46, f64 *, 8) * temp_f28_94;
+    sp18 = arg2.unk8 * temp_f28_94;
     sp58 = (f64) sp18;
     temp_f0_115 = (f64) M2C_FIELD(&arg1, f32 *, 0) * (f64) temp_f29_91;
     sp40 = temp_f0_115;
@@ -145,13 +145,16 @@ void KDMath_NormalisedSlerp(const MKVector3 &arg0, const MKVector3 &arg1, float 
         (*(f32 *) ((u8 *) &sp78 + 0xc)) *= var_f3_228;
         sp88 = (f32) sp88 * var_f3_228;
     }
-    M2C_FIELD(&arg0, f64 *, 0) = (f64) sp80;
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) sp88;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp80;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp88;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
-void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
+#if 0 // DRAFT: illegal function overloading
+void KDMath_Slerp(const MKVector3 &arg1, const MKVector3 &arg2, float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp88;                                       /* compiler-managed */
     f64 sp80;                                       /* compiler-managed */
     f64 sp78;
@@ -186,10 +189,8 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     f64 temp_f1_426;
     s32 temp_r3_445;
     s32 var_r0_455;
-    void *temp_r31_287;
 
-    temp_r31_287 = M2C_ERROR(/* Read from unset register $r5 */);
-    var_f30_299 = (arg1.unk8 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 8)) + ((arg1.unk0 * *M2C_ERROR(/* Read from unset register $r5 */)) + (arg1.unk4 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 4)));
+    var_f30_299 = (arg1.unk8 * arg2.unk8) + ((arg1.unk0 * arg2.unk0) + (arg1.unk4 * arg2.unk4));
     if (var_f30_299 < 1.0f) {
 
     } else {
@@ -201,12 +202,12 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
         var_f30_299 = -1.0f;
     }
     if ((1.0f - var_f30_299) <= 0.000001f) {
-        M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(temp_r31_287, f64 *, 0);
-        M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(temp_r31_287, f64 *, 8);
-        return;
+        M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&arg2, f32 *, 0);
+        M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&arg2, f32 *, 8);
+        return result;
     }
     temp_f26_327 = (f32) acos(var_f30_299);
-    var_f27_329 = arg2 / temp_f26_327;
+    var_f27_329 = farg0 / temp_f26_327;
     if (var_f27_329 < 1.0f) {
 
     } else {
@@ -221,10 +222,10 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     } else {
         var_f2_346 = temp_f1_345;
     }
-    temp_f0_354 = M2C_FIELD(temp_r31_287, f64 *, 0) * (f64) temp_f28_343;
+    temp_f0_354 = (f64) M2C_FIELD(&arg2, f32 *, 0) * (f64) temp_f28_343;
     sp10 = temp_f0_354;
     sp50 = temp_f0_354;
-    sp18 = (f32) M2C_FIELD(temp_r31_287, f64 *, 8) * temp_f28_343;
+    sp18 = arg2.unk8 * temp_f28_343;
     sp58 = (f64) sp18;
     temp_f0_364 = (f64) M2C_FIELD(&arg1, f32 *, 0) * (f64) temp_f29_340;
     sp40 = temp_f0_364;
@@ -285,23 +286,29 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
         (*(f32 *) ((u8 *) &sp78 + 0xc)) *= var_f3_477;
         sp88 = (f32) sp88 * var_f3_477;
     }
-    M2C_FIELD(&arg0, f64 *, 0) = (f64) sp80;
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) sp88;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp80;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp88;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDMath_BuildMatrixFromFwd(Matrix *, MKVector3, const MKVector3 *)' does not match 'KDMath_BuildMatrixFromFwd(Matrix *, const MKVector3 &, MKVecto
-void KDMath_LocaliseVector(const MKVector3 &arg0, MKVector3 *arg1, const MKVector3 &arg2) {
+#if 0 // DRAFT: illegal function overloading
+void KDMath_LocaliseVector(const MKVector3 &arg1, MKVector3 *arg2, const MKVector3 &arg3) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     Matrix sp10;
 
     sp10.SetIdentity();
-    gAssertBool = KDMath_BuildMatrixFromFwd(&sp10, *arg1, &arg2);
-    KDMath_LocaliseVector((Matrix *) &arg0, *((MKVector3 *) &sp10));
+    gAssertBool = KDMath_BuildMatrixFromFwd(&sp10, arg1, arg2);
+    *(sret) = KDMath_LocaliseVector(&sp10, arg3);
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
-void KDMath_LocaliseVector(const Matrix *arg0, const MKVector3 &arg1) {
+#if 0 // DRAFT: illegal function overloading
+void KDMath_LocaliseVector(const Matrix *arg1, const MKVector3 &arg2) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     Matrix sp20;
     M2C_UNK sp1C;
     f32 sp18;
@@ -310,14 +317,12 @@ void KDMath_LocaliseVector(const Matrix *arg0, const MKVector3 &arg1) {
     f32 temp_f3_574;
     f32 temp_f7_579;
     f32 temp_f8_589;
-    void *temp_r31_561;
 
-    temp_r31_561 = M2C_ERROR(/* Read from unset register $r5 */);
-    M2C_STRUCT_COPY((s32) &sp1C + 4, (s32) (&arg1 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &sp1C + 4, (s32) (arg1 - 4) + 4, 0x40);
     sp20.Inverse(&sp20);
-    temp_f3_574 = M2C_FIELD(temp_r31_561, f32 *, 4);
-    temp_f7_579 = M2C_FIELD(temp_r31_561, f32 *, 0);
-    temp_f8_589 = M2C_FIELD(temp_r31_561, f32 *, 8);
+    temp_f3_574 = arg2.unk4;
+    temp_f7_579 = arg2.unk0;
+    temp_f8_589 = arg2.unk8;
     sp20.unk30 = 0.0f;
     sp20.unk34 = 0.0f;
     sp20.unk38 = 0.0f;
@@ -325,13 +330,16 @@ void KDMath_LocaliseVector(const Matrix *arg0, const MKVector3 &arg1) {
     sp14 = 0.0f + ((temp_f8_589 * sp20.unk24) + ((temp_f7_579 * sp20.unk4) + (temp_f3_574 * sp20.unk14)));
     sp18 = 0.0f + ((temp_f8_589 * sp20.unk28) + ((temp_f7_579 * sp20.unk8) + (temp_f3_574 * sp20.unk18)));
     sp20.unk3C = 1.0f;
-    M2C_FIELD(arg0, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(arg0, f64 *, 8) = (f64) sp18;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
-void KDMath_RotateVectorByYaw(const MKVector3 &arg0, float arg1) {
+#if 0 // DRAFT: illegal function overloading
+void KDMath_RotateVectorByYaw(const MKVector3 &arg1, float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     Matrix sp20;
     f32 sp18;
     f32 sp14;
@@ -339,19 +347,18 @@ void KDMath_RotateVectorByYaw(const MKVector3 &arg0, float arg1) {
     f32 temp_f3_639;
     f32 temp_f6_644;
     f32 temp_f7_653;
-    void *temp_r31_633;
 
-    temp_r31_633 = M2C_ERROR(/* Read from unset register $r4 */);
     sp20.SetIdentity();
-    sp20.SetRotationYaw(arg1);
-    temp_f3_639 = M2C_FIELD(temp_r31_633, f32 *, 4);
-    temp_f6_644 = M2C_FIELD(temp_r31_633, f32 *, 0);
-    temp_f7_653 = M2C_FIELD(temp_r31_633, f32 *, 8);
+    sp20.SetRotationYaw(farg0);
+    temp_f3_639 = arg1.unk4;
+    temp_f6_644 = arg1.unk0;
+    temp_f7_653 = arg1.unk8;
     sp10 = sp20.unk30 + ((temp_f7_653 * sp20.unk20) + ((temp_f6_644 * M2C_BITWISE(f32, sp20)) + (temp_f3_639 * sp20.unk10)));
     sp14 = sp20.unk34 + ((temp_f7_653 * sp20.unk24) + ((temp_f6_644 * sp20.unk4) + (temp_f3_639 * sp20.unk14)));
     sp18 = sp20.unk38 + ((temp_f7_653 * sp20.unk28) + ((temp_f6_644 * sp20.unk8) + (temp_f3_639 * sp20.unk18)));
-    M2C_FIELD(&arg0, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(&arg0, f64 *, 8) = (f64) sp18;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    return result;
 }
 #endif
 
@@ -785,56 +792,67 @@ f32 KDMath_GetYaw(const MKVector3 &arg0) {
 }
 
 void KDMath_GetYaw(const Matrix *arg0) {
-    M2C_UNK sp8;
+    MKVector3 sp8;
 
-    KDMath_GetDirection((Matrix *) &sp8);
-    KDMath_GetYaw(*((MKVector3 *) &sp8));
+    sp8 = KDMath_GetDirection(arg0);
+    KDMath_GetYaw(sp8);
 }
 
-void KDMath_GetDirection(float arg0, float arg1) {
+#if 0 // DRAFT: illegal function overloading
+void KDMath_GetDirection(float farg0, float farg1) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     Matrix sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    void *temp_r31_1407;
 
-    temp_r31_1407 = M2C_ERROR(/* Read from unset register $r3 */);
-    sp20.SetRotationPitch(arg1);
-    sp20.RotateYaw(&sp20, arg0);
+    sp20.SetRotationPitch(farg1);
+    sp20.RotateYaw(&sp20, farg0);
     sp10 = -sp20.unk20;
     sp14 = -sp20.unk24;
     sp18 = -sp20.unk28;
-    M2C_FIELD(temp_r31_1407, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(temp_r31_1407, f64 *, 8) = (f64) sp18;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    return result;
 }
+#endif
 
-void KDMath_GetDirection(float arg0) {
+#if 0 // DRAFT: illegal function overloading
+void KDMath_GetDirection(float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     Matrix sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    void *temp_r31_1448;
 
-    temp_r31_1448 = M2C_ERROR(/* Read from unset register $r3 */);
-    sp20.SetRotationYaw(arg0);
+    sp20.SetRotationYaw(farg0);
     sp10 = -sp20.unk20;
     sp14 = -sp20.unk24;
     sp18 = -sp20.unk28;
-    M2C_FIELD(temp_r31_1448, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(temp_r31_1448, f64 *, 8) = (f64) sp18;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    return result;
 }
+#endif
 
-void KDMath_GetDirection(const Matrix *arg0) {
+#if 0 // DRAFT: illegal function overloading
+void KDMath_GetDirection(const Matrix *arg1) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
 
-    sp8 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x20);
-    spC = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x24);
-    sp10 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x28);
-    M2C_FIELD(arg0, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(arg0, f64 *, 8) = (f64) sp10;
+    sp8 = -arg1->unk20;
+    spC = -arg1->unk24;
+    sp10 = -arg1->unk28;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
+#endif
 
 void KDMath_TurnToAngle(float arg0, float arg1, float arg2) {
     KDMath_TurnToAngle(arg0, arg1, arg2, 1.0f);

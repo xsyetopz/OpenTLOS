@@ -61,6 +61,7 @@
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_SiegeTowerExtra2;
@@ -213,7 +214,7 @@ void SiegeTower::UpdateShooting(Targetable *arg0) {
     f64 sp48;
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
@@ -257,10 +258,10 @@ void SiegeTower::UpdateShooting(Targetable *arg0) {
                 sp48 = temp_f1_359;
                 sp50 = M2C_FIELD(temp_r6_355, f64 *, 0x38);
                 M2C_FIELD(arg0->__vptr, M2C_UNK (**)(Targetable *, f64 *, f64 *, void *, f64), 0x2C)(arg0, &sp48, &sp58, temp_r6_355, temp_f1_359);
-                MKVector(0.0f, 100.0f, 0.0f);
-                sp8 = sp58 + sp28;
+                sp28 = MKVector(0.0f, 100.0f, 0.0f);
+                sp8 = sp58 + M2C_BITWISE(f64, sp28);
                 M2C_FIELD(this, f64 *, 0x280) = sp8;
-                sp10 = sp60 + sp30;
+                sp10 = sp60 + sp28.unk8;
                 sp38 = sp8;
                 sp40 = (f64) sp10;
                 M2C_FIELD(this, f64 *, 0x288) = (f64) sp10;

@@ -4,6 +4,7 @@
 #include "common/Source/Matrix.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 void MKShape_DrawLine(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, const MKVector4 &arg3, const Matrix &arg4) {
@@ -44,7 +45,7 @@ void MKShape_DrawSprite(const MKVector3 &arg0, const MKVector3 &arg1, const MKVe
     MKEndPrimitive();
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector4 &arg3, const Matrix &arg4, bool arg5) {
     f32 sp11C;
     f32 sp118;
@@ -113,7 +114,7 @@ void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     spFC = 0.0f;
     sp80 = (f64) sp30;
     sp88 = (f64) sp38;
-    Normalise(sp90);
+    sp90 = Normalise(*((MKVector3 *) &sp80));
     temp_f6_186 = M2C_BITWISE(f32, sp90);
     sp100 = temp_f6_186;
     sp104 = sp90.unk4;
@@ -124,7 +125,7 @@ void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     sp10C = 0.0f;
     sp50 = (f64) sp20;
     sp58 = (f64) sp28;
-    Normalise(sp60);
+    sp60 = Normalise(*((MKVector3 *) &sp50));
     spEC = 0.0f;
     sp11C = 1.0f;
     spE0 = M2C_BITWISE(f32, sp60);
@@ -414,7 +415,7 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
     sp12C = 0.0f;
     sp88 = (f64) sp28;
     sp90 = (f64) sp30;
-    Normalise(sp98);
+    sp98 = Normalise(*((MKVector3 *) &sp88));
     temp_f6_570 = M2C_BITWISE(f32, sp98);
     sp130 = temp_f6_570;
     sp134 = sp98.unk4;
@@ -425,7 +426,7 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
     sp13C = 0.0f;
     sp58 = (f64) sp18;
     sp60 = (f64) sp20;
-    Normalise(sp68);
+    sp68 = Normalise(*((MKVector3 *) &sp58));
     sp11C = 0.0f;
     sp14C = 1.0f;
     sp110 = M2C_BITWISE(f32, sp68);

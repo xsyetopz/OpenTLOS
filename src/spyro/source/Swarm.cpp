@@ -522,11 +522,10 @@ loop_5:
         sp98 = (f64) sp38;
         temp_r28_710->unk10 -= temp_f0_678;
         M2C_FIELD(temp_r28_710, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r28_710, f32 *, 0x18) - (f32) sp98);
-        Min(sp20, *((MKVector3 *) temp_r28_710));
-        Max(sp70, sp20);
+        sp20 = Min(*((MKVector3 *) temp_r28_710), *((MKVector3 *) &this->unkE0));
+        sp70 = Max(sp20, this->unkD0);
         var_r27_429 += 4;
-        temp_r28_710->unk0 = M2C_BITWISE(f64, sp70);
-        temp_r28_710->unk8 = (f64) sp70.unk8;
+        *(MKVector3 *) &temp_r28_710->unk0 = sp70;
         goto loop_30;
     }
 }
@@ -656,10 +655,9 @@ loop_16:
             *(temp_r29_958 + temp_r0_968) = 0;
             var_ctr_966 -= 1;
         } while (var_ctr_966 != 0);
-        KDRand_Vector(sp28, this->unkD0);
+        sp28 = KDRand_Vector(this->unkD0, *((MKVector3 *) &this->unkE0));
         var_r31_948 += 1;
-        temp_r29_958->unk0 = M2C_BITWISE(f64, sp28);
-        temp_r29_958->unk8 = (f64) sp28.unk8;
+        *(MKVector3 *) &temp_r29_958->unk0 = sp28;
         goto loop_12;
     }
 }

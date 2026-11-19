@@ -83,6 +83,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 SPYRO_BOUNCE_Y_SPEED;
@@ -471,8 +472,8 @@ loop_5:
             temp_f30_609 = temp_r3_604->GetCollisionRadius();
             spD8.GetPos();
             ((MKProp *) &spD8.unk10)->GetPos();
-            KDMath_Sub2D(*((MKVector3 *) &spD8.unk20), *((MKVector3 *) &spD8.unk10));
-            Normalise(*((MKVector3 *) &spD8.unk30));
+            *((MKVector3 *) &spD8.unk20) = KDMath_Sub2D(*((MKVector3 *) &spD8.unk10), *((MKVector3 *) &spD8));
+            *((MKVector3 *) &spD8.unk30) = Normalise(*((MKVector3 *) &spD8.unk20));
             ((MKVector3 *) &spD8.unk40)->operator*(temp_f30_609);
             sp128.GetPos();
             sp8 = sp128 + M2C_BITWISE(f64, spD8.unk40);
@@ -792,11 +793,11 @@ void SpyroCombatState::CombatExit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SpyroCombatState::CombatEnter() {
     MKCollisionResult spD8;
     MKProp sp88;
-    f64 sp78;
+    MKVector3 sp78;
     f64 sp70;
     f64 sp68;
     MKVector3 sp58;
@@ -829,11 +830,11 @@ void SpyroCombatState::CombatEnter() {
     this->unk2E = 0;
     temp_r3_1301 = this->unk10;
     temp_r30_1302 = this->unk28;
-    MKVector(0.0f, temp_r3_1301->GetCollisionHeight(), 0.0f);
+    sp78 = MKVector(0.0f, temp_r3_1301->GetCollisionHeight(), 0.0f);
     sp88.GetPos();
-    sp18 = sp88 + sp78;
+    sp18 = sp88 + M2C_BITWISE(f64, sp78);
     sp88.unk40 = sp18;
-    sp20 = M2C_BITWISE(f32, sp88.unk8) + sp80;
+    sp20 = M2C_BITWISE(f32, sp88.unk8) + sp78.unk8;
     sp88.unk10 = sp18;
     sp88.unk48 = (f64) sp20;
     sp88.unk18 = (f64) sp20;
@@ -1323,7 +1324,7 @@ void CombatStateData::SetLastCombatEnemy(Targetable *arg0) {
     this->unk20.Set(arg0);
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)' Too many errors printed, aborting program
+#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void CombatStateData::SetLastCombatEnemy(MKProp *arg0) {
     if ((arg0 == NULL) || !(M2C_FIELD(arg0->unk0, s32 *, 0xC) & 0x208)) {
         this->unk20.Set(NULL);

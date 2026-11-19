@@ -616,7 +616,7 @@ loop_50:
             sp198 = (f64) spA8;
             sp180 = (f64) sp90;
             sp188 = (f64) sp98;
-            KDRand_Vector(sp1A0, *((MKVector3 *) &sp190));
+            sp1A0 = KDRand_Vector(*((MKVector3 *) &sp190), *((MKVector3 *) &sp180));
             temp_f1_747 = M2C_BITWISE(f32, sp1A0);
             var_f4_755 = (sp1A0.unk8 * sp1A0.unk8) + ((temp_f1_747 * temp_f1_747) + (sp1A0.unk4 * sp1A0.unk4));
             if (var_f4_755 > 1e-12f) {

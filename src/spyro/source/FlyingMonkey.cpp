@@ -274,7 +274,7 @@ block_14:
     spD0 = (f64) sp60;
     spB8 = (f64) sp48;
     spC0 = (f64) sp50;
-    KDRand_Vector(spD8, *((MKVector3 *) &spC8));
+    spD8 = KDRand_Vector(*((MKVector3 *) &spC8), *((MKVector3 *) &spB8));
     temp_f0_454 = spD8 * 5.53552857e-315;
     sp38 = temp_f0_454;
     spE8 = temp_f0_454;

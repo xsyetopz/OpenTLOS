@@ -11,6 +11,7 @@
 #include "common/Source/Texture.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern MKMaterial *gRenderState;
@@ -333,14 +334,14 @@ s32 FireAndIceFX::Draw(unsigned short *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FireAndIceFX::Update() {
     MKVector3 sp68;
-    M2C_UNK sp58;
+    MKVector3 sp58;
     f64 sp50;
     f64 sp48;
     MKVector3 sp38;
-    M2C_UNK sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
@@ -389,18 +390,17 @@ void FireAndIceFX::Update() {
                 this->unk78 = 0;
                 return;
             }
-            MKVector(100.0f, 100.0f, 100.0f);
+            sp28 = MKVector(100.0f, 100.0f, 100.0f);
             sp38.operator*(gUpdateTimeDelta);
             temp_f0_694 = M2C_FIELD(this, f64 *, 0x40) + M2C_BITWISE(f64, sp38);
             sp8 = temp_f0_694;
             sp48 = temp_f0_694;
             sp10 = this->unk48 + sp38.unk8;
             sp50 = (f64) sp10;
-            MKVector(1.0f, 0.1f, 1.0f);
-            Min(sp18, *((MKVector3 *) &sp48));
-            Max(sp68, sp18);
-            M2C_FIELD(this, f64 *, 0x40) = M2C_BITWISE(f64, sp68);
-            M2C_FIELD(this, f32 *, 0x48) = (f64) sp68.unk8;
+            sp58 = MKVector(1.0f, 0.1f, 1.0f);
+            sp18 = Min(*((MKVector3 *) &sp48), sp28);
+            sp68 = Max(sp18, sp58);
+            M2C_FIELD(this, MKVector3 *, 0x40) = sp68;
             this->unk50 += 30.0f * gUpdateTimeDelta;
             this->unk58 += 30.0f * gUpdateTimeDelta;
             this->unk54 += 3.0f * gUpdateTimeDelta;

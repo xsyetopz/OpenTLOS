@@ -17,6 +17,7 @@
 #include "common/Source/FileSys.h"
 #include "common/Source/MKCollisionManager.h"
 #include "common/Source/Str.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 static M2C_UNK lit_405;                                /* unable to generate initializer: unknown type; const */
@@ -858,7 +859,7 @@ u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKC
         sp158 = (f64) sp38;
         M2C_FIELD(arg2, f64 *, 8) = (f64) sp38;
         arg2->unk50 = temp_f0_1079 != 0.0f;
-        Normalise(sp130);
+        sp130 = Normalise(*((MKVector3 *) &sp220));
         sp20 = -M2C_BITWISE(f32, sp130);
         sp24 = -sp130.unk4;
         sp28 = -sp130.unk8;
@@ -1378,9 +1379,8 @@ f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKB
                     M2C_FIELD(temp_r22_1446, f64 *, 0x10) = sp690;
                     M2C_FIELD(temp_r22_1446, f64 *, 0x18) = sp698;
                     M2C_FIELD(temp_r22_1446, f32 *, 0x34) = temp_f31_1445;
-                    Normalise(sp560);
-                    M2C_FIELD(temp_r22_1446, f64 *, 0x20) = M2C_BITWISE(f64, sp560);
-                    M2C_FIELD(temp_r22_1446, f64 *, 0x28) = (f64) sp560.unk8;
+                    sp560 = Normalise(*((MKVector3 *) &sp6D0));
+                    M2C_FIELD(temp_r22_1446, MKVector3 *, 0x20) = sp560;
                     sp270 = *(temp_r22_1446 + 0x10) - M2C_FIELD(temp_r22_1446, f64 *, 0);
                     sp550 = sp270;
                     sp278 = (f32) M2C_FIELD(temp_r22_1446, f64 *, 0x18) - (f32) M2C_FIELD(temp_r22_1446, f64 *, 8);
@@ -2123,9 +2123,8 @@ u8 IterateGrid(MKCollisionModel *arg0, const MKCollisionRay &arg1, MKCollisionRe
     sp1D0 = temp_f0_2815;
     sp38 = (f32) sp1E8 * arg0->unk40;
     sp1D8 = (f64) sp38;
-    Max(sp1C0, MKVector3::zero);
-    sp250 = M2C_BITWISE(f64, sp1C0);
-    sp258 = (f64) sp1C0.unk8;
+    sp1C0 = Max(MKVector3::zero, *((MKVector3 *) &sp1D0));
+    *(MKVector3 *) &sp250 = sp1C0;
     temp_f0_2837 = sp240 - M2C_FIELD(temp_r29_2734, f64 *, 0x20);
     sp20 = temp_f0_2837;
     sp210 = temp_f0_2837;
@@ -2136,7 +2135,7 @@ u8 IterateGrid(MKCollisionModel *arg0, const MKCollisionRay &arg1, MKCollisionRe
     sp200 = temp_f0_2850;
     sp18 = (f32) sp218 * arg0->unk40;
     sp208 = (f64) sp18;
-    Min(sp1F0, *((MKVector3 *) &sp1B0));
+    sp1F0 = Min(*((MKVector3 *) &sp1B0), *((MKVector3 *) &sp200));
     sp248 = (f64) sp1F0.unk8;
     temp_r4_2877 = temp_r29_2734->unk4;
     temp_r6_2879 = temp_r29_2734->unkC;
@@ -2217,8 +2216,8 @@ loop_26:
                 sp140 = temp_f0_3042;
                 spB8 = (f32) sp158 * (f32) sp228;
                 sp148 = (f64) spB8;
-                Min(spA0, *((MKVector3 *) &sp140));
-                Max(sp130, spA0);
+                spA0 = Min(*((MKVector3 *) &sp140), MKVector3::one);
+                sp130 = Max(spA0, MKVector3::zero);
                 temp_f0_3062 = M2C_BITWISE(f64, sp130) * 5.5947823e-315;
                 sp90 = temp_f0_3062;
                 sp110 = temp_f0_3062;
@@ -2234,8 +2233,8 @@ loop_26:
                 sp170 = temp_f0_3085;
                 sp78 = (f32) sp188 * (f32) sp228;
                 sp178 = (f64) sp78;
-                Min(sp60, *((MKVector3 *) &sp170));
-                Max(sp160, sp60);
+                sp60 = Min(*((MKVector3 *) &sp170), MKVector3::one);
+                sp160 = Max(sp60, MKVector3::zero);
                 temp_f0_3105 = M2C_BITWISE(f64, sp160) * 5.5947823e-315;
                 sp50 = temp_f0_3105;
                 var_r19_3107 = temp_r14_2979;
@@ -2583,8 +2582,8 @@ loop_20:
     sp80 = (f32) sp120 * (f32) sp198;
     sp108 = sp78;
     sp110 = (f64) sp80;
-    Min(sp68, *((MKVector3 *) &sp108));
-    Max(spF8, sp68);
+    sp68 = Min(*((MKVector3 *) &sp108), MKVector3::one);
+    spF8 = Max(sp68, MKVector3::zero);
     temp_f0_3665 = M2C_BITWISE(f64, spF8) * 5.5947823e-315;
     sp58 = temp_f0_3665;
     spD8 = temp_f0_3665;
@@ -2600,8 +2599,8 @@ loop_20:
     sp138 = temp_f0_3688;
     sp40 = (f32) sp150 * (f32) sp198;
     sp140 = (f64) sp40;
-    Min(sp28, *((MKVector3 *) &sp138));
-    Max(sp128, sp28);
+    sp28 = Min(*((MKVector3 *) &sp138), MKVector3::one);
+    sp128 = Max(sp28, MKVector3::zero);
     temp_f0_3708 = M2C_BITWISE(f64, sp128) * 5.5947823e-315;
     sp18 = temp_f0_3708;
     var_r20_3710 = temp_r14_3595;
@@ -2891,11 +2890,10 @@ s32 MKCollisionModel::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResu
     sp1D8 = temp_f0_4041;
     spD0 = (f32) sp1D0 * this->unk40;
     sp1E0 = (f64) spD0;
-    Max(sp1E8, MKVector3::zero);
+    sp1E8 = Max(MKVector3::zero, *((MKVector3 *) &sp1D8));
     temp_r8_4056 = this->unk30;
     temp_r5_4060 = temp_r8_4056->unkC;
-    sp208 = M2C_BITWISE(f64, sp1E8);
-    sp210 = (f64) sp1E8.unk8;
+    *(MKVector3 *) &sp208 = sp1E8;
     temp_f4_4075 = this->unk40 * ((f32) sp200 - M2C_BITWISE(f32, temp_r8_4056->unk28));
     temp_r10_4080 = (s32) (f32) sp208;
     temp_r7_4082 = (s32) (f32) sp210;
@@ -3180,7 +3178,6 @@ block_73:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MKCollisionGroundHint::Update(const MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp120;
     f64 sp118;
@@ -3334,13 +3331,11 @@ s32 MKCollisionGroundHint::Update(const MKCollisionRay &arg0, MKCollisionResult 
     M2C_FIELD(arg1, f32 *, 0x18) = (f64) this->unk10;
     arg1->unk40 = temp_f2_4881;
     if (arg2 & 4) {
-        GetInterpolatedColorFromPoly(sp78, (MKVector3 *) arg1);
-        M2C_FIELD(arg1, f32 *, 0x20) = M2C_BITWISE(f64, sp78);
-        M2C_FIELD(arg1, f32 *, 0x28) = (f64) sp78.unk8;
+        sp78 = GetInterpolatedColorFromPoly(*((MKVector3 *) arg1), (MKVector3 *) &spF8);
+        *(MKVector3 *) &M2C_FIELD(arg1, f32 *, 0x20) = sp78;
     }
     return 1;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 FindClippedLocalRay(const MKVector3 &arg0, ColGridData *arg1, MKVector3 *arg2, MKVector3 *arg3) {
@@ -3816,9 +3811,8 @@ void MKCollisionModel::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCo
     sp308 = temp_f0_5325;
     sp40 = (f32) sp320 * this->unk40;
     sp310 = (f64) sp40;
-    Max(sp2F8, MKVector3::zero);
-    sp3C8 = M2C_BITWISE(f64, sp2F8);
-    sp3D0 = (f64) sp2F8.unk8;
+    sp2F8 = Max(MKVector3::zero, *((MKVector3 *) &sp308));
+    *(MKVector3 *) &sp3C8 = sp2F8;
     temp_f0_5347 = sp3B8 - M2C_FIELD(temp_r14_5266, f64 *, 0x20);
     sp28 = temp_f0_5347;
     sp348 = temp_f0_5347;
@@ -3829,9 +3823,8 @@ void MKCollisionModel::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCo
     sp338 = temp_f0_5360;
     sp20 = (f32) sp350 * this->unk40;
     sp340 = (f64) sp20;
-    Min(sp328, *((MKVector3 *) &sp2E8));
-    sp3B8 = M2C_BITWISE(f64, sp328);
-    sp3C0 = (f64) sp328.unk8;
+    sp328 = Min(*((MKVector3 *) &sp2E8), *((MKVector3 *) &sp338));
+    *(MKVector3 *) &sp3B8 = sp328;
     var_r28_5383 = 0;
     sp890 = (s32) (*(f32 *) ((u8 *) &sp3B8 + 0x4));
     sp88C = (s32) (f32) sp3D0;
@@ -3887,8 +3880,8 @@ loop_48:
                 sp278 = temp_f0_5520;
                 sp170 = (f32) sp290 * (f32) sp3A0;
                 sp280 = (f64) sp170;
-                Min(sp158, *((MKVector3 *) &sp278));
-                Max(sp268, sp158);
+                sp158 = Min(*((MKVector3 *) &sp278), *sp8A8);
+                sp268 = Max(sp158, *sp8AC);
                 temp_f0_5540 = M2C_BITWISE(f64, sp268) * 5.5947823e-315;
                 sp148 = temp_f0_5540;
                 sp248 = temp_f0_5540;
@@ -3904,8 +3897,8 @@ loop_48:
                 sp2A8 = temp_f0_5564;
                 sp130 = (f32) sp2C0 * (f32) sp3A0;
                 sp2B0 = (f64) sp130;
-                Min(sp118, *((MKVector3 *) &sp2A8));
-                Max(sp298, sp118);
+                sp118 = Min(*((MKVector3 *) &sp2A8), *sp8B0);
+                sp298 = Max(sp118, *sp8B4);
                 temp_f0_5584 = M2C_BITWISE(f64, sp298) * 5.5947823e-315;
                 sp108 = temp_f0_5584;
                 var_r9_5586 = temp_r24_5472;
@@ -3956,8 +3949,8 @@ loop_46:
                     sp1F8 = temp_f0_5701;
                     spF0 = (f32) sp210 * (f32) sp390;
                     sp200 = (f64) spF0;
-                    Min(spD8, *((MKVector3 *) &sp1F8));
-                    Max(sp1E8, spD8);
+                    spD8 = Min(*((MKVector3 *) &sp1F8), MKVector3::one);
+                    sp1E8 = Max(spD8, MKVector3::zero);
                     temp_f0_5721 = M2C_BITWISE(f64, sp1E8) * 5.5947823e-315;
                     spC8 = temp_f0_5721;
                     sp1C8 = temp_f0_5721;
@@ -3973,8 +3966,8 @@ loop_46:
                     sp228 = temp_f0_5744;
                     spB0 = (f32) sp240 * (f32) sp390;
                     sp230 = (f64) spB0;
-                    Min(sp98, *((MKVector3 *) &sp228));
-                    Max(sp218, sp98);
+                    sp98 = Min(*((MKVector3 *) &sp228), MKVector3::one);
+                    sp218 = Max(sp98, MKVector3::zero);
                     temp_f0_5764 = M2C_BITWISE(f64, sp218) * 5.5947823e-315;
                     sp88 = temp_f0_5764;
                     sp1D8 = temp_f0_5764;
@@ -4274,9 +4267,8 @@ void MKCollisionModel::SweepBoxTest(const MKSweptBox &arg0, MKBestResult *arg1, 
     sp1D8 = temp_f0_6186;
     sp40 = (f32) sp1F0 * this->unk40;
     sp1E0 = (f64) sp40;
-    Max(sp1C8, MKVector3::zero);
-    sp258 = M2C_BITWISE(f64, sp1C8);
-    sp260 = (f64) sp1C8.unk8;
+    sp1C8 = Max(MKVector3::zero, *((MKVector3 *) &sp1D8));
+    *(MKVector3 *) &sp258 = sp1C8;
     temp_f0_6208 = sp248 - M2C_FIELD(temp_r14_6106, f64 *, 0x20);
     sp28 = temp_f0_6208;
     sp218 = temp_f0_6208;
@@ -4287,9 +4279,8 @@ void MKCollisionModel::SweepBoxTest(const MKSweptBox &arg0, MKBestResult *arg1, 
     sp208 = temp_f0_6221;
     sp20 = (f32) sp220 * this->unk40;
     sp210 = (f64) sp20;
-    Min(sp1F8, *((MKVector3 *) &sp1B8));
-    sp248 = M2C_BITWISE(f64, sp1F8);
-    sp250 = (f64) sp1F8.unk8;
+    sp1F8 = Min(*((MKVector3 *) &sp1B8), *((MKVector3 *) &sp208));
+    *(MKVector3 *) &sp248 = sp1F8;
     var_r24_6244 = 0;
     sp6E0 = (s32) (*(f32 *) ((u8 *) &sp248 + 0x4));
     var_r23_6269 = (s32) (*(f32 *) ((u8 *) &sp258 + 0x4));
@@ -4339,8 +4330,8 @@ loop_25:
                 sp148 = temp_f0_6375;
                 spC0 = (f32) sp160 * (f32) sp230;
                 sp150 = (f64) spC0;
-                Min(spA8, *((MKVector3 *) &sp148));
-                Max(sp138, spA8);
+                spA8 = Min(*((MKVector3 *) &sp148), MKVector3::one);
+                sp138 = Max(spA8, MKVector3::zero);
                 temp_f0_6395 = M2C_BITWISE(f64, sp138) * 5.5947823e-315;
                 sp98 = temp_f0_6395;
                 sp118 = temp_f0_6395;
@@ -4356,8 +4347,8 @@ loop_25:
                 sp178 = temp_f0_6418;
                 sp80 = (f32) sp190 * (f32) sp230;
                 sp180 = (f64) sp80;
-                Min(sp68, *((MKVector3 *) &sp178));
-                Max(sp168, sp68);
+                sp68 = Min(*((MKVector3 *) &sp178), MKVector3::one);
+                sp168 = Max(sp68, MKVector3::zero);
                 temp_f0_6438 = M2C_BITWISE(f64, sp168) * 5.5947823e-315;
                 sp58 = temp_f0_6438;
                 var_r12_6440 = temp_r20_6327;
@@ -4585,9 +4576,8 @@ s32 MKCollisionModel::BoxTest(const MKCollisionBox &arg0, MKCollisionResult *arg
     sp1D0 = temp_f0_6695;
     sp38 = (f32) sp1E8 * this->unk40;
     sp1D8 = (f64) sp38;
-    Max(sp1C0, MKVector3::zero);
-    sp250 = M2C_BITWISE(f64, sp1C0);
-    sp258 = (f64) sp1C0.unk8;
+    sp1C0 = Max(MKVector3::zero, *((MKVector3 *) &sp1D0));
+    *(MKVector3 *) &sp250 = sp1C0;
     temp_f0_6717 = sp240 - M2C_FIELD(temp_r14_6614, f64 *, 0x20);
     sp20 = temp_f0_6717;
     sp210 = temp_f0_6717;
@@ -4598,9 +4588,8 @@ s32 MKCollisionModel::BoxTest(const MKCollisionBox &arg0, MKCollisionResult *arg
     sp200 = temp_f0_6730;
     sp18 = (f32) sp218 * this->unk40;
     sp208 = (f64) sp18;
-    Min(sp1F0, *((MKVector3 *) &sp1B0));
-    sp240 = M2C_BITWISE(f64, sp1F0);
-    sp248 = (f64) sp1F0.unk8;
+    sp1F0 = Min(*((MKVector3 *) &sp1B0), *((MKVector3 *) &sp200));
+    *(MKVector3 *) &sp240 = sp1F0;
     var_r24_6753 = 0;
     sp6E8 = (s32) (*(f32 *) ((u8 *) &sp240 + 0x4));
     temp_f30_6773 = (f32) M2C_FIELD(&arg0, f64 *, 0x98);
@@ -4663,8 +4652,8 @@ loop_28:
     spB8 = (f32) sp158 * (f32) sp228;
     sp140 = spB0;
     sp148 = (f64) spB8;
-    Min(spA0, *((MKVector3 *) &sp140));
-    Max(sp130, spA0);
+    spA0 = Min(*((MKVector3 *) &sp140), MKVector3::one);
+    sp130 = Max(spA0, MKVector3::zero);
     temp_f0_6908 = M2C_BITWISE(f64, sp130) * 5.5947823e-315;
     sp90 = temp_f0_6908;
     sp110 = temp_f0_6908;
@@ -4680,8 +4669,8 @@ loop_28:
     sp170 = temp_f0_6931;
     sp78 = (f32) sp188 * (f32) sp228;
     sp178 = (f64) sp78;
-    Min(sp60, *((MKVector3 *) &sp170));
-    Max(sp160, sp60);
+    sp60 = Min(*((MKVector3 *) &sp170), MKVector3::one);
+    sp160 = Max(sp60, MKVector3::zero);
     temp_f0_6951 = M2C_BITWISE(f64, sp160) * 5.5947823e-315;
     sp50 = temp_f0_6951;
     var_r12_6953 = temp_r20_6840;
@@ -4925,9 +4914,8 @@ s32 MKCollisionModel::SphereTest(const MKCollisionRay &arg0, MKCollisionResult *
     sp1D8 = temp_f0_7231;
     sp40 = (f32) sp1F0 * this->unk40;
     sp1E0 = (f64) sp40;
-    Max(sp1C8, MKVector3::zero);
-    sp258 = M2C_BITWISE(f64, sp1C8);
-    sp260 = (f64) sp1C8.unk8;
+    sp1C8 = Max(MKVector3::zero, *((MKVector3 *) &sp1D8));
+    *(MKVector3 *) &sp258 = sp1C8;
     temp_f0_7253 = sp248 - M2C_FIELD(temp_r14_7150, f64 *, 0x20);
     sp28 = temp_f0_7253;
     sp218 = temp_f0_7253;
@@ -4938,9 +4926,8 @@ s32 MKCollisionModel::SphereTest(const MKCollisionRay &arg0, MKCollisionResult *
     sp208 = temp_f0_7266;
     sp20 = (f32) sp220 * this->unk40;
     sp210 = (f64) sp20;
-    Min(sp1F8, *((MKVector3 *) &sp1B8));
-    sp248 = M2C_BITWISE(f64, sp1F8);
-    sp250 = (f64) sp1F8.unk8;
+    sp1F8 = Min(*((MKVector3 *) &sp1B8), *((MKVector3 *) &sp208));
+    *(MKVector3 *) &sp248 = sp1F8;
     var_r24_7289 = 0;
     sp6F0 = (s32) (*(f32 *) ((u8 *) &sp248 + 0x4));
     temp_f30_7309 = (f32) M2C_FIELD(&arg0, f64 *, 8);
@@ -5004,8 +4991,8 @@ loop_53:
     sp148 = temp_f0_7423;
     spC0 = (f32) sp160 * (f32) sp230;
     sp150 = (f64) spC0;
-    Min(spA8, *((MKVector3 *) &sp148));
-    Max(sp138, spA8);
+    spA8 = Min(*((MKVector3 *) &sp148), MKVector3::one);
+    sp138 = Max(spA8, MKVector3::zero);
     temp_f0_7443 = M2C_BITWISE(f64, sp138) * 5.5947823e-315;
     sp98 = temp_f0_7443;
     sp118 = temp_f0_7443;
@@ -5021,8 +5008,8 @@ loop_53:
     sp178 = temp_f0_7466;
     sp80 = (f32) sp190 * (f32) sp230;
     sp180 = (f64) sp80;
-    Min(sp68, *((MKVector3 *) &sp178));
-    Max(sp168, sp68);
+    sp68 = Min(*((MKVector3 *) &sp178), MKVector3::one);
+    sp168 = Max(sp68, MKVector3::zero);
     temp_f0_7486 = M2C_BITWISE(f64, sp168) * 5.5947823e-315;
     sp58 = temp_f0_7486;
     var_r8_7488 = temp_r20_7376;
@@ -5290,7 +5277,7 @@ MKCollisionModel *MKCollisionModel::Create(void *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match 'MKArchive_Exists(const char *, int *)' Too many errors printed, aborting program
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match 'MKArchive_Exists(const char *, int *)'
 MKCollisionModel *MKCollisionModel::Create(const char *arg0, MKModel *arg1) {
     s32 sp8;
     s32 temp_ret_8100;

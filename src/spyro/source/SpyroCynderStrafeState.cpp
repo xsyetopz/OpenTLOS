@@ -58,6 +58,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_SpyroLand;
@@ -1113,7 +1114,7 @@ void SpyroCynderStrafeState::SelectAnim() {
         sp68 = (f64) sp18;
         sp70 = (f64) sp20;
         if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) > 10000.0f) {
-            Normalise(sp28);
+            sp28 = Normalise(*((MKVector3 *) &sp68));
             sp70 = (f64) sp28.unk8;
             sp68 = M2C_BITWISE(f64, sp28);
             sp8 = (f32) sp70;
@@ -1474,7 +1475,7 @@ void SpyroCynderStrafeState::Exit() {
 void SpyroCynderStrafeState::Enter(SpyroStateMessages &arg0) {
     f64 sp28;
     f64 sp20;
-    f64 sp10;
+    MKVector3 sp10;
     s32 spC;
     s32 sp8;
     KDCamera *temp_r3_2197;
@@ -1494,9 +1495,8 @@ void SpyroCynderStrafeState::Enter(SpyroStateMessages &arg0) {
     M2C_FIELD(this, f64 *, 0x48) = temp_f0_2176;
     sp28 = temp_f0_2176;
     this->unk10->GetYaw();
-    KDMath_GetDirection(M2C_ERROR(/* Read from unset register $f1 */));
-    M2C_FIELD(this, f64 *, 0x30) = sp10;
-    M2C_FIELD(this, f64 *, 0x38) = sp18;
+    sp10 = KDMath_GetDirection(M2C_ERROR(/* Read from unset register $f1 */));
+    M2C_FIELD(this, MKVector3 *, 0x30) = sp10;
     this->unk10->SetAnim(0x11U, 0.15f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r3_2197 = this->unk10->GetCamera();
     spC = 0;

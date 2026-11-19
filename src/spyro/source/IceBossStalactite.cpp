@@ -54,6 +54,7 @@
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(IceBossStalactite ***);                /* extern */
@@ -75,11 +76,11 @@ static s32 lit_644 = 0;
 
 static u8 lit_683 = 1;
 
-#if 0 // DRAFT: undefined identifier 'sp30'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void IceBossStalactiteSpawner::GetSpawnPoint(const MKVector3 &arg0, int arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f32 sp20;
     f64 sp18;
     f32 sp10;
@@ -91,11 +92,11 @@ void IceBossStalactiteSpawner::GetSpawnPoint(const MKVector3 &arg0, int arg1) {
 
     temp_r7_51 = (s32) M2C_ERROR(/* Read from unset register $r6 */) / 5;
     temp_f31_68 = (500.0f * (f32) temp_r7_51) + 500.0f;
-    KDMath_GetDirection(NormaliseAngle(M2C_FIELD(&arg0, f32 *, 0x1C) + (1.2566371f * (f32) (M2C_ERROR(/* Read from unset register $r6 */) - (temp_r7_51 * 5)))));
+    sp28 = KDMath_GetDirection(NormaliseAngle(M2C_FIELD(&arg0, f32 *, 0x1C) + (1.2566371f * (f32) (M2C_ERROR(/* Read from unset register $r6 */) - (temp_r7_51 * 5)))));
     temp_f0_79 = sp28 * (f64) temp_f31_68;
     sp8 = temp_f0_79;
     sp38 = temp_f0_79;
-    sp10 = sp30 * temp_f31_68;
+    sp10 = sp28.unk8 * temp_f31_68;
     sp40 = (f64) sp10;
     temp_f0_90 = M2C_FIELD(arg1, f64 *, 0) + temp_f0_79;
     sp18 = temp_f0_90;
@@ -572,7 +573,7 @@ void IceBossStalactite::Collided(MKCollisionResult *arg0) {
                 spC8 = (f64) sp58;
                 spB0 = (f64) sp40;
                 spB8 = (f64) sp48;
-                KDRand_Vector(spD0, *((MKVector3 *) &spC0));
+                spD0 = KDRand_Vector(*((MKVector3 *) &spC0), *((MKVector3 *) &spB0));
                 temp_f0_862 = spD0 * 5.64367472e-315;
                 sp30 = temp_f0_862;
                 spE0 = temp_f0_862;
@@ -689,7 +690,7 @@ void IceBossStalactite::Drop(bool arg0, bool arg1) {
     this->unk246 = (this->unk246 & ~0x80) | ((arg1 << 7) & 0x80);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp68'
+#if 0 // DRAFT: ')' expected
 void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
     f32 spBC;
     f32 spB8;
@@ -710,7 +711,7 @@ void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
     M2C_UNK sp7C;
     f64 sp78;
     f64 sp70;
-    f64 sp60;
+    MKVector3 sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
@@ -754,9 +755,8 @@ void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
     M2C_STRUCT_COPY((s32) &sp7C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
     this->unk1C8 = M2C_FIELD(&MKVector3::up, f64 *, 0);
     this->unk1D0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
-    KDRand_UnitVectorXZ();
-    this->unk1D8 = sp60;
-    this->unk1E0 = sp68;
+    sp60 = KDRand_UnitVectorXZ();
+    *(MKVector3 *) &this->unk1D8 = sp60;
     temp_f10_1217 = (f32) M2C_FIELD(this, f64 *, 0x1E0);
     temp_f12_1218 = M2C_FIELD(this, f32 *, 0x1DC);
     temp_f0_1219 = (f32) M2C_FIELD(this, f64 *, 0x1D0);
@@ -874,7 +874,7 @@ void IceBossStalactite::MeltFX() {
     f64 spD0;
     f64 spC8;
     f64 spC0;
-    f64 spB0;
+    MKVector3 spB0;
     f64 spA8;
     f64 spA0;
     f64 sp98;
@@ -992,11 +992,11 @@ void IceBossStalactite::MeltFX() {
             spE0 = M2C_FIELD(temp_r3_1643, f64 *, 0x30);
             spE8 = M2C_FIELD(temp_r3_1643, f64 *, 0x38);
             if (((20.0f * (1.0f - M2C_FIELD(this, f32 *, 0x1AC))) + (*(f32 *) ((u8 *) &spE0 + 0x4))) > M2C_FIELD(this, f32 *, 0x1EC)) {
-                KDRand_UnitVectorXZ();
+                spB0 = KDRand_UnitVectorXZ();
                 sp70 = spB0 * 5.46558975e-315;
                 temp_r3_1663 = this->unk8;
                 temp_f1_1666 = M2C_FIELD(temp_r3_1663, f64 *, 0x30);
-                sp78 = spB8 * 30.000002f;
+                sp78 = spB0.unk8 * 30.000002f;
                 spC0 = sp70;
                 spD0 = temp_f1_1666;
                 spC8 = (f64) sp78;
@@ -1319,9 +1319,8 @@ block_6:
                     sp7C = temp_f7_1952;
                     sp3D0 = (f64) sp80;
                     sp3C8 = (f64) sp78;
-                    KDMath_Slerp(sp3D8, *((MKVector3 *) &this->unk1C8), 3.1415927f * gUpdateTimeDelta);
-                    this->unk1C8 = M2C_BITWISE(f64, sp3D8);
-                    this->unk1D0 = (f64) sp3D8.unk8;
+                    sp3D8 = KDMath_Slerp(*((MKVector3 *) &this->unk1C8), *((MKVector3 *) &sp3C8), 3.1415927f * gUpdateTimeDelta);
+                    *(MKVector3 *) &this->unk1C8 = sp3D8;
                 }
                 sp398.operator*(980.0f);
                 sp3A8.operator*(gUpdateTimeDelta);
@@ -1503,9 +1502,8 @@ block_6:
             sp88 = (temp_f7_2433 * temp_f4_2437) - (temp_f5_2442 * temp_f3_2441);
             sp400 = (f64) sp90;
             sp3F8 = (f64) sp88;
-            KDMath_Slerp(sp228, *((MKVector3 *) &this->unk1D8), this->unk228 * gUpdateTimeDelta);
-            this->unk1D8 = M2C_BITWISE(f64, sp228);
-            this->unk1E0 = (f64) sp228.unk8;
+            sp228 = KDMath_Slerp(*((MKVector3 *) &this->unk1D8), *((MKVector3 *) &sp3F8), this->unk228 * gUpdateTimeDelta);
+            *(MKVector3 *) &this->unk1D8 = sp228;
             temp_f6_2465 = M2C_FIELD(this, f32 *, 0x1CC);
             temp_f5_2466 = M2C_FIELD(this, f32 *, 0x1D8);
             temp_f3_2467 = M2C_FIELD(this, f32 *, 0x1E0);
@@ -1524,9 +1522,8 @@ block_6:
             sp50 = ((f32) sp3F8 * temp_f6_2465) - ((*(f32 *) ((u8 *) &sp3F8 + 0x4)) * temp_f7_2468);
             sp1F8 = (f64) sp48;
             sp200 = (f64) sp50;
-            Normalise(sp208);
-            this->unk1D8 = M2C_BITWISE(f64, sp208);
-            this->unk1E0 = (f64) sp208.unk8;
+            sp208 = Normalise(*((MKVector3 *) &sp1F8));
+            *(MKVector3 *) &this->unk1D8 = sp208;
             sp42C = 0.0f;
             sp38 = -(f32) sp3F8;
             sp3C = -(*(f32 *) ((u8 *) &sp3F8 + 0x4));

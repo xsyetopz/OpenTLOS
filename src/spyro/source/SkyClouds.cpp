@@ -109,7 +109,6 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     f64 spC0;
     f64 spB8;
@@ -171,9 +170,8 @@ void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, 
                 sp90 = (f64) sp40;
                 sp98 = (f64) sp48;
                 spA0 = (f64) sp50;
-                KDRand_Vector(spA8, *((MKVector3 *) &sp98));
-                spB8 = M2C_BITWISE(f64, spA8);
-                spC0 = (f64) spA8.unk8;
+                spA8 = KDRand_Vector(*((MKVector3 *) &sp98), *((MKVector3 *) &sp88));
+                *(MKVector3 *) &spB8 = spA8;
                 temp_f26_269 = (0.25f * (1.0f + (*(f32 *) ((u8 *) &spB8 + 0x4)))) + 0.5f;
                 temp_f31_271 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
                 temp_f1_275 = MKRand_Float((int *) &gViewSeed, 0.1f, 0.5f);
@@ -198,7 +196,6 @@ void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, 
         }
     }
 }
-#endif
 
 void SkyClouds::Emit(const MKVector3 &arg1, const MKVector4 &arg2, float farg0, SkyClouds::CloudEmitter *arg3) {
     SkyClouds::CloudEmitter **temp_r3_358;

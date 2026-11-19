@@ -38,7 +38,7 @@ public:
 };
 
 u8 PolygonWindingOrderIsClockWise(KDPathSegment *);
-void PolygonCentroid(KDPathSegment *);
+MKVector3 PolygonCentroid(KDPathSegment *);
 f32 PolygonArea(KDPathSegment *);
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 

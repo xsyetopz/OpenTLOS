@@ -84,6 +84,7 @@
 #include "spyro/source/Music.h"
 #include "spyro/source/PhrasePlayer.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 s32 stricmp(void *);                                /* extern */
@@ -1034,23 +1035,21 @@ block_12:
         sp48 = temp_f0_1582;
         sp20 = M2C_FIELD(this, f32 *, 0x320) + (f32) M2C_FIELD(this, f64 *, 0x348);
         sp50 = (f64) sp20;
-        ClampMagnitude(sp58, M2C_FIELD(temp_r5_1578, f32 *, 0x164));
-        this->unk318 = M2C_BITWISE(f64, sp58);
-        this->unk320 = (f64) sp58.unk8;
+        sp58 = ClampMagnitude(*((MKVector3 *) &sp48), M2C_FIELD(temp_r5_1578, f32 *, 0x164));
+        *(MKVector3 *) &this->unk318 = sp58;
         temp_r5_1603 = checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         temp_f0_1607 = this->unk308 + this->unk340;
         sp8 = temp_f0_1607;
         sp28 = temp_f0_1607;
         sp10 = M2C_FIELD(this, f32 *, 0x310) + (f32) M2C_FIELD(this, f64 *, 0x348);
         sp30 = (f64) sp10;
-        ClampMagnitude(sp38, M2C_FIELD(temp_r5_1603, f32 *, 0x164));
-        this->unk308 = M2C_BITWISE(f64, sp38);
-        this->unk310 = (f64) sp38.unk8;
+        sp38 = ClampMagnitude(*((MKVector3 *) &sp28), M2C_FIELD(temp_r5_1603, f32 *, 0x164));
+        *(MKVector3 *) &this->unk308 = sp38;
     }
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: identifier 'SpeedWaySpyro::GetBestMovementOffset(const MKVector3 &, const MKVector3 &, const MKVector3 &, float *)' redeclared was declared as: 'unsigned char (
 u8 SpeedWaySpyro::GetBestMovementOffset(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float *arg3) {
     f64 spA8;
     f64 spA0;
@@ -1528,7 +1527,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         sp200 = temp_f0_2471;
         sp88 = (f32) sp308 - (f32) sp338;
         sp208 = (f64) sp88;
-        Normalise(sp210);
+        sp210 = Normalise(*((MKVector3 *) &sp200));
         temp_f9_2483 = M2C_BITWISE(f32, sp210);
         temp_f4_2489 = M2C_BITWISE(f32, sp390.unk94);
         sp390.unk94.unk8 = temp_f9_2483;
@@ -1615,9 +1614,8 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
 void SpeedWaySpyro::SetTargetMovementOffset(const MKVector3 &arg0) {
     MKVector3 sp8;
 
-    ClampMagnitude(sp8, M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164));
-    this->unk318 = M2C_BITWISE(f64, sp8);
-    this->unk320 = (f64) sp8.unk8;
+    sp8 = ClampMagnitude(arg0, M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164));
+    *(MKVector3 *) &this->unk318 = sp8;
 }
 #endif
 
@@ -2351,9 +2349,8 @@ void SpeedWaySpyro::PowerRollEnter() {
     this->unk338 = M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x170);
     this->unk380 = 0.0f;
     ((SpeedWaySpyro *) &sp8)->GetJoyDir();
-    Normalise(sp18);
-    this->unk370 = M2C_BITWISE(f64, sp18);
-    this->unk378 = (f64) sp18.unk8;
+    sp18 = Normalise(*((MKVector3 *) &sp8));
+    *(MKVector3 *) &this->unk370 = sp18;
     if ((f32) M2C_FIELD(this, f64 *, 0x370) > 0.0f) {
         var_r4_4432 = this->unk11C;
     } else {
@@ -2875,8 +2872,8 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
     f32 sp114;
     Matrix *sp110;
     f64 sp100;
-    M2C_UNK spE0;
-    M2C_UNK spD0;
+    MKVector3 spE0;
+    MKVector3 spD0;
     M2C_UNK spCC;
     M2C_UNK sp90;
     M2C_UNK sp8C;
@@ -2957,8 +2954,8 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         }
         ((SpeedWay *) &sp90)->GetPathMatrix(var_f1_5853);
         M2C_STRUCT_COPY((s32) &spCC + 4, (s32) &sp8C + 4, 0x40);
-        __ml(M2C_FIELD(this, f32 *, 0x30C), *((MKVector3 *) &sp30.unk10));
-        __ml(M2C_FIELD(this, f32 *, 0x308), *((MKVector3 *) &sp30.unk20));
+        *((MKVector3 *) &sp30.unk10) = __ml(M2C_FIELD(this, f32 *, 0x30C), spE0);
+        *((MKVector3 *) &sp30.unk20) = __ml(M2C_FIELD(this, f32 *, 0x308), spD0);
         temp_f0_5881 = sp100 + (f64) sp30.unk20;
         sp10 = temp_f0_5881;
         sp30.unk30 = temp_f0_5881;

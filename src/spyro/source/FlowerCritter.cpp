@@ -24,6 +24,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -313,9 +314,8 @@ loop_26:
                     sp128 = temp_f0_435;
                     sp30 = (f32) sp200 - (f32) temp_r30_197->unk38;
                     sp130 = (f64) sp30;
-                    Normalise(sp138);
-                    M2C_FIELD(temp_r30_197, f64 *, 0x40) = M2C_BITWISE(f64, sp138);
-                    M2C_FIELD(temp_r30_197, f64 *, 0x48) = (f64) sp138.unk8;
+                    sp138 = Normalise(*((MKVector3 *) &sp128));
+                    M2C_FIELD(temp_r30_197, MKVector3 *, 0x40) = sp138;
                     KDMath_BuildMatrixFromFwd(temp_r30_197, *(temp_r30_197 + 0x40), (MKVector3 *) &sp208);
                     M2C_FIELD(temp_r30_197, f32 *, 0x68) = 0.0f;
                 }
@@ -360,9 +360,8 @@ loop_26:
                     spD8 = temp_f0_544;
                     sp10 = (f32) sp1E0 - temp_r30_197->unk38;
                     spE0 = (f64) sp10;
-                    Normalise(spE8);
-                    M2C_FIELD(temp_r30_197, f64 *, 0x40) = M2C_BITWISE(f64, spE8);
-                    M2C_FIELD(temp_r30_197, f64 *, 0x48) = (f64) spE8.unk8;
+                    spE8 = Normalise(*((MKVector3 *) &spD8));
+                    M2C_FIELD(temp_r30_197, MKVector3 *, 0x40) = spE8;
                     KDMath_BuildMatrixFromUp(temp_r30_197, *((MKVector3 *) &sp1E8), *(MKVector3 *) (temp_r30_197 + 0x40));
                     M2C_FIELD(temp_r30_197, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 3, 5);
                     M2C_FIELD(temp_r30_197, f32 *, 0x64) = 4.0f;
@@ -524,10 +523,9 @@ loop_13:
             spC0 = (f64) sp20;
             spC8 = (f64) sp28;
             spD0 = (f64) sp30;
-            KDRand_Vector(spD8, *((MKVector3 *) &spC8));
-            Normalise(spE8);
-            M2C_FIELD(temp_r26_657, f64 *, 0x40) = M2C_BITWISE(f64, spE8);
-            M2C_FIELD(temp_r26_657, f64 *, 0x48) = (f64) spE8.unk8;
+            spD8 = KDRand_Vector(*((MKVector3 *) &spC8), *((MKVector3 *) &spB8));
+            spE8 = Normalise(spD8);
+            M2C_FIELD(temp_r26_657, MKVector3 *, 0x40) = spE8;
         } else {
             ((Volume *) &spA8)->GetRandPos();
             sp138.unk10 = spA8;
@@ -537,9 +535,8 @@ loop_13:
             sp88 = temp_f0_836;
             sp10 = (f32) sp138.unk18 - (f32) sp138.unk38;
             sp90 = (f64) sp10;
-            Normalise(sp98);
-            M2C_FIELD(temp_r26_657, f64 *, 0x40) = M2C_BITWISE(f64, sp98);
-            M2C_FIELD(temp_r26_657, f64 *, 0x48) = (f64) sp98.unk8;
+            sp98 = Normalise(*((MKVector3 *) &sp88));
+            M2C_FIELD(temp_r26_657, MKVector3 *, 0x40) = sp98;
         }
         KDMath_BuildMatrixFromUp(temp_r26_657, *((MKVector3 *) &sp138.unk20), *(temp_r26_657 + 0x40));
         var_r31_645 += 1;

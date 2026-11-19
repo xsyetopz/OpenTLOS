@@ -17,6 +17,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -26,13 +27,13 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void LitCloudPS::Explode() {
     f64 sp50;
     f64 sp48;
     MKVector3 sp38;
     MKVector3 sp28;
-    M2C_UNK sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     f32 temp_f1_95;
@@ -47,9 +48,9 @@ void LitCloudPS::Explode() {
     var_r31_53 = 0;
 loop_5:
     if (var_r29_52 < (s32) this->unk74) {
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, -1.0f, -1.0f);
-        KDRand_Vector(sp38, sp28);
+        sp18 = MKVector(1.0f, 1.0f, 1.0f);
+        sp28 = MKVector(-1.0f, -1.0f, -1.0f);
+        sp38 = KDRand_Vector(sp28, sp18);
         temp_f0_72 = sp38 * 5.676053805e-315;
         sp8 = temp_f0_72;
         sp48 = temp_f0_72;
@@ -176,7 +177,7 @@ void LitCloudPS::StateUpdate() {
         sp1A8 = (f64) spD8;
         sp190 = (f64) spC0;
         sp198 = (f64) spC8;
-        KDRand_Vector(sp1B0, *((MKVector3 *) &sp1A0));
+        sp1B0 = KDRand_Vector(*((MKVector3 *) &sp1A0), *((MKVector3 *) &sp190));
         temp_f1_179 = M2C_BITWISE(f32, sp1B0);
         var_f4_187 = (sp1B0.unk8 * sp1B0.unk8) + ((temp_f1_179 * temp_f1_179) + (sp1B0.unk4 * sp1B0.unk4));
         if (var_f4_187 > 1e-12f) {
@@ -266,7 +267,7 @@ void LitCloudPS::StateUpdate() {
         sp108 = (f64) sp68;
         spF0 = (f64) sp50;
         spF8 = (f64) sp58;
-        KDRand_Vector(sp110, *((MKVector3 *) &sp100));
+        sp110 = KDRand_Vector(*((MKVector3 *) &sp100), *((MKVector3 *) &spF0));
         temp_f0_369 = sp110 * 5.593163344e-315;
         sp40 = temp_f0_369;
         sp120 = temp_f0_369;
@@ -321,7 +322,7 @@ void LitCloudPS::Emit(const MKVector3 &arg0, const MKVector4 &arg1, float arg2, 
     MKVector3 sp48;
     MKVector3 sp38;
     MKVector3 sp28;
-    M2C_UNK sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     MKHeap *temp_r3_500;
@@ -354,9 +355,9 @@ loop_2:
             M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x4C) = temp_f1_549;
             M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x48) = temp_f1_549;
             temp_f31_558 = this->unk4C;
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp38, sp28);
+            sp18 = MKVector(1.0f, 1.0f, 1.0f);
+            sp28 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp38 = KDRand_Vector(sp28, sp18);
             sp48.operator*(25.0f);
             sp8 = sp48 * (f64) temp_f31_558;
             temp_r3_584 = this->unk7C + (var_r30_497 + 0x20);

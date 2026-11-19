@@ -18,6 +18,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKModel_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -191,7 +192,7 @@ loop_8:
             sp28 = ((f32) sp140 * temp_f5_180) - ((*(f32 *) ((u8 *) &sp140 + 0x4)) * temp_f3_182);
             spB0 = (f64) sp20;
             spB8 = (f64) sp28;
-            Normalise(spC0);
+            spC0 = Normalise(*((MKVector3 *) &spB0));
             sp130 = M2C_BITWISE(f64, spC0);
             temp_f7_210 = M2C_FIELD(temp_r28_344, f32 *, 0x14);
             sp138 = (f64) spC0.unk8;
@@ -202,9 +203,8 @@ loop_8:
             sp10 = (temp_f7_210 * (f32) sp138) - (temp_f5_217 * (*(f32 *) ((u8 *) &sp130 + 0x4)));
             sp98 = (f64) sp18;
             sp90 = (f64) sp10;
-            Normalise(spA0);
-            sp140 = M2C_BITWISE(f64, spA0);
-            sp148 = (f64) spA0.unk8;
+            spA0 = Normalise(*((MKVector3 *) &sp90));
+            *(MKVector3 *) &sp140 = spA0;
             sp1D0 = (f32) sp130;
             sp1D4 = (*(f32 *) ((u8 *) &sp130 + 0x4));
             sp1D8 = (f32) sp138;
@@ -312,7 +312,7 @@ void ScorchTrail::SpawnPlasmaBubble(const MKVector3 &arg0, const MKVector3 &arg1
     }
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void ScorchTrail::DrawPlasmaBubbles() {
     f32 sp10C;
     f32 sp108;
@@ -393,7 +393,7 @@ loop_8:
             sp28 = ((f32) spB0 * temp_f5_479) - ((*(f32 *) ((u8 *) &spB0 + 0x4)) * temp_f3_481);
             sp80 = (f64) sp20;
             sp88 = (f64) sp28;
-            Normalise(sp90);
+            sp90 = Normalise(*((MKVector3 *) &sp80));
             spC0 = M2C_BITWISE(f64, sp90);
             temp_f7_509 = M2C_FIELD(temp_r29_603, f32 *, 0x14);
             spC8 = (f64) sp90.unk8;
@@ -404,9 +404,8 @@ loop_8:
             sp10 = (temp_f7_509 * (f32) spC8) - (temp_f5_516 * (*(f32 *) ((u8 *) &spC0 + 0x4)));
             sp68 = (f64) sp18;
             sp60 = (f64) sp10;
-            Normalise(sp70);
-            spB0 = M2C_BITWISE(f64, sp70);
-            spB8 = (f64) sp70.unk8;
+            sp70 = Normalise(*((MKVector3 *) &sp60));
+            *(MKVector3 *) &spB0 = sp70;
             spD0 = (f32) spC0;
             spD4 = (*(f32 *) ((u8 *) &spC0 + 0x4));
             spD8 = (f32) spC8;

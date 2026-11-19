@@ -55,6 +55,7 @@
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 MKSceneManager *atoi(s32);                          /* extern */
@@ -2288,9 +2289,8 @@ void GameCamera2::TrainUpdate() {
             M2C_FIELD(this, f32 *, 0x228) = sp70;
         }
         KDMath_Smooth<MKVector3>(sp38, *((MKVector3 *) &this->unk220), 3.0f, gUpdateTimeDelta);
-        Normalise(sp48);
-        M2C_FIELD(this, f32 *, 0x220) = M2C_BITWISE(f64, sp48);
-        M2C_FIELD(this, f32 *, 0x228) = (f64) sp48.unk8;
+        sp48 = Normalise(sp38);
+        *(MKVector3 *) &M2C_FIELD(this, f32 *, 0x220) = sp48;
         M2C_FIELD(this, f64 *, 0x230) = (f64) M2C_FIELD(temp_r29_4261, f64 *, 0x20);
         M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(temp_r29_4261, f64 *, 0x28);
         if (KDMath_BuildMatrixFromFwd(&sp80, *((MKVector3 *) &this->unk220), &this->unk230) != 0) {

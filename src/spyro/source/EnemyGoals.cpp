@@ -614,7 +614,7 @@ s32 EnemyGoal_Summon::PositionSpawnPoints_Vanguard(bool arg0) {
     f64 sp110;
     f64 sp108;
     f64 spF8;
-    f64 spE8;
+    MKVector3 spE8;
     f64 spE0;
     f64 spD8;
     MKVector3 spC8;
@@ -754,13 +754,13 @@ loop_3:
             sp110 = (f64) sp20;
             sp1B0 = (f64) sp20;
             do {
-                KDMath_GetDirection(temp_f25_956 + *(&fVanguardAngles + var_r24_1007));
+                spE8 = KDMath_GetDirection(temp_f25_956 + *(&fVanguardAngles + var_r24_1007));
                 temp_r3_1025 = &sp230 + var_r21_1005;
                 var_r29_1003 += 1;
-                M2C_FIELD(temp_r3_1025, f64 *, 0) = spE8;
+                M2C_FIELD(temp_r3_1025, f64 *, 0) = M2C_BITWISE(f64, spE8);
                 var_r21_1005 += 0x10;
                 var_r24_1007 += 4;
-                M2C_FIELD(temp_r3_1025, f64 *, 8) = spF0;
+                M2C_FIELD(temp_r3_1025, f64 *, 8) = (f64) spE8.unk8;
             } while (var_r29_1003 < 5);
             var_r26_1037 = 0;
             var_r25_1039 = 0;

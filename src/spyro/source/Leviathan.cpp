@@ -43,6 +43,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 s32 stricmp(s8 *);                                  /* extern */
@@ -190,7 +191,7 @@ void Leviathan::EmitWaterSpray() {
     MKVector3 sp158;
     MKVector3 sp148;
     MKVector3 sp138;
-    M2C_UNK sp128;
+    MKVector3 sp128;
     MKVector3 sp118;
     MKVector3 sp108;
     f64 sp100;
@@ -334,9 +335,9 @@ loop_2:
         sp100 = (f64) sp10;
         sp108.operator*(4000.0f);
         sp118.operator*(temp_f31_431);
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, 0.0f, -1.0f);
-        KDRand_Vector(sp148, sp138);
+        sp128 = MKVector(1.0f, 1.0f, 1.0f);
+        sp138 = MKVector(-1.0f, 0.0f, -1.0f);
+        sp148 = KDRand_Vector(sp138, sp128);
         sp158.operator*(3000.0f);
         sp68 = sp158 + M2C_BITWISE(f64, sp118);
         temp_r3_477 = this->unk1A0;
@@ -427,7 +428,7 @@ void Leviathan::EmitHugeSplash() {
     MKVector3 sp158;
     MKVector3 sp148;
     MKVector3 sp138;
-    M2C_UNK sp128;
+    MKVector3 sp128;
     MKVector3 sp118;
     MKVector3 sp108;
     f64 sp100;
@@ -571,9 +572,9 @@ loop_2:
         sp100 = (f64) sp10;
         sp108.operator*(4000.0f);
         sp118.operator*(temp_f31_764);
-        MKVector(1.0f, 5.0f, 1.0f);
-        MKVector(-1.0f, 0.0f, -1.0f);
-        KDRand_Vector(sp148, sp138);
+        sp128 = MKVector(1.0f, 5.0f, 1.0f);
+        sp138 = MKVector(-1.0f, 0.0f, -1.0f);
+        sp148 = KDRand_Vector(sp138, sp128);
         sp158.operator*(3000.0f);
         sp68 = sp158 + M2C_BITWISE(f64, sp118);
         temp_r3_810 = this->unk1A0;

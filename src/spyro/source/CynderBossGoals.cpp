@@ -101,6 +101,7 @@
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Music.h"
 #include "spyro/source/PhrasePlayer.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -161,7 +162,7 @@ u8 CynderBossGoal_HoverAttack::Update() {
     f64 sp120;
     f64 sp118;
     f64 sp110;
-    f64 sp100;
+    MKVector3 sp100;
     f64 spF8;
     f64 spF0;
     f64 spE8;
@@ -249,11 +250,11 @@ u8 CynderBossGoal_HoverAttack::Update() {
                 sp170 -= temp_f0_180;
                 sp178 = (f32) sp178 - (f32) sp148;
             }
-            KDRand_UnitVectorXZ();
+            sp100 = KDRand_UnitVectorXZ();
             temp_f0_203 = sp100 * 5.60222949e-315;
             sp30 = temp_f0_203;
             sp110 = temp_f0_203;
-            sp38 = sp108 * 300.0f;
+            sp38 = sp100.unk8 * 300.0f;
             sp118 = (f64) sp38;
             temp_f6_214 = sp170 + temp_f0_203;
             sp170 = temp_f6_214;
@@ -3637,7 +3638,7 @@ u8 CynderBossGoal_MeleeAttack::Update() {
     f64 sp80;
     f64 sp78;
     f64 sp70;
-    f64 sp60;
+    MKVector3 sp60;
     f64 sp58;
     f64 sp50;
     f32 sp4C;
@@ -3714,10 +3715,10 @@ u8 CynderBossGoal_MeleeAttack::Update() {
         temp_f28_6914 = (f32) spB8 + (f32) sp88;
         spB8 = temp_f28_6914;
         do {
-            MKVector((f32) (var_r29_6911 & 1) * 500.0f, 0.0f, (f32) -(var_r29_6911 / 2) * 500.0f);
-            sp10 = spB0 + sp60;
+            sp60 = MKVector((f32) (var_r29_6911 & 1) * 500.0f, 0.0f, (f32) -(var_r29_6911 / 2) * 500.0f);
+            sp10 = spB0 + M2C_BITWISE(f64, sp60);
             sp70 = sp10;
-            sp18 = temp_f28_6914 + sp68;
+            sp18 = temp_f28_6914 + sp60.unk8;
             spC0 = sp10;
             sp78 = (f64) sp18;
             spC8 = (f64) sp18;

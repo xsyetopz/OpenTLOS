@@ -457,13 +457,12 @@ void SpyroAirCombatState::UpdateTailSweepStickToTarget() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp50'
 Targetable *SpyroAirCombatState::SelectNewTarget() {
     f64 sp70;
     f64 sp68;
     f64 sp60;
     f64 sp58;
-    f64 sp48;
+    MKVector3 sp48;
     f64 sp40;
     f64 sp38;
     f64 sp30;
@@ -478,9 +477,8 @@ Targetable *SpyroAirCombatState::SelectNewTarget() {
     void *temp_r3_712;
 
     if ((((InputModifier *) (this->unk10->GetInput()))->GetLeftX() != 0.0f) || (((InputModifier *) (this->unk10->GetInput()))->GetLeftY() != 0.0f)) {
-        KDMath_GetDirection(3.1415927f + this->unk10->GetJoyYaw());
-        sp68 = sp48;
-        sp70 = sp50;
+        sp48 = KDMath_GetDirection(3.1415927f + this->unk10->GetJoyYaw());
+        *(MKVector3 *) &sp68 = sp48;
         temp_f0_706 = sp68 * (f64) SPYRO_COMBAT_SCALE_MAG;
         sp18 = temp_f0_706;
         temp_r3_712 = this->unk10->unk8;
@@ -499,7 +497,6 @@ Targetable *SpyroAirCombatState::SelectNewTarget() {
     }
     return NULL;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void SpyroAirCombatState::UpdateAirStrafe() {
@@ -513,7 +510,7 @@ void SpyroAirCombatState::UpdateAirStrafe() {
     f64 spF0;
     f64 spE8;
     f64 spE0;
-    f64 spD0;
+    MKVector3 spD0;
     f64 spC8;
     f64 spC0;
     f64 spB8;
@@ -622,14 +619,13 @@ void SpyroAirCombatState::UpdateAirStrafe() {
         sp110 = (f32) sp110 * var_f7_885;
         (*(f32 *) ((u8 *) &sp108 + 0xc)) *= var_f7_885;
         sp118 = (f32) sp118 * var_f7_885;
-        KDMath_GetDirection(KDMath_NormaliseAngle((6.2831855f * ((0.25f * var_f31_884 * temp_f1_808) / (6.2831855f * var_f31_884))) + KDMath_GetYaw(*((MKVector3 *) &sp110))));
+        spD0 = KDMath_GetDirection(KDMath_NormaliseAngle((6.2831855f * ((0.25f * var_f31_884 * temp_f1_808) / (6.2831855f * var_f31_884))) + KDMath_GetYaw(*((MKVector3 *) &sp110))));
         temp_r3_913 = this->unk10;
         temp_r4_915 = temp_r3_913->unk8;
         temp_f4_917 = M2C_FIELD(temp_r4_915, f64 *, 0x30);
         temp_f3_918 = M2C_FIELD(temp_r4_915, f64 *, 0x38);
         spC0 = temp_f4_917;
-        sp100 = spD0;
-        sp108 = spD8;
+        *(MKVector3 *) &sp100 = spD0;
         spC8 = temp_f3_918;
         (*(f32 *) ((u8 *) &sp120 + 0x4)) = (*(f32 *) ((u8 *) &spC0 + 0x4));
         temp_f0_926 = sp100 * (f64) var_f31_884;

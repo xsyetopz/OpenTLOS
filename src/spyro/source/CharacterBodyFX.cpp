@@ -318,7 +318,9 @@ void CharacterBodyFX::Update() {
 
 #if 0 // DRAFT: pointer/array required
 void CharacterBodyFX::CalculateNodeData(int arg0) {
-    Matrix spC0;
+    MKVector3 spE0;
+    MKVector3 spD0;
+    M2C_UNK spC0;
     M2C_UNK spBC;
     MKVector3 spA8;
     f64 spA0;
@@ -370,15 +372,15 @@ loop_10:
                     temp_r25_593 = MKModel_GetAnimation(this->unkC);
                     temp_r7_596 = MKModel_GetWorldMatrix(this->unkC);
                     sp10 = (s16) M2C_FIELD(*(this->unk4 + var_r26_556), s32 *, 8);
-                    temp_r25_593->CalculateMatrices(&spC0, 1, &sp10, (Matrix *) temp_r7_596);
+                    temp_r25_593->CalculateMatrices((Matrix *) &spC0, 1, &sp10, (Matrix *) temp_r7_596);
                 } else {
                     MKModel_CalculateRefPointWorldPosition(this->unkC, M2C_FIELD(temp_r4_581, s32 *, 8), &spA8);
                 }
                 *(this->unk4 + (var_r26_556 + 0x60)) = 1;
                 M2C_STRUCT_COPY((this->unk4 + (var_r26_556 + 0x20)) - 4 + 4, (s32) &spBC + 4, 0x40);
-                __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x28), sp48);
-                __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x24), sp58);
-                __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x20), sp68);
+                sp48 = __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x28), spE0);
+                sp58 = __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x24), spD0);
+                sp68 = __ml(M2C_FIELD(*(this->unk4 + var_r26_556), f32 *, 0x20), *((MKVector3 *) &spC0));
                 temp_f0_649 = M2C_BITWISE(f64, spA8) + M2C_BITWISE(f64, sp68);
                 sp28 = temp_f0_649;
                 sp78 = temp_f0_649;

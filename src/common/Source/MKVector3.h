@@ -31,8 +31,8 @@ public:
     void __sinit(void);
 };
 
-void Max(const MKVector3 &, const MKVector3 &);
-void Min(const MKVector3 &, const MKVector3 &);
+MKVector3 Max(const MKVector3 &, const MKVector3 &);
+MKVector3 Min(const MKVector3 &, const MKVector3 &);
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
 #include <m2c_macros.h>

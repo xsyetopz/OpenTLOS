@@ -52,6 +52,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(DynamiteExplosion::Explosion **);      /* extern */
@@ -191,7 +192,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     sp108 = (f64) sp98;
     sp110 = (f64) spA0;
     sp10 = temp_f30_78 * temp_f1_116;
-    KDRand_Vector(sp138, *((MKVector3 *) &sp128));
+    sp138 = KDRand_Vector(*((MKVector3 *) &sp128), *((MKVector3 *) &sp118));
     temp_f1_124 = M2C_BITWISE(f32, sp138);
     var_f4_132 = (sp138.unk8 * sp138.unk8) + ((temp_f1_124 * temp_f1_124) + (sp138.unk4 * sp138.unk4));
     if (var_f4_132 > 1e-12f) {
@@ -249,7 +250,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     spC0 = (f64) sp60;
     spA8 = (f64) sp48;
     spB0 = (f64) sp50;
-    KDRand_Vector(spC8, *((MKVector3 *) &spB8));
+    spC8 = KDRand_Vector(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8));
     temp_f1_252 = M2C_BITWISE(f32, spC8);
     var_f4_260 = (spC8.unk8 * spC8.unk8) + ((temp_f1_252 * temp_f1_252) + (spC8.unk4 * spC8.unk4));
     if (var_f4_260 > 1e-12f) {
@@ -380,7 +381,7 @@ void DynamiteExplosion::TriggerElec(const MKVector3 &arg0, float arg1, bool arg2
     f64 sp1E0;
     f64 sp1D8;
     MKVector3 sp1C8;
-    M2C_UNK sp1B8;
+    MKVector3 sp1B8;
     f64 sp1B0;
     f64 sp1A8;
     MKVector3 sp198;
@@ -544,7 +545,7 @@ loop_24:
         sp2E0 = (f64) sp170;
         sp2C8 = (f64) sp158;
         sp2D0 = (f64) sp160;
-        KDRand_Vector(sp2E8, *((MKVector3 *) &sp2D8));
+        sp2E8 = KDRand_Vector(*((MKVector3 *) &sp2D8), *((MKVector3 *) &sp2C8));
         temp_f1_539 = M2C_BITWISE(f32, sp2E8);
         var_f4_546 = (sp2E8.unk8 * sp2E8.unk8) + ((temp_f1_539 * temp_f1_539) + (sp2E8.unk4 * sp2E8.unk4));
         if (var_f4_546 > 1e-12f) {
@@ -628,7 +629,7 @@ loop_47:
         sp20 = arg1 * temp_f1_704;
         sp268 = (f64) spF8;
         sp270 = (f64) sp100;
-        KDRand_Vector(sp298, *((MKVector3 *) &sp288));
+        sp298 = KDRand_Vector(*((MKVector3 *) &sp288), *((MKVector3 *) &sp278));
         temp_f1_721 = M2C_BITWISE(f32, sp298);
         var_f4_728 = (sp298.unk8 * sp298.unk8) + ((temp_f1_721 * temp_f1_721) + (sp298.unk4 * sp298.unk4));
         if (var_f4_728 > 1e-12f) {
@@ -692,7 +693,7 @@ loop_70:
         sp230 = (f64) spE0;
         sp218 = (f64) spC8;
         sp220 = (f64) spD0;
-        KDRand_Vector(sp238, *((MKVector3 *) &sp228));
+        sp238 = KDRand_Vector(*((MKVector3 *) &sp228), *((MKVector3 *) &sp218));
         temp_f1_856 = M2C_BITWISE(f32, sp238);
         var_f4_863 = (sp238.unk8 * sp238.unk8) + ((temp_f1_856 * temp_f1_856) + (sp238.unk4 * sp238.unk4));
         if (var_f4_863 > 1e-12f) {
@@ -821,7 +822,7 @@ loop_70:
             temp_f30_1157 = 1.0f - (temp_f21_1103 / (temp_f2_1154 * temp_f2_1154));
             if (temp_f30_1157 > 0.0f) {
                 sp34C = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp1B8 = MKVector(1.0f, 1.0f, 1.0f);
                 sp1C8.operator*(500.0f);
                 sp48 = sp1C8 * (f64) temp_f30_1157;
                 sp348 = 0x417;
@@ -909,7 +910,7 @@ void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2)
     f64 sp368;
     f64 sp360;
     MKVector3 sp350;
-    M2C_UNK sp340;
+    MKVector3 sp340;
     f64 sp338;
     f64 sp330;
     MKVector3 sp320;
@@ -932,7 +933,7 @@ void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2)
     MKVector3 sp280;
     MKVector3 sp270;
     MKVector3 sp260;
-    M2C_UNK sp250;
+    MKVector3 sp250;
     f64 sp248;
     f64 sp240;
     f64 sp238;
@@ -951,7 +952,7 @@ void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2)
     f64 sp1C0;
     f64 sp1B8;
     f64 sp1B0;
-    f64 sp1A0;
+    MKVector3 sp1A0;
     f32 sp198;
     f64 sp190;
     f32 sp188;
@@ -1223,7 +1224,7 @@ loop_4:
             temp_f28_1711 = 1.0f - (temp_f23_1659 / (temp_f2_1708 * temp_f2_1708));
             if (temp_f28_1711 > 0.0f) {
                 sp414 = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp340 = MKVector(1.0f, 1.0f, 1.0f);
                 sp350.operator*(500.0f);
                 sp60 = sp350 * (f64) temp_f28_1711;
                 sp410 = 0x417;
@@ -1275,7 +1276,7 @@ loop_57:
         sp2C8 = (f64) sp148;
         sp2B0 = (f64) sp130;
         sp2B8 = (f64) sp138;
-        KDRand_Vector(sp2D0, *((MKVector3 *) &sp2C0));
+        sp2D0 = KDRand_Vector(*((MKVector3 *) &sp2C0), *((MKVector3 *) &sp2B0));
         temp_f1_1860 = M2C_BITWISE(f32, sp2D0);
         var_f4_1867 = (sp2D0.unk8 * sp2D0.unk8) + ((temp_f1_1860 * temp_f1_1860) + (sp2D0.unk4 * sp2D0.unk4));
         if (var_f4_1867 > 1e-12f) {
@@ -1343,10 +1344,10 @@ loop_57:
 loop_60:
     if (var_r28_2002 < (s32) temp_f29_1366) {
         temp_f30_2015 = MKRand_Float((int *) &gViewSeed, 2500.0f, 3500.0f);
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, 0.5f, -1.0f);
-        KDRand_Vector(sp270, sp260);
-        Normalise(sp280);
+        sp250 = MKVector(1.0f, 1.0f, 1.0f);
+        sp260 = MKVector(-1.0f, 0.5f, -1.0f);
+        sp270 = KDRand_Vector(sp260, sp250);
+        sp280 = Normalise(sp270);
         sp40 = sp280 * (f64) temp_f30_2015;
         sp90 = 0.5f;
         sp94 = 0.5f;
@@ -1390,8 +1391,8 @@ loop_60:
         sp240 = temp_f0_2095;
         spE8 = temp_f22_2008 + (f32) sp238;
         sp248 = (f64) spE8;
-        KDRand_Vector(sp1F0, *((MKVector3 *) &sp1E0));
-        KDRand_Vector(sp220, *((MKVector3 *) &sp210));
+        sp1F0 = KDRand_Vector(*((MKVector3 *) &sp1E0), *((MKVector3 *) &sp1D0));
+        sp220 = KDRand_Vector(*((MKVector3 *) &sp210), *((MKVector3 *) &sp200));
         ((FlyingChunkPS *) gb.unkA8)->Emit(*((MKVector3 *) &sp240), *((MKVector3 *) &sp400), sp220, sp1F0, temp_f1_2056, *((MKVector4 *) &sp1C0), 0, NULL);
         var_r28_2002 += 1;
         goto loop_60;
@@ -1408,10 +1409,10 @@ loop_66:
                 M2C_FIELD(M2C_FIELD(temp_r3_2138, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r3_2138);
                 M2C_STRUCT_COPY((s32) &sp42C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 sp430.Scale3x3(&sp430, temp_f21_2128);
-                MKVector(0.0f, 50.0f, 0.0f);
-                sp30 = M2C_FIELD(&arg0, f64 *, 0) + sp1A0;
+                sp1A0 = MKVector(0.0f, 50.0f, 0.0f);
+                sp30 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp1A0);
                 sp1B0 = sp30;
-                sp38 = arg0.unk8 + sp1A8;
+                sp38 = arg0.unk8 + sp1A0.unk8;
                 sp1B8 = (f64) sp38;
                 sp430.unk30 = (f32) sp1B0;
                 sp430.unk34 = (*(f32 *) ((u8 *) &sp1B0 + 0x4));
@@ -1427,7 +1428,7 @@ loop_66:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan' Too many errors printed, aborting program
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp4C0;
     Matrix sp480;
@@ -1454,7 +1455,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     f64 sp3E0;
     f64 sp3D8;
     MKVector3 sp3C8;
-    M2C_UNK sp3B8;
+    MKVector3 sp3B8;
     f64 sp3B0;
     f64 sp3A8;
     MKVector3 sp398;
@@ -1477,19 +1478,19 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     MKVector3 sp2F8;
     MKVector3 sp2E8;
     MKVector3 sp2D8;
-    M2C_UNK sp2C8;
+    MKVector3 sp2C8;
     f64 sp2C0;
     f64 sp2B8;
     MKVector3 sp2A8;
     MKVector3 sp298;
     MKVector3 sp288;
-    M2C_UNK sp278;
+    MKVector3 sp278;
     f64 sp270;
     f64 sp268;
     MKVector3 sp258;
     MKVector3 sp248;
     MKVector3 sp238;
-    M2C_UNK sp228;
+    MKVector3 sp228;
     f64 sp220;
     f64 sp218;
     f64 sp210;
@@ -1723,7 +1724,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
             temp_f26_2532 = 1.0f - (temp_f25_2479 / (temp_f2_2529 * temp_f2_2529));
             if (temp_f26_2532 > 0.0f) {
                 sp45C = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp3B8 = MKVector(1.0f, 1.0f, 1.0f);
                 sp3C8.operator*(500.0f);
                 sp78 = sp3C8 * (f64) temp_f26_2532;
                 sp458 = 0x417;
@@ -1776,7 +1777,7 @@ loop_52:
         sp340 = (f64) sp140;
         sp328 = (f64) sp128;
         sp330 = (f64) sp130;
-        KDRand_Vector(sp348, *((MKVector3 *) &sp338));
+        sp348 = KDRand_Vector(*((MKVector3 *) &sp338), *((MKVector3 *) &sp328));
         temp_f1_2681 = M2C_BITWISE(f32, sp348);
         var_f4_2688 = (sp348.unk8 * sp348.unk8) + ((temp_f1_2681 * temp_f1_2681) + (sp348.unk4 * sp348.unk4));
         if (var_f4_2688 > 1e-12f) {
@@ -1843,10 +1844,10 @@ loop_52:
 loop_55:
     if (var_r26_2820 < temp_r31_2655) {
         temp_f24_2827 = MKRand_Float((int *) &gViewSeed, 500.0f, 1500.0f);
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, 0.5f, -1.0f);
-        KDRand_Vector(sp2E8, sp2D8);
-        Normalise(sp2F8);
+        sp2C8 = MKVector(1.0f, 1.0f, 1.0f);
+        sp2D8 = MKVector(-1.0f, 0.5f, -1.0f);
+        sp2E8 = KDRand_Vector(sp2D8, sp2C8);
+        sp2F8 = Normalise(sp2E8);
         sp58 = sp2F8 * (f64) temp_f24_2827;
         sp308 = sp58;
         sp60 = sp2F8.unk8 * temp_f24_2827;
@@ -1856,10 +1857,10 @@ loop_55:
         sp1C = MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f);
         gb.EmitCrud(arg0, *((MKVector3 *) &sp448), sp1C);
         temp_f23_2871 = MKRand_Float((int *) &gViewSeed, 500.0f, 1500.0f);
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, 0.5f, -1.0f);
-        KDRand_Vector(sp298, sp288);
-        Normalise(sp2A8);
+        sp278 = MKVector(1.0f, 1.0f, 1.0f);
+        sp288 = MKVector(-1.0f, 0.5f, -1.0f);
+        sp298 = KDRand_Vector(sp288, sp278);
+        sp2A8 = Normalise(sp298);
         sp48 = sp2A8 * (f64) temp_f23_2871;
         sp2B8 = sp48;
         sp50 = sp2A8.unk8 * temp_f23_2871;
@@ -1876,10 +1877,10 @@ loop_55:
 loop_58:
     if (var_r29_2924 < (s32) (5.0f * arg1)) {
         temp_f31_2937 = MKRand_Float((int *) &gViewSeed, 2500.0f, 3500.0f);
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, 0.5f, -1.0f);
-        KDRand_Vector(sp248, sp238);
-        Normalise(sp258);
+        sp228 = MKVector(1.0f, 1.0f, 1.0f);
+        sp238 = MKVector(-1.0f, 0.5f, -1.0f);
+        sp248 = KDRand_Vector(sp238, sp228);
+        sp258 = Normalise(sp248);
         sp38 = sp258 * (f64) temp_f31_2937;
         sp88 = 0.5f;
         sp8C = 0.5f;
@@ -1923,8 +1924,8 @@ loop_58:
         sp218 = temp_f0_3017;
         spE0 = temp_f24_2928 + (f32) sp210;
         sp220 = (f64) spE0;
-        KDRand_Vector(sp1C8, *((MKVector3 *) &sp1B8));
-        KDRand_Vector(sp1F8, *((MKVector3 *) &sp1E8));
+        sp1C8 = KDRand_Vector(*((MKVector3 *) &sp1B8), *((MKVector3 *) &sp1A8));
+        sp1F8 = KDRand_Vector(*((MKVector3 *) &sp1E8), *((MKVector3 *) &sp1D8));
         ((FlyingChunkPS *) gb.unkAC)->Emit(*((MKVector3 *) &sp218), *((MKVector3 *) &sp448), sp1F8, sp1C8, temp_f1_2978, *((MKVector4 *) &sp198), 0, NULL);
         var_r29_2924 += 1;
         goto loop_58;
@@ -1967,7 +1968,7 @@ void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2
     f64 sp348;
     f64 sp340;
     MKVector3 sp330;
-    M2C_UNK sp320;
+    MKVector3 sp320;
     f64 sp318;
     f64 sp310;
     MKVector3 sp300;
@@ -1990,7 +1991,7 @@ void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2
     MKVector3 sp260;
     MKVector3 sp250;
     MKVector3 sp240;
-    M2C_UNK sp230;
+    MKVector3 sp230;
     f64 sp228;
     f64 sp220;
     f64 sp218;
@@ -2292,7 +2293,7 @@ loop_8:
             temp_f21_3506 = 1.0f - (temp_f25_3453 / (temp_f2_3503 * temp_f2_3503));
             if (temp_f21_3506 > 0.0f) {
                 sp414 = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp320 = MKVector(1.0f, 1.0f, 1.0f);
                 sp330.operator*(500.0f);
                 sp50 = sp330 * (f64) temp_f21_3506;
                 sp410 = 0x417;
@@ -2344,7 +2345,7 @@ loop_59:
         sp2A8 = (f64) sp148;
         sp290 = (f64) sp130;
         sp298 = (f64) sp138;
-        KDRand_Vector(sp2B0, *((MKVector3 *) &sp2A0));
+        sp2B0 = KDRand_Vector(*((MKVector3 *) &sp2A0), *((MKVector3 *) &sp290));
         temp_f1_3656 = M2C_BITWISE(f32, sp2B0);
         var_f4_3663 = (sp2B0.unk8 * sp2B0.unk8) + ((temp_f1_3656 * temp_f1_3656) + (sp2B0.unk4 * sp2B0.unk4));
         if (var_f4_3663 > 1e-12f) {
@@ -2411,10 +2412,10 @@ loop_59:
 loop_62:
     if (var_r29_3795 < (s32) (5.0f * arg1)) {
         temp_f31_3808 = MKRand_Float((int *) &gViewSeed, 2500.0f, 3500.0f);
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, 0.5f, -1.0f);
-        KDRand_Vector(sp250, sp240);
-        Normalise(sp260);
+        sp230 = MKVector(1.0f, 1.0f, 1.0f);
+        sp240 = MKVector(-1.0f, 0.5f, -1.0f);
+        sp250 = KDRand_Vector(sp240, sp230);
+        sp260 = Normalise(sp250);
         sp30 = sp260 * (f64) temp_f31_3808;
         sp90 = 0.5f;
         sp94 = 0.5f;
@@ -2458,8 +2459,8 @@ loop_62:
         sp220 = temp_f0_3888;
         spE8 = temp_f21_3799 + (f32) sp218;
         sp228 = (f64) spE8;
-        KDRand_Vector(sp1D0, *((MKVector3 *) &sp1C0));
-        KDRand_Vector(sp200, *((MKVector3 *) &sp1F0));
+        sp1D0 = KDRand_Vector(*((MKVector3 *) &sp1C0), *((MKVector3 *) &sp1B0));
+        sp200 = KDRand_Vector(*((MKVector3 *) &sp1F0), *((MKVector3 *) &sp1E0));
         ((FlyingChunkPS *) gb.unkA4)->Emit(*((MKVector3 *) &sp220), *((MKVector3 *) &sp400), sp200, sp1D0, temp_f1_3849, *((MKVector4 *) &sp1A0), 0xA, NULL);
         var_r29_3795 += 1;
         goto loop_62;

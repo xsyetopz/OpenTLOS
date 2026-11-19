@@ -12,7 +12,7 @@ public:
     /* 0x000 */ s8 unk0;
 };
 
-void MKWind_GetVelocity(const MKVector3 &);
+MKVector3 MKWind_GetVelocity(const MKVector3 &);
 void MKWind_Update(void);
 void MKWind_SetConstantWind(const MKVector3 &);
 void MKWind_Set(float, float, float, float, const MKVector3 &, float);

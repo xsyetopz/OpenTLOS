@@ -86,6 +86,7 @@
 #include "spyro/source/DataMap.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 atan2(f32, f32);                                /* extern */
@@ -570,7 +571,7 @@ void Ball::Smash() {
     f64 sp78;
     f64 sp70;
     MKVector3 sp60;
-    f64 sp50;
+    MKVector3 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -643,11 +644,11 @@ block_4:
                 M2C_FIELD(temp_r3_923, f64 *, 8) = (f64) M2C_FIELD(temp_r4_926, f64 *, 0x38);
                 M2C_FIELD(temp_r3_923, f32 *, 0x20) = 0.0f;
                 M2C_FIELD(temp_r3_923, f32 *, 0x28) = 0.0f;
-                MKVector(0.0f, 300.0f, 0.0f);
+                sp50 = MKVector(0.0f, 300.0f, 0.0f);
                 sp60.operator*(1000.0f);
-                sp10 = sp60 + sp50;
+                sp10 = sp60 + M2C_BITWISE(f64, sp50);
                 M2C_FIELD(temp_r27_928, f64 *, 0) = sp10;
-                sp18 = sp60.unk8 + sp58;
+                sp18 = sp60.unk8 + sp50.unk8;
                 sp70 = sp10;
                 M2C_FIELD(temp_r27_928, f64 *, 8) = (f64) sp18;
                 sp78 = (f64) sp18;
@@ -1467,7 +1468,7 @@ void Ball::UpdateOrientation() {
     sp38 = (sp130.unk14 * sp130.unk28) - (sp130.unk18 * sp130.unk24);
     spA0 = (f64) sp40;
     sp98 = (f64) sp38;
-    Normalise(spA8);
+    spA8 = Normalise(*((MKVector3 *) &sp98));
     temp_f6_2385 = M2C_BITWISE(f32, spA8);
     sp130 = temp_f6_2385;
     sp130.unk4 = spA8.unk4;
@@ -1478,7 +1479,7 @@ void Ball::UpdateOrientation() {
     sp130.unkC = 0.0f;
     sp78 = (f64) sp28;
     sp80 = (f64) sp30;
-    Normalise(sp88);
+    sp88 = Normalise(*((MKVector3 *) &sp78));
     temp_f6_2412 = M2C_BITWISE(f32, sp88);
     temp_f9_2419 = M2C_BITWISE(f32, sp130);
     sp130.unk10 = temp_f6_2412;
@@ -1500,7 +1501,7 @@ void Ball::UpdateOrientation() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *' Too many errors printed, aborting program
+#if 0 // DRAFT: ')' expected
 void Ball::UpdateMeltingGrowing() {
     f64 sp140;
     f64 sp138;
@@ -1573,7 +1574,7 @@ void Ball::UpdateMeltingGrowing() {
             return;
         }
         if (((s32) M2C_FIELD(temp_r31_2480, s32 *, 0xE8) != 0) && (KDSound_IsVoicePlaying(this->unk294) == 0)) {
-            temp_r29_2502 = ((u8 *) this->unk8) + 0x30;
+            temp_r29_2502 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
             this->unk294 = KDSound_Play3d(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8), temp_r29_2502, 0U, -1, 0.0f, 0U);
         }
         spA0 = -1.0f;
@@ -1588,7 +1589,7 @@ void Ball::UpdateMeltingGrowing() {
         spF0 = (f64) spA0;
         spD8 = (f64) sp88;
         spE0 = (f64) sp90;
-        KDRand_Vector(spF8, *((MKVector3 *) &spE8));
+        spF8 = KDRand_Vector(*((MKVector3 *) &spE8), *((MKVector3 *) &spD8));
         temp_f1_2536 = M2C_BITWISE(f32, spF8);
         var_f4_2544 = (spF8.unk8 * spF8.unk8) + ((temp_f1_2536 * temp_f1_2536) + (spF8.unk4 * spF8.unk4));
         if (var_f4_2544 > 1e-12f) {
@@ -1865,7 +1866,7 @@ void Ball::UpdatePhysics() {
     f64 sp1D8;
     f64 sp1D0;
     f64 sp1C8;
-    f64 sp1B8;
+    MKVector3 sp1B8;
     f32 sp1B0;
     f64 sp1A8;
     f32 sp1A0;
@@ -2148,7 +2149,7 @@ void Ball::UpdatePhysics() {
                 sp180 = -(f32) sp440;
                 sp428 = (f64) sp178;
                 sp430 = (f64) sp180;
-                NProjection(sp388, *((MKVector3 *) &sp458));
+                sp388 = NProjection(*((MKVector3 *) &sp458), *((MKVector3 *) &sp438));
                 sp458 -= M2C_BITWISE(f64, sp388);
                 sp460 = (f32) sp460 - sp388.unk8;
                 sp358.operator*(0.1f + temp_f29_3044);
@@ -2209,7 +2210,7 @@ void Ball::UpdatePhysics() {
                 sp348 = (f64) sp168;
                 sp350 = (f64) sp170;
                 temp_f22_3294 = 0.8f * (((f32) sp350 * (f32) sp430) + (((f32) sp348 * (f32) sp428) + ((*(f32 *) ((u8 *) &sp348 + 0x4)) * (*(f32 *) ((u8 *) &sp428 + 0x4)))));
-                NProjection(sp328, *((MKVector3 *) &this->unkF0));
+                sp328 = NProjection(*((MKVector3 *) &this->unkF0), *((MKVector3 *) &sp438));
                 temp_f0_3298 = sp328 * (f64) temp_f22_3294;
                 spB8 = temp_f0_3298;
                 sp338 = temp_f0_3298;
@@ -2222,7 +2223,7 @@ void Ball::UpdatePhysics() {
                 spB0 = (f32) sp440 * temp_f28_3320;
                 sp308 = spA8;
                 sp310 = (f64) spB0;
-                __ml((this->unkF8 * (f32) sp440) + (((f32) M2C_FIELD(this, f64 *, 0xF0) * (f32) sp438) + (M2C_FIELD(this, f32 *, 0xF4) * (*(f32 *) ((u8 *) &sp438 + 0x4)))), sp318);
+                sp318 = __ml((this->unkF8 * (f32) sp440) + (((f32) M2C_FIELD(this, f64 *, 0xF0) * (f32) sp438) + (M2C_FIELD(this, f32 *, 0xF4) * (*(f32 *) ((u8 *) &sp438 + 0x4)))), *((MKVector3 *) &sp308));
                 this->unkF0 -= M2C_BITWISE(f64, sp318);
                 temp_f3_3348 = 1.0f - temp_f22_3294;
                 this->unkF8 -= sp318.unk8;
@@ -2273,7 +2274,7 @@ void Ball::UpdatePhysics() {
                 sp2F8 = (f64) sp158;
                 sp300 = (f64) sp160;
                 temp_f21_3464 = 0.8f * (((f32) sp300 * (f32) sp440) + (((f32) sp2F8 * (f32) sp438) + ((*(f32 *) ((u8 *) &sp2F8 + 0x4)) * (*(f32 *) ((u8 *) &sp438 + 0x4)))));
-                NProjection(sp2D8, *((MKVector3 *) &sp418));
+                sp2D8 = NProjection(*((MKVector3 *) &sp418), *((MKVector3 *) &sp428));
                 temp_f0_3468 = sp2D8 * (f64) temp_f21_3464;
                 sp98 = temp_f0_3468;
                 sp2E8 = temp_f0_3468;
@@ -2286,7 +2287,7 @@ void Ball::UpdatePhysics() {
                 sp90 = (f32) sp430 * temp_f26_3488;
                 sp2B8 = sp88;
                 sp2C0 = (f64) sp90;
-                __ml(((f32) sp420 * (f32) sp430) + (((f32) sp418 * (f32) sp428) + ((*(f32 *) ((u8 *) &sp418 + 0x4)) * (*(f32 *) ((u8 *) &sp428 + 0x4)))), sp2C8);
+                sp2C8 = __ml(((f32) sp420 * (f32) sp430) + (((f32) sp418 * (f32) sp428) + ((*(f32 *) ((u8 *) &sp418 + 0x4)) * (*(f32 *) ((u8 *) &sp428 + 0x4)))), *((MKVector3 *) &sp2B8));
                 M2C_FIELD(temp_r24_3004, f64 *, 0xF0) = (f64) (M2C_FIELD(temp_r24_3004, f64 *, 0xF0) - M2C_BITWISE(f64, sp2C8));
                 temp_f3_3518 = 1.0f - temp_f21_3464;
                 M2C_FIELD(temp_r24_3004, f64 *, 0xF8) = (f32) ((f32) M2C_FIELD(temp_r24_3004, f64 *, 0xF8) - sp2C8.unk8);
@@ -2419,9 +2420,8 @@ loop_80:
                 sp298 = temp_f0_3794;
                 sp80 = this->unkE8 - sp4F8;
                 sp2A0 = (f64) sp80;
-                Normalise(sp2A8);
-                this->unk110 = M2C_BITWISE(f64, sp2A8);
-                this->unk118 = (f64) sp2A8.unk8;
+                sp2A8 = Normalise(*((MKVector3 *) &sp298));
+                *(MKVector3 *) &this->unk110 = sp2A8;
                 this->unk2A4 = sp534;
                 temp_f3_3823 = (f32) M2C_FIELD(this, f64 *, 0x118);
                 temp_f24_3824 = 1.0f + this->unk27C;
@@ -2429,7 +2429,7 @@ loop_80:
                 sp70 = temp_f3_3823 * temp_f24_3824;
                 sp278 = sp68;
                 sp280 = (f64) sp70;
-                __ml((this->unkF8 * temp_f3_3823) + (((f32) M2C_FIELD(this, f64 *, 0xF0) * (f32) M2C_FIELD(this, f64 *, 0x110)) + (M2C_FIELD(this, f32 *, 0xF4) * M2C_FIELD(this, f32 *, 0x114))), sp288);
+                sp288 = __ml((this->unkF8 * temp_f3_3823) + (((f32) M2C_FIELD(this, f64 *, 0xF0) * (f32) M2C_FIELD(this, f64 *, 0x110)) + (M2C_FIELD(this, f32 *, 0xF4) * M2C_FIELD(this, f32 *, 0x114))), *((MKVector3 *) &sp278));
                 this->unkF0 -= M2C_BITWISE(f64, sp288);
                 this->unkF8 -= sp288.unk8;
                 sp238.operator*(this->unk274);
@@ -2441,7 +2441,7 @@ loop_80:
                 sp268 = sp58;
                 sp270 = (f64) sp60;
                 M2C_FIELD(this, f64 *, 0xE8) = (f64) sp60;
-                NProjection(sp228, *((MKVector3 *) &sp458));
+                sp228 = NProjection(*((MKVector3 *) &sp458), *((MKVector3 *) &this->unk110));
                 sp458 -= M2C_BITWISE(f64, sp228);
                 sp460 -= sp228.unk8;
                 goto block_107;
@@ -2635,12 +2635,12 @@ block_107:
     sp1D8 = M2C_FIELD(temp_r9_4302, f64 *, 0x30);
     sp1E0 = M2C_FIELD(temp_r9_4302, f64 *, 0x38);
     if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp1D8), 500.0f, (MKCollisionResult *) &sp498, 0, 4, NULL, (MKCollisionMode) 1) != 0) {
-        Tools_GroundColor((MKCollisionResult *) &sp1B8);
+        sp1B8 = Tools_GroundColor((MKCollisionResult *) &sp498);
         temp_r3_4314 = MKModel_GetColor(this->unk4);
         temp_f2_4316 = M2C_FIELD(temp_r3_4314, f64 *, 0);
-        sp48 = sp1B8 - temp_f2_4316;
+        sp48 = M2C_BITWISE(f64, sp1B8) - temp_f2_4316;
         temp_f3_4321 = M2C_FIELD(temp_r3_4314, f64 *, 8);
-        temp_f0_4322 = sp1C0 - temp_f3_4321;
+        temp_f0_4322 = (f64) sp1B8.unk8 - temp_f3_4321;
         sp50 = temp_f0_4322;
         sp108 = sp48;
         sp110 = temp_f0_4322;
@@ -2674,8 +2674,8 @@ void Ball::Message(MKMessage *arg0) {
     f64 spF8;
     f64 spF0;
     MKVector3 spE0;
-    M2C_UNK spD0;
-    M2C_UNK spC0;
+    MKVector3 spD0;
+    MKVector3 spC0;
     MKVector3 spB0;
     f64 spA8;
     f64 spA0;
@@ -2758,7 +2758,7 @@ block_93:
                 sp100 = temp_f0_4484;
                 sp48 = (f32) spF8 - M2C_FIELD(temp_r3_4459, f32 *, 0x18);
                 sp108 = (f64) sp48;
-                Normalise(sp110);
+                sp110 = Normalise(*((MKVector3 *) &sp100));
                 sp130 = M2C_BITWISE(f64, sp110);
                 var_f1_4501 = (*(f32 *) ((u8 *) &sp130 + 0x4));
                 sp138 = (f64) sp110.unk8;
@@ -2779,12 +2779,11 @@ block_93:
                 sp138 = temp_f3_4523;
                 this->unkF0 += temp_f1_4519;
                 this->unkF8 += temp_f3_4523;
-                MKVector(1000.0f, 1000.0f, 1000.0f);
-                MKVector(-1000.0f, -1000.0f, -1000.0f);
-                Min(sp30, *((MKVector3 *) &this->unkF0));
-                Max(spE0, sp30);
-                this->unkF0 = M2C_BITWISE(f64, spE0);
-                M2C_FIELD(this, f32 *, 0xF8) = (f64) spE0.unk8;
+                spC0 = MKVector(1000.0f, 1000.0f, 1000.0f);
+                spD0 = MKVector(-1000.0f, -1000.0f, -1000.0f);
+                sp30 = Min(*((MKVector3 *) &this->unkF0), spC0);
+                spE0 = Max(sp30, spD0);
+                *(MKVector3 *) &this->unkF0 = spE0;
                 this->unk2AC |= 0x80;
             } else {
                 temp_r0_4559 = this->unk230;
@@ -2860,13 +2859,11 @@ block_62:
                 spA0 = temp_f0_4727;
                 sp28 = (f32) sp98 - sp88;
                 spA8 = (f64) sp28;
-                Normalise(spB0);
-                sp120 = M2C_BITWISE(f64, spB0);
-                sp128 = (f64) spB0.unk8;
+                spB0 = Normalise(*((MKVector3 *) &spA0));
+                *(MKVector3 *) &sp120 = spB0;
                 sp60.GetDir();
-                InterpolateLinear(sp70, *((MKVector3 *) &sp120), 0.25f);
-                sp120 = M2C_BITWISE(f64, sp70);
-                sp128 = (f64) sp70.unk8;
+                sp70 = InterpolateLinear(*((MKVector3 *) &sp120), *((MKVector3 *) &sp60), 0.25f);
+                *(MKVector3 *) &sp120 = sp70;
                 var_f4_4766 = ((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + ((*(f32 *) ((u8 *) &sp110 + 0x14)) * (*(f32 *) ((u8 *) &sp110 + 0x14))));
                 if (var_f4_4766 > 0.000001f) {
                     if (var_f4_4766 > 0.0f) {

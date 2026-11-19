@@ -19,6 +19,7 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -479,16 +480,20 @@ void SlimeTrailFX::Draw() {
     f64 temp_f0_804;
     f64 temp_f0_861;
     f64 temp_f0_872;
+    s32 temp_r0_658;
     s32 temp_r26_657;
     s32 var_r25_670;
+    s32 var_r28_656;
 
     if ((u8) this->unk28 != 0) {
         MKMaterial_SetMaterial(this->unk20);
         MKPrimitive(0xC, 0x10);
         MKSetMatrix(Matrix::identity);
+        var_r28_656 = 0xA;
         temp_r26_657 = this->unk4;
-        if ((this->unk18 - 1) >= 0) {
-
+        temp_r0_658 = this->unk18 - 1;
+        if (temp_r0_658 >= 0) {
+            var_r28_656 = temp_r0_658;
         }
         MKBegin(0x28);
         var_r25_670 = 0;
@@ -499,19 +504,19 @@ void SlimeTrailFX::Draw() {
             sp1E0 = M2C_BITWISE(f64, sp1B0);
             sp1E8 = (f64) sp1B0.unk8;
             sp190.GetVelocity(temp_f24_685);
-            Normalise(*((MKVector3 *) &sp190.unk10));
+            *((MKVector3 *) &sp190.unk10) = Normalise(*((MKVector3 *) &sp190));
             sp1D0 = M2C_BITWISE(f64, sp190.unk10);
             sp1D8 = sp1A8;
             temp_f25_708 = 1.0f - temp_f24_685;
             temp_f26_709 = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
-            Normalise(sp150);
+            sp150 = Normalise(*(this->unk14 + ((((var_r28_656 + (s32) (temp_f25_708 * (f32) temp_r26_657)) % temp_r26_657) * 0x28) + 0x10)));
             temp_f2_732 = M2C_BITWISE(f32, sp150);
             sp18 = (temp_f2_732 * (*(f32 *) ((u8 *) &sp1D0 + 0x4))) - (sp150.unk4 * (f32) sp1D0);
             sp14 = (sp150.unk8 * (f32) sp1D0) - (temp_f2_732 * (f32) sp1D8);
             sp10 = (sp150.unk4 * (f32) sp1D8) - (sp150.unk8 * (*(f32 *) ((u8 *) &sp1D0 + 0x4)));
             sp168 = (f64) sp18;
             sp160 = (f64) sp10;
-            Normalise(sp170);
+            sp170 = Normalise(*((MKVector3 *) &sp160));
             sp20 = sp170 * (f64) temp_f26_709;
             sp180 = sp20;
             sp28 = sp170.unk8 * temp_f26_709;

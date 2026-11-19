@@ -16,6 +16,7 @@
 #include "unplaced_templates.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(WaterSurfaceFX::Wake **);              /* extern */
@@ -189,7 +190,7 @@ void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &ar
     f64 sp60;
     f64 sp58;
     f64 sp50;
-    f32 sp40;
+    MKVector3 sp40;
     MKVector3 sp30;
     f32 sp28;
     f64 sp20;
@@ -198,6 +199,7 @@ void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &ar
     f32 sp10;
     f32 sp8;
     f32 temp_f2_357;
+    f32 temp_f7_386;
     f32 var_f5_284;
     f64 temp_f2_287;
     f64 temp_f2_293;
@@ -280,11 +282,12 @@ block_25:
         sp70 = M2C_FIELD(&arg3, f64 *, 0);
         sp78 = M2C_FIELD(&arg3, f64 *, 8);
         M2C_FIELD((M2C_FIELD(arg1, s32 *, 0) + (M2C_FIELD(arg1, s32 *, 8) * 0x28)), f32 *, 0x20) = farg0;
-        MKVector(0.0f, 1.0f, 0.0f);
-        sp14 = (sp48 * (f32) sp70) - (sp40 * (f32) sp78);
-        sp10 = (sp44 * (f32) sp78) - (sp48 * (*(f32 *) ((u8 *) &sp70 + 0x4)));
+        sp40 = MKVector(0.0f, 1.0f, 0.0f);
+        temp_f7_386 = M2C_BITWISE(f32, sp40);
+        sp14 = (sp40.unk8 * (f32) sp70) - (temp_f7_386 * (f32) sp78);
+        sp10 = (sp40.unk4 * (f32) sp78) - (sp40.unk8 * (*(f32 *) ((u8 *) &sp70 + 0x4)));
         temp_r3_403 = (void *) (M2C_FIELD(arg1, s32 *, 0) + ((M2C_FIELD(arg1, s32 *, 8) * 0x28) + 0x10));
-        sp18 = (sp40 * (*(f32 *) ((u8 *) &sp70 + 0x4))) - (sp44 * (f32) sp70);
+        sp18 = (temp_f7_386 * (*(f32 *) ((u8 *) &sp70 + 0x4))) - (sp40.unk4 * (f32) sp70);
         M2C_FIELD(temp_r3_403, f64 *, 0) = (f64) sp10;
         M2C_FIELD(temp_r3_403, f64 *, 8) = (f64) sp18;
         sp50 = (f64) sp10;
@@ -292,8 +295,7 @@ block_25:
         if ((s32) M2C_FIELD(arg1, s32 *, 8) != (s32) M2C_FIELD(arg1, s32 *, 4)) {
             KDMath_Smooth<MKVector3>(sp30, *(M2C_FIELD(arg1, s32 *, 0) + ((var_r31_250 * 0x28) + 0x10)), 0.125f, 1.0f);
             temp_r3_432 = (void *) (M2C_FIELD(arg1, s32 *, 0) + ((M2C_FIELD(arg1, s32 *, 8) * 0x28) + 0x10));
-            M2C_FIELD(temp_r3_432, f64 *, 0) = M2C_BITWISE(f64, sp30);
-            M2C_FIELD(temp_r3_432, f64 *, 8) = (f64) sp30.unk8;
+            M2C_FIELD(temp_r3_432, MKVector3 *, 0) = sp30;
         }
         M2C_FIELD((M2C_FIELD(arg1, s32 *, 0) + (M2C_FIELD(arg1, s32 *, 8) * 0x28)), f32 *, 0x24) = (f32) this->unk58;
         M2C_FIELD(arg1, s32 *, 8) = (s32) (M2C_FIELD(arg1, s32 *, 8) + 1);

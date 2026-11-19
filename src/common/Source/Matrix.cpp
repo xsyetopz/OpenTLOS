@@ -1,6 +1,7 @@
 #include "common/Source/Matrix.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/StdMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 atan2(s32, void *, f32, f32);                   /* extern */
@@ -505,7 +506,6 @@ void Matrix::Transpose(const Matrix *arg0) {
     M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &spC + 4, 0x40);
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
     f32 spB0;                                       /* compiler-managed */
     f32 spAC;
@@ -546,17 +546,15 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
         spAC = 0.0f;
         spB0 = 0.0f;
     } else {
-        Normalise(sp68);
-        sp88 = M2C_BITWISE(f64, sp68);
-        sp90 = (f64) sp68.unk8;
+        sp68 = Normalise(*((MKVector3 *) &sp88));
+        *(MKVector3 *) &sp88 = sp68;
         sp20 = (sp98 * (*(f32 *) ((u8 *) &sp88 + 0x4))) - (sp9C * (f32) sp88);
         sp1C = (spA0 * (f32) sp88) - (sp98 * (f32) sp90);
         sp18 = (sp9C * (f32) sp90) - (spA0 * (*(f32 *) ((u8 *) &sp88 + 0x4)));
         sp50 = (f64) sp20;
         sp48 = (f64) sp18;
-        Normalise(sp58);
-        spA8 = M2C_BITWISE(f64, sp58);
-        spB0 = (f64) sp58.unk8;
+        sp58 = Normalise(*((MKVector3 *) &sp48));
+        *(MKVector3 *) &spA8 = sp58;
     }
     this->unk0 = (f32) spA8;
     this->unk4 = spAC;
@@ -582,7 +580,6 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
     this->unk38 = arg0.unk8;
     this->unk3C = 1.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to 'void *'
 void Matrix::GetRotationRPY() const {

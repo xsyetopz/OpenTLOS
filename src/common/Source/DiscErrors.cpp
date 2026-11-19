@@ -1,7 +1,6 @@
 #include "common/Source/DiscErrors.h"
 #include "dolphin/os.h"
 #include "dolphin/vi.h"
-#include "common/Source/GPInit.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/Translation.h"
 #include "common/Source/xFont.h"
@@ -11,6 +10,7 @@ M2C_UNK strupr(s8 *);                               /* extern */
 extern M2C_UNK gGameCubeDiscErrors;
 static s32 nCurrErr = -1;
 
+#if 0 // DRAFT: undefined identifier 'GPGetCurrentBuffer'
 void DiscErr_DrawString(char *arg0) {
     char sp8[32];
     s16 var_r29_27;
@@ -66,6 +66,7 @@ loop_4:
     }
     DCFlushRange(((void *(*)(void)) GPGetCurrentBuffer)(), 0xA5000U);
 }
+#endif
 
 void DiscErr_DrawErrorString() {
     DiscErr_DrawString((char *) DiscErr_GetErrorString());

@@ -87,6 +87,7 @@
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(Enemy ***);                            /* extern */
@@ -670,7 +671,7 @@ block_20:
                         sp344 = (*(f32 *) ((u8 *) &sp190 + 0x4));
                         sp348 = (f32) sp198;
                         sp34C = 0.0f;
-                        Normalise(sp170);
+                        sp170 = Normalise(*((MKVector3 *) &sp340));
                         temp_f2_1282 = M2C_BITWISE(f32, sp170);
                         sp33C = 0.0f;
                         sp34C = 0.0f;
@@ -715,7 +716,7 @@ block_20:
                         sp2B0 = temp_f0_880;
                         sp118 = (f32) sp2A8 * 100.0f;
                         sp2B8 = (f64) sp118;
-                        KDRand_Vector(sp2E0, *((MKVector3 *) &sp2D0));
+                        sp2E0 = KDRand_Vector(*((MKVector3 *) &sp2D0), *((MKVector3 *) &sp2B0));
                         temp_r3_893 = this->unk8;
                         temp_f1_894 = M2C_FIELD(temp_r3_893, f64 *, 0x30);
                         sp2F0 = temp_f1_894;

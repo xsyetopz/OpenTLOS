@@ -35,25 +35,26 @@
 #include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 BarricadeProp::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
-    MKVector(0.0f, 100.0f, 0.0f);
+    sp18 = MKVector(0.0f, 100.0f, 0.0f);
     ((MKProp *) &sp28)->GetPos();
-    sp8 = sp28 + sp18;
+    sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp20;
+    sp10 = sp30 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -134,7 +135,7 @@ void BarricadeProp::Message(MKMessage *arg0) {
             sp78 = (f64) sp48;
             sp60 = (f64) sp30;
             sp68 = (f64) sp38;
-            KDRand_Vector(sp80, *((MKVector3 *) &sp70));
+            sp80 = KDRand_Vector(*((MKVector3 *) &sp70), *((MKVector3 *) &sp60));
             temp_f0_196 = sp80 * 5.717499035e-315;
             sp20 = temp_f0_196;
             sp90 = temp_f0_196;

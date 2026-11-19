@@ -34,6 +34,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKVector3 **);                         /* extern */
@@ -44,18 +45,18 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
     f64 spA0;
     f64 sp98;
     MKVector3 sp88;
     MKVector3 sp78;
-    M2C_UNK sp68;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
     MKVector3 sp48;
     MKVector3 sp38;
-    M2C_UNK sp28;
+    MKVector3 sp28;
     f32 sp20;
     f64 sp18;
     f32 sp10;
@@ -73,18 +74,18 @@ void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
             M2C_FIELD(temp_r31_57, f32 *, 0x34) = 0.5f;
             M2C_FIELD(temp_r31_57, s32 *, 0x38) = 1;
             M2C_FIELD(temp_r31_57, s32 *, 0x3C) = (s32) M2C_FIELD((this + (MKRand_Int((int *) &gViewSeed, 0, 2) * 4)), s32 *, 0x4C);
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp88, sp78);
+            sp68 = MKVector(1.0f, 1.0f, 1.0f);
+            sp78 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp88 = KDRand_Vector(sp78, sp68);
             sp18 = sp88 * 5.370091495e-315;
             M2C_FIELD(temp_r31_57, f64 *, 0x10) = sp18;
             sp20 = sp88.unk8 * 6.2831855f;
             sp98 = sp18;
             spA0 = (f64) sp20;
             M2C_FIELD(temp_r31_57, f64 *, 0x18) = (f64) sp20;
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp48, sp38);
+            sp28 = MKVector(1.0f, 1.0f, 1.0f);
+            sp38 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp48 = KDRand_Vector(sp38, sp28);
             sp8 = sp48 * 5.370091495e-315;
             M2C_FIELD(temp_r31_57, f64 *, 0x20) = sp8;
             sp10 = sp48.unk8 * 6.2831855f;
@@ -234,7 +235,7 @@ loop_8:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *ConvexityVortex::Update() {
     f64 spF0;                                       /* compiler-managed */
     f64 spE8;
@@ -245,7 +246,7 @@ void *ConvexityVortex::Update() {
     MKVector3 spB8;
     MKVector3 spA8;
     MKVector3 sp98;
-    M2C_UNK sp88;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
     MKVector3 sp68;
@@ -289,10 +290,10 @@ void *ConvexityVortex::Update() {
         temp_r4_407 = this->unk8;
         spE8 = M2C_FIELD(temp_r4_407, f64 *, 0x30);
         spF0 = M2C_FIELD(temp_r4_407, f64 *, 0x38);
-        MKVector(1.0f, 0.1f, 1.0f);
-        MKVector(-1.0f, 0.1f, -1.0f);
-        KDRand_Vector(spA8, sp98);
-        Normalise(spB8);
+        sp88 = MKVector(1.0f, 0.1f, 1.0f);
+        sp98 = MKVector(-1.0f, 0.1f, -1.0f);
+        spA8 = KDRand_Vector(sp98, sp88);
+        spB8 = Normalise(spA8);
         temp_f0_430 = spB8 * 5.907017874e-315;
         sp38 = temp_f0_430;
         spC8 = temp_f0_430;

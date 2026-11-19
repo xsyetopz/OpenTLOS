@@ -16,6 +16,7 @@
 #include "spyro/source/Level.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -126,7 +127,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *Wake::Update() {
     f64 spD8;
     f64 spD0;
@@ -138,7 +139,7 @@ void *Wake::Update() {
     f64 spA0;
     f64 sp98;
     f64 sp90;
-    f64 sp80;
+    MKVector3 sp80;
     f64 sp78;
     f64 sp70;
     f32 sp68;
@@ -241,10 +242,10 @@ loop_41:
                     M2C_FIELD(var_r28_224, f32 *, 0x3C) = sp8;
                     M2C_FIELD(var_r28_224, f32 *, 0x3C) = (f32) (M2C_FIELD(var_r28_224, f32 *, 0x3C) + 1.0f);
                 }
-                MKVector(0.0f, -10.0f, 0.0f);
-                sp20 = M2C_FIELD(var_r28_224, f64 *, 0x48) + sp80;
+                sp80 = MKVector(0.0f, -10.0f, 0.0f);
+                sp20 = M2C_FIELD(var_r28_224, f64 *, 0x48) + M2C_BITWISE(f64, sp80);
                 sp90 = sp20;
-                sp28 = M2C_FIELD(var_r28_224, f32 *, 0x50) + sp88;
+                sp28 = M2C_FIELD(var_r28_224, f32 *, 0x50) + sp80.unk8;
                 spD0 = sp20;
                 sp98 = (f64) sp28;
                 spD8 = (f64) sp28;

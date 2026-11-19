@@ -50,6 +50,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 SPYRO_BOUNCE_Y_SPEED;
@@ -404,9 +405,8 @@ void SpyroStrafeState::SelectAnim() {
         sp68 = (f64) sp18;
         sp70 = (f64) sp20;
         if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) != 0.0f) {
-            Normalise(sp28);
-            sp68 = M2C_BITWISE(f64, sp28);
-            sp70 = (f64) sp28.unk8;
+            sp28 = Normalise(*((MKVector3 *) &sp68));
+            *(MKVector3 *) &sp68 = sp28;
             temp_f5_631 = this->unk2C;
             temp_f6_634 = this->unk28;
             temp_f7_636 = this->unk30;
@@ -821,23 +821,20 @@ void SpyroStrafeState::NoTargetTransition() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void SpyroStrafeState::NoTargetUpdate() {
     MKVector3 sp18;
     MKVector3 sp8;
 
     if (((InputModifier *) (this->unk10->GetInput()))->GetRightX() != 0.0f) {
-        KDMath_RotateVectorByYaw(sp8, 1.5707964f * gUpdateTimeDelta * ((InputModifier *) (this->unk10->GetInput()))->GetRightX());
-        Normalise(sp18);
-        M2C_FIELD(this, f64 *, 0x28) = M2C_BITWISE(f64, sp18);
-        M2C_FIELD(this, f64 *, 0x30) = (f64) sp18.unk8;
+        sp8 = KDMath_RotateVectorByYaw(*((MKVector3 *) &this->unk28), 1.5707964f * gUpdateTimeDelta * ((InputModifier *) (this->unk10->GetInput()))->GetRightX());
+        sp18 = Normalise(sp8);
+        M2C_FIELD(this, MKVector3 *, 0x28) = sp18;
     }
     this->unk10->unk3A8.YawTowards(*((MKVector3 *) &this->unk28), 15.0f);
     SetDesiredVelocity();
     SelectAnim();
     NoTargetTransition();
 }
-#endif
 
 void SpyroStrafeState::NoTargetExit() {
 
@@ -916,7 +913,7 @@ void SpyroStrafeState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: undefined identifier 'sp48'
 void SpyroStrafeState::Enter(SpyroStateMessages &arg0) {
     MKVector3 sp80;
     f64 sp78;
@@ -973,9 +970,8 @@ void SpyroStrafeState::Enter(SpyroStateMessages &arg0) {
         sp50 = (f64) sp20;
         sp70 = (f64) sp30;
         sp78 = (f64) sp38;
-        Normalise(sp80);
-        M2C_FIELD(this, f64 *, 0x28) = M2C_BITWISE(f64, sp80);
-        M2C_FIELD(this, f64 *, 0x30) = (f64) sp80.unk8;
+        sp80 = Normalise(*((MKVector3 *) &sp70));
+        M2C_FIELD(this, MKVector3 *, 0x28) = sp80;
     } else {
         this->unk10->GetCamera();
         ((KDCamera *) &sp40)->GetXZDir();

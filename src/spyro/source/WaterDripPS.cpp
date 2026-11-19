@@ -41,6 +41,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -429,7 +430,7 @@ void WaterDripPS::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *WaterDripPS::Update() {
     MKVector3 spB0;
     f64 spA8;                                       /* compiler-managed */
@@ -438,7 +439,7 @@ void *WaterDripPS::Update() {
     f64 sp90;
     f64 sp88;
     f64 sp80;
-    f64 sp70;
+    MKVector3 sp70;
     f64 sp68;
     f64 sp60;
     f64 sp58;
@@ -511,11 +512,11 @@ loop_48:
                     }
                 }
                 temp_f30_669 = gUpdateTimeDelta;
-                MKVector(0.0f, -2000.0f, 0.0f);
+                sp70 = MKVector(0.0f, -2000.0f, 0.0f);
                 temp_f0_675 = sp70 * (f64) temp_f30_669;
                 sp30 = temp_f0_675;
                 sp80 = temp_f0_675;
-                sp38 = sp78 * temp_f30_669;
+                sp38 = sp70.unk8 * temp_f30_669;
                 temp_r3_686 = ((u8 *) this->unk4C) + ((spC * 0x58) + 0x20);
                 sp88 = (f64) sp38;
                 M2C_FIELD(temp_r3_686, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_686, f64 *, 0) + temp_f0_675);
@@ -572,8 +573,7 @@ loop_48:
                 } else {
                     ((KDPathSegment *) (M2C_FIELD(temp_r4_755, KDPathSegment **, 0x38)))->GetPositionAlongPath(temp_f1_756, spB0);
                     temp_r3_829 = ((u8 *) this->unk4C) + (spC * 0x58);
-                    M2C_FIELD(temp_r3_829, f64 *, 0) = M2C_BITWISE(f64, spB0);
-                    M2C_FIELD(temp_r3_829, f64 *, 8) = (f64) spB0.unk8;
+                    M2C_FIELD(temp_r3_829, MKVector3 *, 0) = spB0;
                     temp_r4_835 = ((u8 *) this->unk4C) + (spC * 0x58);
                     sp40 = M2C_FIELD(temp_r4_835, f64 *, 0) - *(temp_r4_835 + 0x10);
                     temp_f3_844 = 1.0f / gUpdateTimeDelta;

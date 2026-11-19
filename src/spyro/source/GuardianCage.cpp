@@ -45,6 +45,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_PrisonBallShatter;
@@ -492,7 +493,7 @@ void GuardianCage::StateDyingUpdate() {
     MKModel_SetWorldMatrix(this->unk4, spD0);
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void GuardianCage::StateDyingEnter() {
     s8 spE8;
     s32 spE4;
@@ -517,7 +518,7 @@ void GuardianCage::StateDyingEnter() {
     f32 sp98;
     f64 sp90;
     f64 sp88;
-    f64 sp78;
+    MKVector3 sp78;
     f64 sp70;
     f64 sp68;
     f64 sp60;
@@ -538,11 +539,11 @@ void GuardianCage::StateDyingEnter() {
     f64 temp_f0_622;
     void *temp_r4_569;
 
-    MKVector(0.0f, 800.0f, 0.0f);
+    sp78 = MKVector(0.0f, 800.0f, 0.0f);
     temp_r4_569 = ((u8 *) this->unk8) + 0x30;
-    sp18 = M2C_FIELD(temp_r4_569, f64 *, 0) - sp78;
+    sp18 = M2C_FIELD(temp_r4_569, f64 *, 0) - M2C_BITWISE(f64, sp78);
     M2C_FIELD(this, f64 *, 0x108) = sp18;
-    sp20 = M2C_FIELD(temp_r4_569, f32 *, 8) - sp80;
+    sp20 = M2C_FIELD(temp_r4_569, f32 *, 8) - sp78.unk8;
     sp40 = 0.0f;
     this->unk110 = (f64) sp20;
     sp38 = 0.0f;
@@ -598,7 +599,7 @@ void GuardianCage::StateFloatingExit() {
     MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, this->unk140, 0U, 1U);
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void GuardianCage::StateFloatingUpdate() {
     Matrix spE0;
     M2C_UNK spDC;
@@ -610,7 +611,7 @@ void GuardianCage::StateFloatingUpdate() {
     f64 spB0;
     f64 spA8;
     f64 spA0;
-    f64 sp90;
+    MKVector3 sp90;
     f64 sp88;
     f64 sp80;
     f64 sp78;
@@ -637,11 +638,11 @@ void GuardianCage::StateFloatingUpdate() {
     f64 temp_f0_794;
 
     temp_f28_703 = gUpdateTimeDelta;
-    MKVector(1.0f, 3.0f, 2.0f);
+    sp90 = MKVector(1.0f, 3.0f, 2.0f);
     temp_f0_712 = sp90 * (f64) temp_f28_703;
     sp10 = temp_f0_712;
     spA0 = temp_f0_712;
-    sp18 = sp98 * temp_f28_703;
+    sp18 = sp90.unk8 * temp_f28_703;
     spA8 = (f64) sp18;
     M2C_FIELD(this, f64 *, 0xE8) = (f64) (M2C_FIELD(this, f64 *, 0xE8) + temp_f0_712);
     this->unkF0 += (f32) spA8;
@@ -691,15 +692,12 @@ void GuardianCage::StateFloatingEnter() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void GuardianCage::GetBeamPosition(int arg0) {
     MKVector3 sp8;
 
     MKModel_CalculateRefPointWorldPosition(M2C_FIELD(arg0, MKModel **, 4), M2C_FIELD((arg0 + (M2C_ERROR(/* Read from unset register $r5 */) * 4)), s32 *, 0xC8), &sp8);
-    M2C_FIELD(this, f64 *, 0) = M2C_BITWISE(f64, sp8);
-    M2C_FIELD(this, f64 *, 8) = (f64) sp8.unk8;
+    M2C_FIELD(this, MKVector3 *, 0) = sp8;
 }
-#endif
 
 void GuardianCage::Deinit() {
     ((KDStateMachine<GuardianCage> *) &this->unk14C)->Exit(this);

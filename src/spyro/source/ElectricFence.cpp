@@ -48,6 +48,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -383,7 +384,7 @@ s32 ElectricFence::LoadDone() {
     MKVector3 sp218;
     f64 sp210;
     f64 sp208;
-    f64 sp1F8;
+    MKVector3 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
     MKVector3 sp1D8;
@@ -606,7 +607,7 @@ loop_27:
             M2C_FIELD(temp_r7_809, ElectricFence **, 8) = this;
             M2C_FIELD(temp_r7_809, s32 *, 0xC) = 0;
             M2C_STRUCT_COPY((s32) &sp2A0.unk3C + 4, (s32) ((((u8 *) this->unk4C) + var_r27_732) - 4) + 4, 0x40);
-            MKVector(0.0f, 400.0f, 0.0f);
+            sp1F8 = MKVector(0.0f, 400.0f, 0.0f);
             sp38 = -sp2E0.unk20;
             sp3C = -sp2E0.unk24;
             sp40 = -sp2E0.unk28;
@@ -614,10 +615,10 @@ loop_27:
             sp210 = (f64) sp40;
             sp218.operator*(*(this->unk4C + (var_r27_732 + 0x68)));
             sp228.operator*(0.5f);
-            temp_f0_858 = sp228 + sp1F8;
+            temp_f0_858 = sp228 + M2C_BITWISE(f64, sp1F8);
             spE8 = temp_f0_858;
             sp238 = temp_f0_858;
-            spF0 = sp228.unk8 + sp200;
+            spF0 = sp228.unk8 + sp1F8.unk8;
             sp240 = (f64) spF0;
             sp2E0.Translate(&sp2E0, *((MKVector3 *) &sp238));
             spD8 = 100.0f;
@@ -679,19 +680,17 @@ loop_30:
         temp_r6_1000 = ((u8 *) this->unk4C) + (var_r29_974 + 0x30);
         sp248 = M2C_FIELD(temp_r6_1000, f64 *, 0);
         sp250 = M2C_FIELD(temp_r6_1000, f64 *, 8);
-        Min(sp188, *((MKVector3 *) &this->unkB0));
-        this->unkB0 = M2C_BITWISE(f64, sp188);
-        this->unkB8 = (f64) sp188.unk8;
+        sp188 = Min(*((MKVector3 *) &this->unkB0), *((MKVector3 *) &sp248));
+        *(MKVector3 *) &this->unkB0 = sp188;
         sp78 = (f32) sp248;
         sp7C = (*(f32 *) ((u8 *) &sp248 + 0x4)) + 800.0f;
         sp80 = (f32) sp250;
         sp168 = (f64) sp78;
         sp170 = (f64) sp80;
-        Max(sp178, *((MKVector3 *) &this->unkC0));
+        sp178 = Max(*((MKVector3 *) &this->unkC0), *((MKVector3 *) &sp168));
         var_r26_972 += 1;
         var_r29_974 += 0x70;
-        this->unkC0 = M2C_BITWISE(f64, sp178);
-        this->unkC8 = (f64) sp178.unk8;
+        *(MKVector3 *) &this->unkC0 = sp178;
         goto loop_30;
     }
     temp_f0_1040 = this->unkC0 - this->unkB0;

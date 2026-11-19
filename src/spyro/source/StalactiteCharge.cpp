@@ -52,6 +52,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(IceBossStalactiteSpawner *);           /* extern */
@@ -384,7 +385,7 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     f64 sp1E0;
     f64 sp1D8;
     HeroInterface sp1C8;
-    f64 sp1B8;
+    MKVector3 sp1B8;
     f64 sp1B0;
     f64 sp1A8;
     HeroInterface sp198;
@@ -455,6 +456,7 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     f64 temp_f1_838;
     f64 temp_f1_842;
     f64 temp_f2_705;
+    f64 temp_f3_726;
     f64 temp_f5_721;
     s32 temp_r3_861;
     s32 var_r0_871;
@@ -477,14 +479,15 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     this->unk108 = temp_f0_706;
     sp1E0 = temp_f0_706;
     sp20C = 0;
-    KDMath_GetDirection(0.9254072f);
+    sp1B8 = KDMath_GetDirection(0.9254072f);
     sp1C8.GetPos();
     temp_f5_721 = M2C_BITWISE(f64, sp1C8);
+    temp_f3_726 = M2C_BITWISE(f64, sp1B8);
     sp208 = 0x421;
     sp210 = temp_f5_721;
     sp218 = sp1D0;
-    sp220 = sp1B8;
-    sp228 = sp1C0;
+    sp220 = temp_f3_726;
+    sp228 = (f64) sp1B8.unk8;
     sp230 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp238 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     sp240 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -493,7 +496,7 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     sp251 = 0;
     sp28 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp30 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, f64, f64, f64, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp208, 0x421, M2C_FIELD(&MKVector3::zero, f64 *, 0), sp1C0, sp1B8, sp1D0, temp_f5_721);
+    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, f64, f64, f64, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp208, 0x421, M2C_FIELD(&MKVector3::zero, f64 *, 0), (f64) sp1B8.unk8, temp_f3_726, sp1D0, temp_f5_721);
     if (sp250 != 0) {
         this->unk110 = sp230;
         this->unk118 = sp238;
@@ -504,7 +507,7 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
         sp178 = temp_f0_763;
         sp40 = (f32) M2C_FIELD(this, f64 *, 0x108) - sp170;
         sp180 = (f64) sp40;
-        KDMath_GetReflectedVector(sp188, *((MKVector3 *) &sp178));
+        sp188 = KDMath_GetReflectedVector(*((MKVector3 *) &sp178), MKVector3::up);
         sp198.GetPos();
         sp98 = sp198 + M2C_BITWISE(f64, sp188);
         this->unk110 = sp98;
@@ -796,7 +799,7 @@ void StalactiteCharge::StateSCDropEnter() {
     s32 sp70;
     f64 sp68;
     f64 sp60;
-    f64 sp50;
+    MKVector3 sp50;
     f64 sp48;
     KDUniformSpline sp30;
     f64 sp20;
@@ -813,10 +816,10 @@ void StalactiteCharge::StateSCDropEnter() {
     sp30.GetMeasure(0.0f, (Matrix *) &this->unkEC->unk30, KDSpline_PositionMixer);
     sp30.unk10 = M2C_BITWISE(f64, sp30);
     sp48 = (f64) sp30.unk8;
-    MKVector(0.7f, 0.7f, 0.7f);
+    sp50 = MKVector(0.7f, 0.7f, 0.7f);
     sp10 = sp50 * 5.398241246e-315;
     temp_f2_1403 = M2C_BITWISE(f64, sp30.unk10);
-    sp18 = sp58 * 10.0f;
+    sp18 = sp50.unk8 * 10.0f;
     sp70 = 0x419;
     sp88 = sp10;
     sp90 = (f64) sp18;
@@ -910,7 +913,7 @@ f32 StalactiteCharge::Resolve() {
     temp_r4_1605 = (u32) this->unk50.SetState(this, 0, 0U);
     temp_r3_1606 = this->unkF0;
     if (temp_r3_1606 != NULL) {
-        this->unkF0 = checked_cast<CutsceneProp *, MKProp>(temp_r3_1606->PropResolver_Resolve((s32) temp_r4_1605));
+        this->unkF0 = (MKSceneManager *) (checked_cast<CutsceneProp *, MKProp>(temp_r3_1606->PropResolver_Resolve((s32) temp_r4_1605)));
     }
     MKProp::Resolve();
 }
@@ -985,7 +988,7 @@ s32 StalactiteCharge::LoadLine(MKIniLine *arg0) {
     return (u8) (arg0->LoadInt("CutscenePlayerID", (int *) &this->unkF0, 0) != 0);
 }
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: ')' expected Too many errors printed, aborting program
 void StalactiteCharge::Deinit() {
     IceBossStalactiteSpawner *temp_r31_1841;
     KDSplinePathSegment *temp_r3_1855;

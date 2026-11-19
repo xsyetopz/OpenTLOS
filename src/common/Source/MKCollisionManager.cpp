@@ -19,6 +19,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Level.h"
 #include "unplaced_enums.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -951,13 +952,11 @@ loop_87:
         arg3->unk4C = sp174;
         arg3->unk50 = sp178;
         arg3->unk50 = var_r29_1039;
-        Normalise(sp30);
-        M2C_FIELD(arg3, f64 *, 0x10) = M2C_BITWISE(f64, sp30);
-        M2C_FIELD(arg3, f64 *, 0x18) = (f64) sp30.unk8;
+        sp30 = Normalise(*((MKVector3 *) &arg3->unk10));
+        M2C_FIELD(arg3, MKVector3 *, 0x10) = sp30;
         if (GetTriVerts(sp18, *arg3, &sp40) != 0) {
-            GetInterpolatedColorFromPoly(sp20, (MKVector3 *) arg3);
-            M2C_FIELD(arg3, f64 *, 0x20) = M2C_BITWISE(f64, sp20);
-            M2C_FIELD(arg3, f64 *, 0x28) = (f64) sp20.unk8;
+            sp20 = GetInterpolatedColorFromPoly(*((MKVector3 *) arg3), &sp40);
+            M2C_FIELD(arg3, MKVector3 *, 0x20) = sp20;
         }
     }
     return var_r29_1039;
@@ -1347,18 +1346,16 @@ loop_82:
         arg2->unk50 = sp150;
         arg2->unk50 = 1;
         if (arg4 & 2) {
-            Normalise(sp28);
-            M2C_FIELD(arg2, f64 *, 0x10) = M2C_BITWISE(f64, sp28);
-            M2C_FIELD(arg2, f64 *, 0x18) = (f64) sp28.unk8;
+            sp28 = Normalise(*((MKVector3 *) &arg2->unk10));
+            M2C_FIELD(arg2, MKVector3 *, 0x10) = sp28;
             if (arg5 != NULL) {
                 arg5->unk8 = M2C_FIELD(arg2, f64 *, 0x10);
                 arg5->unk10 = M2C_FIELD(arg2, f64 *, 0x18);
             }
         }
         if ((arg4 & 4) && (GetTriVerts(var_r30_1539, *arg2, &sp38) != 0)) {
-            GetInterpolatedColorFromPoly(sp18, (MKVector3 *) arg2);
-            M2C_FIELD(arg2, f64 *, 0x20) = M2C_BITWISE(f64, sp18);
-            M2C_FIELD(arg2, f64 *, 0x28) = (f64) sp18.unk8;
+            sp18 = GetInterpolatedColorFromPoly(*((MKVector3 *) arg2), &sp38);
+            M2C_FIELD(arg2, MKVector3 *, 0x20) = sp18;
             if (arg5 != NULL) {
                 arg5->unk18 = M2C_FIELD(arg2, f64 *, 0x20);
                 arg5->unk20 = M2C_FIELD(arg2, f64 *, 0x28);
@@ -1685,13 +1682,11 @@ loop_87:
         arg2->unk4C = sp174;
         arg2->unk50 = sp178;
         arg2->unk50 = var_r29_2141;
-        Normalise(sp30);
-        M2C_FIELD(arg2, f64 *, 0x10) = M2C_BITWISE(f64, sp30);
-        M2C_FIELD(arg2, f64 *, 0x18) = (f64) sp30.unk8;
+        sp30 = Normalise(*((MKVector3 *) &arg2->unk10));
+        M2C_FIELD(arg2, MKVector3 *, 0x10) = sp30;
         if (GetTriVerts(sp18, *arg2, &sp40) != 0) {
-            GetInterpolatedColorFromPoly(sp20, (MKVector3 *) arg2);
-            M2C_FIELD(arg2, f64 *, 0x20) = M2C_BITWISE(f64, sp20);
-            M2C_FIELD(arg2, f64 *, 0x28) = (f64) sp20.unk8;
+            sp20 = GetInterpolatedColorFromPoly(*((MKVector3 *) arg2), &sp40);
+            M2C_FIELD(arg2, MKVector3 *, 0x20) = sp20;
         }
     }
     return var_r29_2141;
@@ -1743,14 +1738,14 @@ void MKCollisionManager::AddCapsule(MKVector3 *arg0, MKVector3 *arg1, float arg2
     sp34 = arg2;
     sp88 = (f64) sp38;
     sp80 = (f64) sp30;
-    Min(sp60, *arg0);
+    sp60 = Min(*arg0, *arg1);
     sp20 = sp60 - sp80;
     sp70 = sp20;
     sp28 = sp60.unk8 - (f32) sp88;
     sp90 = sp20;
     sp78 = (f64) sp28;
     sp98 = (f64) sp28;
-    Max(sp40, *arg0);
+    sp40 = Max(*arg0, *arg1);
     sp10 = sp40 + sp80;
     sp50 = sp10;
     sp18 = sp40.unk8 + (f32) sp88;
@@ -2102,13 +2097,11 @@ loop_4:
         temp_r30_3303 = arg2 + var_r31_3300;
         StoreItemInfo(temp_r30_3303, arg3, arg4, arg5);
         temp_r30_3303->unk50 = 1;
-        Normalise(sp18);
-        M2C_FIELD(temp_r30_3303, f64 *, 0x10) = M2C_BITWISE(f64, sp18);
-        M2C_FIELD(temp_r30_3303, f64 *, 0x18) = (f64) sp18.unk8;
+        sp18 = Normalise(*((MKVector3 *) &temp_r30_3303->unk10));
+        M2C_FIELD(temp_r30_3303, MKVector3 *, 0x10) = sp18;
         if (GetTriVerts(arg0, *temp_r30_3303, &sp28) != 0) {
-            GetInterpolatedColorFromPoly(sp8, (MKVector3 *) temp_r30_3303);
-            M2C_FIELD(temp_r30_3303, f64 *, 0x20) = M2C_BITWISE(f64, sp8);
-            M2C_FIELD(temp_r30_3303, f64 *, 0x28) = (f64) sp8.unk8;
+            sp8 = GetInterpolatedColorFromPoly(*((MKVector3 *) temp_r30_3303), &sp28);
+            M2C_FIELD(temp_r30_3303, MKVector3 *, 0x20) = sp8;
         }
         var_r29_3299 += 1;
         var_r31_3300 += 0x58;
@@ -2156,14 +2149,15 @@ void StoreItemInfo(MKCollisionResult *arg0, int arg1, MKCollisionMode arg2, int 
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'InterpolateVertexColor'
-void GetInterpolatedColorFromPoly(const MKVector3 &arg0, const MKVector3 *arg1) {
+#if 0 // DRAFT: illegal function overloading
+void GetInterpolatedColorFromPoly(const MKVector3 &arg1, const MKVector3 *arg2) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     MKVector4 sp8;
-    MKVector3 *temp_r31_3426;
 
-    temp_r31_3426 = M2C_ERROR(/* Read from unset register $r5 */);
-    MKCollision_GetVertexColorFromPoly(temp_r31_3426, &sp8);
-    InterpolateVertexColor(arg0, arg1, (MKVector4 *) temp_r31_3426);
+    MKCollision_GetVertexColorFromPoly(arg2, &sp8);
+    InterpolateVertexColor(*sret, &arg1, (MKVector4 *) arg2);
+    return result;
 }
 #endif
 

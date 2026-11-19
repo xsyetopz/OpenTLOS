@@ -20,6 +20,7 @@
 #include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -254,7 +255,7 @@ void *BaseBreathFX::Update() {
                         sp28 = temp_f0_323;
                         sp10 = M2C_FIELD(temp_r4_320, f32 *, 8) - M2C_FIELD(temp_r5_319, f32 *, 8);
                         sp30 = (f64) sp10;
-                        Normalise(sp38);
+                        sp38 = Normalise(*((MKVector3 *) &sp28));
                         temp_f1_338 = M2C_BITWISE(f64, sp38);
                         temp_r3_340 = ((u8 *) this->unk90) + (var_r29_212 + 0x58);
                         M2C_FIELD(temp_r3_340, f64 *, 0) = temp_f1_338;

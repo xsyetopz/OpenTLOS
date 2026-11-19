@@ -67,6 +67,7 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_CynderBreathEnd2;
@@ -810,7 +811,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
             spA8 = (f64) sp58;
             sp90 = (f64) sp40;
             sp98 = (f64) sp48;
-            KDRand_Vector(spB0, *((MKVector3 *) &spA0));
+            spB0 = KDRand_Vector(*((MKVector3 *) &spA0), *((MKVector3 *) &sp90));
             temp_f0_1336 = spB0 * 5.717499035e-315;
             sp30 = temp_f0_1336;
             spE0 = temp_f0_1336;
@@ -896,7 +897,7 @@ void *FireBombFX::Update() {
     MKVector3 sp408;
     f64 sp400;
     f64 sp3F8;
-    f64 sp3E8;
+    MKVector3 sp3E8;
     f64 sp3D8;
     f64 sp3D0;
     f64 sp3C8;
@@ -1151,7 +1152,7 @@ void *FireBombFX::Update() {
         sp450 = (f64) sp2A0;
         sp438 = (f64) sp288;
         sp440 = (f64) sp290;
-        KDRand_Vector(sp458, *((MKVector3 *) &sp448));
+        sp458 = KDRand_Vector(*((MKVector3 *) &sp448), *((MKVector3 *) &sp438));
         temp_f0_1566 = sp458 * 5.49408334e-315;
         sp278 = temp_f0_1566;
         sp468 = temp_f0_1566;
@@ -1187,11 +1188,11 @@ void *FireBombFX::Update() {
             sp4E8 = sp98;
             sp420 = (f64) spA0;
             sp4F0 = (f64) spA0;
-            MKVector(0.0f, -1960.0f, 0.0f);
+            sp3E8 = MKVector(0.0f, -1960.0f, 0.0f);
             temp_f0_1645 = sp3E8 * (f64) temp_f28_1635;
             sp88 = temp_f0_1645;
             sp3F8 = temp_f0_1645;
-            sp90 = sp3F0 * temp_f28_1635;
+            sp90 = sp3E8.unk8 * temp_f28_1635;
             sp400 = (f64) sp90;
             this->unkD0 += temp_f0_1645;
             M2C_FIELD(this, f32 *, 0xD8) = (f32) (M2C_FIELD(this, f32 *, 0xD8) + (f32) sp400);
@@ -1515,8 +1516,7 @@ void *FireBombFX::Update() {
             sp488 = sp28;
             sp490 = temp_f0_2403;
             KDMath_Smooth<MKVector4>(sp2A8, this->unk110, 0.5f, 1.0f);
-            M2C_FIELD(this, f64 *, 0x110) = M2C_BITWISE(f64, sp2A8);
-            M2C_FIELD(this, f64 *, 0x118) = (f64) sp2A8.unk8;
+            M2C_FIELD(this, MKVector4 *, 0x110) = sp2A8;
             temp_r3_2419 = this->unk108;
             temp_r3_2419->unk20 = M2C_FIELD(this, f64 *, 0x110);
             temp_r3_2419->unk28 = M2C_FIELD(this, f64 *, 0x118);

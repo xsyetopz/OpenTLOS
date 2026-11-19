@@ -24,6 +24,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -34,7 +35,7 @@ extern M2C_UNK gb;
 static s32 lit_522 = 0;
 static s32 lit_523 = 0xF;
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FootStepFX::EmitFootFX(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, MKVector4 arg3, float arg4, float arg5, int arg6) {
     f64 sp388;
     f64 sp380;
@@ -49,12 +50,12 @@ void FootStepFX::EmitFootFX(const MKVector3 &arg0, const MKVector3 &arg1, const 
     f64 sp330;
     MKVector3 sp320;
     MKVector3 sp310;
-    M2C_UNK sp300;
+    MKVector3 sp300;
     f64 sp2F8;
     f64 sp2F0;
     MKVector3 sp2E0;
     MKVector3 sp2D0;
-    M2C_UNK sp2C0;
+    MKVector3 sp2C0;
     f64 sp2B8;
     f64 sp2B0;
     MKVector3 sp2A0;
@@ -66,7 +67,7 @@ void FootStepFX::EmitFootFX(const MKVector3 &arg0, const MKVector3 &arg1, const 
     f64 sp270;
     MKVector3 sp260;
     MKVector3 sp250;
-    M2C_UNK sp240;
+    MKVector3 sp240;
     f64 sp238;
     f64 sp230;
     f64 sp228;
@@ -80,7 +81,7 @@ void FootStepFX::EmitFootFX(const MKVector3 &arg0, const MKVector3 &arg1, const 
     f64 sp1E0;
     MKVector3 sp1D0;
     MKVector3 sp1C0;
-    M2C_UNK sp1B0;
+    MKVector3 sp1B0;
     f64 sp1A8;
     f64 sp1A0;
     MKVector3 sp190;
@@ -92,7 +93,7 @@ void FootStepFX::EmitFootFX(const MKVector3 &arg0, const MKVector3 &arg1, const 
     f64 sp160;
     MKVector3 sp150;
     MKVector3 sp140;
-    M2C_UNK sp130;
+    MKVector3 sp130;
     f32 sp128;
     f64 sp120;
     f32 sp118;
@@ -188,9 +189,9 @@ void FootStepFX::EmitFootFX(const MKVector3 &arg0, const MKVector3 &arg1, const 
         temp_f28_84 = -arg1.unk8;
 loop_5:
         if (var_r24_77 < temp_r30_72) {
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp320, sp310);
+            sp300 = MKVector(1.0f, 1.0f, 1.0f);
+            sp310 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp320 = KDRand_Vector(sp310, sp300);
             spC0 = temp_f30_81;
             spC4 = temp_f29_82;
             spC8 = temp_f28_84;
@@ -237,9 +238,9 @@ loop_5:
     if (arg6 & 0x200) {
         var_r24_191 = 0;
         do {
-            MKVector(1.0f, 2.0f, 1.0f);
-            MKVector(-1.0f, 1.0f, -1.0f);
-            KDRand_Vector(sp2E0, sp2D0);
+            sp2C0 = MKVector(1.0f, 2.0f, 1.0f);
+            sp2D0 = MKVector(-1.0f, 1.0f, -1.0f);
+            sp2E0 = KDRand_Vector(sp2D0, sp2C0);
             sp110 = sp2E0 * 5.60222949e-315;
             sp2F0 = sp110;
             sp118 = sp2E0.unk8 * 300.0f;
@@ -260,9 +261,9 @@ loop_5:
         temp_f28_257 = -arg1.unk8;
 loop_19:
         if (var_r24_250 < temp_r30_72) {
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp260, sp250);
+            sp240 = MKVector(1.0f, 1.0f, 1.0f);
+            sp250 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp260 = KDRand_Vector(sp250, sp240);
             sp90 = temp_f30_254;
             sp94 = temp_f29_255;
             sp98 = temp_f28_257;
@@ -318,9 +319,9 @@ loop_19:
         var_r27_381 = 0;
 loop_26:
         if (var_r27_381 < (s32) (temp_r30_72 * 2)) {
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp1D0, sp1C0);
+            sp1B0 = MKVector(1.0f, 1.0f, 1.0f);
+            sp1C0 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp1D0 = KDRand_Vector(sp1C0, sp1B0);
             sp60 = temp_f30_377;
             sp64 = temp_f29_378;
             sp68 = temp_f28_380;
@@ -372,9 +373,9 @@ loop_26:
         var_r27_499 = 0;
 loop_34:
         if (var_r27_499 < (s32) (temp_r30_72 * 2)) {
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, -1.0f, -1.0f);
-            KDRand_Vector(sp150, sp140);
+            sp130 = MKVector(1.0f, 1.0f, 1.0f);
+            sp140 = MKVector(-1.0f, -1.0f, -1.0f);
+            sp150 = KDRand_Vector(sp140, sp130);
             sp30 = temp_f27_495;
             sp34 = temp_f28_496;
             sp38 = temp_f29_498;

@@ -37,6 +37,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -262,7 +263,7 @@ loop_23:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: pointer/array required
 void CharacterZapFX::SpawnZap() {
     MKVector3 spF0;
     f64 spE8;
@@ -330,9 +331,8 @@ void CharacterZapFX::SpawnZap() {
             sp14 = temp_f29_484;
             spE8 = (f64) sp18;
             spE0 = (f64) sp10;
-            Normalise(spF0);
-            M2C_FIELD(temp_r30_470, f64 *, 8) = M2C_BITWISE(f64, spF0);
-            M2C_FIELD(temp_r30_470, f64 *, 0x10) = (f64) spF0.unk8;
+            spF0 = Normalise(*((MKVector3 *) &spE0));
+            M2C_FIELD(temp_r30_470, MKVector3 *, 8) = spF0;
             temp_r30_470->unk0 = (MKHeap *) (GetRandomNode(NULL));
             temp_r30_470->unk4 = (long) (GetRandomNode((CBFXNode *) temp_r30_470->unk0));
             temp_f30_515 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -398,7 +398,7 @@ void CharacterZapFX::Update() {
     f64 spB8;
     f64 spB0;
     f64 spA8;
-    f64 sp98;
+    MKVector3 sp98;
     f64 sp90;
     f64 sp88;
     f32 sp80;
@@ -558,10 +558,10 @@ loop_6:
             this->unk30 = (f64) sp40;
             temp_f29_932 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f30_937 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f30_937, temp_f29_932);
+            sp98 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f30_937, temp_f29_932);
             sp28 = sp98 * 5.356796015e-315;
             this->unk38 = sp28;
-            sp30 = spA0 * 5.0f;
+            sp30 = sp98.unk8 * 5.0f;
             spA8 = sp28;
             spB0 = (f64) sp30;
             this->unk40 = (f64) sp30;

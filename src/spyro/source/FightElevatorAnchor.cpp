@@ -46,15 +46,12 @@ void *FightElevatorAnchor::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FightElevatorAnchor::GetZapAnchorPos() {
     MKVector3 sp8;
 
     MKModel_CalculateRefPointWorldPosition(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKModel **, 4), M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x1AC), &sp8);
-    M2C_FIELD(this, f64 *, 0) = M2C_BITWISE(f64, sp8);
-    M2C_FIELD(this, f64 *, 8) = (f64) sp8.unk8;
+    M2C_FIELD(this, MKVector3 *, 0) = sp8;
 }
-#endif
 
 s32 FightElevatorAnchor::LoadDone() {
     Shatterable::LoadDone();

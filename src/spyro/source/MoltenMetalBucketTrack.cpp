@@ -598,12 +598,10 @@ loop_9:
                     this->unk98 = sp80;
                     this->unkE0 = 0;
                 } else {
-                    Min(sp48, *((MKVector3 *) &this->unk4C.unk34));
-                    M2C_FIELD(this, f64 *, 0x80) = M2C_BITWISE(f64, sp48);
-                    M2C_FIELD(this, f64 *, 0x88) = (f64) sp48.unk8;
-                    Max(sp38, *((MKVector3 *) &this->unk90));
-                    this->unk90 = M2C_BITWISE(f64, sp38);
-                    this->unk98 = (f64) sp38.unk8;
+                    sp48 = Min(*((MKVector3 *) &this->unk4C.unk34), *((MKVector3 *) &sp78));
+                    M2C_FIELD(this, MKVector3 *, 0x80) = sp48;
+                    sp38 = Max(*((MKVector3 *) &this->unk90), *((MKVector3 *) &sp78));
+                    *(MKVector3 *) &this->unk90 = sp38;
                 }
                 ((KDUniformSpline *) &this->unk4C)->AddNode(*((MKVector3 *) &sp78));
                 var_r30_942 = var_r30_942->unkC->GetNextLine(var_r30_942);
@@ -631,12 +629,10 @@ loop_18:
                     this->unk98 = sp70;
                     this->unkE0 = 0;
                 } else {
-                    Min(sp18, *((MKVector3 *) &this->unk4C.unk34));
-                    M2C_FIELD(this, f64 *, 0x80) = M2C_BITWISE(f64, sp18);
-                    M2C_FIELD(this, f64 *, 0x88) = (f64) sp18.unk8;
-                    Max(sp8, *((MKVector3 *) &this->unk90));
-                    this->unk90 = M2C_BITWISE(f64, sp8);
-                    this->unk98 = (f64) sp8.unk8;
+                    sp18 = Min(*((MKVector3 *) &this->unk4C.unk34), *((MKVector3 *) &sp68));
+                    M2C_FIELD(this, MKVector3 *, 0x80) = sp18;
+                    sp8 = Max(*((MKVector3 *) &this->unk90), *((MKVector3 *) &sp68));
+                    *(MKVector3 *) &this->unk90 = sp8;
                 }
                 ((KDUniformSpline *) &this->unk4C.unk14)->AddNode(*((MKVector3 *) &sp68));
                 var_r30_1016 = var_r30_1016->unkC->GetNextLine(var_r30_1016);

@@ -40,6 +40,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 SPYRO_BOUNCE_Y_SPEED;
@@ -364,7 +365,7 @@ void FallingLeaves::UpdateParticles() {
     MKVector3 sp1C0;
     f64 sp1B8;
     f64 sp1B0;
-    f64 sp1A0;
+    MKVector3 sp1A0;
     f64 sp198;
     f64 sp190;
     f64 sp188;
@@ -381,7 +382,7 @@ void FallingLeaves::UpdateParticles() {
     f64 sp130;
     f64 sp128;
     f64 sp120;
-    f64 sp110;
+    MKVector3 sp110;
     f32 sp108;
     f32 sp104;
     f32 sp100;
@@ -495,11 +496,11 @@ loop_51:
                 M2C_FIELD(temp_r30_470, f32 *, 8) = (f32) (M2C_FIELD(temp_r30_470, f32 *, 8) + (f32) sp1D8);
                 temp_f29_548 = gUpdateTimeDelta;
                 temp_f25_550 = 1.0f - (M2C_FIELD(temp_r30_470, f32 *, 0x24) / 90.0f);
-                MKVector(0.0f, -200.0f * temp_f25_550, 0.0f);
+                sp1A0 = MKVector(0.0f, -200.0f * temp_f25_550, 0.0f);
                 temp_f0_555 = sp1A0 * (f64) temp_f29_548;
                 sp60 = temp_f0_555;
                 sp1B0 = temp_f0_555;
-                sp68 = sp1A8 * temp_f29_548;
+                sp68 = sp1A0.unk8 * temp_f29_548;
                 sp1B8 = (f64) sp68;
                 M2C_FIELD(temp_r30_470, f64 *, 0) = (f64) (M2C_FIELD(temp_r30_470, f64 *, 0) + temp_f0_555);
                 M2C_FIELD(temp_r30_470, f32 *, 8) = (f32) (M2C_FIELD(temp_r30_470, f32 *, 8) + (f32) sp1B8);
@@ -678,11 +679,11 @@ loop_51:
                         sp1F8 = (f32) sp1F8 * 25.0f;
                         M2C_FIELD(temp_r30_470, f32 *, 8) = (f64) sp1F8;
                         temp_f23_965 = MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f);
-                        MKVector(MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f), 1.0f, temp_f23_965);
+                        sp110 = MKVector(MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f), 1.0f, temp_f23_965);
                         temp_f0_977 = sp110 * 5.60222949e-315;
                         sp20 = temp_f0_977;
                         sp120 = temp_f0_977;
-                        sp28 = sp118 * 300.0f;
+                        sp28 = sp110.unk8 * 300.0f;
                         sp128 = (f64) sp28;
                         M2C_FIELD(temp_r30_470, f64 *, 0) = (f64) (M2C_FIELD(temp_r30_470, f64 *, 0) + temp_f0_977);
                         M2C_FIELD(temp_r30_470, f32 *, 8) = (f32) (M2C_FIELD(temp_r30_470, f32 *, 8) + (f32) sp128);
@@ -707,7 +708,7 @@ void FallingLeaves::ApplyWind(WindFX *arg0) {
     f64 sp60;
     f64 sp58;
     f64 sp50;
-    f64 sp40;
+    MKVector3 sp40;
     f32 sp38;
     f64 sp30;
     f32 sp28;
@@ -748,11 +749,11 @@ loop_6:
                 M2C_FIELD(temp_r30_1082, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 7.5f, 85.0f);
                 temp_f28_1159 = 1.0f - (M2C_FIELD(temp_r30_1082, f32 *, 0x24) / 90.0f);
                 temp_f27_1161 = MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f);
-                MKVector(MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f), 1.0f, temp_f27_1161);
+                sp40 = MKVector(MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f), 1.0f, temp_f27_1161);
                 temp_f0_1173 = sp40 * 5.60222949e-315;
                 sp10 = temp_f0_1173;
                 sp50 = temp_f0_1173;
-                sp18 = sp48 * 300.0f;
+                sp18 = sp40.unk8 * 300.0f;
                 sp58 = (f64) sp18;
                 M2C_FIELD(temp_r30_1082, f64 *, 0) = (f64) (M2C_FIELD(temp_r30_1082, f64 *, 0) + temp_f0_1173);
                 M2C_FIELD(temp_r30_1082, f32 *, 8) = (f32) (M2C_FIELD(temp_r30_1082, f32 *, 8) + (f32) sp58);
@@ -821,7 +822,7 @@ void *FallingLeaves::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
     MKCollisionResult spD8;
     f64 spD0;                                       /* compiler-managed */
@@ -830,14 +831,14 @@ void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
     f64 spB8;
     f64 spB0;
     f64 spA8;
-    f64 sp98;
+    MKVector3 sp98;
     f64 sp90;
     f64 sp88;
     f64 sp80;
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    f64 sp58;
+    MKVector3 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -877,11 +878,11 @@ void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
     spC0 = temp_f31_1361;
     spD0 = (f32) spD0 * 25.0f;
     temp_f27_1397 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-    MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), 0.0f, temp_f27_1397);
+    sp98 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), 0.0f, temp_f27_1397);
     temp_f0_1408 = sp98 * 5.634608575e-315;
     sp18 = temp_f0_1408;
     spA8 = temp_f0_1408;
-    sp20 = spA0 * 500.0f;
+    sp20 = sp98.unk8 * 500.0f;
     spB0 = (f64) sp20;
     spB8 += temp_f0_1408;
     temp_f1_1423 = (f32) spC0;
@@ -912,11 +913,11 @@ void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
         sp90 = (f64) sp30;
         if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp88), 3000.0f, &spD8, 0, 2, NULL, (MKCollisionMode) 6) != 0) {
             M2C_FIELD(temp_r30_1432, f32 *, 0x20) = (f32) (10.0f + spD8.unk4);
-            MKVector(0.0f, 10.0f, 0.0f);
-            temp_f0_1515 = M2C_BITWISE(f64, spD8) + sp58;
+            sp58 = MKVector(0.0f, 10.0f, 0.0f);
+            temp_f0_1515 = M2C_BITWISE(f64, spD8) + M2C_BITWISE(f64, sp58);
             sp8 = temp_f0_1515;
             M2C_FIELD(temp_r3_1429, f64 *, 0) = temp_f0_1515;
-            sp10 = spD8.unk8 + sp60;
+            sp10 = spD8.unk8 + sp58.unk8;
             sp68 = temp_f0_1515;
             M2C_FIELD(temp_r3_1429, f64 *, 8) = (f64) sp10;
             sp70 = (f64) sp10;
@@ -928,7 +929,7 @@ void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void FallingLeaves::Emit() {
     MKCollisionResult spC8;
     f64 spC0;                                       /* compiler-managed */
@@ -937,7 +938,7 @@ void FallingLeaves::Emit() {
     f64 spA8;
     f64 spA0;
     f64 sp98;
-    f64 sp88;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
     f64 sp70;
@@ -962,7 +963,6 @@ void FallingLeaves::Emit() {
     f32 temp_f29_1582;
     f64 temp_f0_1620;
     f64 temp_f0_1718;
-    f64 temp_f1_1600;
     s32 var_r29_1571;
     void *temp_r28_1651;
     void *temp_r3_1648;
@@ -977,18 +977,17 @@ void FallingLeaves::Emit() {
         spB8 = (f64) sp48;
         spC0 = (f64) sp50;
         spB8 *= 5.45263811e-315;
-        temp_f1_1600 = this->unk140;
-        spA8 = temp_f1_1600;
+        spA8 = this->unk140;
         spC0 = (f32) spC0 * 25.0f;
         spB0 = this->unk148;
         temp_f28_1609 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), 0.0f, temp_f28_1609);
+        sp88 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), 0.0f, temp_f28_1609);
         temp_f0_1620 = sp88 * 5.65176949e-315;
         sp18 = temp_f0_1620;
         sp98 = temp_f0_1620;
-        sp20 = sp90 * 700.0f;
+        sp20 = sp88.unk8 * 700.0f;
         spA0 = (f64) sp20;
-        spA8 = temp_f1_1600 + temp_f0_1620;
+        spA8 += temp_f0_1620;
         spB0 = (f32) spB0 + (f32) spA0;
         (*(f32 *) ((u8 *) &spA8 + 0x4)) += MKRand_Float((int *) &gViewSeed, 725.0f, 800.0f);
         temp_r3_1648 = CreateParticle();
@@ -1059,7 +1058,7 @@ void FallingLeaves::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const flo
     f32 spD8;
     f64 spD0;
     f64 spC8;
-    M2C_UNK spB8;
+    MKVector4 spB8;
     f64 spB0;
     f64 spA8;
     f64 spA0;
@@ -1105,7 +1104,7 @@ void FallingLeaves::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const flo
         M2C_FIELD(temp_r30_1788, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 7.5f, 55.0f);
         M2C_FIELD(temp_r3_1785, f32 *, 0x20) = (f32) &arg3;
         temp_f31_1819 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
-        MKVector(1.0f, 1.0f, 1.0f, 1.0f);
+        spB8 = MKVector(1.0f, 1.0f, 1.0f, 1.0f);
         sp18 = M2C_FIELD(&spB8, f64 *, 0) * (f64) temp_f31_1819;
         temp_f0_1832 = M2C_FIELD(&spB8, f64 *, 8) * (f64) temp_f31_1819;
         sp20 = temp_f0_1832;

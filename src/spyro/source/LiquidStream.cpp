@@ -13,6 +13,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -121,9 +122,8 @@ loop_14:
                     sp110 = temp_f0_108;
                     sp58 = M2C_FIELD(temp_r4_105, f32 *, 8) - M2C_FIELD(var_r29_98, f32 *, 8);
                     sp118 = (f64) sp58;
-                    Normalise(sp120);
-                    sp140 = M2C_BITWISE(f64, sp120);
-                    sp148 = (f64) sp120.unk8;
+                    sp120 = Normalise(*((MKVector3 *) &sp110));
+                    *(MKVector3 *) &sp140 = sp120;
                 } else {
                     temp_r4_127 = M2C_FIELD(var_r29_98, void **, 0x2C);
                     if (temp_r4_127 == NULL) {
@@ -132,18 +132,16 @@ loop_14:
                         spF0 = temp_f0_132;
                         sp48 = M2C_FIELD(var_r29_98, f32 *, 8) - M2C_FIELD(temp_r5_102, f32 *, 8);
                         spF8 = (f64) sp48;
-                        Normalise(sp100);
-                        sp140 = M2C_BITWISE(f64, sp100);
-                        sp148 = (f64) sp100.unk8;
+                        sp100 = Normalise(*((MKVector3 *) &spF0));
+                        *(MKVector3 *) &sp140 = sp100;
                     } else {
                         temp_f0_153 = M2C_FIELD(temp_r4_127, f64 *, 0) - M2C_FIELD(temp_r5_102, f64 *, 0);
                         sp30 = temp_f0_153;
                         spD0 = temp_f0_153;
                         sp38 = M2C_FIELD(temp_r4_127, f32 *, 8) - M2C_FIELD(temp_r5_102, f32 *, 8);
                         spD8 = (f64) sp38;
-                        Normalise(spE0);
-                        sp140 = M2C_BITWISE(f64, spE0);
-                        sp148 = (f64) spE0.unk8;
+                        spE0 = Normalise(*((MKVector3 *) &spD0));
+                        *(MKVector3 *) &sp140 = spE0;
                     }
                 }
                 sp28 = ((f32) sp140 * (*(f32 *) ((u8 *) &sp160 + 0x4))) - ((*(f32 *) ((u8 *) &sp140 + 0x4)) * (f32) sp160);
@@ -151,9 +149,8 @@ loop_14:
                 sp20 = ((*(f32 *) ((u8 *) &sp140 + 0x4)) * (f32) sp168) - ((f32) sp148 * (*(f32 *) ((u8 *) &sp160 + 0x4)));
                 spB8 = (f64) sp28;
                 spB0 = (f64) sp20;
-                Normalise(spC0);
-                sp150 = M2C_BITWISE(f64, spC0);
-                sp158 = (f64) spC0.unk8;
+                spC0 = Normalise(*((MKVector3 *) &spB0));
+                *(MKVector3 *) &sp150 = spC0;
                 temp_f30_206 = M2C_FIELD(var_r29_98, f32 *, 0x24);
                 sp14 = ((f32) sp158 * (f32) sp140) - ((f32) sp150 * (f32) sp148);
                 sp18 = ((f32) sp150 * (*(f32 *) ((u8 *) &sp140 + 0x4))) - ((*(f32 *) ((u8 *) &sp150 + 0x4)) * (f32) sp140);

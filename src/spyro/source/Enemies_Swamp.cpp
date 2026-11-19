@@ -95,7 +95,7 @@ s32 SwampTier3::CanMoveAwayFromHero() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp80'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void SwampTier3::CheckAnimEvents() {
     f64 spC0;
     f64 spB8;
@@ -103,10 +103,10 @@ void SwampTier3::CheckAnimEvents() {
     MKVector3 sp98;
     f64 sp90;
     f64 sp88;
-    f64 sp78;
+    MKVector3 sp78;
     f64 sp70;
     f64 sp68;
-    f64 sp58;
+    MKVector3 sp58;
     f64 sp50;
     f64 sp48;
     f32 sp44;
@@ -137,10 +137,10 @@ loop_9:
             if ((MKHeap *) var_r27_104->unk0 != (MKHeap *)-1U) {
                 var_r26_110 = 0;
                 do {
-                    KDRand_UnitVectorXZ();
+                    sp78 = KDRand_UnitVectorXZ();
                     sp28 = sp78 * 5.53552857e-315;
                     spB8 = sp28;
-                    sp30 = sp80 * 100.0f;
+                    sp30 = sp78.unk8 * 100.0f;
                     sp88 = sp28;
                     spC0 = (f64) sp30;
                     sp90 = (f64) sp30;
@@ -148,10 +148,10 @@ loop_9:
                     spC = MKRand_Int((int *) &gViewSeed, 2, 4);
                     sp10 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
                     ((FallingLeaves *) gb.unk234)->Emit(spA8, *((MKVector3 *) &spB8), sp10, spC, 1U);
-                    KDRand_UnitVectorXZ();
+                    sp58 = KDRand_UnitVectorXZ();
                     sp18 = sp58 * 5.53552857e-315;
                     sp68 = sp18;
-                    sp20 = sp60 * 100.0f;
+                    sp20 = sp58.unk8 * 100.0f;
                     spB8 = sp18;
                     sp70 = (f64) sp20;
                     spC0 = (f64) sp20;
@@ -241,17 +241,17 @@ void SwampTier3Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp60'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void SwampTier2::CheckAnimEvents() {
     f64 sp90;
     f64 sp88;
     MKVector3 sp78;
     f64 sp70;
     f64 sp68;
-    f64 sp58;
+    MKVector3 sp58;
     f64 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f32 sp30;
     f64 sp28;
     f32 sp20;
@@ -275,10 +275,10 @@ loop_9:
             if ((MKHeap *) var_r28_423->unk0 != (MKHeap *)-1U) {
                 var_r27_428 = 0;
                 do {
-                    KDRand_UnitVectorXZ();
+                    sp58 = KDRand_UnitVectorXZ();
                     sp28 = sp58 * 5.53552857e-315;
                     sp88 = sp28;
-                    sp30 = sp60 * 100.0f;
+                    sp30 = sp58.unk8 * 100.0f;
                     (*(f32 *) ((u8 *) &sp88 + 0x4)) = 100.0f;
                     sp90 = (f64) sp30;
                     sp68 = sp28;
@@ -287,10 +287,10 @@ loop_9:
                     spC = MKRand_Int((int *) &gViewSeed, 2, 4);
                     sp10 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
                     ((FallingLeaves *) gb.unk234)->Emit(sp78, *((MKVector3 *) &sp88), sp10, spC, 1U);
-                    KDRand_UnitVectorXZ();
+                    sp38 = KDRand_UnitVectorXZ();
                     sp18 = sp38 * 5.53552857e-315;
                     sp88 = sp18;
-                    sp20 = sp40 * 100.0f;
+                    sp20 = sp38.unk8 * 100.0f;
                     sp48 = sp18;
                     sp50 = (f64) sp20;
                     sp90 = (f64) sp20;
@@ -430,17 +430,17 @@ s32 SwampTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x358);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp60'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void SwampTier1::CheckAnimEvents() {
     f64 sp90;
     f64 sp88;
     MKVector3 sp78;
     f64 sp70;
     f64 sp68;
-    f64 sp58;
+    MKVector3 sp58;
     f64 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f32 sp30;
     f64 sp28;
     f32 sp20;
@@ -462,10 +462,10 @@ loop_8:
             if ((MKHeap *) var_r28_754->unk0 != (MKHeap *)-1U) {
                 var_r27_759 = 0;
                 do {
-                    KDRand_UnitVectorXZ();
+                    sp58 = KDRand_UnitVectorXZ();
                     sp28 = sp58 * 5.53552857e-315;
                     sp88 = sp28;
-                    sp30 = sp60 * 100.0f;
+                    sp30 = sp58.unk8 * 100.0f;
                     (*(f32 *) ((u8 *) &sp88 + 0x4)) = 200.0f;
                     sp90 = (f64) sp30;
                     sp68 = sp28;
@@ -478,10 +478,10 @@ loop_8:
                 } while (var_r27_759 < 4);
                 var_r27_801 = 0;
                 do {
-                    KDRand_UnitVectorXZ();
+                    sp38 = KDRand_UnitVectorXZ();
                     sp18 = sp38 * 5.53552857e-315;
                     sp88 = sp18;
-                    sp20 = sp40 * 100.0f;
+                    sp20 = sp38.unk8 * 100.0f;
                     sp48 = sp18;
                     sp50 = (f64) sp20;
                     sp90 = (f64) sp20;

@@ -57,6 +57,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
@@ -187,10 +188,9 @@ void *ZapCage::Update() {
         sp108 = temp_f0_206;
         sp70 = (f32) sp100 - (f32) sp180;
         sp110 = (f64) sp70;
-        Normalise(sp118);
+        sp118 = Normalise(*((MKVector3 *) &sp108));
         temp_f2_220 = M2C_FIELD(temp_r30_164, f32 *, 0xC);
-        sp128.unk30 = M2C_BITWISE(f64, sp118);
-        sp128.unk38 = (f64) sp118.unk8;
+        *(MKVector3 *) &sp128.unk30 = sp118;
         temp_f0_226 = M2C_BITWISE(f64, sp128.unk30) * (f64) temp_f2_220;
         sp58 = temp_f0_226;
         spE8 = temp_f0_226;
@@ -210,7 +210,7 @@ void *ZapCage::Update() {
         spC0 = (f64) sp40;
         spC8 = (f64) sp48;
         spD0 = (f64) sp50;
-        KDRand_Vector(spD8, *((MKVector3 *) &spC8));
+        spD8 = KDRand_Vector(*((MKVector3 *) &spC8), *((MKVector3 *) &spB8));
         sp128.unk40 = M2C_BITWISE(f64, spD8);
         temp_f6_278 = M2C_BITWISE(f32, sp128.__vptr);
         sp128.unk48 = (f64) spD8.unk8;

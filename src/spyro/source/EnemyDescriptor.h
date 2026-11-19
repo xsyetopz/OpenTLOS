@@ -19,6 +19,7 @@ class MKAnim;
 class MKAnimScript;
 class MKHeap;
 class MKIniLine;
+class MKVector3;
 
 class AnimSequence {
 public:
@@ -180,7 +181,7 @@ public:
     /* 0x2b0 */ s32 unk2B0;
 };
 
-void SumAnimTranslation(MKAnimScript *, MKAnim *, float);
+MKVector3 SumAnimTranslation(MKAnimScript *, MKAnim *, float);
 extern DataMap dataMapAnimSequence;
 extern u8 emThresholds[0x64];
 extern u8 emAnims[0x118];

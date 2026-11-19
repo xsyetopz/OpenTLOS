@@ -31,6 +31,7 @@
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 acos(f32, void *, f32, f64, f32, f32, f32, f64, f32, f32, f32, f32, f32, f32, f32); /* extern */
@@ -60,8 +61,8 @@ static f32 fSBInverseWeight[0x12] = {
     3.0f,
     0.0f,
 };
+static MKVector3 vBaseHeading = { 0.0f, 0.0f, 0.0f, 0.0f };
 #if 0 // DRAFT: identifier 'fGameTimeLastUpdate' redeclared was declared as: 'unsigned char[4]' now declared as: 'float'
-static M2C_UNK vBaseHeading;                        /* unable to generate initializer: unknown type */
 static f32 fGameTimeLastUpdate = -1.0f;
 #endif
 
@@ -288,7 +289,7 @@ void SB2::Calculate(unsigned int arg0) {
             sp90.unk18 = M2C_FIELD(temp_r3_341, f64 *, 0x38);
             ((AITargetData *) (M2C_FIELD(arg0, AITargetData **, 0xC)))->Update(*((MKVector3 *) &sp90.unk10));
             sp90.GetDir();
-            if (((sp90.unk8 * (f32) M2C_FIELD(&vBaseHeading, f64 *, 8)) + ((M2C_BITWISE(f32, sp90) * (f32) M2C_FIELD(&vBaseHeading, f64 *, 0)) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * M2C_FIELD(&vBaseHeading, f32 *, 4)))) > 0.35f) {
+            if (((sp90.unk8 * vBaseHeading.unk8) + ((M2C_BITWISE(f32, sp90) * vBaseHeading.unk0) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * vBaseHeading.unk4))) > 0.35f) {
                 ((AITargetData *) &sp80)->GetDir();
                 M2C_FIELD(&vBaseHeading, f64 *, 0) = sp80;
                 M2C_FIELD(&vBaseHeading, f64 *, 8) = sp88;
@@ -321,17 +322,16 @@ void SB2::Calculate(unsigned int arg0) {
     sp78 = M2C_FIELD(temp_r5_419, f64 *, 0x38);
     ((AITargetData *) (arg0 + 0x18))->Update(*((MKVector3 *) &sp70));
     temp_r3_425 = M2C_FIELD(arg0, s32 *, 0x460);
-    if (((temp_r3_425 & 0x80) || (temp_r3_425 & 0x4000)) && ((temp_r3_425 & 0x4000) || (((AITargetData *) &sp60)->GetDir(), ((((sp68 * (f32) M2C_FIELD(&vBaseHeading, f64 *, 8)) + ((sp60 * (f32) M2C_FIELD(&vBaseHeading, f64 *, 0)) + (sp64 * M2C_FIELD(&vBaseHeading, f32 *, 4)))) > 0.35f) != 0))) && (((AITargetData *) (arg0 + 0x18))->GetDist() > 0.0f)) {
+    if (((temp_r3_425 & 0x80) || (temp_r3_425 & 0x4000)) && ((temp_r3_425 & 0x4000) || (((AITargetData *) &sp60)->GetDir(), ((((sp68 * vBaseHeading.unk8) + ((sp60 * vBaseHeading.unk0) + (sp64 * vBaseHeading.unk4))) > 0.35f) != 0))) && (((AITargetData *) (arg0 + 0x18))->GetDist() > 0.0f)) {
         ((AITargetData *) &sp50)->GetDir();
         M2C_FIELD(&vBaseHeading, f64 *, 0) = sp50;
         M2C_FIELD(&vBaseHeading, f64 *, 8) = sp58;
     }
 loop_32:
     ((SteerDirection *) (arg0 + ((M2C_FIELD(arg0, s32 *, 0x3F8) * 0x98) + 0x100)))->Init();
-    KDMath_RotateVectorByYaw(sp40, STEER_DIR_ANGLES[M2C_FIELD(arg0, s32 *, 0x3F8)]);
+    sp40 = KDMath_RotateVectorByYaw(vBaseHeading, STEER_DIR_ANGLES[M2C_FIELD(arg0, s32 *, 0x3F8)]);
     temp_r3_486 = (void *) (arg0 + ((M2C_FIELD(arg0, s32 *, 0x3F8) * 0x98) + 0x100));
-    M2C_FIELD(temp_r3_486, f64 *, 0) = M2C_BITWISE(f64, sp40);
-    M2C_FIELD(temp_r3_486, f64 *, 8) = (f64) sp40.unk8;
+    M2C_FIELD(temp_r3_486, MKVector3 *, 0) = sp40;
     if (M2C_FIELD(arg0, s32 *, 0x460) & 1) {
         ((SB2 *) arg0)->Seek();
     }
@@ -444,7 +444,7 @@ void SB2::GraphFollowingAny() {
     f64 sp130;
     MKVector3 sp120;
     MKVector3 sp110;
-    M2C_UNK sp100;
+    MKVector3 sp100;
     f64 spF8;
     f64 spF0;
     MKVector3 spE0;
@@ -452,7 +452,7 @@ void SB2::GraphFollowingAny() {
     f64 spC0;
     MKVector3 spB0;
     MKVector3 spA0;
-    M2C_UNK sp90;
+    MKVector3 sp90;
     f64 sp88;
     f64 sp80;
     MKVector3 sp70;
@@ -594,11 +594,10 @@ loop_19:
                 temp_r29_847 = this->unk448->GetLink(var_r31_808);
                 if (!(((u8) this->unk464 >> 5U) & 1)) {
                     temp_r4_850 = this->unk448;
-                    M2C_FIELD(temp_r4_850->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp100, temp_r4_850);
+                    M2C_FIELD(temp_r4_850->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&sp100, temp_r4_850);
                     M2C_FIELD(temp_r29_847->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&sp110, temp_r29_847);
-                    KDMath_Sub2D(sp120, sp110);
-                    M2C_FIELD(this, f32 *, 0x438) = M2C_BITWISE(f64, sp120);
-                    M2C_FIELD(this, f32 *, 0x440) = (f64) sp120.unk8;
+                    sp120 = KDMath_Sub2D(sp110, sp100);
+                    *(MKVector3 *) &M2C_FIELD(this, f32 *, 0x438) = sp120;
                 } else {
                     temp_r4_872 = this->unk448;
                     M2C_FIELD(temp_r4_872->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&spD0, temp_r4_872);
@@ -700,11 +699,10 @@ loop_19:
                 temp_r31_1074 = this->unk448->GetLink(var_r29_1058);
                 if (!(((u8) this->unk464 >> 5U) & 1)) {
                     temp_r4_1077 = this->unk448;
-                    M2C_FIELD(temp_r4_1077->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp90, temp_r4_1077);
+                    M2C_FIELD(temp_r4_1077->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&sp90, temp_r4_1077);
                     M2C_FIELD(temp_r31_1074->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&spA0, temp_r31_1074);
-                    KDMath_Sub2D(spB0, spA0);
-                    M2C_FIELD(this, f32 *, 0x438) = M2C_BITWISE(f64, spB0);
-                    M2C_FIELD(this, f32 *, 0x440) = (f64) spB0.unk8;
+                    spB0 = KDMath_Sub2D(spA0, sp90);
+                    *(MKVector3 *) &M2C_FIELD(this, f32 *, 0x438) = spB0;
                 } else {
                     temp_r4_1099 = this->unk448;
                     M2C_FIELD(temp_r4_1099->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp60, temp_r4_1099);
@@ -777,7 +775,7 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
     f64 spA8;
     MKVector3 sp98;
     MKVector3 sp88;
-    M2C_UNK sp78;
+    MKVector3 sp78;
     f64 sp70;
     f64 sp68;
     f64 sp58;
@@ -941,12 +939,11 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
         if (((spB8.unk28 * temp_f4_1461) + ((spB8.unk20 * temp_f6_1457) + ((*(f32 *) ((u8 *) &spB8 + 0x24)) * temp_f5_1455))) > 0.95f) {
             if (!(((u8) this->unk464 >> 5U) & 1)) {
                 temp_r4_1474 = this->unk448;
-                M2C_FIELD(temp_r4_1474->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp78, temp_r4_1474);
+                M2C_FIELD(temp_r4_1474->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&sp78, temp_r4_1474);
                 temp_r4_1480 = this->unk44C;
                 M2C_FIELD(temp_r4_1480->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&sp88, temp_r4_1480);
-                KDMath_Sub2D(sp98, sp88);
-                M2C_FIELD(this, f64 *, 0x438) = M2C_BITWISE(f64, sp98);
-                M2C_FIELD(this, f64 *, 0x440) = (f64) sp98.unk8;
+                sp98 = KDMath_Sub2D(sp88, sp78);
+                M2C_FIELD(this, MKVector3 *, 0x438) = sp98;
             } else {
                 temp_r4_1496 = this->unk448;
                 M2C_FIELD(temp_r4_1496->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp48, temp_r4_1496);
@@ -1440,7 +1437,7 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
     f64 spA0;
     MKVector3 sp90;
     MKVector3 sp80;
-    M2C_UNK sp70;
+    MKVector3 sp70;
     f64 sp68;
     f64 sp60;
     f64 sp50;
@@ -1591,12 +1588,11 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
         if (((spB0.unk28 * temp_f4_2543) + ((spB0.unk20 * temp_f6_2539) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * temp_f5_2537))) < -0.95f) {
             if (!(((u8) this->unk464 >> 5U) & 1)) {
                 temp_r4_2556 = this->unk448;
-                M2C_FIELD(temp_r4_2556->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp70, temp_r4_2556);
+                M2C_FIELD(temp_r4_2556->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&sp70, temp_r4_2556);
                 temp_r4_2562 = this->unk44C;
                 M2C_FIELD(temp_r4_2562->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&sp80, temp_r4_2562);
-                KDMath_Sub2D(sp90, sp80);
-                M2C_FIELD(this, f64 *, 0x438) = M2C_BITWISE(f64, sp90);
-                M2C_FIELD(this, f64 *, 0x440) = (f64) sp90.unk8;
+                sp90 = KDMath_Sub2D(sp80, sp70);
+                M2C_FIELD(this, MKVector3 *, 0x438) = sp90;
             } else {
                 temp_r4_2578 = this->unk448;
                 M2C_FIELD(temp_r4_2578->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp40, temp_r4_2578);
@@ -2164,9 +2160,8 @@ void SB2::GraphFollowingOn(CharacterGraphNode *arg0, CharacterGraphNode *arg1, G
                 sp50 = temp_f1_3503;
                 sp58 = M2C_FIELD(temp_r5_3501, f64 *, 0x38);
                 M2C_FIELD(arg0->__vptr, M2C_UNK (**)(MKVector3 *, void *, f64), 0x30)(&sp60, temp_r5_3501, temp_f1_3503);
-                KDMath_Sub2D(sp70, sp60);
-                M2C_FIELD(this, f64 *, 0x438) = M2C_BITWISE(f64, sp70);
-                M2C_FIELD(this, f64 *, 0x440) = (f64) sp70.unk8;
+                sp70 = KDMath_Sub2D(sp60, *((MKVector3 *) &sp50));
+                M2C_FIELD(this, MKVector3 *, 0x438) = sp70;
             } else {
                 ((MKProp *) &sp20)->GetPos();
                 M2C_FIELD(arg0->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp30, arg0);
@@ -2487,11 +2482,9 @@ void SB2::Containment() {
         }
         M2C_FIELD((this + (this->unk3F8 * 0x98)), f32 *, 0x160) = (f32) (var_f4_3900 / temp_f31_3842);
         temp_r3_3974 = this + ((this->unk3F8 * 0x98) + 0x140);
-        M2C_FIELD(temp_r3_3974, f64 *, 0) = M2C_BITWISE(f64, sp90);
-        M2C_FIELD(temp_r3_3974, f64 *, 8) = (f64) sp90.unk8;
+        M2C_FIELD(temp_r3_3974, MKVector3 *, 0) = sp90;
         temp_r3_3982 = this + ((this->unk3F8 * 0x98) + 0x150);
-        M2C_FIELD(temp_r3_3982, f64 *, 0) = M2C_BITWISE(f64, sp80);
-        M2C_FIELD(temp_r3_3982, f64 *, 8) = (f64) sp80.unk8;
+        M2C_FIELD(temp_r3_3982, MKVector3 *, 0) = sp80;
         if (this->unk4->IsPointWithin(*((MKVector3 *) &spB0)) != 0) {
             temp_r3_3995 = this + (this->unk3F8 * 0x98);
             M2C_FIELD(temp_r3_3995, f32 *, 0x110) = (f32) (((1.0f - M2C_FIELD(temp_r3_3995, f32 *, 0x160)) * fSBInverseWeight[0xF]) + M2C_FIELD(temp_r3_3995, f32 *, 0x110));
@@ -2542,11 +2535,9 @@ void SB2::Containment() {
         }
         M2C_FIELD((this + (this->unk3F8 * 0x98)), f32 *, 0x188) = (f32) (var_f4_4047 / temp_f31_3842);
         temp_r3_4121 = this + ((this->unk3F8 * 0x98) + 0x168);
-        M2C_FIELD(temp_r3_4121, f64 *, 0) = M2C_BITWISE(f64, sp90);
-        M2C_FIELD(temp_r3_4121, f64 *, 8) = (f64) sp90.unk8;
+        M2C_FIELD(temp_r3_4121, MKVector3 *, 0) = sp90;
         temp_r3_4129 = this + ((this->unk3F8 * 0x98) + 0x178);
-        M2C_FIELD(temp_r3_4129, f64 *, 0) = M2C_BITWISE(f64, sp80);
-        M2C_FIELD(temp_r3_4129, f64 *, 8) = (f64) sp80.unk8;
+        M2C_FIELD(temp_r3_4129, MKVector3 *, 0) = sp80;
         if (((EnemyRegion *) (M2C_FIELD(this, EnemyRegion **, 8)))->IsPointWithin(*((MKVector3 *) &spB0)) == 0) {
             temp_r3_4142 = this + (this->unk3F8 * 0x98);
             M2C_FIELD(temp_r3_4142, f32 *, 0x110) = (f32) (((1.0f - M2C_FIELD(temp_r3_4142, f32 *, 0x160)) * fSBInverseWeight[0xF]) + M2C_FIELD(temp_r3_4142, f32 *, 0x110));
@@ -2737,10 +2728,9 @@ void SB2::WallAvoidance() {
         sp10 = (f64) sp140;
         sp88 = sp8;
         sp90 = (f64) sp140;
-        Normalise(sp98);
+        sp98 = Normalise(*((MKVector3 *) &sp88));
         temp_r3_4421 = this + ((this->unk3F8 * 0x98) + 0x128);
-        M2C_FIELD(temp_r3_4421, f64 *, 0) = M2C_BITWISE(f64, sp98);
-        M2C_FIELD(temp_r3_4421, f64 *, 8) = (f64) sp98.unk8;
+        M2C_FIELD(temp_r3_4421, MKVector3 *, 0) = sp98;
     }
 }
 #endif
@@ -3655,9 +3645,8 @@ void SB2::WanderSetGoal() {
                             sp1E8 = temp_f0_5952;
                             spA0 = (f32) sp390 + sp338.unk48;
                             sp1F0 = (f64) spA0;
-                            Normalise(sp1F8);
-                            M2C_FIELD(this, f32 *, 0x400) = M2C_BITWISE(f64, sp1F8);
-                            M2C_FIELD(this, f32 *, 0x408) = (f64) sp1F8.unk8;
+                            sp1F8 = Normalise(*((MKVector3 *) &sp1E8));
+                            *(MKVector3 *) &M2C_FIELD(this, f32 *, 0x400) = sp1F8;
                         }
                         temp_r4_5973 = this->unk0->unk8;
                         temp_f10_5977 = -M2C_FIELD(temp_r4_5973, f32 *, 0x20);
@@ -4206,9 +4195,7 @@ void SB2::Init() {
     SetDefaults();
 }
 
-#if 0 // DRAFT: undefined identifier 'vBaseHeading'
 void SB2_cpp::__sinit() {
     M2C_FIELD(&vBaseHeading, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(&vBaseHeading, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
-#endif

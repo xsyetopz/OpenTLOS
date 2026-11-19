@@ -12,6 +12,7 @@
 #include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKSystem.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: identifier 'gDynamicBones' redeclared was declared as: 'MKDynamicBoneSystem' now declared as: 'void **'
@@ -126,7 +127,7 @@ void MKDynamicBone::Reset() {
         spD0 = (f64) sp40;
         break;
     }
-    Normalise(sp68);
+    sp68 = Normalise(*((MKVector3 *) &spC8));
     temp_f0_148 = sp68 * (f64) temp_f31_37;
     sp28 = temp_f0_148;
     sp78 = temp_f0_148;
@@ -460,7 +461,7 @@ void MKDynamicBone::Update() {
                 sp560 = (f64) sp1B0;
                 break;
             }
-            Normalise(sp4A8);
+            sp4A8 = Normalise(*((MKVector3 *) &sp558));
             sp4B8.operator*(temp_f25_222);
             sp198 = sp588 + M2C_BITWISE(f64, sp4B8);
             sp4C8 = sp198;
@@ -553,7 +554,7 @@ void MKDynamicBone::Update() {
             sp3E8 = temp_f0_550;
             sp20 = this->unk8 - (f32) sp590;
             sp3F0 = (f64) sp20;
-            Normalise(sp3F8);
+            sp3F8 = Normalise(*((MKVector3 *) &sp3E8));
             sp408.operator*(temp_f25_222);
             sp128 = sp588 + M2C_BITWISE(f64, sp408);
             M2C_FIELD(this, f64 *, 0) = sp128;
@@ -645,9 +646,8 @@ void MKDynamicBone::Update() {
             }
         }
         if (temp_r30_391 != 0) {
-            Normalise(sp368);
-            sp518 = M2C_BITWISE(f64, sp368);
-            sp520 = (f64) sp368.unk8;
+            sp368 = Normalise(*((MKVector3 *) &sp6A0));
+            *(MKVector3 *) &sp518 = sp368;
             spC8 = (f32) sp518;
             spCC = (*(f32 *) ((u8 *) &sp518 + 0x4));
             temp_f8_818 = M2C_FIELD(temp_r31_217, f32 *, 0x60);
@@ -684,9 +684,8 @@ void MKDynamicBone::Update() {
                     M2C_FIELD(this, f32 *, 8) = (f64) spB0;
                 }
             }
-            Normalise(sp2F8);
-            sp518 = M2C_BITWISE(f64, sp2F8);
-            sp520 = (f64) sp2F8.unk8;
+            sp2F8 = Normalise(*((MKVector3 *) &sp6A0.unk10));
+            *(MKVector3 *) &sp518 = sp2F8;
             sp98 = (f32) sp518;
             temp_f8_911 = M2C_FIELD(temp_r31_217, f32 *, 0x64);
             sp9C = (*(f32 *) ((u8 *) &sp518 + 0x4));
@@ -723,9 +722,8 @@ void MKDynamicBone::Update() {
                     M2C_FIELD(this, f32 *, 8) = (f64) sp80;
                 }
             }
-            Normalise(sp288);
-            sp518 = M2C_BITWISE(f64, sp288);
-            sp520 = (f64) sp288.unk8;
+            sp288 = Normalise(*((MKVector3 *) &sp6A0.unk20));
+            *(MKVector3 *) &sp518 = sp288;
             sp68 = (f32) sp518;
             temp_f8_1005 = M2C_FIELD(temp_r31_217, f32 *, 0x68);
             sp6C = (*(f32 *) ((u8 *) &sp518 + 0x4));

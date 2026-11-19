@@ -51,6 +51,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void ****);                            /* extern */
@@ -408,7 +409,7 @@ loop_24:
             sp100 = (f64) sp90;
             sp108 = (f64) sp98;
             sp110 = (f64) spA0;
-            KDRand_Vector(sp118, *((MKVector3 *) &sp108));
+            sp118 = KDRand_Vector(*((MKVector3 *) &sp108), *((MKVector3 *) &spF8));
             temp_f0_511 = sp178 + M2C_BITWISE(f64, sp118);
             sp78 = temp_f0_511;
             sp158 = temp_f0_511;
@@ -678,7 +679,7 @@ void FuryFXElectricity2::Draw() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *FuryFXElectricity2::Update() {
     f64 sp268;
     f64 sp260;
@@ -686,10 +687,10 @@ void *FuryFXElectricity2::Update() {
     f64 sp250;
     f64 sp248;
     f64 sp240;
-    f64 sp230;
+    MKVector3 sp230;
     f64 sp228;
     f64 sp220;
-    f64 sp210;
+    MKVector3 sp210;
     f64 sp208;
     f64 sp200;
     f64 sp1F8;
@@ -703,7 +704,7 @@ void *FuryFXElectricity2::Update() {
     f64 sp1B0;
     f64 sp1A8;
     f64 sp1A0;
-    f64 sp190;
+    MKVector3 sp190;
     MKVector3 sp180;
     f64 sp178;
     f64 sp170;
@@ -717,7 +718,7 @@ void *FuryFXElectricity2::Update() {
     f64 sp130;
     f64 sp128;
     f64 sp120;
-    f64 sp110;
+    MKVector3 sp110;
     f32 sp108;
     f32 sp104;
     f32 sp100;
@@ -816,11 +817,11 @@ void *FuryFXElectricity2::Update() {
     case 1:                                         /* switch 1 */
         if ((this->unk94 <= 0.0f) && (this->unk90 = 2, this->unk94 = 0.8f, temp_r4_1149 = this->unkA8, ((temp_r4_1149 == NULL) == 0))) {
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_1149, 1U);
-            MKVector(0.0f, 300.0f, 0.0f);
-            sp50 = this->unk98 + sp230;
+            sp230 = MKVector(0.0f, 300.0f, 0.0f);
+            sp50 = this->unk98 + M2C_BITWISE(f64, sp230);
             temp_r3_1171 = this->unkA8;
             sp240 = sp50;
-            sp58 = this->unkA0 + sp238;
+            sp58 = this->unkA0 + sp230.unk8;
             temp_r3_1171->unk10 = sp50;
             temp_r3_1171->unk18 = (f64) sp58;
             temp_r3_1177 = temp_r3_1171->unk3C;
@@ -858,11 +859,11 @@ void *FuryFXElectricity2::Update() {
         }
         temp_f30_1221 = 1.0f - (var_f1_1201 / 0.8f);
         if ((ManagedLight *) this->unkA8 != NULL) {
-            MKVector(0.0f, (400.0f * temp_f30_1221) + 25.0f, 0.0f);
-            sp40 = this->unk98 + sp210;
+            sp210 = MKVector(0.0f, (400.0f * temp_f30_1221) + 25.0f, 0.0f);
+            sp40 = this->unk98 + M2C_BITWISE(f64, sp210);
             temp_r3_1239 = this->unkA8;
             sp220 = sp40;
-            sp48 = this->unkA0 + sp218;
+            sp48 = this->unkA0 + sp210.unk8;
             temp_r3_1239->unk10 = sp40;
             temp_r3_1239->unk18 = (f64) sp48;
             temp_r3_1245 = temp_r3_1239->unk3C;
@@ -913,7 +914,7 @@ void *FuryFXElectricity2::Update() {
         sp1C8 = (f64) spE8;
         sp1B0 = (f64) spD0;
         sp1B8 = (f64) spD8;
-        KDRand_Vector(sp1D0, *((MKVector3 *) &sp1C0));
+        sp1D0 = KDRand_Vector(*((MKVector3 *) &sp1C0), *((MKVector3 *) &sp1B0));
         spC0 = sp1D0 * 5.717499035e-315;
         sp100 = 0.0f;
         sp104 = 3000.0f;
@@ -934,11 +935,11 @@ void *FuryFXElectricity2::Update() {
         spB8 = (f32) sp208 + (f32) sp1E8;
         sp268 = (f64) spB8;
         if ((ManagedLight *) this->unkA8 != NULL) {
-            MKVector(0.0f, 2500.0f, 0.0f);
-            sp30 = sp260 - sp190;
+            sp190 = MKVector(0.0f, 2500.0f, 0.0f);
+            sp30 = sp260 - M2C_BITWISE(f64, sp190);
             temp_r3_1395 = this->unkA8;
             sp1A0 = sp30;
-            sp38 = (f32) sp268 - sp198;
+            sp38 = (f32) sp268 - sp190.unk8;
             temp_r3_1395->unk10 = sp30;
             temp_r3_1395->unk18 = (f64) sp38;
             temp_r3_1401 = temp_r3_1395->unk3C;
@@ -968,7 +969,7 @@ void *FuryFXElectricity2::Update() {
         sp178 = (f64) spA8;
         sp160 = (f64) sp90;
         sp168 = (f64) sp98;
-        KDRand_Vector(sp180, *((MKVector3 *) &sp170));
+        sp180 = KDRand_Vector(*((MKVector3 *) &sp170), *((MKVector3 *) &sp160));
         temp_f1_1452 = M2C_BITWISE(f32, sp180);
         var_f4_1460 = (sp180.unk8 * sp180.unk8) + ((temp_f1_1452 * temp_f1_1452) + (sp180.unk4 * sp180.unk4));
         if (var_f4_1460 > 1e-12f) {
@@ -1046,11 +1047,11 @@ void *FuryFXElectricity2::Update() {
         break;
     case 4:                                         /* switch 1 */
         if ((ManagedLight *) this->unkA8 != NULL) {
-            MKVector(0.0f, 2000.0f * gUpdateTimeDelta, 0.0f);
+            sp110 = MKVector(0.0f, 2000.0f * gUpdateTimeDelta, 0.0f);
             temp_r4_1628 = this->unkA8;
-            sp10 = temp_r4_1628->unk10 + sp110;
+            sp10 = temp_r4_1628->unk10 + M2C_BITWISE(f64, sp110);
             temp_r4_1628->unk10 = sp10;
-            sp18 = (f32) M2C_FIELD(temp_r4_1628, f64 *, 0x18) + sp118;
+            sp18 = (f32) M2C_FIELD(temp_r4_1628, f64 *, 0x18) + sp110.unk8;
             sp120 = sp10;
             temp_r4_1628->unk18 = (f64) sp18;
             temp_r3_1643 = temp_r4_1628->unk3C;

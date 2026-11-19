@@ -65,6 +65,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKVector3 **);                         /* extern */
@@ -121,12 +122,12 @@ u8 EarthBreathFX::ShootEarthBomb(const MKVector3 &arg0, const MKVector3 &arg1, c
     f64 sp1A0;                                      /* compiler-managed */
     f64 sp198;
     f64 sp190;
-    M2C_UNK sp180;
+    MKVector3 sp180;
     f64 sp178;
     f64 sp170;
     f64 sp168;
     f64 sp160;
-    f64 sp150;
+    MKVector3 sp150;
     f64 sp148;
     f64 sp140;
     MKVector3 sp130;
@@ -205,11 +206,11 @@ u8 EarthBreathFX::ShootEarthBomb(const MKVector3 &arg0, const MKVector3 &arg1, c
         M2C_FIELD(temp_r3_68->__vptr, M2C_UNK (**)(), 0x30)();
         if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
             sp1B4 = 0;
-            MKVector(1.0f, 1.0f, 1.0f);
+            sp150 = MKVector(1.0f, 1.0f, 1.0f);
             sp10 = sp150 * 5.49408334e-315;
             sp1B0 = 0x417;
             sp1B8 = sp10;
-            sp18 = sp158 * 50.0f;
+            sp18 = sp150.unk8 * 50.0f;
             sp1C8 = 1;
             sp1C0 = (f64) sp18;
             sp160 = sp10;
@@ -339,10 +340,9 @@ loop_57:
                 goto loop_57;
             }
         }
-        if ((var_r29_218 != NULL) && (M2C_FIELD(*var_r29_218, u8 (**)(TargetManager **, MKVector3 *, M2C_UNK *), 0x2C)(var_r29_218, &arg0, &sp180) != 0)) {
-            Tools_CalculateVelocity(sp130, arg0, var_f30_113, -1960.0f);
-            sp190 = M2C_BITWISE(f64, sp130);
-            sp198 = (f64) sp130.unk8;
+        if ((var_r29_218 != NULL) && (M2C_FIELD(*var_r29_218, u8 (**)(TargetManager **, MKVector3 *, MKVector3 *), 0x2C)(var_r29_218, &arg0, &sp180) != 0)) {
+            sp130 = Tools_CalculateVelocity(arg0, sp180, var_f30_113, -1960.0f);
+            *(MKVector3 *) &sp190 = sp130;
         } else {
             temp_f2_445 = this->unkA0;
             temp_f0_448 = (f64) M2C_FIELD(&arg1, f32 *, 0) * (f64) temp_f2_445;
@@ -398,9 +398,8 @@ loop_57:
                 sp170 = (f64) sp1D0;
                 sp178 = (f64) sp1D8;
             }
-            Tools_CalculateVelocity(spD0, arg0, var_f30_113, -1960.0f);
-            sp190 = M2C_BITWISE(f64, spD0);
-            sp198 = (f64) spD0.unk8;
+            spD0 = Tools_CalculateVelocity(arg0, *((MKVector3 *) &sp170), var_f30_113, -1960.0f);
+            *(MKVector3 *) &sp190 = spD0;
         }
         sp28 = 0.0f;
         sp20 = 0.0f;
@@ -501,12 +500,12 @@ s32 EarthBreathFX::ShootShotgun(const MKVector3 &arg0, const MKVector3 &arg1, co
     f64 sp168;
     f64 sp160;
     f64 sp158;
-    f64 sp148;
+    MKVector3 sp148;
     f64 sp140;
     f64 sp138;
     f64 sp130;
     f64 sp128;
-    f64 sp118;
+    MKVector3 sp118;
     f32 sp110;
     f32 sp10C;
     f32 sp108;
@@ -759,11 +758,11 @@ block_27:
     temp_r4_1206 = this->unkB8;
     if (temp_r4_1206 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_1206, 1U);
-        MKVector(0.0f, 200.0f, 0.0f);
-        sp38 = (f64) M2C_FIELD(&arg0, f32 *, 0) + sp148;
+        sp148 = MKVector(0.0f, 200.0f, 0.0f);
+        sp38 = (f64) M2C_FIELD(&arg0, f32 *, 0) + M2C_BITWISE(f64, sp148);
         temp_r3_1227 = this->unkB8;
         sp158 = sp38;
-        sp40 = arg0.unk8 + sp150;
+        sp40 = arg0.unk8 + sp148.unk8;
         temp_r3_1227->unk10 = sp38;
         temp_r3_1227->unk18 = (f64) sp40;
         temp_r3_1233 = temp_r3_1227->unk3C;
@@ -798,11 +797,11 @@ block_27:
     }
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
         sp23C = 0;
-        MKVector(1.0f, 1.0f, 1.0f);
+        sp118 = MKVector(1.0f, 1.0f, 1.0f);
         sp18 = sp118 * 5.49408334e-315;
         sp238 = 0x417;
         sp240 = sp18;
-        sp20 = sp120 * 50.0f;
+        sp20 = sp118.unk8 * 50.0f;
         sp250 = 1;
         sp248 = (f64) sp20;
         sp128 = sp18;
@@ -995,7 +994,7 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void EarthBreathFX::UpdateSeedBullets() {
     f64 sp180;
     f64 sp170;
@@ -1003,7 +1002,7 @@ void EarthBreathFX::UpdateSeedBullets() {
     f64 sp160;
     f64 sp158;
     f64 sp150;
-    f64 sp140;
+    MKVector3 sp140;
     f64 sp138;
     f64 sp130;
     f64 sp128;
@@ -1103,12 +1102,12 @@ loop_54:
                 var_r28_1755 = 1;
             } else if (((u8) M2C_FIELD(temp_r3_1759, u8 *, 0x28) == 0) || ((u8) M2C_FIELD(temp_r3_1759, u8 *, 0x29) == 0)) {
                 temp_f29_1776 = gUpdateTimeDelta;
-                MKVector(0.0f, -2000.0f, 0.0f);
+                sp140 = MKVector(0.0f, -2000.0f, 0.0f);
                 temp_f0_1782 = sp140 * (f64) temp_f29_1776;
                 sp30 = temp_f0_1782;
                 sp150 = temp_f0_1782;
                 temp_r3_1789 = *var_r29_1748 + 0x10;
-                sp38 = sp148 * temp_f29_1776;
+                sp38 = sp140.unk8 * temp_f29_1776;
                 sp158 = (f64) sp38;
                 M2C_FIELD(temp_r3_1789, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_1789, f64 *, 0) + temp_f0_1782);
                 temp_r3_1789->unk8 += (f32) sp158;
@@ -1294,14 +1293,14 @@ loop_54:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *EarthBreathFX::SpawnSeedBullet(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3, bool arg4) {
     f64 sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
     MKVector3 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f32 sp20;
     f64 sp18;
     f32 sp10;
@@ -1320,12 +1319,12 @@ void *EarthBreathFX::SpawnSeedBullet(const MKVector3 &arg0, const MKVector3 &arg
     if (temp_r31_2216 != NULL) {
         M2C_FIELD(temp_r31_2216, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
         M2C_FIELD(temp_r31_2216, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-        MKVector(0.0f, 200.0f, 0.0f);
+        sp28 = MKVector(0.0f, 200.0f, 0.0f);
         sp38.operator*(3500.0f);
-        temp_f0_2235 = sp38 + sp28;
+        temp_f0_2235 = sp38 + M2C_BITWISE(f64, sp28);
         sp8 = temp_f0_2235;
         sp48 = temp_f0_2235;
-        sp10 = sp38.unk8 + sp30;
+        sp10 = sp38.unk8 + sp28.unk8;
         sp50 = (f64) sp10;
         temp_f0_2247 = sp48 + M2C_FIELD(&arg2, f64 *, 0);
         sp18 = temp_f0_2247;

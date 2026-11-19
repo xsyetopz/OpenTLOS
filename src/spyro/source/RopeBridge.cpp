@@ -43,6 +43,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 void *__construct_new_array();                      /* extern */
@@ -1551,7 +1552,7 @@ void *RopeBridge::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp1B0'
+#if 0 // DRAFT: illegal type
 f32 RopeBridge::Resolve() {
     s8 sp2B8;
     s32 sp2B4;
@@ -1596,7 +1597,7 @@ f32 RopeBridge::Resolve() {
     f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
-    f64 sp1A8;
+    MKVector3 sp1A8;
     f64 sp1A0;
     f64 sp198;
     f64 sp190;
@@ -1605,7 +1606,7 @@ f32 RopeBridge::Resolve() {
     f64 sp178;
     f64 sp170;
     f64 sp168;
-    f64 sp158;
+    MKVector3 sp158;
     f64 sp150;
     f64 sp148;
     f32 sp140;
@@ -1764,9 +1765,8 @@ f32 RopeBridge::Resolve() {
     sp228 = (f64) spD8;
     sp230 = (f64) spE0;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp238), *((MKVector3 *) &sp228), (MKCollisionResult *) &sp268, (MKCollisionMode) 7, 0) != 0) {
-        Tools_GroundColor((MKCollisionResult *) &sp1A8);
-        sp248 = sp1A8;
-        sp250 = sp1B0;
+        sp1A8 = Tools_GroundColor((MKCollisionResult *) &sp268);
+        *(MKVector3 *) &sp248 = sp1A8;
     }
     spC8 = 0.0f;
     spCC = -1.0f;
@@ -1823,9 +1823,8 @@ f32 RopeBridge::Resolve() {
     sp1E8 = (f64) sp58;
     sp1F0 = (f64) sp60;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp1F8), *((MKVector3 *) &sp1E8), (MKCollisionResult *) &sp268, (MKCollisionMode) 7, 0) != 0) {
-        Tools_GroundColor((MKCollisionResult *) &sp158);
-        sp208 = sp158;
-        sp210 = sp160;
+        sp158 = Tools_GroundColor((MKCollisionResult *) &sp268);
+        *(MKVector3 *) &sp208 = sp158;
     }
     var_r31_2796 = 0;
     var_r29_2797 = 0;
@@ -1856,7 +1855,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void RopeBridge::BuildBridgeStartPosition() {
     f32 sp60;
     f32 sp5C;
@@ -1865,7 +1864,7 @@ void RopeBridge::BuildBridgeStartPosition() {
     f64 sp48;
     MKVector3 sp38;
     MKVector3 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     f32 temp_f1_2925;
@@ -1899,17 +1898,17 @@ loop_5:
         } else {
             var_f3_2915 = temp_f4_2917;
         }
-        MKVector(0.0f, temp_f1_2925 * (1.0f - temp_f1_2925) * 4.07f * (this->unk178 * var_f3_2915), 0.0f);
+        sp18 = MKVector(0.0f, temp_f1_2925 * (1.0f - temp_f1_2925) * 4.07f * (this->unk178 * var_f3_2915), 0.0f);
         sp28.operator*((f32) var_r30_2906);
         sp38.operator/((f32) this->unk188);
-        sp8 = sp38 - sp18;
+        sp8 = sp38 - M2C_BITWISE(f64, sp18);
         temp_r4_2964 = var_r28_2908 + 0x20;
         temp_r5_2966 = var_r28_2908 + 0x30;
         var_r30_2906 += 1;
         temp_r3_2971 = ((u8 *) this->unk180) + (var_r28_2908 + 0x10);
         var_r28_2908 += 0x48;
         M2C_FIELD(temp_r3_2971, f64 *, 0) = sp8;
-        sp10 = sp38.unk8 - sp20;
+        sp10 = sp38.unk8 - sp18.unk8;
         sp48 = sp8;
         M2C_FIELD(temp_r3_2971, f64 *, 8) = (f64) sp10;
         sp50 = (f64) sp10;

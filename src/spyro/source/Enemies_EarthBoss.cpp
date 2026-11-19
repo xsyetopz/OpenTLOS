@@ -82,6 +82,7 @@
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/PhrasePlayer.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 s32 atoi(s8 *);                                     /* extern */
@@ -376,7 +377,7 @@ void EarthBossArm::DoHitFx(EnemyDamageFeedback *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void EarthBoss::DoHitFx(EnemyDamageFeedback *arg0) {
     f64 sp120;
     f64 sp118;
@@ -384,7 +385,7 @@ void EarthBoss::DoHitFx(EnemyDamageFeedback *arg0) {
     f64 sp108;
     MKVector3 spF8;
     MKVector3 spE8;
-    M2C_UNK spD8;
+    MKVector3 spD8;
     MKVector3 spC8;
     f64 spC0;
     f64 spB8;
@@ -423,9 +424,9 @@ void EarthBoss::DoHitFx(EnemyDamageFeedback *arg0) {
     if (arg0->unk20 & 0x3F0) {
         var_r29_444 = 0;
         do {
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(spF8, spE8);
+            spD8 = MKVector(1.0f, 1.0f, 1.0f);
+            spE8 = MKVector(-1.0f, 0.0f, -1.0f);
+            spF8 = KDRand_Vector(spE8, spD8);
             sp8 = spF8 * 5.758944265e-315;
             sp18 = 1.0f;
             sp1C = 0.75f;
@@ -459,8 +460,8 @@ void EarthBoss::DoHitFx(EnemyDamageFeedback *arg0) {
             spB0 = (f64) sp50;
             spB8 = (f64) sp58;
             spC0 = (f64) sp60;
-            KDRand_Vector(sp98, *((MKVector3 *) &sp88));
-            KDRand_Vector(spC8, *((MKVector3 *) &spB8));
+            sp98 = KDRand_Vector(*((MKVector3 *) &sp88), *((MKVector3 *) &sp78));
+            spC8 = KDRand_Vector(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8));
             ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xAC)))->Emit(*((MKVector3 *) arg0), *((MKVector3 *) &sp118), spC8, sp98, temp_f1_485, *((MKVector4 *) &sp68), 0, (MKProp *) this);
             var_r29_444 += 1;
         } while (var_r29_444 < 0xA);
@@ -925,7 +926,7 @@ void EarthBoss::CheckAnimEvents() {
     f64 sp60;
     f64 sp58;
     MKVector3 sp48;
-    M2C_UNK sp38;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp24;
@@ -942,7 +943,7 @@ void EarthBoss::CheckAnimEvents() {
     if (((MKAnimScript *) this->unk630)->CheckEvent(4) != 0) {
         temp_f31_1466 = (MKVector3 *) (((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.025f, 0.2f, 0.2f, ((u8 *) this->unk8) + 0x30, 80.0f, 0, 4.0f, 0U));
         sp7C = 0;
-        MKVector(0.025f, 0.4f, 0.025f);
+        sp38 = MKVector(0.025f, 0.4f, 0.025f);
         sp48.operator*(500.0f);
         sp8 = sp48 * (f64) temp_f31_1466;
         sp78 = 0x417;
@@ -1792,7 +1793,7 @@ void EarthBossArm::Extend() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void EarthBossArm::Aim(const MKVector3 &arg0) {
     Matrix spE0;
     Matrix spA0;
@@ -1831,7 +1832,7 @@ void EarthBossArm::Aim(const MKVector3 &arg0) {
     sp30 = temp_f0_3150;
     sp18 = spA0.unk38 - spE0.unk38;
     sp38 = (f64) sp18;
-    Normalise(sp40);
+    sp40 = Normalise(*((MKVector3 *) &sp30));
     temp_f6_3170 = M2C_BITWISE(f32, sp40);
     temp_f4_3181 = (sp40.unk8 * sp60.unk20) + ((temp_f6_3170 * M2C_BITWISE(f32, sp60)) + (sp40.unk4 * sp60.unk10));
     temp_f2_3183 = (sp40.unk8 * sp60.unk24) + ((temp_f6_3170 * sp60.unk4) + (sp40.unk4 * sp60.unk14));
@@ -1934,7 +1935,7 @@ void EarthBossArm::SetRetracted() {
     sp60 = temp_f0_3323;
     sp18 = spA0.unk8 - sp90.unk8;
     sp68 = (f64) sp18;
-    Normalise(sp70);
+    sp70 = Normalise(*((MKVector3 *) &sp60));
     var_r27_3337 = 2;
     var_r30_3339 = 0x100;
     temp_f6_3344 = M2C_BITWISE(f32, sp70);
@@ -2244,7 +2245,7 @@ void EarthBossArm::UpdateExtension() {
     f64 sp68;
     f64 sp60;
     MKVector3 sp50;
-    M2C_UNK sp40;
+    MKVector3 sp40;
     f64 sp38;
     f64 sp30;
     f32 sp2C;
@@ -2281,7 +2282,7 @@ void EarthBossArm::UpdateExtension() {
                 if (((s32) this->unk38C == 4) && ((u8) this->unk390 != 0)) {
                     temp_f31_3987 = (MKVector3 *) (((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, ((u8 *) this->unk8) + 0x30, 80.0f, 0, 4.0f, 0U));
                     sp74 = 0;
-                    MKVector(0.05f, 0.8f, 0.05f);
+                    sp40 = MKVector(0.05f, 0.8f, 0.05f);
                     sp50.operator*(500.0f);
                     sp10 = sp50 * (f64) temp_f31_3987;
                     sp70 = 0x417;
@@ -3046,7 +3047,7 @@ void *EarthBossArm::Update() {
         sp22C = 0.0f;
         sp150 = (f64) sp50;
         sp158 = (f64) sp58;
-        Normalise(sp160);
+        sp160 = Normalise(*((MKVector3 *) &sp150));
         sp230 = M2C_BITWISE(f32, sp160);
         sp234 = sp160.unk4;
         sp238 = sp160.unk8;
@@ -3081,9 +3082,8 @@ void *EarthBossArm::Update() {
             var_f1_5240 = 0.0f;
         }
         Tools_RotateMatrixToDirection((Matrix *) &sp210, *((MKVector3 *) &this->unkE0), *((MKVector3 *) &sp1E0), var_f1_5240);
-        Normalise(sp100);
-        this->unkE0 = M2C_BITWISE(f64, sp100);
-        this->unkE8 = (f64) sp100.unk8;
+        sp100 = Normalise(*((MKVector3 *) &sp210));
+        *(MKVector3 *) &this->unkE0 = sp100;
         if (((s32) this->unk38C == 2) && ((((f32) sp1E8 * M2C_FIELD(this, f32 *, 0xE8)) + (((f32) sp1E0 * M2C_FIELD(this, f32 *, 0xE0)) + ((*(f32 *) ((u8 *) &sp1E0 + 0x4)) * M2C_FIELD(this, f32 *, 0xE4)))) >= 1.0f)) {
             this->unk38C = 0;
             this->unkE0 = sp1E0;

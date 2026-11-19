@@ -14,6 +14,7 @@
 #include "spyro/source/Level.h"
 #include "spyro/source/WaterDripPS.h"
 #include "common/Source/StdMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 acos();                                         /* extern */
@@ -172,11 +173,11 @@ void WaterTrickleEmitter::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void WaterTrickleEmitterDescriptor::Init() {
     f64 sp50;
     f64 sp48;
-    f32 sp38;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
@@ -188,10 +189,10 @@ void WaterTrickleEmitterDescriptor::Init() {
 
     MKPropDescriptor::Init();
     this->unk1C = (BoundingVolume *) &this->unk60;
-    MKVector(200.0f, 200.0f, 200.0f);
-    sp18 = -sp38;
-    sp1C = -sp3C;
-    sp20 = -sp40;
+    sp38 = MKVector(200.0f, 200.0f, 200.0f);
+    sp18 = -M2C_BITWISE(f32, sp38);
+    sp1C = -sp38.unk4;
+    sp20 = -sp38.unk8;
     M2C_FIELD(this, f64 *, 0x60) = (f64) sp18;
     sp10 = 400.0f;
     sp8 = 400.0f;

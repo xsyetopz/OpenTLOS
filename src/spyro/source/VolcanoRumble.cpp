@@ -36,6 +36,7 @@
 #include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK __destroy_arr(KDSoundFader *, KDSoundFader *(*)(KDSoundFader *, s16), M2C_UNK, M2C_UNK); /* extern */
@@ -67,23 +68,23 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
     f64 sp138;
     f64 sp130;
     f64 sp128;
-    f64 sp118;
+    MKVector3 sp118;
     f64 sp110;
     f64 sp108;
     HeroInterface spF8;
-    f64 spE8;
+    MKVector3 spE8;
     f64 spE0;
     f64 spD8;
     HeroInterface spC8;
-    f64 spB8;
+    MKVector3 spB8;
     f64 spB0;
     f64 spA8;
     HeroInterface sp98;
-    f64 sp88;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
     HeroInterface sp68;
-    f64 sp58;
+    MKVector3 sp58;
     f32 sp50;
     f64 sp48;
     f32 sp40;
@@ -98,10 +99,10 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
     if (this->unkEC <= 0.0f) {
         M2C_FIELD(this, s8 *, 0xF0) = 0;
         sp17C = 0;
-        MKVector(0.4f, 0.4f, 0.4f);
+        sp118 = MKVector(0.4f, 0.4f, 0.4f);
         sp48 = sp118 * 5.634608575e-315;
         sp178 = 0x417;
-        sp50 = sp120 * 500.0f;
+        sp50 = sp118.unk8 * 500.0f;
         sp180 = sp48;
         sp188 = (f64) sp50;
         sp190 = 1;
@@ -109,35 +110,35 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
         sp130 = (f64) sp50;
         M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp178, sp48);
         ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay(0.03f, 0.3f, 0.5f, 0, 4.0f, 0U);
-        MKVector(2000.0f, 0.0f, 0.0f);
+        spE8 = MKVector(2000.0f, 0.0f, 0.0f);
         spF8.GetPos();
-        sp38 = spF8 + spE8;
+        sp38 = spF8 + M2C_BITWISE(f64, spE8);
         sp108 = sp38;
-        sp40 = sp100 + spF0;
+        sp40 = sp100 + spE8.unk8;
         sp168 = sp38;
         sp110 = (f64) sp40;
         sp170 = (f64) sp40;
-        MKVector(-2000.0f, 0.0f, 0.0f);
+        spB8 = MKVector(-2000.0f, 0.0f, 0.0f);
         spC8.GetPos();
-        sp28 = spC8 + spB8;
+        sp28 = spC8 + M2C_BITWISE(f64, spB8);
         spD8 = sp28;
-        sp30 = spD0 + spC0;
+        sp30 = spD0 + spB8.unk8;
         sp158 = sp28;
         spE0 = (f64) sp30;
         sp160 = (f64) sp30;
-        MKVector(0.0f, 0.0f, 2000.0f);
+        sp88 = MKVector(0.0f, 0.0f, 2000.0f);
         sp98.GetPos();
-        sp18 = sp98 + sp88;
+        sp18 = sp98 + M2C_BITWISE(f64, sp88);
         spA8 = sp18;
-        sp20 = spA0 + sp90;
+        sp20 = spA0 + sp88.unk8;
         sp148 = sp18;
         spB0 = (f64) sp20;
         sp150 = (f64) sp20;
-        MKVector(0.0f, 0.0f, -2000.0f);
+        sp58 = MKVector(0.0f, 0.0f, -2000.0f);
         sp68.GetPos();
-        sp8 = sp68 + sp58;
+        sp8 = sp68 + M2C_BITWISE(f64, sp58);
         sp78 = sp8;
-        sp10 = sp70 + sp60;
+        sp10 = sp70 + sp58.unk8;
         sp138 = sp8;
         sp80 = (f64) sp10;
         sp140 = (f64) sp10;
@@ -150,7 +151,7 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void VolcanoRumble::EmitCrudAbovePlayer() {
     f64 sp1F8;                                      /* compiler-managed */
     f64 sp1F0;
@@ -158,7 +159,7 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
     f64 sp1E0;
     f64 sp1D8;
     f64 sp1D0;
-    f64 sp1C0;
+    MKVector3 sp1C0;
     MKVector3 sp1B0;
     f64 sp1A8;
     f64 sp1A0;
@@ -261,11 +262,11 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
                 (*(f32 *) ((u8 *) &sp1F0 + 0x4)) += 1000.0f;
                 temp_f19_323 = MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f);
                 temp_f20_328 = MKRand_Float((int *) &gViewSeed, 4.0f, 6.0f);
-                MKVector(MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f), temp_f20_328, temp_f19_323);
+                sp1C0 = MKVector(MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f), temp_f20_328, temp_f19_323);
                 temp_f0_339 = sp1C0 * 5.53552857e-315;
                 sp10 = temp_f0_339;
                 sp1D0 = temp_f0_339;
-                sp18 = sp1C8 * 100.0f;
+                sp18 = sp1C0.unk8 * 100.0f;
                 sp1D8 = (f64) sp18;
                 sp1F0 += temp_f0_339;
                 spE8 = -1.0f;
@@ -279,7 +280,7 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
                 sp1A8 = (f64) spE8;
                 sp190 = (f64) spD0;
                 sp198 = (f64) spD8;
-                KDRand_Vector(sp1B0, *((MKVector3 *) &sp1A0));
+                sp1B0 = KDRand_Vector(*((MKVector3 *) &sp1A0), *((MKVector3 *) &sp190));
                 temp_f1_374 = M2C_BITWISE(f32, sp1B0);
                 var_f4_381 = (sp1B0.unk8 * sp1B0.unk8) + ((temp_f1_374 * temp_f1_374) + (sp1B0.unk4 * sp1B0.unk4));
                 if (var_f4_381 > 1e-12f) {
@@ -390,7 +391,7 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void VolcanoRumble::MakeCrudRainSound() {
     f64 sp98;                                       /* compiler-managed */
     f64 sp90;
@@ -400,10 +401,10 @@ void VolcanoRumble::MakeCrudRainSound() {
     f64 sp70;
     f64 sp68;
     f64 sp60;
-    f64 sp50;
+    MKVector3 sp50;
     f64 sp48;
     f64 sp40;
-    f64 sp30;
+    MKVector3 sp30;
     f32 sp28;
     f64 sp20;
     f32 sp18;
@@ -437,11 +438,11 @@ void VolcanoRumble::MakeCrudRainSound() {
                 sp98 = M2C_FIELD(temp_r4_704, f64 *, 0x38);
                 temp_f30_713 = MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f);
                 temp_f29_718 = MKRand_Float((int *) &gViewSeed, 4.0f, 10.0f);
-                MKVector(MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f), temp_f29_718, temp_f30_713);
+                sp50 = MKVector(MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f), temp_f29_718, temp_f30_713);
                 temp_f0_730 = sp50 * 5.53552857e-315;
                 sp20 = temp_f0_730;
                 sp60 = temp_f0_730;
-                sp28 = sp58 * 100.0f;
+                sp28 = sp50.unk8 * 100.0f;
                 sp68 = (f64) sp28;
                 sp90 += temp_f0_730;
                 sp98 = (f32) sp98 + (f32) sp68;
@@ -461,11 +462,11 @@ void VolcanoRumble::MakeCrudRainSound() {
                 sp88 = M2C_FIELD(temp_r4_784, f64 *, 0x38);
                 temp_f29_793 = MKRand_Float((int *) &gViewSeed, -2.0f, 2.0f);
                 temp_f30_798 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
-                MKVector(MKRand_Float((int *) &gViewSeed, -2.0f, 2.0f), temp_f30_798, temp_f29_793);
+                sp30 = MKVector(MKRand_Float((int *) &gViewSeed, -2.0f, 2.0f), temp_f30_798, temp_f29_793);
                 temp_f0_809 = sp30 * 5.53552857e-315;
                 sp10 = temp_f0_809;
                 sp40 = temp_f0_809;
-                sp18 = sp38 * 100.0f;
+                sp18 = sp30.unk8 * 100.0f;
                 sp48 = (f64) sp18;
                 sp80 += temp_f0_809;
                 sp88 = (f32) sp88 + (f32) sp48;

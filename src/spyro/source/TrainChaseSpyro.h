@@ -275,15 +275,15 @@ inline s32 TrainChaseSpyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) 
     f64 sp40;
     f64 sp38;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
-    MKVector(0.0f, 160.0f, 0.0f);
+    sp18 = MKVector(0.0f, 160.0f, 0.0f);
     ((MKProp *) &sp28)->GetPos();
-    sp8 = sp28 + sp18;
+    sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp20;
+    sp10 = sp30 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -296,15 +296,15 @@ inline s32 TrainChaseSpyro::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg
     f64 sp40;
     f64 sp38;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
-    MKVector(0.0f, 160.0f, 0.0f);
+    sp18 = MKVector(0.0f, 160.0f, 0.0f);
     ((MKProp *) &sp28)->GetPos();
-    sp8 = sp28 + sp18;
+    sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp20;
+    sp10 = sp30 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;

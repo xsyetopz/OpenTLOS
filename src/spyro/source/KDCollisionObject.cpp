@@ -14,6 +14,7 @@
 #include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s8 gAssertBool;
@@ -170,7 +171,7 @@ u8 KDCollisionObject::IsFloorCollision(MKCollisionResult *arg0) {
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'NProjection'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg1, float arg2, KDContextInfo *arg3, MKCollisionResult *arg4, const MKVector3 &arg5) {
     f64 sp1F8;
     f64 sp1F0;
@@ -278,9 +279,8 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
         sp180 = temp_f0_286;
         spA8 = arg0->unk8 * arg2;
         sp188 = (f64) spA8;
-        NProjection(sp190, *((MKVector3 *) &sp180));
-        this->unk0 = M2C_BITWISE(f64, sp190);
-        this->unk8 = (f64) sp190.unk8;
+        sp190 = NProjection(*((MKVector3 *) &sp180), *((MKVector3 *) arg4));
+        *(MKVector3 *) &this->unk0 = sp190;
         temp_f4_311 = M2C_FIELD(temp_r31_272, f32 *, 0x18);
         temp_f29_314 = -(((f32) M2C_FIELD(this, f64 *, 8) * temp_f4_311) + (((f32) M2C_FIELD(this, f64 *, 0) * M2C_FIELD(temp_r31_272, f32 *, 0x10)) + (M2C_FIELD(this, f32 *, 4) * M2C_FIELD(temp_r31_272, f32 *, 0x14))));
         sp14 = temp_f29_314;
@@ -300,9 +300,8 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
             sp150 = temp_f0_356;
             sp88 = arg0->unk8 * arg2;
             sp158 = (f64) sp88;
-            NProjection(sp160, *((MKVector3 *) &sp150));
-            this->unk0 = M2C_BITWISE(f64, sp160);
-            this->unk8 = (f64) sp160.unk8;
+            sp160 = NProjection(*((MKVector3 *) &sp150), *((MKVector3 *) arg4));
+            *(MKVector3 *) &this->unk0 = sp160;
             temp_f5_373 = arg3->unk18;
             temp_f8_374 = M2C_FIELD(temp_r31_272, f32 *, 0x10);
             temp_f1_375 = M2C_FIELD(temp_r31_272, f32 *, 0x18);

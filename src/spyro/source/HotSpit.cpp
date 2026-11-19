@@ -36,6 +36,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_BBFireballSplat;
@@ -58,15 +59,15 @@ void *HotSpit::Update() {
     f64 sp170;
     f64 sp168;
     MKVector3 sp158;
-    M2C_UNK sp148;
+    MKVector3 sp148;
     f64 sp140;
     f64 sp138;
-    f64 sp128;
-    f64 sp118;
+    MKVector3 sp128;
+    MKVector3 sp118;
     f64 sp110;
     f64 sp108;
     MKVector3 spF8;
-    f64 spE8;
+    MKVector3 spE8;
     f64 spE0;
     f64 spD8;
     f64 spD0;
@@ -177,7 +178,7 @@ void *HotSpit::Update() {
         temp_f31_182 = gUpdateTimeDelta;
         temp_f29_187 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
         temp_f28_192 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
-        MKVector(MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f), temp_f28_192, temp_f29_187);
+        sp148 = MKVector(MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f), temp_f28_192, temp_f29_187);
         sp158.operator*(3.0f);
         temp_f0_207 = sp158 * (f64) temp_f31_182;
         sp38 = temp_f0_207;
@@ -203,12 +204,12 @@ void *HotSpit::Update() {
         if (var_f1_250 < 0.0f) {
             var_f1_250 = -var_f1_250;
         }
-        MKVector(var_f1_250, var_f29_244, 0.25f * var_f28_234);
-        MKVector(1.0f, 1.0f, 1.0f);
-        temp_f0_269 = sp128 + sp118;
+        sp118 = MKVector(var_f1_250, var_f29_244, 0.25f * var_f28_234);
+        sp128 = MKVector(1.0f, 1.0f, 1.0f);
+        temp_f0_269 = sp128 + M2C_BITWISE(f64, sp118);
         sp28 = temp_f0_269;
         sp138 = temp_f0_269;
-        sp30 = sp130 + sp120;
+        sp30 = sp128.unk8 + sp118.unk8;
         sp140 = (f64) sp30;
         sp1B0.Scale3x3(&sp1B0, *((MKVector3 *) &sp138));
         sp1B0.unk30 = sp1F0.unk30;
@@ -217,12 +218,12 @@ void *HotSpit::Update() {
         sp1B0.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, sp1B0);
     }
-    MKVector(0.0f, 200.0f, 0.0f);
+    spE8 = MKVector(0.0f, 200.0f, 0.0f);
     spF8.operator*(0.5f);
-    sp18 = spF8 + spE8;
+    sp18 = spF8 + M2C_BITWISE(f64, spE8);
     sp80 = -1.0f;
     sp70 = 1.0f;
-    sp20 = spF8.unk8 + spF0;
+    sp20 = spF8.unk8 + spE8.unk8;
     sp78 = -1.0f;
     sp7C = -1.0f;
     sp68 = 1.0f;
@@ -235,7 +236,7 @@ void *HotSpit::Update() {
     spB0 = (f64) sp80;
     sp98 = (f64) sp68;
     spA0 = (f64) sp70;
-    KDRand_Vector(spB8, *((MKVector3 *) &spA8));
+    spB8 = KDRand_Vector(*((MKVector3 *) &spA8), *((MKVector3 *) &sp98));
     temp_f0_342 = spB8 * 5.45263811e-315;
     sp58 = temp_f0_342;
     spC8 = temp_f0_342;
@@ -251,7 +252,7 @@ void *HotSpit::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void HotSpit::Collided(MKCollisionResult &arg0) {
     s8 sp2C9;
     s8 sp2C8;
@@ -304,7 +305,7 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     MKVector3 sp188;
     MKVector3 sp178;
     MKVector3 sp168;
-    M2C_UNK sp158;
+    MKVector3 sp158;
     f64 sp150;
     f64 sp148;
     f64 sp140;
@@ -313,7 +314,7 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     MKVector3 sp118;
     MKVector3 sp108;
     MKVector3 spF8;
-    M2C_UNK spE8;
+    MKVector3 spE8;
     f64 spE0;
     f64 spD8;
     f64 spD0;
@@ -379,9 +380,9 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     }
     var_r26_437 = 0;
     do {
-        MKVector(1.0f, 1.5f, 1.0f);
-        MKVector(-1.0f, 1.0f, -1.0f);
-        KDRand_Vector(sp178, sp168);
+        sp158 = MKVector(1.0f, 1.5f, 1.0f);
+        sp168 = MKVector(-1.0f, 1.0f, -1.0f);
+        sp178 = KDRand_Vector(sp168, sp158);
         sp188.operator*(3000.0f);
         sp198.operator*(2.0f);
         sp48 = sp198 + M2C_BITWISE(f64, sp188);
@@ -402,9 +403,9 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     } while (var_r26_437 < 5);
     var_r26_498 = 0;
     do {
-        MKVector(1.0f, 1.5f, 1.0f);
-        MKVector(-1.0f, 1.0f, -1.0f);
-        KDRand_Vector(sp108, spF8);
+        spE8 = MKVector(1.0f, 1.5f, 1.0f);
+        spF8 = MKVector(-1.0f, 1.0f, -1.0f);
+        sp108 = KDRand_Vector(spF8, spE8);
         sp118.operator*(1000.0f);
         sp128.operator*(0.5f);
         sp38 = sp128 + M2C_BITWISE(f64, sp118);

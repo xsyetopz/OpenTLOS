@@ -54,6 +54,7 @@
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/Tools.h"
 #include "unplaced_enums.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_SpyroStompHit;
@@ -162,7 +163,7 @@ u8 SpyroTailStrikeState::LandTransition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SpyroTailStrikeState::LandUpdate() {
     MKCollisionResult sp78;
     f64 sp70;
@@ -173,7 +174,7 @@ void SpyroTailStrikeState::LandUpdate() {
     f64 sp48;
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -209,10 +210,10 @@ void SpyroTailStrikeState::LandUpdate() {
         temp_f29_221 = (f32) sp60 + (f32) sp50;
         sp60 = temp_f29_221;
         do {
-            MKVector((f32) (var_r31_218 & 1) * 300.0f, 0.0f, (f32) -(var_r31_218 / 2) * 300.0f);
-            sp8 = sp58 + sp28;
+            sp28 = MKVector((f32) (var_r31_218 & 1) * 300.0f, 0.0f, (f32) -(var_r31_218 / 2) * 300.0f);
+            sp8 = sp58 + M2C_BITWISE(f64, sp28);
             sp38 = sp8;
-            sp10 = temp_f29_221 + sp30;
+            sp10 = temp_f29_221 + sp28.unk8;
             sp68 = sp8;
             sp40 = (f64) sp10;
             sp70 = (f64) sp10;

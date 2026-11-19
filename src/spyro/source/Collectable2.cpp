@@ -42,6 +42,7 @@
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 *KDSpline_PositionMixer;
@@ -259,9 +260,10 @@ void Collectable2::Draw() {
     MKModel_Draw(this->unk4, NULL);
 }
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void *Collectable2::Update() {
-    Matrix sp250;
+    MKVector3 sp260;
+    MKVector3 sp250;
     Matrix sp210;
     Matrix sp1D0;
     f64 sp1C0;
@@ -402,14 +404,14 @@ void *Collectable2::Update() {
     this->unk4C.AddNode(*((MKVector3 *) &sp168));
     this->unk4C.AddNode(*this->unk68);
     temp_f29_567 = 9.424778f * gUpdateTimeDelta;
-    Normalise(sp108);
+    sp108 = Normalise(sp250);
     sp210.SetRotateAroundAxis(sp108, temp_f29_567);
-    sp250.Multiply3x3(&sp250, &sp210);
+    ((Matrix *) &sp250)->Multiply3x3((Matrix *) &sp250, &sp210);
     temp_f29_581 = 0.7853982f * gUpdateTimeDelta;
-    Normalise(spF8);
+    spF8 = Normalise(sp260);
     sp1D0.SetRotateAroundAxis(spF8, temp_f29_581);
-    sp250.Multiply3x3(&sp250, &sp1D0);
-    MKModel_SetWorldMatrix(this->unk4, sp250);
+    ((Matrix *) &sp250)->Multiply3x3((Matrix *) &sp250, &sp1D0);
+    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp250));
     sp14 = 0.0f;
     ((KDUniformSpline *) &spE8)->GetMeasure(this->unk60, (Matrix *) &this->unk4C, KDSpline_PositionMixer);
     MKModel_SetPosition(this->unk4, *((MKVector3 *) &spE8));

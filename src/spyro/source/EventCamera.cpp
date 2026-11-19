@@ -66,6 +66,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/Hud.h"
 #include "spyro/source/KDMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 atan(f32);                                      /* extern */
@@ -986,7 +987,7 @@ void *EventCamera::Update() {
     f64 sp6A0;
     f64 sp698;
     f64 sp690;
-    f64 sp680;
+    MKVector3 sp680;
     f64 sp678;
     f64 sp670;
     f64 sp668;
@@ -1005,13 +1006,13 @@ void *EventCamera::Update() {
     f64 sp5E8;
     f64 sp5E0;
     MKVector3 sp5D0;
-    f64 sp5C0;
+    MKVector3 sp5C0;
     f64 sp5B8;
     f64 sp5B0;
     f64 sp5A8;
     f64 sp5A0;
     f64 sp590;
-    f64 sp580;
+    MKVector3 sp580;
     f64 sp578;
     f64 sp570;
     f64 sp568;
@@ -1028,7 +1029,7 @@ void *EventCamera::Update() {
     f64 sp4F8;                                      /* compiler-managed */
     f64 sp4F0;                                      /* compiler-managed */
     MKVector3 sp4E0;
-    f64 sp4D0;
+    MKVector3 sp4D0;
     f64 sp4C8;
     f64 sp4C0;
     f64 sp4B8;
@@ -1343,9 +1344,8 @@ void *EventCamera::Update() {
             sp668 = M2C_FIELD(&cameraPos, f64 *, 8);
             sp670 = this->unk90;
             sp678 = this->unk98;
-            Lerp((MKVector3) &sp680, (MKVector3) &sp670, temp_f1_1777);
-            this->unk50 = sp680;
-            this->unk58 = sp688;
+            sp680 = Lerp((MKVector3) &sp670, (MKVector3) &sp660, temp_f1_1777);
+            *(MKVector3 *) &this->unk50 = sp680;
             if ((u8) this->unk100 != 0) {
                 temp_f1_1803 = this->unkD0;
                 var_f30_1804 = 2.5f;
@@ -1386,7 +1386,7 @@ void *EventCamera::Update() {
                     sp628 = (f64) sp148;
                     sp7B8 = (f64) sp148;
                     ((MKVector3 *) &sp7B0)->Normalise();
-                    KDMath_NormalisedSlerp(sp600, *((MKVector3 *) &this->unkA0), this->unkC8 / var_f30_1804);
+                    sp600 = KDMath_NormalisedSlerp(*((MKVector3 *) &this->unkA0), *((MKVector3 *) &sp7B0), this->unkC8 / var_f30_1804);
                     sp130 = this->unk50 + M2C_BITWISE(f64, sp600);
                     M2C_FIELD(this, f64 *, 0x60) = sp130;
                     sp138 = (f32) M2C_FIELD(this, f64 *, 0x58) + sp600.unk8;
@@ -1399,7 +1399,7 @@ void *EventCamera::Update() {
                     M2C_FIELD(this, f64 *, 0x68) = sp5F8;
                 }
             } else {
-                KDMath_NormalisedSlerp(sp5D0, *((MKVector3 *) &this->unkA0), this->unkC8 / this->unkD0);
+                sp5D0 = KDMath_NormalisedSlerp(*((MKVector3 *) &this->unkA0), cameraDir, this->unkC8 / this->unkD0);
                 sp120 = this->unk50 + M2C_BITWISE(f64, sp5D0);
                 M2C_FIELD(this, f64 *, 0x60) = sp120;
                 sp128 = (f32) M2C_FIELD(this, f64 *, 0x58) + sp5D0.unk8;
@@ -1412,9 +1412,8 @@ void *EventCamera::Update() {
             sp5A8 = M2C_FIELD(&cameraPos, f64 *, 8);
             sp5B0 = this->unk90;
             sp5B8 = this->unk98;
-            Lerp((MKVector3) &sp5C0, (MKVector3) &sp5B0, 1.0f);
-            this->unk50 = sp5C0;
-            this->unk58 = sp5C8;
+            sp5C0 = Lerp((MKVector3) &sp5B0, (MKVector3) &sp5A0, 1.0f);
+            *(MKVector3 *) &this->unk50 = sp5C0;
             ((EventCamera *) &sp590)->GetTargetStart();
             M2C_FIELD(this, f64 *, 0x60) = sp590;
             M2C_FIELD(this, f64 *, 0x68) = sp598;
@@ -1459,9 +1458,8 @@ void *EventCamera::Update() {
             sp568 = M2C_FIELD(&cameraPos, f64 *, 8);
             sp570 = this->unk90;
             sp578 = this->unk98;
-            Lerp((MKVector3) &sp580, (MKVector3) &sp570, temp_f1_2063);
-            this->unk50 = sp580;
-            this->unk58 = sp588;
+            sp580 = Lerp((MKVector3) &sp570, (MKVector3) &sp560, temp_f1_2063);
+            *(MKVector3 *) &this->unk50 = sp580;
             if ((u8) this->unkFE != 0) {
                 temp_f2_2089 = this->unkCC;
                 var_f1_2090 = 2.5f;
@@ -1500,7 +1498,7 @@ void *EventCamera::Update() {
                     sp208 = sp538 - (f32) sp7A8;
                     sp798 = (f64) sp208;
                     ((MKVector3 *) &sp790)->Normalise();
-                    KDMath_NormalisedSlerp(sp510, *((MKVector3 *) &sp790), (this->unkC8 - temp_f30_2098) / temp_f30_2098);
+                    sp510 = KDMath_NormalisedSlerp(*((MKVector3 *) &sp790), cameraDir, (this->unkC8 - temp_f30_2098) / temp_f30_2098);
                     spE0 = this->unk50 + M2C_BITWISE(f64, sp510);
                     M2C_FIELD(this, f64 *, 0x60) = spE0;
                     spE8 = (f32) M2C_FIELD(this, f64 *, 0x58) + sp510.unk8;
@@ -1513,7 +1511,7 @@ void *EventCamera::Update() {
                     M2C_FIELD(this, f64 *, 0x68) = sp508;
                 }
             } else {
-                KDMath_NormalisedSlerp(sp4E0, *((MKVector3 *) &this->unkA0), this->unkC8 / this->unkCC);
+                sp4E0 = KDMath_NormalisedSlerp(*((MKVector3 *) &this->unkA0), cameraDir, this->unkC8 / this->unkCC);
                 spD0 = this->unk50 + M2C_BITWISE(f64, sp4E0);
                 M2C_FIELD(this, f64 *, 0x60) = spD0;
                 spD8 = (f32) M2C_FIELD(this, f64 *, 0x58) + sp4E0.unk8;
@@ -1526,10 +1524,9 @@ void *EventCamera::Update() {
             sp4B8 = M2C_FIELD(&cameraPos, f64 *, 8);
             sp4C0 = this->unk90;
             sp4C8 = this->unk98;
-            Lerp((MKVector3) &sp4D0, (MKVector3) &sp4C0, 1.0f);
-            this->unk50 = sp4D0;
-            this->unk58 = sp4D8;
-            KDMath_NormalisedSlerp(sp490, *((MKVector3 *) &this->unkA0), 1.0f);
+            sp4D0 = Lerp((MKVector3) &sp4C0, (MKVector3) &sp4B0, 1.0f);
+            *(MKVector3 *) &this->unk50 = sp4D0;
+            sp490 = KDMath_NormalisedSlerp(*((MKVector3 *) &this->unkA0), cameraDir, 1.0f);
             spC0 = this->unk50 + M2C_BITWISE(f64, sp490);
             M2C_FIELD(this, f64 *, 0x60) = spC0;
             spC8 = (f32) M2C_FIELD(this, f64 *, 0x58) + sp490.unk8;
@@ -1734,13 +1731,11 @@ void *EventCamera::Update() {
             if ((var_f1_2747 < temp_f2_2753) && (var_f1_2747 > 0.0f)) {
                 temp_f30_2761 = (temp_f2_2753 - var_f1_2747) / temp_f2_2753;
                 ((EventCamera *) &sp290)->GetSourceStart();
-                InterpolateLinear(sp2A0, *((MKVector3 *) &this->unk50), temp_f30_2761);
-                this->unk50 = M2C_BITWISE(f64, sp2A0);
-                this->unk58 = (f64) sp2A0.unk8;
+                sp2A0 = InterpolateLinear(*((MKVector3 *) &this->unk50), *((MKVector3 *) &sp290), temp_f30_2761);
+                *(MKVector3 *) &this->unk50 = sp2A0;
                 ((EventCamera *) &sp270)->GetTargetStart();
-                InterpolateLinear(sp280, this->unk60, temp_f30_2761);
-                M2C_FIELD(this, f64 *, 0x60) = M2C_BITWISE(f64, sp280);
-                M2C_FIELD(this, f64 *, 0x68) = (f64) sp280.unk8;
+                sp280 = InterpolateLinear(this->unk60, *((MKVector3 *) &sp270), temp_f30_2761);
+                M2C_FIELD(this, MKVector3 *, 0x60) = sp280;
             }
         }
         temp_r3_2785 = this->unkB0;

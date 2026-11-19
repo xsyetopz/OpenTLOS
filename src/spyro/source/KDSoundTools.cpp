@@ -31,6 +31,7 @@
 #include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern f32 *KDSpline_PositionMixer;
@@ -387,16 +388,16 @@ void KDSound_AfterRumble::Message(MKMessage *arg0) {
 void KDSound_AfterRumble::Trigger(MKVector3 arg0, int arg1, float arg2, float arg3) {
     f64 spC0;
     f64 spB8;
-    f64 spA8;
+    MKVector3 spA8;
     f64 spA0;
     f64 sp98;
-    f64 sp88;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
-    f64 sp68;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
-    f64 sp48;
+    MKVector3 sp48;
     f32 sp40;
     f64 sp38;
     f32 sp30;
@@ -416,33 +417,33 @@ void KDSound_AfterRumble::Trigger(MKVector3 arg0, int arg1, float arg2, float ar
     if ((s32) this->unk68 == 2) {
         Stop();
     }
-    MKVector(this->unk6C, 0.0f, 0.0f);
-    temp_f0_736 = M2C_FIELD(this, f64 *, 0x10) + spA8;
+    spA8 = MKVector(this->unk6C, 0.0f, 0.0f);
+    temp_f0_736 = M2C_FIELD(this, f64 *, 0x10) + M2C_BITWISE(f64, spA8);
     sp38 = temp_f0_736;
     M2C_FIELD(this, f64 *, 0x20) = temp_f0_736;
-    sp40 = this->unk18 + spB0;
+    sp40 = this->unk18 + spA8.unk8;
     spB8 = temp_f0_736;
     M2C_FIELD(this, f64 *, 0x28) = (f64) sp40;
     spC0 = (f64) sp40;
-    MKVector(-this->unk6C, 0.0f, 0.0f);
-    sp28 = M2C_FIELD(this, f64 *, 0x10) + sp88;
+    sp88 = MKVector(-this->unk6C, 0.0f, 0.0f);
+    sp28 = M2C_FIELD(this, f64 *, 0x10) + M2C_BITWISE(f64, sp88);
     M2C_FIELD(this, f64 *, 0x30) = sp28;
-    sp30 = this->unk18 + sp90;
+    sp30 = this->unk18 + sp88.unk8;
     sp98 = sp28;
     M2C_FIELD(this, f64 *, 0x38) = (f64) sp30;
     spA0 = (f64) sp30;
-    MKVector(0.0f, 0.0f, this->unk6C);
-    temp_f0_777 = M2C_FIELD(this, f64 *, 0x10) + sp68;
+    sp68 = MKVector(0.0f, 0.0f, this->unk6C);
+    temp_f0_777 = M2C_FIELD(this, f64 *, 0x10) + M2C_BITWISE(f64, sp68);
     sp18 = temp_f0_777;
     M2C_FIELD(this, f64 *, 0x40) = temp_f0_777;
-    sp20 = this->unk18 + sp70;
+    sp20 = this->unk18 + sp68.unk8;
     sp78 = temp_f0_777;
     M2C_FIELD(this, f64 *, 0x48) = (f64) sp20;
     sp80 = (f64) sp20;
-    MKVector(0.0f, 0.0f, -this->unk6C);
-    sp8 = M2C_FIELD(this, f64 *, 0x10) + sp48;
+    sp48 = MKVector(0.0f, 0.0f, -this->unk6C);
+    sp8 = M2C_FIELD(this, f64 *, 0x10) + M2C_BITWISE(f64, sp48);
     M2C_FIELD(this, f64 *, 0x50) = sp8;
-    sp10 = this->unk18 + sp50;
+    sp10 = this->unk18 + sp48.unk8;
     sp58 = sp8;
     M2C_FIELD(this, f64 *, 0x58) = (f64) sp10;
     sp60 = (f64) sp10;

@@ -21,6 +21,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -551,16 +552,16 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
     f64 sp80;
     f64 sp78;
     MKVector3 sp68;
-    M2C_UNK sp58;
+    MKVector3 sp58;
     f64 sp50;
     f64 sp48;
     MKVector3 sp38;
-    M2C_UNK sp28;
+    MKVector3 sp28;
     f32 sp20;
     f64 sp18;
     f32 sp10;
@@ -595,7 +596,7 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
             temp_f30_924 = M2C_BITWISE(f32, temp_r29_907->unk8) / 1000.0f;
             temp_f28_927 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f27_932 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_932, temp_f28_927);
+            sp58 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_932, temp_f28_927);
             sp68.operator*(2500.0f);
             sp18 = sp68 * (f64) temp_f30_924;
             temp_r28_948 = temp_r29_907 + var_r31_919;
@@ -606,7 +607,7 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
             M2C_FIELD(temp_r28_948, f64 *, 0x38) = (f64) sp20;
             temp_f27_962 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f28_967 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_967, temp_f27_962);
+            sp28 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_967, temp_f27_962);
             sp38.operator*(200.0f);
             sp8 = M2C_FIELD(temp_r28_948, f64 *, 0x40) + M2C_BITWISE(f64, sp38);
             M2C_FIELD(temp_r28_948, f64 *, 0x20) = sp8;
@@ -624,7 +625,7 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void *EnergyBeam::Update() {
     f64 spA0;
     f64 sp98;
@@ -634,7 +635,7 @@ void *EnergyBeam::Update() {
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    f64 sp58;
+    MKVector3 sp58;
     f64 sp50;
     f64 sp48;
     f32 sp40;
@@ -706,10 +707,10 @@ loop_11:
                             M2C_FIELD(temp_r29_1086, f32 *, 0x60) = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
                             temp_f27_1147 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                             temp_f26_1152 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-                            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f26_1152, temp_f27_1147);
+                            sp58 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f26_1152, temp_f27_1147);
                             sp18 = sp58 * 5.180653787e-315;
                             sp98 = sp18;
-                            sp20 = sp60 * 0.25f;
+                            sp20 = sp58.unk8 * 0.25f;
                             sp68 = sp18;
                             sp70 = (f64) sp20;
                             spA0 = (f64) sp20;

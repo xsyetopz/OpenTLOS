@@ -64,6 +64,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(s32);                                  /* extern */
@@ -442,11 +443,11 @@ u8 FireBossGoal_Death::Update() {
     f64 sp110;
     f64 sp108;
     f64 spF8;
-    f64 spE8;
+    MKVector3 spE8;
     MKVector3 spD8;
     MKVector3 spC8;
     MKVector3 spB8;
-    M2C_UNK spA8;
+    MKVector3 spA8;
     MKVector3 sp98;
     f64 sp90;
     f64 sp88;
@@ -561,7 +562,7 @@ u8 FireBossGoal_Death::Update() {
     sp138 = temp_f0_826;
     sp60 = M2C_FIELD(temp_r4_823, f32 *, 8) - (f32) sp190;
     sp140 = (f64) sp60;
-    Normalise(sp148);
+    sp148 = Normalise(*((MKVector3 *) &sp138));
     temp_r5_839 = this->unkC;
     M2C_FIELD(temp_r5_839, f64 *, 0xE0) = M2C_BITWISE(f64, sp148);
     var_r28_848 = 0;
@@ -575,16 +576,16 @@ u8 FireBossGoal_Death::Update() {
         sp88 = (f64) sp38;
         sp90 = (f64) sp40;
         sp98.operator*(400.0f);
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, -1.0f, -1.0f);
-        KDRand_Vector(spC8, spB8);
+        spA8 = MKVector(1.0f, 1.0f, 1.0f);
+        spB8 = MKVector(-1.0f, -1.0f, -1.0f);
+        spC8 = KDRand_Vector(spB8, spA8);
         spD8.operator*(200.0f);
-        MKVector(0.0f, 300.0f, 0.0f);
+        spE8 = MKVector(0.0f, 300.0f, 0.0f);
         ((MKProp *) &spF8)->GetPos();
-        temp_f0_901 = spF8 + spE8;
+        temp_f0_901 = spF8 + M2C_BITWISE(f64, spE8);
         sp28 = temp_f0_901;
         sp108 = temp_f0_901;
-        sp30 = sp100 + spF0;
+        sp30 = sp100 + spE8.unk8;
         sp110 = (f64) sp30;
         temp_f0_913 = sp108 + M2C_BITWISE(f64, spD8);
         sp18 = temp_f0_913;
@@ -922,10 +923,9 @@ block_34:
         sp20 = temp_f0_1584;
         sp18 = temp_r3_1580->unk588.unk8 - (f32) sp68;
         sp28 = (f64) sp18;
-        Normalise(sp30);
+        sp30 = Normalise(*((MKVector3 *) &sp20));
         temp_r4_1597 = this->unkC;
-        M2C_FIELD(temp_r4_1597, f64 *, 0xE0) = M2C_BITWISE(f64, sp30);
-        M2C_FIELD(temp_r4_1597, f64 *, 0xE8) = (f64) sp30.unk8;
+        M2C_FIELD(temp_r4_1597, MKVector3 *, 0xE0) = sp30;
         temp_r4_1597->unk6B5 |= 0x40;
         return this->unk8;
     }
@@ -1112,10 +1112,9 @@ block_38:
         sp20 = temp_f0_1922;
         sp18 = temp_r3_1918->unk588.unk8 - (f32) sp68;
         sp28 = (f64) sp18;
-        Normalise(sp30);
+        sp30 = Normalise(*((MKVector3 *) &sp20));
         temp_r4_1935 = this->unkC;
-        M2C_FIELD(temp_r4_1935, f64 *, 0xE0) = M2C_BITWISE(f64, sp30);
-        M2C_FIELD(temp_r4_1935, f64 *, 0xE8) = (f64) sp30.unk8;
+        M2C_FIELD(temp_r4_1935, MKVector3 *, 0xE0) = sp30;
         temp_r4_1935->unk6B5 |= 0x40;
         return this->unk8;
     }
@@ -1302,10 +1301,9 @@ block_38:
         sp20 = temp_f0_2258;
         sp18 = temp_r3_2254->unk588.unk8 - (f32) sp68;
         sp28 = (f64) sp18;
-        Normalise(sp30);
+        sp30 = Normalise(*((MKVector3 *) &sp20));
         temp_r4_2271 = this->unkC;
-        M2C_FIELD(temp_r4_2271, f64 *, 0xE0) = M2C_BITWISE(f64, sp30);
-        M2C_FIELD(temp_r4_2271, f64 *, 0xE8) = (f64) sp30.unk8;
+        M2C_FIELD(temp_r4_2271, MKVector3 *, 0xE0) = sp30;
         temp_r4_2271->unk6B5 |= 0x40;
         return this->unk8;
     }
@@ -1475,10 +1473,9 @@ block_33:
         sp20 = temp_f0_2566;
         sp18 = temp_r3_2562->unk588.unk8 - (f32) sp68;
         sp28 = (f64) sp18;
-        Normalise(sp30);
+        sp30 = Normalise(*((MKVector3 *) &sp20));
         temp_r4_2579 = this->unkC;
-        M2C_FIELD(temp_r4_2579, f64 *, 0xE0) = M2C_BITWISE(f64, sp30);
-        M2C_FIELD(temp_r4_2579, f64 *, 0xE8) = (f64) sp30.unk8;
+        M2C_FIELD(temp_r4_2579, MKVector3 *, 0xE0) = sp30;
         temp_r4_2579->unk6B5 |= 0x40;
         return this->unk8;
     }

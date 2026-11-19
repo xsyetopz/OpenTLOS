@@ -64,6 +64,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(KDSoundFader **);                      /* extern */
@@ -327,7 +328,7 @@ void FuryFXConvexity::UpdateDragonChasers() {
     f64 sp2A0;
     f64 sp298;
     f64 sp290;
-    f64 sp280;
+    MKVector3 sp280;
     f64 sp278;
     f64 sp270;
     MKVector3 sp260;
@@ -602,10 +603,9 @@ loop_113:
                 } else {
                     var_f2_556 = 0.0f;
                 }
-                KDMath_Slerp(sp3F0, *((MKVector3 *) &temp_r29_1508->unk70), 0.3f * (1.0f - (var_f2_556 / 3.5f)));
-                Normalise(sp400);
-                M2C_FIELD(temp_r29_1508, f64 *, 0x70) = M2C_BITWISE(f64, sp400);
-                M2C_FIELD(temp_r29_1508, f64 *, 0x78) = (f64) sp400.unk8;
+                sp3F0 = KDMath_Slerp(*((MKVector3 *) &temp_r29_1508->unk70), *((MKVector3 *) &sp510), 0.3f * (1.0f - (var_f2_556 / 3.5f)));
+                sp400 = Normalise(sp3F0);
+                M2C_FIELD(temp_r29_1508, MKVector3 *, 0x70) = sp400;
                 temp_f1_590 = temp_r29_1508->unk60;
                 sp500 = temp_f1_590;
                 sp508 = (f64) M2C_FIELD(temp_r29_1508, f32 *, 0x68);
@@ -772,10 +772,9 @@ block_105:
                 if (var_f1_786 < 0.0f) {
                     var_f1_786 = -var_f1_786;
                 }
-                KDMath_Slerp(sp3A0, *((MKVector3 *) &temp_r29_1508->unk70), 5.0f * (gUpdateTimeDelta * var_f1_786));
-                Normalise(sp3B0);
-                M2C_FIELD(temp_r29_1508, f64 *, 0x70) = M2C_BITWISE(f64, sp3B0);
-                M2C_FIELD(temp_r29_1508, f64 *, 0x78) = (f64) sp3B0.unk8;
+                sp3A0 = KDMath_Slerp(*((MKVector3 *) &temp_r29_1508->unk70), *((MKVector3 *) &sp4D0), 5.0f * (gUpdateTimeDelta * var_f1_786));
+                sp3B0 = Normalise(sp3A0);
+                M2C_FIELD(temp_r29_1508, MKVector3 *, 0x70) = sp3B0;
                 temp_f1_809 = temp_r29_1508->unk60;
                 sp4C0 = temp_f1_809;
                 sp4C8 = (f64) M2C_FIELD(temp_r29_1508, f32 *, 0x68);
@@ -807,7 +806,7 @@ block_105:
                     sp318 = (f64) sp118;
                     sp300 = (f64) sp100;
                     sp308 = (f64) sp108;
-                    KDRand_Vector(sp320, *((MKVector3 *) &sp310));
+                    sp320 = KDRand_Vector(*((MKVector3 *) &sp310), *((MKVector3 *) &sp300));
                     temp_f0_878 = sp320 * 5.634608575e-315;
                     spF0 = temp_f0_878;
                     temp_r3_884 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
@@ -827,9 +826,8 @@ block_105:
                     sp360 = temp_f0_907;
                     spD8 = (f32) sp358 - (f32) sp4B8;
                     sp368 = (f64) spD8;
-                    Normalise(sp370);
-                    M2C_FIELD(temp_r29_1508, f64 *, 0x70) = M2C_BITWISE(f64, sp370);
-                    M2C_FIELD(temp_r29_1508, f64 *, 0x78) = (f64) sp370.unk8;
+                    sp370 = Normalise(*((MKVector3 *) &sp360));
+                    M2C_FIELD(temp_r29_1508, MKVector3 *, 0x70) = sp370;
                 }
                 sp198 = 0.0f;
                 sp190 = 0.0f;
@@ -970,11 +968,11 @@ block_105:
                     gb.unk1C0.StartWarp(&sp570);
                     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                         sp534 = 0;
-                        MKVector(1.0f, 1.0f, 1.0f);
+                        sp280 = MKVector(1.0f, 1.0f, 1.0f);
                         sp90 = sp280 * 5.56078426e-315;
                         sp530 = 0x417;
                         sp538 = sp90;
-                        sp98 = sp288 * 150.0f;
+                        sp98 = sp280.unk8 * 150.0f;
                         sp548 = 1;
                         sp540 = (f64) sp98;
                         sp290 = sp90;
@@ -1048,7 +1046,7 @@ s32 FuryFXConvexity::LaunchDragonChaser(const MKVector3 &arg0, const MKVector3 &
     MKVector3 sp120;
     MKVector3 sp110;
     MKVector3 sp100;
-    M2C_UNK spF0;
+    MKVector3 spF0;
     f64 spE8;
     f64 spE0;
     f64 spD8;
@@ -1056,7 +1054,7 @@ s32 FuryFXConvexity::LaunchDragonChaser(const MKVector3 &arg0, const MKVector3 &
     MKVector3 spC0;
     MKVector3 spB0;
     MKVector3 spA0;
-    M2C_UNK sp90;
+    MKVector3 sp90;
     f64 sp88;
     f64 sp80;
     f32 sp78;
@@ -1255,9 +1253,9 @@ loop_41:
     M2C_FIELD(temp_r31_1580, void **, 0x80) = var_r28_1688;
     var_r27_1877 = 0;
     do {
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, -1.0f, -1.0f);
-        KDRand_Vector(sp110, sp100);
+        spF0 = MKVector(1.0f, 1.0f, 1.0f);
+        sp100 = MKVector(-1.0f, -1.0f, -1.0f);
+        sp110 = KDRand_Vector(sp100, spF0);
         sp120.operator*(100.0f);
         sp30 = temp_r31_1580->unk60 + M2C_BITWISE(f64, sp120);
         sp130 = sp30;
@@ -1265,9 +1263,9 @@ loop_41:
         sp170 = sp30;
         sp138 = (f64) sp38;
         sp178 = (f64) sp38;
-        MKVector(1.0f, 1.0f, 1.0f);
-        MKVector(-1.0f, -1.0f, -1.0f);
-        KDRand_Vector(spB0, spA0);
+        sp90 = MKVector(1.0f, 1.0f, 1.0f);
+        spA0 = MKVector(-1.0f, -1.0f, -1.0f);
+        spB0 = KDRand_Vector(spA0, sp90);
         spC0.operator*(0.75f);
         temp_f0_1932 = M2C_FIELD(temp_r31_1580, f64 *, 0x70) + M2C_BITWISE(f64, spC0);
         sp10 = temp_f0_1932;
@@ -1336,20 +1334,20 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
     f64 sp110;
     f64 sp108;
     f64 sp100;
-    f64 spF0;
+    MKVector3 spF0;
     f64 spE8;
     f64 spE0;
     MKVector3 spD0;
     MKVector3 spC0;
     MKVector3 spB0;
-    M2C_UNK spA0;
+    MKVector3 spA0;
     f64 sp98;
     f64 sp90;
     f64 sp88;
     f64 sp80;
     f64 sp78;
     f64 sp70;
-    f64 sp60;
+    MKVector3 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp54;
@@ -1386,11 +1384,11 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
         M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(&arg0, f32 *, 0);
         M2C_FIELD(this, f64 *, 0xE8) = (f64) M2C_FIELD(&arg0, f32 *, 8);
         KDSound_Play3d(GS_SpyroFuryConvexExtra1, &this->unkE0, 0U, -1, 0.0f, 0U);
-        MKVector(0.0f, 500.0f, 0.0f);
-        sp30 = M2C_FIELD(this, f64 *, 0xE0) + spF0;
+        spF0 = MKVector(0.0f, 500.0f, 0.0f);
+        sp30 = M2C_FIELD(this, f64 *, 0xE0) + M2C_BITWISE(f64, spF0);
         var_r28_2138 = 0;
         this->unkD0 = sp30;
-        sp38 = this->unkE0.unk8 + spF8;
+        sp38 = this->unkE0.unk8 + spF0.unk8;
         sp100 = sp30;
         this->unkD8 = (f64) sp38;
         this->unk164 = 0.0f;
@@ -1402,10 +1400,10 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
             sp128 = M2C_FIELD(this, f64 *, 0xE8);
             temp_f27_2165 = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
             temp_f31_2169 = temp_f27_2165;
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(spC0, spB0);
-            Normalise(spD0);
+            spA0 = MKVector(1.0f, 1.0f, 1.0f);
+            spB0 = MKVector(-1.0f, 0.0f, -1.0f);
+            spC0 = KDRand_Vector(spB0, spA0);
+            spD0 = Normalise(spC0);
             sp20 = spD0 * (f64) temp_f31_2169;
             spE0 = sp20;
             sp28 = spD0.unk8 * temp_f27_2165;
@@ -1433,11 +1431,11 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
         temp_r4_2244 = this->unkF8;
         if (temp_r4_2244 != NULL) {
             ((LightManager *) gb.unk80)->EnableLight(temp_r4_2244, 1U);
-            MKVector(0.0f, 100.0f, 0.0f);
-            sp10 = M2C_FIELD(this, f64 *, 0xE0) + sp60;
+            sp60 = MKVector(0.0f, 100.0f, 0.0f);
+            sp10 = M2C_FIELD(this, f64 *, 0xE0) + M2C_BITWISE(f64, sp60);
             temp_r3_2266 = this->unkF8;
             sp70 = sp10;
-            sp18 = this->unkE0.unk8 + sp68;
+            sp18 = this->unkE0.unk8 + sp60.unk8;
             temp_r3_2266->unk10 = sp10;
             temp_r3_2266->unk18 = (f64) sp18;
             temp_r3_2272 = temp_r3_2266->unk3C;
@@ -1616,18 +1614,18 @@ void *FuryFXConvexity::Update() {
     MKVector3 sp608;
     MKVector3 sp5F8;
     MKVector3 sp5E8;
-    M2C_UNK sp5D8;
+    MKVector3 sp5D8;
     f64 sp5D0;
     f64 sp5C8;
     MKVector3 sp5B8;
     MKVector3 sp5A8;
     MKVector3 sp598;
-    M2C_UNK sp588;
+    MKVector3 sp588;
     f64 sp580;
     f64 sp578;
     f64 sp570;
     f64 sp568;
-    f64 sp558;
+    MKVector3 sp558;
     f64 sp550;
     f64 sp548;
     f64 sp540;
@@ -1635,33 +1633,33 @@ void *FuryFXConvexity::Update() {
     MKVector3 sp528;
     MKVector3 sp518;
     MKVector3 sp508;
-    M2C_UNK sp4F8;
+    MKVector3 sp4F8;
     f64 sp4F0;
     f64 sp4E8;
     MKVector3 sp4D8;
     MKVector3 sp4C8;
     MKVector3 sp4B8;
-    M2C_UNK sp4A8;
+    MKVector3 sp4A8;
     f64 sp4A0;
     f64 sp498;
     f64 sp490;
     f64 sp488;
-    f64 sp478;
+    MKVector3 sp478;
     f64 sp470;
     f64 sp468;
-    f64 sp458;
+    MKVector3 sp458;
     f64 sp450;
     f64 sp448;
     MKVector3 sp438;
     MKVector3 sp428;
     MKVector3 sp418;
-    M2C_UNK sp408;
+    MKVector3 sp408;
     f64 sp400;
     f64 sp3F8;
     MKVector3 sp3E8;
     MKVector3 sp3D8;
     MKVector3 sp3C8;
-    M2C_UNK sp3B8;
+    MKVector3 sp3B8;
     f64 sp3B0;
     f64 sp3A8;
     f64 sp3A0;
@@ -1669,18 +1667,18 @@ void *FuryFXConvexity::Update() {
     MKVector3 sp388;
     MKVector3 sp378;
     MKVector3 sp368;
-    M2C_UNK sp358;
+    MKVector3 sp358;
     f64 sp350;
     f64 sp348;
     MKVector3 sp338;
     MKVector3 sp328;
     MKVector3 sp318;
-    M2C_UNK sp308;
+    MKVector3 sp308;
     f64 sp300;
     f64 sp2F8;
     f64 sp2F0;
     f64 sp2E8;
-    f64 sp2D8;
+    MKVector3 sp2D8;
     f64 sp2D0;
     f64 sp2C8;
     f64 sp2C0;
@@ -1916,9 +1914,9 @@ void *FuryFXConvexity::Update() {
                 sp760 = temp_f1_2680 + (0.017453292f * (30.0f * (1.0f - var_f15_2660)));
                 M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f32, f32), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp758, 30.0f, 0.017453292f);
             }
-            MKVector(1.0f, 2.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp5F8, sp5E8);
+            sp5D8 = MKVector(1.0f, 2.0f, 1.0f);
+            sp5E8 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp5F8 = KDRand_Vector(sp5E8, sp5D8);
             sp608.operator*(400.0f);
             sp118 = M2C_FIELD(this, f64 *, 0xE0) + M2C_BITWISE(f64, sp608);
             sp618 = sp118;
@@ -1928,10 +1926,10 @@ void *FuryFXConvexity::Update() {
             sp750 = (f64) sp120;
             temp_f14_2737 = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
             temp_f25_2740 = temp_f14_2737;
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp5A8, sp598);
-            Normalise(sp5B8);
+            sp588 = MKVector(1.0f, 1.0f, 1.0f);
+            sp598 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp5A8 = KDRand_Vector(sp598, sp588);
+            sp5B8 = Normalise(sp5A8);
             sp108 = sp5B8 * (f64) temp_f25_2740;
             sp5C8 = sp108;
             sp110 = sp5B8.unk8 * temp_f14_2737;
@@ -1951,11 +1949,11 @@ void *FuryFXConvexity::Update() {
                 this->unkF4 = 2.0f;
                 if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                     sp7CC = 0;
-                    MKVector(1.0f, 1.0f, 1.0f);
+                    sp558 = MKVector(1.0f, 1.0f, 1.0f);
                     spF8 = sp558 * 5.56078426e-315;
                     sp7C8 = 0x417;
                     sp7D0 = spF8;
-                    sp100 = sp560 * 150.0f;
+                    sp100 = sp558.unk8 * 150.0f;
                     sp7E0 = 1;
                     sp7D8 = (f64) sp100;
                     sp568 = spF8;
@@ -2043,9 +2041,9 @@ void *FuryFXConvexity::Update() {
             this->unk164 = 4.0f * -((var_f3_2993 * 0.5f) - 1.0f);
             EmitVortexParticles();
             this->unk14D = 1;
-            MKVector(1.0f, 2.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp518, sp508);
+            sp4F8 = MKVector(1.0f, 2.0f, 1.0f);
+            sp508 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp518 = KDRand_Vector(sp508, sp4F8);
             sp528.operator*(400.0f);
             spE8 = M2C_FIELD(this, f64 *, 0xE0) + M2C_BITWISE(f64, sp528);
             sp538 = spE8;
@@ -2055,10 +2053,10 @@ void *FuryFXConvexity::Update() {
             sp700 = (f64) spF0;
             temp_f14_3057 = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
             temp_f25_3060 = temp_f14_3057;
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp4C8, sp4B8);
-            Normalise(sp4D8);
+            sp4A8 = MKVector(1.0f, 1.0f, 1.0f);
+            sp4B8 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp4C8 = KDRand_Vector(sp4B8, sp4A8);
+            sp4D8 = Normalise(sp4C8);
             spD8 = sp4D8 * (f64) temp_f25_3060;
             sp4E8 = spD8;
             spE0 = sp4D8.unk8 * temp_f14_3057;
@@ -2080,11 +2078,11 @@ void *FuryFXConvexity::Update() {
                 sp7AC = 0;
                 temp_f15_3139 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 temp_f16_3144 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f16_3144, temp_f15_3139);
+                sp478 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f16_3144, temp_f15_3139);
                 spC8 = sp478 * 5.398241246e-315;
                 sp7A8 = 0x417;
                 sp7B0 = spC8;
-                spD0 = sp480 * 10.0f;
+                spD0 = sp478.unk8 * 10.0f;
                 sp7C0 = 1;
                 sp7B8 = (f64) spD0;
                 sp488 = spC8;
@@ -2102,20 +2100,20 @@ void *FuryFXConvexity::Update() {
                 sp78C = 0;
                 temp_f15_3203 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 temp_f16_3208 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f16_3208, temp_f15_3203);
+                sp458 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f16_3208, temp_f15_3203);
                 spB8 = sp458 * 5.398241246e-315;
                 sp788 = 0x417;
                 sp790 = spB8;
-                spC0 = sp460 * 10.0f;
+                spC0 = sp458.unk8 * 10.0f;
                 sp7A0 = 1;
                 sp798 = (f64) spC0;
                 sp468 = spB8;
                 sp470 = (f64) spC0;
                 M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp788, spB8);
             }
-            MKVector(1.0f, 2.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp428, sp418);
+            sp408 = MKVector(1.0f, 2.0f, 1.0f);
+            sp418 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp428 = KDRand_Vector(sp418, sp408);
             sp438.operator*(400.0f);
             spA8 = M2C_FIELD(this, f64 *, 0xE0) + M2C_BITWISE(f64, sp438);
             sp448 = spA8;
@@ -2125,10 +2123,10 @@ void *FuryFXConvexity::Update() {
             sp6E0 = (f64) spB0;
             temp_f14_3281 = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
             temp_f25_3284 = temp_f14_3281;
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp3D8, sp3C8);
-            Normalise(sp3E8);
+            sp3B8 = MKVector(1.0f, 1.0f, 1.0f);
+            sp3C8 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp3D8 = KDRand_Vector(sp3C8, sp3B8);
+            sp3E8 = Normalise(sp3D8);
             sp98 = sp3E8 * (f64) temp_f25_3284;
             sp3F8 = sp98;
             spA0 = sp3E8.unk8 * temp_f14_3281;
@@ -2146,9 +2144,9 @@ void *FuryFXConvexity::Update() {
             goto block_159;
         case 4:                                     /* switch 1 */
             EmitVortexParticles();
-            MKVector(1.0f, 2.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp378, sp368);
+            sp358 = MKVector(1.0f, 2.0f, 1.0f);
+            sp368 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp378 = KDRand_Vector(sp368, sp358);
             sp388.operator*(400.0f);
             sp88 = M2C_FIELD(this, f64 *, 0xE0) + M2C_BITWISE(f64, sp388);
             sp398 = sp88;
@@ -2158,10 +2156,10 @@ void *FuryFXConvexity::Update() {
             sp6C0 = (f64) sp90;
             temp_f14_3383 = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
             temp_f26_3386 = temp_f14_3383;
-            MKVector(1.0f, 1.0f, 1.0f);
-            MKVector(-1.0f, 0.0f, -1.0f);
-            KDRand_Vector(sp328, sp318);
-            Normalise(sp338);
+            sp308 = MKVector(1.0f, 1.0f, 1.0f);
+            sp318 = MKVector(-1.0f, 0.0f, -1.0f);
+            sp328 = KDRand_Vector(sp318, sp308);
+            sp338 = Normalise(sp328);
             sp78 = sp338 * (f64) temp_f26_3386;
             sp348 = sp78;
             sp80 = sp338.unk8 * temp_f14_3383;
@@ -2178,11 +2176,11 @@ void *FuryFXConvexity::Update() {
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp6B8), *((MKVector3 *) &sp6A8), sp20, *((MKVector4 *) &sp2F8), 0.0f);
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp76C = 0;
-                MKVector(1.0f, 1.0f, 1.0f);
+                sp2D8 = MKVector(1.0f, 1.0f, 1.0f);
                 sp68 = sp2D8 * 5.634608575e-315;
                 sp768 = 0x417;
                 sp770 = sp68;
-                sp70 = sp2E0 * 500.0f;
+                sp70 = sp2D8.unk8 * 500.0f;
                 sp780 = 1;
                 sp778 = (f64) sp70;
                 sp2E8 = sp68;

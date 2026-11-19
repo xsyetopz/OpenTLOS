@@ -238,9 +238,8 @@ void *EarthTier1::Update() {
                     sp30 = (f32) sp30 * var_f3_383;
                     (*(f32 *) ((u8 *) &sp28 + 0xc)) *= var_f3_383;
                     sp38 = (f32) sp38 * var_f3_383;
-                    Tools_GetGradient(sp10);
-                    sp20 = M2C_BITWISE(f64, sp10);
-                    sp28 = (f64) sp10.unk8;
+                    sp10 = Tools_GetGradient(*((MKVector3 *) &sp30));
+                    *(MKVector3 *) &sp20 = sp10;
                     this->unkB10 += gUpdateTimeDelta * (-(((f32) sp28 * MKVector3::up.unk8) + (((f32) sp20 * MKVector3::up.unk0) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * MKVector3::up.unk4))) * gUpdateTimeDelta);
                     var_f0_422 = this->unkB10;
                     if (var_f0_422 < 2.0f) {

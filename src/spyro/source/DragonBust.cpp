@@ -48,6 +48,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 fmod(f32, f64);                                 /* extern */
@@ -1047,7 +1048,6 @@ void DragonBust::IdleUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
 void DragonBust::IdleEnter() {
     f64 sp80;
     f64 sp78;
@@ -1088,9 +1088,8 @@ void DragonBust::IdleEnter() {
         sp58 = temp_f0_1421;
         sp10 = this->unkF0 - (f32) sp50;
         sp60 = (f64) sp10;
-        Normalise(sp68);
-        M2C_FIELD(this, f64 *, 0xF8) = M2C_BITWISE(f64, sp68);
-        M2C_FIELD(this, f64 *, 0x100) = (f64) sp68.unk8;
+        sp68 = Normalise(*((MKVector3 *) &sp58));
+        M2C_FIELD(this, MKVector3 *, 0xF8) = sp68;
         temp_r3_1439 = this->unk8;
         sp28 = M2C_FIELD(temp_r3_1439, f64 *, 0x30);
         sp30 = M2C_FIELD(temp_r3_1439, f64 *, 0x38);
@@ -1103,7 +1102,6 @@ void DragonBust::IdleEnter() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'DragonBust::State'
 void DragonBust::SetState(DragonBust::State arg1) {

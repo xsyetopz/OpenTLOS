@@ -941,9 +941,10 @@ void EnemyDescriptor::Resolve() {
 
 #if 0 // DRAFT: function call 'DataMap_GetValue(DataMap *, signed char *)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 void EnemyDescriptor::LoadDone() {
-    f64 sp10;
+    MKVector3 sp10;
     f32 sp8;
     CharacterBreathFXDescriptor *var_r3_2371;
+    MKAnim *temp_r5_2119;
     f32 temp_f1_2132;
     f32 temp_f2_2131;
     f32 temp_f3_2133;
@@ -990,10 +991,10 @@ loop_27:
                 temp_r26_2116 = (void *) (M2C_FIELD(temp_r3_2223, s32 *, 0) + var_r21_2110);
                 do {
                     temp_r30_2118 = ((u8 *) temp_r26_2116) + var_r20_2115;
-                    if ((void *) M2C_FIELD(temp_r30_2118, void **, 0) != NULL) {
-                        SumAnimTranslation((MKAnimScript *) &sp10, (MKAnim *) this->unk34, M2C_FIELD(temp_r26_2116, f32 *, 0x64));
-                        M2C_FIELD(temp_r30_2118, f64 *, 8) = sp10;
-                        M2C_FIELD(temp_r30_2118, f64 *, 0x10) = sp18;
+                    temp_r5_2119 = M2C_FIELD(temp_r30_2118, MKAnim **, 0);
+                    if (temp_r5_2119 != NULL) {
+                        sp10 = SumAnimTranslation((MKAnimScript *) this->unk34, temp_r5_2119, M2C_FIELD(temp_r26_2116, f32 *, 0x64));
+                        M2C_FIELD(temp_r30_2118, MKVector3 *, 8) = sp10;
                         temp_f2_2131 = (f32) M2C_FIELD(temp_r30_2118, f64 *, 8);
                         temp_f1_2132 = M2C_FIELD(temp_r30_2118, f32 *, 0xC);
                         temp_f3_2133 = (f32) M2C_FIELD(temp_r30_2118, f64 *, 0x10);
@@ -1031,7 +1032,7 @@ loop_27:
                                 var_f4_2138 = __float_nan;
                             }
                         }
-                        M2C_FIELD(temp_r30_2118, f32 *, 0x18) = (f32) (var_f4_2138 / ((f32) M2C_FIELD(M2C_FIELD(temp_r30_2118, void **, 0), s16 *, 4) / 30.0f));
+                        M2C_FIELD(temp_r30_2118, f32 *, 0x18) = (f32) (var_f4_2138 / ((f32) M2C_FIELD(temp_r30_2118, MKAnim **, 0)->unk4 / 30.0f));
                     }
                     var_r25_2114 += 1;
                     var_r20_2115 += 0x20;
@@ -1314,34 +1315,35 @@ void EnemyDescriptor::Init() {
     this->unk22C = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
-void SumAnimTranslation(MKAnimScript *arg0, MKAnim *arg1, float arg2) {
+#if 0 // DRAFT: illegal function overloading
+void SumAnimTranslation(MKAnimScript *arg1, MKAnim *arg2, float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp20;
     f32 sp1C;
     f32 sp18;                                       /* compiler-managed */
     MKVector3 sp8;
-    MKAnim *temp_r31_2905;
     s32 temp_r3_2942;
 
-    temp_r31_2905 = M2C_ERROR(/* Read from unset register $r5 */);
     sp18 = 0.0f;
     sp1C = 0.0f;
     sp20 = 0.0f;
-    if (temp_r31_2905 != NULL) {
-        ((MKAnimScript *) arg1)->SetAnim(temp_r31_2905, arg2, 0.0f, 4, -1);
-        if (arg2 < 0.0f) {
-            ((MKAnimScript *) arg1)->SetCurrentFrame((s32) temp_r31_2905->unkC);
+    if (arg2 != NULL) {
+        arg1->SetAnim(arg2, farg0, 0.0f, 4, -1);
+        if (farg0 < 0.0f) {
+            arg1->SetCurrentFrame((s32) arg2->unkC);
         }
 loop_4:
         temp_r3_2942 = arg1->unk2C;
         if (!(temp_r3_2942 & 1) && !(temp_r3_2942 & 2)) {
-            ((MKAnimScript *) arg1)->Animate(MKModel_GetAnimation(M2C_FIELD(arg1, MKModel **, 8)), -1, &sp8);
+            arg1->Animate(MKModel_GetAnimation(arg1->unk8), -1, &sp8);
             sp18 = (f64) sp18 + M2C_BITWISE(f64, sp8);
             sp20 += sp8.unk8;
             goto loop_4;
         }
     }
-    M2C_FIELD(arg0, f64 *, 0) = sp18;
-    M2C_FIELD(arg0, f64 *, 8) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 0) = sp18;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp20;
+    return result;
 }
 #endif

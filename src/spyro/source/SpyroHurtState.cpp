@@ -73,6 +73,7 @@
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 extern s32 GS_IceBossSpyroFreeze;
@@ -1039,7 +1040,7 @@ void SpyroHurtState::Enter(SpyroStateMessages &arg0) {
     f64 spD8;
     f64 spD0;
     f64 spC8;
-    f64 spB8;
+    MKVector3 spB8;
     f64 spB0;
     f64 spA8;
     f64 spA0;
@@ -1223,10 +1224,10 @@ void SpyroHurtState::Enter(SpyroStateMessages &arg0) {
                 }
             } else {
 block_35:
-                MKVector(0.0f, 5.0f, 0.0f);
-                sp18 = (f64) sp158 + spB8;
+                spB8 = MKVector(0.0f, 5.0f, 0.0f);
+                sp18 = (f64) sp158 + M2C_BITWISE(f64, spB8);
                 sp50 = 0.0f;
-                sp20 = sp160 + spC0;
+                sp20 = sp160 + spB8.unk8;
                 this->unk70 = sp18;
                 sp48 = 0.0f;
                 sp4C = 50.0f;

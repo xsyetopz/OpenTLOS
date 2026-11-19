@@ -84,6 +84,7 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/PhrasePlayer.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK __destroy_arr(SpyroSoundPlayer *, SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16), M2C_UNK, M2C_UNK); /* extern */
@@ -2428,7 +2429,7 @@ void TrainChaseSpyro::UpdateCartOrientation() {
         spD4 = (*(f32 *) ((u8 *) &sp70 + 0x4));
         spD8 = (f32) sp78;
         spDC = 0.0f;
-        Normalise(sp50);
+        sp50 = Normalise(*((MKVector3 *) &spD0));
         temp_f2_4240 = M2C_BITWISE(f32, sp50);
         spCC = 0.0f;
         spDC = 0.0f;

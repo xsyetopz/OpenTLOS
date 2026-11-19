@@ -75,6 +75,7 @@
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -338,7 +339,7 @@ u8 IceBossGoal_IceBreath::Update() {
     MKVector3 sp158;
     f64 sp150;
     f64 sp148;
-    f64 sp138;
+    MKVector3 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
@@ -504,7 +505,7 @@ u8 IceBossGoal_IceBreath::Update() {
             sp1B0 = (f64) spB0;
             sp198 = (f64) sp98;
             sp1A0 = (f64) spA0;
-            KDRand_Vector(sp1B8, *((MKVector3 *) &sp1A8));
+            sp1B8 = KDRand_Vector(*((MKVector3 *) &sp1A8), *((MKVector3 *) &sp198));
             temp_f0_761 = sp1B8 * 5.222099017e-315;
             sp88 = temp_f0_761;
             sp1C8 = temp_f0_761;
@@ -575,10 +576,10 @@ u8 IceBossGoal_IceBreath::Update() {
         sp248 = sp28;
         sp170 = (f64) sp30;
         sp250 = (f64) sp30;
-        MKVector(0.0f, 200.0f, 0.0f);
-        sp18 = sp248 - sp138;
+        sp138 = MKVector(0.0f, 200.0f, 0.0f);
+        sp18 = sp248 - M2C_BITWISE(f64, sp138);
         sp238 = sp18;
-        sp20 = (f32) sp250 - sp140;
+        sp20 = (f32) sp250 - sp138.unk8;
         sp148 = sp18;
         sp240 = (f64) sp20;
         sp150 = (f64) sp20;
@@ -635,12 +636,12 @@ loop_47:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void IceBossGoal_IceBreath::Activate() {
     f64 sp40;
     f64 sp38;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     AnimSequence *temp_r4_1129;
@@ -683,12 +684,12 @@ loop_4:
             M2C_FIELD(temp_r3_1174, f32 *, 0x28) = 0.001f;
             M2C_FIELD(temp_r3_1174, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_1174, f32 *, 0x24));
         }
-        MKVector(0.0f, 1000.0f, 0.0f);
+        sp18 = MKVector(0.0f, 1000.0f, 0.0f);
         ((MKProp *) &sp28)->GetPos();
-        sp8 = sp28 + sp18;
+        sp8 = sp28 + M2C_BITWISE(f64, sp18);
         temp_r3_1205 = M2C_FIELD(this->unkC, ManagedLight **, 0xFFC);
         sp38 = sp8;
-        sp10 = sp30 + sp20;
+        sp10 = sp30 + sp18.unk8;
         temp_r3_1205->unk10 = sp8;
         temp_r3_1205->unk18 = (f64) sp10;
         temp_r3_1211 = temp_r3_1205->unk3C;
@@ -2059,7 +2060,7 @@ void IceBossGoal_AttackPhase1::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr' Too many errors printed, aborting program
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 IceBossGoal_AttackPhase1::Update() {
     f32 sp8;
     Enemy *temp_r3_4038;
@@ -2888,7 +2889,7 @@ void IceBossGoal_Cutscene2::Activate() {
     sp98 = (f32) sp98 * var_f4_5673;
     (*(f32 *) ((u8 *) &sp90 + 0xc)) *= var_f4_5673;
     spA0 = (f32) spA0 * var_f4_5673;
-    KDMath_Slerp(sp68, *((MKVector3 *) &spA8), 0.785398f);
+    sp68 = KDMath_Slerp(*((MKVector3 *) &spA8), *((MKVector3 *) &sp98), 0.785398f);
     temp_f1_5692 = M2C_BITWISE(f64, sp68);
     spA8 = temp_f1_5692;
     spB0 = (f64) sp68.unk8;

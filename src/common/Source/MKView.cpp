@@ -10,6 +10,7 @@
 #include "spyro/source/Level.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKView_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 f64 tan(Matrix *, f32, f32);                        /* extern */

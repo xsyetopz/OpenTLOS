@@ -223,8 +223,7 @@ void LensFlare::Draw() {
                     temp_f3_416 = this->unk50;
                     this->unk50 = (0.16666667f * (temp_f4_412 - temp_f3_416)) + temp_f3_416;
                     var_f27_425 = this->unk50 * (var_f2_381 * 0.0078125f);
-                    sp50 = M2C_BITWISE(f64, spA0);
-                    sp58 = (f64) spA0.unk8;
+                    *(MKVector3 *) &sp50 = spA0;
                     DrawSun((MKVector3) &sp50, var_f27_425);
                     MKMaterial_SetMaterial(this->unk0);
                     sp10 = M2C_FIELD(this, f64 *, 0x40) - M2C_BITWISE(f64, spA0);

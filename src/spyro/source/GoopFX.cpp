@@ -32,6 +32,7 @@
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(GoopFXDescriptor::Goop **);            /* extern */
@@ -470,7 +471,7 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
     f64 spF0;
     f64 spE8;
     f64 spE0;
-    f64 spD0;
+    MKVector3 spD0;
     f64 spC8;
     f64 spC0;
     MKVector3 spB0;
@@ -560,11 +561,11 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
             M2C_FIELD(temp_r30_787, f64 *, 0) = (f64) (M2C_FIELD(temp_r30_787, f64 *, 0) + temp_f0_799);
             temp_r30_787->unk8 = (f32) temp_r30_787->unk8 + (f32) spF8;
             temp_f30_820 = gUpdateTimeDelta;
-            MKVector(0.0f, -3000.0f * var_f1_771, 0.0f);
+            spD0 = MKVector(0.0f, -3000.0f * var_f1_771, 0.0f);
             temp_f0_824 = spD0 * (f64) temp_f30_820;
             sp50 = temp_f0_824;
             spE0 = temp_f0_824;
-            sp58 = spD8 * temp_f30_820;
+            sp58 = spD0.unk8 * temp_f30_820;
             spE8 = (f64) sp58;
             M2C_FIELD(temp_r29_792, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_792, f64 *, 0) + temp_f0_824);
             M2C_FIELD(temp_r30_787, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r30_787, f32 *, 0x18) + (f32) spE8);

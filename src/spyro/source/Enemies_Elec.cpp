@@ -78,6 +78,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(u16 *);                                /* extern */
@@ -287,9 +288,8 @@ void ElecTier3::UpdateScan() {
     sp28 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &spF0 + 0x4))) - (MKVector3::up.unk4 * (f32) spF0);
     spC0 = (f64) sp20;
     spC8 = (f64) sp28;
-    Normalise(spD0);
-    sp110 = M2C_BITWISE(f64, spD0);
-    sp118 = (f64) spD0.unk8;
+    spD0 = Normalise(*((MKVector3 *) &spC0));
+    *(MKVector3 *) &sp110 = spD0;
     this->unkB10.unk0 = (f32) sp110;
     this->unkB10.unk4 = (*(f32 *) ((u8 *) &sp110 + 0x4));
     this->unkB10.unk8 = (f32) sp118;
@@ -862,7 +862,7 @@ void ElecTier1::Despawn(bool arg0) {
     Enemy::Despawn(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 void ElecTier1::CheckAnimEvents() {
     MKCollisionResult spC8;
     f64 spC0;
@@ -877,7 +877,7 @@ void ElecTier1::CheckAnimEvents() {
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    f64 sp58;
+    MKVector3 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -915,10 +915,10 @@ void ElecTier1::CheckAnimEvents() {
         sp40 = (f32) spC0 + (f32) spA0;
         spB0 = (f64) sp40;
         if (MKCollision_RayCollide(*((MKVector3 *) &spA8), *((MKVector3 *) &sp88), &spC8, (MKCollisionMode) 7, 0x08000000) != 0) {
-            MKVector(0.0f, 5.0f, 0.0f);
-            sp8 = M2C_BITWISE(f64, spC8) + sp58;
+            sp58 = MKVector(0.0f, 5.0f, 0.0f);
+            sp8 = M2C_BITWISE(f64, spC8) + M2C_BITWISE(f64, sp58);
             sp68 = sp8;
-            sp10 = spC8.unk8 + sp60;
+            sp10 = spC8.unk8 + sp58.unk8;
             spB8 = sp8;
             sp70 = (f64) sp10;
             spC0 = (f64) sp10;

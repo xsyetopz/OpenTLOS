@@ -32,6 +32,7 @@
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 s32 atoi(s8 *, s32);                                /* extern */
@@ -221,7 +222,7 @@ void KDSP_Actor::UpdateLookat() {
                 sp120 = temp_f0_249;
                 sp68 = (f32) sp118 + (f32) sp108;
                 sp128 = (f64) sp68;
-                Normalise(sp130);
+                sp130 = Normalise(*((MKVector3 *) &sp120));
                 sp40 = 0.0f;
                 sp44 = 0.0f;
                 sp48 = 1.0f;
@@ -244,9 +245,8 @@ void KDSP_Actor::UpdateLookat() {
                 spD0 = temp_f0_300;
                 sp28 = (f32) spC8 + (f32) spB8;
                 spD8 = (f64) sp28;
-                Normalise(spE0);
-                M2C_FIELD(this, f64 *, 0xE8) = M2C_BITWISE(f64, spE0);
-                M2C_FIELD(this, f32 *, 0xF0) = (f64) spE0.unk8;
+                spE0 = Normalise(*((MKVector3 *) &spD0));
+                M2C_FIELD(this, MKVector3 *, 0xE8) = spE0;
             }
             UpdateAimNode(this->unk38, this->unkF8, this->unk88);
             UpdateAimNode(this->unk38, this->unkE8, this->unk8C);
@@ -255,7 +255,7 @@ void KDSP_Actor::UpdateLookat() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match 'MKVector3::Normalise()'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
     f32 sp13C;
     f32 sp138;
@@ -325,7 +325,7 @@ void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
         sp11C = 0.0f;
         sp70 = (f64) sp20;
         sp78 = (f64) sp28;
-        Normalise(sp80);
+        sp80 = Normalise(*((MKVector3 *) &sp70));
         temp_f7_397 = M2C_BITWISE(f32, sp80);
         sp100 = temp_f7_397;
         sp18 = (sp120 * sp80.unk4) - (sp124 * temp_f7_397);
@@ -513,9 +513,8 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
             sp1A0 = (f64) spA0;
             sp198 = (f64) sp98;
             if (var_f3_664 > 0.000001f) {
-                Normalise(sp168);
-                sp1A8 = M2C_BITWISE(f64, sp168);
-                sp1B0 = (f64) sp168.unk8;
+                sp168 = Normalise(*((MKVector3 *) &sp1A8));
+                *(MKVector3 *) &sp1A8 = sp168;
                 var_f3_664 = ((f32) sp1B0 * (f32) sp1A0) + (((f32) sp1A8 * (f32) sp198) + ((*(f32 *) ((u8 *) &sp1A0 + 0xc)) * (*(f32 *) ((u8 *) &sp198 + 0x4))));
             }
             if ((var_f3_664 < arg8) && (var_f3_664 > arg9)) {
@@ -600,9 +599,8 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
             sp138 = temp_f0_878;
             sp60 = (f32) sp130 + (f32) sp120;
             sp140 = (f64) sp60;
-            Normalise(sp148);
-            M2C_FIELD(temp_r28_520, f64 *, 0) = M2C_BITWISE(f64, sp148);
-            M2C_FIELD(temp_r28_520, f32 *, 8) = (f64) sp148.unk8;
+            sp148 = Normalise(*((MKVector3 *) &sp138));
+            M2C_FIELD(temp_r28_520, MKVector3 *, 0) = sp148;
         }
     } else {
         if ((arg5 != NULL) && (temp_r31_525 == 0)) {
@@ -630,9 +628,8 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
             spF8 = temp_f0_947;
             sp20 = (f32) spF0 + (f32) spE0;
             sp100 = (f64) sp20;
-            Normalise(sp108);
-            M2C_FIELD(temp_r28_520, f64 *, 0) = M2C_BITWISE(f64, sp108);
-            M2C_FIELD(temp_r28_520, f32 *, 8) = (f64) sp108.unk8;
+            sp108 = Normalise(*((MKVector3 *) &spF8));
+            M2C_FIELD(temp_r28_520, MKVector3 *, 0) = sp108;
         }
     }
     if (temp_r31_525 != 0) {
@@ -1009,11 +1006,11 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
     f64 spA0;
     KDUniformSpline sp80;
     f64 sp70;
-    f64 sp68;                                       /* compiler-managed */
-    f64 sp60;                                       /* compiler-managed */
-    Matrix sp50;
-    Matrix sp40;
-    M2C_UNK sp30;
+    f64 sp68;
+    f64 sp60;
+    f64 sp50;
+    f32 sp40;
+    MKVector3 sp30;
     f32 sp28;
     f64 sp20;
     s32 sp1C;
@@ -1149,14 +1146,14 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
                     M2C_STRUCT_COPY((s32) &sp1AC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                     sp1B0.SetLookAt(*((MKVector3 *) &spB0), *((MKVector3 *) &spF0));
                     sp1F0.Multiply3x3(&sp1F0, &sp1B0);
-                    sp50.GetRotationPYR();
-                    spE0 = M2C_BITWISE(f64, sp50);
-                    spE8 = (f64) sp50.unk8;
+                    ((Matrix *) &sp50)->GetRotationPYR();
+                    spE0 = sp50;
+                    spE8 = sp58;
                 } else {
-                    sp40.GetRotationPYR();
-                    spE0 = M2C_BITWISE(f32, sp40);
-                    spE4 = sp40.unk4;
-                    spE8 = sp40.unk8;
+                    ((Matrix *) &sp40)->GetRotationPYR();
+                    spE0 = sp40;
+                    spE4 = sp44;
+                    spE8 = sp48;
                     spEC = 1.0f;
                 }
             }
@@ -1216,7 +1213,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
             MKModel_CalculateCentre(GetModel(), (MKVector3 *) &sp80.unk10);
             if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp80.unk10), 5000.0f, (MKCollisionResult *) &sp230, 0, 4, NULL, (MKCollisionMode) 7) != 0) {
                 *arg2 = sp274;
-                Tools_GroundColor((MKCollisionResult *) &sp30);
+                sp30 = Tools_GroundColor((MKCollisionResult *) &sp230);
                 MKModel_SetColor(GetModel(), *((MKVector4 *) &sp30));
             }
             this->unk28 = sp234;
@@ -1756,7 +1753,7 @@ void KDSP_Actor::ResolveBodyBarAnim(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, i
 }
 #endif
 
-#if 0 // DRAFT: illegal type Too many errors printed, aborting program
+#if 0 // DRAFT: illegal type
 void KDSP_Actor::ResolveBodyBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
     f32 var_f0_2982;
     s32 temp_r4_2988;
@@ -1945,7 +1942,7 @@ void KDSP_Actor::ResolveVoiceBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetSubLine__5MKIniFP9MKIniLine'
+#if 0 // DRAFT: undefined identifier 'GetSubLine__5MKIniFP9MKIniLine' Too many errors printed, aborting program
 void ProcessBars__10KDSP_ActorFP12KDSynkerHeapM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vP9MKIniLineRi(KDSP_Actor *arg0, KDSynkerHeap *arg1, s32 *arg2, MKIniLine *arg3, s32 *arg4) {
     s32 sp1C;
     s32 sp18;
@@ -2263,6 +2260,7 @@ void KDSP_Actor::Resolve(bool arg0, void (*arg2)(const char *, MKModel **, MKAni
 }
 #endif
 
+#if 0 // DRAFT: pointer/array required
 void KDSP_Actor::UpdateCloth() {
     f64 sp30;
     f64 sp28;
@@ -2290,7 +2288,7 @@ loop_3:
             sp28 = (f64) sp8;
             temp_r3_4054->SetForce(0, *((MKVector3 *) &sp28), -1);
             MKModel_GetPosition(temp_r3_4041);
-            MKWind_GetVelocity(sp18);
+            sp18 = MKWind_GetVelocity(*(M2C_ERROR(/* Read from unset register $r3 */)));
             temp_r3_4054->SetForce(1, sp18, -1);
             temp_r3_4054->SetFriction(1.0f);
             var_r29_4049 += 1;
@@ -2298,6 +2296,7 @@ loop_3:
         }
     }
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'HideSpecialSubObjectsInternal'
 void KDSP_Actor::HideSpecialSubObjects() {
@@ -2313,7 +2312,7 @@ void KDSP_Actor::HideSpecialSubObjects() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[5], int)' does not match 'strnicmp(const char *, const char *, int)' Too many errors printed, aborting program
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[5], int)' does not match 'strnicmp(const char *, const char *, int)'
 void HideSpecialSubObjectsInternal(MKModel *arg0) {
     s16 temp_r30_4138;
     u16 var_r28_4140;

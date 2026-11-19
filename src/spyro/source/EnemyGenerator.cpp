@@ -302,15 +302,12 @@ void EnemyGeneratorDoor::GetDoorDir() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void EnemyGeneratorDoor::GetDoorPos() {
     MKVector3 sp8;
 
     MKModel_CalculateRefPointWorldPosition(M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8), MKModel **, 4), M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x10), &sp8);
-    this->unk0 = M2C_BITWISE(f64, sp8);
-    this->unk8 = (f64) sp8.unk8;
+    *(MKVector3 *) &this->unk0 = sp8;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void EnemyGeneratorDoor::Close() {

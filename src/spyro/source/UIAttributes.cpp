@@ -4,6 +4,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/UIMessage.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
@@ -84,7 +85,6 @@ block_29:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'InterpolateLinear'
 void Attributes::Tween(Attributes *arg0, Attributes *arg1, float arg2) {
     MKVector4 sp28;
     MKVector3 sp18;
@@ -97,19 +97,16 @@ void Attributes::Tween(Attributes *arg0, Attributes *arg1, float arg2) {
     this->unk40 = this->unk40 | arg1->unk40;
     temp_r3_245 = arg0->unk40 & arg1->unk40;
     if (temp_r3_245 & 1) {
-        InterpolateLinear(sp28, *((MKVector4 *) arg0), arg2);
-        M2C_FIELD(this, f64 *, 0) = M2C_BITWISE(f64, sp28);
-        this->unk8 = (f64) sp28.unk8;
+        sp28 = InterpolateLinear(*((MKVector4 *) arg0), *((MKVector4 *) arg1), arg2);
+        M2C_FIELD(this, MKVector4 *, 0) = sp28;
     }
     if (temp_r3_245 & 2) {
-        InterpolateLinear(sp18, arg0->unk10, arg2);
-        M2C_FIELD(this, f64 *, 0x10) = M2C_BITWISE(f64, sp18);
-        M2C_FIELD(this, f64 *, 0x18) = (f64) sp18.unk8;
+        sp18 = InterpolateLinear(arg0->unk10, arg1->unk10, arg2);
+        M2C_FIELD(this, MKVector3 *, 0x10) = sp18;
     }
     if (temp_r3_245 & 4) {
-        InterpolateLinear(sp8, arg0->unk20, arg2);
-        M2C_FIELD(this, f64 *, 0x20) = M2C_BITWISE(f64, sp8);
-        M2C_FIELD(this, f64 *, 0x28) = (f64) sp8.unk8;
+        sp8 = InterpolateLinear(arg0->unk20, arg1->unk20, arg2);
+        M2C_FIELD(this, MKVector3 *, 0x20) = sp8;
     }
     if (temp_r3_245 & 8) {
         temp_f1_282 = arg0->unk30;
@@ -122,7 +119,6 @@ void Attributes::Tween(Attributes *arg0, Attributes *arg1, float arg2) {
         this->unk38 = (arg2 * (arg1->unk38 - temp_f1_295)) + temp_f1_295;
     }
 }
-#endif
 
 void Attributes::SetIdentity() {
     this->unk0 = 1.0f;

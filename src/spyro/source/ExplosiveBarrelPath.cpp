@@ -44,6 +44,7 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK __destroy_arr(f32 *, ExplosiveBarrelPath::BarrelData *(*)(ExplosiveBarrelPath::BarrelData *, s16), M2C_UNK, M2C_UNK); /* extern */
@@ -187,12 +188,12 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     f64 sp160;
     f64 sp158;
     f64 sp150;
-    f64 sp140;
+    MKVector3 sp140;
     f64 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
-    M2C_UNK sp110;
+    MKVector3 sp110;
     f32 sp108;
     f64 sp100;
     f32 spF8;
@@ -460,11 +461,11 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     sp220 = (f64) sp40;
     sp228 = (f64) sp48;
     M2C_STRUCT_COPY((s32) &sp2A0.unk3C + 4, MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_221, MKModel **, 4)) - 4 + 4, 0x40);
-    MKVector(0.0f, arg1->unk10, 0.0f);
-    temp_f0_677 = sp290 + sp140;
+    sp140 = MKVector(0.0f, arg1->unk10, 0.0f);
+    temp_f0_677 = sp290 + M2C_BITWISE(f64, sp140);
     sp30 = temp_f0_677;
     sp150 = temp_f0_677;
-    sp38 = (f32) sp298 + sp148;
+    sp38 = (f32) sp298 + sp140.unk8;
     sp158 = (f64) sp38;
     sp310 = (f32) sp150;
     sp314 = (*(f32 *) ((u8 *) &sp150 + 0x4));
@@ -500,7 +501,7 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     sp58 = (f32) sp208 - (f32) sp128;
     sp138 = (f64) sp58;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp1F0.unk10), *((MKVector3 *) &sp130), &sp320, (MKCollisionMode) 4, 0) != 0) {
-        Tools_GroundColor((MKCollisionResult *) &sp110);
+        sp110 = Tools_GroundColor(&sp320);
         MKModel_SetColor(M2C_FIELD(temp_r31_221, MKModel **, 4), *((MKVector4 *) &sp110));
     }
 }
@@ -999,9 +1000,8 @@ loop_18:
                         sp78 = (f64) sp28;
                         sp80 = (f64) sp30;
                         sp88 = (f64) sp38;
-                        KDRand_Vector(sp90, *((MKVector3 *) &sp80));
-                        spC0.unk10 = M2C_BITWISE(f64, sp90);
-                        spC0.unk18 = (f64) sp90.unk8;
+                        sp90 = KDRand_Vector(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70));
+                        *(MKVector3 *) &spC0.unk10 = sp90;
                         temp_f0_1633 = M2C_BITWISE(f64, spC0.unk10) * 5.5769738e-315;
                         sp10 = temp_f0_1633;
                         sp60 = temp_f0_1633;
@@ -1165,12 +1165,10 @@ loop_9:
                     this->unk1A8 = sp80;
                     this->unk1B0 = 0;
                 } else {
-                    Min(sp48, *((MKVector3 *) &this->unk190));
-                    this->unk190 = M2C_BITWISE(f64, sp48);
-                    this->unk198 = (f64) sp48.unk8;
-                    Max(sp38, *((MKVector3 *) &this->unk1A0));
-                    this->unk1A0 = M2C_BITWISE(f64, sp38);
-                    this->unk1A8 = (f64) sp38.unk8;
+                    sp48 = Min(*((MKVector3 *) &this->unk190), *((MKVector3 *) &sp78));
+                    *(MKVector3 *) &this->unk190 = sp48;
+                    sp38 = Max(*((MKVector3 *) &this->unk1A0), *((MKVector3 *) &sp78));
+                    *(MKVector3 *) &this->unk1A0 = sp38;
                 }
                 ((KDUniformSpline *) &this->unk50)->AddNode(*((MKVector3 *) &sp78));
                 var_r30_1936 = var_r30_1936->unkC->GetNextLine(var_r30_1936);
@@ -1198,12 +1196,10 @@ loop_18:
                     this->unk1A8 = sp70;
                     this->unk1B0 = 0;
                 } else {
-                    Min(sp18, *((MKVector3 *) &this->unk190));
-                    this->unk190 = M2C_BITWISE(f64, sp18);
-                    this->unk198 = (f64) sp18.unk8;
-                    Max(sp8, *((MKVector3 *) &this->unk1A0));
-                    this->unk1A0 = M2C_BITWISE(f64, sp8);
-                    this->unk1A8 = (f64) sp8.unk8;
+                    sp18 = Min(*((MKVector3 *) &this->unk190), *((MKVector3 *) &sp68));
+                    *(MKVector3 *) &this->unk190 = sp18;
+                    sp8 = Max(*((MKVector3 *) &this->unk1A0), *((MKVector3 *) &sp68));
+                    *(MKVector3 *) &this->unk1A0 = sp8;
                 }
                 ((KDUniformSpline *) &this->unk50.unk14)->AddNode(*((MKVector3 *) &sp68));
                 var_r30_2010 = var_r30_2010->unkC->GetNextLine(var_r30_2010);

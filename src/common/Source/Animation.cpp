@@ -928,7 +928,7 @@ loop_8:
             sp38 = temp_f0_1641;
             sp10 = sp70 - sp80;
             sp40 = (f64) sp10;
-            __ml((var_f31_1326 - (f32) temp_r3_1389) / (f32) (temp_r4_1454 - temp_r3_1389), sp48);
+            sp48 = __ml((var_f31_1326 - (f32) temp_r3_1389) / (f32) (temp_r4_1454 - temp_r3_1389), *((MKVector3 *) &sp38));
             sp18 = (f64) sp78 + M2C_BITWISE(f64, sp48);
             sp58 = sp18;
             sp20 = sp80 + sp48.unk8;

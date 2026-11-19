@@ -58,6 +58,7 @@
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/KDSound.h"
+#include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(FuryFXFire2::Meteor **);               /* extern */
@@ -118,7 +119,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FuryFXFire2::SpawnMeteor() {
     s8 sp138;
     s32 sp134;
@@ -150,8 +151,8 @@ void FuryFXFire2::SpawnMeteor() {
     MKVector3 spA8;
     MKVector3 sp98;
     MKVector3 sp88;
-    M2C_UNK sp78;
-    f64 sp68;
+    MKVector3 sp78;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -204,20 +205,20 @@ void FuryFXFire2::SpawnMeteor() {
             if (temp_r31_177 != NULL) {
                 M2C_STRUCT_COPY(temp_r31_177, &Matrix::identity, 0x40);
                 M2C_FIELD(temp_r31_177, s32 *, 0x48) = 0;
-                MKVector(0.0f, 2000.0f, 0.0f);
-                MKVector(1.0f, 0.0f, 1.0f);
-                MKVector(-1.0f, 0.0f, -1.0f);
-                KDRand_Vector(sp98, sp88);
+                sp68 = MKVector(0.0f, 2000.0f, 0.0f);
+                sp78 = MKVector(1.0f, 0.0f, 1.0f);
+                sp88 = MKVector(-1.0f, 0.0f, -1.0f);
+                sp98 = KDRand_Vector(sp88, sp78);
                 spA8.operator*(1500.0f);
                 temp_f0_220 = M2C_FIELD(this, f64 *, 0xC0) + M2C_BITWISE(f64, spA8);
                 sp8 = temp_f0_220;
                 spB8 = temp_f0_220;
                 sp10 = this->unk90.unk38 + spA8.unk8;
                 spC0 = (f64) sp10;
-                temp_f0_232 = spB8 + sp68;
+                temp_f0_232 = spB8 + M2C_BITWISE(f64, sp68);
                 sp18 = temp_f0_232;
                 spC8 = temp_f0_232;
-                sp20 = (f32) spC0 + sp70;
+                sp20 = (f32) spC0 + sp68.unk8;
                 M2C_FIELD(temp_r31_177, f32 *, 0x30) = (f32) spC8;
                 spD0 = (f64) sp20;
                 M2C_FIELD(temp_r31_177, f32 *, 0x34) = (*(f32 *) ((u8 *) &spC8 + 0x4));
@@ -475,12 +476,12 @@ void *FuryFXFire2::Update() {
     f64 sp5E8;
     f64 sp5E0;
     MKVector3 sp5D0;
-    M2C_UNK sp5C0;
+    MKVector3 sp5C0;
     f64 sp5B8;
     f64 sp5B0;
     MKVector3 sp5A0;
-    M2C_UNK sp590;
-    M2C_UNK sp580;
+    MKVector3 sp590;
+    MKVector3 sp580;
     f64 sp578;
     f64 sp570;
     f64 sp568;
@@ -490,12 +491,12 @@ void *FuryFXFire2::Update() {
     f64 sp548;
     f64 sp540;
     MKVector3 sp530;
-    M2C_UNK sp520;
+    MKVector3 sp520;
     f64 sp518;
     f64 sp510;
     MKVector3 sp500;
-    M2C_UNK sp4F0;
-    M2C_UNK sp4E0;
+    MKVector3 sp4F0;
+    MKVector3 sp4E0;
     f64 sp4D8;
     f64 sp4D0;
     f64 sp4C8;
@@ -505,26 +506,26 @@ void *FuryFXFire2::Update() {
     f64 sp4A8;
     f64 sp4A0;
     MKVector3 sp490;
-    M2C_UNK sp480;
+    MKVector3 sp480;
     f64 sp478;
     f64 sp470;
     MKVector3 sp460;
-    M2C_UNK sp450;
-    M2C_UNK sp440;
+    MKVector3 sp450;
+    MKVector3 sp440;
     f64 sp438;
     f64 sp430;
     f64 sp428;
     f64 sp420;
     f64 sp418;
     f64 sp410;
-    f64 sp400;
+    MKVector3 sp400;
     MKVector3 sp3F0;
-    M2C_UNK sp3E0;
+    MKVector3 sp3E0;
     f64 sp3D8;
     f64 sp3D0;
     MKVector3 sp3C0;
-    M2C_UNK sp3B0;
-    M2C_UNK sp3A0;
+    MKVector3 sp3B0;
+    MKVector3 sp3A0;
     f64 sp398;
     f64 sp390;
     f64 sp388;
@@ -774,19 +775,18 @@ void *FuryFXFire2::Update() {
             }
             break;
         case 2:
-            MKVector(3.0f, 5.0f, 3.0f);
-            MKVector(6.0f, 0.0f, 6.0f);
+            sp580 = MKVector(3.0f, 5.0f, 3.0f);
+            sp590 = MKVector(6.0f, 0.0f, 6.0f);
             sp5A0.operator*(gUpdateTimeDelta);
             temp_f0_898 = (f64) M2C_FIELD(this, f32 *, 0xD8) + M2C_BITWISE(f64, sp5A0);
             sp40 = temp_f0_898;
             sp5B0 = temp_f0_898;
             sp48 = this->unkE0 + sp5A0.unk8;
             sp5B8 = (f64) sp48;
-            MKVector(0.0f, 0.0f, 0.0f);
-            Min(spA0, *((MKVector3 *) &sp5B0));
-            Max(sp5D0, spA0);
-            M2C_FIELD(this, f32 *, 0xD8) = M2C_BITWISE(f64, sp5D0);
-            M2C_FIELD(this, f32 *, 0xE0) = (f64) sp5D0.unk8;
+            sp5C0 = MKVector(0.0f, 0.0f, 0.0f);
+            spA0 = Min(*((MKVector3 *) &sp5B0), sp580);
+            sp5D0 = Max(spA0, sp5C0);
+            *(MKVector3 *) &M2C_FIELD(this, f32 *, 0xD8) = sp5D0;
             if (this->unkE8 <= 0.0f) {
                 this->unkE8 = 1.5f;
                 temp_r4_935 = this->unkD0;
@@ -824,19 +824,18 @@ void *FuryFXFire2::Update() {
             }
             break;
         case 3:
-            MKVector(5.0f, 50.0f, 5.0f);
-            MKVector(-1.0f, 4.0f, -1.0f);
+            sp4E0 = MKVector(5.0f, 50.0f, 5.0f);
+            sp4F0 = MKVector(-1.0f, 4.0f, -1.0f);
             sp500.operator*(gUpdateTimeDelta);
             temp_f0_1034 = (f64) M2C_FIELD(this, f32 *, 0xD8) + M2C_BITWISE(f64, sp500);
             sp30 = temp_f0_1034;
             sp510 = temp_f0_1034;
             sp38 = this->unkE0 + sp500.unk8;
             sp518 = (f64) sp38;
-            MKVector(0.1f, 0.0f, 0.1f);
-            Min(sp90, *((MKVector3 *) &sp510));
-            Max(sp530, sp90);
-            M2C_FIELD(this, f32 *, 0xD8) = M2C_BITWISE(f64, sp530);
-            M2C_FIELD(this, f32 *, 0xE0) = (f64) sp530.unk8;
+            sp520 = MKVector(0.1f, 0.0f, 0.1f);
+            sp90 = Min(*((MKVector3 *) &sp510), sp4E0);
+            sp530 = Max(sp90, sp520);
+            *(MKVector3 *) &M2C_FIELD(this, f32 *, 0xD8) = sp530;
             if (this->unkE8 <= 0.0f) {
                 this->unkE8 = 3.0f;
                 temp_r4_1071 = this->unkD0;
@@ -876,19 +875,18 @@ void *FuryFXFire2::Update() {
             }
             break;
         case 4:
-            MKVector(5.0f, 50.0f, 5.0f);
-            MKVector(-2.0f, -3.0f, -2.0f);
+            sp440 = MKVector(5.0f, 50.0f, 5.0f);
+            sp450 = MKVector(-2.0f, -3.0f, -2.0f);
             sp460.operator*(gUpdateTimeDelta);
             temp_f0_1176 = (f64) M2C_FIELD(this, f32 *, 0xD8) + M2C_BITWISE(f64, sp460);
             sp20 = temp_f0_1176;
             sp470 = temp_f0_1176;
             sp28 = this->unkE0 + sp460.unk8;
             sp478 = (f64) sp28;
-            MKVector(0.05f, 0.0f, 0.05f);
-            Min(sp80, *((MKVector3 *) &sp470));
-            Max(sp490, sp80);
-            M2C_FIELD(this, f32 *, 0xD8) = M2C_BITWISE(f64, sp490);
-            M2C_FIELD(this, f32 *, 0xE0) = (f64) sp490.unk8;
+            sp480 = MKVector(0.05f, 0.0f, 0.05f);
+            sp80 = Min(*((MKVector3 *) &sp470), sp440);
+            sp490 = Max(sp80, sp480);
+            *(MKVector3 *) &M2C_FIELD(this, f32 *, 0xD8) = sp490;
             SpawnMeteor();
             if (this->unkE8 <= 0.0f) {
                 this->unkE8 = 0.6f;
@@ -911,10 +909,10 @@ void *FuryFXFire2::Update() {
                 sp428 = (f64) sp78;
                 sp420 = (f64) sp70;
                 sp720.Scale3x3(&sp720, *((MKVector3 *) &sp420));
-                MKVector(0.0f, 300.0f, 0.0f);
-                sp60 = M2C_FIELD(this, f64 *, 0xC0) + sp400;
+                sp400 = MKVector(0.0f, 300.0f, 0.0f);
+                sp60 = M2C_FIELD(this, f64 *, 0xC0) + M2C_BITWISE(f64, sp400);
                 sp410 = sp60;
-                sp68 = this->unk90.unk38 + sp408;
+                sp68 = this->unk90.unk38 + sp400.unk8;
                 sp418 = (f64) sp68;
                 sp720.unk30 = (f32) sp410;
                 sp720.unk34 = (*(f32 *) ((u8 *) &sp410 + 0x4));
@@ -932,19 +930,18 @@ void *FuryFXFire2::Update() {
             }
             break;
         case 5:
-            MKVector(500.0f, 500.0f, 500.0f);
-            MKVector(20.0f, -10.0f, 20.0f);
+            sp3A0 = MKVector(500.0f, 500.0f, 500.0f);
+            sp3B0 = MKVector(20.0f, -10.0f, 20.0f);
             sp3C0.operator*(gUpdateTimeDelta);
             temp_f0_1332 = (f64) M2C_FIELD(this, f32 *, 0xD8) + M2C_BITWISE(f64, sp3C0);
             sp10 = temp_f0_1332;
             sp3D0 = temp_f0_1332;
             sp18 = this->unkE0 + sp3C0.unk8;
             sp3D8 = (f64) sp18;
-            MKVector(0.1f, 0.0f, 0.1f);
-            Min(sp50, *((MKVector3 *) &sp3D0));
-            Max(sp3F0, sp50);
-            M2C_FIELD(this, f32 *, 0xD8) = M2C_BITWISE(f64, sp3F0);
-            M2C_FIELD(this, f32 *, 0xE0) = (f64) sp3F0.unk8;
+            sp3E0 = MKVector(0.1f, 0.0f, 0.1f);
+            sp50 = Min(*((MKVector3 *) &sp3D0), sp3A0);
+            sp3F0 = Max(sp50, sp3E0);
+            *(MKVector3 *) &M2C_FIELD(this, f32 *, 0xD8) = sp3F0;
             if (this->unkE8 <= 0.0f) {
                 this->unkD0 = 6;
                 var_r28_1369 = 0;
@@ -1003,7 +1000,7 @@ void *FuryFXFire2::Update() {
                     sp308 = (f64) sp128;
                     sp2F0 = (f64) sp110;
                     sp2F8 = (f64) sp118;
-                    KDRand_Vector(sp310, *((MKVector3 *) &sp300));
+                    sp310 = KDRand_Vector(*((MKVector3 *) &sp300), *((MKVector3 *) &sp2F0));
                     temp_f0_1497 = sp310 * 5.697262106e-315;
                     sp100 = temp_f0_1497;
                     sp320 = temp_f0_1497;

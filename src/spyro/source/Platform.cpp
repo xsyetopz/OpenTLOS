@@ -219,7 +219,7 @@ void Platform::UpdateShadow() {
     f64 sp58;
     f64 sp50;
     f64 sp48;
-    M2C_UNK sp38;
+    MKVector3 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -269,7 +269,7 @@ void Platform::UpdateShadow() {
             this->unkF0 = (f64) sp98.unk8;
             this->unk174 = 1;
             if (M2C_FIELD(checked_cast<PlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60) & 1) {
-                Tools_GroundColor((MKCollisionResult *) &sp38);
+                sp38 = Tools_GroundColor(&sp98);
                 MKModel_SetColor(this->unk4, *((MKVector4 *) &sp38));
             }
         }

@@ -111,7 +111,6 @@ void IceSquirt::Draw() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *IceSquirt::Update() {
     f64 sp48;
     f64 sp40;
@@ -125,6 +124,7 @@ void *IceSquirt::Update() {
     s32 sp8;
     MKVector3 *temp_r3_268;
     MKVector3 *temp_r4_209;
+    MKVector3 *temp_r5_212;
     ManagedLight *temp_r3_285;
     ManagedLight *temp_r4_265;
     f32 temp_f1_284;
@@ -135,49 +135,50 @@ void *IceSquirt::Update() {
     Projectile::Update();
     if ((u8) this->unk15C != 0) {
         temp_r4_209 = this->unk154;
-        if ((temp_r4_209 != NULL) && ((MKVector3 *) this->unk158 != NULL)) {
-            Tools_CalculateVelocity(sp30, *temp_r4_209, 2000.0f, -1500.0f);
-            var_r0_222 = 0;
-            sp40 = M2C_BITWISE(f64, sp30);
-            sp48 = (f64) sp30.unk8;
-            if (((f32) sp40 == MKVector3::zero.unk0) && ((*(f32 *) ((u8 *) &sp40 + 0x4)) == MKVector3::zero.unk4) && ((f32) sp48 == MKVector3::zero.unk8)) {
-                var_r0_222 = 1;
-            }
-            if (var_r0_222 == 0) {
-                sp10 = 0.5f;
-                sp14 = 0.5f;
-                sp18 = 1.5f;
-                sp20 = (f64) sp10;
-                sp28 = (f64) sp18;
-                sp8 = 0;
-                spC = 0;
-                this->unk150->Emit(lit_666, *this->unk154, *((MKVector3 *) &sp40), *((MKVector3 *) &sp20), 3.0f, this->unk158->unk4, 1U, &this->unk168, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
-            }
-            temp_r4_265 = this->unk160;
-            if (temp_r4_265 != NULL) {
-                temp_r3_268 = this->unk154;
-                temp_r4_265->unk10 = M2C_FIELD(temp_r3_268, f64 *, 0);
-                temp_r4_265->unk18 = M2C_FIELD(temp_r3_268, f64 *, 8);
-                temp_r4_273 = temp_r4_265->unk3C;
-                if (temp_r4_273 != NULL) {
-                    M2C_FIELD(temp_r4_273, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_268, f64 *, 0);
-                    M2C_FIELD(temp_r4_273, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_268, f64 *, 8);
+        if (temp_r4_209 != NULL) {
+            temp_r5_212 = this->unk158;
+            if (temp_r5_212 != NULL) {
+                sp30 = Tools_CalculateVelocity(*temp_r4_209, *temp_r5_212, 2000.0f, -1500.0f);
+                var_r0_222 = 0;
+                *(MKVector3 *) &sp40 = sp30;
+                if (((f32) sp40 == MKVector3::zero.unk0) && ((*(f32 *) ((u8 *) &sp40 + 0x4)) == MKVector3::zero.unk4) && ((f32) sp48 == MKVector3::zero.unk8)) {
+                    var_r0_222 = 1;
                 }
-                temp_f1_284 = MKRand_Float((int *) &gViewSeed, 500.0f, 600.0f);
-                temp_r3_285 = this->unk160;
-                temp_r3_285->unk38 = temp_f1_284;
-                temp_r3_287 = temp_r3_285->unk3C;
-                if (temp_r3_287 != NULL) {
-                    M2C_FIELD(temp_r3_287, f32 *, 0x20) = temp_f1_284;
-                    M2C_FIELD(temp_r3_287, f32 *, 0x24) = (f32) (temp_f1_284 * temp_f1_284);
-                    M2C_FIELD(temp_r3_287, f32 *, 0x28) = (f32) (1.0f / temp_f1_284);
-                    M2C_FIELD(temp_r3_287, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_287, f32 *, 0x24));
+                if (var_r0_222 == 0) {
+                    sp10 = 0.5f;
+                    sp14 = 0.5f;
+                    sp18 = 1.5f;
+                    sp20 = (f64) sp10;
+                    sp28 = (f64) sp18;
+                    sp8 = 0;
+                    spC = 0;
+                    this->unk150->Emit(lit_666, *this->unk154, *((MKVector3 *) &sp40), *((MKVector3 *) &sp20), 3.0f, this->unk158->unk4, 1U, &this->unk168, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+                }
+                temp_r4_265 = this->unk160;
+                if (temp_r4_265 != NULL) {
+                    temp_r3_268 = this->unk154;
+                    temp_r4_265->unk10 = M2C_FIELD(temp_r3_268, f64 *, 0);
+                    temp_r4_265->unk18 = M2C_FIELD(temp_r3_268, f64 *, 8);
+                    temp_r4_273 = temp_r4_265->unk3C;
+                    if (temp_r4_273 != NULL) {
+                        M2C_FIELD(temp_r4_273, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_268, f64 *, 0);
+                        M2C_FIELD(temp_r4_273, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_268, f64 *, 8);
+                    }
+                    temp_f1_284 = MKRand_Float((int *) &gViewSeed, 500.0f, 600.0f);
+                    temp_r3_285 = this->unk160;
+                    temp_r3_285->unk38 = temp_f1_284;
+                    temp_r3_287 = temp_r3_285->unk3C;
+                    if (temp_r3_287 != NULL) {
+                        M2C_FIELD(temp_r3_287, f32 *, 0x20) = temp_f1_284;
+                        M2C_FIELD(temp_r3_287, f32 *, 0x24) = (f32) (temp_f1_284 * temp_f1_284);
+                        M2C_FIELD(temp_r3_287, f32 *, 0x28) = (f32) (1.0f / temp_f1_284);
+                        M2C_FIELD(temp_r3_287, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_287, f32 *, 0x24));
+                    }
                 }
             }
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: identifier 'IceSquirt::Resolve()' redeclared was declared as: 'float ()' now declared as: 'void ()'
 void IceSquirt::Resolve() {

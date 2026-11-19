@@ -137,8 +137,8 @@ void KDProp::SetColorToGround() {
     f64 sp70;
     f64 sp68;
     f64 sp60;
-    M2C_UNK sp50;
-    M2C_UNK sp40;
+    MKVector3 sp50;
+    MKVector3 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -178,7 +178,7 @@ void KDProp::SetColorToGround() {
         sp78 = (f64) sp28;
         if (MKCollision_RayCollide(*((MKVector3 *) &sp90), *((MKVector3 *) &sp70), &spB0, (MKCollisionMode) 4, M2C_FIELD(&modInfo, s32 *, 0)) != 0) {
             if ((u8) M2C_FIELD(&modInfo, u8 *, 0x15) != 0) {
-                Tools_GroundColor((MKCollisionResult *) &sp50);
+                sp50 = Tools_GroundColor(&spB0);
                 sp10 = M2C_FIELD(&sp50, f64 *, 0) * this->unk50;
                 temp_f0_249 = M2C_FIELD(&sp50, f64 *, 8) * this->unk58;
                 sp18 = temp_f0_249;
@@ -186,7 +186,7 @@ void KDProp::SetColorToGround() {
                 sp68 = temp_f0_249;
                 MKModel_SetColor(this->unk4, *((MKVector4 *) &sp60));
             } else {
-                Tools_GroundColor((MKCollisionResult *) &sp40);
+                sp40 = Tools_GroundColor(&spB0);
                 MKModel_SetColor(this->unk4, *((MKVector4 *) &sp40));
             }
         } else {
