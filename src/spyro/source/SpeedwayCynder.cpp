@@ -447,7 +447,7 @@ void SpeedwayCynder::UpdateBreath() {
             spD8 = sp48;
             sp50 = (f32) spD0 - sp110.unk38;
             spE0 = (f64) sp50;
-            var_f4_771 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (unkspDC * unkspDC));
+            var_f4_771 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + ((*(f32 *) ((u8 *) &spD8 + 0x4)) * (*(f32 *) ((u8 *) &spD8 + 0x4))));
             if (var_f4_771 > 1e-12f) {
                 if (var_f4_771 > 0.0f) {
                     temp_f1_777 = __frsqrte(var_f4_771);
@@ -486,7 +486,7 @@ void SpeedwayCynder::UpdateBreath() {
             } else {
                 var_f4_838 = 0.0f;
             }
-            sp3C = unkspDC * var_f4_838;
+            sp3C = (*(f32 *) ((u8 *) &spD8 + 0x4)) * var_f4_838;
             sp38 = (f32) spD8 * var_f4_838;
             sp40 = (f32) spE0 * var_f4_838;
             spE8 = (f64) sp38;
@@ -674,19 +674,19 @@ void SpeedwayCynder::UpdateLTW(const Matrix *arg0, bool arg1) {
     spD0 = this->unk280;
     spD8 = this->unk288;
     this->unk2E0 = (f32) spD0;
-    this->unk2E4 = unkspD4;
+    this->unk2E4 = (*(f32 *) ((u8 *) &spD0 + 0x4));
     this->unk2E8 = (f32) spD8;
     this->unk2EC = 0.0f;
     spC0 = this->unk2A0;
     spC8 = this->unk2A8;
     this->unk2F0 = (f32) spC0;
-    this->unk2F4 = unkspC4;
+    this->unk2F4 = (*(f32 *) ((u8 *) &spC0 + 0x4));
     this->unk2F8 = (f32) spC8;
     this->unk2FC = 0.0f;
     spB0 = this->unk2C0;
     spB8 = this->unk2C8;
     this->unk300 = (f32) spB0;
-    this->unk304 = unkspB4;
+    this->unk304 = (*(f32 *) ((u8 *) &spB0 + 0x4));
     this->unk308 = (f32) spB8;
     this->unk30C = 0.0f;
     if (this->unk37C->UsePulledBackCamera() != 0) {
@@ -712,7 +712,7 @@ void SpeedwayCynder::UpdateLTW(const Matrix *arg0, bool arg1) {
     sp28 = (f32) sp98 - sp70.unk8;
     this->unk310 = (f32) spA0;
     spA8 = (f64) sp28;
-    this->unk314 = unkspA4;
+    this->unk314 = (*(f32 *) ((u8 *) &spA0 + 0x4));
     this->unk318 = (f32) spA8;
     this->unk31C = 1.0f;
     this->unk30C = 0.0f;
@@ -798,7 +798,7 @@ void SpeedwayCynder::EventCameraUpdate() {
     sp28 = sp18;
     sp20 = (f32) sp40 - (f32) sp108;
     sp30 = (f64) sp20;
-    var_f4_1514 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C));
+    var_f4_1514 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp20 + 0xc)) * (*(f32 *) ((u8 *) &sp20 + 0xc))));
     if (var_f4_1514 > 0.000001f) {
         if (var_f4_1514 > 0.0f) {
             temp_f1_1520 = __frsqrte(var_f4_1514);
@@ -838,11 +838,11 @@ void SpeedwayCynder::EventCameraUpdate() {
         var_f3_1581 = 0.0f;
     }
     sp28 = (f32) sp28 * var_f3_1581;
-    unksp2C *= var_f3_1581;
+    (*(f32 *) ((u8 *) &sp20 + 0xc)) *= var_f3_1581;
     sp30 = (f32) sp30 * var_f3_1581;
     KDMath_BuildMatrixFromFwd(&sp110, *((MKVector3 *) &sp28), NULL);
     sp110.unk30 = (f32) sp38;
-    sp110.unk34 = unksp3C;
+    sp110.unk34 = (*(f32 *) ((u8 *) &sp38 + 0x4));
     sp110.unk38 = (f32) sp40;
     sp110.unk3C = 1.0f;
     UpdateLTW(&sp110, 0U);
@@ -873,7 +873,7 @@ void SpeedwayCynder::FlinchEnter() {
     SetTargetZTime(0.0f, 1.0f);
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: undefined identifier 'unk24C'
 u8 SpeedwayCynder::AnyToBiteTransition() {
     f64 sp20;
     f64 sp18;
@@ -900,7 +900,7 @@ u8 SpeedwayCynder::AnyToBiteTransition() {
         temp_r4_1733 = this->unk37C;
         sp8 = temp_r4_1733->unk308;
         sp10 = temp_r4_1733->unk310;
-        if (unkspC < 0.0f) {
+        if ((*(f32 *) ((u8 *) &sp8 + 0x4)) < 0.0f) {
 
         }
         var_r4_1704 = (u8) ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU);
@@ -1090,7 +1090,7 @@ void SpeedwayCynder::BiteUpdate() {
                     spA0 = sp20;
                 } else {
                     sp98 = 0.0f;
-                    unksp9C = 0.0f;
+                    (*(f32 *) ((u8 *) &sp94 + 0x8)) = 0.0f;
                     spA0 = 0.0f;
                 }
                 spB9 = 0;

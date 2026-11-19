@@ -76,7 +76,7 @@ void IceBossStalactiteSpawner::GetSpawnPoint(const MKVector3 &arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void IceBossStalactiteSpawner::Fire(const MKVector3 &arg0) {
     f64 sp48;
     f64 sp40;
@@ -102,7 +102,7 @@ void IceBossStalactiteSpawner::Fire(const MKVector3 &arg0) {
     sp30 = sp20;
     sp28 = arg0.unk8 - M2C_FIELD(this, f32 *, 8);
     sp38 = (f64) sp28;
-    var_f4_137 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_137 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_137 > 1e-12f) {
         if (var_f4_137 > 0.0f) {
             temp_f1_143 = __frsqrte(var_f4_137);
@@ -141,7 +141,7 @@ void IceBossStalactiteSpawner::Fire(const MKVector3 &arg0) {
     } else {
         var_f3_204 = 0.0f;
     }
-    sp14 = unksp34 * var_f3_204;
+    sp14 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f3_204;
     sp10 = (f32) sp30 * var_f3_204;
     sp18 = (f32) sp38 * var_f3_204;
     sp40 = (f64) sp10;
@@ -759,18 +759,18 @@ void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
     sp58 = (f64) sp28;
     sp40 = (f64) sp10;
     sp20 = -(f32) sp70;
-    sp24 = -unksp74;
+    sp24 = -(*(f32 *) ((u8 *) &sp70 + 0x4));
     sp88 = (f32) sp58;
     sp50 = (f64) sp20;
     sp80 = (f32) sp50;
-    sp84 = unksp54;
+    sp84 = (*(f32 *) ((u8 *) &sp50 + 0x4));
     sp8C = 0.0f;
     sp90 = temp_f2_1225;
     sp94 = temp_f1_1223;
     sp98 = temp_f0_1219;
     sp9C = 0.0f;
     spA0 = (f32) sp40;
-    spA4 = unksp44;
+    spA4 = (*(f32 *) ((u8 *) &sp40 + 0x4));
     spA8 = (f32) sp48;
     spAC = 0.0f;
     spB0 = this->unk1F8.unk0;
@@ -926,7 +926,7 @@ void IceBossStalactite::MeltFX() {
         sp48 = this->unk1F8.unk8 + (f32) sp138;
         sp118 = (f64) sp48;
         sp140.unk30 = (f32) sp110;
-        sp140.unk34 = unksp114;
+        sp140.unk34 = (*(f32 *) ((u8 *) &sp110 + 0x4));
         sp140.unk38 = (f32) sp118;
         sp140.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, sp140);
@@ -976,7 +976,7 @@ void IceBossStalactite::MeltFX() {
             temp_r3_1643 = this->unk8;
             spE0 = M2C_FIELD(temp_r3_1643, f64 *, 0x30);
             spE8 = M2C_FIELD(temp_r3_1643, f64 *, 0x38);
-            if (((20.0f * (1.0f - M2C_FIELD(this, f32 *, 0x1AC))) + unkspE4) > M2C_FIELD(this, f32 *, 0x1EC)) {
+            if (((20.0f * (1.0f - M2C_FIELD(this, f32 *, 0x1AC))) + (*(f32 *) ((u8 *) &spE0 + 0x4))) > M2C_FIELD(this, f32 *, 0x1EC)) {
                 KDRand_UnitVectorXZ();
                 sp70 = spB0 * 5.46558975e-315;
                 temp_r3_1663 = this->unk8;
@@ -1300,7 +1300,7 @@ block_6:
                 sp1D0 = temp_f8_1954;
                 sp3E8 = (f64) sp1C8;
                 sp3F0 = (f64) sp1D0;
-                if (((this->unk1C0 * (f32) sp3F0) + ((this->unk1B8 * (f32) sp3E8) + (this->unk1BC * unksp3EC))) < 0.99f) {
+                if (((this->unk1C0 * (f32) sp3F0) + ((this->unk1B8 * (f32) sp3E8) + (this->unk1BC * (*(f32 *) ((u8 *) &sp3E8 + 0x4))))) < 0.99f) {
                     sp80 = temp_f8_1954;
                     sp78 = temp_f6_1950;
                     sp7C = temp_f7_1952;
@@ -1506,9 +1506,9 @@ block_6:
             sp3F8 = (f64) sp58;
             sp218 = (f64) sp58;
             sp220 = (f64) sp60;
-            sp48 = (unksp3FC * temp_f4_2471) - ((f32) sp400 * temp_f6_2465);
+            sp48 = ((*(f32 *) ((u8 *) &sp3F8 + 0x4)) * temp_f4_2471) - ((f32) sp400 * temp_f6_2465);
             sp4C = ((f32) sp400 * temp_f7_2468) - ((f32) sp3F8 * temp_f4_2471);
-            sp50 = ((f32) sp3F8 * temp_f6_2465) - (unksp3FC * temp_f7_2468);
+            sp50 = ((f32) sp3F8 * temp_f6_2465) - ((*(f32 *) ((u8 *) &sp3F8 + 0x4)) * temp_f7_2468);
             sp1F8 = (f64) sp48;
             sp200 = (f64) sp50;
             Normalise(sp208);
@@ -1516,12 +1516,12 @@ block_6:
             this->unk1D0 = (f64) sp208.unk8;
             sp42C = 0.0f;
             sp38 = -(f32) sp3F8;
-            sp3C = -unksp3FC;
+            sp3C = -(*(f32 *) ((u8 *) &sp3F8 + 0x4));
             sp40 = -(f32) sp400;
             sp1E8 = (f64) sp38;
             sp1F0 = (f64) sp40;
             sp420 = (f32) sp1E8;
-            sp424 = unksp1EC;
+            sp424 = (*(f32 *) ((u8 *) &sp1E8 + 0x4));
             sp428 = (f32) sp1F0;
             sp430 = this->unk1B8;
             sp434 = this->unk1BC;
@@ -1534,7 +1534,7 @@ block_6:
             sp1D8 = (f64) sp28;
             sp1E0 = (f64) sp30;
             sp440 = (f32) sp1D8;
-            sp444 = unksp1DC;
+            sp444 = (*(f32 *) ((u8 *) &sp1D8 + 0x4));
             sp448 = (f32) sp1E0;
             sp450 = this->unk1F8.unk0;
             sp454 = this->unk1F8.unk4;

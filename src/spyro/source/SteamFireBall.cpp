@@ -261,7 +261,7 @@ void SteamFireBall::Update() {
         temp_r3_428 = this->unk8;
         spA8 = M2C_FIELD(temp_r3_428, f64 *, 0x30);
         spB0 = M2C_FIELD(temp_r3_428, f64 *, 0x38);
-        var_f1_441 = 0.18f * -((0.00022222222f * (unkspAC - this->unk184)) - 1.0f);
+        var_f1_441 = 0.18f * -((0.00022222222f * ((*(f32 *) ((u8 *) &spA8 + 0x4)) - this->unk184)) - 1.0f);
         if (var_f1_441 < 1.0f) {
 
         } else {

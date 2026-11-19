@@ -316,7 +316,7 @@ loop_28:
         if (temp_r3_664 != NULL) {
             sp328 = M2C_FIELD(temp_r3_664, f64 *, 0x10);
             sp330 = M2C_FIELD(temp_r3_664, f64 *, 0x18);
-            var_f4_247 = ((f32) sp330 * (f32) sp330) + (((f32) sp328 * (f32) sp328) + (unksp32C * unksp32C));
+            var_f4_247 = ((f32) sp330 * (f32) sp330) + (((f32) sp328 * (f32) sp328) + ((*(f32 *) ((u8 *) &sp320 + 0xc)) * (*(f32 *) ((u8 *) &sp320 + 0xc))));
             if (var_f4_247 > 0.000001f) {
                 if (var_f4_247 > 0.0f) {
                     temp_f1_253 = __frsqrte(var_f4_247);
@@ -358,7 +358,7 @@ loop_28:
             }
             var_f4_320 = var_f4_247 / 1000.0f;
             sp328 = (f32) sp328 * var_f3_314;
-            unksp32C *= var_f3_314;
+            (*(f32 *) ((u8 *) &sp320 + 0xc)) *= var_f3_314;
             sp330 = (f32) sp330 * var_f3_314;
             if (var_f4_320 < 2.0f) {
 
@@ -374,8 +374,8 @@ loop_28:
             sp18 = 1.0f;
             sp1C = 1.0f;
             sp18C = (sp378 * sp328) - (sp370 * sp330);
-            sp188 = (sp374 * sp330) - (sp378 * unksp32C);
-            sp190 = (sp370 * unksp32C) - (sp374 * sp328);
+            sp188 = (sp374 * sp330) - (sp378 * (*(f32 *) ((u8 *) &sp320 + 0xc)));
+            sp190 = (sp370 * (*(f32 *) ((u8 *) &sp320 + 0xc))) - (sp374 * sp328);
             sp20 = 1.0f;
             sp24 = 1.0f;
             sp318 = (f64) sp188;
@@ -388,7 +388,7 @@ loop_28:
             MKSetColorV(*((MKVector4 *) &sp338));
             MKSetTexCoord1F(0.0f, 1.0f);
             sp148 = -(f32) sp318;
-            sp14C = -unksp31C;
+            sp14C = -(*(f32 *) ((u8 *) &sp318 + 0x4));
             sp150 = -(f32) sp320;
             sp2A8 = (f64) sp148;
             sp2B0 = (f64) sp150;
@@ -451,13 +451,13 @@ loop_28:
             MKSetColorV(*((MKVector4 *) &sp338));
             MKSetTexCoord1F(1.0f, 1.0f);
             spA8 = -(f32) sp318;
-            spAC = -unksp31C;
+            spAC = -(*(f32 *) ((u8 *) &sp318 + 0x4));
             spB0 = -(f32) sp320;
             sp1F8 = (f64) spA8;
             sp200 = (f64) spB0;
             sp98 = sp1F8 * 5.47465589e-315;
             spC8 = -sp328;
-            spCC = -unksp32C;
+            spCC = -(*(f32 *) ((u8 *) &sp320 + 0xc));
             spA0 = (f32) sp200 * 35.0f;
             spD0 = -sp330;
             sp218 = (f64) spC8;
@@ -485,7 +485,7 @@ loop_28:
             MKSetTexCoord1F(1.0f, 0.0f);
             sp48 = sp318 * 5.47465589e-315;
             sp68 = -sp328;
-            sp6C = -unksp32C;
+            sp6C = -(*(f32 *) ((u8 *) &sp320 + 0xc));
             sp50 = (f32) sp320 * 35.0f;
             sp70 = -sp330;
             sp1B8 = (f64) sp68;

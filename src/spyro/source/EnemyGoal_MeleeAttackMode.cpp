@@ -79,7 +79,7 @@ void EnemyGoal_AttackMagicWall::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp114'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 u8 EnemyGoal_AttackMagicWall::Update() {
     MKCollisionResult sp120;
     f64 sp118;
@@ -185,7 +185,7 @@ u8 EnemyGoal_AttackMagicWall::Update() {
                 sp78 = (f32) sp118 + (f32) spF8;
                 sp108 = (f64) sp78;
                 if (MKCollision_RayCollide(*((MKVector3 *) &sp100), *((MKVector3 *) &spE0), &sp120, (MKCollisionMode) 7, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18) | 0x0C000000) != 0) {
-                    unksp114 = sp120.unk4;
+                    (*(f32 *) ((u8 *) &sp110 + 0x4)) = sp120.unk4;
                 }
                 if ((s32) this->unk10 == 0) {
                     if ((u8) this->unk14 != 0) {
@@ -430,7 +430,7 @@ void EnemyGoal_LeapAttackMiss::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp44'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 EnemyGoal_LeapAttackMiss::Update() {
     f64 spA8;
     f64 spA0;
@@ -507,12 +507,12 @@ u8 EnemyGoal_LeapAttackMiss::Update() {
     temp_f1_824 = (f64) M2C_FIELD(temp_r4_821, f32 *, 0xA8);
     sp40 = temp_f0_823;
     sp48 = temp_f1_824;
-    unksp44 = 0.0f;
+    (*(f32 *) ((u8 *) &sp40 + 0x4)) = 0.0f;
     spA8 = temp_f1_824;
     spA0 = temp_f0_823;
     sp90 = temp_f0_823;
     sp98 = temp_f1_824;
-    if (!(((u8) this->unk3C >> 6U) & 1) && ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4))) > 0.001f)) {
+    if (!(((u8) this->unk3C >> 6U) & 1) && ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))))) > 0.001f)) {
         temp_f31_846 = gUpdateTimeDelta;
         sp60.operator*(500.0f);
         temp_f0_853 = sp60 * (f64) temp_f31_846;
@@ -527,7 +527,7 @@ u8 EnemyGoal_LeapAttackMiss::Update() {
         temp_r4_876 = temp_r3_873->unk110.unk16C;
         sp10 = (f64) M2C_FIELD(temp_r3_873, f32 *, 0xA0);
         temp_f1_878 = (f64) M2C_FIELD(temp_r3_873, f32 *, 0xA8);
-        unksp14 = 0.0f;
+        (*(f32 *) ((u8 *) &sp10 + 0x4)) = 0.0f;
         sp18 = temp_f1_878;
         sp50 = sp10;
         sp58 = temp_f1_878;
@@ -535,7 +535,7 @@ u8 EnemyGoal_LeapAttackMiss::Update() {
         spA8 = temp_f1_878;
         this->unk3C = (this->unk3C & ~0x80) | (((u32) (-temp_r4_876 & ~temp_r4_876) >> 0x18U) & 0x80);
     }
-    if (!(((u8) this->unk3C >> 6U) & 1) && (((s32) this->unkC->unk110.unk170.unk164 > 0) || ((((f32) sp98 * (f32) spA8) + (((f32) sp90 * (f32) spA0) + (unksp94 * unkspA4))) < 0.0f))) {
+    if (!(((u8) this->unk3C >> 6U) & 1) && (((s32) this->unkC->unk110.unk170.unk164 > 0) || ((((f32) sp98 * (f32) spA8) + (((f32) sp90 * (f32) spA0) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))))) < 0.0f))) {
         this->unk3C |= 0x40;
         this->unk3C &= ~0x80;
         this->unk10 = gb.unk30C + MKRand_Float(&gViewSeed, 0.25f, 0.75f);
@@ -908,7 +908,7 @@ loop_26:
                             spF0 = (f64) sp40;
                             spF8 = (f64) sp48;
                             spA0.GetDir();
-                            sp8 = ((f32) spF8 * spA0.unk8) + (((f32) spF0 * M2C_BITWISE(f32, spA0)) + (unkspF4 * unkspA4));
+                            sp8 = ((f32) spF8 * spA0.unk8) + (((f32) spF0 * M2C_BITWISE(f32, spA0)) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))));
                             spC = (M2C_BITWISE(s32, sp8) & 0x80000000) | 0x3F800000;
                             temp_f1_1555 = M2C_BITWISE(f32, spC);
                             sp30 = spF0 * (f64) temp_f1_1555;
@@ -1412,7 +1412,7 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
             var_r29_2469 = 0;
             if (((EnemyRegion *) &this->unkC->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
                 ((EnemyRegion *) &sp98)->GetRegionPos();
-                if ((f32) fabs(sp9C - unksp1CC) <= 500.0f) {
+                if ((f32) fabs(sp9C - (*(f32 *) ((u8 *) &sp1C8 + 0x4))) <= 500.0f) {
                     var_r29_2469 = 1;
                 }
             }

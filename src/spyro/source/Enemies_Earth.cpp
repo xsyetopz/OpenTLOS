@@ -150,7 +150,7 @@ void EarthTier1::Update() {
                 if ((stricmp(*temp_r3_291, "Roll_Cycle") == 0) && ((s32) this->unk110.unk16C > 0)) {
                     sp30 = this->unk110.unk18;
                     sp38 = this->unk110.unk20;
-                    var_f4_316 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+                    var_f4_316 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp28 + 0xc)) * (*(f32 *) ((u8 *) &sp28 + 0xc))));
                     if (var_f4_316 > 0.000001f) {
                         if (var_f4_316 > 0.0f) {
                             temp_f1_322 = __frsqrte(var_f4_316);
@@ -190,12 +190,12 @@ void EarthTier1::Update() {
                         var_f3_383 = 0.0f;
                     }
                     sp30 = (f32) sp30 * var_f3_383;
-                    unksp34 *= var_f3_383;
+                    (*(f32 *) ((u8 *) &sp28 + 0xc)) *= var_f3_383;
                     sp38 = (f32) sp38 * var_f3_383;
                     Tools_GetGradient(sp10);
                     sp20 = M2C_BITWISE(f64, sp10);
                     sp28 = (f64) sp10.unk8;
-                    this->unkAF8 = M2C_BITWISE(f32, this->unkAF8) + (gUpdateTimeDelta * (-(((f32) sp28 * MKVector3::up.unk8) + (((f32) sp20 * MKVector3::up.unk0) + (unksp24 * MKVector3::up.unk4))) * gUpdateTimeDelta));
+                    this->unkAF8 = M2C_BITWISE(f32, this->unkAF8) + (gUpdateTimeDelta * (-(((f32) sp28 * MKVector3::up.unk8) + (((f32) sp20 * MKVector3::up.unk0) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * MKVector3::up.unk4))) * gUpdateTimeDelta));
                     var_f0_422 = M2C_BITWISE(f32, this->unkAF8);
                     if (var_f0_422 < 2.0f) {
 

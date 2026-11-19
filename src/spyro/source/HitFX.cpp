@@ -160,7 +160,7 @@ void HitFX::Draw() {
         sp210.unk3C = 1.0f;
         sp1A0.operator*(temp_f31_124);
         sp40 = -(f32) sp1F0;
-        sp44 = -unksp1F4;
+        sp44 = -(*(f32 *) ((u8 *) &sp1F0 + 0x4));
         sp48 = -(f32) sp1F8;
         sp1B0 = (f64) sp40;
         sp1B8 = (f64) sp48;
@@ -175,7 +175,7 @@ void HitFX::Draw() {
         sp180.operator*(temp_f31_124);
         sp80 = sp180 + M2C_BITWISE(f64, sp170);
         sp30 = -(f32) sp200;
-        sp34 = -unksp204;
+        sp34 = -(*(f32 *) ((u8 *) &sp200 + 0x4));
         sp88 = sp180.unk8 + sp170.unk8;
         sp38 = -(f32) sp208;
         sp190 = sp80;
@@ -186,14 +186,14 @@ void HitFX::Draw() {
         sp128 = (f64) sp38;
         sp130.operator*(temp_f31_124);
         sp20 = -(f32) sp1F0;
-        sp24 = -unksp1F4;
+        sp24 = -(*(f32 *) ((u8 *) &sp1F0 + 0x4));
         sp28 = -(f32) sp1F8;
         sp140 = (f64) sp20;
         sp148 = (f64) sp28;
         sp150.operator*(temp_f31_124);
         sp70 = sp150 + M2C_BITWISE(f64, sp130);
         sp10 = -(f32) sp200;
-        sp14 = -unksp204;
+        sp14 = -(*(f32 *) ((u8 *) &sp200 + 0x4));
         sp78 = sp150.unk8 + sp130.unk8;
         sp18 = -(f32) sp208;
         sp160 = sp70;

@@ -287,15 +287,15 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         sp260.SetIdentity();
         sp260.RotateRoll(&sp260, arg0->unk2C);
         temp_f28_396 = M2C_BITWISE(f32, sp260);
-        spA8 = sp260.unk30 + (((f32) sp210 * sp260.unk20) + (((f32) sp208 * temp_f28_396) + (unksp20C * sp260.unk10)));
-        spAC = sp260.unk34 + (((f32) sp210 * sp260.unk24) + (((f32) sp208 * sp260.unk4) + (unksp20C * sp260.unk14)));
-        spB0 = sp260.unk38 + (((f32) sp210 * sp260.unk28) + (((f32) sp208 * sp260.unk8) + (unksp20C * sp260.unk18)));
+        spA8 = sp260.unk30 + (((f32) sp210 * sp260.unk20) + (((f32) sp208 * temp_f28_396) + ((*(f32 *) ((u8 *) &sp1F0 + 0x1c)) * sp260.unk10)));
+        spAC = sp260.unk34 + (((f32) sp210 * sp260.unk24) + (((f32) sp208 * sp260.unk4) + ((*(f32 *) ((u8 *) &sp1F0 + 0x1c)) * sp260.unk14)));
+        spB0 = sp260.unk38 + (((f32) sp210 * sp260.unk28) + (((f32) sp208 * sp260.unk8) + ((*(f32 *) ((u8 *) &sp1F0 + 0x1c)) * sp260.unk18)));
         sp208 = (f64) spA8;
         sp210 = (f64) spB0;
-        sp98 = sp260.unk30 + (((f32) sp200 * sp260.unk20) + (((f32) sp1F8 * temp_f28_396) + (unksp1FC * sp260.unk10)));
-        sp9C = sp260.unk34 + (((f32) sp200 * sp260.unk24) + (((f32) sp1F8 * sp260.unk4) + (unksp1FC * sp260.unk14)));
-        spA0 = sp260.unk38 + (((f32) sp200 * sp260.unk28) + (((f32) sp1F8 * sp260.unk8) + (unksp1FC * sp260.unk18)));
-        var_f4_451 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
+        sp98 = sp260.unk30 + (((f32) sp200 * sp260.unk20) + (((f32) sp1F8 * temp_f28_396) + ((*(f32 *) ((u8 *) &sp1F0 + 0xc)) * sp260.unk10)));
+        sp9C = sp260.unk34 + (((f32) sp200 * sp260.unk24) + (((f32) sp1F8 * sp260.unk4) + ((*(f32 *) ((u8 *) &sp1F0 + 0xc)) * sp260.unk14)));
+        spA0 = sp260.unk38 + (((f32) sp200 * sp260.unk28) + (((f32) sp1F8 * sp260.unk8) + ((*(f32 *) ((u8 *) &sp1F0 + 0xc)) * sp260.unk18)));
+        var_f4_451 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + ((*(f32 *) ((u8 *) &sp1F0 + 0x1c)) * (*(f32 *) ((u8 *) &sp1F0 + 0x1c))));
         sp1E8 = (f64) spA8;
         sp1F0 = (f64) spB0;
         sp1D8 = (f64) sp98;
@@ -340,9 +340,9 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         } else {
             var_f6_524 = 0.0f;
         }
-        var_f7_542 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + (unksp1FC * unksp1FC));
+        var_f7_542 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + ((*(f32 *) ((u8 *) &sp1F0 + 0xc)) * (*(f32 *) ((u8 *) &sp1F0 + 0xc))));
         sp208 = (f32) sp208 * var_f6_524;
-        unksp20C *= var_f6_524;
+        (*(f32 *) ((u8 *) &sp1F0 + 0x1c)) *= var_f6_524;
         sp210 = (f32) sp210 * var_f6_524;
         if (var_f7_542 > 0.000001f) {
             if (var_f7_542 > 0.0f) {
@@ -383,13 +383,13 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
             var_f3_613 = 0.0f;
         }
         temp_f6_622 = (f32) sp1F8 * var_f3_613;
-        temp_f5_624 = unksp1FC * var_f3_613;
+        temp_f5_624 = (*(f32 *) ((u8 *) &sp1F0 + 0xc)) * var_f3_613;
         temp_f4_625 = (f32) sp200 * var_f3_613;
         sp1F8 = temp_f6_622;
         sp48 = -temp_f6_622;
         sp4C = -temp_f5_624;
         sp50 = -temp_f4_625;
-        unksp1FC = temp_f5_624;
+        (*(f32 *) ((u8 *) &sp1F0 + 0xc)) = temp_f5_624;
         sp200 = temp_f4_625;
         sp198 = (f64) sp48;
         sp1A0 = (f64) sp50;
@@ -405,7 +405,7 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         sp178.operator*(temp_f31_317);
         sp78 = sp178 + M2C_BITWISE(f64, sp168);
         sp38 = -sp1F8;
-        sp3C = -unksp1FC;
+        sp3C = -(*(f32 *) ((u8 *) &sp1F0 + 0xc));
         sp80 = sp178.unk8 + sp168.unk8;
         sp40 = -sp200;
         sp188 = sp78;
@@ -416,7 +416,7 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         sp120 = (f64) sp40;
         sp128.operator*(temp_f31_317);
         sp28 = -sp208;
-        sp2C = -unksp20C;
+        sp2C = -(*(f32 *) ((u8 *) &sp1F0 + 0x1c));
         sp30 = -sp210;
         sp138 = (f64) sp28;
         sp140 = (f64) sp30;
@@ -429,7 +429,7 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         sp240 = (f64) sp70;
         spD8.operator*(temp_f31_317);
         sp18 = -sp208;
-        sp1C = -unksp20C;
+        sp1C = -(*(f32 *) ((u8 *) &sp1F0 + 0x1c));
         sp20 = -sp210;
         spE8 = (f64) sp18;
         spF0 = (f64) sp20;

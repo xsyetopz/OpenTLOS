@@ -191,16 +191,16 @@ void CharacterGlowFX::Draw() {
 loop_49:
             if (var_r24_167 < (s32) this->unk8->unk4) {
                 temp_f2_178 = M2C_BITWISE(f32, sp2C0);
-                spC8 = sp2C0.unk30 + (((f32) sp2A0 * sp2C0.unk20) + (((f32) sp298 * temp_f2_178) + (unksp29C * sp2C0.unk10)));
-                spCC = sp2C0.unk34 + (((f32) sp2A0 * sp2C0.unk24) + (((f32) sp298 * sp2C0.unk4) + (unksp29C * sp2C0.unk14)));
-                spD0 = sp2C0.unk38 + (((f32) sp2A0 * sp2C0.unk28) + (((f32) sp298 * sp2C0.unk8) + (unksp29C * sp2C0.unk18)));
+                spC8 = sp2C0.unk30 + (((f32) sp2A0 * sp2C0.unk20) + (((f32) sp298 * temp_f2_178) + ((*(f32 *) ((u8 *) &sp280 + 0x1c)) * sp2C0.unk10)));
+                spCC = sp2C0.unk34 + (((f32) sp2A0 * sp2C0.unk24) + (((f32) sp298 * sp2C0.unk4) + ((*(f32 *) ((u8 *) &sp280 + 0x1c)) * sp2C0.unk14)));
+                spD0 = sp2C0.unk38 + (((f32) sp2A0 * sp2C0.unk28) + (((f32) sp298 * sp2C0.unk8) + ((*(f32 *) ((u8 *) &sp280 + 0x1c)) * sp2C0.unk18)));
                 sp298 = (f64) spC8;
                 sp2A0 = (f64) spD0;
-                spB8 = sp2C0.unk30 + (((f32) sp290 * sp2C0.unk20) + (((f32) sp288 * temp_f2_178) + (unksp28C * sp2C0.unk10)));
-                spBC = sp2C0.unk34 + (((f32) sp290 * sp2C0.unk24) + (((f32) sp288 * sp2C0.unk4) + (unksp28C * sp2C0.unk14)));
+                spB8 = sp2C0.unk30 + (((f32) sp290 * sp2C0.unk20) + (((f32) sp288 * temp_f2_178) + ((*(f32 *) ((u8 *) &sp280 + 0xc)) * sp2C0.unk10)));
+                spBC = sp2C0.unk34 + (((f32) sp290 * sp2C0.unk24) + (((f32) sp288 * sp2C0.unk4) + ((*(f32 *) ((u8 *) &sp280 + 0xc)) * sp2C0.unk14)));
                 temp_f27_232 = temp_f26_159 * (60.0f * M2C_FIELD(*(this->unk4 + var_r22_168), f32 *, 0x10));
-                spC0 = sp2C0.unk38 + (((f32) sp290 * sp2C0.unk28) + (((f32) sp288 * sp2C0.unk8) + (unksp28C * sp2C0.unk18)));
-                var_f4_237 = ((f32) sp2A0 * (f32) sp2A0) + (((f32) sp298 * (f32) sp298) + (unksp29C * unksp29C));
+                spC0 = sp2C0.unk38 + (((f32) sp290 * sp2C0.unk28) + (((f32) sp288 * sp2C0.unk8) + ((*(f32 *) ((u8 *) &sp280 + 0xc)) * sp2C0.unk18)));
+                var_f4_237 = ((f32) sp2A0 * (f32) sp2A0) + (((f32) sp298 * (f32) sp298) + ((*(f32 *) ((u8 *) &sp280 + 0x1c)) * (*(f32 *) ((u8 *) &sp280 + 0x1c))));
                 sp258 = (f64) spC8;
                 sp260 = (f64) spD0;
                 sp248 = (f64) spB8;
@@ -245,9 +245,9 @@ loop_49:
                 } else {
                     var_f5_310 = 0.0f;
                 }
-                var_f6_327 = ((f32) sp290 * (f32) sp290) + (((f32) sp288 * (f32) sp288) + (unksp28C * unksp28C));
+                var_f6_327 = ((f32) sp290 * (f32) sp290) + (((f32) sp288 * (f32) sp288) + ((*(f32 *) ((u8 *) &sp280 + 0xc)) * (*(f32 *) ((u8 *) &sp280 + 0xc))));
                 sp298 = (f32) sp298 * var_f5_310;
-                unksp29C *= var_f5_310;
+                (*(f32 *) ((u8 *) &sp280 + 0x1c)) *= var_f5_310;
                 sp2A0 = (f32) sp2A0 * var_f5_310;
                 if (var_f6_327 > 0.000001f) {
                     if (var_f6_327 > 0.0f) {
@@ -288,13 +288,13 @@ loop_49:
                     var_f3_398 = 0.0f;
                 }
                 temp_f6_407 = (f32) sp288 * var_f3_398;
-                temp_f5_409 = unksp28C * var_f3_398;
+                temp_f5_409 = (*(f32 *) ((u8 *) &sp280 + 0xc)) * var_f3_398;
                 temp_f4_410 = (f32) sp290 * var_f3_398;
                 sp288 = temp_f6_407;
                 sp48 = -temp_f6_407;
                 sp4C = -temp_f5_409;
                 sp50 = -temp_f4_410;
-                unksp28C = temp_f5_409;
+                (*(f32 *) ((u8 *) &sp280 + 0xc)) = temp_f5_409;
                 sp290 = temp_f4_410;
                 sp208 = (f64) sp48;
                 sp210 = (f64) sp50;
@@ -310,7 +310,7 @@ loop_49:
                 sp1E8.operator*(temp_f27_232);
                 sp98 = sp1E8 + M2C_BITWISE(f64, sp1D8);
                 sp38 = -sp288;
-                sp3C = -unksp28C;
+                sp3C = -(*(f32 *) ((u8 *) &sp280 + 0xc));
                 spA0 = sp1E8.unk8 + sp1D8.unk8;
                 sp40 = -sp290;
                 sp1F8 = sp98;
@@ -321,7 +321,7 @@ loop_49:
                 sp190 = (f64) sp40;
                 sp198.operator*(temp_f27_232);
                 sp28 = -sp298;
-                sp2C = -unksp29C;
+                sp2C = -(*(f32 *) ((u8 *) &sp280 + 0x1c));
                 sp30 = -sp2A0;
                 sp1A8 = (f64) sp28;
                 sp1B0 = (f64) sp30;
@@ -334,7 +334,7 @@ loop_49:
                 sp328 = (f64) sp90;
                 sp148.operator*(temp_f27_232);
                 sp18 = -sp298;
-                sp1C = -unksp29C;
+                sp1C = -(*(f32 *) ((u8 *) &sp280 + 0x1c));
                 sp20 = -sp2A0;
                 sp158 = (f64) sp18;
                 sp160 = (f64) sp20;
@@ -364,12 +364,12 @@ loop_49:
                 temp_r4_590 = this->unk4 + (var_r22_168 + 8);
                 temp_f0_593 = M2C_FIELD(temp_r4_590, f64 *, 0) + M2C_BITWISE(f64, sp108);
                 sp58 = temp_f0_593;
-                unksp37C = 1.0f;
+                (*(f32 *) ((u8 *) &sp378 + 0x4)) = 1.0f;
                 sp118 = temp_f0_593;
                 sp60 = M2C_FIELD(temp_r4_590, f32 *, 8) + sp108.unk8;
                 sp120 = (f64) sp60;
                 sp370 = (f32) sp118;
-                unksp374 = unksp11C;
+                (*(f32 *) ((u8 *) &sp370 + 0x4)) = (*(f32 *) ((u8 *) &sp118 + 0x4));
                 sp378 = (f32) sp120;
                 MKSetMatrix(*((Matrix *) &sp340));
                 MKBegin(4);

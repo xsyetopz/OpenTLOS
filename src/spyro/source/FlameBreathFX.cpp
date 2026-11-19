@@ -322,7 +322,7 @@ loop_57:
                     sp2A0 = temp_f0_309;
                     sp118 = (f32) sp238 - arg0.unk8;
                     sp2A8 = (f64) sp118;
-                    var_f0_327 = ((f32) sp2A8 * (f32) sp2A8) + (((f32) sp2A0 * (f32) sp2A0) + (unksp2A4 * unksp2A4));
+                    var_f0_327 = ((f32) sp2A8 * (f32) sp2A8) + (((f32) sp2A0 * (f32) sp2A0) + ((*(f32 *) ((u8 *) &sp298 + 0xc)) * (*(f32 *) ((u8 *) &sp298 + 0xc))));
                     if (var_f0_327 > 0.000001f) {
                         if (var_f0_327 > 0.0f) {
                             temp_f2_333 = __frsqrte(var_f0_327);
@@ -363,7 +363,7 @@ loop_57:
                         var_f0_327 = 0.0f;
                     }
                     sp2A0 = (f32) sp2A0 * var_f4_394;
-                    unksp2A4 *= var_f4_394;
+                    (*(f32 *) ((u8 *) &sp298 + 0xc)) *= var_f4_394;
                     sp2A8 = (f32) sp2A8 * var_f4_394;
                     if (arg3 != 0) {
                         var_r0_411 = 1;
@@ -371,7 +371,7 @@ loop_57:
                         var_r0_411 = var_f0_327 >= (0.5f * this->unkA0);
                     }
                     if ((var_r0_411 != 0) && (var_f0_327 <= this->unkA0) && (var_f0_327 < var_f25_259)) {
-                        temp_f2_439 = (sp2A8 * arg1.unk8) + ((sp2A0 * arg1.unk0) + (unksp2A4 * arg1.unk4));
+                        temp_f2_439 = (sp2A8 * arg1.unk8) + ((sp2A0 * arg1.unk0) + ((*(f32 *) ((u8 *) &sp298 + 0xc)) * arg1.unk4));
                         if (arg3 != 0) {
                             var_r0_443 = temp_f2_439 > 0.2f;
                         } else {
@@ -1084,7 +1084,7 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
                 sp400 = temp_f26_1059;
                 sp808 = (f64) sp3F8;
                 sp810 = (f64) sp400;
-                var_f4_1083 = ((f32) sp810 * (f32) sp810) + (((f32) sp808 * (f32) sp808) + (unksp80C * unksp80C));
+                var_f4_1083 = ((f32) sp810 * (f32) sp810) + (((f32) sp808 * (f32) sp808) + ((*(f32 *) ((u8 *) &sp808 + 0x4)) * (*(f32 *) ((u8 *) &sp808 + 0x4))));
                 if (var_f4_1083 > 1e-12f) {
                     if (var_f4_1083 > 0.0f) {
                         temp_f1_1089 = __frsqrte(var_f4_1083);
@@ -1124,7 +1124,7 @@ s32 FlameBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
                     var_f3_1150 = 0.0f;
                 }
                 sp3C8 = (f32) sp808 * var_f3_1150;
-                sp3CC = unksp80C * var_f3_1150;
+                sp3CC = (*(f32 *) ((u8 *) &sp808 + 0x4)) * var_f3_1150;
                 sp3D0 = (f32) sp810 * var_f3_1150;
                 sp818 = (f64) sp3C8;
                 sp820 = (f64) sp3D0;
@@ -1357,7 +1357,7 @@ block_64:
                 sp2C0 = temp_f24_1685;
                 sp668 = (f64) sp2B8;
                 sp670 = (f64) sp2C0;
-                var_f0_1710 = ((f32) sp670 * (f32) sp670) + (((f32) sp668 * (f32) sp668) + (unksp66C * unksp66C));
+                var_f0_1710 = ((f32) sp670 * (f32) sp670) + (((f32) sp668 * (f32) sp668) + ((*(f32 *) ((u8 *) &sp668 + 0x4)) * (*(f32 *) ((u8 *) &sp668 + 0x4))));
                 if (var_f0_1710 > (f32) sp9D8) {
                     if (var_f0_1710 > 0.0f) {
                         temp_f2_1716 = __frsqrte(var_f0_1710);
@@ -1397,7 +1397,7 @@ block_64:
                     var_f3_1777 = 0.0f;
                 }
                 sp298 = (f32) sp668 * var_f3_1777;
-                sp29C = unksp66C * var_f3_1777;
+                sp29C = (*(f32 *) ((u8 *) &sp668 + 0x4)) * var_f3_1777;
                 sp2A0 = (f32) sp670 * var_f3_1777;
                 sp678 = (f64) sp298;
                 sp680 = (f64) sp2A0;
@@ -1621,7 +1621,7 @@ loop_144:
                 sp498 = temp_f0_2296;
                 sp150 = (f32) sp490 * sp30;
                 sp4A0 = (f64) sp150;
-                var_f4_2312 = ((f32) sp4A0 * (f32) sp4A0) + (((f32) sp498 * (f32) sp498) + (unksp49C * unksp49C));
+                var_f4_2312 = ((f32) sp4A0 * (f32) sp4A0) + (((f32) sp498 * (f32) sp498) + ((*(f32 *) ((u8 *) &sp498 + 0x4)) * (*(f32 *) ((u8 *) &sp498 + 0x4))));
                 if (var_f4_2312 > 1e-12f) {
                     if (var_f4_2312 > 0.0f) {
                         temp_f1_2318 = __frsqrte(var_f4_2312);
@@ -1661,7 +1661,7 @@ loop_144:
                     var_f3_2379 = 0.0f;
                 }
                 sp118 = (f32) sp498 * var_f3_2379;
-                sp11C = unksp49C * var_f3_2379;
+                sp11C = (*(f32 *) ((u8 *) &sp498 + 0x4)) * var_f3_2379;
                 sp120 = (f32) sp4A0 * var_f3_2379;
                 sp4A8 = (f64) sp118;
                 sp4B0 = (f64) sp120;
@@ -1818,7 +1818,7 @@ void FlameBreathFX::Draw() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp2FC'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void FlameBreathFX::Update() {
     f64 sp300;
     f64 sp2F8;
@@ -2069,7 +2069,7 @@ void FlameBreathFX::Update() {
                 M2C_FIELD(temp_r3_2970, f32 *, 0x28) = (f32) (1.0f / temp_f0_2968);
                 M2C_FIELD(temp_r3_2970, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_2970, f32 *, 0x24));
             }
-            if (((f32) sp2F8 <= 0.05f) && (unksp2FC <= 0.05f) && ((f32) sp300 <= 0.05f)) {
+            if (((f32) sp2F8 <= 0.05f) && ((*(f32 *) ((u8 *) &sp2F8 + 0x4)) <= 0.05f) && ((f32) sp300 <= 0.05f)) {
                 ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(this->unkA8, 0U);
             }
         }

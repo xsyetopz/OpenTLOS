@@ -454,7 +454,7 @@ loop_66:
                         sp24 = (temp_f10_684 * temp_r16_645->unk3C) + ((temp_f9_676 * temp_r16_645->unk2C) + ((temp_f8_668 * temp_r16_645->unkC) + (temp_f3_660 * temp_r16_645->unk1C)));
                         sp50 = (f64) sp20;
                         sp8 = -(f32) sp48;
-                        spC = -unksp4C;
+                        spC = -(*(f32 *) ((u8 *) &sp48 + 0x4));
                         sp10 = -(f32) sp50;
                         sp38 = (f64) sp18;
                         sp40 = (f64) sp20;
@@ -731,7 +731,7 @@ void Animation::ConvertFrameToMatrix(Matrix *arg0, int arg1) {
             sp24 = (temp_f10_1132 * temp_r31_948->unk3C) + ((temp_f9_1124 * temp_r31_948->unk2C) + ((temp_f8_1116 * temp_r31_948->unkC) + (temp_f3_1108 * temp_r31_948->unk1C)));
             sp70 = (f64) sp20;
             sp8 = -(f32) sp68;
-            spC = -unksp6C;
+            spC = -(*(f32 *) ((u8 *) &sp68 + 0x4));
             sp10 = -(f32) sp70;
             sp48 = (f64) sp18;
             sp50 = (f64) sp20;

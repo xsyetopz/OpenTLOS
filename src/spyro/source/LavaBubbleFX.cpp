@@ -158,7 +158,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1E4'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void LavaBubbleFX::DrawBubbleRings() {
     f64 sp278;
     f64 sp270;
@@ -248,7 +248,7 @@ void LavaBubbleFX::DrawBubbleRings() {
     spB0 = 0.0f;
     spB4 = 0.0f;
     sp40 = -(f32) sp1E0;
-    sp44 = -unksp1E4;
+    sp44 = -(*(f32 *) ((u8 *) &sp1E0 + 0x4));
     sp1F0 = (f64) spB0;
     sp1F8 = (f64) spB8;
     sp190 = (f64) sp40;
@@ -267,7 +267,7 @@ void LavaBubbleFX::DrawBubbleRings() {
     sp38 = -(f32) sp1E8;
     sp88 = sp170.unk8 + sp160.unk8;
     sp30 = -(f32) sp1E0;
-    sp34 = -unksp1E4;
+    sp34 = -(*(f32 *) ((u8 *) &sp1E0 + 0x4));
     sp180 = sp80;
     sp188 = (f64) sp88;
     sp250 = sp80;
@@ -276,7 +276,7 @@ void LavaBubbleFX::DrawBubbleRings() {
     sp118 = (f64) sp38;
     sp120.operator*(10.0f);
     sp20 = -(f32) sp1F0;
-    sp24 = -unksp1F4;
+    sp24 = -(*(f32 *) ((u8 *) &sp1F0 + 0x4));
     sp28 = -(f32) sp1F8;
     sp130 = (f64) sp20;
     sp138 = (f64) sp28;
@@ -289,7 +289,7 @@ void LavaBubbleFX::DrawBubbleRings() {
     sp268 = (f64) sp78;
     spD0.operator*(10.0f);
     sp10 = -(f32) sp1F0;
-    sp14 = -unksp1F4;
+    sp14 = -(*(f32 *) ((u8 *) &sp1F0 + 0x4));
     sp18 = -(f32) sp1F8;
     spE0 = (f64) sp10;
     spE8 = (f64) sp18;
@@ -372,7 +372,7 @@ void LavaBubbleFX::Draw() {
             sp18 = M2C_FIELD(temp_r3_574, f32 *, 8) + sp28;
             sp38 = (f64) sp18;
             sp40.unk30 = (f32) sp30;
-            sp40.unk34 = unksp34;
+            sp40.unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
             sp40.unk38 = (f32) sp38;
             sp40.unk3C = 1.0f;
             MKModel_SetWorldMatrix(this->unk4, sp40);
@@ -605,7 +605,7 @@ void LavaBubbleFX::Update() {
                     sp220 = spD0;
                     spD8 = (f32) sp1C8 - M2C_FIELD(temp_r4_766, f32 *, 8);
                     sp228 = (f64) spD8;
-                    var_f4_792 = ((f32) sp228 * (f32) sp228) + (((f32) sp220 * (f32) sp220) + (unksp224 * unksp224));
+                    var_f4_792 = ((f32) sp228 * (f32) sp228) + (((f32) sp220 * (f32) sp220) + ((*(f32 *) ((u8 *) &sp218 + 0xc)) * (*(f32 *) ((u8 *) &sp218 + 0xc))));
                     if (var_f4_792 > 0.000001f) {
                         if (var_f4_792 > 0.0f) {
                             temp_f1_798 = __frsqrte(var_f4_792);
@@ -647,7 +647,7 @@ void LavaBubbleFX::Update() {
                     temp_f2_871 = (f32) sp228 * var_f5_859;
                     temp_f1_872 = (75.0f * temp_f28_699) + 100.0f;
                     sp220 = (f32) sp220 * var_f5_859;
-                    unksp224 *= var_f5_859;
+                    (*(f32 *) ((u8 *) &sp218 + 0xc)) *= var_f5_859;
                     sp228 = temp_f2_871;
                     sp40 = (f64) sp220 * (f64) temp_f1_872;
                     sp48 = temp_f2_871 * temp_f1_872;

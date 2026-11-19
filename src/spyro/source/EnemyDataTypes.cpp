@@ -34,7 +34,7 @@ void EnemyMovementManager::SetExitingAnim() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1C'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 **EnemyMovementManager::SelectAnim() {
     f64 sp20;
     f64 sp18;
@@ -87,7 +87,7 @@ s32 **EnemyMovementManager::SelectAnim() {
     sp10 = (MKVector3::up.unk0 * temp_f8_57) - (MKVector3::up.unk4 * temp_f6_64);
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    temp_f1_84 = ((f32) sp20 * temp_r11_44->unkE8) + (((f32) sp18 * temp_r11_44->unkE0) + (unksp1C * temp_r11_44->unkE4));
+    temp_f1_84 = ((f32) sp20 * temp_r11_44->unkE8) + (((f32) sp18 * temp_r11_44->unkE0) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * temp_r11_44->unkE4));
     var_ctr_85 = temp_r5_49;
     if (temp_r5_49 > 0) {
         do {

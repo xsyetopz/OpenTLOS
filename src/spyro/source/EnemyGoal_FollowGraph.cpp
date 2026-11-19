@@ -776,12 +776,12 @@ void EnemyGoal_GraphTurn::Activate() {
             sp18 = -M2C_FIELD(temp_r5_1498, f32 *, 0x28);
             sp30 = (f64) sp10;
             sp38 = (f64) sp18;
-            sp20 = (MKVector3::up.unk4 * (f32) sp38) - (MKVector3::up.unk8 * unksp34);
+            sp20 = (MKVector3::up.unk4 * (f32) sp38) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp30 + 0x4)));
             sp24 = (MKVector3::up.unk8 * (f32) sp30) - (MKVector3::up.unk0 * (f32) sp38);
-            sp28 = (MKVector3::up.unk0 * unksp34) - (MKVector3::up.unk4 * (f32) sp30);
+            sp28 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp30 + 0x4))) - (MKVector3::up.unk4 * (f32) sp30);
             sp50 = (f64) sp20;
             sp58 = (f64) sp28;
-            if ((((f32) sp58 * temp_f2_1492) + (((f32) sp50 * temp_f1_1490) + (unksp54 * temp_f0_1486))) > 0.0f) {
+            if ((((f32) sp58 * temp_f2_1492) + (((f32) sp50 * temp_f1_1490) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * temp_f0_1486))) > 0.0f) {
                 ((Enemy *) temp_r3_1485)->SetAnim((AnimSequenceType) 4, 0x15, 0, 0.15f, 0U, 0U);
                 return;
             }
@@ -1610,7 +1610,7 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
             sp40 = sp10;
             sp18 = (f32) sp38 - (f32) sp28;
             sp48 = (f64) sp18;
-            var_f4_3284 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44));
+            var_f4_3284 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp38 + 0xc)) * (*(f32 *) ((u8 *) &sp38 + 0xc))));
             if (var_f4_3284 > 0.000001f) {
                 if (var_f4_3284 > 0.0f) {
                     temp_f1_3290 = __frsqrte(var_f4_3284);
@@ -1650,7 +1650,7 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
                 var_f3_3351 = 0.0f;
             }
             sp40 = (f32) sp40 * var_f3_3351;
-            unksp44 *= var_f3_3351;
+            (*(f32 *) ((u8 *) &sp38 + 0xc)) *= var_f3_3351;
             sp48 = (f32) sp48 * var_f3_3351;
             var_f1_3366 = KDMath_GetYaw(*((MKVector3 *) &sp40));
         } else {
@@ -2188,7 +2188,7 @@ u8 EnemyGoal_FollowGraph::Update() {
     temp_r4_4229 = this->unkC;
     spD0 = temp_r4_4229->unk100;
     spD8 = temp_r4_4229->unk108;
-    unkspD4 = 0.0f;
+    (*(f32 *) ((u8 *) &spD0 + 0x4)) = 0.0f;
     temp_f1_4247 = (f32) fabs(((f32) spD8 * temp_r4_4229->unkC8) + (((f32) spD0 * temp_r4_4229->unkC0) + (0.0f * temp_r4_4229->unkC4)));
     if (((s32) this->unk14 == 1) && (M2C_FIELD(temp_r4_4229->unk638, s32 *, 0x460) & 0x4000) && (temp_f1_4247 < 5.0f) && ((CharacterGraphNode *) temp_r4_4229->unkA84 != NULL)) {
         this->unk8C += gUpdateTimeDelta;
@@ -2381,7 +2381,7 @@ block_19:
             sp28 = (f32) spC8 - (f32) spB8;
             spA8 = (f64) sp28;
             if (!(((u8) M2C_FIELD(temp_r3_4760->unk638, u8 *, 0x464) >> 5U) & 1)) {
-                unkspA4 = 0.0f;
+                (*(f32 *) ((u8 *) &spA0 + 0x4)) = 0.0f;
             }
             if (temp_r3_4760->unk694 <= 0.0f) {
                 var_f31_4781 = 1.0f;
@@ -2402,7 +2402,7 @@ block_19:
             } else {
                 var_f31_4791 = temp_f1_4801;
             }
-            if (((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4))) < (var_f31_4791 * var_f31_4791)) || (((u8) this->unk95 >> 1U) & 1)) {
+            if (((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))))) < (var_f31_4791 * var_f31_4791)) || (((u8) this->unk95 >> 1U) & 1)) {
                 this->unk95 |= 4;
             }
         }
@@ -3629,15 +3629,15 @@ void EnemyGoal_GraphJump::Terminate() {
         spE8 = spA0.unk8;
         spEC = 1.0f;
         spA0.unk10 = (f32) sp90;
-        spB4 = unksp94;
+        spB4 = (*(f32 *) ((u8 *) &sp90 + 0x4));
         spB8 = (f32) sp98;
         spBC = 0.0f;
         spD0 = (f32) sp80;
-        spD4 = unksp84;
+        spD4 = (*(f32 *) ((u8 *) &sp80 + 0x4));
         spD8 = (f32) sp88;
         spDC = 0.0f;
         temp_r3_7284 = this->unkC;
-        temp_r3_7284->Teleport(&spA0.unk10, unksp84, (f32) sp80, 0.0f, (f32) sp98, unksp94, (f32) sp90, 1.0f, spA0.unk8, temp_f9_7258, temp_f10_7250);
+        temp_r3_7284->Teleport(&spA0.unk10, (*(f32 *) ((u8 *) &sp80 + 0x4)), (f32) sp80, 0.0f, (f32) sp98, (*(f32 *) ((u8 *) &sp90 + 0x4)), (f32) sp90, 1.0f, spA0.unk8, temp_f9_7258, temp_f10_7250);
     }
     temp_r5_7292 = this->unkC;
     temp_r5_7292->unkA0 = 0.0f;
@@ -3974,11 +3974,11 @@ u8 EnemyGoal_GraphJump::Update() {
                 spB4 = -sp264;
                 sp240 = (f32) sp1D0;
                 sp1C0 = (f64) spB0;
-                sp244 = unksp1D4;
+                sp244 = (*(f32 *) ((u8 *) &sp1D0 + 0x4));
                 sp248 = (f32) sp1D8;
                 sp24C = 0.0f;
                 sp260 = (f32) sp1C0;
-                sp264 = unksp1C4;
+                sp264 = (*(f32 *) ((u8 *) &sp1C0 + 0x4));
                 sp268 = (f32) sp1C8;
                 sp26C = 0.0f;
                 temp_f6_7759 = (f32) M2C_FIELD(this, f64 *, 0x28);
@@ -3989,7 +3989,7 @@ u8 EnemyGoal_GraphJump::Update() {
                 sp108 = (MKVector3::up.unk0 * temp_f9_7760) - (MKVector3::up.unk4 * temp_f4_7761);
                 sp1B0 = (f64) sp100;
                 sp1B8 = (f64) sp108;
-                var_f4_7781 = ((f32) sp1B8 * (f32) sp1B8) + (((f32) sp1B0 * (f32) sp1B0) + (unksp1B4 * unksp1B4));
+                var_f4_7781 = ((f32) sp1B8 * (f32) sp1B8) + (((f32) sp1B0 * (f32) sp1B0) + ((*(f32 *) ((u8 *) &sp1B0 + 0x4)) * (*(f32 *) ((u8 *) &sp1B0 + 0x4))));
                 if (var_f4_7781 > 1e-12f) {
                     if (var_f4_7781 > 0.0f) {
                         temp_f1_7786 = __frsqrte(var_f4_7781);
@@ -4026,19 +4026,19 @@ u8 EnemyGoal_GraphJump::Update() {
                     }
                     var_f0_7726 = 1.0f / var_f4_7781;
                 }
-                spF4 = unksp1B4 * var_f0_7726;
+                spF4 = (*(f32 *) ((u8 *) &sp1B0 + 0x4)) * var_f0_7726;
                 spF0 = (f32) sp1B0 * var_f0_7726;
                 spF8 = (f32) sp1B8 * var_f0_7726;
                 sp230 = (f64) spF0;
                 sp238 = (f64) spF8;
                 sp30 = -(f32) sp230;
-                sp34 = -unksp234;
+                sp34 = -(*(f32 *) ((u8 *) &sp230 + 0x4));
                 sp38 = -(f32) sp238;
                 sp190 = (f64) sp30;
                 sp198 = (f64) sp38;
-                spA0 = (MKVector3::up.unk4 * (f32) sp198) - (MKVector3::up.unk8 * unksp194);
+                spA0 = (MKVector3::up.unk4 * (f32) sp198) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp190 + 0x4)));
                 spA4 = (MKVector3::up.unk8 * (f32) sp190) - (MKVector3::up.unk0 * (f32) sp198);
-                spA8 = (MKVector3::up.unk0 * unksp194) - (MKVector3::up.unk4 * (f32) sp190);
+                spA8 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp190 + 0x4))) - (MKVector3::up.unk4 * (f32) sp190);
                 sp1A0 = (f64) spA0;
                 sp1A8 = (f64) spA8;
                 sp230 = (f64) spA0;
@@ -4055,11 +4055,11 @@ u8 EnemyGoal_GraphJump::Update() {
                 sp84 = -sp280.unk24;
                 sp280 = (f32) sp180;
                 sp170 = (f64) sp80;
-                sp280.unk4 = unksp184;
+                sp280.unk4 = (*(f32 *) ((u8 *) &sp180 + 0x4));
                 sp280.unk8 = (f32) sp188;
                 sp280.unkC = 0.0f;
                 sp280.unk20 = (f32) sp170;
-                sp280.unk24 = unksp174;
+                sp280.unk24 = (*(f32 *) ((u8 *) &sp170 + 0x4));
                 sp280.unk28 = (f32) sp178;
                 sp280.unk2C = 0.0f;
                 sp280.unk30 = (f32) M2C_FIELD(this, f64 *, 0x10);
@@ -4088,7 +4088,7 @@ u8 EnemyGoal_GraphJump::Update() {
                     sp150 = spE0;
                     spE8 = (f32) sp228 - (f32) M2C_FIELD(this, f64 *, 0x18);
                     sp158 = (f64) spE8;
-                    var_f4_8017 = ((f32) sp158 * (f32) sp158) + (((f32) sp150 * (f32) sp150) + (unksp154 * unksp154));
+                    var_f4_8017 = ((f32) sp158 * (f32) sp158) + (((f32) sp150 * (f32) sp150) + ((*(f32 *) ((u8 *) &sp150 + 0x4)) * (*(f32 *) ((u8 *) &sp150 + 0x4))));
                     if (var_f4_8017 > 0.0f) {
                         temp_f1_8020 = __frsqrte(var_f4_8017);
                         temp_f1_8026 = 0.5 * temp_f1_8020 * -(((f64) var_f4_8017 * (temp_f1_8020 * temp_f1_8020)) - 3.0);
@@ -4135,15 +4135,15 @@ u8 EnemyGoal_GraphJump::Update() {
                         sp64 = -sp280.unk24;
                         sp280 = (f32) sp140;
                         sp130 = (f64) sp60;
-                        sp280.unk4 = unksp144;
+                        sp280.unk4 = (*(f32 *) ((u8 *) &sp140 + 0x4));
                         sp280.unk8 = (f32) sp148;
                         sp280.unkC = 0.0f;
                         sp280.unk20 = (f32) sp130;
-                        sp280.unk24 = unksp134;
+                        sp280.unk24 = (*(f32 *) ((u8 *) &sp130 + 0x4));
                         sp280.unk28 = (f32) sp138;
                         sp280.unk2C = 0.0f;
                         temp_r3_8130 = this->unkC;
-                        temp_r3_8130->Teleport(&sp280, unksp134, (f32) sp130, 0.0f, (f32) sp148, unksp144, (f32) sp140);
+                        temp_r3_8130->Teleport(&sp280, (*(f32 *) ((u8 *) &sp130 + 0x4)), (f32) sp130, 0.0f, (f32) sp148, (*(f32 *) ((u8 *) &sp140 + 0x4)), (f32) sp140);
                         this->unkC->SetMovementType((CharacterMoveType) 0);
                         this->unk8 = 2;
                     }
@@ -4161,15 +4161,15 @@ u8 EnemyGoal_GraphJump::Update() {
                     sp44 = -sp280.unk24;
                     sp280 = (f32) sp120;
                     sp110 = (f64) sp40;
-                    sp280.unk4 = unksp124;
+                    sp280.unk4 = (*(f32 *) ((u8 *) &sp120 + 0x4));
                     sp280.unk8 = (f32) sp128;
                     sp280.unkC = 0.0f;
                     sp280.unk20 = (f32) sp110;
-                    sp280.unk24 = unksp114;
+                    sp280.unk24 = (*(f32 *) ((u8 *) &sp110 + 0x4));
                     sp280.unk28 = (f32) sp118;
                     sp280.unk2C = 0.0f;
                     temp_r3_8188 = this->unkC;
-                    temp_r3_8188->Teleport(&sp280, unksp114, (f32) sp110, 0.0f, (f32) sp128, unksp124, (f32) sp120);
+                    temp_r3_8188->Teleport(&sp280, (*(f32 *) ((u8 *) &sp110 + 0x4)), (f32) sp110, 0.0f, (f32) sp128, (*(f32 *) ((u8 *) &sp120 + 0x4)), (f32) sp120);
                     temp_r3_8193 = this->unkC;
                     temp_r4_8196 = temp_r3_8193->unkA50;
                     ((Enemy *) temp_r3_8193)->SetAnim(temp_r4_8196, (AnimTransition *) &temp_r4_8196->unk40, 0.15f, 0U);
@@ -4341,7 +4341,7 @@ void EnemyGoal_GraphJump::Activate() {
     sp270.unk20 = spA0;
     sp2D8 = (f64) spA8;
     sp270.unk28 = (f64) spA8;
-    unksp2D4 = 0.0f;
+    (*(f32 *) ((u8 *) &sp2C8 + 0xc)) = 0.0f;
     var_f4_8290 = ((f32) sp2D8 * (f32) sp2D8) + (((f32) sp2D0 * (f32) sp2D0) + (0.0f * 0.0f));
     if (var_f4_8290 > 0.000001f) {
         if (var_f4_8290 > 0.0f) {
@@ -4382,7 +4382,7 @@ void EnemyGoal_GraphJump::Activate() {
     temp_f3_8362 = (f32) sp2D0 * var_f5_8275;
     temp_r5_8365 = this->unkC;
     sp2D0 = temp_f3_8362;
-    unksp2D4 *= var_f5_8275;
+    (*(f32 *) ((u8 *) &sp2C8 + 0xc)) *= var_f5_8275;
     sp2D8 = (f32) sp2D8 * var_f5_8275;
     M2C_FIELD(temp_r5_8365, f64 *, 0xE0) = (f64) sp2D0;
     M2C_FIELD(temp_r5_8365, f64 *, 0xE8) = (f64) sp2D8;
@@ -4399,7 +4399,7 @@ void EnemyGoal_GraphJump::Activate() {
     sp260 = spD0;
     spD8 = sp258 - (f32) sp248;
     sp268 = (f64) spD8;
-    var_f4_8410 = ((f32) sp268 * (f32) sp268) + (((f32) sp260 * (f32) sp260) + (unksp264 * unksp264));
+    var_f4_8410 = ((f32) sp268 * (f32) sp268) + (((f32) sp260 * (f32) sp260) + ((*(f32 *) ((u8 *) &sp260 + 0x4)) * (*(f32 *) ((u8 *) &sp260 + 0x4))));
     if (var_f4_8410 > 0.0f) {
         temp_f1_8413 = __frsqrte(var_f4_8410);
         temp_f1_8419 = 0.5 * temp_f1_8413 * -(((f64) var_f4_8410 * (temp_f1_8413 * temp_f1_8413)) - 3.0);
@@ -4485,7 +4485,7 @@ void EnemyGoal_GraphJump::Activate() {
     sp2D8 = (f64) sp98;
     sp180 = sp90;
     sp188 = (f64) sp98;
-    var_f4_8629 = ((f32) sp2D8 * (f32) sp2D8) + (((f32) sp2D0 * (f32) sp2D0) + (unksp2D4 * unksp2D4));
+    var_f4_8629 = ((f32) sp2D8 * (f32) sp2D8) + (((f32) sp2D0 * (f32) sp2D0) + ((*(f32 *) ((u8 *) &sp2C8 + 0xc)) * (*(f32 *) ((u8 *) &sp2C8 + 0xc))));
     if (var_f4_8629 > 0.000001f) {
         if (var_f4_8629 > 0.0f) {
             temp_f1_8635 = __frsqrte(var_f4_8629);
@@ -4525,19 +4525,19 @@ void EnemyGoal_GraphJump::Activate() {
         var_f3_8696 = 0.0f;
     }
     sp2D0 = (f32) sp2D0 * var_f3_8696;
-    unksp2D4 *= var_f3_8696;
+    (*(f32 *) ((u8 *) &sp2C8 + 0xc)) *= var_f3_8696;
     sp2D8 = (f32) sp2D8 * var_f3_8696;
     M2C_STRUCT_COPY((s32) &unksp2DC + 4, MKModel_GetWorldMatrix(this->unkC->unk4) - 4 + 4, 0x40);
     var_f1_8724 = 0.0f;
     spC4 = (MKVector3::up.unk8 * sp2D0) - (MKVector3::up.unk0 * sp2D8);
-    spC0 = (MKVector3::up.unk4 * sp2D8) - (MKVector3::up.unk8 * unksp2D4);
-    spC8 = (MKVector3::up.unk0 * unksp2D4) - (MKVector3::up.unk4 * sp2D0);
+    spC0 = (MKVector3::up.unk4 * sp2D8) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp2C8 + 0xc)));
+    spC8 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp2C8 + 0xc))) - (MKVector3::up.unk4 * sp2D0);
     sp130 = (f64) spC0;
     sp138 = (f64) spC8;
     sp88 = -sp2E8;
     sp78 = -sp308;
     sp158 = (f64) sp88;
-    var_f2_8769 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
+    var_f2_8769 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp130 + 0x4)) * (*(f32 *) ((u8 *) &sp130 + 0x4))));
     sp148 = (f64) sp78;
     sp80 = -sp2E0;
     sp84 = -sp2E4;
@@ -4546,11 +4546,11 @@ void EnemyGoal_GraphJump::Activate() {
     sp74 = -sp304;
     sp140 = (f64) sp70;
     sp2E0 = (f32) sp150;
-    sp2E4 = unksp154;
+    sp2E4 = (*(f32 *) ((u8 *) &sp150 + 0x4));
     sp2E8 = (f32) sp158;
     sp2EC = 0.0f;
     sp300 = (f32) sp140;
-    sp304 = unksp144;
+    sp304 = (*(f32 *) ((u8 *) &sp140 + 0x4));
     sp308 = (f32) sp148;
     sp30C = 0.0f;
     if (var_f2_8769 > 1e-12f) {
@@ -4589,7 +4589,7 @@ void EnemyGoal_GraphJump::Activate() {
         }
         var_f1_8724 = 1.0f / var_f2_8769;
     }
-    spB4 = unksp134 * var_f1_8724;
+    spB4 = (*(f32 *) ((u8 *) &sp130 + 0x4)) * var_f1_8724;
     spB0 = (f32) sp130 * var_f1_8724;
     spB8 = (f32) sp138 * var_f1_8724;
     sp270.unk30 = (f64) spB0;
@@ -4599,9 +4599,9 @@ void EnemyGoal_GraphJump::Activate() {
     sp38 = -M2C_BITWISE(f32, sp270.unk38);
     sp110 = (f64) sp30;
     sp118 = (f64) sp38;
-    sp60 = (MKVector3::up.unk4 * (f32) sp118) - (MKVector3::up.unk8 * unksp114);
+    sp60 = (MKVector3::up.unk4 * (f32) sp118) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp110 + 0x4)));
     sp64 = (MKVector3::up.unk8 * (f32) sp110) - (MKVector3::up.unk0 * (f32) sp118);
-    sp68 = (MKVector3::up.unk0 * unksp114) - (MKVector3::up.unk4 * (f32) sp110);
+    sp68 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp110 + 0x4))) - (MKVector3::up.unk4 * (f32) sp110);
     sp120 = (f64) sp60;
     sp128 = (f64) sp68;
     sp270.unk30 = (f64) sp60;
@@ -4618,11 +4618,11 @@ void EnemyGoal_GraphJump::Activate() {
     sp44 = -sp320.unk24;
     spF0 = (f64) sp40;
     sp320 = (f32) sp100;
-    sp320.unk4 = unksp104;
+    sp320.unk4 = (*(f32 *) ((u8 *) &sp100 + 0x4));
     sp320.unk8 = (f32) sp108;
     sp320.unkC = 0.0f;
     sp320.unk20 = (f32) spF0;
-    sp320.unk24 = unkspF4;
+    sp320.unk24 = (*(f32 *) ((u8 *) &spF0 + 0x4));
     sp320.unk28 = (f32) spF8;
     sp320.unk2C = 0.0f;
     sp28 = 0.0f;
@@ -5008,7 +5008,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                 M2C_FIELD(temp_r5_9884, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_9884, f64 *, 0xF8);
                 temp_r5_9884->unk6B5 &= ~0x40;
                 sp2E0.unk30 = (f32) sp220;
-                sp2E0.unk34 = unksp224;
+                sp2E0.unk34 = (*(f32 *) ((u8 *) &sp220 + 0x4));
                 sp2E0.unk38 = (f32) sp228;
                 sp2E0.unk3C = 1.0f;
                 MKModel_SetWorldMatrix(this->unkC->unk4, sp2E0);
@@ -5098,7 +5098,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
             sp1F8 = (f64) sp2A0.unk28;
             sp1E8 = M2C_FIELD(&MKVector3::up, f64 *, 8);
             sp1E0 = M2C_FIELD(&MKVector3::up, f64 *, 0);
-            unksp1F4 = 0.0f;
+            (*(f32 *) ((u8 *) &sp1E8 + 0xc)) = 0.0f;
             var_f4_10125 = ((f32) sp1F8 * (f32) sp1F8) + (((f32) sp1F0 * (f32) sp1F0) + (0.0f * 0.0f));
             if (var_f4_10125 > 0.000001f) {
                 if (var_f4_10125 > 0.0f) {
@@ -5137,7 +5137,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                 var_f6_10112 = 1.0f / var_f4_10125;
             }
             sp1F0 = (f32) sp1F0 * var_f6_10112;
-            unksp1F4 *= var_f6_10112;
+            (*(f32 *) ((u8 *) &sp1E8 + 0xc)) *= var_f6_10112;
             sp1F8 = (f32) sp1F8 * var_f6_10112;
             M2C_STRUCT_COPY((s32) &sp29C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             KDMath_BuildMatrixFromFwd(&sp2A0, *((MKVector3 *) &sp1F0), (MKVector3 *) &sp1E0);
@@ -5154,7 +5154,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
             M2C_FIELD(temp_r3_10236, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r3_10236, f64 *, 0xF8);
             temp_r3_10236->unk6B5 &= ~0x40;
             sp2A0.unk30 = (f32) sp220;
-            sp2A0.unk34 = unksp224;
+            sp2A0.unk34 = (*(f32 *) ((u8 *) &sp220 + 0x4));
             sp2A0.unk38 = (f32) sp228;
             sp2A0.unk3C = 1.0f;
             MKModel_SetWorldMatrix(this->unkC->unk4, sp2A0);
@@ -5218,7 +5218,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     M2C_FIELD(temp_r5_10398, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_10398, f64 *, 0xF8);
     temp_r5_10398->unk6B5 &= ~0x40;
     sp260.unk30 = (f32) sp220;
-    sp260.unk34 = unksp224;
+    sp260.unk34 = (*(f32 *) ((u8 *) &sp220 + 0x4));
     sp260.unk38 = (f32) sp228;
     sp260.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unkC->unk4, sp260);
@@ -5321,11 +5321,11 @@ void EnemyGoal_GraphGlidePath::Activate() {
     sp14 = -spC4;
     spA0 = (f32) sp70;
     sp60 = (f64) sp10;
-    spA4 = unksp74;
+    spA4 = (*(f32 *) ((u8 *) &sp70 + 0x4));
     spA8 = (f32) sp78;
     spAC = 0.0f;
     spC0 = (f32) sp60;
-    spC4 = unksp64;
+    spC4 = (*(f32 *) ((u8 *) &sp60 + 0x4));
     spC8 = (f32) sp68;
     spCC = 0.0f;
     ((Matrix *) &sp50)->GetRotationRPY();
@@ -5615,7 +5615,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                 M2C_FIELD(temp_r5_11034, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_11034, f64 *, 0xF8);
                 temp_r5_11034->unk6B5 &= ~0x40;
                 sp2B0.unk30 = (f32) sp220;
-                sp2B0.unk34 = unksp224;
+                sp2B0.unk34 = (*(f32 *) ((u8 *) &sp220 + 0x4));
                 sp2B0.unk38 = (f32) sp228;
                 sp2B0.unk3C = 1.0f;
                 MKModel_SetWorldMatrix(this->unkC->unk4, sp2B0);
@@ -5705,7 +5705,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
             sp1F8 = (f64) sp270.unk28;
             sp1E8 = M2C_FIELD(&MKVector3::up, f64 *, 8);
             sp1E0 = M2C_FIELD(&MKVector3::up, f64 *, 0);
-            unksp1F4 = 0.0f;
+            (*(f32 *) ((u8 *) &sp1E8 + 0xc)) = 0.0f;
             var_f4_11273 = ((f32) sp1F8 * (f32) sp1F8) + (((f32) sp1F0 * (f32) sp1F0) + (0.0f * 0.0f));
             if (var_f4_11273 > 0.000001f) {
                 if (var_f4_11273 > 0.0f) {
@@ -5744,7 +5744,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                 var_f6_11260 = 1.0f / var_f4_11273;
             }
             sp1F0 = (f32) sp1F0 * var_f6_11260;
-            unksp1F4 *= var_f6_11260;
+            (*(f32 *) ((u8 *) &sp1E8 + 0xc)) *= var_f6_11260;
             sp1F8 = (f32) sp1F8 * var_f6_11260;
             M2C_STRUCT_COPY((s32) &sp26C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             KDMath_BuildMatrixFromFwd(&sp270, *((MKVector3 *) &sp1F0), (MKVector3 *) &sp1E0);
@@ -5761,7 +5761,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
             M2C_FIELD(temp_r3_11384, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r3_11384, f64 *, 0xF8);
             temp_r3_11384->unk6B5 &= ~0x40;
             sp270.unk30 = (f32) sp220;
-            sp270.unk34 = unksp224;
+            sp270.unk34 = (*(f32 *) ((u8 *) &sp220 + 0x4));
             sp270.unk38 = (f32) sp228;
             sp270.unk3C = 1.0f;
             MKModel_SetWorldMatrix(this->unkC->unk4, sp270);
@@ -5825,7 +5825,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     M2C_FIELD(temp_r5_11544, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r5_11544, f64 *, 0xF8);
     temp_r5_11544->unk6B5 &= ~0x40;
     sp230.unk30 = (f32) sp220;
-    sp230.unk34 = unksp224;
+    sp230.unk34 = (*(f32 *) ((u8 *) &sp220 + 0x4));
     sp230.unk38 = (f32) sp228;
     sp230.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unkC->unk4, sp230);
@@ -5928,11 +5928,11 @@ void EnemyGoal_GraphFlyPath::Activate() {
     sp14 = -spC4;
     spA0 = (f32) sp70;
     sp60 = (f64) sp10;
-    spA4 = unksp74;
+    spA4 = (*(f32 *) ((u8 *) &sp70 + 0x4));
     spA8 = (f32) sp78;
     spAC = 0.0f;
     spC0 = (f32) sp60;
-    spC4 = unksp64;
+    spC4 = (*(f32 *) ((u8 *) &sp60 + 0x4));
     spC8 = (f32) sp68;
     spCC = 0.0f;
     ((Matrix *) &sp50)->GetRotationRPY();

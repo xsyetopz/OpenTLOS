@@ -120,10 +120,10 @@ void HealthSafetyScreen::Update() {
     case 0:
         sp28 = M2C_FIELD(&gb, f64 *, 0x48);
         sp20 = M2C_FIELD(&gb, f64 *, 0x40);
-        temp_f1_44 = -((2.0f * gUpdateTimeDelta) - unksp2C);
-        unksp2C = temp_f1_44;
+        temp_f1_44 = -((2.0f * gUpdateTimeDelta) - (*(f32 *) ((u8 *) &sp28 + 0x4)));
+        (*(f32 *) ((u8 *) &sp28 + 0x4)) = temp_f1_44;
         if (temp_f1_44 < 0.0f) {
-            unksp2C = 0.0f;
+            (*(f32 *) ((u8 *) &sp28 + 0x4)) = 0.0f;
             this->unkD0 = 1;
         }
         M2C_FIELD(&gb, f64 *, 0x40) = sp20;
@@ -178,10 +178,10 @@ loop_25:
     case 3:
         sp18 = M2C_FIELD(&gb, f64 *, 0x48);
         sp10 = M2C_FIELD(&gb, f64 *, 0x40);
-        temp_f1_150 = (2.0f * gUpdateTimeDelta) + unksp1C;
-        unksp1C = temp_f1_150;
+        temp_f1_150 = (2.0f * gUpdateTimeDelta) + (*(f32 *) ((u8 *) &sp18 + 0x4));
+        (*(f32 *) ((u8 *) &sp18 + 0x4)) = temp_f1_150;
         if (temp_f1_150 > 1.0f) {
-            unksp1C = 1.0f;
+            (*(f32 *) ((u8 *) &sp18 + 0x4)) = 1.0f;
             temp_r3_157 = ui_cast<UISystem *, UIContainer *>(GetRoot());
             sp8 = 0xF;
             M2C_FIELD(*temp_r3_157, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
@@ -775,7 +775,7 @@ void RadialButtonGroup::Init() {
     this->unkFC = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspB4'
+#if 0 // DRAFT: undefined identifier 'unk30'
 void UIPie::Draw(const RenderContext &arg0) {
     RenderContext sp100;
     Matrix spC0;
@@ -835,9 +835,9 @@ void UIPie::Draw(const RenderContext &arg0) {
         }
         temp_r3_1579 = this->unk18.unk3C;
         if (!(temp_r3_1579 & 0xC)) {
-            unkspB4 = 0.5f * this->unk18.unk38;
+            (*(f32 *) ((u8 *) &spA8 + 0xc)) = 0.5f * this->unk18.unk38;
         } else if (!(temp_r3_1579 & 4)) {
-            unkspB4 = -0.5f * this->unk18.unk38;
+            (*(f32 *) ((u8 *) &spA8 + 0xc)) = -0.5f * this->unk18.unk38;
         }
         spC0.SetIdentity();
         spC0.Translate(&spC0, *((MKVector3 *) &spB0));
@@ -867,9 +867,9 @@ loop_13:
             sp54 = sp18 * this->unk18.unk38;
             sp90 = (f64) sp50;
             sp98 = (f64) sp58;
-            sp40 = M2C_BITWISE(f32, sp100.unk30) + (((f32) sp98 * sp100.unk20) + (((f32) sp90 * M2C_BITWISE(f32, sp100)) + (unksp94 * sp100.unk10)));
-            sp44 = sp100.unk30.unk4 + (((f32) sp98 * sp100.unk24) + (((f32) sp90 * sp100.unk4) + (unksp94 * sp100.unk14)));
-            sp48 = sp100.unk30.unk8 + (((f32) sp98 * sp100.unk28) + (((f32) sp90 * sp100.unk8) + (unksp94 * sp100.unk18)));
+            sp40 = M2C_BITWISE(f32, sp100.unk30) + (((f32) sp98 * sp100.unk20) + (((f32) sp90 * M2C_BITWISE(f32, sp100)) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * sp100.unk10)));
+            sp44 = sp100.unk30.unk4 + (((f32) sp98 * sp100.unk24) + (((f32) sp90 * sp100.unk4) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * sp100.unk14)));
+            sp48 = sp100.unk30.unk8 + (((f32) sp98 * sp100.unk28) + (((f32) sp90 * sp100.unk8) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * sp100.unk18)));
             spA0 = (f64) sp40;
             spA8 = (f64) sp48;
             MKSetPositionV(*((MKVector3 *) &spA0));
@@ -888,9 +888,9 @@ loop_13:
             sp38 = 0.0f;
             sp70 = (f64) sp30;
             sp78 = (f64) sp38;
-            sp20 = M2C_BITWISE(f32, sp100.unk30) + (((f32) sp78 * sp100.unk20) + (((f32) sp70 * M2C_BITWISE(f32, sp100)) + (unksp74 * sp100.unk10)));
-            sp24 = sp100.unk30.unk4 + (((f32) sp78 * sp100.unk24) + (((f32) sp70 * sp100.unk4) + (unksp74 * sp100.unk14)));
-            sp28 = sp100.unk30.unk8 + (((f32) sp78 * sp100.unk28) + (((f32) sp70 * sp100.unk8) + (unksp74 * sp100.unk18)));
+            sp20 = M2C_BITWISE(f32, sp100.unk30) + (((f32) sp78 * sp100.unk20) + (((f32) sp70 * M2C_BITWISE(f32, sp100)) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * sp100.unk10)));
+            sp24 = sp100.unk30.unk4 + (((f32) sp78 * sp100.unk24) + (((f32) sp70 * sp100.unk4) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * sp100.unk14)));
+            sp28 = sp100.unk30.unk8 + (((f32) sp78 * sp100.unk28) + (((f32) sp70 * sp100.unk8) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * sp100.unk18)));
             sp80 = (f64) sp20;
             sp88 = (f64) sp28;
             MKSetPositionV(*((MKVector3 *) &sp80));

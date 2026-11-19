@@ -1275,7 +1275,7 @@ loop_44:
     sp1A8 = (f32) spCE8 - (f32) M2C_FIELD(this, f64 *, 0x70);
     sp608 = (f64) sp1A8;
     temp_f0_1802 = 100.0f * (112.0f * this->unk58);
-    temp_f14_1807 = ((f32) sp608 * (f32) sp608) + (((f32) sp600 * (f32) sp600) + (unksp604 * unksp604));
+    temp_f14_1807 = ((f32) sp608 * (f32) sp608) + (((f32) sp600 * (f32) sp600) + ((*(f32 *) ((u8 *) &sp600 + 0x4)) * (*(f32 *) ((u8 *) &sp600 + 0x4))));
     if (temp_f14_1807 <= (temp_f0_1802 * temp_f0_1802)) {
         M2C_STRUCT_COPY((s32) &spDE0.unk3C + 4, (s32) (M2C_FIELD(&gb, void **, 0x3B8) + 0xAC) + 4, 0x70);
         if (spE20.IsVisible(*((MKVector3 *) &this->unk68), 100.0f * (25.0f * this->unk58)) != 0) {
@@ -1327,7 +1327,7 @@ loop_44:
         KDMath_BuildMatrixFromFwd(&spDE0, *((MKVector3 *) &spCD0), (MKVector3 *) &spCC0);
         spDE0.Scale3x3(&spDE0, 2.5f * this->unk58);
         sp20 = -(f32) spCD0;
-        sp24 = -unkspCD4;
+        sp24 = -(*(f32 *) ((u8 *) &spCD0 + 0x4));
         sp28 = -(f32) spCD8;
         sp570 = (f64) sp20;
         sp578 = (f64) sp28;
@@ -1338,7 +1338,7 @@ loop_44:
         sp68 = arg0.unk8 + sp590.unk8;
         sp5A8 = (f64) sp68;
         spDE0.unk30 = (f32) sp5A0;
-        spDE0.unk34 = unksp5A4;
+        spDE0.unk34 = (*(f32 *) ((u8 *) &sp5A0 + 0x4));
         spDE0.unk38 = (f32) sp5A8;
         spDE0.unk3C = 1.0f;
         gb.unk1C0.StartWarp(&spDE0);
@@ -1458,7 +1458,7 @@ void Explosion4::Draw() {
         sp18 = M2C_FIELD(this, f32 *, 0x70) + sp58;
         sp68 = (f64) sp18;
         sp80.unk30 = (f32) sp60;
-        sp80.unk34 = unksp64;
+        sp80.unk34 = (*(f32 *) ((u8 *) &sp60 + 0x4));
         sp80.unk38 = (f32) sp68;
         sp80.unk3C = 1.0f;
         spC0.Multiply4x4(&spC0, &sp80);
@@ -1475,7 +1475,7 @@ void Explosion4::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp3C4'
+#if 0 // DRAFT: undefined identifier 'unk0'
 void Explosion4::Update() {
     s8 sp406;
     s8 sp405;
@@ -1715,7 +1715,7 @@ void Explosion4::Update() {
                 sp1B8 = temp_r4_2537->unk20 * (f64) temp_f3_2516;
                 sp1C0 = temp_r4_2537->unk28 * (f64) temp_f3_2516;
                 sp3C0 = sp1C0;
-                unksp3C4 = 1.0f;
+                (*(f32 *) ((u8 *) &sp3C0 + 0x4)) = 1.0f;
                 temp_r4_2537->unk20 = sp1B8;
                 sp3B8 = sp1B8;
                 temp_r4_2537->unk28 = sp3C0;
@@ -1745,7 +1745,7 @@ loop_30:
                             sp1B0 = (f32) sp370 - M2C_FIELD(this, f32 *, 0x70);
                             temp_f1_2645 = 25.0f * this->unk64;
                             sp3B0 = (f64) sp1B0;
-                            if ((((f32) sp3B0 * (f32) sp3B0) + (((f32) sp3A8 * (f32) sp3A8) + (unksp3AC * unksp3AC))) <= (temp_f1_2645 * temp_f1_2645)) {
+                            if ((((f32) sp3B0 * (f32) sp3B0) + (((f32) sp3A8 * (f32) sp3A8) + ((*(f32 *) ((u8 *) &sp3A8 + 0x4)) * (*(f32 *) ((u8 *) &sp3A8 + 0x4))))) <= (temp_f1_2645 * temp_f1_2645)) {
                                 sp3CC = 0;
                                 sp3C8 = 4;
                                 sp3D0 = 0;

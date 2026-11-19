@@ -100,7 +100,7 @@ void EventCamera::CalculateCircleTangent(MKVector3 arg0, MKVector3 arg1, float a
     sp18 = 0.0f;
     sp1C = 0.0f;
     var_f31_77 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (0.0f * 0.0f));
-    unksp4C = 0.0f;
+    (*(f32 *) ((u8 *) &sp40 + 0xc)) = 0.0f;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
     if (var_f31_77 > 0.0f) {
@@ -211,14 +211,14 @@ void EventCamera::CalculateCircleTangent(MKVector3 arg0, MKVector3 arg1, float a
     } else {
         var_f5_286 = 0.0f;
     }
-    temp_f7_293 = unksp4C * var_f5_286;
+    temp_f7_293 = (*(f32 *) ((u8 *) &sp40 + 0xc)) * var_f5_286;
     temp_f8_295 = (f32) sp48 * var_f5_286;
     temp_f6_300 = (f32) sp50 * var_f5_286;
     sp48 = temp_f8_295;
-    unksp4C = temp_f7_293;
+    (*(f32 *) ((u8 *) &sp40 + 0xc)) = temp_f7_293;
     sp50 = temp_f6_300;
     sp5C = 0.0f;
-    M2C_FIELD(arg0, f32 *, 0xE8) = (f32) (temp_f0_220 + (57.29578f * ((temp_f6_300 * (f32) sp40) + ((temp_f8_295 * (f32) sp38) + (temp_f7_293 * unksp3C)))));
+    M2C_FIELD(arg0, f32 *, 0xE8) = (f32) (temp_f0_220 + (57.29578f * ((temp_f6_300 * (f32) sp40) + ((temp_f8_295 * (f32) sp38) + (temp_f7_293 * (*(f32 *) ((u8 *) &sp38 + 0x4)))))));
     sp58 = _table_sinf(0.017453292f * M2C_FIELD(arg0, f32 *, 0xE8));
     temp_f1_322 = _table_sinf(1.5707964f + (0.017453292f * M2C_FIELD(arg0, f32 *, 0xE8)));
     temp_f4_324 = (f32) temp_f1_322;
@@ -862,7 +862,7 @@ void EventCamera::GetTargetStart() {
                         sp90 = temp_f1_1380;
                         sp98 = temp_f0_1381;
                     }
-                    unksp94 += M2C_FIELD(temp_r30_1325, f32 *, 0xEC);
+                    (*(f32 *) ((u8 *) &sp90 + 0x4)) += M2C_FIELD(temp_r30_1325, f32 *, 0xEC);
                 }
             } else {
                 temp_r3_1393 = temp_r3_1348->PropResolver_Resolve((s32) &MKVector3::zero);
@@ -874,7 +874,7 @@ void EventCamera::GetTargetStart() {
                     sp50 = temp_f3_1398;
                     sp58 = temp_f2_1399;
                     sp98 = temp_f2_1399;
-                    unksp94 += M2C_FIELD(temp_r30_1325, f32 *, 0xEC);
+                    (*(f32 *) ((u8 *) &sp90 + 0x4)) += M2C_FIELD(temp_r30_1325, f32 *, 0xEC);
                 }
             }
         } else {
@@ -1753,7 +1753,7 @@ block_149:
             sp770 = M2C_FIELD(this, f64 *, 0x60);
             sp778 = M2C_FIELD(this, f64 *, 0x68);
             if (((u8) this->unkFD == 0) && ((u8) this->unk101 == 0) && (var_r30_1504 != 0)) {
-                unksp774 += this->unkEC;
+                (*(f32 *) ((u8 *) &sp770 + 0x4)) += this->unkEC;
             }
             sp7D0.SetIdentity();
             temp_f0_2930 = this->unk50 - sp770;
@@ -1887,7 +1887,7 @@ void EventCamera::Resolve() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void EventCamera::LoadDone() {
     f64 sp28;
     f64 sp20;
@@ -1907,7 +1907,7 @@ void EventCamera::LoadDone() {
     sp20 = sp10;
     sp18 = M2C_FIELD(this, f32 *, 0x58) - this->unk60.unk8;
     sp28 = (f64) sp18;
-    var_f4_3292 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+    var_f4_3292 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * (*(f32 *) ((u8 *) &sp20 + 0x4))));
     if (var_f4_3292 > 0.0f) {
         temp_f1_3295 = __frsqrte(var_f4_3292);
         temp_f1_3301 = 0.5 * temp_f1_3295 * -(((f64) var_f4_3292 * (temp_f1_3295 * temp_f1_3295)) - 3.0);

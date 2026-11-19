@@ -238,7 +238,7 @@ loop_57:
                     sp1A0 = temp_f0_266;
                     spA8 = (f32) sp148 - arg0.unk8;
                     sp1A8 = (f64) spA8;
-                    var_f0_284 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + (unksp1A4 * unksp1A4));
+                    var_f0_284 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + ((*(f32 *) ((u8 *) &sp198 + 0xc)) * (*(f32 *) ((u8 *) &sp198 + 0xc))));
                     if (var_f0_284 > 0.000001f) {
                         if (var_f0_284 > 0.0f) {
                             temp_f2_290 = __frsqrte(var_f0_284);
@@ -279,7 +279,7 @@ loop_57:
                         var_f0_284 = 0.0f;
                     }
                     sp1A0 = (f32) sp1A0 * var_f4_351;
-                    unksp1A4 *= var_f4_351;
+                    (*(f32 *) ((u8 *) &sp198 + 0xc)) *= var_f4_351;
                     sp1A8 = (f32) sp1A8 * var_f4_351;
                     if (arg3 != 0) {
                         var_r0_368 = 1;
@@ -287,7 +287,7 @@ loop_57:
                         var_r0_368 = var_f0_284 >= (0.5f * this->unkA0);
                     }
                     if ((var_r0_368 != 0) && (var_f0_284 <= this->unkA0) && (var_f0_284 < var_f28_216)) {
-                        temp_f2_396 = (sp1A8 * arg1.unk8) + ((sp1A0 * arg1.unk0) + (unksp1A4 * arg1.unk4));
+                        temp_f2_396 = (sp1A8 * arg1.unk8) + ((sp1A0 * arg1.unk0) + ((*(f32 *) ((u8 *) &sp198 + 0xc)) * arg1.unk4));
                         if (arg3 != 0) {
                             var_r0_400 = temp_f2_396 > 0.2f;
                         } else {
@@ -846,7 +846,7 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp3C'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void EarthBreathFX::DrawSeedBullets() {
     Matrix sp60;
     f32 sp50;
@@ -881,7 +881,7 @@ loop_28:
         if (temp_r3_1691 != NULL) {
             sp38 = M2C_FIELD(temp_r3_1691, f64 *, 0x10);
             sp40 = M2C_FIELD(temp_r3_1691, f64 *, 0x18);
-            var_f4_1552 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
+            var_f4_1552 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp30 + 0xc)) * (*(f32 *) ((u8 *) &sp30 + 0xc))));
             if (var_f4_1552 > 0.000001f) {
                 if (var_f4_1552 > 0.0f) {
                     temp_f1_1558 = __frsqrte(var_f4_1552);
@@ -923,7 +923,7 @@ loop_28:
             }
             var_f26_1625 = var_f4_1552 / 1000.0f;
             sp38 = (f32) sp38 * var_f3_1619;
-            unksp3C *= var_f3_1619;
+            (*(f32 *) ((u8 *) &sp30 + 0xc)) *= var_f3_1619;
             sp40 = (f32) sp40 * var_f3_1619;
             if (var_f26_1625 < 2.0f) {
 

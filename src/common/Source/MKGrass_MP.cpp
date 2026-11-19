@@ -306,7 +306,7 @@ loop_90:
         temp_f0_289 = M2C_FIELD(temp_r27_82, f32 *, 0x34) + temp_f4_278;
         sp50 = (f32) spE0 - M2C_FIELD(&MKGrass_cameraPos, f32 *, 8);
         spB0 = (f64) sp50;
-        if (!((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC))) > (temp_f0_289 * temp_f0_289)) && (sp10->IsVisible(*((MKVector3 *) &spD8), temp_f4_278 * M2C_FIELD(temp_r27_82, f32 *, 0x5C)) != 0)) {
+        if (!((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * (*(f32 *) ((u8 *) &spA8 + 0x4))))) > (temp_f0_289 * temp_f0_289)) && (sp10->IsVisible(*((MKVector3 *) &spD8), temp_f4_278 * M2C_FIELD(temp_r27_82, f32 *, 0x5C)) != 0)) {
             memset(&sp170, 0, 0x90U);
             MKModel_ExploreCalculateVertex(temp_r22_210, 0);
             CalculateGrassVertex(&sp1A0, var_r26_162, temp_r22_210, arg5, arg6, arg7, (MKVector4 *) var_r23_196, (Matrix *) var_r24_184);
@@ -336,7 +336,7 @@ loop_88:
                 sp1C8 = sp1F8;
                 MKModel_ExploreCalculateVertex(temp_r22_210, var_r20_357);
                 var_r19_398 = CalculateGrassVertex(&sp1D0, var_r26_162, temp_r22_210, arg5, arg6, arg7, (MKVector4 *) var_r23_196, (Matrix *) var_r24_184);
-                temp_f1_401 = unksp1D4 - M2C_FIELD(&MKGrass_cameraPos, f32 *, 4);
+                temp_f1_401 = (*(f32 *) ((u8 *) &sp1D0 + 0x4)) - M2C_FIELD(&MKGrass_cameraPos, f32 *, 4);
                 temp_f3_405 = (f32) M2C_FIELD(&sp1D0, f64 *, 0) - *sp238;
                 temp_f4_408 = (f32) sp1D0.unk8 - M2C_FIELD(&MKGrass_cameraPos, f32 *, 8);
                 var_f14_415 = 1.0f - (M2C_FIELD(temp_r27_82, f32 *, 0x808) * (((temp_f4_408 * temp_f4_408) + ((temp_f3_405 * temp_f3_405) + (temp_f1_401 * temp_f1_401))) - M2C_FIELD(temp_r27_82, f32 *, 0x804)));
@@ -347,8 +347,8 @@ loop_88:
                     if (sp10->IsVisible(*((MKVector3 *) &sp1D0), var_r26_162->unk10) != 0) {
                         temp_f5_436 = M2C_BITWISE(f32, sp1A0) - (f32) sp170;
                         temp_f7_438 = (f32) M2C_FIELD(&sp1D0, f64 *, 0) - (f32) sp170;
-                        temp_f6_441 = unksp1A4 - unksp174;
-                        temp_f8_443 = unksp1D4 - unksp174;
+                        temp_f6_441 = (*(f32 *) ((u8 *) &sp1A0 + 0x4)) - (*(f32 *) ((u8 *) &sp170 + 0x4));
+                        temp_f8_443 = (*(f32 *) ((u8 *) &sp1D0 + 0x4)) - (*(f32 *) ((u8 *) &sp170 + 0x4));
                         temp_f4_445 = (f32) sp1A0.unk8 - (f32) sp178;
                         temp_f9_446 = (f32) sp1D0.unk8 - (f32) sp178;
                         if ((u8) M2C_FIELD(temp_r27_82, u8 *, 0x60) == 0) {
@@ -357,11 +357,11 @@ loop_88:
                             sp30 = (temp_f7_438 * temp_f6_441) - (temp_f8_443 * temp_f5_436);
                             sp98 = (f64) sp28;
                             spA0 = (f64) sp30;
-                            temp_f1_467 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C));
+                            temp_f1_467 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + ((*(f32 *) ((u8 *) &sp98 + 0x4)) * (*(f32 *) ((u8 *) &sp98 + 0x4))));
                             if (temp_f1_467 > 0.000001f) {
                                 temp_f0_471 = (f32) __frsqrte(temp_f1_467);
                                 M2C_FIELD(&sp100, f32 *, 0) = (f32) ((f32) sp98 * temp_f0_471);
-                                M2C_FIELD(&sp100, f32 *, 4) = (f32) (unksp9C * temp_f0_471);
+                                M2C_FIELD(&sp100, f32 *, 4) = (f32) ((*(f32 *) ((u8 *) &sp98 + 0x4)) * temp_f0_471);
                                 M2C_FIELD(&sp100, f32 *, 8) = (f32) ((f32) spA0 * temp_f0_471);
                             }
                             sp68.operator*(M2C_FIELD(temp_r27_82, f32 *, 0x54));
@@ -370,11 +370,11 @@ loop_88:
                             sp88 = sp18;
                             sp20 = sp78.unk8 + sp68.unk8;
                             sp90 = (f64) sp20;
-                            temp_f1_506 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C));
+                            temp_f1_506 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))));
                             if (temp_f1_506 > 0.000001f) {
                                 temp_f0_510 = (f32) __frsqrte(temp_f1_506);
                                 M2C_FIELD(&sp100, f32 *, 0) = (f32) ((f32) sp88 * temp_f0_510);
-                                M2C_FIELD(&sp100, f32 *, 4) = (f32) (unksp8C * temp_f0_510);
+                                M2C_FIELD(&sp100, f32 *, 4) = (f32) ((*(f32 *) ((u8 *) &sp88 + 0x4)) * temp_f0_510);
                                 M2C_FIELD(&sp100, f32 *, 8) = (f32) ((f32) sp90 * temp_f0_510);
                             }
                             temp_f4_520 = -sp108;
@@ -394,12 +394,12 @@ loop_88:
                             M2C_FIELD(&sp100, f32 *, 0) = temp_f9_542;
                             temp_f5_547 = sp234->unk4;
                             temp_f8_548 = M2C_FIELD(temp_r27_82, f32 *, 0x4C);
-                            temp_f3_553 = (MKVector3::up.unk0 * unksp194) - (temp_f5_547 * (f32) sp190);
+                            temp_f3_553 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp190 + 0x4))) - (temp_f5_547 * (f32) sp190);
                             temp_f2_554 = sp234->unk8;
                             sp104 = temp_f8_548;
                             temp_f7_559 = M2C_FIELD(temp_r27_82, f32 *, 0x50);
                             temp_f4_560 = (temp_f2_554 * (f32) sp190) - (MKVector3::up.unk0 * (f32) sp198);
-                            temp_f5_561 = (temp_f5_547 * (f32) sp198) - (temp_f2_554 * unksp194);
+                            temp_f5_561 = (temp_f5_547 * (f32) sp198) - (temp_f2_554 * (*(f32 *) ((u8 *) &sp190 + 0x4)));
                             sp108 = temp_f7_559;
                             sp10C = 0.0f;
                             spF0 = temp_f5_561;
@@ -463,7 +463,7 @@ loop_86:
                             temp_f25_709 = temp_f21_669 * sp104;
                             temp_f12_712 = (spF4 * temp_f14_680) + (sp114 * temp_f15_678);
                             temp_f9_714 = (temp_f16_661 * (f32) M2C_FIELD(&sp1D0, f64 *, 0)) + ((temp_f18_658 * (f32) sp170) + (temp_f17_659 * M2C_BITWISE(f32, sp1A0)));
-                            temp_f7_715 = (temp_f16_661 * unksp1D4) + ((temp_f18_658 * unksp174) + (temp_f17_659 * unksp1A4));
+                            temp_f7_715 = (temp_f16_661 * (*(f32 *) ((u8 *) &sp1D0 + 0x4))) + ((temp_f18_658 * (*(f32 *) ((u8 *) &sp170 + 0x4))) + (temp_f17_659 * (*(f32 *) ((u8 *) &sp1A0 + 0x4))));
                             temp_f5_716 = (temp_f16_661 * (f32) sp1D0.unk8) + ((temp_f18_658 * (f32) sp178) + (temp_f17_659 * (f32) sp1A0.unk8));
                             var_ctr_717 = 4;
                             do {
@@ -547,7 +547,7 @@ loop_86:
                             }
                             pBlob->unk40 = var_f6_866;
                             var_f6_883 = 1.0f;
-                            temp_f0_886 = M2C_FIELD(temp_r3_826, f32 *, 0x5A4) * ((temp_f16_661 * unksp1E4) + ((temp_f18_658 * unksp184) + (temp_f17_659 * unksp1B4)));
+                            temp_f0_886 = M2C_FIELD(temp_r3_826, f32 *, 0x5A4) * ((temp_f16_661 * (*(f32 *) ((u8 *) &sp1D0 + 0x14))) + ((temp_f18_658 * (*(f32 *) ((u8 *) &sp180 + 0x4))) + (temp_f17_659 * (*(f32 *) ((u8 *) &sp1A0 + 0x14)))));
                             if (var_f6_883 < temp_f0_886) {
 
                             } else {
@@ -802,7 +802,7 @@ loop_36:
                             sp98 -= M2C_FIELD(temp_r3_1274, f64 *, 0);
                             temp_f3_1284 = (f32) spA0 - (f32) M2C_FIELD(temp_r3_1274, f64 *, 8);
                             spA0 = temp_f3_1284;
-                            var_f4_1291 = (temp_f3_1284 * temp_f3_1284) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C));
+                            var_f4_1291 = (temp_f3_1284 * temp_f3_1284) + (((f32) sp98 * (f32) sp98) + ((*(f32 *) ((u8 *) &sp98 + 0x4)) * (*(f32 *) ((u8 *) &sp98 + 0x4))));
                             if (var_f4_1291 > 0.0f) {
                                 temp_f1_1294 = __frsqrte(var_f4_1291);
                                 temp_f1_1300 = 0.5 * temp_f1_1294 * -(((f64) var_f4_1291 * (temp_f1_1294 * temp_f1_1294)) - 3.0);
@@ -864,7 +864,7 @@ loop_36:
                         sp48 = temp_f0_1400;
                         sp40 = (f32) spC0 + (f32) spB0;
                         sp50 = (f64) sp40;
-                        var_f4_1416 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C));
+                        var_f4_1416 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))));
                         if (var_f4_1416 > 0.0f) {
                             temp_f1_1419 = __frsqrte(var_f4_1416);
                             temp_f1_1425 = 0.5 * temp_f1_1419 * -(((f64) var_f4_1416 * (temp_f1_1419 * temp_f1_1419)) - 3.0);

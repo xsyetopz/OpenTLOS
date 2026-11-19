@@ -496,7 +496,7 @@ void SteamTrain::StateRamUpdate() {
                     sp138.unk4C.unk4 = temp_f3_566;
                     sp138.unk4C.unk8 = 0.0f;
                     sp138.unk38 = (f32) spF8;
-                    sp138.unk3C = unkspFC;
+                    sp138.unk3C = (*(f32 *) ((u8 *) &spF8 + 0x4));
                     sp138.unk40 = (f32) sp100;
                     sp138.__vptr = 0.0f;
                     Normalise(spD8);
@@ -511,15 +511,15 @@ void SteamTrain::StateRamUpdate() {
                     spF0 = (f64) sp50;
                     spE8 = (f64) sp48;
                     sp138.unk28 = (f32) spE8;
-                    sp138.unk2C = unkspEC;
+                    sp138.unk2C = (*(f32 *) ((u8 *) &spE8 + 0x4));
                     sp138.unk30 = (f32) spF0;
-                    sp40 = (sp138.unk48 * unkspEC) - (temp_f9_607 * (f32) spE8);
-                    sp38 = (temp_f9_607 * (f32) spF0) - (temp_f7_605 * unkspEC);
+                    sp40 = (sp138.unk48 * (*(f32 *) ((u8 *) &spE8 + 0x4))) - (temp_f9_607 * (f32) spE8);
+                    sp38 = (temp_f9_607 * (f32) spF0) - (temp_f7_605 * (*(f32 *) ((u8 *) &spE8 + 0x4)));
                     sp3C = (temp_f7_605 * (f32) spE8) - (sp138.unk48 * (f32) spF0);
                     spD0 = (f64) sp40;
                     spC8 = (f64) sp38;
                     sp138.unk38 = (f32) spC8;
-                    sp138.unk3C = unkspCC;
+                    sp138.unk3C = (*(f32 *) ((u8 *) &spC8 + 0x4));
                     sp138.unk40 = (f32) spD0;
                     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp138.unk28));
                     if (M2C_BITWISE(u32, this->unk38C) != 0U) {
@@ -637,7 +637,7 @@ void SteamTrain::StateChaseUpdate() {
         ((TrainTrack *) &sp108)->GetTrackZAxis(temp_r3_768, this->unk10C);
         sp118 = sp108;
         sp120 = sp110;
-        if (!((((f32) sp120 * (f32) sp120) + (((f32) sp118 * (f32) sp118) + (unksp11C * unksp11C))) < 0.0001f)) {
+        if (!((((f32) sp120 * (f32) sp120) + (((f32) sp118 * (f32) sp118) + ((*(f32 *) ((u8 *) &sp118 + 0x4)) * (*(f32 *) ((u8 *) &sp118 + 0x4))))) < 0.0001f)) {
             temp_r3_793 = checked_cast<TrainChaseSpyro *, MKProp>(this->unk128->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
             if (temp_r3_793 != NULL) {
                 temp_f1_799 = M2C_FIELD(temp_r3_793, f32 *, 0xE0) - this->unk10C;
@@ -670,8 +670,8 @@ void SteamTrain::StateChaseUpdate() {
                     sp16C = 1.0f;
                     ((TrainTrack *) &spE8)->GetTrackXAxis(temp_r3_768, this->unk10C);
                     sp130 = spE8;
-                    sp60 = ((f32) sp118 * spEC) - (unksp11C * spE8);
-                    sp58 = (unksp11C * spF0) - ((f32) sp120 * spEC);
+                    sp60 = ((f32) sp118 * spEC) - ((*(f32 *) ((u8 *) &sp118 + 0x4)) * spE8);
+                    sp58 = ((*(f32 *) ((u8 *) &sp118 + 0x4)) * spF0) - ((f32) sp120 * spEC);
                     sp5C = ((f32) sp120 * spE8) - ((f32) sp118 * spF0);
                     spE0 = (f64) sp60;
                     spD8 = (f64) sp58;
@@ -679,11 +679,11 @@ void SteamTrain::StateChaseUpdate() {
                     sp138 = spF0;
                     sp13C = 0.0f;
                     sp150 = (f32) sp118;
-                    sp154 = unksp11C;
+                    sp154 = (*(f32 *) ((u8 *) &sp118 + 0x4));
                     sp158 = (f32) sp120;
                     sp15C = 0.0f;
                     sp140 = (f32) spD8;
-                    sp144 = unkspDC;
+                    sp144 = (*(f32 *) ((u8 *) &spD8 + 0x4));
                     sp148 = (f32) spE0;
                     sp14C = 0.0f;
                     Normalise(spB8);
@@ -696,15 +696,15 @@ void SteamTrain::StateChaseUpdate() {
                     spD0 = (f64) sp50;
                     spC8 = (f64) sp48;
                     sp130 = (f32) spC8;
-                    sp134 = unkspCC;
+                    sp134 = (*(f32 *) ((u8 *) &spC8 + 0x4));
                     sp138 = (f32) spD0;
-                    sp40 = (sp150 * unkspCC) - (sp154 * (f32) spC8);
-                    sp38 = (sp154 * (f32) spD0) - (sp158 * unkspCC);
+                    sp40 = (sp150 * (*(f32 *) ((u8 *) &spC8 + 0x4))) - (sp154 * (f32) spC8);
+                    sp38 = (sp154 * (f32) spD0) - (sp158 * (*(f32 *) ((u8 *) &spC8 + 0x4)));
                     sp3C = (sp158 * (f32) spC8) - (sp150 * (f32) spD0);
                     spB0 = (f64) sp40;
                     spA8 = (f64) sp38;
                     sp140 = (f32) spA8;
-                    sp144 = unkspAC;
+                    sp144 = (*(f32 *) ((u8 *) &spA8 + 0x4));
                     sp148 = (f32) spB0;
                     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp130));
                     if (M2C_BITWISE(u32, this->unk38C) != 0U) {
@@ -849,7 +849,7 @@ void SteamTrain::StateFallBackUpdate() {
         sp138 = spE8;
         sp13C = 0.0f;
         sp120 = (f32) spD0;
-        sp124 = unkspD4;
+        sp124 = (*(f32 *) ((u8 *) &spD0 + 0x4));
         sp128 = (f32) spD8;
         sp12C = 0.0f;
         Normalise(spB0);
@@ -862,15 +862,15 @@ void SteamTrain::StateFallBackUpdate() {
         spC8 = (f64) sp48;
         spC0 = (f64) sp40;
         sp110 = (f32) spC0;
-        sp114 = unkspC4;
+        sp114 = (*(f32 *) ((u8 *) &spC0 + 0x4));
         sp118 = (f32) spC8;
-        sp38 = (sp130 * unkspC4) - (sp134 * (f32) spC0);
-        sp30 = (sp134 * (f32) spC8) - (sp138 * unkspC4);
+        sp38 = (sp130 * (*(f32 *) ((u8 *) &spC0 + 0x4))) - (sp134 * (f32) spC0);
+        sp30 = (sp134 * (f32) spC8) - (sp138 * (*(f32 *) ((u8 *) &spC0 + 0x4)));
         sp34 = (sp138 * (f32) spC0) - (sp130 * (f32) spC8);
         spA8 = (f64) sp38;
         spA0 = (f64) sp30;
         sp120 = (f32) spA0;
-        sp124 = unkspA4;
+        sp124 = (*(f32 *) ((u8 *) &spA0 + 0x4));
         sp128 = (f32) spA8;
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp110));
         if (M2C_BITWISE(u32, this->unk38C) != 0U) {
@@ -986,7 +986,7 @@ void SteamTrain::StateFleeUpdate() {
         var_f31_1343 = 1.0f;
         sp118 = sp108;
         if (((u8) M2C_FIELD(this, u8 *, 0x3ED) == 0) && ((u8) M2C_FIELD(this, u8 *, 0x3EE) == 0)) {
-            var_f1_1349 = unksp114;
+            var_f1_1349 = (*(f32 *) ((u8 *) &sp110 + 0x4));
             if (var_f1_1349 < 1.0f) {
 
             } else {
@@ -1066,8 +1066,8 @@ void SteamTrain::StateFleeUpdate() {
             sp15C = 1.0f;
             ((TrainTrack *) &spE0)->GetTrackXAxis(temp_r3_1330, this->unk10C);
             sp120 = spE0;
-            sp58 = ((f32) sp110 * spE4) - (unksp114 * spE0);
-            sp50 = (unksp114 * spE8) - ((f32) sp118 * spE4);
+            sp58 = ((f32) sp110 * spE4) - ((*(f32 *) ((u8 *) &sp110 + 0x4)) * spE0);
+            sp50 = ((*(f32 *) ((u8 *) &sp110 + 0x4)) * spE8) - ((f32) sp118 * spE4);
             sp54 = ((f32) sp118 * spE0) - ((f32) sp110 * spE8);
             spD8 = (f64) sp58;
             spD0 = (f64) sp50;
@@ -1075,11 +1075,11 @@ void SteamTrain::StateFleeUpdate() {
             sp128 = spE8;
             sp12C = 0.0f;
             sp140 = (f32) sp110;
-            sp144 = unksp114;
+            sp144 = (*(f32 *) ((u8 *) &sp110 + 0x4));
             sp148 = (f32) sp118;
             sp14C = 0.0f;
             sp130 = (f32) spD0;
-            sp134 = unkspD4;
+            sp134 = (*(f32 *) ((u8 *) &spD0 + 0x4));
             sp138 = (f32) spD8;
             sp13C = 0.0f;
             Normalise(spB0);
@@ -1092,15 +1092,15 @@ void SteamTrain::StateFleeUpdate() {
             spC8 = (f64) sp48;
             spC0 = (f64) sp40;
             sp120 = (f32) spC0;
-            sp124 = unkspC4;
+            sp124 = (*(f32 *) ((u8 *) &spC0 + 0x4));
             sp128 = (f32) spC8;
-            sp38 = (sp140 * unkspC4) - (sp144 * (f32) spC0);
-            sp30 = (sp144 * (f32) spC8) - (sp148 * unkspC4);
+            sp38 = (sp140 * (*(f32 *) ((u8 *) &spC0 + 0x4))) - (sp144 * (f32) spC0);
+            sp30 = (sp144 * (f32) spC8) - (sp148 * (*(f32 *) ((u8 *) &spC0 + 0x4)));
             sp34 = (sp148 * (f32) spC0) - (sp140 * (f32) spC8);
             spA8 = (f64) sp38;
             spA0 = (f64) sp30;
             sp130 = (f32) spA0;
-            sp134 = unkspA4;
+            sp134 = (*(f32 *) ((u8 *) &spA0 + 0x4));
             sp138 = (f32) spA8;
             MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp120));
             if (M2C_BITWISE(u32, this->unk38C) != 0U) {
@@ -1236,7 +1236,7 @@ block_30:
         sp68 = sp28;
         sp30 = M2C_FIELD(temp_r3_1814, f32 *, 0x18) - (f32) sp60;
         sp70 = (f64) sp30;
-        if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C))) < 1000000.0f) {
+        if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) < 1000000.0f) {
             sp18 = 0.0f;
             sp1C = 500.0f;
             sp20 = 0.0f;
@@ -1518,7 +1518,7 @@ void SteamTrain::Update() {
     temp_r3_2382 = this->unk8;
     sp10 = M2C_FIELD(temp_r3_2382, f64 *, 0x30);
     sp18 = M2C_FIELD(temp_r3_2382, f64 *, 0x38);
-    this->unkD0.unk28 = unksp14;
+    this->unkD0.unk28 = (*(f32 *) ((u8 *) &sp10 + 0x4));
 }
 #endif
 
@@ -2330,10 +2330,10 @@ void UpdateLookAtBone(MKDynamicBone *arg0, void *arg1) {
         sp60 = spE8.unk8 * temp_f31_4044;
         sp100 = (f64) sp60;
         sp1A0 = (f32) spF8;
-        sp1A4 = unkspFC;
+        sp1A4 = (*(f32 *) ((u8 *) &spF8 + 0x4));
         sp1A8 = (f32) sp100;
-        sp20 = ((f32) sp128 * unkspFC) - (unksp12C * (f32) spF8);
-        sp18 = (unksp12C * (f32) sp100) - ((f32) sp130 * unkspFC);
+        sp20 = ((f32) sp128 * (*(f32 *) ((u8 *) &spF8 + 0x4))) - ((*(f32 *) ((u8 *) &sp128 + 0x4)) * (f32) spF8);
+        sp18 = ((*(f32 *) ((u8 *) &sp128 + 0x4)) * (f32) sp100) - ((f32) sp130 * (*(f32 *) ((u8 *) &spF8 + 0x4)));
         sp1C = ((f32) sp130 * (f32) spF8) - ((f32) sp128 * (f32) sp100);
         sp1AC = 0.0f;
         spA8 = (f64) sp18;
@@ -2345,10 +2345,10 @@ void UpdateLookAtBone(MKDynamicBone *arg0, void *arg1) {
         spC8 = (f64) sp48;
         spD0 = (f64) sp50;
         sp1C0 = (f32) spC8;
-        sp1C4 = unkspCC;
+        sp1C4 = (*(f32 *) ((u8 *) &spC8 + 0x4));
         sp1C8 = (f32) spD0;
-        sp40 = ((f32) spC8 * sp1A4) - (unkspCC * sp1A0);
-        sp38 = (unkspCC * sp1A8) - ((f32) spD0 * sp1A4);
+        sp40 = ((f32) spC8 * sp1A4) - ((*(f32 *) ((u8 *) &spC8 + 0x4)) * sp1A0);
+        sp38 = ((*(f32 *) ((u8 *) &spC8 + 0x4)) * sp1A8) - ((f32) spD0 * sp1A4);
         sp3C = ((f32) spD0 * sp1A0) - ((f32) spC8 * sp1A8);
         sp1CC = 0.0f;
         sp88 = (f64) sp38;
@@ -2360,7 +2360,7 @@ void UpdateLookAtBone(MKDynamicBone *arg0, void *arg1) {
         sp1BC = 0.0f;
     }
     sp1D0 = (f32) sp148;
-    sp1D4 = unksp14C;
+    sp1D4 = (*(f32 *) ((u8 *) &sp148 + 0x4));
     sp1D8 = (f32) sp150;
     sp1DC = 1.0f;
     sp160.Multiply(arg0->unk20, &sp260);

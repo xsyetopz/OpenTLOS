@@ -555,12 +555,12 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
             sp90 = -sp1A0;
             sp1A8 = (f64) sp88;
             sp1B0 = (f64) sp90;
-            sp78 = (temp_f7_946 * (f32) sp1B0) - (temp_f6_942 * unksp1AC);
+            sp78 = (temp_f7_946 * (f32) sp1B0) - (temp_f6_942 * (*(f32 *) ((u8 *) &sp1A8 + 0x4)));
             sp7C = (temp_f6_942 * (f32) sp1A8) - (temp_f9_944 * (f32) sp1B0);
-            sp80 = (temp_f9_944 * unksp1AC) - (temp_f7_946 * (f32) sp1A8);
+            sp80 = (temp_f9_944 * (*(f32 *) ((u8 *) &sp1A8 + 0x4))) - (temp_f7_946 * (f32) sp1A8);
             sp1B8 = (f64) sp78;
             sp1C0 = (f64) sp80;
-            var_f4_976 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + (unksp1BC * unksp1BC));
+            var_f4_976 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * (*(f32 *) ((u8 *) &sp1B8 + 0x4))));
             if (var_f4_976 > 1e-12f) {
                 if (var_f4_976 > 0.0f) {
                     temp_f1_982 = __frsqrte(var_f4_976);
@@ -601,7 +601,7 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
             }
             temp_f4_1051 = M2C_BITWISE(f32, sp1E8.unk40.unk8);
             temp_f7_1053 = M2C_BITWISE(f32, sp1E8.unk40.unk4);
-            sp6C = unksp1BC * var_f3_1043;
+            sp6C = (*(f32 *) ((u8 *) &sp1B8 + 0x4)) * var_f3_1043;
             temp_f5_1055 = M2C_BITWISE(f32, sp1E8.unk40);
             sp68 = (f32) sp1B8 * var_f3_1043;
             sp70 = (f32) sp1C0 * var_f3_1043;
@@ -622,7 +622,7 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
             sp250.unk18 = M2C_BITWISE(f32, sp1E8.unk40.unk8);
             sp250.unk1C = 0.0f;
             sp250.unk20 = (f32) sp1E8.unk20;
-            sp250.unk24 = unksp20C;
+            sp250.unk24 = (*(f32 *) ((u8 *) &sp1E8 + 0x24));
             sp250.unk28 = (f32) sp1E8.unk28;
             sp250.unk2C = 0.0f;
             temp_f31_1103 = this->unk14;
@@ -643,10 +643,10 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
             sp30 = (f32) sp240 - (f32) sp190;
             sp1E8.unk18 = (f64) sp30;
             if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp1E8.unk10), 500.0f, &sp290, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18), 2, NULL, (MKCollisionMode) 6) != 0) {
-                unksp1FC = 80.0f + sp290.unk4;
+                (*(f32 *) ((u8 *) &sp1E8 + 0x14)) = 80.0f + sp290.unk4;
             } else {
                 ((AITargetData *) &sp158)->GetPos();
-                unksp1FC = 80.0f + sp15C;
+                (*(f32 *) ((u8 *) &sp1E8 + 0x14)) = 80.0f + sp15C;
             }
             ((AITargetData *) &this->unkC->unk870.unk40)->Set(*((MKVector3 *) &sp1E8.unk10), 1U);
             temp_r4_1171 = this->unkC;
@@ -861,7 +861,7 @@ u8 EnemyGoal_FlyToTarget::Update() {
                     temp_f28_1553 = _table_sinf((1.570796f * (this->unk14->GetDist() / temp_f30_1540)) + 1.5707964f);
                     sp138.GetDir();
                     temp_r3_1557 = this->unkC;
-                    if (((temp_r3_1557->unkC8 * sp138.unk8) + ((temp_r3_1557->unkC0 * M2C_BITWISE(f32, sp138)) + (temp_r3_1557->unkC4 * unksp13C))) < temp_f28_1553) {
+                    if (((temp_r3_1557->unkC8 * sp138.unk8) + ((temp_r3_1557->unkC0 * M2C_BITWISE(f32, sp138)) + (temp_r3_1557->unkC4 * (*(f32 *) ((u8 *) &sp138 + 0x4))))) < temp_f28_1553) {
                         ((AITargetData *) &sp128)->GetPos();
                         sp18 = sp128 - this->unk18;
                         sp88 = sp18;
@@ -869,7 +869,7 @@ u8 EnemyGoal_FlyToTarget::Update() {
                         sp90 = (f64) sp20;
                         sp98 = sp18;
                         spA0 = (f64) sp20;
-                        if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) < 100.0f) {
+                        if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))))) < 100.0f) {
                             temp_r5_1598 = this->unkC;
                             temp_f6_1601 = temp_r5_1598->unkD4;
                             temp_f5_1602 = temp_r5_1598->unkC0;
@@ -883,7 +883,7 @@ u8 EnemyGoal_FlyToTarget::Update() {
                             sp138.unk28 = (f64) sp80;
                             sp138.unk20 = (f64) sp78;
                             ((AITargetData *) &sp118)->GetDir();
-                            spC = ((f32) sp138.unk28 * sp120) + (((f32) sp138.unk20 * sp118) + (unksp15C * sp11C));
+                            spC = ((f32) sp138.unk28 * sp120) + (((f32) sp138.unk20 * sp118) + ((*(f32 *) ((u8 *) &sp138 + 0x24)) * sp11C));
                             sp10 = (M2C_BITWISE(s32, spC) & 0x80000000) | 0x3F800000;
                             temp_f29_1639 = -1.0f * M2C_BITWISE(f32, sp10);
                             ((AITargetData *) &spE8)->GetDir();
@@ -1183,7 +1183,7 @@ void EnemyGoal_FlyLand::Activate() {
     temp_r4_2176->unk8C0.Update(*((MKVector3 *) &temp_r4_2176->unk588));
     sp70.GetPos();
     sp70.unk40 = M2C_BITWISE(f32, sp70);
-    sp70.unk40.unk4 = unksp74;
+    sp70.unk40.unk4 = (*(f32 *) ((u8 *) &sp70 + 0x4));
     sp70.unk40.unk8 = sp70.unk8;
     sp70.unk40.unkC = 1.0f;
     temp_r3_2194 = this->unkC;
@@ -1197,7 +1197,7 @@ void EnemyGoal_FlyLand::Activate() {
     temp_f2_2202 = temp_r3_2194->unkD0;
     sp70.unk20 = temp_f2_2202;
     temp_f4_2205 = temp_r3_2194->unkD4;
-    unksp94 = temp_f4_2205;
+    (*(f32 *) ((u8 *) &sp70 + 0x24)) = temp_f4_2205;
     temp_f3_2208 = temp_r3_2194->unkD8;
     sp70.unk28 = temp_f3_2208;
     sp18 = (temp_f2_2202 * temp_f7_2197) - (temp_f4_2205 * temp_f8_2195);
@@ -1205,12 +1205,12 @@ void EnemyGoal_FlyLand::Activate() {
     sp10 = (temp_f4_2205 * temp_f6_2199) - (temp_f3_2208 * temp_f7_2197);
     sp68 = (f64) sp18;
     sp60 = (f64) sp10;
-    unksp9C = 0.0f;
+    (*(f32 *) ((u8 *) &sp70 + 0x2c)) = 0.0f;
     sp70.unk10 = (f32) sp60;
-    unksp84 = unksp64;
+    (*(f32 *) ((u8 *) &sp70 + 0x14)) = (*(f32 *) ((u8 *) &sp60 + 0x4));
     sp70.unk18 = (f32) sp68;
-    unksp8C = 0.0f;
-    temp_r3_2194->Teleport(&sp70.unk10, unksp64, (f32) sp60, temp_f3_2208, temp_f4_2205, 0.0f, temp_f6_2199, temp_f7_2197, temp_f8_2195);
+    (*(f32 *) ((u8 *) &sp70 + 0x1c)) = 0.0f;
+    temp_r3_2194->Teleport(&sp70.unk10, (*(f32 *) ((u8 *) &sp60 + 0x4)), (f32) sp60, temp_f3_2208, temp_f4_2205, 0.0f, temp_f6_2199, temp_f7_2197, temp_f8_2195);
     temp_r3_2233 = this->unkC;
     temp_f0_2237 = (f64) M2C_FIELD(temp_r3_2233, f32 *, 0xC0) * 5.122630465e-315;
     sp30 = temp_f0_2237;

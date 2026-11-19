@@ -407,7 +407,7 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
         sp50 = temp_f3_625 + (f32) sp90;
         spA0 = (f64) sp50;
         if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp98), 300.0f, &spD8, 0x04000000, 2, NULL, (MKCollisionMode) 7) != 0) {
-            unkspCC = spD8.unk4;
+            (*(f32 *) ((u8 *) &spC8 + 0x4)) = spD8.unk4;
             if ((f32) fabs(spD8.unk4 - this->unkC->unk588.unk0) > 200.0f) {
                 return 0U;
             }

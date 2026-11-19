@@ -291,15 +291,15 @@ void ElementalWall::StateEWOnUpdate() {
                 sp148 = sp28;
             } else {
                 sp140 = 0.0f;
-                unksp144 = 0.0f;
+                (*(f32 *) ((u8 *) &sp13C + 0x8)) = 0.0f;
                 sp148 = 0.0f;
             }
             sp161 = 0;
             gb.unk0->Message(&sp110);
             return;
         }
-        if ((var_f30_371 <= (1.5f * gb.unk0->GetCollideRadius())) && (unksp84 > -((2.0f * gb.unk0->GetCollideRadius()) - unksp74))) {
-            var_f1_555 = unksp84 - unksp74;
+        if ((var_f30_371 <= (1.5f * gb.unk0->GetCollideRadius())) && ((*(f32 *) ((u8 *) &sp80 + 0x4)) > -((2.0f * gb.unk0->GetCollideRadius()) - (*(f32 *) ((u8 *) &sp64 + 0x10))))) {
+            var_f1_555 = (*(f32 *) ((u8 *) &sp80 + 0x4)) - (*(f32 *) ((u8 *) &sp64 + 0x10));
             if (var_f1_555 < 0.0f) {
                 var_f1_555 = -var_f1_555;
             }
@@ -325,7 +325,7 @@ void ElementalWall::StateEWOnUpdate() {
                     spF0 = sp18;
                 } else {
                     spE8 = 0.0f;
-                    unkspEC = 0.0f;
+                    (*(f32 *) ((u8 *) &spE4 + 0x8)) = 0.0f;
                     spF0 = 0.0f;
                 }
                 sp109 = 0;
@@ -609,7 +609,7 @@ loop_3:
             sp88.GetMeasure(temp_f1_1238, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             spA8 = M2C_BITWISE(f64, sp88);
             spB0 = (f64) sp88.unk8;
-            unkspAC += this->unk110 * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            (*(f32 *) ((u8 *) &spA8 + 0x4)) += this->unk110 * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
             KDRand_UnitVector();
             sp18 = sp68 * 5.60222949e-315;
             sp78 = sp18;
@@ -626,7 +626,7 @@ loop_3:
         ((KDUniformSpline *) &sp58)->GetMeasure(temp_f1_1292, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         spA8 = sp58;
         spB0 = sp60;
-        unkspAC += this->unk10C * (this->unk118 * (f32) (s32) ((f32) this->unk108 * MKRand_Float(&gViewSeed, 0.0f, 1.0f)));
+        (*(f32 *) ((u8 *) &spA8 + 0x4)) += this->unk10C * (this->unk118 * (f32) (s32) ((f32) this->unk108 * MKRand_Float(&gViewSeed, 0.0f, 1.0f)));
         KDRand_UnitVector();
         sp28 = 1.0f;
         sp2C = 0.0f;
@@ -1519,7 +1519,7 @@ loop_7:
                 sp118 = (f64) sp38;
                 sp100 = sp30;
                 sp108 = (f64) sp38;
-                unksp114 += this->unk10C * ((f32) var_r30_2904 * this->unk118);
+                (*(f32 *) ((u8 *) &sp110 + 0x4)) += this->unk10C * ((f32) var_r30_2904 * this->unk118);
             } else {
                 KDRand_UnitVector();
                 sp90.operator*(20.0f);
@@ -1536,9 +1536,9 @@ loop_7:
                 sp118 = (f64) sp28;
                 spA0.unk30 = sp20;
                 spA0.unk38 = (f64) sp28;
-                unksp114 += this->unk10C * ((f32) var_r30_2904 * this->unk118);
+                (*(f32 *) ((u8 *) &sp110 + 0x4)) += this->unk10C * ((f32) var_r30_2904 * this->unk118);
             }
-            unksp114 += 20.0f;
+            (*(f32 *) ((u8 *) &sp110 + 0x4)) += 20.0f;
             sp50 = 1.0f;
             sp54 = 0.0f;
             sp58 = 0.2f;
@@ -1549,7 +1549,7 @@ loop_7:
             MKSetColorV(*((MKVector4 *) &sp70));
             MKSetTexCoord1F(temp_f24_3063, 0.95f);
             MKSetPositionV(*((MKVector3 *) &sp110));
-            unksp114 += 10.0f;
+            (*(f32 *) ((u8 *) &sp110 + 0x4)) += 10.0f;
             MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
             sp40 = 1.0f;
             sp44 = 0.0f;

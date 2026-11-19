@@ -125,7 +125,7 @@ void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
         spA0 = temp_f26_91;
         sp128 = (f64) sp98;
         sp130 = (f64) spA0;
-        var_f4_110 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + (unksp12C * unksp12C));
+        var_f4_110 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + ((*(f32 *) ((u8 *) &sp120 + 0xc)) * (*(f32 *) ((u8 *) &sp120 + 0xc))));
         if (var_f4_110 > 0.000001f) {
             if (var_f4_110 > 0.0f) {
                 temp_f1_115 = __frsqrte(var_f4_110);
@@ -164,7 +164,7 @@ void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
         }
         temp_f0_184 = (f32) sp130 * var_f27_84;
         sp128 = (f32) sp128 * var_f27_84;
-        unksp12C *= var_f27_84;
+        (*(f32 *) ((u8 *) &sp120 + 0xc)) *= var_f27_84;
         sp130 = temp_f0_184;
         sp88 = (f64) sp128 * 5.620037986e-315;
         sp90 = temp_f0_184 * 410.0f;
@@ -412,7 +412,7 @@ void LiquidFX::Deinit() {
     ((KDSpline *) &this->unk3F48)->Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspB04'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void LiquidFX::Draw() {
     f64 sp3F50;
     f64 sp3F48;
@@ -909,7 +909,7 @@ void LiquidFX::Draw() {
     spB08 = (f64) sp498;
     sp9D0.operator*(35.0f);
     sp40 = -(f32) spB00;
-    sp44 = -unkspB04;
+    sp44 = -(*(f32 *) ((u8 *) &spB00 + 0x4));
     sp48 = -(f32) spB08;
     sp9E0 = (f64) sp40;
     sp9E8 = (f64) sp48;
@@ -924,7 +924,7 @@ void LiquidFX::Draw() {
     sp9B0.operator*(35.0f);
     sp220 = sp9B0 + sp9A0;
     sp30 = -(f32) spB10;
-    sp34 = -unkspB14;
+    sp34 = -(*(f32 *) ((u8 *) &spB10 + 0x4));
     sp38 = -(f32) spB18;
     sp228 = sp9B0.unk8 + sp9A0.unk8;
     sp9C0 = sp220;
@@ -937,7 +937,7 @@ void LiquidFX::Draw() {
     sp980.operator*(35.0f);
     sp210 = sp980 + sp970;
     sp20 = -(f32) spB10;
-    sp24 = -unkspB14;
+    sp24 = -(*(f32 *) ((u8 *) &spB10 + 0x4));
     sp28 = -(f32) spB18;
     sp218 = sp980.unk8 + sp970.unk8;
     sp990 = sp210;
@@ -948,7 +948,7 @@ void LiquidFX::Draw() {
     sp918 = (f64) sp28;
     sp920.operator*(35.0f);
     sp10 = -(f32) spB00;
-    sp14 = -unkspB04;
+    sp14 = -(*(f32 *) ((u8 *) &spB00 + 0x4));
     sp18 = -(f32) spB08;
     sp930 = (f64) sp10;
     sp938 = (f64) sp18;
@@ -984,7 +984,7 @@ loop_2:
                         sp488 = M2C_FIELD(temp_r20_913, f32 *, 0xD0) - M2C_FIELD(temp_r3_928, f32 *, 0xD0);
                         temp_f1_946 = 90.0f * M2C_FIELD(temp_r20_913, f32 *, 0x100);
                         sp908 = (f64) sp488;
-                        if ((((f32) sp908 * (f32) sp908) + (((f32) sp900 * (f32) sp900) + (unksp904 * unksp904))) < (temp_f1_946 * temp_f1_946)) {
+                        if ((((f32) sp908 * (f32) sp908) + (((f32) sp900 * (f32) sp900) + ((*(f32 *) ((u8 *) &sp900 + 0x4)) * (*(f32 *) ((u8 *) &sp900 + 0x4))))) < (temp_f1_946 * temp_f1_946)) {
                             var_r5_925 = 1;
                             var_r18_912 = 1;
                         } else {
@@ -1046,7 +1046,7 @@ loop_2:
                     spAE0 = M2C_FIELD(temp_r3_1081, f64 *, 0);
                     spAE8 = M2C_FIELD(temp_r3_1081, f64 *, 8);
                     sp3F38 = (f64) (0.05f * _table_sinf((f32) spAF8));
-                    sp3F40 = (f64) (0.05f * _table_sinf(unkspAF4));
+                    sp3F40 = (f64) (0.05f * _table_sinf((*(f32 *) ((u8 *) &spAF0 + 0x4))));
                     MKVector(0.05f * _table_sinf((f32) spAF0), (f32) sp3F40, (f32) sp3F38);
                     temp_r3_1103 = &spCE0 + temp_r16_1073;
                     sp1F0 = M2C_FIELD(temp_r3_1103, f64 *, 0) + sp8E0;
@@ -1056,7 +1056,7 @@ loop_2:
                     sp8F8 = (f64) sp1F8;
                     spAF8 = (f64) sp1F8;
                     sp3F48 = (f64) (0.05f * _table_sinf((f32) spAE8));
-                    sp3F50 = (f64) (0.05f * _table_sinf(unkspAE4));
+                    sp3F50 = (f64) (0.05f * _table_sinf((*(f32 *) ((u8 *) &spAE0 + 0x4))));
                     MKVector(0.05f * _table_sinf((f32) spAE0), (f32) sp3F50, (f32) sp3F48);
                     temp_r3_1135 = &spCE0 + temp_r19_1079;
                     sp1E0 = M2C_FIELD(temp_r3_1135, f64 *, 0) + sp8C0;
@@ -1103,7 +1103,7 @@ loop_2:
                     sp1C0 = 0.0f;
                     sp1C4 = 1.0f;
                     spBE0.unk30 = (f32) spAD0;
-                    spBE0.unk34 = unkspAD4;
+                    spBE0.unk34 = (*(f32 *) ((u8 *) &spAD0 + 0x4));
                     spBE0.unk38 = (f32) spAD8;
                     spBE0.unk3C = 1.0f;
                     sp860 = (f64) sp1C0;
@@ -1120,7 +1120,7 @@ loop_2:
                     var_r16_1263 = 0;
                     var_r30_1265 = 0;
                     spBA0.unk30 = (f32) spAB0;
-                    spBA0.unk34 = unkspAB4;
+                    spBA0.unk34 = (*(f32 *) ((u8 *) &spAB0 + 0x4));
                     spBA0.unk38 = (f32) spAB8;
                     spBA0.unk3C = 1.0f;
 loop_39:
@@ -1230,7 +1230,7 @@ loop_39:
                         spA60 = M2C_FIELD(temp_r20_913, f64 *, 0xE8);
                         spA68 = M2C_FIELD(temp_r20_913, f64 *, 0xF0);
                         spA60 = (0.1f * _table_sinf((f32) M2C_FIELD(temp_r20_913, f64 *, 0x108))) + (f32) spA60;
-                        unkspA64 += 0.1f * _table_sinf(M2C_FIELD(temp_r20_913, f32 *, 0x10C));
+                        (*(f32 *) ((u8 *) &spA48 + 0x1c)) += 0.1f * _table_sinf(M2C_FIELD(temp_r20_913, f32 *, 0x10C));
                         temp_f0_1509 = (0.1f * _table_sinf((f32) M2C_FIELD(temp_r20_913, f64 *, 0x110))) + (f32) spA68;
                         spA68 = temp_f0_1509;
                         temp_f1_1512 = spA60 * 5.271833295e-315;
@@ -1315,7 +1315,7 @@ loop_62:
                         sp408 = M2C_FIELD(temp_r14_1650, f32 *, 0xD0) - M2C_FIELD(temp_r3_1665, f32 *, 0xD0);
                         temp_f1_1683 = 90.0f * M2C_FIELD(temp_r14_1650, f32 *, 0x100);
                         sp7D8 = (f64) sp408;
-                        if ((((f32) sp7D8 * (f32) sp7D8) + (((f32) sp7D0 * (f32) sp7D0) + (unksp7D4 * unksp7D4))) < (temp_f1_1683 * temp_f1_1683)) {
+                        if ((((f32) sp7D8 * (f32) sp7D8) + (((f32) sp7D0 * (f32) sp7D0) + ((*(f32 *) ((u8 *) &sp7D0 + 0x4)) * (*(f32 *) ((u8 *) &sp7D0 + 0x4))))) < (temp_f1_1683 * temp_f1_1683)) {
                             var_r5_1662 = 1;
                         } else {
                             var_r5_1662 = 0;
@@ -1342,18 +1342,18 @@ loop_62:
                 sp174 = 1.0f;
                 sp778 = (f64) sp178;
                 sp770 = (f64) sp170;
-                sp160 = (unksp774 * (f32) spA48) - ((f32) sp778 * unkspA44);
+                sp160 = ((*(f32 *) ((u8 *) &sp770 + 0x4)) * (f32) spA48) - ((f32) sp778 * (*(f32 *) ((u8 *) &spA40 + 0x4)));
                 sp164 = ((f32) sp778 * (f32) spA40) - ((f32) sp770 * (f32) spA48);
-                sp168 = ((f32) sp770 * unkspA44) - (unksp774 * (f32) spA40);
+                sp168 = ((f32) sp770 * (*(f32 *) ((u8 *) &spA40 + 0x4))) - ((*(f32 *) ((u8 *) &sp770 + 0x4)) * (f32) spA40);
                 sp780 = (f64) sp160;
                 sp788 = (f64) sp168;
                 Normalise(sp790);
                 spA20 = M2C_BITWISE(f64, sp790);
                 spA28 = (f64) sp790.unk8;
                 var_f8_1779 = M2C_FIELD(temp_r14_1650, f32 *, 0x14C);
-                sp158 = ((f32) spA40 * unkspA24) - (unkspA44 * (f32) spA20);
+                sp158 = ((f32) spA40 * (*(f32 *) ((u8 *) &spA20 + 0x4))) - ((*(f32 *) ((u8 *) &spA40 + 0x4)) * (f32) spA20);
                 sp154 = ((f32) spA48 * (f32) spA20) - ((f32) spA40 * (f32) spA28);
-                sp150 = (unkspA44 * (f32) spA28) - ((f32) spA48 * unkspA24);
+                sp150 = ((*(f32 *) ((u8 *) &spA40 + 0x4)) * (f32) spA28) - ((f32) spA48 * (*(f32 *) ((u8 *) &spA20 + 0x4)));
                 sp768 = (f64) sp158;
                 sp760 = (f64) sp150;
                 spA30 = (f64) sp150;
@@ -1373,10 +1373,10 @@ loop_62:
                 sp3F0 = 40.0f;
                 spA50 = temp_f4_1808;
                 sp3F4 = 300.0f * temp_f4_1808;
-                unkspA54 = temp_f4_1808;
+                (*(f32 *) ((u8 *) &spA48 + 0xc)) = temp_f4_1808;
                 sp750 = (f64) sp3F0;
                 spA58 = temp_f4_1808;
-                unkspA5C = 1.0f;
+                (*(f32 *) ((u8 *) &spA48 + 0x14)) = 1.0f;
                 sp758 = (f64) sp3F8;
                 temp_f0_1827 = (f64) sp3F0 * M2C_FIELD(temp_r14_1650, f64 *, 0xE8);
                 sp3E0 = temp_f0_1827;
@@ -1389,7 +1389,7 @@ loop_62:
                 sp3F2C = (f32) spA18;
                 sp140 = spA40 * (f64) (f32) (f32) spA18;
                 sp3D0 = -(f32) spA20;
-                sp3D4 = -unkspA24;
+                sp3D4 = -(*(f32 *) ((u8 *) &spA20 + 0x4));
                 sp148 = (f32) spA48 * (f32) spA18;
                 sp3D8 = -(f32) spA28;
                 sp3F1C = (f32) spA10;
@@ -1418,18 +1418,18 @@ loop_62:
                 sp3F24 = (f32) spA18;
                 sp120 = spA40 * (f64) (f32) (f32) spA18;
                 sp380 = -(f32) spA30;
-                sp384 = -unkspA34;
+                sp384 = -(*(f32 *) ((u8 *) &spA30 + 0x4));
                 sp128 = (f32) spA48 * (f32) spA18;
                 sp388 = -(f32) spA38;
-                sp3F28 = unkspA14;
+                sp3F28 = (*(f32 *) ((u8 *) &spA10 + 0x4));
                 sp690 = (f64) sp380;
                 sp680 = sp120;
                 sp688 = (f64) sp128;
                 sp698 = (f64) sp388;
-                sp110 = (f64) sp380 * (f64) unkspA14;
+                sp110 = (f64) sp380 * (f64) (*(f32 *) ((u8 *) &spA10 + 0x4));
                 sp3A0 = -(f32) spA20;
-                sp3A4 = -unkspA24;
-                sp118 = (f32) sp698 * unkspA14;
+                sp3A4 = -(*(f32 *) ((u8 *) &spA20 + 0x4));
+                sp118 = (f32) sp698 * (*(f32 *) ((u8 *) &spA10 + 0x4));
                 sp3A8 = -(f32) spA28;
                 sp3F18 = (f32) spA10;
                 sp6B0 = (f64) sp3A0;
@@ -1460,7 +1460,7 @@ loop_62:
                 MKSetTexCoord1F(0.0f, 0.0f);
                 sp350 = -(f32) spA40;
                 sp3F20 = (f32) spA18;
-                sp354 = -unkspA44;
+                sp354 = -(*(f32 *) ((u8 *) &spA40 + 0x4));
                 sp358 = -(f32) spA48;
                 sp650 = (f64) sp350;
                 sp658 = (f64) sp358;
@@ -1478,23 +1478,23 @@ loop_62:
                 MKSetColorV(*((MKVector4 *) &spA50));
                 MKSetTexCoord1F(0.0f, 1.0f);
                 sp310 = -(f32) spA40;
-                sp314 = -unkspA44;
+                sp314 = -(*(f32 *) ((u8 *) &spA40 + 0x4));
                 sp318 = -(f32) spA48;
                 sp5F0 = (f64) sp310;
                 sp5F8 = (f64) sp318;
                 spE0 = sp5F0 * (f64) (f32) spA18;
                 sp330 = -(f32) spA30;
-                sp334 = -unkspA34;
+                sp334 = -(*(f32 *) ((u8 *) &spA30 + 0x4));
                 spE8 = (f32) sp5F8 * (f32) spA18;
                 sp338 = -(f32) spA38;
                 sp610 = (f64) sp330;
                 sp600 = spE0;
                 sp608 = (f64) spE8;
                 sp618 = (f64) sp338;
-                temp_f0_2120 = sp610 * (f64) unkspA14;
+                temp_f0_2120 = sp610 * (f64) (*(f32 *) ((u8 *) &spA10 + 0x4));
                 spD0 = temp_f0_2120;
                 sp620 = temp_f0_2120;
-                spD8 = (f32) sp618 * unkspA14;
+                spD8 = (f32) sp618 * (*(f32 *) ((u8 *) &spA10 + 0x4));
                 sp628 = (f64) spD8;
                 temp_f0_2131 = *temp_r17_1881 + temp_f0_2120;
                 sp320 = temp_f0_2131;
@@ -1512,7 +1512,7 @@ loop_62:
                 MKSetColorV(*((MKVector4 *) &spA50));
                 MKSetTexCoord1F(0.0f, 0.0f);
                 sp2F0 = -(f32) spA40;
-                sp2F4 = -unkspA44;
+                sp2F4 = -(*(f32 *) ((u8 *) &spA40 + 0x4));
                 sp2F8 = -(f32) spA48;
                 sp5C0 = (f64) sp2F0;
                 sp5C8 = (f64) sp2F8;
@@ -1530,23 +1530,23 @@ loop_62:
                 MKSetColorV(*((MKVector4 *) &spA50));
                 MKSetTexCoord1F(0.0f, 1.0f);
                 sp2B0 = -(f32) spA40;
-                sp2B4 = -unkspA44;
+                sp2B4 = -(*(f32 *) ((u8 *) &spA40 + 0x4));
                 sp2B8 = -(f32) spA48;
                 sp560 = (f64) sp2B0;
                 sp568 = (f64) sp2B8;
                 spB0 = sp560 * (f64) (f32) spA18;
                 sp2D0 = -(f32) spA30;
-                sp2D4 = -unkspA34;
+                sp2D4 = -(*(f32 *) ((u8 *) &spA30 + 0x4));
                 spB8 = (f32) sp568 * (f32) spA18;
                 sp2D8 = -(f32) spA38;
                 sp580 = (f64) sp2D0;
                 sp570 = spB0;
                 sp578 = (f64) spB8;
                 sp588 = (f64) sp2D8;
-                temp_f0_2245 = sp580 * (f64) unkspA14;
+                temp_f0_2245 = sp580 * (f64) (*(f32 *) ((u8 *) &spA10 + 0x4));
                 spA0 = temp_f0_2245;
                 sp590 = temp_f0_2245;
-                spA8 = (f32) sp588 * unkspA14;
+                spA8 = (f32) sp588 * (*(f32 *) ((u8 *) &spA10 + 0x4));
                 sp598 = (f64) spA8;
                 temp_f0_2256 = *temp_r17_1881 + temp_f0_2245;
                 sp2C0 = temp_f0_2256;
@@ -1585,16 +1585,16 @@ loop_62:
                 MKSetTexCoord1F(0.99f, 1.0f);
                 sp70 = spA40 * (f64) (f32) spA18;
                 sp260 = -(f32) spA30;
-                sp264 = -unkspA34;
+                sp264 = -(*(f32 *) ((u8 *) &spA30 + 0x4));
                 sp78 = (f32) spA48 * (f32) spA18;
                 sp268 = -(f32) spA38;
                 sp4C0 = (f64) sp260;
                 sp4B0 = sp70;
                 sp4B8 = (f64) sp78;
                 sp4C8 = (f64) sp268;
-                sp60 = sp4C0 * (f64) unkspA14;
+                sp60 = sp4C0 * (f64) (*(f32 *) ((u8 *) &spA10 + 0x4));
                 sp4D0 = sp60;
-                sp68 = (f32) sp4C8 * unkspA14;
+                sp68 = (f32) sp4C8 * (*(f32 *) ((u8 *) &spA10 + 0x4));
                 sp3F10 = (f32) spA10;
                 sp4D8 = (f64) sp68;
                 sp50 = spA20 * (f64) (f32) spA10;
@@ -2196,7 +2196,7 @@ void LiquidFX::Update() {
                             sp150 = (temp_f3_3297 * sp324) - (temp_f9_3302 * sp320);
                             sp208 = (f64) sp148;
                             sp210 = (f64) sp150;
-                            var_f4_3324 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
+                            var_f4_3324 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + ((*(f32 *) ((u8 *) &sp208 + 0x4)) * (*(f32 *) ((u8 *) &sp208 + 0x4))));
                             if (var_f4_3324 > 1e-12f) {
                                 if (var_f4_3324 > 0.0f) {
                                     temp_f1_3329 = __frsqrte(var_f4_3324);
@@ -2234,20 +2234,20 @@ void LiquidFX::Update() {
                                 var_f0_3286 = 1.0f / var_f4_3324;
                             }
                             sp138 = (f32) sp208 * var_f0_3286;
-                            sp13C = unksp20C * var_f0_3286;
+                            sp13C = (*(f32 *) ((u8 *) &sp208 + 0x4)) * var_f0_3286;
                             sp140 = (f32) sp210 * var_f0_3286;
                             sp2A8 = (f64) sp138;
                             sp2B0 = (f64) sp140;
                             sp60 = 0.0f;
                             sp58 = 0.0f;
-                            sp78 = (sp324 * (f32) sp2B0) - (sp328 * unksp2AC);
+                            sp78 = (sp324 * (f32) sp2B0) - (sp328 * (*(f32 *) ((u8 *) &sp2A8 + 0x4)));
                             sp7C = (sp328 * (f32) sp2A8) - (sp320 * (f32) sp2B0);
-                            sp80 = (sp320 * unksp2AC) - (sp324 * (f32) sp2A8);
+                            sp80 = (sp320 * (*(f32 *) ((u8 *) &sp2A8 + 0x4))) - (sp324 * (f32) sp2A8);
                             sp1C8 = (f64) sp78;
                             sp1D0 = (f64) sp80;
                             sp5C = -1.0f;
                             sp68 = -(f32) sp1C8;
-                            sp6C = -unksp1CC;
+                            sp6C = -(*(f32 *) ((u8 *) &sp1C8 + 0x4));
                             sp70 = -(f32) sp1D0;
                             sp1B8 = (f64) sp58;
                             sp1D8 = (f64) sp68;
@@ -2422,7 +2422,7 @@ void LiquidFX::Update() {
         sp160 = (f64) sp24.unkC;
         sp158 = (f64) sp24.unk4;
         sp2D0.unk30 = (f32) sp158;
-        sp2D0.unk34 = unksp15C;
+        sp2D0.unk34 = (*(f32 *) ((u8 *) &sp158 + 0x4));
         sp2D0.unk38 = (f32) sp160;
         sp2D0.unk3C = 1.0f;
         MKMaterial_SetTextureMatrix(this->unk3F6C, &sp2D0);

@@ -47,9 +47,9 @@ loop_3:
             goto loop_3;
         }
         if (((s32) arg5 != 4) && ((s32) arg5 != 5) && ((s32) arg5 != 6)) {
-            unksp34 = arg4 - var_f27_46;
+            (*(f32 *) ((u8 *) &sp28 + 0xc)) = arg4 - var_f27_46;
         } else {
-            unksp34 = (0.5f * arg4) - (0.5f * var_f27_46);
+            (*(f32 *) ((u8 *) &sp28 + 0xc)) = (0.5f * arg4) - (0.5f * var_f27_46);
         }
         var_r30_40 = arg1;
     }
@@ -73,10 +73,10 @@ loop_20:
         sp28 = (f64) sp18;
         MKFont_DrawString(arg0, var_r30_40, *((MKVector3 *) &sp20), arg6, arg7, sp8, arg9);
         var_r30_40 = &var_r30_40[temp_r31_90];
-        unksp34 += temp_f31_43;
+        (*(f32 *) ((u8 *) &sp28 + 0xc)) += temp_f31_43;
         goto loop_20;
     }
-    return unksp34;
+    return (*(f32 *) ((u8 *) &sp28 + 0xc));
 }
 #endif
 
@@ -111,9 +111,9 @@ loop_3:
             goto loop_3;
         }
         if ((temp_r30_192 != 4) && (temp_r30_192 != 5) && (temp_r30_192 != 6)) {
-            unksp24 = arg4 - var_f30_200;
+            (*(f32 *) ((u8 *) &sp10 + 0x14)) = arg4 - var_f30_200;
         } else {
-            unksp24 = (0.5f * arg4) - (0.5f * var_f30_200);
+            (*(f32 *) ((u8 *) &sp10 + 0x14)) = (0.5f * arg4) - (0.5f * var_f30_200);
         }
         var_r31_193 = arg2;
     }
@@ -136,7 +136,7 @@ loop_22:
         } else {
             var_r31_193 += temp_r5_239;
             var_r29_191 -= temp_r5_239;
-            unksp24 += temp_f31_197;
+            (*(f32 *) ((u8 *) &sp10 + 0x14)) += temp_f31_197;
             goto loop_22;
         }
     }
@@ -352,20 +352,20 @@ loop_8:
                     temp_f26_720 = M2C_FIELD(temp_r4_715, f32 *, 0xC);
                     temp_f22_721 = M2C_FIELD(temp_r4_715, f32 *, 0x10);
                     temp_f21_722 = M2C_FIELD(temp_r4_715, f32 *, 0x14);
-                    MKMaterial_SetVertex4F(temp_r0_625, sp10, unksp14, (f32) sp18, 1.0f);
+                    MKMaterial_SetVertex4F(temp_r0_625, sp10, (*(f32 *) ((u8 *) &sp8 + 0xc)), (f32) sp18, 1.0f);
                     temp_f25_725 = temp_f24_718 + temp_f30_602;
                     temp_f26_727 = temp_f26_720 + temp_f29_608;
                     MKMaterial_SetVertex4F(temp_r29_634, temp_f25_725, temp_f26_727, 0.0f, 1.0f);
-                    MKMaterial_SetVertex4F(temp_r0_625, sp10, unksp14, (f32) sp18, 1.0f);
+                    MKMaterial_SetVertex4F(temp_r0_625, sp10, (*(f32 *) ((u8 *) &sp8 + 0xc)), (f32) sp18, 1.0f);
                     temp_f24_739 = temp_f22_721 + temp_f30_602;
                     MKMaterial_SetVertex4F(temp_r29_634, temp_f24_739, temp_f26_727, 0.0f, 1.0f);
-                    MKMaterial_SetVertex4F(temp_r0_625, sp10 + temp_f23_719, unksp14, (f32) sp18, 1.0f);
+                    MKMaterial_SetVertex4F(temp_r0_625, sp10 + temp_f23_719, (*(f32 *) ((u8 *) &sp8 + 0xc)), (f32) sp18, 1.0f);
                     temp_f26_753 = temp_f21_722 + temp_f29_608;
                     MKMaterial_SetVertex4F(temp_r29_634, temp_f25_725, temp_f26_753, 0.0f, 1.0f);
-                    MKMaterial_SetVertex4F(temp_r0_625, sp10, unksp14 + temp_f31_580, (f32) sp18, 1.0f);
+                    MKMaterial_SetVertex4F(temp_r0_625, sp10, (*(f32 *) ((u8 *) &sp8 + 0xc)) + temp_f31_580, (f32) sp18, 1.0f);
                     MKMaterial_SetVertex4F(temp_r29_634, temp_f24_739, temp_f26_753, 0.0f, 1.0f);
-                    MKMaterial_SetVertex4F(temp_r0_625, sp10 + temp_f23_719, unksp14 + temp_f31_580, (f32) sp18, 1.0f);
-                    MKMaterial_SetVertex4F(temp_r0_625, sp10 + temp_f23_719, unksp14 + temp_f31_580, (f32) sp18, 1.0f);
+                    MKMaterial_SetVertex4F(temp_r0_625, sp10 + temp_f23_719, (*(f32 *) ((u8 *) &sp8 + 0xc)) + temp_f31_580, (f32) sp18, 1.0f);
+                    MKMaterial_SetVertex4F(temp_r0_625, sp10 + temp_f23_719, (*(f32 *) ((u8 *) &sp8 + 0xc)) + temp_f31_580, (f32) sp18, 1.0f);
                     sp10 += temp_f23_719 + temp_f28_606;
                     break;
                 case 0x20:
@@ -373,7 +373,7 @@ loop_8:
                     break;
                 case 0xA:
                     sp10 = arg2.unk0;
-                    unksp14 += temp_f31_580;
+                    (*(f32 *) ((u8 *) &sp8 + 0xc)) += temp_f31_580;
                     break;
                 case 0x9:
                     sp10 = (sp10 + gFontTabWidth) - (f32) fmod(sp10, gFontTabWidth);
@@ -389,7 +389,7 @@ loop_8:
         }
         goto loop_26;
     }
-    return temp_f31_580 + (unksp14 - arg2.unk4);
+    return temp_f31_580 + ((*(f32 *) ((u8 *) &sp8 + 0xc)) - arg2.unk4);
 }
 #endif
 
@@ -469,7 +469,7 @@ loop_4:
             break;
         case 0xA:
             sp10 = 0.0f;
-            unksp14 += temp_f31_915;
+            (*(f32 *) ((u8 *) &sp8 + 0xc)) += temp_f31_915;
             break;
         case 0x9:
             sp10 = (sp10 + gFontTabWidth) - (f32) fmod(sp10, gFontTabWidth);
@@ -549,7 +549,7 @@ loop_4:
             var_f30_1040 = var_f1_1095;
             var_r30_1046 = var_r31_1045 + 1;
             sp10 = 0.0f;
-            unksp14 += temp_f31_1051;
+            (*(f32 *) ((u8 *) &sp10 + 0x4)) += temp_f31_1051;
             break;
         case 0x9:
             sp10 = (sp10 + gFontTabWidth) - (f32) fmod(sp10, gFontTabWidth);
@@ -585,14 +585,14 @@ loop_23:
             }
             var_r30_1046 = var_r31_1045;
             sp10 = 0.0f;
-            unksp14 += temp_f31_1051;
+            (*(f32 *) ((u8 *) &sp10 + 0x4)) += temp_f31_1051;
         }
         var_r31_1045 += 1;
         var_r29_1053 += 1;
         goto loop_35;
     }
     if (arg5 != NULL) {
-        *arg5 = unksp14 + temp_f31_1051;
+        *arg5 = (*(f32 *) ((u8 *) &sp10 + 0x4)) + temp_f31_1051;
     }
     if (sp10 > var_f30_1040) {
         return sp10;

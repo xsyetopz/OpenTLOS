@@ -538,8 +538,8 @@ loop_3:
         sp2A0.GetDir();
         sp350 = M2C_BITWISE(f64, sp2A0);
         sp358 = (f64) sp2A0.unk8;
-        sp158 = (MKVector3::up.unk0 * unksp354) - (MKVector3::up.unk4 * (f32) sp350);
-        sp150 = (MKVector3::up.unk4 * (f32) sp358) - (MKVector3::up.unk8 * unksp354);
+        sp158 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp350 + 0x4))) - (MKVector3::up.unk4 * (f32) sp350);
+        sp150 = (MKVector3::up.unk4 * (f32) sp358) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp350 + 0x4)));
         sp154 = (MKVector3::up.unk8 * (f32) sp350) - (MKVector3::up.unk0 * (f32) sp358);
         temp_f23_700 = 0.5f * (175.0f * (f32) temp_r29_664);
         sp348 = (f64) sp158;
@@ -589,7 +589,7 @@ loop_15:
                 sp328 = (f64) sp148;
                 if (((EnemyRegion *) &this->unkC->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp320)) != 0) {
                     ((EnemyRegion *) &sp130)->GetRegionPos();
-                    if ((f32) fabs(sp134 - unksp324) <= 500.0f) {
+                    if ((f32) fabs(sp134 - (*(f32 *) ((u8 *) &sp320 + 0x4))) <= 500.0f) {
                         var_r25_798 = 1;
                     }
                 }
@@ -646,7 +646,7 @@ loop_45:
                 sp110 = temp_f0_944;
                 sp300 = temp_f0_944;
                 sp118 = sp1F8 - (f32) sp318;
-                unksp304 = 0.0f;
+                (*(f32 *) ((u8 *) &sp2F8 + 0xc)) = 0.0f;
                 sp308 = (f64) sp118;
                 var_f4_960 = ((f32) sp308 * (f32) sp308) + (((f32) sp300 * (f32) sp300) + (0.0f * 0.0f));
                 if (var_f4_960 > 0.000001f) {
@@ -692,7 +692,7 @@ loop_45:
                 sp108 = 0.0f;
                 sp1E0 = (f64) sp100;
                 sp300 = (f32) sp300 * var_f2_1026;
-                unksp304 *= var_f2_1026;
+                (*(f32 *) ((u8 *) &sp2F8 + 0xc)) *= var_f2_1026;
                 sp308 = (f32) sp308 * var_f2_1026;
                 sp1E8 = (f64) sp108;
                 temp_f0_1049 = sp310 + sp1E0;
@@ -722,29 +722,29 @@ loop_45:
                 sp404 = -1;
                 sp408 = 0;
                 if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp2F0), 200.0f, (MKCollisionResult *) &sp3B8, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18), 2, NULL, (MKCollisionMode) 6) != 0) {
-                    unksp314 = sp3BC;
+                    (*(f32 *) ((u8 *) &sp310 + 0x4)) = sp3BC;
                 }
                 temp_r3_1100 = this->unkC->unkA4C->GetSpawnPoint(var_r27_885);
                 var_r27_885 += 1;
                 temp_r3_1100->unk40 = (f32) sp310;
-                temp_r3_1100->unk44 = unksp314;
+                temp_r3_1100->unk44 = (*(f32 *) ((u8 *) &sp310 + 0x4));
                 temp_r3_1100->unk48 = (f32) sp318;
                 temp_r3_1100->unk4C = 1.0f;
                 temp_r3_1100->unk30 = sp300;
-                temp_r3_1100->unk34 = unksp304;
+                temp_r3_1100->unk34 = (*(f32 *) ((u8 *) &sp2F8 + 0xc));
                 temp_r3_1100->unk38 = sp308;
                 temp_r3_1100->unk3C = 0.0f;
                 temp_r3_1100->unk20 = temp_f26_892;
                 temp_r3_1100->unk24 = temp_f25_904;
                 temp_r3_1100->unk28 = temp_f24_905;
-                sp48 = (temp_f26_892 * unksp304) - (temp_f23_906 * sp300);
-                sp40 = (temp_f23_906 * sp308) - (temp_f22_907 * unksp304);
+                sp48 = (temp_f26_892 * (*(f32 *) ((u8 *) &sp2F8 + 0xc))) - (temp_f23_906 * sp300);
+                sp40 = (temp_f23_906 * sp308) - (temp_f22_907 * (*(f32 *) ((u8 *) &sp2F8 + 0xc)));
                 sp44 = (temp_f22_907 * sp300) - (temp_f26_892 * sp308);
                 sp1D8 = (f64) sp48;
                 sp1D0 = (f64) sp40;
                 temp_r3_1100->unk2C = 0.0f;
                 temp_r3_1100->unk10 = (f32) sp1D0;
-                temp_r3_1100->unk14 = unksp1D4;
+                temp_r3_1100->unk14 = (*(f32 *) ((u8 *) &sp1D0 + 0x4));
                 temp_r3_1100->unk18 = (f32) sp1D8;
                 temp_r3_1100->unk1C = 0.0f;
                 goto loop_45;
@@ -807,7 +807,7 @@ loop_51:
             sp3AC = -1;
             sp3B0 = 0;
             if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp2A0.unk10), 200.0f, (MKCollisionResult *) &sp360, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18), 2, NULL, (MKCollisionMode) 6) != 0) {
-                unksp2C4 = sp364;
+                (*(f32 *) ((u8 *) &sp2A0 + 0x24)) = sp364;
             }
             temp_r3_1267 = this->unkC->unkA4C->GetSpawnPoint(var_r20_1154);
             var_f16_1153 += 6.2831855f / (f32) temp_r29_664;
@@ -817,7 +817,7 @@ loop_51:
             temp_f2_1276 = -sp2A0.unk38;
             sp30 = temp_f6_1272;
             temp_r3_1267->unk40 = (f32) sp2A0.unk20;
-            temp_r3_1267->unk44 = unksp2C4;
+            temp_r3_1267->unk44 = (*(f32 *) ((u8 *) &sp2A0 + 0x24));
             sp34 = temp_f4_1274;
             temp_r3_1267->unk48 = (f32) sp2A0.unk28;
             sp180 = (f64) sp30;
@@ -827,7 +827,7 @@ loop_51:
             temp_r3_1267->unk30 = (f32) sp180;
             sp188 = (f64) sp38;
             sp168 = (f64) sp18;
-            temp_r3_1267->unk34 = unksp184;
+            temp_r3_1267->unk34 = (*(f32 *) ((u8 *) &sp180 + 0x4));
             temp_r3_1267->unk38 = (f32) sp188;
             temp_r3_1267->unk3C = 0.0f;
             temp_r3_1267->unk20 = temp_f27_1162;
@@ -838,12 +838,12 @@ loop_51:
             temp_r3_1267->unk2C = 0.0f;
             sp160 = (f64) sp10;
             sp24 = (temp_f30_1175 * (f32) sp160) - (temp_f27_1162 * (f32) sp168);
-            sp20 = (temp_f31_1174 * (f32) sp168) - (temp_f30_1175 * unksp164);
-            sp28 = (temp_f27_1162 * unksp164) - (temp_f31_1174 * (f32) sp160);
+            sp20 = (temp_f31_1174 * (f32) sp168) - (temp_f30_1175 * (*(f32 *) ((u8 *) &sp160 + 0x4)));
+            sp28 = (temp_f27_1162 * (*(f32 *) ((u8 *) &sp160 + 0x4))) - (temp_f31_1174 * (f32) sp160);
             sp170 = (f64) sp20;
             sp178 = (f64) sp28;
             temp_r3_1267->unk10 = (f32) sp170;
-            temp_r3_1267->unk14 = unksp174;
+            temp_r3_1267->unk14 = (*(f32 *) ((u8 *) &sp170 + 0x4));
             temp_r3_1267->unk18 = (f32) sp178;
             temp_r3_1267->unk1C = 0.0f;
             goto loop_51;

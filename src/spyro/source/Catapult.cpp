@@ -337,7 +337,7 @@ void Catapult::Message(MKMessage *arg0) {
             temp_r3_298 = this->unk8;
             sp8 = M2C_FIELD(temp_r3_298, f64 *, 0x30);
             sp10 = M2C_FIELD(temp_r3_298, f64 *, 0x38);
-            temp_f3_307 = unkspC - M2C_FIELD(temp_r31_293, f32 *, 0x14);
+            temp_f3_307 = (*(f32 *) ((u8 *) &sp8 + 0x4)) - M2C_FIELD(temp_r31_293, f32 *, 0x14);
             temp_f5_308 = (f32) sp8 - M2C_FIELD(temp_r31_293, f32 *, 0x10);
             temp_f4_313 = (f32) sp10 - M2C_FIELD(temp_r31_293, f32 *, 0x18);
             temp_f3_316 = M2C_FIELD(temp_r31_293, f32 *, 0x20) + 300.0f;
@@ -504,9 +504,9 @@ void Catapult::FireUpdate() {
         KDMath_GetYaw((Matrix *) this->unk8);
         spD0.RotatePitch(&spD0, -0.7f);
         spD0.RotateYaw(&spD0, M2C_ERROR(/* Read from unset register $f1 */));
-        sp10 = spD0.unk30 + (((f32) spB8 * spD0.unk20) + (((f32) spB0 * M2C_BITWISE(f32, spD0)) + (unkspB4 * spD0.unk10)));
-        sp14 = spD0.unk34 + (((f32) spB8 * spD0.unk24) + (((f32) spB0 * spD0.unk4) + (unkspB4 * spD0.unk14)));
-        sp18 = spD0.unk38 + (((f32) spB8 * spD0.unk28) + (((f32) spB0 * spD0.unk8) + (unkspB4 * spD0.unk18)));
+        sp10 = spD0.unk30 + (((f32) spB8 * spD0.unk20) + (((f32) spB0 * M2C_BITWISE(f32, spD0)) + ((*(f32 *) ((u8 *) &spB0 + 0x4)) * spD0.unk10)));
+        sp14 = spD0.unk34 + (((f32) spB8 * spD0.unk24) + (((f32) spB0 * spD0.unk4) + ((*(f32 *) ((u8 *) &spB0 + 0x4)) * spD0.unk14)));
+        sp18 = spD0.unk38 + (((f32) spB8 * spD0.unk28) + (((f32) spB0 * spD0.unk8) + ((*(f32 *) ((u8 *) &spB0 + 0x4)) * spD0.unk18)));
         spB0 = (f64) sp10;
         spB8 = (f64) sp18;
         sp40 = (f64) sp10;

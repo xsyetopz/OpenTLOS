@@ -251,7 +251,7 @@ void KDSP_Actor::UpdateLookat() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp94'
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
     f32 sp13C;
     f32 sp138;
@@ -313,9 +313,9 @@ void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
         sp90 = (f64) sp30;
         sp12C = 0.0f;
         sp110 = (f32) sp90;
-        sp114 = unksp94;
-        sp28 = ((f32) sp90 * temp_f8_365) - (unksp94 * temp_f9_360);
-        sp20 = (unksp94 * temp_f7_368) - ((f32) sp98 * temp_f8_365);
+        sp114 = (*(f32 *) ((u8 *) &sp90 + 0x4));
+        sp28 = ((f32) sp90 * temp_f8_365) - ((*(f32 *) ((u8 *) &sp90 + 0x4)) * temp_f9_360);
+        sp20 = ((*(f32 *) ((u8 *) &sp90 + 0x4)) * temp_f7_368) - ((f32) sp98 * temp_f8_365);
         sp24 = ((f32) sp98 * temp_f9_360) - ((f32) sp90 * temp_f7_368);
         sp118 = (f32) sp98;
         sp11C = 0.0f;
@@ -333,7 +333,7 @@ void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
         sp108 = sp80.unk8;
         sp10C = 0.0f;
         sp110 = (f32) sp60;
-        sp114 = unksp64;
+        sp114 = (*(f32 *) ((u8 *) &sp60 + 0x4));
         sp118 = (f32) sp68;
         sp11C = 0.0f;
         sp130 = 0.0f;
@@ -344,13 +344,13 @@ void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
         spB0 = sp50;
         spB8 = sp58;
         sp40 = -(f32) spB0;
-        sp44 = -unkspB4;
+        sp44 = -(*(f32 *) ((u8 *) &spB0 + 0x4));
         sp48 = -(f32) spB8;
         spA0 = (f64) sp40;
         spA8 = (f64) sp48;
         spC0.SetIdentity();
         spC0.unk30 = (f32) spA0;
-        spC0.unk34 = unkspA4;
+        spC0.unk34 = (*(f32 *) ((u8 *) &spA0 + 0x4));
         spC0.unk38 = (f32) spA8;
         spC0.unk3C = 1.0f;
         spC0.Multiply(&spC0, (Matrix *) &sp100);
@@ -497,28 +497,28 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
             sp178 = temp_f0_611;
             spC0 = sp1B8.unk8 - arg6.unk8;
             sp180 = (f64) spC0;
-            spA8 = ((f32) sp180 * sp260.unk20) + (((f32) sp178 * M2C_BITWISE(f32, sp260)) + (unksp17C * sp260.unk10));
-            spAC = ((f32) sp180 * sp260.unk24) + (((f32) sp178 * sp260.unk4) + (unksp17C * sp260.unk14));
-            spB0 = ((f32) sp180 * sp260.unk28) + (((f32) sp178 * sp260.unk8) + (unksp17C * sp260.unk18));
+            spA8 = ((f32) sp180 * sp260.unk20) + (((f32) sp178 * M2C_BITWISE(f32, sp260)) + ((*(f32 *) ((u8 *) &sp178 + 0x4)) * sp260.unk10));
+            spAC = ((f32) sp180 * sp260.unk24) + (((f32) sp178 * sp260.unk4) + ((*(f32 *) ((u8 *) &sp178 + 0x4)) * sp260.unk14));
+            spB0 = ((f32) sp180 * sp260.unk28) + (((f32) sp178 * sp260.unk8) + ((*(f32 *) ((u8 *) &sp178 + 0x4)) * sp260.unk18));
             sp1A8 = (f64) spA8;
             spA0 = 1.0f;
             sp1B0 = (f64) spB0;
             sp98 = 0.0f;
             sp9C = 0.0f;
-            var_f3_664 = ((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + (unksp1AC * unksp1AC));
+            var_f3_664 = ((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + ((*(f32 *) ((u8 *) &sp1A0 + 0xc)) * (*(f32 *) ((u8 *) &sp1A0 + 0xc))));
             sp1A0 = (f64) spA0;
             sp198 = (f64) sp98;
             if (var_f3_664 > 0.000001f) {
                 Normalise(sp168);
                 sp1A8 = M2C_BITWISE(f64, sp168);
                 sp1B0 = (f64) sp168.unk8;
-                var_f3_664 = ((f32) sp1B0 * (f32) sp1A0) + (((f32) sp1A8 * (f32) sp198) + (unksp1AC * unksp19C));
+                var_f3_664 = ((f32) sp1B0 * (f32) sp1A0) + (((f32) sp1A8 * (f32) sp198) + ((*(f32 *) ((u8 *) &sp1A0 + 0xc)) * (*(f32 *) ((u8 *) &sp198 + 0x4))));
             }
             if ((var_f3_664 < arg8) && (var_f3_664 > arg9)) {
-                temp_f5_698 = (unksp19C * (f32) sp1B0) - ((f32) sp1A0 * unksp1AC);
+                temp_f5_698 = ((*(f32 *) ((u8 *) &sp198 + 0x4)) * (f32) sp1B0) - ((f32) sp1A0 * (*(f32 *) ((u8 *) &sp1A0 + 0xc)));
                 temp_f3_701 = ((f32) sp1A0 * (f32) sp1A8) - ((f32) sp198 * (f32) sp1B0);
                 sp188 = temp_f5_698;
-                temp_f4_704 = ((f32) sp198 * unksp1AC) - (unksp19C * (f32) sp1A8);
+                temp_f4_704 = ((f32) sp198 * (*(f32 *) ((u8 *) &sp1A0 + 0xc))) - ((*(f32 *) ((u8 *) &sp198 + 0x4)) * (f32) sp1A8);
                 sp18C = temp_f3_701;
                 sp190 = temp_f4_704;
                 var_f4_710 = (temp_f4_704 * temp_f4_704) + ((temp_f5_698 * temp_f5_698) + (temp_f3_701 * temp_f3_701));
@@ -565,9 +565,9 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
                 sp190 *= var_f3_777;
                 M2C_STRUCT_COPY((s32) &sp1DC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 sp1E0.SetRotateAroundAxis(*((MKVector3 *) &sp188), arg11);
-                sp88 = ((f32) sp1A0 * sp1E0.unk20) + (((f32) sp198 * M2C_BITWISE(f32, sp1E0)) + (unksp19C * sp1E0.unk10));
-                sp8C = ((f32) sp1A0 * sp1E0.unk24) + (((f32) sp198 * sp1E0.unk4) + (unksp19C * sp1E0.unk14));
-                sp90 = ((f32) sp1A0 * sp1E0.unk28) + (((f32) sp198 * sp1E0.unk8) + (unksp19C * sp1E0.unk18));
+                sp88 = ((f32) sp1A0 * sp1E0.unk20) + (((f32) sp198 * M2C_BITWISE(f32, sp1E0)) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * sp1E0.unk10));
+                sp8C = ((f32) sp1A0 * sp1E0.unk24) + (((f32) sp198 * sp1E0.unk4) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * sp1E0.unk14));
+                sp90 = ((f32) sp1A0 * sp1E0.unk28) + (((f32) sp198 * sp1E0.unk8) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * sp1E0.unk18));
                 sp1A8 = (f64) sp88;
                 sp1B0 = (f64) sp90;
                 sp158 = (f64) sp88;
@@ -575,7 +575,7 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
                 *temp_r29_522 = 1;
             } else if (var_f3_664 < arg9) {
                 sp1A8 = 0.0f;
-                unksp1AC = 0.0f;
+                (*(f32 *) ((u8 *) &sp1A0 + 0xc)) = 0.0f;
                 sp1B0 = 1.0f;
                 *temp_r29_522 = 0;
             } else {
@@ -817,7 +817,7 @@ void KDSP_Actor::UpdateSoundAnimEvents(const MKVector3 &arg0, int arg1) {
             sp18 = temp_f0_1360;
             sp10 = (f32) sp30 - arg0.unk8;
             sp20 = (f64) sp10;
-            KDSound_Play3d(this->unk38, (MKVector3 *) &sp28, (u32) arg1, ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C)), 0U);
+            KDSound_Play3d(this->unk38, (MKVector3 *) &sp28, (u32) arg1, ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4)))), 0U);
         }
     }
 }
@@ -1100,11 +1100,11 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
             spC8 = M2C_FIELD(temp_r3_1858, f64 *, 8);
             if ((u8) M2C_FIELD(temp_r31_1759, u8 *, 4) != 0) {
                 spE0 = ((f32) spD0 * temp_f7_1863) + ((f32) spC0 * var_f3_1842);
-                spE4 = (unkspD4 * temp_f7_1863) + (unkspC4 * var_f3_1842);
+                spE4 = ((*(f32 *) ((u8 *) &spD0 + 0x4)) * temp_f7_1863) + ((*(f32 *) ((u8 *) &spC0 + 0x4)) * var_f3_1842);
                 spE8 = ((f32) spD8 * temp_f7_1863) + ((f32) spC8 * var_f3_1842);
             } else {
                 KDMath_SmoothToAngle((f32) spD8, (f32) spC8, var_f3_1842);
-                KDMath_SmoothToAngle(unkspD4, unkspC4, sp18);
+                KDMath_SmoothToAngle((*(f32 *) ((u8 *) &spD0 + 0x4)), (*(f32 *) ((u8 *) &spC0 + 0x4)), sp18);
                 KDMath_SmoothToAngle((f32) spD0, (f32) spC0, sp18);
                 spE0 = M2C_ERROR(/* Read from unset register $f1 */);
                 spE4 = M2C_ERROR(/* Read from unset register $f1 */);
@@ -1143,7 +1143,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
         }
         if ((this->unk40 & 4) || ((u32) this->unk30 != 0)) {
             if ((u8) M2C_FIELD(temp_r31_1759, u8 *, 4) != 0) {
-                if ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4))) > 0.000001f) {
+                if ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))))) > 0.000001f) {
                     M2C_STRUCT_COPY((s32) &sp1B0.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                     sp1F0.SetRotationPYR(*((MKVector3 *) &spE0));
                     M2C_STRUCT_COPY((s32) &sp1AC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
@@ -1164,7 +1164,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
                 this->unk34->SetRotationPYR(*((MKVector3 *) &spE0));
                 temp_r3_2047 = this->unk34;
                 temp_r3_2047->unk30 = (f32) spF0;
-                temp_r3_2047->unk34 = unkspF4;
+                temp_r3_2047->unk34 = (*(f32 *) ((u8 *) &spF0 + 0x4));
                 temp_r3_2047->unk38 = (f32) spF8;
                 temp_r3_2047->unk3C = 1.0f;
                 return;
@@ -1177,7 +1177,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
         }
         M2C_STRUCT_COPY((s32) &sp100.unk3C + 4, (s32) (var_r3_1921 - 4) + 4, 0x40);
         if ((u8) M2C_FIELD(temp_r31_1759, u8 *, 4) != 0) {
-            if ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4))) > 0.000001f) {
+            if ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))))) > 0.000001f) {
                 sp140.SetRotationPYR(*((MKVector3 *) &spE0));
                 M2C_STRUCT_COPY((s32) &unkspFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 sp100.SetLookAt(*((MKVector3 *) &spB0), *((MKVector3 *) &spF0));
@@ -1187,7 +1187,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
             sp140.SetRotationPYR(*((MKVector3 *) &spE0));
         }
         sp140.unk30 = (f32) spF0;
-        sp140.unk34 = unkspF4;
+        sp140.unk34 = (*(f32 *) ((u8 *) &spF0 + 0x4));
         sp140.unk38 = (f32) spF8;
         sp140.unk3C = 1.0f;
         MKModel_SetWorldMatrix(temp_r3_1916, sp140);

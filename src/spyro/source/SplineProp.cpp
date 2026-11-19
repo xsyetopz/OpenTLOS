@@ -8,7 +8,6 @@
 #include <m2c_macros.h>
 
 extern f32 *KDSpline_PositionMixer;
-#if 0 // DRAFT: undefined identifier 'unkspAC'
 static BoundingVolume volume;                       /* type too large by 0x10; unable to generate initializer: not enough data */
 
 void SplineProp::CalcBounds() {
@@ -93,7 +92,7 @@ loop_20:
             var_f1_56 = temp_f2_53;
         }
         M2C_FIELD(this, f64 *, 0x90) = var_f1_56;
-        var_f0_66 = unkspAC;
+        var_f0_66 = (*(f32 *) ((u8 *) &spA8 + 0x4));
         temp_f1_67 = M2C_FIELD(this, f32 *, 0x94);
         if (var_f0_66 < temp_f1_67) {
 
@@ -117,7 +116,7 @@ loop_20:
             var_f0_84 = temp_f1_85;
         }
         M2C_FIELD(this, f64 *, 0xA0) = var_f0_84;
-        var_f0_93 = unkspAC;
+        var_f0_93 = (*(f32 *) ((u8 *) &spA8 + 0x4));
         temp_f1_94 = M2C_FIELD(this, f32 *, 0xA4);
         if (var_f0_93 > temp_f1_94) {
 
@@ -157,7 +156,6 @@ loop_20:
     this->unkA0 -= this->unk90;
     M2C_FIELD(this, f64 *, 0xA8) = (f32) ((f32) M2C_FIELD(this, f64 *, 0xA8) - (f32) M2C_FIELD(this, f64 *, 0x98));
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void SplineProp::LoadDone() {
@@ -217,14 +215,11 @@ void SplineProp::Init() {
     this->unkB4 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'volume'
 void SplinePropDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk1C = &volume;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'volume'
 void SplineProp_cpp::__sinit() {
     f32 sp20;
     f32 sp1C;
@@ -244,4 +239,3 @@ void SplineProp_cpp::__sinit() {
     M2C_FIELD(&volume, f64 *, 0x10) = (f64) sp8;
     M2C_FIELD(&volume, f64 *, 0x18) = (f64) sp10;
 }
-#endif

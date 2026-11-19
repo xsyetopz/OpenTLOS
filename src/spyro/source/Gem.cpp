@@ -277,12 +277,12 @@ void Gem::CollectEffects() {
     } else {
         var_f1_455 = (f32) sp100;
     }
-    var_f0_471 = unksp114;
+    var_f0_471 = (*(f32 *) ((u8 *) &sp110 + 0x4));
     sp10 = var_f1_455;
-    if (var_f0_471 < unksp104) {
+    if (var_f0_471 < (*(f32 *) ((u8 *) &sp100 + 0x4))) {
 
     } else {
-        var_f0_471 = unksp104;
+        var_f0_471 = (*(f32 *) ((u8 *) &sp100 + 0x4));
     }
     var_f1_480 = (f32) sp118;
     sp14 = var_f0_471;
@@ -291,12 +291,12 @@ void Gem::CollectEffects() {
     } else {
         var_f1_480 = (f32) sp108;
     }
-    var_f0_489 = unksp11C;
+    var_f0_489 = (*(f32 *) ((u8 *) &sp118 + 0x4));
     sp18 = var_f1_480;
-    if (var_f0_489 < unksp10C) {
+    if (var_f0_489 < (*(f32 *) ((u8 *) &sp108 + 0x4))) {
 
     } else {
-        var_f0_489 = unksp10C;
+        var_f0_489 = (*(f32 *) ((u8 *) &sp108 + 0x4));
     }
     sp1C = var_f0_489;
     sp40 = (f64) sp10;
@@ -307,12 +307,12 @@ void Gem::CollectEffects() {
     } else {
         var_f1_503 = (f32) sp120;
     }
-    var_f0_511 = unksp44;
+    var_f0_511 = (*(f32 *) ((u8 *) &sp40 + 0x4));
     sp30 = var_f1_503;
-    if (var_f0_511 > unksp124) {
+    if (var_f0_511 > (*(f32 *) ((u8 *) &sp120 + 0x4))) {
 
     } else {
-        var_f0_511 = unksp124;
+        var_f0_511 = (*(f32 *) ((u8 *) &sp120 + 0x4));
     }
     var_f1_520 = (f32) sp48;
     sp34 = var_f0_511;
@@ -321,12 +321,12 @@ void Gem::CollectEffects() {
     } else {
         var_f1_520 = (f32) sp128;
     }
-    var_f0_529 = unksp4C;
+    var_f0_529 = (*(f32 *) ((u8 *) &sp48 + 0x4));
     sp38 = var_f1_520;
-    if (var_f0_529 > unksp12C) {
+    if (var_f0_529 > (*(f32 *) ((u8 *) &sp128 + 0x4))) {
 
     } else {
-        var_f0_529 = unksp12C;
+        var_f0_529 = (*(f32 *) ((u8 *) &sp128 + 0x4));
     }
     sp3C = var_f0_529;
     sp130 = (f64) sp30;

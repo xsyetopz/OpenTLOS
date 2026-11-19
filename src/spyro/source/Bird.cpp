@@ -180,7 +180,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         sp168 = sp98;
         spA0 = (f32) sp20 - arg0->unk38;
         sp170 = (f64) spA0;
-        var_f5_229 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + (unksp16C * unksp16C));
+        var_f5_229 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + ((*(f32 *) ((u8 *) &sp168 + 0x4)) * (*(f32 *) ((u8 *) &sp168 + 0x4))));
         if (var_f5_229 > 0.0f) {
             temp_f2_232 = __frsqrte(var_f5_229);
             temp_f2_238 = 0.5 * temp_f2_232 * -(((f64) var_f5_229 * (temp_f2_232 * temp_f2_232)) - 3.0);
@@ -229,7 +229,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         sp138 = sp88;
         sp90 = (f32) sp178.unk38 - arg0->unk38;
         sp140 = (f64) sp90;
-        var_f29_336 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + (unksp13C * unksp13C));
+        var_f29_336 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + ((*(f32 *) ((u8 *) &sp138 + 0x4)) * (*(f32 *) ((u8 *) &sp138 + 0x4))));
         if (var_f29_336 > 0.0f) {
             temp_f2_339 = __frsqrte(var_f29_336);
             temp_f2_345 = 0.5 * temp_f2_339 * -(((f64) var_f29_336 * (temp_f2_339 * temp_f2_339)) - 3.0);
@@ -296,7 +296,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     sp178.unk80 = sp18;
     sp200 = sp20;
     temp_f3_467 = arg0->unk20;
-    acos((arg0->unk28 * (f32) sp178.unk28) + ((temp_f3_467 * (f32) sp178.unk20) + (arg0->unk24 * unksp19C)), (f32) sp178.unk20, temp_f3_467, (f32) sp178.unk28);
+    acos((arg0->unk28 * (f32) sp178.unk28) + ((temp_f3_467 * (f32) sp178.unk20) + (arg0->unk24 * (*(f32 *) ((u8 *) &sp178 + 0x24)))), (f32) sp178.unk20, temp_f3_467, (f32) sp178.unk28);
     sp78 = -arg0->unk20;
     sp7C = -arg0->unk24;
     var_r29_486 = 0;
@@ -313,7 +313,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         KDMath_Smooth<MKVector3>(spE8, *((MKVector3 *) &spD8), (f32) var_r29_486 / 3.0f, 1.0f);
         sp178.unk10 = M2C_BITWISE(f64, spE8);
         sp178.unk18 = (f64) spE8.unk8;
-        var_f4_531 = ((f32) sp178.unk18 * (f32) sp178.unk18) + (((f32) sp178.unk10 * (f32) sp178.unk10) + (unksp18C * unksp18C));
+        var_f4_531 = ((f32) sp178.unk18 * (f32) sp178.unk18) + (((f32) sp178.unk10 * (f32) sp178.unk10) + ((*(f32 *) ((u8 *) &sp178 + 0x14)) * (*(f32 *) ((u8 *) &sp178 + 0x14))));
         if (var_f4_531 > 0.000001f) {
             if (var_f4_531 > 0.0f) {
                 temp_f1_537 = __frsqrte(var_f4_531);
@@ -353,7 +353,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
             var_f4_598 = 0.0f;
         }
         sp178.unk10 = (f32) sp178.unk10 * var_f4_598;
-        unksp18C *= var_f4_598;
+        (*(f32 *) ((u8 *) &sp178 + 0x14)) *= var_f4_598;
         sp178.unk18 = (f32) sp178.unk18 * var_f4_598;
         spA8.operator*(var_f28_293);
         spB8.operator*((f32) (var_r29_486 + 1) * 0.25f);
@@ -381,7 +381,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp44'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void BirdCritter::SetFlyingExitState(Bird *arg0) {
     f64 sp48;                                       /* compiler-managed */
     f64 sp40;                                       /* compiler-managed */
@@ -413,7 +413,7 @@ void BirdCritter::SetFlyingExitState(Bird *arg0) {
     sp18 = -arg0->unk28;
     sp40 = (f64) sp10;
     sp48 = (f64) sp18;
-    unksp44 = 0.0f;
+    (*(f32 *) ((u8 *) &sp38 + 0xc)) = 0.0f;
     var_f4_818 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (0.0f * 0.0f));
     if (var_f4_818 > 0.000001f) {
         if (var_f4_818 > 0.0f) {
@@ -452,7 +452,7 @@ void BirdCritter::SetFlyingExitState(Bird *arg0) {
         var_f6_780 = 1.0f / var_f4_818;
     }
     sp40 = (f32) sp40 * var_f6_780;
-    unksp44 *= var_f6_780;
+    (*(f32 *) ((u8 *) &sp38 + 0xc)) *= var_f6_780;
     sp48 = (f32) sp48 * var_f6_780;
     sp30 = M2C_FIELD(arg0, f64 *, 0x30);
     sp38 = M2C_FIELD(arg0, f64 *, 0x38);
@@ -460,7 +460,7 @@ void BirdCritter::SetFlyingExitState(Bird *arg0) {
     sp28 = M2C_FIELD(&MKVector3::up, f64 *, 8);
     KDMath_BuildMatrixFromFwd((Matrix *) arg0, *((MKVector3 *) &sp40), (MKVector3 *) &sp20);
     M2C_FIELD(arg0, f64 *, 0x30) = (f32) sp30;
-    arg0->unk34 = unksp34;
+    arg0->unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
     arg0->unk38 = (f32) sp38;
     arg0->unk3C = 1.0f;
 }
@@ -639,7 +639,7 @@ loop_63:
             spD0.GetVelocity(var_f31_1206);
             sp100 = M2C_BITWISE(f64, spD0);
             sp108 = (f64) spD0.unk8;
-            var_f4_1236 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + (unksp104 * unksp104));
+            var_f4_1236 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + ((*(f32 *) ((u8 *) &spF8 + 0xc)) * (*(f32 *) ((u8 *) &spF8 + 0xc))));
             if (var_f4_1236 > 0.000001f) {
                 if (var_f4_1236 > 0.0f) {
                     temp_f1_1242 = __frsqrte(var_f4_1236);
@@ -679,7 +679,7 @@ loop_63:
                 var_f2_1303 = 0.0f;
             }
             temp_f11_1312 = (f32) sp100 * var_f2_1303;
-            temp_f10_1314 = unksp104 * var_f2_1303;
+            temp_f10_1314 = (*(f32 *) ((u8 *) &spF8 + 0xc)) * var_f2_1303;
             temp_f9_1316 = (f32) sp108 * var_f2_1303;
             spD0.unk10 = M2C_FIELD(&MKVector3::up, f64 *, 0);
             spE8 = M2C_FIELD(&MKVector3::up, f64 *, 8);
@@ -690,16 +690,16 @@ loop_63:
             spA0 = (f64) sp50;
             spA8 = (f64) sp58;
             sp100 = temp_f11_1312;
-            unksp104 = temp_f10_1314;
+            (*(f32 *) ((u8 *) &spF8 + 0xc)) = temp_f10_1314;
             sp108 = temp_f9_1316;
-            sp48 = ((f32) spA0 * spE4) - (unkspA4 * temp_f3_1324);
-            sp40 = (unkspA4 * (f32) spE8) - ((f32) spA8 * spE4);
+            sp48 = ((f32) spA0 * spE4) - ((*(f32 *) ((u8 *) &spA0 + 0x4)) * temp_f3_1324);
+            sp40 = ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (f32) spE8) - ((f32) spA8 * spE4);
             sp44 = ((f32) spA8 * temp_f3_1324) - ((f32) spA0 * (f32) spE8);
             spB8 = (f64) sp48;
             spB0 = (f64) sp40;
             Normalise(spC0);
             temp_f12_1358 = -sp100;
-            temp_f11_1360 = -unksp104;
+            temp_f11_1360 = -(*(f32 *) ((u8 *) &spF8 + 0xc));
             temp_f10_1361 = -sp108;
             sp10 = temp_f12_1358;
             sp14 = temp_f11_1360;
@@ -709,11 +709,11 @@ loop_63:
             spF8 = (f64) spC0.unk8;
             sp88 = (f64) sp18;
             temp_r30_1068->unk0 = (f32) spF0;
-            temp_r30_1068->unk4 = unkspF4;
+            temp_r30_1068->unk4 = (*(f32 *) ((u8 *) &spF0 + 0x4));
             temp_r30_1068->unk8 = (f32) spF8;
-            sp30 = (unkspF4 * (f32) sp88) - ((f32) spF8 * unksp84);
+            sp30 = ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (f32) sp88) - ((f32) spF8 * (*(f32 *) ((u8 *) &sp80 + 0x4)));
             sp34 = ((f32) spF8 * (f32) sp80) - ((f32) spF0 * (f32) sp88);
-            sp38 = ((f32) spF0 * unksp84) - (unkspF4 * (f32) sp80);
+            sp38 = ((f32) spF0 * (*(f32 *) ((u8 *) &sp80 + 0x4))) - ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (f32) sp80);
             spD0.unk10 = (f64) sp30;
             sp28 = temp_f10_1361;
             temp_r30_1068->unkC = 0.0f;
@@ -727,7 +727,7 @@ loop_63:
             temp_r30_1068->unk1C = 0.0f;
             sp70 = (f64) sp20;
             temp_r30_1068->unk20 = (f32) sp70;
-            temp_r30_1068->unk24 = unksp74;
+            temp_r30_1068->unk24 = (*(f32 *) ((u8 *) &sp70 + 0x4));
             temp_r30_1068->unk28 = (f32) sp78;
             temp_r30_1068->unk2C = 0.0f;
             sp90 = (f64) sp30;
@@ -794,14 +794,14 @@ loop_7:
             sp20 = M2C_FIELD(temp_r4_1540, f64 *, 8);
             M2C_STRUCT_COPY(temp_r30_1502, &Matrix::identity, 0x40);
             M2C_FIELD(temp_r30_1502, f32 *, 0x30) = (f32) sp18;
-            temp_r30_1502->unk34 = unksp1C;
+            temp_r30_1502->unk34 = (*(f32 *) ((u8 *) &sp18 + 0x4));
             temp_r30_1502->unk38 = (f32) sp20;
             temp_r30_1502->unk3C = 1.0f;
             SetIdleState(temp_r30_1502);
         } else {
             M2C_STRUCT_COPY(temp_r30_1502, &Matrix::identity, 0x40);
             M2C_FIELD(temp_r30_1502, f32 *, 0x30) = (f32) sp18;
-            temp_r30_1502->unk34 = unksp1C;
+            temp_r30_1502->unk34 = (*(f32 *) ((u8 *) &sp18 + 0x4));
             temp_r30_1502->unk38 = (f32) sp20;
             temp_r30_1502->unk3C = 1.0f;
             SetFlyingLoopState(temp_r30_1502);

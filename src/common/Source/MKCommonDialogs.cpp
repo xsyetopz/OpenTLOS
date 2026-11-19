@@ -494,10 +494,10 @@ loop_13:
     MKWidget_Resize((MKWidget *) this->unk0, *((MKVector3 *) &sp48));
     MKWidget_GetMousePos(&sp58);
     var_f2_1047 = sp58.unk4;
-    if ((var_f2_1047 + unksp4C) < 512.0f) {
+    if ((var_f2_1047 + (*(f32 *) ((u8 *) &sp48 + 0x4))) < 512.0f) {
 
     } else {
-        var_f2_1047 -= unksp4C;
+        var_f2_1047 -= (*(f32 *) ((u8 *) &sp48 + 0x4));
     }
     var_f3_1057 = M2C_BITWISE(f32, sp58);
     if ((var_f3_1057 + (f32) sp48) < 640.0f) {

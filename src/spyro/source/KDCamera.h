@@ -299,7 +299,7 @@ inline s32 KDCamera::IgnoreCollision(MKCollisionResult &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: undefined identifier 'KDMath_GetYaw'
 inline void KDCamera::GetYaw() {
     f64 sp10;
     f64 sp8;
@@ -308,13 +308,13 @@ inline void KDCamera::GetYaw() {
     temp_r3_2251 = this->unk8;
     sp8 = M2C_FIELD(temp_r3_2251, f64 *, 0x20);
     sp10 = M2C_FIELD(temp_r3_2251, f64 *, 0x28);
-    if ((((f32) sp10 * (f32) sp10) + (((f32) sp8 * (f32) sp8) + (unkspC * unkspC))) != 0.0f) {
+    if ((((f32) sp10 * (f32) sp10) + (((f32) sp8 * (f32) sp8) + ((*(f32 *) ((u8 *) &sp8 + 0x4)) * (*(f32 *) ((u8 *) &sp8 + 0x4))))) != 0.0f) {
         NormaliseAngle(KDMath_GetYaw(*((MKVector3 *) &sp8)));
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 inline void KDCamera::GetXZDir() {
     f64 sp48;
     f64 sp40;
@@ -345,7 +345,7 @@ inline void KDCamera::GetXZDir() {
     sp18 = (f32) sp48;
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
-    var_f5_2670 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f5_2670 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f5_2670 > 1e-12f) {
         if (var_f5_2670 > 0.0f) {
             temp_f1_2675 = __frsqrte(var_f5_2670);
@@ -382,7 +382,7 @@ inline void KDCamera::GetXZDir() {
         }
         var_f4_2648 = 1.0f / var_f5_2670;
     }
-    sp24 = unksp34 * var_f4_2648;
+    sp24 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f4_2648;
     sp20 = (f32) sp30 * var_f4_2648;
     sp28 = (f32) sp38 * var_f4_2648;
     M2C_FIELD(this, f64 *, 0) = (f64) sp20;

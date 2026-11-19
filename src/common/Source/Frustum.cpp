@@ -4,7 +4,7 @@
 #include "common/Source/Matrix.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unksp144'
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     Matrix sp150;
     f64 sp148;
@@ -99,9 +99,9 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     sp58 = arg1->unk8 + (f32) sp138;
     sp148 = (f64) sp58;
     spF0 = sp50;
-    sp90 = arg0->unk30 + (((f32) sp148 * arg0->unk20) + (((f32) sp140 * arg0->unk0) + (unksp144 * arg0->unk10)));
-    sp94 = arg0->unk34 + (((f32) sp148 * arg0->unk24) + (((f32) sp140 * arg0->unk4) + (unksp144 * arg0->unk14)));
-    sp98 = arg0->unk38 + (((f32) sp148 * arg0->unk28) + (((f32) sp140 * arg0->unk8) + (unksp144 * arg0->unk18)));
+    sp90 = arg0->unk30 + (((f32) sp148 * arg0->unk20) + (((f32) sp140 * arg0->unk0) + ((*(f32 *) ((u8 *) &sp140 + 0x4)) * arg0->unk10)));
+    sp94 = arg0->unk34 + (((f32) sp148 * arg0->unk24) + (((f32) sp140 * arg0->unk4) + ((*(f32 *) ((u8 *) &sp140 + 0x4)) * arg0->unk14)));
+    sp98 = arg0->unk38 + (((f32) sp148 * arg0->unk28) + (((f32) sp140 * arg0->unk8) + ((*(f32 *) ((u8 *) &sp140 + 0x4)) * arg0->unk18)));
     spE0 = (f64) sp90;
     spF8 = (f64) sp58;
     spE8 = (f64) sp98;
@@ -119,7 +119,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     sp74 = (temp_f2_117 * sp150.unk24) + ((temp_f1_111 * sp150.unk4) + (temp_f0_107 * sp150.unk14));
     sp78 = (temp_f2_117 * sp150.unk28) + ((temp_f1_111 * sp150.unk8) + (temp_f0_107 * sp150.unk18));
     sp110 = (f64) sp70;
-    var_f29_135 = unksp114;
+    var_f29_135 = (*(f32 *) ((u8 *) &sp110 + 0x4));
     sp118 = (f64) sp78;
     if (var_f29_135 < 0.0f) {
         var_f29_135 = -var_f29_135;
@@ -133,7 +133,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
         var_f28_147 = -var_f28_147;
     }
     temp_f27_158 = var_f28_147 + (var_f13_141 + var_f29_135);
-    temp_f1_162 = ((f32) sp128 * temp_f2_117) + (((f32) sp120 * temp_f1_111) + (unksp124 * temp_f0_107));
+    temp_f1_162 = ((f32) sp128 * temp_f2_117) + (((f32) sp120 * temp_f1_111) + ((*(f32 *) ((u8 *) &sp120 + 0x4)) * temp_f0_107));
     if ((temp_f1_162 < (this->unk60 - temp_f27_158)) || (temp_f1_162 > (this->unk64 + temp_f27_158))) {
         return 0;
     }
@@ -144,7 +144,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     sp44 = (temp_f1_176 * sp150.unk24) + ((temp_f0_174 * sp150.unk4) + (temp_f28_173 * sp150.unk14));
     sp48 = (temp_f1_176 * sp150.unk28) + ((temp_f0_174 * sp150.unk8) + (temp_f28_173 * sp150.unk18));
     sp110 = (f64) sp40;
-    var_f31_192 = unksp114;
+    var_f31_192 = (*(f32 *) ((u8 *) &sp110 + 0x4));
     spD0 = (f64) sp40;
     spD8 = (f64) sp48;
     sp118 = (f64) sp48;
@@ -159,7 +159,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     if (var_f28_208 < 0.0f) {
         var_f28_208 = -var_f28_208;
     }
-    if ((((f32) sp128 * temp_f1_176) + (((f32) sp120 * temp_f0_174) + (unksp124 * temp_f28_173))) < -(var_f28_208 + (var_f27_200 + var_f31_192))) {
+    if ((((f32) sp128 * temp_f1_176) + (((f32) sp120 * temp_f0_174) + ((*(f32 *) ((u8 *) &sp120 + 0x4)) * temp_f28_173))) < -(var_f28_208 + (var_f27_200 + var_f31_192))) {
         return 0;
     }
     temp_f28_224 = this->unk24;
@@ -169,7 +169,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     sp34 = (temp_f1_227 * sp150.unk24) + ((temp_f0_225 * sp150.unk4) + (temp_f28_224 * sp150.unk14));
     sp38 = (temp_f1_227 * sp150.unk28) + ((temp_f0_225 * sp150.unk8) + (temp_f28_224 * sp150.unk18));
     sp110 = (f64) sp30;
-    var_f31_243 = unksp114;
+    var_f31_243 = (*(f32 *) ((u8 *) &sp110 + 0x4));
     spC0 = (f64) sp30;
     spC8 = (f64) sp38;
     sp118 = (f64) sp38;
@@ -184,7 +184,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     if (var_f28_259 < 0.0f) {
         var_f28_259 = -var_f28_259;
     }
-    if ((((f32) sp128 * temp_f1_227) + (((f32) sp120 * temp_f0_225) + (unksp124 * temp_f28_224))) < -(var_f28_259 + (var_f27_251 + var_f31_243))) {
+    if ((((f32) sp128 * temp_f1_227) + (((f32) sp120 * temp_f0_225) + ((*(f32 *) ((u8 *) &sp120 + 0x4)) * temp_f28_224))) < -(var_f28_259 + (var_f27_251 + var_f31_243))) {
         return 0;
     }
     temp_f28_275 = this->unk34;
@@ -194,7 +194,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     sp24 = (temp_f1_278 * sp150.unk24) + ((temp_f0_276 * sp150.unk4) + (temp_f28_275 * sp150.unk14));
     sp28 = (temp_f1_278 * sp150.unk28) + ((temp_f0_276 * sp150.unk8) + (temp_f28_275 * sp150.unk18));
     sp110 = (f64) sp20;
-    var_f29_294 = unksp114;
+    var_f29_294 = (*(f32 *) ((u8 *) &sp110 + 0x4));
     spB0 = (f64) sp20;
     spB8 = (f64) sp28;
     sp118 = (f64) sp28;
@@ -209,7 +209,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     if (var_f28_310 < 0.0f) {
         var_f28_310 = -var_f28_310;
     }
-    if ((((f32) sp128 * temp_f1_278) + (((f32) sp120 * temp_f0_276) + (unksp124 * temp_f28_275))) < -(var_f28_310 + (var_f27_302 + var_f29_294))) {
+    if ((((f32) sp128 * temp_f1_278) + (((f32) sp120 * temp_f0_276) + ((*(f32 *) ((u8 *) &sp120 + 0x4)) * temp_f28_275))) < -(var_f28_310 + (var_f27_302 + var_f29_294))) {
         return 0;
     }
     temp_f28_326 = this->unk44;
@@ -219,7 +219,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     sp14 = (temp_f1_329 * sp150.unk24) + ((temp_f0_327 * sp150.unk4) + (temp_f28_326 * sp150.unk14));
     sp18 = (temp_f1_329 * sp150.unk28) + ((temp_f0_327 * sp150.unk8) + (temp_f28_326 * sp150.unk18));
     sp110 = (f64) sp10;
-    var_f6_345 = unksp114;
+    var_f6_345 = (*(f32 *) ((u8 *) &sp110 + 0x4));
     spA0 = (f64) sp10;
     spA8 = (f64) sp18;
     sp118 = (f64) sp18;
@@ -234,14 +234,13 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     if (var_f5_361 < 0.0f) {
         var_f5_361 = -var_f5_361;
     }
-    if ((((f32) sp128 * temp_f1_329) + (((f32) sp120 * temp_f0_327) + (unksp124 * temp_f28_326))) < -(var_f5_361 + (var_f7_353 + var_f6_345))) {
+    if ((((f32) sp128 * temp_f1_329) + (((f32) sp120 * temp_f0_327) + ((*(f32 *) ((u8 *) &sp120 + 0x4)) * temp_f28_326))) < -(var_f5_361 + (var_f7_353 + var_f6_345))) {
         return 0;
     }
     return 1;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp5C'
 s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
     f64 sp60;
     f64 sp58;
@@ -301,7 +300,7 @@ s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
     sp8 = sp48 - this->unk50;
     temp_f8_434 = this->unk4;
     sp10 = (f32) sp50 - this->unk58;
-    var_f5_438 = temp_f8_434 * unksp5C;
+    var_f5_438 = temp_f8_434 * (*(f32 *) ((u8 *) &sp58 + 0x4));
     sp38 = sp8;
     sp40 = (f64) sp10;
     if (var_f5_438 < 0.0f) {
@@ -318,12 +317,12 @@ s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
         var_f7_456 = -var_f7_456;
     }
     temp_f7_466 = var_f7_456 + (var_f3_449 + var_f5_438);
-    temp_f5_470 = ((f32) sp40 * temp_f10_454) + (((f32) sp38 * temp_f9_446) + (unksp3C * temp_f8_434));
+    temp_f5_470 = ((f32) sp40 * temp_f10_454) + (((f32) sp38 * temp_f9_446) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * temp_f8_434));
     if ((temp_f5_470 < (this->unk60 - temp_f7_466)) || (temp_f5_470 > (this->unk64 + temp_f7_466))) {
         return 0;
     }
     temp_f6_481 = this->unk14;
-    var_f8_483 = temp_f6_481 * unksp5C;
+    var_f8_483 = temp_f6_481 * (*(f32 *) ((u8 *) &sp58 + 0x4));
     if (var_f8_483 < 0.0f) {
         var_f8_483 = -var_f8_483;
     }
@@ -337,11 +336,11 @@ s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
     if (var_f7_499 < 0.0f) {
         var_f7_499 = -var_f7_499;
     }
-    if ((((f32) sp40 * temp_f11_497) + (((f32) sp38 * temp_f10_488) + (unksp3C * temp_f6_481))) < -(var_f7_499 + (var_f9_491 + var_f8_483))) {
+    if ((((f32) sp40 * temp_f11_497) + (((f32) sp38 * temp_f10_488) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * temp_f6_481))) < -(var_f7_499 + (var_f9_491 + var_f8_483))) {
         return 0;
     }
     temp_f6_515 = this->unk24;
-    var_f8_517 = temp_f6_515 * unksp5C;
+    var_f8_517 = temp_f6_515 * (*(f32 *) ((u8 *) &sp58 + 0x4));
     if (var_f8_517 < 0.0f) {
         var_f8_517 = -var_f8_517;
     }
@@ -355,11 +354,11 @@ s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
     if (var_f7_533 < 0.0f) {
         var_f7_533 = -var_f7_533;
     }
-    if ((((f32) sp40 * temp_f11_531) + (((f32) sp38 * temp_f10_522) + (unksp3C * temp_f6_515))) < -(var_f7_533 + (var_f9_525 + var_f8_517))) {
+    if ((((f32) sp40 * temp_f11_531) + (((f32) sp38 * temp_f10_522) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * temp_f6_515))) < -(var_f7_533 + (var_f9_525 + var_f8_517))) {
         return 0;
     }
     temp_f6_549 = this->unk34;
-    var_f8_551 = temp_f6_549 * unksp5C;
+    var_f8_551 = temp_f6_549 * (*(f32 *) ((u8 *) &sp58 + 0x4));
     if (var_f8_551 < 0.0f) {
         var_f8_551 = -var_f8_551;
     }
@@ -373,11 +372,11 @@ s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
     if (var_f7_567 < 0.0f) {
         var_f7_567 = -var_f7_567;
     }
-    if ((((f32) sp40 * temp_f11_565) + (((f32) sp38 * temp_f10_556) + (unksp3C * temp_f6_549))) < -(var_f7_567 + (var_f9_559 + var_f8_551))) {
+    if ((((f32) sp40 * temp_f11_565) + (((f32) sp38 * temp_f10_556) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * temp_f6_549))) < -(var_f7_567 + (var_f9_559 + var_f8_551))) {
         return 0;
     }
     temp_f7_583 = this->unk44;
-    var_f5_585 = temp_f7_583 * unksp5C;
+    var_f5_585 = temp_f7_583 * (*(f32 *) ((u8 *) &sp58 + 0x4));
     if (var_f5_585 < 0.0f) {
         var_f5_585 = -var_f5_585;
     }
@@ -391,14 +390,12 @@ s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
     if (var_f4_601 < 0.0f) {
         var_f4_601 = -var_f4_601;
     }
-    if ((((f32) sp40 * temp_f7_599) + (((f32) sp38 * temp_f8_590) + (unksp3C * temp_f7_583))) < -(var_f4_601 + (var_f6_593 + var_f5_585))) {
+    if ((((f32) sp40 * temp_f7_599) + (((f32) sp38 * temp_f8_590) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * temp_f7_583))) < -(var_f4_601 + (var_f6_593 + var_f5_585))) {
         return 0;
     }
     return 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1C'
 s32 Frustum::IsVisible(const MKVector3 &arg0, float arg1) const {
     f64 sp20;
     f64 sp18;
@@ -412,15 +409,14 @@ s32 Frustum::IsVisible(const MKVector3 &arg0, float arg1) const {
     sp18 = sp8;
     sp10 = arg0.unk8 - this->unk58;
     sp20 = (f64) sp10;
-    temp_f4_650 = ((f32) sp20 * this->unk8) + (((f32) sp18 * this->unk0) + (unksp1C * this->unk4));
+    temp_f4_650 = ((f32) sp20 * this->unk8) + (((f32) sp18 * this->unk0) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * this->unk4));
     if ((temp_f4_650 < (this->unk60 - arg1)) || (temp_f4_650 > (this->unk64 + arg1))) {
         return 0;
     }
     temp_f6_662 = -arg1;
     var_r0_664 = 0;
-    if (((((f32) sp20 * this->unk18) + (((f32) sp18 * this->unk10) + (unksp1C * this->unk14))) > temp_f6_662) && ((((f32) sp20 * this->unk28) + (((f32) sp18 * this->unk20) + (unksp1C * this->unk24))) > temp_f6_662) && ((((f32) sp20 * this->unk38) + (((f32) sp18 * this->unk30) + (unksp1C * this->unk34))) > temp_f6_662) && ((((f32) sp20 * this->unk48) + (((f32) sp18 * this->unk40) + (unksp1C * this->unk44))) > temp_f6_662)) {
+    if (((((f32) sp20 * this->unk18) + (((f32) sp18 * this->unk10) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * this->unk14))) > temp_f6_662) && ((((f32) sp20 * this->unk28) + (((f32) sp18 * this->unk20) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * this->unk24))) > temp_f6_662) && ((((f32) sp20 * this->unk38) + (((f32) sp18 * this->unk30) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * this->unk34))) > temp_f6_662) && ((((f32) sp20 * this->unk48) + (((f32) sp18 * this->unk40) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * this->unk44))) > temp_f6_662)) {
         var_r0_664 = 1;
     }
     return var_r0_664;
 }
-#endif

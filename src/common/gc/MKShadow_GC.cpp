@@ -226,8 +226,8 @@ loop_15:
                 var_r29_347 = (Matrix *) &arg0->unk50;
             }
         }
-        unkspD4 = -1;
-        unkspE4 = -1;
+        (*(s32 *) ((u8 *) &spD0 + 0x4)) = -1;
+        (*(s32 *) ((u8 *) &spE0 + 0x4)) = -1;
         GXSetChanCtrl(GX_COLOR0A0, 0U, GX_SRC_REG, GX_SRC_VTX, 0U, GX_DF_CLAMP, GX_AF_SPOT);
         MK_SetVDMode((MK_VertexDescriptorMode) 1);
         temp_r28_419 = M2C_FIELD(arg0->unk0, MKHeap **, 0x44)->unk4;

@@ -270,7 +270,7 @@ loop_5:
             sp10 = (0.5f * M2C_FIELD(temp_r3_447, f32 *, 0x18)) + M2C_FIELD(temp_r3_447, f32 *, 8);
             sp18 = (f64) sp8;
             sp20 = (f64) sp10;
-            temp_f2_466 = temp_f27_434 - unksp1C;
+            temp_f2_466 = temp_f27_434 - (*(f32 *) ((u8 *) &sp18 + 0x4));
             temp_f3_467 = temp_f28_436 - (f32) sp18;
             temp_f2_470 = temp_f29_437 - (f32) sp20;
             temp_f0_474 = (temp_f2_470 * temp_f2_470) + ((temp_f3_467 * temp_f3_467) + (temp_f2_466 * temp_f2_466));
@@ -479,7 +479,7 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
                 spA8 = sp38;
                 sp40 = (f32) spC0 - temp_r3_711->unk38;
                 spB0 = (f64) sp40;
-                M2C_FIELD(temp_r29_709, f32 *, 4) = (f32) (((f32) spB0 * temp_r3_711->unk28) + (((f32) spA8 * temp_r3_711->unk20) + (unkspAC * temp_r3_711->unk24)));
+                M2C_FIELD(temp_r29_709, f32 *, 4) = (f32) (((f32) spB0 * temp_r3_711->unk28) + (((f32) spA8 * temp_r3_711->unk20) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * temp_r3_711->unk24)));
                 return;
             }
             temp_r3_742 = this->unk264;
@@ -496,7 +496,7 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
             sp88 = sp28;
             sp30 = (f32) spA0 - temp_r3_749->unk38;
             sp90 = (f64) sp30;
-            M2C_FIELD(temp_r29_747, f32 *, 4) = (f32) (((f32) sp90 * temp_r3_749->unk28) + (((f32) sp88 * temp_r3_749->unk20) + (unksp8C * temp_r3_749->unk24)));
+            M2C_FIELD(temp_r29_747, f32 *, 4) = (f32) (((f32) sp90 * temp_r3_749->unk28) + (((f32) sp88 * temp_r3_749->unk20) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * temp_r3_749->unk24)));
             return;
         }
         if ((temp_r3_662 & 0x480) || ((this->unk13C & 2) && (arg0->unk20 != 1.0f))) {
@@ -515,7 +515,7 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
                 sp68 = sp18;
                 sp20 = (f32) sp80 - temp_r3_799->unk38;
                 sp70 = (f64) sp20;
-                M2C_FIELD(temp_r29_797, f32 *, 4) = (f32) (((f32) sp70 * temp_r3_799->unk28) + (((f32) sp68 * temp_r3_799->unk20) + (unksp6C * temp_r3_799->unk24)));
+                M2C_FIELD(temp_r29_797, f32 *, 4) = (f32) (((f32) sp70 * temp_r3_799->unk28) + (((f32) sp68 * temp_r3_799->unk20) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * temp_r3_799->unk24)));
                 return;
             }
             temp_r3_830 = this->unk258;
@@ -532,7 +532,7 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
             sp48 = sp8;
             sp10 = (f32) sp60 - temp_r3_837->unk38;
             sp50 = (f64) sp10;
-            M2C_FIELD(temp_r29_835, f32 *, 4) = (f32) (((f32) sp50 * temp_r3_837->unk28) + (((f32) sp48 * temp_r3_837->unk20) + (unksp4C * temp_r3_837->unk24)));
+            M2C_FIELD(temp_r29_835, f32 *, 4) = (f32) (((f32) sp50 * temp_r3_837->unk28) + (((f32) sp48 * temp_r3_837->unk20) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * temp_r3_837->unk24)));
             return;
         }
         temp_r3_868 = arg0->unk0;
@@ -546,7 +546,6 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
 void MKDistanceLevelChunk::CheckPropVisRecursive(SMNode *arg0, int arg1) {
     f64 sp10;
     f64 sp8;
@@ -582,7 +581,7 @@ void MKDistanceLevelChunk::CheckPropVisRecursive(SMNode *arg0, int arg1) {
             temp_r3_930 = temp_r6_905->unk8;
             sp8 = M2C_FIELD(temp_r3_930, f64 *, 0x30);
             sp10 = M2C_FIELD(temp_r3_930, f64 *, 0x38);
-            temp_f2_939 = unkspC - this->unk254;
+            temp_f2_939 = (*(f32 *) ((u8 *) &sp8 + 0x4)) - this->unk254;
             temp_f4_943 = (f32) sp8 - this->unk250;
             temp_f5_947 = (f32) sp10 - this->unk250;
             var_f6_950 = M2C_FIELD(gMK, f32 *, 8);
@@ -628,7 +627,6 @@ block_15:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void MKDistanceLevelChunk::CalcGlobalPropVis() {
@@ -732,7 +730,7 @@ loop_32:
                     spA8 = sp38;
                     sp40 = (f32) spC0 - temp_r3_1097->unk38;
                     spB0 = (f64) sp40;
-                    M2C_FIELD(temp_r28_1095, f32 *, 4) = (f32) (((f32) spB0 * temp_r3_1097->unk28) + (((f32) spA8 * temp_r3_1097->unk20) + (unkspAC * temp_r3_1097->unk24)));
+                    M2C_FIELD(temp_r28_1095, f32 *, 4) = (f32) (((f32) spB0 * temp_r3_1097->unk28) + (((f32) spA8 * temp_r3_1097->unk20) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * temp_r3_1097->unk24)));
                 } else {
                     temp_r3_1128 = this->unk264;
                     this->unk264 = temp_r3_1128 + 1;
@@ -748,7 +746,7 @@ loop_32:
                     sp88 = sp28;
                     sp30 = (f32) spA0 - temp_r3_1135->unk38;
                     sp90 = (f64) sp30;
-                    M2C_FIELD(temp_r28_1133, f32 *, 4) = (f32) (((f32) sp90 * temp_r3_1135->unk28) + (((f32) sp88 * temp_r3_1135->unk20) + (unksp8C * temp_r3_1135->unk24)));
+                    M2C_FIELD(temp_r28_1133, f32 *, 4) = (f32) (((f32) sp90 * temp_r3_1135->unk28) + (((f32) sp88 * temp_r3_1135->unk20) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * temp_r3_1135->unk24)));
                 }
             } else if (!(temp_r3_1042 & 0x480)) {
                 temp_r3_1168 = M2C_FIELD(var_r31_1023, MKPropDescriptor **, 0);
@@ -774,7 +772,7 @@ loop_32:
                     sp68 = sp18;
                     sp20 = (f32) sp80 - temp_r3_1195->unk38;
                     sp70 = (f64) sp20;
-                    M2C_FIELD(temp_r28_1193, f32 *, 4) = (f32) (((f32) sp70 * temp_r3_1195->unk28) + (((f32) sp68 * temp_r3_1195->unk20) + (unksp6C * temp_r3_1195->unk24)));
+                    M2C_FIELD(temp_r28_1193, f32 *, 4) = (f32) (((f32) sp70 * temp_r3_1195->unk28) + (((f32) sp68 * temp_r3_1195->unk20) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * temp_r3_1195->unk24)));
                 } else {
                     temp_r3_1226 = this->unk258;
                     this->unk258 = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r3_1226) + 1));
@@ -790,7 +788,7 @@ loop_32:
                     sp48 = sp8;
                     sp10 = (f32) sp60 - temp_r3_1233->unk38;
                     sp50 = (f64) sp10;
-                    M2C_FIELD(temp_r28_1231, f32 *, 4) = (f32) (((f32) sp50 * temp_r3_1233->unk28) + (((f32) sp48 * temp_r3_1233->unk20) + (unksp4C * temp_r3_1233->unk24)));
+                    M2C_FIELD(temp_r28_1231, f32 *, 4) = (f32) (((f32) sp50 * temp_r3_1233->unk28) + (((f32) sp48 * temp_r3_1233->unk20) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * temp_r3_1233->unk24)));
                 }
             } else {
                 temp_r3_1264 = M2C_FIELD(var_r31_1023, MKPropDescriptor **, 0);
@@ -854,7 +852,7 @@ loop_18:
                 temp_r3_1347 = M2C_FIELD(var_r31_1299, Matrix **, 8);
                 sp18 = M2C_FIELD(temp_r3_1347, f64 *, 0x30);
                 sp20 = M2C_FIELD(temp_r3_1347, f64 *, 0x38);
-                temp_f2_1356 = unksp1C - this->unk254;
+                temp_f2_1356 = (*(f32 *) ((u8 *) &sp18 + 0x4)) - this->unk254;
                 temp_f4_1360 = (f32) sp18 - this->unk250;
                 temp_f5_1364 = (f32) sp20 - this->unk250;
                 var_f6_1367 = M2C_FIELD(gMK, f32 *, 8);
@@ -1913,7 +1911,7 @@ loop_20:
                     temp_r3_3268 = temp_r4_3245->unk8;
                     sp20 = M2C_FIELD(temp_r3_3268, f64 *, 0x30);
                     sp28 = M2C_FIELD(temp_r3_3268, f64 *, 0x38);
-                    temp_f4_3277 = unksp24 - M2C_FIELD(this, f32 *, 0x15C);
+                    temp_f4_3277 = (*(f32 *) ((u8 *) &sp20 + 0x4)) - M2C_FIELD(this, f32 *, 0x15C);
                     temp_f3_3278 = (f32) sp20 - M2C_FIELD(this, f32 *, 0x158);
                     temp_f2_3282 = (f32) sp28 - M2C_FIELD(this, f32 *, 0x160);
                     temp_r4_3245->unk24 = (temp_f2_3282 * temp_f2_3282) + ((temp_f3_3278 * temp_f3_3278) + (temp_f4_3277 * temp_f4_3277));
@@ -1946,7 +1944,7 @@ loop_35:
                 temp_r3_3340 = M2C_FIELD(var_r31_3314, void **, 8);
                 sp10 = M2C_FIELD(temp_r3_3340, f64 *, 0x30);
                 sp18 = M2C_FIELD(temp_r3_3340, f64 *, 0x38);
-                temp_f4_3349 = unksp14 - M2C_FIELD(this, f32 *, 0x15C);
+                temp_f4_3349 = (*(f32 *) ((u8 *) &sp10 + 0x4)) - M2C_FIELD(this, f32 *, 0x15C);
                 temp_f3_3350 = (f32) sp10 - M2C_FIELD(this, f32 *, 0x158);
                 temp_f2_3354 = (f32) sp18 - M2C_FIELD(this, f32 *, 0x160);
                 M2C_FIELD(var_r31_3314, f32 *, 0x24) = (f32) ((temp_f2_3354 * temp_f2_3354) + ((temp_f3_3350 * temp_f3_3350) + (temp_f4_3349 * temp_f4_3349)));
@@ -2424,7 +2422,6 @@ void MKDistanceLevelChunk::Init(MKLevelChunk::MKLevelChunkInit *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp7C'
 void CalcBoundingBox(MKProp *arg0, BoundingVolume *arg1) {
     f64 spD0;                                       /* compiler-managed */
     f64 spC8;
@@ -2499,8 +2496,8 @@ void CalcBoundingBox(MKProp *arg0, BoundingVolume *arg1) {
     sp98 = (f64) sp68;
     spC0 = temp_f8_4121;
     spD0 = temp_f8_4121;
-    unksp7C += temp_f3_4128;
-    unksp9C += temp_f3_4128;
+    (*(f32 *) ((u8 *) &sp78 + 0x4)) += temp_f3_4128;
+    (*(f32 *) ((u8 *) &sp98 + 0x4)) += temp_f3_4128;
     sp58 = temp_f9_4119;
     sp60 = temp_f8_4121;
     sp70 = temp_f8_4121;
@@ -2555,7 +2552,7 @@ void CalcBoundingBox(MKProp *arg0, BoundingVolume *arg1) {
         } else {
             var_f2_4231 = temp_f1_4224;
         }
-        var_f0_4239 = unksp4C;
+        var_f0_4239 = (*(f32 *) ((u8 *) &sp30 + 0x1c));
         temp_f1_4240 = M2C_FIELD(temp_r5_4223, f32 *, 4);
         sp38 = var_f2_4231;
         if (var_f0_4239 < temp_f1_4240) {
@@ -2563,9 +2560,9 @@ void CalcBoundingBox(MKProp *arg0, BoundingVolume *arg1) {
         } else {
             var_f0_4239 = temp_f1_4240;
         }
-        var_f1_4248 = unksp3C;
+        var_f1_4248 = (*(f32 *) ((u8 *) &sp30 + 0xc));
         temp_f2_4249 = M2C_FIELD(temp_r5_4223, f32 *, 4);
-        unksp4C = var_f0_4239;
+        (*(f32 *) ((u8 *) &sp30 + 0x1c)) = var_f0_4239;
         if (var_f1_4248 > temp_f2_4249) {
 
         } else {
@@ -2573,7 +2570,7 @@ void CalcBoundingBox(MKProp *arg0, BoundingVolume *arg1) {
         }
         var_f0_4257 = (f32) sp50;
         temp_f2_4258 = M2C_FIELD(temp_r5_4223, f32 *, 8);
-        unksp3C = var_f1_4248;
+        (*(f32 *) ((u8 *) &sp30 + 0xc)) = var_f1_4248;
         if (var_f0_4257 < temp_f2_4258) {
 
         } else {
@@ -2592,13 +2589,12 @@ void CalcBoundingBox(MKProp *arg0, BoundingVolume *arg1) {
         var_ctr_4219 -= 1;
     } while (var_ctr_4219 != 0);
     arg1->unk0 = sp48;
-    arg1->unk4 = unksp4C;
+    arg1->unk4 = (*(f32 *) ((u8 *) &sp30 + 0x1c));
     arg1->unk8 = sp50;
     arg1->unk10 = sp38 - sp48;
-    arg1->unk14 = unksp3C - unksp4C;
+    arg1->unk14 = (*(f32 *) ((u8 *) &sp30 + 0xc)) - (*(f32 *) ((u8 *) &sp30 + 0x1c));
     arg1->unk18 = (f32) var_f1_4266 - sp50;
 }
-#endif
 
 s32 SortPropCompare(const void *arg0, const void *arg1) {
     return (s32) (M2C_FIELD(arg0, f32 *, 4) - M2C_FIELD(arg1, f32 *, 4));

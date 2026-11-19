@@ -570,7 +570,6 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp84'
 f32 Xform3D2D(MKVector3 *arg0, const MKVector3 &arg1, Matrix *arg2) {
     f64 sp80;
     f64 sp78;
@@ -604,17 +603,17 @@ f32 Xform3D2D(MKVector3 *arg0, const MKVector3 &arg1, Matrix *arg2) {
     sp78 = (f64) sp38;
     sp44 = 1.0f;
     sp80 = (f64) sp40;
-    sp30 = (unksp84 * arg2->unk38) + (((f32) sp80 * arg2->unk28) + (((f32) sp78 * arg2->unk8) + (unksp7C * arg2->unk18)));
-    temp_f4_1043 = (unksp84 * arg2->unk34) + (((f32) sp80 * arg2->unk24) + (((f32) sp78 * arg2->unk4) + (unksp7C * arg2->unk14)));
-    sp34 = (unksp84 * arg2->unk3C) + (((f32) sp80 * arg2->unk2C) + (((f32) sp78 * arg2->unkC) + (unksp7C * arg2->unk1C)));
-    sp28 = (unksp84 * arg2->unk30) + (((f32) sp80 * arg2->unk20) + (((f32) sp78 * arg2->unk0) + (unksp7C * arg2->unk10)));
+    sp30 = ((*(f32 *) ((u8 *) &sp80 + 0x4)) * arg2->unk38) + (((f32) sp80 * arg2->unk28) + (((f32) sp78 * arg2->unk8) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * arg2->unk18)));
+    temp_f4_1043 = ((*(f32 *) ((u8 *) &sp80 + 0x4)) * arg2->unk34) + (((f32) sp80 * arg2->unk24) + (((f32) sp78 * arg2->unk4) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * arg2->unk14)));
+    sp34 = ((*(f32 *) ((u8 *) &sp80 + 0x4)) * arg2->unk3C) + (((f32) sp80 * arg2->unk2C) + (((f32) sp78 * arg2->unkC) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * arg2->unk1C)));
+    sp28 = ((*(f32 *) ((u8 *) &sp80 + 0x4)) * arg2->unk30) + (((f32) sp80 * arg2->unk20) + (((f32) sp78 * arg2->unk0) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * arg2->unk10)));
     sp80 = (f64) sp30;
     sp2C = temp_f4_1043;
     sp70 = (f64) sp30;
     sp68 = (f64) sp28;
     sp78 = (f64) sp28;
-    if (unksp84 != 0.0f) {
-        temp_f2_1057 = 1.0f / unksp84;
+    if ((*(f32 *) ((u8 *) &sp80 + 0x4)) != 0.0f) {
+        temp_f2_1057 = 1.0f / (*(f32 *) ((u8 *) &sp80 + 0x4));
         sp18 = sp78 * (f64) temp_f2_1057;
         M2C_FIELD(arg0, f64 *, 0) = sp18;
         sp20 = (f32) sp80 * temp_f2_1057;
@@ -653,9 +652,8 @@ f32 Xform3D2D(MKVector3 *arg0, const MKVector3 &arg1, Matrix *arg2) {
         var_f0_1112 = 0.0f;
     }
     arg0->unk4 = var_f0_1112;
-    return unksp84;
+    return (*(f32 *) ((u8 *) &sp80 + 0x4));
 }
-#endif
 
 void ShotgunWarpFX::Update() {
     UpdateWarp();

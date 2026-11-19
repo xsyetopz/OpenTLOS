@@ -203,7 +203,7 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
             spD8 = (temp_f8_377 * temp_f7_379) - (temp_f6_382 * temp_f2_381);
             sp1F0 = (f64) spD0;
             sp1F8 = (f64) spD8;
-            temp_f30_403 = (arg0->unk8 * (f32) sp1F8) + ((arg0->unk0 * (f32) sp1F0) + (arg0->unk4 * unksp1F4));
+            temp_f30_403 = (arg0->unk8 * (f32) sp1F8) + ((arg0->unk0 * (f32) sp1F0) + (arg0->unk4 * (*(f32 *) ((u8 *) &sp1F0 + 0x4))));
             sp70 = (f64) spD0 * (f64) temp_f30_403;
             sp78 = (f32) sp1F8 * temp_f30_403;
             M2C_FIELD(arg0, f64 *, 0) = sp70;
@@ -249,7 +249,7 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
         M2C_FIELD(arg0, f64 *, 8) = (f64) sp120.unk8;
         sp1D0 = (f64) M2C_FIELD(temp_r31_275, f32 *, 0x10);
         sp1D8 = (f64) M2C_FIELD(temp_r31_275, f32 *, 0x18);
-        unksp1D4 = 0.0f;
+        (*(f32 *) ((u8 *) &sp1C8 + 0xc)) = 0.0f;
         var_f0_517 = ((f32) sp1D8 * (f32) sp1D8) + (((f32) sp1D0 * (f32) sp1D0) + (0.0f * 0.0f));
         if (var_f0_517 > 0.000001f) {
             if (var_f0_517 > 0.0f) {
@@ -290,7 +290,7 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
             var_f0_517 = 0.0f;
         }
         sp1D0 = (f32) sp1D0 * var_f5_502;
-        unksp1D4 *= var_f5_502;
+        (*(f32 *) ((u8 *) &sp1C8 + 0xc)) *= var_f5_502;
         sp1D8 = (f32) sp1D8 * var_f5_502;
         if (var_f0_517 == 0.0f) {
             var_f29_600 = 0.0f;
@@ -507,10 +507,10 @@ loop_22:
                             sp38 = (f64) sp8;
                             sp40 = (f64) sp10;
                             sp28 = -(f32) sp38;
-                            sp2C = -unksp3C;
+                            sp2C = -(*(f32 *) ((u8 *) &sp38 + 0x4));
                             sp30 = -(f32) sp40;
                             sp48 = (f64) sp28;
-                            unksp4C = 0.2f;
+                            (*(f32 *) ((u8 *) &sp48 + 0x4)) = 0.2f;
                             sp50 = (f64) sp30;
                             sp48 *= 5.634608575e-315;
                             sp84 = 0;
@@ -540,7 +540,7 @@ loop_22:
                                 spB8 = sp20;
                             } else {
                                 spB0 = 0.0f;
-                                unkspB4 = 0.0f;
+                                (*(f32 *) ((u8 *) &spAC + 0x8)) = 0.0f;
                                 spB8 = 0.0f;
                             }
                             spD1 = 0;
@@ -561,7 +561,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1A4'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void CollisionObject::ResolveCollisionsQuick(MKVector3 *arg0, MKVector3 *arg1, int arg2) {
     MKCollisionResult sp1D0;
     u8 sp1B0;
@@ -666,7 +666,7 @@ void CollisionObject::ResolveCollisionsQuick(MKVector3 *arg0, MKVector3 *arg1, i
 
     sp1A0 = M2C_FIELD(arg1, f64 *, 0);
     sp1A8 = M2C_FIELD(arg1, f64 *, 8);
-    var_f5_1100 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + (unksp1A4 * unksp1A4));
+    var_f5_1100 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + ((*(f32 *) ((u8 *) &sp198 + 0xc)) * (*(f32 *) ((u8 *) &sp198 + 0xc))));
     if (var_f5_1100 > 0.000001f) {
         if (var_f5_1100 > 0.0f) {
             temp_f1_1106 = __frsqrte(var_f5_1100);
@@ -708,7 +708,7 @@ void CollisionObject::ResolveCollisionsQuick(MKVector3 *arg0, MKVector3 *arg1, i
     }
     var_f27_1174 = var_f5_1100;
     sp1A0 = (f32) sp1A0 * var_f4_1167;
-    unksp1A4 *= var_f4_1167;
+    (*(f32 *) ((u8 *) &sp198 + 0xc)) *= var_f4_1167;
     sp1A8 = (f32) sp1A8 * var_f4_1167;
     if (!(var_f5_1100 < 0.05f)) {
         temp_f0_1188 = M2C_FIELD(arg0, f64 *, 0) + M2C_FIELD(arg1, f64 *, 0);
@@ -1073,7 +1073,7 @@ loop_50:
             }
             temp_r6_1844 = StoreResult(&spB0, (MKVector3 *) &sp90);
             var_f1_1852 = 0.000001f;
-            temp_f0_1854 = -(((f32) sp98 * spB0.unk18) + (((f32) sp90 * spB0.unk10) + (unksp94 * spB0.unk14)));
+            temp_f0_1854 = -(((f32) sp98 * spB0.unk18) + (((f32) sp90 * spB0.unk10) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * spB0.unk14)));
             if (temp_f0_1854 > var_f1_1852) {
                 var_f1_1852 = temp_f0_1854;
             }
@@ -1387,11 +1387,11 @@ loop_21:
                     var_ctr_2437 -= 1;
                 } while (var_ctr_2437 != 0);
             }
-            if ((unksp4C < unksp3C) || ((unksp4C == unksp3C) && (var_f2_2434 > (0.2f * temp_f3_2385)))) {
+            if (((*(f32 *) ((u8 *) &sp48 + 0x4)) < (*(f32 *) ((u8 *) &sp38 + 0x4))) || (((*(f32 *) ((u8 *) &sp48 + 0x4)) == (*(f32 *) ((u8 *) &sp38 + 0x4))) && (var_f2_2434 > (0.2f * temp_f3_2385)))) {
                 if (var_f2_2434 < (0.9f * temp_f3_2385)) {
-                    unksp4C = unksp3C + var_f30_2397;
+                    (*(f32 *) ((u8 *) &sp48 + 0x4)) = (*(f32 *) ((u8 *) &sp38 + 0x4)) + var_f30_2397;
                 } else {
-                    unksp4C = (0.75f * var_f2_2434) + unksp3C;
+                    (*(f32 *) ((u8 *) &sp48 + 0x4)) = (0.75f * var_f2_2434) + (*(f32 *) ((u8 *) &sp38 + 0x4));
                 }
                 goto loop_21;
             }

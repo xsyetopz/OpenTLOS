@@ -152,7 +152,7 @@ void MiningMoleLeader::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspCC'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MiningMoleLeader::Update() {
     f64 spE0;
     f64 spD8;
@@ -206,7 +206,7 @@ void MiningMoleLeader::Update() {
     spC8 = sp38;
     sp40 = (f32) spE0 - (f32) spB0;
     spD0 = (f64) sp40;
-    var_f4_405 = ((f32) spD0 * (f32) spD0) + (((f32) spC8 * (f32) spC8) + (unkspCC * unkspCC));
+    var_f4_405 = ((f32) spD0 * (f32) spD0) + (((f32) spC8 * (f32) spC8) + ((*(f32 *) ((u8 *) &spB8 + 0x14)) * (*(f32 *) ((u8 *) &spB8 + 0x14))));
     if (var_f4_405 > 0.000001f) {
         if (var_f4_405 > 0.0f) {
             temp_f1_411 = __frsqrte(var_f4_405);
@@ -246,7 +246,7 @@ void MiningMoleLeader::Update() {
         var_f3_472 = 0.0f;
     }
     spC8 = (f32) spC8 * var_f3_472;
-    unkspCC *= var_f3_472;
+    (*(f32 *) ((u8 *) &spB8 + 0x14)) *= var_f3_472;
     spD0 = (f32) spD0 * var_f3_472;
     M2C_FIELD(this, f64 *, 0xE0) = (f64) spC8;
     M2C_FIELD(this, f64 *, 0xE8) = (f64) spD0;
@@ -477,7 +477,7 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
                 spD0 = (f64) sp128;
             }
             spE0.unk30 = (f32) spC8;
-            spE0.unk34 = unkspCC;
+            spE0.unk34 = (*(f32 *) ((u8 *) &spC8 + 0x4));
             spE0.unk38 = (f32) spD0;
             spE0.unk3C = 1.0f;
             ((MoleTether *) this->unkAFC)->SetWorldMatrix(spE0);

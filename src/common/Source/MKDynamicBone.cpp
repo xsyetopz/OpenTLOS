@@ -495,7 +495,7 @@ void MKDynamicBone::Update() {
             var_f29_444 = temp_f22_404;
         }
         sp28 = -(f32) sp5C8;
-        sp2C = -unksp5CC;
+        sp2C = -(*(f32 *) ((u8 *) &sp5C8 + 0x4));
         sp30 = -(f32) sp5D0;
         sp458 = (f64) sp28;
         sp460 = (f64) sp30;
@@ -567,14 +567,14 @@ void MKDynamicBone::Update() {
             sp570 = (f64) sp110;
             sp3C8 = sp108;
             sp3D0 = (f64) sp110;
-            spF8 = (unksp56C * (f32) sp580) - ((f32) sp570 * unksp57C);
+            spF8 = ((*(f32 *) ((u8 *) &sp568 + 0x4)) * (f32) sp580) - ((f32) sp570 * (*(f32 *) ((u8 *) &sp578 + 0x4)));
             spFC = ((f32) sp570 * (f32) sp578) - ((f32) sp568 * (f32) sp580);
-            sp100 = ((f32) sp568 * unksp57C) - (unksp56C * (f32) sp578);
+            sp100 = ((f32) sp568 * (*(f32 *) ((u8 *) &sp578 + 0x4))) - ((*(f32 *) ((u8 *) &sp568 + 0x4)) * (f32) sp578);
             sp548 = (f64) spF8;
             sp550 = (f64) sp100;
             sp3B8 = (f64) spF8;
             sp3C0 = (f64) sp100;
-            var_f28_631 = ((f32) sp550 * (f32) sp550) + (((f32) sp548 * (f32) sp548) + (unksp54C * unksp54C));
+            var_f28_631 = ((f32) sp550 * (f32) sp550) + (((f32) sp548 * (f32) sp548) + ((*(f32 *) ((u8 *) &sp548 + 0x4)) * (*(f32 *) ((u8 *) &sp548 + 0x4))));
             if (var_f28_631 > 0.0f) {
                 temp_f5_634 = __frsqrte(var_f28_631);
                 temp_f5_640 = 0.5 * temp_f5_634 * -(((f64) var_f28_631 * (temp_f5_634 * temp_f5_634)) - 3.0);
@@ -608,7 +608,7 @@ void MKDynamicBone::Update() {
                     var_f28_631 = __float_nan;
                 }
             }
-            temp_f3_698 = ((f32) sp578 * (f32) sp568) + (unksp57C * unksp56C);
+            temp_f3_698 = ((f32) sp578 * (f32) sp568) + ((*(f32 *) ((u8 *) &sp578 + 0x4)) * (*(f32 *) ((u8 *) &sp568 + 0x4)));
             temp_f22_701 = (f32) atan2(var_f28_631, ((f32) sp580 * (f32) sp570) + temp_f3_698, temp_f3_698, (f32) sp568, (f32) sp578);
             if (temp_f22_701 != 0.0f) {
                 sp6A0.SetIdentity();
@@ -628,7 +628,7 @@ void MKDynamicBone::Update() {
                 sp540 = (f64) spF0;
                 sp398 = (f64) spE8;
                 spD8 = -(f32) sp538;
-                spDC = -unksp53C;
+                spDC = -(*(f32 *) ((u8 *) &sp538 + 0x4));
                 spE0 = -(f32) sp540;
                 sp3A0 = (f64) spF0;
                 sp378 = (f64) spD8;
@@ -643,21 +643,21 @@ void MKDynamicBone::Update() {
             sp518 = M2C_BITWISE(f64, sp368);
             sp520 = (f64) sp368.unk8;
             spC8 = (f32) sp518;
-            spCC = unksp51C;
+            spCC = (*(f32 *) ((u8 *) &sp518 + 0x4));
             temp_f8_818 = M2C_FIELD(temp_r31_217, f32 *, 0x60);
             sp208 = this->unk0;
             sp528 = (f64) spC8;
             sp20C = this->unk4;
             spD0 = (f32) sp520;
             sp348 = (f64) sp208;
-            spD4 = -(((f32) sp5B0 * (f32) sp520) + (((f32) sp5A8 * (f32) sp518) + (unksp5AC * unksp51C)));
+            spD4 = -(((f32) sp5B0 * (f32) sp520) + (((f32) sp5A8 * (f32) sp518) + ((*(f32 *) ((u8 *) &sp5A8 + 0x4)) * (*(f32 *) ((u8 *) &sp518 + 0x4)))));
             sp210 = this->unk8;
             sp530 = (f64) spD0;
             sp214 = 1.0f;
             sp350 = (f64) sp210;
             sp358 = (f64) spC8;
             sp360 = (f64) spD0;
-            temp_f0_847 = (unksp534 * unksp354) + (((f32) sp530 * (f32) sp350) + (((f32) sp528 * (f32) sp348) + (unksp52C * unksp34C)));
+            temp_f0_847 = ((*(f32 *) ((u8 *) &sp530 + 0x4)) * (*(f32 *) ((u8 *) &sp350 + 0x4))) + (((f32) sp530 * (f32) sp350) + (((f32) sp528 * (f32) sp348) + ((*(f32 *) ((u8 *) &sp528 + 0x4)) * (*(f32 *) ((u8 *) &sp348 + 0x4)))));
             if (temp_f0_847 > temp_f8_818) {
                 sp328.operator*(temp_f8_818 - temp_f0_847);
                 spB8 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp328);
@@ -683,20 +683,20 @@ void MKDynamicBone::Update() {
             sp520 = (f64) sp2F8.unk8;
             sp98 = (f32) sp518;
             temp_f8_911 = M2C_FIELD(temp_r31_217, f32 *, 0x64);
-            sp9C = unksp51C;
+            sp9C = (*(f32 *) ((u8 *) &sp518 + 0x4));
             sp1F8 = this->unk0;
             sp528 = (f64) sp98;
             sp1FC = this->unk4;
             spA0 = (f32) sp520;
             sp2D8 = (f64) sp1F8;
-            spA4 = -(((f32) sp5B0 * (f32) sp520) + (((f32) sp5A8 * (f32) sp518) + (unksp5AC * unksp51C)));
+            spA4 = -(((f32) sp5B0 * (f32) sp520) + (((f32) sp5A8 * (f32) sp518) + ((*(f32 *) ((u8 *) &sp5A8 + 0x4)) * (*(f32 *) ((u8 *) &sp518 + 0x4)))));
             sp200 = this->unk8;
             sp530 = (f64) spA0;
             sp204 = 1.0f;
             sp2E0 = (f64) sp200;
             sp2E8 = (f64) sp98;
             sp2F0 = (f64) spA0;
-            temp_f0_941 = (unksp534 * unksp2E4) + (((f32) sp530 * (f32) sp2E0) + (((f32) sp528 * (f32) sp2D8) + (unksp52C * unksp2DC)));
+            temp_f0_941 = ((*(f32 *) ((u8 *) &sp530 + 0x4)) * (*(f32 *) ((u8 *) &sp2E0 + 0x4))) + (((f32) sp530 * (f32) sp2E0) + (((f32) sp528 * (f32) sp2D8) + ((*(f32 *) ((u8 *) &sp528 + 0x4)) * (*(f32 *) ((u8 *) &sp2D8 + 0x4)))));
             if (temp_f0_941 > temp_f8_911) {
                 sp2B8.operator*(temp_f8_911 - temp_f0_941);
                 sp88 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp2B8);
@@ -722,20 +722,20 @@ void MKDynamicBone::Update() {
             sp520 = (f64) sp288.unk8;
             sp68 = (f32) sp518;
             temp_f8_1005 = M2C_FIELD(temp_r31_217, f32 *, 0x68);
-            sp6C = unksp51C;
+            sp6C = (*(f32 *) ((u8 *) &sp518 + 0x4));
             sp1E8 = this->unk0;
             sp528 = (f64) sp68;
             sp1EC = this->unk4;
             sp70 = (f32) sp520;
             sp268 = (f64) sp1E8;
-            sp74 = -(((f32) sp5B0 * (f32) sp520) + (((f32) sp5A8 * (f32) sp518) + (unksp5AC * unksp51C)));
+            sp74 = -(((f32) sp5B0 * (f32) sp520) + (((f32) sp5A8 * (f32) sp518) + ((*(f32 *) ((u8 *) &sp5A8 + 0x4)) * (*(f32 *) ((u8 *) &sp518 + 0x4)))));
             sp1F0 = this->unk8;
             sp530 = (f64) sp70;
             sp1F4 = 1.0f;
             sp270 = (f64) sp1F0;
             sp278 = (f64) sp68;
             sp280 = (f64) sp70;
-            temp_f0_1035 = (unksp534 * unksp274) + (((f32) sp530 * (f32) sp270) + (((f32) sp528 * (f32) sp268) + (unksp52C * unksp26C)));
+            temp_f0_1035 = ((*(f32 *) ((u8 *) &sp530 + 0x4)) * (*(f32 *) ((u8 *) &sp270 + 0x4))) + (((f32) sp530 * (f32) sp270) + (((f32) sp528 * (f32) sp268) + ((*(f32 *) ((u8 *) &sp528 + 0x4)) * (*(f32 *) ((u8 *) &sp268 + 0x4)))));
             if (temp_f0_1035 > temp_f8_1005) {
                 sp248.operator*(temp_f8_1005 - temp_f0_1035);
                 sp58 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp248);

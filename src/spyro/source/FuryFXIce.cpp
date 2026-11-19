@@ -90,7 +90,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1E4'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void FuryFXIce::DrawIcePatches() {
     f64 sp2C8;
     f64 sp2C0;
@@ -186,7 +186,7 @@ void FuryFXIce::DrawIcePatches() {
     spB0 = 0.0f;
     spB4 = 0.0f;
     sp40 = -(f32) sp1E0;
-    sp44 = -unksp1E4;
+    sp44 = -(*(f32 *) ((u8 *) &sp1E0 + 0x4));
     sp200 = (f64) spC0;
     sp208 = (f64) spC8;
     sp1F0 = (f64) spB0;
@@ -207,7 +207,7 @@ void FuryFXIce::DrawIcePatches() {
     sp38 = -(f32) sp1E8;
     sp88 = sp180.unk8 + sp170.unk8;
     sp30 = -(f32) sp1E0;
-    sp34 = -unksp1E4;
+    sp34 = -(*(f32 *) ((u8 *) &sp1E0 + 0x4));
     sp190 = sp80;
     sp198 = (f64) sp88;
     sp2A0 = sp80;
@@ -216,7 +216,7 @@ void FuryFXIce::DrawIcePatches() {
     sp128 = (f64) sp38;
     sp130.operator*(50.0f);
     sp20 = -(f32) sp1F0;
-    sp24 = -unksp1F4;
+    sp24 = -(*(f32 *) ((u8 *) &sp1F0 + 0x4));
     sp28 = -(f32) sp1F8;
     sp140 = (f64) sp20;
     sp148 = (f64) sp28;
@@ -229,7 +229,7 @@ void FuryFXIce::DrawIcePatches() {
     sp2B8 = (f64) sp78;
     spE0.operator*(50.0f);
     sp10 = -(f32) sp1F0;
-    sp14 = -unksp1F4;
+    sp14 = -(*(f32 *) ((u8 *) &sp1F0 + 0x4));
     sp18 = -(f32) sp1F8;
     spF0 = (f64) sp10;
     spF8 = (f64) sp18;
@@ -930,7 +930,7 @@ loop_31:
                 sp2F0 = (f64) sp110;
                 if (MKCollision_RayCollide(*((MKVector3 *) &sp2E8), *((MKVector3 *) &sp2C8), (MKCollisionResult *) &sp4F0, (MKCollisionMode) 4, 0x0C000000) != 0) {
                     sp358 = (f64) sp500;
-                    unksp36C = 10.0f + sp4F4;
+                    (*(f32 *) ((u8 *) &sp368 + 0x4)) = 10.0f + sp4F4;
                     sp360 = (f64) sp508;
                 }
                 SpawnIcePatch(*((MKVector3 *) &sp368), *((MKVector3 *) &sp358), temp_f21_1132);
@@ -1042,7 +1042,7 @@ loop_31:
                         sp60 = (f32) sp250 + sp200;
                         sp260 = (f64) sp60;
                         sp430.unk30 = (f32) sp258;
-                        sp430.unk34 = unksp25C;
+                        sp430.unk34 = (*(f32 *) ((u8 *) &sp258 + 0x4));
                         sp430.unk38 = (f32) sp260;
                         sp430.unk3C = 1.0f;
                         MKModel_SetWorldMatrix(M2C_FIELD(temp_r3_1614, MKModel **, 4), sp430);

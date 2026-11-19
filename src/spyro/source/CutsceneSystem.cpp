@@ -515,7 +515,7 @@ loop_20:
                 sp14 = 1.0f;
                 sp28 = (f64) sp18;
                 sp20 = (f64) sp10;
-                ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(temp_r4_1081, 544.0f, 435.2f, &sp30, this->unk8C, (s32) (128.0f * (f32) sp20) | (((s32) (128.0f * unksp24) << 8) | (((s32) (128.0f * unksp2C) << 0x18) | ((s32) (128.0f * (f32) sp28) << 0x10))), 1.15f, 1.15f, NULL, 1U);
+                ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(temp_r4_1081, 544.0f, 435.2f, &sp30, this->unk8C, (s32) (128.0f * (f32) sp20) | (((s32) (128.0f * (*(f32 *) ((u8 *) &sp20 + 0x4))) << 8) | (((s32) (128.0f * (*(f32 *) ((u8 *) &sp28 + 0x4))) << 0x18) | ((s32) (128.0f * (f32) sp28) << 0x10))), 1.15f, 1.15f, NULL, 1U);
             }
             if ((u8) this->unk9C != 0) {
                 this->unk90 += gUpdateTimeDelta;

@@ -927,7 +927,7 @@ void Refresh3DSoundPosition(int arg0) {
     sp48 = (f64) sp18;
     temp_f31_1087 = GetHorizontalAngle((MKVector3 *) &sp50) - listenHAngle;
     temp_f30_1097 = GetVerticalAngle((MKVector3 *) &sp40) - listenVAngle;
-    var_f4_1098 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_1098 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_1098 > 0.0f) {
         temp_f1_1101 = __frsqrte(var_f4_1098);
         temp_f1_1107 = 0.5 * temp_f1_1101 * -(((f64) var_f4_1098 * (temp_f1_1101 * temp_f1_1101)) - 3.0);

@@ -188,7 +188,7 @@ s32 FuryEventCameraMsg::AddCamera(EventCamera *arg0) {
             sp78 = temp_f0_297;
             sp20 = sp70 - (f32) sp60;
             sp80 = (f64) sp20;
-            M2C_FIELD((this + (this->unk58 * 4)), f32 *, 0x30) = (f32) (((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C)));
+            M2C_FIELD((this + (this->unk58 * 4)), f32 *, 0x30) = (f32) (((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * (*(f32 *) ((u8 *) &sp78 + 0x4)))));
             this->unk58 += 1;
             return 1;
         }
@@ -213,7 +213,7 @@ s32 FuryEventCameraMsg::AddCamera(EventCamera *arg0) {
         sp48 = sp8;
         sp10 = sp40 - (f32) sp30;
         sp50 = (f64) sp10;
-        if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < M2C_FIELD(temp_r3_357, f32 *, 0x30)) {
+        if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))) < M2C_FIELD(temp_r3_357, f32 *, 0x30)) {
             M2C_FIELD(temp_r3_357, EventCamera **, 8) = arg0;
             return 1;
         }
@@ -282,7 +282,6 @@ void BreathHitMessage::Init(MKProp *arg0, int arg1, int arg2, int arg3, int arg4
     Init(arg0, (f32) arg1, arg2, arg3, arg4, arg5, arg6, -1);
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
 void IsInAlertRangeMsg::Test(Enemy *arg0) {
     f64 sp10;
     f64 sp8;
@@ -295,7 +294,7 @@ void IsInAlertRangeMsg::Test(Enemy *arg0) {
     temp_r5_499 = arg0->unk8;
     sp8 = M2C_FIELD(temp_r5_499, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r5_499, f64 *, 0x38);
-    temp_f5_508 = unkspC - this->unkC;
+    temp_f5_508 = (*(f32 *) ((u8 *) &sp8 + 0x4)) - this->unkC;
     temp_f4_509 = (f32) sp8 - this->unk8;
     temp_f3_514 = (f32) sp10 - this->unk10;
     temp_f1_518 = (temp_f3_514 * temp_f3_514) + ((temp_f4_509 * temp_f4_509) + (temp_f5_508 * temp_f5_508));
@@ -304,7 +303,6 @@ void IsInAlertRangeMsg::Test(Enemy *arg0) {
         this->unk20 = temp_f1_518;
     }
 }
-#endif
 
 void IsInAlertRangeMsg::Init(const MKVector3 &arg0, float arg1) {
     this->unk0 = 0x72;

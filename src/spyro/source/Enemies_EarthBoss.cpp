@@ -654,7 +654,7 @@ void EarthBoss::UpdateCollisionItems() {
             sp48 = spA0.unk8 * temp_f31_957;
             spB8 = (f64) sp48;
             spD0.unk30 = (f32) spB0;
-            spD0.unk34 = unkspB4;
+            spD0.unk34 = (*(f32 *) ((u8 *) &spB0 + 0x4));
             spD0.unk38 = (f32) spB8;
             spD0.unk3C = 1.0f;
             temp_r29_887->SetCustomMatrix(temp_r25_900, &spD0, (AnimationMatrixPosition) 2, 0U);
@@ -852,7 +852,7 @@ block_28:
             sp20 = (f64) sp10;
             sp5C = 0.0f;
             sp30 = (f32) sp20;
-            sp34 = unksp24;
+            sp34 = (*(f32 *) ((u8 *) &sp20 + 0x4));
             sp38 = (f32) sp28;
             sp3C = 0.0f;
             sp60 = this->unk5B8;
@@ -1538,7 +1538,7 @@ s32 EarthBossArm::CheckMeleeHit(EnemyAttack *arg0) {
             var_f4_2716 = 0.0f;
             sp88 = temp_f0_2710;
             sp20 = sp138 - (f32) spA0;
-            unksp8C = 0.0f;
+            (*(f32 *) ((u8 *) &sp80 + 0xc)) = 0.0f;
             sp90 = (f64) sp20;
             var_f5_2729 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (0.0f * 0.0f));
             if (var_f5_2729 > 0.000001f) {
@@ -1578,7 +1578,7 @@ s32 EarthBossArm::CheckMeleeHit(EnemyAttack *arg0) {
                 var_f4_2716 = 1.0f / var_f5_2729;
             }
             sp88 = (f32) sp88 * var_f4_2716;
-            unksp8C *= var_f4_2716;
+            (*(f32 *) ((u8 *) &sp80 + 0xc)) *= var_f4_2716;
             sp90 = (f32) sp90 * var_f4_2716;
             temp_r3_2806 = this->unk370;
             var_r4_2807 = temp_r3_2806->unkA04;
@@ -1957,7 +1957,7 @@ void EarthBossArm::UpdateExtensionBone(MKDynamicBone *arg0, void *arg1) {
     sp20 = (f64) sp10;
     M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp30.unk30 = (f32) sp20;
-    sp30.unk34 = unksp24;
+    sp30.unk34 = (*(f32 *) ((u8 *) &sp20 + 0x4));
     sp30.unk38 = (f32) sp28;
     sp30.unk3C = 1.0f;
     temp_r3_3437->SetCustomMatrix(arg0->unk64, &sp30, (AnimationMatrixPosition) 4, 0U);
@@ -2063,16 +2063,16 @@ void EarthBossArm::UpdateElbowBone(MKDynamicBone *arg0, void *arg1) {
     sp128 = M2C_FIELD(arg0, f64 *, 0);
     sp130 = M2C_FIELD(arg0, f64 *, 8);
     sp78 = -(f32) sp118;
-    sp7C = -unksp11C;
+    sp7C = -(*(f32 *) ((u8 *) &sp118 + 0x4));
     sp80 = -(f32) sp120;
     spE8 = (f64) sp78;
     spF0 = (f64) sp80;
     sp6C = ((f32) spF0 * (f32) sp128) - ((f32) spE8 * (f32) sp130);
-    sp68 = (unkspEC * (f32) sp130) - ((f32) spF0 * unksp12C);
-    sp70 = ((f32) spE8 * unksp12C) - (unkspEC * (f32) sp128);
+    sp68 = ((*(f32 *) ((u8 *) &spE8 + 0x4)) * (f32) sp130) - ((f32) spF0 * (*(f32 *) ((u8 *) &sp128 + 0x4)));
+    sp70 = ((f32) spE8 * (*(f32 *) ((u8 *) &sp128 + 0x4))) - ((*(f32 *) ((u8 *) &spE8 + 0x4)) * (f32) sp128);
     spF8 = (f64) sp68;
     sp100 = (f64) sp70;
-    var_f4_3643 = ((f32) sp100 * (f32) sp100) + (((f32) spF8 * (f32) spF8) + (unkspFC * unkspFC));
+    var_f4_3643 = ((f32) sp100 * (f32) sp100) + (((f32) spF8 * (f32) spF8) + ((*(f32 *) ((u8 *) &spF8 + 0x4)) * (*(f32 *) ((u8 *) &spF8 + 0x4))));
     if (var_f4_3643 > 1e-12f) {
         if (var_f4_3643 > 0.0f) {
             temp_f1_3649 = __frsqrte(var_f4_3643);
@@ -2113,7 +2113,7 @@ void EarthBossArm::UpdateElbowBone(MKDynamicBone *arg0, void *arg1) {
     }
     sp60 = (f32) sp100 * var_f2_3710;
     sp58 = (f32) spF8 * var_f2_3710;
-    sp5C = unkspFC * var_f2_3710;
+    sp5C = (*(f32 *) ((u8 *) &spF8 + 0x4)) * var_f2_3710;
     sp110 = (f64) sp60;
     sp108 = (f64) sp58;
     sp20 = -(f32) sp130;
@@ -2121,16 +2121,16 @@ void EarthBossArm::UpdateElbowBone(MKDynamicBone *arg0, void *arg1) {
     spD0 = (f64) sp20;
     spC0 = (f64) sp30;
     sp28 = -(f32) sp108;
-    sp2C = -unksp10C;
+    sp2C = -(*(f32 *) ((u8 *) &sp108 + 0x4));
     sp18 = -(f32) sp128;
     spB8 = (f64) sp28;
-    sp1C = -unksp12C;
+    sp1C = -(*(f32 *) ((u8 *) &sp128 + 0x4));
     spC8 = (f64) sp18;
     sp210 = (f32) sp128;
-    sp210.unk4 = unksp12C;
+    sp210.unk4 = (*(f32 *) ((u8 *) &sp128 + 0x4));
     sp210.unk8 = (f32) sp130;
-    sp50 = ((f32) spB8 * unkspCC) - (unkspBC * (f32) spC8);
-    sp48 = (unkspBC * (f32) spD0) - ((f32) spC0 * unkspCC);
+    sp50 = ((f32) spB8 * (*(f32 *) ((u8 *) &spC8 + 0x4))) - ((*(f32 *) ((u8 *) &spB8 + 0x4)) * (f32) spC8);
+    sp48 = ((*(f32 *) ((u8 *) &spB8 + 0x4)) * (f32) spD0) - ((f32) spC0 * (*(f32 *) ((u8 *) &spC8 + 0x4)));
     sp4C = ((f32) spC0 * (f32) spC8) - ((f32) spB8 * (f32) spD0);
     sp120 = (f64) sp50;
     sp118 = (f64) sp48;
@@ -2138,11 +2138,11 @@ void EarthBossArm::UpdateElbowBone(MKDynamicBone *arg0, void *arg1) {
     spE0 = (f64) sp50;
     sp210.unkC = 0.0f;
     sp210.unk10 = (f32) sp118;
-    sp210.unk14 = unksp11C;
+    sp210.unk14 = (*(f32 *) ((u8 *) &sp118 + 0x4));
     sp210.unk18 = (f32) sp120;
     sp210.unk1C = 0.0f;
     sp210.unk20 = (f32) sp108;
-    sp210.unk24 = unksp10C;
+    sp210.unk24 = (*(f32 *) ((u8 *) &sp108 + 0x4));
     sp210.unk28 = (f32) sp110;
     sp210.unk2C = 0.0f;
     M2C_STRUCT_COPY((s32) &sp14C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
@@ -2645,7 +2645,7 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1D4'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void EarthBossArm::Update() {
     f32 sp3BC;
     f32 sp3B8;
@@ -2798,7 +2798,7 @@ void EarthBossArm::Update() {
     sp1D0 = spF0;
     spF8 = sp310.unk38 - sp350.unk38;
     sp1D8 = (f64) spF8;
-    var_f4_4681 = ((f32) sp1D8 * (f32) sp1D8) + (((f32) sp1D0 * (f32) sp1D0) + (unksp1D4 * unksp1D4));
+    var_f4_4681 = ((f32) sp1D8 * (f32) sp1D8) + (((f32) sp1D0 * (f32) sp1D0) + ((*(f32 *) ((u8 *) &sp1D0 + 0x4)) * (*(f32 *) ((u8 *) &sp1D0 + 0x4))));
     if (var_f4_4681 > 1e-12f) {
         if (var_f4_4681 > 0.0f) {
             temp_f1_4687 = __frsqrte(var_f4_4681);
@@ -2837,32 +2837,32 @@ void EarthBossArm::Update() {
     } else {
         var_f3_4748 = 0.0f;
     }
-    spE4 = unksp1D4 * var_f3_4748;
+    spE4 = (*(f32 *) ((u8 *) &sp1D0 + 0x4)) * var_f3_4748;
     spE0 = (f32) sp1D0 * var_f3_4748;
     spE8 = (f32) sp1D8 * var_f3_4748;
     sp200 = (f64) spE0;
     sp208 = (f64) spE8;
     M2C_STRUCT_COPY((s32) &sp350.unk3C + 4, (s32) &sp310.unk3C + 4, 0x40);
     sp390 = (f32) sp200;
-    sp394 = unksp204;
-    sp90 = (unksp204 * sp3B8) - ((f32) sp208 * sp3B4);
+    sp394 = (*(f32 *) ((u8 *) &sp200 + 0x4));
+    sp90 = ((*(f32 *) ((u8 *) &sp200 + 0x4)) * sp3B8) - ((f32) sp208 * sp3B4);
     sp94 = ((f32) sp208 * sp3B0) - ((f32) sp200 * sp3B8);
-    sp98 = ((f32) sp200 * sp3B4) - (unksp204 * sp3B0);
+    sp98 = ((f32) sp200 * sp3B4) - ((*(f32 *) ((u8 *) &sp200 + 0x4)) * sp3B0);
     sp1C0 = (f64) sp90;
     sp1C8 = (f64) sp98;
     sp398 = (f32) sp208;
     sp39C = 0.0f;
-    sp88 = ((f32) sp200 * unksp1C4) - (unksp204 * (f32) sp1C0);
-    sp80 = (unksp204 * (f32) sp1C8) - ((f32) sp208 * unksp1C4);
+    sp88 = ((f32) sp200 * (*(f32 *) ((u8 *) &sp1C0 + 0x4))) - ((*(f32 *) ((u8 *) &sp200 + 0x4)) * (f32) sp1C0);
+    sp80 = ((*(f32 *) ((u8 *) &sp200 + 0x4)) * (f32) sp1C8) - ((f32) sp208 * (*(f32 *) ((u8 *) &sp1C0 + 0x4)));
     sp84 = ((f32) sp208 * (f32) sp1C0) - ((f32) sp200 * (f32) sp1C8);
     sp1B8 = (f64) sp88;
     sp1B0 = (f64) sp80;
     sp3A0 = (f32) sp1C0;
-    sp3A4 = unksp1C4;
+    sp3A4 = (*(f32 *) ((u8 *) &sp1C0 + 0x4));
     sp3A8 = (f32) sp1C8;
     sp3AC = 0.0f;
     sp3B0 = (f32) sp1B0;
-    sp3B4 = unksp1B4;
+    sp3B4 = (*(f32 *) ((u8 *) &sp1B0 + 0x4));
     sp3B8 = (f32) sp1B8;
     sp3BC = 0.0f;
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp390));
@@ -2895,7 +2895,7 @@ void EarthBossArm::Update() {
         sp180 = spD0;
         spD8 = (f32) sp1F8 - sp250.unk38;
         sp188 = (f64) spD8;
-        var_f4_4909 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184));
+        var_f4_4909 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + ((*(f32 *) ((u8 *) &sp180 + 0x4)) * (*(f32 *) ((u8 *) &sp180 + 0x4))));
         if (var_f4_4909 > 1e-12f) {
             if (var_f4_4909 > 0.0f) {
                 temp_f1_4915 = __frsqrte(var_f4_4909);
@@ -2934,17 +2934,17 @@ void EarthBossArm::Update() {
         } else {
             var_f4_4976 = 0.0f;
         }
-        spB4 = unksp184 * var_f4_4976;
+        spB4 = (*(f32 *) ((u8 *) &sp180 + 0x4)) * var_f4_4976;
         spB0 = (f32) sp180 * var_f4_4976;
         spB8 = (f32) sp188 * var_f4_4976;
         sp190 = (f64) spB0;
         sp198 = (f64) spB8;
-        spC0 = ((f32) sp198 * sp290.unk20) + (((f32) sp190 * M2C_BITWISE(f32, sp290)) + (unksp194 * sp290.unk10));
-        spC4 = ((f32) sp198 * sp290.unk24) + (((f32) sp190 * sp290.unk4) + (unksp194 * sp290.unk14));
-        spC8 = ((f32) sp198 * sp290.unk28) + (((f32) sp190 * sp290.unk8) + (unksp194 * sp290.unk18));
+        spC0 = ((f32) sp198 * sp290.unk20) + (((f32) sp190 * M2C_BITWISE(f32, sp290)) + ((*(f32 *) ((u8 *) &sp190 + 0x4)) * sp290.unk10));
+        spC4 = ((f32) sp198 * sp290.unk24) + (((f32) sp190 * sp290.unk4) + ((*(f32 *) ((u8 *) &sp190 + 0x4)) * sp290.unk14));
+        spC8 = ((f32) sp198 * sp290.unk28) + (((f32) sp190 * sp290.unk8) + ((*(f32 *) ((u8 *) &sp190 + 0x4)) * sp290.unk18));
         sp1A0 = (f64) spC0;
         sp1A8 = (f64) spC8;
-        var_f4_5027 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + (unksp1A4 * unksp1A4));
+        var_f4_5027 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + ((*(f32 *) ((u8 *) &sp1A0 + 0x4)) * (*(f32 *) ((u8 *) &sp1A0 + 0x4))));
         if (var_f4_5027 > 1e-12f) {
             if (var_f4_5027 > 0.0f) {
                 temp_f1_5033 = __frsqrte(var_f4_5027);
@@ -2990,7 +2990,7 @@ void EarthBossArm::Update() {
         sp170 = (f64) sp70;
         sp178 = (f64) sp78;
         spA0 = (f32) sp1A0 * var_f9_5094;
-        spA4 = unksp1A4 * var_f9_5094;
+        spA4 = (*(f32 *) ((u8 *) &sp1A0 + 0x4)) * var_f9_5094;
         sp68 = -(f32) sp178;
         sp1E0 = (f64) spA0;
         sp1E8 = (f64) spA8;
@@ -2999,17 +2999,17 @@ void EarthBossArm::Update() {
         sp210 = temp_f10_5149;
         temp_f9_5153 = M2C_FIELD(this, f32 *, 0xE4);
         sp60 = -(f32) sp170;
-        sp64 = -unksp174;
+        sp64 = -(*(f32 *) ((u8 *) &sp170 + 0x4));
         sp214 = temp_f9_5153;
         temp_f8_5159 = M2C_FIELD(this, f32 *, 0xE8);
         sp140 = (f64) sp60;
         sp218 = temp_f8_5159;
         sp21C = 0.0f;
         sp220 = (f32) sp170;
-        sp58 = ((f32) sp140 * temp_f9_5153) - (unksp144 * temp_f10_5149);
-        sp50 = (unksp144 * temp_f8_5159) - ((f32) sp148 * temp_f9_5153);
+        sp58 = ((f32) sp140 * temp_f9_5153) - ((*(f32 *) ((u8 *) &sp140 + 0x4)) * temp_f10_5149);
+        sp50 = ((*(f32 *) ((u8 *) &sp140 + 0x4)) * temp_f8_5159) - ((f32) sp148 * temp_f9_5153);
         sp54 = ((f32) sp148 * temp_f10_5149) - ((f32) sp140 * temp_f8_5159);
-        sp224 = unksp174;
+        sp224 = (*(f32 *) ((u8 *) &sp170 + 0x4));
         sp228 = (f32) sp178;
         sp22C = 0.0f;
         sp150 = (f64) sp50;
@@ -3032,14 +3032,14 @@ void EarthBossArm::Update() {
         sp120 = (f64) sp20;
         sp128 = (f64) sp28;
         sp22C = 0.0f;
-        sp40 = (unksp114 * (f32) sp128) - ((f32) sp118 * unksp124);
+        sp40 = ((*(f32 *) ((u8 *) &sp110 + 0x4)) * (f32) sp128) - ((f32) sp118 * (*(f32 *) ((u8 *) &sp120 + 0x4)));
         sp44 = ((f32) sp118 * (f32) sp120) - ((f32) sp110 * (f32) sp128);
         var_f1_5240 = 0.5f * (6.2831855f * gUpdateTimeDelta);
-        sp48 = ((f32) sp110 * unksp124) - (unksp114 * (f32) sp120);
+        sp48 = ((f32) sp110 * (*(f32 *) ((u8 *) &sp120 + 0x4))) - ((*(f32 *) ((u8 *) &sp110 + 0x4)) * (f32) sp120);
         sp130 = (f64) sp40;
         sp138 = (f64) sp48;
         sp220 = (f32) sp130;
-        sp224 = unksp134;
+        sp224 = (*(f32 *) ((u8 *) &sp130 + 0x4));
         sp228 = (f32) sp138;
         temp_r0_5252 = this->unk38C;
         if (temp_r0_5252 == 1) {
@@ -3052,7 +3052,7 @@ void EarthBossArm::Update() {
         Normalise(sp100);
         this->unkE0 = M2C_BITWISE(f64, sp100);
         this->unkE8 = (f64) sp100.unk8;
-        if (((s32) this->unk38C == 2) && ((((f32) sp1E8 * M2C_FIELD(this, f32 *, 0xE8)) + (((f32) sp1E0 * M2C_FIELD(this, f32 *, 0xE0)) + (unksp1E4 * M2C_FIELD(this, f32 *, 0xE4)))) >= 1.0f)) {
+        if (((s32) this->unk38C == 2) && ((((f32) sp1E8 * M2C_FIELD(this, f32 *, 0xE8)) + (((f32) sp1E0 * M2C_FIELD(this, f32 *, 0xE0)) + ((*(f32 *) ((u8 *) &sp1E0 + 0x4)) * M2C_FIELD(this, f32 *, 0xE4)))) >= 1.0f)) {
             this->unk38C = 0;
             this->unkE0 = sp1E0;
             this->unkE8 = sp1E8;

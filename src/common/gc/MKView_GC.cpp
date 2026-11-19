@@ -43,8 +43,8 @@ void MKView_Clear(int arg0, const MKVector4 &arg1, float arg2, unsigned int arg3
 
     sp14 = lit_458;
     sp14 = (s8) (255.0f * arg1.unk0);
-    unksp15 = (s8) (255.0f * arg1.unk4);
-    unksp16 = (s8) (255.0f * arg1.unk8);
+    (*(u8 *) ((u8 *) &sp10 + 0x5)) = (s8) (255.0f * arg1.unk4);
+    (*(u8 *) ((u8 *) &sp10 + 0x6)) = (s8) (255.0f * arg1.unk8);
     sp10 = lit_459;
     MKView_GetViewport();
     temp_r31_60 = M2C_ERROR(/* Read from unset register $r3 */);
@@ -242,8 +242,8 @@ void UpdateLighting() {
     temp_r5_457 = lightColors + 0x30;
     sp2C = lit_435;
     sp2C = (s8) (255.0f * M2C_FIELD(lightColors, f32 *, 0x30));
-    unksp2D = (s8) (255.0f * M2C_FIELD(temp_r5_457, f32 *, 4));
-    unksp2E = (s8) (255.0f * M2C_FIELD(temp_r5_457, f32 *, 8));
+    (*(u8 *) ((u8 *) &sp28 + 0x5)) = (s8) (255.0f * M2C_FIELD(temp_r5_457, f32 *, 4));
+    (*(u8 *) ((u8 *) &sp28 + 0x6)) = (s8) (255.0f * M2C_FIELD(temp_r5_457, f32 *, 8));
     sp24 = (s32) sp2C;
     GXSetChanAmbColor(GX_COLOR0A0, (GXColor) &sp24);
 }

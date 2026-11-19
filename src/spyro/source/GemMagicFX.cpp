@@ -197,7 +197,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1B4'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void GemMagicFX::Draw() {
     f64 sp248;
     f64 sp240;
@@ -275,7 +275,7 @@ void GemMagicFX::Draw() {
     spA0 = 0.0f;
     spA4 = 1.0f;
     sp40 = -(f32) sp1B0;
-    sp44 = -unksp1B4;
+    sp44 = -(*(f32 *) ((u8 *) &sp1B0 + 0x4));
     sp1C0 = (f64) spA0;
     sp1C8 = (f64) spA8;
     sp170 = (f64) sp40;
@@ -294,7 +294,7 @@ void GemMagicFX::Draw() {
     sp38 = -(f32) sp1B8;
     sp78 = sp150.unk8 + sp140.unk8;
     sp30 = -(f32) sp1B0;
-    sp34 = -unksp1B4;
+    sp34 = -(*(f32 *) ((u8 *) &sp1B0 + 0x4));
     sp160 = sp70;
     sp168 = (f64) sp78;
     sp220 = sp70;
@@ -303,7 +303,7 @@ void GemMagicFX::Draw() {
     spF8 = (f64) sp38;
     sp100.operator*(30.000002f);
     sp20 = -(f32) sp1C0;
-    sp24 = -unksp1C4;
+    sp24 = -(*(f32 *) ((u8 *) &sp1C0 + 0x4));
     sp28 = -(f32) sp1C8;
     sp110 = (f64) sp20;
     sp118 = (f64) sp28;
@@ -316,7 +316,7 @@ void GemMagicFX::Draw() {
     sp238 = (f64) sp68;
     spB0.operator*(30.000002f);
     sp10 = -(f32) sp1C0;
-    sp14 = -unksp1C4;
+    sp14 = -(*(f32 *) ((u8 *) &sp1C0 + 0x4));
     sp18 = -(f32) sp1C8;
     spC0 = (f64) sp10;
     spC8 = (f64) sp18;
@@ -344,7 +344,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp224'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void GemMagicFX::Update() {
     f64 sp228;                                      /* compiler-managed */
     f64 sp220;                                      /* compiler-managed */
@@ -478,7 +478,7 @@ loop_66:
                 sp220 = sp100;
                 sp108 = M2C_FIELD(temp_r3_566, f32 *, 8) - M2C_BITWISE(f32, temp_r29_993->unk8);
                 sp228 = (f64) sp108;
-                var_f26_589 = ((f32) sp228 * (f32) sp228) + (((f32) sp220 * (f32) sp220) + (unksp224 * unksp224));
+                var_f26_589 = ((f32) sp228 * (f32) sp228) + (((f32) sp220 * (f32) sp220) + ((*(f32 *) ((u8 *) &sp218 + 0xc)) * (*(f32 *) ((u8 *) &sp218 + 0xc))));
                 if (var_f26_589 > 0.000001f) {
                     if (var_f26_589 > 0.0f) {
                         temp_f1_595 = __frsqrte(var_f26_589);
@@ -525,7 +525,7 @@ loop_66:
                 spE0 = 1.0f;
                 spE4 = 1.0f;
                 sp220 = (f32) sp220 * var_f7_656;
-                unksp224 *= var_f7_656;
+                (*(f32 *) ((u8 *) &sp218 + 0xc)) *= var_f7_656;
                 sp228 = (f32) sp228 * var_f7_656;
                 sp1C0 = (f64) spF0;
                 sp1C8 = (f64) spF8;
@@ -600,12 +600,12 @@ loop_66:
                         } else {
                             var_f4_832 = (f32) sp140;
                         }
-                        var_f0_848 = unksp154;
+                        var_f0_848 = (*(f32 *) ((u8 *) &sp150 + 0x4));
                         sp30 = var_f4_832;
-                        if (var_f0_848 < unksp144) {
+                        if (var_f0_848 < (*(f32 *) ((u8 *) &sp140 + 0x4))) {
 
                         } else {
-                            var_f0_848 = unksp144;
+                            var_f0_848 = (*(f32 *) ((u8 *) &sp140 + 0x4));
                         }
                         var_f1_857 = (f32) sp158;
                         sp34 = var_f0_848;
@@ -614,12 +614,12 @@ loop_66:
                         } else {
                             var_f1_857 = (f32) sp148;
                         }
-                        var_f2_866 = unksp15C;
+                        var_f2_866 = (*(f32 *) ((u8 *) &sp158 + 0x4));
                         sp38 = var_f1_857;
-                        if (var_f2_866 < unksp14C) {
+                        if (var_f2_866 < (*(f32 *) ((u8 *) &sp148 + 0x4))) {
 
                         } else {
-                            var_f2_866 = unksp14C;
+                            var_f2_866 = (*(f32 *) ((u8 *) &sp148 + 0x4));
                         }
                         sp3C = var_f2_866;
                         sp40 = (f64) sp30;
@@ -630,12 +630,12 @@ loop_66:
                         } else {
                             var_f1_880 = (f32) sp160;
                         }
-                        var_f0_888 = unksp44;
+                        var_f0_888 = (*(f32 *) ((u8 *) &sp40 + 0x4));
                         sp20 = var_f1_880;
-                        if (var_f0_888 > unksp164) {
+                        if (var_f0_888 > (*(f32 *) ((u8 *) &sp160 + 0x4))) {
 
                         } else {
-                            var_f0_888 = unksp164;
+                            var_f0_888 = (*(f32 *) ((u8 *) &sp160 + 0x4));
                         }
                         var_f1_897 = (f32) sp48;
                         sp24 = var_f0_888;
@@ -644,12 +644,12 @@ loop_66:
                         } else {
                             var_f1_897 = (f32) sp168;
                         }
-                        var_f0_906 = unksp4C;
+                        var_f0_906 = (*(f32 *) ((u8 *) &sp48 + 0x4));
                         sp28 = var_f1_897;
-                        if (var_f0_906 > unksp16C) {
+                        if (var_f0_906 > (*(f32 *) ((u8 *) &sp168 + 0x4))) {
 
                         } else {
-                            var_f0_906 = unksp16C;
+                            var_f0_906 = (*(f32 *) ((u8 *) &sp168 + 0x4));
                         }
                         sp2C = var_f0_906;
                         sp200 = (f64) sp20;

@@ -451,7 +451,7 @@ void Gondola::UpdateMove() {
                 sp3F0 = sp300;
                 sp3F8 = sp308;
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
-                if ((((f32) sp348 * (f32) sp348) + (((f32) sp340 * (f32) sp340) + (unksp344 * unksp344))) == 4e8f) {
+                if ((((f32) sp348 * (f32) sp348) + (((f32) sp340 * (f32) sp340) + ((*(f32 *) ((u8 *) &sp340 + 0x4)) * (*(f32 *) ((u8 *) &sp340 + 0x4))))) == 4e8f) {
                     this->unk240 = M2C_BITWISE(s32, this->unk23C);
                     this->unk23C = 1e-45f;
                     this->unk1A8 = 0.0f;
@@ -523,7 +523,7 @@ void Gondola::UpdateMove() {
             sp2A0 = sp140;
             sp148 = (f32) sp158 * sp38;
             sp2A8 = (f64) sp148;
-            var_f4_683 = ((f32) sp2A8 * (f32) sp2A8) + (((f32) sp2A0 * (f32) sp2A0) + (unksp2A4 * unksp2A4));
+            var_f4_683 = ((f32) sp2A8 * (f32) sp2A8) + (((f32) sp2A0 * (f32) sp2A0) + ((*(f32 *) ((u8 *) &sp2A0 + 0x4)) * (*(f32 *) ((u8 *) &sp2A0 + 0x4))));
             if (var_f4_683 > 1e-12f) {
                 if (var_f4_683 > 0.0f) {
                     temp_f1_689 = __frsqrte(var_f4_683);
@@ -566,19 +566,19 @@ void Gondola::UpdateMove() {
             sp128 = 0.0f;
             sp138 = (f32) sp2A8 * var_f3_750;
             sp130 = (f32) sp2A0 * var_f3_750;
-            sp134 = unksp2A4 * var_f3_750;
+            sp134 = (*(f32 *) ((u8 *) &sp2A0 + 0x4)) * var_f3_750;
             sp3D8 = (f64) sp138;
             sp3D0 = (f64) sp130;
             sp288 = (f64) sp128;
             sp120 = 0.0f;
             sp124 = 1.0f;
             sp280 = (f64) sp120;
-            sp110 = (unksp284 * (f32) sp3D8) - ((f32) sp288 * unksp3D4);
+            sp110 = ((*(f32 *) ((u8 *) &sp280 + 0x4)) * (f32) sp3D8) - ((f32) sp288 * (*(f32 *) ((u8 *) &sp3D0 + 0x4)));
             sp114 = ((f32) sp288 * (f32) sp3D0) - ((f32) sp280 * (f32) sp3D8);
-            sp118 = ((f32) sp280 * unksp3D4) - (unksp284 * (f32) sp3D0);
+            sp118 = ((f32) sp280 * (*(f32 *) ((u8 *) &sp3D0 + 0x4))) - ((*(f32 *) ((u8 *) &sp280 + 0x4)) * (f32) sp3D0);
             sp290 = (f64) sp110;
             sp298 = (f64) sp118;
-            var_f4_801 = ((f32) sp298 * (f32) sp298) + (((f32) sp290 * (f32) sp290) + (unksp294 * unksp294));
+            var_f4_801 = ((f32) sp298 * (f32) sp298) + (((f32) sp290 * (f32) sp290) + ((*(f32 *) ((u8 *) &sp290 + 0x4)) * (*(f32 *) ((u8 *) &sp290 + 0x4))));
             if (var_f4_801 > 1e-12f) {
                 if (var_f4_801 > 0.0f) {
                     temp_f1_806 = __frsqrte(var_f4_801);
@@ -615,7 +615,7 @@ void Gondola::UpdateMove() {
                 }
                 var_f0_757 = 1.0f / var_f4_801;
             }
-            sp104 = unksp294 * var_f0_757;
+            sp104 = (*(f32 *) ((u8 *) &sp290 + 0x4)) * var_f0_757;
             sp100 = (f32) sp290 * var_f0_757;
             sp108 = (f32) sp298 * var_f0_757;
             sp3C0 = (f64) sp100;
@@ -656,7 +656,7 @@ void Gondola::UpdateMove() {
         }
         M2C_STRUCT_COPY((s32) &sp44C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
         var_f7_983 = 0.0f;
-        unksp3F4 = 0.0f;
+        (*(f32 *) ((u8 *) &sp3E0 + 0x14)) = 0.0f;
         var_f4_992 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + (0.0f * 0.0f));
         if (var_f4_992 > 0.000001f) {
             if (var_f4_992 > 0.0f) {
@@ -701,10 +701,10 @@ void Gondola::UpdateMove() {
         sp3B0 = (f64) spB0;
         sp3B8 = (f64) spB8;
         sp3F0 = (f32) sp3F0 * var_f7_983;
-        unksp3F4 *= var_f7_983;
+        (*(f32 *) ((u8 *) &sp3E0 + 0x14)) *= var_f7_983;
         sp3F8 = (f32) sp3F8 * var_f7_983;
         var_f4_1090 = ((f32) sp3B8 * (f32) sp3B8) + (((f32) sp3B0 * (f32) sp3B0) + (0.0f * 0.0f));
-        unksp3B4 = 0.0f;
+        (*(f32 *) ((u8 *) &sp398 + 0x1c)) = 0.0f;
         if (var_f4_1090 > 0.000001f) {
             if (var_f4_1090 > 0.0f) {
                 temp_f1_1096 = __frsqrte(var_f4_1090);
@@ -742,17 +742,17 @@ void Gondola::UpdateMove() {
             var_f8_1065 = 1.0f / var_f4_1090;
         }
         sp3A0 = sp450;
-        temp_f6_1162 = unksp3B4 * var_f8_1065;
+        temp_f6_1162 = (*(f32 *) ((u8 *) &sp398 + 0x1c)) * var_f8_1065;
         var_f9_1164 = 0.0f;
         temp_f7_1169 = (f32) sp3B0 * var_f8_1065;
         sp3A8 = sp458;
         temp_f5_1176 = (f32) sp3B8 * var_f8_1065;
         var_f8_1184 = ((f32) sp3A8 * (f32) sp3A8) + (((f32) sp3A0 * (f32) sp3A0) + (0.0f * 0.0f));
         sp3B0 = temp_f7_1169;
-        var_f31_1186 = 1.0f - ((temp_f5_1176 * sp3F8) + ((temp_f7_1169 * sp3F0) + (temp_f6_1162 * unksp3F4)));
-        unksp3B4 = temp_f6_1162;
+        var_f31_1186 = 1.0f - ((temp_f5_1176 * sp3F8) + ((temp_f7_1169 * sp3F0) + (temp_f6_1162 * (*(f32 *) ((u8 *) &sp3E0 + 0x14)))));
+        (*(f32 *) ((u8 *) &sp398 + 0x1c)) = temp_f6_1162;
         sp3B8 = temp_f5_1176;
-        unksp3A4 = 0.0f;
+        (*(f32 *) ((u8 *) &sp398 + 0xc)) = 0.0f;
         if (var_f8_1184 > 0.000001f) {
             if (var_f8_1184 > 0.0f) {
                 temp_f1_1194 = __frsqrte(var_f8_1184);
@@ -789,13 +789,13 @@ void Gondola::UpdateMove() {
             }
             var_f9_1164 = 1.0f / var_f8_1184;
         }
-        temp_f4_1259 = unksp3A4 * var_f9_1164;
+        temp_f4_1259 = (*(f32 *) ((u8 *) &sp398 + 0xc)) * var_f9_1164;
         temp_f5_1261 = (f32) sp3A0 * var_f9_1164;
         temp_f3_1263 = (f32) sp3A8 * var_f9_1164;
         sp3A0 = temp_f5_1261;
-        unksp3A4 = temp_f4_1259;
+        (*(f32 *) ((u8 *) &sp398 + 0xc)) = temp_f4_1259;
         sp3A8 = temp_f3_1263;
-        if (((sp3F8 * temp_f3_1263) + ((sp3F0 * temp_f5_1261) + (unksp3F4 * temp_f4_1259))) < 0.0f) {
+        if (((sp3F8 * temp_f3_1263) + ((sp3F0 * temp_f5_1261) + ((*(f32 *) ((u8 *) &sp3E0 + 0x14)) * temp_f4_1259))) < 0.0f) {
             var_f31_1186 = -var_f31_1186;
         }
         temp_f1_1276 = _table_sinf(M2C_FIELD(this, f32 *, 0x1AC));
@@ -817,7 +817,7 @@ void Gondola::UpdateMove() {
         sp400 += sp1E0;
         sp408 = (f32) sp408 + (f32) sp1E8;
         if ((u8) M2C_FIELD(this, u8 *, 0x24C) != 0) {
-            temp_f9_1314 = -unksp3F4;
+            temp_f9_1314 = -(*(f32 *) ((u8 *) &sp3E0 + 0x14));
             temp_f10_1315 = -sp3F8;
             temp_f8_1317 = -sp3F0;
             sp44 = temp_f9_1314;
@@ -828,15 +828,15 @@ void Gondola::UpdateMove() {
             sp68 = temp_f10_1315;
             sp60 = temp_f8_1317;
             sp64 = temp_f9_1314;
-            sp58 = (MKVector3::up.unk0 * unksp1B4) - (MKVector3::up.unk4 * (f32) sp1B0);
+            sp58 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp1B0 + 0x4))) - (MKVector3::up.unk4 * (f32) sp1B0);
             sp1D0 = (f64) sp60;
             sp1D8 = (f64) sp68;
             sp1C8 = (f64) sp58;
-            sp50 = (MKVector3::up.unk4 * (f32) sp1B8) - (MKVector3::up.unk8 * unksp1B4);
+            sp50 = (MKVector3::up.unk4 * (f32) sp1B8) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp1B0 + 0x4)));
             sp54 = (MKVector3::up.unk8 * (f32) sp1B0) - (MKVector3::up.unk0 * (f32) sp1B8);
             sp430 = (f32) sp1D0;
             sp1C0 = (f64) sp50;
-            sp434 = unksp1D4;
+            sp434 = (*(f32 *) ((u8 *) &sp1D0 + 0x4));
             sp438 = (f32) sp1D8;
             sp43C = 0.0f;
             sp420 = MKVector3::up.unk0;
@@ -844,7 +844,7 @@ void Gondola::UpdateMove() {
             sp428 = MKVector3::up.unk8;
             sp42C = 0.0f;
             sp410 = (f32) sp1C0;
-            sp414 = unksp1C4;
+            sp414 = (*(f32 *) ((u8 *) &sp1C0 + 0x4));
             sp418 = (f32) sp1C8;
             sp41C = 0.0f;
             M2C_FIELD(this, u8 *, 0x24C) = 0U;
@@ -859,7 +859,7 @@ void Gondola::UpdateMove() {
             ((Matrix *) &sp410)->SetRotationPYR(*((MKVector3 *) &sp1A0));
         }
         sp440 = (f32) sp400;
-        sp444 = unksp404;
+        sp444 = (*(f32 *) ((u8 *) &sp400 + 0x4));
         sp448 = sp408;
         sp44C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp410));

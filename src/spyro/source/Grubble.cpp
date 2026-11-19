@@ -241,7 +241,7 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     temp_f3_314 = arg0->unk4;
     sp150 = temp_f0_308;
     sp18 = (f32) sp168 - (f32) M2C_FIELD(arg0, f64 *, 0x38);
-    unksp154 = temp_f3_314;
+    (*(f32 *) ((u8 *) &sp148 + 0xc)) = temp_f3_314;
     sp158 = (f64) sp18;
     var_f31_327 = ((f32) sp158 * (f32) sp158) + (((f32) sp150 * (f32) sp150) + (temp_f3_314 * temp_f3_314));
     if (var_f31_327 > 0.000001f) {
@@ -285,7 +285,7 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     }
     temp_r29_405 = arg0->unk60;
     sp150 = (f32) sp150 * var_f3_394;
-    unksp154 *= var_f3_394;
+    (*(f32 *) ((u8 *) &sp148 + 0xc)) *= var_f3_394;
     sp158 = (f32) sp158 * var_f3_394;
     arg0->unk50 = M2C_FIELD((checked_cast<GrubbleCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (temp_r29_405 * 4)), void **, 0x70);
     arg0->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk50, s16 *, 4) / 30.0f));
@@ -295,7 +295,7 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     sp148 = (f64) sp158;
     KDMath_BuildMatrixFromUp((Matrix *) arg0, *((MKVector3 *) &sp170), *((MKVector3 *) &sp140));
     M2C_FIELD(arg0, f64 *, 0x30) = (f32) sp180;
-    M2C_FIELD(arg0, f32 *, 0x34) = unksp184;
+    M2C_FIELD(arg0, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp180 + 0x4));
     M2C_FIELD(arg0, f64 *, 0x38) = (f32) sp188;
     M2C_FIELD(arg0, f32 *, 0x3C) = 1.0f;
 }
@@ -682,7 +682,7 @@ loop_50:
             sp18 = temp_r30_605->unk38 + sp160.unk8;
             temp_r30_605->unk30 = (f32) sp170;
             sp178 = (f64) sp18;
-            temp_r30_605->unk34 = unksp174;
+            temp_r30_605->unk34 = (*(f32 *) ((u8 *) &sp170 + 0x4));
             temp_r30_605->unk38 = (f32) sp178;
             temp_r30_605->unk3C = 1.0f;
             temp_f0_899 = M2C_FIELD(temp_r30_605, f32 *, 0x54);
@@ -780,7 +780,7 @@ loop_50:
             sp110 = sp20;
             sp28 = (f32) sp108 - temp_r30_605->unk38;
             sp118 = (f64) sp28;
-            if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114))) <= 250000.0f) {
+            if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * (*(f32 *) ((u8 *) &sp110 + 0x4))))) <= 250000.0f) {
                 SetHideState((Grubble *) temp_r30_605);
             }
         }

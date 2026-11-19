@@ -581,7 +581,7 @@ void Crate::Spin() {
     temp_f31_1086 = 0.5f * (M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xE4) - this->unk168);
     M2C_STRUCT_COPY((s32) &unksp1C + 4, MKModel_GetWorldMatrix((MKModel *) this->unk184) - 4 + 4, 0x40);
     temp_f1_1100 = temp_f31_1086 - 0.5f;
-    sp20.SetRotationYaw(KDMath_NormaliseAngle(unksp14 + (6.2831855f * -((4.0f * (temp_f1_1100 * temp_f1_1100)) - 1.0f))));
+    sp20.SetRotationYaw(KDMath_NormaliseAngle((*(f32 *) ((u8 *) &sp10 + 0x4)) + (6.2831855f * -((4.0f * (temp_f1_1100 * temp_f1_1100)) - 1.0f))));
     MKModel_SetWorldMatrix((MKModel *) this->unk184, sp20);
 }
 #endif
@@ -702,7 +702,7 @@ block_38:
             sp20 = (f64) sp10;
             sp28 = sp8;
             sp30 = (f64) sp10;
-            if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) < (temp_f31_1310 * temp_f31_1310)) {
+            if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))))) < (temp_f31_1310 * temp_f31_1310)) {
                 this->unk16C += gUpdateTimeDelta;
                 this->unk70.unk4 = 0;
                 this->unkC8 = 7;
@@ -714,7 +714,7 @@ block_38:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp64'
+#if 0 // DRAFT: undefined identifier 'unksp6C'
 void Crate::Update() {
     MKCollisionResult spB0;
     Matrix sp70;
@@ -751,7 +751,7 @@ void Crate::Update() {
                 temp_f3_1416 = this->unkD8;
                 sp60 = this->unkD0;
                 sp68 = temp_f3_1416;
-                unksp64 += M2C_FIELD(temp_r30_1401, f32 *, 0xF4) * _table_sinf(M2C_FIELD(temp_r30_1401, f32 *, 0xF8) * (f32) fmod(&gb, M2C_FIELD(&gb, f32 *, 0x30C) + (f32) sp60, 3.141590118408203, temp_f3_1416));
+                (*(f32 *) ((u8 *) &sp60 + 0x4)) += M2C_FIELD(temp_r30_1401, f32 *, 0xF4) * _table_sinf(M2C_FIELD(temp_r30_1401, f32 *, 0xF8) * (f32) fmod(&gb, M2C_FIELD(&gb, f32 *, 0x30C) + (f32) sp60, 3.141590118408203, temp_f3_1416));
                 MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp60));
             }
             if ((u32) this->unk184 != 0U) {
@@ -783,7 +783,7 @@ void Crate::Update() {
                 sp38 = (f64) sp18;
                 sp40 = sp10;
                 sp48 = (f64) sp18;
-                if (!((((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34))) < (temp_f31_1509 * temp_f31_1509)) && (MKCollision_SphereCollide(*(this->unk8 + 0x30), M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC), &spB0, 1, (MKCollisionMode) 2, 0) == 0)) {
+                if (!((((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))))) < (temp_f31_1509 * temp_f31_1509)) && (MKCollision_SphereCollide(*(this->unk8 + 0x30), M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC), &spB0, 1, (MKCollisionMode) 2, 0) == 0)) {
                     this->unk70.unk4 = 1;
                     this->unkE0.Reset();
                     this->unkC8 = 6;
@@ -829,7 +829,6 @@ void Crate::Reset() {
     this->unkE0.Reset();
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp14'
 void Crate::Draw() {
     f64 sp10;
     f64 sp8;
@@ -864,14 +863,13 @@ void Crate::Draw() {
         } else {
             var_f0_1699 = this->unk20 * this->unk84;
         }
-        unksp14 = var_f0_1699;
+        (*(f32 *) ((u8 *) &sp10 + 0x4)) = var_f0_1699;
         MKModel_SetColor(this->unk4, *((MKVector4 *) &sp8));
         PreDraw();
         this->unkE0.Draw();
         PostDraw();
     }
 }
-#endif
 
 void Crate::Resolve() {
     ShockWave *temp_r3_1733;
@@ -883,7 +881,7 @@ void Crate::Resolve() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'collectableTypes'
+#if 0 // DRAFT: expression syntax error
 void Crate::LoadDone() {
     Matrix sp30;
     M2C_UNK sp2C;

@@ -110,7 +110,7 @@ void Arrow::Update() {
         sp28 = temp_f0_195;
         spB8 = temp_f0_195;
         sp30 = (f32) sp90 - (f32) sp80;
-        unkspBC = 0.0f;
+        (*(f32 *) ((u8 *) &spB8 + 0x4)) = 0.0f;
         spC0 = (f64) sp30;
         if ((((f32) spC0 * (f32) spC0) + (((f32) spB8 * (f32) spB8) + (0.0f * 0.0f))) < 10000.0f) {
             spCC = 0;
@@ -138,7 +138,7 @@ void Arrow::Update() {
                 sp100 = sp20;
             } else {
                 spF8 = 0.0f;
-                unkspFC = 0.0f;
+                (*(f32 *) ((u8 *) &spF4 + 0x8)) = 0.0f;
                 sp100 = 0.0f;
             }
             sp119 = 0;

@@ -72,11 +72,11 @@ void UIText::Draw(const RenderContext &arg0) {
         }
         temp_r3_121 = this->unk18.unk3C;
         if (!(temp_r3_121 & 0xC)) {
-            unksp64 = this->unk18.unk38 * 0.5f;
+            (*(f32 *) ((u8 *) &sp58 + 0xc)) = this->unk18.unk38 * 0.5f;
         } else if (temp_r3_121 & 4) {
-            unksp64 = 0.0f;
+            (*(f32 *) ((u8 *) &sp58 + 0xc)) = 0.0f;
         } else {
-            unksp64 = this->unk18.unk38 / -2.0f;
+            (*(f32 *) ((u8 *) &sp58 + 0xc)) = this->unk18.unk38 / -2.0f;
         }
         sp70.SetIdentity();
         sp70.Translate(&sp70, *((MKVector3 *) &sp60));
@@ -95,21 +95,21 @@ void UIText::Draw(const RenderContext &arg0) {
             sp58 = (f64) sp28;
             sp50 = (f64) sp20;
             spB0.unk30 = (f32) sp50;
-            spB0.unk34 = unksp54;
+            spB0.unk34 = (*(f32 *) ((u8 *) &sp50 + 0x4));
             spB0.unk38 = (f32) sp58;
             spB0.unk3C = 1.0f;
-            this->unk64->DrawString(var_r29_156, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spB0, this->unk18.unk3C, (u32) (128.0f * unkspFC) << 0x18, 1.0f, 1.0f, NULL, 1U);
+            this->unk64->DrawString(var_r29_156, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spB0, this->unk18.unk3C, (u32) (128.0f * (*(f32 *) ((u8 *) &spB0 + 0x4c))) << 0x18, 1.0f, 1.0f, NULL, 1U);
             sp18 = spB0.unk38;
             sp10 = spB0.unk30 - M2C_BITWISE(f32, this->unk68);
             sp14 = spB0.unk34 - M2C_BITWISE(f32, this->unk6C);
             sp48 = (f64) sp18;
             sp40 = (f64) sp10;
             spB0.unk30 = (f32) sp40;
-            spB0.unk34 = unksp44;
+            spB0.unk34 = (*(f32 *) ((u8 *) &sp40 + 0x4));
             spB0.unk38 = (f32) sp48;
             spB0.unk3C = 1.0f;
         }
-        this->unk64->DrawString(var_r29_156, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spB0, this->unk18.unk3C, (u32) (128.0f * (f32) spB0.unk40) | (((u32) (128.0f * unkspF4) << 8) | (((u32) (128.0f * unkspFC) << 0x18) | ((u32) (128.0f * (f32) spB0.unk48) << 0x10))), 1.0f, 1.0f, NULL, 1U);
+        this->unk64->DrawString(var_r29_156, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spB0, this->unk18.unk3C, (u32) (128.0f * (f32) spB0.unk40) | (((u32) (128.0f * (*(f32 *) ((u8 *) &spB0 + 0x44))) << 8) | (((u32) (128.0f * (*(f32 *) ((u8 *) &spB0 + 0x4c))) << 0x18) | ((u32) (128.0f * (f32) spB0.unk48) << 0x10))), 1.0f, 1.0f, NULL, 1U);
     }
 }
 #endif

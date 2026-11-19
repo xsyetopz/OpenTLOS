@@ -163,7 +163,7 @@ void DropBox::Drop() {
             sp38 = sp18;
             sp20 = (f32) spB0 - sp170.unk8;
             sp40 = (f64) sp20;
-            var_f4_237 = (((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) / (((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C)));
+            var_f4_237 = (((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) / (((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + ((*(f32 *) ((u8 *) &sp98 + 0x4)) * (*(f32 *) ((u8 *) &sp98 + 0x4)))));
             if (var_f4_237 > 0.0f) {
                 temp_f1_240 = __frsqrte(var_f4_237);
                 temp_f1_246 = 0.5 * temp_f1_240 * -(((f64) var_f4_237 * (temp_f1_240 * temp_f1_240)) - 3.0);
@@ -218,7 +218,7 @@ void DropBox::Drop() {
     temp_r3_347 = this->unk8;
     sp88 = M2C_FIELD(temp_r3_347, f64 *, 0x30);
     sp90 = M2C_FIELD(temp_r3_347, f64 *, 0x38);
-    var_f1_358 = -((0.00022222222f * (unksp8C - this->unk1AC)) - 1.0f);
+    var_f1_358 = -((0.00022222222f * ((*(f32 *) ((u8 *) &sp88 + 0x4)) - this->unk1AC)) - 1.0f);
     if (var_f1_358 < 1.0f) {
 
     } else {
@@ -348,7 +348,7 @@ void DropBox::Message(MKMessage *arg0) {
             sp28 = sp18;
             sp5C = 0;
             sp20 = (f32) sp50 - (f32) sp40;
-            unksp2C = 0.0f;
+            (*(f32 *) ((u8 *) &sp28 + 0x4)) = 0.0f;
             sp30 = (f64) sp20;
             sp58 = 7;
             sp80 = 2;
@@ -370,7 +370,7 @@ void DropBox::Message(MKMessage *arg0) {
                 sp90 = sp10;
             } else {
                 sp88 = 0.0f;
-                unksp8C = 0.0f;
+                (*(f32 *) ((u8 *) &sp84 + 0x8)) = 0.0f;
                 sp90 = 0.0f;
             }
             spA9 = 0;
@@ -618,12 +618,12 @@ void DropBox::Update() {
         sp170 = temp_f0_978;
         sp88 = sp1E0.unk38 + (f32) sp128;
         sp178 = (f64) sp88;
-        if ((M2C_BITWISE(s32, this->unk200.unk8) == 0) && ((temp_cr0_eq_992 = (u8) M2C_FIELD(this, u8 *, 0x1C0) == 0, (temp_cr0_eq_992 != 0)) || ((temp_cr0_eq_992 == 0) && (temp_r3_995 = this->unk8, sp110 = M2C_FIELD(temp_r3_995, f64 *, 0x30), sp118 = M2C_FIELD(temp_r3_995, f64 *, 0x38), ((unksp114 <= this->unk1A8) != 0))))) {
+        if ((M2C_BITWISE(s32, this->unk200.unk8) == 0) && ((temp_cr0_eq_992 = (u8) M2C_FIELD(this, u8 *, 0x1C0) == 0, (temp_cr0_eq_992 != 0)) || ((temp_cr0_eq_992 == 0) && (temp_r3_995 = this->unk8, sp110 = M2C_FIELD(temp_r3_995, f64 *, 0x30), sp118 = M2C_FIELD(temp_r3_995, f64 *, 0x38), (((*(f32 *) ((u8 *) &sp110 + 0x4)) <= this->unk1A8) != 0))))) {
             this->unk200.unk8 = M2C_BITWISE(f32, KDSound_Play3d(GS_DreadwingScream1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U));
         }
         temp_f0_1019 = this->unk1AC - 25.0f;
-        if (unksp174 <= temp_f0_1019) {
-            unksp174 = temp_f0_1019;
+        if ((*(f32 *) ((u8 *) &sp170 + 0x4)) <= temp_f0_1019) {
+            (*(f32 *) ((u8 *) &sp170 + 0x4)) = temp_f0_1019;
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp184 = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
@@ -655,7 +655,7 @@ void DropBox::Update() {
             M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp24, 8, 0, &sp170, 1, 250.0f);
         }
         sp1E0.unk30 = (f32) sp170;
-        sp1E0.unk34 = unksp174;
+        sp1E0.unk34 = (*(f32 *) ((u8 *) &sp170 + 0x4));
         sp1E0.unk38 = (f32) sp178;
         sp1E0.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, sp1E0);
@@ -663,7 +663,7 @@ void DropBox::Update() {
         temp_r3_1144 = this->unk8;
         spD0 = M2C_FIELD(temp_r3_1144, f64 *, 0x30);
         spD8 = M2C_FIELD(temp_r3_1144, f64 *, 0x38);
-        var_f1_1155 = -((0.00022222222f * (unkspD4 - this->unk1AC)) - 1.0f);
+        var_f1_1155 = -((0.00022222222f * ((*(f32 *) ((u8 *) &spD0 + 0x4)) - this->unk1AC)) - 1.0f);
         if (var_f1_1155 < 1.0f) {
 
         } else {
@@ -704,7 +704,7 @@ void DropBox::Update() {
             sp150 = sp60;
             sp68 = (f32) spB8 - (f32) spA8;
             sp158 = (f64) sp68;
-            var_f29_1248 = ((f32) sp158 * (f32) sp158) + (((f32) sp150 * (f32) sp150) + (unksp154 * unksp154));
+            var_f29_1248 = ((f32) sp158 * (f32) sp158) + (((f32) sp150 * (f32) sp150) + ((*(f32 *) ((u8 *) &sp150 + 0x4)) * (*(f32 *) ((u8 *) &sp150 + 0x4))));
             if (var_f29_1248 > 0.0f) {
                 temp_f1_1251 = __frsqrte(var_f29_1248);
                 temp_f1_1257 = 0.5 * temp_f1_1251 * -(((f64) var_f29_1248 * (temp_f1_1251 * temp_f1_1251)) - 3.0);
@@ -760,7 +760,7 @@ void DropBox::Update() {
                     sp258 = sp58;
                 } else {
                     sp250 = 0.0f;
-                    unksp254 = 0.0f;
+                    (*(f32 *) ((u8 *) &sp24C + 0x8)) = 0.0f;
                     sp258 = 0.0f;
                 }
                 sp271 = 0;

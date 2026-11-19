@@ -62,7 +62,6 @@ void SkyClouds::UpdateCameraVel() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp1C'
 void SkyClouds::UpdateClouds() {
     f64 sp30;
     f64 sp28;
@@ -91,7 +90,7 @@ loop_5:
             sp18 = temp_f0_142;
             sp10 = (f32) sp30 - M2C_FIELD(temp_r4_178, f32 *, 8);
             sp20 = (f64) sp10;
-            if (((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) >= 4.9e7f) && (DestroyByOwner(temp_r4_178) == 0)) {
+            if (((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))))) >= 4.9e7f) && (DestroyByOwner(temp_r4_178) == 0)) {
                 temp_r3_166 = this->unkC0;
                 this->unkC0 = temp_r3_166 + 4;
                 temp_r4_169 = *temp_r3_166;
@@ -103,7 +102,6 @@ loop_5:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
@@ -170,7 +168,7 @@ void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, 
                 KDRand_Vector(spA8, *((MKVector3 *) &sp98));
                 spB8 = M2C_BITWISE(f64, spA8);
                 spC0 = (f64) spA8.unk8;
-                temp_f26_269 = (0.25f * (1.0f + unkspBC)) + 0.5f;
+                temp_f26_269 = (0.25f * (1.0f + (*(f32 *) ((u8 *) &spB8 + 0x4)))) + 0.5f;
                 temp_f31_271 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
                 temp_f1_275 = MKRand_Float(&gViewSeed, 0.1f, 0.5f);
                 sp8 = temp_f26_269;
@@ -306,7 +304,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1CC'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     f64 sp2E8;
     f64 sp2E0;
@@ -393,7 +391,7 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     spA8 = 0.0f;
     spAC = 1.0f;
     sp48 = -(f32) sp1C8;
-    sp4C = -unksp1CC;
+    sp4C = -(*(f32 *) ((u8 *) &sp1C8 + 0x4));
     sp1D8 = (f64) spA8;
     sp1E0 = (f64) spB0;
     sp178 = (f64) sp48;
@@ -412,7 +410,7 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     sp40 = -(f32) sp1D0;
     sp80 = sp158.unk8 + sp148.unk8;
     sp38 = -(f32) sp1C8;
-    sp3C = -unksp1CC;
+    sp3C = -(*(f32 *) ((u8 *) &sp1C8 + 0x4));
     sp2C0 = sp78;
     sp2C8 = (f64) sp80;
     spF8 = (f64) sp38;
@@ -421,7 +419,7 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     sp170 = (f64) sp80;
     sp108.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     sp28 = -(f32) sp1D8;
-    sp2C = -unksp1DC;
+    sp2C = -(*(f32 *) ((u8 *) &sp1D8 + 0x4));
     sp30 = -(f32) sp1E0;
     sp118 = (f64) sp28;
     sp120 = (f64) sp30;
@@ -434,7 +432,7 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     sp140 = (f64) sp70;
     spB8.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     sp18 = -(f32) sp1D8;
-    sp1C = -unksp1DC;
+    sp1C = -(*(f32 *) ((u8 *) &sp1D8 + 0x4));
     sp20 = -(f32) sp1E0;
     spC8 = (f64) sp18;
     spD0 = (f64) sp20;
@@ -501,7 +499,7 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     } else {
         var_f4_736 = 0.0f;
     }
-    unksp1C4 *= -((M2C_FIELD(arg1, f32 *, 0x40) * 0.5f) - 1.0f) * (var_f4_736 / 800.0f);
+    (*(f32 *) ((u8 *) &sp1C0 + 0x4)) *= -((M2C_FIELD(arg1, f32 *, 0x40) * 0.5f) - 1.0f) * (var_f4_736 / 800.0f);
     MKBegin(4);
     MKSetColorV(*((MKVector4 *) &sp1B8));
     MKSetTexCoord1F(0.0f, 1.0f);
@@ -550,7 +548,7 @@ void SkyClouds::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp3C'
+#if 0 // DRAFT: illegal type
 void SkyClouds::Update() {
     f64 sp50;
     f64 sp48;
@@ -615,7 +613,7 @@ loop_12:
         sp38 = temp_f3_1018;
         sp20 = (f32) sp50 - M2C_FIELD(temp_r4_1015, f32 *, 8);
         sp40 = (f64) sp20;
-        M2C_FIELD(temp_r4_1015, f32 *, 0x38) = (f32) (((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C)));
+        M2C_FIELD(temp_r4_1015, f32 *, 0x38) = (f32) (((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4)))));
         temp_r4_1038 = *(this->unk54 + var_r3_961);
         temp_f3_1042 = *(temp_r4_1038 + 0x20) * (f64) gUpdateTimeDelta;
         sp8 = temp_f3_1042;

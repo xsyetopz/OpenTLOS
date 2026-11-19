@@ -230,7 +230,7 @@ inline s32 TriggerBoxObject::CheckPos(const MKVector3 &arg0) {
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (((f32) sp28 == temp_f4_512) && ((f32) sp28 <= (temp_f4_512 + this->unk70))) {
         temp_f1_531 = this->unk64;
-        if ((unksp2C >= temp_f1_531) && (unksp2C <= (temp_f1_531 + this->unk74))) {
+        if (((*(f32 *) ((u8 *) &sp28 + 0x4)) >= temp_f1_531) && ((*(f32 *) ((u8 *) &sp28 + 0x4)) <= (temp_f1_531 + this->unk74))) {
             temp_f1_541 = this->unk68;
             if (((f32) sp30 >= temp_f1_541) && ((f32) sp30 <= (temp_f1_541 + this->unk78))) {
                 var_r0_483 = 1;
@@ -324,7 +324,7 @@ inline s32 TriggerSphereObject::CheckTarget() {
         temp_r3_1382 = M2C_FIELD(var_r3_1368, void **, 8);
         sp8 = M2C_FIELD(temp_r3_1382, f64 *, 0x30);
         sp10 = M2C_FIELD(temp_r3_1382, f64 *, 0x38);
-        temp_f5_1391 = this->unk10.unk34 - unkspC;
+        temp_f5_1391 = this->unk10.unk34 - (*(f32 *) ((u8 *) &sp8 + 0x4));
         temp_f4_1392 = this->unk10.unk30 - (f32) sp8;
         temp_f3_1397 = this->unk10.unk38 - (f32) sp10;
         if (((temp_f3_1397 * temp_f3_1397) + ((temp_f4_1392 * temp_f4_1392) + (temp_f5_1391 * temp_f5_1391))) < this->unk80) {

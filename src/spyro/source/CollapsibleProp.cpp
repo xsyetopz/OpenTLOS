@@ -134,7 +134,7 @@ void CollapsibleProp::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CollapsibleProp::LoadDone() {
     f64 sp10;
     f64 sp8;
@@ -146,7 +146,7 @@ void CollapsibleProp::LoadDone() {
     temp_r5_327 = this->unk8;
     sp8 = M2C_FIELD(temp_r5_327, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r5_327, f64 *, 0x38);
-    this->unk98.unk28 = unkspC - 500.0f;
+    this->unk98.unk28 = (*(f32 *) ((u8 *) &sp8 + 0x4)) - 500.0f;
     SetState((CollapsibleProp::State) 0);
 }
 #endif

@@ -33,7 +33,6 @@ void Matrix::SetRotateAroundAxis(const MKVector3 &arg0, float arg1) {
     this->unk28 = spC + (temp_f4_24 * (temp_f0_23 * temp_f4_24));
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp2C'
 void Matrix::Inverse(const Matrix *arg0) {
     f64 sp30;
     f64 sp28;
@@ -77,14 +76,14 @@ void Matrix::Inverse(const Matrix *arg0) {
     if (temp_f5_127 != 0.0f) {
         Scale3x3(this, 1.0f / temp_f5_127);
     }
-    sp8 = ((f32) sp30 * this->unk20) + (((f32) sp28 * this->unk0) + (unksp2C * this->unk10));
-    spC = ((f32) sp30 * this->unk24) + (((f32) sp28 * this->unk4) + (unksp2C * this->unk14));
-    sp10 = ((f32) sp30 * this->unk28) + (((f32) sp28 * this->unk8) + (unksp2C * this->unk18));
+    sp8 = ((f32) sp30 * this->unk20) + (((f32) sp28 * this->unk0) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * this->unk10));
+    spC = ((f32) sp30 * this->unk24) + (((f32) sp28 * this->unk4) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * this->unk14));
+    sp10 = ((f32) sp30 * this->unk28) + (((f32) sp28 * this->unk8) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * this->unk18));
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
     sp18 = (f64) sp8;
     this->unk30 = -(f32) sp28;
-    this->unk34 = -unksp2C;
+    this->unk34 = -(*(f32 *) ((u8 *) &sp28 + 0x4));
     this->unk38 = -(f32) sp30;
     this->unk2C = 0.0f;
     this->unk1C = 0.0f;
@@ -92,7 +91,6 @@ void Matrix::Inverse(const Matrix *arg0) {
     sp20 = (f64) sp10;
     this->unk3C = 1.0f;
 }
-#endif
 
 void Matrix::RotatePYR(const Matrix *arg0, const MKVector3 &arg1) {
     Matrix sp10;
@@ -513,7 +511,7 @@ void Matrix::Transpose(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp8C'
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
     f32 spB0;                                       /* compiler-managed */
     f32 spAC;
@@ -549,7 +547,7 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
     sp98 = 0.0f;
     sp9C = 1.0f;
     spA0 = 0.0f;
-    if (((f32) sp88 == 0.0f) && (unksp8C == 0.0f) && ((f32) sp90 == 0.0f)) {
+    if (((f32) sp88 == 0.0f) && ((*(f32 *) ((u8 *) &sp88 + 0x4)) == 0.0f) && ((f32) sp90 == 0.0f)) {
         spA8 = 0.0f;
         spAC = 0.0f;
         spB0 = 0.0f;
@@ -557,9 +555,9 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
         Normalise(sp68);
         sp88 = M2C_BITWISE(f64, sp68);
         sp90 = (f64) sp68.unk8;
-        sp20 = (sp98 * unksp8C) - (sp9C * (f32) sp88);
+        sp20 = (sp98 * (*(f32 *) ((u8 *) &sp88 + 0x4))) - (sp9C * (f32) sp88);
         sp1C = (spA0 * (f32) sp88) - (sp98 * (f32) sp90);
-        sp18 = (sp9C * (f32) sp90) - (spA0 * unksp8C);
+        sp18 = (sp9C * (f32) sp90) - (spA0 * (*(f32 *) ((u8 *) &sp88 + 0x4)));
         sp50 = (f64) sp20;
         sp48 = (f64) sp18;
         Normalise(sp58);
@@ -568,10 +566,10 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
     }
     this->unk0 = (f32) spA8;
     this->unk4 = spAC;
-    sp10 = ((f32) sp88 * spAC) - (unksp8C * (f32) spA8);
+    sp10 = ((f32) sp88 * spAC) - ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (f32) spA8);
     this->unk8 = (f32) spB0;
     spA0 = (f64) sp10;
-    sp8 = (unksp8C * (f32) spB0) - ((f32) sp90 * spAC);
+    sp8 = ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (f32) spB0) - ((f32) sp90 * spAC);
     spC = ((f32) sp90 * (f32) spA8) - ((f32) sp88 * (f32) spB0);
     this->unkC = 0.0f;
     sp98 = (f64) sp8;
@@ -582,7 +580,7 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
     sp38 = (f64) sp8;
     this->unk20 = (f32) sp88;
     sp40 = (f64) sp10;
-    this->unk24 = unksp8C;
+    this->unk24 = (*(f32 *) ((u8 *) &sp88 + 0x4));
     this->unk28 = (f32) sp90;
     this->unk2C = 0.0f;
     this->unk30 = arg0.unk0;
@@ -713,7 +711,6 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp14'
 void Matrix::SetRotationPYR(const MKVector3 &arg0) {
     Matrix sp20;
     f64 sp18;
@@ -722,12 +719,11 @@ void Matrix::SetRotationPYR(const MKVector3 &arg0) {
     sp10 = M2C_FIELD(&arg0, f64 *, 0);
     sp18 = M2C_FIELD(&arg0, f64 *, 8);
     SetRotationPitch((f32) sp10);
-    sp20.SetRotationYaw(unksp14);
+    sp20.SetRotationYaw((*(f32 *) ((u8 *) &sp10 + 0x4)));
     Multiply3x3(this, &sp20);
     sp20.SetRotationRoll((f32) sp18);
     Multiply3x3(this, &sp20);
 }
-#endif
 
 void Matrix::SetRotationRoll(float arg0) {
     f32 spC;
@@ -829,7 +825,7 @@ void Matrix::NormaliseScale() {
 
     sp18 = *M2C_ERROR(/* Read from unset register $r4 */);
     sp20 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 8);
-    var_f5_1650 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C));
+    var_f5_1650 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp10 + 0xc)) * (*(f32 *) ((u8 *) &sp10 + 0xc))));
     if (var_f5_1650 > 0.000001f) {
         if (var_f5_1650 > 0.0f) {
             temp_f1_1656 = __frsqrte(var_f5_1650);
@@ -870,7 +866,7 @@ void Matrix::NormaliseScale() {
         var_f5_1650 = 0.0f;
     }
     temp_f2_1725 = (f32) sp18 * var_f3_1717;
-    temp_f1_1727 = unksp1C * var_f3_1717;
+    temp_f1_1727 = (*(f32 *) ((u8 *) &sp10 + 0xc)) * var_f3_1717;
     var_f4_1728 = 0.0f;
     temp_f3_1729 = (f32) sp20 * var_f3_1717;
     *M2C_ERROR(/* Read from unset register $r4 */) = temp_f2_1725;
@@ -878,12 +874,12 @@ void Matrix::NormaliseScale() {
     M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 8) = temp_f3_1729;
     M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0xC) = 0.0f;
     sp18 = temp_f2_1725;
-    unksp1C = temp_f1_1727;
+    (*(f32 *) ((u8 *) &sp10 + 0xc)) = temp_f1_1727;
     sp18 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x10);
     sp20 = temp_f3_1729;
     sp20 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x18);
     sp28 = var_f5_1650;
-    var_f5_1750 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C));
+    var_f5_1750 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp10 + 0xc)) * (*(f32 *) ((u8 *) &sp10 + 0xc))));
     if (var_f5_1750 > 0.000001f) {
         if (var_f5_1750 > 0.0f) {
             temp_f1_1755 = __frsqrte(var_f5_1750);
@@ -923,7 +919,7 @@ void Matrix::NormaliseScale() {
         var_f5_1750 = 0.0f;
     }
     temp_f2_1823 = (f32) sp18 * var_f4_1728;
-    temp_f1_1825 = unksp1C * var_f4_1728;
+    temp_f1_1825 = (*(f32 *) ((u8 *) &sp10 + 0xc)) * var_f4_1728;
     var_f6_1826 = 0.0f;
     temp_f3_1827 = (f32) sp20 * var_f4_1728;
     M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x10) = temp_f2_1823;
@@ -931,12 +927,12 @@ void Matrix::NormaliseScale() {
     M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x18) = temp_f3_1827;
     M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x1C) = 0.0f;
     sp18 = temp_f2_1823;
-    unksp1C = temp_f1_1825;
+    (*(f32 *) ((u8 *) &sp10 + 0xc)) = temp_f1_1825;
     sp18 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x20);
     sp20 = temp_f3_1827;
     sp20 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x28);
     sp2C = var_f5_1750;
-    var_f7_1848 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C));
+    var_f7_1848 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp10 + 0xc)) * (*(f32 *) ((u8 *) &sp10 + 0xc))));
     if (var_f7_1848 > 0.000001f) {
         if (var_f7_1848 > 0.0f) {
             temp_f1_1853 = __frsqrte(var_f7_1848);
@@ -976,7 +972,7 @@ void Matrix::NormaliseScale() {
         var_f7_1848 = 0.0f;
     }
     temp_f5_1921 = (f32) sp18 * var_f6_1826;
-    temp_f4_1923 = unksp1C * var_f6_1826;
+    temp_f4_1923 = (*(f32 *) ((u8 *) &sp10 + 0xc)) * var_f6_1826;
     sp30 = var_f7_1848;
     temp_f3_1925 = (f32) sp20 * var_f6_1826;
     M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x20) = temp_f5_1921;
@@ -985,7 +981,7 @@ void Matrix::NormaliseScale() {
     M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x2C) = 0.0f;
     M2C_FIELD(this, f64 *, 0) = (f64) sp28;
     sp18 = temp_f5_1921;
-    unksp1C = temp_f4_1923;
+    (*(f32 *) ((u8 *) &sp10 + 0xc)) = temp_f4_1923;
     sp20 = temp_f3_1925;
     M2C_FIELD(this, f64 *, 8) = (f64) sp30;
 }

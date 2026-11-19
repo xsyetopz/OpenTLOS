@@ -551,7 +551,7 @@ loop_18:
     sp230 = sp100;
     sp108 = (f32) sp228 - (f32) sp348;
     sp238 = (f64) sp108;
-    var_f4_810 = ((f32) sp238 * (f32) sp238) + (((f32) sp230 * (f32) sp230) + (unksp234 * unksp234));
+    var_f4_810 = ((f32) sp238 * (f32) sp238) + (((f32) sp230 * (f32) sp230) + ((*(f32 *) ((u8 *) &sp230 + 0x4)) * (*(f32 *) ((u8 *) &sp230 + 0x4))));
     if (var_f4_810 > 1e-12f) {
         if (var_f4_810 > 0.0f) {
             temp_f1_815 = __frsqrte(var_f4_810);
@@ -588,7 +588,7 @@ loop_18:
         }
         var_f0_760 = 1.0f / var_f4_810;
     }
-    spF4 = unksp234 * var_f0_760;
+    spF4 = (*(f32 *) ((u8 *) &sp230 + 0x4)) * var_f0_760;
     spF0 = (f32) sp230 * var_f0_760;
     spF8 = (f32) sp238 * var_f0_760;
     sp330 = (f64) spF0;
@@ -608,7 +608,7 @@ loop_18:
     sp38 = M2C_FIELD(temp_r4_925, f32 *, 8) + sp1F8;
     sp208 = (f64) sp38;
     sp3A0.unk30 = (f32) sp200;
-    sp3A0.unk34 = unksp204;
+    sp3A0.unk34 = (*(f32 *) ((u8 *) &sp200 + 0x4));
     sp3A0.unk38 = (f32) sp208;
     sp3A0.unk3C = 1.0f;
     ((ExplosionWarpFX *) (&gb + 0x1C0))->StartWarp(&sp3A0);
@@ -961,7 +961,7 @@ void EarthBombFX::Update() {
         sp150 = temp_f31_1350;
         sp218 = (f64) sp148;
         sp220 = (f64) sp150;
-        var_f4_1374 = ((f32) sp220 * (f32) sp220) + (((f32) sp218 * (f32) sp218) + (unksp21C * unksp21C));
+        var_f4_1374 = ((f32) sp220 * (f32) sp220) + (((f32) sp218 * (f32) sp218) + ((*(f32 *) ((u8 *) &sp218 + 0x4)) * (*(f32 *) ((u8 *) &sp218 + 0x4))));
         if (var_f4_1374 > 1e-12f) {
             if (var_f4_1374 > 0.0f) {
                 temp_f1_1380 = __frsqrte(var_f4_1374);
@@ -1000,7 +1000,7 @@ void EarthBombFX::Update() {
         } else {
             var_f4_1441 = 0.0f;
         }
-        sp13C = unksp21C * var_f4_1441;
+        sp13C = (*(f32 *) ((u8 *) &sp218 + 0x4)) * var_f4_1441;
         sp138 = (f32) sp218 * var_f4_1441;
         sp140 = (f32) sp220 * var_f4_1441;
         sp2F8 = (f64) sp138;

@@ -426,7 +426,7 @@ u8 SwampTier2Goal_Attack1::Update() {
         sp50 = (f64) sp20;
         if (((EnemyRegion *) &temp_r30_693->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
             ((EnemyRegion *) &sp8)->GetRegionPos();
-            if ((f32) fabs(spC - unksp4C) <= 500.0f) {
+            if ((f32) fabs(spC - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
                 var_r29_715 = 1;
             }
         }

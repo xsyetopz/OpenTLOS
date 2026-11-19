@@ -260,7 +260,7 @@ loop_46:
                 sp130 = sp70;
                 sp78 = (f32) sp118 - arg0.unk8;
                 sp138 = (f64) sp78;
-                var_f30_222 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
+                var_f30_222 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp120 + 0x14)) * (*(f32 *) ((u8 *) &sp120 + 0x14))));
                 if (var_f30_222 > 0.000001f) {
                     if (var_f30_222 > 0.0f) {
                         temp_f1_228 = __frsqrte(var_f30_222);
@@ -301,10 +301,10 @@ loop_46:
                     var_f30_222 = 0.0f;
                 }
                 temp_f5_298 = (f32) sp130 * var_f3_289;
-                temp_f2_300 = unksp134 * var_f3_289;
+                temp_f2_300 = (*(f32 *) ((u8 *) &sp120 + 0x14)) * var_f3_289;
                 temp_f4_301 = (f32) sp138 * var_f3_289;
                 sp130 = temp_f5_298;
-                unksp134 = temp_f2_300;
+                (*(f32 *) ((u8 *) &sp120 + 0x14)) = temp_f2_300;
                 sp138 = temp_f4_301;
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                 if ((var_f30_222 == 5000.0f) && (var_f30_222 < var_f29_153) && (((temp_f4_301 * arg1.unk8) + ((temp_f5_298 * arg1.unk0) + (temp_f2_300 * arg1.unk4))) > 0.0f)) {
@@ -860,7 +860,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                     M2C_FIELD(temp_r3_933, f64 *, 0) = temp_f1_890;
                     M2C_FIELD(temp_r3_933, f64 *, 8) = temp_f0_891;
                     sp368 = (f64) sp78;
-                    var_f25_953 = ((f32) sp438 * (f32) sp438) + (((f32) sp430 * (f32) sp430) + (unksp434 * unksp434));
+                    var_f25_953 = ((f32) sp438 * (f32) sp438) + (((f32) sp430 * (f32) sp430) + ((*(f32 *) ((u8 *) &sp428 + 0xc)) * (*(f32 *) ((u8 *) &sp428 + 0xc))));
                     if (var_f25_953 > 0.000001f) {
                         if (var_f25_953 > 0.0f) {
                             temp_f1_958 = __frsqrte(var_f25_953);
@@ -900,7 +900,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                         var_f25_953 = 0.0f;
                     }
                     sp430 = (f32) sp430 * var_f2_899;
-                    unksp434 *= var_f2_899;
+                    (*(f32 *) ((u8 *) &sp428 + 0xc)) *= var_f2_899;
                     sp438 = (f32) sp438 * var_f2_899;
                     if (var_f25_953 > 5.0f) {
                         temp_r26_1038 = this->unkAC + var_r27_718;
@@ -911,8 +911,8 @@ void ZapBreathFX::UpdateZapMissiles() {
                         M2C_FIELD(temp_r3_1055, f64 *, 0) = M2C_BITWISE(f64, sp350);
                         M2C_FIELD(temp_r3_1055, f64 *, 8) = (f64) sp350.unk8;
                         temp_r3_1066 = this->unkAC + temp_r4_1052;
-                        var_f6_1072 = ((f32) sp418 * (f32) sp418) + (((f32) sp410 * (f32) sp410) + (unksp414 * unksp414));
-                        var_f4_1078 = (sp438 * M2C_FIELD(temp_r3_1066, f32 *, 8)) + ((sp430 * M2C_FIELD(temp_r3_1066, f32 *, 0)) + (unksp434 * M2C_FIELD(temp_r3_1066, f32 *, 4)));
+                        var_f6_1072 = ((f32) sp418 * (f32) sp418) + (((f32) sp410 * (f32) sp410) + ((*(f32 *) ((u8 *) &sp410 + 0x4)) * (*(f32 *) ((u8 *) &sp410 + 0x4))));
+                        var_f4_1078 = (sp438 * M2C_FIELD(temp_r3_1066, f32 *, 8)) + ((sp430 * M2C_FIELD(temp_r3_1066, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp428 + 0xc)) * M2C_FIELD(temp_r3_1066, f32 *, 4)));
                         if (var_f6_1072 > 0.0f) {
                             temp_f1_1080 = __frsqrte(var_f6_1072);
                             temp_f1_1086 = 0.5 * temp_f1_1080 * -(((f64) var_f6_1072 * (temp_f1_1080 * temp_f1_1080)) - 3.0);
@@ -1219,7 +1219,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                     temp_f1_1831 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
                     sp90 = 1.0f;
                     sp94 = 1.0f;
-                    var_f6_1844 = ((f32) sp208 * (f32) sp208) + (((f32) sp200 * (f32) sp200) + (unksp204 * unksp204));
+                    var_f6_1844 = ((f32) sp208 * (f32) sp208) + (((f32) sp200 * (f32) sp200) + ((*(f32 *) ((u8 *) &sp200 + 0x4)) * (*(f32 *) ((u8 *) &sp200 + 0x4))));
                     sp98 = 0.2f;
                     sp9C = 1.0f;
                     sp1C = temp_f1_1831;
@@ -1264,7 +1264,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                         var_f3_1918 = 0.0f;
                     }
                     sp80 = (f32) sp200 * var_f3_1918;
-                    sp84 = unksp204 * var_f3_1918;
+                    sp84 = (*(f32 *) ((u8 *) &sp200 + 0x4)) * var_f3_1918;
                     sp88 = (f32) sp208 * var_f3_1918;
                     sp210 = (f64) sp80;
                     sp218 = (f64) sp88;
@@ -1781,7 +1781,7 @@ loop_64:
                 sp7C0 = M2C_BITWISE(f64, sp5C0);
                 sp7C8 = (f64) sp5C0.unk8;
                 temp_f1_2566 = ((MKVector3 *) &sp7C0)->Normalise();
-                if ((temp_f1_2566 <= var_f28_2432) && (temp_f1_2566 < var_f29_2515) && ((((f32) sp7C8 * (f32) sp828) + (((f32) sp7C0 * (f32) sp820) + (unksp7C4 * unksp824))) > 0.0f)) {
+                if ((temp_f1_2566 <= var_f28_2432) && (temp_f1_2566 < var_f29_2515) && ((((f32) sp7C8 * (f32) sp828) + (((f32) sp7C0 * (f32) sp820) + ((*(f32 *) ((u8 *) &sp7C0 + 0x4)) * (*(f32 *) ((u8 *) &sp820 + 0x4))))) > 0.0f)) {
                     var_f29_2515 = temp_f1_2566;
                     var_r15_2510 = temp_r17_2592;
                     var_r28_2376 = 1;
@@ -1809,7 +1809,7 @@ loop_81:
                     sp7B0 = M2C_BITWISE(f64, sp5A0);
                     sp7B8 = (f64) sp5A0.unk8;
                     temp_f1_2659 = ((MKVector3 *) &sp7B0)->Normalise();
-                    if ((temp_f1_2659 <= var_f28_2432) && (temp_f1_2659 < var_f29_2606) && ((((f32) sp7B8 * (f32) sp818) + (((f32) sp7B0 * (f32) sp810) + (unksp7B4 * unksp814))) > 0.0f)) {
+                    if ((temp_f1_2659 <= var_f28_2432) && (temp_f1_2659 < var_f29_2606) && ((((f32) sp7B8 * (f32) sp818) + (((f32) sp7B0 * (f32) sp810) + ((*(f32 *) ((u8 *) &sp7B0 + 0x4)) * (*(f32 *) ((u8 *) &sp810 + 0x4))))) > 0.0f)) {
                         var_f29_2606 = temp_f1_2659;
                         var_r16_2512 = temp_r14_2685;
                         var_r27_2378 = 1;
@@ -2294,7 +2294,7 @@ loop_208:
                 if (var_r15_2510 == NULL) {
                     temp_f26_4150 = -_table_sinf(1.5707964f + ((3.0f * M2C_BITWISE(f32, this->unkA04)) + temp_f30_4112));
                     sp6C0 = _table_sinf(M2C_BITWISE(f32, this->unkA04) + temp_f30_4112);
-                    unksp6C4 = temp_f26_4150;
+                    (*(f32 *) ((u8 *) &sp6B0 + 0x14)) = temp_f26_4150;
                     sp6C8 = 0.0f;
                     ApplyMatrix(sp90, (Matrix *) &sp6C0);
                     sp6C0 = M2C_BITWISE(f64, sp90);

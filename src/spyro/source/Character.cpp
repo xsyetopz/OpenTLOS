@@ -113,7 +113,7 @@ void Character::UpdateCollisionItems() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp54'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void Character::GetDesiredHeadingMatrix(Matrix *arg0) {
     f64 sp98;
     f64 sp90;
@@ -160,11 +160,11 @@ void Character::GetDesiredHeadingMatrix(Matrix *arg0) {
     sp98 = M2C_FIELD(this, f64 *, 0xF8);
     sp90 = M2C_FIELD(this, f64 *, 0xF0);
     sp34 = (temp_f8_153 * (f32) sp50) - (temp_f11_155 * (f32) sp58);
-    sp30 = (temp_f9_160 * (f32) sp58) - (temp_f8_153 * unksp54);
-    sp38 = (temp_f11_155 * unksp54) - (temp_f9_160 * (f32) sp50);
+    sp30 = (temp_f9_160 * (f32) sp58) - (temp_f8_153 * (*(f32 *) ((u8 *) &sp50 + 0x4)));
+    sp38 = (temp_f11_155 * (*(f32 *) ((u8 *) &sp50 + 0x4))) - (temp_f9_160 * (f32) sp50);
     sp60 = (f64) sp30;
     sp68 = (f64) sp38;
-    var_f4_187 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+    var_f4_187 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))));
     if (var_f4_187 > 1e-12f) {
         if (var_f4_187 > 0.0f) {
             temp_f1_193 = __frsqrte(var_f4_187);
@@ -203,27 +203,27 @@ void Character::GetDesiredHeadingMatrix(Matrix *arg0) {
     } else {
         var_f3_254 = 0.0f;
     }
-    sp24 = unksp64 * var_f3_254;
+    sp24 = (*(f32 *) ((u8 *) &sp60 + 0x4)) * var_f3_254;
     sp20 = (f32) sp60 * var_f3_254;
     sp28 = (f32) sp68 * var_f3_254;
     sp80 = (f64) sp20;
     sp88 = (f64) sp28;
-    sp18 = ((f32) sp80 * unksp94) - (unksp84 * (f32) sp90);
-    sp10 = (unksp84 * (f32) sp98) - ((f32) sp88 * unksp94);
+    sp18 = ((f32) sp80 * (*(f32 *) ((u8 *) &sp90 + 0x4))) - ((*(f32 *) ((u8 *) &sp80 + 0x4)) * (f32) sp90);
+    sp10 = ((*(f32 *) ((u8 *) &sp80 + 0x4)) * (f32) sp98) - ((f32) sp88 * (*(f32 *) ((u8 *) &sp90 + 0x4)));
     sp14 = ((f32) sp88 * (f32) sp90) - ((f32) sp80 * (f32) sp98);
     sp78 = (f64) sp18;
     sp70 = (f64) sp10;
     arg0->SetIdentity();
     arg0->unk0 = (f32) sp80;
-    arg0->unk4 = unksp84;
+    arg0->unk4 = (*(f32 *) ((u8 *) &sp80 + 0x4));
     arg0->unk8 = (f32) sp88;
     arg0->unkC = 0.0f;
     arg0->unk10 = (f32) sp90;
-    arg0->unk14 = unksp94;
+    arg0->unk14 = (*(f32 *) ((u8 *) &sp90 + 0x4));
     arg0->unk18 = (f32) sp98;
     arg0->unk1C = 0.0f;
     arg0->unk20 = (f32) sp70;
-    arg0->unk24 = unksp74;
+    arg0->unk24 = (*(f32 *) ((u8 *) &sp70 + 0x4));
     arg0->unk28 = (f32) sp78;
     arg0->unk2C = 0.0f;
 }
@@ -349,12 +349,12 @@ void Character::UpdateRotation() {
     sp78 = -this->unkC8;
     spE0 = (f64) sp70;
     spE8 = (f64) sp78;
-    sp60 = (temp_f7_484 * (f32) spE8) - (temp_f6_480 * unkspE4);
+    sp60 = (temp_f7_484 * (f32) spE8) - (temp_f6_480 * (*(f32 *) ((u8 *) &spE0 + 0x4)));
     sp64 = (temp_f6_480 * (f32) spE0) - (temp_f9_482 * (f32) spE8);
-    sp68 = (temp_f9_482 * unkspE4) - (temp_f7_484 * (f32) spE0);
+    sp68 = (temp_f9_482 * (*(f32 *) ((u8 *) &spE0 + 0x4))) - (temp_f7_484 * (f32) spE0);
     spF0 = (f64) sp60;
     spF8 = (f64) sp68;
-    var_f4_513 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4));
+    var_f4_513 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spF0 + 0x4))));
     if (var_f4_513 > 1e-12f) {
         if (var_f4_513 > 0.0f) {
             temp_f1_519 = __frsqrte(var_f4_513);
@@ -393,7 +393,7 @@ void Character::UpdateRotation() {
     } else {
         var_f3_580 = 0.0f;
     }
-    sp54 = unkspF4 * var_f3_580;
+    sp54 = (*(f32 *) ((u8 *) &spF0 + 0x4)) * var_f3_580;
     sp50 = (f32) spF0 * var_f3_580;
     sp58 = (f32) spF8 * var_f3_580;
     sp130 = (f64) sp50;
@@ -402,9 +402,9 @@ void Character::UpdateRotation() {
         temp_f5_601 = this->unkD0;
         temp_f3_603 = this->unkD8;
         temp_f7_606 = this->unkD4;
-        sp18 = ((f32) sp130 * temp_f7_606) - (unksp134 * temp_f5_601);
+        sp18 = ((f32) sp130 * temp_f7_606) - ((*(f32 *) ((u8 *) &sp130 + 0x4)) * temp_f5_601);
         sp14 = ((f32) sp138 * temp_f5_601) - ((f32) sp130 * temp_f3_603);
-        sp10 = (unksp134 * temp_f3_603) - ((f32) sp138 * temp_f7_606);
+        sp10 = ((*(f32 *) ((u8 *) &sp130 + 0x4)) * temp_f3_603) - ((f32) sp138 * temp_f7_606);
         spB8 = (f64) sp18;
         spB0 = (f64) sp10;
         Normalise(spC0);
@@ -422,8 +422,8 @@ void Character::UpdateRotation() {
     sp38 = -this->unkC8;
     sp80 = (f64) sp30;
     sp88 = (f64) sp38;
-    sp28 = ((f32) sp80 * unksp134) - (unksp84 * (f32) sp130);
-    sp20 = (unksp84 * (f32) sp138) - ((f32) sp88 * unksp134);
+    sp28 = ((f32) sp80 * (*(f32 *) ((u8 *) &sp130 + 0x4))) - ((*(f32 *) ((u8 *) &sp80 + 0x4)) * (f32) sp130);
+    sp20 = ((*(f32 *) ((u8 *) &sp80 + 0x4)) * (f32) sp138) - ((f32) sp88 * (*(f32 *) ((u8 *) &sp130 + 0x4)));
     sp24 = ((f32) sp88 * (f32) sp130) - ((f32) sp80 * (f32) sp138);
     sp98 = (f64) sp28;
     sp90 = (f64) sp20;
@@ -723,8 +723,8 @@ void Character::UpdateModel() {
     sp58 = (f64) sp18;
     sp28 = temp_f2_1147;
     sp48 = (f64) sp28;
-    sp38 = (temp_f12_1150 * unksp54) - (temp_f10_1146 * (f32) sp50);
-    sp30 = (temp_f10_1146 * (f32) sp58) - (temp_f9_1148 * unksp54);
+    sp38 = (temp_f12_1150 * (*(f32 *) ((u8 *) &sp50 + 0x4))) - (temp_f10_1146 * (f32) sp50);
+    sp30 = (temp_f10_1146 * (f32) sp58) - (temp_f9_1148 * (*(f32 *) ((u8 *) &sp50 + 0x4)));
     sp34 = (temp_f9_1148 * (f32) sp50) - (temp_f12_1150 * (f32) sp58);
     sp68 = (f64) sp38;
     sp60 = (f64) sp30;
@@ -732,7 +732,7 @@ void Character::UpdateModel() {
     sp24 = temp_f7_1145;
     sp70 = (f32) sp60;
     sp40 = (f64) sp20;
-    sp74 = unksp64;
+    sp74 = (*(f32 *) ((u8 *) &sp60 + 0x4));
     sp78 = (f32) sp68;
     sp7C = 0.0f;
     sp80 = temp_f12_1150;
@@ -740,7 +740,7 @@ void Character::UpdateModel() {
     sp88 = temp_f9_1148;
     sp8C = 0.0f;
     sp90 = (f32) sp40;
-    sp94 = unksp44;
+    sp94 = (*(f32 *) ((u8 *) &sp40 + 0x4));
     sp98 = (f32) sp48;
     sp9C = 0.0f;
     spA0 = M2C_FIELD(this, f32 *, 0x588);
@@ -775,7 +775,7 @@ void Character::StopMovement(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp304'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void Character::UpdateMovementArbitrary() {
     MKCollisionResult sp310;
     f64 sp308;
@@ -897,7 +897,7 @@ void Character::UpdateMovementArbitrary() {
 
     sp300 = M2C_FIELD(this, f64 *, 0x598);
     sp308 = M2C_FIELD(this, f64 *, 0x5A0);
-    var_f26_1301 = ((f32) sp308 * (f32) sp308) + (((f32) sp300 * (f32) sp300) + (unksp304 * unksp304));
+    var_f26_1301 = ((f32) sp308 * (f32) sp308) + (((f32) sp300 * (f32) sp300) + ((*(f32 *) ((u8 *) &sp300 + 0x4)) * (*(f32 *) ((u8 *) &sp300 + 0x4))));
     if (var_f26_1301 > 0.0f) {
         temp_f1_1304 = __frsqrte(var_f26_1301);
         temp_f1_1310 = 0.5 * temp_f1_1304 * -(((f64) var_f26_1301 * (temp_f1_1304 * temp_f1_1304)) - 3.0);
@@ -969,14 +969,14 @@ void Character::UpdateMovementArbitrary() {
         temp_r29_1450 = this->unk110.unk460;
         if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp2F0), *((MKVector3 *) &sp2E0), M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60), &sp310, (MKCollisionMode) 5, M2C_FIELD(temp_r29_1450, s32 *, 0x18)) != 0) {
             if (((sp310.unk18 * this->unkD8) + ((sp310.unk10 * this->unkD0) + (sp310.unk14 * this->unkD4))) > 0.65f) {
-                sp50 = (sp310.unk14 * (f32) sp308) - (sp310.unk18 * unksp304);
+                sp50 = (sp310.unk14 * (f32) sp308) - (sp310.unk18 * (*(f32 *) ((u8 *) &sp300 + 0x4)));
                 sp54 = (sp310.unk18 * (f32) sp300) - (sp310.unk10 * (f32) sp308);
-                sp58 = (sp310.unk10 * unksp304) - (sp310.unk14 * (f32) sp300);
+                sp58 = (sp310.unk10 * (*(f32 *) ((u8 *) &sp300 + 0x4))) - (sp310.unk14 * (f32) sp300);
                 sp260 = (f64) sp50;
                 sp268 = (f64) sp58;
-                sp40 = (sp310.unk14 * (f32) sp268) - (sp310.unk18 * unksp264);
+                sp40 = (sp310.unk14 * (f32) sp268) - (sp310.unk18 * (*(f32 *) ((u8 *) &sp260 + 0x4)));
                 sp44 = (sp310.unk18 * (f32) sp260) - (sp310.unk10 * (f32) sp268);
-                sp48 = (sp310.unk10 * unksp264) - (sp310.unk14 * (f32) sp260);
+                sp48 = (sp310.unk10 * (*(f32 *) ((u8 *) &sp260 + 0x4))) - (sp310.unk14 * (f32) sp260);
                 sp270 = (f64) sp40;
                 sp278 = (f64) sp48;
                 Normalise(sp280);
@@ -1209,7 +1209,6 @@ void Character::UpdateMovement() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp9C'
 void Character::BridgeHit(float arg0, float arg1) {
     f64 spD8;
     f64 spD0;
@@ -1267,7 +1266,7 @@ void Character::BridgeHit(float arg0, float arg1) {
         spC = -1.0f;
         spA0 = (f64) sp30;
         sp8 = -(f32) sp98;
-        unksp9C = 1.0f;
+        (*(f32 *) ((u8 *) &sp98 + 0x4)) = 1.0f;
         sp10 = -(f32) spA0;
         sp58 = (f64) sp8;
         spBC = 0;
@@ -1285,7 +1284,6 @@ void Character::BridgeHit(float arg0, float arg1) {
         M2C_FIELD(M2C_FIELD(temp_r4_2083, void **, 0x44), M2C_UNK (**)(void *, s32 *, void *, f64, f32, f32, f64, f64, f64, f32), 0x2C)(temp_r4_2083, &spB8, temp_r5_2086, temp_f1_2142, (f32) sp60, 1.0f, (f64) sp30, (f64) sp40, sp38, 0.002f);
     }
 }
-#endif
 
 void **Character::PlatformFind(MKCollisionResult *arg0, int arg1) {
     s32 var_ctr_2176;
@@ -2255,7 +2253,7 @@ void Character::Message(MKMessage *arg0) {
                 sp40 = (f64) sp10;
                 sp6C = 0.0f;
                 sp50 = (f32) sp40;
-                sp54 = unksp44;
+                sp54 = (*(f32 *) ((u8 *) &sp40 + 0x4));
                 sp58 = (f32) sp48;
                 sp5C = 0.0f;
                 ((Matrix *) &sp50)->RotateYaw((Matrix *) &sp50, M2C_FIELD(M2C_FIELD(temp_r31_3978, void **, 0xC), f32 *, 4));

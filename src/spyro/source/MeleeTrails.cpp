@@ -231,7 +231,7 @@ loop_7:
             sp38 = (f64) sp18;
             sp30 = (f64) sp10;
             sp50.unk30 = (f32) sp30;
-            sp50.unk34 = unksp34;
+            sp50.unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
             sp50.unk38 = (f32) sp38;
             sp50.unk3C = 1.0f;
             MKMaterial_SetTextureMatrix(this->unkCC, &sp50);

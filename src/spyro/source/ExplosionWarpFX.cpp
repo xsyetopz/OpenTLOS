@@ -446,13 +446,13 @@ loop_26:
         if (var_r31_722 < (s32) (temp_r3_813 - 1)) {
             if (var_r31_722 == (s32) (temp_r3_813 - 2)) {
                 sp60 = 1.0f;
-                unksp64 = 1.0f;
+                (*(f32 *) ((u8 *) &sp58 + 0xc)) = 1.0f;
                 sp68 = 1.0f;
-                unksp6C = 0.0f;
+                (*(f32 *) ((u8 *) &sp58 + 0x14)) = 0.0f;
             } else {
-                unksp6C = var_f31_642;
+                (*(f32 *) ((u8 *) &sp58 + 0x14)) = var_f31_642;
                 sp60 = 1.0f;
-                unksp64 = 1.0f;
+                (*(f32 *) ((u8 *) &sp58 + 0xc)) = 1.0f;
                 sp68 = 1.0f;
             }
             MKBegin(this->unk10 * 2);

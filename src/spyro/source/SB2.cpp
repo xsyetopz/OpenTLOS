@@ -149,7 +149,7 @@ void SB2::Arbitrate() {
         temp_r3_91 = this->unk0->unk8;
         temp_f5_93 = M2C_FIELD(temp_r5_88, f64 *, 0x128);
         sp48 = temp_f5_93;
-        unksp4C = 0.0f;
+        (*(f32 *) ((u8 *) &sp48 + 0x4)) = 0.0f;
         sp80 = temp_f9_89;
         sp78 = temp_f5_93;
         sp30 = -M2C_FIELD(temp_r3_91, f32 *, 0x28);
@@ -159,14 +159,14 @@ void SB2::Arbitrate() {
         sp70 = (f64) sp30;
         temp_f10_125 = (f32) M2C_FIELD(temp_r5_88, f64 *, 0x128);
         sp68 = (f64) sp28;
-        sp40 = (MKVector3::up.unk0 * unksp7C) - (MKVector3::up.unk4 * (f32) sp78);
+        sp40 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp78 + 0x4))) - (MKVector3::up.unk4 * (f32) sp78);
         temp_f11_133 = (f32) M2C_FIELD(temp_r5_88, f64 *, 0x130);
-        sp38 = (MKVector3::up.unk4 * (f32) sp80) - (MKVector3::up.unk8 * unksp7C);
+        sp38 = (MKVector3::up.unk4 * (f32) sp80) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp78 + 0x4)));
         sp3C = (MKVector3::up.unk8 * (f32) sp78) - (MKVector3::up.unk0 * (f32) sp80);
         sp50 = temp_f9_89;
         sp98 = (f64) sp38;
         spA0 = (f64) sp40;
-        if ((((f32) sp70 * temp_f11_133) + (((f32) sp68 * temp_f10_125) + (unksp6C * temp_f7_121))) > -0.9f) {
+        if ((((f32) sp70 * temp_f11_133) + (((f32) sp68 * temp_f10_125) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * temp_f7_121))) > -0.9f) {
             ((Matrix *) temp_r3_91)->ZAxis3();
             sp18 = -*M2C_ERROR(/* Read from unset register $r3 */);
             sp1C = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
@@ -175,7 +175,7 @@ void SB2::Arbitrate() {
             sp90 = (f64) sp20;
             sp58 = (f64) sp18;
             sp60 = (f64) sp20;
-            if ((((f32) sp90 * (f32) spA0) + (((f32) sp88 * (f32) sp98) + (unksp8C * unksp9C))) < 0.0f) {
+            if ((((f32) sp90 * (f32) spA0) + (((f32) sp88 * (f32) sp98) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp98 + 0x4))))) < 0.0f) {
                 sp98 *= 1.58735232e-314;
                 spA0 = (f32) spA0 * -1.0f;
             }
@@ -185,7 +185,7 @@ void SB2::Arbitrate() {
         } else {
             sp8 = M2C_FIELD(temp_r5_88, f64 *, 0x100);
             sp10 = M2C_FIELD(temp_r5_88, f64 *, 0x108);
-            if ((((f32) sp10 * temp_f11_133) + (((f32) sp8 * temp_f10_125) + (unkspC * temp_f7_121))) < 0.0f) {
+            if ((((f32) sp10 * temp_f11_133) + (((f32) sp8 * temp_f10_125) + ((*(f32 *) ((u8 *) &sp8 + 0x4)) * temp_f7_121))) < 0.0f) {
                 sp98 *= 1.58735232e-314;
                 spA0 *= -1.0f;
             }
@@ -274,7 +274,7 @@ void SB2::Calculate(unsigned int arg0) {
             sp90.unk18 = M2C_FIELD(temp_r3_341, f64 *, 0x38);
             ((AITargetData *) (M2C_FIELD(arg0, AITargetData **, 0xC)))->Update(*((MKVector3 *) &sp90.unk10));
             sp90.GetDir();
-            if (((sp90.unk8 * (f32) M2C_FIELD(&vBaseHeading, f64 *, 8)) + ((M2C_BITWISE(f32, sp90) * (f32) M2C_FIELD(&vBaseHeading, f64 *, 0)) + (unksp94 * M2C_FIELD(&vBaseHeading, f32 *, 4)))) > 0.35f) {
+            if (((sp90.unk8 * (f32) M2C_FIELD(&vBaseHeading, f64 *, 8)) + ((M2C_BITWISE(f32, sp90) * (f32) M2C_FIELD(&vBaseHeading, f64 *, 0)) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * M2C_FIELD(&vBaseHeading, f32 *, 4)))) > 0.35f) {
                 ((AITargetData *) &sp80)->GetDir();
                 M2C_FIELD(&vBaseHeading, f64 *, 0) = sp80;
                 M2C_FIELD(&vBaseHeading, f64 *, 8) = sp88;
@@ -368,7 +368,7 @@ loop_32:
         sp28 = -temp_r3_590->unk28;
         sp30 = (f64) sp20;
         sp38 = (f64) sp28;
-        var_f1_612 = ((f32) sp38 * M2C_FIELD(arg0, f32 *, 0x70)) + (((f32) sp30 * M2C_FIELD(arg0, f32 *, 0x68)) + (unksp34 * M2C_FIELD(arg0, f32 *, 0x6C)));
+        var_f1_612 = ((f32) sp38 * M2C_FIELD(arg0, f32 *, 0x70)) + (((f32) sp30 * M2C_FIELD(arg0, f32 *, 0x68)) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * M2C_FIELD(arg0, f32 *, 0x6C)));
         if (var_f1_612 < 1.0f) {
 
         } else {
@@ -541,10 +541,10 @@ void SB2::GraphFollowingAny() {
     if (!(((u8) this->unk464 >> 5U) & 1)) {
         temp_f3_734 = (f32) sp158 - (f32) sp148;
         temp_f1_736 = (f32) sp150 - (f32) sp140;
-        unksp154 = unksp144;
+        (*(f32 *) ((u8 *) &sp150 + 0x4)) = (*(f32 *) ((u8 *) &sp140 + 0x4));
         var_f4_740 = (temp_f1_736 * temp_f1_736) + (temp_f3_734 * temp_f3_734);
     } else {
-        temp_f4_747 = unksp154 - unksp144;
+        temp_f4_747 = (*(f32 *) ((u8 *) &sp150 + 0x4)) - (*(f32 *) ((u8 *) &sp140 + 0x4));
         temp_f3_749 = (f32) sp150 - (f32) sp140;
         temp_f2_752 = (f32) sp158 - (f32) sp148;
         var_f4_740 = (temp_f2_752 * temp_f2_752) + ((temp_f3_749 * temp_f3_749) + (temp_f4_747 * temp_f4_747));
@@ -749,7 +749,7 @@ loop_19:
         }
     }
     if (!(((u8) this->unk464 >> 5U) & 1)) {
-        unksp144 = unksp154;
+        (*(f32 *) ((u8 *) &sp140 + 0x4)) = (*(f32 *) ((u8 *) &sp150 + 0x4));
     }
     this->unk18.Set(*((MKVector3 *) &sp140), 0U);
 }
@@ -835,7 +835,7 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
         spB8.unk28 = (f64) sp40;
         sp28 = (f64) spB8.unk30 - sp108;
         sp30 = spB8.unk38 - (f32) sp110;
-        var_f4_1289 = ((f32) spB8.unk28 * (f32) spB8.unk28) + (((f32) spB8.unk20 * (f32) spB8.unk20) + (unkspDC * unkspDC));
+        var_f4_1289 = ((f32) spB8.unk28 * (f32) spB8.unk28) + (((f32) spB8.unk20 * (f32) spB8.unk20) + ((*(f32 *) ((u8 *) &spB8 + 0x24)) * (*(f32 *) ((u8 *) &spB8 + 0x24))));
         spB8.unk10 = sp28;
         spB8.unk18 = (f64) sp30;
         if (var_f4_1289 > 0.000001f) {
@@ -876,9 +876,9 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
         } else {
             var_f6_1359 = 0.0f;
         }
-        var_f7_1377 = ((f32) spB8.unk18 * (f32) spB8.unk18) + (((f32) spB8.unk10 * (f32) spB8.unk10) + (unkspCC * unkspCC));
+        var_f7_1377 = ((f32) spB8.unk18 * (f32) spB8.unk18) + (((f32) spB8.unk10 * (f32) spB8.unk10) + ((*(f32 *) ((u8 *) &spB8 + 0x14)) * (*(f32 *) ((u8 *) &spB8 + 0x14))));
         spB8.unk20 = (f32) spB8.unk20 * var_f6_1359;
-        unkspDC *= var_f6_1359;
+        (*(f32 *) ((u8 *) &spB8 + 0x24)) *= var_f6_1359;
         spB8.unk28 = (f32) spB8.unk28 * var_f6_1359;
         if (var_f7_1377 > 0.000001f) {
             if (var_f7_1377 > 0.0f) {
@@ -918,13 +918,13 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
         } else {
             var_f4_1448 = 0.0f;
         }
-        temp_f5_1455 = unkspCC * var_f4_1448;
+        temp_f5_1455 = (*(f32 *) ((u8 *) &spB8 + 0x14)) * var_f4_1448;
         temp_f6_1457 = (f32) spB8.unk10 * var_f4_1448;
         temp_f4_1461 = (f32) spB8.unk18 * var_f4_1448;
         spB8.unk10 = temp_f6_1457;
-        unkspCC = temp_f5_1455;
+        (*(f32 *) ((u8 *) &spB8 + 0x14)) = temp_f5_1455;
         spB8.unk18 = temp_f4_1461;
-        if (((spB8.unk28 * temp_f4_1461) + ((spB8.unk20 * temp_f6_1457) + (unkspDC * temp_f5_1455))) > 0.95f) {
+        if (((spB8.unk28 * temp_f4_1461) + ((spB8.unk20 * temp_f6_1457) + ((*(f32 *) ((u8 *) &spB8 + 0x24)) * temp_f5_1455))) > 0.95f) {
             if (!(((u8) this->unk464 >> 5U) & 1)) {
                 temp_r4_1474 = this->unk448;
                 M2C_FIELD(temp_r4_1474->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp78, temp_r4_1474);
@@ -1214,7 +1214,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
     }
     if (M2C_BITWISE(f32, this->unk0->unk684) > 0.0f) {
         ((AITargetData *) &spF8)->GetDir();
-        var_f1_1876 = ((f32) sp150 * sp100) + (((f32) sp148 * spF8) + (unksp14C * spFC));
+        var_f1_1876 = ((f32) sp150 * sp100) + (((f32) sp148 * spF8) + ((*(f32 *) ((u8 *) &sp148 + 0x4)) * spFC));
         if (var_f1_1876 < 1.0f) {
 
         } else {
@@ -1227,7 +1227,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
         }
         var_f29_1742 += (f32) acos(var_f1_1876) / M2C_BITWISE(f32, this->unk0->unk684);
     }
-    unksp16C = unksp17C;
+    (*(f32 *) ((u8 *) &sp168 + 0x4)) = (*(f32 *) ((u8 *) &sp178 + 0x4));
     ((AITargetData *) &spC8)->GetVel();
     spD8.operator*(var_f29_1742);
     sp48 = sp168 + M2C_BITWISE(f64, spD8);
@@ -1242,7 +1242,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
     spB8 = sp38;
     sp140 = (f64) sp40;
     spC0 = (f64) sp40;
-    var_f4_1942 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + (unksp13C * unksp13C));
+    var_f4_1942 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + ((*(f32 *) ((u8 *) &sp118 + 0x24)) * (*(f32 *) ((u8 *) &sp118 + 0x24))));
     if (var_f4_1942 > 0.000001f) {
         if (var_f4_1942 > 0.0f) {
             temp_f1_1948 = __frsqrte(var_f4_1942);
@@ -1282,10 +1282,10 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
         var_f3_2009 = 0.0f;
     }
     var_r30_2015 = 0;
-    temp_f30_2019 = unksp13C * var_f3_2009;
+    temp_f30_2019 = (*(f32 *) ((u8 *) &sp118 + 0x24)) * var_f3_2009;
     temp_f31_2020 = (f32) sp140 * var_f3_2009;
     sp138 = (f32) sp138 * var_f3_2009;
-    unksp13C = temp_f30_2019;
+    (*(f32 *) ((u8 *) &sp118 + 0x24)) = temp_f30_2019;
     sp140 = temp_f31_2020;
     do {
         temp_r3_2025 = this->unk448;
@@ -1301,7 +1301,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
                 sp130 = (f64) sp30;
                 sp98 = sp28;
                 spA0 = (f64) sp30;
-                var_f4_2075 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + (unksp12C * unksp12C));
+                var_f4_2075 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + ((*(f32 *) ((u8 *) &sp118 + 0x14)) * (*(f32 *) ((u8 *) &sp118 + 0x14))));
                 if (var_f4_2075 > 0.000001f) {
                     if (var_f4_2075 > 0.0f) {
                         temp_f1_2081 = __frsqrte(var_f4_2075);
@@ -1340,11 +1340,11 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
                 } else {
                     var_f2_2142 = 0.0f;
                 }
-                temp_f3_2149 = unksp12C * var_f2_2142;
+                temp_f3_2149 = (*(f32 *) ((u8 *) &sp118 + 0x14)) * var_f2_2142;
                 temp_f4_2151 = (f32) sp128 * var_f2_2142;
                 temp_f2_2153 = (f32) sp130 * var_f2_2142;
                 sp128 = temp_f4_2151;
-                unksp12C = temp_f3_2149;
+                (*(f32 *) ((u8 *) &sp118 + 0x14)) = temp_f3_2149;
                 sp130 = temp_f2_2153;
                 temp_f0_2159 = (temp_f2_2153 * temp_f31_2020) + ((temp_f4_2151 * sp138) + (temp_f3_2149 * temp_f30_2019));
                 if (temp_f0_2159 < var_f27_1739) {
@@ -1355,7 +1355,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
                 temp_r3_2168 = this->unk448->GetLink(var_r30_2015);
                 M2C_FIELD(temp_r3_2168->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp78, temp_r3_2168);
                 sp158 = sp78;
-                unksp15C = unksp17C;
+                (*(f32 *) ((u8 *) &sp158 + 0x4)) = (*(f32 *) ((u8 *) &sp178 + 0x4));
                 sp160 = sp80;
                 sp18 = sp78 - sp178;
                 sp128 = sp18;
@@ -1363,7 +1363,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
                 sp130 = (f64) sp20;
                 sp68 = sp18;
                 sp70 = (f64) sp20;
-                var_f4_2201 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + (unksp12C * unksp12C));
+                var_f4_2201 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + ((*(f32 *) ((u8 *) &sp118 + 0x14)) * (*(f32 *) ((u8 *) &sp118 + 0x14))));
                 if (var_f4_2201 > 0.000001f) {
                     if (var_f4_2201 > 0.0f) {
                         temp_f1_2207 = __frsqrte(var_f4_2201);
@@ -1403,11 +1403,11 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
                     var_f2_2268 = 0.0f;
                 }
                 var_r31_1735 = var_r30_2015;
-                temp_f3_2276 = unksp12C * var_f2_2268;
+                temp_f3_2276 = (*(f32 *) ((u8 *) &sp118 + 0x14)) * var_f2_2268;
                 temp_f4_2278 = (f32) sp128 * var_f2_2268;
                 temp_f2_2280 = (f32) sp130 * var_f2_2268;
                 sp128 = temp_f4_2278;
-                unksp12C = temp_f3_2276;
+                (*(f32 *) ((u8 *) &sp118 + 0x14)) = temp_f3_2276;
                 sp130 = temp_f2_2280;
                 var_f27_1739 = (temp_f2_2280 * temp_f31_2020) + ((temp_f4_2278 * sp138) + (temp_f3_2276 * temp_f30_2019));
             }
@@ -1485,7 +1485,7 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
         spB0.unk28 = (f64) sp38;
         sp20 = (f64) spB0.unk30 - sp100;
         sp28 = spB0.unk38 - (f32) sp108;
-        var_f4_2371 = ((f32) spB0.unk28 * (f32) spB0.unk28) + (((f32) spB0.unk20 * (f32) spB0.unk20) + (unkspD4 * unkspD4));
+        var_f4_2371 = ((f32) spB0.unk28 * (f32) spB0.unk28) + (((f32) spB0.unk20 * (f32) spB0.unk20) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * (*(f32 *) ((u8 *) &spB0 + 0x24))));
         spB0.unk10 = sp20;
         spB0.unk18 = (f64) sp28;
         if (var_f4_2371 > 0.000001f) {
@@ -1526,9 +1526,9 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
         } else {
             var_f6_2441 = 0.0f;
         }
-        var_f7_2459 = ((f32) spB0.unk18 * (f32) spB0.unk18) + (((f32) spB0.unk10 * (f32) spB0.unk10) + (unkspC4 * unkspC4));
+        var_f7_2459 = ((f32) spB0.unk18 * (f32) spB0.unk18) + (((f32) spB0.unk10 * (f32) spB0.unk10) + ((*(f32 *) ((u8 *) &spB0 + 0x14)) * (*(f32 *) ((u8 *) &spB0 + 0x14))));
         spB0.unk20 = (f32) spB0.unk20 * var_f6_2441;
-        unkspD4 *= var_f6_2441;
+        (*(f32 *) ((u8 *) &spB0 + 0x24)) *= var_f6_2441;
         spB0.unk28 = (f32) spB0.unk28 * var_f6_2441;
         if (var_f7_2459 > 0.000001f) {
             if (var_f7_2459 > 0.0f) {
@@ -1568,13 +1568,13 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
         } else {
             var_f4_2530 = 0.0f;
         }
-        temp_f5_2537 = unkspC4 * var_f4_2530;
+        temp_f5_2537 = (*(f32 *) ((u8 *) &spB0 + 0x14)) * var_f4_2530;
         temp_f6_2539 = (f32) spB0.unk10 * var_f4_2530;
         temp_f4_2543 = (f32) spB0.unk18 * var_f4_2530;
         spB0.unk10 = temp_f6_2539;
-        unkspC4 = temp_f5_2537;
+        (*(f32 *) ((u8 *) &spB0 + 0x14)) = temp_f5_2537;
         spB0.unk18 = temp_f4_2543;
-        if (((spB0.unk28 * temp_f4_2543) + ((spB0.unk20 * temp_f6_2539) + (unkspD4 * temp_f5_2537))) < -0.95f) {
+        if (((spB0.unk28 * temp_f4_2543) + ((spB0.unk20 * temp_f6_2539) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * temp_f5_2537))) < -0.95f) {
             if (!(((u8) this->unk464 >> 5U) & 1)) {
                 temp_r4_2556 = this->unk448;
                 M2C_FIELD(temp_r4_2556->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp70, temp_r4_2556);
@@ -1812,7 +1812,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
     }
     if (M2C_BITWISE(f32, this->unk0->unk684) > 0.0f) {
         ((AITargetData *) &spF8)->GetDir();
-        var_f1_2852 = ((f32) sp150 * sp100) + (((f32) sp148 * spF8) + (unksp14C * spFC));
+        var_f1_2852 = ((f32) sp150 * sp100) + (((f32) sp148 * spF8) + ((*(f32 *) ((u8 *) &sp148 + 0x4)) * spFC));
         if (var_f1_2852 < 1.0f) {
 
         } else {
@@ -1825,7 +1825,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
         }
         var_f29_2718 += (f32) acos(var_f1_2852) / M2C_BITWISE(f32, this->unk0->unk684);
     }
-    unksp16C = unksp17C;
+    (*(f32 *) ((u8 *) &sp168 + 0x4)) = (*(f32 *) ((u8 *) &sp178 + 0x4));
     ((AITargetData *) &spC8)->GetVel();
     spD8.operator*(var_f29_2718);
     sp48 = sp168 + M2C_BITWISE(f64, spD8);
@@ -1840,7 +1840,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
     spB8 = sp38;
     sp140 = (f64) sp40;
     spC0 = (f64) sp40;
-    var_f4_2918 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + (unksp13C * unksp13C));
+    var_f4_2918 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + ((*(f32 *) ((u8 *) &sp118 + 0x24)) * (*(f32 *) ((u8 *) &sp118 + 0x24))));
     if (var_f4_2918 > 0.000001f) {
         if (var_f4_2918 > 0.0f) {
             temp_f1_2924 = __frsqrte(var_f4_2918);
@@ -1880,10 +1880,10 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
         var_f3_2985 = 0.0f;
     }
     var_r30_2991 = 0;
-    temp_f30_2995 = unksp13C * var_f3_2985;
+    temp_f30_2995 = (*(f32 *) ((u8 *) &sp118 + 0x24)) * var_f3_2985;
     temp_f31_2996 = (f32) sp140 * var_f3_2985;
     sp138 = (f32) sp138 * var_f3_2985;
-    unksp13C = temp_f30_2995;
+    (*(f32 *) ((u8 *) &sp118 + 0x24)) = temp_f30_2995;
     sp140 = temp_f31_2996;
     do {
         temp_r3_3001 = this->unk448;
@@ -1899,7 +1899,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
                 sp130 = (f64) sp30;
                 sp98 = sp28;
                 spA0 = (f64) sp30;
-                var_f4_3051 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + (unksp12C * unksp12C));
+                var_f4_3051 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + ((*(f32 *) ((u8 *) &sp118 + 0x14)) * (*(f32 *) ((u8 *) &sp118 + 0x14))));
                 if (var_f4_3051 > 0.000001f) {
                     if (var_f4_3051 > 0.0f) {
                         temp_f1_3057 = __frsqrte(var_f4_3051);
@@ -1938,11 +1938,11 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
                 } else {
                     var_f2_3118 = 0.0f;
                 }
-                temp_f3_3125 = unksp12C * var_f2_3118;
+                temp_f3_3125 = (*(f32 *) ((u8 *) &sp118 + 0x14)) * var_f2_3118;
                 temp_f4_3127 = (f32) sp128 * var_f2_3118;
                 temp_f2_3129 = (f32) sp130 * var_f2_3118;
                 sp128 = temp_f4_3127;
-                unksp12C = temp_f3_3125;
+                (*(f32 *) ((u8 *) &sp118 + 0x14)) = temp_f3_3125;
                 sp130 = temp_f2_3129;
                 temp_f0_3135 = (temp_f2_3129 * temp_f31_2996) + ((temp_f4_3127 * sp138) + (temp_f3_3125 * temp_f30_2995));
                 if (temp_f0_3135 > var_f27_2715) {
@@ -1953,7 +1953,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
                 temp_r3_3144 = this->unk448->GetLink(var_r30_2991);
                 M2C_FIELD(temp_r3_3144->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp78, temp_r3_3144);
                 sp158 = sp78;
-                unksp15C = unksp17C;
+                (*(f32 *) ((u8 *) &sp158 + 0x4)) = (*(f32 *) ((u8 *) &sp178 + 0x4));
                 sp160 = sp80;
                 sp18 = sp78 - sp178;
                 sp128 = sp18;
@@ -1961,7 +1961,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
                 sp130 = (f64) sp20;
                 sp68 = sp18;
                 sp70 = (f64) sp20;
-                var_f4_3177 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + (unksp12C * unksp12C));
+                var_f4_3177 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + ((*(f32 *) ((u8 *) &sp118 + 0x14)) * (*(f32 *) ((u8 *) &sp118 + 0x14))));
                 if (var_f4_3177 > 0.000001f) {
                     if (var_f4_3177 > 0.0f) {
                         temp_f1_3183 = __frsqrte(var_f4_3177);
@@ -2001,11 +2001,11 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
                     var_f2_3244 = 0.0f;
                 }
                 var_r31_2711 = var_r30_2991;
-                temp_f3_3252 = unksp12C * var_f2_3244;
+                temp_f3_3252 = (*(f32 *) ((u8 *) &sp118 + 0x14)) * var_f2_3244;
                 temp_f4_3254 = (f32) sp128 * var_f2_3244;
                 temp_f2_3256 = (f32) sp130 * var_f2_3244;
                 sp128 = temp_f4_3254;
-                unksp12C = temp_f3_3252;
+                (*(f32 *) ((u8 *) &sp118 + 0x14)) = temp_f3_3252;
                 sp130 = temp_f2_3256;
                 var_f27_2715 = (temp_f2_3256 * temp_f31_2996) + ((temp_f4_3254 * sp138) + (temp_f3_3252 * temp_f30_2995));
             }
@@ -2439,7 +2439,7 @@ void SB2::Containment() {
         sp60 = sp20;
         sp28 = (f32) spB8 - sp90.unk8;
         sp68 = (f64) sp28;
-        var_f4_3900 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+        var_f4_3900 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))));
         if (var_f4_3900 > 0.0f) {
             temp_f1_3903 = __frsqrte(var_f4_3900);
             temp_f1_3909 = 0.5 * temp_f1_3903 * -(((f64) var_f4_3900 * (temp_f1_3903 * temp_f1_3903)) - 3.0);
@@ -2494,7 +2494,7 @@ void SB2::Containment() {
         sp50 = sp10;
         sp18 = (f32) spB8 - sp90.unk8;
         sp58 = (f64) sp18;
-        var_f4_4047 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
+        var_f4_4047 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
         if (var_f4_4047 > 0.0f) {
             temp_f1_4050 = __frsqrte(var_f4_4047);
             temp_f1_4056 = 0.5 * temp_f1_4050 * -(((f64) var_f4_4047 * (temp_f1_4050 * temp_f1_4050)) - 3.0);
@@ -2721,7 +2721,7 @@ void SB2::WallAvoidance() {
         M2C_FIELD(temp_r5_4404, f64 *, 0) = (f64) sp128;
         M2C_FIELD(temp_r5_4404, f64 *, 8) = (f64) sp130;
         sp8 = (f64) sp138;
-        unkspC = 0.0f;
+        (*(f32 *) ((u8 *) &sp8 + 0x4)) = 0.0f;
         sp10 = (f64) sp140;
         sp88 = sp8;
         sp90 = (f64) sp140;
@@ -3159,7 +3159,7 @@ void SB2::PathFollowingSetGoal() {
                 }
             }
         }
-        unksp12C = unksp13C;
+        (*(f32 *) ((u8 *) &sp128 + 0x4)) = (*(f32 *) ((u8 *) &sp138 + 0x4));
     } else {
         temp_r6_5141 = this->unk420;
         temp_r5_5142 = this->unk430;
@@ -3202,13 +3202,13 @@ void SB2::PathFollowingSetGoal() {
             sp88 = sp28;
             sp30 = (f32) sp140 - (f32) sp130;
             sp90 = (f64) sp30;
-            var_r0_5246 = (((f32) sp90 * (f32) sp110) + (((f32) sp88 * M2C_BITWISE(f32, spF8.unk10)) + (unksp8C * sp10C))) < 0.0f;
+            var_r0_5246 = (((f32) sp90 * (f32) sp110) + (((f32) sp88 * M2C_BITWISE(f32, spF8.unk10)) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * sp10C))) < 0.0f;
         } else {
             sp18 = sp138 - sp128;
             sp78 = sp18;
             sp20 = (f32) sp140 - (f32) sp130;
             sp80 = (f64) sp20;
-            var_r0_5246 = (((f32) sp80 * (f32) sp110) + (((f32) sp78 * M2C_BITWISE(f32, spF8.unk10)) + (unksp7C * sp10C))) > 0.0f;
+            var_r0_5246 = (((f32) sp80 * (f32) sp110) + (((f32) sp78 * M2C_BITWISE(f32, spF8.unk10)) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * sp10C))) > 0.0f;
         }
         if ((temp_f0_5222 < (var_f1_5200 * var_f1_5200)) || ((var_r0_5246 != 0) && (temp_f1_5281 = 2.0f * var_f1_5200, ((temp_f0_5222 < (temp_f1_5281 * temp_f1_5281)) != 0)))) {
             this->unk430 += 1;
@@ -3217,7 +3217,7 @@ void SB2::PathFollowingSetGoal() {
             }
             this->unk434 |= 8;
         }
-        unksp12C = unksp13C;
+        (*(f32 *) ((u8 *) &sp128 + 0x4)) = (*(f32 *) ((u8 *) &sp138 + 0x4));
     }
     this->unk18.Set(*((MKVector3 *) &sp128), 0U);
 }
@@ -3531,7 +3531,7 @@ void SB2::WanderSetGoal() {
             sp100 = -M2C_FIELD(temp_r3_5633, f32 *, 0x28);
             sp308 = (f64) spF8;
             sp310 = (f64) sp100;
-            if ((((f32) sp310 * this->unk408) + (((f32) sp308 * M2C_FIELD(this, f32 *, 0x400)) + (unksp30C * this->unk404))) >= 0.5f) {
+            if ((((f32) sp310 * this->unk408) + (((f32) sp308 * M2C_FIELD(this, f32 *, 0x400)) + ((*(f32 *) ((u8 *) &sp2E8 + 0x24)) * this->unk404))) >= 0.5f) {
                 this->unk418 = 0;
             }
         } else {
@@ -3553,9 +3553,9 @@ void SB2::WanderSetGoal() {
             sp3A8 = temp_f0_5709;
             temp_f7_5713 = (f32) temp_f0_5709;
             temp_r3_5715 = this->unk0->unk8;
-            sp28 = ((f32) sp3B0 * M2C_FIELD(temp_r3_5715, f32 *, 0x20)) + ((temp_f7_5713 * M2C_FIELD(temp_r3_5715, f32 *, 0)) + (unksp3AC * M2C_FIELD(temp_r3_5715, f32 *, 0x10)));
-            sp2C = ((f32) sp3B0 * M2C_FIELD(temp_r3_5715, f32 *, 0x24)) + ((temp_f7_5713 * M2C_FIELD(temp_r3_5715, f32 *, 4)) + (unksp3AC * M2C_FIELD(temp_r3_5715, f32 *, 0x14)));
-            sp30 = ((f32) sp3B0 * M2C_FIELD(temp_r3_5715, f32 *, 0x28)) + ((temp_f7_5713 * M2C_FIELD(temp_r3_5715, f32 *, 8)) + (unksp3AC * M2C_FIELD(temp_r3_5715, f32 *, 0x18)));
+            sp28 = ((f32) sp3B0 * M2C_FIELD(temp_r3_5715, f32 *, 0x20)) + ((temp_f7_5713 * M2C_FIELD(temp_r3_5715, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp3A0 + 0xc)) * M2C_FIELD(temp_r3_5715, f32 *, 0x10)));
+            sp2C = ((f32) sp3B0 * M2C_FIELD(temp_r3_5715, f32 *, 0x24)) + ((temp_f7_5713 * M2C_FIELD(temp_r3_5715, f32 *, 4)) + ((*(f32 *) ((u8 *) &sp3A0 + 0xc)) * M2C_FIELD(temp_r3_5715, f32 *, 0x14)));
+            sp30 = ((f32) sp3B0 * M2C_FIELD(temp_r3_5715, f32 *, 0x28)) + ((temp_f7_5713 * M2C_FIELD(temp_r3_5715, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp3A0 + 0xc)) * M2C_FIELD(temp_r3_5715, f32 *, 0x18)));
             sp2A8 = (f64) sp28;
             sp2B0 = (f64) sp30;
             spD8 = sp2A8 * 1.58735232e-314;
@@ -3592,9 +3592,9 @@ void SB2::WanderSetGoal() {
                         sp278 = M2C_FIELD(temp_r3_5819, f64 *, 0x30);
                         sp280 = M2C_FIELD(temp_r3_5819, f64 *, 0x38);
                         this->unk4->GetFirstIntersectionPlane(*((MKVector3 *) &sp278), *((MKVector3 *) &sp3B8), (MKVector3 *) &sp398, (MKVector3 *) &sp388);
-                        spB8 = (MKVector3::up.unk4 * (f32) sp390) - (MKVector3::up.unk8 * unksp38C);
+                        spB8 = (MKVector3::up.unk4 * (f32) sp390) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp388 + 0x4)));
                         spBC = (MKVector3::up.unk8 * (f32) sp388) - (MKVector3::up.unk0 * (f32) sp390);
-                        spC0 = (MKVector3::up.unk0 * unksp38C) - (MKVector3::up.unk4 * (f32) sp388);
+                        spC0 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp388 + 0x4))) - (MKVector3::up.unk4 * (f32) sp388);
                         sp3A8 = (f64) spB8;
                         sp3B0 = (f64) spC0;
                         temp_r3_5852 = this->unk0->unk8;
@@ -3605,7 +3605,7 @@ void SB2::WanderSetGoal() {
                         sp258 = (f64) spA8;
                         sp260 = (f64) spB0;
                         sp270 = (f64) spC0;
-                        if ((((f32) sp260 * (f32) sp3B0) + (((f32) sp258 * (f32) sp3A8) + (unksp25C * unksp3AC))) < 0.0f) {
+                        if ((((f32) sp260 * (f32) sp3B0) + (((f32) sp258 * (f32) sp3A8) + ((*(f32 *) ((u8 *) &sp258 + 0x4)) * (*(f32 *) ((u8 *) &sp3A0 + 0xc))))) < 0.0f) {
                             sp3A8 *= 1.58735232e-314;
                             sp3B0 = (f32) sp3B0 * -1.0f;
                         }
@@ -3657,19 +3657,19 @@ void SB2::WanderSetGoal() {
                         sp1D8 = (f64) sp88;
                         sp1E0 = (f64) sp90;
                         sp80 = temp_f7_5981;
-                        temp_f8_5999 = (MKVector3::up.unk4 * (f32) sp1E0) - (MKVector3::up.unk8 * unksp1DC);
+                        temp_f8_5999 = (MKVector3::up.unk4 * (f32) sp1E0) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp1D8 + 0x4)));
                         sp78 = temp_f10_5977;
                         temp_f7_6003 = (MKVector3::up.unk8 * (f32) sp1D8) - (MKVector3::up.unk0 * (f32) sp1E0);
                         sp1D0 = (f64) sp80;
                         sp7C = temp_f9_5979;
-                        sp130 = (MKVector3::up.unk0 * unksp1DC) - (MKVector3::up.unk4 * (f32) sp1D8);
+                        sp130 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp1D8 + 0x4))) - (MKVector3::up.unk4 * (f32) sp1D8);
                         sp1C8 = (f64) sp78;
                         sp128 = temp_f8_5999;
                         sp12C = temp_f7_6003;
                         sp338.unk38 = (f64) sp130;
                         sp338.unk30 = (f64) sp128;
-                        temp_f5_6023 = (f32) acos(M2C_BITWISE(f32, &MKVector3::up), temp_r4_5973, ((f32) sp1D0 * sp3B0) + (((f32) sp1C8 * (f32) sp3A8) + (unksp1CC * unksp3AC)), (f64) sp128, (f32) sp1C8, sp3B0, (f32) sp1D0, (f64) sp130, temp_f7_6003, temp_f8_5999, temp_f9_5979, temp_f10_5977, MKVector3::up.unk8, MKVector3::up.unk4, unksp1DC);
-                        sp10 = (M2C_BITWISE(f32, sp338.unk38) * sp3B0) + ((M2C_BITWISE(f32, sp338.unk30) * (f32) sp3A8) + (M2C_BITWISE(f32, sp338.unk34) * unksp3AC));
+                        temp_f5_6023 = (f32) acos(M2C_BITWISE(f32, &MKVector3::up), temp_r4_5973, ((f32) sp1D0 * sp3B0) + (((f32) sp1C8 * (f32) sp3A8) + ((*(f32 *) ((u8 *) &sp1C8 + 0x4)) * (*(f32 *) ((u8 *) &sp3A0 + 0xc)))), (f64) sp128, (f32) sp1C8, sp3B0, (f32) sp1D0, (f64) sp130, temp_f7_6003, temp_f8_5999, temp_f9_5979, temp_f10_5977, MKVector3::up.unk8, MKVector3::up.unk4, (*(f32 *) ((u8 *) &sp1D8 + 0x4)));
+                        sp10 = (M2C_BITWISE(f32, sp338.unk38) * sp3B0) + ((M2C_BITWISE(f32, sp338.unk30) * (f32) sp3A8) + (M2C_BITWISE(f32, sp338.unk34) * (*(f32 *) ((u8 *) &sp3A0 + 0xc))));
                         sp14 = (M2C_BITWISE(s32, sp10) & 0x80000000) | 0x3F800000;
                         this->unk410 = -M2C_BITWISE(f32, sp14) * temp_f5_6023;
                     }
@@ -3686,8 +3686,8 @@ void SB2::WanderSetGoal() {
                         sp388 *= 1.58735232e-314;
                         temp_f7_6078 = (f32) sp390 * -1.0f;
                         sp390 = temp_f7_6078;
-                        sp70 = (MKVector3::up.unk0 * unksp38C) - (MKVector3::up.unk4 * (f32) sp388);
-                        sp68 = (MKVector3::up.unk4 * temp_f7_6078) - (MKVector3::up.unk8 * unksp38C);
+                        sp70 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp388 + 0x4))) - (MKVector3::up.unk4 * (f32) sp388);
+                        sp68 = (MKVector3::up.unk4 * temp_f7_6078) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp388 + 0x4)));
                         sp6C = (MKVector3::up.unk8 * (f32) sp388) - (MKVector3::up.unk0 * temp_f7_6078);
                         sp3B0 = (f64) sp70;
                         sp3A8 = (f64) sp68;
@@ -3699,7 +3699,7 @@ void SB2::WanderSetGoal() {
                         sp188 = (f64) sp58;
                         sp190 = (f64) sp60;
                         sp1A0 = (f64) sp70;
-                        if ((((f32) sp190 * (f32) sp3B0) + (((f32) sp188 * (f32) sp3A8) + (unksp18C * unksp3AC))) < 0.0f) {
+                        if ((((f32) sp190 * (f32) sp3B0) + (((f32) sp188 * (f32) sp3A8) + ((*(f32 *) ((u8 *) &sp188 + 0x4)) * (*(f32 *) ((u8 *) &sp3A0 + 0xc))))) < 0.0f) {
                             sp3A8 *= 1.58735232e-314;
                             sp3B0 = (f32) sp3B0 * -1.0f;
                         }
@@ -3713,19 +3713,19 @@ void SB2::WanderSetGoal() {
                         sp178 = (f64) sp48;
                         sp180 = (f64) sp50;
                         sp40 = temp_f10_6143;
-                        temp_f9_6158 = (MKVector3::up.unk4 * (f32) sp180) - (MKVector3::up.unk8 * unksp17C);
+                        temp_f9_6158 = (MKVector3::up.unk4 * (f32) sp180) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp178 + 0x4)));
                         temp_f7_6160 = (MKVector3::up.unk8 * (f32) sp178) - (MKVector3::up.unk0 * (f32) sp180);
                         sp170 = (f64) sp40;
                         sp38 = temp_f12_6139;
                         sp3C = temp_f11_6141;
-                        sp120 = (MKVector3::up.unk0 * unksp17C) - (MKVector3::up.unk4 * (f32) sp178);
+                        sp120 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp178 + 0x4))) - (MKVector3::up.unk4 * (f32) sp178);
                         sp168 = (f64) sp38;
                         sp118 = temp_f9_6158;
                         sp11C = temp_f7_6160;
                         sp338.unk28 = (f64) sp120;
                         sp338.unk20 = (f64) sp118;
-                        temp_f5_6182 = (f32) acos(M2C_BITWISE(f32, temp_r3_6135), M2C_BITWISE(void *, (((f32) sp170 * sp3B0) + (((f32) sp168 * (f32) sp3A8) + (unksp16C * unksp3AC)))), (f32) sp170, (f64) sp118, (f32) sp3A8, sp3B0, (f32) (f64) sp120, (f64) temp_f7_6160, (f32) sp178, temp_f9_6158, temp_f10_6143, temp_f11_6141, temp_f12_6139, (f32) sp180);
-                        sp8 = (M2C_BITWISE(f32, sp338.unk28) * sp3B0) + (((f32) (f64) sp118 * (f32) sp3A8) + (sp338.unk24 * unksp3AC));
+                        temp_f5_6182 = (f32) acos(M2C_BITWISE(f32, temp_r3_6135), M2C_BITWISE(void *, (((f32) sp170 * sp3B0) + (((f32) sp168 * (f32) sp3A8) + ((*(f32 *) ((u8 *) &sp168 + 0x4)) * (*(f32 *) ((u8 *) &sp3A0 + 0xc)))))), (f32) sp170, (f64) sp118, (f32) sp3A8, sp3B0, (f32) (f64) sp120, (f64) temp_f7_6160, (f32) sp178, temp_f9_6158, temp_f10_6143, temp_f11_6141, temp_f12_6139, (f32) sp180);
+                        sp8 = (M2C_BITWISE(f32, sp338.unk28) * sp3B0) + (((f32) (f64) sp118 * (f32) sp3A8) + (sp338.unk24 * (*(f32 *) ((u8 *) &sp3A0 + 0xc))));
                         spC = (M2C_BITWISE(s32, sp8) & 0x80000000) | 0x3F800000;
                         this->unk410 = -M2C_BITWISE(f32, spC) * temp_f5_6182;
                     }
@@ -3846,7 +3846,7 @@ void SB2::Pursuit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspD4'
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
 u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
     AITargetData spB0;
     f32 sp90;
@@ -3890,10 +3890,10 @@ u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
         sp28 = -M2C_FIELD(temp_r3_6507, f32 *, 0x28);
         spB0.unk10 = (f64) sp20;
         spB0.unk18 = (f64) sp28;
-        var_f31_6484 = ((f32) spB0.unk28 * (f32) spB0.unk18) + (((f32) spB0.unk20 * (f32) spB0.unk10) + (unkspD4 * unkspC4));
+        var_f31_6484 = ((f32) spB0.unk28 * (f32) spB0.unk18) + (((f32) spB0.unk20 * (f32) spB0.unk10) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * (*(f32 *) ((u8 *) &spB0 + 0x14))));
     }
     spB0.GetDir();
-    if ((((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetProp() == NULL) || (((((f32) spB0.unk28 * spB0.unk8) + (((f32) spB0.unk20 * M2C_BITWISE(f32, spB0)) + (unkspD4 * unkspB4))) > 0.0f) && (var_f31_6484 < -0.95f))) {
+    if ((((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetProp() == NULL) || (((((f32) spB0.unk28 * spB0.unk8) + (((f32) spB0.unk20 * M2C_BITWISE(f32, spB0)) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * (*(f32 *) ((u8 *) &spB0 + 0x4))))) > 0.0f) && (var_f31_6484 < -0.95f))) {
         ((AITargetData *) &sp60.unk40)->GetPos();
         M2C_FIELD(arg0, f64 *, 0) = M2C_BITWISE(f64, sp60.unk40);
         M2C_FIELD(arg0, f64 *, 8) = M2C_BITWISE(f64, sp60.unk40.unk8);

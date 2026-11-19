@@ -160,9 +160,9 @@ void IceBoss::CalcSubObjWorldMatrix(int arg0, Matrix *arg1) {
     temp_r3_185 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, M2C_FIELD((this + (M2C_FIELD(this, s32 *, 0xB18) * 0x28)), s32 *, 0xE44));
     sp30 = M2C_FIELD(temp_r3_185, f64 *, 0);
     sp38 = M2C_FIELD(temp_r3_185, f64 *, 8);
-    sp10 = ((f32) sp38 * sp40.unk20) + (((f32) sp30 * M2C_BITWISE(f32, sp40)) + (unksp34 * sp40.unk10));
-    sp14 = ((f32) sp38 * sp40.unk24) + (((f32) sp30 * sp40.unk4) + (unksp34 * sp40.unk14));
-    sp18 = ((f32) sp38 * sp40.unk28) + (((f32) sp30 * sp40.unk8) + (unksp34 * sp40.unk18));
+    sp10 = ((f32) sp38 * sp40.unk20) + (((f32) sp30 * M2C_BITWISE(f32, sp40)) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk10));
+    sp14 = ((f32) sp38 * sp40.unk24) + (((f32) sp30 * sp40.unk4) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk14));
+    sp18 = ((f32) sp38 * sp40.unk28) + (((f32) sp30 * sp40.unk8) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk18));
     sp20 = (f64) sp10;
     sp28 = (f64) sp18;
     sp30 = (f64) sp10;
@@ -297,7 +297,7 @@ void IceBoss::UpdateSummonWeapon() {
         sp18 = temp_f3_489 + (f32) sp48;
         this->unkF20.unk18 = (f32) sp60;
         sp68 = (f64) sp18;
-        this->unkF20.unk1C = unksp64;
+        this->unkF20.unk1C = (*(f32 *) ((u8 *) &sp60 + 0x4));
         this->unkF20.unk20 = (f32) sp68;
         this->unkF20.unk24 = 1.0f;
         MKModel_SetWorldMatrix(M2C_FIELD(M2C_FIELD(this, void **, 0xF94), MKModel **, 4), *((Matrix *) &this->unkEE0.unk28));
@@ -670,7 +670,7 @@ void IceBoss::CheckAnimEvents() {
             sp138 = sp48;
             spF0 = (f64) sp50;
             sp140 = (f64) sp50;
-            unksp13C = 100.0f * MKRand_Float(&gViewSeed, 10.0f, 17.0f);
+            (*(f32 *) ((u8 *) &sp138 + 0x4)) = 100.0f * MKRand_Float(&gViewSeed, 10.0f, 17.0f);
             sp10 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
             this->unk1068->Emit(*((MKVector3 *) &sp148), *((MKVector3 *) &sp138), sp10);
             var_r30_1267 += 1;
@@ -911,9 +911,9 @@ void IceBoss::ShatterSubObj(int arg0, Shatterable *arg1) {
     temp_r3_1714 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, arg0);
     sp30 = M2C_FIELD(temp_r3_1714, f64 *, 0);
     sp38 = M2C_FIELD(temp_r3_1714, f64 *, 8);
-    sp10 = ((f32) sp38 * sp40.unk20) + (((f32) sp30 * M2C_BITWISE(f32, sp40)) + (unksp34 * sp40.unk10));
-    sp14 = ((f32) sp38 * sp40.unk24) + (((f32) sp30 * sp40.unk4) + (unksp34 * sp40.unk14));
-    sp18 = ((f32) sp38 * sp40.unk28) + (((f32) sp30 * sp40.unk8) + (unksp34 * sp40.unk18));
+    sp10 = ((f32) sp38 * sp40.unk20) + (((f32) sp30 * M2C_BITWISE(f32, sp40)) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk10));
+    sp14 = ((f32) sp38 * sp40.unk24) + (((f32) sp30 * sp40.unk4) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk14));
+    sp18 = ((f32) sp38 * sp40.unk28) + (((f32) sp30 * sp40.unk8) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk18));
     sp20 = (f64) sp10;
     sp28 = (f64) sp18;
     sp30 = (f64) sp10;
@@ -1266,7 +1266,7 @@ block_41:
         sp20 = (f64) sp10;
         sp5C = 0.0f;
         sp30 = (f32) sp20;
-        sp34 = unksp24;
+        sp34 = (*(f32 *) ((u8 *) &sp20 + 0x4));
         sp38 = (f32) sp28;
         sp3C = 0.0f;
         sp60 = this->unk5B8;
@@ -1274,7 +1274,7 @@ block_41:
         temp_f1_2508 = this->unk5BC;
         sp68 = temp_f1_2508;
         sp6C = 1.0f;
-        Teleport(&sp30, &MKVector3::up, temp_f1_2508, unksp24, (f32) sp20, 0.0f, temp_f5_2482, temp_f6_2468, MKVector3::up.unk8, MKVector3::up.unk4);
+        Teleport(&sp30, &MKVector3::up, temp_f1_2508, (*(f32 *) ((u8 *) &sp20 + 0x4)), (f32) sp20, 0.0f, temp_f5_2482, temp_f6_2468, MKVector3::up.unk8, MKVector3::up.unk4);
         goto block_41;
     case 4:                                         /* switch 1 */
         temp_r29_2520 = checked_cast<MeleeAttackHitMsg *, MKMessage>(arg0);
@@ -1376,7 +1376,7 @@ void IceBoss::DrawSubObject(int arg0, float arg1) {
     f32 temp_f31_2738;
 
     sp8 = lit_959;
-    unkspA = (s16) arg0;
+    (*(u16 *) ((u8 *) &sp8 + 0x2)) = (s16) arg0;
     temp_f31_2738 = MKModel_GetAlpha(this->unk4);
     MKModel_SetAlpha(this->unk4, arg1);
     MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, arg0, 1U, 1U);
@@ -1437,9 +1437,9 @@ void IceBoss::Draw() {
         temp_r3_2811 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, M2C_FIELD((this + (M2C_FIELD(this, s32 *, 0xB18) * 0x28)), s32 *, 0xE44));
         sp90 = M2C_FIELD(temp_r3_2811, f64 *, 0);
         sp98 = M2C_FIELD(temp_r3_2811, f64 *, 8);
-        sp20 = ((f32) sp98 * spD0.unk20) + (((f32) sp90 * M2C_BITWISE(f32, spD0)) + (unksp94 * spD0.unk10));
-        sp24 = ((f32) sp98 * spD0.unk24) + (((f32) sp90 * spD0.unk4) + (unksp94 * spD0.unk14));
-        sp28 = ((f32) sp98 * spD0.unk28) + (((f32) sp90 * spD0.unk8) + (unksp94 * spD0.unk18));
+        sp20 = ((f32) sp98 * spD0.unk20) + (((f32) sp90 * M2C_BITWISE(f32, spD0)) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * spD0.unk10));
+        sp24 = ((f32) sp98 * spD0.unk24) + (((f32) sp90 * spD0.unk4) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * spD0.unk14));
+        sp28 = ((f32) sp98 * spD0.unk28) + (((f32) sp90 * spD0.unk8) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * spD0.unk18));
         sp80 = (f64) sp20;
         sp88 = (f64) sp28;
         sp90 = (f64) sp20;
@@ -1451,9 +1451,9 @@ void IceBoss::Draw() {
         temp_r3_2862 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, this->unkEBC);
         sp90 = M2C_FIELD(temp_r3_2862, f64 *, 0);
         sp98 = M2C_FIELD(temp_r3_2862, f64 *, 8);
-        sp10 = ((f32) sp98 * spD0.unk20) + (((f32) sp90 * M2C_BITWISE(f32, spD0)) + (unksp94 * spD0.unk10));
-        sp14 = ((f32) sp98 * spD0.unk24) + (((f32) sp90 * spD0.unk4) + (unksp94 * spD0.unk14));
-        sp18 = ((f32) sp98 * spD0.unk28) + (((f32) sp90 * spD0.unk8) + (unksp94 * spD0.unk18));
+        sp10 = ((f32) sp98 * spD0.unk20) + (((f32) sp90 * M2C_BITWISE(f32, spD0)) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * spD0.unk10));
+        sp14 = ((f32) sp98 * spD0.unk24) + (((f32) sp90 * spD0.unk4) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * spD0.unk14));
+        sp18 = ((f32) sp98 * spD0.unk28) + (((f32) sp90 * spD0.unk8) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * spD0.unk18));
         sp70 = (f64) sp10;
         sp78 = (f64) sp18;
         sp90 = (f64) sp10;
@@ -1471,7 +1471,7 @@ void IceBoss::Draw() {
         sp50 = temp_f0_2925;
         sp38 = (f32) spB8 - (f32) spA8;
         sp58 = (f64) sp38;
-        if ((((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64))) > (((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54)))) {
+        if ((((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))))) > (((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4)))))) {
             var_r30_2779 = 1;
         }
     }
@@ -1667,7 +1667,7 @@ void IceBoss::SetupCameraSpline(float arg0, float arg1, MKVector3 arg2, MKVector
         sp1B0 = (f64) sp80;
         sp1C0 = M2C_FIELD(temp_r4_3204, f64 *, 0x38);
         sp1B8 = M2C_FIELD(temp_r4_3204, f64 *, 0x30);
-        var_f5_3233 = ((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + (unksp1AC * unksp1AC));
+        var_f5_3233 = ((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + ((*(f32 *) ((u8 *) &sp1A0 + 0xc)) * (*(f32 *) ((u8 *) &sp1A0 + 0xc))));
         if (var_f5_3233 > 0.000001f) {
             if (var_f5_3233 > 0.0f) {
                 temp_f1_3239 = __frsqrte(var_f5_3233);
@@ -1710,9 +1710,9 @@ void IceBoss::SetupCameraSpline(float arg0, float arg1, MKVector3 arg2, MKVector
         var_r29_3308 = 1;
         sp1A8 = (f32) sp1A8 * var_f5_3300;
         var_r24_3318 = 0;
-        unksp1AC *= var_f5_3300;
+        (*(f32 *) ((u8 *) &sp1A0 + 0xc)) *= var_f5_3300;
         sp1B0 = (f32) sp1B0 * var_f5_3300;
-        unksp1BC += arg1;
+        (*(f32 *) ((u8 *) &sp1B8 + 0x4)) += arg1;
 loop_32:
         if ((var_r29_3308 < 0xA) && (var_r24_3318 == 0)) {
             if (var_r29_3308 == 0) {

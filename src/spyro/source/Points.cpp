@@ -40,7 +40,7 @@ void WindPoints_Update(const MKVector3 &arg0, WindInfo *arg1) {
     sp48 = arg1->unk8;
     sp50 = arg1->unk10;
     wind.GetValueAt(arg0, &sp30, (WindPointInfo (*)(WindPointInfo *, WindPointInfo *, f32)) WindPoints_Blend);
-    var_f4_40 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44));
+    var_f4_40 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp30 + 0x14)) * (*(f32 *) ((u8 *) &sp30 + 0x14))));
     if (var_f4_40 > 0.000001f) {
         if (var_f4_40 > 0.0f) {
             temp_f1_46 = __frsqrte(var_f4_40);
@@ -80,7 +80,7 @@ void WindPoints_Update(const MKVector3 &arg0, WindInfo *arg1) {
         var_f4_107 = 0.0f;
     }
     sp40 = (f32) sp40 * var_f4_107;
-    unksp44 *= var_f4_107;
+    (*(f32 *) ((u8 *) &sp30 + 0x14)) *= var_f4_107;
     sp48 = (f32) sp48 * var_f4_107;
     MKGrass_SetWindDirection(*((MKVector3 *) &sp40), sp50);
     temp_f0_127 = sp40 * (f64) sp50;

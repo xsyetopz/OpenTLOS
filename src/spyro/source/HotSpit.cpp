@@ -112,7 +112,7 @@ void HotSpit::Update() {
     sp188 = (f64) sp88;
     sp198 = this->unkC8;
     sp1A0 = this->unkD0;
-    var_f5_99 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C));
+    var_f5_99 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + ((*(f32 *) ((u8 *) &sp190 + 0xc)) * (*(f32 *) ((u8 *) &sp190 + 0xc))));
     if (var_f5_99 > 0.000001f) {
         if (var_f5_99 > 0.0f) {
             temp_f1_104 = __frsqrte(var_f5_99);
@@ -152,7 +152,7 @@ void HotSpit::Update() {
         var_f5_99 = 0.0f;
     }
     sp198 = (f32) sp198 * var_f4_78;
-    unksp19C *= var_f4_78;
+    (*(f32 *) ((u8 *) &sp190 + 0xc)) *= var_f4_78;
     sp1A0 = (f32) sp1A0 * var_f4_78;
     if (var_f5_99 != 0.0f) {
         temp_f31_182 = gUpdateTimeDelta;
@@ -425,7 +425,7 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
         sp2B0 = sp90;
     } else {
         sp2A8 = 0.0f;
-        unksp2AC = 0.0f;
+        (*(f32 *) ((u8 *) &sp2A4 + 0x8)) = 0.0f;
         sp2B0 = 0.0f;
     }
     sp2C9 = 0;
@@ -484,7 +484,7 @@ block_24:
     sp270 = 0;
     sp1B8 = this->unkC8;
     sp1C0 = this->unkD0;
-    unksp1BC = 0.0f;
+    (*(f32 *) ((u8 *) &sp1B0 + 0xc)) = 0.0f;
     var_f5_688 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + (0.0f * 0.0f));
     if (var_f5_688 > 0.000001f) {
         if (var_f5_688 > 0.0f) {
@@ -527,7 +527,7 @@ block_24:
     sp18 = 0.0f;
     sp1C = 0.0f;
     sp1B8 = (f32) sp1B8 * var_f4_650;
-    unksp1BC *= var_f4_650;
+    (*(f32 *) ((u8 *) &sp1B0 + 0xc)) *= var_f4_650;
     sp1C0 = (f32) sp1C0 * var_f4_650;
     spC8 = (f64) sp18;
     spD0 = (f64) sp20;
@@ -551,7 +551,7 @@ block_24:
         sp2B0 = sp80;
     } else {
         sp2A8 = 0.0f;
-        unksp2AC = 0.0f;
+        (*(f32 *) ((u8 *) &sp2A4 + 0x8)) = 0.0f;
         sp2B0 = 0.0f;
     }
     sp2C9 = 0;

@@ -130,7 +130,7 @@ void FireTrap::Update() {
             sp68 = temp_f0_132;
             sp138 = temp_f0_132;
             sp70 = (f32) sp110 - (f32) sp100;
-            unksp13C = 0.0f;
+            (*(f32 *) ((u8 *) &sp138 + 0x4)) = 0.0f;
             sp140 = (f64) sp70;
             if ((((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + (0.0f * 0.0f))) < 10000.0f) {
                 sp14C = 0;
@@ -158,7 +158,7 @@ void FireTrap::Update() {
                     sp180 = sp60;
                 } else {
                     sp178 = 0.0f;
-                    unksp17C = 0.0f;
+                    (*(f32 *) ((u8 *) &sp174 + 0x8)) = 0.0f;
                     sp180 = 0.0f;
                 }
                 sp199 = 0;

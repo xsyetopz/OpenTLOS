@@ -127,7 +127,7 @@ void SpyroStrafeState::SetDesiredVelocity() {
         sp80 = sp30;
         sp38 = (f32) spC8 + (f32) spB8;
         sp88 = (f64) sp38;
-        var_f5_177 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
+        var_f5_177 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp80 + 0x4)) * (*(f32 *) ((u8 *) &sp80 + 0x4))));
         if (var_f5_177 > 1e-12f) {
             if (var_f5_177 > 0.0f) {
                 temp_f1_182 = __frsqrte(var_f5_177);
@@ -165,13 +165,13 @@ void SpyroStrafeState::SetDesiredVelocity() {
             var_f4_121 = 1.0f / var_f5_177;
         }
         var_f31_248 = 0.0f;
-        sp24 = unksp84 * var_f4_121;
+        sp24 = (*(f32 *) ((u8 *) &sp80 + 0x4)) * var_f4_121;
         sp20 = (f32) sp80 * var_f4_121;
         sp28 = (f32) sp88 * var_f4_121;
         spA0 = (f64) sp20;
         spA8 = (f64) sp28;
-        if ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4))) != 0.0f) {
-            temp_f1_272 = ((f32) spA8 * this->unk30) + (((f32) spA0 * this->unk28) + (unkspA4 * this->unk2C));
+        if ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))))) != 0.0f) {
+            temp_f1_272 = ((f32) spA8 * this->unk30) + (((f32) spA0 * this->unk28) + ((*(f32 *) ((u8 *) &spA0 + 0x4)) * this->unk2C));
             if ((temp_f1_272 > 0.5f) || (temp_f1_272 < -0.5f)) {
                 var_f31_248 = 0.75f * (750.0f * spDC);
             } else {
@@ -269,7 +269,7 @@ void SpyroStrafeState::UpdateCircleTargetMovement() {
         sp20 = temp_f0_434;
         var_f4_436 = 0.0f;
         sp70 = temp_f0_434;
-        unksp74 = 0.0f;
+        (*(f32 *) ((u8 *) &sp68 + 0xc)) = 0.0f;
         sp28 = (f32) sp88 - (f32) sp48;
         sp78 = (f64) sp28;
         var_f5_453 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (0.0f * 0.0f));
@@ -310,7 +310,7 @@ void SpyroStrafeState::UpdateCircleTargetMovement() {
             var_f4_436 = 1.0f / var_f5_453;
         }
         sp70 = (f32) sp70 * var_f4_436;
-        unksp74 *= var_f4_436;
+        (*(f32 *) ((u8 *) &sp68 + 0xc)) *= var_f4_436;
         sp78 = (f32) sp78 * var_f4_436;
         ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp70), 15.0f);
     }
@@ -363,14 +363,14 @@ void SpyroStrafeState::SelectAnim() {
         sp20 = sp40;
         sp68 = (f64) sp18;
         sp70 = (f64) sp20;
-        if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C))) != 0.0f) {
+        if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) != 0.0f) {
             Normalise(sp28);
             sp68 = M2C_BITWISE(f64, sp28);
             sp70 = (f64) sp28.unk8;
             temp_f5_631 = this->unk2C;
             temp_f6_634 = this->unk28;
             temp_f7_636 = this->unk30;
-            temp_f0_638 = ((f32) sp70 * temp_f7_636) + (((f32) sp68 * temp_f6_634) + (unksp6C * temp_f5_631));
+            temp_f0_638 = ((f32) sp70 * temp_f7_636) + (((f32) sp68 * temp_f6_634) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * temp_f5_631));
             if (temp_f0_638 > 0.5f) {
                 var_r31_591 = 0xC;
             } else if (temp_f0_638 < -0.5f) {
@@ -381,7 +381,7 @@ void SpyroStrafeState::SelectAnim() {
                 sp10 = -(f32) sp68;
                 sp58 = (f64) sp8;
                 sp60 = (f64) sp10;
-                temp_f0_664 = ((f32) sp60 * temp_f7_636) + (((f32) sp58 * temp_f6_634) + (unksp5C * temp_f5_631));
+                temp_f0_664 = ((f32) sp60 * temp_f7_636) + (((f32) sp58 * temp_f6_634) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_f5_631));
                 if (temp_f0_664 > 0.5f) {
                     var_r31_591 = 0xE;
                 } else if (temp_f0_664 < -0.5f) {

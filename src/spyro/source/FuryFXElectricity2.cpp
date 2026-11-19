@@ -179,7 +179,7 @@ loop_28:
                 sp30 = sp10;
                 sp18 = (f32) sp28 - this->unkA0;
                 sp38 = (f64) sp18;
-                var_f4_278 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+                var_f4_278 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp28 + 0xc)) * (*(f32 *) ((u8 *) &sp28 + 0xc))));
                 if (var_f4_278 > 0.000001f) {
                     if (var_f4_278 > 0.0f) {
                         temp_f1_284 = __frsqrte(var_f4_278);
@@ -220,7 +220,7 @@ loop_28:
                     var_f4_278 = 0.0f;
                 }
                 sp30 = (f32) sp30 * var_f3_345;
-                unksp34 *= var_f3_345;
+                (*(f32 *) ((u8 *) &sp28 + 0xc)) *= var_f3_345;
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                 if (var_f4_278 == 3000.0f) {
                     SpawnLightningCage((Targetable *) temp_r30_369);
@@ -392,7 +392,7 @@ loop_24:
             sp148 = temp_f0_523;
             sp70 = (f32) sp160 - (f32) sp170;
             sp150 = (f64) sp70;
-            var_f4_540 = ((f32) sp150 * (f32) sp150) + (((f32) sp148 * (f32) sp148) + (unksp14C * unksp14C));
+            var_f4_540 = ((f32) sp150 * (f32) sp150) + (((f32) sp148 * (f32) sp148) + ((*(f32 *) ((u8 *) &sp140 + 0xc)) * (*(f32 *) ((u8 *) &sp140 + 0xc))));
             if (var_f4_540 > 0.000001f) {
                 if (var_f4_540 > 0.0f) {
                     temp_f1_546 = __frsqrte(var_f4_540);
@@ -437,7 +437,7 @@ loop_24:
             sp60 = 0.2f;
             sp64 = 1.0f;
             sp148 = (f32) sp148 * var_f6_607;
-            unksp14C *= var_f6_607;
+            (*(f32 *) ((u8 *) &sp140 + 0xc)) *= var_f6_607;
             sp150 = (f32) sp150 * var_f6_607;
             sp14 = 1.5f * (var_f4_540 / 500.0f);
             spE8 = (f64) sp58;

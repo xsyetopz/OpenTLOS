@@ -86,41 +86,40 @@ void KDVolume::UpdateMatrix(Matrix &arg0) {
     temp_f3_59 = this->unk40.unk30;
     temp_f7_61 = this->unk40.unk34;
     temp_f11_63 = this->unk40.unk38;
-    sp18 = temp_f3_59 + (((f32) sp70 * temp_f2_55) + (((f32) sp68 * temp_f1_48) + (unksp6C * temp_f0_37)));
-    sp1C = temp_f7_61 + (((f32) sp70 * temp_f6_56) + (((f32) sp68 * temp_f5_49) + (unksp6C * temp_f4_41)));
-    sp20 = temp_f11_63 + (((f32) sp70 * temp_f10_57) + (((f32) sp68 * temp_f9_50) + (unksp6C * temp_f8_42)));
+    sp18 = temp_f3_59 + (((f32) sp70 * temp_f2_55) + (((f32) sp68 * temp_f1_48) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * temp_f0_37)));
+    sp1C = temp_f7_61 + (((f32) sp70 * temp_f6_56) + (((f32) sp68 * temp_f5_49) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * temp_f4_41)));
+    sp20 = temp_f11_63 + (((f32) sp70 * temp_f10_57) + (((f32) sp68 * temp_f9_50) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * temp_f8_42)));
     sp48 = (f64) sp18;
     sp50 = (f64) sp20;
     sp68 = (f64) sp18;
     sp70 = (f64) sp20;
     sp28 = M2C_FIELD(KDVolume::boundingVolume, f64 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f64 *, 0x10);
-    var_f12_85 = unksp6C;
+    var_f12_85 = (*(f32 *) ((u8 *) &sp68 + 0x4));
     sp58 = sp28;
     sp30 = (f32) M2C_FIELD(KDVolume::boundingVolume, f64 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18);
     sp60 = (f64) sp30;
-    sp8 = temp_f3_59 + (((f32) sp60 * temp_f2_55) + (((f32) sp58 * temp_f1_48) + (unksp5C * temp_f0_37)));
-    spC = temp_f7_61 + (((f32) sp60 * temp_f6_56) + (((f32) sp58 * temp_f5_49) + (unksp5C * temp_f4_41)));
-    sp10 = temp_f11_63 + (((f32) sp60 * temp_f10_57) + (((f32) sp58 * temp_f9_50) + (unksp5C * temp_f8_42)));
+    sp8 = temp_f3_59 + (((f32) sp60 * temp_f2_55) + (((f32) sp58 * temp_f1_48) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_f0_37)));
+    spC = temp_f7_61 + (((f32) sp60 * temp_f6_56) + (((f32) sp58 * temp_f5_49) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_f4_41)));
+    sp10 = temp_f11_63 + (((f32) sp60 * temp_f10_57) + (((f32) sp58 * temp_f9_50) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_f8_42)));
     sp58 = (f64) sp8;
     sp38 = (f64) sp8;
     sp40 = (f64) sp10;
     sp60 = (f64) sp10;
-    if (var_f12_85 < unksp5C) {
+    if (var_f12_85 < (*(f32 *) ((u8 *) &sp58 + 0x4))) {
         var_f0_117 = var_f12_85;
     } else {
-        var_f0_117 = unksp5C;
+        var_f0_117 = (*(f32 *) ((u8 *) &sp58 + 0x4));
     }
     this->unk80 = var_f0_117;
-    if (var_f12_85 > unksp5C) {
+    if (var_f12_85 > (*(f32 *) ((u8 *) &sp58 + 0x4))) {
 
     } else {
-        var_f12_85 = unksp5C;
+        var_f12_85 = (*(f32 *) ((u8 *) &sp58 + 0x4));
     }
     this->unk84 = var_f12_85;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp4C'
 void KDVolume::GetCenterPos() {
     f64 sp50;
     f64 sp48;
@@ -140,9 +139,9 @@ void KDVolume::GetCenterPos() {
     sp30 = (0.5f * M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18)) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 8);
     sp48 = (f64) sp28;
     sp50 = (f64) sp30;
-    sp18 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x70) + (((f32) sp50 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x60)) + (((f32) sp48 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x40)) + (unksp4C * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x50))));
-    sp1C = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x74) + (((f32) sp50 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x64)) + (((f32) sp48 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x44)) + (unksp4C * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x54))));
-    sp20 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x78) + (((f32) sp50 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x68)) + (((f32) sp48 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x48)) + (unksp4C * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x58))));
+    sp18 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x70) + (((f32) sp50 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x60)) + (((f32) sp48 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x40)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x50))));
+    sp1C = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x74) + (((f32) sp50 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x64)) + (((f32) sp48 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x44)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x54))));
+    sp20 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x78) + (((f32) sp50 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x68)) + (((f32) sp48 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x48)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x58))));
     this->unk0 = (f64) sp18;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
@@ -150,7 +149,6 @@ void KDVolume::GetCenterPos() {
     sp10 = (f64) sp20;
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 s32 KDVolume::IsWithinXZ(const MKVector3 &arg0, float *arg1) {
@@ -206,7 +204,7 @@ s32 KDVolume::IsWithin(const MKVector3 &arg0, float *arg1) {
         sp10 = this->unk38 + ((temp_f8_304 * this->unk28) + ((temp_f7_299 * this->unk8) + (temp_f3_285 * this->unk18)));
         sp18 = (f64) sp8;
         sp20 = (f64) sp10;
-        if (((f32) sp18 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) && ((f32) sp18 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x10))) && (unksp1C >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 4)) && (unksp1C <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 4) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x14))) && ((f32) sp20 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 8)) && ((f32) sp20 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18)))) {
+        if (((f32) sp18 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) && ((f32) sp18 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x10))) && ((*(f32 *) ((u8 *) &sp18 + 0x4)) >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 4)) && ((*(f32 *) ((u8 *) &sp18 + 0x4)) <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 4) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x14))) && ((f32) sp20 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 8)) && ((f32) sp20 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18)))) {
             var_r0_295 = 1;
         }
         if (var_r0_295 != 0) {

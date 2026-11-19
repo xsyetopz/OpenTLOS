@@ -248,7 +248,6 @@ void Explosion3::Deinit() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
 void Explosion3::Update() {
     f64 sp20;
     f64 sp18;
@@ -293,7 +292,7 @@ void Explosion3::Update() {
                 sp8 = temp_r4_471->unk20 * (f64) temp_f3_434;
                 sp10 = temp_r4_471->unk28 * (f64) temp_f3_434;
                 sp20 = sp10;
-                unksp24 = 1.0f;
+                (*(f32 *) ((u8 *) &sp20 + 0x4)) = 1.0f;
                 temp_r4_471->unk20 = sp8;
                 sp18 = sp8;
                 temp_r4_471->unk28 = sp20;
@@ -306,7 +305,6 @@ void Explosion3::Update() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void Explosion3::LoadDone() {

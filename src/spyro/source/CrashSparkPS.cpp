@@ -190,7 +190,7 @@ void CrashSparkPS::Draw() {
     sp140 = 0.0f;
     sp138 = 1.0f;
     sp13C = 0.0f;
-    var_f5_123 = ((f32) sp330 * (f32) sp330) + (((f32) sp328 * (f32) sp328) + (unksp32C * unksp32C));
+    var_f5_123 = ((f32) sp330 * (f32) sp330) + (((f32) sp328 * (f32) sp328) + ((*(f32 *) ((u8 *) &sp310 + 0x1c)) * (*(f32 *) ((u8 *) &sp310 + 0x1c))));
     sp3F0 = 0.0f;
     sp3F4 = 0.0f;
     sp3F8 = 0.0f;
@@ -233,9 +233,9 @@ void CrashSparkPS::Draw() {
         }
         var_f6_102 = 1.0f / var_f5_123;
     }
-    var_f7_211 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + (unksp31C * unksp31C));
+    var_f7_211 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + ((*(f32 *) ((u8 *) &sp310 + 0xc)) * (*(f32 *) ((u8 *) &sp310 + 0xc))));
     sp328 = (f32) sp328 * var_f6_102;
-    unksp32C *= var_f6_102;
+    (*(f32 *) ((u8 *) &sp310 + 0x1c)) *= var_f6_102;
     sp330 = (f32) sp330 * var_f6_102;
     if (var_f7_211 > 0.000001f) {
         if (var_f7_211 > 0.0f) {
@@ -276,7 +276,7 @@ void CrashSparkPS::Draw() {
         var_f2_282 = 0.0f;
     }
     temp_f9_291 = (f32) sp318 * var_f2_282;
-    temp_f8_293 = unksp31C * var_f2_282;
+    temp_f8_293 = (*(f32 *) ((u8 *) &sp310 + 0xc)) * var_f2_282;
     temp_f7_295 = (f32) sp320 * var_f2_282;
     sp128 = 1.0f;
     sp12C = 1.0f;
@@ -286,7 +286,7 @@ void CrashSparkPS::Draw() {
     sp48 = -temp_f9_291;
     sp4C = -temp_f8_293;
     sp318 = temp_f9_291;
-    unksp31C = temp_f8_293;
+    (*(f32 *) ((u8 *) &sp310 + 0xc)) = temp_f8_293;
     sp320 = temp_f7_295;
     sp308 = (f64) sp128;
     sp310 = (f64) sp130;
@@ -306,7 +306,7 @@ void CrashSparkPS::Draw() {
     sp40 = -sp320;
     sp110 = sp2A8.unk8 + sp298.unk8;
     sp38 = -sp318;
-    sp3C = -unksp31C;
+    sp3C = -(*(f32 *) ((u8 *) &sp310 + 0xc));
     sp2B8 = sp108;
     sp2C0 = (f64) sp110;
     sp388 = sp108;
@@ -315,7 +315,7 @@ void CrashSparkPS::Draw() {
     sp250 = (f64) sp40;
     sp258.operator*(10.0f);
     sp28 = -sp328;
-    sp2C = -unksp32C;
+    sp2C = -(*(f32 *) ((u8 *) &sp310 + 0x1c));
     sp30 = -sp330;
     sp268 = (f64) sp28;
     sp270 = (f64) sp30;
@@ -328,7 +328,7 @@ void CrashSparkPS::Draw() {
     sp3A0 = (f64) sp100;
     sp208.operator*(10.0f);
     sp18 = -sp328;
-    sp1C = -unksp32C;
+    sp1C = -(*(f32 *) ((u8 *) &sp310 + 0x1c));
     sp20 = -sp330;
     sp218 = (f64) sp18;
     sp220 = (f64) sp20;
@@ -376,22 +376,22 @@ void CrashSparkPS::Draw() {
             sp368 = temp_f2_518;
             sp1D0 = (f64) spB0;
             sp370 = (f64) spB0;
-            sp98 = sp3F0 + (((f32) sp340 * sp3E0) + (((f32) sp338 * sp3C0) + (unksp33C * sp3D0)));
-            sp9C = sp3F4 + (((f32) sp340 * sp3E4) + (((f32) sp338 * sp3C4) + (unksp33C * sp3D4)));
-            spA0 = sp3F8 + (((f32) sp340 * sp3E8) + (((f32) sp338 * sp3C8) + (unksp33C * sp3D8)));
+            sp98 = sp3F0 + (((f32) sp340 * sp3E0) + (((f32) sp338 * sp3C0) + ((*(f32 *) ((u8 *) &sp338 + 0x4)) * sp3D0)));
+            sp9C = sp3F4 + (((f32) sp340 * sp3E4) + (((f32) sp338 * sp3C4) + ((*(f32 *) ((u8 *) &sp338 + 0x4)) * sp3D4)));
+            spA0 = sp3F8 + (((f32) sp340 * sp3E8) + (((f32) sp338 * sp3C8) + ((*(f32 *) ((u8 *) &sp338 + 0x4)) * sp3D8)));
             sp1B8 = (f64) sp98;
             sp1C0 = (f64) spA0;
             sp338 = (f64) sp98;
             sp340 = (f64) spA0;
-            sp88 = sp3F0 + (((f32) sp350 * sp3E0) + (((f32) sp348 * sp3C0) + (unksp34C * sp3D0)));
-            sp8C = sp3F4 + (((f32) sp350 * sp3E4) + (((f32) sp348 * sp3C4) + (unksp34C * sp3D4)));
-            sp90 = sp3F8 + (((f32) sp350 * sp3E8) + (((f32) sp348 * sp3C8) + (unksp34C * sp3D8)));
-            sp80 = sp3F8 + (((f32) sp360 * sp3E8) + (((f32) sp358 * sp3C8) + (unksp35C * sp3D8)));
-            sp70 = sp3F8 + (((f32) sp370 * sp3E8) + (((f32) sp368 * sp3C8) + (unksp36C * sp3D8)));
-            sp78 = sp3F0 + (((f32) sp360 * sp3E0) + (((f32) sp358 * sp3C0) + (unksp35C * sp3D0)));
-            sp7C = sp3F4 + (((f32) sp360 * sp3E4) + (((f32) sp358 * sp3C4) + (unksp35C * sp3D4)));
-            sp68 = sp3F0 + (((f32) sp370 * sp3E0) + (((f32) sp368 * sp3C0) + (unksp36C * sp3D0)));
-            sp6C = sp3F4 + (((f32) sp370 * sp3E4) + (((f32) sp368 * sp3C4) + (unksp36C * sp3D4)));
+            sp88 = sp3F0 + (((f32) sp350 * sp3E0) + (((f32) sp348 * sp3C0) + ((*(f32 *) ((u8 *) &sp348 + 0x4)) * sp3D0)));
+            sp8C = sp3F4 + (((f32) sp350 * sp3E4) + (((f32) sp348 * sp3C4) + ((*(f32 *) ((u8 *) &sp348 + 0x4)) * sp3D4)));
+            sp90 = sp3F8 + (((f32) sp350 * sp3E8) + (((f32) sp348 * sp3C8) + ((*(f32 *) ((u8 *) &sp348 + 0x4)) * sp3D8)));
+            sp80 = sp3F8 + (((f32) sp360 * sp3E8) + (((f32) sp358 * sp3C8) + ((*(f32 *) ((u8 *) &sp358 + 0x4)) * sp3D8)));
+            sp70 = sp3F8 + (((f32) sp370 * sp3E8) + (((f32) sp368 * sp3C8) + ((*(f32 *) ((u8 *) &sp368 + 0x4)) * sp3D8)));
+            sp78 = sp3F0 + (((f32) sp360 * sp3E0) + (((f32) sp358 * sp3C0) + ((*(f32 *) ((u8 *) &sp358 + 0x4)) * sp3D0)));
+            sp7C = sp3F4 + (((f32) sp360 * sp3E4) + (((f32) sp358 * sp3C4) + ((*(f32 *) ((u8 *) &sp358 + 0x4)) * sp3D4)));
+            sp68 = sp3F0 + (((f32) sp370 * sp3E0) + (((f32) sp368 * sp3C0) + ((*(f32 *) ((u8 *) &sp368 + 0x4)) * sp3D0)));
+            sp6C = sp3F4 + (((f32) sp370 * sp3E4) + (((f32) sp368 * sp3C4) + ((*(f32 *) ((u8 *) &sp368 + 0x4)) * sp3D4)));
             sp348 = (f64) sp88;
             sp350 = (f64) sp90;
             sp358 = (f64) sp78;
@@ -424,7 +424,7 @@ void CrashSparkPS::Draw() {
             sp178 = sp58;
             sp180 = sp60;
             sp308 = sp58;
-            unksp314 = 1.0f;
+            (*(f32 *) ((u8 *) &sp310 + 0x4)) = 1.0f;
             MKBegin(4);
             MKSetColorV(*((MKVector4 *) &sp308));
             MKSetTexCoord1F(0.0f, 0.0f);
@@ -645,7 +645,7 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
     sp128 = temp_f1_948;
     spA0 = M2C_FIELD(temp_r3_945, f32 *, 8) - temp_f4_951;
     sp130 = (f64) spA0;
-    temp_f29_966 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + (unksp12C * unksp12C));
+    temp_f29_966 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + ((*(f32 *) ((u8 *) &sp128 + 0x4)) * (*(f32 *) ((u8 *) &sp128 + 0x4))));
     if (((u8) M2C_FIELD(temp_r4_944, u8 *, 0x40) != 0) && (temp_f29_966 >= M2C_FIELD(temp_r4_944, f32 *, 0x44))) {
         temp_r4_977 = temp_r4_944 + 0x20;
         sp158 = 0.0f;
@@ -827,7 +827,7 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
         temp_r3_1311 = this->unk4C + (&arg0 * 0x50);
         sp148 = M2C_FIELD(temp_r3_1311, f64 *, 0x20);
         sp150 = M2C_FIELD(temp_r3_1311, f64 *, 0x28);
-        var_f5_1323 = ((f32) sp150 * (f32) sp150) + (((f32) sp148 * (f32) sp148) + (unksp14C * unksp14C));
+        var_f5_1323 = ((f32) sp150 * (f32) sp150) + (((f32) sp148 * (f32) sp148) + ((*(f32 *) ((u8 *) &sp140 + 0xc)) * (*(f32 *) ((u8 *) &sp140 + 0xc))));
         if (var_f5_1323 > 0.000001f) {
             if (var_f5_1323 > 0.0f) {
                 temp_f1_1328 = __frsqrte(var_f5_1323);
@@ -865,7 +865,7 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
             var_f4_1281 = 1.0f / var_f5_1323;
         }
         sp148 = (f32) sp148 * var_f4_1281;
-        unksp14C *= var_f4_1281;
+        (*(f32 *) ((u8 *) &sp140 + 0xc)) *= var_f4_1281;
         sp150 = (f32) sp150 * var_f4_1281;
         if (temp_f29_966 > 0.0f) {
             temp_f1_1403 = __frsqrte(temp_f29_966);
@@ -922,7 +922,7 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
             sp138 = temp_f0_1505;
             sp30 = sp160 - M2C_FIELD(temp_r3_1502, f32 *, 8);
             sp140 = (f64) sp30;
-            M2C_FIELD((this->unk4C + temp_r4_1501), f32 *, 0x44) = (f32) (((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + (unksp13C * unksp13C)));
+            M2C_FIELD((this->unk4C + temp_r4_1501), f32 *, 0x44) = (f32) (((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + ((*(f32 *) ((u8 *) &sp138 + 0x4)) * (*(f32 *) ((u8 *) &sp138 + 0x4)))));
         } else {
             M2C_FIELD((this->unk4C + (&arg0 * 0x50)), s8 *, 0x40) = 0;
         }

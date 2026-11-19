@@ -374,7 +374,7 @@ void IceTier1::Update() {
                 sp98 = M2C_BITWISE(f64, spC0);
                 spA0 = (f64) spC0.unk8;
             }
-            unksp9C = 1.0f;
+            (*(f32 *) ((u8 *) &sp98 + 0x4)) = 1.0f;
             temp_f1_785 = MKRand_Float(&gViewSeed, 80.0f, 150.0f);
             temp_f0_788 = spC0.unk20 * temp_f1_785;
             sp38 = temp_f0_788;

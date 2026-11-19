@@ -261,7 +261,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         sp58 = sp38;
         sp40 = arg7.unk8 - arg0.unk8;
         sp60 = (f64) sp40;
-        var_f4_346 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C));
+        var_f4_346 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp58 + 0x4))));
         if (var_f4_346 > 0.0f) {
             temp_f1_349 = __frsqrte(var_f4_346);
             temp_f1_355 = 0.5 * temp_f1_349 * -(((f64) var_f4_346 * (temp_f1_349 * temp_f1_349)) - 3.0);
@@ -470,15 +470,15 @@ void FireBombFX::DrawFlameBall() {
             sp280.RotateRoll(&sp280, -this->unk100);
         }
         temp_f0_624 = M2C_BITWISE(f32, sp280);
-        spA8 = sp280.unk30 + (((f32) sp220 * sp280.unk20) + (((f32) sp218 * temp_f0_624) + (unksp21C * sp280.unk10)));
-        spAC = sp280.unk34 + (((f32) sp220 * sp280.unk24) + (((f32) sp218 * sp280.unk4) + (unksp21C * sp280.unk14)));
-        spB0 = sp280.unk38 + (((f32) sp220 * sp280.unk28) + (((f32) sp218 * sp280.unk8) + (unksp21C * sp280.unk18)));
+        spA8 = sp280.unk30 + (((f32) sp220 * sp280.unk20) + (((f32) sp218 * temp_f0_624) + ((*(f32 *) ((u8 *) &sp200 + 0x1c)) * sp280.unk10)));
+        spAC = sp280.unk34 + (((f32) sp220 * sp280.unk24) + (((f32) sp218 * sp280.unk4) + ((*(f32 *) ((u8 *) &sp200 + 0x1c)) * sp280.unk14)));
+        spB0 = sp280.unk38 + (((f32) sp220 * sp280.unk28) + (((f32) sp218 * sp280.unk8) + ((*(f32 *) ((u8 *) &sp200 + 0x1c)) * sp280.unk18)));
         sp218 = (f64) spA8;
         sp220 = (f64) spB0;
-        sp98 = sp280.unk30 + (((f32) sp210 * sp280.unk20) + (((f32) sp208 * temp_f0_624) + (unksp20C * sp280.unk10)));
-        sp9C = sp280.unk34 + (((f32) sp210 * sp280.unk24) + (((f32) sp208 * sp280.unk4) + (unksp20C * sp280.unk14)));
-        spA0 = sp280.unk38 + (((f32) sp210 * sp280.unk28) + (((f32) sp208 * sp280.unk8) + (unksp20C * sp280.unk18)));
-        var_f4_677 = ((f32) sp220 * (f32) sp220) + (((f32) sp218 * (f32) sp218) + (unksp21C * unksp21C));
+        sp98 = sp280.unk30 + (((f32) sp210 * sp280.unk20) + (((f32) sp208 * temp_f0_624) + ((*(f32 *) ((u8 *) &sp200 + 0xc)) * sp280.unk10)));
+        sp9C = sp280.unk34 + (((f32) sp210 * sp280.unk24) + (((f32) sp208 * sp280.unk4) + ((*(f32 *) ((u8 *) &sp200 + 0xc)) * sp280.unk14)));
+        spA0 = sp280.unk38 + (((f32) sp210 * sp280.unk28) + (((f32) sp208 * sp280.unk8) + ((*(f32 *) ((u8 *) &sp200 + 0xc)) * sp280.unk18)));
+        var_f4_677 = ((f32) sp220 * (f32) sp220) + (((f32) sp218 * (f32) sp218) + ((*(f32 *) ((u8 *) &sp200 + 0x1c)) * (*(f32 *) ((u8 *) &sp200 + 0x1c))));
         sp1F8 = (f64) spA8;
         sp200 = (f64) spB0;
         sp1E8 = (f64) sp98;
@@ -523,9 +523,9 @@ void FireBombFX::DrawFlameBall() {
         } else {
             var_f5_751 = 0.0f;
         }
-        var_f6_768 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
+        var_f6_768 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + ((*(f32 *) ((u8 *) &sp200 + 0xc)) * (*(f32 *) ((u8 *) &sp200 + 0xc))));
         sp218 = (f32) sp218 * var_f5_751;
-        unksp21C *= var_f5_751;
+        (*(f32 *) ((u8 *) &sp200 + 0x1c)) *= var_f5_751;
         sp220 = (f32) sp220 * var_f5_751;
         if (var_f6_768 > 0.000001f) {
             if (var_f6_768 > 0.0f) {
@@ -566,10 +566,10 @@ void FireBombFX::DrawFlameBall() {
             var_f2_839 = 0.0f;
         }
         temp_f5_848 = (f32) sp208 * var_f2_839;
-        temp_f4_850 = unksp20C * var_f2_839;
+        temp_f4_850 = (*(f32 *) ((u8 *) &sp200 + 0xc)) * var_f2_839;
         temp_f3_851 = (f32) sp210 * var_f2_839;
         sp208 = temp_f5_848;
-        unksp20C = temp_f4_850;
+        (*(f32 *) ((u8 *) &sp200 + 0xc)) = temp_f4_850;
         sp48 = -temp_f5_848;
         sp4C = -temp_f4_850;
         sp50 = -temp_f3_851;
@@ -591,7 +591,7 @@ void FireBombFX::DrawFlameBall() {
         sp40 = -sp210;
         sp80 = sp188.unk8 + sp178.unk8;
         sp38 = -sp208;
-        sp3C = -unksp20C;
+        sp3C = -(*(f32 *) ((u8 *) &sp200 + 0xc));
         sp248 = sp78;
         sp250 = (f64) sp80;
         sp128 = (f64) sp38;
@@ -600,7 +600,7 @@ void FireBombFX::DrawFlameBall() {
         sp1A0 = (f64) sp80;
         sp138.operator*(this->unkC8 * this->unk128);
         sp28 = -sp218;
-        sp2C = -unksp21C;
+        sp2C = -(*(f32 *) ((u8 *) &sp200 + 0x1c));
         sp30 = -sp220;
         sp148 = (f64) sp28;
         sp150 = (f64) sp30;
@@ -614,7 +614,7 @@ void FireBombFX::DrawFlameBall() {
         sp170 = (f64) sp70;
         spE8.operator*(this->unkC8 * this->unk128);
         sp18 = -sp218;
-        sp1C = -unksp21C;
+        sp1C = -(*(f32 *) ((u8 *) &sp200 + 0x1c));
         sp20 = -sp220;
         spF8 = (f64) sp18;
         sp100 = (f64) sp20;
@@ -746,7 +746,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
         spD0 = sp60;
         sp68 = (f32) spC8 - arg1.unk8;
         spD8 = (f64) sp68;
-        if ((((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (unkspD4 * unkspD4))) <= (var_f26_1207 * var_f26_1207)) {
+        if ((((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + ((*(f32 *) ((u8 *) &spD0 + 0x4)) * (*(f32 *) ((u8 *) &spD0 + 0x4))))) <= (var_f26_1207 * var_f26_1207)) {
             this->unk130.unk50 = 0;
             this->unk130.unk30 = NULL;
             if (gb.unk0->GetHeroType() == 0) {
@@ -1221,7 +1221,7 @@ void FireBombFX::Update() {
         sp250 = temp_f29_1742;
         sp3C8 = (f64) sp248;
         sp3D0 = (f64) sp250;
-        var_f6_1766 = ((f32) sp3D0 * (f32) sp3D0) + (((f32) sp3C8 * (f32) sp3C8) + (unksp3CC * unksp3CC));
+        var_f6_1766 = ((f32) sp3D0 * (f32) sp3D0) + (((f32) sp3C8 * (f32) sp3C8) + ((*(f32 *) ((u8 *) &sp3C8 + 0x4)) * (*(f32 *) ((u8 *) &sp3C8 + 0x4))));
         if (var_f6_1766 > 1e-12f) {
             if (var_f6_1766 > 0.0f) {
                 temp_f3_1772 = __frsqrte(var_f6_1766);
@@ -1261,7 +1261,7 @@ void FireBombFX::Update() {
             var_f4_1833 = 0.0f;
         }
         var_r7_1841 = 0;
-        sp23C = unksp3CC * var_f4_1833;
+        sp23C = (*(f32 *) ((u8 *) &sp3C8 + 0x4)) * var_f4_1833;
         sp238 = (f32) sp3C8 * var_f4_1833;
         sp240 = (f32) sp3D0 * var_f4_1833;
         sp4C8 = (f64) sp238;

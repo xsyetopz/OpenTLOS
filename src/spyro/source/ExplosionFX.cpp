@@ -162,7 +162,7 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1BC'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ExplosionFX::DrawShockwaves() {
     f64 sp220;
     f64 sp218;
@@ -264,7 +264,7 @@ loop_2:
             temp_f24_313 = M2C_FIELD(temp_r3_511, f32 *, 0x40) / 0.5f;
             sp38 = -(f32) sp1B8;
             temp_f25_320 = (1500.0f * temp_f24_313) + 500.0f;
-            sp3C = -unksp1BC;
+            sp3C = -(*(f32 *) ((u8 *) &sp1B8 + 0x4));
             sp40 = -(f32) sp1C0;
             sp178 = (f64) sp38;
             sp180 = (f64) sp40;
@@ -282,7 +282,7 @@ loop_2:
             sp30 = -(f32) sp1C0;
             sp70 = sp158.unk8 + sp148.unk8;
             sp28 = -(f32) sp1B8;
-            sp2C = -unksp1BC;
+            sp2C = -(*(f32 *) ((u8 *) &sp1B8 + 0x4));
             sp1F8 = sp68;
             sp200 = (f64) sp70;
             spF8 = (f64) sp28;
@@ -291,7 +291,7 @@ loop_2:
             sp170 = (f64) sp70;
             sp108.operator*(temp_f25_320 * M2C_FIELD(*var_r24_306, f32 *, 0x44));
             sp18 = -(f32) sp1C8;
-            sp1C = -unksp1CC;
+            sp1C = -(*(f32 *) ((u8 *) &sp1C8 + 0x4));
             sp20 = -(f32) sp1D0;
             sp118 = (f64) sp18;
             sp120 = (f64) sp20;
@@ -304,7 +304,7 @@ loop_2:
             sp140 = (f64) sp60;
             spB8.operator*(temp_f25_320 * M2C_FIELD(*var_r24_306, f32 *, 0x44));
             sp8 = -(f32) sp1C8;
-            spC = -unksp1CC;
+            spC = -(*(f32 *) ((u8 *) &sp1C8 + 0x4));
             sp10 = -(f32) sp1D0;
             spC8 = (f64) sp8;
             spD0 = (f64) sp10;
@@ -314,10 +314,10 @@ loop_2:
             sp1D8 = temp_f4_458;
             sp218 = sp48;
             sp50 = spD8.unk8 + spB8.unk8;
-            unksp1DC = 0.8f * temp_f4_458;
+            (*(f32 *) ((u8 *) &sp1D0 + 0xc)) = 0.8f * temp_f4_458;
             sp220 = (f64) sp50;
             sp1E0 = 0.0f;
-            unksp1E4 = 1.0f;
+            (*(f32 *) ((u8 *) &sp1D0 + 0x14)) = 1.0f;
             spE8 = sp48;
             spF0 = (f64) sp50;
             MKSetMatrix(*(*var_r24_306));
@@ -343,7 +343,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp144'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ExplosionFX::DrawTendrils() {
     f64 sp228;
     f64 sp220;
@@ -440,7 +440,7 @@ loop_2:
             temp_f23_618 = temp_r3_795->unk14 / 0.5f;
             sp20 = -(f32) sp140;
             temp_f25_625 = 100.0f * temp_f23_618;
-            sp24 = -unksp144;
+            sp24 = -(*(f32 *) ((u8 *) &sp140 + 0x4));
             sp28 = -(f32) sp148;
             sp100 = (f64) sp20;
             sp108 = (f64) sp28;
@@ -463,7 +463,7 @@ loop_2:
             temp_f4_690 = (*var_r25_600)->unk18;
             sp10 = -(f32) sp140;
             temp_f27_693 = temp_f4_690 * temp_f25_625;
-            sp14 = -unksp144;
+            sp14 = -(*(f32 *) ((u8 *) &sp140 + 0x4));
             spF0 = sp50;
             spB0 = (f64) sp10;
             spF8 = (f64) sp58;
@@ -483,7 +483,7 @@ loop_2:
             sp228 = (f64) sp38;
             sp1B0.SetIdentity();
             sp1B0.RotateRoll(&sp1B0, (*var_r25_600)->unk10);
-            M2C_STRUCT_COPY((s32) &unksp16C + 4, (s32) (temp_r31_601 - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &(*(f32 *) ((u8 *) &sp158 + 0x14)) + 4, (s32) (temp_r31_601 - 4) + 4, 0x40);
             sp1B0.Multiply3x3(&sp1B0, &sp170);
             temp_r4_745 = *var_r25_600;
             temp_f1_746 = 1.0f - temp_f23_618;
@@ -492,9 +492,9 @@ loop_2:
             sp1B0.unk38 = temp_r4_745->unk8;
             sp1B0.unk3C = 1.0f;
             sp160 = temp_f1_746;
-            unksp164 = temp_f1_746;
+            (*(f32 *) ((u8 *) &sp158 + 0xc)) = temp_f1_746;
             sp168 = temp_f1_746;
-            unksp16C = 1.0f;
+            (*(f32 *) ((u8 *) &sp158 + 0x14)) = 1.0f;
             MKSetMatrix(sp1B0);
             MKBegin(4);
             MKSetColorV(*((MKVector4 *) &sp160));

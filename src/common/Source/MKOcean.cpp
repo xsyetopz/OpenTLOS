@@ -133,7 +133,7 @@ void MKOcean::BuildOceanWaves() {
         M2C_FIELD(temp_r26_175, f32 *, 0x50D0) = (f32) ((f32) sp50 / 100.0f);
         M2C_FIELD(temp_r26_175, f32 *, 0x50D4) = (f32) ((f32) sp58 / 100.0f);
         M2C_FIELD(temp_r26_175, f32 *, 0x50E0) = (f32) (100.0f * var_f24_102);
-        temp_f2_198 = ((f32) sp68 * (f32) sp48) + (((f32) sp60 * (f32) sp40) + (unksp64 * unksp44));
+        temp_f2_198 = ((f32) sp68 * (f32) sp48) + (((f32) sp60 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp40 + 0x4))));
         if (temp_f2_198 < 0.0f) {
             var_f1_201 = -temp_f2_198;
         } else {

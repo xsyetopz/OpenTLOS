@@ -34,7 +34,7 @@ void MKCollision_GetVertexColorFromPoly(const MKVector3 *arg0, MKVector4 *arg1) 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp104'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 MKCollision_SweepSphereToEdge(const MKCollisionRay &arg0, const MKVector3 &arg1, const MKVector3 &arg2, MKCollisionResult *arg3, float *arg4) {
     s8 sp160;
     s32 sp15C;
@@ -131,11 +131,11 @@ u8 MKCollision_SweepSphereToEdge(const MKCollisionRay &arg0, const MKVector3 &ar
     sp108 = (f64) sp78;
     temp_f3_89 = arg0.unk40;
     sp64 = ((f32) sp108 * temp_f3_89) - ((f32) sp100 * temp_f6_80);
-    sp60 = (unksp104 * temp_f6_80) - ((f32) sp108 * temp_f7_82);
-    sp68 = ((f32) sp100 * temp_f7_82) - (unksp104 * temp_f3_89);
+    sp60 = ((*(f32 *) ((u8 *) &sp100 + 0x4)) * temp_f6_80) - ((f32) sp108 * temp_f7_82);
+    sp68 = ((f32) sp100 * temp_f7_82) - ((*(f32 *) ((u8 *) &sp100 + 0x4)) * temp_f3_89);
     spF0 = (f64) sp60;
     spF8 = (f64) sp68;
-    temp_f10_110 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4));
+    temp_f10_110 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spF0 + 0x4))));
     if (temp_f10_110 > 9.9999994e-11f) {
         temp_f1_115 = temp_f8_73 - arg0.unk20;
         sp50 = temp_f1_115;
@@ -144,7 +144,7 @@ u8 MKCollision_SweepSphereToEdge(const MKCollisionRay &arg0, const MKVector3 &ar
         temp_f7_122 = temp_f4_120 * temp_f4_120;
         sp58 = temp_f9_77 - arg0.unk28;
         spD8 = (f64) sp58;
-        temp_f3_132 = ((f32) spF8 * (f32) spD8) + (((f32) spF0 * (f32) spD0) + (unkspF4 * unkspD4));
+        temp_f3_132 = ((f32) spF8 * (f32) spD8) + (((f32) spF0 * (f32) spD0) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spD0 + 0x4))));
         temp_f3_133 = temp_f3_132 * temp_f3_132;
         if ((temp_f7_122 * temp_f10_110) >= temp_f3_133) {
             var_f1_138 = 0.0f;
@@ -185,12 +185,12 @@ u8 MKCollision_SweepSphereToEdge(const MKCollisionRay &arg0, const MKVector3 &ar
                     var_f1_138 = __float_nan;
                 }
             }
-            sp40 = (unksp104 * (f32) spF8) - ((f32) sp108 * unkspF4);
+            sp40 = ((*(f32 *) ((u8 *) &sp100 + 0x4)) * (f32) spF8) - ((f32) sp108 * (*(f32 *) ((u8 *) &spF0 + 0x4)));
             sp44 = ((f32) sp108 * (f32) spF0) - ((f32) sp100 * (f32) spF8);
-            sp48 = ((f32) sp100 * unkspF4) - (unksp104 * (f32) spF0);
+            sp48 = ((f32) sp100 * (*(f32 *) ((u8 *) &spF0 + 0x4))) - ((*(f32 *) ((u8 *) &sp100 + 0x4)) * (f32) spF0);
             spC0 = (f64) sp40;
             spC8 = (f64) sp48;
-            var_f7_229 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + (unkspC4 * unkspC4));
+            var_f7_229 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + ((*(f32 *) ((u8 *) &spC0 + 0x4)) * (*(f32 *) ((u8 *) &spC0 + 0x4))));
             if (var_f7_229 > 1e-12f) {
                 if (var_f7_229 > 0.0f) {
                     temp_f4_235 = __frsqrte(var_f7_229);
@@ -230,7 +230,7 @@ u8 MKCollision_SweepSphereToEdge(const MKCollisionRay &arg0, const MKVector3 &ar
                 var_f7_296 = 0.0f;
             }
             sp30 = (f32) spC0 * var_f7_296;
-            sp34 = unkspC4 * var_f7_296;
+            sp34 = (*(f32 *) ((u8 *) &spC0 + 0x4)) * var_f7_296;
             sp38 = (f32) spC8 * var_f7_296;
             spE0 = (f64) sp30;
             spE8 = (f64) sp38;
@@ -260,7 +260,7 @@ u8 MKCollision_SweepSphereToEdge(const MKCollisionRay &arg0, const MKVector3 &ar
                 spB0 = sp20;
                 sp28 = sp118 - arg1.unk8;
                 spB8 = (f64) sp28;
-                temp_f1_374 = (((f32) sp108 * (f32) spB8) + (((f32) sp100 * (f32) spB0) + (unksp104 * unkspB4))) / (((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + (unksp104 * unksp104)));
+                temp_f1_374 = (((f32) sp108 * (f32) spB8) + (((f32) sp100 * (f32) spB0) + ((*(f32 *) ((u8 *) &sp100 + 0x4)) * (*(f32 *) ((u8 *) &spB0 + 0x4))))) / (((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + ((*(f32 *) ((u8 *) &sp100 + 0x4)) * (*(f32 *) ((u8 *) &sp100 + 0x4)))));
                 *arg4 = temp_f1_374;
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
                 if ((temp_f1_374 == 0.0f) && (temp_f1_374 <= 1.0f)) {
@@ -286,7 +286,7 @@ block_46:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp124'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 MKCollision_SweepSphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCollisionResult *arg2, int arg3, MKCollisionDirection arg4) {
     u8 sp1C8;
     s32 sp1C4;
@@ -444,12 +444,12 @@ u8 MKCollision_SweepSphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCo
     sp130 = temp_f1_521;
     spB8 = M2C_FIELD(arg1, f32 *, 0x28) - temp_f5_512;
     sp138 = (f64) spB8;
-    sp90 = (unksp124 * (f32) sp138) - ((f32) sp128 * unksp134);
+    sp90 = ((*(f32 *) ((u8 *) &sp120 + 0x4)) * (f32) sp138) - ((f32) sp128 * (*(f32 *) ((u8 *) &sp130 + 0x4)));
     sp94 = ((f32) sp128 * (f32) sp130) - ((f32) sp120 * (f32) sp138);
-    sp98 = ((f32) sp120 * unksp134) - (unksp124 * (f32) sp130);
+    sp98 = ((f32) sp120 * (*(f32 *) ((u8 *) &sp130 + 0x4))) - ((*(f32 *) ((u8 *) &sp120 + 0x4)) * (f32) sp130);
     sp140 = (f64) sp90;
     sp148 = (f64) sp98;
-    var_f5_555 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + (unksp144 * unksp144));
+    var_f5_555 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + ((*(f32 *) ((u8 *) &sp140 + 0x4)) * (*(f32 *) ((u8 *) &sp140 + 0x4))));
     if (var_f5_555 > 1e-12f) {
         if (var_f5_555 > 0.0f) {
             temp_f1_561 = __frsqrte(var_f5_555);
@@ -486,7 +486,7 @@ u8 MKCollision_SweepSphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCo
         }
         var_f0_480 = 1.0f / var_f5_555;
     }
-    sp84 = unksp144 * var_f0_480;
+    sp84 = (*(f32 *) ((u8 *) &sp140 + 0x4)) * var_f0_480;
     sp80 = (f32) sp140 * var_f0_480;
     sp88 = (f32) sp148 * var_f0_480;
     sp150 = (f64) sp80;
@@ -496,7 +496,7 @@ u8 MKCollision_SweepSphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCo
     sp110 = temp_f0_638;
     sp58 = arg1->unk8 - arg0.unk28;
     sp118 = (f64) sp58;
-    sp10 = ((f32) sp158 * (f32) sp118) + (((f32) sp150 * (f32) sp110) + (unksp154 * unksp114));
+    sp10 = ((f32) sp158 * (f32) sp118) + (((f32) sp150 * (f32) sp110) + ((*(f32 *) ((u8 *) &sp150 + 0x4)) * (*(f32 *) ((u8 *) &sp110 + 0x4))));
     sp14 = (M2C_BITWISE(s32, sp10) & 0x80000000) | 0x3F800000;
     temp_f2_663 = -M2C_BITWISE(f32, sp14);
     sp150 *= temp_f2_663;
@@ -514,19 +514,19 @@ u8 MKCollision_SweepSphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCo
         if (var_f2_702 < 0.0f) {
             var_f2_702 = -var_f2_702;
         }
-        var_f1_708 = unksp104;
+        var_f1_708 = (*(f32 *) ((u8 *) &spF8 + 0xc));
         sp100 = var_f2_702;
         if (var_f1_708 < 0.0f) {
             var_f1_708 = -var_f1_708;
         }
         var_f2_715 = (f32) sp108;
-        unksp104 = var_f1_708;
+        (*(f32 *) ((u8 *) &spF8 + 0xc)) = var_f1_708;
         if (var_f2_715 < 0.0f) {
             var_f2_715 = -var_f2_715;
         }
         var_r4_723 = 0;
         sp108 = var_f2_715;
-        if (sp100 < unksp104) {
+        if (sp100 < (*(f32 *) ((u8 *) &spF8 + 0xc))) {
             var_r4_723 = 1;
         }
         if ((&sp100)[var_r4_723] < sp108) {
@@ -590,12 +590,12 @@ loop_80:
         sp60 = temp_f0_844;
         sp48 = M2C_FIELD(temp_r31_833, f32 *, 8) - temp_f29_827;
         sp68 = (f64) sp48;
-        temp_f0_862 = 2.0f * (((f32) sp68 * (f32) spF8) + (((f32) sp60 * (f32) spF0) + (unksp64 * unkspF4)));
+        temp_f0_862 = 2.0f * (((f32) sp68 * (f32) spF8) + (((f32) sp60 * (f32) spF0) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &spF0 + 0x4)))));
         if (temp_f0_862 > 0.0f) {
             var_r0_865 = 0;
         } else {
-            temp_f1_875 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4));
-            var_f6_879 = -((4.0f * temp_f1_875 * ((((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64))) - (temp_f25_825 * temp_f25_825))) - (temp_f0_862 * temp_f0_862));
+            temp_f1_875 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spF0 + 0x4))));
+            var_f6_879 = -((4.0f * temp_f1_875 * ((((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))))) - (temp_f25_825 * temp_f25_825))) - (temp_f0_862 * temp_f0_862));
             if ((var_f6_879 < 0.0f) || (temp_f1_875 < 0.00001f)) {
                 var_r0_865 = 0;
             } else {
@@ -674,7 +674,7 @@ loop_80:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp25C'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 MKCollision_SphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCollisionResult *arg2, int arg3, MKCollisionDirection arg4) {
     f64 sp290;                                      /* compiler-managed */
     f64 sp288;
@@ -859,7 +859,7 @@ u8 MKCollision_SphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCollisi
     sp110 = (temp_f11_1122 * temp_f10_1124) - (temp_f9_1127 * temp_f8_1126);
     sp258 = (f64) sp108;
     sp260 = (f64) sp110;
-    var_f7_1147 = ((f32) sp260 * (f32) sp260) + (((f32) sp258 * (f32) sp258) + (unksp25C * unksp25C));
+    var_f7_1147 = ((f32) sp260 * (f32) sp260) + (((f32) sp258 * (f32) sp258) + ((*(f32 *) ((u8 *) &sp258 + 0x4)) * (*(f32 *) ((u8 *) &sp258 + 0x4))));
     if (var_f7_1147 > 1e-12f) {
         if (var_f7_1147 > 0.0f) {
             temp_f3_1153 = __frsqrte(var_f7_1147);
@@ -898,7 +898,7 @@ u8 MKCollision_SphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCollisi
     } else {
         var_f6_1214 = 0.0f;
     }
-    spFC = unksp25C * var_f6_1214;
+    spFC = (*(f32 *) ((u8 *) &sp258 + 0x4)) * var_f6_1214;
     spF8 = (f32) sp258 * var_f6_1214;
     sp100 = (f32) sp260 * var_f6_1214;
     sp288 = (f64) spF8;
@@ -909,13 +909,13 @@ u8 MKCollision_SphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCollisi
     sp208 = sp18;
     sp20 = temp_f9_1235 - temp_f1_1236;
     sp210 = (f64) sp20;
-    spC = ((f32) sp290 * (f32) sp210) + (((f32) sp288 * (f32) sp208) + (unksp28C * unksp20C));
+    spC = ((f32) sp290 * (f32) sp210) + (((f32) sp288 * (f32) sp208) + ((*(f32 *) ((u8 *) &sp288 + 0x4)) * (*(f32 *) ((u8 *) &sp208 + 0x4))));
     sp10 = (M2C_BITWISE(s32, spC) & 0x80000000) | 0x3F800000;
     temp_f0_1258 = -M2C_BITWISE(f32, sp10);
     sp288 = (f64) spF8 * temp_f0_1258;
     temp_f0_1265 = (f32) sp290 * (f32) temp_f0_1258;
     sp290 = temp_f0_1265;
-    temp_f4_1278 = ((temp_f0_1265 * temp_f1_1236) + (((f32) sp288 * (f32) M2C_FIELD(&arg0, f64 *, 0x20)) + (unksp28C * M2C_FIELD(&arg0, f32 *, 0x24)))) - ((temp_f0_1265 * temp_f9_1235) + (((f32) sp288 * var_r4_0->unk0) + (unksp28C * var_r4_0->unk4)));
+    temp_f4_1278 = ((temp_f0_1265 * temp_f1_1236) + (((f32) sp288 * (f32) M2C_FIELD(&arg0, f64 *, 0x20)) + ((*(f32 *) ((u8 *) &sp288 + 0x4)) * M2C_FIELD(&arg0, f32 *, 0x24)))) - ((temp_f0_1265 * temp_f9_1235) + (((f32) sp288 * var_r4_0->unk0) + ((*(f32 *) ((u8 *) &sp288 + 0x4)) * var_r4_0->unk4)));
     if (temp_f4_1278 < 0.0f) {
         var_f6_1281 = -temp_f4_1278;
     } else {
@@ -949,9 +949,9 @@ loop_35:
             sp1D8 = spC8;
             spD0 = temp_f7_1325 - var_r8_1310->unk8;
             sp1E0 = (f64) spD0;
-            spB8 = (unksp28C * (f32) sp1E0) - (temp_f0_1265 * unksp1DC);
+            spB8 = ((*(f32 *) ((u8 *) &sp288 + 0x4)) * (f32) sp1E0) - (temp_f0_1265 * (*(f32 *) ((u8 *) &sp1D8 + 0x4)));
             spBC = (temp_f0_1265 * (f32) sp1D8) - ((f32) sp288 * (f32) sp1E0);
-            spC0 = ((f32) sp288 * unksp1DC) - (unksp28C * (f32) sp1D8);
+            spC0 = ((f32) sp288 * (*(f32 *) ((u8 *) &sp1D8 + 0x4))) - ((*(f32 *) ((u8 *) &sp288 + 0x4)) * (f32) sp1D8);
             sp1E8 = (f64) spB8;
             sp1F0 = (f64) spC0;
             temp_r0_1370 = (u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU;
@@ -971,7 +971,7 @@ block_34:
             sp1B8 = sp98;
             spA0 = (f32) sp280 - arg0.unk28;
             sp1C0 = (f64) spA0;
-            temp_f3_1405 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + (unksp1BC * unksp1BC));
+            temp_f3_1405 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * (*(f32 *) ((u8 *) &sp1B8 + 0x4))));
             if (temp_f3_1405 <= arg2->unk40) {
                 M2C_FIELD(arg2, f64 *, 0) = sp278;
                 M2C_FIELD(arg2, f64 *, 8) = sp280;
@@ -991,7 +991,7 @@ loop_50:
             sp1A8 = temp_f1_1423;
             sp90 = temp_f5_1428;
             sp1B0 = (f64) sp90;
-            temp_f9_1440 = ((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + (unksp1AC * unksp1AC));
+            temp_f9_1440 = ((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + ((*(f32 *) ((u8 *) &sp1A8 + 0x4)) * (*(f32 *) ((u8 *) &sp1A8 + 0x4))));
             if (temp_f9_1440 != 0.0f) {
                 sp68 = temp_f8_1421 - temp_f7_1422;
                 sp70 = temp_f5_1428;
@@ -1002,7 +1002,7 @@ loop_50:
                 sp80 = arg0.unk28 - temp_f6_1426;
                 sp1A0 = (f64) sp80;
                 var_f4_1469 = 1.0f;
-                temp_f1_1471 = (((f32) sp1A0 * (f32) sp190) + (((f32) sp198 * (f32) sp188) + (unksp19C * unksp18C))) / temp_f9_1440;
+                temp_f1_1471 = (((f32) sp1A0 * (f32) sp190) + (((f32) sp198 * (f32) sp188) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * (*(f32 *) ((u8 *) &sp188 + 0x4))))) / temp_f9_1440;
                 if (temp_f1_1471 < var_f4_1469) {
                     var_f4_1469 = temp_f1_1471;
                 }
@@ -1031,7 +1031,7 @@ loop_50:
                 sp158 = sp28;
                 sp30 = (f32) sp270 - arg0.unk28;
                 sp160 = (f64) sp30;
-                temp_f3_1537 = ((f32) sp160 * (f32) sp160) + (((f32) sp158 * (f32) sp158) + (unksp15C * unksp15C));
+                temp_f3_1537 = ((f32) sp160 * (f32) sp160) + (((f32) sp158 * (f32) sp158) + ((*(f32 *) ((u8 *) &sp158 + 0x4)) * (*(f32 *) ((u8 *) &sp158 + 0x4))));
                 if (temp_f3_1537 <= arg2->unk40) {
                     temp_f1_1541 = arg0.unk50;
                     if (temp_f3_1537 <= (temp_f1_1541 * temp_f1_1541)) {
@@ -1127,7 +1127,7 @@ block_17:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspF4'
+#if 0 // DRAFT: illegal operand
 u8 SweepToPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector3 &arg3, const MKVector3 &arg4, MKCollisionResult *arg5) {
     f64 spF8;
     f64 spF0;
@@ -1184,12 +1184,12 @@ u8 SweepToPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const 
     sp68 = arg4.unk8 - temp_f8_1720;
     spF8 = (f64) sp68;
     temp_f11_1732 = arg3.unk8;
-    temp_f7_1735 = (temp_f11_1732 * (f32) spF8) + ((temp_f10_1725 * (f32) spF0) + (temp_f9_1723 * unkspF4));
+    temp_f7_1735 = (temp_f11_1732 * (f32) spF8) + ((temp_f10_1725 * (f32) spF0) + (temp_f9_1723 * (*(f32 *) ((u8 *) &spF0 + 0x4))));
     sp50 = M2C_FIELD(&arg1, f64 *, 0) - temp_f5_1716;
     spE0 = sp50;
     sp58 = arg1.unk8 - temp_f8_1720;
     spE8 = (f64) sp58;
-    temp_f4_1752 = (temp_f11_1732 * (f32) spE8) + ((temp_f10_1725 * (f32) spE0) + (temp_f9_1723 * unkspE4));
+    temp_f4_1752 = (temp_f11_1732 * (f32) spE8) + ((temp_f10_1725 * (f32) spE0) + (temp_f9_1723 * (*(f32 *) ((u8 *) &spE0 + 0x4))));
     if ((temp_f4_1752 * temp_f7_1735) < 0.0f) {
         return 0U;
     }
@@ -1808,7 +1808,7 @@ void MKCollisionRay::Init(const MKVector3 &arg0, const MKVector3 &arg1, float ar
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp6C'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void MKCollision_CalcAABB(Matrix *arg0, const MKCollisionAABB &arg1, MKCollisionAABB *arg2) {
     f64 spC0;                                       /* compiler-managed */
     f64 spB8;
@@ -1854,8 +1854,8 @@ void MKCollision_CalcAABB(Matrix *arg0, const MKCollisionAABB &arg1, MKCollision
     sp58 = arg1.unk10;
     sp68 = temp_f5_2688;
     sp88 = (f64) sp58;
-    unksp6C = temp_f0_2696;
-    unksp8C = temp_f0_2696;
+    (*(f32 *) ((u8 *) &sp68 + 0x4)) = temp_f0_2696;
+    (*(f32 *) ((u8 *) &sp88 + 0x4)) = temp_f0_2696;
     sp80 = temp_f4_2694;
     spA0 = temp_f4_2694;
     spB0 = temp_f4_2694;

@@ -223,7 +223,7 @@ void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &ar
         sp60 = sp20;
         sp28 = M2C_FIELD(temp_r3_264, f32 *, 8) - arg2.unk8;
         sp68 = (f64) sp28;
-        var_f5_284 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+        var_f5_284 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))));
         if (var_f5_284 > 0.0f) {
             temp_f2_287 = __frsqrte(var_f5_284);
             temp_f2_293 = 0.5 * temp_f2_287 * -(((f64) var_f5_284 * (temp_f2_287 * temp_f2_287)) - 3.0);
@@ -275,9 +275,9 @@ block_25:
         M2C_FIELD((M2C_FIELD(arg1, s32 *, 0) + (M2C_FIELD(arg1, s32 *, 8) * 0x28)), f32 *, 0x20) = farg0;
         MKVector(0.0f, 1.0f, 0.0f);
         sp14 = (sp48 * (f32) sp70) - (sp40 * (f32) sp78);
-        sp10 = (sp44 * (f32) sp78) - (sp48 * unksp74);
+        sp10 = (sp44 * (f32) sp78) - (sp48 * (*(f32 *) ((u8 *) &sp70 + 0x4)));
         temp_r3_403 = M2C_FIELD(arg1, s32 *, 0) + ((M2C_FIELD(arg1, s32 *, 8) * 0x28) + 0x10);
-        sp18 = (sp40 * unksp74) - (sp44 * (f32) sp70);
+        sp18 = (sp40 * (*(f32 *) ((u8 *) &sp70 + 0x4))) - (sp44 * (f32) sp70);
         M2C_FIELD(temp_r3_403, f64 *, 0) = (f64) sp10;
         M2C_FIELD(temp_r3_403, f64 *, 8) = (f64) sp18;
         sp50 = (f64) sp10;
@@ -526,7 +526,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp14'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void WaterSurfaceFX::AddMovementForce(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp18;                                       /* compiler-managed */
     f64 sp10;                                       /* compiler-managed */
@@ -557,7 +557,7 @@ void WaterSurfaceFX::AddMovementForce(const MKVector3 &arg0, const MKVector3 &ar
     sp10 = M2C_FIELD(&arg1, f64 *, 0);
     var_f4_909 = 0.0f;
     sp18 = M2C_FIELD(&arg1, f64 *, 8);
-    unksp14 = 0.0f;
+    (*(f32 *) ((u8 *) &sp8 + 0xc)) = 0.0f;
     var_f31_919 = ((f32) sp18 * (f32) sp18) + (((f32) sp10 * (f32) sp10) + (0.0f * 0.0f));
     if (var_f31_919 > 0.000001f) {
         if (var_f31_919 > 0.0f) {
@@ -598,7 +598,7 @@ void WaterSurfaceFX::AddMovementForce(const MKVector3 &arg0, const MKVector3 &ar
         var_f31_919 = 0.0f;
     }
     sp10 = (f32) sp10 * var_f4_909;
-    unksp14 *= var_f4_909;
+    (*(f32 *) ((u8 *) &sp8 + 0xc)) *= var_f4_909;
     sp18 = (f32) sp18 * var_f4_909;
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (var_f31_919 == 25.0f) {

@@ -236,7 +236,7 @@ loop_9:
                     sp28 = sp58 * 5.53552857e-315;
                     sp88 = sp28;
                     sp30 = sp60 * 100.0f;
-                    unksp8C = 100.0f;
+                    (*(f32 *) ((u8 *) &sp88 + 0x4)) = 100.0f;
                     sp90 = (f64) sp30;
                     sp68 = sp28;
                     sp70 = (f64) sp30;
@@ -251,7 +251,7 @@ loop_9:
                     sp48 = sp18;
                     sp50 = (f64) sp20;
                     sp90 = (f64) sp20;
-                    unksp8C = 600.0f;
+                    (*(f32 *) ((u8 *) &sp88 + 0x4)) = 600.0f;
                     sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
                     gb.EmitCrud(sp78, *((MKVector3 *) &sp88), sp8);
                     var_r27_428 += 1;
@@ -336,9 +336,9 @@ void SwampTier2::Draw() {
         break;
     case 2:
         sp98 = 0.8f;
-        unksp9C = 0.4f;
+        (*(f32 *) ((u8 *) &sp90 + 0xc)) = 0.4f;
         spA0 = 0.6f;
-        unkspA4 = 1.0f;
+        (*(f32 *) ((u8 *) &sp90 + 0x14)) = 1.0f;
         MKMaterial_SetColor(temp_r3_529, *((MKVector4 *) &sp98));
         break;
     }
@@ -425,7 +425,7 @@ loop_8:
                     sp28 = sp58 * 5.53552857e-315;
                     sp88 = sp28;
                     sp30 = sp60 * 100.0f;
-                    unksp8C = 200.0f;
+                    (*(f32 *) ((u8 *) &sp88 + 0x4)) = 200.0f;
                     sp90 = (f64) sp30;
                     sp68 = sp28;
                     sp70 = (f64) sp30;
@@ -444,7 +444,7 @@ loop_8:
                     sp48 = sp18;
                     sp50 = (f64) sp20;
                     sp90 = (f64) sp20;
-                    unksp8C = 400.0f;
+                    (*(f32 *) ((u8 *) &sp88 + 0x4)) = 400.0f;
                     sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
                     gb.EmitCrud(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp88), sp8);
                     var_r27_801 += 1;

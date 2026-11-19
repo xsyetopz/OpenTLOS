@@ -285,7 +285,7 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     sp190 = spC0;
     spC8 = (f32) sp258 - (f32) sp248;
     sp198 = (f64) spC8;
-    var_f5_345 = ((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + (unksp194 * unksp194));
+    var_f5_345 = ((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + ((*(f32 *) ((u8 *) &sp190 + 0x4)) * (*(f32 *) ((u8 *) &sp190 + 0x4))));
     if (var_f5_345 > 1e-12f) {
         if (var_f5_345 > 0.0f) {
             temp_f2_351 = __frsqrte(var_f5_345);
@@ -324,7 +324,7 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     } else {
         var_f4_412 = 0.0f;
     }
-    spB4 = unksp194 * var_f4_412;
+    spB4 = (*(f32 *) ((u8 *) &sp190 + 0x4)) * var_f4_412;
     spB0 = (f32) sp190 * var_f4_412;
     spB8 = (f32) sp198 * var_f4_412;
     sp230 = (f64) spB0;
@@ -334,7 +334,7 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     spA8 = (f32) sp298 - (f32) sp288;
     sp180 = temp_f1_430;
     sp188 = (f64) spA8;
-    var_f4_445 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184));
+    var_f4_445 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + ((*(f32 *) ((u8 *) &sp180 + 0x4)) * (*(f32 *) ((u8 *) &sp180 + 0x4))));
     if (var_f4_445 > 1e-12f) {
         if (var_f4_445 > 0.0f) {
             temp_f1_451 = __frsqrte(var_f4_445);
@@ -373,17 +373,17 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     } else {
         var_f3_512 = 0.0f;
     }
-    sp94 = unksp184 * var_f3_512;
+    sp94 = (*(f32 *) ((u8 *) &sp180 + 0x4)) * var_f3_512;
     sp90 = (f32) sp180 * var_f3_512;
     sp98 = (f32) sp188 * var_f3_512;
     sp220 = (f64) sp90;
     sp228 = (f64) sp98;
-    sp80 = (unksp234 * (f32) sp228) - ((f32) sp238 * unksp224);
+    sp80 = ((*(f32 *) ((u8 *) &sp230 + 0x4)) * (f32) sp228) - ((f32) sp238 * (*(f32 *) ((u8 *) &sp220 + 0x4)));
     sp84 = ((f32) sp238 * (f32) sp220) - ((f32) sp230 * (f32) sp228);
-    sp88 = ((f32) sp230 * unksp224) - (unksp234 * (f32) sp220);
+    sp88 = ((f32) sp230 * (*(f32 *) ((u8 *) &sp220 + 0x4))) - ((*(f32 *) ((u8 *) &sp230 + 0x4)) * (f32) sp220);
     sp170 = (f64) sp80;
     sp178 = (f64) sp88;
-    var_f4_554 = ((f32) sp178 * (f32) sp178) + (((f32) sp170 * (f32) sp170) + (unksp174 * unksp174));
+    var_f4_554 = ((f32) sp178 * (f32) sp178) + (((f32) sp170 * (f32) sp170) + ((*(f32 *) ((u8 *) &sp170 + 0x4)) * (*(f32 *) ((u8 *) &sp170 + 0x4))));
     if (var_f4_554 > 1e-12f) {
         if (var_f4_554 > 0.0f) {
             temp_f1_560 = __frsqrte(var_f4_554);
@@ -422,13 +422,13 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     } else {
         var_f3_621 = 0.0f;
     }
-    sp74 = unksp174 * var_f3_621;
+    sp74 = (*(f32 *) ((u8 *) &sp170 + 0x4)) * var_f3_621;
     sp70 = (f32) sp170 * var_f3_621;
     sp78 = (f32) sp178 * var_f3_621;
     sp210 = (f64) sp70;
     sp218 = (f64) sp78;
-    sp48 = ((f32) sp210 * unksp234) - (unksp214 * (f32) sp230);
-    sp40 = (unksp214 * (f32) sp238) - ((f32) sp218 * unksp234);
+    sp48 = ((f32) sp210 * (*(f32 *) ((u8 *) &sp230 + 0x4))) - ((*(f32 *) ((u8 *) &sp210 + 0x4)) * (f32) sp230);
+    sp40 = ((*(f32 *) ((u8 *) &sp210 + 0x4)) * (f32) sp238) - ((f32) sp218 * (*(f32 *) ((u8 *) &sp230 + 0x4)));
     sp44 = ((f32) sp218 * (f32) sp230) - ((f32) sp210 * (f32) sp238);
     sp168 = (f64) sp48;
     sp160 = (f64) sp40;
@@ -442,19 +442,19 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     sp38 = (f32) sp298 + sp148;
     sp158 = (f64) sp38;
     sp310 = (f32) sp150;
-    sp314 = unksp154;
+    sp314 = (*(f32 *) ((u8 *) &sp150 + 0x4));
     sp318 = (f32) sp158;
     sp31C = 1.0f;
     sp2E0 = (f32) sp220;
-    sp2E4 = unksp224;
+    sp2E4 = (*(f32 *) ((u8 *) &sp220 + 0x4));
     sp2E8 = (f32) sp228;
     sp2EC = 0.0f;
     sp2F0 = (f32) sp210;
-    sp2F4 = unksp214;
+    sp2F4 = (*(f32 *) ((u8 *) &sp210 + 0x4));
     sp2F8 = (f32) sp218;
     sp2FC = 0.0f;
     sp300 = (f32) sp230;
-    sp304 = unksp234;
+    sp304 = (*(f32 *) ((u8 *) &sp230 + 0x4));
     sp308 = (f32) sp238;
     sp30C = 0.0f;
     sp2A0.SetRotateAroundAxis(*((MKVector3 *) &sp300), 1.5707964f);

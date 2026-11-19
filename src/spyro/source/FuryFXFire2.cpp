@@ -183,7 +183,7 @@ void FuryFXFire2::SpawnMeteor() {
                 sp20 = (f32) spC0 + sp70;
                 M2C_FIELD(temp_r31_177, f32 *, 0x30) = (f32) spC8;
                 spD0 = (f64) sp20;
-                M2C_FIELD(temp_r31_177, f32 *, 0x34) = unkspCC;
+                M2C_FIELD(temp_r31_177, f32 *, 0x34) = (*(f32 *) ((u8 *) &spC8 + 0x4));
                 sp40 = 0.0f;
                 M2C_FIELD(temp_r31_177, f32 *, 0x38) = (f32) spD0;
                 M2C_FIELD(temp_r31_177, f32 *, 0x3C) = 1.0f;
@@ -256,14 +256,14 @@ loop_9:
             case 1:
                 sp10 = M2C_FIELD(temp_r31_433, f64 *, 0x30);
                 sp18 = M2C_FIELD(temp_r31_433, f64 *, 0x38);
-                unksp14 += -3500.0f * gUpdateTimeDelta;
+                (*(f32 *) ((u8 *) &sp10 + 0x4)) += -3500.0f * gUpdateTimeDelta;
                 M2C_FIELD(temp_r31_433, f64 *, 0x30) = (f32) sp10;
-                M2C_FIELD(temp_r31_433, f32 *, 0x34) = unksp14;
+                M2C_FIELD(temp_r31_433, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp10 + 0x4));
                 M2C_FIELD(temp_r31_433, f64 *, 0x38) = (f32) sp18;
                 M2C_FIELD(temp_r31_433, f32 *, 0x3C) = 1.0f;
                 temp_f1_391 = M2C_FIELD(temp_r31_433, f32 *, 0x40);
-                if (unksp14 <= temp_f1_391) {
-                    unksp14 = temp_f1_391;
+                if ((*(f32 *) ((u8 *) &sp10 + 0x4)) <= temp_f1_391) {
+                    (*(f32 *) ((u8 *) &sp10 + 0x4)) = temp_f1_391;
                     KDSound_Stop(temp_r31_433 + 0x48);
                     temp_r6_406 = gb.unk0->GetProp();
                     sp8 = 1;
@@ -886,7 +886,7 @@ void FuryFXFire2::Update() {
                 sp68 = this->unk90.unk38 + sp408;
                 sp418 = (f64) sp68;
                 sp720.unk30 = (f32) sp410;
-                sp720.unk34 = unksp414;
+                sp720.unk34 = (*(f32 *) ((u8 *) &sp410 + 0x4));
                 sp720.unk38 = (f32) sp418;
                 sp720.unk3C = 1.0f;
                 gb.unk1C0.StartWarp(&sp720);

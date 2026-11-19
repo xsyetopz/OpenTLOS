@@ -400,7 +400,6 @@ void MKView_TransformPoint2Dto3D(float arg0, float arg1, float arg2, MKVector3 *
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp64'
 f32 MKView_TransformPoint3Dto2D(MKVector3 *arg0, const MKVector3 &arg1) {
     f64 sp60;
     f64 sp58;
@@ -432,17 +431,17 @@ f32 MKView_TransformPoint3Dto2D(MKVector3 *arg0, const MKVector3 &arg1) {
     sp58 = (f64) sp28;
     sp34 = 1.0f;
     sp60 = (f64) sp30;
-    sp20 = (unksp64 * temp_r3_970->unk38) + (((f32) sp60 * temp_r3_970->unk28) + (((f32) sp58 * temp_r3_970->unk8) + (unksp5C * temp_r3_970->unk18)));
-    temp_f3_1019 = (unksp64 * temp_r3_970->unk34) + (((f32) sp60 * temp_r3_970->unk24) + (((f32) sp58 * temp_r3_970->unk4) + (unksp5C * temp_r3_970->unk14)));
-    sp24 = (unksp64 * temp_r3_970->unk3C) + (((f32) sp60 * temp_r3_970->unk2C) + (((f32) sp58 * temp_r3_970->unkC) + (unksp5C * temp_r3_970->unk1C)));
-    sp18 = (unksp64 * temp_r3_970->unk30) + (((f32) sp60 * temp_r3_970->unk20) + (((f32) sp58 * temp_r3_970->unk0) + (unksp5C * temp_r3_970->unk10)));
+    sp20 = ((*(f32 *) ((u8 *) &sp60 + 0x4)) * temp_r3_970->unk38) + (((f32) sp60 * temp_r3_970->unk28) + (((f32) sp58 * temp_r3_970->unk8) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_r3_970->unk18)));
+    temp_f3_1019 = ((*(f32 *) ((u8 *) &sp60 + 0x4)) * temp_r3_970->unk34) + (((f32) sp60 * temp_r3_970->unk24) + (((f32) sp58 * temp_r3_970->unk4) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_r3_970->unk14)));
+    sp24 = ((*(f32 *) ((u8 *) &sp60 + 0x4)) * temp_r3_970->unk3C) + (((f32) sp60 * temp_r3_970->unk2C) + (((f32) sp58 * temp_r3_970->unkC) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_r3_970->unk1C)));
+    sp18 = ((*(f32 *) ((u8 *) &sp60 + 0x4)) * temp_r3_970->unk30) + (((f32) sp60 * temp_r3_970->unk20) + (((f32) sp58 * temp_r3_970->unk0) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_r3_970->unk10)));
     sp60 = (f64) sp20;
     sp1C = temp_f3_1019;
     sp50 = (f64) sp20;
     sp48 = (f64) sp18;
     sp58 = (f64) sp18;
-    if (unksp64 != 0.0f) {
-        var_f31_967 = 1.0f / unksp64;
+    if ((*(f32 *) ((u8 *) &sp60 + 0x4)) != 0.0f) {
+        var_f31_967 = 1.0f / (*(f32 *) ((u8 *) &sp60 + 0x4));
         sp8 = sp58 * (f64) var_f31_967;
         M2C_FIELD(arg0, f64 *, 0) = sp8;
         sp10 = (f32) sp60 * var_f31_967;
@@ -456,7 +455,6 @@ f32 MKView_TransformPoint3Dto2D(MKVector3 *arg0, const MKVector3 &arg1) {
     arg0->unk4 = pStack[1].unk28 + ((0.5f * temp_f4_1062) + (0.5f * (-arg0->unk4 * temp_f4_1062)));
     return var_f31_967;
 }
-#endif
 
 s32 MKView_GetFlags() {
     return pStack[1].unk34;
@@ -604,7 +602,7 @@ void MKView_SetCameraMatrix(const Matrix &arg0) {
     MKView_SettingsCounter += 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp7C'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     Matrix spB0;
     f64 spA0;                                       /* compiler-managed */
@@ -661,7 +659,7 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
     sp80 = (f64) sp40;
     sp68 = sp38;
     sp70 = (f64) sp40;
-    var_f4_1461 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C));
+    var_f4_1461 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + ((*(f32 *) ((u8 *) &sp70 + 0xc)) * (*(f32 *) ((u8 *) &sp70 + 0xc))));
     if (var_f4_1461 > 0.000001f) {
         if (var_f4_1461 > 0.0f) {
             temp_f1_1466 = __frsqrte(var_f4_1461);
@@ -698,11 +696,11 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
         }
         var_f5_1432 = 1.0f / var_f4_1461;
     }
-    temp_f30_1531 = unksp7C * var_f5_1432;
+    temp_f30_1531 = (*(f32 *) ((u8 *) &sp70 + 0xc)) * var_f5_1432;
     temp_f31_1533 = (f32) sp80 * var_f5_1432;
     temp_f4_1536 = (f32) sp78 * var_f5_1432;
     sp78 = temp_f4_1536;
-    unksp7C = temp_f30_1531;
+    (*(f32 *) ((u8 *) &sp70 + 0xc)) = temp_f30_1531;
     sp80 = temp_f31_1533;
     sp28 = (sp8C * temp_f31_1533) - (sp90 * temp_f30_1531);
     sp2C = (sp90 * temp_f4_1536) - (sp88 * temp_f31_1533);
@@ -711,7 +709,7 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
     spA0 = (f64) sp30;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
-    var_f4_1564 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C));
+    var_f4_1564 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + ((*(f32 *) ((u8 *) &sp8C + 0x10)) * (*(f32 *) ((u8 *) &sp8C + 0x10))));
     if (var_f4_1564 > 0.000001f) {
         if (var_f4_1564 > 0.0f) {
             temp_f1_1570 = __frsqrte(var_f4_1564);
@@ -751,10 +749,10 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
         var_f2_1631 = 0.0f;
     }
     temp_f3_1638 = (f32) sp98 * var_f2_1631;
-    temp_f27_1640 = unksp9C * var_f2_1631;
+    temp_f27_1640 = (*(f32 *) ((u8 *) &sp8C + 0x10)) * var_f2_1631;
     temp_f28_1642 = (f32) spA0 * var_f2_1631;
     sp98 = temp_f3_1638;
-    unksp9C = temp_f27_1640;
+    (*(f32 *) ((u8 *) &sp8C + 0x10)) = temp_f27_1640;
     spA0 = temp_f28_1642;
     sp18 = (temp_f30_1531 * temp_f28_1642) - (temp_f31_1533 * temp_f27_1640);
     sp1C = (temp_f31_1533 * temp_f3_1638) - (sp78 * temp_f28_1642);

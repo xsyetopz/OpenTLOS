@@ -363,7 +363,7 @@ void LavaCannon::Update() {
             sp68 = sp28;
             sp30 = M2C_FIELD(temp_r3_816, f32 *, 8) - (f32) sp40;
             sp70 = (f64) sp30;
-            var_f4_837 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
+            var_f4_837 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))));
             if (var_f4_837 > 0.0f) {
                 temp_f1_840 = __frsqrte(var_f4_837);
                 temp_f1_846 = 0.5 * temp_f1_840 * -(((f64) var_f4_837 * (temp_f1_840 * temp_f1_840)) - 3.0);

@@ -7,7 +7,7 @@
 
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 f32 KDInput::RumblePlay3D(float arg0, float arg1, float arg2, MKVector3 *arg3, float arg4, char arg5, float arg6, bool arg7) {
     f64 sp38;
     f64 sp30;
@@ -43,7 +43,7 @@ f32 KDInput::RumblePlay3D(float arg0, float arg1, float arg2, MKVector3 *arg3, f
     sp30 = sp10;
     sp18 = (f32) sp28 - arg3->unk8;
     sp38 = (f64) sp18;
-    var_f4_89 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_89 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_89 > 0.0f) {
         temp_f1_92 = __frsqrte(var_f4_89);
         temp_f1_98 = 0.5 * temp_f1_92 * -(((f64) var_f4_89 * (temp_f1_92 * temp_f1_92)) - 3.0);

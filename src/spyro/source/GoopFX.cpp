@@ -99,24 +99,24 @@ void GoopFXDescriptor::DrawGoop(GoopFXDescriptor::Goop *arg1) {
     spF0 = (f64) sp10;
     MKBegin(4);
     MKSetColorV(*(arg1 + 0xC8));
-    MKSetTexCoord1F((f32) spA8, unkspAC);
+    MKSetTexCoord1F((f32) spA8, (*(f32 *) ((u8 *) &spA8 + 0x4)));
     MKSetPositionV(*((MKVector3 *) arg1));
-    MKSetTexCoord1F((f32) spE8, unkspEC);
+    MKSetTexCoord1F((f32) spE8, (*(f32 *) ((u8 *) &spE8 + 0x4)));
     MKSetPositionV(*(arg1 + 0xA0));
-    MKSetTexCoord1F((f32) spB8, unkspBC);
+    MKSetTexCoord1F((f32) spB8, (*(f32 *) ((u8 *) &spB8 + 0x4)));
     MKSetPositionV(*(arg1 + 0x28));
-    MKSetTexCoord1F((f32) spC8, unkspCC);
+    MKSetTexCoord1F((f32) spC8, (*(f32 *) ((u8 *) &spC8 + 0x4)));
     MKSetPositionV(*(arg1 + 0x50));
     MKEnd();
     MKBegin(4);
     MKSetColorV(*(arg1 + 0xC8));
-    MKSetTexCoord1F((f32) spA8, unkspAC);
+    MKSetTexCoord1F((f32) spA8, (*(f32 *) ((u8 *) &spA8 + 0x4)));
     MKSetPositionV(*((MKVector3 *) arg1));
-    MKSetTexCoord1F((f32) spE8, unkspEC);
+    MKSetTexCoord1F((f32) spE8, (*(f32 *) ((u8 *) &spE8 + 0x4)));
     MKSetPositionV(*(arg1 + 0xA0));
-    MKSetTexCoord1F((f32) spD8, unkspDC);
+    MKSetTexCoord1F((f32) spD8, (*(f32 *) ((u8 *) &spD8 + 0x4)));
     MKSetPositionV(*(arg1 + 0x78));
-    MKSetTexCoord1F((f32) spC8, unkspCC);
+    MKSetTexCoord1F((f32) spC8, (*(f32 *) ((u8 *) &spC8 + 0x4)));
     MKSetPositionV(*(arg1 + 0x50));
     MKEnd();
 }
@@ -293,7 +293,7 @@ void GoopFXDescriptor::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspA4'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXDescriptor::GoopNode *arg2, GoopFXDescriptor::Goop *arg3) {
     f64 spA8;                                       /* compiler-managed */
     f64 spA0;                                       /* compiler-managed */
@@ -333,7 +333,7 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
         spA0 = sp40;
         sp48 = M2C_FIELD(arg1, f32 *, 8) - M2C_FIELD(arg2, f32 *, 8);
         spA8 = (f64) sp48;
-        var_f6_487 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4));
+        var_f6_487 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &sp98 + 0xc)) * (*(f32 *) ((u8 *) &sp98 + 0xc))));
         if (var_f6_487 > 0.000001f) {
             if (var_f6_487 > 0.0f) {
                 temp_f2_493 = __frsqrte(var_f6_487);
@@ -375,7 +375,7 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
         }
         spA0 = (f32) spA0 * var_f5_554;
         temp_f29_569 = 30.0f * ((100.0f * M2C_FIELD(arg3, f32 *, 0xDC)) - var_f6_487);
-        unkspA4 *= var_f5_554;
+        (*(f32 *) ((u8 *) &sp98 + 0xc)) *= var_f5_554;
         spA8 = (f32) spA8 * var_f5_554;
         if ((u8) M2C_FIELD(arg1, u8 *, 0x20) == 0) {
             temp_f31_576 = gUpdateTimeDelta;
@@ -391,7 +391,7 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
         if ((u8) M2C_FIELD(arg2, u8 *, 0x20) == 0) {
             temp_f30_612 = gUpdateTimeDelta;
             sp10 = -spA0;
-            sp14 = -unkspA4;
+            sp14 = -(*(f32 *) ((u8 *) &sp98 + 0xc));
             sp18 = -spA8;
             sp50 = (f64) sp10;
             sp58 = (f64) sp18;

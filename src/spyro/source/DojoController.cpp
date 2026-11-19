@@ -347,7 +347,7 @@ void EarthDojoLesson::SetupFurySpawnPoints() {
     sp138 = (f64) sp58;
     spE0 = sp50;
     spE8 = (f64) sp58;
-    var_f4_500 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
+    var_f4_500 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp128 + 0xc)) * (*(f32 *) ((u8 *) &sp128 + 0xc))));
     if (var_f4_500 > 0.000001f) {
         if (var_f4_500 > 0.0f) {
             temp_f1_506 = __frsqrte(var_f4_500);
@@ -387,7 +387,7 @@ void EarthDojoLesson::SetupFurySpawnPoints() {
         var_f3_567 = 0.0f;
     }
     sp130 = (f32) sp130 * var_f3_567;
-    unksp134 *= var_f3_567;
+    (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f3_567;
     sp138 = (f32) sp138 * var_f3_567;
     if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
         temp_f31_589 = MKVector3::up.unk4;
@@ -399,8 +399,8 @@ loop_26:
         temp_r3_686 = this->unk4;
         if (var_r31_594 < (s32) M2C_FIELD(temp_r3_686, s32 *, 0x3C8)) {
             sp44 = (temp_f30_591 * sp130) - (temp_f29_593 * sp138);
-            sp40 = (temp_f31_589 * sp138) - (temp_f30_591 * unksp134);
-            sp48 = (temp_f29_593 * unksp134) - (temp_f31_589 * sp130);
+            sp40 = (temp_f31_589 * sp138) - (temp_f30_591 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
+            sp48 = (temp_f29_593 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f31_589 * sp130);
             spD0 = (f64) sp40;
             spD8 = (f64) sp48;
             sp120 = (f64) sp40;
@@ -423,7 +423,7 @@ loop_26:
             temp_r6_668 = var_r28_596 + 0x90;
             temp_r6_671 = this->unk4 + temp_r6_668;
             M2C_FIELD(temp_r6_671, f32 *, 0x30) = (f32) sp110;
-            M2C_FIELD(temp_r6_671, f32 *, 0x34) = unksp114;
+            M2C_FIELD(temp_r6_671, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp110 + 0x4));
             M2C_FIELD(temp_r6_671, f32 *, 0x38) = (f32) sp118;
             M2C_FIELD(temp_r6_671, f32 *, 0x3C) = 1.0f;
             ((Matrix *) (this->unk4 + temp_r6_668))->SetLookAt(*((MKVector3 *) &sp110), *((MKVector3 *) &sp100));
@@ -444,8 +444,8 @@ loop_31:
         temp_r4_798 = this->unk4;
         if (var_r30_697 < (s32) (M2C_FIELD(temp_r4_798, s32 *, 0x3C8) + M2C_FIELD(temp_r4_798, s32 *, 0x3CC))) {
             sp24 = (temp_f30_703 * (f32) sp130) - (temp_f31_705 * (f32) sp138);
-            sp20 = (temp_f29_702 * (f32) sp138) - (temp_f30_703 * unksp134);
-            sp28 = (temp_f31_705 * unksp134) - (temp_f29_702 * (f32) sp130);
+            sp20 = (temp_f29_702 * (f32) sp138) - (temp_f30_703 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
+            sp28 = (temp_f31_705 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f29_702 * (f32) sp130);
             sp90 = (f64) sp20;
             sp98 = (f64) sp28;
             sp120 = (f64) sp20;
@@ -468,7 +468,7 @@ loop_31:
             temp_r6_780 = var_r28_701 + 0x90;
             temp_r6_783 = this->unk4 + temp_r6_780;
             M2C_FIELD(temp_r6_783, f32 *, 0x30) = (f32) sp110;
-            M2C_FIELD(temp_r6_783, f32 *, 0x34) = unksp114;
+            M2C_FIELD(temp_r6_783, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp110 + 0x4));
             M2C_FIELD(temp_r6_783, f32 *, 0x38) = (f32) sp118;
             M2C_FIELD(temp_r6_783, f32 *, 0x3C) = 1.0f;
             ((Matrix *) (this->unk4 + temp_r6_780))->SetLookAt(*((MKVector3 *) &sp110), *((MKVector3 *) &sp100));
@@ -1076,7 +1076,7 @@ void IceDojoLesson::SetupFurySpawnPoints() {
     sp138 = (f64) sp58;
     spE0 = sp50;
     spE8 = (f64) sp58;
-    var_f4_1994 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
+    var_f4_1994 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp128 + 0xc)) * (*(f32 *) ((u8 *) &sp128 + 0xc))));
     if (var_f4_1994 > 0.000001f) {
         if (var_f4_1994 > 0.0f) {
             temp_f1_2000 = __frsqrte(var_f4_1994);
@@ -1116,7 +1116,7 @@ void IceDojoLesson::SetupFurySpawnPoints() {
         var_f3_2061 = 0.0f;
     }
     sp130 = (f32) sp130 * var_f3_2061;
-    unksp134 *= var_f3_2061;
+    (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f3_2061;
     sp138 = (f32) sp138 * var_f3_2061;
     if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
         temp_f31_2083 = MKVector3::up.unk4;
@@ -1128,8 +1128,8 @@ loop_26:
         temp_r3_2180 = this->unk4;
         if (var_r31_2088 < (s32) M2C_FIELD(temp_r3_2180, s32 *, 0x3C8)) {
             sp44 = (temp_f30_2085 * sp130) - (temp_f29_2087 * sp138);
-            sp40 = (temp_f31_2083 * sp138) - (temp_f30_2085 * unksp134);
-            sp48 = (temp_f29_2087 * unksp134) - (temp_f31_2083 * sp130);
+            sp40 = (temp_f31_2083 * sp138) - (temp_f30_2085 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
+            sp48 = (temp_f29_2087 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f31_2083 * sp130);
             spD0 = (f64) sp40;
             spD8 = (f64) sp48;
             sp120 = (f64) sp40;
@@ -1152,7 +1152,7 @@ loop_26:
             temp_r6_2162 = var_r28_2090 + 0x90;
             temp_r6_2165 = this->unk4 + temp_r6_2162;
             M2C_FIELD(temp_r6_2165, f32 *, 0x30) = (f32) sp110;
-            M2C_FIELD(temp_r6_2165, f32 *, 0x34) = unksp114;
+            M2C_FIELD(temp_r6_2165, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp110 + 0x4));
             M2C_FIELD(temp_r6_2165, f32 *, 0x38) = (f32) sp118;
             M2C_FIELD(temp_r6_2165, f32 *, 0x3C) = 1.0f;
             ((Matrix *) (this->unk4 + temp_r6_2162))->SetLookAt(*((MKVector3 *) &sp110), *((MKVector3 *) &sp100));
@@ -1173,8 +1173,8 @@ loop_31:
         temp_r4_2292 = this->unk4;
         if (var_r30_2191 < (s32) (M2C_FIELD(temp_r4_2292, s32 *, 0x3C8) + M2C_FIELD(temp_r4_2292, s32 *, 0x3CC))) {
             sp24 = (temp_f30_2197 * (f32) sp130) - (temp_f31_2199 * (f32) sp138);
-            sp20 = (temp_f29_2196 * (f32) sp138) - (temp_f30_2197 * unksp134);
-            sp28 = (temp_f31_2199 * unksp134) - (temp_f29_2196 * (f32) sp130);
+            sp20 = (temp_f29_2196 * (f32) sp138) - (temp_f30_2197 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
+            sp28 = (temp_f31_2199 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f29_2196 * (f32) sp130);
             sp90 = (f64) sp20;
             sp98 = (f64) sp28;
             sp120 = (f64) sp20;
@@ -1197,7 +1197,7 @@ loop_31:
             temp_r6_2274 = var_r28_2195 + 0x90;
             temp_r6_2277 = this->unk4 + temp_r6_2274;
             M2C_FIELD(temp_r6_2277, f32 *, 0x30) = (f32) sp110;
-            M2C_FIELD(temp_r6_2277, f32 *, 0x34) = unksp114;
+            M2C_FIELD(temp_r6_2277, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp110 + 0x4));
             M2C_FIELD(temp_r6_2277, f32 *, 0x38) = (f32) sp118;
             M2C_FIELD(temp_r6_2277, f32 *, 0x3C) = 1.0f;
             ((Matrix *) (this->unk4 + temp_r6_2274))->SetLookAt(*((MKVector3 *) &sp110), *((MKVector3 *) &sp100));
@@ -1607,7 +1607,7 @@ u8 ElectricDojoLesson::HasSucceededFury() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_2532'
+#if 0 // DRAFT: pointer/array required
 u8 ElectricDojoLesson::HasSucceededBreath2() {
     s32 spC;
     s32 sp8;
@@ -1921,7 +1921,7 @@ void ElectricDojoLesson::SetupFurySpawnPoints() {
     sp138 = (f64) sp58;
     spE0 = sp50;
     spE8 = (f64) sp58;
-    var_f4_3699 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
+    var_f4_3699 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp128 + 0xc)) * (*(f32 *) ((u8 *) &sp128 + 0xc))));
     if (var_f4_3699 > 0.000001f) {
         if (var_f4_3699 > 0.0f) {
             temp_f1_3705 = __frsqrte(var_f4_3699);
@@ -1961,7 +1961,7 @@ void ElectricDojoLesson::SetupFurySpawnPoints() {
         var_f3_3766 = 0.0f;
     }
     sp130 = (f32) sp130 * var_f3_3766;
-    unksp134 *= var_f3_3766;
+    (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f3_3766;
     sp138 = (f32) sp138 * var_f3_3766;
     if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
         temp_f31_3788 = MKVector3::up.unk4;
@@ -1973,8 +1973,8 @@ loop_26:
         temp_r3_3885 = this->unk4;
         if (var_r31_3793 < (s32) M2C_FIELD(temp_r3_3885, s32 *, 0x3C8)) {
             sp44 = (temp_f30_3790 * sp130) - (temp_f29_3792 * sp138);
-            sp40 = (temp_f31_3788 * sp138) - (temp_f30_3790 * unksp134);
-            sp48 = (temp_f29_3792 * unksp134) - (temp_f31_3788 * sp130);
+            sp40 = (temp_f31_3788 * sp138) - (temp_f30_3790 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
+            sp48 = (temp_f29_3792 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f31_3788 * sp130);
             spD0 = (f64) sp40;
             spD8 = (f64) sp48;
             sp120 = (f64) sp40;
@@ -1997,7 +1997,7 @@ loop_26:
             temp_r6_3867 = var_r28_3795 + 0x90;
             temp_r6_3870 = this->unk4 + temp_r6_3867;
             M2C_FIELD(temp_r6_3870, f32 *, 0x30) = (f32) sp110;
-            M2C_FIELD(temp_r6_3870, f32 *, 0x34) = unksp114;
+            M2C_FIELD(temp_r6_3870, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp110 + 0x4));
             M2C_FIELD(temp_r6_3870, f32 *, 0x38) = (f32) sp118;
             M2C_FIELD(temp_r6_3870, f32 *, 0x3C) = 1.0f;
             ((Matrix *) (this->unk4 + temp_r6_3867))->SetLookAt(*((MKVector3 *) &sp110), *((MKVector3 *) &sp100));
@@ -2018,8 +2018,8 @@ loop_31:
         temp_r4_3997 = this->unk4;
         if (var_r30_3896 < (s32) (M2C_FIELD(temp_r4_3997, s32 *, 0x3C8) + M2C_FIELD(temp_r4_3997, s32 *, 0x3CC))) {
             sp24 = (temp_f30_3902 * (f32) sp130) - (temp_f31_3904 * (f32) sp138);
-            sp20 = (temp_f29_3901 * (f32) sp138) - (temp_f30_3902 * unksp134);
-            sp28 = (temp_f31_3904 * unksp134) - (temp_f29_3901 * (f32) sp130);
+            sp20 = (temp_f29_3901 * (f32) sp138) - (temp_f30_3902 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
+            sp28 = (temp_f31_3904 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f29_3901 * (f32) sp130);
             sp90 = (f64) sp20;
             sp98 = (f64) sp28;
             sp120 = (f64) sp20;
@@ -2042,7 +2042,7 @@ loop_31:
             temp_r6_3979 = var_r28_3900 + 0x90;
             temp_r6_3982 = this->unk4 + temp_r6_3979;
             M2C_FIELD(temp_r6_3982, f32 *, 0x30) = (f32) sp110;
-            M2C_FIELD(temp_r6_3982, f32 *, 0x34) = unksp114;
+            M2C_FIELD(temp_r6_3982, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp110 + 0x4));
             M2C_FIELD(temp_r6_3982, f32 *, 0x38) = (f32) sp118;
             M2C_FIELD(temp_r6_3982, f32 *, 0x3C) = 1.0f;
             ((Matrix *) (this->unk4 + temp_r6_3979))->SetLookAt(*((MKVector3 *) &sp110), *((MKVector3 *) &sp100));
@@ -2074,7 +2074,7 @@ s32 ElectricDojoLesson::IsBreath2Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp64'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void ElectricDojoLesson::SetupBreath2SpawnPoints() {
     CharacterGraphNode *sp70;
     f64 sp68;                                       /* compiler-managed */
@@ -2111,7 +2111,7 @@ void ElectricDojoLesson::SetupBreath2SpawnPoints() {
     var_f4_4081 = 0.0f;
     sp60 = temp_f0_4075;
     sp18 = M2C_FIELD(temp_r3_4070, f32 *, 0x390) - temp_r3_4070->unk378.unk0;
-    unksp64 = 0.0f;
+    (*(f32 *) ((u8 *) &sp58 + 0xc)) = 0.0f;
     sp68 = (f64) sp18;
     var_f5_4094 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (0.0f * 0.0f));
     if (var_f5_4094 > 0.000001f) {
@@ -2152,7 +2152,7 @@ void ElectricDojoLesson::SetupBreath2SpawnPoints() {
     }
     temp_r0_4167 = this->unk10;
     sp60 = (f32) sp60 * var_f4_4081;
-    unksp64 *= var_f4_4081;
+    (*(f32 *) ((u8 *) &sp58 + 0xc)) *= var_f4_4081;
     sp68 = (f32) sp68 * var_f4_4081;
     switch (temp_r0_4167) {                         /* switch 2; irregular */
     case 0:                                         /* switch 2 */
@@ -2209,7 +2209,7 @@ s32 ElectricDojoLesson::IsBreath1Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspB4'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void ElectricDojoLesson::SetupBreath1SpawnPoints() {
     CharacterGraphNode *spC0;
     f64 spB8;                                       /* compiler-managed */
@@ -2269,7 +2269,7 @@ void ElectricDojoLesson::SetupBreath1SpawnPoints() {
         var_f5_4328 = 0.0f;
         spB0 = temp_f0_4322;
         sp48 = M2C_FIELD(temp_r3_4317, f32 *, 0x390) - temp_r3_4317->unk378.unk0;
-        unkspB4 = 0.0f;
+        (*(f32 *) ((u8 *) &spA8 + 0xc)) = 0.0f;
         spB8 = (f64) sp48;
         var_f4_4341 = ((f32) spB8 * (f32) spB8) + (((f32) spB0 * (f32) spB0) + (0.0f * 0.0f));
         if (var_f4_4341 > 0.000001f) {
@@ -2309,10 +2309,10 @@ void ElectricDojoLesson::SetupBreath1SpawnPoints() {
             var_f5_4328 = 1.0f / var_f4_4341;
         }
         temp_f4_4413 = (f32) spB0 * var_f5_4328;
-        temp_f1_4415 = unkspB4 * var_f5_4328;
+        temp_f1_4415 = (*(f32 *) ((u8 *) &spA8 + 0xc)) * var_f5_4328;
         temp_f3_4417 = (f32) spB8 * var_f5_4328;
         temp_f31_4419 = -temp_f4_4413;
-        unkspB4 = temp_f1_4415;
+        (*(f32 *) ((u8 *) &spA8 + 0xc)) = temp_f1_4415;
         temp_f30_4421 = -temp_f1_4415;
         temp_f29_4423 = -temp_f3_4417;
         spB0 = temp_f4_4413;
@@ -3223,7 +3223,7 @@ void FireDojoLesson::SetupFurySpawnPoints() {
     sp138 = (f64) sp58;
     spE0 = sp50;
     spE8 = (f64) sp58;
-    var_f4_6264 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
+    var_f4_6264 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp128 + 0xc)) * (*(f32 *) ((u8 *) &sp128 + 0xc))));
     if (var_f4_6264 > 0.000001f) {
         if (var_f4_6264 > 0.0f) {
             temp_f1_6270 = __frsqrte(var_f4_6264);
@@ -3263,7 +3263,7 @@ void FireDojoLesson::SetupFurySpawnPoints() {
         var_f3_6331 = 0.0f;
     }
     sp130 = (f32) sp130 * var_f3_6331;
-    unksp134 *= var_f3_6331;
+    (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f3_6331;
     sp138 = (f32) sp138 * var_f3_6331;
     if ((s32) M2C_FIELD(this->unk4, s32 *, 0x3C8) != 0) {
         temp_f31_6353 = MKVector3::up.unk4;
@@ -3275,8 +3275,8 @@ loop_26:
         temp_r3_6450 = this->unk4;
         if (var_r31_6358 < (s32) M2C_FIELD(temp_r3_6450, s32 *, 0x3C8)) {
             sp44 = (temp_f30_6355 * sp130) - (temp_f29_6357 * sp138);
-            sp40 = (temp_f31_6353 * sp138) - (temp_f30_6355 * unksp134);
-            sp48 = (temp_f29_6357 * unksp134) - (temp_f31_6353 * sp130);
+            sp40 = (temp_f31_6353 * sp138) - (temp_f30_6355 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
+            sp48 = (temp_f29_6357 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f31_6353 * sp130);
             spD0 = (f64) sp40;
             spD8 = (f64) sp48;
             sp120 = (f64) sp40;
@@ -3299,7 +3299,7 @@ loop_26:
             temp_r6_6432 = var_r28_6360 + 0x90;
             temp_r6_6435 = this->unk4 + temp_r6_6432;
             M2C_FIELD(temp_r6_6435, f32 *, 0x30) = (f32) sp110;
-            M2C_FIELD(temp_r6_6435, f32 *, 0x34) = unksp114;
+            M2C_FIELD(temp_r6_6435, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp110 + 0x4));
             M2C_FIELD(temp_r6_6435, f32 *, 0x38) = (f32) sp118;
             M2C_FIELD(temp_r6_6435, f32 *, 0x3C) = 1.0f;
             ((Matrix *) (this->unk4 + temp_r6_6432))->SetLookAt(*((MKVector3 *) &sp110), *((MKVector3 *) &sp100));
@@ -3320,8 +3320,8 @@ loop_31:
         temp_r4_6562 = this->unk4;
         if (var_r30_6461 < (s32) (M2C_FIELD(temp_r4_6562, s32 *, 0x3C8) + M2C_FIELD(temp_r4_6562, s32 *, 0x3CC))) {
             sp24 = (temp_f30_6467 * (f32) sp130) - (temp_f31_6469 * (f32) sp138);
-            sp20 = (temp_f29_6466 * (f32) sp138) - (temp_f30_6467 * unksp134);
-            sp28 = (temp_f31_6469 * unksp134) - (temp_f29_6466 * (f32) sp130);
+            sp20 = (temp_f29_6466 * (f32) sp138) - (temp_f30_6467 * (*(f32 *) ((u8 *) &sp128 + 0xc)));
+            sp28 = (temp_f31_6469 * (*(f32 *) ((u8 *) &sp128 + 0xc))) - (temp_f29_6466 * (f32) sp130);
             sp90 = (f64) sp20;
             sp98 = (f64) sp28;
             sp120 = (f64) sp20;
@@ -3344,7 +3344,7 @@ loop_31:
             temp_r6_6544 = var_r28_6465 + 0x90;
             temp_r6_6547 = this->unk4 + temp_r6_6544;
             M2C_FIELD(temp_r6_6547, f32 *, 0x30) = (f32) sp110;
-            M2C_FIELD(temp_r6_6547, f32 *, 0x34) = unksp114;
+            M2C_FIELD(temp_r6_6547, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp110 + 0x4));
             M2C_FIELD(temp_r6_6547, f32 *, 0x38) = (f32) sp118;
             M2C_FIELD(temp_r6_6547, f32 *, 0x3C) = 1.0f;
             ((Matrix *) (this->unk4 + temp_r6_6544))->SetLookAt(*((MKVector3 *) &sp110), *((MKVector3 *) &sp100));
@@ -3376,7 +3376,7 @@ s32 FireDojoLesson::IsBreath2Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp54'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void FireDojoLesson::SetupBreath2SpawnPoints() {
     CharacterGraphNode *sp60;
     f64 sp58;                                       /* compiler-managed */
@@ -3417,7 +3417,7 @@ void FireDojoLesson::SetupBreath2SpawnPoints() {
         var_f4_6654 = 0.0f;
         sp50 = temp_f0_6648;
         sp28 = M2C_FIELD(temp_r3_6643, f32 *, 0x390) - temp_r3_6643->unk378.unk0;
-        unksp54 = 0.0f;
+        (*(f32 *) ((u8 *) &sp48 + 0xc)) = 0.0f;
         sp58 = (f64) sp28;
         var_f5_6667 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (0.0f * 0.0f));
         if (var_f5_6667 > 0.000001f) {
@@ -3457,10 +3457,10 @@ void FireDojoLesson::SetupBreath2SpawnPoints() {
             var_f4_6654 = 1.0f / var_f5_6667;
         }
         temp_f6_6739 = (f32) sp50 * var_f4_6654;
-        temp_f5_6741 = unksp54 * var_f4_6654;
+        temp_f5_6741 = (*(f32 *) ((u8 *) &sp48 + 0xc)) * var_f4_6654;
         temp_f4_6743 = (f32) sp58 * var_f4_6654;
         sp50 = temp_f6_6739;
-        unksp54 = temp_f5_6741;
+        (*(f32 *) ((u8 *) &sp48 + 0xc)) = temp_f5_6741;
         sp10 = -temp_f6_6739;
         sp14 = -temp_f5_6741;
         sp18 = -temp_f4_6743;
@@ -3567,7 +3567,7 @@ s32 FireDojoLesson::IsMeleeKnockBackComplete() {
     return this->unk10 > 3;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp184'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
     CharacterGraphNode *sp190;
     f64 sp188;                                      /* compiler-managed */
@@ -3652,7 +3652,7 @@ void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
     var_f6_6982 = 0.0f;
     sp180 = temp_f2_6976;
     sp78 = M2C_FIELD(temp_r3_6971, f32 *, 0x390) - temp_r3_6971->unk378.unk0;
-    unksp184 = 0.0f;
+    (*(f32 *) ((u8 *) &sp178 + 0xc)) = 0.0f;
     sp188 = (f64) sp78;
     var_f7_6995 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (0.0f * 0.0f));
     if (var_f7_6995 > 0.000001f) {
@@ -3693,7 +3693,7 @@ void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
     }
     temp_r0_7068 = this->unk10;
     sp180 = (f32) sp180 * var_f6_6982;
-    unksp184 *= var_f6_6982;
+    (*(f32 *) ((u8 *) &sp178 + 0xc)) *= var_f6_6982;
     sp188 = (f32) sp188 * var_f6_6982;
     switch (temp_r0_7068) {                         /* switch 2; irregular */
     case 0:                                         /* switch 2 */
@@ -3826,7 +3826,7 @@ s32 FireDojoLesson::IsMeleeKnockUpComplete() {
     return this->unk10 > 3;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp144'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
     f64 sp148;                                      /* compiler-managed */
     f64 sp140;                                      /* compiler-managed */
@@ -3902,7 +3902,7 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
     var_f4_7396 = 0.0f;
     sp140 = temp_f0_7390;
     sp38 = M2C_FIELD(temp_r3_7385, f32 *, 0x390) - temp_r3_7385->unk378.unk0;
-    unksp144 = 0.0f;
+    (*(f32 *) ((u8 *) &sp138 + 0xc)) = 0.0f;
     sp148 = (f64) sp38;
     var_f5_7409 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + (0.0f * 0.0f));
     if (var_f5_7409 > 0.000001f) {
@@ -3942,11 +3942,11 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
         var_f4_7396 = 1.0f / var_f5_7409;
     }
     temp_f2_7480 = (f32) sp140 * var_f4_7396;
-    temp_f1_7481 = unksp144 * var_f4_7396;
+    temp_f1_7481 = (*(f32 *) ((u8 *) &sp138 + 0xc)) * var_f4_7396;
     temp_r0_7482 = this->unk10;
     temp_f0_7483 = (f32) sp148 * var_f4_7396;
     sp140 = temp_f2_7480;
-    unksp144 = temp_f1_7481;
+    (*(f32 *) ((u8 *) &sp138 + 0xc)) = temp_f1_7481;
     sp148 = temp_f0_7483;
     switch (temp_r0_7482) {                         /* switch 2; irregular */
     case 0:                                         /* switch 2 */
@@ -5546,7 +5546,7 @@ void DojoController::StateDojoInstructUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: illegal implicit conversion from 'DojoController' to
 void DojoController::StateDojoInstructEnter() {
     f64 sp10;
     f64 sp8;
@@ -5563,7 +5563,7 @@ void DojoController::StateDojoInstructEnter() {
     M2C_FIELD(&gb, s8 *, 0xA) = 1;
     sp8 = M2C_FIELD(this, f64 *, 0x378);
     sp10 = M2C_FIELD(this, f64 *, 0x380);
-    unkspC -= 2000.0f;
+    (*(f32 *) ((u8 *) &sp8 + 0x4)) -= 2000.0f;
     do {
         temp_r30_10730 = var_r31_10716 + 0x3F4;
         temp_r3_10732 = *(this + temp_r30_10730);
@@ -5853,7 +5853,7 @@ loop_17:
         sp50 = sp10;
         sp58 = (f64) sp18;
         spF8 = (f64) sp18;
-        unkspF4 = this->unk37C;
+        (*(f32 *) ((u8 *) &spF0 + 0x4)) = this->unk37C;
         M2C_STRUCT_COPY((s32) &unkspFC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         sp30 = -M2C_FIELD(arg2, f32 *, 0);
         sp34 = -M2C_FIELD(arg2, f32 *, 4);
@@ -5863,7 +5863,7 @@ loop_17:
         KDMath_BuildMatrixFromFwd(&sp100, *((MKVector3 *) &sp40), NULL);
         temp_r21_11479 = var_r23_11275 + 0x3F4;
         sp100.unk30 = (f32) spF0;
-        sp100.unk34 = unkspF4;
+        sp100.unk34 = (*(f32 *) ((u8 *) &spF0 + 0x4));
         sp100.unk38 = (f32) spF8;
         sp100.unk3C = 1.0f;
         MKModel_SetWorldMatrix(M2C_FIELD(*(this + temp_r21_11479), MKModel **, 4), sp100);
@@ -5976,7 +5976,7 @@ loop_68:
                             spA8 = sp38;
                             sp40 = (f32) spE0 - (f32) spA0;
                             spB0 = (f64) sp40;
-                            var_f4_11633 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC));
+                            var_f4_11633 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * (*(f32 *) ((u8 *) &spA8 + 0x4))));
                             if (var_f4_11633 > 0.0f) {
                                 temp_f1_11636 = __frsqrte(var_f4_11633);
                                 temp_f1_11642 = 0.5 * temp_f1_11636 * -(((f64) var_f4_11633 * (temp_f1_11636 * temp_f1_11636)) - 3.0);
@@ -6024,7 +6024,7 @@ block_27:
                                 sp88 = sp28;
                                 sp30 = (f32) spE0 - sp80;
                                 sp90 = (f64) sp30;
-                                var_f4_11730 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C));
+                                var_f4_11730 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))));
                                 if (var_f4_11730 > 0.0f) {
                                     temp_f1_11733 = __frsqrte(var_f4_11730);
                                     temp_f1_11739 = 0.5 * temp_f1_11733 * -(((f64) var_f4_11730 * (temp_f1_11733 * temp_f1_11733)) - 3.0);
@@ -6072,7 +6072,7 @@ block_47:
                                     sp68 = sp18;
                                     sp20 = (f32) spE0 - sp60;
                                     sp70 = (f64) sp20;
-                                    var_f4_11826 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
+                                    var_f4_11826 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))));
                                     if (var_f4_11826 > 0.0f) {
                                         temp_f1_11829 = __frsqrte(var_f4_11826);
                                         temp_f1_11835 = 0.5 * temp_f1_11829 * -(((f64) var_f4_11826 * (temp_f1_11829 * temp_f1_11829)) - 3.0);
@@ -6134,12 +6134,12 @@ block_67:
                 temp_r15_11925 = temp_r16_11902 + 0x90;
                 temp_r15_11925->SetIdentity();
                 M2C_FIELD(temp_r16_11902, f32 *, 0xC0) = (f32) spD8;
-                M2C_FIELD(temp_r16_11902, f32 *, 0xC4) = unkspDC;
+                M2C_FIELD(temp_r16_11902, f32 *, 0xC4) = (*(f32 *) ((u8 *) &spD8 + 0x4));
                 M2C_FIELD(temp_r16_11902, f32 *, 0xC8) = (f32) spE0;
                 M2C_FIELD(temp_r16_11902, f32 *, 0xCC) = 1.0f;
                 spC8 = M2C_FIELD(this, f64 *, 0x388);
                 spD0 = this->unk388;
-                unkspCC = unkspDC;
+                (*(f32 *) ((u8 *) &spC8 + 0x4)) = (*(f32 *) ((u8 *) &spD8 + 0x4));
                 temp_r15_11925->SetLookAt(*((MKVector3 *) &spD8), *((MKVector3 *) &spC8));
                 var_r30_11563 += 1;
                 var_r23_11564 += 0x60;
@@ -6190,12 +6190,12 @@ loop_82:
             temp_r15_12029 = temp_r16_12006 + 0x90;
             temp_r15_12029->SetIdentity();
             M2C_FIELD(temp_r16_12006, f32 *, 0xC0) = (f32) spD8;
-            M2C_FIELD(temp_r16_12006, f32 *, 0xC4) = unkspDC;
+            M2C_FIELD(temp_r16_12006, f32 *, 0xC4) = (*(f32 *) ((u8 *) &spD8 + 0x4));
             M2C_FIELD(temp_r16_12006, f32 *, 0xC8) = (f32) spE0;
             M2C_FIELD(temp_r16_12006, f32 *, 0xCC) = 1.0f;
             spC8 = M2C_FIELD(this, f64 *, 0x388);
             spD0 = this->unk388;
-            unkspCC = unkspDC;
+            (*(f32 *) ((u8 *) &spC8 + 0x4)) = (*(f32 *) ((u8 *) &spD8 + 0x4));
             temp_r15_12029->SetLookAt(*((MKVector3 *) &spD8), *((MKVector3 *) &spC8));
             var_r21_11959 += 1;
             var_r22_11963 += 0x60;
@@ -6330,7 +6330,7 @@ loop_19:
                 sp150 = (f64) sp20;
                 temp_f0_12305 = this->unk37C;
                 spB0 = (f64) sp20;
-                unksp14C = temp_f0_12305;
+                (*(f32 *) ((u8 *) &sp148 + 0x4)) = temp_f0_12305;
                 M2C_FIELD(M2C_FIELD(temp_r21_12294, void **, 0x84), u32 *, 4) = arg7;
                 this->unk2C0.AddSpawnPoint(temp_r21_12294 + 0x80);
                 temp_r20_12311 = temp_r21_12294 + 0x90;
@@ -6341,7 +6341,7 @@ loop_19:
                 M2C_FIELD(temp_r21_12294, f32 *, 0xCC) = 1.0f;
                 sp158 = M2C_FIELD(this, f64 *, 0x388);
                 sp160 = this->unk388;
-                unksp15C = temp_f0_12305;
+                (*(f32 *) ((u8 *) &sp158 + 0x4)) = temp_f0_12305;
                 temp_r20_12311->SetLookAt(*((MKVector3 *) &sp148), *((MKVector3 *) &sp158));
                 var_r29_12133 += 1;
                 var_r22_12134 += 0x60;
@@ -6407,12 +6407,12 @@ loop_39:
             temp_r21_12521 = temp_r20_12506 + 0x90;
             temp_r21_12521->SetIdentity();
             M2C_FIELD(temp_r20_12506, f32 *, 0xC0) = (f32) sp148;
-            M2C_FIELD(temp_r20_12506, f32 *, 0xC4) = unksp14C;
+            M2C_FIELD(temp_r20_12506, f32 *, 0xC4) = (*(f32 *) ((u8 *) &sp148 + 0x4));
             M2C_FIELD(temp_r20_12506, f32 *, 0xC8) = (f32) sp150;
             M2C_FIELD(temp_r20_12506, f32 *, 0xCC) = 1.0f;
             sp158 = M2C_FIELD(this, f64 *, 0x388);
             sp160 = this->unk388;
-            unksp15C = unksp14C;
+            (*(f32 *) ((u8 *) &sp158 + 0x4)) = (*(f32 *) ((u8 *) &sp148 + 0x4));
             temp_r21_12521->SetLookAt(*((MKVector3 *) &sp148), *((MKVector3 *) &sp158));
             var_r29_12344 += 1;
             var_r22_12348 += 0x60;

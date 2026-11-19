@@ -177,7 +177,7 @@ loop_23:
             sp70 = (f64) sp20;
             sp38 = sp18;
             sp40 = (f64) sp20;
-            var_f28_279 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
+            var_f28_279 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp60 + 0xc)) * (*(f32 *) ((u8 *) &sp60 + 0xc))));
             if (var_f28_279 > 0.000001f) {
                 if (var_f28_279 > 0.0f) {
                     temp_f1_284 = __frsqrte(var_f28_279);
@@ -218,7 +218,7 @@ loop_23:
                 var_f28_279 = 0.0f;
             }
             sp68 = (f32) sp68 * var_f3_345;
-            unksp6C *= var_f3_345;
+            (*(f32 *) ((u8 *) &sp60 + 0xc)) *= var_f3_345;
             sp70 = (f32) sp70 * var_f3_345;
             temp_r3_364 = var_r31_193->unk0->unk0;
             sp58 = M2C_FIELD(temp_r3_364, f64 *, 8);
@@ -228,7 +228,7 @@ loop_23:
             temp_r27_397 = (s32) ((1.0f - (var_r31_193->unk0->unk18 / 0.5f)) * (f32) (this->unk50 - 1));
             ((Matrix *) &sp90)->Scale3x3((Matrix *) &sp90, var_f28_279 / 100.0f);
             spC0 = (f32) sp58;
-            spC4 = unksp5C;
+            spC4 = (*(f32 *) ((u8 *) &sp58 + 0x4));
             spC8 = (f32) sp60;
             spCC = 1.0f;
             MKModel_SetWorldMatrix(this->unk4C, *((Matrix *) &sp90));
@@ -459,7 +459,7 @@ loop_6:
             sp80 = temp_f30_738;
             spF8 = (f64) sp78;
             sp100 = (f64) sp80;
-            var_f4_763 = ((f32) sp100 * (f32) sp100) + (((f32) spF8 * (f32) spF8) + (unkspFC * unkspFC));
+            var_f4_763 = ((f32) sp100 * (f32) sp100) + (((f32) spF8 * (f32) spF8) + ((*(f32 *) ((u8 *) &spF0 + 0xc)) * (*(f32 *) ((u8 *) &spF0 + 0xc))));
             if (var_f4_763 > 0.000001f) {
                 if (var_f4_763 > 0.0f) {
                     temp_f1_769 = __frsqrte(var_f4_763);
@@ -503,7 +503,7 @@ loop_6:
             sp50 = 0.2f;
             sp54 = 1.0f;
             spF8 = (f32) spF8 * var_f7_830;
-            unkspFC *= var_f7_830;
+            (*(f32 *) ((u8 *) &spF0 + 0xc)) *= var_f7_830;
             sp100 = (f32) sp100 * var_f7_830;
             spC8 = (f64) sp48;
             spD0 = (f64) sp50;

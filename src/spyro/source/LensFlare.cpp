@@ -62,7 +62,7 @@ void LensFlare::DrawSun(MKVector3 arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp84'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void LensFlare::Draw() {
     f64 spB8;
     f64 spB0;
@@ -129,7 +129,7 @@ void LensFlare::Draw() {
         sp80 = sp30;
         sp38 = (f32) sp78 - temp_r5_201->unk8;
         sp88 = (f64) sp38;
-        var_f4_228 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
+        var_f4_228 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp80 + 0x4)) * (*(f32 *) ((u8 *) &sp80 + 0x4))));
         if (var_f4_228 > 1e-12f) {
             if (var_f4_228 > 0.0f) {
                 temp_f1_234 = __frsqrte(var_f4_228);
@@ -171,12 +171,12 @@ void LensFlare::Draw() {
         temp_r3_306 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
         sp28 = (f32) sp88 * var_f3_295;
         sp20 = (f32) sp80 * var_f3_295;
-        sp24 = unksp84 * var_f3_295;
+        sp24 = (*(f32 *) ((u8 *) &sp80 + 0x4)) * var_f3_295;
         sp60 = M2C_FIELD(temp_r3_306, f64 *, 0x20);
         spB0 = (f64) sp20;
         spB8 = (f64) sp28;
         sp68 = M2C_FIELD(temp_r3_306, f64 *, 0x28);
-        if (!((((f32) spB8 * (f32) sp68) + (((f32) spB0 * (f32) sp60) + (unkspB4 * unksp64))) >= -0.707f)) {
+        if (!((((f32) spB8 * (f32) sp68) + (((f32) spB0 * (f32) sp60) + ((*(f32 *) ((u8 *) &spB0 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))))) >= -0.707f)) {
             if ((u8) M2C_FIELD(&gb, u8 *, 0x395) != 0) {
                 this->unk94 = 5;
             }

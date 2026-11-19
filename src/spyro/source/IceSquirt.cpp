@@ -117,7 +117,7 @@ void IceSquirt::Update() {
             var_r0_222 = 0;
             sp40 = M2C_BITWISE(f64, sp30);
             sp48 = (f64) sp30.unk8;
-            if (((f32) sp40 == MKVector3::zero.unk0) && (unksp44 == MKVector3::zero.unk4) && ((f32) sp48 == MKVector3::zero.unk8)) {
+            if (((f32) sp40 == MKVector3::zero.unk0) && ((*(f32 *) ((u8 *) &sp40 + 0x4)) == MKVector3::zero.unk4) && ((f32) sp48 == MKVector3::zero.unk8)) {
                 var_r0_222 = 1;
             }
             if (var_r0_222 == 0) {

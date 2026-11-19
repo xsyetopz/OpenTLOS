@@ -2,7 +2,7 @@
 #include "common/Source/MKVector3.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unksp134'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     f64 sp148;                                      /* compiler-managed */
     f64 sp140;
@@ -87,7 +87,7 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     var_f4_45 = 0.0f;
     sp130 = temp_f0_39;
     sp98 = M2C_FIELD(&arg0, f32 *, 0x28) - M2C_FIELD(temp_r29_22, f32 *, 8);
-    unksp134 = 0.0f;
+    (*(f32 *) ((u8 *) &sp128 + 0xc)) = 0.0f;
     sp138 = (f64) sp98;
     var_f5_58 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (0.0f * 0.0f));
     if (var_f5_58 > 0.000001f) {
@@ -129,7 +129,7 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
         var_f5_58 = 0.0f;
     }
     sp130 = (f32) sp130 * var_f4_45;
-    unksp134 *= var_f4_45;
+    (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f4_45;
     sp138 = (f32) sp138 * var_f4_45;
     temp_f0_138 = M2C_FIELD(&arg0, f32 *, 0x18);
     if (var_f5_58 > temp_f0_138) {
@@ -156,7 +156,7 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     sp120 = sp70;
     sp78 = temp_f2_184 - M2C_FIELD(&arg0, f32 *, 0x28);
     sp128 = (f64) sp78;
-    unksp124 = 0.0f;
+    (*(f32 *) ((u8 *) &sp120 + 0x4)) = 0.0f;
     sp10 = M2C_FIELD(&arg0, f32 *, 0x60) + (((f32) sp128 * M2C_FIELD(&arg0, f32 *, 0x50)) + (((f32) sp120 * M2C_FIELD(&arg0, f32 *, 0x30)) + (0.0f * M2C_FIELD(&arg0, f32 *, 0x40))));
     sp14 = M2C_FIELD(&arg0, f32 *, 0x64) + (((f32) sp128 * M2C_FIELD(&arg0, f32 *, 0x54)) + (((f32) sp120 * M2C_FIELD(&arg0, f32 *, 0x34)) + (0.0f * M2C_FIELD(&arg0, f32 *, 0x44))));
     sp18 = M2C_FIELD(&arg0, f32 *, 0x68) + (((f32) sp128 * M2C_FIELD(&arg0, f32 *, 0x58)) + (((f32) sp120 * M2C_FIELD(&arg0, f32 *, 0x38)) + (0.0f * M2C_FIELD(&arg0, f32 *, 0x48))));
@@ -174,7 +174,7 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     sp130 = sp30;
     spB8 = (f64) sp38;
     sp138 = (f64) sp38;
-    var_f4_259 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
+    var_f4_259 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp128 + 0xc)) * (*(f32 *) ((u8 *) &sp128 + 0xc))));
     if (var_f4_259 > 0.000001f) {
         if (var_f4_259 > 0.0f) {
             temp_f1_264 = __frsqrte(var_f4_259);
@@ -213,7 +213,7 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     }
     temp_f0_332 = (f32) sp138 * var_f0_188;
     sp130 = (f32) sp130 * var_f0_188;
-    unksp134 *= var_f0_188;
+    (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f0_188;
     sp138 = temp_f0_332;
     temp_f2_336 = M2C_FIELD(&arg0, f32 *, 0x10);
     temp_f1_339 = (f64) sp130 * (f64) temp_f2_336;

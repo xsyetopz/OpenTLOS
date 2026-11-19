@@ -305,7 +305,7 @@ void SpyroAirCombatState::UpdateTailSweepStickToTarget() {
             sp28 = sp148 - (f32) spE8;
             sp120 = (f64) sp20;
             sp128 = (f64) sp28;
-            var_f6_494 = ((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + (unksp124 * unksp124));
+            var_f6_494 = ((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + ((*(f32 *) ((u8 *) &sp118 + 0xc)) * (*(f32 *) ((u8 *) &sp118 + 0xc))));
             if (var_f6_494 > 0.000001f) {
                 if (var_f6_494 > 0.0f) {
                     temp_f1_499 = __frsqrte(var_f6_494);
@@ -346,7 +346,7 @@ void SpyroAirCombatState::UpdateTailSweepStickToTarget() {
             }
             temp_f2_571 = (f32) sp128 * var_f5_467;
             sp120 = (f32) sp120 * var_f5_467;
-            unksp124 *= var_f5_467;
+            (*(f32 *) ((u8 *) &sp118 + 0xc)) *= var_f5_467;
             sp128 = temp_f2_571;
             sp70 = (f64) sp120 * (f64) (var_f6_494 - 150.0f);
             temp_r3_580 = this->unk10;
@@ -512,7 +512,7 @@ void SpyroAirCombatState::UpdateAirStrafe() {
         sp110 = (f64) sp10;
         sp118 = (f64) sp18;
         temp_f1_808 = ((InputModifier *) (temp_r5_781->GetInput()))->GetLeftX();
-        var_f5_817 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114));
+        var_f5_817 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + ((*(f32 *) ((u8 *) &sp108 + 0xc)) * (*(f32 *) ((u8 *) &sp108 + 0xc))));
         if (var_f5_817 > 0.000001f) {
             if (var_f5_817 > 0.0f) {
                 temp_f2_823 = __frsqrte(var_f5_817);
@@ -554,7 +554,7 @@ void SpyroAirCombatState::UpdateAirStrafe() {
             var_f31_884 = 0.0f;
         }
         sp110 = (f32) sp110 * var_f7_885;
-        unksp114 *= var_f7_885;
+        (*(f32 *) ((u8 *) &sp108 + 0xc)) *= var_f7_885;
         sp118 = (f32) sp118 * var_f7_885;
         KDMath_GetDirection(KDMath_NormaliseAngle((6.2831855f * ((0.25f * var_f31_884 * temp_f1_808) / (6.2831855f * var_f31_884))) + KDMath_GetYaw(*((MKVector3 *) &sp110))));
         temp_r3_913 = this->unk10;
@@ -565,7 +565,7 @@ void SpyroAirCombatState::UpdateAirStrafe() {
         sp100 = spD0;
         sp108 = spD8;
         spC8 = temp_f3_918;
-        unksp124 = unkspC4;
+        (*(f32 *) ((u8 *) &sp120 + 0x4)) = (*(f32 *) ((u8 *) &spC0 + 0x4));
         temp_f0_926 = sp100 * (f64) var_f31_884;
         sp60 = temp_f0_926;
         spB0 = temp_f0_926;
@@ -801,7 +801,7 @@ block_37:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp94'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SpyroAirCombatState::HornDiveAttackUpdate() {
     f64 spA8;
     f64 spA0;
@@ -857,7 +857,7 @@ void SpyroAirCombatState::HornDiveAttackUpdate() {
     sp98 = (f64) sp58;
     sp38 = temp_f6_1405;
     sp44 = temp_f7_1404;
-    var_f7_1430 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (unksp94 * unksp94));
+    var_f7_1430 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * (*(f32 *) ((u8 *) &sp90 + 0x4))));
     sp40 = temp_f8_1402;
     sp88 = (f64) sp38;
     sp70 = (f64) sp40;
@@ -897,7 +897,7 @@ void SpyroAirCombatState::HornDiveAttackUpdate() {
         }
         var_f9_1392 = 1.0f / var_f7_1430;
     }
-    sp24 = unksp94 * var_f9_1392;
+    sp24 = (*(f32 *) ((u8 *) &sp90 + 0x4)) * var_f9_1392;
     sp20 = (f32) sp90 * var_f9_1392;
     sp28 = (f32) sp98 * var_f9_1392;
     spA0 = (f64) sp20;
@@ -955,7 +955,7 @@ void SpyroAirCombatState::HornDiveAttackEnter() {
         sp50 = sp20;
         sp28 = sp70.unk8 - (f32) sp48;
         sp58 = (f64) sp28;
-        var_f4_1609 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
+        var_f4_1609 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
         if (var_f4_1609 > 1e-12f) {
             if (var_f4_1609 > 0.0f) {
                 temp_f1_1615 = __frsqrte(var_f4_1609);
@@ -994,7 +994,7 @@ void SpyroAirCombatState::HornDiveAttackEnter() {
         } else {
             var_f3_1676 = 0.0f;
         }
-        sp14 = unksp54 * var_f3_1676;
+        sp14 = (*(f32 *) ((u8 *) &sp50 + 0x4)) * var_f3_1676;
         sp10 = (f32) sp50 * var_f3_1676;
         sp18 = (f32) sp58 * var_f3_1676;
         sp60 = (f64) sp10;
@@ -1008,7 +1008,7 @@ void SpyroAirCombatState::HornDiveAttackEnter() {
     temp_r3_1715 = this->unk10->unk8;
     sp30 = M2C_FIELD(temp_r3_1715, f64 *, 0x30);
     sp38 = M2C_FIELD(temp_r3_1715, f64 *, 0x38);
-    this->unk3C = unksp34;
+    this->unk3C = (*(f32 *) ((u8 *) &sp30 + 0x4));
 }
 #endif
 
@@ -1233,7 +1233,7 @@ void SpyroAirCombatState::KnockdownUpdate() {
             sp120 = sp70;
             sp78 = sp138 - (f32) spE8;
             sp128 = (f64) sp78;
-            var_f5_2066 = ((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + (unksp124 * unksp124));
+            var_f5_2066 = ((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + ((*(f32 *) ((u8 *) &sp118 + 0xc)) * (*(f32 *) ((u8 *) &sp118 + 0xc))));
             if (var_f5_2066 > 0.000001f) {
                 if (var_f5_2066 > 0.0f) {
                     temp_f1_2072 = __frsqrte(var_f5_2066);
@@ -1275,7 +1275,7 @@ void SpyroAirCombatState::KnockdownUpdate() {
             }
             temp_f2_2145 = (f32) sp128 * var_f2_2133;
             sp120 = (f32) sp120 * var_f2_2133;
-            unksp124 *= var_f2_2133;
+            (*(f32 *) ((u8 *) &sp118 + 0xc)) *= var_f2_2133;
             sp128 = temp_f2_2145;
             sp60 = (f64) sp120 * (f64) (var_f5_2066 - 100.0f);
             temp_r3_2154 = this->unk10;
@@ -1864,7 +1864,7 @@ void SpyroAirCombatState::TailSweepComboEnter() {
         sp58 = sp28;
         sp30 = (f32) sp50 - (f32) sp40;
         sp60 = (f64) sp30;
-        var_f4_3358 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C));
+        var_f4_3358 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp58 + 0x4))));
         if (var_f4_3358 > 1e-12f) {
             if (var_f4_3358 > 0.0f) {
                 temp_f1_3364 = __frsqrte(var_f4_3358);
@@ -1903,7 +1903,7 @@ void SpyroAirCombatState::TailSweepComboEnter() {
         } else {
             var_f3_3425 = 0.0f;
         }
-        sp1C = unksp5C * var_f3_3425;
+        sp1C = (*(f32 *) ((u8 *) &sp58 + 0x4)) * var_f3_3425;
         sp18 = (f32) sp58 * var_f3_3425;
         sp20 = (f32) sp60 * var_f3_3425;
         sp68 = (f64) sp18;
@@ -2089,7 +2089,7 @@ void SpyroAirCombatState::TailSweepEnter() {
         sp68 = sp28;
         sp30 = spA8.unk8 - (f32) sp60;
         sp70 = (f64) sp30;
-        var_f4_3769 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
+        var_f4_3769 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))));
         if (var_f4_3769 > 1e-12f) {
             if (var_f4_3769 > 0.0f) {
                 temp_f1_3775 = __frsqrte(var_f4_3769);
@@ -2128,7 +2128,7 @@ void SpyroAirCombatState::TailSweepEnter() {
         } else {
             var_f3_3836 = 0.0f;
         }
-        sp1C = unksp6C * var_f3_3836;
+        sp1C = (*(f32 *) ((u8 *) &sp68 + 0x4)) * var_f3_3836;
         sp18 = (f32) sp68 * var_f3_3836;
         sp20 = (f32) sp70 * var_f3_3836;
         sp78 = (f64) sp18;
@@ -2318,7 +2318,7 @@ block_36:
             sp28 = (f32) sp48 - (f32) sp38;
             sp50 = (f64) sp20;
             sp58 = (f64) sp28;
-            var_f5_4190 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
+            var_f5_4190 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
             if (var_f5_4190 > 1e-12f) {
                 if (var_f5_4190 > 0.0f) {
                     temp_f1_4195 = __frsqrte(var_f5_4190);
@@ -2355,7 +2355,7 @@ block_36:
                 }
                 var_f4_4165 = 1.0f / var_f5_4190;
             }
-            sp14 = unksp54 * var_f4_4165;
+            sp14 = (*(f32 *) ((u8 *) &sp50 + 0x4)) * var_f4_4165;
             sp10 = (f32) sp50 * var_f4_4165;
             sp18 = (f32) sp58 * var_f4_4165;
             sp60 = (f64) sp10;

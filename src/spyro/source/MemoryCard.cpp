@@ -39,7 +39,7 @@ static s8 *pDirectoryName = "BASLUS-21372s06";
 #endif
 u8 operation__16MemoryCardScreen[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
 
-#if 0 // DRAFT: undefined identifier 'unksp5C'
+#if 0 // DRAFT: type mismatch
 void MCText::Draw(const RenderContext &arg0) {
     s8 spF0;
     RenderContext spA0;
@@ -63,7 +63,7 @@ void MCText::Draw(const RenderContext &arg0) {
 
     sp58 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     sp50 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    unksp5C = 1.0f;
+    (*(f32 *) ((u8 *) &sp58 + 0x4)) = 1.0f;
     if (((MKFont *) this->unk64 >= 0) && ((MKFont *) this->unk64 != NULL) && !(this->unk18.unk34 <= 0.0f)) {
         if (this->unk18.unk38 <= 0.0f) {
             return;
@@ -80,11 +80,11 @@ void MCText::Draw(const RenderContext &arg0) {
         }
         temp_r3_93 = this->unk18.unk3C;
         if (!(temp_r3_93 & 0xC)) {
-            unksp54 = this->unk18.unk38 * 0.5f;
+            (*(f32 *) ((u8 *) &sp48 + 0xc)) = this->unk18.unk38 * 0.5f;
         } else if (temp_r3_93 & 4) {
-            unksp54 = 0.0f;
+            (*(f32 *) ((u8 *) &sp48 + 0xc)) = 0.0f;
         } else {
-            unksp54 = this->unk18.unk38 / -2.0f;
+            (*(f32 *) ((u8 *) &sp48 + 0xc)) = this->unk18.unk38 / -2.0f;
         }
         sp60.SetIdentity();
         sp60.Translate(&sp60, *((MKVector3 *) &sp50));
@@ -100,7 +100,7 @@ void MCText::Draw(const RenderContext &arg0) {
                 sp48 = (f64) sp28;
                 sp40 = (f64) sp20;
                 spA0.unk30 = (f32) sp40;
-                spA0.unk34 = unksp44;
+                spA0.unk34 = (*(f32 *) ((u8 *) &sp40 + 0x4));
                 spA0.unk38 = (f32) sp48;
                 spA0.unk3C = 1.0f;
                 this->unk64->DrawString(&spF0, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spA0, this->unk18.unk3C, 0x80000000U, 1.0f, 1.0f, NULL, 1U);
@@ -110,11 +110,11 @@ void MCText::Draw(const RenderContext &arg0) {
                 sp38 = (f64) sp18;
                 sp30 = (f64) sp10;
                 spA0.unk30 = (f32) sp30;
-                spA0.unk34 = unksp34;
+                spA0.unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
                 spA0.unk38 = (f32) sp38;
                 spA0.unk3C = 1.0f;
             }
-            this->unk64->DrawString(&spF0, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spA0, this->unk18.unk3C, (u32) (128.0f * (f32) spA0.unk40) | (((u32) (128.0f * unkspE4) << 8) | (((u32) (128.0f * unkspEC) << 0x18) | ((u32) (128.0f * (f32) spA0.unk48) << 0x10))), 1.0f, 1.0f, NULL, 1U);
+            this->unk64->DrawString(&spF0, this->unk18.unk34, this->unk18.unk38, (Matrix *) &spA0, this->unk18.unk3C, (u32) (128.0f * (f32) spA0.unk40) | (((u32) (128.0f * (*(f32 *) ((u8 *) &spA0 + 0x44))) << 8) | (((u32) (128.0f * (*(f32 *) ((u8 *) &spA0 + 0x4c))) << 0x18) | ((u32) (128.0f * (f32) spA0.unk48) << 0x10))), 1.0f, 1.0f, NULL, 1U);
         }
     }
 }

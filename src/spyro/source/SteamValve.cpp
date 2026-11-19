@@ -306,7 +306,7 @@ void SteamValve::Update() {
                     sp210 = sp40;
                 } else {
                     sp208 = 0.0f;
-                    unksp20C = 0.0f;
+                    (*(f32 *) ((u8 *) &sp204 + 0x8)) = 0.0f;
                     sp210 = 0.0f;
                 }
                 sp229 = 0;

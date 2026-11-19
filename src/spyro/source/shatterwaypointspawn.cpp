@@ -93,7 +93,7 @@ loop_5:
             sp10 = M2C_FIELD(temp_r4_145, f64 *, 0x38);
             ((Matrix *) &temp_r0_109->unk10)->SetIdentity();
             temp_r0_109->unk40 = (f32) sp8;
-            temp_r0_109->unk44 = unkspC;
+            temp_r0_109->unk44 = (*(f32 *) ((u8 *) &sp8 + 0x4));
             temp_r0_109->unk48 = (f32) sp10;
             temp_r0_109->unk4C = 1.0f;
             ((SpawnerObject *) &this->unk198)->AddSpawnPoint(temp_r0_109);

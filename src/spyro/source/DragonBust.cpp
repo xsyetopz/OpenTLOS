@@ -298,7 +298,7 @@ void DragonBust::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp8C'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void DragonBust::ActivatingBUpdate() {
     f64 sp90;                                       /* compiler-managed */
     f64 sp88;                                       /* compiler-managed */
@@ -380,7 +380,7 @@ void DragonBust::ActivatingBUpdate() {
     } else {
         var_f0_204 = 0.0f;
     }
-    unksp8C = var_f0_204;
+    (*(f32 *) ((u8 *) &sp40 + 0x4c)) = var_f0_204;
     temp_f1_220 = this->unk108;
     var_f0_223 = (temp_f3_179 * (sp88 - temp_f1_220)) + temp_f1_220;
     if (var_f0_223 < 1.0f) {
@@ -394,7 +394,7 @@ void DragonBust::ActivatingBUpdate() {
         var_f0_223 = 0.0f;
     }
     sp90 = var_f0_223;
-    unksp94 = this->unk114;
+    (*(f32 *) ((u8 *) &sp40 + 0x54)) = this->unk114;
     MKModel_SetColor(this->unk4, *((MKVector4 *) &sp88));
     temp_r3_243 = this->unk8;
     temp_f4_245 = M2C_FIELD(temp_r3_243, f64 *, 0x30);
@@ -408,17 +408,17 @@ void DragonBust::ActivatingBUpdate() {
     temp_f0_260 = (150.0f * _table_sinf((5.0f * this->unkE4) + 1.5707964f)) + (f32) sp80;
     sp80 = temp_f0_260;
     sp78 = (150.0f * _table_sinf(5.0f * this->unkE4)) + (f32) sp78;
-    unksp7C += (150.0f * _table_sinf(5.0f * (0.5f * this->unkE4))) + 150.0f;
+    (*(f32 *) ((u8 *) &sp40 + 0x3c)) += (150.0f * _table_sinf(5.0f * (0.5f * this->unkE4))) + 150.0f;
     sp70 = -((150.0f * _table_sinf((5.0f * this->unkE4) + 1.5707964f)) - (f32) sp70);
     temp_f1_292 = _table_sinf(5.0f * this->unkE4);
     sp28 = -sp78;
-    sp2C = -unksp7C;
+    sp2C = -(*(f32 *) ((u8 *) &sp40 + 0x3c));
     sp30 = -temp_f0_260;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
     sp68 = -((150.0f * temp_f1_292) - (f32) sp68);
-    unksp6C = unksp7C;
-    var_f4_319 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C));
+    (*(f32 *) ((u8 *) &sp40 + 0x2c)) = (*(f32 *) ((u8 *) &sp40 + 0x3c));
+    var_f4_319 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp40 + 0x1c)) * (*(f32 *) ((u8 *) &sp40 + 0x1c))));
     if (var_f4_319 > 0.000001f) {
         if (var_f4_319 > 0.0f) {
             temp_f1_325 = __frsqrte(var_f4_319);
@@ -458,14 +458,14 @@ void DragonBust::ActivatingBUpdate() {
         var_f6_386 = 0.0f;
     }
     sp18 = -sp78;
-    sp1C = -unksp7C;
+    sp1C = -(*(f32 *) ((u8 *) &sp40 + 0x3c));
     sp20 = -sp80;
     sp48 = (f64) sp18;
     sp50 = (f64) sp20;
     sp58 = (f32) sp58 * var_f6_386;
-    unksp5C *= var_f6_386;
+    (*(f32 *) ((u8 *) &sp40 + 0x1c)) *= var_f6_386;
     sp60 = (f32) sp60 * var_f6_386;
-    var_f4_421 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C));
+    var_f4_421 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp40 + 0xc)) * (*(f32 *) ((u8 *) &sp40 + 0xc))));
     if (var_f4_421 > 0.000001f) {
         if (var_f4_421 > 0.0f) {
             temp_f1_427 = __frsqrte(var_f4_421);
@@ -506,7 +506,7 @@ void DragonBust::ActivatingBUpdate() {
     }
     var_r29_500 = 0;
     sp48 = (f32) sp48 * var_f3_488;
-    unksp4C *= var_f3_488;
+    (*(f32 *) ((u8 *) &sp40 + 0xc)) *= var_f3_488;
     sp50 = (f32) sp50 * var_f3_488;
     do {
         sp14 = MKRand_Float(&gViewSeed, 0.4f, 1.0f);
@@ -607,7 +607,7 @@ void DragonBust::ActivatingAUpdate() {
     sp20 = M2C_FIELD(temp_r3_674, f64 *, 0x30);
     sp28 = M2C_FIELD(temp_r3_674, f64 *, 0x38);
     sp50.unk30 = (f32) sp20;
-    sp50.unk34 = unksp24;
+    sp50.unk34 = (*(f32 *) ((u8 *) &sp20 + 0x4));
     sp50.unk38 = (f32) sp28;
     sp50.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unk11C, sp50);
@@ -645,7 +645,7 @@ void DragonBust::ActivatingAEnter() {
     sp50 = M2C_FIELD(temp_r3_743, f64 *, 0x30);
     sp58 = M2C_FIELD(temp_r3_743, f64 *, 0x38);
     sp60.unk30 = (f32) sp50;
-    sp60.unk34 = unksp54;
+    sp60.unk34 = (*(f32 *) ((u8 *) &sp50 + 0x4));
     sp60.unk38 = (f32) sp58;
     sp60.unk3C = 1.0f;
     KDSound_Play3d(GS_StatueLightBurst, temp_r3_743 + 0x30, 0U, -1, 0.0f, 0U);
@@ -733,7 +733,7 @@ void DragonBust::SlidingIntoPlaceUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void DragonBust::SlidingIntoPlaceEnter() {
     f64 sp38;
     f64 sp30;                                       /* compiler-managed */
@@ -760,7 +760,7 @@ void DragonBust::SlidingIntoPlaceEnter() {
     sp18 = this->unkF0 - (f32) sp28;
     sp38 = (f64) sp18;
     this->unk158 = 1;
-    var_f4_936 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_936 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp28 + 0xc)) * (*(f32 *) ((u8 *) &sp28 + 0xc))));
     if (var_f4_936 > 0.000001f) {
         if (var_f4_936 > 0.0f) {
             temp_f1_942 = __frsqrte(var_f4_936);
@@ -802,7 +802,7 @@ void DragonBust::SlidingIntoPlaceEnter() {
     }
     this->unk104 = var_f4_936 / 100.0f;
     sp30 = (f32) sp30 * var_f3_1002;
-    unksp34 *= var_f3_1002;
+    (*(f32 *) ((u8 *) &sp28 + 0xc)) *= var_f3_1002;
 }
 #endif
 
@@ -897,7 +897,7 @@ void DragonBust::SlideUpdate() {
     sp180 = spA0;
     spA8 = (f32) sp168 - (f32) sp158;
     sp188 = (f64) spA8;
-    var_f28_1076 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184));
+    var_f28_1076 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + ((*(f32 *) ((u8 *) &sp178 + 0xc)) * (*(f32 *) ((u8 *) &sp178 + 0xc))));
     if (var_f28_1076 > 0.000001f) {
         if (var_f28_1076 > 0.0f) {
             temp_f1_1082 = __frsqrte(var_f28_1076);
@@ -938,9 +938,9 @@ void DragonBust::SlideUpdate() {
         var_f28_1076 = 0.0f;
     }
     temp_f2_1154 = (f32) sp180 * var_f3_1143;
-    temp_f1_1156 = unksp184 * var_f3_1143;
+    temp_f1_1156 = (*(f32 *) ((u8 *) &sp178 + 0xc)) * var_f3_1143;
     sp180 = temp_f2_1154;
-    unksp184 = temp_f1_1156;
+    (*(f32 *) ((u8 *) &sp178 + 0xc)) = temp_f1_1156;
     sp188 = (f32) sp188 * var_f3_1143;
     temp_r4_1165 = M2C_FIELD(gb.unk0->GetProp(temp_f1_1156, temp_f2_1154), void **, 8);
     temp_f5_1171 = -M2C_FIELD(temp_r4_1165, f32 *, 0x20);
@@ -951,7 +951,7 @@ void DragonBust::SlideUpdate() {
     sp98 = -M2C_FIELD(temp_r4_1165, f32 *, 0x28);
     sp140 = (f64) sp90;
     sp148 = (f64) sp98;
-    temp_f27_1192 = (temp_f4_1180 * (f32) sp148) + ((temp_f2_1176 * (f32) sp140) + (this->unkFC * unksp144));
+    temp_f27_1192 = (temp_f4_1180 * (f32) sp148) + ((temp_f2_1176 * (f32) sp140) + (this->unkFC * (*(f32 *) ((u8 *) &sp140 + 0x4))));
     temp_r3_1195 = M2C_FIELD(gb.unk0->GetProp(temp_r4_1165, (f32) sp140, temp_f2_1176, (f32) sp148, temp_f4_1180, temp_f5_1171), void **, 8);
     sp80 = -M2C_FIELD(temp_r3_1195, f32 *, 0x20);
     sp84 = -M2C_FIELD(temp_r3_1195, f32 *, 0x24);
@@ -959,7 +959,7 @@ void DragonBust::SlideUpdate() {
     sp130 = (f64) sp80;
     sp138 = (f64) sp88;
     this->unk158 = 0;
-    if ((temp_f27_1192 > 0.7f) && (((sp188 * (f32) sp138) + ((temp_f2_1154 * (f32) sp130) + (temp_f1_1156 * unksp134))) > 0.85f)) {
+    if ((temp_f27_1192 > 0.7f) && (((sp188 * (f32) sp138) + ((temp_f2_1154 * (f32) sp130) + (temp_f1_1156 * (*(f32 *) ((u8 *) &sp130 + 0x4))))) > 0.85f)) {
         temp_f0_1231 = (f64) M2C_FIELD(this, f32 *, 0xF8) * 5.53552857e-315;
         sp70 = temp_f0_1231;
         spF0 = temp_f0_1231;
@@ -1004,7 +1004,7 @@ void DragonBust::SlideUpdate() {
     spC0 = sp10;
     sp18 = this->unkF0 - (f32) spB8;
     spC8 = (f64) sp18;
-    if ((((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + (unkspC4 * unkspC4))) < 22500.0f) {
+    if ((((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + ((*(f32 *) ((u8 *) &spC0 + 0x4)) * (*(f32 *) ((u8 *) &spC0 + 0x4))))) < 22500.0f) {
         this->unk104 = var_f28_1076 / 100.0f;
         SetState((DragonBust::State) 2);
         return;
@@ -1072,7 +1072,7 @@ void DragonBust::IdleEnter() {
         sp38 = sp18;
         sp20 = this->unkF0 - (f32) sp30;
         sp40 = (f64) sp20;
-        if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) < 1.0f) {
+        if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) < 1.0f) {
             this->unk12C = 1;
         }
     }

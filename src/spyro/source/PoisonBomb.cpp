@@ -370,7 +370,7 @@ void PoisonBomb::Update() {
             sp90 = sp40;
             sp48 = (f32) sp88 - M2C_FIELD(temp_r30_696, f32 *, 8);
             sp98 = (f64) sp48;
-            if ((((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (unksp94 * unksp94))) <= 90000.0f) {
+            if ((((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * (*(f32 *) ((u8 *) &sp90 + 0x4))))) <= 90000.0f) {
                 sp18 = 0.0f;
                 sp10 = 0.0f;
                 sp14 = 0.0f;
@@ -397,7 +397,7 @@ void PoisonBomb::Update() {
                     spE8 = sp38;
                 } else {
                     spE0 = 0.0f;
-                    unkspE4 = 0.0f;
+                    (*(f32 *) ((u8 *) &spDC + 0x8)) = 0.0f;
                     spE8 = 0.0f;
                 }
                 sp101 = 0;
@@ -628,7 +628,7 @@ void PoisonBomb::Draw() {
         sp90 = (f64) sp40;
         sp88 = (f64) sp38;
         sp110.unk30 = (f32) sp88;
-        sp110.unk34 = unksp8C;
+        sp110.unk34 = (*(f32 *) ((u8 *) &sp88 + 0x4));
         sp110.unk38 = (f32) sp90;
         sp110.unk3C = 1.0f;
         MKMaterial_SetTextureMatrix(this->unk1CC, &sp110);
@@ -651,7 +651,7 @@ void PoisonBomb::Draw() {
             spC0 = M2C_FIELD(temp_r4_1201, f64 *, 0x28);
             sp98 = M2C_FIELD(&MKVector3::up, f64 *, 0);
             spA0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
-            unkspBC = 0.0f;
+            (*(f32 *) ((u8 *) &spA0 + 0x1c)) = 0.0f;
             var_f4_1216 = ((f32) spC0 * (f32) spC0) + (((f32) spB8 * (f32) spB8) + (0.0f * 0.0f));
             if (var_f4_1216 > 0.000001f) {
                 if (var_f4_1216 > 0.0f) {
@@ -689,20 +689,20 @@ void PoisonBomb::Draw() {
                 }
                 var_f6_1195 = 1.0f / var_f4_1216;
             }
-            temp_f5_1286 = unkspBC * var_f6_1195;
+            temp_f5_1286 = (*(f32 *) ((u8 *) &spA0 + 0x1c)) * var_f6_1195;
             temp_f4_1288 = (f32) spC0 * var_f6_1195;
             temp_f6_1291 = (f32) spB8 * var_f6_1195;
             spB8 = temp_f6_1291;
-            unkspBC = temp_f5_1286;
+            (*(f32 *) ((u8 *) &spA0 + 0x1c)) = temp_f5_1286;
             spC0 = temp_f4_1288;
-            sp28 = (unksp9C * temp_f4_1288) - ((f32) spA0 * temp_f5_1286);
+            sp28 = ((*(f32 *) ((u8 *) &sp98 + 0x4)) * temp_f4_1288) - ((f32) spA0 * temp_f5_1286);
             sp2C = ((f32) spA0 * temp_f6_1291) - ((f32) sp98 * temp_f4_1288);
-            sp30 = ((f32) sp98 * temp_f5_1286) - (unksp9C * temp_f6_1291);
+            sp30 = ((f32) sp98 * temp_f5_1286) - ((*(f32 *) ((u8 *) &sp98 + 0x4)) * temp_f6_1291);
             spA8 = (f64) sp28;
             spB0 = (f64) sp30;
             sp68 = (f64) sp28;
             sp70 = (f64) sp30;
-            var_f4_1319 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC));
+            var_f4_1319 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA0 + 0xc)) * (*(f32 *) ((u8 *) &spA0 + 0xc))));
             if (var_f4_1319 > 0.000001f) {
                 if (var_f4_1319 > 0.0f) {
                     temp_f1_1325 = __frsqrte(var_f4_1319);
@@ -743,24 +743,24 @@ void PoisonBomb::Draw() {
             }
             temp_f12_1397 = (10.0f * temp_f31_1135) + 0.25f;
             temp_f11_1402 = (f32) spA8 * var_f3_1386;
-            temp_f10_1403 = unkspAC * var_f3_1386;
+            temp_f10_1403 = (*(f32 *) ((u8 *) &spA0 + 0xc)) * var_f3_1386;
             sp20 = temp_f12_1397;
             temp_f9_1406 = (f32) spB0 * var_f3_1386;
             sp18 = temp_f12_1397;
             sp1C = (6.0f * temp_f31_1135) + 0.25f;
             spA8 = temp_f11_1402;
-            unkspAC = temp_f10_1403;
+            (*(f32 *) ((u8 *) &spA0 + 0xc)) = temp_f10_1403;
             spB0 = temp_f9_1406;
             spD0 = temp_f11_1402;
             spD4 = temp_f10_1403;
             spD8 = temp_f9_1406;
             spDC = 0.0f;
             spE0 = (f32) sp98;
-            spE4 = unksp9C;
+            spE4 = (*(f32 *) ((u8 *) &sp98 + 0x4));
             spE8 = (f32) spA0;
             spEC = 0.0f;
             spF0 = spB8;
-            spF4 = unkspBC;
+            spF4 = (*(f32 *) ((u8 *) &spA0 + 0x1c));
             spF8 = spC0;
             spFC = 0.0f;
             sp58 = (f64) sp18;

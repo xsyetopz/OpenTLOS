@@ -139,7 +139,7 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
             var_r30_158 = 0;
             if (((EnemyRegion *) &this->unkC->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
                 ((EnemyRegion *) &sp98)->GetRegionPos();
-                if ((f32) fabs(sp9C - unksp1CC) <= 500.0f) {
+                if ((f32) fabs(sp9C - (*(f32 *) ((u8 *) &sp1C8 + 0x4))) <= 500.0f) {
                     var_r30_158 = 1;
                 }
             }
@@ -518,7 +518,7 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
         sp50 = temp_f3_937 + (f32) sp90;
         spA0 = (f64) sp50;
         if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp98), 300.0f, &spD8, 0x04000000, 2, NULL, (MKCollisionMode) 7) != 0) {
-            unkspCC = spD8.unk4;
+            (*(f32 *) ((u8 *) &spC8 + 0x4)) = spD8.unk4;
             if ((f32) fabs(spD8.unk4 - this->unkC->unk588.unk0) > 200.0f) {
                 return 0U;
             }
@@ -661,7 +661,7 @@ void EnemyGoal_AlertMode::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp5C'
+#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to
 u8 EnemyGoal_AlertMode::Update() {
     AITargetData sp48;
     f64 sp38;
@@ -700,7 +700,7 @@ u8 EnemyGoal_AlertMode::Update() {
                 CalculateRegionEdgeMoveTarget(temp_r3_1300 == 0);
                 sp48.GetPos();
                 ((AITargetData *) &sp48.unk10)->GetPos();
-                temp_f4_1321 = unksp5C - unksp4C;
+                temp_f4_1321 = (*(f32 *) ((u8 *) &sp48 + 0x14)) - (*(f32 *) ((u8 *) &sp48 + 0x4));
                 temp_f5_1323 = (f32) sp48.unk10 - M2C_BITWISE(f32, sp48);
                 temp_f3_1327 = (f32) sp48.unk18 - sp48.unk8;
                 if (((temp_f3_1327 * temp_f3_1327) + ((temp_f5_1323 * temp_f5_1323) + (temp_f4_1321 * temp_f4_1321))) < 1000000.0f) {

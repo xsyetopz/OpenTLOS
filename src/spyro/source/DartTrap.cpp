@@ -92,7 +92,7 @@ void DartTrap::Shoot() {
         sp48 = -M2C_FIELD(temp_r3_118, f32 *, 0x28);
         sp90 = (f64) sp40;
         sp98 = (f64) sp48;
-        var_f4_140 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (unksp94 * unksp94));
+        var_f4_140 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + ((*(f32 *) ((u8 *) &sp88 + 0xc)) * (*(f32 *) ((u8 *) &sp88 + 0xc))));
         if (var_f4_140 > 0.000001f) {
             if (var_f4_140 > 0.0f) {
                 temp_f1_146 = __frsqrte(var_f4_140);
@@ -132,7 +132,7 @@ void DartTrap::Shoot() {
             var_f4_207 = 0.0f;
         }
         sp90 = (f32) sp90 * var_f4_207;
-        unksp94 *= var_f4_207;
+        (*(f32 *) ((u8 *) &sp88 + 0xc)) *= var_f4_207;
         sp98 = (f32) sp98 * var_f4_207;
         sp70.operator*(2000.0f);
         sp20 = M2C_BITWISE(f64, spB0) + M2C_BITWISE(f64, sp70);

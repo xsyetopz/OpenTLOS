@@ -153,7 +153,7 @@ void SiegeTower::Shoot(Targetable *arg0) {
                 sp80 = sp20;
             } else {
                 sp78 = 0.0f;
-                unksp7C = 0.0f;
+                (*(f32 *) ((u8 *) &sp74 + 0x8)) = 0.0f;
                 sp80 = 0.0f;
             }
             sp99 = 1;
@@ -382,7 +382,7 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
     var_f7_622 = 0.0f;
     sp90 = temp_f0_616;
     sp48 = spB0.unk8 - (f32) spA8;
-    unksp94 = 0.0f;
+    (*(f32 *) ((u8 *) &sp88 + 0xc)) = 0.0f;
     sp98 = (f64) sp48;
     var_f4_635 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (0.0f * 0.0f));
     if (var_f4_635 > 0.000001f) {
@@ -421,7 +421,7 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
         }
         var_f7_622 = 1.0f / var_f4_635;
     }
-    temp_f9_706 = unksp94 * var_f7_622;
+    temp_f9_706 = (*(f32 *) ((u8 *) &sp88 + 0xc)) * var_f7_622;
     sp38 = 0.0f;
     temp_f0_709 = M2C_FIELD(arg0, f32 *, 4);
     temp_f10_710 = (f32) sp90 * var_f7_622;
@@ -434,10 +434,10 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
     sp50 = (f64) sp30;
     var_f11_730 = 15.0f * (1.0f - ((temp_f3_717 * temp_f8_716) + ((temp_f2_714 * temp_f10_710) + (temp_f0_709 * temp_f9_706))));
     sp90 = temp_f10_710;
-    unksp94 = temp_f9_706;
+    (*(f32 *) ((u8 *) &sp88 + 0xc)) = temp_f9_706;
     sp98 = temp_f8_716;
-    sp28 = ((f32) sp50 * temp_f9_706) - (unksp54 * temp_f10_710);
-    sp20 = (unksp54 * temp_f8_716) - ((f32) sp58 * temp_f9_706);
+    sp28 = ((f32) sp50 * temp_f9_706) - ((*(f32 *) ((u8 *) &sp50 + 0x4)) * temp_f10_710);
+    sp20 = ((*(f32 *) ((u8 *) &sp50 + 0x4)) * temp_f8_716) - ((f32) sp58 * temp_f9_706);
     sp24 = ((f32) sp58 * temp_f10_710) - ((f32) sp50 * temp_f8_716);
     sp88 = (f64) sp28;
     sp80 = (f64) sp20;
@@ -452,7 +452,7 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
         var_f11_730 = -1.0f;
     }
     var_f7_765 = 1.5f * var_f11_730;
-    if (((temp_f3_717 * (f32) sp88) + ((temp_f2_714 * (f32) sp80) + (temp_f0_709 * unksp84))) > 0.0f) {
+    if (((temp_f3_717 * (f32) sp88) + ((temp_f2_714 * (f32) sp80) + (temp_f0_709 * (*(f32 *) ((u8 *) &sp80 + 0x4))))) > 0.0f) {
         var_f7_765 = -var_f7_765;
     }
     M2C_FIELD(this, f32 *, 0x1B8) = (f32) ((var_f7_765 * gUpdateTimeDelta) + M2C_FIELD(this, f32 *, 0x1B8));
@@ -630,7 +630,7 @@ void SiegeTower::Update() {
             var_f4_1124 = 0.0f;
             sp58 = temp_f0_1118;
             sp20 = (f32) sp70 - (f32) sp40;
-            unksp5C = 0.0f;
+            (*(f32 *) ((u8 *) &sp50 + 0xc)) = 0.0f;
             sp60 = (f64) sp20;
             var_f31_1137 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (0.0f * 0.0f));
             if (var_f31_1137 > 0.000001f) {
@@ -672,7 +672,7 @@ void SiegeTower::Update() {
                 var_f31_1137 = 0.0f;
             }
             sp58 = (f32) sp58 * var_f4_1124;
-            unksp5C *= var_f4_1124;
+            (*(f32 *) ((u8 *) &sp50 + 0xc)) *= var_f4_1124;
             sp60 = (f32) sp60 * var_f4_1124;
             sp28 = (f64) sp58;
             sp30 = (f64) sp60;

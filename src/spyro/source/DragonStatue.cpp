@@ -63,7 +63,7 @@ void DragonStatue::EmitDust() {
 loop_22:
     if (var_r30_102 < (s32) (this->unkFC + MKRand_Int(&gViewSeed, -1, 1))) {
         sp40 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        unksp44 = 0.0f;
+        (*(f32 *) ((u8 *) &sp38 + 0xc)) = 0.0f;
         temp_f1_121 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f0_122 = (f32) 0.0f;
         temp_f3_124 = (f32) temp_f1_121;
@@ -108,7 +108,7 @@ loop_22:
             var_f5_197 = 0.0f;
         }
         sp40 *= var_f5_197;
-        unksp44 *= var_f5_197;
+        (*(f32 *) ((u8 *) &sp38 + 0xc)) *= var_f5_197;
         sp48 *= var_f5_197;
         sp50 = (f64) sp40;
         sp58 = (f64) sp48;
@@ -118,7 +118,7 @@ loop_22:
         sp60 = (f64) sp40;
         sp58 = (f32) sp58 * temp_f2_219;
         sp68 = (f64) sp48;
-        unksp64 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        (*(f32 *) ((u8 *) &sp60 + 0x4)) = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
         sp60 *= 5.53552857e-315;
         sp68 = (f32) sp68 * 100.0f;
         spC = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
@@ -134,7 +134,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp74'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void DragonStatue::EmitCrudAboveStatue() {
     f64 sp78;                                       /* compiler-managed */
     f64 sp70;
@@ -165,7 +165,7 @@ loop_2:
     if (var_r30_312 < (s32) (this->unkF8 * 2)) {
         sp70 = this->unkD8;
         sp78 = M2C_FIELD(this, f64 *, 0xE0);
-        unksp74 += 325.0f;
+        (*(f32 *) ((u8 *) &sp70 + 0x4)) += 325.0f;
         temp_f29_327 = MKRand_Float(&gViewSeed, -2500.0f, 2500.0f);
         temp_f28_332 = MKRand_Float(&gViewSeed, 400.0f, 600.0f);
         sp10 = MKRand_Float(&gViewSeed, -2500.0f, 2500.0f);
@@ -229,7 +229,7 @@ loop_2:
         temp_r4_445 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         sp80 = M2C_FIELD(temp_r4_445, f64 *, 0x30);
         sp88 = M2C_FIELD(temp_r4_445, f64 *, 0x38);
-        unksp84 += 200.0f;
+        (*(f32 *) ((u8 *) &sp80 + 0x4)) += 200.0f;
         temp_f27_457 = MKRand_Float(&gViewSeed, -10.0f, 10.0f);
         temp_f28_462 = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
         MKVector(MKRand_Float(&gViewSeed, -10.0f, 10.0f), temp_f28_462, temp_f27_457);
@@ -260,7 +260,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void DragonStatue::SnapDown() {
     f64 sp10;
     f64 sp8;
@@ -269,9 +269,9 @@ void DragonStatue::SnapDown() {
 
     temp_f2_565 = M2C_FIELD(this, f64 *, 0xE0);
     sp8 = this->unkD8;
-    temp_f1_567 = unkspC;
+    temp_f1_567 = (*(f32 *) ((u8 *) &sp8 + 0x4));
     sp10 = temp_f2_565;
-    unkspC = temp_f1_567 - 6600.0f;
+    (*(f32 *) ((u8 *) &sp8 + 0x4)) = temp_f1_567 - 6600.0f;
     M2C_FIELD(this->__vptr, M2C_UNK (**)(f64 *, f32, f64), 0x38)(&sp8, temp_f1_567, temp_f2_565);
     this->unk100 = 1;
 }
@@ -713,7 +713,7 @@ void DragonStatue::Update() {
         sp228 = spF8;
         sp100 = (f32) sp290 - this->unkE0;
         sp230 = (f64) sp100;
-        var_f4_1074 = ((f32) sp230 * (f32) sp230) + (((f32) sp228 * (f32) sp228) + (unksp22C * unksp22C));
+        var_f4_1074 = ((f32) sp230 * (f32) sp230) + (((f32) sp228 * (f32) sp228) + ((*(f32 *) ((u8 *) &sp228 + 0x4)) * (*(f32 *) ((u8 *) &sp228 + 0x4))));
         if (var_f4_1074 > 0.0f) {
             temp_f1_1077 = __frsqrte(var_f4_1074);
             temp_f1_1083 = 0.5 * temp_f1_1077 * -(((f64) var_f4_1074 * (temp_f1_1077 * temp_f1_1077)) - 3.0);
@@ -750,13 +750,13 @@ void DragonStatue::Update() {
         if (var_f4_1074 < 4600.0f) {
             EmitDust();
         }
-        unksp28C = unksp29C;
+        (*(f32 *) ((u8 *) &sp288 + 0x4)) = (*(f32 *) ((u8 *) &sp298 + 0x4));
         if (gb.unk30C >= this->unkA0) {
             spE8 = sp288 - sp298;
             sp218 = spE8;
             spF0 = (f32) sp290 - (f32) sp2A0;
             sp220 = (f64) spF0;
-            var_f4_1171 = ((f32) sp220 * (f32) sp220) + (((f32) sp218 * (f32) sp218) + (unksp21C * unksp21C));
+            var_f4_1171 = ((f32) sp220 * (f32) sp220) + (((f32) sp218 * (f32) sp218) + ((*(f32 *) ((u8 *) &sp218 + 0x4)) * (*(f32 *) ((u8 *) &sp218 + 0x4))));
             if (var_f4_1171 > 0.0f) {
                 temp_f1_1174 = __frsqrte(var_f4_1171);
                 temp_f1_1180 = 0.5 * temp_f1_1174 * -(((f64) var_f4_1171 * (temp_f1_1174 * temp_f1_1174)) - 3.0);
@@ -804,7 +804,7 @@ void DragonStatue::Update() {
         sp208 = spD8;
         spE0 = this->unkE0 - (f32) sp200;
         sp210 = (f64) spE0;
-        var_f4_1274 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
+        var_f4_1274 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + ((*(f32 *) ((u8 *) &sp208 + 0x4)) * (*(f32 *) ((u8 *) &sp208 + 0x4))));
         if (var_f4_1274 > 0.0f) {
             temp_f1_1277 = __frsqrte(var_f4_1274);
             temp_f1_1283 = 0.5 * temp_f1_1277 * -(((f64) var_f4_1274 * (temp_f1_1277 * temp_f1_1277)) - 3.0);
@@ -918,7 +918,7 @@ void DragonStatue::Update() {
         sp198 = spA8;
         spB0 = (f32) sp270 - this->unkE0;
         sp1A0 = (f64) spB0;
-        var_f4_1548 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C));
+        var_f4_1548 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * (*(f32 *) ((u8 *) &sp198 + 0x4))));
         if (var_f4_1548 > 0.0f) {
             temp_f1_1551 = __frsqrte(var_f4_1548);
             temp_f1_1557 = 0.5 * temp_f1_1551 * -(((f64) var_f4_1548 * (temp_f1_1551 * temp_f1_1551)) - 3.0);
@@ -955,13 +955,13 @@ void DragonStatue::Update() {
         if (var_f4_1548 < 4900.0f) {
             EmitDust();
         }
-        unksp26C = unksp27C;
+        (*(f32 *) ((u8 *) &sp268 + 0x4)) = (*(f32 *) ((u8 *) &sp278 + 0x4));
         if (gb.unk30C >= this->unkA0) {
             sp98 = sp268 - sp278;
             sp188 = sp98;
             spA0 = (f32) sp270 - (f32) sp280;
             sp190 = (f64) spA0;
-            var_f4_1645 = ((f32) sp190 * (f32) sp190) + (((f32) sp188 * (f32) sp188) + (unksp18C * unksp18C));
+            var_f4_1645 = ((f32) sp190 * (f32) sp190) + (((f32) sp188 * (f32) sp188) + ((*(f32 *) ((u8 *) &sp188 + 0x4)) * (*(f32 *) ((u8 *) &sp188 + 0x4))));
             if (var_f4_1645 > 0.0f) {
                 temp_f1_1648 = __frsqrte(var_f4_1645);
                 temp_f1_1654 = 0.5 * temp_f1_1648 * -(((f64) var_f4_1645 * (temp_f1_1648 * temp_f1_1648)) - 3.0);
@@ -1010,7 +1010,7 @@ void DragonStatue::Update() {
         sp178 = temp_f0_1731;
         sp90 = this->unkE0 - (f32) sp170;
         sp180 = (f64) sp90;
-        var_f0_1748 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
+        var_f0_1748 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + ((*(f32 *) ((u8 *) &sp178 + 0x4)) * (*(f32 *) ((u8 *) &sp178 + 0x4))));
         if (var_f0_1748 > 0.0f) {
             temp_f2_1751 = __frsqrte(var_f0_1748);
             temp_f2_1757 = 0.5 * temp_f2_1751 * -(((f64) var_f0_1748 * (temp_f2_1751 * temp_f2_1751)) - 3.0);

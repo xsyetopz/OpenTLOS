@@ -6,7 +6,6 @@
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
 void SmashWall::Message(MKMessage *arg0) {
     u8 sp20;
     s32 sp1C;
@@ -38,7 +37,7 @@ void SmashWall::Message(MKMessage *arg0) {
             temp_f0_92 = M2C_FIELD(temp_r3_61, f32 *, 0x20) + GetCollisionRadius();
             sp8 = M2C_FIELD(temp_r3_88, f64 *, 0x30);
             sp10 = M2C_FIELD(temp_r3_88, f64 *, 0x38);
-            temp_f5_98 = unkspC - M2C_FIELD(temp_r3_61, f32 *, 0x14);
+            temp_f5_98 = (*(f32 *) ((u8 *) &sp8 + 0x4)) - M2C_FIELD(temp_r3_61, f32 *, 0x14);
             temp_f4_102 = (f32) sp8 - M2C_FIELD(temp_r3_61, f32 *, 0x10);
             temp_f3_105 = (f32) sp10 - M2C_FIELD(temp_r3_61, f32 *, 0x18);
             if (((temp_f3_105 * temp_f3_105) + ((temp_f4_102 * temp_f4_102) + (temp_f5_98 * temp_f5_98))) < (temp_f0_92 * temp_f0_92)) {
@@ -54,4 +53,3 @@ void SmashWall::Message(MKMessage *arg0) {
         break;
     }
 }
-#endif

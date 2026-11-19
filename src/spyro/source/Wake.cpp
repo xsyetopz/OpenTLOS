@@ -281,7 +281,7 @@ loop_41:
                 sp18 = M2C_FIELD(var_r28_224, f32 *, 0x80) * var_f29_421;
                 M2C_FIELD(var_r28_224, f32 *, 0x58) = (f32) sp70;
                 sp78 = (f64) sp18;
-                M2C_FIELD(var_r28_224, f32 *, 0x5C) = unksp74;
+                M2C_FIELD(var_r28_224, f32 *, 0x5C) = (*(f32 *) ((u8 *) &sp70 + 0x4));
                 M2C_FIELD(var_r28_224, f32 *, 0x60) = (f32) sp78;
                 M2C_FIELD(var_r28_224, f32 *, 0x64) = 0.0f;
                 M2C_FIELD(var_r28_224, f32 *, 0x64) = 1.0f;

@@ -193,7 +193,7 @@ loop_8:
         sp1A0 *= (f64) temp_f31_292;
         sp98 = sp1A0;
         sp1A8 *= temp_f31_292;
-        unksp9C = 0.0f;
+        (*(f32 *) ((u8 *) &sp98 + 0x4)) = 0.0f;
         spA0 = (f64) sp1A8;
         ClampMagnitude(sp68, this->unk12C);
         sp98 = M2C_BITWISE(f64, sp68);

@@ -206,7 +206,7 @@ loop_45:
 loop_42:
                             if (var_r22_211 < (s32) M2C_FIELD(temp_r31_199, u16 *, 0xA)) {
                                 temp_r21_218 = M2C_FIELD(temp_r31_199, s32 *, 0xC) + var_r18_212;
-                                if (!(MKModel_GetSubObjectFlag(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0) & 0xF) && (!(((u8) M2C_FIELD(*var_r26_188, MKModel **, 0)->unk5 >> 6U) & 1) || ((temp_r3_231 = temp_r21_218->unk0 << 6, temp_r5_233 = M2C_FIELD(M2C_FIELD(temp_r25_191->unk0, void **, 0x30), s32 *, 0x50), temp_r4_235 = temp_r5_233 + temp_r3_231, temp_f3_236 = *(temp_r5_233 + (temp_r3_231 + 0xC)), sp40 = (0.5f * temp_r4_235->unk10) + temp_r4_235->unk0, sp44 = (0.5f * temp_r4_235->unk14) + temp_r4_235->unk4, sp48 = (0.5f * temp_r4_235->unk18) + temp_r4_235->unk8, sp90 = (f64) sp40, sp98 = (f64) sp48, sp9C = temp_f3_236, temp_f0_258 = (f64) sp40 - M2C_FIELD(&MKGrass_cameraPos, f64 *, 0), sp30 = temp_f0_258, sp50 = temp_f0_258, sp38 = (f32) sp98 - (f32) M2C_FIELD(&MKGrass_cameraPos, f64 *, 8), temp_f1_269 = M2C_FIELD(M2C_FIELD(temp_r29_161, void **, 0x2C), f32 *, 0x34) + temp_f3_236, sp58 = (f64) sp38, (((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54))) > (temp_f1_269 * temp_f1_269)) == 0)) && (((Frustum *) &spA0)->IsVisible(temp_r4_235) != 0)))) {
+                                if (!(MKModel_GetSubObjectFlag(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0) & 0xF) && (!(((u8) M2C_FIELD(*var_r26_188, MKModel **, 0)->unk5 >> 6U) & 1) || ((temp_r3_231 = temp_r21_218->unk0 << 6, temp_r5_233 = M2C_FIELD(M2C_FIELD(temp_r25_191->unk0, void **, 0x30), s32 *, 0x50), temp_r4_235 = temp_r5_233 + temp_r3_231, temp_f3_236 = *(temp_r5_233 + (temp_r3_231 + 0xC)), sp40 = (0.5f * temp_r4_235->unk10) + temp_r4_235->unk0, sp44 = (0.5f * temp_r4_235->unk14) + temp_r4_235->unk4, sp48 = (0.5f * temp_r4_235->unk18) + temp_r4_235->unk8, sp90 = (f64) sp40, sp98 = (f64) sp48, sp9C = temp_f3_236, temp_f0_258 = (f64) sp40 - M2C_FIELD(&MKGrass_cameraPos, f64 *, 0), sp30 = temp_f0_258, sp50 = temp_f0_258, sp38 = (f32) sp98 - (f32) M2C_FIELD(&MKGrass_cameraPos, f64 *, 8), temp_f1_269 = M2C_FIELD(M2C_FIELD(temp_r29_161, void **, 0x2C), f32 *, 0x34) + temp_f3_236, sp58 = (f64) sp38, (((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))))) > (temp_f1_269 * temp_f1_269)) == 0)) && (((Frustum *) &spA0)->IsVisible(temp_r4_235) != 0)))) {
                                     temp_r3_290 = MKModel_GetBoundingVolume(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0);
                                     var_r17_292 = 0;
                                     sp20 = (0.5f * M2C_FIELD(temp_r3_290, f32 *, 0x10)) + M2C_FIELD(temp_r3_290, f32 *, 0);
@@ -215,12 +215,12 @@ loop_42:
                                     sp70 = (f64) sp20;
                                     sp78 = (f64) sp28;
                                     temp_f1_311 = M2C_FIELD(temp_r3_290, f32 *, 0xC);
-                                    unksp7C = temp_f1_311;
+                                    (*(f32 *) ((u8 *) &sp78 + 0x4)) = temp_f1_311;
                                     if (((u8) M2C_FIELD(&gShockWaveData, u8 *, 0x60) != 0) && (MKShockWave_IsWithin(*((MKVector3 *) &sp70), temp_f1_311) != 0)) {
                                         var_r17_292 = 1;
                                     }
                                     if ((u8) M2C_FIELD(*var_r26_188, u8 *, 8) != 0) {
-                                        var_r3_328 = OmniLight_FindNearestGroup(*((MKVector3 *) &sp70), unksp7C, &sp80, 4);
+                                        var_r3_328 = OmniLight_FindNearestGroup(*((MKVector3 *) &sp70), (*(f32 *) ((u8 *) &sp78 + 0x4)), &sp80, 4);
                                     } else {
                                         var_r3_328 = 0;
                                     }
@@ -893,13 +893,13 @@ loop_33:
                         temp_r8_1420 = *(temp_r4_1400 + ((*(&sp30 + temp_r6_1415) * 4) + 0x7A0));
                         if ((u32) (temp_r8_1420 + 0x10000) != -1U) {
                             sp20 = 0.0078125f * (f32) (u8) temp_r8_1420;
-                            unksp24 = 0.0078125f * (f32) (u8) (temp_r8_1420 >> 8U);
+                            (*(f32 *) ((u8 *) &spC + 0x18)) = 0.0078125f * (f32) (u8) (temp_r8_1420 >> 8U);
                             sp28 = 0.0078125f * (f32) (u8) (temp_r8_1420 >> 0x10U);
                         }
                         temp_r6_1453 = *(M2C_FIELD(var_r28_1098, void **, 0x2C) + ((*(&sp30 + temp_r6_1415) * 4) + 0x7C0));
                         if ((u32) (temp_r6_1453 + 0x10000) != -1U) {
                             sp10 = 0.0078125f * (f32) (u8) temp_r6_1453;
-                            unksp14 = 0.0078125f * (f32) (u8) (temp_r6_1453 >> 8U);
+                            (*(f32 *) ((u8 *) &spC + 0x8)) = 0.0078125f * (f32) (u8) (temp_r6_1453 >> 8U);
                             sp18 = 0.0078125f * (f32) (u8) (temp_r6_1453 >> 0x10U);
                         }
                     }
@@ -909,12 +909,12 @@ loop_33:
                     } else {
                         var_f1_1482 = MKRand_Float(&spC, var_f1_1482, sp10);
                     }
-                    var_f0_1491 = unksp24;
+                    var_f0_1491 = (*(f32 *) ((u8 *) &spC + 0x18));
                     *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r27_1354 + 0x5A0)) = var_f1_1482;
-                    if (var_f0_1491 == unksp14) {
+                    if (var_f0_1491 == (*(f32 *) ((u8 *) &spC + 0x8))) {
 
                     } else {
-                        var_f0_1491 = MKRand_Float(&spC, var_f0_1491, unksp14);
+                        var_f0_1491 = MKRand_Float(&spC, var_f0_1491, (*(f32 *) ((u8 *) &spC + 0x8)));
                     }
                     var_f1_1505 = sp28;
                     *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r27_1354 + 0x5A4)) = var_f0_1491;

@@ -108,7 +108,7 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     temp_f3_179 = arg0->unk4;
     sp50 = temp_f0_173;
     sp18 = (f32) sp68 - (f32) M2C_FIELD(arg0, f64 *, 0x38);
-    unksp54 = temp_f3_179;
+    (*(f32 *) ((u8 *) &sp48 + 0xc)) = temp_f3_179;
     sp58 = (f64) sp18;
     var_f31_192 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (temp_f3_179 * temp_f3_179));
     if (var_f31_192 > 0.000001f) {
@@ -152,7 +152,7 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     }
     temp_r30_270 = arg0->unk60;
     sp50 = (f32) sp50 * var_f3_259;
-    unksp54 *= var_f3_259;
+    (*(f32 *) ((u8 *) &sp48 + 0xc)) *= var_f3_259;
     sp58 = (f32) sp58 * var_f3_259;
     arg0->unk50 = M2C_FIELD((checked_cast<MudGutsCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (temp_r30_270 * 4)), void **, 0x70);
     arg0->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk50, s16 *, 4) / 30.0f));
@@ -162,7 +162,7 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     sp48 = (f64) sp58;
     KDMath_BuildMatrixFromUp((Matrix *) arg0, *((MKVector3 *) &sp70), *((MKVector3 *) &sp40));
     M2C_FIELD(arg0, f64 *, 0x30) = (f32) sp80;
-    M2C_FIELD(arg0, f32 *, 0x34) = unksp84;
+    M2C_FIELD(arg0, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp80 + 0x4));
     M2C_FIELD(arg0, f64 *, 0x38) = (f32) sp88;
     M2C_FIELD(arg0, f32 *, 0x3C) = 1.0f;
 }
@@ -211,7 +211,7 @@ loop_15:
                 sp10 = M2C_FIELD(temp_r29_339, f32 *, 0x38) + sp28.unk8;
                 M2C_FIELD(temp_r29_339, f32 *, 0x30) = (f32) sp38;
                 sp40 = (f64) sp10;
-                M2C_FIELD(temp_r29_339, f32 *, 0x34) = unksp3C;
+                M2C_FIELD(temp_r29_339, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp38 + 0x4));
                 M2C_FIELD(temp_r29_339, f32 *, 0x38) = (f32) sp40;
                 M2C_FIELD(temp_r29_339, f32 *, 0x3C) = 1.0f;
                 if (((temp_r29_339->unk64 <= 0.0f) && ((s32) temp_r29_339->unk60 == 0)) || (((s32) temp_r29_339->unk60 == 1) && (temp_r29_339->unk54 >= 1.0f))) {

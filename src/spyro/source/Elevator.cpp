@@ -14,7 +14,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'unksp4C'
 void Elevator::Move(float arg0) {
     s8 sp80;
     s32 sp7C;
@@ -109,10 +108,9 @@ loop_12:
     this->unkE0.unk30 = (f32) sp48;
     this->unkE0.unk34 = temp_f2_141;
     this->unkE0.unk38 = (f32) sp50;
-    unksp4C = temp_f2_141;
+    (*(f32 *) ((u8 *) &sp48 + 0x4)) = temp_f2_141;
     this->unkE0.unk3C = 1.0f;
 }
-#endif
 
 void Elevator::WaitState() {
     if (this->unk148 < this->unkB8) {
@@ -126,7 +124,6 @@ void Elevator::WaitState() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
 void Elevator::ShudderState() {
     f64 sp10;
     f64 sp8;
@@ -157,14 +154,13 @@ void Elevator::ShudderState() {
     this->unkE0.unk34 = temp_f2_233;
     this->unkE0.unk38 = (f32) sp10;
     this->unkE0.unk3C = 1.0f;
-    unkspC = temp_f2_233;
+    (*(f32 *) ((u8 *) &sp8 + 0x4)) = temp_f2_233;
     if (this->unk148 < this->unkB8) {
         this->unk150 = 1;
         this->unk148 = this->unkB8 + this->unk144;
         this->unk130 = 0.0f;
     }
 }
-#endif
 
 void Elevator::GoingDownState() {
     Move(-1.0f);
@@ -279,7 +275,7 @@ void Elevator::PropUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void Elevator::Reset() {
     f64 sp10;
     f64 sp8;
@@ -292,7 +288,7 @@ void Elevator::Reset() {
     this->unkE0.unk30 = (f32) sp8;
     this->unkE0.unk34 = temp_f3_540;
     this->unkE0.unk38 = (f32) sp10;
-    unkspC = temp_f3_540;
+    (*(f32 *) ((u8 *) &sp8 + 0x4)) = temp_f3_540;
     this->unkE0.unk3C = 1.0f;
     this->unk148 = this->unkB8 + MKRand_Float(&gViewSeed, 0.0f, 2.0f);
     this->unk150 = 1;
@@ -348,7 +344,7 @@ void Elevator::LoadDone() {
     this->unkE0.unk34 = temp_f2_658;
     this->unkE0.unk38 = (f32) sp10;
     this->unkE0.unk3C = 1.0f;
-    unkspC = temp_f2_658;
+    (*(f32 *) ((u8 *) &sp8 + 0x4)) = temp_f2_658;
     this->unk150 = 0;
 }
 #endif

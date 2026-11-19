@@ -430,13 +430,13 @@ loop_197:
                 sp3B0 = (f64) sp448;
             }
             sp9C = ((f32) sp3A0 * (f32) sp3A8) - ((f32) sp398 * (f32) sp3B0);
-            sp98 = (unksp39C * (f32) sp3B0) - ((f32) sp3A0 * unksp3AC);
-            spA0 = ((f32) sp398 * unksp3AC) - (unksp39C * (f32) sp3A8);
+            sp98 = ((*(f32 *) ((u8 *) &sp398 + 0x4)) * (f32) sp3B0) - ((f32) sp3A0 * (*(f32 *) ((u8 *) &sp3A8 + 0x4)));
+            spA0 = ((f32) sp398 * (*(f32 *) ((u8 *) &sp3A8 + 0x4))) - ((*(f32 *) ((u8 *) &sp398 + 0x4)) * (f32) sp3A8);
             sp3B8 = (f64) sp98;
             sp3C0 = (f64) spA0;
             sp2A8 = (f64) sp98;
             sp2B0 = (f64) spA0;
-            var_f4_343 = ((f32) sp3C0 * (f32) sp3C0) + (((f32) sp3B8 * (f32) sp3B8) + (unksp3BC * unksp3BC));
+            var_f4_343 = ((f32) sp3C0 * (f32) sp3C0) + (((f32) sp3B8 * (f32) sp3B8) + ((*(f32 *) ((u8 *) &sp3B0 + 0xc)) * (*(f32 *) ((u8 *) &sp3B0 + 0xc))));
             if (var_f4_343 > 0.000001f) {
                 if (var_f4_343 > 0.0f) {
                     temp_f1_349 = __frsqrte(var_f4_343);
@@ -477,24 +477,24 @@ loop_197:
             } else {
                 var_f2_410 = 0.0f;
             }
-            temp_f10_417 = unksp3BC * var_f2_410;
+            temp_f10_417 = (*(f32 *) ((u8 *) &sp3B0 + 0xc)) * var_f2_410;
             temp_f9_419 = (f32) sp3C0 * var_f2_410;
             temp_f11_422 = (f32) sp3B8 * var_f2_410;
             sp3B8 = temp_f11_422;
-            unksp3BC = temp_f10_417;
-            sp88 = (unksp3AC * temp_f9_419) - ((f32) sp3B0 * temp_f10_417);
+            (*(f32 *) ((u8 *) &sp3B0 + 0xc)) = temp_f10_417;
+            sp88 = ((*(f32 *) ((u8 *) &sp3A8 + 0x4)) * temp_f9_419) - ((f32) sp3B0 * temp_f10_417);
             sp8C = ((f32) sp3B0 * temp_f11_422) - ((f32) sp3A8 * temp_f9_419);
-            sp90 = ((f32) sp3A8 * temp_f10_417) - (unksp3AC * temp_f11_422);
+            sp90 = ((f32) sp3A8 * temp_f10_417) - ((*(f32 *) ((u8 *) &sp3A8 + 0x4)) * temp_f11_422);
             M2C_FIELD(temp_r30_187, f64 *, 0x40) = (f64) sp88;
             sp398 = (f64) sp88;
             M2C_FIELD(temp_r30_187, f32 *, 0x48) = (f64) sp90;
             temp_r30_187->unk20 = (f32) sp3A8;
-            temp_r30_187->unk24 = unksp3AC;
+            temp_r30_187->unk24 = (*(f32 *) ((u8 *) &sp3A8 + 0x4));
             temp_r30_187->unk28 = (f32) sp3B0;
             temp_r30_187->unk2C = 0.0f;
             sp3A0 = (f64) sp90;
             temp_r30_187->unk10 = (f32) sp398;
-            temp_r30_187->unk14 = unksp39C;
+            temp_r30_187->unk14 = (*(f32 *) ((u8 *) &sp398 + 0x4));
             temp_r30_187->unk18 = (f32) sp3A0;
             temp_r30_187->unk1C = 0.0f;
             temp_r30_187->unk0 = temp_f11_422;
@@ -504,7 +504,7 @@ loop_197:
             sp3C0 = temp_f9_419;
             temp_r30_187->unk30 = (f32) sp3C8;
             sp298 = (f64) sp88;
-            temp_r30_187->unk34 = unksp3CC;
+            temp_r30_187->unk34 = (*(f32 *) ((u8 *) &sp3C8 + 0x4));
             sp2A0 = (f64) sp90;
             temp_r30_187->unk38 = (f32) sp3D0;
             temp_r30_187->unk3C = 1.0f;
@@ -540,7 +540,7 @@ loop_197:
                     sp360 = (f64) sp190;
                     sp170 = 1.0f;
                     sp178 = 1.0f;
-                    var_f0_560 = ((f32) sp360 * (f32) sp360) + (((f32) sp358 * (f32) sp358) + (unksp35C * unksp35C));
+                    var_f0_560 = ((f32) sp360 * (f32) sp360) + (((f32) sp358 * (f32) sp358) + ((*(f32 *) ((u8 *) &sp350 + 0xc)) * (*(f32 *) ((u8 *) &sp350 + 0xc))));
                     sp17C = 0.0f;
                     sp168 = 0.0f;
                     sp16C = 0.0f;
@@ -594,18 +594,18 @@ loop_197:
                     sp370 = (f64) M2C_FIELD(temp_r30_187, f32 *, 0x28);
                     temp_f10_648 = (f32) sp358 * var_f9_542;
                     temp_f8_649 = (f32) sp360 * var_f9_542;
-                    temp_f9_653 = unksp35C * var_f9_542;
+                    temp_f9_653 = (*(f32 *) ((u8 *) &sp350 + 0xc)) * var_f9_542;
                     sp358 = temp_f10_648;
-                    unksp35C = temp_f9_653;
-                    sp78 = (temp_f9_653 * (f32) sp370) - (temp_f8_649 * unksp36C);
+                    (*(f32 *) ((u8 *) &sp350 + 0xc)) = temp_f9_653;
+                    sp78 = (temp_f9_653 * (f32) sp370) - (temp_f8_649 * (*(f32 *) ((u8 *) &sp350 + 0x1c)));
                     sp7C = (temp_f8_649 * (f32) sp368) - (temp_f10_648 * (f32) sp370);
-                    sp80 = (temp_f10_648 * unksp36C) - (temp_f9_653 * (f32) sp368);
+                    sp80 = (temp_f10_648 * (*(f32 *) ((u8 *) &sp350 + 0x1c))) - (temp_f9_653 * (f32) sp368);
                     sp378 = (f64) sp78;
                     sp380 = (f64) sp80;
                     sp360 = temp_f8_649;
                     sp278 = (f64) sp78;
                     sp280 = (f64) sp80;
-                    var_f5_681 = ((f32) sp380 * (f32) sp380) + (((f32) sp378 * (f32) sp378) + (unksp37C * unksp37C));
+                    var_f5_681 = ((f32) sp380 * (f32) sp380) + (((f32) sp378 * (f32) sp378) + ((*(f32 *) ((u8 *) &sp350 + 0x2c)) * (*(f32 *) ((u8 *) &sp350 + 0x2c))));
                     if (var_f5_681 > 0.000001f) {
                         if (var_f5_681 > 0.0f) {
                             temp_f2_687 = __frsqrte(var_f5_681);
@@ -648,18 +648,18 @@ loop_197:
                     }
                     temp_f10_755 = (f32) sp378 * var_f3_748;
                     temp_f8_757 = (f32) sp380 * var_f3_748;
-                    temp_f9_760 = unksp37C * var_f3_748;
+                    temp_f9_760 = (*(f32 *) ((u8 *) &sp350 + 0x2c)) * var_f3_748;
                     sp378 = temp_f10_755;
-                    unksp37C = temp_f9_760;
+                    (*(f32 *) ((u8 *) &sp350 + 0x2c)) = temp_f9_760;
                     sp380 = temp_f8_757;
-                    sp68 = (temp_f9_760 * sp360) - (temp_f8_757 * unksp35C);
+                    sp68 = (temp_f9_760 * sp360) - (temp_f8_757 * (*(f32 *) ((u8 *) &sp350 + 0xc)));
                     sp6C = (temp_f8_757 * sp358) - (temp_f10_755 * sp360);
-                    sp70 = (temp_f10_755 * unksp35C) - (temp_f9_760 * sp358);
+                    sp70 = (temp_f10_755 * (*(f32 *) ((u8 *) &sp350 + 0xc))) - (temp_f9_760 * sp358);
                     sp368 = (f64) sp68;
                     sp370 = (f64) sp70;
                     sp268 = (f64) sp68;
                     sp270 = (f64) sp70;
-                    var_f5_788 = ((f32) sp370 * (f32) sp370) + (((f32) sp368 * (f32) sp368) + (unksp36C * unksp36C));
+                    var_f5_788 = ((f32) sp370 * (f32) sp370) + (((f32) sp368 * (f32) sp368) + ((*(f32 *) ((u8 *) &sp350 + 0x1c)) * (*(f32 *) ((u8 *) &sp350 + 0x1c))));
                     if (var_f5_788 > 0.000001f) {
                         if (var_f5_788 > 0.0f) {
                             temp_f2_794 = __frsqrte(var_f5_788);
@@ -703,7 +703,7 @@ loop_197:
                     M2C_FIELD(temp_r30_187, f64 *, 0x40) = (f64) sp358;
                     temp_f8_864 = (f32) sp368 * var_f4_855;
                     M2C_FIELD(temp_r30_187, f32 *, 0x48) = (f64) sp360;
-                    temp_f7_867 = unksp36C * var_f4_855;
+                    temp_f7_867 = (*(f32 *) ((u8 *) &sp350 + 0x1c)) * var_f4_855;
                     temp_f6_871 = (f32) sp370 * var_f4_855;
                     M2C_FIELD(temp_r30_187, f64 *, 0x70) = (f64) M2C_FIELD(temp_r30_187, f32 *, 0x30);
                     M2C_FIELD(temp_r30_187, f64 *, 0x78) = (f64) M2C_FIELD(temp_r30_187, f32 *, 0x38);
@@ -712,15 +712,15 @@ loop_197:
                     temp_r30_187->unk28 = temp_f6_871;
                     temp_r30_187->unk2C = 0.0f;
                     temp_r30_187->unk10 = sp358;
-                    temp_r30_187->unk14 = unksp35C;
+                    temp_r30_187->unk14 = (*(f32 *) ((u8 *) &sp350 + 0xc));
                     temp_r30_187->unk18 = sp360;
                     temp_r30_187->unk1C = 0.0f;
                     temp_r30_187->unk0 = sp378;
-                    temp_r30_187->unk4 = unksp37C;
+                    temp_r30_187->unk4 = (*(f32 *) ((u8 *) &sp350 + 0x2c));
                     temp_r30_187->unk8 = sp380;
                     temp_r30_187->unkC = 0.0f;
                     sp368 = temp_f8_864;
-                    unksp36C = temp_f7_867;
+                    (*(f32 *) ((u8 *) &sp350 + 0x1c)) = temp_f7_867;
                     sp370 = temp_f6_871;
                     M2C_FIELD(temp_r30_187, f32 *, 0x64) = (f32) (var_f0_560 / 300.0f);
                 }
@@ -757,7 +757,7 @@ loop_197:
             sp140 = temp_r30_187->unk38 + (f32) sp240;
             temp_r30_187->unk30 = (f32) sp348;
             sp350 = (f64) sp140;
-            temp_r30_187->unk34 = unksp34C;
+            temp_r30_187->unk34 = (*(f32 *) ((u8 *) &sp348 + 0x4));
             temp_r30_187->unk38 = (f32) sp350;
             temp_r30_187->unk3C = 1.0f;
             if (M2C_FIELD(temp_r30_187, f32 *, 0x64) <= 0.0f) {
@@ -782,7 +782,7 @@ loop_197:
                 sp320 = (f64) sp130;
                 sp110 = 0.0f;
                 sp118 = 1.0f;
-                var_f0_1053 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + (unksp31C * unksp31C));
+                var_f0_1053 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + ((*(f32 *) ((u8 *) &sp310 + 0xc)) * (*(f32 *) ((u8 *) &sp310 + 0xc))));
                 sp11C = 0.0f;
                 sp108 = 0.0f;
                 sp10C = 1.0f;
@@ -836,11 +836,11 @@ loop_197:
                 var_f7_1140 = 0.0f;
                 temp_f6_1141 = (f32) sp320 * var_f8_1035;
                 sp318 = temp_f3_1137;
-                unksp31C *= var_f8_1035;
+                (*(f32 *) ((u8 *) &sp310 + 0xc)) *= var_f8_1035;
                 sp320 = temp_f6_1141;
                 var_f6_1151 = (temp_f6_1141 * temp_f6_1141) + ((temp_f3_1137 * temp_f3_1137) + (0.0f * 0.0f));
                 M2C_FIELD(temp_r30_187, f64 *, 0x40) = (f64) sp318;
-                unksp31C = 0.0f;
+                (*(f32 *) ((u8 *) &sp310 + 0xc)) = 0.0f;
                 M2C_FIELD(temp_r30_187, f32 *, 0x48) = (f64) sp320;
                 M2C_FIELD(temp_r30_187, f64 *, 0x70) = (f64) M2C_FIELD(temp_r30_187, f32 *, 0x30);
                 M2C_FIELD(temp_r30_187, f64 *, 0x78) = (f64) M2C_FIELD(temp_r30_187, f32 *, 0x38);
@@ -882,20 +882,20 @@ loop_197:
                     }
                     var_f7_1140 = 1.0f / var_f6_1151;
                 }
-                temp_f9_1229 = unksp31C * var_f7_1140;
+                temp_f9_1229 = (*(f32 *) ((u8 *) &sp310 + 0xc)) * var_f7_1140;
                 temp_f8_1231 = sp320 * var_f7_1140;
                 temp_f10_1234 = sp318 * var_f7_1140;
                 sp318 = temp_f10_1234;
-                unksp31C = temp_f9_1229;
+                (*(f32 *) ((u8 *) &sp310 + 0xc)) = temp_f9_1229;
                 sp320 = temp_f8_1231;
-                sp48 = (unksp30C * temp_f8_1231) - ((f32) sp310 * temp_f9_1229);
+                sp48 = ((*(f32 *) ((u8 *) &sp308 + 0x4)) * temp_f8_1231) - ((f32) sp310 * temp_f9_1229);
                 sp4C = ((f32) sp310 * temp_f10_1234) - ((f32) sp308 * temp_f8_1231);
-                sp50 = ((f32) sp308 * temp_f9_1229) - (unksp30C * temp_f10_1234);
+                sp50 = ((f32) sp308 * temp_f9_1229) - ((*(f32 *) ((u8 *) &sp308 + 0x4)) * temp_f10_1234);
                 sp328 = (f64) sp48;
                 sp330 = (f64) sp50;
                 sp208 = (f64) sp48;
                 sp210 = (f64) sp50;
-                var_f5_1262 = ((f32) sp330 * (f32) sp330) + (((f32) sp328 * (f32) sp328) + (unksp32C * unksp32C));
+                var_f5_1262 = ((f32) sp330 * (f32) sp330) + (((f32) sp328 * (f32) sp328) + ((*(f32 *) ((u8 *) &sp310 + 0x1c)) * (*(f32 *) ((u8 *) &sp310 + 0x1c))));
                 if (var_f5_1262 > 0.000001f) {
                     if (var_f5_1262 > 0.0f) {
                         temp_f2_1268 = __frsqrte(var_f5_1262);
@@ -937,14 +937,14 @@ loop_197:
                     var_f6_1329 = 0.0f;
                 }
                 temp_r30_187->unk20 = sp318;
-                temp_r30_187->unk24 = unksp31C;
+                temp_r30_187->unk24 = (*(f32 *) ((u8 *) &sp310 + 0xc));
                 temp_r30_187->unk28 = sp320;
                 temp_r30_187->unk2C = 0.0f;
                 temp_f5_1347 = (f32) sp328 * var_f6_1329;
-                temp_f4_1349 = unksp32C * var_f6_1329;
+                temp_f4_1349 = (*(f32 *) ((u8 *) &sp310 + 0x1c)) * var_f6_1329;
                 temp_r30_187->unk10 = (f32) sp308;
                 temp_f3_1352 = (f32) sp330 * var_f6_1329;
-                temp_r30_187->unk14 = unksp30C;
+                temp_r30_187->unk14 = (*(f32 *) ((u8 *) &sp308 + 0x4));
                 sp328 = temp_f5_1347;
                 temp_r30_187->unk18 = (f32) sp310;
                 temp_r30_187->unk1C = 0.0f;
@@ -952,7 +952,7 @@ loop_197:
                 temp_r30_187->unk4 = temp_f4_1349;
                 temp_r30_187->unk8 = temp_f3_1352;
                 temp_r30_187->unkC = 0.0f;
-                unksp32C = temp_f4_1349;
+                (*(f32 *) ((u8 *) &sp310 + 0x1c)) = temp_f4_1349;
                 sp330 = temp_f3_1352;
                 M2C_FIELD(temp_r30_187, f32 *, 0x64) = (f32) (var_f0_1053 / 500.0f);
             }
@@ -989,7 +989,7 @@ loop_197:
             spE0 = temp_r30_187->unk38 + (f32) sp200;
             temp_r30_187->unk30 = (f32) sp2F8;
             sp300 = (f64) spE0;
-            temp_r30_187->unk34 = unksp2FC;
+            temp_r30_187->unk34 = (*(f32 *) ((u8 *) &sp2F8 + 0x4));
             temp_r30_187->unk38 = (f32) sp300;
             temp_r30_187->unk3C = 1.0f;
             if (M2C_FIELD(temp_r30_187, f32 *, 0x64) <= 0.0f) {
@@ -1056,13 +1056,13 @@ loop_197:
                     sp2D0 = (f64) sp3F0;
                 }
                 sp3C = ((f32) sp2C0 * (f32) sp2C8) - ((f32) sp2B8 * (f32) sp2D0);
-                sp38 = (unksp2BC * (f32) sp2D0) - ((f32) sp2C0 * unksp2CC);
-                sp40 = ((f32) sp2B8 * unksp2CC) - (unksp2BC * (f32) sp2C8);
+                sp38 = ((*(f32 *) ((u8 *) &sp2B8 + 0x4)) * (f32) sp2D0) - ((f32) sp2C0 * (*(f32 *) ((u8 *) &sp2C8 + 0x4)));
+                sp40 = ((f32) sp2B8 * (*(f32 *) ((u8 *) &sp2C8 + 0x4))) - ((*(f32 *) ((u8 *) &sp2B8 + 0x4)) * (f32) sp2C8);
                 sp2D8 = (f64) sp38;
                 sp2E0 = (f64) sp40;
                 sp1D8 = (f64) sp38;
                 sp1E0 = (f64) sp40;
-                var_f4_1630 = ((f32) sp2E0 * (f32) sp2E0) + (((f32) sp2D8 * (f32) sp2D8) + (unksp2DC * unksp2DC));
+                var_f4_1630 = ((f32) sp2E0 * (f32) sp2E0) + (((f32) sp2D8 * (f32) sp2D8) + ((*(f32 *) ((u8 *) &sp2D0 + 0xc)) * (*(f32 *) ((u8 *) &sp2D0 + 0xc))));
                 if (var_f4_1630 > 0.000001f) {
                     if (var_f4_1630 > 0.0f) {
                         temp_f1_1636 = __frsqrte(var_f4_1630);
@@ -1103,24 +1103,24 @@ loop_197:
                 } else {
                     var_f2_1697 = 0.0f;
                 }
-                temp_f10_1704 = unksp2DC * var_f2_1697;
+                temp_f10_1704 = (*(f32 *) ((u8 *) &sp2D0 + 0xc)) * var_f2_1697;
                 temp_f9_1706 = (f32) sp2E0 * var_f2_1697;
                 temp_f11_1709 = (f32) sp2D8 * var_f2_1697;
                 sp2D8 = temp_f11_1709;
-                unksp2DC = temp_f10_1704;
-                sp28 = (unksp2CC * temp_f9_1706) - ((f32) sp2D0 * temp_f10_1704);
+                (*(f32 *) ((u8 *) &sp2D0 + 0xc)) = temp_f10_1704;
+                sp28 = ((*(f32 *) ((u8 *) &sp2C8 + 0x4)) * temp_f9_1706) - ((f32) sp2D0 * temp_f10_1704);
                 sp2C = ((f32) sp2D0 * temp_f11_1709) - ((f32) sp2C8 * temp_f9_1706);
-                sp30 = ((f32) sp2C8 * temp_f10_1704) - (unksp2CC * temp_f11_1709);
+                sp30 = ((f32) sp2C8 * temp_f10_1704) - ((*(f32 *) ((u8 *) &sp2C8 + 0x4)) * temp_f11_1709);
                 M2C_FIELD(temp_r30_187, f64 *, 0x40) = (f64) sp28;
                 sp2B8 = (f64) sp28;
                 M2C_FIELD(temp_r30_187, f32 *, 0x48) = (f64) sp30;
                 temp_r30_187->unk20 = (f32) sp2C8;
-                temp_r30_187->unk24 = unksp2CC;
+                temp_r30_187->unk24 = (*(f32 *) ((u8 *) &sp2C8 + 0x4));
                 temp_r30_187->unk28 = (f32) sp2D0;
                 temp_r30_187->unk2C = 0.0f;
                 sp2C0 = (f64) sp30;
                 temp_r30_187->unk10 = (f32) sp2B8;
-                temp_r30_187->unk14 = unksp2BC;
+                temp_r30_187->unk14 = (*(f32 *) ((u8 *) &sp2B8 + 0x4));
                 temp_r30_187->unk18 = (f32) sp2C0;
                 temp_r30_187->unk1C = 0.0f;
                 temp_r30_187->unk0 = temp_f11_1709;
@@ -1130,7 +1130,7 @@ loop_197:
                 sp2E0 = temp_f9_1706;
                 temp_r30_187->unk30 = (f32) sp2E8;
                 sp1C8 = (f64) sp28;
-                temp_r30_187->unk34 = unksp2EC;
+                temp_r30_187->unk34 = (*(f32 *) ((u8 *) &sp2E8 + 0x4));
                 sp1D0 = (f64) sp30;
                 temp_r30_187->unk38 = (f32) sp2F0;
                 temp_r30_187->unk3C = 1.0f;

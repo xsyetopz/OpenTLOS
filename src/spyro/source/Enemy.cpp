@@ -169,7 +169,7 @@ void Enemy::UpdateModel() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void Enemy::SnapToDirOfHitSource() {
     f64 sp28;                                       /* compiler-managed */
     f64 sp20;                                       /* compiler-managed */
@@ -193,7 +193,7 @@ void Enemy::SnapToDirOfHitSource() {
     var_f4_336 = 0.0f;
     sp20 = temp_f0_330;
     sp18 = M2C_BITWISE(f32, this->unk8C0.unk40.unk8) - this->unk588.unk4;
-    unksp24 = 0.0f;
+    (*(f32 *) ((u8 *) &sp18 + 0xc)) = 0.0f;
     sp28 = (f64) sp18;
     var_f5_349 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (0.0f * 0.0f));
     if (var_f5_349 > 0.000001f) {
@@ -232,11 +232,11 @@ void Enemy::SnapToDirOfHitSource() {
         }
         var_f4_336 = 1.0f / var_f5_349;
     }
-    temp_f5_421 = unksp24 * var_f4_336;
+    temp_f5_421 = (*(f32 *) ((u8 *) &sp18 + 0xc)) * var_f4_336;
     temp_f6_423 = (f32) sp20 * var_f4_336;
     temp_f4_427 = (f32) sp28 * var_f4_336;
     sp20 = temp_f6_423;
-    unksp24 = temp_f5_421;
+    (*(f32 *) ((u8 *) &sp18 + 0xc)) = temp_f5_421;
     sp28 = temp_f4_427;
     if ((((temp_f4_427 * MKVector3::up.unk8) + ((temp_f6_423 * MKVector3::up.unk0) + (temp_f5_421 * MKVector3::up.unk4))) >= 0.999f) || (((temp_f4_427 * temp_f4_427) + ((temp_f6_423 * temp_f6_423) + (temp_f5_421 * temp_f5_421))) <= 0.001f)) {
         M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(this, f64 *, 0xC0);
@@ -712,7 +712,7 @@ void Enemy::UpdateLighting() {
         sp80 = sp10;
         sp18 = M2C_FIELD(temp_r3_1320, f32 *, 8) - sp78;
         sp88 = (f64) sp18;
-        var_f4_1341 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
+        var_f4_1341 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp70 + 0x14)) * (*(f32 *) ((u8 *) &sp70 + 0x14))));
         if (var_f4_1341 > 0.000001f) {
             if (var_f4_1341 > 0.0f) {
                 temp_f1_1347 = __frsqrte(var_f4_1341);
@@ -752,7 +752,7 @@ void Enemy::UpdateLighting() {
             var_f5_1408 = 0.0f;
         }
         sp80 = (f32) sp80 * var_f5_1408;
-        unksp84 *= var_f5_1408;
+        (*(f32 *) ((u8 *) &sp70 + 0x14)) *= var_f5_1408;
         sp88 = (f32) sp88 * var_f5_1408;
         KDMath_Slerp(sp40, *((MKVector3 *) &this->unk600), 6.2831855f * gUpdateTimeDelta);
         M2C_FIELD(this, f64 *, 0x600) = M2C_BITWISE(f64, sp40);
@@ -821,9 +821,9 @@ loop_22:
         temp_r3_1506 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, *(M2C_FIELD(this->unkA20, s32 *, 0x238) + var_r29_1492));
         sp88 = M2C_FIELD(temp_r3_1506, f64 *, 0);
         sp90 = M2C_FIELD(temp_r3_1506, f64 *, 8);
-        sp18 = ((f32) sp90 * spA0.unk20) + (((f32) sp88 * M2C_BITWISE(f32, spA0)) + (unksp8C * spA0.unk10));
-        sp1C = ((f32) sp90 * spA0.unk24) + (((f32) sp88 * spA0.unk4) + (unksp8C * spA0.unk14));
-        sp20 = ((f32) sp90 * spA0.unk28) + (((f32) sp88 * spA0.unk8) + (unksp8C * spA0.unk18));
+        sp18 = ((f32) sp90 * spA0.unk20) + (((f32) sp88 * M2C_BITWISE(f32, spA0)) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * spA0.unk10));
+        sp1C = ((f32) sp90 * spA0.unk24) + (((f32) sp88 * spA0.unk4) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * spA0.unk14));
+        sp20 = ((f32) sp90 * spA0.unk28) + (((f32) sp88 * spA0.unk8) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * spA0.unk18));
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
         sp88 = (f64) sp18;
@@ -838,7 +838,7 @@ loop_22:
         sp40 = temp_f28_1553;
         sp48 = (f64) sp38;
         sp50 = (f64) sp40;
-        var_f4_1577 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C));
+        var_f4_1577 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))));
         if (var_f4_1577 > 1e-12f) {
             if (var_f4_1577 > 0.0f) {
                 temp_f1_1583 = __frsqrte(var_f4_1577);
@@ -878,11 +878,11 @@ loop_22:
             var_f4_1644 = 0.0f;
         }
         sp28 = (f32) sp48 * var_f4_1644;
-        sp2C = unksp4C * var_f4_1644;
+        sp2C = (*(f32 *) ((u8 *) &sp48 + 0x4)) * var_f4_1644;
         sp30 = (f32) sp50 * var_f4_1644;
         sp68 = (f64) sp28;
         sp70 = (f64) sp30;
-        unksp7C += 30.0f;
+        (*(f32 *) ((u8 *) &sp78 + 0x4)) += 30.0f;
         temp_r28_1668 = *(M2C_FIELD(this->unkA20, s32 *, 0x240) + var_r29_1492);
         temp_r28_1668->EmitHitEffects(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *(MKModel_GetColor(this->unk4)), (MKProp *) this, 1);
         var_r31_1491 += 1;
@@ -928,9 +928,9 @@ loop_7:
                 temp_r3_1755 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, *(M2C_FIELD(this->unkA20, s32 *, 0x238) + var_r30_1724));
                 sp30 = M2C_FIELD(temp_r3_1755, f64 *, 0);
                 sp38 = M2C_FIELD(temp_r3_1755, f64 *, 8);
-                sp10 = ((f32) sp38 * sp40.unk20) + (((f32) sp30 * M2C_BITWISE(f32, sp40)) + (unksp34 * sp40.unk10));
-                sp14 = ((f32) sp38 * sp40.unk24) + (((f32) sp30 * sp40.unk4) + (unksp34 * sp40.unk14));
-                sp18 = ((f32) sp38 * sp40.unk28) + (((f32) sp30 * sp40.unk8) + (unksp34 * sp40.unk18));
+                sp10 = ((f32) sp38 * sp40.unk20) + (((f32) sp30 * M2C_BITWISE(f32, sp40)) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk10));
+                sp14 = ((f32) sp38 * sp40.unk24) + (((f32) sp30 * sp40.unk4) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk14));
+                sp18 = ((f32) sp38 * sp40.unk28) + (((f32) sp30 * sp40.unk8) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp40.unk18));
                 sp20 = (f64) sp10;
                 sp28 = (f64) sp18;
                 sp30 = (f64) sp10;
@@ -1123,7 +1123,7 @@ void Enemy::FindAndZapFriends(BreathHitMessage *arg0) {
         sp1D0 = M2C_FIELD(temp_r27_1930, f64 *, 0x10);
         sp1D8 = M2C_FIELD(temp_r27_1930, f64 *, 0x18);
         sp198 = (f64) sp58;
-        var_f13_1994 = ((f32) sp1D8 * (f32) sp1D8) + (((f32) sp1D0 * (f32) sp1D0) + (unksp1D4 * unksp1D4));
+        var_f13_1994 = ((f32) sp1D8 * (f32) sp1D8) + (((f32) sp1D0 * (f32) sp1D0) + ((*(f32 *) ((u8 *) &sp1C8 + 0xc)) * (*(f32 *) ((u8 *) &sp1C8 + 0xc))));
         if (var_f13_1994 > 0.000001f) {
             if (var_f13_1994 > 0.0f) {
                 temp_f10_1999 = __frsqrte(var_f13_1994);
@@ -1164,11 +1164,11 @@ void Enemy::FindAndZapFriends(BreathHitMessage *arg0) {
             var_f11_2061 = 0.0f;
             var_f31_2060 = 0.0f;
         }
-        temp_f12_2069 = unksp1D4 * var_f11_2061;
+        temp_f12_2069 = (*(f32 *) ((u8 *) &sp1C8 + 0xc)) * var_f11_2061;
         temp_f13_2071 = (f32) sp1D0 * var_f11_2061;
         temp_f11_2073 = (f32) sp1D8 * var_f11_2061;
         sp1D0 = temp_f13_2071;
-        unksp1D4 = temp_f12_2069;
+        (*(f32 *) ((u8 *) &sp1C8 + 0xc)) = temp_f12_2069;
         sp1D8 = temp_f11_2073;
         sp40 = 0.0f + ((temp_f11_2073 * sp210) + ((temp_f13_2071 * sp1F0) + (temp_f12_2069 * sp200)));
         sp44 = 0.0f + ((temp_f11_2073 * sp214) + ((temp_f13_2071 * sp1F4) + (temp_f12_2069 * sp204)));
@@ -1202,7 +1202,7 @@ loop_56:
                     temp_r3_2183 = M2C_FIELD((*temp_r27_2448)->unk8.unk0(temp_r27_2448), void **, 8);
                     sp150 = M2C_FIELD(temp_r3_2183, f64 *, 0x30);
                     sp158 = M2C_FIELD(temp_r3_2183, f64 *, 0x38);
-                    temp_f3_2192 = unksp154 - unksp1C4;
+                    temp_f3_2192 = (*(f32 *) ((u8 *) &sp150 + 0x4)) - (*(f32 *) ((u8 *) &sp1C0 + 0x4));
                     temp_f4_2193 = (f32) sp150 - (f32) sp1C0;
                     temp_f3_2196 = (f32) sp158 - (f32) sp1C8;
                     if (((temp_f3_2196 * temp_f3_2196) + ((temp_f4_2193 * temp_f4_2193) + (temp_f3_2192 * temp_f3_2192))) <= 1000000.0f) {
@@ -1231,7 +1231,7 @@ loop_56:
                         sp1B0 = sp70;
                         sp78 = (f32) sp148 - (f32) sp1C8;
                         sp1B8 = (f64) sp78;
-                        var_f31_2267 = ((f32) sp1B8 * (f32) sp1B8) + (((f32) sp1B0 * (f32) sp1B0) + (unksp1B4 * unksp1B4));
+                        var_f31_2267 = ((f32) sp1B8 * (f32) sp1B8) + (((f32) sp1B0 * (f32) sp1B0) + ((*(f32 *) ((u8 *) &sp1A0 + 0x14)) * (*(f32 *) ((u8 *) &sp1A0 + 0x14))));
                         if (var_f31_2267 > 0.000001f) {
                             if (var_f31_2267 > 0.0f) {
                                 temp_f1_2272 = __frsqrte(var_f31_2267);
@@ -1271,7 +1271,7 @@ loop_56:
                             var_f31_2267 = 0.0f;
                         }
                         sp1B0 = (f32) sp1B0 * var_f0_2221;
-                        unksp1B4 *= var_f0_2221;
+                        (*(f32 *) ((u8 *) &sp1A0 + 0x14)) *= var_f0_2221;
                         sp1B8 = (f32) sp1B8 * var_f0_2221;
                         temp_r5_2350 = this->unk8;
                         sp1A0 = M2C_FIELD(temp_r5_2350, f64 *, 0x30);
@@ -3143,7 +3143,7 @@ loop_68:
                 sp58 = sp28;
                 sp80 = (f64) sp30;
                 sp60 = (f64) sp30;
-                unksp7C = 0.0f;
+                (*(f32 *) ((u8 *) &sp68 + 0x14)) = 0.0f;
                 var_f4_6177 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (0.0f * 0.0f));
                 if (var_f4_6177 > 0.000001f) {
                     if (var_f4_6177 > 0.0f) {
@@ -3182,7 +3182,7 @@ loop_68:
                     var_f5_6162 = 1.0f / var_f4_6177;
                 }
                 sp78 = (f32) sp78 * var_f5_6162;
-                unksp7C *= var_f5_6162;
+                (*(f32 *) ((u8 *) &sp68 + 0x14)) *= var_f5_6162;
                 sp80 = (f32) sp80 * var_f5_6162;
             }
             temp_r3_6260 = M2C_BITWISE(s32, this->unkA18->unk0) + var_r21_6111;
@@ -3221,7 +3221,7 @@ loop_40:
                                 sp48 = sp18;
                                 sp80 = (f64) sp20;
                                 sp50 = (f64) sp20;
-                                unksp7C = 0.0f;
+                                (*(f32 *) ((u8 *) &sp68 + 0x14)) = 0.0f;
                                 var_f4_6330 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (0.0f * 0.0f));
                                 if (var_f4_6330 > 0.000001f) {
                                     if (var_f4_6330 > 0.0f) {
@@ -3260,7 +3260,7 @@ loop_40:
                                     var_f5_6315 = 1.0f / var_f4_6330;
                                 }
                                 sp78 = (f32) sp78 * var_f5_6315;
-                                unksp7C *= var_f5_6315;
+                                (*(f32 *) ((u8 *) &sp68 + 0x14)) *= var_f5_6315;
                                 sp80 = (f32) sp80 * var_f5_6315;
                             }
                             var_r28_6092 = MeleeDamageTarget(var_r17_6276, arg0, *((MKVector3 *) &sp78), arg1);
@@ -3423,7 +3423,7 @@ u8 Enemy::HurtHero(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int a
         sp70 = sp10;
     } else {
         sp68 = 0.0f;
-        unksp6C = 0.0f;
+        (*(f32 *) ((u8 *) &sp64 + 0x8)) = 0.0f;
         sp70 = 0.0f;
     }
     sp89 = 0;
@@ -3677,22 +3677,22 @@ void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2,
     sp158 = (f64) sp68;
     sp160 = (f64) sp70;
     sp80 = -sp2C8;
-    spD8 = (MKVector3::up.unk4 * (f32) sp160) - (MKVector3::up.unk8 * unksp15C);
+    spD8 = (MKVector3::up.unk4 * (f32) sp160) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp158 + 0x4)));
     sp170 = (f64) sp80;
     spDC = (MKVector3::up.unk8 * (f32) sp158) - (MKVector3::up.unk0 * (f32) sp160);
-    spE0 = (MKVector3::up.unk0 * unksp15C) - (MKVector3::up.unk4 * (f32) sp158);
+    spE0 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp158 + 0x4))) - (MKVector3::up.unk4 * (f32) sp158);
     sp148 = (f64) spD8;
     sp150 = (f64) spE0;
     sp78 = -sp2C0;
     sp7C = -sp2C4;
-    var_f6_7021 = ((f32) sp150 * (f32) sp150) + (((f32) sp148 * (f32) sp148) + (unksp14C * unksp14C));
+    var_f6_7021 = ((f32) sp150 * (f32) sp150) + (((f32) sp148 * (f32) sp148) + ((*(f32 *) ((u8 *) &sp148 + 0x4)) * (*(f32 *) ((u8 *) &sp148 + 0x4))));
     sp2C8 = (f32) sp170;
     sp168 = (f64) sp78;
     sp2C0 = (f32) sp168;
-    sp2C4 = unksp16C;
+    sp2C4 = (*(f32 *) ((u8 *) &sp168 + 0x4));
     sp2CC = 0.0f;
     sp2E0 = (f32) sp158;
-    sp2E4 = unksp15C;
+    sp2E4 = (*(f32 *) ((u8 *) &sp158 + 0x4));
     sp2E8 = (f32) sp160;
     sp2EC = 0.0f;
     if (var_f6_7021 > 1e-12f) {
@@ -3736,23 +3736,23 @@ void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2,
     spD0 = (f32) sp150 * var_f0_6973;
     spC8 = (f32) sp148 * var_f0_6973;
     sp1B0 = (f64) spD0;
-    spCC = unksp14C * var_f0_6973;
+    spCC = (*(f32 *) ((u8 *) &sp148 + 0x4)) * var_f0_6973;
     sp1A8 = (f64) spC8;
     spC0 = -(f32) sp1B0;
-    sp98 = (MKVector3::up.unk4 * (f32) sp190) - (MKVector3::up.unk8 * unksp18C);
+    sp98 = (MKVector3::up.unk4 * (f32) sp190) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp188 + 0x4)));
     sp140 = (f64) spC0;
     sp9C = (MKVector3::up.unk8 * (f32) sp188) - (MKVector3::up.unk0 * (f32) sp190);
-    spA0 = (MKVector3::up.unk0 * unksp18C) - (MKVector3::up.unk4 * (f32) sp188);
+    spA0 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp188 + 0x4))) - (MKVector3::up.unk4 * (f32) sp188);
     spB8 = -(f32) sp1A8;
-    spBC = -unksp1AC;
+    spBC = -(*(f32 *) ((u8 *) &sp1A8 + 0x4));
     sp130 = (f64) spA0;
     sp138 = (f64) spB8;
     sp128 = (f64) sp98;
     spAC = (MKVector3::up.unk8 * (f32) sp138) - (MKVector3::up.unk0 * (f32) sp140);
-    spB0 = (MKVector3::up.unk0 * unksp13C) - (MKVector3::up.unk4 * (f32) sp138);
-    spA8 = (MKVector3::up.unk4 * (f32) sp140) - (MKVector3::up.unk8 * unksp13C);
+    spB0 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp138 + 0x4))) - (MKVector3::up.unk4 * (f32) sp138);
+    spA8 = (MKVector3::up.unk4 * (f32) sp140) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp138 + 0x4)));
     sp1A0 = (f64) spB0;
-    var_f7_7169 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + (unksp12C * unksp12C));
+    var_f7_7169 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + ((*(f32 *) ((u8 *) &sp128 + 0x4)) * (*(f32 *) ((u8 *) &sp128 + 0x4))));
     sp198 = (f64) spA8;
     if (var_f7_7169 > 1e-12f) {
         if (var_f7_7169 > 0.0f) {
@@ -3792,24 +3792,24 @@ void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2,
     } else {
         var_f4_7238 = 0.0f;
     }
-    sp8C = unksp12C * var_f4_7238;
+    sp8C = (*(f32 *) ((u8 *) &sp128 + 0x4)) * var_f4_7238;
     sp88 = (f32) sp128 * var_f4_7238;
     sp90 = (f32) sp130 * var_f4_7238;
     sp178 = (f64) sp88;
     sp180 = (f64) sp90;
     sp28 = -(f32) sp178;
-    sp2C = -unksp17C;
+    sp2C = -(*(f32 *) ((u8 *) &sp178 + 0x4));
     sp30 = -(f32) sp180;
     sp108 = (f64) sp28;
     sp110 = (f64) sp30;
-    sp58 = (MKVector3::up.unk4 * (f32) sp110) - (MKVector3::up.unk8 * unksp10C);
+    sp58 = (MKVector3::up.unk4 * (f32) sp110) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp108 + 0x4)));
     sp5C = (MKVector3::up.unk8 * (f32) sp108) - (MKVector3::up.unk0 * (f32) sp110);
-    sp60 = (MKVector3::up.unk0 * unksp10C) - (MKVector3::up.unk4 * (f32) sp108);
+    sp60 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp108 + 0x4))) - (MKVector3::up.unk4 * (f32) sp108);
     sp178 = (f64) sp58;
     sp180 = (f64) sp60;
     sp118 = (f64) sp58;
     sp120 = (f64) sp60;
-    var_f22_7301 = ((f32) sp180 * (f32) sp190) + (((f32) sp178 * (f32) sp188) + (unksp17C * unksp18C));
+    var_f22_7301 = ((f32) sp180 * (f32) sp190) + (((f32) sp178 * (f32) sp188) + ((*(f32 *) ((u8 *) &sp178 + 0x4)) * (*(f32 *) ((u8 *) &sp188 + 0x4))));
     if (var_f22_7301 < 1.0f) {
 
     } else {
@@ -3822,10 +3822,10 @@ void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2,
     }
     temp_f23_7319 = KDMath_GetYaw(*((MKVector3 *) &sp178)) - 3.1415927f;
     temp_f7_7325 = (f32) acos(var_f22_7301);
-    temp_f6_7334 = 1.0f - (((f32) sp1A0 * (f32) sp180) + (((f32) sp198 * (f32) sp178) + (unksp19C * unksp17C)));
+    temp_f6_7334 = 1.0f - (((f32) sp1A0 * (f32) sp180) + (((f32) sp198 * (f32) sp178) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * (*(f32 *) ((u8 *) &sp178 + 0x4)))));
     var_f3_7339 = 1.0f;
-    sp20 = ((f32) sp190 * MKVector3::up.unk8) + (((f32) sp188 * MKVector3::up.unk0) + (unksp18C * MKVector3::up.unk4));
-    sp18 = ((f32) sp1B0 * (f32) sp180) + (((f32) sp1A8 * (f32) sp178) + (unksp1AC * unksp17C));
+    sp20 = ((f32) sp190 * MKVector3::up.unk8) + (((f32) sp188 * MKVector3::up.unk0) + ((*(f32 *) ((u8 *) &sp188 + 0x4)) * MKVector3::up.unk4));
+    sp18 = ((f32) sp1B0 * (f32) sp180) + (((f32) sp1A8 * (f32) sp178) + ((*(f32 *) ((u8 *) &sp1A8 + 0x4)) * (*(f32 *) ((u8 *) &sp178 + 0x4))));
     sp24 = (M2C_BITWISE(s32, sp20) & 0x80000000) | 0x3F800000;
     sp1C = (M2C_BITWISE(s32, sp18) & 0x80000000) | 0x3F800000;
     if (var_f3_7339 < temp_f6_7334) {
@@ -3872,11 +3872,11 @@ void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2,
     sp3C = -sp200.unk24;
     sp200 = (f32) spF8;
     spE8 = (f64) sp38;
-    sp200.unk4 = unkspFC;
+    sp200.unk4 = (*(f32 *) ((u8 *) &spF8 + 0x4));
     sp200.unk8 = (f32) sp100;
     sp200.unkC = 0.0f;
     sp200.unk20 = (f32) spE8;
-    sp200.unk24 = unkspEC;
+    sp200.unk24 = (*(f32 *) ((u8 *) &spE8 + 0x4));
     sp200.unk28 = (f32) spF0;
     sp200.unk2C = 0.0f;
     M2C_STRUCT_COPY((s32) (arg0 - 4) + 4, (s32) &sp1FC + 4, 0x40);
@@ -4219,7 +4219,6 @@ loop_63:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
 s32 Enemy::CheckForCliff(const MKVector3 &arg0) {
     f64 sp28;
     f64 sp20;
@@ -4238,8 +4237,8 @@ s32 Enemy::CheckForCliff(const MKVector3 &arg0) {
     sp10 = temp_f0_8195;
     sp28 = temp_f4_8197;
     sp18 = temp_f4_8197;
-    unksp24 += 100.0f;
-    unksp14 -= 50.0f;
+    (*(f32 *) ((u8 *) &sp20 + 0x4)) += 100.0f;
+    (*(f32 *) ((u8 *) &sp10 + 0x4)) -= 50.0f;
     temp_r5_8210 = this->unk634;
     sp8 = temp_r5_8210;
     if (temp_r5_8210 != NULL) {
@@ -4252,7 +4251,6 @@ s32 Enemy::CheckForCliff(const MKVector3 &arg0) {
     }
     return temp_r3_8230;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 Enemy::CanMoveAwayRight() {
@@ -4362,7 +4360,7 @@ s32 Enemy::CanMoveAwayRight() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspD4'
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 Enemy::CanMoveAwayLeft() {
     f64 sp108;
     f64 sp100;
@@ -4430,7 +4428,7 @@ s32 Enemy::CanMoveAwayLeft() {
     temp_f2_8437 = -(f32) spD0;
     sp78 = -(f32) spD8;
     sp70 = temp_f2_8437;
-    sp74 = -unkspD4;
+    sp74 = -(*(f32 *) ((u8 *) &spD0 + 0x4));
     sp108 = (f64) sp78;
     sp100 = (f64) sp70;
     temp_f1_8447 = M2C_FIELD(this->__vptr, f64 (**)(f64, f32, f32, f32, f32, f32, f32), 0x100)((f64) sp70, temp_f2_8437, temp_f3_8415, temp_f4_8419, temp_f5_8414, temp_f6_8413, temp_f7_8416);
@@ -4563,7 +4561,7 @@ u8 Enemy::CanMoveAwayForward() {
     var_r29_8670 = 0;
     if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &spC0)) != 0) {
         ((EnemyRegion *) &sp10)->GetRegionPos();
-        if ((f32) fabs(sp14 - unkspC4) <= 500.0f) {
+        if ((f32) fabs(sp14 - (*(f32 *) ((u8 *) &spC0 + 0x4))) <= 500.0f) {
             var_r29_8670 = 1;
         }
     }
@@ -4680,7 +4678,7 @@ u8 Enemy::CanMoveAwayBack() {
         var_r27_8865 = 0;
         if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &spD0)) != 0) {
             ((EnemyRegion *) &sp10)->GetRegionPos();
-            if ((f32) fabs(sp14 - unkspD4) <= 500.0f) {
+            if ((f32) fabs(sp14 - (*(f32 *) ((u8 *) &spD0 + 0x4))) <= 500.0f) {
                 var_r27_8865 = 1;
             }
         }
@@ -4930,7 +4928,7 @@ u8 Enemy::CanStrafeRight(AITargetData *arg0) {
         sp50 = (f64) sp20;
         if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
             ((EnemyRegion *) &sp8)->GetRegionPos();
-            if ((f32) fabs(spC - unksp4C) <= 500.0f) {
+            if ((f32) fabs(spC - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
                 var_r29_9657 = 1;
             }
         }
@@ -4989,7 +4987,7 @@ u8 Enemy::CanStrafeLeft(AITargetData *arg0) {
         sp50 = (f64) sp20;
         if (((EnemyRegion *) &this->unk750.unkA0)->IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
             ((EnemyRegion *) &sp8)->GetRegionPos();
-            if ((f32) fabs(spC - unksp4C) <= 500.0f) {
+            if ((f32) fabs(spC - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
                 var_r29_9770 = 1;
             }
         }
@@ -5098,12 +5096,12 @@ s32 Enemy::IsObscuringCamera(int *arg0) {
             sp18 = -sp48;
             sp50 = (f64) sp10;
             sp58 = (f64) sp18;
-            if (((sp60.unk38 * (f32) sp58) + ((sp60.unk30 * (f32) sp50) + (sp60.unk34 * unksp54))) >= AVOID_CAMERA_TARGET_COS_ANGLE) {
+            if (((sp60.unk38 * (f32) sp58) + ((sp60.unk30 * (f32) sp50) + (sp60.unk34 * (*(f32 *) ((u8 *) &sp50 + 0x4))))) >= AVOID_CAMERA_TARGET_COS_ANGLE) {
                 ((AITargetData *) &sp30)->GetDir();
                 sp60.unk20 = sp30;
                 sp60.unk28 = sp38;
                 temp_f5_10019 = -(f32) sp60.unk20;
-                unksp84 = 0.0f;
+                (*(f32 *) ((u8 *) &sp60 + 0x24)) = 0.0f;
                 temp_f2_10023 = (f32) temp_f5_10019;
                 temp_f0_10024 = (sp60.unk30 * (f32) sp60.unk28) + (sp60.unk34 * 0.0f);
                 sp60.unk20 = (f32) sp60.unk28;
@@ -5133,7 +5131,6 @@ u8 Enemy::CanStrafe() {
     return (u8) (((EnemyDescriptor *) this->unkA20)->GetAnimSequence(7, 0x19, M2C_BITWISE(s32, this->unkACC), NULL) != NULL);
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
 u8 Enemy::IsInsideFOV(const MKVector3 &arg0) {
     Matrix sp40;
     f64 sp38;
@@ -5159,11 +5156,10 @@ u8 Enemy::IsInsideFOV(const MKVector3 &arg0) {
         sp30 = (f64) sp10;
         sp38 = (f64) sp18;
     }
-    temp_f31_10295 = ((f32) sp38 * arg0.unk8) + (((f32) sp30 * arg0.unk0) + (unksp34 * arg0.unk4));
+    temp_f31_10295 = ((f32) sp38 * arg0.unk8) + (((f32) sp30 * arg0.unk0) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * arg0.unk4));
     _table_sinf(1.5707964f + M2C_FIELD(this->unkA20, f32 *, 0x14C));
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
 }
-#endif
 
 void Enemy::DrawShieldOverride() {
     u8 sp8;
@@ -5551,7 +5547,7 @@ s32 Enemy::IsTargetBehindWall(AITargetData *arg0) {
             sp190 = sp40;
             sp48 = (f32) sp1A8 - (f32) sp1B8;
             sp198 = (f64) sp48;
-            var_f5_11091 = ((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + (unksp194 * unksp194));
+            var_f5_11091 = ((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + ((*(f32 *) ((u8 *) &sp188 + 0xc)) * (*(f32 *) ((u8 *) &sp188 + 0xc))));
             if (var_f5_11091 > 0.000001f) {
                 if (var_f5_11091 > 0.0f) {
                     temp_f1_11097 = __frsqrte(var_f5_11091);
@@ -5594,7 +5590,7 @@ s32 Enemy::IsTargetBehindWall(AITargetData *arg0) {
             var_r27_11165 = 1;
             sp190 = (f32) sp190 * var_f4_11158;
             temp_r29_11179 = (s32) (var_f5_11091 / 500.0f) + 1;
-            unksp194 *= var_f4_11158;
+            (*(f32 *) ((u8 *) &sp188 + 0xc)) *= var_f4_11158;
             sp198 = (f32) sp198 * var_f4_11158;
 loop_32:
             if (var_r27_11165 > temp_r29_11179) {
@@ -6294,10 +6290,10 @@ void Enemy::Resolve() {
         sp5C = 0.0f;
         sp20 = (f64) sp10;
         sp30 = (f32) sp20;
-        sp34 = unksp24;
+        sp34 = (*(f32 *) ((u8 *) &sp20 + 0x4));
         sp38 = (f32) sp28;
         sp3C = 0.0f;
-        Spawn(&sp30, 0, &MKVector3::up, unksp24, (f32) sp20, temp_f3_12418, temp_f4_12411, 0.0f, MKVector3::up.unk8, MKVector3::up.unk4, MKVector3::up.unk0);
+        Spawn(&sp30, 0, &MKVector3::up, (*(f32 *) ((u8 *) &sp20 + 0x4)), (f32) sp20, temp_f3_12418, temp_f4_12411, 0.0f, MKVector3::up.unk8, MKVector3::up.unk4, MKVector3::up.unk0);
         return;
     }
     Deactivate();

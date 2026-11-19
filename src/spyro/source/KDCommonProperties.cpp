@@ -317,7 +317,7 @@ void KDPathFollowerProperty::UpdateNormalPath() {
         sp70 = sp60;
         sp68 = M2C_FIELD(temp_r6_579, f32 *, 8) - M2C_FIELD(temp_r5_578, f32 *, 8);
         sp78 = (f64) sp68;
-        var_f5_599 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (unksp74 * unksp74));
+        var_f5_599 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (*(f32 *) ((u8 *) &sp70 + 0x4))));
         if (var_f5_599 > 0.0f) {
             temp_f2_602 = __frsqrte(var_f5_599);
             temp_f2_608 = 0.5 * temp_f2_602 * -(((f64) var_f5_599 * (temp_f2_602 * temp_f2_602)) - 3.0);
@@ -381,7 +381,7 @@ void KDPathFollowerProperty::UpdateNormalPath() {
     sp88 = (f64) sp18;
     temp_r3_715 = M2C_FIELD(*temp_r3_705, void *(**)(void **, void *, void *, s32, void *, f32, f32, f64, f32, f32), 0x54)(temp_r3_705, temp_r4_677, temp_r5_678, temp_r6_675, temp_r7_668, temp_f1_706, temp_f2_686, temp_f3_680, temp_f4_684, temp_f5_669);
     M2C_FIELD(temp_r3_715, f32 *, 0x30) = (f32) sp80;
-    M2C_FIELD(temp_r3_715, f32 *, 0x34) = unksp84;
+    M2C_FIELD(temp_r3_715, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp80 + 0x4));
     M2C_FIELD(temp_r3_715, f32 *, 0x38) = (f32) sp88;
     M2C_FIELD(temp_r3_715, f32 *, 0x3C) = 1.0f;
 }
@@ -560,7 +560,7 @@ void KDPathFollowerProperty::Command(int arg0) {
             sp70 = temp_f1_1029;
             sp68 = M2C_FIELD(temp_r6_1026, f32 *, 8) - M2C_FIELD(temp_r5_1025, f32 *, 8);
             sp78 = (f64) sp68;
-            var_f5_1045 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (unksp74 * unksp74));
+            var_f5_1045 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (*(f32 *) ((u8 *) &sp70 + 0x4))));
             if (var_f5_1045 > 0.0f) {
                 temp_f2_1048 = __frsqrte(var_f5_1045);
                 temp_f2_1054 = 0.5 * temp_f2_1048 * -(((f64) var_f5_1045 * (temp_f2_1048 * temp_f2_1048)) - 3.0);
@@ -623,7 +623,7 @@ void KDPathFollowerProperty::Command(int arg0) {
         sp88 = (f64) sp18;
         temp_r3_1156 = M2C_FIELD(*temp_r3_1146, void *(**)(void **, void *, void *, s32, void *, f32, f32, f64, f32, f32), 0x54)(temp_r3_1146, temp_r4_1118, temp_r5_1119, temp_r6_1116, temp_r7_1109, temp_f1_1147, temp_f2_1127, temp_f3_1121, temp_f4_1125, temp_f5_1110);
         M2C_FIELD(temp_r3_1156, f32 *, 0x30) = (f32) sp80;
-        M2C_FIELD(temp_r3_1156, f32 *, 0x34) = unksp84;
+        M2C_FIELD(temp_r3_1156, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp80 + 0x4));
         M2C_FIELD(temp_r3_1156, f32 *, 0x38) = (f32) sp88;
         M2C_FIELD(temp_r3_1156, f32 *, 0x3C) = 1.0f;
         break;

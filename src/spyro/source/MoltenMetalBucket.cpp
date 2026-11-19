@@ -362,7 +362,7 @@ void MoltenMetalBucket::Update() {
         sp108 = sp98;
         spA0 = sp138.unk8 - sp148.unk8;
         sp110 = (f64) spA0;
-        var_f4_282 = ((f32) sp110 * (f32) sp110) + (((f32) sp108 * (f32) sp108) + (unksp10C * unksp10C));
+        var_f4_282 = ((f32) sp110 * (f32) sp110) + (((f32) sp108 * (f32) sp108) + ((*(f32 *) ((u8 *) &sp108 + 0x4)) * (*(f32 *) ((u8 *) &sp108 + 0x4))));
         if (var_f4_282 > 1e-12f) {
             if (var_f4_282 > 0.0f) {
                 temp_f1_288 = __frsqrte(var_f4_282);
@@ -401,13 +401,13 @@ void MoltenMetalBucket::Update() {
         } else {
             var_f4_349 = 0.0f;
         }
-        sp8C = unksp10C * var_f4_349;
+        sp8C = (*(f32 *) ((u8 *) &sp108 + 0x4)) * var_f4_349;
         sp88 = (f32) sp108 * var_f4_349;
         sp90 = (f32) sp110 * var_f4_349;
         sp128 = (f64) sp88;
         sp130 = (f64) sp90;
-        if (unksp12C <= 0.0f) {
-            var_f3_372 = 1.5f * unksp12C;
+        if ((*(f32 *) ((u8 *) &sp128 + 0x4)) <= 0.0f) {
+            var_f3_372 = 1.5f * (*(f32 *) ((u8 *) &sp128 + 0x4));
             if (var_f3_372 < 0.0f) {
                 var_f3_372 = -var_f3_372;
             }

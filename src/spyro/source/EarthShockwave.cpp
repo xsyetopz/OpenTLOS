@@ -197,7 +197,7 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     spE0 = (f64) sp30;
     sp190.Scale3x3(&sp190, *((MKVector3 *) &spE0));
     sp10 = -(f32) sp160;
-    sp14 = -unksp164;
+    sp14 = -(*(f32 *) ((u8 *) &sp160 + 0x4));
     sp18 = -(f32) sp168;
     spB0 = (f64) sp10;
     spB8 = (f64) sp18;
@@ -207,7 +207,7 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     sp28 = (f32) M2C_FIELD(this, f64 *, 0x98) + spC0.unk8;
     spD8 = (f64) sp28;
     sp190.unk30 = (f32) spD0;
-    sp190.unk34 = unkspD4;
+    sp190.unk34 = (*(f32 *) ((u8 *) &spD0 + 0x4));
     sp190.unk38 = (f32) spD8;
     sp190.unk3C = 1.0f;
     ((ExplosionWarpFX *) (&gb + 0x1C0))->StartWarp(&sp190);

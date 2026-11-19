@@ -221,7 +221,7 @@ loop_18:
         temp_r3_364 = *var_r30_219;
         if (temp_r3_364 != NULL) {
             var_r0_282 = 0;
-            if (((f32) sp58 > temp_r3_364->unk0) && ((f32) sp48 < temp_r3_364->unk10) && (unksp5C > temp_r3_364->unk4) && (unksp4C < temp_r3_364->unk14) && ((f32) sp60 > temp_r3_364->unk8) && ((f32) sp50 < temp_r3_364->unk18)) {
+            if (((f32) sp58 > temp_r3_364->unk0) && ((f32) sp48 < temp_r3_364->unk10) && ((*(f32 *) ((u8 *) &sp58 + 0x4)) > temp_r3_364->unk4) && ((*(f32 *) ((u8 *) &sp48 + 0x4)) < temp_r3_364->unk14) && ((f32) sp60 > temp_r3_364->unk8) && ((f32) sp50 < temp_r3_364->unk18)) {
                 var_r0_282 = 1;
             }
             if ((var_r0_282 != 0) && (temp_r3_364->GetGroundPoint(arg0, *((MKVector3 *) &sp38), (MKCollisionResult *) &spA0, arg3, arg4, (MKCollisionGroundHint *) &sp68, arg6) != 0) && (spE0 <= sp138)) {
@@ -270,7 +270,6 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp7C'
 s32 MKCollision_SphereCollide(const MKVector3 &arg0, float arg1, MKCollisionResult *arg2, int arg3, MKCollisionMode arg4, int arg5) {
     s8 spD8;
     s32 spD4;
@@ -407,7 +406,7 @@ loop_18:
     temp_r3_617 = *var_r30_571;
     if (temp_r3_617 != NULL) {
         var_r0_580 = 0;
-        if (((f32) sp78 > temp_r3_617->unk0) && ((f32) sp68 < temp_r3_617->unk10) && (unksp7C > temp_r3_617->unk4) && (unksp6C < temp_r3_617->unk14) && ((f32) sp80 > temp_r3_617->unk8) && ((f32) sp70 < temp_r3_617->unk18)) {
+        if (((f32) sp78 > temp_r3_617->unk0) && ((f32) sp68 < temp_r3_617->unk10) && ((*(f32 *) ((u8 *) &sp78 + 0x4)) > temp_r3_617->unk4) && ((*(f32 *) ((u8 *) &sp68 + 0x4)) < temp_r3_617->unk14) && ((f32) sp80 > temp_r3_617->unk8) && ((f32) sp70 < temp_r3_617->unk18)) {
             var_r0_580 = 1;
         }
         if (var_r0_580 != 0) {
@@ -420,7 +419,6 @@ loop_18:
     }
     return var_r31_501;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 u8 MKCollision_SweepSphereCollide(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKCollisionResult *arg3, MKCollisionMode arg4, int arg5) {
@@ -558,7 +556,7 @@ loop_13:
     temp_r3_839 = *var_r30_754;
     if (temp_r3_839 != NULL) {
         var_r0_768 = 0;
-        if (((f32) sp98 > temp_r3_839->unk0) && ((f32) sp88 < temp_r3_839->unk10) && (unksp9C > temp_r3_839->unk4) && (unksp8C < temp_r3_839->unk14) && ((f32) spA0 > temp_r3_839->unk8) && ((f32) sp90 < temp_r3_839->unk18)) {
+        if (((f32) sp98 > temp_r3_839->unk0) && ((f32) sp88 < temp_r3_839->unk10) && ((*(f32 *) ((u8 *) &sp98 + 0x4)) > temp_r3_839->unk4) && ((*(f32 *) ((u8 *) &sp88 + 0x4)) < temp_r3_839->unk14) && ((f32) spA0 > temp_r3_839->unk8) && ((f32) sp90 < temp_r3_839->unk18)) {
             var_r0_768 = 1;
         }
         if ((var_r0_768 != 0) && (temp_r3_839->SweepSphereCollide(arg0, arg1, arg2, (MKCollisionResult *) &spA8, arg4, arg5) != 0) && (spE8 <= sp140)) {
@@ -713,7 +711,7 @@ loop_13:
         temp_r3_1064 = *var_r30_941;
         if (temp_r3_1064 != NULL) {
             var_r0_992 = 0;
-            if (((f32) sp38 > temp_r3_1064->unk0) && ((f32) sp28 < temp_r3_1064->unk10) && (unksp3C > temp_r3_1064->unk4) && (unksp2C < temp_r3_1064->unk14) && ((f32) sp40 > temp_r3_1064->unk8) && ((f32) sp30 < temp_r3_1064->unk18)) {
+            if (((f32) sp38 > temp_r3_1064->unk0) && ((f32) sp28 < temp_r3_1064->unk10) && ((*(f32 *) ((u8 *) &sp38 + 0x4)) > temp_r3_1064->unk4) && ((*(f32 *) ((u8 *) &sp28 + 0x4)) < temp_r3_1064->unk14) && ((f32) sp40 > temp_r3_1064->unk8) && ((f32) sp30 < temp_r3_1064->unk18)) {
                 var_r0_992 = 1;
             }
             if ((var_r0_992 != 0) && (temp_r3_1064->RayCollide(arg0, arg1, (MKCollisionResult *) &sp48, arg3, arg4) != 0) && (sp88 <= spE0)) {

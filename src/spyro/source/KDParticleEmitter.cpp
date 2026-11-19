@@ -257,7 +257,7 @@ void KDParticleEmitter::Burst() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp4C'
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 void KDParticleEmitter::Update() {
     f64 sp50;                                       /* compiler-managed */
     f64 sp48;                                       /* compiler-managed */
@@ -295,7 +295,7 @@ void KDParticleEmitter::Update() {
         sp50 = (f64) sp20;
     } else {
         sp48 = 0.0f;
-        unksp4C = 0.0f;
+        (*(f32 *) ((u8 *) &sp40 + 0xc)) = 0.0f;
         sp50 = 0.0f;
     }
     temp_r4_545 = this->unk6C;

@@ -147,7 +147,7 @@ void KDProp::SetColorToGround() {
         sp90 = M2C_FIELD(temp_r3_199, f64 *, 0x30);
         sp98 = M2C_FIELD(temp_r3_199, f64 *, 0x38);
         MKModel_CalculateCentre(this->unk4, &sp80);
-        unksp94 = sp80.unk4;
+        (*(f32 *) ((u8 *) &sp90 + 0x4)) = sp80.unk4;
         temp_f0_211 = sp90 - spA0;
         sp20 = temp_f0_211;
         sp70 = temp_f0_211;

@@ -328,8 +328,8 @@ void MoltenMetalBucketTrack::Update() {
     ((KDUniformSpline *) &sp140)->GetMeasure(var_f29_400, (Matrix *) &this->unk4C.unk14, KDSpline_PositionMixer);
     sp1D0 = sp140;
     sp1D8 = sp148;
-    unksp1E4 = unksp204;
-    unksp1D4 = unksp1F4;
+    (*(f32 *) ((u8 *) &sp1E0 + 0x4)) = (*(f32 *) ((u8 *) &sp200 + 0x4));
+    (*(f32 *) ((u8 *) &sp1D0 + 0x4)) = (*(f32 *) ((u8 *) &sp1F0 + 0x4));
     spD0 = sp200 + sp1F0;
     sp130 = spD0;
     spD8 = (f32) sp208 + (f32) sp1F8;
@@ -353,7 +353,7 @@ void MoltenMetalBucketTrack::Update() {
     sp110 = sp90;
     sp98 = (f32) sp1C8 - (f32) sp1B8;
     sp118 = (f64) sp98;
-    var_f6_521 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114));
+    var_f6_521 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * (*(f32 *) ((u8 *) &sp110 + 0x4))));
     if (var_f6_521 > 1e-12f) {
         if (var_f6_521 > 0.0f) {
             temp_f3_527 = __frsqrte(var_f6_521);
@@ -392,7 +392,7 @@ void MoltenMetalBucketTrack::Update() {
     } else {
         var_f5_588 = 0.0f;
     }
-    sp84 = unksp114 * var_f5_588;
+    sp84 = (*(f32 *) ((u8 *) &sp110 + 0x4)) * var_f5_588;
     sp80 = (f32) sp110 * var_f5_588;
     sp88 = (f32) sp118 * var_f5_588;
     sp1A0 = (f64) sp80;
@@ -401,7 +401,7 @@ void MoltenMetalBucketTrack::Update() {
     sp78 = (f32) sp208 - (f32) sp1F8;
     sp100 = sp70;
     sp108 = (f64) sp78;
-    var_f4_621 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + (unksp104 * unksp104));
+    var_f4_621 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + ((*(f32 *) ((u8 *) &sp100 + 0x4)) * (*(f32 *) ((u8 *) &sp100 + 0x4))));
     if (var_f4_621 > 1e-12f) {
         if (var_f4_621 > 0.0f) {
             temp_f1_627 = __frsqrte(var_f4_621);
@@ -440,17 +440,17 @@ void MoltenMetalBucketTrack::Update() {
     } else {
         var_f3_688 = 0.0f;
     }
-    sp64 = unksp104 * var_f3_688;
+    sp64 = (*(f32 *) ((u8 *) &sp100 + 0x4)) * var_f3_688;
     sp60 = (f32) sp100 * var_f3_688;
     sp68 = (f32) sp108 * var_f3_688;
     sp190 = (f64) sp60;
     sp198 = (f64) sp68;
-    sp50 = (unksp1A4 * (f32) sp198) - ((f32) sp1A8 * unksp194);
+    sp50 = ((*(f32 *) ((u8 *) &sp1A0 + 0x4)) * (f32) sp198) - ((f32) sp1A8 * (*(f32 *) ((u8 *) &sp190 + 0x4)));
     sp54 = ((f32) sp1A8 * (f32) sp190) - ((f32) sp1A0 * (f32) sp198);
-    sp58 = ((f32) sp1A0 * unksp194) - (unksp1A4 * (f32) sp190);
+    sp58 = ((f32) sp1A0 * (*(f32 *) ((u8 *) &sp190 + 0x4))) - ((*(f32 *) ((u8 *) &sp1A0 + 0x4)) * (f32) sp190);
     spF0 = (f64) sp50;
     spF8 = (f64) sp58;
-    var_f4_730 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4));
+    var_f4_730 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spF0 + 0x4))));
     if (var_f4_730 > 1e-12f) {
         if (var_f4_730 > 0.0f) {
             temp_f1_736 = __frsqrte(var_f4_730);
@@ -489,14 +489,14 @@ void MoltenMetalBucketTrack::Update() {
     } else {
         var_f3_797 = 0.0f;
     }
-    sp44 = unkspF4 * var_f3_797;
+    sp44 = (*(f32 *) ((u8 *) &spF0 + 0x4)) * var_f3_797;
     sp40 = (f32) spF0 * var_f3_797;
     sp48 = (f32) spF8 * var_f3_797;
     sp170.unk10 = (f64) sp40;
     sp188 = (f64) sp48;
     temp_f8_820 = M2C_BITWISE(f32, sp170.unk10);
-    sp38 = (temp_f8_820 * unksp1A4) - (sp184 * (f32) sp1A0);
-    sp30 = (sp184 * (f32) sp1A8) - ((f32) sp188 * unksp1A4);
+    sp38 = (temp_f8_820 * (*(f32 *) ((u8 *) &sp1A0 + 0x4))) - (sp184 * (f32) sp1A0);
+    sp30 = (sp184 * (f32) sp1A8) - ((f32) sp188 * (*(f32 *) ((u8 *) &sp1A0 + 0x4)));
     sp34 = ((f32) sp188 * (f32) sp1A0) - (temp_f8_820 * (f32) sp1A8);
     spE8 = (f64) sp38;
     spE0 = (f64) sp30;
@@ -504,11 +504,11 @@ void MoltenMetalBucketTrack::Update() {
     sp198 = (f64) sp38;
     M2C_STRUCT_COPY((s32) &unksp20C + 4, MKModel_GetWorldMatrix(M2C_FIELD(this->unk4C.unk28, MKModel **, 4)) - 4 + 4, 0x40);
     sp240 = (f32) sp1C0;
-    sp244 = unksp1C4;
+    sp244 = (*(f32 *) ((u8 *) &sp1C0 + 0x4));
     sp248 = (f32) sp1C8;
     sp24C = 1.0f;
     sp210 = (f32) sp190;
-    sp214 = unksp194;
+    sp214 = (*(f32 *) ((u8 *) &sp190 + 0x4));
     sp218 = (f32) sp198;
     sp21C = 0.0f;
     sp220 = M2C_BITWISE(f32, sp170.unk10);
@@ -516,7 +516,7 @@ void MoltenMetalBucketTrack::Update() {
     sp228 = (f32) sp188;
     sp22C = 0.0f;
     sp230 = (f32) sp1A0;
-    sp234 = unksp1A4;
+    sp234 = (*(f32 *) ((u8 *) &sp1A0 + 0x4));
     sp238 = (f32) sp1A8;
     sp23C = 0.0f;
     MKModel_SetWorldMatrix(M2C_FIELD(this->unk4C.unk28, MKModel **, 4), *((Matrix *) &sp210));

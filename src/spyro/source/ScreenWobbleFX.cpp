@@ -248,7 +248,7 @@ loop_5:
             sp18 = M2C_FIELD(temp_r4_397, f64 *, 8);
             sp18 = 0.0f;
             sp10 = ((f32) sp10 * sp28) + sp20;
-            unksp14 = (unksp14 * sp2C) + sp24;
+            (*(f32 *) ((u8 *) &sp8 + 0xc)) = ((*(f32 *) ((u8 *) &sp8 + 0xc)) * sp2C) + sp24;
             MKSetPositionV(*((MKVector3 *) &sp10));
             temp_r26_412 = (var_r29_375 + ((var_r30_368 + 1) * 0xF)) * 0x38;
             MKSetColorF(1.0f, 1.0f, 1.0f, this->unk4 * *(this->unk0 + (temp_r26_412 + 0x34)));
@@ -259,7 +259,7 @@ loop_5:
             sp18 = M2C_FIELD(temp_r4_429, f64 *, 8);
             sp18 = 0.0f;
             sp10 = ((f32) sp10 * sp28) + sp20;
-            unksp14 = (unksp14 * sp2C) + sp24;
+            (*(f32 *) ((u8 *) &sp8 + 0xc)) = ((*(f32 *) ((u8 *) &sp8 + 0xc)) * sp2C) + sp24;
             MKSetPositionV(*((MKVector3 *) &sp10));
             var_r29_375 += 1;
             if (var_r29_375 < 0xF) {
@@ -568,7 +568,7 @@ loop_22:
                     sp78 = (f64) sp18;
                     M2C_FIELD(temp_r7_887, f64 *, 0) = (f64) (M2C_FIELD(temp_r7_887, f64 *, 0) + temp_f0_883);
                     M2C_FIELD(temp_r7_887, f32 *, 8) = (f32) (M2C_FIELD(temp_r7_887, f32 *, 8) + (f32) sp78);
-                    var_f4_909 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + (unkspC4 * unkspC4));
+                    var_f4_909 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + ((*(f32 *) ((u8 *) &spC0 + 0x4)) * (*(f32 *) ((u8 *) &spC0 + 0x4))));
                     if (var_f4_909 > 0.0f) {
                         temp_f1_912 = __frsqrte(var_f4_909);
                         temp_f1_918 = 0.5 * temp_f1_912 * -(((f64) var_f4_909 * (temp_f1_912 * temp_f1_912)) - 3.0);

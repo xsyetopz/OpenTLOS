@@ -83,7 +83,7 @@ u8 KDCameraSimpleDelta::IsUsingIdealDelta() {
     sp24 = temp_f1_87;
     sp48 = (f64) sp28;
     sp40 = (f64) sp20;
-    var_f31_102 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44));
+    var_f31_102 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp40 + 0x4)) * (*(f32 *) ((u8 *) &sp40 + 0x4))));
     if (var_f31_102 > 0.0f) {
         temp_f1_105 = __frsqrte(var_f31_102);
         temp_f1_111 = 0.5 * temp_f1_105 * -(((f64) var_f31_102 * (temp_f1_105 * temp_f1_105)) - 3.0);
@@ -124,7 +124,7 @@ u8 KDCameraSimpleDelta::IsUsingIdealDelta() {
     sp14 = temp_f1_169;
     sp38 = (f64) sp18;
     sp30 = (f64) sp10;
-    var_f4_184 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_184 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_184 > 0.0f) {
         temp_f1_187 = __frsqrte(var_f4_184);
         temp_f1_193 = 0.5 * temp_f1_187 * -(((f64) var_f4_184 * (temp_f1_187 * temp_f1_187)) - 3.0);
@@ -270,7 +270,7 @@ void KDCameraSimpleDelta::OverrideUpdate() {
         KDMath_CriticalDamp<MKVector3>(sp28, *((MKVector3 *) &sp48), *((MKVector3 *) &sp38), this->unk50, gUpdateTimeDelta);
         sp48 += M2C_BITWISE(f64, sp28);
         sp50 = (f32) sp50 + sp28.unk8;
-        this->unk18 = unksp4C;
+        this->unk18 = (*(f32 *) ((u8 *) &sp48 + 0x4));
         this->unk1C = sp50;
         if (IsUsingIdealDelta() != 0) {
             ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothDelta();
@@ -417,7 +417,6 @@ void KDCameraSimpleDelta::SetDeltaStages(KDCameraDeltaStages *arg0, bool arg1, b
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
 void KDCameraSimpleDelta::GetDeltaVectorAtPitch(float arg0) {
     Matrix sp30;
     f64 sp28;
@@ -434,7 +433,7 @@ void KDCameraSimpleDelta::GetDeltaVectorAtPitch(float arg0) {
     sp20 = (f64) sp30.unk20;
     sp28 = (f64) sp30.unk28;
     temp_f1_839 = ((KDCameraSimpleDelta *) (M2C_ERROR(/* Read from unset register $r4 */)))->GetCurrentDelta();
-    temp_f2_842 = unksp24 * temp_f1_839;
+    temp_f2_842 = (*(f32 *) ((u8 *) &sp20 + 0x4)) * temp_f1_839;
     temp_f0_844 = (f32) sp28 * temp_f1_839;
     sp10 = 0.0f;
     sp14 = temp_f2_842;
@@ -442,9 +441,8 @@ void KDCameraSimpleDelta::GetDeltaVectorAtPitch(float arg0) {
     M2C_FIELD(this, f64 *, 0) = (f64) sp10;
     M2C_FIELD(this, f64 *, 8) = (f64) sp18;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void KDCameraSimpleDelta::Update(const MKVector3 &arg0) {
     f64 sp48;
     f64 sp40;
@@ -477,7 +475,7 @@ void KDCameraSimpleDelta::Update(const MKVector3 &arg0) {
     sp24 = temp_f1_980;
     sp38 = (f64) sp28;
     sp30 = (f64) sp20;
-    var_f5_996 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f5_996 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f5_996 > 1e-12f) {
         if (var_f5_996 > 0.0f) {
             temp_f1_1001 = __frsqrte(var_f5_996);
@@ -514,12 +512,12 @@ void KDCameraSimpleDelta::Update(const MKVector3 &arg0) {
         }
         var_f4_981 = 1.0f / var_f5_996;
     }
-    sp14 = unksp34 * var_f4_981;
+    sp14 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f4_981;
     sp10 = (f32) sp30 * var_f4_981;
     sp18 = (f32) sp38 * var_f4_981;
     sp40 = (f64) sp10;
     sp48 = (f64) sp18;
-    if ((((f32) sp48 * MKVector3::up.unk8) + (((f32) sp40 * MKVector3::up.unk0) + (unksp44 * MKVector3::up.unk4))) > 0.8f) {
+    if ((((f32) sp48 * MKVector3::up.unk8) + (((f32) sp40 * MKVector3::up.unk0) + ((*(f32 *) ((u8 *) &sp40 + 0x4)) * MKVector3::up.unk4))) > 0.8f) {
         ((KDCameraDeltaDrag *) &this->unk28)->Update(MKVector3::zero);
     } else {
         ((KDCameraDeltaDrag *) &this->unk28)->Update(arg0);
@@ -551,7 +549,6 @@ void KDCameraSimpleDelta::Init(const KDCameraDeltaStages &arg0, float arg1, floa
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp14'
 f32 KDCameraDeltaStagesEx::GetYDelta() {
     Matrix sp20;
     f64 sp18;
@@ -577,9 +574,8 @@ f32 KDCameraDeltaStagesEx::GetYDelta() {
     sp20.SetRotationPitch(var_f1_1192);
     sp10 = (f64) sp20.unk20;
     sp18 = (f64) sp20.unk28;
-    return unksp14 * this->unk4;
+    return (*(f32 *) ((u8 *) &sp10 + 0x4)) * this->unk4;
 }
-#endif
 
 f32 KDCameraDeltaStagesEx::GetZDelta() {
     Matrix sp20;

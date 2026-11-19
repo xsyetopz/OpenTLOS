@@ -189,7 +189,7 @@ void MagmaSquirt::Update() {
             sp50 = (f32) spA0 * 0.125f;
             spB0 = (f64) sp50;
             KDRand_Vector(spD8, *((MKVector3 *) &spC8));
-            var_f4_300 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + (unksp13C * unksp13C));
+            var_f4_300 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + ((*(f32 *) ((u8 *) &sp138 + 0x4)) * (*(f32 *) ((u8 *) &sp138 + 0x4))));
             if (var_f4_300 > 1e-12f) {
                 if (var_f4_300 > 0.0f) {
                     temp_f1_306 = __frsqrte(var_f4_300);
@@ -229,7 +229,7 @@ void MagmaSquirt::Update() {
                 var_f3_367 = 0.0f;
             }
             sp18 = (f32) sp138 * var_f3_367;
-            sp1C = unksp13C * var_f3_367;
+            sp1C = (*(f32 *) ((u8 *) &sp138 + 0x4)) * var_f3_367;
             sp20 = (f32) sp140 * var_f3_367;
             spE8 = (f64) sp18;
             spF0 = (f64) sp20;

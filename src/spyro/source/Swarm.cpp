@@ -172,7 +172,7 @@ void SwarmProp::DrawEntity(SwarmEntity *arg0, const Matrix &arg1, const MKVector
     sp1F8 = (f64) sp118;
     M2C_STRUCT_COPY((s32) &sp250.unk3C + 4, (s32) (&lit_620 - 4) + 4, 0x40);
     temp_f0_106 = -(f32) sp1F0;
-    temp_f1_108 = -unksp1F4;
+    temp_f1_108 = -(*(f32 *) ((u8 *) &sp1F0 + 0x4));
     temp_f2_109 = -(f32) sp1F8;
     spF0 = temp_f0_106;
     spF4 = temp_f1_108;
@@ -217,7 +217,7 @@ void SwarmProp::DrawEntity(SwarmEntity *arg0, const Matrix &arg1, const MKVector
     temp_f8_188 = -(f32) sp208;
     temp_f6_193 = -(f32) sp200;
     sp98 = temp_f8_188;
-    temp_f7_195 = -unksp204;
+    temp_f7_195 = -(*(f32 *) ((u8 *) &sp200 + 0x4));
     sp68 = (f32) sp198 * arg3;
     sp90 = temp_f6_193;
     sp94 = temp_f7_195;

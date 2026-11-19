@@ -186,7 +186,7 @@ block_14:
     sp158 = (f64) sp68;
     sp168 = this->unkC8;
     sp170 = this->unkD0;
-    var_f5_305 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + (unksp16C * unksp16C));
+    var_f5_305 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + ((*(f32 *) ((u8 *) &sp160 + 0xc)) * (*(f32 *) ((u8 *) &sp160 + 0xc))));
     if (var_f5_305 > 0.000001f) {
         if (var_f5_305 > 0.0f) {
             temp_f1_310 = __frsqrte(var_f5_305);
@@ -226,7 +226,7 @@ block_14:
         var_f5_305 = 0.0f;
     }
     sp168 = (f32) sp168 * var_f4_284;
-    unksp16C *= var_f4_284;
+    (*(f32 *) ((u8 *) &sp160 + 0xc)) *= var_f4_284;
     sp170 = (f32) sp170 * var_f4_284;
     if (var_f5_305 != 0.0f) {
         KDMath_BuildMatrixFromFwd(&sp1A0, *((MKVector3 *) &sp168), (MKVector3 *) &sp158);
@@ -378,7 +378,7 @@ void FlyingMonkey::Collided(MKCollisionResult &arg0) {
                     spC0 = sp20;
                 } else {
                     spB8 = 0.0f;
-                    unkspBC = 0.0f;
+                    (*(f32 *) ((u8 *) &spB4 + 0x8)) = 0.0f;
                     spC0 = 0.0f;
                 }
                 spD9 = 0;

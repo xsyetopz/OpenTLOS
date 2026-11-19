@@ -84,7 +84,7 @@ void SpyroHurtState::CynderFuryDazedEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1C'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 SpyroHurtState::TransitionToIdle() {
     f64 sp20;
     f64 sp18;
@@ -118,7 +118,7 @@ u8 SpyroHurtState::TransitionToIdle() {
     if ((s32) M2C_FIELD(temp_r5_178, s32 *, 0x16C) <= 0) {
         sp18 = M2C_FIELD(temp_r3_177, f64 *, 0x338);
         sp20 = M2C_FIELD(temp_r3_177, f64 *, 0x340);
-        if (!(unksp1C > -5.0f)) {
+        if (!((*(f32 *) ((u8 *) &sp18 + 0x4)) > -5.0f)) {
             var_r4_203 = 0;
         }
     }
@@ -267,7 +267,7 @@ void SpyroHurtState::KnockToSafePosUpdate() {
     if (var_f6_446 < 0.0f) {
         var_f6_446 = -var_f6_446;
     }
-    unkspDC += (-((4.0f * (temp_f1_442 * temp_f1_442)) - 1.0f) * ((var_f6_446 * 0.5f) + 250.0f)) + 5.0f;
+    (*(f32 *) ((u8 *) &spD8 + 0x4)) += (-((4.0f * (temp_f1_442 * temp_f1_442)) - 1.0f) * ((var_f6_446 * 0.5f) + 250.0f)) + 5.0f;
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (gb.unk30C == this->unk80) {
         this->unk10->GetYaw();
@@ -772,7 +772,7 @@ void SpyroHurtState::StrafeFlinchUpdate() {
         sp20 = temp_f0_1487;
         var_f4_1489 = 0.0f;
         sp60 = temp_f0_1487;
-        unksp64 = 0.0f;
+        (*(f32 *) ((u8 *) &sp58 + 0xc)) = 0.0f;
         sp28 = (f32) sp78 - (f32) sp58;
         sp68 = (f64) sp28;
         var_f5_1506 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (0.0f * 0.0f));
@@ -813,7 +813,7 @@ void SpyroHurtState::StrafeFlinchUpdate() {
             var_f4_1489 = 1.0f / var_f5_1506;
         }
         sp60 = (f32) sp60 * var_f4_1489;
-        unksp64 *= var_f4_1489;
+        (*(f32 *) ((u8 *) &sp58 + 0xc)) *= var_f4_1489;
         sp68 = (f32) sp68 * var_f4_1489;
         ((SpyroRotation *) &this->unk10->unk3A0)->YawTowards(*((MKVector3 *) &sp60), 15.0f);
         sp80 = (f64) sp60;

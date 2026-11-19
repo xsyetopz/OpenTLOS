@@ -180,7 +180,7 @@ inline f32 KDCameraSimpleDelta::GetIdealDelta() {
     sp14 = temp_f1_2045;
     sp28 = (f64) sp18;
     sp20 = (f64) sp10;
-    var_f1_2060 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+    var_f1_2060 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * (*(f32 *) ((u8 *) &sp20 + 0x4))));
     if (var_f1_2060 > 0.0f) {
         temp_f2_2063 = __frsqrte(var_f1_2060);
         temp_f2_2069 = 0.5 * temp_f2_2063 * -(((f64) var_f1_2060 * (temp_f2_2063 * temp_f2_2063)) - 3.0);
@@ -292,7 +292,7 @@ inline void KDCameraSimpleDelta::GetCurrentTargetOffset() {
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 inline f32 KDCameraSimpleDelta::GetCurrentDelta() {
     f64 sp28;
     f64 sp20;
@@ -318,7 +318,7 @@ inline f32 KDCameraSimpleDelta::GetCurrentDelta() {
     sp14 = temp_f1_877;
     sp28 = (f64) sp18;
     sp20 = (f64) sp10;
-    var_f1_892 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+    var_f1_892 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * (*(f32 *) ((u8 *) &sp20 + 0x4))));
     if (var_f1_892 > 0.0f) {
         temp_f2_895 = __frsqrte(var_f1_892);
         temp_f2_901 = 0.5 * temp_f2_895 * -(((f64) var_f1_892 * (temp_f2_895 * temp_f2_895)) - 3.0);

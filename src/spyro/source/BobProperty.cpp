@@ -97,7 +97,7 @@ void BobProperty::Update() {
         ((Matrix *) (*KDProperty::pInstanceMem + (this->unk8 + 0x20)))->SetIdentity();
         temp_r3_193 = *KDProperty::pInstanceMem + (this->unk8 + 0x20);
         M2C_FIELD(temp_r3_193, f32 *, 0x30) = (f32) sp38;
-        M2C_FIELD(temp_r3_193, f32 *, 0x34) = unksp3C;
+        M2C_FIELD(temp_r3_193, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp38 + 0x4));
         M2C_FIELD(temp_r3_193, f32 *, 0x38) = (f32) sp40;
         M2C_FIELD(temp_r3_193, f32 *, 0x3C) = 1.0f;
     }

@@ -142,7 +142,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp2C'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ConvexityVortex::Draw() {
     Matrix sp30;
     f64 sp28;
@@ -165,7 +165,7 @@ loop_5:
     if (var_r29_258 != NULL) {
         temp_r30_310 = *var_r29_258;
         if (temp_r30_310 != NULL) {
-            M2C_STRUCT_COPY((s32) &unksp2C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &(*(f32 *) ((u8 *) &sp28 + 0x4)) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp30.SetRotationPYR(*(temp_r30_310 + 0x10));
             sp30.Scale3x3(&sp30, M2C_FIELD(temp_r30_310, f32 *, 0x30));
             sp30.unk30 = temp_r30_310->unk0;
@@ -173,9 +173,9 @@ loop_5:
             sp30.unk38 = temp_r30_310->unk8;
             sp30.unk3C = 1.0f;
             if ((s32) M2C_FIELD(temp_r30_310, s32 *, 0x38) == 1) {
-                unksp2C = 1.0f - (M2C_FIELD(temp_r30_310, f32 *, 0x34) / 0.5f);
+                (*(f32 *) ((u8 *) &sp28 + 0x4)) = 1.0f - (M2C_FIELD(temp_r30_310, f32 *, 0x34) / 0.5f);
             } else {
-                unksp2C = 1.0f;
+                (*(f32 *) ((u8 *) &sp28 + 0x4)) = 1.0f;
             }
             MKModel_SetColor(M2C_FIELD(temp_r30_310, MKModel **, 0x3C), *((MKVector4 *) &sp20));
             MKModel_SetWorldMatrix(M2C_FIELD(temp_r30_310, MKModel **, 0x3C), sp30);
@@ -293,7 +293,7 @@ loop_39:
             spD8 = temp_f0_460;
             sp50 = M2C_FIELD(temp_r3_457, f32 *, 8) - temp_r31_693->unk8;
             spE0 = (f64) sp50;
-            var_f28_477 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (unkspDC * unkspDC));
+            var_f28_477 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + ((*(f32 *) ((u8 *) &spD0 + 0xc)) * (*(f32 *) ((u8 *) &spD0 + 0xc))));
             if (var_f28_477 > 0.000001f) {
                 if (var_f28_477 > 0.0f) {
                     temp_f1_483 = __frsqrte(var_f28_477);
@@ -334,7 +334,7 @@ loop_39:
                 var_f28_477 = 0.0f;
             }
             spD8 = (f32) spD8 * var_f3_544;
-            unkspDC *= var_f3_544;
+            (*(f32 *) ((u8 *) &spD0 + 0xc)) *= var_f3_544;
             spE0 = (f32) spE0 * var_f3_544;
             if ((s32) M2C_FIELD(temp_r31_693, s32 *, 0x38) != 3) {
                 temp_f30_562 = gUpdateTimeDelta;

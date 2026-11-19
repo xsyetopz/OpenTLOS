@@ -231,14 +231,14 @@ s32 MKCollisionModel::EllipsoidIntersectTri(MKCollisionEllipsoid &arg0, MKVector
     sp60 = (temp_f2_105 * temp_f30_97) + ((temp_f3_96 * temp_f31_91) + (temp_f4_90 * temp_f13_87));
     temp_f1_132 = (f32) sp108 * temp_f12_129;
     sp64 = (temp_f2_105 * temp_f27_99) + ((temp_f3_96 * temp_f28_93) + (temp_f4_90 * temp_f29_89));
-    temp_f17_134 = ((temp_f2_105 * temp_f9_74) + ((temp_f3_96 * temp_f7_72) + (temp_f4_90 * temp_f8_80))) - ((temp_f2_105 * (f32) spF8) + ((temp_f3_96 * (f32) spF0) + (temp_f4_90 * unkspF4)));
+    temp_f17_134 = ((temp_f2_105 * temp_f9_74) + ((temp_f3_96 * temp_f7_72) + (temp_f4_90 * temp_f8_80))) - ((temp_f2_105 * (f32) spF8) + ((temp_f3_96 * (f32) spF0) + (temp_f4_90 * (*(f32 *) ((u8 *) &spF0 + 0x4)))));
     temp_f6_136 = temp_f1_132 * temp_f12_129;
     sp108 = temp_f1_132;
     sp100 = (f64) sp60;
-    temp_f2_142 = unksp104 * temp_f11_111;
+    temp_f2_142 = (*(f32 *) ((u8 *) &spF8 + 0xc)) * temp_f11_111;
     temp_f3_143 = (f32) sp100 * temp_f10_122;
     temp_f5_144 = temp_f2_142 * temp_f11_111;
-    unksp104 = temp_f2_142;
+    (*(f32 *) ((u8 *) &spF8 + 0xc)) = temp_f2_142;
     temp_f4_146 = temp_f3_143 * temp_f10_122;
     sp100 = temp_f3_143;
     temp_f15_150 = (temp_f6_136 * temp_f6_136) + ((temp_f4_146 * temp_f4_146) + (temp_f5_144 * temp_f5_144));
@@ -275,7 +275,7 @@ s32 MKCollisionModel::EllipsoidIntersectTri(MKCollisionEllipsoid &arg0, MKVector
     sp150 = temp_f9_206 - (f32) sp110;
     sp1B0 = (f64) sp48;
     sp118 = sp178;
-    sp14C = temp_f8_213 - unksp114;
+    sp14C = temp_f8_213 - (*(f32 *) ((u8 *) &sp110 + 0x4));
     sp128 = (f64) sp48;
     sp218 = (f64) (f32) sp128;
     sp40 = (f32) sp188;
@@ -285,10 +285,10 @@ s32 MKCollisionModel::EllipsoidIntersectTri(MKCollisionEllipsoid &arg0, MKVector
     sp1A8 = (f64) sp40;
     sp1C8 = (f64) (temp_f16_248 * temp_f2_142);
     sp120 = (f64) sp40;
-    sp210 = (f64) unksp124;
+    sp210 = (f64) (*(f32 *) ((u8 *) &sp120 + 0x4));
     temp_f14_260 = (f32) sp120 - (f32) sp110;
     temp_f21_262 = temp_f14_260 * temp_f1_132;
-    temp_f15_263 = (f32) sp210 - unksp114;
+    temp_f15_263 = (f32) sp210 - (*(f32 *) ((u8 *) &sp110 + 0x4));
     sp1D8 = (f64) temp_f21_262;
     temp_f21_265 = temp_f15_263 * temp_f3_143;
     sp1B8 = (f64) temp_f21_265;
@@ -319,7 +319,7 @@ s32 MKCollisionModel::EllipsoidIntersectTri(MKCollisionEllipsoid &arg0, MKVector
         }
         var_r7_159 = 1;
         spE0 = (temp_f14_260 * var_f8_301) + (f32) sp110;
-        spE4 = (temp_f15_263 * var_f8_301) + unksp114;
+        spE4 = (temp_f15_263 * var_f8_301) + (*(f32 *) ((u8 *) &sp110 + 0x4));
         spE8 = (temp_f16_248 * var_f8_301) + (f32) sp118;
     } else {
         sp30 = sp144 + ((temp_f18_75 * temp_f30_97) + ((temp_f19_77 * temp_f31_91) + (temp_f20_82 * temp_f13_87)));
@@ -332,7 +332,7 @@ s32 MKCollisionModel::EllipsoidIntersectTri(MKCollisionEllipsoid &arg0, MKVector
         sp138 = (f64) sp38;
         temp_f13_359 = (f32) sp130 - (f32) sp120;
         sp90 = (f64) sp30;
-        temp_f14_363 = unksp134 - (f32) sp210;
+        temp_f14_363 = (*(f32 *) ((u8 *) &sp130 + 0x4)) - (f32) sp210;
         sp98 = (f64) sp38;
         temp_f15_367 = (f32) sp138 - (f32) sp218;
         if (((temp_f19_353 * ((temp_f13_359 * temp_f2_142) - (temp_f14_363 * temp_f3_143))) + ((temp_f16_345 * ((temp_f14_363 * temp_f1_132) - (temp_f15_367 * temp_f2_142))) + (temp_f18_349 * ((temp_f15_367 * temp_f3_143) - (temp_f13_359 * temp_f1_132))))) < (f32) sp200) {
@@ -353,8 +353,8 @@ s32 MKCollisionModel::EllipsoidIntersectTri(MKCollisionEllipsoid &arg0, MKVector
         } else {
             temp_f5_409 = (f32) sp110 - (f32) sp130;
             temp_f4_410 = (f32) sp118 - (f32) sp138;
-            temp_f0_411 = unksp114 - unksp134;
-            temp_f15_413 = temp_f8_213 - unksp134;
+            temp_f0_411 = (*(f32 *) ((u8 *) &sp110 + 0x4)) - (*(f32 *) ((u8 *) &sp130 + 0x4));
+            temp_f15_413 = temp_f8_213 - (*(f32 *) ((u8 *) &sp130 + 0x4));
             temp_f8_417 = temp_f9_206 - (f32) sp130;
             temp_f9_420 = temp_f7_219 - (f32) sp138;
             if (((temp_f9_420 * ((temp_f5_409 * temp_f2_142) - (temp_f0_411 * temp_f3_143))) + ((temp_f8_417 * ((temp_f0_411 * temp_f1_132) - (temp_f4_410 * temp_f2_142))) + (temp_f15_413 * ((temp_f4_410 * temp_f3_143) - (temp_f5_409 * temp_f1_132))))) < (f32) sp200) {
@@ -370,7 +370,7 @@ s32 MKCollisionModel::EllipsoidIntersectTri(MKCollisionEllipsoid &arg0, MKVector
                 }
                 var_r7_159 = 1;
                 spE0 = (temp_f5_409 * var_f7_428) + (f32) sp130;
-                spE4 = (temp_f0_411 * var_f7_428) + unksp134;
+                spE4 = (temp_f0_411 * var_f7_428) + (*(f32 *) ((u8 *) &sp130 + 0x4));
                 spE8 = (temp_f4_410 * var_f7_428) + (f32) sp138;
             }
         }
@@ -696,34 +696,34 @@ u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKC
         sp1E0 = temp_f0_874;
         sp128 = (f32) sp2B0 - (f32) sp2A0;
         sp1E8 = (f64) sp128;
-        sp100 = (unksp1D4 * (f32) sp1E8) - ((f32) sp1D8 * unksp1E4);
+        sp100 = ((*(f32 *) ((u8 *) &sp1D0 + 0x4)) * (f32) sp1E8) - ((f32) sp1D8 * (*(f32 *) ((u8 *) &sp1E0 + 0x4)));
         sp104 = ((f32) sp1D8 * (f32) sp1E0) - ((f32) sp1D0 * (f32) sp1E8);
-        sp108 = ((f32) sp1D0 * unksp1E4) - (unksp1D4 * (f32) sp1E0);
+        sp108 = ((f32) sp1D0 * (*(f32 *) ((u8 *) &sp1E0 + 0x4))) - ((*(f32 *) ((u8 *) &sp1D0 + 0x4)) * (f32) sp1E0);
         sp270 = (f64) sp100;
         var_f2_902 = (f32) sp270;
         sp278 = (f64) sp108;
         if (var_f2_902 < 0.0f) {
             var_f2_902 = -var_f2_902;
         }
-        var_f1_908 = unksp274;
+        var_f1_908 = (*(f32 *) ((u8 *) &sp260 + 0x14));
         sp270 = var_f2_902;
         if (var_f1_908 < 0.0f) {
             var_f1_908 = -var_f1_908;
         }
         var_f2_915 = (f32) sp278;
-        unksp274 = var_f1_908;
+        (*(f32 *) ((u8 *) &sp260 + 0x14)) = var_f1_908;
         if (var_f2_915 < 0.0f) {
             var_f2_915 = -var_f2_915;
         }
         temp_f1_922 = (f32) var_f2_915;
         sp278 = var_f2_915;
         if (sp270 > temp_f1_922) {
-            if (sp270 > unksp274) {
+            if (sp270 > (*(f32 *) ((u8 *) &sp260 + 0x14))) {
                 var_r0_930 = 0;
             } else {
                 var_r0_930 = 1;
             }
-        } else if (unksp274 > temp_f1_922) {
+        } else if ((*(f32 *) ((u8 *) &sp260 + 0x14)) > temp_f1_922) {
             var_r0_930 = 1;
         } else {
             var_r0_930 = 2;
@@ -755,9 +755,9 @@ u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKC
                 sp1B0 = temp_f4_979;
                 spF8 = temp_f13_981 - sp2C8.unk8;
                 sp1B8 = (f64) spF8;
-                spD0 = (unksp1A4 * (f32) sp1B8) - ((f32) sp1A8 * unksp1B4);
+                spD0 = ((*(f32 *) ((u8 *) &sp1A0 + 0x4)) * (f32) sp1B8) - ((f32) sp1A8 * (*(f32 *) ((u8 *) &sp1B0 + 0x4)));
                 spD4 = ((f32) sp1A8 * (f32) sp1B0) - ((f32) sp1A0 * (f32) sp1B8);
-                spD8 = ((f32) sp1A0 * unksp1B4) - (unksp1A4 * (f32) sp1B0);
+                spD8 = ((f32) sp1A0 * (*(f32 *) ((u8 *) &sp1B0 + 0x4))) - ((*(f32 *) ((u8 *) &sp1A0 + 0x4)) * (f32) sp1B0);
                 sp1C0 = (f64) spD0;
                 sp1C8 = (f64) spD8;
                 sp60 = sp1C0 * 5.222099017e-315;
@@ -808,8 +808,8 @@ u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKC
         var_f28_1108 = 1e11f;
         sp280 = temp_f4_1093 - (f32) sp260;
         sp284 = temp_f4_1093 + (f32) sp260;
-        sp288 = temp_f12_1102 - unksp264;
-        sp28C = temp_f12_1102 + unksp264;
+        sp288 = temp_f12_1102 - (*(f32 *) ((u8 *) &sp260 + 0x4));
+        sp28C = temp_f12_1102 + (*(f32 *) ((u8 *) &sp260 + 0x4));
         sp290 = temp_f7_1092 - temp_f6_1091;
         sp294 = temp_f7_1092 + temp_f6_1091;
         sp220 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -842,9 +842,9 @@ u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKC
             var_r4_1106 += 4;
             var_ctr_1122 -= 1;
         } while (var_ctr_1122 != 0);
-        sp30 = arg0.unk30 + ((sp268 * arg0.unk20) + (((f32) sp260 * arg0.unk0) + (unksp264 * arg0.unk10)));
-        sp34 = arg0.unk34 + ((sp268 * arg0.unk24) + (((f32) sp260 * arg0.unk4) + (unksp264 * arg0.unk14)));
-        sp38 = arg0.unk38 + ((sp268 * arg0.unk28) + (((f32) sp260 * arg0.unk8) + (unksp264 * arg0.unk18)));
+        sp30 = arg0.unk30 + ((sp268 * arg0.unk20) + (((f32) sp260 * arg0.unk0) + ((*(f32 *) ((u8 *) &sp260 + 0x4)) * arg0.unk10)));
+        sp34 = arg0.unk34 + ((sp268 * arg0.unk24) + (((f32) sp260 * arg0.unk4) + ((*(f32 *) ((u8 *) &sp260 + 0x4)) * arg0.unk14)));
+        sp38 = arg0.unk38 + ((sp268 * arg0.unk28) + (((f32) sp260 * arg0.unk8) + ((*(f32 *) ((u8 *) &sp260 + 0x4)) * arg0.unk18)));
         M2C_FIELD(arg2, f64 *, 0) = (f64) sp30;
         sp150 = (f64) sp30;
         sp158 = (f64) sp38;
@@ -865,7 +865,7 @@ u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKC
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp704'
+#if 0 // DRAFT: illegal implicit conversion from 'const MKSweptBox *' to
 f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKBestResult *arg2, MKBestResult *arg3, MKBestResult *arg4, unsigned int arg5, MKCollisionInfo *arg6) {
     f64 *sp760;
     f32 *sp75C;
@@ -1275,26 +1275,26 @@ f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKB
     sp6F8 = (f64) sp358;
     sp340 = temp_f4_1299 - temp_f1_1311;
     sp348 = temp_f5_1304 - temp_f4_1315;
-    sp338 = ((f32) sp6F0 * unksp704) - (unksp6F4 * (f32) sp700);
+    sp338 = ((f32) sp6F0 * (*(f32 *) ((u8 *) &sp700 + 0x4))) - ((*(f32 *) ((u8 *) &sp6F0 + 0x4)) * (f32) sp700);
     sp6E0 = sp340;
     sp6E8 = (f64) sp348;
     sp6D8 = (f64) sp338;
-    sp330 = (unksp6F4 * (f32) sp708) - ((f32) sp6F8 * unksp704);
+    sp330 = ((*(f32 *) ((u8 *) &sp6F0 + 0x4)) * (f32) sp708) - ((f32) sp6F8 * (*(f32 *) ((u8 *) &sp700 + 0x4)));
     sp334 = ((f32) sp6F8 * (f32) sp700) - ((f32) sp6F0 * (f32) sp708);
     sp6D0 = (f64) sp330;
-    sp320 = (unksp6D4 * (f32) sp708) - ((f32) sp6D8 * unksp704);
+    sp320 = ((*(f32 *) ((u8 *) &sp6D0 + 0x4)) * (f32) sp708) - ((f32) sp6D8 * (*(f32 *) ((u8 *) &sp700 + 0x4)));
     sp324 = ((f32) sp6D8 * (f32) sp700) - ((f32) sp6D0 * (f32) sp708);
-    sp328 = ((f32) sp6D0 * unksp704) - (unksp6D4 * (f32) sp700);
-    sp318 = ((f32) sp6D0 * unksp6F4) - (unksp6D4 * (f32) sp6F0);
-    sp310 = (unksp6D4 * (f32) sp6F8) - ((f32) sp6D8 * unksp6F4);
+    sp328 = ((f32) sp6D0 * (*(f32 *) ((u8 *) &sp700 + 0x4))) - ((*(f32 *) ((u8 *) &sp6D0 + 0x4)) * (f32) sp700);
+    sp318 = ((f32) sp6D0 * (*(f32 *) ((u8 *) &sp6F0 + 0x4))) - ((*(f32 *) ((u8 *) &sp6D0 + 0x4)) * (f32) sp6F0);
+    sp310 = ((*(f32 *) ((u8 *) &sp6D0 + 0x4)) * (f32) sp6F8) - ((f32) sp6D8 * (*(f32 *) ((u8 *) &sp6F0 + 0x4)));
     sp314 = ((f32) sp6D8 * (f32) sp6F0) - ((f32) sp6D0 * (f32) sp6F8);
     sp6C0 = (f64) sp320;
     sp6C8 = (f64) sp328;
     sp6B0 = (f64) sp310;
     sp6B8 = (f64) sp318;
-    sp300 = (unksp6D4 * (f32) sp6E8) - ((f32) sp6D8 * unksp6E4);
+    sp300 = ((*(f32 *) ((u8 *) &sp6D0 + 0x4)) * (f32) sp6E8) - ((f32) sp6D8 * (*(f32 *) ((u8 *) &sp6E0 + 0x4)));
     sp304 = ((f32) sp6D8 * (f32) sp6E0) - ((f32) sp6D0 * (f32) sp6E8);
-    sp308 = ((f32) sp6D0 * unksp6E4) - (unksp6D4 * (f32) sp6E0);
+    sp308 = ((f32) sp6D0 * (*(f32 *) ((u8 *) &sp6E0 + 0x4))) - ((*(f32 *) ((u8 *) &sp6D0 + 0x4)) * (f32) sp6E0);
     var_r14_1390 = 0;
     var_r20_1392 = 0;
     sp6A0 = (f64) sp300;
@@ -1318,9 +1318,9 @@ f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKB
         sp5C0 = temp_f4_1428;
         sp2E8 = temp_f7_1432;
         sp5C8 = (f64) sp2E8;
-        temp_f4_1442 = ((f32) sp5C8 * (f32) sp6D8) + (((f32) sp5C0 * (f32) sp6D0) + (unksp5C4 * unksp6D4));
+        temp_f4_1442 = ((f32) sp5C8 * (f32) sp6D8) + (((f32) sp5C0 * (f32) sp6D0) + ((*(f32 *) ((u8 *) &sp5C0 + 0x4)) * (*(f32 *) ((u8 *) &sp6D0 + 0x4))));
         if (temp_f4_1442 != 0.0f) {
-            temp_f31_1445 = (((f32) sp5D8 * (f32) sp6D8) + (((f32) sp5D0 * (f32) sp6D0) + (unksp5D4 * unksp6D4))) / temp_f4_1442;
+            temp_f31_1445 = (((f32) sp5D8 * (f32) sp6D8) + (((f32) sp5D0 * (f32) sp6D0) + ((*(f32 *) ((u8 *) &sp5D0 + 0x4)) * (*(f32 *) ((u8 *) &sp6D0 + 0x4))))) / temp_f4_1442;
             temp_r22_1446 = arg2 + var_r20_1392;
             if (!(temp_f31_1445 >= M2C_FIELD(temp_r22_1446, f32 *, 0x34)) && !(temp_f31_1445 < 0.0f)) {
                 sp2D0 = temp_f8_1427 - temp_f2_1406;
@@ -1344,13 +1344,13 @@ f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKB
                 sp590 = temp_f0_1483;
                 sp2A8 = (f32) sp698 - temp_f1_1410;
                 sp598 = (f64) sp2A8;
-                if ((((f32) sp598 * (f32) sp6C8) + (((f32) sp590 * (f32) sp6C0) + (unksp594 * unksp6C4))) <= 0.0f) {
+                if ((((f32) sp598 * (f32) sp6C8) + (((f32) sp590 * (f32) sp6C0) + ((*(f32 *) ((u8 *) &sp590 + 0x4)) * (*(f32 *) ((u8 *) &sp6C0 + 0x4))))) <= 0.0f) {
                     temp_f0_1504 = sp690 - M2C_FIELD(arg1, f64 *, 0x10);
                     sp290 = temp_f0_1504;
                     sp580 = temp_f0_1504;
                     sp298 = (f32) sp698 - M2C_FIELD(arg1, f32 *, 0x18);
                     sp588 = (f64) sp298;
-                    if ((((f32) sp588 * (f32) sp6B8) + (((f32) sp580 * (f32) sp6B0) + (unksp584 * unksp6B4))) <= 0.0f) {
+                    if ((((f32) sp588 * (f32) sp6B8) + (((f32) sp580 * (f32) sp6B0) + ((*(f32 *) ((u8 *) &sp580 + 0x4)) * (*(f32 *) ((u8 *) &sp6B0 + 0x4))))) <= 0.0f) {
                         var_r4_1475 = 1;
                     }
                 }
@@ -1360,7 +1360,7 @@ f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKB
                     sp570 = temp_f0_1530;
                     sp288 = (f32) sp698 - M2C_FIELD(arg1, f32 *, 0x28);
                     sp578 = (f64) sp288;
-                    if ((((f32) sp578 * (f32) sp6A8) + (((f32) sp570 * (f32) sp6A0) + (unksp574 * unksp6A4))) <= 0.0f) {
+                    if ((((f32) sp578 * (f32) sp6A8) + (((f32) sp570 * (f32) sp6A0) + ((*(f32 *) ((u8 *) &sp570 + 0x4)) * (*(f32 *) ((u8 *) &sp6A0 + 0x4))))) <= 0.0f) {
                         var_r3_1473 = 1;
                     }
                 }
@@ -1377,7 +1377,7 @@ f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKB
                     sp550 = sp270;
                     sp278 = (f32) M2C_FIELD(temp_r22_1446, f64 *, 0x18) - (f32) M2C_FIELD(temp_r22_1446, f64 *, 8);
                     sp558 = (f64) sp278;
-                    M2C_FIELD(temp_r22_1446, f32 *, 0x30) = (f32) (((f32) sp558 * (f32) M2C_FIELD(temp_r22_1446, f64 *, 0x28)) + (((f32) sp550 * (f32) M2C_FIELD(temp_r22_1446, f64 *, 0x20)) + (unksp554 * M2C_FIELD(temp_r22_1446, f32 *, 0x24))));
+                    M2C_FIELD(temp_r22_1446, f32 *, 0x30) = (f32) (((f32) sp558 * (f32) M2C_FIELD(temp_r22_1446, f64 *, 0x28)) + (((f32) sp550 * (f32) M2C_FIELD(temp_r22_1446, f64 *, 0x20)) + ((*(f32 *) ((u8 *) &sp550 + 0x4)) * M2C_FIELD(temp_r22_1446, f32 *, 0x24))));
                     M2C_FIELD(temp_r22_1446, u32 *, 0x38) = arg5;
                     M2C_FIELD(temp_r22_1446, MKCollisionInfo **, 0x3C) = arg6;
                 }
@@ -1429,26 +1429,26 @@ loop_15:
         sp540 = sp250;
         sp258 = temp_f2_1663;
         sp548 = (f64) sp258;
-        sp230 = (unksp534 * (f32) sp548) - ((f32) sp538 * unksp544);
+        sp230 = ((*(f32 *) ((u8 *) &sp530 + 0x4)) * (f32) sp548) - ((f32) sp538 * (*(f32 *) ((u8 *) &sp540 + 0x4)));
         sp234 = ((f32) sp538 * (f32) sp540) - ((f32) sp530 * (f32) sp548);
-        sp238 = ((f32) sp530 * unksp544) - (unksp534 * (f32) sp540);
+        sp238 = ((f32) sp530 * (*(f32 *) ((u8 *) &sp540 + 0x4))) - ((*(f32 *) ((u8 *) &sp530 + 0x4)) * (f32) sp540);
         sp670 = (f64) sp230;
         sp678 = (f64) sp238;
         sp220 = temp_f0_1660;
         sp520 = temp_f0_1660;
         sp228 = temp_f5_1650 - temp_f9_1634;
         sp528 = (f64) sp228;
-        temp_f23_1706 = ((f32) sp688 * (f32) sp678) + (((f32) sp680 * (f32) sp670) + (unksp684 * unksp674));
+        temp_f23_1706 = ((f32) sp688 * (f32) sp678) + (((f32) sp680 * (f32) sp670) + ((*(f32 *) ((u8 *) &sp680 + 0x4)) * (*(f32 *) ((u8 *) &sp670 + 0x4))));
         if (temp_f23_1706 != 0.0f) {
-            temp_f30_1711 = (((f32) sp528 * (f32) sp678) + (((f32) sp520 * (f32) sp670) + (unksp524 * unksp674))) / temp_f23_1706;
+            temp_f30_1711 = (((f32) sp528 * (f32) sp678) + (((f32) sp520 * (f32) sp670) + ((*(f32 *) ((u8 *) &sp520 + 0x4)) * (*(f32 *) ((u8 *) &sp670 + 0x4))))) / temp_f23_1706;
             if (!(temp_f30_1711 >= M2C_FIELD(temp_r27_1608, f32 *, 0x34)) && !(temp_f30_1711 < 0.0f)) {
                 sp210 = temp_f3_1657 - temp_f12_1623;
                 sp218 = temp_f2_1663;
                 sp510 = sp210;
                 sp518 = (f64) sp218;
-                sp200 = (unksp684 * (f32) sp518) - ((f32) sp688 * unksp514);
+                sp200 = ((*(f32 *) ((u8 *) &sp680 + 0x4)) * (f32) sp518) - ((f32) sp688 * (*(f32 *) ((u8 *) &sp510 + 0x4)));
                 sp204 = ((f32) sp688 * (f32) sp510) - ((f32) sp680 * (f32) sp518);
-                sp208 = ((f32) sp680 * unksp514) - (unksp684 * (f32) sp510);
+                sp208 = ((f32) sp680 * (*(f32 *) ((u8 *) &sp510 + 0x4))) - ((*(f32 *) ((u8 *) &sp680 + 0x4)) * (f32) sp510);
                 sp660 = (f64) sp200;
                 sp668 = (f64) sp208;
                 sp1F0 = temp_f12_1623 - temp_f6_1646;
@@ -1460,9 +1460,9 @@ loop_15:
                 sp1E8 = temp_f4_1652;
                 sp4F0 = temp_f0_1745;
                 sp4F8 = (f64) sp1E8;
-                temp_f0_1770 = ((f32) sp4F8 * (f32) sp668) + (((f32) sp4F0 * (f32) sp660) + (unksp4F4 * unksp664));
+                temp_f0_1770 = ((f32) sp4F8 * (f32) sp668) + (((f32) sp4F0 * (f32) sp660) + ((*(f32 *) ((u8 *) &sp4F0 + 0x4)) * (*(f32 *) ((u8 *) &sp660 + 0x4))));
                 if (temp_f0_1770 != 0.0f) {
-                    temp_f29_1773 = (((f32) sp508 * (f32) sp668) + (((f32) sp500 * (f32) sp660) + (unksp504 * unksp664))) / temp_f0_1770;
+                    temp_f29_1773 = (((f32) sp508 * (f32) sp668) + (((f32) sp500 * (f32) sp660) + ((*(f32 *) ((u8 *) &sp500 + 0x4)) * (*(f32 *) ((u8 *) &sp660 + 0x4))))) / temp_f0_1770;
                     if (!(temp_f29_1773 < 0.0f) && !(temp_f29_1773 > 1.0f)) {
                         sp1D0 = temp_f7_1644 - temp_f6_1646;
                         sp1D8 = temp_f4_1652;
@@ -1521,7 +1521,7 @@ loop_15:
                         sp480 = sp140;
                         sp148 = (f32) sp658 - (f32) sp648;
                         sp488 = (f64) sp148;
-                        temp_f1_1910 = (((f32) sp488 * (f32) sp478) + (((f32) sp480 * (f32) sp470) + (unksp484 * unksp474))) / (((f32) sp468 * (f32) sp468) + (((f32) sp460 * (f32) sp460) + (unksp464 * unksp464)));
+                        temp_f1_1910 = (((f32) sp488 * (f32) sp478) + (((f32) sp480 * (f32) sp470) + ((*(f32 *) ((u8 *) &sp480 + 0x4)) * (*(f32 *) ((u8 *) &sp470 + 0x4))))) / (((f32) sp468 * (f32) sp468) + (((f32) sp460 * (f32) sp460) + ((*(f32 *) ((u8 *) &sp460 + 0x4)) * (*(f32 *) ((u8 *) &sp460 + 0x4)))));
                         if ((temp_f1_1910 > 0.07499999f) && (temp_f1_1910 < 0.925f)) {
                             sp10 = temp_f3_1657 - temp_f12_1623;
                             sp18 = temp_f2_1663;
@@ -1537,12 +1537,12 @@ loop_15:
                             sp450 = sp50;
                             sp458 = (f64) sp58;
                             M2C_FIELD(temp_r27_1608, f32 *, 0x34) = temp_f30_1711;
-                            if ((((f32) sp678 * (f32) sp688) + (((f32) sp670 * (f32) sp680) + (unksp674 * unksp684))) < 0.0f) {
+                            if ((((f32) sp678 * (f32) sp688) + (((f32) sp670 * (f32) sp680) + ((*(f32 *) ((u8 *) &sp670 + 0x4)) * (*(f32 *) ((u8 *) &sp680 + 0x4))))) < 0.0f) {
                                 M2C_FIELD(temp_r27_1608, f64 *, 0x20) = sp670;
                                 M2C_FIELD(temp_r27_1608, f64 *, 0x28) = sp678;
                             } else {
                                 sp40 = -(f32) sp670;
-                                sp44 = -unksp674;
+                                sp44 = -(*(f32 *) ((u8 *) &sp670 + 0x4));
                                 sp48 = -(f32) sp678;
                                 M2C_FIELD(temp_r27_1608, f64 *, 0x20) = (f64) sp40;
                                 sp420 = (f64) sp40;
@@ -1598,7 +1598,7 @@ loop_15:
                             sp410 = sp110;
                             sp118 = M2C_FIELD(temp_r27_1608, f32 *, 0x18) - (f32) M2C_FIELD(temp_r27_1608, f64 *, 8);
                             sp418 = (f64) sp118;
-                            M2C_FIELD(temp_r27_1608, f32 *, 0x30) = (f32) (((f32) sp418 * (f32) M2C_FIELD(temp_r27_1608, f64 *, 0x28)) + (((f32) sp410 * (f32) M2C_FIELD(temp_r27_1608, f64 *, 0x20)) + (unksp414 * M2C_FIELD(temp_r27_1608, f32 *, 0x24))));
+                            M2C_FIELD(temp_r27_1608, f32 *, 0x30) = (f32) (((f32) sp418 * (f32) M2C_FIELD(temp_r27_1608, f64 *, 0x28)) + (((f32) sp410 * (f32) M2C_FIELD(temp_r27_1608, f64 *, 0x20)) + ((*(f32 *) ((u8 *) &sp410 + 0x4)) * M2C_FIELD(temp_r27_1608, f32 *, 0x24))));
                             M2C_FIELD(temp_r27_1608, u32 *, 0x38) = arg5;
                             M2C_FIELD(temp_r27_1608, MKCollisionInfo **, 0x3C) = arg6;
                         }
@@ -1662,9 +1662,9 @@ loop_51:
         temp_f5_2192 = *sp740 - temp_f0_2165;
         spF8 = temp_f5_2192;
         sp3F8 = (f64) spF8;
-        temp_f2_2201 = ((f32) sp3F8 * temp_f9_2181) + (((f32) sp3F0 * temp_f8_2176) + (unksp3F4 * temp_f7_2170));
+        temp_f2_2201 = ((f32) sp3F8 * temp_f9_2181) + (((f32) sp3F0 * temp_f8_2176) + ((*(f32 *) ((u8 *) &sp3F0 + 0x4)) * temp_f7_2170));
         if (temp_f2_2201 != 0.0f) {
-            temp_f28_2204 = (((f32) sp408 * temp_f9_2181) + (((f32) sp400 * temp_f8_2176) + (unksp404 * temp_f7_2170))) / temp_f2_2201;
+            temp_f28_2204 = (((f32) sp408 * temp_f9_2181) + (((f32) sp400 * temp_f8_2176) + ((*(f32 *) ((u8 *) &sp400 + 0x4)) * temp_f7_2170))) / temp_f2_2201;
             if (!(temp_f28_2204 >= M2C_FIELD(temp_r21_2108, f32 *, 0x34)) && !(temp_f28_2204 < 0.0f)) {
                 sp620 = M2C_FIELD(temp_r4_2157, f64 *, 0);
                 sp628 = (f64) M2C_FIELD(temp_r4_2157, f32 *, 8);
@@ -1731,12 +1731,12 @@ loop_51:
                 spA8 = temp_f8_2282 - temp_f2_2230;
                 sp3E0 = temp_f3_2309;
                 sp3E8 = (f64) spA8;
-                temp_f5_2327 = ((f32) sp3E8 * M2C_FIELD(temp_r3_2105, f32 *, 0x768)) + (((f32) sp3E0 * M2C_FIELD(temp_r3_2105, f32 *, 0x760)) + (unksp3E4 * M2C_FIELD(temp_r3_2105, f32 *, 0x764)));
+                temp_f5_2327 = ((f32) sp3E8 * M2C_FIELD(temp_r3_2105, f32 *, 0x768)) + (((f32) sp3E0 * M2C_FIELD(temp_r3_2105, f32 *, 0x760)) + ((*(f32 *) ((u8 *) &sp3E0 + 0x4)) * M2C_FIELD(temp_r3_2105, f32 *, 0x764)));
                 sp90 = temp_f1_2314;
                 sp3D0 = temp_f1_2314;
                 sp98 = temp_f7_2308 - temp_f0_2256;
                 sp3D8 = (f64) sp98;
-                temp_f1_2344 = ((f32) sp3D8 * M2C_FIELD(temp_r3_2105, f32 *, 0x778)) + (((f32) sp3D0 * M2C_FIELD(temp_r3_2105, f32 *, 0x770)) + (unksp3D4 * M2C_FIELD(temp_r3_2105, f32 *, 0x774)));
+                temp_f1_2344 = ((f32) sp3D8 * M2C_FIELD(temp_r3_2105, f32 *, 0x778)) + (((f32) sp3D0 * M2C_FIELD(temp_r3_2105, f32 *, 0x770)) + ((*(f32 *) ((u8 *) &sp3D0 + 0x4)) * M2C_FIELD(temp_r3_2105, f32 *, 0x774)));
                 if (temp_f5_2327 != 0.0f) {
                     var_f7_2347 = 1.0f / temp_f5_2327;
                 } else {
@@ -1750,14 +1750,14 @@ loop_51:
                 sp3C0 = sp80;
                 sp88 = (f32) sp628 - sp618;
                 sp3C8 = (f64) sp88;
-                temp_f7_2379 = var_f7_2347 * (((f32) sp3C8 * M2C_FIELD(temp_r3_2105, f32 *, 0x768)) + (((f32) sp3C0 * M2C_FIELD(temp_r3_2105, f32 *, 0x760)) + (unksp3C4 * M2C_FIELD(temp_r3_2105, f32 *, 0x764))));
+                temp_f7_2379 = var_f7_2347 * (((f32) sp3C8 * M2C_FIELD(temp_r3_2105, f32 *, 0x768)) + (((f32) sp3C0 * M2C_FIELD(temp_r3_2105, f32 *, 0x760)) + ((*(f32 *) ((u8 *) &sp3C0 + 0x4)) * M2C_FIELD(temp_r3_2105, f32 *, 0x764))));
                 temp_f1_2381 = sp620 - sp600;
                 sp70 = temp_f1_2381;
                 sp3B0 = temp_f1_2381;
                 var_f1_2160 = 5.106052364e-315;
                 sp78 = (f32) sp628 - sp608;
                 sp3B8 = (f64) sp78;
-                temp_f2_2401 = var_f0_2352 * (((f32) sp3B8 * M2C_FIELD(temp_r3_2105, f32 *, 0x778)) + (((f32) sp3B0 * M2C_FIELD(temp_r3_2105, f32 *, 0x770)) + (unksp3B4 * M2C_FIELD(temp_r3_2105, f32 *, 0x774))));
+                temp_f2_2401 = var_f0_2352 * (((f32) sp3B8 * M2C_FIELD(temp_r3_2105, f32 *, 0x778)) + (((f32) sp3B0 * M2C_FIELD(temp_r3_2105, f32 *, 0x770)) + ((*(f32 *) ((u8 *) &sp3B0 + 0x4)) * M2C_FIELD(temp_r3_2105, f32 *, 0x774))));
                 if ((temp_f7_2379 > M2C_BITWISE(f32, 5.106052364e-315)) && (temp_f7_2379 < 0.925f) && (temp_f2_2401 > M2C_BITWISE(f32, 5.106052364e-315)) && (temp_f2_2401 < 0.925f)) {
                     sp60 = *sp744 - *sp758;
                     sp3A0 = sp60;
@@ -1769,7 +1769,7 @@ loop_51:
                     sp30 = -temp_f4_2431;
                     sp34 = -temp_f0_2426;
                     sp38 = -temp_f5_2440;
-                    M2C_FIELD(temp_r21_2108, f32 *, 0x30) = (f32) ((1.0f - temp_f28_2204) * (((f32) sp3A8 * temp_f5_2440) + (((f32) sp3A0 * temp_f4_2431) + (unksp3A4 * temp_f0_2426))));
+                    M2C_FIELD(temp_r21_2108, f32 *, 0x30) = (f32) ((1.0f - temp_f28_2204) * (((f32) sp3A8 * temp_f5_2440) + (((f32) sp3A0 * temp_f4_2431) + ((*(f32 *) ((u8 *) &sp3A0 + 0x4)) * temp_f0_2426))));
                     M2C_FIELD(temp_r21_2108, f64 *, 0x10) = sp620;
                     M2C_FIELD(temp_r23_2125, f64 *, 8) = sp628;
                     M2C_FIELD(temp_r21_2108, f32 *, 0x34) = temp_f28_2204;
@@ -2135,7 +2135,7 @@ u8 IterateGrid(MKCollisionModel *arg0, const MKCollisionRay &arg1, MKCollisionRe
     temp_r4_2877 = temp_r29_2734->unk4;
     temp_r6_2879 = temp_r29_2734->unkC;
     var_r23_2885 = 0;
-    temp_r8_2887 = (s32) unksp254;
+    temp_r8_2887 = (s32) (*(f32 *) ((u8 *) &sp250 + 0x4));
     sp240 = M2C_BITWISE(f64, sp1F0);
     temp_r27_2894 = (s32) (f32) sp258;
     temp_r5_2896 = (s32) (f32) sp248;
@@ -2146,7 +2146,7 @@ u8 IterateGrid(MKCollisionModel *arg0, const MKCollisionRay &arg1, MKCollisionRe
     sp340 = temp_r4_2877 * (temp_r6_2879 - ((temp_r5_2896 - temp_r27_2894) + 1)) * 4;
     sp290 = 0.0f;
     temp_f30_2924 = (f32) M2C_FIELD(&arg1, f64 *, 8);
-    sp338 = (s32) unksp244;
+    sp338 = (s32) (*(f32 *) ((u8 *) &sp240 + 0x4));
     temp_f31_2928 = (f32) M2C_FIELD(&arg1, f64 *, 0x18);
     sp294 = 0.0f;
     var_r24_2930 = temp_r29_2734->unkC4 + (((temp_r8_2887 * (temp_r4_2877 * temp_r6_2879)) + ((temp_r27_2894 * temp_r4_2877) + temp_r26_2908)) * 4);
@@ -2238,9 +2238,9 @@ loop_26:
                 sp58 = sp160.unk8 * 255.0f;
                 sp128 = (f64) sp58;
                 sp34C = (s8) (f32) sp110;
-                temp_r3_3135 = (s32) unksp114;
+                temp_r3_3135 = (s32) (*(f32 *) ((u8 *) &sp110 + 0x4));
                 sp34B = (s8) (f32) sp120;
-                sp34A = (s8) unksp124;
+                sp34A = (s8) (*(f32 *) ((u8 *) &sp120 + 0x4));
                 sp349 = (s8) (f32) sp118;
                 sp348 = (s8) (f32) sp128;
 loop_24:
@@ -2508,7 +2508,7 @@ u8 IterateGridAlongLine(MKCollisionModel *arg0, const MKCollisionRay &arg1, MKCo
     sp17C = &spC;
     sp180 = &sp8;
     sp184 = temp_f3_3444;
-    sp188 = unksp1B4 - unksp1C4;
+    sp188 = (*(f32 *) ((u8 *) &sp1B0 + 0x4)) - (*(f32 *) ((u8 *) &sp1C0 + 0x4));
     sp18C = (f32) sp1B8 - (f32) sp1C8;
     if (temp_f3_3444 > 0.0f) {
         var_r0_3471 = 1;
@@ -2605,14 +2605,14 @@ loop_20:
     spF0 = (f64) sp20;
     sp2C9 = (s8) (f32) spD8;
     sp2C8 = (s8) (f32) spE8;
-    temp_r0_3744 = (s32) unkspDC;
+    temp_r0_3744 = (s32) (*(f32 *) ((u8 *) &spD8 + 0x4));
 loop_36:
     if (var_r20_3710 < temp_r21_3598) {
         temp_r4_3748 = M2C_FIELD(var_r20_3710, u8 *, 4);
         if (temp_r4_3748 >= (u8) temp_r0_3744) {
             if (!(var_r23_3373 & (1 << M2C_FIELD(var_r20_3710, u8 *, 0xC)))) {
                 var_r0_3757 = 0;
-                if (((u8) M2C_FIELD(var_r20_3710, u8 *, 3) >= (u8) sp2C9) && ((u8) M2C_FIELD(var_r20_3710, u8 *, 0) <= (u8) sp2C8) && (temp_r4_3748 >= (u8) temp_r0_3744) && ((u8) M2C_FIELD(var_r20_3710, u8 *, 1) <= (u8) (s32) unkspEC) && ((u8) M2C_FIELD(var_r20_3710, u8 *, 5) >= (u8) (s32) (f32) spE0) && ((u8) M2C_FIELD(var_r20_3710, u8 *, 2) <= (u8) (s32) (f32) spF0)) {
+                if (((u8) M2C_FIELD(var_r20_3710, u8 *, 3) >= (u8) sp2C9) && ((u8) M2C_FIELD(var_r20_3710, u8 *, 0) <= (u8) sp2C8) && (temp_r4_3748 >= (u8) temp_r0_3744) && ((u8) M2C_FIELD(var_r20_3710, u8 *, 1) <= (u8) (s32) (*(f32 *) ((u8 *) &spE8 + 0x4))) && ((u8) M2C_FIELD(var_r20_3710, u8 *, 5) >= (u8) (s32) (f32) spE0) && ((u8) M2C_FIELD(var_r20_3710, u8 *, 2) <= (u8) (s32) (f32) spF0)) {
                     var_r0_3757 = 1;
                 }
                 if (var_r0_3757 != 0) {
@@ -2914,7 +2914,7 @@ s32 MKCollisionModel::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResu
         return 0;
     }
     temp_f4_4131 = M2C_BITWISE(f32, temp_r8_4056->unk24);
-    temp_f2_4138 = M2C_FIELD(this, f32 *, 0x3C) * (unksp1FC - temp_f4_4131);
+    temp_f2_4138 = M2C_FIELD(this, f32 *, 0x3C) * ((*(f32 *) ((u8 *) &sp1F8 + 0x4)) - temp_f4_4131);
     var_f0_4139 = (f32) (temp_r8_4056->unk8 - 1);
     if (var_f0_4139 < temp_f2_4138) {
 
@@ -2927,7 +2927,7 @@ s32 MKCollisionModel::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResu
     var_f30_4168 = ((f32) temp_r11_4153 * M2C_BITWISE(f32, temp_r8_4056->unk14)) + temp_f4_4131;
     var_r7_4170 = temp_r8_4056->unkC4 + (((temp_r11_4153 * temp_r5_4147) + ((temp_r7_4082 * temp_r4_4100) + temp_r10_4080)) * 4);
 loop_74:
-    if (var_r8_4165 < (s32) unksp20C) {
+    if (var_r8_4165 < (s32) (*(f32 *) ((u8 *) &sp208 + 0x4))) {
         return 0;
     }
     var_f0_4180 = M2C_FIELD(this, f32 *, 0x3C) * (M2C_FIELD(&arg0, f32 *, 4) - var_f30_4168);
@@ -2971,32 +2971,32 @@ loop_25:
                     temp_f13_4270 = M2C_FIELD(temp_r26_4221, f32 *, 0x30);
                     temp_f9_4272 = M2C_FIELD(temp_r26_4221, f32 *, 0x34);
                     temp_f5_4278 = M2C_FIELD(temp_r26_4221, f32 *, 0x38);
-                    spB8 = temp_f13_4270 + (((f32) sp220 * temp_f12_4264) + (((f32) sp218 * temp_f11_4252) + (unksp21C * temp_f10_4240)));
-                    spBC = temp_f9_4272 + (((f32) sp220 * temp_f8_4265) + (((f32) sp218 * temp_f7_4254) + (unksp21C * temp_f6_4242)));
+                    spB8 = temp_f13_4270 + (((f32) sp220 * temp_f12_4264) + (((f32) sp218 * temp_f11_4252) + ((*(f32 *) ((u8 *) &sp218 + 0x4)) * temp_f10_4240)));
+                    spBC = temp_f9_4272 + (((f32) sp220 * temp_f8_4265) + (((f32) sp218 * temp_f7_4254) + ((*(f32 *) ((u8 *) &sp218 + 0x4)) * temp_f6_4242)));
                     sp238 = M2C_FIELD(temp_r11_4237, f64 *, 0);
-                    spC0 = temp_f5_4278 + (((f32) sp220 * temp_f4_4268) + (((f32) sp218 * temp_f3_4257) + (unksp21C * temp_f2_4245)));
+                    spC0 = temp_f5_4278 + (((f32) sp220 * temp_f4_4268) + (((f32) sp218 * temp_f3_4257) + ((*(f32 *) ((u8 *) &sp218 + 0x4)) * temp_f2_4245)));
                     sp240 = M2C_FIELD(temp_r11_4237, f64 *, 8);
                     sp1B8 = (f64) spB8;
                     sp1C0 = (f64) spC0;
                     sp248 = (f64) spB8;
                     sp250 = (f64) spC0;
-                    spA8 = temp_f13_4270 + (((f32) sp230 * temp_f12_4264) + (((f32) sp228 * temp_f11_4252) + (unksp22C * temp_f10_4240)));
-                    spAC = temp_f9_4272 + (((f32) sp230 * temp_f8_4265) + (((f32) sp228 * temp_f7_4254) + (unksp22C * temp_f6_4242)));
+                    spA8 = temp_f13_4270 + (((f32) sp230 * temp_f12_4264) + (((f32) sp228 * temp_f11_4252) + ((*(f32 *) ((u8 *) &sp228 + 0x4)) * temp_f10_4240)));
+                    spAC = temp_f9_4272 + (((f32) sp230 * temp_f8_4265) + (((f32) sp228 * temp_f7_4254) + ((*(f32 *) ((u8 *) &sp228 + 0x4)) * temp_f6_4242)));
                     sp1A8 = (f64) spA8;
                     sp258 = (f64) spA8;
-                    unksp254 = unksp224;
-                    spB0 = temp_f5_4278 + (((f32) sp230 * temp_f4_4268) + (((f32) sp228 * temp_f3_4257) + (unksp22C * temp_f2_4245)));
-                    spA0 = temp_f5_4278 + (((f32) sp240 * temp_f4_4268) + (((f32) sp238 * temp_f3_4257) + (unksp23C * temp_f2_4245)));
+                    (*(f32 *) ((u8 *) &sp250 + 0x4)) = (*(f32 *) ((u8 *) &sp220 + 0x4));
+                    spB0 = temp_f5_4278 + (((f32) sp230 * temp_f4_4268) + (((f32) sp228 * temp_f3_4257) + ((*(f32 *) ((u8 *) &sp228 + 0x4)) * temp_f2_4245)));
+                    spA0 = temp_f5_4278 + (((f32) sp240 * temp_f4_4268) + (((f32) sp238 * temp_f3_4257) + ((*(f32 *) ((u8 *) &sp238 + 0x4)) * temp_f2_4245)));
                     sp260 = (f64) spB0;
                     sp270 = (f64) spA0;
-                    sp98 = temp_f13_4270 + (((f32) sp240 * temp_f12_4264) + (((f32) sp238 * temp_f11_4252) + (unksp23C * temp_f10_4240)));
-                    sp9C = temp_f9_4272 + (((f32) sp240 * temp_f8_4265) + (((f32) sp238 * temp_f7_4254) + (unksp23C * temp_f6_4242)));
+                    sp98 = temp_f13_4270 + (((f32) sp240 * temp_f12_4264) + (((f32) sp238 * temp_f11_4252) + ((*(f32 *) ((u8 *) &sp238 + 0x4)) * temp_f10_4240)));
+                    sp9C = temp_f9_4272 + (((f32) sp240 * temp_f8_4265) + (((f32) sp238 * temp_f7_4254) + ((*(f32 *) ((u8 *) &sp238 + 0x4)) * temp_f6_4242)));
                     sp1B0 = (f64) spB0;
                     sp198 = (f64) sp98;
                     sp1A0 = (f64) spA0;
                     sp268 = (f64) sp98;
-                    unksp264 = unksp234;
-                    unksp274 = unksp244;
+                    (*(f32 *) ((u8 *) &sp260 + 0x4)) = (*(f32 *) ((u8 *) &sp230 + 0x4));
+                    (*(f32 *) ((u8 *) &sp270 + 0x4)) = (*(f32 *) ((u8 *) &sp240 + 0x4));
                 } else {
                     temp_r25_4344 = this->unk30->unkCC;
                     temp_r24_4347 = temp_r25_4344 + ((M2C_FIELD(var_r9_4185, u16 *, 6) * 0x10) & 0xFFFF0);
@@ -3114,9 +3114,9 @@ loop_25:
                                     sp10 = temp_f2_4461;
                                     sp118 = temp_f1_4526;
                                     sp120 = (f64) sp10;
-                                    sp28 = (unksp10C * (f32) sp120) - ((f32) sp110 * unksp11C);
+                                    sp28 = ((*(f32 *) ((u8 *) &sp108 + 0x4)) * (f32) sp120) - ((f32) sp110 * (*(f32 *) ((u8 *) &sp118 + 0x4)));
                                     sp2C = ((f32) sp110 * (f32) sp118) - ((f32) sp108 * (f32) sp120);
-                                    sp30 = ((f32) sp108 * unksp11C) - (unksp10C * (f32) sp118);
+                                    sp30 = ((f32) sp108 * (*(f32 *) ((u8 *) &sp118 + 0x4))) - ((*(f32 *) ((u8 *) &sp108 + 0x4)) * (f32) sp118);
                                     M2C_FIELD(arg1, f64 *, 0x10) = (f64) sp28;
                                     M2C_FIELD(arg1, f64 *, 0x18) = (f64) sp30;
                                     sp128 = (f64) sp28;
@@ -3133,7 +3133,7 @@ loop_25:
                                         spF8 = temp_f0_4576;
                                         spF0 = (f32) sp250 - var_r12_4427->unk28;
                                         sp100 = (f64) spF0;
-                                        temp_f2_4596 = ((arg1->unk18 * (f32) sp100) + ((arg1->unk10 * (f32) spF8) + (arg1->unk14 * unkspFC))) / temp_f4_4561;
+                                        temp_f2_4596 = ((arg1->unk18 * (f32) sp100) + ((arg1->unk10 * (f32) spF8) + (arg1->unk14 * (*(f32 *) ((u8 *) &spF8 + 0x4))))) / temp_f4_4561;
                                         if (!(temp_f2_4596 < 0.0f)) {
                                             M2C_FIELD(arg1, f64 *, 0) = (f64) var_r12_4427->unk20;
                                             M2C_FIELD(arg1, f64 *, 8) = (f64) M2C_FIELD(var_r12_4427, f32 *, 0x28);
@@ -3315,7 +3315,7 @@ s32 MKCollisionGroundHint::Update(const MKCollisionRay &arg0, MKCollisionResult 
     sp70 = (f32) sp100 - temp_f3_4762;
     sp88 = temp_f0_4864;
     sp90 = (f64) sp70;
-    temp_f2_4881 = ((M2C_FIELD(this, f32 *, 0x10) * (f32) sp90) + ((M2C_FIELD(this, f32 *, 8) * (f32) sp88) + (temp_f6_4847 * unksp8C))) / temp_f7_4850;
+    temp_f2_4881 = ((M2C_FIELD(this, f32 *, 0x10) * (f32) sp90) + ((M2C_FIELD(this, f32 *, 8) * (f32) sp88) + (temp_f6_4847 * (*(f32 *) ((u8 *) &sp88 + 0x4))))) / temp_f7_4850;
     if (temp_f2_4881 < 0.0f) {
         return 0;
     }
@@ -3451,7 +3451,7 @@ u8 FindClippedLocalRay(const MKVector3 &arg0, ColGridData *arg1, MKVector3 *arg2
     sp10 = 1.0f;
     spC = 1.0f;
     sp8 = 1.0f;
-    if ((MKCollision_Clip2((f32) sp140, (f32) sp160 - (f32) sp130, (f32) sp130, sp1C, sp10) != 0) && (MKCollision_Clip2(unksp144, unksp164 - unksp134, unksp134, sp18, spC) != 0) && (MKCollision_Clip2((f32) sp148, (f32) sp168 - (f32) sp138, (f32) sp138, sp14, sp8) != 0)) {
+    if ((MKCollision_Clip2((f32) sp140, (f32) sp160 - (f32) sp130, (f32) sp130, sp1C, sp10) != 0) && (MKCollision_Clip2((*(f32 *) ((u8 *) &sp140 + 0x4)), (*(f32 *) ((u8 *) &sp160 + 0x4)) - (*(f32 *) ((u8 *) &sp130 + 0x4)), (*(f32 *) ((u8 *) &sp130 + 0x4)), sp18, spC) != 0) && (MKCollision_Clip2((f32) sp148, (f32) sp168 - (f32) sp138, (f32) sp138, sp14, sp8) != 0)) {
         var_f0_5080 = sp18;
         if (var_f0_5080 > sp14) {
 
@@ -3827,9 +3827,9 @@ void MKCollisionModel::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCo
     sp3B8 = M2C_BITWISE(f64, sp328);
     sp3C0 = (f64) sp328.unk8;
     var_r28_5383 = 0;
-    sp890 = (s32) unksp3BC;
+    sp890 = (s32) (*(f32 *) ((u8 *) &sp3B8 + 0x4));
     sp88C = (s32) (f32) sp3D0;
-    var_r27_5407 = (s32) unksp3CC;
+    var_r27_5407 = (s32) (*(f32 *) ((u8 *) &sp3C8 + 0x4));
     sp888 = (s32) (f32) sp3C0;
     sp884 = (s32) (f32) sp3C8;
     sp8A8 = &MKVector3::one;
@@ -3908,7 +3908,7 @@ loop_48:
                 sp258 = temp_f0_5584;
                 sp110 = sp298.unk8 * 255.0f;
                 sp260 = (f64) sp110;
-                temp_r3_5614 = (s32) unksp24C;
+                temp_r3_5614 = (s32) (*(f32 *) ((u8 *) &sp248 + 0x4));
                 var_ctr_5625 = (u32) ((temp_r14_5474 + 0xD) - temp_r24_5472) / 14U;
                 if (temp_r24_5472 < temp_r14_5474) {
 loop_4:
@@ -3916,7 +3916,7 @@ loop_4:
                     if (temp_r14_5629 >= (u8) temp_r3_5614) {
                         if (!(M2C_FIELD(var_r9_5586, u8 *, 0xD) & var_r28_5429)) {
                             var_r0_5637 = 0;
-                            if (((u8) M2C_FIELD(var_r9_5586, u8 *, 3) >= (u8) (s32) (f32) sp248) && ((u8) M2C_FIELD(var_r9_5586, u8 *, 0) <= (u8) (s32) (f32) sp258) && (temp_r14_5629 >= (u8) temp_r3_5614) && ((u8) M2C_FIELD(var_r9_5586, u8 *, 1) <= (u8) (s32) unksp25C) && ((u8) M2C_FIELD(var_r9_5586, u8 *, 5) >= (u8) (s32) (f32) sp250) && ((u8) M2C_FIELD(var_r9_5586, u8 *, 2) <= (u8) (s32) (f32) sp260)) {
+                            if (((u8) M2C_FIELD(var_r9_5586, u8 *, 3) >= (u8) (s32) (f32) sp248) && ((u8) M2C_FIELD(var_r9_5586, u8 *, 0) <= (u8) (s32) (f32) sp258) && (temp_r14_5629 >= (u8) temp_r3_5614) && ((u8) M2C_FIELD(var_r9_5586, u8 *, 1) <= (u8) (s32) (*(f32 *) ((u8 *) &sp258 + 0x4))) && ((u8) M2C_FIELD(var_r9_5586, u8 *, 5) >= (u8) (s32) (f32) sp250) && ((u8) M2C_FIELD(var_r9_5586, u8 *, 2) <= (u8) (s32) (f32) sp260)) {
                                 var_r0_5637 = 1;
                             }
                             if ((var_r0_5637 == 0) || (var_r23_5588 += 1, *(&sp438 + var_r11_5590) = (s32) (var_r9_5586 - temp_r24_5472) / 14, var_r11_5590 += 4, ((var_r23_5588 == 0x100) == 0))) {
@@ -3975,10 +3975,10 @@ loop_46:
                     sp90 = sp218.unk8 * 255.0f;
                     sp1E0 = (f64) sp90;
                     temp_r3_5791 = (s32) (f32) sp1C8;
-                    temp_r4_5793 = (s32) unksp1CC;
+                    temp_r4_5793 = (s32) (*(f32 *) ((u8 *) &sp1C8 + 0x4));
                     temp_r14_5795 = (s32) (f32) sp1E0;
                     sp89E = (s8) (f32) sp1D8;
-                    sp89D = (s8) unksp1DC;
+                    sp89D = (s8) (*(f32 *) ((u8 *) &sp1D8 + 0x4));
                     sp89C = (s8) (f32) sp1D0;
                     if ((f32 *) this->unk28 == NULL) {
                         var_r15_5805 = 0;
@@ -4285,8 +4285,8 @@ void MKCollisionModel::SweepBoxTest(const MKSweptBox &arg0, MKBestResult *arg1, 
     sp248 = M2C_BITWISE(f64, sp1F8);
     sp250 = (f64) sp1F8.unk8;
     var_r24_6244 = 0;
-    sp6E0 = (s32) unksp24C;
-    var_r23_6269 = (s32) unksp25C;
+    sp6E0 = (s32) (*(f32 *) ((u8 *) &sp248 + 0x4));
+    var_r23_6269 = (s32) (*(f32 *) ((u8 *) &sp258 + 0x4));
     temp_f30_6271 = (f32) M2C_FIELD(&arg0, f64 *, 0x938);
     temp_f31_6272 = (f32) M2C_FIELD(&arg0, f64 *, 0x948);
 loop_29:
@@ -4360,7 +4360,7 @@ loop_25:
                 sp128 = temp_f0_6438;
                 sp60 = sp168.unk8 * 255.0f;
                 sp130 = (f64) sp60;
-                temp_r5_6468 = (s32) unksp11C;
+                temp_r5_6468 = (s32) (*(f32 *) ((u8 *) &sp118 + 0x4));
                 var_ctr_6479 = (u32) ((temp_r17_6329 + 0xD) - temp_r20_6327) / 14U;
                 if (temp_r20_6327 < temp_r17_6329) {
 loop_8:
@@ -4368,7 +4368,7 @@ loop_8:
                     if (temp_r11_6483 >= (u8) temp_r5_6468) {
                         if (!(M2C_FIELD(var_r12_6440, u8 *, 0xD) & var_r24_6284) && !(var_r28_6111 & (1 << M2C_FIELD(var_r12_6440, u8 *, 0xC)))) {
                             var_r0_6496 = 0;
-                            if (((u8) M2C_FIELD(var_r12_6440, u8 *, 3) >= (u8) (s32) (f32) sp118) && ((u8) M2C_FIELD(var_r12_6440, u8 *, 0) <= (u8) (s32) (f32) sp128) && (temp_r11_6483 >= (u8) temp_r5_6468) && ((u8) M2C_FIELD(var_r12_6440, u8 *, 1) <= (u8) (s32) unksp12C) && ((u8) M2C_FIELD(var_r12_6440, u8 *, 5) >= (u8) (s32) (f32) sp120) && ((u8) M2C_FIELD(var_r12_6440, u8 *, 2) <= (u8) (s32) (f32) sp130)) {
+                            if (((u8) M2C_FIELD(var_r12_6440, u8 *, 3) >= (u8) (s32) (f32) sp118) && ((u8) M2C_FIELD(var_r12_6440, u8 *, 0) <= (u8) (s32) (f32) sp128) && (temp_r11_6483 >= (u8) temp_r5_6468) && ((u8) M2C_FIELD(var_r12_6440, u8 *, 1) <= (u8) (s32) (*(f32 *) ((u8 *) &sp128 + 0x4))) && ((u8) M2C_FIELD(var_r12_6440, u8 *, 5) >= (u8) (s32) (f32) sp120) && ((u8) M2C_FIELD(var_r12_6440, u8 *, 2) <= (u8) (s32) (f32) sp130)) {
                                 var_r0_6496 = 1;
                             }
                             if ((var_r0_6496 == 0) || (var_r19_6442 += 1, *(&sp298 + var_r3_6444) = (s32) (var_r12_6440 - temp_r20_6327) / 14, var_r3_6444 += 4, ((var_r19_6442 == 0x100) == 0))) {
@@ -4596,11 +4596,11 @@ s32 MKCollisionModel::BoxTest(const MKCollisionBox &arg0, MKCollisionResult *arg
     sp240 = M2C_BITWISE(f64, sp1F0);
     sp248 = (f64) sp1F0.unk8;
     var_r24_6753 = 0;
-    sp6E8 = (s32) unksp244;
+    sp6E8 = (s32) (*(f32 *) ((u8 *) &sp240 + 0x4));
     temp_f30_6773 = (f32) M2C_FIELD(&arg0, f64 *, 0x98);
     sp6E4 = (s32) (f32) sp258;
     temp_f31_6777 = (f32) M2C_FIELD(&arg0, f64 *, 0xA8);
-    var_r23_6779 = (s32) unksp254;
+    var_r23_6779 = (s32) (*(f32 *) ((u8 *) &sp250 + 0x4));
     sp6E0 = (s32) (f32) sp248;
     sp6DC = (s32) (f32) sp250;
     sp6D8 = (s32) (f32) sp240;
@@ -4684,7 +4684,7 @@ loop_28:
     sp120 = temp_f0_6951;
     sp58 = sp160.unk8 * 255.0f;
     sp128 = (f64) sp58;
-    temp_r5_6981 = (s32) unksp114;
+    temp_r5_6981 = (s32) (*(f32 *) ((u8 *) &sp110 + 0x4));
     var_ctr_6992 = (u32) ((temp_r17_6842 + 0xD) - temp_r20_6840) / 14U;
     if (temp_r20_6840 < temp_r17_6842) {
 loop_8:
@@ -4692,7 +4692,7 @@ loop_8:
         if (temp_r11_6996 >= (u8) temp_r5_6981) {
             if (!(M2C_FIELD(var_r12_6953, u8 *, 0xD) & var_r24_6797) && !(var_r26_6619 & (1 << M2C_FIELD(var_r12_6953, u8 *, 0xC)))) {
                 var_r0_7009 = 0;
-                if (((u8) M2C_FIELD(var_r12_6953, u8 *, 3) >= (u8) (s32) (f32) sp110) && ((u8) M2C_FIELD(var_r12_6953, u8 *, 0) <= (u8) (s32) (f32) sp120) && (temp_r11_6996 >= (u8) temp_r5_6981) && ((u8) M2C_FIELD(var_r12_6953, u8 *, 1) <= (u8) (s32) unksp124) && ((u8) M2C_FIELD(var_r12_6953, u8 *, 5) >= (u8) (s32) (f32) sp118) && ((u8) M2C_FIELD(var_r12_6953, u8 *, 2) <= (u8) (s32) (f32) sp128)) {
+                if (((u8) M2C_FIELD(var_r12_6953, u8 *, 3) >= (u8) (s32) (f32) sp110) && ((u8) M2C_FIELD(var_r12_6953, u8 *, 0) <= (u8) (s32) (f32) sp120) && (temp_r11_6996 >= (u8) temp_r5_6981) && ((u8) M2C_FIELD(var_r12_6953, u8 *, 1) <= (u8) (s32) (*(f32 *) ((u8 *) &sp120 + 0x4))) && ((u8) M2C_FIELD(var_r12_6953, u8 *, 5) >= (u8) (s32) (f32) sp118) && ((u8) M2C_FIELD(var_r12_6953, u8 *, 2) <= (u8) (s32) (f32) sp128)) {
                     var_r0_7009 = 1;
                 }
                 if ((var_r0_7009 == 0) || (var_r19_6955 += 1, *(&sp290 + var_r3_6957) = (s32) (var_r12_6953 - temp_r20_6840) / 14, var_r3_6957 += 4, ((var_r19_6955 == 0x100) == 0))) {
@@ -4936,11 +4936,11 @@ s32 MKCollisionModel::SphereTest(const MKCollisionRay &arg0, MKCollisionResult *
     sp248 = M2C_BITWISE(f64, sp1F8);
     sp250 = (f64) sp1F8.unk8;
     var_r24_7289 = 0;
-    sp6F0 = (s32) unksp24C;
+    sp6F0 = (s32) (*(f32 *) ((u8 *) &sp248 + 0x4));
     temp_f30_7309 = (f32) M2C_FIELD(&arg0, f64 *, 8);
     sp6EC = (s32) (f32) sp260;
     temp_f31_7313 = (f32) M2C_FIELD(&arg0, f64 *, 0x18);
-    var_r23_7315 = (s32) unksp25C;
+    var_r23_7315 = (s32) (*(f32 *) ((u8 *) &sp258 + 0x4));
     sp6E8 = (s32) (f32) sp250;
     sp6E4 = (s32) (f32) sp258;
     sp6E0 = (s32) (f32) sp248;
@@ -5027,8 +5027,8 @@ loop_53:
     sp130 = (f64) sp60;
     sp6FC = (s8) (f32) sp128;
     temp_r6_7517 = (s32) (f32) sp118;
-    sp6FB = (s8) unksp11C;
-    sp6FA = (s8) unksp12C;
+    sp6FB = (s8) (*(f32 *) ((u8 *) &sp118 + 0x4));
+    sp6FA = (s8) (*(f32 *) ((u8 *) &sp128 + 0x4));
     sp6F9 = (s8) (f32) sp120;
     sp6F8 = (s8) (f32) sp130;
     var_ctr_7532 = (u32) ((temp_r17_7378 + 0xD) - temp_r20_7376) / 14U;
@@ -5184,19 +5184,19 @@ MKVector3 *MKCollisionModel::GetVerts(MKVector3 *arg0, const unsigned short *arg
         sp68 = M2C_FIELD(temp_r7_7812, f64 *, 0);
         temp_r5_7820 = temp_r8_7809 + (M2C_FIELD(arg1, u16 *, 4) * 0x10);
         sp70 = M2C_FIELD(temp_r7_7812, f64 *, 8);
-        sp28 = M2C_FIELD(temp_r9_7804, f32 *, 0x30) + (((f32) sp70 * M2C_FIELD(temp_r9_7804, f32 *, 0x20)) + (((f32) sp68 * M2C_FIELD(temp_r9_7804, f32 *, 0)) + (unksp6C * M2C_FIELD(temp_r9_7804, f32 *, 0x10))));
+        sp28 = M2C_FIELD(temp_r9_7804, f32 *, 0x30) + (((f32) sp70 * M2C_FIELD(temp_r9_7804, f32 *, 0x20)) + (((f32) sp68 * M2C_FIELD(temp_r9_7804, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * M2C_FIELD(temp_r9_7804, f32 *, 0x10))));
         sp78 = M2C_FIELD(temp_r6_7816, f64 *, 0);
-        sp2C = M2C_FIELD(temp_r9_7804, f32 *, 0x34) + (((f32) sp70 * M2C_FIELD(temp_r9_7804, f32 *, 0x24)) + (((f32) sp68 * M2C_FIELD(temp_r9_7804, f32 *, 4)) + (unksp6C * M2C_FIELD(temp_r9_7804, f32 *, 0x14))));
-        sp30 = M2C_FIELD(temp_r9_7804, f32 *, 0x38) + (((f32) sp70 * M2C_FIELD(temp_r9_7804, f32 *, 0x28)) + (((f32) sp68 * M2C_FIELD(temp_r9_7804, f32 *, 8)) + (unksp6C * M2C_FIELD(temp_r9_7804, f32 *, 0x18))));
+        sp2C = M2C_FIELD(temp_r9_7804, f32 *, 0x34) + (((f32) sp70 * M2C_FIELD(temp_r9_7804, f32 *, 0x24)) + (((f32) sp68 * M2C_FIELD(temp_r9_7804, f32 *, 4)) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * M2C_FIELD(temp_r9_7804, f32 *, 0x14))));
+        sp30 = M2C_FIELD(temp_r9_7804, f32 *, 0x38) + (((f32) sp70 * M2C_FIELD(temp_r9_7804, f32 *, 0x28)) + (((f32) sp68 * M2C_FIELD(temp_r9_7804, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * M2C_FIELD(temp_r9_7804, f32 *, 0x18))));
         M2C_FIELD(arg0, f64 *, 0) = (f64) sp28;
         M2C_FIELD(arg0, f64 *, 8) = (f64) sp30;
         temp_r5_7863 = this->unk28;
         sp80 = M2C_FIELD(temp_r6_7816, f64 *, 8);
         sp88 = M2C_FIELD(temp_r5_7820, f64 *, 0);
         sp90 = M2C_FIELD(temp_r5_7820, f64 *, 8);
-        sp18 = M2C_FIELD(temp_r5_7863, f32 *, 0x30) + (((f32) sp80 * M2C_FIELD(temp_r5_7863, f32 *, 0x20)) + (((f32) sp78 * M2C_FIELD(temp_r5_7863, f32 *, 0)) + (unksp7C * M2C_FIELD(temp_r5_7863, f32 *, 0x10))));
-        sp1C = M2C_FIELD(temp_r5_7863, f32 *, 0x34) + (((f32) sp80 * M2C_FIELD(temp_r5_7863, f32 *, 0x24)) + (((f32) sp78 * M2C_FIELD(temp_r5_7863, f32 *, 4)) + (unksp7C * M2C_FIELD(temp_r5_7863, f32 *, 0x14))));
-        sp20 = M2C_FIELD(temp_r5_7863, f32 *, 0x38) + (((f32) sp80 * M2C_FIELD(temp_r5_7863, f32 *, 0x28)) + (((f32) sp78 * M2C_FIELD(temp_r5_7863, f32 *, 8)) + (unksp7C * M2C_FIELD(temp_r5_7863, f32 *, 0x18))));
+        sp18 = M2C_FIELD(temp_r5_7863, f32 *, 0x30) + (((f32) sp80 * M2C_FIELD(temp_r5_7863, f32 *, 0x20)) + (((f32) sp78 * M2C_FIELD(temp_r5_7863, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * M2C_FIELD(temp_r5_7863, f32 *, 0x10))));
+        sp1C = M2C_FIELD(temp_r5_7863, f32 *, 0x34) + (((f32) sp80 * M2C_FIELD(temp_r5_7863, f32 *, 0x24)) + (((f32) sp78 * M2C_FIELD(temp_r5_7863, f32 *, 4)) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * M2C_FIELD(temp_r5_7863, f32 *, 0x14))));
+        sp20 = M2C_FIELD(temp_r5_7863, f32 *, 0x38) + (((f32) sp80 * M2C_FIELD(temp_r5_7863, f32 *, 0x28)) + (((f32) sp78 * M2C_FIELD(temp_r5_7863, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * M2C_FIELD(temp_r5_7863, f32 *, 0x18))));
         sp58 = (f64) sp28;
         sp60 = (f64) sp30;
         sp48 = (f64) sp18;
@@ -5204,16 +5204,16 @@ MKVector3 *MKCollisionModel::GetVerts(MKVector3 *arg0, const unsigned short *arg
         M2C_FIELD(arg0, f64 *, 0x10) = (f64) sp18;
         M2C_FIELD(arg0, f64 *, 0x18) = (f64) sp20;
         temp_r3_7905 = this->unk28;
-        sp8 = M2C_FIELD(temp_r3_7905, f32 *, 0x30) + (((f32) sp90 * M2C_FIELD(temp_r3_7905, f32 *, 0x20)) + (((f32) sp88 * M2C_FIELD(temp_r3_7905, f32 *, 0)) + (unksp8C * M2C_FIELD(temp_r3_7905, f32 *, 0x10))));
-        spC = M2C_FIELD(temp_r3_7905, f32 *, 0x34) + (((f32) sp90 * M2C_FIELD(temp_r3_7905, f32 *, 0x24)) + (((f32) sp88 * M2C_FIELD(temp_r3_7905, f32 *, 4)) + (unksp8C * M2C_FIELD(temp_r3_7905, f32 *, 0x14))));
-        sp10 = M2C_FIELD(temp_r3_7905, f32 *, 0x38) + (((f32) sp90 * M2C_FIELD(temp_r3_7905, f32 *, 0x28)) + (((f32) sp88 * M2C_FIELD(temp_r3_7905, f32 *, 8)) + (unksp8C * M2C_FIELD(temp_r3_7905, f32 *, 0x18))));
+        sp8 = M2C_FIELD(temp_r3_7905, f32 *, 0x30) + (((f32) sp90 * M2C_FIELD(temp_r3_7905, f32 *, 0x20)) + (((f32) sp88 * M2C_FIELD(temp_r3_7905, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * M2C_FIELD(temp_r3_7905, f32 *, 0x10))));
+        spC = M2C_FIELD(temp_r3_7905, f32 *, 0x34) + (((f32) sp90 * M2C_FIELD(temp_r3_7905, f32 *, 0x24)) + (((f32) sp88 * M2C_FIELD(temp_r3_7905, f32 *, 4)) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * M2C_FIELD(temp_r3_7905, f32 *, 0x14))));
+        sp10 = M2C_FIELD(temp_r3_7905, f32 *, 0x38) + (((f32) sp90 * M2C_FIELD(temp_r3_7905, f32 *, 0x28)) + (((f32) sp88 * M2C_FIELD(temp_r3_7905, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * M2C_FIELD(temp_r3_7905, f32 *, 0x18))));
         M2C_FIELD(arg0, f64 *, 0x20) = (f64) sp8;
         M2C_FIELD(arg0, f64 *, 0x28) = (f64) sp10;
-        arg0->unkC = unksp74;
-        M2C_FIELD(arg0, f32 *, 0x1C) = unksp84;
+        arg0->unkC = (*(f32 *) ((u8 *) &sp70 + 0x4));
+        M2C_FIELD(arg0, f32 *, 0x1C) = (*(f32 *) ((u8 *) &sp80 + 0x4));
         sp38 = (f64) sp8;
         sp40 = (f64) sp10;
-        M2C_FIELD(arg0, f32 *, 0x2C) = unksp94;
+        M2C_FIELD(arg0, f32 *, 0x2C) = (*(f32 *) ((u8 *) &sp90 + 0x4));
     } else {
         temp_r7_7953 = this->unk30->unkCC + (M2C_FIELD(arg1, u16 *, 0) * 0x10);
         M2C_FIELD(arg0, f64 *, 0) = (f64) M2C_FIELD(temp_r7_7953, f64 *, 0);
@@ -5370,9 +5370,9 @@ u8 RayTestTri(MKCollisionModel *arg0, const MKCollisionRay &arg1, int arg2, MKVe
     spB0 = temp_f0_8169;
     sp18 = temp_f3_8161 - arg3->unk8;
     spB8 = (f64) sp18;
-    sp40 = (unkspA4 * (f32) spB8) - ((f32) spA8 * unkspB4);
+    sp40 = ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (f32) spB8) - ((f32) spA8 * (*(f32 *) ((u8 *) &spB0 + 0x4)));
     sp44 = ((f32) spA8 * (f32) spB0) - ((f32) spA0 * (f32) spB8);
-    sp48 = ((f32) spA0 * unkspB4) - (unkspA4 * (f32) spB0);
+    sp48 = ((f32) spA0 * (*(f32 *) ((u8 *) &spB0 + 0x4))) - ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (f32) spB0);
     M2C_FIELD(arg4, f64 *, 0x10) = (f64) sp40;
     M2C_FIELD(arg4, f64 *, 0x18) = (f64) sp48;
     spC0 = (f64) sp40;
@@ -5386,7 +5386,7 @@ u8 RayTestTri(MKCollisionModel *arg0, const MKCollisionRay &arg1, int arg2, MKVe
     sp98 = (f64) sp58;
     temp_f6_8220 = arg4->unk18;
     temp_f4_8224 = (temp_f6_8220 * var_r29_8145->unk48) + ((temp_f5_8214 * var_r29_8145->unk40) + (temp_f2_8207 * var_r29_8145->unk44));
-    temp_f30_8226 = (temp_f6_8220 * (f32) sp98) + ((temp_f5_8214 * (f32) sp90) + (temp_f2_8207 * unksp94));
+    temp_f30_8226 = (temp_f6_8220 * (f32) sp98) + ((temp_f5_8214 * (f32) sp90) + (temp_f2_8207 * (*(f32 *) ((u8 *) &sp90 + 0x4))));
     if (temp_f4_8224 < 0.0f) {
         var_f1_8229 = -temp_f4_8224;
     } else {
@@ -5415,19 +5415,19 @@ u8 RayTestTri(MKCollisionModel *arg0, const MKCollisionRay &arg1, int arg2, MKVe
     if (var_f2_8291 < 0.0f) {
         var_f2_8291 = -var_f2_8291;
     }
-    var_f1_8297 = unksp64;
+    var_f1_8297 = (*(f32 *) ((u8 *) &sp58 + 0xc));
     sp60 = var_f2_8291;
     if (var_f1_8297 < 0.0f) {
         var_f1_8297 = -var_f1_8297;
     }
     var_f2_8304 = (f32) sp68;
-    unksp64 = var_f1_8297;
+    (*(f32 *) ((u8 *) &sp58 + 0xc)) = var_f1_8297;
     if (var_f2_8304 < 0.0f) {
         var_f2_8304 = -var_f2_8304;
     }
     var_r4_8312 = 0;
     sp68 = var_f2_8304;
-    if (sp60 < unksp64) {
+    if (sp60 < (*(f32 *) ((u8 *) &sp58 + 0xc))) {
         var_r4_8312 = 1;
     }
     if ((&sp60)[var_r4_8312] < sp68) {

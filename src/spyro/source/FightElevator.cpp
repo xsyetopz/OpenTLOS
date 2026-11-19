@@ -32,7 +32,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'unksp5C'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 FightElevator::GetClosestWaypointToPlayerIndex() {
     f64 sp70;
     f64 sp68;
@@ -78,7 +78,7 @@ s32 FightElevator::GetClosestWaypointToPlayerIndex() {
     sp58 = temp_f0_80;
     sp30 = (f32) sp70 - M2C_FIELD(temp_r5_73, f32 *, 8);
     sp60 = (f64) sp30;
-    var_f7_100 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C));
+    var_f7_100 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp58 + 0x4))));
     var_ctr_102 = temp_r5_88 - 1;
     if (temp_r5_88 > 1) {
         do {
@@ -90,14 +90,14 @@ s32 FightElevator::GetClosestWaypointToPlayerIndex() {
             sp48 = temp_f0_110;
             sp20 = temp_f3_114;
             sp50 = (f64) sp20;
-            if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < var_f7_100) {
+            if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))) < var_f7_100) {
                 temp_f0_129 = sp68 - temp_f4_109;
                 var_r3_72 = var_r6_82;
                 sp8 = temp_f0_129;
                 sp10 = temp_f3_114;
                 sp38 = temp_f0_129;
                 sp40 = (f64) sp10;
-                var_f7_100 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
+                var_f7_100 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))));
             }
             var_r6_82 += 1;
             var_r4_84 += 0x20;
@@ -190,7 +190,7 @@ loop_12:
         sp18 = temp_f0_246;
         sp10 = (f32) sp30 - M2C_FIELD(temp_r4_241, f32 *, 8);
         sp20 = (f64) sp10;
-        if (((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) <= temp_f31_232) && (unksp1C < M2C_BITWISE(f32, 209.99998474121094)) && (unksp1C > 0.0f)) {
+        if (((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))))) <= temp_f31_232) && ((*(f32 *) ((u8 *) &sp18 + 0x4)) < M2C_BITWISE(f32, 209.99998474121094)) && ((*(f32 *) ((u8 *) &sp18 + 0x4)) > 0.0f)) {
             var_r5_274 = 0;
             var_r4_275 = 0;
             var_ctr_276 = 6;
@@ -365,7 +365,7 @@ void FightElevator::Message(MKMessage *arg0) {
             sp80 = &this->unk108;
             sp84 = 0;
             M2C_FIELD(M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, M2C_UNK, M2C_UNK), 0xC)(gb, 0x25, 0), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp78);
-            if ((sp84 != 0) || (temp_r4_535 = this->unk8, temp_r29_538 = temp_r4_535 + 0x30, temp_r3_543 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *), 0xC)(gb, temp_r4_535), void **, 8), temp_f1_544 = M2C_FIELD(temp_r3_543, f64 *, 0x30), sp28 = temp_f1_544, sp30 = M2C_FIELD(temp_r3_543, f64 *, 0x38), sp18 = temp_f1_544 - M2C_FIELD(temp_r29_538, f64 *, 0), sp38 = sp18, sp20 = (f32) sp30 - M2C_FIELD(temp_r29_538, f32 *, 8), sp40 = (f64) sp20, (((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) >= FIGHT_ELEVATOR_HERO_DETACH_DIST_SQ) == 0))) {
+            if ((sp84 != 0) || (temp_r4_535 = this->unk8, temp_r29_538 = temp_r4_535 + 0x30, temp_r3_543 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *), 0xC)(gb, temp_r4_535), void **, 8), temp_f1_544 = M2C_FIELD(temp_r3_543, f64 *, 0x30), sp28 = temp_f1_544, sp30 = M2C_FIELD(temp_r3_543, f64 *, 0x38), sp18 = temp_f1_544 - M2C_FIELD(temp_r29_538, f64 *, 0), sp38 = sp18, sp20 = (f32) sp30 - M2C_FIELD(temp_r29_538, f32 *, 8), sp40 = (f64) sp20, (((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) >= FIGHT_ELEVATOR_HERO_DETACH_DIST_SQ) == 0))) {
                 temp_r4_574 = M2C_FIELD(arg0->unk4, void **, 8);
                 temp_r3_575 = this->unk8 + 0x30;
                 temp_f1_576 = M2C_FIELD(temp_r4_574, f64 *, 0x30);
@@ -375,7 +375,7 @@ void FightElevator::Message(MKMessage *arg0) {
                 sp58 = sp8;
                 sp10 = (f32) sp70 - M2C_FIELD(temp_r3_575, f32 *, 8);
                 sp60 = (f64) sp10;
-                if (((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C))) <= FIGHT_ELEVATOR_TO_BLOCKER_BLOCK_DISTANCE_SQ) && (unksp5C < 104.99999f) && (unksp5C > 0.0f)) {
+                if (((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp58 + 0x4))))) <= FIGHT_ELEVATOR_TO_BLOCKER_BLOCK_DISTANCE_SQ) && ((*(f32 *) ((u8 *) &sp58 + 0x4)) < 104.99999f) && ((*(f32 *) ((u8 *) &sp58 + 0x4)) > 0.0f)) {
                     FreeBeams();
                     ClearAnchors();
                     this->unk1A4 = 1;
@@ -633,7 +633,7 @@ void FightElevator::Update() {
                     sp48 = sp18;
                     sp20 = (f32) sp40 - (f32) sp30;
                     sp50 = (f64) sp20;
-                    var_f29_1136 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C));
+                    var_f29_1136 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))));
                     if (var_f29_1136 > 0.0f) {
                         temp_f1_1139 = __frsqrte(var_f29_1136);
                         temp_f1_1145 = 0.5 * temp_f1_1139 * -(((f64) var_f29_1136 * (temp_f1_1139 * temp_f1_1139)) - 3.0);

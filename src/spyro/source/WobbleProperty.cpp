@@ -129,7 +129,7 @@ void WobbleProperty::Update() {
         sp190 = sp100;
         sp108 = M2C_FIELD(temp_r3_123, f32 *, 8) - (f32) sp1A8;
         sp198 = (f64) sp108;
-        var_f7_144 = ((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + (unksp194 * unksp194));
+        var_f7_144 = ((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + ((*(f32 *) ((u8 *) &sp190 + 0x4)) * (*(f32 *) ((u8 *) &sp190 + 0x4))));
         if (var_f7_144 <= (temp_f30_124 * temp_f30_124)) {
             if (var_f7_144 > 1e-12f) {
                 if (var_f7_144 > 0.0f) {
@@ -169,7 +169,7 @@ void WobbleProperty::Update() {
             } else {
                 var_f4_215 = 0.0f;
             }
-            sp84 = unksp194 * var_f4_215;
+            sp84 = (*(f32 *) ((u8 *) &sp190 + 0x4)) * var_f4_215;
             sp80 = (f32) sp190 * var_f4_215;
             sp88 = (f32) sp198 * var_f4_215;
             sp120 = (f64) sp80;
@@ -235,7 +235,7 @@ void WobbleProperty::Update() {
                 sp110 = sp10;
                 sp18 = (f32) sp188 - (f32) sp178;
                 sp118 = (f64) sp18;
-                if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114))) >= (temp_f3_350 * temp_f3_350)) {
+                if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * (*(f32 *) ((u8 *) &sp110 + 0x4))))) >= (temp_f3_350 * temp_f3_350)) {
                     this->unk40 = 1;
                     this->unk24 = this->unk1C;
                     M2C_FIELD((this + (this->unk3C * 4)), s32 *, 0x34) = KDSound_Play3d(this->unk30, M2C_FIELD(*KDProperty::pInstanceMem, s32 *, 8) + 0x30, 0U, -1, 0.0f, 0U);

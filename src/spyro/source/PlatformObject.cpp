@@ -205,7 +205,7 @@ void PlatformObject::UpdateRotationMatrix() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1C'
+#if 0 // DRAFT: undefined identifier 'ClampMagnitude'
 void PlatformObject::UpdateTilt() {
     f64 sp20;                                       /* compiler-managed */
     f64 sp18;
@@ -243,7 +243,7 @@ void PlatformObject::UpdateTilt() {
             if (((temp_f3_332 * temp_f3_332) + ((temp_f1_329 * temp_f1_329) + (temp_f0_330 * temp_f0_330))) > (temp_f0_334 * temp_f0_334)) {
                 sp18 = (f64) M2C_FIELD(temp_r4_326, f32 *, 0x50);
                 sp20 = (f64) M2C_FIELD(temp_r4_326, f32 *, 0x58);
-                unksp1C = 0.0f;
+                (*(f32 *) ((u8 *) &sp18 + 0x4)) = 0.0f;
                 ClampMagnitude(sp8, temp_r5_321->unk4);
                 sp18 = M2C_BITWISE(f64, sp8);
                 sp20 = (f64) sp8.unk8;

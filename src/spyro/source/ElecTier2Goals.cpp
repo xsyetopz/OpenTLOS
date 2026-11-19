@@ -61,7 +61,7 @@ u8 ElecTier2Goal_FlyToTarget::Update() {
     sp40 = sp20;
     sp28 = this->unk20 - temp_r3_29->unk588.unk4;
     sp48 = (f64) sp28;
-    var_f31_52 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44));
+    var_f31_52 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp38 + 0xc)) * (*(f32 *) ((u8 *) &sp38 + 0xc))));
     if (var_f31_52 > 0.000001f) {
         if (var_f31_52 > 0.0f) {
             temp_f1_58 = __frsqrte(var_f31_52);
@@ -103,7 +103,7 @@ u8 ElecTier2Goal_FlyToTarget::Update() {
     }
     temp_f4_129 = 500.0f * gUpdateTimeDelta;
     sp40 = (f32) sp40 * var_f5_119;
-    unksp44 *= var_f5_119;
+    (*(f32 *) ((u8 *) &sp38 + 0xc)) *= var_f5_119;
     sp48 = (f32) sp48 * var_f5_119;
     if (var_f31_52 < temp_f4_129) {
         var_f30_139 = var_f31_52;

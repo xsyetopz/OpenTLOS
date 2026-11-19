@@ -679,9 +679,9 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
                 sp670 = (f64) sp480;
                 temp_f25_551 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->CalcLength(sp688);
                 temp_f26_554 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->GetHeight();
-                temp_f0_560 = -((0.5f * temp_f26_554) - unksp674);
+                temp_f0_560 = -((0.5f * temp_f26_554) - (*(f32 *) ((u8 *) &sp668 + 0xc)));
                 sp670 = -((0.5f * temp_f25_551) - (f32) sp670);
-                unksp674 = temp_f0_560;
+                (*(f32 *) ((u8 *) &sp668 + 0xc)) = temp_f0_560;
                 sp710.SetIdentity();
                 sp710.Translate(&sp710, *((MKVector3 *) &sp670));
                 ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(sp688, temp_f25_551, temp_f26_554, &sp710, 0xA, ((u32) (128.0f * var_f31_354) << 0x18) | 0x800000 | 0x8080, 1.0f, 1.0f, NULL, 1U);
@@ -725,7 +725,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
             sp478 = 1.0f;
             sp47C = var_f31_354;
             sp660 = temp_r3_669->unk0;
-            unksp66C = var_f31_354;
+            (*(f32 *) ((u8 *) &sp668 + 0x4)) = var_f31_354;
             sp5B0 = (f64) sp460;
             sp5B8 = (f64) sp468;
             sp5C0 = (f64) sp470;
@@ -750,9 +750,9 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
                 sp640 = (f64) sp450;
                 temp_f25_746 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->CalcLength(sp658);
                 temp_f26_749 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->GetHeight();
-                temp_f0_755 = -((0.5f * temp_f26_749) - unksp644);
+                temp_f0_755 = -((0.5f * temp_f26_749) - (*(f32 *) ((u8 *) &sp638 + 0xc)));
                 sp640 = -((0.5f * temp_f25_746) - (f32) sp640);
-                unksp644 = temp_f0_755;
+                (*(f32 *) ((u8 *) &sp638 + 0xc)) = temp_f0_755;
                 sp6D0.SetIdentity();
                 sp6D0.Translate(&sp6D0, *((MKVector3 *) &sp640));
                 ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString(sp658, temp_f25_746, temp_f26_749, &sp6D0, 0xA, ((u32) (128.0f * var_f31_354) << 0x18) | 0x800000 | 0x8080, 1.0f, 1.0f, NULL, 1U);

@@ -147,7 +147,7 @@ void Updater_Animate(MKMaterial *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp44'
+#if 0 // DRAFT: illegal type
 void Updater_SinRotate(MKMaterial *arg0, void *arg1) {
     Matrix sp90;
     Matrix sp50;
@@ -181,24 +181,24 @@ void Updater_SinRotate(MKMaterial *arg0, void *arg1) {
     sp40 = (f64) sp20;
     sp90.SetRotationToNone();
     sp10 = -(f32) sp40;
-    sp14 = -unksp44;
+    sp14 = -(*(f32 *) ((u8 *) &sp40 + 0x4));
     sp18 = -(f32) sp48;
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp90.unk30 = (f32) sp30;
-    sp90.unk34 = unksp34;
+    sp90.unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
     sp90.unk38 = (f32) sp38;
     sp90.unk3C = 1.0f;
     sp50.SetRotationRoll(temp_f29_247);
     sp50.unk30 = (f32) sp40;
-    sp50.unk34 = unksp44;
+    sp50.unk34 = (*(f32 *) ((u8 *) &sp40 + 0x4));
     sp50.unk38 = (f32) sp48;
     sp50.unk3C = 1.0f;
     ((Matrix *) (arg0->unk24 + 0x40))->Multiply(&sp90, &sp50);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp44'
+#if 0 // DRAFT: illegal type
 void Updater_Rotate(MKMaterial *arg0, void *arg1) {
     Matrix sp90;
     Matrix sp50;
@@ -228,17 +228,17 @@ void Updater_Rotate(MKMaterial *arg0, void *arg1) {
     sp48 = (f64) sp28;
     sp90.SetRotationToNone();
     sp10 = -(f32) sp40;
-    sp14 = -unksp44;
+    sp14 = -(*(f32 *) ((u8 *) &sp40 + 0x4));
     sp18 = -(f32) sp48;
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp90.unk30 = (f32) sp30;
-    sp90.unk34 = unksp34;
+    sp90.unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
     sp90.unk38 = (f32) sp38;
     sp90.unk3C = 1.0f;
     sp50.SetRotationRoll(M2C_FIELD(arg1, f32 *, 4));
     sp50.unk30 = (f32) sp40;
-    sp50.unk34 = unksp44;
+    sp50.unk34 = (*(f32 *) ((u8 *) &sp40 + 0x4));
     sp50.unk38 = (f32) sp48;
     sp50.unk3C = 1.0f;
     ((Matrix *) (arg0->unk24 + 0x40))->Multiply(&sp90, &sp50);

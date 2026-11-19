@@ -503,7 +503,7 @@ loop_38:
                         sp110 = temp_f0_427;
                         sp58 = (f32) spE8 - (f32) sp138;
                         sp118 = (f64) sp58;
-                        var_f0_445 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114));
+                        var_f0_445 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + ((*(f32 *) ((u8 *) &sp100 + 0x14)) * (*(f32 *) ((u8 *) &sp100 + 0x14))));
                         if (var_f0_445 > 0.000001f) {
                             if (var_f0_445 > 0.0f) {
                                 temp_f2_451 = __frsqrte(var_f0_445);
@@ -544,13 +544,13 @@ loop_38:
                             var_f0_445 = 0.0f;
                         }
                         temp_f6_521 = (f32) sp110 * var_f5_512;
-                        temp_f4_523 = unksp114 * var_f5_512;
+                        temp_f4_523 = (*(f32 *) ((u8 *) &sp100 + 0x14)) * var_f5_512;
                         temp_f5_524 = (f32) sp118 * var_f5_512;
                         sp110 = temp_f6_521;
-                        unksp114 = temp_f4_523;
+                        (*(f32 *) ((u8 *) &sp100 + 0x14)) = temp_f4_523;
                         sp118 = temp_f5_524;
                         M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
-                        if ((var_f0_445 == 30000.0f) && (var_f0_445 < var_f30_370) && (((temp_f5_524 * (f32) sp128) + ((temp_f6_521 * (f32) sp120) + (temp_f4_523 * unksp124))) > 0.85f)) {
+                        if ((var_f0_445 == 30000.0f) && (var_f0_445 < var_f30_370) && (((temp_f5_524 * (f32) sp128) + ((temp_f6_521 * (f32) sp120) + (temp_f4_523 * (*(f32 *) ((u8 *) &sp120 + 0x4))))) > 0.85f)) {
                             var_f30_370 = var_f0_445;
                             var_r31_372 = temp_r27_549;
                         }
@@ -1075,7 +1075,7 @@ u8 SpeedWaySpyro::GetBestMovementOffset(const MKVector3 &arg0, const MKVector3 &
         sp60 = temp_f0_1831;
         sp18 = arg0.unk8 - (f32) spA8;
         sp68 = (f64) sp18;
-        var_f30_1851 = (((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64))) - (spC * spC);
+        var_f30_1851 = (((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))))) - (spC * spC);
         if (var_f30_1851 > 0.0f) {
             temp_f1_1854 = __frsqrte(var_f30_1851);
             temp_f1_1860 = 0.5 * temp_f1_1854 * -(((f64) var_f30_1851 * (temp_f1_1854 * temp_f1_1854)) - 3.0);
@@ -1302,7 +1302,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     spA8 = (f32) sp2E8 - sp2C0.unk8;
     this->unk210 = (f32) sp2F0;
     sp2F8 = (f64) spA8;
-    this->unk214 = unksp2F4;
+    this->unk214 = (*(f32 *) ((u8 *) &sp2F0 + 0x4));
     this->unk218 = (f32) sp2F8;
     M2C_FIELD(this, f32 *, 0x21C) = 1.0f;
     if (arg1 == 0) {
@@ -1332,7 +1332,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     sp98 = (f32) sp2A8 + (f32) sp378;
     this->unk1A0.unk30 = (f32) sp2B0;
     sp2B8 = (f64) sp98;
-    this->unk1A0.unk34 = unksp2B4;
+    this->unk1A0.unk34 = (*(f32 *) ((u8 *) &sp2B0 + 0x4));
     this->unk1A0.unk38 = (f32) sp2B8;
     this->unk1A0.unk3C = 1.0f;
     if ((this->unk98 & 8) || (arg1 != 0)) {
@@ -1361,7 +1361,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     if (EventCamera_GetCurrent() == NULL) {
         sp360 = this->unk308;
         sp368 = this->unk310;
-        var_f30_2200 = ((f32) sp368 * (f32) sp368) + (((f32) sp360 * (f32) sp360) + (unksp364 * unksp364));
+        var_f30_2200 = ((f32) sp368 * (f32) sp368) + (((f32) sp360 * (f32) sp360) + ((*(f32 *) ((u8 *) &sp358 + 0xc)) * (*(f32 *) ((u8 *) &sp358 + 0xc))));
         if (var_f30_2200 > 0.000001f) {
             if (var_f30_2200 > 0.0f) {
                 temp_f1_2206 = __frsqrte(var_f30_2200);
@@ -1403,7 +1403,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         }
         temp_f2_2276 = (f32) sp360 * var_f3_2267;
         sp360 = temp_f2_2276;
-        unksp364 *= var_f3_2267;
+        (*(f32 *) ((u8 *) &sp358 + 0xc)) *= var_f3_2267;
         sp368 = (f32) sp368 * var_f3_2267;
         temp_f2_2289 = temp_f2_2276 * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk164;
         temp_f0_2292 = M2C_BITWISE(f64, sp390.unk94.unk28) * (f64) temp_f2_2289;
@@ -1411,7 +1411,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         sp350 = temp_f0_2292;
         sp168 = M2C_BITWISE(f32, sp390.unk94.unk30) * temp_f2_2289;
         sp358 = (f64) sp168;
-        temp_f2_2308 = unksp364 * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk16C;
+        temp_f2_2308 = (*(f32 *) ((u8 *) &sp358 + 0xc)) * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk16C;
         temp_f0_2311 = sp390.unkD0 * (f64) temp_f2_2308;
         sp150 = temp_f0_2311;
         sp340 = temp_f0_2311;
@@ -1476,7 +1476,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         sp308 = (f64) spB8;
         M2C_STRUCT_COPY((s32) &sp390.unk4C.unk2C + 4, (s32) &sp390.unk94.unk24 + 4, 0x40);
         sp390.unk94.unk18 = (f32) sp330;
-        sp390.unk94.unk1C = unksp334;
+        sp390.unk94.unk1C = (*(f32 *) ((u8 *) &sp330 + 0x4));
         sp390.unk94.unk20 = (f32) sp338;
         sp390.unk94.unk24 = 1.0f;
         temp_f0_2471 = sp300 - sp390.unk94.unk18;
@@ -1488,7 +1488,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         temp_f9_2483 = M2C_BITWISE(f32, sp210);
         temp_f4_2489 = M2C_BITWISE(f32, sp390.unk94);
         sp390.unk94.unk8 = temp_f9_2483;
-        unksp434 = sp210.unk4;
+        (*(f32 *) ((u8 *) &sp390 + 0xa4)) = sp210.unk4;
         sp30 = (sp210.unk4 * temp_f4_2489) - (sp210.unk8 * sp390.unk94);
         sp34 = (sp210.unk8 * sp390.unk90) - (temp_f9_2483 * temp_f4_2489);
         sp38 = (temp_f9_2483 * sp390.unk94) - (sp210.unk4 * sp390.unk90);
@@ -1496,27 +1496,27 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         sp1E8 = (f64) sp38;
         sp390.unk94.unk10 = sp210.unk8;
         sp70 = -(f32) sp1E0;
-        sp74 = -unksp1E4;
+        sp74 = -(*(f32 *) ((u8 *) &sp1E0 + 0x4));
         sp78 = -(f32) sp1E8;
         sp1F0 = (f64) sp70;
         sp1F8 = (f64) sp78;
         sp390.unk94.unk14 = 0.0f;
         sp390.unk4C.unk30 = (f32) sp1F0;
-        sp390.unk4C.unk34 = unksp1F4;
-        sp28 = ((f32) sp1F0 * sp210.unk4) - (unksp1F4 * temp_f9_2483);
-        sp20 = (unksp1F4 * sp210.unk8) - ((f32) sp1F8 * sp210.unk4);
+        sp390.unk4C.unk34 = (*(f32 *) ((u8 *) &sp1F0 + 0x4));
+        sp28 = ((f32) sp1F0 * sp210.unk4) - ((*(f32 *) ((u8 *) &sp1F0 + 0x4)) * temp_f9_2483);
+        sp20 = ((*(f32 *) ((u8 *) &sp1F0 + 0x4)) * sp210.unk8) - ((f32) sp1F8 * sp210.unk4);
         sp24 = ((f32) sp1F8 * temp_f9_2483) - ((f32) sp1F0 * sp210.unk8);
         sp1C8 = (f64) sp28;
         sp1C0 = (f64) sp20;
         sp390.unk88 = (f32) sp1F8;
         sp68 = -(f32) sp1C8;
         sp60 = -(f32) sp1C0;
-        sp64 = -unksp1C4;
+        sp64 = -(*(f32 *) ((u8 *) &sp1C0 + 0x4));
         sp1D8 = (f64) sp68;
         sp1D0 = (f64) sp60;
         sp390.unk8C = 0.0f;
         sp390.unk90 = (f32) sp1D0;
-        sp390.unk94 = unksp1D4;
+        sp390.unk94 = (*(f32 *) ((u8 *) &sp1D0 + 0x4));
         sp390.unk94 = (f32) sp1D8;
         sp390.unk94.unk4 = 0.0f;
         if (arg2 != 0) {
@@ -1540,7 +1540,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
             sp390.unk4C = M2C_BITWISE(f32, sp1A0);
             sp390.unk4C.unk4 = sp1A4;
             sp390.unk4C.unk8 = sp1A8;
-            unksp3EC = 0.0f;
+            (*(f32 *) ((u8 *) &sp390 + 0x5c)) = 0.0f;
             sp190.Update(*((MKVector3 *) &this->unk2A0), M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x158));
             sp390.unk4C.unk1C = 0.0f;
             sp390.unk4C.unk2C = 1.0f;
@@ -1551,7 +1551,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
             sp390.unk4C.unk24 = M2C_BITWISE(f32, sp390.unk94.unk1C);
             sp390.unk4C.unk28 = M2C_BITWISE(f32, sp390.unk94.unk20);
             sp390.unk4C.unk1C = 0.0f;
-            unksp3EC = 0.0f;
+            (*(f32 *) ((u8 *) &sp390 + 0x5c)) = 0.0f;
             sp390.unk4C = 0.0f;
             sp390.unk4C.unk2C = 1.0f;
         }
@@ -1799,7 +1799,7 @@ block_49:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp3C'
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 u8 SpeedWaySpyro::AnyToPowerRollTransition() {
     f64 sp40;
     f64 sp38;
@@ -1859,7 +1859,7 @@ u8 SpeedWaySpyro::AnyToPowerRollTransition() {
     sp20 = 0.0f;
     sp30 = (f64) sp10;
     sp40 = (f64) sp20;
-    var_f31_3396 = ((f32) sp40 * (f32) sp30) + (((f32) sp38 * (f32) sp28) + (unksp3C * unksp2C));
+    var_f31_3396 = ((f32) sp40 * (f32) sp30) + (((f32) sp38 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4))));
     temp_r3_3397 = GetInput();
     var_r4_3399 = 0;
     if (((u8) temp_r3_3397->unk5 != 0) || ((u8) temp_r3_3397->unk4 != 0)) {
@@ -2009,7 +2009,7 @@ u8 SpeedWaySpyro::AnyToHitCollisionTransition() {
         sp18 = this->unk2D0 * var_f3_3618;
         sp20 = (f64) sp10;
         sp28 = (f64) sp18;
-        if (((((f32) sp28 * M2C_FIELD(var_r30_3496, f32 *, 0x18)) + (((f32) sp20 * M2C_FIELD(var_r30_3496, f32 *, 0x10)) + (unksp24 * M2C_FIELD(var_r30_3496, f32 *, 0x14)))) < -0.9f) && (DealDamage(-5.0f) != 0)) {
+        if (((((f32) sp28 * M2C_FIELD(var_r30_3496, f32 *, 0x18)) + (((f32) sp20 * M2C_FIELD(var_r30_3496, f32 *, 0x10)) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * M2C_FIELD(var_r30_3496, f32 *, 0x14)))) < -0.9f) && (DealDamage(-5.0f) != 0)) {
             if (M2C_FIELD(var_r30_3496, s32 *, 0x44) & 0x100) {
                 KDSound_Play(GS_SpyroLavaBurn, 0U, -1);
                 if ((M2C_FIELD(GameData::gameData, f32 *, 0x70) == 0.0f) && ((s32) this->unk180 != 7)) {
@@ -2410,11 +2410,11 @@ void SpeedWaySpyro::MoveSelectAnim() {
     sp78 = (f64) sp38;
     sp58 = (f64) sp28;
     sp48 = (f64) sp18;
-    temp_f3_4572 = ((f32) sp78 * (f32) sp58) + (((f32) sp70 * (f32) sp50) + (unksp74 * unksp54));
+    temp_f3_4572 = ((f32) sp78 * (f32) sp58) + (((f32) sp70 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
     sp10 = -1.0f;
     sp14 = 0.0f;
     sp40 = (f64) sp10;
-    temp_f1_4583 = ((f32) sp78 * (f32) sp48) + (((f32) sp70 * (f32) sp40) + (unksp74 * unksp44));
+    temp_f1_4583 = ((f32) sp78 * (f32) sp48) + (((f32) sp70 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (*(f32 *) ((u8 *) &sp40 + 0x4))));
     if ((temp_f3_4572 != 0.0f) || (temp_f1_4583 != 0.0f)) {
         var_r30_4589 = NULL;
         if (temp_f3_4572 > 0.91f) {
@@ -2981,7 +2981,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
                 sp148 = M2C_BITWISE(f64, sp30.unk8);
             } else {
                 sp140 = 0.0f;
-                unksp144 = 0.0f;
+                (*(f32 *) ((u8 *) &sp13C + 0x8)) = 0.0f;
                 sp148 = 0.0f;
             }
             sp161 = 0;

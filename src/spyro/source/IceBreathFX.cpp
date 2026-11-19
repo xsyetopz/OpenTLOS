@@ -217,7 +217,7 @@ void IceBreathFX::SpawnWallIceShard(const MKVector3 &arg0, const MKVector3 &arg1
             sp20 = temp_f5_274 + sp88.unk8;
             M2C_FIELD(temp_r30_218, f32 *, 0x30) = (f32) sp98;
             spA0 = (f64) sp20;
-            M2C_FIELD(temp_r30_218, f32 *, 0x34) = unksp9C;
+            M2C_FIELD(temp_r30_218, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp98 + 0x4));
             M2C_FIELD(temp_r30_218, f32 *, 0x38) = (f32) spA0;
             M2C_FIELD(temp_r30_218, f32 *, 0x3C) = 1.0f;
             M2C_FIELD(temp_r30_218, f32 *, 0x44) = arg2;
@@ -735,7 +735,7 @@ loop_71:
                     sp448 = temp_f0_898;
                     sp140 = (f32) sp360 - arg0.unk8;
                     sp450 = (f64) sp140;
-                    temp_f0_916 = ((f32) sp450 * (f32) sp450) + (((f32) sp448 * (f32) sp448) + (unksp44C * unksp44C));
+                    temp_f0_916 = ((f32) sp450 * (f32) sp450) + (((f32) sp448 * (f32) sp448) + ((*(f32 *) ((u8 *) &sp440 + 0xc)) * (*(f32 *) ((u8 *) &sp440 + 0xc))));
                     if ((temp_f0_916 <= 2.5e7f) && (temp_f0_916 < var_f31_850)) {
                         if (temp_f0_916 > 0.000001f) {
                             if (temp_f0_916 > 0.0f) {
@@ -777,13 +777,13 @@ loop_71:
                         } else {
                             var_f4_992 = 0.0f;
                         }
-                        temp_f5_999 = unksp44C * var_f4_992;
+                        temp_f5_999 = (*(f32 *) ((u8 *) &sp440 + 0xc)) * var_f4_992;
                         temp_f6_1001 = (f32) sp448 * var_f4_992;
                         temp_f4_1003 = (f32) sp450 * var_f4_992;
                         sp448 = temp_f6_1001;
-                        unksp44C = temp_f5_999;
+                        (*(f32 *) ((u8 *) &sp440 + 0xc)) = temp_f5_999;
                         sp450 = temp_f4_1003;
-                        if (((temp_f4_1003 * (f32) sp460) + ((temp_f6_1001 * (f32) sp458) + (temp_f5_999 * unksp45C))) > 0.98f) {
+                        if (((temp_f4_1003 * (f32) sp460) + ((temp_f6_1001 * (f32) sp458) + (temp_f5_999 * (*(f32 *) ((u8 *) &sp458 + 0x4))))) > 0.98f) {
                             var_f31_850 = temp_f0_916;
                             var_r26_848 = (*temp_r30_1033)->unk8.unk0(temp_r30_1033);
                             M2C_FIELD(*temp_r30_1033, M2C_UNK (**)(TargetManager **, MKVector3 *, f64 *), 0x2C)(temp_r30_1033, &arg0, &sp468);
@@ -801,7 +801,7 @@ loop_71:
             sp480 = (f64) spB0;
             sp348 = spA8;
             sp350 = (f64) spB0;
-            var_f4_1061 = ((f32) sp480 * (f32) sp480) + (((f32) sp478 * (f32) sp478) + (unksp47C * unksp47C));
+            var_f4_1061 = ((f32) sp480 * (f32) sp480) + (((f32) sp478 * (f32) sp478) + ((*(f32 *) ((u8 *) &sp468 + 0x14)) * (*(f32 *) ((u8 *) &sp468 + 0x14))));
             if (var_f4_1061 > 0.000001f) {
                 if (var_f4_1061 > 0.0f) {
                     temp_f1_1067 = __frsqrte(var_f4_1061);
@@ -841,7 +841,7 @@ loop_71:
                 var_f3_1128 = 0.0f;
             }
             sp478 = (f32) sp478 * var_f3_1128;
-            unksp47C *= var_f3_1128;
+            (*(f32 *) ((u8 *) &sp468 + 0x14)) *= var_f3_1128;
             sp480 = (f32) sp480 * var_f3_1128;
         }
         MKVector(1.0f, 1.0f, 1.0f);
@@ -855,7 +855,7 @@ loop_71:
         sp478 = (f64) sp478 + temp_f0_1159;
         temp_f4_1175 = sp480 + (f32) sp340;
         sp480 = temp_f4_1175;
-        var_f4_1183 = (temp_f4_1175 * temp_f4_1175) + (((f32) sp478 * (f32) sp478) + (unksp47C * unksp47C));
+        var_f4_1183 = (temp_f4_1175 * temp_f4_1175) + (((f32) sp478 * (f32) sp478) + ((*(f32 *) ((u8 *) &sp468 + 0x14)) * (*(f32 *) ((u8 *) &sp468 + 0x14))));
         if (var_f4_1183 > 0.000001f) {
             if (var_f4_1183 > 0.0f) {
                 temp_f1_1189 = __frsqrte(var_f4_1183);
@@ -895,7 +895,7 @@ loop_71:
             var_f4_1250 = 0.0f;
         }
         sp478 = (f32) sp478 * var_f4_1250;
-        unksp47C *= var_f4_1250;
+        (*(f32 *) ((u8 *) &sp468 + 0x14)) *= var_f4_1250;
         sp480 *= var_f4_1250;
         M2C_FIELD((this->unkA8 + var_r22_833), s8 *, 0x20) = 1;
         sp298.operator*(350.0f);
@@ -1569,7 +1569,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp6B0 = (f64) sp1B0;
             sp638 = sp1A8;
             sp640 = (f64) sp1B0;
-            var_f4_2107 = ((f32) sp6B0 * (f32) sp6B0) + (((f32) sp6A8 * (f32) sp6A8) + (unksp6AC * unksp6AC));
+            var_f4_2107 = ((f32) sp6B0 * (f32) sp6B0) + (((f32) sp6A8 * (f32) sp6A8) + ((*(f32 *) ((u8 *) &sp680 + 0x2c)) * (*(f32 *) ((u8 *) &sp680 + 0x2c))));
             if (var_f4_2107 > 0.000001f) {
                 if (var_f4_2107 > 0.0f) {
                     temp_f1_2113 = __frsqrte(var_f4_2107);
@@ -1609,13 +1609,13 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
                 var_f3_2174 = 0.0f;
             }
             sp6A8 = (f32) sp6A8 * var_f3_2174;
-            unksp6AC *= var_f3_2174;
+            (*(f32 *) ((u8 *) &sp680 + 0x2c)) *= var_f3_2174;
             sp6B0 = (f32) sp6B0 * var_f3_2174;
             M2C_STRUCT_COPY((s32) &sp710.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp750.SetRotationYaw(0.2617994f);
-            spB8 = sp750.unk30 + ((sp6B0 * sp750.unk20) + ((sp6A8 * M2C_BITWISE(f32, sp750)) + (unksp6AC * sp750.unk10)));
-            spBC = sp750.unk34 + ((sp6B0 * sp750.unk24) + ((sp6A8 * sp750.unk4) + (unksp6AC * sp750.unk14)));
-            spC0 = sp750.unk38 + ((sp6B0 * sp750.unk28) + ((sp6A8 * sp750.unk8) + (unksp6AC * sp750.unk18)));
+            spB8 = sp750.unk30 + ((sp6B0 * sp750.unk20) + ((sp6A8 * M2C_BITWISE(f32, sp750)) + ((*(f32 *) ((u8 *) &sp680 + 0x2c)) * sp750.unk10)));
+            spBC = sp750.unk34 + ((sp6B0 * sp750.unk24) + ((sp6A8 * sp750.unk4) + ((*(f32 *) ((u8 *) &sp680 + 0x2c)) * sp750.unk14)));
+            spC0 = sp750.unk38 + ((sp6B0 * sp750.unk28) + ((sp6A8 * sp750.unk8) + ((*(f32 *) ((u8 *) &sp680 + 0x2c)) * sp750.unk18)));
             sp608 = (f64) spB8;
             sp610 = (f64) spC0;
             sp198 = sp608 * 5.697262106e-315;
@@ -1644,7 +1644,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp6B0 = (f64) sp190;
             sp5D8 = sp188;
             sp5E0 = (f64) sp190;
-            var_f4_2311 = ((f32) sp6B0 * (f32) sp6B0) + (((f32) sp6A8 * (f32) sp6A8) + (unksp6AC * unksp6AC));
+            var_f4_2311 = ((f32) sp6B0 * (f32) sp6B0) + (((f32) sp6A8 * (f32) sp6A8) + ((*(f32 *) ((u8 *) &sp680 + 0x2c)) * (*(f32 *) ((u8 *) &sp680 + 0x2c))));
             if (var_f4_2311 > 0.000001f) {
                 if (var_f4_2311 > 0.0f) {
                     temp_f1_2317 = __frsqrte(var_f4_2311);
@@ -1684,13 +1684,13 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
                 var_f3_2378 = 0.0f;
             }
             sp6A8 = (f32) sp6A8 * var_f3_2378;
-            unksp6AC *= var_f3_2378;
+            (*(f32 *) ((u8 *) &sp680 + 0x2c)) *= var_f3_2378;
             sp6B0 = (f32) sp6B0 * var_f3_2378;
             M2C_STRUCT_COPY((s32) &sp710.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp750.SetRotationYaw(-0.2617994f);
-            spA8 = sp750.unk30 + ((sp6B0 * sp750.unk20) + ((sp6A8 * M2C_BITWISE(f32, sp750)) + (unksp6AC * sp750.unk10)));
-            spAC = sp750.unk34 + ((sp6B0 * sp750.unk24) + ((sp6A8 * sp750.unk4) + (unksp6AC * sp750.unk14)));
-            spB0 = sp750.unk38 + ((sp6B0 * sp750.unk28) + ((sp6A8 * sp750.unk8) + (unksp6AC * sp750.unk18)));
+            spA8 = sp750.unk30 + ((sp6B0 * sp750.unk20) + ((sp6A8 * M2C_BITWISE(f32, sp750)) + ((*(f32 *) ((u8 *) &sp680 + 0x2c)) * sp750.unk10)));
+            spAC = sp750.unk34 + ((sp6B0 * sp750.unk24) + ((sp6A8 * sp750.unk4) + ((*(f32 *) ((u8 *) &sp680 + 0x2c)) * sp750.unk14)));
+            spB0 = sp750.unk38 + ((sp6B0 * sp750.unk28) + ((sp6A8 * sp750.unk8) + ((*(f32 *) ((u8 *) &sp680 + 0x2c)) * sp750.unk18)));
             sp5A8 = (f64) spA8;
             sp5B0 = (f64) spB0;
             sp178 = sp5A8 * 5.697262106e-315;
@@ -1722,7 +1722,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp6A0 = (f64) sp170;
             sp578 = sp168;
             sp580 = (f64) sp170;
-            var_f4_2521 = ((f32) sp6A0 * (f32) sp6A0) + (((f32) sp698 * (f32) sp698) + (unksp69C * unksp69C));
+            var_f4_2521 = ((f32) sp6A0 * (f32) sp6A0) + (((f32) sp698 * (f32) sp698) + ((*(f32 *) ((u8 *) &sp680 + 0x1c)) * (*(f32 *) ((u8 *) &sp680 + 0x1c))));
             if (var_f4_2521 > 0.000001f) {
                 if (var_f4_2521 > 0.0f) {
                     temp_f1_2527 = __frsqrte(var_f4_2521);
@@ -1762,13 +1762,13 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
                 var_f3_2588 = 0.0f;
             }
             sp698 = (f32) sp698 * var_f3_2588;
-            unksp69C *= var_f3_2588;
+            (*(f32 *) ((u8 *) &sp680 + 0x1c)) *= var_f3_2588;
             sp6A0 = (f32) sp6A0 * var_f3_2588;
             M2C_STRUCT_COPY((s32) &sp6D0.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp710.SetRotationYaw(temp_f30_2493 * 0.61086524f);
-            sp98 = sp710.unk30 + ((sp6A0 * sp710.unk20) + ((sp698 * M2C_BITWISE(f32, sp710)) + (unksp69C * sp710.unk10)));
-            sp9C = sp710.unk34 + ((sp6A0 * sp710.unk24) + ((sp698 * sp710.unk4) + (unksp69C * sp710.unk14)));
-            spA0 = sp710.unk38 + ((sp6A0 * sp710.unk28) + ((sp698 * sp710.unk8) + (unksp69C * sp710.unk18)));
+            sp98 = sp710.unk30 + ((sp6A0 * sp710.unk20) + ((sp698 * M2C_BITWISE(f32, sp710)) + ((*(f32 *) ((u8 *) &sp680 + 0x1c)) * sp710.unk10)));
+            sp9C = sp710.unk34 + ((sp6A0 * sp710.unk24) + ((sp698 * sp710.unk4) + ((*(f32 *) ((u8 *) &sp680 + 0x1c)) * sp710.unk14)));
+            spA0 = sp710.unk38 + ((sp6A0 * sp710.unk28) + ((sp698 * sp710.unk8) + ((*(f32 *) ((u8 *) &sp680 + 0x1c)) * sp710.unk18)));
             sp548 = (f64) sp98;
             sp550 = (f64) spA0;
             sp158 = sp548 * 5.697262106e-315;
@@ -1797,7 +1797,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp6A0 = (f64) sp150;
             sp518 = sp148;
             sp520 = (f64) sp150;
-            var_f4_2726 = ((f32) sp6A0 * (f32) sp6A0) + (((f32) sp698 * (f32) sp698) + (unksp69C * unksp69C));
+            var_f4_2726 = ((f32) sp6A0 * (f32) sp6A0) + (((f32) sp698 * (f32) sp698) + ((*(f32 *) ((u8 *) &sp680 + 0x1c)) * (*(f32 *) ((u8 *) &sp680 + 0x1c))));
             if (var_f4_2726 > 0.000001f) {
                 if (var_f4_2726 > 0.0f) {
                     temp_f1_2732 = __frsqrte(var_f4_2726);
@@ -1837,13 +1837,13 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
                 var_f3_2793 = 0.0f;
             }
             sp698 = (f32) sp698 * var_f3_2793;
-            unksp69C *= var_f3_2793;
+            (*(f32 *) ((u8 *) &sp680 + 0x1c)) *= var_f3_2793;
             sp6A0 = (f32) sp6A0 * var_f3_2793;
             M2C_STRUCT_COPY((s32) &sp6D0.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp710.SetRotationYaw(temp_f30_2493 * -0.61086524f);
-            sp88 = sp710.unk30 + ((sp6A0 * sp710.unk20) + ((sp698 * M2C_BITWISE(f32, sp710)) + (unksp69C * sp710.unk10)));
-            sp8C = sp710.unk34 + ((sp6A0 * sp710.unk24) + ((sp698 * sp710.unk4) + (unksp69C * sp710.unk14)));
-            sp90 = sp710.unk38 + ((sp6A0 * sp710.unk28) + ((sp698 * sp710.unk8) + (unksp69C * sp710.unk18)));
+            sp88 = sp710.unk30 + ((sp6A0 * sp710.unk20) + ((sp698 * M2C_BITWISE(f32, sp710)) + ((*(f32 *) ((u8 *) &sp680 + 0x1c)) * sp710.unk10)));
+            sp8C = sp710.unk34 + ((sp6A0 * sp710.unk24) + ((sp698 * sp710.unk4) + ((*(f32 *) ((u8 *) &sp680 + 0x1c)) * sp710.unk14)));
+            sp90 = sp710.unk38 + ((sp6A0 * sp710.unk28) + ((sp698 * sp710.unk8) + ((*(f32 *) ((u8 *) &sp680 + 0x1c)) * sp710.unk18)));
             sp4E8 = (f64) sp88;
             sp4F0 = (f64) sp90;
             sp138 = sp4E8 * 5.697262106e-315;
@@ -1875,7 +1875,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp690 = (f64) sp130;
             sp4B8 = sp128;
             sp4C0 = (f64) sp130;
-            var_f4_2937 = ((f32) sp690 * (f32) sp690) + (((f32) sp688 * (f32) sp688) + (unksp68C * unksp68C));
+            var_f4_2937 = ((f32) sp690 * (f32) sp690) + (((f32) sp688 * (f32) sp688) + ((*(f32 *) ((u8 *) &sp680 + 0xc)) * (*(f32 *) ((u8 *) &sp680 + 0xc))));
             if (var_f4_2937 > 0.000001f) {
                 if (var_f4_2937 > 0.0f) {
                     temp_f1_2943 = __frsqrte(var_f4_2937);
@@ -1915,13 +1915,13 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
                 var_f3_3004 = 0.0f;
             }
             sp688 = (f32) sp688 * var_f3_3004;
-            unksp68C *= var_f3_3004;
+            (*(f32 *) ((u8 *) &sp680 + 0xc)) *= var_f3_3004;
             sp690 = (f32) sp690 * var_f3_3004;
             M2C_STRUCT_COPY((s32) &sp6CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp6D0.SetRotationYaw(temp_f30_2909 * 0.61086524f);
-            sp78 = sp6D0.unk30 + ((sp690 * sp6D0.unk20) + ((sp688 * M2C_BITWISE(f32, sp6D0)) + (unksp68C * sp6D0.unk10)));
-            sp7C = sp6D0.unk34 + ((sp690 * sp6D0.unk24) + ((sp688 * sp6D0.unk4) + (unksp68C * sp6D0.unk14)));
-            sp80 = sp6D0.unk38 + ((sp690 * sp6D0.unk28) + ((sp688 * sp6D0.unk8) + (unksp68C * sp6D0.unk18)));
+            sp78 = sp6D0.unk30 + ((sp690 * sp6D0.unk20) + ((sp688 * M2C_BITWISE(f32, sp6D0)) + ((*(f32 *) ((u8 *) &sp680 + 0xc)) * sp6D0.unk10)));
+            sp7C = sp6D0.unk34 + ((sp690 * sp6D0.unk24) + ((sp688 * sp6D0.unk4) + ((*(f32 *) ((u8 *) &sp680 + 0xc)) * sp6D0.unk14)));
+            sp80 = sp6D0.unk38 + ((sp690 * sp6D0.unk28) + ((sp688 * sp6D0.unk8) + ((*(f32 *) ((u8 *) &sp680 + 0xc)) * sp6D0.unk18)));
             sp488 = (f64) sp78;
             sp490 = (f64) sp80;
             sp118 = sp488 * 5.697262106e-315;
@@ -1950,7 +1950,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp690 = (f64) sp110;
             sp458 = sp108;
             sp460 = (f64) sp110;
-            var_f4_3142 = ((f32) sp690 * (f32) sp690) + (((f32) sp688 * (f32) sp688) + (unksp68C * unksp68C));
+            var_f4_3142 = ((f32) sp690 * (f32) sp690) + (((f32) sp688 * (f32) sp688) + ((*(f32 *) ((u8 *) &sp680 + 0xc)) * (*(f32 *) ((u8 *) &sp680 + 0xc))));
             if (var_f4_3142 > 0.000001f) {
                 if (var_f4_3142 > 0.0f) {
                     temp_f1_3148 = __frsqrte(var_f4_3142);
@@ -1990,13 +1990,13 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
                 var_f3_3209 = 0.0f;
             }
             sp688 = (f32) sp688 * var_f3_3209;
-            unksp68C *= var_f3_3209;
+            (*(f32 *) ((u8 *) &sp680 + 0xc)) *= var_f3_3209;
             sp690 = (f32) sp690 * var_f3_3209;
             M2C_STRUCT_COPY((s32) &sp6CC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp6D0.SetRotationYaw(temp_f30_2909 * -0.61086524f);
-            sp68 = sp6D0.unk30 + ((sp690 * sp6D0.unk20) + ((sp688 * M2C_BITWISE(f32, sp6D0)) + (unksp68C * sp6D0.unk10)));
-            sp6C = sp6D0.unk34 + ((sp690 * sp6D0.unk24) + ((sp688 * sp6D0.unk4) + (unksp68C * sp6D0.unk14)));
-            sp70 = sp6D0.unk38 + ((sp690 * sp6D0.unk28) + ((sp688 * sp6D0.unk8) + (unksp68C * sp6D0.unk18)));
+            sp68 = sp6D0.unk30 + ((sp690 * sp6D0.unk20) + ((sp688 * M2C_BITWISE(f32, sp6D0)) + ((*(f32 *) ((u8 *) &sp680 + 0xc)) * sp6D0.unk10)));
+            sp6C = sp6D0.unk34 + ((sp690 * sp6D0.unk24) + ((sp688 * sp6D0.unk4) + ((*(f32 *) ((u8 *) &sp680 + 0xc)) * sp6D0.unk14)));
+            sp70 = sp6D0.unk38 + ((sp690 * sp6D0.unk28) + ((sp688 * sp6D0.unk8) + ((*(f32 *) ((u8 *) &sp680 + 0xc)) * sp6D0.unk18)));
             sp428 = (f64) sp68;
             sp430 = (f64) sp70;
             spF8 = sp428 * 5.697262106e-315;
@@ -2199,7 +2199,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp8C'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void IceBreathFX::Draw() {
     Matrix spA0;
     f64 sp90;                                       /* compiler-managed */
@@ -2243,7 +2243,7 @@ void IceBreathFX::Draw() {
             if ((u8) M2C_FIELD(temp_r3_3755, u8 *, 0x20) != 0) {
                 sp88 = M2C_FIELD(temp_r3_3755, f64 *, 0x10);
                 sp90 = M2C_FIELD(temp_r3_3755, f64 *, 0x18);
-                var_f4_3771 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C));
+                var_f4_3771 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp80 + 0xc)) * (*(f32 *) ((u8 *) &sp80 + 0xc))));
                 if (var_f4_3771 > 0.000001f) {
                     if (var_f4_3771 > 0.0f) {
                         temp_f1_3777 = __frsqrte(var_f4_3771);
@@ -2283,7 +2283,7 @@ void IceBreathFX::Draw() {
                     var_f2_3838 = 0.0f;
                 }
                 temp_f7_3847 = (f32) sp88 * var_f2_3838;
-                temp_f6_3849 = unksp8C * var_f2_3838;
+                temp_f6_3849 = (*(f32 *) ((u8 *) &sp80 + 0xc)) * var_f2_3838;
                 temp_f5_3851 = (f32) sp90 * var_f2_3838;
                 sp40 = 0.0f;
                 sp38 = 0.0f;
@@ -2292,7 +2292,7 @@ void IceBreathFX::Draw() {
                 sp28 = -temp_f7_3847;
                 sp2C = -temp_f6_3849;
                 sp88 = temp_f7_3847;
-                unksp8C = temp_f6_3849;
+                (*(f32 *) ((u8 *) &sp80 + 0xc)) = temp_f6_3849;
                 sp90 = temp_f5_3851;
                 sp78 = (f64) sp38;
                 sp80 = (f64) sp40;
@@ -2307,7 +2307,7 @@ void IceBreathFX::Draw() {
                 sp20 = M2C_FIELD(temp_r3_3886, f32 *, 8) + sp48.unk8;
                 sp60 = (f64) sp20;
                 spA0.unk30 = (f32) sp58;
-                spA0.unk34 = unksp5C;
+                spA0.unk34 = (*(f32 *) ((u8 *) &sp58 + 0x4));
                 spA0.unk38 = (f32) sp60;
                 spA0.unk3C = 1.0f;
                 MKModel_SetWorldMatrix(this->unkB4, spA0);

@@ -603,7 +603,7 @@ loop_21:
             sp190 = sp70;
             sp78 = sp220.unk38 - (f32) temp_f1_1171;
             sp198 = (f64) sp78;
-            if ((((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + (unksp194 * unksp194))) > 6400.0f) {
+            if ((((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + ((*(f32 *) ((u8 *) &sp190 + 0x4)) * (*(f32 *) ((u8 *) &sp190 + 0x4))))) > 6400.0f) {
                 var_f31_1158 = 0.0f;
             } else {
                 sp1E0 = (f32) Endian<short>(*(s16 *) (temp_r27_994 + 4)) / 16384.0f;
@@ -643,22 +643,22 @@ loop_21:
             sp160 = M2C_BITWISE(f64, sp110);
             sp168 = (f64) sp110.unk8;
             sp64 = ((f32) sp168 * (f32) sp180) - ((f32) sp160 * (f32) sp188);
-            sp68 = ((f32) sp160 * unksp184) - (unksp164 * (f32) sp180);
-            sp60 = (unksp164 * (f32) sp188) - ((f32) sp168 * unksp184);
+            sp68 = ((f32) sp160 * (*(f32 *) ((u8 *) &sp150 + 0x34))) - ((*(f32 *) ((u8 *) &sp150 + 0x14)) * (f32) sp180);
+            sp60 = ((*(f32 *) ((u8 *) &sp150 + 0x14)) * (f32) sp188) - ((f32) sp168 * (*(f32 *) ((u8 *) &sp150 + 0x34)));
             sp178 = (f64) sp68;
             sp170 = (f64) sp60;
             spF0 = (f64) sp60;
             spF8 = (f64) sp68;
-            sp50 = (unksp174 * (f32) sp168) - ((f32) sp178 * unksp164);
+            sp50 = ((*(f32 *) ((u8 *) &sp150 + 0x24)) * (f32) sp168) - ((f32) sp178 * (*(f32 *) ((u8 *) &sp150 + 0x14)));
             sp54 = ((f32) sp178 * (f32) sp160) - ((f32) sp170 * (f32) sp168);
-            sp58 = ((f32) sp170 * unksp164) - (unksp174 * (f32) sp160);
+            sp58 = ((f32) sp170 * (*(f32 *) ((u8 *) &sp150 + 0x14))) - ((*(f32 *) ((u8 *) &sp150 + 0x24)) * (f32) sp160);
             sp180 = (f64) sp50;
             sp188 = (f64) sp58;
             spE0 = (f64) sp50;
             spE8 = (f64) sp58;
-            sp48 = ((f32) sp180 * unksp174) - (unksp184 * (f32) sp170);
-            var_f5_1446 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184));
-            sp40 = (unksp184 * (f32) sp178) - ((f32) sp188 * unksp174);
+            sp48 = ((f32) sp180 * (*(f32 *) ((u8 *) &sp150 + 0x24))) - ((*(f32 *) ((u8 *) &sp150 + 0x34)) * (f32) sp170);
+            var_f5_1446 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + ((*(f32 *) ((u8 *) &sp150 + 0x34)) * (*(f32 *) ((u8 *) &sp150 + 0x34))));
+            sp40 = ((*(f32 *) ((u8 *) &sp150 + 0x34)) * (f32) sp178) - ((f32) sp188 * (*(f32 *) ((u8 *) &sp150 + 0x24)));
             sp44 = ((f32) sp188 * (f32) sp170) - ((f32) sp180 * (f32) sp178);
             spD8 = (f64) sp48;
             spD0 = (f64) sp40;
@@ -702,9 +702,9 @@ loop_21:
             } else {
                 var_f6_1520 = 0.0f;
             }
-            var_f7_1538 = ((f32) sp178 * (f32) sp178) + (((f32) sp170 * (f32) sp170) + (unksp174 * unksp174));
+            var_f7_1538 = ((f32) sp178 * (f32) sp178) + (((f32) sp170 * (f32) sp170) + ((*(f32 *) ((u8 *) &sp150 + 0x24)) * (*(f32 *) ((u8 *) &sp150 + 0x24))));
             sp180 = (f32) sp180 * var_f6_1520;
-            unksp184 *= var_f6_1520;
+            (*(f32 *) ((u8 *) &sp150 + 0x34)) *= var_f6_1520;
             sp188 = (f32) sp188 * var_f6_1520;
             if (var_f7_1538 > 0.000001f) {
                 if (var_f7_1538 > 0.0f) {
@@ -744,9 +744,9 @@ loop_21:
             } else {
                 var_f6_1609 = 0.0f;
             }
-            var_f7_1627 = ((f32) sp168 * (f32) sp168) + (((f32) sp160 * (f32) sp160) + (unksp164 * unksp164));
+            var_f7_1627 = ((f32) sp168 * (f32) sp168) + (((f32) sp160 * (f32) sp160) + ((*(f32 *) ((u8 *) &sp150 + 0x14)) * (*(f32 *) ((u8 *) &sp150 + 0x14))));
             sp170 = (f32) sp170 * var_f6_1609;
-            unksp174 *= var_f6_1609;
+            (*(f32 *) ((u8 *) &sp150 + 0x24)) *= var_f6_1609;
             sp178 = (f32) sp178 * var_f6_1609;
             if (var_f7_1627 > 0.000001f) {
                 if (var_f7_1627 > 0.0f) {
@@ -788,19 +788,19 @@ loop_21:
             }
             temp_f0_1709 = (f32) sp168 * var_f3_1698;
             sp160 = (f32) sp160 * var_f3_1698;
-            unksp164 *= var_f3_1698;
+            (*(f32 *) ((u8 *) &sp150 + 0x14)) *= var_f3_1698;
             sp168 = temp_f0_1709;
             Matrix::SetIdentity();
             this->unk0 = sp180;
-            this->unk4 = unksp184;
+            this->unk4 = (*(f32 *) ((u8 *) &sp150 + 0x34));
             this->unk8 = sp188;
             this->unkC = 0.0f;
             this->unk10 = sp170;
-            this->unk14 = unksp174;
+            this->unk14 = (*(f32 *) ((u8 *) &sp150 + 0x24));
             this->unk18 = sp178;
             this->unk1C = 0.0f;
             this->unk20 = sp160;
-            this->unk24 = unksp164;
+            this->unk24 = (*(f32 *) ((u8 *) &sp150 + 0x14));
             this->unk28 = temp_f0_1709;
             this->unk2C = 0.0f;
             InterpolateLinear(spC0, *((MKVector3 *) &sp220.unk30), var_f31_1158);

@@ -188,7 +188,7 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
     sp170 = (f64) spC0;
     sp178 = (f64) spC8;
     MKSetColorV(*((MKVector4 *) &sp170));
-    MKSetTexCoord1F((f32) sp280, unksp284);
+    MKSetTexCoord1F((f32) sp280, (*(f32 *) ((u8 *) &sp280 + 0x4)));
     MKSetPositionV(this->unk10);
     spBC = temp_f26_71;
     spB8 = 1.0f;
@@ -197,7 +197,7 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
     sp168 = (f64) spB8;
     sp160 = (f64) spB0;
     MKSetColorV(*((MKVector4 *) &sp160));
-    MKSetTexCoord1F((f32) sp2C0, unksp2C4);
+    MKSetTexCoord1F((f32) sp2C0, (*(f32 *) ((u8 *) &sp2C0 + 0x4)));
     MKSetPositionV(*((MKVector3 *) &sp1F0));
     spA0 = 1.0f;
     spA4 = 1.0f;
@@ -206,7 +206,7 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
     sp150 = (f64) spA0;
     sp158 = (f64) spA8;
     MKSetColorV(*((MKVector4 *) &sp150));
-    MKSetTexCoord1F((f32) sp290, unksp294);
+    MKSetTexCoord1F((f32) sp290, (*(f32 *) ((u8 *) &sp290 + 0x4)));
     MKSetPositionV(this->unk20);
     sp90 = 1.0f;
     sp94 = 1.0f;
@@ -215,7 +215,7 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
     sp140 = (f64) sp90;
     sp148 = (f64) sp98;
     MKSetColorV(*((MKVector4 *) &sp140));
-    MKSetTexCoord1F((f32) sp2B0, unksp2B4);
+    MKSetTexCoord1F((f32) sp2B0, (*(f32 *) ((u8 *) &sp2B0 + 0x4)));
     MKSetPositionV(this->unk40);
     MKEnd();
     MKBegin(4);
@@ -226,7 +226,7 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
     sp130 = (f64) sp80;
     sp138 = (f64) sp88;
     MKSetColorV(*((MKVector4 *) &sp130));
-    MKSetTexCoord1F((f32) sp280, unksp284);
+    MKSetTexCoord1F((f32) sp280, (*(f32 *) ((u8 *) &sp280 + 0x4)));
     MKSetPositionV(this->unk10);
     sp7C = temp_f26_71;
     sp78 = 1.0f;
@@ -235,7 +235,7 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
     sp128 = (f64) sp78;
     sp120 = (f64) sp70;
     MKSetColorV(*((MKVector4 *) &sp120));
-    MKSetTexCoord1F((f32) sp2C0, unksp2C4);
+    MKSetTexCoord1F((f32) sp2C0, (*(f32 *) ((u8 *) &sp2C0 + 0x4)));
     MKSetPositionV(*((MKVector3 *) &sp1F0));
     sp60 = 1.0f;
     sp64 = 1.0f;
@@ -244,7 +244,7 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
     sp110 = (f64) sp60;
     sp118 = (f64) sp68;
     MKSetColorV(*((MKVector4 *) &sp110));
-    MKSetTexCoord1F((f32) sp2A0, unksp2A4);
+    MKSetTexCoord1F((f32) sp2A0, (*(f32 *) ((u8 *) &sp2A0 + 0x4)));
     MKSetPositionV(this->unk30);
     sp50 = 1.0f;
     sp54 = 1.0f;
@@ -253,7 +253,7 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
     sp100 = (f64) sp50;
     sp108 = (f64) sp58;
     MKSetColorV(*((MKVector4 *) &sp100));
-    MKSetTexCoord1F((f32) sp2B0, unksp2B4);
+    MKSetTexCoord1F((f32) sp2B0, (*(f32 *) ((u8 *) &sp2B0 + 0x4)));
     MKSetPositionV(this->unk40);
     MKEnd();
 }
@@ -527,7 +527,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1AC'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void HeatDistortPS::Init() {
     f64 sp1C0;
     f64 sp1B8;
@@ -605,7 +605,7 @@ void HeatDistortPS::Init() {
     sp98 = 0.0f;
     sp9C = 1.0f;
     sp38 = -(f32) sp1A8;
-    sp3C = -unksp1AC;
+    sp3C = -(*(f32 *) ((u8 *) &sp1A8 + 0x4));
     sp1B8 = (f64) sp98;
     sp1C0 = (f64) spA0;
     sp168 = (f64) sp38;
@@ -628,13 +628,13 @@ void HeatDistortPS::Init() {
     M2C_FIELD(this, f64 *, 0x28) = (f64) sp70;
     sp160 = (f64) sp70;
     sp28 = -(f32) sp1A8;
-    sp2C = -unksp1AC;
+    sp2C = -(*(f32 *) ((u8 *) &sp1A8 + 0x4));
     sp30 = -(f32) sp1B0;
     spE8 = (f64) sp28;
     spF0 = (f64) sp30;
     spF8.operator*(50.0f);
     sp18 = -(f32) sp1B8;
-    sp1C = -unksp1BC;
+    sp1C = -(*(f32 *) ((u8 *) &sp1B8 + 0x4));
     sp20 = -(f32) sp1C0;
     sp108 = (f64) sp18;
     sp110 = (f64) sp20;
@@ -647,7 +647,7 @@ void HeatDistortPS::Init() {
     M2C_FIELD(this, f64 *, 0x38) = (f64) sp60;
     spA8.operator*(50.0f);
     sp8 = -(f32) sp1B8;
-    spC = -unksp1BC;
+    spC = -(*(f32 *) ((u8 *) &sp1B8 + 0x4));
     sp10 = -(f32) sp1C0;
     spB8 = (f64) sp8;
     spC0 = (f64) sp10;

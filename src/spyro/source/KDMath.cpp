@@ -102,7 +102,7 @@ void KDMath_NormalisedSlerp(const MKVector3 &arg0, const MKVector3 &arg1, float 
     sp88 = (f64) sp28;
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if (var_f30_58 == -1.0f) {
-        var_f4_161 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
+        var_f4_161 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp78 + 0xc)) * (*(f32 *) ((u8 *) &sp78 + 0xc))));
         if (var_f4_161 > 0.000001f) {
             if (var_f4_161 > 0.0f) {
                 temp_f1_167 = __frsqrte(var_f4_161);
@@ -142,7 +142,7 @@ void KDMath_NormalisedSlerp(const MKVector3 &arg0, const MKVector3 &arg1, float 
             var_f3_228 = 0.0f;
         }
         sp80 = (f32) sp80 * var_f3_228;
-        unksp84 *= var_f3_228;
+        (*(f32 *) ((u8 *) &sp78 + 0xc)) *= var_f3_228;
         sp88 = (f32) sp88 * var_f3_228;
     }
     M2C_FIELD(&arg0, f64 *, 0) = (f64) sp80;
@@ -242,7 +242,7 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     sp88 = (f64) sp28;
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if (var_f30_299 == -1.0f) {
-        var_f4_410 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
+        var_f4_410 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp78 + 0xc)) * (*(f32 *) ((u8 *) &sp78 + 0xc))));
         if (var_f4_410 > 0.000001f) {
             if (var_f4_410 > 0.0f) {
                 temp_f1_416 = __frsqrte(var_f4_410);
@@ -282,7 +282,7 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
             var_f3_477 = 0.0f;
         }
         sp80 = (f32) sp80 * var_f3_477;
-        unksp84 *= var_f3_477;
+        (*(f32 *) ((u8 *) &sp78 + 0xc)) *= var_f3_477;
         sp88 = (f32) sp88 * var_f3_477;
     }
     M2C_FIELD(&arg0, f64 *, 0) = (f64) sp80;
@@ -355,7 +355,7 @@ void KDMath_RotateVectorByYaw(const MKVector3 &arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp64'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 s32 KDMath_BuildMatrixFromUp(Matrix *arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
     f64 sp88;                                       /* compiler-managed */
     f64 sp80;                                       /* compiler-managed */
@@ -412,12 +412,12 @@ s32 KDMath_BuildMatrixFromUp(Matrix *arg0, const MKVector3 &arg1, const MKVector
     sp48 = -arg2.unk8;
     sp60 = (f64) sp40;
     sp68 = (f64) sp48;
-    sp30 = (temp_f5_689 * (f32) sp68) - (temp_f7_690 * unksp64);
+    sp30 = (temp_f5_689 * (f32) sp68) - (temp_f7_690 * (*(f32 *) ((u8 *) &sp60 + 0x4)));
     sp34 = (temp_f7_690 * (f32) sp60) - (temp_f6_688 * (f32) sp68);
-    sp38 = (temp_f6_688 * unksp64) - (temp_f5_689 * (f32) sp60);
+    sp38 = (temp_f6_688 * (*(f32 *) ((u8 *) &sp60 + 0x4))) - (temp_f5_689 * (f32) sp60);
     sp80 = (f64) sp30;
     sp88 = (f64) sp38;
-    var_f4_741 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
+    var_f4_741 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp78 + 0xc)) * (*(f32 *) ((u8 *) &sp78 + 0xc))));
     if (var_f4_741 == 0.0f) {
         return 0;
     }
@@ -462,7 +462,7 @@ s32 KDMath_BuildMatrixFromUp(Matrix *arg0, const MKVector3 &arg1, const MKVector
     temp_f3_818 = arg1.unk8;
     var_f7_828 = (temp_f3_818 * temp_f3_818) + ((temp_f2_815 * temp_f2_815) + (temp_f1_816 * temp_f1_816));
     sp80 = (f32) sp80 * var_f0_695;
-    unksp84 *= var_f0_695;
+    (*(f32 *) ((u8 *) &sp78 + 0xc)) *= var_f0_695;
     sp88 = (f32) sp88 * var_f0_695;
     if (var_f7_828 > 1e-12f) {
         if (var_f7_828 > 0.0f) {
@@ -509,27 +509,27 @@ s32 KDMath_BuildMatrixFromUp(Matrix *arg0, const MKVector3 &arg1, const MKVector
     sp78 = (f64) sp28;
     arg0->SetRotationToNone();
     arg0->unk0 = sp80;
-    arg0->unk4 = unksp84;
+    arg0->unk4 = (*(f32 *) ((u8 *) &sp78 + 0xc));
     arg0->unk8 = sp88;
     arg0->unkC = 0.0f;
     arg0->unk10 = (f32) sp70;
-    arg0->unk14 = unksp74;
+    arg0->unk14 = (*(f32 *) ((u8 *) &sp70 + 0x4));
     arg0->unk18 = (f32) sp78;
-    sp18 = (sp80 * unksp74) - (unksp84 * (f32) sp70);
-    sp10 = (unksp84 * (f32) sp78) - (sp88 * unksp74);
+    sp18 = (sp80 * (*(f32 *) ((u8 *) &sp70 + 0x4))) - ((*(f32 *) ((u8 *) &sp78 + 0xc)) * (f32) sp70);
+    sp10 = ((*(f32 *) ((u8 *) &sp78 + 0xc)) * (f32) sp78) - (sp88 * (*(f32 *) ((u8 *) &sp70 + 0x4)));
     sp14 = (sp88 * (f32) sp70) - (sp80 * (f32) sp78);
     sp58 = (f64) sp18;
     sp50 = (f64) sp10;
     arg0->unk1C = 0.0f;
     arg0->unk20 = (f32) sp50;
-    arg0->unk24 = unksp54;
+    arg0->unk24 = (*(f32 *) ((u8 *) &sp50 + 0x4));
     arg0->unk28 = (f32) sp58;
     arg0->unk2C = 0.0f;
     return 1;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp64'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 s8 KDMath_BuildMatrixFromFwd(Matrix *arg0, const MKVector3 &arg1, MKVector3 *arg2) {
     f64 sp88;
     f64 sp80;
@@ -596,7 +596,7 @@ s8 KDMath_BuildMatrixFromFwd(Matrix *arg0, const MKVector3 &arg1, MKVector3 *arg
     sp48 = -temp_f6_991;
     sp60 = (f64) sp40;
     sp68 = (f64) sp48;
-    var_f5_1019 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+    var_f5_1019 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))));
     if (var_f5_1019 > 1e-12f) {
         if (var_f5_1019 > 0.0f) {
             temp_f1_1024 = __frsqrte(var_f5_1019);
@@ -635,19 +635,19 @@ s8 KDMath_BuildMatrixFromFwd(Matrix *arg0, const MKVector3 &arg1, MKVector3 *arg
     }
     temp_f5_1090 = var_r5_0->unk8;
     temp_f9_1092 = var_r5_0->unk0;
-    sp34 = unksp64 * var_f4_993;
+    sp34 = (*(f32 *) ((u8 *) &sp60 + 0x4)) * var_f4_993;
     temp_f7_1094 = var_r5_0->unk4;
     sp30 = (f32) sp60 * var_f4_993;
     var_f4_1096 = 0.0f;
     sp38 = (f32) sp68 * var_f4_993;
     sp80 = (f64) sp30;
     sp88 = (f64) sp38;
-    sp20 = (temp_f7_1094 * (f32) sp88) - (temp_f5_1090 * unksp84);
+    sp20 = (temp_f7_1094 * (f32) sp88) - (temp_f5_1090 * (*(f32 *) ((u8 *) &sp80 + 0x4)));
     sp24 = (temp_f5_1090 * (f32) sp80) - (temp_f9_1092 * (f32) sp88);
-    sp28 = (temp_f9_1092 * unksp84) - (temp_f7_1094 * (f32) sp80);
+    sp28 = (temp_f9_1092 * (*(f32 *) ((u8 *) &sp80 + 0x4))) - (temp_f7_1094 * (f32) sp80);
     sp70 = (f64) sp20;
     sp78 = (f64) sp28;
-    var_f5_1125 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (unksp74 * unksp74));
+    var_f5_1125 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + ((*(f32 *) ((u8 *) &sp68 + 0xc)) * (*(f32 *) ((u8 *) &sp68 + 0xc))));
     if (var_f5_1125 == 0.0f) {
         return 0;
     }
@@ -688,24 +688,24 @@ s8 KDMath_BuildMatrixFromFwd(Matrix *arg0, const MKVector3 &arg1, MKVector3 *arg
         var_f4_1096 = 1.0f / var_f5_1125;
     }
     sp70 = (f32) sp70 * var_f4_1096;
-    unksp74 *= var_f4_1096;
+    (*(f32 *) ((u8 *) &sp68 + 0xc)) *= var_f4_1096;
     sp78 = (f32) sp78 * var_f4_1096;
     arg0->SetRotationToNone();
     arg0->unk0 = sp70;
-    arg0->unk4 = unksp74;
+    arg0->unk4 = (*(f32 *) ((u8 *) &sp68 + 0xc));
     arg0->unk8 = sp78;
     arg0->unkC = 0.0f;
     arg0->unk20 = (f32) sp80;
-    arg0->unk24 = unksp84;
+    arg0->unk24 = (*(f32 *) ((u8 *) &sp80 + 0x4));
     arg0->unk28 = (f32) sp88;
-    sp18 = ((f32) sp80 * unksp74) - (unksp84 * sp70);
-    sp10 = (unksp84 * sp78) - ((f32) sp88 * unksp74);
+    sp18 = ((f32) sp80 * (*(f32 *) ((u8 *) &sp68 + 0xc))) - ((*(f32 *) ((u8 *) &sp80 + 0x4)) * sp70);
+    sp10 = ((*(f32 *) ((u8 *) &sp80 + 0x4)) * sp78) - ((f32) sp88 * (*(f32 *) ((u8 *) &sp68 + 0xc)));
     sp14 = ((f32) sp88 * sp70) - ((f32) sp80 * sp78);
     sp58 = (f64) sp18;
     sp50 = (f64) sp10;
     arg0->unk2C = 0.0f;
     arg0->unk10 = (f32) sp50;
-    arg0->unk14 = unksp54;
+    arg0->unk14 = (*(f32 *) ((u8 *) &sp50 + 0x4));
     arg0->unk18 = (f32) sp58;
     arg0->unk1C = 0.0f;
     return 1;

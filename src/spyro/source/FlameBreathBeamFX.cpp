@@ -178,7 +178,7 @@ loop_15:
             sp160 = temp_f0_191;
             sp58 = (f32) spB8 * sp18;
             sp168 = (f64) sp58;
-            var_f4_207 = ((f32) sp168 * (f32) sp168) + (((f32) sp160 * (f32) sp160) + (unksp164 * unksp164));
+            var_f4_207 = ((f32) sp168 * (f32) sp168) + (((f32) sp160 * (f32) sp160) + ((*(f32 *) ((u8 *) &sp150 + 0x14)) * (*(f32 *) ((u8 *) &sp150 + 0x14))));
             if (var_f4_207 > 0.000001f) {
                 if (var_f4_207 > 0.0f) {
                     temp_f1_213 = __frsqrte(var_f4_207);
@@ -218,7 +218,7 @@ loop_15:
                 var_f3_274 = 0.0f;
             }
             sp160 = (f32) sp160 * var_f3_274;
-            unksp164 *= var_f3_274;
+            (*(f32 *) ((u8 *) &sp150 + 0x14)) *= var_f3_274;
             sp168 = (f32) sp168 * var_f3_274;
             sp1A0.SetRotateAroundAxis(*((MKVector3 *) &sp160), M2C_FIELD(temp_r29_144, f32 *, 0));
             sp180 = (f64) sp1A0.unk10;
@@ -277,7 +277,7 @@ loop_15:
             MKSetColorV(*((MKVector4 *) &sp170));
             MKSetTexCoord1F(var_f26_152, 1.0f);
             sp80 = -(f32) sp180;
-            sp84 = -unksp184;
+            sp84 = -(*(f32 *) ((u8 *) &sp180 + 0x4));
             sp88 = -(f32) sp188;
             spC0.unk10 = (f64) sp80;
             spD8 = (f64) sp88;
@@ -535,7 +535,7 @@ void FlameBreathBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3
     sp130 = sp70;
     sp78 = (f32) M2C_FIELD(this, f64 *, 0xB0) - (f32) sp148;
     sp138 = (f64) sp78;
-    var_f4_805 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
+    var_f4_805 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp128 + 0xc)) * (*(f32 *) ((u8 *) &sp128 + 0xc))));
     if (var_f4_805 > 0.000001f) {
         if (var_f4_805 > 0.0f) {
             temp_f1_811 = __frsqrte(var_f4_805);
@@ -576,7 +576,7 @@ void FlameBreathBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3
     }
     temp_f3_884 = (f32) sp138 * var_f3_871;
     sp130 = (f32) sp130 * var_f3_871;
-    unksp134 *= var_f3_871;
+    (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f3_871;
     sp138 = temp_f3_884;
     sp150 = 0.0f;
     sp154 = 0.0f;
@@ -810,7 +810,7 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     sp260 = sp100;
     sp108 = (f32) M2C_FIELD(this, f64 *, 0xB0) - (f32) sp278;
     sp268 = (f64) sp108;
-    var_f4_1254 = ((f32) sp268 * (f32) sp268) + (((f32) sp260 * (f32) sp260) + (unksp264 * unksp264));
+    var_f4_1254 = ((f32) sp268 * (f32) sp268) + (((f32) sp260 * (f32) sp260) + ((*(f32 *) ((u8 *) &sp250 + 0x14)) * (*(f32 *) ((u8 *) &sp250 + 0x14))));
     if (var_f4_1254 > 0.000001f) {
         if (var_f4_1254 > 0.0f) {
             temp_f1_1260 = __frsqrte(var_f4_1254);
@@ -851,7 +851,7 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     }
     temp_f3_1333 = (f32) sp268 * var_f3_1320;
     sp260 = (f32) sp260 * var_f3_1320;
-    unksp264 *= var_f3_1320;
+    (*(f32 *) ((u8 *) &sp250 + 0x14)) *= var_f3_1320;
     sp268 = temp_f3_1333;
     sp280 = 0.0f;
     sp284 = 0.0f;

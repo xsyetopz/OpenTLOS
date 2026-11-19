@@ -127,7 +127,7 @@ loop_31:
                 sp130 = sp80;
                 sp88 = (f32) spF8 - this->unk110.unk8;
                 sp138 = (f64) sp88;
-                var_f4_142 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
+                var_f4_142 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp128 + 0xc)) * (*(f32 *) ((u8 *) &sp128 + 0xc))));
                 if (var_f4_142 > 0.000001f) {
                     if (var_f4_142 > 0.0f) {
                         temp_f1_148 = __frsqrte(var_f4_142);
@@ -168,7 +168,7 @@ loop_31:
                     var_f4_142 = 0.0f;
                 }
                 sp130 = (f32) sp130 * var_f3_209;
-                unksp134 *= var_f3_209;
+                (*(f32 *) ((u8 *) &sp128 + 0xc)) *= var_f3_209;
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                 if (var_f4_142 == 2000.0f) {
                     temp_r27_232 = (*temp_r31_293)->unk8.unk0(temp_r31_293);
@@ -620,7 +620,7 @@ void FuryFXEarth::Update() {
             sp2A0 = (f64) sp70;
             sp18 = MKRand_Float(&gViewSeed, 3.5f, 4.0f);
             spB8 = -(f32) sp298;
-            spBC = -unksp29C;
+            spBC = -(*(f32 *) ((u8 *) &sp298 + 0x4));
             spC0 = -(f32) sp2A0;
             sp208 = (f64) spB8;
             sp210 = (f64) spC0;
@@ -690,7 +690,7 @@ void FuryFXEarth::Update() {
             sp280 = (f64) sp60;
             sp14 = MKRand_Float(&gViewSeed, 3.5f, 4.0f);
             spA8 = -(f32) sp278;
-            spAC = -unksp27C;
+            spAC = -(*(f32 *) ((u8 *) &sp278 + 0x4));
             spB0 = -(f32) sp280;
             sp1B8 = (f64) spA8;
             sp1C0 = (f64) spB0;
@@ -752,7 +752,7 @@ loop_59:
                         sp268 = sp78;
                         sp80 = (f32) spF0 - this->unk110.unk8;
                         sp270 = (f64) sp80;
-                        var_f4_1294 = ((f32) sp270 * (f32) sp270) + (((f32) sp268 * (f32) sp268) + (unksp26C * unksp26C));
+                        var_f4_1294 = ((f32) sp270 * (f32) sp270) + (((f32) sp268 * (f32) sp268) + ((*(f32 *) ((u8 *) &sp260 + 0xc)) * (*(f32 *) ((u8 *) &sp260 + 0xc))));
                         if (var_f4_1294 > 0.000001f) {
                             if (var_f4_1294 > 0.0f) {
                                 temp_f1_1300 = __frsqrte(var_f4_1294);
@@ -793,7 +793,7 @@ loop_59:
                             var_f4_1294 = 0.0f;
                         }
                         sp268 = (f32) sp268 * var_f3_1361;
-                        unksp26C *= var_f3_1361;
+                        (*(f32 *) ((u8 *) &sp260 + 0xc)) *= var_f3_1361;
                         M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                         if (var_f4_1294 == 2000.0f) {
                             temp_r3_1381 = (*temp_r30_1398)->unk8.unk0(temp_r30_1398);

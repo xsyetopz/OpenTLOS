@@ -168,13 +168,13 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
             sp30 = (f32) sp120;
             sp34 = 3.0f;
             var_f4_213 = 0.0f;
-            sp38 = unksp124;
+            sp38 = (*(f32 *) ((u8 *) &sp120 + 0x4));
             spC0 = (f64) sp30;
             spC8 = (f64) sp38;
             sp48 = 1.0f;
             sp40 = 0.0f;
             sp44 = 0.0f;
-            var_f5_231 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + (unkspC4 * unkspC4));
+            var_f5_231 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + ((*(f32 *) ((u8 *) &spC0 + 0x4)) * (*(f32 *) ((u8 *) &spC0 + 0x4))));
             sp118 = (f64) sp48;
             sp110 = (f64) sp40;
             if (var_f5_231 > 1e-12f) {
@@ -213,7 +213,7 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
                 }
                 var_f4_213 = 1.0f / var_f5_231;
             }
-            sp24 = unkspC4 * var_f4_213;
+            sp24 = (*(f32 *) ((u8 *) &spC0 + 0x4)) * var_f4_213;
             sp20 = (f32) spC0 * var_f4_213;
             sp28 = (f32) spC8 * var_f4_213;
             spD0 = (f64) sp20;
@@ -226,7 +226,7 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
             sp120 = temp_f1_319 + this->unk98;
             sp128 = temp_f3_323 + this->unkA0;
             temp_r31_168->unk30 = (f32) sp120;
-            temp_r31_168->unk34 = unksp124;
+            temp_r31_168->unk34 = (*(f32 *) ((u8 *) &sp120 + 0x4));
             temp_r31_168->unk38 = sp128;
             temp_r31_168->unk3C = 1.0f;
             M2C_FIELD(temp_r31_168, s32 *, 0x50) = 1;
@@ -406,7 +406,7 @@ loop_56:
                     sp1C0 = spA0;
                     spA8 = temp_f2_553 - temp_r30_934->unk38;
                     sp1C8 = (f64) spA8;
-                    var_f4_573 = ((f32) sp1C8 * (f32) sp1C8) + (((f32) sp1C0 * (f32) sp1C0) + (unksp1C4 * unksp1C4));
+                    var_f4_573 = ((f32) sp1C8 * (f32) sp1C8) + (((f32) sp1C0 * (f32) sp1C0) + ((*(f32 *) ((u8 *) &sp1B8 + 0xc)) * (*(f32 *) ((u8 *) &sp1B8 + 0xc))));
                     if (var_f4_573 > 0.000001f) {
                         if (var_f4_573 > 0.0f) {
                             temp_f1_579 = __frsqrte(var_f4_573);
@@ -446,7 +446,7 @@ loop_56:
                         var_f3_640 = 0.0f;
                     }
                     sp1C0 = (f32) sp1C0 * var_f3_640;
-                    unksp1C4 *= var_f3_640;
+                    (*(f32 *) ((u8 *) &sp1B8 + 0xc)) *= var_f3_640;
                     sp1C8 = (f32) sp1C8 * var_f3_640;
                     sp1B0 = M2C_FIELD(temp_r30_934, f64 *, 0x30);
                     sp1B8 = (f64) M2C_FIELD(temp_r30_934, f32 *, 0x38);
@@ -458,7 +458,7 @@ loop_56:
                     sp1A0 = (f64) sp90;
                     KDMath_BuildMatrixFromFwd(temp_r30_934, *((MKVector3 *) &sp1C0), (MKVector3 *) &sp1A0);
                     temp_r30_934->unk30 = (f32) sp1B0;
-                    temp_r30_934->unk34 = unksp1B4;
+                    temp_r30_934->unk34 = (*(f32 *) ((u8 *) &sp1B0 + 0x4));
                     temp_r30_934->unk38 = (f32) sp1B8;
                     temp_r30_934->unk3C = 1.0f;
                     M2C_FIELD(temp_r30_934, s32 *, 0x50) = 2;
@@ -502,10 +502,10 @@ loop_56:
                 sp68 = temp_r30_934->unk38 + (f32) spF8;
                 temp_r30_934->unk30 = (f32) sp170;
                 sp178 = (f64) sp68;
-                temp_r30_934->unk34 = unksp174;
+                temp_r30_934->unk34 = (*(f32 *) ((u8 *) &sp170 + 0x4));
                 temp_r30_934->unk38 = (f32) sp178;
                 temp_r30_934->unk3C = 1.0f;
-                if ((M2C_FIELD(temp_r30_934, f32 *, 0x54) <= 0.0f) || ((((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184))) <= 10000.0f)) {
+                if ((M2C_FIELD(temp_r30_934, f32 *, 0x54) <= 0.0f) || ((((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + ((*(f32 *) ((u8 *) &sp180 + 0x4)) * (*(f32 *) ((u8 *) &sp180 + 0x4))))) <= 10000.0f)) {
                     M2C_FIELD(temp_r30_934, f32 *, 0x54) = 1.0f;
                     M2C_FIELD(temp_r30_934, s32 *, 0x50) = 3;
                     this->unkA8.unk50 = 0;
@@ -617,7 +617,7 @@ loop_14:
                 sp28 = temp_f0_1042;
                 sp10 = (f32) sp20 - this->unkA0;
                 sp30 = (f64) sp10;
-                if ((((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C))) <= arg0) {
+                if ((((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4))))) <= arg0) {
                     temp_r3_1063 = this->unk104;
                     if ((u32) M2C_FIELD(temp_r3_1063, u32 *, -4) != 0U) {
                         temp_r3_1067 = temp_r3_1063 - 4;

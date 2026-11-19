@@ -489,7 +489,7 @@ loop_22:
         sp290 = (f64) sp110;
         spF8 = 0.0f;
         spFC = 1.0f;
-        var_f4_601 = ((f32) sp290 * (f32) sp290) + (((f32) sp288 * (f32) sp288) + (unksp28C * unksp28C));
+        var_f4_601 = ((f32) sp290 * (f32) sp290) + (((f32) sp288 * (f32) sp288) + ((*(f32 *) ((u8 *) &sp280 + 0xc)) * (*(f32 *) ((u8 *) &sp280 + 0xc))));
         sp280 = (f64) sp100;
         sp278 = (f64) spF8;
         if (var_f4_601 > 0.000001f) {
@@ -532,7 +532,7 @@ loop_22:
             var_f4_601 = 0.0f;
         }
         sp288 = (f32) sp288 * var_f3_669;
-        unksp28C *= var_f3_669;
+        (*(f32 *) ((u8 *) &sp280 + 0xc)) *= var_f3_669;
         sp290 = (f32) sp290 * var_f3_669;
         *(this->unk4C + (var_r27_566 + 0x68)) = var_f4_601;
         KDMath_BuildMatrixFromFwd(this->unk4C + var_r27_566, *((MKVector3 *) &sp288), (MKVector3 *) &sp278);
@@ -550,7 +550,7 @@ loop_22:
     var_r27_732 = 0;
     temp_r3_733 = this->unk4C + ((this->unk50 - 1) * 0x70);
     M2C_FIELD(temp_r3_733, f32 *, 0x30) = (f32) sp268;
-    M2C_FIELD(temp_r3_733, f32 *, 0x34) = unksp26C;
+    M2C_FIELD(temp_r3_733, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp268 + 0x4));
     M2C_FIELD(temp_r3_733, f32 *, 0x38) = (f32) sp270;
     M2C_FIELD(temp_r3_733, f32 *, 0x3C) = 1.0f;
 loop_27:
@@ -655,7 +655,7 @@ loop_30:
         this->unkB0 = M2C_BITWISE(f64, sp188);
         this->unkB8 = (f64) sp188.unk8;
         sp78 = (f32) sp248;
-        sp7C = unksp24C + 800.0f;
+        sp7C = (*(f32 *) ((u8 *) &sp248 + 0x4)) + 800.0f;
         sp80 = (f32) sp250;
         sp168 = (f64) sp78;
         sp170 = (f64) sp80;
@@ -677,7 +677,7 @@ loop_30:
     sp70 = (f32) M2C_FIELD(this, f64 *, 0xB8) + sp148.unk8;
     this->unkA0 = (f32) sp158;
     sp160 = (f64) sp70;
-    this->unkA4 = unksp15C;
+    this->unkA4 = (*(f32 *) ((u8 *) &sp158 + 0x4));
     this->unkA8 = (f32) sp160;
     this->unkAC = 1.0f;
     M2C_STRUCT_COPY((s32) &sp29C + 4, (s32) &this->unk6C + 4, 0x40);

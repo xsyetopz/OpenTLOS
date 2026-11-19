@@ -405,7 +405,7 @@ void CynderBreathFX::Update() {
         sp78 = sp18;
         sp20 = (f32) sp70 - (f32) sp60;
         sp80 = (f64) sp20;
-        temp_f30_693 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C));
+        temp_f30_693 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * (*(f32 *) ((u8 *) &sp78 + 0x4))));
         if (temp_f30_693 <= 3.6e7f) {
             ((ScreenWobbleFX *) (&gb + 0xB8))->EnableSpeedEffect(1U, 0.25f, 1.0f);
             sp8C = 0;

@@ -215,7 +215,7 @@ void LitCloudPS::StateUpdate() {
         spB8 = sp1B0.unk8 * var_f2_254;
         sp1C0 = (f64) spB0;
         sp1C8 = (f64) spB8;
-        var_f5_275 = 0.125f + unksp1C4;
+        var_f5_275 = 0.125f + (*(f32 *) ((u8 *) &sp1C0 + 0x4));
         if (var_f5_275 < 1.0f) {
 
         } else {
@@ -247,7 +247,7 @@ void LitCloudPS::StateUpdate() {
         sp188 = (f64) sp88;
         sp150 = (f64) sp70;
         sp158 = (f64) sp78;
-        Emit(*((MKVector3 *) &sp180), *((MKVector4 *) &sp150), 100.0f * (1.2f + unksp1C4) * temp_f6_289, 1U);
+        Emit(*((MKVector3 *) &sp180), *((MKVector4 *) &sp150), 100.0f * (1.2f + (*(f32 *) ((u8 *) &sp1C0 + 0x4))) * temp_f6_289, 1U);
         sp68 = -1.0f;
         temp_f29_351 = this->unk4C;
         sp58 = 1.0f;
@@ -399,7 +399,7 @@ void LitCloudPS::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp274'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     f64 sp388;
     f64 sp380;
@@ -521,7 +521,7 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp110 = 0.0f;
     sp114 = 1.0f;
     sp40 = -(f32) sp270;
-    sp44 = -unksp274;
+    sp44 = -(*(f32 *) ((u8 *) &sp270 + 0x4));
     sp280 = (f64) sp110;
     sp288 = (f64) sp118;
     sp220 = (f64) sp40;
@@ -540,7 +540,7 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp38 = -(f32) sp278;
     sp98 = sp200.unk8 + sp1F0.unk8;
     sp30 = -(f32) sp270;
-    sp34 = -unksp274;
+    sp34 = -(*(f32 *) ((u8 *) &sp270 + 0x4));
     sp360 = sp90;
     sp368 = (f64) sp98;
     sp1A0 = (f64) sp30;
@@ -549,7 +549,7 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp218 = (f64) sp98;
     sp1B0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
     sp20 = -(f32) sp280;
-    sp24 = -unksp284;
+    sp24 = -(*(f32 *) ((u8 *) &sp280 + 0x4));
     sp28 = -(f32) sp288;
     sp1C0 = (f64) sp20;
     sp1C8 = (f64) sp28;
@@ -562,7 +562,7 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp1E8 = (f64) sp88;
     sp160.operator*(M2C_FIELD(arg1, f32 *, 0x44));
     sp10 = -(f32) sp280;
-    sp14 = -unksp284;
+    sp14 = -(*(f32 *) ((u8 *) &sp280 + 0x4));
     sp18 = -(f32) sp288;
     sp170 = (f64) sp10;
     sp178 = (f64) sp18;
@@ -612,12 +612,12 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     } else {
         var_f1_908 = (f32) sp120;
     }
-    var_f0_924 = unksp144;
+    var_f0_924 = (*(f32 *) ((u8 *) &sp140 + 0x4));
     sp60 = var_f1_908;
-    if (var_f0_924 < unksp124) {
+    if (var_f0_924 < (*(f32 *) ((u8 *) &sp120 + 0x4))) {
 
     } else {
-        var_f0_924 = unksp124;
+        var_f0_924 = (*(f32 *) ((u8 *) &sp120 + 0x4));
     }
     var_f1_933 = (f32) sp148;
     sp64 = var_f0_924;
@@ -626,12 +626,12 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     } else {
         var_f1_933 = (f32) sp128;
     }
-    var_f0_942 = unksp14C;
+    var_f0_942 = (*(f32 *) ((u8 *) &sp148 + 0x4));
     sp68 = var_f1_933;
-    if (var_f0_942 < unksp12C) {
+    if (var_f0_942 < (*(f32 *) ((u8 *) &sp128 + 0x4))) {
 
     } else {
-        var_f0_942 = unksp12C;
+        var_f0_942 = (*(f32 *) ((u8 *) &sp128 + 0x4));
     }
     sp6C = var_f0_942;
     spB0 = (f64) sp60;
@@ -642,12 +642,12 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     } else {
         var_f1_956 = (f32) sp150;
     }
-    var_f0_964 = unkspB4;
+    var_f0_964 = (*(f32 *) ((u8 *) &spB0 + 0x4));
     sp50 = var_f1_956;
-    if (var_f0_964 > unksp154) {
+    if (var_f0_964 > (*(f32 *) ((u8 *) &sp150 + 0x4))) {
 
     } else {
-        var_f0_964 = unksp154;
+        var_f0_964 = (*(f32 *) ((u8 *) &sp150 + 0x4));
     }
     var_f1_973 = (f32) spB8;
     sp54 = var_f0_964;
@@ -656,12 +656,12 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     } else {
         var_f1_973 = (f32) sp158;
     }
-    var_f0_982 = unkspBC;
+    var_f0_982 = (*(f32 *) ((u8 *) &spB8 + 0x4));
     sp58 = var_f1_973;
-    if (var_f0_982 > unksp15C) {
+    if (var_f0_982 > (*(f32 *) ((u8 *) &sp158 + 0x4))) {
 
     } else {
-        var_f0_982 = unksp15C;
+        var_f0_982 = (*(f32 *) ((u8 *) &sp158 + 0x4));
     }
     sp5C = var_f0_982;
     sp260 = (f64) sp50;
@@ -670,7 +670,7 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     if (var_f3_1003 < 0.0f) {
         var_f3_1003 = -var_f3_1003;
     }
-    unksp26C *= -((2.0f * var_f3_1003) - 1.0f);
+    (*(f32 *) ((u8 *) &sp268 + 0x4)) *= -((2.0f * var_f3_1003) - 1.0f);
     MKBegin(4);
     MKSetColorV(*((MKVector4 *) &sp260));
     MKSetTexCoord1F(0.0f, 1.0f);
@@ -808,7 +808,7 @@ loop_38:
             sp88 = (f64) sp28;
             sp60 = sp20;
             sp68 = (f64) sp28;
-            var_f5_1234 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
+            var_f5_1234 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp78 + 0xc)) * (*(f32 *) ((u8 *) &sp78 + 0xc))));
             if (var_f5_1234 > 0.000001f) {
                 if (var_f5_1234 > 0.0f) {
                     temp_f1_1240 = __frsqrte(var_f5_1234);
@@ -851,7 +851,7 @@ loop_38:
             temp_r3_1309 = *(this->unk80 + temp_r0_1142);
             sp80 = (f32) sp80 * var_f4_1301;
             temp_f0_1316 = this->unk70 + M2C_FIELD(temp_r3_1309, f32 *, 0x44);
-            unksp84 *= var_f4_1301;
+            (*(f32 *) ((u8 *) &sp78 + 0xc)) *= var_f4_1301;
             if (var_f5_1234 < temp_f0_1316) {
                 M2C_FIELD(temp_r3_1309, f32 *, 0x40) = (f32) (1.0f - (var_f5_1234 / temp_f0_1316));
             } else {
@@ -863,7 +863,7 @@ loop_38:
             sp50 = temp_f0_1333;
             sp38 = (f32) sp78 - M2C_FIELD(temp_r3_1330, f32 *, 8);
             sp58 = (f64) sp38;
-            M2C_FIELD(temp_r3_1330, f32 *, 0x38) = (f32) (((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54)));
+            M2C_FIELD(temp_r3_1330, f32 *, 0x38) = (f32) (((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4)))));
             temp_r3_1353 = *(this->unk80 + temp_r0_1142);
             temp_f0_1357 = *(temp_r3_1353 + 0x20) * (f64) gUpdateTimeDelta;
             sp10 = temp_f0_1357;

@@ -83,7 +83,7 @@ loop_6:
             sp18 = sp50.unk38 + (f32) sp38;
             sp48 = (f64) sp18;
             sp50.unk30 = (f32) sp40;
-            sp50.unk34 = unksp44;
+            sp50.unk34 = (*(f32 *) ((u8 *) &sp40 + 0x4));
             sp50.unk38 = (f32) sp48;
             sp50.unk3C = 1.0f;
         }
@@ -486,8 +486,8 @@ loop_13:
             sp138.unk40.unk30 = 0.0f;
             sp138.unk40.unk34 = 0.0f;
             sp138.unk40.unk38 = 0;
-            unksp1B2 = 0;
-            unksp1B3 = 0;
+            (*(u8 *) ((u8 *) &sp138 + 0x7a)) = 0;
+            (*(u8 *) ((u8 *) &sp138 + 0x7b)) = 0;
             sp138.unk40.unk3C = 0.0f;
             sp138.unk80 = 3.4028235e38f;
             sp138.unk84 = 0.0f;
@@ -546,7 +546,7 @@ loop_13:
         var_r31_645 += 1;
         var_r29_647 += 0x70;
         temp_r26_657->unk30 = (f32) sp138.unk30;
-        temp_r26_657->unk34 = unksp16C;
+        temp_r26_657->unk34 = (*(f32 *) ((u8 *) &sp138 + 0x34));
         temp_r26_657->unk38 = (f32) sp138.unk38;
         temp_r26_657->unk3C = 1.0f;
         goto loop_13;

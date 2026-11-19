@@ -256,7 +256,7 @@ block_16:
                             spD0 = sp40;
                         } else {
                             spC8 = 0.0f;
-                            unkspCC = 0.0f;
+                            (*(f32 *) ((u8 *) &spC4 + 0x8)) = 0.0f;
                             spD0 = 0.0f;
                         }
                         spE9 = 0;
@@ -356,7 +356,7 @@ void SonicAttack::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SonicAttack::Update() {
     f64 sp48;
     f64 sp40;
@@ -389,7 +389,7 @@ void SonicAttack::Update() {
             sp30 = sp20;
             sp28 = temp_r3_592->unk8 - temp_r4_591->unk8;
             sp38 = (f64) sp28;
-            var_f5_612 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+            var_f5_612 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
             if (var_f5_612 > 1e-12f) {
                 if (var_f5_612 > 0.0f) {
                     temp_f1_617 = __frsqrte(var_f5_612);
@@ -426,7 +426,7 @@ void SonicAttack::Update() {
                 }
                 var_f4_584 = 1.0f / var_f5_612;
             }
-            sp14 = unksp34 * var_f4_584;
+            sp14 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f4_584;
             sp10 = (f32) sp30 * var_f4_584;
             sp18 = (f32) sp38 * var_f4_584;
             sp40 = (f64) sp10;
@@ -459,7 +459,7 @@ void SonicAttack::LoadDone() {
     sp20 = (f64) sp10;
     sp28 = (f64) sp18;
     sp30.unk30 = (f32) sp20;
-    sp30.unk34 = unksp24;
+    sp30.unk34 = (*(f32 *) ((u8 *) &sp20 + 0x4));
     sp30.unk38 = (f32) sp28;
     sp30.unk3C = 1.0f;
     MKMaterial_SetTextureMatrix(this->unk160, &sp30);

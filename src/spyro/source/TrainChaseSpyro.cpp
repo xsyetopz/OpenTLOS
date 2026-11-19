@@ -268,7 +268,7 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
     temp_r3_167 = M2C_FIELD(temp_r3_45, void **, 8);
     sp1D8 = M2C_FIELD(temp_r3_167, f64 *, 0x30);
     sp1E0 = M2C_FIELD(temp_r3_167, f64 *, 0x38);
-    sp1E8.unk74 = 200.0f + unksp1DC;
+    sp1E8.unk74 = 200.0f + (*(f32 *) ((u8 *) &sp1D8 + 0x4));
     temp_r3_177 = checked_cast<TrainController *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r3_45, MKSceneManager **, 0x204)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     if ((u8) M2C_FIELD(temp_r3_177, u8 *, 0x6C) == 1) {
         temp_r4_183 = M2C_FIELD(temp_r3_45, void **, 8);
@@ -623,7 +623,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
             sp88 = sp38;
             sp40 = M2C_FIELD(temp_r3_905, f32 *, 0x18) - (f32) sp80;
             sp90 = (f64) sp40;
-            var_f4_943 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C));
+            var_f4_943 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp80 + 0xc)) * (*(f32 *) ((u8 *) &sp80 + 0xc))));
             if (var_f4_943 > 0.000001f) {
                 if (var_f4_943 > 0.0f) {
                     temp_f1_949 = __frsqrte(var_f4_943);
@@ -663,9 +663,9 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
                 var_f3_1010 = 0.0f;
             }
             temp_f2_1020 = (f32) sp88 * var_f3_1010;
-            temp_f1_1022 = unksp8C * var_f3_1010;
+            temp_f1_1022 = (*(f32 *) ((u8 *) &sp80 + 0xc)) * var_f3_1010;
             sp88 = temp_f2_1020;
-            unksp8C = temp_f1_1022;
+            (*(f32 *) ((u8 *) &sp80 + 0xc)) = temp_f1_1022;
             sp90 = (f32) sp90 * var_f3_1010;
             temp_f31_1032 = gb.unk0->GetCollideRadius(temp_f1_1022, temp_f2_1020);
             sp68.GetPos();
@@ -680,7 +680,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
                 sp30 = -M2C_FIELD(temp_r3_1056, f32 *, 8);
                 sp58 = (f64) sp28;
                 sp60 = (f64) sp30;
-                temp_f31_1079 = (sp90 * (f32) sp60) + ((sp88 * (f32) sp58) + (unksp8C * unksp5C));
+                temp_f31_1079 = (sp90 * (f32) sp60) + ((sp88 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp80 + 0xc)) * (*(f32 *) ((u8 *) &sp58 + 0x4))));
                 if ((temp_f31_1079 > 0.0f) && (LeaningLeft() == 0)) {
                     Hurt(5.0f);
                 } else if ((temp_f31_1079 < 0.0f) && (LeaningRight() == 0)) {
@@ -1076,7 +1076,7 @@ void TrainChaseSpyro::RepositionLightProp() {
         sp158 = sp88;
         sp90 = (f32) sp150 + (f32) sp140;
         sp160 = (f64) sp90;
-        var_f4_1779 = ((f32) sp160 * (f32) sp160) + (((f32) sp158 * (f32) sp158) + (unksp15C * unksp15C));
+        var_f4_1779 = ((f32) sp160 * (f32) sp160) + (((f32) sp158 * (f32) sp158) + ((*(f32 *) ((u8 *) &sp158 + 0x4)) * (*(f32 *) ((u8 *) &sp158 + 0x4))));
         if (var_f4_1779 > 1e-12f) {
             if (var_f4_1779 > 0.0f) {
                 temp_f1_1785 = __frsqrte(var_f4_1779);
@@ -1115,7 +1115,7 @@ void TrainChaseSpyro::RepositionLightProp() {
         } else {
             var_f3_1846 = 0.0f;
         }
-        sp7C = unksp15C * var_f3_1846;
+        sp7C = (*(f32 *) ((u8 *) &sp158 + 0x4)) * var_f3_1846;
         sp78 = (f32) sp158 * var_f3_1846;
         sp80 = (f32) sp160 * var_f3_1846;
         sp198.unk10 = (f64) sp78;
@@ -2305,7 +2305,7 @@ void TrainChaseSpyro::UpdateCartPosition() {
     if (temp_r3_4083 != 0U) {
         ((TrainTrack *) &sp8)->GetTrackZAxis((s32) temp_r3_4083, this->unkE0);
         sp18 = sp8;
-        var_f1_4095 = unksp1C;
+        var_f1_4095 = (*(f32 *) ((u8 *) &sp18 + 0x4));
         sp20 = sp10;
         if (var_f1_4095 < 1.0f) {
 
@@ -2383,8 +2383,8 @@ void TrainChaseSpyro::UpdateCartOrientation() {
         spFC = 1.0f;
         ((TrainTrack *) &sp80)->GetTrackXAxis(temp_r3_4148, this->unkE0);
         spC0 = sp80;
-        sp38 = ((f32) spB0 * sp84) - (unkspB4 * sp80);
-        sp30 = (unkspB4 * sp88) - ((f32) spB8 * sp84);
+        sp38 = ((f32) spB0 * sp84) - ((*(f32 *) ((u8 *) &spB0 + 0x4)) * sp80);
+        sp30 = ((*(f32 *) ((u8 *) &spB0 + 0x4)) * sp88) - ((f32) spB8 * sp84);
         sp34 = ((f32) spB8 * sp80) - ((f32) spB0 * sp88);
         sp78 = (f64) sp38;
         sp70 = (f64) sp30;
@@ -2392,11 +2392,11 @@ void TrainChaseSpyro::UpdateCartOrientation() {
         spC8 = sp88;
         spCC = 0.0f;
         spE0 = (f32) spB0;
-        spE4 = unkspB4;
+        spE4 = (*(f32 *) ((u8 *) &spB0 + 0x4));
         spE8 = (f32) spB8;
         spEC = 0.0f;
         spD0 = (f32) sp70;
-        spD4 = unksp74;
+        spD4 = (*(f32 *) ((u8 *) &sp70 + 0x4));
         spD8 = (f32) sp78;
         spDC = 0.0f;
         Normalise(sp50);
@@ -2409,15 +2409,15 @@ void TrainChaseSpyro::UpdateCartOrientation() {
         sp68 = (f64) sp28;
         sp60 = (f64) sp20;
         spC0 = (f32) sp60;
-        spC4 = unksp64;
+        spC4 = (*(f32 *) ((u8 *) &sp60 + 0x4));
         spC8 = (f32) sp68;
-        sp18 = (spE0 * unksp64) - (spE4 * (f32) sp60);
-        sp10 = (spE4 * (f32) sp68) - (spE8 * unksp64);
+        sp18 = (spE0 * (*(f32 *) ((u8 *) &sp60 + 0x4))) - (spE4 * (f32) sp60);
+        sp10 = (spE4 * (f32) sp68) - (spE8 * (*(f32 *) ((u8 *) &sp60 + 0x4)));
         sp14 = (spE8 * (f32) sp60) - (spE0 * (f32) sp68);
         sp48 = (f64) sp18;
         sp40 = (f64) sp10;
         spD0 = (f32) sp40;
-        spD4 = unksp44;
+        spD4 = (*(f32 *) ((u8 *) &sp40 + 0x4));
         spD8 = (f32) sp48;
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &spC0));
     }
@@ -2723,7 +2723,7 @@ void TrainChaseSpyro::UpdateSpyro() {
         sp50 = (f64) sp20;
         sp58 = M2C_FIELD(&MKVector3::up, f64 *, 0);
         sp28 = -(f32) sp48;
-        sp2C = -unksp4C;
+        sp2C = -(*(f32 *) ((u8 *) &sp48 + 0x4));
         sp30 = -(f32) sp50;
         sp68 = (f64) sp28;
         sp70 = (f64) sp30;
@@ -2798,7 +2798,7 @@ void TrainChaseSpyro::Update() {
     temp_r4_5035 = this->unk8;
     sp10 = M2C_FIELD(temp_r4_5035, f64 *, 0x30);
     sp18 = M2C_FIELD(temp_r4_5035, f64 *, 0x38);
-    this->unk1B8.unk28 = unksp14;
+    this->unk1B8.unk28 = (*(f32 *) ((u8 *) &sp10 + 0x4));
     UpdateSpyro();
 }
 #endif

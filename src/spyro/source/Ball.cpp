@@ -110,7 +110,7 @@ void Ball::BridgeHit(float arg0, float arg1) {
             spC = -1.0f;
             spA0 = (f64) sp30;
             sp8 = -(f32) sp98;
-            unksp9C = 1.0f;
+            (*(f32 *) ((u8 *) &sp98 + 0x4)) = 1.0f;
             sp10 = -(f32) spA0;
             sp58 = (f64) sp8;
             spBC = 0;
@@ -392,7 +392,7 @@ loop_2:
             sp28 = temp_f0_627;
             sp10 = (f32) sp20 - this->unkE8;
             sp30 = (f64) sp10;
-            temp_f0_644 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C));
+            temp_f0_644 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4))));
             if (temp_f0_644 <= var_f3_602) {
                 var_f3_602 = temp_f0_644;
                 var_r4_605 = var_r10_606;
@@ -675,7 +675,7 @@ loop_14:
                     sp38 = sp8;
                     sp10 = (f32) sp30 - (f32) sp20;
                     sp40 = (f64) sp10;
-                    if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) < 9e6f) {
+                    if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) < 9e6f) {
                         if (temp_r0_1118 == 0U) {
                             temp_r3_1115->ZapBall(this);
                         }
@@ -748,7 +748,7 @@ loop_12:
                 sp68 = sp18;
                 sp20 = (f32) sp60 - (f32) sp50;
                 sp70 = (f64) sp20;
-                if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C))) < 1000000.0f) {
+                if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) < 1000000.0f) {
                     sp28 = temp_f7_1216;
                     sp38 = temp_f5_1217;
                     sp30 = temp_f6_1218;
@@ -759,7 +759,7 @@ loop_12:
                     sp10 = (f32) sp40 - (f32) sp30;
                     sp80 = (f64) sp10;
                     temp_f3_1272 = 100.0f * (4.5f * this->unk27C);
-                    if ((((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C))) < (temp_f3_1272 * temp_f3_1272)) {
+                    if ((((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * (*(f32 *) ((u8 *) &sp78 + 0x4))))) < (temp_f3_1272 * temp_f3_1272)) {
                         ((BoulderRamp *) temp_r3_1208)->SetBoulder(this);
                         if ((Ball *) pDribblee == this) {
                             pDribblee = NULL;
@@ -829,7 +829,7 @@ loop_15:
                 sp68 = sp18;
                 sp20 = (f32) sp60 - (f32) sp50;
                 sp70 = (f64) sp20;
-                if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C))) < 1000000.0f) {
+                if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) < 1000000.0f) {
                     sp28 = temp_f5_1346;
                     sp30 = temp_f4_1348;
                     ((Catapult *) &sp38)->GetAmmoPos();
@@ -839,7 +839,7 @@ loop_15:
                     sp10 = sp40 - (f32) sp30;
                     sp80 = (f64) sp10;
                     temp_f3_1404 = 100.0f * (2.5f * this->unk27C);
-                    if ((((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C))) < (temp_f3_1404 * temp_f3_1404)) {
+                    if ((((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * (*(f32 *) ((u8 *) &sp78 + 0x4))))) < (temp_f3_1404 * temp_f3_1404)) {
                         if ((s32) M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC) != 0) {
                             temp_r29_1418 = this->unk8 + 0x30;
                             KDSound_Play3d(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC), temp_r29_1418, 0U, -1, 0.0f, 0U);
@@ -972,7 +972,7 @@ void Ball::CheckForHero() {
         sp178 = sp88;
         sp90 = (f32) sp160 - (f32) sp150;
         sp180 = (f64) sp90;
-        temp_f1_1547 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
+        temp_f1_1547 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + ((*(f32 *) ((u8 *) &sp170 + 0xc)) * (*(f32 *) ((u8 *) &sp170 + 0xc))));
         if (temp_f1_1547 < (temp_f28_1512 * temp_f28_1512)) {
             var_r3_1550 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), std **, 0x27C);
             if ((var_r3_1550 + 8) != 0) {
@@ -991,7 +991,7 @@ void Ball::CheckForHero() {
                 }
             }
             var_f5_1585 = 0.0f;
-            unksp17C = 0.0f;
+            (*(f32 *) ((u8 *) &sp170 + 0xc)) = 0.0f;
             var_f6_1594 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (0.0f * 0.0f));
             if (var_f6_1594 > 0.000001f) {
                 if (var_f6_1594 > 0.0f) {
@@ -1032,7 +1032,7 @@ void Ball::CheckForHero() {
                 var_f5_1585 = 1.0f / var_f6_1594;
             }
             sp178 = (f32) sp178 * var_f5_1585;
-            unksp17C *= var_f5_1585;
+            (*(f32 *) ((u8 *) &sp170 + 0xc)) *= var_f5_1585;
             sp180 = (f32) sp180 * var_f5_1585;
             if ((((u8) M2C_FIELD(this, u8 *, 0x2AC) >> 2U) & 1) && (((Ball *) pDribblee == NULL) || ((Ball *) pDribblee == this))) {
                 temp_r4_1687 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
@@ -1041,7 +1041,7 @@ void Ball::CheckForHero() {
                 sp80 = -M2C_FIELD(temp_r4_1687, f32 *, 0x28);
                 sp118 = (f64) sp78;
                 sp120 = (f64) sp80;
-                temp_f30_1711 = (sp180 * (f32) sp120) + ((sp178 * (f32) sp118) + (unksp17C * unksp11C));
+                temp_f30_1711 = (sp180 * (f32) sp120) + ((sp178 * (f32) sp118) + ((*(f32 *) ((u8 *) &sp170 + 0xc)) * (*(f32 *) ((u8 *) &sp118 + 0x4))));
                 gb.GetSpyro();
                 var_f1_1713 = ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetDeltaMove();
                 if (var_f1_1713 > 0.0f) {
@@ -1107,7 +1107,7 @@ void Ball::CheckForHero() {
                     sp180 = (f64) sp40;
                     spE8 = sp38;
                     spF0 = (f64) sp40;
-                    var_f0_1862 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
+                    var_f0_1862 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + ((*(f32 *) ((u8 *) &sp170 + 0xc)) * (*(f32 *) ((u8 *) &sp170 + 0xc))));
                     if (var_f0_1862 > 0.000001f) {
                         if (var_f0_1862 > 0.0f) {
                             temp_f2_1868 = __frsqrte(var_f0_1862);
@@ -1150,7 +1150,7 @@ void Ball::CheckForHero() {
                     temp_f2_1954 = (f32) sp180 * var_f9_1929;
                     sp178 = (f32) sp178 * var_f9_1929;
                     temp_f1_1956 = (var_f29_1787 * (temp_f30_1711 * ((3.0f * temp_f28_1512) + var_f0_1862))) + ((750.0f * var_f29_1787) + (2.0f * var_f0_1862 * ((1.0f - temp_f30_1711) / 0.7f)));
-                    unksp17C *= var_f9_1929;
+                    (*(f32 *) ((u8 *) &sp170 + 0xc)) *= var_f9_1929;
                     sp180 = temp_f2_1954;
                     sp28 = (f64) sp178 * (f64) temp_f1_1956;
                     sp30 = temp_f2_1954 * temp_f1_1956;
@@ -1240,7 +1240,7 @@ void Ball::UpdateShadow() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspDC'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void Ball::UpdateOrientation() {
     Matrix sp130;
     Matrix spF0;
@@ -1300,7 +1300,7 @@ void Ball::UpdateOrientation() {
 
     spD8 = this->unkF0;
     spE0 = M2C_FIELD(this, f64 *, 0xF8);
-    unkspDC = 0.0f;
+    (*(f32 *) ((u8 *) &spD8 + 0x4)) = 0.0f;
     var_f4_2135 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (0.0f * 0.0f));
     if (var_f4_2135 > 0.0f) {
         temp_f1_2138 = __frsqrte(var_f4_2135);
@@ -1355,7 +1355,7 @@ void Ball::UpdateOrientation() {
     sp60 = (MKVector3::up.unk0 * temp_f7_2247) - (MKVector3::up.unk4 * temp_f5_2252);
     spB8 = (f64) sp58;
     spC0 = (f64) sp60;
-    var_f4_2272 = ((f32) spC0 * (f32) spC0) + (((f32) spB8 * (f32) spB8) + (unkspBC * unkspBC));
+    var_f4_2272 = ((f32) spC0 * (f32) spC0) + (((f32) spB8 * (f32) spB8) + ((*(f32 *) ((u8 *) &spB8 + 0x4)) * (*(f32 *) ((u8 *) &spB8 + 0x4))));
     if (var_f4_2272 > 1e-12f) {
         if (var_f4_2272 > 0.0f) {
             temp_f1_2278 = __frsqrte(var_f4_2272);
@@ -1394,7 +1394,7 @@ void Ball::UpdateOrientation() {
     } else {
         var_f3_2339 = 0.0f;
     }
-    sp4C = unkspBC * var_f3_2339;
+    sp4C = (*(f32 *) ((u8 *) &spB8 + 0x4)) * var_f3_2339;
     sp48 = (f32) spB8 * var_f3_2339;
     sp50 = (f32) spC0 * var_f3_2339;
     spC8 = (f64) sp48;
@@ -1430,7 +1430,7 @@ void Ball::UpdateOrientation() {
     sp130.unk18 = sp88.unk8;
     sp130.unk1C = 0.0f;
     sp130.unk20 = (f32) sp68;
-    sp130.unk24 = unksp6C;
+    sp130.unk24 = (*(f32 *) ((u8 *) &sp68 + 0x4));
     sp130.unk28 = (f32) sp70;
     sp130.unk2C = 0.0f;
     sp130.Scale3x3(&sp130, this->unk27C);
@@ -2037,7 +2037,7 @@ void Ball::UpdatePhysics() {
             sp1A0 = (f32) sp3B0 - (f32) sp3A0;
             sp450 = (f64) sp1A0;
             temp_f29_3044 = (M2C_FIELD(temp_r24_3004, f32 *, 0x274) * M2C_FIELD(temp_r24_3004, f32 *, 0x280)) + (M2C_BITWISE(f32, this->unk270) * this->unk27C);
-            var_f4_3048 = ((f32) sp450 * (f32) sp450) + (((f32) sp448 * (f32) sp448) + (unksp44C * unksp44C));
+            var_f4_3048 = ((f32) sp450 * (f32) sp450) + (((f32) sp448 * (f32) sp448) + ((*(f32 *) ((u8 *) &sp448 + 0x4)) * (*(f32 *) ((u8 *) &sp448 + 0x4))));
             if (var_f4_3048 < (temp_f29_3044 * temp_f29_3044)) {
                 if (var_f4_3048 > 1e-12f) {
                     if (var_f4_3048 > 0.0f) {
@@ -2078,12 +2078,12 @@ void Ball::UpdatePhysics() {
                     var_f3_3118 = 0.0f;
                 }
                 sp188 = (f32) sp448 * var_f3_3118;
-                sp18C = unksp44C * var_f3_3118;
+                sp18C = (*(f32 *) ((u8 *) &sp448 + 0x4)) * var_f3_3118;
                 sp190 = (f32) sp450 * var_f3_3118;
                 sp438 = (f64) sp188;
                 sp440 = (f64) sp190;
                 sp178 = -(f32) sp438;
-                sp17C = -unksp43C;
+                sp17C = -(*(f32 *) ((u8 *) &sp438 + 0x4));
                 sp180 = -(f32) sp440;
                 sp428 = (f64) sp178;
                 sp430 = (f64) sp180;
@@ -2147,7 +2147,7 @@ void Ball::UpdatePhysics() {
                 sp170 = this->unkF8 * var_f2_3263;
                 sp348 = (f64) sp168;
                 sp350 = (f64) sp170;
-                temp_f22_3294 = 0.8f * (((f32) sp350 * (f32) sp430) + (((f32) sp348 * (f32) sp428) + (unksp34C * unksp42C)));
+                temp_f22_3294 = 0.8f * (((f32) sp350 * (f32) sp430) + (((f32) sp348 * (f32) sp428) + ((*(f32 *) ((u8 *) &sp348 + 0x4)) * (*(f32 *) ((u8 *) &sp428 + 0x4)))));
                 NProjection(sp328, *((MKVector3 *) &this->unkF0));
                 temp_f0_3298 = sp328 * (f64) temp_f22_3294;
                 spB8 = temp_f0_3298;
@@ -2161,13 +2161,13 @@ void Ball::UpdatePhysics() {
                 spB0 = (f32) sp440 * temp_f28_3320;
                 sp308 = spA8;
                 sp310 = (f64) spB0;
-                __ml((this->unkF8 * (f32) sp440) + (((f32) M2C_FIELD(this, f64 *, 0xF0) * (f32) sp438) + (M2C_FIELD(this, f32 *, 0xF4) * unksp43C)), sp318);
+                __ml((this->unkF8 * (f32) sp440) + (((f32) M2C_FIELD(this, f64 *, 0xF0) * (f32) sp438) + (M2C_FIELD(this, f32 *, 0xF4) * (*(f32 *) ((u8 *) &sp438 + 0x4)))), sp318);
                 this->unkF0 -= M2C_BITWISE(f64, sp318);
                 temp_f3_3348 = 1.0f - temp_f22_3294;
                 this->unkF8 -= sp318.unk8;
                 this->unkF0 *= (f64) temp_f3_3348;
                 this->unkF8 *= temp_f3_3348;
-                var_f4_3366 = ((f32) sp420 * (f32) sp420) + (((f32) sp418 * (f32) sp418) + (unksp41C * unksp41C));
+                var_f4_3366 = ((f32) sp420 * (f32) sp420) + (((f32) sp418 * (f32) sp418) + ((*(f32 *) ((u8 *) &sp418 + 0x4)) * (*(f32 *) ((u8 *) &sp418 + 0x4))));
                 if (var_f4_3366 > 1e-12f) {
                     if (var_f4_3366 > 0.0f) {
                         temp_f1_3372 = __frsqrte(var_f4_3366);
@@ -2207,11 +2207,11 @@ void Ball::UpdatePhysics() {
                     var_f2_3433 = 0.0f;
                 }
                 sp158 = (f32) sp418 * var_f2_3433;
-                sp15C = unksp41C * var_f2_3433;
+                sp15C = (*(f32 *) ((u8 *) &sp418 + 0x4)) * var_f2_3433;
                 sp160 = (f32) sp420 * var_f2_3433;
                 sp2F8 = (f64) sp158;
                 sp300 = (f64) sp160;
-                temp_f21_3464 = 0.8f * (((f32) sp300 * (f32) sp440) + (((f32) sp2F8 * (f32) sp438) + (unksp2FC * unksp43C)));
+                temp_f21_3464 = 0.8f * (((f32) sp300 * (f32) sp440) + (((f32) sp2F8 * (f32) sp438) + ((*(f32 *) ((u8 *) &sp2F8 + 0x4)) * (*(f32 *) ((u8 *) &sp438 + 0x4)))));
                 NProjection(sp2D8, *((MKVector3 *) &sp418));
                 temp_f0_3468 = sp2D8 * (f64) temp_f21_3464;
                 sp98 = temp_f0_3468;
@@ -2225,7 +2225,7 @@ void Ball::UpdatePhysics() {
                 sp90 = (f32) sp430 * temp_f26_3488;
                 sp2B8 = sp88;
                 sp2C0 = (f64) sp90;
-                __ml(((f32) sp420 * (f32) sp430) + (((f32) sp418 * (f32) sp428) + (unksp41C * unksp42C)), sp2C8);
+                __ml(((f32) sp420 * (f32) sp430) + (((f32) sp418 * (f32) sp428) + ((*(f32 *) ((u8 *) &sp418 + 0x4)) * (*(f32 *) ((u8 *) &sp428 + 0x4)))), sp2C8);
                 M2C_FIELD(temp_r24_3004, f64 *, 0xF0) = (f64) (M2C_FIELD(temp_r24_3004, f64 *, 0xF0) - M2C_BITWISE(f64, sp2C8));
                 temp_f3_3518 = 1.0f - temp_f21_3464;
                 M2C_FIELD(temp_r24_3004, f64 *, 0xF8) = (f32) ((f32) M2C_FIELD(temp_r24_3004, f64 *, 0xF8) - sp2C8.unk8);
@@ -2495,7 +2495,7 @@ block_107:
     sp130 = temp_f7_4079 * var_f0_4071;
     sp218 = (f64) sp128;
     sp220 = (f64) sp130;
-    if (!((temp_r3_4081 >> 5U) & 1) && ((((f32) sp220 * (f32) sp210) + (((f32) sp218 * (f32) sp208) + (unksp21C * unksp20C))) < 0.7f) && (((temp_f7_4079 * temp_f7_4079) + ((temp_f6_4076 * temp_f6_4076) + (temp_f5_4077 * temp_f5_4077))) > 100000.0f)) {
+    if (!((temp_r3_4081 >> 5U) & 1) && ((((f32) sp220 * (f32) sp210) + (((f32) sp218 * (f32) sp208) + ((*(f32 *) ((u8 *) &sp218 + 0x4)) * (*(f32 *) ((u8 *) &sp208 + 0x4))))) < 0.7f) && (((temp_f7_4079 * temp_f7_4079) + ((temp_f6_4076 * temp_f6_4076) + (temp_f5_4077 * temp_f5_4077))) > 100000.0f)) {
         var_r26_2980 = 1;
         if (var_r25_2981 != 0) {
             M2C_FIELD(this, u8 *, 0x2AC) = (u8) (temp_r3_4081 | 0x10);
@@ -2509,7 +2509,7 @@ block_107:
     var_r23_4127 = 0;
     sp3E8 = sp118;
     sp120 = (f32) sp200 - this->unk138;
-    unksp3EC = 0.0f;
+    (*(f32 *) ((u8 *) &sp3E8 + 0x4)) = 0.0f;
     sp3F0 = (f64) sp120;
     if (((((f32) sp3F0 * (f32) sp3F0) + (((f32) sp3E8 * (f32) sp3E8) + (0.0f * 0.0f))) > (100.0f * M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x11C))) && (M2C_BITWISE(u32, this->unk2A0) != 0U)) {
         var_r23_4127 = 1;
@@ -2528,7 +2528,7 @@ block_107:
     }
     M2C_FIELD(this, f32 *, 0x120) = (f64) this->unkF0;
     M2C_FIELD(this, f32 *, 0x128) = (f64) M2C_FIELD(this, f32 *, 0xF8);
-    if (((sp460 * sp460) + (((f32) sp458 * (f32) sp458) + (unksp45C * unksp45C))) < 0.25f) {
+    if (((sp460 * sp460) + (((f32) sp458 * (f32) sp458) + ((*(f32 *) ((u8 *) &sp458 + 0x4)) * (*(f32 *) ((u8 *) &sp458 + 0x4))))) < 0.25f) {
         this->unk28C = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk28C) + 1));
         if (M2C_BITWISE(s32, this->unk28C) == 0xA) {
             M2C_FIELD(this, u8 *, 0x2AC) = (u8) (M2C_FIELD(this, u8 *, 0x2AC) & ~0x80);
@@ -2699,7 +2699,7 @@ block_93:
                 sp108 = (f64) sp48;
                 Normalise(sp110);
                 sp130 = M2C_BITWISE(f64, sp110);
-                var_f1_4501 = unksp134;
+                var_f1_4501 = (*(f32 *) ((u8 *) &sp130 + 0x4));
                 sp138 = (f64) sp110.unk8;
                 if (var_f1_4501 < 3.4028235e38f) {
 
@@ -2711,7 +2711,7 @@ block_93:
                 } else {
                     var_f1_4501 = 0.0f;
                 }
-                unksp134 = var_f1_4501;
+                (*(f32 *) ((u8 *) &sp130 + 0x4)) = var_f1_4501;
                 temp_f1_4519 = sp130 * 5.717499035e-315;
                 sp130 = temp_f1_4519;
                 temp_f3_4523 = (f32) sp138 * 2000.0f;
@@ -2806,7 +2806,7 @@ block_62:
                 InterpolateLinear(sp70, *((MKVector3 *) &sp120), 0.25f);
                 sp120 = M2C_BITWISE(f64, sp70);
                 sp128 = (f64) sp70.unk8;
-                var_f4_4766 = ((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + (unksp124 * unksp124));
+                var_f4_4766 = ((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + ((*(f32 *) ((u8 *) &sp110 + 0x14)) * (*(f32 *) ((u8 *) &sp110 + 0x14))));
                 if (var_f4_4766 > 0.000001f) {
                     if (var_f4_4766 > 0.0f) {
                         temp_f1_4772 = __frsqrte(var_f4_4766);
@@ -2847,11 +2847,11 @@ block_62:
                 }
                 temp_f0_4844 = (f32) sp128 * var_f3_4833;
                 sp120 = (f32) sp120 * var_f3_4833;
-                unksp124 *= var_f3_4833;
+                (*(f32 *) ((u8 *) &sp110 + 0x14)) *= var_f3_4833;
                 sp128 = temp_f0_4844;
                 sp120 = (f64) sp120 * 5.717499035e-315;
                 sp128 = temp_f0_4844 * 2000.0f;
-                unksp124 = 0.0f;
+                (*(f32 *) ((u8 *) &sp110 + 0x14)) = 0.0f;
                 this->unkF0 += sp120;
                 this->unkF8 += sp128;
                 SetPhysicsOn(1U);
@@ -2895,7 +2895,7 @@ block_62:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp44'
+#if 0 // DRAFT: ')' expected
 void Ball::Update() {
     f64 sp48;
     f64 sp40;
@@ -2939,7 +2939,7 @@ void Ball::Update() {
         sp18 = (f32) sp38 - (f32) sp28;
         temp_f3_4977 = 100.0f * this->unk29C;
         sp48 = (f64) sp18;
-        if ((((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44))) >= (temp_f3_4977 * temp_f3_4977)) {
+        if ((((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp40 + 0x4)) * (*(f32 *) ((u8 *) &sp40 + 0x4))))) >= (temp_f3_4977 * temp_f3_4977)) {
             Smash();
         }
     }

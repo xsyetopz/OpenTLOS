@@ -191,10 +191,10 @@ u8 EnemyGoal_Respawn::Update() {
         sp5C = 0.0f;
         sp20 = (f64) sp10;
         sp30 = (f32) sp20;
-        sp34 = unksp24;
+        sp34 = (*(f32 *) ((u8 *) &sp20 + 0x4));
         sp38 = (f32) sp28;
         sp3C = 0.0f;
-        if (M2C_FIELD(M2C_FIELD(temp_r3_211, void **, 0x44), u8 (**)(f32 *, M2C_UNK, MKVector3 *, f32, f32, f32, f32, f32, f32, f32, f32), 0x120)(&sp30, 0, &MKVector3::up, unksp24, (f32) sp20, temp_f3_246, temp_f4_239, 0.0f, MKVector3::up.unk8, MKVector3::up.unk4, MKVector3::up.unk0) != 0) {
+        if (M2C_FIELD(M2C_FIELD(temp_r3_211, void **, 0x44), u8 (**)(f32 *, M2C_UNK, MKVector3 *, f32, f32, f32, f32, f32, f32, f32, f32), 0x120)(&sp30, 0, &MKVector3::up, (*(f32 *) ((u8 *) &sp20 + 0x4)), (f32) sp20, temp_f3_246, temp_f4_239, 0.0f, MKVector3::up.unk8, MKVector3::up.unk4, MKVector3::up.unk0) != 0) {
             this->unk8 = 2;
         } else {
             M2C_FIELD(this->unkC, f32 *, 0xA74) = (f32) (gb.unk30C + 0.2f);
@@ -669,7 +669,7 @@ void EnemyGoal_DyingSquished::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp13C'
+#if 0 // DRAFT: illegal type
 u8 EnemyGoal_DyingWhirlwind::Update() {
     f32 sp1AC;
     f32 sp1A8;
@@ -762,7 +762,7 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
         sp140 = (f64) sp90;
         M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
         if (temp_r4_1196->unk588.unk0 == temp_f4_1214) {
-            unksp13C = temp_f4_1214;
+            (*(f32 *) ((u8 *) &sp138 + 0x4)) = temp_f4_1214;
             this->unk10 = 1;
             KDSound_Play3d(GS_EnemyTornadoFlyDown, this->unkC->unk8 + 0x30, 0U, -1, 0.0f, 0U);
         }
@@ -793,7 +793,7 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
             sp1A8 = (f32) sp130;
             sp1AC = 1.0f;
             temp_r3_1295 = this->unkC;
-            unksp12C = temp_f3_1286;
+            (*(f32 *) ((u8 *) &sp128 + 0x4)) = temp_f3_1286;
             temp_r3_1295->Teleport(&sp170, &sp16C + 0x40, (f32) sp130, (f32) sp128, temp_f3_1286);
             temp_r3_1301 = this->unkC;
             temp_r3_1301->unkB0A &= ~2;
@@ -907,7 +907,7 @@ void EnemyGoal_DyingWhirlwind::Activate() {
     temp_r4_1529 = this->unkC->unk8;
     sp68 = M2C_FIELD(temp_r4_1529, f64 *, 0x30);
     sp20 = 0.0f;
-    this->unk18 = unksp6C;
+    this->unk18 = (*(f32 *) ((u8 *) &sp68 + 0x4));
     sp78 = 0.0f;
     sp7C = 0.0f;
     sp80 = 0.0f;
@@ -1024,7 +1024,7 @@ u8 EnemyGoal_DyingAirborn::Update() {
     M2C_STRUCT_COPY((s32) &sp7C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     KDMath_BuildMatrixFromFwd(&sp80, *((MKVector3 *) &this->unkC->unkC0), (MKVector3 *) &sp60);
     sp80.unk30 = (f32) sp70;
-    sp80.unk34 = unksp74;
+    sp80.unk34 = (*(f32 *) ((u8 *) &sp70 + 0x4));
     sp80.unk38 = (f32) sp78;
     sp80.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unkC->unk4, sp80);
@@ -1039,7 +1039,7 @@ u8 EnemyGoal_DyingAirborn::Update() {
     if (var_r30_1769 != 0) {
         ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 3, 0x1F, 1, 0.15f, 0U, 0U);
     }
-    unksp74 += 50.0f;
+    (*(f32 *) ((u8 *) &sp70 + 0x4)) += 50.0f;
     Tools_TestFloor(*((MKVector3 *) &sp70), NULL, 250.0f, (MKCollisionMode) 5);
     if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
         this->unk8 = 2;

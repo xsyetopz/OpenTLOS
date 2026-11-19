@@ -253,9 +253,9 @@ void SpyroLedgeGrabState::Message(MKMessage *arg0) {
         sp38 = (f64) sp8;
         sp10 = M2C_FIELD(temp_r7_477, f32 *, 0x38) + ((temp_f7_491 * M2C_FIELD(temp_r7_477, f32 *, 0x28)) + ((temp_f6_486 * M2C_FIELD(temp_r7_477, f32 *, 8)) + (temp_f2_476 * M2C_FIELD(temp_r7_477, f32 *, 0x18))));
         sp40 = (f64) sp10;
-        sp18 = M2C_FIELD(temp_r6_479, f32 *, 0x30) + (((f32) sp40 * M2C_FIELD(temp_r6_479, f32 *, 0x20)) + (((f32) sp38 * M2C_FIELD(temp_r6_479, f32 *, 0)) + (unksp3C * M2C_FIELD(temp_r6_479, f32 *, 0x10))));
-        sp1C = M2C_FIELD(temp_r6_479, f32 *, 0x34) + (((f32) sp40 * M2C_FIELD(temp_r6_479, f32 *, 0x24)) + (((f32) sp38 * M2C_FIELD(temp_r6_479, f32 *, 4)) + (unksp3C * M2C_FIELD(temp_r6_479, f32 *, 0x14))));
-        sp20 = M2C_FIELD(temp_r6_479, f32 *, 0x38) + (((f32) sp40 * M2C_FIELD(temp_r6_479, f32 *, 0x28)) + (((f32) sp38 * M2C_FIELD(temp_r6_479, f32 *, 8)) + (unksp3C * M2C_FIELD(temp_r6_479, f32 *, 0x18))));
+        sp18 = M2C_FIELD(temp_r6_479, f32 *, 0x30) + (((f32) sp40 * M2C_FIELD(temp_r6_479, f32 *, 0x20)) + (((f32) sp38 * M2C_FIELD(temp_r6_479, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * M2C_FIELD(temp_r6_479, f32 *, 0x10))));
+        sp1C = M2C_FIELD(temp_r6_479, f32 *, 0x34) + (((f32) sp40 * M2C_FIELD(temp_r6_479, f32 *, 0x24)) + (((f32) sp38 * M2C_FIELD(temp_r6_479, f32 *, 4)) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * M2C_FIELD(temp_r6_479, f32 *, 0x14))));
+        sp20 = M2C_FIELD(temp_r6_479, f32 *, 0x38) + (((f32) sp40 * M2C_FIELD(temp_r6_479, f32 *, 0x28)) + (((f32) sp38 * M2C_FIELD(temp_r6_479, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * M2C_FIELD(temp_r6_479, f32 *, 0x18))));
         M2C_FIELD(this, f32 *, 0x28) = (f64) sp18;
         M2C_FIELD(this, f32 *, 0x30) = (f64) sp20;
         sp48 = (f64) sp18;

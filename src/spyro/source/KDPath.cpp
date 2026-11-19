@@ -65,7 +65,7 @@ loop_8:
             sp38 = temp_f0_169;
             sp10 = (f32) sp30 - temp_f30_115;
             sp40 = (f64) sp10;
-            temp_f29_185 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
+            temp_f29_185 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))));
             if (temp_f29_185 < var_f31_101) {
                 sp48.SetTo(var_r28_116, var_r29_126);
                 var_f31_101 = temp_f29_185;
@@ -113,7 +113,7 @@ loop_5:
             sp18 = temp_f0_262;
             sp10 = M2C_FIELD(temp_r3_259, f32 *, 8) - temp_f31_249;
             sp20 = (f64) sp10;
-            temp_f30_278 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C));
+            temp_f30_278 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))));
             if (temp_f30_278 < var_f29_235) {
                 sp28.SetTo(var_r30_250, var_r31_253);
                 var_f29_235 = temp_f30_278;
@@ -213,7 +213,7 @@ loop_10:
         spB8 = sp38;
         spB0 = (f64) sp40;
         spC0 = (f64) sp40;
-        if ((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC))) < 10000.0f) {
+        if ((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * (*(f32 *) ((u8 *) &spA8 + 0x4))))) < 10000.0f) {
             KDPathNode::Link(var_r31_383);
         }
         temp_r5_421 = this->unk24;
@@ -224,7 +224,7 @@ loop_10:
         sp90 = (f64) sp30;
         sp98 = sp28;
         spA0 = (f64) sp30;
-        if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) < 10000.0f) {
+        if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))))) < 10000.0f) {
             KDPathNode::Link((KDPathNode *) &var_r31_383->unk8);
         }
         temp_r3_456 = var_r31_383->unk24;
@@ -235,7 +235,7 @@ loop_10:
         sp70 = (f64) sp20;
         sp78 = sp18;
         sp80 = (f64) sp20;
-        if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C))) < 10000.0f) {
+        if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) < 10000.0f) {
             ((KDPathNode *) &this->unk8)->Link(var_r31_383);
         }
         temp_r3_496 = var_r31_383->unk24 + ((var_r31_383->unk20 - 1) * var_r31_383->unk1C);
@@ -246,7 +246,7 @@ loop_10:
         sp58 = sp8;
         sp50 = (f64) sp10;
         sp60 = (f64) sp10;
-        if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < 10000.0f) {
+        if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))) < 10000.0f) {
             ((KDPathNode *) &this->unk8)->Link((KDPathNode *) &var_r31_383->unk8);
         }
         var_r4_379 = var_r31_383;
@@ -474,7 +474,7 @@ loop_8:
         sp38 = (f64) sp18;
         sp40 = sp10;
         sp48 = (f64) sp18;
-        if ((((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34))) < 10000.0f) {
+        if ((((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))))) < 10000.0f) {
             M2C_FIELD(temp_r5_839, f64 *, 0) = (f32) M2C_FIELD(temp_r4_836, f64 *, 0);
             M2C_FIELD(temp_r5_839, f32 *, 4) = (f32) M2C_FIELD(temp_r4_836, f32 *, 4);
             M2C_FIELD(temp_r5_839, f32 *, 8) = (f32) M2C_FIELD(temp_r4_836, f32 *, 8);
@@ -496,8 +496,8 @@ loop_35:
             sp50 = temp_f0_894;
             sp28 = M2C_FIELD(temp_r4_891, f32 *, 8) - M2C_FIELD(temp_r3_890, f32 *, 8);
             sp58 = (f64) sp28;
-            unksp5C = 0.0f;
-            var_f5_912 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
+            (*(f32 *) ((u8 *) &sp58 + 0x4)) = 0.0f;
+            var_f5_912 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
             if (var_f5_912 > 0.0f) {
                 temp_f1_915 = __frsqrte(var_f5_912);
                 temp_f1_921 = 0.5 * temp_f1_915 * -(((f64) var_f5_912 * (temp_f1_915 * temp_f1_915)) - 3.0);
@@ -835,8 +835,8 @@ loop_25:
             sp20 = temp_f0_1615;
             sp18 = M2C_FIELD(temp_r4_1612, f32 *, 8) - M2C_FIELD(temp_r3_1611, f32 *, 8);
             sp28 = (f64) sp18;
-            unksp2C = 0.0f;
-            var_f5_1633 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+            (*(f32 *) ((u8 *) &sp28 + 0x4)) = 0.0f;
+            var_f5_1633 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * (*(f32 *) ((u8 *) &sp20 + 0x4))));
             if (var_f5_1633 > 0.0f) {
                 temp_f1_1636 = __frsqrte(var_f5_1633);
                 temp_f1_1642 = 0.5 * temp_f1_1636 * -(((f64) var_f5_1633 * (temp_f1_1636 * temp_f1_1636)) - 3.0);

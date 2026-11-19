@@ -534,7 +534,7 @@ loop_5:
         }
         var_r4_872 = var_r29_894;
         var_r28_874 += 1;
-        unksp6C -= 10.0f;
+        (*(f32 *) ((u8 *) &sp68 + 0x4)) -= 10.0f;
         goto loop_5;
     }
     if (var_r4_872 != 0) {
@@ -551,7 +551,7 @@ loop_5:
             sp30 = (f32) sp80 + (f32) sp50;
             sp60 = (f64) sp30;
             temp_f1_947 = ((KDWaterVolume *) &sp58)->GetWaterSurface(*((MKVector3 *) (u32) (u64) temp_ret_922));
-            unksp7C = (f32) temp_f1_947;
+            (*(f32 *) ((u8 *) &sp78 + 0x4)) = (f32) temp_f1_947;
             spA0.unk30 = (f32) sp78;
             spA0.unk34 = (f32) temp_f1_947;
             spA0.unk38 = (f32) sp80;
@@ -672,7 +672,7 @@ s32 FireTier1::SelectMoveToWallPos(const MKVector3 &arg0, const MKVector3 &arg1,
     if (((temp_f7_1146 * temp_f7_1146) + ((temp_f6_1143 * temp_f6_1143) + (temp_f5_1144 * temp_f5_1144))) <= 0.000001f) {
         return 0;
     }
-    temp_f29_1167 = ((f32) sp130 * temp_f7_1146) + (((f32) sp128 * temp_f6_1143) + (unksp12C * temp_f5_1144));
+    temp_f29_1167 = ((f32) sp130 * temp_f7_1146) + (((f32) sp128 * temp_f6_1143) + ((*(f32 *) ((u8 *) &sp128 + 0x4)) * temp_f5_1144));
     sp18 = (f64) M2C_FIELD(&arg1, f32 *, 0) * (f64) temp_f29_1167;
     sp20 = temp_f7_1146 * temp_f29_1167;
     spB8 = sp18;
@@ -823,7 +823,7 @@ loop_1:
     sp100 = sp40;
     spF8 = (f64) sp48;
     sp108 = (f64) sp48;
-    if ((((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4))) < 10000.0f) {
+    if ((((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spF0 + 0x4))))) < 10000.0f) {
         var_r26_1316 += 1;
         if (var_r26_1316 < 3) {
             goto loop_1;
@@ -835,7 +835,7 @@ loop_1:
     spD8 = (f64) sp38;
     spE0 = sp30;
     spE8 = (f64) sp38;
-    if ((((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (unkspD4 * unkspD4))) < 10000.0f) {
+    if ((((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + ((*(f32 *) ((u8 *) &spD0 + 0x4)) * (*(f32 *) ((u8 *) &spD0 + 0x4))))) < 10000.0f) {
         return 0;
     }
     temp_r7_1391 = this->unk110.unk460;
@@ -845,7 +845,7 @@ loop_1:
         sp160 = temp_f0_1403;
         spC8 = sp200.unk8 - (f32) sp1B8;
         sp168 = (f64) spC8;
-        sp14 = (MKVector3::up.unk8 * (f32) sp168) + ((MKVector3::up.unk0 * (f32) sp160) + (MKVector3::up.unk4 * unksp164));
+        sp14 = (MKVector3::up.unk8 * (f32) sp168) + ((MKVector3::up.unk0 * (f32) sp160) + (MKVector3::up.unk4 * (*(f32 *) ((u8 *) &sp160 + 0x4))));
         sp18 = (M2C_BITWISE(s32, sp14) & 0x80000000) | 0x3F800000;
         temp_f31_1431 = -M2C_BITWISE(f32, sp18);
         sp200.unk10 = (f64) (sp200.unk10 * temp_f31_1431);
@@ -858,7 +858,7 @@ loop_1:
         sp150 = spB0;
         spB8 = arg1->unk8 - this->unk588.unk4;
         sp158 = (f64) spB8;
-        var_f4_1471 = ((f32) sp158 * (f32) sp158) + (((f32) sp150 * (f32) sp150) + (unksp154 * unksp154));
+        var_f4_1471 = ((f32) sp158 * (f32) sp158) + (((f32) sp150 * (f32) sp150) + ((*(f32 *) ((u8 *) &sp150 + 0x4)) * (*(f32 *) ((u8 *) &sp150 + 0x4))));
         if (var_f4_1471 > 1e-12f) {
             if (var_f4_1471 > 0.0f) {
                 temp_f1_1477 = __frsqrte(var_f4_1471);
@@ -900,23 +900,23 @@ loop_1:
         sp190 = M2C_FIELD(arg2, f64 *, 0);
         spA8 = (f32) sp158 * var_f4_1538;
         spA0 = (f32) sp150 * var_f4_1538;
-        spA4 = unksp154 * var_f4_1538;
+        spA4 = (*(f32 *) ((u8 *) &sp150 + 0x4)) * var_f4_1538;
         sp1A8 = (f64) spA8;
         sp1A0 = (f64) spA0;
         sp198 = M2C_FIELD(arg2, f64 *, 8);
         sp94 = ((f32) sp198 * (f32) sp1A0) - ((f32) sp190 * (f32) sp1A8);
-        sp98 = ((f32) sp190 * unksp1A4) - (unksp194 * (f32) sp1A0);
-        sp90 = (unksp194 * (f32) sp1A8) - ((f32) sp198 * unksp1A4);
+        sp98 = ((f32) sp190 * (*(f32 *) ((u8 *) &sp1A0 + 0x4))) - ((*(f32 *) ((u8 *) &sp190 + 0x4)) * (f32) sp1A0);
+        sp90 = ((*(f32 *) ((u8 *) &sp190 + 0x4)) * (f32) sp1A8) - ((f32) sp198 * (*(f32 *) ((u8 *) &sp1A0 + 0x4)));
         sp188 = (f64) sp98;
         sp180 = (f64) sp90;
-        sp80 = (unksp184 * (f32) sp198) - ((f32) sp188 * unksp194);
+        sp80 = ((*(f32 *) ((u8 *) &sp180 + 0x4)) * (f32) sp198) - ((f32) sp188 * (*(f32 *) ((u8 *) &sp190 + 0x4)));
         sp84 = ((f32) sp188 * (f32) sp190) - ((f32) sp180 * (f32) sp198);
-        sp88 = ((f32) sp180 * unksp194) - (unksp184 * (f32) sp190);
+        sp88 = ((f32) sp180 * (*(f32 *) ((u8 *) &sp190 + 0x4))) - ((*(f32 *) ((u8 *) &sp180 + 0x4)) * (f32) sp190);
         sp170 = (f64) sp80;
         sp178 = (f64) sp88;
         sp1C0.SetIdentity();
         sp70 = -(f32) sp180;
-        sp74 = -unksp184;
+        sp74 = -(*(f32 *) ((u8 *) &sp180 + 0x4));
         temp_f0_1610 = arg0.unk4;
         sp78 = -(f32) sp188;
         sp140 = (f64) sp70;
@@ -926,21 +926,21 @@ loop_1:
         sp148 = (f64) sp78;
         sp138 = (f64) sp68;
         sp60 = -(f32) sp170;
-        sp64 = -unksp174;
+        sp64 = -(*(f32 *) ((u8 *) &sp170 + 0x4));
         sp28 = (temp_f30_1625 * (f32) sp138) + ((temp_f13_1619 * (f32) sp148) + (temp_f0_1610 * (f32) sp198));
         sp130 = (f64) sp60;
         sp1C0 = (f32) sp140;
-        sp1C0.unk4 = unksp144;
+        sp1C0.unk4 = (*(f32 *) ((u8 *) &sp140 + 0x4));
         sp20 = (temp_f30_1625 * (f32) sp130) + ((temp_f13_1619 * (f32) sp140) + (temp_f0_1610 * (f32) sp190));
-        sp24 = (temp_f30_1625 * unksp134) + ((temp_f13_1619 * unksp144) + (temp_f0_1610 * unksp194));
+        sp24 = (temp_f30_1625 * (*(f32 *) ((u8 *) &sp130 + 0x4))) + ((temp_f13_1619 * (*(f32 *) ((u8 *) &sp140 + 0x4))) + (temp_f0_1610 * (*(f32 *) ((u8 *) &sp190 + 0x4))));
         sp1C0.unk8 = (f32) sp148;
         sp1C0.unkC = 0.0f;
         sp1C0.unk10 = (f32) sp190;
-        sp1C0.unk14 = unksp194;
+        sp1C0.unk14 = (*(f32 *) ((u8 *) &sp190 + 0x4));
         sp1C0.unk18 = (f32) sp198;
         sp1C0.unk1C = 0.0f;
         sp1C0.unk20 = (f32) sp130;
-        sp1C0.unk24 = unksp134;
+        sp1C0.unk24 = (*(f32 *) ((u8 *) &sp130 + 0x4));
         sp1C0.unk28 = (f32) sp138;
         sp1C0.unk2C = 0.0f;
         sp110 = (f64) sp20;

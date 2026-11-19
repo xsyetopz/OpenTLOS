@@ -127,7 +127,7 @@ void Tools_CalculateVelocity(const MKVector3 &arg0, const MKVector3 &arg1, float
     sp20 = temp_f0_161;
     sp40 = temp_f0_161;
     sp28 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 8) - arg1.unk8;
-    unksp44 = 0.0f;
+    (*(f32 *) ((u8 *) &sp40 + 0x4)) = 0.0f;
     sp48 = (f64) sp28;
     var_f6_179 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (0.0f * 0.0f));
     if (var_f6_179 > 0.0f) {
@@ -170,7 +170,7 @@ void Tools_CalculateVelocity(const MKVector3 &arg0, const MKVector3 &arg1, float
         sp18 = (f32) sp48 * temp_f3_247;
         sp30 = sp10;
         sp38 = (f64) sp18;
-        unksp34 = -((0.5f * arg3 * temp_f6_245) - ((M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 4) - arg1.unk4) / temp_f6_245));
+        (*(f32 *) ((u8 *) &sp30 + 0x4)) = -((0.5f * arg3 * temp_f6_245) - ((M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 4) - arg1.unk4) / temp_f6_245));
         M2C_FIELD(&arg0, f64 *, 0) = sp30;
         M2C_FIELD(&arg0, f64 *, 8) = (f64) sp18;
         return;
@@ -180,7 +180,7 @@ void Tools_CalculateVelocity(const MKVector3 &arg0, const MKVector3 &arg1, float
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp44'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 s32 Tools_GetPointDistanceFromLine(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float *arg3) {
     f32 sp58;
     f32 sp54;
@@ -222,7 +222,7 @@ s32 Tools_GetPointDistanceFromLine(const MKVector3 &arg0, const MKVector3 &arg1,
     sp40 = sp20;
     sp28 = arg2.unk8 - arg1.unk8;
     sp48 = (f64) sp28;
-    var_f4_304 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44));
+    var_f4_304 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp40 + 0x4)) * (*(f32 *) ((u8 *) &sp40 + 0x4))));
     if (var_f4_304 > 0.0f) {
         temp_f1_307 = __frsqrte(var_f4_304);
         temp_f1_313 = 0.5 * temp_f1_307 * -(((f64) var_f4_304 * (temp_f1_307 * temp_f1_307)) - 3.0);
@@ -279,7 +279,7 @@ s32 Tools_GetPointDistanceFromLine(const MKVector3 &arg0, const MKVector3 &arg1,
     sp18 = temp_f11_385 - temp_f2_406;
     sp30 = temp_f0_412;
     sp38 = (f64) sp18;
-    var_f4_426 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_426 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_426 > 0.0f) {
         temp_f1_429 = __frsqrte(var_f4_426);
         temp_f1_435 = 0.5 * temp_f1_429 * -(((f64) var_f4_426 * (temp_f1_429 * temp_f1_429)) - 3.0);
@@ -431,7 +431,7 @@ loop_3:
         sp48 = (f64) sp28;
         sp50 = sp20;
         sp58 = (f64) sp28;
-        if (!((((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44))) < (sp8 * sp8))) {
+        if (!((((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp40 + 0x4)) * (*(f32 *) ((u8 *) &sp40 + 0x4))))) < (sp8 * sp8))) {
             sp10 = temp_f7_632;
             sp18 = temp_f8_637;
             sp60 = sp10;
@@ -520,7 +520,7 @@ loop_3:
             spA8 = sp28;
             sp110 = (f64) sp30;
             spB0 = (f64) sp30;
-            temp_f0_782 = ((f32) sp110 * (f32) sp160.unk18) + (((f32) sp108 * (f32) sp160.unk10) + (unksp10C * unksp174));
+            temp_f0_782 = ((f32) sp110 * (f32) sp160.unk18) + (((f32) sp108 * (f32) sp160.unk10) + ((*(f32 *) ((u8 *) &sp108 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x54))));
             if (!(temp_f0_782 < 0.01f)) {
                 temp_f2_785 = 1.0f / temp_f0_782;
                 sp108 *= (f64) temp_f2_785;
@@ -532,7 +532,7 @@ loop_3:
                     spF8 = temp_f0_805;
                     sp80 = (f32) sp160.unk18 + (f32) sp1A0.unk18;
                     sp100 = (f64) sp80;
-                    temp_f28_823 = 1.0f / (((f32) sp100 * (f32) sp160.unk18) + (((f32) spF8 * (f32) sp160.unk10) + (unkspFC * unksp174)));
+                    temp_f28_823 = 1.0f / (((f32) sp100 * (f32) sp160.unk18) + (((f32) spF8 * (f32) sp160.unk10) + ((*(f32 *) ((u8 *) &spF8 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x54)))));
                     spF8 = temp_f0_805 * (f64) temp_f28_823;
                     temp_f0_828 = (f32) sp100 * temp_f28_823;
                     sp100 = temp_f0_828;
@@ -541,18 +541,18 @@ loop_3:
                     spE8 = temp_f4_831;
                     sp70 = (f32) sp180.unk18 + (f32) sp1A0.unk18;
                     spF0 = (f64) sp70;
-                    temp_f27_848 = 1.0f / (((f32) spF0 * (f32) sp180.unk18) + (((f32) spE8 * (f32) sp180.unk10) + (unkspEC * unksp194)));
+                    temp_f27_848 = 1.0f / (((f32) spF0 * (f32) sp180.unk18) + (((f32) spE8 * (f32) sp180.unk10) + ((*(f32 *) ((u8 *) &spE8 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x74)))));
                     spE8 = temp_f4_831 * (f64) temp_f27_848;
                     temp_f6_856 = (f32) spF0 * temp_f27_848;
                     spF0 = temp_f6_856;
-                    if (((temp_f0_828 * (f32) sp180.unk18) + (((f32) spF8 * (f32) sp180.unk10) + (unkspFC * unksp194))) > 1.0f) {
+                    if (((temp_f0_828 * (f32) sp180.unk18) + (((f32) spF8 * (f32) sp180.unk10) + ((*(f32 *) ((u8 *) &spF8 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x74))))) > 1.0f) {
                         sp180 = M2C_BITWISE(f64, sp1A0);
                         sp180.unk8 = sp1A0.unk8;
                         sp180.unk10 = sp1A0.unk10;
                         sp180.unk18 = sp1A0.unk18;
                         goto loop_3;
                     }
-                    if (((temp_f6_856 * (f32) sp160.unk18) + (((f32) spE8 * (f32) sp160.unk10) + (unkspEC * unksp174))) > 1.0f) {
+                    if (((temp_f6_856 * (f32) sp160.unk18) + (((f32) spE8 * (f32) sp160.unk10) + ((*(f32 *) ((u8 *) &spE8 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x54))))) > 1.0f) {
                         sp160 = M2C_BITWISE(f64, sp1A0);
                         sp160.unk8 = sp1A0.unk8;
                         sp160.unk10 = sp1A0.unk10;
@@ -561,15 +561,15 @@ loop_3:
                     }
                     sp120.SetIdentity();
                     sp120 = (f32) sp160.unk10;
-                    sp120.unk4 = unksp174;
+                    sp120.unk4 = (*(f32 *) ((u8 *) &sp120 + 0x54));
                     sp120.unk8 = (f32) sp160.unk18;
                     sp120.unkC = 0.0f;
                     sp120.unk10 = (f32) sp180.unk10;
-                    sp120.unk14 = unksp194;
+                    sp120.unk14 = (*(f32 *) ((u8 *) &sp120 + 0x74));
                     sp120.unk18 = (f32) sp180.unk18;
                     sp120.unk1C = 0.0f;
                     sp120.unk20 = (f32) sp1A0.unk10;
-                    sp120.unk24 = unksp1B4;
+                    sp120.unk24 = (*(f32 *) ((u8 *) &sp1A0 + 0x14));
                     sp120.unk28 = (f32) sp1A0.unk18;
                     sp120.unk2C = 0.0f;
                     sp120.Transpose3x3(&sp120);
@@ -588,7 +588,7 @@ loop_3:
                         spD8 = sp58;
                         sp60 = (f32) sp160.unk18 + (f32) sp1C0.unk18;
                         spE0 = (f64) sp60;
-                        temp_f26_985 = 1.0f / (((f32) spE0 * (f32) sp160.unk18) + (((f32) spD8 * (f32) sp160.unk10) + (unkspDC * unksp174)));
+                        temp_f26_985 = 1.0f / (((f32) spE0 * (f32) sp160.unk18) + (((f32) spD8 * (f32) sp160.unk10) + ((*(f32 *) ((u8 *) &spD8 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x54)))));
                         spD8 *= (f64) temp_f26_985;
                         temp_f4_990 = (f32) spE0 * temp_f26_985;
                         spE0 = temp_f4_990;
@@ -596,31 +596,31 @@ loop_3:
                         spC8 = sp48;
                         sp50 = (f32) sp180.unk18 + (f32) sp1C0.unk18;
                         spD0 = (f64) sp50;
-                        temp_f25_1010 = 1.0f / (((f32) spD0 * (f32) sp180.unk18) + (((f32) spC8 * (f32) sp180.unk10) + (unkspCC * unksp194)));
+                        temp_f25_1010 = 1.0f / (((f32) spD0 * (f32) sp180.unk18) + (((f32) spC8 * (f32) sp180.unk10) + ((*(f32 *) ((u8 *) &spC8 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x74)))));
                         spC8 *= (f64) temp_f25_1010;
                         spD0 = (f32) spD0 * temp_f25_1010;
                         sp38 = sp1A0.unk10 + temp_f0_965;
                         spB8 = sp38;
                         sp40 = (f32) sp1A0.unk18 + (f32) sp1C0.unk18;
                         spC0 = (f64) sp40;
-                        temp_f24_1035 = 1.0f / (((f32) spC0 * (f32) sp1A0.unk18) + (((f32) spB8 * (f32) sp1A0.unk10) + (unkspBC * unksp1B4)));
+                        temp_f24_1035 = 1.0f / (((f32) spC0 * (f32) sp1A0.unk18) + (((f32) spB8 * (f32) sp1A0.unk10) + ((*(f32 *) ((u8 *) &spB8 + 0x4)) * (*(f32 *) ((u8 *) &sp1A0 + 0x14)))));
                         spB8 *= (f64) temp_f24_1035;
                         spC0 = (f32) spC0 * temp_f24_1035;
-                        if ((((temp_f4_990 * (f32) sp180.unk18) + (((f32) spD8 * (f32) sp180.unk10) + (unkspDC * unksp194))) > 1.0f) && (((temp_f4_990 * (f32) sp1A0.unk18) + (((f32) spD8 * (f32) sp1A0.unk10) + (unkspDC * unksp1B4))) > 1.0f)) {
+                        if ((((temp_f4_990 * (f32) sp180.unk18) + (((f32) spD8 * (f32) sp180.unk10) + ((*(f32 *) ((u8 *) &spD8 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x74))))) > 1.0f) && (((temp_f4_990 * (f32) sp1A0.unk18) + (((f32) spD8 * (f32) sp1A0.unk10) + ((*(f32 *) ((u8 *) &spD8 + 0x4)) * (*(f32 *) ((u8 *) &sp1A0 + 0x14))))) > 1.0f)) {
                             sp180 = M2C_BITWISE(f64, sp1C0);
                             sp180.unk8 = sp1C0.unk8;
                             sp180.unk10 = sp1C0.unk10;
                             sp180.unk18 = sp1C0.unk18;
                             goto loop_3;
                         }
-                        if ((((spD0 * (f32) sp160.unk18) + (((f32) spC8 * (f32) sp160.unk10) + (unkspCC * unksp174))) > 1.0f) && (((spD0 * (f32) sp1A0.unk18) + (((f32) spC8 * (f32) sp1A0.unk10) + (unkspCC * unksp1B4))) > 1.0f)) {
+                        if ((((spD0 * (f32) sp160.unk18) + (((f32) spC8 * (f32) sp160.unk10) + ((*(f32 *) ((u8 *) &spC8 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x54))))) > 1.0f) && (((spD0 * (f32) sp1A0.unk18) + (((f32) spC8 * (f32) sp1A0.unk10) + ((*(f32 *) ((u8 *) &spC8 + 0x4)) * (*(f32 *) ((u8 *) &sp1A0 + 0x14))))) > 1.0f)) {
                             sp160 = M2C_BITWISE(f64, sp1C0);
                             sp160.unk8 = sp1C0.unk8;
                             sp160.unk10 = sp1C0.unk10;
                             sp160.unk18 = sp1C0.unk18;
                             goto loop_3;
                         }
-                        if ((((spC0 * (f32) sp160.unk18) + (((f32) spB8 * (f32) sp160.unk10) + (unkspBC * unksp174))) > 1.0f) && (((spC0 * (f32) sp180.unk18) + (((f32) spB8 * (f32) sp180.unk10) + (unkspBC * unksp194))) > 1.0f)) {
+                        if ((((spC0 * (f32) sp160.unk18) + (((f32) spB8 * (f32) sp160.unk10) + ((*(f32 *) ((u8 *) &spB8 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x54))))) > 1.0f) && (((spC0 * (f32) sp180.unk18) + (((f32) spB8 * (f32) sp180.unk10) + ((*(f32 *) ((u8 *) &spB8 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x74))))) > 1.0f)) {
                             sp160 = M2C_BITWISE(f64, sp1A0);
                             sp160.unk8 = sp1A0.unk8;
                             sp160.unk10 = sp1A0.unk10;
@@ -687,7 +687,7 @@ u8 GetClosest(PushOutResult *arg0, int &arg1, MKVector3 &arg2, const MKVector3 &
             temp_f10_1196 = 1.0f - ((arg3.unk8 * temp_f12_1188) + ((arg3.unk0 * temp_f11_1183) + (arg3.unk4 * temp_f10_1179)));
             M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
             if (temp_f10_1196 != 0.01f) {
-                temp_f2_1202 = ((((f32) sp40 * temp_f12_1188) + (((f32) sp38 * temp_f11_1183) + (unksp3C * temp_f10_1179))) - &arg4) / temp_f10_1196;
+                temp_f2_1202 = ((((f32) sp40 * temp_f12_1188) + (((f32) sp38 * temp_f11_1183) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * temp_f10_1179))) - &arg4) / temp_f10_1196;
                 if (temp_f2_1202 < var_f0_1162) {
                     var_r11_1156 = var_r12_1157;
                     var_f0_1162 = temp_f2_1202;
@@ -870,7 +870,7 @@ loop_4:
             temp_r3_1602 = M2C_FIELD(*(this + temp_r4_1599), void **, 8);
             sp8 = M2C_FIELD(temp_r3_1602, f64 *, 0x30);
             sp10 = M2C_FIELD(temp_r3_1602, f64 *, 0x38);
-            temp_f4_1609 = arg0.unk4 - unkspC;
+            temp_f4_1609 = arg0.unk4 - (*(f32 *) ((u8 *) &sp8 + 0x4));
             temp_f3_1610 = arg0.unk0 - (f32) sp8;
             temp_f2_1613 = arg0.unk8 - (f32) sp10;
             *(this + (temp_r4_1599 + 4)) = (temp_f2_1613 * temp_f2_1613) + ((temp_f3_1610 * temp_f3_1610) + (temp_f4_1609 * temp_f4_1609));
@@ -978,7 +978,7 @@ loop_4:
         sp28 = temp_f0_1873;
         sp20 = (f32) sp50 - temp_f23_1855;
         sp30 = (f64) sp20;
-        temp_f0_1889 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C));
+        temp_f0_1889 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4))));
         if (temp_f0_1889 < var_f29_1853) {
             var_f29_1853 = temp_f0_1889;
             var_f30_1851 = temp_f26_1859;
@@ -1002,7 +1002,7 @@ void Tools_EnableWideScreen(bool arg0) {
     MKView_SetAspectRatio(var_f1_1941);
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 s32 Tools_Line2DToCircleIntersect(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3, float &arg4) {
     f64 sp28;
     f64 sp20;
@@ -1027,12 +1027,12 @@ s32 Tools_Line2DToCircleIntersect(const MKVector3 &arg0, const MKVector3 &arg1, 
     sp18 = arg2.unk8 - arg0.unk8;
     sp20 = (f64) sp10;
     sp28 = (f64) sp18;
-    temp_f5_2020 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+    temp_f5_2020 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * (*(f32 *) ((u8 *) &sp20 + 0x4))));
     if (temp_f5_2020 <= temp_f6_1999) {
         &arg4 = 0.0f;
         return 1;
     }
-    temp_f7_2033 = ((f32) sp28 * arg1.unk8) + (((f32) sp20 * arg1.unk0) + (unksp24 * arg1.unk4));
+    temp_f7_2033 = ((f32) sp28 * arg1.unk8) + (((f32) sp20 * arg1.unk0) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * arg1.unk4));
     if (temp_f7_2033 < 0.0f) {
         return 0;
     }
@@ -1110,7 +1110,7 @@ void Tools_GetClosestPtOnLine2D(const MKVector3 &arg0, const MKVector3 &arg1, co
     sp20 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 8) - temp_f5_2133;
     sp18 = *M2C_ERROR(/* Read from unset register $r6 */) - temp_f4_2122;
     sp1C = 0.0f;
-    temp_f4_2155 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C));
+    temp_f4_2155 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))));
     sp60 = (f64) sp20;
     sp58 = (f64) sp18;
     if (temp_f4_2155 == 0.0f) {
@@ -1118,7 +1118,7 @@ void Tools_GetClosestPtOnLine2D(const MKVector3 &arg0, const MKVector3 &arg1, co
         M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(&arg2, f32 *, 8);
         return;
     }
-    temp_f1_2173 = (((f32) sp60 * (f32) sp50) + (((f32) sp58 * (f32) sp48) + (unksp5C * unksp4C))) / temp_f4_2155;
+    temp_f1_2173 = (((f32) sp60 * (f32) sp50) + (((f32) sp58 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))) / temp_f4_2155;
     if (temp_f1_2173 < 0.0f) {
         M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(&arg1, f32 *, 0);
         M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(&arg1, f32 *, 8);
@@ -1230,7 +1230,7 @@ loop_4:
         temp_f5_2354 = M2C_BITWISE(f64, sp28);
         sp38 = temp_f5_2354;
         sp40 = (f64) sp28.unk8;
-        if ((((f32) sp40 * M2C_FIELD(temp_r30_2340, f32 *, 0x18)) + (((f32) sp38 * M2C_FIELD(temp_r30_2340, f32 *, 0x10)) + (unksp3C * M2C_FIELD(temp_r30_2340, f32 *, 0x14)))) > -0.95f) {
+        if ((((f32) sp40 * M2C_FIELD(temp_r30_2340, f32 *, 0x18)) + (((f32) sp38 * M2C_FIELD(temp_r30_2340, f32 *, 0x10)) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * M2C_FIELD(temp_r30_2340, f32 *, 0x14)))) > -0.95f) {
             M2C_FIELD(temp_r30_2340, f32 *, 0x10) = temp_f5_2354;
             M2C_FIELD(temp_r30_2340, f32 *, 0x18) = (f64) sp28.unk8;
         }
@@ -1371,7 +1371,6 @@ s32 Tools_GetFloor(const MKVector3 &arg0, float arg1, float *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp5C'
 f32 Tools_CylinderTest(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector3 &arg3) {
     f64 sp60;
     f64 sp58;
@@ -1399,24 +1398,23 @@ f32 Tools_CylinderTest(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     sp60 = (f64) sp20;
     sp38 = sp18;
     sp40 = (f64) sp20;
-    temp_f7_2603 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C));
+    temp_f7_2603 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp58 + 0x4))));
     sp8 = M2C_FIELD(&arg3, f64 *, 0) - temp_f3_2584;
     sp48 = sp8;
     sp10 = arg3.unk8 - temp_f10_2588;
     sp50 = (f64) sp10;
     sp28 = sp8;
-    temp_f1_2621 = ((f32) sp60 * (f32) sp50) + (((f32) sp58 * (f32) sp48) + (unksp5C * unksp4C));
+    temp_f1_2621 = ((f32) sp60 * (f32) sp50) + (((f32) sp58 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))));
     sp30 = (f64) sp10;
     if ((temp_f1_2621 <= 0.0f) || (temp_f1_2621 > temp_f7_2603)) {
         return -1.0f;
     }
-    var_f1_2637 = (((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) - ((temp_f1_2621 * temp_f1_2621) / temp_f7_2603);
+    var_f1_2637 = (((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))) - ((temp_f1_2621 * temp_f1_2621) / temp_f7_2603);
     if (var_f1_2637 > (arg2 * arg2)) {
         var_f1_2637 = -1.0f;
     }
     return var_f1_2637;
 }
-#endif
 
 void Tools_TestFloor(const MKVector3 &arg0, MKCollisionResult *arg1, float arg2, MKCollisionMode arg3) {
     MKCollisionResult sp28;
@@ -1488,19 +1486,19 @@ void Tools_GroundColor(MKCollisionResult *arg0) {
         M2C_FIELD(M2C_FIELD(var_r31_2710, void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(var_r31_2710, &sp38, temp_f1_2730);
         temp_f6_2742 = 1.0f - temp_f31_2696;
         sp28 = ((f32) sp40 * temp_f31_2696) + ((f32) sp28 * temp_f6_2742);
-        unksp2C = (unksp44 * temp_f31_2696) + (unksp2C * temp_f6_2742);
+        (*(f32 *) ((u8 *) &sp20 + 0xc)) = ((*(f32 *) ((u8 *) &sp40 + 0x4)) * temp_f31_2696) + ((*(f32 *) ((u8 *) &sp20 + 0xc)) * temp_f6_2742);
         sp30 = ((f32) sp48 * temp_f31_2696) + ((f32) sp30 * temp_f6_2742);
     } else {
         temp_f6_2761 = 1.0f - temp_f31_2696;
         sp28 = (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x20) * temp_f31_2696) + (sp28 * temp_f6_2761);
-        unksp2C = (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x24) * temp_f31_2696) + (unksp2C * temp_f6_2761);
+        (*(f32 *) ((u8 *) &sp20 + 0xc)) = (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x24) * temp_f31_2696) + ((*(f32 *) ((u8 *) &sp20 + 0xc)) * temp_f6_2761);
         sp30 = (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x28) * temp_f31_2696) + (sp30 * temp_f6_2761);
     }
     if (sp28 > 1.0f) {
         sp28 = 1.0f;
     }
-    if (unksp2C > 1.0f) {
-        unksp2C = 1.0f;
+    if ((*(f32 *) ((u8 *) &sp20 + 0xc)) > 1.0f) {
+        (*(f32 *) ((u8 *) &sp20 + 0xc)) = 1.0f;
     }
     if (sp30 > 1.0f) {
         sp30 = 1.0f;
@@ -1555,11 +1553,11 @@ void Tools_GetGradient(const MKVector3 &arg0) {
     sp54 = 1.0f;
     sp80 = (f64) sp50;
     sp44 = (temp_f7_2815 * (f32) sp80) - (temp_f10_2818 * (f32) sp88);
-    sp40 = (temp_f8_2820 * (f32) sp88) - (temp_f7_2815 * unksp84);
-    sp48 = (temp_f10_2818 * unksp84) - (temp_f8_2820 * (f32) sp80);
+    sp40 = (temp_f8_2820 * (f32) sp88) - (temp_f7_2815 * (*(f32 *) ((u8 *) &sp80 + 0x4)));
+    sp48 = (temp_f10_2818 * (*(f32 *) ((u8 *) &sp80 + 0x4))) - (temp_f8_2820 * (f32) sp80);
     sp70 = (f64) sp40;
     sp78 = (f64) sp48;
-    if ((((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (unksp74 * unksp74))) < 0.001f) {
+    if ((((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (*(f32 *) ((u8 *) &sp70 + 0x4))))) < 0.001f) {
         sp30 = 0.0f;
         sp34 = 0.0f;
         sp38 = 0.0f;
@@ -1567,12 +1565,12 @@ void Tools_GetGradient(const MKVector3 &arg0) {
         M2C_FIELD(&arg0, f64 *, 8) = (f64) sp38;
         return;
     }
-    sp10 = (temp_f8_2820 * (f32) sp78) - (temp_f7_2815 * unksp74);
+    sp10 = (temp_f8_2820 * (f32) sp78) - (temp_f7_2815 * (*(f32 *) ((u8 *) &sp70 + 0x4)));
     sp14 = (temp_f7_2815 * (f32) sp70) - (temp_f10_2818 * (f32) sp78);
-    sp18 = (temp_f10_2818 * unksp74) - (temp_f8_2820 * (f32) sp70);
+    sp18 = (temp_f10_2818 * (*(f32 *) ((u8 *) &sp70 + 0x4))) - (temp_f8_2820 * (f32) sp70);
     sp60 = (f64) sp10;
     sp68 = (f64) sp18;
-    var_f4_2879 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+    var_f4_2879 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))));
     if (var_f4_2879 > 1e-12f) {
         if (var_f4_2879 > 0.0f) {
             temp_f1_2884 = __frsqrte(var_f4_2879);
@@ -1609,7 +1607,7 @@ void Tools_GetGradient(const MKVector3 &arg0) {
         }
         var_f0_2812 = 1.0f / var_f4_2879;
     }
-    sp24 = unksp64 * var_f0_2812;
+    sp24 = (*(f32 *) ((u8 *) &sp60 + 0x4)) * var_f0_2812;
     sp20 = (f32) sp60 * var_f0_2812;
     sp28 = (f32) sp68 * var_f0_2812;
     M2C_FIELD(&arg0, f64 *, 0) = (f64) sp20;

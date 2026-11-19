@@ -165,7 +165,7 @@ loop_38:
                             sp40 = temp_r30_165->unk30.unk8 + (f32) spE0;
                             temp_r30_165->unk30.unk0 = (f32) sp128.unk20;
                             sp128.unk28 = (f64) sp40;
-                            temp_r30_165->unk30.unk4 = unksp14C;
+                            temp_r30_165->unk30.unk4 = (*(f32 *) ((u8 *) &sp128 + 0x24));
                             temp_r30_165->unk30.unk8 = (f32) sp128.unk28;
                             temp_r30_165->unk30.unkC = 1.0f;
                             if (temp_r30_165->unk30.unk34 <= 0.0f) {
@@ -189,7 +189,7 @@ loop_38:
                             sp10 = M2C_BITWISE(f32, temp_r30_165->unk30.unk8) + (f32) spC0;
                             temp_r30_165->unk30.unk0 = (f32) sp128.unk10;
                             sp128.unk18 = (f64) sp10;
-                            temp_r30_165->unk30.unk4 = unksp13C;
+                            temp_r30_165->unk30.unk4 = (*(f32 *) ((u8 *) &sp128 + 0x14));
                             temp_r30_165->unk30.unk8 = (f32) sp128.unk18;
                             temp_r30_165->unk30.unkC = 1.0f;
                             if ((MKProp *) temp_r30_165->unk30.unk30 == (MKProp *)3) {
@@ -221,7 +221,7 @@ loop_38:
                     sp128.unk30 = M2C_BITWISE(f64, sp128);
                     sp78 = 0.0f;
                     sp7C = -500.0f;
-                    unksp15C = M2C_FIELD(this->unk8, f32 *, 0x34);
+                    (*(f32 *) ((u8 *) &sp128 + 0x34)) = M2C_FIELD(this->unk8, f32 *, 0x34);
                     spE8 = (f64) sp78;
                     sp128.unk38 = sp128.unk8;
                     sp128.unk40 = 0.0f;
@@ -237,8 +237,8 @@ loop_38:
                     sp128.unk40.unk30 = 0.0f;
                     sp128.unk40.unk34 = 0.0f;
                     sp128.unk40.unk38 = 0;
-                    unksp1A2 = 0;
-                    unksp1A3 = 0;
+                    (*(u8 *) ((u8 *) &sp128 + 0x7a)) = 0;
+                    (*(u8 *) ((u8 *) &sp128 + 0x7b)) = 0;
                     sp128.unk40.unk3C = 0.0f;
                     sp128.unk80 = 3.4028235e38f;
                     sp128.unk84 = 0.0f;
@@ -266,7 +266,7 @@ loop_38:
                     }
                     M2C_STRUCT_COPY(temp_r30_165, &Matrix::identity, 0x40);
                     temp_r30_165->unk30.unk0 = (f32) sp128.unk30;
-                    temp_r30_165->unk30.unk4 = unksp15C;
+                    temp_r30_165->unk30.unk4 = (*(f32 *) ((u8 *) &sp128 + 0x34));
                     temp_r30_165->unk30.unk8 = (f32) sp128.unk38;
                     temp_r30_165->unk30.unkC = 1.0f;
                     SetAlertState(temp_r30_165);
@@ -519,7 +519,7 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
     sp1A0 = sp40;
     sp48 = (f32) sp1B8 - (f32) sp1D8;
     sp1A8 = (f64) sp48;
-    var_f4_851 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + (unksp1A4 * unksp1A4));
+    var_f4_851 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + ((*(f32 *) ((u8 *) &sp1A0 + 0x4)) * (*(f32 *) ((u8 *) &sp1A0 + 0x4))));
     if (var_f4_851 > 1e-12f) {
         if (var_f4_851 > 0.0f) {
             temp_f1_857 = __frsqrte(var_f4_851);
@@ -558,36 +558,36 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
     } else {
         var_f3_918 = 0.0f;
     }
-    sp24 = unksp1A4 * var_f3_918;
+    sp24 = (*(f32 *) ((u8 *) &sp1A0 + 0x4)) * var_f3_918;
     sp20 = (f32) sp1A0 * var_f3_918;
     var_f0_932 = 0.0f;
     sp28 = (f32) sp1A8 * var_f3_918;
     spE0 = (f64) sp20;
     spE8 = (f64) sp28;
     sp30 = -(f32) spE0;
-    sp34 = -unkspE4;
+    sp34 = -(*(f32 *) ((u8 *) &spE0 + 0x4));
     sp38 = -(f32) spE8;
     sp190 = (f64) sp30;
     sp198 = (f64) sp38;
-    sp10 = (unksp194 * (f32) sp1C8) - ((f32) sp198 * unksp1C4);
+    sp10 = ((*(f32 *) ((u8 *) &sp190 + 0x4)) * (f32) sp1C8) - ((f32) sp198 * (*(f32 *) ((u8 *) &sp1C0 + 0x4)));
     sp14 = ((f32) sp198 * (f32) sp1C0) - ((f32) sp190 * (f32) sp1C8);
-    sp18 = ((f32) sp190 * unksp1C4) - (unksp194 * (f32) sp1C0);
+    sp18 = ((f32) sp190 * (*(f32 *) ((u8 *) &sp1C0 + 0x4))) - ((*(f32 *) ((u8 *) &sp190 + 0x4)) * (f32) sp1C0);
     sp180 = (f64) sp10;
     sp188 = (f64) sp18;
     arg0->unk0 = (f32) sp180;
-    arg0->unk4 = unksp184;
+    arg0->unk4 = (*(f32 *) ((u8 *) &sp180 + 0x4));
     arg0->unk8 = (f32) sp188;
     arg0->unkC = 0.0f;
     arg0->unk10 = (f32) sp1C0;
-    arg0->unk14 = unksp1C4;
+    arg0->unk14 = (*(f32 *) ((u8 *) &sp1C0 + 0x4));
     arg0->unk18 = (f32) sp1C8;
     arg0->unk1C = 0.0f;
     arg0->unk20 = (f32) sp190;
-    arg0->unk24 = unksp194;
+    arg0->unk24 = (*(f32 *) ((u8 *) &sp190 + 0x4));
     arg0->unk28 = (f32) sp198;
     arg0->unk2C = 0.0f;
     arg0->unk30.unk0 = (f32) sp1D0;
-    arg0->unk30.unk4 = unksp1D4;
+    arg0->unk30.unk4 = (*(f32 *) ((u8 *) &sp1D0 + 0x4));
     arg0->unk30.unk8 = (f32) sp1D8;
     arg0->unk30.unkC = 1.0f;
     M2C_FIELD(arg0, f64 *, 0x68) = sp1D0;

@@ -236,7 +236,7 @@ u8 FireTier2Goal_JumpOutOfLava::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspDC'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
 u8 FireTier2Goal_JumpOutOfLava::FindLavaEdge(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2) {
     MKCollisionResult spF8;
     f64 spF0;
@@ -300,13 +300,13 @@ u8 FireTier2Goal_JumpOutOfLava::FindLavaEdge(const MKVector3 &arg0, MKVector3 *a
     temp_f4_609 = M2C_FIELD(temp_r3_605, f64 *, 0x30);
     sp20 = arg0.unk8 * 200.0f;
     spD8 = temp_f4_609;
-    unkspDC = 300.0f + temp_f31_597;
+    (*(f32 *) ((u8 *) &spD8 + 0x4)) = 300.0f + temp_f31_597;
     spF0 = (f64) sp20;
     spC8 = temp_f4_609;
     spE8 = sp18;
     spE0 = temp_f3_608;
     spD0 = temp_f3_608;
-    unkspCC = 10.0f + temp_f31_597;
+    (*(f32 *) ((u8 *) &spC8 + 0x4)) = 10.0f + temp_f31_597;
     spB8 = spD8;
     spC0 = temp_f3_608;
 loop_1:
@@ -321,7 +321,7 @@ loop_1:
         }
         spA8 = spB8;
         spB0 = spC0;
-        unkspAC = temp_f31_597;
+        (*(f32 *) ((u8 *) &spA8 + 0x4)) = temp_f31_597;
         sp98 = M2C_BITWISE(f64, spF8);
         spA0 = (f64) spF8.unk8;
         if (MKCollision_RayCollide(*((MKVector3 *) &spA8), *((MKVector3 *) &sp98), &spF8, (MKCollisionMode) 4, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18)) != 0) {
@@ -378,7 +378,7 @@ u8 FireTier2Goal_JumpOutOfLava::FindLavaEdgePath(const MKVector3 &arg0, MKVector
         temp_r3_765 = this->unkC->unk8;
         sp8 = M2C_FIELD(temp_r3_765, f64 *, 0x30);
         sp10 = M2C_FIELD(temp_r3_765, f64 *, 0x38);
-        temp_f5_774 = unkspC - M2C_FIELD(temp_r4_764, f32 *, 4);
+        temp_f5_774 = (*(f32 *) ((u8 *) &sp8 + 0x4)) - M2C_FIELD(temp_r4_764, f32 *, 4);
         temp_f4_775 = (f32) sp8 - M2C_FIELD(temp_r4_764, f32 *, 0);
         temp_f3_780 = (f32) sp10 - M2C_FIELD(temp_r4_764, f32 *, 8);
         if (((temp_f3_780 * temp_f3_780) + ((temp_f4_775 * temp_f4_775) + (temp_f5_774 * temp_f5_774))) < 2250000.0f) {
@@ -502,7 +502,7 @@ block_8:
             var_r29_938 = 1;
             var_r31_936 = 1;
             var_f31_934 = 50.0f + temp_r3_946->GetCollisionRadius();
-        } else if ((FindLavaEdge(*((MKVector3 *) &sp60.unk20), &this->unk38, &this->unk48) != 0) || (sp20 = -(f32) sp60.unk20, sp24 = -unksp84, sp28 = -(f32) sp60.unk28, sp30 = (f64) sp20, sp38 = (f64) sp28, ((FindLavaEdge(*((MKVector3 *) &sp30), &this->unk38, &this->unk48) == 0) == 0))) {
+        } else if ((FindLavaEdge(*((MKVector3 *) &sp60.unk20), &this->unk38, &this->unk48) != 0) || (sp20 = -(f32) sp60.unk20, sp24 = -(*(f32 *) ((u8 *) &sp60 + 0x24)), sp28 = -(f32) sp60.unk28, sp30 = (f64) sp20, sp38 = (f64) sp28, ((FindLavaEdge(*((MKVector3 *) &sp30), &this->unk38, &this->unk48) == 0) == 0))) {
             temp_r3_985 = this->unkC;
             var_r29_938 = 1;
             var_f31_934 = 200.0f + temp_r3_985->GetCollisionRadius();
@@ -516,7 +516,7 @@ block_8:
             sp10 = temp_f0_1015;
             sp60.unk10 = temp_f0_1015;
             sp18 = this->unk48.unk8 - this->unk38.unk8;
-            unksp74 = 0.0f;
+            (*(f32 *) ((u8 *) &sp60 + 0x14)) = 0.0f;
             sp60.unk18 = (f64) sp18;
             var_f4_1033 = ((f32) sp60.unk18 * (f32) sp60.unk18) + (((f32) sp60.unk10 * (f32) sp60.unk10) + (0.0f * 0.0f));
             if (var_f4_1033 > 0.0f) {

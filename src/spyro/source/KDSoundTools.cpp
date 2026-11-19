@@ -18,7 +18,7 @@ void KDSound_SoundWall::SetBeginEndTimes(float arg0, float arg1) {
     this->unk58 = arg1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp3C'
+#if 0 // DRAFT: undefined identifier 'sp20'
 void KDSound_SoundWall::Update(bool arg0) {
     f64 sp40;
     f64 sp38;
@@ -45,7 +45,7 @@ void KDSound_SoundWall::Update(bool arg0) {
         temp_r3_33 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
         sp38 = M2C_FIELD(temp_r3_33, f64 *, 0x30);
         sp40 = M2C_FIELD(temp_r3_33, f64 *, 0x38);
-        if ((this->unk30 == (f32) sp38) && (this->unk34 == unksp3C) && (this->unk38 == (f32) sp40)) {
+        if ((this->unk30 == (f32) sp38) && (this->unk34 == (*(f32 *) ((u8 *) &sp38 + 0x4))) && (this->unk38 == (f32) sp40)) {
             var_r0_31 = 1;
         }
         if ((var_r0_31 == 0) && (arg0 != 0)) {

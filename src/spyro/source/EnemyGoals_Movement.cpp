@@ -871,7 +871,7 @@ block_42:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: undefined identifier 'fabs'
 void EnemyGoal_MoveToTarget::UpdateStuckness() {
     f64 sp20;
     f64 sp18;
@@ -894,13 +894,13 @@ void EnemyGoal_MoveToTarget::UpdateStuckness() {
     temp_f8_1619 = temp_r4_1616->unk108;
     sp8 = temp_f2_1618;
     temp_f5_1621 = temp_r4_1616->unkC4;
-    unkspC = 0.0f;
+    (*(f32 *) ((u8 *) &sp8 + 0x4)) = 0.0f;
     temp_f6_1626 = temp_r4_1616->unkC0;
     sp18 = temp_f2_1618;
     sp20 = temp_f8_1619;
     temp_f5_1634 = temp_r4_1616->unkC8;
     sp10 = temp_f8_1619;
-    temp_f1_1643 = (f32) fabs(((f32) sp20 * temp_f5_1634) + (((f32) sp18 * temp_f6_1626) + (unksp1C * temp_f5_1621)));
+    temp_f1_1643 = (f32) fabs(((f32) sp20 * temp_f5_1634) + (((f32) sp18 * temp_f6_1626) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * temp_f5_1621)));
     if ((((temp_r4_1616->unk98 * temp_f5_1634) + ((temp_r4_1616->unk90 * temp_f6_1626) + (temp_r4_1616->unk94 * temp_f5_1621))) > 20.0f) && (temp_f1_1643 < 10.0f)) {
         var_r3_1617 = 1;
     }
@@ -1303,7 +1303,7 @@ block_6:
             var_r29_2515 = 0;
             if (this->unkC->unk800.IsPointWithin(*((MKVector3 *) &sp38)) != 0) {
                 ((EnemyRegion *) &sp8)->GetRegionPos();
-                if ((f32) fabs(spC - unksp3C) <= 500.0f) {
+                if ((f32) fabs(spC - (*(f32 *) ((u8 *) &sp38 + 0x4))) <= 500.0f) {
                     var_r29_2515 = 1;
                 }
             }

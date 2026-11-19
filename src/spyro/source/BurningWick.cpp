@@ -198,7 +198,7 @@ void BurningWick::Update() {
     sp1F0 = spD0;
     spD8 = (f32) M2C_FIELD(this, f64 *, 0xB0) - this->unk58;
     sp1F8 = (f64) spD8;
-    var_f28_255 = ((f32) sp1F8 * (f32) sp1F8) + (((f32) sp1F0 * (f32) sp1F0) + (unksp1F4 * unksp1F4));
+    var_f28_255 = ((f32) sp1F8 * (f32) sp1F8) + (((f32) sp1F0 * (f32) sp1F0) + ((*(f32 *) ((u8 *) &sp1D8 + 0x1c)) * (*(f32 *) ((u8 *) &sp1D8 + 0x1c))));
     if (var_f28_255 > 0.000001f) {
         if (var_f28_255 > 0.0f) {
             temp_f1_261 = __frsqrte(var_f28_255);
@@ -239,13 +239,13 @@ void BurningWick::Update() {
         var_f28_255 = 0.0f;
     }
     sp1F0 = (f32) sp1F0 * var_f3_322;
-    unksp1F4 *= var_f3_322;
+    (*(f32 *) ((u8 *) &sp1D8 + 0x1c)) *= var_f3_322;
     sp1F8 = (f32) sp1F8 * var_f3_322;
     spC0 = this->unk98 - this->unk50;
     sp1E0 = spC0;
     spC8 = (f32) M2C_FIELD(this, f64 *, 0xA0) - this->unk58;
     sp1E8 = (f64) spC8;
-    var_f4_359 = ((f32) sp1E8 * (f32) sp1E8) + (((f32) sp1E0 * (f32) sp1E0) + (unksp1E4 * unksp1E4));
+    var_f4_359 = ((f32) sp1E8 * (f32) sp1E8) + (((f32) sp1E0 * (f32) sp1E0) + ((*(f32 *) ((u8 *) &sp1D8 + 0xc)) * (*(f32 *) ((u8 *) &sp1D8 + 0xc))));
     if (var_f4_359 > 0.000001f) {
         if (var_f4_359 > 0.0f) {
             temp_f1_365 = __frsqrte(var_f4_359);
@@ -285,10 +285,10 @@ void BurningWick::Update() {
         var_f2_426 = 0.0f;
     }
     temp_f5_435 = (f32) sp1E0 * var_f2_426;
-    temp_f4_437 = unksp1E4 * var_f2_426;
+    temp_f4_437 = (*(f32 *) ((u8 *) &sp1D8 + 0xc)) * var_f2_426;
     temp_f3_438 = (f32) sp1E8 * var_f2_426;
     sp1E0 = temp_f5_435;
-    unksp1E4 = temp_f4_437;
+    (*(f32 *) ((u8 *) &sp1D8 + 0xc)) = temp_f4_437;
     sp20 = -temp_f5_435;
     sp24 = -temp_f4_437;
     sp28 = -temp_f3_438;
@@ -327,7 +327,7 @@ void BurningWick::Update() {
         spB8 = temp_f29_531;
         spF0 = (f64) spB0;
         spF8 = (f64) spB8;
-        var_f4_555 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4));
+        var_f4_555 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spF0 + 0x4))));
         if (var_f4_555 > 1e-12f) {
             if (var_f4_555 > 0.0f) {
                 temp_f1_561 = __frsqrte(var_f4_555);
@@ -366,7 +366,7 @@ void BurningWick::Update() {
         } else {
             var_f3_622 = 0.0f;
         }
-        sp84 = unkspF4 * var_f3_622;
+        sp84 = (*(f32 *) ((u8 *) &spF0 + 0x4)) * var_f3_622;
         sp80 = (f32) spF0 * var_f3_622;
         sp88 = (f32) spF8 * var_f3_622;
         sp100 = (f64) sp80;
@@ -387,7 +387,7 @@ void BurningWick::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp3F4'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void BurningWick::Draw() {
     Matrix sp400;
     f64 sp3F8;                                      /* compiler-managed */
@@ -597,7 +597,7 @@ void BurningWick::Draw() {
     sp3F8 = (f64) sp58;
     sp3B0 = sp50;
     sp3B8 = (f64) sp58;
-    var_f4_761 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + (unksp3F4 * unksp3F4));
+    var_f4_761 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + ((*(f32 *) ((u8 *) &sp3E8 + 0xc)) * (*(f32 *) ((u8 *) &sp3E8 + 0xc))));
     if (var_f4_761 > 0.000001f) {
         if (var_f4_761 > 0.0f) {
             temp_f1_767 = __frsqrte(var_f4_761);
@@ -637,7 +637,7 @@ void BurningWick::Draw() {
         var_f3_828 = 0.0f;
     }
     sp3F0 = (f32) sp3F0 * var_f3_828;
-    unksp3F4 *= var_f3_828;
+    (*(f32 *) ((u8 *) &sp3E8 + 0xc)) *= var_f3_828;
     sp3F8 = (f32) sp3F8 * var_f3_828;
     M2C_STRUCT_COPY((s32) &unksp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     KDMath_BuildMatrixFromUp(&sp400, *((MKVector3 *) &sp3E0), *((MKVector3 *) &sp3F0));
@@ -675,7 +675,7 @@ void BurningWick::Draw() {
     sp3F8 = (f64) sp48;
     sp360 = sp40;
     sp368 = (f64) sp48;
-    var_f4_949 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + (unksp3F4 * unksp3F4));
+    var_f4_949 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + ((*(f32 *) ((u8 *) &sp3E8 + 0xc)) * (*(f32 *) ((u8 *) &sp3E8 + 0xc))));
     if (var_f4_949 > 0.000001f) {
         if (var_f4_949 > 0.0f) {
             temp_f1_955 = __frsqrte(var_f4_949);
@@ -715,7 +715,7 @@ void BurningWick::Draw() {
         var_f3_1016 = 0.0f;
     }
     sp3F0 = (f32) sp3F0 * var_f3_1016;
-    unksp3F4 *= var_f3_1016;
+    (*(f32 *) ((u8 *) &sp3E8 + 0xc)) *= var_f3_1016;
     sp3F8 = (f32) sp3F8 * var_f3_1016;
     M2C_STRUCT_COPY((s32) &unksp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     KDMath_BuildMatrixFromUp(&sp400, *((MKVector3 *) &sp3E0), *((MKVector3 *) &sp3F0));
@@ -779,7 +779,7 @@ void BurningWick::Draw() {
     sp3F8 = (f64) sp38;
     sp2D0 = sp30;
     sp2D8 = (f64) sp38;
-    var_f4_1195 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + (unksp3F4 * unksp3F4));
+    var_f4_1195 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + ((*(f32 *) ((u8 *) &sp3E8 + 0xc)) * (*(f32 *) ((u8 *) &sp3E8 + 0xc))));
     if (var_f4_1195 > 0.000001f) {
         if (var_f4_1195 > 0.0f) {
             temp_f1_1201 = __frsqrte(var_f4_1195);
@@ -819,7 +819,7 @@ void BurningWick::Draw() {
         var_f3_1262 = 0.0f;
     }
     sp3F0 = (f32) sp3F0 * var_f3_1262;
-    unksp3F4 *= var_f3_1262;
+    (*(f32 *) ((u8 *) &sp3E8 + 0xc)) *= var_f3_1262;
     sp3F8 = (f32) sp3F8 * var_f3_1262;
     M2C_STRUCT_COPY((s32) &unksp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     KDMath_BuildMatrixFromUp(&sp400, *((MKVector3 *) &sp3E0), *((MKVector3 *) &sp3F0));
@@ -855,7 +855,7 @@ void BurningWick::Draw() {
     sp3F8 = (f64) sp28;
     sp280 = sp20;
     sp288 = (f64) sp28;
-    var_f4_1377 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + (unksp3F4 * unksp3F4));
+    var_f4_1377 = ((f32) sp3F8 * (f32) sp3F8) + (((f32) sp3F0 * (f32) sp3F0) + ((*(f32 *) ((u8 *) &sp3E8 + 0xc)) * (*(f32 *) ((u8 *) &sp3E8 + 0xc))));
     if (var_f4_1377 > 0.000001f) {
         if (var_f4_1377 > 0.0f) {
             temp_f1_1383 = __frsqrte(var_f4_1377);
@@ -895,7 +895,7 @@ void BurningWick::Draw() {
         var_f3_1444 = 0.0f;
     }
     sp3F0 = (f32) sp3F0 * var_f3_1444;
-    unksp3F4 *= var_f3_1444;
+    (*(f32 *) ((u8 *) &sp3E8 + 0xc)) *= var_f3_1444;
     sp3F8 = (f32) sp3F8 * var_f3_1444;
     M2C_STRUCT_COPY((s32) &unksp3FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     KDMath_BuildMatrixFromUp(&sp400, *((MKVector3 *) &sp3E0), *((MKVector3 *) &sp3F0));

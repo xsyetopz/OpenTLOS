@@ -628,13 +628,13 @@ loop_44:
                 sp328 = sp78;
                 sp2F8 = sp78;
                 sp80 = sp2F0 - sp2E0;
-                unksp32C += 1.0f;
+                (*(f32 *) ((u8 *) &sp328 + 0x4)) += 1.0f;
                 sp300 = (f64) sp80;
                 sp330 = (f64) sp80;
                 ((KDSplinePathSegment *) &sp2C8)->GetVelocity(temp_f18_762);
                 sp318 = sp2C8;
                 sp320 = sp2D0;
-                var_f4_797 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + (unksp31C * unksp31C));
+                var_f4_797 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + ((*(f32 *) ((u8 *) &sp300 + 0x1c)) * (*(f32 *) ((u8 *) &sp300 + 0x1c))));
                 if (var_f4_797 > 0.000001f) {
                     if (var_f4_797 > 0.0f) {
                         temp_f1_803 = __frsqrte(var_f4_797);
@@ -673,10 +673,10 @@ loop_44:
                 } else {
                     var_f2_864 = 0.0f;
                 }
-                temp_f4_871 = unksp31C * var_f2_864;
+                temp_f4_871 = (*(f32 *) ((u8 *) &sp300 + 0x1c)) * var_f2_864;
                 temp_f3_873 = (f32) sp320 * var_f2_864;
                 temp_f5_874 = (f32) sp318 * var_f2_864;
-                unksp31C = temp_f4_871;
+                (*(f32 *) ((u8 *) &sp300 + 0x1c)) = temp_f4_871;
                 sp318 = temp_f5_874;
                 sp320 = temp_f3_873;
                 sp68 = (temp_f22_744 * temp_f3_873) - (temp_f21_746 * temp_f4_871);
@@ -686,7 +686,7 @@ loop_44:
                 sp310 = (f64) sp70;
                 sp2B8 = (f64) sp68;
                 sp2C0 = (f64) sp70;
-                var_f4_900 = ((f32) sp310 * (f32) sp310) + (((f32) sp308 * (f32) sp308) + (unksp30C * unksp30C));
+                var_f4_900 = ((f32) sp310 * (f32) sp310) + (((f32) sp308 * (f32) sp308) + ((*(f32 *) ((u8 *) &sp300 + 0xc)) * (*(f32 *) ((u8 *) &sp300 + 0xc))));
                 if (var_f4_900 > 0.000001f) {
                     if (var_f4_900 > 0.0f) {
                         temp_f1_906 = __frsqrte(var_f4_900);
@@ -731,7 +731,7 @@ loop_44:
                 sp144 = 1.0f;
                 sp308 = (f32) sp308 * var_f2_967;
                 temp_f18_998 = 4.0f * ((f32) var_r29_745 / (f32) this->unk2B4);
-                unksp30C *= var_f2_967;
+                (*(f32 *) ((u8 *) &sp300 + 0xc)) *= var_f2_967;
                 sp310 = (f32) sp310 * var_f2_967;
                 sp2A8 = (f64) sp138;
                 sp2B0 = (f64) sp140;
@@ -848,7 +848,7 @@ loop_114:
                     sp1D8.unk18 = (f64) sp40;
                     sp330 = (f64) sp40;
                 }
-                unksp32C += 1.0f;
+                (*(f32 *) ((u8 *) &sp328 + 0x4)) += 1.0f;
                 var_f1_1275 = ((f32) var_r29_1176 * temp_f29_720) + var_f28_1106;
                 if (var_f1_1275 < 1.0f) {
 
@@ -863,7 +863,7 @@ loop_114:
                 ((KDSplinePathSegment *) &sp1B8)->GetVelocity(var_f1_1275);
                 sp318 = sp1B8;
                 sp320 = sp1C0;
-                var_f4_1303 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + (unksp31C * unksp31C));
+                var_f4_1303 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + ((*(f32 *) ((u8 *) &sp300 + 0x1c)) * (*(f32 *) ((u8 *) &sp300 + 0x1c))));
                 if (var_f4_1303 > 0.000001f) {
                     if (var_f4_1303 > 0.0f) {
                         temp_f1_1309 = __frsqrte(var_f4_1303);
@@ -902,10 +902,10 @@ loop_114:
                 } else {
                     var_f2_1370 = 0.0f;
                 }
-                temp_f4_1377 = unksp31C * var_f2_1370;
+                temp_f4_1377 = (*(f32 *) ((u8 *) &sp300 + 0x1c)) * var_f2_1370;
                 temp_f3_1379 = (f32) sp320 * var_f2_1370;
                 temp_f5_1380 = (f32) sp318 * var_f2_1370;
-                unksp31C = temp_f4_1377;
+                (*(f32 *) ((u8 *) &sp300 + 0x1c)) = temp_f4_1377;
                 sp318 = temp_f5_1380;
                 sp320 = temp_f3_1379;
                 sp28 = (temp_f24_1094 * temp_f3_1379) - (temp_f25_1096 * temp_f4_1377);
@@ -915,7 +915,7 @@ loop_114:
                 sp310 = (f64) sp30;
                 sp1A8 = (f64) sp28;
                 sp1B0 = (f64) sp30;
-                var_f4_1406 = ((f32) sp310 * (f32) sp310) + (((f32) sp308 * (f32) sp308) + (unksp30C * unksp30C));
+                var_f4_1406 = ((f32) sp310 * (f32) sp310) + (((f32) sp308 * (f32) sp308) + ((*(f32 *) ((u8 *) &sp300 + 0xc)) * (*(f32 *) ((u8 *) &sp300 + 0xc))));
                 if (var_f4_1406 > 0.000001f) {
                     if (var_f4_1406 > 0.0f) {
                         temp_f1_1412 = __frsqrte(var_f4_1406);
@@ -960,7 +960,7 @@ loop_114:
                 spE4 = 1.0f;
                 sp308 = (f32) sp308 * var_f2_1473;
                 temp_f18_1504 = 4.0f * ((f32) var_r29_1176 / (f32) this->unk2B4);
-                unksp30C *= var_f2_1473;
+                (*(f32 *) ((u8 *) &sp300 + 0xc)) *= var_f2_1473;
                 sp310 = (f32) sp310 * var_f2_1473;
                 sp198 = (f64) spD8;
                 sp1A0 = (f64) spE0;
@@ -1121,7 +1121,7 @@ void GunPowderFuse::Update() {
                 spD0.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                 sp160 = M2C_BITWISE(f64, spD0);
                 sp168 = (f64) spD0.unk8;
-                temp_f5_1716 = unksp174 - unksp164;
+                temp_f5_1716 = (*(f32 *) ((u8 *) &sp170 + 0x4)) - (*(f32 *) ((u8 *) &sp160 + 0x4));
                 temp_f4_1720 = (f32) sp170 - (f32) sp160;
                 temp_f3_1724 = (f32) sp178 - (f32) sp168;
                 if (((temp_f3_1724 * temp_f3_1724) + ((temp_f4_1720 * temp_f4_1720) + (temp_f5_1716 * temp_f5_1716))) < 1000000.0f) {
@@ -1143,7 +1143,7 @@ loop_15:
                     ((KDUniformSpline *) &spC0)->GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                     sp140 = spC0;
                     sp148 = spC8;
-                    temp_f2_1786 = unksp154 - unksp144;
+                    temp_f2_1786 = (*(f32 *) ((u8 *) &sp150 + 0x4)) - (*(f32 *) ((u8 *) &sp140 + 0x4));
                     temp_f4_1788 = (f32) sp150 - (f32) sp140;
                     temp_f3_1792 = (f32) sp158 - (f32) sp148;
                     temp_f9_1793 = M2C_FIELD(var_r28_1747, f32 *, 0x128);
@@ -1152,7 +1152,7 @@ loop_15:
                     sp130 = M2C_FIELD(temp_r3_1795, f64 *, 0x30);
                     sp138 = M2C_FIELD(temp_r3_1795, f64 *, 0x38);
                     if (((temp_f3_1792 * temp_f3_1792) + ((temp_f4_1788 * temp_f4_1788) + (temp_f2_1786 * temp_f2_1786))) < (temp_f5_1796 * temp_f5_1796)) {
-                        temp_f4_1809 = unksp154 - unksp134;
+                        temp_f4_1809 = (*(f32 *) ((u8 *) &sp150 + 0x4)) - (*(f32 *) ((u8 *) &sp130 + 0x4));
                         temp_f2_1811 = (f32) sp150 - (f32) sp130;
                         temp_f3_1813 = (f32) sp158 - (f32) sp138;
                         if (((temp_f3_1813 * temp_f3_1813) + ((temp_f2_1811 * temp_f2_1811) + (temp_f4_1809 * temp_f4_1809))) > 10000.0f) {
@@ -1193,7 +1193,7 @@ loop_30:
                             ((KDUniformSpline *) &spB0)->GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                             sp110 = spB0;
                             sp118 = spB8;
-                            temp_f3_1904 = unksp124 - unksp114;
+                            temp_f3_1904 = (*(f32 *) ((u8 *) &sp120 + 0x4)) - (*(f32 *) ((u8 *) &sp110 + 0x4));
                             temp_f5_1908 = (f32) sp120 - (f32) sp110;
                             temp_f4_1912 = (f32) sp128 - (f32) sp118;
                             temp_f3_1915 = 150.0f * M2C_FIELD(temp_r31_1874, f32 *, 0xF8);

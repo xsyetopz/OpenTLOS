@@ -128,7 +128,7 @@ loop_31:
         if (temp_r3_334 != NULL) {
             sp38 = M2C_FIELD(temp_r3_334, f64 *, 0x10);
             sp40 = M2C_FIELD(temp_r3_334, f64 *, 0x18);
-            var_f4_182 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
+            var_f4_182 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp30 + 0xc)) * (*(f32 *) ((u8 *) &sp30 + 0xc))));
             if (var_f4_182 > 0.000001f) {
                 if (var_f4_182 > 0.0f) {
                     temp_f1_188 = __frsqrte(var_f4_182);
@@ -170,7 +170,7 @@ loop_31:
             }
             var_f4_255 = var_f4_182 / 1500.0f;
             sp38 = (f32) sp38 * var_f3_249;
-            unksp3C *= var_f3_249;
+            (*(f32 *) ((u8 *) &sp30 + 0xc)) *= var_f3_249;
             sp40 = (f32) sp40 * var_f3_249;
             if (var_f4_255 < 200.0f) {
 

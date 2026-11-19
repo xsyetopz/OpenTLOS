@@ -36,7 +36,7 @@ f32 MKShockWave_Height(const MKVector3 &arg0) {
         sp20 = temp_f0_34;
         sp18 = arg0.unk8 - M2C_FIELD(&gShockWaveData, f32 *, 0x58);
         sp28 = (f64) sp18;
-        var_f31_50 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+        var_f31_50 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * (*(f32 *) ((u8 *) &sp20 + 0x4))));
         if (var_f31_50 > 0.0f) {
             temp_f1_53 = __frsqrte(var_f31_50);
             temp_f1_59 = 0.5 * temp_f1_53 * -(((f64) var_f31_50 * (temp_f1_53 * temp_f1_53)) - 3.0);

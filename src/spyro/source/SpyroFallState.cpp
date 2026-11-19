@@ -697,7 +697,7 @@ void SpyroFallState::FallTransition() {
         temp_r3_936 = this->unk10->unk8;
         sp8 = M2C_FIELD(temp_r3_936, f64 *, 0x30);
         sp10 = M2C_FIELD(temp_r3_936, f64 *, 0x38);
-        if (((this->unk28 - unkspC) > 1300.0f) && ((s32) this->unk14.unk0 != 1)) {
+        if (((this->unk28 - (*(f32 *) ((u8 *) &sp8 + 0x4))) > 1300.0f) && ((s32) this->unk14.unk0 != 1)) {
             this->unk14.SetState(this, 1, 0U);
             var_r3_873 = 1;
         } else {
@@ -766,7 +766,7 @@ void SpyroFallState::FallEnter() {
     temp_r3_1080 = this->unk10->unk8;
     sp8 = M2C_FIELD(temp_r3_1080, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r3_1080, f64 *, 0x38);
-    this->unk28 = unkspC;
+    this->unk28 = (*(f32 *) ((u8 *) &sp8 + 0x4));
     temp_r3_1087 = this->unk10;
     temp_r3_1087->unk388 = 3800.0f;
     temp_f1_1089 = temp_r3_1087->unk388;
@@ -849,7 +849,7 @@ void SpyroFallState::Message(MKMessage *arg0) {
         temp_r4_1253 = temp_r3_1251->unk8;
         sp8 = M2C_FIELD(temp_r4_1253, f64 *, 0x30);
         sp10 = M2C_FIELD(temp_r4_1253, f64 *, 0x38);
-        if ((this->unk28 - unkspC) > 1300.0f) {
+        if ((this->unk28 - (*(f32 *) ((u8 *) &sp8 + 0x4))) > 1300.0f) {
             temp_r3_1251->TryChangeState(1U, 0xAU, (SpyroStateMsg) 0x188, 1U);
         }
         break;
@@ -1344,7 +1344,7 @@ void SpyroFallState::Update() {
                 sp28 = temp_f0_1967;
                 var_f4_1969 = 0.0f;
                 sp68 = temp_f0_1967;
-                unksp6C = 0.0f;
+                (*(f32 *) ((u8 *) &sp60 + 0xc)) = 0.0f;
                 sp30 = (f32) sp80 - (f32) sp60;
                 sp70 = (f64) sp30;
                 var_f5_1986 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (0.0f * 0.0f));
@@ -1385,7 +1385,7 @@ void SpyroFallState::Update() {
                     var_f4_1969 = 1.0f / var_f5_1986;
                 }
                 sp68 = (f32) sp68 * var_f4_1969;
-                unksp6C *= var_f4_1969;
+                (*(f32 *) ((u8 *) &sp60 + 0xc)) *= var_f4_1969;
                 sp70 = (f32) sp70 * var_f4_1969;
                 sp88 = (f64) sp68;
                 sp90 = (f64) sp70;
@@ -1435,7 +1435,7 @@ void SpyroFallState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1C'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroFallState::Enter(SpyroStateMessages &arg0) {
     s32 sp30;
     s32 sp2C;
@@ -1504,7 +1504,7 @@ void SpyroFallState::Enter(SpyroStateMessages &arg0) {
     temp_r5_2262 = this->unk10->unk8;
     sp18 = M2C_FIELD(temp_r5_2262, f64 *, 0x30);
     sp20 = M2C_FIELD(temp_r5_2262, f64 *, 0x38);
-    this->unk28 = unksp1C;
+    this->unk28 = (*(f32 *) ((u8 *) &sp18 + 0x4));
     this->unk34 = arg0.IsMessageOnList(0x17D);
     this->unk36 = ((CombatStateData *) &this->unk10->unk430.unk28)->GetTailSweepEnabled();
     if (arg0.IsMessageOnList(0x170) != 0) {

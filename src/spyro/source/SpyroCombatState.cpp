@@ -177,7 +177,7 @@ void SpyroCombatState::CometDashEnter() {
         sp40 = (f32) sp60 - (f32) sp50;
         sp68 = (f64) sp38;
         sp70 = (f64) sp40;
-        var_f5_255 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
+        var_f5_255 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))));
         if (var_f5_255 > 1e-12f) {
             if (var_f5_255 > 0.0f) {
                 temp_f1_260 = __frsqrte(var_f5_255);
@@ -214,7 +214,7 @@ void SpyroCombatState::CometDashEnter() {
             }
             var_f4_230 = 1.0f / var_f5_255;
         }
-        sp2C = unksp6C * var_f4_230;
+        sp2C = (*(f32 *) ((u8 *) &sp68 + 0x4)) * var_f4_230;
         sp28 = (f32) sp68 * var_f4_230;
         sp30 = (f32) sp70 * var_f4_230;
         sp98 = (f64) sp28;
@@ -228,7 +228,7 @@ void SpyroCombatState::CometDashEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 SpyroCombatState::ChargeKnockdownTransition() {
     s8 sp2D;
     s8 sp2C;
@@ -260,7 +260,7 @@ u8 SpyroCombatState::ChargeKnockdownTransition() {
             temp_r5_393 = temp_r3_388->unk8;
             sp8 = M2C_FIELD(temp_r5_393, f64 *, 0x30);
             sp10 = M2C_FIELD(temp_r5_393, f64 *, 0x38);
-            if (!((unkspC - temp_r3_388->unk2A4) > 33.0f)) {
+            if (!(((*(f32 *) ((u8 *) &sp8 + 0x4)) - temp_r3_388->unk2A4) > 33.0f)) {
                 var_r4_389 = 0;
             }
         }
@@ -607,7 +607,7 @@ void SpyroCombatState::KnockupEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: pointer/array required
 u8 SpyroCombatState::CombatTransition() {
     s8 sp2D;
     s8 sp2C;
@@ -643,7 +643,7 @@ u8 SpyroCombatState::CombatTransition() {
             temp_r5_1061 = temp_r3_1056->unk8;
             sp8 = M2C_FIELD(temp_r5_1061, f64 *, 0x30);
             sp10 = M2C_FIELD(temp_r5_1061, f64 *, 0x38);
-            if (!((unkspC - temp_r3_1056->unk2A4) > 33.0f)) {
+            if (!(((*(f32 *) ((u8 *) &sp8 + 0x4)) - temp_r3_1056->unk2A4) > 33.0f)) {
                 var_r4_1057 = 0;
             }
         }
@@ -961,7 +961,7 @@ block_19:
             sp50 = sp20;
             sp28 = (f32) sp48 - (f32) sp38;
             sp58 = (f64) sp28;
-            var_f4_1751 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
+            var_f4_1751 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
             if (var_f4_1751 > 1e-12f) {
                 if (var_f4_1751 > 0.0f) {
                     temp_f1_1757 = __frsqrte(var_f4_1751);
@@ -1000,7 +1000,7 @@ block_19:
             } else {
                 var_f4_1818 = 0.0f;
             }
-            sp14 = unksp54 * var_f4_1818;
+            sp14 = (*(f32 *) ((u8 *) &sp50 + 0x4)) * var_f4_1818;
             sp10 = (f32) sp50 * var_f4_1818;
             sp18 = (f32) sp58 * var_f4_1818;
             sp60 = (f64) sp10;

@@ -144,7 +144,7 @@ loop_16:
                 return;
             }
             if (var_r31_113 != 0) {
-                M2C_FIELD(this, f32 *, 0x244) = (f32) (unksp7C - this->unk250->unk4);
+                M2C_FIELD(this, f32 *, 0x244) = (f32) ((*(f32 *) ((u8 *) &sp78 + 0x4)) - this->unk250->unk4);
             }
         } else {
             sp8 = sp78 - sp88;
@@ -306,7 +306,7 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
             spD8 = (temp_f8_374 * temp_f7_376) - (temp_f6_379 * temp_f2_378);
             sp1E0 = (f64) spD0;
             sp1E8 = (f64) spD8;
-            temp_f30_400 = ((f32) M2C_FIELD(this, f64 *, 8) * (f32) sp1E8) + (((f32) M2C_FIELD(this, f64 *, 0) * (f32) sp1E0) + (M2C_FIELD(this, f32 *, 4) * unksp1E4));
+            temp_f30_400 = ((f32) M2C_FIELD(this, f64 *, 8) * (f32) sp1E8) + (((f32) M2C_FIELD(this, f64 *, 0) * (f32) sp1E0) + (M2C_FIELD(this, f32 *, 4) * (*(f32 *) ((u8 *) &sp1E0 + 0x4))));
             sp70 = (f64) spD0 * (f64) temp_f30_400;
             sp78 = (f32) sp1E8 * temp_f30_400;
             this->unk0 = sp70;
@@ -350,7 +350,7 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
         sp1C0 = (f64) M2C_FIELD(temp_r31_272, f32 *, 0x10);
         sp1C8 = (f64) M2C_FIELD(temp_r31_272, f32 *, 0x18);
         sp118 = (f64) sp58;
-        unksp1C4 = 0.0f;
+        (*(f32 *) ((u8 *) &sp1B8 + 0xc)) = 0.0f;
         var_f0_507 = ((f32) sp1C8 * (f32) sp1C8) + (((f32) sp1C0 * (f32) sp1C0) + (0.0f * 0.0f));
         if (var_f0_507 > 0.000001f) {
             if (var_f0_507 > 0.0f) {
@@ -392,7 +392,7 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
         }
         temp_f4_593 = (f32) sp1C8 * var_f8_488;
         sp1C0 = (f32) sp1C0 * var_f8_488;
-        unksp1C4 *= var_f8_488;
+        (*(f32 *) ((u8 *) &sp1B8 + 0xc)) *= var_f8_488;
         sp1C8 = temp_f4_593;
         temp_f1_598 = -(((f32) M2C_FIELD(this, f64 *, 8) * M2C_FIELD(temp_r31_272, f32 *, 0x18)) + (((f32) M2C_FIELD(this, f64 *, 0) * M2C_FIELD(temp_r31_272, f32 *, 0x10)) + (M2C_FIELD(this, f32 *, 4) * M2C_FIELD(temp_r31_272, f32 *, 0x14)))) / var_f0_507;
         spC = temp_f1_598;
@@ -816,7 +816,7 @@ loop_65:
                 }
             }
             var_f1_1171 = 0.000001f;
-            temp_f0_1173 = -(((f32) sp78 * spA8) + (((f32) sp70 * spA0) + (unksp74 * spA4)));
+            temp_f0_1173 = -(((f32) sp78 * spA8) + (((f32) sp70 * spA0) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * spA4)));
             if (temp_f0_1173 > var_f1_1171) {
                 var_f1_1171 = temp_f0_1173;
             }
@@ -1027,7 +1027,6 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
 s8 KDCollisionObject::Teleport(const MKVector3 &arg0, float arg1, int arg2, MKCollisionResult *arg3) {
     f64 sp38;
     f64 sp30;
@@ -1051,7 +1050,7 @@ s8 KDCollisionObject::Teleport(const MKVector3 &arg0, float arg1, int arg2, MKCo
     }
     sp30 = M2C_FIELD(&arg0, f64 *, 0);
     sp38 = M2C_FIELD(&arg0, f64 *, 8);
-    unksp34 += this->unk250->unk4;
+    (*(f32 *) ((u8 *) &sp30 + 0x4)) += this->unk250->unk4;
 loop_7:
     temp_r7_1627 = this->unk250;
     if ((MKCollision_SphereCollide(*((MKVector3 *) &sp30), temp_r7_1627->unk0, arg3, 1, (MKCollisionMode) temp_r7_1627->unk8, temp_r7_1627->unk18) == 0) || (var_r30_1592 == 0)) {
@@ -1065,7 +1064,7 @@ loop_7:
         sp20 = (f64) sp10;
         ResolveCollisions((MKVector3 *) &sp30, (MKVector3 *) &sp20, 1);
         if ((s32) M2C_FIELD(this, s32 *, 0) > 0) {
-            unksp34 -= this->unk250->unk4;
+            (*(f32 *) ((u8 *) &sp30 + 0x4)) -= this->unk250->unk4;
             this->unk240 = sp30;
             this->unk248 = sp38;
         }
@@ -1075,7 +1074,7 @@ loop_7:
         return 1;
     }
     var_r30_1592 -= 1;
-    unksp34 += arg1;
+    (*(f32 *) ((u8 *) &sp30 + 0x4)) += arg1;
     if (var_r30_1592 <= 0) {
         if (sp8 != NULL) {
             sp8->unk4 = spC;
@@ -1084,9 +1083,7 @@ loop_7:
     }
     goto loop_7;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unksp14'
 s32 KDCollisionObject::Update(MKVector3 *arg0, float arg1) {
     f64 sp18;
     f64 sp10;
@@ -1106,10 +1103,10 @@ s32 KDCollisionObject::Update(MKVector3 *arg0, float arg1) {
     sp10 = this->unk240;
     sp18 = this->unk248;
     temp_r6_1718 = this->unk250;
-    unksp14 += temp_r6_1718->unk4;
+    (*(f32 *) ((u8 *) &sp10 + 0x4)) += temp_r6_1718->unk4;
     ResolveCollisions((MKVector3 *) &sp10, arg0, temp_r6_1718->unk10);
     var_r3_1725 = 0;
-    unksp14 -= this->unk250->unk4;
+    (*(f32 *) ((u8 *) &sp10 + 0x4)) -= this->unk250->unk4;
     this->unk240 = sp10;
     this->unk248 = sp18;
     if (((s32) this->unk180 > 0) || ((s32) M2C_FIELD(this, s32 *, 0) > 0) || ((s32) this->unkC0 > 0)) {
@@ -1124,7 +1121,6 @@ s32 KDCollisionObject::Update(MKVector3 *arg0, float arg1) {
     }
     return var_r3_1747;
 }
-#endif
 
 void KDCollisionObject::Deinit() {
     s32 var_ctr_1773;

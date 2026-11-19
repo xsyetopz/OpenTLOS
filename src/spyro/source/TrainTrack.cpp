@@ -141,7 +141,7 @@ loop_19:
             sp38 = spA0.unk8 - (f32) spB8;
             var_f1_210 = (f32) sp60 * (f32) sp60;
             sp68 = (f64) sp38;
-            if ((((f32) sp68 * (f32) sp68) + (var_f1_210 + (unksp64 * unksp64))) < 2500.0f) {
+            if ((((f32) sp68 * (f32) sp68) + (var_f1_210 + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))))) < 2500.0f) {
                 sp10 = -1;
                 var_r25_223 = 1;
 loop_15:
@@ -181,7 +181,7 @@ loop_30:
             sp28 = sp88 - (f32) sp98;
             var_f1_316 = (f32) sp40 * (f32) sp40;
             sp48 = (f64) sp28;
-            if ((((f32) sp48 * (f32) sp48) + (var_f1_316 + (unksp44 * unksp44))) < 2500.0f) {
+            if ((((f32) sp48 * (f32) sp48) + (var_f1_316 + ((*(f32 *) ((u8 *) &sp40 + 0x4)) * (*(f32 *) ((u8 *) &sp40 + 0x4))))) < 2500.0f) {
                 sp8 = -1;
                 var_r24_329 = 1;
 loop_25:
@@ -240,7 +240,7 @@ void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
     sp30 = sp10;
     sp18 = (f32) sp78 - (f32) sp68;
     sp38 = (f64) sp18;
-    var_f4_447 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_447 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_447 > 1e-12f) {
         if (var_f4_447 > 0.0f) {
             temp_f1_453 = __frsqrte(var_f4_447);
@@ -279,7 +279,7 @@ void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
     } else {
         var_f3_514 = 0.0f;
     }
-    sp24 = unksp34 * var_f3_514;
+    sp24 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f3_514;
     sp20 = (f32) sp30 * var_f3_514;
     sp28 = (f32) sp38 * var_f3_514;
     M2C_FIELD(this, f64 *, 0) = (f64) sp20;
@@ -406,7 +406,7 @@ void TrainTrack::GetTrackXAxis(int arg0, float arg1) {
     sp30 = sp10;
     sp18 = (f32) sp78 - (f32) sp68;
     sp38 = (f64) sp18;
-    var_f4_726 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_726 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_726 > 1e-12f) {
         if (var_f4_726 > 0.0f) {
             temp_f1_732 = __frsqrte(var_f4_726);
@@ -445,7 +445,7 @@ void TrainTrack::GetTrackXAxis(int arg0, float arg1) {
     } else {
         var_f3_793 = 0.0f;
     }
-    sp24 = unksp34 * var_f3_793;
+    sp24 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f3_793;
     sp20 = (f32) sp30 * var_f3_793;
     sp28 = (f32) sp38 * var_f3_793;
     M2C_FIELD(this, f64 *, 0) = (f64) sp20;

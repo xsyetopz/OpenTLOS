@@ -382,7 +382,7 @@ void AssaultCannon::EmitShootingFX() {
     sp60 = sp30;
     sp38 = sp70.unk8 - M2C_FIELD(temp_r3_385, f32 *, 8);
     sp68 = (f64) sp38;
-    var_f4_406 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+    var_f4_406 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp58 + 0xc)) * (*(f32 *) ((u8 *) &sp58 + 0xc))));
     if (var_f4_406 > 0.000001f) {
         if (var_f4_406 > 0.0f) {
             temp_f1_412 = __frsqrte(var_f4_406);
@@ -424,7 +424,7 @@ void AssaultCannon::EmitShootingFX() {
     temp_r0_483 = M2C_FIELD(temp_r31_369, s32 *, 0x174);
     temp_f0_484 = (f32) sp68 * var_f3_473;
     sp60 = (f32) sp60 * var_f3_473;
-    unksp64 *= var_f3_473;
+    (*(f32 *) ((u8 *) &sp58 + 0xc)) *= var_f3_473;
     sp68 = temp_f0_484;
     switch (temp_r0_483) {                          /* switch 2; irregular */
     case 1:                                         /* switch 2 */
@@ -1015,7 +1015,7 @@ void AssaultCannon::StateFireUpdate() {
             var_f4_1019 = 0.0f;
             sp530 = temp_f0_1013;
             sp1D8 = (f32) sp4A8 - M2C_FIELD(temp_r30_976, f32 *, 8);
-            unksp534 = 0.0f;
+            (*(f32 *) ((u8 *) &sp4B8 + 0x7c)) = 0.0f;
             sp538 = (f64) sp1D8;
             var_f5_1032 = ((f32) sp538 * (f32) sp538) + (((f32) sp530 * (f32) sp530) + (0.0f * 0.0f));
             if (var_f5_1032 > 0.000001f) {
@@ -1055,7 +1055,7 @@ void AssaultCannon::StateFireUpdate() {
                 var_f4_1019 = 1.0f / var_f5_1032;
             }
             sp530 = (f32) sp530 * var_f4_1019;
-            unksp534 *= var_f4_1019;
+            (*(f32 *) ((u8 *) &sp4B8 + 0x7c)) *= var_f4_1019;
             sp538 = (f32) sp538 * var_f4_1019;
             sp470 = (f64) sp530;
             sp478 = (f64) sp538;
@@ -1082,7 +1082,7 @@ void AssaultCannon::StateFireUpdate() {
                 sp460 = sp1C0;
                 sp1C8 = (f32) sp458 - M2C_FIELD(temp_r30_1139, f32 *, 8);
                 sp468 = (f64) sp1C8;
-                var_f4_1172 = ((f32) sp468 * (f32) sp468) + (((f32) sp460 * (f32) sp460) + (unksp464 * unksp464));
+                var_f4_1172 = ((f32) sp468 * (f32) sp468) + (((f32) sp460 * (f32) sp460) + ((*(f32 *) ((u8 *) &sp460 + 0x4)) * (*(f32 *) ((u8 *) &sp460 + 0x4))));
                 if (var_f4_1172 > 0.0f) {
                     temp_f1_1175 = __frsqrte(var_f4_1172);
                     temp_f1_1181 = 0.5 * temp_f1_1175 * -(((f64) var_f4_1172 * (temp_f1_1175 * temp_f1_1175)) - 3.0);
@@ -1141,7 +1141,7 @@ void AssaultCannon::StateFireUpdate() {
                 var_f4_1277 = 0.0f;
                 sp520 = temp_f0_1271;
                 sp1B8 = this->unk230.unk8 - M2C_FIELD(temp_r3_1268, f32 *, 8);
-                unksp524 = 0.0f;
+                (*(f32 *) ((u8 *) &sp4B8 + 0x6c)) = 0.0f;
                 sp528 = (f64) sp1B8;
                 var_f5_1290 = ((f32) sp528 * (f32) sp528) + (((f32) sp520 * (f32) sp520) + (0.0f * 0.0f));
                 if (var_f5_1290 > 0.000001f) {
@@ -1181,7 +1181,7 @@ void AssaultCannon::StateFireUpdate() {
                     var_f4_1277 = 1.0f / var_f5_1290;
                 }
                 sp520 = (f32) sp520 * var_f4_1277;
-                unksp524 *= var_f4_1277;
+                (*(f32 *) ((u8 *) &sp4B8 + 0x6c)) *= var_f4_1277;
                 sp528 = (f32) sp528 * var_f4_1277;
                 sp420.operator*(var_f31_1237);
                 sp430.operator*(0.05f + -((var_f2_1119 * 0.5f) - 1.0f));
@@ -1220,7 +1220,7 @@ void AssaultCannon::StateFireUpdate() {
         var_f4_1449 = 0.0f;
         sp510 = temp_f0_1443;
         sp198 = (f32) sp418 - M2C_FIELD(temp_r30_1406, f32 *, 8);
-        unksp514 = 0.0f;
+        (*(f32 *) ((u8 *) &sp4B8 + 0x5c)) = 0.0f;
         sp518 = (f64) sp198;
         var_f5_1462 = ((f32) sp518 * (f32) sp518) + (((f32) sp510 * (f32) sp510) + (0.0f * 0.0f));
         if (var_f5_1462 > 0.000001f) {
@@ -1260,7 +1260,7 @@ void AssaultCannon::StateFireUpdate() {
             var_f4_1449 = 1.0f / var_f5_1462;
         }
         sp510 = (f32) sp510 * var_f4_1449;
-        unksp514 *= var_f4_1449;
+        (*(f32 *) ((u8 *) &sp4B8 + 0x5c)) *= var_f4_1449;
         sp518 = (f32) sp518 * var_f4_1449;
         sp3E0 = (f64) sp510;
         sp3E8 = (f64) sp518;
@@ -1287,7 +1287,7 @@ void AssaultCannon::StateFireUpdate() {
                 sp3D0 = sp180;
                 sp188 = (f32) sp3C8 - M2C_FIELD(temp_r30_1575, f32 *, 8);
                 sp3D8 = (f64) sp188;
-                var_f4_1603 = ((f32) sp3D8 * (f32) sp3D8) + (((f32) sp3D0 * (f32) sp3D0) + (unksp3D4 * unksp3D4));
+                var_f4_1603 = ((f32) sp3D8 * (f32) sp3D8) + (((f32) sp3D0 * (f32) sp3D0) + ((*(f32 *) ((u8 *) &sp3D0 + 0x4)) * (*(f32 *) ((u8 *) &sp3D0 + 0x4))));
                 if (var_f4_1603 > 0.0f) {
                     temp_f1_1606 = __frsqrte(var_f4_1603);
                     temp_f1_1612 = 0.5 * temp_f1_1606 * -(((f64) var_f4_1603 * (temp_f1_1606 * temp_f1_1606)) - 3.0);
@@ -1346,7 +1346,7 @@ void AssaultCannon::StateFireUpdate() {
                 var_f4_1708 = 0.0f;
                 sp500 = temp_f0_1702;
                 sp178 = this->unk230.unk8 - M2C_FIELD(temp_r3_1699, f32 *, 8);
-                unksp504 = 0.0f;
+                (*(f32 *) ((u8 *) &sp4B8 + 0x4c)) = 0.0f;
                 sp508 = (f64) sp178;
                 var_f5_1721 = ((f32) sp508 * (f32) sp508) + (((f32) sp500 * (f32) sp500) + (0.0f * 0.0f));
                 if (var_f5_1721 > 0.000001f) {
@@ -1386,7 +1386,7 @@ void AssaultCannon::StateFireUpdate() {
                     var_f4_1708 = 1.0f / var_f5_1721;
                 }
                 sp500 = (f32) sp500 * var_f4_1708;
-                unksp504 *= var_f4_1708;
+                (*(f32 *) ((u8 *) &sp4B8 + 0x4c)) *= var_f4_1708;
                 sp508 = (f32) sp508 * var_f4_1708;
                 sp3A0.operator*(var_f31_1668);
                 sp90 = M2C_FIELD(this, f64 *, 0x230) + M2C_BITWISE(f64, sp3A0);
@@ -1437,7 +1437,7 @@ void AssaultCannon::StateFireUpdate() {
         var_f4_1927 = 0.0f;
         sp4F0 = temp_f0_1921;
         sp158 = (f32) sp388 - M2C_FIELD(temp_r30_1884, f32 *, 8);
-        unksp4F4 = 0.0f;
+        (*(f32 *) ((u8 *) &sp4B8 + 0x3c)) = 0.0f;
         sp4F8 = (f64) sp158;
         var_f5_1940 = ((f32) sp4F8 * (f32) sp4F8) + (((f32) sp4F0 * (f32) sp4F0) + (0.0f * 0.0f));
         if (var_f5_1940 > 0.000001f) {
@@ -1477,7 +1477,7 @@ void AssaultCannon::StateFireUpdate() {
             var_f4_1927 = 1.0f / var_f5_1940;
         }
         sp4F0 = (f32) sp4F0 * var_f4_1927;
-        unksp4F4 *= var_f4_1927;
+        (*(f32 *) ((u8 *) &sp4B8 + 0x3c)) *= var_f4_1927;
         sp4F8 = (f32) sp4F8 * var_f4_1927;
         sp350 = (f64) sp4F0;
         sp358 = (f64) sp4F8;
@@ -1527,7 +1527,7 @@ void AssaultCannon::StateFireUpdate() {
             var_f4_2141 = 0.0f;
             sp4E0 = temp_f0_2135;
             sp138 = (f32) sp318 - M2C_FIELD(temp_r30_2098, f32 *, 8);
-            unksp4E4 = 0.0f;
+            (*(f32 *) ((u8 *) &sp4B8 + 0x2c)) = 0.0f;
             sp4E8 = (f64) sp138;
             var_f5_2154 = ((f32) sp4E8 * (f32) sp4E8) + (((f32) sp4E0 * (f32) sp4E0) + (0.0f * 0.0f));
             if (var_f5_2154 > 0.000001f) {
@@ -1567,7 +1567,7 @@ void AssaultCannon::StateFireUpdate() {
                 var_f4_2141 = 1.0f / var_f5_2154;
             }
             sp4E0 = (f32) sp4E0 * var_f4_2141;
-            unksp4E4 *= var_f4_2141;
+            (*(f32 *) ((u8 *) &sp4B8 + 0x2c)) *= var_f4_2141;
             sp4E8 = (f32) sp4E8 * var_f4_2141;
             sp2E0 = (f64) sp4E0;
             sp2E8 = (f64) sp4E8;
@@ -1594,7 +1594,7 @@ void AssaultCannon::StateFireUpdate() {
                 sp2D0 = sp120;
                 sp128 = (f32) sp2C8 - M2C_FIELD(temp_r30_2261, f32 *, 8);
                 sp2D8 = (f64) sp128;
-                var_f4_2294 = ((f32) sp2D8 * (f32) sp2D8) + (((f32) sp2D0 * (f32) sp2D0) + (unksp2D4 * unksp2D4));
+                var_f4_2294 = ((f32) sp2D8 * (f32) sp2D8) + (((f32) sp2D0 * (f32) sp2D0) + ((*(f32 *) ((u8 *) &sp2D0 + 0x4)) * (*(f32 *) ((u8 *) &sp2D0 + 0x4))));
                 if (var_f4_2294 > 0.0f) {
                     temp_f1_2297 = __frsqrte(var_f4_2294);
                     temp_f1_2303 = 0.5 * temp_f1_2297 * -(((f64) var_f4_2294 * (temp_f1_2297 * temp_f1_2297)) - 3.0);
@@ -1653,7 +1653,7 @@ void AssaultCannon::StateFireUpdate() {
                 var_f4_2399 = 0.0f;
                 sp4D0 = temp_f0_2393;
                 sp118 = this->unk230.unk8 - M2C_FIELD(temp_r3_2390, f32 *, 8);
-                unksp4D4 = 0.0f;
+                (*(f32 *) ((u8 *) &sp4B8 + 0x1c)) = 0.0f;
                 sp4D8 = (f64) sp118;
                 var_f5_2412 = ((f32) sp4D8 * (f32) sp4D8) + (((f32) sp4D0 * (f32) sp4D0) + (0.0f * 0.0f));
                 if (var_f5_2412 > 0.000001f) {
@@ -1693,7 +1693,7 @@ void AssaultCannon::StateFireUpdate() {
                     var_f4_2399 = 1.0f / var_f5_2412;
                 }
                 sp4D0 = (f32) sp4D0 * var_f4_2399;
-                unksp4D4 *= var_f4_2399;
+                (*(f32 *) ((u8 *) &sp4B8 + 0x1c)) *= var_f4_2399;
                 sp4D8 = (f32) sp4D8 * var_f4_2399;
                 sp290.operator*(var_f31_2359);
                 sp2A0.operator*(0.05f + -((var_f2_2241 * 0.5f) - 1.0f));
@@ -1725,7 +1725,7 @@ void AssaultCannon::StateFireUpdate() {
         sp270 = sp100;
         sp108 = (f32) sp268 - M2C_FIELD(temp_r30_2537, f32 *, 8);
         sp278 = (f64) sp108;
-        var_f4_2566 = ((f32) sp278 * (f32) sp278) + (((f32) sp270 * (f32) sp270) + (unksp274 * unksp274));
+        var_f4_2566 = ((f32) sp278 * (f32) sp278) + (((f32) sp270 * (f32) sp270) + ((*(f32 *) ((u8 *) &sp270 + 0x4)) * (*(f32 *) ((u8 *) &sp270 + 0x4))));
         if (var_f4_2566 > 0.0f) {
             temp_f1_2569 = __frsqrte(var_f4_2566);
             temp_f1_2575 = 0.5 * temp_f1_2569 * -(((f64) var_f4_2566 * (temp_f1_2569 * temp_f1_2569)) - 3.0);
@@ -1774,7 +1774,7 @@ void AssaultCannon::StateFireUpdate() {
         sp250 = spF0;
         spF8 = this->unk230.unk0 - M2C_FIELD(temp_r3_2657, f32 *, 8);
         sp258 = (f64) spF8;
-        var_f31_2677 = ((f32) sp258 * (f32) sp258) + (((f32) sp250 * (f32) sp250) + (unksp254 * unksp254));
+        var_f31_2677 = ((f32) sp258 * (f32) sp258) + (((f32) sp250 * (f32) sp250) + ((*(f32 *) ((u8 *) &sp250 + 0x4)) * (*(f32 *) ((u8 *) &sp250 + 0x4))));
         if (var_f31_2677 > 0.0f) {
             temp_f1_2680 = __frsqrte(var_f31_2677);
             temp_f1_2686 = 0.5 * temp_f1_2680 * -(((f64) var_f31_2677 * (temp_f1_2680 * temp_f1_2680)) - 3.0);
@@ -1814,7 +1814,7 @@ void AssaultCannon::StateFireUpdate() {
         var_f4_2751 = 0.0f;
         sp4C0 = temp_f0_2745;
         spE8 = this->unk230.unk0 - M2C_FIELD(temp_r3_2742, f32 *, 8);
-        unksp4C4 = 0.0f;
+        (*(f32 *) ((u8 *) &sp4B8 + 0xc)) = 0.0f;
         sp4C8 = (f64) spE8;
         var_f5_2764 = ((f32) sp4C8 * (f32) sp4C8) + (((f32) sp4C0 * (f32) sp4C0) + (0.0f * 0.0f));
         if (var_f5_2764 > 0.000001f) {
@@ -1854,7 +1854,7 @@ void AssaultCannon::StateFireUpdate() {
             var_f4_2751 = 1.0f / var_f5_2764;
         }
         sp4C0 = (f32) sp4C0 * var_f4_2751;
-        unksp4C4 *= var_f4_2751;
+        (*(f32 *) ((u8 *) &sp4B8 + 0xc)) *= var_f4_2751;
         sp4C8 = (f32) sp4C8 * var_f4_2751;
         sp240 = (f64) sp4C0;
         sp248 = (f64) sp4C8;
@@ -1881,7 +1881,7 @@ void AssaultCannon::StateFireUpdate() {
             sp220 = spD0;
             spD8 = this->unk230.unk0 - this->unk230.unk8;
             sp228 = (f64) spD8;
-            var_f4_2899 = ((f32) sp228 * (f32) sp228) + (((f32) sp220 * (f32) sp220) + (unksp224 * unksp224));
+            var_f4_2899 = ((f32) sp228 * (f32) sp228) + (((f32) sp220 * (f32) sp220) + ((*(f32 *) ((u8 *) &sp220 + 0x4)) * (*(f32 *) ((u8 *) &sp220 + 0x4))));
             if (var_f4_2899 > 1e-12f) {
                 if (var_f4_2899 > 0.0f) {
                     temp_f1_2905 = __frsqrte(var_f4_2899);
@@ -1920,7 +1920,7 @@ void AssaultCannon::StateFireUpdate() {
             } else {
                 var_f3_2966 = 0.0f;
             }
-            spB4 = unksp224 * var_f3_2966;
+            spB4 = (*(f32 *) ((u8 *) &sp220 + 0x4)) * var_f3_2966;
             spB0 = (f32) sp220 * var_f3_2966;
             spB8 = (f32) sp228 * var_f3_2966;
             sp230 = (f64) spB0;
@@ -2158,7 +2158,7 @@ void AssaultCannon::StateFireEnter() {
             sp1E0 = spD0;
             spD8 = (f32) sp1D8 - M2C_FIELD(temp_r30_3134, f32 *, 8);
             sp1E8 = (f64) spD8;
-            var_f4_3167 = ((f32) sp1E8 * (f32) sp1E8) + (((f32) sp1E0 * (f32) sp1E0) + (unksp1E4 * unksp1E4));
+            var_f4_3167 = ((f32) sp1E8 * (f32) sp1E8) + (((f32) sp1E0 * (f32) sp1E0) + ((*(f32 *) ((u8 *) &sp1E0 + 0x4)) * (*(f32 *) ((u8 *) &sp1E0 + 0x4))));
             if (var_f4_3167 > 0.0f) {
                 temp_f1_3170 = __frsqrte(var_f4_3167);
                 temp_f1_3176 = 0.5 * temp_f1_3170 * -(((f64) var_f4_3167 * (temp_f1_3170 * temp_f1_3170)) - 3.0);
@@ -2217,7 +2217,7 @@ void AssaultCannon::StateFireEnter() {
             var_f4_3272 = 0.0f;
             sp210 = temp_f0_3266;
             spC8 = this->unk230.unk8 - M2C_FIELD(temp_r3_3263, f32 *, 8);
-            unksp214 = 0.0f;
+            (*(f32 *) ((u8 *) &sp1E8 + 0x2c)) = 0.0f;
             sp218 = (f64) spC8;
             var_f5_3285 = ((f32) sp218 * (f32) sp218) + (((f32) sp210 * (f32) sp210) + (0.0f * 0.0f));
             if (var_f5_3285 > 0.000001f) {
@@ -2257,7 +2257,7 @@ void AssaultCannon::StateFireEnter() {
                 var_f4_3272 = 1.0f / var_f5_3285;
             }
             sp210 = (f32) sp210 * var_f4_3272;
-            unksp214 *= var_f4_3272;
+            (*(f32 *) ((u8 *) &sp1E8 + 0x2c)) *= var_f4_3272;
             sp218 = (f32) sp218 * var_f4_3272;
             sp1A0.operator*(var_f31_3232);
             sp1B0.operator*(0.05f + -((var_f2_3115 * 0.5f) - 1.0f));
@@ -2306,7 +2306,7 @@ void AssaultCannon::StateFireEnter() {
             sp190 = spB0;
             spB8 = (f32) sp188 - M2C_FIELD(temp_r30_3440, f32 *, 8);
             sp198 = (f64) spB8;
-            var_f4_3472 = ((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + (unksp194 * unksp194));
+            var_f4_3472 = ((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + ((*(f32 *) ((u8 *) &sp190 + 0x4)) * (*(f32 *) ((u8 *) &sp190 + 0x4))));
             if (var_f4_3472 > 0.0f) {
                 temp_f1_3475 = __frsqrte(var_f4_3472);
                 temp_f1_3481 = 0.5 * temp_f1_3475 * -(((f64) var_f4_3472 * (temp_f1_3475 * temp_f1_3475)) - 3.0);
@@ -2365,7 +2365,7 @@ void AssaultCannon::StateFireEnter() {
             var_f4_3577 = 0.0f;
             sp200 = temp_f0_3571;
             spA8 = this->unk230.unk8 - M2C_FIELD(temp_r3_3568, f32 *, 8);
-            unksp204 = 0.0f;
+            (*(f32 *) ((u8 *) &sp1E8 + 0x1c)) = 0.0f;
             sp208 = (f64) spA8;
             var_f5_3590 = ((f32) sp208 * (f32) sp208) + (((f32) sp200 * (f32) sp200) + (0.0f * 0.0f));
             if (var_f5_3590 > 0.000001f) {
@@ -2405,7 +2405,7 @@ void AssaultCannon::StateFireEnter() {
                 var_f4_3577 = 1.0f / var_f5_3590;
             }
             sp200 = (f32) sp200 * var_f4_3577;
-            unksp204 *= var_f4_3577;
+            (*(f32 *) ((u8 *) &sp1E8 + 0x1c)) *= var_f4_3577;
             sp208 = (f32) sp208 * var_f4_3577;
             sp150.operator*(var_f31_3537);
             sp160.operator*(0.05f + (1.0f - (var_f1_3419 / 0.5f)));
@@ -2444,7 +2444,7 @@ void AssaultCannon::StateFireEnter() {
                 sp258 = sp98;
             } else {
                 sp250 = 0.0f;
-                unksp254 = 0.0f;
+                (*(f32 *) ((u8 *) &sp24C + 0x8)) = 0.0f;
                 sp258 = 0.0f;
             }
             sp271 = 0;
@@ -2481,7 +2481,7 @@ void AssaultCannon::StateFireEnter() {
             sp130 = sp80;
             sp88 = (f32) sp128 - M2C_FIELD(temp_r30_3791, f32 *, 8);
             sp138 = (f64) sp88;
-            var_f4_3824 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
+            var_f4_3824 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + ((*(f32 *) ((u8 *) &sp130 + 0x4)) * (*(f32 *) ((u8 *) &sp130 + 0x4))));
             if (var_f4_3824 > 0.0f) {
                 temp_f1_3827 = __frsqrte(var_f4_3824);
                 temp_f1_3833 = 0.5 * temp_f1_3827 * -(((f64) var_f4_3824 * (temp_f1_3827 * temp_f1_3827)) - 3.0);
@@ -2540,7 +2540,7 @@ void AssaultCannon::StateFireEnter() {
             var_f4_3929 = 0.0f;
             sp1F0 = temp_f0_3923;
             sp78 = this->unk230.unk8 - M2C_FIELD(temp_r3_3920, f32 *, 8);
-            unksp1F4 = 0.0f;
+            (*(f32 *) ((u8 *) &sp1E8 + 0xc)) = 0.0f;
             sp1F8 = (f64) sp78;
             var_f5_3942 = ((f32) sp1F8 * (f32) sp1F8) + (((f32) sp1F0 * (f32) sp1F0) + (0.0f * 0.0f));
             if (var_f5_3942 > 0.000001f) {
@@ -2580,7 +2580,7 @@ void AssaultCannon::StateFireEnter() {
                 var_f4_3929 = 1.0f / var_f5_3942;
             }
             sp1F0 = (f32) sp1F0 * var_f4_3929;
-            unksp1F4 *= var_f4_3929;
+            (*(f32 *) ((u8 *) &sp1E8 + 0xc)) *= var_f4_3929;
             sp1F8 = (f32) sp1F8 * var_f4_3929;
             spF0.operator*(var_f31_3889);
             sp100.operator*(0.05f + -((var_f2_3772 * 0.5f) - 1.0f));
@@ -2681,7 +2681,7 @@ void AssaultCannon::StateTurnToFaceUpdate() {
     var_f4_4168 = 0.0f;
     sp80 = temp_f0_4162;
     sp18 = (f32) sp68 - M2C_FIELD(temp_r30_4138, f32 *, 8);
-    unksp84 = 0.0f;
+    (*(f32 *) ((u8 *) &sp70 + 0x14)) = 0.0f;
     sp88 = (f64) sp18;
     var_f31_4181 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (0.0f * 0.0f));
     if (var_f31_4181 > 0.000001f) {
@@ -2723,7 +2723,7 @@ void AssaultCannon::StateTurnToFaceUpdate() {
         var_f31_4181 = 0.0f;
     }
     sp80 = (f32) sp80 * var_f4_4168;
-    unksp84 *= var_f4_4168;
+    (*(f32 *) ((u8 *) &sp70 + 0x14)) *= var_f4_4168;
     sp88 = (f32) sp88 * var_f4_4168;
     temp_r3_4262 = checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     var_f0_4264 = 3500.0f;
@@ -2855,7 +2855,7 @@ void AssaultCannon::StateIdleUpdate() {
         sp8 = temp_f1_4489 - M2C_FIELD(temp_r31_4483, f64 *, 0);
         sp28 = sp8;
         sp10 = (f32) sp20 - M2C_FIELD(temp_r31_4483, f32 *, 8);
-        var_f4_4504 = unksp2C;
+        var_f4_4504 = (*(f32 *) ((u8 *) &sp28 + 0x4));
         sp30 = (f64) sp10;
         if ((((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (var_f4_4504 * var_f4_4504))) <= (var_f30_4446 * var_f30_4446)) {
             if (var_f4_4504 < 0.0f) {
@@ -2945,7 +2945,7 @@ u64 AssaultCannon::UpdateTurning(MKVector3 arg0) {
     var_f6_4617 = 0.0f;
     sp90 = temp_f0_4611;
     sp48 = spB0.unk8 - (f32) spA8;
-    unksp94 = 0.0f;
+    (*(f32 *) ((u8 *) &sp88 + 0xc)) = 0.0f;
     sp98 = (f64) sp48;
     var_f4_4630 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (0.0f * 0.0f));
     if (var_f4_4630 > 0.000001f) {
@@ -2984,7 +2984,7 @@ u64 AssaultCannon::UpdateTurning(MKVector3 arg0) {
         }
         var_f6_4617 = 1.0f / var_f4_4630;
     }
-    temp_f9_4701 = unksp94 * var_f6_4617;
+    temp_f9_4701 = (*(f32 *) ((u8 *) &sp88 + 0xc)) * var_f6_4617;
     sp38 = 0.0f;
     temp_f0_4704 = M2C_FIELD(arg0, f32 *, 4);
     temp_f10_4705 = (f32) sp90 * var_f6_4617;
@@ -2998,10 +2998,10 @@ u64 AssaultCannon::UpdateTurning(MKVector3 arg0) {
     sp50 = (f64) sp30;
     var_f7_4725 = 15.0f * temp_f31_4721;
     sp90 = temp_f10_4705;
-    unksp94 = temp_f9_4701;
+    (*(f32 *) ((u8 *) &sp88 + 0xc)) = temp_f9_4701;
     sp98 = temp_f8_4711;
-    sp28 = ((f32) sp50 * temp_f9_4701) - (unksp54 * temp_f10_4705);
-    sp20 = (unksp54 * temp_f8_4711) - ((f32) sp58 * temp_f9_4701);
+    sp28 = ((f32) sp50 * temp_f9_4701) - ((*(f32 *) ((u8 *) &sp50 + 0x4)) * temp_f10_4705);
+    sp20 = ((*(f32 *) ((u8 *) &sp50 + 0x4)) * temp_f8_4711) - ((f32) sp58 * temp_f9_4701);
     sp24 = ((f32) sp58 * temp_f10_4705) - ((f32) sp50 * temp_f8_4711);
     sp88 = (f64) sp28;
     sp80 = (f64) sp20;
@@ -3016,7 +3016,7 @@ u64 AssaultCannon::UpdateTurning(MKVector3 arg0) {
         var_f7_4725 = -1.0f;
     }
     var_f30_4760 = 1.5f * var_f7_4725;
-    if (((temp_f2_4712 * (f32) sp88) + ((temp_f1_4709 * (f32) sp80) + (temp_f0_4704 * unksp84))) > 0.0f) {
+    if (((temp_f2_4712 * (f32) sp88) + ((temp_f1_4709 * (f32) sp80) + (temp_f0_4704 * (*(f32 *) ((u8 *) &sp80 + 0x4))))) > 0.0f) {
         SetAnim(3, 1, 1.0f);
         if (var_f30_4760 < 0.0f) {
             var_f0_4774 = -var_f30_4760;
@@ -3372,7 +3372,7 @@ block_35:
                 sp1C8 = spE8;
                 spF0 = arg0->unk18 - M2C_FIELD(temp_r3_5292, f32 *, 8);
                 sp1D0 = (f64) spF0;
-                var_f5_5316 = ((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + (unksp1CC * unksp1CC));
+                var_f5_5316 = ((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + ((*(f32 *) ((u8 *) &sp1C8 + 0x4)) * (*(f32 *) ((u8 *) &sp1C8 + 0x4))));
                 if (var_f5_5316 > 1e-12f) {
                     if (var_f5_5316 > 0.0f) {
                         temp_f1_5321 = __frsqrte(var_f5_5316);
@@ -3409,7 +3409,7 @@ block_35:
                     }
                     var_f4_5283 = 1.0f / var_f5_5316;
                 }
-                sp9C = unksp1CC * var_f4_5283;
+                sp9C = (*(f32 *) ((u8 *) &sp1C8 + 0x4)) * var_f4_5283;
                 sp98 = (f32) sp1C8 * var_f4_5283;
                 spA0 = (f32) sp1D0 * var_f4_5283;
                 sp1D8 = (f64) sp98;

@@ -79,9 +79,9 @@ loop_10:
                     _table_sincosf(temp_f29_130, sp10, spC);
                     temp_f4_152 = sp18 * temp_f30_141;
                     sp68 = sp14 * temp_f30_141;
-                    unksp64 = sp10 * temp_f4_152;
+                    (*(f32 *) ((u8 *) &sp50 + 0x14)) = sp10 * temp_f4_152;
                     sp60 = spC * temp_f4_152;
-                    unksp6C = 0.0f;
+                    (*(f32 *) ((u8 *) &sp50 + 0x1c)) = 0.0f;
                 } else {
                     temp_f1_168 = MKRand_Float(&gViewSeed, this->unk88, this->unk8C);
                     temp_r3_171 = this->unk8 + 0x20;

@@ -186,7 +186,7 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
             sp20 = arg0.unk8 - sp60;
             this->unk90.unk30 = (f32) sp68;
             sp70 = (f64) sp20;
-            this->unk90.unk34 = unksp6C;
+            this->unk90.unk34 = (*(f32 *) ((u8 *) &sp68 + 0x4));
             this->unk90.unk38 = (f32) sp70;
             this->unk90.unk3C = 1.0f;
             this->unk100 = 0.0f;
@@ -414,7 +414,7 @@ void FuryFXFire::UpdateDragons() {
         sp38 = (f32) sp98 + this->unk90.unk38;
         sp78 = (f64) sp38;
         spA0.unk30 = (f32) sp70;
-        spA0.unk34 = unksp74;
+        spA0.unk34 = (*(f32 *) ((u8 *) &sp70 + 0x4));
         spA0.unk38 = (f32) sp78;
         MKModel_SetWorldMatrix(this->unkEC, spA0);
         ((ShapedTrailFX *) (M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)))->UpdateTrail();
@@ -1370,7 +1370,7 @@ loop_87:
                 spC8 = this->unk90.unk38 + sp4B8;
                 sp4C8 = (f64) spC8;
                 sp900.unk30 = (f32) sp4C0;
-                sp900.unk34 = unksp4C4;
+                sp900.unk34 = (*(f32 *) ((u8 *) &sp4C0 + 0x4));
                 sp900.unk38 = (f32) sp4C8;
                 sp900.unk3C = 1.0f;
                 gb.unk1C0.StartWarp(&sp900);

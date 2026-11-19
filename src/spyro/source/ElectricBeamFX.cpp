@@ -174,7 +174,7 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     sp68 = sp58;
     sp60 = (f32) M2C_FIELD(this, f64 *, 0x28) - (f32) M2C_FIELD(this, f64 *, 0x18);
     sp70 = (f64) sp60;
-    temp_f4_281 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
+    temp_f4_281 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))));
     if (temp_f4_281 > 0.0f) {
         temp_f1_284 = __frsqrte(temp_f4_281);
         temp_f1_290 = 0.5 * temp_f1_284 * -(((f64) temp_f4_281 * (temp_f1_284 * temp_f1_284)) - 3.0);
@@ -300,7 +300,7 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     sp68 = sp58;
     sp60 = (f32) M2C_FIELD(this, f64 *, 0x28) - (f32) M2C_FIELD(this, f64 *, 0x18);
     sp70 = (f64) sp60;
-    temp_f4_517 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
+    temp_f4_517 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))));
     if (temp_f4_517 > 0.0f) {
         temp_f1_520 = __frsqrte(temp_f4_517);
         temp_f1_526 = 0.5 * temp_f1_520 * -(((f64) temp_f4_517 * (temp_f1_520 * temp_f1_520)) - 3.0);
@@ -487,7 +487,7 @@ void ElectricBeam::UpdateWiggleBones() {
             sp110 = temp_f0_894;
             sp88 = (f32) sp158 - (f32) sp168;
             sp118 = (f64) sp88;
-            var_f4_911 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114));
+            var_f4_911 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * (*(f32 *) ((u8 *) &sp110 + 0x4))));
             if (var_f4_911 > 1e-12f) {
                 if (var_f4_911 > 0.0f) {
                     temp_f1_917 = __frsqrte(var_f4_911);
@@ -527,7 +527,7 @@ void ElectricBeam::UpdateWiggleBones() {
                 var_f3_978 = 0.0f;
             }
             sp70 = (f32) sp110 * var_f3_978;
-            sp74 = unksp114 * var_f3_978;
+            sp74 = (*(f32 *) ((u8 *) &sp110 + 0x4)) * var_f3_978;
             sp78 = (f32) sp118 * var_f3_978;
             sp130.unk10 = (f64) sp70;
             sp148 = (f64) sp78;
@@ -548,28 +548,28 @@ void ElectricBeam::UpdateWiggleBones() {
             Normalise(spF0);
             sp130.unk10 = M2C_BITWISE(f64, spF0);
             sp148 = (f64) spF0.unk8;
-            sp48 = ((f32) sp180 * sp144) - (unksp184 * (f32) sp130.unk10);
+            sp48 = ((f32) sp180 * sp144) - ((*(f32 *) ((u8 *) &sp180 + 0x4)) * (f32) sp130.unk10);
             sp44 = ((f32) sp188 * (f32) sp130.unk10) - ((f32) sp180 * (f32) sp148);
-            sp40 = (unksp184 * (f32) sp148) - ((f32) sp188 * sp144);
+            sp40 = ((*(f32 *) ((u8 *) &sp180 + 0x4)) * (f32) sp148) - ((f32) sp188 * sp144);
             spC8 = (f64) sp48;
             spC0 = (f64) sp40;
             Normalise(spD0);
             sp170 = M2C_BITWISE(f64, spD0);
             sp178 = (f64) spD0.unk8;
-            sp38 = ((f32) sp130.unk10 * unksp174) - (sp144 * (f32) sp170);
+            sp38 = ((f32) sp130.unk10 * (*(f32 *) ((u8 *) &sp170 + 0x4))) - (sp144 * (f32) sp170);
             sp34 = ((f32) sp148 * (f32) sp170) - ((f32) sp130.unk10 * (f32) sp178);
-            sp30 = (sp144 * (f32) sp178) - ((f32) sp148 * unksp174);
+            sp30 = (sp144 * (f32) sp178) - ((f32) sp148 * (*(f32 *) ((u8 *) &sp170 + 0x4)));
             spB8 = (f64) sp38;
             spB0 = (f64) sp30;
             sp180 = (f64) sp30;
             sp188 = (f64) sp38;
             M2C_STRUCT_COPY((s32) &unksp18C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp190 = (f32) sp170;
-            sp194 = unksp174;
+            sp194 = (*(f32 *) ((u8 *) &sp170 + 0x4));
             sp198 = (f32) sp178;
             sp19C = 0.0f;
             sp1A0 = (f32) sp180;
-            sp1A4 = unksp184;
+            sp1A4 = (*(f32 *) ((u8 *) &sp180 + 0x4));
             sp1A8 = (f32) sp188;
             sp1AC = 0.0f;
             sp1B0 = (f32) sp130.unk10;
@@ -577,9 +577,9 @@ void ElectricBeam::UpdateWiggleBones() {
             sp1B8 = (f32) sp148;
             sp1BC = 0.0f;
             sp250.Multiply(&sp250, (Matrix *) &sp190);
-            sp20 = sp210.unk30 + (((f32) sp168 * sp210.unk20) + (((f32) sp160 * M2C_BITWISE(f32, sp210)) + (unksp164 * sp210.unk10)));
-            sp24 = sp210.unk34 + (((f32) sp168 * sp210.unk24) + (((f32) sp160 * sp210.unk4) + (unksp164 * sp210.unk14)));
-            sp28 = sp210.unk38 + (((f32) sp168 * sp210.unk28) + (((f32) sp160 * sp210.unk8) + (unksp164 * sp210.unk18)));
+            sp20 = sp210.unk30 + (((f32) sp168 * sp210.unk20) + (((f32) sp160 * M2C_BITWISE(f32, sp210)) + ((*(f32 *) ((u8 *) &sp160 + 0x4)) * sp210.unk10)));
+            sp24 = sp210.unk34 + (((f32) sp168 * sp210.unk24) + (((f32) sp160 * sp210.unk4) + ((*(f32 *) ((u8 *) &sp160 + 0x4)) * sp210.unk14)));
+            sp28 = sp210.unk38 + (((f32) sp168 * sp210.unk28) + (((f32) sp160 * sp210.unk8) + ((*(f32 *) ((u8 *) &sp160 + 0x4)) * sp210.unk18)));
             spA0 = (f64) sp20;
             spA8 = (f64) sp28;
             sp250.Translate(&sp250, *((MKVector3 *) &spA0));

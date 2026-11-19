@@ -214,10 +214,10 @@ loop_46:
                         spA8 = (f64) sp28;
                         spB0 = (f64) sp30;
                         sp48 = -(f32) spA8;
-                        sp4C = -unkspAC;
+                        sp4C = -(*(f32 *) ((u8 *) &spA8 + 0x4));
                         sp50 = -(f32) spB0;
                         spD8 = (f64) sp48;
-                        unkspDC = 0.2f;
+                        (*(f32 *) ((u8 *) &spD8 + 0x4)) = 0.2f;
                         spE0 = (f64) sp50;
                         spD8 *= 5.634608575e-315;
                         sp12C = 0;
@@ -247,7 +247,7 @@ loop_46:
                             sp160 = sp40;
                         } else {
                             sp158 = 0.0f;
-                            unksp15C = 0.0f;
+                            (*(f32 *) ((u8 *) &sp154 + 0x8)) = 0.0f;
                             sp160 = 0.0f;
                         }
                         sp179 = 0;
@@ -273,7 +273,7 @@ loop_46:
                 return;
             }
             if (var_r29_157 != 0) {
-                M2C_FIELD(this, f32 *, 0x454) = (f32) (unkspFC - M2C_FIELD(this->unk460, f32 *, 4));
+                M2C_FIELD(this, f32 *, 0x454) = (f32) ((*(f32 *) ((u8 *) &spF8 + 0x4)) - M2C_FIELD(this->unk460, f32 *, 4));
             }
         } else {
             M2C_FIELD(this->__vptr, M2C_UNK (**)(f64 *, SpyroCollisionObject *), 0x50)(&sp68, this);

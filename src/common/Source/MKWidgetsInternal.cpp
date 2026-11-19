@@ -422,13 +422,13 @@ loop_2:
         MKWidgetEnvelope_GetEnvelopePos((MKWidgetEnvelope *) &sp38, (s32) this, var_r31_222);
         sp48 = sp38;
         sp50 = sp40;
-        MKSetPositionF((f32) sp48 - 4.0f, unksp4C, 0.0f);
-        MKSetPositionF((f32) sp48 - 4.0f, unksp4C, 0.0f);
-        MKSetPositionF((f32) sp48, 4.0f + unksp4C, 0.0f);
-        MKSetPositionF((f32) sp48, unksp4C - 4.0f, 0.0f);
+        MKSetPositionF((f32) sp48 - 4.0f, (*(f32 *) ((u8 *) &sp48 + 0x4)), 0.0f);
+        MKSetPositionF((f32) sp48 - 4.0f, (*(f32 *) ((u8 *) &sp48 + 0x4)), 0.0f);
+        MKSetPositionF((f32) sp48, 4.0f + (*(f32 *) ((u8 *) &sp48 + 0x4)), 0.0f);
+        MKSetPositionF((f32) sp48, (*(f32 *) ((u8 *) &sp48 + 0x4)) - 4.0f, 0.0f);
         sp10 = 0.0f;
         sp8 = 4.0f + (f32) sp48;
-        spC = unksp4C;
+        spC = (*(f32 *) ((u8 *) &sp48 + 0x4));
         sp30 = (f64) sp10;
         sp28 = (f64) sp8;
         sp58 = (f64) sp8;
@@ -572,7 +572,7 @@ loop_36:
                     spA0 = temp_f0_382;
                     sp48 = sp98 - spE0.unk8;
                     spA8 = (f64) sp48;
-                    var_f4_399 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4));
+                    var_f4_399 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))));
                     if (var_f4_399 > 0.0f) {
                         temp_f1_402 = __frsqrte(var_f4_399);
                         temp_f1_408 = 0.5 * temp_f1_402 * -(((f64) var_f4_399 * (temp_f1_402 * temp_f1_402)) - 3.0);
@@ -690,7 +690,7 @@ loop_70:
                 sp60 = temp_f0_602;
                 sp38 = sp58 - spE0.unk8;
                 sp68 = (f64) sp38;
-                var_f4_619 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+                var_f4_619 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))));
                 if (var_f4_619 > 0.0f) {
                     temp_f1_622 = __frsqrte(var_f4_619);
                     temp_f1_628 = 0.5 * temp_f1_622 * -(((f64) var_f4_619 * (temp_f1_622 * temp_f1_622)) - 3.0);
@@ -1162,7 +1162,7 @@ block_66:
                 temp_r3_1554 = this->unk4;
                 var_r0_1555 = 0;
                 temp_r7_1557 = temp_r3_1554 + 0x68;
-                if (((f32) M2C_FIELD(temp_r3_1554, f64 *, 0x68) == (f32) sp28) && (M2C_FIELD(temp_r7_1557, f32 *, 4) == unksp2C) && (M2C_FIELD(temp_r7_1557, f32 *, 8) == (f32) sp30) && (M2C_FIELD(temp_r7_1557, f32 *, 0xC) == unksp34)) {
+                if (((f32) M2C_FIELD(temp_r3_1554, f64 *, 0x68) == (f32) sp28) && (M2C_FIELD(temp_r7_1557, f32 *, 4) == (*(f32 *) ((u8 *) &sp28 + 0x4))) && (M2C_FIELD(temp_r7_1557, f32 *, 8) == (f32) sp30) && (M2C_FIELD(temp_r7_1557, f32 *, 0xC) == (*(f32 *) ((u8 *) &sp30 + 0x4)))) {
                     var_r0_1555 = 1;
                 }
                 if (var_r0_1555 == 0) {
@@ -1589,10 +1589,10 @@ block_70:
         spD8 = (f64) sp48;
         MKWidget_Move(&this->unkB0, MKVector3::zero);
         MKWidget_Resize(&this->unkB0, *((MKVector3 *) &spD8));
-        unkspDC = 0.0f;
+        (*(f32 *) ((u8 *) &spD4 + 0x8)) = 0.0f;
         MKWidget_Move(&this->unk28, *((MKVector3 *) &spD8));
         temp_f0_2540 = M2C_FIELD(this->unk4, f32 *, 0x3C);
-        unkspDC = temp_f0_2540;
+        (*(f32 *) ((u8 *) &spD4 + 0x8)) = temp_f0_2540;
         spD8 = temp_f0_2540;
         MKWidget_Resize(&this->unk28, *((MKVector3 *) &spD8));
         goto block_70;
@@ -1677,9 +1677,9 @@ loop_49:
                 temp_r3_2719 = this->unk4;
                 sp98 = (f64) M2C_FIELD(temp_r3_2719, f32 *, 0x38);
                 spA0 = M2C_FIELD(temp_r3_2719, f64 *, 0x40);
-                temp_f1_2729 = unksp9C * sp100;
-                temp_f0_2732 = unksp9C * sp104;
-                temp_f4_2734 = unksp9C * sp108;
+                temp_f1_2729 = (*(f32 *) ((u8 *) &sp94 + 0x8)) * sp100;
+                temp_f0_2732 = (*(f32 *) ((u8 *) &sp94 + 0x8)) * sp104;
+                temp_f4_2734 = (*(f32 *) ((u8 *) &sp94 + 0x8)) * sp108;
                 temp_f6_2749 = ((f32) spA0 * sp110) + (((f32) sp98 * spF0) + temp_f1_2729);
                 temp_f5_2752 = ((f32) spA0 * sp114) + (((f32) sp98 * spF4) + temp_f0_2732);
                 temp_f4_2756 = ((f32) spA0 * sp118) + (((f32) sp98 * spF8) + temp_f4_2734);
@@ -1711,7 +1711,7 @@ loop_49:
                 } else {
                     var_f4_2789 = temp_f3_2790;
                 }
-                unksp9C = var_f4_2789;
+                (*(f32 *) ((u8 *) &sp94 + 0x8)) = var_f4_2789;
                 var_f4_2805 = (f32) var_f4_2789;
                 temp_f0_2813 = (15.0f * (f32) M2C_FIELD(temp_r29_2450, u32 *, 0x2C)) + 4.0f;
                 if (var_f4_2805 < temp_f0_2813) {
@@ -1719,7 +1719,7 @@ loop_49:
                 } else {
                     var_f4_2805 = temp_f0_2813;
                 }
-                unksp9C = var_f4_2805;
+                (*(f32 *) ((u8 *) &sp94 + 0x8)) = var_f4_2805;
                 MKWidget_Resize(this->unk100, *((MKVector3 *) &sp98));
             }
             return;
@@ -2324,7 +2324,7 @@ block_56:
                     spF8 = M2C_BITWISE(f32, spF8) + (f32) spE8;
                 }
                 if ((s32) this->unk5C == 0) {
-                    spF8.unk4 += unkspEC;
+                    spF8.unk4 += (*(f32 *) ((u8 *) &spE8 + 0x4));
                 }
                 MKWidget_SendMessage((MKWidget *) this, 4U, (u32) &spF8);
             }
@@ -2338,9 +2338,9 @@ block_56:
                 }
                 temp_r0_3802 = this->unk5C;
                 if (temp_r0_3802 == 0) {
-                    spDC -= unkspEC;
+                    spDC -= (*(f32 *) ((u8 *) &spE8 + 0x4));
                 } else if (temp_r0_3802 == 2) {
-                    spDC += unkspEC;
+                    spDC += (*(f32 *) ((u8 *) &spE8 + 0x4));
                 }
                 MKWidget_SendMessage((MKWidget *) this, 5U, (u32) &spD8);
                 MKWidget_GetLocalMousePos((MKWidget *) this, &this->unk40);
@@ -2793,7 +2793,7 @@ loop_22:
             temp_f2_4615 = M2C_FIELD(this->unk4, f32 *, 0x38);
             spCC = 0.0f;
             spD0 = 0.0f;
-            unkspFC = 24.0f;
+            (*(f32 *) ((u8 *) &spD0 + 0x2c)) = 24.0f;
             sp100 = 0.0f;
             spC8 = ((f32) var_r31_4557 * (temp_f2_4615 / (f32) arg1)) + 1.0f;
             spF8 = (temp_f2_4615 / (f32) arg1) - 2.0f;
@@ -3013,7 +3013,7 @@ void MKWidgetTextBox::FindCaretPos() {
         sp30 = M2C_BITWISE(f64, sp8.unk8);
     }
     this->unk3C = (f32) sp28;
-    this->unk40 = unksp2C;
+    this->unk40 = (*(f32 *) ((u8 *) &sp18 + 0x14));
     temp_f1_5082 = this->unk40;
     if (temp_f1_5082 < this->unk30) {
         this->unk30 = temp_f1_5082;
@@ -3356,9 +3356,9 @@ void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
         sp198 = temp_f0_5550;
         spA0 = M2C_FIELD(temp_r3_5544, f32 *, 8) - (f32) sp190;
         sp1A0 = (f64) spA0;
-        sp88 = ((f32) sp1A0 * arg0->unk20) + (((f32) sp198 * arg0->unk0) + (unksp19C * arg0->unk10));
-        sp8C = ((f32) sp1A0 * arg0->unk24) + (((f32) sp198 * arg0->unk4) + (unksp19C * arg0->unk14));
-        sp90 = ((f32) sp1A0 * arg0->unk28) + (((f32) sp198 * arg0->unk8) + (unksp19C * arg0->unk18));
+        sp88 = ((f32) sp1A0 * arg0->unk20) + (((f32) sp198 * arg0->unk0) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * arg0->unk10));
+        sp8C = ((f32) sp1A0 * arg0->unk24) + (((f32) sp198 * arg0->unk4) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * arg0->unk14));
+        sp90 = ((f32) sp1A0 * arg0->unk28) + (((f32) sp198 * arg0->unk8) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * arg0->unk18));
         sp228 = (f64) sp88;
         sp230 = (f64) sp90;
         temp_f0_5590 = sp248 + sp228;
@@ -3428,7 +3428,7 @@ loop_45:
                     var_r27_5626 -= temp_r26_5673;
                     sp218 = 0.0f;
                     var_r28_5637 = &var_r28_5637[temp_r26_5673];
-                    unksp21C += var_f30_5487;
+                    (*(f32 *) ((u8 *) &sp210 + 0xc)) += var_f30_5487;
                     goto loop_45;
                 }
                 MKEndPrimitive();
@@ -3444,7 +3444,7 @@ loop_45:
                 MKSetBaseColorV(arg0->unk40);
                 MKSetMatrix(*((Matrix *) arg0));
                 temp_f1_5800 = (f32) sp238 + this->unk3C;
-                temp_f4_5803 = unksp23C + this->unk40;
+                temp_f4_5803 = (*(f32 *) ((u8 *) &sp238 + 0x4)) + this->unk40;
                 sp30 = 0.0f;
                 sp40 = 0.0f;
                 sp28 = 1.0f + temp_f1_5800;
@@ -4822,7 +4822,6 @@ void MKWidgetScrollableFrame::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp54'
 void MKWidgetScrollableFrame::CheckScrollBarRequirements() {
     MKWidgetBoundingVolume sp60;
     f64 sp58;
@@ -4885,12 +4884,12 @@ void MKWidgetScrollableFrame::CheckScrollBarRequirements() {
     if (sp60.unk14 > var_f1_8466) {
         var_f1_8466 = sp60.unk14;
     }
-    if (unksp54 > var_f1_8466) {
-        sp14 = sp60.unk14 / unksp54;
+    if ((*(f32 *) ((u8 *) &sp50 + 0x4)) > var_f1_8466) {
+        sp14 = sp60.unk14 / (*(f32 *) ((u8 *) &sp50 + 0x4));
         MKWidget_SendMessage(&this->unk208, 0x6BU, (u32) &sp14);
         sp14 = 20.0f;
         MKWidget_SendMessage(&this->unk208, 0x6AU, (u32) &sp14);
-        sp14 = unksp54 - sp60.unk14;
+        sp14 = (*(f32 *) ((u8 *) &sp50 + 0x4)) - sp60.unk14;
         MKWidget_SendMessage(&this->unk208, 0x67U, (u32) &sp14);
         var_r31_8416 = 1;
     } else {
@@ -4951,7 +4950,6 @@ void MKWidgetScrollableFrame::CheckScrollBarRequirements() {
     MKWidget_Move(&this->unk208, *((MKVector3 *) &sp40));
     MKWidget_Resize(&this->unk208, *((MKVector3 *) &sp30));
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKWidgetScrollableFrame::GetChildrenRange(MKVector3 *arg0, MKVector3 *arg1) {
@@ -7738,7 +7736,7 @@ block_46:
                     spD8 = M2C_BITWISE(f32, spD8) + (f32) spC8;
                 }
                 if ((s32) var_r3_0->unk158 == 0) {
-                    spD8.unk4 += unkspCC;
+                    spD8.unk4 += (*(f32 *) ((u8 *) &spC8 + 0x4));
                 }
                 MKWidget_SendMessage((MKWidget *) var_r3_0, 4U, (u32) &spD8);
             }
@@ -7753,9 +7751,9 @@ block_46:
                 }
                 temp_r0_13786 = var_r3_0->unk158;
                 if (temp_r0_13786 == 0) {
-                    spBC -= unkspCC;
+                    spBC -= (*(f32 *) ((u8 *) &spC8 + 0x4));
                 } else if (temp_r0_13786 == 2) {
-                    spBC += unkspCC;
+                    spBC += (*(f32 *) ((u8 *) &spC8 + 0x4));
                 }
                 MKWidget_SendMessage((MKWidget *) var_r3_0, 5U, (u32) &spB8);
                 MKWidget_GetLocalMousePos((MKWidget *) var_r3_0, &var_r3_0->unk140);
@@ -7772,9 +7770,9 @@ block_46:
                 }
                 temp_r0_13841 = var_r3_0->unk158;
                 if (temp_r0_13841 == 0) {
-                    spBC -= unkspCC;
+                    spBC -= (*(f32 *) ((u8 *) &spC8 + 0x4));
                 } else if (temp_r0_13841 == 2) {
-                    spBC += unkspCC;
+                    spBC += (*(f32 *) ((u8 *) &spC8 + 0x4));
                 }
                 temp_f0_13859 = (f64) spB8 / sp98;
                 sp8 = temp_f0_13859;
@@ -8050,7 +8048,7 @@ void MKWidgetFrame::Render(MKWidgetRenderContext *arg0) {
         temp_f1_14369 = (var_f2_14360 * M2C_FIELD(temp_r4_14331, f32 *, 0x68)) + temp_f3_14350;
         sp180 = 0.0f;
         sp178 = temp_f1_14369;
-        unksp17C = temp_f1_14369;
+        (*(f32 *) ((u8 *) &sp170 + 0xc)) = temp_f1_14369;
         if (IsFlagSet(0x1000U) != 0) {
             temp_r29_14377 = this->unk4;
             if (temp_r29_14351 != 0) {
@@ -8101,7 +8099,7 @@ void MKWidgetFrame::Render(MKWidgetRenderContext *arg0) {
         sp8 = temp_f0_14485 - (f64) sp178;
         sp40 = -(f32) sp190;
         sp38 = -(f32) sp188;
-        sp3C = -unksp18C;
+        sp3C = -(*(f32 *) ((u8 *) &sp188 + 0x4));
         sp10 = (f32) spD0 - sp180;
         spE8 = (f64) sp38;
         spD8 = sp8;
@@ -8299,7 +8297,7 @@ block_51:
                             sp20 = (f64) sp10;
                             sp28 = sp8;
                             sp30 = (f64) sp10;
-                            if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) < 100.0f) {
+                            if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))))) < 100.0f) {
                                 MKWidget_SendMessage(M2C_FIELD(arg1, MKWidget **, 0x50), 0x34U, temp_r28_14863);
                             }
                             M2C_FIELD(arg1, s32 *, 0x60) = (s32) (M2C_FIELD(arg1, s32 *, 0x60) & temp_r30_14864);
@@ -8510,7 +8508,7 @@ loop_4:
         MKWidget_GetMousePos((MKVector3 *) &spA0);
         if ((u8) cursorVisible == 0) {
             var_r0_15248 = 0;
-            if ((startPos.unk0 == (f32) spA0) && (startPos.unk4 == unkspA4) && (startPos.unk8 == (f32) spA8)) {
+            if ((startPos.unk0 == (f32) spA0) && (startPos.unk4 == (*(f32 *) ((u8 *) &spA0 + 0x4))) && (startPos.unk8 == (f32) spA8)) {
                 var_r0_15248 = 1;
             }
             if (var_r0_15248 == 0) {
@@ -9616,7 +9614,7 @@ u8 PushScissorRect(MKWidgetScissorRect *arg0) {
     sp38 = temp_f0_17442;
     sp10 = arg0->unk10.unk8 - (f32) M2C_FIELD(arg0, f64 *, 8);
     sp40 = (f64) sp10;
-    if (((f32) sp38 > 0.0001f) && (unksp3C > 0.0001f)) {
+    if (((f32) sp38 > 0.0001f) && ((*(f32 *) ((u8 *) &sp38 + 0x4)) > 0.0001f)) {
         arg0->unk20 = pScissorRectStack;
         pScissorRectStack = arg0;
         ApplyScissorRect();

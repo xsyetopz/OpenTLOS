@@ -156,7 +156,7 @@ void IceBossGoal_MoveToPoint::SelectMoveAnimSequence() {
         ((EnemyDescriptor *) this->unkC->unkA20)->GetAnimSequence(5, 0xF, 0, NULL);
         return;
     }
-    if ((((f32) sp40 * sp20) + (((f32) sp38 * sp18) + (unksp3C * sp1C))) > 0.0f) {
+    if ((((f32) sp40 * sp20) + (((f32) sp38 * sp18) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * sp1C))) > 0.0f) {
         ((EnemyDescriptor *) this->unkC->unkA20)->GetAnimSequence(7, 0x1A, 0, NULL);
         return;
     }
@@ -879,7 +879,7 @@ void IceBossGoal_Stalactite::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1C'
+#if 0 // DRAFT: ')' expected
 u8 IceBossGoal_Stalactite::Update() {
     f64 sp20;
     f64 sp18;
@@ -900,7 +900,7 @@ u8 IceBossGoal_Stalactite::Update() {
         temp_r3_1664 = temp_r4_1663->unk8;
         sp18 = M2C_FIELD(temp_r3_1664, f64 *, 0x30);
         sp20 = M2C_FIELD(temp_r3_1664, f64 *, 0x38);
-        unksp1C += 100.0f * M2C_FIELD(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r4_1663->unk0), f32 *, 0x2C8);
+        (*(f32 *) ((u8 *) &sp18 + 0x4)) += 100.0f * M2C_FIELD(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r4_1663->unk0), f32 *, 0x2C8);
         if (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(0) != 0) {
             ((IceBossStalactiteSpawner *) (M2C_FIELD(this->unkC, IceBossStalactiteSpawner **, 0xFE0)))->Spawn(*((MKVector3 *) &sp18));
         }
@@ -1064,7 +1064,7 @@ loop_17:
                     sp28 = M2C_FIELD(temp_r29_1904, f32 *, 8) - (f32) sp58;
                     sp30 = (f64) sp20;
                     sp38 = (f64) sp28;
-                    var_f5_1957 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+                    var_f5_1957 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
                     if (var_f5_1957 > 1e-12f) {
                         if (var_f5_1957 > 0.0f) {
                             temp_f1_1962 = __frsqrte(var_f5_1957);
@@ -1102,7 +1102,7 @@ loop_17:
                         var_f4_1937 = 1.0f / var_f5_1957;
                     }
                     sp10 = (f32) sp30 * var_f4_1937;
-                    sp14 = unksp34 * var_f4_1937;
+                    sp14 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f4_1937;
                     sp18 = (f32) sp38 * var_f4_1937;
                     sp40 = (f64) sp10;
                     sp48 = (f64) sp18;
@@ -2458,7 +2458,7 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspA4'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void IceBossGoal_Cutscene3::Activate() {
     f64 spA8;                                       /* compiler-managed */
     f64 spA0;                                       /* compiler-managed */
@@ -2533,7 +2533,7 @@ void IceBossGoal_Cutscene3::Activate() {
     spA0 = sp40;
     sp48 = (f32) sp88 - (f32) sp78;
     spA8 = (f64) sp48;
-    var_f4_5024 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4));
+    var_f4_5024 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &sp88 + 0x1c)) * (*(f32 *) ((u8 *) &sp88 + 0x1c))));
     if (var_f4_5024 > 0.000001f) {
         if (var_f4_5024 > 0.0f) {
             temp_f1_5030 = __frsqrte(var_f4_5024);
@@ -2572,18 +2572,18 @@ void IceBossGoal_Cutscene3::Activate() {
     } else {
         var_f2_5091 = 0.0f;
     }
-    temp_f6_5100 = unkspA4 * var_f2_5091;
+    temp_f6_5100 = (*(f32 *) ((u8 *) &sp88 + 0x1c)) * var_f2_5091;
     temp_f5_5102 = (f32) spA8 * var_f2_5091;
     temp_f7_5105 = (f32) spA0 * var_f2_5091;
     spA0 = temp_f7_5105;
-    unkspA4 = temp_f6_5100;
+    (*(f32 *) ((u8 *) &sp88 + 0x1c)) = temp_f6_5100;
     spA8 = temp_f5_5102;
     sp30 = (MKVector3::up.unk4 * temp_f5_5102) - (MKVector3::up.unk8 * temp_f6_5100);
     sp34 = (MKVector3::up.unk8 * temp_f7_5105) - (MKVector3::up.unk0 * temp_f5_5102);
     sp38 = (MKVector3::up.unk0 * temp_f6_5100) - (MKVector3::up.unk4 * temp_f7_5105);
     sp90 = (f64) sp30;
     sp98 = (f64) sp38;
-    var_f4_5131 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (unksp94 * unksp94));
+    var_f4_5131 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + ((*(f32 *) ((u8 *) &sp88 + 0xc)) * (*(f32 *) ((u8 *) &sp88 + 0xc))));
     if (var_f4_5131 > 0.000001f) {
         if (var_f4_5131 > 0.0f) {
             temp_f1_5137 = __frsqrte(var_f4_5131);
@@ -2624,7 +2624,7 @@ void IceBossGoal_Cutscene3::Activate() {
     }
     temp_r5_5210 = this->unkC;
     sp90 = (f32) sp90 * var_f3_5198;
-    unksp94 *= var_f3_5198;
+    (*(f32 *) ((u8 *) &sp88 + 0xc)) *= var_f3_5198;
     sp98 = (f32) sp98 * var_f3_5198;
     M2C_FIELD(temp_r5_5210, f64 *, 0xE0) = (f64) sp90;
     M2C_FIELD(temp_r5_5210, f64 *, 0xE8) = (f64) sp98;
@@ -2721,7 +2721,7 @@ u8 IceBossGoal_Cutscene2::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspAC'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void IceBossGoal_Cutscene2::Activate() {
     f64 spB0;                                       /* compiler-managed */
     f64 spA8;                                       /* compiler-managed */
@@ -2795,7 +2795,7 @@ void IceBossGoal_Cutscene2::Activate() {
     spA8 = sp38;
     sp40 = (f32) sp90 - (f32) sp80;
     spB0 = (f64) sp40;
-    var_f4_5499 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC));
+    var_f4_5499 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &sp90 + 0x1c)) * (*(f32 *) ((u8 *) &sp90 + 0x1c))));
     if (var_f4_5499 > 0.000001f) {
         if (var_f4_5499 > 0.0f) {
             temp_f1_5505 = __frsqrte(var_f4_5499);
@@ -2836,16 +2836,16 @@ void IceBossGoal_Cutscene2::Activate() {
     }
     temp_f7_5575 = (f32) spA8 * var_f2_5566;
     temp_f5_5577 = (f32) spB0 * var_f2_5566;
-    temp_f6_5580 = unkspAC * var_f2_5566;
+    temp_f6_5580 = (*(f32 *) ((u8 *) &sp90 + 0x1c)) * var_f2_5566;
     spA8 = temp_f7_5575;
-    unkspAC = temp_f6_5580;
+    (*(f32 *) ((u8 *) &sp90 + 0x1c)) = temp_f6_5580;
     spB0 = temp_f5_5577;
     sp28 = (temp_f6_5580 * MKVector3::up.unk8) - (temp_f5_5577 * MKVector3::up.unk4);
     sp2C = (temp_f5_5577 * MKVector3::up.unk0) - (temp_f7_5575 * MKVector3::up.unk8);
     sp30 = (temp_f7_5575 * MKVector3::up.unk4) - (temp_f6_5580 * MKVector3::up.unk0);
     sp98 = (f64) sp28;
     spA0 = (f64) sp30;
-    var_f4_5606 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C));
+    var_f4_5606 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + ((*(f32 *) ((u8 *) &sp90 + 0xc)) * (*(f32 *) ((u8 *) &sp90 + 0xc))));
     if (var_f4_5606 > 0.000001f) {
         if (var_f4_5606 > 0.0f) {
             temp_f1_5612 = __frsqrte(var_f4_5606);
@@ -2885,7 +2885,7 @@ void IceBossGoal_Cutscene2::Activate() {
         var_f4_5673 = 0.0f;
     }
     sp98 = (f32) sp98 * var_f4_5673;
-    unksp9C *= var_f4_5673;
+    (*(f32 *) ((u8 *) &sp90 + 0xc)) *= var_f4_5673;
     spA0 = (f32) spA0 * var_f4_5673;
     KDMath_Slerp(sp68, *((MKVector3 *) &spA8), 0.785398f);
     temp_f1_5692 = M2C_BITWISE(f64, sp68);
@@ -3259,7 +3259,7 @@ void IceBossGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
         sp50 = (f64) sp20;
         if (((EnemyRegion *) (temp_r28_6459 + 0x800))->IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
             ((EnemyRegion *) &sp8)->GetRegionPos();
-            if ((f32) fabs(spC - unksp4C) <= 500.0f) {
+            if ((f32) fabs(spC - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
                 var_r29_6481 = 1;
             }
         }
@@ -3390,7 +3390,7 @@ u8 IceBossGoal_Think::Update() {
         sp50 = (f64) sp20;
         if (((EnemyRegion *) (temp_r29_6755 + 0x800))->IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
             ((EnemyRegion *) &sp8)->GetRegionPos();
-            if ((f32) fabs(spC - unksp4C) <= 500.0f) {
+            if ((f32) fabs(spC - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
                 var_r30_6777 = 1;
             }
         }
@@ -3463,7 +3463,7 @@ void IceBossGoal_Think::Arbitrate() {
     void **temp_r3_7144;
     void *temp_r3_7169;
 
-    if (((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &sp38.unk34 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40), temp_r3_6886 = this->unkC, temp_f6_6890 = M2C_FIELD(temp_r3_6886, f32 *, 0x5C8), sp90 = temp_f6_6890, temp_f1_6897 = M2C_FIELD(temp_r3_6886, f32 *, 0x5CC), sp94 = temp_f1_6897, temp_f5_6903 = M2C_FIELD(temp_r3_6886, f32 *, 0x5D0), sp20 = (MKVector3::up.unk0 * temp_f1_6897) - (MKVector3::up.unk4 * temp_f6_6890), sp98 = temp_f5_6903, sp30 = (f64) sp20, sp18 = (MKVector3::up.unk4 * temp_f5_6903) - (MKVector3::up.unk8 * temp_f1_6897), sp1C = (MKVector3::up.unk8 * temp_f6_6890) - (MKVector3::up.unk0 * temp_f5_6903), sp9C = 0.0f, sp28 = (f64) sp18, sp70 = (f32) sp28, sp74 = unksp2C, sp78 = (f32) sp30, sp7C = 0.0f, spA0 = M2C_FIELD(temp_r3_6886, f32 *, 0x5B8), spA4 = M2C_FIELD(temp_r3_6886, f32 *, 0x5BC), temp_f1_6927 = M2C_FIELD(temp_r3_6886, f32 *, 0x5C0), spA8 = temp_f1_6927, spAC = 1.0f, ((M2C_FIELD(M2C_FIELD(temp_r3_6886, void **, 0x44), u8 (**)(s32, f32 *, M2C_UNK, MKVector3 *, f32, f32, f32, f32, f32, f32, f32, f32), 0x120)(temp_r3_6886, &sp70, 0, &MKVector3::up, temp_f1_6927, unksp2C, (f32) sp28, 0.0f, temp_f5_6903, temp_f6_6890, MKVector3::up.unk8, MKVector3::up.unk4) == 0) == 0))) && (AddGoal_FollowSpawnPath() == 0)) {
+    if (((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &sp38.unk34 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40), temp_r3_6886 = this->unkC, temp_f6_6890 = M2C_FIELD(temp_r3_6886, f32 *, 0x5C8), sp90 = temp_f6_6890, temp_f1_6897 = M2C_FIELD(temp_r3_6886, f32 *, 0x5CC), sp94 = temp_f1_6897, temp_f5_6903 = M2C_FIELD(temp_r3_6886, f32 *, 0x5D0), sp20 = (MKVector3::up.unk0 * temp_f1_6897) - (MKVector3::up.unk4 * temp_f6_6890), sp98 = temp_f5_6903, sp30 = (f64) sp20, sp18 = (MKVector3::up.unk4 * temp_f5_6903) - (MKVector3::up.unk8 * temp_f1_6897), sp1C = (MKVector3::up.unk8 * temp_f6_6890) - (MKVector3::up.unk0 * temp_f5_6903), sp9C = 0.0f, sp28 = (f64) sp18, sp70 = (f32) sp28, sp74 = (*(f32 *) ((u8 *) &sp28 + 0x4)), sp78 = (f32) sp30, sp7C = 0.0f, spA0 = M2C_FIELD(temp_r3_6886, f32 *, 0x5B8), spA4 = M2C_FIELD(temp_r3_6886, f32 *, 0x5BC), temp_f1_6927 = M2C_FIELD(temp_r3_6886, f32 *, 0x5C0), spA8 = temp_f1_6927, spAC = 1.0f, ((M2C_FIELD(M2C_FIELD(temp_r3_6886, void **, 0x44), u8 (**)(s32, f32 *, M2C_UNK, MKVector3 *, f32, f32, f32, f32, f32, f32, f32, f32), 0x120)(temp_r3_6886, &sp70, 0, &MKVector3::up, temp_f1_6927, (*(f32 *) ((u8 *) &sp28 + 0x4)), (f32) sp28, 0.0f, temp_f5_6903, temp_f6_6890, MKVector3::up.unk8, MKVector3::up.unk4) == 0) == 0))) && (AddGoal_FollowSpawnPath() == 0)) {
         if (((Enemy *) this->unkC)->WasHit() != 0) {
             sp10 = 0;
             ((IceBoss *) this->unkC)->InterceptDamage(&sp10);

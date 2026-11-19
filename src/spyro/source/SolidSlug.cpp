@@ -49,7 +49,7 @@ void SolidSlug::Update() {
     sp28 = (f64) sp18;
     sp38 = this->unkC8;
     sp40 = this->unkD0;
-    var_f5_91 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
+    var_f5_91 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp30 + 0xc)) * (*(f32 *) ((u8 *) &sp30 + 0xc))));
     if (var_f5_91 > 0.000001f) {
         if (var_f5_91 > 0.0f) {
             temp_f1_96 = __frsqrte(var_f5_91);
@@ -89,7 +89,7 @@ void SolidSlug::Update() {
         var_f5_91 = 0.0f;
     }
     sp38 = (f32) sp38 * var_f4_70;
-    unksp3C *= var_f4_70;
+    (*(f32 *) ((u8 *) &sp30 + 0xc)) *= var_f4_70;
     sp40 = (f32) sp40 * var_f4_70;
     if (var_f5_91 != 0.0f) {
         KDMath_BuildMatrixFromFwd(&sp50, *((MKVector3 *) &sp38), (MKVector3 *) &sp28);
@@ -215,7 +215,7 @@ void SolidSlug::Collided(MKCollisionResult &arg0) {
                     spC0 = sp20;
                 } else {
                     spB8 = 0.0f;
-                    unkspBC = 0.0f;
+                    (*(f32 *) ((u8 *) &spB4 + 0x8)) = 0.0f;
                     spC0 = 0.0f;
                 }
                 spD9 = 0;

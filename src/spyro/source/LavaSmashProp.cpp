@@ -153,7 +153,7 @@ void LavaSmashProp::PostShatter() {
         sp240 = sp100;
         sp108 = (f32) sp238 - (f32) sp228;
         sp248 = (f64) sp108;
-        var_f4_59 = ((f32) sp248 * (f32) sp248) + (((f32) sp240 * (f32) sp240) + (unksp244 * unksp244));
+        var_f4_59 = ((f32) sp248 * (f32) sp248) + (((f32) sp240 * (f32) sp240) + ((*(f32 *) ((u8 *) &sp240 + 0x4)) * (*(f32 *) ((u8 *) &sp240 + 0x4))));
         if (var_f4_59 > 0.0f) {
             temp_f1_62 = __frsqrte(var_f4_59);
             temp_f1_68 = 0.5 * temp_f1_62 * -(((f64) var_f4_59 * (temp_f1_62 * temp_f1_62)) - 3.0);

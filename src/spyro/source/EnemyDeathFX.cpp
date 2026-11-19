@@ -111,7 +111,7 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
     } while (var_r28_81 < 0xF);
     sp80 = this->unk50;
     sp88 = this->unk58;
-    unksp84 += 50.0f;
+    (*(f32 *) ((u8 *) &sp80 + 0x4)) += 50.0f;
     KDSound_Play3d(GS_GemSpawn1, (MKVector3 *) &this->unk50, 0U, -1, 0.0f, 0U);
     var_r30_186 = 0;
     if ((((GameStats *) &GameData::gameData[0x70])->GetGemAvailable((StatType) 0) != 0) && (arg0 != NULL)) {

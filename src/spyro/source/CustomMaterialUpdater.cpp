@@ -65,7 +65,7 @@ void CustomMaterialUpdateManager::UpdateCameraRelativeScroll(CustomMaterialUpdat
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp60.unk30 = (f32) sp30;
-    sp60.unk34 = unksp34;
+    sp60.unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
     sp60.unk38 = (f32) sp38;
     sp60.unk3C = 1.0f;
     MKMaterial_SetTextureMatrix(arg0->unk0, &sp60);

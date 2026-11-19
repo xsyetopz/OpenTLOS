@@ -135,7 +135,7 @@ void MagicFireball::Update() {
     spC8 = (f64) sp48;
     spD8 = this->unkC8;
     spE0 = this->unkD0;
-    var_f5_202 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (unkspDC * unkspDC));
+    var_f5_202 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + ((*(f32 *) ((u8 *) &spD0 + 0xc)) * (*(f32 *) ((u8 *) &spD0 + 0xc))));
     if (var_f5_202 > 0.000001f) {
         if (var_f5_202 > 0.0f) {
             temp_f1_207 = __frsqrte(var_f5_202);
@@ -175,7 +175,7 @@ void MagicFireball::Update() {
         var_f5_202 = 0.0f;
     }
     spD8 = (f32) spD8 * var_f4_181;
-    unkspDC *= var_f4_181;
+    (*(f32 *) ((u8 *) &spD0 + 0xc)) *= var_f4_181;
     spE0 = (f32) spE0 * var_f4_181;
     if (var_f5_202 != 0.0f) {
         KDMath_BuildMatrixFromFwd(&spF0, *((MKVector3 *) &spD8), (MKVector3 *) &spC8);
@@ -367,7 +367,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     sp1A8 = this->unkC8;
     var_r26_499 = 0;
     sp1B0 = this->unkD0;
-    unksp1AC = 0.0f;
+    (*(f32 *) ((u8 *) &sp1A8 + 0x4)) = 0.0f;
     do {
         temp_r3_505 = M2C_FIELD(temp_r27_495, void **, 0xF0);
         temp_r3_509 = M2C_FIELD(M2C_FIELD(temp_r3_505, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_505);
@@ -438,7 +438,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
         sp290 = spA0;
     } else {
         sp288 = 0.0f;
-        unksp28C = 0.0f;
+        (*(f32 *) ((u8 *) &sp284 + 0x8)) = 0.0f;
         sp290 = 0.0f;
     }
     sp2A9 = 0;
@@ -477,7 +477,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     sp250 = 0;
     sp198 = this->unkC8;
     sp1A0 = this->unkD0;
-    unksp19C = 0.0f;
+    (*(f32 *) ((u8 *) &sp190 + 0xc)) = 0.0f;
     var_f5_743 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (0.0f * 0.0f));
     if (var_f5_743 > 0.000001f) {
         if (var_f5_743 > 0.0f) {
@@ -520,7 +520,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     sp18 = 0.0f;
     sp1C = 0.0f;
     sp198 = (f32) sp198 * var_f4_705;
-    unksp19C *= var_f4_705;
+    (*(f32 *) ((u8 *) &sp190 + 0xc)) *= var_f4_705;
     sp1A0 = (f32) sp1A0 * var_f4_705;
     spC8 = (f64) sp18;
     spD0 = (f64) sp20;
@@ -544,7 +544,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
         sp290 = sp90;
     } else {
         sp288 = 0.0f;
-        unksp28C = 0.0f;
+        (*(f32 *) ((u8 *) &sp284 + 0x8)) = 0.0f;
         sp290 = 0.0f;
     }
     sp2A9 = 0;

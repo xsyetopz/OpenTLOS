@@ -220,7 +220,7 @@ void Collectable2::Message(MKMessage *arg0) {
         sp28 = sp8;
         sp20 = (f64) sp10;
         sp30 = (f64) sp10;
-        if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) < (temp_f4_347 * temp_f4_347)) {
+        if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))))) < (temp_f4_347 * temp_f4_347)) {
             ((Stat *) &GameData::gameData[0xA0])->Add(2.0f, 1U);
         }
     }
@@ -400,7 +400,7 @@ void Collectable2::Update() {
         sp198 = sp28;
         sp30 = (f32) spE0 - (f32) sp1B0;
         sp1A0 = (f64) sp30;
-        var_f4_646 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C));
+        var_f4_646 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + ((*(f32 *) ((u8 *) &sp190 + 0xc)) * (*(f32 *) ((u8 *) &sp190 + 0xc))));
         if (var_f4_646 > 0.000001f) {
             if (var_f4_646 > 0.0f) {
                 temp_f1_652 = __frsqrte(var_f4_646);
@@ -440,7 +440,7 @@ void Collectable2::Update() {
             var_f4_713 = 0.0f;
         }
         sp198 = (f32) sp198 * var_f4_713;
-        unksp19C *= var_f4_713;
+        (*(f32 *) ((u8 *) &sp190 + 0xc)) *= var_f4_713;
         sp1A0 = (f32) sp1A0 * var_f4_713;
         spB8.operator*(50.0f);
         temp_f0_733 = sp1A8 + M2C_BITWISE(f64, spB8);

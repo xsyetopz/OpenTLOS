@@ -98,7 +98,7 @@ void TeslaTower::UpdateTurretTurning() {
     sp38 = temp_f0_125;
     var_f12_127 = 0.0f;
     sp88 = temp_f0_125;
-    unksp8C = 0.0f;
+    (*(f32 *) ((u8 *) &sp80 + 0xc)) = 0.0f;
     sp40 = (f32) spC0 - spA8.unk8;
     sp90 = (f64) sp40;
     var_f4_144 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (0.0f * 0.0f));
@@ -140,18 +140,18 @@ void TeslaTower::UpdateTurretTurning() {
     }
     sp30 = 0.0f;
     sp28 = 0.0f;
-    temp_f10_218 = unksp8C * var_f12_127;
+    temp_f10_218 = (*(f32 *) ((u8 *) &sp80 + 0xc)) * var_f12_127;
     sp2C = 1.0f;
     sp60 = (f64) sp30;
     sp58 = (f64) sp28;
-    unksp8C = temp_f10_218;
+    (*(f32 *) ((u8 *) &sp80 + 0xc)) = temp_f10_218;
     temp_f11_239 = (f32) sp88 * var_f12_127;
-    sp18 = (unksp5C * (f32) spA0) - ((f32) sp60 * unksp9C);
+    sp18 = ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (f32) spA0) - ((f32) sp60 * (*(f32 *) ((u8 *) &sp98 + 0x4)));
     temp_f3_241 = (f32) sp90 * var_f12_127;
     sp1C = ((f32) sp60 * (f32) sp98) - ((f32) sp58 * (f32) spA0);
-    sp20 = ((f32) sp58 * unksp9C) - (unksp5C * (f32) sp98);
+    sp20 = ((f32) sp58 * (*(f32 *) ((u8 *) &sp98 + 0x4))) - ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (f32) sp98);
     sp68.unk10 = (f64) sp18;
-    temp_f4_249 = 1.0f - (((f32) spA0 * temp_f3_241) + (((f32) sp98 * temp_f11_239) + (unksp9C * temp_f10_218)));
+    temp_f4_249 = 1.0f - (((f32) spA0 * temp_f3_241) + (((f32) sp98 * temp_f11_239) + ((*(f32 *) ((u8 *) &sp98 + 0x4)) * temp_f10_218)));
     sp80 = (f64) sp20;
     sp88 = temp_f11_239;
     sp90 = temp_f3_241;
@@ -243,7 +243,7 @@ loop_19:
         temp_r3_402 = M2C_FIELD((*temp_r30_559)->unk8.unk0(temp_r30_559), void **, 8);
         sp50 = M2C_FIELD(temp_r3_402, f64 *, 0x30);
         sp58 = M2C_FIELD(temp_r3_402, f64 *, 0x38);
-        temp_f2_410 = unksp54 - unksp84;
+        temp_f2_410 = (*(f32 *) ((u8 *) &sp50 + 0x4)) - (*(f32 *) ((u8 *) &sp80 + 0x4));
         temp_f3_411 = (f32) sp50 - (f32) sp80;
         temp_f2_414 = (f32) sp58 - (f32) sp88;
         if (((temp_f2_414 * temp_f2_414) + ((temp_f3_411 * temp_f3_411) + (temp_f2_410 * temp_f2_410))) <= temp_f31_339) {
@@ -282,7 +282,7 @@ loop_19:
                                 sp120 = sp28;
                             } else {
                                 sp118 = 0.0f;
-                                unksp11C = 0.0f;
+                                (*(f32 *) ((u8 *) &sp114 + 0x8)) = 0.0f;
                                 sp120 = 0.0f;
                             }
                             sp139 = 0;
@@ -479,7 +479,7 @@ void TeslaTower::DrawLightCone() {
     sp158 = sp38;
     sp1D0 = (f64) sp40;
     sp160 = (f64) sp40;
-    var_f0_731 = ((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + (unksp1CC * unksp1CC));
+    var_f0_731 = ((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + ((*(f32 *) ((u8 *) &sp1C0 + 0xc)) * (*(f32 *) ((u8 *) &sp1C0 + 0xc))));
     if (var_f0_731 > 0.000001f) {
         if (var_f0_731 > 0.0f) {
             temp_f2_737 = __frsqrte(var_f0_731);
@@ -520,34 +520,34 @@ void TeslaTower::DrawLightCone() {
         var_f0_731 = 0.0f;
     }
     temp_f7_809 = (f32) sp1C8 * var_f4_798;
-    temp_f6_810 = unksp1CC * var_f4_798;
+    temp_f6_810 = (*(f32 *) ((u8 *) &sp1C0 + 0xc)) * var_f4_798;
     temp_f5_812 = (f32) sp1D0 * var_f4_798;
     sp1C8 = temp_f7_809;
-    unksp1CC = temp_f6_810;
-    sp28 = (unksp1BC * temp_f5_812) - ((f32) sp1C0 * temp_f6_810);
+    (*(f32 *) ((u8 *) &sp1C0 + 0xc)) = temp_f6_810;
+    sp28 = ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * temp_f5_812) - ((f32) sp1C0 * temp_f6_810);
     sp2C = ((f32) sp1C0 * temp_f7_809) - ((f32) sp1B8 * temp_f5_812);
-    sp30 = ((f32) sp1B8 * temp_f6_810) - (unksp1BC * temp_f7_809);
+    sp30 = ((f32) sp1B8 * temp_f6_810) - ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * temp_f7_809);
     sp1D0 = temp_f5_812;
     sp138 = (f64) sp28;
     sp140 = (f64) sp30;
     Normalise(sp148);
     sp1A8 = M2C_BITWISE(f64, sp148);
     sp1B0 = (f64) sp148.unk8;
-    sp20 = (sp1C8 * unksp1AC) - (unksp1CC * (f32) sp1A8);
+    sp20 = (sp1C8 * (*(f32 *) ((u8 *) &sp1A8 + 0x4))) - ((*(f32 *) ((u8 *) &sp1C0 + 0xc)) * (f32) sp1A8);
     sp1C = (sp1D0 * (f32) sp1A8) - (sp1C8 * (f32) sp1B0);
-    sp18 = (unksp1CC * (f32) sp1B0) - (sp1D0 * unksp1AC);
+    sp18 = ((*(f32 *) ((u8 *) &sp1C0 + 0xc)) * (f32) sp1B0) - (sp1D0 * (*(f32 *) ((u8 *) &sp1A8 + 0x4)));
     sp1C0 = (f64) sp20;
     sp1B8 = (f64) sp18;
     sp210 = (f32) sp1A8;
-    sp214 = unksp1AC;
+    sp214 = (*(f32 *) ((u8 *) &sp1A8 + 0x4));
     sp218 = (f32) sp1B0;
     sp21C = 0.0f;
     sp220 = (f32) sp1B8;
-    sp224 = unksp1BC;
+    sp224 = (*(f32 *) ((u8 *) &sp1B8 + 0x4));
     sp228 = (f32) sp1C0;
     sp22C = 0.0f;
     sp230 = sp1C8;
-    sp234 = unksp1CC;
+    sp234 = (*(f32 *) ((u8 *) &sp1C0 + 0xc));
     sp238 = sp1D0;
     sp23C = 0.0f;
     sp240 = M2C_BITWISE(f32, sp1E8);

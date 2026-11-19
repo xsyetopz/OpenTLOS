@@ -173,7 +173,7 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
     arg0->unk64 = var_f6_180 / 200.0f;
     spA0 = arg0->unk68;
     spA8 = arg0->unk70;
-    unkspA4 = 0.0f;
+    (*(f32 *) ((u8 *) &sp98 + 0xc)) = 0.0f;
     var_f4_278 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (0.0f * 0.0f));
     if (var_f4_278 > 0.000001f) {
         if (var_f4_278 > 0.0f) {
@@ -212,7 +212,7 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
         var_f5_256 = 1.0f / var_f4_278;
     }
     temp_f3_350 = (f32) spA0 * var_f5_256;
-    temp_f7_352 = unkspA4 * var_f5_256;
+    temp_f7_352 = (*(f32 *) ((u8 *) &sp98 + 0xc)) * var_f5_256;
     temp_f6_354 = (f32) spA8 * var_f5_256;
     temp_f12_356 = -temp_f3_350;
     temp_f13_358 = -temp_f7_352;
@@ -225,13 +225,13 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
     sp68 = (f64) sp48;
     sp18 = temp_f31_360;
     sp10 = temp_f12_356;
-    sp30 = (unksp64 * MKVector3::up.unk8) - ((f32) sp68 * MKVector3::up.unk4);
+    sp30 = ((*(f32 *) ((u8 *) &sp60 + 0x4)) * MKVector3::up.unk8) - ((f32) sp68 * MKVector3::up.unk4);
     sp34 = ((f32) sp68 * MKVector3::up.unk0) - ((f32) sp60 * MKVector3::up.unk8);
-    sp38 = ((f32) sp60 * MKVector3::up.unk4) - (unksp64 * MKVector3::up.unk0);
+    sp38 = ((f32) sp60 * MKVector3::up.unk4) - ((*(f32 *) ((u8 *) &sp60 + 0x4)) * MKVector3::up.unk0);
     sp90 = (f64) sp30;
     sp98 = (f64) sp38;
     arg0->unk0 = (f32) sp90;
-    arg0->unk4 = unksp94;
+    arg0->unk4 = (*(f32 *) ((u8 *) &sp90 + 0x4));
     arg0->unk8 = (f32) sp98;
     arg0->unkC = 0.0f;
     arg0->unk10 = MKVector3::up.unk0;
@@ -242,9 +242,9 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
     sp58 = (f64) sp18;
     arg0->unk1C = 0.0f;
     arg0->unk20 = (f32) sp50;
-    arg0->unk24 = unksp54;
+    arg0->unk24 = (*(f32 *) ((u8 *) &sp50 + 0x4));
     arg0->unk28 = (f32) sp58;
-    unkspA4 = temp_f7_352;
+    (*(f32 *) ((u8 *) &sp98 + 0xc)) = temp_f7_352;
     spA8 = temp_f6_354;
     arg0->unk2C = 0.0f;
 }
@@ -302,7 +302,7 @@ loop_8:
             sp10 = temp_r4_439->unk38 + (f32) sp50;
             M2C_FIELD(temp_r4_439, f32 *, 0x30) = (f32) sp58;
             sp60 = (f64) sp10;
-            temp_r4_439->unk34 = unksp5C;
+            temp_r4_439->unk34 = (*(f32 *) ((u8 *) &sp58 + 0x4));
             temp_r4_439->unk38 = (f32) sp60;
             temp_r4_439->unk3C = 1.0f;
             if (temp_r4_439->unk64 <= 0.0f) {
@@ -335,7 +335,7 @@ loop_2:
         sp8.unk18 = sp8.unk8;
         M2C_STRUCT_COPY(temp_r30_560, &Matrix::identity, 0x40);
         M2C_FIELD(temp_r30_560, f32 *, 0x30) = (f32) sp8.unk10;
-        temp_r30_560->unk34 = unksp1C;
+        temp_r30_560->unk34 = (*(f32 *) ((u8 *) &sp8 + 0x14));
         temp_r30_560->unk38 = (f32) sp8.unk18;
         temp_r30_560->unk3C = 1.0f;
         FindNewFlyParameters(temp_r30_560);

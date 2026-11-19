@@ -422,7 +422,7 @@ loop_20:
                 sp3B8 = (f64) sp1D8;
                 sp3C0.Scale3x3(&sp3C0, *((MKVector3 *) &temp_r30_917->unk18));
                 sp3C0.unk30 = (f32) sp3B0;
-                sp3C0.unk34 = unksp3B4;
+                sp3C0.unk34 = (*(f32 *) ((u8 *) &sp3B0 + 0x4));
                 sp3C0.unk38 = (f32) sp3B8;
                 sp3C0.unk3C = 1.0f;
                 MKModel_SetWorldMatrix(M2C_FIELD(temp_r30_917->unk2C, MKModel **, 4), sp3C0);
@@ -1252,7 +1252,7 @@ block_22:
     sp1B8 = sp38;
     sp40 = M2C_FIELD(temp_r3_1868, f32 *, 8) - (f32) sp2C0;
     sp1C0 = (f64) sp40;
-    temp_f1_1892 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + (unksp1BC * unksp1BC));
+    temp_f1_1892 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * (*(f32 *) ((u8 *) &sp1B8 + 0x4))));
     if ((temp_f1_1892 <= 4000000.0f) && ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL)) {
         temp_f27_1901 = 1.0f - (temp_f1_1892 / 4000000.0f);
         if (temp_f27_1901 > 0.0f) {
@@ -1343,7 +1343,7 @@ void IceBossStomp::Collided(MKCollisionResult &arg0) {
         spB8 = sp28;
     } else {
         spB0 = 0.0f;
-        unkspB4 = 0.0f;
+        (*(f32 *) ((u8 *) &spAC + 0x8)) = 0.0f;
         spB8 = 0.0f;
     }
     spD1 = 0;
@@ -1580,7 +1580,7 @@ loop_8:
     spF0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
     KDMath_BuildMatrixFromFwd(&sp120, *((MKVector3 *) &spF8), (MKVector3 *) &spE8);
     sp120.unk30 = (f32) sp108;
-    sp120.unk34 = unksp10C;
+    sp120.unk34 = (*(f32 *) ((u8 *) &sp108 + 0x4));
     sp120.unk38 = (f32) sp110;
     sp120.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, sp120);

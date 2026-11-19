@@ -577,7 +577,7 @@ void GameParticleEmitter::Update() {
         sp28 = temp_f0_1088;
         sp10 = (f32) sp20 - M2C_FIELD(temp_r4_1080, f32 *, 8);
         sp30 = (f64) sp10;
-        this->unk24 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C));
+        this->unk24 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4))));
         if (!(this->unk24 > this->unkE4)) {
             temp_r3_1110 = this->unkC8;
             if (temp_r3_1110 != NULL) {

@@ -465,7 +465,7 @@ void FireBoss::LaunchFireball() {
                 ((AITargetData *) &sp10)->GetPos();
                 sp20 = sp10;
                 sp28 = sp18;
-                unksp24 = unksp34;
+                (*(f32 *) ((u8 *) &sp20 + 0x4)) = (*(f32 *) ((u8 *) &sp30 + 0x4));
                 M2C_FIELD(M2C_FIELD(temp_r3_702, void **, 0x44), M2C_UNK (**)(s32, f64 *, f64 *, FireBoss *, s32, M2C_UNK, f32), 0x4C)(temp_r3_702, &sp30, &sp20, this, GS_TrainBossMissle01, 0, 1000.0f);
                 ((SteamTrainEffects *) &this->unkD10)->EmitSmoke();
                 temp_r3_732 = this->unk1070 - 4;
@@ -550,12 +550,12 @@ void FireBoss::SquashHero() {
         sp58.unk28 = (f64) sp40;
         sp58.unk20 = (f64) sp38;
         sp58.GetDir();
-        if ((((f32) sp58.unk28 * sp58.unk8) + (((f32) sp58.unk20 * M2C_BITWISE(f32, sp58)) + (unksp7C * unksp5C))) > 0.0f) {
+        if ((((f32) sp58.unk28 * sp58.unk8) + (((f32) sp58.unk20 * M2C_BITWISE(f32, sp58)) + ((*(f32 *) ((u8 *) &sp58 + 0x24)) * (*(f32 *) ((u8 *) &sp58 + 0x4))))) > 0.0f) {
             sp58.unk10 = sp58.unk20;
             sp58.unk18 = sp58.unk28;
         } else {
             sp8 = -(f32) sp58.unk20;
-            spC = -unksp7C;
+            spC = -(*(f32 *) ((u8 *) &sp58 + 0x24));
             sp10 = -(f32) sp58.unk28;
             sp48 = (f64) sp8;
             sp50 = (f64) sp10;
@@ -607,7 +607,7 @@ void FireBoss::SquashHero() {
                     spC0 = sp30;
                 } else {
                     spB8 = 0.0f;
-                    unkspBC = 0.0f;
+                    (*(f32 *) ((u8 *) &spB4 + 0x8)) = 0.0f;
                     spC0 = 0.0f;
                 }
                 spD9 = 0;
@@ -632,7 +632,7 @@ void FireBoss::SquashHero() {
                     spC0 = sp20;
                 } else {
                     spB8 = 0.0f;
-                    unkspBC = 0.0f;
+                    (*(f32 *) ((u8 *) &spB4 + 0x8)) = 0.0f;
                     spC0 = 0.0f;
                 }
                 spD9 = 0;
@@ -708,10 +708,10 @@ void FireBoss::HurtHero() {
         sp40.unk28 = (f64) sp28;
         sp40.unk20 = (f64) sp20;
         sp40.GetDir();
-        KDMath_Slerp(sp30, *((MKVector3 *) &this->unkC0), ((f32) sp40.unk28 * sp40.unk8) + (((f32) sp40.unk20 * M2C_BITWISE(f32, sp40)) + (unksp64 * unksp44)));
+        KDMath_Slerp(sp30, *((MKVector3 *) &this->unkC0), ((f32) sp40.unk28 * sp40.unk8) + (((f32) sp40.unk20 * M2C_BITWISE(f32, sp40)) + ((*(f32 *) ((u8 *) &sp40 + 0x24)) * (*(f32 *) ((u8 *) &sp40 + 0x4)))));
         sp40.unk10 = M2C_BITWISE(f64, sp30);
         sp40.unk18 = (f64) sp30.unk8;
-        var_f4_1120 = ((f32) sp40.unk18 * (f32) sp40.unk18) + (((f32) sp40.unk10 * (f32) sp40.unk10) + (unksp54 * unksp54));
+        var_f4_1120 = ((f32) sp40.unk18 * (f32) sp40.unk18) + (((f32) sp40.unk10 * (f32) sp40.unk10) + ((*(f32 *) ((u8 *) &sp40 + 0x14)) * (*(f32 *) ((u8 *) &sp40 + 0x14))));
         if (var_f4_1120 > 0.000001f) {
             if (var_f4_1120 > 0.0f) {
                 temp_f1_1126 = __frsqrte(var_f4_1120);
@@ -752,7 +752,7 @@ void FireBoss::HurtHero() {
         }
         temp_f0_1198 = (f32) sp40.unk18 * var_f3_1187;
         sp40.unk10 = (f32) sp40.unk10 * var_f3_1187;
-        unksp54 *= var_f3_1187;
+        (*(f32 *) ((u8 *) &sp40 + 0x14)) *= var_f3_1187;
         sp40.unk18 = temp_f0_1198;
         sp40.unk10 = (f64) sp40.unk10 * 5.852924563e-315;
         sp40.unk18 = temp_f0_1198 * 20000.0f;
@@ -776,7 +776,7 @@ void FireBoss::HurtHero() {
             spA8 = sp18;
         } else {
             spA0 = 0.0f;
-            unkspA4 = 0.0f;
+            (*(f32 *) ((u8 *) &sp9C + 0x8)) = 0.0f;
             spA8 = 0.0f;
         }
         spC1 = 0;
@@ -823,7 +823,7 @@ u8 FireBoss::SpyroIsInFront() {
         sp18 = sp8;
         sp10 = (f32) sp50 - (f32) sp30;
         sp20 = (f64) sp10;
-        if ((((f32) sp20 * this->unkC8) + (((f32) sp18 * this->unkC0) + (unksp1C * this->unkC4))) > 0.0f) {
+        if ((((f32) sp20 * this->unkC8) + (((f32) sp18 * this->unkC0) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * this->unkC4))) > 0.0f) {
             return 1U;
         }
     }
@@ -895,7 +895,7 @@ void FireBoss::CheckFlameThrowerHit() {
             sp30 = sp120.unk28 * -1.0f;
             spD0 = (f64) sp30;
             sp120.unk20 = (f32) spC8;
-            sp120.unk24 = unkspCC;
+            sp120.unk24 = (*(f32 *) ((u8 *) &spC8 + 0x4));
             sp120.unk28 = (f32) spD0;
             sp120.unk2C = 0.0f;
             temp_f0_1436 = spE0.unk20 * 1.58735232e-314;
@@ -905,7 +905,7 @@ void FireBoss::CheckFlameThrowerHit() {
             sp20 = spE0.unk28 * -1.0f;
             spC0 = (f64) sp20;
             spE0.unk20 = (f32) spB8;
-            spE0.unk24 = unkspBC;
+            spE0.unk24 = (*(f32 *) ((u8 *) &spB8 + 0x4));
             spE0.unk28 = (f32) spC0;
             sp68 = sp120.unk20 * 5.634608575e-315;
             sp70 = (f32) spD0 * 500.0f;
@@ -1055,9 +1055,9 @@ u8 FireBoss::IsSpyroOnInsideTrack(int arg0) {
     sp28 = M2C_FIELD(temp_r4_1784, f64 *, 0x30);
     sp30 = M2C_FIELD(temp_r4_1784, f64 *, 0x38);
     temp_f4_1817 = M2C_FIELD(temp_r3_1788, f32 *, 0xC50);
-    sp8 = M2C_FIELD(temp_r3_1788, f32 *, 0xCA0) + (((f32) sp30 * M2C_FIELD(temp_r3_1788, f32 *, 0xC90)) + (((f32) sp28 * M2C_FIELD(temp_r3_1788, f32 *, 0xC70)) + (unksp2C * M2C_FIELD(temp_r3_1788, f32 *, 0xC80))));
-    spC = M2C_FIELD(temp_r3_1788, f32 *, 0xCA4) + (((f32) sp30 * M2C_FIELD(temp_r3_1788, f32 *, 0xC94)) + (((f32) sp28 * M2C_FIELD(temp_r3_1788, f32 *, 0xC74)) + (unksp2C * M2C_FIELD(temp_r3_1788, f32 *, 0xC84))));
-    sp10 = M2C_FIELD(temp_r3_1788, f32 *, 0xCA8) + (((f32) sp30 * M2C_FIELD(temp_r3_1788, f32 *, 0xC98)) + (((f32) sp28 * M2C_FIELD(temp_r3_1788, f32 *, 0xC78)) + (unksp2C * M2C_FIELD(temp_r3_1788, f32 *, 0xC88))));
+    sp8 = M2C_FIELD(temp_r3_1788, f32 *, 0xCA0) + (((f32) sp30 * M2C_FIELD(temp_r3_1788, f32 *, 0xC90)) + (((f32) sp28 * M2C_FIELD(temp_r3_1788, f32 *, 0xC70)) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * M2C_FIELD(temp_r3_1788, f32 *, 0xC80))));
+    spC = M2C_FIELD(temp_r3_1788, f32 *, 0xCA4) + (((f32) sp30 * M2C_FIELD(temp_r3_1788, f32 *, 0xC94)) + (((f32) sp28 * M2C_FIELD(temp_r3_1788, f32 *, 0xC74)) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * M2C_FIELD(temp_r3_1788, f32 *, 0xC84))));
+    sp10 = M2C_FIELD(temp_r3_1788, f32 *, 0xCA8) + (((f32) sp30 * M2C_FIELD(temp_r3_1788, f32 *, 0xC98)) + (((f32) sp28 * M2C_FIELD(temp_r3_1788, f32 *, 0xC78)) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * M2C_FIELD(temp_r3_1788, f32 *, 0xC88))));
     sp28 = (f64) sp8;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
@@ -1065,7 +1065,7 @@ u8 FireBoss::IsSpyroOnInsideTrack(int arg0) {
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (((f32) sp28 == temp_f4_1817) && ((f32) sp28 <= (temp_f4_1817 + M2C_FIELD(temp_r3_1788, f32 *, 0xC60)))) {
         temp_f1_1839 = M2C_FIELD(temp_r3_1788, f32 *, 0xC54);
-        if ((unksp2C >= temp_f1_1839) && (unksp2C <= (temp_f1_1839 + M2C_FIELD(temp_r3_1788, f32 *, 0xC64)))) {
+        if (((*(f32 *) ((u8 *) &sp28 + 0x4)) >= temp_f1_1839) && ((*(f32 *) ((u8 *) &sp28 + 0x4)) <= (temp_f1_1839 + M2C_FIELD(temp_r3_1788, f32 *, 0xC64)))) {
             temp_f1_1849 = M2C_FIELD(temp_r3_1788, f32 *, 0xC58);
             if (((f32) sp30 >= temp_f1_1849) && ((f32) sp30 <= (temp_f1_1849 + M2C_FIELD(temp_r3_1788, f32 *, 0xC68)))) {
                 var_r0_1786 = 1;
@@ -1698,7 +1698,7 @@ void FireBoss::CreateInsideSplines() {
         sp108 = temp_f0_3109;
         sp268 = temp_f0_3109;
         sp110 = sp1F0 - sp1D8.unk8;
-        unksp26C = 0.0f;
+        (*(f32 *) ((u8 *) &sp260 + 0xc)) = 0.0f;
         sp270 = (f64) sp110;
         var_f21_3125 = ((f32) sp270 * (f32) sp270) + (((f32) sp268 * (f32) sp268) + (0.0f * 0.0f));
         if (var_f21_3125 > 0.000001f) {
@@ -1743,10 +1743,10 @@ void FireBoss::CreateInsideSplines() {
         temp_r26_3198 = this + var_r29_3076;
         temp_r25_3200 = temp_r26_3198 + 0xC70;
         temp_f5_3201 = (f32) sp268 * var_f2_3191;
-        temp_f4_3203 = unksp26C * var_f2_3191;
+        temp_f4_3203 = (*(f32 *) ((u8 *) &sp260 + 0xc)) * var_f2_3191;
         temp_f3_3205 = (f32) sp270 * var_f2_3191;
         sp268 = temp_f5_3201;
-        unksp26C = temp_f4_3203;
+        (*(f32 *) ((u8 *) &sp260 + 0xc)) = temp_f4_3203;
         sp270 = temp_f3_3205;
         sp40 = (temp_f27_3083 * temp_f4_3203) - (temp_f25_3080 * temp_f5_3201);
         sp38 = (temp_f25_3080 * temp_f3_3205) - (temp_f26_3082 * temp_f4_3203);
@@ -1763,7 +1763,7 @@ void FireBoss::CreateInsideSplines() {
         M2C_FIELD(temp_r26_3198, f32 *, 0xCA8) = sp1C0;
         M2C_FIELD(temp_r26_3198, f32 *, 0xCAC) = 1.0f;
         M2C_FIELD(temp_r26_3198, f32 *, 0xC70) = (f32) sp278;
-        M2C_FIELD(temp_r26_3198, f32 *, 0xC74) = unksp27C;
+        M2C_FIELD(temp_r26_3198, f32 *, 0xC74) = (*(f32 *) ((u8 *) &sp278 + 0x4));
         M2C_FIELD(temp_r26_3198, f32 *, 0xC78) = (f32) sp280;
         M2C_FIELD(temp_r26_3198, f32 *, 0xC7C) = 0.0f;
         M2C_FIELD(temp_r26_3198, f32 *, 0xC80) = temp_f27_3083;
@@ -1771,7 +1771,7 @@ void FireBoss::CreateInsideSplines() {
         M2C_FIELD(temp_r26_3198, f32 *, 0xC88) = temp_f26_3082;
         M2C_FIELD(temp_r26_3198, f32 *, 0xC8C) = 0.0f;
         M2C_FIELD(temp_r26_3198, f32 *, 0xC90) = sp268;
-        M2C_FIELD(temp_r26_3198, f32 *, 0xC94) = unksp26C;
+        M2C_FIELD(temp_r26_3198, f32 *, 0xC94) = (*(f32 *) ((u8 *) &sp260 + 0xc));
         M2C_FIELD(temp_r26_3198, f32 *, 0xC98) = sp270;
         M2C_FIELD(temp_r26_3198, f32 *, 0xC9C) = 0.0f;
         temp_r25_3200->Inverse(temp_r25_3200);
@@ -1782,13 +1782,13 @@ void FireBoss::CreateInsideSplines() {
         var_r29_3076 += 0x60;
         var_r28_3078 += 0x14;
         sp260 = sp1B0;
-        sp28 = M2C_FIELD(temp_r26_3198, f32 *, 0xCA0) + (((f32) sp260 * M2C_FIELD(temp_r26_3198, f32 *, 0xC90)) + (((f32) sp258 * M2C_FIELD(temp_r26_3198, f32 *, 0xC70)) + (unksp25C * M2C_FIELD(temp_r26_3198, f32 *, 0xC80))));
-        sp2C = M2C_FIELD(temp_r26_3198, f32 *, 0xCA4) + (((f32) sp260 * M2C_FIELD(temp_r26_3198, f32 *, 0xC94)) + (((f32) sp258 * M2C_FIELD(temp_r26_3198, f32 *, 0xC74)) + (unksp25C * M2C_FIELD(temp_r26_3198, f32 *, 0xC84))));
-        sp30 = M2C_FIELD(temp_r26_3198, f32 *, 0xCA8) + (((f32) sp260 * M2C_FIELD(temp_r26_3198, f32 *, 0xC98)) + (((f32) sp258 * M2C_FIELD(temp_r26_3198, f32 *, 0xC78)) + (unksp25C * M2C_FIELD(temp_r26_3198, f32 *, 0xC88))));
+        sp28 = M2C_FIELD(temp_r26_3198, f32 *, 0xCA0) + (((f32) sp260 * M2C_FIELD(temp_r26_3198, f32 *, 0xC90)) + (((f32) sp258 * M2C_FIELD(temp_r26_3198, f32 *, 0xC70)) + ((*(f32 *) ((u8 *) &sp258 + 0x4)) * M2C_FIELD(temp_r26_3198, f32 *, 0xC80))));
+        sp2C = M2C_FIELD(temp_r26_3198, f32 *, 0xCA4) + (((f32) sp260 * M2C_FIELD(temp_r26_3198, f32 *, 0xC94)) + (((f32) sp258 * M2C_FIELD(temp_r26_3198, f32 *, 0xC74)) + ((*(f32 *) ((u8 *) &sp258 + 0x4)) * M2C_FIELD(temp_r26_3198, f32 *, 0xC84))));
+        sp30 = M2C_FIELD(temp_r26_3198, f32 *, 0xCA8) + (((f32) sp260 * M2C_FIELD(temp_r26_3198, f32 *, 0xC98)) + (((f32) sp258 * M2C_FIELD(temp_r26_3198, f32 *, 0xC78)) + ((*(f32 *) ((u8 *) &sp258 + 0x4)) * M2C_FIELD(temp_r26_3198, f32 *, 0xC88))));
         sp258 = (f64) sp28;
         sp260 = (f64) sp30;
         M2C_FIELD(temp_r26_3198, f32 *, 0xC50) = (f32) ((f32) sp258 - 300.0f);
-        M2C_FIELD(temp_r26_3198, f32 *, 0xC54) = (f32) (unksp25C - 500.0f);
+        M2C_FIELD(temp_r26_3198, f32 *, 0xC54) = (f32) ((*(f32 *) ((u8 *) &sp258 + 0x4)) - 500.0f);
         M2C_FIELD(temp_r26_3198, f32 *, 0xC58) = (f32) -((0.5f * var_f21_3125) - (f32) sp260);
         M2C_FIELD(temp_r26_3198, f32 *, 0xC60) = 600.0f;
         M2C_FIELD(temp_r26_3198, f32 *, 0xC64) = 1000.0f;
@@ -1799,7 +1799,7 @@ void FireBoss::CreateInsideSplines() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp11C'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void FireBoss::CreateOutsideSpline() {
     f64 sp130;
     f64 sp128;
@@ -1864,7 +1864,7 @@ void FireBoss::CreateOutsideSpline() {
     sp28 = spE8 - sp128;
     sp118 = sp28;
     sp30 = (f32) spF0 - (f32) sp130;
-    unksp11C = 0.0f;
+    (*(f32 *) ((u8 *) &sp118 + 0x4)) = 0.0f;
     sp120 = (f64) sp30;
     temp_f28_3433 = KDMath_GetYaw(*((MKVector3 *) &sp118));
     var_r30_3436 = 0;
@@ -2080,7 +2080,7 @@ block_31:
             temp_f0_3858 = M2C_FIELD(temp_r3_3844, f32 *, 0x20) + GetCollisionRadius();
             sp8 = M2C_FIELD(temp_r3_3854, f64 *, 0x30);
             sp10 = M2C_FIELD(temp_r3_3854, f64 *, 0x38);
-            temp_f5_3864 = unkspC - M2C_FIELD(temp_r3_3844, f32 *, 0x14);
+            temp_f5_3864 = (*(f32 *) ((u8 *) &sp8 + 0x4)) - M2C_FIELD(temp_r3_3844, f32 *, 0x14);
             temp_f4_3868 = (f32) sp8 - M2C_FIELD(temp_r3_3844, f32 *, 0x10);
             temp_f3_3871 = (f32) sp10 - M2C_FIELD(temp_r3_3844, f32 *, 0x18);
             if (!(((temp_f3_3871 * temp_f3_3871) + ((temp_f4_3868 * temp_f4_3868) + (temp_f5_3864 * temp_f5_3864))) < (temp_f0_3858 * temp_f0_3858))) {

@@ -45,7 +45,7 @@ s32 MKCollisionManager::CalcMaxGridOverlap(const MKCollisionAABB &arg0, Matrix *
     sp20 = sp10;
     sp18 = sp30.unk18 - sp30.unk8;
     sp28 = (f64) sp18;
-    var_f4_43 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+    var_f4_43 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * (*(f32 *) ((u8 *) &sp20 + 0x4))));
     if (var_f4_43 > 0.0f) {
         temp_f1_46 = __frsqrte(var_f4_43);
         temp_f1_52 = 0.5 * temp_f1_46 * -(((f64) var_f4_43 * (temp_f1_46 * temp_f1_46)) - 3.0);
@@ -466,7 +466,7 @@ loop_14:
             goto block_15;
         }
         var_r0_641 = 0;
-        if (((f32) sp18.unk10 > var_r19_637->unk8.unk0) && (M2C_BITWISE(f32, sp18) < var_r19_637->unk8.unk10) && (unksp2C > var_r19_637->unk8.unk4) && (unksp1C < var_r19_637->unk8.unk14) && ((f32) sp18.unk18 > var_r19_637->unk8.unk8) && ((f32) sp18.unk8 < var_r19_637->unk8.unk18)) {
+        if (((f32) sp18.unk10 > var_r19_637->unk8.unk0) && (M2C_BITWISE(f32, sp18) < var_r19_637->unk8.unk10) && ((*(f32 *) ((u8 *) &sp18 + 0x14)) > var_r19_637->unk8.unk4) && ((*(f32 *) ((u8 *) &sp18 + 0x4)) < var_r19_637->unk8.unk14) && ((f32) sp18.unk18 > var_r19_637->unk8.unk8) && ((f32) sp18.unk8 < var_r19_637->unk8.unk18)) {
             var_r0_641 = 1;
         }
         if (var_r0_641 != 0) {
@@ -525,7 +525,7 @@ loop_53:
         }
         if (var_r8_743 != 0) {
             var_r5_756 = 0;
-            if ((M2C_FIELD(temp_r4_736, f32 *, 0x20) > M2C_BITWISE(f32, sp18)) && (M2C_FIELD(temp_r4_736, f32 *, 0x10) < (f32) sp18.unk10) && (M2C_FIELD(temp_r4_736, f32 *, 0x24) > unksp1C) && (M2C_FIELD(temp_r4_736, f32 *, 0x14) < unksp2C) && (M2C_FIELD(temp_r4_736, f32 *, 0x28) > (f32) sp18.unk8) && (M2C_FIELD(temp_r4_736, f32 *, 0x18) < (f32) sp18.unk18)) {
+            if ((M2C_FIELD(temp_r4_736, f32 *, 0x20) > M2C_BITWISE(f32, sp18)) && (M2C_FIELD(temp_r4_736, f32 *, 0x10) < (f32) sp18.unk10) && (M2C_FIELD(temp_r4_736, f32 *, 0x24) > (*(f32 *) ((u8 *) &sp18 + 0x4))) && (M2C_FIELD(temp_r4_736, f32 *, 0x14) < (*(f32 *) ((u8 *) &sp18 + 0x14))) && (M2C_FIELD(temp_r4_736, f32 *, 0x28) > (f32) sp18.unk8) && (M2C_FIELD(temp_r4_736, f32 *, 0x18) < (f32) sp18.unk18)) {
                 var_r5_756 = 1;
             }
             if (var_r5_756 != 0) {
@@ -589,7 +589,7 @@ loop_88:
         }
         if (var_r8_881 != 0) {
             var_r5_894 = 0;
-            if ((M2C_FIELD(temp_r4_874, f32 *, 0x20) > M2C_BITWISE(f32, sp18)) && (M2C_FIELD(temp_r4_874, f32 *, 0x10) < (f32) sp18.unk10) && (M2C_FIELD(temp_r4_874, f32 *, 0x24) > unksp1C) && (M2C_FIELD(temp_r4_874, f32 *, 0x14) < unksp2C) && (M2C_FIELD(temp_r4_874, f32 *, 0x28) > (f32) sp18.unk8) && (M2C_FIELD(temp_r4_874, f32 *, 0x18) < (f32) sp18.unk18)) {
+            if ((M2C_FIELD(temp_r4_874, f32 *, 0x20) > M2C_BITWISE(f32, sp18)) && (M2C_FIELD(temp_r4_874, f32 *, 0x10) < (f32) sp18.unk10) && (M2C_FIELD(temp_r4_874, f32 *, 0x24) > (*(f32 *) ((u8 *) &sp18 + 0x4))) && (M2C_FIELD(temp_r4_874, f32 *, 0x14) < (*(f32 *) ((u8 *) &sp18 + 0x14))) && (M2C_FIELD(temp_r4_874, f32 *, 0x28) > (f32) sp18.unk8) && (M2C_FIELD(temp_r4_874, f32 *, 0x18) < (f32) sp18.unk18)) {
                 var_r5_894 = 1;
             }
             if (var_r5_894 != 0) {
@@ -780,7 +780,7 @@ u8 MKCollisionManager::SweepSphereCollide(const MKVector3 &arg0, const MKVector3
 loop_15:
         if (var_r20_1086 != NULL) {
             var_r0_1090 = 0;
-            if (((f32) sp70.unk10 > var_r20_1086->unk8.unk0) && (M2C_BITWISE(f32, sp70) < var_r20_1086->unk8.unk10) && (unksp84 > var_r20_1086->unk8.unk4) && (unksp74 < var_r20_1086->unk8.unk14) && ((f32) sp70.unk18 > var_r20_1086->unk8.unk8) && ((f32) sp70.unk8 < var_r20_1086->unk8.unk18)) {
+            if (((f32) sp70.unk10 > var_r20_1086->unk8.unk0) && (M2C_BITWISE(f32, sp70) < var_r20_1086->unk8.unk10) && ((*(f32 *) ((u8 *) &sp70 + 0x14)) > var_r20_1086->unk8.unk4) && ((*(f32 *) ((u8 *) &sp70 + 0x4)) < var_r20_1086->unk8.unk14) && ((f32) sp70.unk18 > var_r20_1086->unk8.unk8) && ((f32) sp70.unk8 < var_r20_1086->unk8.unk18)) {
                 var_r0_1090 = 1;
             }
             if (var_r0_1090 != 0) {
@@ -829,7 +829,7 @@ loop_52:
                     }
                     if (var_r8_1188 != 0) {
                         var_r0_1201 = 0;
-                        if ((M2C_FIELD(temp_r4_1181, f32 *, 0x20) > M2C_BITWISE(f32, sp70)) && (M2C_FIELD(temp_r4_1181, f32 *, 0x10) < (f32) sp70.unk10) && (M2C_FIELD(temp_r4_1181, f32 *, 0x24) > unksp74) && (M2C_FIELD(temp_r4_1181, f32 *, 0x14) < unksp84) && (M2C_FIELD(temp_r4_1181, f32 *, 0x28) > (f32) sp70.unk8) && (M2C_FIELD(temp_r4_1181, f32 *, 0x18) < (f32) sp70.unk18)) {
+                        if ((M2C_FIELD(temp_r4_1181, f32 *, 0x20) > M2C_BITWISE(f32, sp70)) && (M2C_FIELD(temp_r4_1181, f32 *, 0x10) < (f32) sp70.unk10) && (M2C_FIELD(temp_r4_1181, f32 *, 0x24) > (*(f32 *) ((u8 *) &sp70 + 0x4))) && (M2C_FIELD(temp_r4_1181, f32 *, 0x14) < (*(f32 *) ((u8 *) &sp70 + 0x14))) && (M2C_FIELD(temp_r4_1181, f32 *, 0x28) > (f32) sp70.unk8) && (M2C_FIELD(temp_r4_1181, f32 *, 0x18) < (f32) sp70.unk18)) {
                             var_r0_1201 = 1;
                         }
                         if (var_r0_1201 != 0) {
@@ -888,7 +888,7 @@ loop_87:
                     }
                     if (var_r8_1323 != 0) {
                         var_r0_1336 = 0;
-                        if ((M2C_FIELD(temp_r4_1316, f32 *, 0x20) > M2C_BITWISE(f32, sp70)) && (M2C_FIELD(temp_r4_1316, f32 *, 0x10) < (f32) sp70.unk10) && (M2C_FIELD(temp_r4_1316, f32 *, 0x24) > unksp74) && (M2C_FIELD(temp_r4_1316, f32 *, 0x14) < unksp84) && (M2C_FIELD(temp_r4_1316, f32 *, 0x28) > (f32) sp70.unk8) && (M2C_FIELD(temp_r4_1316, f32 *, 0x18) < (f32) sp70.unk18)) {
+                        if ((M2C_FIELD(temp_r4_1316, f32 *, 0x20) > M2C_BITWISE(f32, sp70)) && (M2C_FIELD(temp_r4_1316, f32 *, 0x10) < (f32) sp70.unk10) && (M2C_FIELD(temp_r4_1316, f32 *, 0x24) > (*(f32 *) ((u8 *) &sp70 + 0x4))) && (M2C_FIELD(temp_r4_1316, f32 *, 0x14) < (*(f32 *) ((u8 *) &sp70 + 0x14))) && (M2C_FIELD(temp_r4_1316, f32 *, 0x28) > (f32) sp70.unk8) && (M2C_FIELD(temp_r4_1316, f32 *, 0x18) < (f32) sp70.unk18)) {
                             var_r0_1336 = 1;
                         }
                         if (var_r0_1336 != 0) {
@@ -1174,7 +1174,7 @@ loop_45:
                     }
                     if (var_r8_1676 != 0) {
                         var_r5_1689 = 0;
-                        if ((M2C_FIELD(temp_r4_1669, f32 *, 0x20) > M2C_BITWISE(f32, spA0)) && (M2C_FIELD(temp_r4_1669, f32 *, 0x10) < (f32) spA0.unk10) && (M2C_FIELD(temp_r4_1669, f32 *, 0x24) > unkspA4) && (M2C_FIELD(temp_r4_1669, f32 *, 0x14) < unkspB4) && (M2C_FIELD(temp_r4_1669, f32 *, 0x28) > (f32) spA0.unk8) && (M2C_FIELD(temp_r4_1669, f32 *, 0x18) < (f32) spA0.unk18)) {
+                        if ((M2C_FIELD(temp_r4_1669, f32 *, 0x20) > M2C_BITWISE(f32, spA0)) && (M2C_FIELD(temp_r4_1669, f32 *, 0x10) < (f32) spA0.unk10) && (M2C_FIELD(temp_r4_1669, f32 *, 0x24) > (*(f32 *) ((u8 *) &spA0 + 0x4))) && (M2C_FIELD(temp_r4_1669, f32 *, 0x14) < (*(f32 *) ((u8 *) &spA0 + 0x14))) && (M2C_FIELD(temp_r4_1669, f32 *, 0x28) > (f32) spA0.unk8) && (M2C_FIELD(temp_r4_1669, f32 *, 0x18) < (f32) spA0.unk18)) {
                             var_r5_1689 = 1;
                         }
                         if (var_r5_1689 != 0) {
@@ -1258,7 +1258,7 @@ loop_82:
                     }
                     if (var_r8_1860 != 0) {
                         var_r5_1873 = 0;
-                        if ((M2C_FIELD(temp_r4_1853, f32 *, 0x20) > M2C_BITWISE(f32, spA0)) && (M2C_FIELD(temp_r4_1853, f32 *, 0x10) < (f32) spA0.unk10) && (M2C_FIELD(temp_r4_1853, f32 *, 0x24) > unkspA4) && (M2C_FIELD(temp_r4_1853, f32 *, 0x14) < unkspB4) && (M2C_FIELD(temp_r4_1853, f32 *, 0x28) > (f32) spA0.unk8) && (M2C_FIELD(temp_r4_1853, f32 *, 0x18) < (f32) spA0.unk18)) {
+                        if ((M2C_FIELD(temp_r4_1853, f32 *, 0x20) > M2C_BITWISE(f32, spA0)) && (M2C_FIELD(temp_r4_1853, f32 *, 0x10) < (f32) spA0.unk10) && (M2C_FIELD(temp_r4_1853, f32 *, 0x24) > (*(f32 *) ((u8 *) &spA0 + 0x4))) && (M2C_FIELD(temp_r4_1853, f32 *, 0x14) < (*(f32 *) ((u8 *) &spA0 + 0x14))) && (M2C_FIELD(temp_r4_1853, f32 *, 0x28) > (f32) spA0.unk8) && (M2C_FIELD(temp_r4_1853, f32 *, 0x18) < (f32) spA0.unk18)) {
                             var_r5_1873 = 1;
                         }
                         if (var_r5_1873 != 0) {
@@ -1514,7 +1514,7 @@ u8 MKCollisionManager::RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, 
 loop_15:
         if (var_r20_2188 != NULL) {
             var_r0_2192 = 0;
-            if (((f32) sp70.unk10 > var_r20_2188->unk8.unk0) && (M2C_BITWISE(f32, sp70) < var_r20_2188->unk8.unk10) && (unksp84 > var_r20_2188->unk8.unk4) && (unksp74 < var_r20_2188->unk8.unk14) && ((f32) sp70.unk18 > var_r20_2188->unk8.unk8) && ((f32) sp70.unk8 < var_r20_2188->unk8.unk18)) {
+            if (((f32) sp70.unk10 > var_r20_2188->unk8.unk0) && (M2C_BITWISE(f32, sp70) < var_r20_2188->unk8.unk10) && ((*(f32 *) ((u8 *) &sp70 + 0x14)) > var_r20_2188->unk8.unk4) && ((*(f32 *) ((u8 *) &sp70 + 0x4)) < var_r20_2188->unk8.unk14) && ((f32) sp70.unk18 > var_r20_2188->unk8.unk8) && ((f32) sp70.unk8 < var_r20_2188->unk8.unk18)) {
                 var_r0_2192 = 1;
             }
             if (var_r0_2192 != 0) {
@@ -1563,7 +1563,7 @@ loop_52:
                     }
                     if (var_r8_2290 != 0) {
                         var_r0_2303 = 0;
-                        if ((M2C_FIELD(temp_r4_2283, f32 *, 0x20) > M2C_BITWISE(f32, sp70)) && (M2C_FIELD(temp_r4_2283, f32 *, 0x10) < (f32) sp70.unk10) && (M2C_FIELD(temp_r4_2283, f32 *, 0x24) > unksp74) && (M2C_FIELD(temp_r4_2283, f32 *, 0x14) < unksp84) && (M2C_FIELD(temp_r4_2283, f32 *, 0x28) > (f32) sp70.unk8) && (M2C_FIELD(temp_r4_2283, f32 *, 0x18) < (f32) sp70.unk18)) {
+                        if ((M2C_FIELD(temp_r4_2283, f32 *, 0x20) > M2C_BITWISE(f32, sp70)) && (M2C_FIELD(temp_r4_2283, f32 *, 0x10) < (f32) sp70.unk10) && (M2C_FIELD(temp_r4_2283, f32 *, 0x24) > (*(f32 *) ((u8 *) &sp70 + 0x4))) && (M2C_FIELD(temp_r4_2283, f32 *, 0x14) < (*(f32 *) ((u8 *) &sp70 + 0x14))) && (M2C_FIELD(temp_r4_2283, f32 *, 0x28) > (f32) sp70.unk8) && (M2C_FIELD(temp_r4_2283, f32 *, 0x18) < (f32) sp70.unk18)) {
                             var_r0_2303 = 1;
                         }
                         if (var_r0_2303 != 0) {
@@ -1622,7 +1622,7 @@ loop_87:
                     }
                     if (var_r8_2425 != 0) {
                         var_r0_2438 = 0;
-                        if ((M2C_FIELD(temp_r4_2418, f32 *, 0x20) > M2C_BITWISE(f32, sp70)) && (M2C_FIELD(temp_r4_2418, f32 *, 0x10) < (f32) sp70.unk10) && (M2C_FIELD(temp_r4_2418, f32 *, 0x24) > unksp74) && (M2C_FIELD(temp_r4_2418, f32 *, 0x14) < unksp84) && (M2C_FIELD(temp_r4_2418, f32 *, 0x28) > (f32) sp70.unk8) && (M2C_FIELD(temp_r4_2418, f32 *, 0x18) < (f32) sp70.unk18)) {
+                        if ((M2C_FIELD(temp_r4_2418, f32 *, 0x20) > M2C_BITWISE(f32, sp70)) && (M2C_FIELD(temp_r4_2418, f32 *, 0x10) < (f32) sp70.unk10) && (M2C_FIELD(temp_r4_2418, f32 *, 0x24) > (*(f32 *) ((u8 *) &sp70 + 0x4))) && (M2C_FIELD(temp_r4_2418, f32 *, 0x14) < (*(f32 *) ((u8 *) &sp70 + 0x14))) && (M2C_FIELD(temp_r4_2418, f32 *, 0x28) > (f32) sp70.unk8) && (M2C_FIELD(temp_r4_2418, f32 *, 0x18) < (f32) sp70.unk18)) {
                             var_r0_2438 = 1;
                         }
                         if (var_r0_2438 != 0) {
@@ -2172,7 +2172,7 @@ void GetInterpolatedColorFromPoly(const MKVector3 &arg0, const MKVector3 *arg1) 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1BC'
+#if 0 // DRAFT: pointer/array required
 void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const MKVector4 *arg2) {
     f64 sp1D0;
     f64 sp1C8;
@@ -2280,8 +2280,8 @@ void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const 
     sp140 = temp_f29_3484 - temp_f6_3474;
     sp1C0 = (f64) sp140;
     sp12C = ((f32) sp1C0 * (f32) sp1C8) - ((f32) sp1B8 * (f32) sp1D0);
-    sp128 = (unksp1BC * (f32) sp1D0) - ((f32) sp1C0 * unksp1CC);
-    sp130 = ((f32) sp1B8 * unksp1CC) - (unksp1BC * (f32) sp1C8);
+    sp128 = ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * (f32) sp1D0) - ((f32) sp1C0 * (*(f32 *) ((u8 *) &sp1C8 + 0x4)));
+    sp130 = ((f32) sp1B8 * (*(f32 *) ((u8 *) &sp1C8 + 0x4))) - ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * (f32) sp1C8);
     sp1A8 = (f64) sp128;
     sp1B0 = (f64) sp130;
     temp_f2_3511 = M2C_FIELD(arg1, f64 *, 0) - temp_f5_3469;
@@ -2291,12 +2291,12 @@ void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const 
     sp1A0 = (f64) sp120;
     var_f2_3528 = 0.0f;
     sp10C = ((f32) sp1A0 * (f32) sp1A8) - ((f32) sp198 * (f32) sp1B0);
-    sp108 = (unksp19C * (f32) sp1B0) - ((f32) sp1A0 * unksp1AC);
-    sp110 = ((f32) sp198 * unksp1AC) - (unksp19C * (f32) sp1A8);
+    sp108 = ((*(f32 *) ((u8 *) &sp198 + 0x4)) * (f32) sp1B0) - ((f32) sp1A0 * (*(f32 *) ((u8 *) &sp1A8 + 0x4)));
+    sp110 = ((f32) sp198 * (*(f32 *) ((u8 *) &sp1A8 + 0x4))) - ((*(f32 *) ((u8 *) &sp198 + 0x4)) * (f32) sp1A8);
     sp188 = (f64) sp108;
     sp190 = (f64) sp110;
-    temp_f1_3547 = ((f32) sp190 * (f32) sp1D0) + (((f32) sp188 * (f32) sp1C8) + (unksp18C * unksp1CC));
-    temp_f0_3549 = temp_f1_3547 - (((f32) sp190 * (f32) sp1C0) + (((f32) sp188 * (f32) sp1B8) + (unksp18C * unksp1BC)));
+    temp_f1_3547 = ((f32) sp190 * (f32) sp1D0) + (((f32) sp188 * (f32) sp1C8) + ((*(f32 *) ((u8 *) &sp188 + 0x4)) * (*(f32 *) ((u8 *) &sp1C8 + 0x4))));
+    temp_f0_3549 = temp_f1_3547 - (((f32) sp190 * (f32) sp1C0) + (((f32) sp188 * (f32) sp1B8) + ((*(f32 *) ((u8 *) &sp188 + 0x4)) * (*(f32 *) ((u8 *) &sp1B8 + 0x4)))));
     if (temp_f0_3549 != 0.0f) {
         var_f2_3528 = temp_f1_3547 / temp_f0_3549;
     }
@@ -2346,9 +2346,9 @@ void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const 
     var_f6_3641 = 0.0f;
     spC0 = (f32) sp160 - temp_f6_3474;
     sp170 = (f64) spC0;
-    temp_f2_3652 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + (unksp16C * unksp16C));
+    temp_f2_3652 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + ((*(f32 *) ((u8 *) &sp168 + 0x4)) * (*(f32 *) ((u8 *) &sp168 + 0x4))));
     if (temp_f2_3652 != 0.0f) {
-        var_f6_3641 = (((f32) sp170 * (f32) sp1A0) + (((f32) sp168 * (f32) sp198) + (unksp16C * unksp19C))) / temp_f2_3652;
+        var_f6_3641 = (((f32) sp170 * (f32) sp1A0) + (((f32) sp168 * (f32) sp198) + ((*(f32 *) ((u8 *) &sp168 + 0x4)) * (*(f32 *) ((u8 *) &sp198 + 0x4))))) / temp_f2_3652;
     }
     if (var_f6_3641 < 1.0f) {
 

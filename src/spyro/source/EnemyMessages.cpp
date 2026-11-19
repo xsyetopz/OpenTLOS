@@ -331,7 +331,7 @@ void Enemy::Message(MKMessage *arg0) {
                         temp_f0_195 = M2C_FIELD(temp_r3_181, f32 *, 0x20) + GetCollisionRadius();
                         sp3D8 = M2C_FIELD(temp_r3_191, f64 *, 0x30);
                         sp3E0 = M2C_FIELD(temp_r3_191, f64 *, 0x38);
-                        temp_f5_201 = unksp3DC - M2C_FIELD(temp_r3_181, f32 *, 0x14);
+                        temp_f5_201 = (*(f32 *) ((u8 *) &sp3D8 + 0x4)) - M2C_FIELD(temp_r3_181, f32 *, 0x14);
                         temp_f4_205 = (f32) sp3D8 - M2C_FIELD(temp_r3_181, f32 *, 0x10);
                         temp_f3_208 = (f32) sp3E0 - M2C_FIELD(temp_r3_181, f32 *, 0x18);
                         if (((temp_f3_208 * temp_f3_208) + ((temp_f4_205 * temp_f4_205) + (temp_f5_201 * temp_f5_201))) < (temp_f0_195 * temp_f0_195)) {
@@ -392,7 +392,7 @@ block_409:
                 temp_r3_341 = this->unk8;
                 sp368 = M2C_FIELD(temp_r3_341, f64 *, 0x30);
                 sp370 = M2C_FIELD(temp_r3_341, f64 *, 0x38);
-                if (!(unksp36C < (temp_r3_272->unk14 - 600.0f))) {
+                if (!((*(f32 *) ((u8 *) &sp368 + 0x4)) < (temp_r3_272->unk14 - 600.0f))) {
                     goto block_103;
                 }
             } else {
@@ -522,7 +522,7 @@ block_103:
                     sp2C8 = (f64) sp48;
                     sp440 = (f64) sp2F8.unk8;
                     sp2D0 = (f64) sp50;
-                    if ((((f32) sp440 * (f32) sp2D0) + (((f32) sp438 * (f32) sp2C8) + (unksp43C * unksp2CC))) > 0.0f) {
+                    if ((((f32) sp440 * (f32) sp2D0) + (((f32) sp438 * (f32) sp2C8) + ((*(f32 *) ((u8 *) &sp438 + 0x4)) * (*(f32 *) ((u8 *) &sp2C8 + 0x4))))) > 0.0f) {
                         var_r29_668 = 0;
                         sp428 = M2C_FIELD(temp_r3_272, f64 *, 0x10);
                         sp430 = M2C_FIELD(temp_r3_272, f64 *, 0x18);
@@ -627,7 +627,7 @@ block_199:
                         sp288 = (f64) sp38;
                         sp420 = (f64) sp2B8.unk8;
                         sp290 = (f64) sp40;
-                        if ((((f32) sp420 * (f32) sp290) + (((f32) sp418 * (f32) sp288) + (unksp41C * unksp28C))) > 0.0f) {
+                        if ((((f32) sp420 * (f32) sp290) + (((f32) sp418 * (f32) sp288) + ((*(f32 *) ((u8 *) &sp418 + 0x4)) * (*(f32 *) ((u8 *) &sp288 + 0x4))))) > 0.0f) {
                             temp_f4_918 = M2C_FIELD(temp_r3_886, f64 *, 0x30);
                             spC0 = 0.0f;
                             temp_f3_920 = M2C_FIELD(temp_r3_886, f64 *, 0x38);
@@ -782,7 +782,7 @@ block_199:
             sp1D8 = temp_f0_1439;
             spA0 = (f32) sp1D0 - M2C_FIELD(temp_r29_1426, f32 *, 0x18);
             sp1E0 = (f64) spA0;
-            temp_f1_1457 = ((f32) sp1E0 * (f32) sp1E0) + (((f32) sp1D8 * (f32) sp1D8) + (unksp1DC * unksp1DC));
+            temp_f1_1457 = ((f32) sp1E0 * (f32) sp1E0) + (((f32) sp1D8 * (f32) sp1D8) + ((*(f32 *) ((u8 *) &sp1D8 + 0x4)) * (*(f32 *) ((u8 *) &sp1D8 + 0x4))));
             if (temp_f1_1457 <= (temp_f4_1445 * temp_f4_1445)) {
                 temp_f0_1462 = 0.5f * temp_f4_1445;
                 if (temp_f1_1457 <= (temp_f0_1462 * temp_f0_1462)) {

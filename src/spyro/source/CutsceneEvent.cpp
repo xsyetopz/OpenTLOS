@@ -591,7 +591,7 @@ void ColorCE::Update() {
         sp10 = temp_f0_1451;
         sp58 = sp8;
         sp60 = temp_f0_1451;
-        unksp64 = 1.0f;
+        (*(f32 *) ((u8 *) &sp60 + 0x4)) = 1.0f;
         MKModel_SetColor(temp_r5_1413, *((MKVector4 *) &sp58));
     }
 }

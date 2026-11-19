@@ -68,7 +68,7 @@ void SpyroEffects::SoundFadeOut() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SpyroEffects::TriggerConvexity(SpyroEffectsUpdateData *arg0) {
     f64 sp38;
     f64 sp30;
@@ -97,7 +97,7 @@ void SpyroEffects::TriggerConvexity(SpyroEffectsUpdateData *arg0) {
     sp28 = (f64) sp18;
     if ((u8) arg0->unk3C != 0) {
         var_f4_71 = 0.0f;
-        unksp24 = 0.0f;
+        (*(f32 *) ((u8 *) &sp18 + 0xc)) = 0.0f;
         var_f5_80 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (0.0f * 0.0f));
         if (var_f5_80 > 0.000001f) {
             if (var_f5_80 > 0.0f) {
@@ -136,7 +136,7 @@ void SpyroEffects::TriggerConvexity(SpyroEffectsUpdateData *arg0) {
             var_f4_71 = 1.0f / var_f5_80;
         }
         sp20 = (f32) sp20 * var_f4_71;
-        unksp24 *= var_f4_71;
+        (*(f32 *) ((u8 *) &sp18 + 0xc)) *= var_f4_71;
         sp28 = (f32) sp28 * var_f4_71;
     }
     ((ConvexityBreathFX *) (M2C_FIELD(this->unk4, ConvexityBreathFX **, 0xC0)))->Trigger(this->unk8, *((MKVector3 *) &sp30), *((MKVector3 *) &sp20), 1.0f);
@@ -300,7 +300,7 @@ u8 SpyroEffects::TriggerFury(SpyroEffectsUpdateData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SpyroEffects::TriggerEarth(SpyroEffectsUpdateData *arg0) {
     f64 sp38;
     f64 sp30;
@@ -328,9 +328,9 @@ void SpyroEffects::TriggerEarth(SpyroEffectsUpdateData *arg0) {
     sp20 = (f64) sp10;
     sp28 = (f64) sp18;
     if ((u8) arg0->unk3C != 0) {
-        unksp24 = 0.0f;
+        (*(f32 *) ((u8 *) &sp18 + 0xc)) = 0.0f;
     }
-    var_f4_468 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+    var_f4_468 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp18 + 0xc)) * (*(f32 *) ((u8 *) &sp18 + 0xc))));
     if (var_f4_468 > 0.000001f) {
         if (var_f4_468 > 0.0f) {
             temp_f1_474 = __frsqrte(var_f4_468);
@@ -370,13 +370,13 @@ void SpyroEffects::TriggerEarth(SpyroEffectsUpdateData *arg0) {
         var_f3_535 = 0.0f;
     }
     sp20 = (f32) sp20 * var_f3_535;
-    unksp24 *= var_f3_535;
+    (*(f32 *) ((u8 *) &sp18 + 0xc)) *= var_f3_535;
     sp28 = (f32) sp28 * var_f3_535;
     ((EarthBreathFX *) (M2C_FIELD(this->unk4, EarthBreathFX **, 0x20)))->Trigger(this->unk8, *((MKVector3 *) &sp30), *((MKVector3 *) &sp20), *((MKVector3 *) arg0), arg0->unk28, arg0->unk3F);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 SpyroEffects::TriggerElectricity(SpyroEffectsUpdateData *arg0) {
     f64 sp38;
     f64 sp30;
@@ -408,9 +408,9 @@ u8 SpyroEffects::TriggerElectricity(SpyroEffectsUpdateData *arg0) {
     sp20 = (f64) sp10;
     sp28 = (f64) sp18;
     if ((u8) arg0->unk3C != 0) {
-        unksp24 = 0.0f;
+        (*(f32 *) ((u8 *) &sp18 + 0xc)) = 0.0f;
     }
-    var_f4_604 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+    var_f4_604 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp18 + 0xc)) * (*(f32 *) ((u8 *) &sp18 + 0xc))));
     if (var_f4_604 > 0.000001f) {
         if (var_f4_604 > 0.0f) {
             temp_f1_610 = __frsqrte(var_f4_604);
@@ -450,7 +450,7 @@ u8 SpyroEffects::TriggerElectricity(SpyroEffectsUpdateData *arg0) {
         var_f3_671 = 0.0f;
     }
     sp20 = (f32) sp20 * var_f3_671;
-    unksp24 *= var_f3_671;
+    (*(f32 *) ((u8 *) &sp18 + 0xc)) *= var_f3_671;
     sp28 = (f32) sp28 * var_f3_671;
     spC = arg0->unk28;
     temp_r0_696 = this->unk10;
@@ -468,7 +468,7 @@ u8 SpyroEffects::TriggerElectricity(SpyroEffectsUpdateData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 SpyroEffects::TriggerIce(SpyroEffectsUpdateData *arg0) {
     f64 sp38;
     f64 sp30;
@@ -499,9 +499,9 @@ u8 SpyroEffects::TriggerIce(SpyroEffectsUpdateData *arg0) {
     sp20 = (f64) sp10;
     sp28 = (f64) sp18;
     if ((u8) arg0->unk3C != 0) {
-        unksp24 = 0.0f;
+        (*(f32 *) ((u8 *) &sp18 + 0xc)) = 0.0f;
     }
-    var_f4_769 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+    var_f4_769 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp18 + 0xc)) * (*(f32 *) ((u8 *) &sp18 + 0xc))));
     if (var_f4_769 > 0.000001f) {
         if (var_f4_769 > 0.0f) {
             temp_f1_775 = __frsqrte(var_f4_769);
@@ -541,7 +541,7 @@ u8 SpyroEffects::TriggerIce(SpyroEffectsUpdateData *arg0) {
         var_f3_836 = 0.0f;
     }
     sp20 = (f32) sp20 * var_f3_836;
-    unksp24 *= var_f3_836;
+    (*(f32 *) ((u8 *) &sp18 + 0xc)) *= var_f3_836;
     sp28 = (f32) sp28 * var_f3_836;
     spC = arg0->unk28;
     temp_r4_861 = this->unk10;
@@ -562,7 +562,7 @@ u8 SpyroEffects::TriggerIce(SpyroEffectsUpdateData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp4C'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
     f64 sp60;
     f64 sp58;
@@ -600,7 +600,7 @@ u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
     sp50 = (f64) sp30;
     if ((u8) arg0->unk3C != 0) {
         var_f5_933 = 0.0f;
-        unksp4C = 0.0f;
+        (*(f32 *) ((u8 *) &sp40 + 0xc)) = 0.0f;
         var_f6_942 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (0.0f * 0.0f));
         if (var_f6_942 > 0.000001f) {
             if (var_f6_942 > 0.0f) {
@@ -639,7 +639,7 @@ u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
             var_f5_933 = 1.0f / var_f6_942;
         }
         sp48 = (f32) sp48 * var_f5_933;
-        unksp4C *= var_f5_933;
+        (*(f32 *) ((u8 *) &sp40 + 0xc)) *= var_f5_933;
         sp50 = (f32) sp50 * var_f5_933;
     }
     temp_f1_1022 = arg0->unk0 * 5.23867711e-315;

@@ -145,7 +145,7 @@ void SpyroChargeState::Message(MKMessage *arg0) {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspA4'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 s32 SpyroChargeState::Transition() {
     MKCollisionResult spC8;
     s8 spC5;
@@ -227,7 +227,7 @@ s32 SpyroChargeState::Transition() {
             temp_r3_373 = temp_r5_344->unk8;
             spA0 = M2C_FIELD(temp_r3_373, f64 *, 0x30);
             spA8 = M2C_FIELD(temp_r3_373, f64 *, 0x38);
-            unkspA4 += 100.0f;
+            (*(f32 *) ((u8 *) &spA0 + 0x4)) += 100.0f;
             temp_r3_384 = this->unk10->unk8;
             sp40 = -M2C_FIELD(temp_r3_384, f32 *, 0x20);
             sp44 = -M2C_FIELD(temp_r3_384, f32 *, 0x24);
@@ -248,7 +248,7 @@ s32 SpyroChargeState::Transition() {
                 sp80 = (f64) spC8.unk10;
                 var_f4_431 = 0.0f;
                 sp88 = (f64) spC8.unk18;
-                unksp84 = 0.0f;
+                (*(f32 *) ((u8 *) &sp78 + 0xc)) = 0.0f;
                 var_f5_441 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (0.0f * 0.0f));
                 if (var_f5_441 > 0.000001f) {
                     if (var_f5_441 > 0.0f) {
@@ -288,7 +288,7 @@ s32 SpyroChargeState::Transition() {
                 }
                 temp_r3_509 = this->unk10;
                 temp_r4_511 = temp_r3_509->unk8;
-                temp_f5_512 = unksp84 * var_f4_431;
+                temp_f5_512 = (*(f32 *) ((u8 *) &sp78 + 0xc)) * var_f4_431;
                 temp_f6_516 = (f32) sp80 * var_f4_431;
                 sp10 = -M2C_FIELD(temp_r4_511, f32 *, 0x20);
                 temp_f4_523 = (f32) sp88 * var_f4_431;
@@ -297,8 +297,8 @@ s32 SpyroChargeState::Transition() {
                 sp50 = (f64) sp10;
                 sp58 = (f64) sp18;
                 sp80 = temp_f6_516;
-                unksp84 = temp_f5_512;
-                temp_f1_538 = (temp_f4_523 * (f32) sp58) + ((temp_f6_516 * (f32) sp50) + (temp_f5_512 * unksp54));
+                (*(f32 *) ((u8 *) &sp78 + 0xc)) = temp_f5_512;
+                temp_f1_538 = (temp_f4_523 * (f32) sp58) + ((temp_f6_516 * (f32) sp50) + (temp_f5_512 * (*(f32 *) ((u8 *) &sp50 + 0x4))));
                 sp88 = temp_f4_523;
                 if ((temp_f1_538 > 0.8f) || (temp_f1_538 < -0.8f)) {
                     temp_r3_509->EmitWallHeadbuttEffects(*((MKVector3 *) &spC8));

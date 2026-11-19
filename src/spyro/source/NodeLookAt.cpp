@@ -86,9 +86,9 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
     if ((arg0 != NULL) && ((u8) this->unk38 != 0)) {
         sp1A0.Inverse(MKModel_GetWorldMatrix(this->unk34));
         sp220.Multiply(&sp220, MKModel_GetWorldMatrix(this->unk34));
-        sp58 = sp220.unk30 + (((f32) spD0 * sp220.unk20) + (((f32) spC8 * M2C_BITWISE(f32, sp220)) + (unkspCC * sp220.unk10)));
-        sp5C = sp220.unk34 + (((f32) spD0 * sp220.unk24) + (((f32) spC8 * sp220.unk4) + (unkspCC * sp220.unk14)));
-        sp60 = sp220.unk38 + (((f32) spD0 * sp220.unk28) + (((f32) spC8 * sp220.unk8) + (unkspCC * sp220.unk18)));
+        sp58 = sp220.unk30 + (((f32) spD0 * sp220.unk20) + (((f32) spC8 * M2C_BITWISE(f32, sp220)) + ((*(f32 *) ((u8 *) &spC8 + 0x4)) * sp220.unk10)));
+        sp5C = sp220.unk34 + (((f32) spD0 * sp220.unk24) + (((f32) spC8 * sp220.unk4) + ((*(f32 *) ((u8 *) &spC8 + 0x4)) * sp220.unk14)));
+        sp60 = sp220.unk38 + (((f32) spD0 * sp220.unk28) + (((f32) spC8 * sp220.unk8) + ((*(f32 *) ((u8 *) &spC8 + 0x4)) * sp220.unk18)));
         sp88.unk30 = (f64) sp58;
         spC0 = (f64) sp60;
         temp_f0_104 = M2C_FIELD(arg0, f64 *, 0) - sp88.unk30;
@@ -179,12 +179,12 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
     sp160.Multiply3x3(&sp160, &sp120);
     M2C_STRUCT_COPY((s32) &spDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp18 = -(f32) spC8;
-    sp1C = -unkspCC;
+    sp1C = -(*(f32 *) ((u8 *) &spC8 + 0x4));
     sp20 = -(f32) spD0;
     sp68 = (f64) sp18;
     sp70 = (f64) sp20;
     spE0.unk30 = (f32) sp68;
-    spE0.unk34 = unksp6C;
+    spE0.unk34 = (*(f32 *) ((u8 *) &sp68 + 0x4));
     spE0.unk38 = (f32) sp70;
     spE0.unk3C = 1.0f;
     spE0.Multiply(&spE0, &sp160);

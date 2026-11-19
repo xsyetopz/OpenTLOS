@@ -140,7 +140,7 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
             sp40 = sp20;
             sp28 = M2C_FIELD(temp_r6_195, f32 *, 8) - (f32) sp58;
             sp48 = (f64) sp28;
-            var_f6_216 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44));
+            var_f6_216 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp38 + 0xc)) * (*(f32 *) ((u8 *) &sp38 + 0xc))));
             if (var_f6_216 > 0.000001f) {
                 if (var_f6_216 > 0.0f) {
                     temp_f2_222 = __frsqrte(var_f6_216);
@@ -183,7 +183,7 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
             temp_f7_294 = M2C_FIELD(*(&arg0 + temp_r8_185), f32 *, 0x38);
             temp_f3_296 = (f32) sp48 * var_f5_283;
             sp40 = (f32) sp40 * var_f5_283;
-            unksp44 *= var_f5_283;
+            (*(f32 *) ((u8 *) &sp38 + 0xc)) *= var_f5_283;
             sp48 = temp_f3_296;
             M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
             if (var_f6_216 == temp_f7_294) {

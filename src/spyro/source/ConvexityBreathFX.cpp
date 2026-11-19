@@ -273,7 +273,7 @@ loop_32:
                 sp168 = temp_f0_414;
                 sp60 = (f32) sp120 - arg1.unk8;
                 sp170 = (f64) sp60;
-                var_f0_432 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + (unksp16C * unksp16C));
+                var_f0_432 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + ((*(f32 *) ((u8 *) &sp158 + 0x14)) * (*(f32 *) ((u8 *) &sp158 + 0x14))));
                 if (var_f0_432 > 0.000001f) {
                     if (var_f0_432 > 0.0f) {
                         temp_f2_438 = __frsqrte(var_f0_432);
@@ -314,10 +314,10 @@ loop_32:
                     var_f0_432 = 0.0f;
                 }
                 temp_f6_508 = (f32) sp168 * var_f5_499;
-                temp_f4_510 = unksp16C * var_f5_499;
+                temp_f4_510 = (*(f32 *) ((u8 *) &sp158 + 0x14)) * var_f5_499;
                 temp_f5_511 = (f32) sp170 * var_f5_499;
                 sp168 = temp_f6_508;
-                unksp16C = temp_f4_510;
+                (*(f32 *) ((u8 *) &sp158 + 0x14)) = temp_f4_510;
                 sp170 = temp_f5_511;
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                 if ((var_f0_432 == 10000.0f) && (var_f0_432 < var_f30_365) && (((temp_f5_511 * arg2.unk8) + ((temp_f6_508 * arg2.unk0) + (temp_f4_510 * arg2.unk4))) > 0.9f)) {
@@ -337,7 +337,7 @@ loop_32:
         sp180 = (f64) sp40;
         sp108 = sp38;
         sp110 = (f64) sp40;
-        var_f4_571 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
+        var_f4_571 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + ((*(f32 *) ((u8 *) &sp158 + 0x24)) * (*(f32 *) ((u8 *) &sp158 + 0x24))));
         if (var_f4_571 > 0.000001f) {
             if (var_f4_571 > 0.0f) {
                 temp_f1_577 = __frsqrte(var_f4_571);
@@ -377,7 +377,7 @@ loop_32:
             var_f3_638 = 0.0f;
         }
         sp178 = (f32) sp178 * var_f3_638;
-        unksp17C *= var_f3_638;
+        (*(f32 *) ((u8 *) &sp158 + 0x24)) *= var_f3_638;
         sp180 = (f32) sp180 * var_f3_638;
     }
     KDMath_BuildMatrixFromFwd(&this->unkD0, *((MKVector3 *) &sp178), (MKVector3 *) &sp188);
@@ -824,7 +824,7 @@ void ConvexityBreathFX::Init() {
     sp40 = (f64) sp10;
     sp48 = (f64) sp18;
     sp50.unk30 = (f32) sp40;
-    sp50.unk34 = unksp44;
+    sp50.unk34 = (*(f32 *) ((u8 *) &sp40 + 0x4));
     sp50.unk38 = (f32) sp48;
     sp50.unk3C = 1.0f;
     MKMaterial_SetTextureMatrix(this->unk114, &sp50);

@@ -371,7 +371,7 @@ inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg
     temp_f5_9041 = (f32) M2C_FIELD(arg1, f64 *, 8);
     spA8 = sp18;
     sp58 = sp18;
-    unkspAC = 0.0f;
+    (*(f32 *) ((u8 *) &spA8 + 0x4)) = 0.0f;
     sp20 = (f32) M2C_FIELD(temp_r31_9001, f64 *, 8) - temp_f5_9041;
     sp60 = (f64) sp20;
     spB0 = (f64) sp20;
@@ -390,12 +390,12 @@ inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg
     sp40 = M2C_FIELD(arg1, f64 *, 8);
     sp30 = M2C_FIELD(temp_r31_9001, f64 *, 8);
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
-    if (unksp3C == unksp2C) {
+    if ((*(f32 *) ((u8 *) &sp38 + 0x4)) == (*(f32 *) ((u8 *) &sp28 + 0x4))) {
         var_f2_9081 = arg2;
     } else {
-        var_f2_9081 = arg2 + (unksp2C - unksp3C);
+        var_f2_9081 = arg2 + ((*(f32 *) ((u8 *) &sp28 + 0x4)) - (*(f32 *) ((u8 *) &sp38 + 0x4)));
     }
-    unkspBC = M2C_FIELD(arg1, f32 *, 4) + var_f2_9081;
+    (*(f32 *) ((u8 *) &spB8 + 0x4)) = M2C_FIELD(arg1, f32 *, 4) + var_f2_9081;
     M2C_FIELD(this, f64 *, 0) = spB8;
     M2C_FIELD(this, f64 *, 8) = spC0;
 }
@@ -422,10 +422,10 @@ inline f32 EnemyGoal_GraphJump::GetParabolaApexTimeFromP2(MKVector3 arg0, MKVect
     sp28 = M2C_FIELD(arg0, f64 *, 8);
     sp18 = M2C_FIELD(arg1, f64 *, 8);
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
-    if (unksp24 == unksp14) {
+    if ((*(f32 *) ((u8 *) &sp20 + 0x4)) == (*(f32 *) ((u8 *) &sp10 + 0x4))) {
 
     } else {
-        var_f1_0 += unksp24 - unksp14;
+        var_f1_0 += (*(f32 *) ((u8 *) &sp20 + 0x4)) - (*(f32 *) ((u8 *) &sp10 + 0x4));
     }
     var_f1_9134 = var_f1_0 / (-0.5f * arg3);
     if (var_f1_9134 > 0.0f) {
@@ -486,10 +486,10 @@ inline f32 EnemyGoal_GraphJump::GetParabolaApexTimeFromP1(MKVector3 arg0, MKVect
     sp28 = M2C_FIELD(arg0, f64 *, 8);
     sp18 = M2C_FIELD(arg1, f64 *, 8);
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
-    if (unksp24 == unksp14) {
+    if ((*(f32 *) ((u8 *) &sp20 + 0x4)) == (*(f32 *) ((u8 *) &sp10 + 0x4))) {
 
     } else {
-        var_f1_0 += unksp14 - unksp24;
+        var_f1_0 += (*(f32 *) ((u8 *) &sp10 + 0x4)) - (*(f32 *) ((u8 *) &sp20 + 0x4));
     }
     var_f1_9227 = -var_f1_0 / (0.5f * arg3);
     if (var_f1_9227 > 0.0f) {

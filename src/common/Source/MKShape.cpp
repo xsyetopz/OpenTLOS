@@ -107,8 +107,8 @@ void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     spF0 = temp_f7_155;
     spF4 = temp_f6_158;
     spF8 = temp_f5_159;
-    sp38 = ((f32) sp70 * temp_f6_158) - (unksp74 * temp_f7_155);
-    sp30 = (unksp74 * temp_f5_159) - ((f32) sp78 * temp_f6_158);
+    sp38 = ((f32) sp70 * temp_f6_158) - ((*(f32 *) ((u8 *) &sp70 + 0x4)) * temp_f7_155);
+    sp30 = ((*(f32 *) ((u8 *) &sp70 + 0x4)) * temp_f5_159) - ((f32) sp78 * temp_f6_158);
     sp34 = ((f32) sp78 * temp_f7_155) - ((f32) sp70 * temp_f5_159);
     spFC = 0.0f;
     sp80 = (f64) sp30;
@@ -344,7 +344,7 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
     spB8 = sp48;
     sp50 = arg1.unk8 - arg0.unk8;
     spC0 = (f64) sp50;
-    var_f31_435 = ((f32) spC0 * (f32) spC0) + (((f32) spB8 * (f32) spB8) + (unkspBC * unkspBC));
+    var_f31_435 = ((f32) spC0 * (f32) spC0) + (((f32) spB8 * (f32) spB8) + ((*(f32 *) ((u8 *) &spB0 + 0xc)) * (*(f32 *) ((u8 *) &spB0 + 0xc))));
     if (var_f31_435 > 0.000001f) {
         if (var_f31_435 > 0.0f) {
             temp_f1_441 = __frsqrte(var_f31_435);
@@ -385,15 +385,15 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
         var_f31_435 = 0.0f;
     }
     temp_f7_511 = (f32) spB8 * var_f3_502;
-    temp_f6_512 = unkspBC * var_f3_502;
+    temp_f6_512 = (*(f32 *) ((u8 *) &spB0 + 0xc)) * var_f3_502;
     temp_f5_514 = (f32) spC0 * var_f3_502;
     spB8 = temp_f7_511;
-    unkspBC = temp_f6_512;
+    (*(f32 *) ((u8 *) &spB0 + 0xc)) = temp_f6_512;
     spC0 = temp_f5_514;
     if (var_f31_435 < 0.1f) {
         spB0 = (f64) M2C_FIELD(&arg0, f32 *, 8);
         spA8 = M2C_FIELD(&arg0, f64 *, 0);
-        unkspB4 = arg2;
+        (*(f32 *) ((u8 *) &spB0 + 0x4)) = arg2;
         MKShape_DrawSphere(*((MKVector4 *) &spA8), arg3, temp_r26_405, arg5, arg6, arg7);
         return;
     }
@@ -408,8 +408,8 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
     sp120 = temp_f7_511;
     sp124 = temp_f6_512;
     sp128 = temp_f5_514;
-    sp30 = ((f32) sp78 * temp_f12_537) - (unksp7C * temp_f10_539);
-    sp28 = (unksp7C * temp_f8_535) - ((f32) sp80 * temp_f12_537);
+    sp30 = ((f32) sp78 * temp_f12_537) - ((*(f32 *) ((u8 *) &sp78 + 0x4)) * temp_f10_539);
+    sp28 = ((*(f32 *) ((u8 *) &sp78 + 0x4)) * temp_f8_535) - ((f32) sp80 * temp_f12_537);
     sp2C = ((f32) sp80 * temp_f10_539) - ((f32) sp78 * temp_f8_535);
     sp12C = 0.0f;
     sp88 = (f64) sp28;
@@ -926,7 +926,6 @@ void MKShape_DrawBox(const MKCollisionAABB &arg0, const MKVector4 &arg1, const M
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp5C'
 void MKShape_DrawBox(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, const Matrix &arg3, bool arg4) {
     f64 sp60;
     f64 sp58;
@@ -995,18 +994,18 @@ void MKShape_DrawBox(const MKVector3 &arg0, const MKVector3 &arg1, const MKVecto
         sp60 = (f64) sp10;
         MKBegin(2);
         MKSetColorF(0.0f, 1.0f, 0.0f, 1.0f);
-        MKSetPositionF((f32) sp58, 0.1f + unksp5C, (f32) sp60);
-        MKSetPositionF((f32) sp58, unksp5C, (f32) sp60);
+        MKSetPositionF((f32) sp58, 0.1f + (*(f32 *) ((u8 *) &sp58 + 0x4)), (f32) sp60);
+        MKSetPositionF((f32) sp58, (*(f32 *) ((u8 *) &sp58 + 0x4)), (f32) sp60);
         MKEnd();
         MKBegin(2);
         MKSetColorF(1.0f, 0.0f, 0.0f, 1.0f);
-        MKSetPositionF((f32) sp58, unksp5C, (f32) sp60);
-        MKSetPositionF(0.1f + (f32) sp58, unksp5C, (f32) sp60);
+        MKSetPositionF((f32) sp58, (*(f32 *) ((u8 *) &sp58 + 0x4)), (f32) sp60);
+        MKSetPositionF(0.1f + (f32) sp58, (*(f32 *) ((u8 *) &sp58 + 0x4)), (f32) sp60);
         MKEnd();
         MKBegin(2);
         MKSetColorF(0.0f, 0.0f, 1.0f, 1.0f);
-        MKSetPositionF((f32) sp58, unksp5C, (f32) sp60);
-        MKSetPositionF((f32) sp58, unksp5C, 0.1f + (f32) sp60);
+        MKSetPositionF((f32) sp58, (*(f32 *) ((u8 *) &sp58 + 0x4)), (f32) sp60);
+        MKSetPositionF((f32) sp58, (*(f32 *) ((u8 *) &sp58 + 0x4)), 0.1f + (f32) sp60);
         MKEnd();
         MKEndPrimitive();
         return;
@@ -1058,7 +1057,6 @@ void MKShape_DrawBox(const MKVector3 &arg0, const MKVector3 &arg1, const MKVecto
     MKEnd();
     MKEndPrimitive();
 }
-#endif
 
 void MKShape_Deinit() {
 

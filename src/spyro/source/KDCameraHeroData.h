@@ -32,7 +32,6 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unksp1C'
 inline u8 KDCameraHeroData::IsMoving() {
     f64 sp50;
     f64 sp48;
@@ -57,9 +56,8 @@ inline u8 KDCameraHeroData::IsMoving() {
     sp28 = sp8;
     sp20 = (f64) sp10;
     sp30 = (f64) sp10;
-    return ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) < 1.0f) == 0;
+    return ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))))) < 1.0f) == 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkC0'
 inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
@@ -146,7 +144,7 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
         if ((u8) this->unk94 != 0) {
             sp58 = M2C_FIELD(this, f64 *, 0x40);
             sp60 = M2C_FIELD(this, f64 *, 0x48);
-            M2C_FIELD(this, f32 *, 0xD8) = unksp5C;
+            M2C_FIELD(this, f32 *, 0xD8) = (*(f32 *) ((u8 *) &sp58 + 0x4));
         }
     } else {
         this->unkC8 = sp98;
@@ -155,7 +153,7 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
     if ((temp_r30_823 == 0) && ((u8) this->unk94 != 0)) {
         sp48 = M2C_FIELD(this, f64 *, 0x40);
         sp50 = M2C_FIELD(this, f64 *, 0x48);
-        M2C_FIELD(this, f32 *, 0xD8) = unksp4C;
+        M2C_FIELD(this, f32 *, 0xD8) = (*(f32 *) ((u8 *) &sp48 + 0x4));
     }
 }
 #endif

@@ -150,15 +150,15 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     sp2A0.SetIdentity();
     sp2A0.RotateRoll(&sp2A0, arg1);
     temp_f28_114 = M2C_BITWISE(f32, sp2A0);
-    spA8 = sp2A0.unk30 + (((f32) sp210 * sp2A0.unk20) + (((f32) sp208 * temp_f28_114) + (unksp20C * sp2A0.unk10)));
-    spAC = sp2A0.unk34 + (((f32) sp210 * sp2A0.unk24) + (((f32) sp208 * sp2A0.unk4) + (unksp20C * sp2A0.unk14)));
-    spB0 = sp2A0.unk38 + (((f32) sp210 * sp2A0.unk28) + (((f32) sp208 * sp2A0.unk8) + (unksp20C * sp2A0.unk18)));
+    spA8 = sp2A0.unk30 + (((f32) sp210 * sp2A0.unk20) + (((f32) sp208 * temp_f28_114) + ((*(f32 *) ((u8 *) &sp1F0 + 0x1c)) * sp2A0.unk10)));
+    spAC = sp2A0.unk34 + (((f32) sp210 * sp2A0.unk24) + (((f32) sp208 * sp2A0.unk4) + ((*(f32 *) ((u8 *) &sp1F0 + 0x1c)) * sp2A0.unk14)));
+    spB0 = sp2A0.unk38 + (((f32) sp210 * sp2A0.unk28) + (((f32) sp208 * sp2A0.unk8) + ((*(f32 *) ((u8 *) &sp1F0 + 0x1c)) * sp2A0.unk18)));
     sp208 = (f64) spA8;
     sp210 = (f64) spB0;
-    sp98 = sp2A0.unk30 + (((f32) sp200 * sp2A0.unk20) + (((f32) sp1F8 * temp_f28_114) + (unksp1FC * sp2A0.unk10)));
-    sp9C = sp2A0.unk34 + (((f32) sp200 * sp2A0.unk24) + (((f32) sp1F8 * sp2A0.unk4) + (unksp1FC * sp2A0.unk14)));
-    spA0 = sp2A0.unk38 + (((f32) sp200 * sp2A0.unk28) + (((f32) sp1F8 * sp2A0.unk8) + (unksp1FC * sp2A0.unk18)));
-    var_f4_169 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
+    sp98 = sp2A0.unk30 + (((f32) sp200 * sp2A0.unk20) + (((f32) sp1F8 * temp_f28_114) + ((*(f32 *) ((u8 *) &sp1F0 + 0xc)) * sp2A0.unk10)));
+    sp9C = sp2A0.unk34 + (((f32) sp200 * sp2A0.unk24) + (((f32) sp1F8 * sp2A0.unk4) + ((*(f32 *) ((u8 *) &sp1F0 + 0xc)) * sp2A0.unk14)));
+    spA0 = sp2A0.unk38 + (((f32) sp200 * sp2A0.unk28) + (((f32) sp1F8 * sp2A0.unk8) + ((*(f32 *) ((u8 *) &sp1F0 + 0xc)) * sp2A0.unk18)));
+    var_f4_169 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + ((*(f32 *) ((u8 *) &sp1F0 + 0x1c)) * (*(f32 *) ((u8 *) &sp1F0 + 0x1c))));
     sp1E8 = (f64) spA8;
     sp1F0 = (f64) spB0;
     sp1D8 = (f64) sp98;
@@ -203,9 +203,9 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     } else {
         var_f6_242 = 0.0f;
     }
-    var_f7_260 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + (unksp1FC * unksp1FC));
+    var_f7_260 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + ((*(f32 *) ((u8 *) &sp1F0 + 0xc)) * (*(f32 *) ((u8 *) &sp1F0 + 0xc))));
     sp208 = (f32) sp208 * var_f6_242;
-    unksp20C *= var_f6_242;
+    (*(f32 *) ((u8 *) &sp1F0 + 0x1c)) *= var_f6_242;
     sp210 = (f32) sp210 * var_f6_242;
     if (var_f7_260 > 0.000001f) {
         if (var_f7_260 > 0.0f) {
@@ -246,13 +246,13 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
         var_f3_331 = 0.0f;
     }
     temp_f6_340 = (f32) sp1F8 * var_f3_331;
-    temp_f5_342 = unksp1FC * var_f3_331;
+    temp_f5_342 = (*(f32 *) ((u8 *) &sp1F0 + 0xc)) * var_f3_331;
     temp_f4_343 = (f32) sp200 * var_f3_331;
     sp1F8 = temp_f6_340;
     sp48 = -temp_f6_340;
     sp4C = -temp_f5_342;
     sp50 = -temp_f4_343;
-    unksp1FC = temp_f5_342;
+    (*(f32 *) ((u8 *) &sp1F0 + 0xc)) = temp_f5_342;
     sp200 = temp_f4_343;
     sp198 = (f64) sp48;
     sp1A0 = (f64) sp50;
@@ -268,7 +268,7 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     sp178.operator*(arg2);
     sp78 = sp178 + M2C_BITWISE(f64, sp168);
     sp38 = -sp1F8;
-    sp3C = -unksp1FC;
+    sp3C = -(*(f32 *) ((u8 *) &sp1F0 + 0xc));
     sp80 = sp178.unk8 + sp168.unk8;
     sp40 = -sp200;
     sp188 = sp78;
@@ -279,7 +279,7 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     sp120 = (f64) sp40;
     sp128.operator*(arg2);
     sp28 = -sp208;
-    sp2C = -unksp20C;
+    sp2C = -(*(f32 *) ((u8 *) &sp1F0 + 0x1c));
     sp30 = -sp210;
     sp138 = (f64) sp28;
     sp140 = (f64) sp30;
@@ -292,7 +292,7 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     sp288 = (f64) sp70;
     spD8.operator*(arg2);
     sp18 = -sp208;
-    sp1C = -unksp20C;
+    sp1C = -(*(f32 *) ((u8 *) &sp1F0 + 0x1c));
     sp20 = -sp210;
     spE8 = (f64) sp18;
     spF0 = (f64) sp20;
@@ -451,7 +451,7 @@ void SparxFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp104'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SparxFX::Update() {
     f64 sp158;
     f64 sp150;
@@ -545,7 +545,7 @@ void SparxFX::Update() {
         sp100 = spA0;
         spA8 = M2C_FIELD(this, f32 *, 0xC0) - this->unk58;
         sp108 = (f64) spA8;
-        var_f4_944 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + (unksp104 * unksp104));
+        var_f4_944 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + ((*(f32 *) ((u8 *) &sp100 + 0x4)) * (*(f32 *) ((u8 *) &sp100 + 0x4))));
         if (var_f4_944 > 0.0f) {
             temp_f1_947 = __frsqrte(var_f4_944);
             temp_f1_953 = 0.5 * temp_f1_947 * -(((f64) var_f4_944 * (temp_f1_947 * temp_f1_947)) - 3.0);
@@ -700,7 +700,7 @@ loop_24:
             sp28 = temp_f0_1289;
             temp_r3_1293 = this->unkD0;
             sp118 = temp_f0_1289;
-            unksp11C = 1.0f;
+            (*(f32 *) ((u8 *) &sp118 + 0x4)) = 1.0f;
             temp_r3_1293->unk20 = sp20;
             sp110 = sp20;
             temp_r3_1293->unk28 = temp_f0_1289;

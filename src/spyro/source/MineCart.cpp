@@ -133,7 +133,7 @@ void MineCart::Message(MKMessage *arg0) {
                 sp88 = sp38;
                 spDC = 0;
                 sp40 = (f32) spB0 - (f32) spA0;
-                unksp8C = 0.0f;
+                (*(f32 *) ((u8 *) &sp88 + 0x4)) = 0.0f;
                 sp90 = (f64) sp40;
                 spD8 = 7;
                 sp100 = 2;
@@ -155,7 +155,7 @@ void MineCart::Message(MKMessage *arg0) {
                     sp110 = sp30;
                 } else {
                     sp108 = 0.0f;
-                    unksp10C = 0.0f;
+                    (*(f32 *) ((u8 *) &sp104 + 0x8)) = 0.0f;
                     sp110 = 0.0f;
                 }
                 sp129 = 0;
@@ -278,7 +278,7 @@ void MineCart::UpdateEffects() {
         spA8 = M2C_FIELD(temp_r4_344, f32 *, 0x38) + ((temp_f6_360 * M2C_FIELD(temp_r4_344, f32 *, 0x28)) + ((temp_f7_352 * M2C_FIELD(temp_r4_344, f32 *, 8)) + (temp_f6_349 * M2C_FIELD(temp_r4_344, f32 *, 0x18))));
         sp150 = (f64) spA0;
         sp158 = (f64) spA8;
-        unksp154 = temp_f3_368;
+        (*(f32 *) ((u8 *) &sp150 + 0x4)) = temp_f3_368;
         if (temp_r3_342 == 1) {
             if (MKRand_Int(&gViewSeed, -1, 1) != 0) {
                 temp_r3_389 = this->unk8;
@@ -453,7 +453,7 @@ void MineCart::Update() {
         temp_r3_744 = this->unk8;
         sp20 = M2C_FIELD(temp_r3_744, f64 *, 0x30);
         sp28 = M2C_FIELD(temp_r3_744, f64 *, 0x38);
-        this->unkE8.unk28 = unksp24;
+        this->unkE8.unk28 = (*(f32 *) ((u8 *) &sp20 + 0x4));
     }
 }
 #endif

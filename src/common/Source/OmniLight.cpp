@@ -39,7 +39,7 @@ void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
     sp40 = sp20;
     sp28 = arg1.unk8 - M2C_FIELD(&arg0, f32 *, 0x18);
     sp48 = (f64) sp28;
-    var_f6_34 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44));
+    var_f6_34 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp38 + 0xc)) * (*(f32 *) ((u8 *) &sp38 + 0xc))));
     var_f3_35 = var_f6_34 / M2C_FIELD(&arg0, f32 *, 0x24);
     if (var_f3_35 < 1.0f) {
 
@@ -89,11 +89,11 @@ void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
     } else {
         var_f5_118 = 0.0f;
     }
-    temp_f6_125 = unksp44 * var_f5_118;
+    temp_f6_125 = (*(f32 *) ((u8 *) &sp38 + 0xc)) * var_f5_118;
     temp_f7_127 = (f32) sp40 * var_f5_118;
     temp_f5_131 = (f32) sp48 * var_f5_118;
     sp40 = temp_f7_127;
-    unksp44 = temp_f6_125;
+    (*(f32 *) ((u8 *) &sp38 + 0xc)) = temp_f6_125;
     var_f2_137 = (temp_f5_131 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 8)) + ((temp_f7_127 * *M2C_ERROR(/* Read from unset register $r6 */)) + (temp_f6_125 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 4)));
     sp48 = temp_f5_131;
     if (var_f2_137 < 0.0f) {
@@ -104,7 +104,7 @@ void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
     temp_f1_149 = M2C_FIELD(&arg0, f64 *, 8) * (f64) temp_f0_143;
     sp18 = temp_f1_149;
     sp38 = temp_f1_149;
-    unksp3C = 1.0f;
+    (*(f32 *) ((u8 *) &sp38 + 0x4)) = 1.0f;
     this->unk0 = sp10;
     sp30 = sp10;
     this->unk8 = sp38;
@@ -162,7 +162,7 @@ loop_11:
                 sp50 = (f64) sp10;
                 sp38 = sp8;
                 sp40 = (f64) sp10;
-                if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < (temp_f0_207 * temp_f0_207)) {
+                if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))) < (temp_f0_207 * temp_f0_207)) {
                     temp_r5_222 = temp_r3_202 + 0x10;
                     temp_f0_225 = M2C_FIELD(temp_r6_187, f64 *, 0) - M2C_FIELD(temp_r5_222, f64 *, 0);
                     sp18 = temp_f0_225;
@@ -171,7 +171,7 @@ loop_11:
                     sp28 = temp_f0_225;
                     sp20 = M2C_FIELD(temp_r6_187, f32 *, 8) - M2C_FIELD(temp_r5_222, f32 *, 8);
                     sp30 = (f64) sp20;
-                    *(&spDC + var_r27_180) = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C));
+                    *(&spDC + var_r27_180) = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4))));
                     var_r3_249 = temp_r9_231 * 4;
                     var_ctr_250 = temp_r9_231 + 1;
                     if (temp_r9_231 >= 0) {
@@ -258,7 +258,7 @@ loop_9:
                 sp50 = (f64) sp10;
                 sp38 = sp8;
                 sp40 = (f64) sp10;
-                if (((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < (temp_f1_344 * temp_f1_344)) && ((temp_r3_359 = temp_r3_339 + 0x10, temp_f1_362 = M2C_FIELD(temp_r4_323, f64 *, 0) - M2C_FIELD(temp_r3_359, f64 *, 0), sp18 = temp_f1_362, sp28 = temp_f1_362, sp20 = M2C_FIELD(temp_r4_323, f32 *, 8) - M2C_FIELD(temp_r3_359, f32 *, 8), sp30 = (f64) sp20, temp_f1_380 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C)), ((var_r31_315 == NULL) != 0)) || (temp_f1_380 < var_f0_322))) {
+                if (((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))) < (temp_f1_344 * temp_f1_344)) && ((temp_r3_359 = temp_r3_339 + 0x10, temp_f1_362 = M2C_FIELD(temp_r4_323, f64 *, 0) - M2C_FIELD(temp_r3_359, f64 *, 0), sp18 = temp_f1_362, sp28 = temp_f1_362, sp20 = M2C_FIELD(temp_r4_323, f32 *, 8) - M2C_FIELD(temp_r3_359, f32 *, 8), sp30 = (f64) sp20, temp_f1_380 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4)))), ((var_r31_315 == NULL) != 0)) || (temp_f1_380 < var_f0_322))) {
                     var_r31_315 = *var_r5_324;
                     var_f0_322 = temp_f1_380;
                 }

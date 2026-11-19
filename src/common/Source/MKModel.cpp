@@ -175,9 +175,9 @@ void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVec
     sp58 = M2C_FIELD(temp_r3_320, f64 *, 0);
     sp60 = M2C_FIELD(temp_r3_320, f64 *, 8);
     if (((s8) temp_r0_321 == -1) || (temp_r3_329 = arg0->unk70, ((temp_r3_329 == NULL) != 0))) {
-        sp28 = var_r31_227->unk30 + (((f32) sp60 * var_r31_227->unk20) + (((f32) sp58 * var_r31_227->unk0) + (unksp5C * var_r31_227->unk10)));
-        sp2C = var_r31_227->unk34 + (((f32) sp60 * var_r31_227->unk24) + (((f32) sp58 * var_r31_227->unk4) + (unksp5C * var_r31_227->unk14)));
-        sp30 = var_r31_227->unk38 + (((f32) sp60 * var_r31_227->unk28) + (((f32) sp58 * var_r31_227->unk8) + (unksp5C * var_r31_227->unk18)));
+        sp28 = var_r31_227->unk30 + (((f32) sp60 * var_r31_227->unk20) + (((f32) sp58 * var_r31_227->unk0) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * var_r31_227->unk10)));
+        sp2C = var_r31_227->unk34 + (((f32) sp60 * var_r31_227->unk24) + (((f32) sp58 * var_r31_227->unk4) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * var_r31_227->unk14)));
+        sp30 = var_r31_227->unk38 + (((f32) sp60 * var_r31_227->unk28) + (((f32) sp58 * var_r31_227->unk8) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * var_r31_227->unk18)));
         M2C_FIELD(arg2, f64 *, 0) = (f64) sp28;
         sp48 = (f64) sp28;
         sp50 = (f64) sp30;
@@ -186,9 +186,9 @@ void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVec
     }
     sp10 = (s16) (s8) temp_r0_321;
     temp_r3_329->CalculateMatrices(&sp70, 1, &sp10, var_r31_227);
-    sp18 = sp70.unk30 + (((f32) sp60 * sp70.unk20) + (((f32) sp58 * M2C_BITWISE(f32, sp70)) + (unksp5C * sp70.unk10)));
-    sp1C = sp70.unk34 + (((f32) sp60 * sp70.unk24) + (((f32) sp58 * sp70.unk4) + (unksp5C * sp70.unk14)));
-    sp20 = sp70.unk38 + (((f32) sp60 * sp70.unk28) + (((f32) sp58 * sp70.unk8) + (unksp5C * sp70.unk18)));
+    sp18 = sp70.unk30 + (((f32) sp60 * sp70.unk20) + (((f32) sp58 * M2C_BITWISE(f32, sp70)) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * sp70.unk10)));
+    sp1C = sp70.unk34 + (((f32) sp60 * sp70.unk24) + (((f32) sp58 * sp70.unk4) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * sp70.unk14)));
+    sp20 = sp70.unk38 + (((f32) sp60 * sp70.unk28) + (((f32) sp58 * sp70.unk8) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * sp70.unk18)));
     M2C_FIELD(arg2, f64 *, 0) = (f64) sp18;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
@@ -244,7 +244,7 @@ void MKModel_CalculateNodeWorldMatrix(const MKModel *arg0, int arg1, Matrix *arg
     sp18 = (sp28 * arg2->unk28) + ((sp20 * arg2->unk8) + (sp24 * arg2->unk18));
     arg2->unk30 += (f32) sp30;
     sp38 = (f64) sp18;
-    arg2->unk34 += unksp34;
+    arg2->unk34 += (*(f32 *) ((u8 *) &sp30 + 0x4));
     arg2->unk38 += (f32) sp38;
 }
 #endif

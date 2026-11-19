@@ -308,7 +308,7 @@ void ExplosiveBarrel::Message(MKMessage *arg0) {
             break;
         case 0x1:                                   /* switch 1 */
             temp_r3_609 = checked_cast<ExplodeMsg *, MKMessage>(arg0);
-            if (((u32) M2C_FIELD(temp_r3_609, u32 *, 8) != this) && (temp_r3_615 = checked_cast<ExplosiveBarrelDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), temp_r4_616 = this->unk8, sp8 = M2C_FIELD(temp_r4_616, f64 *, 0x30), sp10 = M2C_FIELD(temp_r4_616, f64 *, 0x38), temp_f3_625 = unkspC - M2C_FIELD(temp_r3_609, f32 *, 0x14), temp_f5_626 = (f32) sp8 - M2C_FIELD(temp_r3_609, f32 *, 0x10), temp_f4_631 = (f32) sp10 - M2C_FIELD(temp_r3_609, f32 *, 0x18), temp_f3_634 = M2C_FIELD(temp_r3_609, f32 *, 0x20) + M2C_FIELD(temp_r3_615, f32 *, 0x174), ((((temp_f4_631 * temp_f4_631) + ((temp_f5_626 * temp_f5_626) + (temp_f3_625 * temp_f3_625))) < (temp_f3_634 * temp_f3_634)) != 0))) {
+            if (((u32) M2C_FIELD(temp_r3_609, u32 *, 8) != this) && (temp_r3_615 = checked_cast<ExplosiveBarrelDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), temp_r4_616 = this->unk8, sp8 = M2C_FIELD(temp_r4_616, f64 *, 0x30), sp10 = M2C_FIELD(temp_r4_616, f64 *, 0x38), temp_f3_625 = (*(f32 *) ((u8 *) &sp8 + 0x4)) - M2C_FIELD(temp_r3_609, f32 *, 0x14), temp_f5_626 = (f32) sp8 - M2C_FIELD(temp_r3_609, f32 *, 0x10), temp_f4_631 = (f32) sp10 - M2C_FIELD(temp_r3_609, f32 *, 0x18), temp_f3_634 = M2C_FIELD(temp_r3_609, f32 *, 0x20) + M2C_FIELD(temp_r3_615, f32 *, 0x174), ((((temp_f4_631 * temp_f4_631) + ((temp_f5_626 * temp_f5_626) + (temp_f3_625 * temp_f3_625))) < (temp_f3_634 * temp_f3_634)) != 0))) {
                 if ((u8) M2C_FIELD(this, u8 *, 0x19C) == 0) {
                     return;
                 }

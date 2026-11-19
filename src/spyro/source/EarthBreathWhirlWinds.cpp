@@ -535,7 +535,7 @@ block_34:
             spA8 = temp_r29_962->unkD8 + (f32) sp1C8;
             M2C_FIELD(temp_r29_962, f64 *, 0xD0) = (f32) sp2C0;
             sp2C8 = (f64) spA8;
-            temp_r29_962->unkD4 = unksp2C4;
+            temp_r29_962->unkD4 = (*(f32 *) ((u8 *) &sp2C0 + 0x4));
             temp_r29_962->unkD8 = (f32) sp2C8;
             temp_r29_962->unkDC = 1.0f;
             M2C_FIELD(temp_r29_962, f64 *, 0x50) = spA0;
@@ -573,7 +573,7 @@ loop_56:
                             sp2B0 = temp_f0_909;
                             sp98 = (f32) sp1A8 - temp_r29_962->unkD8;
                             sp2B8 = (f64) sp98;
-                            if (((((f32) sp2B8 * (f32) sp2B8) + (((f32) sp2B0 * (f32) sp2B0) + (unksp2B4 * unksp2B4))) <= (var_f28_838 * var_f28_838)) && (temp_r22_876 != NULL)) {
+                            if (((((f32) sp2B8 * (f32) sp2B8) + (((f32) sp2B0 * (f32) sp2B0) + ((*(f32 *) ((u8 *) &sp2B0 + 0x4)) * (*(f32 *) ((u8 *) &sp2B0 + 0x4))))) <= (var_f28_838 * var_f28_838)) && (temp_r22_876 != NULL)) {
                                 sp2F4 = 0;
                                 temp_r5_937 = temp_r29_962->unk104;
                                 sp2F0 = 0xA4;

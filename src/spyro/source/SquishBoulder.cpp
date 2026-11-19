@@ -291,7 +291,7 @@ void SquishBoulder::EmitLandingEffects() {
     sp1A0 = spB0;
     spB8 = (f32) sp198 - (f32) sp2B8;
     sp1A8 = (f64) spB8;
-    var_f5_400 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + (unksp1A4 * unksp1A4));
+    var_f5_400 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + ((*(f32 *) ((u8 *) &sp1A0 + 0x4)) * (*(f32 *) ((u8 *) &sp1A0 + 0x4))));
     if (var_f5_400 > 1e-12f) {
         if (var_f5_400 > 0.0f) {
             temp_f1_405 = __frsqrte(var_f5_400);
@@ -328,7 +328,7 @@ void SquishBoulder::EmitLandingEffects() {
         }
         var_f4_352 = 1.0f / var_f5_400;
     }
-    spA4 = unksp1A4 * var_f4_352;
+    spA4 = (*(f32 *) ((u8 *) &sp1A0 + 0x4)) * var_f4_352;
     spA0 = (f32) sp1A0 * var_f4_352;
     spA8 = (f32) sp1A8 * var_f4_352;
     sp2A0 = (f64) spA0;
@@ -347,7 +347,7 @@ void SquishBoulder::EmitLandingEffects() {
     sp38 = this->unk260.unk24 + sp168;
     sp178 = (f64) sp38;
     sp310.unk30 = (f32) sp170;
-    sp310.unk34 = unksp174;
+    sp310.unk34 = (*(f32 *) ((u8 *) &sp170 + 0x4));
     sp310.unk38 = (f32) sp178;
     sp310.unk3C = 1.0f;
     gb.unk1C0.StartWarp(&sp310);
@@ -492,12 +492,12 @@ block_15:
         sp20 = this->unk260.unk24 + (f32) sp60;
         sp70 = (f64) sp20;
         M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
-        if (unksp6C == temp_f2_865) {
-            unksp6C = temp_f2_865;
+        if ((*(f32 *) ((u8 *) &sp68 + 0x4)) == temp_f2_865) {
+            (*(f32 *) ((u8 *) &sp68 + 0x4)) = temp_f2_865;
             var_r0_860 = 1;
         }
         this->unk260.unk1C = (f32) sp68;
-        this->unk260.unk20 = unksp6C;
+        this->unk260.unk20 = (*(f32 *) ((u8 *) &sp68 + 0x4));
         this->unk260.unk24 = (f32) sp70;
         this->unk260.unk28 = 1.0f;
         if (var_r0_860 != 0) {

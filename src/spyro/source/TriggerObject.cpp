@@ -34,7 +34,7 @@ s32 TriggerPolyObject::CheckTarget() {
     var_r31_47 = 0;
     sp8 = M2C_FIELD(temp_r3_46, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r3_46, f64 *, 0x38);
-    if ((unkspC >= this->unk88.unk1C) && (unkspC <= this->unkA8) && (this->unk88.IsPointWithin(*((MKVector3 *) &sp8)) != 0)) {
+    if (((*(f32 *) ((u8 *) &sp8 + 0x4)) >= this->unk88.unk1C) && ((*(f32 *) ((u8 *) &sp8 + 0x4)) <= this->unkA8) && (this->unk88.IsPointWithin(*((MKVector3 *) &sp8)) != 0)) {
         var_r31_47 = 1;
     }
     return var_r31_47;
@@ -211,7 +211,7 @@ loop_17:
             sp10 = -temp_r29_316->unk10.unk28;
             sp30 = (f64) sp20;
             sp40 = (f64) sp10;
-            temp_f1_377 = ((f32) sp40 * (f32) sp30) + (((f32) sp38 * (f32) sp28) + (unksp3C * unksp2C));
+            temp_f1_377 = ((f32) sp40 * (f32) sp30) + (((f32) sp38 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4))));
             if (temp_r3_321 == 0) {
                 if ((temp_f1_377 > 0.0f) && (temp_r3_382 = this->unk50, (((temp_r3_382 & 0x20) == 0) == 0))) {
                     this->unk50 = temp_r3_382 | 2;
@@ -364,7 +364,7 @@ loop_10:
                 sp18 = M2C_FIELD(this, f64 *, 0x48);
                 var_r30_786->AsVector3(0, (MKVector3 *) &sp10);
                 this->unk10.unk30 = (f32) sp10;
-                this->unk10.unk34 = unksp14;
+                this->unk10.unk34 = (*(f32 *) ((u8 *) &sp10 + 0x4));
                 this->unk10.unk38 = (f32) sp18;
                 this->unk10.unk3C = 1.0f;
             } else if ((var_r30_786->LoadVector3("rot", (MKVector3 *) TriggerBoxObject::tempBoxRot, 0) == 0) && (var_r30_786->LoadVector3("scale", (MKVector3 *) &this->unk70, 0) == 0) && (var_r30_786->LoadBool("bUseTrigger", &sp8, 0) != 0) && (sp8 == 0)) {
@@ -434,7 +434,7 @@ loop_11:
                     sp18 = M2C_FIELD(this, f64 *, 0x48);
                     var_r29_918->AsVector3(0, (MKVector3 *) &sp10);
                     this->unk10.unk30 = (f32) sp10;
-                    this->unk10.unk34 = unksp14;
+                    this->unk10.unk34 = (*(f32 *) ((u8 *) &sp10 + 0x4));
                     this->unk10.unk38 = (f32) sp18;
                     this->unk10.unk3C = 1.0f;
                 }
@@ -536,7 +536,7 @@ u8 TriggerObject::LoadLine(MKIniLine *arg0) {
         sp10 = M2C_FIELD(this, f64 *, 0x48);
         arg0->AsVector3(0, (MKVector3 *) &sp8);
         this->unk10.unk30 = (f32) sp8;
-        this->unk10.unk34 = unkspC;
+        this->unk10.unk34 = (*(f32 *) ((u8 *) &sp8 + 0x4));
         this->unk10.unk38 = (f32) sp10;
         this->unk10.unk3C = 1.0f;
         return 1U;

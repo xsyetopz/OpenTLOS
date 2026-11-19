@@ -451,8 +451,8 @@ void GuardianCage::StateDyingUpdate() {
     sp38 = this->unk130 + (f32) sp88;
     spA8 = (f64) sp38;
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
-    if (unkspA4 == temp_f2_496) {
-        unkspA4 = temp_f2_496;
+    if ((*(f32 *) ((u8 *) &spA0 + 0x4)) == temp_f2_496) {
+        (*(f32 *) ((u8 *) &spA0 + 0x4)) = temp_f2_496;
         ((KDStateMachine<GuardianCage> *) &this->unk14C)->SetState(this, 3, 0U);
     }
     temp_f0_515 = this->unkF8 + spB0;
@@ -462,7 +462,7 @@ void GuardianCage::StateDyingUpdate() {
     sp78 = (f64) sp28;
     spD0.SetRotationPYR(*((MKVector3 *) &sp70));
     spD0.unk30 = (f32) spA0;
-    spD0.unk34 = unkspA4;
+    spD0.unk34 = (*(f32 *) ((u8 *) &spA0 + 0x4));
     spD0.unk38 = (f32) spA8;
     spD0.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, spD0);
@@ -651,7 +651,7 @@ void GuardianCage::StateFloatingUpdate() {
     sp78 = (f64) sp28;
     spE0.SetRotationPYR(*((MKVector3 *) &sp70));
     spE0.unk30 = (f32) spB0;
-    spE0.unk34 = unkspB4;
+    spE0.unk34 = (*(f32 *) ((u8 *) &spB0 + 0x4));
     spE0.unk38 = (f32) spB8;
     spE0.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, spE0);

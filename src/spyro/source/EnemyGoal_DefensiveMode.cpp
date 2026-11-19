@@ -376,7 +376,7 @@ u8 EnemyGoal_ShieldBlock::Update() {
                     sp40 = (f64) sp20;
                     sp88 = (f64) sp8;
                     sp90 = (f64) sp10;
-                    var_r0_675 = (((f32) sp90 * (f32) sp40) + (((f32) sp88 * (f32) sp38) + (unksp8C * unksp3C))) > _table_sinf(1.8849556f);
+                    var_r0_675 = (((f32) sp90 * (f32) sp40) + (((f32) sp88 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) > _table_sinf(1.8849556f);
                 } else {
                     goto block_21;
                 }

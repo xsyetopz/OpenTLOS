@@ -57,7 +57,7 @@ s32 SpyroTargetList::CompareTargets(const void *arg0, const void *arg1) {
     temp_r4_32 = M2C_FIELD(M2C_FIELD(*temp_r3_22, void *(**)(void **, void *, void *, f64), 8)(temp_r3_22, temp_r4_23, M2C_FIELD(&gb, void **, 0x3B8), temp_f1_25), void **, 8);
     sp18 = M2C_FIELD(temp_r4_32, f64 *, 0x30);
     sp20 = M2C_FIELD(temp_r4_32, f64 *, 0x38);
-    temp_f2_41 = unksp1C - unkspC;
+    temp_f2_41 = (*(f32 *) ((u8 *) &sp18 + 0x4)) - (*(f32 *) ((u8 *) &sp8 + 0x4));
     temp_f1_45 = (f32) sp18 - (f32) sp8;
     temp_r3_47 = *this->unk0;
     temp_r4_49 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
@@ -71,7 +71,7 @@ s32 SpyroTargetList::CompareTargets(const void *arg0, const void *arg1) {
     temp_r3_63 = M2C_FIELD(M2C_FIELD(*temp_r3_47, void *(**)(void **, void *, f64, f32, f32, f32), 8)(temp_r3_47, temp_r4_49, temp_f1_53, temp_f2_56, temp_f3_51, temp_f4_54), void **, 8);
     sp38 = M2C_FIELD(temp_r3_63, f64 *, 0x30);
     sp40 = M2C_FIELD(temp_r3_63, f64 *, 0x38);
-    temp_f3_72 = unksp3C - unksp2C;
+    temp_f3_72 = (*(f32 *) ((u8 *) &sp38 + 0x4)) - (*(f32 *) ((u8 *) &sp28 + 0x4));
     temp_f4_73 = (f32) sp38 - (f32) sp28;
     temp_f2_77 = (f32) sp40 - (f32) sp30;
     if (((temp_f2_77 * temp_f2_77) + ((temp_f4_73 * temp_f4_73) + (temp_f3_72 * temp_f3_72))) < (temp_f4_54 + temp_f2_56)) {
@@ -220,7 +220,7 @@ loop_55:
             spD0 = sp40;
             sp48 = (f32) spC8 - (f32) spB8;
             spD8 = (f64) sp48;
-            var_f4_254 = ((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (unkspD4 * unkspD4));
+            var_f4_254 = ((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + ((*(f32 *) ((u8 *) &spD0 + 0x4)) * (*(f32 *) ((u8 *) &spD0 + 0x4))));
             if (var_f4_254 > 1e-12f) {
                 if (var_f4_254 > 0.0f) {
                     temp_f1_260 = __frsqrte(var_f4_254);
@@ -261,7 +261,7 @@ loop_55:
             }
             var_f4_331 = 0.0f;
             sp30 = (f32) spD0 * var_f2_321;
-            sp34 = unkspD4 * var_f2_321;
+            sp34 = (*(f32 *) ((u8 *) &spD0 + 0x4)) * var_f2_321;
             sp38 = (f32) spD8 * var_f2_321;
             sp120 = (f64) sp30;
             sp128 = (f64) sp38;
@@ -270,7 +270,7 @@ loop_55:
             sp28 = (f32) sp128;
             spA0 = (f64) sp20;
             spA8 = (f64) sp28;
-            var_f5_357 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4));
+            var_f5_357 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))));
             if (var_f5_357 > 1e-12f) {
                 if (var_f5_357 > 0.0f) {
                     temp_f1_362 = __frsqrte(var_f5_357);
@@ -308,26 +308,26 @@ loop_55:
                 var_f4_331 = 1.0f / var_f5_357;
             }
             sp10 = (f32) spA0 * var_f4_331;
-            sp14 = unkspA4 * var_f4_331;
+            sp14 = (*(f32 *) ((u8 *) &spA0 + 0x4)) * var_f4_331;
             sp18 = (f32) spA8 * var_f4_331;
             sp110 = (f64) sp10;
             sp118 = (f64) sp18;
             sp90.GetXZDir();
-            if (!((((f32) sp118 * sp98) + (((f32) sp110 * M2C_BITWISE(f32, sp90)) + (unksp114 * sp94))) < 0.25f)) {
+            if (!((((f32) sp118 * sp98) + (((f32) sp110 * M2C_BITWISE(f32, sp90)) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * sp94))) < 0.25f)) {
                 temp_r5_460 = M2C_FIELD(M2C_FIELD(*temp_r24_148, void *(**)(void **, f32, f64), 8)(temp_r24_148), void **, 8);
                 temp_f1_463 = M2C_FIELD(temp_r5_460, f64 *, 0x30);
                 sp70 = temp_f1_463;
                 sp78 = M2C_FIELD(temp_r5_460, f64 *, 0x38);
                 temp_r3_471 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, M2C_UNK *, void *, f64), 0xC)(M2C_FIELD(&gb, void ***, 0), &gb, temp_r5_460, temp_f1_463), void **, 8);
                 sp80 = M2C_FIELD(temp_r3_471, f64 *, 0x30);
-                temp_f4_482 = unksp84 - unksp74;
+                temp_f4_482 = (*(f32 *) ((u8 *) &sp80 + 0x4)) - (*(f32 *) ((u8 *) &sp70 + 0x4));
                 sp88 = M2C_FIELD(temp_r3_471, f64 *, 0x38);
                 if (temp_f4_482 < 0.0f) {
                     var_f1_491 = -temp_f4_482;
                 } else {
                     var_f1_491 = temp_f4_482;
                 }
-                if (!(var_f1_491 > 500.0f) || !((((f32) sp128 * (f32) sp118) + (((f32) sp120 * (f32) sp110) + (unksp124 * unksp114))) < 0.8f)) {
+                if (!(var_f1_491 > 500.0f) || !((((f32) sp128 * (f32) sp118) + (((f32) sp120 * (f32) sp110) + ((*(f32 *) ((u8 *) &sp120 + 0x4)) * (*(f32 *) ((u8 *) &sp110 + 0x4))))) < 0.8f)) {
                     var_r26_141 += 1;
                     temp_r3_505 = this->unk8 - 4;
                     this->unk8 = temp_r3_505;
@@ -491,7 +491,7 @@ void SpyroTargetList::Init(float arg0, unsigned int arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SpyroStuck::Update() {
     s8 spA1;
     s8 spA0;
@@ -536,7 +536,7 @@ void SpyroStuck::Update() {
     sp30 = sp20;
     sp28 = (f32) sp48 - this->unk8;
     sp38 = (f64) sp28;
-    var_f4_967 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_967 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_967 > 0.0f) {
         temp_f1_970 = __frsqrte(var_f4_967);
         temp_f1_976 = 0.5 * temp_f1_970 * -(((f64) var_f4_967 * (temp_f1_970 * temp_f1_970)) - 3.0);
@@ -652,7 +652,7 @@ void SpyroLighting::ApplyPointLight(MKVector3 arg0, float arg1, float arg2) {
     sp38 = temp_f0_1149;
     sp10 = (f32) sp30 - M2C_FIELD(arg0, f32 *, 8);
     sp40 = (f64) sp10;
-    var_f0_1165 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
+    var_f0_1165 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))));
     if (var_f0_1165 < temp_f4_1139) {
         if (var_f0_1165 > 100.0f) {
 
@@ -731,9 +731,9 @@ void SpyroNodeHelper::SetPYR(const MKVector3 &arg0) {
         ((Matrix *) &spA0)->RotatePitch((Matrix *) &spA0, (f32) M2C_FIELD(this, f64 *, 0));
         ((Matrix *) &spA0)->RotateYaw((Matrix *) &spA0, M2C_FIELD(this, f32 *, 4));
         spD0 = (f32) sp50;
-        unkspD4 = unksp54;
+        (*(f32 *) ((u8 *) &spD0 + 0x4)) = (*(f32 *) ((u8 *) &sp50 + 0x4));
         spD8 = (f32) sp58;
-        unkspDC = 1.0f;
+        (*(f32 *) ((u8 *) &spD8 + 0x4)) = 1.0f;
         MKModel_SetWorldMatrix(this->unk14, *((Matrix *) &spA0));
         return;
     }
@@ -742,7 +742,7 @@ void SpyroNodeHelper::SetPYR(const MKVector3 &arg0) {
     sp48 = sp38;
     sp60.SetIdentity();
     sp10 = -(f32) sp40;
-    sp14 = -unksp44;
+    sp14 = -(*(f32 *) ((u8 *) &sp40 + 0x4));
     sp18 = -(f32) sp48;
     sp20 = (f64) sp10;
     sp28 = (f64) sp18;

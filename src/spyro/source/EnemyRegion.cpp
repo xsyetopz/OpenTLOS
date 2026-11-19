@@ -111,7 +111,7 @@ loop_5:
             temp_f4_81 = M2C_BITWISE(f64, sp110);
             sp160 = temp_f4_81;
             sp168 = (f64) sp110.unk8;
-            temp_f2_87 = unksp164 - temp_f27_54;
+            temp_f2_87 = (*(f32 *) ((u8 *) &sp160 + 0x4)) - temp_f27_54;
             temp_f5_88 = (f32) sp160 - temp_f28_55;
             temp_f2_91 = (f32) sp168 - temp_f29_57;
             temp_f0_95 = (temp_f2_91 * temp_f2_91) + ((temp_f5_88 * temp_f5_88) + (temp_f2_87 * temp_f2_87));
@@ -133,7 +133,7 @@ loop_5:
         temp_f4_129 = M2C_BITWISE(f64, spE0);
         sp160 = temp_f4_129;
         sp168 = (f64) spE0.unk8;
-        temp_f6_135 = unksp164 - arg0.unk4;
+        temp_f6_135 = (*(f32 *) ((u8 *) &sp160 + 0x4)) - arg0.unk4;
         temp_f5_139 = (f32) sp160 - arg0.unk0;
         temp_f2_142 = (f32) sp168 - arg0.unk8;
         if (((temp_f2_142 * temp_f2_142) + ((temp_f5_139 * temp_f5_139) + (temp_f6_135 * temp_f6_135))) < var_f30_39) {
@@ -151,7 +151,7 @@ loop_5:
             sp58 = spA0.unk18 - (f32) spA0.unk8;
             spC0 = (f64) sp50;
             spC8 = (f64) sp58;
-            var_f5_189 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + (unkspC4 * unkspC4));
+            var_f5_189 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + ((*(f32 *) ((u8 *) &spC0 + 0x4)) * (*(f32 *) ((u8 *) &spC0 + 0x4))));
             if (var_f5_189 > 1e-12f) {
                 if (var_f5_189 > 0.0f) {
                     temp_f1_194 = __frsqrte(var_f5_189);
@@ -190,12 +190,12 @@ loop_5:
             }
             sp48 = (f32) spC8 * var_f4_170;
             sp40 = (f32) spC0 * var_f4_170;
-            sp44 = unkspC4 * var_f4_170;
+            sp44 = (*(f32 *) ((u8 *) &spC0 + 0x4)) * var_f4_170;
             spD8 = (f64) sp48;
             spD0 = (f64) sp40;
             sp64 = (MKVector3::up.unk8 * (f32) spD0) - (MKVector3::up.unk0 * (f32) spD8);
-            sp60 = (MKVector3::up.unk4 * (f32) spD8) - (MKVector3::up.unk8 * unkspD4);
-            sp68 = (MKVector3::up.unk0 * unkspD4) - (MKVector3::up.unk4 * (f32) spD0);
+            sp60 = (MKVector3::up.unk4 * (f32) spD8) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &spD0 + 0x4)));
+            sp68 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &spD0 + 0x4))) - (MKVector3::up.unk4 * (f32) spD0);
             sp150 = (f64) sp60;
             sp158 = (f64) sp68;
             if ((u8) this->unk30 == 0) {
@@ -210,7 +210,7 @@ loop_5:
         sp90 = sp30;
         sp38 = (f32) M2C_FIELD(this, f64 *, 8) - arg0.unk8;
         sp98 = (f64) sp38;
-        var_f4_325 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (unksp94 * unksp94));
+        var_f4_325 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * (*(f32 *) ((u8 *) &sp90 + 0x4))));
         if (var_f4_325 > 1e-12f) {
             if (var_f4_325 > 0.0f) {
                 temp_f1_331 = __frsqrte(var_f4_325);
@@ -249,7 +249,7 @@ loop_5:
         } else {
             var_f3_392 = 0.0f;
         }
-        sp24 = unksp94 * var_f3_392;
+        sp24 = (*(f32 *) ((u8 *) &sp90 + 0x4)) * var_f3_392;
         sp20 = (f32) sp90 * var_f3_392;
         sp28 = (f32) sp98 * var_f3_392;
         sp130.unk10 = (f64) sp20;
@@ -375,7 +375,7 @@ loop_6:
             sp48 = sp60.unk18 - (f32) sp60.unk8;
             sp80 = (f64) sp40;
             sp88 = (f64) sp48;
-            var_f5_606 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
+            var_f5_606 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp80 + 0x4)) * (*(f32 *) ((u8 *) &sp80 + 0x4))));
             if (var_f5_606 > 1e-12f) {
                 if (var_f5_606 > 0.0f) {
                     temp_f1_611 = __frsqrte(var_f5_606);
@@ -414,12 +414,12 @@ loop_6:
             }
             sp38 = (f32) sp88 * var_f4_587;
             sp30 = (f32) sp80 * var_f4_587;
-            sp34 = unksp84 * var_f4_587;
+            sp34 = (*(f32 *) ((u8 *) &sp80 + 0x4)) * var_f4_587;
             sp98 = (f64) sp38;
             sp90 = (f64) sp30;
             sp54 = (MKVector3::up.unk8 * (f32) sp90) - (MKVector3::up.unk0 * (f32) sp98);
-            sp50 = (MKVector3::up.unk4 * (f32) sp98) - (MKVector3::up.unk8 * unksp94);
-            sp58 = (MKVector3::up.unk0 * unksp94) - (MKVector3::up.unk4 * (f32) sp90);
+            sp50 = (MKVector3::up.unk4 * (f32) sp98) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp90 + 0x4)));
+            sp58 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp90 + 0x4))) - (MKVector3::up.unk4 * (f32) sp90);
             sp100.unk10 = (f64) sp50;
             sp100.unk18 = (f64) sp58;
             if ((u8) this->unk30 == 0) {

@@ -137,7 +137,7 @@ void WobbleProp::Update() {
     spA8 = temp_f0_191;
     sp40 = M2C_FIELD(temp_r5_188, f32 *, 8) - (f32) spC0;
     spB0 = (f64) sp40;
-    temp_f31_209 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC));
+    temp_f31_209 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * (*(f32 *) ((u8 *) &spA8 + 0x4))));
     if (temp_f31_209 < temp_f29_193) {
         M2C_FIELD(temp_r5_188, f64 *, 0x10) = (f64) M2C_FIELD(temp_r5_188, f64 *, 0);
         M2C_FIELD(temp_r5_188, f64 *, 0x18) = (f64) M2C_FIELD(temp_r5_188, f32 *, 8);
@@ -158,7 +158,7 @@ void WobbleProp::Update() {
             sp58 = sp28;
             sp30 = M2C_FIELD(temp_r4_249, f32 *, 8) - (f32) M2C_FIELD(temp_r4_249, f64 *, 0x18);
             sp60 = (f64) sp30;
-            if ((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C))) >= (temp_f2_252 * temp_f2_252)) {
+            if ((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp58 + 0x4))))) >= (temp_f2_252 * temp_f2_252)) {
                 this->unkDC = 1;
                 if (KDSound_IsVoicePlaying(this->unkD8) != 0) {
                     KDSound_Stop(&this->unkD8);
@@ -185,7 +185,7 @@ void WobbleProp::Update() {
         sp48 = temp_f0_332;
         sp20 = M2C_FIELD(temp_r4_328, f32 *, 8) - (f32) M2C_FIELD(temp_r4_328, f64 *, 0x18);
         sp50 = (f64) sp20;
-        var_f1_322 = ((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C);
+        var_f1_322 = ((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4)));
         temp_f28_351 = ((f32) sp50 * (f32) sp50) + var_f1_322;
         if ((this->unkE0 < 1.0f) && (temp_f28_351 < 1.0f)) {
             KDSound_SetVolume(this->unkD8, this->unkE8 * (2.0f * this->unkE4));

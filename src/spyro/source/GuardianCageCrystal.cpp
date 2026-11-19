@@ -148,7 +148,7 @@ void GuardianCageCrystal::Update() {
         sp7C = 0.0f;
         spB0 = (f64) sp80;
         spA8 = (f64) sp78;
-        var_f5_247 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC));
+        var_f5_247 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * (*(f32 *) ((u8 *) &spA8 + 0x4))));
         if (var_f5_247 > 1e-12f) {
             if (var_f5_247 > 0.0f) {
                 temp_f1_252 = __frsqrte(var_f5_247);
@@ -185,7 +185,7 @@ void GuardianCageCrystal::Update() {
             }
             var_f4_232 = 1.0f / var_f5_247;
         }
-        sp4C = unkspAC * var_f4_232;
+        sp4C = (*(f32 *) ((u8 *) &spA8 + 0x4)) * var_f4_232;
         sp48 = (f32) spA8 * var_f4_232;
         sp50 = (f32) spB0 * var_f4_232;
         spB8 = (f64) sp48;

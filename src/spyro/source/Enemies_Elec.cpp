@@ -54,7 +54,7 @@ s32 ElecTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspDC'
+#if 0 // DRAFT: ')' expected
 void ElecTier3::DrawScan() {
     M2C_UNK spE8;
     f64 spE0;                                       /* compiler-managed */
@@ -122,8 +122,8 @@ void ElecTier3::DrawScan() {
     if ((u8) M2C_FIELD(this, u8 *, 0xB55) != 0) {
         spE0 = 0.1f;
         spD8 = 0.7f;
-        unkspDC = 0.7f;
-        unkspE4 = 1.0f;
+        (*(f32 *) ((u8 *) &spD0 + 0xc)) = 0.7f;
+        (*(f32 *) ((u8 *) &spD0 + 0x14)) = 1.0f;
     }
     var_r29_126 = 0;
     var_r31_128 = 0;
@@ -235,31 +235,31 @@ void ElecTier3::UpdateScan() {
     spF8 = (f64) sp38;
     spE0 = (f64) sp30;
     spE8 = (f64) sp38;
-    sp20 = (MKVector3::up.unk4 * (f32) spF8) - (MKVector3::up.unk8 * unkspF4);
+    sp20 = (MKVector3::up.unk4 * (f32) spF8) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &spF0 + 0x4)));
     sp24 = (MKVector3::up.unk8 * (f32) spF0) - (MKVector3::up.unk0 * (f32) spF8);
-    sp28 = (MKVector3::up.unk0 * unkspF4) - (MKVector3::up.unk4 * (f32) spF0);
+    sp28 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &spF0 + 0x4))) - (MKVector3::up.unk4 * (f32) spF0);
     spC0 = (f64) sp20;
     spC8 = (f64) sp28;
     Normalise(spD0);
     sp110 = M2C_BITWISE(f64, spD0);
     sp118 = (f64) spD0.unk8;
     this->unkAF8 = (f32) sp110;
-    this->unkAFC = unksp114;
+    this->unkAFC = (*(f32 *) ((u8 *) &sp110 + 0x4));
     M2C_FIELD(this, f32 *, 0xB18) = (f32) sp118;
-    sp18 = ((f32) spF0 * unksp114) - (unkspF4 * (f32) sp110);
-    sp10 = (unkspF4 * (f32) sp118) - ((f32) spF8 * unksp114);
+    sp18 = ((f32) spF0 * (*(f32 *) ((u8 *) &sp110 + 0x4))) - ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (f32) sp110);
+    sp10 = ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (f32) sp118) - ((f32) spF8 * (*(f32 *) ((u8 *) &sp110 + 0x4)));
     sp14 = ((f32) spF8 * (f32) sp110) - ((f32) spF0 * (f32) sp118);
     sp108 = (f64) sp18;
     sp100 = (f64) sp10;
     this->unkB04 = 0.0f;
     M2C_FIELD(this, f32 *, 0xB20) = (f32) sp100;
-    this->unkB24 = unksp104;
+    this->unkB24 = (*(f32 *) ((u8 *) &sp100 + 0x4));
     this->unkB10.unk0 = (f32) sp108;
     this->unkB10.unk4 = 0.0f;
     sp68 = 0.0f;
     this->unkB10.unk8 = (f32) spF0;
     sp60 = 0.0f;
-    this->unkB10.unkC = unkspF4;
+    this->unkB10.unkC = (*(f32 *) ((u8 *) &spF0 + 0x4));
     sp64 = 1.0f;
     this->unkB10.unk10 = (f32) spF8;
     this->unkB10.unk14 = 0.0f;
@@ -642,7 +642,7 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             sp48 = sp170.unk8 + (f32) spC8;
             spD8 = (f64) sp48;
             sp130.unk30 = (f32) spD0;
-            sp130.unk34 = unkspD4;
+            sp130.unk34 = (*(f32 *) ((u8 *) &spD0 + 0x4));
             sp130.unk38 = (f32) spD8;
             sp130.unk3C = 1.0f;
         } else {
@@ -656,7 +656,7 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             sp38 = sp170.unk8 + (f32) spA8;
             spB8 = (f64) sp38;
             sp130.unk30 = (f32) spB0;
-            sp130.unk34 = unkspB4;
+            sp130.unk34 = (*(f32 *) ((u8 *) &spB0 + 0x4));
             sp130.unk38 = (f32) spB8;
             sp130.unk3C = 1.0f;
         }

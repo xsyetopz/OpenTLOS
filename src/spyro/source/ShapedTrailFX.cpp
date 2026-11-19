@@ -213,7 +213,7 @@ loop_13:
             spD8 = sp38;
             sp40 = (f32) sp60 * sp1C;
             spE0 = (f64) sp40;
-            var_f4_311 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (unkspDC * unkspDC));
+            var_f4_311 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + ((*(f32 *) ((u8 *) &spD0 + 0xc)) * (*(f32 *) ((u8 *) &spD0 + 0xc))));
             if (var_f4_311 > 0.000001f) {
                 if (var_f4_311 > 0.0f) {
                     temp_f1_317 = __frsqrte(var_f4_311);
@@ -253,7 +253,7 @@ loop_13:
                 var_f3_378 = 0.0f;
             }
             spD8 = (f32) spD8 * var_f3_378;
-            unkspDC *= var_f3_378;
+            (*(f32 *) ((u8 *) &spD0 + 0xc)) *= var_f3_378;
             spE0 = (f32) spE0 * var_f3_378;
             M2C_STRUCT_COPY((s32) &sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             KDMath_BuildMatrixFromFwd(&sp110, *((MKVector3 *) &spD8), (MKVector3 *) &spE8);
@@ -261,7 +261,7 @@ loop_13:
             var_r6_413 = 0;
             var_r3_415 = 0;
             sp110.unk30 = (f32) spF8;
-            sp110.unk34 = unkspFC;
+            sp110.unk34 = (*(f32 *) ((u8 *) &spF8 + 0x4));
             sp110.unk38 = (f32) sp100;
             sp110.unk3C = 1.0f;
 loop_36:
@@ -315,7 +315,7 @@ loop_80:
                 ((KDUniformSpline *) &sp88)->GetVelocity(var_f21_492);
                 spD8 = sp88;
                 spE0 = sp90;
-                var_f4_541 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (unkspDC * unkspDC));
+                var_f4_541 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + ((*(f32 *) ((u8 *) &spD0 + 0xc)) * (*(f32 *) ((u8 *) &spD0 + 0xc))));
                 if (var_f4_541 > 0.000001f) {
                     if (var_f4_541 > 0.0f) {
                         temp_f1_547 = __frsqrte(var_f4_541);
@@ -355,7 +355,7 @@ loop_80:
                     var_f3_608 = 0.0f;
                 }
                 spD8 = (f32) spD8 * var_f3_608;
-                unkspDC *= var_f3_608;
+                (*(f32 *) ((u8 *) &spD0 + 0xc)) *= var_f3_608;
                 spE0 = (f32) spE0 * var_f3_608;
                 M2C_STRUCT_COPY((s32) &sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 KDMath_BuildMatrixFromFwd(&sp110, *((MKVector3 *) &spD8), (MKVector3 *) &spE8);
@@ -363,7 +363,7 @@ loop_80:
                 var_r6_641 = 0;
                 var_r3_643 = 0;
                 sp110.unk30 = (f32) spF8;
-                sp110.unk34 = unkspFC;
+                sp110.unk34 = (*(f32 *) ((u8 *) &spF8 + 0x4));
                 sp110.unk38 = (f32) sp100;
                 sp110.unk3C = 1.0f;
 loop_72:

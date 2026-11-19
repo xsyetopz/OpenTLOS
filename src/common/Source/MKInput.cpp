@@ -142,9 +142,9 @@ void MKInput_DespatchEvents() {
                             if ((temp_f1_221 == 0.0f) && (sp10 > 0.0f)) {
                                 var_r4_246 = 1;
                             }
-                            unksp29 = var_r4_246;
+                            (*(u8 *) ((u8 *) &sp26 + 0x3)) = var_r4_246;
                             sp2C = temp_f1_221;
-                            unksp2A = sp9;
+                            (*(u8 *) ((u8 *) &sp26 + 0x4)) = sp9;
                             MKInput_SendEvent((MKInputEvent *) &sp1C);
                         }
                         var_r28_207 += 1;

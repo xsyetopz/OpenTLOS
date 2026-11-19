@@ -184,7 +184,6 @@ void MKParticleSystem_InitModule(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp4C'
 void MKBaseParticleSystem::DrawChunk(Matrix *arg0, MKVector4 *arg1, MKParticleChunk *arg2) {
     f64 sp48;
     f64 sp40;
@@ -270,15 +269,15 @@ loop_5:
         sp28 = M2C_FIELD(arg1, f64 *, 8) * M2C_FIELD(temp_r23_301, f64 *, 0x18);
         sp40 = sp20;
         sp48 = sp28;
-        sp40 *= (f64) unksp4C;
-        sp48 *= (f64) unksp4C;
-        var_f0_383 = 2.0f * unksp4C;
+        sp40 *= (f64) (*(f32 *) ((u8 *) &sp48 + 0x4));
+        sp48 *= (f64) (*(f32 *) ((u8 *) &sp48 + 0x4));
+        var_f0_383 = 2.0f * (*(f32 *) ((u8 *) &sp48 + 0x4));
         if (var_f0_383 < 1.0f) {
 
         } else {
             var_f0_383 = 1.0f;
         }
-        unksp4C = var_f0_383;
+        (*(f32 *) ((u8 *) &sp48 + 0x4)) = var_f0_383;
         temp_f3_392 = M2C_FIELD(temp_r23_301, f32 *, 4);
         temp_f6_398 = M2C_FIELD(temp_r23_301, f32 *, 0);
         temp_f7_404 = M2C_FIELD(temp_r23_301, f32 *, 8);
@@ -289,22 +288,21 @@ loop_5:
         sp38 = (f64) sp18;
         MKSetColorV(*((MKVector4 *) &sp40));
         MKSetTexCoord1F(temp_f28_316 * M2C_FIELD(temp_r28_286, f32 *, 0x84), 0.0f);
-        MKSetPositionF((f32) sp30 + temp_f27_351, unksp34 + temp_f26_352, (f32) sp38 + temp_f25_356);
+        MKSetPositionF((f32) sp30 + temp_f27_351, (*(f32 *) ((u8 *) &sp30 + 0x4)) + temp_f26_352, (f32) sp38 + temp_f25_356);
         temp_f0_438 = M2C_FIELD(temp_r28_286, f32 *, 0x84);
         MKSetTexCoord1F((temp_f28_316 * temp_f0_438) + temp_f0_438, 0.0f);
-        MKSetPositionF((f32) sp30 + temp_f24_355, unksp34 + temp_f23_357, (f32) sp38 + temp_f22_358);
+        MKSetPositionF((f32) sp30 + temp_f24_355, (*(f32 *) ((u8 *) &sp30 + 0x4)) + temp_f23_357, (f32) sp38 + temp_f22_358);
         temp_f0_449 = M2C_FIELD(temp_r28_286, f32 *, 0x84);
         MKSetTexCoord1F((temp_f28_316 * temp_f0_449) + temp_f0_449, 1.0f);
-        MKSetPositionF((f32) sp30 - temp_f27_351, unksp34 - temp_f26_352, (f32) sp38 - temp_f25_356);
+        MKSetPositionF((f32) sp30 - temp_f27_351, (*(f32 *) ((u8 *) &sp30 + 0x4)) - temp_f26_352, (f32) sp38 - temp_f25_356);
         MKSetTexCoord1F(temp_f28_316 * M2C_FIELD(temp_r28_286, f32 *, 0x84), 1.0f);
-        MKSetPositionF((f32) sp30 - temp_f24_355, unksp34 - temp_f23_357, (f32) sp38 - temp_f22_358);
+        MKSetPositionF((f32) sp30 - temp_f24_355, (*(f32 *) ((u8 *) &sp30 + 0x4)) - temp_f23_357, (f32) sp38 - temp_f22_358);
         var_r24_294 += 1;
         var_r18_296 += 0x30;
         goto loop_5;
     }
     MKEnd();
 }
-#endif
 
 void MKBaseParticleSystem::InitDraw(Matrix *arg0, MKVector4 *arg1) {
     MKMaterial_SetMaterial(M2C_FIELD(this->unk0, MKMaterial **, 0x38));
@@ -590,7 +588,7 @@ loop_15:
     return temp_r3_905;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp54'
+#if 0 // DRAFT: undefined identifier 'unksp5C'
 void MKBaseParticleSystem::Draw(Matrix *arg0, MKVector4 *arg1) {
     M2C_UNK spA0;
     f64 sp58;
@@ -648,7 +646,7 @@ loop_6:
                     sp50 = temp_f0_1039;
                     sp28 = (f32) sp48 - M2C_FIELD(temp_r31_982, f32 *, 8);
                     sp58 = (f64) sp28;
-                    *(&spA0 + var_r3_998) = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
+                    *(&spA0 + var_r3_998) = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
                     var_r3_998 += 4;
                     goto loop_6;
                 }
@@ -702,7 +700,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp14'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MKBaseParticleSystem::Draw() {
     f64 sp10;
     f64 sp8;
@@ -715,7 +713,7 @@ void MKBaseParticleSystem::Draw() {
     this->unkBC = OSGetTick();
     sp10 = this->unk58;
     sp8 = this->unk50;
-    unksp14 *= this->unk20;
+    (*(f32 *) ((u8 *) &sp10 + 0x4)) *= this->unk20;
     temp_r3_1176 = this->unk0;
     if ((u32) M2C_FIELD(temp_r3_1176, u32 *, 0x2C) == 0U) {
         temp_r3_1182 = M2C_FIELD(M2C_FIELD(temp_r3_1176, void **, 0x38), s32 *, 0x24) + 0x30;

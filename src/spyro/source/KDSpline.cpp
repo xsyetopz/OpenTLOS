@@ -189,10 +189,10 @@ loop_56:
             sp18 = temp_f3_207;
             sp38 = temp_f3_207;
             sp20 = M2C_FIELD(temp_r6_197, f32 *, 8) - M2C_FIELD(temp_r8_195, f32 *, 8);
-            temp_f3_232 = -((16.0f * temp_f11_175) - (((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))));
+            temp_f3_232 = -((16.0f * temp_f11_175) - (((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))));
             sp40 = (f64) sp20;
-            temp_f9_241 = 12.0f * (((f32) sp50 * (f32) sp40) + (((f32) sp48 * (f32) sp38) + (unksp4C * unksp3C)));
-            var_f8_243 = (temp_f9_241 * temp_f9_241) - (4.0f * temp_f3_232 * (36.0f * (((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C)))));
+            temp_f9_241 = 12.0f * (((f32) sp50 * (f32) sp40) + (((f32) sp48 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4)))));
+            var_f8_243 = (temp_f9_241 * temp_f9_241) - (4.0f * temp_f3_232 * (36.0f * (((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4)))))));
             if (var_f8_243 > 0.0f) {
                 temp_f5_246 = __frsqrte(var_f8_243);
                 temp_f5_252 = 0.5 * temp_f5_246 * -(((f64) var_f8_243 * (temp_f5_246 * temp_f5_246)) - 3.0);
@@ -611,7 +611,7 @@ loop_63:
                         sp458 = temp_f0_665;
                         sp160 = M2C_FIELD(temp_r3_662, f32 *, 8) - M2C_FIELD(temp_r4_661, f32 *, 8);
                         sp460 = (f64) sp160;
-                        var_f0_683 = ((f32) sp460 * (f32) sp460) + (((f32) sp458 * (f32) sp458) + (unksp45C * unksp45C));
+                        var_f0_683 = ((f32) sp460 * (f32) sp460) + (((f32) sp458 * (f32) sp458) + ((*(f32 *) ((u8 *) &sp458 + 0x4)) * (*(f32 *) ((u8 *) &sp458 + 0x4))));
                         if (var_f0_683 > 0.0f) {
                             temp_f2_686 = __frsqrte(var_f0_683);
                             temp_f2_692 = 0.5 * temp_f2_686 * -(((f64) var_f0_683 * (temp_f2_686 * temp_f2_686)) - 3.0);
@@ -653,7 +653,7 @@ loop_63:
                         sp448 = temp_f1_751;
                         sp150 = M2C_FIELD(temp_r3_748, f32 *, 8) - M2C_FIELD(temp_r4_747, f32 *, 8);
                         sp450 = (f64) sp150;
-                        var_f1_769 = ((f32) sp450 * (f32) sp450) + (((f32) sp448 * (f32) sp448) + (unksp44C * unksp44C));
+                        var_f1_769 = ((f32) sp450 * (f32) sp450) + (((f32) sp448 * (f32) sp448) + ((*(f32 *) ((u8 *) &sp448 + 0x4)) * (*(f32 *) ((u8 *) &sp448 + 0x4))));
                         if (var_f1_769 > 0.0f) {
                             temp_f3_772 = __frsqrte(var_f1_769);
                             temp_f3_778 = 0.5 * temp_f3_772 * -(((f64) var_f1_769 * (temp_f3_772 * temp_f3_772)) - 3.0);
@@ -709,7 +709,7 @@ loop_63:
                     }
                     temp_r3_874 = this->unkC + temp_r30_476;
                     M2C_FIELD(temp_r3_874, f32 *, 0x10) = (f32) sp498;
-                    M2C_FIELD(temp_r3_874, f32 *, 0x14) = unksp49C;
+                    M2C_FIELD(temp_r3_874, f32 *, 0x14) = (*(f32 *) ((u8 *) &sp480 + 0x1c));
                     M2C_FIELD(temp_r3_874, f32 *, 0x18) = (f32) sp4A0;
                     sp498 = sp488;
                     sp4A0 = (f64) sp490;
@@ -741,13 +741,13 @@ loop_63:
             __ml(0.5f, sp2B8);
             temp_r3_970 = this->unkC + ((this->unk4 - 2) << 5);
             M2C_FIELD(temp_r3_970, f32 *, 0x10) = (f32) sp498;
-            M2C_FIELD(temp_r3_970, f32 *, 0x14) = unksp49C;
+            M2C_FIELD(temp_r3_970, f32 *, 0x14) = (*(f32 *) ((u8 *) &sp480 + 0x1c));
             M2C_FIELD(temp_r3_970, f32 *, 0x18) = (f32) sp4A0;
             sp488 = M2C_BITWISE(f64, sp2B8);
             sp490 = (f64) sp2B8.unk8;
             temp_r3_983 = this->unkC + ((this->unk4 - 1) << 5);
             M2C_FIELD(temp_r3_983, f32 *, 0x10) = (f32) sp488;
-            M2C_FIELD(temp_r3_983, f32 *, 0x14) = unksp48C;
+            M2C_FIELD(temp_r3_983, f32 *, 0x14) = (*(f32 *) ((u8 *) &sp480 + 0xc));
             M2C_FIELD(temp_r3_983, f32 *, 0x18) = (f32) sp490;
             return;
         }
@@ -756,7 +756,7 @@ loop_63:
         var_r31_994 = 0x20;
         sp440 = M2C_FIELD(temp_r3_991, f64 *, 0x38);
         sp498 = 0.0f;
-        unksp49C = 0.0f;
+        (*(f32 *) ((u8 *) &sp480 + 0x1c)) = 0.0f;
         sp4A0 = 0.0f;
         sp438 = M2C_FIELD(temp_r3_991, f64 *, 0x30);
 loop_105:
@@ -838,7 +838,7 @@ loop_105:
                 sp1F0 = (f64) sp50;
                 sp490 = (f64) sp50;
                 if (((u8) this->unk10 >> 7U) & 1) {
-                    var_f4_1212 = ((f32) sp490 * (f32) sp490) + (((f32) sp488 * (f32) sp488) + (unksp48C * unksp48C));
+                    var_f4_1212 = ((f32) sp490 * (f32) sp490) + (((f32) sp488 * (f32) sp488) + ((*(f32 *) ((u8 *) &sp480 + 0xc)) * (*(f32 *) ((u8 *) &sp480 + 0xc))));
                     if (var_f4_1212 > 0.000001f) {
                         if (var_f4_1212 > 0.0f) {
                             temp_f1_1218 = __frsqrte(var_f4_1212);
@@ -878,13 +878,13 @@ loop_105:
                         var_f3_1279 = 0.0f;
                     }
                     sp488 = (f32) sp488 * var_f3_1279;
-                    unksp48C *= var_f3_1279;
+                    (*(f32 *) ((u8 *) &sp480 + 0xc)) *= var_f3_1279;
                     sp490 = (f32) sp490 * var_f3_1279;
                 }
                 if (var_r29_992 != 1) {
                     temp_r3_1298 = this->unkC + temp_r30_1007;
                     M2C_FIELD(temp_r3_1298, f32 *, 0x10) = sp498;
-                    M2C_FIELD(temp_r3_1298, f32 *, 0x14) = unksp49C;
+                    M2C_FIELD(temp_r3_1298, f32 *, 0x14) = (*(f32 *) ((u8 *) &sp480 + 0x1c));
                     M2C_FIELD(temp_r3_1298, f32 *, 0x18) = sp4A0;
                 }
                 sp498 = (f64) sp488;
@@ -896,7 +896,7 @@ loop_105:
         }
         temp_r3_1320 = this->unkC + ((temp_r3_1313 - 1) << 5);
         M2C_FIELD(temp_r3_1320, f32 *, 0x10) = (f32) sp498;
-        M2C_FIELD(temp_r3_1320, f32 *, 0x14) = unksp49C;
+        M2C_FIELD(temp_r3_1320, f32 *, 0x14) = (*(f32 *) ((u8 *) &sp480 + 0x1c));
         M2C_FIELD(temp_r3_1320, f32 *, 0x18) = (f32) sp4A0;
         temp_r4_1327 = this->unkC;
         temp_r3_1331 = temp_r4_1327 + (((this->unk4 - 1) << 5) + 0x10);
@@ -990,7 +990,7 @@ s32 KDUniformSpline::MergeEnds() {
     sp18 = (f32) sp58 * 0.5f;
     sp68 = (f64) sp18;
     if (((u8) this->unk10 >> 7U) & 1) {
-        var_f4_1490 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+        var_f4_1490 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp58 + 0xc)) * (*(f32 *) ((u8 *) &sp58 + 0xc))));
         if (var_f4_1490 > 0.000001f) {
             if (var_f4_1490 > 0.0f) {
                 temp_f1_1496 = __frsqrte(var_f4_1490);
@@ -1030,16 +1030,16 @@ s32 KDUniformSpline::MergeEnds() {
             var_f3_1557 = 0.0f;
         }
         sp60 = (f32) sp60 * var_f3_1557;
-        unksp64 *= var_f3_1557;
+        (*(f32 *) ((u8 *) &sp58 + 0xc)) *= var_f3_1557;
         sp68 = (f32) sp68 * var_f3_1557;
     }
     temp_r4_1572 = this->unkC;
     M2C_FIELD(temp_r4_1572, f32 *, 0x10) = sp60;
-    M2C_FIELD(temp_r4_1572, f32 *, 0x14) = unksp64;
+    M2C_FIELD(temp_r4_1572, f32 *, 0x14) = (*(f32 *) ((u8 *) &sp58 + 0xc));
     M2C_FIELD(temp_r4_1572, f32 *, 0x18) = sp68;
     temp_r4_1584 = this->unkC + ((this->unk4 - 1) << 5);
     M2C_FIELD(temp_r4_1584, f32 *, 0x10) = sp60;
-    M2C_FIELD(temp_r4_1584, f32 *, 0x14) = unksp64;
+    M2C_FIELD(temp_r4_1584, f32 *, 0x14) = (*(f32 *) ((u8 *) &sp58 + 0xc));
     M2C_FIELD(temp_r4_1584, f32 *, 0x18) = sp68;
     return 1;
 }
@@ -1175,22 +1175,22 @@ void KDUniformSpline::GetMatrix(int arg0, Matrix *arg1) const {
     sp40 = M2C_FIELD(temp_r7_1733, f64 *, 0x28);
     sp8 = M2C_FIELD(temp_r4_1749, f64 *, 0) * (f64) temp_f6_1754;
     arg1->unk0 = (f32) sp58;
-    arg1->unk4 = unksp5C;
+    arg1->unk4 = (*(f32 *) ((u8 *) &sp58 + 0x4));
     arg1->unk8 = (f32) sp60;
     sp10 = M2C_FIELD(temp_r4_1749, f32 *, 8) * temp_f6_1754;
     sp28 = sp8;
     arg1->unkC = 0.0f;
     arg1->unk10 = (f32) sp48;
-    arg1->unk14 = unksp4C;
+    arg1->unk14 = (*(f32 *) ((u8 *) &sp48 + 0x4));
     arg1->unk18 = (f32) sp50;
     arg1->unk1C = 0.0f;
     arg1->unk20 = (f32) sp38;
-    arg1->unk24 = unksp3C;
+    arg1->unk24 = (*(f32 *) ((u8 *) &sp38 + 0x4));
     arg1->unk28 = (f32) sp40;
     arg1->unk2C = 0.0f;
     sp30 = (f64) sp10;
     arg1->unk30 = (f32) sp28;
-    arg1->unk34 = unksp2C;
+    arg1->unk34 = (*(f32 *) ((u8 *) &sp28 + 0x4));
     arg1->unk38 = (f32) sp30;
     arg1->unk3C = 1.0f;
     arg1->Multiply4x4(KDSpline_PositionMixer, arg1);
@@ -1241,11 +1241,11 @@ loop_8:
     sp1C = temp_f30_1903;
     sp30 = (f64) sp20;
     sp18 = temp_f31_1897 * temp_f30_1903;
-    unksp34 = 1.0f;
+    (*(f32 *) ((u8 *) &sp30 + 0x4)) = 1.0f;
     sp28 = (f64) sp18;
-    sp8 = M2C_FIELD(arg2, f32 *, 0x30) + (((f32) sp30 * M2C_FIELD(arg2, f32 *, 0x20)) + (((f32) sp28 * M2C_BITWISE(f32, M2C_FIELD(arg2, s32 *, 0))) + (unksp2C * M2C_FIELD(arg2, f32 *, 0x10))));
-    spC = M2C_FIELD(arg2, f32 *, 0x34) + (((f32) sp30 * M2C_FIELD(arg2, f32 *, 0x24)) + (((f32) sp28 * M2C_FIELD(arg2, f32 *, 4)) + (unksp2C * M2C_FIELD(arg2, f32 *, 0x14))));
-    sp10 = M2C_FIELD(arg2, f32 *, 0x38) + (((f32) sp30 * M2C_FIELD(arg2, f32 *, 0x28)) + (((f32) sp28 * M2C_FIELD(arg2, f32 *, 8)) + (unksp2C * M2C_FIELD(arg2, f32 *, 0x18))));
+    sp8 = M2C_FIELD(arg2, f32 *, 0x30) + (((f32) sp30 * M2C_FIELD(arg2, f32 *, 0x20)) + (((f32) sp28 * M2C_BITWISE(f32, M2C_FIELD(arg2, s32 *, 0))) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * M2C_FIELD(arg2, f32 *, 0x10))));
+    spC = M2C_FIELD(arg2, f32 *, 0x34) + (((f32) sp30 * M2C_FIELD(arg2, f32 *, 0x24)) + (((f32) sp28 * M2C_FIELD(arg2, f32 *, 4)) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * M2C_FIELD(arg2, f32 *, 0x14))));
+    sp10 = M2C_FIELD(arg2, f32 *, 0x38) + (((f32) sp30 * M2C_FIELD(arg2, f32 *, 0x28)) + (((f32) sp28 * M2C_FIELD(arg2, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * M2C_FIELD(arg2, f32 *, 0x18))));
     M2C_FIELD(this, f64 *, 0) = (f64) sp8;
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
@@ -1365,7 +1365,7 @@ s32 KDUniformSpline::AddNode(const MKVector3 &arg0) {
     sp50 = arg0.unk8 - M2C_FIELD(temp_r5_2002, f32 *, 8);
     M2C_FIELD(temp_r3_2009, f32 *, 0x10) = (f32) spE8;
     spF0 = (f64) sp50;
-    M2C_FIELD(temp_r3_2009, f32 *, 0x14) = unkspEC;
+    M2C_FIELD(temp_r3_2009, f32 *, 0x14) = (*(f32 *) ((u8 *) &spE8 + 0x4));
     M2C_FIELD(temp_r3_2009, f32 *, 0x18) = (f32) spF0;
     *(this->unkC + ((this->unk4 << 5) + 0x1C)) = 0.0f;
     *(this->unkC + (((this->unk4 - 1) << 5) + 0x1C)) = ((MKVector3 *) (this->unkC + ((this->unk4 << 5) + 0x10)))->Normalise();
@@ -1823,7 +1823,7 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
         sp240 = spC0;
         spC8 = M2C_FIELD(temp_r3_2803, f32 *, 8) - M2C_FIELD(temp_r4_2802, f32 *, 8);
         sp248 = (f64) spC8;
-        var_f30_2824 = ((f32) sp248 * (f32) sp248) + (((f32) sp240 * (f32) sp240) + (unksp244 * unksp244));
+        var_f30_2824 = ((f32) sp248 * (f32) sp248) + (((f32) sp240 * (f32) sp240) + ((*(f32 *) ((u8 *) &sp240 + 0x4)) * (*(f32 *) ((u8 *) &sp240 + 0x4))));
         if (var_f30_2824 > 0.0f) {
             temp_f1_2827 = __frsqrte(var_f30_2824);
             temp_f1_2833 = 0.5 * temp_f1_2827 * -(((f64) var_f30_2824 * (temp_f1_2827 * temp_f1_2827)) - 3.0);
@@ -1862,7 +1862,7 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
         sp230 = spB0;
         spB8 = arg0.unk8 - M2C_FIELD(temp_r3_2891, f32 *, 8);
         sp238 = (f64) spB8;
-        var_f29_2912 = ((f32) sp238 * (f32) sp238) + (((f32) sp230 * (f32) sp230) + (unksp234 * unksp234));
+        var_f29_2912 = ((f32) sp238 * (f32) sp238) + (((f32) sp230 * (f32) sp230) + ((*(f32 *) ((u8 *) &sp230 + 0x4)) * (*(f32 *) ((u8 *) &sp230 + 0x4))));
         if (var_f29_2912 > 0.0f) {
             temp_f1_2915 = __frsqrte(var_f29_2912);
             temp_f1_2921 = 0.5 * temp_f1_2915 * -(((f64) var_f29_2912 * (temp_f1_2915 * temp_f1_2915)) - 3.0);
@@ -2009,7 +2009,6 @@ void KDSpline::Init(int arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp3C'
 void KDSpline_GetMeasure(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, float arg4, Matrix *arg5) {
     f32 sp7C;
     f32 sp78;
@@ -2060,14 +2059,13 @@ void KDSpline_GetMeasure(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
     sp38 = (f64) sp28;
     sp20 = arg4 * temp_f3_3307;
     sp30 = (f64) sp20;
-    unksp3C = 1.0f;
-    sp10 = sp70 + (((f32) sp38 * sp60) + (((f32) sp30 * sp40) + (unksp34 * sp50)));
-    sp14 = sp74 + (((f32) sp38 * sp64) + (((f32) sp30 * sp44) + (unksp34 * sp54)));
-    sp18 = sp78 + (((f32) sp38 * sp68) + (((f32) sp30 * sp48) + (unksp34 * sp58)));
+    (*(f32 *) ((u8 *) &sp38 + 0x4)) = 1.0f;
+    sp10 = sp70 + (((f32) sp38 * sp60) + (((f32) sp30 * sp40) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp50)));
+    sp14 = sp74 + (((f32) sp38 * sp64) + (((f32) sp30 * sp44) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp54)));
+    sp18 = sp78 + (((f32) sp38 * sp68) + (((f32) sp30 * sp48) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp58)));
     M2C_FIELD(&arg0, f64 *, 0) = (f64) sp10;
     M2C_FIELD(&arg0, f64 *, 8) = (f64) sp18;
 }
-#endif
 
 void KDSpline_cpp::__sinit() {
     f32 spC4;

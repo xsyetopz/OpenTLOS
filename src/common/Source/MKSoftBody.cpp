@@ -106,7 +106,7 @@ f32 SoftSweepSphere::UpdatePos(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp144'
+#if 0 // DRAFT: undefined identifier 'std'
 s32 SoftSweepSphere::TestPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp148;
     f64 sp140;
@@ -184,7 +184,7 @@ s32 SoftSweepSphere::TestPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     sp98 = arg0.unk8 - M2C_FIELD(this, f32 *, 8);
     sp148 = (f64) sp98;
     temp_f7_167 = M2C_FIELD(this, f32 *, 0x28);
-    temp_f0_169 = ((f32) sp148 * temp_f7_167) + (((f32) sp140 * M2C_FIELD(this, f32 *, 0x20)) + (unksp144 * M2C_FIELD(this, f32 *, 0x24)));
+    temp_f0_169 = ((f32) sp148 * temp_f7_167) + (((f32) sp140 * M2C_FIELD(this, f32 *, 0x20)) + ((*(f32 *) ((u8 *) &sp140 + 0x4)) * M2C_FIELD(this, f32 *, 0x24)));
     if (temp_f0_169 > var_f6_156) {
         var_f6_156 = temp_f0_169;
     }
@@ -209,13 +209,13 @@ s32 SoftSweepSphere::TestPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     sp100 = temp_f1_206;
     sp68 = arg0.unk8 - (f32) sp138;
     sp108 = (f64) sp68;
-    if ((((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + (unksp104 * unksp104))) > (temp_f4_212 * temp_f4_212)) {
+    if ((((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + ((*(f32 *) ((u8 *) &sp100 + 0x4)) * (*(f32 *) ((u8 *) &sp100 + 0x4))))) > (temp_f4_212 * temp_f4_212)) {
         this->unk38 &= ~0x10;
         return 0;
     }
     var_r4_235 = 1;
     this->unk38 |= 0x10;
-    temp_f1_247 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + (unksp144 * unksp144));
+    temp_f1_247 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + ((*(f32 *) ((u8 *) &sp140 + 0x4)) * (*(f32 *) ((u8 *) &sp140 + 0x4))));
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if ((temp_f0_169 == 0.0f) || (this->unk34 == 0.0f)) {
         spE0.operator*(this->unk30 / std::sqrtf(temp_f1_247));
@@ -233,8 +233,8 @@ s32 SoftSweepSphere::TestPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     sp120 = temp_f3_280;
     sp58 = M2C_FIELD(this, f32 *, 8) - M2C_FIELD(this, f32 *, 0x18);
     sp128 = (f64) sp58;
-    temp_f7_305 = 2.0f * (((f32) sp128 * (f32) sp148) + (((f32) sp120 * (f32) sp140) + (unksp124 * unksp144)));
-    temp_f8_307 = (temp_f7_305 * temp_f7_305) - (4.0f * temp_f1_247 * ((((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + (unksp124 * unksp124))) - (temp_f4_286 * temp_f4_286)));
+    temp_f7_305 = 2.0f * (((f32) sp128 * (f32) sp148) + (((f32) sp120 * (f32) sp140) + ((*(f32 *) ((u8 *) &sp120 + 0x4)) * (*(f32 *) ((u8 *) &sp140 + 0x4)))));
+    temp_f8_307 = (temp_f7_305 * temp_f7_305) - (4.0f * temp_f1_247 * ((((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + ((*(f32 *) ((u8 *) &sp120 + 0x4)) * (*(f32 *) ((u8 *) &sp120 + 0x4))))) - (temp_f4_286 * temp_f4_286)));
     temp_cr0_gt_308 = temp_f8_307 > 0.0f;
     if (temp_cr0_gt_308 != 0) {
         if (temp_cr0_gt_308 != 0) {
@@ -279,7 +279,7 @@ s32 SoftSweepSphere::TestPoint(const MKVector3 &arg0, MKVector3 *arg1) {
         sp128 = (f64) sp38;
         spD0 = sp30;
         spD8 = (f64) sp38;
-        if ((((f32) sp128 * M2C_FIELD(this, f32 *, 0x28)) + (((f32) sp120 * M2C_FIELD(this, f32 *, 0x20)) + (unksp124 * M2C_FIELD(this, f32 *, 0x24)))) >= this->unk34) {
+        if ((((f32) sp128 * M2C_FIELD(this, f32 *, 0x28)) + (((f32) sp120 * M2C_FIELD(this, f32 *, 0x20)) + ((*(f32 *) ((u8 *) &sp120 + 0x4)) * M2C_FIELD(this, f32 *, 0x24)))) >= this->unk34) {
             sp20 = this->unk0 + sp120;
             M2C_FIELD(arg1, f64 *, 0) = sp20;
             sp28 = M2C_FIELD(this, f32 *, 8) + (f32) sp128;
@@ -476,8 +476,8 @@ loop_2:
         sp40 = sp10;
         sp48 = (f64) sp18;
         sp34 = ((f32) sp78 * (f32) sp80) - ((f32) sp70 * (f32) sp88);
-        sp38 = ((f32) sp70 * unksp84) - (unksp74 * (f32) sp80);
-        sp30 = (unksp74 * (f32) sp88) - ((f32) sp78 * unksp84);
+        sp38 = ((f32) sp70 * (*(f32 *) ((u8 *) &sp80 + 0x4))) - ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (f32) sp80);
+        sp30 = ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (f32) sp88) - ((f32) sp78 * (*(f32 *) ((u8 *) &sp80 + 0x4)));
         sp68 = (f64) sp38;
         sp60 = (f64) sp30;
         M2C_FIELD(temp_r6_643, f64 *, 0x20) = (f64) (M2C_FIELD(temp_r6_643, f64 *, 0x20) + sp60);
@@ -1141,7 +1141,7 @@ loop_22:
         M2C_FIELD(temp_r9_1523, f64 *, 0) = (f32) ((f32) M2C_FIELD(temp_r9_1523, f64 *, 0) * var_f21_1653);
         M2C_FIELD(temp_r9_1523, f32 *, 4) = (f32) (M2C_FIELD(temp_r9_1523, f32 *, 4) * var_f21_1653);
         M2C_FIELD(temp_r9_1523, f64 *, 8) = (f32) ((f32) M2C_FIELD(temp_r9_1523, f64 *, 8) * var_f21_1653);
-        M2C_FIELD(temp_r9_1523, f32 *, 0xC) = (f32) -(((f32) M2C_FIELD(temp_r9_1523, f64 *, 8) * sp68) + (((f32) M2C_FIELD(temp_r9_1523, f64 *, 0) * (f32) sp60) + (M2C_FIELD(temp_r9_1523, f32 *, 4) * unksp64)));
+        M2C_FIELD(temp_r9_1523, f32 *, 0xC) = (f32) -(((f32) M2C_FIELD(temp_r9_1523, f64 *, 8) * sp68) + (((f32) M2C_FIELD(temp_r9_1523, f64 *, 0) * (f32) sp60) + (M2C_FIELD(temp_r9_1523, f32 *, 4) * (*(f32 *) ((u8 *) &sp60 + 0x4)))));
         goto loop_22;
     }
     var_r11_1685 = 0;
@@ -1503,9 +1503,9 @@ void MKCloth::IncludeCollision() {
                 sp178 = temp_f0_2163;
                 spC0 = temp_f2_2142 - (f32) sp1E0;
                 sp180 = (f64) spC0;
-                temp_f1_2188 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
-                temp_f0_2189 = M2C_FIELD(temp_r7_2126, f32 *, 0xC) + ((M2C_FIELD(temp_r7_2126, f32 *, 8) * (f32) sp1E0) + ((M2C_FIELD(temp_r7_2126, f32 *, 0) * (f32) sp1D8) + (M2C_FIELD(temp_r7_2126, f32 *, 4) * unksp1DC)));
-                unksp1E4 = temp_f1_2188;
+                temp_f1_2188 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + ((*(f32 *) ((u8 *) &sp178 + 0x4)) * (*(f32 *) ((u8 *) &sp178 + 0x4))));
+                temp_f0_2189 = M2C_FIELD(temp_r7_2126, f32 *, 0xC) + ((M2C_FIELD(temp_r7_2126, f32 *, 8) * (f32) sp1E0) + ((M2C_FIELD(temp_r7_2126, f32 *, 0) * (f32) sp1D8) + (M2C_FIELD(temp_r7_2126, f32 *, 4) * (*(f32 *) ((u8 *) &sp1D8 + 0x4)))));
+                (*(f32 *) ((u8 *) &sp1E0 + 0x4)) = temp_f1_2188;
                 if ((temp_f0_2189 * temp_f0_2189) < temp_f1_2188) {
                     M2C_FIELD(temp_r7_2126, u8 *, 0x24) = (u8) (temp_r4_2132 | 0x20);
                 }
@@ -1540,7 +1540,7 @@ void MKCloth::IncludeCollision() {
                 sp60 = sp138.unk8 + (f32) sp1D0;
                 sp150 = (f64) sp60;
                 sp220 = (f64) sp60;
-                if (((f32) sp218 > this->unk10) && ((f32) sp208 < this->unk20) && (unksp21C > this->unk14) && (unksp20C < this->unk24) && ((f32) sp220 > this->unk18) && ((f32) sp210 < this->unk28)) {
+                if (((f32) sp218 > this->unk10) && ((f32) sp208 < this->unk20) && ((*(f32 *) ((u8 *) &sp218 + 0x4)) > this->unk14) && ((*(f32 *) ((u8 *) &sp208 + 0x4)) < this->unk24) && ((f32) sp220 > this->unk18) && ((f32) sp210 < this->unk28)) {
                     var_r0_2251 = 1;
                 }
                 if (var_r0_2251 != 0) {
@@ -1602,9 +1602,9 @@ loop_56:
             sp108 = temp_f0_2396;
             spA0 = temp_f2_2375 - (f32) sp1C0;
             sp110 = (f64) spA0;
-            temp_f1_2423 = ((f32) sp110 * (f32) sp110) + (((f32) sp108 * (f32) sp108) + (unksp10C * unksp10C));
-            temp_f0_2424 = M2C_FIELD(temp_r5_2400, f32 *, 0xC) + ((M2C_FIELD(temp_r5_2400, f32 *, 8) * (f32) sp1C0) + ((M2C_FIELD(temp_r5_2400, f32 *, 0) * (f32) sp1B8) + (M2C_FIELD(temp_r5_2400, f32 *, 4) * unksp1BC)));
-            unksp1C4 = temp_f1_2423;
+            temp_f1_2423 = ((f32) sp110 * (f32) sp110) + (((f32) sp108 * (f32) sp108) + ((*(f32 *) ((u8 *) &sp108 + 0x4)) * (*(f32 *) ((u8 *) &sp108 + 0x4))));
+            temp_f0_2424 = M2C_FIELD(temp_r5_2400, f32 *, 0xC) + ((M2C_FIELD(temp_r5_2400, f32 *, 8) * (f32) sp1C0) + ((M2C_FIELD(temp_r5_2400, f32 *, 0) * (f32) sp1B8) + (M2C_FIELD(temp_r5_2400, f32 *, 4) * (*(f32 *) ((u8 *) &sp1B8 + 0x4)))));
+            (*(f32 *) ((u8 *) &sp1C0 + 0x4)) = temp_f1_2423;
             if ((temp_f0_2424 * temp_f0_2424) < temp_f1_2423) {
                 M2C_FIELD(temp_r5_2400, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r5_2400, u8 *, 0x24) | 0x20);
             }
@@ -1643,7 +1643,7 @@ loop_69:
             sp30 = spC8.unk8 + (f32) sp1B0;
             spE0 = (f64) sp30;
             sp200 = (f64) sp30;
-            if (((f32) sp1F8 > this->unk10) && ((f32) sp1E8 < this->unk20) && (unksp1FC > this->unk14) && (unksp1EC < this->unk24) && ((f32) sp200 > this->unk18) && ((f32) sp1F0 < this->unk28)) {
+            if (((f32) sp1F8 > this->unk10) && ((f32) sp1E8 < this->unk20) && ((*(f32 *) ((u8 *) &sp1F8 + 0x4)) > this->unk14) && ((*(f32 *) ((u8 *) &sp1E8 + 0x4)) < this->unk24) && ((f32) sp200 > this->unk18) && ((f32) sp1F0 < this->unk28)) {
                 var_r0_2493 = 1;
             }
             if (var_r0_2493 != 0) {
@@ -2475,7 +2475,7 @@ loop_19:
         sp20 *= M2C_FIELD(&arg0, f64 *, 0);
         temp_f3_3802 = (f32) sp28 * arg0.unk8;
         sp28 = temp_f3_3802;
-        var_f6_3809 = (temp_f3_3802 * temp_f3_3802) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+        var_f6_3809 = (temp_f3_3802 * temp_f3_3802) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * (*(f32 *) ((u8 *) &sp20 + 0x4))));
         if (var_f6_3809 > 0.0f) {
             temp_f1_3812 = __frsqrte(var_f6_3809);
             temp_f1_3818 = 0.5 * temp_f1_3812 * -(((f64) var_f6_3809 * (temp_f1_3812 * temp_f1_3812)) - 3.0);
@@ -2940,7 +2940,7 @@ void MKCloth::UpdateInternal(Matrix *arg0) {
     sp30 = (f64) sp20;
     sp38 = sp18;
     sp40 = (f64) sp20;
-    if (!((((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C))) < 0.0001f)) {
+    if (!((((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4))))) < 0.0001f)) {
         ApplyScale(*((MKVector3 *) &sp68));
     }
     var_r31_4643 = 0;
@@ -3114,7 +3114,7 @@ loop_54:
         MKModel_CalculateRefPointWorldPosition(this->unkC, this->unkC4[var_r27_4951], &sp28);
         sp18 = (f64) sp60.unk10;
         sp20 = (f64) sp60.unk18;
-        var_f4_4981 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C));
+        var_f4_4981 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp14 + 0x8)) * (*(f32 *) ((u8 *) &sp14 + 0x8))));
         if (var_f4_4981 > 0.000001f) {
             if (var_f4_4981 > 0.0f) {
                 temp_f1_4987 = __frsqrte(var_f4_4981);
@@ -3154,7 +3154,7 @@ loop_54:
             var_f3_5048 = 0.0f;
         }
         sp18 = (f32) sp18 * var_f3_5048;
-        unksp1C *= var_f3_5048;
+        (*(f32 *) ((u8 *) &sp14 + 0x8)) *= var_f3_5048;
         sp20 = (f32) sp20 * var_f3_5048;
         if (!(((u8) *(this->unkC0 + (var_r28_4950 + 0x4C)) >> 3U) & 1)) {
             SetInternalCollisionCapsule(var_r30_4949, sp28, *((MKVector3 *) &sp18), M2C_FIELD(temp_r31_4959, f32 *, 0x60) * temp_f30_4791, M2C_FIELD(temp_r31_4959, f32 *, 0x64) * temp_f30_4791);

@@ -510,9 +510,9 @@ void SlimeTrailFX::Draw() {
             temp_f26_709 = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
             Normalise(sp150);
             temp_f2_732 = M2C_BITWISE(f32, sp150);
-            sp18 = (temp_f2_732 * unksp1D4) - (sp150.unk4 * (f32) sp1D0);
+            sp18 = (temp_f2_732 * (*(f32 *) ((u8 *) &sp1D0 + 0x4))) - (sp150.unk4 * (f32) sp1D0);
             sp14 = (sp150.unk8 * (f32) sp1D0) - (temp_f2_732 * (f32) sp1D8);
-            sp10 = (sp150.unk4 * (f32) sp1D8) - (sp150.unk8 * unksp1D4);
+            sp10 = (sp150.unk4 * (f32) sp1D8) - (sp150.unk8 * (*(f32 *) ((u8 *) &sp1D0 + 0x4)));
             sp168 = (f64) sp18;
             sp160 = (f64) sp10;
             Normalise(sp170);

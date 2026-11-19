@@ -225,7 +225,7 @@ s32 FireAndIceFX::Draw(unsigned short *arg0) {
             var_f1_296 = -var_f1_296;
         }
         sp70 = (f32) sp150;
-        sp74 = unksp154;
+        sp74 = (*(f32 *) ((u8 *) &sp150 + 0x4));
         sp78 = (f32) sp158;
         sp7C = 1.0f - var_f1_296;
         spF0 = (f64) sp70;
@@ -288,7 +288,7 @@ s32 FireAndIceFX::Draw(unsigned short *arg0) {
         sp48 = temp_f0_479;
         sp120 = sp40;
         sp128 = temp_f0_479;
-        unksp12C = 1.0f;
+        (*(f32 *) ((u8 *) &sp128 + 0x4)) = 1.0f;
         MKModel_SetColor(this->unk74, *((MKVector4 *) &sp120));
         MKModel_Draw(this->unk74, NULL);
         MKModel_SetColor(this->unk74, *((MKVector4 *) &sp130));
@@ -299,7 +299,7 @@ s32 FireAndIceFX::Draw(unsigned short *arg0) {
         sp130 = temp_f1_497;
         sp138 = temp_f0_499;
         sp30 = (f32) sp130;
-        sp34 = unksp134;
+        sp34 = (*(f32 *) ((u8 *) &sp130 + 0x4));
         sp38 = (f32) sp138;
         spB0 = (f64) sp30;
         spB8 = (f64) sp38;

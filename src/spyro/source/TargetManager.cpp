@@ -73,7 +73,7 @@ loop_36:
                         temp_r3_74 = *var_r30_37;
                         M2C_FIELD(*temp_r3_74, M2C_UNK (**)(TargetManager **, MKVector3 *, f64 *), 0x28)(temp_r3_74, &arg0, &sp40);
                     }
-                    temp_f4_86 = arg0.unk4 - unksp44;
+                    temp_f4_86 = arg0.unk4 - (*(f32 *) ((u8 *) &sp40 + 0x4));
                     temp_f3_89 = arg0.unk0 - (f32) sp40;
                     temp_f2_92 = arg0.unk8 - (f32) sp48;
                     temp_f31_96 = (temp_f2_92 * temp_f2_92) + ((temp_f3_89 * temp_f3_89) + (temp_f4_86 * temp_f4_86));
@@ -95,7 +95,7 @@ loop_36:
                         var_f4_134 = 0.0f;
                         sp30 = temp_f0_128;
                         sp18 = (f32) sp28 - arg0.unk8;
-                        unksp34 = 0.0f;
+                        (*(f32 *) ((u8 *) &sp28 + 0xc)) = 0.0f;
                         sp38 = (f64) sp18;
                         var_f5_147 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (0.0f * 0.0f));
                         if (var_f5_147 > 0.000001f) {
@@ -134,11 +134,11 @@ loop_36:
                             }
                             var_f4_134 = 1.0f / var_f5_147;
                         }
-                        temp_f5_217 = unksp34 * var_f4_134;
+                        temp_f5_217 = (*(f32 *) ((u8 *) &sp28 + 0xc)) * var_f4_134;
                         temp_f6_219 = (f32) sp30 * var_f4_134;
                         temp_f4_224 = (f32) sp38 * var_f4_134;
                         sp30 = temp_f6_219;
-                        unksp34 = temp_f5_217;
+                        (*(f32 *) ((u8 *) &sp28 + 0xc)) = temp_f5_217;
                         sp38 = temp_f4_224;
                         if ((arg3 == -1.0f) || (((temp_f4_224 * arg2.unk8) + ((temp_f6_219 * arg2.unk0) + (temp_f5_217 * arg2.unk4))) > arg3)) {
                             var_r31_34 = *var_r30_37;
@@ -193,7 +193,7 @@ loop_15:
                         temp_r3_325 = *var_r30_288;
                         M2C_FIELD(*temp_r3_325, M2C_UNK (**)(TargetManager **, MKVector3 *, f64 *), 0x28)(temp_r3_325, &arg0, &sp8);
                     }
-                    temp_f4_337 = arg0.unk4 - unkspC;
+                    temp_f4_337 = arg0.unk4 - (*(f32 *) ((u8 *) &sp8 + 0x4));
                     temp_f3_340 = arg0.unk0 - (f32) sp8;
                     temp_f2_343 = arg0.unk8 - (f32) sp10;
                     temp_f29_347 = (temp_f2_343 * temp_f2_343) + ((temp_f3_340 * temp_f3_340) + (temp_f4_337 * temp_f4_337));
@@ -316,7 +316,7 @@ loop_20:
                     sp40 = (f64) sp10;
                     sp48 = sp8;
                     sp50 = (f64) sp10;
-                    var_r21_468 = (((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) < (temp_f2_554 * temp_f2_554);
+                    var_r21_468 = (((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) < (temp_f2_554 * temp_f2_554);
                 }
                 if ((var_r21_468 != 0) && (arg6 != NULL) && ((arg7 - 0.001f) < 3.1415927f)) {
                     temp_r3_597 = M2C_FIELD((*temp_r31_639)->unk8.unk0(temp_r31_639), void **, 8);
@@ -328,7 +328,7 @@ loop_20:
                     spD8 = temp_f0_604;
                     sp30 = (f32) spA0 - arg3->unk8;
                     spE0 = (f64) sp30;
-                    if (((arg6->unk8 * (f32) spE0) + ((arg6->unk0 * (f32) spD8) + (arg6->unk4 * unkspDC))) < temp_f31_421) {
+                    if (((arg6->unk8 * (f32) spE0) + ((arg6->unk0 * (f32) spD8) + (arg6->unk4 * (*(f32 *) ((u8 *) &spD8 + 0x4))))) < temp_f31_421) {
                         var_r21_468 = 0;
                     }
                 }

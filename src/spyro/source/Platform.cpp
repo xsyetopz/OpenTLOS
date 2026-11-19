@@ -124,7 +124,7 @@ void PlatformRider::Init() {
     M2C_FIELD(this, s8 *, 8) = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: illegal implicit conversion from 'double' to
 void Platform::UpdateBob() {
     f64 sp10;
     f64 sp8;
@@ -138,7 +138,7 @@ void Platform::UpdateBob() {
         sp8 = M2C_FIELD(temp_r3_226, f64 *, 0x30);
         sp10 = M2C_FIELD(temp_r3_226, f64 *, 0x38);
         temp_f2_237 = M2C_FIELD(temp_r3_221, f32 *, 0x11C);
-        unkspC += temp_f2_237 * _table_sinf(6.2831855f * (this->unkB8 * M2C_FIELD(temp_r3_221, f32 *, 0x120)));
+        (*(f32 *) ((u8 *) &sp8 + 0x4)) += temp_f2_237 * _table_sinf(6.2831855f * (this->unkB8 * M2C_FIELD(temp_r3_221, f32 *, 0x120)));
         SetPos(sp8, temp_f2_237);
     }
 }
@@ -182,7 +182,7 @@ void Platform::UpdateSway() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp5C'
+#if 0 // DRAFT: ')' expected
 void Platform::UpdateShadow() {
     MKCollisionResult sp98;
     f64 sp90;
@@ -218,7 +218,7 @@ void Platform::UpdateShadow() {
     sp68 = temp_f4_356;
     sp30 = (f32) sp50;
     sp28 = (f32) sp68;
-    sp2C = unksp5C - 10.0f;
+    sp2C = (*(f32 *) ((u8 *) &sp58 + 0x4)) - 10.0f;
     sp90 = (f64) sp30;
     sp88 = (f64) sp28;
     sp48 = temp_f4_356;
@@ -227,13 +227,13 @@ void Platform::UpdateShadow() {
     sp60 = temp_f3_357;
     sp70 = temp_f3_357;
     var_r0_381 = 0;
-    temp_f1_384 = unksp8C - M2C_FIELD(checked_cast<PlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xFC);
+    temp_f1_384 = (*(f32 *) ((u8 *) &sp88 + 0x4)) - M2C_FIELD(checked_cast<PlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xFC);
     sp20 = (f32) sp90;
     sp18 = (f32) sp88;
     sp1C = temp_f1_384;
     sp80 = (f64) sp20;
     sp78 = (f64) sp18;
-    if (((f32) sp88 == this->unkD8) && (unksp8C == this->unkDC) && ((f32) sp90 == this->unkE0)) {
+    if (((f32) sp88 == this->unkD8) && ((*(f32 *) ((u8 *) &sp88 + 0x4)) == this->unkDC) && ((f32) sp90 == this->unkE0)) {
         var_r0_381 = 1;
     }
     if (var_r0_381 == 0) {

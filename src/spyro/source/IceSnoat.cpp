@@ -238,12 +238,12 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     ((Volume *) &sp160)->GetRandPos();
     sp1E0 = sp160;
     sp1E8 = sp168;
-    unksp1E4 = unksp204;
+    (*(f32 *) ((u8 *) &sp1E0 + 0x4)) = (*(f32 *) ((u8 *) &sp200 + 0x4));
     sp90 = sp1E0 - arg0->unk30;
     sp1D0 = sp90;
     sp98 = (f32) sp1E8 - (f32) M2C_FIELD(arg0, f64 *, 0x38);
     sp1D8 = (f64) sp98;
-    var_f5_293 = ((f32) sp1D8 * (f32) sp1D8) + (((f32) sp1D0 * (f32) sp1D0) + (unksp1D4 * unksp1D4));
+    var_f5_293 = ((f32) sp1D8 * (f32) sp1D8) + (((f32) sp1D0 * (f32) sp1D0) + ((*(f32 *) ((u8 *) &sp1C8 + 0xc)) * (*(f32 *) ((u8 *) &sp1C8 + 0xc))));
     if (var_f5_293 > 0.000001f) {
         if (var_f5_293 > 0.0f) {
             temp_f1_299 = __frsqrte(var_f5_293);
@@ -284,7 +284,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
         var_f5_293 = 0.0f;
     }
     sp1D0 = (f32) sp1D0 * var_f4_360;
-    unksp1D4 *= var_f4_360;
+    (*(f32 *) ((u8 *) &sp1C8 + 0xc)) *= var_f4_360;
     sp1D8 = (f32) sp1D8 * var_f4_360;
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (var_f5_293 == 200.0f) {
@@ -325,7 +325,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     sp1D8 = (f64) sp18;
     spF0 = sp10;
     spF8 = (f64) sp18;
-    var_f4_474 = ((f32) sp1D8 * (f32) sp1D8) + (((f32) sp1D0 * (f32) sp1D0) + (unksp1D4 * unksp1D4));
+    var_f4_474 = ((f32) sp1D8 * (f32) sp1D8) + (((f32) sp1D0 * (f32) sp1D0) + ((*(f32 *) ((u8 *) &sp1C8 + 0xc)) * (*(f32 *) ((u8 *) &sp1C8 + 0xc))));
     if (var_f4_474 > 1e-12f) {
         if (var_f4_474 > 0.0f) {
             temp_f1_480 = __frsqrte(var_f4_474);
@@ -365,29 +365,29 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
         var_f3_541 = 0.0f;
     }
     sp40 = (f32) sp1D0 * var_f3_541;
-    sp44 = unksp1D4 * var_f3_541;
+    sp44 = (*(f32 *) ((u8 *) &sp1C8 + 0xc)) * var_f3_541;
     sp48 = (f32) sp1D8 * var_f3_541;
     sp1C0 = (f64) sp40;
     sp1C8 = (f64) sp48;
-    sp30 = (unksp1C4 * (f32) sp1F8) - ((f32) sp1C8 * unksp1F4);
+    sp30 = ((*(f32 *) ((u8 *) &sp1C0 + 0x4)) * (f32) sp1F8) - ((f32) sp1C8 * (*(f32 *) ((u8 *) &sp1F0 + 0x4)));
     sp34 = ((f32) sp1C8 * (f32) sp1F0) - ((f32) sp1C0 * (f32) sp1F8);
-    sp38 = ((f32) sp1C0 * unksp1F4) - (unksp1C4 * (f32) sp1F0);
+    sp38 = ((f32) sp1C0 * (*(f32 *) ((u8 *) &sp1F0 + 0x4))) - ((*(f32 *) ((u8 *) &sp1C0 + 0x4)) * (f32) sp1F0);
     sp1B0 = (f64) sp30;
     sp1B8 = (f64) sp38;
     arg0->unk0 = (f32) sp1B0;
-    arg0->unk4 = unksp1B4;
+    arg0->unk4 = (*(f32 *) ((u8 *) &sp1B0 + 0x4));
     arg0->unk8 = (f32) sp1B8;
     arg0->unkC = 0.0f;
     arg0->unk10 = (f32) sp1F0;
-    arg0->unk14 = unksp1F4;
+    arg0->unk14 = (*(f32 *) ((u8 *) &sp1F0 + 0x4));
     arg0->unk18 = (f32) sp1F8;
     arg0->unk1C = 0.0f;
     arg0->unk20 = (f32) sp1C0;
-    arg0->unk24 = unksp1C4;
+    arg0->unk24 = (*(f32 *) ((u8 *) &sp1C0 + 0x4));
     arg0->unk28 = (f32) sp1C8;
     arg0->unk2C = 0.0f;
     M2C_FIELD(arg0, f64 *, 0x30) = (f32) sp200;
-    M2C_FIELD(arg0, f32 *, 0x34) = unksp204;
+    M2C_FIELD(arg0, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp200 + 0x4));
     M2C_FIELD(arg0, f64 *, 0x38) = (f32) sp208;
     M2C_FIELD(arg0, f32 *, 0x3C) = 1.0f;
     arg0->unk68 = sp200;
@@ -475,7 +475,7 @@ loop_24:
             sp50 = M2C_FIELD(temp_r28_641, f32 *, 0x70) + (f32) spB0;
             M2C_FIELD(temp_r28_641, f32 *, 0x30) = (f32) spC8;
             spD0 = (f64) sp50;
-            M2C_FIELD(temp_r28_641, f32 *, 0x34) = unkspCC;
+            M2C_FIELD(temp_r28_641, f32 *, 0x34) = (*(f32 *) ((u8 *) &spC8 + 0x4));
             M2C_FIELD(temp_r28_641, f32 *, 0x38) = (f32) spD0;
             M2C_FIELD(temp_r28_641, f32 *, 0x3C) = 1.0f;
             if (temp_r28_641->unk54 == 1.0f) {
@@ -488,7 +488,7 @@ loop_24:
                 sp98 = sp38;
                 sp40 = (f32) sp90 - M2C_FIELD(temp_r30_715, f32 *, 8);
                 spA0 = (f64) sp40;
-                if ((((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C))) <= 250000.0f) {
+                if ((((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + ((*(f32 *) ((u8 *) &sp98 + 0x4)) * (*(f32 *) ((u8 *) &sp98 + 0x4))))) <= 250000.0f) {
                     SetRunState(temp_r28_641);
                 } else {
                     FindNewBounceParameters(temp_r28_641);
@@ -516,7 +516,7 @@ loop_24:
             sp10 = M2C_FIELD(temp_r28_641, f32 *, 0x38) + (f32) sp80;
             M2C_FIELD(temp_r28_641, f32 *, 0x30) = (f32) spB8;
             spC0 = (f64) sp10;
-            M2C_FIELD(temp_r28_641, f32 *, 0x34) = unkspBC;
+            M2C_FIELD(temp_r28_641, f32 *, 0x34) = (*(f32 *) ((u8 *) &spB8 + 0x4));
             M2C_FIELD(temp_r28_641, f32 *, 0x38) = (f32) spC0;
             M2C_FIELD(temp_r28_641, f32 *, 0x3C) = 1.0f;
             if (temp_r28_641->unk64 <= 0.0f) {
@@ -713,7 +713,7 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
     sp54 = -500.0f;
     sp190 = sp110;
     sp58 = 0.0f;
-    unksp194 = unksp1B4;
+    (*(f32 *) ((u8 *) &sp190 + 0x4)) = (*(f32 *) ((u8 *) &sp1B0 + 0x4));
     spD0 = (f64) sp50;
     sp198 = sp118;
     spD8 = (f64) sp58;
@@ -739,7 +739,7 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
     sp180 = sp30;
     sp38 = (f32) sp198 - (f32) sp1B8;
     sp188 = (f64) sp38;
-    var_f4_1095 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184));
+    var_f4_1095 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + ((*(f32 *) ((u8 *) &sp180 + 0x4)) * (*(f32 *) ((u8 *) &sp180 + 0x4))));
     if (var_f4_1095 > 1e-12f) {
         if (var_f4_1095 > 0.0f) {
             temp_f1_1101 = __frsqrte(var_f4_1095);
@@ -778,31 +778,31 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
     } else {
         var_f3_1162 = 0.0f;
     }
-    sp24 = unksp184 * var_f3_1162;
+    sp24 = (*(f32 *) ((u8 *) &sp180 + 0x4)) * var_f3_1162;
     sp20 = (f32) sp180 * var_f3_1162;
     var_f0_1176 = 0.0f;
     sp28 = (f32) sp188 * var_f3_1162;
     sp170 = (f64) sp20;
     sp178 = (f64) sp28;
-    sp10 = (unksp174 * (f32) sp1A8) - ((f32) sp178 * unksp1A4);
+    sp10 = ((*(f32 *) ((u8 *) &sp170 + 0x4)) * (f32) sp1A8) - ((f32) sp178 * (*(f32 *) ((u8 *) &sp1A0 + 0x4)));
     sp14 = ((f32) sp178 * (f32) sp1A0) - ((f32) sp170 * (f32) sp1A8);
-    sp18 = ((f32) sp170 * unksp1A4) - (unksp174 * (f32) sp1A0);
+    sp18 = ((f32) sp170 * (*(f32 *) ((u8 *) &sp1A0 + 0x4))) - ((*(f32 *) ((u8 *) &sp170 + 0x4)) * (f32) sp1A0);
     sp160 = (f64) sp10;
     sp168 = (f64) sp18;
     arg0->unk0 = (f32) sp160;
-    arg0->unk4 = unksp164;
+    arg0->unk4 = (*(f32 *) ((u8 *) &sp160 + 0x4));
     arg0->unk8 = (f32) sp168;
     arg0->unkC = 0.0f;
     arg0->unk10 = (f32) sp1A0;
-    arg0->unk14 = unksp1A4;
+    arg0->unk14 = (*(f32 *) ((u8 *) &sp1A0 + 0x4));
     arg0->unk18 = (f32) sp1A8;
     arg0->unk1C = 0.0f;
     arg0->unk20 = (f32) sp170;
-    arg0->unk24 = unksp174;
+    arg0->unk24 = (*(f32 *) ((u8 *) &sp170 + 0x4));
     arg0->unk28 = (f32) sp178;
     arg0->unk2C = 0.0f;
     M2C_FIELD(arg0, f64 *, 0x30) = (f32) sp1B0;
-    M2C_FIELD(arg0, f32 *, 0x34) = unksp1B4;
+    M2C_FIELD(arg0, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp1B0 + 0x4));
     M2C_FIELD(arg0, f64 *, 0x38) = (f32) sp1B8;
     M2C_FIELD(arg0, f32 *, 0x3C) = 1.0f;
     arg0->unk68 = sp1B0;
@@ -905,14 +905,14 @@ loop_4:
         sp88.unk10 = M2C_BITWISE(f64, sp88);
         sp18 = 0.0f;
         sp1C = -500.0f;
-        unksp9C = M2C_FIELD(this->unk8, f32 *, 0x34);
+        (*(f32 *) ((u8 *) &sp88 + 0x14)) = M2C_FIELD(this->unk8, f32 *, 0x34);
         sp48 = (f64) sp18;
         sp88.unk18 = sp88.unk8;
         sp88.unk20 = 0.0f;
-        unkspAC = 0.0f;
+        (*(f32 *) ((u8 *) &sp88 + 0x24)) = 0.0f;
         sp88.unk28 = 0.0f;
         sp88.unk30 = 0.0f;
-        unkspBC = 0.0f;
+        (*(f32 *) ((u8 *) &sp88 + 0x34)) = 0.0f;
         sp88.unk38 = 0.0f;
         sp88.unk40 = 0.0f;
         sp88.unk40.unk4 = 0.0f;
@@ -921,8 +921,8 @@ loop_4:
         sp88.unk40.unk10 = 0.0f;
         sp88.unk40.unk14 = 0.0f;
         sp88.unk40.unk18 = 0;
-        unkspE2 = 0;
-        unkspE3 = 0;
+        (*(u8 *) ((u8 *) &sp88 + 0x5a)) = 0;
+        (*(u8 *) ((u8 *) &sp88 + 0x5b)) = 0;
         sp88.unk40.unk1C = 0.0f;
         sp88.unk40.unk20 = 3.4028235e38f;
         sp88.unk40.unk24 = 0.0f;
@@ -950,7 +950,7 @@ loop_4:
         }
         M2C_STRUCT_COPY(temp_r28_1398, &Matrix::identity, 0x40);
         M2C_FIELD(temp_r28_1398, f32 *, 0x30) = (f32) sp88.unk10;
-        M2C_FIELD(temp_r28_1398, f32 *, 0x34) = unksp9C;
+        M2C_FIELD(temp_r28_1398, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp88 + 0x14));
         M2C_FIELD(temp_r28_1398, f32 *, 0x38) = (f32) sp88.unk18;
         M2C_FIELD(temp_r28_1398, f32 *, 0x3C) = 1.0f;
         SetBounceState(temp_r28_1398);

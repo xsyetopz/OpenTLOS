@@ -518,9 +518,9 @@ void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
         }
         sp2C = lit_643;
         sp2C = temp_r5_547;
-        unksp2D = temp_r5_547;
-        unksp2E = temp_r5_547;
-        unksp2F = var_r6_555;
+        (*(u8 *) ((u8 *) &sp28 + 0x5)) = temp_r5_547;
+        (*(u8 *) ((u8 *) &sp28 + 0x6)) = temp_r5_547;
+        (*(u8 *) ((u8 *) &sp28 + 0x7)) = var_r6_555;
         sp24 = (s32) sp2C;
         GXSetTevColor(GX_TEVREG1, (GXColor) &sp24);
         sp20 = lit_645;
@@ -1255,7 +1255,7 @@ void MPGStateChanges(Texture *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp3C'
+#if 0 // DRAFT: illegal implicit conversion from 'OmniLight *' to
 void HandleOmniLights() {
     OmniLight *sp48;
     f64 sp40;
@@ -1287,9 +1287,9 @@ void HandleOmniLights() {
         sp38 = (f64) sp18;
         sp40 = (f64) sp20;
         if (temp_r3_2680 != NULL) {
-            sp8 = M2C_FIELD(temp_r3_2680, f32 *, 0x30) + (((f32) sp40 * M2C_FIELD(temp_r3_2680, f32 *, 0x20)) + (((f32) sp38 * M2C_FIELD(temp_r3_2680, f32 *, 0)) + (unksp3C * M2C_FIELD(temp_r3_2680, f32 *, 0x10))));
-            spC = M2C_FIELD(temp_r3_2680, f32 *, 0x34) + (((f32) sp40 * M2C_FIELD(temp_r3_2680, f32 *, 0x24)) + (((f32) sp38 * M2C_FIELD(temp_r3_2680, f32 *, 4)) + (unksp3C * M2C_FIELD(temp_r3_2680, f32 *, 0x14))));
-            sp10 = M2C_FIELD(temp_r3_2680, f32 *, 0x38) + (((f32) sp40 * M2C_FIELD(temp_r3_2680, f32 *, 0x28)) + (((f32) sp38 * M2C_FIELD(temp_r3_2680, f32 *, 8)) + (unksp3C * M2C_FIELD(temp_r3_2680, f32 *, 0x18))));
+            sp8 = M2C_FIELD(temp_r3_2680, f32 *, 0x30) + (((f32) sp40 * M2C_FIELD(temp_r3_2680, f32 *, 0x20)) + (((f32) sp38 * M2C_FIELD(temp_r3_2680, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * M2C_FIELD(temp_r3_2680, f32 *, 0x10))));
+            spC = M2C_FIELD(temp_r3_2680, f32 *, 0x34) + (((f32) sp40 * M2C_FIELD(temp_r3_2680, f32 *, 0x24)) + (((f32) sp38 * M2C_FIELD(temp_r3_2680, f32 *, 4)) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * M2C_FIELD(temp_r3_2680, f32 *, 0x14))));
+            sp10 = M2C_FIELD(temp_r3_2680, f32 *, 0x38) + (((f32) sp40 * M2C_FIELD(temp_r3_2680, f32 *, 0x28)) + (((f32) sp38 * M2C_FIELD(temp_r3_2680, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * M2C_FIELD(temp_r3_2680, f32 *, 0x18))));
             sp28 = (f64) sp8;
             sp30 = (f64) sp10;
             sp38 = (f64) sp8;
@@ -1376,11 +1376,11 @@ void SetLight(const MKVector3 &arg0, const MKVector4 &arg1, float arg2, int arg3
     sp40 = (f64) sp30;
     sp38 = (f64) sp28;
     sp88 = temp_f7_2862;
-    GXInitLightPos(&spA0, (f32) sp38, unksp3C, (f32) sp40);
+    GXInitLightPos(&spA0, (f32) sp38, (*(f32 *) ((u8 *) &sp38 + 0x4)), (f32) sp40);
     sp24 = lit_457;
     sp24 = (s8) (255.0f * arg1.unk0);
-    unksp25 = (s8) (255.0f * arg1.unk4);
-    unksp26 = (s8) (255.0f * arg1.unk8);
+    (*(u8 *) ((u8 *) &sp20 + 0x5)) = (s8) (255.0f * arg1.unk4);
+    (*(u8 *) ((u8 *) &sp20 + 0x6)) = (s8) (255.0f * arg1.unk8);
     sp20 = (s32) sp24;
     GXInitLightColor(&spA0, (GXColor) &sp20);
     GXInitLightDir(&spA0, 0.0f, -1.0f, 0.0f);

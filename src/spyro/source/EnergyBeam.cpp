@@ -203,7 +203,7 @@ void EnergyBeam::DrawBeam(EnergyBeam::Beam *arg1) {
     sp188 = spA8;
     spB0 = (f32) sp170 - M2C_FIELD(arg1, f32 *, 0x168);
     sp190 = (f64) spB0;
-    var_f1_241 = ((f32) sp190 * (f32) sp190) + (((f32) sp188 * (f32) sp188) + (unksp18C * unksp18C));
+    var_f1_241 = ((f32) sp190 * (f32) sp190) + (((f32) sp188 * (f32) sp188) + ((*(f32 *) ((u8 *) &sp188 + 0x4)) * (*(f32 *) ((u8 *) &sp188 + 0x4))));
     if (var_f1_241 < 2.5e7f) {
 
     } else {
@@ -242,7 +242,7 @@ loop_45:
         ((KDSpline *) &sp158)->GetMeasure(var_f1_307, (Matrix *) &this->unk94);
         sp178 = sp158;
         sp180 = sp160;
-        var_f4_334 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
+        var_f4_334 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + ((*(f32 *) ((u8 *) &sp170 + 0xc)) * (*(f32 *) ((u8 *) &sp170 + 0xc))));
         if (var_f4_334 > 0.000001f) {
             if (var_f4_334 > 0.0f) {
                 temp_f1_340 = __frsqrte(var_f4_334);
@@ -282,21 +282,21 @@ loop_45:
             var_f3_401 = 0.0f;
         }
         temp_f10_410 = (f32) sp178 * var_f3_401;
-        temp_f9_412 = unksp17C * var_f3_401;
+        temp_f9_412 = (*(f32 *) ((u8 *) &sp170 + 0xc)) * var_f3_401;
         temp_f8_413 = (f32) sp180 * var_f3_401;
         sp178 = temp_f10_410;
-        unksp17C = temp_f9_412;
+        (*(f32 *) ((u8 *) &sp170 + 0xc)) = temp_f9_412;
         sp180 = temp_f8_413;
-        sp50 = (temp_f10_410 * unksp19C) - (temp_f9_412 * (f32) sp198);
-        sp48 = (temp_f9_412 * (f32) sp1A0) - (temp_f8_413 * unksp19C);
+        sp50 = (temp_f10_410 * (*(f32 *) ((u8 *) &sp198 + 0x4))) - (temp_f9_412 * (f32) sp198);
+        sp48 = (temp_f9_412 * (f32) sp1A0) - (temp_f8_413 * (*(f32 *) ((u8 *) &sp198 + 0x4)));
         sp4C = (temp_f8_413 * (f32) sp198) - (temp_f10_410 * (f32) sp1A0);
         sp1C0 = (f64) sp50;
         sp1B8 = (f64) sp48;
         sp148 = (f64) sp48;
         sp150 = (f64) sp50;
         sp3C = (temp_f8_413 * (f32) sp1B8) - (temp_f10_410 * (f32) sp1C0);
-        sp38 = (temp_f9_412 * (f32) sp1C0) - (temp_f8_413 * unksp1BC);
-        sp40 = (temp_f10_410 * unksp1BC) - (temp_f9_412 * (f32) sp1B8);
+        sp38 = (temp_f9_412 * (f32) sp1C0) - (temp_f8_413 * (*(f32 *) ((u8 *) &sp1B8 + 0x4)));
+        sp40 = (temp_f10_410 * (*(f32 *) ((u8 *) &sp1B8 + 0x4))) - (temp_f9_412 * (f32) sp1B8);
         sp138 = (f64) sp38;
         sp140 = (f64) sp40;
         sp1B8 = (f64) sp38;
@@ -340,7 +340,7 @@ loop_45:
         MKSetColorV(*((MKVector4 *) &sp1A8));
         MKSetTexCoord1F(1.0f, temp_f27_490);
         sp78 = -(f32) sp1B8;
-        sp7C = -unksp1BC;
+        sp7C = -(*(f32 *) ((u8 *) &sp1B8 + 0x4));
         sp80 = -(f32) sp1C0;
         spB8 = (f64) sp78;
         spC0 = (f64) sp80;
@@ -362,7 +362,7 @@ loop_45:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp64'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void EnergyBeam::ResetSafePositions(EnergyBeam::Beam *arg1) {
     f64 sp68;                                       /* compiler-managed */
     f64 sp60;                                       /* compiler-managed */
@@ -395,7 +395,7 @@ void EnergyBeam::ResetSafePositions(EnergyBeam::Beam *arg1) {
     sp60 = sp20;
     sp28 = M2C_FIELD(temp_r3_604, f32 *, 8) - M2C_FIELD(temp_r4_603, f32 *, 8);
     sp68 = (f64) sp28;
-    var_f4_625 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+    var_f4_625 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp58 + 0xc)) * (*(f32 *) ((u8 *) &sp58 + 0xc))));
     if (var_f4_625 > 0.000001f) {
         if (var_f4_625 > 0.0f) {
             temp_f1_631 = __frsqrte(var_f4_625);
@@ -438,7 +438,7 @@ void EnergyBeam::ResetSafePositions(EnergyBeam::Beam *arg1) {
     var_r28_699 = 0;
     var_r30_701 = 0;
     sp60 = (f32) sp60 * var_f3_692;
-    unksp64 *= var_f3_692;
+    (*(f32 *) ((u8 *) &sp58 + 0xc)) *= var_f3_692;
     sp68 = (f32) sp68 * var_f3_692;
     M2C_FIELD(arg1, f32 *, 8) = var_f4_625;
     do {

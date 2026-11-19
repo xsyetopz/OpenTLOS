@@ -84,7 +84,7 @@ void ShockWave::UpdateShockWave(int arg0) {
         temp_f31_99 = sp70.unk4;
         sp68 = (f64) sp70.unk8;
         sp70.unk4 = temp_f31_99 + 200.0f;
-        unksp64 -= 600.0f;
+        (*(f32 *) ((u8 *) &sp60 + 0x4)) -= 600.0f;
         if (MKCollision_RayCollide(sp70, *((MKVector3 *) &sp60), &spD0, (MKCollisionMode) 1, 0) != 0) {
             temp_f0_115 = spD0.unk4 + 20.0f;
             if ((temp_f31_99 < temp_f0_115) && ((temp_f0_115 - temp_f31_99) > 20.0f)) {
@@ -95,7 +95,7 @@ void ShockWave::UpdateShockWave(int arg0) {
             temp_f3_139 = 20.0f + (spD0.unk4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
             sp90.unk30 = (f32) sp50;
             sp90.unk38 = (f32) sp58;
-            unksp54 = temp_f3_139;
+            (*(f32 *) ((u8 *) &sp50 + 0x4)) = temp_f3_139;
             sp90.unk34 = temp_f3_139;
             sp90.unk3C = 1.0f;
         }
@@ -107,7 +107,7 @@ void ShockWave::UpdateShockWave(int arg0) {
         temp_f31_165 = sp70.unk4;
         sp68 = (f64) sp70.unk8;
         sp70.unk4 = temp_f31_165 + 200.0f;
-        unksp64 -= 600.0f;
+        (*(f32 *) ((u8 *) &sp60 + 0x4)) -= 600.0f;
         if (MKCollision_RayCollide(sp70, *((MKVector3 *) &sp60), &spD0, (MKCollisionMode) 1, 0) != 0) {
             temp_f0_181 = spD0.unk4 + 20.0f;
             if ((temp_f31_165 < temp_f0_181) && ((temp_f0_181 - temp_f31_165) > 20.0f)) {
@@ -118,7 +118,7 @@ void ShockWave::UpdateShockWave(int arg0) {
             temp_f3_205 = 20.0f + (spD0.unk4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
             sp90.unk30 = (f32) sp40;
             sp90.unk38 = (f32) sp48;
-            unksp44 = temp_f3_205;
+            (*(f32 *) ((u8 *) &sp40 + 0x4)) = temp_f3_205;
             sp90.unk34 = temp_f3_205;
             sp90.unk3C = 1.0f;
         }
@@ -130,7 +130,7 @@ void ShockWave::UpdateShockWave(int arg0) {
         temp_f31_231 = sp70.unk4;
         sp68 = (f64) sp70.unk8;
         sp70.unk4 = temp_f31_231 + 200.0f;
-        unksp64 -= 600.0f;
+        (*(f32 *) ((u8 *) &sp60 + 0x4)) -= 600.0f;
         if (MKCollision_RayCollide(sp70, *((MKVector3 *) &sp60), &spD0, (MKCollisionMode) 1, 0) != 0) {
             temp_f0_247 = spD0.unk4 + 20.0f;
             if ((temp_f31_231 < temp_f0_247) && ((temp_f0_247 - temp_f31_231) > 20.0f)) {
@@ -141,7 +141,7 @@ void ShockWave::UpdateShockWave(int arg0) {
             temp_f3_271 = 20.0f + (spD0.unk4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
             sp90.unk30 = (f32) sp30;
             sp90.unk38 = (f32) sp38;
-            unksp34 = temp_f3_271;
+            (*(f32 *) ((u8 *) &sp30 + 0x4)) = temp_f3_271;
             sp90.unk34 = temp_f3_271;
             sp90.unk3C = 1.0f;
         }
@@ -153,7 +153,7 @@ void ShockWave::UpdateShockWave(int arg0) {
         temp_f31_297 = sp70.unk4;
         sp68 = (f64) sp70.unk8;
         sp70.unk4 = temp_f31_297 + 200.0f;
-        unksp64 -= 600.0f;
+        (*(f32 *) ((u8 *) &sp60 + 0x4)) -= 600.0f;
         if (MKCollision_RayCollide(sp70, *((MKVector3 *) &sp60), &spD0, (MKCollisionMode) 1, 0) != 0) {
             temp_f0_313 = spD0.unk4 + 20.0f;
             if ((temp_f31_297 < temp_f0_313) && ((temp_f0_313 - temp_f31_297) > 20.0f)) {
@@ -164,7 +164,7 @@ void ShockWave::UpdateShockWave(int arg0) {
             temp_f3_337 = 20.0f + (spD0.unk4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
             sp90.unk30 = (f32) sp20;
             sp90.unk38 = (f32) sp28;
-            unksp24 = temp_f3_337;
+            (*(f32 *) ((u8 *) &sp20 + 0x4)) = temp_f3_337;
             sp90.unk34 = temp_f3_337;
             sp90.unk3C = 1.0f;
         }
@@ -376,7 +376,7 @@ void ShockWave::Update() {
             sp50 = sp10;
             sp58 = (f64) sp18;
             sp78 = (f64) sp18;
-            unksp74 = 0.0f;
+            (*(f32 *) ((u8 *) &sp70 + 0x4)) = 0.0f;
             if (var_f29_658 > 0.0f) {
 
             } else {
@@ -384,14 +384,14 @@ void ShockWave::Update() {
             }
             temp_f1_676 = (f32) sp70 * (f32) sp70;
             temp_f2_680 = (f32) sp78 * (f32) sp78;
-            temp_f30_684 = temp_f2_680 + (temp_f1_676 + (unksp74 * unksp74));
+            temp_f30_684 = temp_f2_680 + (temp_f1_676 + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (*(f32 *) ((u8 *) &sp70 + 0x4))));
             if (M2C_FIELD(*gb, u8 (**)(void **, f32, f32), 0x64)(gb, temp_f1_676, temp_f2_680) == 0) {
                 temp_f0_691 = 0.9f * M2C_FIELD(temp_r31_628, f32 *, 0x9C);
                 if ((temp_f30_684 < (temp_f0_691 * temp_f0_691)) && (temp_f30_684 > (var_f29_658 * var_f29_658)) && ((u8) this->unk160 != 0) && (((u8) this->unk161 != 0) || ((u8) this->unk162 != 0))) {
                     sp60 = sp70;
                     sp68 = sp78;
                     sp84 = 0;
-                    var_f4_722 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+                    var_f4_722 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp58 + 0xc)) * (*(f32 *) ((u8 *) &sp58 + 0xc))));
                     if (var_f4_722 > 0.000001f) {
                         if (var_f4_722 > 0.0f) {
                             temp_f1_728 = __frsqrte(var_f4_722);
@@ -433,7 +433,7 @@ void ShockWave::Update() {
                     temp_f2_796 = (f32) sp60 * var_f3_789;
                     temp_f0_800 = (f32) sp68 * var_f3_789;
                     sp60 = temp_f2_796;
-                    unksp64 *= var_f3_789;
+                    (*(f32 *) ((u8 *) &sp58 + 0xc)) *= var_f3_789;
                     sp68 = temp_f0_800;
                     temp_f1_805 = (f64) sp60 * 5.578592756e-315;
                     sp60 = temp_f1_805;
@@ -463,7 +463,7 @@ void ShockWave::Update() {
                             spB8 = sp38;
                         } else {
                             spB0 = 0.0f;
-                            unkspB4 = 0.0f;
+                            (*(f32 *) ((u8 *) &spAC + 0x8)) = 0.0f;
                             spB8 = 0.0f;
                         }
                         spD1 = 0;
@@ -488,7 +488,7 @@ void ShockWave::Update() {
                             spB8 = sp28;
                         } else {
                             spB0 = 0.0f;
-                            unkspB4 = 0.0f;
+                            (*(f32 *) ((u8 *) &spAC + 0x8)) = 0.0f;
                             spB8 = 0.0f;
                         }
                         spD1 = 0;

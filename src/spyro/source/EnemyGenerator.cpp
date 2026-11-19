@@ -482,7 +482,7 @@ loop_6:
                     temp_r3_1077 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
                     sp8.unk10 = M2C_FIELD(temp_r3_1077, f64 *, 0x20);
                     sp8.unk18 = M2C_FIELD(temp_r3_1077, f64 *, 0x28);
-                    if (((M2C_BITWISE(f32, sp8.unk18) * (f32) sp8.unk8) + ((M2C_BITWISE(f32, sp8.unk10) * M2C_BITWISE(f32, sp8)) + (M2C_BITWISE(f32, sp8.unk14) * unkspC))) > 0.0f) {
+                    if (((M2C_BITWISE(f32, sp8.unk18) * (f32) sp8.unk8) + ((M2C_BITWISE(f32, sp8.unk10) * M2C_BITWISE(f32, sp8)) + (M2C_BITWISE(f32, sp8.unk14) * (*(f32 *) ((u8 *) &sp8 + 0x4))))) > 0.0f) {
                         this->unk1C |= temp_r30_1066;
                     }
                 }
@@ -747,12 +747,12 @@ loop_54:
             sp40 = temp_f0_1492;
             sp30 = temp_f0_1492;
             var_f6_1498 = 0.0f;
-            unksp34 = 0.0f;
+            (*(f32 *) ((u8 *) &sp30 + 0x4)) = 0.0f;
             sp48 = M2C_BITWISE(f32, sp80.unk28) - (f32) spB8;
             sp60 = sp30;
             sp68 = (f64) sp48;
             sp38 = (f64) sp48;
-            var_f4_1515 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+            var_f4_1515 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))));
             if (var_f4_1515 > 1e-12f) {
                 if (var_f4_1515 > 0.0f) {
                     temp_f1_1520 = __frsqrte(var_f4_1515);
@@ -793,14 +793,14 @@ loop_54:
             temp_r5_1592 = *(this->unk54 + temp_r0_1584);
             M2C_FIELD(temp_r5_1592, f32 *, 0x40) = (f32) spB0;
             sp28 = (f32) sp68 * var_f6_1498;
-            M2C_FIELD(temp_r5_1592, f32 *, 0x44) = unkspB4;
+            M2C_FIELD(temp_r5_1592, f32 *, 0x44) = (*(f32 *) ((u8 *) &spB0 + 0x4));
             M2C_FIELD(temp_r5_1592, f32 *, 0x48) = (f32) spB8;
             sp80.unk18 = (f64) sp28;
             M2C_FIELD(temp_r5_1592, f32 *, 0x4C) = 1.0f;
             temp_f6_1608 = M2C_BITWISE(f32, sp80.unk18);
             sp20 = (f32) sp60 * var_f6_1498;
             temp_r4_1612 = *(this->unk54 + temp_r0_1584);
-            sp24 = unksp64 * var_f6_1498;
+            sp24 = (*(f32 *) ((u8 *) &sp60 + 0x4)) * var_f6_1498;
             sp80.unk10 = (f64) sp20;
             temp_f8_1618 = M2C_BITWISE(f32, sp80.unk10);
             temp_f7_1619 = M2C_BITWISE(f32, sp80.unk14);
@@ -815,7 +815,7 @@ loop_54:
             sp58 = (f64) sp18;
             sp50 = (f64) sp10;
             M2C_FIELD(temp_r4_1633, f32 *, 0x10) = (f32) sp50;
-            M2C_FIELD(temp_r4_1633, f32 *, 0x14) = unksp54;
+            M2C_FIELD(temp_r4_1633, f32 *, 0x14) = (*(f32 *) ((u8 *) &sp50 + 0x4));
             M2C_FIELD(temp_r4_1633, f32 *, 0x18) = (f32) sp58;
             M2C_FIELD(temp_r4_1633, f32 *, 0x1C) = 0.0f;
             AddSpawnPoint(*(this->unk54 + temp_r0_1584));

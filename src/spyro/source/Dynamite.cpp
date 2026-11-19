@@ -168,7 +168,7 @@ void Dynamite::Activate() {
     this->unk184 |= 0x20;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp1EC'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void Dynamite::Update() {
     f64 sp200;
     f64 sp1F8;
@@ -306,7 +306,7 @@ void Dynamite::Update() {
         sp1E8 = spD8;
         spE0 = (f32) sp1C0 - (f32) sp200;
         sp1F0 = (f64) spE0;
-        var_f4_426 = ((f32) sp1F0 * (f32) sp1F0) + (((f32) sp1E8 * (f32) sp1E8) + (unksp1EC * unksp1EC));
+        var_f4_426 = ((f32) sp1F0 * (f32) sp1F0) + (((f32) sp1E8 * (f32) sp1E8) + ((*(f32 *) ((u8 *) &sp1E8 + 0x4)) * (*(f32 *) ((u8 *) &sp1E8 + 0x4))));
         if (var_f4_426 > 0.0f) {
             temp_f1_429 = __frsqrte(var_f4_426);
             temp_f1_435 = 0.5 * temp_f1_429 * -(((f64) var_f4_426 * (temp_f1_429 * temp_f1_429)) - 3.0);
@@ -373,7 +373,7 @@ void Dynamite::Update() {
         }
     }
     if (((u8) this->unk14C >> 7U) & 1) {
-        if ((((u8) this->unk184 >> 6U) & 1) && ((this->unk168 -= gUpdateTimeDelta, ((this->unk168 <= 0.0f) != 0)) || (temp_r4_595 = this->unk8, temp_r30_598 = temp_r4_595 + 0x30, temp_r3_603 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, void *), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_r4_595), void **, 8), temp_f1_604 = M2C_FIELD(temp_r3_603, f64 *, 0x30), sp198 = temp_f1_604, sp1A0 = M2C_FIELD(temp_r3_603, f64 *, 0x38), temp_f0_610 = temp_f1_604 - M2C_FIELD(temp_r30_598, f64 *, 0), spC8 = temp_f0_610, temp_f2_616 = this->unk174, sp1A8 = temp_f0_610, spD0 = (f32) sp1A0 - M2C_FIELD(temp_r30_598, f32 *, 8), sp1B0 = (f64) spD0, (((((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + (unksp1AC * unksp1AC))) <= (temp_f2_616 * temp_f2_616)) != 0)))) {
+        if ((((u8) this->unk184 >> 6U) & 1) && ((this->unk168 -= gUpdateTimeDelta, ((this->unk168 <= 0.0f) != 0)) || (temp_r4_595 = this->unk8, temp_r30_598 = temp_r4_595 + 0x30, temp_r3_603 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, void *), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_r4_595), void **, 8), temp_f1_604 = M2C_FIELD(temp_r3_603, f64 *, 0x30), sp198 = temp_f1_604, sp1A0 = M2C_FIELD(temp_r3_603, f64 *, 0x38), temp_f0_610 = temp_f1_604 - M2C_FIELD(temp_r30_598, f64 *, 0), spC8 = temp_f0_610, temp_f2_616 = this->unk174, sp1A8 = temp_f0_610, spD0 = (f32) sp1A0 - M2C_FIELD(temp_r30_598, f32 *, 8), sp1B0 = (f64) spD0, (((((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + ((*(f32 *) ((u8 *) &sp1A8 + 0x4)) * (*(f32 *) ((u8 *) &sp1A8 + 0x4))))) <= (temp_f2_616 * temp_f2_616)) != 0)))) {
             this->unk14C &= ~0x40;
             this->unk168 = 0.0f;
         }
@@ -422,7 +422,7 @@ void Dynamite::Update() {
             spB0 = temp_f28_740;
             sp148 = (f64) spA8;
             sp150 = (f64) spB0;
-            var_f4_764 = ((f32) sp150 * (f32) sp150) + (((f32) sp148 * (f32) sp148) + (unksp14C * unksp14C));
+            var_f4_764 = ((f32) sp150 * (f32) sp150) + (((f32) sp148 * (f32) sp148) + ((*(f32 *) ((u8 *) &sp148 + 0x4)) * (*(f32 *) ((u8 *) &sp148 + 0x4))));
             if (var_f4_764 > 1e-12f) {
                 if (var_f4_764 > 0.0f) {
                     temp_f1_770 = __frsqrte(var_f4_764);
@@ -461,7 +461,7 @@ void Dynamite::Update() {
             } else {
                 var_f3_831 = 0.0f;
             }
-            sp7C = unksp14C * var_f3_831;
+            sp7C = (*(f32 *) ((u8 *) &sp148 + 0x4)) * var_f3_831;
             sp78 = (f32) sp148 * var_f3_831;
             sp80 = (f32) sp150 * var_f3_831;
             sp158 = (f64) sp78;
@@ -487,7 +487,7 @@ void Dynamite::Update() {
         sp70 = temp_f29_887;
         sp118 = (f64) sp68;
         sp120 = (f64) sp70;
-        var_f4_911 = ((f32) sp120 * (f32) sp120) + (((f32) sp118 * (f32) sp118) + (unksp11C * unksp11C));
+        var_f4_911 = ((f32) sp120 * (f32) sp120) + (((f32) sp118 * (f32) sp118) + ((*(f32 *) ((u8 *) &sp118 + 0x4)) * (*(f32 *) ((u8 *) &sp118 + 0x4))));
         if (var_f4_911 > 1e-12f) {
             if (var_f4_911 > 0.0f) {
                 temp_f1_917 = __frsqrte(var_f4_911);
@@ -526,7 +526,7 @@ void Dynamite::Update() {
         } else {
             var_f3_978 = 0.0f;
         }
-        sp4C = unksp11C * var_f3_978;
+        sp4C = (*(f32 *) ((u8 *) &sp118 + 0x4)) * var_f3_978;
         sp48 = (f32) sp118 * var_f3_978;
         sp50 = (f32) sp120 * var_f3_978;
         sp128 = (f64) sp48;
@@ -753,7 +753,7 @@ block_16:
             var_f4_1371 = 0.0f;
             sp98 = temp_f0_1365;
             sp40 = (f32) sp70 - M2C_FIELD(temp_r3_1325, f32 *, 0x18);
-            unksp9C = 0.0f;
+            (*(f32 *) ((u8 *) &sp90 + 0xc)) = 0.0f;
             spA0 = (f64) sp40;
             var_f5_1384 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (0.0f * 0.0f));
             if (var_f5_1384 > 0.000001f) {
@@ -794,7 +794,7 @@ block_16:
             }
             temp_f0_1458 = (f32) spA0 * var_f4_1371;
             sp98 = (f32) sp98 * var_f4_1371;
-            unksp9C *= var_f4_1371;
+            (*(f32 *) ((u8 *) &sp90 + 0xc)) *= var_f4_1371;
             spA0 = temp_f0_1458;
             temp_f1_1463 = (f64) sp98 * 5.676053805e-315;
             sp28 = temp_f1_1463;

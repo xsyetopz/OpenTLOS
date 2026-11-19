@@ -166,7 +166,7 @@ void DreadWing::UpdateDropBox() {
         spC0 = (f64) sp30;
         sp98 = M2C_FIELD(&MKVector3::up, f64 *, 0);
         spA0 = M2C_FIELD(&MKVector3::up, f64 *, 8);
-        unkspAC = 0.0f;
+        (*(f32 *) ((u8 *) &spA0 + 0xc)) = 0.0f;
         if (var_f7_335 > 0.000001f) {
             if (var_f7_335 > 0.0f) {
                 temp_f1_348 = __frsqrte(var_f7_335);
@@ -204,7 +204,7 @@ void DreadWing::UpdateDropBox() {
             var_f8_319 = 1.0f / var_f7_335;
         }
         spA8 = (f32) spA8 * var_f8_319;
-        unkspAC *= var_f8_319;
+        (*(f32 *) ((u8 *) &spA0 + 0xc)) *= var_f8_319;
         spB0 = (f32) spB0 * var_f8_319;
         KDMath_BuildMatrixFromFwd(&sp100, *((MKVector3 *) &spA8), (MKVector3 *) &sp98);
         MKVector(0.0f, -860.00006f, 0.0f);
@@ -213,7 +213,7 @@ void DreadWing::UpdateDropBox() {
         sp20 = (f32) spC0 + sp50;
         sp60 = (f64) sp20;
         sp100.unk30 = (f32) sp58;
-        sp100.unk34 = unksp5C;
+        sp100.unk34 = (*(f32 *) ((u8 *) &sp58 + 0x4));
         sp100.unk38 = (f32) sp60;
         sp100.unk3C = 1.0f;
         MKModel_SetWorldMatrix(M2C_FIELD(this->unkAFC, MKModel **, 4), sp100);

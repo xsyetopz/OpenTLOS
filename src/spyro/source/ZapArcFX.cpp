@@ -137,7 +137,7 @@ void ZapArcFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const float
         spD0 = temp_f26_79;
         sp198 = (f64) spC8;
         sp1A0 = (f64) spD0;
-        var_f4_104 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C));
+        var_f4_104 = ((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + ((*(f32 *) ((u8 *) &sp190 + 0xc)) * (*(f32 *) ((u8 *) &sp190 + 0xc))));
         if (var_f4_104 > 0.000001f) {
             if (var_f4_104 > 0.0f) {
                 temp_f1_110 = __frsqrte(var_f4_104);
@@ -180,7 +180,7 @@ void ZapArcFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const float
         var_r30_179 = 0;
         sp198 = (f32) sp198 * var_f5_171;
         var_r27_187 = 0;
-        unksp19C *= var_f5_171;
+        (*(f32 *) ((u8 *) &sp190 + 0xc)) *= var_f5_171;
         sp1A0 = (f32) sp1A0 * var_f5_171;
         sp188 = M2C_FIELD(&arg1, f64 *, 0);
         sp190 = M2C_FIELD(&arg1, f64 *, 8);
@@ -196,7 +196,7 @@ loop_25:
                     spC0 = temp_f26_206;
                     sp178 = (f64) spB8;
                     sp180 = (f64) spC0;
-                    var_f4_231 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
+                    var_f4_231 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + ((*(f32 *) ((u8 *) &sp160 + 0x1c)) * (*(f32 *) ((u8 *) &sp160 + 0x1c))));
                     if (var_f4_231 > 0.000001f) {
                         if (var_f4_231 > 0.0f) {
                             temp_f1_237 = __frsqrte(var_f4_231);
@@ -236,7 +236,7 @@ loop_25:
                         var_f5_298 = 0.0f;
                     }
                     sp178 = (f32) sp178 * var_f5_298;
-                    unksp17C *= var_f5_298;
+                    (*(f32 *) ((u8 *) &sp160 + 0x1c)) *= var_f5_298;
                     sp180 = (f32) sp180 * var_f5_298;
                     temp_f25_316 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                     temp_f26_321 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -259,7 +259,7 @@ loop_25:
                     sp168 = sp78;
                     sp80 = (f32) sp150 + (f32) sp140;
                     sp170 = (f64) sp80;
-                    var_f4_375 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + (unksp16C * unksp16C));
+                    var_f4_375 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + ((*(f32 *) ((u8 *) &sp160 + 0xc)) * (*(f32 *) ((u8 *) &sp160 + 0xc))));
                     if (var_f4_375 > 0.000001f) {
                         if (var_f4_375 > 0.0f) {
                             temp_f1_381 = __frsqrte(var_f4_375);
@@ -300,7 +300,7 @@ loop_25:
                     }
                     temp_f31_453 = &arg2;
                     sp168 = (f32) sp168 * var_f4_442;
-                    unksp16C *= var_f4_442;
+                    (*(f32 *) ((u8 *) &sp160 + 0xc)) *= var_f4_442;
                     sp170 = (f32) sp170 * var_f4_442;
                     temp_f1_460 = MKRand_Float(&gViewSeed, 0.35f, 1.0f);
                     temp_f0_463 = sp188 * temp_f1_460;
@@ -335,7 +335,7 @@ loop_25:
                     temp_r3_528->Scale3x3(temp_r3_528, *((MKVector3 *) &spE8));
                     temp_r4_535 = this->unkC8 + var_r27_187;
                     M2C_FIELD(temp_r4_535, f32 *, 0x30) = (f32) sp158;
-                    M2C_FIELD(temp_r4_535, f32 *, 0x34) = unksp15C;
+                    M2C_FIELD(temp_r4_535, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp158 + 0x4));
                     M2C_FIELD(temp_r4_535, f32 *, 0x38) = (f32) sp160;
                     M2C_FIELD(temp_r4_535, f32 *, 0x3C) = 1.0f;
                     *(this->unkC8 + (var_r27_187 + 0x40)) = 1.0f;

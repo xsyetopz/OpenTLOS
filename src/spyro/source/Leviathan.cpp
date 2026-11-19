@@ -192,10 +192,10 @@ void Leviathan::Draw() {
     temp_f3_120 = this->unk1BC;
     sp38 = sp78;
     sp70 = (f32) sp30;
-    unksp74 = temp_f3_120;
+    (*(f32 *) ((u8 *) &sp70 + 0x4)) = temp_f3_120;
     sp78 = (f32) sp38;
-    unksp7C = 1.0f;
-    unksp34 = temp_f3_120;
+    (*(f32 *) ((u8 *) &sp78 + 0x4)) = 1.0f;
+    (*(f32 *) ((u8 *) &sp30 + 0x4)) = temp_f3_120;
     MKModel_SetWorldMatrix(this->unk1B8, *((Matrix *) &sp40));
     temp_r31_135 = MKMaterial_EnableFog(0U);
     sp10 = 1.0f;
@@ -816,7 +816,7 @@ void Leviathan::UpdateMove() {
         }
         M2C_STRUCT_COPY((s32) &spF0.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
         var_f7_983 = 0.0f;
-        unkspD4 = 0.0f;
+        (*(f32 *) ((u8 *) &spA8 + 0x2c)) = 0.0f;
         var_f4_992 = ((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (0.0f * 0.0f));
         if (var_f4_992 > 0.000001f) {
             if (var_f4_992 > 0.0f) {
@@ -861,10 +861,10 @@ void Leviathan::UpdateMove() {
         spC0 = (f64) sp40;
         spC8 = (f64) sp48;
         spD0 = (f32) spD0 * var_f7_983;
-        unkspD4 *= var_f7_983;
+        (*(f32 *) ((u8 *) &spA8 + 0x2c)) *= var_f7_983;
         spD8 = (f32) spD8 * var_f7_983;
         var_f4_1090 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + (0.0f * 0.0f));
-        unkspC4 = 0.0f;
+        (*(f32 *) ((u8 *) &spA8 + 0x1c)) = 0.0f;
         if (var_f4_1090 > 0.000001f) {
             if (var_f4_1090 > 0.0f) {
                 temp_f1_1096 = __frsqrte(var_f4_1090);
@@ -902,17 +902,17 @@ void Leviathan::UpdateMove() {
             var_f10_1065 = 1.0f / var_f4_1090;
         }
         spB0 = sp130;
-        temp_f8_1162 = unkspC4 * var_f10_1065;
+        temp_f8_1162 = (*(f32 *) ((u8 *) &spA8 + 0x1c)) * var_f10_1065;
         var_f11_1164 = 0.0f;
         temp_f9_1169 = (f32) spC0 * var_f10_1065;
         spB8 = sp138;
         temp_f7_1176 = (f32) spC8 * var_f10_1065;
         var_f10_1184 = ((f32) spB8 * (f32) spB8) + (((f32) spB0 * (f32) spB0) + (0.0f * 0.0f));
         spC0 = temp_f9_1169;
-        var_f2_1186 = 1.0f - ((temp_f7_1176 * spD8) + ((temp_f9_1169 * spD0) + (temp_f8_1162 * unkspD4)));
-        unkspC4 = temp_f8_1162;
+        var_f2_1186 = 1.0f - ((temp_f7_1176 * spD8) + ((temp_f9_1169 * spD0) + (temp_f8_1162 * (*(f32 *) ((u8 *) &spA8 + 0x2c)))));
+        (*(f32 *) ((u8 *) &spA8 + 0x1c)) = temp_f8_1162;
         spC8 = temp_f7_1176;
-        unkspB4 = 0.0f;
+        (*(f32 *) ((u8 *) &spA8 + 0xc)) = 0.0f;
         if (var_f10_1184 > 0.000001f) {
             if (var_f10_1184 > 0.0f) {
                 temp_f4_1194 = __frsqrte(var_f10_1184);
@@ -949,13 +949,13 @@ void Leviathan::UpdateMove() {
             }
             var_f11_1164 = 1.0f / var_f10_1184;
         }
-        temp_f6_1259 = unkspB4 * var_f11_1164;
+        temp_f6_1259 = (*(f32 *) ((u8 *) &spA8 + 0xc)) * var_f11_1164;
         temp_f7_1261 = (f32) spB0 * var_f11_1164;
         temp_f5_1263 = (f32) spB8 * var_f11_1164;
         spB0 = temp_f7_1261;
-        unkspB4 = temp_f6_1259;
+        (*(f32 *) ((u8 *) &spA8 + 0xc)) = temp_f6_1259;
         spB8 = temp_f5_1263;
-        if (((spD8 * temp_f5_1263) + ((spD0 * temp_f7_1261) + (unkspD4 * temp_f6_1259))) < 0.0f) {
+        if (((spD8 * temp_f5_1263) + ((spD0 * temp_f7_1261) + ((*(f32 *) ((u8 *) &spA8 + 0x2c)) * temp_f6_1259))) < 0.0f) {
             var_f2_1186 = -var_f2_1186;
         }
         temp_f1_1276 = M2C_FIELD(this, f64 *, 0x110);
@@ -973,7 +973,7 @@ void Leviathan::UpdateMove() {
         sp78 = (f64) sp28;
         spF0.SetRotationPYR(*((MKVector3 *) &sp70));
         spF0.unk30 = (f32) spE0;
-        spF0.unk34 = unkspE4;
+        spF0.unk34 = (*(f32 *) ((u8 *) &spE0 + 0x4));
         spF0.unk38 = (f32) spE8;
         spF0.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, spF0);
@@ -1046,7 +1046,7 @@ void Leviathan::Update() {
         spC0 = sp60;
         sp68 = (f32) sp78 * sp18;
         spC8 = (f64) sp68;
-        var_f4_1406 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + (unkspC4 * unkspC4));
+        var_f4_1406 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + ((*(f32 *) ((u8 *) &spC0 + 0x4)) * (*(f32 *) ((u8 *) &spC0 + 0x4))));
         if (var_f4_1406 > 1e-12f) {
             if (var_f4_1406 > 0.0f) {
                 temp_f1_1412 = __frsqrte(var_f4_1406);
@@ -1085,7 +1085,7 @@ void Leviathan::Update() {
         } else {
             var_f3_1473 = 0.0f;
         }
-        sp54 = unkspC4 * var_f3_1473;
+        sp54 = (*(f32 *) ((u8 *) &spC0 + 0x4)) * var_f3_1473;
         sp50 = (f32) spC0 * var_f3_1473;
         sp58 = (f32) spC8 * var_f3_1473;
         spE0 = (f64) sp50;

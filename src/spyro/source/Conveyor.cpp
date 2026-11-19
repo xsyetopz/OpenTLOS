@@ -195,7 +195,7 @@ void Conveyor::Update() {
         sp110 = temp_f0_203;
         sp98 = (f32) sp1C8 - (f32) sp1B8;
         sp118 = (f64) sp98;
-        var_f4_220 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114));
+        var_f4_220 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * (*(f32 *) ((u8 *) &sp110 + 0x4))));
         if (var_f4_220 > 1e-12f) {
             if (var_f4_220 > 0.0f) {
                 temp_f1_226 = __frsqrte(var_f4_220);
@@ -235,7 +235,7 @@ void Conveyor::Update() {
             var_f3_287 = 0.0f;
         }
         sp80 = (f32) sp110 * var_f3_287;
-        sp84 = unksp114 * var_f3_287;
+        sp84 = (*(f32 *) ((u8 *) &sp110 + 0x4)) * var_f3_287;
         sp88 = (f32) sp118 * var_f3_287;
         sp1A0 = (f64) sp80;
         sp1A8 = (f64) sp88;
@@ -244,7 +244,7 @@ void Conveyor::Update() {
         sp100 = temp_f0_307;
         sp78 = (f32) sp208 - (f32) sp1F8;
         sp108 = (f64) sp78;
-        var_f4_324 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + (unksp104 * unksp104));
+        var_f4_324 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + ((*(f32 *) ((u8 *) &sp100 + 0x4)) * (*(f32 *) ((u8 *) &sp100 + 0x4))));
         if (var_f4_324 > 1e-12f) {
             if (var_f4_324 > 0.0f) {
                 temp_f1_330 = __frsqrte(var_f4_324);
@@ -284,16 +284,16 @@ void Conveyor::Update() {
             var_f3_391 = 0.0f;
         }
         sp60 = (f32) sp100 * var_f3_391;
-        sp64 = unksp104 * var_f3_391;
+        sp64 = (*(f32 *) ((u8 *) &sp100 + 0x4)) * var_f3_391;
         sp68 = (f32) sp108 * var_f3_391;
         sp190 = (f64) sp60;
         sp198 = (f64) sp68;
-        sp50 = (unksp1A4 * (f32) sp198) - ((f32) sp1A8 * unksp194);
+        sp50 = ((*(f32 *) ((u8 *) &sp1A0 + 0x4)) * (f32) sp198) - ((f32) sp1A8 * (*(f32 *) ((u8 *) &sp190 + 0x4)));
         sp54 = ((f32) sp1A8 * (f32) sp190) - ((f32) sp1A0 * (f32) sp198);
-        sp58 = ((f32) sp1A0 * unksp194) - (unksp1A4 * (f32) sp190);
+        sp58 = ((f32) sp1A0 * (*(f32 *) ((u8 *) &sp190 + 0x4))) - ((*(f32 *) ((u8 *) &sp1A0 + 0x4)) * (f32) sp190);
         spF0 = (f64) sp50;
         spF8 = (f64) sp58;
-        var_f4_435 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4));
+        var_f4_435 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spF0 + 0x4))));
         if (var_f4_435 > 1e-12f) {
             if (var_f4_435 > 0.0f) {
                 temp_f1_441 = __frsqrte(var_f4_435);
@@ -333,15 +333,15 @@ void Conveyor::Update() {
             var_f3_502 = 0.0f;
         }
         sp40 = (f32) spF0 * var_f3_502;
-        sp44 = unkspF4 * var_f3_502;
+        sp44 = (*(f32 *) ((u8 *) &spF0 + 0x4)) * var_f3_502;
         sp48 = (f32) spF8 * var_f3_502;
         sp170.unk10 = (f64) sp40;
         temp_f6_528 = M2C_BITWISE(f32, sp170.unk10);
         sp188 = (f64) sp48;
         sp280 = (f32) sp1C0;
-        sp284 = unksp1C4;
-        sp38 = (temp_f6_528 * unksp1A4) - (sp184 * (f32) sp1A0);
-        sp30 = (sp184 * (f32) sp1A8) - ((f32) sp188 * unksp1A4);
+        sp284 = (*(f32 *) ((u8 *) &sp1C0 + 0x4));
+        sp38 = (temp_f6_528 * (*(f32 *) ((u8 *) &sp1A0 + 0x4))) - (sp184 * (f32) sp1A0);
+        sp30 = (sp184 * (f32) sp1A8) - ((f32) sp188 * (*(f32 *) ((u8 *) &sp1A0 + 0x4)));
         sp34 = ((f32) sp188 * (f32) sp1A0) - (temp_f6_528 * (f32) sp1A8);
         sp198 = (f64) sp38;
         sp190 = (f64) sp30;
@@ -350,11 +350,11 @@ void Conveyor::Update() {
         sp288 = (f32) sp1C8;
         sp28C = 1.0f;
         sp250 = (f32) sp190;
-        sp254 = unksp194;
+        sp254 = (*(f32 *) ((u8 *) &sp190 + 0x4));
         sp258 = (f32) sp198;
         sp25C = 0.0f;
         sp270 = (f32) sp1A0;
-        sp274 = unksp1A4;
+        sp274 = (*(f32 *) ((u8 *) &sp1A0 + 0x4));
         sp278 = (f32) sp1A8;
         sp27C = 0.0f;
         sp260 = temp_f6_528;

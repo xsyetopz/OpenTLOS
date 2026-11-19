@@ -410,7 +410,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp264'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3) {
     f64 sp288;
     f64 sp280;
@@ -542,7 +542,7 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     sp108 = (temp_f8_632 * temp_f7_636) - (temp_f6_639 * temp_f5_638);
     sp260 = (f64) sp100;
     sp268 = (f64) sp108;
-    var_f4_659 = ((f32) sp268 * (f32) sp268) + (((f32) sp260 * (f32) sp260) + (unksp264 * unksp264));
+    var_f4_659 = ((f32) sp268 * (f32) sp268) + (((f32) sp260 * (f32) sp260) + ((*(f32 *) ((u8 *) &sp260 + 0x4)) * (*(f32 *) ((u8 *) &sp260 + 0x4))));
     if (var_f4_659 > 1e-12f) {
         if (var_f4_659 > 0.0f) {
             temp_f1_665 = __frsqrte(var_f4_659);
@@ -583,18 +583,18 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     }
     temp_f5_734 = arg1.unk8;
     temp_f9_736 = arg1.unk0;
-    spF4 = unksp264 * var_f3_726;
+    spF4 = (*(f32 *) ((u8 *) &sp260 + 0x4)) * var_f3_726;
     temp_f7_738 = arg1.unk4;
     spF0 = (f32) sp260 * var_f3_726;
     spF8 = (f32) sp268 * var_f3_726;
     sp280 = (f64) spF0;
     sp288 = (f64) spF8;
-    spE0 = (temp_f7_738 * (f32) sp288) - (temp_f5_734 * unksp284);
+    spE0 = (temp_f7_738 * (f32) sp288) - (temp_f5_734 * (*(f32 *) ((u8 *) &sp280 + 0x4)));
     spE4 = (temp_f5_734 * (f32) sp280) - (temp_f9_736 * (f32) sp288);
-    spE8 = (temp_f9_736 * unksp284) - (temp_f7_738 * (f32) sp280);
+    spE8 = (temp_f9_736 * (*(f32 *) ((u8 *) &sp280 + 0x4))) - (temp_f7_738 * (f32) sp280);
     sp250 = (f64) spE0;
     sp258 = (f64) spE8;
-    var_f4_768 = ((f32) sp258 * (f32) sp258) + (((f32) sp250 * (f32) sp250) + (unksp254 * unksp254));
+    var_f4_768 = ((f32) sp258 * (f32) sp258) + (((f32) sp250 * (f32) sp250) + ((*(f32 *) ((u8 *) &sp250 + 0x4)) * (*(f32 *) ((u8 *) &sp250 + 0x4))));
     if (var_f4_768 > 1e-12f) {
         if (var_f4_768 > 0.0f) {
             temp_f1_774 = __frsqrte(var_f4_768);
@@ -633,7 +633,7 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     } else {
         var_f3_835 = 0.0f;
     }
-    spD4 = unksp254 * var_f3_835;
+    spD4 = (*(f32 *) ((u8 *) &sp250 + 0x4)) * var_f3_835;
     spD0 = (f32) sp250 * var_f3_835;
     spD8 = (f32) sp258 * var_f3_835;
     sp270 = (f64) spD0;

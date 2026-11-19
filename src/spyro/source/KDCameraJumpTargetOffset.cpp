@@ -54,7 +54,7 @@ void KDCameraJumpTargetOffset::Update(KDCameraHeroData &arg0) {
                 sp58 = M2C_FIELD(&arg0, f64 *, 0x40);
                 sp70 = M2C_FIELD(&arg0, f64 *, 0xD0);
                 sp60 = M2C_FIELD(&arg0, f64 *, 0x48);
-                var_r0_36 = unksp5C > unksp6C;
+                var_r0_36 = (*(f32 *) ((u8 *) &sp58 + 0x4)) > (*(f32 *) ((u8 *) &sp68 + 0x4));
             }
             if (var_r0_36 != 0) {
                 Enter(arg0);
@@ -68,7 +68,7 @@ void KDCameraJumpTargetOffset::Update(KDCameraHeroData &arg0) {
             sp8 = temp_f4_62;
             sp10 = temp_f3_63;
             sp80 = temp_f3_63;
-            temp_f0_75 = ((this->unk14 - unksp7C) / this->unk8) * this->unk10;
+            temp_f0_75 = ((this->unk14 - (*(f32 *) ((u8 *) &sp78 + 0x4))) / this->unk8) * this->unk10;
             if (var_f5_70 < temp_f0_75) {
 
             } else {
@@ -82,7 +82,7 @@ void KDCameraJumpTargetOffset::Update(KDCameraHeroData &arg0) {
                 sp38 = sp8;
                 sp50 = M2C_FIELD(&arg0, f64 *, 0xD0);
                 sp40 = sp10;
-                var_r0_85 = unksp3C > unksp4C;
+                var_r0_85 = (*(f32 *) ((u8 *) &sp38 + 0x4)) > (*(f32 *) ((u8 *) &sp48 + 0x4));
             }
             if (var_r0_85 != 0) {
                 if (this->unkC >= var_f5_70) {
@@ -96,7 +96,7 @@ void KDCameraJumpTargetOffset::Update(KDCameraHeroData &arg0) {
                     sp18 = sp8;
                     sp30 = M2C_FIELD(&arg0, f64 *, 0xD0);
                     sp20 = sp10;
-                    var_r0_113 = unksp1C < unksp2C;
+                    var_r0_113 = (*(f32 *) ((u8 *) &sp18 + 0x4)) < (*(f32 *) ((u8 *) &sp28 + 0x4));
                 }
                 if (var_r0_113 != 0) {
                     if (this->unkC <= var_f5_70) {
@@ -161,7 +161,7 @@ void KDCameraJumpTargetOffset::Enter(KDCameraHeroData &arg0) {
     this->unk0 |= 0x40;
     sp8 = arg0.unkC8;
     sp10 = M2C_FIELD(&arg0, f64 *, 0xD0);
-    this->unk14 = unkspC;
+    this->unk14 = (*(f32 *) ((u8 *) &sp8 + 0x4));
 }
 #endif
 

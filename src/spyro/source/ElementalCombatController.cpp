@@ -76,12 +76,12 @@ loop_2:
         sp8.GetPos();
         sp18 = M2C_BITWISE(f64, sp8);
         sp20 = sp10;
-        unksp1C = unksp2C;
+        (*(f32 *) ((u8 *) &sp18 + 0x4)) = (*(f32 *) ((u8 *) &sp28 + 0x4));
         this->unkC8.AddSpawnPoint(temp_r26_159 + 0x120);
         temp_r25_183 = temp_r26_159 + 0x130;
         temp_r25_183->SetIdentity();
         M2C_FIELD(temp_r26_159, f32 *, 0x160) = (f32) sp28;
-        M2C_FIELD(temp_r26_159, f32 *, 0x164) = unksp2C;
+        M2C_FIELD(temp_r26_159, f32 *, 0x164) = (*(f32 *) ((u8 *) &sp28 + 0x4));
         M2C_FIELD(temp_r26_159, f32 *, 0x168) = (f32) sp30;
         M2C_FIELD(temp_r26_159, f32 *, 0x16C) = 1.0f;
         temp_r25_183->SetLookAt(*((MKVector3 *) &sp28), *((MKVector3 *) &sp18));

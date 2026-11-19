@@ -99,7 +99,7 @@ loop_4:
         sp18 = temp_f0_122;
         sp10 = (f32) sp30 - temp_f30_106;
         sp20 = (f64) sp10;
-        temp_f0_138 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C));
+        temp_f0_138 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))));
         if (temp_f0_138 < var_f31_105) {
             this->unk1A4 = var_r30_108;
             var_f31_105 = temp_f0_138;
@@ -277,7 +277,7 @@ void RopeBridge::Draw() {
     sp40 = sp20;
     sp28 = (f32) sp68 - sp50.unk8;
     sp48 = (f64) sp28;
-    var_f30_426 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44));
+    var_f30_426 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + ((*(f32 *) ((u8 *) &sp40 + 0x4)) * (*(f32 *) ((u8 *) &sp40 + 0x4))));
     if (var_f30_426 > 0.0f) {
         temp_f1_429 = __frsqrte(var_f30_426);
         temp_f1_435 = 0.5 * temp_f1_429 * -(((f64) var_f30_426 * (temp_f1_429 * temp_f1_429)) - 3.0);
@@ -316,7 +316,7 @@ void RopeBridge::Draw() {
     sp30 = sp10;
     sp18 = (f32) sp68 - sp50.unk8;
     sp38 = (f64) sp18;
-    var_f4_514 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_514 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_514 > 0.0f) {
         temp_f1_517 = __frsqrte(var_f4_514);
         temp_f1_523 = 0.5 * temp_f1_517 * -(((f64) var_f4_514 * (temp_f1_517 * temp_f1_517)) - 3.0);
@@ -655,7 +655,7 @@ loop_27:
                         sp170 = (f64) sp80;
                         sp1E0 = (f64) sp80;
                     }
-                    temp_f5_958 = ((((f32) sp1E0 * (f32) sp1E0) + (((f32) sp1D8 * (f32) sp1D8) + (unksp1DC * unksp1DC))) * (1.0f / temp_f7_887)) + (temp_f5_881 - ((temp_f5_881 * temp_f5_881) / temp_f7_887));
+                    temp_f5_958 = ((((f32) sp1E0 * (f32) sp1E0) + (((f32) sp1D8 * (f32) sp1D8) + ((*(f32 *) ((u8 *) &sp1D8 + 0x4)) * (*(f32 *) ((u8 *) &sp1D8 + 0x4))))) * (1.0f / temp_f7_887)) + (temp_f5_881 - ((temp_f5_881 * temp_f5_881) / temp_f7_887));
                     temp_f3_961 = (0.4f * (temp_f5_958 - this->unk18C)) / temp_f5_958;
                     temp_f8_963 = sp1D8 * (f64) temp_f3_961;
                     sp1D8 = temp_f8_963;
@@ -775,7 +775,7 @@ loop_39:
                 sp1C8 = spC8;
                 spD0 = M2C_FIELD(temp_r4_1212, f32 *, 8) - M2C_FIELD(temp_r5_1210, f32 *, 8);
                 sp1D0 = (f64) spD0;
-                temp_f3_1234 = ((((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + (unksp1CC * unksp1CC))) * (1.0f / temp_f6_1192)) + (temp_f3_1188 - ((temp_f3_1188 * temp_f3_1188) / temp_f6_1192));
+                temp_f3_1234 = ((((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + ((*(f32 *) ((u8 *) &sp1C8 + 0x4)) * (*(f32 *) ((u8 *) &sp1C8 + 0x4))))) * (1.0f / temp_f6_1192)) + (temp_f3_1188 - ((temp_f3_1188 * temp_f3_1188) / temp_f6_1192));
                 temp_f29_1237 = (0.4f * (temp_f3_1234 - this->unk18C)) / temp_f3_1234;
                 temp_f6_1239 = sp1C8 * (f64) temp_f29_1237;
                 sp1C8 = temp_f6_1239;
@@ -1002,7 +1002,7 @@ loop_40:
         sp260 = (f64) sp100;
         sp258 = (f64) spF8;
         sp2B0 = (f32) sp258;
-        sp2B4 = unksp25C;
+        sp2B4 = (*(f32 *) ((u8 *) &sp258 + 0x4));
         sp2B8 = (f32) sp260;
         sp2BC = 0.0f;
         if (var_r28_1367 == (s32) (this->unk1A4 - 1)) {
@@ -1027,7 +1027,7 @@ loop_40:
             sp2A0 = (f64) spE0;
         }
         sp298 = 0.0f;
-        var_f4_1469 = ((f32) sp2A0 * (f32) sp2A0) + (0.0f + (unksp29C * unksp29C));
+        var_f4_1469 = ((f32) sp2A0 * (f32) sp2A0) + (0.0f + ((*(f32 *) ((u8 *) &sp290 + 0xc)) * (*(f32 *) ((u8 *) &sp290 + 0xc))));
         if (var_f4_1469 > 0.000001f) {
             if (var_f4_1469 > 0.0f) {
                 temp_f1_1474 = __frsqrte(var_f4_1469);
@@ -1066,7 +1066,7 @@ loop_40:
         } else {
             var_f2_1535 = 0.0f;
         }
-        temp_f6_1544 = unksp29C * var_f2_1535;
+        temp_f6_1544 = (*(f32 *) ((u8 *) &sp290 + 0xc)) * var_f2_1535;
         temp_f5_1546 = (f32) sp2A0 * var_f2_1535;
         spC8 = 0.0f;
         spCC = temp_f6_1544;
@@ -1079,15 +1079,15 @@ loop_40:
         spBC = temp_f5_1546;
         sp2D0 = (f32) sp228;
         sp218 = (f64) spB8;
-        sp2D4 = unksp22C;
+        sp2D4 = (*(f32 *) ((u8 *) &sp228 + 0x4));
         sp2D8 = (f32) sp230;
         sp2DC = 0.0f;
         sp2C0 = (f32) sp218;
-        sp2C4 = unksp21C;
+        sp2C4 = (*(f32 *) ((u8 *) &sp218 + 0x4));
         sp2C8 = (f32) sp220;
         sp2CC = 0.0f;
         sp298 *= var_f2_1535;
-        unksp29C = temp_f6_1544;
+        (*(f32 *) ((u8 *) &sp290 + 0xc)) = temp_f6_1544;
         sp2A0 = temp_f5_1546;
         ((Matrix *) &sp2B0)->RotateRoll((Matrix *) &sp2B0, *(this->unk184 + (var_r24_1369 + 8)));
         ((Matrix *) &sp2B0)->Multiply3x3((Matrix *) &sp2B0, &this->unk110);
@@ -1099,7 +1099,7 @@ loop_40:
             spB0 = sp2E0.unk8 + sp1F8.unk8;
             sp210 = (f64) spB0;
             sp2E0 = (f32) sp208;
-            sp2E0.unk4 = unksp20C;
+            sp2E0.unk4 = (*(f32 *) ((u8 *) &sp208 + 0x4));
             sp2E0.unk8 = (f32) sp210;
             sp2E0.unkC = 1.0f;
             temp_r3_1633 = this->unk180;
@@ -1141,7 +1141,7 @@ loop_40:
             sp1B8 = (f64) sp88;
             sp1C0 = (f64) sp90;
             sp2E0 = (f32) sp1B8;
-            sp2E0.unk4 = unksp1BC;
+            sp2E0.unk4 = (*(f32 *) ((u8 *) &sp1B8 + 0x4));
             sp2E0.unk8 = (f32) sp1C0;
         } else if (var_r28_1367 == (s32) (temp_r3_1678 - 1)) {
             temp_r6_1755 = this->unk180;
@@ -1161,7 +1161,7 @@ loop_40:
             sp188 = (f64) sp78;
             sp190 = (f64) sp80;
             sp2E0 = (f32) sp188;
-            sp2E0.unk4 = unksp18C;
+            sp2E0.unk4 = (*(f32 *) ((u8 *) &sp188 + 0x4));
             sp2E0.unk8 = (f32) sp190;
         } else {
             temp_r6_1824 = this->unk180;
@@ -1181,7 +1181,7 @@ loop_40:
             sp158 = (f64) sp68;
             sp160 = (f64) sp70;
             sp2E0 = (f32) sp158;
-            sp2E0.unk4 = unksp15C;
+            sp2E0.unk4 = (*(f32 *) ((u8 *) &sp158 + 0x4));
             sp2E0.unk8 = (f32) sp160;
         }
         MKModel_SetWorldMatrix(*(this->unk184 + (var_r24_1369 + 0x48)), *((Matrix *) &sp2B0));
@@ -1191,18 +1191,18 @@ loop_38:
             temp_r4_1902 = M2C_FIELD(M2C_FIELD(var_r27_1897, void **, 0x18), void **, 8);
             sp128 = M2C_FIELD(temp_r4_1902, f64 *, 0x30);
             sp130 = M2C_FIELD(temp_r4_1902, f64 *, 0x38);
-            sp118 = sp2F0.unk30 + (((f32) sp130 * sp2F0.unk20) + (((f32) sp128 * M2C_BITWISE(f32, sp2F0)) + (unksp12C * sp2F0.unk10)));
-            sp11C = sp2F0.unk34 + (((f32) sp130 * sp2F0.unk24) + (((f32) sp128 * sp2F0.unk4) + (unksp12C * sp2F0.unk14)));
-            sp120 = sp2F0.unk38 + (((f32) sp130 * sp2F0.unk28) + (((f32) sp128 * sp2F0.unk8) + (unksp12C * sp2F0.unk18)));
+            sp118 = sp2F0.unk30 + (((f32) sp130 * sp2F0.unk20) + (((f32) sp128 * M2C_BITWISE(f32, sp2F0)) + ((*(f32 *) ((u8 *) &sp128 + 0x4)) * sp2F0.unk10)));
+            sp11C = sp2F0.unk34 + (((f32) sp130 * sp2F0.unk24) + (((f32) sp128 * sp2F0.unk4) + ((*(f32 *) ((u8 *) &sp128 + 0x4)) * sp2F0.unk14)));
+            sp120 = sp2F0.unk38 + (((f32) sp130 * sp2F0.unk28) + (((f32) sp128 * sp2F0.unk8) + ((*(f32 *) ((u8 *) &sp128 + 0x4)) * sp2F0.unk18)));
             sp288 = (f64) sp118;
             sp290 = (f64) sp120;
             temp_r3_1943 = MKModel_GetWorldMatrix(*(var_r24_1369 + (this->unk184 + 0x48)));
             temp_f5_1966 = M2C_FIELD(temp_r3_1943, f32 *, 0x30);
             temp_f3_1968 = M2C_FIELD(temp_r3_1943, f32 *, 0x34);
-            temp_f0_1969 = ((f32) sp290 * M2C_FIELD(temp_r3_1943, f32 *, 0x28)) + (((f32) sp288 * M2C_FIELD(temp_r3_1943, f32 *, 8)) + (unksp28C * M2C_FIELD(temp_r3_1943, f32 *, 0x18)));
+            temp_f0_1969 = ((f32) sp290 * M2C_FIELD(temp_r3_1943, f32 *, 0x28)) + (((f32) sp288 * M2C_FIELD(temp_r3_1943, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp288 + 0x4)) * M2C_FIELD(temp_r3_1943, f32 *, 0x18)));
             temp_f1_1970 = M2C_FIELD(temp_r3_1943, f32 *, 0x38);
-            temp_f4_1971 = temp_f5_1966 + (((f32) sp290 * M2C_FIELD(temp_r3_1943, f32 *, 0x20)) + (((f32) sp288 * M2C_FIELD(temp_r3_1943, f32 *, 0)) + (unksp28C * M2C_FIELD(temp_r3_1943, f32 *, 0x10))));
-            temp_f2_1972 = temp_f3_1968 + (((f32) sp290 * M2C_FIELD(temp_r3_1943, f32 *, 0x24)) + (((f32) sp288 * M2C_FIELD(temp_r3_1943, f32 *, 4)) + (unksp28C * M2C_FIELD(temp_r3_1943, f32 *, 0x14))));
+            temp_f4_1971 = temp_f5_1966 + (((f32) sp290 * M2C_FIELD(temp_r3_1943, f32 *, 0x20)) + (((f32) sp288 * M2C_FIELD(temp_r3_1943, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp288 + 0x4)) * M2C_FIELD(temp_r3_1943, f32 *, 0x10))));
+            temp_f2_1972 = temp_f3_1968 + (((f32) sp290 * M2C_FIELD(temp_r3_1943, f32 *, 0x24)) + (((f32) sp288 * M2C_FIELD(temp_r3_1943, f32 *, 4)) + ((*(f32 *) ((u8 *) &sp288 + 0x4)) * M2C_FIELD(temp_r3_1943, f32 *, 0x14))));
             sp26C = 0;
             sp108 = temp_f4_1971;
             sp10C = temp_f2_1972;
@@ -1477,7 +1477,7 @@ void RopeBridge::Update() {
     sp30 = sp10;
     sp18 = (f32) sp28 - M2C_FIELD(temp_r4_2356, f32 *, 8);
     sp38 = (f64) sp18;
-    var_f4_2381 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_2381 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_2381 > 0.0f) {
         temp_f1_2384 = __frsqrte(var_f4_2381);
         temp_f1_2390 = 0.5 * temp_f1_2384 * -(((f64) var_f4_2381 * (temp_f1_2384 * temp_f1_2384)) - 3.0);
@@ -1529,7 +1529,7 @@ void RopeBridge::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp25C'
+#if 0 // DRAFT: undefined identifier 'sp1B0'
 void RopeBridge::Resolve() {
     s8 sp2B8;
     s32 sp2B4;
@@ -1684,7 +1684,7 @@ void RopeBridge::Resolve() {
     sp130 = 1.0f;
     sp134 = 1.0f;
     sp118 = -(f32) sp258;
-    sp11C = -unksp25C;
+    sp11C = -(*(f32 *) ((u8 *) &sp258 + 0x4));
     sp268 = 0.0f;
     sp26C = 0.0f;
     sp270 = 0.0f;
@@ -1719,7 +1719,7 @@ void RopeBridge::Resolve() {
     sp1E0 = (f64) sp110;
     temp_f7_2585 = this->unk70;
     temp_f8_2588 = this->unk80;
-    spF8 = temp_f8_2588 + (((f32) sp1E0 * temp_f7_2585) + (((f32) sp1D8 * temp_f6_2578) + (unksp1DC * temp_f5_2576)));
+    spF8 = temp_f8_2588 + (((f32) sp1E0 * temp_f7_2585) + (((f32) sp1D8 * temp_f6_2578) + ((*(f32 *) ((u8 *) &sp1D8 + 0x4)) * temp_f5_2576)));
     temp_f27_2592 = this->unk64;
     temp_f13_2593 = this->unk68;
     temp_f2_2595 = this->unk54;
@@ -1728,17 +1728,17 @@ void RopeBridge::Resolve() {
     temp_f0_2601 = this->unk78;
     temp_f4_2602 = this->unk84;
     temp_f1_2604 = this->unk88;
-    spFC = temp_f4_2602 + (((f32) sp1E0 * temp_f3_2598) + (((f32) sp1D8 * temp_f2_2595) + (unksp1DC * temp_f27_2592)));
-    sp100 = temp_f1_2604 + (((f32) sp1E0 * temp_f0_2601) + (((f32) sp1D8 * temp_f26_2597) + (unksp1DC * temp_f13_2593)));
+    spFC = temp_f4_2602 + (((f32) sp1E0 * temp_f3_2598) + (((f32) sp1D8 * temp_f2_2595) + ((*(f32 *) ((u8 *) &sp1D8 + 0x4)) * temp_f27_2592)));
+    sp100 = temp_f1_2604 + (((f32) sp1E0 * temp_f0_2601) + (((f32) sp1D8 * temp_f26_2597) + ((*(f32 *) ((u8 *) &sp1D8 + 0x4)) * temp_f13_2593)));
     sp238 = (f64) spF8;
     sp240 = (f64) sp100;
     spE8 = sp258 * 5.49408334e-315;
     spF0 = (f32) sp260 * 50.0f;
     sp1B8 = spE8;
     sp1C0 = (f64) spF0;
-    spD8 = temp_f8_2588 + (((f32) sp1C0 * temp_f7_2585) + (((f32) sp1B8 * temp_f6_2578) + (unksp1BC * temp_f5_2576)));
-    spDC = temp_f4_2602 + (((f32) sp1C0 * temp_f3_2598) + (((f32) sp1B8 * temp_f2_2595) + (unksp1BC * temp_f27_2592)));
-    spE0 = temp_f1_2604 + (((f32) sp1C0 * temp_f0_2601) + (((f32) sp1B8 * temp_f26_2597) + (unksp1BC * temp_f13_2593)));
+    spD8 = temp_f8_2588 + (((f32) sp1C0 * temp_f7_2585) + (((f32) sp1B8 * temp_f6_2578) + ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * temp_f5_2576)));
+    spDC = temp_f4_2602 + (((f32) sp1C0 * temp_f3_2598) + (((f32) sp1B8 * temp_f2_2595) + ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * temp_f27_2592)));
+    spE0 = temp_f1_2604 + (((f32) sp1C0 * temp_f0_2601) + (((f32) sp1B8 * temp_f26_2597) + ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * temp_f13_2593)));
     sp228 = (f64) spD8;
     sp230 = (f64) spE0;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp238), *((MKVector3 *) &sp228), (MKCollisionResult *) &sp268, (MKCollisionMode) 7, 0) != 0) {
@@ -1781,9 +1781,9 @@ void RopeBridge::Resolve() {
     temp_f11_2723 = this->unk80;
     temp_f7_2725 = this->unk84;
     temp_f3_2727 = this->unk88;
-    sp88 = temp_f11_2723 + (((f32) sp1A0 * temp_f10_2718) + (((f32) sp198 * temp_f9_2711) + (unksp19C * temp_f8_2700)));
-    sp8C = temp_f7_2725 + (((f32) sp1A0 * temp_f6_2720) + (((f32) sp198 * temp_f5_2712) + (unksp19C * temp_f4_2702)));
-    sp90 = temp_f3_2727 + (((f32) sp1A0 * temp_f2_2721) + (((f32) sp198 * temp_f1_2713) + (unksp19C * temp_f0_2705)));
+    sp88 = temp_f11_2723 + (((f32) sp1A0 * temp_f10_2718) + (((f32) sp198 * temp_f9_2711) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * temp_f8_2700)));
+    sp8C = temp_f7_2725 + (((f32) sp1A0 * temp_f6_2720) + (((f32) sp198 * temp_f5_2712) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * temp_f4_2702)));
+    sp90 = temp_f3_2727 + (((f32) sp1A0 * temp_f2_2721) + (((f32) sp198 * temp_f1_2713) + ((*(f32 *) ((u8 *) &sp198 + 0x4)) * temp_f0_2705)));
     sp1F8 = (f64) sp88;
     sp200 = (f64) sp90;
     sp78 = sp218 * 5.49408334e-315;
@@ -1795,9 +1795,9 @@ void RopeBridge::Resolve() {
     sp70 = temp_f12_2696 + (f32) sp170;
     sp178 = temp_f13_2749;
     sp180 = (f64) sp70;
-    sp58 = temp_f11_2723 + (((f32) sp180 * temp_f10_2718) + (((f32) sp178 * temp_f9_2711) + (unksp17C * temp_f8_2700)));
-    sp5C = temp_f7_2725 + (((f32) sp180 * temp_f6_2720) + (((f32) sp178 * temp_f5_2712) + (unksp17C * temp_f4_2702)));
-    sp60 = temp_f3_2727 + (((f32) sp180 * temp_f2_2721) + (((f32) sp178 * temp_f1_2713) + (unksp17C * temp_f0_2705)));
+    sp58 = temp_f11_2723 + (((f32) sp180 * temp_f10_2718) + (((f32) sp178 * temp_f9_2711) + ((*(f32 *) ((u8 *) &sp178 + 0x4)) * temp_f8_2700)));
+    sp5C = temp_f7_2725 + (((f32) sp180 * temp_f6_2720) + (((f32) sp178 * temp_f5_2712) + ((*(f32 *) ((u8 *) &sp178 + 0x4)) * temp_f4_2702)));
+    sp60 = temp_f3_2727 + (((f32) sp180 * temp_f2_2721) + (((f32) sp178 * temp_f1_2713) + ((*(f32 *) ((u8 *) &sp178 + 0x4)) * temp_f0_2705)));
     sp1E8 = (f64) sp58;
     sp1F0 = (f64) sp60;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp1F8), *((MKVector3 *) &sp1E8), (MKCollisionResult *) &sp268, (MKCollisionMode) 7, 0) != 0) {
@@ -1999,14 +1999,13 @@ void RopeBridge::SetUpCullingLocalToWorld() {
     this->unk90.unk30 = (f32) sp58;
     sp60 = (f64) sp20;
     this->unk90.unk34 = temp_f2_3171;
-    unksp5C = temp_f2_3171;
+    (*(f32 *) ((u8 *) &sp58 + 0x4)) = temp_f2_3171;
     this->unk90.unk38 = (f32) sp60;
     this->unk90.unk3C = 1.0f;
     this->unk8 = &this->unk90;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp5C'
 void RopeBridge::CalculateTranformationMatrices() {
     f64 sp60;
     f64 sp58;
@@ -2029,11 +2028,11 @@ void RopeBridge::CalculateTranformationMatrices() {
     sp28 = M2C_FIELD(this, f64 *, 0x160) - M2C_FIELD(this, f64 *, 0x150);
     sp58 = sp28;
     sp30 = this->unk168 - this->unk158;
-    unksp5C = 0.0f;
+    (*(f32 *) ((u8 *) &sp58 + 0x4)) = 0.0f;
     sp60 = (f64) sp30;
     ((Matrix *) &this->unk50)->SetIdentity();
     sp18 = -(f32) sp58;
-    sp1C = -unksp5C;
+    sp1C = -(*(f32 *) ((u8 *) &sp58 + 0x4));
     sp20 = -(f32) sp60;
     sp48 = (f64) sp18;
     sp50 = (f64) sp20;
@@ -2054,9 +2053,8 @@ void RopeBridge::CalculateTranformationMatrices() {
     sp40 = (f64) sp10;
     M2C_FIELD(this, f64 *, 0x178) = (f64) sp10;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void RopeBridge::LoadDone() {
     f64 sp28;
     f64 sp20;
@@ -2096,7 +2094,7 @@ void RopeBridge::LoadDone() {
     sp20 = sp10;
     sp18 = this->unk168 - this->unk158;
     sp28 = (f64) sp18;
-    var_f4_3326 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
+    var_f4_3326 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp20 + 0x4)) * (*(f32 *) ((u8 *) &sp20 + 0x4))));
     if (var_f4_3326 > 0.0f) {
         temp_f1_3329 = __frsqrte(var_f4_3326);
         temp_f1_3335 = 0.5 * temp_f1_3329 * -(((f64) var_f4_3326 * (temp_f1_3329 * temp_f1_3329)) - 3.0);

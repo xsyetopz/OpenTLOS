@@ -27,7 +27,6 @@ void ShatterPoolFifo() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
 f32 KDShatter2::GetRadius(int arg0) {
     f64 sp10;
     f64 sp8;
@@ -36,9 +35,8 @@ f32 KDShatter2::GetRadius(int arg0) {
     temp_r3_36 = MKModel_GetBoundingVolume(this->unk4C, (SubObjectType) 0, arg0);
     sp8 = M2C_FIELD(temp_r3_36, f64 *, 0x10);
     sp10 = M2C_FIELD(temp_r3_36, f64 *, 0x18);
-    return ((f32) sp10 + ((f32) sp8 + unkspC)) / 6.0f;
+    return ((f32) sp10 + ((f32) sp8 + (*(f32 *) ((u8 *) &sp8 + 0x4)))) / 6.0f;
 }
-#endif
 
 void KDShatter2::SetVisible(unsigned short *arg0) {
     s32 var_r30_63;
@@ -264,7 +262,7 @@ loop_27:
                 M2C_FIELD(temp_r30_311, f32 *, 0x54) = (f32) -((this->unk0 * temp_f29_283) - M2C_FIELD(temp_r30_311, f32 *, 0x54));
                 sp188 = (f64) spC8;
                 temp_f30_347 = this->unk8 * temp_f29_283;
-                temp_f3_348 = ((f32) sp188 * M2C_FIELD(temp_r30_311, f32 *, 0x78)) + (((f32) sp180 * M2C_FIELD(temp_r30_311, f32 *, 0x70)) + (unksp184 * M2C_FIELD(temp_r30_311, f32 *, 0x74)));
+                temp_f3_348 = ((f32) sp188 * M2C_FIELD(temp_r30_311, f32 *, 0x78)) + (((f32) sp180 * M2C_FIELD(temp_r30_311, f32 *, 0x70)) + ((*(f32 *) ((u8 *) &sp180 + 0x4)) * M2C_FIELD(temp_r30_311, f32 *, 0x74)));
                 temp_f0_350 = M2C_FIELD(temp_r30_311, f64 *, 0x50) * (f64) temp_f30_347;
                 sp50 = temp_f0_350;
                 sp130 = temp_f0_350;
@@ -289,7 +287,7 @@ loop_27:
                 sp48 = M2C_FIELD(temp_r30_311, f32 *, 0x88) - (f32) sp178;
                 sp188 = (f64) sp48;
                 sp110 = sp40;
-                temp_f8_410 = ((f32) sp188 * M2C_FIELD(temp_r30_311, f32 *, 0x78)) + (((f32) sp180 * M2C_FIELD(temp_r30_311, f32 *, 0x70)) + (unksp184 * M2C_FIELD(temp_r30_311, f32 *, 0x74)));
+                temp_f8_410 = ((f32) sp188 * M2C_FIELD(temp_r30_311, f32 *, 0x78)) + (((f32) sp180 * M2C_FIELD(temp_r30_311, f32 *, 0x70)) + ((*(f32 *) ((u8 *) &sp180 + 0x4)) * M2C_FIELD(temp_r30_311, f32 *, 0x74)));
                 sp118 = (f64) sp48;
                 if (temp_f8_410 > 0.0f) {
                     temp_f5_415 = (f32) M2C_FIELD(temp_r30_311, f64 *, 0x50);
@@ -339,9 +337,9 @@ loop_27:
                 temp_f9_525 = (f32) M2C_FIELD(temp_r30_311, f64 *, 0x40);
                 temp_f0_527 = temp_r6_496->unk1600.unk38;
                 temp_f10_529 = (f32) M2C_FIELD(temp_r30_311, f64 *, 0x48);
-                sp70 = temp_f5_521 + (((f32) sp198 * temp_f4_513) + (((f32) sp190 * temp_f3_507) + (unksp194 * temp_f8_500)));
-                sp74 = temp_f2_523 + (((f32) sp198 * temp_f1_515) + (((f32) sp190 * temp_f25_509) + (unksp194 * temp_f26_502)));
-                sp78 = temp_f0_527 + (((f32) sp198 * temp_f28_519) + (((f32) sp190 * temp_f13_510) + (unksp194 * temp_f12_503)));
+                sp70 = temp_f5_521 + (((f32) sp198 * temp_f4_513) + (((f32) sp190 * temp_f3_507) + ((*(f32 *) ((u8 *) &sp190 + 0x4)) * temp_f8_500)));
+                sp74 = temp_f2_523 + (((f32) sp198 * temp_f1_515) + (((f32) sp190 * temp_f25_509) + ((*(f32 *) ((u8 *) &sp190 + 0x4)) * temp_f26_502)));
+                sp78 = temp_f0_527 + (((f32) sp198 * temp_f28_519) + (((f32) sp190 * temp_f13_510) + ((*(f32 *) ((u8 *) &sp190 + 0x4)) * temp_f12_503)));
                 sp150 = (f64) sp70;
                 sp158 = (f64) sp78;
                 sp60 = temp_f5_521 + ((temp_f10_529 * temp_f4_513) + ((temp_f9_525 * temp_f3_507) + (temp_f6_517 * temp_f8_500)));
@@ -349,7 +347,7 @@ loop_27:
                 sp68 = temp_f0_527 + ((temp_f10_529 * temp_f28_519) + ((temp_f9_525 * temp_f13_510) + (temp_f6_517 * temp_f12_503)));
                 sp28 = -(f32) sp158;
                 sp20 = -(f32) sp150;
-                sp24 = -unksp154;
+                sp24 = -(*(f32 *) ((u8 *) &sp150 + 0x4));
                 sp140 = (f64) sp60;
                 sp148 = (f64) sp68;
                 spD0 = (f64) sp20;
@@ -465,7 +463,7 @@ void KDShatter2::Reset() {
     ResetSubObjectMatrices();
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp9C'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void KDShatter2::SetHitPlane(int arg0) {
     MKCollisionResult spA8;
     f64 spA0;                                       /* compiler-managed */
@@ -503,7 +501,7 @@ void KDShatter2::SetHitPlane(int arg0) {
     sp90 = M2C_FIELD(temp_r30_831, f64 *, 0x48);
 loop_2:
     if (var_r29_830 <= (s32) this->unk50->unk1640) {
-        unksp9C = -((this->unk0 * temp_f31_833) - unksp9C);
+        (*(f32 *) ((u8 *) &sp98 + 0x4)) = -((this->unk0 * temp_f31_833) - (*(f32 *) ((u8 *) &sp98 + 0x4)));
         sp68.operator*(this->unk8);
         temp_f0_852 = sp68 * (f64) temp_f31_833;
         sp28 = temp_f0_852;
@@ -524,7 +522,7 @@ loop_2:
         goto loop_2;
     }
     temp_f1_893 = GetRadius(M2C_FIELD(temp_r30_831, s32 *, 0xA0));
-    unksp8C -= temp_f1_893;
+    (*(f32 *) ((u8 *) &sp88 + 0x4)) -= temp_f1_893;
     M2C_FIELD(temp_r30_831, f32 *, 0x80) = 0.0f;
     M2C_FIELD(temp_r30_831, f32 *, 0x84) = -1000000.0f;
     M2C_FIELD(temp_r30_831, f32 *, 0x88) = 0.0f;

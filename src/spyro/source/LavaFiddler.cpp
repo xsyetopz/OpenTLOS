@@ -295,7 +295,7 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     temp_f3_357 = arg0->unk4;
     sp1C8 = temp_f0_351;
     sp50 = (f32) sp1E0 - (f32) M2C_FIELD(arg0, f64 *, 0x38);
-    unksp1CC = temp_f3_357;
+    (*(f32 *) ((u8 *) &sp1B0 + 0x1c)) = temp_f3_357;
     sp1D0 = (f64) sp50;
     var_f31_370 = ((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + (temp_f3_357 * temp_f3_357));
     if (var_f31_370 > 0.000001f) {
@@ -342,11 +342,11 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     sp1C0 = arg0->unk8;
     var_f8_461 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + (0.0f * 0.0f));
     sp1C8 = (f32) sp1C8 * var_f4_437;
-    unksp1CC *= var_f4_437;
+    (*(f32 *) ((u8 *) &sp1B0 + 0x1c)) *= var_f4_437;
     sp1D0 = (f32) sp1D0 * var_f4_437;
     sp1A8 = arg0->unk20;
     sp1B0 = arg0->unk28;
-    unksp1BC = 0.0f;
+    (*(f32 *) ((u8 *) &sp1B0 + 0xc)) = 0.0f;
     if (var_f8_461 > 0.000001f) {
         if (var_f8_461 > 0.0f) {
             temp_f1_474 = __frsqrte(var_f8_461);
@@ -384,10 +384,10 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
         var_f7_446 = 1.0f / var_f8_461;
     }
     var_f6_537 = 0.0f;
-    unksp1AC = 0.0f;
+    (*(f32 *) ((u8 *) &sp1A0 + 0xc)) = 0.0f;
     var_f8_551 = ((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + (0.0f * 0.0f));
     sp1B8 = (f32) sp1B8 * var_f7_446;
-    unksp1BC *= var_f7_446;
+    (*(f32 *) ((u8 *) &sp1B0 + 0xc)) *= var_f7_446;
     sp1C0 = (f32) sp1C0 * var_f7_446;
     if (var_f8_551 > 0.000001f) {
         if (var_f8_551 > 0.0f) {
@@ -426,11 +426,11 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
         var_f6_537 = 1.0f / var_f8_551;
     }
     sp1A8 = (f32) sp1A8 * var_f6_537;
-    unksp1AC *= var_f6_537;
-    if (((sp1D0 * sp1C0) + ((sp1C8 * sp1B8) + (unksp1CC * unksp1BC))) < 0.0f) {
+    (*(f32 *) ((u8 *) &sp1A0 + 0xc)) *= var_f6_537;
+    if (((sp1D0 * sp1C0) + ((sp1C8 * sp1B8) + ((*(f32 *) ((u8 *) &sp1B0 + 0x1c)) * (*(f32 *) ((u8 *) &sp1B0 + 0xc))))) < 0.0f) {
         arg0->unk60 = 5;
         sp18 = -sp1C8;
-        sp1C = -unksp1CC;
+        sp1C = -(*(f32 *) ((u8 *) &sp1B0 + 0x1c));
         sp20 = -sp1D0;
         spF8 = (f64) sp18;
         sp100 = (f64) sp20;
@@ -445,12 +445,12 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     arg0->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk50, s16 *, 4) / 30.0f));
     arg0->unk54 = 0.0f;
     arg0->unk64 = var_f31_370 / 25.0f;
-    sp38 = (unksp1EC * (f32) sp1D0) - ((f32) sp1F0 * unksp1CC);
+    sp38 = ((*(f32 *) ((u8 *) &sp1E8 + 0x4)) * (f32) sp1D0) - ((f32) sp1F0 * (*(f32 *) ((u8 *) &sp1B0 + 0x1c)));
     sp3C = ((f32) sp1F0 * (f32) sp1C8) - ((f32) sp1E8 * (f32) sp1D0);
-    sp40 = ((f32) sp1E8 * unksp1CC) - (unksp1EC * (f32) sp1C8);
+    sp40 = ((f32) sp1E8 * (*(f32 *) ((u8 *) &sp1B0 + 0x1c))) - ((*(f32 *) ((u8 *) &sp1E8 + 0x4)) * (f32) sp1C8);
     spE8 = (f64) sp38;
     spF0 = (f64) sp40;
-    var_f4_712 = ((f32) spF0 * (f32) spF0) + (((f32) spE8 * (f32) spE8) + (unkspEC * unkspEC));
+    var_f4_712 = ((f32) spF0 * (f32) spF0) + (((f32) spE8 * (f32) spE8) + ((*(f32 *) ((u8 *) &spE8 + 0x4)) * (*(f32 *) ((u8 *) &spE8 + 0x4))));
     if (var_f4_712 > 1e-12f) {
         if (var_f4_712 > 0.0f) {
             temp_f1_717 = __frsqrte(var_f4_712);
@@ -487,14 +487,14 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
         }
         var_f5_674 = 1.0f / var_f4_712;
     }
-    sp2C = unkspEC * var_f5_674;
+    sp2C = (*(f32 *) ((u8 *) &spE8 + 0x4)) * var_f5_674;
     sp28 = (f32) spE8 * var_f5_674;
     sp30 = (f32) spF0 * var_f5_674;
     sp198 = (f64) sp28;
     sp1A0 = (f64) sp30;
     KDMath_BuildMatrixFromUp((Matrix *) arg0, *((MKVector3 *) &sp1E8), *((MKVector3 *) &sp198));
     M2C_FIELD(arg0, f64 *, 0x30) = (f32) sp1F8;
-    M2C_FIELD(arg0, f32 *, 0x34) = unksp1FC;
+    M2C_FIELD(arg0, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp1F8 + 0x4));
     M2C_FIELD(arg0, f64 *, 0x38) = (f32) sp200;
     M2C_FIELD(arg0, f32 *, 0x3C) = 1.0f;
 }
@@ -711,7 +711,7 @@ loop_35:
             sp110 = temp_r30_957->unk8;
             if (temp_r0_966 == 5) {
                 sp18 = -(f32) sp108;
-                sp1C = -unksp10C;
+                sp1C = -(*(f32 *) ((u8 *) &sp108 + 0x4));
                 sp20 = -(f32) sp110;
                 spF8 = (f64) sp18;
                 sp100 = (f64) sp20;
@@ -725,7 +725,7 @@ loop_35:
             sp10 = M2C_FIELD(temp_r30_957, f32 *, 0x38) + spD8.unk8;
             M2C_FIELD(temp_r30_957, f64 *, 0x30) = (f32) spE8;
             spF0 = (f64) sp10;
-            M2C_FIELD(temp_r30_957, f32 *, 0x34) = unkspEC;
+            M2C_FIELD(temp_r30_957, f32 *, 0x34) = (*(f32 *) ((u8 *) &spE8 + 0x4));
             M2C_FIELD(temp_r30_957, f32 *, 0x38) = (f32) spF0;
             M2C_FIELD(temp_r30_957, f32 *, 0x3C) = 1.0f;
             temp_f0_1047 = temp_r30_957->unk54;
@@ -823,7 +823,7 @@ loop_35:
             sp88 = sp28;
             sp30 = (f32) sp80 - M2C_FIELD(temp_r30_957, f32 *, 0x38);
             sp90 = (f64) sp30;
-            if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) <= 250000.0f) {
+            if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))))) <= 250000.0f) {
                 SetHideState(temp_r30_957);
             }
         }
@@ -906,7 +906,7 @@ loop_24:
         sp50 = 0.0f;
         sp54 = -500.0f;
         sp100.unk30 = M2C_BITWISE(f64, sp100);
-        unksp134 = M2C_FIELD(this->unk8, f32 *, 0x34);
+        (*(f32 *) ((u8 *) &sp100 + 0x34)) = M2C_FIELD(this->unk8, f32 *, 0x34);
         spC0 = (f64) sp50;
         sp100.unk38 = sp100.unk8;
         sp100.unk40 = 0.0f;
@@ -922,8 +922,8 @@ loop_24:
         sp100.unk40.unk30 = 0.0f;
         sp100.unk40.unk34 = 0.0f;
         sp100.unk40.unk38 = 0;
-        unksp17A = 0;
-        unksp17B = 0;
+        (*(u8 *) ((u8 *) &sp100 + 0x7a)) = 0;
+        (*(u8 *) ((u8 *) &sp100 + 0x7b)) = 0;
         sp100.unk40.unk3C = 0.0f;
         sp100.unk80 = 3.4028235e38f;
         sp100.unk84 = 0.0f;
@@ -1011,7 +1011,7 @@ loop_24:
         var_r31_1311 += 1;
         var_r28_1313 += 0x70;
         M2C_FIELD(temp_r30_1323, f32 *, 0x30) = (f32) sp100.unk30;
-        M2C_FIELD(temp_r30_1323, f32 *, 0x34) = unksp134;
+        M2C_FIELD(temp_r30_1323, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp100 + 0x34));
         M2C_FIELD(temp_r30_1323, f32 *, 0x38) = (f32) sp100.unk38;
         M2C_FIELD(temp_r30_1323, f32 *, 0x3C) = 1.0f;
         goto loop_24;

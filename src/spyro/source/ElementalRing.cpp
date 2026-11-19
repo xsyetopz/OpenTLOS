@@ -296,7 +296,7 @@ loop_15:
             do {
                 if (var_r21_407 != 0) {
                     sp10 = -(f32) sp1A0;
-                    sp14 = -unksp1A4;
+                    sp14 = -(*(f32 *) ((u8 *) &sp1A0 + 0x4));
                     sp18 = -(f32) sp1A8;
                     sp180 = (f64) sp10;
                     sp188 = (f64) sp18;
@@ -618,13 +618,13 @@ loop_40:
                 temp_f1_975 = (f32) spB8 * (f32) spB8;
                 spC0 = (f64) sp50;
                 temp_f2_980 = (f32) spC0 * (f32) spC0;
-                temp_f25_982 = temp_f2_980 + (temp_f1_975 + (unkspBC * unkspBC));
+                temp_f25_982 = temp_f2_980 + (temp_f1_975 + ((*(f32 *) ((u8 *) &spB8 + 0x4)) * (*(f32 *) ((u8 *) &spB8 + 0x4))));
                 temp_r3_985 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, f32, f32), 0xC)(gb, temp_f1_975, temp_f2_980), void **, 8);
                 sp98 = M2C_FIELD(temp_r3_985, f64 *, 0x30);
                 spA0 = M2C_FIELD(temp_r3_985, f64 *, 0x38);
                 if ((temp_f25_982 > (temp_f27_919 * temp_f27_919)) && (temp_f25_982 < (temp_f26_921 * temp_f26_921))) {
                     temp_f1_997 = M2C_FIELD(temp_r31_1068, f32 *, 0x74);
-                    if ((unksp9C > temp_f1_997) && (unksp9C < (temp_f1_997 + unksp12C))) {
+                    if (((*(f32 *) ((u8 *) &sp98 + 0x4)) > temp_f1_997) && ((*(f32 *) ((u8 *) &sp98 + 0x4)) < (temp_f1_997 + (*(f32 *) ((u8 *) &sp128 + 0x4))))) {
                         sp13C = 0;
                         temp_r4_1010 = M2C_FIELD(temp_r31_1068, u32 *, 0xC4);
                         sp10 = 0.0f;
@@ -652,7 +652,7 @@ loop_40:
                             sp170 = sp40;
                         } else {
                             sp168 = 0.0f;
-                            unksp16C = 0.0f;
+                            (*(f32 *) ((u8 *) &sp164 + 0x8)) = 0.0f;
                             sp170 = 0.0f;
                         }
                         sp189 = 0;

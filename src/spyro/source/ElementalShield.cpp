@@ -108,7 +108,7 @@ void ElementalShield::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp64'
+#if 0 // DRAFT: undefined identifier 'sp28'
 void ElementalShield::Update() {
     s8 spC1;
     s8 spC0;
@@ -196,7 +196,7 @@ block_29:
             sp38 = (f32) sp58 - temp_r30_400->unk8;
             sp68 = (f64) sp38;
             temp_f0_434 = 50.0f * this->unk9C * this->unk98;
-            if ((((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64))) <= (temp_f0_434 * temp_f0_434)) {
+            if ((((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * (*(f32 *) ((u8 *) &sp60 + 0x4))))) <= (temp_f0_434 * temp_f0_434)) {
                 sp18 = 0.0f;
                 sp10 = 0.0f;
                 sp14 = 0.0f;
@@ -223,7 +223,7 @@ block_29:
                     spA8 = sp28;
                 } else {
                     spA0 = 0.0f;
-                    unkspA4 = 0.0f;
+                    (*(f32 *) ((u8 *) &sp9C + 0x8)) = 0.0f;
                     spA8 = 0.0f;
                 }
                 spC1 = 0;

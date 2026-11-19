@@ -126,7 +126,7 @@ void SpeedwayAA::Update() {
     sp60 = (f64) sp20;
     sp70 = this->unkC8;
     sp78 = this->unkD0;
-    var_f5_221 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (unksp74 * unksp74));
+    var_f5_221 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + ((*(f32 *) ((u8 *) &sp68 + 0xc)) * (*(f32 *) ((u8 *) &sp68 + 0xc))));
     if (var_f5_221 > 0.000001f) {
         if (var_f5_221 > 0.0f) {
             temp_f1_226 = __frsqrte(var_f5_221);
@@ -166,7 +166,7 @@ void SpeedwayAA::Update() {
         var_f5_221 = 0.0f;
     }
     sp70 = (f32) sp70 * var_f4_200;
-    unksp74 *= var_f4_200;
+    (*(f32 *) ((u8 *) &sp68 + 0xc)) *= var_f4_200;
     sp78 = (f32) sp78 * var_f4_200;
     if (var_f5_221 != 0.0f) {
         KDMath_BuildMatrixFromFwd(&spB0, *((MKVector3 *) &sp70), (MKVector3 *) &sp60);
@@ -240,7 +240,7 @@ void SpeedwayAA::Collided(MKCollisionResult &arg0) {
         sp70 = sp20;
     } else {
         sp68 = 0.0f;
-        unksp6C = 0.0f;
+        (*(f32 *) ((u8 *) &sp64 + 0x8)) = 0.0f;
         sp70 = 0.0f;
     }
     sp89 = 0;

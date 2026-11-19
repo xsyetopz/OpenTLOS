@@ -101,7 +101,7 @@ void Sludge::Update() {
     sp148 = (f64) sp58;
     sp158 = this->unkC8;
     sp160 = this->unkD0;
-    var_f5_97 = ((f32) sp160 * (f32) sp160) + (((f32) sp158 * (f32) sp158) + (unksp15C * unksp15C));
+    var_f5_97 = ((f32) sp160 * (f32) sp160) + (((f32) sp158 * (f32) sp158) + ((*(f32 *) ((u8 *) &sp150 + 0xc)) * (*(f32 *) ((u8 *) &sp150 + 0xc))));
     if (var_f5_97 > 0.000001f) {
         if (var_f5_97 > 0.0f) {
             temp_f1_102 = __frsqrte(var_f5_97);
@@ -141,7 +141,7 @@ void Sludge::Update() {
         var_f5_97 = 0.0f;
     }
     sp158 = (f32) sp158 * var_f4_76;
-    unksp15C *= var_f4_76;
+    (*(f32 *) ((u8 *) &sp150 + 0xc)) *= var_f4_76;
     sp160 = (f32) sp160 * var_f4_76;
     if (var_f5_97 != 0.0f) {
         temp_f31_180 = gUpdateTimeDelta;
@@ -407,7 +407,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
         sp2D0 = sp90;
     } else {
         sp2C8 = 0.0f;
-        unksp2CC = 0.0f;
+        (*(f32 *) ((u8 *) &sp2C4 + 0x8)) = 0.0f;
         sp2D0 = 0.0f;
     }
     sp2E9 = 0;
@@ -444,7 +444,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     sp290 = 0;
     sp1D8 = this->unkC8;
     sp1E0 = this->unkD0;
-    unksp1DC = 0.0f;
+    (*(f32 *) ((u8 *) &sp1D0 + 0xc)) = 0.0f;
     var_f5_666 = ((f32) sp1E0 * (f32) sp1E0) + (((f32) sp1D8 * (f32) sp1D8) + (0.0f * 0.0f));
     if (var_f5_666 > 0.000001f) {
         if (var_f5_666 > 0.0f) {
@@ -487,7 +487,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     sp18 = 0.0f;
     sp1C = 0.0f;
     sp1D8 = (f32) sp1D8 * var_f4_628;
-    unksp1DC *= var_f4_628;
+    (*(f32 *) ((u8 *) &sp1D0 + 0xc)) *= var_f4_628;
     sp1E0 = (f32) sp1E0 * var_f4_628;
     spD8 = (f64) sp18;
     spE0 = (f64) sp20;
@@ -511,7 +511,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
         sp2D0 = sp80;
     } else {
         sp2C8 = 0.0f;
-        unksp2CC = 0.0f;
+        (*(f32 *) ((u8 *) &sp2C4 + 0x8)) = 0.0f;
         sp2D0 = 0.0f;
     }
     sp2E9 = 0;

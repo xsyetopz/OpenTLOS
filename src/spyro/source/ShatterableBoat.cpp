@@ -183,32 +183,32 @@ void ShatterableBoat::Draw() {
     sp78 = spB8;
     sp10 = 0.0f;
     sp14 = 1.0f;
-    unksp94 = 0.0f;
+    (*(f32 *) ((u8 *) &sp90 + 0x4)) = 0.0f;
     sp80 = (f64) sp10;
     sp50 = (f64) sp10;
     sp58 = (f64) sp18;
-    unksp74 = 0.0f;
+    (*(f32 *) ((u8 *) &sp70 + 0x4)) = 0.0f;
     spB0 = (f32) sp70;
-    unkspB4 = 0.0f;
+    (*(f32 *) ((u8 *) &spB0 + 0x4)) = 0.0f;
     spB8 = (f32) sp78;
-    unkspBC = 0.0f;
+    (*(f32 *) ((u8 *) &spB8 + 0x4)) = 0.0f;
     spC0 = (f32) sp80;
-    spC4 = unksp84;
+    spC4 = (*(f32 *) ((u8 *) &sp80 + 0x4));
     spC8 = (f32) sp88;
     spCC = 0.0f;
     spD0 = (f32) sp90;
-    unkspD4 = 0.0f;
+    (*(f32 *) ((u8 *) &spD0 + 0x4)) = 0.0f;
     spD8 = (f32) sp98;
-    unkspDC = 0.0f;
+    (*(f32 *) ((u8 *) &spD8 + 0x4)) = 0.0f;
     ((Matrix *) &sp40)->NormaliseScale();
     sp60 = spE0;
     temp_f3_402 = this->unk314;
     sp68 = spE8;
     spE0 = (f32) sp60;
-    unkspE4 = temp_f3_402;
+    (*(f32 *) ((u8 *) &spE0 + 0x4)) = temp_f3_402;
     spE8 = (f32) sp68;
     spEC = 1.0f;
-    unksp64 = temp_f3_402;
+    (*(f32 *) ((u8 *) &sp60 + 0x4)) = temp_f3_402;
     MKModel_SetWorldMatrix(this->unk310, *((Matrix *) &spB0));
     temp_r28_417 = MKMaterial_EnableFog(0U);
     sp20 = 1.0f;
@@ -627,7 +627,7 @@ void ShatterableBoat::UpdateMove() {
         }
         M2C_STRUCT_COPY((s32) &sp120.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
         var_f7_991 = 0.0f;
-        unksp104 = 0.0f;
+        (*(f32 *) ((u8 *) &spD8 + 0x2c)) = 0.0f;
         var_f4_1000 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + (0.0f * 0.0f));
         if (var_f4_1000 > 0.000001f) {
             if (var_f4_1000 > 0.0f) {
@@ -672,10 +672,10 @@ void ShatterableBoat::UpdateMove() {
         spF0 = (f64) sp50;
         spF8 = (f64) sp58;
         sp100 = (f32) sp100 * var_f7_991;
-        unksp104 *= var_f7_991;
+        (*(f32 *) ((u8 *) &spD8 + 0x2c)) *= var_f7_991;
         sp108 = (f32) sp108 * var_f7_991;
         var_f4_1098 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (0.0f * 0.0f));
-        unkspF4 = 0.0f;
+        (*(f32 *) ((u8 *) &spD8 + 0x1c)) = 0.0f;
         if (var_f4_1098 > 0.000001f) {
             if (var_f4_1098 > 0.0f) {
                 temp_f1_1104 = __frsqrte(var_f4_1098);
@@ -713,17 +713,17 @@ void ShatterableBoat::UpdateMove() {
             var_f10_1073 = 1.0f / var_f4_1098;
         }
         spE0 = sp160;
-        temp_f8_1170 = unkspF4 * var_f10_1073;
+        temp_f8_1170 = (*(f32 *) ((u8 *) &spD8 + 0x1c)) * var_f10_1073;
         var_f11_1172 = 0.0f;
         temp_f9_1177 = (f32) spF0 * var_f10_1073;
         spE8 = sp168;
         temp_f7_1184 = (f32) spF8 * var_f10_1073;
         var_f10_1192 = ((f32) spE8 * (f32) spE8) + (((f32) spE0 * (f32) spE0) + (0.0f * 0.0f));
         spF0 = temp_f9_1177;
-        var_f30_1194 = 1.0f - ((temp_f7_1184 * sp108) + ((temp_f9_1177 * sp100) + (temp_f8_1170 * unksp104)));
-        unkspF4 = temp_f8_1170;
+        var_f30_1194 = 1.0f - ((temp_f7_1184 * sp108) + ((temp_f9_1177 * sp100) + (temp_f8_1170 * (*(f32 *) ((u8 *) &spD8 + 0x2c)))));
+        (*(f32 *) ((u8 *) &spD8 + 0x1c)) = temp_f8_1170;
         spF8 = temp_f7_1184;
-        unkspE4 = 0.0f;
+        (*(f32 *) ((u8 *) &spD8 + 0xc)) = 0.0f;
         if (var_f10_1192 > 0.000001f) {
             if (var_f10_1192 > 0.0f) {
                 temp_f3_1202 = __frsqrte(var_f10_1192);
@@ -760,13 +760,13 @@ void ShatterableBoat::UpdateMove() {
             }
             var_f11_1172 = 1.0f / var_f10_1192;
         }
-        temp_f5_1267 = unkspE4 * var_f11_1172;
+        temp_f5_1267 = (*(f32 *) ((u8 *) &spD8 + 0xc)) * var_f11_1172;
         temp_f6_1269 = (f32) spE0 * var_f11_1172;
         temp_f4_1271 = (f32) spE8 * var_f11_1172;
         spE0 = temp_f6_1269;
-        unkspE4 = temp_f5_1267;
+        (*(f32 *) ((u8 *) &spD8 + 0xc)) = temp_f5_1267;
         spE8 = temp_f4_1271;
-        if (((sp108 * temp_f4_1271) + ((sp100 * temp_f6_1269) + (unksp104 * temp_f5_1267))) < 0.0f) {
+        if (((sp108 * temp_f4_1271) + ((sp100 * temp_f6_1269) + ((*(f32 *) ((u8 *) &spD8 + 0x2c)) * temp_f5_1267))) < 0.0f) {
             var_f30_1194 = -var_f30_1194;
         }
         temp_f31_1285 = _table_sinf(M2C_BITWISE(f32, this->unk224));
@@ -795,7 +795,7 @@ void ShatterableBoat::UpdateMove() {
         sp88 = (f64) sp38;
         sp120.SetRotationPYR(*((MKVector3 *) &sp80));
         sp120.unk30 = (f32) sp110;
-        sp120.unk34 = unksp114;
+        sp120.unk34 = (*(f32 *) ((u8 *) &sp110 + 0x4));
         sp120.unk38 = sp118;
         sp120.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, sp120);
@@ -974,7 +974,7 @@ void ShatterableBoat::Update() {
             sp280 = spE0;
             spE8 = (f32) spF8 * sp18;
             sp288 = (f64) spE8;
-            var_f4_1509 = ((f32) sp288 * (f32) sp288) + (((f32) sp280 * (f32) sp280) + (unksp284 * unksp284));
+            var_f4_1509 = ((f32) sp288 * (f32) sp288) + (((f32) sp280 * (f32) sp280) + ((*(f32 *) ((u8 *) &sp280 + 0x4)) * (*(f32 *) ((u8 *) &sp280 + 0x4))));
             if (var_f4_1509 > 1e-12f) {
                 if (var_f4_1509 > 0.0f) {
                     temp_f1_1515 = __frsqrte(var_f4_1509);
@@ -1013,7 +1013,7 @@ void ShatterableBoat::Update() {
             } else {
                 var_f3_1576 = 0.0f;
             }
-            spD4 = unksp284 * var_f3_1576;
+            spD4 = (*(f32 *) ((u8 *) &sp280 + 0x4)) * var_f3_1576;
             spD0 = (f32) sp280 * var_f3_1576;
             spD8 = (f32) sp288 * var_f3_1576;
             sp2E0 = (f64) spD0;

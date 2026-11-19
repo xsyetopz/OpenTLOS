@@ -560,7 +560,7 @@ loop_48:
                     spA0 = temp_f0_854;
                     sp90 = temp_f0_854;
                     spA8 = (f32) spA8 * temp_f3_844;
-                    unksp94 = 0.0f;
+                    (*(f32 *) ((u8 *) &sp90 + 0x4)) = 0.0f;
                     sp98 = (f64) spA8;
                     var_f4_871 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (0.0f * 0.0f));
                     if (var_f4_871 > 0.0f) {
@@ -788,7 +788,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
     sp1E8 = sp108;
     sp110 = M2C_FIELD(var_r3_1052, f32 *, 8) - temp_f0_1058;
     sp1F0 = (f64) sp110;
-    temp_f28_1073 = ((f32) sp1F0 * (f32) sp1F0) + (((f32) sp1E8 * (f32) sp1E8) + (unksp1EC * unksp1EC));
+    temp_f28_1073 = ((f32) sp1F0 * (f32) sp1F0) + (((f32) sp1E8 * (f32) sp1E8) + ((*(f32 *) ((u8 *) &sp1E8 + 0x4)) * (*(f32 *) ((u8 *) &sp1E8 + 0x4))));
     if (((u8) M2C_FIELD(temp_r4_1051, u8 *, 0x48) != 0) && (temp_f28_1073 >= M2C_FIELD(temp_r4_1051, f32 *, 0x4C))) {
         temp_r4_1084 = temp_r4_1051 + 0x20;
         sp228 = 0.0f;
@@ -934,7 +934,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
         temp_r3_1374 = this->unk4C + (&arg0 * 0x58);
         sp208 = M2C_FIELD(temp_r3_1374, f64 *, 0x20);
         sp210 = M2C_FIELD(temp_r3_1374, f64 *, 0x28);
-        var_f5_1386 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
+        var_f5_1386 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + ((*(f32 *) ((u8 *) &sp200 + 0xc)) * (*(f32 *) ((u8 *) &sp200 + 0xc))));
         if (var_f5_1386 > 0.000001f) {
             if (var_f5_1386 > 0.0f) {
                 temp_f1_1391 = __frsqrte(var_f5_1386);
@@ -972,7 +972,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
             var_f4_1344 = 1.0f / var_f5_1386;
         }
         sp208 = (f32) sp208 * var_f4_1344;
-        unksp20C *= var_f4_1344;
+        (*(f32 *) ((u8 *) &sp200 + 0xc)) *= var_f4_1344;
         sp210 = (f32) sp210 * var_f4_1344;
         if (temp_f28_1073 > 0.0f) {
             temp_f1_1466 = __frsqrte(temp_f28_1073);
@@ -1029,7 +1029,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
             sp1F8 = temp_f0_1568;
             sp20 = sp230 - M2C_FIELD(temp_r3_1565, f32 *, 8);
             sp200 = (f64) sp20;
-            M2C_FIELD((this->unk4C + temp_r4_1564), f32 *, 0x4C) = (f32) (((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + (unksp1FC * unksp1FC)));
+            M2C_FIELD((this->unk4C + temp_r4_1564), f32 *, 0x4C) = (f32) (((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + ((*(f32 *) ((u8 *) &sp1F8 + 0x4)) * (*(f32 *) ((u8 *) &sp1F8 + 0x4)))));
         } else {
             M2C_FIELD((this->unk4C + (&arg0 * 0x58)), s8 *, 0x48) = 0;
         }

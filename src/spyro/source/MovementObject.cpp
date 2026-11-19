@@ -64,7 +64,7 @@ void MovementObject::UpdateCollisions(MKVector3 &arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp4C'
+#if 0 // DRAFT: illegal type
 void MovementObject::Update(bool arg0) {
     MKCollisionResult spB8;
     f64 spB0;
@@ -116,10 +116,10 @@ void MovementObject::Update(bool arg0) {
     temp_f2_159 = M2C_FIELD(arg0, f64 *, 0x18);
     sp48 = M2C_FIELD(arg0, f64 *, 0x10);
     spB0 = temp_f2_159;
-    unksp4C = 0.0f;
+    (*(f32 *) ((u8 *) &sp48 + 0x4)) = 0.0f;
     sp50 = temp_f2_159;
     spA8 = sp48;
-    if ((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC))) < 1.0f) {
+    if ((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * (*(f32 *) ((u8 *) &spA8 + 0x4))))) < 1.0f) {
         temp_r3_177 = M2C_FIELD(arg0, void **, 0x54);
         temp_r5_178 = temp_r3_177 + 8;
         temp_r3_179 = M2C_FIELD(temp_r3_177, s32 *, 0x16C);

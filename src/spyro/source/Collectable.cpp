@@ -114,7 +114,7 @@ loop_3:
         sp58 = temp_f0_148;
         sp10 = temp_f1_156;
         sp60 = (f64) sp10;
-        unksp5C = arg0->unk4;
+        (*(f32 *) ((u8 *) &sp58 + 0x4)) = arg0->unk4;
         temp_r3_166 = *(this->unk4C + (this->unk54 * 4));
         M2C_FIELD(M2C_FIELD(temp_r3_166, void **, 0x44), M2C_UNK (**)(void *, SpawnInfo *, f64 *, M2C_UNK, f32, f32), 0x40)(temp_r3_166, arg0, &sp58, 0, temp_f1_156, temp_f2_151);
     } else {
@@ -497,12 +497,12 @@ void Collectable::RotateCameraFacing() {
     spA0.Scale3x3(&spA0, this->unkE0);
     sp50 = this->unk50;
     sp58 = this->unk58;
-    temp_f3_939 = unksp54 + this->unkF4;
+    temp_f3_939 = (*(f32 *) ((u8 *) &sp50 + 0x4)) + this->unkF4;
     spA0.unk30 = (f32) sp50;
     spA0.unk34 = temp_f3_939;
     spA0.unk38 = (f32) sp58;
     spA0.unk3C = 1.0f;
-    unksp54 = temp_f3_939;
+    (*(f32 *) ((u8 *) &sp50 + 0x4)) = temp_f3_939;
     MKModel_SetWorldMatrix(this->unk4, spA0);
 }
 #endif
@@ -710,7 +710,7 @@ void Collectable::MagnetisedState() {
     spA0 = sp30;
     sp38 = (f32) M2C_FIELD(this, f64 *, 0x98) - M2C_FIELD(this, f32 *, 0x58);
     spA8 = (f64) sp38;
-    var_f29_1406 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4));
+    var_f29_1406 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &sp98 + 0xc)) * (*(f32 *) ((u8 *) &sp98 + 0xc))));
     if (var_f29_1406 > 0.000001f) {
         if (var_f29_1406 > 0.0f) {
             temp_f1_1412 = __frsqrte(var_f29_1406);
@@ -751,7 +751,7 @@ void Collectable::MagnetisedState() {
         var_f29_1406 = 0.0f;
     }
     spA0 = (f32) spA0 * var_f4_1473;
-    unkspA4 *= var_f4_1473;
+    (*(f32 *) ((u8 *) &sp98 + 0xc)) *= var_f4_1473;
     spA8 = (f32) spA8 * var_f4_1473;
     temp_f1_1491 = this->unk7C;
     temp_f31_1492 = this->unkF0;
@@ -1096,7 +1096,7 @@ u8 Collectable::FindGround() {
         sp88 = (f64) sp28;
         sp18 = -MKVector3::up.unk8;
         this->unk70 = (f64) sp10;
-        var_f4_2344 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
+        var_f4_2344 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp80 + 0x4)) * (*(f32 *) ((u8 *) &sp80 + 0x4))));
         sp50 = (f64) sp10;
         sp58 = (f64) sp18;
         M2C_FIELD(this, f64 *, 0x78) = (f64) sp18;
@@ -1349,12 +1349,12 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
     M2C_FIELD(this, f32 *, 0x5C) = 1.0f;
     MKModel_SetPosition(this->unk4, *((MKVector3 *) &this->unk50));
     sp70 = M2C_FIELD(&arg0, f64 *, 0);
-    temp_f0_2777 = 20.0f + unksp74;
+    temp_f0_2777 = 20.0f + (*(f32 *) ((u8 *) &sp70 + 0x4));
     sp60 = M2C_FIELD(&arg1, f64 *, 0);
     sp78 = M2C_FIELD(&arg0, f64 *, 8);
     sp68 = M2C_FIELD(&arg1, f64 *, 8);
-    unksp74 = temp_f0_2777;
-    unksp64 = temp_f0_2777;
+    (*(f32 *) ((u8 *) &sp70 + 0x4)) = temp_f0_2777;
+    (*(f32 *) ((u8 *) &sp60 + 0x4)) = temp_f0_2777;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp70), *((MKVector3 *) &sp60), &sp80, (MKCollisionMode) 7, 0x200) != 0) {
         if ((sp80.unk50 != 0) && (sp80.unk48 != NULL) && (var_r3_2792 = M2C_FIELD(sp80.unk48, u32 *, 8), ((var_r3_2792 == 0U) == 0))) {
 
@@ -1369,7 +1369,7 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
             sp58 = (f64) sp28;
             sp40 = sp20;
             sp48 = (f64) sp28;
-            var_f4_2828 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
+            var_f4_2828 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp48 + 0xc)) * (*(f32 *) ((u8 *) &sp48 + 0xc))));
             if (var_f4_2828 > 0.000001f) {
                 if (var_f4_2828 > 0.0f) {
                     temp_f1_2834 = __frsqrte(var_f4_2828);
@@ -1410,7 +1410,7 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
             }
             temp_f0_2906 = (f32) sp58 * var_f3_2895;
             sp50 = (f32) sp50 * var_f3_2895;
-            unksp54 *= var_f3_2895;
+            (*(f32 *) ((u8 *) &sp48 + 0xc)) *= var_f3_2895;
             sp58 = temp_f0_2906;
             temp_f2_2911 = (f64) sp50 * 5.49408334e-315;
             sp50 = temp_f2_2911;
@@ -1432,8 +1432,8 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
     }
     sp70 = sp60;
     sp78 = sp68;
-    unksp74 += 100.0f;
-    unksp64 -= 1000.0f;
+    (*(f32 *) ((u8 *) &sp70 + 0x4)) += 100.0f;
+    (*(f32 *) ((u8 *) &sp60 + 0x4)) -= 1000.0f;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp70), *((MKVector3 *) &sp60), &sp80, (MKCollisionMode) 7, 0x200) != 0) {
         if (((KDWaterVolume *) &this->unk90)->IsWithin(*NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */)) == 0) {
             this->unk120 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
@@ -1710,7 +1710,7 @@ block_81:
                     sp98 = temp_f1_3409;
                     this->unkD8 = M2C_FIELD(temp_r3_3400, f32 *, 0x14);
                     spA0 = M2C_FIELD(temp_r3_3407, f64 *, 8);
-                    unksp9C += M2C_FIELD(temp_r3_3400, f32 *, 0x14);
+                    (*(f32 *) ((u8 *) &sp98 + 0x4)) += M2C_FIELD(temp_r3_3400, f32 *, 0x14);
                     temp_f0_3421 = temp_f1_3409 - this->unk50;
                     sp38 = temp_f0_3421;
                     temp_r3_3425 = this->unk124;
@@ -1720,14 +1720,14 @@ block_81:
                     if ((u8) M2C_FIELD(temp_r3_3425, u8 *, 0x68) != 0) {
                         if (((u8) this->unk144 >> 7U) & 1) {
                             temp_f3_3442 = M2C_FIELD(temp_r3_3400, f32 *, 0x20);
-                            var_r0_3448 = (((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) < (temp_f3_3442 * temp_f3_3442);
+                            var_r0_3448 = (((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))))) < (temp_f3_3442 * temp_f3_3442);
                         } else {
                             temp_f3_3456 = M2C_FIELD(temp_r3_3400, f32 *, 0x24);
-                            var_r0_3448 = (((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) < (temp_f3_3456 * temp_f3_3456);
+                            var_r0_3448 = (((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))))) < (temp_f3_3456 * temp_f3_3456);
                         }
                         if (var_r0_3448 != 0) {
                             temp_r0_3467 = this->unkD4;
-                            if ((temp_r0_3467 != 0) && (temp_r0_3467 < 7) && ((temp_f3_3473 = temp_r3_3425->unkA4, ((temp_f3_3473 == 0.0f) != 0)) || ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) <= temp_f3_3473))) {
+                            if ((temp_r0_3467 != 0) && (temp_r0_3467 < 7) && ((temp_f3_3473 = temp_r3_3425->unkA4, ((temp_f3_3473 == 0.0f) != 0)) || ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))))) <= temp_f3_3473))) {
                                 SetState(7);
                                 this->unkF0 = M2C_FIELD(temp_r3_3400, f32 *, 0x1C);
                             }
@@ -1740,7 +1740,7 @@ block_81:
                     sp98 = temp_f3_3500;
                     sp58 = temp_f3_3500;
                     sp60 = temp_f2_3501;
-                    unksp9C += M2C_FIELD(temp_r3_3400, f32 *, 0x14);
+                    (*(f32 *) ((u8 *) &sp98 + 0x4)) += M2C_FIELD(temp_r3_3400, f32 *, 0x14);
                     spA0 = temp_f2_3501;
                     sp8 = sp98 - this->unk50;
                     sp18 = sp8;
@@ -1748,7 +1748,7 @@ block_81:
                     sp20 = (f64) sp10;
                     sp28 = sp8;
                     sp30 = (f64) sp10;
-                    if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) < (temp_f4_3499 * temp_f4_3499)) {
+                    if ((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))))) < (temp_f4_3499 * temp_f4_3499)) {
                         SetState(8);
                     }
                     goto block_81;
@@ -1864,19 +1864,17 @@ block_81:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
 void Collectable::DrawLocator() {
     f64 sp10;
     f64 sp8;
 
     sp8 = this->unk50;
     sp10 = this->unk58;
-    unkspC += 10000.0f;
+    (*(f32 *) ((u8 *) &sp8 + 0x4)) += 10000.0f;
     MKShape_DrawLine(*((MKVector3 *) &this->unk50), *((MKVector3 *) &sp8), this->unk124->unk88, MKVector4::one, Matrix::identity);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unksp2AC'
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void Collectable::DrawShadow() {
     f64 sp2F0;
     f64 sp2E8;
@@ -1999,11 +1997,11 @@ void Collectable::DrawShadow() {
     temp_f6_3856 = this->unk88;
     temp_f10_3857 = this->unk80;
     sp278 = this->unk50;
-    spE0 = (temp_f10_3857 * unksp2AC) - (temp_f8_3855 * (f32) sp2A8);
-    spD8 = (temp_f8_3855 * (f32) sp2B0) - (temp_f6_3856 * unksp2AC);
+    spE0 = (temp_f10_3857 * (*(f32 *) ((u8 *) &sp2A8 + 0x4))) - (temp_f8_3855 * (f32) sp2A8);
+    spD8 = (temp_f8_3855 * (f32) sp2B0) - (temp_f6_3856 * (*(f32 *) ((u8 *) &sp2A8 + 0x4)));
     spDC = (temp_f6_3856 * (f32) sp2A8) - (temp_f10_3857 * (f32) sp2B0);
     sp280 = this->unk58;
-    unksp27C = this->unkDC;
+    (*(f32 *) ((u8 *) &sp278 + 0x4)) = this->unkDC;
     sp258 = (f64) spD8;
     sp260 = (f64) spE0;
     Normalise(sp268);
@@ -2013,10 +2011,10 @@ void Collectable::DrawShadow() {
     temp_f8_3891 = this->unk84;
     temp_f10_3893 = this->unk80;
     sp70 = -(f32) sp2A0;
-    sp6C = -unksp29C;
-    spD0 = (temp_f10_3893 * unksp29C) - (temp_f8_3891 * (f32) sp298);
+    sp6C = -(*(f32 *) ((u8 *) &sp298 + 0x4));
+    spD0 = (temp_f10_3893 * (*(f32 *) ((u8 *) &sp298 + 0x4))) - (temp_f8_3891 * (f32) sp298);
     sp68 = -(f32) sp298;
-    spC8 = (temp_f8_3891 * (f32) sp2A0) - (temp_f6_3887 * unksp29C);
+    spC8 = (temp_f8_3891 * (f32) sp2A0) - (temp_f6_3887 * (*(f32 *) ((u8 *) &sp298 + 0x4)));
     spCC = (temp_f6_3887 * (f32) sp298) - (temp_f10_3893 * (f32) sp2A0);
     sp250 = (f64) spD0;
     sp248 = (f64) spC8;
@@ -2026,7 +2024,7 @@ void Collectable::DrawShadow() {
     sp1F0 = (f64) sp70;
     sp1F8.operator*(50.0f);
     sp78 = -(f32) sp2A8;
-    sp7C = -unksp2AC;
+    sp7C = -(*(f32 *) ((u8 *) &sp2A8 + 0x4));
     sp80 = -(f32) sp2B0;
     sp208 = (f64) sp78;
     sp210 = (f64) sp80;
@@ -2045,7 +2043,7 @@ void Collectable::DrawShadow() {
     sp2C0 = (f64) spC0;
     sp198.operator*(50.0f);
     sp48 = -(f32) sp2A8;
-    sp4C = -unksp2AC;
+    sp4C = -(*(f32 *) ((u8 *) &sp2A8 + 0x4));
     sp50 = -(f32) sp2B0;
     sp1A8 = (f64) sp48;
     sp1B0 = (f64) sp50;
@@ -2058,7 +2056,7 @@ void Collectable::DrawShadow() {
     spA8 = sp1C8 + sp278;
     spB0 = (f32) sp1D0 + (f32) sp280;
     sp28 = -(f32) sp298;
-    sp2C = -unksp29C;
+    sp2C = -(*(f32 *) ((u8 *) &sp298 + 0x4));
     sp30 = -(f32) sp2A0;
     sp1D8 = spA8;
     sp1E0 = (f64) spB0;
@@ -2146,7 +2144,7 @@ void Collectable::Draw() {
             MKModel_SetWorldMatrix(this->unk4, sp40);
             sp30 = this->unk50;
             sp38 = this->unk58;
-            unksp34 += this->unkF4;
+            (*(f32 *) ((u8 *) &sp30 + 0x4)) += this->unkF4;
             MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp30));
         }
         temp_r3_4221 = this->unk124;

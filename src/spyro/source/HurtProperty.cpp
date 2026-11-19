@@ -85,7 +85,7 @@ void HurtProperty::DoHurt() {
         spF8 = sp38;
     } else {
         spF0 = 0.0f;
-        unkspF4 = 0.0f;
+        (*(f32 *) ((u8 *) &spEC + 0x8)) = 0.0f;
         spF8 = 0.0f;
     }
     sp111 = 0;
@@ -106,7 +106,7 @@ loop_8:
                 sp50 = temp_f0_125;
                 sp28 = (f32) sp48 - (f32) sp78;
                 sp58 = (f64) sp28;
-                if ((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54))) <= (temp_f2_130 * temp_f2_130)) {
+                if ((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))))) <= (temp_f2_130 * temp_f2_130)) {
                     M2C_FIELD(M2C_FIELD(temp_r3_115, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&spC0);
                 }
             }

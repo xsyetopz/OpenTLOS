@@ -83,7 +83,7 @@ inline void HeroInterface::GetXZDir() {
     sp18 = sp38;
     sp50 = (f64) sp10;
     sp58 = (f64) sp18;
-    var_f5_600 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
+    var_f5_600 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
     if (var_f5_600 > 1e-12f) {
         if (var_f5_600 > 0.0f) {
             temp_f1_605 = __frsqrte(var_f5_600);
@@ -120,7 +120,7 @@ inline void HeroInterface::GetXZDir() {
         }
         var_f4_585 = 1.0f / var_f5_600;
     }
-    sp24 = unksp54 * var_f4_585;
+    sp24 = (*(f32 *) ((u8 *) &sp50 + 0x4)) * var_f4_585;
     sp20 = (f32) sp50 * var_f4_585;
     sp28 = (f32) sp58 * var_f4_585;
     M2C_FIELD(this, f64 *, 0) = (f64) sp20;

@@ -523,7 +523,7 @@ f32 MKFFTNormalMap::GetDirectionScale(float arg0, float arg1) {
     return arg0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 f32 MKFFTNormalMap::GetAmplitude(const MKVector3 &arg0) {
     f64 sp38;                                       /* compiler-managed */
     f64 sp30;                                       /* compiler-managed */
@@ -555,7 +555,7 @@ f32 MKFFTNormalMap::GetAmplitude(const MKVector3 &arg0) {
 
     sp30 = M2C_FIELD(&arg0, f64 *, 0);
     sp38 = M2C_FIELD(&arg0, f64 *, 8);
-    var_f31_764 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f31_764 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp28 + 0xc)) * (*(f32 *) ((u8 *) &sp28 + 0xc))));
     if (var_f31_764 > 0.000001f) {
         if (var_f31_764 > 0.0f) {
             temp_f1_770 = __frsqrte(var_f31_764);
@@ -596,7 +596,7 @@ f32 MKFFTNormalMap::GetAmplitude(const MKVector3 &arg0) {
         var_f31_764 = 0.0f;
     }
     sp30 = (f32) sp30 * var_f4_831;
-    unksp34 *= var_f4_831;
+    (*(f32 *) ((u8 *) &sp28 + 0xc)) *= var_f4_831;
     sp38 = (f32) sp38 * var_f4_831;
     if (var_f31_764 == 0.0f) {
         return 0.0f;
@@ -609,7 +609,7 @@ f32 MKFFTNormalMap::GetAmplitude(const MKVector3 &arg0) {
     sp10 = temp_f1_861;
     sp28 = (f64) sp18;
     sp20 = (f64) sp10;
-    temp_f2_879 = (sp38 * (f32) sp28) + ((sp30 * (f32) sp20) + (unksp34 * unksp24));
+    temp_f2_879 = (sp38 * (f32) sp28) + ((sp30 * (f32) sp20) + ((*(f32 *) ((u8 *) &sp28 + 0xc)) * (*(f32 *) ((u8 *) &sp20 + 0x4))));
     temp_f30_882 = GetDirectionScale(temp_f2_879 * temp_f2_879, temp_f2_879);
     var_f1_886 = GetPower(var_f31_764) * temp_f30_882;
     if (var_f1_886 > 0.0f) {
@@ -649,7 +649,7 @@ f32 MKFFTNormalMap::GetAmplitude(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp2C'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKFFTNormalMap::BuildWave() {
     f64 sp30;
     f64 sp28;
@@ -705,7 +705,7 @@ loop_2:
         sp28 = (f64) sp18;
         sp20 = temp_f27_986 * (f32) temp_r6_1006;
         sp30 = (f64) sp20;
-        var_f29_1026 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C));
+        var_f29_1026 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4))));
         if (var_f29_1026 > 0.0f) {
             temp_f1_1029 = __frsqrte(var_f29_1026);
             temp_f1_1035 = 0.5 * temp_f1_1029 * -(((f64) var_f29_1026 * (temp_f1_1029 * temp_f1_1029)) - 3.0);

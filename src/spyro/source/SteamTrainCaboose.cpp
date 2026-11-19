@@ -594,7 +594,7 @@ block_20:
                     ((TrainTrack *) &sp1C0)->GetTrackZAxis((s32) temp_r3_816, this->unkD4);
                     sp310 = sp1C0;
                     sp318 = sp1C8;
-                    if ((((f32) sp318 * (f32) sp318) + (((f32) sp310 * (f32) sp310) + (unksp314 * unksp314))) > 0.0001f) {
+                    if ((((f32) sp318 * (f32) sp318) + (((f32) sp310 * (f32) sp310) + ((*(f32 *) ((u8 *) &sp310 + 0x4)) * (*(f32 *) ((u8 *) &sp310 + 0x4))))) > 0.0001f) {
                         M2C_STRUCT_COPY((s32) &unksp32C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                         ((TrainTrack *) &sp1B0)->GetTrackPos((s32) temp_r3_816, this->unkD4, 1);
                         sp360 = sp1B0;
@@ -603,8 +603,8 @@ block_20:
                         sp36C = 1.0f;
                         ((TrainTrack *) &sp1A0)->GetTrackXAxis((s32) temp_r3_816, this->unkD4);
                         sp330 = sp1A0;
-                        sp48 = ((f32) sp310 * sp1A4) - (unksp314 * sp1A0);
-                        sp40 = (unksp314 * sp1A8) - ((f32) sp318 * sp1A4);
+                        sp48 = ((f32) sp310 * sp1A4) - ((*(f32 *) ((u8 *) &sp310 + 0x4)) * sp1A0);
+                        sp40 = ((*(f32 *) ((u8 *) &sp310 + 0x4)) * sp1A8) - ((f32) sp318 * sp1A4);
                         sp44 = ((f32) sp318 * sp1A0) - ((f32) sp310 * sp1A8);
                         sp198 = (f64) sp48;
                         sp190 = (f64) sp40;
@@ -612,11 +612,11 @@ block_20:
                         sp338 = sp1A8;
                         sp33C = 0.0f;
                         sp350 = (f32) sp310;
-                        sp354 = unksp314;
+                        sp354 = (*(f32 *) ((u8 *) &sp310 + 0x4));
                         sp358 = (f32) sp318;
                         sp35C = 0.0f;
                         sp340 = (f32) sp190;
-                        sp344 = unksp194;
+                        sp344 = (*(f32 *) ((u8 *) &sp190 + 0x4));
                         sp348 = (f32) sp198;
                         sp34C = 0.0f;
                         Normalise(sp170);
@@ -629,15 +629,15 @@ block_20:
                         sp188 = (f64) sp38;
                         sp180 = (f64) sp30;
                         sp330 = (f32) sp180;
-                        sp334 = unksp184;
+                        sp334 = (*(f32 *) ((u8 *) &sp180 + 0x4));
                         sp338 = (f32) sp188;
-                        sp28 = (sp350 * unksp184) - (sp354 * (f32) sp180);
-                        sp20 = (sp354 * (f32) sp188) - (sp358 * unksp184);
+                        sp28 = (sp350 * (*(f32 *) ((u8 *) &sp180 + 0x4))) - (sp354 * (f32) sp180);
+                        sp20 = (sp354 * (f32) sp188) - (sp358 * (*(f32 *) ((u8 *) &sp180 + 0x4)));
                         sp24 = (sp358 * (f32) sp180) - (sp350 * (f32) sp188);
                         sp168 = (f64) sp28;
                         sp160 = (f64) sp20;
                         sp340 = (f32) sp160;
-                        sp344 = unksp164;
+                        sp344 = (*(f32 *) ((u8 *) &sp160 + 0x4));
                         sp348 = (f32) sp168;
                         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp330));
                     }
@@ -780,7 +780,7 @@ block_22:
             temp_r3_1327 = this->unk8;
             sp150 = M2C_FIELD(temp_r3_1327, f64 *, 0x30);
             sp158 = M2C_FIELD(temp_r3_1327, f64 *, 0x38);
-            this->unkE0.unk28 = unksp154;
+            this->unkE0.unk28 = (*(f32 *) ((u8 *) &sp150 + 0x4));
         }
     }
 }

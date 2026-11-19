@@ -1390,7 +1390,6 @@ s32 MKLevelChunk::Game_UserInit(MKLevelChunk *arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp5C'
 void Level::DrawEnvDome() {
     f64 sp60;
     f64 sp58;
@@ -1495,7 +1494,7 @@ void Level::DrawEnvDome() {
             sp58 = temp_f0_2636;
             sp40 = temp_f1_2637;
             sp60 = temp_f1_2637;
-            unksp5C *= var_f2_2594;
+            (*(f32 *) ((u8 *) &sp58 + 0x4)) *= var_f2_2594;
             break;
         case 3:
             sp58 = this->unk38;
@@ -1515,7 +1514,6 @@ void Level::DrawEnvDome() {
         MKView_Pop();
     }
 }
-#endif
 
 void Level::Draw() {
     f64 sp20;

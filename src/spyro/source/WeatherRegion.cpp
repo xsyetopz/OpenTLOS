@@ -75,7 +75,7 @@ u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
     var_f5_79 = 0.0f;
     spF0 = M2C_FIELD(temp_r3_52, f64 *, 0x80);
     spF8 = M2C_FIELD(temp_r3_52, f64 *, 0x88);
-    unkspF4 = 0.0f;
+    (*(f32 *) ((u8 *) &spE8 + 0xc)) = 0.0f;
     var_f4_90 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (0.0f * 0.0f));
     if (var_f4_90 > 0.000001f) {
         if (var_f4_90 > 0.0f) {
@@ -114,7 +114,7 @@ u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
         var_f5_79 = 1.0f / var_f4_90;
     }
     spF0 = (f32) spF0 * var_f5_79;
-    unkspF4 *= var_f5_79;
+    (*(f32 *) ((u8 *) &spE8 + 0xc)) *= var_f5_79;
     spF8 = (f32) spF8 * var_f5_79;
     sp80.operator*(MKRand_Float(&gViewSeed, -0.1f, 1.0f));
     sp90.operator*(2000.0f);
@@ -239,7 +239,7 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
     var_f5_338 = 0.0f;
     sp180 = M2C_FIELD(temp_r3_311, f64 *, 0x80);
     sp188 = M2C_FIELD(temp_r3_311, f64 *, 0x88);
-    unksp184 = 0.0f;
+    (*(f32 *) ((u8 *) &sp178 + 0xc)) = 0.0f;
     var_f4_349 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (0.0f * 0.0f));
     if (var_f4_349 > 0.000001f) {
         if (var_f4_349 > 0.0f) {
@@ -278,7 +278,7 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
         var_f5_338 = 1.0f / var_f4_349;
     }
     sp180 = (f32) sp180 * var_f5_338;
-    unksp184 *= var_f5_338;
+    (*(f32 *) ((u8 *) &sp178 + 0xc)) *= var_f5_338;
     sp188 = (f32) sp188 * var_f5_338;
     sp170 = M2C_FIELD(temp_r3_311, f64 *, 0x90);
     sp178 = M2C_FIELD(temp_r5_314, f64 *, 8);
@@ -321,7 +321,7 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
         sp160 = sp80;
         sp88 = arg0.unk8 - this->unk58;
         sp168 = (f64) sp88;
-        var_f4_560 = ((f32) sp168 * (f32) sp168) + (((f32) sp160 * (f32) sp160) + (unksp164 * unksp164));
+        var_f4_560 = ((f32) sp168 * (f32) sp168) + (((f32) sp160 * (f32) sp160) + ((*(f32 *) ((u8 *) &sp158 + 0xc)) * (*(f32 *) ((u8 *) &sp158 + 0xc))));
         if (var_f4_560 > 0.000001f) {
             if (var_f4_560 > 0.0f) {
                 temp_f1_566 = __frsqrte(var_f4_560);
@@ -362,7 +362,7 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
         }
         temp_f28_638 = (f32) sp168 * var_f3_627;
         sp160 = (f32) sp160 * var_f3_627;
-        unksp164 *= var_f3_627;
+        (*(f32 *) ((u8 *) &sp158 + 0xc)) *= var_f3_627;
         sp168 = temp_f28_638;
         sp40 = (f64) sp160 * 5.676053805e-315;
         sp48 = temp_f28_638 * 1000.0f;
@@ -373,7 +373,7 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
         temp_f29_666 = MKRand_Float(&gViewSeed, 1000.0f, 2000.0f);
         sp18 = -temp_f28_638;
         sp10 = -sp160;
-        sp14 = -unksp164;
+        sp14 = -(*(f32 *) ((u8 *) &sp158 + 0xc));
         spA8 = (f64) sp18;
         spA0 = (f64) sp10;
         sp30 = spA0 * (f64) temp_f29_666;
@@ -441,7 +441,7 @@ u8 WeatherRegion::CalculateEmissionPointSpores(MKVector3 &arg0) {
     var_f5_749 = 0.0f;
     spF0 = M2C_FIELD(temp_r3_722, f64 *, 0x80);
     spF8 = M2C_FIELD(temp_r3_722, f64 *, 0x88);
-    unkspF4 = 0.0f;
+    (*(f32 *) ((u8 *) &spE8 + 0xc)) = 0.0f;
     var_f4_760 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (0.0f * 0.0f));
     if (var_f4_760 > 0.000001f) {
         if (var_f4_760 > 0.0f) {
@@ -480,7 +480,7 @@ u8 WeatherRegion::CalculateEmissionPointSpores(MKVector3 &arg0) {
         var_f5_749 = 1.0f / var_f4_760;
     }
     spF0 = (f32) spF0 * var_f5_749;
-    unkspF4 *= var_f5_749;
+    (*(f32 *) ((u8 *) &spE8 + 0xc)) *= var_f5_749;
     spF8 = (f32) spF8 * var_f5_749;
     sp80.operator*(MKRand_Float(&gViewSeed, -0.1f, 1.0f));
     sp90.operator*(2000.0f);
@@ -588,7 +588,7 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     sp128 = sp68;
     sp70 = M2C_FIELD(temp_r3_978, f32 *, 0x98) - M2C_FIELD(temp_r3_978, f32 *, 0xD8);
     sp130 = (f64) sp70;
-    var_f4_1001 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + (unksp12C * unksp12C));
+    var_f4_1001 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + ((*(f32 *) ((u8 *) &sp128 + 0x4)) * (*(f32 *) ((u8 *) &sp128 + 0x4))));
     if (var_f4_1001 > 0.0f) {
         temp_f1_1004 = __frsqrte(var_f4_1001);
         temp_f1_1010 = 0.5 * temp_f1_1004 * -(((f64) var_f4_1001 * (temp_f1_1004 * temp_f1_1004)) - 3.0);
@@ -625,7 +625,7 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     var_f5_1065 = 0.0f;
     sp118 = M2C_FIELD(temp_r3_978, f64 *, 0x80);
     sp120 = M2C_FIELD(temp_r3_978, f64 *, 0x88);
-    unksp11C = 0.0f;
+    (*(f32 *) ((u8 *) &sp110 + 0xc)) = 0.0f;
     var_f4_1081 = ((f32) sp120 * (f32) sp120) + (((f32) sp118 * (f32) sp118) + (0.0f * 0.0f));
     if (var_f4_1081 > 0.000001f) {
         if (var_f4_1081 > 0.0f) {
@@ -664,7 +664,7 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
         var_f5_1065 = 1.0f / var_f4_1081;
     }
     sp118 = (f32) sp118 * var_f5_1065;
-    unksp11C *= var_f5_1065;
+    (*(f32 *) ((u8 *) &sp110 + 0xc)) *= var_f5_1065;
     sp120 = (f32) sp120 * var_f5_1065;
     spA8.operator*(MKRand_Float(&gViewSeed, -0.1f, 1.0f));
     spB8.operator*(2000.0f);

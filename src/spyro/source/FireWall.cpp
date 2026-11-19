@@ -203,7 +203,7 @@ loop_83:
                     spC0 = sp30;
                     spF8 = (f64) sp38;
                     spC8 = (f64) sp38;
-                    var_f4_265 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4));
+                    var_f4_265 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + ((*(f32 *) ((u8 *) &spD8 + 0x1c)) * (*(f32 *) ((u8 *) &spD8 + 0x1c))));
                     if (var_f4_265 > 0.000001f) {
                         if (var_f4_265 > 0.0f) {
                             temp_f1_271 = __frsqrte(var_f4_265);
@@ -243,18 +243,18 @@ loop_83:
                         var_f3_332 = 0.0f;
                     }
                     spF0 = (f32) spF0 * var_f3_332;
-                    unkspF4 *= var_f3_332;
+                    (*(f32 *) ((u8 *) &spD8 + 0x1c)) *= var_f3_332;
                     spF8 = (f32) spF8 * var_f3_332;
                 }
                 MKVector(0.0f, 1.0f, 0.0f);
                 sp24 = (spA8 * spF0) - (spA0 * spF8);
-                sp20 = (spA4 * spF8) - (spA8 * unkspF4);
-                sp28 = (spA0 * unkspF4) - (spA4 * spF0);
+                sp20 = (spA4 * spF8) - (spA8 * (*(f32 *) ((u8 *) &spD8 + 0x1c)));
+                sp28 = (spA0 * (*(f32 *) ((u8 *) &spD8 + 0x1c))) - (spA4 * spF0);
                 spE0 = (f64) sp20;
                 spE8 = (f64) sp28;
                 spB0 = (f64) sp20;
                 spB8 = (f64) sp28;
-                var_f4_380 = ((f32) spE8 * (f32) spE8) + (((f32) spE0 * (f32) spE0) + (unkspE4 * unkspE4));
+                var_f4_380 = ((f32) spE8 * (f32) spE8) + (((f32) spE0 * (f32) spE0) + ((*(f32 *) ((u8 *) &spD8 + 0xc)) * (*(f32 *) ((u8 *) &spD8 + 0xc))));
                 if (var_f4_380 > 0.000001f) {
                     if (var_f4_380 > 0.0f) {
                         temp_f1_386 = __frsqrte(var_f4_380);
@@ -295,24 +295,24 @@ loop_83:
                 }
                 temp_f0_458 = (f32) spE8 * var_f3_447;
                 spE0 = (f32) spE0 * var_f3_447;
-                unkspE4 *= var_f3_447;
+                (*(f32 *) ((u8 *) &spD8 + 0xc)) *= var_f3_447;
                 spE8 = temp_f0_458;
                 spE0 = (f64) spE0 * 5.41119288e-315;
                 spE8 = temp_f0_458 * 12.5f;
                 if (((s32) var_r28_174 == 0) && (var_r25_211 == 0)) {
                     spE0 = 0.0f;
-                    unkspE4 = 0.0f;
+                    (*(f32 *) ((u8 *) &spD8 + 0xc)) = 0.0f;
                     spE8 = 0.0f;
                 }
                 if (((s32) var_r28_174 == (s32) (this->unk4C - 2)) && (var_r25_211 == 1)) {
                     spE0 = 0.0f;
-                    unkspE4 = 0.0f;
+                    (*(f32 *) ((u8 *) &spD8 + 0xc)) = 0.0f;
                     spE8 = 0.0f;
                 }
                 var_r22_488 = var_r25_211;
                 if (var_r30_138 != 0) {
                     sp10 = -spE0;
-                    sp14 = -unkspE4;
+                    sp14 = -(*(f32 *) ((u8 *) &spD8 + 0xc));
                     sp18 = -spE8;
                     sp90 = (f64) sp10;
                     sp98 = (f64) sp18;
@@ -701,7 +701,7 @@ loop_32:
                 sp140 = temp_f0_1049;
                 spA8 = (f32) sp198 - (f32) sp1A8;
                 sp148 = (f64) spA8;
-                var_f4_1066 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + (unksp144 * unksp144));
+                var_f4_1066 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + ((*(f32 *) ((u8 *) &sp140 + 0x4)) * (*(f32 *) ((u8 *) &sp140 + 0x4))));
                 if (var_f4_1066 > 0.0f) {
                     temp_f1_1069 = __frsqrte(var_f4_1066);
                     temp_f1_1075 = 0.5 * temp_f1_1069 * -(((f64) var_f4_1066 * (temp_f1_1069 * temp_f1_1069)) - 3.0);

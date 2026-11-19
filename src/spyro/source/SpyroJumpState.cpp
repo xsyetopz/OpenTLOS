@@ -58,7 +58,7 @@ void SpyroJumpState::DoubleJumpExit() {
     M2C_FIELD(this->unk10, f32 *, 0x38C) = 1900.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp24'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SpyroJumpState::DoubleJumpEnter() {
     f64 sp38;
     f64 sp30;
@@ -79,7 +79,7 @@ void SpyroJumpState::DoubleJumpEnter() {
     M2C_FIELD(this, s8 *, 0x2E) = 0;
     temp_r3_119 = this->unk10->unk8;
     sp20 = M2C_FIELD(temp_r3_119, f64 *, 0x30);
-    temp_f7_127 = unksp24 - this->unk34;
+    temp_f7_127 = (*(f32 *) ((u8 *) &sp20 + 0x4)) - this->unk34;
     sp28 = M2C_FIELD(temp_r3_119, f64 *, 0x38);
     var_f3_134 = (150.0f * (1.0f - ((temp_f7_127 - 100.0f) / 200.0f))) + 250.0f;
     if ((var_f3_134 + temp_f7_127) > 550.0f) {
@@ -124,13 +124,13 @@ void SpyroJumpState::DoubleJumpEnter() {
     ((SpyroJumpState *) &sp10)->GetJumpVel();
     sp30 = sp10;
     sp38 = sp18;
-    unksp34 = var_f31_144;
+    (*(f32 *) ((u8 *) &sp30 + 0x4)) = var_f31_144;
     this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp30), 540000.0f);
     ((CombatStateData *) &this->unk10->unk430.unk28)->SetTailStrikeEnabled(1U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
+#if 0 // DRAFT: illegal explicit conversion from 'Spyro *' to
 void SpyroJumpState::JumpCommonUpdate() {
     SpyroJumpState sp10;
     f32 sp8;
@@ -163,7 +163,7 @@ void SpyroJumpState::JumpCommonUpdate() {
             temp_r3_284 = temp_r4_282->unk8;
             sp10.unk20 = M2C_FIELD(temp_r3_284, f64 *, 0x30);
             sp10.unk28 = M2C_FIELD(temp_r3_284, f64 *, 0x38);
-            temp_f31_293 = 300.0f - (unksp34 - this->unk34);
+            temp_f31_293 = 300.0f - ((*(f32 *) ((u8 *) &sp10 + 0x24)) - this->unk34);
             if ((temp_f31_293 < 100.0f) || ((s32) M2C_FIELD(temp_r4_282->unk26C.unk8, s32 *, 0x43C) > 0)) {
                 if ((u8) M2C_FIELD(this, u8 *, 0x2D) == 0) {
                     ((SpyroJumpState *) &sp10.unk10)->GetJumpVel();
@@ -203,7 +203,7 @@ void SpyroJumpState::JumpCommonUpdate() {
                             var_f5_313 = __float_nan;
                         }
                     }
-                    unksp54 = var_f5_313;
+                    (*(f32 *) ((u8 *) &sp10 + 0x44)) = var_f5_313;
                     this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp10.unk40), 540000.0f);
                     M2C_FIELD(this, u8 *, 0x2D) = 1U;
                 }
@@ -688,7 +688,7 @@ block_6:
                 spB8 = temp_f0_1128;
                 var_f4_1130 = 0.0f;
                 sp208 = temp_f0_1128;
-                unksp20C = 0.0f;
+                (*(f32 *) ((u8 *) &sp200 + 0xc)) = 0.0f;
                 spC0 = (f32) sp220 - (f32) sp1B0;
                 sp210 = (f64) spC0;
                 var_f5_1147 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (0.0f * 0.0f));
@@ -729,7 +729,7 @@ block_6:
                     var_f4_1130 = 1.0f / var_f5_1147;
                 }
                 sp208 = (f32) sp208 * var_f4_1130;
-                unksp20C *= var_f4_1130;
+                (*(f32 *) ((u8 *) &sp200 + 0xc)) *= var_f4_1130;
                 sp210 = (f32) sp210 * var_f4_1130;
                 sp228 = (f64) sp208;
                 sp230 = (f64) sp210;
@@ -787,7 +787,7 @@ block_6:
                 sp168 = sp78;
                 sp80 = (f32) sp1F0 + (f32) sp1E0;
                 sp170 = (f64) sp80;
-                var_f5_1360 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + (unksp16C * unksp16C));
+                var_f5_1360 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + ((*(f32 *) ((u8 *) &sp168 + 0x4)) * (*(f32 *) ((u8 *) &sp168 + 0x4))));
                 if (var_f5_1360 > 1e-12f) {
                     if (var_f5_1360 > 0.0f) {
                         temp_f1_1365 = __frsqrte(var_f5_1360);
@@ -825,13 +825,13 @@ block_6:
                     var_f4_1322 = 1.0f / var_f5_1360;
                 }
                 var_f27_1431 = 0.0f;
-                sp6C = unksp16C * var_f4_1322;
+                sp6C = (*(f32 *) ((u8 *) &sp168 + 0x4)) * var_f4_1322;
                 sp68 = (f32) sp168 * var_f4_1322;
                 sp70 = (f32) sp170 * var_f4_1322;
                 sp1C8 = (f64) sp68;
                 sp1D0 = (f64) sp70;
-                if ((((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + (unksp1CC * unksp1CC))) != 0.0f) {
-                    temp_f1_1454 = ((f32) sp1D0 * (f32) sp200) + (((f32) sp1C8 * (f32) sp1F8) + (unksp1CC * unksp1FC));
+                if ((((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + ((*(f32 *) ((u8 *) &sp1C8 + 0x4)) * (*(f32 *) ((u8 *) &sp1C8 + 0x4))))) != 0.0f) {
+                    temp_f1_1454 = ((f32) sp1D0 * (f32) sp200) + (((f32) sp1C8 * (f32) sp1F8) + ((*(f32 *) ((u8 *) &sp1C8 + 0x4)) * (*(f32 *) ((u8 *) &sp1F8 + 0x4))));
                     if ((temp_f1_1454 > 0.5f) || (temp_f1_1454 < -0.5f)) {
                         var_f27_1431 = 0.75f * (750.0f * ((KDInput *) (this->unk10->GetInput()))->GetLeftMag());
                     } else {
@@ -864,7 +864,7 @@ block_6:
             KDMath_Dampen<MKVector3>(sp138, 2.0f, gUpdateTimeDelta);
             this->unk40 = M2C_BITWISE(f64, sp138);
             this->unk48 = (f64) sp138.unk8;
-            var_f1_1548 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + (unksp1BC * unksp1BC));
+            var_f1_1548 = ((f32) sp1C0 * (f32) sp1C0) + (((f32) sp1B8 * (f32) sp1B8) + ((*(f32 *) ((u8 *) &sp1B8 + 0x4)) * (*(f32 *) ((u8 *) &sp1B8 + 0x4))));
             if (var_f1_1548 > 0.0f) {
                 temp_f2_1551 = __frsqrte(var_f1_1548);
                 temp_f2_1557 = 0.5 * temp_f2_1551 * -(((f64) var_f1_1548 * (temp_f2_1551 * temp_f2_1551)) - 3.0);
@@ -959,17 +959,17 @@ block_6:
             temp_r3_1726 = this->unk10->unk8;
             sp108 = M2C_FIELD(temp_r3_1726, f64 *, 0x30);
             sp110 = M2C_FIELD(temp_r3_1726, f64 *, 0x38);
-            if (var_f2_1725 > unksp10C) {
+            if (var_f2_1725 > (*(f32 *) ((u8 *) &sp108 + 0x4))) {
 
             } else {
-                var_f2_1725 = unksp10C;
+                var_f2_1725 = (*(f32 *) ((u8 *) &sp108 + 0x4));
             }
             this->unk38 = var_f2_1725;
         }
         temp_r3_1740 = this->unk10;
         spF8 = M2C_FIELD(temp_r3_1740, f64 *, 0x338);
         sp100 = M2C_FIELD(temp_r3_1740, f64 *, 0x340);
-        if (unkspFC > 0.0f) {
+        if ((*(f32 *) ((u8 *) &spF8 + 0x4)) > 0.0f) {
             temp_r3_1749 = temp_r3_1740->unk26C.unk8;
             temp_r3_1751 = M2C_FIELD(temp_r3_1749, s32 *, 0x43C);
             if (temp_r3_1751 > 0) {
@@ -1132,7 +1132,7 @@ void SpyroJumpState::Enter(SpyroStateMessages &arg0) {
             ((SpyroJumpState *) &sp20)->GetJumpVel();
             sp40 = sp20;
             sp48 = sp28;
-            unksp44 = SPYRO_MIN_JUMP_Y_VELOCITY;
+            (*(f32 *) ((u8 *) &sp40 + 0x4)) = SPYRO_MIN_JUMP_Y_VELOCITY;
             this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp40), 540000.0f);
         }
     }
@@ -1154,8 +1154,8 @@ void SpyroJumpState::Enter(SpyroStateMessages &arg0) {
     temp_f1_2222 = M2C_FIELD(temp_r6_2219, f64 *, 0x38);
     sp10 = M2C_FIELD(temp_r6_2219, f64 *, 0x30);
     sp18 = temp_f1_2222;
-    this->unk34 = unksp14;
-    this->unk38 = unksp14;
+    this->unk34 = (*(f32 *) ((u8 *) &sp10 + 0x4));
+    this->unk38 = (*(f32 *) ((u8 *) &sp10 + 0x4));
     sp34 = 0;
     sp30 = 0x17;
     sp38 = 9;

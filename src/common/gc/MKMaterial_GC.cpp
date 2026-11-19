@@ -230,12 +230,12 @@ void MKMaterial_RenderMeshChunk(MeshChunk *arg0) {
     sp28 = sp18;
     if ((f32) sp20 == M2C_FIELD(&MKMaterial_GeometryColor, f32 *, 0x40)) {
         temp_r3_333 = &MKMaterial_GeometryColor + 0x40;
-        if ((unksp24 == M2C_FIELD(temp_r3_333, f32 *, 4)) && ((f32) sp28 == M2C_FIELD(temp_r3_333, f32 *, 8)) && (unksp2C == M2C_FIELD(temp_r3_333, f32 *, 0xC))) {
+        if (((*(f32 *) ((u8 *) &sp20 + 0x4)) == M2C_FIELD(temp_r3_333, f32 *, 4)) && ((f32) sp28 == M2C_FIELD(temp_r3_333, f32 *, 8)) && ((*(f32 *) ((u8 *) &sp28 + 0x4)) == M2C_FIELD(temp_r3_333, f32 *, 0xC))) {
             var_r0_324 = 1;
         }
     }
     if (var_r0_324 == 0) {
-        temp_r0_372 = ((u32) (128.0f * (f32) sp20) << 0x18) + (((u32) (128.0f * unksp24) << 0x10) + ((u32) (128.0f * (f32) sp28) << 8) + (u32) (128.0f * unksp2C));
+        temp_r0_372 = ((u32) (128.0f * (f32) sp20) << 0x18) + (((u32) (128.0f * (*(f32 *) ((u8 *) &sp20 + 0x4))) << 0x10) + ((u32) (128.0f * (f32) sp28) << 8) + (u32) (128.0f * (*(f32 *) ((u8 *) &sp28 + 0x4))));
         sp8 = temp_r0_372;
         spC = temp_r0_372;
         GXSetChanMatColor(GX_COLOR0A0, (GXColor) &spC);
@@ -349,12 +349,12 @@ void MKMaterial_RenderImmediateBegin(unsigned int arg0, unsigned int arg1) {
     sp38 = sp28;
     if ((f32) sp30 == M2C_FIELD(&MKMaterial_GeometryColor, f32 *, 0x40)) {
         temp_r3_995 = &MKMaterial_GeometryColor + 0x40;
-        if ((unksp34 == M2C_FIELD(temp_r3_995, f32 *, 4)) && ((f32) sp38 == M2C_FIELD(temp_r3_995, f32 *, 8)) && (unksp3C == M2C_FIELD(temp_r3_995, f32 *, 0xC))) {
+        if (((*(f32 *) ((u8 *) &sp30 + 0x4)) == M2C_FIELD(temp_r3_995, f32 *, 4)) && ((f32) sp38 == M2C_FIELD(temp_r3_995, f32 *, 8)) && ((*(f32 *) ((u8 *) &sp38 + 0x4)) == M2C_FIELD(temp_r3_995, f32 *, 0xC))) {
             var_r0_986 = 1;
         }
     }
     if (var_r0_986 == 0) {
-        temp_r0_1034 = ((u32) (128.0f * (f32) sp30) << 0x18) + (((u32) (128.0f * unksp34) << 0x10) + ((u32) (128.0f * (f32) sp38) << 8) + (u32) (128.0f * unksp3C));
+        temp_r0_1034 = ((u32) (128.0f * (f32) sp30) << 0x18) + (((u32) (128.0f * (*(f32 *) ((u8 *) &sp30 + 0x4))) << 0x10) + ((u32) (128.0f * (f32) sp38) << 8) + (u32) (128.0f * (*(f32 *) ((u8 *) &sp38 + 0x4))));
         sp8 = temp_r0_1034;
         spC = temp_r0_1034;
         GXSetChanMatColor(GX_COLOR0A0, (GXColor) &spC);

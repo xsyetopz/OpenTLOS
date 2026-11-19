@@ -489,7 +489,7 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     sp1F8 = spE8;
     spF0 = (f32) M2C_FIELD(this, f64 *, 0x118) - (f32) sp160;
     sp200 = (f64) spF0;
-    var_f4_826 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + (unksp1FC * unksp1FC));
+    var_f4_826 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + ((*(f32 *) ((u8 *) &sp1F0 + 0xc)) * (*(f32 *) ((u8 *) &sp1F0 + 0xc))));
     if (var_f4_826 > 0.000001f) {
         if (var_f4_826 > 0.0f) {
             temp_f1_832 = __frsqrte(var_f4_826);
@@ -528,11 +528,11 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     } else {
         var_f2_893 = 0.0f;
     }
-    temp_f4_902 = unksp1FC * var_f2_893;
+    temp_f4_902 = (*(f32 *) ((u8 *) &sp1F0 + 0xc)) * var_f2_893;
     temp_f3_904 = (f32) sp200 * var_f2_893;
     temp_f5_907 = (f32) sp1F8 * var_f2_893;
     sp1F8 = temp_f5_907;
-    unksp1FC = temp_f4_902;
+    (*(f32 *) ((u8 *) &sp1F0 + 0xc)) = temp_f4_902;
     sp200 = temp_f3_904;
     sp88 = (MKVector3::up.unk4 * temp_f3_904) - (MKVector3::up.unk8 * temp_f4_902);
     sp8C = (MKVector3::up.unk8 * temp_f5_907) - (MKVector3::up.unk0 * temp_f3_904);
@@ -682,7 +682,7 @@ void StalactiteCharge::StateSCDropUpdate() {
     sp78 = sp28;
     sp30 = (f32) sp70 - this->unk138;
     sp80 = (f64) sp30;
-    var_f4_1224 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C));
+    var_f4_1224 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * (*(f32 *) ((u8 *) &sp78 + 0x4))));
     if (var_f4_1224 > 0.0f) {
         temp_f1_1227 = __frsqrte(var_f4_1224);
         temp_f1_1233 = 0.5 * temp_f1_1227 * -(((f64) var_f4_1224 * (temp_f1_1227 * temp_f1_1227)) - 3.0);

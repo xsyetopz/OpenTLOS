@@ -110,10 +110,10 @@ void SpeedWay::GetPathMatrix(float arg0) {
     sp100 = (f64) sp60;
     sp108 = (f64) sp68;
     sp1D0 = (f32) sp100;
-    sp1D4 = unksp104;
+    sp1D4 = (*(f32 *) ((u8 *) &sp100 + 0x4));
     sp1D8 = (f32) sp108;
-    sp58 = ((f32) sp100 * sp1B4) - (unksp104 * sp1B0);
-    sp50 = (unksp104 * sp1B8) - ((f32) sp108 * sp1B4);
+    sp58 = ((f32) sp100 * sp1B4) - ((*(f32 *) ((u8 *) &sp100 + 0x4)) * sp1B0);
+    sp50 = ((*(f32 *) ((u8 *) &sp100 + 0x4)) * sp1B8) - ((f32) sp108 * sp1B4);
     sp54 = ((f32) sp108 * sp1B0) - ((f32) sp100 * sp1B8);
     sp1DC = 0.0f;
     spC0 = (f64) sp50;
@@ -144,7 +144,7 @@ void SpeedWay::GetPathMatrix(float arg0) {
     sp1EC = 1.0f;
     sp98 = (f64) sp38;
     sp1E0 = (f32) sp90;
-    sp1E4 = unksp94;
+    sp1E4 = (*(f32 *) ((u8 *) &sp90 + 0x4));
     sp1E8 = (f32) sp98;
     sp1DC = 0.0f;
     sp1CC = 0.0f;

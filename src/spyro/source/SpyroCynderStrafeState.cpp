@@ -601,7 +601,7 @@ void SpyroCynderStrafeState::FallEnter() {
     temp_r3_605 = this->unk10->unk8;
     sp28 = M2C_FIELD(temp_r3_605, f64 *, 0x30);
     sp30 = M2C_FIELD(temp_r3_605, f64 *, 0x38);
-    this->unk78 = unksp2C;
+    this->unk78 = (*(f32 *) ((u8 *) &sp28 + 0x4));
     temp_r3_613 = this->unk10->GetCamera();
     sp14 = 0;
     sp10 = 0x44F;
@@ -613,7 +613,7 @@ void SpyroCynderStrafeState::FallEnter() {
     temp_r3_636 = this->unk10->unk8;
     sp18 = M2C_FIELD(temp_r3_636, f64 *, 0x30);
     sp20 = M2C_FIELD(temp_r3_636, f64 *, 0x38);
-    this->unk78 = unksp1C;
+    this->unk78 = (*(f32 *) ((u8 *) &sp18 + 0x4));
     temp_r3_643 = this->unk10;
     temp_r3_643->unk388 = 3800.0f;
     temp_f1_645 = temp_r3_643->unk388;
@@ -662,7 +662,7 @@ u8 SpyroCynderStrafeState::JumpTransition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp44'
+#if 0 // DRAFT: illegal explicit conversion from 'SpyroCynderStrafeState' to
 void SpyroCynderStrafeState::JumpUpdate() {
     f64 sp58;
     f64 sp50;
@@ -703,7 +703,7 @@ void SpyroCynderStrafeState::JumpUpdate() {
             temp_r3_776 = temp_r4_774->unk8;
             sp40 = M2C_FIELD(temp_r3_776, f64 *, 0x30);
             sp48 = M2C_FIELD(temp_r3_776, f64 *, 0x38);
-            temp_f31_785 = 300.0f - (unksp44 - this->unk68);
+            temp_f31_785 = 300.0f - ((*(f32 *) ((u8 *) &sp30 + 0x14)) - this->unk68);
             if ((temp_f31_785 < 100.0f) || ((s32) M2C_FIELD(temp_r4_774->unk26C.unk8, s32 *, 0x43C) > 0)) {
                 if ((u8) this->unk65 == 0) {
                     sp30.GetMoveVelocityHorz();
@@ -752,7 +752,7 @@ void SpyroCynderStrafeState::JumpUpdate() {
                 ((SpyroCynderStrafeState *) &sp20)->GetMoveVelocityHorz();
                 sp50 = sp20;
                 sp58 = sp28;
-                unksp54 = SPYRO_MIN_JUMP_Y_VELOCITY;
+                (*(f32 *) ((u8 *) &sp50 + 0x4)) = SPYRO_MIN_JUMP_Y_VELOCITY;
                 this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp50), 540000.0f);
                 var_r30_744 = 1;
             }
@@ -814,7 +814,7 @@ void SpyroCynderStrafeState::JumpEnter() {
     ((SpyroCynderStrafeState *) &sp20)->GetMoveVelocityHorz();
     sp40 = sp20;
     sp48 = sp28;
-    unksp44 = SPYRO_MIN_JUMP_Y_VELOCITY;
+    (*(f32 *) ((u8 *) &sp40 + 0x4)) = SPYRO_MIN_JUMP_Y_VELOCITY;
     this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp40), 540000.0f);
     ((KDStateMachine<SpyroCynderStrafeState> *) &this->unk50)->SetState(this, 0, 0U);
     temp_r3_1004 = this->unk10->GetCamera();
@@ -825,7 +825,7 @@ void SpyroCynderStrafeState::JumpEnter() {
     temp_f1_1021 = M2C_FIELD(temp_r6_1018, f64 *, 0x38);
     sp10 = M2C_FIELD(temp_r6_1018, f64 *, 0x30);
     sp18 = temp_f1_1021;
-    this->unk68 = unksp14;
+    this->unk68 = (*(f32 *) ((u8 *) &sp10 + 0x4));
     sp34 = 0;
     sp30 = 0x17;
     sp38 = 9;
@@ -1075,7 +1075,7 @@ void SpyroCynderStrafeState::SelectAnim() {
         sp20 = sp40;
         sp68 = (f64) sp18;
         sp70 = (f64) sp20;
-        if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C))) > 10000.0f) {
+        if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) > 10000.0f) {
             Normalise(sp28);
             sp70 = (f64) sp28.unk8;
             sp68 = M2C_BITWISE(f64, sp28);
@@ -1084,7 +1084,7 @@ void SpyroCynderStrafeState::SelectAnim() {
             sp10 = -(f32) sp68;
             sp58 = (f64) sp8;
             sp60 = (f64) sp10;
-            temp_f1_1550 = ((f32) sp60 * this->unk38) + (((f32) sp58 * this->unk30) + (unksp5C * this->unk34));
+            temp_f1_1550 = ((f32) sp60 * this->unk38) + (((f32) sp58 * this->unk30) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * this->unk34));
             if (temp_f1_1550 > 0.5f) {
                 var_r31_1491 = 0xE;
             } else if (temp_f1_1550 < -0.5f) {
@@ -1117,7 +1117,7 @@ u8 SpyroCynderStrafeState::ClampVelocity() {
     return this->unk14 != 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkspB4'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SpyroCynderStrafeState::GetMoveVelocityHorz() {
     f64 spB8;
     f64 spB0;
@@ -1184,7 +1184,7 @@ void SpyroCynderStrafeState::GetMoveVelocityHorz() {
         sp38 = (f32) sp88 * temp_f29_1647;
         spB8 = (f64) sp38;
         if (temp_r30_1630->ClampVelocity() != 0) {
-            var_f4_1695 = ((f32) spB8 * (f32) spB8) + (((f32) spB0 * (f32) spB0) + (unkspB4 * unkspB4));
+            var_f4_1695 = ((f32) spB8 * (f32) spB8) + (((f32) spB0 * (f32) spB0) + ((*(f32 *) ((u8 *) &spB0 + 0x4)) * (*(f32 *) ((u8 *) &spB0 + 0x4))));
             if (var_f4_1695 > 1e-12f) {
                 if (var_f4_1695 > 0.0f) {
                     temp_f1_1701 = __frsqrte(var_f4_1695);
@@ -1228,7 +1228,7 @@ void SpyroCynderStrafeState::GetMoveVelocityHorz() {
             sp68 = M2C_FIELD(temp_r3_1771, f64 *, 0x38);
             sp28 = (f32) spB8 * var_f1_1762;
             sp20 = (f32) spB0 * var_f1_1762;
-            sp24 = unkspB4 * var_f1_1762;
+            sp24 = (*(f32 *) ((u8 *) &spB0 + 0x4)) * var_f1_1762;
             sp18 = temp_r30_1630->unk48 - (f32) sp68;
             spA0 = (f64) sp20;
             spA8 = (f64) sp28;
@@ -1236,7 +1236,7 @@ void SpyroCynderStrafeState::GetMoveVelocityHorz() {
             sp10 = temp_r30_1630->unk40 - (f32) sp60;
             sp14 = 0.0f;
             sp90 = (f64) sp10;
-            if ((((f32) spA8 * (f32) sp98) + (((f32) spA0 * (f32) sp90) + (unkspA4 * unksp94))) < 0.0f) {
+            if ((((f32) spA8 * (f32) sp98) + (((f32) spA0 * (f32) sp90) + ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (*(f32 *) ((u8 *) &sp90 + 0x4))))) < 0.0f) {
                 spB0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
                 spB8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
             }
@@ -1257,7 +1257,7 @@ void SpyroCynderStrafeState::SetDesiredVelocityHorz() {
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp8), 100000.0f);
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp54'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SpyroCynderStrafeState::ClampMovementUpdate() {
     f64 sp78;
     f64 sp70;
@@ -1305,7 +1305,7 @@ void SpyroCynderStrafeState::ClampMovementUpdate() {
     sp38 = -this->unk30;
     sp50 = (f64) sp30;
     sp58 = (f64) sp38;
-    var_f5_1886 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
+    var_f5_1886 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
     if (var_f5_1886 > 1e-12f) {
         if (var_f5_1886 > 0.0f) {
             temp_f1_1891 = __frsqrte(var_f5_1886);
@@ -1353,8 +1353,8 @@ void SpyroCynderStrafeState::ClampMovementUpdate() {
     sp60 = (f64) sp10;
     sp68 = (f64) sp18;
     sp20 = (f32) sp50 * var_f4_1867;
-    sp24 = unksp54 * var_f4_1867;
-    var_f1_1991 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+    sp24 = (*(f32 *) ((u8 *) &sp50 + 0x4)) * var_f4_1867;
+    var_f1_1991 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp58 + 0xc)) * (*(f32 *) ((u8 *) &sp58 + 0xc))));
     sp78 = (f64) sp28;
     sp70 = (f64) sp20;
     if (var_f1_1991 > 0.000001f) {
@@ -1395,12 +1395,12 @@ void SpyroCynderStrafeState::ClampMovementUpdate() {
     } else {
         var_f1_1991 = 0.0f;
     }
-    temp_f6_2066 = unksp64 * var_f0_1956;
+    temp_f6_2066 = (*(f32 *) ((u8 *) &sp58 + 0xc)) * var_f0_1956;
     temp_f7_2068 = (f32) sp60 * var_f0_1956;
     temp_f5_2072 = (f32) sp68 * var_f0_1956;
     sp60 = temp_f7_2068;
-    unksp64 = temp_f6_2066;
-    temp_f2_2078 = (temp_f5_2072 * (f32) sp78) + ((temp_f7_2068 * (f32) sp70) + (temp_f6_2066 * unksp74));
+    (*(f32 *) ((u8 *) &sp58 + 0xc)) = temp_f6_2066;
+    temp_f2_2078 = (temp_f5_2072 * (f32) sp78) + ((temp_f7_2068 * (f32) sp70) + (temp_f6_2066 * (*(f32 *) ((u8 *) &sp70 + 0x4))));
     sp68 = temp_f5_2072;
     if ((temp_f2_2078 > 0.0f) && (var_f1_1991 > 900.0f)) {
         this->unk14 = 1;

@@ -72,7 +72,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp34'
+#if 0 // DRAFT: undefined identifier 'unksp3C'
 void FuryFXEarth2::CalcMatrixForVortexElement(FuryFXEarth2::VortexAttachmentPoint *arg1) {
     Matrix sp40;
     f64 sp38;                                       /* compiler-managed */
@@ -102,9 +102,9 @@ void FuryFXEarth2::CalcMatrixForVortexElement(FuryFXEarth2::VortexAttachmentPoin
     sp38 = (f64) sp18;
     sp30 = (f64) sp10 + M2C_FIELD(arg1, f64 *, 0xA0);
     temp_f3_146 = (f32) sp38 + M2C_FIELD(arg1, f32 *, 0xA8);
-    temp_f2_148 = unksp34 + M2C_FIELD(temp_r31_103, f32 *, 0x28);
+    temp_f2_148 = (*(f32 *) ((u8 *) &sp30 + 0x4)) + M2C_FIELD(temp_r31_103, f32 *, 0x28);
     sp38 = temp_f3_146;
-    unksp34 = temp_f2_148;
+    (*(f32 *) ((u8 *) &sp30 + 0x4)) = temp_f2_148;
     sp40.unk30 = (f32) sp30;
     sp40.unk34 = temp_f2_148;
     sp40.unk38 = temp_f3_146;
@@ -283,7 +283,7 @@ loop_2:
             sp100 = temp_f2_391;
             spF8 = temp_f1_387 + this->unkA0;
             sp100 = temp_f2_391 + this->unkA8;
-            unkspFC += M2C_FIELD(temp_r30_469, f32 *, 0x28);
+            (*(f32 *) ((u8 *) &spF8 + 0x4)) += M2C_FIELD(temp_r30_469, f32 *, 0x28);
             sp58 = spE8 * 5.717499035e-315;
             sp50 = -6.2831855f;
             sp40 = 6.2831855f;
@@ -955,7 +955,7 @@ loop_45:
                             sp250 = spC0;
                             spC8 = (f32) sp208 - (f32) sp268;
                             sp258 = (f64) spC8;
-                            var_f4_1491 = ((f32) sp258 * (f32) sp258) + (((f32) sp250 * (f32) sp250) + (unksp254 * unksp254));
+                            var_f4_1491 = ((f32) sp258 * (f32) sp258) + (((f32) sp250 * (f32) sp250) + ((*(f32 *) ((u8 *) &sp248 + 0xc)) * (*(f32 *) ((u8 *) &sp248 + 0xc))));
                             if (var_f4_1491 > 0.000001f) {
                                 if (var_f4_1491 > 0.0f) {
                                     temp_f1_1497 = __frsqrte(var_f4_1491);
@@ -996,7 +996,7 @@ loop_45:
                                 var_f4_1491 = 0.0f;
                             }
                             sp250 = (f32) sp250 * var_f3_1558;
-                            unksp254 *= var_f3_1558;
+                            (*(f32 *) ((u8 *) &sp248 + 0xc)) *= var_f3_1558;
                             M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                             if ((var_f4_1491 == 3000.0f) && (temp_r29_1442 != NULL)) {
                                 temp_r4_1576 = temp_r29_1442->unk8;

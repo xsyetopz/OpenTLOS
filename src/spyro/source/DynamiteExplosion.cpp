@@ -723,7 +723,7 @@ loop_70:
     sp208 = sp98;
     spA0 = arg0.unk8 - (f32) sp340;
     sp210 = (f64) spA0;
-    var_f5_998 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
+    var_f5_998 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + ((*(f32 *) ((u8 *) &sp208 + 0x4)) * (*(f32 *) ((u8 *) &sp208 + 0x4))));
     if (var_f5_998 > 1e-12f) {
         if (var_f5_998 > 0.0f) {
             temp_f2_1004 = __frsqrte(var_f5_998);
@@ -762,7 +762,7 @@ loop_70:
     } else {
         var_f4_1065 = 0.0f;
     }
-    sp8C = unksp20C * var_f4_1065;
+    sp8C = (*(f32 *) ((u8 *) &sp208 + 0x4)) * var_f4_1065;
     sp88 = (f32) sp208 * var_f4_1065;
     sp90 = (f32) sp210 * var_f4_1065;
     sp328 = (f64) sp88;
@@ -773,7 +773,7 @@ loop_70:
     sp80 = (f32) sp340 - arg0.unk8;
     temp_f0_1095 = 100.0f * (112.0f * arg1);
     sp200 = (f64) sp80;
-    temp_f21_1103 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + (unksp1FC * unksp1FC));
+    temp_f21_1103 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + ((*(f32 *) ((u8 *) &sp1F8 + 0x4)) * (*(f32 *) ((u8 *) &sp1F8 + 0x4))));
     if (temp_f21_1103 <= (temp_f0_1095 * temp_f0_1095)) {
         M2C_STRUCT_COPY((s32) &sp370.unk3C + 4, (s32) (M2C_FIELD(&gb, void **, 0x3B8) + 0xAC) + 4, 0x70);
         if (sp3B0.IsVisible(arg0, 100.0f * (25.0f * arg1)) != 0) {
@@ -813,7 +813,7 @@ loop_70:
     KDMath_BuildMatrixFromFwd(&sp370, *((MKVector3 *) &sp328), (MKVector3 *) &sp318);
     sp370.Scale3x3(&sp370, arg1);
     sp28 = -(f32) sp328;
-    sp2C = -unksp32C;
+    sp2C = -(*(f32 *) ((u8 *) &sp328 + 0x4));
     sp30 = -(f32) sp330;
     sp178 = (f64) sp28;
     sp180 = (f64) sp30;
@@ -824,7 +824,7 @@ loop_70:
     sp40 = arg0.unk8 + sp198.unk8;
     sp1B0 = (f64) sp40;
     sp370.unk30 = (f32) sp1A8;
-    sp370.unk34 = unksp1AC;
+    sp370.unk34 = (*(f32 *) ((u8 *) &sp1A8 + 0x4));
     sp370.unk38 = (f32) sp1B0;
     sp370.unk3C = 1.0f;
     gb.unk1C0.StartWarp(&sp370);
@@ -1126,7 +1126,7 @@ loop_4:
     sp390 = temp_f0_1537;
     sp198 = arg0.unk8 - (f32) sp3F8;
     sp398 = (f64) sp198;
-    var_f7_1554 = ((f32) sp398 * (f32) sp398) + (((f32) sp390 * (f32) sp390) + (unksp394 * unksp394));
+    var_f7_1554 = ((f32) sp398 * (f32) sp398) + (((f32) sp390 * (f32) sp390) + ((*(f32 *) ((u8 *) &sp390 + 0x4)) * (*(f32 *) ((u8 *) &sp390 + 0x4))));
     if (var_f7_1554 > 1e-12f) {
         if (var_f7_1554 > 0.0f) {
             temp_f4_1560 = __frsqrte(var_f7_1554);
@@ -1165,7 +1165,7 @@ loop_4:
     } else {
         var_f5_1621 = 0.0f;
     }
-    sp184 = unksp394 * var_f5_1621;
+    sp184 = (*(f32 *) ((u8 *) &sp390 + 0x4)) * var_f5_1621;
     sp180 = (f32) sp390 * var_f5_1621;
     sp188 = (f32) sp398 * var_f5_1621;
     sp3E0 = (f64) sp180;
@@ -1175,7 +1175,7 @@ loop_4:
     sp178 = (f32) sp3F8 - arg0.unk8;
     temp_f0_1651 = 100.0f * (112.0f * arg1);
     sp388 = (f64) sp178;
-    temp_f23_1659 = ((f32) sp388 * (f32) sp388) + (((f32) sp380 * (f32) sp380) + (unksp384 * unksp384));
+    temp_f23_1659 = ((f32) sp388 * (f32) sp388) + (((f32) sp380 * (f32) sp380) + ((*(f32 *) ((u8 *) &sp380 + 0x4)) * (*(f32 *) ((u8 *) &sp380 + 0x4))));
     if (temp_f23_1659 <= (temp_f0_1651 * temp_f0_1651)) {
         M2C_STRUCT_COPY((s32) &sp470.unk3C + 4, (s32) (M2C_FIELD(&gb, void **, 0x3B8) + 0xAC) + 4, 0x70);
         if (sp4B0.IsVisible(arg0, 100.0f * (25.0f * arg1)) != 0) {
@@ -1215,7 +1215,7 @@ loop_4:
     KDMath_BuildMatrixFromFwd(&sp470, *((MKVector3 *) &sp3E0), (MKVector3 *) &sp3D0);
     sp470.Scale3x3(&sp470, arg1);
     sp20 = -(f32) sp3E0;
-    sp24 = -unksp3E4;
+    sp24 = -(*(f32 *) ((u8 *) &sp3E0 + 0x4));
     sp28 = -(f32) sp3E8;
     sp300 = (f64) sp20;
     sp308 = (f64) sp28;
@@ -1226,7 +1226,7 @@ loop_4:
     sp58 = arg0.unk8 + sp320.unk8;
     sp338 = (f64) sp58;
     sp470.unk30 = (f32) sp330;
-    sp470.unk34 = unksp334;
+    sp470.unk34 = (*(f32 *) ((u8 *) &sp330 + 0x4));
     sp470.unk38 = (f32) sp338;
     sp470.unk3C = 1.0f;
     gb.unk1C0.StartWarp(&sp470);
@@ -1383,7 +1383,7 @@ loop_66:
                 sp38 = arg0.unk8 + sp1A8;
                 sp1B8 = (f64) sp38;
                 sp430.unk30 = (f32) sp1B0;
-                sp430.unk34 = unksp1B4;
+                sp430.unk34 = (*(f32 *) ((u8 *) &sp1B0 + 0x4));
                 sp430.unk38 = (f32) sp1B8;
                 sp430.unk3C = 1.0f;
                 MKModel_SetWorldMatrix(M2C_FIELD(temp_r3_2138, MKModel **, 4), sp430);
@@ -1626,7 +1626,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     sp408 = temp_f0_2357;
     sp190 = arg0.unk8 - (f32) sp440;
     sp410 = (f64) sp190;
-    var_f7_2374 = ((f32) sp410 * (f32) sp410) + (((f32) sp408 * (f32) sp408) + (unksp40C * unksp40C));
+    var_f7_2374 = ((f32) sp410 * (f32) sp410) + (((f32) sp408 * (f32) sp408) + ((*(f32 *) ((u8 *) &sp408 + 0x4)) * (*(f32 *) ((u8 *) &sp408 + 0x4))));
     if (var_f7_2374 > 1e-12f) {
         if (var_f7_2374 > 0.0f) {
             temp_f4_2380 = __frsqrte(var_f7_2374);
@@ -1665,7 +1665,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     } else {
         var_f5_2441 = 0.0f;
     }
-    sp17C = unksp40C * var_f5_2441;
+    sp17C = (*(f32 *) ((u8 *) &sp408 + 0x4)) * var_f5_2441;
     sp178 = (f32) sp408 * var_f5_2441;
     sp180 = (f32) sp410 * var_f5_2441;
     sp428 = (f64) sp178;
@@ -1675,7 +1675,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     sp170 = (f32) sp440 - arg0.unk8;
     temp_f0_2471 = 100.0f * (112.0f * arg1);
     sp400 = (f64) sp170;
-    temp_f25_2479 = ((f32) sp400 * (f32) sp400) + (((f32) sp3F8 * (f32) sp3F8) + (unksp3FC * unksp3FC));
+    temp_f25_2479 = ((f32) sp400 * (f32) sp400) + (((f32) sp3F8 * (f32) sp3F8) + ((*(f32 *) ((u8 *) &sp3F8 + 0x4)) * (*(f32 *) ((u8 *) &sp3F8 + 0x4))));
     if (temp_f25_2479 <= (temp_f0_2471 * temp_f0_2471)) {
         M2C_STRUCT_COPY((s32) &sp480.unk3C + 4, (s32) (M2C_FIELD(&gb, void **, 0x3B8) + 0xAC) + 4, 0x70);
         if (sp4C0.IsVisible(arg0, 100.0f * (25.0f * arg1)) != 0) {
@@ -1715,7 +1715,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     KDMath_BuildMatrixFromFwd(&sp480, *((MKVector3 *) &sp428), (MKVector3 *) &sp418);
     sp480.Scale3x3(&sp480, arg1);
     sp28 = -(f32) sp428;
-    sp2C = -unksp42C;
+    sp2C = -(*(f32 *) ((u8 *) &sp428 + 0x4));
     sp30 = -(f32) sp430;
     sp378 = (f64) sp28;
     sp380 = (f64) sp30;
@@ -1726,7 +1726,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     sp70 = arg0.unk8 + sp398.unk8;
     sp3B0 = (f64) sp70;
     sp480.unk30 = (f32) sp3A8;
-    sp480.unk34 = unksp3AC;
+    sp480.unk34 = (*(f32 *) ((u8 *) &sp3A8 + 0x4));
     sp480.unk38 = (f32) sp3B0;
     sp480.unk3C = 1.0f;
     gb.unk1C0.StartWarp(&sp480);
@@ -2194,7 +2194,7 @@ loop_8:
     sp370 = sp190;
     sp198 = arg0.unk8 - (f32) sp3F8;
     sp378 = (f64) sp198;
-    var_f5_3348 = ((f32) sp378 * (f32) sp378) + (((f32) sp370 * (f32) sp370) + (unksp374 * unksp374));
+    var_f5_3348 = ((f32) sp378 * (f32) sp378) + (((f32) sp370 * (f32) sp370) + ((*(f32 *) ((u8 *) &sp370 + 0x4)) * (*(f32 *) ((u8 *) &sp370 + 0x4))));
     if (var_f5_3348 > 1e-12f) {
         if (var_f5_3348 > 0.0f) {
             temp_f2_3354 = __frsqrte(var_f5_3348);
@@ -2233,7 +2233,7 @@ loop_8:
     } else {
         var_f4_3415 = 0.0f;
     }
-    sp184 = unksp374 * var_f4_3415;
+    sp184 = (*(f32 *) ((u8 *) &sp370 + 0x4)) * var_f4_3415;
     sp180 = (f32) sp370 * var_f4_3415;
     sp188 = (f32) sp378 * var_f4_3415;
     sp3E0 = (f64) sp180;
@@ -2244,7 +2244,7 @@ loop_8:
     sp178 = (f32) sp3F8 - arg0.unk8;
     temp_f0_3445 = 100.0f * (112.0f * arg1);
     sp368 = (f64) sp178;
-    temp_f25_3453 = ((f32) sp368 * (f32) sp368) + (((f32) sp360 * (f32) sp360) + (unksp364 * unksp364));
+    temp_f25_3453 = ((f32) sp368 * (f32) sp368) + (((f32) sp360 * (f32) sp360) + ((*(f32 *) ((u8 *) &sp360 + 0x4)) * (*(f32 *) ((u8 *) &sp360 + 0x4))));
     if (temp_f25_3453 <= (temp_f0_3445 * temp_f0_3445)) {
         M2C_STRUCT_COPY((s32) &sp430.unk3C + 4, (s32) (M2C_FIELD(&gb, void **, 0x3B8) + 0xAC) + 4, 0x70);
         if (sp470.IsVisible(arg0, 100.0f * (25.0f * arg1)) != 0) {
@@ -2284,7 +2284,7 @@ loop_8:
     KDMath_BuildMatrixFromFwd(&sp430, *((MKVector3 *) &sp3E0), (MKVector3 *) &sp3D0);
     sp430.Scale3x3(&sp430, arg1);
     sp20 = -(f32) sp3E0;
-    sp24 = -unksp3E4;
+    sp24 = -(*(f32 *) ((u8 *) &sp3E0 + 0x4));
     sp28 = -(f32) sp3E8;
     sp2E0 = (f64) sp20;
     sp2E8 = (f64) sp28;
@@ -2295,7 +2295,7 @@ loop_8:
     sp48 = arg0.unk8 + sp300.unk8;
     sp318 = (f64) sp48;
     sp430.unk30 = (f32) sp310;
-    sp430.unk34 = unksp314;
+    sp430.unk34 = (*(f32 *) ((u8 *) &sp310 + 0x4));
     sp430.unk38 = (f32) sp318;
     sp430.unk3C = 1.0f;
     gb.unk1C0.StartWarp(&sp430);

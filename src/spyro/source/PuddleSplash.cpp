@@ -33,7 +33,7 @@ void PuddleSplash::Deinit() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp1E4'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void PuddleSplash::Draw() {
     f64 sp278;
     f64 sp270;
@@ -131,7 +131,7 @@ void PuddleSplash::Draw() {
     spB0 = 0.0f;
     spB4 = 0.0f;
     sp40 = -(f32) sp1E0;
-    sp44 = -unksp1E4;
+    sp44 = -(*(f32 *) ((u8 *) &sp1E0 + 0x4));
     sp1F0 = (f64) spB0;
     sp1F8 = (f64) spB8;
     sp190 = (f64) sp40;
@@ -150,7 +150,7 @@ void PuddleSplash::Draw() {
     sp38 = -(f32) sp1E8;
     sp88 = sp170.unk8 + sp160.unk8;
     sp30 = -(f32) sp1E0;
-    sp34 = -unksp1E4;
+    sp34 = -(*(f32 *) ((u8 *) &sp1E0 + 0x4));
     sp180 = sp80;
     sp188 = (f64) sp88;
     sp250 = sp80;
@@ -159,7 +159,7 @@ void PuddleSplash::Draw() {
     sp118 = (f64) sp38;
     sp120.operator*(10.0f);
     sp20 = -(f32) sp1F0;
-    sp24 = -unksp1F4;
+    sp24 = -(*(f32 *) ((u8 *) &sp1F0 + 0x4));
     sp28 = -(f32) sp1F8;
     sp130 = (f64) sp20;
     sp138 = (f64) sp28;
@@ -172,7 +172,7 @@ void PuddleSplash::Draw() {
     sp268 = (f64) sp78;
     spD0.operator*(10.0f);
     sp10 = -(f32) sp1F0;
-    sp14 = -unksp1F4;
+    sp14 = -(*(f32 *) ((u8 *) &sp1F0 + 0x4));
     sp18 = -(f32) sp1F8;
     spE0 = (f64) sp10;
     spE8 = (f64) sp18;

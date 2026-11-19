@@ -697,14 +697,14 @@ loop_33:
                     *DialogBox_strncpy(&spA0, temp_r28_904, var_r23_905 - 1, 1) = 0;
                     sp58 = (f64) M2C_FIELD(arg0, f32 *, 0x28);
                     sp50 = (f64) M2C_FIELD(arg0, f32 *, 0x20);
-                    temp_f5_995 = unksp5C * var_f25_830;
-                    unksp5C = temp_f5_995;
+                    temp_f5_995 = (*(f32 *) ((u8 *) &sp58 + 0x4)) * var_f25_830;
+                    (*(f32 *) ((u8 *) &sp58 + 0x4)) = temp_f5_995;
                     if (arg0->unkC & 8) {
                         var_f1_1023 = temp_r28_904->unk10;
                     } else {
                         var_f1_1023 = temp_f29_806;
                     }
-                    var_r30_810->DrawString(&spA0, var_f1_1023, temp_f26_820, &sp60, 0, (s32) (128.0f * (f32) sp50) | (((s32) (128.0f * unksp54) << 8) | (((s32) (128.0f * temp_f5_995) << 0x18) | ((s32) (128.0f * (f32) sp58) << 0x10))), temp_f27_807, temp_f27_807, NULL, 1U);
+                    var_r30_810->DrawString(&spA0, var_f1_1023, temp_f26_820, &sp60, 0, (s32) (128.0f * (f32) sp50) | (((s32) (128.0f * (*(f32 *) ((u8 *) &sp50 + 0x4))) << 8) | (((s32) (128.0f * temp_f5_995) << 0x18) | ((s32) (128.0f * (f32) sp58) << 0x10))), temp_f27_807, temp_f27_807, NULL, 1U);
                 }
                 sp14 = temp_f26_820;
                 sp10 = 0.0f;

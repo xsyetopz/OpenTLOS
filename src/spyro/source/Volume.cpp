@@ -73,9 +73,9 @@ void Volume::GetRandPos() {
     sp48 = temp_f0_54;
     sp20 = M2C_FIELD(Volume::boundingVolume, f32 *, 8) + (f32) sp40;
     sp50 = (f64) sp20;
-    spC = M2C_FIELD(temp_r31_22, f32 *, 0x74) + (((f32) sp50 * M2C_FIELD(temp_r31_22, f32 *, 0x64)) + (((f32) sp48 * M2C_FIELD(temp_r31_22, f32 *, 0x44)) + (unksp4C * M2C_FIELD(temp_r31_22, f32 *, 0x54))));
-    sp8 = M2C_FIELD(temp_r31_22, f32 *, 0x70) + (((f32) sp50 * M2C_FIELD(temp_r31_22, f32 *, 0x60)) + (((f32) sp48 * M2C_FIELD(temp_r31_22, f32 *, 0x40)) + (unksp4C * M2C_FIELD(temp_r31_22, f32 *, 0x50))));
-    sp10 = M2C_FIELD(temp_r31_22, f32 *, 0x78) + (((f32) sp50 * M2C_FIELD(temp_r31_22, f32 *, 0x68)) + (((f32) sp48 * M2C_FIELD(temp_r31_22, f32 *, 0x48)) + (unksp4C * M2C_FIELD(temp_r31_22, f32 *, 0x58))));
+    spC = M2C_FIELD(temp_r31_22, f32 *, 0x74) + (((f32) sp50 * M2C_FIELD(temp_r31_22, f32 *, 0x64)) + (((f32) sp48 * M2C_FIELD(temp_r31_22, f32 *, 0x44)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(temp_r31_22, f32 *, 0x54))));
+    sp8 = M2C_FIELD(temp_r31_22, f32 *, 0x70) + (((f32) sp50 * M2C_FIELD(temp_r31_22, f32 *, 0x60)) + (((f32) sp48 * M2C_FIELD(temp_r31_22, f32 *, 0x40)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(temp_r31_22, f32 *, 0x50))));
+    sp10 = M2C_FIELD(temp_r31_22, f32 *, 0x78) + (((f32) sp50 * M2C_FIELD(temp_r31_22, f32 *, 0x68)) + (((f32) sp48 * M2C_FIELD(temp_r31_22, f32 *, 0x48)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(temp_r31_22, f32 *, 0x58))));
     this->unk0 = (f64) sp8;
     this->unk8 = (f64) sp10;
 }
@@ -130,35 +130,35 @@ void Volume::UpdateMatrix(Matrix &arg0) {
     temp_f3_160 = this->unk40.unk30;
     temp_f7_162 = this->unk40.unk34;
     temp_f11_164 = this->unk40.unk38;
-    sp18 = temp_f3_160 + (((f32) sp70 * temp_f2_156) + (((f32) sp68 * temp_f1_149) + (unksp6C * temp_f0_138)));
-    sp1C = temp_f7_162 + (((f32) sp70 * temp_f6_157) + (((f32) sp68 * temp_f5_150) + (unksp6C * temp_f4_142)));
-    sp20 = temp_f11_164 + (((f32) sp70 * temp_f10_158) + (((f32) sp68 * temp_f9_151) + (unksp6C * temp_f8_143)));
+    sp18 = temp_f3_160 + (((f32) sp70 * temp_f2_156) + (((f32) sp68 * temp_f1_149) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * temp_f0_138)));
+    sp1C = temp_f7_162 + (((f32) sp70 * temp_f6_157) + (((f32) sp68 * temp_f5_150) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * temp_f4_142)));
+    sp20 = temp_f11_164 + (((f32) sp70 * temp_f10_158) + (((f32) sp68 * temp_f9_151) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * temp_f8_143)));
     sp48 = (f64) sp18;
     sp50 = (f64) sp20;
     sp68 = (f64) sp18;
     sp70 = (f64) sp20;
     sp28 = M2C_FIELD(Volume::boundingVolume, f64 *, 0) + M2C_FIELD(Volume::boundingVolume, f64 *, 0x10);
-    var_f12_186 = unksp6C;
+    var_f12_186 = (*(f32 *) ((u8 *) &sp68 + 0x4));
     sp58 = sp28;
     sp30 = (f32) M2C_FIELD(Volume::boundingVolume, f64 *, 8) + M2C_FIELD(Volume::boundingVolume, f32 *, 0x18);
     sp60 = (f64) sp30;
-    sp8 = temp_f3_160 + (((f32) sp60 * temp_f2_156) + (((f32) sp58 * temp_f1_149) + (unksp5C * temp_f0_138)));
-    spC = temp_f7_162 + (((f32) sp60 * temp_f6_157) + (((f32) sp58 * temp_f5_150) + (unksp5C * temp_f4_142)));
-    sp10 = temp_f11_164 + (((f32) sp60 * temp_f10_158) + (((f32) sp58 * temp_f9_151) + (unksp5C * temp_f8_143)));
+    sp8 = temp_f3_160 + (((f32) sp60 * temp_f2_156) + (((f32) sp58 * temp_f1_149) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_f0_138)));
+    spC = temp_f7_162 + (((f32) sp60 * temp_f6_157) + (((f32) sp58 * temp_f5_150) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_f4_142)));
+    sp10 = temp_f11_164 + (((f32) sp60 * temp_f10_158) + (((f32) sp58 * temp_f9_151) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * temp_f8_143)));
     sp58 = (f64) sp8;
     sp38 = (f64) sp8;
     sp40 = (f64) sp10;
     sp60 = (f64) sp10;
-    if (var_f12_186 < unksp5C) {
+    if (var_f12_186 < (*(f32 *) ((u8 *) &sp58 + 0x4))) {
         var_f0_218 = var_f12_186;
     } else {
-        var_f0_218 = unksp5C;
+        var_f0_218 = (*(f32 *) ((u8 *) &sp58 + 0x4));
     }
     this->unk80 = var_f0_218;
-    if (var_f12_186 > unksp5C) {
+    if (var_f12_186 > (*(f32 *) ((u8 *) &sp58 + 0x4))) {
 
     } else {
-        var_f12_186 = unksp5C;
+        var_f12_186 = (*(f32 *) ((u8 *) &sp58 + 0x4));
     }
     this->unk84 = var_f12_186;
 }

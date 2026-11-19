@@ -63,7 +63,7 @@ void DamageShieldEffect::Deinit() {
     KDProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp2DC'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void DamageShieldEffect::DrawRipples() {
     f64 sp330;
     f64 sp328;
@@ -194,7 +194,7 @@ void DamageShieldEffect::DrawRipples() {
     sp128 = 0.0f;
     sp12C = 1.0f;
     sp38 = -(f32) sp2D8;
-    sp3C = -unksp2DC;
+    sp3C = -(*(f32 *) ((u8 *) &sp2D8 + 0x4));
     sp2E8 = (f64) sp128;
     sp2F0 = (f64) sp130;
     sp288 = (f64) sp38;
@@ -213,7 +213,7 @@ void DamageShieldEffect::DrawRipples() {
     sp30 = -(f32) sp2E0;
     sp80 = sp268.unk8 + sp258.unk8;
     sp28 = -(f32) sp2D8;
-    sp2C = -unksp2DC;
+    sp2C = -(*(f32 *) ((u8 *) &sp2D8 + 0x4));
     sp278 = sp78;
     sp280 = (f64) sp80;
     sp308 = sp78;
@@ -222,7 +222,7 @@ void DamageShieldEffect::DrawRipples() {
     sp210 = (f64) sp30;
     sp218.operator*(30.0f);
     sp18 = -(f32) sp2E8;
-    sp1C = -unksp2EC;
+    sp1C = -(*(f32 *) ((u8 *) &sp2E8 + 0x4));
     sp20 = -(f32) sp2F0;
     sp228 = (f64) sp18;
     sp230 = (f64) sp20;
@@ -235,7 +235,7 @@ void DamageShieldEffect::DrawRipples() {
     sp320 = (f64) sp70;
     sp1C8.operator*(30.0f);
     sp8 = -(f32) sp2E8;
-    spC = -unksp2EC;
+    spC = -(*(f32 *) ((u8 *) &sp2E8 + 0x4));
     sp10 = -(f32) sp2F0;
     sp1D8 = (f64) sp8;
     sp1E0 = (f64) sp10;

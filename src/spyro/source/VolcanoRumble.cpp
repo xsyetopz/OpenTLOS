@@ -123,7 +123,7 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1F4'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void VolcanoRumble::EmitCrudAbovePlayer() {
     f64 sp1F8;                                      /* compiler-managed */
     f64 sp1F0;
@@ -231,7 +231,7 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
                 temp_r4_313 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
                 sp1F0 = M2C_FIELD(temp_r4_313, f64 *, 0x30);
                 sp1F8 = M2C_FIELD(temp_r4_313, f64 *, 0x38);
-                unksp1F4 += 1000.0f;
+                (*(f32 *) ((u8 *) &sp1F0 + 0x4)) += 1000.0f;
                 temp_f19_323 = MKRand_Float(&gViewSeed, -10.0f, 10.0f);
                 temp_f20_328 = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
                 MKVector(MKRand_Float(&gViewSeed, -10.0f, 10.0f), temp_f20_328, temp_f19_323);

@@ -138,7 +138,7 @@ u8 EarthBossGoal_MoveToTarget::Update() {
     }
     if ((((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(9) != 0) || (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(0xA) != 0)) {
         temp_f31_199 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unkC->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
-        unksp64 = 0;
+        (*(s32 *) ((u8 *) &sp50 + 0x14)) = 0;
         MKVector(0.05f, 0.8f, 0.05f);
         sp30.operator*(500.0f);
         sp10 = sp30 * (f64) temp_f31_199;
@@ -1878,7 +1878,7 @@ void EarthBossGoal_Think::Arbitrate() {
     void *temp_r6_3778;
     void *temp_r7_3741;
 
-    if ((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &sp78.unk34 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40), temp_r3_3608 = this->unkC, temp_f6_3612 = temp_r3_3608->unk5C8, spD0 = temp_f6_3612, temp_f1_3619 = temp_r3_3608->unk5C8, spD4 = temp_f1_3619, temp_f5_3625 = temp_r3_3608->unk5CC, sp30 = (MKVector3::up.unk0 * temp_f1_3619) - (MKVector3::up.unk4 * temp_f6_3612), spD8 = temp_f5_3625, sp50 = (f64) sp30, sp28 = (MKVector3::up.unk4 * temp_f5_3625) - (MKVector3::up.unk8 * temp_f1_3619), sp2C = (MKVector3::up.unk8 * temp_f6_3612) - (MKVector3::up.unk0 * temp_f5_3625), spDC = 0.0f, sp48 = (f64) sp28, spB0 = (f32) sp48, spB4 = unksp4C, spB8 = (f32) sp50, spBC = 0.0f, spE0 = temp_r3_3608->unk5B8, spE4 = temp_r3_3608->unk5B8, temp_f1_3649 = temp_r3_3608->unk5BC, spE8 = temp_f1_3649, spEC = 1.0f, ((temp_r3_3608->Spawn(&spB0, 0, &MKVector3::up, temp_f1_3649, unksp4C, (f32) sp48, 0.0f, temp_f5_3625, temp_f6_3612, MKVector3::up.unk8, MKVector3::up.unk4) == 0) == 0))) {
+    if ((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &sp78.unk34 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40), temp_r3_3608 = this->unkC, temp_f6_3612 = temp_r3_3608->unk5C8, spD0 = temp_f6_3612, temp_f1_3619 = temp_r3_3608->unk5C8, spD4 = temp_f1_3619, temp_f5_3625 = temp_r3_3608->unk5CC, sp30 = (MKVector3::up.unk0 * temp_f1_3619) - (MKVector3::up.unk4 * temp_f6_3612), spD8 = temp_f5_3625, sp50 = (f64) sp30, sp28 = (MKVector3::up.unk4 * temp_f5_3625) - (MKVector3::up.unk8 * temp_f1_3619), sp2C = (MKVector3::up.unk8 * temp_f6_3612) - (MKVector3::up.unk0 * temp_f5_3625), spDC = 0.0f, sp48 = (f64) sp28, spB0 = (f32) sp48, spB4 = (*(f32 *) ((u8 *) &sp48 + 0x4)), spB8 = (f32) sp50, spBC = 0.0f, spE0 = temp_r3_3608->unk5B8, spE4 = temp_r3_3608->unk5B8, temp_f1_3649 = temp_r3_3608->unk5BC, spE8 = temp_f1_3649, spEC = 1.0f, ((temp_r3_3608->Spawn(&spB0, 0, &MKVector3::up, temp_f1_3649, (*(f32 *) ((u8 *) &sp48 + 0x4)), (f32) sp48, 0.0f, temp_f5_3625, temp_f6_3612, MKVector3::up.unk8, MKVector3::up.unk4) == 0) == 0))) {
         temp_r3_3659 = this->unkC;
         if ((u8) M2C_FIELD(temp_r3_3659, u8 *, 0xCDD) == 0) {
             AddGoal_Spawn();

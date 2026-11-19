@@ -124,7 +124,7 @@ void MobilePlatform::SetYaw(float arg0, float arg1) {
             }
             sp78 = M2C_FIELD(this, f64 *, 0x110);
             sp80 = M2C_FIELD(this, f64 *, 0x118);
-            sp10 = KDMath_GetSmallestAngle(unksp7C, (6.2831855f * var_f4_212) + (1.5707964f + temp_f1_209));
+            sp10 = KDMath_GetSmallestAngle((*(f32 *) ((u8 *) &sp78 + 0x4)), (6.2831855f * var_f4_212) + (1.5707964f + temp_f1_209));
             sp40 = M2C_FIELD(this, f64 *, 0x118);
             sp38 = M2C_FIELD(this, f64 *, 0x110);
             if (arg1 < 0.0f) {
@@ -145,7 +145,7 @@ void MobilePlatform::SetYaw(float arg0, float arg1) {
             sp58 = M2C_FIELD(this, f64 *, 0x110);
             sp20 = (f32) sp40;
             sp18 = (f32) sp58;
-            sp1C = unksp4C + temp_f1_259;
+            sp1C = (*(f32 *) ((u8 *) &sp48 + 0x4)) + temp_f1_259;
             sp60 = M2C_FIELD(this, f64 *, 0x118);
             M2C_FIELD(this, f64 *, 0x110) = (f64) sp18;
             sp68 = (f64) sp18;

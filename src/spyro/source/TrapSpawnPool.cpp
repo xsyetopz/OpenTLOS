@@ -133,7 +133,7 @@ void TrapSpawnPool::Resolve() {
     }
     sp40 = M2C_BITWISE(f64, M2C_FIELD(this, Matrix **, 0xE8));
     sp48 = (f64) M2C_FIELD(this, f32 *, 0xF0);
-    unksp44 -= 10000.0f;
+    (*(f32 *) ((u8 *) &sp40 + 0x4)) -= 10000.0f;
     if (MKCollision_RayCollide(*((MKVector3 *) &this->unkB4.unk30), *((MKVector3 *) &sp40), &sp60, (MKCollisionMode) 7, 0x200) != 0) {
         M2C_FIELD(this->unkB4.unk20, f32 *, 4) = (f32) (sp60.unk4 + this->unk108);
         M2C_FIELD(this, s8 *, 0x110) = (s8) ((this->unkB4.unk34 - M2C_FIELD(this->unkB4.unk20, f32 *, 4)) > (2.0f * this->unk108));
@@ -156,7 +156,7 @@ void TrapSpawnPool::Resolve() {
     sp20 = sp10;
     sp38 = (f64) sp18;
     sp28 = (f64) sp18;
-    var_f4_288 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    var_f4_288 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
     if (var_f4_288 > 0.0f) {
         temp_f1_291 = __frsqrte(var_f4_288);
         temp_f1_297 = 0.5 * temp_f1_291 * -(((f64) var_f4_288 * (temp_f1_291 * temp_f1_291)) - 3.0);

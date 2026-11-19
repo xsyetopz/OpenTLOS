@@ -117,7 +117,7 @@ s32 Sparx::SetPath(SparxPath *arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp84'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void Sparx::StateAction_FollowPathUpdate() {
     f64 sp88;
     f64 sp80;
@@ -159,7 +159,7 @@ void Sparx::StateAction_FollowPathUpdate() {
         sp80 = sp20;
         sp28 = (f32) sp78 - this->unk210;
         sp88 = (f64) sp28;
-        var_f4_201 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
+        var_f4_201 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp80 + 0x4)) * (*(f32 *) ((u8 *) &sp80 + 0x4))));
         if (var_f4_201 > 0.0f) {
             temp_f1_204 = __frsqrte(var_f4_201);
             temp_f1_210 = 0.5 * temp_f1_204 * -(((f64) var_f4_201 * (temp_f1_204 * temp_f1_204)) - 3.0);
@@ -746,7 +746,7 @@ loop_35:
     sp78 = temp_f27_1203;
     sp120 = (f64) sp70;
     sp128 = (f64) sp78;
-    var_f4_1222 = ((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + (unksp124 * unksp124));
+    var_f4_1222 = ((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + ((*(f32 *) ((u8 *) &sp118 + 0xc)) * (*(f32 *) ((u8 *) &sp118 + 0xc))));
     if (var_f4_1222 > 0.000001f) {
         if (var_f4_1222 > 0.0f) {
             temp_f1_1227 = __frsqrte(var_f4_1222);
@@ -786,7 +786,7 @@ loop_35:
         var_f5_1288 = 0.0f;
     }
     sp120 = (f32) sp120 * var_f5_1288;
-    unksp124 *= var_f5_1288;
+    (*(f32 *) ((u8 *) &sp118 + 0xc)) *= var_f5_1288;
     sp128 = (f32) sp128 * var_f5_1288;
     sp100.operator*(MKRand_Float(&gViewSeed, 250.0f, 5250.0f));
     sp20 = M2C_FIELD(this, f64 *, 0x2B0) + M2C_BITWISE(f64, sp100);
@@ -829,7 +829,7 @@ loop_35:
         temp_r3_1398 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 8);
         sp90 = M2C_FIELD(temp_r3_1398, f64 *, 0x30);
         sp98 = M2C_FIELD(temp_r3_1398, f64 *, 0x38);
-        M2C_FIELD(this, f32 *, 0x1BC) = unksp94;
+        M2C_FIELD(this, f32 *, 0x1BC) = (*(f32 *) ((u8 *) &sp90 + 0x4));
     }
     if (temp_r28_1165->IsVisible(*((MKVector3 *) &this->unk1B8), 1.0f) != 0) {
         this->unk1E4 = 1;
@@ -1070,7 +1070,6 @@ void Sparx::Enable() {
     temp_r3_2034->Enable();
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp3C'
 u8 Sparx::UpdateLerpToWorldPos(const MKVector3 &arg0, float arg1, float arg2) {
     f64 sp40;
     f64 sp38;
@@ -1087,7 +1086,7 @@ u8 Sparx::UpdateLerpToWorldPos(const MKVector3 &arg0, float arg1, float arg2) {
     sp38 = temp_f0_2053;
     sp20 = arg0.unk8 - M2C_FIELD(this, f32 *, 0x2B8);
     sp40 = (f64) sp20;
-    if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) < arg2) {
+    if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) < arg2) {
         return 0U;
     }
     sp8 = sp38 * (f64) arg1;
@@ -1098,7 +1097,6 @@ u8 Sparx::UpdateLerpToWorldPos(const MKVector3 &arg0, float arg1, float arg2) {
     sp30 = (f64) sp10;
     return 1U;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void Sparx::UpdateLerpToLocalOffset(float arg0) {
@@ -1159,9 +1157,9 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
         sp98 = temp_r4_2109[0][0].unkC;
         sp110 = (f64) sp90;
         sp118 = (f64) sp98;
-        sp40 = M2C_FIELD(temp_r3_2114, f32 *, 0x30) + (((f32) sp118 * M2C_FIELD(temp_r3_2114, f32 *, 0x20)) + (((f32) sp110 * M2C_FIELD(temp_r3_2114, f32 *, 0)) + (unksp114 * M2C_FIELD(temp_r3_2114, f32 *, 0x10))));
-        sp44 = M2C_FIELD(temp_r3_2114, f32 *, 0x34) + (((f32) sp118 * M2C_FIELD(temp_r3_2114, f32 *, 0x24)) + (((f32) sp110 * M2C_FIELD(temp_r3_2114, f32 *, 4)) + (unksp114 * M2C_FIELD(temp_r3_2114, f32 *, 0x14))));
-        sp48 = M2C_FIELD(temp_r3_2114, f32 *, 0x38) + (((f32) sp118 * M2C_FIELD(temp_r3_2114, f32 *, 0x28)) + (((f32) sp110 * M2C_FIELD(temp_r3_2114, f32 *, 8)) + (unksp114 * M2C_FIELD(temp_r3_2114, f32 *, 0x18))));
+        sp40 = M2C_FIELD(temp_r3_2114, f32 *, 0x30) + (((f32) sp118 * M2C_FIELD(temp_r3_2114, f32 *, 0x20)) + (((f32) sp110 * M2C_FIELD(temp_r3_2114, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * M2C_FIELD(temp_r3_2114, f32 *, 0x10))));
+        sp44 = M2C_FIELD(temp_r3_2114, f32 *, 0x34) + (((f32) sp118 * M2C_FIELD(temp_r3_2114, f32 *, 0x24)) + (((f32) sp110 * M2C_FIELD(temp_r3_2114, f32 *, 4)) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * M2C_FIELD(temp_r3_2114, f32 *, 0x14))));
+        sp48 = M2C_FIELD(temp_r3_2114, f32 *, 0x38) + (((f32) sp118 * M2C_FIELD(temp_r3_2114, f32 *, 0x28)) + (((f32) sp110 * M2C_FIELD(temp_r3_2114, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * M2C_FIELD(temp_r3_2114, f32 *, 0x18))));
         sp120 = (f64) sp40;
         sp128 = (f64) sp48;
         spE0 = (f64) sp40;
@@ -1175,12 +1173,12 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
             sp80 = sp10;
             sp78 = (f64) sp18;
             sp88 = (f64) sp18;
-            if (((((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (unksp74 * unksp74))) < 2250000.0f) && (MKCollision_RayCollide(*((MKVector3 *) &this->unk2AC), *((MKVector3 *) &sp120), &this->unk220, (MKCollisionMode) 7, 0x04000000) != 0)) {
+            if (((((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (*(f32 *) ((u8 *) &sp70 + 0x4))))) < 2250000.0f) && (MKCollision_RayCollide(*((MKVector3 *) &this->unk2AC), *((MKVector3 *) &sp120), &this->unk220, (MKCollisionMode) 7, 0x04000000) != 0)) {
                 sp60 = M2C_FIELD(this, f64 *, 0x220) - M2C_FIELD(this, f64 *, 0x2B0);
                 sp100 = sp60;
                 sp68 = this->unk220.unk8 - M2C_FIELD(this, f32 *, 0x2B8);
                 sp108 = (f64) sp68;
-                var_f4_2221 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + (unksp104 * unksp104));
+                var_f4_2221 = ((f32) sp108 * (f32) sp108) + (((f32) sp100 * (f32) sp100) + ((*(f32 *) ((u8 *) &spF8 + 0xc)) * (*(f32 *) ((u8 *) &spF8 + 0xc))));
                 if (var_f4_2221 > 0.000001f) {
                     if (var_f4_2221 > 0.0f) {
                         temp_f1_2227 = __frsqrte(var_f4_2221);
@@ -1220,7 +1218,7 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
                     var_f4_2288 = 0.0f;
                 }
                 sp100 = (f32) sp100 * var_f4_2288;
-                unksp104 *= var_f4_2288;
+                (*(f32 *) ((u8 *) &spF8 + 0xc)) *= var_f4_2288;
                 sp108 = (f32) sp108 * var_f4_2288;
                 spB0.operator*(50.0f);
                 sp30 = M2C_FIELD(this, f64 *, 0x220) - M2C_BITWISE(f64, spB0);
@@ -1451,7 +1449,6 @@ void Sparx::Teleport() {
     this->unkC4 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp3C'
 void Sparx::SetHint(SparxHintMsg *arg0) {
     s32 spEC;
     s32 spE8;
@@ -1585,7 +1582,7 @@ void Sparx::SetHint(SparxHintMsg *arg0) {
             sp38 = temp_f0_2983;
             sp20 = (f32) sp50 - (f32) sp60;
             sp40 = (f64) sp20;
-            if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) < (((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C)))) {
+            if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) < (((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * (*(f32 *) ((u8 *) &sp28 + 0x4)))))) {
                 spBC = 0;
                 spAC = 0;
                 spA8 = 0x18;
@@ -1639,7 +1636,6 @@ void Sparx::SetHint(SparxHintMsg *arg0) {
         break;
     }
 }
-#endif
 
 void Sparx::ResetHint() {
     this->unk1E8 = NULL;

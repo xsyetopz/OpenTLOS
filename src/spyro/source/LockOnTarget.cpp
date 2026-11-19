@@ -12,7 +12,7 @@
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: undefined identifier 'unksp7C'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void LockOnTarget::Draw() {
     f32 sp118;
     f32 sp114;
@@ -92,7 +92,7 @@ void LockOnTarget::Draw() {
         sp78 = sp38;
         sp40 = M2C_FIELD(temp_r3_140, f32 *, 8) - (f32) sp90;
         sp80 = (f64) sp40;
-        var_f4_161 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C));
+        var_f4_161 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + ((*(f32 *) ((u8 *) &sp70 + 0xc)) * (*(f32 *) ((u8 *) &sp70 + 0xc))));
         if (var_f4_161 > 0.000001f) {
             if (var_f4_161 > 0.0f) {
                 temp_f1_167 = __frsqrte(var_f4_161);
@@ -134,7 +134,7 @@ void LockOnTarget::Draw() {
         var_r3_236 = 0;
         temp_f0_241 = (f32) sp80 * var_f5_228;
         sp78 = (f32) sp78 * var_f5_228;
-        unksp7C *= var_f5_228;
+        (*(f32 *) ((u8 *) &sp70 + 0xc)) *= var_f5_228;
         sp80 = temp_f0_241;
         var_ctr_253 = 4;
         do {

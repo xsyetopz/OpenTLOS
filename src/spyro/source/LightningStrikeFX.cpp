@@ -423,7 +423,7 @@ loop_2:
     sp48 = (f32) M2C_FIELD(this, f64 *, 0x68) + spA0.unk8;
     this->unkB0 = (f32) spB0;
     spB8 = (f64) sp48;
-    this->unkB4 = unkspB4;
+    this->unkB4 = (*(f32 *) ((u8 *) &spB0 + 0x4));
     this->unkB8 = (f32) spB8;
     this->unkBC = 1.0f;
     M2C_STRUCT_COPY((s32) &unkspFC + 4, (s32) (this + 0x7C) + 4, 0x40);
@@ -653,7 +653,7 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
         sp140 = sp90;
         sp98 = arg1.unk8 - arg0.unk8;
         sp148 = (f64) sp98;
-        var_f4_1012 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + (unksp144 * unksp144));
+        var_f4_1012 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + ((*(f32 *) ((u8 *) &sp140 + 0x4)) * (*(f32 *) ((u8 *) &sp140 + 0x4))));
         if (var_f4_1012 > 0.0f) {
             temp_f1_1015 = __frsqrte(var_f4_1012);
             temp_f1_1021 = 0.5 * temp_f1_1015 * -(((f64) var_f4_1012 * (temp_f1_1015 * temp_f1_1015)) - 3.0);
@@ -729,7 +729,7 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
             sp110 = temp_f0_1178;
             sp88 = (f32) sp108 - (f32) M2C_FIELD(temp_r31_955, f64 *, 0x40);
             sp118 = (f64) sp88;
-            if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114))) > (temp_f1_1166 + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4)))) {
+            if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * (*(f32 *) ((u8 *) &sp110 + 0x4))))) > (temp_f1_1166 + (((f32) spF0 * (f32) spF0) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spF0 + 0x4)))))) {
                 M2C_FIELD(temp_r31_955, f64 *, 0x38) = (f64) M2C_FIELD(temp_r31_955, f64 *, 0x18);
                 M2C_FIELD(temp_r31_955, f64 *, 0x40) = (f64) M2C_FIELD(temp_r31_955, f64 *, 0x20);
             }
@@ -752,7 +752,7 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
             spD0 = temp_f0_1249;
             sp68 = (f32) spC8 - (f32) M2C_FIELD(temp_r31_955, f64 *, 0x40);
             spD8 = (f64) sp68;
-            if ((((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (unkspD4 * unkspD4))) > (temp_f1_1237 + (((f32) spB0 * (f32) spB0) + (unkspB4 * unkspB4)))) {
+            if ((((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + ((*(f32 *) ((u8 *) &spD0 + 0x4)) * (*(f32 *) ((u8 *) &spD0 + 0x4))))) > (temp_f1_1237 + (((f32) spB0 * (f32) spB0) + ((*(f32 *) ((u8 *) &spB0 + 0x4)) * (*(f32 *) ((u8 *) &spB0 + 0x4)))))) {
                 M2C_FIELD(temp_r31_955, f64 *, 0x38) = (f64) M2C_FIELD(temp_r31_955, f64 *, 0x28);
                 M2C_FIELD(temp_r31_955, f64 *, 0x40) = (f64) M2C_FIELD(temp_r31_955, f64 *, 0x30);
             }
@@ -1001,7 +1001,7 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     sp2C0 = sp160;
     sp168 = M2C_FIELD(arg1, f32 *, 0x30) - M2C_FIELD(arg1, f32 *, 0x20);
     sp2C8 = (f64) sp168;
-    var_f4_1517 = ((f32) sp2C8 * (f32) sp2C8) + (((f32) sp2C0 * (f32) sp2C0) + (unksp2C4 * unksp2C4));
+    var_f4_1517 = ((f32) sp2C8 * (f32) sp2C8) + (((f32) sp2C0 * (f32) sp2C0) + ((*(f32 *) ((u8 *) &sp2C0 + 0x4)) * (*(f32 *) ((u8 *) &sp2C0 + 0x4))));
     if (var_f4_1517 > 1e-12f) {
         if (var_f4_1517 > 0.0f) {
             temp_f1_1523 = __frsqrte(var_f4_1517);
@@ -1040,26 +1040,26 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     } else {
         var_f3_1584 = 0.0f;
     }
-    sp154 = unksp2C4 * var_f3_1584;
+    sp154 = (*(f32 *) ((u8 *) &sp2C0 + 0x4)) * var_f3_1584;
     sp150 = (f32) sp2C0 * var_f3_1584;
     sp158 = (f32) sp2C8 * var_f3_1584;
     sp310 = (f64) sp150;
     sp318 = (f64) sp158;
-    sp38 = ((f32) sp310 * unksp324) - (unksp314 * (f32) sp320);
-    sp30 = (unksp314 * (f32) sp328) - ((f32) sp318 * unksp324);
+    sp38 = ((f32) sp310 * (*(f32 *) ((u8 *) &sp320 + 0x4))) - ((*(f32 *) ((u8 *) &sp310 + 0x4)) * (f32) sp320);
+    sp30 = ((*(f32 *) ((u8 *) &sp310 + 0x4)) * (f32) sp328) - ((f32) sp318 * (*(f32 *) ((u8 *) &sp320 + 0x4)));
     sp34 = ((f32) sp318 * (f32) sp320) - ((f32) sp310 * (f32) sp328);
     sp338 = (f64) sp38;
     sp330 = (f64) sp30;
     sp2B0 = (f64) sp30;
     sp2B8 = (f64) sp38;
     sp24 = ((f32) sp318 * (f32) sp330) - ((f32) sp310 * (f32) sp338);
-    sp20 = (unksp314 * (f32) sp338) - ((f32) sp318 * unksp334);
-    sp28 = ((f32) sp310 * unksp334) - (unksp314 * (f32) sp330);
+    sp20 = ((*(f32 *) ((u8 *) &sp310 + 0x4)) * (f32) sp338) - ((f32) sp318 * (*(f32 *) ((u8 *) &sp328 + 0xc)));
+    sp28 = ((f32) sp310 * (*(f32 *) ((u8 *) &sp328 + 0xc))) - ((*(f32 *) ((u8 *) &sp310 + 0x4)) * (f32) sp330);
     sp330 = (f64) sp20;
     sp338 = (f64) sp28;
     sp2A0 = (f64) sp20;
     sp2A8 = (f64) sp28;
-    var_f4_1647 = ((f32) sp338 * (f32) sp338) + (((f32) sp330 * (f32) sp330) + (unksp334 * unksp334));
+    var_f4_1647 = ((f32) sp338 * (f32) sp338) + (((f32) sp330 * (f32) sp330) + ((*(f32 *) ((u8 *) &sp328 + 0xc)) * (*(f32 *) ((u8 *) &sp328 + 0xc))));
     if (var_f4_1647 > 0.000001f) {
         if (var_f4_1647 > 0.0f) {
             temp_f1_1653 = __frsqrte(var_f4_1647);
@@ -1107,7 +1107,7 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     sp300 = (f64) sp140;
     sp330 = (f32) sp330 * var_f6_1714;
     temp_f26_1740 = 30.000002f * M2C_FIELD(arg1, f32 *, 0x48);
-    unksp334 *= var_f6_1714;
+    (*(f32 *) ((u8 *) &sp328 + 0xc)) *= var_f6_1714;
     sp338 = (f32) sp338 * var_f6_1714;
     MKBegin(6);
     MKSetColorV(*((MKVector4 *) &sp300));
@@ -1128,7 +1128,7 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     MKSetTexCoord1F(1.0f, 0.0f);
     temp_f28_1780 = -sp338;
     temp_f30_1782 = -sp330;
-    temp_f29_1783 = -unksp334;
+    temp_f29_1783 = -(*(f32 *) ((u8 *) &sp328 + 0xc));
     sp118 = temp_f28_1780;
     sp110 = temp_f30_1782;
     sp114 = temp_f29_1783;

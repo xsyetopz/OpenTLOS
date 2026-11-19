@@ -456,7 +456,7 @@ void DrawBreathIcon(float arg0, float arg1, float arg2, int arg3, int arg4, cons
     if (HasAttack(arg3, arg4) == 0) {
         sp8 *= 5.2013764e-315;
         sp10 *= 5.2013764e-315;
-        unksp14 = arg5.unkC;
+        (*(f32 *) ((u8 *) &sp10 + 0x4)) = arg5.unkC;
     }
     temp_f3_848 = 73.0f * arg2;
     Hud_DrawIcon(arg3, arg4, arg0 + arg2, arg1, temp_f3_848, temp_f3_848, *((MKVector4 *) &sp8), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
