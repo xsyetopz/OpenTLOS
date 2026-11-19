@@ -98,7 +98,6 @@ s32 GetScriptArgType(int arg0) {
 }
 
 extern "C" s32 stricmp(const char *, const char *);
-
 s32 GetMessageFromString(const char *arg0) {
     const char *entry;
     s32 index;

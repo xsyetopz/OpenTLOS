@@ -227,8 +227,10 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp58'
-void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
+#if 0 // DRAFT: identifier 'TrainTrack::GetTrackZAxis(int, float)' redeclared was declared as: 'MKVector3 (int, float)' now declared as: 'void (int, float)'
+void TrainTrack::GetTrackZAxis(int arg2, float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp78;
     f64 sp70;
     f64 sp68;
@@ -251,10 +253,10 @@ void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
     s32 temp_r3_482;
     s32 var_r0_492;
 
-    ((TrainTrack *) &sp50)->GetTrackPos(arg0, arg1, M2C_ERROR(/* Read from unset register $r5 */));
+    ((TrainTrack *) &sp50)->GetTrackPos((s32) this, farg0, arg2);
     sp70 = sp50;
     sp78 = sp58;
-    ((TrainTrack *) &sp40)->GetTrackPos(arg0, 100.0f + arg1, M2C_ERROR(/* Read from unset register $r5 */));
+    ((TrainTrack *) &sp40)->GetTrackPos((s32) this, 100.0f + farg0, arg2);
     sp60 = sp40;
     sp68 = sp48;
     sp10 = sp70 - sp60;
@@ -303,15 +305,20 @@ void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
     sp24 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f3_514;
     sp20 = (f32) sp30 * var_f3_514;
     sp28 = (f32) sp38 * var_f3_514;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp20;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp28;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp28;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to 'float'
-void TrainTrack::GetTrackYAxis(int arg0, float arg1) {
-    TrainTrack sp40;
-    f32 sp30;
+#if 0 // DRAFT: identifier 'TrainTrack::GetTrackYAxis(int, float)' redeclared was declared as: 'MKVector3 (int, float)' now declared as: 'void (int, float)'
+void TrainTrack::GetTrackYAxis(int arg2, float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    f64 sp58;
+    f64 sp50;
+    MKVector3 sp40;
+    MKVector3 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -319,12 +326,8 @@ void TrainTrack::GetTrackYAxis(int arg0, float arg1) {
     f32 sp14;
     f32 sp10;
     f32 sp8;
-    f32 temp_f2_581;
-    f32 temp_f4_559;
     f32 temp_f5_564;
-    f32 temp_f5_578;
-    f32 temp_f6_582;
-    f32 temp_f7_562;
+    f32 temp_f8_560;
     f32 var_f3_652;
     f32 var_f4_585;
     f64 temp_f1_591;
@@ -333,20 +336,16 @@ void TrainTrack::GetTrackYAxis(int arg0, float arg1) {
     s32 temp_r3_620;
     s32 var_r0_630;
 
-    ((TrainTrack *) &sp30)->GetTrackZAxis(arg0, arg1);
-    sp40.GetTrackXAxis(arg0, arg1);
-    temp_f4_559 = M2C_BITWISE(f32, sp40.unk8);
-    temp_f7_562 = M2C_BITWISE(f32, sp40.unk4);
+    sp30 = GetTrackZAxis(arg2, farg0);
+    sp40 = GetTrackXAxis(arg2, farg0);
+    temp_f8_560 = M2C_BITWISE(f32, sp30);
     temp_f5_564 = M2C_BITWISE(f32, sp40);
-    sp14 = (sp38 * temp_f5_564) - (sp30 * temp_f4_559);
-    sp10 = (sp34 * temp_f4_559) - (sp38 * temp_f7_562);
-    sp18 = (sp30 * temp_f7_562) - (sp34 * temp_f5_564);
-    sp40.unk10 = (f64) sp10;
-    temp_f5_578 = M2C_BITWISE(f32, sp40.unk14);
-    sp40.unk18 = (f64) sp18;
-    temp_f2_581 = M2C_BITWISE(f32, sp40.unk10);
-    temp_f6_582 = M2C_BITWISE(f32, sp40.unk18);
-    var_f4_585 = (temp_f6_582 * temp_f6_582) + ((temp_f2_581 * temp_f2_581) + (temp_f5_578 * temp_f5_578));
+    sp14 = (sp30.unk8 * temp_f5_564) - (temp_f8_560 * sp40.unk8);
+    sp10 = (sp30.unk4 * sp40.unk8) - (sp30.unk8 * sp40.unk4);
+    sp18 = (temp_f8_560 * sp40.unk4) - (sp30.unk4 * temp_f5_564);
+    sp50 = (f64) sp10;
+    sp58 = (f64) sp18;
+    var_f4_585 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
     if (var_f4_585 > 1e-12f) {
         if (var_f4_585 > 0.0f) {
             temp_f1_591 = __frsqrte(var_f4_585);
@@ -385,16 +384,19 @@ void TrainTrack::GetTrackYAxis(int arg0, float arg1) {
     } else {
         var_f3_652 = 0.0f;
     }
-    sp24 = temp_f5_578 * var_f3_652;
-    sp20 = M2C_BITWISE(f32, sp40.unk10) * var_f3_652;
-    sp28 = temp_f6_582 * var_f3_652;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp20;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp28;
+    sp24 = (*(f32 *) ((u8 *) &sp50 + 0x4)) * var_f3_652;
+    sp20 = (f32) sp50 * var_f3_652;
+    sp28 = (f32) sp58 * var_f3_652;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp28;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp58'
-void TrainTrack::GetTrackXAxis(int arg0, float arg1) {
+#if 0 // DRAFT: identifier 'TrainTrack::GetTrackXAxis(int, float)' redeclared was declared as: 'MKVector3 (int, float)' now declared as: 'void (int, float)'
+void TrainTrack::GetTrackXAxis(int arg2, float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp78;
     f64 sp70;
     f64 sp68;
@@ -417,10 +419,10 @@ void TrainTrack::GetTrackXAxis(int arg0, float arg1) {
     s32 temp_r3_761;
     s32 var_r0_771;
 
-    ((TrainTrack *) &sp50)->GetTrackPos(arg0, arg1, M2C_ERROR(/* Read from unset register $r5 */));
+    ((TrainTrack *) &sp50)->GetTrackPos((s32) this, farg0, arg2);
     sp70 = sp50;
     sp78 = sp58;
-    ((TrainTrack *) &sp40)->GetTrackPos(arg0, arg1, M2C_ERROR(/* Read from unset register $r5 */));
+    ((TrainTrack *) &sp40)->GetTrackPos((s32) this, farg0, arg2);
     sp60 = sp40;
     sp68 = sp48;
     sp10 = sp70 - sp60;
@@ -469,8 +471,9 @@ void TrainTrack::GetTrackXAxis(int arg0, float arg1) {
     sp24 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f3_793;
     sp20 = (f32) sp30 * var_f3_793;
     sp28 = (f32) sp38 * var_f3_793;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp20;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp28;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp28;
+    return result;
 }
 #endif
 

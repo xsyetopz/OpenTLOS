@@ -47,7 +47,7 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern MKPropDescriptor *pSludgeDescriptor;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *Sludge::Update() {
     Matrix sp1B0;
     Matrix sp170;
@@ -168,7 +168,7 @@ void *Sludge::Update() {
         temp_f30_185 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
         temp_f29_190 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
         sp108 = MKVector(MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f), temp_f29_190, temp_f30_185);
-        sp118.operator*(3.0f);
+        sp118 = sp108.operator*(3.0f);
         temp_f0_205 = sp118 * (f64) temp_f31_180;
         sp38 = temp_f0_205;
         sp128 = temp_f0_205;
@@ -210,8 +210,8 @@ void *Sludge::Update() {
     sp78 = MKVector(1.0f, 0.0f, 1.0f);
     sp88 = MKVector(-1.0f, 0.0f, -1.0f);
     sp98 = KDRand_Vector(sp88, sp78);
-    spA8.operator*(500.0f);
-    spB8.operator*(0.5f);
+    spA8 = sp98.operator*(500.0f);
+    spB8 = ((MKVector3 *) &this->unkC8)->operator*(0.5f);
     sp18 = spB8 + M2C_BITWISE(f64, spA8);
     spC8 = sp18;
     sp20 = spB8.unk8 + spA8.unk8;
@@ -310,8 +310,8 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     f32 spA0;
     f32 sp9C;
     f32 sp98;
-    f64 sp88;
-    f64 sp78;
+    MKVector3 sp88;
+    MKVector3 sp78;
     f32 sp70;
     f64 sp68;
     f32 sp60;
@@ -359,8 +359,8 @@ void Sludge::Collided(MKCollisionResult &arg0) {
         sp178 = MKVector(1.0f, 1.5f, 1.0f);
         sp188 = MKVector(-1.0f, 1.0f, -1.0f);
         sp198 = KDRand_Vector(sp188, sp178);
-        sp1A8.operator*(3000.0f);
-        sp1B8.operator*(2.0f);
+        sp1A8 = sp198.operator*(3000.0f);
+        sp1B8 = ((MKVector3 *) &this->unkC8)->operator*(2.0f);
         sp48 = sp1B8 + M2C_BITWISE(f64, sp1A8);
         spA8 = 1.0f;
         spAC = 1.0f;
@@ -382,8 +382,8 @@ void Sludge::Collided(MKCollisionResult &arg0) {
         sp108 = MKVector(1.0f, 1.5f, 1.0f);
         sp118 = MKVector(-1.0f, 1.0f, -1.0f);
         sp128 = KDRand_Vector(sp118, sp108);
-        sp138.operator*(1000.0f);
-        sp148.operator*(0.5f);
+        sp138 = sp128.operator*(1000.0f);
+        sp148 = ((MKVector3 *) &this->unkC8)->operator*(0.5f);
         sp38 = sp148 + M2C_BITWISE(f64, sp138);
         sp158 = sp38;
         sp40 = sp148.unk8 + sp138.unk8;
@@ -422,9 +422,8 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     sp2B8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2E8 = 0;
     if (temp_r4_557 != NULL) {
-        ((MKProp *) &sp88)->GetPos();
-        sp2C8 = sp88;
-        sp2D0 = sp90;
+        sp88 = temp_r4_557->GetPos();
+        *(MKVector3 *) &sp2C8 = sp88;
     } else {
         sp2C8 = 0.0f;
         (*(f32 *) ((u8 *) &sp2C4 + 0x8)) = 0.0f;
@@ -526,9 +525,8 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     sp2B8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2E8 = 0;
     if (temp_r4_742 != NULL) {
-        ((MKProp *) &sp78)->GetPos();
-        sp2C8 = sp78;
-        sp2D0 = sp80;
+        sp78 = temp_r4_742->GetPos();
+        *(MKVector3 *) &sp2C8 = sp78;
     } else {
         sp2C8 = 0.0f;
         (*(f32 *) ((u8 *) &sp2C4 + 0x8)) = 0.0f;

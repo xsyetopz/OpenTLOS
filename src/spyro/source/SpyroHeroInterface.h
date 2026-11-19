@@ -22,7 +22,7 @@ public:
     virtual void Enable(void);
     virtual void Disable(void);
     virtual f32 GetCollideRadius(void);
-    virtual void GetCollisionCentre(void);
+    virtual MKVector3 GetCollisionCentre(void);
     virtual s32 GetCollisionIgnoreMaterials(void);
     virtual MKPropDescriptor ** GetCollisionInfo(void);
     virtual s32 GetLighting(void);
@@ -109,7 +109,10 @@ inline f32 SpyroHeroInterface::GetCollideRadius() {
     return 100.0f;
 }
 
-inline void SpyroHeroInterface::GetCollisionCentre() {
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline MKVector3 SpyroHeroInterface::GetCollisionCentre() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -129,7 +132,7 @@ inline void SpyroHeroInterface::GetCollisionCentre() {
     void *temp_r4_17542;
     void *temp_r5_17540;
 
-    temp_r5_17540 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 4);
+    temp_r5_17540 = M2C_FIELD(this, void **, 4);
     temp_r4_17542 = M2C_FIELD(temp_r5_17540, void **, 8);
     sp30 = 0.0f;
     temp_f1_17544 = M2C_FIELD(temp_r4_17542, f64 *, 0x30);
@@ -146,10 +149,12 @@ inline void SpyroHeroInterface::GetCollisionCentre() {
     sp40 = (f64) sp20;
     temp_f0_17569 = sp38 + M2C_FIELD(temp_r5_17540, f64 *, 0x368);
     sp8 = temp_f0_17569;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_17569;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_17569;
     sp10 = (f32) sp40 + M2C_FIELD(temp_r5_17540, f32 *, 0x370);
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
+#endif
 
 inline s32 SpyroHeroInterface::GetCollisionIgnoreMaterials() {
     return 0x220;

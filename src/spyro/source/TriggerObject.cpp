@@ -78,7 +78,6 @@ s32 TriggerPolyObject::CheckPos(const MKVector3 &arg0) {
     return var_r31_84;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'float'
 void TriggerPolyObject::LoadDone() {
     f32 temp_f1_126;
     f32 temp_f1_134;
@@ -88,22 +87,19 @@ void TriggerPolyObject::LoadDone() {
     this->unk88.Init(this->unk84, this->unk80);
     var_r5_119 = 0;
     var_r3_120 = 0;
-loop_6:
-    if (var_r5_119 < (s32) this->unk80) {
-        temp_f1_126 = *(this->unk84 + (var_r3_120 + 4));
+    while (var_r5_119 < this->unk80) {
+        temp_f1_126 = M2C_FIELD(this->unk84, f32 *, var_r3_120 + 4);
         if (temp_f1_126 < this->unk88.unk1C) {
             this->unk88.unk1C = temp_f1_126;
         }
-        temp_f1_134 = *(this->unk84 + (var_r3_120 + 4));
+        temp_f1_134 = M2C_FIELD(this->unk84, f32 *, var_r3_120 + 4);
         if (temp_f1_134 > this->unkA8) {
             this->unkA8 = temp_f1_134;
         }
         var_r5_119 += 1;
         var_r3_120 += 0x10;
-        goto loop_6;
     }
 }
-#endif
 
 s32 TriggerPolyObject::LoadLine(char *arg0, MKIniLine *arg1) {
     MKIniLine *var_r28_192;
@@ -278,7 +274,6 @@ void TriggerPlaneGroupObject::LoadDone() {
     M2C_FIELD(temp_r3_595, TriggerPlaneObject ****, 4) = NULL;
 }
 
-#if 0 // DRAFT: type mismatch 'TriggerPlaneObject **' and 'TriggerPlaneObject ***'
 void TriggerPlaneGroupObject::Deinit() {
     TriggerPlaneObject ***var_r31_616;
     TriggerPlaneObject ***var_r3_617;
@@ -292,22 +287,22 @@ void TriggerPlaneGroupObject::Deinit() {
     var_r3_617 = var_r4_615;
 loop_3:
     temp_r0_625 = M2C_FIELD(var_r3_617, u32 *, -4);
-    var_r3_617 -= 4;
+    var_r3_617 -= 1;
     if (temp_r0_625 != 0U) {
         temp_r0_620 = *var_r3_617;
-        if (temp_r0_620 < var_r31_616) {
+        if ((TriggerPlaneObject ***) temp_r0_620 < var_r31_616) {
             var_r31_616 = (TriggerPlaneObject ***) temp_r0_620;
         }
         goto loop_3;
     }
-    if (var_r3_617 != &gEmptyPtrListDL) {
+    if (var_r3_617 != (TriggerPlaneObject ***) &gEmptyPtrListDL) {
 loop_9:
         temp_r0_639 = *var_r4_615;
         if (temp_r0_639 != NULL) {
-            if (temp_r0_639 < var_r31_616) {
+            if ((TriggerPlaneObject ***) temp_r0_639 < var_r31_616) {
                 var_r31_616 = (TriggerPlaneObject ***) temp_r0_639;
             }
-            var_r4_615 += 4;
+            var_r4_615 += 1;
             goto loop_9;
         }
         if (MKHeap::Current() != NULL) {
@@ -318,7 +313,6 @@ loop_9:
     }
     this->unk80 = NULL;
 }
-#endif
 
 void TriggerPlaneObject::LoadDone() {
     TriggerBoxObject::LoadDone();
@@ -350,37 +344,31 @@ void TriggerBoxObject::LoadDone() {
     this->unk68 = this->unk78 / -2.0f;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[4])' does not match 'stricmp(signed char *)'
+extern "C" s32 stricmp(const char *, const char *);
 s32 TriggerBoxObject::LoadLine(char *arg0, MKIniLine *arg1) {
-    f64 sp18;
-    f64 sp10;
+    MKVector3 sp10;
     u8 sp8;
     MKIniLine *var_r30_786;
 
     if (arg1->IsField(arg0) != 0) {
         var_r30_786 = arg1->unkC->GetSubLine(arg1);
-loop_10:
-        if (var_r30_786 != NULL) {
-            var_r30_786->GetFieldName();
-            if (stricmp("pos") == 0) {
-                sp10 = M2C_FIELD(this, f64 *, 0x40);
-                sp18 = M2C_FIELD(this, f64 *, 0x48);
-                var_r30_786->AsVector3(0, (MKVector3 *) &sp10);
-                this->unk10.unk30 = (f32) sp10;
-                this->unk10.unk34 = (*(f32 *) ((u8 *) &sp10 + 0x4));
-                this->unk10.unk38 = (f32) sp18;
+        while (var_r30_786 != NULL) {
+            if (stricmp((const char *) var_r30_786->GetFieldName(), "pos") == 0) {
+                sp10 = *(MKVector3 *) &this->unk10.unk30;
+                var_r30_786->AsVector3(0, &sp10);
+                this->unk10.unk30 = sp10.unk0;
+                this->unk10.unk34 = sp10.unk4;
+                this->unk10.unk38 = sp10.unk8;
                 this->unk10.unk3C = 1.0f;
-            } else if ((var_r30_786->LoadVector3("rot", (MKVector3 *) TriggerBoxObject::tempBoxRot, 0) == 0) && (var_r30_786->LoadVector3("scale", (MKVector3 *) &this->unk70, 0) == 0) && (var_r30_786->LoadBool("bUseTrigger", &sp8, 0) != 0) && (sp8 == 0)) {
+            } else if ((var_r30_786->LoadVector3("rot", (MKVector3 *) TriggerBoxObject::tempBoxRot, 0) == 0) && (var_r30_786->LoadVector3("scale", (MKVector3 *) &this->unk70, 0) == 0) && (var_r30_786->LoadBool("bUseTrigger", (bool *) &sp8, 0) != 0) && (sp8 == 0)) {
                 this->unk50 &= 0xFFFFFFFE;
             }
             var_r30_786 = var_r30_786->unkC->GetNextLine(var_r30_786);
-            goto loop_10;
         }
         return 1;
     }
     return 0;
 }
-#endif
 
 void TriggerSphereObject::LoadDone() {
     f64 sp20;
@@ -406,10 +394,8 @@ void TriggerSphereObject::LoadDone() {
     this->unk80 = temp_f0_890 * temp_f0_890;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 TriggerSphereObject::LoadLine(char *arg0, MKIniLine *arg1) {
-    f64 sp18;
-    f64 sp10;
+    MKVector3 sp10;
     f32 spC;
     u8 sp9;
     u8 sp8;
@@ -418,50 +404,42 @@ s32 TriggerSphereObject::LoadLine(char *arg0, MKIniLine *arg1) {
 
     if (arg1->IsField(arg0) != 0) {
         var_r29_918 = arg1->unkC->GetSubLine(arg1);
-loop_11:
-        if (var_r29_918 != NULL) {
+        while (var_r29_918 != NULL) {
             spC = 0.0f;
             sp9 = 1;
             if (var_r29_918->LoadFloat("radius", &spC, 0) != 0) {
                 if (spC > 0.0f) {
                     this->unk80 = spC;
                 }
-            } else if (var_r29_918->LoadBool("bUseTrigger", &sp9, 0) != 0) {
+            } else if (var_r29_918->LoadBool("bUseTrigger", (bool *) &sp9, 0) != 0) {
                 if (sp9 == 0) {
                     this->unk50 &= 0xFFFFFFFE;
                 }
-            } else {
-                var_r29_918->GetFieldName();
-                if (stricmp("pos") == 0) {
-                    sp10 = M2C_FIELD(this, f64 *, 0x40);
-                    sp18 = M2C_FIELD(this, f64 *, 0x48);
-                    var_r29_918->AsVector3(0, (MKVector3 *) &sp10);
-                    this->unk10.unk30 = (f32) sp10;
-                    this->unk10.unk34 = (*(f32 *) ((u8 *) &sp10 + 0x4));
-                    this->unk10.unk38 = (f32) sp18;
-                    this->unk10.unk3C = 1.0f;
-                }
+            } else if (stricmp((const char *) var_r29_918->GetFieldName(), "pos") == 0) {
+                sp10 = *(MKVector3 *) &this->unk10.unk30;
+                var_r29_918->AsVector3(0, &sp10);
+                this->unk10.unk30 = sp10.unk0;
+                this->unk10.unk34 = sp10.unk4;
+                this->unk10.unk38 = sp10.unk8;
+                this->unk10.unk3C = 1.0f;
             }
             var_r29_918 = var_r29_918->unkC->GetNextLine(var_r29_918);
-            goto loop_11;
         }
         return 1;
     }
     var_r30_991 = 0;
     sp8 = 0;
-    if ((TriggerObject::LoadLine(arg1) != 0) || (arg1->LoadFloat("radius", &this->unk80, 0) != 0) || (arg1->LoadBool("bUseTrigger", &sp8, 0) != 0)) {
+    if ((TriggerObject::LoadLine(arg1) != 0) || (arg1->LoadFloat("radius", &this->unk80, 0) != 0) || (arg1->LoadBool("bUseTrigger", (bool *) &sp8, 0) != 0)) {
         var_r30_991 = 1;
     }
     if (var_r30_991 != 0) {
         if (sp8 == 0) {
             this->unk50 &= 1;
-            return 1;
         }
         return 1;
     }
     return 0;
 }
-#endif
 
 void TriggerSphereObject::Init(float arg0) {
     TriggerObject::Init();
@@ -528,25 +506,21 @@ void TriggerObject::Reset() {
     this->unk50 &= 0xFFFFFFF1;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[4])' does not match 'stricmp(signed char *)'
+extern "C" s32 stricmp(const char *, const char *);
 u8 TriggerObject::LoadLine(MKIniLine *arg0) {
-    f64 sp10;
-    f64 sp8;
+    MKVector3 sp8;
 
-    arg0->GetFieldName();
-    if (stricmp("pos") == 0) {
-        sp8 = M2C_FIELD(this, f64 *, 0x40);
-        sp10 = M2C_FIELD(this, f64 *, 0x48);
-        arg0->AsVector3(0, (MKVector3 *) &sp8);
-        this->unk10.unk30 = (f32) sp8;
-        this->unk10.unk34 = (*(f32 *) ((u8 *) &sp8 + 0x4));
-        this->unk10.unk38 = (f32) sp10;
+    if (stricmp((const char *) arg0->GetFieldName(), "pos") == 0) {
+        sp8 = *(MKVector3 *) &this->unk10.unk30;
+        arg0->AsVector3(0, &sp8);
+        this->unk10.unk30 = sp8.unk0;
+        this->unk10.unk34 = sp8.unk4;
+        this->unk10.unk38 = sp8.unk8;
         this->unk10.unk3C = 1.0f;
         return 1U;
     }
     return arg0->LoadInt("targetID", (int *) &this->unk54, 0);
 }
-#endif
 
 void TriggerObject::Init() {
     this->unk10.SetIdentity();

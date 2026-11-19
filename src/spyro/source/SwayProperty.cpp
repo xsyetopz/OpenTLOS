@@ -99,7 +99,7 @@ void SwayProperty::Update() {
         M2C_FIELD(temp_r3_130, f32 *, 0x80) = var_f0_141;
         temp_r3_149 = (void *) (*KDProperty::pInstanceMem + this->unk8);
         temp_r30_151 = ((u8 *) temp_r3_149) + 0x40;
-        sp40.operator*(_table_sinf(M2C_FIELD(temp_r3_149, f32 *, 0x80)));
+        sp40 = ((MKVector3 *) &this->unk20)->operator*(_table_sinf(M2C_FIELD(temp_r3_149, f32 *, 0x80)));
         sp20 = sp40 + M2C_FIELD(temp_r30_151, f64 *, 0);
         sp28 = sp40.unk8 + M2C_FIELD(temp_r30_151, f32 *, 8);
         temp_r3_170 = (void *) (*KDProperty::pInstanceMem + (this->unk8 + 0x50));
@@ -158,8 +158,8 @@ void SwayProperty::ResolveInstance() {
     Matrix sp60;
     f64 sp50;
     f64 sp48;
-    f64 sp38;
-    f64 sp28;
+    MKVector3 sp38;
+    MKVector3 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -187,11 +187,9 @@ void SwayProperty::ResolveInstance() {
         M2C_FIELD(temp_r3_351, f64 *, 8) = (f64) sp20;
         sp48 = (f64) sp18;
         sp50 = (f64) sp20;
-        MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4));
-        ((Matrix *) &sp38)->GetRotationPYR();
+        sp38 = ((Matrix *) (MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4))))->GetRotationPYR();
         temp_r3_370 = (void *) (*KDProperty::pInstanceMem + (this->unk8 + 0x40));
-        M2C_FIELD(temp_r3_370, f64 *, 0) = sp38;
-        M2C_FIELD(temp_r3_370, f64 *, 8) = sp40;
+        M2C_FIELD(temp_r3_370, MKVector3 *, 0) = sp38;
         return;
     }
     this->unk34 = MKModel_GetSubObjectIndex(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), (SubObjectType) 0, this->unk10);
@@ -203,10 +201,9 @@ void SwayProperty::ResolveInstance() {
     temp_r3_402 = MKModel_GetAnimation(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4));
     sp10 = temp_r30_387;
     temp_r3_402->CalculateMatrices(&sp60, 1, (s16 *) &sp10, NULL);
-    ((Matrix *) &sp28)->GetRotationPYR();
+    sp28 = sp60.GetRotationPYR();
     temp_r3_418 = *KDProperty::pInstanceMem + (this->unk8 + 0x40);
-    M2C_FIELD(temp_r3_418, f64 *, 0) = sp28;
-    M2C_FIELD(temp_r3_418, f64 *, 8) = sp30;
+    M2C_FIELD(temp_r3_418, MKVector3 *, 0) = sp28;
     temp_r30_424 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(temp_r30_424, void **, 0x84) = MKDynamicBone_AddDynamicBone(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), (s32) temp_r30_387);
     temp_r5_431 = *KDProperty::pInstanceMem + this->unk8;

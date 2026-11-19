@@ -157,7 +157,7 @@ void SonicAttack::UpdateSonicRings() {
     f64 sp58;
     f64 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f32 sp30;
     f64 sp28;
     f32 sp20;
@@ -193,7 +193,7 @@ loop_24:
             sp58 = (f64) sp8;
             sp60 = (f64) sp10;
             sp68 = Normalise(*((MKVector3 *) &sp58));
-            sp78.operator*(3000.0f);
+            sp78 = sp68.operator*(3000.0f);
             temp_f0_190 = sp78 * (f64) temp_f29_175;
             sp28 = temp_f0_190;
             sp88 = temp_f0_190;
@@ -270,9 +270,8 @@ block_16:
                         spB8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         spE8 = 0;
                         if (temp_r4_286 != NULL) {
-                            ((MKProp *) &sp38)->GetPos();
-                            spC8 = sp38;
-                            spD0 = sp40;
+                            sp38 = temp_r4_286->GetPos();
+                            *(MKVector3 *) &spC8 = sp38;
                         } else {
                             spC8 = 0.0f;
                             (*(f32 *) ((u8 *) &spC4 + 0x8)) = 0.0f;

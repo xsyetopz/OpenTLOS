@@ -404,7 +404,7 @@ u8 SwampTier2Goal_Attack1::Update() {
     f64 sp28;
     f32 sp20;
     f64 sp18;
-    M2C_UNK sp8;
+    MKVector3 sp8;
     AnimSequence *temp_r4_664;
     AnimSequence *temp_r4_679;
     AnimSequence *temp_r4_756;
@@ -466,8 +466,8 @@ u8 SwampTier2Goal_Attack1::Update() {
         sp20 = temp_r30_693->unk588.unk8 + (f32) sp40;
         sp50 = (f64) sp20;
         if (temp_r30_693->unk800.IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
-            ((EnemyRegion *) &sp8)->GetRegionPos();
-            if ((f32) fabs(spC - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
+            sp8 = temp_r30_693->unk800.GetRegionPos();
+            if ((f32) fabs(sp8.unk4 - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
                 var_r29_715 = 1;
             }
         }

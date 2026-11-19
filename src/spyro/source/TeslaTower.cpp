@@ -237,7 +237,7 @@ u8 TeslaTower::FindZapTargets(bool arg0) {
     f64 sp40;
     f64 sp38;
     f64 sp30;
-    f64 sp20;
+    MKVector3 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -307,9 +307,8 @@ loop_19:
                             sp108 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                             sp138 = 0;
                             if (this != NULL) {
-                                ((MKProp *) &sp20)->GetPos();
-                                sp118 = sp20;
-                                sp120 = sp28;
+                                sp20 = GetPos();
+                                *(MKVector3 *) &sp118 = sp20;
                             } else {
                                 sp118 = 0.0f;
                                 (*(f32 *) ((u8 *) &sp114 + 0x8)) = 0.0f;
@@ -826,7 +825,7 @@ s32 TeslaTower::LoadDone() {
     MKVector3 spC0;
     f64 spB8;
     f64 spB0;
-    f64 spA0;
+    MKVector3 spA0;
     f32 sp98;
     f64 sp90;
     f32 sp88;
@@ -973,9 +972,8 @@ loop_2:
     M2C_FIELD(this, f64 *, 0xE8) = (f64) sp38;
     spB8 = (f64) sp38;
     this->unk90.unk1C = M2C_BITWISE(f32, Tools_GetMatchingNodeIndex(this->unk4, "orbit"));
-    ((Animation *) &spA0)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
-    this->unk1B8 = spA0;
-    this->unk1C0 = spA8;
+    spA0 = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeOrigin(M2C_BITWISE(s32, this->unk90.unk1C));
+    *(MKVector3 *) &this->unk1B8 = spA0;
     MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, M2C_BITWISE(s32, this->unk90.unk1C)), (void (*)(MKDynamicBone *, void *)) &TeslaTower::UpdateTurretBone, &this->unk1B8);
     this->unk1C8 = 0.0f;
 }

@@ -22,7 +22,6 @@ PropGroupVolume overlay__15PropGroupVolume;
 static s32 zoneEnableMask = 1;
 
 extern "C" s32 stricmp(const char *, const char *);
-
 u8 PropGroupVolume::LoadOverlayName(MKIniLine *arg0) {
     s8 *sp8;
     s32 i;

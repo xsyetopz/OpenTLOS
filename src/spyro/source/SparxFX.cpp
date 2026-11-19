@@ -270,16 +270,16 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     sp200 = temp_f4_343;
     sp198 = (f64) sp48;
     sp1A0 = (f64) sp50;
-    sp1A8.operator*(arg2);
-    sp1B8.operator*(arg2);
+    sp1A8 = ((MKVector3 *) &sp198)->operator*(arg2);
+    sp1B8 = ((MKVector3 *) &sp208)->operator*(arg2);
     sp88 = sp1B8 + M2C_BITWISE(f64, sp1A8);
     sp1C8 = sp88;
     sp90 = sp1B8.unk8 + sp1A8.unk8;
     sp260 = sp88;
     sp1D0 = (f64) sp90;
     sp268 = (f64) sp90;
-    sp168.operator*(arg2);
-    sp178.operator*(arg2);
+    sp168 = ((MKVector3 *) &sp1F8)->operator*(arg2);
+    sp178 = ((MKVector3 *) &sp208)->operator*(arg2);
     sp78 = sp178 + M2C_BITWISE(f64, sp168);
     sp38 = -sp1F8;
     sp3C = -(*(f32 *) ((u8 *) &sp1F0 + 0xc));
@@ -291,26 +291,26 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     sp278 = (f64) sp80;
     sp118 = (f64) sp38;
     sp120 = (f64) sp40;
-    sp128.operator*(arg2);
+    sp128 = ((MKVector3 *) &sp118)->operator*(arg2);
     sp28 = -sp208;
     sp2C = -(*(f32 *) ((u8 *) &sp1F0 + 0x1c));
     sp30 = -sp210;
     sp138 = (f64) sp28;
     sp140 = (f64) sp30;
-    sp148.operator*(arg2);
+    sp148 = ((MKVector3 *) &sp138)->operator*(arg2);
     sp68 = sp148 + M2C_BITWISE(f64, sp128);
     sp158 = sp68;
     sp70 = sp148.unk8 + sp128.unk8;
     sp280 = sp68;
     sp160 = (f64) sp70;
     sp288 = (f64) sp70;
-    spD8.operator*(arg2);
+    spD8 = ((MKVector3 *) &sp1F8)->operator*(arg2);
     sp18 = -sp208;
     sp1C = -(*(f32 *) ((u8 *) &sp1F0 + 0x1c));
     sp20 = -sp210;
     spE8 = (f64) sp18;
     spF0 = (f64) sp20;
-    spF8.operator*(arg2);
+    spF8 = ((MKVector3 *) &spE8)->operator*(arg2);
     sp58 = spF8 + M2C_BITWISE(f64, spD8);
     sp108 = sp58;
     sp60 = spF8.unk8 + spD8.unk8;
@@ -401,7 +401,6 @@ void SparxFX::Enable() {
 }
 
 float _table_sinf(float);
-
 void SparxFX::GetGlowDrawParams(float &arg0, float &arg1) {
     f32 temp_f31_755;
 
@@ -463,7 +462,6 @@ void SparxFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void *SparxFX::Update() {
     f64 sp158;
     f64 sp150;
@@ -744,7 +742,6 @@ loop_24:
         }
     }
 }
-#endif
 
 s32 SparxFX::LoadDone() {
     MKAnimScript *var_r3_1491;

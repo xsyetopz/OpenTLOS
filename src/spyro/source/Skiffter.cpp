@@ -444,7 +444,7 @@ loop_197:
                     temp_f1_359 = 0.5 * temp_f1_355 * -(((f64) var_f4_343 * (temp_f1_355 * temp_f1_355)) - 3.0);
                     var_f4_343 = (f32) ((f64) var_f4_343 * (0.5 * temp_f1_359 * -(((f64) var_f4_343 * (temp_f1_359 * temp_f1_359)) - 3.0)));
                 } else if (var_f4_343 < M2C_BITWISE(f32, 0.0)) {
-                    var_r3_0 = &__float_nan;
+                    var_r3_0 = (SkiffterCritter *) (&__float_nan);
                     var_f4_343 = M2C_BITWISE(f32, __float_nan.unk0);
                 } else {
                     sp24 = var_f4_343;
@@ -469,7 +469,7 @@ loop_197:
                         break;
                     }
                     if (var_r0_388 == 1) {
-                        var_r3_0 = &__float_nan;
+                        var_r3_0 = (SkiffterCritter *) (&__float_nan);
                         var_f4_343 = M2C_BITWISE(f32, __float_nan.unk0);
                     }
                 }
@@ -557,7 +557,7 @@ loop_197:
                             temp_f2_586 = 0.5 * temp_f2_582 * -(((f64) var_f0_560 * (temp_f2_582 * temp_f2_582)) - 3.0);
                             var_f0_560 = (f32) ((f64) var_f0_560 * (0.5 * temp_f2_586 * -(((f64) var_f0_560 * (temp_f2_586 * temp_f2_586)) - 3.0)));
                         } else if (var_f0_560 < M2C_BITWISE(f32, 0.0)) {
-                            var_r3_0 = &__float_nan;
+                            var_r3_0 = (SkiffterCritter *) (&__float_nan);
                             var_f0_560 = M2C_BITWISE(f32, __float_nan.unk0);
                         } else {
                             sp20 = var_f0_560;
@@ -582,7 +582,7 @@ loop_197:
                                 break;
                             }
                             if (var_r0_615 == 1) {
-                                var_r3_0 = &__float_nan;
+                                var_r3_0 = (SkiffterCritter *) (&__float_nan);
                                 var_f0_560 = M2C_BITWISE(f32, __float_nan.unk0);
                             }
                         }
@@ -613,7 +613,7 @@ loop_197:
                             temp_f2_697 = 0.5 * temp_f2_693 * -(((f64) var_f5_681 * (temp_f2_693 * temp_f2_693)) - 3.0);
                             var_f5_681 = (f32) ((f64) var_f5_681 * (0.5 * temp_f2_697 * -(((f64) var_f5_681 * (temp_f2_697 * temp_f2_697)) - 3.0)));
                         } else if (var_f5_681 < M2C_BITWISE(f32, 0.0)) {
-                            var_r3_0 = &__float_nan;
+                            var_r3_0 = (SkiffterCritter *) (&__float_nan);
                             var_f5_681 = M2C_BITWISE(f32, __float_nan.unk0);
                         } else {
                             sp1C = var_f5_681;
@@ -638,7 +638,7 @@ loop_197:
                                 break;
                             }
                             if (var_r0_726 == 1) {
-                                var_r3_0 = &__float_nan;
+                                var_r3_0 = (SkiffterCritter *) (&__float_nan);
                                 var_f5_681 = M2C_BITWISE(f32, __float_nan.unk0);
                             }
                         }
@@ -667,7 +667,7 @@ loop_197:
                             temp_f2_804 = 0.5 * temp_f2_800 * -(((f64) var_f5_788 * (temp_f2_800 * temp_f2_800)) - 3.0);
                             var_f5_788 = (f32) ((f64) var_f5_788 * (0.5 * temp_f2_804 * -(((f64) var_f5_788 * (temp_f2_804 * temp_f2_804)) - 3.0)));
                         } else if (var_f5_788 < M2C_BITWISE(f32, 0.0)) {
-                            var_r3_0 = &__float_nan;
+                            var_r3_0 = (SkiffterCritter *) (&__float_nan);
                             var_f5_788 = M2C_BITWISE(f32, __float_nan.unk0);
                         } else {
                             sp18 = var_f5_788;
@@ -692,7 +692,7 @@ loop_197:
                                 break;
                             }
                             if (var_r0_833 == 1) {
-                                var_r3_0 = &__float_nan;
+                                var_r3_0 = (SkiffterCritter *) (&__float_nan);
                                 var_f5_788 = M2C_BITWISE(f32, __float_nan.unk0);
                             }
                         }
@@ -728,7 +728,7 @@ loop_197:
             break;
         case 1:                                     /* switch 1 */
             temp_f30_901 = gUpdateTimeDelta;
-            sp248.operator*(200.0f);
+            sp248 = ((MKVector3 *) (temp_r30_187 + 0x40))->operator*(200.0f);
             temp_f0_908 = sp248 * (f64) temp_f30_901;
             sp58 = temp_f0_908;
             sp258 = temp_f0_908;
@@ -799,7 +799,7 @@ loop_197:
                         temp_f2_1079 = 0.5 * temp_f2_1075 * -(((f64) var_f0_1053 * (temp_f2_1075 * temp_f2_1075)) - 3.0);
                         var_f0_1053 = (f32) ((f64) var_f0_1053 * (0.5 * temp_f2_1079 * -(((f64) var_f0_1053 * (temp_f2_1079 * temp_f2_1079)) - 3.0)));
                     } else if (var_f0_1053 < M2C_BITWISE(f32, 0.0)) {
-                        var_r3_0 = &__float_nan;
+                        var_r3_0 = (SkiffterCritter *) (&__float_nan);
                         var_f0_1053 = M2C_BITWISE(f32, __float_nan.unk0);
                     } else {
                         sp14 = var_f0_1053;
@@ -824,7 +824,7 @@ loop_197:
                             break;
                         }
                         if (var_r0_1108 == 1) {
-                            var_r3_0 = &__float_nan;
+                            var_r3_0 = (SkiffterCritter *) (&__float_nan);
                             var_f0_1053 = M2C_BITWISE(f32, __float_nan.unk0);
                         }
                     }
@@ -851,7 +851,7 @@ loop_197:
                         temp_f2_1174 = 0.5 * temp_f2_1170 * -(((f64) var_f6_1151 * (temp_f2_1170 * temp_f2_1170)) - 3.0);
                         var_f6_1151 = (f32) ((f64) var_f6_1151 * (0.5 * temp_f2_1174 * -(((f64) var_f6_1151 * (temp_f2_1174 * temp_f2_1174)) - 3.0)));
                     } else if (var_f6_1151 < M2C_BITWISE(f32, 0.0)) {
-                        var_r3_0 = &__float_nan;
+                        var_r3_0 = (SkiffterCritter *) (&__float_nan);
                         var_f6_1151 = M2C_BITWISE(f32, __float_nan.unk0);
                     } else {
                         sp10 = var_f6_1151;
@@ -876,7 +876,7 @@ loop_197:
                             break;
                         }
                         if (var_r0_1203 == 1) {
-                            var_r3_0 = &__float_nan;
+                            var_r3_0 = (SkiffterCritter *) (&__float_nan);
                             var_f6_1151 = M2C_BITWISE(f32, __float_nan.unk0);
                         }
                     }
@@ -903,7 +903,7 @@ loop_197:
                         temp_f2_1278 = 0.5 * temp_f2_1274 * -(((f64) var_f5_1262 * (temp_f2_1274 * temp_f2_1274)) - 3.0);
                         var_f5_1262 = (f32) ((f64) var_f5_1262 * (0.5 * temp_f2_1278 * -(((f64) var_f5_1262 * (temp_f2_1278 * temp_f2_1278)) - 3.0)));
                     } else if (var_f5_1262 < M2C_BITWISE(f32, 0.0)) {
-                        var_r3_0 = &__float_nan;
+                        var_r3_0 = (SkiffterCritter *) (&__float_nan);
                         var_f5_1262 = M2C_BITWISE(f32, __float_nan.unk0);
                     } else {
                         spC = var_f5_1262;
@@ -928,7 +928,7 @@ loop_197:
                             break;
                         }
                         if (var_r0_1307 == 1) {
-                            var_r3_0 = &__float_nan;
+                            var_r3_0 = (SkiffterCritter *) (&__float_nan);
                             var_f5_1262 = M2C_BITWISE(f32, __float_nan.unk0);
                         }
                     }
@@ -1050,7 +1050,7 @@ loop_197:
                 sp420 = 0;
                 sp424 = -1;
                 sp428 = 0;
-                var_r3_0 = MKCollision_SphereCollide(*((MKVector3 *) &sp2E8), 50.0f, (MKCollisionResult *) &sp3D8, 1, (MKCollisionMode) 7, 0);
+                var_r3_0 = (SkiffterCritter *) (MKCollision_SphereCollide(*((MKVector3 *) &sp2E8), 50.0f, (MKCollisionResult *) &sp3D8, 1, (MKCollisionMode) 7, 0));
                 if (var_r3_0 != NULL) {
                     sp2C8 = (f64) sp3E8;
                     sp2D0 = (f64) sp3F0;
@@ -1070,7 +1070,7 @@ loop_197:
                         temp_f1_1646 = 0.5 * temp_f1_1642 * -(((f64) var_f4_1630 * (temp_f1_1642 * temp_f1_1642)) - 3.0);
                         var_f4_1630 = (f32) ((f64) var_f4_1630 * (0.5 * temp_f1_1646 * -(((f64) var_f4_1630 * (temp_f1_1646 * temp_f1_1646)) - 3.0)));
                     } else if (var_f4_1630 < M2C_BITWISE(f32, 0.0)) {
-                        var_r3_0 = &__float_nan;
+                        var_r3_0 = (SkiffterCritter *) (&__float_nan);
                         var_f4_1630 = M2C_BITWISE(f32, __float_nan.unk0);
                     } else {
                         sp8 = var_f4_1630;
@@ -1095,7 +1095,7 @@ loop_197:
                             break;
                         }
                         if (var_r0_1675 == 1) {
-                            var_r3_0 = &__float_nan;
+                            var_r3_0 = (SkiffterCritter *) (&__float_nan);
                             var_f4_1630 = M2C_BITWISE(f32, __float_nan.unk0);
                         }
                     }

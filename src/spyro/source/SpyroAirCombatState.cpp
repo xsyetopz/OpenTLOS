@@ -863,7 +863,7 @@ block_37:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'unsigned char *' to 'double'
 void SpyroAirCombatState::HornDiveAttackUpdate() {
     f64 spA8;
     f64 spA0;
@@ -1589,7 +1589,7 @@ void SpyroAirCombatState::LaunchUpdate() {
     LaunchTransition();
 }
 
-#if 0 // DRAFT: pointer/array required Too many errors printed, aborting program
+#if 0 // DRAFT: pointer/array required
 void SpyroAirCombatState::LaunchExit() {
     s32 spC;
     s32 sp8;
@@ -2015,22 +2015,22 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SpyroAirCombatState::TailSweepUpdate() {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     f32 temp_f31_3569;
     f64 temp_f0_3571;
 
-    ((Spyro *) &sp18)->CalcVelTurnDir(2.3999999f);
+    sp18 = this->unk10->CalcVelTurnDir(2.3999999f);
     temp_f31_3569 = 750.0f * ((KDInput *) (this->unk10->GetInput()))->GetLeftMag();
-    temp_f0_3571 = sp18 * (f64) temp_f31_3569;
+    temp_f0_3571 = M2C_BITWISE(f64, sp18) * (f64) temp_f31_3569;
     sp8 = temp_f0_3571;
     sp28 = temp_f0_3571;
-    sp10 = sp20 * temp_f31_3569;
+    sp10 = sp18.unk8 * temp_f31_3569;
     sp30 = (f64) sp10;
     UpdateAirStrafe();
     UpdateTailSweepStickToTarget();

@@ -30,148 +30,122 @@ void WaterTrickleEmitter::Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix *' to 'float'
+extern "C" f64 acos(f64);
 void *WaterTrickleEmitter::Update() {
-    f64 sp68;                                       /* compiler-managed */
-    f64 sp60;                                       /* compiler-managed */
     MKVector3 sp50;
-    f64 sp48;
-    f64 sp40;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp28;
-    f64 sp20;
+    MKVector3 sp60;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
     f32 sp8;
-    M2C_UNK *var_r30_89;
-    f32 temp_f28_136;
-    f32 temp_f29_130;
-    f32 temp_f30_141;
-    f32 temp_f4_152;
-    f64 temp_f1_168;
-    s32 var_r29_104;
-    void *temp_r3_117;
-    void *temp_r3_171;
+    KDPathSegment *var_r30;
+    f32 temp_f29;
+    f32 temp_f28;
+    f32 temp_f30;
+    f32 temp_f4;
+    f32 temp_f31;
+    s32 var_r29;
 
-    this->unk84 = M2C_BITWISE(f32, this->unk84) + gUpdateTimeDelta;
-    if (M2C_BITWISE(f32, this->unk84) >= MKRand_Float((int *) &gViewSeed, M2C_BITWISE(f32, this->unk4C.unk2C), M2C_BITWISE(f32, this->unk4C.unk30))) {
-        var_r30_89 = NULL;
-        sp38 = 0.0f;
-        sp30 = 0.0f;
-        sp34 = 0.0f;
-        this->unk84 = 0.0f;
-        sp68 = (f64) sp38;
-        sp60 = (f64) sp30;
-        if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
-            var_r30_89 = (long *) (&this->unk4C);
+    this->unk88 = this->unk88 + gUpdateTimeDelta;
+    if (this->unk88 >= MKRand_Float((int *) &gViewSeed, M2C_FIELD(&this->unk4C, f32 *, 0x30), this->unk4C.unk34)) {
+        this->unk88 = 0.0f;
+        var_r30 = NULL;
+        if (this->unk94 != 0) {
+            var_r30 = &this->unk4C;
         }
-        var_r29_104 = 0;
-loop_10:
-        if (var_r29_104 < M2C_BITWISE(s32, this->unk4C.unk34)) {
-            if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
-                ((KDPathSegment *) &this->unk4C)->GetPositionAlongPath(0.0f, sp50);
+        sp60.unk0 = 0.0f;
+        sp60.unk4 = 0.0f;
+        sp60.unk8 = 0.0f;
+        sp60.unkC = 0.0f;
+        var_r29 = 0;
+        while (var_r29 < this->unk84) {
+            if (this->unk94 != 0) {
+                this->unk4C.GetPositionAlongPath(0.0f, sp50);
             } else {
-                temp_r3_117 = this->unk8;
-                sp50 = M2C_FIELD(temp_r3_117, f64 *, 0x30);
-                sp50.unk8 = M2C_FIELD(temp_r3_117, f64 *, 0x38);
-                if (this->unkA0.unk3C > 0.0f) {
-                    temp_f29_130 = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
-                    MKRand_Float((int *) &gViewSeed, this->unkE0, 1.0f);
-                    temp_f28_136 = (f32) acos();
-                    temp_f30_141 = MKRand_Float((int *) &gViewSeed, this->unk88, this->unk8C);
-                    _table_sincosf(temp_f28_136, sp18, sp14);
-                    _table_sincosf(temp_f29_130, sp10, spC);
-                    temp_f4_152 = sp18 * temp_f30_141;
-                    sp68 = sp14 * temp_f30_141;
-                    (*(f32 *) ((u8 *) &sp50 + 0x14)) = sp10 * temp_f4_152;
-                    sp60 = spC * temp_f4_152;
-                    (*(f32 *) ((u8 *) &sp50 + 0x1c)) = 0.0f;
+                sp50.unk0 = M2C_FIELD(this->unk8, f32 *, 0x30);
+                sp50.unk4 = M2C_FIELD(this->unk8, f32 *, 0x34);
+                sp50.unk8 = M2C_FIELD(this->unk8, f32 *, 0x38);
+                if (this->unkE0 > 0.0f) {
+                    temp_f29 = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
+                    temp_f28 = (f32) acos(MKRand_Float((int *) &gViewSeed, this->unkE4, 1.0f));
+                    temp_f30 = MKRand_Float((int *) &gViewSeed, this->unk8C, this->unk90);
+                    _table_sincosf(temp_f28, sp18, sp14);
+                    _table_sincosf(temp_f29, sp10, spC);
+                    temp_f4 = sp18 * temp_f30;
+                    sp60.unk0 = spC * temp_f4;
+                    sp60.unk4 = sp10 * temp_f4;
+                    sp60.unk8 = sp14 * temp_f30;
+                    sp60.unkC = 0.0f;
                 } else {
-                    temp_f1_168 = MKRand_Float((int *) &gViewSeed, this->unk88, this->unk8C);
-                    temp_r3_171 = ((u8 *) this->unk8) + 0x20;
-                    sp20 = M2C_FIELD(temp_r3_171, f64 *, 0) * temp_f1_168;
-                    sp40 = sp20;
-                    sp28 = M2C_FIELD(temp_r3_171, f32 *, 8) * (f32) temp_f1_168;
-                    sp60 = sp20;
-                    sp48 = (f64) sp28;
-                    sp68 = (f64) sp28;
+                    temp_f31 = MKRand_Float((int *) &gViewSeed, this->unk8C, this->unk90);
+                    sp60.unk0 = M2C_FIELD(this->unk8, f32 *, 0x20) * temp_f31;
+                    sp60.unk4 = M2C_FIELD(this->unk8, f32 *, 0x24) * temp_f31;
+                    sp60.unk8 = M2C_FIELD(this->unk8, f32 *, 0x28) * temp_f31;
                 }
             }
             sp8 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
-            ((WaterDripPS *) (M2C_FIELD(&gb, WaterDripPS **, 0x6C)))->Emit(sp50, *((MKVector3 *) &sp60), sp8, 1U, 0U, (KDPathSegment *) var_r30_89);
-            var_r29_104 += 1;
-            goto loop_10;
+            M2C_FIELD(&gb, WaterDripPS **, 0x6C)->Emit(sp50, sp60, sp8, true, false, var_r30);
+            var_r29 += 1;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 s32 WaterTrickleEmitter::LoadDone() {
-    M2C_UNK *temp_r3_239;
-    M2C_UNK *temp_r3_245;
-
     MKProp::LoadDone();
-    if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
-        ((KDPathSegment *) &this->unk4C)->LoadDone();
-        this->unk4C.unk34 = 1e-45f;
+    if (this->unk94 != 0) {
+        this->unk4C.LoadDone();
+        this->unk84 = 1;
     }
-    ((Matrix *) &this->unkA0)->SetIdentity();
-    temp_r3_239 = (long *) (&this->unkA0);
-    ((Matrix *) temp_r3_239)->RotatePYR((Matrix *) temp_r3_239, MKProp::loadInfo + 0x50);
-    temp_r3_245 = (long *) (&this->unkA0);
-    ((Matrix *) temp_r3_245)->Scale3x3((Matrix *) temp_r3_245, MKProp::loadInfo + 0x60);
-    this->unkA0.unk2C = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
-    this->unkA0.unk30 = M2C_BITWISE(f32, MKProp::loadInfo.__vptr);
-    this->unkA0.unk34 = MKProp::loadInfo.unk48;
-    this->unkA0.unk38 = 1.0f;
-    this->unkE0 = _table_sinf(1.5707964f + this->unkA0.unk3C);
+    this->unkA0.SetIdentity();
+    this->unkA0.RotatePYR(&this->unkA0, M2C_FIELD(&MKProp::loadInfo, MKVector3 *, 0x50));
+    this->unkA0.Scale3x3(&this->unkA0, M2C_FIELD(&MKProp::loadInfo, MKVector3 *, 0x60));
+    this->unkA0.unk30 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
+    this->unkA0.unk34 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x44);
+    this->unkA0.unk38 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x48);
+    this->unkA0.unk3C = 1.0f;
+    this->unkE4 = _table_sinf(1.5707964f + this->unkE0);
 }
-#endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match 'stricmp(signed char *)'
+extern "C" s32 stricmp(s8 *, const char *);
 s32 WaterTrickleEmitter::LoadLine(MKIniLine *arg0) {
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("MinEmitRate", (f32 *) &this->unk4C.unk2C, 0) != 0) || (arg0->LoadFloat("MaxEmitRate", (f32 *) &this->unk4C.unk30, 0) != 0) || (arg0->LoadInt("NumPerEmit", (int *) &this->unk4C.unk34, 0) != 0) || (arg0->LoadFloat("MinEmitVel", &this->unk88, 0) != 0) || (arg0->LoadFloat("MaxEmitVel", &this->unk8C, 0) != 0) || (arg0->LoadFloat("Angle", &this->unkA0.unk3C, 0) != 0)) {
+    if (MKProp::LoadLine(arg0) != 0 ||
+        arg0->LoadFloat("MinEmitRate", &M2C_FIELD(&this->unk4C, f32 *, 0x30), 0) != 0 ||
+        arg0->LoadFloat("MaxEmitRate", &this->unk4C.unk34, 0) != 0 ||
+        arg0->LoadInt("NumPerEmit", (int *) &this->unk84, 0) != 0 ||
+        arg0->LoadFloat("MinEmitVel", &this->unk8C, 0) != 0 ||
+        arg0->LoadFloat("MaxEmitVel", &this->unk90, 0) != 0 ||
+        arg0->LoadFloat("Angle", &this->unkE0, 0) != 0) {
         return 1;
     }
     if (arg0->GetFieldName() != NULL) {
         arg0->GetFieldName();
-        if (stricmp("Waypoints") == 0) {
+        if (stricmp(arg0->GetFieldName(), "Waypoints") == 0) {
             if (arg0->GetNmbrOfSubLines() == 0) {
-                M2C_FIELD(this, s8 *, 0x94) = 0;
+                this->unk94 = 0;
             } else {
-                M2C_FIELD(this, s8 *, 0x94) = 1;
+                this->unk94 = 1;
             }
-            ((KDPathSegment *) &this->unk4C)->Init();
-            ((KDPathSegment *) &this->unk4C)->LoadLine(arg0);
+            this->unk4C.Init();
+            this->unk4C.LoadLine(arg0);
         }
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'Matrix *'
 void WaterTrickleEmitter::Init() {
-    M2C_UNK *temp_r3_391;
-
     MKProp::Init();
-    M2C_FIELD(this, s8 *, 0x94) = 0;
-    temp_r3_391 = (long *) (&this->unkA0);
-    this->unk4C.unk2C = 0.0f;
-    this->unk4C.unk30 = 0.0f;
-    this->unk84 = 0.0f;
+    this->unk94 = 0;
+    M2C_FIELD(&this->unk4C, f32 *, 0x30) = 0.0f;
     this->unk4C.unk34 = 0.0f;
-    this->unk8 = temp_r3_391;
-    ((Matrix *) temp_r3_391)->SetIdentity();
     this->unk88 = 0.0f;
-    this->unk8C = 200.0f;
-    this->unkA0.unk3C = 0.0f;
+    this->unk84 = 0;
+    this->unk8 = &this->unkA0;
+    this->unkA0.SetIdentity();
+    this->unk8C = 0.0f;
+    this->unk90 = 200.0f;
+    this->unkE0 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void WaterTrickleEmitterDescriptor::Init() {

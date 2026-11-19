@@ -10,6 +10,7 @@ class MKIniLine;
 class MKMessage;
 class MKProp;
 class MKPropDescriptor;
+class MKVector3;
 class TrainTrack;
 class TrainTrackDescriptor;
 
@@ -25,9 +26,9 @@ public:
     virtual void * Update(void);
     virtual void Message(MKMessage *);
     void Build(void);
-    void GetTrackZAxis(int, float);
-    void GetTrackYAxis(int, float);
-    void GetTrackXAxis(int, float);
+    MKVector3 GetTrackZAxis(int, float);
+    MKVector3 GetTrackYAxis(int, float);
+    MKVector3 GetTrackXAxis(int, float);
     void GetTrackPos(int, float, int);
     f32 GetTrackLength(int);
     /* 0x04c */ KDSpline unk4C;

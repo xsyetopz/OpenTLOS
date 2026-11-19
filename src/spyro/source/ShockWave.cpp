@@ -26,7 +26,7 @@
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
-extern void **gb;
+extern HeroInterface *gb;
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void ShockWave::UpdateShockWave(int arg0) {
@@ -314,7 +314,7 @@ void ShockWave::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
+#if 0 // DRAFT: illegal operand
 void *ShockWave::Update() {
     s8 spD1;
     s8 spD0;
@@ -340,9 +340,9 @@ void *ShockWave::Update() {
     f64 sp60;                                       /* compiler-managed */
     f64 sp58;
     f64 sp50;
-    HeroInterface sp40;
-    f64 sp30;
-    f64 sp20;
+    MKVector3 sp40;
+    MKVector3 sp30;
+    MKVector3 sp20;
     f32 sp18;
     f64 sp10;
     f32 sp8;
@@ -375,9 +375,9 @@ void *ShockWave::Update() {
         if ((u8) M2C_FIELD(temp_r31_628, u8 *, 0x90) != 0) {
             M2C_FIELD(temp_r31_628, f32 *, 0x9C) = (f32) ((1200.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r31_628, f32 *, 0x9C));
             temp_r27_640 = (void *) (MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_628, MKModel **, 0xA0)) + 0x30);
-            sp40.GetPos();
+            sp40 = gb->GetPos();
             sp10 = sp40 - M2C_FIELD(temp_r27_640, f64 *, 0);
-            sp18 = sp48 - M2C_FIELD(temp_r27_640, f32 *, 8);
+            sp18 = sp40.unk8 - M2C_FIELD(temp_r27_640, f32 *, 8);
             var_f29_658 = -((0.166f * M2C_FIELD(temp_r31_628, f32 *, 0x94)) - M2C_FIELD(temp_r31_628, f32 *, 0x9C));
             sp70 = sp10;
             sp50 = sp10;
@@ -392,7 +392,7 @@ void *ShockWave::Update() {
             temp_f1_676 = (f32) sp70 * (f32) sp70;
             temp_f2_680 = (f32) sp78 * (f32) sp78;
             temp_f30_684 = temp_f2_680 + (temp_f1_676 + ((*(f32 *) ((u8 *) &sp70 + 0x4)) * (*(f32 *) ((u8 *) &sp70 + 0x4))));
-            if (M2C_FIELD(*gb, u8 (**)(void **, f32, f32), 0x64)(gb, temp_f1_676, temp_f2_680) == 0) {
+            if (gb->InAir(temp_f1_676, temp_f2_680) == 0) {
                 temp_f0_691 = 0.9f * M2C_FIELD(temp_r31_628, f32 *, 0x9C);
                 if ((temp_f30_684 < (temp_f0_691 * temp_f0_691)) && (temp_f30_684 > (var_f29_658 * var_f29_658)) && ((u8) this->unk160 != 0) && (((u8) this->unk161 != 0) || ((u8) this->unk162 != 0))) {
                     sp60 = sp70;
@@ -445,7 +445,7 @@ void *ShockWave::Update() {
                     temp_f1_805 = (f64) sp60 * 5.578592756e-315;
                     sp60 = temp_f1_805;
                     sp68 = temp_f0_800 * 205.0f;
-                    temp_ret_815 = M2C_FIELD(*gb, u8 (**)(void **, f64, f32), 0x50)(gb, temp_f1_805, temp_f2_796);
+                    temp_ret_815 = gb->IsInvincible(temp_f1_805, temp_f2_796);
                     if (temp_ret_815 == 0) {
                         Console_Execute(Str_Printf("send %s %d", this->unk158, this->unk154, M2C_BITWISE(f32, temp_ret_815)));
                     }
@@ -465,9 +465,8 @@ void *ShockWave::Update() {
                         spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         spD0 = 0;
                         if (this != NULL) {
-                            ((MKProp *) &sp30)->GetPos();
-                            spB0 = sp30;
-                            spB8 = sp38;
+                            sp30 = GetPos();
+                            *(MKVector3 *) &spB0 = sp30;
                         } else {
                             spB0 = 0.0f;
                             (*(f32 *) ((u8 *) &spAC + 0x8)) = 0.0f;
@@ -490,9 +489,8 @@ void *ShockWave::Update() {
                         spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         spD0 = 0;
                         if (this != NULL) {
-                            ((MKProp *) &sp20)->GetPos();
-                            spB0 = sp20;
-                            spB8 = sp28;
+                            sp20 = GetPos();
+                            *(MKVector3 *) &spB0 = sp20;
                         } else {
                             spB0 = 0.0f;
                             (*(f32 *) ((u8 *) &spAC + 0x8)) = 0.0f;
@@ -500,7 +498,7 @@ void *ShockWave::Update() {
                         }
                         spD1 = 0;
                     }
-                    M2C_FIELD(*gb, M2C_UNK (**)(void **, s32 *), 0x1C)(gb, &sp80);
+                    gb->Message(&sp80);
                 }
             }
             UpdateShockWave(var_r30_625);

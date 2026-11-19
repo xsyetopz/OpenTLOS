@@ -8,6 +8,7 @@
 #include "spyro/source/SpyroTools.h"
 
 class MKMessage;
+class MKVector3;
 class Spyro;
 class SpyroFallState;
 class SpyroFallState_cpp;
@@ -27,7 +28,7 @@ public:
     virtual void Message(MKMessage *);
     virtual void * GetStateInfo(void);
     void SetStrafeJump(bool);
-    void GetFallVel(void);
+    MKVector3 GetFallVel(void);
     void Landed(bool);
     u8 HoverTransition(void);
     void HoverUpdate(void);

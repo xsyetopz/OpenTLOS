@@ -69,7 +69,7 @@ public:
 class SafePosInfo {
 public:
     void SetPos(const MKVector3 &, MKProp *);
-    void GetPos(void);
+    MKVector3 GetPos(void);
     /* 0x000 */ f64 unk0;
     /* 0x008 */ f64 unk8;
     /* 0x010 */ MKProp* unk10;
@@ -96,7 +96,7 @@ public:
     virtual void Disable(void);
     virtual void pure_slot12() = 0;  // name unknown: no descendant fills this slot
     virtual void pure_slot13() = 0;  // name unknown: no descendant fills this slot
-    virtual void GetCenterPos(void);
+    virtual MKVector3 GetCenterPos(void);
     virtual void GetProp(void);
     virtual s32 GetEnemy(void);
     virtual s32 IsHero(void);
@@ -107,7 +107,7 @@ public:
     virtual s32 GetMoveToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
-    virtual void GetVel(void);
+    virtual MKVector3 GetVel(void);
     virtual f32 GetCollisionRadius(void);
     virtual f32 GetCollisionHeight(void);
     virtual f32 GetTimeLastHit(void);
@@ -153,9 +153,9 @@ public:
     void AirMediumExit(void);
     void AirMediumUpdate(void);
     void AirMediumEnter(void);
-    void CalcVelTurnDir(float);
-    void CalcYawTurnDir(float);
-    void GetJoyDir(void);
+    MKVector3 CalcVelTurnDir(float);
+    MKVector3 CalcYawTurnDir(float);
+    MKVector3 GetJoyDir(void);
     f32 GetJoyYaw(void);
     KDCamera * GetCamera(void);
     InputModifier * GetInput(void);
@@ -175,9 +175,9 @@ public:
     void PreSetAnim(void);
     void SetAnim(MKAnim *, float, Spyro::AnimScriptNode, unsigned int, float);
     void SetAnim(unsigned int, float, Spyro::AnimScriptNode, unsigned int, float);
-    void GetRefPos(Spyro::RefPoints);
+    MKVector3 GetRefPos(Spyro::RefPoints);
     void GetNodeMatrix(Spyro::Nodes, Matrix *);
-    void GetNodePos(int);
+    MKVector3 GetNodePos(int);
     u8 SlipTest(void);
     void HornDiveTranstion(void);
     u8 TailSweepTailStrikeTransition(void);
@@ -233,11 +233,11 @@ public:
     void ModelOffsetPostUpdate(void);
     void ModelOffsetPreUpdate(void);
     void SetModelVisualOffset(const MKVector3 &, bool);
-    void ApplyEdgePhysics(MKVector3);
-    void ApplyIcePhysics(MKVector3);
-    void ApplySlipperyPhysics(MKVector3);
-    void ApplyPhysics(MKVector3);
-    void ClipVelToEdge(const MKVector3 &);
+    MKVector3 ApplyEdgePhysics(MKVector3);
+    MKVector3 ApplyIcePhysics(MKVector3);
+    MKVector3 ApplySlipperyPhysics(MKVector3);
+    MKVector3 ApplyPhysics(MKVector3);
+    MKVector3 ClipVelToEdge(const MKVector3 &);
     void CheckForEdge(void);
     u8 CheckForEdge(float, const MKVector3 &, bool, MKVector3 *);
     u8 CheckForLedge(const MKVector3 &, MKVector3 *, MKVector3 *, MKVector3 *, MKProp **);
@@ -248,7 +248,7 @@ public:
     void UpdateSpyroCameraInfo(void);
     void DrawDebug(void);
     void DrawSpyro(void);
-    void GetCollisionCentre(void);
+    MKVector3 GetCollisionCentre(void);
     static u8 pNodeNames[0x18];
     static u8 stateCreators[0xf0];
     static u8 mediumFSMStates[0x6c];
@@ -575,25 +575,28 @@ inline MKCollisionInfo *Spyro::GetCollisionInfo() {
     return &this->unk26C;
 }
 
-inline void Spyro::GetVel() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x338);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x340);
+inline MKVector3 Spyro::GetVel() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(this, f64 *, 0x338);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(this, f64 *, 0x340);
+    return result;
 }
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 inline s32 Spyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     sp18 = MKVector(0.0f, 160.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -605,16 +608,16 @@ inline s32 Spyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 inline s32 Spyro::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     sp18 = MKVector(0.0f, 160.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -667,7 +670,10 @@ inline void Spyro::GetProp() {
 
 }
 
+#if 0 // DRAFT: identifier 'Spyro::GetCollisionCentre()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void Spyro::GetCollisionCentre() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -686,7 +692,7 @@ inline void Spyro::GetCollisionCentre() {
     f64 temp_f1_1864;
     void *temp_r5_1862;
 
-    temp_r5_1862 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
+    temp_r5_1862 = this->unk8;
     sp1C = 100.0f;
     temp_f1_1864 = M2C_FIELD(temp_r5_1862, f64 *, 0x30);
     sp18 = 0.0f;
@@ -700,11 +706,13 @@ inline void Spyro::GetCollisionCentre() {
     sp58 = temp_f0_1876;
     sp10 = (f32) sp50 + (f32) sp40;
     sp60 = (f64) sp10;
-    temp_f0_1889 = sp58 + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x368);
+    temp_f0_1889 = sp58 + this->unk368;
     sp28 = temp_f0_1889;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_1889;
-    sp30 = (f32) sp60 + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x370);
-    M2C_FIELD(this, f64 *, 8) = (f64) sp30;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_1889;
+    sp30 = (f32) sp60 + M2C_FIELD(this, f32 *, 0x370);
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp30;
+    return result;
 }
+#endif
 
 #endif  // SPYRO_SOURCE_SPYRO_H

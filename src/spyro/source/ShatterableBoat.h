@@ -37,7 +37,7 @@ public:
     virtual s32 GetMoveToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
-    virtual void GetVel(void);
+    virtual MKVector3 GetVel(void);
     virtual f32 GetCollisionRadius(void);
     virtual f32 GetCollisionHeight(void);
     virtual f32 GetTimeLastHit(void);
@@ -124,9 +124,12 @@ inline f32 ShatterableBoat::GetCollisionRadius() {
     return 100.0f;
 }
 
-inline void ShatterableBoat::GetVel() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x318);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x320);
+inline MKVector3 ShatterableBoat::GetVel() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(this, f64 *, 0x318);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(this, f64 *, 0x320);
+    return result;
 }
 
 inline s32 ShatterableBoat::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {

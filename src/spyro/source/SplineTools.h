@@ -4,13 +4,14 @@
 #include <dolphin/types.h>
 
 class KDUniformSpline;
+class MKVector3;
 class Matrix;
 class SplitPath;
 
 class SplitPath {
 public:
     Matrix ** GetPathData(float, float *);
-    void GetVelocity(float);
+    MKVector3 GetVelocity(float);
     void GetPosition(float);
     void Deinit(void);
     void Init(const KDUniformSpline &, int, int);

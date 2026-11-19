@@ -626,8 +626,8 @@ loop_38:
                 sp28 = -arg0->unk18;
                 sp70 = (f64) sp20;
                 sp78 = (f64) sp28;
-                sp80.operator*(10000.0f);
-                sp90.operator*(20000.0f);
+                sp80 = ((MKVector3 *) &sp70)->operator*(10000.0f);
+                sp90 = ((MKVector3 *) &sp120)->operator*(20000.0f);
                 temp_f0_616 = sp130 + M2C_BITWISE(f64, sp90);
                 sp10 = temp_f0_616;
                 spA0 = temp_f0_616;
@@ -885,27 +885,28 @@ KDInput *SpeedWaySpyro::GetInput() {
     return M2C_FIELD(&gb, KDInput **, 0x354);
 }
 
+#if 0 // DRAFT: identifier 'SpeedWaySpyro::GetJoyDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void SpeedWaySpyro::GetJoyDir() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
     KDInput *temp_r3_1310;
     KDInput *temp_r3_1334;
-    SpeedWaySpyro *temp_r31_1299;
     f32 var_f1_1323;
     f32 var_f1_1347;
     f32 var_f31_1304;
     u8 var_r4_1312;
     u8 var_r4_1336;
 
-    temp_r31_1299 = M2C_ERROR(/* Read from unset register $r4 */);
     ((GameData *) GameData::gameData)->GetGameSettings();
     if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x13) != 0) {
         var_f31_1304 = -1.0f;
     } else {
         var_f31_1304 = 1.0f;
     }
-    temp_r3_1310 = temp_r31_1299->GetInput();
+    temp_r3_1310 = GetInput();
     var_r4_1312 = 0;
     if (((u8) temp_r3_1310->unk5 != 0) || ((u8) temp_r3_1310->unk4 != 0)) {
         var_r4_1312 = 1;
@@ -915,7 +916,7 @@ void SpeedWaySpyro::GetJoyDir() {
     } else {
         var_f1_1323 = MKInput_GetState(0x10, (MKInputDevices) temp_r3_1310->unk0, NULL, NULL);
     }
-    temp_r3_1334 = temp_r31_1299->GetInput();
+    temp_r3_1334 = GetInput();
     var_r4_1336 = 0;
     if (((u8) temp_r3_1334->unk5 != 0) || ((u8) temp_r3_1334->unk4 != 0)) {
         var_r4_1336 = 1;
@@ -928,9 +929,11 @@ void SpeedWaySpyro::GetJoyDir() {
     spC = var_f1_1323 * var_f31_1304;
     sp8 = -var_f1_1347;
     sp10 = 0.0f;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
+#endif
 
 #if 0 // DRAFT: ')' expected
 void SpeedWaySpyro::UpdateDrift(float arg0) {
@@ -1328,13 +1331,13 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     sp390.GetPathMatrix(arg0);
     M2C_STRUCT_COPY((s32) &sp390.unk94.unk24 + 4, (s32) &sp38C + 4, 0x40);
     ((Matrix *) &this->unk1E0)->CopyRotation((Matrix *) &sp390.unk94.unk28);
-    sp2C0.operator*(M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x188));
+    sp2C0 = sp390.unkD0.operator*(M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x188));
     if ((u8) bUsePulledBackCamera != 0) {
         var_f1_2017 = 3000.0f;
     } else {
         var_f1_2017 = GetCurrCameraZ();
     }
-    sp2D0.operator*(var_f1_2017);
+    sp2D0 = ((MKVector3 *) &sp390.unkDC)->operator*(var_f1_2017);
     temp_f0_2029 = sp390.unkF0 - M2C_BITWISE(f64, sp2D0);
     sp50 = temp_f0_2029;
     sp2E0 = temp_f0_2029;
@@ -1361,7 +1364,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     temp_f0_2080 = sp390.unkD0 * (f64) temp_f2_2071;
     sp170 = temp_f0_2080;
     sp370 = temp_f0_2080;
-    sp178 = sp390.unkD8 * temp_f2_2071;
+    sp178 = sp390.unkD0.unk8 * temp_f2_2071;
     sp378 = (f64) sp178;
     this->unk1A0.CopyRotation((Matrix *) &sp390.unk94.unk28);
     temp_r29_2092 = &this->unk210;
@@ -1458,7 +1461,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         temp_f0_2311 = sp390.unkD0 * (f64) temp_f2_2308;
         sp150 = temp_f0_2311;
         sp340 = temp_f0_2311;
-        sp158 = sp390.unkD8 * temp_f2_2308;
+        sp158 = sp390.unkD0.unk8 * temp_f2_2308;
         sp348 = (f64) sp158;
         temp_f0_2322 = sp390.unkF0 + temp_f0_2292;
         sp140 = temp_f0_2322;
@@ -1489,7 +1492,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         temp_f0_2381 = sp390.unkD0 * (f64) temp_f2_2376;
         sp100 = temp_f0_2381;
         sp250 = temp_f0_2381;
-        sp108 = sp390.unkD8 * temp_f2_2376;
+        sp108 = sp390.unkD0.unk8 * temp_f2_2376;
         sp258 = (f64) sp108;
         temp_f0_2391 = temp_f0_2381 * (f64) temp_f26_2379;
         spF0 = temp_f0_2391;
@@ -1500,7 +1503,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         temp_f0_2405 = sp390.unkD0 * (f64) temp_f2_2402;
         spE0 = temp_f0_2405;
         sp220 = temp_f0_2405;
-        spE8 = sp390.unkD8 * temp_f2_2402;
+        spE8 = sp390.unkD0.unk8 * temp_f2_2402;
         sp228 = (f64) spE8;
         temp_f0_2416 = (f64) M2C_FIELD(this, f32 *, 0x210) + temp_f0_2405;
         spD0 = temp_f0_2416;
@@ -1944,7 +1947,6 @@ u8 SpeedWaySpyro::AnyToPowerRollTransition() {
     return 0U;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 SpeedWaySpyro::AnyToHitCollisionTransition() {
     f64 sp28;
     f64 sp20;
@@ -2094,7 +2096,6 @@ block_57:
     var_r3_3674 = 0;
     return var_r3_3674;
 }
-#endif
 
 void SpeedWaySpyro::EventCameraUpdate() {
 
@@ -2158,10 +2159,10 @@ void SpeedWaySpyro::DeathUpdate() {
     temp_f2_3870 = this->unk9C;
     temp_f2_3876 = (var_f3_3863 * (0.0f - temp_f2_3870)) + temp_f2_3870;
     this->unk9C = (var_f3_3863 * (0.0f - temp_f2_3876)) + temp_f2_3876;
-    sp18.operator*(-980.0f);
-    sp28.operator*(gUpdateTimeDelta);
-    sp38.operator*(this->unk9C);
-    sp48.operator*(gUpdateTimeDelta);
+    sp18 = ((MKVector3 *) &this->unk1A0.unk10)->operator*(-980.0f);
+    sp28 = sp18.operator*(gUpdateTimeDelta);
+    sp38 = ((MKVector3 *) &this->unk1A0.unk20)->operator*(this->unk9C);
+    sp48 = sp38.operator*(gUpdateTimeDelta);
     temp_f0_3896 = sp48 + M2C_BITWISE(f64, sp28);
     sp8 = temp_f0_3896;
     sp58 = temp_f0_3896;
@@ -2342,14 +2343,14 @@ void SpeedWaySpyro::PowerRollExit() {
 #if 0 // DRAFT: ')' expected
 void SpeedWaySpyro::PowerRollEnter() {
     MKVector3 sp18;
-    M2C_UNK sp8;
+    MKVector3 sp8;
     MKAnim *var_r4_4432;
 
     StateEnter();
     this->unk338 = M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x170);
     this->unk380 = 0.0f;
-    ((SpeedWaySpyro *) &sp8)->GetJoyDir();
-    sp18 = Normalise(*((MKVector3 *) &sp8));
+    sp8 = GetJoyDir();
+    sp18 = Normalise(sp8);
     *(MKVector3 *) &this->unk370 = sp18;
     if ((f32) M2C_FIELD(this, f64 *, 0x370) > 0.0f) {
         var_r4_4432 = this->unk11C;
@@ -2360,11 +2361,11 @@ void SpeedWaySpyro::PowerRollEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp68'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void SpeedWaySpyro::MoveSelectAnim() {
     f64 sp78;
     f64 sp70;
-    f32 sp60;
+    MKVector3 sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
@@ -2380,6 +2381,7 @@ void SpeedWaySpyro::MoveSelectAnim() {
     f32 sp10;
     f32 sp8;
     MKAnim *var_r30_4589;
+    f32 temp_f1_4458;
     f32 temp_f1_4583;
     f32 temp_f2_4598;
     f32 temp_f3_4572;
@@ -2391,8 +2393,9 @@ void SpeedWaySpyro::MoveSelectAnim() {
     s32 temp_r3_4501;
     s32 var_r0_4511;
 
-    ((SpeedWaySpyro *) &sp60)->GetJoyDir();
-    var_f4_4466 = (sp68 * sp68) + ((sp60 * sp60) + (sp64 * sp64));
+    sp60 = GetJoyDir();
+    temp_f1_4458 = M2C_BITWISE(f32, sp60);
+    var_f4_4466 = (sp60.unk8 * sp60.unk8) + ((temp_f1_4458 * temp_f1_4458) + (sp60.unk4 * sp60.unk4));
     if (var_f4_4466 > 1e-12f) {
         if (var_f4_4466 > 0.0f) {
             temp_f1_4472 = __frsqrte(var_f4_4466);
@@ -2431,12 +2434,12 @@ void SpeedWaySpyro::MoveSelectAnim() {
     } else {
         var_f3_4533 = 0.0f;
     }
-    sp30 = sp60 * var_f3_4533;
-    sp34 = sp64 * var_f3_4533;
+    sp30 = M2C_BITWISE(f32, sp60) * var_f3_4533;
+    sp34 = sp60.unk4 * var_f3_4533;
     sp20 = 0.0f;
     sp70 = (f64) sp30;
     sp24 = 1.0f;
-    sp38 = sp68 * var_f3_4533;
+    sp38 = sp60.unk8 * var_f3_4533;
     sp50 = (f64) sp20;
     sp28 = 0.0f;
     sp18 = 0.0f;
@@ -2503,7 +2506,7 @@ void SpeedWaySpyro::MoveUpdate() {
     f64 sp48;
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f32 sp20;
     f64 sp18;
     f32 sp10;
@@ -2522,11 +2525,11 @@ void SpeedWaySpyro::MoveUpdate() {
         var_r0_4753 = this->unk2F4;
     }
     temp_f31_4764 = gUpdateTimeDelta * M2C_FIELD((((u8 *) temp_r31_4745) + (var_r0_4753 * 0x38)), f32 *, 0x74);
-    ((SpeedWaySpyro *) &sp28)->GetJoyDir();
+    sp28 = GetJoyDir();
     temp_f0_4768 = sp28 * (f64) temp_f31_4764;
     sp18 = temp_f0_4768;
     sp38 = temp_f0_4768;
-    sp20 = sp30 * temp_f31_4764;
+    sp20 = sp28.unk8 * temp_f31_4764;
     sp40 = (f64) sp20;
     temp_f0_4780 = this->unk318 + temp_f0_4768;
     sp8 = temp_f0_4780;
@@ -2863,7 +2866,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
     s8 sp150;
     f64 sp148;                                      /* compiler-managed */
     f64 sp140;                                      /* compiler-managed */
-    u32 sp13C;
+    MKProp *sp13C;
     MKHeap *sp138;
     f64 sp130;
     f64 sp128;
@@ -2880,16 +2883,22 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
     s8 sp88;
     s32 sp84;
     s32 sp80;
-    MKProp sp30;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    MKVector3 sp50;
+    MKVector3 sp40;
+    MKVector3 sp30;
     f32 sp28;
     f64 sp20;
     f32 sp18;
     f64 sp10;
+    MKProp *temp_r4_5927;
     f32 temp_f1_5850;
     f32 var_f1_5853;
     f64 temp_f0_5881;
     s32 temp_r0_5678;
-    u32 temp_r4_5927;
     void ***temp_r29_5779;
     void *temp_r3_5841;
     void *temp_r3_5914;
@@ -2954,18 +2963,18 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         }
         ((SpeedWay *) &sp90)->GetPathMatrix(var_f1_5853);
         M2C_STRUCT_COPY((s32) &spCC + 4, (s32) &sp8C + 4, 0x40);
-        *((MKVector3 *) &sp30.unk10) = __ml(M2C_FIELD(this, f32 *, 0x30C), spE0);
-        *((MKVector3 *) &sp30.unk20) = __ml(M2C_FIELD(this, f32 *, 0x308), spD0);
-        temp_f0_5881 = sp100 + (f64) sp30.unk20;
+        sp40 = __ml(M2C_FIELD(this, f32 *, 0x30C), spE0);
+        sp50 = __ml(M2C_FIELD(this, f32 *, 0x308), spD0);
+        temp_f0_5881 = sp100 + M2C_BITWISE(f64, sp50);
         sp10 = temp_f0_5881;
-        sp30.unk30 = temp_f0_5881;
-        sp18 = sp108 + M2C_BITWISE(f32, sp30.unk28);
-        sp30.unk38 = (f64) sp18;
-        sp20 = M2C_BITWISE(f64, sp30.unk30) + M2C_BITWISE(f64, sp30.unk10);
+        sp60 = temp_f0_5881;
+        sp18 = sp108 + sp50.unk8;
+        sp68 = (f64) sp18;
+        sp20 = sp60 + M2C_BITWISE(f64, sp40);
         M2C_FIELD(temp_r3_5841, f64 *, 0x10) = sp20;
-        sp28 = M2C_BITWISE(f32, sp30.unk38) + M2C_BITWISE(f32, sp30.unk18);
-        sp30.unk40 = sp20;
-        sp30.unk48 = (f64) sp28;
+        sp28 = (f32) sp68 + sp40.unk8;
+        sp70 = sp20;
+        sp78 = (f64) sp28;
         M2C_FIELD(temp_r3_5841, f64 *, 0x18) = (f64) sp28;
         break;
     case 0xE0:
@@ -2979,7 +2988,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         break;
     case 0x5:
         temp_r3_5925 = checked_cast<BreathHitMessage *, MKMessage>(arg0);
-        temp_r4_5927 = M2C_FIELD(temp_r3_5925, u32 *, 8);
+        temp_r4_5927 = M2C_FIELD(temp_r3_5925, MKProp **, 8);
         if (temp_r4_5927 != this) {
             sp114 = 0.0f;
             sp110 = (Matrix *)7;
@@ -2996,10 +3005,9 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
             sp128 = M2C_FIELD(&MKVector3::one, f64 *, 0);
             sp130 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp160 = 0;
-            if (temp_r4_5927 != 0U) {
-                sp30.GetPos();
-                sp140 = M2C_BITWISE(f64, sp30);
-                sp148 = M2C_BITWISE(f64, sp30.unk8);
+            if (temp_r4_5927 != NULL) {
+                sp30 = temp_r4_5927->GetPos();
+                *(MKVector3 *) &sp140 = sp30;
             } else {
                 sp140 = 0.0f;
                 (*(f32 *) ((u8 *) &sp13C + 0x8)) = 0.0f;

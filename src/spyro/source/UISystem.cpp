@@ -51,16 +51,15 @@ void UISystem::PushScreen_Internal(UIScreen *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void UISystem::PushScreen(const char *arg0) {
+    UIMessage sp8;
     UIObject *spC;
-    s32 sp8;
 
     spC = FindChild(arg0);
-    sp8 = 0xE;
+    sp8.unk0 = 0xE;
+    sp8.unk4 = (s32) spC;
     Message(&sp8);
 }
-#endif
 
 void UISystem::ChangeScreen_Internal(UIScreen *arg0) {
     if (((s32) this->unk68 != 1) || ((UIScreen *) this->unk94 != arg0)) {
@@ -70,57 +69,54 @@ void UISystem::ChangeScreen_Internal(UIScreen *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void UISystem::ChangeScreen(const char *arg0) {
+    UIMessage sp8;
     UIObject *spC;
-    s32 sp8;
 
     spC = FindChild(arg0);
-    sp8 = 0xD;
+    sp8.unk0 = 0xD;
+    sp8.unk4 = (s32) spC;
     Message(&sp8);
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 void UISystem::DoTransition() {
     s32 temp_r0_149;
     s32 temp_r0_200;
 
     temp_r0_149 = this->unk68;
-    switch (temp_r0_149) {                          /* irregular */
+    switch (temp_r0_149) {
     case 0:
         break;
     case 1:
-        M2C_FIELD((this + (this->unk6C * 4)), UIScreen **, 0x70) = (UIScreen *) this->unk94;
+        M2C_FIELD(this, void **, this->unk6C * 4 + 0x70) = (void **) this->unk94;
         break;
     case 2:
         this->unk6C += 1;
-        M2C_FIELD((this + (this->unk6C * 4)), UIScreen **, 0x70) = (UIScreen *) this->unk94;
+        M2C_FIELD(this, void **, this->unk6C * 4 + 0x70) = (void **) this->unk94;
         break;
     case 3:
-        M2C_FIELD((this + (this->unk6C * 4)), s32 *, 0x70) = 0;
+        M2C_FIELD(this, s32 *, this->unk6C * 4 + 0x70) = 0;
         this->unk6C -= 1;
         break;
     case 4:
 loop_13:
         temp_r0_200 = this->unk6C;
         if (temp_r0_200 > 0) {
-            *(this + ((temp_r0_200 * 4) + 0x70)) = 0;
+            M2C_FIELD(this, s32 *, temp_r0_200 * 4 + 0x70) = 0;
             this->unk6C -= 1;
             goto loop_13;
         }
-        M2C_FIELD((this + (temp_r0_200 * 4)), UIScreen **, 0x70) = (UIScreen *) this->unk94;
+        M2C_FIELD(this, void **, temp_r0_200 * 4 + 0x70) = (void **) this->unk94;
         break;
     }
     this->unk94 = NULL;
-    if ((u32) M2C_FIELD((this + (this->unk6C * 4)), u32 *, 0x70) != 0U) {
+    if ((u32) M2C_FIELD(this, u32 *, this->unk6C * 4 + 0x70) != 0U) {
         this->unk9D = 1;
         return;
     }
     this->unk9D = 0;
     this->unk68 = 0;
 }
-#endif
 
 void UISystem::ProvokeTransition() {
     s32 temp_r0_237;
@@ -138,30 +134,27 @@ void UISystem::ProvokeTransition() {
     this->unk9C = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'P8UIScreen'
 s32 UISystem::Message(UIMessage *arg0) {
     s32 temp_r5_269;
 
     temp_r5_269 = arg0->unk0;
-    switch (temp_r5_269) {                          /* irregular */
+    switch (temp_r5_269) {
     case 0xD:
-        ChangeScreen_Internal(ui_cast<P8UIScreen, P8UIObject>__FP8UIObject((UIObject *) arg0->unk4));
+        ChangeScreen_Internal(ui_cast<UIScreen *, UIObject *>((UIObject *) arg0->unk4));
     default:
-block_14:
-        UIContainer::Message(arg0);
-        return;
+    block_14:
+        return UIContainer::Message(arg0);
     case 0xE:
-        PushScreen_Internal(ui_cast<P8UIScreen, P8UIObject>__FP8UIObject((UIObject *) arg0->unk4));
+        PushScreen_Internal(ui_cast<UIScreen *, UIObject *>((UIObject *) arg0->unk4));
         goto block_14;
     case 0xF:
         PopScreen_Internal();
         goto block_14;
     case 0x8001:
         this->unk9E = 1;
-        return;
+        return 1;
     }
 }
-#endif
 
 void UISystem::Draw(const RenderContext &arg0) {
     void **temp_r5_331;

@@ -60,7 +60,7 @@ void Torch::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *Torch::Update() {
     f64 sp188;
     f64 sp180;

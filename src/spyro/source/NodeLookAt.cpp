@@ -15,7 +15,7 @@
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'const Matrix *'
 void NodeLookAtIK::Update(MKVector3 *arg0) {
     Matrix sp220;
     Matrix sp1E0;
@@ -27,7 +27,12 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
     f64 spD0;
     f64 spC8;
     f64 spC0;
-    Animation sp88;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
     f64 sp70;
@@ -61,10 +66,7 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
     f32 temp_f3_150;
     f32 temp_f3_269;
     f32 temp_f3_292;
-    f32 temp_f5_114;
     f32 temp_f5_279;
-    f32 temp_f6_121;
-    f32 temp_f6_130;
     f32 temp_f8_250;
     f32 temp_f8_280;
     f32 temp_f9_253;
@@ -86,33 +88,29 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
     sp10 = (s16) temp_r30_30;
     temp_r3_32->CalculateMatrices(&sp220, 1, &sp10, NULL);
     sp1E0.Inverse(&sp220);
-    sp88.GetNodeOrigin(MKModel_GetAnimation(this->unk34));
-    spC8 = M2C_BITWISE(f64, sp88);
-    spD0 = sp88.unk8;
+    sp88 = ((Animation *) (MKModel_GetAnimation(this->unk34)))->GetNodeOrigin((s32) this->unk3C);
+    *(MKVector3 *) &spC8 = sp88;
     if ((arg0 != NULL) && ((u8) this->unk38 != 0)) {
         sp1A0.Inverse(MKModel_GetWorldMatrix(this->unk34));
         sp220.Multiply(&sp220, MKModel_GetWorldMatrix(this->unk34));
         sp58 = sp220.unk30 + (((f32) spD0 * sp220.unk20) + (((f32) spC8 * M2C_BITWISE(f32, sp220)) + ((*(f32 *) ((u8 *) &spC8 + 0x4)) * sp220.unk10)));
         sp5C = sp220.unk34 + (((f32) spD0 * sp220.unk24) + (((f32) spC8 * sp220.unk4) + ((*(f32 *) ((u8 *) &spC8 + 0x4)) * sp220.unk14)));
         sp60 = sp220.unk38 + (((f32) spD0 * sp220.unk28) + (((f32) spC8 * sp220.unk8) + ((*(f32 *) ((u8 *) &spC8 + 0x4)) * sp220.unk18)));
-        sp88.unk30 = (f64) sp58;
+        spB8 = (f64) sp58;
         spC0 = (f64) sp60;
-        temp_f0_104 = M2C_FIELD(arg0, f64 *, 0) - sp88.unk30;
+        temp_f0_104 = M2C_FIELD(arg0, f64 *, 0) - spB8;
         sp48 = temp_f0_104;
-        sp88.unk20 = temp_f0_104;
-        temp_f5_114 = M2C_BITWISE(f32, sp88.unk24);
+        spA8 = temp_f0_104;
         sp50 = arg0->unk8 - (f32) spC0;
-        temp_f6_121 = M2C_BITWISE(f32, sp88.unk20);
-        sp88.unk28 = (f64) sp50;
-        temp_f6_130 = M2C_BITWISE(f32, sp88.unk28);
-        sp38 = (temp_f6_130 * sp1A0.unk20) + ((temp_f6_121 * M2C_BITWISE(f32, sp1A0)) + (temp_f5_114 * sp1A0.unk10));
-        sp3C = (temp_f6_130 * sp1A0.unk24) + ((temp_f6_121 * sp1A0.unk4) + (temp_f5_114 * sp1A0.unk14));
-        sp40 = (temp_f6_130 * sp1A0.unk28) + ((temp_f6_121 * sp1A0.unk8) + (temp_f5_114 * sp1A0.unk18));
-        sp88.unk10 = (f64) sp38;
-        sp88.unk18 = (f64) sp40;
-        this->unk30 = this->unkC - KDMath_GetPitch(*((MKVector3 *) &sp88.unk10));
+        spB0 = (f64) sp50;
+        sp38 = ((f32) spB0 * sp1A0.unk20) + (((f32) spA8 * M2C_BITWISE(f32, sp1A0)) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * sp1A0.unk10));
+        sp3C = ((f32) spB0 * sp1A0.unk24) + (((f32) spA8 * sp1A0.unk4) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * sp1A0.unk14));
+        sp40 = ((f32) spB0 * sp1A0.unk28) + (((f32) spA8 * sp1A0.unk8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * sp1A0.unk18));
+        sp98 = (f64) sp38;
+        spA0 = (f64) sp40;
+        this->unk30 = this->unkC - KDMath_GetPitch(*((MKVector3 *) &sp98));
         temp_f2_149 = this->unk10;
-        temp_f3_150 = -KDMath_GetYaw(*((MKVector3 *) &sp88.unk10));
+        temp_f3_150 = -KDMath_GetYaw(*((MKVector3 *) &sp98));
         temp_f1_151 = -temp_f2_149;
         if ((temp_f3_150 < temp_f1_151) && (this->unk2C < temp_f2_149)) {
             this->unk2C = temp_f1_151;
@@ -261,10 +259,15 @@ void NodeLookAt::Update(MKVector3 *arg0) {
     Matrix spD0;
     M2C_UNK spCC;
     f64 spC0;
-    Animation sp88;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
-    f64 sp68;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
     f32 sp50;
@@ -354,16 +357,16 @@ block_10:
             sp48 = sp150.unk30 + ((temp_f7_701 * sp150.unk20) + ((temp_f6_695 * M2C_BITWISE(f32, sp150)) + (temp_f3_689 * sp150.unk10)));
             sp4C = sp150.unk34 + ((temp_f7_701 * sp150.unk24) + ((temp_f6_695 * sp150.unk4) + (temp_f3_689 * sp150.unk14)));
             sp50 = sp150.unk38 + ((temp_f7_701 * sp150.unk28) + ((temp_f6_695 * sp150.unk8) + (temp_f3_689 * sp150.unk18)));
-            sp88.unk30 = (f64) sp48;
+            spB8 = (f64) sp48;
             spC0 = (f64) sp50;
-            sp88.GetNodeOrigin(MKModel_GetAnimation(this->unk30));
-            temp_f0_731 = sp88.unk30 - M2C_BITWISE(f64, sp88);
+            sp88 = ((Animation *) (MKModel_GetAnimation(this->unk30)))->GetNodeOrigin((s32) this->unk34);
+            temp_f0_731 = spB8 - M2C_BITWISE(f64, sp88);
             sp38 = temp_f0_731;
-            sp88.unk20 = temp_f0_731;
-            sp40 = (f32) spC0 - (f32) sp88.unk8;
-            sp88.unk28 = (f64) sp40;
-            var_f31_743 = KDMath_GetYaw(*((MKVector3 *) &sp88.unk20));
-            var_f30_746 = KDMath_GetPitch(*((MKVector3 *) &sp88.unk20));
+            spA8 = temp_f0_731;
+            sp40 = (f32) spC0 - sp88.unk8;
+            spB0 = (f64) sp40;
+            var_f31_743 = KDMath_GetYaw(*((MKVector3 *) &spA8));
+            var_f30_746 = KDMath_GetPitch(*((MKVector3 *) &spA8));
         } else {
             var_f31_743 = 0.0f;
             var_f30_746 = 0.0f;
@@ -427,18 +430,17 @@ block_10:
         sp80 = (f64) sp30;
         sp78 = (f64) sp28;
         sp110.SetRotationPYR(*((MKVector3 *) &sp78));
-        ((Animation *) &sp68)->GetNodeOrigin(MKModel_GetAnimation(this->unk30));
-        sp88.unk10 = sp68;
-        sp88.unk18 = sp70;
+        sp68 = ((Animation *) (MKModel_GetAnimation(this->unk30)))->GetNodeOrigin((s32) this->unk34);
+        *(MKVector3 *) &sp98 = sp68;
         M2C_STRUCT_COPY((s32) &spCC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        sp18 = -M2C_BITWISE(f32, sp88.unk10);
-        sp1C = -M2C_BITWISE(f32, sp88.unk14);
-        sp20 = -M2C_BITWISE(f32, sp88.unk18);
+        sp18 = -(f32) sp98;
+        sp1C = -(*(f32 *) ((u8 *) &sp98 + 0x4));
+        sp20 = -(f32) spA0;
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
         spD0.Translate(&spD0, *((MKVector3 *) &sp58));
         spD0.Multiply(&spD0, &sp110);
-        spD0.Translate(&spD0, *((MKVector3 *) &sp88.unk10));
+        spD0.Translate(&spD0, *((MKVector3 *) &sp98));
         ((Animation *) (MKModel_GetAnimation(this->unk30)))->SetCustomMatrix((s32) this->unk34, &spD0, (AnimationMatrixPosition) 1, 0U);
         this->unk28 = KDMath_GetSmallestAngle(this->unk18, var_f31_743);
         this->unk2C = KDMath_GetSmallestAngle(this->unk1C, var_f30_746);

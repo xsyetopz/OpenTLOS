@@ -222,12 +222,16 @@ void SB2::Arbitrate() {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SB2::Calculate(unsigned int arg0) {
-    AITargetData sp90;
-    f64 sp80;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f64 spA0;
+    MKVector3 sp90;
+    MKVector3 sp80;
     f64 sp78;
     f64 sp70;
-    f32 sp60;
-    f64 sp50;
+    MKVector3 sp60;
+    MKVector3 sp50;
     MKVector3 sp40;
     f64 sp38;
     f64 sp30;
@@ -270,8 +274,8 @@ void SB2::Calculate(unsigned int arg0) {
     sp14 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 4);
     sp18 = -M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8);
     M2C_FIELD(&vBaseHeading, f64 *, 0) = (f64) sp10;
-    sp90.unk20 = (f64) sp10;
-    sp90.unk28 = (f64) sp18;
+    spB0 = (f64) sp10;
+    spB8 = (f64) sp18;
     M2C_FIELD(&vBaseHeading, f64 *, 8) = (f64) sp18;
     if (fGameTimeLastUpdate != M2C_FIELD(&gb, f32 *, 0x30C)) {
         fGameTimeLastUpdate = M2C_FIELD(&gb, f32 *, 0x30C);
@@ -285,14 +289,13 @@ void SB2::Calculate(unsigned int arg0) {
         }
         if (var_r30_327 != 0) {
             temp_r3_341 = (Matrix *) (M2C_FIELD(arg0, Character **, 0)->unk8);
-            sp90.unk10 = M2C_FIELD(temp_r3_341, f64 *, 0x30);
-            sp90.unk18 = M2C_FIELD(temp_r3_341, f64 *, 0x38);
-            ((AITargetData *) (M2C_FIELD(arg0, AITargetData **, 0xC)))->Update(*((MKVector3 *) &sp90.unk10));
-            sp90.GetDir();
-            if (((sp90.unk8 * vBaseHeading.unk8) + ((M2C_BITWISE(f32, sp90) * vBaseHeading.unk0) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * vBaseHeading.unk4))) > 0.35f) {
-                ((AITargetData *) &sp80)->GetDir();
-                M2C_FIELD(&vBaseHeading, f64 *, 0) = sp80;
-                M2C_FIELD(&vBaseHeading, f64 *, 8) = sp88;
+            spA0 = M2C_FIELD(temp_r3_341, f64 *, 0x30);
+            spA8 = M2C_FIELD(temp_r3_341, f64 *, 0x38);
+            ((AITargetData *) (M2C_FIELD(arg0, AITargetData **, 0xC)))->Update(*((MKVector3 *) &spA0));
+            sp90 = ((AITargetData *) (M2C_FIELD(arg0, AITargetData **, 0xC)))->GetDir();
+            if (((sp90.unk8 * vBaseHeading.unk8) + ((M2C_BITWISE(f32, sp90) * vBaseHeading.unk0) + (sp90.unk4 * vBaseHeading.unk4))) > 0.35f) {
+                sp80 = ((AITargetData *) (M2C_FIELD(arg0, AITargetData **, 0xC)))->GetDir();
+                M2C_FIELD(&vBaseHeading, MKVector3 *, 0) = sp80;
             }
         }
     }
@@ -322,10 +325,9 @@ void SB2::Calculate(unsigned int arg0) {
     sp78 = M2C_FIELD(temp_r5_419, f64 *, 0x38);
     ((AITargetData *) (arg0 + 0x18))->Update(*((MKVector3 *) &sp70));
     temp_r3_425 = M2C_FIELD(arg0, s32 *, 0x460);
-    if (((temp_r3_425 & 0x80) || (temp_r3_425 & 0x4000)) && ((temp_r3_425 & 0x4000) || (((AITargetData *) &sp60)->GetDir(), ((((sp68 * vBaseHeading.unk8) + ((sp60 * vBaseHeading.unk0) + (sp64 * vBaseHeading.unk4))) > 0.35f) != 0))) && (((AITargetData *) (arg0 + 0x18))->GetDist() > 0.0f)) {
-        ((AITargetData *) &sp50)->GetDir();
-        M2C_FIELD(&vBaseHeading, f64 *, 0) = sp50;
-        M2C_FIELD(&vBaseHeading, f64 *, 8) = sp58;
+    if (((temp_r3_425 & 0x80) || (temp_r3_425 & 0x4000)) && ((temp_r3_425 & 0x4000) || (sp60 = ((AITargetData *) (arg0 + 0x18))->GetDir(), ((((sp60.unk8 * vBaseHeading.unk8) + ((M2C_BITWISE(f32, sp60) * vBaseHeading.unk0) + (sp60.unk4 * vBaseHeading.unk4))) > 0.35f) != 0))) && (((AITargetData *) (arg0 + 0x18))->GetDist() > 0.0f)) {
+        sp50 = ((AITargetData *) (arg0 + 0x18))->GetDir();
+        M2C_FIELD(&vBaseHeading, MKVector3 *, 0) = sp50;
     }
 loop_32:
     ((SteerDirection *) (arg0 + ((M2C_FIELD(arg0, s32 *, 0x3F8) * 0x98) + 0x100)))->Init();
@@ -767,11 +769,19 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SB2::GraphFollowing_EvadeMidNodeTraversal() {
     f64 sp110;
     f64 sp108;
-    AITargetData spB8;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;                                       /* compiler-managed */
+    f64 spD8;                                       /* compiler-managed */
+    f64 spD0;                                       /* compiler-managed */
+    f64 spC8;                                       /* compiler-managed */
+    MKVector3 spB8;
     f64 spA8;
     MKVector3 sp98;
     MKVector3 sp88;
@@ -832,24 +842,24 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
         temp_r5_1242 = this->unk0->unk8;
         sp108 = M2C_FIELD(temp_r5_1242, f64 *, 0x30);
         sp110 = M2C_FIELD(temp_r5_1242, f64 *, 0x38);
-        spB8.GetPos();
+        spB8 = this->unk450->GetPos();
         temp_r4_1248 = this->unk448;
         temp_f1_1250 = M2C_BITWISE(f64, spB8);
-        spB8.unk40 = temp_f1_1250;
-        spB8.unk40.unk8 = (f64) spB8.unk8;
+        spF8 = temp_f1_1250;
+        sp100 = (f64) spB8.unk8;
         M2C_FIELD(temp_r4_1248->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *, f64), 0x30)(&spA8, temp_r4_1248, temp_f1_1250);
-        spB8.unk30 = spA8;
-        spB8.unk38 = spB0;
-        temp_f0_1264 = M2C_BITWISE(f64, spB8.unk40) - sp108;
+        spE8 = spA8;
+        spF0 = spB0;
+        temp_f0_1264 = spF8 - sp108;
         sp38 = temp_f0_1264;
-        spB8.unk20 = temp_f0_1264;
-        sp40 = M2C_BITWISE(f32, spB8.unk40.unk8) - (f32) sp110;
-        spB8.unk28 = (f64) sp40;
-        sp28 = (f64) spB8.unk30 - sp108;
-        sp30 = spB8.unk38 - (f32) sp110;
-        var_f4_1289 = ((f32) spB8.unk28 * (f32) spB8.unk28) + (((f32) spB8.unk20 * (f32) spB8.unk20) + ((*(f32 *) ((u8 *) &spB8 + 0x24)) * (*(f32 *) ((u8 *) &spB8 + 0x24))));
-        spB8.unk10 = sp28;
-        spB8.unk18 = (f64) sp30;
+        spD8 = temp_f0_1264;
+        sp40 = (f32) sp100 - (f32) sp110;
+        spE0 = (f64) sp40;
+        sp28 = spE8 - sp108;
+        sp30 = (f32) spF0 - (f32) sp110;
+        var_f4_1289 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + ((*(f32 *) ((u8 *) &spB8 + 0x24)) * (*(f32 *) ((u8 *) &spB8 + 0x24))));
+        spC8 = sp28;
+        spD0 = (f64) sp30;
         if (var_f4_1289 > 0.000001f) {
             if (var_f4_1289 > 0.0f) {
                 temp_f1_1298 = __frsqrte(var_f4_1289);
@@ -888,10 +898,10 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
         } else {
             var_f6_1359 = 0.0f;
         }
-        var_f7_1377 = ((f32) spB8.unk18 * (f32) spB8.unk18) + (((f32) spB8.unk10 * (f32) spB8.unk10) + ((*(f32 *) ((u8 *) &spB8 + 0x14)) * (*(f32 *) ((u8 *) &spB8 + 0x14))));
-        spB8.unk20 = (f32) spB8.unk20 * var_f6_1359;
+        var_f7_1377 = ((f32) spD0 * (f32) spD0) + (((f32) spC8 * (f32) spC8) + ((*(f32 *) ((u8 *) &spB8 + 0x14)) * (*(f32 *) ((u8 *) &spB8 + 0x14))));
+        spD8 = (f32) spD8 * var_f6_1359;
         (*(f32 *) ((u8 *) &spB8 + 0x24)) *= var_f6_1359;
-        spB8.unk28 = (f32) spB8.unk28 * var_f6_1359;
+        spE0 = (f32) spE0 * var_f6_1359;
         if (var_f7_1377 > 0.000001f) {
             if (var_f7_1377 > 0.0f) {
                 temp_f1_1387 = __frsqrte(var_f7_1377);
@@ -931,12 +941,12 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
             var_f4_1448 = 0.0f;
         }
         temp_f5_1455 = (*(f32 *) ((u8 *) &spB8 + 0x14)) * var_f4_1448;
-        temp_f6_1457 = (f32) spB8.unk10 * var_f4_1448;
-        temp_f4_1461 = (f32) spB8.unk18 * var_f4_1448;
-        spB8.unk10 = temp_f6_1457;
+        temp_f6_1457 = (f32) spC8 * var_f4_1448;
+        temp_f4_1461 = (f32) spD0 * var_f4_1448;
+        spC8 = temp_f6_1457;
         (*(f32 *) ((u8 *) &spB8 + 0x14)) = temp_f5_1455;
-        spB8.unk18 = temp_f4_1461;
-        if (((spB8.unk28 * temp_f4_1461) + ((spB8.unk20 * temp_f6_1457) + ((*(f32 *) ((u8 *) &spB8 + 0x24)) * temp_f5_1455))) > 0.95f) {
+        spD0 = temp_f4_1461;
+        if (((spE0 * temp_f4_1461) + ((spD8 * temp_f6_1457) + ((*(f32 *) ((u8 *) &spB8 + 0x24)) * temp_f5_1455))) > 0.95f) {
             if (!(((u8) this->unk464 >> 5U) & 1)) {
                 temp_r4_1474 = this->unk448;
                 M2C_FIELD(temp_r4_1474->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&sp78, temp_r4_1474);
@@ -1069,13 +1079,13 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
     f64 sp138;                                      /* compiler-managed */
     f64 sp130;                                      /* compiler-managed */
     f64 sp128;                                      /* compiler-managed */
-    f32 sp118;
-    f32 sp108;
-    f32 spF8;
+    MKVector3 sp118;
+    MKVector3 sp108;
+    MKVector3 spF8;
     f64 spF0;
     f64 spE8;
     MKVector3 spD8;
-    M2C_UNK spC8;
+    MKVector3 spC8;
     f64 spC0;
     f64 spB8;
     M2C_UNK spA8;
@@ -1107,6 +1117,8 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
     CharacterGraphNode *temp_r3_2168;
     f32 temp_f0_1847;
     f32 temp_f0_2159;
+    f32 temp_f1_1760;
+    f32 temp_f1_1776;
     f32 temp_f28_1774;
     f32 temp_f2_2153;
     f32 temp_f2_2280;
@@ -1176,11 +1188,13 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
     sp170 = M2C_FIELD(temp_r5_1736, f64 *, 0x38);
     sp148 = (f64) sp58;
     sp150 = (f64) sp60;
-    ((AITargetData *) &sp118)->GetVel();
-    if (((sp120 * sp120) + ((sp118 * sp118) + (sp11C * sp11C))) > 0.01f) {
+    sp118 = this->unk450->GetVel();
+    temp_f1_1760 = M2C_BITWISE(f32, sp118);
+    if (((sp118.unk8 * sp118.unk8) + ((temp_f1_1760 * temp_f1_1760) + (sp118.unk4 * sp118.unk4))) > 0.01f) {
         temp_f28_1774 = this->unk0->unk690;
-        ((AITargetData *) &sp108)->GetVel();
-        var_f4_1784 = (sp110 * sp110) + ((sp108 * sp108) + (sp10C * sp10C));
+        sp108 = this->unk450->GetVel();
+        temp_f1_1776 = M2C_BITWISE(f32, sp108);
+        var_f4_1784 = (sp108.unk8 * sp108.unk8) + ((temp_f1_1776 * temp_f1_1776) + (sp108.unk4 * sp108.unk4));
         if (var_f4_1784 > 0.0f) {
             temp_f1_1787 = __frsqrte(var_f4_1784);
             temp_f1_1793 = 0.5 * temp_f1_1787 * -(((f64) var_f4_1784 * (temp_f1_1787 * temp_f1_1787)) - 3.0);
@@ -1224,8 +1238,8 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
         var_f29_1742 = this->unk450->GetDist() / var_f28_1848;
     }
     if (this->unk0->unk68C > 0.0f) {
-        ((AITargetData *) &spF8)->GetDir();
-        var_f1_1876 = ((f32) sp150 * sp100) + (((f32) sp148 * spF8) + ((*(f32 *) ((u8 *) &sp148 + 0x4)) * spFC));
+        spF8 = this->unk450->GetDir();
+        var_f1_1876 = ((f32) sp150 * spF8.unk8) + (((f32) sp148 * M2C_BITWISE(f32, spF8)) + ((*(f32 *) ((u8 *) &sp148 + 0x4)) * spF8.unk4));
         if (var_f1_1876 < 1.0f) {
 
         } else {
@@ -1239,8 +1253,8 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
         var_f29_1742 += (f32) acos(var_f1_1876) / this->unk0->unk68C;
     }
     (*(f32 *) ((u8 *) &sp168 + 0x4)) = (*(f32 *) ((u8 *) &sp178 + 0x4));
-    ((AITargetData *) &spC8)->GetVel();
-    spD8.operator*(var_f29_1742);
+    spC8 = this->unk450->GetVel();
+    spD8 = spC8.operator*(var_f29_1742);
     sp48 = sp168 + M2C_BITWISE(f64, spD8);
     sp138 = sp48;
     sp50 = (f32) sp170 + spD8.unk8;
@@ -1429,11 +1443,19 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SB2::GraphFollowing_PursuitMidNodeTraversal() {
     f64 sp108;
     f64 sp100;
-    AITargetData spB0;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;                                       /* compiler-managed */
+    f64 spD0;                                       /* compiler-managed */
+    f64 spC8;                                       /* compiler-managed */
+    f64 spC0;                                       /* compiler-managed */
+    MKVector3 spB0;
     f64 spA0;
     MKVector3 sp90;
     MKVector3 sp80;
@@ -1481,24 +1503,24 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
         temp_r5_2324 = this->unk0->unk8;
         sp100 = M2C_FIELD(temp_r5_2324, f64 *, 0x30);
         sp108 = M2C_FIELD(temp_r5_2324, f64 *, 0x38);
-        spB0.GetPos();
+        spB0 = this->unk450->GetPos();
         temp_r4_2330 = this->unk448;
         temp_f1_2332 = M2C_BITWISE(f64, spB0);
-        spB0.unk40 = temp_f1_2332;
-        spB0.unk40.unk8 = (f64) spB0.unk8;
+        spF0 = temp_f1_2332;
+        spF8 = (f64) spB0.unk8;
         M2C_FIELD(temp_r4_2330->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *, f64), 0x30)(&spA0, temp_r4_2330, temp_f1_2332);
-        spB0.unk30 = spA0;
-        spB0.unk38 = spA8;
-        temp_f0_2346 = M2C_BITWISE(f64, spB0.unk40) - sp100;
+        spE0 = spA0;
+        spE8 = spA8;
+        temp_f0_2346 = spF0 - sp100;
         sp30 = temp_f0_2346;
-        spB0.unk20 = temp_f0_2346;
-        sp38 = M2C_BITWISE(f32, spB0.unk40.unk8) - (f32) sp108;
-        spB0.unk28 = (f64) sp38;
-        sp20 = (f64) spB0.unk30 - sp100;
-        sp28 = spB0.unk38 - (f32) sp108;
-        var_f4_2371 = ((f32) spB0.unk28 * (f32) spB0.unk28) + (((f32) spB0.unk20 * (f32) spB0.unk20) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * (*(f32 *) ((u8 *) &spB0 + 0x24))));
-        spB0.unk10 = sp20;
-        spB0.unk18 = (f64) sp28;
+        spD0 = temp_f0_2346;
+        sp38 = (f32) spF8 - (f32) sp108;
+        spD8 = (f64) sp38;
+        sp20 = spE0 - sp100;
+        sp28 = (f32) spE8 - (f32) sp108;
+        var_f4_2371 = ((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * (*(f32 *) ((u8 *) &spB0 + 0x24))));
+        spC0 = sp20;
+        spC8 = (f64) sp28;
         if (var_f4_2371 > 0.000001f) {
             if (var_f4_2371 > 0.0f) {
                 temp_f1_2380 = __frsqrte(var_f4_2371);
@@ -1537,10 +1559,10 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
         } else {
             var_f6_2441 = 0.0f;
         }
-        var_f7_2459 = ((f32) spB0.unk18 * (f32) spB0.unk18) + (((f32) spB0.unk10 * (f32) spB0.unk10) + ((*(f32 *) ((u8 *) &spB0 + 0x14)) * (*(f32 *) ((u8 *) &spB0 + 0x14))));
-        spB0.unk20 = (f32) spB0.unk20 * var_f6_2441;
+        var_f7_2459 = ((f32) spC8 * (f32) spC8) + (((f32) spC0 * (f32) spC0) + ((*(f32 *) ((u8 *) &spB0 + 0x14)) * (*(f32 *) ((u8 *) &spB0 + 0x14))));
+        spD0 = (f32) spD0 * var_f6_2441;
         (*(f32 *) ((u8 *) &spB0 + 0x24)) *= var_f6_2441;
-        spB0.unk28 = (f32) spB0.unk28 * var_f6_2441;
+        spD8 = (f32) spD8 * var_f6_2441;
         if (var_f7_2459 > 0.000001f) {
             if (var_f7_2459 > 0.0f) {
                 temp_f1_2469 = __frsqrte(var_f7_2459);
@@ -1580,12 +1602,12 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
             var_f4_2530 = 0.0f;
         }
         temp_f5_2537 = (*(f32 *) ((u8 *) &spB0 + 0x14)) * var_f4_2530;
-        temp_f6_2539 = (f32) spB0.unk10 * var_f4_2530;
-        temp_f4_2543 = (f32) spB0.unk18 * var_f4_2530;
-        spB0.unk10 = temp_f6_2539;
+        temp_f6_2539 = (f32) spC0 * var_f4_2530;
+        temp_f4_2543 = (f32) spC8 * var_f4_2530;
+        spC0 = temp_f6_2539;
         (*(f32 *) ((u8 *) &spB0 + 0x14)) = temp_f5_2537;
-        spB0.unk18 = temp_f4_2543;
-        if (((spB0.unk28 * temp_f4_2543) + ((spB0.unk20 * temp_f6_2539) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * temp_f5_2537))) < -0.95f) {
+        spC8 = temp_f4_2543;
+        if (((spD8 * temp_f4_2543) + ((spD0 * temp_f6_2539) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * temp_f5_2537))) < -0.95f) {
             if (!(((u8) this->unk464 >> 5U) & 1)) {
                 temp_r4_2556 = this->unk448;
                 M2C_FIELD(temp_r4_2556->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&sp70, temp_r4_2556);
@@ -1659,7 +1681,7 @@ void SB2::GraphFollowing_PursuitNoMoreNodes() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp120'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 s32 SB2::GraphFollowing_PursuitSelectLink() {
     f64 sp180;
     f64 sp178;
@@ -1673,13 +1695,13 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
     f64 sp138;                                      /* compiler-managed */
     f64 sp130;                                      /* compiler-managed */
     f64 sp128;                                      /* compiler-managed */
-    f32 sp118;
-    f32 sp108;
-    f32 spF8;
+    MKVector3 sp118;
+    MKVector3 sp108;
+    MKVector3 spF8;
     f64 spF0;
     f64 spE8;
     MKVector3 spD8;
-    M2C_UNK spC8;
+    MKVector3 spC8;
     f64 spC0;
     f64 spB8;
     M2C_UNK spA8;
@@ -1710,6 +1732,8 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
     CharacterGraphNode *temp_r3_3144;
     f32 temp_f0_2823;
     f32 temp_f0_3135;
+    f32 temp_f1_2736;
+    f32 temp_f1_2752;
     f32 temp_f28_2750;
     f32 temp_f2_3129;
     f32 temp_f2_3256;
@@ -1773,11 +1797,13 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
     sp170 = M2C_FIELD(temp_r5_2712, f64 *, 0x38);
     sp148 = (f64) sp58;
     sp150 = (f64) sp60;
-    ((AITargetData *) &sp118)->GetVel();
-    if (((sp120 * sp120) + ((sp118 * sp118) + (sp11C * sp11C))) > 0.01f) {
+    sp118 = this->unk450->GetVel();
+    temp_f1_2736 = M2C_BITWISE(f32, sp118);
+    if (((sp118.unk8 * sp118.unk8) + ((temp_f1_2736 * temp_f1_2736) + (sp118.unk4 * sp118.unk4))) > 0.01f) {
         temp_f28_2750 = this->unk0->unk690;
-        ((AITargetData *) &sp108)->GetVel();
-        var_f4_2760 = (sp110 * sp110) + ((sp108 * sp108) + (sp10C * sp10C));
+        sp108 = this->unk450->GetVel();
+        temp_f1_2752 = M2C_BITWISE(f32, sp108);
+        var_f4_2760 = (sp108.unk8 * sp108.unk8) + ((temp_f1_2752 * temp_f1_2752) + (sp108.unk4 * sp108.unk4));
         if (var_f4_2760 > 0.0f) {
             temp_f1_2763 = __frsqrte(var_f4_2760);
             temp_f1_2769 = 0.5 * temp_f1_2763 * -(((f64) var_f4_2760 * (temp_f1_2763 * temp_f1_2763)) - 3.0);
@@ -1821,8 +1847,8 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
         var_f29_2718 = this->unk450->GetDist() / var_f28_2824;
     }
     if (this->unk0->unk68C > 0.0f) {
-        ((AITargetData *) &spF8)->GetDir();
-        var_f1_2852 = ((f32) sp150 * sp100) + (((f32) sp148 * spF8) + ((*(f32 *) ((u8 *) &sp148 + 0x4)) * spFC));
+        spF8 = this->unk450->GetDir();
+        var_f1_2852 = ((f32) sp150 * spF8.unk8) + (((f32) sp148 * M2C_BITWISE(f32, spF8)) + ((*(f32 *) ((u8 *) &sp148 + 0x4)) * spF8.unk4));
         if (var_f1_2852 < 1.0f) {
 
         } else {
@@ -1836,8 +1862,8 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
         var_f29_2718 += (f32) acos(var_f1_2852) / this->unk0->unk68C;
     }
     (*(f32 *) ((u8 *) &sp168 + 0x4)) = (*(f32 *) ((u8 *) &sp178 + 0x4));
-    ((AITargetData *) &spC8)->GetVel();
-    spD8.operator*(var_f29_2718);
+    spC8 = this->unk450->GetVel();
+    spD8 = spC8.operator*(var_f29_2718);
     sp48 = sp168 + M2C_BITWISE(f64, spD8);
     sp138 = sp48;
     sp50 = (f32) sp170 + spD8.unk8;
@@ -2126,7 +2152,7 @@ void SB2::GraphFollowingOn(CharacterGraphNode *arg0, CharacterGraphNode *arg1, G
     f64 sp48;
     f64 sp40;
     f64 sp30;
-    f64 sp20;
+    MKVector3 sp20;
     f32 sp18;
     f64 sp10;
     f32 sp8;
@@ -2163,11 +2189,11 @@ void SB2::GraphFollowingOn(CharacterGraphNode *arg0, CharacterGraphNode *arg1, G
                 sp70 = KDMath_Sub2D(sp60, *((MKVector3 *) &sp50));
                 M2C_FIELD(this, MKVector3 *, 0x438) = sp70;
             } else {
-                ((MKProp *) &sp20)->GetPos();
+                sp20 = ((MKProp *) temp_r3_3495)->GetPos();
                 M2C_FIELD(arg0->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp30, arg0);
-                sp10 = sp30 - sp20;
+                sp10 = sp30 - M2C_BITWISE(f64, sp20);
                 M2C_FIELD(this, f64 *, 0x438) = sp10;
-                sp18 = sp38 - sp28;
+                sp18 = sp38 - sp20.unk8;
                 sp40 = sp10;
                 sp48 = (f64) sp18;
                 M2C_FIELD(this, f64 *, 0x440) = (f64) sp18;
@@ -3353,14 +3379,24 @@ void SB2::WanderSetGoal() {
     f64 sp398;
     f64 sp390;                                      /* compiler-managed */
     f64 sp388;
-    MKProp sp338;
+    f64 sp380;
+    f64 sp378;
+    f64 sp370;
+    f64 sp368;
+    f64 sp360;
+    f64 sp358;
+    f64 sp350;
+    f64 sp348;
+    MKVector3 sp338;
     MKVector3 sp328;
     MKVector3 sp318;
-    f64 sp310;                                      /* compiler-managed */
-    f64 sp308;                                      /* compiler-managed */
-    MKProp sp2E8;
+    f64 sp310;
+    f64 sp308;
+    f64 sp300;
+    f64 sp2F8;
+    MKVector3 sp2E8;
     MKVector3 sp2D8;
-    M2C_UNK sp2C8;
+    MKVector3 sp2C8;
     f64 sp2C0;
     f64 sp2B8;
     f64 sp2B0;
@@ -3518,22 +3554,22 @@ void SB2::WanderSetGoal() {
     if ((s32) this->unk3F8 == 0) {
         if ((u8) this->unk418 != 0) {
             temp_r3_5601 = this->unk0;
-            sp318.operator*(M2C_FIELD(temp_r3_5601->__vptr, f32 (**)(Character *), 0x100)(temp_r3_5601));
-            sp328.operator*(1.5f);
-            sp338.GetPos();
+            sp318 = ((MKVector3 *) &this->unk400)->operator*(M2C_FIELD(temp_r3_5601->__vptr, f32 (**)(Character *), 0x100)(temp_r3_5601));
+            sp328 = sp318.operator*(1.5f);
+            sp338 = ((MKProp *) this->unk0)->GetPos();
             sp108 = sp338 + M2C_BITWISE(f64, sp328);
             sp3B8 = sp108;
-            sp110 = M2C_BITWISE(f32, sp338.unk8) + sp328.unk8;
-            sp338.unk10 = sp108;
+            sp110 = sp338.unk8 + sp328.unk8;
+            sp348 = sp108;
             sp3C0 = (f64) sp110;
             temp_r3_5633 = this->unk0->unk8;
-            sp338.unk18 = (f64) sp110;
+            sp350 = (f64) sp110;
             spF8 = -M2C_FIELD(temp_r3_5633, f32 *, 0x20);
             spFC = -M2C_FIELD(temp_r3_5633, f32 *, 0x24);
             sp100 = -M2C_FIELD(temp_r3_5633, f32 *, 0x28);
             sp308 = (f64) spF8;
             sp310 = (f64) sp100;
-            if ((((f32) sp310 * this->unk408) + (((f32) sp308 * M2C_FIELD(this, f32 *, 0x400)) + ((*(f32 *) ((u8 *) &sp2E8 + 0x24)) * this->unk404))) >= 0.5f) {
+            if ((((f32) sp310 * this->unk408) + (((f32) sp308 * M2C_FIELD(this, f32 *, 0x400)) + ((*(f32 *) ((u8 *) &sp308 + 0x4)) * this->unk404))) >= 0.5f) {
                 this->unk418 = 0;
             }
         } else {
@@ -3541,15 +3577,15 @@ void SB2::WanderSetGoal() {
             temp_r3_5668 = this->unk0;
             temp_f25_5671 = 200.0f + M2C_FIELD(temp_r3_5663->__vptr, f32 (**)(Character *), 0x100)(temp_r3_5663);
             temp_f26_5679 = (0.5f * M2C_FIELD(temp_r3_5668->__vptr, f32 (**)(Character *), 0x100)(temp_r3_5668)) + 300.0f;
-            ((MKProp *) &sp2C8)->GetDir();
-            sp2D8.operator*(temp_f25_5671);
-            sp2E8.GetPos();
+            sp2C8 = ((MKProp *) this->unk0)->GetDir();
+            sp2D8 = sp2C8.operator*(temp_f25_5671);
+            sp2E8 = ((MKProp *) this->unk0)->GetPos();
             spE8 = sp2E8 + M2C_BITWISE(f64, sp2D8);
             sp3B8 = spE8;
-            spF0 = M2C_BITWISE(f32, sp2E8.unk8) + sp2D8.unk8;
-            sp2E8.unk10 = spE8;
+            spF0 = sp2E8.unk8 + sp2D8.unk8;
+            sp2F8 = spE8;
             sp3C0 = (f64) spF0;
-            sp2E8.unk18 = (f64) spF0;
+            sp300 = (f64) spF0;
             _table_sincosf(this->unk410, *((f32 *) &sp3A8), *((f32 *) &sp3B0));
             temp_f0_5709 = -(f32) sp3A8;
             sp3A8 = temp_f0_5709;
@@ -3611,8 +3647,8 @@ void SB2::WanderSetGoal() {
                             sp3A8 *= 1.58735232e-314;
                             sp3B0 = (f32) sp3B0 * -1.0f;
                         }
-                        sp338.unk40 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-                        sp338.unk48 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+                        sp378 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                        sp380 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
                         temp_r3_5890 = this->unk0;
                         temp_r4_5891 = temp_r3_5890->unk8;
                         temp_f1_5892 = M2C_FIELD(temp_r4_5891, f64 *, 0x30);
@@ -3638,12 +3674,12 @@ void SB2::WanderSetGoal() {
                         sp238 = temp_f0_5930;
                         sp140 = (f32) sp230 + (f32) sp220;
                         sp240 = (f64) sp140;
-                        if (this->unk4->GetFirstIntersectionPlane(*((MKVector3 *) &sp248), *((MKVector3 *) &sp238), (MKVector3 *) &sp398, (MKVector3 *) &sp338.unk40) != 0) {
+                        if (this->unk4->GetFirstIntersectionPlane(*((MKVector3 *) &sp248), *((MKVector3 *) &sp238), (MKVector3 *) &sp398, (MKVector3 *) &sp378) != 0) {
                             this->unk418 = 1;
-                            temp_f0_5952 = sp388 + M2C_BITWISE(f64, sp338.unk40);
+                            temp_f0_5952 = sp388 + sp378;
                             sp98 = temp_f0_5952;
                             sp1E8 = temp_f0_5952;
-                            spA0 = (f32) sp390 + sp338.unk48;
+                            spA0 = (f32) sp390 + (f32) sp380;
                             sp1F0 = (f64) spA0;
                             sp1F8 = Normalise(*((MKVector3 *) &sp1E8));
                             *(MKVector3 *) &M2C_FIELD(this, f32 *, 0x400) = sp1F8;
@@ -3667,10 +3703,10 @@ void SB2::WanderSetGoal() {
                         sp1C8 = (f64) sp78;
                         sp128 = temp_f8_5999;
                         sp12C = temp_f7_6003;
-                        sp338.unk38 = (f64) sp130;
-                        sp338.unk30 = (f64) sp128;
+                        sp370 = (f64) sp130;
+                        sp368 = (f64) sp128;
                         temp_f5_6023 = (f32) acos(M2C_BITWISE(f32, &MKVector3::up), temp_r4_5973, ((f32) sp1D0 * sp3B0) + (((f32) sp1C8 * (f32) sp3A8) + ((*(f32 *) ((u8 *) &sp1C8 + 0x4)) * (*(f32 *) ((u8 *) &sp3A0 + 0xc)))), (f64) sp128, (f32) sp1C8, sp3B0, (f32) sp1D0, (f64) sp130, temp_f7_6003, temp_f8_5999, temp_f9_5979, temp_f10_5977, MKVector3::up.unk8, MKVector3::up.unk4, (*(f32 *) ((u8 *) &sp1D8 + 0x4)));
-                        sp10 = (M2C_BITWISE(f32, sp338.unk38) * sp3B0) + ((M2C_BITWISE(f32, sp338.unk30) * (f32) sp3A8) + (M2C_BITWISE(f32, sp338.unk34) * (*(f32 *) ((u8 *) &sp3A0 + 0xc))));
+                        sp10 = ((f32) sp370 * sp3B0) + (((f32) sp368 * (f32) sp3A8) + ((*(f32 *) ((u8 *) &sp368 + 0x4)) * (*(f32 *) ((u8 *) &sp3A0 + 0xc))));
                         sp14 = (M2C_BITWISE(s32, sp10) & 0x80000000) | 0x3F800000;
                         this->unk410 = -M2C_BITWISE(f32, sp14) * temp_f5_6023;
                     }
@@ -3723,10 +3759,10 @@ void SB2::WanderSetGoal() {
                         sp168 = (f64) sp38;
                         sp118 = temp_f9_6158;
                         sp11C = temp_f7_6160;
-                        sp338.unk28 = (f64) sp120;
-                        sp338.unk20 = (f64) sp118;
+                        sp360 = (f64) sp120;
+                        sp358 = (f64) sp118;
                         temp_f5_6182 = (f32) acos(M2C_BITWISE(f32, temp_r3_6135), M2C_BITWISE(void *, (((f32) sp170 * sp3B0) + (((f32) sp168 * (f32) sp3A8) + ((*(f32 *) ((u8 *) &sp168 + 0x4)) * (*(f32 *) ((u8 *) &sp3A0 + 0xc)))))), (f32) sp170, (f64) sp118, (f32) sp3A8, sp3B0, (f32) (f64) sp120, (f64) temp_f7_6160, (f32) sp178, temp_f9_6158, temp_f10_6143, temp_f11_6141, temp_f12_6139, (f32) sp180);
-                        sp8 = (M2C_BITWISE(f32, sp338.unk28) * sp3B0) + (((f32) (f64) sp118 * (f32) sp3A8) + (sp338.unk24 * (*(f32 *) ((u8 *) &sp3A0 + 0xc))));
+                        sp8 = ((f32) sp360 * sp3B0) + (((f32) sp358 * (f32) sp3A8) + ((*(f32 *) ((u8 *) &sp358 + 0x4)) * (*(f32 *) ((u8 *) &sp3A0 + 0xc))));
                         spC = (M2C_BITWISE(s32, sp8) & 0x80000000) | 0x3F800000;
                         this->unk410 = -M2C_BITWISE(f32, spC) * temp_f5_6182;
                     }
@@ -3754,16 +3790,16 @@ void SB2::WanderOn() {
     this->unk408 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void SB2::RandomPursuit() {
-    f32 sp8;
+    MKVector3 sp8;
     f32 var_f1_6289;
     void *temp_r3_6283;
     void *temp_r3_6312;
 
-    ((AITargetData *) &sp8)->GetDir();
+    sp8 = this->unk18.GetDir();
     temp_r3_6283 = this + ((this->unk3F8 * 0x98) + 0x100);
-    var_f1_6289 = (M2C_FIELD(temp_r3_6283, f32 *, 8) * sp10) + ((M2C_FIELD(temp_r3_6283, f32 *, 0) * sp8) + (M2C_FIELD(temp_r3_6283, f32 *, 4) * spC));
+    var_f1_6289 = (M2C_FIELD(temp_r3_6283, f32 *, 8) * sp8.unk8) + ((M2C_FIELD(temp_r3_6283, f32 *, 0) * M2C_BITWISE(f32, sp8)) + (M2C_FIELD(temp_r3_6283, f32 *, 4) * sp8.unk4));
     if (var_f1_6289 < 1.0f) {
 
     } else {
@@ -3779,33 +3815,32 @@ void SB2::RandomPursuit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier 'unk0'
 void SB2::RandomPursuitSetGoal() {
     f64 sp20;
     f64 sp18;
-    f64 sp8;
-    void *temp_r4_6349;
+    MKVector3 sp8;
+    AITargetData *temp_r4_6349;
 
-    ((AITargetData *) &sp8)->GetPos();
-    sp18 = sp8;
-    sp20 = sp10;
+    sp8 = ((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetPos();
+    *(MKVector3 *) &sp18 = sp8;
     if (PursuitPredictPos((MKVector3 *) &sp18) != 0) {
         this->unk18.Set(*((MKVector3 *) &sp18), 0U);
         return;
     }
-    temp_r4_6349 = M2C_FIELD(this, void **, 0xC);
-    this->unk18.unk0 = M2C_FIELD(temp_r4_6349, f64 *, 0);
+    temp_r4_6349 = M2C_FIELD(this, AITargetData **, 0xC);
+    this->unk18.unk0 = temp_r4_6349->unk0;
     M2C_FIELD(this, f64 *, 0x20) = (f64) M2C_FIELD(temp_r4_6349, f64 *, 8);
-    this->unk18.unk10 = M2C_FIELD(temp_r4_6349, f64 *, 0x10);
-    this->unk18.unk18 = M2C_FIELD(temp_r4_6349, f64 *, 0x18);
-    this->unk18.unk20 = M2C_FIELD(temp_r4_6349, f64 *, 0x20);
-    this->unk18.unk28 = M2C_FIELD(temp_r4_6349, f64 *, 0x28);
-    this->unk18.unk30 = M2C_FIELD(temp_r4_6349, f32 *, 0x30);
-    this->unk18.unk34 = M2C_FIELD(temp_r4_6349, f32 *, 0x34);
-    this->unk18.unk38 = M2C_FIELD(temp_r4_6349, f32 *, 0x38);
-    this->unk18.unk3C = M2C_FIELD(temp_r4_6349, f32 *, 0x3C);
-    this->unk18.unk40.unk0 = M2C_FIELD(temp_r4_6349, s32 *, 0x40);
-    this->unk18.unk40.unk4 = M2C_FIELD(temp_r4_6349, Targetable **, 0x44);
+    this->unk18.unk10 = temp_r4_6349->unk10;
+    this->unk18.unk18 = temp_r4_6349->unk18;
+    this->unk18.unk20 = temp_r4_6349->unk20;
+    this->unk18.unk28 = temp_r4_6349->unk28;
+    this->unk18.unk30 = temp_r4_6349->unk30;
+    this->unk18.unk34 = temp_r4_6349->unk34;
+    this->unk18.unk38 = temp_r4_6349->unk38;
+    this->unk18.unk3C = temp_r4_6349->unk3C;
+    this->unk18.unk40.unk0 = temp_r4_6349->unk40.unk0;
+    this->unk18.unk40.unk4 = temp_r4_6349->unk40.unk4;
     M2C_FIELD(this, u8 *, 0x60) = (u8) M2C_FIELD(temp_r4_6349, u8 *, 0x48);
     M2C_FIELD(this, u8 *, 0x61) = (u8) M2C_FIELD(temp_r4_6349, u8 *, 0x49);
 }
@@ -3822,16 +3857,16 @@ void SB2::RandomPursuitOn(AITargetData *arg0) {
     ResetSteerDirections();
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void SB2::Pursuit() {
-    f32 sp8;
+    MKVector3 sp8;
     f32 var_f1_6438;
     void *temp_r3_6432;
     void *temp_r3_6461;
 
-    ((AITargetData *) &sp8)->GetDir();
+    sp8 = this->unk18.GetDir();
     temp_r3_6432 = this + ((this->unk3F8 * 0x98) + 0x100);
-    var_f1_6438 = (M2C_FIELD(temp_r3_6432, f32 *, 8) * sp10) + ((M2C_FIELD(temp_r3_6432, f32 *, 0) * sp8) + (M2C_FIELD(temp_r3_6432, f32 *, 4) * spC));
+    var_f1_6438 = (M2C_FIELD(temp_r3_6432, f32 *, 8) * sp8.unk8) + ((M2C_FIELD(temp_r3_6432, f32 *, 0) * M2C_BITWISE(f32, sp8)) + (M2C_FIELD(temp_r3_6432, f32 *, 4) * sp8.unk4));
     if (var_f1_6438 < 1.0f) {
 
     } else {
@@ -3847,14 +3882,21 @@ void SB2::Pursuit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'float'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
-    AITargetData spB0;
-    f32 sp90;
-    f32 sp80;
-    AITargetData sp60;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    MKVector3 spB0;
+    MKVector3 spA0;
+    MKVector3 sp90;
+    MKVector3 sp80;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
     MKVector3 sp50;
-    M2C_UNK sp40;
+    MKVector3 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -3865,6 +3907,8 @@ u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
     f64 sp10;
     f32 sp8;
     f32 temp_f0_6656;
+    f32 temp_f1_6568;
+    f32 temp_f1_6582;
     f32 var_f30_6564;
     f32 var_f30_6654;
     f32 var_f31_6484;
@@ -3882,29 +3926,30 @@ u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
     sp30 = -M2C_FIELD(temp_r4_6488, f32 *, 0x20);
     sp34 = -M2C_FIELD(temp_r4_6488, f32 *, 0x24);
     sp38 = -M2C_FIELD(temp_r4_6488, f32 *, 0x28);
-    spB0.unk20 = (f64) sp30;
-    spB0.unk28 = (f64) sp38;
+    spD0 = (f64) sp30;
+    spD8 = (f64) sp38;
     if (((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetProp() != NULL) {
         temp_r3_6507 = M2C_FIELD(((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetProp(), void **, 8);
         sp20 = -M2C_FIELD(temp_r3_6507, f32 *, 0x20);
         sp24 = -M2C_FIELD(temp_r3_6507, f32 *, 0x24);
         sp28 = -M2C_FIELD(temp_r3_6507, f32 *, 0x28);
-        spB0.unk10 = (f64) sp20;
-        spB0.unk18 = (f64) sp28;
-        var_f31_6484 = ((f32) spB0.unk28 * (f32) spB0.unk18) + (((f32) spB0.unk20 * (f32) spB0.unk10) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * (*(f32 *) ((u8 *) &spB0 + 0x14))));
+        spC0 = (f64) sp20;
+        spC8 = (f64) sp28;
+        var_f31_6484 = ((f32) spD8 * (f32) spC8) + (((f32) spD0 * (f32) spC0) + ((*(f32 *) ((u8 *) &spD0 + 0x4)) * (*(f32 *) ((u8 *) &spC0 + 0x4))));
     }
-    spB0.GetDir();
-    if ((((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetProp() == NULL) || (((((f32) spB0.unk28 * spB0.unk8) + (((f32) spB0.unk20 * M2C_BITWISE(f32, spB0)) + ((*(f32 *) ((u8 *) &spB0 + 0x24)) * (*(f32 *) ((u8 *) &spB0 + 0x4))))) > 0.0f) && (var_f31_6484 < -0.95f))) {
-        ((AITargetData *) &sp60.unk40)->GetPos();
-        M2C_FIELD(arg0, f64 *, 0) = M2C_BITWISE(f64, sp60.unk40);
-        M2C_FIELD(arg0, f64 *, 8) = M2C_BITWISE(f64, sp60.unk40.unk8);
+    spB0 = ((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetDir();
+    if ((((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetProp() == NULL) || (((((f32) spD8 * spB0.unk8) + (((f32) spD0 * M2C_BITWISE(f32, spB0)) + ((*(f32 *) ((u8 *) &spD0 + 0x4)) * spB0.unk4))) > 0.0f) && (var_f31_6484 < -0.95f))) {
+        spA0 = ((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetPos();
+        M2C_FIELD(arg0, MKVector3 *, 0) = spA0;
         return 0U;
     }
     var_f30_6564 = 0.0f;
-    ((AITargetData *) &sp90)->GetVel();
-    if (((sp98 * sp98) + ((sp90 * sp90) + (sp94 * sp94))) > 0.01f) {
-        ((AITargetData *) &sp80)->GetVel();
-        var_f4_6590 = (sp88 * sp88) + ((sp80 * sp80) + (sp84 * sp84));
+    sp90 = ((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetVel();
+    temp_f1_6568 = M2C_BITWISE(f32, sp90);
+    if (((sp90.unk8 * sp90.unk8) + ((temp_f1_6568 * temp_f1_6568) + (sp90.unk4 * sp90.unk4))) > 0.01f) {
+        sp80 = ((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetVel();
+        temp_f1_6582 = M2C_BITWISE(f32, sp80);
+        var_f4_6590 = (sp80.unk8 * sp80.unk8) + ((temp_f1_6582 * temp_f1_6582) + (sp80.unk4 * sp80.unk4));
         if (var_f4_6590 > 0.0f) {
             temp_f1_6593 = __frsqrte(var_f4_6590);
             temp_f1_6599 = 0.5 * temp_f1_6593 * -(((f64) var_f4_6590 * (temp_f1_6593 * temp_f1_6593)) - 3.0);
@@ -3947,46 +3992,45 @@ u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
         }
         var_f30_6564 = ((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetDist() / var_f30_6654;
     }
-    ((AITargetData *) &sp40)->GetVel();
-    sp50.operator*(var_f30_6564);
-    sp60.GetPos();
-    sp10 = sp60.unk0 + M2C_BITWISE(f64, sp50);
+    sp40 = ((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetVel();
+    sp50 = sp40.operator*(var_f30_6564);
+    sp60 = ((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetPos();
+    sp10 = sp60 + M2C_BITWISE(f64, sp50);
     M2C_FIELD(arg0, f64 *, 0) = sp10;
     sp18 = sp60.unk8 + sp50.unk8;
-    sp60.unk10 = sp10;
-    sp60.unk18 = (f64) sp18;
+    sp70 = sp10;
+    sp78 = (f64) sp18;
     M2C_FIELD(arg0, f64 *, 8) = (f64) sp18;
     return 1U;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier 'unk0'
 void SB2::PursuitSetGoal() {
     f64 sp20;
     f64 sp18;
-    f64 sp8;
-    void *temp_r4_6731;
+    MKVector3 sp8;
+    AITargetData *temp_r4_6731;
 
-    ((AITargetData *) &sp8)->GetPos();
-    sp18 = sp8;
-    sp20 = sp10;
+    sp8 = ((AITargetData *) (M2C_FIELD(this, AITargetData **, 0xC)))->GetPos();
+    *(MKVector3 *) &sp18 = sp8;
     if (PursuitPredictPos((MKVector3 *) &sp18) != 0) {
         this->unk18.Set(*((MKVector3 *) &sp18), 0U);
         return;
     }
-    temp_r4_6731 = M2C_FIELD(this, void **, 0xC);
-    this->unk18.unk0 = M2C_FIELD(temp_r4_6731, f64 *, 0);
+    temp_r4_6731 = M2C_FIELD(this, AITargetData **, 0xC);
+    this->unk18.unk0 = temp_r4_6731->unk0;
     M2C_FIELD(this, f64 *, 0x20) = (f64) M2C_FIELD(temp_r4_6731, f64 *, 8);
-    this->unk18.unk10 = M2C_FIELD(temp_r4_6731, f64 *, 0x10);
-    this->unk18.unk18 = M2C_FIELD(temp_r4_6731, f64 *, 0x18);
-    this->unk18.unk20 = M2C_FIELD(temp_r4_6731, f64 *, 0x20);
-    this->unk18.unk28 = M2C_FIELD(temp_r4_6731, f64 *, 0x28);
-    this->unk18.unk30 = M2C_FIELD(temp_r4_6731, f32 *, 0x30);
-    this->unk18.unk34 = M2C_FIELD(temp_r4_6731, f32 *, 0x34);
-    this->unk18.unk38 = M2C_FIELD(temp_r4_6731, f32 *, 0x38);
-    this->unk18.unk3C = M2C_FIELD(temp_r4_6731, f32 *, 0x3C);
-    this->unk18.unk40.unk0 = M2C_FIELD(temp_r4_6731, s32 *, 0x40);
-    this->unk18.unk40.unk4 = M2C_FIELD(temp_r4_6731, Targetable **, 0x44);
+    this->unk18.unk10 = temp_r4_6731->unk10;
+    this->unk18.unk18 = temp_r4_6731->unk18;
+    this->unk18.unk20 = temp_r4_6731->unk20;
+    this->unk18.unk28 = temp_r4_6731->unk28;
+    this->unk18.unk30 = temp_r4_6731->unk30;
+    this->unk18.unk34 = temp_r4_6731->unk34;
+    this->unk18.unk38 = temp_r4_6731->unk38;
+    this->unk18.unk3C = temp_r4_6731->unk3C;
+    this->unk18.unk40.unk0 = temp_r4_6731->unk40.unk0;
+    this->unk18.unk40.unk4 = temp_r4_6731->unk40.unk4;
     M2C_FIELD(this, u8 *, 0x60) = (u8) M2C_FIELD(temp_r4_6731, u8 *, 0x48);
     M2C_FIELD(this, u8 *, 0x61) = (u8) M2C_FIELD(temp_r4_6731, u8 *, 0x49);
 }
@@ -4003,16 +4047,16 @@ void SB2::PursuitOn(AITargetData *arg0) {
     ResetSteerDirections();
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void SB2::Arrive() {
-    f32 sp8;
+    MKVector3 sp8;
     f32 var_f1_6820;
     void *temp_r3_6814;
     void *temp_r3_6843;
 
-    ((AITargetData *) &sp8)->GetDir();
+    sp8 = this->unk18.GetDir();
     temp_r3_6814 = this + ((this->unk3F8 * 0x98) + 0x100);
-    var_f1_6820 = (M2C_FIELD(temp_r3_6814, f32 *, 8) * sp10) + ((M2C_FIELD(temp_r3_6814, f32 *, 0) * sp8) + (M2C_FIELD(temp_r3_6814, f32 *, 4) * spC));
+    var_f1_6820 = (M2C_FIELD(temp_r3_6814, f32 *, 8) * sp8.unk8) + ((M2C_FIELD(temp_r3_6814, f32 *, 0) * M2C_BITWISE(f32, sp8)) + (M2C_FIELD(temp_r3_6814, f32 *, 4) * sp8.unk4));
     if (var_f1_6820 < 1.0f) {
 
     } else {
@@ -4065,16 +4109,16 @@ void SB2::ArriveOn(AITargetData *arg0) {
     ResetSteerDirections();
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void SB2::Seek() {
-    f32 sp8;
+    MKVector3 sp8;
     f32 var_f1_6954;
     void *temp_r3_6948;
     void *temp_r3_6976;
 
-    ((AITargetData *) &sp8)->GetDir();
+    sp8 = this->unk18.GetDir();
     temp_r3_6948 = this + ((this->unk3F8 * 0x98) + 0x100);
-    var_f1_6954 = (M2C_FIELD(temp_r3_6948, f32 *, 8) * sp10) + ((M2C_FIELD(temp_r3_6948, f32 *, 0) * sp8) + (M2C_FIELD(temp_r3_6948, f32 *, 4) * spC));
+    var_f1_6954 = (M2C_FIELD(temp_r3_6948, f32 *, 8) * sp8.unk8) + ((M2C_FIELD(temp_r3_6948, f32 *, 0) * M2C_BITWISE(f32, sp8)) + (M2C_FIELD(temp_r3_6948, f32 *, 4) * sp8.unk4));
     if (var_f1_6954 < 1.0f) {
 
     } else {

@@ -204,7 +204,6 @@ void Tools_CalculateVelocity(const MKVector3 &arg1, const MKVector3 &arg2, float
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 s32 Tools_GetPointDistanceFromLine(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float *arg3) {
     f32 sp58;
     f32 sp54;
@@ -340,7 +339,6 @@ s32 Tools_GetPointDistanceFromLine(const MKVector3 &arg0, const MKVector3 &arg1,
     *arg3 = var_f4_426;
     return 1;
 }
-#endif
 
 void Tools_UnPauseAll() {
     pauseSndCount = 0;
@@ -907,13 +905,14 @@ void Tools_GetClosestSplineTimeXZ(KDUniformSpline *arg0, const MKVector3 &arg1, 
     Tools_GetClosestSplineTimeXZ(arg0, arg1, arg2, 0.0f, 1.0f);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 f32 Tools_GetClosestSplineTimeXZ(KDUniformSpline *arg0, const MKVector3 &arg1, int arg2, float arg3, float arg4) {
-    s32 sp40;
+    Matrix sp40;
     M2C_UNK sp3C;
     f64 sp30;
-    KDUniformSpline sp18;
-    f32 sp14;
+    f64 sp28;
+    MKVector3 sp18;
+    s32 sp14;
     f32 sp10;
     f32 temp_f0_1738;
     f32 temp_f1_1736;
@@ -927,7 +926,7 @@ f32 Tools_GetClosestSplineTimeXZ(KDUniformSpline *arg0, const MKVector3 &arg1, i
 
     M2C_STRUCT_COPY((s32) &sp3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     var_f31_1704 = 0.0f;
-    sp14 = 0.0f;
+    sp14 = 0;
     var_f25_1708 = -1.0f;
     sp10 = 0.0f;
     var_f24_1710 = 3.4028235e38f;
@@ -939,11 +938,11 @@ loop_6:
         if (var_f22_1717 > 1.0f) {
             var_f22_1717 -= 1.0f;
         }
-        sp18.GetNextPositionFast(var_f22_1717, (Matrix *) arg0, (int *) &sp40, &sp14);
+        sp18 = arg0->GetNextPositionFast(var_f22_1717, &sp40, (int *) &sp14, &sp10);
         sp30 = (f64) sp18.unk8;
-        sp18.unk10 = M2C_BITWISE(f64, sp18);
+        sp28 = M2C_BITWISE(f64, sp18);
         temp_f2_1734 = (f32) sp30 - temp_f29_1714;
-        temp_f1_1736 = M2C_BITWISE(f32, sp18.unk10) - temp_f28_1713;
+        temp_f1_1736 = (f32) sp28 - temp_f28_1713;
         temp_f0_1738 = (temp_f1_1736 * temp_f1_1736) + (temp_f2_1734 * temp_f2_1734);
         if (temp_f0_1738 < var_f24_1710) {
             var_f24_1710 = temp_f0_1738;
@@ -960,17 +959,18 @@ void Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, in
     Tools_GetClosestSplineTime(arg0, arg1, arg2, 0.0f, 1.0f);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 f32 Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, int arg2, float arg3, float arg4) {
-    s32 sp60;
+    Matrix sp60;
     M2C_UNK sp5C;
     f64 sp50;
-    KDUniformSpline sp38;
+    f64 sp48;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
     f64 sp18;
-    f32 sp14;
+    s32 sp14;
     f32 sp10;
     f32 temp_f0_1889;
     f32 temp_f23_1855;
@@ -979,10 +979,11 @@ f32 Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, int
     f32 var_f29_1853;
     f32 var_f30_1851;
     f64 temp_f0_1873;
+    f64 temp_f1_1867;
 
     M2C_STRUCT_COPY((s32) &sp5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     var_f27_1847 = 0.0f;
-    sp14 = 0.0f;
+    sp14 = 0;
     var_f30_1851 = -1.0f;
     sp10 = 0.0f;
     var_f29_1853 = 3.4028235e38f;
@@ -990,10 +991,11 @@ f32 Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, int
 loop_4:
     if (var_f27_1847 < (f32) arg2) {
         temp_f26_1859 = (((arg4 - arg3) / (f32) arg2) * var_f27_1847) + arg3;
-        sp38.GetNextPositionFast(temp_f26_1859, (Matrix *) arg0, (int *) &sp60, &sp14);
-        sp38.unk10 = M2C_BITWISE(f64, sp38);
+        sp38 = arg0->GetNextPositionFast(temp_f26_1859, &sp60, (int *) &sp14, &sp10);
+        temp_f1_1867 = M2C_BITWISE(f64, sp38);
+        sp48 = temp_f1_1867;
         sp50 = (f64) sp38.unk8;
-        temp_f0_1873 = M2C_BITWISE(f64, sp38.unk10) - M2C_FIELD(&arg1, f64 *, 0);
+        temp_f0_1873 = temp_f1_1867 - M2C_FIELD(&arg1, f64 *, 0);
         sp18 = temp_f0_1873;
         sp28 = temp_f0_1873;
         sp20 = (f32) sp50 - temp_f23_1855;
@@ -1268,7 +1270,6 @@ void Tools_ResolvableProp::LoadLine(MKIniLine *arg0, const char *arg1) {
     arg0->LoadInt(arg1, (int *) &this->unk4, 0);
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void Tools_SetMatrixScale(Matrix *arg0, float arg1) {
     f32 sp8;
     f32 temp_f2_2415;
@@ -1322,7 +1323,6 @@ void Tools_SetMatrixScale(Matrix *arg0, float arg1) {
         arg0->Scale3x3(arg0, arg1 / var_f5_2421);
     }
 }
-#endif
 
 s32 Tools_GetFloor(const MKVector3 &arg0, float arg1, float *arg2) {
     u8 sp60;

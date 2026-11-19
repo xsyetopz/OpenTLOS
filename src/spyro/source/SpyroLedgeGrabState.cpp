@@ -196,11 +196,11 @@ s32 SpyroLedgeGrabState::AttachTransition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Spyro *' to 'Spyro::RefPoints'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::RefPoints'
 void SpyroLedgeGrabState::AttachUpdate() {
     f64 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
@@ -214,12 +214,12 @@ void SpyroLedgeGrabState::AttachUpdate() {
     u8 var_r0_338;
     u8 var_r0_370;
 
-    ((Spyro *) &sp38)->GetRefPos((Spyro::RefPoints) this->unk10);
-    temp_f0_320 = M2C_FIELD(this, f64 *, 0x28) - sp38;
+    sp38 = this->unk10->GetRefPos((Spyro::RefPoints) 0);
+    temp_f0_320 = M2C_FIELD(this, f64 *, 0x28) - M2C_BITWISE(f64, sp38);
     sp18 = temp_f0_320;
     temp_r3_322 = this->unk10;
     sp48 = temp_f0_320;
-    sp20 = this->unk30 - sp40;
+    sp20 = this->unk30 - sp38.unk8;
     sp50 = (f64) sp20;
     if ((s32) M2C_FIELD(temp_r3_322->unk27C, s32 *, 0x2D4) > 0) {
         var_r0_338 = 0;

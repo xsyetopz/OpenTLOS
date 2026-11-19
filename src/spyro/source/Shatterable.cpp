@@ -1298,7 +1298,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr' Too many errors printed, aborting program
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Shatterable::PlatformDetach() {
     s32 sp18;
     s8 sp14;
@@ -1486,7 +1486,7 @@ loop_32:
                 this->unk16C = 2;
                 SetStateAnim(1);
                 if ((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk154 > 0.0f) && (arg4 != 0)) {
-                    temp_r29_2254 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
+                    temp_r29_2254 = ((u8 *) this->unk8) + 0x30;
                     temp_r28_2256 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                     temp_r27_2259 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                     temp_r26_2263 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
@@ -1499,11 +1499,11 @@ loop_32:
             }
             this->unk160.Send((MKProp *) this);
             if ((u32) M2C_FIELD((((u8 *) this->unk168) + (this->unk180 << 7)), u32 *, 0x78) != 0U) {
-                temp_r26_2301 = (Shatterable *) (*KDProperty::pInstanceMem);
-                *KDProperty::pInstanceMem = (unsigned char) (this);
+                temp_r26_2301 = *KDProperty::pInstanceMem;
+                *KDProperty::pInstanceMem = this;
                 temp_r3_2307 = M2C_FIELD((((u8 *) this->unk168) + (this->unk180 << 7)), void ***, 0x78);
                 M2C_FIELD(*temp_r3_2307, M2C_UNK (**)(void **), 0x4C)(temp_r3_2307);
-                *KDProperty::pInstanceMem = (unsigned char) (temp_r26_2301);
+                *KDProperty::pInstanceMem = temp_r26_2301;
             }
         }
         ((KDShatter2 *) (((u8 *) this->unk168) + (this->unk180 << 7)))->ClearVisible();
@@ -2241,7 +2241,7 @@ loop_223:
         return;
     case 92:                                        /* switch 1 */
         temp_r3_3870 = arg0->unk4;
-        temp_r4_3872 = temp_r3_3870 + 0x128;
+        temp_r4_3872 = (void *) (temp_r3_3870 + 0x128);
         M2C_FIELD(temp_r3_3870, u8 **, 0x12C) = &this->unk150;
         M2C_FIELD(temp_r3_3870, void **, 0x130) = (void *) this->unk158;
         this->unk158 = temp_r4_3872;

@@ -111,7 +111,6 @@ loop_6:
     goto loop_6;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void Shadow::Init(MKModel *arg0, MKProp *arg1, float arg2, MKVector3 *arg3, float arg4) {
     f32 spC;
     f32 sp8;
@@ -242,7 +241,6 @@ void Shadow::Init(MKModel *arg0, MKProp *arg1, float arg2, MKVector3 *arg3, floa
     this->unk18 = pShadowList;
     pShadowList = this;
 }
-#endif
 
 void Shadow_Draw() {
     Frustum sp8;

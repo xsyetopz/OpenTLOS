@@ -163,7 +163,7 @@ void *SteamValve::Update() {
     f64 sp58;
     f32 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f32 sp30;
     f64 sp28;
     f32 sp20;
@@ -328,9 +328,8 @@ void *SteamValve::Update() {
                 sp1F8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp228 = 0;
                 if (this != NULL) {
-                    ((MKProp *) &sp38)->GetPos();
-                    sp208 = sp38;
-                    sp210 = sp40;
+                    sp38 = GetPos();
+                    *(MKVector3 *) &sp208 = sp38;
                 } else {
                     sp208 = 0.0f;
                     (*(f32 *) ((u8 *) &sp204 + 0x8)) = 0.0f;

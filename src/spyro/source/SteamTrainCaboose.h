@@ -16,6 +16,7 @@ class MKIniLine;
 class MKMessage;
 class MKProp;
 class MKSceneManager;
+class MKVector3;
 class Shadow;
 class SpawnerObject;
 class SteamTrainCaboose;
@@ -35,7 +36,7 @@ public:
     virtual void Enable(void);
     virtual void Disable(void);
     SteamTrainCaboose(void);
-    void GetVel(void);
+    MKVector3 GetVel(void);
     void SetState(SteamTrainCabooseState);
     u8 IsBlownUp(void);
     void BlowUp(void);

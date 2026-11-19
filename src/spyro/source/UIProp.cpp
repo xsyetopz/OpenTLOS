@@ -47,22 +47,17 @@ M2C_UNK free(void **);                              /* extern */
 UIObject *malloc(s32);                              /* extern */
 extern void **gMK;
 
-#if 0 // DRAFT: ')' expected
 void UIProp::Draw() {
-    RenderContext sp20;
     Tools_Ortho sp10;
-    void **temp_r3_54;
+    RenderContext sp20;
+    UISystem *temp_r3_54;
 
     MKProp::Draw();
-    sp10.Tools_Ortho();
-    sp20.RenderContext();
-    temp_r3_54 = this->unk54;
+    temp_r3_54 = (UISystem *) this->unk54;
     if (temp_r3_54 != NULL) {
-        M2C_FIELD(*temp_r3_54, M2C_UNK (**)(RenderContext *), 0x1C)(&sp20);
+        temp_r3_54->Draw(sp20);
     }
-    sp10.~Tools_Ortho(-1);
 }
-#endif
 
 void *UIProp::Update() {
     void **temp_r3_83;
@@ -74,29 +69,29 @@ void *UIProp::Update() {
     }
 }
 
-#if 0 // DRAFT: ')' expected
+class ScreenMsg;
 void UIProp::Message(MKMessage *arg0) {
-    s32 sp8;
+    UIMessage sp8;
+    ScreenMsg *temp_r3_msg;
     s32 temp_r0_107;
-    void **temp_r3_117;
 
-    temp_r0_107 = arg0->unk0;
-    switch (temp_r0_107) {                          /* irregular */
+    temp_r0_107 = M2C_FIELD(arg0, s32 *, 0);
+    switch (temp_r0_107) {
     case 0x7E:
-        temp_r3_117 = this->unk54;
-        sp8 = 0xF;
-        M2C_FIELD(*temp_r3_117, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_117, &sp8);
+        sp8.unk0 = 0xF;
+        ((UIObject *) this->unk54)->Message(&sp8);
         break;
     case 0x7F:
-        ((UISystem *) this->unk54)->PushScreen(M2C_FIELD(checked_cast<ScreenMsg *, MKMessage>(arg0), s8 **, 8));
+        temp_r3_msg = checked_cast<ScreenMsg *, MKMessage>(arg0);
+        ((UISystem *) this->unk54)->PushScreen((const char *) M2C_FIELD(temp_r3_msg, s8 **, 8));
         break;
     case 0x80:
-        ((UISystem *) this->unk54)->ChangeScreen(M2C_FIELD(checked_cast<ScreenMsg *, MKMessage>(arg0), s8 **, 8));
+        temp_r3_msg = checked_cast<ScreenMsg *, MKMessage>(arg0);
+        ((UISystem *) this->unk54)->ChangeScreen((const char *) M2C_FIELD(temp_r3_msg, s8 **, 8));
         break;
     }
     MKProp::Message(arg0);
 }
-#endif
 
 void UIProp::Reset() {
     s32 spC;
@@ -146,17 +141,15 @@ s32 UIProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_271;
 
     var_r31_271 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("stringTableSize", (int *) &this->unk4C, 0) != 0) || (arg0->LoadString("fileName", &this->unk50, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("stringTableSize", (int *) &this->unk4C, 0) != 0) || (arg0->LoadString("fileName", (const char **) &this->unk50, 0) != 0)) {
         var_r31_271 = 1;
     }
     return var_r31_271;
 }
-#endif
 
 void UIProp::Deinit() {
     UIStringTable *temp_r30_314;
@@ -181,15 +174,13 @@ void UIProp::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 void UIProp::Init() {
     MKProp::Init();
     this->unk54 = NULL;
     this->unk50 = NULL;
     this->unk4C = 0x800;
-    this->unk58.unk8 = M2C_FIELD(*gMK, s32 (**)(void **), 0x7C)(gMK);
+    this->unk60 = ((MKSceneManager *) gMK)->GetCollisionManager();
 }
-#endif
 
 void UIPropDescriptor::Init() {
     MKPropDescriptor::Init();

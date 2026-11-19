@@ -236,24 +236,26 @@ void SpyroFallState::SetStrafeJump(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp40'
+#if 0 // DRAFT: identifier 'SpyroFallState::GetFallVel()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void SpyroFallState::GetFallVel() {
-    f64 sp38;
-    f64 sp28;
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    MKVector3 sp38;
+    MKVector3 sp28;
     f32 sp20;
     f64 sp18;
     f32 sp10;
     f64 sp8;
+    Spyro *temp_r4_86;
     f32 temp_f31_136;
     f64 temp_f0_118;
     f64 temp_f0_138;
     s32 temp_r3_89;
-    void *temp_r31_84;
     void *temp_r3_87;
     void *var_r3_95;
 
-    temp_r31_84 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_r3_87 = M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 0x10), void **, 0x27C);
+    temp_r4_86 = this->unk10;
+    temp_r3_87 = temp_r4_86->unk27C;
     temp_r3_89 = M2C_FIELD(temp_r3_87, s32 *, 0x2D4);
     if (temp_r3_89 > 0) {
         if (temp_r3_89 != 0) {
@@ -262,29 +264,30 @@ void SpyroFallState::GetFallVel() {
             var_r3_95 = NULL;
         }
         if (M2C_FIELD(var_r3_95, s32 *, 0x44) & 3) {
-            M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
-            this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-            return;
+            M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+            return result;
         }
         goto block_6;
     }
 block_6:
-    if ((u8) M2C_FIELD(temp_r31_84, u8 *, 0x34) != 0) {
-        ((Spyro *) &sp38)->CalcYawTurnDir(3.5f);
-        temp_f0_118 = sp38 * 5.655816876e-315;
+    if ((u8) this->unk34 != 0) {
+        sp38 = temp_r4_86->CalcYawTurnDir(3.5f);
+        temp_f0_118 = M2C_BITWISE(f64, sp38) * 5.655816876e-315;
         sp18 = temp_f0_118;
-        M2C_FIELD(this, f64 *, 0) = temp_f0_118;
-        sp20 = sp40 * 750.0f;
-        this->unk8 = (f64) sp20;
-        return;
+        M2C_FIELD(sret, f64 *, 0) = temp_f0_118;
+        sp20 = sp38.unk8 * 750.0f;
+        M2C_FIELD(sret, f64 *, 8) = (f64) sp20;
+        return result;
     }
-    ((Spyro *) &sp28)->CalcVelTurnDir(2.3999999f);
-    temp_f31_136 = 750.0f * ((KDInput *) (((Spyro *) (M2C_FIELD(temp_r31_84, Spyro **, 0x10)))->GetInput()))->GetLeftMag();
-    temp_f0_138 = sp28 * (f64) temp_f31_136;
+    sp28 = temp_r4_86->CalcVelTurnDir(2.3999999f);
+    temp_f31_136 = 750.0f * ((KDInput *) (this->unk10->GetInput()))->GetLeftMag();
+    temp_f0_138 = M2C_BITWISE(f64, sp28) * (f64) temp_f31_136;
     sp8 = temp_f0_138;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_138;
-    sp10 = sp30 * temp_f31_136;
-    this->unk8 = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_138;
+    sp10 = sp28.unk8 * temp_f31_136;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
 #endif
 
@@ -495,23 +498,23 @@ u8 SpyroFallState::GlideTransition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SpyroFallState::GlideUpdate() {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     f32 temp_f31_547;
     f64 temp_f0_549;
 
     this->unk6C.Update(this->unk10);
-    ((Spyro *) &sp18)->CalcYawTurnDir(2.3999999f);
+    sp18 = this->unk10->CalcYawTurnDir(2.3999999f);
     temp_f31_547 = 1000.0f * ((KDInput *) (this->unk10->GetInput()))->GetLeftMag();
-    temp_f0_549 = sp18 * (f64) temp_f31_547;
+    temp_f0_549 = M2C_BITWISE(f64, sp18) * (f64) temp_f31_547;
     sp8 = temp_f0_549;
     sp28 = temp_f0_549;
-    sp10 = sp20 * temp_f31_547;
+    sp10 = sp18.unk8 * temp_f31_547;
     sp30 = (f64) sp10;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp28), 3800.0f);
     this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp28), 900.0f);
@@ -586,21 +589,18 @@ s32 SpyroFallState::LongFallTransition() {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
 void SpyroFallState::LongFallUpdate() {
     f64 sp20;
     f64 sp18;
-    f64 sp8;
+    MKVector3 sp8;
 
-    ((SpyroFallState *) &sp8)->GetFallVel();
-    sp18 = sp8;
-    sp20 = sp10;
+    sp8 = GetFallVel();
+    *(MKVector3 *) &sp18 = sp8;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp18), 3800.0f);
     this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp18), 900.0f);
     this->unk80.Update();
     LongFallTransition();
 }
-#endif
 
 void SpyroFallState::LongFallExit() {
     Spyro *temp_r3_730;
@@ -755,7 +755,7 @@ void SpyroFallState::FallTransition() {
 void SpyroFallState::FallUpdate() {
     f64 sp20;
     f64 sp18;
-    f64 sp8;
+    MKVector3 sp8;
     f32 var_f1_1042;
 
     if ((u8) this->unk39 == 0) {
@@ -769,9 +769,8 @@ void SpyroFallState::FallUpdate() {
             this->unk64.Update(this->unk10);
         }
     }
-    ((SpyroFallState *) &sp8)->GetFallVel();
-    sp18 = sp8;
-    sp20 = sp10;
+    sp8 = GetFallVel();
+    *(MKVector3 *) &sp18 = sp8;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp18), 3800.0f);
     if (this->unk10->IsPlayingStrafeAnim() == 0) {
         if ((u8) this->unk34 != 0) {

@@ -45,8 +45,8 @@ void SpeedWay::GetPathMatrix(float arg0) {
     f64 sp170;
     SplitPath sp160;
     SplitPath sp150;
-    SplitPath sp140;
-    SplitPath sp130;
+    MKVector3 sp140;
+    MKVector3 sp130;
     MKVector3 sp120;
     f64 sp118;
     f64 sp110;
@@ -85,15 +85,17 @@ void SpeedWay::GetPathMatrix(float arg0) {
     f32 temp_f6_166;
     f64 temp_f0_113;
     f64 temp_f0_90;
+    s32 temp_r31_55;
 
+    temp_r31_55 = M2C_ERROR(/* Read from unset register $r4 */);
     sp160.GetPosition(arg0);
     *(SplitPath *) &sp1A0 = sp160;
     sp150.GetPosition(arg0);
     *(SplitPath *) &sp190 = sp150;
-    sp140.GetVelocity(arg0);
-    *(SplitPath *) &sp180 = sp140;
-    sp130.GetVelocity(arg0);
-    *(SplitPath *) &sp170 = sp130;
+    sp140 = ((SplitPath *) (temp_r31_55 + 0xDC))->GetVelocity(arg0);
+    *(MKVector3 *) &sp180 = sp140;
+    sp130 = ((SplitPath *) (temp_r31_55 + 0xE4))->GetVelocity(arg0);
+    *(MKVector3 *) &sp170 = sp130;
     temp_f0_90 = sp190 - sp1A0;
     sp70 = temp_f0_90;
     sp110 = temp_f0_90;

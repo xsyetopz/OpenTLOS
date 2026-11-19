@@ -741,8 +741,8 @@ void SpeedwayCynder::UpdateLTW(const Matrix *arg0, bool arg1) {
     } else {
         var_f1_1270 = GetCameraZOffset();
     }
-    sp70.operator*(var_f1_1270);
-    sp80.operator*(var_f31_1261);
+    sp70 = ((MKVector3 *) &this->unk300)->operator*(var_f1_1270);
+    sp80 = ((MKVector3 *) &this->unk2F0)->operator*(var_f31_1261);
     temp_f0_1286 = sp1C0 - M2C_BITWISE(f64, sp80);
     sp10 = temp_f0_1286;
     sp90 = temp_f0_1286;
@@ -978,7 +978,7 @@ void SpeedwayCynder::BiteTransition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpeedwayCynder::BiteUpdate() {
     u8 sp110;
     s32 sp10C;
@@ -1027,7 +1027,7 @@ void SpeedwayCynder::BiteUpdate() {
     f64 sp38;
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f64 sp10;
     f64 sp8;
     SpeedWaySpyro *temp_r3_2014;
@@ -1127,9 +1127,8 @@ void SpeedwayCynder::BiteUpdate() {
                 sp88 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spB8 = 0;
                 if (this != NULL) {
-                    ((MKProp *) &sp18)->GetPos();
-                    sp98 = sp18;
-                    spA0 = sp20;
+                    sp18 = GetPos();
+                    *(MKVector3 *) &sp98 = sp18;
                 } else {
                     sp98 = 0.0f;
                     (*(f32 *) ((u8 *) &sp94 + 0x8)) = 0.0f;

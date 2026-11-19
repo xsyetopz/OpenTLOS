@@ -223,7 +223,7 @@ void SquishBoulder::EmitLandingEffects() {
         temp_f0_132 = M2C_FIELD(this, f64 *, 0x290) + sp270;
         sp120 = temp_f0_132;
         sp280 = temp_f0_132;
-        sp128 = this->unk260.unk38 + (f32) sp278;
+        sp128 = this->unk260.unk3C + (f32) sp278;
         sp288 = (f64) sp128;
         gb.EmitDust(*((MKVector3 *) &sp280), *((MKVector3 *) &sp2E0), sp1C, 0.0f);
         var_r27_92 += 1;
@@ -250,7 +250,7 @@ void SquishBoulder::EmitLandingEffects() {
         spFC = 1.0f;
         sp240 = (f64) spF0;
         sp248 = (f64) spF8;
-        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &this->unk260.unk30), *((MKVector3 *) &sp260), sp18, *((MKVector4 *) &sp240), -980.0f);
+        ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &this->unk260.unk34), *((MKVector3 *) &sp260), sp18, *((MKVector4 *) &sp240), -980.0f);
         var_r29_153 += 1;
     } while (var_r29_153 < 0x1E);
     temp_r3_220 = M2C_FIELD(temp_r28_88, void **, 0x16C);
@@ -260,7 +260,7 @@ void SquishBoulder::EmitLandingEffects() {
         sp220 = MKVector(0.0f, 100.0f, 0.0f);
         sp80 = M2C_FIELD(this, f64 *, 0x290) + M2C_BITWISE(f64, sp220);
         M2C_FIELD(temp_r3_224, f64 *, 0) = sp80;
-        sp88 = this->unk260.unk38 + sp220.unk8;
+        sp88 = this->unk260.unk3C + sp220.unk8;
         sp230 = sp80;
         M2C_FIELD(temp_r3_224, f64 *, 8) = (f64) sp88;
         M2C_FIELD(temp_r3_224, f32 *, 0x20) = 0.0f;
@@ -285,7 +285,7 @@ void SquishBoulder::EmitLandingEffects() {
         sp60 = M2C_FIELD(this, f64 *, 0x290) + M2C_BITWISE(f64, sp1F0);
         sp48 = 1.0f;
         sp58 = -1.0f;
-        sp68 = this->unk260.unk38 + sp1F0.unk8;
+        sp68 = this->unk260.unk3C + sp1F0.unk8;
         sp40 = 1.0f;
         sp44 = 1.0f;
         sp50 = -1.0f;
@@ -321,7 +321,7 @@ void SquishBoulder::EmitLandingEffects() {
     temp_f0_371 = M2C_FIELD(this, f64 *, 0x290) + sp180;
     spC0 = temp_f0_371;
     sp190 = temp_f0_371;
-    spC8 = this->unk260.unk38 + (f32) sp188;
+    spC8 = this->unk260.unk3C + (f32) sp188;
     sp198 = (f64) spC8;
     spB0 = sp190 - sp2B0;
     sp1A0 = spB0;
@@ -380,7 +380,7 @@ void SquishBoulder::EmitLandingEffects() {
     sp160 = MKVector(0.0f, 200.0f, 0.0f);
     sp30 = M2C_FIELD(this, f64 *, 0x290) + M2C_BITWISE(f64, sp160);
     sp170 = sp30;
-    sp38 = this->unk260.unk38 + sp160.unk8;
+    sp38 = this->unk260.unk3C + sp160.unk8;
     sp178 = (f64) sp38;
     sp310.unk30 = (f32) sp170;
     sp310.unk34 = (*(f32 *) ((u8 *) &sp170 + 0x4));
@@ -408,7 +408,7 @@ void SquishBoulder::Disable() {
     KDProp::Disable();
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'unk29C'
 void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3) {
     s32 temp_r0_670;
     s32 temp_r28_693;
@@ -424,12 +424,12 @@ void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float 
     this->unk1C8 = M2C_FIELD(&arg1, f64 *, 8);
     this->unk1D0 = arg2;
     this->unk1D4 = 0;
-    M2C_STRUCT_COPY((s32) &this->unk25C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    this->unk260.unk30 = arg0.unk0;
-    this->unk260.unk34 = arg0.unk4;
-    this->unk260.unk38 = arg0.unk8;
-    this->unk260.unk3C = 1.0f;
-    MKModel_SetWorldMatrix(this->unk4, this->unk260);
+    M2C_STRUCT_COPY((s32) &this->unk260 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+    this->unk260.unk34 = arg0.unk0;
+    this->unk260.unk38 = arg0.unk4;
+    this->unk260.unk3C = arg0.unk8;
+    this->unk29C = 1.0f;
+    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &this->unk260.unk4));
     temp_r3_668 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
     temp_r0_670 = *(&GameData::gameData[0x70] + (temp_r3_668 + 0x7C));
     temp_r4_672 = &GameData::gameData[0x70] + (temp_r3_668 + 0x64);
@@ -468,7 +468,7 @@ void SquishBoulder::Message(MKMessage *arg0) {
     Shatterable::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
+#if 0 // DRAFT: undefined identifier 'unk29C'
 void *SquishBoulder::Update() {
     f64 sp70;
     f64 sp68;
@@ -505,7 +505,7 @@ void *SquishBoulder::Update() {
         }
     default:
 block_15:
-        MKModel_SetWorldMatrix(this->unk4, this->unk260);
+        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &this->unk260.unk4));
         return;
     case 1:
         sp38 = 0.0f;
@@ -523,17 +523,17 @@ block_15:
         var_r0_860 = 0;
         temp_f2_865 = M2C_FIELD(this, f32 *, 0x1C4);
         sp68 = temp_f0_858;
-        sp20 = this->unk260.unk38 + (f32) sp60;
+        sp20 = this->unk260.unk3C + (f32) sp60;
         sp70 = (f64) sp20;
         M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
         if ((*(f32 *) ((u8 *) &sp68 + 0x4)) == temp_f2_865) {
             (*(f32 *) ((u8 *) &sp68 + 0x4)) = temp_f2_865;
             var_r0_860 = 1;
         }
-        this->unk260.unk30 = (f32) sp68;
-        this->unk260.unk34 = (*(f32 *) ((u8 *) &sp68 + 0x4));
-        this->unk260.unk38 = (f32) sp70;
-        this->unk260.unk3C = 1.0f;
+        this->unk260.unk34 = (f32) sp68;
+        this->unk260.unk38 = (*(f32 *) ((u8 *) &sp68 + 0x4));
+        this->unk260.unk3C = (f32) sp70;
+        this->unk29C = 1.0f;
         if (var_r0_860 != 0) {
             sp14 = 0;
             sp10 = 0xBA;

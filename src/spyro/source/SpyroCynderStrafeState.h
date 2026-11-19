@@ -8,6 +8,7 @@
 #include "spyro/source/SpyroTools.h"
 
 class MKMessage;
+class MKVector3;
 class Spyro;
 class SpyroCynderStrafeState;
 class SpyroCynderStrafeState_cpp;
@@ -61,7 +62,7 @@ public:
     void NoTargetEnter(void);
     void SelectAnim(void);
     u8 ClampVelocity(void);
-    void GetMoveVelocityHorz(void);
+    MKVector3 GetMoveVelocityHorz(void);
     void SetDesiredVelocityHorz(void);
     void ClampMovementUpdate(void);
     static u8 states[0x90];

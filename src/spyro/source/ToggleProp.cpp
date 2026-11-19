@@ -38,19 +38,21 @@ void ToggleProp::Deinit() {
     KDProp::Deinit();
 }
 
-#if 0 // DRAFT: ')' expected
 void ToggleProp::Message(MKMessage *arg0) {
+    TogglePropDescriptor *desc;
     s32 temp_r0_64;
     u8 temp_r4_85;
 
     temp_r0_64 = arg0->unk0;
-    switch (temp_r0_64) {                           /* irregular */
+    switch (temp_r0_64) {
     case 0xB5:
-        if ((u8) M2C_FIELD(checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x81) != 0) {
+        desc = checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        if (M2C_FIELD(desc, u8 *, 0x81) != 0) {
             this->unk90 = this->unk90 == 0;
         } else {
+            desc = checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
             temp_r4_85 = this->unk90;
-            if (temp_r4_85 == (u8) M2C_FIELD(checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x80)) {
+            if (temp_r4_85 == M2C_FIELD(desc, u8 *, 0x80)) {
                 this->unk90 = temp_r4_85 == 0;
             }
         }
@@ -61,49 +63,47 @@ void ToggleProp::Message(MKMessage *arg0) {
     }
     KDProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void ToggleProp::Draw() {
-    if ((u8) this->unk90 != 0) {
-        MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x78), 1U, 1U);
+    TogglePropDescriptor *desc;
+
+    if (this->unk90 != 0) {
+        desc = checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, desc->unk78, 1, 1);
     } else {
-        MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x7C), 1U, 1U);
+        desc = checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, desc->unk7C, 1, 1);
     }
     MKModel_Draw(this->unk4, NULL);
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void ToggleProp::Init() {
+    TogglePropDescriptor *desc;
+
     KDProp::Init();
-    this->unk90 = M2C_FIELD(checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x80);
+    desc = checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk90 = M2C_FIELD(desc, u8 *, 0x80);
 }
-#endif
 
 void TogglePropDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: function call 'MKModel_GetSubObjectIndex(MKModel *, SubObjectType, signed char *)' does not match 'MKModel_GetSubObjectIndex(const MKModel *, SubObjectType, con
 void TogglePropDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
-    this->unk78 = MKModel_GetSubObjectIndex(this->unk2C, (SubObjectType) 0, this->unk70);
-    this->unk7C = MKModel_GetSubObjectIndex(this->unk2C, (SubObjectType) 0, this->unk74);
+    this->unk78 = MKModel_GetSubObjectIndex(this->unk2C, (SubObjectType) 0, (const char *) this->unk70);
+    this->unk7C = MKModel_GetSubObjectIndex(this->unk2C, (SubObjectType) 0, (const char *) this->unk74);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 TogglePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_217;
 
     var_r31_217 = 0;
-    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("SubobjectOn", &this->unk70, 0) != 0) || (arg0->LoadString("SubobjectOff", &this->unk74, 0) != 0) || (arg0->LoadBool("bStartOn", (u8 *) &this->unk80, 0) != 0) || (arg0->LoadBool("bToggle", this + 0x81, 0) != 0)) {
+    if (((u8) KDPropDescriptor::LoadLine(arg0) != 0) || ((u8) arg0->LoadString("SubobjectOn", (const char **) &this->unk70, 0) != 0) || ((u8) arg0->LoadString("SubobjectOff", (const char **) &this->unk74, 0) != 0) || ((u8) arg0->LoadBool("bStartOn", (bool *) ((s8 *) this + 0x80), 0) != 0) || ((u8) arg0->LoadBool("bToggle", (bool *) ((s8 *) this + 0x81), 0) != 0)) {
         var_r31_217 = 1;
     }
     return var_r31_217;
 }
-#endif
 
 void TogglePropDescriptor::Init() {
     KDPropDescriptor::Init();

@@ -17,7 +17,7 @@ public:
     virtual void Init(ColObjDescriptor *, const MKVector3 &, bool, MKCollisionInfo *, bool, bool, unsigned int, MKProp *, bool);
     virtual s32 Update(MKVector3 *, float, bool);
     virtual s32 Teleport(const MKVector3 &, float, int);
-    virtual void GetOffset(void);
+    virtual MKVector3 GetOffset(void);
     u8 IsFloorCollision(MKCollisionResult *);
     void PushOutOfThings(MKVector3);
     s32 GlueToGround(void);
@@ -31,9 +31,14 @@ public:
 
 #include <m2c_macros.h>
 
-inline void SpyroCollisionObject::GetOffset() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x480);
-    this->unk8 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x488);
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline MKVector3 SpyroCollisionObject::GetOffset() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unk480;
+    M2C_FIELD(sret, f64 *, 8) = (f64) this->unk488;
+    return result;
 }
+#endif
 
 #endif  // SPYRO_SOURCE_SPYROCOLLISIONOBJECT_H

@@ -152,7 +152,7 @@ s32 Sparx::SetPath(SparxPath *arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Sparx::StateAction_FollowPathUpdate() {
     f64 sp88;
     f64 sp80;
@@ -242,7 +242,7 @@ void Sparx::StateAction_FollowPathUpdate() {
             this->unk200 = 0.0f;
             return;
         }
-        sp40.operator*(temp_f1_271);
+        sp40 = ((MKVector3 *) &sp80)->operator*(temp_f1_271);
         sp10 = this->unk208 + M2C_BITWISE(f64, sp40);
         this->unk2B0 = sp10;
         sp18 = this->unk210 + sp40.unk8;
@@ -823,7 +823,7 @@ loop_35:
     sp120 = (f32) sp120 * var_f5_1288;
     (*(f32 *) ((u8 *) &sp118 + 0xc)) *= var_f5_1288;
     sp128 = (f32) sp128 * var_f5_1288;
-    sp100.operator*(MKRand_Float((int *) &gViewSeed, 250.0f, 5250.0f));
+    sp100 = ((MKVector3 *) &sp120)->operator*(MKRand_Float((int *) &gViewSeed, 250.0f, 5250.0f));
     sp20 = this->unk2B0 + M2C_BITWISE(f64, sp100);
     sp40 = 0.0f;
     sp44 = 10000.0f;
@@ -968,7 +968,7 @@ void Sparx::StateAction_SpyroLongIdle1Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC0'
+#if 0 // DRAFT: undefined identifier 'unkC0' Too many errors printed, aborting program
 void Sparx::StateAction_SpyroLongIdle1Exit() {
     this->unkC0 = (struct _struct_localOffset_0x10 (*)[]) &localOffset[1];
 }
@@ -984,7 +984,7 @@ void Sparx::StateAction_SpyroLongIdle1Enter() {
     f64 sp8;
     void *temp_r4_1777;
 
-    sp18.operator*(200.0f);
+    sp18 = ((MKVector3 *) (M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), MKVector3 **, 8)))->operator*(200.0f);
     temp_r4_1777 = this->unk94;
     M2C_FIELD(M2C_FIELD(temp_r4_1777, void **, 0x44), M2C_UNK (**)(f64 *, void *), 0x84)(&sp28, temp_r4_1777);
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
@@ -1253,7 +1253,7 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
                 sp100 = (f32) sp100 * var_f4_2288;
                 (*(f32 *) ((u8 *) &spF8 + 0xc)) *= var_f4_2288;
                 sp108 = (f32) sp108 * var_f4_2288;
-                spB0.operator*(50.0f);
+                spB0 = ((MKVector3 *) &sp100)->operator*(50.0f);
                 sp30 = M2C_FIELD(this, f64 *, 0x220) - M2C_BITWISE(f64, spB0);
                 spC0 = sp30;
                 sp38 = this->unk220.unk8 - spB0.unk8;
@@ -1286,7 +1286,7 @@ void Sparx::Draw() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: ')' expected
 void *Sparx::Update() {
     MKCollisionResult sp130;
     f64 sp128;
@@ -1754,7 +1754,7 @@ void Sparx::Spawn() {
     }
     Reset();
     this->unk288 = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
-    sp38.operator*(1000.0f);
+    sp38 = ((MKVector3 *) (M2C_FIELD(this->unk94, s32 *, 8) + 0x20))->operator*(1000.0f);
     temp_r4_3268 = this->unk94;
     M2C_FIELD(M2C_FIELD(temp_r4_3268, void **, 0x44), M2C_UNK (**)(f64 *, void *), 0x84)(&sp48, temp_r4_3268);
     sp18 = sp48 + M2C_BITWISE(f64, sp38);
@@ -1828,7 +1828,7 @@ void Sparx::RespawnOnSpyroDeath() {
     if ((u8) this->unk1F0 == 0) {
         ResetHint();
         this->unk288 = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
-        sp38.operator*(1000.0f);
+        sp38 = ((MKVector3 *) (M2C_FIELD(this->unk94, s32 *, 8) + 0x20))->operator*(1000.0f);
         temp_r4_3404 = this->unk94;
         M2C_FIELD(M2C_FIELD(temp_r4_3404, void **, 0x44), M2C_UNK (**)(f64 *, void *), 0x84)(&sp48, temp_r4_3404);
         sp18 = sp48 + M2C_BITWISE(f64, sp38);

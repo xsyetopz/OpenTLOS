@@ -52,8 +52,6 @@ void ScryingPool::Message(MKMessage *arg0) {
 
 class CutsceneSystem;
 
-class CutsceneSystem;
-
 void *ScryingPool::Update() {
     s32 temp_r4_104;
     u8 var_r30_154;

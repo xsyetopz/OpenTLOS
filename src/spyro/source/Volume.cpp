@@ -1,4 +1,5 @@
 #include "spyro/source/Volume.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -39,44 +40,25 @@ u8 boundingVolume__6Volume[0x20] = {
     0,
 };
 
-void Volume::GetRandPos() {
-    f64 sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f32 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    f32 temp_f1_40;
-    f32 temp_f30_30;
-    f32 temp_f31_38;
-    f64 temp_f0_54;
-    void *temp_r31_22;
+MKVector3 Volume::GetRandPos() {
+    MKVector3 result;
+    f32 x0;
+    f32 y0;
+    f32 z0;
+    f32 ax;
+    f32 ay;
+    f32 az;
 
-    temp_r31_22 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_f30_30 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x18) * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
-    temp_f31_38 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x14) * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
-    temp_f1_40 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
-    sp30 = temp_f30_30;
-    sp2C = temp_f31_38;
-    sp40 = (f64) sp30;
-    sp28 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x10) * temp_f1_40;
-    sp38 = (f64) sp28;
-    temp_f0_54 = M2C_FIELD(Volume::boundingVolume, f64 *, 0) + (f64) sp28;
-    sp18 = temp_f0_54;
-    sp48 = temp_f0_54;
-    sp20 = M2C_FIELD(Volume::boundingVolume, f32 *, 8) + (f32) sp40;
-    sp50 = (f64) sp20;
-    spC = M2C_FIELD(temp_r31_22, f32 *, 0x74) + (((f32) sp50 * M2C_FIELD(temp_r31_22, f32 *, 0x64)) + (((f32) sp48 * M2C_FIELD(temp_r31_22, f32 *, 0x44)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(temp_r31_22, f32 *, 0x54))));
-    sp8 = M2C_FIELD(temp_r31_22, f32 *, 0x70) + (((f32) sp50 * M2C_FIELD(temp_r31_22, f32 *, 0x60)) + (((f32) sp48 * M2C_FIELD(temp_r31_22, f32 *, 0x40)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(temp_r31_22, f32 *, 0x50))));
-    sp10 = M2C_FIELD(temp_r31_22, f32 *, 0x78) + (((f32) sp50 * M2C_FIELD(temp_r31_22, f32 *, 0x68)) + (((f32) sp48 * M2C_FIELD(temp_r31_22, f32 *, 0x48)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(temp_r31_22, f32 *, 0x58))));
-    this->unk0 = (f64) sp8;
-    this->unk8 = (f64) sp10;
+    x0 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x18) * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+    y0 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x14) * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+    z0 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x10) * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+    ax = M2C_FIELD(Volume::boundingVolume, f32 *, 0x0) + z0;
+    ay = M2C_FIELD(Volume::boundingVolume, f32 *, 0x4) + y0;
+    az = M2C_FIELD(Volume::boundingVolume, f32 *, 0x8) + x0;
+    result.unk0 = this->unk40.unk30 + ((az * this->unk40.unk20) + ((ax * this->unk40.unk0) + (ay * this->unk40.unk10)));
+    result.unk4 = this->unk40.unk34 + ((az * this->unk40.unk24) + ((ax * this->unk40.unk4) + (ay * this->unk40.unk14)));
+    result.unk8 = this->unk40.unk38 + ((az * this->unk40.unk28) + ((ax * this->unk40.unk8) + (ay * this->unk40.unk18)));
+    return result;
 }
 
 void Volume::UpdateMatrix(Matrix &arg0) {

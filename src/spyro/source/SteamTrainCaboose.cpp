@@ -260,7 +260,10 @@ void SteamTrainCaboose::Enable() {
     EnemyHud_Modified((MKProp *) this, temp_f1_322, temp_f1_322, 50.0f);
 }
 
+#if 0 // DRAFT: identifier 'SteamTrainCaboose::GetVel()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void SteamTrainCaboose::GetVel() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp40;
     f64 sp38;
     f32 sp30;
@@ -274,14 +277,12 @@ void SteamTrainCaboose::GetVel() {
     SteamTrain *temp_r3_345;
     f32 temp_f3_349;
     f64 temp_f0_365;
-    void *temp_r31_341;
     void *temp_r3_376;
     void *temp_r4_348;
 
-    temp_r31_341 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_r3_345 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0xD0)));
+    temp_r3_345 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkD0));
     if (temp_r3_345 != NULL) {
-        temp_r4_348 = M2C_FIELD(temp_r31_341, void **, 8);
+        temp_r4_348 = this->unk8;
         temp_f3_349 = temp_r3_345->unk108;
         sp8 = -M2C_FIELD(temp_r4_348, f32 *, 0x20);
         spC = -M2C_FIELD(temp_r4_348, f32 *, 0x24);
@@ -290,18 +291,20 @@ void SteamTrainCaboose::GetVel() {
         sp40 = (f64) sp10;
         temp_f0_365 = sp38 * (f64) temp_f3_349;
         sp28 = temp_f0_365;
-        M2C_FIELD(this, f64 *, 0) = temp_f0_365;
+        M2C_FIELD(sret, f64 *, 0) = temp_f0_365;
         sp30 = (f32) sp40 * temp_f3_349;
-        M2C_FIELD(this, f64 *, 8) = (f64) sp30;
-        return;
+        M2C_FIELD(sret, f64 *, 8) = (f64) sp30;
+        return result;
     }
-    temp_r3_376 = M2C_FIELD(temp_r31_341, void **, 8);
+    temp_r3_376 = this->unk8;
     sp18 = -M2C_FIELD(temp_r3_376, f32 *, 0x20);
     sp1C = -M2C_FIELD(temp_r3_376, f32 *, 0x24);
     sp20 = -M2C_FIELD(temp_r3_376, f32 *, 0x28);
-    M2C_FIELD(this, f64 *, 0) = (f64) sp18;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp18;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp20;
+    return result;
 }
+#endif
 
 void SteamTrainCaboose::SetState(SteamTrainCabooseState arg0) {
     this->unkC8 = (s32) arg0;
@@ -474,7 +477,7 @@ block_34:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp1C8'
+#if 0 // DRAFT: undefined identifier 'unksp32C'
 void *SteamTrainCaboose::Update() {
     f32 sp36C;
     f32 sp368;
@@ -535,9 +538,9 @@ void *SteamTrainCaboose::Update() {
     f64 sp1E0;
     f64 sp1D8;
     f64 sp1D0;
-    f64 sp1C0;
+    MKVector3 sp1C0;
     f32 sp1B0;
-    f32 sp1A0;
+    MKVector3 sp1A0;
     f64 sp198;
     f64 sp190;
     f64 sp188;
@@ -603,6 +606,7 @@ void *SteamTrainCaboose::Update() {
     f32 sp14;
     f32 sp10;
     SteamTrain *temp_r3_821;
+    TrainTrack *temp_r3_816;
     f32 temp_f1_913;
     f32 temp_f28_937;
     f32 temp_f29_942;
@@ -610,6 +614,7 @@ void *SteamTrainCaboose::Update() {
     f32 temp_f2_1282;
     f32 temp_f30_1026;
     f32 temp_f31_994;
+    f32 temp_f9_1238;
     f64 temp_f0_1008;
     f64 temp_f0_880;
     f64 temp_f0_900;
@@ -617,7 +622,6 @@ void *SteamTrainCaboose::Update() {
     f64 temp_f0_969;
     f64 temp_f1_894;
     s32 temp_r0_824;
-    s32 temp_r3_816;
     s32 var_r28_1162;
     void *temp_r28_850;
     void *temp_r3_1100;
@@ -631,8 +635,8 @@ void *SteamTrainCaboose::Update() {
     if ((s32) this->unkC8 != 0) {
         this->unk110.TrySpawnItems(0x10, 0U);
         if ((u8) this->unkD8 == 0) {
-            temp_r3_816 = (long) (checked_cast<TrainTrack *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkCC)));
-            if ((temp_r3_816 != 0) && (temp_r3_821 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkD0)), ((temp_r3_821 == NULL) == 0))) {
+            temp_r3_816 = checked_cast<TrainTrack *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkCC));
+            if ((temp_r3_816 != NULL) && (temp_r3_821 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkD0)), ((temp_r3_821 == NULL) == 0))) {
                 temp_r0_824 = this->unkC8;
                 switch (temp_r0_824) {              /* irregular */
                 case 2:
@@ -642,25 +646,25 @@ void *SteamTrainCaboose::Update() {
                 default:
 block_20:
                     this->unkD4 = temp_r3_821->unk110 - 1200.0f;
-                    ((TrainTrack *) &sp1C0)->GetTrackZAxis(temp_r3_816, this->unkD4);
-                    sp310 = sp1C0;
-                    sp318 = sp1C8;
+                    sp1C0 = temp_r3_816->GetTrackZAxis(1, this->unkD4);
+                    *(MKVector3 *) &sp310 = sp1C0;
                     if ((((f32) sp318 * (f32) sp318) + (((f32) sp310 * (f32) sp310) + ((*(f32 *) ((u8 *) &sp310 + 0x4)) * (*(f32 *) ((u8 *) &sp310 + 0x4))))) > 0.0001f) {
                         M2C_STRUCT_COPY((s32) &unksp32C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                        ((TrainTrack *) &sp1B0)->GetTrackPos(temp_r3_816, this->unkD4, 1);
+                        ((TrainTrack *) &sp1B0)->GetTrackPos((s32) temp_r3_816, this->unkD4, 1);
                         sp360 = sp1B0;
                         sp364 = sp1B4;
                         sp368 = sp1B8;
                         sp36C = 1.0f;
-                        ((TrainTrack *) &sp1A0)->GetTrackXAxis(temp_r3_816, this->unkD4);
-                        sp330 = sp1A0;
-                        sp48 = ((f32) sp310 * sp1A4) - ((*(f32 *) ((u8 *) &sp310 + 0x4)) * sp1A0);
-                        sp40 = ((*(f32 *) ((u8 *) &sp310 + 0x4)) * sp1A8) - ((f32) sp318 * sp1A4);
-                        sp44 = ((f32) sp318 * sp1A0) - ((f32) sp310 * sp1A8);
+                        sp1A0 = temp_r3_816->GetTrackXAxis(1, this->unkD4);
+                        temp_f9_1238 = M2C_BITWISE(f32, sp1A0);
+                        sp330 = temp_f9_1238;
+                        sp48 = ((f32) sp310 * sp1A0.unk4) - ((*(f32 *) ((u8 *) &sp310 + 0x4)) * temp_f9_1238);
+                        sp40 = ((*(f32 *) ((u8 *) &sp310 + 0x4)) * sp1A0.unk8) - ((f32) sp318 * sp1A0.unk4);
+                        sp44 = ((f32) sp318 * temp_f9_1238) - ((f32) sp310 * sp1A0.unk8);
                         sp198 = (f64) sp48;
                         sp190 = (f64) sp40;
-                        sp334 = sp1A4;
-                        sp338 = sp1A8;
+                        sp334 = sp1A0.unk4;
+                        sp338 = sp1A0.unk8;
                         sp33C = 0.0f;
                         sp350 = (f32) sp310;
                         sp354 = (*(f32 *) ((u8 *) &sp310 + 0x4));

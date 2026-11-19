@@ -5,6 +5,7 @@
 #include "spyro/source/KDStateMachine.h"
 #include "spyro/source/SpyroState.h"
 
+class MKVector3;
 class Spyro;
 class SpyroJumpState;
 class SpyroJumpState_cpp;
@@ -38,7 +39,7 @@ public:
     void JumpStartUpdate(void);
     void JumpStartExit(void);
     void JumpStartEnter(void);
-    void GetJumpVel(void);
+    MKVector3 GetJumpVel(void);
     static SpyroJumpState states;
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ f64 unk8;

@@ -260,7 +260,7 @@ void SpyroHurtState::KnockToSafePosUpdate() {
     f64 spA8;
     f64 spA0;
     f64 sp98;
-    f64 sp88;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
     f64 sp70;
@@ -328,10 +328,10 @@ void SpyroHurtState::KnockToSafePosUpdate() {
         this->unk10->GetYaw();
         this->unk10->Teleport(*((MKVector3 *) &this->unk70), M2C_ERROR(/* Read from unset register $f1 */), 0x1E, 0U, 1U);
     } else {
-        ((MKProp *) &sp88)->GetPos();
-        sp18 = spD8 - sp88;
+        sp88 = ((MKProp *) this->unk10)->GetPos();
+        sp18 = spD8 - M2C_BITWISE(f64, sp88);
         spC8 = sp18;
-        sp20 = (f32) spE0 - sp90;
+        sp20 = (f32) spE0 - sp88.unk8;
         sp98 = sp18;
         spD0 = (f64) sp20;
         spA0 = (f64) sp20;
@@ -903,7 +903,7 @@ void SpyroHurtState::StrafeFlinchExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode' Too many errors printed, aborting program
 void SpyroHurtState::StrafeFlinchEnter() {
     s32 spC;
     s32 sp8;
@@ -943,8 +943,10 @@ void SpyroHurtState::FlinchExit() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroHurtState::FlinchEnter() {
-    MKProp sp48;
-    f64 sp38;
+    f64 sp60;
+    f64 sp58;
+    MKVector3 sp48;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
@@ -958,15 +960,15 @@ void SpyroHurtState::FlinchEnter() {
     this->unk10->SetAnim(0x4AU, 0.0f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
     temp_r4_1770 = this->unk38;
     if ((temp_r4_1770 != NULL) && (M2C_FIELD(*temp_r4_1770, s32 *, 0xC) & 8)) {
-        ((MKProp *) &sp38)->GetPos();
-        sp48.GetPos();
-        temp_f0_1785 = sp48 - sp38;
+        sp38 = ((MKProp *) temp_r4_1770)->GetPos();
+        sp48 = ((MKProp *) this->unk10)->GetPos();
+        temp_f0_1785 = sp48 - M2C_BITWISE(f64, sp38);
         sp18 = temp_f0_1785;
         M2C_FIELD(this, f64 *, 0x50) = temp_f0_1785;
-        sp20 = M2C_BITWISE(f32, sp48.unk8) - sp40;
-        sp48.unk10 = temp_f0_1785;
+        sp20 = sp48.unk8 - sp38.unk8;
+        sp58 = temp_f0_1785;
         M2C_FIELD(this, f64 *, 0x58) = (f64) sp20;
-        sp48.unk18 = (f64) sp20;
+        sp60 = (f64) sp20;
         sp8 = -this->unk50;
         spC = -this->unk54;
         sp10 = -this->unk58;
@@ -1033,7 +1035,7 @@ void SpyroHurtState::Enter(SpyroStateMessages &arg0) {
     f64 sp118;
     f64 sp110;
     f64 sp108;
-    f64 spF8;
+    MKVector3 spF8;
     f64 spF0;
     f64 spE8;
     f64 spE0;
@@ -1165,15 +1167,15 @@ void SpyroHurtState::Enter(SpyroStateMessages &arg0) {
         sp1A0 = NULL;
         sp1A4 = -1;
         sp1A8 = 0;
-        ((MKProp *) &spF8)->GetPos();
+        spF8 = ((MKProp *) this->unk10)->GetPos();
         sp28 = spF8 + M2C_FIELD(this, f64 *, 0x50);
         this->unk70 = sp28;
-        sp30 = sp100 + this->unk58;
+        sp30 = spF8.unk8 + this->unk58;
         sp108 = sp28;
         this->unk78 = (f64) sp30;
         temp_r3_2040 = this->unk10;
         sp110 = (f64) sp30;
-        temp_r3_2045 = temp_r3_2040->GetCollisionInfo(sp28, sp100);
+        temp_r3_2045 = temp_r3_2040->GetCollisionInfo(sp28, spF8.unk8);
         sp10 = temp_r3_2045;
         if (temp_r3_2045 != NULL) {
             sp14 = M2C_FIELD(temp_r3_2045, u8 *, 4);

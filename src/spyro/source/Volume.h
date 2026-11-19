@@ -4,13 +4,14 @@
 #include <dolphin/types.h>
 #include "common/Source/Matrix.h"
 
+class MKVector3;
 class Matrix;
 class Volume;
 class Volume_cpp;
 
 class Volume {
 public:
-    void GetRandPos(void);
+    MKVector3 GetRandPos(void);
     void UpdateMatrix(Matrix &);
     void Init(Matrix &);
     static u8 boundingVolume[0x20];

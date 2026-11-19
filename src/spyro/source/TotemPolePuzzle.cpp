@@ -55,36 +55,26 @@ void TotemPolePuzzle::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal type
 void *TotemPolePuzzle::Update() {
-    s32 temp_r0_85;
-    s32 var_ctr_87;
-    s32 var_r3_86;
-    void *temp_r5_92;
+    s32 i;
+    s32 off;
+    TotemPolePiece *piece;
 
-    if ((u8) this->unkD8 == 0) {
-        temp_r0_85 = this->unkCC;
-        var_r3_86 = 0;
-        var_ctr_87 = temp_r0_85;
-        if (temp_r0_85 > 0) {
-loop_2:
-            temp_r5_92 = *(this->unkC8 + var_r3_86);
-            if ((s32) M2C_FIELD(temp_r5_92, s32 *, 0xD0) == (s32) M2C_FIELD(temp_r5_92, s32 *, 0xD4)) {
-                var_r3_86 += 4;
-                var_ctr_87 -= 1;
-                if (var_ctr_87 == 0) {
-                    goto block_4;
-                }
-                goto loop_2;
+    if (this->unkD8 == 0) {
+        off = 0;
+        for (i = 0; i < this->unkCC; i++) {
+            piece = *(TotemPolePiece **)((u8 *)this->unkC8 + off);
+            if (piece->unkD0 != piece->unkD4) {
+                goto done;
             }
-        } else {
-block_4:
-            this->unkD8 = 1;
-            this->unkD4.Send(NULL);
+            off += 4;
         }
+        this->unkD8 = 1;
+        this->unkD4.Send(NULL);
     }
+done:
+    ;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 s32 TotemPolePuzzle::LoadDone() {
@@ -255,12 +245,10 @@ void TotemPolePiece::SetDesiredYaw(int arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
 void TotemPolePiece::Deinit() {
-    this->unkC8.UnregisterTargetable();
+    ((Targetable *) ((s8 *) this + 0xC8))->UnregisterTargetable();
     GameProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: type mismatch 'AssaultCannon *' and 'TotemPolePiece *'
 void TotemPolePiece::Message(MKMessage *arg0) {
@@ -325,11 +313,9 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
 f32 TotemPolePiece::Resolve() {
-    this->unkC8.RegisterTargetable();
+    ((Targetable *) ((s8 *) this + 0xC8))->RegisterTargetable();
 }
-#endif
 
 void TotemPolePiece::Draw() {
     GameProp::Draw();

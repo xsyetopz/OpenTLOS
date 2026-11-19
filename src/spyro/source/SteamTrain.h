@@ -137,7 +137,7 @@ public:
     virtual s32 GetMoveToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
-    virtual void GetVel(void);
+    virtual MKVector3 GetVel(void);
     virtual s32 GetCollisionInfo(void);
     virtual f32 GetCollisionRadius(void);
     virtual f32 GetCollisionHeight(void);
@@ -261,7 +261,9 @@ inline s32 SteamTrain::GetCollisionInfo() {
     return 0;
 }
 
-inline void SteamTrain::GetVel() {
+inline MKVector3 SteamTrain::GetVel() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp30;
     f64 sp28;
     f32 sp20;
@@ -273,8 +275,8 @@ inline void SteamTrain::GetVel() {
     f64 temp_f0_109;
     void *temp_r5_92;
 
-    temp_r5_92 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
-    temp_f4_93 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x108);
+    temp_r5_92 = this->unk8;
+    temp_f4_93 = this->unk108;
     sp8 = -M2C_FIELD(temp_r5_92, f32 *, 0x20);
     spC = -M2C_FIELD(temp_r5_92, f32 *, 0x24);
     sp10 = -M2C_FIELD(temp_r5_92, f32 *, 0x28);
@@ -282,25 +284,26 @@ inline void SteamTrain::GetVel() {
     sp30 = (f64) sp10;
     temp_f0_109 = sp28 * (f64) temp_f4_93;
     sp18 = temp_f0_109;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_109;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_109;
     sp20 = (f32) sp30 * temp_f4_93;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp20;
+    return result;
 }
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 inline s32 SteamTrain::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     sp18 = MKVector(0.0f, 400.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -312,16 +315,16 @@ inline s32 SteamTrain::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 inline s32 SteamTrain::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     sp18 = MKVector(0.0f, 400.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;

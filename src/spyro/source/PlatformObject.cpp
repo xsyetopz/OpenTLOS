@@ -63,44 +63,33 @@ loop_6:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void PlatformObject::SimpleMessageAttached(int arg0) {
-    s32 spC;
-    s32 sp8;
-    Platform *temp_r3_48;
+    s32 sp8[2];
     PlatformAttachment *var_r29_45;
 
     var_r29_45 = this->unk28.unk8;
-loop_2:
-    if (var_r29_45 != &this->unk28) {
-        temp_r3_48 = var_r29_45->unk0;
-        spC = 0;
-        sp8 = arg0;
-        temp_r3_48->Message(&sp8);
+    while (var_r29_45 != &this->unk28) {
+        sp8[1] = 0;
+        sp8[0] = arg0;
+        var_r29_45->unk0->Message((MKMessage *) sp8);
         var_r29_45 = var_r29_45->unk8;
-        goto loop_2;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void PlatformObject::DetachAll() {
-    s32 spC;
-    s32 sp8;
+    s32 sp8[2];
     Platform *temp_r3_80;
     PlatformAttachment *temp_r3_89;
 
-loop_2:
     temp_r3_89 = this->unk28.unk8;
-    if (temp_r3_89 != &this->unk28) {
+    while (temp_r3_89 != &this->unk28) {
         temp_r3_80 = temp_r3_89->unk0;
-        spC = 0;
-        sp8 = 0x26;
-        temp_r3_80->Message(&sp8);
-        goto loop_2;
+        sp8[1] = 0;
+        sp8[0] = 0x26;
+        temp_r3_80->Message((MKMessage *) sp8);
+        temp_r3_89 = this->unk28.unk8;
     }
 }
-#endif
 
 s8 PlatformObject::Detach(PlatformAttachment *arg0) {
     arg0->unkC->unk8 = arg0->unk8;
@@ -215,14 +204,12 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void PlatformObject::UpdateRotationMatrix() {
     Matrix sp50;
     Matrix sp10;
-    M2C_UNK spC;
 
     if ((u8) this->unk0->unk11 != 0) {
-        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (this->unk40->unk8 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY(&sp10, this->unk40->unk8, 0x40);
         sp10.SetRotationPitch(this->unk8);
         sp50.SetRotationRoll(this->unk10);
         sp10.Multiply3x3(&sp10, &sp50);
@@ -232,7 +219,6 @@ void PlatformObject::UpdateRotationMatrix() {
         MKModel_SetWorldMatrix(this->unk40->unk4, sp10);
     }
 }
-#endif
 
 void PlatformObject::UpdateTilt() {
     f64 sp20;                                       /* compiler-managed */
@@ -436,8 +422,7 @@ loop_6:
 #if 0 // DRAFT: undefined identifier 'PlatformMoveMsg'
 void PlatformObject::Message(MKMessage *arg0) {
     Matrix sp20;
-    f32 sp1C;
-    f64 sp10;
+    MKVector3 sp10;
     s32 temp_r0_738;
     void *temp_r31_754;
     void *temp_r3_775;
@@ -449,7 +434,7 @@ void PlatformObject::Message(MKMessage *arg0) {
     case 34:
         BeginUpdate();
         temp_r31_754 = checked_cast<PlatformMoveMsg *, MKMessage>(arg0);
-        M2C_STRUCT_COPY((s32) &sp1C + 4, MKModel_GetWorldMatrix(this->unk40->unk4) - 4 + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp10.unkC + 4, MKModel_GetWorldMatrix(this->unk40->unk4) - 4 + 4, 0x40);
         sp20.Multiply3x3(&sp20, M2C_FIELD(temp_r31_754, Matrix **, 0x10));
         sp20.Multiply3x3(&sp20, M2C_FIELD(temp_r31_754, Matrix **, 0x14));
         temp_r3_775 = M2C_FIELD(temp_r31_754, void **, 8);
@@ -458,9 +443,8 @@ void PlatformObject::Message(MKMessage *arg0) {
         sp20.unk38 = M2C_FIELD(temp_r3_775, f32 *, 8);
         sp20.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk40->unk4, sp20);
-        ((Matrix *) &sp10)->GetRotationPYR();
-        M2C_FIELD(this, f64 *, 8) = sp10;
-        M2C_FIELD(this, f64 *, 0x10) = sp18;
+        sp10 = sp20.GetRotationPYR();
+        M2C_FIELD(this, MKVector3 *, 8) = sp10;
         EndUpdate();
         return;
     case 35:

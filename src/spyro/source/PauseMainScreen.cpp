@@ -114,7 +114,6 @@ void ExitConfirmScreen::OnEnter() {
 }
 
 extern "C" s32 stricmp(const char *, const char *);
-
 void ExitConfirmScreen::Resolve() {
     UIScreen::Resolve();
     this->unkC8 = (void **) (ui_cast<UIButtonGroup *, UIObject *>(FindChild("buttons")));

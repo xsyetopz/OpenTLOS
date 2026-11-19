@@ -8,7 +8,7 @@ class WindFX;
 
 class WindFX {
 public:
-    void GetSwirlVelocity(const MKVector3 &);
+    MKVector3 GetSwirlVelocity(const MKVector3 &);
     void GetGlobalVelocity(const MKVector3 &);
     void GetVelocity(const MKVector3 &);
     void Init(int, float, const MKVector3 &, const MKVector3 &);

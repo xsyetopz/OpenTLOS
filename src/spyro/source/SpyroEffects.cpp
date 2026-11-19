@@ -127,7 +127,6 @@ void SpyroEffects::SoundFadeOut() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void SpyroEffects::TriggerConvexity(SpyroEffectsUpdateData *arg0) {
     f64 sp38;
     f64 sp30;
@@ -200,166 +199,72 @@ void SpyroEffects::TriggerConvexity(SpyroEffectsUpdateData *arg0) {
     }
     ((ConvexityBreathFX *) (M2C_FIELD(this->unk4, ConvexityBreathFX **, 0xC0)))->Trigger(this->unk8, *((MKVector3 *) &sp30), *((MKVector3 *) &sp20), 1.0f);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 u8 SpyroEffects::TriggerFury(SpyroEffectsUpdateData *arg0) {
-    f64 sp118;
-    f64 sp110;
-    f64 sp108;
-    f64 sp100;
-    f64 spF8;
-    f64 spF0;
-    f64 spE8;
-    f64 spE0;
-    f64 spD8;
-    f64 spD0;
-    f64 spC8;
-    f64 spC0;
-    f64 spB8;
-    f64 spB0;
-    f64 spA8;
-    f64 spA0;
-    f64 sp98;
-    f64 sp90;
-    f64 sp88;
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    f32 sp68;
-    f32 sp64;
-    f32 sp60;
-    f32 sp58;
-    f32 sp54;
-    f32 sp50;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    s32 sp8;
-    f32 var_f1_290;
-    s32 temp_r0_212;
-    u8 temp_r3_195;
-    u8 temp_r3_244;
-    u8 temp_r3_284;
-    u8 temp_r3_340;
-    u8 temp_r3_389;
-    u8 var_r31_184;
-    u8 var_r3_289;
-    void *temp_r4_293;
+    MKVector3 zero;
+    MKVector4 glow;
+    f32 range;
+    void *flags;
+    u8 result;
 
-    var_r31_184 = 0;
-    *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x7C)) = 3;
+    result = 0;
+    zero.unk0 = 0.0f;
+    zero.unk4 = 0.0f;
+    zero.unk8 = 0.0f;
+    *(s32 *) (&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x7C)) = 3;
     if ((u8) arg0->unk3E != 0) {
-        temp_r3_195 = ((FuryFXConvexity *) (M2C_FIELD(this->unk4, FuryFXConvexity **, 0xBC)))->Trigger(arg0->unk10);
-        var_r31_184 = temp_r3_195;
-        if (temp_r3_195 != 0) {
-            sp110 = M2C_FIELD(arg0, f64 *, 0x10);
-            sp118 = M2C_FIELD(arg0, f64 *, 0x18);
-            ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &sp110, GS_Rumble1, 7.5f, 2000.0f);
+        result = ((FuryFXConvexity *) (M2C_FIELD(this->unk4, FuryFXConvexity **, 0xBC)))->Trigger(arg0->unk10);
+        if (result != 0) {
+            ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger(arg0->unk10, GS_Rumble1, 7.5f, 2000.0f);
         }
-    } else {
-        temp_r0_212 = arg0->unk24;
-        switch (temp_r0_212) {                      /* irregular */
-        case 0:
-            sp68 = 0.0f;
-            sp60 = 0.0f;
-            sp64 = 0.0f;
-            sp108 = (f64) sp68;
-            sp100 = (f64) sp60;
-            sp8 = 0;
-            temp_r3_244 = ((FlameBreathFX *) (M2C_FIELD(this->unk4, FlameBreathFX **, 0x14)))->Trigger(this->unk8, arg0->unk10, *((MKVector3 *) &sp100), *((MKVector3 *) arg0), 1.0f, lit_1018, 0U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-            var_r31_184 = temp_r3_244;
-            if (temp_r3_244 != 0) {
-                KDSound_Play3d(GS_SpyroFuryStartSound, &arg0->unk10, 0U, -1, 0.0f, 0U);
-                spF0 = M2C_FIELD(arg0, f64 *, 0x10);
-                spF8 = M2C_FIELD(arg0, f64 *, 0x18);
-                ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &spF0, GS_Rumble1, 5.0f, 2000.0f);
-            }
-            break;
-        case 1:
-            sp58 = 0.0f;
-            sp50 = 0.0f;
-            sp54 = 0.0f;
-            spE8 = (f64) sp58;
-            spE0 = (f64) sp50;
-            temp_r3_284 = ((ZapBreathFX *) (M2C_FIELD(this->unk4, ZapBreathFX **, 0x18)))->Trigger(this->unk8, arg0->unk10, *((MKVector3 *) &spE0), 1.0f, lit_1024, 0U);
-            var_r31_184 = temp_r3_284;
-            if (temp_r3_284 != 0) {
-                var_r3_289 = 0;
-                var_f1_290 = 7.0f;
-                temp_r4_293 = &GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64);
-                if (((s32) M2C_FIELD(temp_r4_293, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_293, s32 *, 4) == 3)) {
-                    var_r3_289 = 1;
-                }
-                if (var_r3_289 != 0) {
-                    var_f1_290 = 12.0f;
-                }
-                ((CharacterZapFX *) (M2C_FIELD(this->unk4, CharacterZapFX **, 0xB4)))->Enable(1U, var_f1_290, 1U);
-                spD0 = M2C_FIELD(arg0, f64 *, 0x10);
-                spD8 = M2C_FIELD(arg0, f64 *, 0x18);
-                ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &spD0, GS_Rumble1, 8.0f, 2000.0f);
-            }
-            break;
-        case 2:
-            sp48 = 0.0f;
-            sp40 = 0.0f;
-            sp44 = 0.0f;
-            spC8 = (f64) sp48;
-            spC0 = (f64) sp40;
-            temp_r3_340 = ((IceBreathFX *) (M2C_FIELD(this->unk4, IceBreathFX **, 0x1C)))->Trigger(this->unk8, arg0->unk10, *((MKVector3 *) &spC0), *((MKVector3 *) arg0), 1.0f, lit_1032);
-            var_r31_184 = temp_r3_340;
-            if (temp_r3_340 != 0) {
-                spB0 = M2C_FIELD(arg0, f64 *, 0x10);
-                spB8 = M2C_FIELD(arg0, f64 *, 0x18);
-                ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &spB0, GS_Rumble1, 7.5f, 2000.0f);
-                sp30 = 0.5f;
-                sp34 = 0.5f;
-                sp38 = 1.0f;
-                sp3C = 1.0f;
-                spA0 = (f64) sp30;
-                spA8 = (f64) sp38;
-                ((CharacterGlowFX *) (M2C_FIELD(this->unk4, CharacterGlowFX **, 0x28)))->Enable(1U, *((MKVector4 *) &spA0), 10.0f);
-            }
-            break;
-        case 3:
-            sp28 = 0.0f;
-            sp20 = 0.0f;
-            sp24 = 0.0f;
-            sp98 = (f64) sp28;
-            sp90 = (f64) sp20;
-            temp_r3_389 = ((EarthBreathFX *) (M2C_FIELD(this->unk4, EarthBreathFX **, 0x20)))->Trigger(this->unk8, arg0->unk10, *((MKVector3 *) &sp90), *((MKVector3 *) arg0), 3, 0U);
-            var_r31_184 = temp_r3_389;
-            if (temp_r3_389 != 0) {
-                sp80 = M2C_FIELD(arg0, f64 *, 0x10);
-                sp88 = M2C_FIELD(arg0, f64 *, 0x18);
-                ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &sp80, GS_Rumble1, 7.5f, 2000.0f);
-                sp10 = 0.25f;
-                sp14 = 1.0f;
-                sp18 = 0.25f;
-                sp1C = 1.0f;
-                sp70 = (f64) sp10;
-                sp78 = (f64) sp18;
-                ((CharacterGlowFX *) (M2C_FIELD(this->unk4, CharacterGlowFX **, 0x28)))->Enable(1U, *((MKVector4 *) &sp70), 10.0f);
-            }
-            break;
-        }
+        return result;
     }
-    return var_r31_184;
+    switch (arg0->unk24) {
+    case 0:
+        result = ((FlameBreathFX *) (M2C_FIELD(this->unk4, FlameBreathFX **, 0x14)))->Trigger(this->unk8, arg0->unk10, zero, *((MKVector3 *) arg0), 1.0f, lit_1018, 0U, 0U);
+        if (result != 0) {
+            KDSound_Play3d(GS_SpyroFuryStartSound, &arg0->unk10, 0U, -1, 0.0f, 0U);
+            ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger(arg0->unk10, GS_Rumble1, 5.0f, 2000.0f);
+        }
+        break;
+    case 1:
+        result = ((ZapBreathFX *) (M2C_FIELD(this->unk4, ZapBreathFX **, 0x18)))->Trigger(this->unk8, arg0->unk10, zero, 1.0f, lit_1024, 0U);
+        if (result != 0) {
+            range = 7.0f;
+            flags = &GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64);
+            if ((s32) M2C_FIELD(flags, s32 *, 0) == 3 && (s32) M2C_FIELD(flags, s32 *, 4) == 3) {
+                range = 12.0f;
+            }
+            ((CharacterZapFX *) (M2C_FIELD(this->unk4, CharacterZapFX **, 0xB4)))->Enable(1U, range, 1U);
+            ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger(arg0->unk10, GS_Rumble1, 8.0f, 2000.0f);
+        }
+        break;
+    case 2:
+        result = ((IceBreathFX *) (M2C_FIELD(this->unk4, IceBreathFX **, 0x1C)))->Trigger(this->unk8, arg0->unk10, zero, *((MKVector3 *) arg0), 1.0f, lit_1032);
+        if (result != 0) {
+            ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger(arg0->unk10, GS_Rumble1, 7.5f, 2000.0f);
+            glow.unk0 = 0.5f;
+            glow.unk4 = 0.5f;
+            glow.unk8 = 1.0f;
+            glow.unkC = 1.0f;
+            ((CharacterGlowFX *) (M2C_FIELD(this->unk4, CharacterGlowFX **, 0x28)))->Enable(1U, glow, 10.0f);
+        }
+        break;
+    case 3:
+        result = ((EarthBreathFX *) (M2C_FIELD(this->unk4, EarthBreathFX **, 0x20)))->Trigger(this->unk8, arg0->unk10, zero, *((MKVector3 *) arg0), 3, 0U);
+        if (result != 0) {
+            ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger(arg0->unk10, GS_Rumble1, 7.5f, 2000.0f);
+            glow.unk0 = 0.25f;
+            glow.unk4 = 1.0f;
+            glow.unk8 = 0.25f;
+            glow.unkC = 1.0f;
+            ((CharacterGlowFX *) (M2C_FIELD(this->unk4, CharacterGlowFX **, 0x28)))->Enable(1U, glow, 10.0f);
+        }
+        break;
+    }
+    return result;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void SpyroEffects::TriggerEarth(SpyroEffectsUpdateData *arg0) {
     f64 sp38;
     f64 sp30;
@@ -433,9 +338,7 @@ void SpyroEffects::TriggerEarth(SpyroEffectsUpdateData *arg0) {
     sp28 = (f32) sp28 * var_f3_535;
     ((EarthBreathFX *) (M2C_FIELD(this->unk4, EarthBreathFX **, 0x20)))->Trigger(this->unk8, *((MKVector3 *) &sp30), *((MKVector3 *) &sp20), *((MKVector3 *) arg0), arg0->unk28, arg0->unk3F);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 SpyroEffects::TriggerElectricity(SpyroEffectsUpdateData *arg0) {
     f64 sp38;
     f64 sp30;
@@ -525,9 +428,7 @@ u8 SpyroEffects::TriggerElectricity(SpyroEffectsUpdateData *arg0) {
     }
     return temp_r29_697;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 SpyroEffects::TriggerIce(SpyroEffectsUpdateData *arg0) {
     f64 sp38;
     f64 sp30;
@@ -619,9 +520,7 @@ u8 SpyroEffects::TriggerIce(SpyroEffectsUpdateData *arg0) {
     }
     return temp_r29_862;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
     f64 sp60;
     f64 sp58;
@@ -719,14 +618,11 @@ u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
     }
     return (u8) temp_r30_1046;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
     f64 sp20;
     f64 sp18;
-    f64 sp10;
-    f64 sp8;
+    MKVector3 sp8;
     KDInput *temp_r4_1104;
     f64 temp_f0_1141;
     f64 temp_f1_1140;
@@ -772,9 +668,8 @@ void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
                         } else {
                             ((Stat *) temp_r28_1149)->SetValue(0.0f, 0U);
                         }
-                        sp8 = M2C_FIELD(arg0, f64 *, 0x10);
-                        sp10 = M2C_FIELD(arg0, f64 *, 0x18);
-                        ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &sp8, GS_Rumble1, 7.5f, 2000.0f);
+                        sp8 = arg0->unk10;
+                        ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger(sp8, GS_Rumble1, 7.5f, 2000.0f);
                     }
                 }
             } else if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
@@ -785,7 +680,6 @@ void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkA0'
 void SpyroEffects::Update(SpyroEffectsUpdateData *arg0, KDInput *arg1) {
@@ -1128,7 +1022,7 @@ block_123:
                         if (((u8) var_r24_1728 != 0) || (var_r3_1762 != 0)) {
                             var_r28_1503 = 0;
                         }
-                        if (((u8) M2C_FIELD(this->unk4, ZapBreathFX **, 0x18)->unk9E0 != 0) && ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158) == 1)) {
+                        if (((u8) M2C_FIELD(M2C_FIELD(this->unk4, ZapBreathFX **, 0x18), u8 *, 0x9E0) != 0) && ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158) == 1)) {
                             temp_r4_1783 = this->unkC;
                             var_r3_1784 = 0;
                             if (((u8) temp_r4_1783->unk5 != 0) || ((u8) temp_r4_1783->unk4 != 0)) {
@@ -1264,7 +1158,7 @@ block_192:
             }
         } else {
 block_264:
-            M2C_FIELD(this->unk4, ZapBreathFX **, 0x18)->unk9E0 = 0;
+            M2C_FIELD(M2C_FIELD(this->unk4, ZapBreathFX **, 0x18), s8 *, 0x9E0) = 0;
             ((ZapBreathFX *) (M2C_FIELD(this->unk4, ZapBreathFX **, 0x18)))->ButtonReleased();
             temp_r4_2254 = M2C_FIELD(this->unk4, void **, 0x14);
             M2C_FIELD(temp_r4_2254, s8 *, 0xB4) = 0;

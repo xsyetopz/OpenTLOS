@@ -70,77 +70,66 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'SpyroSoundPlayer' to 'long'
 void SpyroSoundPlayer::UpdatePitch(int arg0) {
-    s32 temp_r31_15;
-    s32 temp_r3_17;
+    s32 offset;
+    s32 sound;
 
-    temp_r31_15 = arg0 * 0x58;
-    temp_r3_17 = *(this + temp_r31_15);
-    if (temp_r3_17 > 0) {
-        KDSound_SetPitch(temp_r3_17, M2C_FIELD((this + temp_r31_15), f32 *, 0x40));
-        M2C_FIELD((this + temp_r31_15), s8 *, 0x35) = 0;
+    offset = arg0 * 0x58;
+    sound = M2C_FIELD(this, s32 *, offset);
+    if (sound > 0) {
+        KDSound_SetPitch(sound, M2C_FIELD(this, f32 *, offset + 0x40));
+        M2C_FIELD(this, s8 *, offset + 0x35) = 0;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDSoundFader *' to 'const MKVector3 *'
 void SpyroSoundPlayer::PlaySounds(int arg0, bool arg1) {
-    s32 sp8;
-    KDSoundFader *temp_r3_60;
-    s32 temp_r28_48;
-    s32 temp_r29_46;
-    s32 temp_r30_41;
-    u8 var_r31_52;
-    u8 var_r31_73;
-    void *temp_r3_91;
-    void *temp_r5_44;
+    s32 offset;
+    s32 soundId;
+    s32 param;
+    u8 mode;
+    u8 quiet;
+    KDSoundFader *fader;
 
-    temp_r30_41 = arg0 * 0x58;
-    temp_r5_44 = this + temp_r30_41;
-    temp_r29_46 = M2C_FIELD(temp_r5_44, s32 *, 0x2C);
-    temp_r28_48 = M2C_FIELD(temp_r5_44, s32 *, 0x30);
-    if ((u8) M2C_FIELD(temp_r5_44, u8 *, 0x34) == 1) {
+    offset = arg0 * 0x58;
+    soundId = M2C_FIELD(this, s32 *, offset + 0x2C);
+    param = M2C_FIELD(this, s32 *, offset + 0x30);
+    mode = M2C_FIELD(this, u8 *, offset + 0x34);
+    fader = (KDSoundFader *) ((s8 *) this + offset);
+    if (mode == 1) {
         DetermineSoundPos(arg0);
-        var_r31_52 = 0;
+        quiet = 0;
         if ((arg1 != 0) && (EventCamera_GetCurrent() == NULL)) {
-            var_r31_52 = 1;
+            quiet = 1;
         }
-        temp_r3_60 = (KDSoundFader *) (this + temp_r30_41);
-        sp8 = 1;
-        temp_r3_60->Update(temp_r29_46, 1U, var_r31_52, NULL, temp_r3_60 + 0x48, 0U, temp_r28_48, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        fader->Update(soundId, true, quiet, NULL, (const MKVector3 *) ((s8 *) fader + 0x48), 0U, param, true);
         return;
     }
-    var_r31_73 = 0;
+    quiet = 0;
     if ((arg1 != 0) && (EventCamera_GetCurrent() == NULL)) {
-        var_r31_73 = 1;
+        quiet = 1;
     }
-    sp8 = 1;
-    ((KDSoundFader *) (this + temp_r30_41))->Update(temp_r29_46, 0U, var_r31_73, NULL, NULL, 0U, temp_r28_48, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    temp_r3_91 = this + temp_r30_41;
-    if (M2C_FIELD(temp_r3_91, f32 *, 8) <= 0.0f) {
-        M2C_FIELD(temp_r3_91, s32 *, 0x28) = 2;
+    fader->Update(soundId, false, quiet, NULL, NULL, 0U, param, true);
+    if (M2C_FIELD(this, f32 *, offset + 8) <= 0.0f) {
+        M2C_FIELD(this, s32 *, offset + 0x28) = 2;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void SpyroSoundPlayer::DetermineSoundPos(int arg0) {
     f64 spE8;
     f64 spE0;
-    HeroInterface spD0;
-    HeroInterface spC0;
-    HeroInterface spB0;
-    HeroInterface spA0;
-    HeroInterface sp90;
-    HeroInterface sp80;
-    HeroInterface sp70;
-    HeroInterface sp60;
-    HeroInterface sp50;
-    HeroInterface sp40;
-    HeroInterface sp30;
-    HeroInterface sp20;
-    HeroInterface sp10;
+    MKVector3 spD0;
+    MKVector3 spC0;
+    MKVector3 spB0;
+    MKVector3 spA0;
+    MKVector3 sp90;
+    MKVector3 sp80;
+    MKVector3 sp70;
+    MKVector3 sp60;
+    MKVector3 sp50;
+    MKVector3 sp40;
+    MKVector3 sp30;
+    MKVector3 sp20;
+    MKVector3 sp10;
     f32 sp8;
     f32 temp_f1_128;
     f32 temp_f2_127;
@@ -213,74 +202,60 @@ void SpyroSoundPlayer::DetermineSoundPos(int arg0) {
     if ((u32) arg0 <= 0xCU) {
         switch (arg0) {                             /* switch 2 */
         case 0:                                     /* switch 2 */
-            spD0.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, spD0);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = spD8;
+            spD0 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = spD0;
             return;
         case 2:                                     /* switch 2 */
-            spC0.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, spC0);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = spC8;
+            spC0 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = spC0;
             return;
         case 1:                                     /* switch 2 */
-            spB0.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, spB0);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = spB8;
+            spB0 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = spB0;
             return;
         case 3:                                     /* switch 2 */
-            spA0.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, spA0);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = spA8;
+            spA0 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = spA0;
             return;
         case 4:                                     /* switch 2 */
-            sp90.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp90);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp98;
+            sp90 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = sp90;
             return;
         case 5:                                     /* switch 2 */
-            sp80.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp80);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp88;
+            sp80 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = sp80;
             return;
         case 6:                                     /* switch 2 */
-            sp70.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp70);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp78;
+            sp70 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = sp70;
             return;
         case 7:                                     /* switch 2 */
-            sp60.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp60);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp68;
+            sp60 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = sp60;
             return;
         case 8:                                     /* switch 2 */
-            sp50.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp50);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp58;
+            sp50 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = sp50;
             return;
         case 9:                                     /* switch 2 */
-            sp40.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp40);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp48;
+            sp40 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = sp40;
             return;
         case 10:                                    /* switch 2 */
-            sp30.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp30);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp38;
+            sp30 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = sp30;
             return;
         case 12:                                    /* switch 2 */
-            sp20.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp20);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp28;
+            sp20 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = sp20;
             return;
         case 11:                                    /* switch 2 */
-            sp10.GetPos();
-            M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp10);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp18;
+            sp10 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
+            M2C_FIELD(temp_r31_120, MKVector3 *, 0) = sp10;
             break;
         }
     }
 }
-#endif
 
 s8 SpyroSoundPlayer::Determine3DSound(int arg0) {
     if ((u32) arg0 <= 0xCU) {
@@ -505,38 +480,32 @@ u8 SpyroSoundPlayer::SoundIsPlaying(int arg0) {
     return var_r31_732;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match 'KDSound_Stop(int *)'
 void SpyroSoundPlayer::StopAll() {
-    SpyroSoundPlayer *temp_r3_764;
-    s32 var_r29_760;
-    s32 var_r31_761;
+    s32 count;
+    s32 offset;
 
-    var_r29_760 = 0;
-    var_r31_761 = 0;
+    count = 0;
+    offset = 0;
     do {
-        temp_r3_764 = &this[var_r31_761];
-        M2C_FIELD(temp_r3_764, s32 *, 0x28) = 2;
-        KDSound_Stop((s32 *) temp_r3_764);
-        var_r29_760 += 1;
-        var_r31_761 += 0x58;
-    } while (var_r29_760 < 0xD);
+        M2C_FIELD(this, s32 *, offset + 0x28) = 2;
+        KDSound_Stop((int *) ((s8 *) this + offset));
+        count += 1;
+        offset += 0x58;
+    } while (count < 0xD);
 }
-#endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match 'KDSound_Stop(int *)'
 void SpyroSoundPlayer::Stop(int arg0) {
-    s32 *temp_r3_792;
+    s32 offset;
 
     if (arg0 >= 0) {
         if (arg0 >= 0xD) {
             return;
         }
-        temp_r3_792 = (long *) (this + (arg0 * 0x58));
-        M2C_FIELD(temp_r3_792, s32 *, 0x28) = 2;
-        KDSound_Stop(temp_r3_792);
+        offset = arg0 * 0x58;
+        M2C_FIELD(this, s32 *, offset + 0x28) = 2;
+        KDSound_Stop((int *) ((s8 *) this + offset));
     }
 }
-#endif
 
 void SpyroSoundPlayer::FadeOut(int arg0) {
     if (arg0 >= 0) {
@@ -547,42 +516,38 @@ void SpyroSoundPlayer::FadeOut(int arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal type
 void SpyroSoundPlayer::FadeIn(int arg0, int arg1) {
-    s32 temp_r0_846;
-    s32 temp_r31_832;
-    s32 temp_r3_844;
-    s32 var_r5_0;
-    u8 var_r6_834;
-    void *temp_r3_848;
+    s32 offset;
+    s32 slot;
+    s32 kind;
+    s8 *base;
+    s32 var;
+    u8 flag;
 
-    var_r5_0 = arg1;
+    var = arg1;
     if (arg0 >= 0) {
         if (arg0 >= 0xD) {
             return;
         }
-        temp_r31_832 = arg0 * 0x58;
-        var_r6_834 = 0;
-        M2C_FIELD((this + temp_r31_832), s32 *, 0x28) = 0;
-        if (var_r5_0 != -1) {
-
-        } else {
-            temp_r3_844 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
-            temp_r0_846 = *(&GameData::gameData[0x70] + (temp_r3_844 + 0x7C));
-            temp_r3_848 = &GameData::gameData[0x70] + (temp_r3_844 + 0x64);
-            if (temp_r0_846 == 3) {
-                if (((s32) M2C_FIELD(temp_r3_848, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r3_848, s32 *, 4) == 3)) {
-                    var_r6_834 = 1;
+        offset = arg0 * 0x58;
+        flag = 0;
+        M2C_FIELD(this, s32 *, offset + 0x28) = 0;
+        if (var == -1) {
+            slot = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+            kind = M2C_FIELD(GameData::gameData, s32 *, 0x70 + slot + 0x7C);
+            base = (s8 *) GameData::gameData + 0x70 + slot + 0x64;
+            if (kind == 3) {
+                if ((M2C_FIELD(base, s32 *, 0) == 3) && (M2C_FIELD(base, s32 *, 4) == 3)) {
+                    flag = 1;
                 }
-                var_r5_0 = var_r6_834 != 0;
+                var = flag != 0;
             } else {
-                var_r5_0 = *(temp_r3_848 + (temp_r0_846 * 4));
+                var = M2C_FIELD(base, s32 *, kind * 4);
             }
         }
-        M2C_FIELD((this + temp_r31_832), s32 *, 0x2C) = DetermineGameSound(arg0, var_r5_0);
+        M2C_FIELD(this, s32 *, offset + 0x2C) = DetermineGameSound(arg0, var);
     }
 }
-#endif
 
 void SpyroSoundPlayer::Update() {
     s32 var_r30_887;

@@ -322,7 +322,6 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 s32 SeeSaw::LoadDone() {
     f32 sp8;
     MKHeap **temp_r3_600;
@@ -382,7 +381,6 @@ s32 SeeSaw::LoadDone() {
     M2C_FIELD(this, f64 *, 0xE0) = (f64) this->unkD0;
     M2C_FIELD(this, f64 *, 0xE8) = (f64) this->unkD8;
 }
-#endif
 
 s32 SeeSaw::LoadLine(MKIniLine *arg0) {
     s32 var_r31_699;

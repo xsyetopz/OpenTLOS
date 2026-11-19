@@ -195,6 +195,7 @@ RenderContext::RenderContext(const RenderContext &arg0, const Attributes &arg1) 
     AddState(arg0, arg1);
 }
 
+#if 0 // DRAFT: expression syntax error
 RenderContext::RenderContext() {
     ((Matrix *) this)->SetIdentity();
     M2C_FIELD(this, f32 *, 0x40) = 1.0f;
@@ -202,3 +203,4 @@ RenderContext::RenderContext() {
     M2C_FIELD(this, f32 *, 0x48) = 1.0f;
     M2C_FIELD(this, f32 *, 0x4C) = 1.0f;
 }
+#endif

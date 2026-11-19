@@ -68,7 +68,7 @@ loop_18:
                 var_f0_95 = 0.0f;
             }
             M2C_FIELD(temp_r29_80, f32 *, 0x20) = var_f0_95;
-            sp20.operator*(M2C_FIELD(temp_r29_80, f32 *, 0x20));
+            sp20 = ((MKVector3 *) temp_r29_80)->operator*(M2C_FIELD(temp_r29_80, f32 *, 0x20));
             sp10 = M2C_FIELD(temp_r29_80, f64 *, 0x10) + M2C_BITWISE(f64, sp20);
             M2C_FIELD(var_r30_77, f64 *, 0) = sp10;
             sp18 = M2C_FIELD(temp_r29_80, f32 *, 0x18) + sp20.unk8;

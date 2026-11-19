@@ -27,6 +27,8 @@ extern M2C_UNK gb;
 
 #include "spyro/source/KDStateMachine.h"
 class CutsceneSystem;
+#include "spyro/source/KDStateMachine.h"
+class CutsceneSystem;
 void OptionsScreen::OnExit() {
     KDSynkerPlayer3 *temp_r3_49;
     u8 var_r31_46;
@@ -49,6 +51,8 @@ void OptionsScreen::OnExit() {
     KDSound_PauseMusic(1U, var_r31_46);
 }
 
+#include "spyro/source/KDStateMachine.h"
+class CutsceneSystem;
 #include "spyro/source/KDStateMachine.h"
 class CutsceneSystem;
 void OptionsScreen::Update() {

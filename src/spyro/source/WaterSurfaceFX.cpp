@@ -182,7 +182,7 @@ void WaterSurfaceFX::SpawnRipple(const MKVector3 &arg0, float arg1) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &arg2, const MKVector3 &arg3, float farg0) {
     f64 sp78;
     f64 sp70;
@@ -505,10 +505,9 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 u8 WaterSurfaceFX::UpdateWake(WaterSurfaceFX::Wake *arg1) {
     s32 temp_r0_835;
-    s32 temp_r3_833;
+    u8 *temp_r3_833;
     s32 temp_r3_858;
     s32 var_r6_828;
 
@@ -516,10 +515,10 @@ u8 WaterSurfaceFX::UpdateWake(WaterSurfaceFX::Wake *arg1) {
 loop_6:
     temp_r3_858 = M2C_FIELD(arg1, s32 *, 8);
     if (var_r6_828 != temp_r3_858) {
-        temp_r3_833 = M2C_FIELD(arg1, s32 *, 0);
+        temp_r3_833 = M2C_FIELD(arg1, u8 **, 0);
         temp_r0_835 = (var_r6_828 * 0x28) + 0x24;
-        *(temp_r3_833 + temp_r0_835) = *(temp_r3_833 + temp_r0_835) - gUpdateTimeDelta;
-        if (*(M2C_FIELD(arg1, s32 *, 0) + temp_r0_835) <= 0.0f) {
+        *(f32 *) (temp_r3_833 + temp_r0_835) = *(f32 *) (temp_r3_833 + temp_r0_835) - gUpdateTimeDelta;
+        if (*(f32 *) (M2C_FIELD(arg1, u8 **, 0) + temp_r0_835) <= 0.0f) {
             M2C_FIELD(arg1, s32 *, 4) = (s32) (M2C_FIELD(arg1, s32 *, 4) + 1);
             if ((s32) M2C_FIELD(arg1, s32 *, 4) >= 0x32) {
                 M2C_FIELD(arg1, s32 *, 4) = 0;
@@ -533,22 +532,19 @@ loop_6:
     }
     return M2C_FIELD(arg1, s32 *, 4) != temp_r3_858;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void WaterSurfaceFX::AddMovementForce(const MKVector3 &arg0, const MKVector3 &arg1) {
-    f64 sp18;                                       /* compiler-managed */
-    f64 sp10;                                       /* compiler-managed */
-    f32 sp8;
     f32 var_f1_883;
     f32 var_f2_877;
     f32 var_f31_919;
     f32 var_f4_909;
+    f32 sp8;
     f64 temp_f1_924;
     f64 temp_f1_930;
     f64 temp_f1_934;
     s32 temp_r3_953;
     s32 var_r0_963;
+    MKVector3 vec;
 
     var_f2_877 = arg1.unk4;
     if (var_f2_877 < 0.0f) {
@@ -563,32 +559,33 @@ void WaterSurfaceFX::AddMovementForce(const MKVector3 &arg0, const MKVector3 &ar
         SpawnRipple(arg0, 1.0f + (var_f2_877 / 500.0f));
         return;
     }
-    sp10 = M2C_FIELD(&arg1, f64 *, 0);
+    vec.unk0 = arg1.unk0;
+    vec.unk4 = 0.0f;
+    vec.unk8 = arg1.unk8;
+    vec.unkC = arg1.unkC;
     var_f4_909 = 0.0f;
-    sp18 = M2C_FIELD(&arg1, f64 *, 8);
-    (*(f32 *) ((u8 *) &sp8 + 0xc)) = 0.0f;
-    var_f31_919 = ((f32) sp18 * (f32) sp18) + (((f32) sp10 * (f32) sp10) + (0.0f * 0.0f));
+    var_f31_919 = (vec.unk8 * vec.unk8) + ((vec.unk0 * vec.unk0) + (0.0f * 0.0f));
     if (var_f31_919 > 0.000001f) {
         if (var_f31_919 > 0.0f) {
             temp_f1_924 = __frsqrte(var_f31_919);
             temp_f1_930 = 0.5 * temp_f1_924 * -(((f64) var_f31_919 * (temp_f1_924 * temp_f1_924)) - 3.0);
             temp_f1_934 = 0.5 * temp_f1_930 * -(((f64) var_f31_919 * (temp_f1_930 * temp_f1_930)) - 3.0);
             var_f31_919 = (f32) ((f64) var_f31_919 * (0.5 * temp_f1_934 * -(((f64) var_f31_919 * (temp_f1_934 * temp_f1_934)) - 3.0)));
-        } else if (var_f31_919 < M2C_BITWISE(f32, 0.0)) {
+        } else if (var_f31_919 < 0.0f) {
             var_f31_919 = __float_nan;
         } else {
             sp8 = var_f31_919;
-            temp_r3_953 = M2C_BITWISE(s32, sp8) & 0x7F800000;
-            switch (temp_r3_953) {                  /* irregular */
+            temp_r3_953 = *(s32 *) &sp8 & 0x7F800000;
+            switch (temp_r3_953) {
             case 0x7F800000:
-                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                if (*(s32 *) &sp8 & 0x7FFFFF) {
                     var_r0_963 = 1;
                 } else {
                     var_r0_963 = 2;
                 }
                 break;
             case 0x0:
-                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                if (*(s32 *) &sp8 & 0x7FFFFF) {
                     var_r0_963 = 5;
                 } else {
                     var_r0_963 = 3;
@@ -606,116 +603,98 @@ void WaterSurfaceFX::AddMovementForce(const MKVector3 &arg0, const MKVector3 &ar
     } else {
         var_f31_919 = 0.0f;
     }
-    sp10 = (f32) sp10 * var_f4_909;
-    (*(f32 *) ((u8 *) &sp8 + 0xc)) *= var_f4_909;
-    sp18 = (f32) sp18 * var_f4_909;
-    M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
-    if (var_f31_919 == 25.0f) {
-        if ((WaterSurfaceFX::Wake *) this->unk50 == NULL) {
+    vec.unk0 = vec.unk0 * var_f4_909;
+    vec.unk4 = vec.unk4 * var_f4_909;
+    vec.unk8 = vec.unk8 * var_f4_909;
+    if (var_f31_919 >= 25.0f) {
+        if (this->unk50 == NULL) {
             SpawnWake();
         }
-        AddWakeNode(this->unk50, arg0, *((MKVector3 *) &sp10), var_f31_919 / 500.0f);
+        AddWakeNode(this->unk50, arg0, vec, var_f31_919 / 500.0f);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'WaterSurfaceFX::Wake' to 'WaterSurfaceFX::Wake **'
+extern "C" void free(void *);
+
 void WaterSurfaceFX::Deinit() {
-    WaterSurfaceFX::Wake **temp_r30_1050;
-    WaterSurfaceFX::Wake **temp_r3_1047;
-    WaterSurfaceFX::Wake **var_r30_1068;
-    WaterSurfaceFX::Wake **var_r30_1110;
-    WaterSurfaceFX::Wake **var_r3_1069;
-    WaterSurfaceFX::Wake **var_r3_1111;
-    WaterSurfaceFX::Wake **var_r4_1064;
-    WaterSurfaceFX::Wake **var_r4_1109;
-    WaterSurfaceFX::Wake *temp_r0_1072;
-    WaterSurfaceFX::Wake *temp_r0_1091;
-    WaterSurfaceFX::Wake *temp_r0_1114;
-    WaterSurfaceFX::Wake *temp_r0_1133;
-    u32 temp_r0_1077;
-    u32 temp_r0_1119;
+    u32 *cur;
+    u32 *back;
+    u32 *fwd;
+    u32 *slot;
+    u32 freed;
+    u32 min;
 
-loop_2:
-    if ((WaterSurfaceFX::Wake *) M2C_FIELD(this->unk4C, WaterSurfaceFX::Wake **, 0) != NULL) {
-        this->unk4C += 4;
-        goto loop_2;
+    while (*(u32 *) this->unk4C != 0U) {
+        this->unk4C += 1;
     }
-loop_7:
-    var_r4_1064 = this->unk4C;
-    if ((u32) M2C_FIELD(var_r4_1064, u32 *, -4) != 0U) {
-        temp_r3_1047 = this->unk4C - 4;
-        this->unk4C = temp_r3_1047;
-        temp_r30_1050 = **temp_r3_1047;
+    while (((u32 *) this->unk4C)[-1] != 0U) {
+        slot = (u32 *) this->unk4C - 1;
+        this->unk4C = (WaterSurfaceFX::Wake **) slot;
+        freed = *(u32 *) *slot;
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_1050, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) freed, NULL, 0);
         } else {
-            free(temp_r30_1050);
+            free((void *) freed);
         }
-        goto loop_7;
     }
-    var_r30_1068 = var_r4_1064;
-    var_r3_1069 = var_r4_1064;
-loop_11:
-    temp_r0_1077 = M2C_FIELD(var_r3_1069, u32 *, -4);
-    var_r3_1069 -= 4;
-    if (temp_r0_1077 != 0U) {
-        temp_r0_1072 = *var_r3_1069;
-        if (temp_r0_1072 < var_r30_1068) {
-            var_r30_1068 = (WaterSurfaceFX::Wake **) temp_r0_1072;
+
+    cur = (u32 *) this->unk4C;
+    min = (u32) cur;
+    back = cur;
+    for (;;) {
+        back -= 1;
+        if (*back == 0U) {
+            break;
         }
-        goto loop_11;
+        if (*back < min) {
+            min = *back;
+        }
     }
-    if (var_r3_1069 != &gEmptyPtrListDL) {
-loop_17:
-        temp_r0_1091 = *var_r4_1064;
-        if (temp_r0_1091 != NULL) {
-            if (temp_r0_1091 < var_r30_1068) {
-                var_r30_1068 = (WaterSurfaceFX::Wake **) temp_r0_1091;
+    if (back != (u32 *) &gEmptyPtrListDL) {
+        fwd = cur;
+        while (*fwd != 0U) {
+            if (*fwd < min) {
+                min = *fwd;
             }
-            var_r4_1064 += 4;
-            goto loop_17;
+            fwd += 1;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1068, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) min, NULL, 0);
         } else {
-            free(var_r30_1068);
+            free((void *) min);
         }
     }
     this->unk4C = NULL;
-    var_r4_1109 = this->unk5C;
-    var_r30_1110 = var_r4_1109;
-    var_r3_1111 = var_r4_1109;
-loop_24:
-    temp_r0_1119 = M2C_FIELD(var_r3_1111, u32 *, -4);
-    var_r3_1111 -= 4;
-    if (temp_r0_1119 != 0U) {
-        temp_r0_1114 = *var_r3_1111;
-        if (temp_r0_1114 < var_r30_1110) {
-            var_r30_1110 = (WaterSurfaceFX::Wake **) temp_r0_1114;
+
+    cur = (u32 *) this->unk5C;
+    min = (u32) cur;
+    back = cur;
+    for (;;) {
+        back -= 1;
+        if (*back == 0U) {
+            break;
         }
-        goto loop_24;
+        if (*back < min) {
+            min = *back;
+        }
     }
-    if (var_r3_1111 != &gEmptyPtrListDL) {
-loop_30:
-        temp_r0_1133 = *var_r4_1109;
-        if (temp_r0_1133 != NULL) {
-            if (temp_r0_1133 < var_r30_1110) {
-                var_r30_1110 = (WaterSurfaceFX::Wake **) temp_r0_1133;
+    if (back != (u32 *) &gEmptyPtrListDL) {
+        fwd = cur;
+        while (*fwd != 0U) {
+            if (*fwd < min) {
+                min = *fwd;
             }
-            var_r4_1109 += 4;
-            goto loop_30;
+            fwd += 1;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1110, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) min, NULL, 0);
         } else {
-            free(var_r30_1110);
+            free((void *) min);
         }
     }
     this->unk5C = NULL;
     MKProp::Deinit();
 }
-#endif
 
 void WaterSurfaceFX::Draw() {
     WaterSurfaceFX::Wake **var_r30_1179;

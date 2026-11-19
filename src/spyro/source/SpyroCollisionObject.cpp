@@ -61,7 +61,7 @@ void SpyroCollisionObject::PushOutOfThings(MKVector3 arg0) {
     s8 sp168;
     f64 sp160;                                      /* compiler-managed */
     f64 sp158;                                      /* compiler-managed */
-    void *sp154;
+    MKProp *sp154;
     s32 sp150;
     f64 sp148;
     f64 sp140;
@@ -93,7 +93,7 @@ void SpyroCollisionObject::PushOutOfThings(MKVector3 arg0) {
     f32 sp50;
     f32 sp4C;
     f32 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -104,6 +104,11 @@ void SpyroCollisionObject::PushOutOfThings(MKVector3 arg0) {
     MKCollisionResult *temp_r23_166;
     MKProp *temp_r3_259;
     MKProp *temp_r3_356;
+    MKProp *var_r0_173;
+    MKProp *var_r0_247;
+    MKProp *var_r3_208;
+    MKProp *var_r3_229;
+    MKProp *var_r4_306;
     f32 *temp_r7_130;
     f32 temp_f0_383;
     f32 temp_f1_382;
@@ -128,11 +133,6 @@ void SpyroCollisionObject::PushOutOfThings(MKVector3 arg0) {
     void *temp_r3_262;
     void *temp_r3_303;
     void *temp_r6_103;
-    void *var_r0_173;
-    void *var_r0_247;
-    void *var_r3_208;
-    void *var_r3_229;
-    void *var_r4_306;
 
     M2C_FIELD(this->__vptr, M2C_UNK (**)(f64 *, SpyroCollisionObject *), 0x50)(&spB8, this);
     M2C_FIELD(this->__vptr, M2C_UNK (**)(f64 *, SpyroCollisionObject *), 0x4C)(&spC8, this);
@@ -187,7 +187,7 @@ loop_46:
         if (var_r28_158 < temp_r3_137) {
             if ((u8) *var_r24_155 != 0) {
                 temp_r23_166 = &sp180 + var_r25_159;
-                if (((u8) temp_r23_166->unk50 != 0) && (temp_r3_170 = temp_r23_166->unk48, ((temp_r3_170 == NULL) == 0)) && (var_r0_173 = M2C_FIELD(temp_r3_170, void **, 8), ((var_r0_173 == NULL) == 0))) {
+                if (((u8) temp_r23_166->unk50 != 0) && (temp_r3_170 = temp_r23_166->unk48, ((temp_r3_170 == NULL) == 0)) && (var_r0_173 = M2C_FIELD(temp_r3_170, MKProp **, 8), ((var_r0_173 == NULL) == 0))) {
 
                 } else {
                     var_r0_173 = NULL;
@@ -206,23 +206,23 @@ loop_46:
                         spE8 = 0x12;
                         spF0 = temp_r22_182;
                         spF4 = this;
-                        if (((u8) temp_r23_166->unk50 != 0) && (temp_r3_205 = temp_r23_166->unk48, ((temp_r3_205 == NULL) == 0)) && (var_r3_208 = M2C_FIELD(temp_r3_205, void **, 8), ((var_r3_208 == NULL) == 0))) {
+                        if (((u8) temp_r23_166->unk50 != 0) && (temp_r3_205 = temp_r23_166->unk48, ((temp_r3_205 == NULL) == 0)) && (var_r3_208 = M2C_FIELD(temp_r3_205, MKProp **, 8), ((var_r3_208 == NULL) == 0))) {
 
                         } else {
                             var_r3_208 = NULL;
                         }
-                        M2C_FIELD(M2C_FIELD(var_r3_208, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&spE8);
+                        M2C_FIELD(var_r3_208->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&spE8);
                         if ((MKMessage *) this->unk440 != NULL) {
-                            if (((u8) temp_r23_166->unk50 != 0) && (temp_r3_226 = temp_r23_166->unk48, ((temp_r3_226 == NULL) == 0)) && (var_r3_229 = M2C_FIELD(temp_r3_226, void **, 8), ((var_r3_229 == NULL) == 0))) {
+                            if (((u8) temp_r23_166->unk50 != 0) && (temp_r3_226 = temp_r23_166->unk48, ((temp_r3_226 == NULL) == 0)) && (var_r3_229 = M2C_FIELD(temp_r3_226, MKProp **, 8), ((var_r3_229 == NULL) == 0))) {
 
                             } else {
                                 var_r3_229 = NULL;
                             }
-                            M2C_FIELD(M2C_FIELD(var_r3_229, void **, 0x44), M2C_UNK (**)(), 0x2C)();
+                            M2C_FIELD(var_r3_229->__vptr, M2C_UNK (**)(), 0x2C)();
                         }
                     }
                 }
-                if (((u8) temp_r23_166->unk50 != 0) && (temp_r3_244 = temp_r23_166->unk48, ((temp_r3_244 == NULL) == 0)) && (var_r0_247 = M2C_FIELD(temp_r3_244, void **, 8), ((var_r0_247 == NULL) == 0))) {
+                if (((u8) temp_r23_166->unk50 != 0) && (temp_r3_244 = temp_r23_166->unk48, ((temp_r3_244 == NULL) == 0)) && (var_r0_247 = M2C_FIELD(temp_r3_244, MKProp **, 8), ((var_r0_247 == NULL) == 0))) {
 
                 } else {
                     var_r0_247 = NULL;
@@ -245,7 +245,7 @@ loop_46:
                         spD8 *= 5.634608575e-315;
                         sp12C = 0;
                         spE0 = (f32) spE0 * 500.0f;
-                        if (((u8) temp_r23_166->unk50 != 0) && (temp_r3_303 = temp_r23_166->unk48, ((temp_r3_303 == NULL) == 0)) && (var_r4_306 = M2C_FIELD(temp_r3_303, void **, 8), ((var_r4_306 == NULL) == 0))) {
+                        if (((u8) temp_r23_166->unk50 != 0) && (temp_r3_303 = temp_r23_166->unk48, ((temp_r3_303 == NULL) == 0)) && (var_r4_306 = M2C_FIELD(temp_r3_303, MKProp **, 8), ((var_r4_306 == NULL) == 0))) {
 
                         } else {
                             var_r4_306 = NULL;
@@ -265,9 +265,8 @@ loop_46:
                         sp148 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         sp178 = 0;
                         if (var_r4_306 != NULL) {
-                            ((MKProp *) &sp38)->GetPos();
-                            sp158 = sp38;
-                            sp160 = sp40;
+                            sp38 = var_r4_306->GetPos();
+                            *(MKVector3 *) &sp158 = sp38;
                         } else {
                             sp158 = 0.0f;
                             (*(f32 *) ((u8 *) &sp154 + 0x8)) = 0.0f;

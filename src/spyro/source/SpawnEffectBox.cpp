@@ -44,13 +44,13 @@ extern MKSceneManager *gMK;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *SpawnEffectBox::Update() {
     f64 sp58;
     f64 sp50;
     f64 sp48;
     f64 sp40;
-    f64 sp30;
+    MKVector3 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -73,7 +73,7 @@ void *SpawnEffectBox::Update() {
         temp_f29_71 = this->unk50.GetWidth();
         temp_f31_74 = this->unk50.GetHeight();
         temp_f30_77 = this->unk50.GetDepth();
-        ((KDVolume *) &sp30)->GetCenterPos();
+        sp30 = this->unk50.GetCenterPos();
         temp_f30_85 = MKRand_Float((int *) &gViewSeed, -temp_f30_77, temp_f30_77);
         temp_f31_90 = MKRand_Float((int *) &gViewSeed, -temp_f31_74, temp_f31_74);
         sp20 = MKRand_Float((int *) &gViewSeed, -temp_f29_71, temp_f29_71);
@@ -81,10 +81,10 @@ void *SpawnEffectBox::Update() {
         sp28 = temp_f30_85;
         sp40 = (f64) sp20;
         sp48 = (f64) sp28;
-        temp_f0_104 = (f64) sp20 + sp30;
+        temp_f0_104 = (f64) sp20 + M2C_BITWISE(f64, sp30);
         sp10 = temp_f0_104;
         sp50 = temp_f0_104;
-        sp18 = (f32) sp48 + sp38;
+        sp18 = (f32) sp48 + sp30.unk8;
         sp58 = (f64) sp18;
         temp_r31_117 = *(this->unkE4 + (this->unkEC * 4));
         temp_r3_118 = M2C_FIELD(temp_r31_117, MKModel **, 4);

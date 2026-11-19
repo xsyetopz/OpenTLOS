@@ -199,7 +199,6 @@ void *SpeedwayAA::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
 void SpeedwayAA::Collided(MKCollisionResult &arg0) {
     s8 sp89;
     s8 sp88;
@@ -212,16 +211,16 @@ void SpeedwayAA::Collided(MKCollisionResult &arg0) {
     f64 sp70;                                       /* compiler-managed */
     f64 sp68;                                       /* compiler-managed */
     MKProp *sp64;
-    f32 sp60;
+    s32 sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
     f64 sp40;
-    f32 sp3C;
-    f32 sp38;
+    s32 sp3C;
+    s32 sp38;
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -230,15 +229,15 @@ void SpeedwayAA::Collided(MKCollisionResult &arg0) {
     void *var_r3_401;
 
     Projectile::Collided(arg0);
-    sp3C = 0.0f;
+    sp3C = 0;
     temp_r4_352 = this->unk130;
     sp10 = 0.0f;
     sp8 = 0.0f;
     spC = 0.0f;
     sp30 = (f64) sp10;
     sp28 = (f64) sp8;
-    sp38 = 1e-44f;
-    sp60 = 1e-45f;
+    sp38 = 7;
+    sp60 = 1;
     sp64 = temp_r4_352;
     sp40 = (f64) sp8;
     sp48 = (f64) sp10;
@@ -252,9 +251,8 @@ void SpeedwayAA::Collided(MKCollisionResult &arg0) {
     sp58 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp88 = 0;
     if (temp_r4_352 != NULL) {
-        ((MKProp *) &sp18)->GetPos();
-        sp68 = sp18;
-        sp70 = sp20;
+        sp18 = temp_r4_352->GetPos();
+        *(MKVector3 *) &sp68 = sp18;
     } else {
         sp68 = 0.0f;
         (*(f32 *) ((u8 *) &sp64 + 0x8)) = 0.0f;
@@ -267,11 +265,10 @@ void SpeedwayAA::Collided(MKCollisionResult &arg0) {
         var_r3_401 = NULL;
     }
     if (var_r3_401 != NULL) {
-        M2C_FIELD(M2C_FIELD(var_r3_401, void **, 0x44), M2C_UNK (**)(f32 *), 0x2C)(&sp38);
+        M2C_FIELD(M2C_FIELD(var_r3_401, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp38);
     }
     Disable();
 }
-#endif
 
 void SpeedwayAA::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, int arg4, int arg5) {
     Projectile::FireAtTarget(arg0, arg1, arg2, arg3, arg4, arg5);

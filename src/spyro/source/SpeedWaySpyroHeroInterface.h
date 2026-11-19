@@ -8,6 +8,7 @@
 class HeroInterface;
 class MKMessage;
 class MKPropDescriptor;
+class MKVector3;
 class SpeedWaySpyroHeroInterface;
 
 class SpeedWaySpyroHeroInterface : public HeroInterface {  // base: inlined ctor vtable stores
@@ -21,7 +22,7 @@ public:
     virtual void Enable(void);
     virtual void Disable(void);
     virtual f32 GetCollideRadius(void);
-    virtual void GetCollisionCentre(void);
+    virtual MKVector3 GetCollisionCentre(void);
     virtual s32 GetCollisionIgnoreMaterials(void);
     virtual MKPropDescriptor ** GetCollisionInfo(void);
     virtual s32 GetLighting(void);
@@ -99,7 +100,10 @@ inline f32 SpeedWaySpyroHeroInterface::GetCollideRadius() {
 }
 #endif
 
-inline void SpeedWaySpyroHeroInterface::GetCollisionCentre() {
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline MKVector3 SpeedWaySpyroHeroInterface::GetCollisionCentre() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp40;
     f64 sp38;
     f64 sp30;
@@ -112,13 +116,11 @@ inline void SpeedWaySpyroHeroInterface::GetCollisionCentre() {
     f32 temp_f1_6788;
     f64 temp_f0_6805;
     f64 temp_f1_6794;
-    void *temp_r31_6782;
     void *temp_r3_6792;
 
-    temp_r31_6782 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_f1_6788 = M2C_FIELD(M2C_FIELD(temp_r31_6782, void **, 0), f32 (**)(void *), 0x28)(temp_r31_6782);
+    temp_f1_6788 = M2C_FIELD(this->__vptr, f32 (**)(SpeedWaySpyroHeroInterface *), 0x28)(this);
     sp8 = 0.0f;
-    temp_r3_6792 = M2C_FIELD(M2C_FIELD(temp_r31_6782, void **, 4), void **, 8);
+    temp_r3_6792 = M2C_FIELD(M2C_FIELD(this, void **, 4), void **, 8);
     spC = temp_f1_6788;
     temp_f1_6794 = M2C_FIELD(temp_r3_6792, f64 *, 0x30);
     sp10 = 0.0f;
@@ -128,10 +130,12 @@ inline void SpeedWaySpyroHeroInterface::GetCollisionCentre() {
     sp40 = M2C_FIELD(temp_r3_6792, f64 *, 0x38);
     temp_f0_6805 = temp_f1_6794 + sp28;
     sp18 = temp_f0_6805;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_6805;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_6805;
     sp20 = (f32) sp40 + (f32) sp30;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp20;
+    return result;
 }
+#endif
 
 #if 0 // DRAFT: ')' expected
 inline s32 SpeedWaySpyroHeroInterface::GetCollisionIgnoreMaterials() {

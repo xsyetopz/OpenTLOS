@@ -161,7 +161,7 @@ void ShatterableBoat::Draw() {
     f64 sp60;
     f64 sp58;
     f64 sp50;
-    M2C_UNK sp40;
+    MKVector3 sp40;
     f64 sp38;
     f64 sp30;
     f32 sp2C;
@@ -222,7 +222,7 @@ void ShatterableBoat::Draw() {
     (*(f32 *) ((u8 *) &spD0 + 0x4)) = 0.0f;
     spD8 = (f32) sp98;
     (*(f32 *) ((u8 *) &spD8 + 0x4)) = 0.0f;
-    ((Matrix *) &sp40)->NormaliseScale();
+    sp40 = ((Matrix *) &spB0)->NormaliseScale();
     sp60 = spE0;
     temp_f3_402 = this->unk314;
     sp68 = spE8;
@@ -412,7 +412,7 @@ void ShatterableBoat::EmitWaterSpray() {
     sp50 = -M2C_FIELD(temp_r5_574, f32 *, 0x28);
     sp268 = (f64) sp48;
     sp270 = (f64) sp50;
-    sp278.operator*(4000.0f);
+    sp278 = ((MKVector3 *) &sp268)->operator*(4000.0f);
     temp_r5_591 = this->unk8;
     spD8 = *(temp_r5_591 + 0x30) + M2C_BITWISE(f64, sp278);
     sp288 = spD8;
@@ -420,14 +420,14 @@ void ShatterableBoat::EmitWaterSpray() {
     sp2C8 = spD8;
     sp290 = (f64) spE0;
     sp2D0 = (f64) spE0;
-    sp218.operator*(1000.0f);
+    sp218 = ((MKVector3 *) (((u8 *) temp_r5_591) + 0x20))->operator*(1000.0f);
     temp_r5_611 = this->unk8;
     sp38 = -M2C_FIELD(temp_r5_611, f32 *, 0);
     sp3C = -M2C_FIELD(temp_r5_611, f32 *, 4);
     sp40 = -M2C_FIELD(temp_r5_611, f32 *, 8);
     sp228 = (f64) sp38;
     sp230 = (f64) sp40;
-    sp238.operator*(1500.0f);
+    sp238 = ((MKVector3 *) &sp228)->operator*(1500.0f);
     temp_f0_631 = sp2C8 + M2C_BITWISE(f64, sp238);
     sp28 = temp_f0_631;
     sp248 = temp_f0_631;
@@ -440,8 +440,8 @@ void ShatterableBoat::EmitWaterSpray() {
     spD0 = (f32) sp250 + sp218.unk8;
     sp260 = (f64) spD0;
     sp2E0 = (f64) spD0;
-    sp1D8.operator*(1000.0f);
-    sp1E8.operator*(1500.0f);
+    sp1D8 = ((MKVector3 *) (((u8 *) this->unk8) + 0x20))->operator*(1000.0f);
+    sp1E8 = ((MKVector3 *) this->unk8)->operator*(1500.0f);
     temp_f0_666 = sp2C8 + M2C_BITWISE(f64, sp1E8);
     sp18 = temp_f0_666;
     sp1F8 = temp_f0_666;
@@ -470,7 +470,7 @@ void ShatterableBoat::EmitWaterSpray() {
         var_r28_716 = 0;
 loop_2:
         if (var_r29_704 != 0) {
-            sp198.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
+            sp198 = ((MKVector3 *) &sp2A8)->operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp88 = sp2D8 + M2C_BITWISE(f64, sp198);
             sp1A8 = sp88;
             sp90 = (f32) sp2E0 + sp198.unk8;
@@ -478,7 +478,7 @@ loop_2:
             sp1B0 = (f64) sp90;
             sp300 = (f64) sp90;
         } else {
-            sp178.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
+            sp178 = ((MKVector3 *) &sp298)->operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp78 = sp2B8 + M2C_BITWISE(f64, sp178);
             sp188 = sp78;
             sp80 = (f32) sp2C0 + sp178.unk8;
@@ -493,12 +493,12 @@ loop_2:
         sp10 = -M2C_FIELD(temp_r5_767, f32 *, 0x28);
         spF8 = (f64) sp8;
         sp100 = (f64) sp10;
-        sp108.operator*(4000.0f);
-        sp118.operator*(temp_f31_768);
+        sp108 = ((MKVector3 *) &spF8)->operator*(4000.0f);
+        sp118 = sp108.operator*(temp_f31_768);
         sp128 = MKVector(1.0f, 2.0f, 1.0f);
         sp138 = MKVector(-1.0f, 0.0f, -1.0f);
         sp148 = KDRand_Vector(sp138, sp128);
-        sp158.operator*(2000.0f);
+        sp158 = sp148.operator*(2000.0f);
         sp68 = sp158 + M2C_BITWISE(f64, sp118);
         temp_r3_814 = this->unk240;
         sp168 = sp68;
@@ -560,7 +560,7 @@ void ShatterableBoat::UpdateMove() {
     f64 sp80;
     f64 sp78;
     f64 sp70;
-    f64 sp60;
+    MKVector3 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
@@ -821,9 +821,8 @@ void ShatterableBoat::UpdateMove() {
         sp120.unk38 = sp118;
         sp120.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, sp120);
-        ((Matrix *) &sp60)->GetRotationPYR();
-        M2C_FIELD(this, f64 *, 0x1C8) = sp60;
-        M2C_FIELD(this, f64 *, 0x1D0) = sp68;
+        sp60 = sp120.GetRotationPYR();
+        M2C_FIELD(this, MKVector3 *, 0x1C8) = sp60;
         M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
         if ((temp_f31_1285 == 0.0f) && (temp_f31_1285 >= -0.5f) && ((s32) this->unk234 != 1)) {
             EmitWaterSpray();
@@ -854,7 +853,7 @@ void *ShatterableBoat::Update() {
     f64 sp250;
     f64 sp248;
     f64 sp240;
-    f64 sp230;
+    MKVector3 sp230;
     f64 sp228;
     f64 sp220;
     MKVector3 sp210;
@@ -1072,10 +1071,10 @@ void *ShatterableBoat::Update() {
         KDSound_Play3d(this->unk258, ((u8 *) this->unk8) + 0x30, 0U, 0.0f, 0U);
     }
     ShatterablePlatform::Update();
-    ((MKProp *) &sp230)->GetPos();
+    sp230 = GetPos();
     sp90 = sp230 - this->unk328;
     M2C_FIELD(this, f64 *, 0x318) = sp90;
-    sp98 = sp238 - (f32) M2C_FIELD(this, f64 *, 0x330);
+    sp98 = sp230.unk8 - (f32) M2C_FIELD(this, f64 *, 0x330);
     sp240 = sp90;
     M2C_FIELD(this, f64 *, 0x320) = (f64) sp98;
     sp248 = (f64) sp98;
@@ -1101,12 +1100,12 @@ loop_42:
             sp48 = -M2C_FIELD(temp_r5_1756, f32 *, 0x28);
             sp1B0 = (f64) sp40;
             sp1B8 = (f64) sp48;
-            sp1C0.operator*(4000.0f);
-            sp1D0.operator*(temp_f28_1757);
+            sp1C0 = ((MKVector3 *) &sp1B0)->operator*(4000.0f);
+            sp1D0 = sp1C0.operator*(temp_f28_1757);
             sp1E0 = MKVector(1.0f, 2.0f, 1.0f);
             sp1F0 = MKVector(-1.0f, 0.0f, -1.0f);
             sp200 = KDRand_Vector(sp1F0, sp1E0);
-            sp210.operator*(1000.0f);
+            sp210 = sp200.operator*(1000.0f);
             sp80 = sp210 + M2C_BITWISE(f64, sp1D0);
             temp_r3_1803 = this->unk240;
             sp220 = sp80;
@@ -1165,12 +1164,12 @@ loop_49:
             sp38 = -M2C_FIELD(temp_r5_1905, f32 *, 0x28);
             sp120 = (f64) sp30;
             sp128 = (f64) sp38;
-            sp130.operator*(4000.0f);
-            sp140.operator*(temp_f28_1906);
+            sp130 = ((MKVector3 *) &sp120)->operator*(4000.0f);
+            sp140 = sp130.operator*(temp_f28_1906);
             sp150 = MKVector(1.0f, 2.0f, 1.0f);
             sp160 = MKVector(-1.0f, 0.0f, -1.0f);
             sp170 = KDRand_Vector(sp160, sp150);
-            sp180.operator*(1000.0f);
+            sp180 = sp170.operator*(1000.0f);
             sp60 = sp180 + M2C_BITWISE(f64, sp140);
             temp_r3_1952 = this->unk240;
             sp190 = sp60;

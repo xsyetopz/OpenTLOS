@@ -184,7 +184,6 @@ void SpyroChargeState::Message(MKMessage *arg0) {
 
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 s32 SpyroChargeState::Transition() {
     MKCollisionResult spC8;
     s8 spC5;
@@ -390,13 +389,12 @@ block_33:
     }
     return var_r29_574;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroChargeState::Update() {
     f64 sp58;
     f64 sp50;
-    M2C_UNK sp40;
+    MKVector3 sp40;
     f64 sp38;
     f64 sp30;
     f32 sp28;
@@ -455,8 +453,8 @@ void SpyroChargeState::Update() {
     if (var_r4_701 != 0) {
         var_f30_702 = 1.0f * M2C_FIELD(checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r5_700->unk0), f32 *, 0xD8);
     }
-    ((Spyro *) &sp40)->CalcYawTurnDir(3.5f);
-    this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp40), 3.5f);
+    sp40 = this->unk10->CalcYawTurnDir(3.5f);
+    this->unk10->unk3A8.YawTowards(sp40, 3.5f);
     temp_r3_747 = this->unk10;
     temp_r4_749 = temp_r3_747->unk8;
     temp_f3_750 = 1400.0f * var_f30_702;

@@ -53,7 +53,7 @@ public:
     virtual s32 GetMoveToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
-    virtual void GetVel(void);
+    virtual MKVector3 GetVel(void);
     virtual void GetCollisionInfo(void);
     virtual f32 GetCollisionRadius(void);
     virtual f32 GetCollisionHeight(void);
@@ -254,7 +254,7 @@ inline void Shatterable::GetCollisionInfo() {
 
 }
 
-inline void Shatterable::GetVel() {
+inline MKVector3 Shatterable::GetVel() {
     M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }

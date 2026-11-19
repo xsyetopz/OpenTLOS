@@ -53,7 +53,7 @@ public:
     virtual s32 GetMoveToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
-    virtual void GetVel(void);
+    virtual MKVector3 GetVel(void);
     virtual f32 GetCollisionRadius(void);
     virtual f32 GetCollisionHeight(void);
     virtual f32 GetTimeLastHit(void);
@@ -77,7 +77,7 @@ public:
     u8 LeaningForward(void);
     u8 LeaningRight(void);
     u8 LeaningLeft(void);
-    void GetEffectsVelocity(void);
+    MKVector3 GetEffectsVelocity(void);
     void * GetCamera(void);
     KDInput * GetInput(void);
     void UpdateCartCollisions(void);
@@ -256,34 +256,37 @@ inline void TrainChaseSpyro::GetCollisionInfo() {
 
 }
 
-inline void TrainChaseSpyro::GetVel() {
+inline MKVector3 TrainChaseSpyro::GetVel() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f64 sp8;
     f64 temp_f0_6055;
     void *temp_r5_6051;
 
-    temp_r5_6051 = (void *) (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30);
-    temp_f0_6055 = M2C_FIELD(temp_r5_6051, f64 *, 0) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x1E8);
+    temp_r5_6051 = ((u8 *) this->unk8) + 0x30;
+    temp_f0_6055 = M2C_FIELD(temp_r5_6051, f64 *, 0) - this->unk1E8;
     sp8 = temp_f0_6055;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_6055;
-    sp10 = M2C_FIELD(temp_r5_6051, f32 *, 8) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x1F0);
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_6055;
+    sp10 = M2C_FIELD(temp_r5_6051, f32 *, 8) - M2C_FIELD(this, f32 *, 0x1F0);
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 inline s32 TrainChaseSpyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     sp18 = MKVector(0.0f, 160.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -295,16 +298,16 @@ inline s32 TrainChaseSpyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) 
 inline s32 TrainChaseSpyro::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     sp18 = MKVector(0.0f, 160.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;

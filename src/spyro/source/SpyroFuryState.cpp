@@ -236,7 +236,10 @@ void SpyroFuryState::Init(Spyro *arg0) {
     this->unk38 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier '__ptmf_null'
+extern s32 __ptmf_null[3];
+extern f32 SPYRO_BOUNCE_Y_SPEED;
+extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
+
 void SpyroFuryState_cpp::__sinit() {
     s32 sp10;
     s32 spC;
@@ -273,4 +276,3 @@ void SpyroFuryState_cpp::__sinit() {
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (0.5 * temp_f4_637 * -((2014000.0 * (temp_f4_637 * temp_f4_637)) - 3.0)));
     SPYRO_MIN_JUMP_Y_VELOCITY = (f32) (380000.0 * (0.5 * temp_f1_638 * -((380000.0 * (temp_f1_638 * temp_f1_638)) - 3.0)));
 }
-#endif

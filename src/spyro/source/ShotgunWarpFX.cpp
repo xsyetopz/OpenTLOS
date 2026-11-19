@@ -24,50 +24,25 @@ extern f32 gUpdateTimeDelta;
 
 static s32 lit_555 = 0;
 
-#if 0 // DRAFT: undefined identifier 'sp90'
 void ShotgunWarpFX::UpdateWarp() {
-    f32 spAC;
-    f32 spA8;
-    f32 spA4;
-    f32 spA0;
     M2C_UNK sp6C;
-    f64 sp68;
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f64 sp48;
-    f64 sp40;
-    f32 sp38;
-    f64 sp30;
-    f32 sp28;
-    f64 sp20;
-    f32 sp18;
-    f32 sp14;
     f32 sp10;
-    f32 temp_f0_215;
-    f32 temp_f13_109;
-    f32 temp_f27_112;
-    f32 temp_f28_110;
-    f32 temp_f5_214;
-    f32 temp_f6_216;
+    f32 sp14;
+    f32 sp18;
+    f32 p0;
+    f32 p1;
+    f32 p2;
     f32 var_f0_28;
     f32 var_f0_46;
-    f64 temp_f0_172;
-    f64 temp_f13_132;
-    s32 temp_r0_162;
-    s32 temp_r5_154;
-    s32 temp_r6_106;
-    s32 var_ctr_163;
-    s32 var_r4_159;
-    s32 var_r7_90;
-    void *temp_r0_168;
-    void *temp_r4_140;
-    void *temp_r5_108;
-    void *temp_r5_176;
-    void *temp_r5_204;
-    void *temp_r6_170;
-    void *temp_r6_194;
-    void *temp_r6_213;
+    f32 x;
+    f32 y;
+    f32 z;
+    s32 i;
+    s32 j;
+    s32 off;
+    s32 count;
+    u8 *vtx;
+    u8 *vtx4;
 
     var_f0_28 = this->unk68 - gUpdateTimeDelta;
     if (var_f0_28 < 0.65f) {
@@ -95,75 +70,55 @@ void ShotgunWarpFX::UpdateWarp() {
     this->unk6C = var_f0_46;
     if (!(this->unk68 <= 0.0f)) {
         this->unk74 += 1;
-        M2C_STRUCT_COPY((s32) &sp6C + 4, (s32) &this->unk1C + 4, 0x40);
-        spA0 = 0.0f;
-        spA4 = 0.0f;
-        spA8 = 0.0f;
-        spAC = 1.0f;
-        if ((s32) this->unk74 < (s32) this->unkC) {
-            var_r7_90 = 0;
-loop_16:
-            temp_r5_154 = this->unk10;
-            if (var_r7_90 < temp_r5_154) {
-                temp_r6_106 = (var_r7_90 + (this->unk74 * temp_r5_154)) * 0x30;
-                temp_r5_108 = ((u8 *) this->unk0) + (temp_r6_106 + 0x20);
-                temp_f13_109 = M2C_FIELD(temp_r5_108, f32 *, 4);
-                temp_f28_110 = M2C_FIELD(temp_r5_108, f32 *, 0);
-                temp_f27_112 = M2C_FIELD(temp_r5_108, f32 *, 8);
-                sp10 = 0.0f + ((temp_f27_112 * sp90) + ((temp_f28_110 * sp70) + (temp_f13_109 * sp80)));
-                sp14 = 0.0f + ((temp_f27_112 * sp94) + ((temp_f28_110 * sp74) + (temp_f13_109 * sp84)));
-                sp18 = 0.0f + ((temp_f27_112 * sp98) + ((temp_f28_110 * sp78) + (temp_f13_109 * sp88)));
-                sp50 = (f64) sp10;
-                sp58 = (f64) sp18;
-                temp_f13_132 = sp50 * 5.811479333e-315;
-                sp30 = temp_f13_132;
-                sp60 = temp_f13_132;
-                temp_r4_140 = ((u8 *) this->unk4) + (temp_r6_106 + 0x20);
-                sp38 = (f32) sp58 * 10000.0f;
-                sp68 = (f64) sp38;
-                M2C_FIELD(temp_r4_140, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_140, f64 *, 0) + temp_f13_132);
-                var_r7_90 += 1;
-                M2C_FIELD(temp_r4_140, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_140, f32 *, 8) + (f32) sp68);
-                goto loop_16;
+        *(Matrix *) ((u8 *) &sp6C + 4) = *(Matrix *) ((u8 *) &this->unk1C + 4);
+        M2C_FIELD(&sp6C, f32 *, 0x34) = 0.0f;
+        M2C_FIELD(&sp6C, f32 *, 0x38) = 0.0f;
+        M2C_FIELD(&sp6C, f32 *, 0x3C) = 0.0f;
+        M2C_FIELD(&sp6C, f32 *, 0x40) = 1.0f;
+        if (this->unk74 < this->unkC) {
+            for (j = 0; j < this->unk10; j++) {
+                off = (j + (this->unk74 * this->unk10)) * 0x30;
+                vtx = (u8 *) this->unk0 + off + 0x20;
+                x = M2C_FIELD(vtx, f32 *, 0);
+                y = M2C_FIELD(vtx, f32 *, 4);
+                z = M2C_FIELD(vtx, f32 *, 8);
+                sp10 = 0.0f + ((z * M2C_FIELD(&sp6C, f32 *, 0x24)) + ((x * M2C_FIELD(&sp6C, f32 *, 4)) + (y * M2C_FIELD(&sp6C, f32 *, 0x14))));
+                sp14 = 0.0f + ((z * M2C_FIELD(&sp6C, f32 *, 0x28)) + ((x * M2C_FIELD(&sp6C, f32 *, 8)) + (y * M2C_FIELD(&sp6C, f32 *, 0x18))));
+                sp18 = 0.0f + ((z * M2C_FIELD(&sp6C, f32 *, 0x2C)) + ((x * M2C_FIELD(&sp6C, f32 *, 0xC)) + (y * M2C_FIELD(&sp6C, f32 *, 0x1C))));
+                vtx4 = (u8 *) this->unk4 + off + 0x20;
+                p0 = sp10 * 10000.0f;
+                p1 = sp14 * 10000.0f;
+                p2 = sp18 * 10000.0f;
+                M2C_FIELD(vtx4, f32 *, 0) = M2C_FIELD(vtx4, f32 *, 0) + p0;
+                M2C_FIELD(vtx4, f32 *, 4) = M2C_FIELD(vtx4, f32 *, 4) + p1;
+                M2C_FIELD(vtx4, f32 *, 8) = M2C_FIELD(vtx4, f32 *, 8) + p2;
             }
         }
-        var_r4_159 = 0;
-        temp_r0_162 = this->unkC * this->unk10;
-        var_ctr_163 = temp_r0_162;
-        if (temp_r0_162 > 0) {
-            do {
-                temp_r0_168 = this->unk4;
-                temp_r6_170 = ((u8 *) temp_r0_168) + (var_r4_159 + 0x20);
-                temp_f0_172 = M2C_FIELD(temp_r6_170, f64 *, 0) * (f64) gUpdateTimeDelta;
-                sp20 = temp_f0_172;
-                temp_r5_176 = ((u8 *) temp_r0_168) + (var_r4_159 + 0x10);
-                sp40 = temp_f0_172;
-                sp28 = M2C_FIELD(temp_r6_170, f32 *, 8) * gUpdateTimeDelta;
-                sp48 = (f64) sp28;
-                M2C_FIELD(temp_r5_176, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_176, f64 *, 0) + temp_f0_172);
-                M2C_FIELD(temp_r5_176, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_176, f32 *, 8) + (f32) sp48);
-                temp_r6_194 = ((u8 *) this->unk4) + (var_r4_159 + 0x10);
-                M2C_FIELD(temp_r6_194, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_194, f64 *, 0) * 5.180653787e-315);
-                M2C_FIELD(temp_r6_194, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_194, f32 *, 8) * 0.25f);
-                temp_r5_204 = ((u8 *) this->unk4) + (var_r4_159 + 0x20);
-                M2C_FIELD(temp_r5_204, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_204, f64 *, 0) * 5.24282163e-315);
-                M2C_FIELD(temp_r5_204, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_204, f32 *, 8) * 0.75f);
-                temp_r6_213 = ((u8 *) this->unk4) + (var_r4_159 + 0x20);
-                temp_f5_214 = M2C_FIELD(temp_r6_213, f32 *, 0);
-                temp_f0_215 = M2C_FIELD(temp_r6_213, f32 *, 4);
-                temp_f6_216 = M2C_FIELD(temp_r6_213, f32 *, 8);
-                if (((temp_f6_216 * temp_f6_216) + ((temp_f5_214 * temp_f5_214) + (temp_f0_215 * temp_f0_215))) <= 100.0f) {
-                    M2C_FIELD(temp_r6_213, f32 *, 0) = 0.0f;
-                    M2C_FIELD(temp_r6_213, f32 *, 4) = 0.0f;
-                    M2C_FIELD(temp_r6_213, f32 *, 8) = 0.0f;
-                }
-                var_r4_159 += 0x30;
-                var_ctr_163 -= 1;
-            } while (var_ctr_163 != 0);
+        count = this->unkC * this->unk10;
+        off = 0;
+        for (i = 0; i < count; i++) {
+            vtx = (u8 *) this->unk4 + off;
+            M2C_FIELD(vtx, f32 *, 0x10) = M2C_FIELD(vtx, f32 *, 0x10) + (M2C_FIELD(vtx, f32 *, 0x20) * gUpdateTimeDelta);
+            M2C_FIELD(vtx, f32 *, 0x14) = M2C_FIELD(vtx, f32 *, 0x14) + (M2C_FIELD(vtx, f32 *, 0x24) * gUpdateTimeDelta);
+            M2C_FIELD(vtx, f32 *, 0x18) = M2C_FIELD(vtx, f32 *, 0x18) + (M2C_FIELD(vtx, f32 *, 0x28) * gUpdateTimeDelta);
+            M2C_FIELD(vtx, f32 *, 0x10) = M2C_FIELD(vtx, f32 *, 0x10) * 0.25f;
+            M2C_FIELD(vtx, f32 *, 0x14) = M2C_FIELD(vtx, f32 *, 0x14) * 0.25f;
+            M2C_FIELD(vtx, f32 *, 0x18) = M2C_FIELD(vtx, f32 *, 0x18) * 0.25f;
+            M2C_FIELD(vtx, f32 *, 0x20) = M2C_FIELD(vtx, f32 *, 0x20) * 0.75f;
+            M2C_FIELD(vtx, f32 *, 0x24) = M2C_FIELD(vtx, f32 *, 0x24) * 0.75f;
+            M2C_FIELD(vtx, f32 *, 0x28) = M2C_FIELD(vtx, f32 *, 0x28) * 0.75f;
+            x = M2C_FIELD(vtx, f32 *, 0x20);
+            y = M2C_FIELD(vtx, f32 *, 0x24);
+            z = M2C_FIELD(vtx, f32 *, 0x28);
+            if (((z * z) + ((x * x) + (y * y))) > 100.0f) {
+                M2C_FIELD(vtx, f32 *, 0x20) = 0.0f;
+                M2C_FIELD(vtx, f32 *, 0x24) = 0.0f;
+                M2C_FIELD(vtx, f32 *, 0x28) = 0.0f;
+            }
+            off += 0x30;
         }
     }
 }
-#endif
 
 void ShotgunWarpFX::StartWarp(Matrix *arg0) {
     f64 sp20;

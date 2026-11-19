@@ -8,6 +8,7 @@
 class HeroInterface;
 class MKMessage;
 class MKPropDescriptor;
+class MKVector3;
 class TrainChaseSpyroHeroInterface;
 
 class TrainChaseSpyroHeroInterface : public HeroInterface {  // base: inlined ctor vtable stores
@@ -21,7 +22,7 @@ public:
     virtual void Enable(void);
     virtual void Disable(void);
     virtual f32 GetCollideRadius(void);
-    virtual void GetCollisionCentre(void);
+    virtual MKVector3 GetCollisionCentre(void);
     virtual s32 GetCollisionIgnoreMaterials(void);
     virtual MKPropDescriptor ** GetCollisionInfo(void);
     virtual s32 GetLighting(void);
@@ -93,7 +94,10 @@ inline f32 TrainChaseSpyroHeroInterface::GetCollideRadius() {
     return 100.0f;
 }
 
-inline void TrainChaseSpyroHeroInterface::GetCollisionCentre() {
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline MKVector3 TrainChaseSpyroHeroInterface::GetCollisionCentre() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp40;
     f64 sp38;
     f64 sp30;
@@ -106,13 +110,11 @@ inline void TrainChaseSpyroHeroInterface::GetCollisionCentre() {
     f32 temp_f1_5734;
     f64 temp_f0_5751;
     f64 temp_f1_5740;
-    void *temp_r31_5728;
     void *temp_r3_5738;
 
-    temp_r31_5728 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_f1_5734 = M2C_FIELD(M2C_FIELD(temp_r31_5728, void **, 0), f32 (**)(void *), 0x28)(temp_r31_5728);
+    temp_f1_5734 = M2C_FIELD(this->__vptr, f32 (**)(TrainChaseSpyroHeroInterface *), 0x28)(this);
     sp8 = 0.0f;
-    temp_r3_5738 = M2C_FIELD(M2C_FIELD(temp_r31_5728, void **, 4), void **, 8);
+    temp_r3_5738 = M2C_FIELD(M2C_FIELD(this, void **, 4), void **, 8);
     spC = temp_f1_5734;
     temp_f1_5740 = M2C_FIELD(temp_r3_5738, f64 *, 0x30);
     sp10 = 0.0f;
@@ -122,10 +124,12 @@ inline void TrainChaseSpyroHeroInterface::GetCollisionCentre() {
     sp40 = M2C_FIELD(temp_r3_5738, f64 *, 0x38);
     temp_f0_5751 = temp_f1_5740 + sp28;
     sp18 = temp_f0_5751;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_5751;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_5751;
     sp20 = (f32) sp40 + (f32) sp30;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp20;
+    return result;
 }
+#endif
 
 inline s32 TrainChaseSpyroHeroInterface::GetCollisionIgnoreMaterials() {
     return 0;

@@ -7,8 +7,8 @@ class WindPointInfo;
 
 class WindPointInfo {
 public:
-    void operator/(float);
-    void operator*(float);
+    WindPointInfo operator/(float);
+    WindPointInfo operator*(float);
 };
 
 #endif  // SPYRO_SOURCE_WINDPOINTINFO_H

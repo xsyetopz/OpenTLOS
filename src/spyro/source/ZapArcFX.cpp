@@ -31,7 +31,7 @@ void *malloc(M2C_UNK);                              /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'const float *' to 'float'
 void ZapArcFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, const bool &arg3, MKVector4 arg4) {
     f64 sp1A0;                                      /* compiler-managed */
     f64 sp198;                                      /* compiler-managed */

@@ -426,7 +426,7 @@ loop_5:
         } while (var_ctr_484 != 0);
         sp110 = temp_f2_490 * 5.194468865e-315;
         sp118 = (f32) temp_f0_495 * 0.33333334f;
-        spD0.operator*(gUpdateTimeDelta);
+        spD0 = ((MKVector3 *) temp_r28_710)->operator*(gUpdateTimeDelta);
         temp_f0_510 = sp110 - temp_r28_710->unk0;
         sp10 = temp_f0_510;
         spE0 = temp_f0_510;
@@ -486,7 +486,7 @@ loop_5:
         M2C_FIELD(temp_r28_710, f32 *, 0x24) = (f32) (M2C_FIELD(temp_r28_710, f32 *, 0x24) * var_f2_614);
         M2C_FIELD(temp_r28_710, f64 *, 0x28) = (f32) ((f32) M2C_FIELD(temp_r28_710, f64 *, 0x28) * var_f2_614);
         temp_f28_631 = gUpdateTimeDelta;
-        spB0.operator*(500.0f);
+        spB0 = ((MKVector3 *) &temp_r28_710->unk20)->operator*(500.0f);
         temp_f0_634 = spB0 * (f64) temp_f28_631;
         sp50 = temp_f0_634;
         spC0 = temp_f0_634;
@@ -502,7 +502,7 @@ loop_5:
         temp_r28_710->unk0 += temp_f0_655;
         M2C_FIELD(temp_r28_710, f32 *, 8) = (f32) (M2C_FIELD(temp_r28_710, f32 *, 8) + (f32) spA8);
         temp_f26_675 = gUpdateTimeDelta;
-        sp80.operator*(0.1f);
+        sp80 = ((MKVector3 *) &temp_r28_710->unk10)->operator*(0.1f);
         temp_f0_678 = sp80 * (f64) temp_f26_675;
         sp30 = temp_f0_678;
         sp90 = temp_f0_678;
@@ -528,9 +528,7 @@ f32 SwarmProp::Resolve() {
 }
 
 extern "C" void *malloc(u32);
-extern M2C_UNK gEmptyPtrListDL;
 MKVector3 KDRand_Vector(const MKVector3 &, const MKVector3 &);
-
 s32 SwarmProp::LoadDone() {
     f64 temp_f29;
     f64 temp_f30;
@@ -626,8 +624,6 @@ s32 SwarmProp::LoadLine(MKIniLine *arg0) {
 }
 
 extern "C" void free(void *);
-extern M2C_UNK gEmptyPtrListDL;
-
 void SwarmProp::Deinit() {
     SwarmEntity **head;
     SwarmEntity **walk;

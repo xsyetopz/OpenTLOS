@@ -58,7 +58,7 @@ public:
     virtual s32 GetMoveToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
-    virtual void GetVel(void);
+    virtual MKVector3 GetVel(void);
     virtual f32 GetCollisionRadius(void);
     virtual f32 GetCollisionHeight(void);
     virtual f32 GetTimeLastHit(void);
@@ -78,7 +78,7 @@ public:
     void SetAnim(MKAnim *, float, unsigned int);
     void * GetCamera(void);
     KDInput * GetInput(void);
-    void GetJoyDir(void);
+    MKVector3 GetJoyDir(void);
     void UpdateDrift(float);
     f32 GetCurrXYDriftFactor(void) const;
     u8 GetBestMovementOffset(const MKVector3 &, const MKVector3 &, const MKVector3 &, float *);
@@ -420,25 +420,28 @@ inline void SpeedWaySpyro::GetCollisionInfo() {
 
 }
 
-inline void SpeedWaySpyro::GetVel() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x2C8);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x2D0);
+inline MKVector3 SpeedWaySpyro::GetVel() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(this, f64 *, 0x2C8);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(this, f64 *, 0x2D0);
+    return result;
 }
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 inline s32 SpeedWaySpyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     sp18 = MKVector(0.0f, 160.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -450,16 +453,16 @@ inline s32 SpeedWaySpyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 inline s32 SpeedWaySpyro::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     sp18 = MKVector(0.0f, 160.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;

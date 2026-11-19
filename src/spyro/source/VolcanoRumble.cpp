@@ -51,7 +51,7 @@ extern void **gb;
 extern u8 init_625;
 extern u8 init_661;
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
     s8 sp190;
     f64 sp188;
@@ -71,19 +71,19 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
     MKVector3 sp118;
     f64 sp110;
     f64 sp108;
-    HeroInterface spF8;
+    MKVector3 spF8;
     MKVector3 spE8;
     f64 spE0;
     f64 spD8;
-    HeroInterface spC8;
+    MKVector3 spC8;
     MKVector3 spB8;
     f64 spB0;
     f64 spA8;
-    HeroInterface sp98;
+    MKVector3 sp98;
     MKVector3 sp88;
     f64 sp80;
     f64 sp78;
-    HeroInterface sp68;
+    MKVector3 sp68;
     MKVector3 sp58;
     f32 sp50;
     f64 sp48;
@@ -111,34 +111,34 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
         M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp178, sp48);
         ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay(0.03f, 0.3f, 0.5f, 0, 4.0f, 0U);
         spE8 = MKVector(2000.0f, 0.0f, 0.0f);
-        spF8.GetPos();
+        spF8 = ((HeroInterface *) M2C_FIELD(&gb, void ***, 0))->GetPos();
         sp38 = spF8 + M2C_BITWISE(f64, spE8);
         sp108 = sp38;
-        sp40 = sp100 + spE8.unk8;
+        sp40 = spF8.unk8 + spE8.unk8;
         sp168 = sp38;
         sp110 = (f64) sp40;
         sp170 = (f64) sp40;
         spB8 = MKVector(-2000.0f, 0.0f, 0.0f);
-        spC8.GetPos();
+        spC8 = ((HeroInterface *) M2C_FIELD(&gb, void ***, 0))->GetPos();
         sp28 = spC8 + M2C_BITWISE(f64, spB8);
         spD8 = sp28;
-        sp30 = spD0 + spB8.unk8;
+        sp30 = spC8.unk8 + spB8.unk8;
         sp158 = sp28;
         spE0 = (f64) sp30;
         sp160 = (f64) sp30;
         sp88 = MKVector(0.0f, 0.0f, 2000.0f);
-        sp98.GetPos();
+        sp98 = ((HeroInterface *) M2C_FIELD(&gb, void ***, 0))->GetPos();
         sp18 = sp98 + M2C_BITWISE(f64, sp88);
         spA8 = sp18;
-        sp20 = spA0 + sp88.unk8;
+        sp20 = sp98.unk8 + sp88.unk8;
         sp148 = sp18;
         spB0 = (f64) sp20;
         sp150 = (f64) sp20;
         sp58 = MKVector(0.0f, 0.0f, -2000.0f);
-        sp68.GetPos();
+        sp68 = ((HeroInterface *) M2C_FIELD(&gb, void ***, 0))->GetPos();
         sp8 = sp68 + M2C_BITWISE(f64, sp58);
         sp78 = sp8;
-        sp10 = sp70 + sp58.unk8;
+        sp10 = sp68.unk8 + sp58.unk8;
         sp138 = sp8;
         sp80 = (f64) sp10;
         sp140 = (f64) sp10;
@@ -151,7 +151,7 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void VolcanoRumble::EmitCrudAbovePlayer() {
     f64 sp1F8;                                      /* compiler-managed */
     f64 sp1F0;
@@ -391,7 +391,7 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void VolcanoRumble::MakeCrudRainSound() {
     f64 sp98;                                       /* compiler-managed */
     f64 sp90;

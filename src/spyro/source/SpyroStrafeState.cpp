@@ -913,7 +913,7 @@ void SpyroStrafeState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp48'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStrafeState::Enter(SpyroStateMessages &arg0) {
     MKVector3 sp80;
     f64 sp78;
@@ -922,7 +922,7 @@ void SpyroStrafeState::Enter(SpyroStateMessages &arg0) {
     f64 sp60;
     f64 sp58;
     f64 sp50;
-    f64 sp40;
+    MKVector3 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -973,10 +973,8 @@ void SpyroStrafeState::Enter(SpyroStateMessages &arg0) {
         sp80 = Normalise(*((MKVector3 *) &sp70));
         M2C_FIELD(this, MKVector3 *, 0x28) = sp80;
     } else {
-        this->unk10->GetCamera();
-        ((KDCamera *) &sp40)->GetXZDir();
-        M2C_FIELD(this, f64 *, 0x28) = sp40;
-        M2C_FIELD(this, f64 *, 0x30) = sp48;
+        sp40 = ((KDCamera *) (this->unk10->GetCamera()))->GetXZDir();
+        M2C_FIELD(this, MKVector3 *, 0x28) = sp40;
     }
     if (arg0.IsMessageOnList(0x178) != 0) {
         SelectAnim();

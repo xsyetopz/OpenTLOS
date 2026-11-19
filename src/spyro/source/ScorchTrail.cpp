@@ -526,92 +526,79 @@ void ScorchTrail::AddNode(const MKVector3 &arg0, const MKVector3 &arg1) {
     }
 }
 
-#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void ScorchTrail::Deinit() {
-    MKHeap *temp_r0_776;
-    MKHeap *temp_r0_795;
-    MKHeap *temp_r0_818;
-    MKHeap *temp_r0_837;
-    MKHeap *temp_r30_755;
-    MKHeap *var_r30_772;
-    MKHeap *var_r30_814;
-    MKHeap *var_r3_773;
-    MKHeap *var_r3_815;
-    MKHeap *var_r4_771;
-    MKHeap *var_r4_813;
-    u32 temp_r0_781;
-    u32 temp_r0_823;
+    MKHeap *base;
+    u32 min;
+    u32 value;
+    void **top;
+    void **walk;
+    void **scan;
 
-    temp_r30_755 = this->unk4C;
+    base = unk4C;
     if (MKHeap::Current() != NULL) {
-        ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_755, NULL, 0);
+        ((MKHeap *) (MKHeap::Current()))->Free(base, NULL, 0);
     } else {
-        free(temp_r30_755);
+        free(base);
     }
-    this->unk4C = NULL;
-    var_r4_771 = M2C_FIELD(this, MKHeap **, 0x5C);
-    var_r30_772 = var_r4_771;
-    var_r3_773 = var_r4_771;
-loop_6:
-    temp_r0_781 = M2C_FIELD(var_r3_773, u32 *, -4);
-    var_r3_773 -= 4;
-    if (temp_r0_781 != 0U) {
-        temp_r0_776 = var_r3_773->unk0;
-        if (temp_r0_776 < var_r30_772) {
-            var_r30_772 = temp_r0_776;
+    unk4C = NULL;
+
+    top = M2C_FIELD(this, void ***, 0x5C);
+    min = (u32) top;
+    walk = top;
+    do {
+        walk -= 1;
+        value = (u32) *walk;
+        if (value != 0 && value < min) {
+            min = value;
         }
-        goto loop_6;
-    }
-    if (var_r3_773 != &gEmptyPtrListDL) {
-loop_12:
-        temp_r0_795 = var_r4_771->unk0;
-        if (temp_r0_795 != NULL) {
-            if (temp_r0_795 < var_r30_772) {
-                var_r30_772 = temp_r0_795;
+    } while (value != 0);
+    if ((void *) walk != (void *) &gEmptyPtrListDL) {
+        scan = top;
+        value = (u32) *scan;
+        while (value != 0) {
+            if (value < min) {
+                min = value;
             }
-            var_r4_771 += 4;
-            goto loop_12;
+            scan += 1;
+            value = (u32) *scan;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_772, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((MKHeap *) min, NULL, 0);
         } else {
-            free(var_r30_772);
+            free((MKHeap *) min);
         }
     }
-    M2C_FIELD(this, MKHeap **, 0x5C) = NULL;
-    var_r4_813 = M2C_FIELD(this, MKHeap **, 0x60);
-    var_r30_814 = var_r4_813;
-    var_r3_815 = var_r4_813;
-loop_19:
-    temp_r0_823 = M2C_FIELD(var_r3_815, u32 *, -4);
-    var_r3_815 -= 4;
-    if (temp_r0_823 != 0U) {
-        temp_r0_818 = var_r3_815->unk0;
-        if (temp_r0_818 < var_r30_814) {
-            var_r30_814 = temp_r0_818;
+    M2C_FIELD(this, void ***, 0x5C) = NULL;
+
+    top = M2C_FIELD(this, void ***, 0x60);
+    min = (u32) top;
+    walk = top;
+    do {
+        walk -= 1;
+        value = (u32) *walk;
+        if (value != 0 && value < min) {
+            min = value;
         }
-        goto loop_19;
-    }
-    if (var_r3_815 != &gEmptyPtrListDL) {
-loop_25:
-        temp_r0_837 = var_r4_813->unk0;
-        if (temp_r0_837 != NULL) {
-            if (temp_r0_837 < var_r30_814) {
-                var_r30_814 = temp_r0_837;
+    } while (value != 0);
+    if ((void *) walk != (void *) &gEmptyPtrListDL) {
+        scan = top;
+        value = (u32) *scan;
+        while (value != 0) {
+            if (value < min) {
+                min = value;
             }
-            var_r4_813 += 4;
-            goto loop_25;
+            scan += 1;
+            value = (u32) *scan;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_814, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((MKHeap *) min, NULL, 0);
         } else {
-            free(var_r30_814);
+            free((MKHeap *) min);
         }
     }
-    M2C_FIELD(this, MKHeap **, 0x60) = NULL;
+    M2C_FIELD(this, void ***, 0x60) = NULL;
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'long'
 void ScorchTrail::Draw() {
@@ -919,117 +906,96 @@ block_51:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void *ScorchTrail::Update() {
-    MKHeap *temp_r4_1309;
-    s32 temp_r0_1311;
-    s32 temp_r5_1308;
-    s32 var_r6_1300;
-    void *temp_r4_1316;
+    s32 i;
+    u8 *node;
 
-    var_r6_1300 = this->unk50 + 1;
-    if (var_r6_1300 >= 0x64) {
-        var_r6_1300 = 0;
+    i = unk50 + 1;
+    if (i >= 0x64) {
+        i = 0;
     }
     do {
-        temp_r5_1308 = var_r6_1300 * 0x30;
-        temp_r4_1309 = this->unk4C;
-        temp_r0_1311 = temp_r5_1308 + 0x20;
-        *(temp_r4_1309 + temp_r0_1311) = *(temp_r4_1309 + temp_r0_1311) - gUpdateTimeDelta;
-        temp_r4_1316 = this->unk4C + temp_r5_1308;
-        if (M2C_FIELD(temp_r4_1316, f32 *, 0x20) <= 0.0f) {
-            M2C_FIELD(temp_r4_1316, s32 *, 0x24) = 0;
+        node = (u8 *) unk4C + i * 0x30;
+        *(f32 *) (node + 0x20) = *(f32 *) (node + 0x20) - gUpdateTimeDelta;
+        if (*(f32 *) (node + 0x20) <= 0.0f) {
+            *(s32 *) (node + 0x24) = 0;
         }
-        var_r6_1300 += 1;
-        if (var_r6_1300 >= 0x64) {
-            var_r6_1300 = 0;
+        i += 1;
+        if (i >= 0x64) {
+            i = 0;
         }
-    } while (var_r6_1300 != (s32) this->unk50);
+    } while (i != unk50);
     UpdatePlasmaBubbles();
     UpdateScorchMarks();
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 void ScorchTrail::Init() {
-    MKHeap *temp_r3_1406;
-    MKHeap *temp_r3_1412;
-    MKHeap *temp_r3_1439;
-    MKHeap *temp_r3_1445;
-    MKHeap *var_r3_1358;
-    MKHeap *var_r3_1391;
-    MKHeap *var_r3_1424;
-    MKHeap *var_r5_1400;
-    MKHeap *var_r5_1433;
-    s32 temp_r0_1373;
-    s32 temp_r3_1372;
-    s32 var_ctr_1369;
-    s32 var_ctr_1404;
-    s32 var_ctr_1437;
-    s32 var_r4_1364;
+    MKHeap *block;
+    u8 *entry;
+    void **slot;
+    s32 count;
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1358 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x12C0, NULL, 0));
+        block = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x12C0, NULL, 0));
     } else {
-        var_r3_1358 = malloc(0x12C0);
+        block = malloc(0x12C0);
     }
-    var_r4_1364 = 0;
-    this->unk4C = var_r3_1358;
-    var_ctr_1369 = 0x64;
+    unk4C = block;
+    entry = (u8 *) unk4C;
+    count = 0x64;
     do {
-        temp_r3_1372 = var_r4_1364 + 0x24;
-        temp_r0_1373 = var_r4_1364 + 0x20;
-        var_r4_1364 += 0x30;
-        *(this->unk4C + temp_r3_1372) = 0;
-        *(this->unk4C + temp_r0_1373) = 0.0f;
-        var_ctr_1369 -= 1;
-    } while (var_ctr_1369 != 0);
-    this->unk50 = 0;
-    this->unk54 = 0;
-    this->unk58 = 10.0f;
+        *(s32 *) (entry + 0x24) = 0;
+        *(f32 *) (entry + 0x20) = 0.0f;
+        entry += 0x30;
+        count -= 1;
+    } while (count != 0);
+    unk50 = 0;
+    unk54 = 0;
+    unk58 = 10.0f;
+
     if (MKHeap::Current() != NULL) {
-        var_r3_1391 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x418, NULL, 0));
+        block = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x418, NULL, 0));
     } else {
-        var_r3_1391 = malloc(0x418);
+        block = malloc(0x418);
     }
-    M2C_FIELD(this, MKHeap **, 0x5C) = var_r3_1391;
-    var_r5_1400 = M2C_FIELD(this, MKHeap **, 0x5C);
-    M2C_FIELD(this, MKHeap **, 0x5C) = (MKHeap *) (var_r5_1400 + 0x3C0);
-    M2C_FIELD(var_r5_1400, s32 *, 0x3C0) = 0;
-    var_ctr_1404 = 0x14;
+    M2C_FIELD(this, void ***, 0x5C) = (void **) block;
+    entry = (u8 *) M2C_FIELD(this, void ***, 0x5C);
+    M2C_FIELD(this, void ***, 0x5C) = (void **) (entry + 0x3C0);
+    *(s32 *) (entry + 0x3C0) = 0;
+    count = 0x14;
     do {
-        temp_r3_1406 = M2C_FIELD(this, MKHeap **, 0x5C);
-        M2C_FIELD(this, MKHeap **, 0x5C) = (MKHeap *) &temp_r3_1406->unk4;
-        temp_r3_1406->unk4 = (s32) var_r5_1400;
-        var_r5_1400 += 0x30;
-        var_ctr_1404 -= 1;
-    } while (var_ctr_1404 != 0);
-    temp_r3_1412 = M2C_FIELD(this, MKHeap **, 0x5C);
-    M2C_FIELD(this, MKHeap **, 0x5C) = (MKHeap *) &temp_r3_1412->unk4;
-    temp_r3_1412->unk4 = 0;
+        slot = M2C_FIELD(this, void ***, 0x5C) + 1;
+        M2C_FIELD(this, void ***, 0x5C) = slot;
+        *slot = entry;
+        entry += 0x30;
+        count -= 1;
+    } while (count != 0);
+    slot = M2C_FIELD(this, void ***, 0x5C) + 1;
+    M2C_FIELD(this, void ***, 0x5C) = slot;
+    *slot = NULL;
+
     if (MKHeap::Current() != NULL) {
-        var_r3_1424 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10C, NULL, 0));
+        block = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10C, NULL, 0));
     } else {
-        var_r3_1424 = malloc(0x10C);
+        block = malloc(0x10C);
     }
-    M2C_FIELD(this, MKHeap **, 0x60) = var_r3_1424;
-    var_r5_1433 = M2C_FIELD(this, MKHeap **, 0x60);
-    M2C_FIELD(this, MKHeap **, 0x60) = (MKHeap *) &var_r5_1433->unkF0;
-    var_r5_1433->unkF0 = 0.0f;
-    var_ctr_1437 = 5;
+    M2C_FIELD(this, void ***, 0x60) = (void **) block;
+    entry = (u8 *) M2C_FIELD(this, void ***, 0x60);
+    M2C_FIELD(this, void ***, 0x60) = (void **) (entry + 0xF0);
+    *(s32 *) (entry + 0xF0) = 0;
+    count = 5;
     do {
-        temp_r3_1439 = M2C_FIELD(this, MKHeap **, 0x60);
-        M2C_FIELD(this, MKHeap **, 0x60) = (MKHeap *) &temp_r3_1439->unk4;
-        temp_r3_1439->unk4 = (s32) var_r5_1433;
-        var_r5_1433 += 0x30;
-        var_ctr_1437 -= 1;
-    } while (var_ctr_1437 != 0);
-    temp_r3_1445 = M2C_FIELD(this, MKHeap **, 0x60);
-    M2C_FIELD(this, MKHeap **, 0x60) = (MKHeap *) &temp_r3_1445->unk4;
-    temp_r3_1445->unk4 = 0;
+        slot = M2C_FIELD(this, void ***, 0x60) + 1;
+        M2C_FIELD(this, void ***, 0x60) = slot;
+        *slot = entry;
+        entry += 0x30;
+        count -= 1;
+    } while (count != 0);
+    slot = M2C_FIELD(this, void ***, 0x60) + 1;
+    M2C_FIELD(this, void ***, 0x60) = slot;
+    *slot = NULL;
 }
-#endif
 
 void ScorchTrailDescriptor::Deinit() {
     MKMaterial *temp_r3_1465;

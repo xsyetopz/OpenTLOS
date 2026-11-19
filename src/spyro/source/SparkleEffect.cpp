@@ -7,6 +7,7 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
 #include "common/gc/MKMaterial_GC.h"

@@ -72,46 +72,26 @@ void PoisonBomb::EmitPoison() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void PoisonBomb::EmitPoisonTrail() {
-    f64 sp70;
-    f64 sp68;
     MKVector3 sp58;
-    f64 sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f32 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f64 sp8;
+    MKVector3 sp68;
+    MKVector3 sp48;
+    MKVector3 sp38;
     MKVector3 *temp_r31_91;
-    f64 temp_f0_107;
 
-    sp30 = -1.0f;
-    sp20 = 1.0f;
     temp_r31_91 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
-    sp28 = -1.0f;
-    sp2C = 0.0f;
-    sp18 = 1.0f;
-    sp1C = 1.0f;
-    sp48 = (f64) sp28;
-    sp50 = (f64) sp30;
-    sp38 = (f64) sp18;
-    sp40 = (f64) sp20;
-    sp58 = KDRand_Vector(*((MKVector3 *) &sp48), *((MKVector3 *) &sp38));
-    temp_f0_107 = sp58 * 5.53552857e-315;
-    sp8 = temp_f0_107;
-    sp68 = temp_f0_107;
-    sp10 = sp58.unk8 * 100.0f;
-    sp70 = (f64) sp10;
-    ((HeatDistortPS *) (&gb + 0x240))->Emit(*temp_r31_91, *((MKVector3 *) &sp68), 1.0f, MKRand_Float((int *) &gViewSeed, 3.0f, 4.0f));
+    sp48.unk0 = -1.0f;
+    sp48.unk4 = 0.0f;
+    sp48.unk8 = -1.0f;
+    sp38.unk0 = 1.0f;
+    sp38.unk4 = 1.0f;
+    sp38.unk8 = 1.0f;
+    sp58 = KDRand_Vector(sp48, sp38);
+    sp68.unk0 = sp58.unk0 * 100.0f;
+    sp68.unk4 = sp58.unk4 * 100.0f;
+    sp68.unk8 = sp58.unk8 * 100.0f;
+    ((HeatDistortPS *) (&gb + 0x240))->Emit(*temp_r31_91, sp68, 1.0f, MKRand_Float((int *) &gViewSeed, 3.0f, 4.0f));
 }
-#endif
 
 void PoisonBomb::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, int arg4, int arg5) {
     Projectile::FireAtTarget(arg0, arg1, arg2, arg3, arg4, arg5);
@@ -130,7 +110,6 @@ void PoisonBomb::Disable() {
     Projectile::Disable();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void PoisonBomb::PlatformDetach() {
     s32 sp18;
     s8 sp14;
@@ -146,13 +125,11 @@ void PoisonBomb::PlatformDetach() {
         sp10 = &this->unk150;
         sp14 = 0;
         sp18 = 0;
-        M2C_FIELD(temp_r3_201->__vptr, M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp8, 0x24, 0);
+        temp_r3_201->Message((MKMessage *) &sp8);
         this->unk178 = NULL;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void PoisonBomb::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
     MKCollisionInfo *sp18;
     u8 sp14;
@@ -171,14 +148,13 @@ void PoisonBomb::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
             sp10 = &this->unk150;
             sp14 = 0;
             sp18 = arg1;
-            M2C_FIELD(temp_r3_243->__vptr, M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp8, 0x23, 0);
+            temp_r3_243->Message((MKMessage *) &sp8);
             if (sp14 == 0) {
                 this->unk178 = NULL;
             }
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionResult'
 void PoisonBomb::Collided(MKCollisionResult &arg0) {
@@ -289,7 +265,7 @@ void *PoisonBomb::Update() {
     f32 sp50;
     f32 sp48;
     f64 sp40;
-    f64 sp30;
+    MKVector3 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -426,9 +402,8 @@ void *PoisonBomb::Update() {
                 spD0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp100 = 0;
                 if (this != NULL) {
-                    ((MKProp *) &sp30)->GetPos();
-                    spE0 = sp30;
-                    spE8 = sp38;
+                    sp30 = GetPos();
+                    *(MKVector3 *) &spE0 = sp30;
                 } else {
                     spE0 = 0.0f;
                     (*(f32 *) ((u8 *) &spDC + 0x8)) = 0.0f;
@@ -561,7 +536,6 @@ void PoisonBomb::Deinit() {
     Projectile::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void PoisonBomb::Draw() {
     Matrix sp110;
     f32 sp10C;
@@ -806,7 +780,6 @@ void PoisonBomb::Draw() {
         }
     }
 }
-#endif
 
 void PoisonBomb::Init() {
     Projectile::Init();

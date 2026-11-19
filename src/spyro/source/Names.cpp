@@ -44,17 +44,17 @@ u8 *Name::GetName() {
     return &gNullStr;
 }
 
-#if 0 // DRAFT: undefined identifier 'firstNames'
+static Names firstNames[6];
+static Names lastNames[6];
 void Name::Create(int arg0) {
     if (arg0 == -1) {
         this->unk4 = NULL;
         this->unk0 = NULL;
         return;
     }
-    this->unk0 = ((Names *) &firstNames[arg0])->GetRandom();
-    this->unk4 = ((Names *) &lastNames[arg0])->GetRandom();
+    this->unk0 = firstNames[arg0].GetRandom();
+    this->unk4 = lastNames[arg0].GetRandom();
 }
-#endif
 
 u8 *Names::GetRandom() {
     u8 *temp_r5_90;
@@ -117,7 +117,6 @@ void Names::Init(const char *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'lastNames'
 void Names_DeinitModule() {
     s32 var_r28_228;
     s32 var_r31_230;
@@ -125,13 +124,12 @@ void Names_DeinitModule() {
     var_r28_228 = 5;
     var_r31_230 = 0x28;
     do {
-        ((Names *) (lastNames + var_r31_230))->Deinit();
-        ((Names *) (firstNames + var_r31_230))->Deinit();
+        ((Names *) ((s8 *) lastNames + var_r31_230))->Deinit();
+        ((Names *) ((s8 *) firstNames + var_r31_230))->Deinit();
         var_r28_228 -= 1;
         var_r31_230 -= 8;
     } while (var_r28_228 >= 0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'Str_Printf(signed char *, long)' does not match 'Str_Printf(const char *, ...)'
 void Names_InitModule() {

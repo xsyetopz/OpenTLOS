@@ -337,8 +337,8 @@ void SpyroMoveState::Update() {
     f64 sp58;
     f64 sp50;
     f64 sp48;
-    f64 sp38;
-    f64 sp28;
+    MKVector3 sp38;
+    MKVector3 sp28;
     f32 sp20;
     f64 sp18;
     f32 sp10;
@@ -395,12 +395,12 @@ void SpyroMoveState::Update() {
         this->unk4C *= M2C_FIELD(checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r5_581->unk0), f32 *, 0xD8);
     }
     this->unk10->unk3D2 = 0;
-    ((Spyro *) &sp38)->CalcYawTurnDir(30.0f);
+    sp38 = this->unk10->CalcYawTurnDir(30.0f);
     temp_f2_627 = this->unk4C;
-    temp_f0_630 = sp38 * (f64) temp_f2_627;
+    temp_f0_630 = M2C_BITWISE(f64, sp38) * (f64) temp_f2_627;
     sp18 = temp_f0_630;
     sp68 = temp_f0_630;
-    sp20 = sp40 * temp_f2_627;
+    sp20 = sp38.unk8 * temp_f2_627;
     sp70 = (f64) sp20;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp68), 3800.0f);
     if (this->unk14.GetState() == 2) {
@@ -421,12 +421,12 @@ void SpyroMoveState::Update() {
     } else {
         this->unk10->unk3C0 = 0.0f;
     }
-    ((Spyro *) &sp28)->CalcYawTurnDir(30.0f);
+    sp28 = this->unk10->CalcYawTurnDir(30.0f);
     temp_f2_683 = this->unk4C;
-    temp_f0_686 = sp28 * (f64) temp_f2_683;
+    temp_f0_686 = M2C_BITWISE(f64, sp28) * (f64) temp_f2_683;
     sp8 = temp_f0_686;
     sp58 = temp_f0_686;
-    sp10 = sp30 * temp_f2_683;
+    sp10 = sp28.unk8 * temp_f2_683;
     sp60 = (f64) sp10;
     this->unk10->unk3A8.YawTowards(*((MKVector3 *) &sp58), 30.0f);
     this->unk14.Update(this, 0);
@@ -466,12 +466,11 @@ void SpyroMoveState::Exit() {
     this->unk14.Exit(this);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp20'
 void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
     s32 sp30;
     s32 sp2C;
     s32 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f64 sp10;
     f64 sp8;
     Spyro *temp_r3_835;
@@ -484,9 +483,8 @@ void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
     this->unk14.Init((KDStateMachine<SpyroMoveState>::State *) &SpyroMoveState::states, NULL);
     SelectState(0.0f);
     this->unk50 = arg0.IsMessageOnList(0x176);
-    ((Spyro *) &sp18)->GetJoyDir();
-    this->unk28 = sp18;
-    this->unk30 = sp20;
+    sp18 = this->unk10->GetJoyDir();
+    *(MKVector3 *) &this->unk28 = sp18;
     this->unk54 = 0.0f;
     this->unk51 = 0;
     temp_r3_828 = this->unk10->unk8;
@@ -507,7 +505,6 @@ void SpyroMoveState::Enter(SpyroStateMessages &arg0) {
     temp_r3_856 = this->unk10->unkB70;
     M2C_FIELD(M2C_FIELD(temp_r3_856, void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(temp_r3_856, &sp28);
 }
-#endif
 
 void SpyroMoveState::Deinit() {
     this->unk14.Exit(this);

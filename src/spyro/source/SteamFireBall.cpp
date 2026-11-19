@@ -153,7 +153,6 @@ void SteamFireBall::Collided(MKCollisionResult &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void *SteamFireBall::Update() {
     Matrix sp190;
     Matrix sp150;
@@ -320,7 +319,6 @@ void *SteamFireBall::Update() {
         MKModel_SetPosition(this->unk180, *((MKVector3 *) &sp98));
     }
 }
-#endif
 
 f32 SteamFireBall::Resolve() {
     KDPropEx::Resolve();

@@ -134,13 +134,13 @@ void SiegeTower::Shoot(Targetable *arg0) {
     f64 sp60;
     f64 sp58;
     f64 sp50;
-    MKProp *sp4C;
-    MKProp *sp48;
+    s32 sp4C;
+    s32 sp48;
     f64 sp40;
     f64 sp38;
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -173,10 +173,10 @@ void SiegeTower::Shoot(Targetable *arg0) {
             sp10 = 0.0f;
             sp8 = 0.0f;
             spC = 0.0f;
-            sp4C = NULL;
+            sp4C = 0;
             sp28 = (f64) sp8;
             sp30 = (f64) sp10;
-            sp48 = (MKProp *)7;
+            sp48 = 7;
             sp70 = 1;
             sp74 = this;
             sp50 = (f64) sp8;
@@ -191,16 +191,15 @@ void SiegeTower::Shoot(Targetable *arg0) {
             sp68 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp98 = 0;
             if (this != NULL) {
-                ((MKProp *) &sp18)->GetPos();
-                sp78 = sp18;
-                sp80 = sp20;
+                sp18 = GetPos();
+                *(MKVector3 *) &sp78 = sp18;
             } else {
                 sp78 = 0.0f;
                 (*(f32 *) ((u8 *) &sp74 + 0x8)) = 0.0f;
                 sp80 = 0.0f;
             }
             sp99 = 1;
-            M2C_FIELD(M2C_FIELD(M2C_FIELD(arg0->__vptr, void *(**)(Targetable *), 8)(arg0), void **, 0x44), M2C_UNK (**)(MKProp **), 0x2C)(&sp48);
+            M2C_FIELD(M2C_FIELD(M2C_FIELD(arg0->__vptr, void *(**)(Targetable *), 8)(arg0), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp48);
             KDSound_Play3d(GS_SiegeTowerExtra2, M2C_FIELD(M2C_FIELD(arg0->__vptr, void *(**)(Targetable *), 8)(arg0), s32 *, 8) + 0x30, 0U, -1, 0.0f, 0U);
         }
     }
@@ -412,7 +411,7 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
     if (temp_r4_582 != -1U) {
         MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_582, &spB0);
     } else {
-        sp60.operator*(100.0f);
+        sp60 = ((MKVector3 *) (((u8 *) temp_r5_581) + 0x20))->operator*(100.0f);
         sp10 = spA0 + M2C_BITWISE(f64, sp60);
         sp70 = sp10;
         sp18 = (f32) spA8 + sp60.unk8;
@@ -781,9 +780,9 @@ f32 SiegeTower::Resolve() {
     this->unk1C0.Resolve();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
+#if 0 // DRAFT: illegal explicit conversion from 'void (SiegeTower::*)(MKDynamicBone *, void *)const ' to 'void (*)(MKDynamicBone *, void *)'
 s32 SiegeTower::LoadDone() {
-    f64 sp8;
+    MKVector3 sp8;
     s32 temp_r0_1422;
     s32 var_ctr_1431;
     s32 var_r3_1430;
@@ -794,9 +793,8 @@ s32 SiegeTower::LoadDone() {
     this->unk1C0.LoadDone();
     this->unk324 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "r_ammo");
     temp_r30_1398 = Tools_GetMatchingNodeIndex(this->unk4, "m_p3028_disc");
-    ((Animation *) &sp8)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
-    this->unk1A8 = sp8;
-    this->unk1B0 = sp10;
+    sp8 = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeOrigin((s32) temp_r30_1398);
+    *(MKVector3 *) &this->unk1A8 = sp8;
     MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, (s32) temp_r30_1398), (void (*)(MKDynamicBone *, void *)) &SiegeTower::UpdateTurretBone, &this->unk1A8);
     this->unk1B8 = 0.0f;
     CalcSpikeBeamPositions();

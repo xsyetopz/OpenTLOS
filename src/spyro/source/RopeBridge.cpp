@@ -594,7 +594,7 @@ loop_10:
                 M2C_FIELD(temp_r5_751, f64 *, 0) = (f64) M2C_FIELD(temp_r5_751, f64 *, 0x10);
                 M2C_FIELD(temp_r5_751, f64 *, 8) = (f64) M2C_FIELD(temp_r5_751, f64 *, 0x18);
                 temp_f31_764 = gUpdateTimeDelta;
-                sp1A8.operator*(arg2);
+                sp1A8 = ((MKVector3 *) (((u8 *) this->unk180) + (var_r29_746 + 0x20)))->operator*(arg2);
                 temp_f0_769 = sp1A8 * (f64) temp_f31_764;
                 spB8 = temp_f0_769;
                 sp1B8 = temp_f0_769;
@@ -733,7 +733,7 @@ loop_31:
             sp128 = temp_f0_1075;
             sp20 = M2C_FIELD(temp_r5_1071, f32 *, 0x18) - M2C_FIELD(temp_r5_1071, f32 *, 8);
             sp130 = (f64) sp20;
-            sp138.operator*(1.0f);
+            sp138 = ((MKVector3 *) &sp128)->operator*(1.0f);
             sp58 = sp138 * 5.46558974e-315;
             temp_r0_1093 = var_r29_1067 + 0x20;
             var_r27_1066 += 1;
@@ -755,7 +755,7 @@ loop_35:
         temp_r5_1124 = ((u8 *) this->unk180) + var_r29_1116;
         M2C_FIELD(temp_r5_1124, f64 *, 0) = (f64) M2C_FIELD(temp_r5_1124, f64 *, 0x10);
         M2C_FIELD(temp_r5_1124, f64 *, 8) = (f64) M2C_FIELD(temp_r5_1124, f64 *, 0x18);
-        sp108.operator*(arg2);
+        sp108 = ((MKVector3 *) (((u8 *) this->unk180) + (var_r29_1116 + 0x20)))->operator*(arg2);
         temp_f0_1133 = sp108 * (f64) arg1;
         sp48 = temp_f0_1133;
         sp118 = temp_f0_1133;
@@ -852,7 +852,8 @@ loop_43:
 
 #if 0 // DRAFT: illegal operand
 void RopeBridge::UpdatePlankMatrices() {
-    MKCollisionResult sp330;
+    MKVector3 sp340;
+    M2C_UNK sp330;
     Matrix sp2F0;
     MKVector3 sp2E0;                                /* compiler-managed */
     f32 sp2DC;
@@ -1114,8 +1115,8 @@ loop_40:
         sp2A0 = temp_f5_1546;
         ((Matrix *) &sp2B0)->RotateRoll((Matrix *) &sp2B0, *(this->unk184 + (var_r24_1369 + 8)));
         ((Matrix *) &sp2B0)->Multiply3x3((Matrix *) &sp2B0, &this->unk110);
-        if (((u8) this->unk1A8 != 0) && (MKCollision_SphereCollide(sp2E0, 50.0f, &sp330, 1, (MKCollisionMode) 7, 0x7FFFFFFE) != 0)) {
-            sp1F8.operator*(30.000002f);
+        if (((u8) this->unk1A8 != 0) && (MKCollision_SphereCollide(sp2E0, 50.0f, (MKCollisionResult *) &sp330, 1, (MKCollisionMode) 7, 0x7FFFFFFE) != 0)) {
+            sp1F8 = sp340.operator*(30.000002f);
             temp_f0_1607 = sp2E0 + M2C_BITWISE(f64, sp1F8);
             spA8 = temp_f0_1607;
             sp208 = temp_f0_1607;
@@ -1155,7 +1156,7 @@ loop_40:
             sp198 = temp_f0_1691;
             sp40 = M2C_FIELD(temp_r4_1688, f32 *, 8) + M2C_FIELD(temp_r5_1686, f32 *, 8);
             sp1A0 = (f64) sp40;
-            sp1A8.operator*(0.5f);
+            sp1A8 = ((MKVector3 *) &sp198)->operator*(0.5f);
             temp_f7_1711 = M2C_BITWISE(f32, sp1A8);
             sp2E0.unkC = 1.0f;
             sp88 = this->unk80 + ((sp1A8.unk8 * this->unk70) + ((temp_f7_1711 * this->unk50) + (sp1A8.unk4 * this->unk60)));
@@ -1175,7 +1176,7 @@ loop_40:
             sp168 = temp_f0_1763;
             sp30 = M2C_FIELD(temp_r4_1760, f32 *, 8) + M2C_FIELD(temp_r5_1759, f32 *, 8);
             sp170 = (f64) sp30;
-            sp178.operator*(0.5f);
+            sp178 = ((MKVector3 *) &sp168)->operator*(0.5f);
             temp_f7_1783 = M2C_BITWISE(f32, sp178);
             sp2E0.unkC = 1.0f;
             sp78 = this->unk80 + ((sp178.unk8 * this->unk70) + ((temp_f7_1783 * this->unk50) + (sp178.unk4 * this->unk60)));
@@ -1195,7 +1196,7 @@ loop_40:
             sp138 = temp_f0_1832;
             sp20 = M2C_FIELD(temp_r4_1829, f32 *, 8) + M2C_FIELD(temp_r5_1828, f32 *, 8);
             sp140 = (f64) sp20;
-            sp148.operator*(0.5f);
+            sp148 = ((MKVector3 *) &sp138)->operator*(0.5f);
             temp_f7_1852 = M2C_BITWISE(f32, sp148);
             sp2E0.unkC = 1.0f;
             sp68 = this->unk80 + ((sp148.unk8 * this->unk70) + ((temp_f7_1852 * this->unk50) + (sp148.unk4 * this->unk60)));
@@ -1444,7 +1445,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void *RopeBridge::Update() {
     f64 sp38;
     f64 sp30;
@@ -1550,7 +1550,6 @@ void *RopeBridge::Update() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 f32 RopeBridge::Resolve() {
@@ -1899,8 +1898,8 @@ loop_5:
             var_f3_2915 = temp_f4_2917;
         }
         sp18 = MKVector(0.0f, temp_f1_2925 * (1.0f - temp_f1_2925) * 4.07f * (this->unk178 * var_f3_2915), 0.0f);
-        sp28.operator*((f32) var_r30_2906);
-        sp38.operator/((f32) this->unk188);
+        sp28 = ((MKVector3 *) &this->unk170)->operator*((f32) var_r30_2906);
+        sp38 = sp28.operator/((f32) this->unk188);
         sp8 = sp38 - M2C_BITWISE(f64, sp18);
         temp_r4_2964 = var_r28_2908 + 0x20;
         temp_r5_2966 = var_r28_2908 + 0x30;
@@ -2075,7 +2074,7 @@ void RopeBridge::CalculateTranformationMatrices() {
     M2C_FIELD(this, f64 *, 0x178) = (f64) sp10;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal type
 s32 RopeBridge::LoadDone() {
     f64 sp28;
     f64 sp20;

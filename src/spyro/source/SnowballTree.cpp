@@ -106,7 +106,7 @@ s32 SnowballTree::LoadDone() {
     MKVector3 sp48;
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
@@ -117,12 +117,12 @@ s32 SnowballTree::LoadDone() {
 
     KDProp::LoadDone();
     sp18 = MKVector(0.0f, 600.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     var_r28_232 = 0;
     var_r31_234 = 0;
     M2C_FIELD(this, f64 *, 0xA0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(this, f64 *, 0xA8) = (f64) sp10;

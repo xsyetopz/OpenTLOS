@@ -86,7 +86,7 @@ s32 SpyroTargetList::CompareTargets(const void *arg0, const void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
 void ****SpyroTargetList::UpdateTargetList() {
     Targetable *sp140;
     f64 sp138;
@@ -109,7 +109,7 @@ void ****SpyroTargetList::UpdateTargetList() {
     f64 spB0;
     f64 spA8;
     f64 spA0;
-    HeroInterface sp90;
+    MKVector3 sp90;
     f64 sp88;
     f64 sp80;
     f64 sp78;
@@ -213,7 +213,7 @@ loop_55:
             var_r3_147 = temp_r21_154->IsVisible(*((MKVector3 *) &sp100), M2C_FIELD(*temp_r24_148, f64 (**)(void **, void *, f32), 0x38)(temp_r24_148, M2C_BITWISE(void *, temp_f1_189), (f32) spF8));
         }
         if (((u8) var_r3_147 != 0) && (M2C_FIELD(M2C_FIELD(*temp_r24_148, void *(**)(void **, f32, f64), 8)(temp_r24_148), s32 *, 0x10) & 0x40000)) {
-            temp_r4_219 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), void **, 8);
+            temp_r4_219 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, HeroInterface **, 0)->__vptr, void *(**)(HeroInterface *), 0xC)(M2C_FIELD(&gb, HeroInterface **, 0)), void **, 8);
             temp_f1_222 = M2C_FIELD(temp_r4_219, f64 *, 0x30);
             spB0 = temp_f1_222;
             spB8 = M2C_FIELD(temp_r4_219, f64 *, 0x38);
@@ -317,13 +317,13 @@ loop_55:
             sp18 = (f32) spA8 * var_f4_331;
             sp110 = (f64) sp10;
             sp118 = (f64) sp18;
-            sp90.GetXZDir();
-            if (!((((f32) sp118 * sp98) + (((f32) sp110 * M2C_BITWISE(f32, sp90)) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * sp94))) < 0.25f)) {
+            sp90 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetXZDir();
+            if (!((((f32) sp118 * sp90.unk8) + (((f32) sp110 * M2C_BITWISE(f32, sp90)) + ((*(f32 *) ((u8 *) &sp110 + 0x4)) * sp90.unk4))) < 0.25f)) {
                 temp_r5_460 = M2C_FIELD(M2C_FIELD(*temp_r24_148, void *(**)(void **, f32, f64), 8)(temp_r24_148), void **, 8);
                 temp_f1_463 = M2C_FIELD(temp_r5_460, f64 *, 0x30);
                 sp70 = temp_f1_463;
                 sp78 = M2C_FIELD(temp_r5_460, f64 *, 0x38);
-                temp_r3_471 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, M2C_UNK *, void *, f64), 0xC)(M2C_FIELD(&gb, void ***, 0), &gb, temp_r5_460, temp_f1_463), void **, 8);
+                temp_r3_471 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, HeroInterface **, 0)->__vptr, void *(**)(HeroInterface *, M2C_UNK *, void *, f64), 0xC)(M2C_FIELD(&gb, HeroInterface **, 0), &gb, temp_r5_460, temp_f1_463), void **, 8);
                 sp80 = M2C_FIELD(temp_r3_471, f64 *, 0x30);
                 temp_f4_482 = (*(f32 *) ((u8 *) &sp80 + 0x4)) - (*(f32 *) ((u8 *) &sp70 + 0x4));
                 sp88 = M2C_FIELD(temp_r3_471, f64 *, 0x38);
@@ -486,7 +486,7 @@ void SpyroTargetList::Init(float arg0, unsigned int arg1, bool arg2) {
     SetDefaults();
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpyroStuck::Update() {
     s8 spA1;
     s8 spA0;
@@ -696,29 +696,29 @@ void SpyroLighting::Reset() {
     this->unk24 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void SpyroNodeHelper::SetPYR(const MKVector3 &arg0) {
     f64 spD8;
     f64 spD0;
     M2C_UNK spA0;
-    M2C_UNK sp9C;
     Matrix sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
     f64 sp40;
-    f64 sp30;
+    MKVector3 sp30;
     f64 sp28;
     f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
+    s32 temp_r31_1258;
     s32 temp_r31_1349;
 
     this->unk0 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk8 = M2C_FIELD(&arg0, f64 *, 8);
-    if ((s32) this->unk10 < 0) {
-        M2C_STRUCT_COPY((s32) &sp9C + 4, MKModel_GetWorldMatrix(this->unk14) - 4 + 4, 0x40);
+    temp_r31_1258 = this->unk10;
+    if (temp_r31_1258 < 0) {
+        M2C_STRUCT_COPY((s32) &sp60.unk3C + 4, MKModel_GetWorldMatrix(this->unk14) - 4 + 4, 0x40);
         sp50 = spD0;
         sp58 = spD8;
         ((Matrix *) &spA0)->SetIdentity();
@@ -732,9 +732,8 @@ void SpyroNodeHelper::SetPYR(const MKVector3 &arg0) {
         MKModel_SetWorldMatrix(this->unk14, *((Matrix *) &spA0));
         return;
     }
-    ((Animation *) &sp30)->GetNodeOrigin(MKModel_GetAnimation(this->unk14));
-    sp40 = sp30;
-    sp48 = sp38;
+    sp30 = ((Animation *) (MKModel_GetAnimation(this->unk14)))->GetNodeOrigin(temp_r31_1258);
+    *(MKVector3 *) &sp40 = sp30;
     sp60.SetIdentity();
     sp10 = -(f32) sp40;
     sp14 = -(*(f32 *) ((u8 *) &sp40 + 0x4));
@@ -749,7 +748,6 @@ void SpyroNodeHelper::SetPYR(const MKVector3 &arg0) {
     temp_r31_1349 = this->unk10;
     ((Animation *) (MKModel_GetAnimation(this->unk14)))->SetCustomMatrix(temp_r31_1349, &sp60, (AnimationMatrixPosition) 2, 0U);
 }
-#endif
 
 void SpyroNodeHelper::Init(MKModel *arg0, int arg1) {
     this->unk14 = arg0;

@@ -57,8 +57,10 @@ loop_1:
     return NULL;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
-void SplitPath::GetVelocity(float arg0) {
+#if 0 // DRAFT: identifier 'SplitPath::GetVelocity(float)' redeclared was declared as: 'MKVector3 (float)' now declared as: 'void (float)'
+void SplitPath::GetVelocity(float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     KDUniformSpline sp30;
     f64 sp28;
     f64 sp20;
@@ -69,16 +71,17 @@ void SplitPath::GetVelocity(float arg0) {
     Matrix *temp_r4_62;
     f64 temp_f0_77;
 
-    temp_r4_62 = *((SplitPath *) (M2C_ERROR(/* Read from unset register $r4 */)))->GetPathData(arg0, &spC);
+    temp_r4_62 = *GetPathData(farg0, &spC);
     sp8 = 0.0f;
     sp30.GetMeasure(spC, temp_r4_62, KDSpline_VelocityMixer);
     sp20 = M2C_BITWISE(f64, sp30);
     sp28 = (f64) sp30.unk8;
     temp_f0_77 = sp20 * (f64) sp8;
     sp10 = temp_f0_77;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_77;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_77;
     sp18 = (f32) sp28 * sp8;
-    this->unk8 = (f64) sp18;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    return result;
 }
 #endif
 

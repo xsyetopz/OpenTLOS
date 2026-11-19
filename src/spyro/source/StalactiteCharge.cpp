@@ -246,7 +246,7 @@ void StalactiteCharge::StateSCLerpCameraExit() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp10);
 }
 
-#if 0 // DRAFT: undefined identifier 'spB0'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void StalactiteCharge::StateSCLerpCameraUpdate() {
     s32 sp174;
     KDS_Message_SetCameraSimple sp170;
@@ -265,7 +265,7 @@ void StalactiteCharge::StateSCLerpCameraUpdate() {
     f64 spC8;
     f64 spC0;
     f64 spB8;
-    f64 spA8;
+    MKVector3 spA8;
     f64 spA0;
     f64 sp98;
     f64 sp90;
@@ -351,20 +351,19 @@ void StalactiteCharge::StateSCLerpCameraUpdate() {
     temp_r4_610 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, f32, f32, f32, f32, f32, f64, f64), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_f1_600, (f32) sp100, (f32) spF0, temp_f4_552, 0.33333334f, (f64) sp60, sp58), void **, 8);
     sp98 = M2C_FIELD(temp_r4_610, f64 *, 0x30);
     spA0 = M2C_FIELD(temp_r4_610, f64 *, 0x38);
-    ((KDCamera *) &spA8)->GetHeroTargetPos(*(M2C_FIELD(&gb, MKVector3 **, 0x3B8)));
-    sp108 = spA8;
-    sp110 = spB0;
+    spA8 = ((KDCamera *) (M2C_FIELD(&gb, KDCamera **, 0x3B8)))->GetHeroTargetPos(*((MKVector3 *) &sp98));
+    *(MKVector3 *) &sp108 = spA8;
     sp130.SetLookAt(*((MKVector3 *) &sp118), *((MKVector3 *) &sp108));
     sp174 = 0;
     sp170.Init(sp130);
-    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, MKVector3 **, 0x3B8), void **, 0x44), M2C_UNK (**)(MKVector3 *, KDS_Message_SetCameraSimple *), 0x2C)(M2C_FIELD(&gb, MKVector3 **, 0x3B8), &sp170);
+    M2C_FIELD(M2C_FIELD(&gb, KDCamera **, 0x3B8)->__vptr, M2C_UNK (**)(KDCamera *, KDS_Message_SetCameraSimple *), 0x2C)(M2C_FIELD(&gb, KDCamera **, 0x3B8), &sp170);
     if (this->unkF4 == 3.0f) {
         this->unk50.SetState(this, 2, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void StalactiteCharge::StateSCLerpCameraEnter() {
     s8 sp251;
     u8 sp250;
@@ -384,15 +383,15 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     f64 sp1E8;
     f64 sp1E0;
     f64 sp1D8;
-    HeroInterface sp1C8;
+    MKVector3 sp1C8;
     MKVector3 sp1B8;
     f64 sp1B0;
     f64 sp1A8;
-    HeroInterface sp198;
+    MKVector3 sp198;
     MKVector3 sp188;
     f64 sp180;
     f64 sp178;
-    HeroInterface sp168;
+    MKVector3 sp168;
     f64 sp160;
     f64 sp158;
     f64 sp150;
@@ -480,12 +479,12 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     sp1E0 = temp_f0_706;
     sp20C = 0;
     sp1B8 = KDMath_GetDirection(0.9254072f);
-    sp1C8.GetPos();
+    sp1C8 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
     temp_f5_721 = M2C_BITWISE(f64, sp1C8);
     temp_f3_726 = M2C_BITWISE(f64, sp1B8);
     sp208 = 0x421;
     sp210 = temp_f5_721;
-    sp218 = sp1D0;
+    sp218 = (f64) sp1C8.unk8;
     sp220 = temp_f3_726;
     sp228 = (f64) sp1B8.unk8;
     sp230 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -496,22 +495,22 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     sp251 = 0;
     sp28 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp30 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, f64, f64, f64, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp208, 0x421, M2C_FIELD(&MKVector3::zero, f64 *, 0), (f64) sp1B8.unk8, temp_f3_726, sp1D0, temp_f5_721);
+    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, f64, f64, f64, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp208, 0x421, M2C_FIELD(&MKVector3::zero, f64 *, 0), (f64) sp1B8.unk8, temp_f3_726, (f64) sp1C8.unk8, temp_f5_721);
     if (sp250 != 0) {
         this->unk110 = sp230;
         this->unk118 = sp238;
     } else {
-        sp168.GetPos();
+        sp168 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
         temp_f0_763 = this->unk100 - M2C_BITWISE(f64, sp168);
         sp38 = temp_f0_763;
         sp178 = temp_f0_763;
-        sp40 = (f32) M2C_FIELD(this, f64 *, 0x108) - sp170;
+        sp40 = (f32) M2C_FIELD(this, f64 *, 0x108) - sp168.unk8;
         sp180 = (f64) sp40;
         sp188 = KDMath_GetReflectedVector(*((MKVector3 *) &sp178), MKVector3::up);
-        sp198.GetPos();
+        sp198 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
         sp98 = sp198 + M2C_BITWISE(f64, sp188);
         this->unk110 = sp98;
-        spA0 = sp1A0 + sp188.unk8;
+        spA0 = sp198.unk8 + sp188.unk8;
         sp1A8 = sp98;
         sp1B0 = (f64) spA0;
         this->unk118 = (f64) spA0;
@@ -611,9 +610,9 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
         sp100 = (f64) sp50;
         M2C_FIELD(this, f64 *, 0x128) = (f64) sp50;
     }
-    if (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x64)(M2C_FIELD(&gb, void ***, 0)) == 0) {
+    if (M2C_FIELD(M2C_FIELD(&gb, HeroInterface **, 0)->__vptr, u8 (**)(HeroInterface *), 0x64)(M2C_FIELD(&gb, HeroInterface **, 0)) == 0) {
         this->unk140 = 1;
-        temp_r3_1034 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0));
+        temp_r3_1034 = M2C_FIELD(M2C_FIELD(&gb, HeroInterface **, 0)->__vptr, void *(**)(HeroInterface *), 0xC)(M2C_FIELD(&gb, HeroInterface **, 0));
         sp10 = 0;
         spC = 0xAB;
         M2C_FIELD(M2C_FIELD(temp_r3_1034, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&spC);
@@ -630,7 +629,7 @@ void StalactiteCharge::StateSCDropExit() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8);
 }
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void StalactiteCharge::StateSCDropUpdate() {
     f64 spD0;
     f64 spC8;
@@ -648,7 +647,7 @@ void StalactiteCharge::StateSCDropUpdate() {
     f64 sp68;
     f64 sp60;
     f64 sp58;
-    HeroInterface sp48;
+    MKVector3 sp48;
     f64 sp38;
     f32 sp30;
     f64 sp28;
@@ -708,7 +707,7 @@ void StalactiteCharge::StateSCDropUpdate() {
         this->unkE4 = temp_r3_1164 + 1;
         this->unk4C->DropIndividual((this->unkE0 - 1) - this->unkE4, (this->unkE4 % (s32) (1.0f / (temp_f5_1158 / this->unkD4))) == 0);
     }
-    temp_r3_1199 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), void **, 8);
+    temp_r3_1199 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, HeroInterface **, 0)->__vptr, void *(**)(HeroInterface *), 0xC)(M2C_FIELD(&gb, HeroInterface **, 0)), void **, 8);
     temp_f1_1200 = M2C_FIELD(temp_r3_1199, f64 *, 0x30);
     sp68 = temp_f1_1200;
     sp70 = M2C_FIELD(temp_r3_1199, f64 *, 0x38);
@@ -774,15 +773,15 @@ void StalactiteCharge::StateSCDropUpdate() {
     }
     spAC = 0;
     ((KDSplinePathSegment *) &sp38)->GetPosition(var_f1_1305);
-    sp48.GetPos();
+    sp48 = ((HeroInterface *) (M2C_FIELD(&gb, HeroInterface **, 0)))->GetPos();
     sp18 = sp48 - sp38;
     spA8 = 0x42E;
     spB0 = sp18;
-    sp20 = sp50 - sp40;
+    sp20 = sp48.unk8 - sp40;
     sp58 = sp18;
     spB8 = (f64) sp20;
     sp60 = (f64) sp20;
-    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64, f32), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &spA8, sp18, sp50);
+    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64, f32), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &spA8, sp18, sp48.unk8);
 }
 #endif
 
@@ -1010,7 +1009,7 @@ void StalactiteCharge::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'StalactiteChargeStates'
+#if 0 // DRAFT: ')' expected
 void StalactiteCharge::Init() {
     IceBossStalactiteSpawner *var_r3_1899;
 
