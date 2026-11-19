@@ -93,29 +93,28 @@ void CharacterGraphNodeProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to 'CharacterGraphNode *'
 f32 CharacterGraphNodeProp::Resolve() {
     KDSplinePathSegmentProp *var_r29_147;
-    s32 temp_r0_178;
+    CharacterGraphNodeProp *temp_r4_164;
     s32 temp_r3_155;
-    s32 temp_r3_164;
+    s32 temp_r0_178;
     s32 var_r28_148;
     s32 var_r31_149;
-    void *temp_r30_151;
+    u8 *temp_r30_151;
 
     var_r29_147 = NULL;
     var_r28_148 = 0;
     var_r31_149 = 0;
     do {
-        temp_r30_151 = this + var_r31_149;
+        temp_r30_151 = (u8 *) this + var_r31_149;
         if ((s32) M2C_FIELD(temp_r30_151, s32 *, 0xDC) != 0) {
             temp_r3_155 = M2C_FIELD(temp_r30_151, s32 *, 0xF4);
             if (temp_r3_155 != 0) {
                 var_r29_147 = checked_cast<KDSplinePathSegmentProp *, MKProp>(MKSceneManager::PropResolver_Resolve(temp_r3_155));
             }
-            temp_r3_164 = (long) (checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve(M2C_FIELD(temp_r30_151, s32 *, 0xDC))));
-            if (temp_r3_164 != 0) {
-                this->unk50.Link(temp_r3_164 + 0x50, var_r28_148, (LinkInformation) M2C_FIELD(temp_r30_151, s32 *, 0xA0), var_r29_147);
+            temp_r4_164 = checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve(M2C_FIELD(temp_r30_151, s32 *, 0xDC)));
+            if (temp_r4_164 != NULL) {
+                this->unk50.Link(&temp_r4_164->unk50, var_r28_148, (LinkInformation) M2C_FIELD(temp_r30_151, s32 *, 0xA0), var_r29_147);
             }
         }
         var_r28_148 += 1;
@@ -129,19 +128,11 @@ f32 CharacterGraphNodeProp::Resolve() {
     this->unk50.unk40 = (MKProp *) this;
     this->unk50.unk4C = this->unk14;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 s32 CharacterGraphNodeProp::LoadDone() {
-    f64 sp10;
-    f64 sp8;
-
     MKProp::LoadDone();
-    sp8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40);
-    sp10 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
-    this->unk50.SetPos(&sp8, &MKProp::loadInfo, M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40));
+    this->unk50.SetPos(*(MKVector3 *) ((s8 *) &MKProp::loadInfo + 0x40));
 }
-#endif
 
 s32 CharacterGraphNodeProp::LoadLine(MKIniLine *arg0) {
     s32 sp14;
@@ -246,45 +237,37 @@ void CharacterGraphNode::SendArriveMessage() {
     this->unk38.Send(this->unk40);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'CharacterGraphNode' to 'unsigned long'
 s32 CharacterGraphNode::GetLinkPath(CharacterGraphNode *arg0) {
     s32 var_ctr_606;
     s32 var_r5_605;
+    u32 temp_r0_607;
 
     var_r5_605 = 0;
-    var_ctr_606 = 6;
-loop_1:
-    if (arg0 == (u32) *(this + (var_r5_605 + 0x18))) {
-        return M2C_FIELD((this + var_r5_605), s32 *, 0x68);
+    for (var_ctr_606 = 0; var_ctr_606 < 6; var_ctr_606++) {
+        temp_r0_607 = *(u32 *) ((u8 *) this + var_r5_605 + 0x18);
+        if ((u32) arg0 == temp_r0_607) {
+            return M2C_FIELD(this, s32 *, var_r5_605 + 0x68);
+        }
+        var_r5_605 += 4;
     }
-    var_r5_605 += 4;
-    var_ctr_606 -= 1;
-    if (var_ctr_606 == 0) {
-        return 0;
-    }
-    goto loop_1;
+    return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'CharacterGraphNode' to 'unsigned long'
 s32 CharacterGraphNode::GetLinkInfo(CharacterGraphNode *arg0) {
     s32 var_ctr_627;
     s32 var_r5_626;
+    u32 temp_r0_628;
 
     var_r5_626 = 0;
-    var_ctr_627 = 6;
-loop_1:
-    if (arg0 == (u32) *(this + (var_r5_626 + 0x18))) {
-        return M2C_FIELD((this + var_r5_626), s32 *, 0x50);
+    for (var_ctr_627 = 0; var_ctr_627 < 6; var_ctr_627++) {
+        temp_r0_628 = *(u32 *) ((u8 *) this + var_r5_626 + 0x18);
+        if ((u32) arg0 == temp_r0_628) {
+            return M2C_FIELD(this, s32 *, var_r5_626 + 0x50);
+        }
+        var_r5_626 += 4;
     }
-    var_r5_626 += 4;
-    var_ctr_627 -= 1;
-    if (var_ctr_627 == 0) {
-        return -1;
-    }
-    goto loop_1;
+    return -1;
 }
-#endif
 
 CharacterGraphNode *CharacterGraphNode::GetNextNode() {
     s32 var_r31_657;
@@ -305,7 +288,6 @@ block_5:
     return NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNode' to 'KDGraphNode *'
 CharacterGraphNode *CharacterGraphNode::GetRandomLink(int arg0) {
     CharacterGraphNode *var_r31_690;
     KDGraphNode *temp_r3_707;
@@ -314,22 +296,16 @@ CharacterGraphNode *CharacterGraphNode::GetRandomLink(int arg0) {
 
     var_r31_690 = this;
     var_r30_691 = 0;
-loop_5:
-    if ((var_r30_691 < arg0) && (var_r31_690->GetNumLinks() != 0)) {
+    while ((var_r30_691 < arg0) && (var_r31_690->GetNumLinks() != 0)) {
         var_r3_697 = MKRand_Int((int *) &gViewSeed, 0, 5);
-loop_3:
-        temp_r3_707 = *(var_r31_690 + ((var_r3_697 * 4) + 0x18));
-        if (temp_r3_707 == NULL) {
+        while ((temp_r3_707 = *(KDGraphNode **) ((u8 *) var_r31_690 + ((var_r3_697 * 4) + 0x18))) == NULL) {
             var_r3_697 = MKRand_Int((int *) &gViewSeed, 0, 6);
-            goto loop_3;
         }
         var_r31_690 = checked_cast<CharacterGraphNode *, KDGraphNode>(temp_r3_707);
         var_r30_691 += 1;
-        goto loop_5;
     }
     return var_r31_690;
 }
-#endif
 
 CharacterGraphNode *CharacterGraphNode::GetLink(int arg0) const {
     if ((arg0 >= 0) && (arg0 < 6)) {
@@ -338,58 +314,48 @@ CharacterGraphNode *CharacterGraphNode::GetLink(int arg0) const {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'const CharacterGraphNode' to 'unsigned long'
 s32 CharacterGraphNode::IsLinked(CharacterGraphNode *arg0) const {
     s32 var_ctr_761;
     s32 var_r5_760;
+    u32 temp_r0_762;
 
     var_r5_760 = 0;
-    var_ctr_761 = 6;
-loop_1:
-    if ((u32) *(this + (var_r5_760 + 0x18)) == arg0) {
-        return 1;
+    for (var_ctr_761 = 0; var_ctr_761 < 6; var_ctr_761++) {
+        temp_r0_762 = *(u32 *) ((u8 *) this + var_r5_760 + 0x18);
+        if (temp_r0_762 == (u32) arg0) {
+            return 1;
+        }
+        var_r5_760 += 4;
     }
-    var_r5_760 += 4;
-    var_ctr_761 -= 1;
-    if (var_ctr_761 == 0) {
-        return 0;
-    }
-    goto loop_1;
+    return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'CharacterGraphNode' to 'unsigned long'
 s32 CharacterGraphNode::Link(CharacterGraphNode *arg0, int arg1, LinkInformation arg2, KDSplinePathSegmentProp *arg3) {
     s32 var_ctr_784;
     s32 var_r5_783;
     s32 var_r8_782;
-    void *temp_r5_790;
-    void *temp_r8_806;
+    u8 *temp_r5_790;
+    u8 *temp_r8_806;
 
     if (arg1 == -1) {
         var_r8_782 = 0;
         var_r5_783 = 0;
-        var_ctr_784 = 6;
-loop_2:
-        if ((u32) *(this + (var_r5_783 + 0x18)) == 0U) {
-            temp_r5_790 = this + var_r5_783;
-            M2C_FIELD(temp_r5_790, CharacterGraphNode **, 0x18) = arg0;
-            M2C_FIELD(temp_r5_790, s32 *, 0x50) = (s32) arg2;
-            M2C_FIELD(temp_r5_790, KDSplinePathSegmentProp **, 0x68) = arg3;
-            this->unk30 += 1;
-            return var_r8_782;
+        for (var_ctr_784 = 6; var_ctr_784 != 0; var_ctr_784 -= 1) {
+            if (*(u32 *) ((u8 *) this + var_r5_783 + 0x18) == 0) {
+                temp_r5_790 = (u8 *) this + var_r5_783;
+                M2C_FIELD(temp_r5_790, CharacterGraphNode **, 0x18) = arg0;
+                M2C_FIELD(temp_r5_790, s32 *, 0x50) = (s32) arg2;
+                M2C_FIELD(temp_r5_790, KDSplinePathSegmentProp **, 0x68) = arg3;
+                this->unk30 += 1;
+                return var_r8_782;
+            }
+            var_r8_782 += 1;
+            var_r5_783 += 4;
         }
-        var_r8_782 += 1;
-        var_r5_783 += 4;
-        var_ctr_784 -= 1;
-        if (var_ctr_784 == 0) {
-            /* Duplicate return node #8. Try simplifying control flow for better match */
-            return -1;
-        }
-        goto loop_2;
+        return -1;
     }
-    temp_r8_806 = this + (arg1 * 4);
-    if ((CharacterGraphNode *) M2C_FIELD(temp_r8_806, CharacterGraphNode **, 0x18) == NULL) {
+    temp_r8_806 = (u8 *) this + (arg1 * 4);
+    if (M2C_FIELD(temp_r8_806, u32 *, 0x18) == 0) {
         M2C_FIELD(temp_r8_806, CharacterGraphNode **, 0x18) = arg0;
         M2C_FIELD(temp_r8_806, s32 *, 0x50) = (s32) arg2;
         M2C_FIELD(temp_r8_806, KDSplinePathSegmentProp **, 0x68) = arg3;
@@ -398,7 +364,6 @@ loop_2:
     }
     return -1;
 }
-#endif
 
 void CharacterGraphNode::Init() {
     s32 var_ctr_837;
