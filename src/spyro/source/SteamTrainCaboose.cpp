@@ -102,36 +102,34 @@ extern void **gb;
 #endif
 extern void *gpTranslation_StringArray;
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void TrainChaseSpawnPool::Destroy(Enemy *arg0) {
-    s32 spC;
-    s32 sp8;
+    s32 sp8[2];
     Enemy ***temp_r3_80;
     Enemy ***var_r31_59;
     Enemy **temp_r3_93;
     Enemy **temp_r4_83;
 
     var_r31_59 = this->unk0;
-loop_4:
-    if ((var_r31_59 == NULL) || (temp_r3_93 = *var_r31_59, ((temp_r3_93 == NULL) != 0))) {
-        return;
+    while (var_r31_59 != NULL) {
+        temp_r3_93 = *var_r31_59;
+        if (temp_r3_93 == NULL) {
+            return;
+        }
+        if (*temp_r3_93 == arg0) {
+            sp8[1] = 0;
+            sp8[0] = 0x15F;
+            arg0->Message((MKMessage *) sp8);
+            arg0->Disable();
+            temp_r3_80 = this->unk0;
+            this->unk0 = temp_r3_80 + 1;
+            temp_r4_83 = *temp_r3_80;
+            *temp_r3_80 = *var_r31_59;
+            *var_r31_59 = temp_r4_83;
+            return;
+        }
+        var_r31_59 += 1;
     }
-    if ((Enemy *) *temp_r3_93 == arg0) {
-        spC = 0;
-        sp8 = 0x15F;
-        arg0->Message(&sp8);
-        arg0->Disable();
-        temp_r3_80 = this->unk0;
-        this->unk0 = temp_r3_80 + 4;
-        temp_r4_83 = *temp_r3_80;
-        *temp_r3_80 = *var_r31_59;
-        *var_r31_59 = temp_r4_83;
-        return;
-    }
-    var_r31_59 += 4;
-    goto loop_4;
 }
-#endif
 
 Enemy *TrainChaseSpawnPool::Create() {
     Enemy ***temp_r4_107;
@@ -162,11 +160,10 @@ void TrainChaseSpawnPool::Action(SpawnAction arg0, int arg1, MKProp **arg2, Spaw
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'Enemy **' and 'Enemy ***'
 void TrainChaseSpawnPool::Deinit() {
     Enemy ***var_r31_169;
-    Enemy ***var_r3_170;
     Enemy ***var_r4_168;
+    Enemy ***var_r3_170;
     Enemy **temp_r0_173;
     Enemy **temp_r0_192;
     u32 temp_r0_178;
@@ -176,22 +173,22 @@ void TrainChaseSpawnPool::Deinit() {
     var_r3_170 = var_r4_168;
 loop_3:
     temp_r0_178 = M2C_FIELD(var_r3_170, u32 *, -4);
-    var_r3_170 -= 4;
+    var_r3_170 -= 1;
     if (temp_r0_178 != 0U) {
         temp_r0_173 = *var_r3_170;
-        if (temp_r0_173 < var_r31_169) {
+        if ((u32) temp_r0_173 < (u32) var_r31_169) {
             var_r31_169 = (Enemy ***) temp_r0_173;
         }
         goto loop_3;
     }
-    if (var_r3_170 != &gEmptyPtrListDL) {
+    if ((void *) var_r3_170 != (void *) &gEmptyPtrListDL) {
 loop_9:
         temp_r0_192 = *var_r4_168;
         if (temp_r0_192 != NULL) {
-            if (temp_r0_192 < var_r31_169) {
+            if ((u32) temp_r0_192 < (u32) var_r31_169) {
                 var_r31_169 = (Enemy ***) temp_r0_192;
             }
-            var_r4_168 += 4;
+            var_r4_168 += 1;
             goto loop_9;
         }
         if (MKHeap::Current() != NULL) {
@@ -201,9 +198,8 @@ loop_9:
         }
     }
     this->unk0 = NULL;
-    *TrainChaseSpawnPool::pInstance = 0;
+    *(u32 *) TrainChaseSpawnPool::pInstance = 0;
 }
-#endif
 
 void TrainChaseSpawnPool::Init() {
     Enemy ***temp_r3_249;
@@ -260,51 +256,28 @@ void SteamTrainCaboose::Enable() {
     EnemyHud_Modified((MKProp *) this, temp_f1_322, temp_f1_322, 50.0f);
 }
 
-#if 0 // DRAFT: identifier 'SteamTrainCaboose::GetVel()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
-void SteamTrainCaboose::GetVel() {
+MKVector3 SteamTrainCaboose::GetVel() {
     MKVector3 result;
-    MKVector3 *sret = &result;
-    f64 sp40;
-    f64 sp38;
-    f32 sp30;
-    f64 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
     SteamTrain *temp_r3_345;
-    f32 temp_f3_349;
-    f64 temp_f0_365;
-    void *temp_r3_376;
     void *temp_r4_348;
+    f32 temp_f3_349;
+    void *temp_r3_376;
 
     temp_r3_345 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkD0));
     if (temp_r3_345 != NULL) {
         temp_r4_348 = this->unk8;
         temp_f3_349 = temp_r3_345->unk108;
-        sp8 = -M2C_FIELD(temp_r4_348, f32 *, 0x20);
-        spC = -M2C_FIELD(temp_r4_348, f32 *, 0x24);
-        sp10 = -M2C_FIELD(temp_r4_348, f32 *, 0x28);
-        sp38 = (f64) sp8;
-        sp40 = (f64) sp10;
-        temp_f0_365 = sp38 * (f64) temp_f3_349;
-        sp28 = temp_f0_365;
-        M2C_FIELD(sret, f64 *, 0) = temp_f0_365;
-        sp30 = (f32) sp40 * temp_f3_349;
-        M2C_FIELD(sret, f64 *, 8) = (f64) sp30;
+        result.unk0 = -M2C_FIELD(temp_r4_348, f32 *, 0x20) * temp_f3_349;
+        result.unk4 = -M2C_FIELD(temp_r4_348, f32 *, 0x24) * temp_f3_349;
+        result.unk8 = -M2C_FIELD(temp_r4_348, f32 *, 0x28) * temp_f3_349;
         return result;
     }
     temp_r3_376 = this->unk8;
-    sp18 = -M2C_FIELD(temp_r3_376, f32 *, 0x20);
-    sp1C = -M2C_FIELD(temp_r3_376, f32 *, 0x24);
-    sp20 = -M2C_FIELD(temp_r3_376, f32 *, 0x28);
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp18;
-    M2C_FIELD(sret, f64 *, 8) = (f64) sp20;
+    result.unk0 = -M2C_FIELD(temp_r3_376, f32 *, 0x20);
+    result.unk4 = -M2C_FIELD(temp_r3_376, f32 *, 0x24);
+    result.unk8 = -M2C_FIELD(temp_r3_376, f32 *, 0x28);
     return result;
 }
-#endif
 
 void SteamTrainCaboose::SetState(SteamTrainCabooseState arg0) {
     this->unkC8 = (s32) arg0;
@@ -931,9 +904,8 @@ s32 SteamTrainCaboose::LoadLine(MKIniLine *arg0) {
     return var_r31_1539;
 }
 
-#if 0 // DRAFT: illegal operand
 void SteamTrainCaboose::Deinit() {
-    if ((u32) M2C_FIELD(&gb, u32 *, 0x360) == this) {
+    if (M2C_FIELD(&gb, u32 *, 0x360) == (u32) this) {
         M2C_FIELD(&gb, u32 *, 0x360) = 0U;
         EnemyHud_Modified(NULL, 0.0f, 0.0f, 0.0f);
     }
@@ -944,7 +916,6 @@ void SteamTrainCaboose::Deinit() {
     this->unkE0.Deinit();
     GameProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'void (TrainChaseSpawnPool::*)(SpawnAction, int, MKProp **, SpawnerObject *)const ' to 'void (*)(SpawnAction, long, MKProp **, 
 void SteamTrainCaboose::Init() {
@@ -959,13 +930,11 @@ void SteamTrainCaboose::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void SteamTrainCabooseDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("idle");
+    M2C_FIELD(this, void **, 0xE4) = ((MKAnimScript *) this->unk34)->GetAnim("idle");
     this->unkE8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("idle"));
     this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("flinch"));
     this->unkF0 = (long) (((MKAnimScript *) this->unk34)->GetAnim("crash"));
     this->unkF4 = (long) (checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3")));
 }
-#endif
