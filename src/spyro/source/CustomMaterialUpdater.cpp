@@ -1,0 +1,251 @@
+#include "spyro/source/CustomMaterialUpdater.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/Matrix.h"
+#include <m2c_macros.h>
+
+M2C_UNK free(CustomMaterialUpdater **);             /* extern */
+CustomMaterialUpdater **malloc(M2C_UNK);            /* extern */
+extern M2C_UNK gEmptyPtrListDL;
+extern M2C_UNK gb;
+
+#if 0 // DRAFT: undefined identifier 'arg_sp50'
+void CustomMaterialUpdateManager::UpdateCameraRelativeScroll(CustomMaterialUpdater *arg0) {
+    CustomMaterialUpdater **temp_r7_20;
+    f32 temp_f2_54;
+    f32 temp_f2_69;
+    f64 temp_f5_23;
+    f64 temp_f6_22;
+    void *temp_r3_21;
+    temp_r7_20 = arg0->unk8;
+    temp_r3_21 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
+    temp_f6_22 = M2C_FIELD(temp_r3_21, f64 *, 0x30);
+    temp_f5_23 = M2C_FIELD(temp_r3_21, f64 *, 0x38);
+    arg_sp50 = temp_f6_22;
+    arg_sp58 = temp_f5_23;
+    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r7, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    M2C_FIELD(temp_r7_20, f64 *, 0) = temp_f6_22;
+    arg_sp40 = arg_sp20;
+    arg_sp28 = (f32) arg_sp58 - M2C_FIELD(temp_r7_20, f32 *, 8);
+    M2C_FIELD(temp_r7_20, f32 *, 8) = temp_f5_23;
+    arg_sp48 = (f64) arg_sp28;
+    M2C_FIELD(temp_r7_20, f32 *, 0x14) = (f32) ((((f32) arg_sp40 / 10000.0f) * M2C_FIELD(temp_r7_20, f32 *, 0x10)) + M2C_FIELD(temp_r7_20, f32 *, 0x14));
+    M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) -((((f32) arg_sp48 / 10000.0f) * M2C_FIELD(temp_r7_20, f32 *, 0x10)) - M2C_FIELD(temp_r7_20, f32 *, 0x18));
+    temp_f2_54 = M2C_FIELD(temp_r7_20, f32 *, 0x14);
+    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    if (temp_f2_54 == 5.0f) {
+        M2C_FIELD(temp_r7_20, f32 *, 0x14) = (f32) (temp_f2_54 - 5.0f);
+    } else {
+        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+        if (temp_f2_54 == -5.0f) {
+            M2C_FIELD(temp_r7_20, f32 *, 0x14) = (f32) (temp_f2_54 + 5.0f);
+        }
+    }
+    temp_f2_69 = M2C_FIELD(temp_r7_20, f32 *, 0x18);
+    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    if (temp_f2_69 == 5.0f) {
+        M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) (temp_f2_69 - 5.0f);
+    } else {
+        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+        if (temp_f2_69 == -5.0f) {
+            M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) (temp_f2_69 + 5.0f);
+        }
+    }
+    M2C_STRUCT_COPY((s32) &arg_sp5C + 4, (s32) (&identity - 4) + 4, 0x40);
+    arg_sp10 = M2C_FIELD(temp_r7_20, f32 *, 0x14);
+    arg_sp14 = M2C_FIELD(temp_r7_20, f32 *, 0x18);
+    arg_sp18 = 0.0f;
+    arg_sp30 = (f64) arg_sp10;
+    arg_sp38 = (f64) arg_sp18;
+    arg_sp90 = (f32) arg_sp30;
+    arg_sp94 = arg_sp34;
+    arg_sp98 = (f32) arg_sp38;
+    arg_sp9C = 1.0f;
+    MKMaterial_SetTextureMatrix(arg0->unk0, (Matrix *) &arg_sp60);
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+void CustomMaterialUpdateManager::Destroy(CustomMaterialUpdater *arg0) {
+    CustomMaterialUpdater **temp_r31_134;
+    CustomMaterialUpdater **temp_r3_158;
+    CustomMaterialUpdater **var_r4_153;
+    CustomMaterialUpdater *temp_r0_169;
+    CustomMaterialUpdater *temp_r5_161;
+    MKHeap *temp_r3_137;
+
+    temp_r31_134 = arg0->unk8;
+    if (temp_r31_134 != NULL) {
+        temp_r3_137 = MKHeap::Current();
+        if (temp_r3_137 != NULL) {
+            ((MKHeap *) (temp_r3_137->Current()))->Free(temp_r31_134, NULL, 0);
+        } else {
+            free(temp_r31_134);
+        }
+        arg0->unk8 = NULL;
+    }
+    var_r4_153 = this->unk0;
+loop_9:
+    temp_r0_169 = *var_r4_153;
+    if (temp_r0_169 == NULL) {
+        return;
+    }
+    if (temp_r0_169 == arg0) {
+        temp_r3_158 = this->unk0;
+        this->unk0 = temp_r3_158 + 4;
+        temp_r5_161 = *temp_r3_158;
+        *temp_r3_158 = *var_r4_153;
+        *var_r4_153 = temp_r5_161;
+        return;
+    }
+    var_r4_153 += 4;
+    goto loop_9;
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+CustomMaterialUpdater *CustomMaterialUpdateManager::Create(MKMaterial *arg0, int arg1) {
+    f64 sp10;
+    f64 sp8;
+    CustomMaterialUpdater **temp_r4_220;
+    CustomMaterialUpdater **temp_r6_187;
+    CustomMaterialUpdater **temp_r6_194;
+    CustomMaterialUpdater **var_r3_210;
+    CustomMaterialUpdater *temp_r31_197;
+    MKHeap *temp_r3_203;
+    f64 temp_f0_228;
+    f64 temp_f1_227;
+    void *temp_r3_226;
+
+    temp_r6_187 = this->unk0;
+    if ((u32) M2C_FIELD(temp_r6_187, u32 *, -4) == 0U) {
+        return NULL;
+    }
+    temp_r6_194 = temp_r6_187 - 4;
+    this->unk0 = temp_r6_194;
+    temp_r31_197 = *temp_r6_194;
+    temp_r31_197->unk0 = arg0;
+    temp_r31_197->unk4 = arg1;
+    if (arg1 != 0) {
+
+    } else {
+        temp_r3_203 = MKHeap::Current();
+        if (temp_r3_203 != NULL) {
+            var_r3_210 = ((MKHeap *) (temp_r3_203->Current()))->Alloc(0x20, NULL, 0);
+        } else {
+            var_r3_210 = malloc(0x20);
+        }
+        temp_r31_197->unk8 = var_r3_210;
+        temp_r4_220 = temp_r31_197->unk8;
+        M2C_FIELD(temp_r4_220, f32 *, 0x10) = 0.75f;
+        M2C_FIELD(temp_r4_220, f32 *, 0x14) = 0.0f;
+        M2C_FIELD(temp_r4_220, f32 *, 0x18) = 0.0f;
+        temp_r3_226 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
+        temp_f1_227 = M2C_FIELD(temp_r3_226, f64 *, 0x30);
+        temp_f0_228 = M2C_FIELD(temp_r3_226, f64 *, 0x38);
+        sp8 = temp_f1_227;
+        M2C_FIELD(temp_r4_220, f64 *, 0) = temp_f1_227;
+        sp10 = temp_f0_228;
+        M2C_FIELD(temp_r4_220, f64 *, 8) = temp_f0_228;
+    }
+    return temp_r31_197;
+}
+#endif
+
+#if 0 // DRAFT: type mismatch
+void CustomMaterialUpdateManager::Deinit() {
+    CustomMaterialUpdater **var_r31_252;
+    CustomMaterialUpdater **var_r3_253;
+    CustomMaterialUpdater **var_r4_251;
+    CustomMaterialUpdater *temp_r0_256;
+    CustomMaterialUpdater *temp_r0_275;
+    MKHeap *temp_r3_278;
+    u32 temp_r0_261;
+
+    var_r4_251 = this->unk0;
+    var_r31_252 = var_r4_251;
+    var_r3_253 = var_r4_251;
+loop_3:
+    temp_r0_261 = M2C_FIELD(var_r3_253, u32 *, -4);
+    var_r3_253 -= 4;
+    if (temp_r0_261 != 0U) {
+        temp_r0_256 = *var_r3_253;
+        if (temp_r0_256 < var_r31_252) {
+            var_r31_252 = (CustomMaterialUpdater **) temp_r0_256;
+        }
+        goto loop_3;
+    }
+    if (var_r3_253 != &gEmptyPtrListDL) {
+loop_9:
+        temp_r0_275 = *var_r4_251;
+        if (temp_r0_275 != NULL) {
+            if (temp_r0_275 < var_r31_252) {
+                var_r31_252 = (CustomMaterialUpdater **) temp_r0_275;
+            }
+            var_r4_251 += 4;
+            goto loop_9;
+        }
+        temp_r3_278 = var_r3_253->Current();
+        if (temp_r3_278 != NULL) {
+            ((MKHeap *) (temp_r3_278->Current()))->Free(var_r31_252, NULL, 0);
+        } else {
+            free(var_r31_252);
+        }
+    }
+    this->unk0 = NULL;
+}
+#endif
+
+void CustomMaterialUpdateManager::Update() {
+    CustomMaterialUpdater **var_r31_308;
+    CustomMaterialUpdater *temp_r4_323;
+
+    var_r31_308 = this->unk0;
+loop_5:
+    if (var_r31_308 != NULL) {
+        temp_r4_323 = *var_r31_308;
+        if (temp_r4_323 != NULL) {
+            if ((s32) temp_r4_323->unk4 != 0) {
+
+            } else {
+                UpdateCameraRelativeScroll(temp_r4_323);
+            }
+            var_r31_308 += 4;
+            goto loop_5;
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal use of non-static member
+void CustomMaterialUpdateManager::Init() {
+    CustomMaterialUpdater **temp_r3_364;
+    CustomMaterialUpdater **temp_r3_370;
+    CustomMaterialUpdater **var_r3_349;
+    CustomMaterialUpdater **var_r5_358;
+    MKHeap *temp_r3_342;
+    s32 var_ctr_362;
+
+    temp_r3_342 = MKHeap::Current();
+    if (temp_r3_342 != NULL) {
+        var_r3_349 = ((MKHeap *) (temp_r3_342->Current()))->Alloc(0x58, NULL, 0);
+    } else {
+        var_r3_349 = malloc(0x58);
+    }
+    this->unk0 = var_r3_349;
+    var_r5_358 = this->unk0;
+    this->unk0 = var_r5_358 + 0x3C;
+    M2C_FIELD(var_r5_358, s32 *, 0x3C) = 0;
+    var_ctr_362 = 5;
+    do {
+        temp_r3_364 = this->unk0;
+        this->unk0 = temp_r3_364 + 4;
+        M2C_FIELD(temp_r3_364, CustomMaterialUpdater ***, 4) = var_r5_358;
+        var_r5_358 += 0xC;
+        var_ctr_362 -= 1;
+    } while (var_ctr_362 != 0);
+    temp_r3_370 = this->unk0;
+    this->unk0 = temp_r3_370 + 4;
+    M2C_FIELD(temp_r3_370, CustomMaterialUpdater ***, 4) = NULL;
+}
+#endif

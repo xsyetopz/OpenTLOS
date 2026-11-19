@@ -1,0 +1,193 @@
+#include "spyro/source/Door.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKProp.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Trap.h"
+#include "unplaced_templates.h"
+#include "spyro/source/PropFlags.h"
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'DoorStates'
+static s8 lit_stringBase0[0x31] = {
+    0x43,
+    0x6C,
+    0x6F,
+    0x73,
+    0x65,
+    0x64,
+    0,
+    0x4F,
+    0x70,
+    0x65,
+    0x6E,
+    0x69,
+    0x6E,
+    0x67,
+    0,
+    0x4F,
+    0x70,
+    0x65,
+    0x6E,
+    0,
+    0x43,
+    0x6C,
+    0x6F,
+    0x73,
+    0x69,
+    0x6E,
+    0x67,
+    0,
+    0x64,
+    0x69,
+    0x73,
+    0x61,
+    0x62,
+    0x6C,
+    0x65,
+    0x43,
+    0x6F,
+    0x6C,
+    0x6C,
+    0x69,
+    0x64,
+    0x65,
+    0x4F,
+    0x6E,
+    0x4F,
+    0x70,
+    0x65,
+    0x6E,
+    0,
+}; /* const */
+
+void Door::SetState(DoorStates arg0) {
+    this->unkE0 = (s32) arg0;
+    this->unk80->SetAnim(M2C_FIELD((checked_cast<DoorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unkE0 * 4)), MKAnim **, 0xE4), 1.0f, 0.0f, 0, -1);
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'long' to
+void Door::Message(MKMessage *arg0) {
+    s32 temp_r0_46;
+
+    temp_r0_46 = arg0->unk0;
+    switch (temp_r0_46) {                           /* irregular */
+    case 0xB5:
+        this->unkE0 = 1;
+        break;
+    case 0xBB:
+        this->unkE0 = 2;
+        SetState((DoorStates) this->unkE0);
+        break;
+    case 0xBC:
+        this->unkE0 = 0;
+        SetState((DoorStates) this->unkE0);
+        break;
+    case 0xB4:
+        this->unkE0 = 3;
+        break;
+    }
+    Trap::Message(arg0);
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
+void Door::Reset() {
+    Trap::Reset();
+    SetState((DoorStates) 0);
+    this->unkE0 = this->unkE0;
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'long' to
+void Door::Update() {
+    s32 temp_r0_123;
+    s32 temp_r4_136;
+    s32 temp_r4_160;
+
+    GameProp::Update();
+    if (this->unk10 & 0x20000) {
+        temp_r0_123 = this->unkE0;
+        switch (temp_r0_123) {                      /* irregular */
+        case 0:
+            temp_r4_136 = this->unkE0;
+            if (temp_r4_136 == 1) {
+                SetState((DoorStates) temp_r4_136);
+                return;
+            }
+            break;
+        case 1:
+            if (this->unk80->unk2C & 1) {
+                if ((u8) M2C_FIELD(checked_cast<DoorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0xF4) != 0) {
+                    this->unk70.unk4 = 0;
+                }
+                SetState((DoorStates) 2);
+                return;
+            }
+            break;
+        case 2:
+            temp_r4_160 = this->unkE0;
+            if (temp_r4_160 == 3) {
+                SetState((DoorStates) temp_r4_160);
+                return;
+            }
+            break;
+        case 3:
+            if (this->unk80->unk2C & 1) {
+                if ((u8) M2C_FIELD(checked_cast<DoorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0xF4) != 0) {
+                    this->unk70.unk4 = 1;
+                }
+                SetState((DoorStates) 0);
+            }
+            break;
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
+void Door::Init() {
+    Trap::Init();
+    PropFlagsSet((u32 *) &this->unk10, 0x80000U);
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+void DoorDescriptor::LoadDone() {
+    GamePropDescriptor::LoadDone();
+    this->unkE4 = this->unk34->GetAnim(lit_stringBase0);
+    this->unkE8 = this->unk34->GetAnim(&lit_stringBase0[7]);
+    this->unkEC = this->unk34->GetAnim(&lit_stringBase0[0xF]);
+    this->unkF0 = this->unk34->GetAnim(&lit_stringBase0[0x14]);
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+s32 DoorDescriptor::LoadLine(MKIniLine *arg0) {
+    u8 sp8;
+
+    if (GamePropDescriptor::LoadLine(arg0) != 0) {
+        return 1;
+    }
+    if (arg0->LoadBool(&lit_stringBase0[0x1C], &sp8, 0) != 0) {
+        this->unkF4 = sp8;
+        return 1;
+    }
+    return 0;
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+void DoorDescriptor::Init() {
+    TrapDescriptor::Init();
+    this->unkF4 = 0;
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<DoorDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
+
+}
+#endif

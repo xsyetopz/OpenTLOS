@@ -1,0 +1,325 @@
+#include "spyro/source/Enemies_Convex.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/ConvexTier2Goals.h"
+#include "spyro/source/ConvexTier3Goals.h"
+#include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyDescriptor.h"
+#include "unplaced_templates.h"
+#include "common/Source/MKModel.h"
+#include <m2c_macros.h>
+
+extern void **gMK;
+
+void ConvexTier3::Message(MKMessage *arg0) {
+    Enemy::Message(arg0);
+}
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+void ConvexTier3::UpdateMovementCustom() {
+    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x68)();
+}
+#endif
+
+void ConvexTier3::Update() {
+    Enemy::Update();
+}
+
+void ConvexTier3::Despawn(bool arg0) {
+    Enemy::Despawn(arg0);
+}
+
+#if 0 // DRAFT: identifier 'ConvexTier3::Spawn(const Matrix *, SpawnPointRef *)'
+void ConvexTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
+    Enemy::Spawn(arg0, arg1);
+}
+#endif
+
+void ConvexTier3::UpdateCollisionItems() {
+
+}
+
+void ConvexTier3::SetupCollision() {
+
+}
+
+void ConvexTier3::Deinit() {
+    Enemy::Deinit();
+}
+
+#if 0 // DRAFT: illegal type
+void ConvexTier3::Resolve() {
+    f64 sp20;
+    f64 sp18;
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+    ModelCloth *temp_r3_143;
+    s32 var_r29_147;
+    s32 var_r31_148;
+
+    Enemy::Resolve();
+    temp_r3_143 = MKModel_GetCloth(this->unk4);
+    if (temp_r3_143 != NULL) {
+        var_r29_147 = 0;
+        var_r31_148 = 0;
+loop_3:
+        if (var_r29_147 < (s32) temp_r3_143->unk4) {
+            sp10 = 0.0f;
+            sp8 = 0.0f;
+            spC = 0.0f;
+            sp20 = (f64) sp10;
+            sp18 = (f64) sp8;
+            ((MKCloth *) (temp_r3_143->unk8 + var_r31_148))->SetForce(0, *((MKVector3 *) &sp18), -1);
+            var_r29_147 += 1;
+            var_r31_148 += 0xF8;
+            goto loop_3;
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+void ConvexTier3::Init() {
+    ConvexTier3Goal_Think *temp_r31_193;
+
+    Enemy::Init();
+    operator new(0x3CU, NULL, 0);
+    temp_r31_193 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (temp_r31_193 != NULL) {
+        temp_r31_193->__vptr = &__vt__12Goal<5Enemy>;
+        temp_r31_193->unk4 = 0;
+        temp_r31_193->unk8 = 1;
+        temp_r31_193->unk9 = 0;
+        temp_r31_193->unkC = NULL;
+        temp_r31_193->__vptr = &__vt__21CompositeGoal<5Enemy>;
+        temp_r31_193->unk1C = NULL;
+        temp_r31_193->unk18 = 0;
+        temp_r31_193->unk10 = 0;
+        temp_r31_193->unk14 = 0;
+        temp_r31_193->__vptr = &__vt;
+    }
+    temp_r31_193->Init((Enemy *) this);
+    this->unk110.unk92C = temp_r31_193;
+}
+#endif
+
+void ConvexTier3Descriptor::Deinit() {
+    EnemyDescriptor::Deinit();
+}
+
+void ConvexTier3Descriptor::Init() {
+    EnemyDescriptor::Init();
+}
+
+void ConvexTier2::Message(MKMessage *arg0) {
+    Enemy::Message(arg0);
+}
+
+#if 0 // DRAFT: undefined identifier '__vt'
+void ConvexTier2::UpdateMovementCustom() {
+    M2C_UNK *sp44;
+    f32 sp40;
+    s8 sp3C;
+    f32 sp38;
+    s32 sp34;
+    s8 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    s32 sp1C;
+    s32 sp18;
+    f64 sp8;
+    void *temp_r6_300;
+
+    sp44 = &__vt;
+    sp18 = 0x30;
+    sp1C = 0;
+    sp44 = &__vt;
+    sp20 = 0.0f;
+    sp24 = 0.0f;
+    sp28 = 0.0f;
+    sp30 = 0;
+    sp34 = -1;
+    sp38 = 0.0f;
+    sp3C = 0;
+    sp40 = 0.0f;
+    sp18 = 0x31;
+    this->unk110.unk440 = (MKMessage *) &sp18;
+    UpdateRotation();
+    UpdateVelocity();
+    temp_r6_300 = this->unk110.unk530;
+    if (((temp_r6_300 != NULL) && (((u8) M2C_FIELD(temp_r6_300, u8 *, 0x464) >> 7U) & 1)) || (((u8) this->unk110.unk5A5 >> 1U) & 1)) {
+
+    }
+    sp8.Update((u8) &this->unk110.unk478);
+    this->unk100 = sp8;
+    this->unk108 = sp10;
+    UpdateModel(sp8);
+}
+#endif
+
+void ConvexTier2::Update() {
+    Enemy::Update();
+}
+
+void ConvexTier2::Despawn(bool arg0) {
+    Enemy::Despawn(arg0);
+}
+
+#if 0 // DRAFT: undefined identifier 'unk478'
+s32 ConvexTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
+    if (Enemy::Spawn(arg0, arg1) != 0) {
+        SetupEnemyRegion(this->unk110.unk478, 3000.0f);
+        return 1;
+    }
+    return 0;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'sp18'
+void ConvexTier2::UpdateCollisionItems() {
+    f64 sp60;
+    f64 sp58;
+    MKVector3 sp48;
+    f64 sp40;
+    f64 sp38;
+    MKVector3 sp28;
+    f32 sp20;
+    f32 sp10;
+
+    sp48.operator*(200.0f);
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    this->unk60 = sp18;
+    sp20 = this->unk110.unk478.unk8 + sp48.unk8;
+    sp58 = sp18;
+    sp60 = (f64) sp20;
+    this->unk68 = (f64) sp20;
+    sp28.operator*(1000.0f);
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    this->unk70 = sp8;
+    sp10 = this->unk110.unk478.unk8 - sp28.unk8;
+    sp38 = sp8;
+    sp40 = (f64) sp10;
+    this->unk78 = (f64) sp10;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+void ConvexTier2::SetupCollision() {
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+    f32 temp_f31_480;
+    void *temp_r31_457;
+
+    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x80)();
+    temp_r31_457 = checked_cast<ConvexTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    sp8 = 1.0f;
+    spC = 1.0f;
+    sp10 = 1.0f;
+    sp14 = 1.0f;
+    sp18 = 1.0f;
+    sp1C = 1.0f;
+    sp20 = 1.0f;
+    sp24 = 1.0f;
+    sp28 = (f64) sp8;
+    sp30 = (f64) sp10;
+    sp38 = (f64) sp18;
+    sp40 = (f64) sp20;
+    temp_f31_480 = GetCollisionRadius((f64) sp18, (f64) sp10, (f64) sp8);
+    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddCapsule((MKVector3 *) &this->unk60, (MKVector3 *) &this->unk70, temp_f31_480, *((MKVector4 *) &sp38), *((MKVector4 *) &sp28), (MKCollisionMode) 2, this->unk110.unk524, M2C_FIELD(temp_r31_457, u32 *, 0x70));
+}
+#endif
+
+void ConvexTier2::Deinit() {
+    Enemy::Deinit();
+}
+
+#if 0 // DRAFT: illegal type
+void ConvexTier2::Resolve() {
+    f64 sp20;
+    f64 sp18;
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+    ModelCloth *temp_r3_528;
+    s32 var_r29_532;
+    s32 var_r31_533;
+
+    Enemy::Resolve();
+    temp_r3_528 = MKModel_GetCloth(this->unk4);
+    if (temp_r3_528 != NULL) {
+        var_r29_532 = 0;
+        var_r31_533 = 0;
+loop_3:
+        if (var_r29_532 < (s32) temp_r3_528->unk4) {
+            sp10 = 0.0f;
+            sp8 = 0.0f;
+            spC = 0.0f;
+            sp20 = (f64) sp10;
+            sp18 = (f64) sp8;
+            ((MKCloth *) (temp_r3_528->unk8 + var_r31_533))->SetForce(0, *((MKVector3 *) &sp18), -1);
+            var_r29_532 += 1;
+            var_r31_533 += 0xF8;
+            goto loop_3;
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+void ConvexTier2::Init() {
+    ConvexTier2Goal_Think *temp_r31_578;
+
+    Enemy::Init();
+    operator new(0x40U, NULL, 0);
+    temp_r31_578 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (temp_r31_578 != NULL) {
+        temp_r31_578->__vptr = &__vt__12Goal<5Enemy>;
+        temp_r31_578->unk4 = 0;
+        temp_r31_578->unk8 = 1;
+        temp_r31_578->unk9 = 0;
+        temp_r31_578->unkC = NULL;
+        temp_r31_578->__vptr = &__vt__21CompositeGoal<5Enemy>;
+        temp_r31_578->unk1C = NULL;
+        temp_r31_578->unk18 = 0;
+        temp_r31_578->unk10 = 0;
+        temp_r31_578->unk14 = 0;
+        temp_r31_578->__vptr = &__vt;
+    }
+    temp_r31_578->Init((Enemy *) this);
+    this->unk110.unk92C = (ConvexTier3Goal_Think *) temp_r31_578;
+}
+#endif
+
+void ConvexTier2Descriptor::Deinit() {
+    EnemyDescriptor::Deinit();
+}
+
+void ConvexTier2Descriptor::Init() {
+    EnemyDescriptor::Init();
+    this->unkD0 = 0.0f;
+}
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<ConvexTier2Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
+
+}
+#endif

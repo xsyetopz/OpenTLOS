@@ -1,0 +1,417 @@
+#include "spyro/source/DartTrap.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
+#include "spyro/source/Game.h"
+#include "spyro/source/KDProp.h"
+#include "unplaced_templates.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKModel.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/Tools.h"
+#include <m2c_macros.h>
+
+extern s32 GS_DartTrapFire;
+extern f32 gUpdateTimeDelta;
+extern GameGlobals gb;
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+static s8 *pDartTrapAnimEvents = lit_stringBase0;
+#endif
+
+static s8 lit_stringBase0[0x48] = {
+    0x46,
+    0x69,
+    0x72,
+    0x65,
+    0,
+    0x72,
+    0x5F,
+    0x72,
+    0x65,
+    0x66,
+    0,
+    0x53,
+    0x70,
+    0x65,
+    0x65,
+    0x64,
+    0x4D,
+    0x75,
+    0x6C,
+    0x74,
+    0x69,
+    0x70,
+    0x6C,
+    0x69,
+    0x65,
+    0x72,
+    0,
+    0x4F,
+    0x6E,
+    0x54,
+    0x69,
+    0x6D,
+    0x65,
+    0,
+    0x4F,
+    0x66,
+    0x66,
+    0x54,
+    0x69,
+    0x6D,
+    0x65,
+    0,
+    0x4F,
+    0x6E,
+    0x65,
+    0x53,
+    0x68,
+    0x6F,
+    0x74,
+    0,
+    0x49,
+    0x64,
+    0x6C,
+    0x65,
+    0,
+    0x4F,
+    0x70,
+    0x65,
+    0x6E,
+    0,
+    0x53,
+    0x68,
+    0x6F,
+    0x6F,
+    0x74,
+    0,
+    0x43,
+    0x6C,
+    0x6F,
+    0x73,
+    0x65,
+    0,
+}; /* const */
+
+void DartTrap::SetState(int arg0) {
+    if ((s32) this->unk94 != arg0) {
+        this->unk94 = arg0;
+    }
+}
+
+void DartTrap::SetAnim(int arg0) {
+    this->unk80->SetAnim(M2C_FIELD((checked_cast<DartTrapDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (arg0 * 4)), MKAnim **, 0x70), this->unkA0, 0.0f, 0, -1);
+}
+
+#if 0 // DRAFT: pointer/array required
+void DartTrap::Shoot() {
+    MKCollisionResult spC0;
+    MKVector3 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;                                       /* compiler-managed */
+    f64 sp90;                                       /* compiler-managed */
+    f64 sp88;
+    f64 sp80;
+    MKVector3 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp38;
+    f32 sp28;
+    f32 sp18;
+    f32 sp8;
+    f32 var_f4_140;
+    f32 var_f4_207;
+    f64 temp_f1_146;
+    f64 temp_f1_152;
+    f64 temp_f1_156;
+    s32 temp_r3_175;
+    s32 var_r0_185;
+    void *temp_r3_100;
+    void *temp_r3_107;
+    void *temp_r3_118;
+    void *temp_r3_271;
+    void *temp_r3_290;
+    void *temp_r3_91;
+
+    temp_r3_91 = this->unk90;
+    if (temp_r3_91 != NULL) {
+        M2C_FIELD(temp_r3_91, s32 *, 0x130) = 0;
+    }
+    this->unk90 = 0xE->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */));
+    temp_r3_100 = this->unk90;
+    if (temp_r3_100 != NULL) {
+        M2C_FIELD(M2C_FIELD(temp_r3_100, void **, 0x44), M2C_UNK (**)(), 0x20)();
+        temp_r3_107 = this->unk90;
+        M2C_FIELD(M2C_FIELD(temp_r3_107, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r3_107);
+        M2C_FIELD(this->unk90, DartTrap **, 0x130) = this;
+        MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk98, &spB0);
+        temp_r3_118 = this->unk8;
+        sp40 = -M2C_FIELD(temp_r3_118, f32 *, 0x20);
+        sp44 = -M2C_FIELD(temp_r3_118, f32 *, 0x24);
+        sp48 = -M2C_FIELD(temp_r3_118, f32 *, 0x28);
+        sp90 = (f64) sp40;
+        sp98 = (f64) sp48;
+        var_f4_140 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (unksp94 * unksp94));
+        if (var_f4_140 > 0.000001f) {
+            if (var_f4_140 > 0.0f) {
+                temp_f1_146 = __frsqrte(var_f4_140);
+                temp_f1_152 = 0.5 * temp_f1_146 * -(((f64) var_f4_140 * (temp_f1_146 * temp_f1_146)) - 3.0);
+                temp_f1_156 = 0.5 * temp_f1_152 * -(((f64) var_f4_140 * (temp_f1_152 * temp_f1_152)) - 3.0);
+                var_f4_140 = (f32) ((f64) var_f4_140 * (0.5 * temp_f1_156 * -(((f64) var_f4_140 * (temp_f1_156 * temp_f1_156)) - 3.0)));
+            } else if (var_f4_140 < M2C_BITWISE(f32, 0.0)) {
+                var_f4_140 = __float_nan;
+            } else {
+                sp8 = var_f4_140;
+                temp_r3_175 = M2C_BITWISE(s32, sp8) & 0x7F800000;
+                switch (temp_r3_175) {              /* irregular */
+                case 0x7F800000:
+                    if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                        var_r0_185 = 1;
+                    } else {
+                        var_r0_185 = 2;
+                    }
+                    break;
+                case 0x0:
+                    if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                        var_r0_185 = 5;
+                    } else {
+                        var_r0_185 = 3;
+                    }
+                    break;
+                default:
+                    var_r0_185 = 4;
+                    break;
+                }
+                if (var_r0_185 == 1) {
+                    var_f4_140 = __float_nan;
+                }
+            }
+            var_f4_207 = 1.0f / var_f4_140;
+        } else {
+            var_f4_207 = 0.0f;
+        }
+        sp90 = (f32) sp90 * var_f4_207;
+        unksp94 *= var_f4_207;
+        sp98 = (f32) sp98 * var_f4_207;
+        sp70.operator*(2000.0f);
+        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp80 = sp20;
+        sp28 = spB0.unk8 + sp70.unk8;
+        spA0 = sp20;
+        sp88 = (f64) sp28;
+        spA8 = (f64) sp28;
+        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp60 = sp10;
+        sp18 = sp98 * 100.0f;
+        sp68 = (f64) sp18;
+        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        spB0.unk8 += (f32) sp68;
+        if (MKCollision_RayCollide(spB0, *((MKVector3 *) &spA0), &spC0, (MKCollisionMode) 7, 0) != 0) {
+            spA0 = M2C_BITWISE(f64, spC0);
+            spA8 = (f64) spC0.unk8;
+        }
+        temp_r3_271 = this->unk90;
+        M2C_FIELD(M2C_FIELD(temp_r3_271, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *, f64 *, DartTrap *, M2C_UNK, M2C_UNK, f32), 0x4C)(temp_r3_271, &spB0, &spA0, this, 0, 0, 2000.0f);
+        KDSound_Play3d(GS_DartTrapFire, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        temp_r3_290 = this->unk90;
+        M2C_FIELD(M2C_FIELD(temp_r3_290, void **, 0x44), M2C_UNK (**)(void *), 0x24)(temp_r3_290);
+        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp50 = sp30;
+        sp38 = sp98 * 300.0f;
+        sp58 = (f64) sp38;
+        gb.EmitDust(spB0, *((MKVector3 *) &sp50), 1.0f, 0.0f);
+    }
+}
+#endif
+
+void DartTrap::Deinit() {
+    void *temp_r4_331;
+
+    temp_r4_331 = this->unk90;
+    if (temp_r4_331 != NULL) {
+        M2C_FIELD(temp_r4_331, s32 *, 0x130) = 0;
+        this->unk90 = NULL;
+    }
+    KDProp::Deinit();
+}
+
+void DartTrap::Message(MKMessage *arg0) {
+    s32 temp_r0_354;
+
+    temp_r0_354 = arg0->unk0;
+    switch (temp_r0_354) {                          /* irregular */
+    case 0xB5:
+        SetState(1);
+        SetAnim(1);
+        break;
+    case 0xB4:
+        if ((s32) this->unk94 != 0) {
+            SetState(0);
+            SetAnim(3);
+        }
+        break;
+    }
+    KDProp::Message(arg0);
+}
+
+#if 0 // DRAFT: illegal type
+void DartTrap::Update() {
+    s32 temp_r0_401;
+
+    KDProp::Update();
+    this->unkAC -= gUpdateTimeDelta;
+    temp_r0_401 = this->unk94;
+    switch (temp_r0_401) {                          /* irregular */
+    case 0:
+        break;
+    case 1:
+        if (this->unk80->unk2C & 1) {
+            SetState(2);
+            SetAnim(2);
+            this->unkAC = this->unkA4;
+            this->unk9C = 0.0f;
+        }
+        break;
+    case 2:
+        this->unk9C -= gUpdateTimeDelta;
+        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+        if ((this->unk9C == 0.0f) && (this->unk80->unk2C & 1)) {
+            SetAnim(2);
+            this->unk9C = 1.0f / this->unkA0;
+        }
+        if (this->unk80->CheckEvent(0) != 0) {
+            Shoot();
+        }
+        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+        if (this->unkAC == 0.0f) {
+            SetState(3);
+            SetAnim(3);
+            this->unkAC = this->unkA8;
+        }
+        break;
+    case 3:
+        if (this->unk80->unk2C & 1) {
+            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+            if (this->unkAC == 0.0f) {
+                if ((u8) this->unkB0 != 0) {
+                    SetState(0);
+                    SetAnim(0);
+                } else {
+                    SetState(1);
+                    SetAnim(1);
+                    this->unkAC = this->unkA4;
+                }
+            }
+        }
+        break;
+    }
+    KDSound_Play3d(this->unk80, this->unk8 + 0x30, 0U, 0.0f, 0U);
+}
+#endif
+
+#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
+void DartTrap::LoadDone() {
+    KDProp::LoadDone();
+    this->unk98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 5);
+    this->unk80->InitEvents(&pDartTrapAnimEvents);
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+s32 DartTrap::LoadLine(MKIniLine *arg0) {
+    s32 var_r31_552;
+
+    var_r31_552 = 0;
+    if ((KDProp::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0xB, &this->unkA0, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x1B, &this->unkA4, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x22, &this->unkA8, 0) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x2A, &this->unkB0, 0) != 0)) {
+        var_r31_552 = 1;
+    }
+    return var_r31_552;
+}
+#endif
+
+void DartTrap::Init() {
+    KDProp::Init();
+    this->unk90 = NULL;
+    this->unk94 = 0;
+    this->unk9C = 0.0f;
+    this->unkAC = 0.0f;
+    this->unkA4 = 1.0f;
+    this->unkA8 = 1.0f;
+    this->unkB0 = 0;
+}
+
+#if 0 // DRAFT: expression syntax error
+void DartTrapDescriptor::LoadDone() {
+    s8 *temp_r30_638;
+    s8 *temp_r30_658;
+    s8 *temp_r30_676;
+    s8 *temp_r30_694;
+    void *var_r3_650;
+    void *var_r3_668;
+    void *var_r3_686;
+    void *var_r3_704;
+
+    KDPropDescriptor::LoadDone();
+    temp_r30_638 = this->unk34;
+    if (temp_r30_638->Exists(lit_stringBase0 + 0x32) != 0) {
+        var_r3_650 = temp_r30_638->GetAnim(lit_stringBase0 + 0x32);
+    } else {
+        var_r3_650 = NULL;
+    }
+    this->unk70 = (s32) var_r3_650;
+    temp_r30_658 = this->unk34;
+    if (temp_r30_658->Exists(lit_stringBase0 + 0x37) != 0) {
+        var_r3_668 = temp_r30_658->GetAnim(lit_stringBase0 + 0x37);
+    } else {
+        var_r3_668 = NULL;
+    }
+    this->unk74 = (s32) var_r3_668;
+    temp_r30_676 = this->unk34;
+    if (temp_r30_676->Exists(lit_stringBase0 + 0x3C) != 0) {
+        var_r3_686 = temp_r30_676->GetAnim(lit_stringBase0 + 0x3C);
+    } else {
+        var_r3_686 = NULL;
+    }
+    this->unk78 = (s32) var_r3_686;
+    temp_r30_694 = this->unk34;
+    if (temp_r30_694->Exists(lit_stringBase0 + 0x42) != 0) {
+        var_r3_704 = temp_r30_694->GetAnim(lit_stringBase0 + 0x42);
+    } else {
+        var_r3_704 = NULL;
+    }
+    this->unk7C = (s32) var_r3_704;
+}
+#endif
+
+#if 0 // DRAFT: illegal operand
+void DartTrapDescriptor::Init() {
+    s32 temp_r0_731;
+    s32 var_ctr_729;
+    s32 var_r3_726;
+
+    KDPropDescriptor::Init();
+    var_r3_726 = 0;
+    var_ctr_729 = 4;
+    do {
+        temp_r0_731 = var_r3_726 + 0x70;
+        var_r3_726 += 4;
+        *(this + temp_r0_731) = 0;
+        var_ctr_729 -= 1;
+    } while (var_ctr_729 != 0);
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<DartTrapDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
+
+}
+#endif
