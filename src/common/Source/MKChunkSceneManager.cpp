@@ -15,29 +15,6 @@ M2C_UNK __construct_array(void *, MKProp *(*)(MKProp *), MKProp *(*)(MKProp *, s
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(s32);                                    /* extern */
 s32 stricmp(s8 *, s8 *);                            /* extern */
-static s8 lit_stringBase0[0x15] = {
-    0x65,
-    0x6E,
-    0x67,
-    0x69,
-    0x6E,
-    0x65,
-    0x63,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x25,
-    0x64,
-    0,
-}; /* const */
 
 void MKChunkSceneManager::PostDrawWater() {
     s32 temp_r0_29;
@@ -759,14 +736,14 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: type mismatch
 void MKChunkSceneManager::Update() {
     s32 temp_r0_1327;
     s32 var_r30_1321;
     s32 var_r31_1322;
     void *temp_r29_1326;
 
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x90)();
+    CalculateUpdateDistances();
     var_r30_1321 = 0;
     var_r31_1322 = 0;
 loop_5:
@@ -945,7 +922,7 @@ void MKChunkSceneManager::Init(MKSceneManagerInit *arg0) {
     s8 *phi_r4_18;
 
     MKSceneManager::Init(arg0);
-    if (((MKLevelChunk **) arg0->unk34 == (MKLevelChunk **)2) || (System_GetCommandLineParameter(lit_stringBase0, 0U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) {
+    if (((MKLevelChunk **) arg0->unk34 == (MKLevelChunk **)2) || (System_GetCommandLineParameter("enginechunks", 0U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) {
         bChunksUseHeaps = 0;
     } else {
         bChunksUseHeaps = 1;
@@ -988,7 +965,7 @@ void MKChunkSceneManager::Init(MKSceneManagerInit *arg0) {
     var_r31_1649 = 0;
     var_r28_1650 = 0;
     var_r27_1651 = 0;
-    phi_r4_18 = lit_stringBase0;
+    phi_r4_18 = "enginechunks";
 loop_18:
     if (var_r31_1649 < (MKLevelChunk **) this->unkEC) {
         temp_r25_1654 = arg0 + var_r27_1651;
@@ -998,7 +975,7 @@ loop_18:
         temp_r5_1663 = this->unkE8;
         *(temp_r5_1663 + var_r28_1650) = temp_ret_1662;
         temp_r3_1672 = *(this->unkE8 + var_r28_1650);
-        M2C_FIELD(M2C_FIELD(temp_r3_1672, void **, 8), M2C_UNK (**)(void *, s32, s32, s32, s32, s8 *), 0xC)(temp_r3_1672, M2C_FIELD(temp_r25_1654, s32 *, 0x3C), M2C_FIELD(temp_r25_1654, s32 *, 0x40), M2C_FIELD(temp_r25_1654, s32 *, 0x48), M2C_FIELD(temp_r25_1654, s32 *, 0x44), Str_Printf(&lit_stringBase0[0xD], var_r31_1649, temp_r5_1663, M2C_BITWISE(f32, temp_ret_1662)));
+        M2C_FIELD(M2C_FIELD(temp_r3_1672, void **, 8), M2C_UNK (**)(void *, s32, s32, s32, s32, s8 *), 0xC)(temp_r3_1672, M2C_FIELD(temp_r25_1654, s32 *, 0x3C), M2C_FIELD(temp_r25_1654, s32 *, 0x40), M2C_FIELD(temp_r25_1654, s32 *, 0x48), M2C_FIELD(temp_r25_1654, s32 *, 0x44), Str_Printf("Chunk%d", var_r31_1649, temp_r5_1663, M2C_BITWISE(f32, temp_ret_1662)));
         SetWorkingChunk(*(this->unkE8 + var_r28_1650));
         temp_r3_1689 = *(this->unkE8 + var_r28_1650);
         M2C_FIELD(M2C_FIELD(temp_r3_1689, void **, 8), M2C_UNK (**)(void *, u8 *), 0x54)(temp_r3_1689, &sp8);

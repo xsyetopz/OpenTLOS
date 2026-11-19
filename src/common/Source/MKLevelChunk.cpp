@@ -24,90 +24,6 @@ extern void **gMK;
 extern MKHeap gMKDefaults;
 #if 0 // DRAFT: illegal use of abstract class ('MKLevelChunk::SetActivePoint(const
 static MKLevelChunk idCounter__12MKLevelChunk;      /* type too large by 0x14C; unable to generate initializer: confusing struct layout */
-static s8 lit_stringBase0[0x52] = {
-    0x73,
-    0x66,
-    0x78,
-    0x5F,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0,
-    0x2E,
-    0x67,
-    0x73,
-    0x62,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0x2E,
-    0x62,
-    0x6E,
-    0x69,
-    0,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0,
-    0x73,
-    0x66,
-    0x78,
-    0x5F,
-    0x25,
-    0x73,
-    0,
-    0x63,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0,
-    0x6C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0,
-    0x6F,
-    0x76,
-    0x65,
-    0x72,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x2E,
-    0x6D,
-    0x64,
-    0x6C,
-    0,
-    0x67,
-    0x72,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x66,
-    0x66,
-    0x74,
-    0x77,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0,
-}; /* const */
 
 s32 MKLevelChunk::Update_AppLocked() {
     s32 var_r5_43;
@@ -311,8 +227,8 @@ s32 MKLevelChunk::Update_LoadSound() {
 
     var_r30_446 = 0;
     sp8 = -1;
-    temp_r3_451 = Str_Printf(lit_stringBase0, &this->unk14.unkAC, &lit_stringBase0[9]);
-    if (((s32) M2C_FIELD(this, s32 *, 0x130) == -1) || (MKArchive_Exists(temp_r3_451, NULL) == 0) || (this->unk138 & 0x40000) || (System_GetCommandLineParameter(&lit_stringBase0[0xE], 1U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) != 0)) || (Sound_IsBankLoaded(&sp8) != 0)) {
+    temp_r3_451 = Str_Printf("sfx_%s%s", &this->unk14.unkAC, ".gsb");
+    if (((s32) M2C_FIELD(this, s32 *, 0x130) == -1) || (MKArchive_Exists(temp_r3_451, NULL) == 0) || (this->unk138 & 0x40000) || (System_GetCommandLineParameter("sound", 1U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) != 0)) || (Sound_IsBankLoaded(&sp8) != 0)) {
         if ((s32) M2C_FIELD(this, s32 *, 0x130) == -2) {
             M2C_FIELD(this, s32 *, 0x130) = sp8;
         }
@@ -320,7 +236,7 @@ s32 MKLevelChunk::Update_LoadSound() {
         this->unk138 = temp_r3_482;
         bPackageSystemInUse = 1;
         temp_r3_482->ActivateTempMemOverride();
-        temp_r3_497 = MKPackage_QLoadDynamic(Str_Printf(&lit_stringBase0[0x14], &this->unk14.unkAC, gMKDefaults.unk28, lit_stringBase0), 0, NULL);
+        temp_r3_497 = MKPackage_QLoadDynamic(Str_Printf("%s%s.bni", &this->unk14.unkAC, gMKDefaults.unk28, "sfx_%s%s"), 0, NULL);
         this->unk10 = temp_r3_497;
         temp_r3_497->DeactivateTempMemOverride();
         var_r30_446 = 2;
@@ -342,7 +258,7 @@ s32 MKLevelChunk::Update_LoadingIni() {
             var_r31_520 = 0xA;
         } else {
             temp_r3_529->ActivateTempMemOverride();
-            ((MKHeap *) (((MKIni *) (M2C_BITWISE(MKIni *, this->unk14.unk74)))->Init(Str_Printf(&lit_stringBase0[0x1D], &this->unk14.unkAC, gMKDefaults.unk28, lit_stringBase0), 4, NULL)))->DeactivateTempMemOverride();
+            ((MKHeap *) (((MKIni *) (M2C_BITWISE(MKIni *, this->unk14.unk74)))->Init(Str_Printf("%s%s", &this->unk14.unkAC, gMKDefaults.unk28, "sfx_%s%s"), 4, NULL)))->DeactivateTempMemOverride();
             this->unk138 |= 0x20000;
             MKPackage_QFree(this->unk10);
             bPackageSystemInUse = 0U;
@@ -395,10 +311,10 @@ s32 MKLevelChunk::Update_Unloaded() {
         this->unk14.unkCC = 0;
         var_r31_605 = 3;
         this->unk138 |= 0x400;
-        temp_ret_669 = Str_Printf(&lit_stringBase0[0x22], &this->unk14.unkAC, temp_f1_656);
+        temp_ret_669 = Str_Printf("sfx_%s", &this->unk14.unkAC, temp_f1_656);
         temp_r3_669 = temp_ret_669;
-        if (MKArchive_Exists(Str_Printf(&lit_stringBase0[0x1D], temp_r3_669, &lit_stringBase0[9], M2C_BITWISE(f32, temp_ret_669)), NULL) != 0) {
-            System_GetCommandLineParameter(&lit_stringBase0[0xE], 1U);
+        if (MKArchive_Exists(Str_Printf("%s%s", temp_r3_669, ".gsb", M2C_BITWISE(f32, temp_ret_669)), NULL) != 0) {
+            System_GetCommandLineParameter("sound", 1U);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 temp_r5_689 = M2C_FIELD(this, s32 *, 0x130);
                 if (temp_r5_689 > -1) {
@@ -634,8 +550,8 @@ loop_21:
             temp_r26_1031 = var_r25_1016->GetFieldName();
             var_r27_1022 = var_r25_1016->GetSectionName();
             var_r25_1016->AsString(0, &sp10);
-            if ((temp_r26_1031 == NULL) || (stricmp(temp_r26_1031, &lit_stringBase0[0x29]) != 0) || (sp10 == NULL) || (stricmp(&this->unk14.unkAC) != 0)) {
-                if ((temp_r26_1031 != NULL) && (stricmp(temp_r26_1031, &lit_stringBase0[0x2F]) == 0) && (sp10 != NULL) && (stricmp(&this->unk14.unk8C) == 0)) {
+            if ((temp_r26_1031 == NULL) || (stricmp(temp_r26_1031, "chunk") != 0) || (sp10 == NULL) || (stricmp(&this->unk14.unkAC) != 0)) {
+                if ((temp_r26_1031 != NULL) && (stricmp(temp_r26_1031, "level") == 0) && (sp10 != NULL) && (stricmp(&this->unk14.unk8C) == 0)) {
                     var_r25_1016 = var_r25_1016->unkC->GetSubLine(var_r25_1016);
                     goto loop_21;
                 }
@@ -655,13 +571,13 @@ loop_34:
             if ((var_r25_1109 != NULL) && (var_r25_1109->GetSectionName() == NULL)) {
                 if (var_r25_1109->GetFieldName() != NULL) {
                     ((MKChunkSceneManager *) (var_r25_1109->GetFieldName()))->StripExtension((s8 *)0x5F, M2C_ERROR(/* Read from unset register $r5 */));
-                    if (stricmp(&lit_stringBase0[0x35]) == 0) {
+                    if (stricmp("overlay") == 0) {
                         temp_r26_1137 = var_r25_1109->GetString(0);
                         temp_r27_1141 = var_r25_1109->GetInt(1);
                         var_r28_1143 = temp_r26_1137;
-                        temp_ret_1146 = strstr(temp_r26_1137, &lit_stringBase0[0x3D]);
+                        temp_ret_1146 = strstr(temp_r26_1137, ".mdl");
                         if (temp_ret_1146 == 0U) {
-                            var_r28_1143 = Str_Printf(&lit_stringBase0[0x1D], temp_r26_1137, &lit_stringBase0[0x3D], M2C_BITWISE(f32, temp_ret_1146));
+                            var_r28_1143 = Str_Printf("%s%s", temp_r26_1137, ".mdl", M2C_BITWISE(f32, temp_ret_1146));
                         }
                         if (MKArchive_Exists((s8 *) var_r28_1143, NULL) != 0) {
                             M2C_FIELD(this->unk8, M2C_UNK (**)(MKLevelChunk *, MKChunkSceneManager *, s32), 0x64)(this, temp_r26_1137->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */)), temp_r27_1141);
@@ -705,8 +621,8 @@ loop_57:
             temp_r23_1250 = var_r24_1235->GetFieldName();
             var_r25_1241 = var_r24_1235->GetSectionName();
             var_r24_1235->AsString(0, &spC);
-            if ((temp_r23_1250 == NULL) || (stricmp(temp_r23_1250, &lit_stringBase0[0x29]) != 0) || (spC == NULL) || (stricmp(&this->unk14.unkAC) != 0)) {
-                if ((temp_r23_1250 != NULL) && (stricmp(temp_r23_1250, &lit_stringBase0[0x2F]) == 0) && (spC != NULL) && (stricmp(&this->unk14.unk8C) == 0)) {
+            if ((temp_r23_1250 == NULL) || (stricmp(temp_r23_1250, "chunk") != 0) || (spC == NULL) || (stricmp(&this->unk14.unkAC) != 0)) {
+                if ((temp_r23_1250 != NULL) && (stricmp(temp_r23_1250, "level") == 0) && (spC != NULL) && (stricmp(&this->unk14.unk8C) == 0)) {
                     var_r24_1235 = var_r24_1235->unkC->GetSubLine(var_r24_1235);
                     goto loop_57;
                 }
@@ -726,7 +642,7 @@ loop_67:
             if ((var_r25_1328 != NULL) && (var_r25_1328->GetSectionName() == NULL)) {
                 if (var_r25_1328->GetFieldName() != NULL) {
                     var_r25_1328->GetFieldName();
-                    if (stricmp(&lit_stringBase0[0x42]) == 0) {
+                    if (stricmp("ground") == 0) {
                         temp_r23_1350 = var_r3_1206 + var_r28_1233;
                         strcpy(temp_r23_1350, ((MKChunkSceneManager *) (var_r25_1328->GetString(0)))->StripExtension((s8 *)0x2E, M2C_ERROR(/* Read from unset register $r5 */)));
                         *(var_r3_1223 + var_r27_1232) = temp_r23_1350;
@@ -774,8 +690,8 @@ loop_93:
             temp_r24_1442 = var_r23_1427->GetFieldName();
             var_r25_1433 = var_r23_1427->GetSectionName();
             var_r23_1427->AsString(0, &sp8);
-            if ((temp_r24_1442 == NULL) || (stricmp(temp_r24_1442, &lit_stringBase0[0x29]) != 0) || (sp8 == NULL) || (stricmp(&this->unk14.unkAC) != 0)) {
-                if ((temp_r24_1442 != NULL) && (stricmp(temp_r24_1442, &lit_stringBase0[0x2F]) == 0) && (sp8 != NULL) && (stricmp(&this->unk14.unk8C) == 0)) {
+            if ((temp_r24_1442 == NULL) || (stricmp(temp_r24_1442, "chunk") != 0) || (sp8 == NULL) || (stricmp(&this->unk14.unkAC) != 0)) {
+                if ((temp_r24_1442 != NULL) && (stricmp(temp_r24_1442, "level") == 0) && (sp8 != NULL) && (stricmp(&this->unk14.unk8C) == 0)) {
                     var_r23_1427 = var_r23_1427->unkC->GetSubLine(var_r23_1427);
                     goto loop_93;
                 }
@@ -795,10 +711,10 @@ loop_104:
             if ((var_r25_1520 != NULL) && (var_r25_1520->GetSectionName() == NULL)) {
                 if (var_r25_1520->GetFieldName() != NULL) {
                     ((MKChunkSceneManager *) (var_r25_1520->GetFieldName()))->StripExtension((s8 *)0x5F, M2C_ERROR(/* Read from unset register $r5 */));
-                    if (stricmp(&lit_stringBase0[0x49]) == 0) {
+                    if (stricmp("fftwater") == 0) {
                         temp_ret_1545 = var_r25_1520->GetString(0);
                         temp_r3_1545 = temp_ret_1545;
-                        if (MKArchive_Exists(Str_Printf(&lit_stringBase0[0x1D], temp_r3_1545, &lit_stringBase0[0x3D], M2C_BITWISE(f32, temp_ret_1545)), NULL) != 0) {
+                        if (MKArchive_Exists(Str_Printf("%s%s", temp_r3_1545, ".mdl", M2C_BITWISE(f32, temp_ret_1545)), NULL) != 0) {
                             AddWaterModel((s8 *) temp_r3_1545);
                             this->unk138 |= 8;
                         }

@@ -14,88 +14,15 @@ M2C_UNK free(void *);                               /* extern */
 s32 stricmp(s8 *, s8 *, void *, s32);               /* extern */
 s32 strnicmp(s8 *, s32);                            /* extern */
 extern MKIniLine *pIni_CurrentLineArray;
-#if 0 // DRAFT: function call 'Str_Printf(signed char[71], MKIni *, signed char *)' does
-static s8 lit_stringBase0[0x47] = {
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0,
-    0x2E,
-    0x62,
-    0x6E,
-    0x69,
-    0,
-    0x45,
-    0x44,
-    0,
-    0x50,
-    0x32,
-    0,
-    0x58,
-    0x42,
-    0,
-    0x47,
-    0x43,
-    0,
-    0x50,
-    0x43,
-    0,
-    0x50,
-    0x50,
-    0,
-    0x25,
-    0x2A,
-    0x73,
-    0x25,
-    0x73,
-    0x5B,
-    0x25,
-    0x64,
-    0x5D,
-    0,
-    0,
-    0x25,
-    0x73,
-    0x20,
-    0x25,
-    0x73,
-    0,
-    0x74,
-    0x72,
-    0x75,
-    0x65,
-    0,
-    0x6F,
-    0x6E,
-    0,
-    0x66,
-    0x61,
-    0x6C,
-    0x73,
-    0x65,
-    0,
-    0x6F,
-    0x66,
-    0x66,
-    0,
-    0x28,
-    0x4E,
-    0x55,
-    0x4C,
-    0x4C,
-    0x29,
-    0x2E,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
 s32 MKIni::Exists(const char *arg0) {
     s8 *temp_r31_28;
 
     if (this == NULL) {
         return 0;
     }
-    temp_r31_28 = Str_Printf(lit_stringBase0, this, &lit_stringBase0[5]);
+    temp_r31_28 = Str_Printf("%s%s", this, ".bni");
     if ((MKArchive_Exists(&this->unk0, NULL) != 0) || (MKArchive_Exists(temp_r31_28, NULL) != 0)) {
         return 1;
     }
@@ -103,7 +30,7 @@ s32 MKIni::Exists(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strnicmp(signed char *, signed char *, int)' does not match
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[3], int)' does not match
 u8 MKIni::IsMaskedOut(MKIniLine *arg0) {
     s32 var_r25_79;
     s32 var_r27_75;
@@ -140,17 +67,17 @@ loop_7:
         if (((s8 *) this->unk44 != NULL) && (strnicmp((s8 *) var_r31_72, var_r25_79) == 0)) {
             var_r27_75 = 1;
         } else if (var_r25_79 == 2) {
-            if (strnicmp((s8 *) var_r31_72, &lit_stringBase0[0xA], 2) == 0) {
+            if (strnicmp((s8 *) var_r31_72, "ED", 2) == 0) {
                 var_r29_73 |= 8;
-            } else if (strnicmp((s8 *) var_r31_72, &lit_stringBase0[0xD], 2) == 0) {
+            } else if (strnicmp((s8 *) var_r31_72, "P2", 2) == 0) {
                 var_r29_73 |= 1;
-            } else if (strnicmp((s8 *) var_r31_72, &lit_stringBase0[0x10], 2) == 0) {
+            } else if (strnicmp((s8 *) var_r31_72, "XB", 2) == 0) {
                 var_r29_73 |= 2;
-            } else if (strnicmp((s8 *) var_r31_72, &lit_stringBase0[0x13], 2) == 0) {
+            } else if (strnicmp((s8 *) var_r31_72, "GC", 2) == 0) {
                 var_r29_73 |= 4;
-            } else if (strnicmp((s8 *) var_r31_72, &lit_stringBase0[0x16], 2) == 0) {
+            } else if (strnicmp((s8 *) var_r31_72, "PC", 2) == 0) {
                 var_r29_73 |= 8;
-            } else if (strnicmp((s8 *) var_r31_72, &lit_stringBase0[0x19], 2) == 0) {
+            } else if (strnicmp((s8 *) var_r31_72, "PP", 2) == 0) {
                 var_r29_73 |= 0x10;
             }
         } else {
@@ -551,10 +478,10 @@ s32 MKIniLine::GetFlag(int arg0) {
     temp_r5_1121 = temp_r6_1117->unk4;
     temp_r6_1123 = M2C_FIELD(temp_r6_1117, s32 *, 0);
     temp_r31_1128 = temp_r6_1123 + (*(temp_r5_1121 + ((this->unk6 + arg0) * 2)) * 4);
-    if ((stricmp(temp_r31_1128, &lit_stringBase0[0x2D], temp_r5_1121, temp_r6_1123) == 0) || (stricmp(temp_r31_1128, &lit_stringBase0[0x32]) == 0)) {
+    if ((stricmp(temp_r31_1128, "true", temp_r5_1121, temp_r6_1123) == 0) || (stricmp(temp_r31_1128, "on") == 0)) {
         return 1;
     }
-    if ((stricmp(temp_r31_1128, &lit_stringBase0[0x35]) == 0) || (stricmp(temp_r31_1128, &lit_stringBase0[0x3B]) == 0)) {
+    if ((stricmp(temp_r31_1128, "false") == 0) || (stricmp(temp_r31_1128, "off") == 0)) {
         return 0;
     }
     return atoi(temp_r31_1128);
@@ -728,10 +655,10 @@ s32 MKIni::Init(const char *arg0, int arg1, const char *arg2) {
     this->unk14 = NULL;
     this->unk18 = arg1;
     if (arg0 == NULL) {
-        strcpy(&this->unk1C, &lit_stringBase0[0x3F]);
+        strcpy(&this->unk1C, "(NULL).");
         return 0;
     }
-    temp_r31_1483 = Str_Printf(lit_stringBase0, &lit_stringBase0[5]);
+    temp_r31_1483 = Str_Printf("%s%s", ".bni");
     strncpy(&this->unk1C, arg0, 0x1FU);
     if (MKArchive_Exists(temp_r31_1483, &sp8) != 0) {
         ReadBinary(temp_r31_1483);

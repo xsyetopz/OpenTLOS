@@ -385,132 +385,6 @@ static s32 soundBankFileHandle = -1;
 static s32 lit_1063 = 0x10000;
 static s32 lit_1083 = 0x10000;
 static s32 lit_1487 = 0;
-static s8 lit_stringBase0[0x7C] = {
-    0x25,
-    0x73,
-    0x2E,
-    0x6D,
-    0x75,
-    0x73,
-    0,
-    0x25,
-    0x73,
-    0x20,
-    0x40,
-    0x20,
-    0x25,
-    0x64,
-    0x48,
-    0x7A,
-    0,
-    0x4D,
-    0x52,
-    0x41,
-    0x4D,
-    0x20,
-    0x30,
-    0x3A,
-    0x20,
-    0x25,
-    0x73,
-    0,
-    0x4D,
-    0x52,
-    0x41,
-    0x4D,
-    0x20,
-    0x31,
-    0x3A,
-    0x20,
-    0x25,
-    0x73,
-    0,
-    0x41,
-    0x52,
-    0x41,
-    0x4D,
-    0x20,
-    0x30,
-    0x3A,
-    0x20,
-    0x25,
-    0x73,
-    0,
-    0x41,
-    0x52,
-    0x41,
-    0x4D,
-    0x20,
-    0x31,
-    0x3A,
-    0x20,
-    0x25,
-    0x73,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x67,
-    0x73,
-    0x62,
-    0,
-    0x69,
-    0x6E,
-    0x74,
-    0x65,
-    0x72,
-    0x75,
-    0x70,
-    0x74,
-    0x20,
-    0x3D,
-    0x20,
-    0x25,
-    0x64,
-    0xA,
-    0,
-    0x69,
-    0x6E,
-    0x74,
-    0x65,
-    0x72,
-    0x75,
-    0x70,
-    0x74,
-    0x20,
-    0x6D,
-    0x6F,
-    0x64,
-    0x65,
-    0x20,
-    0x3D,
-    0x20,
-    0x25,
-    0x64,
-    0xA,
-    0,
-    0x69,
-    0x6E,
-    0x74,
-    0x65,
-    0x72,
-    0x75,
-    0x70,
-    0x74,
-    0x20,
-    0x73,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0x20,
-    0x3D,
-    0x20,
-    0x25,
-    0x64,
-    0xA,
-    0,
-}; /* const */
 
 s32 Sound_MusicGetResumePosition() {
     s32 temp_r0_18;
@@ -575,9 +449,9 @@ s32 Sound_MusicIsPlaying() {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char[124], const char *, signed
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
 void Sound_MusicPlay(const char *arg0, bool arg1, int arg2) {
-    if (MKArchive_Exists(Str_Printf(lit_stringBase0, arg0, lit_stringBase0), NULL) != 0) {
+    if (MKArchive_Exists(Str_Printf("%s.mus", arg0, "%s.mus"), NULL) != 0) {
         if ((s32) M2C_FIELD(&gStreamingMusic, s32 *, 0x90) != 5) {
             if ((s32) M2C_FIELD(&gStreamingMusic, s32 *, 0x90) < 5) {
                 if ((s32) M2C_FIELD(&gStreamingMusic, s32 *, 0x90) != 0) {
@@ -918,7 +792,7 @@ loop_21:
             break;
         case 0:
             if ((u8) M2C_FIELD(&gStreamingMusic, u8 *, 0x95) != 0) {
-                temp_r3_862 = MKArchive_Open(Str_Printf(lit_stringBase0, &gStreamingMusic + 0x96), NULL, 1U);
+                temp_r3_862 = MKArchive_Open(Str_Printf("%s.mus", &gStreamingMusic + 0x96), NULL, 1U);
                 M2C_FIELD(&gStreamingMusic, s32 *, 0x80) = temp_r3_862;
                 File_Read(temp_r3_862, &gStreamingMusic, 0x80, 0);
                 M2C_FIELD(&gStreamingMusic, s32 *, 0x84) = 0x80;
@@ -1624,7 +1498,7 @@ loop_59:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char *, const char *, signed char[124])'
+#if 0 // DRAFT: function call 'MKArchive_Open(signed char *, long *, unsigned int)' does
 s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
     s32 sp8;
     MKHeap *temp_r3_2316;
@@ -1633,7 +1507,7 @@ s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
     s32 temp_r3_2314;
 
     if (arg1 != 0) {
-        temp_r3_2288 = MKArchive_Open(Str_Printf(&lit_stringBase0[0x3D], arg0, lit_stringBase0), &soundBankFileSize, 1U);
+        temp_r3_2288 = MKArchive_Open(Str_Printf("%s.gsb", arg0, "%s.mus"), &soundBankFileSize, 1U);
         soundBankFileHandle = temp_r3_2288;
         if (temp_r3_2288 < 0) {
             return 0;
@@ -1641,7 +1515,7 @@ s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
         Sound_LoadBankAsyncUpdate(1U, arg2);
         return 0;
     }
-    temp_r3_2310 = MKArchive_Load(Str_Printf(&lit_stringBase0[0x3D], arg0, lit_stringBase0), &sp8, NULL, -1);
+    temp_r3_2310 = MKArchive_Load(Str_Printf("%s.gsb", arg0, "%s.mus"), &sp8, NULL, -1);
     temp_r3_2314 = Sound_LoadBankFromMemory(temp_r3_2310, arg1, arg2);
     soundLastBankId = temp_r3_2314;
     temp_r3_2316 = temp_r3_2314->Current();

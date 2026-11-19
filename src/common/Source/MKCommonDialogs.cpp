@@ -22,178 +22,8 @@ extern CreateWidgetWindow gCreateWidgetWindow;
 extern MaterialEditor gMaterialEditor;
 extern MKFont *gpDebugFont;
 extern void *pDescriptorList;
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
-static s8 lit_stringBase0[0xA8] = {
-    0x57,
-    0x69,
-    0x64,
-    0x67,
-    0x65,
-    0x74,
-    0x20,
-    0x54,
-    0x6F,
-    0x6F,
-    0x6C,
-    0x62,
-    0x6F,
-    0x78,
-    0,
-    0x57,
-    0x69,
-    0x64,
-    0x67,
-    0x65,
-    0x74,
-    0x4C,
-    0x69,
-    0x73,
-    0x74,
-    0,
-    0x44,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0,
-    0x4D,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x69,
-    0x61,
-    0x6C,
-    0x20,
-    0x45,
-    0x64,
-    0x69,
-    0x74,
-    0x6F,
-    0x72,
-    0,
-    0x4D,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x69,
-    0x61,
-    0x6C,
-    0x46,
-    0x72,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-    0x4D,
-    0x61,
-    0x74,
-    0x50,
-    0x72,
-    0x65,
-    0x76,
-    0x69,
-    0x65,
-    0x77,
-    0,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0x53,
-    0x65,
-    0x6C,
-    0x65,
-    0x63,
-    0x74,
-    0,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0x20,
-    0x53,
-    0x65,
-    0x6C,
-    0x65,
-    0x63,
-    0x74,
-    0x6F,
-    0x72,
-    0,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0x20,
-    0x57,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0x20,
-    0x44,
-    0x69,
-    0x73,
-    0x70,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x52,
-    0x65,
-    0x64,
-    0,
-    0x47,
-    0x72,
-    0x65,
-    0x65,
-    0x6E,
-    0,
-    0x42,
-    0x6C,
-    0x75,
-    0x65,
-    0,
-    0x41,
-    0x6C,
-    0x70,
-    0x68,
-    0x61,
-    0,
-    0x4F,
-    0x4B,
-    0,
-    0x43,
-    0x6F,
-    0x6E,
-    0x74,
-    0x65,
-    0x78,
-    0x74,
-    0x4D,
-    0x65,
-    0x6E,
-    0x75,
-    0,
-    0,
-    0,
-    0,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void CreateWidgetWindow::CreateWidgets() {
     f32 sp68;                                       /* compiler-managed */
     f32 sp64;
@@ -215,7 +45,7 @@ void CreateWidgetWindow::CreateWidgets() {
     sp60 = 220.0f;
     sp64 = 400.0f;
     sp68 = 0.0f;
-    this->unk0 = MKWidget_Create(MKWIDGETTYPE_WINDOW, lit_stringBase0, (MKWidgetAttributes *) &sp30, NULL, (s32 (*)(MKWidget *, u32, u32, void *)) &CreateWidgetWindow::CreateWidgetWindowHook, this);
+    this->unk0 = MKWidget_Create(MKWIDGETTYPE_WINDOW, "Widget Toolbox", (MKWidgetAttributes *) &sp30, NULL, (s32 (*)(MKWidget *, u32, u32, void *)) &CreateWidgetWindow::CreateWidgetWindowHook, this);
     sp8 = 14.0f;
     MKWidget_SendMessage(this->unk0, 0x6BU, (u32) &sp8);
     MKWidget_GetClientVolume(this->unk0, &sp10);
@@ -223,7 +53,7 @@ void CreateWidgetWindow::CreateWidgets() {
     sp38 = M2C_FIELD(&zero, f64 *, 8);
     sp60 = (f64) sp10.unk10;
     sp68 = sp28;
-    this->unk4 = MKWidget_Create(MKWIDGETTYPE_LISTBOX, &lit_stringBase0[0xF], (MKWidgetAttributes *) &sp30, this->unk0, NULL, NULL);
+    this->unk4 = MKWidget_Create(MKWIDGETTYPE_LISTBOX, "WidgetList", (MKWidgetAttributes *) &sp30, this->unk0, NULL, NULL);
     MKWidget_EnableFlag(this->unk4, 0x800000U);
     sp60 = 100.0f;
     var_r29_94 = pDescriptorList;
@@ -313,7 +143,7 @@ s32 CreateWidgetWindow::CreateWidgetWindowHook(MKWidget *arg0, unsigned int arg1
                     sp50 = (f64) sp20;
                     sp28 = (f64) sp8;
                     sp30 = (f64) sp10;
-                    MKWidget_CreateEditable(*M2C_FIELD(arg2, MKWidget **, 8)->unk4, &lit_stringBase0[0x1A], (MKWidgetAttributes *) &sp88, temp_r30_204, NULL, NULL);
+                    MKWidget_CreateEditable(*M2C_FIELD(arg2, MKWidget **, 8)->unk4, "Default", (MKWidgetAttributes *) &sp88, temp_r30_204, NULL, NULL);
                     MKWidget_Show(M2C_ERROR(/* Read from unset register $r3 */), 1);
                 }
             }
@@ -360,14 +190,14 @@ void MaterialEditor::CreateWidgets() {
     sp38 = 400.0f;
     sp3C = 300.0f;
     sp40 = 0.0f;
-    this->unk4 = MKWidget_Create(MKWIDGETTYPE_WINDOW, &lit_stringBase0[0x22], (MKWidgetAttributes *) &sp8, NULL, (s32 (*)(MKWidget *, u32, u32, void *)) &MaterialEditor::MaterialEditorHook, this);
+    this->unk4 = MKWidget_Create(MKWIDGETTYPE_WINDOW, "Material Editor", (MKWidgetAttributes *) &sp8, NULL, (s32 (*)(MKWidget *, u32, u32, void *)) &MaterialEditor::MaterialEditorHook, this);
     sp8 = 10.0f;
     spC = 10.0f;
     sp10 = 0.0f;
     sp38 = 130.0f;
     sp3C = 130.0f;
     sp40 = 0.0f;
-    temp_r3_392 = MKWidget_Create(MKWIDGETTYPE_COLOR, &lit_stringBase0[0x32], (MKWidgetAttributes *) &sp8, this->unk4, NULL, NULL);
+    temp_r3_392 = MKWidget_Create(MKWIDGETTYPE_COLOR, "MaterialFrame", (MKWidgetAttributes *) &sp8, this->unk4, NULL, NULL);
     MKWidget_DisableFlag(temp_r3_392, 0x100U);
     MKWidget_SendMessage(temp_r3_392, 0x64U, (u32) &zero);
     sp8 = 11.0f;
@@ -376,14 +206,14 @@ void MaterialEditor::CreateWidgets() {
     sp38 = 128.0f;
     sp3C = 128.0f;
     sp40 = 0.0f;
-    this->unk8 = MKWidget_Create(MKWIDGETTYPE_IMAGE, &lit_stringBase0[0x40], (MKWidgetAttributes *) &sp8, this->unk4, NULL, NULL);
+    this->unk8 = MKWidget_Create(MKWIDGETTYPE_IMAGE, "MatPreview", (MKWidgetAttributes *) &sp8, this->unk4, NULL, NULL);
     sp8 = 150.0f;
     spC = 10.0f;
     sp10 = 0.0f;
     sp38 = 50.0f;
     sp3C = 30.0f;
     sp40 = 0.0f;
-    this->unkC = MKWidget_Create(MKWIDGETTYPE_COLOR, &lit_stringBase0[0x4B], (MKWidgetAttributes *) &sp8, this->unk4, NULL, NULL);
+    this->unkC = MKWidget_Create(MKWIDGETTYPE_COLOR, "ColorSelect", (MKWidgetAttributes *) &sp8, this->unk4, NULL, NULL);
 }
 #endif
 
@@ -435,14 +265,14 @@ void ColorEditor::CreateWidgets() {
     sp40 = 270.0f;
     sp44 = 200.0f;
     sp48 = 0.0f;
-    this->unk10 = MKWidget_Create(MKWIDGETTYPE_WINDOW, &lit_stringBase0[0x57], (MKWidgetAttributes *) &sp10, NULL, (s32 (*)(MKWidget *, u32, u32, void *)) &ColorEditor::ColorEditorHook, this);
+    this->unk10 = MKWidget_Create(MKWIDGETTYPE_WINDOW, "Color Selector", (MKWidgetAttributes *) &sp10, NULL, (s32 (*)(MKWidget *, u32, u32, void *)) &ColorEditor::ColorEditorHook, this);
     sp40 = 155.0f;
     sp44 = 155.0f;
     sp48 = 0.0f;
     sp10 = 10.0f;
     sp14 = 10.0f;
     sp18 = 0.0f;
-    this->unk14 = MKWidget_Create(MKWIDGETTYPE_FRAME, &lit_stringBase0[0x66], (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
+    this->unk14 = MKWidget_Create(MKWIDGETTYPE_FRAME, "Color Wheel", (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
     MKWidget_SendMessage(this->unk14, 0x64U, 2U);
     sp40 = 40.0f;
     sp44 = 30.0f;
@@ -450,7 +280,7 @@ void ColorEditor::CreateWidgets() {
     sp10 = 195.0f;
     sp14 = 10.0f;
     sp18 = 0.0f;
-    this->unk18 = MKWidget_Create(MKWIDGETTYPE_COLOR, &lit_stringBase0[0x72], (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
+    this->unk18 = MKWidget_Create(MKWIDGETTYPE_COLOR, "Color Display", (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
     MKWidget_DisableFlag(this->unk18, 0x100U);
     sp8 = 1.0f;
     sp40 = 80.0f;
@@ -463,7 +293,7 @@ void ColorEditor::CreateWidgets() {
     sp54 = 0.0f;
     sp58 = 0.0f;
     sp5C = 1.0f;
-    this->unk1C = MKWidget_Create(MKWIDGETTYPE_SLIDER, &lit_stringBase0[0x80], (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
+    this->unk1C = MKWidget_Create(MKWIDGETTYPE_SLIDER, "Red", (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
     MKWidget_SendMessage(this->unk1C, 0x67U, (u32) &sp8);
     MKWidget_SendMessage(this->unk1C, 0x64U, (u32) &sp8);
     sp10 = 175.0f;
@@ -473,7 +303,7 @@ void ColorEditor::CreateWidgets() {
     sp54 = 1.0f;
     sp58 = 0.0f;
     sp5C = 1.0f;
-    this->unk20 = MKWidget_Create(MKWIDGETTYPE_SLIDER, &lit_stringBase0[0x84], (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
+    this->unk20 = MKWidget_Create(MKWIDGETTYPE_SLIDER, "Green", (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
     MKWidget_SendMessage(this->unk20, 0x67U, (u32) &sp8);
     MKWidget_SendMessage(this->unk20, 0x64U, (u32) &sp8);
     sp10 = 175.0f;
@@ -483,7 +313,7 @@ void ColorEditor::CreateWidgets() {
     sp54 = 0.0f;
     sp58 = 1.0f;
     sp5C = 1.0f;
-    this->unk24 = MKWidget_Create(MKWIDGETTYPE_SLIDER, &lit_stringBase0[0x8A], (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
+    this->unk24 = MKWidget_Create(MKWIDGETTYPE_SLIDER, "Blue", (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
     MKWidget_SendMessage(this->unk24, 0x67U, (u32) &sp8);
     MKWidget_SendMessage(this->unk24, 0x64U, (u32) &sp8);
     sp10 = 175.0f;
@@ -493,7 +323,7 @@ void ColorEditor::CreateWidgets() {
     sp54 = 1.0f;
     sp58 = 1.0f;
     sp5C = 1.0f;
-    this->unk28 = MKWidget_Create(MKWIDGETTYPE_SLIDER, &lit_stringBase0[0x8F], (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
+    this->unk28 = MKWidget_Create(MKWIDGETTYPE_SLIDER, "Alpha", (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
     MKWidget_SendMessage(this->unk28, 0x67U, (u32) &sp8);
     MKWidget_SendMessage(this->unk28, 0x64U, (u32) &sp8);
     sp40 = 60.0f;
@@ -502,7 +332,7 @@ void ColorEditor::CreateWidgets() {
     sp10 = 195.0f;
     sp14 = 137.0f;
     sp18 = 0.0f;
-    this->unk2C = MKWidget_Create(MKWIDGETTYPE_BUTTON, &lit_stringBase0[0x95], (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
+    this->unk2C = MKWidget_Create(MKWIDGETTYPE_BUTTON, "OK", (MKWidgetAttributes *) &sp10, this->unk10, NULL, NULL);
 }
 #endif
 
@@ -696,7 +526,7 @@ void MKWidgetContextMenu::CreateWidgets() {
     sp38 = 100.0f;
     sp3C = 100.0f;
     sp40 = 0.0f;
-    this->unk0 = MKWidget_Create(MKWIDGETTYPE_LISTBOX, &lit_stringBase0[0x98], (MKWidgetAttributes *) &sp8, NULL, (s32 (*)(MKWidget *, u32, u32, void *)) &MKWidgetContextMenu::ContextMenuHook, this);
+    this->unk0 = MKWidget_Create(MKWIDGETTYPE_LISTBOX, "ContextMenu", (MKWidgetAttributes *) &sp8, NULL, (s32 (*)(MKWidget *, u32, u32, void *)) &MKWidgetContextMenu::ContextMenuHook, this);
     MKWidget_SendMessage((MKWidget *) this->unk0, 0x64U, 1U);
     MKWidget_DisableFlag((MKWidget *) this->unk0, 0x18000U);
     MKWidget_EnableFlag((MKWidget *) this->unk0, 0xC00000U);

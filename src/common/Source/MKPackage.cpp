@@ -66,132 +66,6 @@ static struct _struct_pPackageEntries_0x14 pPackageEntries[0x400];
 static TimerInfo packageTime;
 static s32 afd = -1;
 static s32 nextQueueHandle = 0x2710;
-static s8 lit_stringBase0[0x7C] = {
-    0x3C,
-    0x44,
-    0x79,
-    0x6E,
-    0x61,
-    0x6D,
-    0x69,
-    0x63,
-    0x3E,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x70,
-    0x6B,
-    0x67,
-    0,
-    0x4F,
-    0x75,
-    0x74,
-    0x70,
-    0x75,
-    0x74,
-    0x50,
-    0x61,
-    0x63,
-    0x6B,
-    0x61,
-    0x67,
-    0x65,
-    0x73,
-    0,
-    0xD,
-    0xA,
-    0,
-    0x25,
-    0x73,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x62,
-    0x70,
-    0x6B,
-    0,
-    0x4F,
-    0x75,
-    0x74,
-    0x70,
-    0x75,
-    0x74,
-    0x4F,
-    0x72,
-    0x64,
-    0x65,
-    0x72,
-    0,
-    0x64,
-    0x69,
-    0x73,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0x50,
-    0x61,
-    0x63,
-    0x6B,
-    0x61,
-    0x67,
-    0x65,
-    0x73,
-    0,
-    0x6F,
-    0x75,
-    0x74,
-    0x70,
-    0x75,
-    0x74,
-    0x4F,
-    0x72,
-    0x64,
-    0x65,
-    0x72,
-    0,
-    0x6F,
-    0x75,
-    0x74,
-    0x70,
-    0x75,
-    0x74,
-    0x50,
-    0x61,
-    0x63,
-    0x6B,
-    0x61,
-    0x67,
-    0x65,
-    0x73,
-    0,
-    0x41,
-    0x73,
-    0x73,
-    0x65,
-    0x72,
-    0x74,
-    0x50,
-    0x61,
-    0x63,
-    0x6B,
-    0x61,
-    0x67,
-    0x65,
-    0x4D,
-    0x69,
-    0x73,
-    0x73,
-    0x65,
-    0x73,
-    0,
-    0x2B,
-    0x25,
-    0x73,
-    0,
-}; /* const */
 
 void MKPackage_ShowStatus(int arg0) {
 
@@ -282,7 +156,7 @@ s32 MKPackage_QLoadDynamic(const char *arg0, int arg1, const char *arg2) {
     if (arg2 != NULL) {
         var_r4_155 = arg2;
     } else {
-        var_r4_155 = lit_stringBase0;
+        var_r4_155 = "<Dynamic>";
     }
     strcpy(temp_r31_139 + 4, var_r4_155);
     M2C_FIELD(temp_r31_139, MKHeap **, 0x124) = ((MKHeap *) (strncpy(temp_r31_139 + 0x24, arg0, 0xFFU)))->Current();
@@ -488,7 +362,7 @@ loop_26:
                 }
             }
         }
-        if ((((s32) nmbrOfPackageEntries != (s32) nmbrOfAutoEntries) || (var_r25_490 != (s32) nmbrOfPackageEntries) || (System_GetCommandLineParameter(&lit_stringBase0[0x11], 0U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) && (strcmpi(packageName, lit_stringBase0) != 0)) {
+        if ((((s32) nmbrOfPackageEntries != (s32) nmbrOfAutoEntries) || (var_r25_490 != (s32) nmbrOfPackageEntries) || (System_GetCommandLineParameter("OutputPackages", 0U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) && (strcmpi(packageName, "<Dynamic>") != 0)) {
             temp_r3_534 = nmbrOfAutoEntries * 0x24;
             temp_r27_535 = temp_r3_534 + 1;
             temp_r3_536 = temp_r3_534->Current();
@@ -503,13 +377,14 @@ loop_26:
 loop_36:
             if (var_r26_555 < (s32) nmbrOfAutoEntries) {
                 strcat((s8 *) var_r3_544, &pAutoEntries[var_r30_556]);
-                strcat((s8 *) var_r3_544, &lit_stringBase0[0x20]);
+                strcat((s8 *) var_r3_544, "
+\n");
                 var_r26_555 += 1;
                 var_r30_556 += 0x22;
                 goto loop_36;
             }
             temp_ret_573 = strlen((s8 *) var_r3_544);
-            temp_r3_585 = ((MKHeap *) (MKArchive_Save(Str_Printf(&lit_stringBase0[0x23], packageName, M2C_BITWISE(f32, temp_ret_573)), 0U, var_r3_544, temp_ret_573 + 1)))->Current();
+            temp_r3_585 = ((MKHeap *) (MKArchive_Save(Str_Printf("%s", packageName, M2C_BITWISE(f32, temp_ret_573)), 0U, var_r3_544, temp_ret_573 + 1)))->Current();
             if (temp_r3_585 != NULL) {
                 ((MKHeap *) (temp_r3_585->Main()))->TFree(var_r3_544, NULL, 0);
             } else {
@@ -611,7 +486,7 @@ void MKPackage_LoadDynamic(char *arg0, bool arg1, char *arg2) {
     pPackageText = (s8 *) var_r3_784;
     strcpy((s8 *) var_r3_784, arg0);
     if (arg2 == NULL) {
-        strcpy(packageName, lit_stringBase0);
+        strcpy(packageName, "<Dynamic>");
     } else {
         strcpy(packageName, arg2);
     }
@@ -639,12 +514,12 @@ void MKPackage_Load(char *arg0, bool arg1) {
     *binaryPackageName = 0;
     pPackageText = NULL;
     packageTextSize = -1U;
-    strncpy(packageName, Str_Printf(&lit_stringBase0[0xA], arg0, binaryPackageName, 0, temp_r7_834, tempMemOverride.unk0, M2C_BITWISE(f32, temp_ret_825)), 0x20U);
+    strncpy(packageName, Str_Printf("%s.pkg", arg0, binaryPackageName, 0, temp_r7_834, tempMemOverride.unk0, M2C_BITWISE(f32, temp_ret_825)), 0x20U);
     if (((u8) gDisablePackages != 0) || (temp_ret_856 = MKArchive_Exists(packageName, (s32 *) &packageTextSize), ((temp_ret_856 == 0) != 0)) || ((s32) packageTextSize == 0)) {
         MKPackage_LoadInternal(arg1);
         return;
     }
-    temp_r3_872 = Str_Printf(&lit_stringBase0[0x26], arg0, M2C_BITWISE(f32, temp_ret_856));
+    temp_r3_872 = Str_Printf("%s.bpk", arg0, M2C_BITWISE(f32, temp_ret_856));
     temp_r3_875 = MKArchive_Exists(temp_r3_872, NULL);
     if (temp_r3_875 != 0) {
         temp_r3_875->ActivateTempMemOverride();
@@ -702,9 +577,9 @@ void MKPackage_LoadInternal(bool arg0) {
         ProcessPackageFilenames();
     }
     if ((s32) nmbrOfPackageEntries != 0) {
-        System_GetCommandLineParameter(&lit_stringBase0[0x11], 0U);
+        System_GetCommandLineParameter("OutputPackages", 0U);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) {
-            System_GetCommandLineParameter(&lit_stringBase0[0x2D], 0U);
+            System_GetCommandLineParameter("OutputOrder", 0U);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) {
                 qsort((struct _struct_pPackageEntries_0x14 (*)[]) pPackageEntries, nmbrOfPackageEntries, 0x14, PackageSort);
             }
@@ -727,7 +602,7 @@ loop_12:
             LogLoadStats();
         }
     }
-    System_GetCommandLineParameter(&lit_stringBase0[0x11], 0U);
+    System_GetCommandLineParameter("OutputPackages", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         temp_r3_1039 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
         if (temp_r3_1039 != NULL) {
@@ -747,7 +622,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: function call 'System_GetCommandLineParameter(signed char *, unsigned
+#if 0 // DRAFT: illegal string constant
 void ProcessPackageFilenames() {
     s8 *var_r30_1097;
     s8 *var_r4_1119;
@@ -755,9 +630,10 @@ void ProcessPackageFilenames() {
     u8 temp_r0_1104;
     u8 var_r29_1111;
 
-    System_GetCommandLineParameter(&lit_stringBase0[0x11], 0U);
+    System_GetCommandLineParameter("OutputPackages", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) {
-        var_r30_1097 = strtok(pPackageText, &lit_stringBase0[0x20]);
+        var_r30_1097 = strtok(pPackageText, "
+\n");
 loop_15:
         if (var_r30_1097 != NULL) {
 loop_4:
@@ -787,7 +663,8 @@ loop_10:
             if ((s8) (u8) *var_r30_1097 != 0) {
                 AddToPackage(var_r30_1097, var_r29_1111);
             }
-            var_r30_1097 = strtok(NULL, &lit_stringBase0[0x20]);
+            var_r30_1097 = strtok(NULL, "
+\n");
             goto loop_15;
         }
     }
@@ -1125,15 +1002,15 @@ void MKPackage_InitModule() {
     u8 var_r31_1792;
 
     pPreviousHandler = MKArchive_SetLoadInterceptHandler(PackageIntercept);
-    System_GetCommandLineParameter(&lit_stringBase0[0x39], 0U);
+    System_GetCommandLineParameter("disablePackages", 0U);
     var_r31_1792 = 0;
     gDisablePackages = M2C_ERROR(/* Read from unset register $r3 */) != 0;
-    System_GetCommandLineParameter(&lit_stringBase0[0x49], 0U);
-    if (((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) || (System_GetCommandLineParameter(&lit_stringBase0[0x55], 0U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) {
+    System_GetCommandLineParameter("outputOrder", 0U);
+    if (((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) || (System_GetCommandLineParameter("outputPackages", 0U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) {
         var_r31_1792 = 1;
     }
     disablePackageChunking = var_r31_1792;
-    System_GetCommandLineParameter(&lit_stringBase0[0x64], 0U);
+    System_GetCommandLineParameter("AssertPackageMisses", 0U);
     assertMisses = M2C_ERROR(/* Read from unset register $r3 */) != 0;
     MKPackage_UseQ();
 }
@@ -1156,7 +1033,7 @@ void *PackageIntercept(const char *arg0, int *arg1, void *arg2, int *arg3) {
     if ((s32) packageState != 0) {
         if ((s8 *) pAutoEntries != NULL) {
             if ((MKHeap *) tempMemOverride.unk0 > 0) {
-                temp_r4_1854 = Str_Printf(&lit_stringBase0[0x78], arg0, pAutoEntries);
+                temp_r4_1854 = Str_Printf("+%s", arg0, pAutoEntries);
                 temp_r0_1856 = nmbrOfAutoEntries * 0x22;
                 nmbrOfAutoEntries += 1;
                 strcpy(&pAutoEntries[temp_r0_1856], temp_r4_1854);
@@ -1172,7 +1049,7 @@ loop_20:
         if (var_r25_1872 >= (s32) nmbrOfPackageEntries) {
             MKPackage_misses += 1;
             if ((s32) totalBytesInPackage != 0) {
-                strcmp(packageName, lit_stringBase0);
+                strcmp(packageName, "<Dynamic>");
             }
             goto block_23;
         }

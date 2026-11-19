@@ -51,51 +51,8 @@ static MKWidgetSystem *pSystemStack[0x10] = {
     NULL,
 };
 #endif
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[736]' to
-static s8 lit_stringBase0[0x29] = {
-    0x4D,
-    0x4B,
-    0x57,
-    0x69,
-    0x64,
-    0x67,
-    0x65,
-    0x74,
-    0x45,
-    0x64,
-    0x69,
-    0x74,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0,
-    0x25,
-    0x73,
-    0x20,
-    0x45,
-    0x64,
-    0x69,
-    0x74,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0,
-    0x57,
-    0x69,
-    0x64,
-    0x67,
-    0x65,
-    0x74,
-    0x42,
-    0x6C,
-    0x61,
-    0x6E,
-    0x6B,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[736]' to
 f32 MKWidget_GetMetricF(int arg0) {
     return *(&gMKWidgetMetrics + (arg0 * 0x10));
 }
@@ -382,7 +339,7 @@ void MKWidget_CreateEditable(const char *arg0, const char *arg1, const MKWidgetA
     sp60 = M2C_FIELD(&one, f64 *, 8);
     sp88 = M2C_FIELD(&one, f64 *, 0);
     sp90 = M2C_FIELD(&one, f64 *, 8);
-    temp_r3_760 = MKWidget_Create(lit_stringBase0, Str_Printf(&lit_stringBase0[0x11], arg1, &one, M2C_FIELD(&one, f64 *, 0), M2C_FIELD(&one, f64 *, 8), M2C_FIELD(&one, f64 *, 0), temp_f4_738), (MKWidgetAttributes *) &sp48, arg3, NULL, NULL);
+    temp_r3_760 = MKWidget_Create("MKWidgetEditable", Str_Printf("%s Editable", arg1, &one, M2C_FIELD(&one, f64 *, 0), M2C_FIELD(&one, f64 *, 8), M2C_FIELD(&one, f64 *, 0), temp_f4_738), (MKWidgetAttributes *) &sp48, arg3, NULL, NULL);
     M2C_FIELD(temp_r3_760, s32 (**)(MKWidget *, u32, u32, void *), 0x60) = arg4;
     M2C_FIELD(temp_r3_760, void **, 0x64) = arg5;
     sp48 = var_r28_675->unk0;
@@ -532,8 +489,8 @@ void MKWidget_CreateMaterial() {
     }
     pBlankData = var_r3_1068;
     memset(var_r3_1068, 0xFF, 0x1000U);
-    temp_r31_1088 = ((Texture *) ((Texture *) &lit_stringBase0[0x1D]))->CreateFromRawData(pBlankData, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */));
-    pWidgetBlank = MKMaterial_Create(&lit_stringBase0[0x1D]);
+    temp_r31_1088 = ((Texture *) ((Texture *) "WidgetBlank"))->CreateFromRawData(pBlankData, NULL, 0x20, 0x20, 0, M2C_ERROR(/* Read from unset register $r9 */));
+    pWidgetBlank = MKMaterial_Create("WidgetBlank");
     temp_r31_1088->Destroy();
     MKMat_MK2_SetMaterialType((MKMaterial *) pWidgetBlank, (MKMat_MK2_Standard_MaterialType) 3);
     MKCommonDialogs_InitModule();

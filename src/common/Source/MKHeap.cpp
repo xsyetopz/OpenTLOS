@@ -8,220 +8,8 @@ s32 atoi();                                         /* extern */
 void *malloc(s32);                                  /* extern */
 extern s32 baddress;
 extern u8 gbGoldMaster;
+
 #if 0 // DRAFT: undefined identifier 'tempMemOverride'
-static s8 lit_stringBase0[0xD3] = {
-    0x43,
-    0x6F,
-    0x75,
-    0x6C,
-    0x64,
-    0x6E,
-    0x27,
-    0x74,
-    0x20,
-    0x66,
-    0x69,
-    0x6E,
-    0x64,
-    0x20,
-    0x72,
-    0x6F,
-    0x6F,
-    0x6D,
-    0x2F,
-    0x70,
-    0x6F,
-    0x73,
-    0x69,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x20,
-    0x66,
-    0x6F,
-    0x72,
-    0x20,
-    0x74,
-    0x65,
-    0x6D,
-    0x70,
-    0x20,
-    0x61,
-    0x6C,
-    0x6C,
-    0x6F,
-    0x63,
-    0x21,
-    0xA,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x3D,
-    0x25,
-    0x64,
-    0x20,
-    0x5B,
-    0x68,
-    0x65,
-    0x61,
-    0x70,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x3D,
-    0x25,
-    0x64,
-    0x5D,
-    0,
-    0x4F,
-    0x75,
-    0x74,
-    0x20,
-    0x6F,
-    0x66,
-    0x20,
-    0x6D,
-    0x65,
-    0x6D,
-    0x6F,
-    0x72,
-    0x79,
-    0x20,
-    0x72,
-    0x65,
-    0x61,
-    0x6C,
-    0x6C,
-    0x6F,
-    0x63,
-    0x27,
-    0x69,
-    0x6E,
-    0x67,
-    0x20,
-    0x25,
-    0x64,
-    0x20,
-    0x62,
-    0x79,
-    0x74,
-    0x65,
-    0x73,
-    0,
-    0x4E,
-    0x6F,
-    0x20,
-    0x6D,
-    0x65,
-    0x6D,
-    0x6F,
-    0x72,
-    0x79,
-    0x20,
-    0x61,
-    0x6C,
-    0x6C,
-    0x6F,
-    0x63,
-    0x61,
-    0x74,
-    0x69,
-    0x6E,
-    0x67,
-    0x20,
-    0x25,
-    0x64,
-    0x20,
-    0x62,
-    0x79,
-    0x74,
-    0x65,
-    0x73,
-    0xA,
-    0x28,
-    0x25,
-    0x64,
-    0x20,
-    0x66,
-    0x72,
-    0x65,
-    0x65,
-    0x20,
-    0x69,
-    0x6E,
-    0x20,
-    0x68,
-    0x65,
-    0x61,
-    0x70,
-    0x20,
-    0x25,
-    0x73,
-    0x29,
-    0xA,
-    0x5B,
-    0x68,
-    0x65,
-    0x61,
-    0x70,
-    0x73,
-    0x69,
-    0x7A,
-    0x65,
-    0x3D,
-    0x25,
-    0x64,
-    0x5D,
-    0,
-    0x4D,
-    0x4B,
-    0x48,
-    0x65,
-    0x61,
-    0x70,
-    0x3A,
-    0x3A,
-    0x49,
-    0x6E,
-    0x69,
-    0x74,
-    0x20,
-    0x63,
-    0x6F,
-    0x75,
-    0x6C,
-    0x64,
-    0x6E,
-    0x27,
-    0x74,
-    0x20,
-    0x67,
-    0x72,
-    0x61,
-    0x62,
-    0x20,
-    0x25,
-    0x64,
-    0x20,
-    0x62,
-    0x79,
-    0x74,
-    0x65,
-    0x73,
-    0x21,
-    0,
-    0x62,
-    0x72,
-    0x65,
-    0x61,
-    0x6B,
-    0x6F,
-    0x6E,
-    0,
-}; /* const */
 static s32 black = 0;                               /* const */
 static s32 white = 0xFFFFFFFF;                      /* const */
 
@@ -495,7 +283,8 @@ block_24:
         if ((u8) gbGoldMaster == 0) {
             sp8 = black;
             spC = white;
-            OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf(lit_stringBase0, arg0, this->unk4 - this->unk0));
+            OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf("Couldn't find room/position for temp alloc!
+size=%d [heapsize=%d]", arg0, this->unk4 - this->unk0));
         }
     }
     return NULL;
@@ -535,7 +324,7 @@ void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
         if (((u8) gbGoldMaster == 0) && ((s32) this->unkC >= (s32) this->unk44)) {
             sp8 = black;
             spC = white;
-            OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf(&lit_stringBase0[0x42], arg1));
+            OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf("Out of memory realloc'ing %d bytes", arg1));
         }
         ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->UpdatePeak();
     } else {
@@ -565,7 +354,7 @@ void *MKHeap::Alloc(int arg0, const char *arg1, int arg2) {
         if (((u8) gbGoldMaster == 0) && ((void *) (var_r30_560 + arg0) >= (s32) this->unk44)) {
             sp8 = black;
             spC = white;
-            OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf(&lit_stringBase0[0x65], this->unk44 - var_r30_560, &this->unk4C, this->unk4 - this->unk0));
+            OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf("No memory allocating %d bytes\n(%d free in heap %s)\n[heapsize=%d]", this->unk44 - var_r30_560, &this->unk4C, this->unk4 - this->unk0));
         }
         this->unkC = (s32) (var_r30_560 + arg0);
     }
@@ -830,7 +619,7 @@ void MKHeap::Init(int arg0, int arg1, const char *arg2, void *arg3) {
     if (((u8) gbGoldMaster == 0) && ((MKHeap *) this->unk0 == NULL)) {
         sp8 = black;
         spC = white;
-        OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf(&lit_stringBase0[0xA6], arg0, temp_f1_993));
+        OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf("MKHeap::Init couldn't grab %d bytes!", arg0, temp_f1_993));
     }
     this->unk3C = arg1;
     this->unk38 = M2C_BITWISE(f32, this->unk4);
@@ -856,7 +645,7 @@ void MKHeap::InitModule() {
     s32 var_r3_1064;
 
     currentHeap.unk0 = (MKHeap *)-1U;
-    System_GetCommandLineParameter(&lit_stringBase0[0xCB], 0U);
+    System_GetCommandLineParameter("breakon", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         baddress = atoi();
     }

@@ -18,46 +18,9 @@ extern M2C_UNK defaultCollisionMin;
 #endif
 extern M2C_UNK gEmptyPtrList;
 extern MKCollisionManager **managers;
-#if 0 // DRAFT: function call 'Str_Printf(signed char[35], signed char *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'const char[2]' to
 static M2C_UNK lit_834;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_840;                                /* unable to generate initializer: unknown type; const */
-static s8 lit_stringBase0[0x23] = {
-    0x5F,
-    0x25,
-    0x30,
-    0x32,
-    0x64,
-    0x25,
-    0x73,
-    0,
-    0x62,
-    0,
-    0x73,
-    0,
-    0x5F,
-    0x61,
-    0x6C,
-    0x6C,
-    0x25,
-    0x73,
-    0,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0,
-    0x5F,
-    0x25,
-    0x30,
-    0x32,
-    0x64,
-    0,
-    0x5F,
-    0x61,
-    0x6C,
-    0x6C,
-    0,
-}; /* const */
 
 void MKCollision_MangleName(const char *arg0, int arg1, bool arg2) {
     s8 sp8;
@@ -67,38 +30,38 @@ void MKCollision_MangleName(const char *arg0, int arg1, bool arg2) {
     s8 *var_r4_37;
     s8 *var_r5_24;
 
-    var_r5_24 = &lit_stringBase0[0xA];
+    var_r5_24 = "s";
     if (arg2 != 0) {
-        var_r5_24 = &lit_stringBase0[8];
+        var_r5_24 = "b";
     }
-    temp_ret_29 = Str_Printf(lit_stringBase0, var_r5_24);
+    temp_ret_29 = Str_Printf("_%02d%s", var_r5_24);
     var_r30_31 = temp_ret_29;
     if (arg1 < 0) {
-        var_r4_37 = &lit_stringBase0[0xA];
+        var_r4_37 = "s";
         if (arg2 != 0) {
-            var_r4_37 = &lit_stringBase0[8];
+            var_r4_37 = "b";
         }
-        var_r30_31 = Str_Printf(&lit_stringBase0[0xC], var_r4_37, lit_stringBase0, M2C_BITWISE(f32, temp_ret_29));
+        var_r30_31 = Str_Printf("_all%s", var_r4_37, "_%02d%s", M2C_BITWISE(f32, temp_ret_29));
     }
     M2C_STRUCT_COPY((s32) &sp4 + 4, (s32) (&lit_840 - 4) + 4, 0x100);
-    Str_Printf(&lit_stringBase0[0x13], &sp8, var_r30_31, M2C_BITWISE(f32, strncpy(&sp8, arg0, 0x20 - (strlen(var_r30_31) + 5))));
+    Str_Printf("%s%s", &sp8, var_r30_31, M2C_BITWISE(f32, strncpy(&sp8, arg0, 0x20 - (strlen(var_r30_31) + 5))));
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char *, signed char[35])' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
 void MKCollision_MangleName(const char *arg0, int arg1) {
     s8 sp8;
     M2C_UNK sp4;
     s8 *temp_ret_91;
     s8 *var_r31_93;
 
-    temp_ret_91 = Str_Printf(&lit_stringBase0[0x18], lit_stringBase0);
+    temp_ret_91 = Str_Printf("_%02d", "_%02d%s");
     var_r31_93 = temp_ret_91;
     if (arg1 < 0) {
-        var_r31_93 = Str_Printf(&lit_stringBase0[0x1E], (u32) (u64) temp_ret_91, M2C_BITWISE(f32, temp_ret_91));
+        var_r31_93 = Str_Printf("_all", (u32) (u64) temp_ret_91, M2C_BITWISE(f32, temp_ret_91));
     }
     M2C_STRUCT_COPY((s32) &sp4 + 4, (s32) (&lit_834 - 4) + 4, 0x100);
-    Str_Printf(&lit_stringBase0[0x13], &sp8, var_r31_93, M2C_BITWISE(f32, strncpy(&sp8, arg0, 0x20 - (strlen(var_r31_93) + 5))));
+    Str_Printf("%s%s", &sp8, var_r31_93, M2C_BITWISE(f32, strncpy(&sp8, arg0, 0x20 - (strlen(var_r31_93) + 5))));
 }
 #endif
 

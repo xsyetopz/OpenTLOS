@@ -25,40 +25,8 @@ extern MKClothManager gClothManager;
 extern MKDynamicBoneSystem gDynamicBones;
 extern MKAttachment *pDeathRow;
 extern s8 *pTemplatesList;
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
-static s8 lit_stringBase0[0x1E] = {
-    0x72,
-    0x5F,
-    0x70,
-    0x5F,
-    0x67,
-    0x5F,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x6D,
-    0x64,
-    0x6C,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x6D,
-    0x64,
-    0x67,
-    0,
-    0x67,
-    0x72,
-    0x61,
-    0x73,
-    0x73,
-    0,
-    0x63,
-    0x5F,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void MKModel_EnableClothUpdate(MKModel *arg0, bool arg1) {
     f32 temp_r3_14;
 
@@ -1519,7 +1487,7 @@ block_4:
         var_r15_2832 = M2C_FIELD(var_r17_2818, s32 *, 0xC);
 loop_19:
         if (var_r15_2832 < (s32) (M2C_FIELD(var_r17_2818, s32 *, 0xC) + M2C_FIELD(var_r17_2818, s32 *, 8))) {
-            if (strnicmp(MKModel_GetRefPointName(arg0, var_r15_2832), lit_stringBase0, 6) == 0) {
+            if (strnicmp(MKModel_GetRefPointName(arg0, var_r15_2832), "r_p_g_", 6) == 0) {
                 var_r24_2845 = 0;
                 var_r18_2847 = 0;
                 do {
@@ -1592,7 +1560,7 @@ block_24:
             var_r18_2949 = M2C_FIELD(var_r17_2818, s32 *, 0xC);
 loop_39:
             if (var_r18_2949 < (s32) (M2C_FIELD(var_r17_2818, s32 *, 0xC) + M2C_FIELD(var_r17_2818, s32 *, 8))) {
-                if (strnicmp(MKModel_GetRefPointName(arg0, var_r18_2949), lit_stringBase0, 6) != 0) {
+                if (strnicmp(MKModel_GetRefPointName(arg0, var_r18_2949), "r_p_g_", 6) != 0) {
                     *(&sp8 + var_r15_2929) = var_r18_2949;
                     var_r27_2928 += 1;
                     var_r15_2929 += 4;
@@ -2169,9 +2137,9 @@ loop_2:
             var_r25_3668 = malloc(0x4C);
         }
         var_r27_3636 = var_r25_3668;
-        temp_ret_3689 = MKArchive_Load(Str_Printf(&lit_stringBase0[7], temp_r26_3632, M2C_BITWISE(f32, memset(var_r25_3668, 0, 0x4CU))), (s32 *) (var_r25_3668 + 0x28), NULL, -1);
+        temp_ret_3689 = MKArchive_Load(Str_Printf("%s.mdl", temp_r26_3632, M2C_BITWISE(f32, memset(var_r25_3668, 0, 0x4CU))), (s32 *) (var_r25_3668 + 0x28), NULL, -1);
         M2C_FIELD(var_r25_3668, s8 **, 0x30) = temp_ret_3689;
-        M2C_FIELD(M2C_FIELD(var_r25_3668, s8 **, 0x30), s8 **, 0x6C) = MKArchive_Load(Str_Printf(&lit_stringBase0[0xE], temp_r26_3632, M2C_BITWISE(f32, temp_ret_3689)), (s32 *) (var_r25_3668 + 0x28), NULL, -1);
+        M2C_FIELD(M2C_FIELD(var_r25_3668, s8 **, 0x30), s8 **, 0x6C) = MKArchive_Load(Str_Printf("%s.mdg", temp_r26_3632, M2C_BITWISE(f32, temp_ret_3689)), (s32 *) (var_r25_3668 + 0x28), NULL, -1);
         strcpy(var_r25_3668, temp_r26_3632);
         ((MKModelTemplateData *) ((MKModelTemplateData *) M2C_FIELD(var_r25_3668, s8 **, 0x30)))->UnpackTemplatePointers(0U);
         var_r28_3709 = 0;
@@ -2383,7 +2351,7 @@ loop_68:
 loop_79:
     temp_r3_4118 = M2C_FIELD(M2C_FIELD(var_r30_3927, s8 **, 0), void **, 0x30);
     if (var_r25_4097 < (s16) M2C_FIELD(temp_r3_4118, s16 *, 4)) {
-        if (strnicmp(*(M2C_FIELD(temp_r3_4118, s32 *, 0x50) + (var_r23_4098 + 0x30)), &lit_stringBase0[0x1B], 2) == 0) {
+        if (strnicmp(*(M2C_FIELD(temp_r3_4118, s32 *, 0x50) + (var_r23_4098 + 0x30)), "c_", 2) == 0) {
             temp_r3_4109 = M2C_FIELD(var_r30_3927, s8 **, 0x88);
             temp_r3_4109[var_r25_4097] = (u8) temp_r3_4109[var_r25_4097] | 0x4F;
         }

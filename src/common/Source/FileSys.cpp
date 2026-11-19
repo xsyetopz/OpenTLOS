@@ -25,98 +25,11 @@ static struct _struct_rkv_0x74 rkv[8];
 #endif
 static M2C_UNK asyncReg;
 static s8 *key_536[6];
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
-static s8 *gpTempMemFilePatterns = lit_stringBase0;
+#if 0 // DRAFT: illegal implicit conversion from 'const char[12]' to
+static s8 *gpTempMemFilePatterns = "*.gsb;*.qsm";
 #endif
-#if 0 // DRAFT: undefined identifier 'FindBestEntry'
-static s8 lit_stringBase0[0x55] = {
-    0x2A,
-    0x2E,
-    0x67,
-    0x73,
-    0x62,
-    0x3B,
-    0x2A,
-    0x2E,
-    0x71,
-    0x73,
-    0x6D,
-    0,
-    0x2E,
-    0x2A,
-    0,
-    0x2A,
-    0x2E,
-    0,
-    0x6F,
-    0x72,
-    0x64,
-    0x65,
-    0x72,
-    0x2E,
-    0x74,
-    0x78,
-    0x74,
-    0,
-    0x25,
-    0x73,
-    0x20,
-    0x2F,
-    0x2F,
-    0x20,
-    0x25,
-    0x64,
-    0xD,
-    0xA,
-    0,
-    0x6C,
-    0x61,
-    0x6E,
-    0x67,
-    0x75,
-    0x61,
-    0x67,
-    0x65,
-    0x4F,
-    0x72,
-    0x64,
-    0x65,
-    0x72,
-    0,
-    0x2E,
-    0x25,
-    0x73,
-    0,
-    0x25,
-    0x2E,
-    0x2A,
-    0x73,
-    0x2E,
-    0x25,
-    0x73,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0,
-    0x25,
-    0x2E,
-    0x2A,
-    0x73,
-    0x25,
-    0x73,
-    0x2E,
-    0x25,
-    0x73,
-    0,
-    0x44,
-    0x61,
-    0x74,
-    0x61,
-    0x5F,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'FindBestEntry'
 u32 MKArchive_GetOffset(const char *arg0) {
     s32 sp8;
     RkvFileEntry *temp_r3_15;
@@ -264,7 +177,7 @@ loop_10:
     } else {
         var_r26_226 = malloc(0x400);
     }
-    File_FileServerOutputFilename(lit_stringBase0 + 0x12);
+    File_FileServerOutputFilename"order.txt";
     temp_ret_239 = File_Open(M2C_ERROR(/* Read from unset register $r3 */), 2);
     var_f1_239 = M2C_BITWISE(f32, temp_ret_239);
     var_r3_239 = temp_ret_239;
@@ -279,7 +192,8 @@ loop_29:
             if ((s32) M2C_FIELD(temp_r4_248, s32 *, 8) != -1) {
                 temp_r5_252 = M2C_FIELD(temp_r4_248, s16 *, 0x10);
                 if (temp_r5_252 != 0) {
-                    temp_r3_260 = Str_Printf(lit_stringBase0 + 0x1C, M2C_FIELD(temp_r4_248, s32 *, 0), temp_r5_252, var_f1_239);
+                    temp_r3_260 = Str_Printf("%s // %d
+\n", M2C_FIELD(temp_r4_248, s32 *, 0), temp_r5_252, var_f1_239);
                     strcat(var_r26_226, temp_r3_260);
                     temp_ret_267 = strlen(temp_r3_260);
                     var_f1_239 = M2C_BITWISE(f32, temp_ret_267);
@@ -412,7 +326,7 @@ s8 *MKArchive_Load(const char *arg0, int *arg1, void *arg2, int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'System_GetCommandLineParameter(signed char *, unsigned
+#if 0 // DRAFT: function call 'Str_Upper(signed char *)' does not match
 void MKArchive_SetOrder(RkvFileEntry *arg0) {
     RkvFileEntry *temp_r3_564;
     RkvFileEntry *temp_r3_612;
@@ -429,17 +343,17 @@ void MKArchive_SetOrder(RkvFileEntry *arg0) {
         temp_r5_521 = fileOrderId;
         fileOrderId = temp_r5_521 + 1;
         arg0->unk10 = temp_r5_521;
-        System_GetCommandLineParameter(lit_stringBase0 + 0x27, 0U);
+        System_GetCommandLineParameter("languageOrder", 0U);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             Str_Upper(arg0->unk0);
             temp_r0_534 = M2C_ERROR(/* Read from unset register $r3 */);
             Translation_GetLanguageName((TranslationLanguage) 0);
-            temp_r3_546 = strstr(temp_r0_534, Str_Printf(lit_stringBase0 + 0x35, M2C_ERROR(/* Read from unset register $r3 */), lit_stringBase0));
+            temp_r3_546 = strstr(temp_r0_534, Str_Printf(".%s", M2C_ERROR(/* Read from unset register $r3 */), "*.gsb;*.qsm"));
             if (temp_r3_546 != 0U) {
                 var_r27_552 = 2;
                 do {
                     Translation_GetLanguageName((TranslationLanguage) var_r27_552);
-                    temp_r3_564 = pMainRkv->GetEntry(Str_Printf(lit_stringBase0 + 0x39, temp_r3_546 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */)));
+                    temp_r3_564 = pMainRkv->GetEntry(Str_Printf("%.*s.%s", temp_r3_546 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */)));
                     if ((temp_r3_564 != NULL) && ((s16) temp_r3_564->unk10 <= 0)) {
                         arg0->unk12 = 1;
                         temp_r4_572 = fileOrderId;
@@ -451,12 +365,12 @@ void MKArchive_SetOrder(RkvFileEntry *arg0) {
                 } while (var_r27_552 < 0xD);
             }
             Translation_GetLanguageCode((TranslationLanguage) 0);
-            temp_r3_592 = strstr(temp_r0_534, Str_Printf(lit_stringBase0 + 0x41, M2C_ERROR(/* Read from unset register $r3 */), lit_stringBase0));
+            temp_r3_592 = strstr(temp_r0_534, Str_Printf("%s.", M2C_ERROR(/* Read from unset register $r3 */), "*.gsb;*.qsm"));
             if (temp_r3_592 != 0U) {
                 var_r28_598 = 2;
                 do {
                     Translation_GetLanguageCode((TranslationLanguage) var_r28_598);
-                    temp_r3_612 = pMainRkv->GetEntry(Str_Printf(lit_stringBase0 + 0x45, temp_r3_592 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */), temp_r3_592 + 3));
+                    temp_r3_612 = pMainRkv->GetEntry(Str_Printf("%.*s%s.%s", temp_r3_592 - temp_r0_534, arg0->unk0, M2C_ERROR(/* Read from unset register $r3 */), temp_r3_592 + 3));
                     if ((temp_r3_612 != NULL) && ((s16) temp_r3_612->unk10 <= 0)) {
                         arg0->unk12 = 1;
                         temp_r4_620 = fileOrderId;
@@ -561,7 +475,7 @@ s32 MKArchive_GetAsyncRegistrationStatus() {
         return -1;
     case 7:
         M2C_FIELD(&asyncReg, s32 *, 0x80) = 0;
-        if (strnicmp(&rkv[nmbrRkvs].unk40, lit_stringBase0 + 0x4F, 5) == 0) {
+        if (strnicmp(&rkv[nmbrRkvs].unk40, "Data_", 5) == 0) {
             pMainRkv = (MKHeap *) &rkv[nmbrRkvs];
         }
         nmbrRkvs += 1;

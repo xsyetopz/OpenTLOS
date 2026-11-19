@@ -20,93 +20,6 @@ static s16 pMatFlags_847[0x80];
 static BlendShapeState _defaultStateArea_913[6];
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
-static s8 lit_stringBase0[0x54] = {
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0,
-    0x2E,
-    0x61,
-    0x6E,
-    0x67,
-    0,
-    0x2E,
-    0,
-    0x5F,
-    0x6C,
-    0x76,
-    0x65,
-    0,
-    0x7A,
-    0x25,
-    0x2E,
-    0x2A,
-    0x73,
-    0,
-    0x74,
-    0x5F,
-    0x41,
-    0x30,
-    0x30,
-    0x32,
-    0x5F,
-    0x53,
-    0x70,
-    0x61,
-    0x72,
-    0x78,
-    0x5F,
-    0x6D,
-    0x6F,
-    0x75,
-    0x74,
-    0x68,
-    0x5F,
-    0x30,
-    0x30,
-    0,
-    0x7A,
-    0x5F,
-    0x41,
-    0x30,
-    0x30,
-    0x32,
-    0x5F,
-    0x4A,
-    0x61,
-    0x77,
-    0,
-    0x74,
-    0x5F,
-    0x62,
-    0x6C,
-    0x65,
-    0x6E,
-    0x64,
-    0x53,
-    0x68,
-    0x61,
-    0x70,
-    0x65,
-    0x5F,
-    0x30,
-    0x30,
-    0,
-    0x7A,
-    0x5F,
-    0x62,
-    0x32,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x61,
-    0x6E,
-    0x6D,
-    0,
-}; /* const */
-
 void Animation::EnableCustomMatrices(bool arg0) {
     MKHeap *temp_r3_18;
     MKHeap *temp_r3_33;
@@ -1379,7 +1292,7 @@ loop_4:
     if (var_r29_2477 < (s32) this->unk10) {
         temp_r4_2481 = *(this + var_r31_2478);
         if ((u32) M2C_FIELD(M2C_FIELD(temp_r4_2481, void **, 0x28), u32 *, 0x18) == 0U) {
-            M2C_FIELD(M2C_FIELD(*(this + var_r31_2478), void **, 0x28), s8 **, 0x18) = MKArchive_Load(Str_Printf(lit_stringBase0, temp_r4_2481, &lit_stringBase0[5]), NULL, NULL, -1);
+            M2C_FIELD(M2C_FIELD(*(this + var_r31_2478), void **, 0x28), s8 **, 0x18) = MKArchive_Load(Str_Printf("%s%s", temp_r4_2481, ".ang"), NULL, NULL, -1);
         }
         var_r29_2477 += 1;
         var_r31_2478 += 4;
@@ -1519,7 +1432,7 @@ Animation *Animation::Create(const char *arg0, int arg1) {
     void *var_r3_2738;
 
     strcpy(&spC, (s8 *) this);
-    strtok(&spC, &lit_stringBase0[0xA]);
+    strtok(&spC, ".");
     temp_r3_2692 = CreateTemplate(&spC);
     temp_r3_2695 = temp_r3_2692->unk28;
     var_r30_2696 = 0;
@@ -1564,7 +1477,7 @@ loop_15:
     if (var_r27_2766 < (s8) M2C_FIELD(temp_r3_2790, u8 *, 4)) {
         temp_r26_2772 = *(temp_r3_2790 + (var_r28_2768 + 0x30));
         temp_r3_2774 = strlen(temp_r26_2772);
-        if ((temp_r3_2774 >= 4) && (stricmp(&lit_stringBase0[0xC], &temp_r26_2772[temp_r3_2774] - 4) == 0)) {
+        if ((temp_r3_2774 >= 4) && (stricmp("_lve", &temp_r26_2772[temp_r3_2774] - 4) == 0)) {
             var_r29_2722->unk28 = var_r27_2766;
         } else {
             var_r27_2766 += 1;
@@ -1604,7 +1517,7 @@ loop_24:
     if (var_r30_2843 < (s8) M2C_FIELD(temp_r3_2892, u8 *, 8)) {
         temp_r27_2849 = *(temp_r3_2892->unk1C + var_r28_2845);
         temp_ret_2851 = strlen(temp_r27_2849);
-        if (var_r29_2722->NodeExists(Str_Printf(&lit_stringBase0[0x11], temp_ret_2851 - 4, temp_r27_2849 + 1, M2C_BITWISE(f32, temp_ret_2851)), &sp8) != 0) {
+        if (var_r29_2722->NodeExists(Str_Printf("z%.*s", temp_ret_2851 - 4, temp_r27_2849 + 1, M2C_BITWISE(f32, temp_ret_2851)), &sp8) != 0) {
             *(var_r29_2722->unk0->unk28->unk1C + (var_r28_2845 + 8)) = (s8) sp8;
             *(var_r29_2722->unk0->unk28 + ((sp8 << 5) + 0x3C)) = var_r30_2843;
         } else {
@@ -1615,8 +1528,8 @@ loop_24:
         var_r28_2845 += 0x10;
         goto loop_24;
     }
-    var_r29_2722->LinkBlendShapeToNode(&lit_stringBase0[0x17], &lit_stringBase0[0x2D]);
-    var_r29_2722->LinkBlendShapeToNode(&lit_stringBase0[0x38], &lit_stringBase0[0x48]);
+    var_r29_2722->LinkBlendShapeToNode("t_A002_Sparx_mouth_00", "z_A002_Jaw");
+    var_r29_2722->LinkBlendShapeToNode("t_blendShape_00", "z_b2");
     return (Animation *) var_r29_2722;
 }
 #endif
@@ -1644,7 +1557,7 @@ loop_4:
     if (var_r31_2925 != NULL) {
         M2C_FIELD(var_r31_2925, s32 *, 0x24) = (s32) (M2C_FIELD(var_r31_2925, s32 *, 0x24) + 1);
     } else {
-        temp_r3_2955 = Str_Printf(&lit_stringBase0[0x4D], arg0);
+        temp_r3_2955 = Str_Printf("%s.anm", arg0);
         temp_r3_2959 = ((MKHeap *) (MKArchive_Exists(temp_r3_2955, &sp8)))->Current();
         if (temp_r3_2959 != NULL) {
             var_r31_2925 = ((MKHeap *) (temp_r3_2959->Current()))->Alloc(0x34, NULL, 0);

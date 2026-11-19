@@ -32,27 +32,8 @@ extern M2C_UNK ActivePlayer;
 extern s32 Sound_CurrentState;
 extern MKHeap currentVideo;
 static u8 videoVolume = 0x7F;
-#if 0 // DRAFT: illegal function definition
-static s8 lit_stringBase0[0x11] = {
-    0x76,
-    0x69,
-    0x64,
-    0x65,
-    0x6F,
-    0x2F,
-    0x25,
-    0x73,
-    0x2E,
-    0x74,
-    0x68,
-    0x70,
-    0,
-    0x5F,
-    0x35,
-    0x30,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal function definition
 void Video_SwitchSoundState(sound_state arg0) {
     if ((s32) arg0 != (s32) Sound_CurrentState) {
         switch ((s32) arg0) {                       /* irregular */
@@ -276,8 +257,8 @@ MKHeap *Video_CreateStreaming(const char *arg0, bool arg1, int arg2, void *arg3,
     void *var_r3_544;
 
     Video_SwitchSoundState((sound_state) 1);
-    sprintf(&sp8, lit_stringBase0, arg0);
-    temp_r3_505 = strstr(&sp8, &lit_stringBase0[0xD]);
+    sprintf(&sp8, "video/%s.thp", arg0);
+    temp_r3_505 = strstr(&sp8, "_50");
     if ((temp_r3_505 != NULL) && (File_Length(&sp8) == 0)) {
         M2C_FIELD(temp_r3_505, s8 *, 1) = 0x36;
     }

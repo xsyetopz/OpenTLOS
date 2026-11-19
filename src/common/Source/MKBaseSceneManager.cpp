@@ -99,7 +99,7 @@ loop_18:
                         M2C_FIELD(M2C_FIELD(temp_r3_185, void **, 0x44), M2C_UNK (**)(void *), 0xC)(temp_r3_185);
                         temp_r3_190 = this->unkD0;
                         M2C_FIELD(M2C_FIELD(temp_r3_190, void **, 0x44), M2C_UNK (**)(void *), 0x14)(temp_r3_190);
-                        M2C_FIELD(this->__vptr, M2C_UNK (**)(MKSceneManager *, void *), 0x50)(this, this->unkD0);
+                        AddProp(this->unkD0);
                         temp_r3_201 = this->unkD0;
                         M2C_FIELD(M2C_FIELD(temp_r3_201, void **, 0x44), M2C_UNK (**)(void *), 0x34)(temp_r3_201);
                     } else {
@@ -131,7 +131,7 @@ loop_37:
                                 }
                                 temp_r3_264 = this->unkD0;
                                 M2C_FIELD(M2C_FIELD(temp_r3_264, void **, 0x44), M2C_UNK (**)(void *), 0x14)(temp_r3_264);
-                                M2C_FIELD(this->__vptr, M2C_UNK (**)(MKSceneManager *, void *), 0x50)(this, this->unkD0);
+                                AddProp(this->unkD0);
                                 goto loop_40;
                             }
                         }
@@ -210,7 +210,7 @@ void MKSceneManager::CreatePropDeferred(const char *arg0, MKProp **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void *MKSceneManager::CreateProp(const char *arg0) {
     MKPropCreationTable *sp8;
     MKPropCreationTable *temp_r31_450;
@@ -222,7 +222,7 @@ void *MKSceneManager::CreateProp(const char *arg0) {
     M2C_FIELD(temp_r3_453, MKPropCreationTable **, 0) = temp_r31_450;
     M2C_FIELD(M2C_FIELD(temp_r3_453, void **, 0x44), M2C_UNK (**)(), 0xC)();
     M2C_FIELD(M2C_FIELD(temp_r3_453, void **, 0x44), M2C_UNK (**)(void *), 0x14)(temp_r3_453);
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(MKSceneManager *, void *), 0x50)(this, temp_r3_453);
+    AddProp(temp_r3_453);
     return temp_r3_453;
 }
 #endif
@@ -292,7 +292,7 @@ loop_9:
         }
         return NULL;
     }
-    var_r21_586 = M2C_FIELD(this->__vptr, MKPropDescriptor *(**)(MKSceneManager *, s8 *), 0xB4)(this, arg0);
+    var_r21_586 = FindDescriptorInLocalChunk(arg0);
     if (var_r21_586 == NULL) {
         temp_r12_588 = M2C_FIELD(var_r29_489, MKPropDescriptor *(**)(), 4);
         if (temp_r12_588 != NULL) {
@@ -304,7 +304,7 @@ loop_9:
             }
             var_r21_586 = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        temp_r3_613 = M2C_FIELD(this->__vptr, MKHeap *(**)(MKSceneManager *, MKPropDescriptor *), 0x58)(this, var_r21_586);
+        temp_r3_613 = AddPropDescriptor(var_r21_586);
         if (var_r28_495 != NULL) {
             var_r21_586->unk0 = var_r28_495;
         } else {

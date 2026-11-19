@@ -38,37 +38,6 @@ static CARDFileInfo fileInfo_664;
 static CARDStat stat_786;
 #if 0 // DRAFT: undefined identifier 'SetFinishedStep'
 static M2C_UNK lit_303;                                /* unable to generate initializer: unknown type; const */
-static s8 lit_stringBase0[0x1D] = {
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0,
-    0x2F,
-    0x69,
-    0x63,
-    0x6F,
-    0x6E,
-    0x73,
-    0x2F,
-    0,
-    0x69,
-    0x63,
-    0x6F,
-    0x6E,
-    0x2E,
-    0x74,
-    0x70,
-    0x6C,
-    0,
-    0x44,
-    0x61,
-    0x74,
-    0x61,
-    0x25,
-    0x64,
-    0,
-}; /* const */
 
 void Step_CheckFileSystem() {
     s32 temp_r3_34;
@@ -974,7 +943,7 @@ s32 MKMemoryCard_CalculateFileSize() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: pointer/array required
 void *LoadIconFile(const char *arg0, int *arg1, int *arg2, unsigned long *arg3) {
     M2C_UNK spC;
     void *sp8;
@@ -999,7 +968,7 @@ void *LoadIconFile(const char *arg0, int *arg1, int *arg2, unsigned long *arg3) 
     void *var_r3_1989;
 
     sp8 = NULL;
-    TEXGetPalette(&sp8, Str_Printf(lit_stringBase0, &lit_stringBase0[5], &lit_stringBase0[0xD]));
+    TEXGetPalette(&sp8, Str_Printf("%s%s", "/icons/", "icon.tpl"));
     var_r30_1912 = M2C_FIELD(sp8, u32 *, 4);
     if (var_r30_1912 > 8U) {
         var_r30_1912 = 8U;
@@ -1474,8 +1443,8 @@ void MKMemoryCard_InitModule() {
         var_r3_2816 += 1;
         var_ctr_2818 -= 1;
     } while (var_ctr_2818 != 0);
-    if (DVDConvertPathToEntrynum(Str_Printf(lit_stringBase0, &lit_stringBase0[5], &lit_stringBase0[0xD], temp_f1_2796)) != -1) {
-        CardTemplate->unk68 = LoadIconFile(&lit_stringBase0[0xD], (s32 *) &CardTemplate->unk64, (s32 *) &CardTemplate->unk6C, &CardTemplate->unk70);
+    if (DVDConvertPathToEntrynum(Str_Printf("%s%s", "/icons/", "icon.tpl", temp_f1_2796)) != -1) {
+        CardTemplate->unk68 = LoadIconFile("icon.tpl", (s32 *) &CardTemplate->unk64, (s32 *) &CardTemplate->unk6C, &CardTemplate->unk70);
     }
     CARDInit();
 }
@@ -1567,7 +1536,7 @@ void MKMemoryCard_SetAppInfo(const char *arg0, const char *arg1, int *arg2) {
     var_r28_3064 = 0;
     var_r31_3066 = 0;
     do {
-        var_f1_3056 = M2C_BITWISE(f32, strcpy(slotName + var_r31_3066, Str_Printf(&lit_stringBase0[0x16], var_r28_3064, var_f1_3056)));
+        var_f1_3056 = M2C_BITWISE(f32, strcpy(slotName + var_r31_3066, Str_Printf("Data%d", var_r28_3064, var_f1_3056)));
         var_r28_3064 += 1;
         var_r31_3066 += 0x40;
     } while (var_r28_3064 < 0xE);

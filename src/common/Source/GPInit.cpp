@@ -26,106 +26,8 @@ static M2C_UNK DefaultFifo;
 static s32 gFramesPerSecond = 0x3C;
 static s32 gCPUFramesPerSecond = 0x3C;
 static s32 gGPUFramesPerSecond = 0x3C;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MK_VertexDescriptorMode'
-static s8 lit_stringBase0[0x60] = {
-    0x53,
-    0x69,
-    0x6D,
-    0x75,
-    0x6C,
-    0x61,
-    0x74,
-    0x65,
-    0x64,
-    0x20,
-    0x4D,
-    0x65,
-    0x6D,
-    0x6F,
-    0x72,
-    0x79,
-    0x20,
-    0x53,
-    0x69,
-    0x7A,
-    0x65,
-    0x20,
-    0x3D,
-    0x20,
-    0x25,
-    0x64,
-    0x4D,
-    0x42,
-    0xA,
-    0x50,
-    0x68,
-    0x79,
-    0x73,
-    0x69,
-    0x63,
-    0x61,
-    0x6C,
-    0x20,
-    0x4D,
-    0x65,
-    0x6D,
-    0x6F,
-    0x72,
-    0x79,
-    0x20,
-    0x53,
-    0x69,
-    0x7A,
-    0x65,
-    0x20,
-    0x3D,
-    0x20,
-    0x25,
-    0x64,
-    0x4D,
-    0x42,
-    0xA,
-    0,
-    0x47,
-    0x50,
-    0x49,
-    0x6E,
-    0x69,
-    0x74,
-    0x2E,
-    0x63,
-    0x70,
-    0x70,
-    0,
-    0x47,
-    0x50,
-    0x49,
-    0x6E,
-    0x69,
-    0x74,
-    0x3A,
-    0x20,
-    0x69,
-    0x6E,
-    0x76,
-    0x61,
-    0x6C,
-    0x69,
-    0x64,
-    0x20,
-    0x54,
-    0x56,
-    0x20,
-    0x66,
-    0x6F,
-    0x72,
-    0x6D,
-    0x61,
-    0x74,
-    0xA,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MK_VertexDescriptorMode'
 void MK_SetVDMode(MK_VertexDescriptorMode arg0) {
     if ((s8) init_512 == 0) {
         lastMode_511 = -1;
@@ -258,7 +160,7 @@ void DrawSyncHandler(unsigned short arg0) {
     }
 }
 
-#if 0 // DRAFT: function call 'OSReport(signed char[96], unsigned long, unsigned long,
+#if 0 // DRAFT: illegal string constant
 void __GPInitMem() {
     s32 temp_r31_365;
     u32 temp_r31_345;
@@ -269,7 +171,9 @@ void __GPInitMem() {
 
     temp_r31_345 = OSGetPhysicalMemSize() >> 0x14U;
     temp_ret_346 = OSGetConsoleSimulatedMemSize();
-    OSReport(lit_stringBase0, temp_ret_346 >> 0x14U, temp_r31_345, M2C_BITWISE(f32, temp_ret_346));
+    OSReport("Simulated Memory Size = %dMB
+Physical Memory Size = %dMB
+", temp_ret_346 >> 0x14U, temp_r31_345, M2C_BITWISE(f32, temp_ret_346));
     temp_r31_354 = OSGetArenaLo();
     temp_r3_355 = OSGetArenaHi();
     temp_r3_361 = OSInitAlloc(temp_r31_354, temp_r3_355, 1);
@@ -310,7 +214,7 @@ void __GPInitRenderMode(_GXRenderModeObj *arg0) {
         rmode = &GXMpal480IntDf;
         break;
     default:
-        OSPanic(&lit_stringBase0[0x3A], 0x149, &lit_stringBase0[0x45], M2C_BITWISE(f32, temp_ret_402));
+        OSPanic("GPInit.cpp", 0x149, "GPInit: invalid TV format\n", M2C_BITWISE(f32, temp_ret_402));
         break;
     }
     rmode->fbWidth = 0x280;

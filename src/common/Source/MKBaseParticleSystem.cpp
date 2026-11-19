@@ -795,7 +795,7 @@ void MKBaseParticleSystem::Update() {
             if (temp_f1_1288 == 0.0f) {
                 this->unk60.unk7C = 0;
                 this->unk60.unk80 = 0.0f;
-                if (M2C_FIELD(this->__vptr, u8 (**)(), 0x48)() == 0) {
+                if (OnTimeOut() == 0) {
                     return;
                 }
                 goto block_6;
@@ -807,7 +807,7 @@ block_6:
         if ((u8) M2C_FIELD(this, u8 *, 0xB4) != 0) {
             this->unk60.unk58 = M2C_BITWISE(f32, OSGetTick());
             EmitParticles();
-            M2C_FIELD(this->__vptr, M2C_UNK (**)(MKBaseParticleSystem *), 0x44)(this);
+            UpdateParticles();
             PostUpdate();
             this->unk60.unk58 = M2C_BITWISE(f32, (OSGetTick() - M2C_BITWISE(s32, this->unk60.unk58)));
             var_r3_1329 = this->unk60.unk58;
@@ -821,12 +821,10 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 s32 MKBaseParticleSystem::OnTimeOut() {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
     return 1;
 }
-#endif
 
 void MKBaseParticleSystem::Deinit() {
     DestroyAllParticles();
