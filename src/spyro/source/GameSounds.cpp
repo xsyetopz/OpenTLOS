@@ -19,23 +19,23 @@ static M2C_UNK soundIDs;                            /* unable to generate initia
 #endif
 static M2C_UNK *pCurrentID = (long *) (&soundIDs);
 
-#if 0 // DRAFT: function call 'KDSound_ResolveSound(signed char *, int *)' does not match 'KDSound_ResolveSound(const char *, int *)'
 void GameSounds_Update() {
-    s32 temp_cr0_eq_29;
     s32 var_r31_16;
 
     KDSound_Update();
     var_r31_16 = 0x64;
+    goto cond_2;
 loop_2:
-    temp_cr0_eq_29 = var_r31_16 == 0;
-    var_r31_16 -= 1;
-    if ((temp_cr0_eq_29 == 0) && ((s32 *) M2C_FIELD(pCurrentID, s32 **, 0) != NULL)) {
-        *M2C_FIELD(pCurrentID, s32 **, 0) = KDSound_ResolveSound(M2C_FIELD(pCurrentID, s8 **, 4), (int *) &hint);
-        pCurrentID += 8;
+    *M2C_FIELD(pCurrentID, s32 **, 0) = KDSound_ResolveSound((const char *) M2C_FIELD(pCurrentID, s8 **, 4), (int *) &hint);
+    pCurrentID = (M2C_UNK *) ((s8 *) pCurrentID + 8);
+cond_2:
+    if (var_r31_16-- == 0) {
+        return;
+    }
+    if ((s32 *) M2C_FIELD(pCurrentID, s32 **, 0) != NULL) {
         goto loop_2;
     }
 }
-#endif
 
 void GameSounds_InitModule() {
     Level::GetWorldInfo();
