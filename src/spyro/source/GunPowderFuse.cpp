@@ -176,307 +176,225 @@ void GunPowderFuse::EmitBurn(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to 'float'
 BurnPoint *GunPowderFuse::GetFirst() {
-    f32 temp_f3_239;
-    f32 var_f0_248;
-    f32 var_f4_228;
-    s32 var_ctr_236;
-    s32 var_r3_235;
-    s32 var_r4_233;
-    s32 var_r5_234;
+    s32 i;
+    u8 *p;
+    f32 f;
+    f32 a;
+    f32 best;
+    s32 bestIdx;
 
-    var_f4_228 = 1.0f;
-    var_r4_233 = -1;
-    var_r5_234 = 0;
-    var_r3_235 = 0;
-    var_ctr_236 = 8;
-    do {
-        temp_f3_239 = *(this + (var_r3_235 + 0xCC));
-        if ((temp_f3_239 <= 1.0f) && (temp_f3_239 >= 0.0f)) {
-            if (temp_f3_239 < 0.0f) {
-                var_f0_248 = -temp_f3_239;
+    best = 1.0f;
+    bestIdx = -1;
+    p = (u8 *) this;
+    for (i = 0; i < 8; i++, p += 0x3C) {
+        f = M2C_FIELD(p, f32 *, 0xCC);
+        if ((f <= 1.0f) && (f >= 0.0f)) {
+            if (f < 0.0f) {
+                a = -f;
             } else {
-                var_f0_248 = temp_f3_239;
+                a = f;
             }
-            if (var_f0_248 < var_f4_228) {
-                var_f4_228 = temp_f3_239;
-                var_r4_233 = var_r5_234;
+            if (a < best) {
+                best = f;
+                bestIdx = i;
             }
         }
-        var_r5_234 += 1;
-        var_r3_235 += 0x3C;
-        var_ctr_236 -= 1;
-    } while (var_ctr_236 != 0);
-    if (var_r4_233 != -1) {
-        return (BurnPoint *) (this + ((var_r4_233 * 0x3C) + 0xC4));
+    }
+    if (bestIdx != -1) {
+        return (BurnPoint *) ((u8 *) this + (bestIdx * 0x3C) + 0xC4);
     }
     return NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 BurnPoint *GunPowderFuse::GetNextPositive(BurnPoint *arg0) {
-    f32 temp_f4_292;
-    f32 temp_f4_306;
-    f32 var_f0_309;
-    f32 var_f3_278;
-    f32 var_f5_283;
-    s32 var_ctr_289;
-    s32 var_r3_288;
-    s32 var_r6_285;
-    s32 var_r7_286;
-    void *temp_r5_291;
+    s32 i;
+    s32 idx;
+    s32 best;
+    u8 *p;
+    f32 lo;
+    f32 f;
+    f32 diff;
+    f32 a;
+    f32 bestAbs;
 
     if (arg0 != NULL) {
-        var_f3_278 = arg0->unk8;
+        lo = M2C_FIELD(arg0, f32 *, 0x8);
     } else {
-        var_f3_278 = 0.0f;
+        lo = 0.0f;
     }
-    var_f5_283 = 1.0f;
-    var_r6_285 = -1;
-    var_r7_286 = 0;
-    var_r3_288 = 0;
-    var_ctr_289 = 8;
-    do {
-        temp_r5_291 = this + var_r3_288;
-        temp_f4_292 = M2C_FIELD(temp_r5_291, f32 *, 0xCC);
-        if ((temp_f4_292 <= 1.0f) && (temp_f4_292 >= 0.0f) && (M2C_FIELD(temp_r5_291, f32 *, 0xD0) == 1.0f) && (temp_f4_292 > var_f3_278)) {
-            temp_f4_306 = temp_f4_292 - arg0->unk8;
-            if (temp_f4_306 < 0.0f) {
-                var_f0_309 = -temp_f4_306;
+    bestAbs = 1.0f;
+    best = -1;
+    idx = 0;
+    p = (u8 *) this;
+    for (i = 0; i < 8; i++, p += 0x3C, idx++) {
+        f = M2C_FIELD(p, f32 *, 0xCC);
+        if ((f <= 1.0f) && (f >= 0.0f) && (M2C_FIELD(p, f32 *, 0xD0) == 1.0f) && (f > lo)) {
+            diff = f - M2C_FIELD(arg0, f32 *, 0x8);
+            if (diff < 0.0f) {
+                a = -diff;
             } else {
-                var_f0_309 = temp_f4_306;
+                a = diff;
             }
-            if ((var_f0_309 < var_f5_283) && ((void *) (((u8 *) temp_r5_291) + 0xC4) != arg0)) {
-                if (temp_f4_306 < 0.0f) {
-                    var_f5_283 = -temp_f4_306;
-                } else {
-                    var_f5_283 = temp_f4_306;
-                }
-                var_r6_285 = var_r7_286;
+            if ((a < bestAbs) && ((BurnPoint *) (p + 0xC4) != arg0)) {
+                bestAbs = a;
+                best = idx;
             }
         }
-        var_r7_286 += 1;
-        var_r3_288 += 0x3C;
-        var_ctr_289 -= 1;
-    } while (var_ctr_289 != 0);
-    if (var_r6_285 != -1) {
-        return (BurnPoint *) (this + ((var_r6_285 * 0x3C) + 0xC4));
+    }
+    if (best != -1) {
+        return (BurnPoint *) (((u8 *) this) + (best * 0x3C) + 0xC4);
     }
     return NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'BurnPoint *'
 void GunPowderFuse::UpdatePartners() {
-    f32 temp_f0_361;
-    s32 var_r29_357;
-    s32 var_r31_358;
-    void *temp_r30_360;
+    s32 i;
+    u8 *p;
+    f32 f;
 
-    var_r29_357 = 0;
-    var_r31_358 = 0;
-    do {
-        temp_r30_360 = this + var_r31_358;
-        temp_f0_361 = M2C_FIELD(temp_r30_360, f32 *, 0xCC);
-        if ((temp_f0_361 <= 1.0f) && (temp_f0_361 >= 0.0f)) {
-            M2C_FIELD(temp_r30_360, s32 *, 0xD4) = (BurnPoint *) (GetPartner(((u8 *) temp_r30_360) + 0xC4));
+    p = (u8 *) this;
+    for (i = 0; i < 8; i++, p += 0x3C) {
+        f = M2C_FIELD(p, f32 *, 0xCC);
+        if ((f <= 1.0f) && (f >= 0.0f)) {
+            M2C_FIELD(p, s32 *, 0xD4) = GetPartner((BurnPoint *) (p + 0xC4));
         }
-        var_r29_357 += 1;
-        var_r31_358 += 0x3C;
-    } while (var_r29_357 < 8);
-}
-#endif
-
-#if 0 // DRAFT: undefined identifier 'unkC'
-s32 GunPowderFuse::GetPartner(BurnPoint *arg0) {
-    f32 temp_f0_415;
-    f32 temp_f0_465;
-    f32 temp_f1_418;
-    f32 temp_f3_454;
-    f32 temp_f3_468;
-    f32 temp_f4_403;
-    f32 var_f0_421;
-    f32 var_f0_471;
-    f32 var_f5_391;
-    s32 var_ctr_400;
-    s32 var_ctr_451;
-    s32 var_r5_399;
-    s32 var_r5_450;
-    s32 var_r7_397;
-    s32 var_r8_398;
-    s32 var_r8_449;
-    void *temp_r6_402;
-    void *temp_r6_453;
-
-    var_f5_391 = 1.0f;
-    if (arg0->unkC == 1.0f) {
-        var_r7_397 = 0x64;
-        var_r8_398 = 0;
-        var_r5_399 = 0;
-        var_ctr_400 = 8;
-        do {
-            temp_r6_402 = this + var_r5_399;
-            temp_f4_403 = M2C_FIELD(temp_r6_402, f32 *, 0xCC);
-            if ((temp_f4_403 <= 1.0f) && (temp_f4_403 >= 0.0f) && (M2C_FIELD(temp_r6_402, f32 *, 0xD0) == -1.0f)) {
-                temp_f0_415 = arg0->unk8;
-                if (temp_f4_403 > temp_f0_415) {
-                    temp_f1_418 = temp_f4_403 - temp_f0_415;
-                    if (temp_f1_418 < 0.0f) {
-                        var_f0_421 = -temp_f1_418;
-                    } else {
-                        var_f0_421 = temp_f1_418;
-                    }
-                    if ((var_f0_421 < var_f5_391) && ((void *) (((u8 *) temp_r6_402) + 0xC4) != arg0)) {
-                        if (temp_f1_418 < 0.0f) {
-                            var_f5_391 = -temp_f1_418;
-                        } else {
-                            var_f5_391 = temp_f1_418;
-                        }
-                        var_r7_397 = var_r8_398;
-                    }
-                }
-            }
-            var_r8_398 += 1;
-            var_r5_399 += 0x3C;
-            var_ctr_400 -= 1;
-        } while (var_ctr_400 != 0);
-    } else {
-        var_r7_397 = -0x64;
-        var_r8_449 = 0;
-        var_r5_450 = 0;
-        var_ctr_451 = 8;
-        do {
-            temp_r6_453 = this + var_r5_450;
-            temp_f3_454 = M2C_FIELD(temp_r6_453, f32 *, 0xCC);
-            if ((temp_f3_454 <= 1.0f) && (temp_f3_454 >= 0.0f) && (M2C_FIELD(temp_r6_453, f32 *, 0xD0) == 1.0f)) {
-                temp_f0_465 = arg0->unk8;
-                if (temp_f3_454 < temp_f0_465) {
-                    temp_f3_468 = temp_f3_454 - temp_f0_465;
-                    if (temp_f3_468 < 0.0f) {
-                        var_f0_471 = -temp_f3_468;
-                    } else {
-                        var_f0_471 = temp_f3_468;
-                    }
-                    if ((var_f0_471 < var_f5_391) && ((void *) (((u8 *) temp_r6_453) + 0xC4) != arg0)) {
-                        if (temp_f3_468 < 0.0f) {
-                            var_f5_391 = -temp_f3_468;
-                        } else {
-                            var_f5_391 = temp_f3_468;
-                        }
-                        var_r7_397 = var_r8_449;
-                    }
-                }
-            }
-            var_r8_449 += 1;
-            var_r5_450 += 0x3C;
-            var_ctr_451 -= 1;
-        } while (var_ctr_451 != 0);
     }
-    return var_r7_397;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkC'
+s32 GunPowderFuse::GetPartner(BurnPoint *arg0) {
+    s32 i;
+    s32 idx;
+    s32 best;
+    u8 *p;
+    f32 f;
+    f32 diff;
+    f32 a;
+    f32 bestAbs;
+
+    bestAbs = 1.0f;
+    if (M2C_FIELD(arg0, f32 *, 0xC) == 1.0f) {
+        best = 0x64;
+        idx = 0;
+        p = (u8 *) this;
+        for (i = 0; i < 8; i++, p += 0x3C, idx++) {
+            f = M2C_FIELD(p, f32 *, 0xCC);
+            if ((f <= 1.0f) && (f >= 0.0f) && (M2C_FIELD(p, f32 *, 0xD0) == -1.0f)) {
+                if (f > M2C_FIELD(arg0, f32 *, 0x8)) {
+                    diff = f - M2C_FIELD(arg0, f32 *, 0x8);
+                    if (diff < 0.0f) {
+                        a = -diff;
+                    } else {
+                        a = diff;
+                    }
+                    if ((a < bestAbs) && ((BurnPoint *) (p + 0xC4) != arg0)) {
+                        bestAbs = a;
+                        best = idx;
+                    }
+                }
+            }
+        }
+    } else {
+        best = -0x64;
+        idx = 0;
+        p = (u8 *) this;
+        for (i = 0; i < 8; i++, p += 0x3C, idx++) {
+            f = M2C_FIELD(p, f32 *, 0xCC);
+            if ((f <= 1.0f) && (f >= 0.0f) && (M2C_FIELD(p, f32 *, 0xD0) == 1.0f)) {
+                if (f < M2C_FIELD(arg0, f32 *, 0x8)) {
+                    diff = f - M2C_FIELD(arg0, f32 *, 0x8);
+                    if (diff < 0.0f) {
+                        a = -diff;
+                    } else {
+                        a = diff;
+                    }
+                    if ((a < bestAbs) && ((BurnPoint *) (p + 0xC4) != arg0)) {
+                        bestAbs = a;
+                        best = idx;
+                    }
+                }
+            }
+        }
+    }
+    return best;
+}
+
 u8 GunPowderFuse::IsBurnable(float arg0) {
-    BurnPoint *var_r4_520;
-    s32 temp_r0_534;
+    BurnPoint *bp;
 
     if (IsBurntOut() != 0) {
-        return 0U;
+        return 0;
     }
-    var_r4_520 = GetFirst();
-    if (var_r4_520 == NULL) {
-        return 1U;
+    bp = GetFirst();
+    if (bp == NULL) {
+        return 1;
     }
-loop_18:
-    if (var_r4_520 == NULL) {
-        return 0U;
-    }
-    if (var_r4_520->unkC == 1.0f) {
-        if (arg0 > var_r4_520->unk8) {
-            temp_r0_534 = var_r4_520->unk10;
-            if (temp_r0_534 == 0x64) {
-                if (arg0 < 1.0f) {
-                    return 1U;
+    while (bp != NULL) {
+        if (M2C_FIELD(bp, f32 *, 0xC) == 1.0f) {
+            if (arg0 > M2C_FIELD(bp, f32 *, 0x8)) {
+                s32 t = M2C_FIELD(bp, s32 *, 0x10);
+                if (t == 100) {
+                    if (arg0 < 1.0f) {
+                        return 1;
+                    }
+                } else if (arg0 < M2C_FIELD(this, f32 *, (t * 0x3C) + 0xCC)) {
+                    return 1;
                 }
-                goto block_13;
+                bp = GetNextPositive(bp);
+            } else {
+                return 0;
             }
-            if (arg0 < *(this + ((temp_r0_534 * 0x3C) + 0xCC))) {
-                return 1U;
+        } else {
+            if ((arg0 > 0.0f) && (arg0 < M2C_FIELD(bp, f32 *, 0x8))) {
+                return 1;
             }
-block_13:
-            var_r4_520 = GetNextPositive(var_r4_520);
-            goto loop_18;
+            bp = GetNextPositive(bp);
         }
-        return 0U;
     }
-    if ((arg0 > M2C_BITWISE(f32, 0.0)) && (arg0 < var_r4_520->unk8)) {
-        return 1U;
-    }
-    var_r4_520 = GetNextPositive(var_r4_520);
-    goto loop_18;
+    return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to 'float'
 u8 GunPowderFuse::TooClose(float arg0) {
-    f32 temp_f0_597;
-    f32 var_f5_604;
-    s32 var_ctr_594;
-    s32 var_r4_592;
+    s32 i;
+    u8 *p;
+    f32 f;
+    f32 d;
 
-    var_r4_592 = 0;
-    var_ctr_594 = 8;
-loop_1:
-    temp_f0_597 = *(this + (var_r4_592 + 0xCC));
-    if ((temp_f0_597 <= 1.0f) && (temp_f0_597 >= 0.0f)) {
-        var_f5_604 = temp_f0_597 - arg0;
-        if (var_f5_604 < 0.0f) {
-            var_f5_604 = -var_f5_604;
+    p = (u8 *) this;
+    for (i = 0; i < 8; i++, p += 0x3C) {
+        f = M2C_FIELD(p, f32 *, 0xCC);
+        if ((f <= 1.0f) && (f >= 0.0f)) {
+            d = f - arg0;
+            if (d < 0.0f) {
+                d = -d;
+            }
+            if (d < (2.0f * this->unk2A8)) {
+                return 1;
+            }
         }
-        if (var_f5_604 < (2.0f * this->unk2A8)) {
-            return 1U;
-        }
-        goto block_7;
     }
-block_7:
-    var_r4_592 += 0x3C;
-    var_ctr_594 -= 1;
-    if (var_ctr_594 == 0) {
-        return 0U;
-    }
-    goto loop_1;
+    return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to 'float'
 u8 GunPowderFuse::HasAvailableBurnPoints() {
-    f32 temp_f2_633;
-    s32 var_ctr_630;
-    s32 var_r4_629;
-    s32 var_r5_628;
+    s32 i;
+    s32 n;
+    u8 *p;
+    f32 f;
 
-    var_r5_628 = 0;
-    var_r4_629 = 0;
-    var_ctr_630 = 8;
-loop_1:
-    temp_f2_633 = *(this + (var_r4_629 + 0xCC));
-    if (!(temp_f2_633 <= 1.0f) || !(temp_f2_633 >= 0.0f)) {
-        var_r5_628 += 1;
+    n = 0;
+    p = (u8 *) this;
+    for (i = 0; i < 8; i++, p += 0x3C) {
+        f = M2C_FIELD(p, f32 *, 0xCC);
+        if (!(f <= 1.0f) || !(f >= 0.0f)) {
+            n += 1;
+        }
+        if (n == 2) {
+            return 1;
+        }
     }
-    if (var_r5_628 == 2) {
-        return 1U;
-    }
-    var_r4_629 += 0x3C;
-    var_ctr_630 -= 1;
-    if (var_ctr_630 == 0) {
-        return 0U;
-    }
-    goto loop_1;
+    return 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void GunPowderFuse::Draw() {
@@ -1398,54 +1316,40 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to 'float'
 u8 GunPowderFuse::IsBurntOut() {
-    f32 temp_f2_2295;
-    s32 var_ctr_2292;
-    s32 var_r4_2291;
-    u8 var_r4_2308;
+    s32 i;
+    u8 *p;
+    f32 f;
+    u8 r;
 
-    var_r4_2291 = 0;
-    var_ctr_2292 = 8;
-loop_1:
-    temp_f2_2295 = *(this + (var_r4_2291 + 0xCC));
-    if ((temp_f2_2295 <= 1.0f) && (temp_f2_2295 >= 0.0f)) {
-        return 0U;
-    }
-    var_r4_2291 += 0x3C;
-    var_ctr_2292 -= 1;
-    if (var_ctr_2292 == 0) {
-        var_r4_2308 = 0;
-        if (((u8) this->unk2B8 != 0) || ((u8) this->unk2B9 != 0)) {
-            var_r4_2308 = 1;
+    p = (u8 *) this;
+    for (i = 0; i < 8; i++, p += 0x3C) {
+        f = M2C_FIELD(p, f32 *, 0xCC);
+        if ((f <= 1.0f) && (f >= 0.0f)) {
+            return 0;
         }
-        return var_r4_2308;
     }
-    goto loop_1;
+    r = 0;
+    if ((this->unk2B8 != 0) || (this->unk2B9 != 0)) {
+        r = 1;
+    }
+    return r;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'GunPowderFuse' to 'float'
 u8 GunPowderFuse::IsBurning() {
-    f32 temp_f2_2331;
-    s32 var_ctr_2328;
-    s32 var_r4_2327;
+    s32 i;
+    u8 *p;
+    f32 f;
 
-    var_r4_2327 = 0;
-    var_ctr_2328 = 8;
-loop_1:
-    temp_f2_2331 = *(this + (var_r4_2327 + 0xCC));
-    if ((temp_f2_2331 <= 1.0f) && (temp_f2_2331 >= 0.0f)) {
-        return 1U;
+    p = (u8 *) this;
+    for (i = 0; i < 8; i++, p += 0x3C) {
+        f = M2C_FIELD(p, f32 *, 0xCC);
+        if ((f <= 1.0f) && (f >= 0.0f)) {
+            return 1;
+        }
     }
-    var_r4_2327 += 0x3C;
-    var_ctr_2328 -= 1;
-    if (var_ctr_2328 == 0) {
-        return 0U;
-    }
-    goto loop_1;
+    return 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void GunPowderFuse::Burn(float arg0) {
@@ -1547,56 +1451,36 @@ void GunPowderFuse::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to 'MKMaterial *'
 f32 GunPowderFuse::Resolve() {
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 sp8;
-    s32 temp_r0_2610;
-    s32 var_r29_2569;
-    s32 var_r31_2571;
-    void *temp_r4_2612;
+    MKVector3 pos;
+    MKVector4 col;
+    f32 radius;
+    Corona *temp;
+    u8 *p;
+    s32 i;
 
     MKProp::Resolve();
-    this->unk2A4 = MKMaterial_Create"FX_GunPowderFuse";
-    var_r29_2569 = 0;
-    var_r31_2571 = 0;
+    this->unk2A4 = (MKMaterial *) (MKMaterial_Create("FX_GunPowderFuse"));
     this->unk2A8 /= this->unkB0->unk30.unk8;
     this->unk2AC = 2.0f * (this->unkB4 / this->unkB0->unk30.unk8);
-    do {
-        sp28 = 0.0f;
-        sp10 = 1.0f;
-        sp14 = 1.0f;
-        sp18 = 1.0f;
-        sp1C = 1.0f;
-        sp20 = 0.0f;
-        sp24 = 0.0f;
-        sp8 = this->unkB4 / 20.0f;
-        sp30 = (f64) sp10;
-        sp38 = (f64) sp18;
-        sp40 = (f64) sp20;
-        sp48 = (f64) sp28;
-        temp_r0_2610 = var_r31_2571 + 0xC4;
-        *(this + temp_r0_2610) = ((Coronas *) gb.unk64)->Alloc(*((MKVector3 *) &sp40), *((MKVector4 *) &sp30), sp8, lit_743, lit_744);
-        temp_r4_2612 = *(this + temp_r0_2610);
-        if (temp_r4_2612 != NULL) {
-            M2C_FIELD(temp_r4_2612, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2612, u8 *, 0x31) & ~0x40);
+    p = (u8 *) this;
+    for (i = 0; i < 8; i++, p += 0x3C) {
+        pos.unk0 = 0.0f;
+        pos.unk4 = 0.0f;
+        pos.unk8 = 0.0f;
+        col.unk0 = 1.0f;
+        col.unk4 = 1.0f;
+        col.unk8 = 1.0f;
+        col.unkC = 1.0f;
+        radius = this->unkB4 / 20.0f;
+        M2C_FIELD(p, Corona **, 0xC4) = (Corona *) ((Coronas *) gb.unk64)->Alloc(pos, col, radius, lit_743, lit_744);
+        temp = M2C_FIELD(p, Corona **, 0xC4);
+        if (temp != NULL) {
+            M2C_FIELD(temp, u8 *, 0x31) = (u8) (M2C_FIELD(temp, u8 *, 0x31) & ~0x40);
         }
-        var_r29_2569 += 1;
-        var_r31_2571 += 0x3C;
-    } while (var_r29_2569 < 8);
+    }
     this->unk2B0 = -((this->unk2A8 * this->unk2B0) - 1.0f);
 }
-#endif
 
 s32 GunPowderFuse::LoadLine(MKIniLine *arg0) {
     if (SplineProp::LoadLine(arg0) != 0) {
@@ -1619,33 +1503,24 @@ s32 GunPowderFuse::LoadLine(MKIniLine *arg0) {
     return (u8) (this->unkC0.LoadLine(arg0, "OnNumSecondsBeforeBurnEnd") != 0);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match 'KDSound_Stop(int *)'
 void GunPowderFuse::Deinit() {
-    Corona *temp_r4_2752;
-    MKMaterial *temp_r3_2739;
-    s32 var_r28_2745;
-    s32 var_r31_2747;
-    void *temp_r29_2749;
+    Corona *temp_r4;
+    s32 i;
+    u8 *p;
 
-    temp_r3_2739 = this->unk2A4;
-    if (temp_r3_2739 != NULL) {
-        MKMaterial_Destroy(temp_r3_2739);
+    if (this->unk2A4 != NULL) {
+        MKMaterial_Destroy(this->unk2A4);
     }
-    var_r28_2745 = 0;
-    var_r31_2747 = 0;
-    do {
-        temp_r29_2749 = this + var_r31_2747;
-        KDSound_Stop(((u8 *) temp_r29_2749) + 0xD8);
-        temp_r4_2752 = M2C_FIELD(temp_r29_2749, Corona **, 0xC4);
-        if (temp_r4_2752 != NULL) {
-            ((Coronas *) gb.unk64)->Free(temp_r4_2752);
+    p = (u8 *) this;
+    for (i = 0; i < 8; i++, p += 0x3C) {
+        KDSound_Stop((int *) (p + 0xD8));
+        temp_r4 = M2C_FIELD(p, Corona **, 0xC4);
+        if (temp_r4 != NULL) {
+            ((Coronas *) gb.unk64)->Free(temp_r4);
         }
-        var_r28_2745 += 1;
-        var_r31_2747 += 0x3C;
-    } while (var_r28_2745 < 8);
+    }
     SplineProp::Deinit();
 }
-#endif
 
 void GunPowderFuse::Init() {
     s32 var_r29_2789;
