@@ -608,52 +608,36 @@ void TrainTrack::Init() {
     this->unk88.Init(0x3E8, 0U);
 }
 
-#if 0 // DRAFT: illegal operand
 void TrainTrackDescriptor::Resolve() {
-    s32 temp_r0_1153;
-    s32 var_r29_1141;
-    s32 var_r30_1143;
-    s32 var_r31_1142;
+    s32 i;
 
     MKPropDescriptor::Resolve();
-    var_r29_1141 = 0;
-    var_r31_1142 = 0;
-    var_r30_1143 = 0;
-loop_2:
-    if (var_r29_1141 < (s32) this->unk27C) {
-        temp_r0_1153 = var_r31_1142 + 0x240;
-        var_r31_1142 += 4;
-        *(this + temp_r0_1153) = M2C_FIELD(*gMK, s32 (**)(void **, void *), 0x5C)(gMK, this + (var_r30_1143 + 0x60));
-        var_r30_1143 += 0x20;
-        var_r29_1141 += 1;
-        goto loop_2;
+    for (i = 0; i < this->unk27C; i++) {
+        *(u32 *) ((s8 *) this + (0x240 + i * 4)) = ((MKSceneManager *) gMK)->FindDescriptor((const char *) ((s8 *) this + (0x60 + i * 0x20)));
     }
 }
-#endif
 
 void TrainTrackDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[6])' does not match 'stricmp(signed char *)'
+extern "C" s32 stricmp(const char *, const char *);
 s32 TrainTrackDescriptor::LoadLine(MKIniLine *arg0) {
-    s32 temp_r4_1209;
-    s32 temp_r5_1208;
+    s8 *str;
+    s32 idx;
 
     if (MKPropDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    arg0->GetFieldName();
-    if (stricmp("piece") == 0) {
-        temp_r5_1208 = this->unk27C;
-        temp_r4_1209 = arg0->GetString(0);
-        this->unk27C = temp_r5_1208 + 1;
-        strcpy(this + ((temp_r5_1208 << 5) + 0x60), (s8 *) temp_r4_1209);
+    if (stricmp((const char *) arg0->GetFieldName(), "piece") == 0) {
+        str = (s8 *) arg0->GetString(0);
+        idx = this->unk27C;
+        this->unk27C = idx + 1;
+        strcpy((char *) this + ((idx << 5) + 0x60), (const char *) str);
         return 1;
     }
     return 0;
 }
-#endif
 
 void TrainTrackDescriptor::Init() {
     MKPropDescriptor::Init();
