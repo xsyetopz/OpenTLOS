@@ -1,0 +1,21 @@
+# The Legend of Spyro: A New Beginning (GameCube, USA)
+# symbols.txt and splits.txt are generated from files/spyro06.elf by `dtk elf config`;
+# that ELF's text/data are byte-identical to sys/main.dol.
+name: main
+object: sys/main.dol
+hash: c4c38d10687e0c5d4b99fba3981282be48134117
+object_base: orig/G6SE7D
+symbols: config/G6SE7D/symbols.txt
+splits: config/G6SE7D/splits.txt
+mw_comment_version: 11
+quick_analysis: false
+symbols_known: true
+detect_objects: false
+detect_strings: false
+write_asm: true
+common_start: 0x80583BA0
+# The original link keeps these .ctors/.dtors references but deadstrips
+# __destroy_global_chain_reference, so only these two are forced active.
+force_active:
+  - __init_cpp_exceptions_reference
+  - __fini_cpp_exceptions_reference

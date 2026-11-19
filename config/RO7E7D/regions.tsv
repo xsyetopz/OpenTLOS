@@ -1,0 +1,2 @@
+start	end	region	evidence
+0x80367EC4	0x803A2F64	rvl_bt	Strings L2CAP/RFCOMM/SDP/BTA_HH/HCISU/"USB ERR"/iosAllocAligned (Broadcom BTE stack + IOS USB, RVL SDK). End: 0x803A2ED8 is the last function called from this run; 0x803A2F64 onward is called only by Krome engine code.

@@ -1,0 +1,1 @@
+# Object paths verified byte-identical against the original executable by objdiff.

@@ -1,0 +1,4793 @@
+Sections:
+	.init       type:code align:32
+	extab       type:rodata align:32
+	extabindex  type:rodata align:32
+	.text       type:code align:32
+	.ctors      type:rodata align:32
+	.dtors      type:rodata align:32
+	.rodata     type:rodata align:32
+	.data       type:data align:32
+	.bss        type:bss align:32
+	.sdata      type:data align:32
+	.sbss       type:bss align:32
+	.sdata2     type:rodata align:32
+	.sbss2      type:bss align:32
+
+spyro/source/BootLogo_GC.cpp:
+	.rodata     start:0x80356080 end:0x80356BB8
+	.data       start:0x8036F660 end:0x80373BA8
+	.sdata      start:0x80586DC0 end:0x80586DC8
+
+spyro/source/Cheats.cpp:
+	.text       start:0x800056C0 end:0x800059C8
+	.rodata     start:0x80356BB8 end:0x80356C08
+	.data       start:0x80373BA8 end:0x80373C98
+	.sdata      start:0x80586DC8 end:0x80586DD0
+	.sbss       start:0x80588660 end:0x80588668
+	.sdata2     start:0x8058BA40 end:0x8058BA48
+
+spyro/source/CreationTable.cpp:
+	.text       start:0x800059C8 end:0x8001801C
+	.ctors      start:0x80355E64 end:0x80355E68
+	.rodata     start:0x80356C08 end:0x80358068
+	.data       start:0x80373C98 end:0x80375088
+	.sbss       start:0x80588668 end:0x80588670
+	.sdata2     start:0x8058BA48 end:0x8058BA78
+
+spyro/source/EventMessage.cpp:
+	.text       start:0x8001801C end:0x800181A4
+	.rodata     start:0x80358068 end:0x80358078
+	.sdata2     start:0x8058BA78 end:0x8058BA80
+
+spyro/source/Game.cpp:
+	.text       start:0x800181A4 end:0x80019E1C
+	.ctors      start:0x80355E68 end:0x80355E6C
+	.rodata     start:0x80358078 end:0x803581E0
+	.data       start:0x80375088 end:0x803753E0
+	.bss        start:0x803E4DC0 end:0x803E52B0
+	.sdata      start:0x80586DD0 end:0x80586DE0
+	.sbss       start:0x80588670 end:0x80588690
+	.sdata2     start:0x8058BA80 end:0x8058BB18
+
+spyro/source/GameMessages.cpp:
+	.text       start:0x80019E1C end:0x8001A6A0
+	.sdata2     start:0x8058BB18 end:0x8058BB50
+
+spyro/source/GameStateMachine.cpp:
+	.text       start:0x8001A6A0 end:0x8001B044
+	.sdata2     start:0x8058BB50 end:0x8058BB70
+
+spyro/source/InGame.cpp:
+	.text       start:0x8001B044 end:0x8001CBAC
+	.ctors      start:0x80355E6C end:0x80355E70
+	.rodata     start:0x803581E0 end:0x803582B0
+	.data       start:0x803753E0 end:0x80375460
+	.bss        start:0x803E52B0 end:0x803E52C0
+	.sbss       start:0x80588690 end:0x805886F8
+	.sdata2     start:0x8058BB70 end:0x8058BBF0
+
+spyro/source/Level.cpp:
+	.text       start:0x8001CBAC end:0x80021F84
+	.ctors      start:0x80355E70 end:0x80355E74
+	.rodata     start:0x803582B0 end:0x80358AC8
+	.data       start:0x80375460 end:0x80375660
+	.sdata      start:0x80586DE0 end:0x80586DF8
+	.sbss       start:0x805886F8 end:0x80588748
+	.sdata2     start:0x8058BBF0 end:0x8058BC78
+
+spyro/source/MessageMap.cpp:
+	.text       start:0x80021F84 end:0x8002205C
+	.rodata     start:0x80358AC8 end:0x80359480
+	.data       start:0x80375660 end:0x80375980
+
+spyro/source/PropFlags.cpp:
+	.text       start:0x8002205C end:0x80022274
+	.rodata     start:0x80359480 end:0x803594C0
+	.data       start:0x80375980 end:0x80375A00
+
+spyro/source/TargetManager.cpp:
+	.text       start:0x80022274 end:0x800233BC
+	.sbss       start:0x80588748 end:0x80588750
+	.sdata2     start:0x8058BC78 end:0x8058BCB8
+
+spyro/source/CameraData.cpp:
+	.text       start:0x800233BC end:0x80023454
+	.sdata2     start:0x8058BCB8 end:0x8058BCC0
+
+spyro/source/GameData.cpp:
+	.text       start:0x80023454 end:0x800243FC
+	.ctors      start:0x80355E74 end:0x80355E78
+	.rodata     start:0x803594C0 end:0x80359570
+	.data       start:0x80375A00 end:0x80375C98
+	.bss        start:0x803E52C0 end:0x803E5478
+	.sdata      start:0x80586DF8 end:0x80586E08
+	.sbss       start:0x80588750 end:0x80588760
+	.sdata2     start:0x8058BCC0 end:0x8058BD20
+
+spyro/source/OptionsScreen.cpp:
+	.text       start:0x800243FC end:0x80024DAC
+	.rodata     start:0x80359570 end:0x803595E0
+	.data       start:0x80375C98 end:0x80375D08
+	.sdata2     start:0x8058BD20 end:0x8058BD28
+
+spyro/source/PositionScreen.cpp:
+	.text       start:0x80024DAC end:0x80024E54
+
+spyro/source/CopyrightScreen.cpp:
+	.text       start:0x80024E54 end:0x80025410
+	.rodata     start:0x803595E0 end:0x80359608
+	.data       start:0x80375D08 end:0x80375D78
+	.sbss       start:0x80588760 end:0x80588768
+	.sdata2     start:0x8058BD28 end:0x8058BD40
+
+spyro/source/FrontEnd.cpp:
+	.text       start:0x80025410 end:0x8002617C
+	.ctors      start:0x80355E78 end:0x80355E7C
+	.rodata     start:0x80359608 end:0x803596B0
+	.sdata      start:0x80586E08 end:0x80586E10
+	.sbss       start:0x80588768 end:0x805887A0
+	.sdata2     start:0x8058BD40 end:0x8058BD70
+
+spyro/source/LanguageSelectScreen.cpp:
+	.text       start:0x8002617C end:0x80026D04
+	.ctors      start:0x80355E7C end:0x80355E80
+	.rodata     start:0x803596B0 end:0x80359700
+	.data       start:0x80375D78 end:0x80375DE8
+	.sbss       start:0x805887A0 end:0x805887B0
+	.sdata2     start:0x8058BD70 end:0x8058BD98
+
+spyro/source/MainMenuScreen.cpp:
+	.text       start:0x80026D04 end:0x80027394
+	.rodata     start:0x80359700 end:0x80359740
+	.data       start:0x80375DE8 end:0x80375E58
+	.sdata      start:0x80586E10 end:0x80586E18
+	.sdata2     start:0x8058BD98 end:0x8058BDA0
+
+spyro/source/TitleScreen.cpp:
+	.text       start:0x80027394 end:0x8002780C
+	.rodata     start:0x80359740 end:0x80359770
+	.data       start:0x80375E58 end:0x80375EC8
+	.sdata      start:0x80586E18 end:0x80586E28
+	.sbss       start:0x805887B0 end:0x805887B8
+	.sdata2     start:0x8058BDA0 end:0x8058BDB0
+
+spyro/source/AnimProperty.cpp:
+	.text       start:0x8002780C end:0x80027CF8
+	.rodata     start:0x80359770 end:0x80359798
+	.data       start:0x80375EC8 end:0x80375F18
+	.sdata2     start:0x8058BDB0 end:0x8058BDB8
+
+spyro/source/PhrasePlayerProperty.cpp:
+	.text       start:0x80027CF8 end:0x80027E34
+	.rodata     start:0x80359798 end:0x803597B8
+	.data       start:0x80375F18 end:0x80375F68
+
+spyro/source/CameraCollideProp.cpp:
+	.text       start:0x80027E34 end:0x80027FD4
+	.data       start:0x80375F68 end:0x80375FB0
+
+spyro/source/checkpoint.cpp:
+	.text       start:0x80027FD4 end:0x80028B6C
+	.ctors      start:0x80355E80 end:0x80355E84
+	.rodata     start:0x803597B8 end:0x80359830
+	.data       start:0x80375FB0 end:0x80376030
+	.sbss       start:0x805887B8 end:0x805887C8
+	.sdata2     start:0x8058BDB8 end:0x8058BDF8
+
+spyro/source/ConnectingProps.cpp:
+	.text       start:0x80028B6C end:0x80028FA4
+	.rodata     start:0x80359830 end:0x80359860
+	.data       start:0x80376030 end:0x80376098
+	.sbss       start:0x805887C8 end:0x805887D0
+
+spyro/source/Conveyor.cpp:
+	.text       start:0x80028FA4 end:0x80029A40
+	.rodata     start:0x80359860 end:0x80359880
+	.data       start:0x80376098 end:0x803760E0
+	.sdata2     start:0x8058BDF8 end:0x8058BE48
+
+spyro/source/ConveyorBucket.cpp:
+	.text       start:0x80029A40 end:0x8002A044
+	.data       start:0x803760E0 end:0x80376128
+	.sdata2     start:0x8058BE48 end:0x8058BE78
+
+spyro/source/Crate.cpp:
+	.text       start:0x8002A044 end:0x8002C1B4
+	.rodata     start:0x80359880 end:0x80359A70
+	.data       start:0x80376128 end:0x80376240
+	.bss        start:0x803E5478 end:0x803E5538
+	.sdata      start:0x80586E28 end:0x80586E38
+	.sbss       start:0x805887D0 end:0x805887D8
+	.sdata2     start:0x8058BE78 end:0x8058BF08
+
+spyro/source/Elevator.cpp:
+	.text       start:0x8002C1B4 end:0x8002CCE4
+	.rodata     start:0x80359A70 end:0x80359AC8
+	.data       start:0x80376240 end:0x80376288
+	.sdata2     start:0x8058BF08 end:0x8058BF40
+
+spyro/source/EnemySpawner.cpp:
+	.text       start:0x8002CCE4 end:0x8002D9CC
+	.rodata     start:0x80359AC8 end:0x80359B40
+	.data       start:0x80376288 end:0x80376360
+	.sdata2     start:0x8058BF40 end:0x8058BF50
+
+spyro/source/GameProp.cpp:
+	.text       start:0x8002D9CC end:0x8002E634
+	.rodata     start:0x80359B40 end:0x80359BC8
+	.data       start:0x80376360 end:0x803763E0
+	.sdata      start:0x80586E38 end:0x80586E40
+	.sdata2     start:0x8058BF50 end:0x8058BF58
+
+spyro/source/MineCart.cpp:
+	.text       start:0x8002E634 end:0x8002F444
+	.rodata     start:0x80359BC8 end:0x80359C08
+	.data       start:0x803763E0 end:0x80376450
+	.sdata2     start:0x8058BF58 end:0x8058BFB0
+
+spyro/source/MineCartDoor.cpp:
+	.text       start:0x8002F444 end:0x8002F6D0
+	.rodata     start:0x80359C08 end:0x80359C28
+	.data       start:0x80376450 end:0x803764C0
+	.sdata2     start:0x8058BFB0 end:0x8058BFB8
+
+spyro/source/MineCartTrack.cpp:
+	.text       start:0x8002F6D0 end:0x80030A88
+	.rodata     start:0x80359C28 end:0x80359D10
+	.data       start:0x803764C0 end:0x80376520
+	.sdata2     start:0x8058BFB8 end:0x8058C008
+
+spyro/source/MobilePlatform.cpp:
+	.text       start:0x80030A88 end:0x800324A8
+	.rodata     start:0x80359D10 end:0x80359DB8
+	.data       start:0x80376520 end:0x803765A0
+	.bss        start:0x803E5538 end:0x803E5548
+	.sdata      start:0x80586E40 end:0x80586E58
+	.sbss       start:0x805887D8 end:0x805887E0
+	.sdata2     start:0x8058C008 end:0x8058C068
+
+spyro/source/Platform.cpp:
+	.text       start:0x800324A8 end:0x800330F0
+	.rodata     start:0x80359DB8 end:0x80359E20
+	.data       start:0x803765A0 end:0x80376620
+	.sdata      start:0x80586E58 end:0x80586E60
+	.sdata2     start:0x8058C068 end:0x8058C0A0
+
+spyro/source/PooledShatterProp.cpp:
+	.text       start:0x800330F0 end:0x80033298
+	.data       start:0x80376620 end:0x80376700
+	.sdata2     start:0x8058C0A0 end:0x8058C0B0
+
+spyro/source/PropPool.cpp:
+	.text       start:0x80033298 end:0x80033D54
+	.rodata     start:0x80359E20 end:0x8035A030
+	.data       start:0x80376700 end:0x80376740
+
+spyro/source/RopeBridge.cpp:
+	.text       start:0x80033D54 end:0x80037640
+	.ctors      start:0x80355E84 end:0x80355E88
+	.rodata     start:0x8035A030 end:0x8035A080
+	.data       start:0x80376740 end:0x803767C0
+	.sdata      start:0x80586E60 end:0x80586E88
+	.sbss       start:0x805887E0 end:0x805887E8
+	.sdata2     start:0x8058C0B0 end:0x8058C148
+
+spyro/source/Script.cpp:
+	.text       start:0x80037640 end:0x80037AFC
+	.rodata     start:0x8035A080 end:0x8035A0A8
+	.data       start:0x803767C0 end:0x803767F8
+	.sdata2     start:0x8058C148 end:0x8058C150
+
+spyro/source/Shatterable.cpp:
+	.text       start:0x80037AFC end:0x8003D6E0
+	.rodata     start:0x8035A0A8 end:0x8035A450
+	.data       start:0x803767F8 end:0x80376958
+	.bss        start:0x803E5548 end:0x803E6E48
+	.sdata      start:0x80586E88 end:0x80586EA0
+	.sdata2     start:0x8058C150 end:0x8058C1D8
+
+spyro/source/SoundProp.cpp:
+	.text       start:0x8003D6E0 end:0x8003D928
+	.rodata     start:0x8035A450 end:0x8035A460
+	.data       start:0x80376958 end:0x803769B8
+
+spyro/source/TriggerProp.cpp:
+	.text       start:0x8003D928 end:0x8003EEA0
+	.rodata     start:0x8035A460 end:0x8035A500
+	.data       start:0x803769B8 end:0x80376BB0
+	.sbss       start:0x805887E8 end:0x805887F0
+	.sdata2     start:0x8058C1D8 end:0x8058C1E8
+
+spyro/source/Volume.cpp:
+	.text       start:0x8003EEA0 end:0x8003F284
+	.ctors      start:0x80355E88 end:0x80355E8C
+	.data       start:0x80376BB0 end:0x80376BD0
+	.sdata2     start:0x8058C1E8 end:0x8058C1F8
+
+spyro/source/WaterVolume.cpp:
+	.text       start:0x8003F284 end:0x8003F60C
+	.rodata     start:0x8035A500 end:0x8035A520
+	.data       start:0x80376BD0 end:0x80376C58
+
+spyro/source/AITargetData.cpp:
+	.text       start:0x8003F60C end:0x8003FD08
+	.sdata2     start:0x8058C1F8 end:0x8058C220
+
+spyro/source/Enemy.cpp:
+	.text       start:0x8003FD08 end:0x8004B234
+	.ctors      start:0x80355E8C end:0x80355E90
+	.rodata     start:0x8035A520 end:0x8035A540
+	.data       start:0x80376C58 end:0x80376E48
+	.sdata      start:0x80586EA0 end:0x80586F28
+	.sbss       start:0x805887F0 end:0x80588800
+	.sdata2     start:0x8058C220 end:0x8058C318
+
+spyro/source/EnemyDescriptor.cpp:
+	.text       start:0x8004B234 end:0x8004DB70
+	.rodata     start:0x8035A540 end:0x8035AB80
+	.data       start:0x80376E48 end:0x803770B8
+	.sdata2     start:0x8058C318 end:0x8058C390
+
+spyro/source/EnemyMessages.cpp:
+	.text       start:0x8004DB70 end:0x80050114
+	.ctors      start:0x80355E90 end:0x80355E94
+	.data       start:0x803770B8 end:0x80377108
+	.sbss       start:0x80588800 end:0x80588808
+	.sdata2     start:0x8058C390 end:0x8058C418
+
+spyro/source/AnimUtils.cpp:
+	.text       start:0x80050114 end:0x800502D4
+
+spyro/source/BoundingRegion.cpp:
+	.text       start:0x800502D4 end:0x800508E0
+	.sdata2     start:0x8058C418 end:0x8058C420
+
+spyro/source/CollisionObject.cpp:
+	.text       start:0x800508E0 end:0x80053024
+	.rodata     start:0x8035AB80 end:0x8035AB90
+	.data       start:0x80377108 end:0x80377180
+	.sdata      start:0x80586F28 end:0x80586F30
+	.sdata2     start:0x8058C420 end:0x8058C4A0
+
+spyro/source/MovementObject.cpp:
+	.text       start:0x80053024 end:0x8005359C
+	.rodata     start:0x8035AB90 end:0x8035AB98
+	.sdata2     start:0x8058C4A0 end:0x8058C4B0
+
+spyro/source/NodeLookAt.cpp:
+	.text       start:0x8005359C end:0x800543B0
+	.sdata2     start:0x8058C4B0 end:0x8058C4F8
+
+spyro/source/PlatformObject.cpp:
+	.text       start:0x800543B0 end:0x80054F9C
+	.sdata      start:0x80586F30 end:0x80586F40
+	.sdata2     start:0x8058C4F8 end:0x8058C510
+
+spyro/source/Tools.cpp:
+	.text       start:0x80054F9C end:0x80057AD8
+	.ctors      start:0x80355E94 end:0x80355E98
+	.rodata     start:0x8035AB98 end:0x8035AC28
+	.data       start:0x80377180 end:0x803771C8
+	.sbss       start:0x80588808 end:0x80588818
+	.sdata2     start:0x8058C510 end:0x8058C570
+
+spyro/source/TriggerObject.cpp:
+	.text       start:0x80057AD8 end:0x80058D24
+	.ctors      start:0x80355E98 end:0x80355E9C
+	.rodata     start:0x8035AC28 end:0x8035AC60
+	.data       start:0x803771C8 end:0x80377350
+	.sdata2     start:0x8058C570 end:0x8058C590
+
+spyro/source/GameCamera2.cpp:
+	.text       start:0x80058D24 end:0x8005D76C
+	.rodata     start:0x8035AC60 end:0x8035AE70
+	.data       start:0x80377350 end:0x80377968
+	.sdata      start:0x80586F40 end:0x80586F78
+	.sbss       start:0x80588818 end:0x80588828
+	.sdata2     start:0x8058C590 end:0x8058C650
+
+spyro/source/GameCameraEmuStateMachine.cpp:
+	.text       start:0x8005D76C end:0x8005DBB0
+
+spyro/source/GameCameraMessages.cpp:
+	.text       start:0x8005DBB0 end:0x8005DBD0
+
+spyro/source/BaseBreathFX.cpp:
+	.text       start:0x8005DBD0 end:0x8005E268
+	.data       start:0x80377968 end:0x803779A8
+	.sdata2     start:0x8058C650 end:0x8058C670
+
+spyro/source/BurningWick.cpp:
+	.text       start:0x8005E268 end:0x8005FD90
+	.data       start:0x803779A8 end:0x803779E0
+	.sdata      start:0x80586F78 end:0x80586F80
+	.sdata2     start:0x8058C670 end:0x8058C6C8
+
+spyro/source/CharacterBodyFX.cpp:
+	.text       start:0x8005FD90 end:0x80060878
+	.data       start:0x803779E0 end:0x80377A00
+	.sdata2     start:0x8058C6C8 end:0x8058C6D0
+
+spyro/source/CharacterIceCubesFX.cpp:
+	.text       start:0x80060878 end:0x80060EA4
+	.rodata     start:0x8035AE70 end:0x8035AE78
+	.data       start:0x80377A00 end:0x80377A20
+	.sdata2     start:0x8058C6D0 end:0x8058C6E0
+
+spyro/source/CloudPS.cpp:
+	.text       start:0x80060EA4 end:0x8006125C
+	.rodata     start:0x8035AE78 end:0x8035AE90
+	.data       start:0x80377A20 end:0x80377AF8
+	.sdata      start:0x80586F80 end:0x80586F88
+	.sdata2     start:0x8058C6E0 end:0x8058C6F8
+
+spyro/source/CrashFirePS.cpp:
+	.text       start:0x8006125C end:0x800616C8
+	.data       start:0x80377AF8 end:0x80377BD0
+	.sdata      start:0x80586F88 end:0x80586F90
+	.sdata2     start:0x8058C6F8 end:0x8058C720
+
+spyro/source/CrashMistPS.cpp:
+	.text       start:0x800616C8 end:0x80061904
+	.data       start:0x80377BD0 end:0x80377C88
+	.sdata2     start:0x8058C720 end:0x8058C738
+
+spyro/source/CrashSparkPS.cpp:
+	.text       start:0x80061904 end:0x80063088
+	.data       start:0x80377C88 end:0x80377CC0
+	.sdata2     start:0x8058C738 end:0x8058C780
+
+spyro/source/EarthBreathFX.cpp:
+	.text       start:0x80063088 end:0x800657B0
+	.rodata     start:0x8035AE90 end:0x8035AEE8
+	.data       start:0x80377CC0 end:0x80377D00
+	.sdata      start:0x80586F90 end:0x80586FB0
+	.sdata2     start:0x8058C780 end:0x8058C870
+
+spyro/source/EmbersPS.cpp:
+	.text       start:0x800657B0 end:0x80065B1C
+	.data       start:0x80377D00 end:0x80377DD8
+	.sdata2     start:0x8058C870 end:0x8058C890
+
+spyro/source/Explosion3.cpp:
+	.text       start:0x80065B1C end:0x800664B0
+	.rodata     start:0x8035AEE8 end:0x8035AF30
+	.data       start:0x80377DD8 end:0x80377E38
+	.sdata      start:0x80586FB0 end:0x80586FC0
+	.sdata2     start:0x8058C890 end:0x8058C8D0
+
+spyro/source/ExpShock.cpp:
+	.text       start:0x800664B0 end:0x800668E4
+	.data       start:0x80377E38 end:0x80377F10
+	.sdata      start:0x80586FC0 end:0x80586FC8
+	.sdata2     start:0x8058C8D0 end:0x8058C8E8
+
+spyro/source/ExpSmokeAndFlamesPS.cpp:
+	.text       start:0x800668E4 end:0x80066F50
+	.data       start:0x80377F10 end:0x80377FE8
+	.sdata      start:0x80586FC8 end:0x80586FD0
+	.sdata2     start:0x8058C8E8 end:0x8058C918
+
+spyro/source/FireBombFX.cpp:
+	.text       start:0x80066F50 end:0x800696F0
+	.rodata     start:0x8035AF30 end:0x8035AF68
+	.data       start:0x80377FE8 end:0x80378058
+	.sdata      start:0x80586FD0 end:0x80587008
+	.sdata2     start:0x8058C918 end:0x8058C9D0
+
+spyro/source/FireWall.cpp:
+	.text       start:0x800696F0 end:0x8006B13C
+	.rodata     start:0x8035AF68 end:0x8035AF90
+	.data       start:0x80378058 end:0x803780B8
+	.sdata      start:0x80587008 end:0x80587050
+	.sdata2     start:0x8058C9D0 end:0x8058CA50
+
+spyro/source/FlameBreathFX.cpp:
+	.text       start:0x8006B13C end:0x8006E760
+	.ctors      start:0x80355E9C end:0x80355EA0
+	.rodata     start:0x8035AF90 end:0x8035AFF0
+	.data       start:0x803780B8 end:0x803780F8
+	.bss        start:0x803E6E48 end:0x803E6EA0
+	.sdata      start:0x80587050 end:0x80587080
+	.sdata2     start:0x8058CA50 end:0x8058CB48
+
+spyro/source/FlameBreathPS.cpp:
+	.text       start:0x8006E760 end:0x8006EBF4
+	.data       start:0x803780F8 end:0x803781D0
+	.sdata      start:0x80587080 end:0x80587088
+	.sdata2     start:0x8058CB48 end:0x8058CB78
+
+spyro/source/FoundryGas.cpp:
+	.text       start:0x8006EBF4 end:0x8006F08C
+	.data       start:0x803781D0 end:0x803782A8
+	.sdata      start:0x80587088 end:0x80587090
+	.sdata2     start:0x8058CB78 end:0x8058CBB8
+
+spyro/source/GameParticleEmitter.cpp:
+	.text       start:0x8006F08C end:0x80070D50
+	.rodata     start:0x8035AFF0 end:0x8035B138
+	.data       start:0x803782A8 end:0x803783D0
+	.sdata      start:0x80587090 end:0x80587098
+	.sdata2     start:0x8058CBB8 end:0x8058CBF8
+
+spyro/source/GiveColorPS.cpp:
+	.text       start:0x80070D50 end:0x8007135C
+	.data       start:0x803783D0 end:0x80378488
+	.sdata      start:0x80587098 end:0x805870A8
+	.sdata2     start:0x8058CBF8 end:0x8058CC18
+
+spyro/source/HitFX.cpp:
+	.text       start:0x8007135C end:0x800720B4
+	.rodata     start:0x8035B138 end:0x8035B140
+	.data       start:0x80378488 end:0x803784C0
+	.sdata      start:0x805870A8 end:0x805870C0
+	.sdata2     start:0x8058CC18 end:0x8058CC68
+
+spyro/source/IceBitsPS.cpp:
+	.text       start:0x800720B4 end:0x80072524
+	.data       start:0x803784C0 end:0x80378598
+	.sdata      start:0x805870C0 end:0x805870C8
+	.sdata2     start:0x8058CC68 end:0x8058CC98
+
+spyro/source/IceBreathFX.cpp:
+	.text       start:0x80072524 end:0x80076E44
+	.rodata     start:0x8035B140 end:0x8035B180
+	.data       start:0x80378598 end:0x803785D8
+	.sdata      start:0x805870C8 end:0x80587118
+	.sdata2     start:0x8058CC98 end:0x8058CDA0
+
+spyro/source/IceBreathSnow.cpp:
+	.text       start:0x80076E44 end:0x80077190
+	.data       start:0x803785D8 end:0x80378690
+	.sdata      start:0x80587118 end:0x80587120
+	.sdata2     start:0x8058CDA0 end:0x8058CDB8
+
+spyro/source/IceBreathSnowFlakes.cpp:
+	.text       start:0x80077190 end:0x80077668
+	.data       start:0x80378690 end:0x80378748
+	.sdata      start:0x80587120 end:0x80587128
+	.sdata2     start:0x8058CDB8 end:0x8058CDE0
+
+spyro/source/LavaBubbleFX.cpp:
+	.text       start:0x80077668 end:0x80078D08
+	.rodata     start:0x8035B180 end:0x8035B188
+	.data       start:0x80378748 end:0x80378790
+	.sdata      start:0x80587128 end:0x80587160
+	.sdata2     start:0x8058CDE0 end:0x8058CE78
+
+spyro/source/LensFlare.cpp:
+	.text       start:0x80078D08 end:0x8007975C
+	.rodata     start:0x8035B188 end:0x8035B198
+	.data       start:0x80378790 end:0x803787B0
+	.sdata      start:0x80587160 end:0x80587168
+	.sdata2     start:0x8058CE78 end:0x8058CF00
+
+spyro/source/LightManager.cpp:
+	.text       start:0x8007975C end:0x80079DF4
+	.data       start:0x803787B0 end:0x803787E8
+	.sdata2     start:0x8058CF00 end:0x8058CF28
+
+spyro/source/LineSegmentTrail.cpp:
+	.text       start:0x80079DF4 end:0x8007AAAC
+	.data       start:0x803787E8 end:0x80378820
+	.sdata      start:0x80587168 end:0x80587180
+	.sbss       start:0x80588828 end:0x80588830
+	.sdata2     start:0x8058CF28 end:0x8058CF48
+
+spyro/source/LiquidFX.cpp:
+	.text       start:0x8007AAAC end:0x8007E65C
+	.rodata     start:0x8035B198 end:0x8035B1D8
+	.data       start:0x80378820 end:0x80378890
+	.sdata      start:0x80587180 end:0x805871D0
+	.sbss       start:0x80588830 end:0x80588838
+	.sdata2     start:0x8058CF48 end:0x8058D030
+
+spyro/source/LockOnTarget.cpp:
+	.text       start:0x8007E65C end:0x8007EE5C
+	.rodata     start:0x8035B1D8 end:0x8035B1F0
+	.data       start:0x80378890 end:0x803788F0
+	.sdata2     start:0x8058D030 end:0x8058D080
+
+spyro/source/MoltenMetalPS.cpp:
+	.text       start:0x8007EE5C end:0x8007F1B4
+	.data       start:0x803788F0 end:0x803789C8
+	.sdata      start:0x805871D0 end:0x805871D8
+	.sdata2     start:0x8058D080 end:0x8058D0A0
+
+spyro/source/PuddleSplash.cpp:
+	.text       start:0x8007F1B4 end:0x8007FA08
+	.rodata     start:0x8035B1F0 end:0x8035B210
+	.data       start:0x803789C8 end:0x80378A28
+	.sdata2     start:0x8058D0A0 end:0x8058D0B8
+
+spyro/source/Ripple.cpp:
+	.text       start:0x8007FA08 end:0x8007FA0C
+
+spyro/source/Shadow.cpp:
+	.text       start:0x8007FA0C end:0x80080108
+	.sdata      start:0x805871D8 end:0x805871E0
+	.sbss       start:0x80588838 end:0x80588840
+	.sdata2     start:0x8058D0B8 end:0x8058D0E8
+
+spyro/source/ShapedTrailFX.cpp:
+	.text       start:0x80080108 end:0x80081048
+	.data       start:0x80378A28 end:0x80378A60
+	.sdata      start:0x805871E0 end:0x805871F8
+	.sdata2     start:0x8058D0E8 end:0x8058D128
+
+spyro/source/SparkleEffect.cpp:
+	.text       start:0x80081048 end:0x800812D4
+	.data       start:0x80378A60 end:0x80378A98
+	.sdata      start:0x805871F8 end:0x80587200
+	.sdata2     start:0x8058D128 end:0x8058D140
+
+spyro/source/SparxFX.cpp:
+	.text       start:0x800812D4 end:0x80082A88
+	.rodata     start:0x8035B210 end:0x8035B240
+	.data       start:0x80378A98 end:0x80378AD0
+	.sdata      start:0x80587200 end:0x80587228
+	.sdata2     start:0x8058D140 end:0x8058D1D0
+
+spyro/source/SpawnEffectBox.cpp:
+	.text       start:0x80082A88 end:0x8008345C
+	.rodata     start:0x8035B240 end:0x8035B2C0
+	.data       start:0x80378AD0 end:0x80378B30
+	.sdata2     start:0x8058D1D0 end:0x8058D1F8
+
+spyro/source/Wake.cpp:
+	.text       start:0x8008345C end:0x80083C94
+	.rodata     start:0x8035B2C0 end:0x8035B2C8
+	.data       start:0x80378B30 end:0x80378B68
+	.sdata      start:0x80587228 end:0x80587238
+	.sdata2     start:0x8058D1F8 end:0x8058D220
+
+spyro/source/WaterDripPS.cpp:
+	.text       start:0x80083C94 end:0x80085654
+	.data       start:0x80378B68 end:0x80378BA0
+	.sdata      start:0x80587238 end:0x80587258
+	.sdata2     start:0x8058D220 end:0x8058D288
+
+spyro/source/WaterTrickleEmitter.cpp:
+	.text       start:0x80085654 end:0x80085C8C
+	.rodata     start:0x8035B2C8 end:0x8035B318
+	.data       start:0x80378BA0 end:0x80378C00
+	.sdata2     start:0x8058D288 end:0x8058D2A8
+
+spyro/source/ZapArcFX.cpp:
+	.text       start:0x80085C8C end:0x800868E4
+	.data       start:0x80378C00 end:0x80378C48
+	.sdata2     start:0x8058D2A8 end:0x8058D2F8
+
+spyro/source/ZapBreathFX.cpp:
+	.text       start:0x800868E4 end:0x8008C3DC
+	.ctors      start:0x80355EA0 end:0x80355EA4
+	.rodata     start:0x8035B318 end:0x8035B388
+	.data       start:0x80378C48 end:0x80378C88
+	.sdata      start:0x80587258 end:0x805872D0
+	.sbss       start:0x80588840 end:0x80588848
+	.sdata2     start:0x8058D2F8 end:0x8058D418
+
+spyro/source/Arrow.cpp:
+	.text       start:0x8008C3DC end:0x8008C8B4
+	.data       start:0x80378C88 end:0x80378D80
+	.sdata      start:0x805872D0 end:0x805872D8
+	.sdata2     start:0x8058D418 end:0x8058D428
+
+spyro/source/ArrowTrap.cpp:
+	.text       start:0x8008C8B4 end:0x8008CA9C
+	.rodata     start:0x8035B388 end:0x8035B390
+	.data       start:0x80378D80 end:0x80378E78
+	.sdata2     start:0x8058D428 end:0x8058D448
+
+spyro/source/Button.cpp:
+	.text       start:0x8008CA9C end:0x8008CF24
+	.rodata     start:0x8035B390 end:0x8035B3D8
+	.data       start:0x80378E78 end:0x80378F70
+	.sdata2     start:0x8058D448 end:0x8058D450
+
+spyro/source/Chest.cpp:
+	.text       start:0x8008CF24 end:0x8008D34C
+	.rodata     start:0x8035B3D8 end:0x8035B3F0
+	.data       start:0x80378F70 end:0x80379068
+	.sdata2     start:0x8058D450 end:0x8058D480
+
+spyro/source/Door.cpp:
+	.text       start:0x8008D34C end:0x8008D70C
+	.rodata     start:0x8035B3F0 end:0x8035B428
+	.data       start:0x80379068 end:0x80379160
+	.sdata2     start:0x8058D480 end:0x8058D488
+
+spyro/source/FireTrap.cpp:
+	.text       start:0x8008D70C end:0x8008DC30
+	.data       start:0x80379160 end:0x80379258
+	.sdata      start:0x805872D8 end:0x805872E8
+	.sdata2     start:0x8058D488 end:0x8058D4B0
+
+spyro/source/FloorSwitch.cpp:
+	.text       start:0x8008DC30 end:0x8008EC40
+	.ctors      start:0x80355EA4 end:0x80355EA8
+	.rodata     start:0x8035B428 end:0x8035B4F8
+	.data       start:0x80379258 end:0x80379350
+	.sdata      start:0x805872E8 end:0x805872F0
+	.sbss       start:0x80588848 end:0x80588858
+	.sdata2     start:0x8058D4B0 end:0x8058D508
+
+spyro/source/KnifeTrap.cpp:
+	.text       start:0x8008EC40 end:0x8008ED4C
+	.data       start:0x80379350 end:0x80379448
+
+spyro/source/LavaCannon.cpp:
+	.text       start:0x8008ED4C end:0x800903B0
+	.rodata     start:0x8035B4F8 end:0x8035B5A8
+	.data       start:0x80379448 end:0x80379550
+	.sdata      start:0x805872F0 end:0x805872F8
+	.sdata2     start:0x8058D508 end:0x8058D568
+
+spyro/source/SpikeTrap.cpp:
+	.text       start:0x800903B0 end:0x800907CC
+	.rodata     start:0x8035B5A8 end:0x8035B5E8
+	.data       start:0x80379550 end:0x80379648
+	.sdata2     start:0x8058D568 end:0x8058D570
+
+spyro/source/Trap.cpp:
+	.text       start:0x800907CC end:0x80090CAC
+	.rodata     start:0x8035B5E8 end:0x8035B608
+	.data       start:0x80379648 end:0x80379740
+	.sdata2     start:0x8058D570 end:0x8058D578
+
+spyro/source/TrapSpawnPool.cpp:
+	.text       start:0x80090CAC end:0x800916B0
+	.rodata     start:0x8035B608 end:0x8035B690
+	.data       start:0x80379740 end:0x803797A0
+	.sdata2     start:0x8058D578 end:0x8058D5B8
+
+spyro/source/TrapSystem.cpp:
+	.text       start:0x800916B0 end:0x8009198C
+	.data       start:0x803797A0 end:0x80379800
+	.sdata2     start:0x8058D5B8 end:0x8058D5C8
+
+spyro/source/Character.cpp:
+	.text       start:0x8009198C end:0x80095E0C
+	.rodata     start:0x8035B690 end:0x8035B6D0
+	.data       start:0x80379800 end:0x80379890
+	.sdata      start:0x805872F8 end:0x80587300
+	.sdata2     start:0x8058D5C8 end:0x8058D640
+
+spyro/source/CharacterDescriptor.cpp:
+	.text       start:0x80095E0C end:0x80096168
+	.rodata     start:0x8035B6D0 end:0x8035B798
+	.data       start:0x80379890 end:0x803798B8
+	.sdata2     start:0x8058D640 end:0x8058D668
+
+spyro/source/Sparx.cpp:
+	.text       start:0x80096168 end:0x8009A014
+	.ctors      start:0x80355EA8 end:0x80355EAC
+	.rodata     start:0x8035B798 end:0x8035B8E8
+	.data       start:0x803798B8 end:0x80379E88
+	.sdata      start:0x80587300 end:0x80587308
+	.sbss       start:0x80588858 end:0x80588860
+	.sdata2     start:0x8058D668 end:0x8058D730
+
+spyro/source/CutsceneEvent.cpp:
+	.text       start:0x8009A014 end:0x8009CBD4
+	.rodata     start:0x8035B8E8 end:0x8035BBB0
+	.data       start:0x80379E88 end:0x8037A3B8
+	.sbss       start:0x80588860 end:0x80588868
+	.sdata2     start:0x8058D730 end:0x8058D758
+
+spyro/source/CutsceneObject.cpp:
+	.text       start:0x8009CBD4 end:0x8009D5D8
+	.rodata     start:0x8035BBB0 end:0x8035BCE8
+	.sdata2     start:0x8058D758 end:0x8058D760
+
+spyro/source/CutsceneProp.cpp:
+	.text       start:0x8009D5D8 end:0x8009DAB4
+	.rodata     start:0x8035BCE8 end:0x8035BD08
+	.data       start:0x8037A3B8 end:0x8037A3F0
+	.sdata2     start:0x8058D760 end:0x8058D768
+
+spyro/source/CutsceneSystem.cpp:
+	.text       start:0x8009DAB4 end:0x800A0044
+	.ctors      start:0x80355EAC end:0x80355EB0
+	.rodata     start:0x8035BD08 end:0x8035BD58
+	.data       start:0x8037A3F0 end:0x8037A548
+	.sdata2     start:0x8058D768 end:0x8058D790
+
+spyro/source/LevelSelect.cpp:
+	.text       start:0x800A0044 end:0x800A0F98
+	.rodata     start:0x8035BD58 end:0x8035BDA0
+	.data       start:0x8037A548 end:0x8037A670
+	.sdata      start:0x80587308 end:0x80587310
+	.sbss       start:0x80588868 end:0x80588878
+	.sdata2     start:0x8058D790 end:0x8058D7B0
+
+spyro/source/LoadLevel.cpp:
+	.text       start:0x800A0F98 end:0x800A1D78
+	.ctors      start:0x80355EB0 end:0x80355EB4
+	.rodata     start:0x8035BDA0 end:0x8035BE58
+	.data       start:0x8037A670 end:0x8037A6F0
+	.sdata      start:0x80587310 end:0x80587320
+	.sbss       start:0x80588878 end:0x805888A8
+	.sdata2     start:0x8058D7B0 end:0x8058D7C8
+
+spyro/source/UITools.cpp:
+	.text       start:0x800A1D78 end:0x800A6440
+	.ctors      start:0x80355EB4 end:0x80355EB8
+	.rodata     start:0x8035BE58 end:0x8035C188
+	.data       start:0x8037A6F0 end:0x8037AF08
+	.sdata      start:0x80587320 end:0x80587330
+	.sdata2     start:0x8058D7C8 end:0x8058D858
+
+spyro/source/Spyro.cpp:
+	.text       start:0x800A6440 end:0x800B663C
+	.ctors      start:0x80355EB8 end:0x80355EBC
+	.rodata     start:0x8035C188 end:0x8035C978
+	.data       start:0x8037AF08 end:0x8037B660
+	.bss        start:0x803E6EA0 end:0x803E6EB0
+	.sdata      start:0x80587330 end:0x80587380
+	.sbss       start:0x805888A8 end:0x805888C0
+	.sdata2     start:0x8058D858 end:0x8058D9E0
+
+spyro/source/SpyroAnimTables.cpp:
+	.text       start:0x800B663C end:0x800B6BA0
+	.ctors      start:0x80355EBC end:0x80355EC0
+	.rodata     start:0x8035C978 end:0x8035C990
+	.data       start:0x8037B660 end:0x8037B6A8
+	.bss        start:0x803E6EB0 end:0x803E6EE0
+	.sdata      start:0x80587380 end:0x80587388
+	.sbss       start:0x805888C0 end:0x805888C8
+	.sdata2     start:0x8058D9E0 end:0x8058DA10
+
+spyro/source/SpyroCollisionObject.cpp:
+	.text       start:0x800B6BA0 end:0x800B7494
+	.data       start:0x8037B6A8 end:0x8037B708
+	.sdata      start:0x80587388 end:0x80587390
+	.sdata2     start:0x8058DA10 end:0x8058DA40
+
+spyro/source/SpyroDeathState.cpp:
+	.text       start:0x800B7494 end:0x800B89F4
+	.ctors      start:0x80355EC0 end:0x80355EC4
+	.rodata     start:0x8035C990 end:0x8035C9A8
+	.data       start:0x8037B708 end:0x8037B8C0
+	.sbss       start:0x805888C8 end:0x805888D0
+	.sdata2     start:0x8058DA40 end:0x8058DA88
+
+spyro/source/SpyroFallState.cpp:
+	.text       start:0x800B89F4 end:0x800BB048
+	.ctors      start:0x80355EC4 end:0x80355EC8
+	.rodata     start:0x8035C9A8 end:0x8035C9C0
+	.data       start:0x8037B8C0 end:0x8037BA10
+	.sbss       start:0x805888D0 end:0x805888D8
+	.sdata2     start:0x8058DA88 end:0x8058DB10
+
+spyro/source/SpyroHurtState.cpp:
+	.text       start:0x800BB048 end:0x800BD648
+	.ctors      start:0x80355EC8 end:0x80355ECC
+	.rodata     start:0x8035C9C0 end:0x8035C9E0
+	.data       start:0x8037BA10 end:0x8037BCA0
+	.sdata      start:0x80587390 end:0x80587398
+	.sbss       start:0x805888D8 end:0x805888E8
+	.sdata2     start:0x8058DB10 end:0x8058DBA0
+
+spyro/source/SpyroIdleState.cpp:
+	.text       start:0x800BD648 end:0x800BEA18
+	.ctors      start:0x80355ECC end:0x80355ED0
+	.rodata     start:0x8035C9E0 end:0x8035C9F8
+	.data       start:0x8037BCA0 end:0x8037BE38
+	.sbss       start:0x805888E8 end:0x805888F0
+	.sdata2     start:0x8058DBA0 end:0x8058DBE0
+
+spyro/source/SpyroJumpState.cpp:
+	.text       start:0x800BEA18 end:0x800C0E1C
+	.ctors      start:0x80355ED0 end:0x80355ED4
+	.rodata     start:0x8035C9F8 end:0x8035CA10
+	.data       start:0x8037BE38 end:0x8037BF88
+	.sdata      start:0x80587398 end:0x805873A0
+	.sbss       start:0x805888F0 end:0x805888F8
+	.sdata2     start:0x8058DBE0 end:0x8058DC90
+
+spyro/source/SpyroMoveState.cpp:
+	.text       start:0x800C0E1C end:0x800C1DD8
+	.ctors      start:0x80355ED4 end:0x80355ED8
+	.rodata     start:0x8035CA10 end:0x8035CA28
+	.data       start:0x8037BF88 end:0x8037C068
+	.sdata      start:0x805873A0 end:0x805873B0
+	.sbss       start:0x805888F8 end:0x80588900
+	.sdata2     start:0x8058DC90 end:0x8058DCE0
+
+spyro/source/SpyroSlideState.cpp:
+	.text       start:0x800C1DD8 end:0x800C24E0
+	.ctors      start:0x80355ED8 end:0x80355EDC
+	.rodata     start:0x8035CA28 end:0x8035CA40
+	.data       start:0x8037C068 end:0x8037C0B8
+	.sdata      start:0x805873B0 end:0x805873B8
+	.sbss       start:0x80588900 end:0x80588908
+	.sdata2     start:0x8058DCE0 end:0x8058DD20
+
+spyro/source/SpyroState.cpp:
+	.text       start:0x800C24E0 end:0x800C2B74
+	.ctors      start:0x80355EDC end:0x80355EE0
+	.sbss       start:0x80588908 end:0x80588910
+	.sdata2     start:0x8058DD20 end:0x8058DD40
+
+spyro/source/SpyroTools.cpp:
+	.text       start:0x800C2B74 end:0x800C40A0
+	.ctors      start:0x80355EE0 end:0x80355EE4
+	.sdata      start:0x805873B8 end:0x805873C0
+	.sbss       start:0x80588910 end:0x80588918
+	.sdata2     start:0x8058DD40 end:0x8058DD98
+
+spyro/source/SpyroUtils.cpp:
+	.text       start:0x800C40A0 end:0x800C4E54
+	.ctors      start:0x80355EE4 end:0x80355EE8
+	.data       start:0x8037C0B8 end:0x8037C188
+	.sbss       start:0x80588918 end:0x80588920
+	.sdata2     start:0x8058DD98 end:0x8058DDE0
+
+spyro/source/PauseMainScreen.cpp:
+	.text       start:0x800C4E54 end:0x800C57B8
+	.rodata     start:0x8035CA40 end:0x8035CAD0
+	.data       start:0x8037C188 end:0x8037C260
+	.sdata2     start:0x8058DDE0 end:0x8058DDF0
+
+spyro/source/PauseMenu.cpp:
+	.text       start:0x800C57B8 end:0x800C6150
+	.ctors      start:0x80355EE8 end:0x80355EEC
+	.rodata     start:0x8035CAD0 end:0x8035CB38
+	.sdata      start:0x805873C0 end:0x805873C8
+	.sbss       start:0x80588920 end:0x80588938
+	.sdata2     start:0x8058DDF0 end:0x8058DE08
+
+spyro/source/Autosave.cpp:
+	.text       start:0x800C6150 end:0x800C6948
+	.ctors      start:0x80355EEC end:0x80355EF0
+	.rodata     start:0x8035CB38 end:0x8035CB78
+	.data       start:0x8037C260 end:0x8037C280
+	.bss        start:0x803E6EE0 end:0x803E6F58
+	.sdata      start:0x805873C8 end:0x805873D8
+	.sbss       start:0x80588938 end:0x80588950
+	.sdata2     start:0x8058DE08 end:0x8058DE40
+
+spyro/source/AutosaveWarningScreen.cpp:
+	.text       start:0x800C6948 end:0x800C6B78
+	.rodata     start:0x8035CB78 end:0x8035CB98
+	.data       start:0x8037C280 end:0x8037C2F0
+	.sdata2     start:0x8058DE40 end:0x8058DE48
+
+spyro/source/MCActionScreen.cpp:
+	.text       start:0x800C6B78 end:0x800C8180
+	.rodata     start:0x8035CB98 end:0x8035CC10
+	.data       start:0x8037C2F0 end:0x8037C3A0
+	.sbss       start:0x80588950 end:0x80588958
+	.sdata2     start:0x8058DE48 end:0x8058DE50
+
+spyro/source/MCFileInfo.cpp:
+	.text       start:0x800C8180 end:0x800C8BD8
+	.rodata     start:0x8035CC10 end:0x8035CC88
+	.data       start:0x8037C3A0 end:0x8037C3F0
+	.sdata2     start:0x8058DE50 end:0x8058DE70
+
+spyro/source/MCLoadCheckScreen.cpp:
+	.text       start:0x800C8BD8 end:0x800C9130
+	.rodata     start:0x8035CC88 end:0x8035CCB0
+	.data       start:0x8037C3F0 end:0x8037C460
+
+spyro/source/MCQueryScreen.cpp:
+	.text       start:0x800C9130 end:0x800C9D0C
+	.rodata     start:0x8035CCB0 end:0x8035CD10
+	.data       start:0x8037C460 end:0x8037C570
+	.sbss       start:0x80588958 end:0x80588960
+
+spyro/source/MCSelectCardScreen.cpp:
+	.text       start:0x800C9D0C end:0x800CA890
+	.rodata     start:0x8035CD10 end:0x8035CD70
+	.data       start:0x8037C570 end:0x8037C5E0
+
+spyro/source/MCSelectFileScreen.cpp:
+	.text       start:0x800CA890 end:0x800CB318
+	.rodata     start:0x8035CD70 end:0x8035CDE0
+	.data       start:0x8037C5E0 end:0x8037C650
+
+spyro/source/MemoryCard.cpp:
+	.text       start:0x800CB318 end:0x800CC1D8
+	.rodata     start:0x8035CDE0 end:0x8035CE68
+	.data       start:0x8037C650 end:0x8037C760
+	.bss        start:0x803E6F58 end:0x803E6F88
+	.sdata      start:0x805873D8 end:0x805873E8
+	.sbss       start:0x80588960 end:0x80588968
+	.sdata2     start:0x8058DE70 end:0x8058DE88
+
+spyro/source/LavaBall.cpp:
+	.text       start:0x800CC1D8 end:0x800CC560
+	.rodata     start:0x8035CE68 end:0x8035CE88
+	.data       start:0x8037C760 end:0x8037C800
+	.sdata      start:0x805873E8 end:0x805873F8
+	.sbss       start:0x80588968 end:0x80588970
+	.sdata2     start:0x8058DE88 end:0x8058DEA0
+
+spyro/source/Projectile.cpp:
+	.text       start:0x800CC560 end:0x800CD258
+	.rodata     start:0x8035CE88 end:0x8035CEA8
+	.data       start:0x8037C800 end:0x8037C8F8
+	.sdata2     start:0x8058DEA0 end:0x8058DEB8
+
+spyro/source/Collectable.cpp:
+	.text       start:0x800CD258 end:0x800D1934
+	.rodata     start:0x8035CEA8 end:0x8035CF60
+	.data       start:0x8037C8F8 end:0x8037CA70
+	.sdata      start:0x805873F8 end:0x80587410
+	.sbss       start:0x80588970 end:0x80588978
+	.sdata2     start:0x8058DEB8 end:0x8058DF88
+
+spyro/source/DialogBox.cpp:
+	.text       start:0x800D1934 end:0x800D3A8C
+	.ctors      start:0x80355EF0 end:0x80355EF4
+	.rodata     start:0x8035CF60 end:0x8035CFD0
+	.data       start:0x8037CA70 end:0x8037CAA0
+	.bss        start:0x803E6F88 end:0x803E76A8
+	.sdata      start:0x80587410 end:0x80587418
+	.sbss       start:0x80588978 end:0x80588980
+	.sdata2     start:0x8058DF88 end:0x8058DFC0
+
+spyro/source/Hud.cpp:
+	.text       start:0x800D3A8C end:0x800D45F4
+	.rodata     start:0x8035CFD0 end:0x8035D008
+	.data       start:0x8037CAA0 end:0x8037CC48
+	.sdata      start:0x80587418 end:0x80587420
+	.sbss       start:0x80588980 end:0x80588998
+	.sdata2     start:0x8058DFC0 end:0x8058DFE0
+
+spyro/source/HudItems.cpp:
+	.text       start:0x800D45F4 end:0x800D4A84
+	.sdata2     start:0x8058DFE0 end:0x8058DFF0
+
+spyro/source/Coronas.cpp:
+	.text       start:0x800D4A84 end:0x800D5950
+	.rodata     start:0x8035D008 end:0x8035D020
+	.data       start:0x8037CC48 end:0x8037CCA8
+	.sdata2     start:0x8058DFF0 end:0x8058E018
+
+spyro/source/FireAndIceFX.cpp:
+	.text       start:0x800D5950 end:0x800D6674
+	.rodata     start:0x8035D020 end:0x8035D038
+	.sdata      start:0x80587420 end:0x80587440
+	.sdata2     start:0x8058E018 end:0x8058E058
+
+spyro/source/ShockWave.cpp:
+	.text       start:0x800D6674 end:0x800D7688
+	.rodata     start:0x8035D038 end:0x8035D098
+	.data       start:0x8037CCA8 end:0x8037CCE8
+	.sdata2     start:0x8058E058 end:0x8058E0C0
+
+spyro/source/SuckeyPS.cpp:
+	.text       start:0x800D7688 end:0x800D7AD8
+	.data       start:0x8037CCE8 end:0x8037CDA0
+	.sdata      start:0x80587440 end:0x80587450
+	.sdata2     start:0x8058E0C0 end:0x8058E0E0
+
+spyro/source/MoltenMetalBucket.cpp:
+	.text       start:0x800D7AD8 end:0x800D87C8
+	.rodata     start:0x8035D098 end:0x8035D158
+	.data       start:0x8037CDA0 end:0x8037CE18
+	.sdata      start:0x80587450 end:0x80587458
+	.sdata2     start:0x8058E0E0 end:0x8058E120
+
+spyro/source/ExplosiveBarrel.cpp:
+	.text       start:0x800D87C8 end:0x800D96E4
+	.rodata     start:0x8035D158 end:0x8035D190
+	.data       start:0x8037CE18 end:0x8037CF20
+	.sdata      start:0x80587458 end:0x80587468
+	.sdata2     start:0x8058E120 end:0x8058E160
+
+spyro/source/BlizzardBreathPS.cpp:
+	.text       start:0x800D96E4 end:0x800D9A50
+	.data       start:0x8037CF20 end:0x8037CFF8
+	.sdata      start:0x80587468 end:0x80587470
+	.sdata2     start:0x8058E160 end:0x8058E178
+
+spyro/source/FrozenGroundProp.cpp:
+	.text       start:0x800D9A50 end:0x800D9AFC
+	.data       start:0x8037CFF8 end:0x8037D038
+
+spyro/source/SparksPS.cpp:
+	.text       start:0x800D9AFC end:0x800D9F90
+	.data       start:0x8037D038 end:0x8037D110
+	.sdata      start:0x80587470 end:0x80587478
+	.sdata2     start:0x8058E178 end:0x8058E1A0
+
+spyro/source/AshesPS.cpp:
+	.text       start:0x800D9F90 end:0x800DA350
+	.data       start:0x8037D110 end:0x8037D1E8
+	.sdata      start:0x80587478 end:0x80587480
+	.sdata2     start:0x8058E1A0 end:0x8058E1C0
+
+spyro/source/FloatingPlatform.cpp:
+	.text       start:0x800DA350 end:0x800DAAE0
+	.rodata     start:0x8035D190 end:0x8035D1C0
+	.data       start:0x8037D1E8 end:0x8037D248
+	.sdata      start:0x80587480 end:0x80587488
+	.sdata2     start:0x8058E1C0 end:0x8058E1F8
+
+spyro/source/MoltenMetalBucketTrack.cpp:
+	.text       start:0x800DAAE0 end:0x800DBBE4
+	.rodata     start:0x8035D1C0 end:0x8035D200
+	.data       start:0x8037D248 end:0x8037D2A8
+	.sdata      start:0x80587488 end:0x80587490
+	.sdata2     start:0x8058E1F8 end:0x8058E250
+
+spyro/source/SpyroChargeState.cpp:
+	.text       start:0x800DBBE4 end:0x800DCCBC
+	.ctors      start:0x80355EF4 end:0x80355EF8
+	.rodata     start:0x8035D200 end:0x8035D218
+	.data       start:0x8037D2A8 end:0x8037D3B0
+	.sbss       start:0x80588998 end:0x805889A0
+	.sdata2     start:0x8058E250 end:0x8058E2C8
+
+spyro/source/DamageShieldEffect.cpp:
+	.text       start:0x800DCCBC end:0x800DD778
+	.rodata     start:0x8035D218 end:0x8035D240
+	.data       start:0x8037D3B0 end:0x8037D3F0
+	.sdata2     start:0x8058E2C8 end:0x8058E2F8
+
+spyro/source/CharacterZapFX.cpp:
+	.text       start:0x800DD778 end:0x800DE918
+	.ctors      start:0x80355EF8 end:0x80355EFC
+	.rodata     start:0x8035D240 end:0x8035D250
+	.data       start:0x8037D3F0 end:0x8037D410
+	.sdata      start:0x80587490 end:0x80587498
+	.sbss       start:0x805889A0 end:0x805889A8
+	.sdata2     start:0x8058E2F8 end:0x8058E368
+
+spyro/source/SpyroCombatState.cpp:
+	.text       start:0x800DE918 end:0x800E0E70
+	.ctors      start:0x80355EFC end:0x80355F00
+	.rodata     start:0x8035D250 end:0x8035D268
+	.data       start:0x8037D410 end:0x8037D5A0
+	.sdata      start:0x80587498 end:0x805874A0
+	.sbss       start:0x805889A8 end:0x805889B8
+	.sdata2     start:0x8058E368 end:0x8058E3E0
+
+spyro/source/EnemyGoal_Think.cpp:
+	.text       start:0x800E0E70 end:0x800E4490
+	.data       start:0x8037D5A0 end:0x8037D698
+	.sdata2     start:0x8058E3E0 end:0x8058E400
+
+spyro/source/EnemyGoals.cpp:
+	.text       start:0x800E4490 end:0x800E99E0
+	.ctors      start:0x80355F00 end:0x80355F04
+	.data       start:0x8037D698 end:0x8037DC08
+	.sbss       start:0x805889B8 end:0x805889C0
+	.sdata2     start:0x8058E400 end:0x8058E488
+
+spyro/source/EnemyGoals_Death.cpp:
+	.text       start:0x800E99E0 end:0x800EBFC8
+	.data       start:0x8037DC08 end:0x8037DED0
+	.sdata      start:0x805874A0 end:0x805874A8
+	.sdata2     start:0x8058E488 end:0x8058E508
+
+spyro/source/EnemyGoals_Hit.cpp:
+	.text       start:0x800EBFC8 end:0x800F1980
+	.ctors      start:0x80355F04 end:0x80355F08
+	.rodata     start:0x8035D268 end:0x8035D290
+	.data       start:0x8037DED0 end:0x8037E288
+	.sdata      start:0x805874A8 end:0x805874C0
+	.sbss       start:0x805889C0 end:0x805889C8
+	.sdata2     start:0x8058E508 end:0x8058E5F8
+	.sbss2      start:0x80595480 end:0x80595488
+
+spyro/source/EnemyGoals_Movement.cpp:
+	.text       start:0x800F1980 end:0x800F4170
+	.data       start:0x8037E288 end:0x8037E510
+	.sdata2     start:0x8058E5F8 end:0x8058E630
+
+spyro/source/PolyRegion.cpp:
+	.text       start:0x800F4170 end:0x800F4388
+	.rodata     start:0x8035D290 end:0x8035D2A0
+
+spyro/source/Gem.cpp:
+	.text       start:0x800F4388 end:0x800F4FF0
+	.ctors      start:0x80355F08 end:0x80355F0C
+	.rodata     start:0x8035D2A0 end:0x8035D2D8
+	.data       start:0x8037E510 end:0x8037E5D0
+	.sbss       start:0x805889C8 end:0x805889D0
+	.sdata2     start:0x8058E630 end:0x8058E688
+
+spyro/source/ZapPS.cpp:
+	.text       start:0x800F4FF0 end:0x800F5430
+	.data       start:0x8037E5D0 end:0x8037E6A8
+	.sdata      start:0x805874C0 end:0x805874C8
+	.sdata2     start:0x8058E688 end:0x8058E6B0
+
+spyro/source/EnemyDeathFX.cpp:
+	.text       start:0x800F5430 end:0x800F5BB4
+	.data       start:0x8037E6A8 end:0x8037E6E0
+	.sdata      start:0x805874C8 end:0x805874D8
+	.sdata2     start:0x8058E6B0 end:0x8058E6F8
+
+spyro/source/LiquidStream.cpp:
+	.text       start:0x800F5BB4 end:0x800F6930
+	.data       start:0x8037E6E0 end:0x8037E718
+	.sdata2     start:0x8058E6F8 end:0x8058E738
+
+spyro/source/PropGroupVolume.cpp:
+	.text       start:0x800F6930 end:0x800F7198
+	.rodata     start:0x8035D2D8 end:0x8035D320
+	.data       start:0x8037E718 end:0x8037E778
+	.bss        start:0x803E76A8 end:0x803E8AA8
+	.sdata      start:0x805874D8 end:0x805874E0
+	.sbss       start:0x805889D0 end:0x805889E0
+	.sdata2     start:0x8058E738 end:0x8058E740
+
+spyro/source/ExplosionFX.cpp:
+	.text       start:0x800F7198 end:0x800F7FC0
+	.rodata     start:0x8035D320 end:0x8035D330
+	.data       start:0x8037E778 end:0x8037E7B0
+	.sdata2     start:0x8058E740 end:0x8058E770
+
+spyro/source/SteeringBehaviours.cpp:
+	.text       start:0x800F7FC0 end:0x800F7FE0
+
+spyro/source/MiningMole.cpp:
+	.text       start:0x800F7FE0 end:0x800F8EEC
+	.rodata     start:0x8035D330 end:0x8035D348
+	.data       start:0x8037E7B0 end:0x8037ED80
+	.sdata2     start:0x8058E770 end:0x8058E7C0
+
+spyro/source/EnemyRegion.cpp:
+	.text       start:0x800F8EEC end:0x800FA284
+	.sdata2     start:0x8058E7C0 end:0x8058E810
+
+spyro/source/NPCGoal_Think.cpp:
+	.text       start:0x800FA284 end:0x800FAA34
+	.data       start:0x8037ED80 end:0x8037EDC8
+	.sdata2     start:0x8058E810 end:0x8058E818
+
+spyro/source/Dynamite.cpp:
+	.text       start:0x800FAA34 end:0x800FC204
+	.rodata     start:0x8035D348 end:0x8035D360
+	.data       start:0x8037EDC8 end:0x8037EE68
+	.sdata      start:0x805874E0 end:0x805874E8
+	.sbss       start:0x805889E0 end:0x805889F0
+	.sdata2     start:0x8058E818 end:0x8058E880
+
+spyro/source/SpyroStrafeState.cpp:
+	.text       start:0x800FC204 end:0x800FDEE8
+	.ctors      start:0x80355F0C end:0x80355F10
+	.rodata     start:0x8035D360 end:0x8035D378
+	.data       start:0x8037EE68 end:0x8037EFB8
+	.sbss       start:0x805889F0 end:0x805889F8
+	.sdata2     start:0x8058E880 end:0x8058E8F0
+
+spyro/source/MeleeTrails.cpp:
+	.text       start:0x800FDEE8 end:0x800FEAD8
+	.rodata     start:0x8035D378 end:0x8035D418
+	.data       start:0x8037EFB8 end:0x8037F028
+	.sdata2     start:0x8058E8F0 end:0x8058E908
+
+spyro/source/EnemyGoal_AlertMode.cpp:
+	.text       start:0x800FEAD8 end:0x80100798
+	.data       start:0x8037F028 end:0x8037F070
+	.sdata      start:0x805874E8 end:0x805874F0
+	.sdata2     start:0x8058E908 end:0x8058E940
+
+spyro/source/EnemyGoal_FlyingAttackMode.cpp:
+	.text       start:0x80100798 end:0x80101414
+	.data       start:0x8037F070 end:0x8037F0F8
+	.sdata2     start:0x8058E940 end:0x8058E950
+
+spyro/source/EnemyGoal_MeleeAttackMode.cpp:
+	.text       start:0x80101414 end:0x80104724
+	.data       start:0x8037F0F8 end:0x8037F2C0
+	.sdata      start:0x805874F0 end:0x805874F8
+	.sdata2     start:0x8058E950 end:0x8058E9B0
+
+spyro/source/EnemyGoal_RangeAttackMode.cpp:
+	.text       start:0x80104724 end:0x80105B84
+	.data       start:0x8037F2C0 end:0x8037F348
+	.sdata2     start:0x8058E9B0 end:0x8058E9E0
+
+spyro/source/SpyroHud.cpp:
+	.text       start:0x80105B84 end:0x801086FC
+	.ctors      start:0x80355F10 end:0x80355F14
+	.rodata     start:0x8035D418 end:0x8035D580
+	.data       start:0x8037F348 end:0x8037F3C8
+	.bss        start:0x803E8AA8 end:0x803E8B58
+	.sdata      start:0x805874F8 end:0x80587508
+	.sdata2     start:0x8058E9E0 end:0x8058EA88
+
+spyro/source/SteamValve.cpp:
+	.text       start:0x801086FC end:0x80108F8C
+	.rodata     start:0x8035D580 end:0x8035D5B8
+	.data       start:0x8037F3C8 end:0x8037F438
+	.sdata2     start:0x8058EA88 end:0x8058EAD0
+
+spyro/source/Steam.cpp:
+	.text       start:0x80108F8C end:0x80109494
+	.data       start:0x8037F438 end:0x8037F510
+	.sdata      start:0x80587508 end:0x80587510
+	.sdata2     start:0x8058EAD0 end:0x8058EB10
+
+spyro/source/Lever.cpp:
+	.text       start:0x80109494 end:0x80109D2C
+	.rodata     start:0x8035D5B8 end:0x8035D618
+	.data       start:0x8037F510 end:0x8037F608
+	.sdata2     start:0x8058EB10 end:0x8058EB30
+
+spyro/source/LavaSteamPS.cpp:
+	.text       start:0x80109D2C end:0x8010A1C4
+	.data       start:0x8037F608 end:0x8037F6E0
+	.sdata      start:0x80587510 end:0x80587518
+	.sdata2     start:0x8058EB30 end:0x8058EB70
+
+spyro/source/ConsoleCmds.cpp:
+	.text       start:0x8010A1C4 end:0x8010CF6C
+	.rodata     start:0x8035D618 end:0x8035DD78
+	.data       start:0x8037F6E0 end:0x8037FB60
+	.sdata      start:0x80587518 end:0x80587578
+	.sbss       start:0x805889F8 end:0x80588A00
+	.sdata2     start:0x8058EB70 end:0x8058EB98
+
+spyro/source/GameConsole.cpp:
+	.text       start:0x8010CF6C end:0x8010FF00
+	.rodata     start:0x8035DD78 end:0x8035E1E8
+	.data       start:0x8037FB60 end:0x803803F0
+	.bss        start:0x803E8B58 end:0x803E8B68
+	.sdata      start:0x80587578 end:0x80587580
+	.sbss       start:0x80588A00 end:0x80588A28
+	.sdata2     start:0x8058EB98 end:0x8058EBA8
+
+spyro/source/WobbleProp.cpp:
+	.text       start:0x8010FF00 end:0x80110640
+	.rodata     start:0x8035E1E8 end:0x8035E228
+	.data       start:0x803803F0 end:0x80380460
+	.sdata      start:0x80587580 end:0x80587598
+	.sdata2     start:0x8058EBA8 end:0x8058EBD0
+
+spyro/source/DataMap.cpp:
+	.text       start:0x80110640 end:0x80110804
+
+spyro/source/UIProp.cpp:
+	.text       start:0x80110804 end:0x80110D10
+	.rodata     start:0x8035E228 end:0x8035E248
+	.data       start:0x80380460 end:0x803804C0
+
+spyro/source/ExplosiveBarrelPath.cpp:
+	.text       start:0x80110D10 end:0x80112E84
+	.rodata     start:0x8035E248 end:0x8035E350
+	.data       start:0x803804C0 end:0x80380520
+	.sdata2     start:0x8058EBD0 end:0x8058EC50
+
+spyro/source/SpyroLedgeGrabState.cpp:
+	.text       start:0x80112E84 end:0x80113E84
+	.ctors      start:0x80355F14 end:0x80355F18
+	.rodata     start:0x8035E350 end:0x8035E368
+	.data       start:0x80380520 end:0x80380608
+	.sbss       start:0x80588A28 end:0x80588A38
+	.sdata2     start:0x8058EC50 end:0x8058ECA8
+
+spyro/source/SteamTrain.cpp:
+	.text       start:0x80113E84 end:0x80117F74
+	.ctors      start:0x80355F18 end:0x80355F1C
+	.rodata     start:0x8035E368 end:0x8035E540
+	.data       start:0x80380608 end:0x80380850
+	.sdata      start:0x80587598 end:0x805875E8
+	.sbss       start:0x80588A38 end:0x80588A40
+	.sdata2     start:0x8058ECA8 end:0x8058EDA0
+
+spyro/source/TrainTrack.cpp:
+	.text       start:0x80117F74 end:0x80119028
+	.rodata     start:0x8035E540 end:0x8035E590
+	.data       start:0x80380850 end:0x803808B0
+	.sdata      start:0x805875E8 end:0x805875F0
+	.sdata2     start:0x8058EDA0 end:0x8058EDD8
+
+spyro/source/Enemies_Cynder.cpp:
+	.text       start:0x80119028 end:0x8011CF24
+	.ctors      start:0x80355F1C end:0x80355F20
+	.rodata     start:0x8035E590 end:0x8035E728
+	.data       start:0x803808B0 end:0x80381F90
+	.sdata      start:0x805875F0 end:0x805875F8
+	.sdata2     start:0x8058EDD8 end:0x8058EE90
+
+spyro/source/Enemies_Fire.cpp:
+	.text       start:0x8011CF24 end:0x8011F6D0
+	.ctors      start:0x80355F20 end:0x80355F24
+	.rodata     start:0x8035E728 end:0x8035E7F0
+	.data       start:0x80381F90 end:0x80382BC0
+	.sdata      start:0x805875F8 end:0x80587608
+	.sdata2     start:0x8058EE90 end:0x8058EF18
+
+spyro/source/CynderTier2TrainGoal_Think.cpp:
+	.text       start:0x8011F6D0 end:0x8012074C
+	.ctors      start:0x80355F24 end:0x80355F28
+	.data       start:0x80382BC0 end:0x80382C88
+	.sbss       start:0x80588A40 end:0x80588A48
+	.sdata2     start:0x8058EF18 end:0x8058EF48
+
+spyro/source/FireTier1Goal_Think.cpp:
+	.text       start:0x8012074C end:0x8012349C
+	.data       start:0x80382C88 end:0x80382ED8
+	.sdata2     start:0x8058EF48 end:0x8058EFB8
+
+spyro/source/SteamTrainCaboose.cpp:
+	.text       start:0x8012349C end:0x80124C68
+	.rodata     start:0x8035E7F0 end:0x8035E848
+	.data       start:0x80382ED8 end:0x80382F48
+	.sdata      start:0x80587608 end:0x80587618
+	.sbss       start:0x80588A48 end:0x80588A50
+	.sdata2     start:0x8058EFB8 end:0x8058F030
+
+spyro/source/TrainController.cpp:
+	.text       start:0x80124C68 end:0x80125858
+	.ctors      start:0x80355F28 end:0x80355F2C
+	.rodata     start:0x8035E848 end:0x8035E8C0
+	.data       start:0x80382F48 end:0x80382FA8
+	.sbss       start:0x80588A50 end:0x80588A58
+	.sdata2     start:0x8058F030 end:0x8058F060
+
+spyro/source/Names.cpp:
+	.text       start:0x80125858 end:0x80125C68
+	.ctors      start:0x80355F2C end:0x80355F30
+	.rodata     start:0x8035E8C0 end:0x8035E990
+	.data       start:0x80382FA8 end:0x80382FD8
+	.bss        start:0x803E8B68 end:0x803E8BC8
+
+spyro/source/SpyroTailStrikeState.cpp:
+	.text       start:0x80125C68 end:0x80126B68
+	.ctors      start:0x80355F30 end:0x80355F34
+	.rodata     start:0x8035E990 end:0x8035E9A8
+	.data       start:0x80382FD8 end:0x803830E0
+	.sdata      start:0x80587618 end:0x80587620
+	.sbss       start:0x80588A58 end:0x80588A60
+	.sdata2     start:0x8058F060 end:0x8058F0D0
+
+spyro/source/FlyingChunkPS.cpp:
+	.text       start:0x80126B68 end:0x80128ABC
+	.rodata     start:0x8035E9A8 end:0x8035E9D0
+	.data       start:0x803830E0 end:0x80383150
+	.sdata      start:0x80587620 end:0x80587638
+	.sdata2     start:0x8058F0D0 end:0x8058F140
+
+spyro/source/Enemies_FireBoss.cpp:
+	.text       start:0x80128ABC end:0x8012DA24
+	.ctors      start:0x80355F34 end:0x80355F38
+	.rodata     start:0x8035E9D0 end:0x8035EA90
+	.data       start:0x80383150 end:0x80383408
+	.sbss       start:0x80588A60 end:0x80588A70
+	.sdata2     start:0x8058F140 end:0x8058F208
+
+spyro/source/FireBossGoals.cpp:
+	.text       start:0x8012DA24 end:0x801301B8
+	.data       start:0x80383408 end:0x80383610
+	.sdata      start:0x80587638 end:0x80587640
+	.sdata2     start:0x8058F208 end:0x8058F280
+
+spyro/source/TrainGate.cpp:
+	.text       start:0x801301B8 end:0x80130550
+	.rodata     start:0x8035EA90 end:0x8035EAC0
+	.data       start:0x80383610 end:0x80383680
+	.sdata2     start:0x8058F280 end:0x8058F288
+
+spyro/source/LightProp.cpp:
+	.text       start:0x80130550 end:0x801309B8
+	.rodata     start:0x8035EAC0 end:0x8035EAC8
+	.data       start:0x80383680 end:0x803836C8
+	.sdata      start:0x80587640 end:0x80587650
+	.sdata2     start:0x8058F288 end:0x8058F2A0
+
+spyro/source/SeeSaw.cpp:
+	.text       start:0x801309B8 end:0x801316AC
+	.rodata     start:0x8035EAC8 end:0x8035EB38
+	.data       start:0x803836C8 end:0x80383728
+	.sdata2     start:0x8058F2A0 end:0x8058F2F0
+
+spyro/source/LevelUpScreen.cpp:
+	.text       start:0x801316AC end:0x8013357C
+	.ctors      start:0x80355F38 end:0x80355F3C
+	.rodata     start:0x8035EB38 end:0x8035EB58
+	.data       start:0x80383728 end:0x80383928
+	.sdata      start:0x80587650 end:0x80587660
+	.sbss       start:0x80588A70 end:0x80588A80
+	.sdata2     start:0x8058F2F0 end:0x8058F490
+
+spyro/source/SteamFireBall.cpp:
+	.text       start:0x8013357C end:0x80133E44
+	.rodata     start:0x8035EB58 end:0x8035EB78
+	.data       start:0x80383928 end:0x803839C8
+	.sdata      start:0x80587660 end:0x80587670
+	.sbss       start:0x80588A80 end:0x80588A88
+	.sdata2     start:0x8058F490 end:0x8058F4F8
+
+spyro/source/EnergyBeam.cpp:
+	.text       start:0x80133E44 end:0x80135044
+	.rodata     start:0x8035EB78 end:0x8035EB80
+	.data       start:0x803839C8 end:0x80383A08
+	.sdata      start:0x80587670 end:0x80587688
+	.sdata2     start:0x8058F4F8 end:0x8058F560
+
+spyro/source/GuardianCage.cpp:
+	.text       start:0x80135044 end:0x80136524
+	.ctors      start:0x80355F3C end:0x80355F40
+	.rodata     start:0x8035EB80 end:0x8035EBD0
+	.data       start:0x80383A08 end:0x80383B50
+	.sdata2     start:0x8058F560 end:0x8058F5A0
+
+spyro/source/GuardianCageCrystal.cpp:
+	.text       start:0x80136524 end:0x80136DD4
+	.rodata     start:0x8035EBD0 end:0x8035EC00
+	.data       start:0x80383B50 end:0x80383C58
+	.sdata2     start:0x8058F5A0 end:0x8058F5E0
+
+spyro/source/ScreenWobbleFX.cpp:
+	.text       start:0x80136DD4 end:0x80137D30
+	.rodata     start:0x8035EC00 end:0x8035EC30
+	.sdata      start:0x80587688 end:0x80587698
+	.sdata2     start:0x8058F5E0 end:0x8058F630
+
+spyro/source/CharacterGlowFX.cpp:
+	.text       start:0x80137D30 end:0x80138864
+	.rodata     start:0x8035EC30 end:0x8035EC38
+	.data       start:0x80383C58 end:0x80383C78
+	.sdata      start:0x80587698 end:0x805876A0
+	.sdata2     start:0x8058F630 end:0x8058F660
+
+spyro/source/Explosion4.cpp:
+	.text       start:0x80138864 end:0x8013BAE8
+	.rodata     start:0x8035EC38 end:0x8035EC88
+	.data       start:0x80383C78 end:0x80383CD8
+	.sdata      start:0x805876A0 end:0x805876B0
+	.sdata2     start:0x8058F660 end:0x8058F728
+
+spyro/source/Collectable2.cpp:
+	.text       start:0x8013BAE8 end:0x8013C834
+	.ctors      start:0x80355F40 end:0x80355F44
+	.data       start:0x80383CD8 end:0x80383D38
+	.sdata      start:0x805876B0 end:0x805876C0
+	.sbss       start:0x80588A88 end:0x80588A90
+	.sdata2     start:0x8058F728 end:0x8058F798
+
+spyro/source/FlyingBurningBits.cpp:
+	.text       start:0x8013C834 end:0x8013D548
+	.rodata     start:0x8035EC88 end:0x8035EC90
+	.sdata      start:0x805876C0 end:0x805876C8
+	.sdata2     start:0x8058F798 end:0x8058F7E0
+
+spyro/source/ElectricBeamFX.cpp:
+	.text       start:0x8013D548 end:0x8013E9D8
+	.rodata     start:0x8035EC90 end:0x8035ECC8
+	.sdata      start:0x805876C8 end:0x805876D0
+	.sdata2     start:0x8058F7E0 end:0x8058F838
+
+spyro/source/FlameBreathBeamFX.cpp:
+	.text       start:0x8013E9D8 end:0x80140210
+	.sdata      start:0x805876D0 end:0x805876F8
+	.sdata2     start:0x8058F838 end:0x8058F8D8
+
+spyro/source/ShotgunWarpFX.cpp:
+	.text       start:0x80140210 end:0x80141398
+	.rodata     start:0x8035ECC8 end:0x8035ECE0
+	.sdata      start:0x805876F8 end:0x80587728
+	.sdata2     start:0x8058F8D8 end:0x8058F958
+
+spyro/source/Torch.cpp:
+	.text       start:0x80141398 end:0x80141B9C
+	.rodata     start:0x8035ECE0 end:0x8035ECF0
+	.data       start:0x80383D38 end:0x80383D80
+	.sdata      start:0x80587728 end:0x80587740
+	.sdata2     start:0x8058F958 end:0x8058F9A8
+
+spyro/source/ExplosionWarpFX.cpp:
+	.text       start:0x80141B9C end:0x80142874
+	.rodata     start:0x8035ECF0 end:0x8035ED00
+	.sdata      start:0x80587740 end:0x80587758
+	.sdata2     start:0x8058F9A8 end:0x8058FA08
+
+spyro/source/CollapsibleProp.cpp:
+	.text       start:0x80142874 end:0x80142F4C
+	.ctors      start:0x80355F44 end:0x80355F48
+	.rodata     start:0x8035ED00 end:0x8035ED20
+	.data       start:0x80383D80 end:0x80383DE0
+	.sbss       start:0x80588A90 end:0x80588A98
+	.sdata2     start:0x8058FA08 end:0x8058FA48
+
+spyro/source/EarthBeamFX.cpp:
+	.text       start:0x80142F4C end:0x80142FE8
+	.ctors      start:0x80355F48 end:0x80355F4C
+	.sbss       start:0x80588A98 end:0x80588AA0
+	.sdata2     start:0x8058FA48 end:0x8058FA68
+
+spyro/source/FireTier2Goal_Think.cpp:
+	.text       start:0x80142FE8 end:0x80144850
+	.data       start:0x80383DE0 end:0x80383EA8
+	.sdata      start:0x80587758 end:0x80587768
+	.sdata2     start:0x8058FA68 end:0x8058FAC0
+
+spyro/source/Ball.cpp:
+	.text       start:0x80144850 end:0x80149C84
+	.ctors      start:0x80355F4C end:0x80355F50
+	.rodata     start:0x8035ED20 end:0x8035EE40
+	.data       start:0x80383EA8 end:0x80383FC8
+	.bss        start:0x803E8BC8 end:0x803E8D08
+	.sdata      start:0x80587768 end:0x80587778
+	.sbss       start:0x80588AA0 end:0x80588AB0
+	.sdata2     start:0x8058FAC0 end:0x8058FBD0
+
+spyro/source/MagmaSquirt.cpp:
+	.text       start:0x80149C84 end:0x8014A4F8
+	.rodata     start:0x8035EE40 end:0x8035EE50
+	.data       start:0x80383FC8 end:0x80384068
+	.sdata      start:0x80587778 end:0x80587790
+	.sbss       start:0x80588AB0 end:0x80588AB8
+	.sdata2     start:0x8058FBD0 end:0x8058FC28
+
+spyro/source/ElectricSparks.cpp:
+	.text       start:0x8014A4F8 end:0x8014ABC8
+	.rodata     start:0x8035EE50 end:0x8035EE78
+	.data       start:0x80384068 end:0x803840A0
+	.sdata      start:0x80587790 end:0x805877A0
+	.sdata2     start:0x8058FC28 end:0x8058FC68
+
+spyro/source/Enemies_Swamp.cpp:
+	.text       start:0x8014ABC8 end:0x8014CEB4
+	.ctors      start:0x80355F50 end:0x80355F54
+	.rodata     start:0x8035EE78 end:0x8035EF50
+	.data       start:0x803840A0 end:0x80384D48
+	.sdata2     start:0x8058FC68 end:0x8058FCD0
+
+spyro/source/SwampTier1Goal_Think.cpp:
+	.text       start:0x8014CEB4 end:0x8014E72C
+	.data       start:0x80384D48 end:0x80384DD0
+	.sdata2     start:0x8058FCD0 end:0x8058FCE8
+
+spyro/source/SwampTier2Goal_Think.cpp:
+	.text       start:0x8014E72C end:0x801515F8
+	.data       start:0x80384DD0 end:0x80384F88
+	.sdata      start:0x805877A0 end:0x805877A8
+	.sdata2     start:0x8058FCE8 end:0x8058FD10
+
+spyro/source/Catapult.cpp:
+	.text       start:0x801515F8 end:0x80152C80
+	.ctors      start:0x80355F54 end:0x80355F58
+	.rodata     start:0x8035EF50 end:0x8035EFB8
+	.data       start:0x80384F88 end:0x803850E8
+	.bss        start:0x803E8D08 end:0x803E8DC8
+	.sdata      start:0x805877A8 end:0x805877B8
+	.sbss       start:0x80588AB8 end:0x80588AC0
+	.sdata2     start:0x8058FD10 end:0x8058FD80
+
+spyro/source/FuryFX.cpp:
+	.text       start:0x80152C80 end:0x80152CEC
+	.data       start:0x803850E8 end:0x80385128
+
+spyro/source/FuryFXFire.cpp:
+	.text       start:0x80152CEC end:0x80155BBC
+	.ctors      start:0x80355F58 end:0x80355F5C
+	.rodata     start:0x8035EFB8 end:0x8035F010
+	.data       start:0x80385128 end:0x80385180
+	.sdata      start:0x805877B8 end:0x805877F8
+	.sbss       start:0x80588AC0 end:0x80588AC8
+	.sdata2     start:0x8058FD80 end:0x8058FED0
+
+spyro/source/environmentFX.cpp:
+	.text       start:0x80155BBC end:0x80155E00
+	.data       start:0x80385180 end:0x803851D8
+
+spyro/source/Enemies_FireBossDriver.cpp:
+	.text       start:0x80155E00 end:0x8015618C
+	.data       start:0x803851D8 end:0x803853F0
+	.sdata2     start:0x8058FED0 end:0x8058FEE0
+
+spyro/source/FireBossDriverGoals.cpp:
+	.text       start:0x8015618C end:0x80156A18
+	.data       start:0x803853F0 end:0x803854F8
+	.sdata2     start:0x8058FEE0 end:0x8058FEE8
+
+spyro/source/DragonBustDoor.cpp:
+	.text       start:0x80156A18 end:0x80156DC0
+	.rodata     start:0x8035F010 end:0x8035F070
+	.data       start:0x803854F8 end:0x803855D0
+
+spyro/source/DragonBust.cpp:
+	.text       start:0x80156DC0 end:0x80158A10
+	.ctors      start:0x80355F5C end:0x80355F60
+	.rodata     start:0x8035F070 end:0x8035F0B0
+	.data       start:0x803855D0 end:0x80385760
+	.sdata      start:0x805877F8 end:0x80587820
+	.sbss       start:0x80588AC8 end:0x80588AD0
+	.sdata2     start:0x8058FEE8 end:0x8058FF70
+
+spyro/source/FallingLeaves.cpp:
+	.text       start:0x80158A10 end:0x8015A86C
+	.ctors      start:0x80355F60 end:0x80355F64
+	.data       start:0x80385760 end:0x80385838
+	.sdata      start:0x80587820 end:0x80587838
+	.sbss       start:0x80588AD0 end:0x80588AD8
+	.sdata2     start:0x8058FF70 end:0x80590028
+
+spyro/source/EarthShockwave.cpp:
+	.text       start:0x8015A86C end:0x8015B1C4
+	.data       start:0x80385838 end:0x80385878
+	.sdata      start:0x80587838 end:0x80587840
+	.sdata2     start:0x80590028 end:0x80590088
+
+spyro/source/SwampTier3Goals.cpp:
+	.text       start:0x8015B1C4 end:0x8015E3E8
+	.data       start:0x80385878 end:0x803859C8
+	.sdata2     start:0x80590088 end:0x805900F8
+
+spyro/source/VelocityTrigger.cpp:
+	.text       start:0x8015E3E8 end:0x8015E7DC
+	.rodata     start:0x8035F0B0 end:0x8035F0F8
+	.data       start:0x803859C8 end:0x80385A38
+	.sdata2     start:0x805900F8 end:0x80590108
+
+spyro/source/SpawnerObject.cpp:
+	.text       start:0x8015E7DC end:0x8015FEBC
+	.rodata     start:0x8035F0F8 end:0x8035F188
+	.data       start:0x80385A38 end:0x80385A50
+	.sdata2     start:0x80590108 end:0x80590118
+
+spyro/source/FuryFXElectricity.cpp:
+	.text       start:0x8015FEBC end:0x80162978
+	.ctors      start:0x80355F64 end:0x80355F68
+	.rodata     start:0x8035F188 end:0x8035F1B8
+	.data       start:0x80385A50 end:0x80385A90
+	.sdata      start:0x80587840 end:0x80587890
+	.sbss       start:0x80588AD8 end:0x80588AE0
+	.sdata2     start:0x80590118 end:0x80590280
+
+spyro/source/LitCloudPS.cpp:
+	.text       start:0x80162978 end:0x80163E30
+	.rodata     start:0x8035F1B8 end:0x8035F1C0
+	.data       start:0x80385A90 end:0x80385AC8
+	.sdata      start:0x80587890 end:0x805878A0
+	.sdata2     start:0x80590280 end:0x805902F8
+
+spyro/source/SpawnPointObject.cpp:
+	.text       start:0x80163E30 end:0x80164140
+	.rodata     start:0x8035F1C0 end:0x8035F1F0
+
+spyro/source/EnemySpawnPool.cpp:
+	.text       start:0x80164140 end:0x80164708
+	.sbss       start:0x80588AE0 end:0x80588AE8
+
+spyro/source/FuryFXEarth.cpp:
+	.text       start:0x80164708 end:0x80166124
+	.ctors      start:0x80355F68 end:0x80355F6C
+	.rodata     start:0x8035F1F0 end:0x8035F220
+	.data       start:0x80385AC8 end:0x80385B08
+	.sdata      start:0x805878A0 end:0x805878C8
+	.sbss       start:0x80588AE8 end:0x80588AF0
+	.sdata2     start:0x805902F8 end:0x805903B8
+
+spyro/source/WindFX.cpp:
+	.text       start:0x80166124 end:0x80166770
+	.sdata2     start:0x805903B8 end:0x805903E0
+
+spyro/source/InputModifier.cpp:
+	.text       start:0x80166770 end:0x801669C8
+	.sdata2     start:0x805903E0 end:0x805903E8
+
+spyro/source/GemMagicFX.cpp:
+	.text       start:0x801669C8 end:0x80167A44
+	.ctors      start:0x80355F6C end:0x80355F70
+	.rodata     start:0x8035F220 end:0x8035F240
+	.data       start:0x80385B08 end:0x80385B40
+	.sdata      start:0x805878C8 end:0x805878E8
+	.sbss       start:0x80588AF0 end:0x80588AF8
+	.sdata2     start:0x805903E8 end:0x80590450
+
+spyro/source/Swarm.cpp:
+	.text       start:0x80167A44 end:0x80168A84
+	.rodata     start:0x8035F240 end:0x8035F298
+	.data       start:0x80385B40 end:0x80385BA0
+	.sdata      start:0x805878E8 end:0x805878F0
+	.sdata2     start:0x80590450 end:0x805904A0
+
+spyro/source/Music.cpp:
+	.text       start:0x80168A84 end:0x80169C24
+	.ctors      start:0x80355F70 end:0x80355F74
+	.rodata     start:0x8035F298 end:0x8035F320
+	.bss        start:0x803E8DC8 end:0x803E8E00
+	.sdata      start:0x805878F0 end:0x805878F8
+	.sbss       start:0x80588AF8 end:0x80588B18
+	.sdata2     start:0x805904A0 end:0x805904C8
+
+spyro/source/RefFXEmitter.cpp:
+	.text       start:0x80169C24 end:0x80169FC8
+	.rodata     start:0x8035F320 end:0x8035F338
+	.data       start:0x80385BA0 end:0x80385C00
+	.sdata2     start:0x805904C8 end:0x805904F0
+
+spyro/source/GamePropColored.cpp:
+	.text       start:0x80169FC8 end:0x8016A1E0
+	.rodata     start:0x8035F338 end:0x8035F358
+	.data       start:0x80385C00 end:0x80385C70
+	.sdata2     start:0x805904F0 end:0x805904F8
+
+spyro/source/RumbleTimer.cpp:
+	.text       start:0x8016A1E0 end:0x8016A39C
+	.sdata      start:0x805878F8 end:0x80587900
+	.sbss       start:0x80588B18 end:0x80588B20
+	.sdata2     start:0x805904F8 end:0x80590500
+
+spyro/source/VolcanoRumble.cpp:
+	.text       start:0x8016A39C end:0x8016B268
+	.data       start:0x80385C70 end:0x80385CA8
+	.sbss       start:0x80588B20 end:0x80588B30
+	.sdata2     start:0x80590500 end:0x80590588
+
+spyro/source/SpyroFuryState.cpp:
+	.text       start:0x8016B268 end:0x8016BAF4
+	.ctors      start:0x80355F74 end:0x80355F78
+	.rodata     start:0x8035F358 end:0x8035F370
+	.data       start:0x80385CA8 end:0x80385CF8
+	.sbss       start:0x80588B30 end:0x80588B38
+	.sdata2     start:0x80590588 end:0x805905D0
+
+spyro/source/HeatDistortPS.cpp:
+	.text       start:0x8016BAF4 end:0x8016CA94
+	.rodata     start:0x8035F370 end:0x8035F380
+	.sdata      start:0x80587900 end:0x80587908
+	.sdata2     start:0x805905D0 end:0x80590600
+
+spyro/source/MoleTether.cpp:
+	.text       start:0x8016CA94 end:0x8016CF08
+	.rodata     start:0x8035F380 end:0x8035F398
+	.data       start:0x80385CF8 end:0x80385E00
+	.sdata2     start:0x80590600 end:0x80590608
+
+spyro/source/FuryFXIce.cpp:
+	.text       start:0x8016CF08 end:0x8016F020
+	.ctors      start:0x80355F78 end:0x80355F7C
+	.rodata     start:0x8035F398 end:0x8035F3E0
+	.data       start:0x80385E00 end:0x80385E40
+	.sdata      start:0x80587908 end:0x80587930
+	.sbss       start:0x80588B38 end:0x80588B40
+	.sdata2     start:0x80590608 end:0x805906E0
+
+spyro/source/ExplosiveBarrelSpawner.cpp:
+	.text       start:0x8016F020 end:0x8016F1C4
+	.rodata     start:0x8035F3E0 end:0x8035F3F0
+	.data       start:0x80385E40 end:0x80385EB0
+
+spyro/source/GoopFX.cpp:
+	.text       start:0x8016F1C4 end:0x80170494
+	.rodata     start:0x8035F3F0 end:0x8035F400
+	.data       start:0x80385EB0 end:0x80385F18
+	.sdata2     start:0x805906E0 end:0x80590748
+
+spyro/source/GuardTower.cpp:
+	.text       start:0x80170494 end:0x8017065C
+	.data       start:0x80385F18 end:0x80385FF8
+	.sdata2     start:0x80590748 end:0x80590770
+
+spyro/source/FireMolePrison.cpp:
+	.text       start:0x8017065C end:0x80170970
+	.data       start:0x80385FF8 end:0x803860E0
+	.sdata2     start:0x80590770 end:0x80590780
+
+spyro/source/Sludge.cpp:
+	.text       start:0x80170970 end:0x801716F4
+	.rodata     start:0x8035F400 end:0x8035F410
+	.data       start:0x803860E0 end:0x80386180
+	.sbss       start:0x80588B40 end:0x80588B48
+	.sdata2     start:0x80590780 end:0x805907E8
+
+spyro/source/FXBase.cpp:
+	.text       start:0x801716F4 end:0x80171BD4
+	.rodata     start:0x8035F410 end:0x8035F480
+	.data       start:0x80386180 end:0x803861E8
+	.sdata2     start:0x805907E8 end:0x805907F8
+
+spyro/source/HurtProperty.cpp:
+	.text       start:0x80171BD4 end:0x801721C0
+	.rodata     start:0x8035F480 end:0x8035F4C8
+	.data       start:0x803861E8 end:0x80386238
+	.sdata2     start:0x805907F8 end:0x80590800
+
+spyro/source/WobbleProperty.cpp:
+	.text       start:0x801721C0 end:0x80172C2C
+	.rodata     start:0x8035F4C8 end:0x8035F518
+	.data       start:0x80386238 end:0x80386290
+	.sdata      start:0x80587930 end:0x80587940
+	.sdata2     start:0x80590800 end:0x80590840
+
+spyro/source/Enemies_Ice.cpp:
+	.text       start:0x80172C2C end:0x801741C8
+	.ctors      start:0x80355F7C end:0x80355F80
+	.rodata     start:0x8035F518 end:0x8035F5D8
+	.data       start:0x80386290 end:0x80386E18
+	.sdata2     start:0x80590840 end:0x80590888
+
+spyro/source/KDBasicEnvelope.cpp:
+	.text       start:0x801741C8 end:0x80174304
+	.sdata2     start:0x80590888 end:0x80590890
+
+spyro/source/KDCloth.cpp:
+	.text       start:0x80174304 end:0x80174860
+	.rodata     start:0x8035F5D8 end:0x8035F620
+	.data       start:0x80386E18 end:0x80386E68
+	.sdata2     start:0x80590890 end:0x805908A0
+
+spyro/source/KDCollisionObject.cpp:
+	.text       start:0x80174860 end:0x801763FC
+	.sdata      start:0x80587940 end:0x80587948
+	.sdata2     start:0x805908A0 end:0x805908F0
+
+spyro/source/KDCommonProperties.cpp:
+	.text       start:0x801763FC end:0x80178B04
+	.ctors      start:0x80355F80 end:0x80355F84
+	.rodata     start:0x8035F620 end:0x8035F7E8
+	.data       start:0x80386E68 end:0x80387130
+	.bss        start:0x803E8E00 end:0x803E8F00
+	.sbss       start:0x80588B48 end:0x80588B50
+	.sdata2     start:0x805908F0 end:0x80590918
+
+spyro/source/KDDropShadow.cpp:
+	.text       start:0x80178B04 end:0x80178E54
+	.rodata     start:0x8035F7E8 end:0x8035F800
+	.data       start:0x80387130 end:0x80387190
+	.sdata2     start:0x80590918 end:0x80590920
+
+spyro/source/KDFaderObject.cpp:
+	.text       start:0x80178E54 end:0x80179294
+	.sdata2     start:0x80590920 end:0x80590930
+
+spyro/source/KDInput.cpp:
+	.text       start:0x80179294 end:0x80179648
+	.sdata2     start:0x80590930 end:0x80590960
+
+spyro/source/KDMath.cpp:
+	.text       start:0x80179648 end:0x8017ADB4
+	.data       start:0x80387190 end:0x803871A0
+	.sdata      start:0x80587948 end:0x80587968
+	.sbss       start:0x80588B50 end:0x80588B58
+	.sdata2     start:0x80590960 end:0x805909B8
+
+spyro/source/KDMemoryCard.cpp:
+	.text       start:0x8017ADB4 end:0x8017BA5C
+	.ctors      start:0x80355F84 end:0x80355F88
+	.data       start:0x803871A0 end:0x80387380
+	.bss        start:0x803E8F00 end:0x803E9E80
+	.sbss       start:0x80588B58 end:0x80588B68
+
+spyro/source/KDParticleEffects.cpp:
+	.text       start:0x8017BA5C end:0x8017CC40
+	.ctors      start:0x80355F88 end:0x80355F8C
+	.rodata     start:0x8035F800 end:0x8035F8C8
+	.data       start:0x80387380 end:0x803874C8
+	.bss        start:0x803E9E80 end:0x803E9EC0
+	.sdata2     start:0x805909B8 end:0x805909D0
+
+spyro/source/KDParticleEmitter.cpp:
+	.text       start:0x8017CC40 end:0x8017D714
+	.rodata     start:0x8035F8C8 end:0x8035F920
+	.data       start:0x803874C8 end:0x80387510
+	.sdata2     start:0x805909D0 end:0x80590A08
+
+spyro/source/KDParticleSystem.cpp:
+	.text       start:0x8017D714 end:0x8017E27C
+	.rodata     start:0x8035F920 end:0x8035F9A8
+	.data       start:0x80387510 end:0x80387618
+	.sdata2     start:0x80590A08 end:0x80590A20
+
+spyro/source/KDPath.cpp:
+	.text       start:0x8017E27C end:0x80180070
+	.rodata     start:0x8035F9A8 end:0x8035F9D8
+	.data       start:0x80387618 end:0x803876C0
+	.bss        start:0x803E9EC0 end:0x803EA2C0
+	.sbss       start:0x80588B68 end:0x80588B70
+	.sdata2     start:0x80590A20 end:0x80590A48
+
+spyro/source/KDProp.cpp:
+	.text       start:0x80180070 end:0x80180F38
+	.rodata     start:0x8035F9D8 end:0x8035FA78
+	.data       start:0x803876C0 end:0x80387738
+	.sdata      start:0x80587968 end:0x80587970
+	.sbss       start:0x80588B70 end:0x80588B78
+	.sdata2     start:0x80590A48 end:0x80590A60
+
+spyro/source/KDProperty.cpp:
+	.text       start:0x80180F38 end:0x80181978
+	.ctors      start:0x80355F8C end:0x80355F90
+	.rodata     start:0x8035FA78 end:0x8035FA98
+	.data       start:0x80387738 end:0x80387788
+	.bss        start:0x803EA2C0 end:0x803EA2D0
+	.sbss       start:0x80588B78 end:0x80588B80
+
+spyro/source/KDPropEx.cpp:
+	.text       start:0x80181978 end:0x80182078
+	.ctors      start:0x80355F90 end:0x80355F94
+	.rodata     start:0x8035FA98 end:0x8035FAD8
+	.data       start:0x80387788 end:0x803877E8
+	.sdata      start:0x80587970 end:0x80587980
+	.sbss       start:0x80588B80 end:0x80588B88
+
+spyro/source/KDShatter2.cpp:
+	.text       start:0x80182078 end:0x80183C2C
+	.sdata      start:0x80587980 end:0x80587988
+	.sbss       start:0x80588B88 end:0x80588B90
+	.sdata2     start:0x80590A60 end:0x80590A98
+
+spyro/source/KDSound.cpp:
+	.text       start:0x80183C2C end:0x80187CFC
+	.rodata     start:0x8035FAD8 end:0x8035FC98
+	.bss        start:0x803EA2D0 end:0x803EA4E8
+	.sdata      start:0x80587988 end:0x805879B0
+	.sbss       start:0x80588B90 end:0x80588BA0
+	.sdata2     start:0x80590A98 end:0x80590AD8
+
+spyro/source/KDSoundProp.cpp:
+	.text       start:0x80187CFC end:0x80188158
+	.rodata     start:0x8035FC98 end:0x8035FCC0
+	.data       start:0x803877E8 end:0x80387848
+	.sdata2     start:0x80590AD8 end:0x80590AE8
+
+spyro/source/KDSoundTools.cpp:
+	.text       start:0x80188158 end:0x80188FE0
+	.sdata      start:0x805879B0 end:0x805879B8
+	.sdata2     start:0x80590AE8 end:0x80590B08
+
+spyro/source/KDSpline.cpp:
+	.text       start:0x80188FE0 end:0x8018C250
+	.ctors      start:0x80355F94 end:0x80355F98
+	.data       start:0x80387848 end:0x80387910
+	.sdata      start:0x805879B8 end:0x805879C8
+	.sdata2     start:0x80590B08 end:0x80590B70
+
+spyro/source/KDVolume.cpp:
+	.text       start:0x8018C250 end:0x8018C7FC
+	.ctors      start:0x80355F98 end:0x80355F9C
+	.data       start:0x80387910 end:0x80387930
+	.sdata2     start:0x80590B70 end:0x80590B80
+
+spyro/source/KDWaterVolume.cpp:
+	.text       start:0x8018C7FC end:0x8018CD64
+	.rodata     start:0x8035FCC0 end:0x8035FCD0
+	.data       start:0x80387930 end:0x80387990
+	.sbss       start:0x80588BA0 end:0x80588BA8
+	.sdata2     start:0x80590B80 end:0x80590B90
+
+spyro/source/KDCamera.cpp:
+	.text       start:0x8018CD64 end:0x8019219C
+	.rodata     start:0x8035FCD0 end:0x8035FE28
+	.data       start:0x80387990 end:0x80387AE0
+	.sdata      start:0x805879C8 end:0x805879F8
+	.sbss       start:0x80588BA8 end:0x80588BB8
+	.sdata2     start:0x80590B90 end:0x80590C60
+	.sbss2      start:0x80595488 end:0x80595490
+
+spyro/source/KDCameraJumpTargetOffset.cpp:
+	.text       start:0x8019219C end:0x80192544
+	.sdata      start:0x805879F8 end:0x80587A00
+	.sdata2     start:0x80590C60 end:0x80590C80
+
+spyro/source/KDCameraMessages.cpp:
+	.text       start:0x80192544 end:0x801926E8
+	.sdata2     start:0x80590C80 end:0x80590C90
+
+spyro/source/KDCameraMessageStorage.cpp:
+	.text       start:0x801926E8 end:0x80192AEC
+
+spyro/source/KDCameraState.cpp:
+	.text       start:0x80192AEC end:0x8019304C
+
+spyro/source/KDSynkerPlayer2Messages.cpp:
+	.text       start:0x8019304C end:0x80193150
+
+spyro/source/KDSynkerPlayer3.cpp:
+	.text       start:0x80193150 end:0x80194090
+	.rodata     start:0x8035FE28 end:0x8035FE48
+	.data       start:0x80387AE0 end:0x80387B18
+	.bss        start:0x803EA4E8 end:0x803EA5E8
+	.sbss       start:0x80588BB8 end:0x80588BC8
+	.sdata2     start:0x80590C90 end:0x80590CA8
+
+spyro/source/KDSynkerPlayerActor.cpp:
+	.text       start:0x80194090 end:0x80198A24
+	.rodata     start:0x8035FE48 end:0x8035FF50
+	.data       start:0x80387B18 end:0x80387BA0
+	.sdata      start:0x80587A00 end:0x80587A28
+	.sbss       start:0x80588BC8 end:0x80588C18
+	.sdata2     start:0x80590CA8 end:0x80590D30
+
+spyro/source/KDSynkerPlayerActorList.cpp:
+	.text       start:0x80198A24 end:0x801995AC
+	.rodata     start:0x8035FF50 end:0x8035FF68
+	.sdata2     start:0x80590D30 end:0x80590D40
+
+spyro/source/KDSynkerPlayerCamera.cpp:
+	.text       start:0x801995AC end:0x8019B41C
+	.rodata     start:0x8035FF68 end:0x8035FFE8
+	.sdata      start:0x80587A28 end:0x80587A30
+	.sdata2     start:0x80590D40 end:0x80590D98
+
+spyro/source/KDSynkerPlayerEvents.cpp:
+	.text       start:0x8019B41C end:0x8019CE24
+	.rodata     start:0x8035FFE8 end:0x80360058
+	.bss        start:0x803EA5E8 end:0x803EA628
+	.sdata      start:0x80587A30 end:0x80587A40
+	.sbss       start:0x80588C18 end:0x80588C20
+	.sdata2     start:0x80590D98 end:0x80590DB0
+
+spyro/source/KDSynkerPlayerSounds.cpp:
+	.text       start:0x8019CE24 end:0x8019D724
+	.rodata     start:0x80360058 end:0x80360080
+	.sdata2     start:0x80590DB0 end:0x80590DC0
+
+spyro/source/KDSynkerPlayerTools.cpp:
+	.text       start:0x8019D724 end:0x8019DBB4
+	.rodata     start:0x80360080 end:0x80360090
+	.sdata      start:0x80587A40 end:0x80587A58
+	.sdata2     start:0x80590DC0 end:0x80590DD0
+
+spyro/source/UIAttributes.cpp:
+	.text       start:0x8019DBB4 end:0x8019E29C
+	.rodata     start:0x80360090 end:0x803600F0
+	.sdata2     start:0x80590DD0 end:0x80590DD8
+
+spyro/source/UIButton.cpp:
+	.text       start:0x8019E29C end:0x8019E9B0
+	.rodata     start:0x803600F0 end:0x80360140
+	.data       start:0x80387BA0 end:0x80387C88
+	.sdata2     start:0x80590DD8 end:0x80590DE8
+
+spyro/source/UIContainer.cpp:
+	.text       start:0x8019E9B0 end:0x8019EF78
+	.rodata     start:0x80360140 end:0x80360158
+	.data       start:0x80387C88 end:0x80387CD8
+
+spyro/source/UIControls.cpp:
+	.text       start:0x8019EF78 end:0x8019F6BC
+	.bss        start:0x803EA628 end:0x803EA648
+	.sdata      start:0x80587A58 end:0x80587A60
+	.sdata2     start:0x80590DE8 end:0x80590E08
+
+spyro/source/UIImage.cpp:
+	.text       start:0x8019F6BC end:0x8019FB1C
+	.rodata     start:0x80360158 end:0x80360170
+	.data       start:0x80387CD8 end:0x80387D28
+	.sdata2     start:0x80590E08 end:0x80590E18
+
+spyro/source/UIMessage.cpp:
+	.text       start:0x8019FB1C end:0x8019FE14
+	.rodata     start:0x80360170 end:0x80360218
+	.data       start:0x80387D28 end:0x80387DA8
+
+spyro/source/UIModel.cpp:
+	.text       start:0x8019FE14 end:0x801A0488
+	.rodata     start:0x80360218 end:0x80360240
+	.data       start:0x80387DA8 end:0x80387E60
+	.sbss       start:0x80588C20 end:0x80588C28
+	.sdata2     start:0x80590E18 end:0x80590E28
+
+spyro/source/UIObject.cpp:
+	.text       start:0x801A0488 end:0x801A093C
+	.ctors      start:0x80355F9C end:0x80355FA0
+	.rodata     start:0x80360240 end:0x80360268
+	.data       start:0x80387E60 end:0x80387E98
+	.sbss       start:0x80588C28 end:0x80588C38
+
+spyro/source/UIReference.cpp:
+	.text       start:0x801A093C end:0x801A0AF8
+	.rodata     start:0x80360268 end:0x80360280
+	.data       start:0x80387E98 end:0x80387EE8
+
+spyro/source/UIScreen.cpp:
+	.text       start:0x801A0AF8 end:0x801A1008
+	.rodata     start:0x80360280 end:0x803602F0
+	.data       start:0x80387EE8 end:0x80387F58
+
+spyro/source/UIStringTable.cpp:
+	.text       start:0x801A1008 end:0x801A11C8
+	.sbss       start:0x80588C38 end:0x80588C40
+
+spyro/source/UISystem.cpp:
+	.text       start:0x801A11C8 end:0x801A1AAC
+	.rodata     start:0x803602F0 end:0x80360300
+	.data       start:0x80387F58 end:0x80387FA8
+
+spyro/source/UIText.cpp:
+	.text       start:0x801A1AAC end:0x801A2090
+	.rodata     start:0x80360300 end:0x80360320
+	.data       start:0x80387FA8 end:0x80387FF8
+	.sdata2     start:0x80590E28 end:0x80590E40
+
+spyro/source/UIVideoScreen.cpp:
+	.text       start:0x801A2090 end:0x801A29F0
+	.rodata     start:0x80360320 end:0x80360380
+	.data       start:0x80387FF8 end:0x80388068
+	.sdata2     start:0x80590E40 end:0x80590E58
+
+spyro/source/Enemies_IceBoss.cpp:
+	.text       start:0x801A29F0 end:0x801A7578
+	.rodata     start:0x80360380 end:0x80360698
+	.data       start:0x80388068 end:0x80388340
+	.sdata      start:0x80587A60 end:0x80587AA8
+	.sbss       start:0x80588C40 end:0x80588C48
+	.sdata2     start:0x80590E58 end:0x80590EF8
+
+spyro/source/IceBossGoals.cpp:
+	.text       start:0x801A7578 end:0x801AE7AC
+	.data       start:0x80388340 end:0x803887D0
+	.sdata      start:0x80587AA8 end:0x80587AB0
+	.sdata2     start:0x80590EF8 end:0x80590FB0
+
+spyro/source/MagicFireball.cpp:
+	.text       start:0x801AE7AC end:0x801AF878
+	.rodata     start:0x80360698 end:0x803606A8
+	.data       start:0x803887D0 end:0x80388870
+	.sdata      start:0x80587AB0 end:0x80587AC0
+	.sbss       start:0x80588C48 end:0x80588C50
+	.sdata2     start:0x80590FB0 end:0x80591020
+
+spyro/source/ToggleProp.cpp:
+	.text       start:0x801AF878 end:0x801AFC08
+	.rodata     start:0x803606A8 end:0x803606D8
+	.data       start:0x80388870 end:0x803888D0
+
+spyro/source/EnemyGoal_DefensiveMode.cpp:
+	.text       start:0x801AFC08 end:0x801B1208
+	.data       start:0x803888D0 end:0x803889D8
+	.sdata      start:0x80587AC0 end:0x80587AD0
+	.sdata2     start:0x80591020 end:0x80591048
+
+spyro/source/WeatherRegion.cpp:
+	.text       start:0x801B1208 end:0x801B2CD8
+	.rodata     start:0x803606D8 end:0x80360770
+	.data       start:0x803889D8 end:0x80388A38
+	.sdata      start:0x80587AD0 end:0x80587AD8
+	.sdata2     start:0x80591048 end:0x805910A0
+
+spyro/source/WeatherAshPS.cpp:
+	.text       start:0x801B2CD8 end:0x801B3214
+	.data       start:0x80388A38 end:0x80388AF0
+	.sdata      start:0x80587AD8 end:0x80587AE0
+	.sdata2     start:0x805910A0 end:0x805910E0
+
+spyro/source/WeatherSnowPS.cpp:
+	.text       start:0x801B3214 end:0x801B3750
+	.data       start:0x80388AF0 end:0x80388BA8
+	.sdata      start:0x80587AE0 end:0x80587AE8
+	.sdata2     start:0x805910E0 end:0x80591120
+
+spyro/source/FuryFXFire2.cpp:
+	.text       start:0x801B3750 end:0x801B50D4
+	.ctors      start:0x80355FA0 end:0x80355FA4
+	.rodata     start:0x80360770 end:0x803607A0
+	.data       start:0x80388BA8 end:0x80388C00
+	.sdata      start:0x80587AE8 end:0x80587AF0
+	.sbss       start:0x80588C50 end:0x80588C58
+	.sdata2     start:0x80591120 end:0x805911E8
+
+spyro/source/IceExplosion.cpp:
+	.text       start:0x801B50D4 end:0x801B52EC
+	.rodata     start:0x803607A0 end:0x803607C8
+	.data       start:0x80388C00 end:0x80388C60
+	.sdata2     start:0x805911E8 end:0x805911F0
+
+spyro/source/FuryFXIce2.cpp:
+	.text       start:0x801B52EC end:0x801B6A40
+	.rodata     start:0x803607C8 end:0x803607E8
+	.data       start:0x80388C60 end:0x80388CA0
+	.sdata      start:0x80587AF0 end:0x80587B00
+	.sdata2     start:0x805911F0 end:0x80591278
+
+spyro/source/FuryFXElectricity2.cpp:
+	.text       start:0x801B6A40 end:0x801B84EC
+	.ctors      start:0x80355FA4 end:0x80355FA8
+	.rodata     start:0x803607E8 end:0x803607F0
+	.data       start:0x80388CA0 end:0x80388CE0
+	.sdata      start:0x80587B00 end:0x80587B28
+	.sbss       start:0x80588C58 end:0x80588C60
+	.sdata2     start:0x80591278 end:0x80591338
+
+spyro/source/CharacterBreathFX.cpp:
+	.text       start:0x801B84EC end:0x801B8F40
+	.sdata2     start:0x80591338 end:0x80591398
+
+spyro/source/FuryFXEarth2.cpp:
+	.text       start:0x801B8F40 end:0x801BAF38
+	.ctors      start:0x80355FA8 end:0x80355FAC
+	.rodata     start:0x803607F0 end:0x80360860
+	.data       start:0x80388CE0 end:0x80388D20
+	.sdata      start:0x80587B28 end:0x80587B48
+	.sbss       start:0x80588C60 end:0x80588C68
+	.sdata2     start:0x80591398 end:0x80591488
+
+spyro/source/IceBossStomp.cpp:
+	.text       start:0x801BAF38 end:0x801BD6CC
+	.rodata     start:0x80360860 end:0x80360918
+	.data       start:0x80388D20 end:0x80388DC0
+	.sdata      start:0x80587B48 end:0x80587B68
+	.sbss       start:0x80588C68 end:0x80588C70
+	.sdata2     start:0x80591488 end:0x80591550
+
+spyro/source/BigBeetleHive.cpp:
+	.text       start:0x801BD6CC end:0x801BE144
+	.rodata     start:0x80360918 end:0x80360950
+	.data       start:0x80388DC0 end:0x80388EC8
+	.sdata2     start:0x80591550 end:0x80591588
+
+spyro/source/AssaultCannon.cpp:
+	.text       start:0x801BE144 end:0x801C3EE8
+	.ctors      start:0x80355FAC end:0x80355FB0
+	.rodata     start:0x80360950 end:0x80360A48
+	.data       start:0x80388EC8 end:0x80389118
+	.sdata      start:0x80587B68 end:0x80587BC0
+	.sbss       start:0x80588C70 end:0x80588C78
+	.sdata2     start:0x80591588 end:0x80591660
+
+spyro/source/IceBossStalactite.cpp:
+	.text       start:0x801C3EE8 end:0x801C655C
+	.rodata     start:0x80360A48 end:0x80360A88
+	.data       start:0x80389118 end:0x80389220
+	.sdata      start:0x80587BC0 end:0x80587BE0
+	.sdata2     start:0x80591660 end:0x80591710
+
+spyro/source/Enemies_Earth.cpp:
+	.text       start:0x801C655C end:0x801C7188
+	.ctors      start:0x80355FB0 end:0x80355FB4
+	.rodata     start:0x80360A88 end:0x80360B00
+	.data       start:0x80389220 end:0x80389B08
+	.sdata      start:0x80587BE0 end:0x80587BE8
+	.sdata2     start:0x80591710 end:0x80591740
+
+spyro/source/Enemies_EarthBoss.cpp:
+	.text       start:0x801C7188 end:0x801CC79C
+	.rodata     start:0x80360B00 end:0x80360C60
+	.data       start:0x80389B08 end:0x80389E90
+	.sdata      start:0x80587BE8 end:0x80587C08
+	.sdata2     start:0x80591740 end:0x80591808
+
+spyro/source/HotSpit.cpp:
+	.text       start:0x801CC79C end:0x801CD5B0
+	.rodata     start:0x80360C60 end:0x80360C70
+	.data       start:0x80389E90 end:0x80389F30
+	.sbss       start:0x80588C78 end:0x80588C80
+	.sdata2     start:0x80591808 end:0x80591870
+
+spyro/source/DreadWingGoals.cpp:
+	.text       start:0x801CD5B0 end:0x801CD828
+	.data       start:0x80389F30 end:0x80389FB0
+	.sdata2     start:0x80591870 end:0x80591878
+
+spyro/source/Enemies_DreadWing.cpp:
+	.text       start:0x801CD828 end:0x801CE580
+	.ctors      start:0x80355FB4 end:0x80355FB8
+	.rodata     start:0x80360C70 end:0x80360D48
+	.data       start:0x80389FB0 end:0x8038A468
+	.sdata2     start:0x80591878 end:0x805918B0
+
+spyro/source/DropBox.cpp:
+	.text       start:0x801CE580 end:0x801CFDA4
+	.rodata     start:0x80360D48 end:0x80360DB8
+	.data       start:0x8038A468 end:0x8038A570
+	.sdata      start:0x80587C08 end:0x80587C18
+	.sdata2     start:0x805918B0 end:0x80591908
+
+spyro/source/Gondola.cpp:
+	.text       start:0x801CFDA4 end:0x801D166C
+	.ctors      start:0x80355FB8 end:0x80355FBC
+	.rodata     start:0x80360DB8 end:0x80360E28
+	.data       start:0x8038A570 end:0x8038A5F0
+	.sdata      start:0x80587C18 end:0x80587C48
+	.sbss       start:0x80588C80 end:0x80588C88
+	.sdata2     start:0x80591908 end:0x80591978
+
+spyro/source/EarthBossGoals.cpp:
+	.text       start:0x801D166C end:0x801D54A4
+	.data       start:0x8038A5F0 end:0x8038A880
+	.sdata      start:0x80587C48 end:0x80587C58
+	.sdata2     start:0x80591978 end:0x805919D8
+
+spyro/source/TotemPolePuzzle.cpp:
+	.text       start:0x801D54A4 end:0x801D5EC4
+	.rodata     start:0x80360E28 end:0x80360E70
+	.data       start:0x8038A880 end:0x8038A9A0
+	.sdata      start:0x80587C58 end:0x80587C60
+	.sdata2     start:0x805919D8 end:0x80591A00
+
+spyro/source/GameEnums.cpp:
+	.text       start:0x801D5EC4 end:0x801D5F50
+	.rodata     start:0x80360E70 end:0x803619C8
+	.data       start:0x8038A9A0 end:0x8038AED8
+
+spyro/source/SonicAttack.cpp:
+	.text       start:0x801D5F50 end:0x801D6B40
+	.rodata     start:0x803619C8 end:0x803619E0
+	.data       start:0x8038AED8 end:0x8038AF78
+	.sbss       start:0x80588C88 end:0x80588C90
+	.sdata2     start:0x80591A00 end:0x80591A50
+
+spyro/source/ControllerRumbleProperty.cpp:
+	.text       start:0x801D6B40 end:0x801D6F5C
+	.rodata     start:0x803619E0 end:0x80361A38
+	.data       start:0x8038AF78 end:0x8038AFC8
+	.sdata2     start:0x80591A50 end:0x80591A60
+
+spyro/source/ClusterBomb.cpp:
+	.text       start:0x801D6F5C end:0x801D7AA0
+	.rodata     start:0x80361A38 end:0x80361A58
+	.data       start:0x8038AFC8 end:0x8038B028
+	.sdata      start:0x80587C60 end:0x80587C68
+	.sdata2     start:0x80591A60 end:0x80591AB0
+
+spyro/source/EarthTier3Goals.cpp:
+	.text       start:0x801D7AA0 end:0x801D7C6C
+	.data       start:0x8038B028 end:0x8038B068
+	.sdata2     start:0x80591AB0 end:0x80591AB8
+
+spyro/source/CynderBarracks.cpp:
+	.text       start:0x801D7C6C end:0x801D80B0
+	.data       start:0x8038B068 end:0x8038B170
+	.sdata2     start:0x80591AB8 end:0x80591AC0
+
+spyro/source/ScorchTrail.cpp:
+	.text       start:0x801D80B0 end:0x801D95E8
+	.rodata     start:0x80361A58 end:0x80361A88
+	.data       start:0x8038B170 end:0x8038B1D0
+	.sdata      start:0x80587C68 end:0x80587C78
+	.sdata2     start:0x80591AC0 end:0x80591B20
+
+spyro/source/Critters.cpp:
+	.text       start:0x801D95E8 end:0x801D9710
+	.rodata     start:0x80361A88 end:0x80361A90
+	.data       start:0x8038B1D0 end:0x8038B210
+
+spyro/source/Subtitles.cpp:
+	.text       start:0x801D9710 end:0x801DA258
+	.rodata     start:0x80361A90 end:0x80361AE0
+	.bss        start:0x803EA648 end:0x803EA6D0
+	.sdata2     start:0x80591B20 end:0x80591B48
+
+spyro/source/Points.cpp:
+	.text       start:0x801DA258 end:0x801DC00C
+	.rodata     start:0x80361AE0 end:0x80361B18
+	.bss        start:0x803EA6D0 end:0x803EA6F8
+	.sdata2     start:0x80591B48 end:0x80591B80
+
+spyro/source/Cynder.cpp:
+	.text       start:0x801DC00C end:0x801E223C
+	.ctors      start:0x80355FBC end:0x80355FC0
+	.rodata     start:0x80361B18 end:0x80361D48
+	.data       start:0x8038B210 end:0x8038B4A8
+	.sdata      start:0x80587C78 end:0x80587C98
+	.sbss       start:0x80588C90 end:0x80588C98
+	.sdata2     start:0x80591B80 end:0x80591C60
+
+spyro/source/FlowerCritter.cpp:
+	.text       start:0x801E223C end:0x801E3194
+	.rodata     start:0x80361D48 end:0x80361D78
+	.data       start:0x8038B4A8 end:0x8038B508
+	.sdata      start:0x80587C98 end:0x80587CA0
+	.sdata2     start:0x80591C60 end:0x80591CA8
+
+spyro/source/SwampFlicker.cpp:
+	.text       start:0x801E3194 end:0x801E3E80
+	.rodata     start:0x80361D78 end:0x80361D90
+	.data       start:0x8038B508 end:0x8038B568
+	.sdata2     start:0x80591CA8 end:0x80591CF8
+
+spyro/source/SwampSlinky.cpp:
+	.text       start:0x801E3E80 end:0x801E4AEC
+	.rodata     start:0x80361D90 end:0x80361DA0
+	.data       start:0x8038B568 end:0x8038B5C8
+	.sdata2     start:0x80591CF8 end:0x80591D60
+
+spyro/source/ElectricFence.cpp:
+	.text       start:0x801E4AEC end:0x801E5F2C
+	.rodata     start:0x80361DA0 end:0x80361E48
+	.data       start:0x8038B5C8 end:0x8038B628
+	.sdata2     start:0x80591D60 end:0x80591DB0
+
+spyro/source/CynderBossGoals.cpp:
+	.text       start:0x801E5F2C end:0x801F2ECC
+	.ctors      start:0x80355FC0 end:0x80355FC4
+	.rodata     start:0x80361E48 end:0x80361E60
+	.data       start:0x8038B628 end:0x8038C018
+	.sdata      start:0x80587CA0 end:0x80587CB0
+	.sbss       start:0x80588C98 end:0x80588CA0
+	.sdata2     start:0x80591DB0 end:0x80591E90
+
+spyro/source/TeslaTower.cpp:
+	.text       start:0x801F2ECC end:0x801F4ABC
+	.rodata     start:0x80361E60 end:0x80361EA0
+	.data       start:0x8038C018 end:0x8038C078
+	.sdata2     start:0x80591E90 end:0x80591EF8
+
+spyro/source/StickyPS.cpp:
+	.text       start:0x801F4ABC end:0x801F4EFC
+	.data       start:0x8038C078 end:0x8038C0C8
+	.sdata2     start:0x80591EF8 end:0x80591F08
+
+spyro/source/SkyClouds.cpp:
+	.text       start:0x801F4EFC end:0x801F6064
+	.rodata     start:0x80361EA0 end:0x80361EA8
+	.data       start:0x8038C0C8 end:0x8038C128
+	.sdata      start:0x80587CB0 end:0x80587CC0
+	.sdata2     start:0x80591F08 end:0x80591F70
+
+spyro/source/YawPlatform.cpp:
+	.text       start:0x801F6064 end:0x801F6280
+	.rodata     start:0x80361EA8 end:0x80361EB8
+	.data       start:0x8038C128 end:0x8038C188
+	.sdata      start:0x80587CC0 end:0x80587CC8
+	.sdata2     start:0x80591F70 end:0x80591F78
+
+spyro/source/KaneGoal_Think.cpp:
+	.text       start:0x801F6280 end:0x801F6754
+	.data       start:0x8038C188 end:0x8038C1D0
+
+spyro/source/Kane.cpp:
+	.text       start:0x801F6754 end:0x801F6984
+	.rodata     start:0x80361EB8 end:0x80361ED0
+	.data       start:0x8038C1D0 end:0x8038C3C0
+
+spyro/source/KDGraph.cpp:
+	.text       start:0x801F6984 end:0x801F6EA8
+	.rodata     start:0x80361ED0 end:0x80361F00
+	.data       start:0x8038C3C0 end:0x8038C430
+
+spyro/source/CharacterGraph.cpp:
+	.text       start:0x801F6EA8 end:0x801F7A78
+	.rodata     start:0x80361F00 end:0x80362278
+	.data       start:0x8038C430 end:0x8038C500
+
+spyro/source/SpeedWay.cpp:
+	.text       start:0x801F7A78 end:0x801F7FD8
+	.rodata     start:0x80362278 end:0x80362290
+	.data       start:0x8038C500 end:0x8038C538
+	.sdata2     start:0x80591F78 end:0x80591F88
+
+spyro/source/WaterWheel.cpp:
+	.text       start:0x801F7FD8 end:0x801F822C
+	.data       start:0x8038C538 end:0x8038C598
+	.sdata2     start:0x80591F88 end:0x80591F90
+
+spyro/source/EnemyGoal_FollowGraph.cpp:
+	.text       start:0x801F822C end:0x802031F0
+	.data       start:0x8038C598 end:0x8038C9C0
+	.sdata      start:0x80587CC8 end:0x80587CD0
+	.sdata2     start:0x80591F90 end:0x80592020
+
+spyro/source/Barricade.cpp:
+	.text       start:0x802031F0 end:0x80203674
+	.rodata     start:0x80362290 end:0x80362298
+	.data       start:0x8038C9C0 end:0x8038CAA0
+	.sdata2     start:0x80592020 end:0x80592050
+
+spyro/source/WhirlWindFX.cpp:
+	.text       start:0x80203674 end:0x802038E8
+	.data       start:0x8038CAA0 end:0x8038CAD8
+	.sdata2     start:0x80592050 end:0x80592058
+
+spyro/source/FightElevator.cpp:
+	.text       start:0x802038E8 end:0x802051E4
+	.ctors      start:0x80355FC4 end:0x80355FC8
+	.rodata     start:0x80362298 end:0x80362310
+	.data       start:0x8038CAD8 end:0x8038CB58
+	.sdata      start:0x80587CD0 end:0x80587CD8
+	.sbss       start:0x80588CA0 end:0x80588CB0
+	.sdata2     start:0x80592058 end:0x805920C0
+
+spyro/source/FightElevatorAnchor.cpp:
+	.text       start:0x802051E4 end:0x802053DC
+	.rodata     start:0x80362310 end:0x80362328
+	.data       start:0x8038CB58 end:0x8038CC40
+
+spyro/source/Enemies_Elec.cpp:
+	.text       start:0x802053DC end:0x8020739C
+	.ctors      start:0x80355FC8 end:0x80355FCC
+	.rodata     start:0x80362328 end:0x803623F0
+	.data       start:0x8038CC40 end:0x8038D400
+	.sdata2     start:0x805920C0 end:0x80592120
+
+spyro/source/IceShard.cpp:
+	.text       start:0x8020739C end:0x80207844
+	.data       start:0x8038D400 end:0x8038D4A0
+	.sbss       start:0x80588CB0 end:0x80588CB8
+	.sdata2     start:0x80592120 end:0x80592150
+
+spyro/source/SolidSlug.cpp:
+	.text       start:0x80207844 end:0x80207F0C
+	.rodata     start:0x803623F0 end:0x80362410
+	.data       start:0x8038D4A0 end:0x8038D540
+	.sbss       start:0x80588CB8 end:0x80588CC0
+	.sdata2     start:0x80592150 end:0x80592180
+
+spyro/source/CynderConcurrentGoals.cpp:
+	.text       start:0x80207F0C end:0x80208640
+	.data       start:0x8038D540 end:0x8038D588
+	.sdata2     start:0x80592180 end:0x80592188
+
+spyro/source/ElecTier2Goals.cpp:
+	.text       start:0x80208640 end:0x8020A310
+	.data       start:0x8038D588 end:0x8038D7D8
+	.sdata2     start:0x80592188 end:0x805921C8
+
+spyro/source/ElecTier3Goals.cpp:
+	.text       start:0x8020A310 end:0x8020C7E8
+	.data       start:0x8038D7D8 end:0x8038D950
+	.sdata      start:0x80587CD8 end:0x80587CE0
+	.sdata2     start:0x805921C8 end:0x805921F8
+
+spyro/source/SpeedwayAA.cpp:
+	.text       start:0x8020C7E8 end:0x8020CEF4
+	.data       start:0x8038D950 end:0x8038D9F0
+	.sbss       start:0x80588CC0 end:0x80588CC8
+	.sdata2     start:0x805921F8 end:0x80592228
+
+spyro/source/CynderElecAttack.cpp:
+	.text       start:0x8020CEF4 end:0x8020D4AC
+	.rodata     start:0x80362410 end:0x80362420
+	.data       start:0x8038D9F0 end:0x8038DA90
+	.sdata      start:0x80587CE0 end:0x80587CF0
+	.sbss       start:0x80588CC8 end:0x80588CD0
+	.sdata2     start:0x80592228 end:0x80592240
+
+spyro/source/Enemies_Dojo.cpp:
+	.text       start:0x8020D4AC end:0x8021209C
+	.ctors      start:0x80355FCC end:0x80355FD0
+	.rodata     start:0x80362420 end:0x803624C8
+	.data       start:0x8038DA90 end:0x8038E738
+	.sdata      start:0x80587CF0 end:0x80587CF8
+	.sdata2     start:0x80592240 end:0x805922D8
+
+spyro/source/DojoGoal_Think.cpp:
+	.text       start:0x8021209C end:0x80213FA4
+	.rodata     start:0x803624C8 end:0x803624D8
+	.data       start:0x8038E738 end:0x8038E7A8
+	.sdata2     start:0x805922D8 end:0x805922F0
+
+spyro/source/DojoGoals.cpp:
+	.text       start:0x80213FA4 end:0x80214078
+	.data       start:0x8038E7A8 end:0x8038E7E8
+	.sdata2     start:0x805922F0 end:0x805922F8
+
+spyro/source/SB2.cpp:
+	.text       start:0x80214078 end:0x8021A5B8
+	.ctors      start:0x80355FD0 end:0x80355FD4
+	.rodata     start:0x803624D8 end:0x803624F0
+	.data       start:0x8038E7E8 end:0x8038E840
+	.sdata      start:0x80587CF8 end:0x80587D58
+	.sbss       start:0x80588CD0 end:0x80588CD8
+	.sdata2     start:0x805922F8 end:0x80592378
+
+spyro/source/LightningStrikeFX.cpp:
+	.text       start:0x8021A5B8 end:0x8021C7EC
+	.rodata     start:0x803624F0 end:0x80362508
+	.data       start:0x8038E840 end:0x8038E8A0
+	.sdata      start:0x80587D58 end:0x80587D70
+	.sdata2     start:0x80592378 end:0x80592408
+
+spyro/source/BoneBlurFX.cpp:
+	.text       start:0x8021C7EC end:0x8021D5D8
+	.rodata     start:0x80362508 end:0x80362518
+	.data       start:0x8038E8A0 end:0x8038E900
+	.bss        start:0x803EA6F8 end:0x803EA708
+	.sbss       start:0x80588CD8 end:0x80588CE0
+	.sdata2     start:0x80592408 end:0x80592420
+
+spyro/source/DojoController.cpp:
+	.text       start:0x8021D5D8 end:0x8022AB8C
+	.ctors      start:0x80355FD4 end:0x80355FD8
+	.rodata     start:0x80362518 end:0x803632B0
+	.data       start:0x8038E900 end:0x8038ECA0
+	.sdata      start:0x80587D70 end:0x80587D98
+	.sbss       start:0x80588CE0 end:0x80588CE8
+	.sdata2     start:0x80592420 end:0x805924B8
+
+spyro/source/GlowingPropManager.cpp:
+	.text       start:0x8022AB8C end:0x8022B064
+	.rodata     start:0x803632B0 end:0x803632C0
+	.sdata      start:0x80587D98 end:0x80587DA8
+	.sbss       start:0x80588CE8 end:0x80588CF0
+	.sdata2     start:0x805924B8 end:0x805924E0
+
+spyro/source/FootStepFX.cpp:
+	.text       start:0x8022B064 end:0x8022C414
+	.rodata     start:0x803632C0 end:0x80363318
+	.data       start:0x8038ECA0 end:0x8038ED00
+	.sdata      start:0x80587DA8 end:0x80587DB0
+	.sdata2     start:0x805924E0 end:0x80592540
+
+spyro/source/CounterProp.cpp:
+	.text       start:0x8022C414 end:0x8022C664
+	.rodata     start:0x80363318 end:0x80363340
+	.data       start:0x8038ED00 end:0x8038ED38
+
+spyro/source/DragonStatue.cpp:
+	.text       start:0x8022C664 end:0x8022E77C
+	.rodata     start:0x80363340 end:0x803633C0
+	.data       start:0x8038ED38 end:0x8038ED78
+	.sdata2     start:0x80592540 end:0x805925E0
+
+spyro/source/ConsoleProp.cpp:
+	.text       start:0x8022E77C end:0x8022EAC0
+	.rodata     start:0x803633C0 end:0x803633E8
+	.data       start:0x8038ED78 end:0x8038EDB0
+
+spyro/source/BobProperty.cpp:
+	.text       start:0x8022EAC0 end:0x8022F0E0
+	.rodata     start:0x803633E8 end:0x80363428
+	.data       start:0x8038EDB0 end:0x8038EE00
+	.sdata2     start:0x805925E0 end:0x805925F0
+
+spyro/source/RotateProperty.cpp:
+	.text       start:0x8022F0E0 end:0x8022F918
+	.rodata     start:0x80363428 end:0x80363468
+	.data       start:0x8038EE00 end:0x8038EE50
+	.sdata2     start:0x805925F0 end:0x805925F8
+
+spyro/source/SwayProperty.cpp:
+	.text       start:0x8022F918 end:0x802301B8
+	.rodata     start:0x80363468 end:0x803634A8
+	.data       start:0x8038EE50 end:0x8038EEA0
+	.sdata2     start:0x805925F8 end:0x80592608
+
+spyro/source/SpyroAirCombatState.cpp:
+	.text       start:0x802301B8 end:0x80234734
+	.ctors      start:0x80355FD8 end:0x80355FDC
+	.rodata     start:0x803634A8 end:0x803634C0
+	.data       start:0x8038EEA0 end:0x8038F110
+	.sdata      start:0x80587DB0 end:0x80587DC0
+	.sbss       start:0x80588CF0 end:0x80588CF8
+	.sdata2     start:0x80592608 end:0x805926B0
+
+spyro/source/EnemyDataTypes.cpp:
+	.text       start:0x80234734 end:0x80235754
+	.rodata     start:0x803634C0 end:0x80363878
+	.data       start:0x8038F110 end:0x8038F218
+	.sdata      start:0x80587DC0 end:0x80587DE8
+	.sdata2     start:0x805926B0 end:0x805926D0
+
+spyro/source/SiegeTower.cpp:
+	.text       start:0x80235754 end:0x80236FF0
+	.rodata     start:0x80363878 end:0x803638E8
+	.data       start:0x8038F218 end:0x8038F320
+	.bss        start:0x803EA708 end:0x803EA7C8
+	.sdata      start:0x80587DE8 end:0x80587DF8
+	.sdata2     start:0x805926D0 end:0x80592730
+
+spyro/source/StalactiteCharge.cpp:
+	.text       start:0x80236FF0 end:0x80239088
+	.ctors      start:0x80355FDC end:0x80355FE0
+	.rodata     start:0x803638E8 end:0x80363930
+	.data       start:0x8038F320 end:0x8038F4A0
+	.sdata      start:0x80587DF8 end:0x80587E10
+	.sdata2     start:0x80592730 end:0x805927A0
+
+spyro/source/SlimeTrailFX.cpp:
+	.text       start:0x80239088 end:0x80239DAC
+	.sdata2     start:0x805927A0 end:0x805927E8
+
+spyro/source/SplineTools.cpp:
+	.text       start:0x80239DAC end:0x8023A1F0
+	.sdata      start:0x80587E10 end:0x80587E18
+	.sdata2     start:0x805927E8 end:0x805927F0
+
+spyro/source/SnowballTree.cpp:
+	.text       start:0x8023A1F0 end:0x8023A9A4
+	.ctors      start:0x80355FE0 end:0x80355FE4
+	.rodata     start:0x80363930 end:0x803639A8
+	.data       start:0x8038F4A0 end:0x8038F500
+	.sbss       start:0x80588CF8 end:0x80588D00
+	.sdata2     start:0x805927F0 end:0x80592830
+
+spyro/source/ConvexityBreathFX.cpp:
+	.text       start:0x8023A9A4 end:0x8023BFA8
+	.rodata     start:0x803639A8 end:0x803639E8
+	.data       start:0x8038F500 end:0x8038F540
+	.sdata      start:0x80587E18 end:0x80587E28
+	.sdata2     start:0x80592830 end:0x805928C8
+
+spyro/source/WaterSurfaceFX.cpp:
+	.text       start:0x8023BFA8 end:0x8023D42C
+	.rodata     start:0x803639E8 end:0x80363A18
+	.data       start:0x8038F540 end:0x8038F5A0
+	.sdata      start:0x80587E28 end:0x80587E30
+	.sdata2     start:0x805928C8 end:0x80592918
+
+spyro/source/SpyroEffects.cpp:
+	.text       start:0x8023D42C end:0x8023FEFC
+	.ctors      start:0x80355FE4 end:0x80355FE8
+	.rodata     start:0x80363A18 end:0x80363C88
+	.data       start:0x8038F5A0 end:0x8038FC00
+	.sdata      start:0x80587E30 end:0x80587E58
+	.sbss       start:0x80588D00 end:0x80588D08
+	.sdata2     start:0x80592918 end:0x80592990
+
+spyro/source/EventCamera.cpp:
+	.text       start:0x8023FEFC end:0x80243670
+	.ctors      start:0x80355FE8 end:0x80355FEC
+	.rodata     start:0x80363C88 end:0x80363EF0
+	.data       start:0x8038FC00 end:0x8038FC60
+	.bss        start:0x803EA7C8 end:0x803EA7F8
+	.sdata      start:0x80587E58 end:0x80587E68
+	.sbss       start:0x80588D08 end:0x80588D20
+	.sdata2     start:0x80592990 end:0x805929F8
+
+spyro/source/SmashWall.cpp:
+	.text       start:0x80243670 end:0x8024380C
+	.data       start:0x8038FC60 end:0x8038FD40
+
+spyro/source/LavaSmashProp.cpp:
+	.text       start:0x8024380C end:0x80244488
+	.rodata     start:0x80363EF0 end:0x80363F58
+	.data       start:0x8038FD40 end:0x8038FE48
+	.sdata      start:0x80587E68 end:0x80587E78
+	.sdata2     start:0x805929F8 end:0x80592A58
+
+spyro/source/GameProperties.cpp:
+	.text       start:0x80244488 end:0x80245734
+	.ctors      start:0x80355FEC end:0x80355FF0
+	.rodata     start:0x80363F58 end:0x80364090
+	.data       start:0x8038FE48 end:0x80390020
+	.bss        start:0x803EA7F8 end:0x803EA8D8
+	.sdata2     start:0x80592A58 end:0x80592A70
+
+spyro/source/PhrasePlayer.cpp:
+	.text       start:0x80245734 end:0x802468B4
+	.ctors      start:0x80355FF0 end:0x80355FF4
+	.rodata     start:0x80364090 end:0x80364128
+	.bss        start:0x803EA8D8 end:0x803EA928
+	.sdata      start:0x80587E78 end:0x80587E80
+	.sbss       start:0x80588D20 end:0x80588D30
+	.sdata2     start:0x80592A70 end:0x80592A80
+
+spyro/source/ShatterablePlatform.cpp:
+	.text       start:0x802468B4 end:0x80246BD8
+	.data       start:0x80390020 end:0x80390108
+	.sdata2     start:0x80592A80 end:0x80592A90
+
+spyro/source/SpeedWaySpyro.cpp:
+	.text       start:0x80246BD8 end:0x8024D0FC
+	.ctors      start:0x80355FF4 end:0x80355FF8
+	.rodata     start:0x80364128 end:0x803642A8
+	.data       start:0x80390108 end:0x80390528
+	.sdata      start:0x80587E80 end:0x80587E90
+	.sbss       start:0x80588D30 end:0x80588D48
+	.sdata2     start:0x80592A90 end:0x80592C00
+
+spyro/source/Enemies_Convex.cpp:
+	.text       start:0x8024D0FC end:0x8024D91C
+	.data       start:0x80390528 end:0x80390950
+	.sdata2     start:0x80592C00 end:0x80592C18
+
+spyro/source/ConvexTier3Goals.cpp:
+	.text       start:0x8024D91C end:0x8024E424
+	.data       start:0x80390950 end:0x80390A18
+	.sdata2     start:0x80592C18 end:0x80592C20
+
+spyro/source/shatterwaypointspawn.cpp:
+	.text       start:0x8024E424 end:0x8024E92C
+	.rodata     start:0x803642A8 end:0x803642C8
+	.data       start:0x80390A18 end:0x80390B28
+	.sdata2     start:0x80592C20 end:0x80592C28
+
+spyro/source/EnemyGenerator.cpp:
+	.text       start:0x8024E92C end:0x802504CC
+	.rodata     start:0x803642C8 end:0x80364440
+	.data       start:0x80390B28 end:0x80390B40
+	.sdata2     start:0x80592C28 end:0x80592C50
+
+spyro/source/KDRandom.cpp:
+	.text       start:0x802504CC end:0x8025089C
+	.sdata2     start:0x80592C50 end:0x80592C88
+
+spyro/source/BeetleNestSmall.cpp:
+	.text       start:0x8025089C end:0x80250E6C
+	.rodata     start:0x80364440 end:0x80364458
+	.data       start:0x80390B40 end:0x80390C50
+	.sdata2     start:0x80592C88 end:0x80592CA0
+
+spyro/source/ElementalWall.cpp:
+	.text       start:0x80250E6C end:0x802556BC
+	.ctors      start:0x80355FF8 end:0x80355FFC
+	.rodata     start:0x80364458 end:0x80364530
+	.data       start:0x80390C50 end:0x80390DD0
+	.sdata      start:0x80587E90 end:0x80587EC0
+	.sdata2     start:0x80592CA0 end:0x80592D48
+
+spyro/source/ScriptedCounterProp.cpp:
+	.text       start:0x802556BC end:0x802558A0
+	.rodata     start:0x80364530 end:0x80364540
+	.data       start:0x80390DD0 end:0x80390E08
+
+spyro/source/GunPowderFuse.cpp:
+	.text       start:0x802558A0 end:0x802580BC
+	.ctors      start:0x80355FFC end:0x80356000
+	.rodata     start:0x80364540 end:0x803645B0
+	.data       start:0x80390E08 end:0x80390E48
+	.sdata      start:0x80587EC0 end:0x80587ED8
+	.sbss       start:0x80588D48 end:0x80588D50
+	.sdata2     start:0x80592D48 end:0x80592DD8
+
+spyro/source/CustomMaterialUpdater.cpp:
+	.text       start:0x802580BC end:0x80258598
+	.sdata2     start:0x80592DD8 end:0x80592DF0
+
+spyro/source/ElementalCombatController.cpp:
+	.text       start:0x80258598 end:0x80259440
+	.ctors      start:0x80356000 end:0x80356004
+	.rodata     start:0x803645B0 end:0x80364810
+	.data       start:0x80390E48 end:0x80390E80
+	.sbss       start:0x80588D50 end:0x80588D58
+	.sdata2     start:0x80592DF0 end:0x80592E20
+
+spyro/source/CynderPortcullis.cpp:
+	.text       start:0x80259440 end:0x802597D4
+	.data       start:0x80390E80 end:0x80390EF0
+
+spyro/source/FuryFXConvexity.cpp:
+	.text       start:0x802597D4 end:0x8025D8C8
+	.ctors      start:0x80356004 end:0x80356008
+	.rodata     start:0x80364810 end:0x80364840
+	.data       start:0x80390EF0 end:0x80390F48
+	.sdata      start:0x80587ED8 end:0x80587F10
+	.sbss       start:0x80588D58 end:0x80588D60
+	.sdata2     start:0x80592E20 end:0x80592F70
+
+spyro/source/TrainChaseSpyro.cpp:
+	.text       start:0x8025D8C8 end:0x80263268
+	.ctors      start:0x80356008 end:0x8035600C
+	.rodata     start:0x80364840 end:0x80364980
+	.data       start:0x80390F48 end:0x803912C8
+	.sdata      start:0x80587F10 end:0x80587F40
+	.sbss       start:0x80588D60 end:0x80588D68
+	.sdata2     start:0x80592F70 end:0x80593088
+
+spyro/source/CynderEnergyCrystal.cpp:
+	.text       start:0x80263268 end:0x802637C8
+	.rodata     start:0x80364980 end:0x80364990
+	.data       start:0x803912C8 end:0x80391338
+	.sdata      start:0x80587F40 end:0x80587F50
+	.sdata2     start:0x80593088 end:0x805930A8
+
+spyro/source/Guardian.cpp:
+	.text       start:0x802637C8 end:0x80263B68
+	.rodata     start:0x80364990 end:0x803649C8
+	.data       start:0x80391338 end:0x80391380
+	.sdata2     start:0x805930A8 end:0x805930B0
+
+spyro/source/SparxHint.cpp:
+	.text       start:0x80263B68 end:0x8026436C
+	.ctors      start:0x8035600C end:0x80356010
+	.rodata     start:0x803649C8 end:0x80364A18
+	.data       start:0x80391380 end:0x80391400
+	.sbss       start:0x80588D68 end:0x80588D70
+	.sdata2     start:0x805930B0 end:0x805930E8
+
+spyro/source/NPCGuardian.cpp:
+	.text       start:0x8026436C end:0x80264648
+	.rodata     start:0x80364A18 end:0x80364A38
+	.data       start:0x80391400 end:0x803915F0
+	.sdata2     start:0x805930E8 end:0x805930F0
+
+spyro/source/NPCGuardianGoal_Think.cpp:
+	.text       start:0x80264648 end:0x80264C90
+	.data       start:0x803915F0 end:0x80391638
+
+spyro/source/ElementalSpline.cpp:
+	.text       start:0x80264C90 end:0x802697F0
+	.ctors      start:0x80356010 end:0x80356014
+	.rodata     start:0x80364A38 end:0x80364B18
+	.data       start:0x80391638 end:0x803917B8
+	.sdata      start:0x80587F50 end:0x80587FE0
+	.sdata2     start:0x805930F0 end:0x80593178
+
+spyro/source/SquishBoulder.cpp:
+	.text       start:0x802697F0 end:0x8026A660
+	.rodata     start:0x80364B18 end:0x80364B40
+	.data       start:0x803917B8 end:0x803918C0
+	.sdata      start:0x80587FE0 end:0x80587FE8
+	.sdata2     start:0x80593178 end:0x80593218
+
+spyro/source/NPCGuardianGoals.cpp:
+	.text       start:0x8026A660 end:0x8026AA68
+	.data       start:0x803918C0 end:0x80391900
+	.sdata2     start:0x80593218 end:0x80593230
+
+spyro/source/EarthBombFX.cpp:
+	.text       start:0x8026AA68 end:0x8026C770
+	.rodata     start:0x80364B40 end:0x80364B70
+	.data       start:0x80391900 end:0x80391970
+	.sdata      start:0x80587FE8 end:0x80588010
+	.sdata2     start:0x80593230 end:0x80593300
+
+spyro/source/ConvexTier2Goals.cpp:
+	.text       start:0x8026C770 end:0x8026D558
+	.data       start:0x80391970 end:0x80391A40
+	.sdata2     start:0x80593300 end:0x80593310
+
+spyro/source/SplineProp.cpp:
+	.text       start:0x8026D558 end:0x8026DA30
+	.ctors      start:0x80356014 end:0x80356018
+	.rodata     start:0x80364B70 end:0x80364B80
+	.data       start:0x80391A40 end:0x80391AC0
+	.sdata2     start:0x80593310 end:0x80593328
+
+spyro/source/CharacterFireFX.cpp:
+	.text       start:0x8026DA30 end:0x8026DE10
+	.data       start:0x80391AC0 end:0x80391AE0
+	.sdata2     start:0x80593328 end:0x80593350
+
+spyro/source/ZapCage.cpp:
+	.text       start:0x8026DE10 end:0x8026E3F4
+	.data       start:0x80391AE0 end:0x80391B18
+	.sdata      start:0x80588010 end:0x80588018
+	.sdata2     start:0x80593350 end:0x80593378
+
+spyro/source/CharacterDojoFX.cpp:
+	.text       start:0x8026E3F4 end:0x8026E6E0
+	.data       start:0x80391B18 end:0x80391B38
+	.sdata2     start:0x80593378 end:0x80593390
+
+spyro/source/SpeedwayCynder.cpp:
+	.text       start:0x8026E6E0 end:0x802711E4
+	.ctors      start:0x80356018 end:0x8035601C
+	.rodata     start:0x80364B80 end:0x80364C58
+	.data       start:0x80391B38 end:0x80391CC0
+	.sdata      start:0x80588018 end:0x80588078
+	.sbss       start:0x80588D70 end:0x80588D88
+	.sdata2     start:0x80593390 end:0x80593460
+
+spyro/source/GroundFire.cpp:
+	.text       start:0x802711E4 end:0x80271758
+	.sdata2     start:0x80593460 end:0x80593488
+
+spyro/source/ShatterableBoat.cpp:
+	.text       start:0x80271758 end:0x80273A50
+	.rodata     start:0x80364C58 end:0x80364D20
+	.data       start:0x80391CC0 end:0x80391DC8
+	.sdata      start:0x80588078 end:0x805880A8
+	.sdata2     start:0x80593488 end:0x80593510
+
+spyro/source/Leviathan.cpp:
+	.text       start:0x80273A50 end:0x802754B8
+	.rodata     start:0x80364D20 end:0x80364DA8
+	.data       start:0x80391DC8 end:0x80391E30
+	.sdata      start:0x805880A8 end:0x805880C0
+	.sdata2     start:0x80593510 end:0x80593580
+
+spyro/source/SparxPath.cpp:
+	.text       start:0x802754B8 end:0x8027576C
+	.ctors      start:0x8035601C end:0x80356020
+	.rodata     start:0x80364DA8 end:0x80364DC0
+	.data       start:0x80391E30 end:0x80391E70
+	.sbss       start:0x80588D88 end:0x80588D90
+	.sdata2     start:0x80593580 end:0x805935A8
+
+spyro/source/IceSquirt.cpp:
+	.text       start:0x8027576C end:0x80275D88
+	.rodata     start:0x80364DC0 end:0x80364DD0
+	.data       start:0x80391E70 end:0x80391F10
+	.sdata      start:0x805880C0 end:0x805880D8
+	.sbss       start:0x80588D90 end:0x80588D98
+	.sdata2     start:0x805935A8 end:0x805935C8
+
+spyro/source/PoisonBomb.cpp:
+	.text       start:0x80275D88 end:0x80277340
+	.rodata     start:0x80364DD0 end:0x80364E00
+	.data       start:0x80391F10 end:0x80391FB0
+	.sdata      start:0x805880D8 end:0x805880F0
+	.sbss       start:0x80588D98 end:0x80588DA0
+	.sdata2     start:0x805935C8 end:0x80593648
+
+spyro/source/LavaDerick.cpp:
+	.text       start:0x80277340 end:0x80277664
+	.ctors      start:0x80356020 end:0x80356024
+	.rodata     start:0x80364E00 end:0x80364E10
+	.data       start:0x80391FB0 end:0x803920B8
+	.sbss       start:0x80588DA0 end:0x80588DA8
+	.sdata2     start:0x80593648 end:0x80593668
+
+spyro/source/TimeDeltaModifier.cpp:
+	.text       start:0x80277664 end:0x802778AC
+	.sdata      start:0x805880F0 end:0x805880F8
+	.sdata2     start:0x80593668 end:0x80593670
+
+spyro/source/WeatherEmbersPS.cpp:
+	.text       start:0x802778AC end:0x80277DE8
+	.data       start:0x803920B8 end:0x80392170
+	.sdata      start:0x805880F8 end:0x80588100
+	.sdata2     start:0x80593670 end:0x805936B0
+
+spyro/source/FallingDustProp.cpp:
+	.text       start:0x80277DE8 end:0x80278854
+	.rodata     start:0x80364E10 end:0x80364E40
+	.data       start:0x80392170 end:0x803921D0
+	.sdata      start:0x80588100 end:0x80588108
+	.sdata2     start:0x805936B0 end:0x80593708
+
+spyro/source/ConvexityVortex.cpp:
+	.text       start:0x80278854 end:0x80279398
+	.rodata     start:0x80364E40 end:0x80364E70
+	.data       start:0x803921D0 end:0x80392208
+	.sdata2     start:0x80593708 end:0x80593750
+
+spyro/source/LavaFiddler.cpp:
+	.text       start:0x80279398 end:0x8027AC70
+	.rodata     start:0x80364E70 end:0x80364EB0
+	.data       start:0x80392208 end:0x80392268
+	.sdata2     start:0x80593750 end:0x805937A8
+
+spyro/source/DartTrap.cpp:
+	.text       start:0x8027AC70 end:0x8027B660
+	.rodata     start:0x80364EB0 end:0x80364EF8
+	.data       start:0x80392268 end:0x803922C8
+	.sdata      start:0x80588108 end:0x80588118
+	.sdata2     start:0x805937A8 end:0x805937D8
+
+spyro/source/WeatherSpores.cpp:
+	.text       start:0x8027B660 end:0x8027BB60
+	.data       start:0x803922C8 end:0x80392380
+	.sdata      start:0x80588118 end:0x80588120
+	.sdata2     start:0x805937D8 end:0x80593810
+
+spyro/source/GameVideo.cpp:
+	.text       start:0x8027BB60 end:0x8027BF14
+	.rodata     start:0x80364EF8 end:0x80364F08
+	.data       start:0x80392380 end:0x80392390
+	.sbss       start:0x80588DA8 end:0x80588DB0
+	.sdata2     start:0x80593810 end:0x80593838
+
+spyro/source/IceSnoat.cpp:
+	.text       start:0x8027BF14 end:0x8027D67C
+	.rodata     start:0x80364F08 end:0x80364F20
+	.data       start:0x80392390 end:0x803923F0
+	.sdata      start:0x80588120 end:0x80588128
+	.sdata2     start:0x80593838 end:0x80593890
+
+spyro/source/SwampFlutter.cpp:
+	.text       start:0x8027D67C end:0x8027E064
+	.rodata     start:0x80364F20 end:0x80364F28
+	.data       start:0x803923F0 end:0x80392450
+	.sdata2     start:0x80593890 end:0x805938C8
+
+spyro/source/LookAtProp.cpp:
+	.text       start:0x8027E064 end:0x8027E414
+	.ctors      start:0x80356024 end:0x80356028
+	.rodata     start:0x80364F28 end:0x80364F30
+	.data       start:0x80392450 end:0x803924D0
+	.sbss       start:0x80588DB0 end:0x80588DB8
+	.sdata2     start:0x805938C8 end:0x805938F0
+
+spyro/source/EnemyTestGoals.cpp:
+	.text       start:0x8027E414 end:0x8027F684
+	.data       start:0x803924D0 end:0x80392580
+	.sdata2     start:0x805938F0 end:0x80593908
+
+spyro/source/Bird.cpp:
+	.text       start:0x8027F684 end:0x80281174
+	.rodata     start:0x80364F30 end:0x80364F88
+	.data       start:0x80392580 end:0x803925E0
+	.sdata      start:0x80588128 end:0x80588148
+	.sdata2     start:0x80593908 end:0x80593960
+
+spyro/source/EarthBreathWhirlWinds.cpp:
+	.text       start:0x80281174 end:0x80282330
+	.rodata     start:0x80364F88 end:0x80364FC0
+	.data       start:0x803925E0 end:0x80392640
+	.sdata      start:0x80588148 end:0x80588158
+	.sdata2     start:0x80593960 end:0x805939F0
+
+spyro/source/CynderBreathFX.cpp:
+	.text       start:0x80282330 end:0x80282F54
+	.ctors      start:0x80356028 end:0x8035602C
+	.rodata     start:0x80364FC0 end:0x80365028
+	.data       start:0x80392640 end:0x803926A0
+	.bss        start:0x803EA928 end:0x803EA980
+	.sbss       start:0x80588DB8 end:0x80588DC0
+	.sdata2     start:0x805939F0 end:0x80593A28
+
+spyro/source/ConvexityDebris.cpp:
+	.text       start:0x80282F54 end:0x80283A50
+	.rodata     start:0x80365028 end:0x80365090
+	.data       start:0x803926A0 end:0x80392700
+	.sdata      start:0x80588158 end:0x80588170
+	.sdata2     start:0x80593A28 end:0x80593A58
+
+spyro/source/GameSounds.cpp:
+	.text       start:0x80283A50 end:0x80283B10
+	.rodata     start:0x80365090 end:0x8036C1C0
+	.data       start:0x80392700 end:0x803968E0
+	.sdata      start:0x80588170 end:0x80588178
+	.sbss       start:0x80588DC0 end:0x8058AEB0
+
+spyro/source/PitCover.cpp:
+	.text       start:0x80283B10 end:0x80283F54
+	.rodata     start:0x8036C1C0 end:0x8036C1D0
+	.data       start:0x803968E0 end:0x80396920
+	.sdata      start:0x80588178 end:0x80588180
+	.sdata2     start:0x80593A58 end:0x80593A70
+
+spyro/source/MagicDrain.cpp:
+	.text       start:0x80283F54 end:0x802845E0
+	.data       start:0x80396920 end:0x803969C0
+	.sdata      start:0x80588180 end:0x80588190
+	.sbss       start:0x8058AEB0 end:0x8058AEB8
+	.sdata2     start:0x80593A70 end:0x80593A90
+
+spyro/source/ElementalRing.cpp:
+	.text       start:0x802845E0 end:0x80285718
+	.rodata     start:0x8036C1D0 end:0x8036C238
+	.data       start:0x803969C0 end:0x80396A20
+	.sdata      start:0x80588190 end:0x80588198
+	.sdata2     start:0x80593A90 end:0x80593AE0
+
+spyro/source/ScryingPool.cpp:
+	.text       start:0x80285718 end:0x80285AE8
+	.rodata     start:0x8036C238 end:0x8036C258
+	.data       start:0x80396A20 end:0x80396A80
+	.sdata2     start:0x80593AE0 end:0x80593AE8
+
+spyro/source/EnemySettings.cpp:
+	.text       start:0x80285AE8 end:0x802861A8
+	.rodata     start:0x8036C258 end:0x8036C348
+	.data       start:0x80396A80 end:0x80396AD0
+	.bss        start:0x803EA980 end:0x803EAA58
+	.sdata      start:0x80588198 end:0x805881A0
+	.sbss       start:0x8058AEB8 end:0x8058AEC0
+	.sdata2     start:0x80593AE8 end:0x80593AF0
+
+spyro/source/WeatherConvexityPS.cpp:
+	.text       start:0x802861A8 end:0x802866E4
+	.data       start:0x80396AD0 end:0x80396B88
+	.sdata      start:0x805881A0 end:0x805881A8
+	.sdata2     start:0x80593AF0 end:0x80593B30
+
+spyro/source/WeatherRainPS.cpp:
+	.text       start:0x802866E4 end:0x80286B18
+	.data       start:0x80396B88 end:0x80396C40
+	.sdata      start:0x805881A8 end:0x805881B0
+	.sdata2     start:0x80593B30 end:0x80593B50
+
+spyro/source/GameLanguage.cpp:
+	.text       start:0x80286B18 end:0x80286FD8
+	.rodata     start:0x8036C348 end:0x8036C350
+	.data       start:0x80396C40 end:0x80396C88
+
+spyro/source/DynamiteExplosion.cpp:
+	.text       start:0x80286FD8 end:0x8028B0DC
+	.rodata     start:0x8036C350 end:0x8036C410
+	.data       start:0x80396C88 end:0x80396CE8
+	.sdata      start:0x805881B0 end:0x805881C0
+	.sdata2     start:0x80593B50 end:0x80593C18
+
+spyro/source/Credits.cpp:
+	.text       start:0x8028B0DC end:0x8028C2B8
+	.rodata     start:0x8036C410 end:0x8036C468
+	.data       start:0x80396CE8 end:0x80396D90
+	.sbss       start:0x8058AEC0 end:0x8058AEC8
+	.sdata2     start:0x80593C18 end:0x80593C58
+
+spyro/source/EnemyGoal_GroundAttackMode.cpp:
+	.text       start:0x8028C2B8 end:0x8028DECC
+	.data       start:0x80396D90 end:0x80396DD8
+	.sdata      start:0x805881C0 end:0x805881C8
+	.sdata2     start:0x80593C58 end:0x80593C78
+
+spyro/source/ElementalShield.cpp:
+	.text       start:0x8028DECC end:0x8028E670
+	.rodata     start:0x8036C468 end:0x8036C480
+	.data       start:0x80396DD8 end:0x80396E18
+	.sdata      start:0x805881C8 end:0x805881D0
+	.sdata2     start:0x80593C78 end:0x80593CA0
+
+spyro/source/CollideBox.cpp:
+	.text       start:0x8028E670 end:0x8028E828
+	.rodata     start:0x8036C480 end:0x8036C490
+	.data       start:0x80396E18 end:0x80396E58
+
+spyro/source/ElecZapCrystal.cpp:
+	.text       start:0x8028E828 end:0x8028F01C
+	.rodata     start:0x8036C490 end:0x8036C4B0
+	.data       start:0x80396E58 end:0x80396E98
+	.sdata      start:0x805881D0 end:0x805881D8
+	.sdata2     start:0x80593CA0 end:0x80593CD8
+
+spyro/source/KDCameraDeltaDrag.cpp:
+	.text       start:0x8028F01C end:0x8028F208
+	.sdata2     start:0x80593CD8 end:0x80593D00
+
+spyro/source/KDCameraSimpleDelta.cpp:
+	.text       start:0x8028F208 end:0x80290424
+	.rodata     start:0x8036C4B0 end:0x8036C4D8
+	.sdata      start:0x805881D8 end:0x805881E0
+	.sbss       start:0x8058AEC8 end:0x8058AED0
+	.sdata2     start:0x80593D00 end:0x80593D48
+
+spyro/source/BoulderRamp.cpp:
+	.text       start:0x80290424 end:0x80291138
+	.ctors      start:0x8035602C end:0x80356030
+	.rodata     start:0x8036C4D8 end:0x8036C510
+	.data       start:0x80396E98 end:0x80397060
+	.bss        start:0x803EAA58 end:0x803EAB20
+	.sdata      start:0x805881E0 end:0x805881E8
+	.sdata2     start:0x80593D48 end:0x80593D70
+
+spyro/source/FlyingMonkey.cpp:
+	.text       start:0x80291138 end:0x80291C80
+	.rodata     start:0x8036C510 end:0x8036C568
+	.data       start:0x80397060 end:0x80397100
+	.sbss       start:0x8058AED0 end:0x8058AED8
+	.sdata2     start:0x80593D70 end:0x80593DB8
+
+spyro/source/Grubble.cpp:
+	.text       start:0x80291C80 end:0x80292F30
+	.rodata     start:0x8036C568 end:0x8036C598
+	.data       start:0x80397100 end:0x80397160
+	.sdata2     start:0x80593DB8 end:0x80593E08
+
+spyro/source/Skiffter.cpp:
+	.text       start:0x80292F30 end:0x80294C54
+	.rodata     start:0x8036C598 end:0x8036C5D0
+	.data       start:0x80397160 end:0x803971C0
+	.sdata2     start:0x80593E08 end:0x80593E58
+
+spyro/source/MudGuts.cpp:
+	.text       start:0x80294C54 end:0x802954A8
+	.rodata     start:0x8036C5D0 end:0x8036C5E0
+	.data       start:0x803971C0 end:0x80397220
+	.sdata2     start:0x80593E58 end:0x80593E90
+
+spyro/source/Shwimma.cpp:
+	.text       start:0x802954A8 end:0x8029685C
+	.rodata     start:0x8036C5E0 end:0x8036C638
+	.data       start:0x80397220 end:0x80397280
+	.sdata2     start:0x80593E90 end:0x80593EE8
+
+spyro/source/EnemyAttackPattern.cpp:
+	.text       start:0x8029685C end:0x80297548
+	.rodata     start:0x8036C638 end:0x8036C760
+	.data       start:0x80397280 end:0x80397340
+	.sbss       start:0x8058AED8 end:0x8058AEE8
+	.sdata2     start:0x80593EE8 end:0x80593EF8
+
+spyro/source/SpyroCynderStrafeState.cpp:
+	.text       start:0x80297548 end:0x8029992C
+	.ctors      start:0x80356030 end:0x80356034
+	.rodata     start:0x8036C760 end:0x8036C778
+	.data       start:0x80397340 end:0x80397568
+	.sbss       start:0x8058AEE8 end:0x8058AEF0
+	.sdata2     start:0x80593EF8 end:0x80593F88
+
+dolphin/base/PPCArch.c:
+	.text       start:0x8029992C end:0x80299A40
+
+dolphin/db/db.c:
+	.text       start:0x80299A40 end:0x80299B2C
+	.data       start:0x80397568 end:0x80397580
+	.sbss       start:0x8058AEF0 end:0x8058AEF8
+
+dolphin/os/OS.c:
+	.text       start:0x80299B2C end:0x8029A5F8
+	.data       start:0x80397580 end:0x80397778
+	.bss        start:0x803EAB20 end:0x803EAB90
+	.sdata      start:0x805881E8 end:0x805881F8
+	.sbss       start:0x8058AEF8 end:0x8058AF30
+
+dolphin/os/OSAlarm.c:
+	.text       start:0x8029A5F8 end:0x8029AD54
+	.data       start:0x80397778 end:0x80397788
+	.sbss       start:0x8058AF30 end:0x8058AF38
+
+dolphin/os/OSAlloc.c:
+	.text       start:0x8029AD54 end:0x8029B3C4
+	.data       start:0x80397788 end:0x80397B20
+	.sdata      start:0x805881F8 end:0x80588200
+	.sbss       start:0x8058AF38 end:0x8058AF48
+
+dolphin/os/OSArena.c:
+	.text       start:0x8029B3C4 end:0x8029B410
+	.sdata      start:0x80588200 end:0x80588208
+	.sbss       start:0x8058AF48 end:0x8058AF50
+
+dolphin/os/OSAudioSystem.c:
+	.text       start:0x8029B410 end:0x8029B6A4
+	.data       start:0x80397B20 end:0x80397BA0
+
+dolphin/os/OSCache.c:
+	.text       start:0x8029B6A4 end:0x8029BDC0
+	.data       start:0x80397BA0 end:0x80397DD0
+
+dolphin/os/OSContext.c:
+	.text       start:0x8029BDC0 end:0x8029C660
+	.data       start:0x80397DD0 end:0x80397FA8
+
+dolphin/os/OSError.c:
+	.text       start:0x8029C660 end:0x8029CD0C
+	.data       start:0x80397FA8 end:0x803982C8
+	.bss        start:0x803EAB90 end:0x803EABD8
+	.sdata      start:0x80588208 end:0x80588210
+
+dolphin/os/OSExec.c:
+	.text       start:0x8029CD0C end:0x8029D66C
+	.data       start:0x803982C8 end:0x803982D8
+	.sdata      start:0x80588210 end:0x80588218
+	.sbss       start:0x8058AF50 end:0x8058AF58
+
+dolphin/os/OSFatal.c:
+	.text       start:0x8029D66C end:0x8029E2FC
+	.bss        start:0x803EABD8 end:0x803EAEC0
+	.sdata      start:0x80588218 end:0x80588220
+	.sdata2     start:0x80593F88 end:0x80593FC8
+
+dolphin/os/OSFont.c:
+	.text       start:0x8029E2FC end:0x8029EE88
+	.data       start:0x803982D8 end:0x80398DE8
+	.sdata      start:0x80588220 end:0x80588228
+	.sbss       start:0x8058AF58 end:0x8058AF68
+	.sdata2     start:0x80593FC8 end:0x80593FD0
+
+dolphin/os/OSInterrupt.c:
+	.text       start:0x8029EE88 end:0x8029F6F4
+	.data       start:0x80398DE8 end:0x80398E18
+	.sbss       start:0x8058AF68 end:0x8058AF80
+
+dolphin/os/OSLink.c:
+	.text       start:0x8029F6F4 end:0x8029F70C
+
+dolphin/os/OSMessage.c:
+	.text       start:0x8029F70C end:0x8029F910
+
+dolphin/os/OSMemory.c:
+	.text       start:0x8029F910 end:0x8029FC00
+	.data       start:0x80398E18 end:0x80398E28
+
+dolphin/os/OSMutex.c:
+	.text       start:0x8029FC00 end:0x8029FC70
+
+dolphin/os/OSReboot.c:
+	.text       start:0x8029FC70 end:0x8029FCF4
+	.sbss       start:0x8058AF80 end:0x8058AF88
+
+dolphin/os/OSReset.c:
+	.text       start:0x8029FCF4 end:0x802A0178
+	.data       start:0x80398E28 end:0x80398E78
+	.sbss       start:0x8058AF88 end:0x8058AF98
+
+dolphin/os/OSResetSW.c:
+	.text       start:0x802A0178 end:0x802A0504
+	.sbss       start:0x8058AF98 end:0x8058AFB8
+
+dolphin/os/OSRtc.c:
+	.text       start:0x802A0504 end:0x802A106C
+	.bss        start:0x803EAEC0 end:0x803EAF18
+
+dolphin/os/OSSemaphore.c:
+	.text       start:0x802A106C end:0x802A1194
+
+dolphin/os/OSSync.c:
+	.text       start:0x802A1194 end:0x802A1218
+
+dolphin/os/OSThread.c:
+	.text       start:0x802A1218 end:0x802A24B4
+	.bss        start:0x803EAF18 end:0x803EB910
+	.sdata      start:0x80588228 end:0x80588230
+	.sbss       start:0x8058AFB8 end:0x8058AFC8
+
+dolphin/os/OSTime.c:
+	.text       start:0x802A24B4 end:0x802A28D8
+	.data       start:0x80398E78 end:0x80398ED8
+
+dolphin/os/__start.c:
+	.init       start:0x80003100 end:0x80003400
+	.sbss       start:0x8058AFC8 end:0x8058AFD0
+
+dolphin/os/__ppc_eabi_init.cpp:
+	.init       start:0x80003400 end:0x80003458
+	.text       start:0x802A28D8 end:0x802A296C
+
+dolphin/axart/axart.c:
+	.text       start:0x802A296C end:0x802A2E34
+	.data       start:0x80398ED8 end:0x80398F20
+	.sbss       start:0x8058AFD0 end:0x8058AFD8
+	.sdata2     start:0x80593FD0 end:0x80593FF8
+
+dolphin/axart/axartsound.c:
+	.text       start:0x802A2E34 end:0x802A312C
+	.data       start:0x80398F20 end:0x80398F68
+	.sdata2     start:0x80593FF8 end:0x80594008
+
+dolphin/axart/axartcents.c:
+	.text       start:0x802A312C end:0x802A3228
+	.data       start:0x80398F68 end:0x80399358
+	.sdata2     start:0x80594008 end:0x80594010
+
+dolphin/axart/axartenv.c:
+	.text       start:0x802A3228 end:0x802A32E0
+
+dolphin/axart/axartlfo.c:
+	.text       start:0x802A32E0 end:0x802A3394
+	.sdata2     start:0x80594010 end:0x80594018
+
+dolphin/axart/axart3d.c:
+	.text       start:0x802A3394 end:0x802A3528
+	.data       start:0x80399358 end:0x80399BD0
+	.sbss       start:0x8058AFD8 end:0x8058AFE0
+	.sdata2     start:0x80594018 end:0x80594028
+
+dolphin/axart/axartlpf.c:
+	.text       start:0x802A3528 end:0x802A35B0
+	.data       start:0x80399BD0 end:0x80399C30
+
+dolphin/mtx/mtx44.c:
+	.text       start:0x802A35B0 end:0x802A3718
+	.sdata2     start:0x80594028 end:0x80594040
+
+dolphin/dvd/dvdlow.c:
+	.text       start:0x802A3718 end:0x802A4594
+	.bss        start:0x803EB910 end:0x803EB9E0
+	.sdata      start:0x80588230 end:0x80588238
+	.sbss       start:0x8058AFE0 end:0x8058B028
+
+dolphin/dvd/dvdfs.c:
+	.text       start:0x802A4594 end:0x802A4EA4
+	.data       start:0x80399C30 end:0x80399D88
+	.sdata      start:0x80588238 end:0x80588240
+	.sbss       start:0x8058B028 end:0x8058B048
+
+dolphin/dvd/dvd.c:
+	.text       start:0x802A4EA4 end:0x802A76F8
+	.data       start:0x80399D88 end:0x80399F10
+	.bss        start:0x803EB9E0 end:0x803EBA78
+	.sdata      start:0x80588240 end:0x80588258
+	.sbss       start:0x8058B048 end:0x8058B098
+
+dolphin/dvd/dvdqueue.c:
+	.text       start:0x802A76F8 end:0x802A78F0
+	.bss        start:0x803EBA78 end:0x803EBA98
+
+dolphin/dvd/dvderror.c:
+	.text       start:0x802A78F0 end:0x802A7A88
+	.data       start:0x80399F10 end:0x80399F58
+
+dolphin/dvd/dvdidutils.c:
+	.text       start:0x802A7A88 end:0x802A7B80
+
+dolphin/dvd/dvdFatal.c:
+	.text       start:0x802A7B80 end:0x802A7CAC
+	.rodata     start:0x8036C778 end:0x8036C790
+	.data       start:0x80399F58 end:0x8039A308
+	.sdata      start:0x80588258 end:0x80588260
+	.sbss       start:0x8058B098 end:0x8058B0A0
+	.sdata2     start:0x80594040 end:0x80594048
+
+dolphin/dvd/fstload.c:
+	.text       start:0x802A7CAC end:0x802A7EEC
+	.data       start:0x8039A308 end:0x8039A378
+	.bss        start:0x803EBA98 end:0x803EBB08
+	.sdata      start:0x80588260 end:0x80588270
+	.sbss       start:0x8058B0A0 end:0x8058B0B0
+
+dolphin/vi/vi.c:
+	.text       start:0x802A7EEC end:0x802AA084
+	.data       start:0x8039A378 end:0x8039A760
+	.bss        start:0x803EBB08 end:0x803EBC50
+	.sdata      start:0x80588270 end:0x80588280
+	.sbss       start:0x8058B0B0 end:0x8058B118
+
+dolphin/pad/Padclamp.c:
+	.text       start:0x802AA084 end:0x802AA338
+	.rodata     start:0x8036C790 end:0x8036C7A0
+	.sdata2     start:0x80594048 end:0x80594068
+
+dolphin/pad/Pad.c:
+	.text       start:0x802AA338 end:0x802ABC80
+	.data       start:0x8039A760 end:0x8039A7B8
+	.bss        start:0x803EBC50 end:0x803EBCA0
+	.sdata      start:0x80588280 end:0x805882A0
+	.sbss       start:0x8058B118 end:0x8058B148
+
+dolphin/ai/ai.c:
+	.text       start:0x802ABC80 end:0x802AC58C
+	.data       start:0x8039A7B8 end:0x8039A800
+	.sdata      start:0x805882A0 end:0x805882A8
+	.sbss       start:0x8058B148 end:0x8058B188
+
+dolphin/ar/ar.c:
+	.text       start:0x802AC58C end:0x802AE064
+	.data       start:0x8039A800 end:0x8039A848
+	.sdata      start:0x805882A8 end:0x805882B0
+	.sbss       start:0x8058B188 end:0x8058B1A8
+
+dolphin/ar/arq.c:
+	.text       start:0x802AE064 end:0x802AE400
+	.data       start:0x8039A848 end:0x8039A890
+	.sdata      start:0x805882B0 end:0x805882B8
+	.sbss       start:0x8058B1A8 end:0x8058B1D0
+
+dolphin/ax/AX.c:
+	.text       start:0x802AE400 end:0x802AE4A4
+	.data       start:0x8039A890 end:0x8039A8D8
+	.sdata      start:0x805882B8 end:0x805882C0
+
+dolphin/ax/AXAlloc.c:
+	.text       start:0x802AE4A4 end:0x802AE96C
+	.bss        start:0x803EBCA0 end:0x803EBDA0
+	.sbss       start:0x8058B1D0 end:0x8058B1D8
+
+dolphin/ax/AXAux.c:
+	.text       start:0x802AE96C end:0x802AEDF4
+	.bss        start:0x803EBDA0 end:0x803EEAA0
+	.sbss       start:0x8058B1D8 end:0x8058B210
+
+dolphin/ax/AXCL.c:
+	.text       start:0x802AEDF4 end:0x802AF52C
+	.bss        start:0x803EEAA0 end:0x803EF0A0
+	.sbss       start:0x8058B210 end:0x8058B228
+
+dolphin/ax/AXOut.c:
+	.text       start:0x802AF52C end:0x802AFD38
+	.bss        start:0x803EF0A0 end:0x803F3B40
+	.sbss       start:0x8058B228 end:0x8058B260
+
+dolphin/ax/AXSPB.c:
+	.text       start:0x802AFD38 end:0x802B0200
+	.bss        start:0x803F3B40 end:0x803F3B80
+	.sbss       start:0x8058B260 end:0x8058B288
+
+dolphin/ax/AXVPB.c:
+	.text       start:0x802B0200 end:0x802B13FC
+	.data       start:0x8039A8D8 end:0x8039A9C0
+	.bss        start:0x803F3B80 end:0x80405380
+	.sbss       start:0x8058B288 end:0x8058B298
+	.sdata2     start:0x80594068 end:0x80594070
+
+dolphin/ax/AXComp.c:
+	.data       start:0x8039A9C0 end:0x8039C400
+
+dolphin/ax/DSPCode.c:
+	.data       start:0x8039C400 end:0x8039E300
+	.sdata      start:0x805882C0 end:0x805882C8
+
+dolphin/ax/AXProf.c:
+	.text       start:0x802B13FC end:0x802B1444
+	.sbss       start:0x8058B298 end:0x8058B2A8
+
+dolphin/mix/mix.c:
+	.text       start:0x802B1444 end:0x802B3678
+	.data       start:0x8039E300 end:0x8039EEC0
+	.bss        start:0x80405380 end:0x80406B80
+	.sbss       start:0x8058B2A8 end:0x8058B2B8
+
+dolphin/dsp/dsp.c:
+	.text       start:0x802B3678 end:0x802B3908
+	.data       start:0x8039EEC0 end:0x8039EF40
+	.sdata      start:0x805882C8 end:0x805882D0
+	.sbss       start:0x8058B2B8 end:0x8058B2C0
+
+dolphin/dsp/dsp_debug.c:
+	.text       start:0x802B3908 end:0x802B3958
+
+dolphin/dsp/dsp_task.c:
+	.text       start:0x802B3958 end:0x802B41DC
+	.data       start:0x8039EF40 end:0x8039F080
+	.sbss       start:0x8058B2C0 end:0x8058B2D8
+
+dolphin/card/CARDBios.c:
+	.text       start:0x802B41DC end:0x802B5634
+	.data       start:0x8039F080 end:0x8039F0E0
+	.bss        start:0x80406B80 end:0x80406DC0
+	.sdata      start:0x805882D0 end:0x805882D8
+	.sbss       start:0x8058B2D8 end:0x8058B2E0
+
+dolphin/card/CARDUnlock.c:
+	.text       start:0x802B5634 end:0x802B6894
+	.data       start:0x8039F0E0 end:0x8039F240
+	.sdata      start:0x805882D8 end:0x805882E0
+
+dolphin/card/CARDNet.c:
+	.sdata      start:0x805882E0 end:0x805882E8
+
+dolphin/card/CARDRdwr.c:
+	.text       start:0x802B6894 end:0x802B6B24
+
+dolphin/card/CARDBlock.c:
+	.text       start:0x802B6B24 end:0x802B6F28
+
+dolphin/card/CARDDir.c:
+	.text       start:0x802B6F28 end:0x802B718C
+
+dolphin/card/CARDCheck.c:
+	.text       start:0x802B718C end:0x802B80C8
+
+dolphin/card/CARDMount.c:
+	.text       start:0x802B80C8 end:0x802B8B84
+	.data       start:0x8039F240 end:0x8039F280
+
+dolphin/card/CARDFormat.c:
+	.text       start:0x802B8B84 end:0x802B9368
+
+dolphin/card/CARDOpen.c:
+	.text       start:0x802B9368 end:0x802B9954
+
+dolphin/card/CARDCreate.c:
+	.text       start:0x802B9954 end:0x802B9CA4
+
+dolphin/card/CARDRead.c:
+	.text       start:0x802B9CA4 end:0x802BA0D0
+
+dolphin/card/CARDWrite.c:
+	.text       start:0x802BA0D0 end:0x802BA404
+
+dolphin/card/CARDDelete.c:
+	.text       start:0x802BA404 end:0x802BA5B8
+
+dolphin/card/CARDStat.c:
+	.text       start:0x802BA5B8 end:0x802BAA38
+
+dolphin/gx/GXInit.c:
+	.text       start:0x802BAA38 end:0x802BBDC4
+	.data       start:0x8039F280 end:0x8039F4C0
+	.bss        start:0x80406DC0 end:0x804073F0
+	.sdata      start:0x805882E8 end:0x805882F0
+	.sbss       start:0x8058B2E0 end:0x8058B308
+	.sdata2     start:0x80594070 end:0x80594098
+
+dolphin/gx/GXFifo.c:
+	.text       start:0x802BBDC4 end:0x802BC514
+	.sbss       start:0x8058B308 end:0x8058B328
+
+dolphin/gx/GXAttr.c:
+	.text       start:0x802BC514 end:0x802BD20C
+	.data       start:0x8039F4C0 end:0x8039F620
+	.sdata      start:0x805882F0 end:0x80588300
+
+dolphin/gx/GXMisc.c:
+	.text       start:0x802BD20C end:0x802BDBB4
+	.sbss       start:0x8058B328 end:0x8058B340
+
+dolphin/gx/GXGeometry.c:
+	.text       start:0x802BDBB4 end:0x802BDED4
+
+dolphin/gx/GXFrameBuf.c:
+	.text       start:0x802BDED4 end:0x802BEA70
+	.data       start:0x8039F620 end:0x8039F710
+	.sdata2     start:0x80594098 end:0x805940A8
+
+dolphin/gx/GXLight.c:
+	.text       start:0x802BEA70 end:0x802BEED0
+	.sdata2     start:0x805940A8 end:0x805940B8
+
+dolphin/gx/GXTexture.c:
+	.text       start:0x802BEED0 end:0x802C0078
+	.data       start:0x8039F710 end:0x8039F938
+	.sdata      start:0x80588300 end:0x80588340
+	.sdata2     start:0x805940B8 end:0x805940E0
+
+dolphin/gx/GXBump.c:
+	.text       start:0x802C0078 end:0x802C02EC
+
+dolphin/gx/GXTev.c:
+	.text       start:0x802C02EC end:0x802C0A0C
+	.data       start:0x8039F938 end:0x8039F9B0
+
+dolphin/gx/GXPixel.c:
+	.text       start:0x802C0A0C end:0x802C1074
+	.data       start:0x8039F9B0 end:0x8039F9D0
+	.sdata2     start:0x805940E0 end:0x80594118
+
+dolphin/gx/GXDisplayList.c:
+	.text       start:0x802C1074 end:0x802C10E4
+
+dolphin/gx/GXTransform.c:
+	.text       start:0x802C10E4 end:0x802C168C
+	.sdata2     start:0x80594118 end:0x80594128
+
+dolphin/gx/GXPerf.c:
+	.text       start:0x802C168C end:0x802C1EE4
+	.data       start:0x8039F9D0 end:0x8039FAC0
+
+dolphin/support/texPalette.c:
+	.text       start:0x802C1EE4 end:0x802C21E8
+	.data       start:0x8039FAC0 end:0x8039FB00
+
+dolphin/support/fileCache.c:
+	.text       start:0x802C21E8 end:0x802C24E0
+	.bss        start:0x804073F0 end:0x80407400
+	.sbss       start:0x8058B340 end:0x8058B348
+
+dolphin/support/List.c:
+	.text       start:0x802C24E0 end:0x802C25DC
+
+dolphin/support/string.c:
+	.text       start:0x802C25DC end:0x802C267C
+
+Runtime.PPCEABI.H/__va_arg.c:
+	.text       start:0x802C267C end:0x802C2744
+
+Runtime.PPCEABI.H/global_destructor_chain.c:
+	.text       start:0x802C2744 end:0x802C278C
+	.sbss       start:0x8058B348 end:0x8058B350
+
+Runtime.PPCEABI.H/CPlusLibPPC.cp:
+	.text       start:0x802C278C end:0x802C27BC
+
+Runtime.PPCEABI.H/NMWException.cp:
+	extab       start:0x80005600 end:0x80005648
+	extabindex  start:0x80005660 end:0x8000569C
+	.text       start:0x802C27BC end:0x802C2B68
+
+Runtime.PPCEABI.H/ptmf.c:
+	.text       start:0x802C2B68 end:0x802C2BC0
+	.rodata     start:0x8036C7A0 end:0x8036C7B0
+
+Runtime.PPCEABI.H/runtime.c:
+	.text       start:0x802C2BC0 end:0x802C3204
+	.rodata     start:0x8036C7B0 end:0x8036C7C8
+
+Runtime.PPCEABI.H/__init_cpp_exceptions.cpp:
+	.text       start:0x802C3204 end:0x802C3274
+	.ctors      start:0x80355E60 end:0x80355E64
+	.dtors      start:0x80356060 end:0x80356064
+	.sdata      start:0x80588340 end:0x80588348
+
+Runtime.PPCEABI.H/Gecko_ExceptionPPC.cp:
+	.text       start:0x802C3274 end:0x802C32DC
+	.bss        start:0x80407400 end:0x80407410
+
+MSL_C/PPC_EABI/Src/GCN_mem_alloc.c:
+	.text       start:0x802C32DC end:0x802C344C
+	.rodata     start:0x8036C7C8 end:0x8036C840
+
+MSL_C/MSL_Common/Src/abort_exit.c:
+	.text       start:0x802C344C end:0x802C353C
+	.bss        start:0x80407410 end:0x80407510
+	.sbss       start:0x8058B350 end:0x8058B360
+
+MSL_C/MSL_Common/Src/alloc.c:
+	.text       start:0x802C353C end:0x802C4C54
+	.rodata     start:0x8036C840 end:0x8036C858
+	.bss        start:0x80407510 end:0x80407548
+	.sbss       start:0x8058B360 end:0x8058B368
+
+MSL_C/MSL_Common/Src/errno.c:
+	.sbss       start:0x8058B368 end:0x8058B370
+
+MSL_C/MSL_Common/Src/ansi_files.c:
+	.text       start:0x802C4C54 end:0x802C4D6C
+	.data       start:0x8039FB00 end:0x8039FC40
+	.bss        start:0x80407548 end:0x80407848
+
+MSL_C/MSL_Common/Src/ansi_fp.c:
+	.text       start:0x802C4D6C end:0x802C8348
+	.rodata     start:0x8036C858 end:0x8036C938
+	.data       start:0x8039FC40 end:0x8039FDA8
+	.sdata2     start:0x80594128 end:0x80594158
+
+MSL_C/MSL_Common/Src/buffer_io.c:
+	.text       start:0x802C8348 end:0x802C8440
+
+MSL_C/PPC_EABI/Src/critical_regions.gamecube.c:
+	.text       start:0x802C8440 end:0x802C844C
+
+MSL_C/MSL_Common/Src/ctype.c:
+	.text       start:0x802C844C end:0x802C8470
+	.data       start:0x8039FDA8 end:0x803A00A8
+
+MSL_C/MSL_Common/Src/locale.c:
+	.rodata     start:0x8036C938 end:0x8036C940
+	.data       start:0x803A00A8 end:0x803A00E0
+
+MSL_C/MSL_Common/Src/direct_io.c:
+	.text       start:0x802C8470 end:0x802C87F8
+
+MSL_C/MSL_Common/Src/file_io.c:
+	.text       start:0x802C87F8 end:0x802C8B90
+
+MSL_C/MSL_Common/Src/FILE_POS.C:
+	.text       start:0x802C8B90 end:0x802C8F50
+
+MSL_C/MSL_Common/Src/mbstring.c:
+	.text       start:0x802C8F50 end:0x802C9274
+	.sdata2     start:0x80594158 end:0x80594160
+
+MSL_C/MSL_Common/Src/mem.c:
+	.text       start:0x802C9274 end:0x802C93E4
+
+MSL_C/MSL_Common/Src/mem_funcs.c:
+	.text       start:0x802C93E4 end:0x802C96B4
+
+MSL_C/MSL_Common/Src/misc_io.c:
+	.text       start:0x802C96B4 end:0x802C96C4
+
+MSL_C/MSL_Common/Src/printf.c:
+	.text       start:0x802C96C4 end:0x802CB6DC
+	.rodata     start:0x8036C940 end:0x8036C968
+	.data       start:0x803A00E0 end:0x803A0310
+	.sdata      start:0x80588348 end:0x80588350
+	.sdata2     start:0x80594160 end:0x80594168
+
+MSL_C/MSL_Common/Src/qsort.c:
+	.text       start:0x802CB6DC end:0x802CB848
+
+MSL_C/MSL_Common/Src/scanf.c:
+	.text       start:0x802CB848 end:0x802CC890
+	.rodata     start:0x8036C968 end:0x8036C990
+	.data       start:0x803A0310 end:0x803A03E0
+
+MSL_C/MSL_Common/Src/string.c:
+	.text       start:0x802CC890 end:0x802CCD58
+	.rodata     start:0x8036C990 end:0x8036CD20
+	.sdata      start:0x80588350 end:0x80588358
+
+MSL_C/MSL_Common/Src/float.c:
+	.sdata      start:0x80588358 end:0x80588390
+
+MSL_C/MSL_Common/Src/strtold.c:
+	.text       start:0x802CCD58 end:0x802CDDF0
+	.rodata     start:0x8036CD20 end:0x8036CD58
+	.sdata2     start:0x80594168 end:0x80594180
+
+MSL_C/MSL_Common/Src/strtoul.c:
+	.text       start:0x802CDDF0 end:0x802CE634
+	.data       start:0x803A03E0 end:0x803A0468
+
+MSL_C/MSL_Common/Src/wchar_io.c:
+	.text       start:0x802CE634 end:0x802CE6BC
+
+MSL_C/PPC_EABI/Src/uart_console_io_gcn.c:
+	.text       start:0x802CE6BC end:0x802CE794
+	.sbss       start:0x8058B370 end:0x8058B378
+
+MSL_C/MSL_Common_Embedded/Math/e_acos.c:
+	.text       start:0x802CE794 end:0x802CE9D0
+	.sdata2     start:0x80594180 end:0x80594208
+
+MSL_C/MSL_Common_Embedded/Math/e_asin.c:
+	.text       start:0x802CE9D0 end:0x802CEC08
+	.sdata2     start:0x80594208 end:0x80594290
+
+MSL_C/MSL_Common_Embedded/Math/e_atan2.c:
+	.text       start:0x802CEC08 end:0x802CEE98
+	.sdata2     start:0x80594290 end:0x805942E8
+
+MSL_C/MSL_Common_Embedded/Math/e_exp.c:
+	.text       start:0x802CEE98 end:0x802CF0BC
+	.rodata     start:0x8036CD58 end:0x8036CD88
+	.sdata2     start:0x805942E8 end:0x80594360
+
+MSL_C/MSL_Common_Embedded/Math/e_fmod.c:
+	.text       start:0x802CF0BC end:0x802CF3F8
+	.rodata     start:0x8036CD88 end:0x8036CD98
+
+MSL_C/MSL_Common_Embedded/Math/e_log.c:
+	.text       start:0x802CF3F8 end:0x802CF674
+	.sbss       start:0x8058B378 end:0x8058B380
+	.sdata2     start:0x80594360 end:0x805943E0
+
+MSL_C/MSL_Common_Embedded/Math/e_log10.c:
+	.text       start:0x802CF674 end:0x802CF784
+	.sbss       start:0x8058B380 end:0x8058B388
+	.sdata2     start:0x805943E0 end:0x80594410
+
+MSL_C/MSL_Common_Embedded/Math/e_pow.c:
+	.text       start:0x802CF784 end:0x802CFFB4
+	.rodata     start:0x8036CD98 end:0x8036CDC8
+	.sdata2     start:0x80594410 end:0x80594520
+
+MSL_C/MSL_Common_Embedded/Math/e_rem_pio2.c:
+	.text       start:0x802CFFB4 end:0x802D0354
+	.rodata     start:0x8036CDC8 end:0x8036CF50
+	.sdata2     start:0x80594520 end:0x80594578
+
+MSL_C/MSL_Common_Embedded/Math/k_cos.c:
+	.text       start:0x802D0354 end:0x802D0448
+	.sdata2     start:0x80594578 end:0x805945C0
+
+MSL_C/MSL_Common_Embedded/Math/k_rem_pio2.c:
+	.text       start:0x802D0448 end:0x802D129C
+	.rodata     start:0x8036CF50 end:0x8036CFA0
+	.sdata2     start:0x805945C0 end:0x80594600
+
+MSL_C/MSL_Common_Embedded/Math/k_sin.c:
+	.text       start:0x802D129C end:0x802D133C
+	.sdata2     start:0x80594600 end:0x80594638
+
+MSL_C/MSL_Common_Embedded/Math/k_tan.c:
+	.text       start:0x802D133C end:0x802D1550
+	.rodata     start:0x8036CFA0 end:0x8036D008
+	.sdata2     start:0x80594638 end:0x80594670
+
+MSL_C/MSL_Common_Embedded/Math/s_atan.c:
+	.text       start:0x802D1550 end:0x802D1768
+	.rodata     start:0x8036D008 end:0x8036D0A0
+	.sdata2     start:0x80594670 end:0x80594698
+
+MSL_C/MSL_Common_Embedded/Math/s_ceil.c:
+	.text       start:0x802D1768 end:0x802D18AC
+	.sdata2     start:0x80594698 end:0x805946A8
+
+MSL_C/MSL_Common_Embedded/Math/s_copysign.c:
+	.text       start:0x802D18AC end:0x802D18D4
+
+MSL_C/MSL_Common_Embedded/Math/s_cos.c:
+	.text       start:0x802D18D4 end:0x802D19A8
+	.sdata2     start:0x805946A8 end:0x805946B0
+
+MSL_C/MSL_Common_Embedded/Math/s_expm1.c:
+	.text       start:0x802D19A8 end:0x802D1CE8
+	.sdata2     start:0x805946B0 end:0x80594770
+
+MSL_C/MSL_Common_Embedded/Math/s_floor.c:
+	.text       start:0x802D1CE8 end:0x802D1E30
+	.sdata2     start:0x80594770 end:0x80594780
+
+MSL_C/MSL_Common_Embedded/Math/s_frexp.c:
+	.text       start:0x802D1E30 end:0x802D1EBC
+	.sdata2     start:0x80594780 end:0x80594788
+
+MSL_C/MSL_Common_Embedded/Math/s_ldexp.c:
+	.text       start:0x802D1EBC end:0x802D2080
+	.sdata2     start:0x80594788 end:0x805947B0
+
+MSL_C/MSL_Common_Embedded/Math/s_modf.c:
+	.text       start:0x802D2080 end:0x802D217C
+
+MSL_C/MSL_Common_Embedded/Math/s_sin.c:
+	.text       start:0x802D217C end:0x802D2254
+	.sdata2     start:0x805947B0 end:0x805947B8
+
+MSL_C/MSL_Common_Embedded/Math/s_tan.c:
+	.text       start:0x802D2254 end:0x802D22CC
+	.sdata2     start:0x805947B8 end:0x805947C0
+
+MSL_C/MSL_Common_Embedded/Math/s_tanh.c:
+	.text       start:0x802D22CC end:0x802D23C4
+	.sdata2     start:0x805947C0 end:0x805947D8
+
+MSL_C/MSL_Common_Embedded/Math/w_acos.c:
+	.text       start:0x802D23C4 end:0x802D23E4
+
+MSL_C/MSL_Common_Embedded/Math/w_asin.c:
+	.text       start:0x802D23E4 end:0x802D2404
+
+MSL_C/MSL_Common_Embedded/Math/w_atan2.c:
+	.text       start:0x802D2404 end:0x802D2424
+
+MSL_C/MSL_Common_Embedded/Math/w_exp.c:
+	.text       start:0x802D2424 end:0x802D2444
+
+MSL_C/MSL_Common_Embedded/Math/w_fmod.c:
+	.text       start:0x802D2444 end:0x802D2464
+
+MSL_C/MSL_Common_Embedded/Math/w_log.c:
+	.text       start:0x802D2464 end:0x802D2484
+
+MSL_C/MSL_Common_Embedded/Math/w_log10.c:
+	.text       start:0x802D2484 end:0x802D24A4
+
+MSL_C/MSL_Common_Embedded/Math/w_pow.c:
+	.text       start:0x802D24A4 end:0x802D24C4
+
+MSL_C/MSL_Common_Embedded/Math/e_sqrt.c:
+	.text       start:0x802D24C4 end:0x802D26E8
+	.sdata2     start:0x805947D8 end:0x805947E0
+
+MSL_C/MSL_Common_Embedded/Math/math_ppc.c:
+	.text       start:0x802D26E8 end:0x802D270C
+
+MSL_C/MSL_Common_Embedded/Math/w_sqrt.c:
+	.text       start:0x802D270C end:0x802D272C
+
+MSL_C/MSL_Common/Src/extras.c:
+	.text       start:0x802D272C end:0x802D28EC
+
+dolphin/amcstubs/AmcExi2Stubs.c:
+	.text       start:0x802D28EC end:0x802D291C
+
+dolphin/odenotstub/odenotstub.c:
+	.text       start:0x802D291C end:0x802D2924
+
+dolphin/OdemuExi2/DebuggerDriver.c:
+	.text       start:0x802D2924 end:0x802D33A4
+	.sdata      start:0x80588390 end:0x80588398
+	.sbss       start:0x8058B388 end:0x8058B3A0
+
+dolphin/exi/EXIBios.c:
+	.text       start:0x802D33A4 end:0x802D4D80
+	.data       start:0x803A0468 end:0x803A0578
+	.bss        start:0x80407848 end:0x80407908
+	.sdata      start:0x80588398 end:0x805883A0
+	.sbss       start:0x8058B3A0 end:0x8058B3A8
+
+dolphin/exi/EXIUart.c:
+	.text       start:0x802D4D80 end:0x802D5338
+	.sbss       start:0x8058B3A8 end:0x8058B3B8
+
+dolphin/si/SIBios.c:
+	.text       start:0x802D5338 end:0x802D6A28
+	.data       start:0x803A0578 end:0x803A0690
+	.bss        start:0x80407908 end:0x80407B20
+	.sdata      start:0x805883A0 end:0x805883A8
+	.sbss       start:0x8058B3B8 end:0x8058B3C8
+
+dolphin/si/SISamplingRate.c:
+	.text       start:0x802D6A28 end:0x802D6B30
+	.data       start:0x803A0690 end:0x803A0728
+	.sbss       start:0x8058B3C8 end:0x8058B3E0
+
+dolphin/thp/THPDec.c:
+	.text       start:0x802D6B30 end:0x802DE098
+	.rodata     start:0x8036D0A0 end:0x8036D130
+	.data       start:0x803A0728 end:0x803A0770
+	.bss        start:0x80407B20 end:0x80407C50
+	.sdata      start:0x805883A8 end:0x805883B0
+	.sbss       start:0x8058B3E0 end:0x8058B4F8
+	.sdata2     start:0x805947E0 end:0x80594800
+
+dolphin/thp/THPAudio.c:
+	.text       start:0x802DE098 end:0x802DE5C8
+
+TRK_MINNOW_DOLPHIN/MetroTRK/mainloop.c:
+	.text       start:0x802DE5C8 end:0x802DE6C0
+
+TRK_MINNOW_DOLPHIN/MetroTRK/nubevent.c:
+	.text       start:0x802DE6C0 end:0x802DE8E8
+	.bss        start:0x80407C50 end:0x80407C78
+
+TRK_MINNOW_DOLPHIN/MetroTRK/nubinit.c:
+	.text       start:0x802DE8E8 end:0x802DEA80
+	.rodata     start:0x8036D130 end:0x8036D160
+	.bss        start:0x80407C78 end:0x80407C80
+
+TRK_MINNOW_DOLPHIN/MetroTRK/msg.c:
+	.text       start:0x802DEA80 end:0x802DEAC4
+	.rodata     start:0x8036D160 end:0x8036D188
+
+TRK_MINNOW_DOLPHIN/MetroTRK/msgbuf.c:
+	.text       start:0x802DEAC4 end:0x802DF300
+	.rodata     start:0x8036D188 end:0x8036D1A8
+	.bss        start:0x80407C80 end:0x80409630
+
+TRK_MINNOW_DOLPHIN/MetroTRK/serpoll.c:
+	.text       start:0x802DF300 end:0x802DF5B8
+	.rodata     start:0x8036D1A8 end:0x8036D338
+	.bss        start:0x80409630 end:0x80409648
+	.sbss       start:0x8058B4F8 end:0x8058B500
+
+TRK_MINNOW_DOLPHIN/MetroTRK/usr_put.c:
+	.text       start:0x802DF5B8 end:0x802DF644
+
+TRK_MINNOW_DOLPHIN/MetroTRK/dispatch.c:
+	.text       start:0x802DF644 end:0x802DF7BC
+	.rodata     start:0x8036D338 end:0x8036D378
+	.data       start:0x803A0770 end:0x803A07E0
+
+TRK_MINNOW_DOLPHIN/MetroTRK/msghndlr.c:
+	.text       start:0x802DF7BC end:0x802E082C
+	.rodata     start:0x8036D378 end:0x8036D560
+	.data       start:0x803A07E0 end:0x803A0818
+	.bss        start:0x80409648 end:0x80409650
+
+TRK_MINNOW_DOLPHIN/MetroTRK/support.c:
+	.text       start:0x802E082C end:0x802E0F40
+	.rodata     start:0x8036D560 end:0x8036D608
+
+TRK_MINNOW_DOLPHIN/MetroTRK/mutex_TRK.c:
+	.text       start:0x802E0F40 end:0x802E0F58
+
+TRK_MINNOW_DOLPHIN/MetroTRK/notify.c:
+	.text       start:0x802E0F58 end:0x802E0FF0
+
+TRK_MINNOW_DOLPHIN/MetroTRK/flush_cache.c:
+	.text       start:0x802E0FF0 end:0x802E1028
+
+Runtime.PPCEABI.H/__mem.c:
+	.init       start:0x80003458 end:0x80003590
+
+TRK_MINNOW_DOLPHIN/MetroTRK/mem_TRK.c:
+	.init       start:0x80003590 end:0x800035E4
+	.text       start:0x802E1028 end:0x802E10E0
+
+TRK_MINNOW_DOLPHIN/MetroTRK/targimpl.c:
+	.text       start:0x802E10E0 end:0x802E2C70
+	.rodata     start:0x8036D608 end:0x8036D6A0
+	.data       start:0x803A0818 end:0x803A0848
+	.bss        start:0x80409650 end:0x80409BD0
+
+TRK_MINNOW_DOLPHIN/MetroTRK/targsupp.s:
+	.text       start:0x802E2C70 end:0x802E2C90
+
+TRK_MINNOW_DOLPHIN/MetroTRK/mpc_7xx_603e.c:
+	.text       start:0x802E2C90 end:0x802E3000
+
+TRK_MINNOW_DOLPHIN/MetroTRK/__exception.s:
+	.init       start:0x800035E4 end:0x80005518
+
+TRK_MINNOW_DOLPHIN/MetroTRK/dolphin_trk.c:
+	.init       start:0x80005518 end:0x80005544
+	.text       start:0x802E3000 end:0x802E363C
+	.data       start:0x803A0848 end:0x803A0888
+	.bss        start:0x80409BD0 end:0x80409BD8
+
+TRK_MINNOW_DOLPHIN/MetroTRK/main_TRK.c:
+	.text       start:0x802E363C end:0x802E3694
+	.rodata     start:0x8036D6A0 end:0x8036D6B0
+	.bss        start:0x80409BD8 end:0x80409BE0
+
+TRK_MINNOW_DOLPHIN/MetroTRK/dolphin_trk_glue.c:
+	.text       start:0x802E3694 end:0x802E3BEC
+	.rodata     start:0x8036D6B0 end:0x8036D7B8
+	.data       start:0x803A0888 end:0x803A08B0
+	.bss        start:0x80409BE0 end:0x80409BE8
+
+TRK_MINNOW_DOLPHIN/MetroTRK/targcont.c:
+	.text       start:0x802E3BEC end:0x802E3C20
+
+TRK_MINNOW_DOLPHIN/MetroTRK/target_options.c:
+	.text       start:0x802E3C20 end:0x802E3C3C
+	.bss        start:0x80409BE8 end:0x80409BF0
+
+TRK_MINNOW_DOLPHIN/MetroTRK/mslsupp.c:
+	.text       start:0x802E3C3C end:0x802E3DB4
+
+TRK_MINNOW_DOLPHIN/MetroTRK/UDP_Stubs.c:
+	.text       start:0x802E3DB4 end:0x802E3DFC
+
+TRK_MINNOW_DOLPHIN/ddh/main.c:
+	.text       start:0x802E3DFC end:0x802E4140
+	.rodata     start:0x8036D7B8 end:0x8036D898
+	.bss        start:0x80409BF0 end:0x8040A410
+	.sbss       start:0x8058B500 end:0x8058B508
+
+TRK_MINNOW_DOLPHIN/utils/CircleBuffer.c:
+	.text       start:0x802E4140 end:0x802E43A8
+
+TRK_MINNOW_DOLPHIN/gdev/main.c:
+	.text       start:0x802E43A8 end:0x802E46F4
+	.rodata     start:0x8036D898 end:0x8036D978
+	.bss        start:0x8040A410 end:0x8040A930
+	.sbss       start:0x8058B508 end:0x8058B510
+
+TRK_MINNOW_DOLPHIN/utils/MWTrace.c:
+	.text       start:0x802E46F4 end:0x802E4744
+
+TRK_MINNOW_DOLPHIN/utils/MWCriticalSection_gc.cpp:
+	.text       start:0x802E4744 end:0x802E479C
+
+common/Source/Animation.cpp:
+	.text       start:0x802E479C end:0x802E7404
+	.ctors      start:0x80356034 end:0x80356038
+	.rodata     start:0x8036D978 end:0x8036D9D0
+	.data       start:0x803A08B0 end:0x803A08C0
+	.bss        start:0x8040A930 end:0x8040CA78
+	.sdata      start:0x805883B0 end:0x805883B8
+	.sbss       start:0x8058B510 end:0x8058B518
+	.sdata2     start:0x80594800 end:0x80594830
+
+common/Source/Crc.cpp:
+	.text       start:0x802E7404 end:0x802E7508
+	.bss        start:0x8040CA78 end:0x8040CE80
+	.sbss       start:0x8058B518 end:0x8058B520
+
+common/Source/FileSys.cpp:
+	.text       start:0x802E7508 end:0x802E881C
+	.rodata     start:0x8036D9D0 end:0x8036DA28
+	.data       start:0x803A08C0 end:0x803A08E0
+	.bss        start:0x8040CE80 end:0x8040D2F0
+	.sdata      start:0x805883B8 end:0x805883C0
+	.sbss       start:0x8058B520 end:0x8058B538
+
+common/Source/Font.cpp:
+	.text       start:0x802E881C end:0x802EA7E4
+	.ctors      start:0x80356038 end:0x8035603C
+	.rodata     start:0x8036DA28 end:0x8036DA60
+	.data       start:0x803A08E0 end:0x803A0910
+	.sdata      start:0x805883C0 end:0x805883E0
+	.sbss       start:0x8058B538 end:0x8058B570
+	.sdata2     start:0x80594830 end:0x80594860
+
+common/Source/Matrix.cpp:
+	.text       start:0x802EA7E4 end:0x802EC45C
+	.rodata     start:0x8036DA60 end:0x8036DAA0
+	.sdata2     start:0x80594860 end:0x80594888
+
+common/Source/MKAnimScript.cpp:
+	.text       start:0x802EC45C end:0x802EFA98
+	.rodata     start:0x8036DAA0 end:0x8036DBB8
+	.sdata      start:0x805883E0 end:0x805883E8
+	.sbss       start:0x8058B570 end:0x8058B578
+	.sdata2     start:0x80594888 end:0x805948C0
+
+common/Source/MKBaseParticleSystem.cpp:
+	.text       start:0x802EFA98 end:0x802F0D80
+	.data       start:0x803A0910 end:0x803A0980
+	.sdata      start:0x805883E8 end:0x805883F0
+	.sbss       start:0x8058B578 end:0x8058B580
+	.sdata2     start:0x805948C0 end:0x805948E0
+
+common/Source/MKCollision.cpp:
+	.text       start:0x802F0D80 end:0x802F2024
+	.rodata     start:0x8036DBB8 end:0x8036DDE0
+	.bss        start:0x80583BA0 end:0x80583BC0 align:4 common
+	.sbss       start:0x8058B580 end:0x8058B588
+	.sdata2     start:0x805948E0 end:0x805948F8
+
+common/Source/MKCollisionItem.cpp:
+	.text       start:0x802F2024 end:0x802F6014
+	.data       start:0x803A0980 end:0x803A0A70
+	.sdata      start:0x805883F0 end:0x80588418
+	.sdata2     start:0x805948F8 end:0x80594950
+
+common/Source/MKCollisionManager.cpp:
+	.text       start:0x802F6014 end:0x802F93D8
+	.data       start:0x803A0A70 end:0x803A0A80
+	.bss        start:0x8040D2F0 end:0x8040D310
+	.sdata      start:0x80588418 end:0x80588430
+	.sdata2     start:0x80594950 end:0x80594980
+
+common/Source/MKCollisionModel.cpp:
+	.text       start:0x802F93D8 end:0x80301210
+	.rodata     start:0x8036DDE0 end:0x8036DE20
+	.data       start:0x803A0A80 end:0x803A0AA0
+	.sdata      start:0x80588430 end:0x80588450
+	.sdata2     start:0x80594980 end:0x805949F0
+
+common/Source/MKCollisionUtil.cpp:
+	.text       start:0x80301210 end:0x80303B14
+	.rodata     start:0x8036DE20 end:0x8036DE38
+	.sdata      start:0x80588450 end:0x80588460
+	.sdata2     start:0x805949F0 end:0x80594A40
+
+common/Source/MKHeap.cpp:
+	.text       start:0x80303B14 end:0x80304938
+	.rodata     start:0x8036DE38 end:0x8036DF10
+	.bss        start:0x80583BC0 end:0x80583C10 align:4 common
+	.sbss       start:0x8058B588 end:0x8058B5A0
+	.sdata2     start:0x80594A40 end:0x80594A48
+
+common/Source/MKIni.cpp:
+	.text       start:0x80304938 end:0x80305CCC
+	.rodata     start:0x8036DF10 end:0x8036DF58
+	.sbss       start:0x8058B5A0 end:0x8058B5A8
+	.sdata2     start:0x80594A48 end:0x80594A58
+
+common/Source/MKParticleSystem.cpp:
+	.text       start:0x80305CCC end:0x803062B0
+	.data       start:0x803A0AA0 end:0x803A0B18
+	.sdata      start:0x80588460 end:0x80588468
+	.sdata2     start:0x80594A58 end:0x80594A80
+
+common/Source/MKRumble.cpp:
+	.text       start:0x803062B0 end:0x803069D4
+	.rodata     start:0x8036DF58 end:0x8036DF98
+	.data       start:0x803A0B18 end:0x803A0B48
+	.bss        start:0x8040D310 end:0x8040D510
+	.sdata      start:0x80588468 end:0x80588470
+	.sbss       start:0x8058B5A8 end:0x8058B5B8
+	.sdata2     start:0x80594A80 end:0x80594AA8
+
+common/Source/MKVector3.cpp:
+	.text       start:0x803069D4 end:0x80306BC0
+	.ctors      start:0x8035603C end:0x80356040
+	.data       start:0x803A0B48 end:0x803A0BB8
+	.sdata2     start:0x80594AA8 end:0x80594AB0
+
+common/Source/OmniLight.cpp:
+	.text       start:0x80306BC0 end:0x80307348
+	.sdata      start:0x80588470 end:0x80588478
+	.sbss       start:0x8058B5B8 end:0x8058B5C8
+	.sdata2     start:0x80594AB0 end:0x80594AD8
+
+common/Source/StdMath.cpp:
+	.text       start:0x80307348 end:0x803076F4
+	.data       start:0x803A0BB8 end:0x803A1BC0
+	.sdata      start:0x80588478 end:0x80588480
+	.sdata2     start:0x80594AD8 end:0x80594B10
+
+common/Source/Str.cpp:
+	.text       start:0x803076F4 end:0x80307B78
+	.bss        start:0x8040D510 end:0x80411510
+	.sdata      start:0x80588480 end:0x80588488
+	.sbss       start:0x8058B5C8 end:0x8058B5D0
+
+common/Source/Timer.cpp:
+	.text       start:0x80307B78 end:0x80307DA8
+	.sbss       start:0x8058B5D0 end:0x8058B5D8
+	.sdata2     start:0x80594B10 end:0x80594B20
+
+common/Source/Translation.cpp:
+	.text       start:0x80307DA8 end:0x8030858C
+	.rodata     start:0x8036DF98 end:0x8036E1F0
+	.data       start:0x803A1BC0 end:0x803A1CC8
+	.bss        start:0x80411510 end:0x80411580
+	.sdata      start:0x80588488 end:0x80588490
+	.sbss       start:0x8058B5D8 end:0x8058B5F0
+
+common/Source/Utils.cpp:
+	.text       start:0x8030858C end:0x803087A4
+	.sdata      start:0x80588490 end:0x805884A0
+
+common/Source/Debug.cpp:
+	.text       start:0x803087A4 end:0x80308808
+	.sbss       start:0x8058B5F0 end:0x8058B5F8
+
+common/Source/DiscErrors.cpp:
+	.text       start:0x80308808 end:0x80308AA0
+	.sdata      start:0x805884A0 end:0x805884A8
+
+common/Source/File.cpp:
+	.text       start:0x80308AA0 end:0x8030961C
+	.rodata     start:0x8036E1F0 end:0x8036E5F8
+	.bss        start:0x80411580 end:0x804134E0
+	.sbss       start:0x8058B5F8 end:0x8058B600
+
+common/Source/GPInit.cpp:
+	.text       start:0x8030961C end:0x80309E30
+	.rodata     start:0x8036E5F8 end:0x8036E658
+	.data       start:0x803A1CC8 end:0x803A1CF0
+	.bss        start:0x804134E0 end:0x8053CB00
+	.sdata      start:0x805884A8 end:0x805884B8
+	.sbss       start:0x8058B600 end:0x8058B628
+	.sdata2     start:0x80594B20 end:0x80594B38
+	.sbss2      start:0x80595490 end:0x80595498
+
+common/Source/MKMemoryCard.cpp:
+	.text       start:0x80309E30 end:0x8030C690
+	.rodata     start:0x8036E658 end:0x8036E698
+	.data       start:0x803A1CF0 end:0x803A1D38
+	.bss        start:0x8053CB00 end:0x80551100
+	.sbss       start:0x8058B628 end:0x8058B660
+
+common/gc/MKShadow_GC.cpp:
+	.text       start:0x8030C690 end:0x8030D7D8
+	.sbss       start:0x8058B660 end:0x8058B670
+	.sdata2     start:0x80594B38 end:0x80594B68
+
+common/Source/system_extras.cpp:
+	.text       start:0x8030D7D8 end:0x8030D87C
+
+common/gc/System_GC.cpp:
+	.text       start:0x8030D87C end:0x8030F110
+	.rodata     start:0x8036E698 end:0x8036E760
+	.data       start:0x803A1D38 end:0x803A1FC8
+	.bss        start:0x80551100 end:0x805553C0
+	.bss        start:0x80583C10 end:0x80583CA0 align:4 common
+	.sdata      start:0x805884B8 end:0x805884D8
+	.sbss       start:0x8058B670 end:0x8058B6D8
+	.sdata2     start:0x80594B68 end:0x80594BB8
+	.sbss2      start:0x80595498 end:0x805954A0
+
+common/Source/Texture.cpp:
+	.text       start:0x8030F110 end:0x80310304
+	.rodata     start:0x8036E760 end:0x8036E780
+	.sdata      start:0x805884D8 end:0x805884E0
+	.sbss       start:0x8058B6D8 end:0x8058B6E0
+	.sdata2     start:0x80594BB8 end:0x80594BE0
+	.sbss2      start:0x805954A0 end:0x805954A8
+
+common/Source/Video.cpp:
+	.text       start:0x80310304 end:0x80310C48
+	.rodata     start:0x8036E780 end:0x8036E798
+	.bss        start:0x80583CA0 end:0x80583CD8 align:4 common
+	.sdata      start:0x805884E0 end:0x805884E8
+	.sdata2     start:0x80594BE0 end:0x80594BF8
+
+common/Source/xFont.cpp:
+	.text       start:0x80310C48 end:0x80310F6C
+	.data       start:0x803A1FC8 end:0x803A2040
+	.sbss       start:0x8058B6E0 end:0x8058B6F0
+
+common/Source/xfontdata.cpp:
+	.data       start:0x803A2040 end:0x803A2B58
+
+common/Source/MKCommandLine.cpp:
+	.text       start:0x80310F6C end:0x80311324
+	.rodata     start:0x8036E798 end:0x8036E7A0
+	.sbss       start:0x8058B6F0 end:0x8058B6F8
+
+common/Source/MKSystem.cpp:
+	.text       start:0x80311324 end:0x80311440
+	.bss        start:0x805553C0 end:0x805553F0
+	.bss        start:0x80583CD8 end:0x80583D60 align:4 common
+	.sbss       start:0x8058B6F8 end:0x8058B700
+
+common/Source/MKProp.cpp:
+	.text       start:0x80311440 end:0x803129C0
+	.rodata     start:0x8036E7A0 end:0x8036EAB8
+	.data       start:0x803A2B58 end:0x803A2BB8
+	.bss        start:0x80583D60 end:0x80583DE0 align:4 common
+	.sdata2     start:0x80594BF8 end:0x80594C28
+
+common/Source/MKPackage.cpp:
+	.text       start:0x803129C0 end:0x803143F4
+	.rodata     start:0x8036EAB8 end:0x8036EB38
+	.data       start:0x803A2BB8 end:0x803A2BE0
+	.bss        start:0x805553F0 end:0x8055A450
+	.sdata      start:0x805884E8 end:0x805884F0
+	.sbss       start:0x8058B700 end:0x8058B790
+	.sdata2     start:0x80594C28 end:0x80594C40
+
+common/Source/MKGrass_MP.cpp:
+	.text       start:0x803143F4 end:0x80315BD0
+	.rodata     start:0x8036EB38 end:0x8036EB40
+	.bss        start:0x8055A450 end:0x8055BC70
+	.sdata      start:0x805884F0 end:0x80588500
+	.sbss       start:0x8058B790 end:0x8058B798
+	.sdata2     start:0x80594C40 end:0x80594C78
+
+common/Source/MKSplineTube.cpp:
+	.text       start:0x80315BD0 end:0x80315E88
+	.ctors      start:0x80356040 end:0x80356044
+	.data       start:0x803A2BE0 end:0x803A2C60
+	.bss        start:0x80583DE0 end:0x80583FE0 align:4 common
+	.sbss       start:0x8058B798 end:0x8058B7A0
+	.sdata2     start:0x80594C78 end:0x80594CC0
+
+common/Source/MKStringCache.cpp:
+	.text       start:0x80315E88 end:0x803161D0
+
+common/Source/MKShockWave_MP.cpp:
+	.text       start:0x803161D0 end:0x803165EC
+	.bss        start:0x80583FE0 end:0x80584050 align:4 common
+	.sdata      start:0x80588500 end:0x80588508
+	.sdata2     start:0x80594CC0 end:0x80594CE8
+
+common/gc/MKPrimitive_GC.cpp:
+	.text       start:0x803165EC end:0x803168C0
+	.sdata2     start:0x80594CE8 end:0x80594CF0
+
+common/Source/MKGrass.cpp:
+	.text       start:0x803168C0 end:0x80319254
+	.rodata     start:0x8036EB40 end:0x8036EC70
+	.bss        start:0x80584050 end:0x805840B0 align:4 common
+	.sdata      start:0x80588508 end:0x80588540
+	.sbss       start:0x8058B7A0 end:0x8058B7B0
+	.sdata2     start:0x80594CF0 end:0x80594D58
+
+common/gc/MKVisibilityTest_GC.cpp:
+	.text       start:0x80319254 end:0x8031925C
+
+common/Source/MKSoftBody.cpp:
+	.text       start:0x8031925C end:0x8031E9D0
+	.bss        start:0x805840B0 end:0x80585650 align:4 common
+	.sdata      start:0x80588540 end:0x80588550
+	.sbss       start:0x8058B7B0 end:0x8058B7D8
+	.sdata2     start:0x80594D58 end:0x80594DC8
+
+common/Source/MKBaseSceneManager.cpp:
+	.text       start:0x8031E9D0 end:0x8031F7B0
+	.rodata     start:0x8036EC70 end:0x8036ECA8
+	.data       start:0x803A2C60 end:0x803A2D18
+	.bss        start:0x8055BC70 end:0x8055BC80
+	.sbss       start:0x8058B7D8 end:0x8058B7E0
+	.sdata2     start:0x80594DC8 end:0x80594DD0
+
+common/Source/MKShape.cpp:
+	.text       start:0x8031F7B0 end:0x803218A8
+	.sdata2     start:0x80594DD0 end:0x80594E30
+
+common/Source/MKDistanceLevelChunk.cpp:
+	.text       start:0x803218A8 end:0x80325248
+	.data       start:0x803A2D18 end:0x803A2DD0
+	.sdata      start:0x80588550 end:0x80588558
+	.sdata2     start:0x80594E30 end:0x80594E78
+
+common/Source/MKLevelChunk.cpp:
+	.text       start:0x80325248 end:0x80326E28
+	.rodata     start:0x8036ECA8 end:0x8036ED00
+	.data       start:0x803A2DD0 end:0x803A2EB8
+	.sdata      start:0x80588558 end:0x80588560
+	.sbss       start:0x8058B7E0 end:0x8058B7E8
+	.sdata2     start:0x80594E78 end:0x80594E80
+
+common/Source/MKResource.cpp:
+	.text       start:0x80326E28 end:0x80326EC4
+	.sdata      start:0x80588560 end:0x80588568
+
+common/Source/MKResourceGlobals.cpp:
+	.sdata      start:0x80588568 end:0x80588570
+
+common/Source/MKChunkSceneManager.cpp:
+	.text       start:0x80326EC4 end:0x803284CC
+	.rodata     start:0x8036ED00 end:0x8036ED18
+	.data       start:0x803A2EB8 end:0x803A2F78
+	.sbss       start:0x8058B7E8 end:0x8058B7F0
+	.sdata2     start:0x80594E80 end:0x80594E88
+
+common/gc/MKFFTWater_GC.cpp:
+	.text       start:0x803284CC end:0x803285A4
+
+common/Source/MKFFTWater.cpp:
+	.text       start:0x803285A4 end:0x8032AB98
+	.rodata     start:0x8036ED18 end:0x8036EF50
+	.data       start:0x803A2F78 end:0x803A2FC8
+	.sdata      start:0x80588570 end:0x80588578
+	.sbss       start:0x8058B7F0 end:0x8058B800
+	.sdata2     start:0x80594E88 end:0x80594F38
+
+common/gc/Sound_GC.cpp:
+	.text       start:0x8032AB98 end:0x8032E38C
+	.ctors      start:0x80356044 end:0x80356048
+	.rodata     start:0x8036EF50 end:0x8036EFD0
+	.data       start:0x803A2FC8 end:0x803A31F8
+	.bss        start:0x8055BC80 end:0x8057EF20
+	.bss        start:0x80585650 end:0x80585AB0 align:4 common
+	.sdata      start:0x80588578 end:0x80588590
+	.sbss       start:0x8058B800 end:0x8058B8C0
+	.sdata2     start:0x80594F38 end:0x80594F98
+
+common/gc/MKOcean_GC.cpp:
+	.text       start:0x8032E38C end:0x8032E390
+
+common/Source/MKOcean.cpp:
+	.text       start:0x8032E390 end:0x8032EC80
+	.rodata     start:0x8036EFD0 end:0x8036F078
+	.bss        start:0x80585AB0 end:0x80585ABC align:4 common
+	.sdata2     start:0x80594F98 end:0x80595008
+
+common/Source/MKDynamicBone.cpp:
+	.text       start:0x8032EC80 end:0x803305D4
+	.data       start:0x803A31F8 end:0x803A32C0
+	.sdata      start:0x80588590 end:0x80588598
+	.sbss       start:0x8058B8C0 end:0x8058B8D0
+	.sdata2     start:0x80595008 end:0x80595038
+
+common/gc/MKInput_GC.cpp:
+	.text       start:0x803305D4 end:0x80330B24
+	.rodata     start:0x8036F078 end:0x8036F0A0
+	.data       start:0x803A32C0 end:0x803A32F0
+	.bss        start:0x8057EF20 end:0x8057EF90
+	.sdata2     start:0x80595038 end:0x80595060
+
+common/Source/MKInput.cpp:
+	.text       start:0x80330B24 end:0x80331640
+	.sbss       start:0x8058B8D0 end:0x8058B8E8
+	.sdata2     start:0x80595060 end:0x80595070
+
+common/Source/MKWidgetsInternal.cpp:
+	.text       start:0x80331640 end:0x80342340
+	.ctors      start:0x80356048 end:0x8035604C
+	.rodata     start:0x8036F0A0 end:0x8036F380
+	.data       start:0x803A32F0 end:0x803A4300
+	.bss        start:0x8057EF90 end:0x8057EFA0
+	.bss        start:0x80585ABC end:0x80585D98 align:4 common
+	.sdata      start:0x80588598 end:0x805885E8
+	.sbss       start:0x8058B8E8 end:0x8058B920
+	.sdata2     start:0x80595070 end:0x80595168
+
+common/Source/MKWidgets.cpp:
+	.text       start:0x80342340 end:0x8034314C
+	.rodata     start:0x8036F380 end:0x8036F3B0
+	.data       start:0x803A4300 end:0x803A4340
+	.sbss       start:0x8058B920 end:0x8058B930
+	.sdata2     start:0x80595168 end:0x80595180
+
+common/Source/MKMetadata.cpp:
+	.text       start:0x8034314C end:0x80343394
+
+common/Source/MKWind.cpp:
+	.text       start:0x80343394 end:0x80343A58
+	.bss        start:0x80585D98 end:0x80585F30 align:4 common
+	.sdata2     start:0x80595180 end:0x805951C8
+
+common/gc/MKMaterial_GC.cpp:
+	.text       start:0x80343A58 end:0x8034520C
+	.ctors      start:0x8035604C end:0x80356050
+	.data       start:0x803A4340 end:0x803A43C0
+	.bss        start:0x80585F30 end:0x80586340 align:4 common
+	.sdata      start:0x805885E8 end:0x80588600
+	.sbss       start:0x8058B930 end:0x8058B970
+	.sdata2     start:0x805951C8 end:0x805951F0
+
+common/gc/MKModel_GC.cpp:
+	.text       start:0x8034520C end:0x803465D4
+	.bss        start:0x8057EFA0 end:0x8057F040
+	.sdata      start:0x80588600 end:0x80588608
+	.sbss       start:0x8058B970 end:0x8058B978
+	.sdata2     start:0x805951F0 end:0x80595238
+	.sbss2      start:0x805954A8 end:0x805954B0
+
+common/Source/MKModel.cpp:
+	.text       start:0x803465D4 end:0x80349CB0
+	.rodata     start:0x8036F3B0 end:0x8036F3D0
+	.bss        start:0x80586340 end:0x80586380 align:4 common
+	.sbss       start:0x8058B978 end:0x8058B980
+	.sdata2     start:0x80595238 end:0x80595260
+
+common/Source/MKMaterial.cpp:
+	.text       start:0x80349CB0 end:0x8034AD20
+	.rodata     start:0x8036F3D0 end:0x8036F430
+	.data       start:0x803A43C0 end:0x803A4400
+	.bss        start:0x80586380 end:0x80586B80 align:4 common
+	.sbss       start:0x8058B980 end:0x8058B9A8
+	.sdata2     start:0x80595260 end:0x80595268
+
+common/Source/MKAttachment.cpp:
+	.text       start:0x8034AD20 end:0x8034AE6C
+
+common/gc/MKMat_MK2_FFTWater_GC.cpp:
+	.text       start:0x8034AE6C end:0x8034B098
+	.rodata     start:0x8036F430 end:0x8036F450
+	.bss        start:0x8057F040 end:0x8057F0C0
+	.sdata2     start:0x80595268 end:0x80595270
+
+common/gc/MKMat_MK2_Standard_GC.cpp:
+	.text       start:0x8034B098 end:0x8034DC9C
+	.ctors      start:0x80356050 end:0x80356054
+	.rodata     start:0x8036F450 end:0x8036F538
+	.data       start:0x803A4400 end:0x803E4420
+	.sdata      start:0x80588608 end:0x80588618
+	.sbss       start:0x8058B9A8 end:0x8058B9D0
+	.sdata2     start:0x80595270 end:0x805952F0
+	.sbss2      start:0x805954B0 end:0x805954B8
+
+common/Source/MKMat_MK2_Standard.cpp:
+	.text       start:0x8034DC9C end:0x8034EA00
+	.ctors      start:0x80356054 end:0x80356058
+	.rodata     start:0x8036F538 end:0x8036F580
+	.data       start:0x803E4420 end:0x803E4868
+	.sdata      start:0x80588618 end:0x80588628
+	.sbss       start:0x8058B9D0 end:0x8058B9D8
+	.sdata2     start:0x805952F0 end:0x80595318
+
+common/Source/MKMaterial_Util.cpp:
+	.text       start:0x8034EA00 end:0x8034EA90
+	.sbss       start:0x8058B9D8 end:0x8058B9E0
+
+common/Source/MKMat_MK2_FFTWater.cpp:
+	.text       start:0x8034EA90 end:0x8034EC2C
+	.ctors      start:0x80356058 end:0x8035605C
+	.rodata     start:0x8036F580 end:0x8036F5B0
+	.data       start:0x803E4868 end:0x803E4CB0
+	.sdata2     start:0x80595318 end:0x80595320
+
+common/Source/MKView.cpp:
+	.text       start:0x8034EC2C end:0x8035073C
+	.bss        start:0x8057F0C0 end:0x8057FA60
+	.sdata      start:0x80588628 end:0x80588630
+	.sbss       start:0x8058B9E0 end:0x8058BA00
+	.sdata2     start:0x80595320 end:0x80595378
+
+common/gc/MKView_GC.cpp:
+	.text       start:0x8035073C end:0x80350E0C
+	.bss        start:0x8057FA60 end:0x8057FB20
+	.sdata      start:0x80588630 end:0x80588638
+	.sdata2     start:0x80595378 end:0x805953B8
+	.sbss2      start:0x805954B8 end:0x805954BC
+
+common/Source/Frustum.cpp:
+	.text       start:0x80350E0C end:0x803517EC
+	.sdata2     start:0x805953B8 end:0x805953C0
+
+common/Source/MKFont.cpp:
+	.text       start:0x803517EC end:0x80352978
+	.sdata      start:0x80588638 end:0x80588648
+	.sdata2     start:0x805953C0 end:0x805953D8
+
+common/Source/THPVideoDecode.cpp:
+	.text       start:0x80352978 end:0x80352EA4
+	.bss        start:0x8057FB20 end:0x80580EA0
+	.sbss       start:0x8058BA00 end:0x8058BA08
+
+common/Source/THPPlayer.cpp:
+	.text       start:0x80352EA4 end:0x80354670
+	.rodata     start:0x8036F5B0 end:0x8036F5B8
+	.data       start:0x803E4CB0 end:0x803E4DB0
+	.bss        start:0x80580EA0 end:0x80581440
+	.bss        start:0x80586B80 end:0x80586D50 align:4 common
+	.sbss       start:0x8058BA08 end:0x8058BA28
+	.sdata2     start:0x805953D8 end:0x805953F0
+
+common/Source/THPRead.cpp:
+	.text       start:0x80354670 end:0x8035498C
+	.bss        start:0x80581440 end:0x80582830
+	.sbss       start:0x8058BA28 end:0x8058BA30
+
+common/Source/THPAudioDecode.cpp:
+	.text       start:0x8035498C end:0x80354D3C
+	.bss        start:0x80582830 end:0x80583BA0
+	.sbss       start:0x8058BA30 end:0x8058BA38
+
+common/Source/MKCommonDialogs.cpp:
+	.text       start:0x80354D3C end:0x80355E58
+	.rodata     start:0x8036F5B8 end:0x8036F65C
+	.bss        start:0x80586D50 end:0x80586DB4 align:4 common
+	.sbss       start:0x8058BA38 end:0x8058BA3C
+	.sdata2     start:0x805953F0 end:0x80595480

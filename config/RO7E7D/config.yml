@@ -1,0 +1,12 @@
+# The Legend of Spyro: The Eternal Night (Wii, USA)
+# No shipped symbols; names are transferred from ANB (see tools/tlos/).
+name: main
+object: sys/main.dol
+hash: 9a66e97074e4949dcf377d7a938dbf37c99e738d
+object_base: orig/RO7E7D
+symbols: config/RO7E7D/symbols.txt
+splits: config/RO7E7D/splits.txt
+mw_comment_version: 14
+detect_objects: true
+detect_strings: true
+write_asm: true
