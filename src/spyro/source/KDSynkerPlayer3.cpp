@@ -45,17 +45,13 @@ s8 *KDSynkerPlayer3::GetSubtitlesFileName(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 s32 KDSynkerPlayer3::GetActorProp(int arg0) {
-    return *(this->unk100.unk4 + ((arg0 * 0x138) + 0x30));
+    return *(s32 *) (this->unk100.unk4 + ((arg0 * 0x138) + 0x30));
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 s32 KDSynkerPlayer3::GetActorAnimScript(int arg0) {
-    return *(this->unk100.unk4 + ((arg0 * 0x138) + 0x38));
+    return *(s32 *) (this->unk100.unk4 + ((arg0 * 0x138) + 0x38));
 }
-#endif
 
 void KDSynkerPlayer3::GetActorModel(int arg0) {
     ((KDSP_Actor *) (this->unk100.unk4 + (arg0 * 0x138)))->GetModel();
@@ -111,7 +107,7 @@ void KDSynkerPlayer3::ParseSK2() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcmpi(const char[8])' does not match 'strcmpi(signed char *)'
+extern "C" s32 strcmpi(s8 *, const char *);
 void KDSynkerPlayer3::ParseHeader() {
     MKIniLine *temp_r3_230;
     MKIniLine *var_r30_236;
@@ -123,8 +119,7 @@ loop_5:
         if (var_r30_236 == NULL) {
 
         } else {
-            var_r30_236->GetFieldName();
-            if (strcmpi("Version") == 0) {
+            if (strcmpi(var_r30_236->GetFieldName(), "Version") == 0) {
                 var_r30_236->GetInt(0);
                 return;
             }
@@ -133,7 +128,6 @@ loop_5:
         }
     }
 }
-#endif
 
 s32 KDSynkerPlayer3::GetSubTitle(int arg0) {
     return M2C_FIELD((this + (arg0 * 8)), s32 *, 0x21C);
@@ -446,11 +440,10 @@ void KDSynkerPlayer3::Update_PrimingSound() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDSynkerPlayer3::Update_ParseData() {
     u32 temp_r3_992;
 
-    this->unk148.LoadStaticSoundBank(&this->unk28, ((u32) this->unk50 >> 3U) & 1);
+    this->unk148.LoadStaticSoundBank((const char *) &this->unk28, ((u32) this->unk50 >> 3U) & 1);
     ParseSK2();
     temp_r3_992 = this->unk50;
     if (!(temp_r3_992 & 8) && !(temp_r3_992 & 0x10)) {
@@ -463,7 +456,6 @@ void KDSynkerPlayer3::Update_ParseData() {
     }
     this->unk4C = 4;
 }
-#endif
 
 void KDSynkerPlayer3::Update_Loading() {
     if (MKPackage_QIsLoaded(this->unk250, NULL, NULL) != 0) {
@@ -503,7 +495,6 @@ void KDSynkerPlayer3::SetPlaySpeed(float arg0) {
     this->unk48 = arg0;
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 void KDSynkerPlayer3::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) {
     u32 temp_r3_1176;
 
@@ -518,8 +509,8 @@ void KDSynkerPlayer3::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) 
     } else {
         this->unk50 &= 0xFFFFFFEF;
     }
-    strcpy(&this->unk28, arg0);
-    strtok(&this->unk28, ".");
+    strcpy((char *) &this->unk28, arg0);
+    strtok(&this->unk28, (s8 *) ".");
     this->unk58 = arg3 != NULL;
     this->unk54 = arg3;
     this->unk4.unk8 = 0x40;
@@ -534,7 +525,7 @@ void KDSynkerPlayer3::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) 
     this->unk60.Init();
     this->unk100.Init();
     this->unk114.Init();
-    this->unk120.Init(this, *KDSynkerPlayer3::pEventCreationTable);
+    this->unk120.Init(this, *(KDSynkerPlayerEventCreationTable **) KDSynkerPlayer3::pEventCreationTable);
     this->unk148.Init();
     this->unk170.Init();
     this->unk234 = 0;
@@ -553,6 +544,5 @@ void KDSynkerPlayer3::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) 
         return;
     }
     this->unk4C = 1;
-    this->unk250 = MKPackage_QLoad(Str_Printf("%s.sc2", &this->unk28, 0.0f), 0);
+    this->unk250 = MKPackage_QLoad((const char *) Str_Printf("%s.sc2", &this->unk28), 0);
 }
-#endif
