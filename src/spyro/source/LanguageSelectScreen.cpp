@@ -1,0 +1,372 @@
+#include "spyro/source/LanguageSelectScreen.h"
+#include "common/Source/MKHeap.h"
+#include "spyro/source/GameStateMachine.h"
+#include "spyro/source/LoadLevel.h"
+#include "spyro/source/MCLoadCheckScreen.h"
+#include "spyro/source/Tools.h"
+#include "spyro/source/UIButton.h"
+#include "spyro/source/UIContainer.h"
+#include "spyro/source/UIObject.h"
+#include "spyro/source/UIScreen.h"
+#include "spyro/source/UIStringTable.h"
+#include "spyro/source/UIText.h"
+#include "spyro/source/UITools.h"
+#include "unplaced_templates.h"
+#include "common/Source/MKInput.h"
+#include "common/Source/Str.h"
+#include "common/gc/MKInput_GC.h"
+#include "spyro/source/FrontEnd.h"
+#include "spyro/source/GameLanguage.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/UIControls.h"
+#include <m2c_macros.h>
+
+M2C_UNK free(void **);                              /* extern */
+UIObject *malloc(void *);                           /* extern */
+extern s32 GS_MenuSelect;
+extern s32 gDisplay;
+extern GameStateMachine gGMState;
+extern M2C_UNK gb;
+extern void *gpTranslation_StringArray;
+extern s32 numLanguages;
+extern void **pSystem;
+extern UIStringTable strings;
+#if 0 // DRAFT: function call 'ErrorMessage_Draw(signed char *)' does not match
+static LanguageSelectScreen descriptor__20LanguageSelectScreen; /* type too large by 0xC4; unable to generate initializer: not enough data */
+static MKHeap lit_stringBase0;                         /* type too large by 0xD5; unable to generate initializer: not enough data; const */
+
+void NoController_Draw() {
+    Tools_Ortho sp8;
+
+    sp8.Tools_Ortho();
+    ErrorMessage_Draw(M2C_FIELD(gpTranslation_StringArray, s8 **, 0xFC));
+    sp8.~Tools_Ortho(-1);
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
+void NoController_Update() {
+    if ((MKInput_GetStatus((MKInputDevices) 0) == 0) && (MKInput_GetState(3, (MKInputDevices) 0, NULL, NULL) != 0.0f)) {
+        if ((s32) gDisplay == 0) {
+            gGMState.SwitchState(3, 0, 0U);
+            return;
+        }
+        gGMState.SwitchState(5, 0, 0U);
+    }
+}
+#endif
+
+void ControllerInit_Update() {
+    if ((s32) gDisplay == 0) {
+        gGMState.SwitchState(3, 0, 0U);
+        return;
+    }
+    gGMState.SwitchState(5, 0, 0U);
+}
+
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
+void Language_Draw() {
+    if ((void **) pSystem != NULL) {
+        arg_sp10.Tools_Ortho();
+        arg_sp20.RenderContext();
+        M2C_FIELD(*pSystem, M2C_UNK (**)(void **, M2C_UNK *), 0x1C)(pSystem, &arg_sp20);
+        arg_sp10.~Tools_Ortho(-1);
+    }
+}
+#endif
+
+void Language_Update() {
+    if (((void **) pSystem == NULL) || ((s32) M2C_FIELD(&gb, s32 *, 0x340) != 0) || ((u32) M2C_FIELD(&pSystem[M2C_FIELD(pSystem, s32 *, 0x6C)], u32 *, 0x70) == 0U)) {
+        gGMState.SwitchState(5, 0, 0U);
+        return;
+    }
+    M2C_FIELD(M2C_FIELD(pSystem, void **, 0), M2C_UNK (**)(), 0x18)();
+}
+
+void Language_Deinit() {
+    MKHeap *temp_r3_202;
+    UIStringTable *temp_r30_188;
+    void **temp_r31_198;
+
+    if ((void **) pSystem != NULL) {
+        temp_r30_188 = UIStringTable_SetCurrent(&strings);
+        if ((void **) pSystem != NULL) {
+            M2C_FIELD(*pSystem, M2C_UNK (**)(void **), 0x24)(pSystem);
+            temp_r31_198 = pSystem;
+            temp_r3_202 = ((MKHeap *) (M2C_FIELD(*pSystem, MKHeap *(**)(void **), 0xC)(pSystem)))->Current();
+            if (temp_r3_202 != NULL) {
+                ((MKHeap *) (temp_r3_202->Current()))->Free(temp_r31_198, NULL, 0);
+            } else {
+                free(temp_r31_198);
+            }
+        }
+        pSystem = NULL;
+        UIStringTable_SetCurrent(temp_r30_188);
+        strings.Deinit();
+        KDSound_Deinit();
+    }
+}
+
+#if 0 // DRAFT: illegal implicit conversion from 'UIStringTable *' to
+void Language_Init() {
+    s32 spC;
+    s32 sp8;
+    MCLoadCheckScreen *temp_r3_291;
+    MKHeap *temp_r3_245;
+    MKHeap *temp_r3_250;
+    UIObject *var_r30_258;
+    UIObjectDescriptor *var_r4_284;
+    s32 temp_r3_237;
+    void *temp_r30_249;
+
+    temp_r3_237 = GameLanguage_Count();
+    numLanguages = temp_r3_237;
+    if (temp_r3_237 > 1) {
+        strings.Init(0x400);
+        temp_r3_245 = UIStringTable_SetCurrent(&strings);
+        temp_r30_249 = descriptor.unk8;
+        temp_r3_250 = temp_r3_245->Current();
+        if (temp_r3_250 != NULL) {
+            var_r30_258 = ((MKHeap *) (temp_r3_250->Current()))->Alloc((s32) temp_r30_249, NULL, 0);
+        } else {
+            var_r30_258 = malloc(temp_r30_249);
+        }
+        ((M2C_UNK (*)(UIObject *, NoisySystem *)) descriptor.unkC)(var_r30_258, &descriptor);
+        var_r30_258->unk8 = &descriptor;
+        var_r30_258->Init(&descriptor);
+        pSystem = checked_cast<NoisySystem *, UIObject>(var_r30_258);
+        var_r4_284 = &list;
+loop_7:
+        temp_r3_291 = var_r4_284->unk0;
+        if (temp_r3_291 == NULL) {
+            var_r4_284->unk0 = (MCLoadCheckScreen *) &descriptor;
+            descriptor.unk10 = NULL;
+        } else if (temp_r3_291 != &descriptor) {
+            var_r4_284 = (UIObjectDescriptor *) &temp_r3_291->unk10;
+            goto loop_7;
+        }
+        KDSound_Init(&lit_stringBase0 + 0x15);
+        if (pSystem->Load(&lit_stringBase0 + 0x1E, NULL) != 0) {
+            M2C_FIELD(*pSystem, M2C_UNK (**)(void **), 0x28)(pSystem);
+            M2C_FIELD(*pSystem, M2C_UNK (**)(void **), 0x20)(pSystem);
+            sp8 = 1;
+            spC = 0;
+            M2C_FIELD(*pSystem, M2C_UNK (**)(void **, s32 *), 0x2C)(pSystem, &sp8);
+            pSystem->PushScreen(&lit_stringBase0 + 0x2A);
+        }
+        UIStringTable_SetCurrent((UIStringTable *) temp_r3_245);
+    }
+    UIControls_SetDevice((MKInputDevices) *M2C_FIELD(&gb, s32 **, 0x354));
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
+void LanguageSelectScreen::Update() {
+    s32 sp14;
+    s32 sp10;
+    s32 spC;
+    s32 sp8;
+    UIContainer *temp_r3_375;
+    s32 temp_r3_384;
+    s32 temp_r3_412;
+    s32 temp_r3_431;
+
+    UIScreen::Update();
+    if (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) {
+        KDSound_Play(GS_MenuSelect, 0U, -1);
+        if ((void **) pSystem == NULL) {
+            temp_r3_375 = GetRoot();
+            sp14 = 0xF;
+            M2C_FIELD(temp_r3_375->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp14);
+        }
+        temp_r3_384 = this->unkBC.unk4;
+        sp10 = 6;
+        M2C_FIELD(*temp_r3_384, M2C_UNK (**)(s32, s32 *), 0x2C)(temp_r3_384, &sp10);
+        if ((void **) pSystem != NULL) {
+            gGMState.SwitchState(5, 0, 0U);
+        }
+    } else {
+        if (UIControls_DirectionPressed((FrontEndControls) 4, -1) != 0) {
+            KDSound_Play(GS_MenuSelect, 0U, -1);
+            temp_r3_412 = this->unkBC.unk4;
+            spC = 0xB;
+            M2C_FIELD(*temp_r3_412, M2C_UNK (**)(s32, s32 *), 0x2C)(temp_r3_412, &spC);
+            return;
+        }
+        if (UIControls_DirectionPressed((FrontEndControls) 6, -1) != 0) {
+            KDSound_Play(GS_MenuSelect, 0U, -1);
+            temp_r3_431 = this->unkBC.unk4;
+            sp8 = 0xA;
+            M2C_FIELD(*temp_r3_431, M2C_UNK (**)(s32, s32 *), 0x2C)(temp_r3_431, &sp8);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+void LanguageSelectScreen::OnEnter() {
+    s8 *spC;
+    s32 sp8;
+    s32 temp_r3_461;
+
+    UIScreen::OnEnter();
+    sp8 = 1;
+    spC = this->unkBC.unk8;
+    temp_r3_461 = this->unkBC.unk4;
+    M2C_FIELD(*temp_r3_461, M2C_UNK (**)(s32, s32 *), 0x2C)(temp_r3_461, &sp8);
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'descriptor'
+void LanguageSelectScreen::LoadDone() {
+    s32 sp8;
+    MKHeap *temp_r3_492;
+    MKHeap *temp_r3_574;
+    MKHeap *temp_r3_629;
+    MKHeap *var_r3_563;
+    UIObject *temp_r3_600;
+    UIObject *temp_r3_655;
+    UIObject *var_r24_500;
+    UIObject *var_r24_582;
+    UIObject *var_r24_637;
+    s32 temp_r5_532;
+    s32 var_r26_557;
+    s8 *temp_r0_665;
+    s8 *temp_r3_677;
+    void *temp_r24_491;
+    void *temp_r24_573;
+    void *temp_r24_628;
+
+    temp_r24_491 = descriptor.unk8;
+    temp_r3_492 = descriptor.Current();
+    if (temp_r3_492 != NULL) {
+        var_r24_500 = ((MKHeap *) (temp_r3_492->Current()))->Alloc((s32) temp_r24_491, NULL, 0);
+    } else {
+        var_r24_500 = malloc(temp_r24_491);
+    }
+    ((M2C_UNK (*)(UIObject *, MarkerButtonGroup *)) descriptor.unkC)(var_r24_500, &descriptor);
+    var_r24_500->unk8 = &descriptor;
+    var_r24_500->Init(&descriptor);
+    this->unkBC.unk4 = ui_cast<UIButtonGroup *, UIObject *>(var_r24_500);
+    M2C_FIELD(this->unkBC.unk4, s16 *, 0x58) = 2;
+    temp_r5_532 = this->unkBC.unk4;
+    M2C_FIELD(temp_r5_532, f32 *, 0x28) = 320.0f;
+    M2C_FIELD(temp_r5_532, f32 *, 0x2C) = 100.0f;
+    M2C_FIELD(temp_r5_532, f32 *, 0x30) = 0.0f;
+    AddBefore(NULL, (UIObject *) this->unkBC.unk4);
+    M2C_FIELD(this->unkBC.unk4, f32 *, 0x2C) = (f32) -((0.5f * (36.0f * (f32) (numLanguages - 1))) - 256.0f);
+    var_r26_557 = numLanguages - 1;
+    if (GameLanguage_GetLast(&sp8, 0U) != 0) {
+        var_r3_563 = &lit_stringBase0;
+        do {
+            temp_r24_573 = descriptor.unk8;
+            temp_r3_574 = var_r3_563->Current();
+            if (temp_r3_574 != NULL) {
+                var_r24_582 = ((MKHeap *) (temp_r3_574->Current()))->Alloc((s32) temp_r24_573, NULL, 0);
+            } else {
+                var_r24_582 = malloc(temp_r24_573);
+            }
+            ((M2C_UNK (*)(UIObject *)) descriptor.unkC)(var_r24_582);
+            var_r24_582->unk8 = &descriptor;
+            var_r24_582->Init();
+            temp_r3_600 = ui_cast<ScriptButton *, UIObject *>(var_r24_582);
+            temp_r3_600->unk18.unk40 = 0xB;
+            temp_r3_600->unk18.unk10.unk0 = 0.0f;
+            temp_r3_600->unk18.unk10.unk4 = 36.0f * (f32) var_r26_557;
+            temp_r3_600->unk18.unk10.unk8 = 0.0f;
+            GameLanguage_GetCode(sp8);
+            M2C_FIELD(temp_r3_600->__vptr, M2C_UNK (**)(UIObject *, s8 *), 0x48)(temp_r3_600, Str_Printf(&lit_stringBase0 + 0x39, M2C_ERROR(/* Read from unset register $r3 */)));
+            this->unkBC.unk4->Add(temp_r3_600);
+            temp_r24_628 = descriptor.unk8;
+            temp_r3_629 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
+            if (temp_r3_629 != NULL) {
+                var_r24_637 = ((MKHeap *) (temp_r3_629->Current()))->Alloc((s32) temp_r24_628, NULL, 0);
+            } else {
+                var_r24_637 = malloc(temp_r24_628);
+            }
+            ((M2C_UNK (*)(UIObject *)) descriptor.unkC)(var_r24_637);
+            var_r24_637->unk8 = &descriptor;
+            var_r24_637->Init();
+            temp_r3_655 = ui_cast<UIText *, UIObject *>(var_r24_637);
+            temp_r3_655->unk18.unk40 = 0x32;
+            temp_r3_655->unk18.unk34 = 408.0f;
+            temp_r3_655->unk18.unk38 = 36.0f;
+            temp_r3_655->unk18.unk3C = 5;
+            GameLanguage_GetName(sp8);
+            temp_r0_665 = M2C_FIELD(temp_r3_655, s8 **, 0x68);
+            if (temp_r0_665 != NULL) {
+                UIStringTable_Remove(temp_r0_665);
+            }
+            UIStringTable_Add(M2C_ERROR(/* Read from unset register $r3 */));
+            M2C_FIELD(temp_r3_655, s8 **, 0x68) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
+            M2C_FIELD(temp_r3_655, s32 *, 0x6C) = -1;
+            temp_r3_677 = M2C_FIELD(temp_r3_655, s8 **, 0x60);
+            if (temp_r3_677 != NULL) {
+                UIStringTable_Remove(temp_r3_677);
+            }
+            UIStringTable_Add(&lit_stringBase0 + 0x41);
+            M2C_FIELD(temp_r3_655, s8 **, 0x60) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
+            temp_r3_600->Add(temp_r3_655);
+            GameLanguage_Get();
+            if (sp8 == (s32) M2C_ERROR(/* Read from unset register $r3 */)) {
+                this->unkBC.unk8 = (s8 *) var_r26_557;
+            }
+            var_r26_557 -= 1;
+            var_r3_563 = GameLanguage_GetPrev(&sp8, 0U);
+        } while ((u8) var_r3_563 != 0);
+    }
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+void LanguageSelectScreen::Init() {
+    UIContainer::Init();
+    this->unkBC.unk4 = 0;
+    this->unkBC.unk8 = NULL;
+}
+#endif
+
+#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
+UIObject *ui_cast<ScriptButton *, UIObject *>(UIObject *arg0) {
+    ScriptButton *sp8;
+
+    sp8 = NULL;
+    ui_cast_ptr<ScriptButton, UIObject>(sp8, arg0);
+    return (UIObject *) sp8;
+}
+#endif
+
+#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
+void ui_cast_ptr<ScriptButton, UIObject>(ScriptButton *&arg0, UIObject *arg1) {
+    u8 var_r0_769;
+    void *var_r5_764;
+
+    if (arg1 != NULL) {
+        var_r5_764 = arg1->unk8;
+loop_2:
+        if (var_r5_764 == &descriptor) {
+            var_r0_769 = 1;
+        } else {
+            var_r5_764 = M2C_FIELD(var_r5_764, void **, 4);
+            if (var_r5_764 == NULL) {
+                var_r0_769 = 0;
+            } else {
+                goto loop_2;
+            }
+        }
+        if (var_r0_769 != 0) {
+            &arg0 = checked_cast<ScriptButton *, UIObject>(arg1);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<ScriptButton *, UIObject>(UIObject *arg0) {
+
+}
+#endif
+
+void LanguageSelectScreen_cpp::__sinit() {
+    strings.UIStringTable();
+}

@@ -1,0 +1,254 @@
+#include "spyro/source/LockOnTarget.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "unplaced_templates.h"
+#include "common/Source/MKView.h"
+#include "common/Source/StdMath.h"
+#include "common/gc/MKMaterial_GC.h"
+#include "common/gc/MKPrimitive_GC.h"
+#include <m2c_macros.h>
+
+extern f32 gUpdateTimeDelta;
+#if 0 // DRAFT: undefined identifier 'arg_sp50'
+static s8 lit_stringBase0[0x11] = {
+    0x63,
+    0x72,
+    0x6F,
+    0x73,
+    0x73,
+    0x68,
+    0x61,
+    0x69,
+    0x72,
+    0,
+    0x46,
+    0x78,
+    0x5F,
+    0x31,
+    0x35,
+    0x39,
+    0,
+}; /* const */
+
+void LockOnTarget::Draw() {
+    f32 temp_f0_241;
+    f32 temp_f11_264;
+    f32 temp_f28_267;
+    f32 temp_f29_265;
+    f32 temp_f2_148;
+    f32 var_f4_161;
+    f32 var_f5_228;
+    f64 temp_f1_167;
+    f64 temp_f1_173;
+    f64 temp_f1_177;
+    s32 temp_r3_196;
+    s32 var_ctr_253;
+    s32 var_r0_206;
+    s32 var_r3_236;
+    void *temp_r4_257;
+    if ((s32) this->unk60 != 0) {
+        if ((u8) this->unk78 == 0) {
+            return;
+        }
+        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
+        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
+        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        arg_sp50 = M2C_FIELD(this->unk4C, f32 *, 8) + this->unk58;
+        arg_spE0 = -35.0f;
+        arg_spE4 = -35.0f;
+        arg_spE8 = 0.0f;
+        arg_spF0 = 35.0f;
+        arg_spF4 = -35.0f;
+        arg_spF8 = 0.0f;
+        arg_sp100 = -35.0f;
+        arg_sp104 = 35.0f;
+        arg_sp108 = 0.0f;
+        arg_sp110 = 35.0f;
+        arg_sp114 = 35.0f;
+        arg_sp118 = 0.0f;
+        arg_sp88 = arg_sp48;
+        arg_sp90 = (f64) arg_sp50;
+        arg_spA0.SetRotationRoll(this->unk6C);
+        arg_spA0.Multiply3x3((Matrix *) &arg_spA0, MKView_GetCameraMatrix());
+        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
+        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_f2_148 = M2C_FIELD((MKView_GetCameraMatrix() + 0x30), f32 *, 8) - (f32) arg_sp90;
+        arg_sp78 = arg_sp38;
+        arg_sp40 = temp_f2_148;
+        arg_sp80 = (f64) arg_sp40;
+        var_f4_161 = ((f32) arg_sp80 * (f32) arg_sp80) + (((f32) arg_sp78 * (f32) arg_sp78) + (arg_sp7C * arg_sp7C));
+        if (var_f4_161 > 0.000001f) {
+            if (var_f4_161 > 0.0f) {
+                temp_f1_167 = __frsqrte(var_f4_161);
+                temp_f1_173 = 0.5 * temp_f1_167 * -(((f64) var_f4_161 * (temp_f1_167 * temp_f1_167)) - 3.0);
+                temp_f1_177 = 0.5 * temp_f1_173 * -(((f64) var_f4_161 * (temp_f1_173 * temp_f1_173)) - 3.0);
+                var_f4_161 = (f32) ((f64) var_f4_161 * (0.5 * temp_f1_177 * -(((f64) var_f4_161 * (temp_f1_177 * temp_f1_177)) - 3.0)));
+            } else if (var_f4_161 < M2C_BITWISE(f32, 0.0)) {
+                var_f4_161 = __float_nan;
+            } else {
+                arg_sp10 = var_f4_161;
+                temp_r3_196 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                switch (temp_r3_196) {              /* irregular */
+                case 0x7F800000:
+                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        var_r0_206 = 1;
+                    } else {
+                        var_r0_206 = 2;
+                    }
+                    break;
+                case 0x0:
+                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        var_r0_206 = 5;
+                    } else {
+                        var_r0_206 = 3;
+                    }
+                    break;
+                default:
+                    var_r0_206 = 4;
+                    break;
+                }
+                if (var_r0_206 == 1) {
+                    var_f4_161 = __float_nan;
+                }
+            }
+            var_f5_228 = 1.0f / var_f4_161;
+        } else {
+            var_f5_228 = 0.0f;
+        }
+        var_r3_236 = 0;
+        temp_f0_241 = (f32) arg_sp80 * var_f5_228;
+        arg_sp78 = (f32) arg_sp78 * var_f5_228;
+        arg_sp7C *= var_f5_228;
+        arg_sp80 = temp_f0_241;
+        var_ctr_253 = 4;
+        do {
+            temp_r4_257 = &arg_spE0 + var_r3_236;
+            M2C_ERROR(/* unknown instruction: psq_lx $f11, $zero, $r4, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_muls0 $f11, $f11, $f31 */);
+            M2C_ERROR(/* unknown instruction: psq_stx $f11, $zero, $r4, 0x0, qr0 */);
+            M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) * this->unk64);
+            temp_f11_264 = M2C_FIELD(temp_r4_257, f32 *, 4);
+            temp_f29_265 = M2C_FIELD(temp_r4_257, f32 *, 0);
+            temp_f28_267 = M2C_FIELD(temp_r4_257, f32 *, 8);
+            arg_sp28 = (temp_f28_267 * arg_spC0) + ((temp_f29_265 * arg_spA0) + (temp_f11_264 * arg_spB0));
+            arg_sp2C = (temp_f28_267 * arg_spC4) + ((temp_f29_265 * arg_spA4) + (temp_f11_264 * arg_spB4));
+            arg_sp30 = (temp_f28_267 * arg_spC8) + ((temp_f29_265 * arg_spA8) + (temp_f11_264 * arg_spB8));
+            M2C_FIELD(temp_r4_257, f32 *, 0) = (f64) arg_sp28;
+            M2C_FIELD(temp_r4_257, f32 *, 8) = (f64) arg_sp30;
+            arg_sp68 = (f64) arg_sp28;
+            arg_sp70 = (f64) arg_sp30;
+            M2C_ERROR(/* unknown instruction: psq_lx $f12, $zero, $r4, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_add $f11, $f12, $f11 */);
+            M2C_ERROR(/* unknown instruction: psq_stx $f11, $zero, $r4, 0x0, qr0 */);
+            M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) + (f32) arg_sp90);
+            M2C_ERROR(/* unknown instruction: ps_muls0 $f11, $f11, $f30 */);
+            arg_sp20 = temp_f0_241 * this->unk68;
+            arg_sp58 = arg_sp18;
+            arg_sp60 = (f64) arg_sp20;
+            M2C_ERROR(/* unknown instruction: psq_lx $f12, $zero, $r4, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_add $f11, $f12, $f11 */);
+            M2C_ERROR(/* unknown instruction: psq_stx $f11, $zero, $r4, 0x0, qr0 */);
+            var_r3_236 += 0x10;
+            M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) + (f32) arg_sp60);
+            var_ctr_253 -= 1;
+        } while (var_ctr_253 != 0);
+        if ((u8) this->unk79 != 0) {
+            MKMaterial_SetMaterial(M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x60));
+        } else {
+            MKMaterial_SetMaterial(M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x64));
+        }
+        MKPrimitive(0xC, 9);
+        MKBegin(4);
+        MKSetColorF(1.0f, 1.0f, 1.0f, this->unk74);
+        MKSetTexCoord1F(0.0f, 0.0f);
+        MKSetPositionV(*((MKVector3 *) &arg_spE0));
+        MKSetTexCoord1F(1.0f, 0.0f);
+        MKSetPositionV(*((MKVector3 *) &arg_spF0));
+        MKSetTexCoord1F(0.0f, 1.0f);
+        MKSetPositionV(*((MKVector3 *) &arg_sp100));
+        MKSetTexCoord1F(1.0f, 1.0f);
+        MKSetPositionV(*((MKVector3 *) &arg_sp110));
+        MKEnd();
+        MKEndPrimitive();
+    }
+}
+#endif
+
+#if 0 // DRAFT: ')' expected
+void LockOnTarget::Update() {
+    f32 temp_f1_451;
+    s32 temp_r0_383;
+    void *temp_r31_460;
+
+    temp_r0_383 = this->unk60;
+    switch (temp_r0_383) {                          /* irregular */
+    case 1:
+        this->unk64 = -((4.0f * gUpdateTimeDelta * M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68)) - this->unk64);
+        this->unk6C += 1.570796f * gUpdateTimeDelta;
+        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+        if (this->unk64 == M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68)) {
+            this->unk60 = 2;
+            this->unk64 = M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68);
+            return;
+        }
+        return;
+    case 3:
+        this->unk74 = -((2.0f * gUpdateTimeDelta * M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68)) - this->unk74);
+        if (this->unk74 < 0.0f) {
+            this->unk60 = 0;
+            Disable();
+        }
+        /* fallthrough */
+    case 2:
+        this->unk70 += 3.1415927f * gUpdateTimeDelta;
+        temp_f1_451 = this->unk70;
+        if (temp_f1_451 > 6.2831855f) {
+            this->unk70 = temp_f1_451 - 6.2831855f;
+        }
+        temp_r31_460 = checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        this->unk64 = (0.07f * _table_sinf(this->unk70)) + M2C_FIELD(temp_r31_460, f32 *, 0x68);
+        break;
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'zero'
+void LockOnTarget::Init() {
+    f32 temp_f2_498;
+
+    MKProp::Init();
+    this->unk4C = NULL;
+    this->unk50 = M2C_FIELD(&zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unk60 = 0;
+    temp_f2_498 = 3.0f * M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68);
+    this->unk64 = temp_f2_498;
+    this->unk68 = 0.0f;
+    this->unk70 = 0.0f;
+    this->unk74 = 1.0f;
+    this->unk78 = 1;
+    Disable(0.0f, temp_f2_498);
+}
+#endif
+
+void LockOnTargetDescriptor::Deinit() {
+    MKMaterial_Destroy(this->unk60);
+    MKMaterial_Destroy(this->unk64);
+    MKPropDescriptor::Deinit();
+}
+
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+void LockOnTargetDescriptor::LoadDone() {
+    MKPropDescriptor::LoadDone();
+    this->unk60 = MKMaterial_Create(lit_stringBase0);
+    this->unk64 = MKMaterial_Create(&lit_stringBase0[0xA]);
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
+
+}
+#endif

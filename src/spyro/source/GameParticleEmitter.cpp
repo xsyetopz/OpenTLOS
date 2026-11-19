@@ -1,0 +1,1365 @@
+#include "spyro/source/GameParticleEmitter.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Explosion4.h"
+#include "spyro/source/FoundryGas.h"
+#include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/LavaSteamPS.h"
+#include "spyro/source/LiquidFX.h"
+#include "spyro/source/SparksPS.h"
+#include "unplaced_templates.h"
+#include "common/Source/StdMath.h"
+#include "spyro/source/KDRandom.h"
+#include <m2c_macros.h>
+
+extern MKSceneManager *gMK;
+extern f32 gUpdateTimeDelta;
+extern s32 gViewSeed;
+extern GameGlobals gb;
+static s32 lit_717 = 1;
+
+static s8 lit_stringBase0[0x142] = {
+    0x4D,
+    0x69,
+    0x6E,
+    0x56,
+    0x65,
+    0x6C,
+    0,
+    0x4D,
+    0x61,
+    0x78,
+    0x56,
+    0x65,
+    0x6C,
+    0,
+    0x4D,
+    0x69,
+    0x6E,
+    0x53,
+    0x63,
+    0x61,
+    0x6C,
+    0x65,
+    0,
+    0x4D,
+    0x61,
+    0x78,
+    0x53,
+    0x63,
+    0x61,
+    0x6C,
+    0x65,
+    0,
+    0x4D,
+    0x69,
+    0x6E,
+    0x52,
+    0x61,
+    0x64,
+    0x69,
+    0x61,
+    0x6C,
+    0x4F,
+    0x66,
+    0x66,
+    0x73,
+    0,
+    0x4D,
+    0x61,
+    0x78,
+    0x52,
+    0x61,
+    0x64,
+    0x69,
+    0x61,
+    0x6C,
+    0x4F,
+    0x66,
+    0x66,
+    0x73,
+    0,
+    0x45,
+    0x6D,
+    0x69,
+    0x73,
+    0x73,
+    0x69,
+    0x6F,
+    0x6E,
+    0x43,
+    0x6F,
+    0x6E,
+    0x65,
+    0,
+    0x45,
+    0x6D,
+    0x69,
+    0x73,
+    0x73,
+    0x69,
+    0x6F,
+    0x6E,
+    0x50,
+    0x6F,
+    0x73,
+    0x54,
+    0x79,
+    0x70,
+    0x65,
+    0,
+    0x44,
+    0x69,
+    0x72,
+    0x65,
+    0x63,
+    0x74,
+    0x69,
+    0x6F,
+    0x6E,
+    0x54,
+    0x79,
+    0x70,
+    0x65,
+    0,
+    0x4C,
+    0x69,
+    0x6E,
+    0x65,
+    0x61,
+    0x72,
+    0x44,
+    0x69,
+    0x72,
+    0x65,
+    0x63,
+    0x74,
+    0x69,
+    0x6F,
+    0x6E,
+    0x54,
+    0x79,
+    0x70,
+    0x65,
+    0,
+    0x44,
+    0x65,
+    0x73,
+    0x74,
+    0x50,
+    0x61,
+    0x74,
+    0x68,
+    0,
+    0x53,
+    0x6F,
+    0x75,
+    0x72,
+    0x63,
+    0x65,
+    0x50,
+    0x61,
+    0x74,
+    0x68,
+    0,
+    0x4D,
+    0x6F,
+    0x6C,
+    0x74,
+    0x65,
+    0x6E,
+    0x4D,
+    0x65,
+    0x74,
+    0x61,
+    0x6C,
+    0x46,
+    0x58,
+    0,
+    0x46,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0x72,
+    0x79,
+    0x47,
+    0x61,
+    0x73,
+    0,
+    0x53,
+    0x70,
+    0x61,
+    0x72,
+    0x6B,
+    0x73,
+    0x50,
+    0x53,
+    0,
+    0x4C,
+    0x61,
+    0x76,
+    0x61,
+    0x53,
+    0x74,
+    0x65,
+    0x61,
+    0x6D,
+    0x50,
+    0x53,
+    0,
+    0x45,
+    0x78,
+    0x70,
+    0x6C,
+    0x6F,
+    0x73,
+    0x69,
+    0x6F,
+    0x6E,
+    0x34,
+    0,
+    0x57,
+    0x61,
+    0x74,
+    0x65,
+    0x72,
+    0x46,
+    0x61,
+    0x6C,
+    0x6C,
+    0x50,
+    0x53,
+    0,
+    0x57,
+    0x61,
+    0x74,
+    0x65,
+    0x72,
+    0x66,
+    0x61,
+    0x6C,
+    0x6C,
+    0x4D,
+    0x69,
+    0x73,
+    0x74,
+    0x50,
+    0x53,
+    0,
+    0x50,
+    0x61,
+    0x72,
+    0x74,
+    0x69,
+    0x63,
+    0x6C,
+    0x65,
+    0x54,
+    0x79,
+    0x70,
+    0x65,
+    0,
+    0x45,
+    0x6D,
+    0x69,
+    0x74,
+    0x52,
+    0x61,
+    0x74,
+    0x65,
+    0,
+    0x4E,
+    0x75,
+    0x6D,
+    0x50,
+    0x65,
+    0x72,
+    0x45,
+    0x6D,
+    0x69,
+    0x74,
+    0,
+    0x53,
+    0x74,
+    0x61,
+    0x72,
+    0x74,
+    0x45,
+    0x6E,
+    0x61,
+    0x62,
+    0x6C,
+    0x65,
+    0x64,
+    0,
+    0x4F,
+    0x6E,
+    0x65,
+    0x53,
+    0x68,
+    0x6F,
+    0x74,
+    0,
+    0x55,
+    0x70,
+    0x64,
+    0x61,
+    0x74,
+    0x65,
+    0x44,
+    0x69,
+    0x73,
+    0x74,
+    0,
+    0x45,
+    0x6D,
+    0x69,
+    0x74,
+    0x74,
+    0x65,
+    0x72,
+    0x50,
+    0x72,
+    0x6F,
+    0x70,
+    0x65,
+    0x72,
+    0x74,
+    0x79,
+    0,
+    0x45,
+    0x6D,
+    0x69,
+    0x73,
+    0x73,
+    0x69,
+    0x6F,
+    0x6E,
+    0x54,
+    0x79,
+    0x70,
+    0x65,
+    0,
+}; /* const */
+
+void PointDirEmitter::SetPosition(const MKVector3 &arg0) {
+    this->unk28 = M2C_FIELD(&arg0, f64 *, 0);
+    this->unk30 = M2C_FIELD(&arg0, f64 *, 8);
+}
+
+void PointDirEmitter::SetDirection(const MKVector3 &arg0) {
+    this->unk18 = M2C_FIELD(&arg0, f64 *, 0);
+    this->unk20 = M2C_FIELD(&arg0, f64 *, 8);
+}
+
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector3 *arg2, MKVector4 *arg3) {
+    f32 temp_f1_308;
+    f32 temp_f1_57;
+    f32 temp_f28_80;
+    f32 temp_f29_75;
+    f32 temp_f2_58;
+    f32 temp_f31_133;
+    f32 temp_f3_255;
+    f32 temp_f6_262;
+    f32 temp_f7_268;
+    f32 var_f27_64;
+    f32 var_f3_223;
+    f32 var_f4_156;
+    f64 temp_f1_162;
+    f64 temp_f1_168;
+    f64 temp_f1_172;
+    s32 temp_r3_191;
+    s32 var_r0_201;
+    if (arg0 != NULL) {
+        M2C_FIELD(arg0, f64 *, 0) = (f64) this->unk28;
+        M2C_FIELD(arg0, f64 *, 8) = (f64) this->unk30;
+        temp_f1_57 = this->unk38;
+        temp_f2_58 = this->unk3C;
+        if ((temp_f1_57 == temp_f2_58) || (temp_f1_57 > temp_f2_58)) {
+            var_f27_64 = 0.0f;
+        } else {
+            var_f27_64 = MKRand_Float(&gViewSeed, temp_f1_57, temp_f2_58);
+        }
+        temp_f29_75 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f28_80 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_80, temp_f29_75);
+        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
+        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+        arg_spD8 = arg_sp28;
+        arg_sp30 = arg_spD0 * var_f27_64;
+        arg_spE0 = (f64) arg_sp30;
+        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
+        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
+        arg0->unk8 += (f32) arg_spE0;
+    }
+    if (arg1 != NULL) {
+        M2C_FIELD(arg1, f64 *, 0) = (f64) this->unk18;
+        M2C_FIELD(arg1, f64 *, 8) = (f64) this->unk20;
+        M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&identity - 4) + 4, 0x40);
+        arg_sp70 = -1.0f;
+        temp_f31_133 = this->unk40;
+        arg_sp60 = 1.0f;
+        arg_sp68 = -1.0f;
+        arg_sp6C = -1.0f;
+        arg_sp58 = 1.0f;
+        arg_sp5C = 1.0f;
+        arg_sp98 = (f64) arg_sp68;
+        arg_spA0 = (f64) arg_sp70;
+        arg_sp88 = (f64) arg_sp58;
+        arg_sp90 = (f64) arg_sp60;
+        KDRand_Vector(*((MKVector3 *) &arg_spA8), *((MKVector3 *) &arg_sp98));
+        var_f4_156 = (arg_spB0 * arg_spB0) + ((arg_spA8 * arg_spA8) + (arg_spAC * arg_spAC));
+        if (var_f4_156 > 1e-12f) {
+            if (var_f4_156 > 0.0f) {
+                temp_f1_162 = __frsqrte(var_f4_156);
+                temp_f1_168 = 0.5 * temp_f1_162 * -(((f64) var_f4_156 * (temp_f1_162 * temp_f1_162)) - 3.0);
+                temp_f1_172 = 0.5 * temp_f1_168 * -(((f64) var_f4_156 * (temp_f1_168 * temp_f1_168)) - 3.0);
+                var_f4_156 = (f32) ((f64) var_f4_156 * (0.5 * temp_f1_172 * -(((f64) var_f4_156 * (temp_f1_172 * temp_f1_172)) - 3.0)));
+            } else if (var_f4_156 < M2C_BITWISE(f32, 0.0)) {
+                var_f4_156 = __float_nan;
+            } else {
+                arg_sp10 = var_f4_156;
+                temp_r3_191 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                switch (temp_r3_191) {              /* irregular */
+                case 0x7F800000:
+                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        var_r0_201 = 1;
+                    } else {
+                        var_r0_201 = 2;
+                    }
+                    break;
+                case 0x0:
+                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        var_r0_201 = 5;
+                    } else {
+                        var_r0_201 = 3;
+                    }
+                    break;
+                default:
+                    var_r0_201 = 4;
+                    break;
+                }
+                if (var_r0_201 == 1) {
+                    var_f4_156 = __float_nan;
+                }
+            }
+            var_f3_223 = 1.0f / var_f4_156;
+        } else {
+            var_f3_223 = 0.0f;
+        }
+        arg_sp38 = arg_spA8 * var_f3_223;
+        arg_sp3C = arg_spAC * var_f3_223;
+        arg_sp40 = arg_spB0 * var_f3_223;
+        arg_spB8 = (f64) arg_sp38;
+        arg_spC0 = (f64) arg_sp40;
+        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        arg_spE8 = arg_sp48;
+        arg_sp50 = (f32) arg_spC0 * temp_f31_133;
+        arg_spF0 = (f64) arg_sp50;
+        arg_sp100.RotatePYR((Matrix *) &arg_sp100, *((MKVector3 *) &arg_spE8));
+        temp_f3_255 = arg1->unk4;
+        temp_f6_262 = arg1->unk0;
+        temp_f7_268 = arg1->unk8;
+        arg_sp18 = arg_sp130 + ((temp_f7_268 * arg_sp120) + ((temp_f6_262 * arg_sp100) + (temp_f3_255 * arg_sp110)));
+        arg_sp1C = arg_sp134 + ((temp_f7_268 * arg_sp124) + ((temp_f6_262 * arg_sp104) + (temp_f3_255 * arg_sp114)));
+        arg_sp20 = arg_sp138 + ((temp_f7_268 * arg_sp128) + ((temp_f6_262 * arg_sp108) + (temp_f3_255 * arg_sp118)));
+        M2C_FIELD(arg1, f64 *, 0) = (f64) arg_sp18;
+        M2C_FIELD(arg1, f64 *, 8) = (f64) arg_sp20;
+        arg_sp78 = (f64) arg_sp18;
+        arg_sp80 = (f64) arg_sp20;
+        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
+        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+        arg1->unk8 *= MKRand_Float(&gViewSeed, this->unk10, this->unkC);
+    }
+    if (arg2 != NULL) {
+        temp_f1_308 = MKRand_Float(&gViewSeed, this->unk8, this->unk4);
+        arg2->unk0 = temp_f1_308;
+        arg2->unk4 = temp_f1_308;
+        arg2->unk8 = temp_f1_308;
+    }
+}
+#endif
+
+void PointDirEmitter::Deinit() {
+
+}
+
+void PointDirEmitter::Draw() {
+
+}
+
+void PointDirEmitter::Update() {
+
+}
+
+void PointDirEmitter::LoadDone() {
+
+}
+
+#if 0 // DRAFT: illegal implicit conversion from 'signed char[322]' to
+s32 PointDirEmitter::LoadLine(MKIniLine *arg0) {
+    MKIniLine *var_r30_364;
+
+    var_r30_364 = arg0;
+loop_2:
+    if (var_r30_364 != NULL) {
+        var_r30_364->LoadFloat(lit_stringBase0, &this->unk10, 0);
+        var_r30_364->LoadFloat(&lit_stringBase0[7], &this->unkC, 0);
+        var_r30_364->LoadFloat(&lit_stringBase0[0xE], &this->unk8, 0);
+        var_r30_364->LoadFloat(&lit_stringBase0[0x17], &this->unk4, 0);
+        var_r30_364->LoadFloat(&lit_stringBase0[0x20], &this->unk38, 0);
+        var_r30_364->LoadFloat(&lit_stringBase0[0x2E], &this->unk3C, 0);
+        var_r30_364->LoadFloat(&lit_stringBase0[0x3C], &this->unk40, 0);
+        var_r30_364 = var_r30_364->unkC->GetNextLine(var_r30_364);
+        goto loop_2;
+    }
+    return 0;
+}
+#endif
+
+void PointDirEmitter::Init() {
+    this->unk38 = 0.0f;
+    this->unk3C = 0.0f;
+    this->unk40 = 0.0f;
+}
+
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector3 *arg2, MKVector4 *arg3) {
+    MKVector3 sp168;
+    MKVector3 sp158;
+    f64 sp150;
+    f64 sp148;
+    MKVector3 sp138;
+    MKVector3 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    MKVector3 spE8;
+    MKVector3 spD8;
+    f64 spD0;
+    f64 spC8;
+    M2C_UNK spB8;
+    MKVector3 spA8;
+    f64 spA0;
+    f64 sp98;
+    MKVector3 sp88;
+    f64 sp80;
+    f64 sp78;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
+    f32 temp_f1_629;
+    f32 temp_f1_686;
+    f32 temp_f1_740;
+    f32 temp_f28_652;
+    f32 temp_f29_736;
+    f32 temp_f2_478;
+    f32 temp_f2_630;
+    f32 temp_f31_541;
+    f32 temp_f31_647;
+    f32 temp_f31_731;
+    f32 var_f29_636;
+    s32 temp_r0_693;
+    s32 temp_r3_448;
+    s32 temp_r3_530;
+
+    if (arg0 != NULL) {
+        temp_r3_448 = this->unk9C;
+        if (temp_r3_448 & 1) {
+            this->unk38 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            this->unk3C.GetPositionAlongPath(this->unk38, *arg0);
+        } else if (temp_r3_448 & 2) {
+            if ((s32) this->unk9C == 0) {
+                this->unk38 += gUpdateTimeDelta;
+            } else {
+                this->unk38 -= gUpdateTimeDelta;
+            }
+            temp_f2_478 = this->unk38;
+            if (temp_f2_478 > 1.0f) {
+                if (this->unk9C & 4) {
+                    if ((s32) this->unk9C == 0) {
+                        this->unk9C = 1;
+                    } else {
+                        this->unk9C = 0;
+                    }
+                    this->unk38 = 1.0f;
+                } else {
+                    this->unk38 = 0.0f;
+                }
+            } else if (temp_f2_478 < 0.0f) {
+                if (this->unk9C & 4) {
+                    if ((s32) this->unk9C == 0) {
+                        this->unk9C = 1;
+                    } else {
+                        this->unk9C = 0;
+                    }
+                    this->unk38 = 0.0f;
+                } else {
+                    this->unk38 = 1.0f;
+                }
+            }
+            this->unk3C.GetPositionAlongPath(this->unk38, *arg0);
+        }
+        temp_r3_530 = this->unk9C;
+        if (temp_r3_530 & 8) {
+            this->unk3C.unk2C.GetPositionAlongPath(this->unk38, sp168);
+            temp_f31_541 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r29, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
+            sp108 = sp8;
+            sp10 = sp168.unk8 - arg0->unk8;
+            sp110 = (f64) sp10;
+            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp118 = sp58;
+            sp60 = (f32) sp110 * temp_f31_541;
+            sp120 = (f64) sp60;
+            M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+            arg0->unk8 += (f32) sp120;
+        } else if (temp_r3_530 & 0x10) {
+            this->unk3C.unk2C.GetPositionAlongPath(this->unk38, sp158);
+            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp148 = sp68;
+            sp70 = sp158.unk8 - arg0->unk8;
+            sp150 = (f64) sp70;
+            spD8.operator*(0.5f * ((std *) (M2C_ERROR(/* Read from unset register $r3 */)))->sin(100.0f * this->unk38));
+            spE8.operator*(0.5f);
+            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            spF8 = sp48;
+            sp50 = spE8.unk8 + spD8.unk8;
+            sp100 = (f64) sp50;
+            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+            arg0->unk8 += (f32) sp100;
+        }
+        if (this->unk9C & 0x20) {
+            temp_f1_629 = M2C_BITWISE(f32, this->unkA0);
+            temp_f2_630 = M2C_BITWISE(f32, this->unkA4);
+            if ((temp_f1_629 == temp_f2_630) || (temp_f1_629 > temp_f2_630)) {
+                var_f29_636 = 0.0f;
+            } else {
+                var_f29_636 = MKRand_Float(&gViewSeed, temp_f1_629, temp_f2_630);
+            }
+            temp_f31_647 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f28_652 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_652, temp_f31_647);
+            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+            spC8 = sp38;
+            sp40 = spC0 * var_f29_636;
+            spD0 = (f64) sp40;
+            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+            arg0->unk8 += (f32) spD0;
+        }
+    }
+    if (arg2 != NULL) {
+        temp_f1_686 = MKRand_Float(&gViewSeed, this->unk8, this->unk4);
+        arg2->unk0 = temp_f1_686;
+        arg2->unk4 = temp_f1_686;
+        arg2->unk8 = temp_f1_686;
+    }
+    if (arg1 != NULL) {
+        temp_r0_693 = this->unkA0;
+        switch (temp_r0_693) {                      /* irregular */
+        case 0:
+            this->unk3C.GetPositionAlongPath(this->unk38, sp138);
+            this->unk3C.unk2C.GetPositionAlongPath(this->unk38, sp128);
+            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp98 = sp28;
+            sp30 = sp128.unk8 - sp138.unk8;
+            spA0 = (f64) sp30;
+            Normalise(spA8);
+            M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, spA8);
+            M2C_FIELD(arg1, f64 *, 8) = (f64) spA8.unk8;
+            break;
+        case 1:
+            temp_f31_731 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f29_736 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f1_740 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            sp20 = temp_f31_731;
+            sp18 = temp_f1_740;
+            sp1C = temp_f29_736;
+            sp80 = (f64) sp20;
+            sp78 = (f64) sp18;
+            Normalise(sp88);
+            M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp88);
+            M2C_FIELD(arg1, f64 *, 8) = (f64) sp88.unk8;
+            break;
+        case 2:
+            M2C_FIELD(arg1, f64 *, 0) = (f64) this->unk18;
+            M2C_FIELD(arg1, f64 *, 8) = (f64) this->unk20;
+            break;
+        }
+        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
+        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+        arg1->unk8 *= MKRand_Float(&gViewSeed, this->unk10, this->unkC);
+    }
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+void DirectedLineEmitter::Deinit() {
+    this->unk3C.unk2C.Deinit();
+    this->unk3C.Deinit();
+}
+#endif
+
+void DirectedLineEmitter::Draw() {
+
+}
+
+void DirectedLineEmitter::Update() {
+
+}
+
+#if 0 // DRAFT: expression syntax error
+void DirectedLineEmitter::LoadDone() {
+    this->unk3C.unk2C.LoadDone();
+    this->unk3C.LoadDone();
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+s32 DirectedLineEmitter::LoadLine(MKIniLine *arg0) {
+    MKIniLine *var_r30_865;
+
+    var_r30_865 = arg0;
+loop_2:
+    if (var_r30_865 != NULL) {
+        var_r30_865->LoadInt(&lit_stringBase0[0x49], &this->unk9C, 0);
+        var_r30_865->LoadInt(&lit_stringBase0[0x59], &this->unkA0, 0);
+        var_r30_865->LoadInt(&lit_stringBase0[0x67], &this->unk9C, 0);
+        var_r30_865->LoadFloat(&lit_stringBase0[0x20], (f32 *) &this->unkA0, 0);
+        var_r30_865->LoadFloat(&lit_stringBase0[0x2E], (f32 *) &this->unkA4, 0);
+        var_r30_865->LoadFloat(&lit_stringBase0[0xE], &this->unk8, 0);
+        var_r30_865->LoadFloat(&lit_stringBase0[0x17], &this->unk4, 0);
+        var_r30_865->LoadFloat(lit_stringBase0, &this->unk10, 0);
+        var_r30_865->LoadFloat(&lit_stringBase0[7], &this->unkC, 0);
+        this->unk3C.unk2C.LoadWaypoints(var_r30_865, &lit_stringBase0[0x7B]);
+        this->unk3C.LoadWaypoints(var_r30_865, &lit_stringBase0[0x84]);
+        var_r30_865 = var_r30_865->unkC->GetNextLine(var_r30_865);
+        goto loop_2;
+    }
+    return 0;
+}
+#endif
+
+void DirectedLineEmitter::SetPosition(const MKVector3 &arg0) {
+    this->unk28 = M2C_FIELD(&arg0, f64 *, 0);
+    this->unk30 = M2C_FIELD(&arg0, f64 *, 8);
+}
+
+void DirectedLineEmitter::SetDirection(const MKVector3 &arg0) {
+    this->unk18 = M2C_FIELD(&arg0, f64 *, 0);
+    this->unk20 = M2C_FIELD(&arg0, f64 *, 8);
+}
+
+#if 0 // DRAFT: expression syntax error
+void DirectedLineEmitter::Init() {
+    this->unk38 = 0.0f;
+    this->unkA0 = 0.0f;
+    this->unkA4 = 0.0f;
+    this->unk3C.Init();
+    this->unk3C.unk2C.Init();
+    this->unk9C = 0;
+    this->unkA0 = 0;
+    this->unk9C = 9;
+    this->unk4 = 1.0f;
+    this->unk8 = 0.5f;
+    this->unkC = 1.0f;
+    this->unk10 = 0.5f;
+}
+#endif
+
+void GameParticleEmitter::Deinit() {
+    void **temp_r3_998;
+
+    temp_r3_998 = this->unkC8;
+    if (temp_r3_998 != NULL) {
+        M2C_FIELD(*temp_r3_998, M2C_UNK (**)(), 0x1C)();
+        operator delete(this->unkC8);
+    }
+    GameProp::Deinit();
+}
+
+void GameParticleEmitter::Draw() {
+    void **temp_r3_1023;
+
+    temp_r3_1023 = this->unkC8;
+    if (temp_r3_1023 != NULL) {
+        M2C_FIELD(*temp_r3_1023, M2C_UNK (**)(), 0x18)();
+    }
+}
+
+void GameParticleEmitter::Message(MKMessage *arg0) {
+    s32 temp_r0_1043;
+
+    temp_r0_1043 = arg0->unk0;
+    switch (temp_r0_1043) {                         /* irregular */
+    case 0xB5:
+        this->unkE0 = 1;
+        break;
+    case 0xB4:
+        this->unkE0 = 0;
+        break;
+    }
+    GameProp::Message(arg0);
+}
+
+#if 0 // DRAFT: undefined identifier 'sp8'
+void GameParticleEmitter::Update() {
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f32 sp10;
+    u32 temp_r0_1129;
+    void **temp_r3_1110;
+    void *temp_r3_1081;
+
+    if ((u8) this->unkE0 != 0) {
+        temp_r3_1081 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
+        sp18 = M2C_FIELD(temp_r3_1081, f64 *, 0x30);
+        sp20 = M2C_FIELD(temp_r3_1081, f64 *, 0x38);
+        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
+        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp28 = sp8;
+        sp10 = (f32) sp20 - M2C_FIELD((this->unk8 + 0x30), f32 *, 8);
+        sp30 = (f64) sp10;
+        this->unk24 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C));
+        if (!(this->unk24 > this->unkE4)) {
+            temp_r3_1110 = this->unkC8;
+            if (temp_r3_1110 != NULL) {
+                M2C_FIELD(*temp_r3_1110, M2C_UNK (**)(), 0x14)();
+            }
+            this->unkD8 += gUpdateTimeDelta;
+            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+            if (this->unkD8 == this->unkD4) {
+                this->unkD8 = 0.0f;
+                temp_r0_1129 = this->unkCC;
+                switch (temp_r0_1129) {
+                case 0:
+                    EmitLavaBubble();
+                    break;
+                case 1:
+                    EmitMoltenMetal();
+                    break;
+                case 2:
+                    EmitFoundryGas();
+                    break;
+                case 3:
+                    EmitSparks();
+                    break;
+                case 4:
+                    EmitLavaSteam();
+                    break;
+                case 5:
+                    EmitExplosion();
+                    break;
+                case 6:
+                    EmitHeat();
+                    break;
+                case 7:
+                    EmitWaterfall();
+                    break;
+                case 8:
+                    EmitWaterfallMist();
+                    break;
+                case 9:
+                    EmitWaterDrip();
+                    break;
+                case 10:
+                    EmitDust();
+                    break;
+                case 11:
+                    EmitEmber();
+                    break;
+                }
+            }
+            if ((u8) this->unkE1 != 0) {
+                this->unkE0 = 0;
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: pointer/array required
+void GameParticleEmitter::EmitEmber() {
+    MKVector3 sp28;
+    f32 sp18;
+    MKVector3 sp8;
+    s32 var_r30_1211;
+    void **temp_r3_1215;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r30_1211 = 0;
+loop_3:
+        if (var_r30_1211 < (s32) this->unkDC) {
+            temp_r3_1215 = this->unkC8;
+            M2C_FIELD(*temp_r3_1215, M2C_UNK (**)(void **, MKVector3 *, MKVector3 *, f32 *, M2C_UNK), 0x20)(temp_r3_1215, &sp28, &sp8, &sp18, 0);
+            gb.unk74->Emit(sp28, sp8, sp18, this->unk108, 0.0f);
+            var_r30_1211 += 1;
+            goto loop_3;
+        }
+    }
+}
+#endif
+
+void GameParticleEmitter::EmitDust() {
+    MKVector3 sp28;
+    f32 sp18;
+    MKVector3 sp8;
+    s32 var_r30_1256;
+    void **temp_r3_1260;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r30_1256 = 0;
+loop_3:
+        if (var_r30_1256 < (s32) this->unkDC) {
+            temp_r3_1260 = this->unkC8;
+            M2C_FIELD(*temp_r3_1260, M2C_UNK (**)(void **, MKVector3 *, MKVector3 *, f32 *, M2C_UNK), 0x20)(temp_r3_1260, &sp28, &sp8, &sp18, 0);
+            gb.EmitDust(sp28, sp8, sp18, 0.0f);
+            var_r30_1256 += 1;
+            goto loop_3;
+        }
+    }
+}
+
+#if 0 // DRAFT: pointer/array required
+void GameParticleEmitter::EmitWaterDrip() {
+    MKVector3 sp28;
+    f32 sp18;
+    MKVector3 sp8;
+    s32 var_r30_1300;
+    void **temp_r3_1304;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r30_1300 = 0;
+loop_3:
+        if (var_r30_1300 < (s32) this->unkDC) {
+            temp_r3_1304 = this->unkC8;
+            M2C_FIELD(*temp_r3_1304, M2C_UNK (**)(void **, MKVector3 *, MKVector3 *, f32 *, M2C_UNK), 0x20)(temp_r3_1304, &sp28, &sp8, &sp18, 0);
+            gb.unk6C->Emit(sp28, sp8, sp18, 1U, 1U, NULL);
+            var_r30_1300 += 1;
+            goto loop_3;
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'sp30'
+void GameParticleEmitter::EmitWaterfallMist() {
+    f64 sp28;
+    f32 sp18;
+    f64 sp8;
+    s32 var_r31_1345;
+    void **temp_r3_1348;
+    void *temp_r3_1357;
+    void *temp_r3_1361;
+    void *temp_r4_1364;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r31_1345 = 0;
+loop_5:
+        if (var_r31_1345 < (s32) this->unkDC) {
+            temp_r3_1348 = this->unkC8;
+            M2C_FIELD(*temp_r3_1348, M2C_UNK (**)(void **, f64 *, f64 *, f32 *, M2C_UNK), 0x20)(temp_r3_1348, &sp28, &sp8, &sp18, 0);
+            temp_r3_1357 = this->unk100;
+            temp_r3_1361 = M2C_FIELD(M2C_FIELD(temp_r3_1357, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_1357);
+            if (temp_r3_1361 != NULL) {
+                temp_r4_1364 = M2C_FIELD(temp_r3_1361, void **, 0x2C);
+                M2C_FIELD(temp_r3_1361, f64 *, 0) = sp28;
+                M2C_FIELD(temp_r3_1361, f64 *, 8) = sp30;
+                M2C_FIELD(temp_r3_1361, f32 *, 0x20) = 0.0f;
+                M2C_FIELD(temp_r3_1361, f32 *, 0x28) = 0.0f;
+                M2C_FIELD(temp_r3_1361, f32 *, 0x24) = 0.0f;
+                M2C_FIELD(temp_r3_1361, f64 *, 0x10) = (f64) M2C_FIELD(this, f64 *, 0x108);
+                M2C_FIELD(temp_r3_1361, f64 *, 0x18) = (f64) M2C_FIELD(this, f64 *, 0x110);
+                M2C_FIELD(temp_r4_1364, f64 *, 0) = sp8;
+                M2C_FIELD(temp_r4_1364, f64 *, 8) = sp10;
+                M2C_FIELD(temp_r4_1364, f32 *, 0x18) = sp18;
+                M2C_FIELD(temp_r4_1364, f32 *, 0x10) = 0.0f;
+                M2C_FIELD(temp_r4_1364, f32 *, 0x14) = (f32) M2C_FIELD(this->unk100, f32 *, 0xF4);
+            }
+            var_r31_1345 += 1;
+            goto loop_5;
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'sp30'
+void GameParticleEmitter::EmitWaterfall() {
+    f64 sp28;
+    f32 sp18;
+    f64 sp8;
+    s32 var_r31_1412;
+    void **temp_r3_1415;
+    void *temp_r3_1424;
+    void *temp_r3_1428;
+    void *temp_r4_1431;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r31_1412 = 0;
+loop_5:
+        if (var_r31_1412 < (s32) this->unkDC) {
+            temp_r3_1415 = this->unkC8;
+            M2C_FIELD(*temp_r3_1415, M2C_UNK (**)(void **, f64 *, f64 *, f32 *, M2C_UNK), 0x20)(temp_r3_1415, &sp28, &sp8, &sp18, 0);
+            temp_r3_1424 = this->unkFC;
+            temp_r3_1428 = M2C_FIELD(M2C_FIELD(temp_r3_1424, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_1424);
+            if (temp_r3_1428 != NULL) {
+                temp_r4_1431 = M2C_FIELD(temp_r3_1428, void **, 0x2C);
+                M2C_FIELD(temp_r3_1428, f64 *, 0) = sp28;
+                M2C_FIELD(temp_r3_1428, f64 *, 8) = sp30;
+                M2C_FIELD(temp_r3_1428, f32 *, 0x20) = 0.0f;
+                M2C_FIELD(temp_r3_1428, f32 *, 0x28) = 0.0f;
+                M2C_FIELD(temp_r3_1428, f32 *, 0x24) = 0.0f;
+                M2C_FIELD(temp_r3_1428, f64 *, 0x10) = (f64) M2C_FIELD(this, f64 *, 0x108);
+                M2C_FIELD(temp_r3_1428, f64 *, 0x18) = (f64) M2C_FIELD(this, f64 *, 0x110);
+                M2C_FIELD(temp_r4_1431, f64 *, 0) = sp8;
+                M2C_FIELD(temp_r4_1431, f64 *, 8) = sp10;
+                M2C_FIELD(temp_r4_1431, f32 *, 0x18) = sp18;
+                M2C_FIELD(temp_r4_1431, f32 *, 0x10) = 0.0f;
+                M2C_FIELD(temp_r4_1431, f32 *, 0x14) = (f32) M2C_FIELD(this->unkFC, f32 *, 0xF4);
+            }
+            var_r31_1412 += 1;
+            goto loop_5;
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+void GameParticleEmitter::EmitHeat() {
+    MKVector3 sp58;
+    f32 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
+    f32 temp_f1_1502;
+    s32 var_r30_1486;
+    void **temp_r3_1490;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r30_1486 = 0;
+loop_3:
+        if (var_r30_1486 < (s32) this->unkDC) {
+            temp_r3_1490 = this->unkC8;
+            M2C_FIELD(*temp_r3_1490, M2C_UNK (**)(void **, MKVector3 *, M2C_UNK, f32 *, M2C_UNK), 0x20)(temp_r3_1490, &sp58, 0, &sp48, 0);
+            temp_f1_1502 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+            sp18 = 0.0f;
+            sp1C = temp_f1_1502;
+            sp20 = 0.0f;
+            sp28 = (f64) sp18;
+            sp30 = (f64) sp20;
+            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            sp38 = sp8;
+            sp10 = (f32) sp30 * 400.0f;
+            sp40 = (f64) sp10;
+            gb.unk240.Emit(sp58, *((MKVector3 *) &sp38), sp48, 1.0f);
+            var_r30_1486 += 1;
+            goto loop_3;
+        }
+    }
+}
+#endif
+
+void GameParticleEmitter::EmitExplosion() {
+    MKVector3 sp20;
+    f32 sp10;
+    s32 sp8;
+    s32 var_r30_1555;
+    void **temp_r3_1559;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r30_1555 = 0;
+loop_3:
+        if (var_r30_1555 < (s32) this->unkDC) {
+            temp_r3_1559 = this->unkC8;
+            M2C_FIELD(*temp_r3_1559, M2C_UNK (**)(void **, MKVector3 *, M2C_UNK, f32 *, M2C_UNK), 0x20)(temp_r3_1559, &sp20, 0, &sp10, 0);
+            sp8 = 1;
+            this->unkF8->Trigger(sp20, sp10, 0U, NULL, 5, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            var_r30_1555 += 1;
+            goto loop_3;
+        }
+    }
+}
+
+void GameParticleEmitter::EmitLavaSteam() {
+    MKVector3 sp28;
+    f32 sp18;
+    MKVector3 sp8;
+    s32 var_r31_1603;
+    void **temp_r3_1606;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r31_1603 = 0;
+loop_3:
+        if (var_r31_1603 < (s32) this->unkDC) {
+            temp_r3_1606 = this->unkC8;
+            M2C_FIELD(*temp_r3_1606, M2C_UNK (**)(void **, MKVector3 *, MKVector3 *, f32 *, M2C_UNK), 0x20)(temp_r3_1606, &sp28, &sp8, &sp18, 0);
+            this->unkF4->Emit(sp28, sp8, sp18);
+            var_r31_1603 += 1;
+            goto loop_3;
+        }
+    }
+}
+
+void GameParticleEmitter::EmitSparks() {
+    MKVector3 sp28;
+    f32 sp18;
+    MKVector3 sp8;
+    s32 var_r31_1644;
+    void **temp_r3_1647;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r31_1644 = 0;
+loop_3:
+        if (var_r31_1644 < (s32) this->unkDC) {
+            temp_r3_1647 = this->unkC8;
+            M2C_FIELD(*temp_r3_1647, M2C_UNK (**)(void **, MKVector3 *, MKVector3 *, f32 *, M2C_UNK), 0x20)(temp_r3_1647, &sp28, &sp8, &sp18, 0);
+            this->unkF0->Emit(sp28, sp8, sp18);
+            var_r31_1644 += 1;
+            goto loop_3;
+        }
+    }
+}
+
+void GameParticleEmitter::EmitFoundryGas() {
+    MKVector3 sp28;
+    f32 sp18;
+    MKVector3 sp8;
+    s32 var_r31_1685;
+    void **temp_r3_1688;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r31_1685 = 0;
+loop_3:
+        if (var_r31_1685 < (s32) this->unkDC) {
+            temp_r3_1688 = this->unkC8;
+            M2C_FIELD(*temp_r3_1688, M2C_UNK (**)(void **, MKVector3 *, MKVector3 *, f32 *, M2C_UNK), 0x20)(temp_r3_1688, &sp28, &sp8, &sp18, 0);
+            this->unkEC->Emit(sp28, sp8, sp18);
+            var_r31_1685 += 1;
+            goto loop_3;
+        }
+    }
+}
+
+void GameParticleEmitter::EmitMoltenMetal() {
+    MKVector3 sp30;
+    MKVector3 sp20;
+    MKVector3 sp10;
+    s32 spC;
+    s32 sp8;
+    s32 var_r31_1726;
+    void **temp_r3_1729;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r31_1726 = 0;
+loop_3:
+        if (var_r31_1726 < (s32) this->unkDC) {
+            temp_r3_1729 = this->unkC8;
+            M2C_FIELD(*temp_r3_1729, M2C_UNK (**)(void **, MKVector3 *, MKVector3 *, MKVector3 *, M2C_UNK), 0x20)(temp_r3_1729, &sp30, &sp10, &sp20, 0);
+            sp8 = 0;
+            spC = 0;
+            this->unkE8->Emit(lit_717, sp30, sp10, sp20, 3.0f, 0.0f, 0U, NULL, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+            var_r31_1726 += 1;
+            goto loop_3;
+        }
+    }
+}
+
+#if 0 // DRAFT: pointer/array required
+void GameParticleEmitter::EmitLavaBubble() {
+    MKVector3 sp18;
+    MKVector3 sp8;
+    s32 var_r30_1776;
+    void **temp_r3_1780;
+
+    if ((void **) this->unkC8 != NULL) {
+        var_r30_1776 = 0;
+loop_3:
+        if (var_r30_1776 < (s32) this->unkDC) {
+            temp_r3_1780 = this->unkC8;
+            M2C_FIELD(*temp_r3_1780, M2C_UNK (**)(void **, MKVector3 *, M2C_UNK, MKVector3 *, M2C_UNK), 0x20)(temp_r3_1780, &sp18, 0, &sp8, 0);
+            gb.unk90->CreateBubble(sp18, sp8);
+            var_r30_1776 += 1;
+            goto loop_3;
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'loadInfo'
+void GameParticleEmitter::LoadDone() {
+    f32 temp_f0_1821;
+    u32 temp_r0_1846;
+    void **temp_r3_1824;
+    void **temp_r3_1831;
+    void **temp_r3_1838;
+
+    GameProp::LoadDone();
+    M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x70);
+    M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x78);
+    temp_f0_1821 = this->unkE4;
+    this->unkE4 = temp_f0_1821 * temp_f0_1821;
+    temp_r3_1824 = this->unkC8;
+    if (temp_r3_1824 != NULL) {
+        M2C_FIELD(*temp_r3_1824, M2C_UNK (**)(), 0x10)();
+        temp_r3_1831 = this->unkC8;
+        M2C_FIELD(*temp_r3_1831, M2C_UNK (**)(void **, void *), 0x28)(temp_r3_1831, this->unk8 + 0x30);
+        temp_r3_1838 = this->unkC8;
+        M2C_FIELD(*temp_r3_1838, M2C_UNK (**)(void **, void *), 0x24)(temp_r3_1838, this->unk8 + 0x20);
+    }
+    temp_r0_1846 = this->unkCC;
+    switch (temp_r0_1846) {
+    case 1:
+        this->unkE8 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x8F]));
+        return;
+    case 2:
+        this->unkEC = checked_cast<FoundryGas *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x9D]));
+        return;
+    case 3:
+        this->unkF0 = checked_cast<SparksPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xA8]));
+        return;
+    case 4:
+        this->unkF4 = checked_cast<LavaSteamPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xB1]));
+        return;
+    case 5:
+        this->unkF8 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xBD]));
+        return;
+    case 7:
+        this->unkFC = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xC8]));
+        return;
+    case 8:
+        this->unk100 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xD4]));
+        /* fallthrough */
+    default:
+        return;
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+s32 GameParticleEmitter::LoadLine(MKIniLine *arg0) {
+    MKIniLine *var_r29_2006;
+    s32 temp_r0_2019;
+    void **temp_r3_2042;
+    void **temp_r3_2047;
+    void **temp_r3_2069;
+    void **temp_r3_2074;
+
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0xE4], (s32 *) &this->unkCC, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xF1], &this->unkD4, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0xFA], &this->unkDC, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x105], &this->unkE0, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x112], &this->unkE1, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x11A], &this->unkE4, 0) != 0)) {
+        return 1;
+    }
+    if (arg0->IsField(&lit_stringBase0[0x125]) != 0) {
+        var_r29_2006 = arg0->unkC->GetSubLine(arg0);
+loop_23:
+        if (var_r29_2006 != NULL) {
+            if (var_r29_2006->IsField(&lit_stringBase0[0x135]) != 0) {
+                var_r29_2006->AsInt(0, &this->unkD0);
+                temp_r0_2019 = this->unkD0;
+                switch (temp_r0_2019) {             /* irregular */
+                case 0:
+                    operator new(0x48U, NULL, 0);
+                    if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
+                        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
+                        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
+                    }
+                    this->unkC8 = M2C_ERROR(/* Read from unset register $r3 */);
+                    temp_r3_2042 = this->unkC8;
+                    M2C_FIELD(*temp_r3_2042, M2C_UNK (**)(void **), 8)(temp_r3_2042);
+                    temp_r3_2047 = this->unkC8;
+                    M2C_FIELD(*temp_r3_2047, M2C_UNK (**)(void **, MKIniLine *), 0xC)(temp_r3_2047, var_r29_2006);
+                    break;
+                case 1:
+                    operator new(0xB0U, NULL, 0);
+                    if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
+                        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
+                        *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
+                    }
+                    this->unkC8 = M2C_ERROR(/* Read from unset register $r3 */);
+                    temp_r3_2069 = this->unkC8;
+                    M2C_FIELD(*temp_r3_2069, M2C_UNK (**)(void **), 8)(temp_r3_2069);
+                    temp_r3_2074 = this->unkC8;
+                    M2C_FIELD(*temp_r3_2074, M2C_UNK (**)(void **, MKIniLine *), 0xC)(temp_r3_2074, var_r29_2006);
+                    break;
+                }
+            }
+            var_r29_2006 = var_r29_2006->unkC->GetNextLine(var_r29_2006);
+            goto loop_23;
+        }
+        return 1;
+    }
+    return 0;
+}
+#endif
+
+void GameParticleEmitter::Init() {
+    GameProp::Init();
+    this->unkC8 = NULL;
+    this->unkCC = 0xC;
+    this->unkD0 = 2;
+    this->unkD4 = 0.0f;
+    this->unkD8 = 0.0f;
+    this->unkE8 = NULL;
+    this->unkEC = NULL;
+    this->unkF0 = NULL;
+    this->unkF4 = NULL;
+    this->unkF8 = NULL;
+    this->unkFC = NULL;
+    this->unk100 = NULL;
+    this->unkE1 = 0;
+    this->unkE0 = 1;
+    this->unkE4 = 10000.0f;
+}
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<LavaSteamPS *, MKProp>(MKProp *arg0) {
+
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<FoundryGas *, MKProp>(MKProp *arg0) {
+
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<LiquidFX *, MKProp>(MKProp *arg0) {
+
+}
+#endif

@@ -1,0 +1,391 @@
+#include "spyro/source/OptionsScreen.h"
+#include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/UIButton.h"
+#include "spyro/source/UIContainer.h"
+#include "spyro/source/UIObject.h"
+#include "spyro/source/UIScreen.h"
+#include "unplaced_templates.h"
+#include "common/gc/Sound_GC.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/UIControls.h"
+#include <m2c_macros.h>
+
+extern s32 GS_MenuSelect;
+extern M2C_UNK gb;
+
+#if 0 // DRAFT: expression syntax error
+void OptionsScreen::OnExit() {
+    KDSynkerPlayer3 *temp_r3_49;
+    u8 var_r31_46;
+    void *temp_r30_48;
+
+    UIScreen::OnExit();
+    if (KDSound_IsVoicePlaying((s32) this->unkBC.unk8) != 0) {
+        KDSound_Stop((s32 *) &this->unkBC.unk8);
+    }
+    if ((u8) M2C_FIELD(this, u8 *, 0xC8) != 0) {
+        KDSound_PauseMusic(0U, 0U);
+        return;
+    }
+    var_r31_46 = 0;
+    temp_r30_48 = M2C_FIELD(&gb, void **, 0xC);
+    temp_r3_49 = M2C_FIELD(temp_r30_48, KDSynkerPlayer3 **, 0x78);
+    if (((temp_r3_49 != NULL) && (temp_r3_49->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r30_48, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r30_48 + 0x24))->GetState() == 2))) {
+        var_r31_46 = 1;
+    }
+    KDSound_PauseMusic(1U, var_r31_46);
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'UIButton *' to
+void OptionsScreen::Update() {
+    s32 sp1C;
+    s32 sp18;
+    s32 sp14;
+    s32 sp10;
+    s32 spC;
+    s32 sp8;
+    KDSynkerPlayer3 *temp_r3_146;
+    UIContainer *temp_r3_214;
+    s32 temp_r4_174;
+    s32 var_r4_181;
+    s32 var_r5_199;
+    u8 var_r28_142;
+    u8 var_r30_144;
+    void **temp_r3_118;
+    void **temp_r3_177;
+    void **temp_r3_195;
+    void **temp_r3_91;
+    void *temp_r29_145;
+
+    UIScreen::Update();
+    temp_r3_91 = ui_cast<UIButton *, UIObject *>(((UIContainer *) (M2C_FIELD(this, UIContainer **, 0xD0)))->FindChild("SoundVolume"));
+    if ((temp_r3_91 != NULL) && ((u8) M2C_FIELD(temp_r3_91, u8 *, 0x16) != 0) && ((UIControls_DirectionPressed((FrontEndControls) 7, -1) != 0) || (UIControls_DirectionPressed((FrontEndControls) 5, -1) != 0))) {
+        KDSound_Play(GS_MenuSelect, 0U, -1);
+    }
+    temp_r3_118 = ui_cast<UIButton *, UIObject *>(((UIContainer *) (M2C_FIELD(this, UIContainer **, 0xD0)))->FindChild("MusicVolume"));
+    if (temp_r3_118 != NULL) {
+        if (((u8) M2C_FIELD(temp_r3_118, u8 *, 0x16) != 0) && (KDSound_IsMusicPaused() != 0)) {
+            KDSound_PauseMusic(0U, 0U);
+        } else if (((u8) M2C_FIELD(temp_r3_118, u8 *, 0x16) == 0) && (KDSound_IsMusicPaused() == 0) && ((u8) M2C_FIELD(this, u8 *, 0xC8) == 0)) {
+            var_r28_142 = 1;
+            var_r30_144 = 0;
+            temp_r29_145 = M2C_FIELD(&gb, void **, 0xC);
+            temp_r3_146 = M2C_FIELD(temp_r29_145, KDSynkerPlayer3 **, 0x78);
+            if (((temp_r3_146 != NULL) && (temp_r3_146->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_145, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r29_145 + 0x24))->GetState() == 2))) {
+                var_r30_144 = 1;
+            }
+            if ((var_r30_144 == 0) && (KDSound_IsChronoSoundWarpActive() == 0)) {
+                var_r28_142 = 0;
+            }
+            KDSound_PauseMusic(1U, var_r28_142);
+        }
+    }
+    temp_r4_174 = this->unkCC;
+    if ((u32) temp_r4_174 != 0U) {
+        temp_r3_177 = this->unkD4;
+        if (temp_r3_177 != NULL) {
+            var_r4_181 = 3;
+            if ((u8) M2C_FIELD(temp_r4_174, u8 *, 0x16) == 0) {
+                var_r4_181 = 2;
+            }
+            sp18 = var_r4_181;
+            sp1C = 0;
+            M2C_FIELD(*temp_r3_177, M2C_UNK (**)(s32 *), 0x2C)(&sp18);
+        }
+        temp_r3_195 = this->unkD8;
+        if (temp_r3_195 != NULL) {
+            var_r5_199 = 3;
+            if ((u8) M2C_FIELD(this->unkCC, u8 *, 0x16) != 0) {
+                var_r5_199 = 2;
+            }
+            sp10 = var_r5_199;
+            sp14 = 0;
+            M2C_FIELD(*temp_r3_195, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
+        }
+        temp_r3_214 = this->unkD0;
+        if (temp_r3_214 != NULL) {
+            sp8 = 1;
+            spC = 0;
+            M2C_FIELD(temp_r3_214->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+void OptionsScreen::OnEnter() {
+    s32 sp4C;
+    s32 sp48;
+    s32 sp44;
+    s32 sp40;
+    s32 sp3C;
+    s32 sp38;
+    s32 sp34;
+    s32 sp30;
+    s32 sp2C;
+    s32 sp28;
+    s32 sp24;
+    s32 sp20;
+    s32 sp1C;
+    s32 sp18;
+    s32 sp14;
+    s32 sp10;
+    s32 spC;
+    s32 sp8;
+    UIContainer *temp_r3_263;
+    UIContainer *temp_r3_314;
+    UIContainer *temp_r3_323;
+    UIContainer *temp_r3_382;
+    u8 var_r30_279;
+    void **temp_r3_270;
+    void **temp_r3_356;
+    void **temp_r3_369;
+
+    UIScreen::OnEnter();
+    if (KDSound_IsMusicPaused() != 0) {
+        M2C_FIELD(this, s8 *, 0xC8) = 0;
+    } else {
+        M2C_FIELD(this, s8 *, 0xC8) = 1;
+    }
+    sp48 = 1;
+    sp4C = 0;
+    Message(&sp48);
+    temp_r3_263 = M2C_FIELD(this, UIContainer **, 0xD0);
+    if (temp_r3_263 != NULL) {
+        temp_r3_270 = ui_cast<UIButton *, UIObject *>(temp_r3_263->FindChild("Sound"));
+        if (temp_r3_270 != NULL) {
+            if ((void *) M2C_FIELD(&gb, void **, 0xC) != NULL) {
+                var_r30_279 = 0;
+                if ((((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (M2C_FIELD(&gb, void **, 0xC) + 0x24))->GetState() != 0)) {
+                    var_r30_279 = 1;
+                }
+                if (var_r30_279 != 0) {
+                    sp40 = 5;
+                    sp44 = 0;
+                    M2C_FIELD(*temp_r3_270, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_270, &sp40);
+                    sp38 = 3;
+                    sp3C = 0;
+                    M2C_FIELD(*temp_r3_270, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_270, &sp38);
+                    temp_r3_314 = M2C_FIELD(this, UIContainer **, 0xD0);
+                    if ((UIObject *) temp_r3_314->unk60 == NULL) {
+                        M2C_FIELD(temp_r3_314->__vptr, M2C_UNK (**)(M2C_UNK), 0x38)(1);
+                        temp_r3_323 = M2C_FIELD(this, UIContainer **, 0xD0);
+                        sp30 = 1;
+                        sp34 = 0;
+                        temp_r3_323->Message(&sp30, 1);
+                    }
+                } else {
+                    goto block_13;
+                }
+            } else {
+block_13:
+                sp28 = 4;
+                sp2C = 0;
+                M2C_FIELD(*temp_r3_270, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_270, &sp28);
+                sp20 = 2;
+                sp24 = 0;
+                M2C_FIELD(*temp_r3_270, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_270, &sp20);
+            }
+        }
+    }
+    temp_r3_356 = this->unkD4;
+    if (temp_r3_356 != NULL) {
+        sp18 = 2;
+        sp1C = 0;
+        M2C_FIELD(*temp_r3_356, M2C_UNK (**)(s32 *), 0x2C)(&sp18);
+    }
+    temp_r3_369 = this->unkD8;
+    if (temp_r3_369 != NULL) {
+        sp10 = 3;
+        sp14 = 0;
+        M2C_FIELD(*temp_r3_369, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
+    }
+    temp_r3_382 = this->unkD0;
+    if (temp_r3_382 != NULL) {
+        sp8 = 1;
+        spC = 0;
+        M2C_FIELD(temp_r3_382->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'UIButton *' to
+void OptionsScreen::Resolve() {
+    s32 sp14;
+    s32 sp10;
+    s32 spC;
+    s32 sp8;
+    UIContainer *temp_r3_418;
+    UIContainer *temp_r3_435;
+    UIObject *temp_r3_457;
+    UIObject *var_r3_479;
+
+    UIScreen::Resolve();
+    M2C_FIELD(this, UIContainer **, 0xD0) = ui_cast<UIButtonGroup *, UIObject *>(FindChild("OptionsButtons"));
+    temp_r3_418 = M2C_FIELD(this, UIContainer **, 0xD0);
+    if (temp_r3_418 != NULL) {
+        this->unkCC = ui_cast<UIButton *, UIObject *>(temp_r3_418->FindChild("Position"));
+    }
+    this->unkD0 = ui_cast<UIContainer *, UIObject *>(FindChild("PromptGroup"));
+    temp_r3_435 = this->unkD0;
+    if (temp_r3_435 != NULL) {
+        this->unkD4 = temp_r3_435->FindChild("LeftRight");
+        this->unkD8 = this->unkD0->FindChild("Forward");
+    }
+    if (Sound_GetSystemAudioMode() == 0) {
+        temp_r3_457 = ((UIContainer *) (M2C_FIELD(this, UIContainer **, 0xD0)))->FindChild("Output");
+        if (temp_r3_457 != NULL) {
+            sp10 = 5;
+            sp14 = 0;
+            M2C_FIELD(temp_r3_457->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
+            sp8 = 3;
+            spC = 0;
+            temp_r3_457->Message(&sp8);
+            var_r3_479 = temp_r3_457->unk10;
+loop_8:
+            if (var_r3_479 != NULL) {
+                var_r3_479->unk18.unk10.unk4 -= 40.0f;
+                var_r3_479 = var_r3_479->unk10;
+                goto loop_8;
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+void OptionsScreen::Init() {
+    UIContainer::Init();
+    M2C_FIELD(this, s8 *, 0xC8) = 0;
+    this->unkBC.unk8 = NULL;
+    M2C_FIELD(this, s32 *, 0xD0) = 0;
+    this->unkCC = 0;
+    this->unkD0 = NULL;
+    this->unkD4 = NULL;
+    this->unkD8 = NULL;
+}
+#endif
+
+#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
+UIContainer *ui_cast<UIContainer *, UIObject *>(UIObject *arg0) {
+    UIContainer *sp8;
+
+    sp8 = NULL;
+    ui_cast_ptr<UIContainer, UIObject>(sp8, arg0);
+    return sp8;
+}
+#endif
+
+#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
+void **ui_cast<UIButton *, UIObject *>(UIObject *arg0) {
+    UIButton *sp8;
+
+    sp8 = NULL;
+    ui_cast_ptr<UIButton, UIObject>(sp8, arg0);
+    return &sp8->__vptr;
+}
+#endif
+
+#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
+UIContainer *ui_cast<UIButtonGroup *, UIObject *>(UIObject *arg0) {
+    UIButtonGroup *sp8;
+
+    sp8 = NULL;
+    ui_cast_ptr<UIButtonGroup, UIObject>(sp8, arg0);
+    return (UIContainer *) sp8;
+}
+#endif
+
+#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
+void ui_cast_ptr<UIButtonGroup, UIObject>(UIButtonGroup *&arg0, UIObject *arg1) {
+    u8 var_r0_592;
+    void *var_r5_587;
+
+    if (arg1 != NULL) {
+        var_r5_587 = arg1->unk8;
+loop_2:
+        if (var_r5_587 == &descriptor) {
+            var_r0_592 = 1;
+        } else {
+            var_r5_587 = M2C_FIELD(var_r5_587, void **, 4);
+            if (var_r5_587 == NULL) {
+                var_r0_592 = 0;
+            } else {
+                goto loop_2;
+            }
+        }
+        if (var_r0_592 != 0) {
+            &arg0 = checked_cast<UIButtonGroup *, UIObject>(arg1);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
+void ui_cast_ptr<UIButton, UIObject>(UIButton *&arg0, UIObject *arg1) {
+    u8 var_r0_629;
+    void *var_r5_624;
+
+    if (arg1 != NULL) {
+        var_r5_624 = arg1->unk8;
+loop_2:
+        if (var_r5_624 == &descriptor) {
+            var_r0_629 = 1;
+        } else {
+            var_r5_624 = M2C_FIELD(var_r5_624, void **, 4);
+            if (var_r5_624 == NULL) {
+                var_r0_629 = 0;
+            } else {
+                goto loop_2;
+            }
+        }
+        if (var_r0_629 != 0) {
+            &arg0 = checked_cast<UIButton *, UIObject>(arg1);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
+void ui_cast_ptr<UIContainer, UIObject>(UIContainer *&arg0, UIObject *arg1) {
+    u8 var_r0_666;
+    void *var_r5_661;
+
+    if (arg1 != NULL) {
+        var_r5_661 = arg1->unk8;
+loop_2:
+        if (var_r5_661 == &descriptor) {
+            var_r0_666 = 1;
+        } else {
+            var_r5_661 = M2C_FIELD(var_r5_661, void **, 4);
+            if (var_r5_661 == NULL) {
+                var_r0_666 = 0;
+            } else {
+                goto loop_2;
+            }
+        }
+        if (var_r0_666 != 0) {
+            &arg0 = checked_cast<UIContainer *, UIObject>(arg1);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<UIContainer *, UIObject>(UIObject *arg0) {
+
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<UIButton *, UIObject>(UIObject *arg0) {
+
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<UIButtonGroup *, UIObject>(UIObject *arg0) {
+
+}
+#endif

@@ -1,0 +1,191 @@
+#include "spyro/source/IceShard.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/Projectile.h"
+#include "common/Source/MKModel.h"
+#include "spyro/source/KDMath.h"
+#include <m2c_macros.h>
+
+extern MKPropDescriptor *pIceShardDescriptor;
+
+#if 0 // DRAFT: undefined identifier 'arg_sp90'
+void IceShard::Update() {
+    f32 var_f4_70;
+    f32 var_f5_91;
+    f64 temp_f1_102;
+    f64 temp_f1_106;
+    f64 temp_f1_96;
+    s32 temp_r3_125;
+    s32 var_r0_135;
+    Projectile::Update();
+    if (MKModel_GetAttachment(this->unk4) != NULL) {
+        MKModel_GetWorldMatrixWithAttachment(this->unk4, (Matrix *) &arg_sp90);
+    } else {
+        M2C_STRUCT_COPY((s32) &arg_sp8C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    }
+    var_f4_70 = 0.0f;
+    arg_sp20 = 0.0f;
+    arg_sp18 = 0.0f;
+    arg_sp1C = 1.0f;
+    arg_sp30 = (f64) arg_sp20;
+    arg_sp28 = (f64) arg_sp18;
+    arg_sp38 = this->unkC8;
+    arg_sp40 = this->unkD0;
+    var_f5_91 = ((f32) arg_sp40 * (f32) arg_sp40) + (((f32) arg_sp38 * (f32) arg_sp38) + (arg_sp3C * arg_sp3C));
+    if (var_f5_91 > 0.000001f) {
+        if (var_f5_91 > 0.0f) {
+            temp_f1_96 = __frsqrte(var_f5_91);
+            temp_f1_102 = 0.5 * temp_f1_96 * -(((f64) var_f5_91 * (temp_f1_96 * temp_f1_96)) - 3.0);
+            temp_f1_106 = 0.5 * temp_f1_102 * -(((f64) var_f5_91 * (temp_f1_102 * temp_f1_102)) - 3.0);
+            var_f5_91 = (f32) ((f64) var_f5_91 * (0.5 * temp_f1_106 * -(((f64) var_f5_91 * (temp_f1_106 * temp_f1_106)) - 3.0)));
+        } else if (var_f5_91 < M2C_BITWISE(f32, 0.0)) {
+            var_f5_91 = __float_nan;
+        } else {
+            arg_sp10 = var_f5_91;
+            temp_r3_125 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+            switch (temp_r3_125) {                  /* irregular */
+            case 0x7F800000:
+                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    var_r0_135 = 1;
+                } else {
+                    var_r0_135 = 2;
+                }
+                break;
+            case 0x0:
+                if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                    var_r0_135 = 5;
+                } else {
+                    var_r0_135 = 3;
+                }
+                break;
+            default:
+                var_r0_135 = 4;
+                break;
+            }
+            if (var_r0_135 == 1) {
+                var_f5_91 = __float_nan;
+            }
+        }
+        var_f4_70 = 1.0f / var_f5_91;
+    } else {
+        var_f5_91 = 0.0f;
+    }
+    arg_sp38 = (f32) arg_sp38 * var_f4_70;
+    arg_sp3C *= var_f4_70;
+    arg_sp40 = (f32) arg_sp40 * var_f4_70;
+    if (var_f5_91 != 0.0f) {
+        KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp50, *((MKVector3 *) &arg_sp38), (MKVector3 *) &arg_sp28);
+        arg_sp80 = arg_spC0;
+        arg_sp84 = arg_spC4;
+        arg_sp88 = arg_spC8;
+        arg_sp8C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp50));
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'one'
+void IceShard::Collided(MKCollisionResult &arg0) {
+    s8 sp89;
+    s8 sp88;
+    s32 sp84;
+    f32 sp80;
+    s32 sp7C;
+    s8 sp7A;
+    s8 sp79;
+    s8 sp78;
+    f64 sp70;                                       /* compiler-managed */
+    f64 sp68;                                       /* compiler-managed */
+    MKProp *sp64;
+    f32 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp18;
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+    MKProp *temp_r4_214;
+    void *temp_r3_260;
+    void *var_r3_263;
+
+    Projectile::Collided(arg0);
+    sp3C = 0.0f;
+    temp_r4_214 = this->unk130;
+    sp10 = 0.0f;
+    sp8 = 0.0f;
+    spC = 0.0f;
+    sp30 = (f64) sp10;
+    sp28 = (f64) sp8;
+    sp38 = 1e-44f;
+    sp60 = 1e-45f;
+    sp64 = temp_r4_214;
+    sp40 = (f64) sp8;
+    sp48 = (f64) sp10;
+    sp78 = 0;
+    sp84 = 2;
+    sp80 = 10.0f;
+    sp79 = 0;
+    sp7A = 1;
+    sp7C = -1;
+    sp50 = M2C_FIELD(&one, f64 *, 0);
+    sp58 = M2C_FIELD(&one, f64 *, 8);
+    sp88 = 0;
+    if (temp_r4_214 != NULL) {
+        sp18.GetPos();
+        sp68 = sp18;
+        sp70 = sp20;
+    } else {
+        sp68 = 0.0f;
+        unksp6C = 0.0f;
+        sp70 = 0.0f;
+    }
+    sp89 = 0;
+    if (((u8) arg0.unk50 != 0) && (temp_r3_260 = arg0.unk48, ((temp_r3_260 == NULL) == 0)) && (var_r3_263 = M2C_FIELD(temp_r3_260, void **, 8), ((var_r3_263 == NULL) == 0))) {
+
+    } else {
+        var_r3_263 = NULL;
+    }
+    if (var_r3_263 != NULL) {
+        M2C_FIELD(M2C_FIELD(var_r3_263, void **, 0x44), M2C_UNK (**)(f32 *), 0x2C)(&sp38);
+    }
+    Disable();
+}
+#endif
+
+void IceShard::LoadDone() {
+    Projectile::LoadDone();
+}
+
+void *IceShard::CreateInstance() {
+    void *temp_r3_313;
+
+    if ((MKPropDescriptor *) pIceShardDescriptor != NULL) {
+        temp_r3_313 = pIceShardDescriptor->CreateInstance();
+        if (temp_r3_313 != NULL) {
+            M2C_FIELD(M2C_FIELD(temp_r3_313, void **, 0x44), M2C_UNK (**)(), 0x20)();
+            return temp_r3_313;
+        }
+    }
+    return NULL;
+}
+
+#if 0 // DRAFT: illegal use of non-static member
+void IceShardDescriptor::LoadDone() {
+    GamePropDescriptor::LoadDone();
+    pIceShardDescriptor = (MKPropDescriptor *) this;
+}
+#endif
+
+void IceShardDescriptor::Deinit() {
+    pIceShardDescriptor = NULL;
+    KDPropExDescriptor::Deinit();
+}

@@ -1,0 +1,141 @@
+#include "spyro/source/KDDropShadow.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/Matrix.h"
+#include "unplaced_templates.h"
+#include "common/gc/MKMaterial_GC.h"
+#include "common/gc/MKPrimitive_GC.h"
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'P22KDDropShadowDescriptor'
+MKHeap *malloc(s32);                                /* extern */
+static s8 lit_stringBase0[0x12] = {
+    0x6C,
+    0x69,
+    0x73,
+    0x74,
+    0x53,
+    0x69,
+    0x7A,
+    0x65,
+    0,
+    0x75,
+    0x6E,
+    0x69,
+    0x74,
+    0x53,
+    0x69,
+    0x7A,
+    0x65,
+    0,
+}; /* const */
+
+void KDDropShadow::Draw() {
+    Matrix *var_r31_61;
+    Matrix *var_r3_53;
+    f32 *var_r3_104;
+    f32 temp_f1_70;
+    f32 temp_f1_84;
+    f32 temp_f1_91;
+    f32 temp_f3_98;
+
+    MKMaterial_SetMaterial(checked_cast<P22KDDropShadowDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unk38);
+    MKPrimitive(0xC, 0x10);
+    var_r3_53 = this->unk50;
+    if (var_r3_53 != (Matrix *) this->unk54) {
+
+    } else {
+        var_r3_53 = NULL;
+    }
+    var_r31_61 = var_r3_53;
+loop_7:
+    if (var_r31_61 != NULL) {
+        MKSetMatrix(*var_r31_61);
+        MKBegin(4);
+        temp_f1_70 = -var_r31_61->unk40;
+        MKSetPositionF(temp_f1_70, 1.0f, temp_f1_70);
+        MKSetTexCoord1F(1.0f, 0.0f);
+        MKSetColorF(1.0f, 1.0f, 1.0f, var_r31_61->unk44);
+        MKSetTexCoord1F(0.0f, 0.0f);
+        temp_f1_84 = var_r31_61->unk40;
+        MKSetPositionF(temp_f1_84, 1.0f, -temp_f1_84);
+        MKSetTexCoord1F(1.0f, 1.0f);
+        temp_f1_91 = var_r31_61->unk40;
+        MKSetPositionF(temp_f1_91, 1.0f, temp_f1_91);
+        MKSetTexCoord1F(0.0f, 1.0f);
+        temp_f3_98 = var_r31_61->unk40;
+        MKSetPositionF(-temp_f3_98, 1.0f, temp_f3_98);
+        MKEnd();
+        var_r3_104 = &var_r31_61->unk50;
+        if (var_r3_104 >= (Matrix *) this->unk54) {
+            var_r3_104 = NULL;
+        }
+        var_r31_61 = (Matrix *) var_r3_104;
+        goto loop_7;
+    }
+    this->unk50 = this->unk54;
+    MKEndPrimitive();
+}
+#endif
+
+void KDDropShadow::Reset() {
+    MKProp::Reset();
+    this->unk50 = this->unk54;
+}
+
+void KDDropShadow::Deinit() {
+    this->unk4C->FreeFromAnyHeap(NULL, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+    this->unk54 = NULL;
+    this->unk50 = NULL;
+    this->unk4C = NULL;
+    MKProp::Deinit();
+}
+
+#if 0 // DRAFT: illegal implicit conversion from 'KDDropShadowDescriptor *' to
+void KDDropShadow::LoadDone() {
+    MKHeap *temp_r3_176;
+    MKHeap *temp_r3_178;
+    MKHeap *var_r3_185;
+    Matrix *temp_r0_194;
+    s32 temp_r31_177;
+
+    MKProp::LoadDone();
+    temp_r3_176 = checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    temp_r31_177 = temp_r3_176->unk60;
+    temp_r3_178 = temp_r3_176->Current();
+    if (temp_r3_178 != NULL) {
+        var_r3_185 = ((MKHeap *) (temp_r3_178->Current()))->Alloc(temp_r31_177 * 0x50, NULL, 0);
+    } else {
+        var_r3_185 = malloc(temp_r31_177 * 0x50);
+    }
+    this->unk4C = var_r3_185;
+    temp_r0_194 = this->unk4C + (temp_r31_177 * 0x50);
+    this->unk50 = temp_r0_194;
+    this->unk54 = temp_r0_194;
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'signed char[18]' to
+s32 KDDropShadowDescriptor::LoadLine(MKIniLine *arg0) {
+    s32 var_r31_213;
+
+    var_r31_213 = 0;
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0, &this->unk60, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[9], &this->unk64, 0) != 0)) {
+        var_r31_213 = 1;
+    }
+    return var_r31_213;
+}
+#endif
+
+void KDDropShadowDescriptor::Init() {
+    MKPropDescriptor::Init();
+    this->unk60 = 0x32;
+    this->unk64 = 1.0f;
+}
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
+
+}
+#endif

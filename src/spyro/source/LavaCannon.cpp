@@ -1,0 +1,802 @@
+#include "spyro/source/LavaCannon.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AnimUtils.h"
+#include "spyro/source/Explosion4.h"
+#include "spyro/source/Game.h"
+#include "spyro/source/Shatterable.h"
+#include "unplaced_templates.h"
+#include "common/Source/StdMath.h"
+#include "spyro/source/KDMath.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/PropFlags.h"
+#include "spyro/source/Tools.h"
+#include <m2c_macros.h>
+
+extern s32 GS_PLACEHOLDER;
+extern s32 GS_TowerHit;
+extern MKSceneManager *gMK;
+extern f32 gUpdateTimeDelta;
+extern s32 gViewSeed;
+extern GameGlobals gb;
+
+#if 0 // DRAFT: undefined identifier 'unk250'
+static s8 lit_stringBase0[0xB0] = {
+    0x4C,
+    0x61,
+    0x76,
+    0x61,
+    0x43,
+    0x61,
+    0x6E,
+    0x6E,
+    0x6F,
+    0x6E,
+    0x54,
+    0x61,
+    0x72,
+    0x67,
+    0x65,
+    0x74,
+    0x5F,
+    0x30,
+    0x31,
+    0,
+    0x4C,
+    0x61,
+    0x76,
+    0x61,
+    0x43,
+    0x61,
+    0x6E,
+    0x6E,
+    0x6F,
+    0x6E,
+    0x54,
+    0x61,
+    0x72,
+    0x67,
+    0x65,
+    0x74,
+    0x5F,
+    0x30,
+    0x32,
+    0,
+    0x4C,
+    0x61,
+    0x76,
+    0x61,
+    0x43,
+    0x61,
+    0x6E,
+    0x6E,
+    0x6F,
+    0x6E,
+    0x54,
+    0x61,
+    0x72,
+    0x67,
+    0x65,
+    0x74,
+    0x5F,
+    0x30,
+    0x33,
+    0,
+    0x53,
+    0x70,
+    0x65,
+    0x65,
+    0x64,
+    0x4D,
+    0x75,
+    0x6C,
+    0x74,
+    0x69,
+    0x70,
+    0x6C,
+    0x69,
+    0x65,
+    0x72,
+    0,
+    0x69,
+    0x64,
+    0x6C,
+    0x65,
+    0,
+    0x66,
+    0x69,
+    0x72,
+    0x69,
+    0x6E,
+    0x67,
+    0,
+    0x65,
+    0x78,
+    0x70,
+    0x6C,
+    0x6F,
+    0x64,
+    0x69,
+    0x6E,
+    0x67,
+    0,
+    0x7A,
+    0x5F,
+    0x79,
+    0x61,
+    0x77,
+    0,
+    0x7A,
+    0x5F,
+    0x70,
+    0x69,
+    0x74,
+    0x63,
+    0x68,
+    0,
+    0x7A,
+    0x5F,
+    0x62,
+    0x61,
+    0x72,
+    0x72,
+    0x65,
+    0x6C,
+    0x31,
+    0,
+    0x72,
+    0x5F,
+    0x65,
+    0x6D,
+    0x69,
+    0x74,
+    0x74,
+    0x65,
+    0x72,
+    0,
+    0x45,
+    0x78,
+    0x70,
+    0x6C,
+    0x6F,
+    0x73,
+    0x69,
+    0x6F,
+    0x6E,
+    0x34,
+    0,
+    0x66,
+    0x69,
+    0x72,
+    0x65,
+    0,
+    0x66,
+    0x69,
+    0x72,
+    0x65,
+    0x73,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0,
+    0x73,
+    0x6E,
+    0x64,
+    0x46,
+    0x69,
+    0x72,
+    0x65,
+    0x31,
+    0,
+    0x73,
+    0x6E,
+    0x64,
+    0x46,
+    0x69,
+    0x72,
+    0x65,
+    0x32,
+    0,
+}; /* const */
+
+void LavaCannon::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {
+    if (M2C_BITWISE(s32, this->unk250) < 4) {
+        SetState(4);
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk24C'
+void LavaCannon::EmitExplodingEffects() {
+    MKVector3 sp50;
+    MKVector3 sp40;
+    MKVector3 sp30;
+    MKVector3 sp20;
+    MKVector3 sp10;
+    s32 sp8;
+    f32 temp_r0_64;
+    s32 temp_r29_262;
+    u8 var_r30_260;
+    void *temp_r3_124;
+    void *temp_r3_157;
+    void *temp_r3_190;
+    void *temp_r3_223;
+    void *temp_r3_91;
+
+    temp_r0_64 = this->unk24C;
+    switch (M2C_BITWISE(s32, temp_r0_64)) {         /* irregular */
+    case 0:
+        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+        if (this->unk244 == 0.4f) {
+            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188), &sp50);
+            temp_r3_91 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            sp8 = 1;
+            ((Explosion4 *) (M2C_FIELD(temp_r3_91, Explosion4 **, 0x19C)))->Trigger(sp50, 0.75f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            this->unk244 = 0.0f;
+            this->unk24C = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk24C) + 1));
+        }
+        break;
+    case 1:
+        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+        if (this->unk244 == 0.3f) {
+            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x18C), &sp40);
+            temp_r3_124 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            sp8 = 1;
+            ((Explosion4 *) (M2C_FIELD(temp_r3_124, Explosion4 **, 0x19C)))->Trigger(sp40, 0.75f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            this->unk244 = 0.0f;
+            this->unk24C = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk24C) + 1));
+        }
+        break;
+    case 2:
+        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+        if (this->unk244 == 0.2f) {
+            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x184), &sp30);
+            temp_r3_157 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            sp8 = 1;
+            ((Explosion4 *) (M2C_FIELD(temp_r3_157, Explosion4 **, 0x19C)))->Trigger(sp30, 0.75f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            this->unk244 = 0.0f;
+            this->unk24C = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk24C) + 1));
+        }
+        break;
+    case 3:
+        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+        if (this->unk244 == 0.2f) {
+            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x18C), &sp20);
+            temp_r3_190 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            sp8 = 1;
+            ((Explosion4 *) (M2C_FIELD(temp_r3_190, Explosion4 **, 0x19C)))->Trigger(sp20, 1.0f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            this->unk244 = 0.0f;
+            this->unk24C = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk24C) + 1));
+        }
+        break;
+    case 4:
+        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+        if (this->unk244 == 0.1f) {
+            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188), &sp10);
+            temp_r3_223 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            sp8 = 1;
+            ((Explosion4 *) (M2C_FIELD(temp_r3_223, Explosion4 **, 0x19C)))->Trigger(sp10, 1.0f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            this->unk244 = 0.0f;
+            this->unk24C = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk24C) + 1));
+            Shatterable::Shatter(0U, NULL, -1, NULL, 1U, 0U);
+            M2C_FIELD(this, s8 *, 0x264) = 1;
+            var_r30_260 = 0;
+            temp_r29_262 = KDSound_Play3d(GS_TowerHit, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            if ((((u32) M2C_FIELD(gb.unkC, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(gb.unkC, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (gb.unkC + 0x24))->GetState() != 0)) {
+                var_r30_260 = 1;
+            }
+            if (var_r30_260 != 0) {
+                KDSound_SetVolume(temp_r29_262, 0.25f * (f32) KDSound_GetSoundEventVol(GS_TowerHit));
+            }
+        }
+        break;
+    }
+    this->unk244 += gUpdateTimeDelta;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'sp50'
+void LavaCannon::EmitFiringEffects() {
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    s32 sp8;
+    void *temp_r3_315;
+
+    temp_r3_315 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp90 = sp50;
+    sp58 = this->unk1E0 * 100.0f;
+    sp98 = (f64) sp58;
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spA0 = sp40;
+    sp48 = this->unk1F0 + (f32) sp98;
+    spA8 = (f64) sp48;
+    sp8 = 0;
+    ((Explosion4 *) (M2C_FIELD(temp_r3_315, Explosion4 **, 0x19C)))->Trigger(*((MKVector3 *) &spA0), 0.2f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    sp28 = 0.0f;
+    sp20 = 0.0f;
+    sp24 = 1000.0f;
+    sp68 = (f64) sp28;
+    sp60 = (f64) sp20;
+    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
+    sp70 = sp30;
+    sp38 = this->unk1E0 * 1000.0f;
+    sp78 = (f64) sp38;
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
+    sp80 = sp10;
+    sp18 = (f32) sp78 + (f32) sp68;
+    sp88 = (f64) sp18;
+    gb.EmitDust(*((MKVector3 *) &this->unk1E8), *((MKVector3 *) &sp80), 10.0f, 0.0f);
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk250'
+void LavaCannon::SetState(int arg0) {
+    if ((M2C_BITWISE(s32, this->unk250) != 4) || ((u8) M2C_FIELD(this, u8 *, 0x264) != 0)) {
+        this->unk24C = 0.0f;
+        this->unk244 = 0.0f;
+        M2C_FIELD(this, u8 *, 0x264) = 0U;
+        this->unk250 = M2C_BITWISE(f32, arg0);
+        if ((u32) M2C_FIELD((checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (M2C_BITWISE(s32, this->unk250) * 4)), u32 *, 0x16C) != 0U) {
+            this->unk80->SetAnim(M2C_FIELD((checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (M2C_BITWISE(s32, this->unk250) * 4)), MKAnim **, 0x16C), this->unk248, 0.0f, 0, -1);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+void LavaCannon::Message(MKMessage *arg0) {
+    s32 temp_r0_459;
+
+    temp_r0_459 = arg0->unk0;
+    switch (temp_r0_459) {                          /* irregular */
+    case 0xB5:
+        M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 0xE0)(0, 0, -1, 0);
+        break;
+    case 0x4E:
+        if (M2C_BITWISE(u32, this->unk230) == (u32) arg0->unk4) {
+            this->unk230 = 0.0f;
+        }
+        break;
+    }
+    Shatterable::Message(arg0);
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk24C'
+void LavaCannon::Reset() {
+    Shatterable::Reset();
+    M2C_FIELD(this, f32 *, 0x248) = 0.0f;
+    this->unk24C = this->unk234;
+    memset(&this->unk208, 0, 0x28U);
+    this->unk250 = 0.0f;
+    this->unk24C = 0.0f;
+    this->unk244 = 0.0f;
+    M2C_FIELD(this, s8 *, 0x264) = 0;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'arg_sp90'
+void LavaCannon::Draw() {
+    s32 temp_r30_590;
+    s32 temp_r30_653;
+    void *temp_r30_545;
+    void *temp_r30_576;
+    void *temp_r30_608;
+    void *temp_r30_639;
+    arg_sp90.SetIdentity();
+    arg_sp90.SetRotationPitch(M2C_FIELD(this, f32 *, 0x248));
+    arg_sp110.SetIdentity();
+    temp_r30_545 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    arg_sp70.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    arg_sp20 = -arg_sp70;
+    arg_sp24 = -arg_sp74;
+    arg_sp28 = -arg_sp78;
+    arg_sp80 = (f64) arg_sp20;
+    arg_sp88 = (f64) arg_sp28;
+    arg_sp110.Translate((Matrix *) &arg_sp110, *((MKVector3 *) &arg_sp80));
+    arg_sp110.Multiply((Matrix *) &arg_sp110, (Matrix *) &arg_sp90);
+    temp_r30_576 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    arg_sp60.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    arg_sp110.Translate((Matrix *) &arg_sp110, *((MKVector3 *) &arg_sp60));
+    temp_r30_590 = M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188);
+    ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_590, (Matrix *) &arg_sp110, (AnimationMatrixPosition) 2, 0U);
+    arg_sp90.SetIdentity();
+    arg_sp90.SetRotationYaw(this->unk24C);
+    arg_spD0.SetIdentity();
+    temp_r30_608 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    arg_sp40.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    arg_sp10 = -arg_sp40;
+    arg_sp14 = -arg_sp44;
+    arg_sp18 = -arg_sp48;
+    arg_sp50 = (f64) arg_sp10;
+    arg_sp58 = (f64) arg_sp18;
+    arg_spD0.Translate((Matrix *) &arg_spD0, *((MKVector3 *) &arg_sp50));
+    arg_spD0.Multiply((Matrix *) &arg_spD0, (Matrix *) &arg_sp90);
+    temp_r30_639 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    arg_sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
+    arg_spD0.Translate((Matrix *) &arg_spD0, *((MKVector3 *) &arg_sp30));
+    temp_r30_653 = M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x184);
+    ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_653, (Matrix *) &arg_spD0, (AnimationMatrixPosition) 2, 0U);
+    Shatterable::Draw();
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk250'
+void LavaCannon::Update() {
+    MKVector3 *temp_r29_1009;
+    MKVector3 *temp_r29_1027;
+    f32 temp_r0_787;
+    f32 temp_r3_968;
+    f32 temp_r3_978;
+    f32 var_f4_837;
+    f64 temp_f1_840;
+    f64 temp_f1_846;
+    f64 temp_f1_850;
+    s32 temp_cr0_eq_969;
+    s32 temp_r3_869;
+    s32 var_r0_879;
+    s32 var_r28_1001;
+    s32 var_r31_1002;
+    u8 var_r29_1039;
+    void *temp_r4_809;
+    Shatterable::Update();
+    if (this->unk10 & 0x20000) {
+        if (M2C_BITWISE(s32, this->unk250) != 5) {
+            MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x190), (Matrix *) &arg_sp80, 1U);
+            arg_sp18 = -arg_spA0;
+            arg_sp1C = -arg_spA4;
+            arg_sp20 = -arg_spA8;
+            M2C_FIELD(this, f64 *, 0x1E8) = (f64) arg_sp18;
+            M2C_FIELD(this, f64 *, 0x1F0) = (f64) arg_sp20;
+            arg_sp58 = (f64) arg_sp18;
+            arg_sp60 = (f64) arg_sp20;
+            MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x190), (MKVector3 *) &this->unk1E8);
+            Tools_CalculateVelocity(*((MKVector3 *) &arg_sp48), *((MKVector3 *) &this->unk1E8), 5000.0f, -1960.0f);
+            M2C_FIELD(this, f64 *, 0x218) = arg_sp48;
+            M2C_FIELD(this, f64 *, 0x220) = arg_sp50;
+            this->unk218.unk8 = KDMath_GetPitch(*((MKVector3 *) &this->unk208));
+            this->unk218.unkC = KDMath_GetYaw(*((MKVector3 *) &this->unk208));
+            if ((u8) M2C_FIELD(this, u8 *, 0x238) == 0) {
+                KDMath_TurnToAngle(this->unk24C, this->unk218.unkC, 0.2f * gUpdateTimeDelta * this->unk248);
+                this->unk24C = M2C_ERROR(/* Read from unset register $f1 */);
+                if ((f32) fabs(KDMath_GetSmallestAngle(this->unk24C, this->unk218.unkC)) < 0.001f) {
+                    M2C_FIELD(this, u8 *, 0x238) = 1U;
+                }
+            }
+            if (((u8) M2C_FIELD(this, u8 *, 0x238) != 0) && ((u8) M2C_FIELD(this, u8 *, 0x239) == 0)) {
+                KDMath_TurnToAngle(M2C_FIELD(this, f32 *, 0x248), this->unk218.unk8, 0.1f * gUpdateTimeDelta * this->unk248);
+                M2C_FIELD(this, f32 *, 0x248) = (f32) M2C_ERROR(/* Read from unset register $f1 */);
+                if ((f32) fabs(KDMath_GetSmallestAngle(M2C_FIELD(this, f32 *, 0x248), this->unk218.unk8)) < 0.001f) {
+                    M2C_FIELD(this, u8 *, 0x239) = 1U;
+                }
+            }
+        }
+        temp_r0_787 = this->unk250;
+        switch (M2C_BITWISE(s32, temp_r0_787)) {    /* switch 1; irregular */
+        case 0:                                     /* switch 1 */
+            M2C_FIELD(this, u8 *, 0x238) = 0U;
+            M2C_FIELD(this, u8 *, 0x239) = 0U;
+            this->unk218.unk0 = M2C_BITWISE(f32, MKRand_Int(&gViewSeed, 0, 3));
+            temp_r4_809 = this->unk8;
+            arg_sp38 = M2C_FIELD(temp_r4_809, f64 *, 0x30);
+            arg_sp40 = M2C_FIELD(temp_r4_809, f64 *, 0x38);
+            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            arg_sp68 = arg_sp28;
+            arg_sp30 = M2C_FIELD((this + ((M2C_BITWISE(s32, this->unk218.unk0) * 0x10) + 0x1A8)), f32 *, 8) - (f32) arg_sp40;
+            arg_sp70 = (f64) arg_sp30;
+            var_f4_837 = ((f32) arg_sp70 * (f32) arg_sp70) + (((f32) arg_sp68 * (f32) arg_sp68) + (arg_sp6C * arg_sp6C));
+            if (var_f4_837 > 0.0f) {
+                temp_f1_840 = __frsqrte(var_f4_837);
+                temp_f1_846 = 0.5 * temp_f1_840 * -(((f64) var_f4_837 * (temp_f1_840 * temp_f1_840)) - 3.0);
+                temp_f1_850 = 0.5 * temp_f1_846 * -(((f64) var_f4_837 * (temp_f1_846 * temp_f1_846)) - 3.0);
+                var_f4_837 = (f32) ((f64) var_f4_837 * (0.5 * temp_f1_850 * -(((f64) var_f4_837 * (temp_f1_850 * temp_f1_850)) - 3.0)));
+            } else if (var_f4_837 < M2C_BITWISE(f32, 0.0)) {
+                var_f4_837 = __float_nan;
+            } else {
+                arg_sp10 = var_f4_837;
+                temp_r3_869 = M2C_BITWISE(s32, arg_sp10) & 0x7F800000;
+                switch (temp_r3_869) {              /* switch 2; irregular */
+                case 0x7F800000:                    /* switch 2 */
+                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        var_r0_879 = 1;
+                    } else {
+                        var_r0_879 = 2;
+                    }
+                    break;
+                case 0x0:                           /* switch 2 */
+                    if (M2C_BITWISE(s32, arg_sp10) & 0x7FFFFF) {
+                        var_r0_879 = 5;
+                    } else {
+                        var_r0_879 = 3;
+                    }
+                    break;
+                default:                            /* switch 2 */
+                    var_r0_879 = 4;
+                    break;
+                }
+                if (var_r0_879 == 1) {
+                    var_f4_837 = __float_nan;
+                }
+            }
+            this->unk218.unk4 = var_f4_837;
+            this->unk240 = 0.0f;
+            SetState(1);
+            break;
+        case 1:                                     /* switch 1 */
+            if ((this->unk80->unk2C & 1) && ((u8) M2C_FIELD(this, u8 *, 0x238) != 0) && ((u8) M2C_FIELD(this, u8 *, 0x239) != 0)) {
+                this->unk240 = M2C_BITWISE(f32, this->unk240) + gUpdateTimeDelta;
+                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+                if (M2C_BITWISE(f32, this->unk240) == (0.5f * (1.0f / this->unk248))) {
+                    this->unk240 = 0.5f;
+                    SetState(2);
+                }
+            }
+            break;
+        case 2:                                     /* switch 1 */
+            SetState(3);
+            break;
+        case 3:                                     /* switch 1 */
+            if (this->unk80->unk2C & 1) {
+                SetState(0);
+            }
+            break;
+        case 4:                                     /* switch 1 */
+            if ((u8) M2C_FIELD(this, u8 *, 0x264) == 0) {
+                EmitExplodingEffects();
+            } else {
+                SetState(5);
+            }
+            break;
+        }
+        this->unk1F8.Update(this->unk80);
+        if (M2C_BITWISE(s32, this->unk1F8.unk4) & 1) {
+            temp_r3_968 = this->unk230;
+            temp_cr0_eq_969 = M2C_BITWISE(u32, temp_r3_968) == 0U;
+            if (temp_cr0_eq_969 != 0) {
+                if (temp_cr0_eq_969 == 0) {
+                    M2C_FIELD(temp_r3_968, s32 *, 0x130) = 0;
+                }
+                this->unk230 = M2C_BITWISE(f32, 8->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */)));
+                temp_r3_978 = this->unk230;
+                if (M2C_BITWISE(u32, temp_r3_978) != 0U) {
+                    M2C_FIELD(M2C_FIELD(temp_r3_978, void **, 0x44), M2C_UNK (**)(f64 *, AnimEventManager *, LavaCannon *, M2C_UNK, M2C_UNK), 0x48)(&this->unk1E8, &this->unk208, this, 0, 0);
+                }
+                EmitFiringEffects();
+            }
+        }
+        if ((M2C_BITWISE(s32, this->unk1F8.unk4) & 2) && (M2C_BITWISE(u32, this->unk230) == 0U)) {
+            var_r28_1001 = 0;
+            var_r31_1002 = 0;
+            if ((s32) M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x194) != 0) {
+                temp_r29_1009 = this->unk8 + 0x30;
+                var_r28_1001 = KDSound_Play3d(M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x194), temp_r29_1009, 0U, -1, 0.0f, 0U);
+            }
+            if ((s32) M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x198) != 0) {
+                temp_r29_1027 = this->unk8 + 0x30;
+                var_r31_1002 = KDSound_Play3d(M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x198), temp_r29_1027, 0U, -1, 0.0f, 0U);
+            }
+            var_r29_1039 = 0;
+            if ((((u32) M2C_FIELD(gb.unkC, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(gb.unkC, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (gb.unkC + 0x24))->GetState() != 0)) {
+                var_r29_1039 = 1;
+            }
+            if (var_r29_1039 != 0) {
+                if (var_r28_1001 != 0) {
+                    KDSound_SetVolume(var_r28_1001, 0.25f * ((f32) KDSound_GetSoundEventVol(M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x194)) / 255.0f));
+                }
+                if (var_r31_1002 != 0) {
+                    KDSound_SetVolume(var_r31_1002, 0.25f * ((f32) KDSound_GetSoundEventVol(M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x198)) / 255.0f));
+                }
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1F8'
+void LavaCannon::Resolve() {
+    Shatterable::Resolve();
+    this->unk1F8.Init(checked_cast<P20LavaCannonDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x1A4);
+    ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->EnableCustomMatrices(1U);
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk234'
+void LavaCannon::LoadDone() {
+    Shatterable::LoadDone();
+    this->unk234 = M2C_FIELD(&loadInfo, f32 *, 0x54);
+    M2C_STRUCT_COPY((s32) &arg_sp6C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    arg_sp18 = 0.0f;
+    arg_sp10 = 0.0f;
+    arg_sp14 = 0.0f;
+    arg_sp28 = (f64) arg_sp18;
+    arg_sp20 = (f64) arg_sp10;
+    arg_sp70.SetRotationPYR(*((MKVector3 *) &arg_sp20));
+    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp70));
+    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    arg_sp30.Scale3x3((Matrix *) &arg_sp30, loadInfo + 0x60);
+    MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp30));
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+s32 LavaCannon::LoadLine(MKIniLine *arg0) {
+    MKIniLine sp28;
+    MKIniLine sp18;
+    MKIniLine sp8;
+    s32 var_r29_1272;
+
+    if (arg0->IsField(lit_stringBase0) != 0) {
+        sp28.GetVector3(arg0->unkC->GetSubLine(arg0));
+        M2C_FIELD(this, f64 *, 0x1A8) = M2C_BITWISE(f64, sp28);
+        M2C_FIELD(this, f64 *, 0x1B0) = M2C_BITWISE(f64, sp28.unk8);
+    } else if (arg0->IsField(&lit_stringBase0[0x14]) != 0) {
+        sp18.GetVector3(arg0->unkC->GetSubLine(arg0));
+        this->unk1A8 = M2C_BITWISE(f64, sp18);
+        this->unk1B0 = M2C_BITWISE(f64, sp18.unk8);
+    } else if (arg0->IsField(&lit_stringBase0[0x28]) != 0) {
+        sp8.GetVector3(arg0->unkC->GetSubLine(arg0));
+        this->unk1B8 = M2C_BITWISE(f64, sp8);
+        this->unk1C0 = M2C_BITWISE(f64, sp8.unk8);
+    }
+    var_r29_1272 = 0;
+    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x3C], &this->unk248, 0) != 0)) {
+        var_r29_1272 = 1;
+    }
+    return var_r29_1272;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk230'
+void LavaCannon::Deinit() {
+    f32 temp_r4_1302;
+
+    temp_r4_1302 = this->unk230;
+    if (M2C_BITWISE(u32, temp_r4_1302) != 0U) {
+        M2C_FIELD(temp_r4_1302, s32 *, 0x130) = 0;
+    }
+    Shatterable::Deinit();
+}
+#endif
+
+#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
+void LavaCannon::Init() {
+    Shatterable::Init();
+    PropFlagsSet((u32 *) &this->unk10, 0x80000U);
+    M2C_FIELD(this, f32 *, 0x248) = 0.0f;
+    this->unk24C = 0.0f;
+    M2C_FIELD(this, f32 *, 0x1D8) = 1.0f;
+    M2C_FIELD(this, f32 *, 0x1DC) = 1.0f;
+    M2C_FIELD(this, f32 *, 0x1E0) = 1.0f;
+    this->unk244 = 0.0f;
+    M2C_FIELD(this, s8 *, 0x264) = 0;
+    this->unk24C = 0.0f;
+    this->unk240 = 0.0f;
+    this->unk248 = 1.0f;
+    this->unk230 = 0.0f;
+}
+#endif
+
+void LavaCannonDescriptor::Resolve() {
+    MKPropDescriptor::Resolve();
+    this->unk1A4.Init(&this->unk1AC, 2, (MKAnimScript *) this->unk34);
+}
+
+#if 0 // DRAFT: expression syntax error
+void LavaCannonDescriptor::LoadDone() {
+    s8 *temp_r30_1378;
+    s8 *temp_r30_1398;
+    s8 *temp_r30_1416;
+    s8 *temp_r30_1434;
+    s8 *temp_r30_1452;
+    s8 *temp_r30_1470;
+    void *var_r3_1390;
+    void *var_r3_1408;
+    void *var_r3_1426;
+    void *var_r3_1444;
+    void *var_r3_1462;
+    void *var_r3_1480;
+
+    ShatterableDescriptor::LoadDone();
+    temp_r30_1378 = this->unk34;
+    if (temp_r30_1378->Exists(&lit_stringBase0[0x4C]) != 0) {
+        var_r3_1390 = temp_r30_1378->GetAnim(&lit_stringBase0[0x4C]);
+    } else {
+        var_r3_1390 = NULL;
+    }
+    this->unk16C = (s32) var_r3_1390;
+    temp_r30_1398 = this->unk34;
+    if (temp_r30_1398->Exists(&lit_stringBase0[0x4C]) != 0) {
+        var_r3_1408 = temp_r30_1398->GetAnim(&lit_stringBase0[0x4C]);
+    } else {
+        var_r3_1408 = NULL;
+    }
+    this->unk170 = (s32) var_r3_1408;
+    temp_r30_1416 = this->unk34;
+    if (temp_r30_1416->Exists(&lit_stringBase0[0x4C]) != 0) {
+        var_r3_1426 = temp_r30_1416->GetAnim(&lit_stringBase0[0x4C]);
+    } else {
+        var_r3_1426 = NULL;
+    }
+    this->unk174 = (s32) var_r3_1426;
+    temp_r30_1434 = this->unk34;
+    if (temp_r30_1434->Exists(&lit_stringBase0[0x51]) != 0) {
+        var_r3_1444 = temp_r30_1434->GetAnim(&lit_stringBase0[0x51]);
+    } else {
+        var_r3_1444 = NULL;
+    }
+    this->unk178 = (s32) var_r3_1444;
+    temp_r30_1452 = this->unk34;
+    if (temp_r30_1452->Exists(&lit_stringBase0[0x58]) != 0) {
+        var_r3_1462 = temp_r30_1452->GetAnim(&lit_stringBase0[0x58]);
+    } else {
+        var_r3_1462 = NULL;
+    }
+    this->unk17C = (s32) var_r3_1462;
+    temp_r30_1470 = this->unk34;
+    if (temp_r30_1470->Exists(&lit_stringBase0[0x4C]) != 0) {
+        var_r3_1480 = temp_r30_1470->GetAnim(&lit_stringBase0[0x4C]);
+    } else {
+        var_r3_1480 = NULL;
+    }
+    this->unk180 = (s32) var_r3_1480;
+    this->unk184 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex(&lit_stringBase0[0x62]);
+    this->unk188 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex(&lit_stringBase0[0x68]);
+    this->unk18C = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex(&lit_stringBase0[0x70]);
+    this->unk190 = MKModel_GetRefPointIndex(this->unk2C, &lit_stringBase0[0x7A]);
+    this->unk19C = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x84]));
+    this->unk1AC.unk0 = &lit_stringBase0[0x8F];
+    this->unk1B4 = &lit_stringBase0[0x94];
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+s32 LavaCannonDescriptor::LoadLine(MKIniLine *arg0) {
+    s32 var_r31_1545;
+
+    var_r31_1545 = 0;
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x9E], &this->unk194) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xA7], &this->unk194) != 0)) {
+        var_r31_1545 = 1;
+    }
+    return var_r31_1545;
+}
+#endif
+
+void LavaCannonDescriptor::Init() {
+    ShatterableDescriptor::Init();
+    this->unk194 = GS_PLACEHOLDER;
+    this->unk198 = GS_PLACEHOLDER;
+}
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<LavaCannonDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
+
+}
+#endif
