@@ -21,6 +21,7 @@ tools/srcgen/install.sh $TMPDIR/run                # copies into src/, rebuilds,
 | m2c with context | `run_m2c.py` | `m2c/` |
 | C to C++ | `cxxconv.py` | `stage/`, header inlines |
 | Headers | `headers.py` | `hdr/` |
+| By-value enums (no forward declaration in C++03; real header unknown) | `henums.py` | `hdr/unplaced_enums.h` |
 | Fencing | `fence.py` | `fenced/`, `fence.tsv` |
 
 `fence.tsv` lists every TU with its fenced and total block counts; it is the
