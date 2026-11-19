@@ -43,48 +43,42 @@ void ElectricSparks::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float ar
     }
 }
 
-#if 0 // DRAFT: illegal type
 void ElectricSparks::Deinit() {
     MKMaterial *temp_r3_73;
     u32 temp_r0_90;
-    void *temp_r0_104;
-    void *temp_r0_85;
-    void *var_r31_81;
-    void *var_r3_82;
-    void *var_r4_80;
+    u32 temp_r0_85;
+    u32 temp_r0_104;
+    u32 var_r31_81;
+    u32 *var_r3_82;
+    u32 *var_r4_80;
 
     temp_r3_73 = this->unk50;
     if (temp_r3_73 != NULL) {
         MKMaterial_Destroy(temp_r3_73);
         this->unk50 = NULL;
     }
-    var_r4_80 = this->unk4C;
-    var_r31_81 = var_r4_80;
+    var_r4_80 = (u32 *) this->unk4C;
+    var_r31_81 = (u32) var_r4_80;
     var_r3_82 = var_r4_80;
-loop_5:
-    temp_r0_90 = M2C_FIELD(var_r3_82, u32 *, -4);
-    var_r3_82 -= 4;
-    if (temp_r0_90 != 0U) {
+    while ((var_r3_82 -= 1, temp_r0_90 = *var_r3_82) != 0U) {
         temp_r0_85 = *var_r3_82;
         if (temp_r0_85 < var_r31_81) {
             var_r31_81 = temp_r0_85;
         }
-        goto loop_5;
     }
-    if (var_r3_82 != &gEmptyPtrListDL) {
-loop_11:
+    if ((u32) var_r3_82 != (u32) &gEmptyPtrListDL) {
         temp_r0_104 = *var_r4_80;
-        if (temp_r0_104 != NULL) {
+        while (temp_r0_104 != 0U) {
             if (temp_r0_104 < var_r31_81) {
                 var_r31_81 = temp_r0_104;
             }
-            var_r4_80 += 4;
-            goto loop_11;
+            var_r4_80 += 1;
+            temp_r0_104 = *var_r4_80;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_81, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) var_r31_81, NULL, 0);
         } else {
-            free(var_r31_81);
+            free((void *) var_r31_81);
         }
     }
     this->unk4C = NULL;
@@ -92,7 +86,6 @@ loop_11:
     MKModel_Destroy(this->unk58);
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void ElectricSparks::Draw() {
@@ -281,7 +274,6 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void ElectricSparks::Init() {
     s32 var_ctr_476;
     void *temp_r3_478;
@@ -304,7 +296,7 @@ void ElectricSparks::Init() {
         temp_r3_478 = this->unk4C;
         this->unk4C = ((u8 *) temp_r3_478) + 4;
         M2C_FIELD(temp_r3_478, void **, 4) = var_r5_472;
-        var_r5_472 += 0x40;
+        var_r5_472 = ((u8 *) var_r5_472) + 0x40;
         var_ctr_476 -= 1;
     } while (var_ctr_476 != 0);
     temp_r4_484 = this->unk4C;
@@ -314,4 +306,3 @@ void ElectricSparks::Init() {
     this->unk54 = MKModel_Create("FX0017_Spark", NULL, 2, NULL);
     this->unk58 = MKModel_Create("FX0041_SparksPurple", NULL, 2, NULL);
 }
-#endif

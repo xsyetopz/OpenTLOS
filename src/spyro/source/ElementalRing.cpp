@@ -120,60 +120,48 @@ void ElementalRing::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, int ar
     }
 }
 
-#if 0 // DRAFT: type mismatch 'KDSoundFlangedFader *' and 'KDSoundFlangedFader **'
 void ElementalRing::Deinit() {
     KDSoundFlangedFader **var_r31_186;
-    KDSoundFlangedFader **var_r31_199;
-    KDSoundFlangedFader **var_r3_200;
-    KDSoundFlangedFader **var_r4_198;
-    KDSoundFlangedFader *temp_r0_203;
-    KDSoundFlangedFader *temp_r0_222;
     KDSoundFlangedFader *temp_r3_194;
+    u32 *var_r3_200;
+    u32 *var_r4_198;
     u32 temp_r0_208;
+    u32 temp_r0_203;
+    u32 temp_r0_222;
+    u32 var_r31_199;
 
     var_r31_186 = this->unk4C;
-loop_2:
-    if (var_r31_186 != NULL) {
-        temp_r3_194 = *var_r31_186;
-        if (temp_r3_194 != NULL) {
-            temp_r3_194->Deinit();
-            var_r31_186 += 4;
-            goto loop_2;
-        }
+    while (var_r31_186 != NULL && (temp_r3_194 = *var_r31_186) != NULL) {
+        temp_r3_194->Deinit();
+        var_r31_186 += 1;
     }
-    var_r4_198 = this->unk4C;
-    var_r31_199 = var_r4_198;
+    var_r4_198 = (u32 *) this->unk4C;
+    var_r31_199 = (u32) var_r4_198;
     var_r3_200 = var_r4_198;
-loop_7:
-    temp_r0_208 = M2C_FIELD(var_r3_200, u32 *, -4);
-    var_r3_200 -= 4;
-    if (temp_r0_208 != 0U) {
+    while ((var_r3_200 -= 1, temp_r0_208 = *var_r3_200) != 0U) {
         temp_r0_203 = *var_r3_200;
         if (temp_r0_203 < var_r31_199) {
-            var_r31_199 = (KDSoundFlangedFader **) temp_r0_203;
+            var_r31_199 = temp_r0_203;
         }
-        goto loop_7;
     }
-    if (var_r3_200 != &gEmptyPtrListDL) {
-loop_13:
+    if ((u32) var_r3_200 != (u32) &gEmptyPtrListDL) {
         temp_r0_222 = *var_r4_198;
-        if (temp_r0_222 != NULL) {
+        while (temp_r0_222 != 0U) {
             if (temp_r0_222 < var_r31_199) {
-                var_r31_199 = (KDSoundFlangedFader **) temp_r0_222;
+                var_r31_199 = temp_r0_222;
             }
-            var_r4_198 += 4;
-            goto loop_13;
+            var_r4_198 += 1;
+            temp_r0_222 = *var_r4_198;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_199, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) var_r31_199, NULL, 0);
         } else {
-            free(var_r31_199);
+            free((KDSoundFlangedFader **) var_r31_199);
         }
     }
     this->unk4C = NULL;
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void ElementalRing::Draw() {
@@ -722,21 +710,16 @@ void ElementalRing::Init() {
     this->unk50 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Destroy(ElementalRingDescriptor)' does not match 'MKMaterial_Destroy(MKMaterial *)'
 void ElementalRingDescriptor::Deinit() {
     s32 var_r30_1152;
-    s32 var_r31_1153;
 
     var_r30_1152 = 0;
-    var_r31_1153 = 0;
     do {
-        MKMaterial_Destroy(*(this + (var_r31_1153 + 0x60)));
+        MKMaterial_Destroy((MKMaterial *) M2C_FIELD(this, s32 *, var_r30_1152 * 4 + 0x60));
         var_r30_1152 += 1;
-        var_r31_1153 += 4;
     } while (var_r30_1152 < 5);
     MKPropDescriptor::Deinit();
 }
-#endif
 
 void ElementalRingDescriptor::Init() {
     MKPropDescriptor::Init();
