@@ -181,126 +181,103 @@ void FightElevator::ClearAnchors() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'FightElevator' to 'unsigned long'
 void FightElevator::FindAnchors() {
-    f64 sp30;
-    f64 sp28;
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f64 sp8;
-    f32 temp_f31_232;
-    f64 temp_f0_246;
-    f64 temp_f1_239;
-    s32 temp_r4_290;
-    s32 var_ctr_276;
-    s32 var_r29_233;
-    s32 var_r30_234;
-    s32 var_r4_275;
-    u8 var_r5_274;
-    void *temp_r4_241;
-    void *temp_r5_237;
-    void *var_r3_231;
+    FightElevatorAnchor *cur;
+    FightElevatorAnchor *next;
+    void *pos;
+    f32 dx;
+    f32 dy;
+    f32 dz;
+    u8 found;
+    s32 scan;
+    s32 ctr;
+    s32 count;
+    s32 slot;
 
-    var_r3_231 = checked_cast<FightElevatorAnchor *, MKProp>(M2C_FIELD(this->unk298, MKProp **, 0x28));
-    temp_f31_232 = FIGHT_ELEVATOR_TO_BLOCKER_BLOCK_DISTANCE_SQ;
-    var_r29_233 = 0;
-    var_r30_234 = 0;
+    cur = checked_cast<FightElevatorAnchor *, MKProp>(M2C_FIELD(this->unk298, MKProp **, 0x28));
+    count = 0;
+    slot = 0;
 loop_12:
-    if ((var_r3_231 != NULL) && (var_r29_233 < 6)) {
-        temp_r5_237 = M2C_FIELD(var_r3_231, void **, 8);
-        temp_f1_239 = M2C_FIELD(temp_r5_237, f64 *, 0x30);
-        temp_r4_241 = ((u8 *) this->unk8) + 0x30;
-        sp28 = temp_f1_239;
-        sp30 = M2C_FIELD(temp_r5_237, f64 *, 0x38);
-        temp_f0_246 = temp_f1_239 - M2C_FIELD(temp_r4_241, f64 *, 0);
-        sp8 = temp_f0_246;
-        sp18 = temp_f0_246;
-        sp10 = (f32) sp30 - M2C_FIELD(temp_r4_241, f32 *, 8);
-        sp20 = (f64) sp10;
-        if (((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * (*(f32 *) ((u8 *) &sp18 + 0x4))))) <= temp_f31_232) && ((*(f32 *) ((u8 *) &sp18 + 0x4)) < M2C_BITWISE(f32, 209.99998474121094)) && ((*(f32 *) ((u8 *) &sp18 + 0x4)) > 0.0f)) {
-            var_r5_274 = 0;
-            var_r4_275 = 0;
-            var_ctr_276 = 6;
+    if ((cur != NULL) && (count < 6)) {
+        pos = M2C_FIELD(cur, void **, 8);
+        dx = M2C_FIELD(pos, f32 *, 0x30) - M2C_FIELD(this->unk8, f32 *, 0x30);
+        dy = M2C_FIELD(pos, f32 *, 0x34) - M2C_FIELD(this->unk8, f32 *, 0x34);
+        dz = M2C_FIELD(pos, f32 *, 0x38) - M2C_FIELD(this->unk8, f32 *, 0x38);
+        if ((((dz * dz) + ((dx * dx) + (dy * dy))) <= FIGHT_ELEVATOR_TO_BLOCKER_BLOCK_DISTANCE_SQ) && (dy < M2C_BITWISE(f32, 209.99998474121094)) && (dy > 0.0f)) {
+            found = 0;
+            scan = 0;
+            ctr = 6;
 loop_5:
-            if ((u32) *(this + (var_r4_275 + 0x29C)) == var_r3_231) {
-                var_r5_274 = 1;
+            if ((u32) M2C_FIELD(this, s32 *, 0x29C + scan) == (u32) cur) {
+                found = 1;
             } else {
-                var_r4_275 += 4;
-                var_ctr_276 -= 1;
-                if (var_ctr_276 != 0) {
+                scan += 4;
+                ctr -= 1;
+                if (ctr != 0) {
                     goto loop_5;
                 }
             }
-            if (var_r5_274 == 0) {
-                temp_r4_290 = var_r30_234 + 0x29C;
-                if ((u32) *(this + temp_r4_290) == 0U) {
-                    *(this + temp_r4_290) = var_r3_231;
-                    var_r29_233 += 1;
-                    var_r30_234 += 4;
+            if (found == 0) {
+                if ((u32) M2C_FIELD(this, s32 *, 0x29C + slot) == 0U) {
+                    M2C_FIELD(this, FightElevatorAnchor **, 0x29C + slot) = cur;
+                    count += 1;
+                    slot += 4;
                 }
             }
         }
-        var_r3_231 = checked_cast<FightElevatorAnchor *, MKProp>(M2C_FIELD(var_r3_231, MKProp **, 0x38));
+        next = checked_cast<FightElevatorAnchor *, MKProp>(M2C_FIELD(cur, MKProp **, 0x38));
+        cur = next;
         goto loop_12;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FightElevator' to 'FightElevatorAnchor *'
 void FightElevator::SetBeamPositions() {
     MKVector3 sp8;
-    FightElevatorAnchor *temp_r4_333;
-    s32 var_r29_323;
-    s32 var_r30_325;
-    s32 var_r31_324;
-    void *temp_r3_326;
-    void *temp_r3_341;
+    FightElevatorAnchor *anchor;
+    void *temp_r3;
+    s32 count;
+    s32 off;
+    s32 aoff;
+    s32 boff;
 
-    var_r29_323 = 0;
-    var_r31_324 = 0;
-    var_r30_325 = 0;
-    temp_r3_326 = this->unk8;
-    this->unk288 = M2C_FIELD(temp_r3_326, f64 *, 0x30);
-    this->unk290 = M2C_FIELD(temp_r3_326, f64 *, 0x38);
+    count = 0;
+    off = 0;
+    boff = 0;
+    temp_r3 = this->unk8;
+    this->unk288 = M2C_FIELD(temp_r3, f64 *, 0x30);
+    this->unk290 = M2C_FIELD(temp_r3, f64 *, 0x38);
     do {
-        temp_r4_333 = *(this + (var_r30_325 + 0x29C));
-        if (temp_r4_333 != NULL) {
-            sp8 = temp_r4_333->GetZapAnchorPos();
-            temp_r3_341 = this + (var_r31_324 + 0x228);
-            M2C_FIELD(temp_r3_341, MKVector3 *, 0) = sp8;
+        anchor = M2C_FIELD(this, FightElevatorAnchor **, off + 0x29C);
+        if (anchor != NULL) {
+            sp8 = anchor->GetZapAnchorPos();
+            M2C_FIELD(this, MKVector3 *, boff + 0x228) = sp8;
         }
-        var_r29_323 += 1;
-        var_r30_325 += 4;
-        var_r31_324 += 0x10;
-    } while (var_r29_323 < 6);
+        count += 1;
+        off += 4;
+        boff += 0x10;
+    } while (count < 6);
     AllocBeams();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FightElevator' to 'EnergyBeam::Beam *'
 void FightElevator::FreeBeams() {
-    EnergyBeam::Beam *temp_r4_375;
-    s32 temp_r28_374;
-    s32 var_r27_372;
-    s32 var_r31_369;
-    void *temp_r29_370;
+    EnergyBeam::Beam *beam;
+    FightElevatorDescriptor *desc;
+    s32 off;
+    s32 count;
 
-    var_r31_369 = 0;
-    temp_r29_370 = checked_cast<FightElevatorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    var_r27_372 = 0;
+    off = 0;
+    desc = checked_cast<FightElevatorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    count = 0;
     do {
-        temp_r28_374 = var_r31_369 + 0x20C;
-        temp_r4_375 = *(this + temp_r28_374);
-        if (temp_r4_375 != NULL) {
-            ((EnergyBeam *) (M2C_FIELD(temp_r29_370, EnergyBeam **, 0x130)))->FreeEnergyBeam(temp_r4_375);
-            *(this + temp_r28_374) = 0;
+        beam = M2C_FIELD(this, EnergyBeam::Beam **, 0x20C + off);
+        if (beam != NULL) {
+            ((EnergyBeam *) (M2C_FIELD(desc, EnergyBeam **, 0x130)))->FreeEnergyBeam(beam);
+            M2C_FIELD(this, EnergyBeam::Beam **, 0x20C + off) = NULL;
         }
-        var_r27_372 += 1;
-        var_r31_369 += 4;
-    } while (var_r27_372 < 6);
+        count += 1;
+        off += 4;
+    } while (count < 6);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'FightElevator *' to 'MKVector3 *'
 void FightElevator::AllocBeams() {
@@ -848,53 +825,50 @@ block_100:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[20]' to 'long *'
 f32 FightElevator::Resolve() {
-    f32 temp_f1_1475;
+    f32 temp_f1;
 
     Platform::Resolve();
-    this->unk298 = (long *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "FightElevatorAnchor")));
-    temp_f1_1475 = this->unk188;
-    if (temp_f1_1475 > 0.0f) {
-        this->unk1A8 /= temp_f1_1475;
-        return;
+    this->unk298 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) ((MKSceneManager *) gMK)->FindDescriptor("FightElevatorAnchor"));
+    temp_f1 = this->unk188;
+    if (temp_f1 > 0.0f) {
+        this->unk1A8 /= temp_f1;
+        return temp_f1;
     }
     this->unk1A8 = 0.0f;
+    return temp_f1;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
+extern "C" s32 stricmp(s8 *, const char *);
 s32 FightElevator::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
-    MKIniLine *var_r30_1562;
-    s32 temp_r3_1549;
+    MKIniLine *line;
+    s32 count;
 
-    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("MoveSpeed", &this->unk1A8, 0) != 0) || (arg0->LoadBool("ResetOnHeroDeath", &this->unk1B0, 0) != 0) || (this->unk2B4.LoadLine(arg0, "OnFirstAttach") != 0)) {
+    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("MoveSpeed", &this->unk1A8, 0) != 0) || (arg0->LoadBool("ResetOnHeroDeath", (bool *) &this->unk1B0, 0) != 0) || (this->unk2B4.LoadLine(arg0, "OnFirstAttach") != 0)) {
         return 1;
     }
-    arg0->GetFieldName();
-    if (stricmp"waypoints" == 0) {
+    if (stricmp(arg0->GetFieldName(), "waypoints") == 0) {
         if ((u32) this->unk18C != 0U) {
             return 0;
         }
-        temp_r3_1549 = arg0->GetNmbrOfSubLines();
-        if (temp_r3_1549 == 0) {
+        count = arg0->GetNmbrOfSubLines();
+        if (count == 0) {
             return 0;
         }
-        ((KDUniformSpline *) &this->unk180)->Init(temp_r3_1549, 0U);
-        var_r30_1562 = arg0->unkC->GetSubLine(arg0);
+        ((KDUniformSpline *) &this->unk180)->Init(count, 0U);
+        line = arg0->unkC->GetSubLine(arg0);
 loop_12:
-        if (var_r30_1562 != NULL) {
-            var_r30_1562->AsVector3(0, &sp8);
+        if (line != NULL) {
+            line->AsVector3(0, &sp8);
             ((KDUniformSpline *) &this->unk180)->AddNode(sp8);
-            var_r30_1562 = var_r30_1562->unkC->GetNextLine(var_r30_1562);
+            line = line->unkC->GetNextLine(line);
             goto loop_12;
         }
         return 1;
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void FightElevator::SetDefaults() {
