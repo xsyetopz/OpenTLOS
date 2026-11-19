@@ -62,100 +62,81 @@ extern M2C_UNK gb;
 extern s32 iSpawnPools;
 extern M2C_UNK *pSpawnPools;
 
-#if 0 // DRAFT: illegal operand
 void EnemySpawnPool_Destroy(Enemy *arg0) {
-    s32 spC;
-    s32 sp8;
-    s32 temp_r4_52;
+    s32 sp8[2];
     s32 var_ctr_20;
     s32 var_r31_18;
-    u32 **temp_r3_53;
+    s32 *var_r4_pools;
+    s32 *temp_r5_pools;
     u32 **var_r30_30;
+    u32 **temp_r3_53;
     u32 *temp_r3_66;
     u32 *temp_r4_56;
 
-    if ((arg0 != NULL) && (var_r31_18 = 0, var_ctr_20 = iSpawnPools, (((s32) iSpawnPools > 0) != 0))) {
-loop_2:
-        if ((s32) arg0->unkA38->unkF4 == (s32) *(pSpawnPools + var_r31_18)) {
-            var_r30_30 = (unsigned long **) (*(pSpawnPools + (var_r31_18 + 4)));
-loop_7:
-            if (var_r30_30 != NULL) {
+    if (arg0 == NULL) {
+        return;
+    }
+    var_r4_pools = pSpawnPools;
+    var_r31_18 = 0;
+    for (var_ctr_20 = iSpawnPools; var_ctr_20 > 0; var_ctr_20--) {
+        if (arg0->unkA38->unkF4 == *(s32 *) ((s8 *) var_r4_pools + var_r31_18)) {
+            var_r30_30 = (u32 **) *(s32 *) ((s8 *) var_r4_pools + var_r31_18 + 4);
+            while (var_r30_30 != NULL) {
                 temp_r3_66 = *var_r30_30;
                 if (temp_r3_66 == NULL) {
                     return;
                 }
-                if ((u32) *temp_r3_66 == arg0) {
-                    spC = 0;
-                    sp8 = 0x15F;
-                    arg0->Message(&sp8);
+                if (*temp_r3_66 == (u32) arg0) {
+                    sp8[1] = 0;
+                    sp8[0] = 0x15F;
+                    arg0->Message((MKMessage *) sp8);
                     arg0->Disable();
-                    temp_r4_52 = var_r31_18 + 4;
-                    temp_r3_53 = (unsigned long **) (*(pSpawnPools + temp_r4_52));
-                    *(pSpawnPools + temp_r4_52) = (long) (temp_r3_53 + 4);
+                    temp_r5_pools = pSpawnPools;
+                    temp_r3_53 = (u32 **) *(s32 *) ((s8 *) temp_r5_pools + var_r31_18 + 4);
+                    *(s32 *) ((s8 *) temp_r5_pools + var_r31_18 + 4) = (s32) ((s8 *) temp_r3_53 + 4);
                     temp_r4_56 = *temp_r3_53;
                     *temp_r3_53 = *var_r30_30;
                     *var_r30_30 = temp_r4_56;
                     return;
                 }
-                var_r30_30 += 4;
-                goto loop_7;
+                var_r30_30 = (u32 **) ((s8 *) var_r30_30 + 4);
             }
-        } else {
-            var_r31_18 += 8;
-            var_ctr_20 -= 1;
-            if (var_ctr_20 == 0) {
-
-            } else {
-                goto loop_2;
-            }
+            return;
         }
+        var_r31_18 += 8;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkA48'
 Character *EnemySpawnPool_Recycle(int arg0, SpawnerObject *arg1) {
     Character ***var_r31_100;
     Character **temp_r3_127;
-    Character *temp_r30_103;
+    Enemy *temp_r30_103;
+    u32 *temp_r3_104;
     s32 var_ctr_92;
     s32 var_r4_89;
-    u32 *temp_r3_104;
 
     var_r4_89 = 0;
     var_ctr_92 = iSpawnPools;
-    if ((s32) iSpawnPools > 0) {
-loop_1:
-        if (arg0 == (s32) *(pSpawnPools + var_r4_89)) {
-            var_r31_100 = (Character ***) (*(pSpawnPools + (var_r4_89 + 4)));
-loop_8:
-            if (var_r31_100 != NULL) {
+    while (var_ctr_92 > 0) {
+        if (arg0 == *(s32 *) ((s8 *) pSpawnPools + var_r4_89)) {
+            var_r31_100 = (Character ***) *(s32 *) ((s8 *) pSpawnPools + var_r4_89 + 4);
+            while (var_r31_100 != NULL && *var_r31_100 != NULL) {
                 temp_r3_127 = *var_r31_100;
-                if (temp_r3_127 == NULL) {
-                    goto block_12;
-                }
-                temp_r30_103 = *temp_r3_127;
-                temp_r3_104 = temp_r30_103->unkA48;
-                if (((temp_r3_104 == NULL) || (arg1 != (u32) *temp_r3_104)) && (temp_r30_103->IsActive() == 0)) {
+                temp_r30_103 = (Enemy *) *temp_r3_127;
+                temp_r3_104 = (u32 *) temp_r30_103->unkA48;
+                if (((temp_r3_104 == NULL) || ((u32) arg1 != *temp_r3_104)) && ((u8) temp_r30_103->IsActive() == 0)) {
                     temp_r30_103->Recycle();
                     return temp_r30_103;
                 }
-                var_r31_100 += 4;
-                goto loop_8;
+                var_r31_100 = (Character ***) ((s8 *) var_r31_100 + 4);
             }
-            goto block_12;
+            return NULL;
         }
         var_r4_89 += 8;
         var_ctr_92 -= 1;
-        if (var_ctr_92 == 0) {
-            goto block_12;
-        }
-        goto loop_1;
     }
-block_12:
     return NULL;
 }
-#endif
 
 MKProp *EnemySpawnPool_Create(int arg0) {
     MKProp ***temp_r3_165;
@@ -189,21 +170,19 @@ loop_1:
     return NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Recycle'
 void EnemySpawnPool_Action(SpawnAction arg0, int arg1, MKProp **arg2, SpawnerObject *arg3) {
-    switch ((s32) arg0) {                           /* irregular */
+    switch ((s32) arg0) {
     case 0:
         *arg2 = EnemySpawnPool_Create(arg1);
         return;
     case 1:
-        *arg2 = EnemySpawnPool_Recycle(arg1, arg3);
+        *arg2 = (MKProp *) EnemySpawnPool_Recycle(arg1, arg3);
         return;
     case 2:
         EnemySpawnPool_Destroy((Enemy *) *arg2);
         return;
     }
 }
-#endif
 
 void EnemySpawnPool_Deinit() {
     M2C_UNK *temp_r0_239;
