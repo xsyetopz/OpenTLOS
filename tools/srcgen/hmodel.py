@@ -39,6 +39,32 @@ def m2c_types(root: Path) -> tuple[dict, dict]:
             {k: ctype(v.most_common(1)[0][0]) for k, v in globs.items()})
 
 
+def align(typ: str) -> int | None:
+    """Natural alignment of a primitive or pointer type, else None (unknown)."""
+    base = typ.split("[")[0].strip()
+    return 4 if base.endswith("*") else SIZES.get(base)
+
+
+def realign(off: int, v: dict) -> None:
+    """Replace a field type that cannot sit at `off` under natural alignment.
+
+    MWCC aligns every member naturally, so `s32` at Trap+0xD9 is m2c typing
+    the `&this->unkD9` it passed to a call; the asm stores a byte there, and
+    the s32 pushed every later Trap member 4 bytes off in all subclasses.
+    The best-voted alternative that fits wins, else the widest unsigned
+    type the offset allows.
+    """
+    a = align(v["type"][0])
+    if not a or off % a == 0:
+        return
+    fits = [(n, t) for t, n in v["alt"].items() if (align(t) or 0) and off % align(t) == 0]
+    if fits:
+        n, t = max(fits)
+        v["type"] = [t, n]
+    else:
+        v["type"] = ["u8" if off % 2 else "u16", v["type"][1]]
+
+
 def ctype(typ: str) -> str:
     """m2c type with names C++ cannot spell (vtable structs, mangled templates) as void."""
     base = typ.split("[")[0]
@@ -231,12 +257,14 @@ class Model:
         collects votes up to 0xB8 although `Max(const MKVector3&, ...)` copies
         exactly 0x10 bytes. Fields past a proven size go. MWCC also copies
         small structs with lfd/stfd pairs, so an f64 vote that competes with
-        f32 at the same offset is such a copy and becomes f32.
+        f32 at the same offset is such a copy and becomes f32. Misaligned
+        votes are narrowed by `realign`.
         """
         for f in self.fields.values():
-            for v in f["fields"].values():
+            for off, v in f["fields"].items():
                 if v["type"][0] == "f64" and "f32" in v["alt"]:
                     v["type"] = ["f32", v["alt"]["f32"]]
+                realign(int(off), v)
         for name, size in sizes.items():
             c = self.classes.get(name)
             if not c:
