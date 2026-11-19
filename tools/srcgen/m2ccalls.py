@@ -121,8 +121,11 @@ class CallRewriter:
             return (f"{sym.cls}::" if sym.cls and sym.raw not in OPERATORS else "") + sym.name + tail
         obj = CAST.sub("", args[0]) if args else "this"
         qual = f"{sym.cls}::" if tok in self.virtuals else ""
-        if obj == "this":
-            if not qual and sym.cls != self.cls and sym.cls not in self.ancestors:
+        foreign = sym.cls != self.cls and sym.cls not in self.ancestors
+        # `Deinit__Q28GameData9SaveStateFv((GameData__SaveState *) this)` calls a
+        # member at offset 0, not a base method; the cast keeps it a member call.
+        if obj == "this" and not (foreign and obj != args[0]):
+            if not qual and foreign:
                 qual = f"{sym.cls}::"
             return f"{qual}{sym.name}{tail}"
         if obj != args[0]:
