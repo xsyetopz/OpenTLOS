@@ -209,15 +209,16 @@ void EarthBombFX::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: ')' expected
 void EarthBombFX::Draw() {
+    EarthBombFXDescriptor *desc;
+
     if ((u8) this->unkE0 != 0) {
-        gRenderState = M2C_FIELD(checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC);
+        desc = checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        gRenderState = (s32) desc->unkEC;
         GameProp::Draw();
         gRenderState = 0;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'BreathHitMessage *' to 'MKMessage *'
 void EarthBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionInfo *arg2) {
@@ -1236,11 +1237,12 @@ void EarthBombFXDescriptor::Deinit() {
     KDPropExDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void EarthBombFXDescriptor::Init() {
+    FallingLeaves *leaves;
+
     GamePropDescriptor::Init();
-    this->unkE4 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
+    leaves = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
+    M2C_FIELD(this, FallingLeaves **, 0xE4) = leaves;
     this->unkE8 = (long) (checked_cast<KDEnvParticleSystem *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EarthBeamBlastPS")));
     this->unkEC = (MKMaterial *) (MKMaterial_Create("fx_EarthBomb"));
 }
-#endif

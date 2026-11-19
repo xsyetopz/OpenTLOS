@@ -67,194 +67,158 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector3 &arg1, Upgrade arg2, bool arg3, float arg4) {
-    f64 sp98;
-    f64 sp90;
-    f64 sp88;
-    f64 sp80;
-    MKVector3 sp70;
-    f64 sp68;
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
+    u8 *list;
+    KDSoundFader *fader;
+    Matrix *mtx;
+    MKVector3 vecA;
+    MKVector3 vecB;
+    MKVector3 rnd;
+    MKVector3 fwd;
+    MKVector3 up;
+    f32 sum;
+    f32 inv;
     f32 sp8;
-    KDSoundFader *temp_r31_58;
-    MKHeap *temp_r8_47;
-    Matrix *temp_r3_198;
-    f32 temp_f1_89;
-    f32 var_f3_164;
-    f32 var_f4_97;
-    f64 *temp_r3_248;
-    f64 temp_f1_103;
-    f64 temp_f1_109;
-    f64 temp_f1_113;
-    s32 temp_r3_132;
-    s32 var_r0_142;
+    f32 sp10;
+    f32 sp14;
+    f32 sp18;
+    f64 t1;
+    f64 t2;
+    f64 t3;
+    s32 bits;
+    s32 kind;
 
-    temp_r8_47 = this->unk4C;
-    if ((KDSoundFader *) M2C_FIELD(temp_r8_47, KDSoundFader **, -4) != NULL) {
-        this->unk4C = temp_r8_47 - 4;
-        temp_r31_58 = M2C_FIELD(temp_r8_47, KDSoundFader **, -4);
-        if (temp_r31_58 != NULL) {
-            sp48 = 0.0f;
-            sp38 = -1.0f;
-            sp28 = 1.0f;
-            sp40 = 0.0f;
-            sp44 = 1.0f;
-            sp30 = -1.0f;
-            sp34 = 0.0f;
-            sp20 = 1.0f;
-            sp24 = 0.0f;
-            sp90 = (f64) sp40;
-            sp98 = (f64) sp48;
-            sp60 = (f64) sp30;
-            sp68 = (f64) sp38;
-            sp50 = (f64) sp20;
-            sp58 = (f64) sp28;
-            sp70 = KDRand_Vector(*((MKVector3 *) &sp60), *((MKVector3 *) &sp50));
-            temp_f1_89 = M2C_BITWISE(f32, sp70);
-            var_f4_97 = (sp70.unk8 * sp70.unk8) + ((temp_f1_89 * temp_f1_89) + (sp70.unk4 * sp70.unk4));
-            if (var_f4_97 > 1e-12f) {
-                if (var_f4_97 > 0.0f) {
-                    temp_f1_103 = __frsqrte(var_f4_97);
-                    temp_f1_109 = 0.5 * temp_f1_103 * -(((f64) var_f4_97 * (temp_f1_103 * temp_f1_103)) - 3.0);
-                    temp_f1_113 = 0.5 * temp_f1_109 * -(((f64) var_f4_97 * (temp_f1_109 * temp_f1_109)) - 3.0);
-                    var_f4_97 = (f32) ((f64) var_f4_97 * (0.5 * temp_f1_113 * -(((f64) var_f4_97 * (temp_f1_113 * temp_f1_113)) - 3.0)));
-                } else if (var_f4_97 < M2C_BITWISE(f32, 0.0)) {
-                    var_f4_97 = __float_nan;
-                } else {
-                    sp8 = var_f4_97;
-                    temp_r3_132 = M2C_BITWISE(s32, sp8) & 0x7F800000;
-                    switch (temp_r3_132) {          /* irregular */
-                    case 0x7F800000:
-                        if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
-                            var_r0_142 = 1;
-                        } else {
-                            var_r0_142 = 2;
-                        }
-                        break;
-                    case 0x0:
-                        if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
-                            var_r0_142 = 5;
-                        } else {
-                            var_r0_142 = 3;
-                        }
-                        break;
-                    default:
-                        var_r0_142 = 4;
-                        break;
-                    }
-                    if (var_r0_142 == 1) {
-                        var_f4_97 = __float_nan;
-                    }
-                }
-                var_f3_164 = 1.0f / var_f4_97;
+    list = (u8 *) this->unk4C;
+    fader = M2C_FIELD(list, KDSoundFader **, -4);
+    if (fader != NULL) {
+        this->unk4C = (MKHeap *) (list - 4);
+
+        vecA.unk0 = -1.0f;
+        vecA.unk4 = 0.0f;
+        vecA.unk8 = -1.0f;
+        vecA.unkC = 0.0f;
+        vecB.unk0 = 1.0f;
+        vecB.unk4 = 0.0f;
+        vecB.unk8 = 1.0f;
+        vecB.unkC = 0.0f;
+        rnd = KDRand_Vector(vecA, vecB);
+
+        sum = (rnd.unk8 * rnd.unk8) + ((rnd.unk0 * rnd.unk0) + (rnd.unk4 * rnd.unk4));
+        if (sum > 1e-12f) {
+            if (sum > 0.0f) {
+                t1 = __frsqrte(sum);
+                t2 = 0.5 * t1 * -(((f64) sum * (t1 * t1)) - 3.0);
+                t3 = 0.5 * t2 * -(((f64) sum * (t2 * t2)) - 3.0);
+                sum = (f32) ((f64) sum * (0.5 * t3 * -(((f64) sum * (t3 * t3)) - 3.0)));
+            } else if (sum < 0.0f) {
+                sum = __float_nan;
             } else {
-                var_f3_164 = 0.0f;
+                sp8 = sum;
+                bits = M2C_BITWISE(s32, sp8) & 0x7F800000;
+                switch (bits) {
+                case 0x7F800000:
+                    kind = (M2C_BITWISE(s32, sp8) & 0x7FFFFF) ? 1 : 2;
+                    break;
+                case 0x0:
+                    kind = (M2C_BITWISE(s32, sp8) & 0x7FFFFF) ? 5 : 3;
+                    break;
+                default:
+                    kind = 4;
+                    break;
+                }
+                if (kind == 1) {
+                    sum = __float_nan;
+                }
             }
-            sp10 = M2C_BITWISE(f32, sp70) * var_f3_164;
-            sp14 = sp70.unk4 * var_f3_164;
-            sp18 = sp70.unk8 * var_f3_164;
-            sp80 = (f64) sp10;
-            sp88 = (f64) sp18;
-            M2C_STRUCT_COPY(temp_r31_58 + 0x9C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            KDMath_BuildMatrixFromFwd(temp_r31_58 + 0xA0, *((MKVector3 *) &sp80), (MKVector3 *) &sp90);
-            temp_r3_198 = (Matrix *) (temp_r31_58 + 0xA0);
-            temp_r3_198->Scale3x3(temp_r3_198, arg1);
-            M2C_FIELD(temp_r31_58, f32 *, 0xD0) = (f32) arg0.unk0;
-            M2C_FIELD(temp_r31_58, f32 *, 0xD4) = (f32) arg0.unk4;
-            M2C_FIELD(temp_r31_58, f32 *, 0xD8) = (f32) arg0.unk8;
-            M2C_FIELD(temp_r31_58, f32 *, 0xDC) = 1.0f;
-            M2C_FIELD(temp_r31_58, f32 *, 0xF4) = 0.5f;
-            M2C_FIELD(temp_r31_58, s32 *, 0x100) = 1;
-            M2C_FIELD(temp_r31_58, f32 *, 0xF8) = 1.0f;
-            M2C_FIELD(temp_r31_58, f64 *, 0xE0) = sp80;
-            M2C_FIELD(temp_r31_58, f64 *, 0xE8) = sp88;
-            M2C_FIELD(temp_r31_58, f32 *, 0xFC) = 0.0f;
-            M2C_FIELD(temp_r31_58, s32 *, 0x104) = (s32) arg2;
-            temp_r31_58->Init(1.0f, 1.0f);
-            M2C_FIELD(temp_r31_58, f64 *, 0x50) = (f64) M2C_FIELD(&arg0, f32 *, 0);
-            M2C_FIELD(temp_r31_58, f64 *, 0x58) = (f64) M2C_FIELD(&arg0, f32 *, 8);
-            temp_r31_58->unk48 = 50.0f * arg1.unk0;
-            temp_r31_58->unk4C = 50.0f * arg1.unk4;
-            M2C_STRUCT_COPY((s32) &temp_r31_58->unk5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            temp_r3_248 = &temp_r31_58->unk60;
-            ((Matrix *) temp_r3_248)->RotateYaw((Matrix *) temp_r3_248, 0.3926991f);
-            M2C_FIELD(temp_r31_58, u8 *, 0x108) = arg3;
-            M2C_FIELD(temp_r31_58, f32 *, 0xF0) = arg4;
+            inv = 1.0f / sum;
+        } else {
+            inv = 0.0f;
         }
+
+        sp10 = rnd.unk0 * inv;
+        sp14 = rnd.unk4 * inv;
+        sp18 = rnd.unk8 * inv;
+        fwd.unk0 = sp10;
+        fwd.unk4 = sp14;
+        fwd.unk8 = sp18;
+        fwd.unkC = 0.0f;
+
+        M2C_STRUCT_COPY((u8 *) fader + 0xA0, &Matrix::identity, 0x40);
+        mtx = (Matrix *) ((u8 *) fader + 0xA0);
+        up.unk0 = 0.0f;
+        up.unk4 = 1.0f;
+        up.unk8 = 0.0f;
+        up.unkC = 0.0f;
+        KDMath_BuildMatrixFromFwd(mtx, fwd, &up);
+        mtx->Scale3x3(mtx, arg1);
+
+        M2C_FIELD(fader, f32 *, 0xD0) = arg0.unk0;
+        M2C_FIELD(fader, f32 *, 0xD4) = arg0.unk4;
+        M2C_FIELD(fader, f32 *, 0xD8) = arg0.unk8;
+        M2C_FIELD(fader, f32 *, 0xDC) = 1.0f;
+        M2C_FIELD(fader, f32 *, 0xF4) = 0.5f;
+        M2C_FIELD(fader, s32 *, 0x100) = 1;
+        M2C_FIELD(fader, f32 *, 0xF8) = 1.0f;
+        M2C_STRUCT_COPY((u8 *) fader + 0xE0, &fwd, 0x10);
+        M2C_FIELD(fader, f32 *, 0xFC) = 0.0f;
+        M2C_FIELD(fader, s32 *, 0x104) = (s32) arg2;
+        fader->Init(1.0f, 1.0f);
+        M2C_STRUCT_COPY((u8 *) fader + 0x50, &arg0, 0x10);
+        M2C_FIELD(fader, f32 *, 0x48) = 50.0f * arg1.unk0;
+        M2C_FIELD(fader, f32 *, 0x4C) = 50.0f * arg1.unk4;
+        M2C_STRUCT_COPY((u8 *) fader + 0x60, &Matrix::identity, 0x40);
+        mtx = (Matrix *) ((u8 *) fader + 0x60);
+        mtx->RotateYaw(mtx, 0.3926991f);
+        M2C_FIELD(fader, u8 *, 0x108) = arg3;
+        M2C_FIELD(fader, f32 *, 0xF0) = arg4;
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match 'KDSound_Stop(int *)'
+extern "C" void free(void *);
+
 void EarthBreathWhirlWinds::Deinit() {
-    MKHeap *temp_r0_291;
-    MKHeap *temp_r0_310;
-    MKHeap *temp_r3_282;
-    MKHeap *var_r31_274;
-    MKHeap *var_r31_287;
-    MKHeap *var_r3_288;
-    MKHeap *var_r4_286;
-    u32 temp_r0_296;
+    u32 *base;
+    u32 *p;
+    u32 *q;
+    u32 val;
+    u32 min;
 
     MKModel_Destroy(this->unk50);
-    var_r31_274 = this->unk4C;
-loop_2:
-    if (var_r31_274 != NULL) {
-        temp_r3_282 = var_r31_274->unk0;
-        if (temp_r3_282 != NULL) {
-            KDSound_Stop((s32 *) temp_r3_282);
-            var_r31_274 += 4;
-            goto loop_2;
-        }
+    p = (u32 *) this->unk4C;
+    while (p != NULL && *p != 0) {
+        KDSound_Stop((int *) *p);
+        p++;
     }
-    var_r4_286 = this->unk4C;
-    var_r31_287 = var_r4_286;
-    var_r3_288 = var_r4_286;
-loop_7:
-    temp_r0_296 = M2C_FIELD(var_r3_288, u32 *, -4);
-    var_r3_288 -= 4;
-    if (temp_r0_296 != 0U) {
-        temp_r0_291 = var_r3_288->unk0;
-        if (temp_r0_291 < var_r31_287) {
-            var_r31_287 = temp_r0_291;
+    base = (u32 *) this->unk4C;
+    min = (u32) base;
+    p = base - 1;
+    val = *p;
+    while (val != 0) {
+        if (val < min) {
+            min = val;
         }
-        goto loop_7;
+        p--;
+        val = *p;
     }
-    if (var_r3_288 != &gEmptyPtrListDL) {
-loop_13:
-        temp_r0_310 = var_r4_286->unk0;
-        if (temp_r0_310 != NULL) {
-            if (temp_r0_310 < var_r31_287) {
-                var_r31_287 = temp_r0_310;
+    if (p != (u32 *) &gEmptyPtrListDL) {
+        q = base;
+        val = *q;
+        while (val != 0) {
+            if (val < min) {
+                min = val;
             }
-            var_r4_286 += 4;
-            goto loop_13;
+            q++;
+            val = *q;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_287, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) min, NULL, 0);
         } else {
-            free(var_r31_287);
+            free((void *) min);
         }
     }
     this->unk4C = NULL;
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: function call 'Draw(MKProp *, MKModel **, unsigned char *, double)' does not match 'MKProp::Draw()'
 void EarthBreathWhirlWinds::Draw() {
@@ -731,84 +695,60 @@ loop_56:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKHeap *'
 void EarthBreathWhirlWinds::Init() {
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f64 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    MKHeap *temp_r30_1162;
-    MKHeap *temp_r3_1133;
-    MKHeap *temp_r3_1160;
-    MKHeap *temp_r5_1139;
-    MKHeap *var_r3_1118;
-    MKHeap *var_r5_1127;
-    s32 *temp_r3_1202;
-    s32 var_ctr_1131;
+    MKVector3 sp38;
+    MKVector3 sp28;
+    u8 *base;
+    u8 *block;
+    u8 *elem;
+    s32 var_ctr;
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1118 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xCF8, NULL, 0));
+        base = (u8 *) ((MKHeap *) (MKHeap::Current()))->Alloc(0xCF8, NULL, 0);
     } else {
-        var_r3_1118 = malloc(0xCF8);
+        base = (u8 *) malloc(0xCF8);
     }
-    this->unk4C = var_r3_1118;
-    var_r5_1127 = this->unk4C;
-    this->unk4C = var_r5_1127 + 0xCC0;
-    M2C_FIELD(var_r5_1127, s32 *, 0xCC0) = 0;
-    var_ctr_1131 = 0xC;
+    this->unk4C = (MKHeap *) base;
+    this->unk4C = (MKHeap *) (base + 0xCC0);
+    M2C_FIELD(base, s32 *, 0xCC0) = 0;
+    block = base;
+    var_ctr = 0xC;
     do {
-        temp_r3_1133 = this->unk4C;
-        this->unk4C = (MKHeap *) &temp_r3_1133->unk4;
-        temp_r3_1133->unk4 = (s32) var_r5_1127;
-        var_r5_1127 += 0x110;
-        var_ctr_1131 -= 1;
-    } while (var_ctr_1131 != 0);
-    temp_r5_1139 = this->unk4C;
-    this->unk4C = (MKHeap *) &temp_r5_1139->unk4;
-    temp_r5_1139->unk4 = 0;
-    gMK->CreatePropDeferred("WhirlWindDustPS", &this->unk54);
+        elem = (u8 *) this->unk4C;
+        this->unk4C = (MKHeap *) (elem + 4);
+        M2C_FIELD(elem, s32 *, 4) = (s32) block;
+        block += 0x110;
+        var_ctr -= 1;
+    } while (var_ctr != 0);
+    elem = (u8 *) this->unk4C;
+    this->unk4C = (MKHeap *) (elem + 4);
+    M2C_FIELD(elem, s32 *, 4) = 0;
+    ((MKSceneManager *) gMK)->CreatePropDeferred("WhirlWindDustPS", &this->unk54);
     this->unk50 = MKModel_Create("FX0043_Whirlwind", NULL, 2, NULL);
-loop_8:
-    if ((u32) M2C_FIELD(this->unk4C, u32 *, -4) != 0U) {
-        temp_r3_1160 = this->unk4C - 4;
-        this->unk4C = temp_r3_1160;
-        temp_r30_1162 = temp_r3_1160->unk0;
-        if (temp_r30_1162 != NULL) {
-            sp10 = 0.0f;
-            sp20 = 0.0f;
-            sp8 = 0.0f;
-            spC = 1.0f;
-            sp18 = 0.0f;
-            sp1C = 0.0f;
-            sp28 = (f64) sp8;
-            sp30 = (f64) sp10;
-            sp38 = (f64) sp18;
-            sp40 = (f64) sp20;
-            ((WindFX *) &temp_r30_1162->unk30)->Init(1, 1.0f, *((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
-            temp_r30_1162->unk48 = 400.0f;
-            M2C_FIELD(temp_r30_1162, f32 *, 0x4C) = 800.0f;
-            M2C_STRUCT_COPY((s32) &temp_r30_1162->unk5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            temp_r3_1202 = &temp_r30_1162->unk60;
-            ((Matrix *) temp_r3_1202)->RotateYaw((Matrix *) temp_r3_1202, 1.5707964f);
-            temp_r30_1162->unk40 = 50.0f;
+    while (M2C_FIELD(this->unk4C, u32 *, -4) != 0) {
+        this->unk4C = (MKHeap *) ((u8 *) this->unk4C - 4);
+        elem = (u8 *) this->unk4C->unk0;
+        if (elem != NULL) {
+            sp38.unk0 = 0.0f;
+            sp38.unk4 = 0.0f;
+            sp38.unk8 = 0.0f;
+            sp28.unk0 = 0.0f;
+            sp28.unk4 = 1.0f;
+            sp28.unk8 = 0.0f;
+            ((WindFX *) (elem + 0x30))->Init(1, 1.0f, sp38, sp28);
+            M2C_FIELD(elem, f32 *, 0x48) = 400.0f;
+            M2C_FIELD(elem, f32 *, 0x4C) = 800.0f;
+            M2C_STRUCT_COPY(elem + 0x60, &Matrix::identity, 0x40);
+            ((Matrix *) (elem + 0x60))->RotateYaw((Matrix *) (elem + 0x60), 1.5707964f);
+            M2C_FIELD(elem, f32 *, 0x40) = 50.0f;
         }
-        goto loop_8;
     }
-loop_11:
-    if ((MKHeap *) this->unk4C->unk0 != NULL) {
-        this->unk4C = (MKHeap *) &this->unk4C->unk4;
-        goto loop_11;
+    while (M2C_FIELD(this->unk4C, u32 *, 0) != 0) {
+        this->unk4C = (MKHeap *) ((u8 *) this->unk4C + 4);
     }
     this->unk58 = 0.0f;
 }
-#endif
 
 void EarthBreathWhirlWindsDescriptor::Init() {
     MKPropDescriptor::Init();
