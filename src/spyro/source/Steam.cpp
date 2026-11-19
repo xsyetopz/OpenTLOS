@@ -24,107 +24,95 @@ static MKParticleSystem::Envelope gSteamEnv[5] = {
     { 1.0f, 0.0f, 12.0f, 0.0f, 0.0f },
 };
 
-#if 0 // DRAFT: undefined identifier 'unksp8'
 void Steam::UpdateParticles() {
-    f64 sp58;
-    f64 sp50;
-    MKVector3 sp40;
-    f64 sp38;
-    f64 sp30;
-    f32 sp28;
-    f64 sp20;
-    f32 sp18;
-    f64 sp10;
-    MKParticleChunk *var_r30_66;
-    MKParticleSystem::Envelope *temp_r3_164;
-    MKParticleSystem::Envelope *temp_r5_169;
-    MKParticleSystem::Envelope *temp_r5_203;
-    f32 temp_f29_73;
-    f32 temp_f2_214;
-    f32 temp_f31_90;
-    f32 temp_f3_142;
-    f32 temp_f4_213;
-    f32 temp_f5_171;
-    f32 temp_f6_166;
-    f32 temp_f6_178;
-    f32 var_f0_182;
-    f64 temp_f0_114;
-    f64 temp_f0_94;
-    s32 temp_r0_165;
-    s32 temp_r3_138;
-    s32 temp_r3_152;
-    s32 temp_r4_163;
-    void *temp_r29_69;
+    f64 fmod(f64, f64); /* libm fmod(double, double), as the asm calls it */
+    u8 sp8[0x8];
+    MKParticleChunk *var_r30;
+    void *temp_r29;
+    MKParticleSystem::Envelope *lo;
+    SteamDescriptor *desc;
+    f32 dt;
+    f32 age;
+    f32 tx;
+    f32 ty;
+    f32 tz;
+    f32 vx;
+    f32 vy;
+    f32 vz;
+    f32 wx;
+    f32 wy;
+    f32 wz;
+    f32 t;
+    f32 frac;
+    f32 span;
+    s32 cur;
+    s32 prev;
 
     this->unk128 += gUpdateTimeDelta;
-    var_r30_66 = GetFirstParticle(&unksp8);
-loop_12:
-    if (var_r30_66 != NULL) {
-        temp_r29_69 = var_r30_66->unk2C;
-        temp_f29_73 = this->unk128 - M2C_FIELD(temp_r29_69, f32 *, 0x10);
-        if (temp_f29_73 > this->unk12C) {
-            var_r30_66 = DestroyParticle(&unksp8);
-        } else {
-            M2C_FIELD(temp_r29_69, f32 *, 4) = (f32) ((500.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r29_69, f32 *, 4));
-            temp_f31_90 = gUpdateTimeDelta;
-            sp40.operator*(1.5f);
-            temp_f0_94 = sp40 * (f64) temp_f31_90;
-            sp20 = temp_f0_94;
-            sp50 = temp_f0_94;
-            sp28 = sp40.unk8 * temp_f31_90;
-            sp58 = (f64) sp28;
-            M2C_FIELD(temp_r29_69, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_69, f64 *, 0) - temp_f0_94);
-            M2C_FIELD(temp_r29_69, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_69, f32 *, 8) - (f32) sp58);
-            temp_f0_114 = M2C_FIELD(temp_r29_69, f64 *, 0) * (f64) gUpdateTimeDelta;
-            sp10 = temp_f0_114;
-            sp30 = temp_f0_114;
-            sp18 = M2C_FIELD(temp_r29_69, f32 *, 8) * gUpdateTimeDelta;
-            sp38 = (f64) sp18;
-            M2C_FIELD(var_r30_66, f64 *, 0) = (f64) (M2C_FIELD(var_r30_66, f64 *, 0) + temp_f0_114);
-            var_r30_66->unk8 += (f32) sp38;
-            var_r30_66->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r29_69, f32 *, 0x18);
-            temp_r3_138 = M2C_FIELD(checked_cast<SteamDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80);
-            temp_f3_142 = var_r30_66->unk20;
-            var_r30_66->unk20 = (f32) fmod(temp_r3_138, temp_f3_142 + this->unkF0, (f32) temp_r3_138, temp_f3_142);
-            temp_r3_152 = M2C_FIELD(temp_r29_69, s32 *, 0x14);
-            if (temp_f29_73 > (this->unk12C * this->unk134[temp_r3_152].unk0)) {
-                M2C_FIELD(temp_r29_69, s32 *, 0x14) = (s32) (temp_r3_152 + 1);
-            }
-            temp_r4_163 = M2C_FIELD(temp_r29_69, s32 *, 0x14);
-            temp_r3_164 = this->unk134;
-            temp_r0_165 = temp_r4_163 - 1;
-            temp_f6_166 = this->unk12C;
-            temp_r5_169 = &temp_r3_164[temp_r0_165];
-            temp_f5_171 = temp_r5_169->unk0;
-            temp_f6_178 = -((temp_f6_166 * temp_f5_171) - temp_f29_73) / (temp_f6_166 * (temp_r3_164[temp_r4_163].unk0 - temp_f5_171));
-            var_r30_66->unk1C = M2C_FIELD(temp_r29_69, f32 *, 0x20) * ((temp_f6_178 * temp_r5_169->unkC) + temp_r5_169->unk4);
-            var_f0_182 = var_r30_66->unk1C;
-            if (var_f0_182 < 1.0f) {
-
-            } else {
-                var_f0_182 = 1.0f;
-            }
-            if (var_f0_182 > 0.0f) {
-
-            } else {
-                var_f0_182 = 0.0f;
-            }
-            var_r30_66->unk1C = var_f0_182;
-            temp_r5_203 = &this->unk134[temp_r0_165];
-            var_r30_66->unk28 = M2C_FIELD(temp_r29_69, f32 *, 0x1C) * ((temp_f6_178 * temp_r5_203->unk10) + temp_r5_203->unk8);
-            temp_f4_213 = temp_f29_73 / this->unk12C;
-            temp_f2_214 = (0.35f * temp_f4_213) + 0.75f;
-            var_r30_66->unk10 = temp_f2_214;
-            var_r30_66->unk14 = temp_f2_214;
-            var_r30_66->unk18 = (0.9f * temp_f4_213) + 0.1f;
-            var_r30_66 = GetNextParticle(&unksp8);
+    var_r30 = GetFirstParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+    while (var_r30 != NULL) {
+        temp_r29 = var_r30->unk2C;
+        age = this->unk128 - M2C_FIELD(temp_r29, f32 *, 0x10);
+        if (age > this->unk12C) {
+            var_r30 = DestroyParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+            continue;
         }
-        goto loop_12;
+        dt = gUpdateTimeDelta;
+        M2C_FIELD(temp_r29, f32 *, 4) = (500.0f * dt) + M2C_FIELD(temp_r29, f32 *, 4);
+
+        /* MKVector3::operator*(1.5f) per lane, then scale by dt; velocity -= that. */
+        tx = M2C_FIELD(temp_r29, f32 *, 0) * 1.5f;
+        ty = M2C_FIELD(temp_r29, f32 *, 4) * 1.5f;
+        tz = M2C_FIELD(temp_r29, f32 *, 8) * 1.5f;
+        vx = tx * dt;
+        vy = ty * dt;
+        vz = tz * dt;
+        M2C_FIELD(temp_r29, f32 *, 0) = M2C_FIELD(temp_r29, f32 *, 0) - vx;
+        M2C_FIELD(temp_r29, f32 *, 4) = M2C_FIELD(temp_r29, f32 *, 4) - vy;
+        M2C_FIELD(temp_r29, f32 *, 8) = M2C_FIELD(temp_r29, f32 *, 8) - vz;
+
+        /* position += velocity * dt */
+        wx = M2C_FIELD(temp_r29, f32 *, 0) * dt;
+        wy = M2C_FIELD(temp_r29, f32 *, 4) * dt;
+        wz = M2C_FIELD(temp_r29, f32 *, 8) * dt;
+        M2C_FIELD(var_r30, f32 *, 0) = M2C_FIELD(var_r30, f32 *, 0) + wx;
+        M2C_FIELD(var_r30, f32 *, 4) = M2C_FIELD(var_r30, f32 *, 4) + wy;
+        M2C_FIELD(var_r30, f32 *, 8) = M2C_FIELD(var_r30, f32 *, 8) + wz;
+        var_r30->unk24 += dt * M2C_FIELD(temp_r29, f32 *, 0x18);
+
+        desc = checked_cast<SteamDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        var_r30->unk20 = (f32) fmod((f64) (var_r30->unk20 + this->unkF0), (f64) desc->unk80);
+
+        cur = M2C_FIELD(temp_r29, s32 *, 0x14);
+        if (age > (this->unk12C * this->unk134[cur].unk0)) {
+            M2C_FIELD(temp_r29, s32 *, 0x14) = cur + 1;
+        }
+        cur = M2C_FIELD(temp_r29, s32 *, 0x14);
+        prev = cur - 1;
+        lo = &this->unk134[prev];
+        span = this->unk12C * (this->unk134[cur].unk0 - lo->unk0);
+        t = (age - (this->unk12C * lo->unk0)) / span;
+
+        var_r30->unk1C = M2C_FIELD(temp_r29, f32 *, 0x20) * ((t * lo->unkC) + lo->unk4);
+        if (var_r30->unk1C < 1.0f) {
+        } else {
+            var_r30->unk1C = 1.0f;
+        }
+        if (var_r30->unk1C > 0.0f) {
+        } else {
+            var_r30->unk1C = 0.0f;
+        }
+
+        var_r30->unk28 = M2C_FIELD(temp_r29, f32 *, 0x1C) * ((t * lo->unk10) + lo->unk8);
+
+        frac = age / this->unk12C;
+        var_r30->unk10 = (0.35f * frac) + 0.75f;
+        var_r30->unk14 = (0.35f * frac) + 0.75f;
+        var_r30->unk18 = (0.9f * frac) + 0.1f;
+        var_r30 = GetNextParticle((MKBaseParticleSystem::ParticleRec *) sp8);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void Steam::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r30_253;
     void *temp_r3_250;
@@ -132,18 +120,17 @@ void Steam::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2
     temp_r3_250 = CreateParticle();
     if (temp_r3_250 != NULL) {
         temp_r30_253 = M2C_FIELD(temp_r3_250, void **, 0x2C);
-        M2C_FIELD(temp_r3_250, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-        M2C_FIELD(temp_r3_250, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
+        M2C_FIELD(temp_r3_250, f64 *, 0) = M2C_FIELD(&arg0, f64 *, 0);
+        M2C_FIELD(temp_r3_250, f64 *, 8) = M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_250, f32 *, 0x20) = 0.0f;
-        M2C_FIELD(temp_r30_253, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
-        M2C_FIELD(temp_r30_253, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD(temp_r30_253, f32 *, 0x1C) = (f32) &arg2;
+        M2C_FIELD(temp_r30_253, f64 *, 0) = M2C_FIELD(&arg1, f64 *, 0);
+        M2C_FIELD(temp_r30_253, f64 *, 8) = M2C_FIELD(&arg1, f64 *, 8);
+        M2C_FIELD(temp_r30_253, f32 *, 0x1C) = arg2;
         M2C_FIELD(temp_r30_253, f32 *, 0x20) = 1.0f;
         M2C_FIELD(temp_r3_250, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r30_253, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, -0.3f, 0.3f);
     }
 }
-#endif
 
 void Steam::Deinit() {
     MKParticleSystem::Deinit();

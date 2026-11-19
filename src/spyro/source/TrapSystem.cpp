@@ -51,10 +51,8 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void TrapSystem::Message(MKMessage *arg0) {
-    s32 spC;
-    s32 sp8;
+    u8 sp8[0x8];
     MKProp *var_r30_117;
     s32 temp_r0_98;
 
@@ -78,30 +76,25 @@ void TrapSystem::Message(MKMessage *arg0) {
         }
 block_9:
         var_r30_117 = this->unk4C;
-loop_11:
-        if (var_r30_117 != NULL) {
-            spC = 0;
-            sp8 = arg0->unk0;
-            var_r30_117->Message(&sp8);
+        while (var_r30_117 != NULL) {
+            M2C_FIELD(sp8, s32 *, 0x4) = 0;
+            M2C_FIELD(sp8, s32 *, 0x0) = arg0->unk0;
+            var_r30_117->Message((MKMessage *) sp8);
             var_r30_117 = var_r30_117->unk28;
-            goto loop_11;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 s32 TrapSystem::LoadDone() {
     MKProp::LoadDone();
     this->unk50.SetIdentity();
-    this->unk50.SetRotationPYR(MKProp::loadInfo + 0x50);
+    this->unk50.SetRotationPYR(*((MKVector3 *) ((u8 *) &MKProp::loadInfo + 0x50)));
     this->unk50.unk30 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
-    this->unk50.unk34 = M2C_BITWISE(f32, MKProp::loadInfo.__vptr);
-    this->unk50.unk38 = MKProp::loadInfo.unk48;
+    this->unk50.unk34 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x44);
+    this->unk50.unk38 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x48);
     this->unk50.unk3C = 1.0f;
     this->unk8 = &this->unk50;
 }
-#endif
 
 void TrapSystem::Init() {
     MKProp::Init();
