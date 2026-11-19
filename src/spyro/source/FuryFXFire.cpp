@@ -163,133 +163,85 @@ void FuryFXFire::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2CC'
+#include "spyro/source/TimeDeltaModifier.h"
+
 s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtReactionType arg3) {
-    f64 sp90;
-    f64 sp88;
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    f64 sp68;
+    MKVector3 scale;
     MKVector3 sp58;
-    f64 sp50;
-    f64 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp20;
-    f64 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    Matrix *temp_r3_198;
-    f64 temp_f0_217;
-    s32 temp_r0_270;
-    s32 temp_r29_293;
-    s32 temp_r3_268;
-    s32 var_ctr_176;
-    s32 var_ctr_239;
-    s32 var_r30_286;
-    s32 var_r3_174;
-    s32 var_r3_219;
-    u8 var_r3_276;
     void *temp_r4_179;
     void *temp_r4_242;
-    void *temp_r5_272;
+    s32 i;
+    s32 temp_r0_270;
+    s32 temp_r3_268;
+    s32 temp_r29_293;
+    s32 var_r30_286;
+    s32 var_r3_276;
 
-    if ((s32) this->unk104 == 0) {
-        this->unk2F0 = arg1;
-        this->unk2F1 = arg2;
-        this->unk2EC = (s32) arg3;
-        if ((u8) this->unk2F1 == 0) {
-            this->unk90.unk30 = arg0.unk0;
-            this->unk90.unk34 = arg0.unk4;
-            this->unk90.unk38 = arg0.unk8;
-            this->unk90.unk3C = 1.0f;
-            this->unk2E8 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
-            this->unk100 = 1.0f;
-            var_r3_174 = 0;
-            gb.unk381 = 1;
-            var_ctr_176 = 3;
-            do {
-                temp_r4_179 = *(this + (var_r3_174 + 0x130));
-                if (temp_r4_179 != NULL) {
-                    sp38 = 1.0f;
-                    sp3C = 1.0f;
-                    sp40 = 1.0f;
-                    sp44 = 1.0f;
-                    M2C_FIELD(temp_r4_179, f64 *, 0x50) = (f64) sp38;
-                    sp88 = (f64) sp38;
-                    sp90 = (f64) sp40;
-                    M2C_FIELD(temp_r4_179, f64 *, 0x58) = (f64) sp40;
-                }
-                var_r3_174 += 0x80;
-                var_ctr_176 -= 1;
-            } while (var_ctr_176 != 0);
-        } else {
-            temp_r3_198 = &this->unk90;
-            sp30 = 1.0f;
-            sp28 = 1.0f;
-            sp2C = 3.0f;
-            sp80 = (f64) sp30;
-            sp78 = (f64) sp28;
-            temp_r3_198->Scale3x3(temp_r3_198, *((MKVector3 *) &sp78));
-            sp58 = MKVector(0.0f, 600.0f, 0.0f);
-            temp_f0_217 = (f64) M2C_FIELD(&arg0, f32 *, 0) - M2C_BITWISE(f64, sp58);
-            sp18 = temp_f0_217;
-            var_r3_219 = 0;
-            sp68 = temp_f0_217;
-            sp20 = arg0.unk8 - sp58.unk8;
-            this->unk90.unk30 = (f32) sp68;
-            sp70 = (f64) sp20;
-            this->unk90.unk34 = (*(f32 *) ((u8 *) &sp68 + 0x4));
-            this->unk90.unk38 = (f32) sp70;
-            this->unk90.unk3C = 1.0f;
-            this->unk100 = 0.0f;
-            var_ctr_239 = 3;
-            do {
-                temp_r4_242 = *(this + (var_r3_219 + 0x130));
-                if (temp_r4_242 != NULL) {
-                    sp8 = 1.0f;
-                    spC = 0.0f;
-                    sp10 = 0.0f;
-                    sp14 = 1.0f;
-                    M2C_FIELD(temp_r4_242, f64 *, 0x50) = (f64) sp8;
-                    sp48 = (f64) sp8;
-                    sp50 = (f64) sp10;
-                    M2C_FIELD(temp_r4_242, f64 *, 0x58) = (f64) sp10;
-                }
-                var_r3_219 += 0x80;
-                var_ctr_239 -= 1;
-            } while (var_ctr_239 != 0);
-        }
-        this->unkF8 = 0.0f;
-        this->unkFC = 0.0f;
-        this->unk104 = 1;
-        temp_r3_268 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
-        temp_r0_270 = *(&GameData::gameData[0x70] + (temp_r3_268 + 0x7C));
-        temp_r5_272 = &GameData::gameData[0x70] + (temp_r3_268 + 0x64);
-        if (temp_r0_270 == 3) {
-            var_r3_276 = 0;
-            if (((s32) M2C_FIELD(temp_r5_272, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_272, s32 *, 4) == 3)) {
-                var_r3_276 = 1;
-            }
-            var_r30_286 = var_r3_276 != 0;
-        } else {
-            var_r30_286 = *(temp_r5_272 + (temp_r0_270 * 4));
-        }
-        temp_r29_293 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-        this->unk290.Init(gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r30_286, temp_r29_293, temp_r29_293, 0, -1);
-        return 1;
+    if (this->unk104 != 0) {
+        return 0;
     }
-    return 0;
+    this->unk2F0 = arg1;
+    this->unk2F1 = arg2;
+    this->unk2EC = (s32) arg3;
+    if ((u8) this->unk2F1 == 0) {
+        this->unk90.unk30 = arg0.unk0;
+        this->unk90.unk34 = arg0.unk4;
+        this->unk90.unk38 = arg0.unk8;
+        this->unk90.unk3C = 1.0f;
+        this->unk2E8 = M2C_FIELD(&gb, TimeDeltaModifier *, 0x2CC).Enable(0.5f, 0.0f, 0.0f, -1.0f);
+        this->unk100 = 1.0f;
+        gb.unk381 = 1;
+        for (i = 0; i < 3; i++) {
+            temp_r4_179 = *(void **) ((u8 *) this + i * 0x80 + 0x130);
+            if (temp_r4_179 != NULL) {
+                M2C_FIELD(temp_r4_179, f32 *, 0x50) = 1.0f;
+                M2C_FIELD(temp_r4_179, f32 *, 0x54) = 1.0f;
+                M2C_FIELD(temp_r4_179, f32 *, 0x58) = 1.0f;
+                M2C_FIELD(temp_r4_179, f32 *, 0x5C) = 1.0f;
+            }
+        }
+    } else {
+        scale.unk0 = 1.0f;
+        scale.unk4 = 3.0f;
+        scale.unk8 = 1.0f;
+        this->unk90.Scale3x3(&this->unk90, scale);
+        sp58.unk0 = 0.0f;
+        sp58.unk4 = 600.0f;
+        sp58.unk8 = 0.0f;
+        this->unk90.unk30 = arg0.unk0 - sp58.unk0;
+        this->unk90.unk34 = arg0.unk4 - sp58.unk4;
+        this->unk90.unk38 = arg0.unk8 - sp58.unk8;
+        this->unk90.unk3C = 1.0f;
+        this->unk100 = 0.0f;
+        for (i = 0; i < 3; i++) {
+            temp_r4_242 = *(void **) ((u8 *) this + i * 0x80 + 0x130);
+            if (temp_r4_242 != NULL) {
+                M2C_FIELD(temp_r4_242, f32 *, 0x50) = 1.0f;
+                M2C_FIELD(temp_r4_242, f32 *, 0x54) = 0.0f;
+                M2C_FIELD(temp_r4_242, f32 *, 0x58) = 0.0f;
+                M2C_FIELD(temp_r4_242, f32 *, 0x5C) = 1.0f;
+            }
+        }
+    }
+    this->unkF8 = 0.0f;
+    this->unkFC = 0.0f;
+    this->unk104 = 1;
+    temp_r3_268 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5;
+    temp_r0_270 = M2C_FIELD(GameData::gameData, s32 *, 0x70 + temp_r3_268 + 0x7C);
+    if (temp_r0_270 == 3) {
+        var_r3_276 = 0;
+        if ((M2C_FIELD(GameData::gameData, s32 *, 0x70 + temp_r3_268 + 0x64) == 3) &&
+            (M2C_FIELD(GameData::gameData, s32 *, 0x70 + temp_r3_268 + 0x64 + 4) == 3)) {
+            var_r3_276 = 1;
+        }
+        var_r30_286 = var_r3_276 != 0;
+    } else {
+        var_r30_286 = M2C_FIELD(GameData::gameData, s32 *, 0x70 + temp_r3_268 + 0x64 + temp_r0_270 * 4);
+    }
+    temp_r29_293 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
+    this->unk290.Init((MKProp *) gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r30_286, temp_r29_293, temp_r29_293, 0, -1);
+    return 1;
 }
-#endif
 
 void FuryFXFire::SetDefaults() {
     FuryFX::SetDefaults();
@@ -306,21 +258,22 @@ void FuryFXFire::SetDefaults() {
     this->unk2EC = 1;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match 'KDSound_Stop(int *)'
+#include "spyro/source/TimeDeltaModifier.h"
+
 void FuryFXFire::Deinit() {
     Corona *temp_r4_396;
     MKMaterial *temp_r3_417;
     ManagedLight *temp_r4_382;
     s32 var_r29_368;
     s32 var_r31_369;
-    void *temp_r30_371;
+    u8 *temp_r30_371;
 
     var_r29_368 = 0;
     var_r31_369 = 0;
     do {
-        temp_r30_371 = this + var_r31_369;
-        KDSound_Stop(((u8 *) temp_r30_371) + 0x134);
-        KDSound_Stop(((u8 *) temp_r30_371) + 0x15C);
+        temp_r30_371 = (u8 *) this + var_r31_369;
+        KDSound_Stop((int *) (temp_r30_371 + 0x134));
+        KDSound_Stop((int *) (temp_r30_371 + 0x15C));
         var_r29_368 += 1;
         var_r31_369 += 0x80;
     } while (var_r29_368 < 3);
@@ -338,7 +291,7 @@ void FuryFXFire::Deinit() {
     }
     MKModel_Destroy(this->unkEC);
     MKModel_Destroy(this->unkF0);
-    gb.unk2CC.Disable(this->unk2E8);
+    M2C_FIELD(&gb, TimeDeltaModifier *, 0x2CC).Disable(this->unk2E8);
     this->unk2E8 = -1;
     temp_r3_417 = this->unkE4;
     if (temp_r3_417 != NULL) {
@@ -346,7 +299,6 @@ void FuryFXFire::Deinit() {
     }
     ((FuryFX *) this)->FuryFX::Deinit();
 }
-#endif
 
 void FuryFXFire::Draw() {
     Matrix sp40;
@@ -1784,7 +1736,6 @@ f32 FuryFXFire::Resolve() {
     } while (var_r28_3020 < 3);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'FuryFXFire *' to 'MKProp **'
 void FuryFXFire::Init() {
     s32 var_r29_3123;
     s32 var_r31_3124;
@@ -1800,14 +1751,13 @@ void FuryFXFire::Init() {
     var_r29_3123 = 0;
     var_r31_3124 = 0;
     do {
-        ((MKSceneManager *) gMK)->CreatePropDeferred("ShapedTrailFX", this + (var_r31_3124 + 0x130));
+        ((MKSceneManager *) gMK)->CreatePropDeferred("ShapedTrailFX", (MKProp **) ((u8 *) this + var_r31_3124 + 0x130));
         var_r29_3123 += 1;
         var_r31_3124 += 0x80;
     } while (var_r29_3123 < 3);
     this->unk2E8 = -1;
     this->unkE4 = (MKMaterial *) (MKMaterial_Create("fx_cynderFuryFlame"));
 }
-#endif
 
 void FuryFXFire_cpp::__sinit() {
     f32 temp_f0_3184;

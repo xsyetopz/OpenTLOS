@@ -94,32 +94,30 @@ void FlameBreathFX::ResetFury() {
     this->unk264->ResetFury();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
 void FlameBreathFX::GetAttack1UpgradeVariables(int arg0, float &arg1, float &arg2, float &arg3) {
-    switch (arg0) {                                 /* irregular */
+    switch (arg0) {
     case 0:
-        &arg1 = 0.3f;
-        &arg2 = 500.0f;
-        &arg3 = 1.0f;
+        arg1 = 0.3f;
+        arg2 = 500.0f;
+        arg3 = 1.0f;
         return;
     case 1:
-        &arg1 = 0.75f;
-        &arg2 = 700.0f;
-        &arg3 = 1.2f;
+        arg1 = 0.75f;
+        arg2 = 700.0f;
+        arg3 = 1.2f;
         return;
     case 2:
-        &arg1 = 1.0f;
-        &arg2 = 900.0f;
-        &arg3 = 1.4f;
+        arg1 = 1.0f;
+        arg2 = 900.0f;
+        arg3 = 1.4f;
         return;
     case 3:
-        &arg1 = 1.2f;
-        &arg2 = 1000.0f;
-        &arg3 = 1.6f;
+        arg1 = 1.2f;
+        arg2 = 1000.0f;
+        arg3 = 1.6f;
         return;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 u8 FlameBreathFX::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, bool arg3) {
