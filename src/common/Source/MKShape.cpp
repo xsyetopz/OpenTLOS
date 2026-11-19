@@ -45,140 +45,96 @@ void MKShape_DrawSprite(const MKVector3 &arg0, const MKVector3 &arg1, const MKVe
     MKEndPrimitive();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector4 &arg3, const Matrix &arg4, bool arg5) {
-    f32 sp11C;
-    f32 sp118;
-    f32 sp114;
-    f32 sp110;
-    f32 sp10C;
-    f32 sp108;
-    f32 sp104;
-    f32 sp100;
-    f32 spFC;
-    f32 spF8;
-    f32 spF4;
-    f32 spF0;
-    f32 spEC;
-    f32 spE8;
-    f32 spE4;
-    f32 spE0;
-    Matrix spA0;
+    MKVector3 sp80;
     MKVector3 sp90;
-    f64 sp88;
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
+    MKVector3 sp50;
     MKVector3 sp60;
-    f64 sp58;
-    f64 sp50;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 temp_f29_271;
-    f32 temp_f30_291;
-    f32 temp_f5_159;
-    f32 temp_f6_158;
-    f32 temp_f6_186;
-    f32 temp_f7_155;
-    f32 var_f29_240;
-    f32 var_f29_312;
-    s32 var_r31_248;
-    s32 var_r31_317;
+    Matrix spA0;
+    Matrix spE0;
+    f32 ax;
+    f32 ay;
+    f32 az;
+    f32 angle;
+    f32 t;
+    f32 t30;
+    f32 sinA;
+    f32 cosA;
+    f32 sinB;
+    f32 cosB;
+    s32 i;
 
-    M2C_STRUCT_COPY((s32) &sp90.unkC + 4, (s32) (&arg4 - 4) + 4, 0x40);
-    sp48 = 0.0f;
-    temp_f7_155 = arg1.unk0;
-    sp40 = 13.67f;
-    temp_f6_158 = arg1.unk4;
-    temp_f5_159 = arg1.unk8;
-    sp44 = 3.72f;
-    sp78 = (f64) sp48;
-    sp70 = (f64) sp40;
-    spF0 = temp_f7_155;
-    spF4 = temp_f6_158;
-    spF8 = temp_f5_159;
-    sp38 = ((f32) sp70 * temp_f6_158) - ((*(f32 *) ((u8 *) &sp70 + 0x4)) * temp_f7_155);
-    sp30 = ((*(f32 *) ((u8 *) &sp70 + 0x4)) * temp_f5_159) - ((f32) sp78 * temp_f6_158);
-    sp34 = ((f32) sp78 * temp_f7_155) - ((f32) sp70 * temp_f5_159);
-    spFC = 0.0f;
-    sp80 = (f64) sp30;
-    sp88 = (f64) sp38;
-    sp90 = Normalise(*((MKVector3 *) &sp80));
-    temp_f6_186 = M2C_BITWISE(f32, sp90);
-    sp100 = temp_f6_186;
-    sp104 = sp90.unk4;
-    sp28 = (spF0 * sp90.unk4) - (spF4 * temp_f6_186);
-    sp20 = (spF4 * sp90.unk8) - (spF8 * sp90.unk4);
-    sp24 = (spF8 * temp_f6_186) - (spF0 * sp90.unk8);
-    sp108 = sp90.unk8;
-    sp10C = 0.0f;
-    sp50 = (f64) sp20;
-    sp58 = (f64) sp28;
-    sp60 = Normalise(*((MKVector3 *) &sp50));
-    spEC = 0.0f;
-    sp11C = 1.0f;
-    spE0 = M2C_BITWISE(f32, sp60);
-    spE4 = sp60.unk4;
-    spE8 = sp60.unk8;
-    sp110 = arg0.unk0;
-    sp114 = arg0.unk4;
-    sp118 = arg0.unk8;
-    sp10C = 0.0f;
-    spFC = 0.0f;
-    spEC = 0.0f;
-    sp11C = 1.0f;
-    spA0.Multiply((Matrix *) &spE0, &spA0);
-    var_f29_240 = -0.5235988f;
+    spA0 = arg4;
+
+    ax = 13.67f;
+    ay = 3.72f;
+    az = 0.0f;
+    sp80.unk0 = (ay * arg1.unk8) - (az * arg1.unk4);
+    sp80.unk4 = (az * arg1.unk0) - (ax * arg1.unk8);
+    sp80.unk8 = (ax * arg1.unk4) - (ay * arg1.unk0);
+    sp90 = Normalise(sp80);
+
+    sp50.unk0 = (arg1.unk4 * sp90.unk8) - (arg1.unk8 * sp90.unk4);
+    sp50.unk4 = (arg1.unk8 * sp90.unk0) - (arg1.unk0 * sp90.unk8);
+    sp50.unk8 = (arg1.unk0 * sp90.unk4) - (arg1.unk4 * sp90.unk0);
+    sp60 = Normalise(sp50);
+
+    spE0.unk0 = sp60.unk0;
+    spE0.unk4 = sp60.unk4;
+    spE0.unk8 = sp60.unk8;
+    spE0.unkC = 0.0f;
+    spE0.unk10 = arg1.unk0;
+    spE0.unk14 = arg1.unk4;
+    spE0.unk18 = arg1.unk8;
+    spE0.unk1C = 0.0f;
+    spE0.unk20 = sp90.unk0;
+    spE0.unk24 = sp90.unk4;
+    spE0.unk28 = sp90.unk8;
+    spE0.unk2C = 0.0f;
+    spE0.unk30 = arg0.unk0;
+    spE0.unk34 = arg0.unk4;
+    spE0.unk38 = arg0.unk8;
+    spE0.unk3C = 1.0f;
+
+    spA0.Multiply(&spE0, &spA0);
+
     MKPrimitive(0x109, 3);
     MKSetMatrix(spA0);
     MKBegin(0x1E);
     MKSetColorV(arg3);
-    var_r31_248 = 0;
-    do {
+    angle = -0.5235988f;
+    for (i = 0; i < 12; i++) {
         MKSetPositionF(0.0f, 0.0f, 0.0f);
-        _table_sincosf(var_f29_240, sp1C, sp18);
-        MKSetPositionF(sp1C * arg2, 0.0f, sp18 * arg2);
-        var_r31_248 += 1;
-        var_f29_240 += 0.5235988f;
-    } while (var_r31_248 < 0xC);
-    temp_f29_271 = 0.25f * arg2;
+        _table_sincosf(angle, sinA, cosA);
+        MKSetPositionF(sinA * arg2, 0.0f, cosA * arg2);
+        angle += 0.5235988f;
+    }
+
+    t = 0.25f * arg2;
     MKSetColorF(1.0f, 1.0f, 0.0f, arg3.unkC);
     MKSetPositionF(0.0f, 0.0f, 0.0f);
-    MKSetPositionF(0.0f, temp_f29_271, 0.0f);
-    MKSetPositionF(0.0f, temp_f29_271, 0.0f);
-    temp_f30_291 = -((0.25f * temp_f29_271) - temp_f29_271);
-    MKSetPositionF(0.15f * -temp_f29_271, temp_f30_291, 0.0f);
-    MKSetPositionF(0.0f, temp_f29_271, 0.0f);
-    MKSetPositionF(0.15f * temp_f29_271, temp_f30_291, 0.0f);
+    MKSetPositionF(0.0f, t, 0.0f);
+    MKSetPositionF(0.0f, t, 0.0f);
+    t30 = -((0.25f * t) - t);
+    MKSetPositionF(0.15f * -t, t30, 0.0f);
+    MKSetPositionF(0.0f, t, 0.0f);
+    MKSetPositionF(0.15f * t, t30, 0.0f);
     MKEnd();
     MKEndPrimitive();
+
     MKPrimitive(0x10A, 3);
     MKSetMatrix(spA0);
-    var_f29_312 = 0.0f;
+    angle = 0.0f;
     MKBegin(0xD);
     MKSetColorV(arg3);
-    var_r31_317 = 0;
-    do {
-        _table_sincosf(var_f29_312, sp14, sp10);
-        MKSetPositionF(sp14 * arg2, 0.0f, sp10 * arg2);
-        var_r31_317 += 1;
-        var_f29_312 += 0.5235988f;
-    } while (var_r31_317 < 0xD);
+    for (i = 0; i < 13; i++) {
+        _table_sincosf(angle, sinB, cosB);
+        MKSetPositionF(sinB * arg2, 0.0f, cosB * arg2);
+        angle += 0.5235988f;
+    }
     MKEnd();
     MKEndPrimitive();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, int arg3, int arg4, const MKVector4 &arg5, const Matrix &arg6, bool arg7) {
@@ -723,7 +679,6 @@ loop_69:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'fabs'
 void MKShape_DrawSphere(const MKVector4 &arg0, int arg1, int arg2, const MKVector4 &arg3, const Matrix &arg4, bool arg5) {
     f32 sp1C;
     f32 sp18;
@@ -810,7 +765,7 @@ loop_5:
         temp_f27_1521 = arg0.unk0;
         temp_f26_1523 = arg0.unk4;
         var_r26_1524 = 0;
-        temp_f28_1525 = (f32) fabs(var_f28_1441);
+        temp_f28_1525 = (f32) __fabsf(var_f28_1441);
         temp_f25_1526 = arg0.unk8;
         var_f30_1527 = temp_f28_1525;
 loop_11:
@@ -919,13 +874,10 @@ loop_22:
     MKEnd();
     MKEndPrimitive();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionAABB'
 void MKShape_DrawBox(const MKCollisionAABB &arg0, const MKVector4 &arg1, const Matrix &arg2, bool arg3) {
-    MKShape_DrawBox(*((MKVector3 *) &arg0), *((MKVector3 *) arg0.unk10), arg1, arg2, arg3);
+    MKShape_DrawBox(*((const MKVector3 *) &arg0), *((const MKVector3 *) ((u8 *) &arg0 + 0x10)), arg1, arg2, arg3);
 }
-#endif
 
 void MKShape_DrawBox(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, const Matrix &arg3, bool arg4) {
     f64 sp60;

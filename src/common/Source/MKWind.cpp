@@ -245,24 +245,27 @@ void MKWind::Init(float arg0, float arg1, float arg2, float arg3, const MKVector
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void MKWind_Update() {
-    MKWind *temp_r26_437;
-    MKWind *temp_r27_439;
-    MKWind *temp_r28_436;
     s32 var_r23_426;
     s32 var_r30_430;
     s32 var_r31_427;
+    s8 *temp_r28_436;
+    s8 *base_r24_170;
+    s8 *base_r25_150;
+    f32 *temp_r26_437;
+    f32 *temp_r27_439;
 
     var_r23_426 = 0;
     var_r31_427 = 0;
     var_r30_430 = 0;
+    base_r24_170 = (s8 *) &wind + 0x170;
+    base_r25_150 = (s8 *) &wind + 0x150;
     M2C_FIELD(&wind, f32 *, 0x190) = (f32) (M2C_FIELD(&wind, f32 *, 0x190) + gUpdateTimeDelta);
     do {
-        temp_r28_436 = &(&wind)[var_r31_427];
-        temp_r26_437 = &(&wind + 0x170)[var_r30_430];
-        temp_r27_439 = &(&wind + 0x150)[var_r30_430];
-        _table_sincosf(M2C_FIELD(&wind, f32 *, 0x190) * M2C_FIELD(temp_r28_436, f32 *, 0x20), *((f32 *) temp_r26_437), *((f32 *) temp_r27_439));
+        temp_r28_436 = (s8 *) &wind + var_r31_427;
+        temp_r26_437 = (f32 *) (base_r24_170 + var_r30_430);
+        temp_r27_439 = (f32 *) (base_r25_150 + var_r30_430);
+        _table_sincosf(M2C_FIELD(&wind, f32 *, 0x190) * M2C_FIELD(temp_r28_436, f32 *, 0x20), *temp_r26_437, *temp_r27_439);
         var_r23_426 += 1;
         var_r31_427 += 0x28;
         var_r30_430 += 4;
@@ -270,7 +273,6 @@ void MKWind_Update() {
         *temp_r26_437 = (f32) (*temp_r26_437 * M2C_FIELD(temp_r28_436, f32 *, 0x24));
     } while (var_r23_426 < 8);
 }
-#endif
 
 void MKWind_SetConstantWind(const MKVector3 &arg0) {
     M2C_FIELD(&wind, f64 *, 0x140) = (f64) M2C_FIELD(&arg0, f64 *, 0);
