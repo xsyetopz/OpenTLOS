@@ -75,7 +75,7 @@ void SparxHint::Message(MKMessage *arg0) {
         }
         break;
     case 0xB5:
-        spyro = (gb.*(void *(GameGlobals::*)(void)) &GameGlobals::GetSpyro)();
+        spyro = gb.GetSpyro();
         temp_r3_90 = checked_cast<Sparx *, Sparx>(M2C_FIELD(spyro, Sparx **, 0xB70));
         if ((u8) this->unkA9 == 0) {
             M2C_FIELD(&msg, s32 *, 0) = 0x18;
@@ -91,7 +91,7 @@ void SparxHint::Message(MKMessage *arg0) {
         }
         break;
     case 0xB4:
-        spyro = (gb.*(void *(GameGlobals::*)(void)) &GameGlobals::GetSpyro)();
+        spyro = gb.GetSpyro();
         temp_r3_126 = checked_cast<Sparx *, Sparx>(M2C_FIELD(spyro, Sparx **, 0xB70));
         M2C_FIELD(&msg, s32 *, 0) = 0x18;
         M2C_FIELD(&msg, s32 *, 4) = 0;
@@ -107,7 +107,7 @@ void SparxHint::Message(MKMessage *arg0) {
         this->unkA8 = 0;
         break;
     case 0xB7:
-        spyro = (gb.*(void *(GameGlobals::*)(void)) &GameGlobals::GetSpyro)();
+        spyro = gb.GetSpyro();
         temp_r3_153 = checked_cast<Sparx *, Sparx>(M2C_FIELD(spyro, Sparx **, 0xB70));
         if ((u8) this->unkA9 == 0) {
             M2C_FIELD(&msg, s32 *, 0) = 0x18;
@@ -123,7 +123,7 @@ void SparxHint::Message(MKMessage *arg0) {
         }
         break;
     case 0xB6:
-        spyro = (gb.*(void *(GameGlobals::*)(void)) &GameGlobals::GetSpyro)();
+        spyro = gb.GetSpyro();
         temp_r3_191 = checked_cast<Sparx *, Sparx>(M2C_FIELD(spyro, Sparx **, 0xB70));
         M2C_FIELD(&msg, s32 *, 0) = 0x18;
         M2C_FIELD(&msg, s32 *, 4) = 0;

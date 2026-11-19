@@ -1602,8 +1602,8 @@ u8 KDSound_IsMusicPaused() {
     return (u8) kdsData.unkC9;
 }
 
-void KDSound_IsMusicPlaying() {
-    Sound_MusicIsPlaying();
+u8 KDSound_IsMusicPlaying() {
+    return Sound_MusicIsPlaying();
 }
 
 #if 0 // DRAFT: function call 'Sound_MusicPlay(signed char *, unsigned int, int)' does not match 'Sound_MusicPlay(const char *, bool, int)'
@@ -1769,8 +1769,8 @@ s8 *KDSound_GetCurrentMusicTrackName() {
     return &kdsData.unk7C;
 }
 
-void KDSound_MusicGetResumePosition() {
-    Sound_MusicGetResumePosition();
+s32 KDSound_MusicGetResumePosition() {
+    return Sound_MusicGetResumePosition();
 }
 
 f32 KDSound_GetMasterMusicVolume() {

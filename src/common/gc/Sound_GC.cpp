@@ -461,7 +461,7 @@ void Sound_MusicPause(bool arg0) {
     M2C_FIELD(&gStreamingMusic, u8 *, 0x94) = arg0;
 }
 
-s32 Sound_MusicIsPlaying() {
+u8 Sound_MusicIsPlaying() {
     if (((s32) M2C_FIELD(&gStreamingMusic, s32 *, 0x90) == 3) || ((s32) M2C_FIELD(&gStreamingMusic, s32 *, 0x90) == 4)) {
         return 1;
     }

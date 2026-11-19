@@ -38,7 +38,7 @@ public:
     void Smooth(void);
     s32 MergeEnds(void);
     void Deinit(void);
-    void GetMeasure(float, Matrix *, float *) const;
+    MKVector3 GetMeasure(float, Matrix *, float *) const;
     void GetMatrix(int, Matrix *) const;
     MKVector3 GetNextPositionFast(float, Matrix *, int *, float *) const;
     s32 AddNode(const MKVector3 &);

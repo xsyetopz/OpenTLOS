@@ -17,6 +17,7 @@ class Level;
 class MKFont;
 class MKVector3;
 class MKVector4;
+class Spyro;
 class TargetManager;
 
 class GameGlobals {
@@ -56,7 +57,7 @@ public:
     void EmitDust(const MKVector3 &, const MKVector3 &, const float &, float);
     void EmitSmallRocks(const MKVector3 &, const MKVector3 &, const float &);
     void EmitCrud(const MKVector3 &, const MKVector3 &, const float &);
-    void GetSpyro(void);
+    Spyro * GetSpyro(void);
     void SetGamePaused(bool, bool (*)(void), void (*)(void), unsigned int);
     void InfiniteMagicOff(void);
     void InfiniteMagicOn(void);

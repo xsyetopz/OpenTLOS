@@ -55,7 +55,7 @@ u8 Sound_MusicGetVolume(void);
 void Sound_MusicSetVolume(unsigned char);
 void Sound_MusicStop(void);
 void Sound_MusicPause(bool);
-s32 Sound_MusicIsPlaying(void);
+u8 Sound_MusicIsPlaying(void);
 void Sound_MusicPlay(const char *, bool, int);
 void Sound_SysResumeVoices(void);
 void Sound_SysPauseVoices(void);
