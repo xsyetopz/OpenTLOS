@@ -228,16 +228,15 @@ block_26:
     return 0U;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'int *'
 u8 EnemyGoal_GroundAttackMode::AddGoal_StrafeIfObscuringCamera() {
-    s32 sp8;
+    int sp8;
     Enemy *temp_r3_292;
     Goal<Enemy> *temp_r5_306;
 
     sp8 = 1;
     temp_r3_292 = this->unkC;
     if (temp_r3_292->IsObscuringCamera(&sp8) != 0) {
-        AddSubgoal((Goal<Enemy> *) this->unk2C);
+        AddSubgoal(this->unk2C);
         temp_r5_306 = this->unk2C;
         M2C_FIELD(temp_r5_306, s8 *, 0x14) = (s8) (sp8 == -1);
         M2C_FIELD(temp_r5_306, AITargetData **, 0x10) = &this->unkC->unk870;
@@ -245,7 +244,6 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_StrafeIfObscuringCamera() {
     }
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_GroundAttackMode::AddGoal_AttackIdleOrStrafe() {
@@ -318,31 +316,28 @@ void EnemyGoal_GroundAttackMode::AddGoal_AttackIdle() {
     this->unkC->unkA20 = NULL;
 }
 
-#if 0 // DRAFT: expression syntax error
 void EnemyGoal_GroundAttackMode::AddGoal_Taunt() {
     Goal<Enemy> *temp_r5_481;
 
-    AddSubgoal((Goal<Enemy> *) this->unk24);
+    AddSubgoal(this->unk24);
     temp_r5_481 = this->unk24;
-    M2C_FIELD(temp_r5_481, AITargetData **, 0x10) = (AITargetData *) this->unk20;
+    M2C_FIELD(temp_r5_481, AITargetData **, 0x10) = this->unk20;
     M2C_FIELD(temp_r5_481, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r5_481, s32 *, 0x18) = 3;
-    M2C_FIELD(temp_r5_481, s32 *, 0x1C) = (s32) this->unkC->unk688;
+    M2C_FIELD(temp_r5_481, s32 *, 0x1C) = M2C_FIELD(this->unkC, s32 *, 0x688);
     M2C_FIELD(temp_r5_481, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r5_481, u8 *, 0x20) | 0x40);
     this->unkC->TryChangeEnemyRegion();
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 u8 EnemyGoal_GroundAttackMode::AddGoal_OnlyRangeAttack(bool arg0) {
     if (this->unkC->unkB00 & 1) {
         if (arg0 != 0) {
             this->unkC->SelectAttack(this->unk20->GetDist(), 2U, 0U, 1U);
-            if ((EnemyAttack *) this->unkC->unkA20 != NULL) {
-                AddSubgoal((Goal<Enemy> *) this->unk3C);
-                AddSubgoal((Goal<Enemy> *) this->unk60);
+            if (this->unkC->unkA20 != NULL) {
+                AddSubgoal(this->unk3C);
+                AddSubgoal(this->unk60);
                 M2C_FIELD(this->unk60, s8 *, 0x48) = 0;
-                M2C_FIELD(this->unk3C, AITargetData **, 0x10) = (AITargetData *) this->unk20;
+                M2C_FIELD(this->unk3C, AITargetData **, 0x10) = this->unk20;
                 return 1U;
             }
         }
@@ -351,7 +346,6 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_OnlyRangeAttack(bool arg0) {
     }
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double)' does not match 'Enemy::GetCollisionRadius()'
 u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
