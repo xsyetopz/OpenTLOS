@@ -47,7 +47,8 @@ FUNC = re.compile(r"^(?P<ret>[^\s/#].*?)\s*\b(?P<name>[A-Za-z_][\w<>,@$]*)\((?P<
 LOCAL_PROTO = re.compile(r"^(?P<ret>[^\s/#].*?)\s*\b(?P<name>[A-Za-z_][\w<>,@$]*)\((?P<params>.*)\);\s*/\* static \*/$")
 LITERAL = re.compile(r"^static (f32|f64) (@\d+) = (.+?);.*$", re.M)
 # m2c sizes pools in decimal or hex and prints bytes on one line or one per line.
-STRING = re.compile(r"^static (?:const )?s8 (@stringBase\d+)\[(?:0x[0-9A-Fa-f]+|\d+)\] = \{\s*(.*?),?\s*\};[^\n]*$",
+# dtk names a .rodata string referenced only from data (a DataMap table) `.L_<addr>`.
+STRING = re.compile(r"^static (?:const )?s8 (@stringBase\d+|\.L_[0-9A-F]+)\[(?:0x[0-9A-Fa-f]+|\d+)\] = \{\s*(.*?),?\s*\};[^\n]*$",
                     re.M | re.S)
 UNTYPED = re.compile(r"^static M2C_UNK (@stringBase\d+);", re.M)
 MANGLED_EXTERN = re.compile(r"^[^\n]*\b[\w<>,]+__[\w<>,]*[(;][^\n]*/\* extern \*/\n|^extern [^\n]*\b[\w<>,]*__[\w<>,]+[^\n]*;\n", re.M)
@@ -234,6 +235,9 @@ class Converter:
             body = unwrap_dtor(body)
         if special and cls:
             body = drop_generated(body, cls, ancestors)
+            # MWCC returns `this` from a ctor implicitly; source states no value.
+            body = re.sub(r"\n\s*return this;\n\}$", "\n}", body)
+            body = re.sub(r"\breturn this;", "return;", body)
         body = CallRewriter(self.virtuals, self.statics, cls, ancestors).rewrite(body)
         name = member_name(cls, raw)[0] if cls else quals[-1]
         ret = self.model.decl_rets().get(mangled, ret)
