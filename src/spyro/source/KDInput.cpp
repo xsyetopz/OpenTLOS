@@ -7,24 +7,19 @@
 
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 f32 KDInput::RumblePlay3D(float arg0, float arg1, float arg2, MKVector3 *arg3, float arg4, char arg5, float arg6, bool arg7) {
-    f64 sp38;
-    f64 sp30;
-    f64 sp28;
-    f64 sp20;
-    f32 sp18;
-    f64 sp10;
+    f32 dx;
+    f32 dy;
+    f32 dz;
     f32 sp8;
     f32 temp_f26_164;
     f32 temp_f27_166;
     f32 temp_f28_167;
     f32 var_f26_154;
     f32 var_f4_89;
-    f64 temp_f1_102;
-    f64 temp_f1_66;
     f64 temp_f1_92;
     f64 temp_f1_98;
+    f64 temp_f1_102;
     s32 temp_r3_121;
     s32 var_r0_131;
     void *temp_r3_65;
@@ -35,21 +30,19 @@ f32 KDInput::RumblePlay3D(float arg0, float arg1, float arg2, MKVector3 *arg3, f
     if ((arg3 == NULL) || (arg2 == 0.0f) || ((arg0 == 0.0f) && (arg1 == 0.0f))) {
         return -1.0f;
     }
+    // Lanes of (listener - arg3) in f32: the asm uses ps_sub on the vector
+    // halves, so x and y are per-lane single-precision differences.
     temp_r3_65 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
-    temp_f1_66 = M2C_FIELD(temp_r3_65, f64 *, 0x30);
-    sp20 = temp_f1_66;
-    sp28 = M2C_FIELD(temp_r3_65, f64 *, 0x38);
-    sp10 = temp_f1_66 - M2C_FIELD(arg3, f64 *, 0);
-    sp30 = sp10;
-    sp18 = (f32) sp28 - arg3->unk8;
-    sp38 = (f64) sp18;
-    var_f4_89 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * (*(f32 *) ((u8 *) &sp30 + 0x4))));
+    dx = M2C_FIELD(temp_r3_65, f32 *, 0x30) - arg3->unk0;
+    dy = M2C_FIELD(temp_r3_65, f32 *, 0x34) - arg3->unk4;
+    dz = M2C_FIELD(temp_r3_65, f32 *, 0x38) - arg3->unk8;
+    var_f4_89 = (dz * dz) + ((dx * dx) + (dy * dy));
     if (var_f4_89 > 0.0f) {
         temp_f1_92 = __frsqrte(var_f4_89);
         temp_f1_98 = 0.5 * temp_f1_92 * -(((f64) var_f4_89 * (temp_f1_92 * temp_f1_92)) - 3.0);
         temp_f1_102 = 0.5 * temp_f1_98 * -(((f64) var_f4_89 * (temp_f1_98 * temp_f1_98)) - 3.0);
         var_f4_89 = (f32) ((f64) var_f4_89 * (0.5 * temp_f1_102 * -(((f64) var_f4_89 * (temp_f1_102 * temp_f1_102)) - 3.0)));
-    } else if (var_f4_89 < M2C_BITWISE(f32, 0.0)) {
+    } else if (var_f4_89 < 0.0f) {
         var_f4_89 = __float_nan;
     } else {
         sp8 = var_f4_89;
@@ -91,7 +84,6 @@ f32 KDInput::RumblePlay3D(float arg0, float arg1, float arg2, MKVector3 *arg3, f
     }
     return temp_f26_164;
 }
-#endif
 
 void KDInput::RumbleStop() {
     MKRumble_Stop((MKInputDevices) this->unk0);

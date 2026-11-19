@@ -32,7 +32,6 @@ void KDCameraDeltaDrag::ClearData() {
     this->unk11 = 0;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 void KDCameraDeltaDrag::Update(const MKVector3 &arg0) {
     f32 temp_f0_143;
     f32 temp_f0_85;
@@ -74,7 +73,7 @@ void KDCameraDeltaDrag::Update(const MKVector3 &arg0) {
                 this->unk10 = 0;
             }
         } else {
-            temp_f1_118 = arg0.unk8;
+            temp_f1_118 = M2C_FIELD(&arg0, f32 *, 8);
             var_r0_119 = 0;
             var_f2_121 = -temp_f1_118;
             if ((temp_f1_118 >= -0.05f) && (temp_f1_118 <= 0.05f)) {
@@ -105,4 +104,3 @@ void KDCameraDeltaDrag::Update(const MKVector3 &arg0) {
         }
     }
 }
-#endif

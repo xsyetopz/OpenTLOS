@@ -50,7 +50,6 @@ void GameStateHeap::HeapMarkPush() {
     }
 }
 
-#if 0 // DRAFT: illegal operand
 void GameStateHeap::Init() {
     s32 temp_r0_103;
     s32 var_ctr_101;
@@ -62,11 +61,10 @@ void GameStateHeap::Init() {
     do {
         temp_r0_103 = var_r4_100 + 4;
         var_r4_100 += 4;
-        *(this + temp_r0_103) = -1;
+        M2C_FIELD(this, s32 *, temp_r0_103) = -1;
         var_ctr_101 -= 1;
     } while (var_ctr_101 != 0);
 }
-#endif
 
 u8 GameStateMachine::GetFadeColor() {
     GameStateMachineInit *temp_r4_118;
