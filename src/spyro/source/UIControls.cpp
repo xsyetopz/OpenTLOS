@@ -7,11 +7,9 @@ extern f32 gUpdateTimeDelta;
 static UIInputTracker allControllers;
 static s32 currentController = -1;
 
-#if 0 // DRAFT: undefined identifier 'unk1D'
 void UIControls_Ignore(bool arg0) {
-    allControllers.unk1D = arg0;
+    M2C_FIELD(&allControllers, u8 *, 0x1D) = arg0;
 }
-#endif
 
 void UIControls_Reset() {
 
@@ -73,22 +71,20 @@ s32 UIControls_Pressed(FrontEndControls arg0, int arg1) {
     return MKInput_Pressed((s32) arg0, (MKInputDevices) temp_r5_128->unk0);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk1D'
 u8 UIControls_DirectionPressed(FrontEndControls arg0, int arg1) {
-    UIInputTracker *temp_r4_165;
     s32 var_r4_0;
+    s8 *temp_r4_165;
 
     var_r4_0 = arg1;
     if ((var_r4_0 < 0) || (var_r4_0 >= 1)) {
         var_r4_0 = currentController;
     }
-    temp_r4_165 = &(&allControllers)[var_r4_0];
-    if ((u8) temp_r4_165->unk1D == 0) {
-        return M2C_FIELD((temp_r4_165 + (s32) arg0), u8 *, 0x14);
+    temp_r4_165 = (s8 *) &(&allControllers)[var_r4_0];
+    if (M2C_FIELD(temp_r4_165, u8 *, 0x1D) == 0) {
+        return M2C_FIELD(temp_r4_165 + (s32) arg0, u8 *, 0x14);
     }
     return 0U;
 }
-#endif
 
 void *UIInput(int arg0) {
     s32 var_r3_0;
@@ -229,28 +225,22 @@ block_16:
     M2C_FIELD((this + (arg1 * 4)), f32 *, -8) = -1.0f;
 }
 
-#if 0 // DRAFT: illegal operand
 void UIInputTracker::Update() {
+    s8 *base;
     f32 var_f1_485;
     f32 var_f1_509;
     f32 var_f1_537;
     f32 var_f1_562;
-    s32 temp_r0_466;
-    s32 var_ctr_464;
     s32 var_r4_458;
     u8 var_r3_474;
     u8 var_r3_498;
     u8 var_r3_526;
     u8 var_r3_551;
 
-    var_r4_458 = 0;
-    var_ctr_464 = 4;
-    do {
-        temp_r0_466 = var_r4_458 + 0x18;
-        var_r4_458 += 1;
-        *(this + temp_r0_466) = 0;
-        var_ctr_464 -= 1;
-    } while (var_ctr_464 != 0);
+    base = (s8 *) this;
+    for (var_r4_458 = 0; var_r4_458 < 4; var_r4_458++) {
+        M2C_FIELD(base + (var_r4_458 + 0x18), u8 *, 0) = 0;
+    }
     if ((u8) this->unk1C != 0) {
         var_r3_474 = 0;
         if (((u8) this->unk5 != 0) || ((u8) this->unk4 != 0)) {
@@ -298,10 +288,9 @@ void UIInputTracker::Update() {
         CheckDirection(5, 7, var_f1_562);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 void UIInputTracker::Init(MKInputDevices arg0) {
+    s8 *base;
     s32 temp_r0_597;
     s32 var_ctr_594;
     s32 var_r4_591;
@@ -312,16 +301,14 @@ void UIInputTracker::Init(MKInputDevices arg0) {
     var_r4_591 = 0;
     var_r7_592 = 0;
     this->unk5 = 0;
-    var_ctr_594 = 4;
-    do {
+    base = (s8 *) this;
+    for (var_ctr_594 = 0; var_ctr_594 < 4; var_ctr_594++) {
         temp_r0_597 = var_r7_592 + 0x18;
-        *(this + (var_r4_591 + 8)) = 0.0f;
+        *(f32 *) (base + (var_r4_591 + 8)) = 0.0f;
         var_r7_592 += 1;
         var_r4_591 += 4;
-        *(this + temp_r0_597) = 0;
-        var_ctr_594 -= 1;
-    } while (var_ctr_594 != 0);
+        M2C_FIELD(base + temp_r0_597, u8 *, 0) = 0;
+    }
     this->unk1C = 0;
-    this->unk1D = 0;
+    M2C_FIELD(base, u8 *, 0x1D) = 0;
 }
-#endif
