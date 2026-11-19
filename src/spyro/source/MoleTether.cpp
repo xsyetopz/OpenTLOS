@@ -78,16 +78,16 @@ void MoleTether::SetWorldMatrix(Matrix &arg0) {
     MKModel_SetWorldMatrix(this->unk4, arg0);
 }
 
-#if 0 // DRAFT: ')' expected
 void MoleTether::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3, bool arg4) {
-    if ((EnergyBeam::Beam *) this->unk1F4 != NULL) {
-        ((EnergyBeam *) (M2C_FIELD(checked_cast<MoleTetherDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x16C)))->FreeEnergyBeam(this->unk1F4);
+    if (this->unk1F4 != NULL) {
+        MoleTetherDescriptor *desc = checked_cast<MoleTetherDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        EnergyBeam *beam = (EnergyBeam *) M2C_FIELD(desc, EnergyBeam **, 0x16C);
+        beam->FreeEnergyBeam(this->unk1F4);
         this->unk1F4 = NULL;
     }
     this->unk1FC = 0;
     Shatterable::Shatter(arg0, arg1, arg2, arg3, arg4, 0U);
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void MoleTether::Message(MKMessage *arg0) {
@@ -146,16 +146,16 @@ void MoleTether::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 void MoleTether::Deinit() {
-    if ((EnergyBeam::Beam *) this->unk1F4 != NULL) {
-        ((EnergyBeam *) (M2C_FIELD(checked_cast<MoleTetherDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x16C)))->FreeEnergyBeam(this->unk1F4);
+    if (this->unk1F4 != NULL) {
+        MoleTetherDescriptor *desc = checked_cast<MoleTetherDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        EnergyBeam *beam = (EnergyBeam *) M2C_FIELD(desc, EnergyBeam **, 0x16C);
+        beam->FreeEnergyBeam(this->unk1F4);
         this->unk1F4 = NULL;
     }
     KDSound_Stop((int *) &this->unk1C8);
     Shatterable::Deinit();
 }
-#endif
 
 void *MoleTether::Update() {
     f64 sp18;
@@ -195,9 +195,9 @@ void MoleTether::Init() {
     this->unk1FC = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void MoleTetherDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
-    this->unk16C = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
+    MKProp *prop = gMK->CreateProp("EnergyBeam");
+    EnergyBeam *beam = checked_cast<EnergyBeam *, MKProp>(prop);
+    M2C_FIELD(this, EnergyBeam **, 0x16C) = beam;
 }
-#endif

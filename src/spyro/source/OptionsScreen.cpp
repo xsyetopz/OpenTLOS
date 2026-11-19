@@ -25,7 +25,8 @@
 extern s32 GS_MenuSelect;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#include "spyro/source/KDStateMachine.h"
+class CutsceneSystem;
 void OptionsScreen::OnExit() {
     KDSynkerPlayer3 *temp_r3_49;
     u8 var_r31_46;
@@ -47,35 +48,30 @@ void OptionsScreen::OnExit() {
     }
     KDSound_PauseMusic(1U, var_r31_46);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#include "spyro/source/KDStateMachine.h"
+class CutsceneSystem;
 void OptionsScreen::Update() {
-    s32 sp1C;
-    s32 sp18;
-    s32 sp14;
-    s32 sp10;
-    s32 spC;
-    s32 sp8;
+    UIMessage msg;
+    UIButton *temp_r3_91;
+    UIButton *temp_r3_118;
     KDSynkerPlayer3 *temp_r3_146;
+    UIObject *temp_r3_177;
+    UIObject *temp_r3_195;
+    UIObject *temp_r3_214;
     s32 var_r4_181;
     s32 var_r5_199;
     u8 var_r28_142;
     u8 var_r30_144;
-    void **temp_r3_118;
-    void **temp_r3_177;
-    void **temp_r3_195;
-    void **temp_r3_214;
-    void **temp_r3_91;
     void **temp_r4_174;
     void *temp_r29_145;
 
     UIScreen::Update();
-    temp_r3_91 = (void **) (ui_cast<UIButton *, UIObject *>(this->unkD0->FindChild("SoundVolume")));
+    temp_r3_91 = ui_cast<UIButton *, UIObject *>(this->unkD0->FindChild("SoundVolume"));
     if ((temp_r3_91 != NULL) && ((u8) M2C_FIELD(temp_r3_91, u8 *, 0x16) != 0) && ((UIControls_DirectionPressed((FrontEndControls) 7, -1) != 0) || (UIControls_DirectionPressed((FrontEndControls) 5, -1) != 0))) {
         KDSound_Play(GS_MenuSelect, 0U, -1);
     }
-    temp_r3_118 = (void **) (ui_cast<UIButton *, UIObject *>(this->unkD0->FindChild("MusicVolume")));
+    temp_r3_118 = ui_cast<UIButton *, UIObject *>(this->unkD0->FindChild("MusicVolume"));
     if (temp_r3_118 != NULL) {
         if (((u8) M2C_FIELD(temp_r3_118, u8 *, 0x16) != 0) && (KDSound_IsMusicPaused() != 0)) {
             KDSound_PauseMusic(0U, 0U);
@@ -95,64 +91,47 @@ void OptionsScreen::Update() {
     }
     temp_r4_174 = this->unkD4;
     if (temp_r4_174 != NULL) {
-        temp_r3_177 = this->unkDC;
+        temp_r3_177 = (UIObject *) this->unkDC;
         if (temp_r3_177 != NULL) {
             var_r4_181 = 3;
             if ((u8) M2C_FIELD(temp_r4_174, u8 *, 0x16) == 0) {
                 var_r4_181 = 2;
             }
-            sp18 = var_r4_181;
-            sp1C = 0;
-            M2C_FIELD(*temp_r3_177, M2C_UNK (**)(s32 *), 0x2C)(&sp18);
+            msg.unk0 = var_r4_181;
+            msg.unk4 = 0;
+            temp_r3_177->Message(&msg);
         }
-        temp_r3_195 = this->unkE0;
+        temp_r3_195 = (UIObject *) this->unkE0;
         if (temp_r3_195 != NULL) {
             var_r5_199 = 3;
             if ((u8) M2C_FIELD(this->unkD4, u8 *, 0x16) != 0) {
                 var_r5_199 = 2;
             }
-            sp10 = var_r5_199;
-            sp14 = 0;
-            M2C_FIELD(*temp_r3_195, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
+            msg.unk0 = var_r5_199;
+            msg.unk4 = 0;
+            temp_r3_195->Message(&msg);
         }
-        temp_r3_214 = this->unkD8;
+        temp_r3_214 = (UIObject *) this->unkD8;
         if (temp_r3_214 != NULL) {
-            sp8 = 1;
-            spC = 0;
-            M2C_FIELD(*temp_r3_214, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+            msg.unk0 = 1;
+            msg.unk4 = 0;
+            temp_r3_214->Message(&msg);
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
+#include "spyro/source/KDStateMachine.h"
+class CutsceneSystem;
 void OptionsScreen::OnEnter() {
-    s32 sp4C;
-    s32 sp48;
-    s32 sp44;
-    s32 sp40;
-    s32 sp3C;
-    s32 sp38;
-    s32 sp34;
-    s32 sp30;
-    s32 sp2C;
-    s32 sp28;
-    s32 sp24;
-    s32 sp20;
-    s32 sp1C;
-    s32 sp18;
-    s32 sp14;
-    s32 sp10;
-    s32 spC;
-    s32 sp8;
+    UIMessage msg;
     UIContainer *temp_r3_263;
-    UIContainer *temp_r3_314;
-    UIContainer *temp_r3_323;
+    UIButton *temp_r3_270;
+    UIButtonGroup *temp_r3_314;
+    UIObject *temp_r3_356;
+    UIObject *temp_r3_369;
+    UIObject *temp_r3_382;
+    void *temp_r3_gb;
     u8 var_r30_279;
-    void **temp_r3_270;
-    void **temp_r3_356;
-    void **temp_r3_369;
-    void **temp_r3_382;
 
     UIScreen::OnEnter();
     if (KDSound_IsMusicPaused() != 0) {
@@ -160,74 +139,69 @@ void OptionsScreen::OnEnter() {
     } else {
         this->unkC8 = 1;
     }
-    sp48 = 1;
-    sp4C = 0;
-    Message(&sp48);
+    msg.unk0 = 1;
+    msg.unk4 = 0;
+    Message(&msg);
     temp_r3_263 = this->unkD0;
     if (temp_r3_263 != NULL) {
-        temp_r3_270 = (void **) (ui_cast<UIButton *, UIObject *>(temp_r3_263->FindChild("Sound")));
+        temp_r3_270 = ui_cast<UIButton *, UIObject *>(temp_r3_263->FindChild("Sound"));
         if (temp_r3_270 != NULL) {
-            if ((void *) M2C_FIELD(&gb, void **, 0xC) != NULL) {
+            temp_r3_gb = M2C_FIELD(&gb, void **, 0xC);
+            if (temp_r3_gb != NULL) {
                 var_r30_279 = 0;
-                if ((((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (M2C_FIELD(&gb, void **, 0xC) + 0x24))->GetState() != 0)) {
+                if ((((u32) M2C_FIELD(temp_r3_gb, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(temp_r3_gb, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r3_gb) + 0x24))->GetState() != 0)) {
                     var_r30_279 = 1;
                 }
                 if (var_r30_279 != 0) {
-                    sp40 = 5;
-                    sp44 = 0;
-                    M2C_FIELD(*temp_r3_270, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_270, &sp40);
-                    sp38 = 3;
-                    sp3C = 0;
-                    M2C_FIELD(*temp_r3_270, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_270, &sp38);
-                    temp_r3_314 = this->unkD0;
-                    if ((s32) M2C_FIELD(temp_r3_314, s32 *, 0x68) == 0) {
-                        M2C_FIELD(temp_r3_314->__vptr, M2C_UNK (**)(M2C_UNK), 0x38)(1);
-                        temp_r3_323 = this->unkD0;
-                        sp30 = 1;
-                        sp34 = 0;
-                        temp_r3_323->Message(&sp30, 1);
+                    msg.unk0 = 5;
+                    msg.unk4 = 0;
+                    temp_r3_270->Message(&msg);
+                    msg.unk0 = 3;
+                    msg.unk4 = 0;
+                    temp_r3_270->Message(&msg);
+                    temp_r3_314 = (UIButtonGroup *) this->unkD0;
+                    if (temp_r3_314->unk68 == 0) {
+                        temp_r3_314->SetSelection(1);
+                        msg.unk0 = 1;
+                        msg.unk4 = 0;
+                        this->unkD0->Message(&msg);
                     }
                 } else {
                     goto block_13;
                 }
             } else {
 block_13:
-                sp28 = 4;
-                sp2C = 0;
-                M2C_FIELD(*temp_r3_270, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_270, &sp28);
-                sp20 = 2;
-                sp24 = 0;
-                M2C_FIELD(*temp_r3_270, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_270, &sp20);
+                msg.unk0 = 4;
+                msg.unk4 = 0;
+                temp_r3_270->Message(&msg);
+                msg.unk0 = 2;
+                msg.unk4 = 0;
+                temp_r3_270->Message(&msg);
             }
         }
     }
-    temp_r3_356 = this->unkDC;
+    temp_r3_356 = (UIObject *) this->unkDC;
     if (temp_r3_356 != NULL) {
-        sp18 = 2;
-        sp1C = 0;
-        M2C_FIELD(*temp_r3_356, M2C_UNK (**)(s32 *), 0x2C)(&sp18);
+        msg.unk0 = 2;
+        msg.unk4 = 0;
+        temp_r3_356->Message(&msg);
     }
-    temp_r3_369 = this->unkE0;
+    temp_r3_369 = (UIObject *) this->unkE0;
     if (temp_r3_369 != NULL) {
-        sp10 = 3;
-        sp14 = 0;
-        M2C_FIELD(*temp_r3_369, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
+        msg.unk0 = 3;
+        msg.unk4 = 0;
+        temp_r3_369->Message(&msg);
     }
-    temp_r3_382 = this->unkD8;
+    temp_r3_382 = (UIObject *) this->unkD8;
     if (temp_r3_382 != NULL) {
-        sp8 = 1;
-        spC = 0;
-        M2C_FIELD(*temp_r3_382, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        msg.unk0 = 1;
+        msg.unk4 = 0;
+        temp_r3_382->Message(&msg);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void OptionsScreen::Resolve() {
-    s32 sp14;
-    s32 sp10;
-    s32 spC;
-    s32 sp8;
+    UIMessage msg;
     UIContainer *temp_r3_418;
     UIObject *temp_r3_457;
     UIObject *var_r3_479;
@@ -248,12 +222,12 @@ void OptionsScreen::Resolve() {
     if (Sound_GetSystemAudioMode() == 0) {
         temp_r3_457 = this->unkD0->FindChild("Output");
         if (temp_r3_457 != NULL) {
-            sp10 = 5;
-            sp14 = 0;
-            M2C_FIELD(temp_r3_457->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
-            sp8 = 3;
-            spC = 0;
-            temp_r3_457->Message(&sp8);
+            msg.unk0 = 5;
+            msg.unk4 = 0;
+            temp_r3_457->Message(&msg);
+            msg.unk0 = 3;
+            msg.unk4 = 0;
+            temp_r3_457->Message(&msg);
             var_r3_479 = temp_r3_457->unk10;
 loop_8:
             if (var_r3_479 != NULL) {
@@ -264,7 +238,6 @@ loop_8:
         }
     }
 }
-#endif
 
 void OptionsScreen::Init() {
     UIContainer::Init();
