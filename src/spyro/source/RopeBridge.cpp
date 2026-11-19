@@ -1386,13 +1386,12 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void RopeBridge::HighDetailUpdate() {
     f32 temp_f2_2232;
     f32 temp_f5_2226;
     f32 var_f0_2241;
     s32 var_r4_2224;
-    void *var_r5_2229;
+    u8 *var_r5_2229;
 
     UpdatePlanks(0x1E, 0.033333335f, 0.0f);
     var_r4_2224 = 1;
@@ -1423,9 +1422,7 @@ loop_10:
         goto loop_10;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void RopeBridge::LowDetailUpdate() {
     s32 temp_r0_2294;
     s32 var_r3_2290;
@@ -1439,11 +1436,10 @@ loop_2:
         temp_r0_2294 = var_r3_2290 + 8;
         var_r5_2289 += 1;
         var_r3_2290 += 0x50;
-        *(this->unk184 + temp_r0_2294) = 0.0f;
+        *(f32 *) ((u8 *) this->unk184 + temp_r0_2294) = 0.0f;
         goto loop_2;
     }
 }
-#endif
 
 void *RopeBridge::Update() {
     f64 sp38;
@@ -2211,40 +2207,34 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match 'stricmp(signed char *)'
+extern "C" s32 stricmp(s8 *, const char *);
 u8 RopeBridge::LoadStartAndEnd(MKIniLine *arg0) {
     MKIniLine *temp_r3_3651;
     MKIniLine *temp_r3_3667;
 
-    arg0->GetFieldName();
-    if (stricmp("waypoints") == 0) {
+    if (stricmp(arg0->GetFieldName(), "waypoints") == 0) {
         temp_r3_3651 = arg0->unkC->GetSubLine(arg0);
-        temp_r3_3651->GetFieldName();
-        if (stricmp("waypoint") == 0) {
+        if (stricmp(temp_r3_3651->GetFieldName(), "waypoint") == 0) {
             temp_r3_3651->AsVector3(0, (MKVector3 *) &this->unk150);
         }
         temp_r3_3667 = temp_r3_3651->unkC->GetNextLine(temp_r3_3651);
-        temp_r3_3667->GetFieldName();
-        if (stricmp("waypoint") == 0) {
+        if (stricmp(temp_r3_3667->GetFieldName(), "waypoint") == 0) {
             temp_r3_3667->AsVector3(0, (MKVector3 *) &this->unk160);
         }
         return 1U;
     }
     return 0U;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 RopeBridge::LoadLine(MKIniLine *arg0) {
     s32 var_r31_3702;
 
     var_r31_3702 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (LoadStartAndEnd(arg0) != 0) || (arg0->LoadString("plankModel", &this->unk198, 1) != 0) || (arg0->LoadFloat("plankSpacing", &this->unk18C, 0) != 0) || (arg0->LoadFloat("sagAmount", &this->unk194, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (LoadStartAndEnd(arg0) != 0) || (arg0->LoadString("plankModel", (const char **) &this->unk198, 1) != 0) || (arg0->LoadFloat("plankSpacing", &this->unk18C, 0) != 0) || (arg0->LoadFloat("sagAmount", &this->unk194, 0) != 0)) {
         var_r31_3702 = 1;
     }
     return var_r31_3702;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void RopeBridge::Deinit() {
@@ -2345,20 +2335,18 @@ void RopeBridgeDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: pointer/array required
 void RopeBridgeDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = 0;
     this->unkC |= 0x20000;
-    this->unk6C = (RopeBridgeDescriptor *) (*RopeBridgeDescriptor::pFirstDesc);
+    this->unk6C = *(RopeBridgeDescriptor **) RopeBridgeDescriptor::pFirstDesc;
     this->unk68 = NULL;
-    if ((RopeBridgeDescriptor *) *RopeBridgeDescriptor::pFirstDesc != NULL) {
-        (*RopeBridgeDescriptor::pFirstDesc)->unk68 = this;
+    if (*(RopeBridgeDescriptor **) RopeBridgeDescriptor::pFirstDesc != NULL) {
+        (*(RopeBridgeDescriptor **) RopeBridgeDescriptor::pFirstDesc)->unk68 = this;
     }
-    *RopeBridgeDescriptor::pFirstDesc = (unsigned char) (this);
-    this->unk64 = M2C_FIELD(*gMK, s32 (**)(void **), 0x7C)(gMK);
+    *(RopeBridgeDescriptor **) RopeBridgeDescriptor::pFirstDesc = this;
+    this->unk64 = (s32) ((MKSceneManager *) gMK)->GetWorkingChunk();
 }
-#endif
 
 void RopeBridge_cpp::__sinit() {
     f32 sp20;
