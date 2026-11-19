@@ -369,33 +369,29 @@ TargetManager ***TargetManager::Begin() {
     return this->unk0;
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void TargetManager::Remove(Targetable *arg0) {
     TargetManager ***temp_r3_700;
     TargetManager ***var_r4_684;
-    TargetManager **temp_r0_693;
 
     if ((arg0 != NULL) && (this->unk8.Get() == arg0)) {
-        this->unk8.Set(NULL);
+        this->unk8.Set((Targetable *) NULL);
     }
     var_r4_684 = this->unk0;
-loop_7:
-    temp_r0_693 = *var_r4_684;
-    if (temp_r0_693 == NULL) {
+    while (*var_r4_684 != NULL) {
+        if (*var_r4_684 == (TargetManager **) arg0) {
+            break;
+        }
+        var_r4_684 += 1;
+    }
+    if (*var_r4_684 == NULL) {
         var_r4_684 = NULL;
-    } else if (temp_r0_693 == arg0) {
-
-    } else {
-        var_r4_684 += 4;
-        goto loop_7;
     }
     if (var_r4_684 != NULL) {
         temp_r3_700 = this->unk0;
-        this->unk0 = temp_r3_700 + 4;
+        this->unk0 = temp_r3_700 + 1;
         *var_r4_684 = *temp_r3_700;
     }
 }
-#endif
 
 #if 0 // DRAFT: type mismatch 'TargetManager **' and 'Targetable *'
 void TargetManager::Add(Targetable *arg0) {
@@ -431,75 +427,67 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void TargetManager::Clear() {
-loop_2:
-    if ((TargetManager **) *this->unk0 != NULL) {
-        this->unk0 += 4;
-        goto loop_2;
+    while ((TargetManager **) *this->unk0 != NULL) {
+        this->unk0 += 1;
     }
     this->unk4 = 0;
-    this->unk8.Set(NULL);
+    this->unk8.Set((Targetable *) NULL);
 }
-#endif
 
 void TargetManager::GetNewTargetID() {
     this->unk4 += 1;
 }
 
-#if 0 // DRAFT: type mismatch 'TargetManager ***' and 'long *'
 void TargetManager::Deinit() {
     TargetManager ***temp_r31_824;
     TargetManager ***temp_r3_819;
 
     do {
-        temp_r3_819 = this->unk0 - 4;
+        temp_r3_819 = this->unk0 - 1;
         this->unk0 = temp_r3_819;
     } while ((TargetManager **) *temp_r3_819 != NULL);
     temp_r31_824 = this->unk0;
-    if (temp_r31_824 != &gEmptyPtrList) {
+    if (temp_r31_824 != (TargetManager ***) &gEmptyPtrList) {
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_824, NULL, 0);
+            MKHeap::Current()->Free(temp_r31_824, NULL, 0);
         } else {
             free(temp_r31_824);
         }
     }
     this->unk0 = NULL;
-    *Targetable::pTargetManager = 0;
+    M2C_FIELD(Targetable::pTargetManager, s32 *, 0) = 0;
     this->unk4 = 0;
-    this->unk8.Set(NULL);
+    this->unk8.Set((Targetable *) NULL);
 }
-#endif
 
-#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void TargetManager::Init() {
+    TargetManager ***var_r3_870;
     TargetManager ***temp_r3_885;
     TargetManager ***temp_r5_890;
-    TargetManager ***var_r3_870;
     s32 var_ctr_883;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_870 = (TargetManager ***) (((MKHeap *) (MKHeap::Current()))->Alloc(0x788, NULL, 0));
+        var_r3_870 = (TargetManager ***) MKHeap::Current()->Alloc(0x788, NULL, 0);
     } else {
         var_r3_870 = malloc(0x788);
     }
     this->unk0 = var_r3_870;
-    M2C_FIELD(this->unk0, TargetManager ***, 0) = NULL;
+    *this->unk0 = NULL;
     var_ctr_883 = 0x1E0;
     do {
-        temp_r3_885 = this->unk0;
-        this->unk0 = temp_r3_885 + 4;
-        M2C_FIELD(temp_r3_885, s32 *, 4) = 0xDEADBEEF;
+        temp_r3_885 = this->unk0 + 1;
+        this->unk0 = temp_r3_885;
+        *temp_r3_885 = (TargetManager **) 0xDEADBEEF;
         var_ctr_883 -= 1;
     } while (var_ctr_883 != 0);
-    temp_r5_890 = this->unk0;
-    this->unk0 = temp_r5_890 + 4;
-    M2C_FIELD(temp_r5_890, s32 *, 4) = 0;
-    *Targetable::pTargetManager = (unsigned char) (this);
+    temp_r5_890 = this->unk0 + 1;
+    this->unk0 = temp_r5_890;
+    *temp_r5_890 = NULL;
+    M2C_FIELD(Targetable::pTargetManager, TargetManager **, 0) = this;
     this->unk4 = 0;
-    this->unk8.Set(NULL);
+    this->unk8.Set((Targetable *) NULL);
 }
-#endif
 
 void Targetable::UnregisterTargetable() {
     ((TargetManager *) (*Targetable::pTargetManager))->Remove(this);
@@ -610,7 +598,6 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: type mismatch 'TargetContext *' and 'TargetContext **'
 void AttackerManager::Deinit() {
     TargetContext **var_r31_1123;
     TargetContext **var_r3_1124;
@@ -622,35 +609,34 @@ void AttackerManager::Deinit() {
     var_r4_1122 = this->unk0;
     var_r31_1123 = var_r4_1122;
     var_r3_1124 = var_r4_1122;
-loop_3:
-    temp_r0_1132 = M2C_FIELD(var_r3_1124, u32 *, -4);
-    var_r3_1124 -= 4;
-    if (temp_r0_1132 != 0U) {
+    var_r3_1124 = var_r4_1122 - 1;
+    temp_r0_1132 = (u32) *var_r3_1124;
+    while (temp_r0_1132 != 0U) {
         temp_r0_1127 = *var_r3_1124;
-        if (temp_r0_1127 < var_r31_1123) {
+        if ((TargetContext **) temp_r0_1127 < var_r31_1123) {
             var_r31_1123 = (TargetContext **) temp_r0_1127;
         }
-        goto loop_3;
+        var_r3_1124 -= 1;
+        temp_r0_1132 = (u32) *var_r3_1124;
     }
-    if (var_r3_1124 != &gEmptyPtrListDL) {
+    if (var_r3_1124 != (TargetContext **) &gEmptyPtrListDL) {
 loop_9:
         temp_r0_1146 = *var_r4_1122;
         if (temp_r0_1146 != NULL) {
-            if (temp_r0_1146 < var_r31_1123) {
+            if ((TargetContext **) temp_r0_1146 < var_r31_1123) {
                 var_r31_1123 = (TargetContext **) temp_r0_1146;
             }
-            var_r4_1122 += 4;
+            var_r4_1122 += 1;
             goto loop_9;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1123, NULL, 0);
+            MKHeap::Current()->Free(var_r31_1123, NULL, 0);
         } else {
             free((TargetManager ***) var_r31_1123);
         }
     }
     this->unk0 = NULL;
 }
-#endif
 
 void AttackerManager::Init(int arg0) {
     TargetContext **temp_r3_1209;
@@ -689,7 +675,6 @@ void AttackerManager::Init(int arg0) {
     M2C_FIELD(temp_r3_1223, TargetContext ***, 4) = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void TargetContext::Set(MKProp *arg0) {
     Targetable *sp10;
     s32 spC;
@@ -699,34 +684,30 @@ void TargetContext::Set(MKProp *arg0) {
     sp10 = NULL;
     sp8 = 0x8E;
     if (arg0 != NULL) {
-        arg0->Message(&sp8);
+        arg0->Message((MKMessage *) &sp8);
         Set(sp10);
         return;
     }
-    Set(NULL);
+    Set((Targetable *) NULL);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void TargetContext::Set(Targetable *arg0) {
     Targetable *temp_r4_1278;
 
     this->unk4 = arg0;
-    this->unk0 = (void **(*)(TargetManager **, f64, f32))-1;
+    M2C_FIELD(this, s32 *, 0) = -1;
     temp_r4_1278 = this->unk4;
     if (temp_r4_1278 != NULL) {
-        this->unk0 = M2C_FIELD(temp_r4_1278, void **(**)(TargetManager **, f64, f32), 4);
+        M2C_FIELD(this, s32 *, 0) = M2C_FIELD(temp_r4_1278, s32 *, 4);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 Targetable *TargetContext::Get() {
     Targetable *temp_r4_1293;
     u8 var_r5_1290;
-    void **(*temp_r6_1289)(TargetManager **, f64, f32);
+    s32 temp_r6_1289;
 
-    temp_r6_1289 = this->unk0;
+    temp_r6_1289 = M2C_FIELD(this, s32 *, 0);
     var_r5_1290 = 0;
     if (temp_r6_1289 >= 0) {
         temp_r4_1293 = this->unk4;
@@ -739,4 +720,3 @@ Targetable *TargetContext::Get() {
     }
     return NULL;
 }
-#endif
