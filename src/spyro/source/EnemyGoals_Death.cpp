@@ -665,37 +665,22 @@ u8 EnemyGoal_DyingSquished::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkB0A'
 void EnemyGoal_DyingSquished::Activate() {
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    Character *temp_r3_1108;
-    Character *temp_r3_1112;
-    Character *temp_r3_1137;
+    MKVector3 sp;
 
     this->unk8 = 0;
-    temp_r3_1108 = this->unkC;
-    temp_r3_1108->unkB0A |= 0x10;
-    temp_r3_1112 = this->unkC;
-    temp_r3_1112->unkB0A |= 8;
-    KDSound_Play3d(GS_SpyroEarthFurySquish, this->unkC->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    M2C_FIELD(this->unkC, u8 *, 0xB0A) |= 0x10;
+    M2C_FIELD(this->unkC, u8 *, 0xB0A) |= 8;
+    KDSound_Play3d(GS_SpyroEarthFurySquish, (MKVector3 *) ((s8 *) this->unkC->unk8 + 0x30), 0U, -1, 0.0f, 0U);
     this->unk10 = 4.0f;
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 0);
-    sp8 = 1.5f;
     M2C_FIELD(this->unkC->unk630, f32 *, 0x38) = 0.0f;
-    spC = 0.1f;
-    temp_r3_1137 = this->unkC;
-    sp10 = 1.5f;
-    temp_r3_1137->unk730 = (f64) sp8;
-    sp18 = (f64) sp8;
-    sp20 = (f64) sp10;
-    temp_r3_1137->unk738 = (f64) sp10;
+    sp.unk0 = 1.5f;
+    sp.unk4 = 0.1f;
+    sp.unk8 = 1.5f;
+    M2C_FIELD(this->unkC, MKVector3 *, 0x730) = sp;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 u8 EnemyGoal_DyingWhirlwind::Update() {
@@ -1277,96 +1262,69 @@ void EnemyGoal_DyingFrozen::Activate() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk750'
 u8 EnemyGoal_DyingBurnt::Update() {
     MKCollisionResult sp30;
-    f64 sp28;
-    f64 sp20;
-    f32 sp18;
-    f64 sp10;
-    u8 spC;
+    MKVector3 ray;
     void *sp8;
-    Character *temp_r29_2231;
-    Character *temp_r29_2272;
-    Character *temp_r3_2252;
-    Character *temp_r3_2294;
-    Character *temp_r3_2337;
-    Character *temp_r4_2209;
-    Character *temp_r4_2314;
-    CharacterFireFX *temp_r3_2221;
-    f64 temp_f0_2320;
-    u32 *temp_r4_2240;
-    u32 *temp_r4_2253;
-    u32 *temp_r4_2278;
-    u32 *temp_r4_2295;
+    u8 spC;
+    u8 var_r3_2210;
     u8 var_r30_2236;
     u8 var_r30_2273;
-    u8 var_r3_2210;
-    void *temp_r4_2305;
 
     ActivateIfInactive();
-    temp_r4_2209 = this->unkC;
     var_r3_2210 = 0;
-    if (((s32) temp_r4_2209->unk750.unk78 == 0) && ((u8) temp_r4_2209->unk750.unkA4 != 0)) {
+    if ((((Enemy *) this->unkC)->unk750.unk78 == 0) && ((u8) ((Enemy *) this->unkC)->unk750.unkA4 != 0)) {
         var_r3_2210 = 1;
     }
     if (var_r3_2210 != 0) {
-        temp_r3_2221 = temp_r4_2209->unkA08;
-        if (temp_r3_2221 != NULL) {
-            temp_r3_2221->Enable(0U, 1.0f);
+        if (((Enemy *) this->unkC)->unkA08 != NULL) {
+            ((Enemy *) this->unkC)->unkA08->Enable(0U, 1.0f);
         }
         this->unk8 = 2;
     }
-    temp_r29_2231 = this->unkC;
-    if ((u32 *) temp_r29_2231->unkA50 != NULL) {
+    if (((Enemy *) this->unkC)->unkA50 != NULL) {
         var_r30_2236 = 0;
-        if (temp_r29_2231->HasAnimFinished() != 0) {
-            temp_r4_2240 = temp_r29_2231->unkA50;
-            if ((temp_r4_2240 != NULL) && ((u32) *temp_r4_2240 == (u32) M2C_FIELD(temp_r29_2231->unk630, u32 *, 0x20))) {
+        if (this->unkC->HasAnimFinished() != 0) {
+            if ((((Enemy *) this->unkC)->unkA50 != NULL) &&
+                (M2C_FIELD(((Enemy *) this->unkC)->unkA50, u32 *, 0) == M2C_FIELD(this->unkC->unk630, u32 *, 0x20))) {
                 var_r30_2236 = 1;
             }
         }
         if (var_r30_2236 != 0) {
-            temp_r3_2252 = this->unkC;
-            temp_r4_2253 = temp_r3_2252->unkA50;
-            if ((u32) M2C_FIELD(temp_r4_2253, u32 *, 0x20) != 0U) {
-                ((Enemy *) temp_r3_2252)->SetAnim((AnimSequence *) temp_r4_2253, (AnimTransition *) (temp_r4_2253 + 0x20), 0.15f, 0U);
-            } else if ((u32) M2C_FIELD(temp_r4_2253, u32 *, 0x40) != 0U) {
-                ((Enemy *) temp_r3_2252)->SetAnim((AnimSequence *) temp_r4_2253, (AnimTransition *) (temp_r4_2253 + 0x40), 0.15f, 0U);
+            if (M2C_FIELD(((Enemy *) this->unkC)->unkA50, u32 *, 0x20) != 0U) {
+                ((Enemy *) this->unkC)->SetAnim(((Enemy *) this->unkC)->unkA50,
+                                                (AnimTransition *) ((s8 *) ((Enemy *) this->unkC)->unkA50 + 0x20), 0.15f, 0U);
+            } else if (M2C_FIELD(((Enemy *) this->unkC)->unkA50, u32 *, 0x40) != 0U) {
+                ((Enemy *) this->unkC)->SetAnim(((Enemy *) this->unkC)->unkA50,
+                                                (AnimTransition *) ((s8 *) ((Enemy *) this->unkC)->unkA50 + 0x40), 0.15f, 0U);
             }
         } else {
-            temp_r29_2272 = this->unkC;
             var_r30_2273 = 0;
-            if (temp_r29_2272->HasAnimFinished() != 0) {
-                temp_r4_2278 = temp_r29_2272->unkA50;
-                if ((temp_r4_2278 != NULL) && ((u32) M2C_FIELD(temp_r4_2278, u32 *, 0x40) == (u32) M2C_FIELD(temp_r29_2272->unk630, u32 *, 0x20))) {
+            if (this->unkC->HasAnimFinished() != 0) {
+                if ((((Enemy *) this->unkC)->unkA50 != NULL) &&
+                    (M2C_FIELD(((Enemy *) this->unkC)->unkA50, u32 *, 0x40) == M2C_FIELD(this->unkC->unk630, u32 *, 0x20))) {
                     var_r30_2273 = 1;
                 }
             }
             if ((var_r30_2273 == 0) && (this->unkC->HasAnimFinished() != 0)) {
-                temp_r3_2294 = this->unkC;
-                temp_r4_2295 = temp_r3_2294->unkA50;
-                if ((u32) M2C_FIELD(temp_r4_2295, u32 *, 0x40) != 0U) {
-                    ((Enemy *) temp_r3_2294)->SetAnim((AnimSequence *) temp_r4_2295, (AnimTransition *) (temp_r4_2295 + 0x40), 0.15f, 0U);
+                if (M2C_FIELD(((Enemy *) this->unkC)->unkA50, u32 *, 0x40) != 0U) {
+                    ((Enemy *) this->unkC)->SetAnim(((Enemy *) this->unkC)->unkA50,
+                                                    (AnimTransition *) ((s8 *) ((Enemy *) this->unkC)->unkA50 + 0x40), 0.15f, 0U);
                 }
             }
         }
-        temp_r4_2305 = this->unkC->unk634;
-        sp8 = temp_r4_2305;
-        if (temp_r4_2305 != NULL) {
-            spC = M2C_FIELD(temp_r4_2305, u8 *, 4);
-            M2C_FIELD(temp_r4_2305, u8 *, 4) = 0U;
+        sp8 = this->unkC->unk634;
+        if (sp8 != NULL) {
+            spC = M2C_FIELD(sp8, u8 *, 4);
+            M2C_FIELD(sp8, u8 *, 4) = 0U;
         }
-        temp_r4_2314 = this->unkC;
-        temp_f0_2320 = M2C_FIELD(temp_r4_2314, f64 *, 0x588) + M2C_FIELD(temp_r4_2314, f64 *, 0x90);
-        sp10 = temp_f0_2320;
-        sp20 = temp_f0_2320;
-        sp18 = temp_r4_2314->unk588.unk8 + temp_r4_2314->unk98;
-        sp28 = (f64) sp18;
-        if (MKCollision_RayCollide(temp_r4_2314->unk588, *((MKVector3 *) &sp20), &sp30, (MKCollisionMode) 7, M2C_FIELD(temp_r4_2314->unk110.unk460, s32 *, 0x18)) != 0) {
-            temp_r3_2337 = this->unkC;
-            M2C_FIELD(temp_r3_2337, f64 *, 0x588) = M2C_BITWISE(f64, sp30);
-            M2C_FIELD(temp_r3_2337, f32 *, 0x590) = (f64) sp30.unk8;
+        ray.unk0 = this->unkC->unk588.unk0 + this->unkC->unk90;
+        ray.unk4 = this->unkC->unk588.unk4 + this->unkC->unk94;
+        ray.unk8 = this->unkC->unk588.unk8 + this->unkC->unk98;
+        if (MKCollision_RayCollide(this->unkC->unk588, ray, &sp30, (MKCollisionMode) 7,
+                                   M2C_FIELD(M2C_FIELD(this->unkC, void **, 0x570), s32 *, 0x18)) != 0) {
+            M2C_FIELD(this->unkC, f64 *, 0x588) = M2C_FIELD(&sp30, f64 *, 0);
+            M2C_FIELD(this->unkC, f64 *, 0x590) = M2C_FIELD(&sp30, f64 *, 8);
         }
         if (sp8 != NULL) {
             M2C_FIELD(sp8, u8 *, 4) = spC;
@@ -1374,131 +1332,97 @@ u8 EnemyGoal_DyingBurnt::Update() {
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk750'
 void EnemyGoal_DyingBurnt::Activate() {
-    Character *temp_r3_2401;
-    Character *temp_r3_2408;
-    Character *temp_r3_2420;
-    Character *temp_r6_2378;
     s32 var_r5_2379;
 
     this->unk8 = 0;
     ((Enemy *) this->unkC)->ThawIfFrozen();
-    this->unkC->unk750.SetState(lit_773, 1.0f);
-    this->unkC->unk750.SetCrumble(lit_774);
-    temp_r6_2378 = this->unkC;
+    ((Enemy *) this->unkC)->unk750.SetState(lit_773, 1.0f);
+    ((Enemy *) this->unkC)->unk750.SetCrumble(lit_774);
     var_r5_2379 = 0x1E;
-    if (((u8) temp_r6_2378->unkB08 >> 3U) & 1) {
+    if (((u8) ((Enemy *) this->unkC)->unkB08 >> 3U) & 1) {
         var_r5_2379 = 0x20;
-    } else if (((u8) temp_r6_2378->unk6B5 >> 4U) & 1) {
+    } else if (((u8) this->unkC->unk6B5 >> 4U) & 1) {
         var_r5_2379 = 0x1F;
-        M2C_FIELD(temp_r6_2378, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r6_2378, f64 *, 0xC0);
-        M2C_FIELD(temp_r6_2378, f64 *, 0xE8) = (f64) M2C_FIELD(temp_r6_2378, f64 *, 0xC8);
-        temp_r6_2378->unk6B5 |= 0x40;
-        temp_r3_2401 = this->unkC;
-        M2C_FIELD(temp_r3_2401, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
-        M2C_FIELD(temp_r3_2401, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
-        temp_r3_2401->unk6B5 |= 0x40;
+        M2C_FIELD(this->unkC, f64 *, 0xE0) = (f64) M2C_FIELD(this->unkC, f64 *, 0xC0);
+        M2C_FIELD(this->unkC, f64 *, 0xE8) = (f64) M2C_FIELD(this->unkC, f64 *, 0xC8);
+        this->unkC->unk6B5 |= 0x40;
+        M2C_FIELD(this->unkC, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(this->unkC, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
+        this->unkC->unk6B5 |= 0x40;
     }
-    temp_r3_2408 = this->unkC;
-    temp_r3_2408->unk6B5 &= ~0x10;
+    this->unkC->unk6B5 &= ~0x10;
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 3, var_r5_2379, 0, 0.15f, 0U, 0U);
-    temp_r3_2420 = this->unkC;
-    if (((u8) temp_r3_2420->unkB08 >> 2U) & 1) {
-        temp_r3_2420->unk598 = 0.0f;
-        temp_r3_2420->unk59C = 0.0f;
-        temp_r3_2420->unk5A0 = 0.0f;
+    if (((u8) ((Enemy *) this->unkC)->unkB08 >> 2U) & 1) {
+        this->unkC->unk598 = 0.0f;
+        this->unkC->unk59C = 0.0f;
+        this->unkC->unk5A0 = 0.0f;
         this->unkC->SetMovementType((CharacterMoveType) 1);
-        KDSound_Play3d(GS_Emergency1, this->unkC->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_Emergency1, (MKVector3 *) ((s8 *) this->unkC->unk8 + 0x30), 0U, -1, 0.0f, 0U);
         return;
     }
-    if ((s32) temp_r3_2420->unk688 != 2) {
-        temp_r3_2420->SetMovementType((CharacterMoveType) 0);
+    if ((s32) this->unkC->unk688 != 2) {
+        this->unkC->SetMovementType((CharacterMoveType) 0);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkA50'
 u8 EnemyGoal_DyingDefault::Update() {
     MKCollisionResult sp30;
-    f64 sp28;
-    f64 sp20;
-    f32 sp18;
-    f64 sp10;
-    u8 spC;
+    MKVector3 ray;
     void *sp8;
-    Character *temp_r29_2464;
-    Character *temp_r29_2509;
-    Character *temp_r3_2485;
-    Character *temp_r3_2535;
-    Character *temp_r3_2578;
-    Character *temp_r4_2555;
-    f64 temp_f0_2561;
-    u32 *temp_r4_2473;
-    u32 *temp_r4_2486;
-    u32 *temp_r4_2515;
-    u32 *temp_r4_2536;
+    u8 spC;
     u8 var_r30_2469;
     u8 var_r30_2510;
-    void *temp_r4_2546;
 
     ActivateIfInactive();
-    temp_r29_2464 = this->unkC;
-    if ((u32 *) temp_r29_2464->unkA50 != NULL) {
+    if (((Enemy *) this->unkC)->unkA50 != NULL) {
         var_r30_2469 = 0;
-        if (temp_r29_2464->HasAnimFinished() != 0) {
-            temp_r4_2473 = temp_r29_2464->unkA50;
-            if ((temp_r4_2473 != NULL) && ((u32) *temp_r4_2473 == (u32) M2C_FIELD(temp_r29_2464->unk630, u32 *, 0x20))) {
+        if (this->unkC->HasAnimFinished() != 0) {
+            if ((((Enemy *) this->unkC)->unkA50 != NULL) &&
+                (M2C_FIELD(((Enemy *) this->unkC)->unkA50, u32 *, 0) == M2C_FIELD(this->unkC->unk630, u32 *, 0x20))) {
                 var_r30_2469 = 1;
             }
         }
         if (var_r30_2469 != 0) {
-            temp_r3_2485 = this->unkC;
-            temp_r4_2486 = temp_r3_2485->unkA50;
-            if ((u32) M2C_FIELD(temp_r4_2486, u32 *, 0x20) != 0U) {
-                ((Enemy *) temp_r3_2485)->SetAnim((AnimSequence *) temp_r4_2486, (AnimTransition *) (temp_r4_2486 + 0x20), 0.15f, 0U);
-            } else if ((u32) M2C_FIELD(temp_r4_2486, u32 *, 0x40) != 0U) {
-                ((Enemy *) temp_r3_2485)->SetAnim((AnimSequence *) temp_r4_2486, (AnimTransition *) (temp_r4_2486 + 0x40), 0.15f, 0U);
+            if (M2C_FIELD(((Enemy *) this->unkC)->unkA50, u32 *, 0x20) != 0U) {
+                ((Enemy *) this->unkC)->SetAnim(((Enemy *) this->unkC)->unkA50,
+                                                (AnimTransition *) ((s8 *) ((Enemy *) this->unkC)->unkA50 + 0x20), 0.15f, 0U);
+            } else if (M2C_FIELD(((Enemy *) this->unkC)->unkA50, u32 *, 0x40) != 0U) {
+                ((Enemy *) this->unkC)->SetAnim(((Enemy *) this->unkC)->unkA50,
+                                                (AnimTransition *) ((s8 *) ((Enemy *) this->unkC)->unkA50 + 0x40), 0.15f, 0U);
             } else {
                 this->unk8 = 2;
             }
         } else {
-            temp_r29_2509 = this->unkC;
             var_r30_2510 = 0;
-            if (temp_r29_2509->HasAnimFinished() != 0) {
-                temp_r4_2515 = temp_r29_2509->unkA50;
-                if ((temp_r4_2515 != NULL) && ((u32) M2C_FIELD(temp_r4_2515, u32 *, 0x40) == (u32) M2C_FIELD(temp_r29_2509->unk630, u32 *, 0x20))) {
+            if (this->unkC->HasAnimFinished() != 0) {
+                if ((((Enemy *) this->unkC)->unkA50 != NULL) &&
+                    (M2C_FIELD(((Enemy *) this->unkC)->unkA50, u32 *, 0x40) == M2C_FIELD(this->unkC->unk630, u32 *, 0x20))) {
                     var_r30_2510 = 1;
                 }
             }
             if (var_r30_2510 != 0) {
                 this->unk8 = 2;
             } else if (this->unkC->HasAnimFinished() != 0) {
-                temp_r3_2535 = this->unkC;
-                temp_r4_2536 = temp_r3_2535->unkA50;
-                if ((u32) M2C_FIELD(temp_r4_2536, u32 *, 0x40) != 0U) {
-                    ((Enemy *) temp_r3_2535)->SetAnim((AnimSequence *) temp_r4_2536, (AnimTransition *) (temp_r4_2536 + 0x40), 0.15f, 0U);
+                if (M2C_FIELD(((Enemy *) this->unkC)->unkA50, u32 *, 0x40) != 0U) {
+                    ((Enemy *) this->unkC)->SetAnim(((Enemy *) this->unkC)->unkA50,
+                                                    (AnimTransition *) ((s8 *) ((Enemy *) this->unkC)->unkA50 + 0x40), 0.15f, 0U);
                 }
             }
         }
-        temp_r4_2546 = this->unkC->unk634;
-        sp8 = temp_r4_2546;
-        if (temp_r4_2546 != NULL) {
-            spC = M2C_FIELD(temp_r4_2546, u8 *, 4);
-            M2C_FIELD(temp_r4_2546, u8 *, 4) = 0U;
+        sp8 = this->unkC->unk634;
+        if (sp8 != NULL) {
+            spC = M2C_FIELD(sp8, u8 *, 4);
+            M2C_FIELD(sp8, u8 *, 4) = 0U;
         }
-        temp_r4_2555 = this->unkC;
-        temp_f0_2561 = M2C_FIELD(temp_r4_2555, f64 *, 0x588) + M2C_FIELD(temp_r4_2555, f64 *, 0x90);
-        sp10 = temp_f0_2561;
-        sp20 = temp_f0_2561;
-        sp18 = temp_r4_2555->unk588.unk8 + temp_r4_2555->unk98;
-        sp28 = (f64) sp18;
-        if (MKCollision_RayCollide(temp_r4_2555->unk588, *((MKVector3 *) &sp20), &sp30, (MKCollisionMode) 7, M2C_FIELD(temp_r4_2555->unk110.unk460, s32 *, 0x18)) != 0) {
-            temp_r3_2578 = this->unkC;
-            M2C_FIELD(temp_r3_2578, f64 *, 0x588) = M2C_BITWISE(f64, sp30);
-            M2C_FIELD(temp_r3_2578, f32 *, 0x590) = (f64) sp30.unk8;
+        ray.unk0 = this->unkC->unk588.unk0 + this->unkC->unk90;
+        ray.unk4 = this->unkC->unk588.unk4 + this->unkC->unk94;
+        ray.unk8 = this->unkC->unk588.unk8 + this->unkC->unk98;
+        if (MKCollision_RayCollide(this->unkC->unk588, ray, &sp30, (MKCollisionMode) 7,
+                                   M2C_FIELD(M2C_FIELD(this->unkC, void **, 0x570), s32 *, 0x18)) != 0) {
+            M2C_FIELD(this->unkC, f64 *, 0x588) = M2C_FIELD(&sp30, f64 *, 0);
+            M2C_FIELD(this->unkC, f64 *, 0x590) = M2C_FIELD(&sp30, f64 *, 8);
         }
         if (sp8 != NULL) {
             M2C_FIELD(sp8, u8 *, 4) = spC;
@@ -1506,46 +1430,31 @@ u8 EnemyGoal_DyingDefault::Update() {
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void EnemyGoal_DyingDefault::Activate() {
-    Character *temp_r3_2610;
-    Character *temp_r3_2622;
-    Character *temp_r3_2651;
-    Character *temp_r3_2658;
-    Character *temp_r3_2670;
-    Character *temp_r6_2628;
     s32 var_r5_2629;
 
     this->unk8 = 0;
     ((Enemy *) this->unkC)->ThawIfFrozen();
-    temp_r3_2610 = this->unkC;
-    if (((u8) temp_r3_2610->unkB02 >> 4U) & 1) {
-        KDSound_Play3d(GS_EnemyLavaBurn, temp_r3_2610->unk8 + 0x30, 0U, -1, 0.0f, 0U);
-        temp_r3_2622 = this->unkC;
-        temp_r3_2622->unkB02 &= ~0x10;
+    if (((u8) ((Enemy *) this->unkC)->unkB02 >> 4U) & 1) {
+        KDSound_Play3d(GS_EnemyLavaBurn, (MKVector3 *) ((s8 *) this->unkC->unk8 + 0x30), 0U, -1, 0.0f, 0U);
+        ((Enemy *) this->unkC)->unkB02 &= ~0x10;
     }
-    temp_r6_2628 = this->unkC;
     var_r5_2629 = 0x1E;
-    if (((u8) temp_r6_2628->unkB08 >> 3U) & 1) {
+    if (((u8) ((Enemy *) this->unkC)->unkB08 >> 3U) & 1) {
         var_r5_2629 = 0x20;
-    } else if (((u8) temp_r6_2628->unk6B5 >> 4U) & 1) {
+    } else if (((u8) this->unkC->unk6B5 >> 4U) & 1) {
         var_r5_2629 = 0x1F;
-        M2C_FIELD(temp_r6_2628, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r6_2628, f64 *, 0xC0);
-        M2C_FIELD(temp_r6_2628, f64 *, 0xE8) = (f64) M2C_FIELD(temp_r6_2628, f64 *, 0xC8);
-        temp_r6_2628->unk6B5 |= 0x40;
-        temp_r3_2651 = this->unkC;
-        M2C_FIELD(temp_r3_2651, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
-        M2C_FIELD(temp_r3_2651, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
-        temp_r3_2651->unk6B5 |= 0x40;
+        M2C_FIELD(this->unkC, f64 *, 0xE0) = (f64) M2C_FIELD(this->unkC, f64 *, 0xC0);
+        M2C_FIELD(this->unkC, f64 *, 0xE8) = (f64) M2C_FIELD(this->unkC, f64 *, 0xC8);
+        this->unkC->unk6B5 |= 0x40;
+        M2C_FIELD(this->unkC, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+        M2C_FIELD(this->unkC, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
+        this->unkC->unk6B5 |= 0x40;
     }
-    temp_r3_2658 = this->unkC;
-    temp_r3_2658->unk6B5 &= ~0x10;
+    this->unkC->unk6B5 &= ~0x10;
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 3, var_r5_2629, 0, 0.15f, 0U, 0U);
-    temp_r3_2670 = this->unkC;
-    if ((s32) temp_r3_2670->unk688 != 2) {
-        temp_r3_2670->SetMovementType((CharacterMoveType) 0);
+    if ((s32) this->unkC->unk688 != 2) {
+        this->unkC->SetMovementType((CharacterMoveType) 0);
     }
 }
-#endif
