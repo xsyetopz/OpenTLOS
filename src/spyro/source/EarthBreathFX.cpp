@@ -812,7 +812,6 @@ block_27:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, int arg4, bool arg5) {
     s32 temp_r30_1383;
     s32 temp_r31_1386;
@@ -822,35 +821,35 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
     u8 var_r3_1467;
     u8 var_r4_1392;
     u8 var_r4_1411;
-    void *temp_r4_1473;
-    void *temp_r5_1388;
+    u8 *temp_r4_1473;
+    u8 *temp_r5_1388;
 
     this->unk130 = M2C_FIELD(&arg2, f64 *, 0);
     this->unk138 = M2C_FIELD(&arg2, f64 *, 8);
-    switch (arg4) {                                 /* irregular */
+    switch (arg4) {
     case 0:
         if (this->unkBC <= 0.0f) {
             temp_r30_1383 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
             temp_r4_1384 = temp_r30_1383 << 5;
-            temp_r31_1386 = *(&GameData::gameData[0x70] + (temp_r4_1384 + 0x7C));
-            temp_r5_1388 = &GameData::gameData[0x70] + (temp_r4_1384 + 0x64);
+            temp_r31_1386 = M2C_FIELD(&GameData::gameData[0x70], s32 *, temp_r4_1384 + 0x7C);
+            temp_r5_1388 = &GameData::gameData[0x70 + temp_r4_1384 + 0x64];
             if (temp_r31_1386 == 3) {
                 var_r4_1392 = 0;
-                if (((s32) M2C_FIELD(temp_r5_1388, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_1388, s32 *, 4) == 3)) {
+                if ((M2C_FIELD(temp_r5_1388, s32 *, 0) == 3) && (M2C_FIELD(temp_r5_1388, s32 *, 4) == 3)) {
                     var_r4_1392 = 1;
                 }
                 var_r6_1402 = var_r4_1392 != 0;
             } else {
-                var_r6_1402 = *(temp_r5_1388 + (temp_r31_1386 * 4));
+                var_r6_1402 = M2C_FIELD(temp_r5_1388, s32 *, temp_r31_1386 * 4);
             }
             if (temp_r31_1386 == 3) {
                 var_r4_1411 = 0;
-                if (((s32) M2C_FIELD(temp_r5_1388, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_1388, s32 *, 4) == 3)) {
+                if ((M2C_FIELD(temp_r5_1388, s32 *, 0) == 3) && (M2C_FIELD(temp_r5_1388, s32 *, 4) == 3)) {
                     var_r4_1411 = 1;
                 }
                 var_r24_1421 = var_r4_1411 != 0;
             } else {
-                var_r24_1421 = *(temp_r5_1388 + (temp_r31_1386 * 4));
+                var_r24_1421 = M2C_FIELD(temp_r5_1388, s32 *, temp_r31_1386 * 4);
             }
             this->unkD0.Init(arg0, ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(temp_r30_1383, temp_r31_1386, var_r6_1402), temp_r31_1386, var_r24_1421, temp_r30_1383, temp_r30_1383, 0, -1);
             return ShootShotgun(arg1, arg2, arg3);
@@ -866,133 +865,110 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
         return 0;
     case 3:
         var_r3_1467 = 0;
-        temp_r4_1473 = &GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64);
-        if (((s32) M2C_FIELD(temp_r4_1473, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r4_1473, s32 *, 4) == 3)) {
+        temp_r4_1473 = &GameData::gameData[0x70 + (M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64];
+        if ((M2C_FIELD(temp_r4_1473, s32 *, 0) == 3) && (M2C_FIELD(temp_r4_1473, s32 *, 4) == 3)) {
             var_r3_1467 = 1;
         }
         if (var_r3_1467 == 0) {
-            return this->unkC0->Trigger(arg1, 0U);
+            return this->unkC0->Trigger(arg1, false);
         }
-        this->unkC0->Trigger(arg1, 1U);
+        this->unkC0->Trigger(arg1, true);
         return this->unkC4->Trigger(arg1);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKModel *'
-void EarthBreathFX::DrawSeedBullets() {
-    Matrix sp60;
-    f32 sp50;
-    f32 sp4C;
-    f32 sp48;
-    f64 sp40;                                       /* compiler-managed */
-    f64 sp38;                                       /* compiler-managed */
-    f64 sp30;
-    f64 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    MKVector3 **var_r31_1534;
-    MKVector3 *temp_r3_1673;
-    MKVector3 *temp_r3_1691;
-    MKVector3 *temp_r6_1649;
-    f32 temp_f25_1659;
-    f32 var_f26_1625;
-    f32 var_f3_1619;
-    f32 var_f4_1552;
-    f64 temp_f1_1558;
-    f64 temp_f1_1564;
-    f64 temp_f1_1568;
-    s32 temp_r3_1587;
-    s32 var_r0_1597;
+void EarthBreathFX::DrawSeedBullets(void) {
+    Matrix m;
+    MKVector3 **slot;
+    MKVector3 *elem;
+    f32 fwd[3];
+    f32 up[3];
+    f32 sc[3];
+    f32 len2;
+    f32 len;
+    f32 inv;
+    f32 speed;
+    f32 f25;
+    f64 e0;
+    f64 e1;
+    f64 e2;
+    s32 bits;
+    s32 cls;
 
-    var_r31_1534 = this->unkC8;
-loop_28:
-    if (var_r31_1534 != NULL) {
-        temp_r3_1691 = *var_r31_1534;
-        if (temp_r3_1691 != NULL) {
-            sp38 = M2C_FIELD(temp_r3_1691, f64 *, 0x10);
-            sp40 = M2C_FIELD(temp_r3_1691, f64 *, 0x18);
-            var_f4_1552 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp30 + 0xc)) * (*(f32 *) ((u8 *) &sp30 + 0xc))));
-            if (var_f4_1552 > 0.000001f) {
-                if (var_f4_1552 > 0.0f) {
-                    temp_f1_1558 = __frsqrte(var_f4_1552);
-                    temp_f1_1564 = 0.5 * temp_f1_1558 * -(((f64) var_f4_1552 * (temp_f1_1558 * temp_f1_1558)) - 3.0);
-                    temp_f1_1568 = 0.5 * temp_f1_1564 * -(((f64) var_f4_1552 * (temp_f1_1564 * temp_f1_1564)) - 3.0);
-                    var_f4_1552 = (f32) ((f64) var_f4_1552 * (0.5 * temp_f1_1568 * -(((f64) var_f4_1552 * (temp_f1_1568 * temp_f1_1568)) - 3.0)));
-                } else if (var_f4_1552 < M2C_BITWISE(f32, 0.0)) {
-                    var_f4_1552 = __float_nan;
-                } else {
-                    sp10 = var_f4_1552;
-                    temp_r3_1587 = M2C_BITWISE(s32, sp10) & 0x7F800000;
-                    switch (temp_r3_1587) {         /* irregular */
-                    case 0x7F800000:
-                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
-                            var_r0_1597 = 1;
-                        } else {
-                            var_r0_1597 = 2;
-                        }
-                        break;
-                    case 0x0:
-                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
-                            var_r0_1597 = 5;
-                        } else {
-                            var_r0_1597 = 3;
-                        }
-                        break;
-                    default:
-                        var_r0_1597 = 4;
-                        break;
+    up[0] = 0.0f;
+    up[1] = 1.0f;
+    up[2] = 0.0f;
+    slot = this->unkC8;
+    while (slot != NULL && *slot != NULL) {
+        elem = *slot;
+        fwd[0] = M2C_FIELD(elem, f32 *, 0x10);
+        fwd[1] = M2C_FIELD(elem, f32 *, 0x14);
+        fwd[2] = M2C_FIELD(elem, f32 *, 0x18);
+        len2 = (fwd[2] * fwd[2]) + ((fwd[0] * fwd[0]) + (fwd[1] * fwd[1]));
+        if (len2 > 0.000001f) {
+            if (len2 > 0.0f) {
+                e0 = __frsqrte(len2);
+                e1 = 0.5 * e0 * -(((f64) len2 * (e0 * e0)) - 3.0);
+                e2 = 0.5 * e1 * -(((f64) len2 * (e1 * e1)) - 3.0);
+                len = (f32) ((f64) len2 * (0.5 * e2 * -(((f64) len2 * (e2 * e2)) - 3.0)));
+            } else if (len2 < 0.0f) {
+                len = __float_nan;
+            } else {
+                len = len2;
+                bits = M2C_BITWISE(s32, len2) & 0x7F800000;
+                switch (bits) {
+                case 0x7F800000:
+                    if (M2C_BITWISE(s32, len2) & 0x7FFFFF) {
+                        cls = 1;
+                    } else {
+                        cls = 2;
                     }
-                    if (var_r0_1597 == 1) {
-                        var_f4_1552 = __float_nan;
+                    break;
+                case 0x0:
+                    if (M2C_BITWISE(s32, len2) & 0x7FFFFF) {
+                        cls = 5;
+                    } else {
+                        cls = 3;
                     }
+                    break;
+                default:
+                    cls = 4;
+                    break;
                 }
-                var_f3_1619 = 1.0f / var_f4_1552;
-            } else {
-                var_f3_1619 = 0.0f;
-                var_f4_1552 = 0.0f;
+                if (cls == 1) {
+                    len = __float_nan;
+                }
             }
-            var_f26_1625 = var_f4_1552 / 1000.0f;
-            sp38 = (f32) sp38 * var_f3_1619;
-            (*(f32 *) ((u8 *) &sp30 + 0xc)) *= var_f3_1619;
-            sp40 = (f32) sp40 * var_f3_1619;
-            if (var_f26_1625 < 2.0f) {
-
-            } else {
-                var_f26_1625 = 2.0f;
-            }
-            if (var_f26_1625 > 0.0f) {
-
-            } else {
-                var_f26_1625 = 0.0f;
-            }
-            temp_r6_1649 = *var_r31_1534;
-            sp48 = 0.0f;
-            sp4C = 1.0f;
-            sp50 = 0.0f;
-            temp_f25_1659 = 2.0f * (M2C_FIELD(temp_r6_1649, f32 *, 0x20) / M2C_FIELD(temp_r6_1649, f32 *, 0x24));
-            KDMath_BuildMatrixFromFwd(&sp60, *((MKVector3 *) &sp38), (MKVector3 *) &sp48);
-            sp18 = temp_f25_1659;
-            sp1C = temp_f25_1659;
-            sp20 = 2.0f * var_f26_1625;
-            sp28 = (f64) sp18;
-            sp30 = (f64) sp20;
-            sp60.Scale3x3(&sp60, *((MKVector3 *) &sp28));
-            temp_r3_1673 = *var_r31_1534;
-            sp60.unk30 = temp_r3_1673->unk0;
-            sp60.unk34 = temp_r3_1673->unk4;
-            sp60.unk38 = temp_r3_1673->unk8;
-            sp60.unk3C = 1.0f;
-            MKModel_SetWorldMatrix(M2C_BITWISE(MKModel *, this->unk12C), sp60);
-            MKModel_Draw(M2C_BITWISE(MKModel *, this->unk12C), NULL);
-            var_r31_1534 += 4;
-            goto loop_28;
+            inv = 1.0f / len;
+        } else {
+            inv = 0.0f;
+            len = 0.0f;
         }
+        speed = len / 1000.0f;
+        if (!(speed < 2.0f)) {
+            speed = 2.0f;
+        }
+        if (!(speed > 0.0f)) {
+            speed = 0.0f;
+        }
+        fwd[0] = fwd[0] * inv;
+        fwd[1] = fwd[1] * inv;
+        fwd[2] = fwd[2] * inv;
+        f25 = 2.0f * (M2C_FIELD(elem, f32 *, 0x20) / M2C_FIELD(elem, f32 *, 0x24));
+        sc[0] = f25;
+        sc[1] = f25;
+        sc[2] = 2.0f * speed;
+        KDMath_BuildMatrixFromFwd(&m, *(MKVector3 *) fwd, (MKVector3 *) up);
+        m.Scale3x3(&m, *(MKVector3 *) sc);
+        m.unk30 = elem->unk0;
+        m.unk34 = elem->unk4;
+        m.unk38 = elem->unk8;
+        m.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk128, m);
+        MKModel_Draw(this->unk128, NULL);
+        slot += 1;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void EarthBreathFX::UpdateSeedBullets() {
@@ -1342,14 +1318,13 @@ void *EarthBreathFX::SpawnSeedBullet(const MKVector3 &arg0, const MKVector3 &arg
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'MKVector3 *' and 'MKVector3 **'
 void EarthBreathFX::Deinit() {
     MKMaterial *temp_r3_2284;
     MKVector3 **var_r31_2290;
     MKVector3 **var_r3_2291;
     MKVector3 **var_r4_2289;
-    MKVector3 *temp_r0_2294;
-    MKVector3 *temp_r0_2313;
+    u32 temp_r0_2294;
+    u32 temp_r0_2313;
     ManagedLight *temp_r4_2335;
     u32 temp_r0_2299;
 
@@ -1364,17 +1339,17 @@ loop_5:
     temp_r0_2299 = M2C_FIELD(var_r3_2291, u32 *, -4);
     var_r3_2291 -= 4;
     if (temp_r0_2299 != 0U) {
-        temp_r0_2294 = *var_r3_2291;
-        if (temp_r0_2294 < var_r31_2290) {
+        temp_r0_2294 = (u32) *var_r3_2291;
+        if (temp_r0_2294 < (u32) var_r31_2290) {
             var_r31_2290 = (MKVector3 **) temp_r0_2294;
         }
         goto loop_5;
     }
-    if (var_r3_2291 != &gEmptyPtrListDL) {
+    if ((void *) var_r3_2291 != (void *) &gEmptyPtrListDL) {
 loop_11:
-        temp_r0_2313 = *var_r4_2289;
-        if (temp_r0_2313 != NULL) {
-            if (temp_r0_2313 < var_r31_2290) {
+        temp_r0_2313 = (u32) *var_r4_2289;
+        if (temp_r0_2313 != 0) {
+            if (temp_r0_2313 < (u32) var_r31_2290) {
                 var_r31_2290 = (MKVector3 **) temp_r0_2313;
             }
             var_r4_2289 += 4;
@@ -1387,7 +1362,7 @@ loop_11:
         }
     }
     this->unkC8 = NULL;
-    MKModel_Destroy(M2C_BITWISE(MKModel *, this->unk12C));
+    MKModel_Destroy(this->unk128);
     MKModel_Destroy(this->unk140);
     temp_r4_2335 = this->unkB8;
     if (temp_r4_2335 != NULL) {
@@ -1395,121 +1370,99 @@ loop_11:
     }
     BaseBreathFX::Deinit();
 }
-#endif
 
 void EarthBreathFX::Draw() {
     DrawSeedBullets();
     DrawShotgunMuzzelFlash();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *EarthBreathFX::Update() {
-    f64 spA0;
-    f64 sp98;
-    f64 sp90;
-    f64 sp88;
-    f64 sp80;
-    f64 sp78;
-    MKVector3 sp68;
     MKVector3 sp58;
-    f64 sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f32 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp20;
-    f64 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    ManagedLight *temp_r3_2473;
-    ManagedLight *temp_r4_2416;
-    ManagedLight *temp_r4_2431;
-    f32 temp_f3_2396;
-    f32 var_f1_2453;
-    void *temp_r3_2446;
-    void *temp_r3_2482;
+    MKVector3 sp68;
+    MKVector3 vStart;
+    MKVector3 vAim;
+    MKVector3 vZero;
+    ManagedLight *lt;
+    u8 *dst;
+    f32 sumx;
+    f32 sumy;
+    f32 sumz;
+    f32 t;
 
     BaseBreathFX::Update();
     this->unkBC -= gUpdateTimeDelta;
     this->unk12C -= gUpdateTimeDelta;
     this->unk194 -= gUpdateTimeDelta;
     this->unk19C -= gUpdateTimeDelta;
-    temp_f3_2396 = this->unkA8;
-    if (temp_f3_2396 > 0.0f) {
+    if (this->unkA8 > 0.0f) {
         if (this->unkAC >= 0.25f) {
             this->unkA8 = 0.0f;
         } else {
-            this->unkA8 = temp_f3_2396 - gUpdateTimeDelta;
+            this->unkA8 = this->unkA8 - gUpdateTimeDelta;
         }
         this->unkAC += gUpdateTimeDelta;
     }
-    temp_r4_2416 = this->unkB8;
-    if (temp_r4_2416 != NULL) {
+    lt = this->unkB8;
+    if (lt != NULL) {
         if (this->unk12C > 0.0f) {
             sp58 = ((MKVector3 *) &this->unk130)->operator*(5000.0f);
             sp68 = sp58.operator*(gUpdateTimeDelta);
-            temp_r4_2431 = this->unkB8;
-            sp18 = temp_r4_2431->unk10 + M2C_BITWISE(f64, sp68);
-            temp_r4_2431->unk10 = sp18;
-            sp20 = M2C_FIELD(temp_r4_2431, f32 *, 0x18) + sp68.unk8;
-            sp78 = sp18;
-            temp_r4_2431->unk18 = (f64) sp20;
-            temp_r3_2446 = temp_r4_2431->unk3C;
-            sp80 = (f64) sp20;
-            if (temp_r3_2446 != NULL) {
-                M2C_FIELD(temp_r3_2446, f64 *, 0x10) = sp18;
-                M2C_FIELD(temp_r3_2446, f64 *, 0x18) = (f64) sp20;
+            sumx = M2C_FIELD(lt, f32 *, 0x10) + sp68.unk0;
+            sumy = M2C_FIELD(lt, f32 *, 0x14) + sp68.unk4;
+            sumz = M2C_FIELD(lt, f32 *, 0x18) + sp68.unk8;
+            M2C_FIELD(lt, f32 *, 0x10) = sumx;
+            M2C_FIELD(lt, f32 *, 0x14) = sumy;
+            M2C_FIELD(lt, f32 *, 0x18) = sumz;
+            dst = M2C_FIELD(lt, u8 **, 0x3C);
+            if (dst != NULL) {
+                M2C_FIELD(dst, f32 *, 0x10) = sumx;
+                M2C_FIELD(dst, f32 *, 0x14) = sumy;
+                M2C_FIELD(dst, f32 *, 0x18) = sumz;
             }
-            var_f1_2453 = this->unk12C;
-            if (var_f1_2453 < 0.25f) {
-
+            t = this->unk12C;
+            if (t < 0.25f) {
             } else {
-                var_f1_2453 = 0.25f;
+                t = 0.25f;
             }
-            if (var_f1_2453 > 0.0f) {
-
+            if (t > 0.0f) {
             } else {
-                var_f1_2453 = 0.0f;
+                t = 0.0f;
             }
-            sp8 = 0.0f;
-            temp_r3_2473 = this->unkB8;
-            sp10 = 0.0f;
-            sp14 = 1.0f;
-            spC = var_f1_2453 / 0.25f;
-            sp50 = (f64) sp10;
-            temp_r3_2473->unk20 = (f64) sp8;
-            temp_r3_2473->unk28 = (f64) sp10;
-            temp_r3_2482 = temp_r3_2473->unk3C;
-            sp48 = (f64) sp8;
-            if (temp_r3_2482 != NULL) {
-                M2C_FIELD(temp_r3_2482, f64 *, 0) = (f64) sp8;
-                M2C_FIELD(temp_r3_2482, f64 *, 8) = (f64) sp10;
+            t = t / 0.25f;
+            M2C_FIELD(lt, f32 *, 0x20) = 0.0f;
+            M2C_FIELD(lt, f32 *, 0x24) = t;
+            M2C_FIELD(lt, f32 *, 0x28) = 0.0f;
+            M2C_FIELD(lt, f32 *, 0x2C) = 1.0f;
+            dst = M2C_FIELD(lt, u8 **, 0x3C);
+            if (dst != NULL) {
+                M2C_FIELD(dst, f32 *, 0x0) = 0.0f;
+                M2C_FIELD(dst, f32 *, 0x4) = t;
+                M2C_FIELD(dst, f32 *, 0x8) = 0.0f;
+                M2C_FIELD(dst, f32 *, 0xC) = 1.0f;
             }
         } else {
-            ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2416, 0U);
+            ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(lt, false);
         }
     }
     if (((u8) this->unk198 != 0) && (this->unk19C <= 0.0f)) {
-        sp30 = 0.0f;
-        sp98 = M2C_FIELD(this, f64 *, 0x180);
-        spA0 = M2C_FIELD(this, f64 *, 0x188);
-        sp28 = 0.0f;
-        sp2C = 0.0f;
-        sp88 = M2C_FIELD(this, f64 *, 0x160);
-        sp90 = M2C_FIELD(this, f64 *, 0x168);
-        sp38 = (f64) sp28;
-        sp40 = (f64) sp30;
-        ShootShotgun(*((MKVector3 *) &sp98), *((MKVector3 *) &sp88), *((MKVector3 *) &sp38));
+        vStart.unk0 = M2C_FIELD(this, f32 *, 0x180);
+        vStart.unk4 = M2C_FIELD(this, f32 *, 0x184);
+        vStart.unk8 = M2C_FIELD(this, f32 *, 0x188);
+        vStart.unkC = M2C_FIELD(this, f32 *, 0x18C);
+        vAim.unk0 = M2C_FIELD(this, f32 *, 0x160);
+        vAim.unk4 = M2C_FIELD(this, f32 *, 0x164);
+        vAim.unk8 = M2C_FIELD(this, f32 *, 0x168);
+        vAim.unkC = M2C_FIELD(this, f32 *, 0x16C);
+        vZero.unk0 = 0.0f;
+        vZero.unk4 = 0.0f;
+        vZero.unk8 = 0.0f;
+        vZero.unkC = 0.0f;
+        ShootShotgun(vStart, vAim, vZero);
         this->unk198 = 0;
     }
     UpdateSeedBullets();
     this->unkB0 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[12]' to 'signed char *'
 f32 EarthBreathFX::Resolve() {
