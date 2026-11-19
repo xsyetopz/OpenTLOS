@@ -59,17 +59,13 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: illegal operand
 void Gondola::WaveMotion::Update() {
-    *this = (f32) (*this + gUpdateTimeDelta);
+    *(f32 *) this = *(f32 *) this + gUpdateTimeDelta;
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 void Gondola::WaveMotion::Init() {
-    *this = 0.0f;
+    *(f32 *) this = 0.0f;
 }
-#endif
 
 void Gondola::Deinit() {
     MKCollisionInfo *sp10;
@@ -923,7 +919,7 @@ s32 Gondola::LoadDone() {
     this->unk238 = checked_cast<SkyClouds *, MKProp>(gMK->CreateProp("SkyClouds"));
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match 'stricmp(signed char *)'
+extern "C" s32 stricmp(s8 *, s8 *);
 s32 Gondola::LoadLine(MKIniLine *arg0) {
     MKVector3 sp18;
     MKVector3 sp8;
@@ -935,8 +931,7 @@ s32 Gondola::LoadLine(MKIniLine *arg0) {
     if ((Platform::LoadLine(arg0) != 0) || (this->unk1B0.LoadLine(arg0) != 0)) {
         return 1;
     }
-    arg0->GetFieldName();
-    if (stricmp("waypoints") == 0) {
+    if (stricmp(arg0->GetFieldName(), (s8 *) "waypoints") == 0) {
         if ((u32) this->unk18C != 0U) {
             return 0;
         }
@@ -955,8 +950,7 @@ loop_10:
         }
         return 1;
     }
-    arg0->GetFieldName();
-    if (stricmp("returnwaypoints") == 0) {
+    if (stricmp(arg0->GetFieldName(), (s8 *) "returnwaypoints") == 0) {
         if ((u32) this->unk1A0 != 0U) {
             return 0;
         }
@@ -977,7 +971,6 @@ loop_19:
     }
     return 0;
 }
-#endif
 
 void Gondola::SetDefaults() {
     this->unk1A8 = 0.0f;
@@ -990,8 +983,9 @@ void Gondola::SetDefaults() {
     PropUpdate();
 }
 
-#if 0 // DRAFT: undefined identifier 'P17GondolaDescriptor'
 void Gondola::Init() {
+    GondolaDescriptor *desc;
+
     Platform::Init();
     this->unk1A8 = 0.0f;
     this->unk244 = 2;
@@ -999,43 +993,35 @@ void Gondola::Init() {
     this->unk1AC.Init();
     this->unk23C = 0.0f;
     this->unk248 = 0;
-    this->unk1B0.Init(checked_cast<P17GondolaDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x124, (MKProp *) this);
+    desc = checked_cast<GondolaDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk1B0.Init((EnemyGeneratorDescriptor *) ((u8 *) desc + 0x124), (MKProp *) this);
     this->unk24C = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk124'
 void GondolaDescriptor::LoadDone() {
     PlatformDescriptor::LoadDone();
-    this->unk124.LoadDone();
+    ((EnemyGeneratorDescriptor *) ((u8 *) this + 0x124))->LoadDone();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk124'
 s32 GondolaDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1711;
 
     var_r31_1711 = 0;
-    if ((PlatformDescriptor::LoadLine(arg0) != 0) || (this->unk124.LoadLine(arg0) != 0)) {
+    if ((PlatformDescriptor::LoadLine(arg0) != 0) || (((EnemyGeneratorDescriptor *) ((u8 *) this + 0x124))->LoadLine(arg0) != 0)) {
         var_r31_1711 = 1;
     }
     return var_r31_1711;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk124'
 void GondolaDescriptor::Deinit() {
-    this->unk124.Deinit();
+    ((EnemyGeneratorDescriptor *) ((u8 *) this + 0x124))->Deinit();
     KDPropExDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk124'
 void GondolaDescriptor::Init() {
     PlatformDescriptor::Init();
-    this->unk124.Init();
+    ((EnemyGeneratorDescriptor *) ((u8 *) this + 0x124))->Init();
 }
-#endif
 
 void Gondola_cpp::__sinit() {
     f32 temp_f0_1815;
