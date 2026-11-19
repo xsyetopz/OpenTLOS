@@ -11,8 +11,8 @@ decompilation is reuse of existing work, not decompilation of the game.
 
 Function states:
   2  done     ANB: objdiff fuzzy match 100% from source.  TEN: high-confidence ANB name.
-  1  partial  ANB: source compiles but differs.            TEN: medium/low-confidence name.
-  0  todo     ANB: dtk split assembly only.                TEN: unnamed.
+  1  partial  ANB: compiled from source, differs.         TEN: medium/low-confidence name.
+  0  todo     ANB: assembly only, or fenced out.          TEN: unnamed.
 
 Regions:
   ANB  config/G6SE7D/tu_paths.tsv (from the debug-info source paths).
@@ -68,8 +68,10 @@ def from_report(version: str) -> list[dict] | None:
         fns = []
         for f in u.get("functions", []):
             name = f.get("metadata", {}).get("demangled_name") or f["name"]
-            pct = f.get("fuzzy_match_percent", 0.0)
-            fns.append([name, int(f.get("size", 0)), 2 if has_src and pct >= 100.0 else 1 if has_src else 0])
+            # objdiff omits the score for functions absent from the compiled object (fenced drafts).
+            pct = f.get("fuzzy_match_percent")
+            state = 0 if not has_src or pct is None else 2 if pct >= 100.0 else 1
+            fns.append([name, int(f.get("size", 0)), state])
         if fns:
             groups.append({"name": stem, "cat": region, "size": sum(f[1] for f in fns), "fns": fns})
     return groups
