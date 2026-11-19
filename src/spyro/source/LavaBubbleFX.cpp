@@ -43,7 +43,7 @@ extern M2C_UNK gb;
 static s32 lit_550 = 0;
 static u8 lit_551 = 0;
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'Corona *'
+extern "C" void free(void *);
 void LavaBubbleFX::Deinit() {
     MKHeap *temp_r29_62;
     s32 temp_r0_57;
@@ -53,22 +53,21 @@ void LavaBubbleFX::Deinit() {
     var_r31_44 = 0;
     var_r28_46 = 0;
     do {
-        ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(*(this->unkC8 + (var_r31_44 + 0x5C)));
+        ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(*(Corona **) ((u8 *) this->unkC8 + (var_r31_44 + 0x5C)));
         var_r28_46 += 1;
         temp_r0_57 = var_r31_44 + 0x5C;
         var_r31_44 += 0x78;
-        *(this->unkC8 + temp_r0_57) = 0;
+        *(Corona **) ((u8 *) this->unkC8 + temp_r0_57) = NULL;
     } while (var_r28_46 < 0x14);
     temp_r29_62 = this->unkC8;
     if (MKHeap::Current() != NULL) {
         ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_62, NULL, 0);
     } else {
-        free(temp_r29_62);
+        free((void *) temp_r29_62);
     }
     MKMaterial_Destroy(this->unkD0);
     GameProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'unsigned char'
 void LavaBubbleFX::CreateBubble(const MKVector3 &arg0, const MKVector3 &arg1) {
@@ -883,19 +882,9 @@ void *LavaBubbleFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 f32 LavaBubbleFX::Resolve() {
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f64 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
+    MKVector3 sp38;
+    MKVector4 sp28;
     s32 temp_r0_1433;
     s32 var_r29_1406;
     s32 var_r31_1408;
@@ -905,26 +894,21 @@ f32 LavaBubbleFX::Resolve() {
     var_r29_1406 = 0;
     var_r31_1408 = 0;
     do {
-        sp20 = 0.0f;
-        sp8 = 1.0f;
-        spC = 0.75f;
-        sp10 = 0.5f;
-        sp14 = 1.0f;
-        sp18 = 0.0f;
-        sp1C = 0.0f;
-        sp28 = (f64) sp8;
-        sp30 = (f64) sp10;
-        sp38 = (f64) sp18;
-        sp40 = (f64) sp20;
+        sp38.unk0 = 0.0f;
+        sp38.unk4 = 0.0f;
+        sp38.unk8 = 0.0f;
+        sp28.unk0 = 1.0f;
+        sp28.unk4 = 0.75f;
+        sp28.unk8 = 0.5f;
+        sp28.unkC = 1.0f;
         temp_r0_1433 = var_r31_1408 + 0x5C;
         var_r29_1406 += 1;
-        *(this->unkC8 + temp_r0_1433) = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp38), *((MKVector4 *) &sp28), 8.0f, lit_550, lit_551);
+        *(void **) ((u8 *) this->unkC8 + temp_r0_1433) = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(sp38, sp28, 8.0f, lit_550, lit_551);
         var_r31_1408 += 0x78;
-        temp_r3_1440 = *(this->unkC8 + temp_r0_1433);
+        temp_r3_1440 = *(void **) ((u8 *) this->unkC8 + temp_r0_1433);
         M2C_FIELD(temp_r3_1440, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r3_1440, u8 *, 0x31) & ~0x40);
     } while (var_r29_1406 < 0x14);
 }
-#endif
 
 s32 LavaBubbleFX::LoadDone() {
     GameProp::LoadDone();
