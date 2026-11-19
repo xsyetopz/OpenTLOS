@@ -30,7 +30,7 @@ static u32 gDynamicBoneEnable = 1U;
 #endif
 
 void MKDynamicBone::DefaultUpdater(MKDynamicBone *arg0, void *arg1) {
-    Update();
+    arg0->Update();
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'double'
@@ -830,7 +830,6 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: type mismatch 'MKDynamicBone *' and 'Matrix *'
 void MKDynamicBoneSystem::RemoveModel(MKModel *arg0) {
     MKDynamicBone **temp_r5_1255;
     MKDynamicBone **temp_r5_1263;
@@ -840,14 +839,14 @@ void MKDynamicBoneSystem::RemoveModel(MKModel *arg0) {
     MKDynamicBone *temp_r5_1273;
     MKDynamicBone *temp_r6_1266;
     MKDynamicBone *temp_r7_1258;
-    Matrix *temp_r5_1235;
+    MKDynamicBone *temp_r5_1235;
 
     var_r8_1229 = this->unk0;
 loop_13:
     temp_r5_1273 = *var_r8_1229;
     if (temp_r5_1273 != NULL) {
-        if ((MKModel *) temp_r5_1273->unk24 == arg0) {
-            temp_r5_1235 = temp_r5_1273->unk20;
+        if (temp_r5_1273->unk24 == arg0) {
+            temp_r5_1235 = M2C_FIELD(temp_r5_1273, MKDynamicBone **, 0x20);
             if (M2C_FIELD(temp_r5_1235, u16 *, 0x72) & 0x100) {
                 var_r6_1239 = spareTemplates;
 loop_7:
@@ -857,218 +856,180 @@ loop_7:
                 } else if (temp_r0_1248 == temp_r5_1235) {
 
                 } else {
-                    var_r6_1239 += 4;
+                    var_r6_1239 += 1;
                     goto loop_7;
                 }
                 if (var_r6_1239 != NULL) {
                     temp_r5_1255 = spareTemplates;
-                    spareTemplates = temp_r5_1255 + 4;
+                    spareTemplates = temp_r5_1255 + 1;
                     temp_r7_1258 = *temp_r5_1255;
                     *temp_r5_1255 = *var_r6_1239;
                     *var_r6_1239 = temp_r7_1258;
                 }
             }
             temp_r5_1263 = this->unk0;
-            this->unk0 = temp_r5_1263 + 4;
+            this->unk0 = temp_r5_1263 + 1;
             temp_r6_1266 = *temp_r5_1263;
             *temp_r5_1263 = *var_r8_1229;
             *var_r8_1229 = temp_r6_1266;
         }
-        var_r8_1229 += 4;
+        var_r8_1229 += 1;
         goto loop_13;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk2C'
 void MKDynamicBoneSystem::AddModel(MKModel *arg0) {
-    Animation *temp_r3_1311;
-    MKDynamicBone **temp_r5_1330;
-    MKDynamicBone *temp_r30_1332;
-    Matrix *temp_r22_1361;
-    f32 *temp_r22_1402;
-    f32 *temp_r22_1412;
-    s16 temp_r0_1293;
-    s16 var_ctr_1294;
-    s32 temp_r28_1319;
-    s32 var_r20_1345;
-    s32 var_r21_1342;
-    s32 var_r22_1346;
-    s32 var_r23_1343;
-    s32 var_r24_1323;
-    s32 var_r27_1322;
-    s32 var_r5_1291;
-    u16 *var_r29_1299;
-    void *temp_r3_1292;
+    Animation *temp_r3_anim;
+    MKDynamicBone *temp_r30;
+    u16 *elem;
+    u16 *var_r29;
+    void *temp_r3;
+    s32 temp_r28;
+    s32 var_ctr;
+    s32 var_r20;
+    s32 var_r21;
+    s32 var_r22;
+    s32 var_r23;
+    s32 var_r24;
+    s32 var_r27;
+    s32 var_r5;
 
-    var_r5_1291 = 0;
-    temp_r3_1292 = M2C_FIELD(arg0->unk0, void **, 0x30);
-    temp_r0_1293 = M2C_FIELD(temp_r3_1292, s16 *, 0xC);
-    var_ctr_1294 = temp_r0_1293;
-    if (temp_r0_1293 > 0) {
-loop_1:
-        var_r29_1299 = (unsigned short *) (M2C_FIELD(temp_r3_1292, s32 *, 0x60) + var_r5_1291);
-        if ((u16) *var_r29_1299 == 7) {
-
-        } else {
-            var_r5_1291 += 0x10;
-            var_ctr_1294 -= 1;
-            if (var_ctr_1294 == 0) {
-                goto block_4;
+    var_r5 = 0;
+    temp_r3 = M2C_FIELD(arg0->unk0, void **, 0x30);
+    var_ctr = M2C_FIELD(temp_r3, s16 *, 0xC);
+    var_r29 = NULL;
+    if (var_ctr > 0) {
+        do {
+            elem = (u16 *) (M2C_FIELD(temp_r3, s32 *, 0x60) + var_r5);
+            if (*elem == 7) {
+                var_r29 = elem;
+                break;
             }
-            goto loop_1;
-        }
-    } else {
-block_4:
-        var_r29_1299 = NULL;
+            var_r5 += 0x10;
+            var_ctr -= 1;
+        } while (var_ctr != 0);
     }
-    temp_r3_1311 = MKModel_GetAnimation(arg0);
-    if ((var_r29_1299 != NULL) && (temp_r3_1311 != NULL)) {
-        temp_r3_1311->EnableCustomMatrices(1U);
-        temp_r28_1319 = M2C_FIELD(var_r29_1299, s32 *, 4);
-        var_r27_1322 = 0;
-        var_r24_1323 = 0;
-loop_15:
-        if (var_r27_1322 < (s32) M2C_FIELD(var_r29_1299, s32 *, 8)) {
-            temp_r5_1330 = this->unk0 - 4;
-            this->unk0 = temp_r5_1330;
-            temp_r30_1332 = *temp_r5_1330;
-            temp_r30_1332->unk24 = arg0;
-            temp_r30_1332->unk20 = (Matrix *) (temp_r28_1319 + var_r24_1323);
-            temp_r30_1332->unk2C = &MKDynamicBone::DefaultUpdater;
-            temp_r30_1332->unk28 = NULL;
-            temp_r30_1332->unk30 = 1;
-            if (temp_r30_1332->unk20->unk3C != 1.0f) {
-                var_r21_1342 = 0;
-                var_r23_1343 = 0;
+
+    temp_r3_anim = MKModel_GetAnimation(arg0);
+    if ((var_r29 != NULL) && (temp_r3_anim != NULL)) {
+        temp_r3_anim->EnableCustomMatrices(1U);
+        temp_r28 = M2C_FIELD(var_r29, s32 *, 4);
+        var_r27 = 0;
+        var_r24 = 0;
+        while (var_r27 < M2C_FIELD(var_r29, s32 *, 8)) {
+            this->unk0 -= 1;
+            temp_r30 = *this->unk0;
+            temp_r30->unk24 = arg0;
+            temp_r30->unk20 = (Matrix *) (temp_r28 + var_r24);
+            temp_r30->unk2C = MKDynamicBone::DefaultUpdater;
+            M2C_FIELD(temp_r30, void **, 0x28) = NULL;
+            temp_r30->unk30 = 1;
+            if (temp_r30->unk20->unk3C != 1.0f) {
+                var_r21 = 0;
+                var_r23 = 0;
                 do {
-                    var_r20_1345 = 0;
-                    var_r22_1346 = 0;
-loop_11:
-                    FlipEndian(temp_r30_1332->unk20 + (var_r23_1343 + var_r22_1346));
-                    var_r20_1345 += 1;
-                    var_r22_1346 += 4;
-                    if (var_r20_1345 < 4) {
-                        goto loop_11;
-                    }
-                    var_r21_1342 += 1;
-                    var_r23_1343 += 0x10;
-                } while (var_r21_1342 < 4);
-                temp_r22_1361 = temp_r30_1332->unk20 + 0x40;
-                FlipEndian(&temp_r22_1361->unk0);
-                FlipEndian(&temp_r22_1361->unk4);
-                FlipEndian(&temp_r22_1361->unk8);
-                FlipEndian(&temp_r22_1361->unkC);
-                FlipEndian(&temp_r30_1332->unk0);
-                FlipEndian(&temp_r30_1332->unk4);
-                FlipEndian(&temp_r30_1332->unk8);
-                FlipEndian(&temp_r30_1332->unkC);
-                FlipEndian(&temp_r30_1332->unk10);
-                FlipEndian(&temp_r30_1332->unk14);
-                FlipEndian(&temp_r30_1332->unk18);
-                FlipEndian(&temp_r30_1332->unk1C);
-                FlipEndian(temp_r30_1332->unk20 + 0x70);
-                FlipEndian(temp_r30_1332->unk20 + 0x74);
-                FlipEndian(temp_r30_1332->unk20 + 0x78);
-                FlipEndian(temp_r30_1332->unk20 + 0x7C);
-                FlipEndian(temp_r30_1332->unk20 + 0x72);
-                temp_r22_1402 = (float *) (temp_r30_1332->unk20 + 0x50);
-                FlipEndian(temp_r22_1402);
-                FlipEndian(temp_r22_1402 + 4);
-                FlipEndian(temp_r22_1402 + 8);
-                FlipEndian(temp_r22_1402 + 0xC);
-                temp_r22_1412 = (float *) (temp_r30_1332->unk20 + 0x60);
-                FlipEndian(temp_r22_1412);
-                FlipEndian(temp_r22_1412 + 4);
-                FlipEndian(temp_r22_1412 + 8);
-                FlipEndian(temp_r22_1412 + 0xC);
+                    var_r20 = 0;
+                    var_r22 = 0;
+                    do {
+                        FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + (var_r23 + var_r22)));
+                        var_r20 += 1;
+                        var_r22 += 4;
+                    } while (var_r20 < 4);
+                    var_r21 += 1;
+                    var_r23 += 0x10;
+                } while (var_r21 < 4);
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x40));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x44));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x48));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x4C));
+                FlipEndian(&temp_r30->unk0);
+                FlipEndian(&temp_r30->unk4);
+                FlipEndian(&temp_r30->unk8);
+                FlipEndian(&temp_r30->unkC);
+                FlipEndian(&temp_r30->unk10);
+                FlipEndian(&temp_r30->unk14);
+                FlipEndian(&temp_r30->unk18);
+                FlipEndian(&temp_r30->unk1C);
+                FlipEndian((s16 *) ((s8 *) temp_r30->unk20 + 0x70));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x74));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x78));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x7C));
+                FlipEndian((u16 *) ((s8 *) temp_r30->unk20 + 0x72));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x50));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x54));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x58));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x5C));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x60));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x64));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x68));
+                FlipEndian((f32 *) ((s8 *) temp_r30->unk20 + 0x6C));
             }
-            temp_r30_1332->Reset();
-            var_r27_1322 += 1;
-            var_r24_1323 += 0x80;
-            goto loop_15;
+            temp_r30->Reset();
+            var_r27 += 1;
+            var_r24 += 0x80;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: type mismatch 'MKDynamicBone *' and 'MKDynamicBone **'
 void MKDynamicBoneSystem::Deinit() {
-    MKDynamicBone **var_r30_1449;
-    MKDynamicBone **var_r30_1491;
-    MKDynamicBone **var_r3_1450;
-    MKDynamicBone **var_r3_1492;
-    MKDynamicBone **var_r4_1448;
-    MKDynamicBone **var_r4_1490;
-    MKDynamicBone *temp_r0_1453;
-    MKDynamicBone *temp_r0_1472;
-    MKDynamicBone *temp_r0_1495;
-    MKDynamicBone *temp_r0_1514;
-    u32 temp_r0_1458;
-    u32 temp_r0_1500;
+    MKDynamicBone **lowest;
+    MKDynamicBone **p;
+    MKDynamicBone **q;
 
-    var_r4_1448 = spareTemplates;
-    var_r30_1449 = var_r4_1448;
-    var_r3_1450 = var_r4_1448;
-loop_3:
-    temp_r0_1458 = M2C_FIELD(var_r3_1450, u32 *, -4);
-    var_r3_1450 -= 4;
-    if (temp_r0_1458 != 0U) {
-        temp_r0_1453 = *var_r3_1450;
-        if (temp_r0_1453 < var_r30_1449) {
-            var_r30_1449 = (MKDynamicBone **) temp_r0_1453;
+    lowest = spareTemplates;
+    p = spareTemplates;
+    for (;;) {
+        p -= 1;
+        if (*p == NULL) {
+            break;
         }
-        goto loop_3;
+        if ((u32) *p < (u32) lowest) {
+            lowest = (MKDynamicBone **) *p;
+        }
     }
-    if (var_r3_1450 != &gEmptyPtrListDL) {
-loop_9:
-        temp_r0_1472 = *var_r4_1448;
-        if (temp_r0_1472 != NULL) {
-            if (temp_r0_1472 < var_r30_1449) {
-                var_r30_1449 = (MKDynamicBone **) temp_r0_1472;
+    if (p != (MKDynamicBone **) &gEmptyPtrListDL) {
+        q = spareTemplates;
+        while (*q != NULL) {
+            if ((u32) *q < (u32) lowest) {
+                lowest = (MKDynamicBone **) *q;
             }
-            var_r4_1448 += 4;
-            goto loop_9;
+            q += 1;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1449, NULL, 0);
+            MKHeap::Current()->Free(lowest, NULL, 0);
         } else {
-            free(var_r30_1449);
+            free(lowest);
         }
     }
     spareTemplates = NULL;
-    var_r4_1490 = this->unk0;
-    var_r30_1491 = var_r4_1490;
-    var_r3_1492 = var_r4_1490;
-loop_16:
-    temp_r0_1500 = M2C_FIELD(var_r3_1492, u32 *, -4);
-    var_r3_1492 -= 4;
-    if (temp_r0_1500 != 0U) {
-        temp_r0_1495 = *var_r3_1492;
-        if (temp_r0_1495 < var_r30_1491) {
-            var_r30_1491 = (MKDynamicBone **) temp_r0_1495;
+
+    lowest = this->unk0;
+    p = this->unk0;
+    for (;;) {
+        p -= 1;
+        if (*p == NULL) {
+            break;
         }
-        goto loop_16;
+        if ((u32) *p < (u32) lowest) {
+            lowest = (MKDynamicBone **) *p;
+        }
     }
-    if (var_r3_1492 != &gEmptyPtrListDL) {
-loop_22:
-        temp_r0_1514 = *var_r4_1490;
-        if (temp_r0_1514 != NULL) {
-            if (temp_r0_1514 < var_r30_1491) {
-                var_r30_1491 = (MKDynamicBone **) temp_r0_1514;
+    if (p != (MKDynamicBone **) &gEmptyPtrListDL) {
+        q = this->unk0;
+        while (*q != NULL) {
+            if ((u32) *q < (u32) lowest) {
+                lowest = (MKDynamicBone **) *q;
             }
-            var_r4_1490 += 4;
-            goto loop_22;
+            q += 1;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1491, NULL, 0);
+            MKHeap::Current()->Free(lowest, NULL, 0);
         } else {
-            free(var_r30_1491);
+            free(lowest);
         }
     }
     this->unk0 = NULL;
 }
-#endif
 
 void MKDynamicBoneSystem::Init() {
     MKDynamicBone **temp_r3_1580;
@@ -1139,40 +1100,36 @@ void MKDynamicBoneSystem::Init() {
     this->unk4 = 0;
 }
 
-#if 0 // DRAFT: identifier 'arg2' redeclared
-void MKDynamicBone_SetUpdater(MKDynamicBone *arg0, void (*arg2)(MKDynamicBone *, void *), void *arg2) {
+void MKDynamicBone_SetUpdater(MKDynamicBone *arg0, void (*arg1)(MKDynamicBone *, void *), void *arg2) {
     if (arg1 != NULL) {
-        arg0->unk2C = (void (*)(MKDynamicBone *, MKDynamicBone *, void *)) arg1;
-        arg0->unk28 = arg2;
+        arg0->unk2C = arg1;
+        M2C_FIELD(arg0, void **, 0x28) = arg2;
         return;
     }
-    arg0->unk2C = &MKDynamicBone::DefaultUpdater;
-    arg0->unk28 = NULL;
+    arg0->unk2C = MKDynamicBone::DefaultUpdater;
+    M2C_FIELD(arg0, void **, 0x28) = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKDynamicBoneSystem' to 'void **'
 void *MKDynamicBone_GetDynamicBone(MKModel *arg0, int arg1) {
-    void **var_r30_1687;
-    void *temp_r3_1697;
-    void *temp_r3_1706;
+    MKDynamicBone **var_r30_1687;
+    MKDynamicBone *temp_r3_1697;
+    MKDynamicBone *temp_r3_1706;
 
-    var_r30_1687 = gDynamicBones;
+    var_r30_1687 = gDynamicBones.unk0;
 loop_6:
     temp_r3_1706 = *var_r30_1687;
     if (temp_r3_1706 == NULL) {
         return NULL;
     }
-    if (((u32) M2C_FIELD(temp_r3_1706, u32 *, 0x24) == arg0) && (MKModel_GetAnimation(arg0) != NULL)) {
+    if ((M2C_FIELD(temp_r3_1706, MKModel **, 0x24) == arg0) && (MKModel_GetAnimation(arg0) != NULL)) {
         temp_r3_1697 = *var_r30_1687;
         if ((s16) M2C_FIELD(M2C_FIELD(temp_r3_1697, void **, 0x20), s16 *, 0x70) == (s16) arg1) {
             return temp_r3_1697;
         }
     }
-    var_r30_1687 += 4;
+    var_r30_1687 += 1;
     goto loop_6;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void *MKDynamicBone_AddDynamicBone(MKModel *arg0, int arg1) {
