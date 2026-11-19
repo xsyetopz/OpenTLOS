@@ -175,9 +175,16 @@ def main() -> None:
         for addr in sorted(vt_names):
             f.write(f"0x{addr:08X}\t{vt_names[addr]}\t{len(ten_vts[addr])}\n")
     print(f"vtables: ANB {len(anb_vts)}, TEN candidates {len(ten_vts)}, paired {len(vt_names)}")
-    m.stage_order(splits)
-    if fuzzy.stage(m):
-        m.stage_calls()
+    for _ in range(4):  # fuzzy pairs split gaps, which lets order, calls and fuzzy add more
+        before = len(m.a2t)
+        m.stage_order(splits)
+        fuzzy.stage(m)
+        for _ in range(8):
+            if not m.stage_calls():
+                break
+        tu_align.align(m, splits, tu_funcs)
+        if len(m.a2t) == before:
+            break
     counts = defaultdict(int)
     with open(out, "w", encoding="utf-8") as f:
         f.write("ten_addr\tten_size\tanb_name\tanb_addr\tanb_size\tanb_tu\tmethod\tconfidence\n")
