@@ -68,9 +68,8 @@ void Button::Update() {
     this->unkEC &= ~0x80;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 Button::LoadLine(MKIniLine *arg0) {
-    u8 sp8;
+    bool sp8;
     s32 var_r31_261;
 
     if (arg0->LoadBool("Charge", &sp8, 0) != 0) {
@@ -82,7 +81,6 @@ s32 Button::LoadLine(MKIniLine *arg0) {
     }
     return var_r31_261;
 }
-#endif
 
 void Button::Init() {
     Trap::Init();
