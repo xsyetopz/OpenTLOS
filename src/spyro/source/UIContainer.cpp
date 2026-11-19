@@ -161,22 +161,17 @@ loop_3:
     return var_r3_237;
 }
 
-#if 0 // DRAFT: function call 'strcmpi(const char *)' does not match 'strcmpi(signed char *)'
+extern "C" s32 strcmpi(s8 *, s8 *);
 UIObject *UIContainer::FindChild(const char *arg0) {
     UIObject *var_r31_259;
 
-    var_r31_259 = this->unk60;
-loop_5:
-    if (var_r31_259 == NULL) {
-        return NULL;
+    for (var_r31_259 = this->unk60; var_r31_259 != NULL; var_r31_259 = var_r31_259->unk10) {
+        if (((u32) var_r31_259->unk4 != 0) && (strcmpi((s8 *) arg0, (s8 *) var_r31_259->unk4) == 0)) {
+            return var_r31_259;
+        }
     }
-    if (((u32) var_r31_259->unk4 != 0) && (strcmpi(arg0) == 0)) {
-        return var_r31_259;
-    }
-    var_r31_259 = var_r31_259->unk10;
-    goto loop_5;
+    return NULL;
 }
-#endif
 
 void UIContainer::Resolve() {
     UIObject *var_r31_294;
@@ -191,47 +186,39 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to 'const char *'
+extern "C" UIObject *malloc(u32);
 s32 UIContainer::LoadLine(UIDataLine *arg0) {
-    MCLoadCheckScreen *var_r29_339;
-    MKIniLine *var_r29_377;
-    UIObject *var_r31_356;
-    void *temp_r30_347;
+    s8 *desc;
+    UIObject *obj;
+    MKIniLine *sub;
+    s32 size;
 
     if (((MKIniLine *) arg0)->IsField("include") != 0) {
-        Load(((MKIniLine *) arg0)->GetString(0), NULL);
+        UIObject::Load((const char *) ((MKIniLine *) arg0)->GetString(0), NULL);
         return 1;
     }
-    var_r29_339 = UIObjectDescriptor::list.unk0;
-loop_12:
-    if (var_r29_339 == NULL) {
-        return UIObject::LoadLine(arg0);
-    }
-    if (((MKIniLine *) arg0)->IsField((s8 *) var_r29_339->__vptr) != 0) {
-        temp_r30_347 = var_r29_339->unk8;
-        if (MKHeap::Current() != NULL) {
-            var_r31_356 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r30_347, NULL, 0));
-        } else {
-            var_r31_356 = malloc((s32) temp_r30_347);
+    for (desc = (s8 *) UIObjectDescriptor::list.unk0; desc != NULL; desc = M2C_FIELD(desc, s8 **, 0x10)) {
+        if (((MKIniLine *) arg0)->IsField(M2C_FIELD(desc, const char **, 0x0)) != 0) {
+            size = M2C_FIELD(desc, s32 *, 0x8);
+            if (MKHeap::Current() != NULL) {
+                obj = (UIObject *) MKHeap::Current()->Alloc(size, NULL, 0);
+            } else {
+                obj = malloc((u32) size);
+            }
+            M2C_FIELD(desc, void (**)(UIObject *), 0xC)(obj);
+            obj->unk8 = desc;
+            M2C_FIELD(*(s8 **) obj, void (**)(UIObject *), 0x8)(obj);
+            sub = arg0->unkC->GetSubLine((MKIniLine *) arg0);
+            for (; sub != NULL; sub = sub->unkC->GetNextLine(sub)) {
+                M2C_FIELD(*(s8 **) obj, s32 (**)(UIObject *, UIDataLine *), 0x10)(obj, (UIDataLine *) sub);
+            }
+            AddBefore(NULL, obj);
+            M2C_FIELD(*(s8 **) obj, void (**)(UIObject *), 0x14)(obj);
+            return 1;
         }
-        ((M2C_UNK (*)(UIObject *)) var_r29_339->unkC)(var_r31_356);
-        var_r31_356->unk8 = var_r29_339;
-        var_r31_356->Init();
-        var_r29_377 = arg0->unkC->GetSubLine((MKIniLine *) arg0);
-loop_9:
-        if (var_r29_377 != NULL) {
-            var_r31_356->LoadLine(var_r29_377);
-            var_r29_377 = var_r29_377->unkC->GetNextLine(var_r29_377);
-            goto loop_9;
-        }
-        AddBefore(NULL, var_r31_356);
-        var_r31_356->LoadDone();
-        return 1;
     }
-    var_r29_339 = (MCLoadCheckScreen *) var_r29_339->unk10;
-    goto loop_12;
+    return UIObject::LoadLine(arg0);
 }
-#endif
 
 void UIContainer::Deinit() {
     UIObject *temp_r31_430;

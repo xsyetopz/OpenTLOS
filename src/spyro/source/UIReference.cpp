@@ -21,32 +21,27 @@ void UIReference::Draw(const RenderContext &arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void **' to 'const char *'
 void UIReference::Resolve() {
     void **temp_r31_68;
 
     UIObject::Resolve();
     temp_r31_68 = this->unk60;
     if (temp_r31_68 != NULL) {
-        this->unk60 = (const char *) (Find(temp_r31_68));
-        UIStringTable_Remove((s8 *) temp_r31_68);
+        this->unk60 = (void **) (Find((const char *) temp_r31_68));
+        UIStringTable_Remove((const char *) temp_r31_68);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 UIReference::LoadLine(UIDataLine *arg0) {
-    s8 *sp8;
+    const char *sp8;
 
     sp8 = NULL;
     if (((MKIniLine *) arg0)->LoadString("target", &sp8, 0) != 0) {
-        UIStringTable_Add(sp8);
-        this->unk60 = M2C_ERROR(/* Read from unset register $r3 */);
+        this->unk60 = (void **) ((s32 (*)(const char *)) UIStringTable_Add)(sp8);
         return 1;
     }
     return UIObject::LoadLine(arg0);
 }
-#endif
 
 void UIReference::Init() {
     UIObject::Init();

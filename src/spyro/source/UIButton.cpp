@@ -11,12 +11,9 @@ void UIButtonGroup::OnSelectionChanged() {
     this->unk6C.Send();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 s32 UIButtonGroup::SetSelection(int arg0) {
-    s32 sp14;
-    s32 sp10;
-    s32 spC;
-    s32 sp8;
+    UIMessage sp10;
+    UIMessage sp8;
     UIObject *temp_r3_42;
     UIObject *temp_r3_56;
     s32 temp_r4_35;
@@ -25,92 +22,26 @@ s32 UIButtonGroup::SetSelection(int arg0) {
         temp_r4_35 = this->unk68;
         if ((temp_r4_35 >= 0) && (temp_r4_35 < (s32) this->unk64)) {
             temp_r3_42 = GetChild(temp_r4_35);
-            sp10 = 9;
-            sp14 = 0;
-            M2C_FIELD(temp_r3_42->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
+            sp10.unk0 = 9;
+            sp10.unk4 = 0;
+            M2C_FIELD(*(s8 **) temp_r3_42, s32 (**)(UIObject *, UIMessage *), 0x2C)(temp_r3_42, &sp10);
         }
         this->unk68 = arg0;
         temp_r3_56 = GetChild(this->unk68);
-        sp8 = 8;
-        spC = 0;
-        M2C_FIELD(temp_r3_56->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        sp8.unk0 = 8;
+        sp8.unk4 = 0;
+        M2C_FIELD(*(s8 **) temp_r3_56, s32 (**)(UIObject *, UIMessage *), 0x2C)(temp_r3_56, &sp8);
         return 1;
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 s32 UIButtonGroup::Message(UIMessage *arg0) {
-    s32 temp_cr0_eq_128;
-    s32 temp_r0_87;
-    s32 temp_r30_117;
-    s32 temp_r30_161;
-    s32 temp_r3_122;
-    s32 temp_r3_125;
-    s32 temp_r4_127;
-    s32 var_r29_118;
-    s32 var_r29_162;
-    s32 var_r4_167;
+    s32 initial;
+    s32 cur;
+    UIObject *child;
 
-    temp_r0_87 = arg0->unk0;
-    if ((u32) temp_r0_87 <= 0xCU) {
-        switch (temp_r0_87) {
-        case 1:
-            SetSelection(arg0->unk4);
-            goto block_26;
-        case 6:
-            M2C_FIELD(GetChild(this->unk68)->__vptr, M2C_UNK (**)(UIMessage *), 0x2C)(arg0);
-            return;
-        case 10:
-            if ((u8) this->unk15 != 0) {
-                temp_r30_117 = this->unk68;
-                var_r29_118 = temp_r30_117;
-loop_6:
-                temp_r3_122 = this->unk64 - 1;
-                temp_r3_125 = (var_r29_118 - temp_r3_122) + (temp_r3_122 ^ 0x80000000);
-                temp_r4_127 = (var_r29_118 + 1) & ~((temp_r3_125 - temp_r3_125) - !M2C_CARRY);
-                temp_cr0_eq_128 = temp_r4_127 == temp_r30_117;
-                var_r29_118 = temp_r4_127;
-                if (temp_cr0_eq_128 == 0) {
-                    if (SetSelection() == 0) {
-                        goto loop_6;
-                    }
-                }
-                if (temp_r30_117 != (s32) this->unk68) {
-                    OnSelectionChanged();
-                }
-                return;
-            }
-            return;
-        case 11:
-            if ((u8) this->unk15 != 0) {
-                temp_r30_161 = this->unk68;
-                var_r29_162 = temp_r30_161;
-loop_14:
-                if (var_r29_162 <= 0) {
-                    var_r4_167 = this->unk64 - 1;
-                } else {
-                    var_r4_167 = var_r29_162 - 1;
-                }
-                var_r29_162 = var_r4_167;
-                if ((var_r4_167 != temp_r30_161) && (SetSelection() == 0)) {
-                    goto loop_14;
-                }
-                if (temp_r30_161 != (s32) this->unk68) {
-                    OnSelectionChanged();
-                }
-                return;
-            }
-            return;
-        case 12:
-            if (SetSelection(arg0->unk4) != 0) {
-                OnSelectionChanged();
-                return;
-            }
-            return;
-        }
-    } else {
+    switch (arg0->unk0) {
     case 0:
     case 2:
     case 3:
@@ -119,11 +50,51 @@ loop_14:
     case 7:
     case 8:
     case 9:
-block_26:
-        UIContainer::Message(arg0);
+        break;
+    case 1:
+        M2C_FIELD(*(s8 **) this, s32 (**)(UIButtonGroup *, s32), 0x38)(this, arg0->unk4);
+        break;
+    case 6:
+        child = GetChild(this->unk68);
+        M2C_FIELD(*(s8 **) child, s32 (**)(UIObject *, UIMessage *), 0x2C)(child, arg0);
+        return 1;
+    case 10:
+        if ((u8) this->unk15 != 0) {
+            initial = this->unk68;
+            cur = initial;
+            do {
+                cur = (cur < this->unk64 - 1) ? cur + 1 : 0;
+            } while (cur != initial && (u8) M2C_FIELD(*(s8 **) this, s32 (**)(UIButtonGroup *, s32), 0x38)(this, cur) == 0);
+            if (initial != this->unk68) {
+                M2C_FIELD(*(s8 **) this, void (**)(UIButtonGroup *), 0x3C)(this);
+            }
+            return this->unk68 != initial;
+        }
+        return 0;
+    case 11:
+        if ((u8) this->unk15 != 0) {
+            initial = this->unk68;
+            cur = initial;
+            do {
+                cur = (cur > 0) ? cur - 1 : this->unk64 - 1;
+            } while (cur != initial && (u8) M2C_FIELD(*(s8 **) this, s32 (**)(UIButtonGroup *, s32), 0x38)(this, cur) == 0);
+            if (initial != this->unk68) {
+                M2C_FIELD(*(s8 **) this, void (**)(UIButtonGroup *), 0x3C)(this);
+            }
+            return this->unk68 != initial;
+        }
+        return 0;
+    case 12:
+        if ((u8) M2C_FIELD(*(s8 **) this, s32 (**)(UIButtonGroup *, s32), 0x38)(this, arg0->unk4) != 0) {
+            M2C_FIELD(*(s8 **) this, void (**)(UIButtonGroup *), 0x3C)(this);
+            return 1;
+        }
+        return 0;
+    default:
+        break;
     }
+    return UIContainer::Message(arg0);
 }
-#endif
 
 void UIButtonGroup::Resolve() {
     UIContainer::Resolve();
