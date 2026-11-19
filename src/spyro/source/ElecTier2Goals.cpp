@@ -411,15 +411,13 @@ block_8:
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkAEC'
 void ElecTier2Goal_FlyIdle::Activate() {
     this->unk8 = 0;
-    this->unkC->unkAEC = 0;
+    ((Enemy *) this->unkC)->unkAEC = 0;
     this->unkC->StopMovement(1U);
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 0xA, 0, 1, 0.15f, 0U, 0U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
 }
-#endif
 
 void ElecTier2Goal_Idle::Reset() {
     this->unk8 = 1;
@@ -459,15 +457,13 @@ block_8:
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkAEC'
 void ElecTier2Goal_Idle::Activate() {
     this->unk8 = 0;
-    this->unkC->unkAEC = 0;
+    ((Enemy *) this->unkC)->unkAEC = 0;
     this->unkC->StopMovement(1U);
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 1, this->unk18, 0, 0.15f, 0U, 0U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
 }
-#endif
 
 void ElecTier2Goal_PatrolMode::Terminate() {
     this->unk8 = 1;
@@ -505,7 +501,6 @@ u8 ElecTier2Goal_PatrolMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void ElecTier2Goal_PatrolMode::Activate() {
     MKVector3 sp18;
     MKVector3 sp8;
@@ -528,26 +523,26 @@ void ElecTier2Goal_PatrolMode::Activate() {
     }
     temp_r4_963 = this->unkC;
     if (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_963->unkA7C) {
-        var_r30_972 = 0;
-        if (((u8) M2C_FIELD(temp_r4_963, u8 *, 0x8B8) == 2) || (temp_r4_963->unk870.unk40.Get() != NULL)) {
-            var_r30_972 = 1;
-        }
-        if (var_r30_972 != 0) {
-            temp_r30_984 = this->unkC;
-            if (((u8) M2C_FIELD(temp_r30_984, u8 *, 0x8B9) >> 6U) & 1) {
-                sp18 = temp_r30_984->unk870.GetPos();
-                temp_f3_995 = sp18.unk8 - temp_r30_984->unk588.unk8;
-                temp_f2_997 = M2C_BITWISE(f32, sp18) - temp_r30_984->unk588.unk0;
-                if (((temp_f2_997 * temp_f2_997) + (temp_f3_995 * temp_f3_995)) < 250000.0f) {
-                    sp8 = this->unkC->unk870.GetPos();
-                    if (this->unkC->unk588.unk4 > sp8.unk4) {
-                        AddSubgoal((Goal<Enemy> *) this->unk2C);
-                    }
-                }
-                goto block_13;
-            }
-        }
         goto block_11;
+    }
+    var_r30_972 = 0;
+    if (((u8) M2C_FIELD(temp_r4_963, u8 *, 0x8B8) == 2) || (temp_r4_963->unk870.unk40.Get() != NULL)) {
+        var_r30_972 = 1;
+    }
+    if (var_r30_972 != 0) {
+        temp_r30_984 = this->unkC;
+        if (((u8) M2C_FIELD(temp_r30_984, u8 *, 0x8B9) >> 6U) & 1) {
+            sp18 = temp_r30_984->unk870.GetPos();
+            temp_f3_995 = sp18.unk8 - temp_r30_984->unk588.unk8;
+            temp_f2_997 = sp18.unk0 - temp_r30_984->unk588.unk0;
+            if (((temp_f2_997 * temp_f2_997) + (temp_f3_995 * temp_f3_995)) < 250000.0f) {
+                sp8 = this->unkC->unk870.GetPos();
+                if (this->unkC->unk588.unk4 > sp8.unk4) {
+                    AddSubgoal((Goal<Enemy> *) this->unk2C);
+                }
+            }
+            goto block_13;
+        }
     }
 block_11:
     if (this->unkC->HasWaypoints() != 0) {
@@ -563,7 +558,6 @@ block_11:
 block_13:
     AddSubgoal((Goal<Enemy> *) this->unk28);
 }
-#endif
 
 void ElecTier2Goal_PatrolMode::Deinit() {
     Goal<Enemy> *temp_r3_1062;
