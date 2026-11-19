@@ -398,157 +398,150 @@ loop_8:
     return temp_f31_580 + ((*(f32 *) ((u8 *) &sp8 + 0xc)) - arg2.unk4);
 }
 
-#if 0 // DRAFT: type mismatch 'signed char *' and 'const char *'
 s32 MKFont_GetNumRenderableChars(const char *arg0, int arg1) {
-    s32 var_r7_850;
-    s8 *var_r6_851;
-    u8 temp_r5_876;
-    u8 var_r0_861;
+    s32 var_r7;
+    const char *var_r6;
+    s8 temp_r5;
+    u8 var_r0;
 
-    var_r7_850 = 0;
-    var_r6_851 = (signed char *) (arg0);
-loop_10:
-    temp_r5_876 = (u8) *var_r6_851;
-    if (((s8) temp_r5_876 != 0) && ((u32) (var_r6_851 - arg0) < (u32) arg1)) {
-        if ((s8) temp_r5_876 == 0x3C) {
-            var_r7_850 += 1;
+    var_r7 = 0;
+    var_r6 = arg0;
+    while (((s8) (u8) *var_r6 != 0) && ((u32) (var_r6 - arg0) < (u32) arg1)) {
+        temp_r5 = (s8) (u8) *var_r6;
+        if (temp_r5 == 0x3C) {
+            var_r7 += 1;
         } else {
-            var_r0_861 = 0;
-            if (((s8) temp_r5_876 == 0x20) || ((s8) temp_r5_876 == 9) || ((s8) temp_r5_876 == 0xA)) {
-                var_r0_861 = 1;
+            var_r0 = 0;
+            if ((temp_r5 == 0x20) || (temp_r5 == 9) || (temp_r5 == 0xA)) {
+                var_r0 = 1;
             }
-            if (var_r0_861 == 0) {
-                var_r7_850 += 1;
+            if (var_r0 == 0) {
+                var_r7 += 1;
             }
         }
-        var_r6_851 += 1;
-        goto loop_10;
+        var_r6 += 1;
     }
-    return var_r7_850;
+    return var_r7;
 }
-#endif
 
-#if 0 // DRAFT: illegal function overloading
-void MKFont_GetCharPos(MKFont *arg1, const char *arg2, int arg3, float farg0) {
+extern "C" f64 fmod(f64, f64);
+MKVector3 MKFont_GetCharPos(MKFont *arg1, const char *arg2, int arg3, float farg0) {
     MKVector3 result;
-    MKVector3 *sret = &result;
-    f64 sp18;
-    f64 sp10;                                       /* compiler-managed */
     f32 sp8;
-    f32 temp_f29_921;
-    f32 temp_f30_920;
     f32 temp_f31_915;
-    s8 *var_r31_909;
-    s8 *var_r4_927;
+    f32 temp_f30_920;
+    f32 temp_f29_921;
+    const char *var_r31_909;
+    const char *var_r4_927;
+    s8 temp_r5_993;
     u8 temp_r0_932;
-    u8 temp_r5_993;
     u8 var_r3_933;
+    s32 glyph;
     void *temp_r3_917;
 
-    sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    var_r31_909 = (signed char *) (arg2);
-    sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(&result, f64 *, 0) = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(&result, f64 *, 8) = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    var_r31_909 = arg2;
     temp_f31_915 = MKFontInternal_CalcHeightAndScale(arg1, farg0, &sp8);
-    temp_r3_917 = **arg1;
+    temp_r3_917 = M2C_FIELD(arg1, void **, 0);
+    temp_r3_917 = M2C_FIELD(temp_r3_917, void **, 0);
     temp_f30_920 = M2C_FIELD(temp_r3_917, f32 *, 8) * sp8;
     temp_f29_921 = M2C_FIELD(temp_r3_917, f32 *, 0xC) * sp8;
-loop_18:
-    temp_r5_993 = (u8) *var_r31_909;
-    if (((s8) temp_r5_993 != 0) && ((u32) (var_r31_909 - arg2) < (u32) arg3)) {
-        switch ((s8) temp_r5_993) {                 /* irregular */
-        case 0x3C:
+    temp_r5_993 = (s8) (u8) *var_r31_909;
+    while ((temp_r5_993 != 0) && ((u32) (var_r31_909 - arg2) < (u32) arg3)) {
+        glyph = 0;
+        if (temp_r5_993 == 0x3C) {
             var_r4_927 = var_r31_909 + 1;
-loop_4:
             temp_r0_932 = (u8) *var_r4_927;
             var_r3_933 = 0;
             if (((s8) temp_r0_932 == 0x20) || ((s8) temp_r0_932 == 9) || ((s8) temp_r0_932 == 0xA)) {
                 var_r3_933 = 1;
             }
-            if (var_r3_933 != 0) {
+            while (var_r3_933 != 0) {
                 var_r4_927 += 1;
-                goto loop_4;
+                temp_r0_932 = (u8) *var_r4_927;
+                var_r3_933 = 0;
+                if (((s8) temp_r0_932 == 0x20) || ((s8) temp_r0_932 == 9) || ((s8) temp_r0_932 == 0xA)) {
+                    var_r3_933 = 1;
+                }
             }
-        default:
-            sp10 += (sp8 * *(M2C_FIELD(**arg1, s32 *, 0x28) + (((s8) temp_r5_993 << 5) + 0x18))) + temp_f30_920;
-            break;
-        case 0x20:
-            sp10 = (f32) sp10 + temp_f29_921;
-            break;
-        case 0xA:
-            sp10 = 0.0f;
-            (*(f32 *) ((u8 *) &sp8 + 0xc)) += temp_f31_915;
-            break;
-        case 0x9:
-            sp10 = (sp10 + gFontTabWidth) - (f32) fmod(sp10, gFontTabWidth);
-            break;
+            glyph = 1;
+        } else if (temp_r5_993 == 0x20) {
+            result.unk0 = result.unk0 + temp_f29_921;
+        } else if (temp_r5_993 == 0xA) {
+            result.unk0 = 0.0f;
+            result.unk4 = result.unk4 + temp_f31_915;
+        } else if (temp_r5_993 == 0x9) {
+            result.unk0 = (result.unk0 + gFontTabWidth) - (f32) fmod((f64) result.unk0, (f64) gFontTabWidth);
+        } else {
+            glyph = 1;
+        }
+        if (glyph != 0) {
+            result.unk0 = result.unk0 + ((sp8 * *(f32 *) ((u8 *) M2C_FIELD(M2C_FIELD(M2C_FIELD(arg1, void **, 0), void **, 0), void **, 0x28) + (((s8) temp_r5_993 << 5) + 0x18))) + temp_f30_920);
         }
         var_r31_909 += 1;
-        goto loop_18;
+        temp_r5_993 = (s8) (u8) *var_r31_909;
     }
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(sret, f64 *, 8) = sp18;
     return result;
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 f32 MKFont_CalculateWidth(MKFont *arg0, const char *arg1, float arg2, float arg3, int arg4, float *arg5) {
-    f64 sp18;
-    f64 sp10;                                       /* compiler-managed */
+    MKVector3 pos;
     f32 sp8;
-    f32 temp_f28_1059;
-    f32 temp_f29_1058;
     f32 temp_f31_1051;
-    f32 var_f1_1095;
+    f32 temp_f29_1058;
+    f32 temp_f28_1059;
     f32 var_f30_1040;
     f32 var_f3_1144;
-    s32 var_ctr_1147;
+    f32 var_f1_1095;
     s32 var_r29_1053;
-    s8 *var_r30_1046;
-    s8 *var_r31_1045;
-    s8 *var_r4_1065;
-    s8 *var_r6_1145;
+    s32 var_ctr_1147;
+    s32 glyph;
+    const char *var_r30_1046;
+    const char *var_r31_1045;
+    const char *var_r4_1065;
+    const char *var_r6_1145;
+    s8 temp_r5_1206;
     u8 temp_r0_1070;
-    u8 temp_r4_1153;
-    u8 temp_r5_1206;
-    u8 var_r0_1152;
     u8 var_r3_1071;
+    u8 temp_r4_1153;
+    u8 var_r0_1152;
     void *temp_r3_1054;
 
     var_f30_1040 = 0.0f;
-    sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    var_r31_1045 = (signed char *) (arg1);
-    var_r30_1046 = (signed char *) (arg1);
-    sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(&pos, f64 *, 0) = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(&pos, f64 *, 8) = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    var_r31_1045 = arg1;
+    var_r30_1046 = arg1;
     temp_f31_1051 = MKFontInternal_CalcHeightAndScale(arg0, arg2, &sp8);
     var_r29_1053 = 0;
-    temp_r3_1054 = **arg0;
+    temp_r3_1054 = M2C_FIELD(arg0, void **, 0);
+    temp_r3_1054 = M2C_FIELD(temp_r3_1054, void **, 0);
     temp_f29_1058 = M2C_FIELD(temp_r3_1054, f32 *, 8) * sp8;
     temp_f28_1059 = M2C_FIELD(temp_r3_1054, f32 *, 0xC) * sp8;
-loop_35:
-    temp_r5_1206 = (u8) *var_r31_1045;
-    if (((s8) temp_r5_1206 != 0) && (var_r29_1053 < arg4)) {
-        switch ((s8) temp_r5_1206) {                /* irregular */
-        case 0x3C:
+    temp_r5_1206 = (s8) (u8) *var_r31_1045;
+    while ((temp_r5_1206 != 0) && (var_r29_1053 < arg4)) {
+        glyph = 0;
+        if (temp_r5_1206 == 0x3C) {
             var_r4_1065 = var_r31_1045 + 1;
-loop_4:
             temp_r0_1070 = (u8) *var_r4_1065;
             var_r3_1071 = 0;
             if (((s8) temp_r0_1070 == 0x20) || ((s8) temp_r0_1070 == 9) || ((s8) temp_r0_1070 == 0xA)) {
                 var_r3_1071 = 1;
             }
-            if (var_r3_1071 != 0) {
+            while (var_r3_1071 != 0) {
                 var_r4_1065 += 1;
-                goto loop_4;
+                temp_r0_1070 = (u8) *var_r4_1065;
+                var_r3_1071 = 0;
+                if (((s8) temp_r0_1070 == 0x20) || ((s8) temp_r0_1070 == 9) || ((s8) temp_r0_1070 == 0xA)) {
+                    var_r3_1071 = 1;
+                }
             }
-        default:
-            sp10 += (sp8 * *(M2C_FIELD(**arg0, s32 *, 0x28) + (((s8) temp_r5_1206 << 5) + 0x18))) + temp_f29_1058;
-            break;
-        case 0x20:
-            sp10 = (f32) sp10 + temp_f28_1059;
-            break;
-        case 0xA:
-            var_f1_1095 = sp10;
+            glyph = 1;
+        } else if (temp_r5_1206 == 0x20) {
+            pos.unk0 = pos.unk0 + temp_f28_1059;
+        } else if (temp_r5_1206 == 0xA) {
+            var_f1_1095 = pos.unk0;
             if (var_f1_1095 > var_f30_1040) {
 
             } else {
@@ -556,58 +549,58 @@ loop_4:
             }
             var_f30_1040 = var_f1_1095;
             var_r30_1046 = var_r31_1045 + 1;
-            sp10 = 0.0f;
-            (*(f32 *) ((u8 *) &sp10 + 0x4)) += temp_f31_1051;
-            break;
-        case 0x9:
-            sp10 = (sp10 + gFontTabWidth) - (f32) fmod(sp10, gFontTabWidth);
-            break;
+            pos.unk0 = 0.0f;
+            pos.unk4 = pos.unk4 + temp_f31_1051;
+        } else if (temp_r5_1206 == 0x9) {
+            pos.unk0 = (pos.unk0 + gFontTabWidth) - (f32) fmod((f64) pos.unk0, (f64) gFontTabWidth);
+        } else {
+            glyph = 1;
         }
-        if ((arg3 > 0.0f) && (sp10 > arg3)) {
-            var_f3_1144 = sp10;
+        if (glyph != 0) {
+            pos.unk0 = pos.unk0 + ((sp8 * *(f32 *) ((u8 *) M2C_FIELD(M2C_FIELD(M2C_FIELD(arg0, void **, 0), void **, 0), void **, 0x28) + (((s8) temp_r5_1206 << 5) + 0x18))) + temp_f29_1058);
+        }
+        if ((arg3 > 0.0f) && (pos.unk0 > arg3)) {
+            var_f3_1144 = pos.unk0;
             var_r6_1145 = var_r31_1045;
             var_ctr_1147 = var_r31_1045 - var_r30_1046;
             if (var_r31_1045 > var_r30_1046) {
-loop_23:
-                var_r0_1152 = 0;
-                temp_r4_1153 = (u8) *var_r6_1145;
-                var_f3_1144 -= (sp8 * *(M2C_FIELD(**arg0, s32 *, 0x28) + (((s8) temp_r4_1153 << 5) + 0x18))) + temp_f29_1058;
-                if (((s8) temp_r4_1153 == 0x20) || ((s8) temp_r4_1153 == 9)) {
-                    var_r0_1152 = 1;
-                }
-                if (var_r0_1152 != 0) {
-                    var_r31_1045 = var_r6_1145 + 1;
-                } else {
+                do {
+                    var_r0_1152 = 0;
+                    temp_r4_1153 = (u8) *var_r6_1145;
+                    var_f3_1144 -= (sp8 * *(f32 *) ((u8 *) M2C_FIELD(M2C_FIELD(M2C_FIELD(arg0, void **, 0), void **, 0), void **, 0x28) + (((s8) temp_r4_1153 << 5) + 0x18))) + temp_f29_1058;
+                    if (((s8) temp_r4_1153 == 0x20) || ((s8) temp_r4_1153 == 9)) {
+                        var_r0_1152 = 1;
+                    }
+                    if (var_r0_1152 != 0) {
+                        var_r31_1045 = var_r6_1145 + 1;
+                        break;
+                    }
                     var_r6_1145 -= 1;
                     var_ctr_1147 -= 1;
-                    if (var_ctr_1147 != 0) {
-                        goto loop_23;
-                    }
-                }
+                } while (var_ctr_1147 != 0);
             }
             if (var_r6_1145 == var_r30_1046) {
-                var_f3_1144 = sp10 - ((sp8 * *(M2C_FIELD(**arg0, s32 *, 0x28) + (((s8) (u8) *var_r31_1045 << 5) + 0x18))) + temp_f29_1058);
+                var_f3_1144 = pos.unk0 - ((sp8 * *(f32 *) ((u8 *) M2C_FIELD(M2C_FIELD(M2C_FIELD(arg0, void **, 0), void **, 0), void **, 0x28) + (((s8) (u8) *var_r31_1045 << 5) + 0x18))) + temp_f29_1058);
             }
             if (var_f3_1144 > var_f30_1040) {
                 var_f30_1040 = var_f3_1144;
             }
             var_r30_1046 = var_r31_1045;
-            sp10 = 0.0f;
-            (*(f32 *) ((u8 *) &sp10 + 0x4)) += temp_f31_1051;
+            pos.unk0 = 0.0f;
+            pos.unk4 = pos.unk4 + temp_f31_1051;
         }
         var_r31_1045 += 1;
         var_r29_1053 += 1;
-        goto loop_35;
+        temp_r5_1206 = (s8) (u8) *var_r31_1045;
     }
     if (arg5 != NULL) {
-        *arg5 = (*(f32 *) ((u8 *) &sp10 + 0x4)) + temp_f31_1051;
+        *arg5 = pos.unk4 + temp_f31_1051;
     }
-    if (sp10 > var_f30_1040) {
-        return sp10;
+    if (pos.unk0 > var_f30_1040) {
+        return pos.unk0;
     }
     return var_f30_1040;
 }
-#endif
 
 f32 MKFontInternal_CalcHeightAndScale(MKFont *arg0, float arg1, float *arg2) {
     f32 temp_f1_1255;
@@ -627,8 +620,10 @@ f32 MKFontInternal_CalcHeightAndScale(MKFont *arg0, float arg1, float *arg2) {
     return var_f31_1253;
 }
 
-#if 0 // DRAFT: pointer/array required
 f32 MKFont_GetHeight(MKFont *arg0) {
-    return M2C_FIELD(**arg0, f32 *, 0x24);
+    void *temp_r3;
+
+    temp_r3 = M2C_FIELD(arg0, void **, 0);
+    temp_r3 = M2C_FIELD(temp_r3, void **, 0);
+    return M2C_FIELD(temp_r3, f32 *, 0x24);
 }
-#endif
