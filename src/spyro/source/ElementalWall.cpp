@@ -2305,38 +2305,35 @@ void ElementalWall::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to 'MKMaterial *'
 f32 ElementalWall::Resolve() {
     s32 temp_r0_4423;
 
     ((KDStateMachine<ElementalWall> *) &this->unkE0)->SetState(this, 3, 0U);
     temp_r0_4423 = this->unk100;
-    switch (temp_r0_4423) {                         /* irregular */
+    switch (temp_r0_4423) {
     case 0:
-        this->unkF4 = MKMaterial_Create"FX_ElementalFlameWall";
-        this->unkF8 = MKMaterial_Create"FX_ElementalFlameWall1";
+        this->unkF4 = (MKMaterial *) MKMaterial_Create("FX_ElementalFlameWall");
+        this->unkF8 = (MKMaterial *) MKMaterial_Create("FX_ElementalFlameWall1");
         ((KDSound_SoundWall *) &this->unk130)->Init(&this->unkB0->unk30, this->unk110, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     case 1:
-        this->unkF4 = MKMaterial_Create"FX_ElementalElectricityWall";
+        this->unkF4 = (MKMaterial *) MKMaterial_Create("FX_ElementalElectricityWall");
         ((KDSound_SoundWall *) &this->unk130)->Init(&this->unkB0->unk30, this->unk110, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     case 2:
-        this->unkF4 = MKMaterial_Create"FX_ElementalIceWall";
+        this->unkF4 = (MKMaterial *) MKMaterial_Create("FX_ElementalIceWall");
         ((KDSound_SoundWall *) &this->unk130)->Init(&this->unkB0->unk30, this->unk110, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     case 3:
-        this->unkF4 = MKMaterial_Create"FX_ElementalEarthWall";
+        this->unkF4 = (MKMaterial *) MKMaterial_Create("FX_ElementalEarthWall");
         ((KDSound_SoundWall *) &this->unk130)->Init(&this->unkB0->unk30, this->unk110, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     }
     this->unk114 = 1.0f / (f32) this->unk104;
     this->unk118 = 1.0f / (f32) this->unk108;
-    MKProp::Resolve();
+    return MKProp::Resolve();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 ElementalWall::LoadLine(MKIniLine *arg0) {
     if (SplineProp::LoadLine(arg0) != 0) {
         return 1U;
@@ -2344,7 +2341,7 @@ s32 ElementalWall::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadInt("Element", (int *) &this->unk100, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadBool("InfiniteCollision", &this->unk11C, 0) != 0) {
+    if (arg0->LoadBool("InfiniteCollision", (bool *) &this->unk11C, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("Height", &this->unk10C, 0) != 0) {
@@ -2360,7 +2357,6 @@ s32 ElementalWall::LoadLine(MKIniLine *arg0) {
     }
     return (u8) (arg0->LoadFloat("IgniteTime", &this->unk120, 0) != 0);
 }
-#endif
 
 void ElementalWall::Deinit() {
     MKMaterial *temp_r3_4657;
