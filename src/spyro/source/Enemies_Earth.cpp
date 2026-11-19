@@ -126,12 +126,10 @@ void EarthTier3::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk244'
 void EarthTier3Descriptor::Deinit() {
-    this->unk244.Deinit();
+    ((CharacterBodyFXData *) ((s8 *) this + 0x244))->Deinit();
     EnemyDescriptor::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk244'
 void EarthTier3Descriptor::LoadDone() {
@@ -294,12 +292,10 @@ void EarthTier1::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk244'
 void EarthTier1Descriptor::Deinit() {
-    this->unk244.Deinit();
+    ((CharacterBodyFXData *) ((s8 *) this + 0x244))->Deinit();
     EnemyDescriptor::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk244'
 void EarthTier1Descriptor::LoadDone() {
