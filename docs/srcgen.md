@@ -21,6 +21,7 @@ tools/srcgen/install.sh $TMPDIR/run                # copies into src/, rebuilds,
 | m2c with context | `run_m2c.py` | `m2c/` |
 | m2c input fixes: jump-table names, realigned frames, paired-single code lowered to lane ps0 (vector source restored by hand) | `asm_prep.py` | used by `run_m2c.py` |
 | C to C++ | `cxxconv.py` | `stage/`, header inlines |
+| Undeclared `unkspX` stack reads as typed reads inside the enclosing local (type from the asm access) | `stackslots.py` | used by `cxxconv.py` |
 | Headers | `headers.py` | `hdr/` |
 | By-value enums (no forward declaration in C++03; real header unknown) | `henums.py` | `hdr/unplaced_enums.h` |
 | Fencing | `fence.py` | `fenced/`, `fence.tsv` |

@@ -35,6 +35,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from asmdata import bindings, objects  # noqa: E402
+from stackslots import resolve, slot_types  # noqa: E402
 from cxxtypes import K, parse, render  # noqa: E402
 from henums import HEADER as ENUM_HEADER, mentions, value_enums  # noqa: E402
 from hmodel import Model, header_key, load_model, type_names  # noqa: E402
@@ -240,7 +241,8 @@ class Converter:
         text = f"{head}{qual}{name}({', '.join(decl_params)}){' const' if const else ''} {body}"
         return text, names
 
-    def convert(self, text: str, tu: str, pools: dict[str, bytes], binds: dict[str, str]) -> tuple[str, str]:
+    def convert(self, text: str, tu: str, pools: dict[str, bytes], binds: dict[str, str],
+                slots: dict[str, dict[int, str]]) -> tuple[str, str]:
         """(TU source, header-inline functions) for one m2c output.
 
         Weak functions and local template instances are copies of header
@@ -277,7 +279,7 @@ class Converter:
             j = i + 1
             while j < len(lines) and lines[j] != "}":
                 j += 1
-            body = "{\n" + "\n".join(lines[i + 1:j]) + "\n}"
+            body = resolve("{\n" + "\n".join(lines[i + 1:j]) + "\n}", slots.get(m.group("name"), {}))
             fix = self.fixes / tu.rsplit(".", 1)[0] / (m.group("name") + ".cpp") if self.fixes else None
             if fix and fix.exists():
                 fn, names = fix.read_text().strip(), set()
@@ -338,8 +340,8 @@ def main() -> int:
             continue
         out.parent.mkdir(parents=True, exist_ok=True)
         asm = a.asm_root / (stem + ".s")
-        pools, binds = (objects(asm), bindings(asm)) if asm.exists() else ({}, {})
-        source, inline = conv.convert(src.read_text(), tu, pools, binds)
+        pools, binds, slots = (objects(asm), bindings(asm), slot_types(asm)) if asm.exists() else ({}, {}, {})
+        source, inline = conv.convert(src.read_text(), tu, pools, binds, slots)
         out.write_text(source)
         if inline and a.inline_root:
             dest = a.inline_root / (stem + ".inl")
