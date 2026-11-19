@@ -3,6 +3,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/Matrix.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -286,7 +287,7 @@ loop_19:
         goto loop_19;
     }
     BuildOceanWaves();
-    M2C_STRUCT_COPY((s32) &this->unk51BC + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk51BC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     this->unk5200 = 0.0f;
 }
 #endif

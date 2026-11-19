@@ -80,7 +80,6 @@ void MKSetMatrix(const Matrix &arg0) {
     MKMaterial_SetLocalToWorld(&arg0, 1.0f);
 }
 
-#if 0 // DRAFT: undefined identifier 'one'
 void MKPrimitive(int arg0, int arg1) {
     s32 spC;
     s32 sp8;
@@ -97,9 +96,8 @@ void MKPrimitive(int arg0, int arg1) {
     MKMaterial_SetLocalities(NULL, NULL, 1, 0);
     MKMaterial_UseLocality(0);
     if (!(arg1 & 0x100)) {
-        MKMaterial_SetGeometryColor(one);
+        MKMaterial_SetGeometryColor(MKVector4::one);
     }
     MKMaterial_Begin();
     MKMaterial_RenderImmediateBegin((u32) arg0, (u32) arg1);
 }
-#endif

@@ -1,4 +1,5 @@
 #include "common/Source/MKWind.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -231,8 +232,8 @@ void MKWind::Init(float arg0, float arg1, float arg2, float arg3, const MKVector
         M2C_FIELD(temp_r7_372, f32 *, 0x154) = (f32) M2C_FIELD(temp_r5_371, f32 *, 0x4C);
         M2C_FIELD(temp_r7_372, f32 *, 0x158) = temp_f4_375;
         M2C_FIELD(temp_r7_372, f32 *, 0x15C) = temp_f5_373;
-        M2C_FIELD(temp_r7_372, f64 *, 0x170) = (f64) M2C_FIELD(&zero, f64 *, 0);
-        M2C_FIELD(temp_r7_372, f64 *, 0x178) = (f64) M2C_FIELD(&zero, f64 *, 8);
+        M2C_FIELD(temp_r7_372, f64 *, 0x170) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
+        M2C_FIELD(temp_r7_372, f64 *, 0x178) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
         var_ctr_369 -= 1;
     } while (var_ctr_369 != 0);
     M2C_FIELD(this, f32 *, 0x190) = 0.0f;

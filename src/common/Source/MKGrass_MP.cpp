@@ -167,7 +167,7 @@ void MKGrass_DrawSubObject(const Frustum &arg0, const MKModel *arg1, const MKAtt
         MKModel_BlobBegin(M2C_FIELD(temp_r27_82, MKModel **, 0x9C));
         blobCount = 0;
         if (M2C_FIELD(temp_r27_82, f32 *, 0x38) == 0.0f) {
-            var_r4_130 = &zero;
+            var_r4_130 = &MKVector3::zero;
         } else {
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f14 */);
@@ -199,11 +199,11 @@ void MKGrass_DrawSubObject(const Frustum &arg0, const MKModel *arg1, const MKAtt
     }
     temp_r3_192 = MKModel_GetColor(arg1);
     var_r23_196 = temp_r3_192;
-    if (memcmp(temp_r3_192, &one, 0x10U) == 0) {
+    if (memcmp(temp_r3_192, &MKVector4::one, 0x10U) == 0) {
         var_r23_196 = NULL;
     }
     MKModel_ExploreBegin(arg1);
-    arg_sp234 = &up;
+    arg_sp234 = &MKVector3::up;
     temp_r22_210 = M2C_ERROR(/* Read from unset register $r3 */);
     arg_sp230 = blobs + 0x1810;
     var_r21_215 = 0;
@@ -329,11 +329,11 @@ loop_88:
                             M2C_FIELD(&arg_sp100, f32 *, 0) = temp_f9_542;
                             temp_f5_547 = arg_sp234->unk4;
                             temp_f8_548 = M2C_FIELD(temp_r27_82, f32 *, 0x4C);
-                            temp_f3_553 = (up.unk0 * arg_sp194) - (temp_f5_547 * (f32) arg_sp190);
+                            temp_f3_553 = (MKVector3::up.unk0 * arg_sp194) - (temp_f5_547 * (f32) arg_sp190);
                             temp_f2_554 = arg_sp234->unk8;
                             arg_sp104 = temp_f8_548;
                             temp_f7_559 = M2C_FIELD(temp_r27_82, f32 *, 0x50);
-                            temp_f4_560 = (temp_f2_554 * (f32) arg_sp190) - (up.unk0 * (f32) arg_sp198);
+                            temp_f4_560 = (temp_f2_554 * (f32) arg_sp190) - (MKVector3::up.unk0 * (f32) arg_sp198);
                             temp_f5_561 = (temp_f5_547 * (f32) arg_sp198) - (temp_f2_554 * arg_sp194);
                             arg_sp108 = temp_f7_559;
                             arg_sp10C = 0.0f;

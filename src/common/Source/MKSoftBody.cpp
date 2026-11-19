@@ -398,7 +398,7 @@ void SoftSweepSphere::Init(MKVector4 *arg0) {
 
 #if 0 // DRAFT: expression syntax error
 void MKCloth::DisableClothCreate(bool arg0) {
-    clothCreateDisabled.unk0 = (s8) this;
+    MKCloth::clothCreateDisabled.unk0 = (s8) this;
 }
 #endif
 
@@ -832,8 +832,8 @@ block_27:
         var_r11_1121 = 0;
         var_r3_1123 = 0;
 loop_43:
-        if (var_r11_1121 < (s32) includedSphereCount) {
-            temp_r10_1126 = &spheres + var_r3_1123;
+        if (var_r11_1121 < (s32) MKCloth::includedSphereCount) {
+            temp_r10_1126 = &MKCloth::spheres + var_r3_1123;
             if (((u8) M2C_FIELD(temp_r10_1126, u8 *, 0x10) >> 5U) & 1) {
                 var_r12_1134 = 0U;
                 var_r4_1135 = 0;
@@ -866,8 +866,8 @@ loop_41:
         var_r25_1188 = 0;
         var_r3_1190 = 0;
 loop_60:
-        if (var_r25_1188 < (s32) includedCapsuleCount) {
-            temp_r26_1193 = &capsules + var_r3_1190;
+        if (var_r25_1188 < (s32) MKCloth::includedCapsuleCount) {
+            temp_r26_1193 = &MKCloth::capsules + var_r3_1190;
             if (((u8) M2C_FIELD(temp_r26_1193, u8 *, 0x4C) >> 5U) & 1) {
                 var_r24_1208 = 0U;
                 var_r4_1209 = 0;
@@ -932,8 +932,8 @@ block_55:
         var_r27_1303 = 0;
         var_r30_1305 = 0;
 loop_69:
-        if (var_r27_1303 < (s32) includedSweepCount) {
-            temp_r26_1308 = &sweepSpheres + var_r30_1305;
+        if (var_r27_1303 < (s32) MKCloth::includedSweepCount) {
+            temp_r26_1308 = &MKCloth::sweepSpheres + var_r30_1305;
             if (((u8) temp_r26_1308->unk38 >> 5U) & 1) {
                 var_r25_1313 = 0U;
                 var_r29_1314 = 0;
@@ -955,8 +955,8 @@ loop_67:
         var_r11_1341 = 0;
         var_r3_1343 = 0;
 loop_79:
-        if (var_r11_1341 < (s32) includedPlaneCount) {
-            temp_r10_1346 = &planes + var_r3_1343;
+        if (var_r11_1341 < (s32) MKCloth::includedPlaneCount) {
+            temp_r10_1346 = &MKCloth::planes + var_r3_1343;
             if (((u8) M2C_FIELD(temp_r10_1346, u8 *, 0x24) >> 5U) & 1) {
                 var_r12_1354 = 0U;
                 var_r4_1355 = 0;
@@ -1246,7 +1246,7 @@ void MKCloth::UpdatePosition() {
         var_r3_1822 = 0;
         var_ctr_1823 = 4;
         do {
-            temp_r5_1825 = &globalForces + var_r3_1822;
+            temp_r5_1825 = &MKCloth::globalForces + var_r3_1822;
             if ((s32) M2C_FIELD(temp_r5_1825, s32 *, 0x10) == 0) {
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -1432,7 +1432,7 @@ void MKCloth::IncludeCollision() {
         var_r25_2016 = 0;
         var_r27_2018 = 0;
         do {
-            temp_r3_2020 = &sweepSpheres + var_r27_2018;
+            temp_r3_2020 = &MKCloth::sweepSpheres + var_r27_2018;
             temp_r3_2020->unk38 &= ~0x20;
             if (((u8) temp_r3_2020->unk38 >> 6U) & 1) {
                 temp_r3_2020->GetBoundingBox(&sp228);
@@ -1442,7 +1442,7 @@ void MKCloth::IncludeCollision() {
                 }
                 if (var_r0_2032 != 0) {
                     temp_r3_2020->unk38 |= 0x20;
-                    includedSweepCount = (s32) (var_r25_2016 + 1);
+                    MKCloth::includedSweepCount = (s32) (var_r25_2016 + 1);
                 }
             }
             var_r25_2016 += 1;
@@ -1451,7 +1451,7 @@ void MKCloth::IncludeCollision() {
         var_r3_2074 = 0;
         var_ctr_2075 = 0x1E;
         do {
-            temp_r7_2077 = &spheres + var_r3_2074;
+            temp_r7_2077 = &MKCloth::spheres + var_r3_2074;
             M2C_FIELD(temp_r7_2077, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r7_2077, u8 *, 0x10) & ~0x20);
             temp_r4_2083 = M2C_FIELD(temp_r7_2077, u8 *, 0x10);
             if ((temp_r4_2083 >> 6U) & 1) {
@@ -1473,7 +1473,7 @@ void MKCloth::IncludeCollision() {
         var_r3_2123 = 0;
         var_ctr_2124 = 0xA;
         do {
-            temp_r7_2126 = &planes + var_r3_2123;
+            temp_r7_2126 = &MKCloth::planes + var_r3_2123;
             M2C_FIELD(temp_r7_2126, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r7_2126, u8 *, 0x24) & ~0x20);
             temp_r4_2132 = M2C_FIELD(temp_r7_2126, u8 *, 0x24);
             if ((temp_r4_2132 >> 6U) & 1) {
@@ -1507,7 +1507,7 @@ void MKCloth::IncludeCollision() {
         var_r29_2201 = 0;
         var_r27_2203 = 0;
         do {
-            temp_r26_2205 = &capsules + var_r27_2203;
+            temp_r26_2205 = &MKCloth::capsules + var_r27_2203;
             M2C_FIELD(temp_r26_2205, u8 *, 0x4C) = (u8) (M2C_FIELD(temp_r26_2205, u8 *, 0x4C) & ~0x20);
             if (((u8) M2C_FIELD(temp_r26_2205, u8 *, 0x4C) >> 6U) & 1) {
                 temp_f1_2214 = M2C_FIELD(temp_r26_2205, f32 *, 0x40);
@@ -1538,7 +1538,7 @@ void MKCloth::IncludeCollision() {
                 }
                 if (var_r0_2251 != 0) {
                     M2C_FIELD(temp_r26_2205, u8 *, 0x4C) = (u8) (M2C_FIELD(temp_r26_2205, u8 *, 0x4C) | 0x20);
-                    includedCapsuleCount = (s32) (var_r29_2201 + 1);
+                    MKCloth::includedCapsuleCount = (s32) (var_r29_2201 + 1);
                 }
             }
             var_r29_2201 += 1;
@@ -1739,7 +1739,7 @@ loop_4:
         sp84 = 1.0f;
         spF8 = (f64) sp78;
         sp100 = (f64) sp80;
-        MKShape_DrawBox(*((MKCollisionAABB *) &this->unk10), *((MKVector4 *) &spF8), identity, 1U);
+        MKShape_DrawBox(*((MKCollisionAABB *) &this->unk10), *((MKVector4 *) &spF8), Matrix::identity, 1U);
     }
     if ((s32) M2C_FIELD(&gRenderState, s32 *, 4) == 8) {
         MKPrimitive(0x109, 0);
@@ -1782,7 +1782,7 @@ loop_19:
                 sp54 = 1.0f;
                 spC8 = (f64) sp48;
                 spD0 = (f64) sp50;
-                MKShape_DrawSphere(*(temp_r4_2713 + var_r31_2710), 7, 5, *((MKVector4 *) &spC8), identity, 1U);
+                MKShape_DrawSphere(*(temp_r4_2713 + var_r31_2710), 7, 5, *((MKVector4 *) &spC8), Matrix::identity, 1U);
             } else {
                 sp38 = 1.0f;
                 sp3C = 0.0f;
@@ -1790,7 +1790,7 @@ loop_19:
                 sp44 = 0.5f;
                 spB8 = (f64) sp38;
                 spC0 = (f64) sp40;
-                MKShape_DrawSphere(*(temp_r4_2713 + var_r31_2710), 7, 5, *((MKVector4 *) &spB8), identity, 1U);
+                MKShape_DrawSphere(*(temp_r4_2713 + var_r31_2710), 7, 5, *((MKVector4 *) &spB8), Matrix::identity, 1U);
             }
             var_r28_2709 += 1;
             var_r31_2710 += 0x18;
@@ -1809,7 +1809,7 @@ loop_25:
                 sp34 = 1.0f;
                 spA8 = (f64) sp28;
                 spB0 = (f64) sp30;
-                MKShape_DrawCapsule(*temp_r3_2776, *(temp_r3_2776 + 0x10), M2C_FIELD(temp_r3_2776, f32 *, 0x40), 8, 5, *((MKVector4 *) &spA8), identity, 1U);
+                MKShape_DrawCapsule(*temp_r3_2776, *(temp_r3_2776 + 0x10), M2C_FIELD(temp_r3_2776, f32 *, 0x40), 8, 5, *((MKVector4 *) &spA8), Matrix::identity, 1U);
             } else {
                 temp_r3_2800 = temp_r3_2768 + var_r31_2765;
                 sp18 = 0.8f;
@@ -1818,7 +1818,7 @@ loop_25:
                 sp24 = 1.0f;
                 sp98 = (f64) sp18;
                 spA0 = (f64) sp20;
-                MKShape_DrawCapsule(*temp_r3_2800, *(temp_r3_2800 + 0x10), M2C_FIELD(temp_r3_2800, f32 *, 0x40), 8, 5, *((MKVector4 *) &sp98), identity, 1U);
+                MKShape_DrawCapsule(*temp_r3_2800, *(temp_r3_2800 + 0x10), M2C_FIELD(temp_r3_2800, f32 *, 0x40), 8, 5, *((MKVector4 *) &sp98), Matrix::identity, 1U);
             }
             var_r28_2764 += 1;
             var_r31_2765 += 0x50;
@@ -1835,7 +1835,7 @@ loop_28:
             sp88 = (f64) sp8;
             sp90 = (f64) sp10;
             temp_r4_2847 = this->unkA8 + var_r31_2832;
-            MKShape_DrawPlane(*(temp_r4_2847 + 0x10), *temp_r4_2847, M2C_FIELD(temp_r4_2847, f32 *, 0x20), *((MKVector4 *) &sp88), identity, 1U);
+            MKShape_DrawPlane(*(temp_r4_2847 + 0x10), *temp_r4_2847, M2C_FIELD(temp_r4_2847, f32 *, 0x20), *((MKVector4 *) &sp88), Matrix::identity, 1U);
             var_r28_2831 += 1;
             var_r31_2832 += 0x28;
             goto loop_28;
@@ -1865,7 +1865,7 @@ void MKCloth::UpdateGlobalCollisionPrims() {
     var_r27_2886 = 0;
     var_r26_2888 = 0;
     do {
-        temp_r28_2890 = &globalCollisionPrim + var_r26_2888;
+        temp_r28_2890 = &MKCloth::globalCollisionPrim + var_r26_2888;
         if ((u8) M2C_FIELD(temp_r28_2890, u8 *, 0xC) != 0) {
             temp_r25_2898 = MKModel_GetRefPointType(M2C_FIELD(temp_r28_2890, MKModel **, 0), M2C_FIELD(temp_r28_2890, s32 *, 4));
             MKModel_GetRefPointMatrix(M2C_FIELD(temp_r28_2890, MKModel **, 0), M2C_FIELD(temp_r28_2890, s32 *, 4), (Matrix *) &arg_sp60, 1U);
@@ -1966,7 +1966,7 @@ void MKCloth::SetCollisionCapsule(int arg0, const MKVector3 &arg1, const MKVecto
     void *temp_r3_3185;
 
     temp_r6_3066 = (s32) this * 0x50;
-    temp_r3_3071 = &capsules + temp_r6_3066;
+    temp_r3_3071 = &MKCloth::capsules + temp_r6_3066;
     M2C_FIELD(temp_r3_3071, f64 *, 0) = (f64) M2C_FIELD(arg0, f64 *, 0);
     M2C_FIELD(temp_r3_3071, f64 *, 8) = (f64) M2C_FIELD(arg0, f64 *, 8);
     M2C_FIELD(temp_r3_3071, f64 *, 0x10) = (f64) M2C_FIELD(&arg1, f64 *, 0);
@@ -2024,7 +2024,7 @@ void MKCloth::SetCollisionCapsule(int arg0, const MKVector3 &arg1, const MKVecto
         var_f2_3175 = 0.0f;
         var_f5_3108 = 0.0f;
     }
-    temp_r3_3185 = &capsules + temp_r6_3066;
+    temp_r3_3185 = &MKCloth::capsules + temp_r6_3066;
     M2C_FIELD(temp_r3_3071, f64 *, 0x20) = (f32) ((f32) M2C_FIELD(temp_r3_3071, f64 *, 0x20) * var_f2_3175);
     M2C_FIELD(temp_r3_3071, f32 *, 0x24) = (f32) (M2C_FIELD(temp_r3_3071, f32 *, 0x24) * var_f2_3175);
     M2C_FIELD(temp_r3_3071, f64 *, 0x28) = (f32) ((f32) M2C_FIELD(temp_r3_3071, f64 *, 0x28) * var_f2_3175);
@@ -2045,7 +2045,7 @@ s32 MKCloth::AllocateCapsule() {
     var_r4_3210 = 0;
     var_ctr_3211 = 0x1E;
 loop_1:
-    temp_r5_3213 = &capsules + var_r4_3210;
+    temp_r5_3213 = &MKCloth::capsules + var_r4_3210;
     temp_r5_3215 = M2C_FIELD(temp_r5_3213, u8 *, 0x4C);
     if (!((temp_r5_3215 >> 7U) & 1)) {
         M2C_FIELD(temp_r5_3213, u8 *, 0x4C) = (u8) (temp_r5_3215 | 0x80);
@@ -2064,7 +2064,7 @@ loop_1:
 void MKCloth::SetCollisionPlane(int arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3) {
     void *temp_r3_3246;
 
-    temp_r3_3246 = &planes + ((s32) this * 0x28);
+    temp_r3_3246 = &MKCloth::planes + ((s32) this * 0x28);
     M2C_FIELD(temp_r3_3246, f64 *, 0) = (f64) M2C_FIELD(&arg1, f32 *, 0);
     M2C_FIELD(temp_r3_3246, f64 *, 8) = (f64) M2C_FIELD(&arg1, f32 *, 8);
     M2C_FIELD(temp_r3_3246, f32 *, 0xC) = (f32) -((M2C_FIELD(arg0, f32 *, 8) * arg1.unk8) + ((M2C_FIELD(arg0, f32 *, 0) * arg1.unk0) + (M2C_FIELD(arg0, f32 *, 4) * arg1.unk4)));
@@ -2084,7 +2084,7 @@ s32 MKCloth::AllocatePlane() {
     var_r4_3270 = 0;
     var_ctr_3271 = 0xA;
 loop_1:
-    temp_r5_3273 = &planes + var_r4_3270;
+    temp_r5_3273 = &MKCloth::planes + var_r4_3270;
     temp_r5_3275 = M2C_FIELD(temp_r5_3273, u8 *, 0x24);
     if (!((temp_r5_3275 >> 7U) & 1)) {
         M2C_FIELD(temp_r5_3273, u8 *, 0x24) = (u8) (temp_r5_3275 | 0x80);
@@ -2103,7 +2103,7 @@ loop_1:
 void MKCloth::SetCollisionSphere(int arg0, const MKVector4 &arg1) {
     void *temp_r3_3301;
 
-    temp_r3_3301 = &spheres + ((s32) this * 0x18);
+    temp_r3_3301 = &MKCloth::spheres + ((s32) this * 0x18);
     M2C_FIELD(temp_r3_3301, f64 *, 0) = (f64) M2C_FIELD(arg0, f64 *, 0);
     M2C_FIELD(temp_r3_3301, f64 *, 8) = (f64) M2C_FIELD(arg0, f64 *, 8);
 }
@@ -2119,7 +2119,7 @@ s32 MKCloth::AllocateSphere() {
     var_r4_3314 = 0;
     var_ctr_3315 = 0x1E;
 loop_1:
-    temp_r5_3317 = &spheres + var_r4_3314;
+    temp_r5_3317 = &MKCloth::spheres + var_r4_3314;
     temp_r5_3319 = M2C_FIELD(temp_r5_3317, u8 *, 0x10);
     if (!((temp_r5_3319 >> 7U) & 1)) {
         M2C_FIELD(temp_r5_3317, u8 *, 0x10) = (u8) (temp_r5_3319 | 0x80);
@@ -2136,17 +2136,17 @@ loop_1:
 }
 
 void MKCloth::MoveCollisionSweepSphere(int arg0, const MKVector3 &arg1) {
-    ((SoftSweepSphere *) (&sweepSpheres + ((s32) this << 6)))->UpdatePos(*((MKVector3 *) arg0));
+    ((SoftSweepSphere *) (&MKCloth::sweepSpheres + ((s32) this << 6)))->UpdatePos(*((MKVector3 *) arg0));
 }
 
 void MKCloth::ResetCollisionSweepSphere(int arg0, MKVector4 *arg1) {
-    ((SoftSweepSphere *) (&sweepSpheres + ((s32) this << 6)))->Init((MKVector4 *) arg0);
+    ((SoftSweepSphere *) (&MKCloth::sweepSpheres + ((s32) this << 6)))->Init((MKVector4 *) arg0);
 }
 
 void MKCloth::ReleaseSweepSphere(int arg0) {
     void *temp_r3_3377;
 
-    temp_r3_3377 = &sweepSpheres + ((s32) this << 6);
+    temp_r3_3377 = &MKCloth::sweepSpheres + ((s32) this << 6);
     M2C_FIELD(temp_r3_3377, u8 *, 0x38) = (u8) (M2C_FIELD(temp_r3_3377, u8 *, 0x38) & ~0x80);
     M2C_FIELD(temp_r3_3377, u8 *, 0x38) = (u8) (M2C_FIELD(temp_r3_3377, u8 *, 0x38) & ~0x40);
 }
@@ -2162,7 +2162,7 @@ s32 MKCloth::AllocateSweepSphere() {
     var_r4_3395 = 0;
     var_ctr_3396 = 0xA;
 loop_1:
-    temp_r5_3398 = &sweepSpheres + var_r4_3395;
+    temp_r5_3398 = &MKCloth::sweepSpheres + var_r4_3395;
     temp_r5_3400 = M2C_FIELD(temp_r5_3398, u8 *, 0x38);
     if (!((temp_r5_3400 >> 7U) & 1)) {
         M2C_FIELD(temp_r5_3398, u8 *, 0x38) = (u8) (temp_r5_3400 | 0x80);
@@ -3300,7 +3300,7 @@ void MKCloth::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: expression syntax error
 void MKCloth::Create() {
     M2C_UNK sp8;
     MKHeap *temp_r29_5481;
@@ -3313,9 +3313,9 @@ void MKCloth::Create() {
     void *temp_r3_5476;
 
     var_r28_5454 = 0;
-    temp_f30_5455 = M2C_FIELD(&zero, f64 *, 0);
+    temp_f30_5455 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     var_r31_5456 = 0;
-    temp_f31_5457 = M2C_FIELD(&zero, f64 *, 8);
+    temp_f31_5457 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_r30_5458 = 0;
 loop_2:
     temp_r29_5481 = this->unk4;
@@ -3336,7 +3336,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'one'
+#if 0 // DRAFT: undefined identifier 'sp8'
 void MKCloth::Init() {
     f64 sp40;
     f64 sp38;
@@ -3365,8 +3365,8 @@ void MKCloth::Init() {
     this->unk28 = 999999.0f;
     this->unk8 = 0;
     this->unkF0 = 0;
-    this->unkE0 = M2C_FIELD(&one, f64 *, 0);
-    this->unkE8 = M2C_FIELD(&one, f64 *, 8);
+    this->unkE0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    this->unkE8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     this->unk98 = 0;
     this->unkD4 = 1.0f;
     this->unkD8 = 3;
@@ -3379,9 +3379,9 @@ void MKCloth::Init() {
     this->unkA0 = 1.0f;
     this->unkA4 = 1.0f;
     CreateForces(2);
-    sp18 = -up.unk0;
-    sp1C = -up.unk4;
-    sp20 = -up.unk8;
+    sp18 = -MKVector3::up.unk0;
+    sp1C = -MKVector3::up.unk4;
+    sp20 = -MKVector3::up.unk8;
     sp28 = (f64) sp18;
     sp30 = (f64) sp20;
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
@@ -3724,7 +3724,7 @@ void SoftBody_Deinit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'globalForces'
+#if 0 // DRAFT: illegal type
 void SoftBody_Init() {
     f64 sp20;
     f64 sp18;
@@ -3762,7 +3762,7 @@ void SoftBody_Init() {
     var_ctr_6194 = 4;
     do {
         sp8 = 0.0f;
-        temp_r5_6197 = &globalForces + var_r3_6193;
+        temp_r5_6197 = &MKCloth::globalForces + var_r3_6193;
         var_r3_6193 += 0x18;
         spC = 0.0f;
         temp_r0_6201 = var_r6_6192 != 0;
@@ -3778,7 +3778,7 @@ void SoftBody_Init() {
     var_r3_6216 = 0;
     var_ctr_6217 = 0xA;
     do {
-        temp_r4_6219 = &sweepSpheres + var_r3_6216;
+        temp_r4_6219 = &MKCloth::sweepSpheres + var_r3_6216;
         temp_r4_6220 = temp_r4_6219 + 0x38;
         temp_r0_6221 = M2C_FIELD(temp_r4_6219, u8 *, 0x38) & ~0x80;
         var_r3_6216 += 0x40;
@@ -3790,7 +3790,7 @@ void SoftBody_Init() {
     var_r3_6235 = 0;
     var_ctr_6236 = 0x1E;
     do {
-        temp_r4_6238 = &spheres + var_r3_6235;
+        temp_r4_6238 = &MKCloth::spheres + var_r3_6235;
         temp_r4_6239 = temp_r4_6238 + 0x10;
         temp_r0_6240 = M2C_FIELD(temp_r4_6238, u8 *, 0x10) & ~0x80;
         var_r3_6235 += 0x18;
@@ -3802,7 +3802,7 @@ void SoftBody_Init() {
     var_r3_6254 = 0;
     var_ctr_6255 = 0xA;
     do {
-        temp_r4_6257 = &planes + var_r3_6254;
+        temp_r4_6257 = &MKCloth::planes + var_r3_6254;
         temp_r4_6258 = temp_r4_6257 + 0x24;
         temp_r0_6259 = M2C_FIELD(temp_r4_6257, u8 *, 0x24) & ~0x80;
         var_r3_6254 += 0x28;
@@ -3814,7 +3814,7 @@ void SoftBody_Init() {
     var_r3_6273 = 0;
     var_ctr_6274 = 0x1E;
     do {
-        temp_r4_6276 = &capsules + var_r3_6273;
+        temp_r4_6276 = &MKCloth::capsules + var_r3_6273;
         temp_r4_6277 = temp_r4_6276 + 0x4C;
         temp_r0_6278 = M2C_FIELD(temp_r4_6276, u8 *, 0x4C) & ~0x80;
         var_r3_6273 += 0x50;
@@ -3823,9 +3823,9 @@ void SoftBody_Init() {
         *temp_r4_6277 &= ~8;
         var_ctr_6274 -= 1;
     } while (var_ctr_6274 != 0);
-    includedSweepCount = 0;
-    includedSphereCount = 0;
-    includedPlaneCount = 0;
-    includedCapsuleCount = 0;
+    MKCloth::includedSweepCount = 0;
+    MKCloth::includedSphereCount = 0;
+    MKCloth::includedPlaneCount = 0;
+    MKCloth::includedCapsuleCount = 0;
 }
 #endif

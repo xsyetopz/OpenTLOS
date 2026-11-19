@@ -104,7 +104,7 @@ void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'totalEnabled'
+#if 0 // DRAFT: illegal type
 s32 OmniLight_FindNearestGroup(const MKVector3 &arg0, float arg1, OmniLight **arg2, int arg3) {
     M2C_UNK spDC;
     M2C_UNK sp58;
@@ -136,7 +136,7 @@ s32 OmniLight_FindNearestGroup(const MKVector3 &arg0, float arg1, OmniLight **ar
 
     var_r31_179 = 0;
     var_r27_180 = 0;
-    if (((u8) bSuspendAll == 0) && ((s32) totalEnabled != 0)) {
+    if (((u8) bSuspendAll == 0) && ((s32) OmniLight::totalEnabled != 0)) {
         var_r8_186 = lightList;
         temp_r6_187 = MKView_GetCameraMatrix() + 0x30;
 loop_11:
@@ -207,7 +207,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'totalEnabled'
+#if 0 // DRAFT: illegal type
 void OmniLight_FindNearest(const MKVector3 &arg0, float arg1) {
     f64 sp50;
     f64 sp48;
@@ -227,7 +227,7 @@ void OmniLight_FindNearest(const MKVector3 &arg0, float arg1) {
     void *temp_r4_323;
 
     var_r31_315 = NULL;
-    if (((u8) bSuspendAll == 0) && ((s32) totalEnabled != 0)) {
+    if (((u8) bSuspendAll == 0) && ((s32) OmniLight::totalEnabled != 0)) {
         var_f0_322 = 0.0f;
         temp_r4_323 = MKView_GetCameraMatrix() + 0x30;
         var_r5_324 = lightList;
@@ -265,7 +265,7 @@ u8 OmniLight_SuspendAll(bool arg0) {
     return temp_r0_407;
 }
 
-#if 0 // DRAFT: undefined identifier 'totalEnabled'
+#if 0 // DRAFT: illegal operand
 void OmniLight_Destroy(OmniLight *arg0) {
     M2C_UNK *temp_r0_441;
     M2C_UNK *temp_r3_430;
@@ -274,7 +274,7 @@ void OmniLight_Destroy(OmniLight *arg0) {
 
     if ((u8) arg0->unk30 != 0) {
         arg0->unk30 = 0;
-        totalEnabled = (s32) (totalEnabled - 1);
+        OmniLight::totalEnabled = (s32) (OmniLight::totalEnabled - 1);
     }
     var_r4_425 = lightList;
 loop_6:

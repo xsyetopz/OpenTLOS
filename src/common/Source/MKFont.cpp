@@ -1,6 +1,7 @@
 #include "common/Source/MKFont.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
 #include "common/Source/MKMat_MK2_Standard.h"
 #include "common/Source/MKView.h"
@@ -29,8 +30,8 @@ f32 MKFont_DrawStringJustified(MKFont *arg0, const char *arg1, const MKVector3 &
     s32 temp_r31_90;
     s8 *var_r30_40;
 
-    sp30 = M2C_FIELD(&zero, f64 *, 0);
-    sp38 = M2C_FIELD(&zero, f64 *, 8);
+    sp30 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp38 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_r30_40 = arg1;
     temp_f31_43 = MKFontInternal_CalcHeightAndScale(arg0, arg6, &spC);
     if ((s32) arg5 > 3) {
@@ -91,8 +92,8 @@ void MKFont_GetCharPosJustified(MKFont *arg0, const char *arg1, int arg2, float 
     s32 var_r29_191;
     s32 var_r31_193;
 
-    sp20 = M2C_FIELD(&zero, f64 *, 0);
-    sp28 = M2C_FIELD(&zero, f64 *, 8);
+    sp20 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp28 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_r29_191 = (s32) arg5;
     temp_r30_192 = M2C_ERROR(/* Read from unset register $r7 */);
     var_r31_193 = arg2;
@@ -243,7 +244,6 @@ loop_35:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void MKFont_DrawDebugStringF(const char *arg0, float arg1, float arg2, float arg3, const MKVector4 &arg4, int arg5, MKFont *arg6) {
     f64 sp20;
     f64 sp18;
@@ -261,9 +261,8 @@ void MKFont_DrawDebugStringF(const char *arg0, float arg1, float arg2, float arg
     sp10 = 0.0f;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    MKFont_DrawString(var_r6_0, arg0, *((MKVector3 *) &sp18), arg3, arg4, arg5, identity);
+    MKFont_DrawString(var_r6_0, arg0, *((MKVector3 *) &sp18), arg3, arg4, arg5, Matrix::identity);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 f32 MKFont_DrawString(MKFont *arg0, const char *arg1, const MKVector3 &arg2, float arg3, const MKVector4 &arg4, int arg5, const Matrix &arg6) {
@@ -421,7 +420,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: pointer/array required
 void MKFont_GetCharPos(MKFont *arg0, const char *arg1, int arg2, float arg3) {
     f64 sp18;
     f64 sp10;                                       /* compiler-managed */
@@ -436,9 +435,9 @@ void MKFont_GetCharPos(MKFont *arg0, const char *arg1, int arg2, float arg3) {
     u8 var_r3_933;
     void *temp_r3_917;
 
-    sp10 = M2C_FIELD(&zero, f64 *, 0);
+    sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     var_r31_909 = arg2;
-    sp18 = M2C_FIELD(&zero, f64 *, 8);
+    sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_f31_915 = MKFontInternal_CalcHeightAndScale((MKFont *) arg1, arg3, &sp8);
     temp_r3_917 = **arg1;
     temp_f30_920 = M2C_FIELD(temp_r3_917, f32 *, 8) * sp8;
@@ -481,7 +480,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 f32 MKFont_CalculateWidth(MKFont *arg0, const char *arg1, float arg2, float arg3, int arg4, float *arg5) {
     f64 sp18;
     f64 sp10;                                       /* compiler-managed */
@@ -506,10 +505,10 @@ f32 MKFont_CalculateWidth(MKFont *arg0, const char *arg1, float arg2, float arg3
     void *temp_r3_1054;
 
     var_f30_1040 = 0.0f;
-    sp10 = M2C_FIELD(&zero, f64 *, 0);
+    sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     var_r31_1045 = arg1;
     var_r30_1046 = arg1;
-    sp18 = M2C_FIELD(&zero, f64 *, 8);
+    sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_f31_1051 = MKFontInternal_CalcHeightAndScale(arg0, arg2, &sp8);
     var_r29_1053 = 0;
     temp_r3_1054 = **arg0;

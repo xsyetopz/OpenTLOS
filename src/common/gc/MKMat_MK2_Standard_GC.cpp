@@ -314,7 +314,7 @@ void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
             arg_sp598 = (f64) arg_sp2E8;
             arg_sp5A0 = (f64) arg_sp2F0;
             arg_sp5A8 = (f64) arg_sp2F8;
-            DrawQuad(zero, *((MKVector3 *) &arg_sp5A0), zero, *((MKVector3 *) &arg_sp590), -1U);
+            DrawQuad(MKVector3::zero, *((MKVector3 *) &arg_sp5A0), MKVector3::zero, *((MKVector3 *) &arg_sp590), -1U);
             arg_sp2A8 = 0.0f;
             arg_sp2B8 = 0.0f;
             arg_sp2C8 = 0.0f;
@@ -348,7 +348,7 @@ void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
             arg_sp538 = (f64) arg_sp288;
             arg_sp540 = (f64) arg_sp290;
             arg_sp548 = (f64) arg_sp298;
-            DrawQuad(zero, *((MKVector3 *) &arg_sp540), zero, *((MKVector3 *) &arg_sp530), -1U);
+            DrawQuad(MKVector3::zero, *((MKVector3 *) &arg_sp540), MKVector3::zero, *((MKVector3 *) &arg_sp530), -1U);
             arg_sp248 = 0.0f;
             arg_sp258 = 0.0f;
             arg_sp268 = 0.0f;
@@ -408,7 +408,7 @@ void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
             arg_sp498 = (f64) arg_sp1E8;
             arg_sp4A0 = (f64) arg_sp1F0;
             arg_sp4A8 = (f64) arg_sp1F8;
-            DrawQuad(zero, *((MKVector3 *) &arg_sp4A0), *((MKVector3 *) &arg_sp490), *((MKVector3 *) &arg_sp480), -1U);
+            DrawQuad(MKVector3::zero, *((MKVector3 *) &arg_sp4A0), *((MKVector3 *) &arg_sp490), *((MKVector3 *) &arg_sp480), -1U);
             arg_sp198 = 0.0f;
             arg_sp1A8 = 0.0f;
             arg_sp1B8 = 0.0f;
@@ -507,7 +507,7 @@ void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
         arg_sp124 = (f32) M2C_FIELD(&filterTextureSizes, u16 *, 6);
         arg_sp3D8 = (f64) arg_sp128;
         arg_sp3D0 = (f64) arg_sp120;
-        DrawQuad(zero, *((MKVector3 *) &arg_sp3D0), zero, one, -1U);
+        DrawQuad(MKVector3::zero, *((MKVector3 *) &arg_sp3D0), MKVector3::zero, MKVector3::one, -1U);
         GXSetTexCopySrc(0U, 0x190U, M2C_FIELD(&filterTextureSizes, u16 *, 4), M2C_FIELD(&filterTextureSizes, u16 *, 6));
         GXSetTexCopyDst(M2C_FIELD(&filterTextureSizes, u16 *, 4), M2C_FIELD(&filterTextureSizes, u16 *, 6), GX_TF_RGBA8, 0U);
         GXCopyTex(&MKMat_MK2_Standard_CaptureTextureData, 0U);
@@ -582,7 +582,7 @@ void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
         arg_sp378 = (f64) arg_spC8;
         arg_sp380 = (f64) arg_spD0;
         arg_sp388 = (f64) arg_spD8;
-        DrawQuad(*((MKVector3 *) &arg_sp380), *((MKVector3 *) &arg_sp370), zero, one, (u32) (255.0f * weight128) | ((temp_r3_1394 << 8) | ((temp_r3_1394 << 0x18) | (temp_r3_1394 << 0x10))));
+        DrawQuad(*((MKVector3 *) &arg_sp380), *((MKVector3 *) &arg_sp370), MKVector3::zero, MKVector3::one, (u32) (255.0f * weight128) | ((temp_r3_1394 << 8) | ((temp_r3_1394 << 0x18) | (temp_r3_1394 << 0x10))));
         GXSetTexCopySrc((M2C_FIELD(&filterTextureSizes, u16 *, 4) * 2) & 0xFFFE, 0x190U, M2C_FIELD(&filterTextureSizes, u16 *, 4), M2C_FIELD(&filterTextureSizes, u16 *, 6));
         GXSetTexCopyDst(M2C_FIELD(&filterTextureSizes, u16 *, 4), M2C_FIELD(&filterTextureSizes, u16 *, 6), GX_TF_RGBA8, 0U);
         GXCopyTex(&MKMat_MK2_Standard_CaptureTextureData, 0U);
@@ -613,7 +613,7 @@ void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
             arg_spB8 = 0.0f;
             arg_sp360 = (f64) arg_spB0;
             arg_sp368 = (f64) arg_spB8;
-            DrawQuad(zero, *((MKVector3 *) &arg_sp360), zero, one, 0xFF00FF00U);
+            DrawQuad(MKVector3::zero, *((MKVector3 *) &arg_sp360), MKVector3::zero, MKVector3::one, 0xFF00FF00U);
             break;
         case 1:                                     /* switch 2 */
             arg_sp98 = 0.0f;
@@ -626,7 +626,7 @@ void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
             arg_sp348 = (f64) arg_sp98;
             arg_sp350 = (f64) arg_spA0;
             arg_sp358 = (f64) arg_spA8;
-            DrawQuad(zero, *((MKVector3 *) &arg_sp350), zero, *((MKVector3 *) &arg_sp340), 0xFF00FF00U);
+            DrawQuad(MKVector3::zero, *((MKVector3 *) &arg_sp350), MKVector3::zero, *((MKVector3 *) &arg_sp340), 0xFF00FF00U);
             break;
         case 2:                                     /* switch 2 */
             arg_sp58 = 0.0f;
@@ -798,7 +798,7 @@ void MKMat_MK2_Standard::UsePass() {
             break;
         default:                                    /* switch 2 */
             temp_r30_2031 = temp_r5_1935 + 0x40;
-            if (memcmp(temp_r30_2031, &identity, 0x40U) != 0) {
+            if (memcmp(temp_r30_2031, &Matrix::identity, 0x40U) != 0) {
                 M2C_STRUCT_COPY((s32) &arg_sp28 + 4, (s32) (&lit_610 - 4) + 4, 0x20);
                 arg_sp2C = M2C_FIELD(temp_r5_1935, f32 *, 0x40);
                 arg_sp30 = M2C_FIELD(temp_r30_2031, f32 *, 0x10);
@@ -1120,7 +1120,7 @@ void SetLight(const MKVector3 &arg0, const MKVector4 &arg1, float arg2, int arg3
 
 #if 0 // DRAFT: undefined identifier 'oldColor'
 void MKMat_MK2_Standard_GC_cpp::__sinit() {
-    M2C_FIELD(&oldColor, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(&oldColor, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(&oldColor, f64 *, 0) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
+    M2C_FIELD(&oldColor, f64 *, 8) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
 }
 #endif

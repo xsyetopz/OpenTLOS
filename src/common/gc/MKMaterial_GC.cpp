@@ -1,6 +1,7 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
 #include "common/gc/MKModel_GC.h"
@@ -526,7 +527,7 @@ void MKMaterial_SetMaterial(MKMaterial *arg0) {
             GXSetTevDirect(var_r31_1454);
             var_r31_1454 += 1;
         } while (var_r31_1454 < 0x10);
-        MKMaterial_SetGeometryColor(one);
+        MKMaterial_SetGeometryColor(MKVector4::one);
         GXSetChanCtrl(GX_COLOR0A0, 1U, GX_SRC_VTX, GX_SRC_REG, 0U, GX_DF_CLAMP, GX_AF_SPOT);
         GXSetCullMode(GX_CULL_NONE);
         var_r3_0 = gpMKWhiteMaterial;
@@ -636,7 +637,7 @@ void MKMaterial_GC_cpp::__sinit() {
     M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0) = (f64) sp8;
     M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 8) = (f64) sp10;
     M2C_STRUCT_COPY((s32) (&MKMaterial_GeometryColor + 0x24) + 4, (s32) (&MKMaterial_GeometryColor + 0xC) + 4, 0x18);
-    M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0x40) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0x48) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0x40) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
+    M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
 }
 #endif

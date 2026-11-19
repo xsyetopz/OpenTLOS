@@ -6,6 +6,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -571,7 +572,7 @@ loop_25:
                             M2C_FIELD(var_r28_890, s8 **, 0x2C) = var_r3_887;
                             var_r27_910 = var_r3_887;
                         } else {
-                            var_r3_887 = (s8 *) sWorkingChunkID.unk0;
+                            var_r3_887 = (s8 *) MKResource::sWorkingChunkID.unk0;
                             var_r27_910 = temp_r0_893;
 loop_21:
                             if (var_r27_910 != NULL) {
@@ -598,7 +599,7 @@ loop_21:
                         if (var_r27_910 != NULL) {
                             memset(var_r27_910, 0, 0x810U);
                             var_r3_887 = strncpy(var_r27_910, var_r28_890, 0x1FU);
-                            M2C_FIELD(var_r27_910, MKHeap **, 0x20) = (MKHeap *) sWorkingChunkID.unk0;
+                            M2C_FIELD(var_r27_910, MKHeap **, 0x20) = (MKHeap *) MKResource::sWorkingChunkID.unk0;
                         }
                         var_r28_890 = M2C_FIELD(var_r28_890, s8 **, 0x20);
                         goto loop_25;
@@ -740,7 +741,7 @@ void MKGrass_ProcessTypes(void *arg0) {
 loop_67:
     if (var_r28_1098 < (void *) (gpGrassTypes + (gnGrassTypes * 0x30))) {
         temp_r3_1101 = M2C_FIELD(var_r28_1098, void **, 0x2C);
-        if ((temp_r3_1101 != NULL) && ((u8) M2C_FIELD(temp_r3_1101, u8 *, 0x98) != 0) && (((MKHeap *) sWorkingChunkID.unk0 == (MKHeap *)-1) || ((s32) M2C_FIELD(temp_r3_1101, s32 *, 0x20) == (MKHeap *) sWorkingChunkID.unk0))) {
+        if ((temp_r3_1101 != NULL) && ((u8) M2C_FIELD(temp_r3_1101, u8 *, 0x98) != 0) && (((MKHeap *) MKResource::sWorkingChunkID.unk0 == (MKHeap *)-1) || ((s32) M2C_FIELD(temp_r3_1101, s32 *, 0x20) == (MKHeap *) MKResource::sWorkingChunkID.unk0))) {
             spC = M2C_FIELD(var_r28_1098, s32 *, 0x24);
             temp_r5_1117 = M2C_FIELD(var_r28_1098, void **, 0x2C);
             temp_f2_1118 = M2C_FIELD(temp_r5_1117, f32 *, 0x48);
@@ -940,7 +941,7 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sWorkingChunkID'
+#if 0 // DRAFT: expression syntax error
 void MKGrass_LevelDeinit() {
     MKHeap *temp_r3_1649;
     MKHeap *var_r29_1625;
@@ -962,7 +963,7 @@ loop_6:
             temp_r3_1597 = grassModelsList;
             grassModelsList = temp_r3_1597 + 4;
             *var_r31_1591 = *temp_r3_1597;
-        } else if ((s32) M2C_FIELD(temp_r4_1594, s32 *, 0x20) == (MKHeap *) sWorkingChunkID.unk0) {
+        } else if ((s32) M2C_FIELD(temp_r4_1594, s32 *, 0x20) == (MKHeap *) MKResource::sWorkingChunkID.unk0) {
             MKGrass_RemoveModel((MKModel *) temp_r3_1612);
         }
         var_r31_1591 += 4;
@@ -975,14 +976,14 @@ loop_22:
         var_r4_1621 = M2C_FIELD(&gpGrassTypes[var_r31_1616], MKHeap **, 0x2C);
         if (var_r4_1621 != NULL) {
             var_r29_1625 = NULL;
-            if ((MKHeap *) sWorkingChunkID.unk0 == (s32) var_r4_1621->unk20) {
+            if ((MKHeap *) MKResource::sWorkingChunkID.unk0 == (s32) var_r4_1621->unk20) {
                 var_r29_1625 = var_r4_1621;
                 M2C_FIELD(&gpGrassTypes[var_r31_1616], u32 *, 0x2C) = (u32) M2C_FIELD(var_r4_1621, u32 *, 0x80C);
             } else if ((u32) M2C_FIELD(var_r4_1621, u32 *, 0x80C) != 0U) {
 loop_16:
                 temp_r3_1649 = M2C_FIELD(var_r4_1621, MKHeap **, 0x80C);
                 if (temp_r3_1649 != NULL) {
-                    if ((s32) temp_r3_1649->unk20 == (MKHeap *) sWorkingChunkID.unk0) {
+                    if ((s32) temp_r3_1649->unk20 == (MKHeap *) MKResource::sWorkingChunkID.unk0) {
                         var_r29_1625 = temp_r3_1649;
                         M2C_FIELD(var_r4_1621, MKHeap **, 0x80C) = (MKHeap *) M2C_FIELD(temp_r3_1649, MKHeap **, 0x80C);
                     } else {
@@ -1074,7 +1075,7 @@ loop_151:
         temp_r4_1712 = M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C);
         var_r29_1714 = temp_r4_1712;
 loop_3:
-        if ((var_r29_1714 != NULL) && (((u8) M2C_FIELD(var_r29_1714, u8 *, 0x98) != 0) || ((s32) M2C_FIELD(var_r29_1714, s32 *, 0x20) != (MKHeap *) sWorkingChunkID.unk0))) {
+        if ((var_r29_1714 != NULL) && (((u8) M2C_FIELD(var_r29_1714, u8 *, 0x98) != 0) || ((s32) M2C_FIELD(var_r29_1714, s32 *, 0x20) != (MKHeap *) MKResource::sWorkingChunkID.unk0))) {
             var_r29_1714 = M2C_FIELD(var_r29_1714, MKGrassType::Data **, 0x80C);
             goto loop_3;
         }
@@ -1095,8 +1096,8 @@ loop_3:
                 M2C_FIELD(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C), f32 *, 0x3C) = 1.0f;
                 M2C_FIELD(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C), f32 *, 0x40) = 0.0f;
                 temp_r5_1785 = M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C);
-                M2C_FIELD(temp_r5_1785, f64 *, 0x48) = (f64) M2C_FIELD(&up, f64 *, 0);
-                M2C_FIELD(temp_r5_1785, f64 *, 0x50) = (f64) M2C_FIELD(&up, f64 *, 8);
+                M2C_FIELD(temp_r5_1785, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
+                M2C_FIELD(temp_r5_1785, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 8);
                 M2C_FIELD(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C), f32 *, 0x58) = 1.0f;
                 M2C_FIELD(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C), f32 *, 0x5C) = 1.0f;
                 M2C_FIELD(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C), s8 *, 0x60) = 0;
@@ -1106,11 +1107,11 @@ loop_3:
                 M2C_FIELD(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C), s32 *, 0x6C) = 0;
                 M2C_FIELD(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C), s32 *, 0x70) = 0x168;
                 temp_r5_1804 = M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C);
-                M2C_FIELD(temp_r5_1804, f64 *, 0x78) = (f64) M2C_FIELD(&one, f64 *, 0);
-                M2C_FIELD(temp_r5_1804, f64 *, 0x80) = (f64) M2C_FIELD(&one, f64 *, 8);
+                M2C_FIELD(temp_r5_1804, f64 *, 0x78) = (f64) M2C_FIELD(&MKVector3::one, f64 *, 0);
+                M2C_FIELD(temp_r5_1804, f64 *, 0x80) = (f64) M2C_FIELD(&MKVector3::one, f64 *, 8);
                 temp_r5_1807 = M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C);
-                M2C_FIELD(temp_r5_1807, f64 *, 0x88) = (f64) M2C_FIELD(&one, f64 *, 0);
-                M2C_FIELD(temp_r5_1807, f64 *, 0x90) = (f64) M2C_FIELD(&one, f64 *, 8);
+                M2C_FIELD(temp_r5_1807, f64 *, 0x88) = (f64) M2C_FIELD(&MKVector3::one, f64 *, 0);
+                M2C_FIELD(temp_r5_1807, f64 *, 0x90) = (f64) M2C_FIELD(&MKVector3::one, f64 *, 8);
                 var_ctr_1810 = 0x10;
                 do {
                     *(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + (var_r7_1762 + 0x760)) = 1;

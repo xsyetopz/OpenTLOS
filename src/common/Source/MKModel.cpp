@@ -99,7 +99,7 @@ void MKModel_CalculateSubObjectLocalToWorldMatrix(const MKModel *arg0, SubObject
             MKModel_CalculateNodeWorldMatrix((MKModel *) temp_r7_82->unk0, (s32) M2C_FIELD(temp_r7_82, u8 *, 4) & 0x0FFFFFFF, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
             break;
         }
-        if ((var_r31_81 != NULL) && (var_r31_81 != &identity)) {
+        if ((var_r31_81 != NULL) && (var_r31_81 != &Matrix::identity)) {
             ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r31_81, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r31_81 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
@@ -148,7 +148,7 @@ void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVec
             MKModel_CalculateNodeWorldMatrix((MKModel *) temp_r7_228->unk0, (s32) M2C_FIELD(temp_r7_228, u8 *, 4) & 0x0FFFFFFF, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
             break;
         }
-        if ((var_r31_227 != NULL) && (var_r31_227 != &identity)) {
+        if ((var_r31_227 != NULL) && (var_r31_227 != &Matrix::identity)) {
             ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r31_227, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r31_227 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
@@ -213,7 +213,7 @@ void MKModel_CalculateNodeWorldMatrix(const MKModel *arg0, int arg1, Matrix *arg
             MKModel_CalculateNodeWorldMatrix((MKModel *) temp_r7_433->unk0, (s32) M2C_FIELD(temp_r7_433, u8 *, 4) & 0x0FFFFFFF, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
             break;
         }
-        if ((var_r31_432 != NULL) && (var_r31_432 != &identity)) {
+        if ((var_r31_432 != NULL) && (var_r31_432 != &Matrix::identity)) {
             ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r31_432, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r31_432 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
@@ -258,7 +258,7 @@ void MKModel_CalculateNodeWorldPosition(const MKModel *arg0, int arg1, MKVector3
             MKModel_CalculateNodeWorldMatrix((MKModel *) temp_r7_593->unk0, (s32) M2C_FIELD(temp_r7_593, u8 *, 4) & 0x0FFFFFFF, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
             break;
         }
-        if ((var_r31_592 != NULL) && (var_r31_592 != &identity)) {
+        if ((var_r31_592 != NULL) && (var_r31_592 != &Matrix::identity)) {
             ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r31_592, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r31_592 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
@@ -688,7 +688,7 @@ s32 MKModel_GetRefPointMatrix(const MKModel *arg0, int arg1, Matrix *arg2, bool 
             MKModel_CalculateNodeWorldMatrix((MKModel *) temp_r3_1445->unk0, (s32) M2C_FIELD(temp_r3_1445, u8 *, 4) & 0x0FFFFFFF, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
             break;
         }
-        if ((var_r31_1443 != NULL) && (var_r31_1443 != &identity)) {
+        if ((var_r31_1443 != NULL) && (var_r31_1443 != &Matrix::identity)) {
             ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r31_1443, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r31_1443 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
@@ -894,7 +894,7 @@ f64 *MKModel_GetColor(const MKModel *arg0) {
     if ((u32) (((u8) arg0->unk4 >> 5U) & 7) >= 1U) {
         return &arg0->unk50;
     }
-    return (f64 *) &one;
+    return (f64 *) &MKVector4::one;
 }
 #endif
 
@@ -930,12 +930,12 @@ void MKModel_GetWorldMatrixWithAttachment(const MKModel *arg0, Matrix *arg1) {
             MKModel_CalculateNodeWorldMatrix((MKModel *) temp_r7_1932->unk0, (s32) M2C_FIELD(temp_r7_1932, u8 *, 4) & 0x0FFFFFFF, arg1);
             break;
         }
-        if ((var_r31_1939 != NULL) && (var_r31_1939 != &identity)) {
+        if ((var_r31_1939 != NULL) && (var_r31_1939 != &Matrix::identity)) {
             arg1->Multiply(var_r31_1939, arg1);
         }
     } else {
         if ((u32) (((u8) arg0->unk4 >> 5U) & 7) < 1U) {
-            var_r3_2024 = &identity;
+            var_r3_2024 = &Matrix::identity;
         } else {
             var_r3_2024 = &arg0->unk10;
         }
@@ -974,14 +974,12 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
 s32 MKModel_GetWorldMatrix(const MKModel *arg0) {
     if (((u8) arg0->unk4 >> 5U) & 7) {
         return (s32) &arg0->unk10;
     }
-    return (s32) &identity;
+    return (s32) &Matrix::identity;
 }
-#endif
 
 MKHeap *MKModel_GetName(const MKModel *arg0) {
     return (MKHeap *) arg0->unk0;
@@ -1098,7 +1096,7 @@ void MKModel_DrawModelParticles(const MKModel *arg0, const Matrix *arg1) {
             MKModel_CalculateNodeWorldMatrix((MKModel *) temp_r7_2114->unk0, (s32) M2C_FIELD(temp_r7_2114, u8 *, 4) & 0x0FFFFFFF, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
             break;
         }
-        if ((var_r29_2115 != NULL) && (var_r29_2115 != &identity)) {
+        if ((var_r29_2115 != NULL) && (var_r29_2115 != &Matrix::identity)) {
             ((Matrix *) ((Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix))->Multiply(var_r29_2115, (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix);
         }
         var_r29_2115 = (Matrix *) attachmentMatrix$localstatic3$GetTempLocalToWorldMatrix;
@@ -1481,7 +1479,7 @@ loop_19:
                 var_r24_2845 = 0;
                 var_r18_2847 = 0;
                 do {
-                    temp_r21_2849 = &globalCollisionPrim + var_r18_2847;
+                    temp_r21_2849 = &MKCloth::globalCollisionPrim + var_r18_2847;
                     if ((u8) M2C_FIELD(temp_r21_2849, u8 *, 0xC) == 0) {
                         M2C_FIELD(temp_r21_2849, u8 *, 0xC) = 1U;
                         M2C_FIELD(temp_r21_2849, MKModel **, 0) = arg0;
@@ -1532,7 +1530,7 @@ block_24:
         var_r22_2808 = M2C_FIELD(var_r5_2901, s32 *, 4);
         var_r23_2809 = M2C_FIELD(var_r5_2901, s32 *, 8);
     }
-    if ((var_r23_2809 > 0) && ((u8) clothCreateDisabled.unk0 == 0)) {
+    if ((var_r23_2809 > 0) && ((u8) MKCloth::clothCreateDisabled.unk0 == 0)) {
         arg0->unk84->unk31 = 1;
         var_r27_2928 = 0;
         var_r15_2929 = 0;
@@ -2283,13 +2281,13 @@ block_50:
         M2C_FIELD(M2C_FIELD(var_r30_3927, s8 **, 0x84), s8 **, 8) = (s8 *) (temp_r3_3964 + 0x40);
         M2C_FIELD(M2C_FIELD(var_r30_3927, s8 **, 0x84), s32 *, 4) = (s32) M2C_FIELD(var_r28_3897, s32 *, 8);
     }
-    M2C_STRUCT_COPY((s32) (var_r30_3927 + 0xC) + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) (var_r30_3927 + 0xC) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     M2C_FIELD(var_r30_3927, f32 *, 0x60) = 1.0f;
     M2C_FIELD(var_r30_3927, f32 *, 0x64) = 1.0f;
     M2C_FIELD(var_r30_3927, f32 *, 0x68) = 1.0f;
     M2C_FIELD(var_r30_3927, f32 *, 0x6C) = 1.0f;
-    M2C_FIELD(var_r30_3927, f64 *, 0x50) = (f64) M2C_FIELD(&one, f64 *, 0);
-    M2C_FIELD(var_r30_3927, f64 *, 0x58) = (f64) M2C_FIELD(&one, f64 *, 8);
+    M2C_FIELD(var_r30_3927, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 0);
+    M2C_FIELD(var_r30_3927, f64 *, 0x58) = (f64) M2C_FIELD(&MKVector4::one, f64 *, 8);
     M2C_FIELD(var_r30_3927, s8 **, 0) = var_r27_3636;
     M2C_FIELD(var_r30_3927, s8 **, 0x80) = (s8 *) M2C_FIELD(M2C_FIELD(var_r27_3636, void **, 0x30), s8 **, 0x54);
     M2C_FIELD(var_r30_3927, u8 *, 5) = (u8) (M2C_FIELD(var_r30_3927, u8 *, 5) | 0x40);

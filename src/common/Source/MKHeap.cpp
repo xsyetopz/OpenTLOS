@@ -14,19 +14,19 @@ static s32 black = 0;                               /* const */
 static s32 white = 0xFFFFFFFF;                      /* const */
 
 void MKHeap::SetTempMemOverrideStatus(bool arg0) {
-    tempMemOverride.unk0 = (MKHeap *) ((u8) this != 0);
+    MKHeap::tempMemOverride.unk0 = (MKHeap *) ((u8) this != 0);
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 void MKHeap::DeactivateTempMemOverride() {
-    tempMemOverride.unk0 -= 1;
+    MKHeap::tempMemOverride.unk0 -= 1;
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 void MKHeap::ActivateTempMemOverride() {
-    tempMemOverride.unk0 += 1;
+    MKHeap::tempMemOverride.unk0 += 1;
 }
 #endif
 
@@ -79,9 +79,9 @@ void MKHeap::FreeFromAnyHeap(void *arg0, const char *arg1, int arg2) {
         var_r29_111 = 9;
         var_r31_113 = 0x24;
 loop_2:
-        temp_r3_115 = *(&heapList + var_r31_113);
+        temp_r3_115 = *(&MKHeap::heapList + var_r31_113);
         if ((temp_r3_115 != NULL) && (temp_r3_115->ExistsInHeap(this) != 0)) {
-            ((MKHeap *) (*(&heapList + var_r31_113)))->Free(this, (s8 *) arg0, (s32) arg1);
+            ((MKHeap *) (*(&MKHeap::heapList + var_r31_113)))->Free(this, (s8 *) arg0, (s32) arg1);
             return;
         }
         var_r29_111 -= 1;
@@ -294,8 +294,8 @@ size=%d [heapsize=%d]", arg0, this->unk4 - this->unk0));
 #if 0 // DRAFT: expression syntax error
 void MKHeap::Free(const void *arg0, const char *arg1, int arg2) {
     if (arg0 != NULL) {
-        if ((arg0 >= (u32) heapList.unk0->unk44) && (arg0 <= (u32) heapList.unk0->unk4)) {
-            heapList.unk0->TFree(arg0, arg1, arg2);
+        if ((arg0 >= (u32) MKHeap::heapList.unk0->unk44) && (arg0 <= (u32) MKHeap::heapList.unk0->unk4)) {
+            ((MKHeap *) (MKHeap::heapList.unk0))->TFree(arg0, arg1, arg2);
             return;
         }
         if ((arg0 < (MKHeap *) this->unk0) || (arg0 > (u32) this->unk44)) {
@@ -316,8 +316,8 @@ void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
     void *var_r3_526;
 
     var_r30_478 = arg0;
-    if ((s32) tempMemOverride.unk0 != 0) {
-        return heapList.unk0->TReAlloc(arg0, arg1, arg2, arg3);
+    if ((s32) MKHeap::tempMemOverride.unk0 != 0) {
+        return ((MKHeap *) (MKHeap::heapList.unk0))->TReAlloc(arg0, arg1, arg2, arg3);
     }
     if (var_r30_478 != NULL) {
         this->unkC = this->unk8 + arg1;
@@ -346,8 +346,8 @@ void *MKHeap::Alloc(int arg0, const char *arg1, int arg2) {
     s32 sp8;
     void *var_r30_560;
 
-    if ((s32) tempMemOverride.unk0 != 0) {
-        var_r30_560 = heapList.unk0->TAlloc(arg0, arg1, arg2, 0U);
+    if ((s32) MKHeap::tempMemOverride.unk0 != 0) {
+        var_r30_560 = ((MKHeap *) (MKHeap::heapList.unk0))->TAlloc(arg0, arg1, arg2, 0U);
     } else {
         var_r30_560 = (void *) ((this->unkC + 0x1F) & 0xFFFFFFE0);
         this->unk8 = (s32) var_r30_560;
@@ -382,16 +382,16 @@ s32 MKHeap::Mark() {
 
 #if 0 // DRAFT: expression syntax error
 u32 MKHeap::Main() {
-    return (u32) heapList.unk0;
+    return (u32) MKHeap::heapList.unk0;
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 MKHeap *MKHeap::Current() {
-    if ((s32) currentHeap.unk0 == -1) {
+    if ((s32) MKHeap::currentHeap.unk0 == -1) {
         return NULL;
     }
-    return *(&heapObjects + ((s32) currentHeap.unk0 * 4));
+    return *(&MKHeap::heapObjects + ((s32) MKHeap::currentHeap.unk0 * 4));
 }
 #endif
 
@@ -399,9 +399,9 @@ MKHeap *MKHeap::Current() {
 s32 MKHeap::Pop() {
     s32 temp_r0_667;
 
-    temp_r0_667 = (s32) currentHeap.unk0 * 4;
-    currentHeap.unk0 -= 1;
-    return *(&heapObjects + temp_r0_667);
+    temp_r0_667 = (s32) MKHeap::currentHeap.unk0 * 4;
+    MKHeap::currentHeap.unk0 -= 1;
+    return *(&MKHeap::heapObjects + temp_r0_667);
 }
 #endif
 
@@ -409,15 +409,15 @@ s32 MKHeap::Pop() {
 void MKHeap::Push() {
     MKHeap *temp_r5_679;
 
-    temp_r5_679 = currentHeap.unk0 + 1;
-    currentHeap.unk0 = temp_r5_679;
-    *(&heapObjects + ((s32) temp_r5_679 * 4)) = this;
+    temp_r5_679 = MKHeap::currentHeap.unk0 + 1;
+    MKHeap::currentHeap.unk0 = temp_r5_679;
+    *(&MKHeap::heapObjects + ((s32) temp_r5_679 * 4)) = this;
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 u32 MKHeap::GetPeak() {
-    return (u32) peak.unk0;
+    return (u32) MKHeap::peak.unk0;
 }
 #endif
 
@@ -444,9 +444,9 @@ void MKHeap::UpdatePeak() {
     var_r26_705 = 0;
     var_r28_706 = 0;
     do {
-        temp_r3_708 = *(&heapList + var_r28_706);
+        temp_r3_708 = *(&MKHeap::heapList + var_r28_706);
         if ((temp_r3_708 != NULL) && (temp_r3_708->IsWithinAHeap() == 0)) {
-            temp_r3_714 = *(&heapList + var_r28_706);
+            temp_r3_714 = *(&MKHeap::heapList + var_r28_706);
             temp_r4_715 = M2C_FIELD(temp_r3_714, s32 *, 0xC);
             temp_r6_716 = M2C_FIELD(temp_r3_714, s32 *, 0x44);
             temp_r0_717 = M2C_FIELD(temp_r3_714, s32 *, 0);
@@ -459,20 +459,20 @@ void MKHeap::UpdatePeak() {
         var_r28_706 += 4;
     } while (var_r26_705 < 0xA);
     var_r0_733 = var_r31_701;
-    if ((s32) peak.unk0 > var_r31_701) {
-        var_r0_733 = (s32) peak.unk0;
+    if ((s32) MKHeap::peak.unk0 > var_r31_701) {
+        var_r0_733 = (s32) MKHeap::peak.unk0;
     }
     var_r3_739 = var_r30_703;
-    peak.unk0 = (MKHeap *) var_r0_733;
-    if ((MKHeap *) mainHeapPeak.unk0 > var_r30_703) {
-        var_r3_739 = mainHeapPeak.unk0;
+    MKHeap::peak.unk0 = (MKHeap *) var_r0_733;
+    if ((MKHeap *) MKHeap::mainHeapPeak.unk0 > var_r30_703) {
+        var_r3_739 = MKHeap::mainHeapPeak.unk0;
     }
     var_r0_746 = var_r29_704;
-    mainHeapPeak.unk0 = var_r3_739;
-    if ((MKHeap *) tempHeapPeak.unk0 > var_r29_704) {
-        var_r0_746 = tempHeapPeak.unk0;
+    MKHeap::mainHeapPeak.unk0 = var_r3_739;
+    if ((MKHeap *) MKHeap::tempHeapPeak.unk0 > var_r29_704) {
+        var_r0_746 = MKHeap::tempHeapPeak.unk0;
     }
-    tempHeapPeak.unk0 = var_r0_746;
+    MKHeap::tempHeapPeak.unk0 = var_r0_746;
 }
 #endif
 
@@ -503,12 +503,12 @@ void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *
     var_r30_796 = 0;
     var_r25_798 = 0;
     do {
-        temp_r3_800 = *(&heapList + var_r25_798);
+        temp_r3_800 = *(&MKHeap::heapList + var_r25_798);
         if ((temp_r3_800 != NULL) && (temp_r3_800->IsWithinAHeap() == 0)) {
             if (this != NULL) {
                 this->unk0 += 1;
             }
-            ((MKHeap *) (*(&heapList + var_r25_798)))->GetMemoryStatistics(&sp10, &spC, &sp8);
+            ((MKHeap *) (*(&MKHeap::heapList + var_r25_798)))->GetMemoryStatistics(&sp10, &spC, &sp8);
             if (arg0 != NULL) {
                 *arg0 = sp10 + (spC + sp8 + *arg0);
             }
@@ -534,7 +534,7 @@ u8 MKHeap::IsWithinAHeap() {
     var_r4_859 = 0;
     var_ctr_860 = 0xA;
 loop_1:
-    temp_r7_862 = *(&heapList + var_r4_859);
+    temp_r7_862 = *(&MKHeap::heapList + var_r4_859);
     if ((temp_r7_862 != NULL) && (temp_r7_862 != this) && ((u32) M2C_FIELD(temp_r7_862, u32 *, 0) <= (MKHeap *) this->unk0) && ((u32) M2C_FIELD(temp_r7_862, u32 *, 4) >= (u32) this->unk4)) {
         return 1U;
     }
@@ -555,8 +555,8 @@ void MKHeap::RemoveHeapFromGlobalList() {
     var_r4_890 = 0;
     var_ctr_891 = 0xA;
 loop_1:
-    if ((u32) *(&heapList + var_r4_890) == this) {
-        *(&heapList + var_r4_890) = 0;
+    if ((u32) *(&MKHeap::heapList + var_r4_890) == this) {
+        *(&MKHeap::heapList + var_r4_890) = 0;
         return;
     }
     var_r4_890 += 4;
@@ -576,8 +576,8 @@ void MKHeap::AddHeapToGlobalList() {
     var_r4_911 = 0;
     var_ctr_912 = 0xA;
 loop_1:
-    if ((u32) *(&heapList + var_r4_911) == 0U) {
-        *(&heapList + var_r4_911) = this;
+    if ((u32) *(&MKHeap::heapList + var_r4_911) == 0U) {
+        *(&MKHeap::heapList + var_r4_911) = this;
         return;
     }
     var_r4_911 += 4;
@@ -644,7 +644,7 @@ void MKHeap::InitModule() {
     s32 var_ctr_1069;
     s32 var_r3_1064;
 
-    currentHeap.unk0 = (MKHeap *)-1U;
+    MKHeap::currentHeap.unk0 = (MKHeap *)-1U;
     System_GetCommandLineParameter("breakon", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         baddress = atoi();
@@ -652,7 +652,7 @@ void MKHeap::InitModule() {
     var_r3_1064 = 0;
     var_ctr_1069 = 0xA;
     do {
-        *(&heapList + var_r3_1064) = 0;
+        *(&MKHeap::heapList + var_r3_1064) = 0;
         var_r3_1064 += 4;
         var_ctr_1069 -= 1;
     } while (var_ctr_1069 != 0);

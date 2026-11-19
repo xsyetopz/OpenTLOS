@@ -7,6 +7,7 @@
 #include "common/Source/MKCollisionUtil.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -541,7 +542,7 @@ loop_53:
         }
         if (var_r0_739 != 0) {
             var_r18_805 = 0;
-            if ((temp_r3_742 == NULL) || (temp_r4_807 = M2C_FIELD(temp_r4_736, void **, 8), ((temp_r4_807 == NULL) != 0)) || (M2C_FIELD(*temp_r3_742, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_807, s32 *, 8), sWorkingChunkID.unk0) != 0)) {
+            if ((temp_r3_742 == NULL) || (temp_r4_807 = M2C_FIELD(temp_r4_736, void **, 8), ((temp_r4_807 == NULL) != 0)) || (M2C_FIELD(*temp_r3_742, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_807, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
                 var_r18_805 = 1;
             }
             if (var_r18_805 != 0) {
@@ -605,7 +606,7 @@ loop_88:
         }
         if (var_r0_877 != 0) {
             var_r18_943 = 0;
-            if ((temp_r3_880 == NULL) || (temp_r4_945 = M2C_FIELD(temp_r4_874, void **, 8), ((temp_r4_945 == NULL) != 0)) || (M2C_FIELD(*temp_r3_880, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_945, s32 *, 8), sWorkingChunkID.unk0) != 0)) {
+            if ((temp_r3_880 == NULL) || (temp_r4_945 = M2C_FIELD(temp_r4_874, void **, 8), ((temp_r4_945 == NULL) != 0)) || (M2C_FIELD(*temp_r3_880, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_945, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
                 var_r18_943 = 1;
             }
             if (var_r18_943 != 0) {
@@ -845,7 +846,7 @@ loop_52:
                     }
                     if (var_r6_1184 != 0) {
                         var_r21_1250 = 0;
-                        if ((temp_r3_1187 == NULL) || (temp_r4_1252 = M2C_FIELD(temp_r4_1181, void **, 8), ((temp_r4_1252 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1187, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1252, s32 *, 8), sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_1187 == NULL) || (temp_r4_1252 = M2C_FIELD(temp_r4_1181, void **, 8), ((temp_r4_1252 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1187, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1252, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
                             var_r21_1250 = 1;
                         }
                         if (var_r21_1250 != 0) {
@@ -904,7 +905,7 @@ loop_87:
                     }
                     if (var_r6_1319 != 0) {
                         var_r21_1385 = 0;
-                        if ((temp_r3_1322 == NULL) || (temp_r4_1387 = M2C_FIELD(temp_r4_1316, void **, 8), ((temp_r4_1387 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1322, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1387, s32 *, 8), sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_1322 == NULL) || (temp_r4_1387 = M2C_FIELD(temp_r4_1316, void **, 8), ((temp_r4_1387 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1322, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1387, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
                             var_r21_1385 = 1;
                         }
                         if (var_r21_1385 != 0) {
@@ -1067,8 +1068,8 @@ s32 MKCollisionManager::GetGroundPoint(const MKVector3 &arg0, const MKVector3 &a
     var_r30_1539 = NULL;
     var_r29_1540 = 0;
     sp68 = &__vt;
-    sp70 = M2C_FIELD(&up, f64 *, 0);
-    sp78 = M2C_FIELD(&up, f64 *, 8);
+    sp70 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+    sp78 = M2C_FIELD(&MKVector3::up, f64 *, 8);
     sp80 = 0.0f;
     sp84 = 0.0f;
     sp88 = 0.0f;
@@ -1190,7 +1191,7 @@ loop_45:
                     }
                     if (var_r0_1672 != 0) {
                         var_r19_1738 = 0;
-                        if ((temp_r3_1675 == NULL) || (temp_r4_1740 = M2C_FIELD(temp_r4_1669, void **, 8), ((temp_r4_1740 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1675, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1740, s32 *, 8), sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_1675 == NULL) || (temp_r4_1740 = M2C_FIELD(temp_r4_1669, void **, 8), ((temp_r4_1740 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1675, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1740, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
                             var_r19_1738 = 1;
                         }
                         if (var_r19_1738 != 0) {
@@ -1274,7 +1275,7 @@ loop_82:
                     }
                     if (var_r0_1856 != 0) {
                         var_r19_1922 = 0;
-                        if ((temp_r3_1859 == NULL) || (temp_r4_1924 = M2C_FIELD(temp_r4_1853, void **, 8), ((temp_r4_1924 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1859, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1924, s32 *, 8), sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_1859 == NULL) || (temp_r4_1924 = M2C_FIELD(temp_r4_1853, void **, 8), ((temp_r4_1924 == NULL) != 0)) || (M2C_FIELD(*temp_r3_1859, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_1924, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
                             var_r19_1922 = 1;
                         }
                         if (var_r19_1922 != 0) {
@@ -1579,7 +1580,7 @@ loop_52:
                     }
                     if (var_r6_2286 != 0) {
                         var_r21_2352 = 0;
-                        if ((temp_r3_2289 == NULL) || (temp_r4_2354 = M2C_FIELD(temp_r4_2283, void **, 8), ((temp_r4_2354 == NULL) != 0)) || (M2C_FIELD(*temp_r3_2289, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_2354, s32 *, 8), sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_2289 == NULL) || (temp_r4_2354 = M2C_FIELD(temp_r4_2283, void **, 8), ((temp_r4_2354 == NULL) != 0)) || (M2C_FIELD(*temp_r3_2289, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_2354, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
                             var_r21_2352 = 1;
                         }
                         if (var_r21_2352 != 0) {
@@ -1638,7 +1639,7 @@ loop_87:
                     }
                     if (var_r6_2421 != 0) {
                         var_r21_2487 = 0;
-                        if ((temp_r3_2424 == NULL) || (temp_r4_2489 = M2C_FIELD(temp_r4_2418, void **, 8), ((temp_r4_2489 == NULL) != 0)) || (M2C_FIELD(*temp_r3_2424, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_2489, s32 *, 8), sWorkingChunkID.unk0) != 0)) {
+                        if ((temp_r3_2424 == NULL) || (temp_r4_2489 = M2C_FIELD(temp_r4_2418, void **, 8), ((temp_r4_2489 == NULL) != 0)) || (M2C_FIELD(*temp_r3_2424, u8 (**)(s32, s32), 0x9C)(M2C_FIELD(temp_r4_2489, s32 *, 8), MKResource::sWorkingChunkID.unk0) != 0)) {
                             var_r21_2487 = 1;
                         }
                         if (var_r21_2487 != 0) {
@@ -1949,10 +1950,10 @@ loop_2:
         M2C_FIELD(this->unk28, MKCollisionModel **, 0x48) = temp_r28_3121;
         goto loop_2;
     }
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0x10) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x10) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     var_r3_3141 = this->unk28;
 loop_26:
     if (var_r3_3141 != NULL) {

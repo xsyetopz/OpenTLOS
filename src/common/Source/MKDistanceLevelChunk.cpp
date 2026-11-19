@@ -586,7 +586,7 @@ void MKDistanceLevelChunk::CheckPropVisRecursive(SMNode *arg0, int arg1) {
     } else {
 block_11:
         if (!(var_r31_908 & 1)) {
-            temp_r3_972 = MKView_VisibilityTest(*((BoundingVolume *) arg0), identity);
+            temp_r3_972 = MKView_VisibilityTest(*((BoundingVolume *) arg0), Matrix::identity);
             if (temp_r3_972 != 0) {
                 if (temp_r3_972 == 1) {
                     var_r31_908 |= 1;
@@ -984,7 +984,6 @@ void SendMessageToProp(MKProp *arg0, MKMessage *arg1, unsigned int arg2, MKVecto
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void MKDistanceLevelChunk::DrawRecursiveTerrain(SMNode *arg0, int arg1) {
     SMNode *temp_r4_1697;
     SMNode *temp_r4_1704;
@@ -996,7 +995,7 @@ void MKDistanceLevelChunk::DrawRecursiveTerrain(SMNode *arg0, int arg1) {
     var_r30_1662 = arg1;
     var_r3_1664 = 1;
     if (!(arg1 & 1)) {
-        var_r3_1664 = MKView_VisibilityTest(*((BoundingVolume *) arg0), identity);
+        var_r3_1664 = MKView_VisibilityTest(*((BoundingVolume *) arg0), Matrix::identity);
         if (var_r3_1664 != 0) {
             if (var_r3_1664 == 1) {
                 var_r30_1662 |= 1;
@@ -1022,7 +1021,6 @@ block_4:
         }
     }
 }
-#endif
 
 u8 SMTree::LinkUp() {
     s32 temp_r0_1726;
@@ -1714,7 +1712,7 @@ void MKDistanceLevelChunk::AddDescriptor(MKPropDescriptor *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: illegal operand
 void MKDistanceLevelChunk::DrawTerrain(int arg0) {
     f32 temp_r12_3069;
     f32 temp_r12_3084;
@@ -1724,7 +1722,7 @@ void MKDistanceLevelChunk::DrawTerrain(int arg0) {
     void *var_r30_3034;
 
     if (this->unk134 & 1) {
-        MKMaterial_SetLocalToWorld(&identity, 1.0f);
+        MKMaterial_SetLocalToWorld(&Matrix::identity, 1.0f);
         temp_r4_3031 = arg0 * 0x50;
         var_r30_3034 = M2C_FIELD((this + temp_r4_3031), void **, 0x2AC4);
 loop_15:
@@ -1794,7 +1792,7 @@ void MKDistanceLevelChunk::DrawWater(int arg0) {
         var_r26_3148 = 0;
 loop_5:
         if (var_r26_3148 < MKModel_GetNmbrOfSubObjects(temp_r28_3145, (SubObjectType) 0)) {
-            temp_r3_3156 = MKView_VisibilityTest(*(MKModel_GetBoundingVolume(temp_r28_3145, (SubObjectType) 0, var_r26_3148)), identity);
+            temp_r3_3156 = MKView_VisibilityTest(*(MKModel_GetBoundingVolume(temp_r28_3145, (SubObjectType) 0, var_r26_3148)), Matrix::identity);
             if (temp_r3_3156 != 0) {
                 temp_r3_3160 = (var_r27_3147 * 2) & 0x1FFFE;
                 temp_r0_3161 = (temp_r3_3156 - 1) - 1;

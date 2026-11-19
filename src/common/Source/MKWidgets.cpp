@@ -335,11 +335,11 @@ void MKWidget_CreateEditable(const char *arg0, const char *arg1, const MKWidgetA
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r0, 0x0, qr0 */);
     temp_f4_738 = temp_f1_727 * sp60;
     sp80 = temp_f4_738;
-    sp58 = M2C_FIELD(&one, f64 *, 0);
-    sp60 = M2C_FIELD(&one, f64 *, 8);
-    sp88 = M2C_FIELD(&one, f64 *, 0);
-    sp90 = M2C_FIELD(&one, f64 *, 8);
-    temp_r3_760 = MKWidget_Create("MKWidgetEditable", Str_Printf("%s Editable", arg1, &one, M2C_FIELD(&one, f64 *, 0), M2C_FIELD(&one, f64 *, 8), M2C_FIELD(&one, f64 *, 0), temp_f4_738), (MKWidgetAttributes *) &sp48, arg3, NULL, NULL);
+    sp58 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+    sp60 = M2C_FIELD(&MKVector3::one, f64 *, 8);
+    sp88 = M2C_FIELD(&MKVector4::one, f64 *, 0);
+    sp90 = M2C_FIELD(&MKVector4::one, f64 *, 8);
+    temp_r3_760 = MKWidget_Create("MKWidgetEditable", Str_Printf("%s Editable", arg1, &MKVector3::one, M2C_FIELD(&MKVector4::one, f64 *, 0), M2C_FIELD(&MKVector3::one, f64 *, 8), M2C_FIELD(&MKVector3::one, f64 *, 0), temp_f4_738), (MKWidgetAttributes *) &sp48, arg3, NULL, NULL);
     M2C_FIELD(temp_r3_760, s32 (**)(MKWidget *, u32, u32, void *), 0x60) = arg4;
     M2C_FIELD(temp_r3_760, void **, 0x64) = arg5;
     sp48 = var_r28_675->unk0;
@@ -353,8 +353,8 @@ void MKWidget_CreateEditable(const char *arg0, const char *arg1, const MKWidgetA
     sp88 = var_r28_675->unk40;
     sp90 = var_r28_675->unk48;
     sp98 = var_r28_675->unk50;
-    sp48 = M2C_FIELD(&zero, f64 *, 0);
-    sp50 = M2C_FIELD(&zero, f64 *, 8);
+    sp48 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp50 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     MKWidget_Create(arg0, arg1, (MKWidgetAttributes *) &sp48, temp_r3_760, (s32 (*)(MKWidget *, u32, u32, void *)) &MKWidgetEditable::EditableMessageHook, temp_r3_760);
 }
 #endif
@@ -455,14 +455,14 @@ MKWidget *MKWidget_GetCurrentSystem() {
     return NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'sMKWidgetSystemDescriptor'
+#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetSystem' to
 MKWidgetSystem *MKWidget_CreateSystem() {
     MKWidgetSystem *var_r31_1013;
 
     operator new(0x80U, NULL, 0);
     var_r31_1013 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r31_1013 != NULL) {
-        var_r31_1013 = ((MKWidgetSystem *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetSystem((MKWidgetDescriptor *) &sMKWidgetSystemDescriptor);
+        var_r31_1013 = ((MKWidgetSystem *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetSystem((MKWidgetDescriptor *) &MKWidgetSystem::sMKWidgetSystemDescriptor);
     }
     M2C_FIELD(var_r31_1013->unk4, f32 *, 0x38) = (f32) gWidgetOrthoWidth;
     M2C_FIELD(var_r31_1013->unk4, f32 *, 0x3C) = (f32) gWidgetOrthoHeight;

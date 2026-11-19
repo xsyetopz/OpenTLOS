@@ -261,8 +261,8 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
     sp1A4 = unksp16C + temp_f8_334;
     sp1A8 = temp_f7_341 - (f32) sp170;
     sp1AC = (f32) sp170 + temp_f7_341;
-    sp158 = M2C_FIELD(&zero, f64 *, 0);
-    sp160 = M2C_FIELD(&zero, f64 *, 8);
+    sp158 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp160 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     do {
         temp_f25_362 = *(&sp198 + var_r30_324);
         temp_f31_366 = 0.01f + temp_f25_362;
@@ -1278,9 +1278,9 @@ loop_1:
     }
     if (var_r11_2346 == 6) {
         var_r5_2416 = 0;
-        sp88 = M2C_FIELD(&zero, f64 *, 0);
+        sp88 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
         var_r6_2418 = 0;
-        sp90 = M2C_FIELD(&zero, f64 *, 8);
+        sp90 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         var_ctr_2420 = 6;
         do {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r8, $r0, 0x0, qr0 */);

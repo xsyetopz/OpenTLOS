@@ -2,6 +2,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMat_MK2_Standard.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
 #include "unplaced_templates.h"
@@ -676,8 +677,8 @@ void MKMatInfo_Init(MatInfo *arg0, const char *arg1) {
     arg0->unk24 = 3;
     arg0->unk28 = 3;
     arg0->unk2C = 0.0f;
-    arg0->unk30 = M2C_FIELD(&one, f64 *, 0);
-    arg0->unk38 = M2C_FIELD(&one, f64 *, 8);
+    arg0->unk30 = M2C_FIELD(&MKVector4::one, f64 *, 0);
+    arg0->unk38 = M2C_FIELD(&MKVector4::one, f64 *, 8);
     arg0->unk40.SetIdentity();
     arg0->unk80 = 0;
     arg0->unk1E4 = 0;

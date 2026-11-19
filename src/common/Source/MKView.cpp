@@ -463,9 +463,8 @@ void MKView_SetOrthoRect(const MKRect *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void MKView_SetOrtho(const MKRect *arg0) {
-    MKView_SetCameraMatrix(identity);
+    MKView_SetCameraMatrix(Matrix::identity);
     M2C_FIELD(pStack, s8 *, 0x50) = 1;
     if (arg0 != NULL) {
         pStack[1].unk24 = arg0->unk0;
@@ -475,7 +474,6 @@ void MKView_SetOrtho(const MKRect *arg0) {
     }
     MKView_SettingsCounter += 1;
 }
-#endif
 
 void MKView_GetProjection(float *arg0, float *arg1, float *arg2) {
     f32 var_f0_1162;

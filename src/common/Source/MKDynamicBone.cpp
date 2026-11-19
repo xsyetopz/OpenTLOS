@@ -45,8 +45,8 @@ void MKDynamicBone::Reset() {
     temp_r3_49->CalculateMatrices((Matrix *) &arg_spE0, 1, &arg_sp10, (Matrix *) temp_r31_47);
     arg_spE0.Multiply(temp_r30_34, (Matrix *) &arg_spE0);
     temp_r0_62 = temp_r28_38 & 0x1E;
-    arg_spC8 = M2C_FIELD(&zero, f64 *, 0);
-    arg_spD0 = M2C_FIELD(&zero, f64 *, 8);
+    arg_spC8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    arg_spD0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     switch (temp_r0_62) {
     case 2:
         arg_spC8 = arg_spE0;
@@ -171,8 +171,8 @@ void MKDynamicBone::Update() {
             arg_sp6A0.Multiply(temp_r31_217, (Matrix *) &arg_sp660);
             arg_sp588 = arg_sp6D0;
             arg_sp590 = arg_sp6D8;
-            arg_sp558 = M2C_FIELD(&zero, f64 *, 0);
-            arg_sp560 = M2C_FIELD(&zero, f64 *, 8);
+            arg_sp558 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            arg_sp560 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
             switch (temp_r26_277) {                 /* switch 1 */
             case 2:                                 /* switch 1 */
                 arg_sp558 = arg_sp6A0;
@@ -942,7 +942,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: illegal operand
 void *MKDynamicBone_AddDynamicBone(MKModel *arg0, int arg1) {
     Animation *temp_r3_1727;
     MKDynamicBone **temp_r3_1736;
@@ -961,7 +961,7 @@ void *MKDynamicBone_AddDynamicBone(MKModel *arg0, int arg1) {
         temp_r31_1738->unk70 = (s16) arg1;
         temp_r31_1738->unk72 = 0x100;
         temp_r31_1738->unk74 = 10.0f;
-        M2C_STRUCT_COPY(temp_r31_1738, &identity, 0x40);
+        M2C_STRUCT_COPY(temp_r31_1738, &Matrix::identity, 0x40);
         temp_r3_1761 = gDynamicBones - 4;
         gDynamicBones = temp_r3_1761;
         var_r30_1729 = *temp_r3_1761;

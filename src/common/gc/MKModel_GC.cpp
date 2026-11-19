@@ -210,13 +210,13 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     if (temp_r4_510 >= 1U) {
         var_r14_519 = &arg0->unk10;
     } else {
-        var_r14_519 = &identity;
+        var_r14_519 = &Matrix::identity;
     }
     var_r27_526 = var_r14_519;
     if (temp_r4_510 >= 1U) {
         arg_spD8 = &arg0->unk50;
     } else {
-        arg_spD8 = (f64 *) &one;
+        arg_spD8 = (f64 *) &MKVector4::one;
     }
     if (temp_r4_510 >= 1U) {
         var_r26_538 = arg0->unk70;
@@ -269,7 +269,7 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
             MKModel_CalculateNodeWorldMatrix((MKModel *) temp_r7_586->unk0, (s32) M2C_FIELD(temp_r7_586, u8 *, 4) & 0x0FFFFFFF, (Matrix *) &arg_sp80);
             break;
         }
-        if ((var_r14_519 != NULL) && (var_r14_519 != &identity)) {
+        if ((var_r14_519 != NULL) && (var_r14_519 != &Matrix::identity)) {
             arg_sp80.Multiply(var_r14_519, (Matrix *) &arg_sp80);
         }
         var_r27_526 = (Matrix *) &arg_sp80;
@@ -286,7 +286,7 @@ void MKModel_Draw(const MKModel *arg0, const unsigned short *arg1) {
     var_r21_690 = 0;
     if (var_r26_538 == NULL) {
         var_r0_695 = 0;
-        if (((f32) M2C_FIELD(var_r27_526, f64 *, 0) == (f32) M2C_FIELD(&identity, f64 *, 0)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 8) == (f32) M2C_FIELD(&identity, f64 *, 8)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x10) == (f32) M2C_FIELD(&identity, f64 *, 0x10)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x18) == (f32) M2C_FIELD(&identity, f64 *, 0x18)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x20) == (f32) M2C_FIELD(&identity, f64 *, 0x20)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x28) == (f32) M2C_FIELD(&identity, f64 *, 0x28)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x30) == (f32) M2C_FIELD(&identity, f64 *, 0x30)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x38) == (f32) M2C_FIELD(&identity, f64 *, 0x38))) {
+        if (((f32) M2C_FIELD(var_r27_526, f64 *, 0) == (f32) M2C_FIELD(&Matrix::identity, f64 *, 0)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 8) == (f32) M2C_FIELD(&Matrix::identity, f64 *, 8)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x10) == (f32) M2C_FIELD(&Matrix::identity, f64 *, 0x10)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x18) == (f32) M2C_FIELD(&Matrix::identity, f64 *, 0x18)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x20) == (f32) M2C_FIELD(&Matrix::identity, f64 *, 0x20)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x28) == (f32) M2C_FIELD(&Matrix::identity, f64 *, 0x28)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x30) == (f32) M2C_FIELD(&Matrix::identity, f64 *, 0x30)) && ((f32) M2C_FIELD(var_r27_526, f64 *, 0x38) == (f32) M2C_FIELD(&Matrix::identity, f64 *, 0x38))) {
             var_r0_695 = 1;
         }
         if (var_r0_695 != 0) {
@@ -450,7 +450,7 @@ loop_129:
     if (var_r24_581 != NULL) {
         var_r24_581->Draw();
     }
-    MKMaterial_SetGeometryColor(one);
+    MKMaterial_SetGeometryColor(MKVector4::one);
     gpMKcurrentMaterialEffectorMask = 0;
     if ((u8) M2C_FIELD(arg0->unk0, u8 *, 0x48) != 0) {
         MKGrass_QueueDraw(arg0, arg1);

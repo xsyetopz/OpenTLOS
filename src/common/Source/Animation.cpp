@@ -334,7 +334,7 @@ Matrix *Animation::CalculateMatrices(Matrix *arg0, int arg1, short *arg2, const 
         if (arg3 != NULL) {
             var_r4_454 = arg3;
         } else {
-            var_r4_454 = &identity;
+            var_r4_454 = &Matrix::identity;
         }
         if (memcmp(temp_r4_441 + ((s8) M2C_FIELD(M2C_FIELD(temp_r21_435, void **, 0x28), u8 *, 4) << 6), var_r4_454, 0x40U) == 0) {
             if ((var_r28_432 == NULL) && (arg2 == NULL) && (var_r29_430 == (s8) M2C_FIELD(M2C_FIELD(temp_r21_435, void **, 0x28), u8 *, 4))) {

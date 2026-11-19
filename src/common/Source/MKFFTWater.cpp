@@ -4,6 +4,7 @@
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKOcean.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Texture.h"
 #include "common/Source/StdMath.h"
@@ -359,7 +360,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: illegal operand
 void MKFFTNormalMap::Update() {
     f64 sp10;                                       /* compiler-managed */
     f64 sp8;                                        /* compiler-managed */
@@ -389,10 +390,10 @@ void MKFFTNormalMap::Update() {
     void *temp_r9_615;
 
     var_r4_525 = 0;
-    sp8 = M2C_FIELD(&zero, f64 *, 0);
+    sp8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     var_r6_529 = 0;
     this->unk5004 += gUpdateTimeDelta;
-    sp10 = M2C_FIELD(&zero, f64 *, 8);
+    sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_f1_536 = 6.2831855f / this->unk5008;
     do {
         temp_r12_549 = ((var_r4_525 + 0x10) & 0x1F) - 0x10;
@@ -1049,7 +1050,7 @@ void MKFFTBaseType::Init(MKModel *arg0, const char *arg1, MKFFTWater *arg2) {
 
     this->unkC = arg2;
     strcpy(this + 0x5072, arg1);
-    strcat(this + 0x5072, Str_Printf("%d", sWorkingChunkID.unk0, M2C_BITWISE(f32, strcpy(&this->unk509A, arg1))));
+    strcat(this + 0x5072, Str_Printf("%d", MKResource::sWorkingChunkID.unk0, M2C_BITWISE(f32, strcpy(&this->unk509A, arg1))));
     this->unk0 = arg0;
     temp_r3_2032 = MKModel_GetNmbrOfSubObjects(this->unk0, (SubObjectType) 0);
     temp_r29_2034 = (temp_r3_2032 + 2) * 2;
@@ -1251,8 +1252,8 @@ void MKFFTWater::ManagedDraw() {
     var_r31_2361 = 0;
     var_r26_2364 = 0;
 loop_5:
-    if (var_r26_2364 < (s32) numTypesVisible.unk0) {
-        temp_r0_2370 = *(typesVisible + var_r31_2361);
+    if (var_r26_2364 < (s32) MKFFTWater::numTypesVisible.unk0) {
+        temp_r0_2370 = *(MKFFTWater::typesVisible + var_r31_2361);
         ((MKFFTBaseType *) ((MKFFTBaseType *) pWaterTypes[temp_r0_2370]))->Update();
         temp_r3_2374 = pWaterTypes[temp_r0_2370];
         temp_r3_2374->Draw(temp_r3_2374->unk50C4);
@@ -1280,7 +1281,7 @@ void MKFFTWater::BuildVisibleTypesList() {
     void *var_r4_2413;
 
     var_r7_2402 = 0;
-    numTypesVisible.unk0 = NULL;
+    MKFFTWater::numTypesVisible.unk0 = NULL;
     var_r8_2407 = 0;
     var_ctr_2408 = 0xA;
     do {
@@ -1293,9 +1294,9 @@ loop_4:
                 goto loop_4;
             }
             if (var_r4_2413 != NULL) {
-                temp_r0_2431 = (s32) numTypesVisible.unk0 * 4;
-                numTypesVisible.unk0 += 1;
-                *(typesVisible + temp_r0_2431) = var_r8_2407;
+                temp_r0_2431 = (s32) MKFFTWater::numTypesVisible.unk0 * 4;
+                MKFFTWater::numTypesVisible.unk0 += 1;
+                *(MKFFTWater::typesVisible + temp_r0_2431) = var_r8_2407;
             }
         }
         var_r8_2407 += 1;

@@ -704,12 +704,12 @@ u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKC
             var_r0_930 = 2;
         }
         var_r3_946 = 0x10;
-        sp10 = M2C_FIELD(&zero, f64 *, 0);
-        sp18 = M2C_FIELD(&zero, f64 *, 8);
-        sp260 = M2C_FIELD(&zero, f64 *, 0);
-        sp268 = M2C_FIELD(&zero, f64 *, 8);
-        sp250 = M2C_FIELD(&zero, f64 *, 0);
-        sp258 = M2C_FIELD(&zero, f64 *, 8);
+        sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        sp18 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+        sp260 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        sp268 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+        sp250 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        sp258 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         temp_r7_955 = var_r0_930 * 4;
         temp_r4_959 = sp8 - 1;
         var_ctr_961 = temp_r4_959 - 1;
@@ -780,8 +780,8 @@ u8 MKCollisionModel::BoxTestTri(const MKCollisionBox &arg0, MKVector3 *arg1, MKC
         sp28C = temp_f12_1102 + unksp264;
         sp290 = temp_f7_1092 - temp_f6_1091;
         sp294 = temp_f7_1092 + temp_f6_1091;
-        sp220 = M2C_FIELD(&zero, f64 *, 0);
-        sp228 = M2C_FIELD(&zero, f64 *, 8);
+        sp220 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        sp228 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         var_ctr_1122 = 6;
         do {
             temp_f6_1124 = *(&sp280 + var_r4_1106);
@@ -1759,7 +1759,7 @@ u8 IterateGrid(MKCollisionModel *arg0, const MKCollisionRay &arg1, MKCollisionRe
     sp1D0 = sp30;
     sp38 = (f32) sp1E8 * arg0->unk40;
     sp1D8 = (f64) sp38;
-    Max(sp1C0, zero);
+    Max(sp1C0, MKVector3::zero);
     sp250 = M2C_BITWISE(f64, sp1C0);
     sp258 = (f64) sp1C0.unk8;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
@@ -2490,7 +2490,7 @@ s32 MKCollisionModel::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResu
     sp1D8 = spC8;
     spD0 = (f32) sp1D0 * this->unk40;
     sp1E0 = (f64) spD0;
-    Max(sp1E8, zero);
+    Max(sp1E8, MKVector3::zero);
     temp_r8_4056 = this->unk30;
     temp_r5_4060 = temp_r8_4056->unkC;
     sp208 = M2C_BITWISE(f64, sp1E8);
@@ -3221,7 +3221,7 @@ void MKCollisionModel::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCo
     unksp308 = unksp38;
     unksp40 = unksp320 * this->unk40;
     unksp310 = unksp40;
-    Max(*((MKVector3 *) &unksp2F8), zero);
+    Max(*((MKVector3 *) &unksp2F8), MKVector3::zero);
     unksp3C8 = unksp2F8;
     unksp3D0 = unksp300;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r14, $r0, 0x0, qr0 */);
@@ -3243,10 +3243,10 @@ void MKCollisionModel::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCo
     var_r27_5407 = (s32) unksp3CC;
     unksp888 = (s32) unksp3C0;
     unksp884 = (s32) unksp3C8;
-    unksp8A8 = &one;
-    unksp8AC = &zero;
-    unksp8B0 = &one;
-    unksp8B4 = &zero;
+    unksp8A8 = &MKVector3::one;
+    unksp8AC = &MKVector3::zero;
+    unksp8B0 = &MKVector3::one;
+    unksp8B4 = &MKVector3::zero;
     unksp880 = (s32) unksp3B8;
 loop_52:
     if (var_r27_5407 <= unksp890) {
@@ -3655,7 +3655,7 @@ void MKCollisionModel::SweepBoxTest(const MKSweptBox &arg0, MKBestResult *arg1, 
     sp1D8 = sp38;
     sp40 = (f32) sp1F0 * this->unk40;
     sp1E0 = (f64) sp40;
-    Max(sp1C8, zero);
+    Max(sp1C8, MKVector3::zero);
     sp258 = M2C_BITWISE(f64, sp1C8);
     sp260 = (f64) sp1C8.unk8;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r14, $r0, 0x0, qr0 */);
@@ -3941,7 +3941,7 @@ s32 MKCollisionModel::BoxTest(const MKCollisionBox &arg0, MKCollisionResult *arg
     sp1D0 = sp30;
     sp38 = (f32) sp1E8 * this->unk40;
     sp1D8 = (f64) sp38;
-    Max(sp1C0, zero);
+    Max(sp1C0, MKVector3::zero);
     sp250 = M2C_BITWISE(f64, sp1C0);
     sp258 = (f64) sp1C0.unk8;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r14, $r0, 0x0, qr0 */);
@@ -4256,7 +4256,7 @@ s32 MKCollisionModel::SphereTest(const MKCollisionRay &arg0, MKCollisionResult *
     sp1D8 = sp38;
     sp40 = (f32) sp1F0 * this->unk40;
     sp1E0 = (f64) sp40;
-    Max(sp1C8, zero);
+    Max(sp1C8, MKVector3::zero);
     sp258 = M2C_BITWISE(f64, sp1C8);
     sp260 = (f64) sp1C8.unk8;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r14, $r0, 0x0, qr0 */);

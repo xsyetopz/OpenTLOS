@@ -7,7 +7,7 @@ extern void **gMK;
 static MKResource sWorkingChunkID__10MKResource;    /* type too large by 0x28; unable to generate initializer: not enough data */
 
 void MKResource::InitialiseResource() {
-    this->unk20 = sWorkingChunkID.unk0;
+    this->unk20 = MKResource::sWorkingChunkID.unk0;
 }
 #endif
 
@@ -27,7 +27,7 @@ s32 MKResource::IsResourceAvailable() {
     }
     temp_r4_38 = this->unk20;
     var_r3_39 = 0;
-    if ((temp_r4_38 == -1) || (temp_r4_38 == (s32) sWorkingChunkID.unk0) || ((MKHeap *) tempMemOverride.unk0 > 0) || (var_r31_24 != 0)) {
+    if ((temp_r4_38 == -1) || (temp_r4_38 == (s32) MKResource::sWorkingChunkID.unk0) || ((MKHeap *) MKHeap::tempMemOverride.unk0 > 0) || (var_r31_24 != 0)) {
         var_r3_39 = 1;
     }
     return var_r3_39;

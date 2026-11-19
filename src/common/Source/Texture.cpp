@@ -264,7 +264,7 @@ void Texture::CaptureDrawBuffer(float arg0, float arg1, float arg2, float arg3) 
     arg_sp54 = (f32) arg_sp24;
     arg_sp68 = (f64) arg_sp58;
     arg_sp60 = (f64) arg_sp50;
-    DrawQuad(zero, *((MKVector3 *) &arg_sp60), zero, one, -1U);
+    DrawQuad(MKVector3::zero, *((MKVector3 *) &arg_sp60), MKVector3::zero, MKVector3::one, -1U);
     GXSetTexCopySrc(0U, 0x190U, arg_sp24, arg_sp20);
     GXSetTexCopyDst(arg_sp24, arg_sp20, GX_TF_RGBA8, 0U);
     GXCopyTex(arg_sp3C, 1U);
@@ -545,6 +545,6 @@ s8 *Texture::Create(const char *arg0, float arg1) {
 
 #if 0 // DRAFT: expression syntax error
 void Texture::InitModule() {
-    initialised.unk0 = 1;
+    Texture::initialised.unk0 = 1;
 }
 #endif

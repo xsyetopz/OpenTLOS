@@ -2,6 +2,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
 #include "common/Source/File.h"
 #include "common/Source/MKView.h"
@@ -128,14 +129,13 @@ block_10:
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'identity'
 void Video_Draw(Video *arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
     if (arg0 != NULL) {
         MKMaterial_SetMaterial((MKMaterial *) currentVideo.unk2C);
         MKView_Push();
         MKView_SetOrtho(NULL);
         MKPrimitive(4, 0);
-        MKSetMatrix(identity);
+        MKSetMatrix(Matrix::identity);
         MKBegin(4);
         MKSetColorF(1.0f, 1.0f, 1.0f, 1.0f);
         MKSetTexCoord1F(0.0f, 0.0f);
@@ -151,7 +151,6 @@ void Video_Draw(Video *arg0, float arg1, float arg2, float arg3, float arg4, flo
         MKView_Pop();
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sound_state'
 void Video_Destroy(Video *arg0) {

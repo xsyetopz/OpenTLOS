@@ -85,7 +85,6 @@ void Min(const MKVector3 &arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'zero'
 void MKVector3_cpp::__sinit() {
     f32 sp74;
     f32 sp70;
@@ -144,19 +143,18 @@ void MKVector3_cpp::__sinit() {
     spC = 0.0f;
     sp10 = 0.0f;
     sp14 = 1.0f;
-    M2C_FIELD(&zero, f64 *, 0) = (f64) sp68;
-    M2C_FIELD(&zero, f64 *, 8) = (f64) sp70;
-    M2C_FIELD(&zero, f64 *, 0x10) = (f64) sp58;
-    M2C_FIELD(&zero, f64 *, 0x18) = (f64) sp60;
-    M2C_FIELD(&zero, f64 *, 0x20) = (f64) sp48;
-    M2C_FIELD(&zero, f64 *, 0x28) = (f64) sp50;
-    M2C_FIELD(&zero, f64 *, 0x30) = (f64) sp38;
-    M2C_FIELD(&zero, f64 *, 0x38) = (f64) sp40;
-    M2C_FIELD(&zero, f64 *, 0x40) = (f64) sp28;
-    M2C_FIELD(&zero, f64 *, 0x48) = (f64) sp30;
-    M2C_FIELD(&zero, f64 *, 0x50) = (f64) sp18;
-    M2C_FIELD(&zero, f64 *, 0x58) = (f64) sp20;
-    M2C_FIELD(&zero, f64 *, 0x60) = (f64) sp8;
-    M2C_FIELD(&zero, f64 *, 0x68) = (f64) sp10;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0) = (f64) sp68;
+    M2C_FIELD(&MKVector3::zero, f64 *, 8) = (f64) sp70;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x10) = (f64) sp58;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x18) = (f64) sp60;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x20) = (f64) sp48;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x28) = (f64) sp50;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x30) = (f64) sp38;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x38) = (f64) sp40;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x40) = (f64) sp28;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x48) = (f64) sp30;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x50) = (f64) sp18;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x58) = (f64) sp20;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x60) = (f64) sp8;
+    M2C_FIELD(&MKVector3::zero, f64 *, 0x68) = (f64) sp10;
 }
-#endif

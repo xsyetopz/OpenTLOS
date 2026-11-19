@@ -203,8 +203,8 @@ u8 MKCollision_GetGroundPoint(const MKVector3 &arg0, float arg1, MKCollisionResu
     spEC = -1;
     spF0 = 0;
     sp68 = &__vt;
-    sp70 = M2C_FIELD(&up, f64 *, 0);
-    sp78 = M2C_FIELD(&up, f64 *, 8);
+    sp70 = M2C_FIELD(&MKVector3::up, f64 *, 0);
+    sp78 = M2C_FIELD(&MKVector3::up, f64 *, 8);
     sp80 = 0.0f;
     sp84 = 0.0f;
     sp88 = 0.0f;

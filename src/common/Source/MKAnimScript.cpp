@@ -257,10 +257,10 @@ u8 MKAnimScriptedEvent::ParseCodeEvent(MKIniLine *arg0, char *arg1) {
             sp8 = spC;
             /* fallthrough */
         default:                                    /* switch 1 */
-            temp_r5_430 = pSrcAnim.unk0->unkA;
-            sp14 = temp_r5_430 + (s32) (spC * (f32) (pSrcAnim.unk0->unkC - temp_r5_430));
-            temp_r3_447 = pSrcAnim.unk0->unkA;
-            sp10 = temp_r3_447 + (s32) (sp8 * (f32) (pSrcAnim.unk0->unkC - temp_r3_447));
+            temp_r5_430 = MKAnimScriptedEvent::pSrcAnim.unk0->unkA;
+            sp14 = temp_r5_430 + (s32) (spC * (f32) (MKAnimScriptedEvent::pSrcAnim.unk0->unkC - temp_r5_430));
+            temp_r3_447 = MKAnimScriptedEvent::pSrcAnim.unk0->unkA;
+            sp10 = temp_r3_447 + (s32) (sp8 * (f32) (MKAnimScriptedEvent::pSrcAnim.unk0->unkC - temp_r3_447));
             goto block_17;
         case 0:                                     /* switch 1 */
             return 0U;
@@ -297,15 +297,15 @@ u8 MKAnimScriptedEvent::ParseFrameNo(MKIniLine *arg0) {
     sp8 = NULL;
     temp_r31_527 = arg0->AsString(1, &sp8);
     sscanf(sp8, &lit_stringBase0 + 0x83, &spC);
-    if (stricmp(pOnExitKeyWord.unk0, (s8 *) &spC) == 0) {
+    if (stricmp(MKAnimScriptedEvent::pOnExitKeyWord.unk0, (s8 *) &spC) == 0) {
         this->unk6 = -1;
         return (u8) temp_r31_527;
     }
-    if (stricmp(pOnEnterKeyWord.unk0, (s8 *) &spC) == 0) {
+    if (stricmp(MKAnimScriptedEvent::pOnEnterKeyWord.unk0, (s8 *) &spC) == 0) {
         this->unk6 = -2;
         return (u8) temp_r31_527;
     }
-    this->unk6 = GetFrameOrProportion(arg0, 1, pSrcAnim.unk0);
+    this->unk6 = GetFrameOrProportion(arg0, 1, MKAnimScriptedEvent::pSrcAnim.unk0);
     return (u8) temp_r31_527;
 }
 #endif
@@ -317,17 +317,17 @@ u8 MKAnimScriptedEvent::ParseEventType(MKIniLine *arg0) {
 
     sp8 = NULL;
     temp_r31_583 = arg0->AsString(0, &sp8);
-    if (stricmp((MKAnim *) sp8, &pSoundEventKeyWord.unk0->unk0) == 0) {
+    if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pSoundEventKeyWord.unk0->unk0) == 0) {
         this->unk4 = 1;
-    } else if (stricmp((MKAnim *) sp8, &pSubObjectEnableEventKeyWord.unk0->unk0) == 0) {
+    } else if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pSubObjectEnableEventKeyWord.unk0->unk0) == 0) {
         this->unk4 = 2;
-    } else if (stricmp((MKAnim *) sp8, &pSubObjectDisableEventKeyWord.unk0->unk0) == 0) {
+    } else if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pSubObjectDisableEventKeyWord.unk0->unk0) == 0) {
         this->unk4 = 3;
-    } else if (stricmp((MKAnim *) sp8, &pSubObjectEnableAllEventKeyWord.unk0->unk0) == 0) {
+    } else if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pSubObjectEnableAllEventKeyWord.unk0->unk0) == 0) {
         this->unk4 = 4;
-    } else if (stricmp((MKAnim *) sp8, &pSubObjectDisableAllEventKeyWord.unk0->unk0) == 0) {
+    } else if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pSubObjectDisableAllEventKeyWord.unk0->unk0) == 0) {
         this->unk4 = 5;
-    } else if (stricmp((MKAnim *) sp8, &pAliasMaterialEventKeyWord.unk0->unk0) == 0) {
+    } else if (stricmp((MKAnim *) sp8, &MKAnimScriptedEvent::pAliasMaterialEventKeyWord.unk0->unk0) == 0) {
         this->unk4 = 6;
     } else {
         this->unk4 = 0;
@@ -529,7 +529,7 @@ void MKAnimScript::Apply(Animation *arg0, int arg1) {
     arg0->TweenNode(temp_f31_987, var_f2_1066, arg1, 1U, 1U);
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: expression syntax error
 void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
     s32 sp174;
     s32 sp170;
@@ -564,16 +564,16 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
 
     if ((u32) this->unk20 == 0) {
         if (arg2 != NULL) {
-            M2C_FIELD(arg2, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-            M2C_FIELD(arg2, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+            M2C_FIELD(arg2, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            M2C_FIELD(arg2, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
         }
     } else {
         temp_r3_1132 = this->unk2C;
         if (temp_r3_1132 & 1) {
             this->unk3C = this->unk40;
             if (arg2 != NULL) {
-                M2C_FIELD(arg2, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-                M2C_FIELD(arg2, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+                M2C_FIELD(arg2, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                M2C_FIELD(arg2, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
             }
             if (arg0 != NULL) {
                 Apply(arg0, arg1);
@@ -603,8 +603,8 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
             if (arg0 != NULL) {
                 Apply(arg0, arg1);
             }
-            sp88 = M2C_FIELD(&zero, f64 *, 0);
-            sp90 = M2C_FIELD(&zero, f64 *, 8);
+            sp88 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+            sp90 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
             if ((arg0 != NULL) && ((s32) arg0->unk28 != -1)) {
                 temp_r7_1235 = this->unk20;
                 sp170 = 0x43300000;
@@ -1898,7 +1898,7 @@ loop_99:
                 var_r30_3261->unkC = M2C_BITWISE(s16, sp20);
                 var_r30_3261->unk4 = (var_r30_3261->unk4 + M2C_BITWISE(s32, sp20)) - M2C_BITWISE(s32, sp24);
             } else if (var_r26_3268->IsField(&lit_stringBase0 + 0xAD) != 0) {
-                pSrcAnim.unk0 = var_r30_3261;
+                MKAnimScriptedEvent::pSrcAnim.unk0 = var_r30_3261;
                 if (sp30.ParseEvent(var_r26_3268, temp_r29_3262) != 0) {
                     switch (sp30.unk4) {            /* switch 3; irregular */
                     case 0:                         /* switch 3 */
@@ -1950,9 +1950,9 @@ loop_99:
                 sp18 = NULL;
                 var_r26_3268->AsString(1, &sp18);
                 sscanf(sp18, &lit_stringBase0 + 0x83, &sp70);
-                if (stricmp(pOnExitKeyWord.unk0, (s8 *) &sp70) == 0) {
+                if (stricmp(MKAnimScriptedEvent::pOnExitKeyWord.unk0, (s8 *) &sp70) == 0) {
                     var_r23_3616 = -1;
-                } else if (stricmp(pOnEnterKeyWord.unk0, (s8 *) &sp70) == 0) {
+                } else if (stricmp(MKAnimScriptedEvent::pOnEnterKeyWord.unk0, (s8 *) &sp70) == 0) {
                     var_r23_3616 = -2;
                 }
                 temp_r22_3650 = &var_r30_3261->unk18[var_r30_3261->unk14];
@@ -1972,9 +1972,9 @@ loop_99:
                 spC = NULL;
                 var_r26_3268->AsString(2, &spC);
                 sscanf(spC, &lit_stringBase0 + 0x83, &sp50);
-                if (stricmp(pOnExitKeyWord.unk0, (s8 *) &sp50) == 0) {
+                if (stricmp(MKAnimScriptedEvent::pOnExitKeyWord.unk0, (s8 *) &sp50) == 0) {
                     var_r23_3689 = -1;
-                } else if (stricmp(pOnEnterKeyWord.unk0, (s8 *) &sp50) == 0) {
+                } else if (stricmp(MKAnimScriptedEvent::pOnEnterKeyWord.unk0, (s8 *) &sp50) == 0) {
                     var_r23_3689 = -2;
                 }
                 temp_r22_3723 = &var_r30_3261->unk20[var_r30_3261->unk1C];

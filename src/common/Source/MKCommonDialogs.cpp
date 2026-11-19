@@ -38,7 +38,7 @@ void CreateWidgetWindow::CreateWidgets() {
 
     M2C_STRUCT_COPY((s32) &sp2C + 4, MKWidgetIdentityAttributes - 4 + 4, 0x58);
     this->unk8 = 0;
-    placingWidget.unk0 = NULL;
+    CreateWidgetWindow::placingWidget.unk0 = NULL;
     sp30 = 420.0f;
     sp34 = 20.0f;
     sp38 = 0.0f;
@@ -49,8 +49,8 @@ void CreateWidgetWindow::CreateWidgets() {
     sp8 = 14.0f;
     MKWidget_SendMessage(this->unk0, 0x6BU, (u32) &sp8);
     MKWidget_GetClientVolume(this->unk0, &sp10);
-    sp30 = M2C_FIELD(&zero, f64 *, 0);
-    sp38 = M2C_FIELD(&zero, f64 *, 8);
+    sp30 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp38 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     sp60 = (f64) sp10.unk10;
     sp68 = sp28;
     this->unk4 = MKWidget_Create(MKWIDGETTYPE_LISTBOX, "WidgetList", (MKWidgetAttributes *) &sp30, this->unk0, NULL, NULL);
@@ -79,7 +79,7 @@ s32 CreateWidgetWindow::CreateHook(MKWidget *arg0, unsigned int arg1, unsigned i
 
     } else if ((u16) M2C_FIELD(arg1, u16 *, 4) == 6) {
         MKWidget_SetMouseFocus(M2C_FIELD(arg2, MKWidget **, 0));
-        placingWidget.unk0 = (MKWidget *)1U;
+        CreateWidgetWindow::placingWidget.unk0 = (MKWidget *)1U;
         temp_r0_143 = M2C_FIELD(arg1, MKWidget **, 0);
         temp_r3_144 = M2C_FIELD(arg2, MKWidget **, 8);
         if (temp_r0_143 != temp_r3_144) {
@@ -118,7 +118,7 @@ s32 CreateWidgetWindow::CreateWidgetWindowHook(MKWidget *arg0, unsigned int arg1
 
     switch (arg0) {                                 /* irregular */
     case 48:
-        if ((s32) placingWidget.unk0 != 0) {
+        if ((s32) CreateWidgetWindow::placingWidget.unk0 != 0) {
             MKWidget_ReleaseMouseFocus();
             MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 8), 0x64U, 0U);
             if (arg1 == 1) {
@@ -199,7 +199,7 @@ void MaterialEditor::CreateWidgets() {
     sp40 = 0.0f;
     temp_r3_392 = MKWidget_Create(MKWIDGETTYPE_COLOR, "MaterialFrame", (MKWidgetAttributes *) &sp8, this->unk4, NULL, NULL);
     MKWidget_DisableFlag(temp_r3_392, 0x100U);
-    MKWidget_SendMessage(temp_r3_392, 0x64U, (u32) &zero);
+    MKWidget_SendMessage(temp_r3_392, 0x64U, (u32) &MKVector4::zero);
     sp8 = 11.0f;
     spC = 11.0f;
     sp10 = 0.0f;

@@ -25,7 +25,7 @@ void MKAttachment_CalculateMatrix(const MKAttachment *arg0, Matrix *arg1, const 
         MKModel_CalculateNodeWorldMatrix((MKModel *) arg0->unk0, (s32) M2C_FIELD(arg0, u8 *, 4) & 0x0FFFFFFF, arg1);
         break;
     }
-    if ((arg2 != NULL) && (arg2 != &identity)) {
+    if ((arg2 != NULL) && (arg2 != &Matrix::identity)) {
         arg1->Multiply(arg2, arg1);
     }
 }

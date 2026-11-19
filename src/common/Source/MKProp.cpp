@@ -8,6 +8,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
@@ -500,10 +501,10 @@ void MKProp::Resolve() {
 void MKProp::LoadDone() {
     MKModel *temp_r3_1331;
 
-    loadInfo.LoadDone();
+    ((MKPropLoadInfo *) ((MKPropLoadInfo *) &MKProp::loadInfo))->LoadDone();
     temp_r3_1331 = this->unk4;
     if (temp_r3_1331 != NULL) {
-        MKModel_SetWorldMatrix(temp_r3_1331, *((Matrix *) &loadInfo));
+        MKModel_SetWorldMatrix(temp_r3_1331, *((Matrix *) &MKProp::loadInfo));
         this->unk8 = MKModel_GetWorldMatrix(this->unk4);
         if (MKModel_GetCloth(this->unk4) != NULL) {
             this->unkC = MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1);
@@ -546,18 +547,18 @@ s32 MKProp::LoadLine(MKIniLine *arg0) {
         return 1;
     }
 block_17:
-    loadInfo.LoadLine(arg0);
+    ((MKPropLoadInfo *) ((MKPropLoadInfo *) &MKProp::loadInfo))->LoadLine(arg0);
     return 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sWorkingChunkIndex'
+#if 0 // DRAFT: expression syntax error
 void MKProp::Init() {
     this->unk1E = 0;
     this->unk14 = 0;
     this->unk40 = 0;
     this->unk38 = NULL;
-    this->unk48 = sWorkingChunkIndex.unk0;
+    this->unk48 = MKResource::sWorkingChunkIndex.unk0;
     this->unk28 = NULL;
     this->unk2C = NULL;
     this->unk30 = NULL;
@@ -571,7 +572,7 @@ void MKProp::Init() {
     this->unk20 = 1.0f;
     this->unk24 = 0.0f;
     this->unkC = NULL;
-    loadInfo.Init();
+    ((MKPropLoadInfo *) ((MKPropLoadInfo *) &MKProp::loadInfo))->Init();
 }
 #endif
 

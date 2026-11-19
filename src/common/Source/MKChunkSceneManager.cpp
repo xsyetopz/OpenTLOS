@@ -5,6 +5,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKLevelChunk.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKSystem.h"
 #include "common/Source/Str.h"
@@ -303,7 +304,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sWorkingChunkID'
+#if 0 // DRAFT: expression syntax error
 void MKChunkSceneManager::SetWorkingChunk(MKLevelChunk *arg0) {
     MKLevelChunk **temp_r0_475;
     MKLevelChunk **var_ctr_476;
@@ -313,13 +314,13 @@ void MKChunkSceneManager::SetWorkingChunk(MKLevelChunk *arg0) {
     if (arg0 != NULL) {
         var_r6_472 = 0;
         var_r3_473 = 0;
-        sWorkingChunkID.unk0 = arg0->unk14.unk10C;
+        MKResource::sWorkingChunkID.unk0 = arg0->unk14.unk10C;
         temp_r0_475 = this->unkEC;
         var_ctr_476 = temp_r0_475;
         if (temp_r0_475 > 0) {
 loop_2:
             if ((s32) arg0->unk14.unk10C == (s32) M2C_FIELD(*(this->unkE8 + var_r3_473), s32 *, 0x124)) {
-                sWorkingChunkIndex.unk0 = var_r6_472;
+                MKResource::sWorkingChunkIndex.unk0 = var_r6_472;
             } else {
                 var_r6_472 += 1;
                 var_r3_473 += 4;
@@ -331,8 +332,8 @@ loop_2:
         }
         arg0->Activate();
     } else {
-        sWorkingChunkID.unk0 = -1;
-        sWorkingChunkIndex.unk0 = -1;
+        MKResource::sWorkingChunkID.unk0 = -1;
+        MKResource::sWorkingChunkIndex.unk0 = -1;
         this->unkF4->Deactivate();
     }
     this->unkF4 = arg0;
@@ -923,9 +924,9 @@ void MKChunkSceneManager::Init(MKSceneManagerInit *arg0) {
 
     MKSceneManager::Init(arg0);
     if (((MKLevelChunk **) arg0->unk34 == (MKLevelChunk **)2) || (System_GetCommandLineParameter("enginechunks", 0U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) {
-        bChunksUseHeaps = 0;
+        MKChunkSceneManager::bChunksUseHeaps = 0;
     } else {
-        bChunksUseHeaps = 1;
+        MKChunkSceneManager::bChunksUseHeaps = 1;
     }
     var_r0_1585 = arg0->unkCC;
     if (var_r0_1585 != NULL) {

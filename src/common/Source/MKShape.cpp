@@ -6,7 +6,6 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'one'
 void MKShape_DrawLine(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, const MKVector4 &arg3, const Matrix &arg4) {
     u8 var_r0_34;
 
@@ -16,7 +15,7 @@ void MKShape_DrawLine(const MKVector3 &arg0, const MKVector3 &arg1, const MKVect
     MKSetColorV(arg2);
     MKSetPositionV(arg0);
     var_r0_34 = 0;
-    if ((arg3.unk0 == one.unk0) && (arg3.unk4 == one.unk4) && (arg3.unk8 == one.unk8) && (arg3.unkC == one.unkC)) {
+    if ((arg3.unk0 == MKVector4::one.unk0) && (arg3.unk4 == MKVector4::one.unk4) && (arg3.unk8 == MKVector4::one.unk8) && (arg3.unkC == MKVector4::one.unkC)) {
         var_r0_34 = 1;
     }
     if (var_r0_34 != 0) {
@@ -28,7 +27,6 @@ void MKShape_DrawLine(const MKVector3 &arg0, const MKVector3 &arg1, const MKVect
     MKEnd();
     MKEndPrimitive();
 }
-#endif
 
 void MKShape_DrawSprite(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2) {
     MKPrimitive(0xC, 0);
