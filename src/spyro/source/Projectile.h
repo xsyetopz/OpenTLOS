@@ -5,6 +5,7 @@
 #include "common/Source/MKPtrList.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "unplaced_enums.h"
 
 class GameProp;
 class KDPropExDescriptor;
@@ -16,7 +17,6 @@ class MKProp;
 class MKVector3;
 class Projectile;
 class ProjectileDescriptor;
-class ProjectileType;
 
 class Projectile : public GameProp {  // base: vtable prefix
 public:

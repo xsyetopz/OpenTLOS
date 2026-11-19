@@ -21,6 +21,7 @@
 #include "spyro/source/SnowballTree.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/BoulderRamp.h"
@@ -197,7 +198,6 @@ void Ball::PlatformDetach() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Ball::PlatformUpdate() {
     u8 sp58;
     s32 sp54;
@@ -276,7 +276,6 @@ block_8:
         }
     }
 }
-#endif
 
 void Ball::SetParentTree(SnowballTree *arg0, int arg1, MKVector3 &arg2, float arg3) {
     this->unk228 = (Catapult *) arg0;

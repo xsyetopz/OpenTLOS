@@ -5,6 +5,7 @@
 #include "common/Source/MKVector4.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/KDProp.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
@@ -88,7 +89,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'unkB0'
 void ElecZapCrystal::Draw() {
     f64 sp20;
     f64 sp18;
@@ -264,7 +265,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *,
 void ElecZapCrystal::LoadDone() {
     f32 var_f1_464;
     s32 temp_r0_481;

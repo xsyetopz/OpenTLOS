@@ -5,6 +5,7 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "spyro/source/KDMath.h"
 #include <m2c_macros.h>
@@ -181,7 +182,7 @@ void SpyroStrafeState::SetDesiredVelocity() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: pointer/array required
 void SpyroStrafeState::UpdateCircleTargetMovement() {
     f64 sp88;
     f64 sp80;
@@ -387,7 +388,7 @@ void SpyroStrafeState::SelectAnim() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unk14'
 u8 SpyroStrafeState::AnyToDodgeTranstion() {
     InputModifier *temp_r3_705;
     InputModifier *temp_r3_750;
@@ -448,7 +449,7 @@ u8 SpyroStrafeState::AnyToDodgeTranstion() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 SpyroStrafeState::DodgeForwardBackTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -533,7 +534,7 @@ void SpyroStrafeState::DodgeForwardBackEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 SpyroStrafeState::DodgeLeftRightTransition() {
     s8 sp1D;
     s8 sp1C;

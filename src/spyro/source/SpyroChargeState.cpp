@@ -8,6 +8,7 @@
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
 #include <m2c_macros.h>
@@ -15,7 +16,6 @@
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 static M2C_UNK lit_764;                                /* unable to generate initializer: unknown type */
 SpyroChargeState states__16SpyroChargeState;        /* unable to generate initializer: confusing struct layout */
 
@@ -35,7 +35,6 @@ void SpyroChargeState::ChargeTransition() {
     }
     this->unk10->TryChangeState((u8) ((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1) ^ 1) == 0, 4U, NULL, 0U);
 }
-#endif
 
 void SpyroChargeState::ChargeUpdate() {
     ChargeTransition();
@@ -520,7 +519,6 @@ void SpyroChargeState::Init(Spyro *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_764'
 void SpyroChargeState_cpp::__sinit() {
     f64 temp_f0_1248;
     f64 temp_f1_1208;
@@ -575,4 +573,3 @@ void SpyroChargeState_cpp::__sinit() {
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (temp_f4_1238 * temp_f3_1241));
     SPYRO_MIN_JUMP_Y_VELOCITY = (f32) (380000.0 * (temp_f1_1244 * temp_f0_1248));
 }
-#endif

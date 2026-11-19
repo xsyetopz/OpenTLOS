@@ -6,6 +6,7 @@
 #include "common/Source/Texture.h"
 #include "common/gc/MKModel_GC.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "dolphin/gx.h"
 #include "dolphin/mtx.h"
 #include "dolphin/os.h"
@@ -154,11 +155,9 @@ f32 MKMaterial_SetVertex4F(int arg0, float arg1, float arg2, float arg3, float a
     return arg1;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'VERTEX_COMPONENT'
 void MKMaterial_GetVertexComponentHandleFromType(VERTEX_COMPONENT arg0) {
 
 }
-#endif
 
 void MKMaterial_UseLocality(int arg0) {
     MKMaterial_CurrentLocalityIndex = arg0;

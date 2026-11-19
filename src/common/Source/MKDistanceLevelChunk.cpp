@@ -7,6 +7,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "dolphin/os.h"
 #include "common/Source/MKView.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -1441,7 +1442,6 @@ void SMTree::Init(int arg0, MKProp *arg1) {
     this->unk14 = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SMTree::Init(TerrainModel *arg0) {
     s16 temp_r3_2522;
 
@@ -1456,7 +1456,6 @@ void SMTree::Init(TerrainModel *arg0) {
     this->unk18 = 0;
     this->unk2C = (MKProp *) arg0;
 }
-#endif
 
 void SMTree::Reset() {
     this->unk14 = 0;

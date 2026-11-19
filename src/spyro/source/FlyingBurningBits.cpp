@@ -5,6 +5,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CrashFirePS.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKView.h"

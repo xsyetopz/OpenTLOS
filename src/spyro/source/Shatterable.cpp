@@ -26,6 +26,7 @@
 #include "spyro/source/ShatterExtendedMsg.h"
 #include "spyro/source/ShatterOnCollisionMsg.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"
@@ -898,7 +899,7 @@ void Shatterable::PostShatter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SmashPropState'
+#if 0 // DRAFT: undefined identifier 'P21ShatterableDescriptor'
 void Shatterable::SetSmashPropState(SmashPropState arg0) {
     s32 spC;
     s32 sp8;
@@ -1900,7 +1901,7 @@ loop_223:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'sp8'
 u8 Shatterable::AbleToRespawn() {
     s8 sp98;
     s32 sp94;
@@ -2361,7 +2362,7 @@ u8 Shatterable_ParentDestroyed(Attachment *arg0, void *arg1) {
     return 1U;
 }
 
-#if 0 // DRAFT: undefined identifier 'temp_r3_4909'
+#if 0 // DRAFT: illegal implicit conversion from 'ShatterableDescriptor *' to
 void Shatterable::Init() {
     MKHeap *temp_r3_4909;
     MKHeap *temp_r3_4912;

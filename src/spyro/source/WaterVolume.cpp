@@ -7,6 +7,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDWaterVolume.h"
+#include "unplaced_enums.h"
 #include "spyro/source/PropFlags.h"
 #include <m2c_macros.h>
 

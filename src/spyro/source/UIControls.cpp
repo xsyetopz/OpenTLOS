@@ -1,4 +1,5 @@
 #include "spyro/source/UIControls.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include <m2c_macros.h>
 
@@ -16,24 +17,19 @@ void UIControls_Reset() {
 
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
 void UIControls_SetDevice(MKInputDevices arg0) {
     currentController = (s32) arg0;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void UIControls_Init() {
     allControllers.Init((MKInputDevices) 0);
     currentController = 0;
 }
-#endif
 
 void UIControls_Update() {
     allControllers.Update();
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'FrontEndControls'
 s32 UIControls_Held(FrontEndControls arg0, int arg1) {
     UIInputTracker *temp_r5_80;
     f32 var_f1_92;
@@ -56,9 +52,7 @@ s32 UIControls_Held(FrontEndControls arg0, int arg1) {
     }
     return var_f1_92 != 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'FrontEndControls'
 s32 UIControls_Pressed(FrontEndControls arg0, int arg1) {
     UIInputTracker *temp_r5_128;
     s32 var_r4_0;
@@ -78,9 +72,8 @@ s32 UIControls_Pressed(FrontEndControls arg0, int arg1) {
     }
     return MKInput_Pressed((s32) arg0, (MKInputDevices) temp_r5_128->unk0);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'FrontEndControls'
+#if 0 // DRAFT: undefined identifier 'unk1D'
 u8 UIControls_DirectionPressed(FrontEndControls arg0, int arg1) {
     UIInputTracker *temp_r4_165;
     s32 var_r4_0;
@@ -107,7 +100,6 @@ void *UIInput(int arg0) {
     return &(&allControllers)[var_r3_0];
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void UIInputTracker::CheckDirection(int arg0, int arg1, float arg2) {
     f32 temp_f0_419;
     f32 temp_f31_304;
@@ -236,7 +228,6 @@ block_16:
     M2C_FIELD((this + (var_r30_206 * 4)), f32 *, -8) = -1.0f;
     M2C_FIELD((this + (arg1 * 4)), f32 *, -8) = -1.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void UIInputTracker::Update() {
@@ -309,7 +300,7 @@ void UIInputTracker::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
+#if 0 // DRAFT: illegal operand
 void UIInputTracker::Init(MKInputDevices arg0) {
     s32 temp_r0_597;
     s32 var_ctr_594;

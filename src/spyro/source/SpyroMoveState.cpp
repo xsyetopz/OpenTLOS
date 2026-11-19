@@ -6,6 +6,7 @@
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "spyro/source/KDMath.h"
 #include <m2c_macros.h>
@@ -102,7 +103,6 @@ u8 SpyroMoveState::SelectState(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 s32 SpyroMoveState::Transition() {
     InputModifier *temp_r3_340;
     InputModifier *temp_r3_422;
@@ -303,7 +303,6 @@ block_8:
     ((KDInput *) (this->unk10->GetInput()))->GetLeftMag();
     return this->unk10->TryChangeState(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1, 8U, NULL, 0U);
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void SpyroMoveState::Update() {

@@ -4,10 +4,10 @@
 #include <dolphin/types.h>
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/Trap.h"
+#include "unplaced_enums.h"
 
 class Door;
 class DoorDescriptor;
-class DoorStates;
 class KDPropExDescriptor;
 class MKIniLine;
 class MKMessage;

@@ -1,4 +1,5 @@
 #include "common/Source/MKRumble.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKInput_GC.h"
 #include <m2c_macros.h>
@@ -44,7 +45,7 @@ void MKRumble_Push() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void MKRumble_Stop(MKInputDevices arg0) {
     s32 temp_r0_99;
     s32 var_r9_89;
@@ -78,7 +79,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void MKRumble_Play(MKInputDevices arg0, float arg1, float arg2, float arg3, char arg4, float arg5) {
     struct _struct_vibrationEffect_0x1C *temp_r6_154;
 

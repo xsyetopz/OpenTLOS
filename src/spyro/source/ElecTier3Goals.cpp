@@ -7,6 +7,7 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/PropFlags.h"
@@ -25,7 +26,7 @@ u8 EnemyGoal_TestSB::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_TestSB::Activate() {
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
@@ -99,7 +100,7 @@ u8 ElecTier3Goal_Scan::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void ElecTier3Goal_Scan::Activate() {
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
@@ -141,7 +142,7 @@ u8 ElecTier3Goal_Spawn::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void ElecTier3Goal_Spawn::Activate() {
     this->unk8 = 0;
     this->unkC->StopMovement(1U);

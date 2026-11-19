@@ -2,8 +2,8 @@
 #define COMMON_GC_MKINPUT_GC_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
-class MKInputDevices;
 class MKInputEvent;
 
 s32 MKInput_GetNextKeybEventPlatformSpecific(MKInputEvent *);

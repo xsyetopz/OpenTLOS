@@ -2,6 +2,7 @@
 #include "spyro/source/Character.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 

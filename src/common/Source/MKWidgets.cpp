@@ -7,6 +7,7 @@
 #include "common/Source/MKWidgetsInternal.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCommonDialogs.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKMat_MK2_Standard.h"
@@ -111,13 +112,11 @@ MKWidget *MKWidget_GetFocus() {
     return M2C_FIELD(MKWidget_GetCurrentSystem(), MKWidget **, 0x4C);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void MKWidget_GetMousePos(MKVector3 *arg0) {
     arg0->unk0 = (f32) (s32) ((gWidgetOrthoWidth / M2C_FIELD(&gDisplay, f32 *, 0x68)) * MKInput_GetState(8, (MKInputDevices) 6, NULL, NULL));
     arg0->unk4 = (f32) (s32) ((gWidgetOrthoHeight / M2C_FIELD(&gDisplay, f32 *, 0x6C)) * MKInput_GetState(9, (MKInputDevices) 6, NULL, NULL));
     arg0->unk8 = 0.0f;
 }
-#endif
 
 MKWidget *MKWidget_ReleaseMouseFocus() {
     MKWidget *temp_r31_246;

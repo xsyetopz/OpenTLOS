@@ -12,6 +12,7 @@
 #include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
@@ -309,7 +310,7 @@ u8 SwampTier3Goal_Cower::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void SwampTier3Goal_Cower::Activate() {
     Character *temp_r3_568;
     Character *temp_r5_586;

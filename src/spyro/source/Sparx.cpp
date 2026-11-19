@@ -16,6 +16,7 @@
 #include "spyro/source/SparxPath.h"
 #include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"

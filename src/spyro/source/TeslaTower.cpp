@@ -18,6 +18,7 @@
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"

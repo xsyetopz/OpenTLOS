@@ -5,6 +5,7 @@
 #include "spyro/source/Collectable.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EventCamera.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 

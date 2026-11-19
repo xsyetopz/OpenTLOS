@@ -13,6 +13,7 @@
 #include "spyro/source/Level.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 

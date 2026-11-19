@@ -5,6 +5,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKVector3.h"
+#include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKCollisionManager.h"
 #include "common/Source/Str.h"

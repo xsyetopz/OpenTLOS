@@ -5,6 +5,7 @@
 #include "common/Source/MKProp.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/KDGraph.h"
+#include "unplaced_enums.h"
 
 class CharacterGraphManager;
 class CharacterGraphNode;
@@ -13,7 +14,6 @@ class DataMap;
 class EventMessage;
 class KDGraphNode;
 class KDSplinePathSegmentProp;
-class LinkInformation;
 class MKIniLine;
 class MKMessage;
 class MKProp;

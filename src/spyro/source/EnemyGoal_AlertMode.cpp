@@ -8,6 +8,7 @@
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 

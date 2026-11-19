@@ -1,9 +1,9 @@
 #include "spyro/source/HudItems.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void HudItem_Fixed(HudItem *arg0, bool arg1) {
     M2C_UNK var_r4_18;
 
@@ -16,13 +16,10 @@ void HudItem_Fixed(HudItem *arg0, bool arg1) {
         HudItem_SetState(arg0, (HudItemState) var_r4_18, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void HudItem_Modified(HudItem *arg0) {
     HudItem_SetState(arg0, (HudItemState) 2, 0U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk8'
 void HudItem_Draw(HudItem *arg0) {
@@ -53,7 +50,7 @@ void HudItem_Draw(HudItem *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'unk4'
 u8 HudItem_Update(HudItem *arg0) {
     s32 temp_r0_117;
     u8 (*temp_r12_156)(s32);
@@ -85,7 +82,7 @@ u8 HudItem_Update(HudItem *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HudItemState'
+#if 0 // DRAFT: undefined identifier 'unkC'
 void HudItem_SetState(HudItem *arg0, HudItemState arg1, bool arg2) {
     M2C_UNK (*temp_r12_355)(s32, s32);
     f32 var_f0_203;

@@ -14,6 +14,7 @@
 #include "spyro/source/Spyro.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
@@ -514,7 +515,6 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void SpyroCombatState::KnockupUpdate() {
     InputModifier *temp_r3_892;
     s32 var_r3_905;
@@ -540,7 +540,6 @@ void SpyroCombatState::KnockupUpdate() {
     this->unk31 = var_r31_887;
     KnockupTransition();
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void SpyroCombatState::KnockupExit() {

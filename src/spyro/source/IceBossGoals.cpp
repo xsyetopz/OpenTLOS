@@ -25,6 +25,7 @@
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -79,7 +80,7 @@ u8 IceBossGoal_MoveToTarget::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'GetPhase'
 void IceBossGoal_MoveToTarget::Activate() {
     Enemy *temp_r3_140;
     Enemy *temp_r4_160;
@@ -226,7 +227,6 @@ u8 IceBossGoal_MoveToPoint::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void IceBossGoal_MoveToPoint::Activate() {
     AnimSequence *temp_r0_452;
 
@@ -239,7 +239,6 @@ void IceBossGoal_MoveToPoint::Activate() {
     this->unkC->SetAnim(temp_r0_452, (AnimTransition *) temp_r0_452, 0.15f, 0U);
     this->unk60 = M2C_FIELD(&gb, f32 *, 0x30C) + 5.0f;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void IceBossGoal_IceBreath::Terminate() {
@@ -2956,7 +2955,7 @@ block_18:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'SetupCameraSpline'
 void IceBossGoal_Cutscene1::Activate() {
     f64 sp38;
     f64 sp30;

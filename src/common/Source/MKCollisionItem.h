@@ -7,6 +7,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 
 class MKBestResult;
 class MKCollisionAABB;
@@ -18,7 +19,6 @@ class MKCollisionInfo;
 class MKCollisionItem;
 class MKCollisionItemBase;
 class MKCollisionManager;
-class MKCollisionMode;
 class MKCollisionModel;
 class MKCollisionModelItem;
 class MKCollisionRay;

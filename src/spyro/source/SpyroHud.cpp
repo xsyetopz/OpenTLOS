@@ -10,6 +10,7 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/HudData.h"
 #include "spyro/source/HudItems.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKSystem.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
@@ -176,7 +177,6 @@ void SpyroHud_Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HudItemState'
 void SpyroHud_StateChange(void *arg0, HudItemState arg1, HudItemState arg2) {
     if ((*M2C_FIELD(arg0, s32 **, 0) & 0x10) && ((s32) arg2 == 0)) {
         M2C_FIELD(arg0, s32 *, 0x24) = 0;
@@ -185,9 +185,8 @@ void SpyroHud_StateChange(void *arg0, HudItemState arg1, HudItemState arg2) {
         M2C_FIELD(arg0, f32 *, 0x30) = 0.0f;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HudItemState'
+#if 0 // DRAFT: illegal type
 void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
     f32 temp_f0_1515;
     f32 temp_f0_560;

@@ -5,6 +5,7 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "unplaced_enums.h"
 #include "spyro/source/DataMap.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -140,7 +141,7 @@ s32 **EnemyMovementManager::SelectAnim() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal operand
 void EnemyMovementManager::Update() {
     Enemy *temp_r28_310;
     Enemy *temp_r3_328;

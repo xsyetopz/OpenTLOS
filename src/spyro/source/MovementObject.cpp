@@ -3,6 +3,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/CollisionObject.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 

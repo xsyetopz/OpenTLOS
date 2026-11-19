@@ -22,6 +22,7 @@
 #include "spyro/source/SteamTrain.h"
 #include "spyro/source/TrainTrack.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
@@ -84,7 +85,7 @@ Enemy *TrainChaseSpawnPool::Create() {
     return NULL;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SpawnAction'
+#if 0 // DRAFT: illegal operand 'TrainChaseSpawnPool *'
 void TrainChaseSpawnPool::Action(SpawnAction arg0, int arg1, MKProp **arg2, SpawnerObject *arg3) {
     switch (this) {                                 /* irregular */
     case 0:
@@ -244,27 +245,23 @@ void SteamTrainCaboose::GetVel() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SteamTrainCabooseState'
 void SteamTrainCaboose::SetState(SteamTrainCabooseState arg0) {
     this->unkC8 = (s32) arg0;
     this->unk80->SetAnim(M2C_FIELD((checked_cast<SteamTrainCabooseDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unkC8 * 4)), MKAnim **, 0xE4), 1.0f, 0.0f, 0, -1);
 }
-#endif
 
 u8 SteamTrainCaboose::IsBlownUp() {
     return this->unkD8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SteamTrainCaboose::BlowUp() {
     if ((u8) this->unkD8 == 0) {
         this->unk110.FunctionOff();
         SetState((SteamTrainCabooseState) 3);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void SteamTrainCaboose::Message(MKMessage *arg0) {
     f64 spA8;
     f64 spA0;
@@ -631,7 +628,6 @@ block_22:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SteamTrainCaboose::Reset() {
     GameProp::Reset();
     this->unkD4 = 0.0f;
@@ -644,7 +640,6 @@ void SteamTrainCaboose::Reset() {
     this->unk110.FunctionOff();
     this->unkDC = 50.0f;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SteamTrainCaboose::LoadDone() {

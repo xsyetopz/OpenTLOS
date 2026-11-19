@@ -7,6 +7,7 @@
 #include "spyro/source/KDPath.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDSpline.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>

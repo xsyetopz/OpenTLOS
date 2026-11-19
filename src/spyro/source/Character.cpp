@@ -21,6 +21,7 @@
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/SB2.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKWind.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -243,7 +244,6 @@ void Character::ClearHorizForces() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterMoveType'
 void Character::SetMovementType(CharacterMoveType arg0) {
     u32 temp_r0_378;
 
@@ -253,9 +253,7 @@ void Character::SetMovementType(CharacterMoveType arg0) {
     }
     this->unk680 = (u32) arg0;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Character::ResetCloth() {
     s16 temp_r31_411;
     s32 var_r30_412;
@@ -269,7 +267,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void Character::UpdateRotation() {
@@ -1723,7 +1720,7 @@ s32 Character::Teleport(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Character::SetupCollision() {
     f64 sp60;
     f64 sp58;
@@ -1809,7 +1806,7 @@ void Character::Despawn(bool arg0) {
     Disable();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'UpdateModel(Character *, int, double, double, double,
 s32 Character::Spawn(SpawnPointRef *arg0) {
     f64 sp40;
     f64 sp38;

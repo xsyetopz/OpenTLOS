@@ -2,8 +2,7 @@
 #define COMMON_SOURCE_MKRUMBLE_H
 
 #include <dolphin/types.h>
-
-class MKInputDevices;
+#include "unplaced_enums.h"
 
 u8 MKRumble_IsMuted(void);
 void MKRumble_Mute(bool);

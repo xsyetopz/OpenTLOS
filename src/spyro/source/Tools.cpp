@@ -14,6 +14,7 @@
 #include "common/Source/MKView.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDSpline.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKSystem.h"
 #include "common/Source/Str.h"
@@ -1334,7 +1335,6 @@ f32 Tools_CylinderTest(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
 void Tools_TestFloor(const MKVector3 &arg0, MKCollisionResult *arg1, float arg2, MKCollisionMode arg3) {
     MKCollisionResult sp28;
     f64 sp20;
@@ -1357,7 +1357,6 @@ void Tools_TestFloor(const MKVector3 &arg0, MKCollisionResult *arg1, float arg2,
     sp20 = (f64) sp10;
     MKCollision_RayCollide(arg0, *((MKVector3 *) &sp18), var_r4_0, arg3, 0);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void Tools_GroundColor(MKCollisionResult *arg0) {
@@ -1548,7 +1547,7 @@ s32 Tools_GetTimeInSeconds() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
 u16 Tools_GetMatchingSubObjectIndex(SubObjectType arg0, MKModel *arg1, const char *arg2) {
     s16 temp_r31_3030;
     s8 *var_r29_3037;

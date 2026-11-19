@@ -2,10 +2,10 @@
 #define COMMON_SOURCE_ANIMATION_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class Animation;
 class AnimationData;
-class AnimationMatrixPosition;
 class Animation_cpp;
 class BlendShapeState;
 class MKHeap;

@@ -2,9 +2,8 @@
 #define SPYRO_SOURCE_UICONTROLS_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
-class FrontEndControls;
-class MKInputDevices;
 class UIInputTracker;
 
 class UIInputTracker {

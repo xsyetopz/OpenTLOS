@@ -1,4 +1,5 @@
 #include "common/Source/GPInit.h"
+#include "unplaced_enums.h"
 #include "dolphin/dvd.h"
 #include "dolphin/gx.h"
 #include "dolphin/os.h"
@@ -27,7 +28,6 @@ static s32 gFramesPerSecond = 0x3C;
 static s32 gCPUFramesPerSecond = 0x3C;
 static s32 gGPUFramesPerSecond = 0x3C;
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MK_VertexDescriptorMode'
 void MK_SetVDMode(MK_VertexDescriptorMode arg0) {
     if ((s8) init_512 == 0) {
         lastMode_511 = -1;
@@ -88,7 +88,6 @@ void MK_SetVDMode(MK_VertexDescriptorMode arg0) {
         GXFlush();
     }
 }
-#endif
 
 void GPGetCurrentBuffer() {
 

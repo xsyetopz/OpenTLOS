@@ -4,6 +4,7 @@
 #include "common/Source/MKIni.h"
 #include "spyro/source/GameProp.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -304,7 +305,7 @@ void Elevator::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void Elevator::LoadDone() {
     f64 sp10;
     f64 sp8;

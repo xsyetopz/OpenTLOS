@@ -7,6 +7,7 @@
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UIText.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/UIControls.h"
 #include "spyro/source/UITools.h"
 #include <m2c_macros.h>

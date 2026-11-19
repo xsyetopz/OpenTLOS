@@ -9,6 +9,7 @@
 #include "spyro/source/ShatterExtendedMsg.h"
 #include "spyro/source/ShatterOnCollisionMsg.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -411,7 +412,7 @@ void CollisionObject::SortResults() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: function call 'Tools_PushOut(MKCollisionResult *, MKVector3, long, float,
 void CollisionObject::PerformPushOut(MKVector3 *arg0) {
     MKCollisionResult spD8;
     s8 spD1;
@@ -1062,7 +1063,7 @@ void CollisionObject::ResetResults() {
     this->unk2D8.unk164 = 0;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
 s32 CollisionObject::SphereCheck(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKCollisionResult *arg3, MKCollisionMode arg4, int arg5) {
     MKCollisionResult sp18;
     CollisionObject *sp14;

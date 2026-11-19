@@ -6,6 +6,7 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"

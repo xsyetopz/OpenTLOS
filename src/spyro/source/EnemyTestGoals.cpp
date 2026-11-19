@@ -5,6 +5,7 @@
 #include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(s32);                                  /* extern */

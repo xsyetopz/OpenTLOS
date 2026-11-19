@@ -7,6 +7,7 @@
 #include "spyro/source/MemoryCard.h"
 #include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIImage.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Timer.h"
 #include "spyro/source/GameVideo.h"

@@ -8,6 +8,7 @@
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UITools.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/UIControls.h"
 #include "spyro/source/UIStringTable.h"

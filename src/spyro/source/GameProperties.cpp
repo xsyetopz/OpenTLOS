@@ -18,6 +18,7 @@
 #include "spyro/source/SwayProperty.h"
 #include "spyro/source/WobbleProperty.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/GameEnums.h"
 #include "spyro/source/KDProp.h"
 #include <m2c_macros.h>

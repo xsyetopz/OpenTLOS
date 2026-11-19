@@ -34,6 +34,7 @@
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/SuckeyPS.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -93,7 +94,6 @@ void Cynder::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void Cynder::TriggerFury() {
     f64 sp10;
     f64 sp8;
@@ -106,7 +106,6 @@ void Cynder::TriggerFury() {
     sp10 = M2C_FIELD(temp_r4_200, f64 *, 0x38);
     ((FuryFXFire *) (M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *, f64), 0x3C)(gb, temp_r4_200, temp_f1_203), void **, 4), void **, 0x14), FuryFXFire **, 0x260)))->Trigger(*((MKVector3 *) &sp8), 0U, 1U, (HeroHurtReactionType) this->unkF0C.unk0);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 void Cynder::UpdateFuryPowerUp() {
@@ -232,7 +231,7 @@ void Cynder::UpdateFuryPowerUp() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroHurtReactionType'
+#if 0 // DRAFT: illegal type
 void Cynder::TriggerFuryPowerUp(float arg0, HeroHurtReactionType arg1) {
     f32 temp_r3_490;
     f32 temp_r3_500;

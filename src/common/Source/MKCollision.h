@@ -2,11 +2,11 @@
 #define COMMON_SOURCE_MKCOLLISION_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class MKCollisionGroundHint;
 class MKCollisionInfo;
 class MKCollisionManager;
-class MKCollisionMode;
 class MKCollisionResult;
 class MKProp;
 class MKVector3;

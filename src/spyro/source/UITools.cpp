@@ -20,6 +20,7 @@
 #include "spyro/source/UIText.h"
 #include "spyro/source/UIVideoScreen.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
@@ -1058,7 +1059,6 @@ void MarkerButtonGroup::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void NoisySystem::Message(UIMessage *arg0) {
     s32 temp_r0_2259;
 
@@ -1074,7 +1074,6 @@ void NoisySystem::Message(UIMessage *arg0) {
     }
     UISystem::Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 s32 ScriptButtonGroup::SetSelection(int arg0) {
@@ -1314,7 +1313,7 @@ void ScriptProgressBar::Message(UIMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'Console_Execute(signed char *)' does not match
 void ScriptProgressBar::Update() {
     UIImage::Update();
     if ((u8) M2C_FIELD(this, u8 *, 0xDC) != 0) {
@@ -1437,7 +1436,7 @@ void ProgressBar::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'LoadString'
+#if 0 // DRAFT: identifier 'ProgressBar::LoadLine()' redeclared
 s32 ProgressBar::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
 

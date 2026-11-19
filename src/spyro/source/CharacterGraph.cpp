@@ -7,6 +7,7 @@
 #include "spyro/source/KDGraph.h"
 #include "spyro/source/KDPath.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"
 #include <m2c_macros.h>
@@ -321,7 +322,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'LinkInformation'
+#if 0 // DRAFT: illegal explicit conversion from 'CharacterGraphNode' to
 s32 CharacterGraphNode::Link(CharacterGraphNode *arg0, int arg1, LinkInformation arg2, KDSplinePathSegmentProp *arg3) {
     s32 var_ctr_784;
     s32 var_r5_783;

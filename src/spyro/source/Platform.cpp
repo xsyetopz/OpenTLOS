@@ -12,6 +12,7 @@
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/SeeSaw.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDSound.h"

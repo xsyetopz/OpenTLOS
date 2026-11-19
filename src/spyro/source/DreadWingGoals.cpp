@@ -3,6 +3,7 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 void DreadWingGoal_Drop::Terminate() {
@@ -33,7 +34,6 @@ u8 DreadWingGoal_Drop::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void DreadWingGoal_Drop::Activate() {
     Enemy *temp_r3_89;
     EnemyDescriptor *temp_r4_90;
@@ -50,7 +50,6 @@ void DreadWingGoal_Drop::Activate() {
     }
     checked_cast<DreadWing *, Enemy>(this->unkC);
 }
-#endif
 
 void DreadWingGoal_Drop::Init(Enemy *arg0) {
     this->unk8 = 1;

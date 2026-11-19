@@ -11,6 +11,7 @@
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
@@ -417,7 +418,7 @@ u8 EnemyGoal_WalkToTargetArb::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'SetWalkMovementSpeed'
 void EnemyGoal_WalkToTargetArb::Activate() {
     Character *temp_r3_815;
 
@@ -649,7 +650,6 @@ block_36:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnemyGoal_FlyToAttackTarget::Activate() {
     Enemy *temp_r3_1386;
     Enemy *temp_r3_1390;
@@ -664,7 +664,6 @@ void EnemyGoal_FlyToAttackTarget::Activate() {
     this->unkC->SetMovementType((CharacterMoveType) 1);
     this->unkC->SetAnim((AnimSequenceType) 0xB, 0, 1, 0.15f, 0U, 0U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 u8 EnemyGoal_FlyToTarget::Update() {
@@ -870,7 +869,6 @@ block_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnemyGoal_FlyToTarget::Activate() {
     Enemy *temp_r3_1786;
     Enemy *temp_r3_1790;
@@ -887,7 +885,6 @@ void EnemyGoal_FlyToTarget::Activate() {
     temp_r3_1807 = this->unk10;
     M2C_FIELD(temp_r3_1807, u8 *, 0xB40) = (u8) (M2C_FIELD(temp_r3_1807, u8 *, 0xB40) & ~0x80);
 }
-#endif
 
 void EnemyGoal_FlyToTarget::Init(Enemy *arg0) {
     this->unk8 = 1;

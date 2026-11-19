@@ -1,6 +1,7 @@
 #include "spyro/source/EarthTier3Goals.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 void EarthTier3Goal_Spawn::Terminate() {
@@ -54,11 +55,9 @@ u8 EarthTier3Goal_Spawn::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EarthTier3Goal_Spawn::Activate() {
     this->unk8 = 0;
     this->unkC->SetAnim((AnimSequenceType) 0xF, 0x64, 0, 0.15f, 0U, 0U);
     this->unkC->SetInvulnerableToMeleeAttacks(1U, 0U);
     this->unkC->SetInvulnerableToBreathAttacks(1U, 0U);
 }
-#endif

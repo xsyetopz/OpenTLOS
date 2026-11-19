@@ -1,6 +1,7 @@
 #include "spyro/source/SpyroAnimTables.h"
 #include "common/Source/MKAnimScript.h"
 #include "spyro/source/Spyro.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 extern f32 SPYRO_BOUNCE_Y_SPEED;
@@ -77,7 +78,7 @@ void SpyroStartCycleAnimTable::Start(Spyro *arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'IdleAnimNumber'
+#if 0 // DRAFT: undefined identifier 'GetIndexAnim'
 void SpyroIdleAnimTable::Update(Spyro *arg0, bool arg1, unsigned int arg2, IdleAnimNumber arg3, float arg4) {
     void *temp_r3_187;
 
@@ -100,7 +101,6 @@ void SpyroIdleAnimTable::Init(MKAnimScript *arg0) {
     SpyroAnimTables_InitIndexTable(arg0);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MaterialIndex'
 u8 SpyroIdleAnimEntry::IsValid(MaterialIndex arg0, IdleAnimNumber arg1, IdleAnimMoveVel arg2) {
     u8 var_r8_238;
 
@@ -110,7 +110,6 @@ u8 SpyroIdleAnimEntry::IsValid(MaterialIndex arg0, IdleAnimNumber arg1, IdleAnim
     }
     return var_r8_238;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SpyroAnimTables_InitIndexTable(MKAnimScript *arg0) {
@@ -206,7 +205,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'IdleAnimNumber'
+#if 0 // DRAFT: illegal type
 void *GetIndexAnim(unsigned int arg0, IdleAnimNumber arg1, float arg2) {
     s32 temp_r3_379;
     s32 var_r0_372;

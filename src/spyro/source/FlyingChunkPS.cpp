@@ -9,6 +9,7 @@
 #include "spyro/source/GameProp.h"
 #include "spyro/source/GamePropColored.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -1103,12 +1104,10 @@ void FlyingChunkPS::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void FlyingChunkPSDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     this->unkEC = MKModel_GetNmbrOfSubObjects(this->unk2C, (SubObjectType) 0);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 FlyingChunkPSDescriptor::LoadLine(MKIniLine *arg0) {

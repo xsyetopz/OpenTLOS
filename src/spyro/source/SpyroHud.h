@@ -2,10 +2,10 @@
 #define SPYRO_SOURCE_SPYROHUD_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class Enemy;
 class EnemyHudData;
-class HudItemState;
 class MKProp;
 class SpyroHud_cpp;
 

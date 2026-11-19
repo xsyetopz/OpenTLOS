@@ -5,6 +5,7 @@
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_Think.h"
+#include "unplaced_enums.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 

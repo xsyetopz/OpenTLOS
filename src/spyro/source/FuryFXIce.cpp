@@ -19,6 +19,7 @@
 #include "spyro/source/Spyro.h"
 #include "spyro/source/WindFX.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"

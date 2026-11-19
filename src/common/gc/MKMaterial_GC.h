@@ -2,6 +2,7 @@
 #define COMMON_GC_MKMATERIAL_GC_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class BoundingVolume;
 class GeometryTransformationInfo;
@@ -10,7 +11,6 @@ class MKMaterial_GC_cpp;
 class MKVector4;
 class Matrix;
 class MeshChunk;
-class VERTEX_COMPONENT;
 
 class GeometryTransformationInfo {
 public:

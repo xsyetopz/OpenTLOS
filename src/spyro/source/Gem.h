@@ -3,10 +3,10 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/Collectable.h"
+#include "unplaced_enums.h"
 
 class Collectable;
 class CollectableDescriptor;
-class CollectableState;
 class Gem;
 class GemDescriptor;
 class Gem_cpp;

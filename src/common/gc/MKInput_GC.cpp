@@ -1,5 +1,6 @@
 #include "common/gc/MKInput_GC.h"
 #include "common/Source/MKWidgetsInternal.h"
+#include "unplaced_enums.h"
 #include "dolphin/pad.h"
 #include <m2c_macros.h>
 
@@ -40,7 +41,6 @@ void MKInput_InitModulePlatformSpecific() {
 
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
 void MKInput_Vibrate(MKInputDevices arg0, float arg1, float arg2) {
     s32 var_r31_33;
 
@@ -60,9 +60,7 @@ void MKInput_Vibrate(MKInputDevices arg0, float arg1, float arg2) {
         PADControlMotor((s32) arg0, 2U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
 s32 MKInput_GetButtonType(int arg0, MKInputDevices arg1) {
     if (((s32) arg1 >= 0) && ((s32) arg1 <= 4) && (arg0 >= 0) && (arg0 < 0x15)) {
         if ((arg0 >= 0x10) && (arg0 <= 0x13)) {
@@ -79,9 +77,8 @@ s32 MKInput_GetButtonType(int arg0, MKInputDevices arg1) {
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
+#if 0 // DRAFT: expression syntax error
 f32 MKInput_GetStatePlatformSpecific(int arg0, MKInputDevices arg1, float *arg2) {
     f32 var_f0_109;
     f32 var_f1_106;
@@ -143,7 +140,7 @@ f32 MKInput_GetStatePlatformSpecific(int arg0, MKInputDevices arg1, float *arg2)
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
+#if 0 // DRAFT: expression syntax error
 s32 MKInput_GetStatus(MKInputDevices arg0) {
     s32 var_r31_326;
     s32 var_r4_322;

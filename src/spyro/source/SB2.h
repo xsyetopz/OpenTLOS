@@ -3,12 +3,12 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/AITargetData.h"
+#include "unplaced_enums.h"
 
 class AITargetData;
 class Character;
 class CharacterGraphNode;
 class EnemyRegion;
-class GraphFollowBehaviours;
 class KDSplinePathSegment;
 class MKVector3;
 class SB2;

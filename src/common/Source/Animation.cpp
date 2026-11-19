@@ -4,6 +4,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
@@ -1174,7 +1175,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'AnimationMatrixPosition'
+#if 0 // DRAFT: illegal operand
 void Animation::SetCustomMatrix(int arg0, const Matrix *arg1, AnimationMatrixPosition arg2, bool arg3) {
     MKHeap *temp_r9_2265;
     s32 temp_r4_2293;

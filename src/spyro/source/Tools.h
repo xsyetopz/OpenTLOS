@@ -3,9 +3,9 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKProp.h"
+#include "unplaced_enums.h"
 
 class KDUniformSpline;
-class MKCollisionMode;
 class MKCollisionResult;
 class MKIniLine;
 class MKMaterial;
@@ -16,7 +16,6 @@ class MKPropDescriptor;
 class MKVector3;
 class Matrix;
 class PushOutResult;
-class SubObjectType;
 class TimerInfo;
 class Tools_Ortho;
 class Tools_PropCreator;

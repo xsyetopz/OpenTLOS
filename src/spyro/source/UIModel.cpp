@@ -7,6 +7,7 @@
 #include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKView.h"
 #include "common/Source/system_extras.h"
 #include "common/gc/MKModel_GC.h"

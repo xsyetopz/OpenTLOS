@@ -9,6 +9,7 @@
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -159,7 +160,7 @@ u8 EnemyGoal_AttackFlying::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_AttackFlying::Activate() {
     AttackerManager *var_r3_326;
     Enemy *temp_r3_268;

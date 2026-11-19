@@ -10,6 +10,7 @@
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -544,7 +545,7 @@ u8 EnemyGoal_SpawnOnTrain::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_SpawnOnTrain::Activate() {
     Character *temp_r3_1143;
 

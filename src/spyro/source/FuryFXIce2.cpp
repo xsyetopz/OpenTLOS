@@ -13,6 +13,7 @@
 #include "spyro/source/IceExplosion.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"

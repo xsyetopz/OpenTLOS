@@ -7,6 +7,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKGrass.h"
 #include "common/Source/MKMaterial.h"
@@ -69,7 +70,7 @@ ModelCloth *MKModel_GetCloth(const MKModel *arg0) {
     return arg0->unk84;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to
 void MKModel_CalculateSubObjectLocalToWorldMatrix(const MKModel *arg0, SubObjectType arg1, int arg2, Matrix *arg3) {
     s16 sp8;
     MKAttachment *temp_r7_82;
@@ -320,7 +321,7 @@ s16 MKModel_GetNmbrOfMaterials(const MKModel *arg0) {
     return M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 6);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: undefined identifier '__upper_map'
 s32 MKModel_IsSubObjectPrefixed(const MKModel *arg0, SubObjectType arg1, int arg2, char arg3) {
     s32 var_r5_825;
     s8 *temp_r3_823;
@@ -348,28 +349,22 @@ s32 MKModel_IsSubObjectPrefixed(const MKModel *arg0, SubObjectType arg1, int arg
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 void MKModel_SetSubObjectLocalMatrix(MKModel *arg0, SubObjectType arg1, int arg2, Matrix *arg3) {
     M2C_FIELD((arg0 + (arg2 * 4)), Matrix **, 0x90) = arg3;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 s32 MKModel_GetSubObjectLocalMatrix(const MKModel *arg0, SubObjectType arg1, int arg2) {
     return M2C_FIELD((arg0 + (arg2 * 4)), s32 *, 0x90);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 s16 MKModel_GetSubObjectBoneIndex(const MKModel *arg0, SubObjectType arg1, int arg2) {
     if (MKModel_GetAnimation(arg0) == NULL) {
         return -1;
     }
     return M2C_FIELD((M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x50) + (arg2 << 6)), s16 *, 0x3A);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: pointer/array required
 s8 *MKModel_GetSubObjectName(const MKModel *arg0, SubObjectType arg1, int arg2) {
     switch ((s32) arg1) {                           /* irregular */
     case 1:
@@ -384,7 +379,6 @@ s8 *MKModel_GetSubObjectName(const MKModel *arg0, SubObjectType arg1, int arg2) 
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 s16 MKModel_GetNmbrOfSubObjects(const MKModel *arg0, SubObjectType arg1) {
     ModelCloth *temp_r3_984;
     void *temp_r3_975;
@@ -408,9 +402,8 @@ s16 MKModel_GetNmbrOfSubObjects(const MKModel *arg0, SubObjectType arg1) {
         return 0;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: illegal type
 void MKModel_EnableOnlySubObject(MKModel *arg0, SubObjectType arg1, int arg2, bool arg3, unsigned char arg4) {
     MKCloth *temp_r3_1097;
     s16 temp_r28_1089;
@@ -475,7 +468,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: illegal type
 void MKModel_EnableSubObject(MKModel *arg0, SubObjectType arg1, int arg2, bool arg3, unsigned char arg4) {
     s32 temp_r0_1158;
     s32 temp_r3_1176;
@@ -506,7 +499,7 @@ void MKModel_EnableSubObject(MKModel *arg0, SubObjectType arg1, int arg2, bool a
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: illegal type
 u8 MKModel_GetSubObjectFlag(const MKModel *arg0, SubObjectType arg1, int arg2) {
     u8 var_r4_1198;
 
@@ -521,13 +514,11 @@ u8 MKModel_GetSubObjectFlag(const MKModel *arg0, SubObjectType arg1, int arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 s32 MKModel_GetSubObjectOrigin(const MKModel *arg0, SubObjectType arg1, int arg2) {
     return M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s32 *, 0x50) + ((arg2 << 6) + 0x20);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: illegal type
 s32 MKModel_IsSubObjectEnabled(const MKModel *arg0, SubObjectType arg1, int arg2) {
     switch ((s32) arg1) {                           /* irregular */
     case 1:
@@ -542,7 +533,7 @@ s32 MKModel_IsSubObjectEnabled(const MKModel *arg0, SubObjectType arg1, int arg2
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: function call 'MKModel_SubObjectExists(const MKModel *, SubObjectType,
 s32 MKModel_GetSubObjectIndex(const MKModel *arg0, SubObjectType arg1, const char *arg2) {
     s32 sp8;
 
@@ -551,7 +542,7 @@ s32 MKModel_GetSubObjectIndex(const MKModel *arg0, SubObjectType arg1, const cha
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: pointer/array required
 s32 MKModel_SubObjectExists(const MKModel *arg0, SubObjectType arg1, const char *arg2, int *arg3) {
     s16 temp_r0_1376;
     s16 var_ctr_1377;
@@ -801,7 +792,7 @@ s16 MKModel_GetNmbrOfRefPoints(const MKModel *arg0) {
     return M2C_FIELD(M2C_FIELD(arg0->unk0, void **, 0x30), s16 *, 0xA);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: illegal type
 MKHeap **MKModel_GetBoundingVolume(const MKModel *arg0, SubObjectType arg1, int arg2) {
     if (arg2 < 0) {
         return M2C_FIELD(arg0->unk0, void **, 0x30) + 0x30;
@@ -2351,7 +2342,7 @@ loop_79:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: pointer/array required
 void MKModelInternal_FixUpBlendShapes(MKModel *arg0) {
     s32 var_r25_4139;
     s32 var_r30_4161;

@@ -4,6 +4,7 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKSystem.h"
 #include <m2c_macros.h>
 
@@ -25,7 +26,7 @@ void MKDynamicBone::DefaultUpdater(MKDynamicBone *arg0, void *arg1) {
     Update();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void MKDynamicBone::Reset() {
     Animation *temp_r3_49;
     Matrix *temp_r30_34;

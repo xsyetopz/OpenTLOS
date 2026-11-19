@@ -5,12 +5,12 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/GameMessages.h"
+#include "unplaced_enums.h"
 
 class BreathHitMessage;
 class Corona;
 class FuryFXFire;
 class FuryFXFire_cpp;
-class HeroHurtReactionType;
 class MKMaterial;
 class MKMessage;
 class MKModel;

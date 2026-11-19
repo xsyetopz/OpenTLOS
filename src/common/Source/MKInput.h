@@ -2,8 +2,8 @@
 #define COMMON_SOURCE_MKINPUT_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
-class MKInputDevices;
 class MKInputEvent;
 class MKInputReceiver;
 

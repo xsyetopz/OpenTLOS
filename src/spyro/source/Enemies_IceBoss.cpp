@@ -31,6 +31,7 @@
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "common/Source/system_extras.h"
@@ -131,7 +132,7 @@ void IceBoss::UpdateWeaponCollisionCapsule() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'arg_sp40'
 void IceBoss::CalcSubObjWorldMatrix(int arg0, Matrix *arg1) {
     void *temp_r3_185;
     MKModel_CalculateSubObjectLocalToWorldMatrix(this->unk4, (SubObjectType) 0, M2C_FIELD((this + (M2C_FIELD(this, s32 *, 0xB18) * 0x28)), s32 *, 0xE44), (Matrix *) &arg_sp40);
@@ -270,7 +271,7 @@ void IceBoss::UpdateSummonWeapon() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'arg_sp50'
 void IceBoss::SummonWeapon() {
     u8 *temp_r3_635;
     void *temp_r3_607;
@@ -679,7 +680,6 @@ void IceBoss::FormWeapon() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void IceBoss::UpdateWeapons() {
     s32 var_r29_1626;
     s32 var_r31_1627;
@@ -716,9 +716,8 @@ void IceBoss::UpdateWeapons() {
     }
     M2C_FIELD(M2C_FIELD(this, void **, 0xF90), s8 *, 4) = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'arg_sp40'
 void IceBoss::ShatterSubObj(int arg0, Shatterable *arg1) {
     void *temp_r3_1714;
     MKModel_CalculateSubObjectLocalToWorldMatrix(this->unk4, (SubObjectType) 0, arg0, (Matrix *) &arg_sp40);
@@ -779,7 +778,6 @@ void IceBoss::ShatterBodyParts() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void IceBoss::UpdateBodyParts() {
     MKModel *temp_r3_1896;
     s32 temp_r4_1918;
@@ -821,7 +819,6 @@ void IceBoss::UpdateBodyParts() {
         } while (var_r29_1910 < 0x18);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void IceBoss::InterceptDamage(bool *arg0) {
@@ -1588,7 +1585,7 @@ void IceBoss::ResetWeapons() {
     this->unkECC = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[22]' to
 void IceBoss::InitShield() {
     s8 *var_r4_3636;
 
@@ -1606,7 +1603,7 @@ void IceBoss::InitShield() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[9]' to
 void IceBoss::InitWeapon(int arg0, const char *arg1, int arg2, int arg3) {
     MKHeap *temp_r3_3706;
     MKHeap *temp_r3_3708;
@@ -1651,7 +1648,6 @@ void IceBoss::InitWeapon(int arg0, const char *arg1, int arg2, int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 void IceBoss::InitBodyPart(IceBossBodyPart *arg0, int arg1, const char *arg2, int arg3, int arg4, SubObjectType arg5, bool arg6) {
     arg0->unk0 = (s32) Tools_GetMatchingSubObjectIndex(arg5, this->unk4, arg2);
     arg0->unk4 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 1, this->unk4, "body");
@@ -1662,9 +1658,8 @@ void IceBoss::InitBodyPart(IceBossBodyPart *arg0, int arg1, const char *arg2, in
     arg0->unk1C = 0;
     arg0->unk18 = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
+#if 0 // DRAFT: illegal implicit conversion from 'const char[9]' to
 void IceBoss::InitBodyPart(int arg0, const char *arg1, int arg2, int arg3, SubObjectType arg4, bool arg5) {
     MKHeap *temp_r3_3832;
     MKHeap *temp_r3_3834;
@@ -1748,7 +1743,7 @@ void IceBoss::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'const char[14]' to
 void IceBoss::LoadDone() {
     f64 sp40;
     f64 sp38;

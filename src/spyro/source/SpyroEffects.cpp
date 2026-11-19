@@ -29,6 +29,7 @@
 #include "spyro/source/WaterSurfaceFX.h"
 #include "spyro/source/ZapBreathFX.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKMaterial.h"
 #include "spyro/source/EventCamera.h"
@@ -659,7 +660,7 @@ u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: expression syntax error
 void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
     f64 sp20;
     f64 sp18;
@@ -729,7 +730,7 @@ void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unkA0'
 void SpyroEffects::Update(SpyroEffectsUpdateData *arg0, KDInput *arg1) {
     KDInput *temp_r4_1245;
     KDInput *temp_r4_1267;

@@ -26,6 +26,7 @@
 #include "spyro/source/TimeDeltaModifier.h"
 #include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKGrass.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKPackage.h"
@@ -1192,11 +1193,9 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameVideoEvent'
 void Game_VideoEventCallback(GameVideoEvent arg0) {
 
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void Game_cpp::__sinit() {

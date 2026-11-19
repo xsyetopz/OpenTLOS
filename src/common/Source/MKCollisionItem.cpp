@@ -10,6 +10,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -655,7 +656,7 @@ s32 MKCollisionCapsuleItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier 'arg_sp8'
 void MKCollisionCapsuleItem::Init(MKVector3 *arg0, MKVector3 *arg1, float arg2, const MKVector4 &arg3, const MKVector4 &arg4, MKCollisionMode arg5, MKCollisionInfo *arg6, int arg7, unsigned int arg8, MKCollisionManager *arg9) {
     f64 sp80;
     f64 sp78;
@@ -1571,7 +1572,7 @@ s32 MKCollisionSphereItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *a
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: illegal implicit conversion from 'MKCollisionInfo *' to
 void MKCollisionSphereItem::Init(MKVector3 *arg0, float arg1, float arg2, const MKVector4 &arg3, MKCollisionMode arg4, MKCollisionInfo *arg5, int arg6, unsigned int arg7, MKCollisionManager *arg8) {
     f64 sp90;
     f64 sp88;
@@ -1796,7 +1797,7 @@ s32 MKCollisionModelItem::GetVerts(unsigned int arg0, MKVector3 *arg1) {
     return temp_r3_3414;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'unkE0'
 void MKCollisionModelItem::Update() {
     MKModel *temp_r3_3434;
 
@@ -2184,7 +2185,7 @@ s32 MKCollisionModelItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *ar
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier 'arg_sp8'
 void MKCollisionModelItem::Init(MKCollisionModel *arg0, MKModel *arg1, int arg2, MKCollisionMode arg3, MKCollisionInfo *arg4, int arg5, unsigned int arg6, MKCollisionManager *arg7) {
     f32 sp10;
     f32 spC;

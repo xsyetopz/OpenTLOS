@@ -2,6 +2,7 @@
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKVector3.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 

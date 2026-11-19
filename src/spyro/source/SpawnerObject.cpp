@@ -6,6 +6,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 

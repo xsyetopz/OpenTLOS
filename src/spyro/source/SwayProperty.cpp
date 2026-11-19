@@ -8,6 +8,7 @@
 #include "spyro/source/KDMatrixProperty.h"
 #include "spyro/source/KDProperty.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -15,7 +16,6 @@
 s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SwayProperty::UpdateDynamicBone(MKDynamicBone *arg0, void *arg1) {
     s16 temp_r31_45;
 
@@ -24,7 +24,6 @@ void SwayProperty::UpdateDynamicBone(MKDynamicBone *arg0, void *arg1) {
         ((Animation *) (MKModel_GetAnimation(this->unk24)))->SetCustomMatrix((s32) temp_r31_45, (Matrix *) arg0, (AnimationMatrixPosition) 4, 0U);
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void SwayProperty::Command(int arg0) {

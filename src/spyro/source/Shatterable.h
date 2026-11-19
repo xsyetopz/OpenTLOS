@@ -8,6 +8,7 @@
 #include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/KDProperty.h"
 #include "spyro/source/Shadow.h"
+#include "unplaced_enums.h"
 
 class Attachment;
 class DataMap;
@@ -27,7 +28,6 @@ class MKVector4;
 class Shadow;
 class Shatterable;
 class ShatterableDescriptor;
-class SmashPropState;
 
 class Shatterable : public GameProp {  // base: vtable prefix
 public:

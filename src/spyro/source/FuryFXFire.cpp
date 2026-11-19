@@ -16,6 +16,7 @@
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/ShapedTrailFX.h"
 #include "spyro/source/Spyro.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
@@ -98,7 +99,7 @@ void FuryFXFire::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroHurtReactionType'
+#if 0 // DRAFT: undefined identifier 'unk2CC'
 s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtReactionType arg3) {
     f64 sp90;
     f64 sp88;

@@ -12,6 +12,7 @@
 #include "spyro/source/Guardian.h"
 #include "spyro/source/KDPropEx.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDSound.h"
@@ -511,11 +512,9 @@ void GuardianCage::StateDyingEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void GuardianCage::StateFloatingExit() {
     MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, this->unk140, 0U, 1U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 void GuardianCage::StateFloatingUpdate() {
@@ -568,7 +567,6 @@ void GuardianCage::StateFloatingUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void GuardianCage::StateFloatingEnter() {
     Guardian *temp_r3_848;
 
@@ -578,7 +576,6 @@ void GuardianCage::StateFloatingEnter() {
         temp_r3_848->AttachToCage(1U);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void GuardianCage::GetBeamPosition(int arg0) {
@@ -649,7 +646,6 @@ void GuardianCage::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void GuardianCage::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -677,7 +673,6 @@ void GuardianCage::LoadDone() {
     this->unkCC = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "bottom");
     this->unkD0 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "guardian");
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 GuardianCage::LoadLine(MKIniLine *arg0) {

@@ -5,6 +5,7 @@
 #include "spyro/source/Door.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/Trap.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -68,7 +69,7 @@ void DragonBustDoor::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'MKModel_EnableSubObject(MKModel *, SubObjectType,
 void DragonBustDoor::LoadDone() {
     s32 var_r30_184;
     s32 var_r31_186;

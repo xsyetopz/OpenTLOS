@@ -3,12 +3,13 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "spyro/source/KDMath.h"
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void NodeLookAtIK::Update(MKVector3 *arg0) {
     Animation *temp_r3_32;
     NodeLookAtIK *temp_r3_204;
@@ -169,7 +170,6 @@ f32 ApplyThreshhold(float arg0, float arg1) {
     return arg0 + arg1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void NodeLookAtIK::Init(MKModel *arg0, int arg1) {
     u32 temp_r31_528;
 
@@ -195,9 +195,7 @@ void NodeLookAtIK::Init(MKModel *arg0, int arg1) {
     this->unk40 = NULL;
     this->unk44 = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void NodeLookAt::Reset() {
     u32 temp_r31_582;
 
@@ -212,9 +210,8 @@ void NodeLookAt::Reset() {
         ((Animation *) (MKModel_GetAnimation(this->unk30)))->SetCustomMatrix((s32) temp_r31_582, NULL, (AnimationMatrixPosition) 2, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void NodeLookAt::Update(MKVector3 *arg0) {
     Animation *temp_r3_664;
     MKVector3 *var_r28_616;
@@ -383,7 +380,6 @@ block_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'NLStyle'
 void NodeLookAt::Init(MKModel *arg0, int arg1, NLStyle arg2) {
     this->unk30 = arg0;
     ((Animation *) (MKModel_GetAnimation(this->unk30)))->EnableCustomMatrices(1U);
@@ -406,4 +402,3 @@ void NodeLookAt::Init(MKModel *arg0, int arg1, NLStyle arg2) {
     this->unk2C = 0.0f;
     this->unk28 = 0.0f;
 }
-#endif

@@ -8,6 +8,7 @@
 #include "spyro/source/LineSegmentTrail.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
 #include "spyro/source/KDSound.h"
@@ -282,7 +283,7 @@ void SpyroFallState::Landed(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unk14'
 u8 SpyroFallState::HoverTransition() {
     InputModifier *temp_r3_235;
     f32 var_f1_248;
@@ -836,7 +837,7 @@ void SpyroFallState::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: expression syntax error
 s32 SpyroFallState::Transition() {
     s8 sp81;
     s8 sp80;
@@ -1253,7 +1254,7 @@ block_53:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroFallState::Update() {
     f64 spA8;
     f64 spA0;

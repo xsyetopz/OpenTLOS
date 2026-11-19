@@ -4,6 +4,7 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/Spyro.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 

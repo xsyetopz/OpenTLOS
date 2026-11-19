@@ -5,6 +5,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"

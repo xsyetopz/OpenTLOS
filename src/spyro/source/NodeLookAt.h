@@ -2,10 +2,10 @@
 #define SPYRO_SOURCE_NODELOOKAT_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class MKModel;
 class MKVector3;
-class NLStyle;
 class NodeLookAt;
 class NodeLookAtIK;
 

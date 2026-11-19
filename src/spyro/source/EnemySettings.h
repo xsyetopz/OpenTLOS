@@ -2,8 +2,8 @@
 #define SPYRO_SOURCE_ENEMYSETTINGS_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
-class EnemySettingType;
 class EnemySettings;
 class MKIniLine;
 

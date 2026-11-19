@@ -8,6 +8,7 @@
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/MessageMap.h"
+#include "unplaced_enums.h"
 #include "common/Source/Debug.h"
 #include "common/Source/MKRumble.h"
 #include "common/Source/MKSystem.h"

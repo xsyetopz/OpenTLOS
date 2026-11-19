@@ -17,6 +17,7 @@
 #include "spyro/source/EnemyRegion.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -573,7 +574,7 @@ u8 EnemyGoal_LeapAttackMiss::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: expression syntax error
 void EnemyGoal_LeapAttackMiss::Activate() {
     f64 sp20;
     f64 sp18;
@@ -697,7 +698,7 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_LeapAttackHit::Activate() {
     this->unk8 = 0;
     this->unkC->SetAnim((AnimSequenceType) 0x10, 0x82, 0, 0.15f, 0U, 0U);

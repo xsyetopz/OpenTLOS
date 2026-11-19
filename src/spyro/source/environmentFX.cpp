@@ -1,12 +1,12 @@
 #include "spyro/source/environmentFX.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "unplaced_enums.h"
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnvironmentFX::Update() {
     MKProp::Update();
     if ((M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), u8 (**)(void *), 0x58)(M2C_FIELD(&gb, void **, 0x3B8)) != 0) && ((u8) this->unk4C == 0)) {
@@ -21,9 +21,7 @@ void EnvironmentFX::Update() {
         KDSound_SetAcousticProperty((Sound_AcousticProperty) this->unk50);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnvironmentFX::Message(MKMessage *arg0) {
     s32 temp_r3_98;
 
@@ -53,21 +51,16 @@ void EnvironmentFX::Message(MKMessage *arg0) {
     }
     MKProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnvironmentFX::Reset() {
     MKProp::Reset();
     KDSound_SetAcousticProperty((Sound_AcousticProperty) 0);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnvironmentFX::Deinit() {
     MKProp::Deinit();
     KDSound_SetAcousticProperty((Sound_AcousticProperty) 0);
 }
-#endif
 
 void EnvironmentFX::Init() {
     MKProp::Init();

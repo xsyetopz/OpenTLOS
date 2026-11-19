@@ -9,6 +9,7 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIScreen.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"

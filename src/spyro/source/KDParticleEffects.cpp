@@ -11,6 +11,7 @@
 #include "spyro/source/KDPathProperty.h"
 #include "spyro/source/KDProperty.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 s32 stricmp(s8 *, s8 *, s8 *);                      /* extern */

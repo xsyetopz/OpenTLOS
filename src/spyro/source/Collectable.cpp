@@ -14,6 +14,7 @@
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/HeroInterface.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKShape.h"
 #include "common/Source/StdMath.h"
@@ -489,7 +490,7 @@ void Collectable::RotateCameraFacing() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CollectableState'
+#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void Collectable::SetState(CollectableState arg0) {
     M2C_UNK *temp_r4_1005;
 
@@ -762,7 +763,7 @@ void Collectable::MagnetisedState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to
 void Collectable::IdleState() {
     MKHeap *temp_r3_1607;
     f32 temp_f1_1600;
@@ -988,7 +989,7 @@ block_32:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'int' to
 void Collectable::SlidingState() {
     f64 sp30;
     f64 sp28;
@@ -1021,7 +1022,7 @@ void Collectable::SlidingState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
 u8 Collectable::FindGround() {
     MKCollisionResult sp90;
     f64 sp88;
@@ -2122,7 +2123,6 @@ void Collectable::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Collectable::CalcShadowPos() {
     MKCollisionResult sp48;
     f64 sp40;
@@ -2158,7 +2158,6 @@ void Collectable::CalcShadowPos() {
         this->unkDC = 1.0f + sp48.unk4;
     }
 }
-#endif
 
 void Collectable::UpdateShadow() {
 

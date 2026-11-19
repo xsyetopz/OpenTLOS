@@ -7,6 +7,7 @@
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/GameData.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"
 #include "spyro/source/KDMath.h"
@@ -581,7 +582,6 @@ void EAPManager::Init(EAPManagerDescriptor *arg0) {
     this->unk10 &= ~0x20;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'eEAPCondition'
 s32 EAP_GetEAPConditionType(eEAPCondition arg0) {
     if ((s32) arg0 < 0xB) {
         if ((s32) arg0 < 9) {
@@ -592,4 +592,3 @@ s32 EAP_GetEAPConditionType(eEAPCondition arg0) {
     }
     return 0;
 }
-#endif

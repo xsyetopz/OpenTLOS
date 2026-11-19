@@ -2,10 +2,10 @@
 #define COMMON_SOURCE_MKMATERIAL_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class MKHeap;
 class MKMaterial;
-class MKMaterialParameter;
 class MKMaterialUpdater;
 class MKResource;
 class MKVector4;

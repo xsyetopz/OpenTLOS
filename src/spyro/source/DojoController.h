@@ -6,12 +6,12 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/SpawnerObject.h"
+#include "unplaced_enums.h"
 
 class CharacterGraphNode;
 class DojoController;
 class DojoController_cpp;
 class DojoLesson;
-class DojoTiers;
 class DragonStatue;
 class EarthDojoLesson;
 class ElectricDojoLesson;

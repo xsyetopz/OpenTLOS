@@ -9,6 +9,7 @@
 #include "spyro/source/UISystem.h"
 #include "spyro/source/UIText.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/FrontEnd.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/UIControls.h"

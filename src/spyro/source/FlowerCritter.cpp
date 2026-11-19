@@ -10,6 +10,7 @@
 #include "spyro/source/KDProp.h"
 #include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"

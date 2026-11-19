@@ -14,6 +14,7 @@
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"

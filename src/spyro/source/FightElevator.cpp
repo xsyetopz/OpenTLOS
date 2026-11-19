@@ -12,6 +12,7 @@
 #include "spyro/source/PlatformObject.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/SplineTools.h"

@@ -5,8 +5,8 @@
 #include "common/Source/MKMemoryCard.h"
 #include "spyro/source/CameraData.h"
 #include "spyro/source/Level.h"
+#include "unplaced_enums.h"
 
-class BreathElement;
 class CameraData;
 class ChunkInfo;
 class GameData;
@@ -15,7 +15,6 @@ class GameSettings;
 class GameStats;
 class Level;
 class Stat;
-class StatType;
 class TimerInfo;
 
 class GameData {

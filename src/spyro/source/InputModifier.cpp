@@ -1,4 +1,5 @@
 #include "spyro/source/InputModifier.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include <m2c_macros.h>
 
@@ -12,7 +13,6 @@ s32 InputModifier::Update() {
     return 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 f32 InputModifier::GetRightX() {
     f32 var_f1_69;
     u8 var_r4_36;
@@ -39,9 +39,7 @@ f32 InputModifier::GetRightX() {
     }
     return -var_f1_69;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 f32 InputModifier::GetLeftY() {
     f32 var_f1_129;
     u8 var_r4_118;
@@ -68,9 +66,7 @@ f32 InputModifier::GetLeftY() {
     }
     return -var_f1_129;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 f32 InputModifier::GetLeftX() {
     f32 var_f1_189;
     u8 var_r4_156;
@@ -97,4 +93,3 @@ f32 InputModifier::GetLeftX() {
     }
     return -var_f1_189;
 }
-#endif

@@ -15,6 +15,7 @@
 #include "spyro/source/Lever.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 
@@ -101,12 +102,10 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'AnimSequenceType'
 void EnemyGoal_Think::SetFollowSpawnPathParams(AnimSequenceType arg0, int arg1) {
     this->unk68 = (AITargetData *) arg0;
     this->unk6C = arg1;
 }
-#endif
 
 void EnemyGoal_Think::SetSpawnGoal(Goal<Enemy> *arg0) {
     this->unk48 = (Goal<Enemy> *) arg0;

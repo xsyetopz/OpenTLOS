@@ -2,9 +2,9 @@
 #define COMMON_SOURCE_MKATTACHMENT_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class MKAttachment;
-class MKAttachmentType;
 class Matrix;
 
 class MKAttachment {

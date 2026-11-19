@@ -8,6 +8,7 @@
 #include "spyro/source/LineSegmentTrail.h"
 #include "spyro/source/Spyro.h"
 #include "spyro/source/checkpoint.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDSound.h"
@@ -659,7 +660,7 @@ u8 SpyroCynderStrafeState::JumpTransition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unksp44'
 void SpyroCynderStrafeState::JumpUpdate() {
     f64 sp58;
     f64 sp50;
@@ -831,7 +832,7 @@ void SpyroCynderStrafeState::JumpEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unk18'
 u8 SpyroCynderStrafeState::AnyToDodgeTranstion() {
     InputModifier *temp_r3_1051;
     s32 var_r3_1059;
@@ -963,7 +964,7 @@ void SpyroCynderStrafeState::DodgeLeftRightEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unk18'
 u8 SpyroCynderStrafeState::NoTargetTransition() {
     InputModifier *temp_r3_1351;
     s32 var_r3_1359;

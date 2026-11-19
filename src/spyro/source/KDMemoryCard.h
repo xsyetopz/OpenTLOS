@@ -3,8 +3,8 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKMemoryCard.h"
+#include "unplaced_enums.h"
 
-class KDMCState;
 class KDMemoryCard;
 class KDMemoryCard_cpp;
 class MKMemoryCardFileInfo;

@@ -21,6 +21,7 @@
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/ShatterablePlatform.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "common/gc/MKModel_GC.h"
@@ -3025,7 +3026,6 @@ void AssaultCannon::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void AssaultCannon::Draw() {
     Shatterable::Draw();
     if ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0) {
@@ -3033,7 +3033,6 @@ void AssaultCannon::Draw() {
         MKModel_Draw(this->unk4, NULL);
     }
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void AssaultCannon::Message(MKMessage *arg0) {

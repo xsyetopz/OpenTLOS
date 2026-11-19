@@ -17,6 +17,7 @@
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"

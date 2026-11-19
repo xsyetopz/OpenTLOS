@@ -2,12 +2,10 @@
 #define SPYRO_SOURCE_SPYROANIMTABLES_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
-class IdleAnimMoveVel;
-class IdleAnimNumber;
 class MKAnim;
 class MKAnimScript;
-class MaterialIndex;
 class Spyro;
 class SpyroAnimTables_cpp;
 class SpyroBreatheAnimTable;

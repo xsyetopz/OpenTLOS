@@ -3,6 +3,7 @@
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: undefined identifier 'unkspC'

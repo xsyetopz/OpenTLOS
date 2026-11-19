@@ -12,6 +12,7 @@
 #include "spyro/source/Level.h"
 #include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/File.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKInput.h"

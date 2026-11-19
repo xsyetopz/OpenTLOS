@@ -6,16 +6,14 @@
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'TrainGateState'
 void TrainGate::SetState(TrainGateState arg0) {
     this->unkCC = (s32) arg0;
     this->unk80->SetAnim(M2C_FIELD((checked_cast<TrainGateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unkCC * 4)), MKAnim **, 0xE4), 1.0f, 0.0f, 0, -1);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void TrainGate::Message(MKMessage *arg0) {
     s32 temp_r0_80;
 
@@ -34,9 +32,7 @@ void TrainGate::Message(MKMessage *arg0) {
     }
     GameProp::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void TrainGate::Update() {
     GameProp::Update();
     if ((s32) this->unkCC != 1) {
@@ -46,15 +42,12 @@ void TrainGate::Update() {
         SetState((TrainGateState) 2);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void TrainGate::Reset() {
     GameProp::Reset();
     SetState((TrainGateState) 0);
     this->unkD4 = 0;
 }
-#endif
 
 void TrainGate::Resolve() {
     KDPropEx::Resolve();

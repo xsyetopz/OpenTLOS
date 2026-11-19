@@ -11,6 +11,7 @@
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/Spyro.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -856,7 +857,6 @@ u8 EnemyGoal_HitStand::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnemyGoal_HitStand::Activate() {
     this->unk8 = 0;
     this->unkC->SetAnim((AnimSequenceType) 2, 0x2B, 0, 0.15f, 0U, 0U);
@@ -865,7 +865,6 @@ void EnemyGoal_HitStand::Activate() {
     this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     this->unkC->EnableBlurFX(1U);
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void EnemyGoal_HitFall::Terminate() {
@@ -1168,7 +1167,7 @@ block_23:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'sp10'
 void EnemyGoal_HitAirCombo::Activate() {
     s8 spD0;
     s32 spCC;
@@ -2873,7 +2872,7 @@ u8 EnemyGoal_HitKnockup::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'sp28'
 void EnemyGoal_HitKnockup::Activate() {
     f64 sp60;
     f64 sp58;
@@ -3002,7 +3001,7 @@ u8 EnemyGoal_HitKnockback::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_HitKnockback::Activate() {
     Character *temp_r3_5394;
     Character *temp_r3_5418;
@@ -3288,7 +3287,6 @@ u8 EnemyGoal_HitShock::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnemyGoal_HitShock::Activate() {
     Enemy *temp_r3_5936;
     Enemy *temp_r3_5940;
@@ -3321,7 +3319,6 @@ void EnemyGoal_HitShock::Activate() {
         temp_r5_5980->unk6B5 |= 0x40;
     }
 }
-#endif
 
 u8 EnemyGoal_HitFlinch::Update() {
     ActivateIfInactive();
@@ -3331,7 +3328,7 @@ u8 EnemyGoal_HitFlinch::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_HitFlinch::Activate() {
     Character *temp_r3_6039;
     Character *temp_r3_6051;

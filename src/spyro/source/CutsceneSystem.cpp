@@ -16,6 +16,7 @@
 #include "spyro/source/SpyroEffects.h"
 #include "spyro/source/Tools.h"
 #include "spyro/source/UIStringTable.h"
+#include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKRumble.h"
@@ -728,7 +729,7 @@ void CutsceneSystem::MissingCutsceneDeinit() {
     Deactivate();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unk24'
 void CutsceneSystem::MissingCutsceneUpdate() {
     s32 var_r3_1610;
     u8 var_r3_1597;
@@ -795,7 +796,7 @@ void CutsceneSystem::PlayCutsceneDeinit() {
     OnStop();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'IsAtEnd'
 void CutsceneSystem::PlayCutsceneUpdate() {
     f64 sp80;
     f64 sp78;

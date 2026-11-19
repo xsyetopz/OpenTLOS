@@ -5,10 +5,10 @@
 #include "common/Source/MKProp.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/Shatterable.h"
+#include "unplaced_enums.h"
 
 class CynderBarracks;
 class CynderBarracksDescriptor;
-class CynderBarracksState;
 class EnemyGenerator;
 class EnemyGeneratorDescriptor;
 class MKIniLine;

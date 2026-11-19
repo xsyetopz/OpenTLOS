@@ -12,6 +12,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKMat_MK2_Standard.h"
 #include "common/Source/Str.h"

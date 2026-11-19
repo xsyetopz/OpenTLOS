@@ -18,6 +18,7 @@
 #include "spyro/source/ShockWave.h"
 #include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/system_extras.h"
 #include "common/gc/MKModel_GC.h"
@@ -125,7 +126,7 @@ void ShatterObject::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[1], int)' does not match
 void ShatterObject::LoadDone() {
     MKProp *temp_r3_260;
     ShatterObjectDescriptor *temp_r4_291;
@@ -187,7 +188,7 @@ void ShatterObject::Init(ShatterObjectDescriptor *arg0, KDPropEx *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'MKModel_SubObjectExists(MKModel *, SubObjectType, signed
 void ShatterObjectDescriptor::LoadDone(MKModel *arg0, const char *arg1) {
     s32 sp10;
     s32 spC;
@@ -475,7 +476,6 @@ void Crate::Shatter(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void Crate::SpawnContents() {
     f64 sp10;
     f64 sp8;
@@ -504,7 +504,6 @@ loop_6:
         goto loop_6;
     }
 }
-#endif
 
 void Crate::Respawn() {
     this->unkCC += gUpdateTimeDelta;

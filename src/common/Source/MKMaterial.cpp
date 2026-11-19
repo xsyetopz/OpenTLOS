@@ -6,6 +6,7 @@
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKMat_MK2_FFTWater.h"
 #include "common/Source/MKSystem.h"
@@ -241,7 +242,6 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKMaterialParameter'
 s8 MKMaterial_GetParameter(MKMaterial *arg0, MKMaterialParameter arg1) {
     if ((u32) arg1 <= 7U) {
         switch ((s32) arg1) {
@@ -266,13 +266,11 @@ s8 MKMaterial_GetParameter(MKMaterial *arg0, MKMaterialParameter arg1) {
         return -1;
     }
 }
-#endif
 
 MKHeap *MKMaterial_GetName(MKMaterial *arg0) {
     return (MKHeap *) arg0->unk24;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKMaterialParameter'
 void MKMaterial_SetParameter(MKMaterial *arg0, MKMaterialParameter arg1, int arg2) {
     if ((u32) arg1 <= 7U) {
         switch ((s32) arg1) {
@@ -304,7 +302,6 @@ void MKMaterial_SetParameter(MKMaterial *arg0, MKMaterialParameter arg1, int arg
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 f64 *MKMaterial_GetColor(MKMaterial *arg0) {
@@ -312,7 +309,6 @@ f64 *MKMaterial_GetColor(MKMaterial *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void MKMaterial_SetColor(MKMaterial *arg0, const MKVector4 &arg1) {
     void *temp_r5_523;
 
@@ -321,7 +317,6 @@ void MKMaterial_SetColor(MKMaterial *arg0, const MKVector4 &arg1) {
     M2C_FIELD(temp_r5_523, f64 *, 0x38) = (f64) M2C_FIELD(&arg1, f64 *, 8);
     MKDirtyState_Dirty((MKDirtyStateType) 5);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void MKMaterial_SetTextureMatrix(MKMaterial *arg0, const Matrix *arg1) {
@@ -389,7 +384,7 @@ s8 *MKMaterial::Create(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'StringHash'
+#if 0 // DRAFT: function call 'StringHash(signed char *, int)' does not match
 void MKMaterial_Destroy(MKMaterial *arg0) {
     M2C_UNK (*temp_r31_717)(MKMaterial *);
     s32 temp_r5_688;
@@ -429,7 +424,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'StringHash'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 MKResource *MKMaterial_Create(const char *arg0) {
     MKResource *temp_r3_775;
     MKResource *temp_r3_783;

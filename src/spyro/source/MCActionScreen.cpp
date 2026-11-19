@@ -11,6 +11,7 @@
 #include "spyro/source/UISystem.h"
 #include "spyro/source/UIText.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/gc/System_GC.h"
 #include "spyro/source/Autosave.h"
 #include "spyro/source/FrontEnd.h"
@@ -67,7 +68,7 @@ void MCActionScreen::Abort() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void MCActionScreen::Update() {
     s32 spA4;
     s32 spA0;

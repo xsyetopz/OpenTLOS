@@ -9,6 +9,7 @@
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDProp.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKShockWave_MP.h"
 #include "common/Source/MKView.h"
@@ -526,7 +527,6 @@ void ShockWave::Deinit() {
     KDProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ShockWave::LoadDone() {
     Animation *temp_r3_1075;
     MKHeap **temp_r3_1102;
@@ -564,4 +564,3 @@ void ShockWave::LoadDone() {
     } while (var_r28_1057 < 4);
     this->unk15C = MKModel_Create("P0191_Warp", NULL, 2, NULL);
 }
-#endif

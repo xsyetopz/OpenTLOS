@@ -12,6 +12,7 @@
 #include "common/Source/Matrix.h"
 #include "common/Source/OmniLight.h"
 #include "common/gc/MKModel_GC.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKShockWave_MP.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"

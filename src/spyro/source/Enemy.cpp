@@ -43,6 +43,7 @@
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -752,7 +753,7 @@ void Enemy::SetShockSoundEvent(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: pointer/array required
 void Enemy::Armour_SpawnFragments() {
     EnemyAttack *temp_r3_1680;
     ShatterableDescriptor *temp_r28_1668;
@@ -896,7 +897,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: pointer/array required
 void Enemy::Armour_SetDefaults() {
     EnemyAttack *temp_r3_1856;
     s32 var_r30_1842;
@@ -936,7 +937,7 @@ void Enemy::UpdateBodyFX() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'arg_sp1EC'
 void Enemy::FindAndZapFriends(BreathHitMessage *arg0) {
     MKHeap **temp_r27_1930;
     TargetManager ***var_r30_2137;
@@ -1317,7 +1318,7 @@ void Enemy::ClearHitAndDeathFX() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: pointer/array required
 void Enemy::DoDeadFx() {
     f64 sp10;
     f64 sp8;
@@ -2905,7 +2906,7 @@ s32 Enemy::HasWaypoints() {
     return 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: pointer/array required
 s32 Enemy::CheckMeleeHit(EnemyAttack *arg0, int arg1) {
     MKCollisionResult sp88;
     f64 sp80;                                       /* compiler-managed */
@@ -4929,7 +4930,6 @@ u8 Enemy::IsInsideFOV(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Enemy::DrawShieldOverride() {
     u8 sp8;
     EnemyAttack *temp_r5_10358;
@@ -4972,7 +4972,6 @@ loop_10:
         }
     }
 }
-#endif
 
 void Enemy::TriggerShieldGlow(int arg0) {
     this->unkA90 = 1.0f;
@@ -5745,7 +5744,7 @@ void Enemy::SetAnim(AnimSequence *arg0, AnimTransition *arg1, float arg2, unsign
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'AnimSequenceType'
+#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 void Enemy::SetAnim(AnimSequenceType arg0, int arg1, int arg2, float arg3, unsigned int arg4, bool arg5) {
     EnemyDescriptor *temp_r4_11914;
     EnemyDescriptor *temp_r6_11925;

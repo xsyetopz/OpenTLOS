@@ -4,6 +4,7 @@
 #include <dolphin/types.h>
 #include "spyro/source/KDFaderObject.h"
 #include "spyro/source/Level.h"
+#include "unplaced_enums.h"
 
 class GlobalSoundData;
 class KDFaderObject;
@@ -24,7 +25,6 @@ class Matrix;
 class SoundEvent;
 class SoundEventInstance;
 class SoundMaterial;
-class Sound_AcousticProperty;
 
 class GlobalSoundData {
 public:

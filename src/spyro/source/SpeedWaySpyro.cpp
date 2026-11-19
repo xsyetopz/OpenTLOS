@@ -20,6 +20,7 @@
 #include "spyro/source/Spyro.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKSystem.h"
@@ -400,7 +401,7 @@ u8 SpeedwayFX::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, const
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpeedwayFX::Update(const Matrix *arg0, bool arg1) {
     f64 sp138;
     f64 sp130;
@@ -808,7 +809,6 @@ KDInput *SpeedWaySpyro::GetInput() {
     return M2C_FIELD(&gb, KDInput **, 0x354);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void SpeedWaySpyro::GetJoyDir() {
     f32 sp10;
     f32 spC;
@@ -855,7 +855,6 @@ void SpeedWaySpyro::GetJoyDir() {
     M2C_FIELD(this, f64 *, 0) = (f64) sp8;
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk21C'
 void SpeedWaySpyro::UpdateDrift(float arg0) {
@@ -1601,7 +1600,7 @@ block_49:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unksp3C'
 u8 SpeedWaySpyro::AnyToPowerRollTransition() {
     f64 sp40;
     f64 sp38;
@@ -2420,7 +2419,7 @@ void SpeedWaySpyro::StateEnter() {
     this->unk194 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: expression syntax error
 void SpeedWaySpyro::Start() {
     f64 sp18;
     f64 sp10;

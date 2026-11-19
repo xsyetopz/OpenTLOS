@@ -45,6 +45,7 @@
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/WaterSurfaceFX.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKGrass.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
@@ -108,7 +109,6 @@ f32 Spyro::GetDeltaMove() {
     return deltaMove;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'StatType'
 void Spyro::AddStat(StatType arg0, float arg1) {
     f32 var_f1_331;
 
@@ -129,7 +129,6 @@ void Spyro::AddStat(StatType arg0, float arg1) {
     }
     ((Stat *) (GameData::gameData + ((s32) arg0 * 0x18) + 0x70))->Add(arg1, 1U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkC'
 void Spyro::UpdateRage() {
@@ -1316,7 +1315,6 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void Spyro::UpdateMeleeButtonState(bool arg0) {
     InputModifier *temp_r3_2649;
     InputModifier *temp_r3_2675;
@@ -1407,7 +1405,6 @@ void Spyro::UpdateMeleeButtonState(bool arg0) {
     }
     GetMeleeButtonState();
 }
-#endif
 
 s32 Spyro::GetMeleeButtonState() {
     s32 temp_r3_2827;
@@ -3550,7 +3547,6 @@ s8 Spyro::LavaTransition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 s32 Spyro::AirToStrafeDodgeTransition() {
     SpyroStateMessages sp8;
     InputModifier *temp_r3_6986;
@@ -3639,7 +3635,6 @@ s32 Spyro::AirToStrafeDodgeTransition() {
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp70'
 u8 Spyro::AirToLedgeGrabTransition() {
@@ -3713,7 +3708,6 @@ u8 Spyro::AirToLedgeGrabTransition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 u8 Spyro::LandToMoveTransition(bool arg0, bool arg1) {
     SpyroStateMessages sp10C;
     SpyroStateMessages spB8;
@@ -3844,9 +3838,8 @@ u8 Spyro::LandToMoveTransition(bool arg0, bool arg1) {
     }
     return var_r3_7330;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal operand
 void Spyro::LandToAirTransition(bool arg0, bool arg1, bool arg2) {
     SpyroStateMessages sp10;
     s32 spC;
@@ -3961,7 +3954,6 @@ loop_32:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SpyroStateMsg'
 u8 Spyro::TryChangeState(bool arg0, unsigned int arg1, SpyroStateMsg arg2, bool arg3) {
     SpyroStateMessages sp10;
     s32 spC;
@@ -3977,7 +3969,6 @@ u8 Spyro::TryChangeState(bool arg0, unsigned int arg1, SpyroStateMsg arg2, bool 
     }
     return 0U;
 }
-#endif
 
 u8 Spyro::TryChangeState(bool arg0, unsigned int arg1, MKMessage *arg2, bool arg3) {
     SpyroStateMessages sp8;
@@ -8029,7 +8020,7 @@ void Spyro::UpdateMovement() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Spyro::Update() {
     s8 spE9;
     s8 spE8;
@@ -8327,7 +8318,7 @@ block_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: ambiguous access to overloaded function
 void Spyro::UpdateHeadTurning() {
     f64 sp70;
     f64 sp68;

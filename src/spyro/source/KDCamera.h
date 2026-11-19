@@ -4,6 +4,7 @@
 #include <dolphin/types.h>
 #include "common/Source/MKProp.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 
 class KDCamera;
 class KDCameraDeltaStagesEx;
@@ -16,7 +17,6 @@ class KDCameraStateChangeRequest;
 class KDCameraStateStack;
 class KDCollisionObject;
 class KDMessageStorage;
-class MKCollisionMode;
 class MKCollisionResult;
 class MKIniLine;
 class MKMessage;

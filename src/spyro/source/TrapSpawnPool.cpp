@@ -9,6 +9,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "spyro/source/PropFlags.h"
 #include <m2c_macros.h>
@@ -63,7 +64,7 @@ void TrapSpawnPool::Reset() {
     this->unk94 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unk98;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void TrapSpawnPool::Resolve() {
     MKCollisionResult sp60;
     f32 sp58;

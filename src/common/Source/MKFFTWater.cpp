@@ -7,6 +7,7 @@
 #include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Texture.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
@@ -1345,7 +1346,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'Str_Lower(signed char *)' does not match
 u8 MKFFTWater::WaterTypeExistsInMesh(const char *arg0) {
     s16 temp_r30_2457;
     s32 var_r29_2458;

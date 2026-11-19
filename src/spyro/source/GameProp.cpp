@@ -10,6 +10,7 @@
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/SpyroTools.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/GameEnums.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/PropFlags.h"

@@ -7,6 +7,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "dolphin/gx.h"
 #include "dolphin/mtx.h"
 #include "dolphin/os.h"
@@ -518,7 +519,6 @@ void DetectEdges(MKVector3 *arg0, MKShadowSubObjectMP::Edge *arg1, int arg2, int
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void MKShadow_ApplyAlphaTint(unsigned char arg0, float arg1) {
     f32 sp60;
     f32 sp5C;
@@ -594,7 +594,6 @@ void MKShadow_ApplyAlphaTint(unsigned char arg0, float arg1) {
     GXSetProjectionv(&sp8);
     GXSetCurrentMtx(0U);
 }
-#endif
 
 void MKShadow_VolumeRenderStage2() {
     GXSetCullMode(GX_CULL_BACK);

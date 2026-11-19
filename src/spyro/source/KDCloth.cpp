@@ -6,6 +6,7 @@
 #include "spyro/source/KDModelProperty.h"
 #include "spyro/source/KDProperty.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKWind.h"
 #include <m2c_macros.h>
 
@@ -41,7 +42,6 @@ s32 KDClothProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDClothDescriptor::Update(MKModel *arg0) {
     MKVector3 sp18;
     MKVector3 sp8;
@@ -63,9 +63,7 @@ loop_4:
         goto loop_4;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDClothDescriptor::Apply(MKModel *arg0) {
     f64 sp40;
     f64 sp38;
@@ -117,9 +115,8 @@ loop_4:
         goto loop_4;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'MKModel_GetSubObjectIndex(MKModel *, SubObjectType, signed
 void KDClothDescriptor::Resolve(MKModel *arg0) {
     s8 *temp_r5_278;
 

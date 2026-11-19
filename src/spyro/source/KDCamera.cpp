@@ -23,6 +23,7 @@
 #include "spyro/source/MKCollisionTempDisableHelper.h"
 #include "spyro/source/ShakeCameraMessage.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
@@ -750,16 +751,13 @@ u8 KDCamera::GetSnapPos(const MKVector3 &arg0, const MKVector3 &arg1, MKVector3 
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 u8 KDCamera::IsPointSafeAndViewClearSweep(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, int arg3, MKCollisionResult *arg4) {
     if ((IsPointSafe(arg1, NULL) != 0) && (SweepSphereCollide(arg0, arg1, arg2, arg4, (MKCollisionMode) M2C_FIELD(M2C_FIELD(this->unk0, void **, 0xA4), s32 *, 8), arg3, 1U) == 0)) {
         return 1U;
     }
     return 0U;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 u8 KDCamera::IsPointSafeAndViewClear(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionResult *arg2) {
     void *temp_r8_1521;
 
@@ -769,16 +767,13 @@ u8 KDCamera::IsPointSafeAndViewClear(const MKVector3 &arg0, const MKVector3 &arg
     }
     return 0U;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 u8 KDCamera::IsPointSafe(const MKVector3 &arg0, MKCollisionResult *arg1) {
     void *temp_r8_1554;
 
     temp_r8_1554 = M2C_FIELD(this->unk0, void **, 0xA4);
     return SphereCollide(arg0, M2C_FIELD(temp_r8_1554, f32 *, 0), arg1, 1, (MKCollisionMode) M2C_FIELD(temp_r8_1554, s32 *, 8), M2C_FIELD(temp_r8_1554, s32 *, 0x18), 1U) == 0;
 }
-#endif
 
 void KDCamera::GetCollisionObjectPos() {
     void *temp_r4_1570;
@@ -1022,16 +1017,14 @@ void KDCamera::CollisionUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void KDCamera::TestFloor(const MKVector3 &arg0, MKCollisionResult *arg1, float arg2) {
     void *temp_r7_1959;
 
     temp_r7_1959 = M2C_FIELD(this->unk0, void **, 0xA4);
     TestFloor(arg0, arg1, (MKCollisionMode) M2C_FIELD(temp_r7_1959, s32 *, 8), M2C_FIELD(temp_r7_1959, s32 *, 0x18), arg2);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier 'sp8'
 void KDCamera::TestFloor(const MKVector3 &arg0, MKCollisionResult *arg1, MKCollisionMode arg2, int arg3, float arg4) {
     f64 sp40;
     f64 sp38;
@@ -1056,7 +1049,6 @@ void KDCamera::TestFloor(const MKVector3 &arg0, MKCollisionResult *arg1, MKColli
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
 s32 KDCamera::SphereCollide(const MKVector3 &arg0, float arg1, MKCollisionResult *arg2, int arg3, MKCollisionMode arg4, int arg5, bool arg6) {
     u8 spC;
     KDCamera *sp8;
@@ -1073,9 +1065,7 @@ s32 KDCamera::SphereCollide(const MKVector3 &arg0, float arg1, MKCollisionResult
     }
     return temp_r31_2038;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
 u8 KDCamera::SweepSphereCollide(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKCollisionResult *arg3, MKCollisionMode arg4, int arg5, bool arg6) {
     u8 spC;
     KDCamera *sp8;
@@ -1092,9 +1082,7 @@ u8 KDCamera::SweepSphereCollide(const MKVector3 &arg0, const MKVector3 &arg1, fl
     }
     return temp_r31_2083;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
 u8 KDCamera::RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionResult *arg2, MKCollisionMode arg3, int arg4, bool arg5) {
     u8 spC;
     KDCamera *sp8;
@@ -1111,7 +1099,6 @@ u8 KDCamera::RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisio
     }
     return temp_r31_2125;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
 void KDCamera::CutSceneUpdate() {
@@ -2234,7 +2221,7 @@ void KDCamera::DeltaUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unksp1C'
 void KDCamera::HeroMoveYawUpdate() {
     f64 sp20;
     f64 sp18;

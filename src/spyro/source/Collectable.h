@@ -4,12 +4,12 @@
 #include <dolphin/types.h>
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "unplaced_enums.h"
 
 class Collectable;
 class CollectableDescriptor;
 class CollectableSpawner;
 class CollectableSpawnerDescriptor;
-class CollectableState;
 class MKHeap;
 class MKIniLine;
 class MKMaterial;

@@ -2,9 +2,9 @@
 #define SPYRO_SOURCE_GAMEVIDEO_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class GameVideo;
-class GameVideoEvent;
 class Video;
 
 class GameVideo {

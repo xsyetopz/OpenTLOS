@@ -14,6 +14,7 @@
 #include "spyro/source/Projectile.h"
 #include "spyro/source/SparksPS.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"
@@ -559,7 +560,6 @@ void Dynamite::SetInitialState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Dynamite::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -578,7 +578,6 @@ void Dynamite::LoadDone() {
     ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **, f64, f32), 0x84)(gMK, (f64) sp8, 0.0f)))->AddSphere((MKVector3 *) &this->unk198, 50.0f, 0.0f, *((MKVector4 *) &sp18), (MKCollisionMode) 2, &this->unk188, 0x28000020U);
     this->unk188.unk4 = 0;
 }
-#endif
 
 void Dynamite::Reset() {
     Projectile::Reset();

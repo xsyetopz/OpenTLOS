@@ -2,8 +2,7 @@
 #define COMMON_SOURCE_TRANSLATION_H
 
 #include <dolphin/types.h>
-
-class TranslationLanguage;
+#include "unplaced_enums.h"
 
 void Translation_GetLanguageCode(TranslationLanguage);
 void Translation_GetLanguageLocalName(TranslationLanguage);

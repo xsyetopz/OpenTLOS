@@ -14,6 +14,7 @@
 #include "spyro/source/IceBitsPS.h"
 #include "spyro/source/PooledShatterProp.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
@@ -64,7 +65,7 @@ void AnimSequence::Init(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *,
 void EnemyDescriptor::InitArmour() {
     M2C_UNK sp28;
     s8 sp8;
@@ -183,7 +184,6 @@ loop_27:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'EnemySettingType'
 f32 EnemyDescriptor::GetEnemyAttackSetting(EnemySettingType arg0, EnemyAttack *arg1) {
     s32 temp_r31_264;
 
@@ -212,9 +212,7 @@ block_14:
     temp_r31_264 = (s32) arg0 * 4;
     return M2C_FIELD((arg1 + temp_r31_264), f32 *, 0x54) * (M2C_FIELD((this + temp_r31_264), f32 *, 0x1D8) * EnemySettings_GetEnemySetting(arg0));
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'EnemySettingType'
 f32 EnemyDescriptor::GetEnemySetting(EnemySettingType arg0) {
     if ((u8) this->unk1D6 == 0) {
         if ((s32) arg0 != 3) {
@@ -243,16 +241,13 @@ block_16:
     }
     return M2C_FIELD((this + ((s32) arg0 * 4)), f32 *, 0x1D8) * EnemySettings_GetEnemySetting(arg0);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 f32 EnemyDescriptor::GetMaxArmour() {
     if ((u8) this->unk1D6 != 0) {
         return GetEnemySetting((EnemySettingType) 1);
     }
     return this->unkF0;
 }
-#endif
 
 f32 EnemyDescriptor::GetDamageMultiplier(unsigned int arg0, int arg1, bool arg2) {
     MKHeap *temp_r7_368;

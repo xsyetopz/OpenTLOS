@@ -6,17 +6,15 @@
 #include "spyro/source/GameProp.h"
 #include "spyro/source/Trap.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/PropFlags.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'DoorStates'
 void Door::SetState(DoorStates arg0) {
     this->unkE0 = (s32) arg0;
     this->unk80->SetAnim(M2C_FIELD((checked_cast<DoorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unkE0 * 4)), MKAnim **, 0xE4), 1.0f, 0.0f, 0, -1);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void Door::Message(MKMessage *arg0) {
     s32 temp_r0_46;
 
@@ -39,17 +37,14 @@ void Door::Message(MKMessage *arg0) {
     }
     Trap::Message(arg0);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Door::Reset() {
     Trap::Reset();
     SetState((DoorStates) 0);
     this->unkE4 = this->unkE0;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: ')' expected
 void Door::Update() {
     s32 temp_r0_123;
     s32 temp_r4_136;

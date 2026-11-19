@@ -6,6 +6,7 @@
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UIText.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/FrontEnd.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/PauseMenu.h"
@@ -16,7 +17,7 @@
 extern s32 GS_MenuSelect;
 extern GameStateMachine gGMState;
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void AutosaveWarningScreen::Update() {
     s32 spC;
     s32 sp8;

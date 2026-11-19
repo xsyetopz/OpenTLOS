@@ -19,6 +19,7 @@
 #include "spyro/source/KDSynkerPlayerCamera.h"
 #include "spyro/source/KDSynkerPlayerTools.h"
 #include "spyro/source/Shadow.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKWind.h"
 #include "common/Source/StdMath.h"
@@ -2078,7 +2079,6 @@ void KDSP_Actor::Resolve(bool arg0, void (*arg2)(const char *, MKModel **, MKAni
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDSP_Actor::UpdateCloth() {
     f64 sp30;
     f64 sp28;
@@ -2114,7 +2114,6 @@ loop_3:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'HideSpecialSubObjectsInternal'
 void KDSP_Actor::HideSpecialSubObjects() {
@@ -2130,7 +2129,7 @@ void KDSP_Actor::HideSpecialSubObjects() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[5], int)' does not match
 void HideSpecialSubObjectsInternal(MKModel *arg0) {
     s16 temp_r30_4138;
     u16 var_r28_4140;
@@ -2150,7 +2149,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'MKModel_SubObjectExists(MKModel *, SubObjectType, signed
 void ModelSubObjectHide(MKIniLine *arg0, MKModel *arg1) {
     s32 sp8;
     MKIniLine *var_r30_4198;

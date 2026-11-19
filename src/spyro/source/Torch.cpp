@@ -10,6 +10,7 @@
 #include "spyro/source/KDProp.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>

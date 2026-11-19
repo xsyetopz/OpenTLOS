@@ -11,6 +11,7 @@
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>

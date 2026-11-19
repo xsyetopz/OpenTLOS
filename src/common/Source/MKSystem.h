@@ -3,9 +3,9 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKCommandLine.h"
+#include "unplaced_enums.h"
 
 class MKCommandLine;
-class MKDirtyStateType;
 
 void FlipEndian(float *);
 void FlipEndian(unsigned int *);

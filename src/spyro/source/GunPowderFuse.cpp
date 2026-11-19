@@ -17,6 +17,7 @@
 #include "spyro/source/LiquidFX.h"
 #include "spyro/source/SplineProp.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"

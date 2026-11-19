@@ -2,10 +2,10 @@
 #define COMMON_SOURCE_MKCOLLISIONUTIL_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class MKCollisionAABB;
 class MKCollisionBox;
-class MKCollisionDirection;
 class MKCollisionEllipsoid;
 class MKCollisionRay;
 class MKCollisionResult;

@@ -18,6 +18,7 @@
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/Tools.h"
@@ -617,7 +618,6 @@ u8 EnemyGoal_GraphSummonWall::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnemyGoal_GraphSummonWall::Activate() {
     void *temp_r3_1247;
 
@@ -628,7 +628,6 @@ void EnemyGoal_GraphSummonWall::Activate() {
     M2C_FIELD(temp_r3_1247, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_1247, u8 *, 0x464) & ~0x40);
     this->unkC->SetAnim((AnimSequenceType) 1, 0xA8, 0, 0.15f, 0U, 0U);
 }
-#endif
 
 void EnemyGoal_GraphTurn::Reset() {
     this->unk20 = 0.0f;
@@ -4018,7 +4017,7 @@ u8 EnemyGoal_GraphJump::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_GraphJump::Activate() {
     Character *temp_r4_8379;
     Character *temp_r5_8365;
@@ -5501,7 +5500,6 @@ u8 EnemyGoal_GraphHover::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnemyGoal_GraphHover::Activate() {
     Enemy *temp_r3_11855;
     Enemy *temp_r3_11865;
@@ -5518,7 +5516,6 @@ void EnemyGoal_GraphHover::Activate() {
         temp_r3_11865->SetAnim((AnimSequenceType) 0xA, 0xE3, 0, 0.15f, 0U, 0U);
     }
 }
-#endif
 
 void EnemyGoal_GraphHover::Init(Enemy *arg0) {
     this->unk8 = 1;
@@ -5546,7 +5543,6 @@ void EnemyGoal_GraphFly::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 EnemyGoal_GraphFly::Update() {
     f64 sp20;
     f64 sp18;
@@ -5593,9 +5589,8 @@ u8 EnemyGoal_GraphFly::Update() {
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: expression syntax error
 void EnemyGoal_GraphFly::Activate() {
     Enemy *temp_r3_12028;
     Enemy *temp_r3_12041;
@@ -5731,7 +5726,7 @@ u8 EnemyGoal_GraphWalk::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'unk9E8'
 void EnemyGoal_GraphWalk::Activate() {
     Character *temp_r3_12358;
     Character *temp_r6_12378;

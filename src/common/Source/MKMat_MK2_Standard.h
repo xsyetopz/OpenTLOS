@@ -4,9 +4,9 @@
 #include <dolphin/types.h>
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "unplaced_enums.h"
 
 class MKMat_MK2_Standard;
-class MKMat_MK2_Standard_MaterialType;
 class MKMat_MK2_Standard_cpp;
 class MKMaterial;
 class MatInfo;

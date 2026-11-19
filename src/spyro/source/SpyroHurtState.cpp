@@ -12,6 +12,7 @@
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
@@ -133,7 +134,6 @@ u8 SpyroHurtState::TransitionToIdle() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 s32 SpyroHurtState::KnockToSafePosTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -194,7 +194,6 @@ s32 SpyroHurtState::KnockToSafePosTransition() {
     }
     return var_r31_271;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk30C'
 void SpyroHurtState::KnockToSafePosUpdate() {
@@ -379,7 +378,7 @@ void SpyroHurtState::FrozenTransition() {
     this->unk10->TryChangeState(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1, var_r5_719, NULL, 0U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: expression syntax error
 void SpyroHurtState::FrozenUpdate() {
     InputModifier *temp_r3_753;
     s32 var_r3_766;

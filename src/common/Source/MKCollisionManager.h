@@ -2,6 +2,7 @@
 #define COMMON_SOURCE_MKCOLLISIONMANAGER_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class MKCollisionAABB;
 class MKCollisionCapsuleItem;
@@ -10,7 +11,6 @@ class MKCollisionInfo;
 class MKCollisionItem;
 class MKCollisionItemBase;
 class MKCollisionManager;
-class MKCollisionMode;
 class MKCollisionModel;
 class MKCollisionResult;
 class MKHeap;

@@ -9,6 +9,7 @@
 #include "spyro/source/KDProp.h"
 #include "spyro/source/Platform.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
@@ -259,7 +260,7 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void SeeSaw::LoadDone() {
     f32 sp8;
     MKHeap **temp_r3_600;

@@ -15,6 +15,7 @@
 #include "common/Source/MKVector4.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -88,7 +89,6 @@ void KDProp::UpdateCameraAlpha() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void KDProp::AddCollisionSubObject(int arg0, MKCollisionInfo *arg1) {
     M2C_UNK var_r31_139;
     void *temp_r30_138;
@@ -101,7 +101,6 @@ void KDProp::AddCollisionSubObject(int arg0, MKCollisionInfo *arg1) {
     ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(this->unk4, arg0, (MKCollisionMode) var_r31_139, arg1, M2C_FIELD(temp_r30_138, u32 *, 0x64));
     arg1->unk4 = 1;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void KDProp::SetColorToGround() {
@@ -308,7 +307,6 @@ void KDProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDProp::Reset() {
     s32 var_r31_551;
 
@@ -323,7 +321,6 @@ loop_3:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void KDProp::LoadDone() {

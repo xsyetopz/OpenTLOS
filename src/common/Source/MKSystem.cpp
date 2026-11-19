@@ -1,5 +1,6 @@
 #include "common/Source/MKSystem.h"
 #include "common/Source/MKCommandLine.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 extern u8 bWideScreenEnabled;
@@ -66,11 +67,9 @@ void System_EnableWideScreenMode(bool arg0) {
     bWideScreenEnabled = arg0;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKDirtyStateType'
 void MKDirtyState_Dirty(MKDirtyStateType arg0) {
     MKDirtyState_States[(s32) arg0] = -1;
 }
-#endif
 
 void System_GetCommandLineParameter(const char *arg0, bool arg1) {
     cmdLine.GetParameter(arg0, arg1);

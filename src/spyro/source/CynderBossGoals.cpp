@@ -26,6 +26,7 @@
 #include "spyro/source/Spyro.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKModel.h"
@@ -242,7 +243,7 @@ u8 CynderBossGoal_HoverRight::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void CynderBossGoal_HoverRight::Activate() {
     Character *temp_r3_457;
 
@@ -282,7 +283,7 @@ u8 CynderBossGoal_HoverLeft::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void CynderBossGoal_HoverLeft::Activate() {
     Character *temp_r3_541;
 
@@ -322,7 +323,7 @@ u8 CynderBossGoal_Hover::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void CynderBossGoal_Hover::Activate() {
     Character *temp_r3_625;
 
@@ -680,7 +681,7 @@ u8 CynderBossGoal_HitByFury::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void CynderBossGoal_HitByFury::Activate() {
     Character *temp_r3_1352;
 
@@ -695,7 +696,7 @@ void CynderBossGoal_HitByFury::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 u8 CynderBossGoal_Stage3Fury::Update() {
     Character *temp_r3_1391;
 
@@ -718,7 +719,7 @@ u8 CynderBossGoal_Stage3Fury::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void CynderBossGoal_Stage3Fury::Activate() {
     Character *temp_r3_1449;
 
@@ -750,7 +751,7 @@ void CynderBossGoal_Stage2Fury::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 u8 CynderBossGoal_Stage2Fury::Update() {
     EnemyHudData sp10;
     s32 spC;
@@ -803,7 +804,7 @@ u8 CynderBossGoal_Stage2Fury::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'SetHealth'
 void CynderBossGoal_Stage2Fury::Activate() {
     Character *temp_r3_1648;
 
@@ -1598,7 +1599,7 @@ void CynderGoal_GroundAttackMode::Init(Cynder *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'SetInvulnerableToMeleeAttacks'
 void CynderBossGoal_FlyingInWait::Terminate() {
     Character *temp_r3_3243;
     Character *temp_r3_3250;
@@ -1869,7 +1870,6 @@ u8 CynderBossGoal_RunningTakeOff::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_RunningTakeOff::Activate() {
     Enemy *temp_r3_3773;
     Enemy *temp_r6_3782;
@@ -1893,7 +1893,6 @@ void CynderBossGoal_RunningTakeOff::Activate() {
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDC, 0, 0.15f, 0U, 0U);
     M2C_FIELD(this->unkC, s32 *, 0xCFC) = 0;
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void CynderBossGoal_MoveToTarget::CalculateRegionEdgeMoveTarget(bool arg0) {
@@ -2634,7 +2633,7 @@ u8 CynderBossGoal_TestTaunt::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void CynderBossGoal_TestTaunt::Activate() {
     Character *temp_r3_5233;
 
@@ -3897,7 +3896,7 @@ u8 CynderBossGoal_Leap::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'SetInvulnerableToMeleeAttacks'
 void CynderBossGoal_Leap::Activate() {
     f64 sp8;
     Character *temp_r3_7677;
@@ -4933,7 +4932,7 @@ u8 CynderBossGoal_GlideToAttack::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void CynderBossGoal_GlideToAttack::Activate() {
     Character *temp_r3_9686;
     Character *temp_r3_9690;
@@ -5023,7 +5022,7 @@ u8 CynderBossGoal_GlideToLand::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'EnableFlyingRotation'
 void CynderBossGoal_GlideToLand::Activate() {
     Character *temp_r3_9857;
     Character *temp_r3_9861;
@@ -5179,7 +5178,7 @@ u8 CynderBossGoal_Dive::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'EnableFlyingRotation'
 void CynderBossGoal_Dive::Activate() {
     Character *temp_r3_10130;
     Character *temp_r3_10134;
@@ -5330,7 +5329,6 @@ u8 CynderBossGoal_FlyToDive::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_FlyToDive::Activate() {
     Cynder *temp_r3_10408;
     Cynder *temp_r3_10412;
@@ -5345,7 +5343,6 @@ void CynderBossGoal_FlyToDive::Activate() {
     this->unkC->EnableFlyingRotation(0U);
     this->unk10 = 3.0f;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk8C0'
 u8 CynderBossGoal_FlyAlongWaypoints::Update() {
@@ -5387,7 +5384,7 @@ u8 CynderBossGoal_FlyAlongWaypoints::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'unk8C0'
 void CynderBossGoal_FlyAlongWaypoints::Activate() {
     Character *temp_r3_10524;
     Character *temp_r3_10528;
@@ -5663,7 +5660,7 @@ u8 CynderBossGoal_FlyAlongSpline::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void CynderBossGoal_FlyAlongSpline::Activate() {
     f64 spC0;
     f64 spB8;
@@ -5930,7 +5927,7 @@ u8 CynderBossGoal_Fly::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'Character *' to
 void CynderBossGoal_Fly::Activate() {
     f64 sp128;
     f64 sp120;
@@ -6205,7 +6202,7 @@ u8 CynderBossGoal_Land::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: expression syntax error
 void CynderBossGoal_Land::Activate() {
     f64 sp8;
     Enemy *temp_r3_12128;
@@ -6270,7 +6267,6 @@ u8 CynderBossGoal_TakeOff::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_TakeOff::Activate() {
     Enemy *temp_r3_12269;
     Enemy *temp_r3_12295;
@@ -6298,7 +6294,6 @@ void CynderBossGoal_TakeOff::Activate() {
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDC, 0, 0.15f, 0U, 0U);
     M2C_FIELD(this->unkC, s32 *, 0xCFC) = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 CynderBossGoal_AttackFlight::Update() {

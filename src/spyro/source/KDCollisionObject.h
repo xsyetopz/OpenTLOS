@@ -2,13 +2,13 @@
 #define SPYRO_SOURCE_KDCOLLISIONOBJECT_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class KDColObjDescriptor;
 class KDCollisionObject;
 class KDContextInfo;
 class MKCollisionInfo;
 class MKCollisionManager;
-class MKCollisionMode;
 class MKCollisionResult;
 class MKVector3;
 

@@ -20,6 +20,7 @@
 #include "spyro/source/EnemyGoal_Think.h"
 #include "spyro/source/SlimeTrailFX.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -247,7 +248,6 @@ void ElecTier3::UpdateScan() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ElecTier3::EnableScan(bool arg0) {
     s8 temp_r31_480;
     u8 var_r0_465;
@@ -264,7 +264,6 @@ void ElecTier3::EnableScan(bool arg0) {
     temp_r31_480 = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeParentIndex(M2C_FIELD(temp_r31_473, s32 *, 0x2B8));
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix((s32) temp_r31_480, NULL, (AnimationMatrixPosition) 4, 0U);
 }
-#endif
 
 void ElecTier3::Draw() {
     Enemy::Draw();
@@ -383,7 +382,7 @@ void ElecTier3Descriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
 void ElecTier3Descriptor::LoadDone() {
     MKHeap *temp_r3_822;
     MKMaterial *temp_r3_820;
@@ -617,7 +616,7 @@ void ElecTier2::UpdateCollisionItems() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ElecTier2::SetupCollision() {
     u16 temp_r31_1380;
     void *temp_r30_1374;

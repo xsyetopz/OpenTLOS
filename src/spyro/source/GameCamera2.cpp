@@ -19,6 +19,7 @@
 #include "spyro/source/KDCollisionObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
@@ -1515,7 +1516,7 @@ f32 GameCamera2::PlayerAdjustGetRotateSpeed() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'sp30'
 void GameCamera2::PlayerAdjustUpdate() {
     f64 spE8;
     f64 spE0;
@@ -2014,7 +2015,7 @@ void GameCamera2::DeltaUpdate() {
     this->unk140->unk10 = 300.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unkspC'
 void GameCamera2::CenterBehindHeroUpdate() {
     f64 sp10;
     f64 sp8;

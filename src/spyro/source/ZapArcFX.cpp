@@ -4,6 +4,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/GameProp.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -474,12 +475,10 @@ void ZapArcFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ZapArcFX::LoadDone() {
     GameProp::LoadDone();
     this->unkD0 = MKModel_GetNmbrOfSubObjects(this->unk4, (SubObjectType) 0);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void ZapArcFX::Init() {

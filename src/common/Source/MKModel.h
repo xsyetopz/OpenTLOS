@@ -3,6 +3,7 @@
 
 #include <dolphin/types.h>
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 
 class Animation;
 class MKAttachment;
@@ -15,7 +16,6 @@ class MKVector3;
 class MKVector4;
 class Matrix;
 class ModelCloth;
-class SubObjectType;
 
 class MKModel {
 public:

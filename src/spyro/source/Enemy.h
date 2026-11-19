@@ -11,10 +11,10 @@
 #include "spyro/source/KDSoundTools.h"
 #include "spyro/source/Names.h"
 #include "spyro/source/NodeLookAt.h"
+#include "unplaced_enums.h"
 
 class AITargetData;
 class AnimSequence;
-class AnimSequenceType;
 class AnimTransition;
 class AttackSweepData;
 class BoneBlurFX;

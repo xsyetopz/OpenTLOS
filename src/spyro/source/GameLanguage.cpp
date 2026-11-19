@@ -1,4 +1,5 @@
 #include "spyro/source/GameLanguage.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKSystem.h"
 #include "common/Source/Translation.h"
 #include <m2c_macros.h>
@@ -82,7 +83,6 @@ s32 GameLanguage_GetAudioTrack(int arg0) {
     return audioTrack[var_r3_0];
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void GameLanguage_GetName(int arg0) {
     s32 var_r3_0;
 
@@ -92,9 +92,7 @@ void GameLanguage_GetName(int arg0) {
     }
     Translation_GetLanguageLocalName((TranslationLanguage) var_r3_0);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void GameLanguage_GetCode(int arg0) {
     s32 var_r3_0;
 
@@ -104,9 +102,8 @@ void GameLanguage_GetCode(int arg0) {
     }
     Translation_GetLanguageCode((TranslationLanguage) var_r3_0);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: function call 'stricmp(const char *, int)' does not match
 s32 GameLanguage_LanguageByCode(const char *arg0) {
     s32 var_r31_245;
 
@@ -139,7 +136,6 @@ s32 GameLanguage_Count() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 u8 GameLanguage_Available(int arg0) {
     s32 var_r30_305;
     u8 var_r31_312;
@@ -154,13 +150,10 @@ u8 GameLanguage_Available(int arg0) {
     }
     return var_r31_312;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void GameLanguage_Set(int arg0) {
     Translation_SetLanguage((TranslationLanguage) arg0);
 }
-#endif
 
 s32 GameLanguage_GetDefault() {
     if ((s32) gDisplay == 1) {
@@ -173,7 +166,6 @@ void GameLanguage_Get() {
     Translation_GetLanguage();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void GameLanguage_InitModule() {
     s32 temp_r3_394;
     s32 var_r31_387;
@@ -189,4 +181,3 @@ void GameLanguage_InitModule() {
     }
     Translation_SetLanguage((TranslationLanguage) var_r31_387);
 }
-#endif

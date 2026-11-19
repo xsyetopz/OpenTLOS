@@ -6,6 +6,7 @@
 #include "common/Source/Matrix.h"
 #include "common/Source/OmniLight.h"
 #include "common/Source/Texture.h"
+#include "unplaced_enums.h"
 #include "dolphin/gx.h"
 #include "dolphin/mtx.h"
 #include "dolphin/os.h"
@@ -171,7 +172,6 @@ void DrawFilteredQuad(_GXTexObj *arg0, MKVector3 *arg1, const MKVector3 &arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void DrawQuad(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, unsigned int arg4) {
     f32 temp_f1_256;
     f32 temp_f2_254;
@@ -217,9 +217,8 @@ void DrawQuad(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg
     *(f32 *)0xCC008000 = temp_f1_256;
     *(f32 *)0xCC008000 = temp_f8_260;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKMat_Glow_Viewport'
+#if 0 // DRAFT: undefined identifier 'arg_sp44'
 void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
     GXRenderModeObj *temp_r28_313;
     enum _GXTevScale var_r26_551;

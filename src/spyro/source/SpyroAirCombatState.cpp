@@ -14,6 +14,7 @@
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/TimeDeltaModifier.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
@@ -2137,7 +2138,7 @@ s32 SpyroAirCombatState::Transition() {
     return var_r31_3966;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroAirCombatState::Update() {
     f64 sp78;
     f64 sp70;

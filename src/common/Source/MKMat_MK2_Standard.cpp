@@ -4,6 +4,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKMaterial_Util.h"
 #include "common/Source/StdMath.h"
@@ -418,7 +419,6 @@ void MKMat_MK2_SetAlphaRef(MKMaterial *arg0, float arg1) {
     M2C_FIELD(arg0->unk24, f32 *, 0x2C) = arg1;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class
 s32 MKMat_MK2_SetMaterialType(MKMaterial *arg0, MKMat_MK2_Standard_MaterialType arg1) {
     s32 temp_r3_880;
     void *temp_r5_879;
@@ -428,7 +428,6 @@ s32 MKMat_MK2_SetMaterialType(MKMaterial *arg0, MKMat_MK2_Standard_MaterialType 
     M2C_FIELD(temp_r5_879, s32 *, 0x28) = (s32) arg1;
     return temp_r3_880;
 }
-#endif
 
 Texture *MKMat_MK2_GetBaseTexture(MKMaterial *arg0) {
     return arg0->unk38;

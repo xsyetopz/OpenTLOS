@@ -14,6 +14,7 @@
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/SteamTrain.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/KDSound.h"
@@ -708,7 +709,7 @@ u8 FireBossGoal_Crash::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void FireBossGoal_Crash::Activate() {
     this->unk8 = 0;
     M2C_FIELD(this->unkC, f32 *, 0xB20) = 0.0f;
@@ -886,7 +887,6 @@ block_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void FireBossGoal_Stage4::Activate() {
     FireBoss *temp_r3_1639;
 
@@ -906,7 +906,6 @@ void FireBossGoal_Stage4::Activate() {
     this->unkC->unk1074 = 4;
     this->unkC->TriggerExplosion();
 }
-#endif
 
 void FireBossGoal_Stage3::Terminate() {
     this->unk8 = 1;
@@ -1076,7 +1075,6 @@ block_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void FireBossGoal_Stage3::Activate() {
     FireBoss *temp_r3_1976;
 
@@ -1096,7 +1094,6 @@ void FireBossGoal_Stage3::Activate() {
     this->unkC->unk1074 = 3;
     this->unkC->TriggerExplosion();
 }
-#endif
 
 void FireBossGoal_Stage2::Terminate() {
     this->unk8 = 1;
@@ -1266,7 +1263,6 @@ block_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void FireBossGoal_Stage2::Activate() {
     FireBoss *temp_r3_2313;
 
@@ -1286,7 +1282,6 @@ void FireBossGoal_Stage2::Activate() {
     this->unkC->unk1074 = 1;
     this->unkC->TriggerExplosion();
 }
-#endif
 
 void FireBossGoal_Stage1::Terminate() {
     this->unk8 = 1;
@@ -1438,7 +1433,6 @@ block_33:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void FireBossGoal_Stage1::Activate() {
     FireBoss *temp_r3_2620;
 
@@ -1454,4 +1448,3 @@ void FireBossGoal_Stage1::Activate() {
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->unk1074 = 0;
 }
-#endif

@@ -2,12 +2,12 @@
 #define SPYRO_SOURCE_COLLISIONOBJECT_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class ColObjDescriptor;
 class CollisionObject;
 class ContextInfo;
 class MKCollisionInfo;
-class MKCollisionMode;
 class MKCollisionResult;
 class MKMessage;
 class MKProp;

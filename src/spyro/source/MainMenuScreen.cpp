@@ -6,6 +6,7 @@
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/Autosave.h"
 #include "spyro/source/FrontEnd.h"
 #include "spyro/source/KDSound.h"

@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_ENEMYATTACKPATTERN_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class AITargetData;
 class DataMap;
@@ -14,7 +15,6 @@ class EnemyAttack;
 class EnemyAttackPattern;
 class EnemyDescriptor;
 class MKIniLine;
-class eEAPCondition;
 
 class EAPCondition {
 public:

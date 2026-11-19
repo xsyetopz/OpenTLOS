@@ -1,4 +1,5 @@
 #include "common/Source/MKShockWave_MP.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKSystem.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -173,7 +174,6 @@ void MKShockWave_Set(int arg0, float arg1, float arg2, float arg3) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void MKShockWave_Enable(const MKVector3 &arg0) {
     M2C_FIELD(&gShockWaveData, f64 *, 0x50) = (f64) M2C_FIELD(&arg0, f64 *, 0);
     M2C_FIELD(&gShockWaveData, f64 *, 0x58) = (f64) M2C_FIELD(&arg0, f64 *, 8);
@@ -183,4 +183,3 @@ void MKShockWave_Enable(const MKVector3 &arg0) {
     M2C_FIELD(&gShockWaveData, s8 *, 0x60) = 1;
     MKDirtyState_Dirty((MKDirtyStateType) 6);
 }
-#endif

@@ -22,6 +22,7 @@
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/TriggerProp.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DialogBox.h"
@@ -56,7 +57,7 @@ static s32 lit_3055 = 0;
 static s32 lit_3057 = 0;
 static s32 lit_3059 = 0;
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
 u8 EarthDojoLesson::HasSucceededFury() {
     DojoController *spC;
     s32 sp8;
@@ -496,7 +497,6 @@ s32 EarthDojoLesson::IsBreath2Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EarthDojoLesson::SetupBreath2SpawnPoints() {
     CharacterGraphNode *sp8;
     DojoController *temp_r3_881;
@@ -521,7 +521,6 @@ void EarthDojoLesson::SetupBreath2SpawnPoints() {
         return;
     }
 }
-#endif
 
 void EarthDojoLesson::SetupNumBreath2Enemies() {
     DojoController *temp_r3_954;
@@ -553,7 +552,6 @@ s32 EarthDojoLesson::IsBreath1Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EarthDojoLesson::SetupBreath1SpawnPoints() {
     CharacterGraphNode *sp8;
     DojoController *temp_r3_1011;
@@ -578,7 +576,6 @@ void EarthDojoLesson::SetupBreath1SpawnPoints() {
         return;
     }
 }
-#endif
 
 void EarthDojoLesson::SetupNumBreath1Enemies() {
     DojoController *temp_r3_1072;
@@ -815,7 +812,7 @@ void EarthDojoLesson::SetupNumEnemies() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
 u8 IceDojoLesson::HasSucceededFury() {
     DojoController *spC;
     s32 sp8;
@@ -1318,7 +1315,6 @@ s32 IceDojoLesson::IsBreath1Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void IceDojoLesson::SetupBreath1SpawnPoints() {
     CharacterGraphNode *sp8;
     DojoController *temp_r3_2581;
@@ -1343,7 +1339,6 @@ void IceDojoLesson::SetupBreath1SpawnPoints() {
         return;
     }
 }
-#endif
 
 void IceDojoLesson::SetupNumBreath1Enemies() {
     DojoController *temp_r3_2654;
@@ -1574,7 +1569,7 @@ void IceDojoLesson::SetupNumEnemies() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
 u8 ElectricDojoLesson::HasSucceededFury() {
     DojoController *spC;
     s32 sp8;
@@ -2603,7 +2598,7 @@ void ElectricDojoLesson::SetupNumEnemies() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: function call 'DialogBox_ColorButtons(signed char *, signed char *, int,
 u8 FireDojoLesson::HasSucceededFury() {
     DojoController *spC;
     s32 sp8;
@@ -3532,7 +3527,6 @@ s32 FireDojoLesson::IsBreath1Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void FireDojoLesson::SetupBreath1SpawnPoints() {
     CharacterGraphNode *sp8;
     DojoController *temp_r3_6863;
@@ -3557,7 +3551,6 @@ void FireDojoLesson::SetupBreath1SpawnPoints() {
         return;
     }
 }
-#endif
 
 void FireDojoLesson::SetupNumBreath1Enemies() {
     DojoController *temp_r3_6936;
@@ -5629,7 +5622,7 @@ void DojoController::StateDojoStatueDownUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: expression syntax error
 void DojoController::StateDojoStatueDownEnter() {
     switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
     case 0:
@@ -5662,7 +5655,7 @@ void DojoController::StateDojoWaitingForActivateEnter() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal type
 void DojoLesson::UpdateCombatArcs() {
     DojoController *temp_r30_10991;
     DojoController *temp_r3_11039;
@@ -5880,7 +5873,7 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'DojoTiers'
+#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void DojoController::SetupSpawnPointsRandomGraph(DojoTiers arg0, CharacterGraphNode *arg1, int arg2, int arg3, CharacterGraphNode **arg4, bool arg5, float arg6, float arg7, unsigned int arg8) {
     f64 spE0;
     f64 spD8;
@@ -6206,7 +6199,7 @@ loop_82:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'DojoTiers'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void DojoController::SetupSpawnPointsVanguard(DojoTiers arg0, MKVector3 arg1, MKVector3 arg2, float arg3, bool arg4, bool arg5, float arg6, unsigned int arg7) {
     f64 sp160;
     f64 sp158;

@@ -1,4 +1,5 @@
 #include "spyro/source/KDMemoryCard.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMemoryCard.h"
 #include <m2c_macros.h>
 
@@ -11,7 +12,6 @@ static MKMemoryCardFileInfo tmpfileInfo[0x10];
 static struct _struct_card_0x280 card[2];
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::LoadData_Update(int arg0) {
     switch (arg0) {                                 /* irregular */
     case -2:
@@ -26,21 +26,17 @@ void KDMemoryCard::LoadData_Update(int arg0) {
         return;
     }
 }
-#endif
 
 void KDMemoryCard::LoadData_Init() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::LoadData(int arg0, void *arg1, int arg2) {
     this->unk4 = arg0;
     SetState((KDMCState) 0xA);
     MKMemoryCard_Load(this->unk0, this->unk4, arg1, arg2);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::SaveData_Update(int arg0) {
     if (arg0 != 0) {
         this->unkA = arg0 == -0x12;
@@ -54,13 +50,12 @@ void KDMemoryCard::SaveData_Update(int arg0) {
     }
     this->unk4 = -1;
 }
-#endif
 
 void KDMemoryCard::SaveData_Init() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'MKMemoryCard_Save(long, long, void *, int, const char *,
 void KDMemoryCard::SaveData(int arg0, void *arg1, int arg2, const char *arg3) {
     s32 temp_r4_138;
 
@@ -71,7 +66,6 @@ void KDMemoryCard::SaveData(int arg0, void *arg1, int arg2, const char *arg3) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::DeleteCorrupted_Update(int arg0) {
     if (arg0 == 0) {
         M2C_FIELD((this + (this->unk4 * 0xC0)), s8 *, 0xE5) = 0;
@@ -82,9 +76,7 @@ void KDMemoryCard::DeleteCorrupted_Update(int arg0) {
     }
     SetState((KDMCState) 1);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::DeleteCorrupted_Init() {
     s32 temp_r4_197;
     void *temp_r5_201;
@@ -105,9 +97,7 @@ loop_1:
     this->unk4 = -1;
     SetState((KDMCState) 0);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::Prepare_Update(int arg0) {
     if (arg0 != 0) {
         SetState((KDMCState) 1);
@@ -116,13 +106,11 @@ void KDMemoryCard::Prepare_Update(int arg0) {
     this->unk20 = 1;
     SetState((KDMCState) 0);
 }
-#endif
 
 void KDMemoryCard::Prepare_Init() {
     MKMemoryCard_Prepare(this->unk0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::Format_Update(int arg0) {
     switch (arg0) {                                 /* irregular */
     case -2:
@@ -140,13 +128,12 @@ void KDMemoryCard::Format_Update(int arg0) {
         return;
     }
 }
-#endif
 
 void KDMemoryCard::Format_Init() {
     MKMemoryCard_Format(this->unk0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'memcpy(KDMemoryCard *, MKMemoryCardFileInfo, unsigned int)'
 void KDMemoryCard::CheckFilesExist_Update(int arg0) {
     s32 var_ctr_349;
     s32 var_r4_346;
@@ -178,7 +165,6 @@ void KDMemoryCard::CheckFilesExist_Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::CheckIsPrepared_Update(int arg0) {
     if ((arg0 == -2) || (arg0 == -3)) {
         Reset(0U);
@@ -194,13 +180,11 @@ void KDMemoryCard::CheckIsPrepared_Update(int arg0) {
     this->unk8 = 0;
     SetState((KDMCState) 0);
 }
-#endif
 
 void KDMemoryCard::CheckIsPrepared_Init() {
     MKMemoryCard_IsPrepared(this->unk0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::CheckCard_Update(int arg0) {
     if ((arg0 == -2) || (arg0 == -3)) {
         Reset(0U);
@@ -227,7 +211,6 @@ void KDMemoryCard::CheckCard_Update(int arg0) {
     this->unk8 = 0;
     SetState((KDMCState) 0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKMemoryCard_GetInfo(long, long *, long *, long *, long *)'
 void KDMemoryCard::CheckCard_Init() {
@@ -236,7 +219,6 @@ void KDMemoryCard::CheckCard_Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDMemoryCard::IsAttached_Update(int arg0) {
     if ((arg0 == -2) || (arg0 == -3)) {
         Reset(0U);
@@ -245,7 +227,6 @@ void KDMemoryCard::IsAttached_Update(int arg0) {
     }
     SetState((KDMCState) 0);
 }
-#endif
 
 void KDMemoryCard::IsAttached_Init() {
     MKMemoryCard_IsAttached(this->unk0);
@@ -309,7 +290,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMCState'
+#if 0 // DRAFT: illegal implicit conversion from 'KDMemoryCard *' to
 void KDMemoryCard::SetState(KDMCState arg0) {
     s32 temp_r5_679;
 

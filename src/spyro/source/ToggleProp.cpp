@@ -4,6 +4,7 @@
 #include "common/Source/MKProp.h"
 #include "spyro/source/KDProp.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/gc/MKModel_GC.h"
 #include <m2c_macros.h>
@@ -37,7 +38,7 @@ void ToggleProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: ')' expected
 void ToggleProp::Draw() {
     if ((u8) this->unk90 != 0) {
         MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(checked_cast<TogglePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x78), 1U, 1U);
@@ -59,7 +60,7 @@ void TogglePropDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'MKModel_GetSubObjectIndex(MKModel *, SubObjectType, signed
 void TogglePropDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
     this->unk78 = MKModel_GetSubObjectIndex(this->unk2C, (SubObjectType) 0, this->unk70);

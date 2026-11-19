@@ -6,6 +6,7 @@
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
@@ -38,7 +39,7 @@ void UIVideoScreen::Draw(const RenderContext &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: expression syntax error
 void UIVideoScreen::Update() {
     GameVideo *temp_r3_341;
     f32 temp_f1_276;

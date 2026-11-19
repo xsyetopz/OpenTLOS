@@ -2,11 +2,11 @@
 #define SPYRO_SOURCE_HEROINTERFACE_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class HeroInterface;
 class MKMessage;
 class MKPropDescriptor;
-class StatType;
 
 class HeroInterface {
 public:

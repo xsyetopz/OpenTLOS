@@ -3,12 +3,12 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/HeroInterface.h"
+#include "unplaced_enums.h"
 
 class HeroInterface;
 class MKMessage;
 class MKPropDescriptor;
 class SpeedWaySpyroHeroInterface;
-class StatType;
 
 class SpeedWaySpyroHeroInterface : public HeroInterface {  // base: inlined ctor vtable stores
 public:
@@ -216,7 +216,7 @@ inline s32 SpeedWaySpyroHeroInterface::IsFuryActive() {
     return 0;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'StatType'
+#if 0 // DRAFT: undefined identifier 'Stat'
 inline void SpeedWaySpyroHeroInterface::AddStat(StatType arg0, float arg1) {
     ((Stat *) (GameData::gameData + ((s32) arg0 * 0x18) + 0x70))->Add(arg1, 1U);
 }

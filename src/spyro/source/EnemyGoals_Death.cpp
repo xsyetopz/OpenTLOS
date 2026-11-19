@@ -16,6 +16,7 @@
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
@@ -776,7 +777,7 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal type
 void EnemyGoal_DyingWhirlwind::Activate() {
     s8 spC8;
     s32 spC4;
@@ -880,7 +881,7 @@ u8 EnemyGoal_DyingTrain::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_DyingTrain::Activate() {
     Character *temp_r3_1646;
 
@@ -952,7 +953,7 @@ u8 EnemyGoal_DyingAirborn::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_DyingAirborn::Activate() {
     f64 sp40;
     f64 sp38;

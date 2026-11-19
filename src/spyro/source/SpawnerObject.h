@@ -3,12 +3,12 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/EventMessage.h"
+#include "unplaced_enums.h"
 
 class EventMessage;
 class MKIniLine;
 class MKMessage;
 class MKProp;
-class SpawnAction;
 class SpawnItemObject;
 class SpawnPointObject;
 class SpawnerObject;

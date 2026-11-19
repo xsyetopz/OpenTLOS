@@ -17,6 +17,7 @@
 #include "spyro/source/EnemyGoal_Think.h"
 #include "spyro/source/Game.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -71,7 +72,7 @@ void IceTier2::UpdateCollisionItems() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void IceTier2::SetupCollision() {
     f64 sp20;
     f64 sp18;
@@ -101,7 +102,7 @@ void IceTier2::SetupCollision() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: ')' expected
 void IceTier2::OnArmourDestroyed() {
     s32 temp_r4_192;
 
@@ -291,7 +292,7 @@ void IceTier2Descriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to
 void IceTier2Descriptor::LoadDone() {
     EnemyDescriptor::LoadDone();
     this->unk2B8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "");

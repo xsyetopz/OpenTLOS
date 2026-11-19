@@ -5,6 +5,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal implicit conversion from 'const MKVector3 *' to
@@ -288,7 +289,7 @@ block_46:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionDirection'
+#if 0 // DRAFT: undefined identifier 'spA0'
 u8 MKCollision_SweepSphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCollisionResult *arg2, int arg3, MKCollisionDirection arg4) {
     u8 sp1C8;
     s32 sp1C4;
@@ -669,7 +670,7 @@ loop_80:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionDirection'
+#if 0 // DRAFT: undefined identifier 'sp128'
 u8 MKCollision_SphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCollisionResult *arg2, int arg3, MKCollisionDirection arg4) {
     f64 sp290;                                      /* compiler-managed */
     f64 sp288;

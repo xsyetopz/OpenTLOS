@@ -1,5 +1,6 @@
 #include "common/Source/Translation.h"
 #include "common/Source/MKHeap.h"
+#include "unplaced_enums.h"
 #include "dolphin/os.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/Str.h"
@@ -466,25 +467,21 @@ void Translation_GetLanguageCode(TranslationLanguage arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'TranslationLanguage'
 void Translation_GetLanguageLocalName(TranslationLanguage arg0) {
 
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'TranslationLanguage'
 void Translation_GetLanguageName(TranslationLanguage arg0) {
 
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'TranslationLanguage'
+#if 0 // DRAFT: undefined identifier 'gLanguageInfo'
 u8 Translation_IsLanguageAvailable(TranslationLanguage arg0) {
     return gLanguageInfo[(s32) arg0].unk10 != 0;
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'TranslationLanguage'
+#if 0 // DRAFT: undefined identifier 'gLanguageInfo'
 void Translation_SetLanguage(TranslationLanguage arg0) {
     s32 temp_r0_285;
     s32 temp_r0_293;
@@ -643,7 +640,6 @@ loop_61:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 s32 Translation_GetDefaultLanguage() {
     s32 var_r31_366;
     u8 temp_r3_367;
@@ -679,7 +675,6 @@ s32 Translation_GetDefaultLanguage() {
     }
     return var_r31_366;
 }
-#endif
 
 s32 Translation_GetLanguage() {
     return gCurrentLanguage;

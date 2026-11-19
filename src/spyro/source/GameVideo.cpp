@@ -1,6 +1,7 @@
 #include "spyro/source/GameVideo.h"
 #include "common/Source/MKHeap.h"
 #include "spyro/source/EventCamera.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKSystem.h"
 #include "common/Source/Str.h"
 #include "common/Source/Video.h"

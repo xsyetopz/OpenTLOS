@@ -4,6 +4,7 @@
 #include <dolphin/types.h>
 #include "spyro/source/CharacterDescriptor.h"
 #include "spyro/source/EnemySettings.h"
+#include "unplaced_enums.h"
 
 class AnimSequence;
 class CharacterBreathFXDescriptor;
@@ -12,7 +13,6 @@ class DataMap;
 class EAPManagerDescriptor;
 class EnemyAttack;
 class EnemyDescriptor;
-class EnemySettingType;
 class EnemySettings;
 class IceBitsPS;
 class MKAnim;

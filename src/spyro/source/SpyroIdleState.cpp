@@ -8,6 +8,7 @@
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 extern f32 SPYRO_BOUNCE_Y_SPEED;

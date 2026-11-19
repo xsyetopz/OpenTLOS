@@ -19,6 +19,7 @@
 #include "spyro/source/Projectile.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"

@@ -2,8 +2,8 @@
 #define COMMON_GC_MKMAT_MK2_STANDARD_GC_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
-class MKMat_Glow_Viewport;
 class MKMat_MK2_Standard_GC_cpp;
 class MKMaterial;
 class MKVector3;

@@ -9,6 +9,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/gc/MKMaterial_GC.h"
+#include "unplaced_enums.h"
 #include "dolphin/gx.h"
 #include "common/Source/GPInit.h"
 #include "common/Source/MKGrass.h"

@@ -3,6 +3,7 @@
 #include "common/Source/MKMemoryCard.h"
 #include "spyro/source/CameraData.h"
 #include "spyro/source/Level.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKRumble.h"
 #include "common/Source/MKSystem.h"
 #include "common/Source/Timer.h"
@@ -254,20 +255,17 @@ void *GameStats::GetCurrentBreathColor() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'BreathElement'
 void GameStats::SetCurrentBreath(BreathElement arg0) {
     this->unkEC = (s32) arg0;
     if (((void **) gb == NULL) || (M2C_FIELD(*gb, u8 (**)(), 0x70)() == 0)) {
         this->unkE8 = (s32) arg0;
     }
 }
-#endif
 
 f32 GameStats::TailStrikeDamage() {
     return 5.0f;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'StatType'
 s32 GameStats::GetGemAvailable(StatType arg0) {
     s32 temp_r5_542;
     void *temp_r6_551;
@@ -296,7 +294,6 @@ block_9:
     }
     return 0;
 }
-#endif
 
 void GameStats::SetLevelUpPoints(int arg0) {
     s32 temp_r5_590;

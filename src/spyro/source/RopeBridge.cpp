@@ -12,6 +12,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Level.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKView.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -1754,7 +1755,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 void RopeBridge::SetUpCullingLocalToWorld() {
     f32 sp70;
     f32 sp6C;

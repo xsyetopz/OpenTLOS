@@ -1,5 +1,6 @@
 #include "spyro/source/KDInput.h"
 #include "common/Source/MKVector3.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKRumble.h"
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
@@ -90,16 +91,12 @@ f32 KDInput::RumblePlay3D(float arg0, float arg1, float arg2, MKVector3 *arg3, f
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void KDInput::RumbleStop() {
     MKRumble_Stop((MKInputDevices) this->unk0);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void KDInput::RumblePlay(float arg0, float arg1, float arg2, char arg3, float arg4, bool arg5) {
     if ((arg5 != 0) || (KDSound_IsChronoSoundWarpEnabled() == 0) || (M2C_FIELD(&gb, f32 *, 0x2D0) == 1.0f)) {
         MKRumble_Play((MKInputDevices) this->unk0, arg0, arg1, arg2, arg3, arg4);
     }
 }
-#endif

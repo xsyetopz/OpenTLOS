@@ -5,6 +5,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/CollisionObject.h"
+#include "unplaced_enums.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 

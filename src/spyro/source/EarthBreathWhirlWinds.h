@@ -3,6 +3,7 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKProp.h"
+#include "unplaced_enums.h"
 
 class EarthBreathWhirlWinds;
 class EarthBreathWhirlWindsDescriptor;
@@ -12,7 +13,6 @@ class MKModel;
 class MKProp;
 class MKPropDescriptor;
 class MKVector3;
-class Upgrade;
 
 class EarthBreathWhirlWinds : public MKProp {  // base: ctor/dtor vtable stores
 public:

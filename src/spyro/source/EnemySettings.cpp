@@ -2,6 +2,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "spyro/source/Level.h"
+#include "unplaced_enums.h"
 #include "spyro/source/DataMap.h"
 #include <m2c_macros.h>
 
@@ -28,7 +29,7 @@ void EnemySettings_RegisterSettings(const char *arg0, EnemySettings *arg1) {
 
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'EnemySettingType'
+#if 0 // DRAFT: illegal type
 f32 EnemySettings_GetEnemySetting(EnemySettingType arg0) {
     f32 var_f1_28;
     s32 *var_r3_36;

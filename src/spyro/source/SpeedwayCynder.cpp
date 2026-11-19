@@ -12,6 +12,7 @@
 #include "spyro/source/SpeedWay.h"
 #include "spyro/source/SpeedWaySpyro.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/MKModel.h"
@@ -78,7 +79,6 @@ void SpeedwayCynder::UpdateSound() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void SpeedwayCynder::UpdateCameraRoll() {
     f32 temp_f5_208;
     f32 temp_f6_193;
@@ -132,7 +132,6 @@ void SpeedwayCynder::UpdateCameraRoll() {
     this->unk3A0 = var_f0_223;
     memset(&this->unk3A4, 0, 4U);
 }
-#endif
 
 f32 SpeedwayCynder::GetCameraZOffset() {
     return (this->unk390 * (CYNDER_CAMERA_MAX_Z_OFFSET - CYNDER_CAMERA_MIN_Z_OFFSET)) + CYNDER_CAMERA_MIN_Z_OFFSET;
@@ -585,7 +584,7 @@ void SpeedwayCynder::SetState(SpeedwayCynder::State arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'unk24C'
 u8 SpeedwayCynder::AnyToFlinchTransition() {
     if (MKCollision_SweepSphereCollide(*((MKVector3 *) &this->unk350), this->unk340, CYNDER_HEAD_COLLISION_RADIUS, NULL, (MKCollisionMode) 5, 0) != 0) {
         if ((s32) this->unk24C.unk0 != 2) {
@@ -775,7 +774,7 @@ void SpeedwayCynder::BiteTransition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: expression syntax error
 void SpeedwayCynder::BiteUpdate() {
     u8 sp110;
     s32 sp10C;

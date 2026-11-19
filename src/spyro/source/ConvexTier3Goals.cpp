@@ -1,6 +1,7 @@
 #include "spyro/source/ConvexTier3Goals.h"
 #include "common/Source/MKHeap.h"
 #include "spyro/source/Enemy.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */

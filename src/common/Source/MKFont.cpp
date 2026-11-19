@@ -3,6 +3,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMat_MK2_Standard.h"
 #include "common/Source/MKView.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -14,7 +15,7 @@ static f32 gFontTabWidth = 100.0f;
 static GeometryTransformationInfo transformInfo_299 = { 1, 0 };
 static u32 lit_376 = 1U;
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'FontJustify'
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 f32 MKFont_DrawStringJustified(MKFont *arg0, const char *arg1, const MKVector3 &arg2, float arg3, float arg4, FontJustify arg5, float arg6, const MKVector4 &arg7, int arg8, const Matrix &arg9) {
     f64 sp38;
     f64 sp30;                                       /* compiler-managed */
@@ -77,7 +78,7 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'FontJustify'
+#if 0 // DRAFT: pointer/array required
 void MKFont_GetCharPosJustified(MKFont *arg0, const char *arg1, int arg2, float arg3, float arg4, FontJustify arg5, float arg6) {
     f64 sp28;                                       /* compiler-managed */
     f64 sp20;                                       /* compiler-managed */

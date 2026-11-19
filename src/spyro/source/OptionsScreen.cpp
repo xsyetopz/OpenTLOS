@@ -5,6 +5,7 @@
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/gc/Sound_GC.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/UIControls.h"

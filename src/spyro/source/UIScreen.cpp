@@ -2,6 +2,7 @@
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
+#include "unplaced_enums.h"
 #include "spyro/source/UIControls.h"
 #include <m2c_macros.h>
 
@@ -71,7 +72,6 @@ s32 UIScreen::LoadLine(UIDataLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void UIScreen::Update() {
     if (UIControls_Pressed((FrontEndControls) 0xF, -1) != 0) {
         OnCancel();
@@ -88,7 +88,6 @@ void UIScreen::Update() {
     }
     UIContainer::Update();
 }
-#endif
 
 void UIScreen::Message(UIMessage *arg0) {
     UIContainer::Message(arg0);

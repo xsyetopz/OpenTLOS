@@ -8,6 +8,7 @@
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/Projectile.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"

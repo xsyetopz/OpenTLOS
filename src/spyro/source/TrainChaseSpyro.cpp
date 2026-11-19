@@ -28,6 +28,7 @@
 #include "spyro/source/TrainController.h"
 #include "spyro/source/TrainTrack.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"

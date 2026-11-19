@@ -15,6 +15,7 @@
 #include "spyro/source/KDInput.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDSound.h"
@@ -159,7 +160,6 @@ u8 EarthBossGoal_MoveToTarget::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EarthBossGoal_MoveToTarget::Activate() {
     this->unk8 = 0;
     this->unkC->SetWalkMovementSpeed(1U);
@@ -167,7 +167,6 @@ void EarthBossGoal_MoveToTarget::Activate() {
     this->unkC->SetAnim((AnimSequenceType) 5, 0, 0, 0.15f, 0U, 0U);
     this->unk10 = M2C_FIELD(&gb, f32 *, 0x30C) + 10.0f;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
 void EarthBossGoal_MeleeAttack5::Terminate() {

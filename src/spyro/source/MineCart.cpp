@@ -14,6 +14,7 @@
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include <m2c_macros.h>

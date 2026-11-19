@@ -11,6 +11,7 @@
 #include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Level.h"
+#include "unplaced_enums.h"
 #include "dolphin/os.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/StdMath.h"
@@ -1776,11 +1777,9 @@ void KDSound_GetAcousticProperty() {
     Sound_GetAcousticProperty();
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Sound_AcousticProperty'
 void KDSound_SetAcousticProperty(Sound_AcousticProperty arg0) {
     Sound_SetAcousticProperty(arg0);
 }
-#endif
 
 s8 *KDSound_GetCurrentMusicTrackName() {
     return (s8 *) &kdsData.unk7C;
@@ -1880,14 +1879,12 @@ void KDSound_Stop(int *arg0) {
     *arg0 = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void KDS_UpdateEnvironmentalAudio() {
     if ((s32) M2C_FIELD(&kdsData, s32 *, 0x13C) != (s32) M2C_FIELD(&kdsData, s32 *, 0x138)) {
         M2C_FIELD(&kdsData, s32 *, 0x13C) = (s32) M2C_FIELD(&kdsData, s32 *, 0x138);
         Sound_SetAcousticProperty((Sound_AcousticProperty) M2C_FIELD(&kdsData, s32 *, 0x138));
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void KDS_UpdatePlay3dFollowSounds() {

@@ -6,6 +6,7 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EventMessage.h"
+#include "unplaced_enums.h"
 
 class EarthShockwave;
 class ElementalShield;
@@ -27,7 +28,6 @@ class ManagedLight;
 class Matrix;
 class Shatterable;
 class SpawnPointRef;
-class SubObjectType;
 
 class IceBoss : public Enemy {  // base: vtable prefix
 public:

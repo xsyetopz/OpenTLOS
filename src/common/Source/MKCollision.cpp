@@ -5,6 +5,7 @@
 #include "common/Source/MKCollisionUtil.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKVector3.h"
+#include "unplaced_enums.h"
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
 
@@ -65,7 +66,7 @@ void MKCollision_MangleName(const char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier 'sp8'
 u8 MKCollision_GetGroundPoint(const MKVector3 &arg0, float arg1, MKCollisionResult *arg2, int arg3, int arg4, MKCollisionGroundHint *arg5, MKCollisionMode arg6) {
     MKCollisionRay sp150;
     u8 sp148;
@@ -270,7 +271,7 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier 'sp18'
 s32 MKCollision_SphereCollide(const MKVector3 &arg0, float arg1, MKCollisionResult *arg2, int arg3, MKCollisionMode arg4, int arg5) {
     s8 spD8;
     s32 spD4;
@@ -419,7 +420,7 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier 'sp18'
 u8 MKCollision_SweepSphereCollide(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKCollisionResult *arg3, MKCollisionMode arg4, int arg5) {
     u8 sp150;
     s32 sp14C;
@@ -603,7 +604,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 u8 MKCollision_RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionResult *arg2, MKCollisionMode arg3, int arg4) {
     u8 spF0;
     s32 spEC;

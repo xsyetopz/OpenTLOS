@@ -1,6 +1,7 @@
 #include "common/Source/MKAttachment.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: function call 'memcpy(Matrix *, const long, int)' does not match
@@ -31,10 +32,8 @@ void MKAttachment_CalculateMatrix(const MKAttachment *arg0, Matrix *arg1, const 
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKAttachmentType'
 void MKAttachment_Init(MKAttachment *arg0, const void *arg1, MKAttachmentType arg2, int arg3) {
     arg0->unk0 = (s32) arg1;
     arg0->unk4 = (arg0->unk4 & ~0xF0) | (((s32) arg2 << 4) & 0xF0);
     M2C_FIELD(arg0, u8 *, 4) = (s32) (((s32) M2C_FIELD(arg0, u8 *, 4) & ~0x0FFFFFFF) | (arg3 & 0x0FFFFFFF));
 }
-#endif

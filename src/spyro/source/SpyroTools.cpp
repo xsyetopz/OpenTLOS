@@ -8,6 +8,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "spyro/source/KDMath.h"
 #include <m2c_macros.h>
 

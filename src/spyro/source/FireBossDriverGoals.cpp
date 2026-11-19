@@ -3,6 +3,7 @@
 #include "spyro/source/Character.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: undefined identifier '__vptr'
@@ -59,12 +60,10 @@ u8 FireBossDriverGoal_Charge::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void FireBossDriverGoal_Charge::Activate() {
     this->unk8 = 0;
     this->unkC->SetAnim((AnimSequenceType) 6, 0, 0, 0.15f, 0U, 0U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void FireBossDriverGoal_Crash::Exit() {
@@ -117,12 +116,10 @@ u8 FireBossDriverGoal_Crash::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void FireBossDriverGoal_Crash::Activate() {
     this->unk8 = 0;
     this->unkC->SetAnim((AnimSequenceType) 2, 0x28, 0, 0.15f, 0U, 0U);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkA50'
 u8 FireBossDriverGoal_Idle::Update() {
@@ -168,7 +165,7 @@ u8 FireBossDriverGoal_Idle::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void FireBossDriverGoal_Idle::Activate() {
     s32 var_r5_303;
 
@@ -214,7 +211,7 @@ u8 FireBossDriverGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void FireBossDriverGoal_Think::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();

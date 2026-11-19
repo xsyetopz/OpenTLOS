@@ -4,18 +4,17 @@
 #include "common/Source/MKProp.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CynderBarracksState'
 void CynderBarracks::SetState(CynderBarracksState arg0) {
     this->unk198 = M2C_BITWISE(f32, arg0);
     if (M2C_BITWISE(s32, this->unk198) == 1) {
         M2C_FIELD(this, f32 *, 0x1B0) = (f32) (5.0f + M2C_FIELD(&gb, f32 *, 0x30C));
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'FindInteractivePropMsg'
 void CynderBarracks::Message(MKMessage *arg0) {
@@ -41,7 +40,6 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBarracks::Update() {
     Shatterable::Update();
     if (M2C_BITWISE(s32, this->unk198) != 0) {
@@ -53,7 +51,6 @@ void CynderBarracks::Update() {
     }
     this->unk1B4.Update();
 }
-#endif
 
 void CynderBarracks::Resolve() {
     Shatterable::Resolve();
@@ -82,7 +79,7 @@ void CynderBarracks::Deinit() {
     Shatterable::Deinit();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'P24CynderBarracksDescriptor'
 void CynderBarracks::Init() {
     Shatterable::Init();
     M2C_FIELD(this, s32 *, 0x1AC) = 0x32;

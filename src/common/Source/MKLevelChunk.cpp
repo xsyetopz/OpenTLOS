@@ -7,6 +7,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "spyro/source/Level.h"
+#include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKGrass.h"

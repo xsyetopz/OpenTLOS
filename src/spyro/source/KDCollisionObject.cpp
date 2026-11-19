@@ -4,6 +4,7 @@
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "unplaced_enums.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -401,7 +402,7 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void KDCollisionObject::ResolveCollisions(KDCollisionObject *arg0, MKVector3 *arg1, MKVector3 *arg2, int arg3, float arg4, MKCollisionMode arg5, int arg6) {
     s32 sp1F8;
     s32 sp140;
@@ -826,14 +827,12 @@ loop_65:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void KDCollisionObject::ResolveCollisions(MKVector3 *arg0, MKVector3 *arg1, int arg2) {
     KDColObjDescriptor *temp_r8_1288;
 
     temp_r8_1288 = this->unk250;
     ResolveCollisions((KDCollisionObject *) arg0, arg1, (MKVector3 *) arg2, temp_r8_1288->unk8, temp_r8_1288->unk0, (MKCollisionMode) temp_r8_1288->unk18, M2C_ERROR(/* Read from unset register $r9 */));
 }
-#endif
 
 MKVector3 *KDCollisionObject::StoreResult(MKCollisionResult *arg0, MKVector3 *arg1) {
     KDColObjDescriptor *temp_r7_1303;
@@ -878,13 +877,11 @@ MKVector3 *KDCollisionObject::StoreResult(MKCollisionResult *arg0, MKVector3 *ar
     return (MKVector3 *) var_r9_1307;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void KDCollisionObject::CalcPushOutPos(const MKVector3 &arg1, MKVector3 *arg2, KDColObjDescriptor *arg3, float farg0, KDCollisionObject::UpdateResult *arg4) {
     CalcPushOutPos(arg1, M2C_FIELD(arg2, MKVector3 **, 0x10), M2C_BITWISE(s32, arg2->unk8), farg0, (MKCollisionMode) M2C_FIELD(arg2, s32 *, 0x18), (s32) arg3, M2C_ERROR(/* Read from unset register $r9 */));
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: illegal operands 'MKCollisionResult' < 'MKCollisionResult'
 s32 KDCollisionObject::CalcPushOutPos(const MKVector3 &arg1, MKVector3 *arg2, int arg3, float farg0, MKCollisionMode arg4, int arg5, KDCollisionObject::UpdateResult *arg6) {
     MKCollisionResult sp38;
     f64 sp30;
@@ -1193,7 +1190,6 @@ void KDCollisionObject::Deinit() {
     M2C_FIELD(this, f32 *, 0x248) = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void KDCollisionObject::Init(KDColObjDescriptor *arg0, const MKVector3 &arg1, MKCollisionInfo *arg2, MKCollisionManager *arg3) {
     MKCollisionResult sp18;
     f32 sp14;
@@ -1219,4 +1215,3 @@ void KDCollisionObject::Init(KDColObjDescriptor *arg0, const MKVector3 &arg1, MK
     }
     gAssertBool = Teleport(arg1, 10.0f, 0x64, &sp18);
 }
-#endif

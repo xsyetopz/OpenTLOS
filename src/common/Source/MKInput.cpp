@@ -1,6 +1,7 @@
 #include "common/Source/MKInput.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKWidgetsInternal.h"
+#include "unplaced_enums.h"
 #include "common/gc/MKInput_GC.h"
 #include <m2c_macros.h>
 
@@ -12,7 +13,7 @@ extern MKInputReceiver *pReceiverChain;
 extern MKInputReceiver **receivers;
 extern u8 repeatEventsEnabled;
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'MKInput_SendEvent'
 void MKInput_DespatchEvents() {
     u8 sp38;
     f32 sp34;
@@ -377,7 +378,6 @@ loop_7:
     var_r6_644->unk14 = arg0;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
 s32 MKInput_Released(int arg0, MKInputDevices arg1) {
     f32 sp8;
     s32 var_r3_678;
@@ -388,9 +388,7 @@ s32 MKInput_Released(int arg0, MKInputDevices arg1) {
     }
     return var_r3_678;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
 s32 MKInput_Pressed(int arg0, MKInputDevices arg1) {
     f32 sp8;
     s32 var_r3_702;
@@ -401,9 +399,7 @@ s32 MKInput_Pressed(int arg0, MKInputDevices arg1) {
     }
     return var_r3_702;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKInputDevices'
 f32 MKInput_GetState(int arg0, MKInputDevices arg1, float *arg2, bool *arg3) {
     f32 sp8;
     f32 temp_f1_737;
@@ -442,7 +438,6 @@ loop_2:
     }
     return MKInput_GetStatePlatformSpecific(arg0, arg1, arg2);
 }
-#endif
 
 void MKInput_Update() {
     MKInput_UpdatePlatformSpecific();

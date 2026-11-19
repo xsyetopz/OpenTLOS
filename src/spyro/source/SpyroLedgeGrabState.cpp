@@ -5,6 +5,7 @@
 #include "spyro/source/InputModifier.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "spyro/source/KDMath.h"
 #include <m2c_macros.h>
@@ -120,7 +121,7 @@ void SpyroLedgeGrabState::PullUpAscendEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 s32 SpyroLedgeGrabState::AttachTransition() {
     InputModifier *temp_r3_253;
     s32 var_r3_266;

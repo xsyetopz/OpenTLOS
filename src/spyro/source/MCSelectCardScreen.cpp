@@ -8,6 +8,7 @@
 #include "spyro/source/UISystem.h"
 #include "spyro/source/UIText.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/Autosave.h"
 #include "spyro/source/FrontEnd.h"
 #include "spyro/source/KDSound.h"
@@ -250,7 +251,7 @@ void MCSelectCardScreen::UpdateDisplay() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MCSelectCardScreen::Update() {
     KDMemoryCard *temp_r3_461;
     KDMemoryCard *temp_r3_499;

@@ -13,6 +13,7 @@
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/Str.h"
 #include "spyro/source/KDSound.h"

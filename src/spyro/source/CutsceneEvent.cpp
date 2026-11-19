@@ -20,6 +20,7 @@
 #include "spyro/source/UIStringTable.h"
 #include "spyro/source/ZapBreathFX.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -502,7 +503,6 @@ void PlayMusicCE::Init() {
     this->unk24 = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ResetClothCE::Update() {
     s16 temp_r31_1281;
     s32 var_r30_1282;
@@ -516,7 +516,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 s32 ResetClothCE::LoadLine() {
     LoadActorModel("actor", &this->unk4);

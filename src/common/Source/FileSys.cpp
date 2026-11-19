@@ -1,5 +1,6 @@
 #include "common/Source/FileSys.h"
 #include "common/Source/MKHeap.h"
+#include "unplaced_enums.h"
 #include "common/Source/File.h"
 #include "common/Source/MKSystem.h"
 #include "common/Source/Str.h"

@@ -10,6 +10,7 @@
 #include "spyro/source/GemMagicFX.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
@@ -368,11 +369,9 @@ void Gem::CollectEffects() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CollectableState'
 void Gem::SetState(CollectableState arg0) {
     Collectable::SetState(arg0);
 }
-#endif
 
 void Gem::Message(MKMessage *arg0) {
     Collectable::Message(arg0);
@@ -389,7 +388,7 @@ void GemDescriptor::Deinit() {
     CollectableDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void GemDescriptor::LoadDone() {
     s32 var_r6_740;
     u32 var_r5_737;

@@ -8,6 +8,7 @@
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/Str.h"
@@ -228,7 +229,6 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void MeleeTrails::Update() {
     void **temp_r3_475;
     void **var_r31_456;
@@ -257,7 +257,6 @@ loop_5:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MeleeTrails::LoadDone() {

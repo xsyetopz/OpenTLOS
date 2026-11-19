@@ -21,6 +21,7 @@
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
@@ -940,7 +941,7 @@ u8 EnemyGoal_ReceiveOrders::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_ReceiveOrders::Activate() {
     Character *temp_r3_1557;
     Character *temp_r4_1579;
@@ -1576,7 +1577,7 @@ u8 EnemyGoal_SpawnIdle::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: expression syntax error
 void EnemyGoal_SpawnIdle::Activate() {
     Enemy *temp_r4_2840;
     Enemy *temp_r4_2851;
@@ -1615,14 +1616,12 @@ void EnemyGoal_SpawnIdle::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EnemyGoal_Spawn::Terminate() {
     this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
     this->unkC->SetMovementType((CharacterMoveType) 0);
     this->unk8 = 1;
 }
-#endif
 
 u8 EnemyGoal_Spawn::Update() {
     ActivateIfInactive();
@@ -1632,7 +1631,7 @@ u8 EnemyGoal_Spawn::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void EnemyGoal_Spawn::Activate() {
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
@@ -2015,7 +2014,7 @@ u8 EnemyGoal_PushBarrel::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_PushBarrel::Activate() {
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
@@ -2366,7 +2365,7 @@ u8 EnemyGoal_PullLever::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_PullLever::Activate() {
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
@@ -2538,7 +2537,7 @@ u8 EnemyGoal_Hide::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void EnemyGoal_Hide::Activate() {
     this->unk8 = 0;
     this->unkC->SetAnim((AnimSequenceType) 1, 0xC, this->unk14 != 0, 0.15f, 0U, 0U);

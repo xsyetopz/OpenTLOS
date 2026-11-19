@@ -10,6 +10,7 @@
 #include "spyro/source/KDPath.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "dolphin/os.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
@@ -2094,7 +2095,7 @@ void SB2::GraphFollowingOff() {
     M2C_FIELD(this, f64 *, 0x440) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GraphFollowBehaviours'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SB2::GraphFollowingOn(CharacterGraphNode *arg0, CharacterGraphNode *arg1, GraphFollowBehaviours arg2, AITargetData *arg3) {
     MKVector3 sp70;
     MKVector3 sp60;

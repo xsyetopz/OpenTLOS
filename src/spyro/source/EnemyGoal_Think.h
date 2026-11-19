@@ -4,9 +4,9 @@
 #include <dolphin/types.h>
 #include "spyro/source/CompositeGoal.h"
 #include "spyro/source/Goal.h"
+#include "unplaced_enums.h"
 
 class AITargetData;
-class AnimSequenceType;
 class Enemy;
 class EnemyDamageFeedback;
 class EnemyGoal_Think;

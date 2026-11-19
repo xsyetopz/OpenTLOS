@@ -4,6 +4,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 

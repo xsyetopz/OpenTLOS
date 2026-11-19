@@ -6,6 +6,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDVolume.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 

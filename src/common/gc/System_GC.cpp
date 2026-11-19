@@ -6,6 +6,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "unplaced_enums.h"
 #include "dolphin/ar.h"
 #include "dolphin/dvd.h"
 #include "dolphin/gx.h"

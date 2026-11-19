@@ -14,6 +14,7 @@
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/WindFX.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -29,7 +30,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Upgrade'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector3 &arg1, Upgrade arg2, bool arg3, float arg4) {
     f64 sp98;
     f64 sp90;

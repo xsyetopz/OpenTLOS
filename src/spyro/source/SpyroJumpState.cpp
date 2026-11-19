@@ -9,6 +9,7 @@
 #include "spyro/source/Spyro.h"
 #include "spyro/source/SpyroState.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include <m2c_macros.h>
 
@@ -126,7 +127,7 @@ void SpyroJumpState::DoubleJumpEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unksp34'
 void SpyroJumpState::JumpCommonUpdate() {
     SpyroJumpState sp10;
     f32 sp8;
@@ -217,7 +218,7 @@ void SpyroJumpState::JumpCommonUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unk18'
 s32 SpyroJumpState::JumpLoftTransition() {
     InputModifier *temp_r3_433;
     u8 var_r0_434;
@@ -485,7 +486,7 @@ s32 SpyroJumpState::Transition() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: pointer/array required
 void SpyroJumpState::Update() {
     f64 sp270;
     f64 sp268;

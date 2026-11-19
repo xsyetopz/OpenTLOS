@@ -12,6 +12,7 @@
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -118,7 +119,7 @@ u8 SwampTier2Goal_MoveToTarget::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void SwampTier2Goal_MoveToTarget::Activate() {
     Character *temp_r3_196;
     Character *temp_r4_229;
@@ -933,7 +934,7 @@ u8 SwampTier2Goal_Hide::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'AnimSequenceType' to
 void SwampTier2Goal_Hide::Activate() {
     this->unk8 = 0;
     this->unk10 &= ~0x80;

@@ -4,6 +4,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/HudItems.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
@@ -327,7 +328,6 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Hud_Update() {
     HudItem *var_r31_743;
 
@@ -343,7 +343,6 @@ loop_5:
         goto loop_5;
     }
 }
-#endif
 
 void Hud_DeinitModule() {
     MKMaterial_Destroy(pMatAether);

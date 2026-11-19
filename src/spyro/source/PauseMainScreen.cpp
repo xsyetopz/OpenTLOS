@@ -11,6 +11,7 @@
 #include "spyro/source/UIText.h"
 #include "spyro/source/UITools.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/Autosave.h"
 #include "spyro/source/InGame.h"
 #include "spyro/source/KDSound.h"
@@ -25,7 +26,7 @@ extern s32 GS_PauseScreen;
 extern void **gMK;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: expression syntax error
 void ExitConfirmScreen::Update() {
     s32 spC;
     s32 sp8;
@@ -96,7 +97,7 @@ void ExitConfirmScreen::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: expression syntax error
 void PauseMainScreen::Update() {
     f32 sp34;
     void *sp30;
@@ -185,14 +186,12 @@ void PauseMainScreen::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void PauseMainScreen::OnExit() {
     UIScreen::OnExit();
     if (UIControls_Pressed((FrontEndControls) 3, -1) != 0) {
         M2C_FIELD(this, s8 *, 0xD1) = 1;
     }
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void PauseMainScreen::OnEnter() {

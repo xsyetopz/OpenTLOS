@@ -5,6 +5,7 @@
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "unplaced_enums.h"
 
 class EventMessage;
 class GameProp;
@@ -13,7 +14,6 @@ class MKIniLine;
 class MKMessage;
 class TrainGate;
 class TrainGateDescriptor;
-class TrainGateState;
 
 class TrainGate : public GameProp {  // base: vtable prefix
 public:

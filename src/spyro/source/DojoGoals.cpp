@@ -1,4 +1,5 @@
 #include "spyro/source/DojoGoals.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'Character'

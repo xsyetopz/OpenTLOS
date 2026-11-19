@@ -2,8 +2,8 @@
 #define COMMON_SOURCE_GPINIT_H
 
 #include <dolphin.h>
+#include "unplaced_enums.h"
 
-class MK_VertexDescriptorMode;
 class _GXRenderModeObj;
 
 void MK_SetVDMode(MK_VertexDescriptorMode);

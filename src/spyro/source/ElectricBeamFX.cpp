@@ -8,6 +8,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/ElectricSparks.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"

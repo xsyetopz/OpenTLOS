@@ -14,6 +14,7 @@
 #include "spyro/source/SpyroTools.h"
 #include "spyro/source/SpyroUtils.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 
 class AttackerManager;
 class ColObjDescriptor;
@@ -42,10 +43,8 @@ class SpyroLighting;
 class SpyroRotation;
 class SpyroSoundPlayer;
 class SpyroStateMachine;
-class SpyroStateMsg;
 class SpyroTargetList;
 class Spyro_cpp;
-class StatType;
 class TargetContext;
 class Tools_SendMessageHelper;
 

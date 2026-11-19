@@ -27,6 +27,7 @@
 #include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/KDSound.h"

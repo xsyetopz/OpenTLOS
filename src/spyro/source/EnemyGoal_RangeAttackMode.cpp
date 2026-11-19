@@ -14,6 +14,7 @@
 #include "spyro/source/MeleeTrails.h"
 #include "spyro/source/Projectile.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/GameEnums.h"

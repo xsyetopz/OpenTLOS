@@ -7,6 +7,7 @@
 #include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/SpyroUtils.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/EventCamera.h"

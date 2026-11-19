@@ -2,6 +2,7 @@
 #include "common/Source/MKInput.h"
 #include "common/Source/MKWidgetsInternal.h"
 #include "spyro/source/GameData.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKRumble.h"
 #include <m2c_macros.h>
 
@@ -30,7 +31,6 @@ void RumbleTimer_Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 u8 StopRumbling() {
     s32 var_r30_68;
 
@@ -47,7 +47,6 @@ loop_1:
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
-#endif
 
 void RumbleTimer_Deinit() {
     MKInputReceiver_Destroy(pReceiver);

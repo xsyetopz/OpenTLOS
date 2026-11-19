@@ -5,6 +5,7 @@
 #include "spyro/source/Character.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/SpawnerObject.h"
+#include "unplaced_enums.h"
 #include "spyro/source/DataMap.h"
 #include <m2c_macros.h>
 
@@ -146,7 +147,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SpawnAction'
+#if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Create'
 void EnemySpawnPool_Action(SpawnAction arg0, int arg1, MKProp **arg2, SpawnerObject *arg3) {
     switch ((s32) arg0) {                           /* irregular */
     case 0:

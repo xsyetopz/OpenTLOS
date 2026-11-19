@@ -7,6 +7,7 @@
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/NodeLookAt.h"
+#include "unplaced_enums.h"
 
 class AITargetData;
 class Corona;
@@ -18,7 +19,6 @@ class Enemy;
 class EnemyAttack;
 class EnemyDescriptor;
 class EventMessage;
-class HeroHurtReactionType;
 class KDUniformSpline;
 class MKIniLine;
 class MKMessage;

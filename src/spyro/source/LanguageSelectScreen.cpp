@@ -12,6 +12,7 @@
 #include "spyro/source/UIText.h"
 #include "spyro/source/UITools.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/Str.h"
 #include "common/gc/MKInput_GC.h"
@@ -44,7 +45,6 @@ void NoController_Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void NoController_Update() {
     if ((MKInput_GetStatus((MKInputDevices) 0) == 0) && (MKInput_GetState(3, (MKInputDevices) 0, NULL, NULL) != 0.0f)) {
         if ((s32) gDisplay == 0) {
@@ -54,7 +54,6 @@ void NoController_Update() {
         gGMState.SwitchState(5, 0, 0U);
     }
 }
-#endif
 
 void ControllerInit_Update() {
     if ((s32) gDisplay == 0) {
@@ -160,7 +159,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void LanguageSelectScreen::Update() {
     s32 sp14;
     s32 sp10;

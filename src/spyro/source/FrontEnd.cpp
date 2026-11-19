@@ -20,6 +20,7 @@
 #include "spyro/source/UIStringTable.h"
 #include "spyro/source/UITools.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKPackage.h"
 #include "common/Source/Str.h"
 #include "common/gc/MKMaterial_GC.h"

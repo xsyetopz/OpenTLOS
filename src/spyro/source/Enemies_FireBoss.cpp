@@ -23,6 +23,7 @@
 #include "spyro/source/Projectile.h"
 #include "spyro/source/SpyroHud.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
@@ -2065,7 +2066,7 @@ loop_56:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void FireBoss::Draw() {
     s32 var_r29_4006;
     s32 var_r31_4007;

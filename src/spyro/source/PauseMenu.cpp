@@ -17,6 +17,7 @@
 #include "spyro/source/UISystem.h"
 #include "spyro/source/UITools.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDSound.h"
@@ -115,7 +116,7 @@ void PauseMenu_Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)()' to
 s32 PauseMenu_Update() {
     KDSynkerPlayer3 *temp_r3_279;
     u8 var_r29_275;

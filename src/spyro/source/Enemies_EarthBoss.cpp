@@ -27,6 +27,7 @@
 #include "spyro/source/KDInput.h"
 #include "spyro/source/SpyroHud.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "common/Source/system_extras.h"
@@ -516,7 +517,6 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void EarthBoss::ShowFist(bool arg0) {
     EarthBossArm *temp_r5_717;
     MKModel *temp_r4_700;
@@ -534,7 +534,6 @@ void EarthBoss::ShowFist(bool arg0) {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'GetEnemySetting'
 void EarthBoss::UpdatePhrasesAndSounds() {
@@ -1038,7 +1037,7 @@ void EarthBoss::SetupCollision() {
     SetupCollisionSphere(5, "Spine03", "Spine02", 350.0f, *((MKVector3 *) &sp68));
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: expression syntax error
 void EarthBoss::LoadDone() {
     Enemy::LoadDone();
     this->unkA28 = (void **) this->unkA24;

@@ -14,6 +14,7 @@
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>

@@ -5,6 +5,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMat_MK2_Standard.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"

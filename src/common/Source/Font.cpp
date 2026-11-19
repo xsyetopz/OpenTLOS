@@ -4,6 +4,7 @@
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKMat_MK2_Standard.h"
 #include "common/Source/MKView.h"
@@ -950,7 +951,7 @@ loop_42:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal type
 void MKFont::RenderChars(TextCharStrip **arg0, int arg1, const Matrix &arg2) {
     s32 var_r24_1713;
     s32 var_r26_1700;

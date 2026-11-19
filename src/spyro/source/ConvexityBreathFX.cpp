@@ -15,6 +15,7 @@
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"

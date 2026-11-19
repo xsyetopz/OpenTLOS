@@ -2,9 +2,9 @@
 #define SPYRO_SOURCE_ENEMYSPAWNPOOL_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class MKProp;
-class SpawnAction;
 class SpawnerObject;
 
 void EnemySpawnPool_Action(SpawnAction, int, MKProp **, SpawnerObject *);

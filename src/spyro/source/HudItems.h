@@ -2,9 +2,9 @@
 #define SPYRO_SOURCE_HUDITEMS_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class HudItem;
-class HudItemState;
 
 class HudItem {
 public:

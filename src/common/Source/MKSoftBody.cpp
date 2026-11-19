@@ -9,6 +9,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/gc/MKMaterial_GC.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKShape.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include <m2c_macros.h>
@@ -3116,7 +3117,7 @@ loop_54:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void MKCloth::Draw() {
     MKMaterial *temp_r23_5114;
     s32 var_r23_5192;

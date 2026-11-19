@@ -7,6 +7,7 @@
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/Shadow.h"
 #include "spyro/source/SpawnerObject.h"
+#include "unplaced_enums.h"
 
 class Enemy;
 class EventMessage;
@@ -17,11 +18,9 @@ class MKMessage;
 class MKProp;
 class MKSceneManager;
 class Shadow;
-class SpawnAction;
 class SpawnerObject;
 class SteamTrainCaboose;
 class SteamTrainCabooseDescriptor;
-class SteamTrainCabooseState;
 class TrainChaseSpawnPool;
 
 class SteamTrainCaboose : public GameProp {  // base: vtable prefix

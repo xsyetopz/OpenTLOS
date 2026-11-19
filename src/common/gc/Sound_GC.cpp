@@ -2,6 +2,7 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "dolphin/ai.h"
 #include "dolphin/ar.h"
 #include "dolphin/ax.h"
@@ -1625,11 +1626,9 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Sound_AcousticProperty'
 void Sound_SetAcousticProperty(Sound_AcousticProperty arg0) {
 
 }
-#endif
 
 s32 Sound_GetAcousticProperty() {
     return 0;

@@ -7,6 +7,7 @@
 #include "common/Source/Matrix.h"
 #include "common/gc/System_GC.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKView.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"

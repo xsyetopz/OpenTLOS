@@ -8,6 +8,7 @@
 #include "spyro/source/EnemyGoal_AlertMode.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 

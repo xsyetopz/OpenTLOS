@@ -9,6 +9,7 @@
 #include "common/Source/MKView.h"
 #include "common/Source/MKWidgets.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "dolphin/gx.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/Str.h"
@@ -3356,7 +3357,7 @@ loop_45:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 s32 MKWidgetTextBox::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 spD4;
     s8 *spD0;

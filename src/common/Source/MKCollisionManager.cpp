@@ -11,6 +11,7 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(MKHeap *);                             /* extern */
@@ -20,7 +21,7 @@ static s8 name_982[0x20];
 
 static u32 testID = 1U;
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier 'sp10'
 s32 MKCollisionManager::CalcMaxGridOverlap(const MKCollisionAABB &arg0, Matrix *arg1, MKCollisionMode arg2) {
     MKCollisionAABB sp30;
     f64 sp28;
@@ -82,7 +83,7 @@ s32 MKCollisionManager::CalcMaxGridOverlap(const MKCollisionAABB &arg0, Matrix *
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier 'unk10'
 void MKCollisionManager::UpdateItemLinks(MKCollisionItem *arg0, MKCollisionMode arg1) {
     M2C_UNK sp18;
     s32 sp14;
@@ -407,7 +408,7 @@ loop_15:
     }
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionRay' to
 s32 MKCollisionManager::SphereCollide(const MKVector3 &arg0, float arg1, MKCollisionResult *arg2, int arg3, MKCollisionMode arg4, int arg5) {
     MKCollisionRay sp18;
     s32 sp14;
@@ -634,7 +635,7 @@ block_89:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionRay' to
 u8 MKCollisionManager::SweepSphereCollide(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKCollisionResult *arg3, MKCollisionMode arg4, int arg5) {
     u8 sp178;
     s32 sp174;
@@ -962,7 +963,7 @@ loop_87:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier '__vt'
 s32 MKCollisionManager::GetGroundPoint(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionResult *arg2, int arg3, int arg4, MKCollisionGroundHint *arg5, MKCollisionMode arg6) {
     u8 sp1A8;
     s32 sp1A4;
@@ -1368,7 +1369,7 @@ loop_82:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionRay' to
 u8 MKCollisionManager::RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionResult *arg2, MKCollisionMode arg3, int arg4) {
     u8 sp178;
     s32 sp174;
@@ -1696,14 +1697,12 @@ loop_87:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void MKCollisionManager::ForceUpdate(unsigned int arg0) {
     M2C_FIELD(M2C_FIELD(arg0, void **, 0), M2C_UNK (**)(u32), 0x28)(arg0);
     ((MKCollisionManager *) (M2C_FIELD(arg0, MKCollisionManager **, 0x50)))->UpdateItemLinks((MKCollisionItem *) arg0, (MKCollisionMode) 2);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void MKCollisionManager::AddCapsule(MKVector3 *arg0, MKVector3 *arg1, float arg2, const MKVector4 &arg3, const MKVector4 &arg4, MKCollisionMode arg5, MKCollisionInfo *arg6, unsigned int arg7) {
     MKCollisionCapsuleItem *temp_r31_2671;
     s32 temp_r3_2733;
@@ -1748,7 +1747,7 @@ void MKCollisionManager::AddCapsule(MKVector3 *arg0, MKVector3 *arg1, float arg2
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void MKCollisionManager::AddSphere(MKVector3 *arg0, float arg1, float arg2, const MKVector4 &arg3, MKCollisionMode arg4, MKCollisionInfo *arg5, unsigned int arg6) {
     MKCollisionSphereItem *temp_r31_2794;
     f32 temp_f3_2820;
@@ -1788,7 +1787,7 @@ void MKCollisionManager::AddSphere(MKVector3 *arg0, float arg1, float arg2, cons
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void MKCollisionManager::AddModel(MKModel *arg0, int arg1, MKCollisionMode arg2, MKCollisionInfo *arg3, unsigned int arg4) {
     MKCollisionModelItem *temp_r30_2914;
     MKHeap *temp_r29_2896;
@@ -1818,7 +1817,6 @@ void MKCollisionManager::AddModel(MKModel *arg0, int arg1, MKCollisionMode arg2,
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void MKCollisionManager::Update() {
     MKCollisionCapsuleItem *var_r31_2971;
 
@@ -1833,7 +1831,6 @@ loop_3:
         }
     }
 }
-#endif
 
 u8 MKCollisionManager::Enable(bool arg0) {
     u8 temp_r0_2998;
@@ -2049,7 +2046,7 @@ void MKCollisionManager::FindGridOverlap(const MKCollisionAABB &arg0, int *arg1,
     *arg4 = (s32) (0.001f * arg0.unk18);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: undefined identifier 'StoreItemInfo'
 s32 MKCollisionManager::UpdateSphereResults(MKCollisionModel *arg0, int arg1, MKCollisionResult *arg2, int arg3, MKCollisionMode arg4, int arg5) {
     MKVector3 sp28;
     MKVector3 sp18;
@@ -2081,7 +2078,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
+#if 0 // DRAFT: illegal implicit conversion from 'MKCollisionModel *' to
 u8 UpdateBestResult(MKCollisionModel *arg0, bool arg1, const MKCollisionResult &arg2, MKCollisionResult *arg3, MKCollisionModel *&arg4, int arg5, MKCollisionMode arg6, int arg7) {
     f32 temp_f2_3358;
 
@@ -2112,7 +2109,6 @@ u8 UpdateBestResult(MKCollisionModel *arg0, bool arg1, const MKCollisionResult &
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionMode'
 void StoreItemInfo(MKCollisionResult *arg0, int arg1, MKCollisionMode arg2, int arg3) {
     if (arg0 != NULL) {
         M2C_FIELD(arg0, s16 *, 0x38) = (s16) arg1;
@@ -2120,7 +2116,6 @@ void StoreItemInfo(MKCollisionResult *arg0, int arg1, MKCollisionMode arg2, int 
         M2C_FIELD(arg0, s8 *, 0x3A) = (s8) arg3;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'InterpolateVertexColor'
 void GetInterpolatedColorFromPoly(const MKVector3 &arg0, const MKVector3 *arg1) {

@@ -10,6 +10,7 @@
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDProp.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
@@ -77,7 +78,7 @@ void Projectile::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3)
 
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'ProjectileType'
+#if 0 // DRAFT: type mismatch
 s32 Projectile::CreateInstance(ProjectileType arg0) {
     if (this <= 0x15U) {
         switch ((s32) this) {

@@ -2,9 +2,9 @@
 #define COMMON_SOURCE_MKFONT_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class CharInfo;
-class FontJustify;
 class FontPage;
 class MKFont;
 class MKVector3;

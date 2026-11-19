@@ -5,6 +5,7 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
+#include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/Str.h"
 #include "common/Source/system_extras.h"

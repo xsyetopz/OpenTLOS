@@ -3,13 +3,13 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/HeroInterface.h"
+#include "unplaced_enums.h"
 
 class HeroInterface;
 class MKMessage;
 class MKPropDescriptor;
 class MKVector3;
 class SpyroHeroInterface;
-class StatType;
 
 class SpyroHeroInterface : public HeroInterface {  // base: inlined ctor vtable stores
 public:
@@ -241,7 +241,7 @@ inline s32 SpyroHeroInterface::IsFuryActive() {
     return M2C_FIELD(M2C_FIELD(this, void **, 4), s32 *, 0x5C) == 0xE;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'StatType'
+#if 0 // DRAFT: undefined identifier 'Spyro'
 inline void SpyroHeroInterface::AddStat(StatType arg0, float arg1) {
     ((Spyro *) (M2C_FIELD(this, Spyro **, 4)))->AddStat(arg0, arg1);
 }

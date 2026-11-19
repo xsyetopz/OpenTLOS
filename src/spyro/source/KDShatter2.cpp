@@ -5,6 +5,7 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
@@ -26,7 +27,7 @@ void ShatterPoolFifo() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'unkspC'
 f32 KDShatter2::GetRadius(int arg0) {
     f64 sp10;
     f64 sp8;
@@ -39,7 +40,6 @@ f32 KDShatter2::GetRadius(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDShatter2::SetVisible(unsigned short *arg0) {
     s32 var_r30_63;
     s32 var_r31_64;
@@ -54,9 +54,7 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void KDShatter2::ClearVisible() {
     s16 temp_r31_101;
     s32 var_r30_102;
@@ -70,7 +68,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 void KDShatter2::Draw(bool arg0) {
     f32 temp_f1_201;
@@ -367,7 +364,7 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: function call 'MKModel_GetSubObjectBoneIndex(MKModel *, SubObjectType,
 void KDShatter2::ResetSubObjectMatrices() {
     KDShatterPool *temp_r4_759;
     KDShatterPool *temp_r4_778;
@@ -569,7 +566,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'sp70'
 void KDShatter2::Shatter(int arg0, MKVector3 *arg1) {
     f64 sp68;
     MKVector3 sp58;
@@ -924,7 +921,7 @@ void KDShatter2::InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal operand
 void KDShatterPool::Init(KDShatter2 *arg0, MKModel *arg1, unsigned short *arg2) {
     f64 sp108;
     f64 sp100;

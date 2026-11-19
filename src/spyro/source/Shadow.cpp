@@ -7,6 +7,7 @@
 #include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKView.h"
 #include "common/gc/MKShadow_GC.h"
 #include <m2c_macros.h>
@@ -16,7 +17,6 @@ extern void **gMK;
 extern Shadow *pShadowList;
 static u8 bShadowEnabled = 1;
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Shadow::Show(bool arg0) {
     MKModel *temp_r3_17;
     s16 temp_r31_22;
@@ -35,7 +35,6 @@ loop_3:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp18'
 void Shadow::Draw() {
@@ -106,7 +105,7 @@ loop_6:
     goto loop_6;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void Shadow::Init(MKModel *arg0, MKProp *arg1, float arg2, MKVector3 *arg3, float arg4) {
     f32 spC;
     f32 sp8;

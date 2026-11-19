@@ -11,6 +11,7 @@
 #include "spyro/source/KDPath.h"
 #include "spyro/source/SB2.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/EnemyDataTypes.h"
@@ -1050,7 +1051,6 @@ u8 EnemyGoal_Land::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void EnemyGoal_Land::Activate() {
     Enemy *temp_r3_1980;
     EnemyDescriptor *temp_r5_1982;
@@ -1064,7 +1064,6 @@ void EnemyGoal_Land::Activate() {
         temp_r3_1980->SetAnim((AnimSequenceType) this->unk14, this->unk10, 0, 0.15f, 0U, 0U);
     }
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void EnemyGoal_Wander::Terminate() {
@@ -1419,7 +1418,7 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_BackupFromTarget::Activate() {
     AITargetData *temp_r3_2800;
     Enemy *temp_r5_2811;

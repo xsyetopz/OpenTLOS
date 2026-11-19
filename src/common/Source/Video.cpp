@@ -4,6 +4,7 @@
 #include "common/Source/MKResource.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "unplaced_enums.h"
 #include "common/Source/File.h"
 #include "common/Source/MKView.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -34,7 +35,6 @@ extern s32 Sound_CurrentState;
 extern MKHeap currentVideo;
 static u8 videoVolume = 0x7F;
 
-#if 0 // DRAFT: illegal function definition
 void Video_SwitchSoundState(sound_state arg0) {
     if ((s32) arg0 != (s32) Sound_CurrentState) {
         switch ((s32) arg0) {                       /* irregular */
@@ -50,7 +50,6 @@ void Video_SwitchSoundState(sound_state arg0) {
         }
     }
 }
-#endif
 
 s32 Video_GetYUVData(void **arg0, void **arg1, void **arg2) {
     if (((s32) M2C_FIELD(&ActivePlayer, s32 *, 0xA0) != 0) && ((u8) M2C_FIELD(&ActivePlayer, u8 *, 0xA4) != 0)) {
@@ -152,7 +151,6 @@ void Video_Draw(Video *arg0, float arg1, float arg2, float arg3, float arg4, flo
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sound_state'
 void Video_Destroy(Video *arg0) {
     MKHeap *temp_r3_312;
     s32 temp_r30_306;
@@ -187,7 +185,6 @@ void Video_Destroy(Video *arg0) {
         Video_SwitchSoundState((sound_state) 0);
     }
 }
-#endif
 
 void Video_SetLooping(Video *arg0, bool arg1) {
     M2C_FIELD(&currentVideo, u8 *, 0x36) = arg1;
@@ -245,7 +242,7 @@ s32 Video_Update(Video *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sound_state'
+#if 0 // DRAFT: function call 'sprintf(signed char *, const char[13], const char *)' does
 MKHeap *Video_CreateStreaming(const char *arg0, bool arg1, int arg2, void *arg3, int arg4) {
     s8 sp8;
     MKHeap *temp_r29_527;
@@ -310,7 +307,6 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: ambiguous access to overloaded function
 void Video_DeinitModule() {
     MKHeap *temp_r3_666;
     s32 temp_r30_660;
@@ -332,7 +328,6 @@ void Video_DeinitModule() {
     }
     M2C_FIELD(&currentVideo, s8 *, 0) = 0;
 }
-#endif
 
 void Video_InitModule() {
     M2C_FIELD(&currentVideo, s8 *, 0) = 0;

@@ -6,6 +6,7 @@
 #include "spyro/source/Coronas.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/GameData.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>

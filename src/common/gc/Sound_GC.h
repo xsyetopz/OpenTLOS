@@ -2,11 +2,11 @@
 #define COMMON_GC_SOUND_GC_H
 
 #include <dolphin/types.h>
+#include "unplaced_enums.h"
 
 class MKVector3;
 class Matrix;
 class SoundBankHeader;
-class Sound_AcousticProperty;
 class Sound_GC_cpp;
 class _3DSoundInfo;
 

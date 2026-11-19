@@ -10,6 +10,7 @@
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/LiquidFX.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"

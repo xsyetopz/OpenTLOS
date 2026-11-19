@@ -6,6 +6,7 @@
 #include "spyro/source/ExplosionWarpFX.h"
 #include "spyro/source/FallingLeaves.h"
 #include "spyro/source/KDProp.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKView.h"

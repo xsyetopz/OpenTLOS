@@ -13,6 +13,7 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/Shatterable.h"
 #include "unplaced_templates.h"
+#include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDSound.h"

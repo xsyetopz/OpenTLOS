@@ -8,6 +8,7 @@
 #include "common/Source/Matrix.h"
 #include "common/Source/OmniLight.h"
 #include "common/gc/MKModel_GC.h"
+#include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKShockWave_MP.h"
 #include "common/Source/MKView.h"
@@ -524,7 +525,7 @@ void MKGrass_InitDraw() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal type
 u32 OptimiseGrassTypeData(MKModel *arg0, GrassUsedType *arg1) {
     MKHeap *temp_r3_1025;
     MKHeap *temp_r3_1083;
@@ -610,7 +611,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: illegal implicit conversion from 'short' to
 void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType *arg2) {
     f64 spC0;
     f64 spB8;

@@ -6,9 +6,9 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/CollisionObject.h"
 #include "spyro/source/Shadow.h"
+#include "unplaced_enums.h"
 
 class Character;
-class CharacterMoveType;
 class CollisionObject;
 class MKAnim;
 class MKCollisionInfo;
