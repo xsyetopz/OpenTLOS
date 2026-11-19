@@ -1726,12 +1726,10 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void IceBossStompDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkF0 = (const char *) (checked_cast<ShatterableDescriptor *, MKPropDescriptor>(gMK->FindDescriptor(this->unkF8)));
+    this->unkF0 = (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) gMK->FindDescriptor((const char *) this->unkF8));
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void IceBossStompDescriptor::LoadDone() {
@@ -1762,17 +1760,15 @@ void IceBossStompDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 IceBossStompDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2685;
 
     var_r31_2685 = 0;
-    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("CrystalName", &this->unkF8, 0) != 0) || (DataMap_LoadLine(arg0, "Element", &ElementTypeDataMap, (unsigned int *) &this->unkFC) != 0)) {
+    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("CrystalName", (const char **) &this->unkF8, 0) != 0) || (DataMap_LoadLine(arg0, "Element", &ElementTypeDataMap, (unsigned int *) &this->unkFC) != 0)) {
         var_r31_2685 = 1;
     }
     return var_r31_2685;
 }
-#endif
 
 void IceBossStompDescriptor::Deinit() {
     pIceBossStompDescriptor = NULL;
