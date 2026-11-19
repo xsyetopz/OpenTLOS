@@ -50,15 +50,13 @@ extern void **pSystem;
 extern UIStringTable strings;
 u8 descriptor__20LanguageSelectScreen[0x14];        /* unable to generate initializer: cannot parse "LanguageSelectScreen" as integer */
 
-#if 0 // DRAFT: function call 'ErrorMessage_Draw(signed char *)' does not match 'ErrorMessage_Draw(const char *)'
 void NoController_Draw() {
     Tools_Ortho sp8;
+    const char *msg;
 
-    sp8.Tools_Ortho();
-    ErrorMessage_Draw(M2C_FIELD(gpTranslation_StringArray, s8 **, 0xFC));
-    sp8.~Tools_Ortho(-1);
+    msg = (const char *) M2C_FIELD(gpTranslation_StringArray, s8 **, 0xFC);
+    ErrorMessage_Draw(msg);
 }
-#endif
 
 void NoController_Update() {
     if ((MKInput_GetStatus((MKInputDevices) 0) == 0) && (MKInput_GetState(3, (MKInputDevices) 0, NULL, NULL) != 0.0f)) {

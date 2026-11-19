@@ -175,10 +175,10 @@ void LevelSelectScreen::LoadDone() {
     this->unkC8 = (void **) (ui_cast<LevelSelectButtons *, UIObject *>(FindChild("LevelButtons")));
 }
 
-#if 0 // DRAFT: ')' expected
 void LevelSelectScreen::Deinit() {
     UIContainer *var_r30_468;
     UIObject *temp_r31_443;
+    DSText *text;
 
     temp_r31_443 = pMenuRoot;
     if (temp_r31_443 != NULL) {
@@ -191,112 +191,110 @@ void LevelSelectScreen::Deinit() {
     }
     pMenuCurrent = NULL;
     var_r30_468 = ui_cast<LevelButton *, UIObject *>(M2C_FIELD(this->unkC8, UIObject **, 0x60));
-loop_7:
-    if (var_r30_468 != NULL) {
-        M2C_FIELD(ui_cast<DSText *, UIObject *>(var_r30_468->GetChild(0)), s32 *, 0x68) = 0;
+    while (var_r30_468 != NULL) {
+        text = ui_cast<DSText *, UIObject *>(var_r30_468->GetChild(0));
+        M2C_FIELD(text, s32 *, 0x68) = 0;
         var_r30_468 = ui_cast<LevelButton *, UIObject *>(var_r30_468->unk10);
-        goto loop_7;
     }
     UIContainer::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void LevelSelectScreen::Init() {
-    UIObject *var_r3_511;
-    f32 temp_r5_537;
-    f32 var_r4_541;
     s32 temp_r27_503;
-    s32 var_r27_561;
-    s32 var_r28_524;
+    s8 *root;
+    s8 *var_r30_523;
+    s8 *var_r29_560;
+    s8 *temp_r26_562;
+    s8 *temp_r3_538;
+    s8 *temp_r5_537;
+    s8 *var_r4_541;
+    s8 *temp_r0_546;
+    s8 *temp_r5_580;
+    s8 *temp_r3_583;
+    s8 *var_r4_585;
+    s8 *temp_r0_590;
+    s8 *var_r0_612;
     s32 var_r31_522;
-    void *temp_r0_546;
-    void *temp_r0_590;
-    void *temp_r26_562;
-    void *temp_r3_538;
-    void *temp_r3_583;
-    void *temp_r5_580;
-    void *var_r0_612;
-    void *var_r29_560;
-    void *var_r30_523;
-    void *var_r4_585;
+    s32 var_r28_524;
+    s32 var_r27_561;
 
     UIContainer::Init();
-    temp_r27_503 = (*Level::levelInfoCount + (*Level::chunkInfoCount + 1)) << 6;
+    temp_r27_503 = (*(s32 *) Level::levelInfoCount + (*(s32 *) Level::chunkInfoCount + 1)) << 6;
     if (MKHeap::Current() != NULL) {
-        var_r3_511 = (UIObject *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_503, NULL, 0));
+        root = (s8 *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_503, NULL, 0));
     } else {
-        var_r3_511 = malloc(temp_r27_503);
+        root = (s8 *) malloc(temp_r27_503);
     }
-    pMenuRoot = var_r3_511;
-    memset(var_r3_511, 0, (u32) temp_r27_503);
+    pMenuRoot = (UIObject *) root;
+    memset(root, 0, (u32) temp_r27_503);
     var_r31_522 = 1;
-    var_r30_523 = (void *) (*Level::pLevelInfo);
+    var_r30_523 = *(s8 **) Level::pLevelInfo;
     var_r28_524 = 0x40;
     pMenuCurrent = pMenuRoot;
 loop_26:
     if (var_r30_523 != NULL) {
-        strncpy(pMenuRoot + var_r28_524, *(gpTranslation_StringArray + (M2C_FIELD(var_r30_523, s32 *, 0x10) * 4)), 0x28U);
-        temp_r5_537 = pMenuRoot->unk18.unk10.unkC;
-        temp_r3_538 = pMenuRoot + var_r28_524;
-        if (M2C_BITWISE(u32, temp_r5_537) != 0U) {
+        strncpy((char *) (root + var_r28_524),
+                (const char *) M2C_FIELD(gpTranslation_StringArray, s8 **, M2C_FIELD(var_r30_523, s32 *, 0x10) * 4),
+                0x28U);
+        temp_r5_537 = M2C_FIELD(root, s8 **, 0x34);
+        temp_r3_538 = root + var_r28_524;
+        if (temp_r5_537 != NULL) {
             var_r4_541 = temp_r5_537;
 loop_7:
-            temp_r0_546 = M2C_FIELD(var_r4_541, void **, 0x30);
+            temp_r0_546 = M2C_FIELD(var_r4_541, s8 **, 0x30);
             if (temp_r0_546 != NULL) {
-                var_r4_541 = M2C_BITWISE(f32, temp_r0_546);
+                var_r4_541 = temp_r0_546;
                 goto loop_7;
             }
-            M2C_FIELD(var_r4_541, void **, 0x30) = temp_r3_538;
-            M2C_FIELD(temp_r3_538, UIObject **, 0x38) = (UIObject *) M2C_FIELD(temp_r5_537, UIObject **, 0x38);
+            M2C_FIELD(var_r4_541, s8 **, 0x30) = temp_r3_538;
+            M2C_FIELD(temp_r3_538, s8 **, 0x38) = M2C_FIELD(temp_r5_537, s8 **, 0x38);
         } else {
-            pMenuRoot->unk18.unk10.unkC = M2C_BITWISE(f32, temp_r3_538);
-            M2C_FIELD(pMenuRoot->unk18.unk10.unkC, UIObject **, 0x38) = (UIObject *) pMenuRoot;
+            M2C_FIELD(root, s8 **, 0x34) = temp_r3_538;
+            M2C_FIELD(temp_r3_538, s8 **, 0x38) = root;
         }
         var_r31_522 += 1;
-        var_r29_560 = M2C_FIELD(var_r30_523, void **, 0x11C);
+        var_r29_560 = M2C_FIELD(var_r30_523, s8 **, 0x11C);
         var_r27_561 = var_r31_522 << 6;
-        temp_r26_562 = pMenuRoot + var_r28_524;
+        temp_r26_562 = root + var_r28_524;
         var_r28_524 += 0x40;
 loop_21:
         if (var_r29_560 != NULL) {
-            if ((var_r29_560 != (u32) M2C_FIELD(var_r30_523, u32 *, 0x118)) && ((u8) M2C_FIELD(var_r29_560, u8 *, 0x36) != 0)) {
-                strncpy(pMenuRoot + var_r27_561, M2C_FIELD(var_r29_560, s8 **, 0), 0x28U);
-                *(pMenuRoot + (var_r27_561 + 0x2C)) = var_r29_560;
-                temp_r5_580 = M2C_FIELD(temp_r26_562, void **, 0x34);
-                temp_r3_583 = pMenuRoot + var_r27_561;
+            if ((var_r29_560 != M2C_FIELD(var_r30_523, s8 **, 0x118)) && (M2C_FIELD(var_r29_560, u8 *, 0x36) != 0)) {
+                strncpy((char *) (root + var_r27_561), (const char *) M2C_FIELD(var_r29_560, s8 **, 0), 0x28U);
+                M2C_FIELD(root, s8 **, var_r27_561 + 0x2C) = var_r29_560;
+                temp_r5_580 = M2C_FIELD(temp_r26_562, s8 **, 0x34);
+                temp_r3_583 = root + var_r27_561;
                 if (temp_r5_580 != NULL) {
                     var_r4_585 = temp_r5_580;
 loop_16:
-                    temp_r0_590 = M2C_FIELD(var_r4_585, void **, 0x30);
+                    temp_r0_590 = M2C_FIELD(var_r4_585, s8 **, 0x30);
                     if (temp_r0_590 != NULL) {
                         var_r4_585 = temp_r0_590;
                         goto loop_16;
                     }
-                    M2C_FIELD(var_r4_585, void **, 0x30) = temp_r3_583;
-                    M2C_FIELD(temp_r3_583, void **, 0x38) = (void *) M2C_FIELD(temp_r5_580, void **, 0x38);
+                    M2C_FIELD(var_r4_585, s8 **, 0x30) = temp_r3_583;
+                    M2C_FIELD(temp_r3_583, s8 **, 0x38) = M2C_FIELD(temp_r5_580, s8 **, 0x38);
                 } else {
-                    M2C_FIELD(temp_r26_562, void **, 0x34) = temp_r3_583;
-                    M2C_FIELD(M2C_FIELD(temp_r26_562, void **, 0x34), void **, 0x38) = temp_r26_562;
+                    M2C_FIELD(temp_r26_562, s8 **, 0x34) = temp_r3_583;
+                    M2C_FIELD(M2C_FIELD(temp_r26_562, s8 **, 0x34), s8 **, 0x38) = temp_r26_562;
                 }
                 var_r31_522 += 1;
                 var_r28_524 += 0x40;
                 var_r27_561 += 0x40;
             }
-            var_r29_560 = M2C_FIELD(var_r29_560, void **, 8);
+            var_r29_560 = M2C_FIELD(var_r29_560, s8 **, 8);
             goto loop_21;
         }
         if (var_r30_523 != NULL) {
-            var_r0_612 = M2C_FIELD(var_r30_523, void **, 0x124);
+            var_r0_612 = M2C_FIELD(var_r30_523, s8 **, 0x124);
         } else {
-            var_r0_612 = (void *) (*Level::pLevelInfo);
+            var_r0_612 = *(s8 **) Level::pLevelInfo;
         }
         var_r30_523 = var_r0_612;
         goto loop_26;
     }
     pMenuCurrent = pMenuRoot;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void LevelSelectButtons::Init() {
