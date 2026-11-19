@@ -233,7 +233,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'SpyroStateMessages' to
+#if 0 // DRAFT: identifier 'SpyroStateMessages::GetMessage(int)' redeclared
 s32 SpyroStateMessages::GetMessage(int arg0) {
     u32 temp_r7_401;
     u32 var_r0_407;

@@ -25,11 +25,13 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
+#if 0 // DRAFT: identifier 'ConsoleCmds_pSenderProp' redeclared
 f64 atof(u8 *, f32);                                /* extern */
 MKSceneManager *atoi(u8 *);                         /* extern */
 s32 sscanf(s8 *, f32 *, f32 *);                     /* extern */
 s32 stricmp(s8 *, u8 *);                            /* extern */
 extern s32 ConsoleCmds_pSenderProp;
+#endif
 extern GameStateMachine gGMState;
 #if 0 // DRAFT: identifier 'gb' redeclared
 extern void **gb;
@@ -647,7 +649,7 @@ f32 CmdTask(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetBreathType'
+#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdActionGive(int arg0, char **arg1) {
     s32 temp_r3_1460;
     s32 temp_r3_1466;
@@ -699,7 +701,7 @@ block_22:
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(signed char *)' does not match
+#if 0 // DRAFT: undefined identifier 'stricmp'
 s32 GetBreathType(const char *arg0) {
     s32 var_r3_1616;
 
@@ -723,7 +725,7 @@ s32 GetBreathType(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
+#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdGemGive(int arg0, char **arg1) {
     if ((arg0 > 1) && (stricmp(M2C_FIELD(arg1, s8 **, 4), lit_stringBase0 + 0x44A) == 0)) {
         GameData::gameData[0x169] |= 4;
@@ -1111,6 +1113,7 @@ void CmdCutsceneSubtitlesGetStr(char *arg0, int arg1) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdCutsceneSubtitles(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2455;
@@ -1137,6 +1140,7 @@ f32 CmdCutsceneSubtitles(int arg0, char **arg1) {
     }
     return 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *,
 void CmdScrWideGetStr(char *arg0, int arg1) {
@@ -1152,6 +1156,7 @@ void CmdScrWideGetStr(char *arg0, int arg1) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdScrWide(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2574;
@@ -1178,6 +1183,7 @@ f32 CmdScrWide(int arg0, char **arg1) {
     }
     return 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)'
 void CmdCamInvertXGetStr(char *arg0, int arg1) {
@@ -1192,6 +1198,7 @@ void CmdCamInvertXGetStr(char *arg0, int arg1) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdCamInvertX(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2700;
@@ -1218,6 +1225,7 @@ f32 CmdCamInvertX(int arg0, char **arg1) {
     }
     return 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)'
 void CmdSpeedwayInvertYGetStr(char *arg0, int arg1) {
@@ -1232,6 +1240,7 @@ void CmdSpeedwayInvertYGetStr(char *arg0, int arg1) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdSpeedwayInvertY(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2824;
@@ -1258,6 +1267,7 @@ f32 CmdSpeedwayInvertY(int arg0, char **arg1) {
     }
     return 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match
 f32 CmdInputVibrate(int arg0, char **arg1) {
@@ -1288,6 +1298,7 @@ void CmdInputVibrationGetStr(char *arg0, int arg1) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdInputVibration(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_3002;
@@ -1315,6 +1326,7 @@ f32 CmdInputVibration(int arg0, char **arg1) {
     }
     return 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, float)' does not
 void CmdSndModeGetStr(char *arg0, int arg1) {
@@ -1322,7 +1334,7 @@ void CmdSndModeGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match
+#if 0 // DRAFT: undefined identifier 'sscanf'
 f32 CmdSndMode(int arg0, char **arg1) {
     f32 spC;
     f32 sp8;
@@ -1397,7 +1409,7 @@ void CmdSndSoundVolGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match
+#if 0 // DRAFT: undefined identifier 'sscanf'
 f32 CmdSndSoundVol(int arg0, char **arg1) {
     f32 spC;
     f32 sp8;
@@ -1454,7 +1466,7 @@ void CmdSndMusicVolGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match
+#if 0 // DRAFT: undefined identifier 'sscanf'
 f32 CmdSndMusicVol(int arg0, char **arg1) {
     f32 spC;
     f32 sp8;

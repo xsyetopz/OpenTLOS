@@ -258,12 +258,10 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MeleeTrails::LoadDone() {
     GameProp::LoadDone();
     this->unkCC = MKModel_GetMaterial(this->unk4, 0, 0U);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MeleeTrails::Init() {

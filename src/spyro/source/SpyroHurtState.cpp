@@ -944,7 +944,7 @@ void SpyroHurtState::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(long)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroHurtState::Enter(SpyroStateMessages &arg0) {
     u8 sp1A8;
     s32 sp1A4;

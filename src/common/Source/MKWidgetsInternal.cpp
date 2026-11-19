@@ -37,9 +37,7 @@ extern u8 gWidgetDebug;
 extern f32 gWidgetOrthoHeight;
 extern f32 gWidgetOrthoWidth;
 extern s8 *gpDebugFont;
-#if 0 // DRAFT: identifier 'pDescriptorList' redeclared
 extern MKWidgetDescriptor *pDescriptorList;
-#endif
 extern void *pHookEntryRoot;
 extern MKWidgetScissorRect *pScissorRectStack;
 extern MKMaterial *pWidgetBlank;
@@ -9398,12 +9396,10 @@ MKWidgetDescriptor::MKWidgetDescriptor(const char *arg0, MKWidgetDescriptor *arg
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKWidget_AddToDescriptorList(MKWidgetDescriptor *arg0) {
     arg0->unkC = pDescriptorList;
     pDescriptorList = arg0;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKWidgetEditable * (MKWidget::*)()const
 void MKWidgetsInternal_cpp::__sinit() {

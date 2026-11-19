@@ -731,13 +731,11 @@ void Gondola::Resolve() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, MKCollisionInfo *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, temp_r5_1440, 0x40F);
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void Gondola::LoadDone() {
     Platform::LoadDone();
     this->unk1B0.LoadDone();
     this->unk238 = checked_cast<SkyClouds *, MKProp>(gMK->CreateProp("SkyClouds"));
 }
-#endif
 
 #if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
 s32 Gondola::LoadLine(MKIniLine *arg0) {

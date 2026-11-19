@@ -45,7 +45,7 @@ public:
 class SpyroStateMessages {
 public:
     s32 IsMessageOnList(int);
-    s32 GetMessage(int);
+    MKMessage * GetMessage(int);
     void AddMessage(int);
     void AddMessage(MKMessage *);
     /* 0x000 */ u8 pad0[0x50];

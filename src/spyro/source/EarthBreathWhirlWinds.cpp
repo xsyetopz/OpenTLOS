@@ -771,7 +771,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to
 void EarthBreathWhirlWindsDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));

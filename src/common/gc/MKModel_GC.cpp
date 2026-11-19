@@ -75,11 +75,9 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKMaterial_SetMaterial(long)' does not match
 void MKModel_BlobBegin(const MKModel *arg0) {
     MKMaterial_SetMaterial(MKModel_GetMaterial(arg0, 0, 0U));
 }
-#endif
 
 void MKModel_BlobPreprocess(MKModel *arg0) {
 

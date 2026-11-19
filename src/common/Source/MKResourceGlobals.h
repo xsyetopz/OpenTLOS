@@ -3,5 +3,7 @@
 
 #include <dolphin/types.h>
 
-extern void ** gMK;
+class MKSceneManager;
+
+extern MKSceneManager * gMK;
 #endif  // COMMON_SOURCE_MKRESOURCEGLOBALS_H

@@ -261,7 +261,7 @@ loop_6:
     M2C_FIELD(this, f32 *, 0x1C) = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'IceBossStalactiteSpawner *' to
 void IceBossStalactiteSpawner::LoadDone() {
     IceBossStalactite ***var_r31_442;
     IceBossStalactite **temp_r3_475;
@@ -1316,7 +1316,7 @@ void IceBossStalactite::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'IceBitsPS *' to
 void IceBossStalactiteDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
     this->unk16C = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));

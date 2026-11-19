@@ -6,6 +6,7 @@
 
 class BoundingVolume;
 class GeometryTransformationInfo;
+class MKMat_MK2_Standard;
 class MKMaterial;
 class MKMaterial_GC_cpp;
 class MKVector4;
@@ -69,6 +70,6 @@ extern f32 MKMaterial_fogFar;
 extern u8 MKMaterial_bFogEnabled;
 extern u8 MKPrimitive_bAlphaModulate;
 extern s32 gpMKcurrentMaterialEffectorMask;
-extern s32 gpPreviousMaterial;
+extern MKMat_MK2_Standard * gpPreviousMaterial;
 extern s32 MKMaterial_CurrentLocalityIndex;
 #endif  // COMMON_GC_MKMATERIAL_GC_H

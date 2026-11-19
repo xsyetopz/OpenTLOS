@@ -412,7 +412,7 @@ void SquishBoulder::Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void SquishBoulderDescriptor::Init() {
     void *temp_r3_1000;
     void *temp_r3_995;

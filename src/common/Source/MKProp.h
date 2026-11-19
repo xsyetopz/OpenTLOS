@@ -81,7 +81,7 @@ public:
     virtual void Update(void);
     virtual void Draw(void);
     virtual void Resolve(void);
-    void * CreateInstance(void);
+    MKProp * CreateInstance(void);
     void ParseGMSection(MKIni *, MKIniLine *);
 };
 

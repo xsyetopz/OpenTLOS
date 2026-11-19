@@ -213,7 +213,7 @@ void MKSceneManager::CreatePropDeferred(const char *arg0, MKProp **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: identifier 'MKSceneManager::CreateProp(const char *)' redeclared
 void *MKSceneManager::CreateProp(const char *arg0) {
     MKPropCreationTable *sp8;
     MKPropCreationTable *temp_r31_450;
@@ -359,7 +359,7 @@ void MKSceneManager::PropResolver_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: identifier 'MKSceneManager::PropResolver_Resolve(int)' redeclared
 void *MKSceneManager::PropResolver_Resolve(int arg0) {
     s32 temp_cr0_gt_736;
     s32 temp_r0_765;

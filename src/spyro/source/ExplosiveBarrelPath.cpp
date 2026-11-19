@@ -1128,7 +1128,7 @@ void ExplosiveBarrelPath::Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void ExplosiveBarrelPathDescriptor::LoadDone() {
     this->unk90 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("BarrelDustDirtPS"));
     this->unk94 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("BarrelDustIcePS"));

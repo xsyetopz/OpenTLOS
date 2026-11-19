@@ -18,7 +18,7 @@ void NPCGuardian::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNodeProp *' to
 void NPCGuardian::Resolve() {
     MKSceneManager *temp_r3_74;
     s32 temp_r31_86;

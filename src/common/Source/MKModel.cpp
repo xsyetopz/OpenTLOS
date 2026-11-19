@@ -302,7 +302,7 @@ void MKModel_CalculateCentre(const MKModel *arg0, MKVector3 *arg1) {
     }
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal function overloading
 s32 MKModel_GetMaterial(const MKModel *arg0, int arg1, bool arg2) {
     u8 var_r5_783;
 

@@ -260,7 +260,7 @@ void SpawnPoint::Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'KDSplinePathSegmentProp *' to
 void EnemySpawnPointData::Resolve() {
     MKSceneManager *temp_r3_679;
     MKSceneManager *temp_r3_693;

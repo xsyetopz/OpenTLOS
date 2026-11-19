@@ -449,7 +449,6 @@ void MineCartTrack::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void MineCartTrack::LoadDone() {
     s32 var_r29_936;
     s32 var_r31_937;
@@ -478,7 +477,6 @@ void MineCartTrack::LoadDone() {
         var_r31_937 += 4;
     } while (var_r29_936 < 4);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init'
 s32 MineCartTrack::LoadLine(MKIniLine *arg0) {

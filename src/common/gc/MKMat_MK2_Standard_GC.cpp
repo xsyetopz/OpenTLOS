@@ -46,9 +46,7 @@ extern M2C_UNK gCurrentMaterialColorGC;
 extern MKMat_MK2_Standard *gpCurrentMaterial;
 #endif
 extern s32 gpMKcurrentMaterialEffectorMask;
-#if 0 // DRAFT: identifier 'gpPreviousMaterial' redeclared
 extern MKMat_MK2_Standard *gpPreviousMaterial;
-#endif
 extern u8 init_469;
 extern u8 init_472;
 extern u8 init_537;
@@ -856,7 +854,7 @@ void MKMat_MK2_Standard::UsePass() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKMaterial *' to
 s32 MKMat_MK2_Standard_BEGIN_INTERNAL() {
     MKMat_MK2_Standard *temp_r31_2199;
 

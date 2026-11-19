@@ -14,11 +14,9 @@
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'MKWidgetIdentityAttributes' redeclared
 s8 *malloc(M2C_UNK);                                /* extern */
 s32 stricmp(s32, s8 *);                             /* extern */
 extern MKWidgetAttributes *MKWidgetIdentityAttributes;
-#endif
 extern M2C_UNK gDisplay;
 #if 0 // DRAFT: identifier 'gMKWidgetMetrics' redeclared
 extern M2C_UNK gMKWidgetMetrics;
@@ -26,7 +24,9 @@ extern M2C_UNK gMKWidgetMetrics;
 extern f32 gWidgetOrthoHeight;
 extern f32 gWidgetOrthoWidth;
 extern s8 *pBlankData;
+#if 0 // DRAFT: identifier 'pDescriptorList' redeclared
 extern void *pDescriptorList;
+#endif
 extern void **pMKWidgetSystem;
 #if 0 // DRAFT: identifier 'pWidgetBlank' redeclared
 extern MKResource *pWidgetBlank;

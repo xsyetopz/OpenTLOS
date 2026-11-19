@@ -830,14 +830,14 @@ void TeslaTowerDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'ZapPS *' to
 void TeslaTowerDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
     this->unk78 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS"));
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'EnergyBeam *' to
 void TeslaTowerDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
     this->unk70 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));

@@ -417,7 +417,7 @@ void BigBeetleHiveDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'StickyPS *' to
 void BigBeetleHiveDescriptor::Init() {
     ShatterableDescriptor::Init();
     this->unk16C = checked_cast<StickyPS *, MKProp>(gMK->CreateProp("FireGoopPS"));

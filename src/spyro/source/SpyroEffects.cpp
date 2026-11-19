@@ -1275,7 +1275,7 @@ void SpyroFXData::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'HitFX *' to
 void SpyroFXData::Init(MKProp *arg0, MKModel *arg1, MKAnimScript *arg2) {
     s32 sp14;
     s32 sp10;

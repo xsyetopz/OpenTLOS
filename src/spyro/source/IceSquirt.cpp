@@ -201,12 +201,10 @@ void IceSquirt::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void IceSquirt::LoadDone() {
     Projectile::LoadDone();
     this->unk150 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp("LiquidIceFX"));
 }
-#endif
 
 void IceSquirt::Init() {
     Projectile::Init();

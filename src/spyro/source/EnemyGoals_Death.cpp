@@ -999,7 +999,7 @@ u8 EnemyGoal_DyingStoned::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: undefined identifier 'sp60'
 void EnemyGoal_DyingStoned::Activate() {
     f64 spE8;
     f64 spE0;

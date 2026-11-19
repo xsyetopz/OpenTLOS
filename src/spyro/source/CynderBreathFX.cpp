@@ -389,7 +389,7 @@ void CynderBreathFX::Init() {
     pHitList = NULL;
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void CynderBreathFXDescriptor::Init() {
     KDPropDescriptor::Init();
     this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("CynderFlamePS"));

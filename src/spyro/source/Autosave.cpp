@@ -14,11 +14,9 @@
 #include "spyro/source/UIStringTable.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'autosaveCard' redeclared
 M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 extern KDMemoryCard *autosaveCard;
-#endif
 extern f32 autosaveIconOffset;
 extern f32 autosaveIconThrob;
 extern GameStateMachine gGMState;
@@ -64,7 +62,7 @@ void Autosave_Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'Autosave_Abort'
 void Autosave_ConfirmCard() {
     TimerInfo sp8;
     void *temp_r5_139;
@@ -98,7 +96,7 @@ void Autosave_ConfirmCard() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void Autosave_Update() {
     f32 temp_f1_236;
     f32 temp_f1_307;
@@ -184,7 +182,7 @@ void Autosave_Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'KDMemoryCard *' to
 void Autosave_Abort() {
     *MemoryCardScreen::selectedCard = autosaveCard;
     Autosave_Reset();
@@ -193,7 +191,7 @@ void Autosave_Abort() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to
+#if 0 // DRAFT: illegal implicit conversion from 'KDMemoryCard *' to
 void Autosave_Error() {
     *MemoryCardScreen::selectedCard = autosaveCard;
     Autosave_Reset();
@@ -244,7 +242,6 @@ void Autosave_LoadResources() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'free'
 void Autosave_DeinitModule() {
     MKHeap *temp_r3_507;
     void *temp_r31_506;
@@ -259,7 +256,6 @@ void Autosave_DeinitModule() {
     pGameDataCopy = NULL;
     gameDataSize = 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void Autosave_InitModule() {

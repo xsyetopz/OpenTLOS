@@ -657,7 +657,7 @@ void CynderTier3::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: undefined identifier 'cynderTier3NodeBlurDef'
 void CynderTier3::LoadDone() {
     Enemy::LoadDone();
     M2C_FIELD(this, BoneBlurFX **, 0xA10) = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
@@ -846,7 +846,7 @@ void CynderTier2::Update() {
     TestForTraps();
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: undefined identifier 'cynderTier2NodeBlurDef'
 void CynderTier2::LoadDone() {
     Enemy::LoadDone();
     M2C_FIELD(this, BoneBlurFX **, 0xA10) = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));
@@ -1092,7 +1092,7 @@ void CynderTier1::UpdateFrozenBallMovement() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'Ball *' to
 s32 CynderTier1::TryFreezeBall() {
     s32 temp_r3_2203;
     s32 temp_r3_2210;
@@ -1636,7 +1636,7 @@ void CynderTier1::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: undefined identifier 'cynderTier1NodeBlurDef'
 void CynderTier1::LoadDone() {
     Enemy::LoadDone();
     M2C_FIELD(this, BoneBlurFX **, 0xA10) = checked_cast<BoneBlurFX *, MKProp>(gMK->CreateProp("BoneBlurFX"));

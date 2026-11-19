@@ -15,15 +15,19 @@ extern s8 *MKWIDGETTYPE_LISTBOX;
 extern s8 *MKWIDGETTYPE_LISTITEM;
 extern s8 *MKWIDGETTYPE_SLIDER;
 extern s8 *MKWIDGETTYPE_WINDOW;
+#if 0 // DRAFT: identifier 'MKWidgetIdentityAttributes' redeclared
 extern s32 MKWidgetIdentityAttributes;
+#endif
 extern ColorEditor gColorEditor;
 extern MKWidgetContextMenu gContextMenu;
 extern CreateWidgetWindow gCreateWidgetWindow;
 extern MaterialEditor gMaterialEditor;
 extern MKFont *gpDebugFont;
+#if 0 // DRAFT: identifier 'pDescriptorList' redeclared
 extern void *pDescriptorList;
+#endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'memcpy(long, MKWidgetAttributes *, int)' does not match
 void CreateWidgetWindow::CreateWidgets() {
     f32 sp68;                                       /* compiler-managed */
     f32 sp64;
@@ -170,7 +174,7 @@ void MaterialEditor::Show(MKMaterial *arg0) {
     MKWidget_SetFocus(this->unk4);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'memcpy(long, MKWidgetAttributes *, int)' does not match
 void MaterialEditor::CreateWidgets() {
     f32 sp40;
     f32 sp3C;
@@ -241,7 +245,7 @@ void ColorEditor::Show(const MKVector4 &arg0, MKWidget *arg1) {
     MKWidget_SetFocus(this->unk10);
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'memcpy(long, MKWidgetAttributes *, int)' does not match
 void ColorEditor::CreateWidgets() {
     f32 sp5C;
     f32 sp58;
@@ -396,7 +400,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'memcpy(long, MKWidgetAttributes *, int)' does not match
 void MKWidgetContextMenu::AddItem(const char *arg0) {
     f32 sp40;
     f32 sp3C;
@@ -512,7 +516,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
+#if 0 // DRAFT: function call 'memcpy(long, MKWidgetAttributes *, int)' does not match
 void MKWidgetContextMenu::CreateWidgets() {
     f32 sp40;
     f32 sp3C;

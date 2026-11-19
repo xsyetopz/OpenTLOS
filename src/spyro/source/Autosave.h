@@ -27,5 +27,5 @@ void Autosave_EnableRemovalCheck(bool);
 u8 Autosave_IsActive(void);
 void Autosave_Activate(void);
 void Autosave_SetTarget(KDMemoryCard *, int, const TimerInfo &);
-extern void * autosaveCard;
+extern KDMemoryCard * autosaveCard;
 #endif  // SPYRO_SOURCE_AUTOSAVE_H

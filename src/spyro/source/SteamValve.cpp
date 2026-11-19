@@ -299,7 +299,6 @@ void SteamValve::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void SteamValve::LoadDone() {
     GameProp::LoadDone();
     this->unkC8 = checked_cast<Steam *, MKProp>(gMK->CreateProp("Steam"));
@@ -307,7 +306,6 @@ void SteamValve::LoadDone() {
         this->unkDD = 0;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 SteamValve::LoadLine(MKIniLine *arg0) {

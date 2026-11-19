@@ -23,7 +23,9 @@
 
 s32 stricmp(s32, void *, void *);                   /* extern */
 extern s32 GS_MenuSelect;
+#if 0 // DRAFT: identifier 'autosaveCard' redeclared
 extern void *autosaveCard;
+#endif
 extern GameStateMachine gGMState;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;

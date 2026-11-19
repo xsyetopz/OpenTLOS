@@ -233,7 +233,7 @@ void SpeedwayCynder::UpdateCameraZTime() {
     memset(&this->unk394, 0, 4U);
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 SpeedwayCynder::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
     FireBombFX *temp_r3_442;
 

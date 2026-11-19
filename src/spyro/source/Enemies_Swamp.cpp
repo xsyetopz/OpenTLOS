@@ -263,7 +263,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'sp8'
 void SwampTier2::Draw() {
     f64 spB0;
     f64 spA8;

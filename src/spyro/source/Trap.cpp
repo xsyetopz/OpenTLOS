@@ -161,7 +161,7 @@ void Trap::Reset() {
     this->unkD8 = 1;
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'TrapSystem *' to
 void Trap::Resolve() {
     MKSceneManager *temp_r3_291;
     MKSceneManager *temp_r3_297;

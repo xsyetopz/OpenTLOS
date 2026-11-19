@@ -8,6 +8,7 @@ class MKVector4;
 class MKWidget;
 class MKWidgetAttributes;
 class MKWidgetBoundingVolume;
+class MKWidgetDescriptor;
 class MKWidgetSystem;
 
 class MKWidgetAttributes {
@@ -66,6 +67,6 @@ void MKWidget_CreateMaterial(void);
 void MKWidget_InitModule(void);
 extern u8 pSystemStack[0x40];
 extern u32 systemStackDepth;
-extern void * pDescriptorList;
+extern MKWidgetDescriptor * pDescriptorList;
 extern void ** pMKWidgetSystem;
 #endif  // COMMON_SOURCE_MKWIDGETS_H

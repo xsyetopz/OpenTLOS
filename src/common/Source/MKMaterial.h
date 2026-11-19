@@ -66,7 +66,7 @@ void MKMatInfo_Endian(MatInfo *);
 void MKMatInfo_Init(MatInfo *, const char *);
 extern s8 materialList;
 extern MKMaterial * gpMKWhiteMaterial;
-extern s32 gpCurrentMaterial;
+extern MKMaterial * gpCurrentMaterial;
 extern s8 bMaterialIniting;
 extern s8 bMaterialDeiniting;
 #endif  // COMMON_SOURCE_MKMATERIAL_H

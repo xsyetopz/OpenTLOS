@@ -816,7 +816,7 @@ void LavaBubbleFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void LavaBubbleFX::LoadDone() {
     GameProp::LoadDone();
     this->unkCC = MKModel_GetMaterial(this->unk4, 0, 0U);

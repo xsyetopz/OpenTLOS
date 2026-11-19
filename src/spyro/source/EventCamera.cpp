@@ -895,7 +895,7 @@ void EventCamera::GetTargetStart() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'EnemySpawner *' to
 void EventCamera::Update() {
     EventCamera *temp_r3_2815;
     f32 temp_f0_1756;

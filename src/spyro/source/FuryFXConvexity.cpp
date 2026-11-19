@@ -2070,7 +2070,7 @@ void FuryFXConvexity::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'KDEnvParticleSystem *' to
 void FuryFXConvexity::Init() {
     f64 sp40;
     f64 sp38;

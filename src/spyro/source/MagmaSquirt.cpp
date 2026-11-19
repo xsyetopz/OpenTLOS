@@ -306,12 +306,10 @@ void MagmaSquirt::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void MagmaSquirt::LoadDone() {
     Projectile::LoadDone();
     this->unk150 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp("MoltenMetalFX"));
 }
-#endif
 
 void MagmaSquirt::Init() {
     Projectile::Init();

@@ -841,7 +841,7 @@ u8 TrainChaseSpyro::DealDamage(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
 void TrainChaseSpyro::RepositionLightProp() {
     f32 temp_f1_1613;
     f32 temp_f1_1755;
@@ -1717,7 +1717,7 @@ KDInput *TrainChaseSpyro::GetInput() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
 void TrainChaseSpyro::UpdateCartCollisions() {
     MKCollisionResult sp178;
     M2C_UNK *sp174;
@@ -2053,7 +2053,7 @@ loop_91:
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
 void TrainChaseSpyro::UpdateCartPosition() {
     f64 sp20;
     f64 sp18;
@@ -2083,7 +2083,7 @@ void TrainChaseSpyro::UpdateCartPosition() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
 void TrainChaseSpyro::UpdateCartOrientation() {
     s32 temp_r3_4148;
     void *temp_r4_4156;
@@ -2255,7 +2255,7 @@ void TrainChaseSpyro::StateFlinchEnter() {
     this->unkD4 = 5027.5f;
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
 void TrainChaseSpyro::StateChaseUpdate() {
     f32 sp3C;
     f32 sp38;

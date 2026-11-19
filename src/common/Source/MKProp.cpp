@@ -23,6 +23,7 @@ M2C_UNK free(s8 *);                                 /* extern */
 s32 stricmp(M2C_UNK *, Texture *);                  /* extern */
 extern void *gMK;
 
+#if 0 // DRAFT: identifier 'MKPropDescriptor::CreateInstance()' redeclared
 void *MKPropDescriptor::CreateInstance() {
     void *var_r31_18;
 
@@ -38,6 +39,7 @@ loop_4:
     var_r31_18 = M2C_FIELD(var_r31_18, void **, 0x38);
     goto loop_4;
 }
+#endif
 
 #if 0 // DRAFT: function call 'stricmp(const char[6])' does not match
 void MKPropDescriptor::ParseGMSection(MKIni *arg0, MKIniLine *arg1) {

@@ -20,7 +20,9 @@ s32 stricmp(s8 *, s8 *);                            /* extern */
 extern s8 bMaterialDeiniting;
 extern s8 bMaterialIniting;
 extern M2C_UNK gMKDefaults;
+#if 0 // DRAFT: identifier 'gpCurrentMaterial' redeclared
 extern s32 gpCurrentMaterial;
+#endif
 extern void *gpMKMaterialTypeInfoList;
 extern MKMaterial *gpMKWhiteMaterial;
 extern s32 materialIdCount;
@@ -187,9 +189,11 @@ loop_7:
 }
 #endif
 
+#if 0 // DRAFT: illegal implicit conversion from 'MKMaterial *' to
 s32 MKMaterialInternal_GetCurrent() {
     return gpCurrentMaterial;
 }
+#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char' to
 s8 *MKMaterialInternal_Find(const char *arg0) {
@@ -424,7 +428,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: undefined identifier 'StringHash'
 MKResource *MKMaterial_Create(const char *arg0) {
     MKResource *temp_r3_775;
     MKResource *temp_r3_783;

@@ -1129,7 +1129,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: expression syntax error
 void Leviathan::Init() {
     Platform::Init();
     this->unk19C = 2;

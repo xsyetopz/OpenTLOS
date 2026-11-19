@@ -64,7 +64,6 @@ void LavaBall::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, 
     temp_r3_186->unkA0 |= 0x40;
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void LavaBall::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -85,7 +84,6 @@ void LavaBall::LoadDone() {
     sp20 = (f64) sp10;
     this->unk150->InitData(this->unk4, lit_507, "FX_323", lit_508, *((MKVector4 *) &sp18), 2.0f, 1U, 0.2f);
 }
-#endif
 
 void *LavaBall::CreateInstance() {
     void *temp_r3_253;

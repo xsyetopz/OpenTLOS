@@ -35,7 +35,7 @@ public:
     f32 GetHeight(void);
     void Destroy(void);
     void * Find(const char *);
-    void * Create(const char *);
+    MKFont * Create(const char *);
     static u8 pEndToken[0x4];
     static u8 pStartToken[0x4];
     static u8 pColourToken[0x4];

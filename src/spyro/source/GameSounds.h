@@ -3,6 +3,8 @@
 
 #include <dolphin/types.h>
 
+class DialogBoxContext;
+
 void GameSounds_Update(void);
 void GameSounds_InitModule(void);
 extern u8 soundIDs[0x41e0];
@@ -378,10 +380,10 @@ extern s32 GS_TrainingComplete;
 extern s32 GS_TrainingFail;
 extern s32 GS_CheatEnabled;
 extern s32 GS_CheatDisable;
-extern s32 GS_LevelUpFireLP;
-extern s32 GS_LevelUpElecLP;
-extern s32 GS_LevelUpIceLP;
-extern s32 GS_LevelUpEarthLP;
+extern DialogBoxContext * GS_LevelUpFireLP;
+extern DialogBoxContext * GS_LevelUpElecLP;
+extern DialogBoxContext * GS_LevelUpIceLP;
+extern DialogBoxContext * GS_LevelUpEarthLP;
 extern s32 GS_LevelUpDrainexpLP;
 extern s32 GS_LevelUPExpLP;
 extern s32 GS_LevelUpStart;

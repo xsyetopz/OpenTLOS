@@ -34,12 +34,12 @@ extern s8 bLit;
 extern s32 currentState_499;
 extern u32 currentType;
 extern M2C_UNK gMKDefaults;
-#if 0 // DRAFT: identifier 'gpCurrentMaterial' redeclared
 extern MKMaterial *gpCurrentMaterial;
-#endif
 extern void *gpMKMaterialTypeInfoList;
 extern MKMaterial *gpMKWhiteMaterial;
+#if 0 // DRAFT: identifier 'gpPreviousMaterial' redeclared
 extern s32 gpPreviousMaterial;
+#endif
 extern u8 init_468;
 extern u8 init_476;
 extern u8 init_500;
@@ -484,7 +484,6 @@ s32 MKMaterial_BeginInternal() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 s32 MKMaterial_Begin() {
     void *temp_r4_1377;
 
@@ -494,7 +493,6 @@ s32 MKMaterial_Begin() {
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void MKMaterial_SetMaterial(MKMaterial *arg0) {
@@ -536,7 +534,6 @@ void MKMaterial_SetMaterial(MKMaterial *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void MKMaterial_SetGeometryColor(const MKVector4 &arg0) {
     u8 var_r0_1497;
 
@@ -550,7 +547,6 @@ void MKMaterial_SetGeometryColor(const MKVector4 &arg0) {
     M2C_FIELD(&MKMaterial_GeometryColor, f32 *, 0) = (f64) M2C_FIELD(&arg0, f32 *, 0);
     M2C_FIELD(&MKMaterial_GeometryColor, f32 *, 8) = (f64) M2C_FIELD(&arg0, f32 *, 8);
 }
-#endif
 
 void MKMaterial_SetGeometryTransformInfo(GeometryTransformationInfo *arg0) {
     M2C_FIELD(&TransformInfo, s32 *, 0) = arg0->unk0;

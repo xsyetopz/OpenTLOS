@@ -63,10 +63,10 @@ public:
     virtual void SetChunkDrawOrder(MKLevelChunk **) = 0;
     virtual void FindDescriptorInLocalChunk(const char *) = 0;
     void CreatePropDeferred(const char *, MKProp **);
-    void * CreateProp(const char *);
+    MKProp * CreateProp(const char *);
     MKPropCreationTable * CreateDescriptor(const char *, MKPropCreationTable **);
     void PropResolver_Deinit(void);
-    void * PropResolver_Resolve(int);
+    MKProp * PropResolver_Resolve(int);
     void PropResolver_Remove(MKProp *);
     void PropResolver_Add(MKProp *, const char *);
     void PropResolver_Init(void);

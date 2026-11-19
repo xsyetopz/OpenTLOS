@@ -3,7 +3,9 @@
 
 #include <dolphin/types.h>
 
+class MKProp;
+
 void ConsoleCmds_Unregister(void);
 void ConsoleCmds_Register(void);
-extern s32 ConsoleCmds_pSenderProp;
+extern MKProp * ConsoleCmds_pSenderProp;
 #endif  // SPYRO_SOURCE_CONSOLECMDS_H

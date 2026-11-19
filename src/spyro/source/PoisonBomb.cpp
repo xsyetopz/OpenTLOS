@@ -469,7 +469,7 @@ void PoisonBomb::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: expression syntax error
 PoisonBomb *PoisonBomb::CreateInstance() {
     PoisonBomb *temp_r3_943;
 

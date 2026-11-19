@@ -205,7 +205,7 @@ void SteamTrainCaboose::Enable() {
     EnemyHud_Modified((MKProp *) this, temp_f1_322, temp_f1_322, 50.0f);
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: undefined identifier 'sp28'
 void SteamTrainCaboose::GetVel() {
     f64 sp40;
     f64 sp38;
@@ -261,7 +261,7 @@ void SteamTrainCaboose::BlowUp() {
     }
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void SteamTrainCaboose::Message(MKMessage *arg0) {
     f64 spA8;
     f64 spA0;
@@ -405,7 +405,7 @@ block_34:
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
 void SteamTrainCaboose::Update() {
     SteamTrain *temp_r3_821;
     f32 temp_f1_913;

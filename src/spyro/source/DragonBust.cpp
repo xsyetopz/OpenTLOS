@@ -972,7 +972,7 @@ void DragonBust::IdleUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: undefined identifier 'sp8'
 void DragonBust::IdleEnter() {
     f64 sp80;
     f64 sp78;

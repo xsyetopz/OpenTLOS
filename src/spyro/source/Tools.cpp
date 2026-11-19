@@ -31,7 +31,7 @@ extern s8 *Tools_PropCreator_Name;
 extern MKSceneManager *gMK;
 extern M2C_UNK gb;
 extern s32 pauseSndCount;
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: function call 'stricmp(const char *)' does not match
 static M2C_UNK Tools_ClosestPropsPos;               /* unable to generate initializer: unknown type */
 static M2C_UNK lit_1474;                               /* unable to generate initializer: unknown type; const */
 

@@ -55,7 +55,7 @@ void CharacterGraphNodeProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNodeProp *' to
 void CharacterGraphNodeProp::Resolve() {
     KDSplinePathSegmentProp *var_r29_147;
     MKSceneManager *temp_r3_155;

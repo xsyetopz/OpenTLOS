@@ -434,7 +434,7 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'MoleTether *' to
 void MiningMole::LoadDone() {
     s32 temp_r3_972;
 

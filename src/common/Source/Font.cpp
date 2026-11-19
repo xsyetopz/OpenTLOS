@@ -1271,7 +1271,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: identifier 'MKFont::Create(const char *)' redeclared
 void *MKFont::Create(const char *arg0) {
     MKHeap *temp_r3_2229;
     MKHeap *temp_r3_2243;

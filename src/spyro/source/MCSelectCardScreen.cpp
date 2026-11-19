@@ -17,9 +17,7 @@
 #include <m2c_macros.h>
 
 extern s32 GS_MenuSelect;
-#if 0 // DRAFT: identifier 'autosaveCard' redeclared
 extern KDMemoryCard *autosaveCard;
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void MCSelectCardScreen::ClearDisplay() {

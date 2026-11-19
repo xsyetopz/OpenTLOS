@@ -955,7 +955,7 @@ void WeatherRegionDescriptor::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'WeatherSnowPS *' to
 void WeatherRegionDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
     this->unkE0 = checked_cast<WeatherSnowPS *, MKProp>(gMK->CreateProp("WeatherSnowPS"));

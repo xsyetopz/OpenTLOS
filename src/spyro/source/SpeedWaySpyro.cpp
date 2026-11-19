@@ -385,7 +385,7 @@ void SpeedwayFX::Deinit() {
 
 }
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 SpeedwayFX::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
     FireBombFX *temp_r3_263;
 
@@ -2751,7 +2751,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'SpeedWay *' to
 void SpeedWaySpyro::Resolve() {
     MKProp *temp_r3_6024;
     MKSceneManager *temp_r5_6010;
