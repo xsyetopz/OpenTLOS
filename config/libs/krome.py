@@ -11,6 +11,15 @@ KDEnvParticleSystemDescriptor calls the 30-instruction CalculateEnvelope
 defined before it out of line, which `-inline auto` would inline. Over all
 ANB game/engine objects, noauto against auto gave 49 more 100% functions,
 none lost, and fuzzy match up in 205 functions, down in 1.
+
+"-fp_contract on" lets MWCC fuse multiply-add pairs into fmadds/fmsubs/fnmsubs,
+which the original objects use throughout. "-str reuse,pool,readonly" merges
+identical string literals into one pooled read-only block, as the original
+.rodata/.data string layout does. Size-weighted function match over 943206
+bytes of compiling game TUs (fpc/probe2.py): -fp_contract on 29.850%;
++ -str reuse 29.850%; + -str reuse,pool,readonly 31.098%; + -str readonly
+30.252%. Per-TU deltas of the pooled variant ranged from -1.66 (MKHeap) to
++25.33 (NPCGuardian).
 """
 
 from pathlib import Path
@@ -24,6 +33,8 @@ CFLAGS = [
     "-align powerpc",
     "-enum int",
     "-fp hardware",
+    "-fp_contract on",
+    "-str reuse,pool,readonly",
     "-Cpp_exceptions off",
     "-RTTI off",
     "-O4,s",
