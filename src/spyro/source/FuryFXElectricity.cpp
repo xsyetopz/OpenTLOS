@@ -59,6 +59,7 @@
 #include "spyro/source/SpyroUtils.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/Tools.h"
+#include "spyro/source/TimeDeltaModifier.h"
 #include "spyro/source/WaterDripPS.h"
 #include "spyro/source/ZapArcFX.h"
 #include "spyro/source/ZapPS.h"
@@ -116,7 +117,7 @@ void FuryFXElectricity::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void FuryFXElectricity::DrawWindyRing(FuryFXElectricity::WindyRing *arg1) {
     M2C_UNK sp120;
     Matrix spE0;
@@ -253,7 +254,7 @@ void FuryFXElectricity::DrawWindyRing(FuryFXElectricity::WindyRing *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void FuryFXElectricity::DrawElectricityRing() {
     M2C_UNK sp100;
     Matrix spC0;
@@ -302,8 +303,8 @@ void FuryFXElectricity::DrawElectricityRing() {
     spB0 = (f64) sp50;
     spB8 = (f64) sp58;
     M2C_STRUCT_COPY((s32) &spBC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    spC0.unk30 = this->unk160;
-    spC0.unk34 = this->unk164;
+    spC0.unk30 = this->unk164;
+    spC0.unk34 = this->unk168;
     spC0.unk38 = this->unk168;
     spC0.unk3C = 1.0f;
     spC0.Scale3x3(&spC0, this->unk98);
@@ -513,7 +514,6 @@ void FuryFXElectricity::SetDefaults() {
     this->unk90 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk2CC'
 void FuryFXElectricity::Deinit() {
     MKMaterial *temp_r3_779;
     MKMaterial *temp_r3_784;
@@ -536,13 +536,11 @@ void FuryFXElectricity::Deinit() {
     if (temp_r4_794 != NULL) {
         ((LightManager *) gb.unk80)->FreeManagedLight(temp_r4_794);
     }
-    gb.unk2CC.Disable(this->unk188);
+    M2C_FIELD(&gb, TimeDeltaModifier *, 0x2CC).Disable(this->unk188);
     this->unk188 = -1;
     FuryFX::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FuryFXElectricity *' to 'FuryFXElectricity::WindyRing *'
 void FuryFXElectricity::Draw() {
     s32 temp_r0_826;
     s32 var_r30_839;
@@ -555,14 +553,13 @@ void FuryFXElectricity::Draw() {
             var_r30_839 = 0;
             var_r31_840 = 0;
             do {
-                DrawWindyRing(this + (var_r31_840 + 0xD0));
+                DrawWindyRing((FuryFXElectricity::WindyRing *) ((s8 *) this + (var_r31_840 + 0xD0)));
                 var_r30_839 += 1;
                 var_r31_840 += 0x10;
             } while (var_r30_839 < 3);
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to 'KDInput *'
 void *FuryFXElectricity::Update() {
@@ -1066,8 +1063,8 @@ block_172:
                 }
                 sp748 = MKVector(1000.0f, 1000.0f, 1000.0f);
                 sp758 = MKVector(-12.0f, 40.0f, -12.0f);
-                sp768.operator*(gUpdateTimeDelta);
-                sp778.operator*((2.0f * (1.0f - (var_f22_1274 / 3.0f))) + 1.0f);
+                sp768 = sp758.operator*(gUpdateTimeDelta);
+                sp778 = sp768.operator*((2.0f * (1.0f - (var_f22_1274 / 3.0f))) + 1.0f);
                 temp_f0_1315 = M2C_FIELD(this, f64 *, 0x98) + M2C_BITWISE(f64, sp778);
                 sp68 = temp_f0_1315;
                 sp788 = temp_f0_1315;
@@ -1080,7 +1077,7 @@ block_172:
             } else {
                 sp6E8 = MKVector(1000.0f, 1000.0f, 1000.0f);
                 sp6F8 = MKVector(-12.0f, 40.0f, -12.0f);
-                sp708.operator*(gUpdateTimeDelta);
+                sp708 = sp6F8.operator*(gUpdateTimeDelta);
                 temp_f0_1361 = M2C_FIELD(this, f64 *, 0x98) + M2C_BITWISE(f64, sp708);
                 sp58 = temp_f0_1361;
                 sp718 = temp_f0_1361;
@@ -1132,8 +1129,8 @@ block_172:
                 }
                 sp648 = MKVector(1000.0f, 1000.0f, 1000.0f);
                 sp658 = MKVector(-12.0f, 3.0f, -12.0f);
-                sp668.operator*((2.0f * (1.0f - (var_f22_1466 / 3.0f))) + 1.0f);
-                sp678.operator*(gUpdateTimeDelta);
+                sp668 = sp658.operator*((2.0f * (1.0f - (var_f22_1466 / 3.0f))) + 1.0f);
+                sp678 = sp668.operator*(gUpdateTimeDelta);
                 temp_f0_1507 = M2C_FIELD(this, f64 *, 0x98) + M2C_BITWISE(f64, sp678);
                 sp48 = temp_f0_1507;
                 sp688 = temp_f0_1507;
@@ -1146,7 +1143,7 @@ block_172:
             } else {
                 sp5E8 = MKVector(1000.0f, 1000.0f, 1000.0f);
                 sp5F8 = MKVector(-12.0f, 3.0f, -12.0f);
-                sp608.operator*(gUpdateTimeDelta);
+                sp608 = sp5F8.operator*(gUpdateTimeDelta);
                 temp_f0_1553 = M2C_FIELD(this, f64 *, 0x98) + M2C_BITWISE(f64, sp608);
                 sp38 = temp_f0_1553;
                 sp618 = temp_f0_1553;
@@ -1239,7 +1236,7 @@ block_172:
         temp_f26_1727 = 1.0f - (var_f2_1705 / 1.2f);
         sp558 = MKVector(1000.0f, 1000.0f, 1000.0f);
         sp568 = MKVector(-0.25f, 0.0f, -0.25f);
-        sp578.operator*(gUpdateTimeDelta);
+        sp578 = sp568.operator*(gUpdateTimeDelta);
         temp_f0_1741 = M2C_FIELD(this, f64 *, 0x98) + M2C_BITWISE(f64, sp578);
         sp28 = temp_f0_1741;
         sp588 = temp_f0_1741;
@@ -1463,7 +1460,7 @@ block_172:
     case 4:                                         /* switch 1 */
         sp3A8 = MKVector(1000.0f, 1000.0f, 1000.0f);
         sp3B8 = MKVector(18.0f, -10.0f, 18.0f);
-        sp3C8.operator*(gUpdateTimeDelta);
+        sp3C8 = sp3B8.operator*(gUpdateTimeDelta);
         temp_f0_2308 = M2C_FIELD(this, f64 *, 0x98) + M2C_BITWISE(f64, sp3C8);
         sp18 = temp_f0_2308;
         sp3D8 = temp_f0_2308;
@@ -1569,7 +1566,7 @@ loop_151:
             temp_f22_2538 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f23_2543 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp308 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f23_2543, temp_f22_2538);
-            sp318.operator*(200.0f);
+            sp318 = sp308.operator*(200.0f);
             sp78 = sp318 * (f64) var_f26_2522;
             sp858 = 0x417;
             sp860 = sp78;
