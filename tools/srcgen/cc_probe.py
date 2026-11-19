@@ -22,7 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 WIBO = ROOT / "build/tools/wibo"
 OBJDIFF = ROOT / "build/tools/objdiff-cli"
-BASE = "-nodefaults -proc gekko -align powerpc -enum int -fp hardware -Cpp_exceptions off -RTTI off -inline auto"
+BASE = "-nodefaults -proc gekko -align powerpc -enum int -fp hardware -Cpp_exceptions off -RTTI off -inline noauto"
 
 
 def score(target: Path, obj: Path) -> dict[str, tuple[float, int, int]]:

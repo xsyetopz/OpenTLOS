@@ -5,6 +5,12 @@ common/Source/Crc.cpp matches 100% in all three functions with GC/2.0-2.7 and
 "-O4,s -use_lmw_stmw on"; GC/3.0a3+ and every -O4,p variant miss (unrolled
 loops, _savegpr calls). GC/2.7 is chosen within the 2.x family because the
 DOL links with the GC/2.7 linker; probes that separate 2.0-2.7 are still open.
+
+Inlining is MWCC's default `-inline noauto`: the original LoadDone of
+KDEnvParticleSystemDescriptor calls the 30-instruction CalculateEnvelope
+defined before it out of line, which `-inline auto` would inline. Over all
+ANB game/engine objects, noauto against auto gave 49 more 100% functions,
+none lost, and fuzzy match up in 205 functions, down in 1.
 """
 
 from pathlib import Path
@@ -22,7 +28,7 @@ CFLAGS = [
     "-RTTI off",
     "-O4,s",
     "-use_lmw_stmw on",
-    "-inline auto",
+    "-inline noauto",
     '-pragma "cats off"',
     '-pragma "warn_notinlined off"',
     "-maxerrors 1",
