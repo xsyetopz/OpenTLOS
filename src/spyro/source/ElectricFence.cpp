@@ -124,27 +124,24 @@ void ElectricFence::AllocBeams() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'ElectricFence' to 'EnergyBeam::Beam *'
 void ElectricFence::FreeBeams() {
     s32 temp_r28_158;
     s32 var_r27_156;
     s32 var_r31_153;
-    void *temp_r29_154;
+    ElectricFenceDescriptor *desc;
 
     var_r31_153 = 0;
-    temp_r29_154 = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    desc = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     var_r27_156 = 0;
     do {
         temp_r28_158 = var_r31_153 + 0xD0;
-        ((EnergyBeam *) (M2C_FIELD(temp_r29_154, EnergyBeam **, 0x80)))->FreeEnergyBeam(*(this + temp_r28_158));
+        ((EnergyBeam *) desc->unk80)->FreeEnergyBeam(M2C_FIELD(this, EnergyBeam::Beam **, temp_r28_158));
         var_r27_156 += 1;
-        *(this + temp_r28_158) = 0;
+        M2C_FIELD(this, EnergyBeam::Beam **, temp_r28_158) = NULL;
         var_r31_153 += 0x18;
     } while (var_r27_156 < 2);
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void ElectricFence::EnableFenceCollision(bool arg0) {
     s32 temp_r0_186;
     s32 temp_r0_199;
@@ -156,28 +153,22 @@ void ElectricFence::EnableFenceCollision(bool arg0) {
     var_r4_179 = 0;
     var_r5_180 = 0;
     if (arg0 != 0) {
-loop_3:
-        if (var_r8_178 < (s32) (this->unk50 - 1)) {
+        while (var_r8_178 < (s32) (this->unk50 - 1)) {
             temp_r0_186 = var_r5_180 + 0x5C;
             var_r8_178 += 1;
             var_r5_180 += 0x70;
-            *(this->unk4C + temp_r0_186) = 1;
-            goto loop_3;
+            M2C_FIELD(this->unk4C, s8 *, temp_r0_186) = 1;
         }
         return;
     }
-loop_7:
-    if (var_r8_178 < (s32) (this->unk50 - 1)) {
+    while (var_r8_178 < (s32) (this->unk50 - 1)) {
         temp_r0_199 = var_r4_179 + 0x5C;
         var_r8_178 += 1;
         var_r4_179 += 0x70;
-        *(this->unk4C + temp_r0_199) = 0;
-        goto loop_7;
+        M2C_FIELD(this->unk4C, s8 *, temp_r0_199) = 0;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void ElectricFence::Deinit() {
     MKModel *temp_r3_227;
     MKModel *temp_r3_234;
@@ -188,19 +179,17 @@ void ElectricFence::Deinit() {
     KDSound_Stop((int *) &this->unk114);
     var_r30_221 = 0;
     var_r31_222 = 0;
-loop_6:
-    if (var_r30_221 < (s32) this->unk50) {
-        temp_r3_227 = *(this->unk4C + (var_r31_222 + 0x40));
+    while (var_r30_221 < this->unk50) {
+        temp_r3_227 = M2C_FIELD(this->unk4C, MKModel **, var_r31_222 + 0x40);
         if (temp_r3_227 != NULL) {
             MKModel_Destroy(temp_r3_227);
         }
-        temp_r3_234 = *(this->unk4C + (var_r31_222 + 0x54));
+        temp_r3_234 = M2C_FIELD(this->unk4C, MKModel **, var_r31_222 + 0x54);
         if (temp_r3_234 != NULL) {
             MKModel_Destroy(temp_r3_234);
         }
         var_r30_221 += 1;
         var_r31_222 += 0x70;
-        goto loop_6;
     }
     FreeBeams();
     temp_r31_247 = this->unk4C;
@@ -211,54 +200,49 @@ loop_6:
     }
     MKProp::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void ElectricFence::Draw() {
     s32 var_r30_278;
     s32 var_r31_279;
 
     var_r30_278 = 0;
     var_r31_279 = 0;
-loop_2:
-    if (var_r30_278 < (s32) this->unk50) {
-        MKModel_Draw(*(this->unk4C + (var_r31_279 + 0x40)), NULL);
+    while (var_r30_278 < unk50) {
+        MKModel_Draw(M2C_FIELD(unk4C, MKModel **, var_r31_279 + 0x40), NULL);
         var_r30_278 += 1;
         var_r31_279 += 0x70;
-        goto loop_2;
     }
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void ElectricFence::Message(MKMessage *arg0) {
-    MKVector3 *temp_r30_356;
-    s32 temp_r0_313;
-    s32 var_ctr_378;
-    s32 var_ctr_393;
+    ElectricFenceDescriptor *desc;
+    HitHeroSndMsg *hit;
+    MKVector3 *pos;
     s32 var_r3_376;
+    s32 var_ctr_378;
     s32 var_r3_391;
+    s32 var_ctr_393;
     void *temp_r5_381;
     void *temp_r5_396;
 
     ((KDSoundPlayer *) &this->unk114)->Message(arg0);
-    temp_r0_313 = arg0->unk0;
-    switch (temp_r0_313) {                          /* irregular */
+    switch (arg0->unk0) {
     case 181:
         this->unk54 = 1;
         EnableFenceCollision(this->unk54);
         AllocBeams();
         return;
     case 22:
-        M2C_FIELD(checked_cast<HitHeroSndMsg *, MKMessage>(arg0), s32 *, 8) = (s32) GS_SpyroZapBurn;
-    default:
-block_25:
+        hit = checked_cast<HitHeroSndMsg *, MKMessage>(arg0);
+        M2C_FIELD(hit, s32 *, 8) = (s32) GS_SpyroZapBurn;
         MKProp::Message(arg0);
         return;
     case 180:
-        if (((s32) M2C_FIELD(checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x88) != 0) && ((u8) this->unk54 != 0)) {
-            temp_r30_356 = ((u8 *) this->unk8) + 0x30;
-            KDSound_Play3d(M2C_FIELD(checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x88), temp_r30_356, 0U, -1, 0.0f, 0U);
+        desc = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        if ((desc->unk88 != 0) && ((u8) this->unk54 != 0)) {
+            pos = (MKVector3 *) ((u8 *) this->unk8 + 0x30);
+            desc = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            KDSound_Play3d(desc->unk88, pos, 0U, -1, 0.0f, false);
         }
         this->unk54 = 0;
         EnableFenceCollision(this->unk54);
@@ -268,56 +252,59 @@ block_25:
         var_r3_376 = 0;
         var_ctr_378 = 2;
         do {
-            temp_r5_381 = *(this + (var_r3_376 + 0xD0));
+            temp_r5_381 = M2C_FIELD(this, void **, var_r3_376 + 0xD0);
             if (temp_r5_381 != NULL) {
-                M2C_FIELD(temp_r5_381, s8 *, 0x10) = 1;
+                M2C_FIELD(temp_r5_381, u8 *, 0x10) = 1;
             }
             var_r3_376 += 0x18;
             var_ctr_378 -= 1;
         } while (var_ctr_378 != 0);
-        goto block_25;
+        MKProp::Message(arg0);
+        return;
     case -4:
         var_r3_391 = 0;
         var_ctr_393 = 2;
         do {
-            temp_r5_396 = *(this + (var_r3_391 + 0xD0));
+            temp_r5_396 = M2C_FIELD(this, void **, var_r3_391 + 0xD0);
             if (temp_r5_396 != NULL) {
-                M2C_FIELD(temp_r5_396, s8 *, 0x10) = 0;
+                M2C_FIELD(temp_r5_396, u8 *, 0x10) = 0;
             }
             var_r3_391 += 0x18;
             var_ctr_393 -= 1;
         } while (var_ctr_393 != 0);
-        goto block_25;
+        MKProp::Message(arg0);
+        return;
+    default:
+        MKProp::Message(arg0);
+        return;
     }
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void *ElectricFence::Update() {
     f64 sp18;
     f64 sp10;
-    s32 sp8;
     MKSceneManager *temp_r3_445;
     f64 temp_f0_453;
     f64 temp_f1_452;
     s32 var_r29_463;
     s32 var_r31_464;
-    void *temp_r30_472;
-    void *temp_r3_448;
+    s8 *temp_r30_472;
+    MKVector3 *temp_r4_477;
+    ElectricFenceDescriptor *temp_r3_433;
+    ElectricFenceDescriptor *temp_r4_433;
+    MKProp *temp_r3_448;
     void *temp_r3_451;
-    void *temp_r4_433;
-    void *temp_r4_477;
 
-    if ((s32) M2C_FIELD(checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x84) != 0) {
+    temp_r3_433 = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if (temp_r3_433->unk84 != 0) {
         temp_r4_433 = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        sp8 = 1;
-        ((KDSoundFader *) &this->unk114)->Update(M2C_FIELD(temp_r4_433, s32 *, 0x84), 1U, this->unk54, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) &this->unk114)->Update(temp_r4_433->unk84, true, this->unk54, (MKProp *) this, NULL, 0U, -1, true);
     }
     temp_r3_445 = this->unk110;
     if (temp_r3_445 != NULL) {
         temp_r3_448 = MKSceneManager::PropResolver_Resolve((s32) temp_r3_445);
         if (temp_r3_448 != NULL) {
-            temp_r3_451 = M2C_FIELD(temp_r3_448, void **, 8);
+            temp_r3_451 = temp_r3_448->unk8;
             temp_f1_452 = M2C_FIELD(temp_r3_451, f64 *, 0x30);
             temp_f0_453 = M2C_FIELD(temp_r3_451, f64 *, 0x38);
             sp10 = temp_f1_452;
@@ -330,30 +317,27 @@ void *ElectricFence::Update() {
         var_r29_463 = 0;
         var_r31_464 = 0;
         do {
-            temp_r30_472 = this + var_r31_464;
-            temp_r4_477 = ((u8 *) this->unk4C) + ((MKRand_Int((int *) &gViewSeed, 0, this->unk50) * 0x70) + 0x30);
-            M2C_FIELD(temp_r30_472, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r4_477, f64 *, 0);
-            M2C_FIELD(temp_r30_472, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r4_477, f64 *, 8);
+            temp_r30_472 = (s8 *) this + var_r31_464;
+            temp_r4_477 = (MKVector3 *) ((s8 *) this->unk4C + ((MKRand_Int((int *) &gViewSeed, 0, this->unk50) * 0x70) + 0x30));
+            M2C_FIELD(temp_r30_472, MKVector3 *, 0xD8) = *temp_r4_477;
             var_r29_463 += 1;
             var_r31_464 += 0x18;
             M2C_FIELD(temp_r30_472, f32 *, 0xDC) = (f32) ((1000.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f)) + M2C_FIELD(temp_r30_472, f32 *, 0xDC));
         } while (var_r29_463 < 2);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'ElectricFence' to 'void *'
 f32 ElectricFence::Resolve() {
     s32 var_ctr_514;
     s32 var_r3_511;
-    void *temp_r5_517;
+    EnergyBeam::Beam *temp_r5_517;
 
     MKProp::Resolve();
     AllocBeams();
     var_r3_511 = 0;
     var_ctr_514 = 2;
     do {
-        temp_r5_517 = *(this + (var_r3_511 + 0xD0));
+        temp_r5_517 = M2C_FIELD(this, EnergyBeam::Beam **, var_r3_511 + 0xD0);
         if (temp_r5_517 != NULL) {
             M2C_FIELD(temp_r5_517, s8 *, 0x10) = 0;
         }
@@ -361,7 +345,6 @@ f32 ElectricFence::Resolve() {
         var_ctr_514 -= 1;
     } while (var_ctr_514 != 0);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 s32 ElectricFence::LoadDone() {
@@ -736,16 +719,13 @@ loop_30:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 s32 ElectricFence::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r27_1234;
-    s32 temp_r0_1249;
     s32 temp_r28_1214;
-    s32 temp_r3_1245;
     s32 var_r29_1235;
-    s32 var_r29_1274;
-    void *temp_r5_1248;
+    s32 result_1274;
+    s8 *temp_r5_1248;
     void *var_r3_1222;
 
     if (MKProp::LoadLine(arg0) != 0) {
@@ -762,37 +742,32 @@ s32 ElectricFence::LoadLine(MKIniLine *arg0) {
         this->unk4C = var_r3_1222;
         var_r27_1234 = arg0->unkC->GetSubLine(arg0);
         var_r29_1235 = 0;
-loop_8:
-        if (var_r27_1234 != NULL) {
+        while (var_r27_1234 != NULL) {
             var_r27_1234->LoadVector3("waypoint", &sp8, 0);
-            temp_r3_1245 = var_r29_1235 + 0x40;
-            temp_r5_1248 = ((u8 *) this->unk4C) + var_r29_1235;
-            temp_r0_1249 = var_r29_1235 + 0x54;
-            M2C_FIELD(temp_r5_1248, f32 *, 0x30) = M2C_BITWISE(f32, sp8);
-            var_r29_1235 += 0x70;
+            temp_r5_1248 = (s8 *) this->unk4C + var_r29_1235;
+            M2C_FIELD(temp_r5_1248, f32 *, 0x30) = sp8.unk0;
             M2C_FIELD(temp_r5_1248, f32 *, 0x34) = sp8.unk4;
             M2C_FIELD(temp_r5_1248, f32 *, 0x38) = sp8.unk8;
             M2C_FIELD(temp_r5_1248, f32 *, 0x3C) = 1.0f;
-            *(this->unk4C + temp_r3_1245) = 0;
-            *(this->unk4C + temp_r0_1249) = 0;
+            M2C_FIELD(temp_r5_1248, s32 *, 0x40) = 0;
+            M2C_FIELD(temp_r5_1248, s32 *, 0x54) = 0;
+            var_r29_1235 += 0x70;
             var_r27_1234 = var_r27_1234->unkC->GetNextLine(var_r27_1234);
-            goto loop_8;
         }
     }
-    var_r29_1274 = 0;
-    if ((arg0->LoadBool("StartOn", &this->unk54, 0) != 0) || (arg0->LoadInt("JellyFishID", (int *) &this->unk110, 0) != 0)) {
-        var_r29_1274 = 1;
+    result_1274 = 0;
+    if ((arg0->LoadBool("StartOn", (bool *) &this->unk54, 0) != 0) || (arg0->LoadInt("JellyFishID", (int *) &this->unk110, 0) != 0)) {
+        result_1274 = 1;
     }
-    return var_r29_1274;
+    return result_1274;
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 void ElectricFence::Init() {
     s32 temp_r0_1319;
     s32 var_ctr_1317;
     s32 var_r3_1315;
-    void *temp_r31_1327;
+    ElectricFenceDescriptor *temp_r31_1327;
+    ElectricFenceDescriptor *temp_r3_1328;
 
     MKProp::Init();
     this->unk54 = 1;
@@ -802,14 +777,14 @@ void ElectricFence::Init() {
     do {
         temp_r0_1319 = var_r3_1315 + 0xD0;
         var_r3_1315 += 0x18;
-        *(this + temp_r0_1319) = 0;
+        M2C_FIELD(this, s32 *, temp_r0_1319) = 0;
         var_ctr_1317 -= 1;
     } while (var_ctr_1317 != 0);
     this->unk110 = NULL;
     temp_r31_1327 = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((KDSoundFader *) &this->unk114)->Init(M2C_FIELD(checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C), M2C_FIELD(temp_r31_1327, f32 *, 0x90));
+    temp_r3_1328 = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    ((KDSoundFader *) &this->unk114)->Init(temp_r3_1328->unk8C, temp_r31_1327->unk90);
 }
-#endif
 
 void ElectricFenceDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
