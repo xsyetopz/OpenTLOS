@@ -865,10 +865,12 @@ void SiegeTower::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'P20SiegeTowerDescriptor'
 void SiegeTower::Init() {
+    SiegeTowerDescriptor *desc;
+
     Shatterable::Init();
-    this->unk1C0.Init(checked_cast<P20SiegeTowerDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x184, (MKProp *) this);
+    desc = checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk1C0.Init(&desc->unk184, (MKProp *) this);
     this->unk248 = NULL;
     this->unk290 = 0.0f;
     ((KDSoundFader *) &this->unk2A0)->Init(0.05f, 0.25f);
@@ -887,7 +889,6 @@ void SiegeTower::Init() {
     this->unk29C = 0xFF;
     this->unk294 = 3000.0f;
 }
-#endif
 
 void SiegeTowerDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
@@ -911,17 +912,16 @@ void SiegeTowerDescriptor::Deinit() {
     ShatterableDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void SiegeTowerDescriptor::Init() {
     ShatterableDescriptor::Init();
     this->unk64 |= 0x2000;
     this->unk178 = 0;
     this->unk17C = 0;
     this->unk180 = 0;
-    this->unk16C = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
+    EnergyBeam *beam = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
+    M2C_FIELD(this, EnergyBeam **, 0x16C) = beam;
     this->unk184.Init();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'siegeTowerGroups'
 s32 SiegeTower_GetSiegeTower(int arg0, int arg1) {
