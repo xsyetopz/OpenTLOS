@@ -153,6 +153,7 @@ class Model:
         self.statics: set = set()  # mangled static methods (mstatic), set by load_model
         self.sret: dict = {}  # mangled free function -> class it returns by hidden pointer (sret), set by load_model
         self.nested: dict = {}  # outer class -> inner names, set by the caller
+        self.aligned: dict = {}  # class -> proven alignment above its members' (config class_align.tsv), set by load_model
         for name, f in fields.items():  # structs m2c saw that have no methods
             if name not in classes and "<" not in name:
                 classes[name] = {"methods": [], "statics": [], "vtable": None, "owner": None}
@@ -495,11 +496,14 @@ class Model:
         f64 members make it 8 because the headers declare them as f64, and
         MWCC then rounds the class to 8; CollisionObject's sizeof is 0x478,
         which the asm confirms with Character's field at 0x110 + 0x478.
+        A proven alignment from `aligned` raises it further: MKVector3 is
+        four floats yet MWCC copies it with lfd/stfd, which it does only for
+        an 8-aligned class.
         """
         if name in seen:
             return 4
         c = self.classes.get(name, {})
-        out = 4 if self.vptr_of(name) is not None else 1
+        out = max(4 if self.vptr_of(name) is not None else 1, self.aligned.get(name, 1))
         if c.get("base"):
             out = max(out, self.align(c["base"], (*seen, name)))
         for f in self.fields.get(name, {}).get("fields", {}).values():
@@ -541,6 +545,9 @@ def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path, votes: Pa
         for m in c["methods"]:
             if m["mangled"] in model.statics:
                 m["static"] = True
+    aligns = ROOT / "config" / VERSION / "class_align.tsv"
+    if aligns.exists():
+        model.aligned = {r[0]: int(r[1], 0) for r in (l.split("\t") for l in aligns.read_text().splitlines()[1:]) if r[0]}
     layouts = ROOT / "config" / VERSION / "class_fields.tsv"
     if layouts.exists():
         model.apply_fields([(r[0], int(r[1], 0), r[2]) for r in

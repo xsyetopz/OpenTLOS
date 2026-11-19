@@ -223,12 +223,12 @@ class Converter:
         quals = [str(q) for q in sym.name.qualified_name or []] if sym else []
         cls = "::".join(quals[:-1]) or None
         params = params_of(sig)
-        if cls and params and params[0][1] == "this":
-            params = params[1:]
         sret = self.model.sret.get(mangled)
-        if sret and params and params[0][1] == "sret":
+        if sret and params and params[0][1] == "sret":  # MWCC passes the result pointer before `this`
             params = params[1:]
             body = sret_body(body, sret)
+        if cls and params and params[0][1] == "this":
+            params = params[1:]
         names = {cls} if cls else set()
         if not sym or not sym.type.terms or sym.type.terms[-1].kind != K.FUNCTION:
             return f"{ret} {mangled}({sig}) {body}", names

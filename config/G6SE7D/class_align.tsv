@@ -1,0 +1,3 @@
+class	align	evidence
+MKVector3	8	Max__FRC9MKVector3RC9MKVector3 copies its 16-byte result with two lfd/stfd pairs; MWCC emits that only for an 8-aligned class (aligned(4) gives lwz/stw, aligned(16) a stwux frame); all 143 by-value members sit at offsets divisible by 8
+MKVector4	8	__ml__9MKVector4CFf (CrashSparkPS) copies its result to r3 with lfd/stfd at 0 and 8, as does Emit__8EmbersPS from an MKVector4 reference; by-value members sit at offsets divisible by 8

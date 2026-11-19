@@ -1,4 +1,4 @@
-"""Free functions that return a class by value, proven from their asm.
+"""Functions that return a class by value, proven from their asm.
 
 MWCC returns a class through a hidden pointer passed in the first GPR, so
 `MKVector3 Max(const MKVector3 &, const MKVector3 &)` reads r3 (the result)
@@ -6,8 +6,8 @@ and r4, r5 (the parameters). m2c's PPC backend does not model this (its MIPS
 and ARM backends do), and calls lose their destination:
 `MKVector__Ffff(1.0f, 1.0f, 1.0f);` before `KDRand_Vector(&sp88, &sp78)`.
 
-A free function returns a class when its body reads the GPR after its last
-declared integer or pointer parameter before writing it. Variadic functions
+A function returns a class when its body reads the GPR after its last
+declared integer or pointer parameter (and `this`) before writing it. Variadic functions
 are excluded: they spill every argument register. The class is the one
 whose size equals the extent the body stores through that register: a
 class operand first, else a vector (see `result_type`).
@@ -27,20 +27,27 @@ WIDTH = {"stb": 1, "sth": 2, "stw": 4, "stfs": 4, "stfd": 8, "psq_st": 8}
 VECTORS = (0xC, 0x10)
 
 
-def hidden_reg(mangled: str) -> tuple[str, list[str]] | None:
-    """(GPR of the last parameter once r3 holds the result pointer, parameter types)."""
+def hidden_reg(mangled: str, statics: set = frozenset()) -> tuple[str, list[str], str | None] | None:
+    """(GPR after the last parameter once r3 holds the result pointer, parameter types, class).
+
+    A non-static member also passes `this`, in r4, so its parameters start at
+    r5. Constructors and destructors return `this`, not a class. 64-bit
+    parameters, which take an aligned GPR pair, are skipped.
+    """
     try:
         sym = parse(mangled)
     except Exception:  # noqa: BLE001 - not a mangled name
         return None
     terms = sym.type.terms
-    if not terms or terms[-1].kind != K.FUNCTION or len(sym.name.qualified_name or []) != 1:
+    quals = [str(q) for q in sym.name.qualified_name or []]
+    if not terms or terms[-1].kind != K.FUNCTION or not quals or quals[-1] in ("__ct", "__dt"):
         return None
     params = [render(p) for p in terms[-1].function_params or [] if render(p) != "void"]
-    if any(p == "..." for p in params) or mangled.endswith("e"):
+    if any(p == "..." or "long long" in p for p in params) or mangled.endswith("e"):
         return None
-    gprs = sum(p not in FLOATS for p in params)
-    return (f"r{3 + gprs}", params) if gprs < 8 else None
+    cls = "::".join(quals[:-1]) or None
+    gprs = sum(p not in FLOATS for p in params) + (1 if cls and mangled not in statics else 0)
+    return (f"r{3 + gprs}", params, cls) if gprs < 8 else None
 
 
 def reads_first(body: list[str], reg: str) -> bool:
@@ -75,8 +82,9 @@ def store_extent(body: list[str]) -> int:
     return end
 
 
-def result_type(model, params: list[str], extent: int) -> str | None:
-    """The returned class: an operand class `T` of `T f(const T &, ...)`, else a vector.
+def result_type(model, params: list[str], extent: int, cls: str | None = None, op: bool = False) -> str | None:
+    """The returned class: an operator's own class or an operand class `T` of
+    `T f(const T &, ...)`, else a vector.
 
     A class reached only through a pointer parameter is an input, not the
     result (`MKFont_GetCharPos(MKFont *, ...)` stores a position). An extent
@@ -86,6 +94,8 @@ def result_type(model, params: list[str], extent: int) -> str | None:
     parameters, one per lane, make the result an MKVector4.
     """
     operands_ = sorted({re.sub(r"^const |\s*&$", "", p).strip() for p in params if not p.endswith("*")})
+    if op and cls in model.classes and extent == model.sizeof(cls):
+        return cls  # `T T::operator*(float) const`; a getter of a 16-byte class still returns a vector
     for c in operands_:
         if c in model.classes and extent in (0, model.sizeof(c)):
             return c
@@ -95,14 +105,14 @@ def result_type(model, params: list[str], extent: int) -> str | None:
 
 
 def struct_returns(model, asm_root: Path) -> dict[str, str]:
-    """Mangled free function -> the class it returns through the hidden pointer."""
+    """Mangled function -> the class it returns through the hidden pointer."""
     out = {}
     for f in sorted(asm_root.rglob("*.s")):
         for name, body in bodies(f).items():
-            hit = hidden_reg(name)
+            hit = hidden_reg(name, model.statics)
             if not hit or not reads_first(body, hit[0]):
                 continue
-            out_t = result_type(model, hit[1], store_extent(body))
+            out_t = result_type(model, hit[1], store_extent(body), hit[2], name.startswith("__"))
             if out_t:
                 out[name] = out_t
     return out

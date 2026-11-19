@@ -119,7 +119,8 @@ def class_body(model: Model, name: str, refs: Refs, nested: set) -> list[str]:
         lines[data_at:data_at] = pre
         pos = vp + 4
     lines += fields_text(model, fields, pos, None, refs)
-    lines.append("};")
+    a = model.aligned.get(name)
+    lines.append(f"}} __attribute__((aligned({a})));" if a else "};")
     return lines
 
 
