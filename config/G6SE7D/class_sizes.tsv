@@ -1,2 +1,7 @@
 class	size	evidence
 MKVector3	0x10	Max__FRC9MKVector3RC9MKVector3 (0x803069D4): lfs x/y/z at 0/4/8, result copied with lfd/stfd at 0x0 and 0x8 of r3
+EventMessage	0x4	__construct_array at 0x8000DEE4 (PropCreatorHelper<25ElementalCombatController>::Create): r4=__ct__12EventMessageFv, r6 (element size)=0x4, r7=0x10; same stride at 0x8000E898 and 0x8000F7C0
+MKVector4	0x10	__ml__9MKVector4CFf (0x80062468): by-value result written through hidden r3 with stfd at 0x0 and 0x8
+KDUniformSpline	0x14	__construct_array in __ct__8FireBossFv (0x80009F10): r4=__ct__15KDUniformSplineFv, r6=0x14, r7=2; second array at +0xB74 follows +0xB4C by 2*0x14
+KDSpline	0x14	__construct_array in PropCreatorHelper<TrainTrack>::Create (~0x8000E69C): r4=__ct__8KDSplineFv, r6=0x14, r7=4
+UIEvent	0xC	UIScreen::LoadLine (0x801A0C48) calls UIEvent::LoadLine on this+0x68..0xBC in steps of 0xC (step >= sizeof); UIEvent::LoadLine (0x8019FC24) stores at 0x8 (sizeof >= 0xC)

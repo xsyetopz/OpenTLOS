@@ -142,6 +142,30 @@ def alloc_sizes(asm_root: Path) -> dict:
     return sizes
 
 
+ARRAY_CT = re.compile(r"\taddi r4, r\d+, __ct__(\w+?)F\w*@l$")
+ARRAY_SIZE = re.compile(r"\tli r6, (0x[0-9a-fA-F]+|\d+)$")
+
+
+def array_sizes(asm_root: Path) -> dict:
+    """Exact class sizes from `__construct_array(p, ctor, dtor, size, n)` calls.
+
+    The runtime steps through the array by r6, so r6 is sizeof the class
+    whose ctor is in r4. Disagreeing sites drop the class.
+    """
+    sizes: dict = {}
+    for f in sorted(asm_root.glob("*/**/*.s")):
+        lines = f.read_text().splitlines()
+        for i, line in enumerate(lines):
+            if not re.search(r"\tbl __construct_(new_)?array$", line):
+                continue
+            window = lines[max(0, i - 12):i]
+            cls = next((class_name(m.group(1)) for b in reversed(window) if (m := ARRAY_CT.search(b))), None)
+            n = next((int(m.group(1), 0) for b in reversed(window) if (m := ARRAY_SIZE.search(b))), None)
+            if cls and n:
+                sizes[cls] = n if sizes.get(cls, n) == n else None
+    return {k: v for k, v in sizes.items() if v}
+
+
 def main() -> int:
     out = Path(sys.argv[1])
     syms = load(str(ROOT / "config" / VERSION / "symbols.txt"))
@@ -222,6 +246,10 @@ def main() -> int:
     for name, n in alloc_sizes(ROOT / "build" / VERSION / "asm").items():
         if name in classes:
             classes[name]["size_max"], classes[name]["size_evidence"] = n, "new+ctor"
+    for name, n in array_sizes(ROOT / "build" / VERSION / "asm").items():
+        if name in classes:
+            classes[name]["size"] = classes[name]["size_max"] = n
+            classes[name]["size_evidence"] = "__construct_array element size"
     # A base is never larger than any class derived from it.
     for name in list(classes):
         n, cur = classes[name].get("size_max"), classes[name].get("base")

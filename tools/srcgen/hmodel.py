@@ -97,6 +97,12 @@ class Model:
         self.templates = self.place_templates()
         self.filter_fields()
 
+    def owner_map(self) -> dict:
+        """Class or template name -> TU path whose header defines it."""
+        out = {n: c["owner"] for n, c in self.classes.items() if "<" not in n and c.get("owner")}
+        out |= {t: v["owner"] for t, v in self.templates.items()}
+        return out
+
     def tu_path(self, stem: str):
         return self.stems.get(stem)
 
@@ -322,7 +328,9 @@ def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path) -> Model:
     rets, globs = m2c_types(m2c_root)
     model = Model(json.loads(classes.read_text()), json.loads(fields.read_text()), rets, globs, stems)
     model.sdk = sdk_types(ctx)
+    proven = {n: c["size"] for n, c in model.classes.items() if c.get("size")}  # classes.py array probe
     sizes = ROOT / "config" / VERSION / "class_sizes.tsv"
     if sizes.exists():
-        model.apply_sizes({r[0]: int(r[1], 0) for r in (l.split("\t") for l in sizes.read_text().splitlines()[1:]) if r[0]})
+        proven |= {r[0]: int(r[1], 0) for r in (l.split("\t") for l in sizes.read_text().splitlines()[1:]) if r[0]}
+    model.apply_sizes(proven)
     return model

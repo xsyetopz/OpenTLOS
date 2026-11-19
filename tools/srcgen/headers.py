@@ -95,8 +95,7 @@ def main() -> int:
     free, data = globals_by_tu(stems)
     nested = model.nested = nested_names(model, free)
 
-    owner_of = {n: c["owner"] for n, c in model.classes.items() if "<" not in n and c.get("owner")}
-    owner_of |= {t: v["owner"] for t, v in model.templates.items()}
+    owner_of = model.owner_map()
     by_tu = defaultdict(list)
     for n, tu in owner_of.items():
         by_tu[tu].append(n)
