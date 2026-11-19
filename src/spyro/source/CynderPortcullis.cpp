@@ -84,43 +84,38 @@ void CynderPortcullis::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'P26CynderPortcullisDescriptor'
 void CynderPortcullis::Init() {
-    GameProp::Init();
-    this->unkC8.Init(checked_cast<P26CynderPortcullisDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0xE4, (MKProp *) this);
-}
-#endif
+    CynderPortcullisDescriptor *desc;
+    EnemyGeneratorDescriptor *gen;
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
+    GameProp::Init();
+    desc = checked_cast<CynderPortcullisDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    gen = (EnemyGeneratorDescriptor *) ((s8 *) desc + 0xE4);
+    this->unkC8.Init(gen, (MKProp *) this);
+}
+
 void CynderPortcullisDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4.LoadDone();
+    M2C_FIELD(this, EnemyGeneratorDescriptor *, 0xE4).LoadDone();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 CynderPortcullisDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_247;
 
     var_r31_247 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (this->unkE4.LoadLine(arg0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (M2C_FIELD(this, EnemyGeneratorDescriptor *, 0xE4).LoadLine(arg0) != 0)) {
         var_r31_247 = 1;
     }
     return var_r31_247;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void CynderPortcullisDescriptor::Deinit() {
-    this->unkE4.Deinit();
+    M2C_FIELD(this, EnemyGeneratorDescriptor *, 0xE4).Deinit();
     KDPropExDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void CynderPortcullisDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unk64 |= 0x2000;
-    this->unkE4.Init();
+    M2C_FIELD(this, EnemyGeneratorDescriptor *, 0xE4).Init();
 }
-#endif

@@ -225,7 +225,6 @@ void DartTrap::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector
 void *DartTrap::Update() {
     s32 temp_r0_401;
 
@@ -271,29 +270,24 @@ void *DartTrap::Update() {
         }
         break;
     }
-    KDSound_Play3d(this->unk80, ((u8 *) this->unk8) + 0x30, 0U, 0.0f, 0U);
+    KDSound_Play3d(this->unk80, (const MKVector3 *) (((u8 *) this->unk8) + 0x30), 0U, 0.0f, false);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 DartTrap::LoadDone() {
     KDProp::LoadDone();
-    this->unk98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "r_ref");
-    this->unk80->InitEvents(&pDartTrapAnimEvents);
+    this->unk98 = Tools_GetMatchingRefPointIndex(this->unk4, "r_ref");
+    this->unk80->InitEvents((const char **) &pDartTrapAnimEvents);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 DartTrap::LoadLine(MKIniLine *arg0) {
     s32 var_r31_552;
 
     var_r31_552 = 0;
-    if ((KDProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("SpeedMultiplier", &this->unkA0, 0) != 0) || (arg0->LoadFloat("OnTime", &this->unkA4, 0) != 0) || (arg0->LoadFloat("OffTime", &this->unkA8, 0) != 0) || (arg0->LoadBool("OneShot", &this->unkB0, 0) != 0)) {
+    if ((KDProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("SpeedMultiplier", &this->unkA0, 0) != 0) || (arg0->LoadFloat("OnTime", &this->unkA4, 0) != 0) || (arg0->LoadFloat("OffTime", &this->unkA8, 0) != 0) || (arg0->LoadBool("OneShot", (bool *) &this->unkB0, 0) != 0)) {
         var_r31_552 = 1;
     }
     return var_r31_552;
 }
-#endif
 
 void DartTrap::Init() {
     KDProp::Init();
@@ -347,7 +341,6 @@ void DartTrapDescriptor::LoadDone() {
     this->unk7C = (s32) var_r3_704;
 }
 
-#if 0 // DRAFT: illegal operand
 void DartTrapDescriptor::Init() {
     s32 temp_r0_731;
     s32 var_ctr_729;
@@ -359,8 +352,7 @@ void DartTrapDescriptor::Init() {
     do {
         temp_r0_731 = var_r3_726 + 0x70;
         var_r3_726 += 4;
-        *(this + temp_r0_731) = 0;
+        M2C_FIELD(this, s32 *, temp_r0_731) = 0;
         var_ctr_729 -= 1;
     } while (var_ctr_729 != 0);
 }
-#endif
