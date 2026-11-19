@@ -7,6 +7,7 @@ return types). Everything here is inference; headers.py marks it as such.
 
 from __future__ import annotations
 
+import json
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -16,6 +17,8 @@ DEF = re.compile(r"^(?:static )?([\w ]+?[\s*]+)(\w+__\w*)\(.*\) \{$")
 DECL = re.compile(r"^(?:extern |static )?([\w ]+?[\s*]+)([A-Za-z_]\w*)(?:\[[^\]]*\])?;")
 SDK_TYPE = re.compile(r"^\}\s*(\w+)\s*;|^typedef [^{;]*?(\w+)\s*;", re.M)
 KEYWORDS = {"return", "goto", "case", "else", "do"}
+ROOT = Path(__file__).resolve().parent.parent.parent
+VERSION = "G6SE7D"
 TMPL_ARGS = re.compile(r"<(.*)>$")
 
 
@@ -280,3 +283,13 @@ class Model:
         if base in SIZES:
             return SIZES[base] * arr
         return max(self.end(base, seen), 1) * arr
+
+
+def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path) -> Model:
+    """Model of ANB's game and engine classes from the srcgen artifacts."""
+    rows = [l.split("\t") for l in (ROOT / "config" / VERSION / "tu_paths.tsv").read_text().splitlines()[1:]]
+    stems = {r[1].rsplit(".", 1)[0]: r[1] for r in rows if r[2] in ("game", "engine")}
+    rets, globs = m2c_types(m2c_root)
+    model = Model(json.loads(classes.read_text()), json.loads(fields.read_text()), rets, globs, stems)
+    model.sdk = sdk_types(ctx)
+    return model

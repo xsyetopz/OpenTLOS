@@ -23,8 +23,12 @@ def qualname(term: CxxTerm) -> str:
     return "::".join(str(q) for q in term.qualified_name or [])
 
 
-def render(t: CxxType, name: str = "") -> str:
-    """C++ declaration of `name` with type `t` (abstract declarator when name is empty)."""
+def render(t: CxxType, name: str = "", qual=qualname, ref: str = "&") -> str:
+    """C++ declaration of `name` with type `t` (abstract declarator when name is empty).
+
+    `qual` spells class names and `ref` references, so the same walk renders
+    C for m2c's context (flattened names, references as pointers).
+    """
     d, prefix = name, []
     terms = t.terms
     for i, term in enumerate(terms):
@@ -32,7 +36,7 @@ def render(t: CxxType, name: str = "") -> str:
         if term.kind == K.POINTER:
             d = "*" + d
         elif term.kind == K.REFERENCE:
-            d = "&" + d
+            d = ref + d
         elif term.kind == K.CONST:
             if rest and rest[0].kind in (K.POINTER, K.REFERENCE):
                 d = " const " + d
@@ -43,11 +47,11 @@ def render(t: CxxType, name: str = "") -> str:
         elif term.kind == K.ARRAY:
             d = (f"({d})" if d[:1] in "*&" else d) + f"[{term.array_dim}]"
         elif term.kind == K.FUNCTION:
-            params = ", ".join(render(p) for p in term.function_params or []) or "void"
+            params = ", ".join(render(p, "", qual, ref) for p in term.function_params or []) or "void"
             inner = (f"({d})" if d[:1] in "*&" else d) + f"({params})"
-            return render(term.function_return, inner) if term.function_return else f"void {inner}"
+            return render(term.function_return, inner, qual, ref) if term.function_return else f"void {inner}"
         elif term.kind == K.QUALIFIED:
-            return " ".join([*prefix, qualname(term)]) + (" " + d if d else "")
+            return " ".join([*prefix, qual(term)]) + (" " + d if d else "")
         else:
             return " ".join([*prefix, BASE[term.kind]]) + (" " + d if d else "")
     return " ".join(prefix) + (" " + d if d else "")

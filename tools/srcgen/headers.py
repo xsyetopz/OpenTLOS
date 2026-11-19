@@ -19,7 +19,6 @@ are never overwritten.
 from __future__ import annotations
 
 import argparse
-import json
 import re
 import sys
 from collections import defaultdict
@@ -28,7 +27,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tlos"))
 from cxxtypes import K, class_names, parse, render  # noqa: E402
-from hmodel import Model, header_key, m2c_types, sdk_types, type_names  # noqa: E402
+from hmodel import Model, header_key, load_model, type_names  # noqa: E402
 from hrender import Refs, class_body, header_order, inlined, template_body  # noqa: E402
 from splits import Splits  # noqa: E402
 from symbols import load  # noqa: E402
@@ -91,11 +90,8 @@ def main() -> int:
     ap.add_argument("--write-existing", action="store_true")
     a = ap.parse_args()
 
-    rows = [l.split("\t") for l in (ROOT / "config" / VERSION / "tu_paths.tsv").read_text().splitlines()[1:]]
-    stems = {r[1].rsplit(".", 1)[0]: r[1] for r in rows if r[2] in ("game", "engine")}
-    rets, globs = m2c_types(a.m2c_root)
-    model = Model(json.loads(a.classes.read_text()), json.loads(a.fields.read_text()), rets, globs, stems)
-    sdk = model.sdk = sdk_types(a.ctx)
+    model = load_model(a.classes, a.fields, a.m2c_root, a.ctx)
+    rets, globs, stems, sdk = model.rets, model.globs, model.stems, model.sdk
     free, data = globals_by_tu(stems)
     nested = model.nested = nested_names(model, free)
 
