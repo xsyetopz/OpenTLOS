@@ -46,7 +46,6 @@ extern MKPropDescriptor *pCynderElecAttackDescriptor;
 static s32 lit_611 = 0;
 static u8 lit_612 = 1;
 
-#if 0 // DRAFT: ')' expected
 void CynderElecAttack::Deinit() {
     ManagedLight *temp_r4_51;
 
@@ -54,15 +53,13 @@ void CynderElecAttack::Deinit() {
     if (temp_r4_51 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->FreeManagedLight(temp_r4_51);
     }
-    if ((EnergyBeam::Beam *) this->unk160 != NULL) {
-        ((EnergyBeam *) (M2C_FIELD(checked_cast<CynderElecAttackDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0xF0)))->FreeEnergyBeam(this->unk160);
+    if (this->unk160 != NULL) {
+        ((EnergyBeam *) *(EnergyBeam **) ((s8 *) checked_cast<CynderElecAttackDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + 0xF0))->FreeEnergyBeam(this->unk160);
         this->unk160 = NULL;
     }
     Projectile::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void CynderElecAttack::FireBurstEnd() {
     ManagedLight *temp_r4_91;
 
@@ -71,15 +68,14 @@ void CynderElecAttack::FireBurstEnd() {
     this->unk154 = NULL;
     temp_r4_91 = this->unk15C;
     if (temp_r4_91 != NULL) {
-        ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_91, 0U);
+        ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_91, false);
     }
-    if ((EnergyBeam::Beam *) this->unk160 != NULL) {
-        ((EnergyBeam *) (M2C_FIELD(checked_cast<CynderElecAttackDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0xF0)))->FreeEnergyBeam(this->unk160);
+    if (this->unk160 != NULL) {
+        ((EnergyBeam *) *(EnergyBeam **) ((s8 *) checked_cast<CynderElecAttackDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + 0xF0))->FreeEnergyBeam(this->unk160);
         this->unk160 = NULL;
     }
     Disable();
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void CynderElecAttack::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3) {

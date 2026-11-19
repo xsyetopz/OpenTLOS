@@ -17,108 +17,84 @@
 M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 
-#if 0 // DRAFT: function call 'Console_AddMacro(signed char *, signed char *)' does not match 'Console_AddMacro(const char *, const char *)'
 s32 ConsoleProp::LoadDone() {
-    s32 temp_r0_57;
-    s32 var_r29_48;
-    s32 var_r31_47;
-    s8 *temp_r3_53;
+    s32 off;
+    s32 i;
 
     MKProp::LoadDone();
-    var_r31_47 = 0;
-    var_r29_48 = 0;
-loop_2:
-    if (var_r29_48 < (s32) this->unk50) {
-        temp_r3_53 = (signed char *) (((u8 *) this->unk4C) + var_r31_47);
-        Console_AddMacro(temp_r3_53, M2C_FIELD(temp_r3_53, s8 **, 0x20));
-        temp_r0_57 = var_r31_47 + 0x20;
-        var_r29_48 += 1;
-        var_r31_47 += 0x24;
-        *(this->unk4C + temp_r0_57) = 0;
-        goto loop_2;
+    off = 0;
+    for (i = 0; i < this->unk50; i++) {
+        Console_AddMacro((const char *) ((u8 *) this->unk4C + off), *(const char **) ((u8 *) this->unk4C + off + 0x20));
+        *(const char **) ((u8 *) this->unk4C + off + 0x20) = NULL;
+        off += 0x24;
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'strcpy(unsigned char *, long)' does not match 'strcpy(char *, const char *)'
 s32 ConsoleProp::LoadLine(MKIniLine *arg0) {
-    MKIniLine *temp_r27_137;
-    MKIniLine *var_r26_123;
-    s32 temp_r0_96;
-    s32 temp_r28_99;
-    s32 var_r30_125;
-    void *var_r3_107;
+    MKIniLine *macro;
+    MKIniLine *sub;
+    void *mem;
+    s32 off;
 
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
     if (arg0->IsField("Macros") != 0) {
         this->unk50 = arg0->GetNmbrOfSubLines();
-        temp_r0_96 = this->unk50;
-        if (temp_r0_96 != 0) {
-            temp_r28_99 = temp_r0_96 * 0x24;
+        if (this->unk50 != 0) {
             if (MKHeap::Current() != NULL) {
-                var_r3_107 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_99, NULL, 0);
+                mem = ((MKHeap *) (MKHeap::Current()))->Alloc(this->unk50 * 0x24, NULL, 0);
             } else {
-                var_r3_107 = malloc(temp_r28_99);
+                mem = malloc(this->unk50 * 0x24);
             }
-            this->unk4C = var_r3_107;
+            this->unk4C = mem;
             memset(this->unk4C, 0, this->unk50 * 0x24);
-            var_r26_123 = arg0->unkC->GetSubLine(arg0);
-            var_r30_125 = 0;
-loop_16:
-            if (var_r26_123 != NULL) {
-                if (var_r26_123->IsField("Macro") != 0) {
-                    temp_r27_137 = var_r26_123->unkC->GetSubLine(var_r26_123);
-loop_14:
-                    if (temp_r27_137 != NULL) {
-                        if (temp_r27_137->IsField("MacroName") != 0) {
-                            strcpy(((u8 *) this->unk4C) + var_r30_125, temp_r27_137->GetString(0));
-                        } else if (temp_r27_137->IsField("ScriptCommand") != 0) {
-                            *(var_r30_125 + (((u8 *) this->unk4C) + 0x20)) = temp_r27_137->GetString(0);
+            sub = arg0->unkC->GetSubLine(arg0);
+            off = 0;
+            while (sub != NULL) {
+                if (sub->IsField("Macro") != 0) {
+                    macro = sub->unkC->GetSubLine(sub);
+                    // The shipped loop never advances `macro` (asm 0x8022E938-0x8022E9A4
+                    // branches back without GetNextLine): a Macro with sub-lines hangs.
+                    while (macro != NULL) {
+                        if (macro->IsField("MacroName") != 0) {
+                            strcpy((char *) ((u8 *) this->unk4C + off), (const char *) macro->GetString(0));
+                        } else if (macro->IsField("ScriptCommand") != 0) {
+                            *(const char **) ((u8 *) this->unk4C + off + 0x20) = (const char *) macro->GetString(0);
                         }
-                        goto loop_14;
                     }
                 }
-                var_r30_125 += 0x24;
-                var_r26_123 = var_r26_123->unkC->GetNextLine(var_r26_123);
-                goto loop_16;
+                off += 0x24;
+                sub = sub->unkC->GetNextLine(sub);
             }
         }
         return 1;
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: function call 'Console_RemoveMacro(unsigned char *)' does not match 'Console_RemoveMacro(const char *)'
 void ConsoleProp::Deinit() {
-    s32 var_r30_204;
-    s32 var_r31_205;
-    void *temp_r31_217;
+    s32 i;
+    s32 off;
+    void *mem;
 
-    if ((void *) this->unk4C != NULL) {
-        var_r30_204 = 0;
-        var_r31_205 = 0;
-loop_3:
-        if (var_r30_204 < (s32) this->unk50) {
-            Console_RemoveMacro(((u8 *) this->unk4C) + var_r31_205);
-            var_r30_204 += 1;
-            var_r31_205 += 0x24;
-            goto loop_3;
+    if (this->unk4C != NULL) {
+        off = 0;
+        for (i = 0; i < this->unk50; i++) {
+            Console_RemoveMacro((const char *) ((u8 *) this->unk4C + off));
+            off += 0x24;
         }
-        temp_r31_217 = this->unk4C;
+        mem = this->unk4C;
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_217, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free(mem, NULL, 0);
         } else {
-            free(temp_r31_217);
+            free(mem);
         }
     }
     this->unk4C = NULL;
     this->unk50 = 0;
     MKProp::Deinit();
 }
-#endif
 
 void ConsoleProp::Init() {
     MKProp::Init();

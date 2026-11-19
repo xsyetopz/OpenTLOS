@@ -399,41 +399,35 @@ void *Conveyor::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 f32 Conveyor::Resolve() {
     MKVector3 sp8;
-    s32 temp_r0_656;
-    s32 var_r24_645;
-    s32 var_r25_637;
-    s32 var_r29_646;
-    s32 var_r30_640;
-    s32 var_r31_639;
-    void *temp_r27_643;
+    s32 var_r25;
+    s32 var_r24;
+    s32 var_r30;
+    s32 var_r31;
+    s32 var_r29;
+    u8 *temp_r27;
 
     KDPropEx::Resolve();
-    var_r25_637 = 0;
-    var_r31_639 = 0;
-    var_r30_640 = 0;
+    var_r25 = 0;
+    var_r31 = 0;
+    var_r30 = 0;
     do {
-        temp_r27_643 = this + var_r30_640;
-        var_r24_645 = 0;
-        var_r29_646 = 0;
-loop_2:
-        temp_r0_656 = var_r29_646 + 0xC8;
-        *(temp_r27_643 + temp_r0_656) = MKModel_GetRefPointIndex(this->unk4, Str_Printf("r_track%d_%d", var_r25_637 + 1, var_r24_645 + 1));
-        MKModel_CalculateRefPointWorldPosition(this->unk4, *(temp_r27_643 + temp_r0_656), &sp8);
-        ((KDUniformSpline *) (this + (var_r31_639 + 0x118)))->AddNode(sp8);
-        var_r24_645 += 1;
-        var_r29_646 += 4;
-        if (var_r24_645 < 0xA) {
-            goto loop_2;
-        }
-        var_r25_637 += 1;
-        var_r30_640 += 0x28;
-        var_r31_639 += 0x14;
-    } while (var_r25_637 < 2);
+        temp_r27 = (u8 *) this + var_r30;
+        var_r24 = 0;
+        var_r29 = 0;
+        do {
+            *(s32 *) (temp_r27 + var_r29 + 0xC8) = MKModel_GetRefPointIndex(this->unk4, (const char *) Str_Printf("r_track%d_%d", var_r25 + 1, var_r24 + 1));
+            MKModel_CalculateRefPointWorldPosition(this->unk4, *(s32 *) (temp_r27 + var_r29 + 0xC8), &sp8);
+            ((KDUniformSpline *) ((u8 *) this + var_r31 + 0x118))->AddNode(sp8);
+            var_r24 += 1;
+            var_r29 += 4;
+        } while (var_r24 < 0xA);
+        var_r25 += 1;
+        var_r30 += 0x28;
+        var_r31 += 0x14;
+    } while (var_r25 < 2);
 }
-#endif
 
 s32 Conveyor::LoadDone() {
     GameProp::LoadDone();
@@ -449,21 +443,19 @@ void Conveyor::Deinit() {
     ((KDUniformSpline *) &this->unk118.unk14)->Deinit();
 }
 
-#if 0 // DRAFT: illegal operand
 void Conveyor::Init() {
     s32 var_r29_745;
     s32 var_r31_747;
 
     GameProp::Init();
-    ((KDUniformSpline *) &this->unk118)->Init(0xA, 0U);
-    ((KDUniformSpline *) &this->unk118.unk14)->Init(0xA, 0U);
+    ((KDUniformSpline *) &this->unk118)->Init(0xA, 0);
+    ((KDUniformSpline *) &this->unk118.unk14)->Init(0xA, 0);
     var_r29_745 = 0;
     var_r31_747 = 0;
     do {
         var_r29_745 += 1;
-        *(this + (var_r31_747 + 0x140)) = checked_cast<KDProp *, MKProp>(gMK->CreateProp("ConveyorBucket"));
+        *(KDProp **) ((u8 *) this + (var_r31_747 + 0x140)) = checked_cast<KDProp *, MKProp>(gMK->CreateProp("ConveyorBucket"));
         var_r31_747 += 4;
     } while (var_r29_745 < 5);
     this->unk118.unk3C = 0.0f;
 }
-#endif

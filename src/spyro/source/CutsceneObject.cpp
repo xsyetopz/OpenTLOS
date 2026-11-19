@@ -23,11 +23,9 @@ s32 CutsceneObject::Skippable() {
     return this->unk40.Send(NULL) != 0.0f;
 }
 
-#if 0 // DRAFT: function call 'MakeCutsceneFilename(long, signed char *, char *, unsigned char)' does not match 'MakeCutsceneFilename(int, const char *, char *, bool)'
 void CutsceneObject::GetFileName(char *arg0) {
-    MakeCutsceneFilename(GetNumber(), this->unk54, arg0, this->unk59);
+    MakeCutsceneFilename(this->GetNumber(), (const char *) this->unk54, arg0, this->unk59 != 0);
 }
-#endif
 
 void CutsceneObject::StopEvent() {
     if ((u8) this->unk58 != 0) {
@@ -131,7 +129,6 @@ void CutsceneObject::Resolve() {
 
 }
 
-#if 0 // DRAFT: function call 'strlen(long)' does not match 'strlen(const char *)'
 s32 CutsceneObject::LoadSubLine(MKIniLine *arg0) {
     MKIniLine *var_r31_275;
     s32 var_r31_344;
@@ -140,35 +137,34 @@ s32 CutsceneObject::LoadSubLine(MKIniLine *arg0) {
 
     if (arg0->IsField("camera") != 0) {
         var_r31_275 = arg0->unkC->GetSubLine(arg0);
-loop_4:
-        if (var_r31_275 != NULL) {
+        while (var_r31_275 != NULL) {
             if (var_r31_275->LoadVector3("cameraSource", &this->unk20, 0) == 0) {
                 var_r31_275 = var_r31_275->unkC->GetNextLine(var_r31_275);
-                goto loop_4;
+            } else {
+                break;
             }
         }
         return 1;
     }
     if ((arg0->IsField("levelCode") != 0) && (arg0->GetString(0) != 0U)) {
-        temp_r3_312 = strlen(arg0->GetString(0));
+        temp_r3_312 = strlen((const char *) arg0->GetString(0));
         if (temp_r3_312 != 0) {
             if (MKHeap::Current() != NULL) {
-                var_r3_322 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r3_312 + 1, NULL, 0));
+                var_r3_322 = (s8 *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r3_312 + 1, NULL, 0));
             } else {
                 var_r3_322 = malloc(temp_r3_312 + 1);
             }
             this->unk54 = var_r3_322;
-            strcpy(this->unk54, arg0->GetString(0));
+            strcpy((char *) this->unk54, (const char *) arg0->GetString(0));
         }
         return 1;
     }
     var_r31_344 = 0;
-    if ((arg0->LoadInt("disabledZone", (int *) &this->unk50, 0) != 0) || (arg0->LoadInt("cutscene1", (int *) &this->unk48, 0) != 0) || (arg0->LoadInt("altCutscene1", (int *) &this->unk4C, 0) != 0) || (arg0->LoadBool("bBlankScreenAfter", &this->unk5C, 0) != 0) || (arg0->LoadBool("bBlankThroughLoadScreen", &this->unk5D, 0) != 0) || (arg0->LoadBool("bSetHeroPos", &this->unk5E, 0) != 0) || (arg0->LoadBool("bSetCameraPos", &this->unk60, 0) != 0) || (arg0->LoadBool("bVideo", &this->unk59, 0) != 0) || (arg0->LoadVector3("heroPos", (MKVector3 *) &this->unk10, 0) != 0) || (arg0->LoadFloat("heroLookYaw", &this->unk44, 0) != 0) || (arg0->LoadBool("bLeaveHeroVisible", &this->unk5F, 0) != 0) || (arg0->LoadBool("bUseLoadingScreen", &this->unk62, 0) != 0) || (arg0->LoadBool("bZoomVideo", &this->unk63, 0) != 0) || (this->unk30.LoadLine(arg0, "onCompletion") != 0) || (this->unk34.LoadLine(arg0, "onActivation") != 0) || (this->unk38.LoadLine(arg0, "onPlay") != 0) || (this->unk3C.LoadLine(arg0, "onStop") != 0) || (this->unk40.LoadLine(arg0, "skipQuery") != 0) || (arg0->LoadVector4("BlankColour", (MKVector4 *) this, 0) != 0)) {
+    if ((arg0->LoadInt("disabledZone", (int *) &this->unk50, 0) != 0) || (arg0->LoadInt("cutscene1", (int *) &this->unk48, 0) != 0) || (arg0->LoadInt("altCutscene1", (int *) &this->unk4C, 0) != 0) || (arg0->LoadBool("bBlankScreenAfter", (bool *) &this->unk5C, 0) != 0) || (arg0->LoadBool("bBlankThroughLoadScreen", (bool *) &this->unk5D, 0) != 0) || (arg0->LoadBool("bSetHeroPos", (bool *) &this->unk5E, 0) != 0) || (arg0->LoadBool("bSetCameraPos", (bool *) &this->unk60, 0) != 0) || (arg0->LoadBool("bVideo", (bool *) &this->unk59, 0) != 0) || (arg0->LoadVector3("heroPos", (MKVector3 *) &this->unk10, 0) != 0) || (arg0->LoadFloat("heroLookYaw", &this->unk44, 0) != 0) || (arg0->LoadBool("bLeaveHeroVisible", (bool *) &this->unk5F, 0) != 0) || (arg0->LoadBool("bUseLoadingScreen", (bool *) &this->unk62, 0) != 0) || (arg0->LoadBool("bZoomVideo", (bool *) &this->unk63, 0) != 0) || (this->unk30.LoadLine(arg0, "onCompletion") != 0) || (this->unk34.LoadLine(arg0, "onActivation") != 0) || (this->unk38.LoadLine(arg0, "onPlay") != 0) || (this->unk3C.LoadLine(arg0, "onStop") != 0) || (this->unk40.LoadLine(arg0, "skipQuery") != 0) || (arg0->LoadVector4("BlankColour", (MKVector4 *) this, 0) != 0)) {
         var_r31_344 = 1;
     }
     return var_r31_344;
 }
-#endif
 
 s32 CutsceneObject::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r31_537;
@@ -247,47 +243,39 @@ CutsceneObject::CutsceneObject() {
     this->unk63 = 0;
 }
 
-#if 0 // DRAFT: function call 'strcpy(char *, signed char *)' does not match 'strcpy(char *, const char *)'
 s8 *MakeCutsceneFilename(int arg0, const char *arg1, char *arg2, bool arg3) {
-    s8 *var_r4_0;
-    s8 *var_r4_720;
+    const char *name;
+    s8 *out;
     void *temp_r5_703;
-    void *temp_r5_730;
     void *var_r4_706;
-    void *var_r4_733;
 
-    var_r4_0 = (signed char *) (arg1);
+    name = arg1;
     if (arg3 != 0) {
-        if (var_r4_0 != NULL) {
-
-        } else {
+        if (name == NULL) {
             temp_r5_703 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x18);
             if (temp_r5_703 != NULL) {
                 var_r4_706 = M2C_FIELD(temp_r5_703, void **, 4);
             } else {
                 var_r4_706 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x24), void **, 4);
             }
-            var_r4_0 = M2C_FIELD(var_r4_706, s8 **, 0xC);
+            name = (const char *) M2C_FIELD(var_r4_706, s8 **, 0xC);
         }
-        var_r4_720 = Str_Printf("cs%s_%02d", var_r4_0, arg0, "camera");
+        out = Str_Printf("cs%s_%02d", name, arg0, "camera");
     } else {
-        if (var_r4_0 != NULL) {
-
-        } else {
-            temp_r5_730 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x18);
-            if (temp_r5_730 != NULL) {
-                var_r4_733 = M2C_FIELD(temp_r5_730, void **, 4);
+        if (name == NULL) {
+            temp_r5_703 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x18);
+            if (temp_r5_703 != NULL) {
+                var_r4_706 = M2C_FIELD(temp_r5_703, void **, 4);
             } else {
-                var_r4_733 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x24), void **, 4);
+                var_r4_706 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x24), void **, 4);
             }
-            var_r4_0 = M2C_FIELD(var_r4_733, s8 **, 0xC);
+            name = (const char *) M2C_FIELD(var_r4_706, s8 **, 0xC);
         }
-        var_r4_720 = Str_Printf("cs%s_%02dEN.sc2", var_r4_0, arg0, "camera");
+        out = Str_Printf("cs%s_%02dEN.sc2", name, arg0, "camera");
     }
     if (arg2 == NULL) {
-        return var_r4_720;
+        return out;
     }
-    strcpy(arg2, var_r4_720);
-    return (signed char *) (arg2);
+    strcpy(arg2, (const char *) out);
+    return (s8 *) arg2;
 }
-#endif
