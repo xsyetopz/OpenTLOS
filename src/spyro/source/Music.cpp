@@ -44,21 +44,17 @@ void Music_Clear() {
     Music_ClearDelayedPlayBuffer();
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char[34], const char[1])' does not match 'strcpy(char *, const char *)'
 void Music_ClearDelayedPlayBuffer() {
     pDelayedTrackBuffer[0x20] = 0;
-    strcpy(pDelayedTrackBuffer, "");
+    strcpy((char *) pDelayedTrackBuffer, "");
     pDelayedTrackBuffer[0x21] = 0;
 }
-#endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char[34], const char *)' does not match 'strcpy(char *, const char *)'
 void Music_SetDelayedPlay(const char *arg0, bool arg1) {
     pDelayedTrackBuffer[0x20] = (s8) arg1;
-    strcpy(pDelayedTrackBuffer, arg0);
+    strcpy((char *) pDelayedTrackBuffer, arg0);
     pDelayedTrackBuffer[0x21] = 1;
 }
-#endif
 
 void Music_SetMasterVolume(float arg0) {
     f32 var_f0_111;
@@ -226,7 +222,6 @@ block_14:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 MusicTrack *Music_FindTrack(const char *arg0) {
     MusicTrack *var_r30_408;
     s32 var_r29_409;
@@ -235,18 +230,15 @@ MusicTrack *Music_FindTrack(const char *arg0) {
     var_r30_408 = NULL;
     var_r29_409 = 0;
     var_r31_410 = 0;
-loop_4:
-    if (((void *) pTracks != NULL) && (var_r29_409 < (s32) trackCount) && (var_r30_408 == NULL)) {
-        if (stricmp(arg0, *(pTracks + var_r31_410)) == 0) {
-            var_r30_408 = pTracks + var_r31_410;
+    while ((pTracks != NULL) && (var_r29_409 < (s32) trackCount) && (var_r30_408 == NULL)) {
+        if (stricmp((s8 *) arg0, ((MusicTrack *) ((s8 *) pTracks + var_r31_410))->unk0) == 0) {
+            var_r30_408 = (MusicTrack *) ((s8 *) pTracks + var_r31_410);
         }
         var_r29_409 += 1;
         var_r31_410 += 0x28;
-        goto loop_4;
     }
     return var_r30_408;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void Music_Stop(float arg0) {
@@ -518,22 +510,19 @@ block_18:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void Music_Deinit() {
     s32 var_r30_1018;
     s32 var_r31_1019;
     void *temp_r31_1037;
 
-    if ((void *) pTracks != NULL) {
+    if (pTracks != NULL) {
         var_r30_1018 = 0;
         var_r31_1019 = 0;
-loop_3:
-        if (var_r30_1018 < (s32) trackCount) {
-            stringTable.Remove(*(pTracks + (var_r31_1019 + 4)));
-            stringTable.Remove(*(pTracks + var_r31_1019));
+        while (var_r30_1018 < (s32) trackCount) {
+            stringTable.Remove((const char *) ((MusicTrack *) ((s8 *) pTracks + var_r31_1019))->unk4);
+            stringTable.Remove((const char *) ((MusicTrack *) ((s8 *) pTracks + var_r31_1019))->unk0);
             var_r30_1018 += 1;
             var_r31_1019 += 0x28;
-            goto loop_3;
         }
         temp_r31_1037 = pTracks;
         if (MKHeap::Current() != NULL) {
@@ -545,15 +534,11 @@ loop_3:
     }
     stringTable.Deinit();
 }
-#endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char[34], const char[1])' does not match 'strcpy(char *, const char *)'
 void Music_Init() {
     MKIni sp30;
-    s8 sp2C;
-    s32 sp28;
-    M2C_UNK sp8;
-    M2C_UNK *var_r28_1188;
+    s32 sp8[0xA];
+    s8 *var_r28_1188;
     MKIniLine *var_r27_1101;
     MKIniLine *var_r27_1213;
     MKIniLine *var_r29_1122;
@@ -564,7 +549,7 @@ void Music_Init() {
     u8 var_r31_1254;
     void *var_r3_1163;
 
-    memset(&sp8, 0, 0x28U);
+    memset(sp8, 0, 0x28U);
     pTracks = NULL;
     trackCount = 0;
     stingTimerElapsed = 0.0f;
@@ -572,7 +557,7 @@ void Music_Init() {
     pHeldTrack = NULL;
     pDelayedTrackBuffer[0x20] = 0;
     pDelayedTrackBuffer[0x21] = 0;
-    strcpy(pDelayedTrackBuffer, "");
+    strcpy((char *) pDelayedTrackBuffer, "");
     MKHeap::ActivateTempMemOverride();
     sp30.Init("music.ini", 0, NULL);
     MKHeap::DeactivateTempMemOverride();
@@ -583,12 +568,12 @@ loop_9:
         if (var_r27_1101->IsField("defaults") == 0) {
             trackCount += 1;
         }
-        var_r28_1098 = strlen(var_r27_1101->GetFieldName()) + var_r28_1098 + 1;
+        var_r28_1098 = strlen((const char *) var_r27_1101->GetFieldName()) + var_r28_1098 + 1;
         var_r29_1122 = var_r27_1101->unkC->GetSubLine(var_r27_1101);
 loop_7:
         if (var_r29_1122 != NULL) {
             if (var_r29_1122->IsField("filename") != 0) {
-                var_r28_1098 = strlen(var_r29_1122->GetString(0)) + var_r28_1098 + 1;
+                var_r28_1098 = strlen((const char *) var_r29_1122->GetString(0)) + var_r28_1098 + 1;
             }
             var_r29_1122 = var_r29_1122->unkC->GetNextLine(var_r29_1122);
             goto loop_7;
@@ -610,14 +595,14 @@ loop_7:
 loop_33:
     if (var_r29_1178 != NULL) {
         if (var_r29_1178->IsField("defaults") != 0) {
-            var_r28_1188 = &sp8;
-            sp28 = 0;
-            sp2C = 0;
+            var_r28_1188 = (s8 *) sp8;
+            sp8[8] = 0;
+            ((s8 *) sp8)[0x24] = 0;
         } else {
-            var_r28_1188 = pTracks + var_r26_1175;
+            var_r28_1188 = (s8 *) pTracks + var_r26_1175;
             var_r26_1175 += 0x28;
-            memcpy(var_r28_1188, &sp8, 0x28U);
-            M2C_FIELD(var_r28_1188, s32 *, 0) = (const char *) (stringTable.Add(var_r29_1178->GetFieldName()));
+            memcpy(var_r28_1188, sp8, 0x28U);
+            M2C_FIELD(var_r28_1188, s32 *, 0) = stringTable.Add((const char *) var_r29_1178->GetFieldName());
             M2C_FIELD(var_r28_1188, s32 *, 0x20) = 0;
             M2C_FIELD(var_r28_1188, s8 *, 0x24) = 0;
         }
@@ -625,17 +610,16 @@ loop_33:
 loop_31:
         if (var_r27_1213 != NULL) {
             if (var_r27_1213->IsField("filename") != 0) {
-                M2C_FIELD(var_r28_1188, s32 *, 4) = stringTable.Add(var_r27_1213->GetString(0));
+                M2C_FIELD(var_r28_1188, s32 *, 4) = stringTable.Add((const char *) var_r27_1213->GetString(0));
             } else if (var_r27_1213->IsField("musicType") != 0) {
-                var_r27_1213->GetString(0);
-                M2C_FIELD(var_r28_1188, s32 *, 0x14) = (s32) (stricmp("sting") == 0);
+                M2C_FIELD(var_r28_1188, s32 *, 0x14) = (s32) (stricmp((s8 *) var_r27_1213->GetString(0), (s8 *) "sting") == 0);
             } else {
                 var_r31_1254 = 0;
-                if ((var_r27_1213->LoadInt("volume", var_r28_1188 + 8, 0) != 0) || (var_r27_1213->LoadFloat("fadeInTime", var_r28_1188 + 0xC, 0) != 0) || (var_r27_1213->LoadFloat("fadeOutTime", var_r28_1188 + 0x10, 0) != 0) || (var_r27_1213->LoadFloat("stingMusicTime", var_r28_1188 + 0x18, 0) != 0) || (var_r27_1213->LoadBool("duckDuringCutscene", var_r28_1188 + 0x1C, 0) != 0)) {
+                if ((var_r27_1213->LoadInt("volume", (int *) (var_r28_1188 + 8), 0) != 0) || (var_r27_1213->LoadFloat("fadeInTime", (float *) (var_r28_1188 + 0xC), 0) != 0) || (var_r27_1213->LoadFloat("fadeOutTime", (float *) (var_r28_1188 + 0x10), 0) != 0) || (var_r27_1213->LoadFloat("stingMusicTime", (float *) (var_r28_1188 + 0x18), 0) != 0) || (var_r27_1213->LoadBool("duckDuringCutscene", (bool *) (var_r28_1188 + 0x1C), 0) != 0)) {
                     var_r31_1254 = 1;
                 }
                 if (var_r31_1254 == 0) {
-                    var_r27_1213->LoadBool("playGameMusicAfterSting", var_r28_1188 + 0x1D, 0);
+                    var_r27_1213->LoadBool("playGameMusicAfterSting", (bool *) (var_r28_1188 + 0x1D), 0);
                 }
             }
             var_r27_1213 = var_r27_1213->unkC->GetNextLine(var_r27_1213);
@@ -646,7 +630,6 @@ loop_31:
     }
     sp30.Deinit();
 }
-#endif
 
 void Music_cpp::__sinit() {
     stringTable.UIStringTable();
