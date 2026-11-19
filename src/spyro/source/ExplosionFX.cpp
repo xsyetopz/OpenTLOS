@@ -74,7 +74,6 @@ void ExplosionFX::CreateTendril(const MKVector3 &arg0, float arg1) {
     }
 }
 
-#if 0 // DRAFT: type mismatch 'Matrix *' and 'Matrix **'
 void ExplosionFX::Deinit() {
     MKMaterial *temp_r3_181;
     MKMaterial *temp_r3_228;
@@ -94,25 +93,29 @@ void ExplosionFX::Deinit() {
     var_r4_139 = this->unk50;
     var_r30_140 = var_r4_139;
     var_r3_141 = var_r4_139;
-loop_3:
-    temp_r0_149 = M2C_FIELD(var_r3_141, u32 *, -4);
-    var_r3_141 -= 4;
-    if (temp_r0_149 != 0U) {
-        temp_r0_144 = *var_r3_141;
-        if (temp_r0_144 < var_r30_140) {
-            var_r30_140 = (Matrix **) temp_r0_144;
-        }
-        goto loop_3;
+    goto cond_3;
+body_3:
+    temp_r0_144 = *var_r3_141;
+    if ((u32) temp_r0_144 < (u32) var_r30_140) {
+        var_r30_140 = (Matrix **) temp_r0_144;
     }
-    if (var_r3_141 != &gEmptyPtrListDL) {
-loop_9:
+cond_3:
+    var_r3_141 -= 1;
+    temp_r0_149 = (u32) *var_r3_141;
+    if (temp_r0_149 != 0U) {
+        goto body_3;
+    }
+    if (var_r3_141 != (Matrix **) &gEmptyPtrListDL) {
+        goto cond_9;
+    body_9:
+        if ((u32) temp_r0_163 < (u32) var_r30_140) {
+            var_r30_140 = (Matrix **) temp_r0_163;
+        }
+        var_r4_139 += 1;
+    cond_9:
         temp_r0_163 = *var_r4_139;
         if (temp_r0_163 != NULL) {
-            if (temp_r0_163 < var_r30_140) {
-                var_r30_140 = (Matrix **) temp_r0_163;
-            }
-            var_r4_139 += 4;
-            goto loop_9;
+            goto body_9;
         }
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(var_r30_140, NULL, 0);
@@ -128,25 +131,29 @@ loop_9:
     var_r4_186 = this->unk58;
     var_r30_187 = var_r4_186;
     var_r3_188 = var_r4_186;
-loop_18:
-    temp_r0_196 = M2C_FIELD(var_r3_188, u32 *, -4);
-    var_r3_188 -= 4;
-    if (temp_r0_196 != 0U) {
-        temp_r0_191 = *var_r3_188;
-        if (temp_r0_191 < var_r30_187) {
-            var_r30_187 = (Matrix **) temp_r0_191;
-        }
-        goto loop_18;
+    goto cond_18;
+body_18:
+    temp_r0_191 = *var_r3_188;
+    if ((u32) temp_r0_191 < (u32) var_r30_187) {
+        var_r30_187 = (Matrix **) temp_r0_191;
     }
-    if (var_r3_188 != &gEmptyPtrListDL) {
-loop_24:
+cond_18:
+    var_r3_188 -= 1;
+    temp_r0_196 = (u32) *var_r3_188;
+    if (temp_r0_196 != 0U) {
+        goto body_18;
+    }
+    if (var_r3_188 != (Matrix **) &gEmptyPtrListDL) {
+        goto cond_24;
+    body_24:
+        if ((u32) temp_r0_210 < (u32) var_r30_187) {
+            var_r30_187 = (Matrix **) temp_r0_210;
+        }
+        var_r4_186 += 1;
+    cond_24:
         temp_r0_210 = *var_r4_186;
         if (temp_r0_210 != NULL) {
-            if (temp_r0_210 < var_r30_187) {
-                var_r30_187 = (Matrix **) temp_r0_210;
-            }
-            var_r4_186 += 4;
-            goto loop_24;
+            goto body_24;
         }
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(var_r30_187, NULL, 0);
@@ -161,7 +168,6 @@ loop_24:
     }
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void ExplosionFX::DrawShockwaves() {

@@ -75,7 +75,6 @@ void Door::Reset() {
     this->unkE4 = this->unkE0;
 }
 
-#if 0 // DRAFT: ')' expected
 void *Door::Update() {
     s32 temp_r0_123;
     s32 temp_r4_136;
@@ -94,7 +93,7 @@ void *Door::Update() {
             break;
         case 1:
             if (this->unk80->unk2C & 1) {
-                if ((u8) M2C_FIELD(checked_cast<DoorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0xF4) != 0) {
+                if (checked_cast<DoorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF4 != 0) {
                     this->unk70.unk4 = 0;
                 }
                 SetState((DoorStates) 2);
@@ -110,7 +109,7 @@ void *Door::Update() {
             break;
         case 3:
             if (this->unk80->unk2C & 1) {
-                if ((u8) M2C_FIELD(checked_cast<DoorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0xF4) != 0) {
+                if (checked_cast<DoorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF4 != 0) {
                     this->unk70.unk4 = 1;
                 }
                 SetState((DoorStates) 0);
@@ -119,26 +118,22 @@ void *Door::Update() {
         }
     }
 }
-#endif
 
 void Door::Init() {
     Trap::Init();
     PropFlagsSet((unsigned int *) &this->unk10, 0x80000U);
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void DoorDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("Closed");
+    M2C_FIELD(this, s32 *, 0xE4) = (s32) ((MKAnimScript *) this->unk34)->GetAnim("Closed");
     this->unkE8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("Opening"));
     this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("Open"));
     this->unkF0 = (long) (((MKAnimScript *) this->unk34)->GetAnim("Closing"));
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 DoorDescriptor::LoadLine(MKIniLine *arg0) {
-    u8 sp8;
+    bool sp8;
 
     if (GamePropDescriptor::LoadLine(arg0) != 0) {
         return 1;
@@ -149,7 +144,6 @@ s32 DoorDescriptor::LoadLine(MKIniLine *arg0) {
     }
     return 0;
 }
-#endif
 
 void DoorDescriptor::Init() {
     TrapDescriptor::Init();
