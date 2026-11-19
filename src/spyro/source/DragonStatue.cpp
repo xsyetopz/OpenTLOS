@@ -224,87 +224,53 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void DragonStatue::EmitCrudAbovePlayer() {
-    f64 sp88;                                       /* compiler-managed */
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    f64 sp68;
-    f64 sp60;
-    MKVector3 sp50;
-    f64 sp48;
-    f64 sp40;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp28;
-    f64 sp20;
-    f32 sp18;
-    f64 sp10;
-    f32 sp8;
-    f32 temp_f27_457;
-    f32 temp_f27_494;
-    f32 temp_f28_462;
-    f32 temp_f28_499;
-    f64 temp_f0_473;
-    f64 temp_f0_513;
-    s32 var_r29_437;
-    void *temp_r4_445;
+    s32 i;
+    void *prop;
+    MKVector3 pos;
+    MKVector3 vel;
+    f32 px;
+    f32 py;
+    f32 pz;
+    f32 sx;
+    f32 sy;
+    f32 sz;
+    f32 scale;
 
-    var_r29_437 = 0;
-loop_2:
-    if (var_r29_437 < (s32) this->unkF8) {
-        temp_r4_445 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
-        sp80 = M2C_FIELD(temp_r4_445, f64 *, 0x30);
-        sp88 = M2C_FIELD(temp_r4_445, f64 *, 0x38);
-        (*(f32 *) ((u8 *) &sp80 + 0x4)) += 200.0f;
-        temp_f27_457 = MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f);
-        temp_f28_462 = MKRand_Float((int *) &gViewSeed, 4.0f, 6.0f);
-        sp50 = MKVector(MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f), temp_f28_462, temp_f27_457);
-        temp_f0_473 = sp50 * 5.53552857e-315;
-        sp10 = temp_f0_473;
-        sp60 = temp_f0_473;
-        sp18 = sp50.unk8 * 100.0f;
-        sp68 = (f64) sp18;
-        sp80 += temp_f0_473;
-        sp88 = (f32) sp88 + (f32) sp68;
-        temp_f27_494 = MKRand_Float((int *) &gViewSeed, -4.0f, 4.0f);
-        temp_f28_499 = MKRand_Float((int *) &gViewSeed, -2.0f, 0.5f);
-        sp30 = MKRand_Float((int *) &gViewSeed, -4.0f, 4.0f);
-        sp34 = temp_f28_499;
-        sp38 = temp_f27_494;
-        sp40 = (f64) sp30;
-        sp48 = (f64) sp38;
-        temp_f0_513 = sp40 * 5.53552857e-315;
-        sp20 = temp_f0_513;
-        sp70 = temp_f0_513;
-        sp28 = (f32) sp48 * 100.0f;
-        sp78 = (f64) sp28;
-        sp8 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
-        gb.EmitCrud(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70), sp8);
-        var_r29_437 += 1;
-        goto loop_2;
+    for (i = 0; i < (s32) this->unkF8; i += 1) {
+        prop = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
+        px = M2C_FIELD(prop, f32 *, 0x30);
+        py = M2C_FIELD(prop, f32 *, 0x34) + 200.0f;
+        pz = M2C_FIELD(prop, f32 *, 0x38);
+
+        sx = MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f);
+        sy = MKRand_Float((int *) &gViewSeed, 4.0f, 6.0f);
+        sz = MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f);
+        pos.unk0 = px + sx * 100.0f;
+        pos.unk4 = py + sy * 100.0f;
+        pos.unk8 = pz + sz * 100.0f;
+
+        sx = MKRand_Float((int *) &gViewSeed, -4.0f, 4.0f);
+        sy = MKRand_Float((int *) &gViewSeed, -2.0f, 0.5f);
+        sz = MKRand_Float((int *) &gViewSeed, -4.0f, 4.0f);
+        vel.unk0 = sx * 100.0f;
+        vel.unk4 = sy * 100.0f;
+        vel.unk8 = sz * 100.0f;
+
+        scale = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
+        gb.EmitCrud(pos, vel, scale);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void DragonStatue::SnapDown() {
-    f64 sp10;
-    f64 sp8;
-    f32 temp_f1_567;
-    f64 temp_f2_565;
+    MKVector3 pos;
 
-    temp_f2_565 = M2C_FIELD(this, f64 *, 0xE0);
-    sp8 = this->unkD8;
-    temp_f1_567 = (*(f32 *) ((u8 *) &sp8 + 0x4));
-    sp10 = temp_f2_565;
-    (*(f32 *) ((u8 *) &sp8 + 0x4)) = temp_f1_567 - 6600.0f;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(f64 *, f32, f64), 0x38)(&sp8, temp_f1_567, temp_f2_565);
+    *(f64 *) &pos.unk0 = this->unkD8;
+    pos.unk8 = this->unkE0;
+    pos.unk4 = pos.unk4 - 6600.0f;
+    this->SetPos(pos);
     this->unk100 = 1;
 }
-#endif
 
 u8 DragonStatue::IsUp() {
     return (u8) (this->unk100 == 0);
