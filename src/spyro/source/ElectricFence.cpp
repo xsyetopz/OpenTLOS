@@ -363,7 +363,7 @@ f32 ElectricFence::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal type
 s32 ElectricFence::LoadDone() {
     Matrix sp2E0;
     Matrix sp2A0;
@@ -613,8 +613,8 @@ loop_27:
             sp40 = -sp2E0.unk28;
             sp208 = (f64) sp38;
             sp210 = (f64) sp40;
-            sp218.operator*(*(this->unk4C + (var_r27_732 + 0x68)));
-            sp228.operator*(0.5f);
+            sp218 = ((MKVector3 *) &sp208)->operator*(*(this->unk4C + (var_r27_732 + 0x68)));
+            sp228 = sp218.operator*(0.5f);
             temp_f0_858 = sp228 + M2C_BITWISE(f64, sp1F8);
             spE8 = temp_f0_858;
             sp238 = temp_f0_858;
@@ -641,7 +641,7 @@ loop_27:
             sp1D0 = (f64) sp30;
             sp258 = M2C_FIELD(temp_r5_917, f64 *, 0);
             sp260 = M2C_FIELD(temp_r5_917, f64 *, 8);
-            sp1D8.operator*(*(temp_r6_914 + (var_r27_732 + 0x68)));
+            sp1D8 = ((MKVector3 *) &sp1C8)->operator*(*(temp_r6_914 + (var_r27_732 + 0x68)));
             spC8 = sp258 + M2C_BITWISE(f64, sp1D8);
             spC0 = 0.0f;
             spB8 = 0.0f;
@@ -698,7 +698,7 @@ loop_30:
     sp138 = temp_f0_1040;
     sp20 = (f32) M2C_FIELD(this, f64 *, 0xC8) - (f32) M2C_FIELD(this, f64 *, 0xB8);
     sp140 = (f64) sp20;
-    sp148.operator*(0.5f);
+    sp148 = ((MKVector3 *) &sp138)->operator*(0.5f);
     sp68 = this->unkB0 + M2C_BITWISE(f64, sp148);
     sp158 = sp68;
     sp70 = (f32) M2C_FIELD(this, f64 *, 0xB8) + sp148.unk8;

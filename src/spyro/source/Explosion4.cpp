@@ -708,8 +708,8 @@ loop_2:
         }
         this->unk4C->SetRadius(10000.0f * this->unk58);
         spC70 = MKVector(0.0f, 1.0f, 0.0f);
-        spC80.operator*(1000.0f);
-        spC90.operator*(this->unk58);
+        spC80 = spC70.operator*(1000.0f);
+        spC90 = spC80.operator*(this->unk58);
         sp150 = this->unk68 + spC90;
         temp_r3_208 = this->unk4C;
         spCA0 = sp150;
@@ -745,8 +745,8 @@ loop_17:
             spC60 = Normalise(*((MKVector3 *) &spC50));
             *(MKVector3 *) &spD70 = spC60;
             spC00 = MKVector(0.0f, this->unk58 * (200.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f)), 0.0f);
-            spC10.operator*(100.0f);
-            spC20.operator*(this->unk58);
+            spC10 = ((MKVector3 *) &spD70)->operator*(100.0f);
+            spC20 = spC10.operator*(this->unk58);
             temp_f0_308 = this->unk68 + spC20;
             sp50 = temp_f0_308;
             spC30 = temp_f0_308;
@@ -771,7 +771,7 @@ loop_17:
             spBF0 = (f64) sp120;
             temp_f22_362 = this->unk58;
             spBF8 = (f64) sp128;
-            spBD0.operator*(2000.0f);
+            spBD0 = ((MKVector3 *) &spD70)->operator*(2000.0f);
             sp110 = spBD0 * (f64) temp_f22_362;
             M2C_FIELD(temp_r26_256, f64 *, 0) = sp110;
             sp118 = spBD0.unk8 * temp_f22_362;
@@ -799,8 +799,8 @@ loop_17:
             spBC0 = Normalise(*((MKVector3 *) &spBB0));
             *(MKVector3 *) &spD70 = spBC0;
             spB60 = MKVector(0.0f, this->unk58 * (200.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f)), 0.0f);
-            spB70.operator*(100.0f);
-            spB80.operator*(this->unk58);
+            spB70 = ((MKVector3 *) &spD70)->operator*(100.0f);
+            spB80 = spB70.operator*(this->unk58);
             temp_f0_462 = this->unk68 + spB80;
             sp40 = temp_f0_462;
             spB90 = temp_f0_462;
@@ -825,7 +825,7 @@ loop_17:
             spB50 = (f64) spE0;
             temp_f21_516 = this->unk58;
             spB58 = (f64) spE8;
-            spB30.operator*(2000.0f);
+            spB30 = ((MKVector3 *) &spD70)->operator*(2000.0f);
             spD0 = spB30 * (f64) temp_f21_516;
             M2C_FIELD(temp_r26_410, f64 *, 0) = spD0;
             spD8 = spB30.unk8 * temp_f21_516;
@@ -853,8 +853,8 @@ loop_17:
             spB20 = Normalise(*((MKVector3 *) &spB10));
             *(MKVector3 *) &spD70 = spB20;
             spAC0 = MKVector(0.0f, this->unk58 * (200.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f)), 0.0f);
-            spAD0.operator*(100.0f);
-            spAE0.operator*(this->unk58);
+            spAD0 = ((MKVector3 *) &spD70)->operator*(100.0f);
+            spAE0 = spAD0.operator*(this->unk58);
             temp_f0_616 = this->unk68 + spAE0;
             sp30 = temp_f0_616;
             spAF0 = temp_f0_616;
@@ -870,7 +870,7 @@ loop_17:
             M2C_FIELD(temp_r3_549, f32 *, 0x24) = 0.0f;
             M2C_FIELD(temp_r3_549, f32 *, 0x28) = (f32) (this->unk58 * MKRand_Float((int *) &gViewSeed, 5.0f, 8.0f));
             temp_f20_655 = this->unk58;
-            spAA0.operator*(2000.0f);
+            spAA0 = ((MKVector3 *) &spD70)->operator*(2000.0f);
             temp_f0_659 = spAA0 * (f64) temp_f20_655;
             spA0 = temp_f0_659;
             M2C_FIELD(temp_r26_564, f64 *, 0) = temp_f0_659;
@@ -1343,7 +1343,7 @@ loop_44:
             if (temp_f27_1891 > 0.0f) {
                 spD84 = 0;
                 sp5B0 = MKVector(1.0f, 1.0f, 1.0f);
-                sp5C0.operator*(500.0f);
+                sp5C0 = sp5B0.operator*(500.0f);
                 sp70 = sp5C0 * (f64) temp_f27_1891;
                 spD80 = 0x417;
                 spD88 = sp70;
@@ -1370,8 +1370,8 @@ loop_44:
         sp28 = -(f32) spCD8;
         sp570 = (f64) sp20;
         sp578 = (f64) sp28;
-        sp580.operator*(700.0f);
-        sp590.operator*(this->unk58);
+        sp580 = ((MKVector3 *) &sp570)->operator*(700.0f);
+        sp590 = sp580.operator*(this->unk58);
         sp60 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp590);
         sp5A0 = sp60;
         sp68 = arg0.unk8 + sp590.unk8;

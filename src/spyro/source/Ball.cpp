@@ -645,7 +645,7 @@ block_4:
                 M2C_FIELD(temp_r3_923, f32 *, 0x20) = 0.0f;
                 M2C_FIELD(temp_r3_923, f32 *, 0x28) = 0.0f;
                 sp50 = MKVector(0.0f, 300.0f, 0.0f);
-                sp60.operator*(1000.0f);
+                sp60 = ((MKVector3 *) &spB0)->operator*(1000.0f);
                 sp10 = sp60 + M2C_BITWISE(f64, sp50);
                 M2C_FIELD(temp_r27_928, f64 *, 0) = sp10;
                 sp18 = sp60.unk8 + sp50.unk8;
@@ -849,7 +849,7 @@ void Ball::CheckForCatapults() {
     f64 sp58;
     f64 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
@@ -894,11 +894,11 @@ loop_15:
                 if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) < 1000000.0f) {
                     sp28 = temp_f5_1346;
                     sp30 = temp_f4_1348;
-                    ((Catapult *) &sp38)->GetAmmoPos();
+                    sp38 = ((Catapult *) temp_r3_1335)->GetAmmoPos();
                     temp_f0_1385 = sp38 - sp28;
                     sp8 = temp_f0_1385;
                     sp78 = temp_f0_1385;
-                    sp10 = sp40 - (f32) sp30;
+                    sp10 = sp38.unk8 - (f32) sp30;
                     sp80 = (f64) sp10;
                     temp_f3_1404 = 100.0f * (2.5f * this->unk280);
                     if ((((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * (*(f32 *) ((u8 *) &sp78 + 0x4))))) < (temp_f3_1404 * temp_f3_1404)) {
@@ -924,7 +924,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
+#if 0 // DRAFT: function call 'GetCollideRadius(HeroInterface *, float)' does not match 'HeroInterface::GetCollideRadius()'
 void Ball::CheckForHero() {
     f64 sp180;                                      /* compiler-managed */
     f64 sp178;                                      /* compiler-managed */
@@ -936,7 +936,7 @@ void Ball::CheckForHero() {
     f64 sp148;
     f64 sp140;
     f64 sp138;
-    HeroInterface sp128;
+    MKVector3 sp128;
     f64 sp120;
     f64 sp118;
     f64 sp110;
@@ -945,7 +945,7 @@ void Ball::CheckForHero() {
     f64 spF8;
     f64 spF0;
     f64 spE8;
-    f64 spD8;
+    MKVector3 spD8;
     f64 spD0;
     f64 spC8;
     f64 spC0;
@@ -1039,10 +1039,10 @@ void Ball::CheckForHero() {
         if (temp_f1_1547 < (temp_f28_1512 * temp_f28_1512)) {
             temp_r3_1550 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x27C);
             if (((((u8 *) temp_r3_1550) + 8) != 0) && ((u32) (M2C_FIELD(temp_r3_1550, s32 *, 0x4C) + 0xFFFF0000) == 2U)) {
-                sp128.GetPos();
+                sp128 = gb.unk0->GetPos();
                 sp48 = this->unkE0 - M2C_BITWISE(f64, sp128);
                 this->unkF0 = sp48;
-                sp50 = this->unkE8 - sp130;
+                sp50 = this->unkE8 - sp128.unk8;
                 sp138 = sp48;
                 M2C_FIELD(this, f64 *, 0xF8) = (f64) sp50;
                 M2C_FIELD(this, f32 *, 0xF4) = 0.0f;
@@ -1158,10 +1158,10 @@ void Ball::CheckForHero() {
                     sp168 = temp_f0_1827;
                     sp60 = (f32) sp110 - (f32) sp100;
                     sp170 = (f64) sp60;
-                    ((MKProp *) &spD8)->GetPos();
-                    sp38 = sp168 - spD8;
+                    spD8 = GetPos();
+                    sp38 = sp168 - M2C_BITWISE(f64, spD8);
                     sp178 = sp38;
-                    sp40 = (f32) sp170 - spE0;
+                    sp40 = (f32) sp170 - spD8.unk8;
                     sp180 = (f64) sp40;
                     spE8 = sp38;
                     spF0 = (f64) sp40;
@@ -1222,8 +1222,8 @@ void Ball::CheckForHero() {
                 }
             } else {
                 temp_f31_1978 = gUpdateTimeDelta;
-                sp98.operator*(std::sqrtf(temp_f1_1547));
-                spA8.operator*(5.0f);
+                sp98 = ((MKVector3 *) &sp178)->operator*(std::sqrtf(temp_f1_1547));
+                spA8 = sp98.operator*(5.0f);
                 temp_f0_1989 = spA8 * (f64) temp_f31_1978;
                 sp18 = temp_f0_1989;
                 spB8 = temp_f0_1989;
@@ -1298,7 +1298,7 @@ void Ball::UpdateShadow() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void Ball::UpdateOrientation() {
     Matrix sp130;
     Matrix spF0;
@@ -1737,7 +1737,7 @@ void Ball::PushOutOfThings() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void Ball::UpdatePhysics() {
     u8 sp540;
     s32 sp53C;
@@ -1820,7 +1820,7 @@ void Ball::UpdatePhysics() {
     MKVector3 sp388;
     f64 sp380;
     f64 sp378;
-    f64 sp368;
+    MKVector3 sp368;
     MKVector3 sp358;
     f64 sp350;
     f64 sp348;
@@ -2050,7 +2050,7 @@ void Ball::UpdatePhysics() {
     this->unkF0 += spE8;
     this->unkF8 += (f32) sp3E0;
     temp_f30_2928 = gUpdateTimeDelta;
-    sp3B8.operator*(this->unk278);
+    sp3B8 = ((MKVector3 *) &this->unkF0)->operator*(this->unk278);
     temp_f0_2933 = sp3B8 * (f64) temp_f30_2928;
     spD8 = temp_f0_2933;
     sp3C8 = temp_f0_2933;
@@ -2148,11 +2148,11 @@ void Ball::UpdatePhysics() {
                 sp388 = NProjection(*((MKVector3 *) &sp458), *((MKVector3 *) &sp438));
                 sp458 -= M2C_BITWISE(f64, sp388);
                 sp460 = (f32) sp460 - sp388.unk8;
-                sp358.operator*(0.1f + temp_f29_3044);
-                ((MKProp *) &sp368)->GetPos();
+                sp358 = ((MKVector3 *) &sp438)->operator*(0.1f + temp_f29_3044);
+                sp368 = temp_r24_3004->GetPos();
                 spC8 = sp368 + M2C_BITWISE(f64, sp358);
                 this->unkE0 = spC8;
-                spD0 = sp370 + sp358.unk8;
+                spD0 = sp368.unk8 + sp358.unk8;
                 sp378 = spC8;
                 M2C_FIELD(this, f64 *, 0xE8) = (f64) spD0;
                 sp380 = (f64) spD0;
@@ -2428,9 +2428,9 @@ loop_80:
                 sp288 = __ml((this->unkF8 * temp_f3_3823) + (((f32) M2C_FIELD(this, f64 *, 0xF0) * (f32) M2C_FIELD(this, f64 *, 0x110)) + (M2C_FIELD(this, f32 *, 0xF4) * M2C_FIELD(this, f32 *, 0x114))), *((MKVector3 *) &sp278));
                 this->unkF0 -= M2C_BITWISE(f64, sp288);
                 this->unkF8 -= sp288.unk8;
-                sp238.operator*(this->unk274);
-                sp248.operator*(this->unk280);
-                sp258.operator*(1.01f);
+                sp238 = ((MKVector3 *) &this->unk110)->operator*(this->unk274);
+                sp248 = sp238.operator*(this->unk280);
+                sp258 = sp248.operator*(1.01f);
                 sp58 = (f64) sp4F0 + M2C_BITWISE(f64, sp258);
                 this->unkE0 = sp58;
                 sp60 = sp4F8 + sp258.unk8;
@@ -2658,7 +2658,7 @@ block_107:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Ball::Message(MKMessage *arg0) {
     f64 sp138;                                      /* compiler-managed */
     f64 sp130;
@@ -2677,9 +2677,9 @@ void Ball::Message(MKMessage *arg0) {
     f64 spA0;
     f64 sp98;
     f64 sp90;
-    HeroInterface sp80;
+    MKVector3 sp80;
     MKVector3 sp70;
-    HeroInterface sp60;
+    MKVector3 sp60;
     f64 sp58;
     f64 sp50;
     f32 sp48;
@@ -2845,7 +2845,7 @@ block_62:
                 }
                 sp120 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
                 sp128 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-                sp80.GetPos();
+                sp80 = gb.unk0->GetPos();
                 temp_r3_4720 = this->unk8;
                 temp_f1_4721 = M2C_FIELD(temp_r3_4720, f64 *, 0x30);
                 sp90 = temp_f1_4721;
@@ -2853,12 +2853,12 @@ block_62:
                 temp_f0_4727 = temp_f1_4721 - M2C_BITWISE(f64, sp80);
                 sp20 = temp_f0_4727;
                 spA0 = temp_f0_4727;
-                sp28 = (f32) sp98 - sp88;
+                sp28 = (f32) sp98 - sp80.unk8;
                 spA8 = (f64) sp28;
                 spB0 = Normalise(*((MKVector3 *) &spA0));
                 *(MKVector3 *) &sp120 = spB0;
-                sp60.GetDir();
-                sp70 = InterpolateLinear(*((MKVector3 *) &sp120), *((MKVector3 *) &sp60), 0.25f);
+                sp60 = gb.unk0->GetDir();
+                sp70 = InterpolateLinear(*((MKVector3 *) &sp120), sp60, 0.25f);
                 *(MKVector3 *) &sp120 = sp70;
                 var_f4_4766 = ((f32) sp128 * (f32) sp128) + (((f32) sp120 * (f32) sp120) + ((*(f32 *) ((u8 *) &sp110 + 0x14)) * (*(f32 *) ((u8 *) &sp110 + 0x14))));
                 if (var_f4_4766 > 0.000001f) {

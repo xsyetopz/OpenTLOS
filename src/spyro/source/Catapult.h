@@ -18,6 +18,7 @@ class KDPropDescriptor;
 class KDUniformSpline;
 class MKIniLine;
 class MKMessage;
+class MKVector3;
 class Shadow;
 
 class Catapult : public KDProp {  // base: ctor/dtor vtable stores
@@ -34,8 +35,8 @@ public:
     void SetState(Catapult::State);
     s32 CanLoadBall(void);
     void SetBall(Ball *);
-    void GetAmmoDir(void);
-    void GetAmmoPos(void);
+    MKVector3 GetAmmoDir(void);
+    MKVector3 GetAmmoPos(void);
     void WindBackUpdate(void);
     void WindBackEnter(void);
     void FireUpdate(void);

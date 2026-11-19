@@ -207,7 +207,7 @@ void DreadWing::UpdateDropBox() {
         spC8 = sp38;
         sp90 = (f64) sp40;
         spD0 = (f64) sp40;
-        sp68.operator/(2.0f);
+        sp68 = ((MKVector3 *) &spC8)->operator/(2.0f);
         sp28 = M2C_BITWISE(f64, spD8) + M2C_BITWISE(f64, sp68);
         temp_r4_315 = this->unk8;
         var_f8_319 = 0.0f;

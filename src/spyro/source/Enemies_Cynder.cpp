@@ -405,7 +405,7 @@ void CynderTier3::EmitClubEffects() {
                 sp5C8 = MKVector(1.0f, 1.0f, 1.0f);
                 sp5D8 = MKVector(-1.0f, -1.0f, -1.0f);
                 sp5E8 = KDRand_Vector(sp5D8, sp5C8);
-                sp5F8.operator*(temp_f26_209);
+                sp5F8 = sp5E8.operator*(temp_f26_209);
                 sp128 = sp5F8 * 5.222099017e-315;
                 sp608 = sp128;
                 sp130 = sp5F8.unk8 * 0.5f;
@@ -431,7 +431,7 @@ void CynderTier3::EmitClubEffects() {
             sp548 = MKVector(1.0f, 1.0f, 1.0f);
             sp558 = MKVector(-1.0f, -1.0f, -1.0f);
             sp568 = KDRand_Vector(sp558, sp548);
-            sp578.operator*(temp_f26_209);
+            sp578 = sp568.operator*(temp_f26_209);
             sp108 = sp578 * 5.222099017e-315;
             sp588 = sp108;
             sp110 = sp578.unk8 * 0.5f;
@@ -455,7 +455,7 @@ void CynderTier3::EmitClubEffects() {
             sp4C8 = MKVector(1.0f, 1.0f, 1.0f);
             sp4D8 = MKVector(-1.0f, -1.0f, -1.0f);
             sp4E8 = KDRand_Vector(sp4D8, sp4C8);
-            sp4F8.operator*(temp_f26_209);
+            sp4F8 = sp4E8.operator*(temp_f26_209);
             spE8 = sp4F8 * 5.222099017e-315;
             sp508 = spE8;
             spF0 = sp4F8.unk8 * 0.5f;
@@ -503,7 +503,7 @@ loop_17:
                     sp418 = MKVector(1.0f, 1.0f, 1.0f);
                     sp428 = MKVector(-1.0f, -1.0f, -1.0f);
                     sp438 = KDRand_Vector(sp428, sp418);
-                    sp448.operator*(temp_f26_209);
+                    sp448 = sp438.operator*(temp_f26_209);
                     spB8 = sp448 * 5.180653787e-315;
                     sp458 = spB8;
                     spC0 = sp448.unk8 * 0.25f;
@@ -536,7 +536,7 @@ loop_17:
             sp398 = MKVector(1.0f, 1.0f, 1.0f);
             sp3A8 = MKVector(-1.0f, -1.0f, -1.0f);
             sp3B8 = KDRand_Vector(sp3A8, sp398);
-            sp3C8.operator*(temp_f26_209);
+            sp3C8 = sp3B8.operator*(temp_f26_209);
             spA8 = sp3C8 * 5.222099017e-315;
             sp3D8 = spA8;
             spB0 = sp3C8.unk8 * 0.5f;
@@ -579,7 +579,7 @@ loop_17:
                 sp318 = MKVector(1.0f, 1.0f, 1.0f);
                 sp328 = MKVector(-1.0f, -1.0f, -1.0f);
                 sp338 = KDRand_Vector(sp328, sp318);
-                sp348.operator*(temp_f26_209);
+                sp348 = sp338.operator*(temp_f26_209);
                 sp78 = sp348 * 5.222099017e-315;
                 sp358 = sp78;
                 sp80 = sp348.unk8 * 0.5f;
@@ -606,7 +606,7 @@ loop_17:
             sp298 = MKVector(1.0f, 1.0f, 1.0f);
             sp2A8 = MKVector(-1.0f, -1.0f, -1.0f);
             sp2B8 = KDRand_Vector(sp2A8, sp298);
-            sp2C8.operator*(temp_f26_209);
+            sp2C8 = sp2B8.operator*(temp_f26_209);
             sp58 = sp2C8 * 5.222099017e-315;
             sp2D8 = sp58;
             sp60 = sp2C8.unk8 * 0.5f;
@@ -630,7 +630,7 @@ loop_17:
             sp218 = MKVector(1.0f, 1.0f, 1.0f);
             sp228 = MKVector(-1.0f, -1.0f, -1.0f);
             sp238 = KDRand_Vector(sp228, sp218);
-            sp248.operator*(temp_f26_209);
+            sp248 = sp238.operator*(temp_f26_209);
             sp38 = sp248 * 5.222099017e-315;
             sp258 = sp38;
             sp40 = sp248.unk8 * 0.5f;
@@ -1113,11 +1113,11 @@ void CynderTier1::DefrostBall() {
 
 #if 0 // DRAFT: illegal type
 void CynderTier1::UpdateFrozenBallMovement() {
-    f32 spBC;
-    f32 spB8;
-    f32 spB4;
-    f32 spB0;
-    Matrix sp60;
+    Matrix sp80;
+    M2C_UNK sp7C;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
@@ -1137,11 +1137,11 @@ void CynderTier1::UpdateFrozenBallMovement() {
 
     temp_r3_2067 = this->unkB1C;
     if (temp_r3_2067 != NULL) {
-        M2C_STRUCT_COPY((s32) &sp60.unk1C + 4, (s32) (temp_r3_2067->unk8 - 4) + 4, 0x40);
-        sp60.NormaliseScale();
-        sp30 = -sp60.unk30;
-        sp34 = -sp60.unk34;
-        sp38 = -sp60.unk38;
+        M2C_STRUCT_COPY((s32) &sp7C + 4, (s32) (temp_r3_2067->unk8 - 4) + 4, 0x40);
+        sp60 = sp80.NormaliseScale();
+        sp30 = -sp80.unk10;
+        sp34 = -sp80.unk14;
+        sp38 = -sp80.unk18;
         sp40 = (f64) sp30;
         sp48 = (f64) sp38;
         temp_f0_2099 = sp40 * 5.53552857e-315;
@@ -1149,17 +1149,17 @@ void CynderTier1::UpdateFrozenBallMovement() {
         sp50 = temp_f0_2099;
         sp28 = (f32) sp48 * 100.0f;
         sp58 = (f64) sp28;
-        sp10 = spB0 + temp_f0_2099;
-        sp60.unk10 = sp10;
-        sp18 = spB8 + (f32) sp58;
-        sp60.unk18 = (f64) sp18;
-        spB0 = sp60.unk10;
-        spB4 = sp60.unk14;
-        spB8 = (f32) (f64) sp18;
-        spBC = 1.0f;
-        MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp60.unk20));
-        M2C_FIELD(this, f64 *, 0x588) = (f64) spB0;
-        M2C_FIELD(this, f64 *, 0x590) = (f64) spB8;
+        sp10 = sp80.unk30 + temp_f0_2099;
+        sp70 = sp10;
+        sp18 = sp80.unk38 + (f32) sp58;
+        sp78 = (f64) sp18;
+        sp80.unk30 = (f32) sp70;
+        sp80.unk34 = (*(f32 *) ((u8 *) &sp70 + 0x4));
+        sp80.unk38 = (f32) sp78;
+        sp80.unk3C = 1.0f;
+        MKModel_SetWorldMatrix(this->unk4, sp80);
+        M2C_FIELD(this, f64 *, 0x588) = (f64) sp80.unk30;
+        M2C_FIELD(this, f64 *, 0x590) = (f64) sp80.unk38;
         temp_r5_2137 = this->unkB1C;
         this->unk110.unk8 = temp_r5_2137->unk150;
         this->unk110.unk10 = temp_r5_2137->unk158;
@@ -1223,7 +1223,7 @@ s32 CynderTier1::TryFreezeBall() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void CynderTier1::CheckAnimEvents() {
     f64 sp478;
     f64 sp470;
@@ -1488,7 +1488,7 @@ loop_50:
                             sp308 = MKVector(1.0f, 2.0f, 1.0f);
                             sp318 = MKVector(-1.0f, 0.0f, -1.0f);
                             sp328 = KDRand_Vector(sp318, sp308);
-                            sp338.operator*(50.0f);
+                            sp338 = sp328.operator*(50.0f);
                             spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp338);
                             M2C_FIELD(temp_r3_2584, f64 *, 0) = spB8;
                             spC0 = this->unk588.unk8 + sp338.unk8;
@@ -1563,7 +1563,7 @@ loop_34:
                             sp460 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
                             temp_f15_2817 = -_table_sinf((f32) sp468 + temp_f15_2803) * (f32) sp458;
                             sp2A8 = MKVector(_table_sinf(temp_f15_2803) * (f32) sp460, 0.0f, temp_f15_2817);
-                            sp2B8.operator*(var_f17_2761);
+                            sp2B8 = sp2A8.operator*(var_f17_2761);
                             sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2B8);
                             sp16C = 0.0f;
                             sp168 = (f32) sp470;

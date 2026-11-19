@@ -163,7 +163,7 @@ void ElementalRing::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void ElementalRing::Draw() {
     MKVector3 sp1F0;
     Matrix sp1B0;
@@ -427,7 +427,7 @@ loop_2:
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *ElementalRing::Update() {
     s8 sp189;
     s8 sp188;
@@ -439,7 +439,7 @@ void *ElementalRing::Update() {
     s8 sp178;
     f64 sp170;                                      /* compiler-managed */
     f64 sp168;                                      /* compiler-managed */
-    u32 sp164;
+    MKProp *sp164;
     s32 sp160;
     f64 sp158;
     f64 sp150;
@@ -476,7 +476,7 @@ void *ElementalRing::Update() {
     f64 sp58;
     f32 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f32 sp30;
     f64 sp28;
     f32 sp20;
@@ -488,6 +488,7 @@ void *ElementalRing::Update() {
     KDSoundFlangedFader **var_r30_722;
     KDSoundFlangedFader *temp_r31_1068;
     KDSoundFlangedFader *temp_r4_889;
+    MKProp *temp_r4_1010;
     f32 temp_f1_811;
     f32 temp_f1_834;
     f32 temp_f1_942;
@@ -512,7 +513,6 @@ void *ElementalRing::Update() {
     s32 temp_r0_725;
     s32 temp_r0_748;
     s32 temp_r0_897;
-    u32 temp_r4_1010;
     u8 var_r6_730;
     void *temp_r3_952;
     void *temp_r3_985;
@@ -637,7 +637,7 @@ loop_40:
                     temp_f1_997 = M2C_FIELD(temp_r31_1068, f32 *, 0x74);
                     if (((*(f32 *) ((u8 *) &sp98 + 0x4)) > temp_f1_997) && ((*(f32 *) ((u8 *) &sp98 + 0x4)) < (temp_f1_997 + (*(f32 *) ((u8 *) &sp128 + 0x4))))) {
                         sp13C = 0;
-                        temp_r4_1010 = M2C_FIELD(temp_r31_1068, u32 *, 0xC4);
+                        temp_r4_1010 = M2C_FIELD(temp_r31_1068, MKProp **, 0xC4);
                         sp10 = 0.0f;
                         sp8 = 0.0f;
                         spC = 0.0f;
@@ -657,10 +657,9 @@ loop_40:
                         sp150 = M2C_FIELD(&MKVector3::one, f64 *, 0);
                         sp158 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                         sp188 = 0;
-                        if (temp_r4_1010 != 0U) {
-                            ((MKProp *) &sp38)->GetPos();
-                            sp168 = sp38;
-                            sp170 = sp40;
+                        if (temp_r4_1010 != NULL) {
+                            sp38 = temp_r4_1010->GetPos();
+                            *(MKVector3 *) &sp168 = sp38;
                         } else {
                             sp168 = 0.0f;
                             (*(f32 *) ((u8 *) &sp164 + 0x8)) = 0.0f;

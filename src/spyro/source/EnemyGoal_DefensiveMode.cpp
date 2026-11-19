@@ -208,7 +208,14 @@ block_5:
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_ShieldCharge::EnableSB() {
-    AITargetData sp38;
+    f64 sp80;
+    f64 sp78;
+    MKVector3 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    MKVector3 sp38;
     f32 sp30;
     f64 sp28;
     f32 sp20;
@@ -228,24 +235,24 @@ void EnemyGoal_ShieldCharge::EnableSB() {
     temp_r3_310->unk464 |= 0x80;
     temp_r3_314 = this->unkC;
     temp_f31_319 = M2C_FIELD(temp_r3_314->__vptr, f64 (**)(Character *, M2C_UNK), 0x100)(temp_r3_314, 1);
-    sp38.GetDir();
-    temp_f0_325 = sp38.unk0 * temp_f31_319;
+    sp38 = this->unk10->GetDir();
+    temp_f0_325 = sp38 * temp_f31_319;
     sp28 = temp_f0_325;
-    sp38.unk10 = temp_f0_325;
+    sp48 = temp_f0_325;
     sp30 = sp38.unk8 * (f32) temp_f31_319;
-    sp38.unk18 = (f64) sp30;
+    sp50 = (f64) sp30;
     temp_f0_336 = temp_f0_325 * 5.304989477e-315;
     sp18 = temp_f0_336;
-    sp38.unk20 = temp_f0_336;
-    sp20 = (f32) sp38.unk18 * 2.0f;
-    sp38.unk28 = (f64) sp20;
-    ((AITargetData *) &sp38.unk30)->GetPos();
-    temp_f0_351 = sp38.unk30 + sp38.unk20;
+    sp58 = temp_f0_336;
+    sp20 = (f32) sp50 * 2.0f;
+    sp60 = (f64) sp20;
+    sp68 = this->unk10->GetPos();
+    temp_f0_351 = sp68 + sp58;
     sp8 = temp_f0_351;
-    sp38.unk40 = temp_f0_351;
-    sp10 = sp38.unk38 + (f32) sp38.unk28;
-    sp38.unk40.unk8 = (f64) sp10;
-    ((AITargetData *) &this->unkC->unk8C0)->Set(*((MKVector3 *) &sp38.unk40), 0U);
+    sp78 = temp_f0_351;
+    sp10 = sp68.unk8 + (f32) sp60;
+    sp80 = (f64) sp10;
+    ((AITargetData *) &this->unkC->unk8C0)->Set(*((MKVector3 *) &sp78), 0U);
     temp_r4_366 = this->unkC;
     temp_r4_366->unk640->SeekOn((AITargetData *) &temp_r4_366->unk8C0);
     this->unkC->unk640->ObstacleAvoidanceOn(this->unk10);
@@ -258,7 +265,7 @@ void EnemyGoal_ShieldCharge::EnableSB() {
 
 #if 0 // DRAFT: undefined identifier 'unkA24'
 void EnemyGoal_ShieldCharge::Activate() {
-    f64 sp8;
+    MKVector3 sp8;
     AnimSequence *temp_r4_409;
     Character *temp_r3_407;
     Character *temp_r3_470;
@@ -278,10 +285,9 @@ void EnemyGoal_ShieldCharge::Activate() {
     ((Enemy *) this->unkC)->SetHitTarget(0U);
     ((Enemy *) this->unkC)->SetWalkMovementSpeed(1U);
     this->unkC->SetMovementType((CharacterMoveType) 0);
-    ((AITargetData *) &sp8)->GetDir();
+    sp8 = this->unk10->GetDir();
     temp_r5_444 = this->unkC;
-    M2C_FIELD(temp_r5_444, f64 *, 0xE0) = sp8;
-    M2C_FIELD(temp_r5_444, f64 *, 0xE8) = sp10;
+    M2C_FIELD(temp_r5_444, MKVector3 *, 0xE0) = sp8;
     temp_r5_444->unk6B5 |= 0x40;
     ((Enemy *) this->unkC)->SetRunMovementSpeed(1U);
     this->unkC->unk698 = 0.25f;
@@ -315,14 +321,14 @@ void EnemyGoal_ShieldBlock::Terminate() {
 
 #if 0 // DRAFT: undefined identifier 'unkAB8'
 u8 EnemyGoal_ShieldBlock::Update() {
-    f64 sp98;
+    MKVector3 sp98;
     f64 sp90;
     f64 sp88;
-    f32 sp78;
-    f64 sp68;
+    MKVector3 sp78;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
-    f64 sp48;
+    MKVector3 sp48;
     f64 sp40;
     f64 sp38;
     f32 sp30;
@@ -379,10 +385,9 @@ u8 EnemyGoal_ShieldBlock::Update() {
         if (((u8) this->unk1C != 0) || ((u8) this->unk1D != 0)) {
             temp_r3_567 = this->unkC;
             if ((u32) M2C_FIELD(temp_r3_567->unk630, u32 *, 0x20) != (u32) M2C_FIELD(temp_r3_567->unkA50, u32 *, 0x40)) {
-                ((AITargetData *) &sp98)->GetDir();
+                sp98 = ((AITargetData *) this->unk10)->GetDir();
                 temp_r4_577 = this->unkC;
-                M2C_FIELD(temp_r4_577, f64 *, 0xE0) = sp98;
-                M2C_FIELD(temp_r4_577, f64 *, 0xE8) = spA0;
+                M2C_FIELD(temp_r4_577, MKVector3 *, 0xE0) = sp98;
                 temp_r4_577->unk6B5 |= 0x40;
             }
         }
@@ -395,18 +400,18 @@ u8 EnemyGoal_ShieldBlock::Update() {
                     var_r30_595 = 1;
                 }
                 if (var_r30_595 != 0) {
-                    ((AITargetData *) &sp78)->GetDir();
-                    temp_f31_620 = (sp80 * temp_r29_591->unkF8) + ((sp78 * temp_r29_591->unkF0) + (sp7C * temp_r29_591->unkF4));
-                    ((AITargetData *) &sp68)->GetDir();
+                    sp78 = ((AITargetData *) temp_r28_590)->GetDir();
+                    temp_f31_620 = (sp78.unk8 * temp_r29_591->unkF8) + ((M2C_BITWISE(f32, sp78) * temp_r29_591->unkF0) + (sp78.unk4 * temp_r29_591->unkF4));
+                    sp68 = ((AITargetData *) temp_r28_590)->GetDir();
                     temp_f0_624 = sp68 * (f64) temp_f31_620;
                     sp28 = temp_f0_624;
                     sp58 = temp_f0_624;
-                    sp30 = sp70 * temp_f31_620;
+                    sp30 = sp68.unk8 * temp_f31_620;
                     sp60 = (f64) sp30;
-                    ((AITargetData *) &sp48)->GetDir();
+                    sp48 = ((AITargetData *) temp_r28_590)->GetDir();
                     sp18 = sp48 - sp58;
                     temp_r3_641 = temp_r29_591->unk8;
-                    sp20 = sp50 - (f32) sp60;
+                    sp20 = sp48.unk8 - (f32) sp60;
                     sp10 = -M2C_FIELD(temp_r3_641, f32 *, 0x28);
                     sp8 = -M2C_FIELD(temp_r3_641, f32 *, 0x20);
                     spC = -M2C_FIELD(temp_r3_641, f32 *, 0x24);
@@ -487,7 +492,7 @@ block_5:
 
 #if 0 // DRAFT: undefined identifier 'unkB08'
 void EnemyGoal_ShieldBlock::Activate() {
-    f64 sp8;
+    MKVector3 sp8;
     AnimSequence *temp_r4_856;
     Character *temp_r3_828;
     Character *temp_r3_854;
@@ -505,10 +510,9 @@ void EnemyGoal_ShieldBlock::Activate() {
     this->unkC->StopMovement(1U);
     temp_r5_836 = this->unkC;
     temp_r5_836->unk68C = temp_r5_836->unkA38->unk15C;
-    ((AITargetData *) &sp8)->GetDir();
+    sp8 = ((AITargetData *) this->unk10)->GetDir();
     temp_r4_843 = this->unkC;
-    M2C_FIELD(temp_r4_843, f64 *, 0xE0) = sp8;
-    M2C_FIELD(temp_r4_843, f64 *, 0xE8) = sp10;
+    M2C_FIELD(temp_r4_843, MKVector3 *, 0xE0) = sp8;
     temp_r4_843->unk6B5 |= 0x40;
     temp_r3_854 = this->unkC;
     temp_r4_856 = temp_r3_854->unkA24->unk0;
@@ -619,7 +623,7 @@ block_8:
 
 #if 0 // DRAFT: expression syntax error
 void EnemyGoal_Block::Activate() {
-    f64 sp8;
+    MKVector3 sp8;
     AnimSequence *temp_r4_1087;
     Character *temp_r3_1059;
     Character *temp_r3_1085;
@@ -637,10 +641,9 @@ void EnemyGoal_Block::Activate() {
     this->unkC->StopMovement(1U);
     temp_r5_1067 = this->unkC;
     temp_r5_1067->unk68C = temp_r5_1067->unkA38->unk15C;
-    ((AITargetData *) &sp8)->GetDir();
+    sp8 = ((AITargetData *) this->unk10)->GetDir();
     temp_r4_1074 = this->unkC;
-    M2C_FIELD(temp_r4_1074, f64 *, 0xE0) = sp8;
-    M2C_FIELD(temp_r4_1074, f64 *, 0xE8) = sp10;
+    M2C_FIELD(temp_r4_1074, MKVector3 *, 0xE0) = sp8;
     temp_r4_1074->unk6B5 |= 0x40;
     temp_r3_1085 = this->unkC;
     temp_r4_1087 = temp_r3_1085->unkA24->unk0;

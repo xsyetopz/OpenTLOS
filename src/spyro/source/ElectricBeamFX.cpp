@@ -85,34 +85,23 @@ void ElectricBeam::Deinit() {
     ((KDUniformSpline *) &this->unk30)->Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk1A0'
 void ElectricBeam::Draw() {
-    f64 sp20;
-    f64 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    f32 temp_f1_133;
-    f32 temp_f1_139;
-    f32 temp_f2_137;
+    MKVector4 color;
+    f32 r;
+    f32 v;
 
     if ((u8) this->unk1F4 != 0) {
-        MKModel_SetWorldMatrix(this->unk44, this->unk1A0);
-        temp_f1_133 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
-        temp_f2_137 = 0.75f * temp_f1_133;
-        temp_f1_139 = (0.25f * temp_f1_133) + 0.75f;
-        sp14 = 1.0f;
-        sp10 = temp_f2_137;
-        sp8 = temp_f1_139;
-        spC = temp_f1_139;
-        sp20 = (f64) sp10;
-        sp18 = (f64) sp8;
-        MKMaterial_SetColor(this->unk1F0, *((MKVector4 *) &sp18));
+        MKModel_SetWorldMatrix(this->unk44, *(Matrix *) ((s8 *) this + 0x1A0));
+        r = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+        v = (0.25f * r) + 0.75f;
+        color.unk0 = v;
+        color.unk4 = v;
+        color.unk8 = 0.75f * r;
+        color.unkC = 1.0f;
+        MKMaterial_SetColor(this->unk1F0, color);
         MKModel_Draw(this->unk44, NULL);
     }
 }
-#endif
 
 void ElectricBeam::Update() {
     this->unk1E8 += this->unk1EC * gUpdateTimeDelta;
@@ -608,7 +597,7 @@ void ElectricBeam::UpdateWiggleBone(MKDynamicBone *arg0, void *arg1) {
 
 #if 0 // DRAFT: function call 'Tools_GetMatchingNodeIndex(MKModel *, signed char *)' does not match 'Tools_GetMatchingNodeIndex(MKModel *, const char *)'
 void ElectricBeam::Init() {
-    Animation sp8;
+    MKVector3 sp8;
     MKAnim *var_r4_1304;
     MKAnimScript *temp_r27_1294;
     MKAnimScript *temp_r27_1372;
@@ -638,14 +627,13 @@ void ElectricBeam::Init() {
     var_r30_1322 = 0x50;
     do {
         temp_r24_1331 = Tools_GetMatchingNodeIndex(this->unk44, Str_Printf("%d", var_r25_1318 + 1, var_r5_1315));
-        sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk44));
+        sp8 = ((Animation *) (MKModel_GetAnimation(this->unk44)))->GetNodeOrigin((s32) temp_r24_1331);
         temp_r26_1339 = this + var_r30_1322;
-        M2C_FIELD(temp_r26_1339, f64 *, 0x60) = M2C_BITWISE(f64, sp8);
-        M2C_FIELD(temp_r26_1339, f64 *, 0x68) = sp8.unk8;
+        M2C_FIELD(temp_r26_1339, MKVector3 *, 0x60) = sp8;
         MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk44, (s32) temp_r24_1331), (void (*)(MKDynamicBone *, void *)) &ElectricBeam::UpdateWiggleBone, ((u8 *) temp_r26_1339) + 0x60);
         temp_r5_1350 = ((u8 *) temp_r26_1339) + 0x6C;
         M2C_STRUCT_COPY((s32) ((u8 *) temp_r5_1350) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        var_r5_1315 = ((u8 *) temp_r5_1350) + 0x40;
+        var_r5_1315 = (signed char *) (((u8 *) temp_r5_1350) + 0x40);
         var_r25_1318 += 1;
         var_r30_1322 += 0x50;
     } while (var_r25_1318 < 4);
@@ -667,7 +655,7 @@ void ElectricBeam::Init() {
     this->unk1E8 = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
     this->unk1EC = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
     this->unk1E4 = 0;
-    this->unk1F0 = MKMaterial_Create("p_white_lightning");
+    this->unk1F0 = (MKMaterial *) (MKMaterial_Create("p_white_lightning"));
     this->unk1F4 = 0;
     M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
 }

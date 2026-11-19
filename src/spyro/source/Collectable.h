@@ -36,7 +36,7 @@ public:
     virtual void GetDescriptor(void);
     virtual void DrawLocator(void);
     virtual void Spawn(const MKVector3 *, const MKVector3 *, bool);
-    virtual void GetPos(void);
+    virtual MKVector3 GetPos(void);
     virtual void SetPos(const MKVector3 &);
     virtual s32 GetTypeID(void);
     virtual s32 SetTypeID(int);
@@ -269,9 +269,12 @@ inline Collectable::~Collectable() {
 }
 #endif
 
-inline void Collectable::GetPos() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x50);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x58);
+inline MKVector3 Collectable::GetPos() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unk50;
+    M2C_FIELD(sret, f64 *, 8) = (f64) this->unk58;
+    return result;
 }
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKHeap'

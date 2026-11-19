@@ -468,7 +468,7 @@ loop_26:
             spD8 = (f64) sp48;
             sp120 = (f64) sp40;
             sp128 = (f64) sp48;
-            spB0.operator*(temp_f28_449);
+            spB0 = ((MKVector3 *) &sp130)->operator*(temp_f28_449);
             temp_r6_623 = this->unk4;
             sp30 = M2C_FIELD(temp_r6_623, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
@@ -512,7 +512,7 @@ loop_31:
             sp98 = (f64) sp28;
             sp120 = (f64) sp20;
             sp128 = (f64) sp28;
-            sp70.operator*(temp_f28_449);
+            sp70 = ((MKVector3 *) &sp130)->operator*(temp_f28_449);
             temp_r6_735 = this->unk4;
             sp10 = M2C_FIELD(temp_r6_735, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
@@ -1195,7 +1195,7 @@ loop_26:
             spD8 = (f64) sp48;
             sp120 = (f64) sp40;
             sp128 = (f64) sp48;
-            spB0.operator*(temp_f28_1943);
+            spB0 = ((MKVector3 *) &sp130)->operator*(temp_f28_1943);
             temp_r6_2117 = this->unk4;
             sp30 = M2C_FIELD(temp_r6_2117, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
@@ -1239,7 +1239,7 @@ loop_31:
             sp98 = (f64) sp28;
             sp120 = (f64) sp20;
             sp128 = (f64) sp28;
-            sp70.operator*(temp_f28_1943);
+            sp70 = ((MKVector3 *) &sp130)->operator*(temp_f28_1943);
             temp_r6_2229 = this->unk4;
             sp10 = M2C_FIELD(temp_r6_2229, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
@@ -2036,7 +2036,7 @@ loop_26:
             spD8 = (f64) sp48;
             sp120 = (f64) sp40;
             sp128 = (f64) sp48;
-            spB0.operator*(temp_f28_3648);
+            spB0 = ((MKVector3 *) &sp130)->operator*(temp_f28_3648);
             temp_r6_3822 = this->unk4;
             sp30 = M2C_FIELD(temp_r6_3822, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
@@ -2080,7 +2080,7 @@ loop_31:
             sp98 = (f64) sp28;
             sp120 = (f64) sp20;
             sp128 = (f64) sp28;
-            sp70.operator*(temp_f28_3648);
+            sp70 = ((MKVector3 *) &sp130)->operator*(temp_f28_3648);
             temp_r6_3934 = this->unk4;
             sp10 = M2C_FIELD(temp_r6_3934, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
@@ -2129,7 +2129,7 @@ s32 ElectricDojoLesson::IsBreath2Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void ElectricDojoLesson::SetupBreath2SpawnPoints() {
     CharacterGraphNode *sp70;
     f64 sp68;                                       /* compiler-managed */
@@ -2264,7 +2264,7 @@ s32 ElectricDojoLesson::IsBreath1Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void ElectricDojoLesson::SetupBreath1SpawnPoints() {
     CharacterGraphNode *spC0;
     f64 spB8;                                       /* compiler-managed */
@@ -3334,7 +3334,7 @@ loop_26:
             spD8 = (f64) sp48;
             sp120 = (f64) sp40;
             sp128 = (f64) sp48;
-            spB0.operator*(temp_f28_6213);
+            spB0 = ((MKVector3 *) &sp130)->operator*(temp_f28_6213);
             temp_r6_6387 = this->unk4;
             sp30 = M2C_FIELD(temp_r6_6387, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
@@ -3378,7 +3378,7 @@ loop_31:
             sp98 = (f64) sp28;
             sp120 = (f64) sp20;
             sp128 = (f64) sp28;
-            sp70.operator*(temp_f28_6213);
+            sp70 = ((MKVector3 *) &sp130)->operator*(temp_f28_6213);
             temp_r6_6499 = this->unk4;
             sp10 = M2C_FIELD(temp_r6_6499, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
@@ -3427,7 +3427,7 @@ s32 FireDojoLesson::IsBreath2Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void FireDojoLesson::SetupBreath2SpawnPoints() {
     CharacterGraphNode *sp60;
     f64 sp58;                                       /* compiler-managed */
@@ -3618,7 +3618,7 @@ s32 FireDojoLesson::IsMeleeKnockBackComplete() {
     return this->unk10 > 3;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
     CharacterGraphNode *sp190;
     f64 sp188;                                      /* compiler-managed */
@@ -3877,7 +3877,7 @@ s32 FireDojoLesson::IsMeleeKnockUpComplete() {
     return this->unk10 > 3;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector3'
 void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
     f64 sp148;                                      /* compiler-managed */
     f64 sp140;                                      /* compiler-managed */
@@ -6364,7 +6364,7 @@ loop_19:
                 (*(f32 *) ((u8 *) &sp148 + 0x4)) = temp_f0_12305;
                 M2C_FIELD(M2C_FIELD(temp_r21_12294, void **, 0x84), u32 *, 4) = arg7;
                 this->unk2C0.AddSpawnPoint(((u8 *) temp_r21_12294) + 0x80);
-                temp_r20_12311 = (Matrix *) (((u8 *) temp_r21_12294) + 0x90);
+                temp_r20_12311 = ((u8 *) temp_r21_12294) + 0x90;
                 temp_r20_12311->SetIdentity();
                 M2C_FIELD(temp_r21_12294, f32 *, 0xC0) = (f32) sp148;
                 M2C_FIELD(temp_r21_12294, f32 *, 0xC4) = temp_f0_12305;
@@ -6429,7 +6429,7 @@ loop_39:
             sp40 = (f64) sp10;
             M2C_FIELD(M2C_FIELD(temp_r20_12506, void **, 0x84), u32 *, 4) = arg7;
             this->unk310.AddSpawnPoint(((u8 *) temp_r20_12506) + 0x80);
-            temp_r21_12521 = (Matrix *) (((u8 *) temp_r20_12506) + 0x90);
+            temp_r21_12521 = ((u8 *) temp_r20_12506) + 0x90;
             temp_r21_12521->SetIdentity();
             M2C_FIELD(temp_r20_12506, f32 *, 0xC0) = (f32) sp148;
             M2C_FIELD(temp_r20_12506, f32 *, 0xC4) = (*(f32 *) ((u8 *) &sp148 + 0x4));

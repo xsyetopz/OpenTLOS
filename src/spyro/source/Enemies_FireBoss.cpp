@@ -128,17 +128,17 @@ void FireBoss::TriggerExplosion() {
     f64 sp50;
     f64 sp48;
     f64 sp40;
-    f64 sp30;
+    MKVector3 sp30;
     MKVector3 sp20;
     f32 sp18;
     f64 sp10;
     s32 sp8;
 
     sp20 = MKVector(0.0f, 400.0f, 0.0f);
-    ((MKProp *) &sp30)->GetPos();
+    sp30 = GetPos();
     sp10 = sp30 + M2C_BITWISE(f64, sp20);
     sp50 = sp10;
-    sp18 = sp38 + sp20.unk8;
+    sp18 = sp30.unk8 + sp20.unk8;
     sp40 = sp10;
     sp58 = (f64) sp18;
     sp8 = 1;
@@ -479,14 +479,13 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
 void FireBoss::LaunchFireball() {
     Matrix sp40;
     f64 sp38;
     f64 sp30;
     f64 sp28;
     f64 sp20;
-    f64 sp10;
+    MKVector3 sp10;
     s32 temp_r3_702;
     u8 var_r31_670;
     void **temp_r3_732;
@@ -505,9 +504,8 @@ void FireBoss::LaunchFireball() {
             if (temp_r3_702 != 0) {
                 sp30 = (f64) sp40.unk30;
                 sp38 = (f64) sp40.unk38;
-                ((AITargetData *) &sp10)->GetPos();
-                sp20 = sp10;
-                sp28 = sp18;
+                sp10 = this->unk870.GetPos();
+                *(MKVector3 *) &sp20 = sp10;
                 (*(f32 *) ((u8 *) &sp20 + 0x4)) = (*(f32 *) ((u8 *) &sp30 + 0x4));
                 M2C_FIELD(M2C_FIELD(temp_r3_702, void **, 0x44), M2C_UNK (**)(s32, f64 *, f64 *, FireBoss *, s32, M2C_UNK, f32), 0x4C)(temp_r3_702, &sp30, &sp20, this, GS_TrainBossMissle01, 0, 1000.0f);
                 this->unkD10.EmitSmoke();
@@ -518,7 +516,6 @@ void FireBoss::LaunchFireball() {
         }
     }
 }
-#endif
 
 void FireBoss::TriggerFireball() {
     MKAnim **temp_r3_759;
@@ -535,7 +532,7 @@ void FireBoss::TriggerFireball() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'float'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void FireBoss::SquashHero() {
     s8 spD9;
     u8 spD8;
@@ -550,14 +547,23 @@ void FireBoss::SquashHero() {
     FireBoss *spB4;
     s32 spB0;
     f64 spA8;
-    AITargetData sp58;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    s32 sp8C;
+    s32 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;                                       /* compiler-managed */
+    f64 sp68;
+    MKVector3 sp58;
     f64 sp50;
     f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
-    f64 sp28;
-    f64 sp18;
+    MKVector3 sp28;
+    MKVector3 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -588,24 +594,24 @@ void FireBoss::SquashHero() {
         sp40 = (temp_f7_811 * temp_f2_813) - (temp_f6_806 * temp_f5_808);
         sp3C = (temp_f4_814 * temp_f5_808) - (temp_f7_811 * temp_f3_810);
         sp38 = (temp_f6_806 * temp_f3_810) - (temp_f4_814 * temp_f2_813);
-        sp58.unk28 = (f64) sp40;
-        sp58.unk20 = (f64) sp38;
-        sp58.GetDir();
-        if ((((f32) sp58.unk28 * sp58.unk8) + (((f32) sp58.unk20 * M2C_BITWISE(f32, sp58)) + ((*(f32 *) ((u8 *) &sp58 + 0x24)) * (*(f32 *) ((u8 *) &sp58 + 0x4))))) > 0.0f) {
-            sp58.unk10 = sp58.unk20;
-            sp58.unk18 = sp58.unk28;
+        sp80 = (f64) sp40;
+        sp78 = (f64) sp38;
+        sp58 = this->unk870.GetDir();
+        if ((((f32) sp80 * sp58.unk8) + (((f32) sp78 * M2C_BITWISE(f32, sp58)) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * sp58.unk4))) > 0.0f) {
+            sp68 = sp78;
+            sp70 = sp80;
         } else {
-            sp8 = -(f32) sp58.unk20;
-            spC = -(*(f32 *) ((u8 *) &sp58 + 0x24));
-            sp10 = -(f32) sp58.unk28;
+            sp8 = -(f32) sp78;
+            spC = -(*(f32 *) ((u8 *) &sp78 + 0x4));
+            sp10 = -(f32) sp80;
             sp48 = (f64) sp8;
             sp50 = (f64) sp10;
-            sp58.unk10 = (f64) sp8;
-            sp58.unk18 = (f64) sp10;
+            sp68 = (f64) sp8;
+            sp70 = (f64) sp10;
         }
-        sp58.unk10 *= 5.61841903e-315;
+        sp68 *= 5.61841903e-315;
         var_r30_866 = 1;
-        sp58.unk18 = (f32) sp58.unk18 * 400.0f;
+        sp70 = (f32) sp70 * 400.0f;
         gb.GetSpyro();
         if (((KDStateMachine<Spyro> *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x7C))->GetState() != 2) {
             gb.GetSpyro();
@@ -626,26 +632,25 @@ void FireBoss::SquashHero() {
             }
         }
         if ((var_r30_866 == 0) || (gb.GetSpyro(), (((s32) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x5C) == 9) == 0))) {
-            sp58.unk34 = 0.0f;
+            sp8C = 0;
             if (var_r30_866 != 0) {
-                sp58.unk30 = 1e-44f;
+                sp88 = 7;
                 spB0 = 6;
                 spB4 = this;
-                sp58.unk38 = sp58.unk10;
-                sp58.unk40 = (f64) sp58.unk18;
+                sp90 = sp68;
+                sp98 = (f64) sp70;
                 spC8 = 1;
                 spD4 = 2;
                 spD0 = 5.0f;
                 spC9 = 0;
                 spCA = 0;
                 spCC = -1;
-                sp58.unk40.unk8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                spA0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
                 spA8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spD8 = 0;
                 if (this != NULL) {
-                    ((MKProp *) &sp28)->GetPos();
-                    spB8 = sp28;
-                    spC0 = sp30;
+                    sp28 = GetPos();
+                    *(MKVector3 *) &spB8 = sp28;
                 } else {
                     spB8 = 0.0f;
                     (*(f32 *) ((u8 *) &spB4 + 0x8)) = 0.0f;
@@ -653,24 +658,23 @@ void FireBoss::SquashHero() {
                 }
                 spD9 = 0;
             } else {
-                sp58.unk30 = 1e-44f;
+                sp88 = 7;
                 spB0 = 3;
                 spB4 = this;
-                sp58.unk38 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-                sp58.unk40 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+                sp90 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                sp98 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
                 spC8 = 1;
                 spD4 = 2;
                 spD0 = 10.0f;
                 spC9 = 0;
                 spCA = 0;
                 spCC = -1;
-                sp58.unk40.unk8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+                spA0 = M2C_FIELD(&MKVector3::one, f64 *, 0);
                 spA8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spD8 = 0;
                 if (this != NULL) {
-                    ((MKProp *) &sp18)->GetPos();
-                    spB8 = sp18;
-                    spC0 = sp20;
+                    sp18 = GetPos();
+                    *(MKVector3 *) &spB8 = sp18;
                 } else {
                     spB8 = 0.0f;
                     (*(f32 *) ((u8 *) &spB4 + 0x8)) = 0.0f;
@@ -678,7 +682,7 @@ void FireBoss::SquashHero() {
                 }
                 spD9 = 0;
             }
-            gb.unk0->Message(&sp58.unk30);
+            gb.unk0->Message(&sp88);
             if (spD8 != 0) {
                 if ((u8) this->unkC1C->unk1D == 1) {
                     this->unkC43 = 1;
@@ -693,7 +697,7 @@ void FireBoss::SquashHero() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'float'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void FireBoss::HurtHero() {
     s8 spC1;
     u8 spC0;
@@ -708,12 +712,21 @@ void FireBoss::HurtHero() {
     FireBoss *sp9C;
     s32 sp98;
     f64 sp90;
-    AITargetData sp40;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    s32 sp74;
+    s32 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;                                       /* compiler-managed */
+    f64 sp50;                                       /* compiler-managed */
+    MKVector3 sp40;
     MKVector3 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
-    f64 sp10;
+    MKVector3 sp10;
     f32 sp8;
     f32 temp_f0_1198;
     f32 temp_f2_1080;
@@ -736,7 +749,7 @@ void FireBoss::HurtHero() {
         var_r30_1058 = 1;
     }
     if (var_r30_1058 != 0) {
-        sp40.unk34 = 0.0f;
+        sp74 = 0;
         temp_f6_1075 = this->unkD4;
         temp_f5_1076 = this->unkC0;
         temp_f3_1077 = this->unkC8;
@@ -746,12 +759,12 @@ void FireBoss::HurtHero() {
         sp28 = (temp_f7_1078 * temp_f2_1080) - (temp_f6_1075 * temp_f5_1076);
         sp24 = (temp_f4_1081 * temp_f5_1076) - (temp_f7_1078 * temp_f3_1077);
         sp20 = (temp_f6_1075 * temp_f3_1077) - (temp_f4_1081 * temp_f2_1080);
-        sp40.unk28 = (f64) sp28;
-        sp40.unk20 = (f64) sp20;
-        sp40.GetDir();
-        sp30 = KDMath_Slerp(*((MKVector3 *) &this->unkC0), *((MKVector3 *) &sp40.unk20), ((f32) sp40.unk28 * sp40.unk8) + (((f32) sp40.unk20 * M2C_BITWISE(f32, sp40)) + ((*(f32 *) ((u8 *) &sp40 + 0x24)) * (*(f32 *) ((u8 *) &sp40 + 0x4)))));
-        *(MKVector3 *) &sp40.unk10 = sp30;
-        var_f4_1120 = ((f32) sp40.unk18 * (f32) sp40.unk18) + (((f32) sp40.unk10 * (f32) sp40.unk10) + ((*(f32 *) ((u8 *) &sp40 + 0x14)) * (*(f32 *) ((u8 *) &sp40 + 0x14))));
+        sp68 = (f64) sp28;
+        sp60 = (f64) sp20;
+        sp40 = this->unk870.GetDir();
+        sp30 = KDMath_Slerp(*((MKVector3 *) &this->unkC0), *((MKVector3 *) &sp60), ((f32) sp68 * sp40.unk8) + (((f32) sp60 * M2C_BITWISE(f32, sp40)) + ((*(f32 *) ((u8 *) &sp60 + 0x4)) * sp40.unk4)));
+        *(MKVector3 *) &sp50 = sp30;
+        var_f4_1120 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp40 + 0x14)) * (*(f32 *) ((u8 *) &sp40 + 0x14))));
         if (var_f4_1120 > 0.000001f) {
             if (var_f4_1120 > 0.0f) {
                 temp_f1_1126 = __frsqrte(var_f4_1120);
@@ -790,37 +803,36 @@ void FireBoss::HurtHero() {
         } else {
             var_f3_1187 = 0.0f;
         }
-        temp_f0_1198 = (f32) sp40.unk18 * var_f3_1187;
-        sp40.unk10 = (f32) sp40.unk10 * var_f3_1187;
+        temp_f0_1198 = (f32) sp58 * var_f3_1187;
+        sp50 = (f32) sp50 * var_f3_1187;
         (*(f32 *) ((u8 *) &sp40 + 0x14)) *= var_f3_1187;
-        sp40.unk18 = temp_f0_1198;
-        sp40.unk10 = (f64) sp40.unk10 * 5.852924563e-315;
-        sp40.unk18 = temp_f0_1198 * 20000.0f;
-        sp40.unk30 = 1e-44f;
+        sp58 = temp_f0_1198;
+        sp50 = (f64) sp50 * 5.852924563e-315;
+        sp58 = temp_f0_1198 * 20000.0f;
+        sp70 = 7;
         sp98 = 2;
         sp9C = this;
-        sp40.unk38 = sp40.unk10;
-        sp40.unk40 = (f64) sp40.unk18;
+        sp78 = sp50;
+        sp80 = (f64) sp58;
         spB0 = 1;
         spBC = 2;
         spB8 = 10.0f;
         spB1 = 0;
         spB2 = 0;
         spB4 = -1;
-        sp40.unk40.unk8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+        sp88 = M2C_FIELD(&MKVector3::one, f64 *, 0);
         sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
         spC0 = 0;
         if (this != NULL) {
-            ((MKProp *) &sp10)->GetPos();
-            spA0 = sp10;
-            spA8 = sp18;
+            sp10 = GetPos();
+            *(MKVector3 *) &spA0 = sp10;
         } else {
             spA0 = 0.0f;
             (*(f32 *) ((u8 *) &sp9C + 0x8)) = 0.0f;
             spA8 = 0.0f;
         }
         spC1 = 0;
-        gb.unk0->Message(&sp40.unk30);
+        gb.unk0->Message(&sp70);
         if (spC0 != 0) {
             if ((u8) this->unkC1C->unk1D == 1) {
                 this->unkC43 = 1;
@@ -834,11 +846,11 @@ void FireBoss::HurtHero() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp40'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 FireBoss::SpyroIsInFront() {
     f64 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f64 sp20;
@@ -853,11 +865,11 @@ u8 FireBoss::SpyroIsInFront() {
         var_r31_1301 = 1;
     }
     if (var_r31_1301 != 0) {
-        ((AITargetData *) &sp38)->GetPos();
+        sp38 = this->unk870.GetPos();
         temp_r3_1317 = this->unk8;
-        sp48 = sp38;
+        sp48 = M2C_BITWISE(f64, sp38);
         sp28 = M2C_FIELD(temp_r3_1317, f64 *, 0x30);
-        sp50 = sp40;
+        sp50 = (f64) sp38.unk8;
         sp30 = M2C_FIELD(temp_r3_1317, f64 *, 0x38);
         sp8 = sp48 - sp28;
         sp18 = sp8;
@@ -1728,7 +1740,7 @@ void FireBoss::CreateInsideSplines() {
     temp_f27_3083 = MKVector3::up.unk0;
     do {
         sp1C = 0.0f;
-        temp_r27_3093 = this + (var_r28_3078 + 0xB4C);
+        temp_r27_3093 = (Matrix *) (this + (var_r28_3078 + 0xB4C));
         sp1D8.GetMeasure(0.2f, temp_r27_3093, KDSpline_PositionMixer);
         sp20 = 0.0f;
         ((KDUniformSpline *) &sp1D8.unk10)->GetMeasure(0.8f, temp_r27_3093, KDSpline_PositionMixer);
@@ -1779,7 +1791,7 @@ void FireBoss::CreateInsideSplines() {
             var_f21_3125 = 0.0f;
         }
         temp_r26_3198 = this + var_r29_3076;
-        temp_r25_3200 = ((u8 *) temp_r26_3198) + 0xC70;
+        temp_r25_3200 = (Matrix *) (((u8 *) temp_r26_3198) + 0xC70);
         temp_f5_3201 = (f32) sp268 * var_f2_3191;
         temp_f4_3203 = (*(f32 *) ((u8 *) &sp260 + 0xc)) * var_f2_3191;
         temp_f3_3205 = (f32) sp270 * var_f2_3191;
@@ -1908,7 +1920,7 @@ void FireBoss::CreateOutsideSpline() {
     var_r30_3436 = 0;
     do {
         spA8 = KDMath_GetDirection((-0.19634955f * (f32) var_r30_3436) + temp_f28_3433);
-        spB8.operator*(3000.0f);
+        spB8 = spA8.operator*(3000.0f);
         sp18 = sp128 + M2C_BITWISE(f64, spB8);
         spC8 = sp18;
         sp20 = (f32) sp130 + spB8.unk8;
@@ -1919,7 +1931,7 @@ void FireBoss::CreateOutsideSpline() {
         var_r30_3436 += 1;
     } while (var_r30_3436 < 0x20);
     sp78 = KDMath_GetDirection(temp_f28_3433);
-    sp88.operator*(3000.0f);
+    sp88 = sp78.operator*(3000.0f);
     sp8 = sp128 + M2C_BITWISE(f64, sp88);
     sp98 = sp8;
     sp10 = (f32) sp130 + sp88.unk8;
@@ -1984,7 +1996,7 @@ s32 FireBoss::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x324);
 }
 
-#if 0 // DRAFT: function call 'UpdateModel(Enemy *, int, FireBossDriver *, double, double, double)' does not match 'Enemy::UpdateModel()'
+#if 0 // DRAFT: function call 'UpdateModel(Enemy *, int, FireBossDriver *, double, double, double)' does not match 'Enemy::UpdateModel()' Too many errors printed, aborting prog
 void FireBoss::UpdateMovementCustom() {
     FireBossDriver *temp_r3_3662;
     FireBossDriver *temp_r3_3672;
@@ -2704,7 +2716,7 @@ loop_11:
         this->unk3D8 = arg0->GetNmbrOfSubLines();
         temp_r25_5083 = this->unk3D8 * 0xC;
         if (MKHeap::Current() != NULL) {
-            var_r3_5091 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5083, NULL, 0);
+            var_r3_5091 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5083, NULL, 0));
         } else {
             var_r3_5091 = malloc(temp_r25_5083);
         }
@@ -2717,14 +2729,14 @@ loop_31:
                 *(this->unk3DC + var_r27_5104) = var_r28_5102->GetNmbrOfSubLines();
                 temp_r25_5118 = *(this->unk3DC + var_r27_5104) * 4;
                 if (MKHeap::Current() != NULL) {
-                    var_r3_5126 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5118, NULL, 0);
+                    var_r3_5126 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5118, NULL, 0));
                 } else {
                     var_r3_5126 = malloc(temp_r25_5118);
                 }
                 *(this->unk3DC + (var_r27_5104 + 4)) = var_r3_5126;
                 temp_r25_5137 = *(this->unk3DC + var_r27_5104) * 4;
                 if (MKHeap::Current() != NULL) {
-                    var_r3_5145 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5137, NULL, 0);
+                    var_r3_5145 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r25_5137, NULL, 0));
                 } else {
                     var_r3_5145 = malloc(temp_r25_5137);
                 }

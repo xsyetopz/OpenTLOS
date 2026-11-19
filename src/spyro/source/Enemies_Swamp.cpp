@@ -99,7 +99,7 @@ s32 SwampTier3::CanMoveAwayFromHero() {
     return var_r31_47;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void SwampTier3::CheckAnimEvents() {
     f64 spC0;
     f64 spB8;
@@ -245,7 +245,7 @@ void SwampTier3Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void SwampTier2::CheckAnimEvents() {
     f64 sp90;
     f64 sp88;
@@ -371,7 +371,7 @@ void SwampTier2::Draw() {
         sp10 = temp_f0_585;
         sp48 = sp8;
         sp50 = temp_f0_585;
-        sp58.operator*(temp_f1_578);
+        sp58 = ((MKVector4 *) &sp48)->operator*(temp_f1_578);
         sp18 = sp88 + M2C_BITWISE(f64, sp58);
         temp_f0_599 = sp90 + (f64) sp58.unk8;
         sp20 = temp_f0_599;
@@ -434,7 +434,7 @@ s32 SwampTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x358);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void SwampTier1::CheckAnimEvents() {
     f64 sp90;
     f64 sp88;

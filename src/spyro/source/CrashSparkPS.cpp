@@ -27,7 +27,7 @@ void *malloc(M2C_UNK);                              /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void CrashSparkPS::Draw() {
     f32 sp410;
     f64 sp408;
@@ -300,16 +300,16 @@ void CrashSparkPS::Draw() {
     sp310 = (f64) sp130;
     sp2C8 = (f64) sp48;
     sp2D0 = (f64) sp50;
-    sp2D8.operator*(10.0f);
-    sp2E8.operator*(10.0f);
+    sp2D8 = ((MKVector3 *) &sp2C8)->operator*(10.0f);
+    sp2E8 = ((MKVector3 *) &sp328)->operator*(10.0f);
     sp118 = sp2E8 + M2C_BITWISE(f64, sp2D8);
     sp2F8 = sp118;
     sp120 = sp2E8.unk8 + sp2D8.unk8;
     sp378 = sp118;
     sp300 = (f64) sp120;
     sp380 = (f64) sp120;
-    sp298.operator*(10.0f);
-    sp2A8.operator*(10.0f);
+    sp298 = ((MKVector3 *) &sp318)->operator*(10.0f);
+    sp2A8 = ((MKVector3 *) &sp328)->operator*(10.0f);
     sp108 = sp2A8 + M2C_BITWISE(f64, sp298);
     sp40 = -sp320;
     sp110 = sp2A8.unk8 + sp298.unk8;
@@ -321,26 +321,26 @@ void CrashSparkPS::Draw() {
     sp390 = (f64) sp110;
     sp248 = (f64) sp38;
     sp250 = (f64) sp40;
-    sp258.operator*(10.0f);
+    sp258 = ((MKVector3 *) &sp248)->operator*(10.0f);
     sp28 = -sp328;
     sp2C = -(*(f32 *) ((u8 *) &sp310 + 0x1c));
     sp30 = -sp330;
     sp268 = (f64) sp28;
     sp270 = (f64) sp30;
-    sp278.operator*(10.0f);
+    sp278 = ((MKVector3 *) &sp268)->operator*(10.0f);
     spF8 = sp278 + M2C_BITWISE(f64, sp258);
     sp288 = spF8;
     sp100 = sp278.unk8 + sp258.unk8;
     sp398 = spF8;
     sp290 = (f64) sp100;
     sp3A0 = (f64) sp100;
-    sp208.operator*(10.0f);
+    sp208 = ((MKVector3 *) &sp318)->operator*(10.0f);
     sp18 = -sp328;
     sp1C = -(*(f32 *) ((u8 *) &sp310 + 0x1c));
     sp20 = -sp330;
     sp218 = (f64) sp18;
     sp220 = (f64) sp20;
-    sp228.operator*(10.0f);
+    sp228 = ((MKVector3 *) &sp218)->operator*(10.0f);
     spE8 = sp228 + M2C_BITWISE(f64, sp208);
     var_r25_441 = 0;
     var_r30_443 = 0;
@@ -425,7 +425,7 @@ void CrashSparkPS::Draw() {
             MKSetMatrix(Matrix::identity);
             temp_f14_665 = MKRand_Float((int *) &gViewSeed, 0.2f, 1.0f);
             sp158 = MKVector(1.0f, 1.0f, 0.8f, 1.0f);
-            sp168.operator*(temp_f14_665);
+            sp168 = sp158.operator*(temp_f14_665);
             sp58 = M2C_FIELD(&sp168, f64 *, 0) * (f64) temp_f1_488;
             sp60 = M2C_FIELD(&sp168, f64 *, 8) * (f64) temp_f1_488;
             sp310 = sp60;
@@ -455,7 +455,7 @@ void CrashSparkPS::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *CrashSparkPS::Update() {
     f64 sp58;
     f64 sp50;
@@ -748,7 +748,7 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
             M2C_FIELD(temp_r5_1057, f32 *, 0) = (f32) (M2C_FIELD(temp_r5_1057, f32 *, 0) * var_f2_1132);
             M2C_FIELD(temp_r5_1057, f32 *, 4) = (f32) (M2C_FIELD(temp_r5_1057, f32 *, 4) * var_f2_1132);
             M2C_FIELD(temp_r5_1057, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_1057, f32 *, 8) * var_f2_1132);
-            spC8.operator*(2.0f);
+            spC8 = ((MKVector3 *) &sp168)->operator*(2.0f);
             temp_r3_1153 = &arg0 * 0x50;
             temp_r5_1155 = ((u8 *) this->unk4C) + (temp_r3_1153 + 0x20);
             sp18 = M2C_FIELD(temp_r5_1155, f64 *, 0) + M2C_BITWISE(f64, spC8);

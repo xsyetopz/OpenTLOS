@@ -113,7 +113,6 @@ void Autosave_ConfirmCard() {
 
 void Autosave_Abort();
 void Autosave_Error();
-
 void Autosave_Update() {
     f32 temp_f1_236;
     f32 temp_f1_307;
@@ -194,15 +193,12 @@ void Autosave_Update() {
 }
 
 void PauseMenu_AutosaveScreen(const char *);
-
 void Autosave_Abort() {
     *(KDMemoryCard **) MemoryCardScreen::selectedCard = autosaveCard;
     Autosave_Reset();
     autosave_state = 0;
     PauseMenu_AutosaveScreen("AutosaveCardRemoved");
 }
-
-void PauseMenu_AutosaveScreen(const char *);
 
 void Autosave_Error() {
     *(KDMemoryCard **) MemoryCardScreen::selectedCard = autosaveCard;

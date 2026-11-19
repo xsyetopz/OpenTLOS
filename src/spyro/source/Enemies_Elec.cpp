@@ -254,7 +254,7 @@ void ElecTier3::UpdateScan() {
     f64 sp90;
     f64 sp88;
     f64 sp80;
-    M2C_UNK sp70;
+    MKVector3 sp70;
     f32 sp68;
     f32 sp64;
     f32 sp60;
@@ -335,8 +335,8 @@ void ElecTier3::UpdateScan() {
             sp90 = temp_f0_409;
             sp48 = this->unkB10.unk38 + (f32) sp88;
             sp98 = (f64) sp48;
-            ((AITargetData *) &sp70)->GetPos();
-            this->unkB55 = Tools_CylinderTest(*((MKVector3 *) &this->unkB10.unk30), *((MKVector3 *) &sp90), 525.0f, *((MKVector3 *) &sp70)) > 0.0f;
+            sp70 = this->unk870.GetPos();
+            this->unkB55 = Tools_CylinderTest(*((MKVector3 *) &this->unkB10.unk30), *((MKVector3 *) &sp90), 525.0f, sp70) > 0.0f;
             if ((u8) this->unkB55 != 0) {
                 KDSound_Play3d(GS_ConduitAlert, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             }
@@ -549,18 +549,15 @@ void ElecTier2::UpdateMovementCustom() {
     UpdateModel();
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
 void *ElecTier2::Update() {
-    f64 sp8;
+    MKVector3 sp8;
     f32 temp_f1_1007;
     f32 temp_f1_1018;
 
     this->unkB28.BeginUpdate();
     Enemy::Update();
-    MKModel_GetWorldMatrix(this->unk4);
-    ((Matrix *) &sp8)->GetRotationPYR();
-    M2C_FIELD(this, f64 *, 0xB30) = sp8;
-    M2C_FIELD(this, f64 *, 0xB38) = sp10;
+    sp8 = ((Matrix *) (MKModel_GetWorldMatrix(this->unk4)))->GetRotationPYR();
+    M2C_FIELD(this, MKVector3 *, 0xB30) = sp8;
     this->unkB28.EndUpdate();
     if ((u8) this->unkB12 != 0) {
         temp_f1_1007 = this->unkB18;
@@ -575,7 +572,6 @@ void *ElecTier2::Update() {
         }
     }
 }
-#endif
 
 void ElecTier2::Message(MKMessage *arg0) {
     this->unkB28.Message(arg0);

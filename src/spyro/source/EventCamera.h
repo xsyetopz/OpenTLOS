@@ -26,11 +26,11 @@ public:
     virtual void Reset(void);
     virtual void * Update(void);
     virtual void Message(MKMessage *);
-    void CalculateCircleTangent(MKVector3, MKVector3, float);
+    MKVector3 CalculateCircleTangent(MKVector3, MKVector3, float);
     void FunctionOff(void);
     void FunctionOn(void);
-    void GetSourceStart(void);
-    void GetTargetStart(void);
+    MKVector3 GetSourceStart(void);
+    MKVector3 GetTargetStart(void);
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ f64 unk50;
     /* 0x058 */ f64 unk58;

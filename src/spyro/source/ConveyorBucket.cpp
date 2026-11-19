@@ -106,12 +106,12 @@ void ConveyorBucket::DirtParticles() {
     this->unkE8 += gUpdateTimeDelta * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
     if (!(this->unkE8 < 0.1f)) {
         this->unkE8 = 0.0f;
-        spD0.operator*(200.0f);
-        spE0.operator*(350.0f);
-        spF0.operator*(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
-        sp100.operator*(140.0f);
-        sp110.operator*(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
-        sp120.operator*(200.0f);
+        spD0 = ((MKVector3 *) (((u8 *) this->unk8) + 0x10))->operator*(200.0f);
+        spE0 = ((MKVector3 *) (((u8 *) this->unk8) + 0x20))->operator*(350.0f);
+        spF0 = ((MKVector3 *) this->unk8)->operator*(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
+        sp100 = spF0.operator*(140.0f);
+        sp110 = ((MKVector3 *) (((u8 *) this->unk8) + 0x20))->operator*(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
+        sp120 = sp110.operator*(200.0f);
         temp_r3_96 = ((u8 *) this->unk8) + 0x30;
         temp_f0_99 = M2C_FIELD(temp_r3_96, f64 *, 0) + M2C_BITWISE(f64, sp120);
         sp30 = temp_f0_99;

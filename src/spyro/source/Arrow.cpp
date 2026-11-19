@@ -87,7 +87,7 @@ void *Arrow::Update() {
     f64 sp38;
     f32 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     f32 temp_f1_165;
@@ -162,9 +162,8 @@ void *Arrow::Update() {
             spE8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             sp118 = 0;
             if (this != NULL) {
-                ((MKProp *) &sp18)->GetPos();
-                spF8 = sp18;
-                sp100 = sp20;
+                sp18 = GetPos();
+                *(MKVector3 *) &spF8 = sp18;
             } else {
                 spF8 = 0.0f;
                 (*(f32 *) ((u8 *) &spF4 + 0x8)) = 0.0f;

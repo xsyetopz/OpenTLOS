@@ -760,9 +760,9 @@ void Collectable::MagnetisedState() {
     temp_f1_1491 = this->unk7C;
     temp_f31_1492 = this->unkF0;
     temp_f28_1493 = temp_f1_1491 + gUpdateTimeDelta;
-    sp50.operator*(temp_f1_1491);
-    sp60.operator*(32.0f);
-    sp70.operator*(var_f29_1406);
+    sp50 = ((MKVector3 *) &spA0)->operator*(temp_f1_1491);
+    sp60 = sp50.operator*(32.0f);
+    sp70 = sp60.operator*(var_f29_1406);
     sp20 = sp70 * (f64) temp_f31_1492;
     this->unk70 = sp20;
     sp28 = sp70.unk8 * temp_f31_1492;
@@ -938,7 +938,7 @@ void Collectable::SpawningState() {
                     sp28 = MKVector(1.0f, 1.0f, 1.0f);
                     sp38 = MKVector(-1.0f, -1.0f, -1.0f);
                     sp48 = KDRand_Vector(sp38, sp28);
-                    sp58.operator*(3.1415927f);
+                    sp58 = sp48.operator*(3.1415927f);
                     sp8 = sp58 * 5.304989477e-315;
                     this->unkA0 = sp8;
                     sp10 = sp58.unk8 * 2.0f;
@@ -1025,7 +1025,7 @@ void Collectable::SlidingState() {
         }
     } else {
         temp_f31_2215 = gUpdateTimeDelta;
-        sp18.operator*(this->unk108);
+        sp18 = ((MKVector3 *) &this->unk70)->operator*(this->unk108);
         temp_f0_2222 = sp18 * (f64) temp_f31_2215;
         sp8 = temp_f0_2222;
         sp28 = temp_f0_2222;
@@ -1038,7 +1038,7 @@ void Collectable::SlidingState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double' Too many errors printed, aborting program
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 u8 Collectable::FindGround() {
     MKCollisionResult sp90;
     f64 sp88;
@@ -1180,7 +1180,7 @@ u8 Collectable::FindGround() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double' Too many errors printed, aborting program
 void Collectable::FallingState() {
     f64 sp90;
     f64 sp88;
@@ -1221,7 +1221,7 @@ void Collectable::FallingState() {
 
     if (this->unk7C > 0.0f) {
         temp_f31_2512 = gUpdateTimeDelta;
-        sp78.operator*(this->unk108);
+        sp78 = ((MKVector3 *) &this->unk70)->operator*(this->unk108);
         temp_f0_2519 = sp78 * (f64) temp_f31_2512;
         sp38 = temp_f0_2519;
         sp88 = temp_f0_2519;
@@ -1297,7 +1297,7 @@ void Collectable::SpawnDynamic(const MKVector3 &arg0) {
     this->unk13C = 0;
     temp_f31_2694 = MKRand_Float((int *) &gViewSeed, 100.0f, 280.0f);
     sp18 = KDRand_UnitVector();
-    sp28.operator*(temp_f31_2694);
+    sp28 = sp18.operator*(temp_f31_2694);
     sp8 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp28);
     this->unk90 = sp8;
     sp10 = arg0.unk8 + sp28.unk8;
@@ -1556,7 +1556,7 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
             spA0 = MKVector(1.0f, 1.0f, 1.0f);
             spB0 = MKVector(-1.0f, -1.0f, -1.0f);
             spC0 = KDRand_Vector(spB0, spA0);
-            spD0.operator*(3.1415927f);
+            spD0 = spC0.operator*(3.1415927f);
             sp10 = spD0 * 5.304989477e-315;
             this->unkA0 = sp10;
             sp18 = spD0.unk8 * 2.0f;
@@ -1629,7 +1629,7 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Collectable::Message(MKMessage *arg0) {
     f64 spA0;
     f64 sp98;
@@ -1639,10 +1639,10 @@ void Collectable::Message(MKMessage *arg0) {
     Collectable *sp80;
     Collectable *sp7C;
     s32 sp78;
-    HeroInterface sp68;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
-    HeroInterface sp48;
+    MKVector3 sp48;
     f32 sp40;
     f64 sp38;
     f64 sp30;
@@ -1684,10 +1684,10 @@ void Collectable::Message(MKMessage *arg0) {
     temp_r0_3294 = arg0->unk0;
     switch (temp_r0_3294) {                         /* switch 1; irregular */
     case 0xB8:                                      /* switch 1 */
-        sp68.GetPos();
+        sp68 = ((HeroInterface *) gb)->GetPos();
         temp_f1_3345 = M2C_BITWISE(f64, sp68);
         this->unk50 = temp_f1_3345;
-        this->unk58 = sp70;
+        this->unk58 = (f64) sp68.unk8;
         M2C_FIELD(this, f32 *, 0x54) = (f32) (M2C_FIELD(this, f32 *, 0x54) + M2C_FIELD(*gb, f32 (**)(void **, f64), 0x6C)(gb, temp_f1_3345));
         SetState(6);
         Update();
@@ -1796,10 +1796,10 @@ block_81:
                 temp_r3_3621 = this->unkD4;
                 if (temp_r3_3621 != 1) {
                     if ((u32) (temp_r3_3621 - 8) > 2U) {
-                        sp48.GetPos();
+                        sp48 = ((HeroInterface *) gb)->GetPos();
                         temp_f1_3632 = M2C_BITWISE(f64, sp48);
                         this->unk50 = temp_f1_3632;
-                        this->unk58 = sp50;
+                        this->unk58 = (f64) sp48.unk8;
                         M2C_FIELD(this, f32 *, 0x54) = (f32) (M2C_FIELD(this, f32 *, 0x54) + M2C_FIELD(*gb, f32 (**)(void **, f64), 0x6C)(gb, temp_f1_3632));
                         SetState(6);
                         Update();
@@ -2025,13 +2025,13 @@ void Collectable::DrawShadow() {
     sp2B0 = (f64) spD0;
     sp1E8 = (f64) sp68;
     sp1F0 = (f64) sp70;
-    sp1F8.operator*(50.0f);
+    sp1F8 = ((MKVector3 *) &sp1E8)->operator*(50.0f);
     sp78 = -(f32) sp2A8;
     sp7C = -(*(f32 *) ((u8 *) &sp2A8 + 0x4));
     sp80 = -(f32) sp2B0;
     sp208 = (f64) sp78;
     sp210 = (f64) sp80;
-    sp218.operator*(50.0f);
+    sp218 = ((MKVector3 *) &sp208)->operator*(50.0f);
     temp_f0_3937 = sp218 + M2C_BITWISE(f64, sp1F8);
     sp58 = temp_f0_3937;
     sp228 = temp_f0_3937;
@@ -2044,13 +2044,13 @@ void Collectable::DrawShadow() {
     spC0 = (f32) sp230 + (f32) sp280;
     sp240 = (f64) spC0;
     sp2C0 = (f64) spC0;
-    sp198.operator*(50.0f);
+    sp198 = ((MKVector3 *) &sp298)->operator*(50.0f);
     sp48 = -(f32) sp2A8;
     sp4C = -(*(f32 *) ((u8 *) &sp2A8 + 0x4));
     sp50 = -(f32) sp2B0;
     sp1A8 = (f64) sp48;
     sp1B0 = (f64) sp50;
-    sp1B8.operator*(50.0f);
+    sp1B8 = ((MKVector3 *) &sp1A8)->operator*(50.0f);
     temp_f0_3985 = sp1B8 + M2C_BITWISE(f64, sp198);
     sp38 = temp_f0_3985;
     sp1C8 = temp_f0_3985;
@@ -2067,8 +2067,8 @@ void Collectable::DrawShadow() {
     sp2D0 = (f64) spB0;
     sp148 = (f64) sp28;
     sp150 = (f64) sp30;
-    sp158.operator*(50.0f);
-    sp168.operator*(50.0f);
+    sp158 = ((MKVector3 *) &sp148)->operator*(50.0f);
+    sp168 = ((MKVector3 *) &sp2A8)->operator*(50.0f);
     temp_f0_4033 = sp168 + M2C_BITWISE(f64, sp158);
     sp18 = temp_f0_4033;
     sp178 = temp_f0_4033;
@@ -2080,8 +2080,8 @@ void Collectable::DrawShadow() {
     sp2D8 = sp98;
     sp190 = (f64) spA0;
     sp2E0 = (f64) spA0;
-    sp108.operator*(50.0f);
-    sp118.operator*(50.0f);
+    sp108 = ((MKVector3 *) &sp298)->operator*(50.0f);
+    sp118 = ((MKVector3 *) &sp2A8)->operator*(50.0f);
     temp_f0_4068 = sp118 + M2C_BITWISE(f64, sp108);
     sp8 = temp_f0_4068;
     sp128 = temp_f0_4068;

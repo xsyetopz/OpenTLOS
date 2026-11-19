@@ -268,7 +268,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 s32 ConvexityDebris::LoadDone() {
     f64 spF0;
     f64 spE8;

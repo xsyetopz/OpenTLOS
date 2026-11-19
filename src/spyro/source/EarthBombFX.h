@@ -47,7 +47,6 @@ public:
     /* 0x120 */ f32 unk120;
     /* 0x124 */ u8 pad124[0x4];
     /* 0x128 */ BreathHitMessage unk128;
-    /* 0x17c */ u8 pad17C[0x4];
     /* 0x180 */ s32 unk180;
 };
 
@@ -62,15 +61,17 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
+#include <m2c_macros.h>
+
 inline EarthBombFX::EarthBombFX() {
     this->unk128.unk4 = 0;
-    this->unk180 = 0;
+    M2C_FIELD(this, s32 *, 0x180) = 0;
 }
 
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline EarthBombFX::~EarthBombFX() {
-    if ((&this->unk180 != NULL) && (&this->unk180 != NULL)) {
-        KDSound_Stop((int *) &this->unk180);
+    if (((this + 0x180) != NULL) && ((this + 0x180) != NULL)) {
+        KDSound_Stop((s32 *) (this + 0x180));
     }
 }
 #endif

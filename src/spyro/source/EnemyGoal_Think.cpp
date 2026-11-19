@@ -616,7 +616,7 @@ u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
     f32 sp38;
     f32 sp30;
     f64 sp28;
-    M2C_UNK sp18;
+    MKVector3 sp18;
     u8 sp14;
     void *sp10;
     u8 spC;
@@ -727,8 +727,8 @@ u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
         var_r29_1566 = 0;
         temp_r30_1567 = (MKVector3 *) (temp_r28_1565 + 0x720);
         if (((EnemyRegion *) (temp_r28_1565 + 0x800))->IsPointWithin(*temp_r30_1567) != 0) {
-            ((EnemyRegion *) &sp18)->GetRegionPos();
-            if ((f32) fabs(sp1C - temp_r30_1567->unk4) <= 500.0f) {
+            sp18 = ((EnemyRegion *) (temp_r28_1565 + 0x800))->GetRegionPos();
+            if ((f32) fabs(sp18.unk4 - temp_r30_1567->unk4) <= 500.0f) {
                 var_r29_1566 = 1;
             }
         }

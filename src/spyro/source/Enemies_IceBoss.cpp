@@ -179,14 +179,14 @@ void IceBoss::UpdateWeaponCollisionCapsule() {
     f64 sp10;
 
     CalcSubObjWorldMatrix(M2C_FIELD((this + (this->unkB18 * 0x28)), s32 *, 0xE44), &sp70);
-    sp50.operator*(M2C_FIELD((this + (this->unkB18 * 0x28)), f32 *, 0xE64));
+    sp50 = ((MKVector3 *) &sp70.unk20)->operator*(M2C_FIELD((this + (this->unkB18 * 0x28)), f32 *, 0xE64));
     sp20 = sp70.unk30 + M2C_BITWISE(f64, sp50);
     this->unkF60 = sp20;
     sp28 = sp70.unk38 + sp50.unk8;
     sp60 = sp20;
     this->unkF68 = (f64) sp28;
     sp68 = (f64) sp28;
-    sp30.operator*(M2C_FIELD((this + (this->unkB18 * 0x28)), f32 *, 0xE68));
+    sp30 = ((MKVector3 *) &sp70.unk20)->operator*(M2C_FIELD((this + (this->unkB18 * 0x28)), f32 *, 0xE68));
     sp10 = sp70.unk30 - M2C_BITWISE(f64, sp30);
     this->unkF70 = sp10;
     sp18 = sp70.unk38 - sp30.unk8;
@@ -229,7 +229,7 @@ s32 IceBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     Matrix sp50;
     f64 sp48;
     f64 sp40;
-    f64 sp30;
+    MKVector3 sp30;
     MKVector3 sp20;
     f32 sp18;
     f64 sp10;
@@ -242,10 +242,10 @@ s32 IceBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     }
     if (arg1 != NULL) {
         sp20 = MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
-        ((MKProp *) &sp30)->GetPos();
+        sp30 = GetPos();
         sp10 = sp30 + M2C_BITWISE(f64, sp20);
         M2C_FIELD(arg1, f64 *, 0) = sp10;
-        sp18 = sp38 + sp20.unk8;
+        sp18 = sp30.unk8 + sp20.unk8;
         sp40 = sp10;
         sp48 = (f64) sp18;
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp18;
@@ -426,7 +426,7 @@ void IceBoss::DestroyShield() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void IceBoss::UpdateFormShield() {
     Matrix spF0;
     f64 spE0;
@@ -628,7 +628,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void IceBoss::CheckAnimEvents() {
     Matrix sp160;
     f64 sp150;
@@ -785,7 +785,7 @@ void IceBoss::CheckAnimEvents() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void IceBoss::UpdateFormWeapon() {
     Matrix spF0;
     f64 spE0;
@@ -1535,7 +1535,7 @@ void IceBoss::Draw() {
 void *IceBoss::Update() {
     f64 sp48;
     f64 sp40;
-    f64 sp30;
+    MKVector3 sp30;
     MKVector3 sp20;
     f32 sp18;
     f64 sp10;
@@ -1557,10 +1557,10 @@ void *IceBoss::Update() {
         UpdatePhrasesAndSounds();
     }
     sp20 = MKVector(0.0f, 400.0f, 0.0f);
-    ((MKProp *) &sp30)->GetPos();
+    sp30 = GetPos();
     sp10 = sp30 + M2C_BITWISE(f64, sp20);
     this->unkF80 = sp10;
-    sp18 = sp38 + sp20.unk8;
+    sp18 = sp30.unk8 + sp20.unk8;
     sp40 = sp10;
     sp48 = (f64) sp18;
     this->unkF88 = (f64) sp18;
@@ -1742,7 +1742,7 @@ void IceBoss::SetupCameraSpline(float arg0, float arg1, MKVector3 arg2, MKVector
         } else {
             var_f5_3300 = 0.0f;
         }
-        temp_r30_3306 = (Matrix *) (M2C_BITWISE(s32, temp_r31_3217) + 0x7C);
+        temp_r30_3306 = M2C_BITWISE(s32, temp_r31_3217) + 0x7C;
         var_r29_3308 = 1;
         sp1A8 = (f32) sp1A8 * var_f5_3300;
         var_r24_3318 = 0;
@@ -1759,7 +1759,7 @@ loop_32:
                 var_f0_3329 = 200.0f * (f32) (var_r29_3308 / 2);
             }
             temp_f30_3360 = arg0 + var_f0_3329;
-            sp168.operator*(temp_f30_3360);
+            sp168 = ((MKVector3 *) &sp1A8)->operator*(temp_f30_3360);
             sp68 = sp1B8 + M2C_BITWISE(f64, sp168);
             temp_r6_3375 = M2C_FIELD(temp_r31_3217, void **, 0x70);
             sp178 = sp68;
@@ -1768,7 +1768,7 @@ loop_32:
             sp180 = (f64) sp70;
             M2C_FIELD(temp_r6_3375, f64 *, 8) = (f64) sp70;
             sp138 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp1A8), 0.7853982f);
-            sp148.operator*(temp_f30_3360);
+            sp148 = sp138.operator*(temp_f30_3360);
             sp58 = sp1B8 + M2C_BITWISE(f64, sp148);
             sp60 = (f32) sp1C0 + sp148.unk8;
             temp_r5_3401 = M2C_FIELD(temp_r31_3217, void **, 0x70) + M2C_FIELD(temp_r31_3217, s32 *, 0x68);
@@ -1776,7 +1776,7 @@ loop_32:
             sp158 = sp58;
             sp160 = (f64) sp60;
             M2C_FIELD(temp_r5_3401, f64 *, 8) = (f64) sp60;
-            sp118.operator*(temp_f30_3360);
+            sp118 = ((MKVector3 *) arg2)->operator*(temp_f30_3360);
             sp48 = sp1B8 + M2C_BITWISE(f64, sp118);
             temp_r6_3421 = M2C_FIELD(temp_r31_3217, void **, 0x70) + (M2C_FIELD(temp_r31_3217, s32 *, 0x68) * 2);
             sp50 = (f32) sp1C0 + sp118.unk8;
@@ -1785,7 +1785,7 @@ loop_32:
             sp130 = (f64) sp50;
             M2C_FIELD(temp_r6_3421, f64 *, 8) = (f64) sp50;
             spE8 = KDMath_Slerp(*((MKVector3 *) arg2), *((MKVector3 *) &sp1A8), -0.7853982f);
-            spF8.operator*(temp_f30_3360);
+            spF8 = spE8.operator*(temp_f30_3360);
             sp38 = sp1B8 + M2C_BITWISE(f64, spF8);
             sp40 = (f32) sp1C0 + spF8.unk8;
             temp_r5_3448 = M2C_FIELD(temp_r31_3217, void **, 0x70) + (M2C_FIELD(temp_r31_3217, s32 *, 0x68) * 3);
@@ -1793,7 +1793,7 @@ loop_32:
             sp108 = sp38;
             sp110 = (f64) sp40;
             M2C_FIELD(temp_r5_3448, f64 *, 8) = (f64) sp40;
-            spC8.operator*(temp_f30_3360);
+            spC8 = ((MKVector3 *) &sp1A8)->operator*(temp_f30_3360);
             sp28 = sp1B8 - M2C_BITWISE(f64, spC8);
             temp_r4_3466 = M2C_FIELD(temp_r31_3217, void **, 0x70) + (M2C_FIELD(temp_r31_3217, s32 *, 0x68) * 4);
             sp30 = (f32) sp1C0 - spC8.unk8;

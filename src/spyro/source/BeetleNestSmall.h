@@ -34,13 +34,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
+#if 0 // DRAFT: undefined identifier 'unkC8' Too many errors printed, aborting program
 inline BeetleNestSmall::~BeetleNestSmall() {
     this->unkC8 = &__vt.unk48;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
+#if 0 // DRAFT: undefined identifier 'unkC8' Too many errors printed, aborting program
 inline BeetleNestSmall::BeetleNestSmall() {
     this->unkC8 = &__vt + 0x48;
 }

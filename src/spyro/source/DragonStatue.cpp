@@ -53,7 +53,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void DragonStatue::EmitDust() {
     f64 sp68;                                       /* compiler-managed */
     f64 sp60;
@@ -163,7 +162,6 @@ loop_22:
         goto loop_22;
     }
 }
-#endif
 
 void DragonStatue::EmitCrudAboveStatue() {
     f64 sp78;                                       /* compiler-managed */
@@ -280,7 +278,7 @@ u8 DragonStatue::IsDown() {
     return (u8) (this->unk100 == 1);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void DragonStatue::Message(MKMessage *arg0) {
     s8 spE5;
     s8 spE4;

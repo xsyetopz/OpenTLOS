@@ -146,7 +146,7 @@ s32 BoundingRegion::IsPointWithin(const MKVector3 &arg0) {
     return (((temp_r3_285 & 1) ^ temp_r4_286) - temp_r4_286) == 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_max'
+#if 0 // DRAFT: illegal explicit conversion from 'BoundingRegion' to 'double'
 void BoundingRegion::InitBoundaryRect() {
     Matrix sp50;
     BoundingRegion sp30;

@@ -108,7 +108,7 @@ loop_4:
 }
 
 void ConvexityBreathFX::UpdateRings() {
-    Matrix sp8;
+    MKVector3 sp8;
     Matrix **temp_r3_196;
     Matrix **var_r30_155;
     Matrix *temp_r31_208;
@@ -135,7 +135,7 @@ loop_10:
             }
             M2C_FIELD(temp_r31_208, f32 *, 0x40) = var_f0_165;
             temp_f25_183 = M2C_FIELD(temp_r31_208, f32 *, 0x40) / 0.75f;
-            sp8.NormaliseScale();
+            sp8 = temp_r31_208->NormaliseScale();
             temp_f1_185 = 1.0f - temp_f25_183;
             temp_r31_208->Scale3x3(temp_r31_208, 1.0f + (temp_f1_185 * -((6.0f * temp_f1_185) - 20.0f)));
             if (M2C_FIELD(temp_r31_208, f32 *, 0x40) <= 0.0f) {
@@ -434,7 +434,7 @@ loop_32:
         sp98 = MKVector(1.0f, 1.0f, 1.0f);
         spA8 = MKVector(-1.0f, -1.0f, -1.0f);
         spB8 = KDRand_Vector(spA8, sp98);
-        spC8.operator*(0.5f);
+        spC8 = spB8.operator*(0.5f);
         temp_f0_725 = (f64) sp178 + M2C_BITWISE(f64, spC8);
         sp18 = temp_f0_725;
         spD8 = temp_f0_725;
@@ -784,7 +784,7 @@ block_33:
         sp18 = -this->unkD0.unk28;
         sp100 = (f64) sp10;
         sp108 = (f64) sp18;
-        sp110.operator*(2000.0f);
+        sp110 = ((MKVector3 *) &sp100)->operator*(2000.0f);
         temp_f0_1370 = sp110 * (f64) temp_f27_1357;
         sp20 = temp_f0_1370;
         temp_r3_1372 = &this->unkD0;

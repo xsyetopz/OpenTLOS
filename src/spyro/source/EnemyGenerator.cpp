@@ -194,28 +194,36 @@ void EnemyGeneratorDescriptor::Init() {
     this->unk14 = NULL;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: identifier 'EnemyGeneratorDoor::GetSpawnPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void EnemyGeneratorDoor::GetSpawnPos() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp10;
     f64 sp8;
-    void *temp_r3_455;
+    SpawnPointObject *temp_r3_455;
 
-    if ((s32) M2C_FIELD(*M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x80) > 0) {
-        temp_r3_455 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 0x18);
+    if ((s32) M2C_FIELD(M2C_FIELD(this, void **, 0), s32 *, 0x80) > 0) {
+        temp_r3_455 = this->unk18;
         sp8 = M2C_FIELD(temp_r3_455, f64 *, 0x40);
         sp10 = M2C_FIELD(temp_r3_455, f64 *, 0x48);
     } else {
-        MKModel_CalculateRefPointWorldPosition(M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8), MKModel **, 4), M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x14), (MKVector3 *) &sp8);
+        MKModel_CalculateRefPointWorldPosition(M2C_FIELD(M2C_FIELD(this, void **, 8), MKModel **, 4), this->unk14, (MKVector3 *) &sp8);
     }
-    this->unk0 = sp8;
-    this->unk8 = sp10;
+    M2C_FIELD(sret, f64 *, 0) = sp8;
+    M2C_FIELD(sret, f64 *, 8) = sp10;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'EnemyGeneratorDoor' to 'double'
+#if 0 // DRAFT: identifier 'EnemyGeneratorDoor::GetDoorDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void EnemyGeneratorDoor::GetDoorDir() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     Matrix sp80;
-    EnemyGeneratorDoor sp48;
+    f64 sp70;
+    f64 sp68;
+    MKVector3 sp58;
+    MKVector3 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -225,9 +233,6 @@ void EnemyGeneratorDoor::GetDoorDir() {
     f32 sp20;
     f64 sp18;
     f32 sp10;
-    f32 temp_f2_542;
-    f32 temp_f5_539;
-    f32 temp_f6_544;
     f32 var_f3_614;
     f32 var_f4_547;
     f64 temp_f1_553;
@@ -235,27 +240,22 @@ void EnemyGeneratorDoor::GetDoorDir() {
     f64 temp_f1_563;
     s32 temp_r3_582;
     s32 var_r0_592;
-    void *temp_r31_490;
 
-    temp_r31_490 = M2C_ERROR(/* Read from unset register $r4 */);
-    if (((u8) M2C_FIELD(MKModel_GetRefPointData(M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8), MKModel **, 4), M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x10)), u8 *, 0x16) == 5) && (MKModel_GetRefPointMatrix(M2C_FIELD(M2C_FIELD(temp_r31_490, void **, 8), MKModel **, 4), M2C_FIELD(temp_r31_490, s32 *, 0x10), &sp80, 1U) != 0)) {
+    if (((u8) M2C_FIELD(MKModel_GetRefPointData(M2C_FIELD(M2C_FIELD(this, void **, 8), MKModel **, 4), this->unk10), u8 *, 0x16) == 5) && (MKModel_GetRefPointMatrix(M2C_FIELD(M2C_FIELD(this, void **, 8), MKModel **, 4), this->unk10, &sp80, 1U) != 0)) {
         sp38 = -sp80.unk20;
         sp3C = -sp80.unk24;
         sp40 = -sp80.unk28;
-        this->unk0 = (f64) sp38;
-        this->unk8 = (f64) sp40;
-        return;
+        M2C_FIELD(sret, f64 *, 0) = (f64) sp38;
+        M2C_FIELD(sret, f64 *, 8) = (f64) sp40;
+        return result;
     }
-    sp48.GetSpawnPos();
-    ((EnemyGeneratorDoor *) &sp48.unk10)->GetDoorPos();
-    sp18 = sp48.unk10 - M2C_BITWISE(f64, sp48);
-    sp48.unk20 = sp18;
-    sp20 = M2C_BITWISE(f32, sp48.unk18) - (f32) sp48.unk8;
-    temp_f5_539 = M2C_BITWISE(f32, sp48.unk24);
-    temp_f2_542 = M2C_BITWISE(f32, sp48.unk20);
-    sp48.unk28 = (f64) sp20;
-    temp_f6_544 = M2C_BITWISE(f32, sp48.unk28);
-    var_f4_547 = (temp_f6_544 * temp_f6_544) + ((temp_f2_542 * temp_f2_542) + (temp_f5_539 * temp_f5_539));
+    sp48 = GetSpawnPos();
+    sp58 = GetDoorPos();
+    sp18 = sp58 - M2C_BITWISE(f64, sp48);
+    sp68 = sp18;
+    sp20 = sp58.unk8 - sp48.unk8;
+    sp70 = (f64) sp20;
+    var_f4_547 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))));
     if (var_f4_547 > 1e-12f) {
         if (var_f4_547 > 0.0f) {
             temp_f1_553 = __frsqrte(var_f4_547);
@@ -294,20 +294,26 @@ void EnemyGeneratorDoor::GetDoorDir() {
     } else {
         var_f3_614 = 0.0f;
     }
-    sp2C = temp_f5_539 * var_f3_614;
-    sp28 = M2C_BITWISE(f32, sp48.unk20) * var_f3_614;
-    sp30 = temp_f6_544 * var_f3_614;
-    this->unk0 = (f64) sp28;
-    this->unk8 = (f64) sp30;
+    sp2C = (*(f32 *) ((u8 *) &sp68 + 0x4)) * var_f3_614;
+    sp28 = (f32) sp68 * var_f3_614;
+    sp30 = (f32) sp70 * var_f3_614;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp28;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp30;
+    return result;
 }
 #endif
 
+#if 0 // DRAFT: identifier 'EnemyGeneratorDoor::GetDoorPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void EnemyGeneratorDoor::GetDoorPos() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     MKVector3 sp8;
 
-    MKModel_CalculateRefPointWorldPosition(M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8), MKModel **, 4), M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x10), &sp8);
-    *(MKVector3 *) &this->unk0 = sp8;
+    MKModel_CalculateRefPointWorldPosition(M2C_FIELD(M2C_FIELD(this, void **, 8), MKModel **, 4), this->unk10, &sp8);
+    M2C_FIELD(sret, MKVector3 *, 0) = sp8;
+    return result;
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGeneratorDoor::Close() {
@@ -476,9 +482,11 @@ void EnemyGenerator::StartEnemyWave() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'double' to 'SpawnPointObject *'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void EnemyGenerator::UpdateUsedSpawnPointMask() {
-    EnemyGeneratorDoor sp8;
+    f64 sp20;
+    f64 sp18;
+    MKVector3 sp8;
     s32 temp_r30_1066;
     s32 var_r29_1061;
     u32 *var_r28_1059;
@@ -495,12 +503,11 @@ loop_6:
             if (temp_r4_1102 != 0) {
                 temp_r30_1066 = 1 << var_r29_1061;
                 if (!(this->unk1C & temp_r30_1066)) {
-                    GetDoor((SpawnPointObject *) temp_r4_1102);
-                    sp8.GetDoorDir();
+                    sp8 = ((EnemyGeneratorDoor *) (GetDoor((SpawnPointObject *) temp_r4_1102)))->GetDoorDir();
                     temp_r3_1077 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
-                    sp8.unk10 = M2C_FIELD(temp_r3_1077, f64 *, 0x20);
-                    sp8.unk18 = M2C_FIELD(temp_r3_1077, f64 *, 0x28);
-                    if (((M2C_BITWISE(f32, sp8.unk18) * (f32) sp8.unk8) + ((M2C_BITWISE(f32, sp8.unk10) * M2C_BITWISE(f32, sp8)) + (M2C_BITWISE(f32, sp8.unk14) * (*(f32 *) ((u8 *) &sp8 + 0x4))))) > 0.0f) {
+                    sp18 = M2C_FIELD(temp_r3_1077, f64 *, 0x20);
+                    sp20 = M2C_FIELD(temp_r3_1077, f64 *, 0x28);
+                    if ((((f32) sp20 * sp8.unk8) + (((f32) sp18 * M2C_BITWISE(f32, sp8)) + ((*(f32 *) ((u8 *) &sp18 + 0x4)) * sp8.unk4))) > 0.0f) {
                         this->unk1C |= temp_r30_1066;
                     }
                 }
@@ -513,18 +520,17 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spC'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 SpawnPointObject *EnemyGenerator::GetSpawnPointObject() {
-    f32 sp8;
+    MKVector3 sp8;
     SpawnPointObject *temp_r3_1121;
 
     temp_r3_1121 = SpawnerObject::GetSpawnPointObject();
     if (temp_r3_1121 != NULL) {
-        GetDoor(temp_r3_1121);
-        ((EnemyGeneratorDoor *) &sp8)->GetSpawnPos();
-        temp_r3_1121->unk40 = sp8;
-        temp_r3_1121->unk44 = spC;
-        temp_r3_1121->unk48 = sp10;
+        sp8 = ((EnemyGeneratorDoor *) (GetDoor(temp_r3_1121)))->GetSpawnPos();
+        temp_r3_1121->unk40 = M2C_BITWISE(f32, sp8);
+        temp_r3_1121->unk44 = sp8.unk4;
+        temp_r3_1121->unk48 = sp8.unk8;
         temp_r3_1121->unk4C = 1.0f;
     }
     return temp_r3_1121;
@@ -621,8 +627,12 @@ void EnemyGenerator::Resolve() {
     s32 spC0;
     f64 spB8;
     f64 spB0;
-    EnemyGeneratorDoor sp80;
-    f64 sp70;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    MKVector3 sp80;
+    MKVector3 sp70;
     f64 sp68;
     f64 sp60;
     f64 sp58;
@@ -642,12 +652,10 @@ void EnemyGenerator::Resolve() {
     EnemyGeneratorDescriptor *temp_r5_1437;
     MKProp *var_r6_1459;
     SpawnPointObject *var_r7_1439;
-    f32 temp_f6_1608;
-    f32 temp_f7_1619;
-    f32 temp_f8_1618;
     f32 var_f4_1515;
     f32 var_f6_1498;
     f64 temp_f0_1492;
+    f64 temp_f1_1486;
     f64 temp_f1_1520;
     f64 temp_f1_1526;
     f64 temp_f1_1530;
@@ -755,18 +763,18 @@ loop_54:
         }
         ((EnemyGeneratorDoor *) (((u8 *) this->unk54) + var_r28_1433))->Init(this, temp_r5_1437->unk10 + (var_r8_1438 * 0x24), var_r6_1459, var_r7_1439);
         if ((s32) this->unk80 == 0) {
-            sp80.GetSpawnPos();
-            spB0 = M2C_BITWISE(f64, sp80);
-            spB8 = sp80.unk8;
-            ((EnemyGeneratorDoor *) &sp70)->GetDoorPos();
-            sp80.unk20 = sp70;
-            sp80.unk28 = sp78;
-            temp_f0_1492 = M2C_BITWISE(f64, sp80.unk20) - spB0;
+            sp80 = ((EnemyGeneratorDoor *) (((u8 *) this->unk54) + var_r28_1433))->GetSpawnPos();
+            *(MKVector3 *) &spB0 = sp80;
+            sp70 = ((EnemyGeneratorDoor *) (((u8 *) this->unk54) + var_r28_1433))->GetDoorPos();
+            temp_f1_1486 = M2C_BITWISE(f64, sp70);
+            spA0 = temp_f1_1486;
+            spA8 = (f64) sp70.unk8;
+            temp_f0_1492 = temp_f1_1486 - spB0;
             sp40 = temp_f0_1492;
             sp30 = temp_f0_1492;
             var_f6_1498 = 0.0f;
             (*(f32 *) ((u8 *) &sp30 + 0x4)) = 0.0f;
-            sp48 = M2C_BITWISE(f32, sp80.unk28) - (f32) spB8;
+            sp48 = (f32) spA8 - (f32) spB8;
             sp60 = sp30;
             sp68 = (f64) sp48;
             sp38 = (f64) sp48;
@@ -813,23 +821,20 @@ loop_54:
             sp28 = (f32) sp68 * var_f6_1498;
             M2C_FIELD(temp_r5_1592, f32 *, 0x44) = (*(f32 *) ((u8 *) &spB0 + 0x4));
             M2C_FIELD(temp_r5_1592, f32 *, 0x48) = (f32) spB8;
-            sp80.unk18 = (f64) sp28;
+            sp98 = (f64) sp28;
             M2C_FIELD(temp_r5_1592, f32 *, 0x4C) = 1.0f;
-            temp_f6_1608 = M2C_BITWISE(f32, sp80.unk18);
             sp20 = (f32) sp60 * var_f6_1498;
             temp_r4_1612 = *(this->unk54 + temp_r0_1584);
             sp24 = (*(f32 *) ((u8 *) &sp60 + 0x4)) * var_f6_1498;
-            sp80.unk10 = (f64) sp20;
-            temp_f8_1618 = M2C_BITWISE(f32, sp80.unk10);
-            temp_f7_1619 = M2C_BITWISE(f32, sp80.unk14);
-            M2C_FIELD(temp_r4_1612, f32 *, 0x30) = temp_f8_1618;
-            M2C_FIELD(temp_r4_1612, f32 *, 0x34) = temp_f7_1619;
-            M2C_FIELD(temp_r4_1612, f32 *, 0x38) = temp_f6_1608;
+            sp90 = (f64) sp20;
+            M2C_FIELD(temp_r4_1612, f32 *, 0x30) = (f32) sp90;
+            M2C_FIELD(temp_r4_1612, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp90 + 0x4));
+            M2C_FIELD(temp_r4_1612, f32 *, 0x38) = (f32) sp98;
             M2C_FIELD(temp_r4_1612, f32 *, 0x3C) = 0.0f;
-            sp18 = (MKVector3::up.unk0 * temp_f7_1619) - (MKVector3::up.unk4 * temp_f8_1618);
-            sp10 = (MKVector3::up.unk4 * temp_f6_1608) - (MKVector3::up.unk8 * temp_f7_1619);
+            sp18 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp90 + 0x4))) - (MKVector3::up.unk4 * (f32) sp90);
+            sp10 = (MKVector3::up.unk4 * (f32) sp98) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp90 + 0x4)));
             temp_r4_1633 = *(this->unk54 + temp_r0_1584);
-            sp14 = (MKVector3::up.unk8 * temp_f8_1618) - (MKVector3::up.unk0 * temp_f6_1608);
+            sp14 = (MKVector3::up.unk8 * (f32) sp90) - (MKVector3::up.unk0 * (f32) sp98);
             sp58 = (f64) sp18;
             sp50 = (f64) sp10;
             M2C_FIELD(temp_r4_1633, f32 *, 0x10) = (f32) sp50;
@@ -867,7 +872,7 @@ void EnemyGenerator::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *' Too many errors printed, aborting program
 s32 EnemyGenerator::LoadLine(MKIniLine *arg0) {
     s32 var_r27_1724;
     s32 var_r27_1752;

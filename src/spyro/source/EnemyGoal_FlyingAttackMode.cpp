@@ -94,9 +94,8 @@ void EnemyGoal_AttackFlying::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
 u8 EnemyGoal_AttackFlying::Update() {
-    f64 sp8;
+    MKVector3 sp8;
     AnimSequence *temp_r4_145;
     AnimSequence *temp_r4_162;
     AnimSequence *temp_r4_187;
@@ -133,10 +132,9 @@ u8 EnemyGoal_AttackFlying::Update() {
     if (var_r30_99 != 0) {
         temp_r4_112 = this->unkC;
         temp_r4_112->unk870.Update(temp_r4_112->unk588);
-        ((AITargetData *) &sp8)->GetDir();
+        sp8 = this->unkC->unk870.GetDir();
         temp_r5_120 = this->unkC;
-        M2C_FIELD(temp_r5_120, f64 *, 0xE0) = sp8;
-        M2C_FIELD(temp_r5_120, f64 *, 0xE8) = sp10;
+        M2C_FIELD(temp_r5_120, MKVector3 *, 0xE0) = sp8;
         temp_r5_120->unk6B5 &= ~0x40;
         temp_r3_132 = this->unkC;
         M2C_FIELD(temp_r3_132, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
@@ -198,7 +196,6 @@ u8 EnemyGoal_AttackFlying::Update() {
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_AttackFlying::Activate() {

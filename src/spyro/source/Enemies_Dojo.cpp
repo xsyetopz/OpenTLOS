@@ -124,7 +124,7 @@ s32 DojoTier2::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x360);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void DojoTier2::Despawn(bool arg0) {
     f64 sp460;
     f64 sp458;
@@ -385,7 +385,7 @@ loop_49:
                         sp2F8 = MKVector(1.0f, 2.0f, 1.0f);
                         sp308 = MKVector(-1.0f, 0.0f, -1.0f);
                         sp318 = KDRand_Vector(sp308, sp2F8);
-                        sp328.operator*(50.0f);
+                        sp328 = sp318.operator*(50.0f);
                         spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp328);
                         M2C_FIELD(temp_r3_342, f64 *, 0) = spB8;
                         spC0 = this->unk588.unk8 + sp328.unk8;
@@ -459,7 +459,7 @@ loop_33:
                         sp458 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
                         temp_f16_573 = -_table_sinf((f32) sp460 + temp_f16_559) * (f32) sp450;
                         sp298 = MKVector(_table_sinf(temp_f16_559) * (f32) sp458, 0.0f, temp_f16_573);
-                        sp2A8.operator*(var_f17_517);
+                        sp2A8 = sp298.operator*(var_f17_517);
                         sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2A8);
                         sp168 = 1.0f;
                         sp16C = 1.0f;
@@ -612,7 +612,7 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void DojoTier2::CheckAnimEvents() {
     f64 sp460;
     f64 sp458;
@@ -874,7 +874,7 @@ loop_50:
                         sp2F8 = MKVector(1.0f, 2.0f, 1.0f);
                         sp308 = MKVector(-1.0f, 0.0f, -1.0f);
                         sp318 = KDRand_Vector(sp308, sp2F8);
-                        sp328.operator*(50.0f);
+                        sp328 = sp318.operator*(50.0f);
                         spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp328);
                         M2C_FIELD(temp_r3_1310, f64 *, 0) = spB8;
                         spC0 = this->unk588.unk8 + sp328.unk8;
@@ -948,7 +948,7 @@ loop_34:
                         sp458 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
                         temp_f16_1541 = -_table_sinf((f32) sp460 + temp_f16_1527) * (f32) sp450;
                         sp298 = MKVector(_table_sinf(temp_f16_1527) * (f32) sp458, 0.0f, temp_f16_1541);
-                        sp2A8.operator*(var_f17_1485);
+                        sp2A8 = sp298.operator*(var_f17_1485);
                         sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2A8);
                         sp168 = 1.0f;
                         sp16C = 1.0f;
@@ -1223,7 +1223,7 @@ s32 DojoTier1::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x35C);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void DojoTier1::Despawn(bool arg0) {
     f64 sp460;
     f64 sp458;
@@ -1484,7 +1484,7 @@ loop_49:
                         sp2F8 = MKVector(1.0f, 2.0f, 1.0f);
                         sp308 = MKVector(-1.0f, 0.0f, -1.0f);
                         sp318 = KDRand_Vector(sp308, sp2F8);
-                        sp328.operator*(50.0f);
+                        sp328 = sp318.operator*(50.0f);
                         spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp328);
                         M2C_FIELD(temp_r3_2490, f64 *, 0) = spB8;
                         spC0 = this->unk588.unk8 + sp328.unk8;
@@ -1558,7 +1558,7 @@ loop_33:
                         sp458 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
                         temp_f16_2721 = -_table_sinf((f32) sp460 + temp_f16_2707) * (f32) sp450;
                         sp298 = MKVector(_table_sinf(temp_f16_2707) * (f32) sp458, 0.0f, temp_f16_2721);
-                        sp2A8.operator*(var_f17_2665);
+                        sp2A8 = sp298.operator*(var_f17_2665);
                         sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2A8);
                         sp168 = 1.0f;
                         sp16C = 1.0f;
@@ -1711,7 +1711,7 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void DojoTier1::CheckAnimEvents() {
     f64 sp460;
     f64 sp458;
@@ -1976,7 +1976,7 @@ loop_50:
                             sp2F8 = MKVector(1.0f, 2.0f, 1.0f);
                             sp308 = MKVector(-1.0f, 0.0f, -1.0f);
                             sp318 = KDRand_Vector(sp308, sp2F8);
-                            sp328.operator*(50.0f);
+                            sp328 = sp318.operator*(50.0f);
                             spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp328);
                             M2C_FIELD(temp_r3_3457, f64 *, 0) = spB8;
                             spC0 = this->unk588.unk8 + sp328.unk8;
@@ -2050,7 +2050,7 @@ loop_34:
                             sp458 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
                             temp_f16_3688 = -_table_sinf((f32) sp460 + temp_f16_3674) * (f32) sp450;
                             sp298 = MKVector(_table_sinf(temp_f16_3674) * (f32) sp458, 0.0f, temp_f16_3688);
-                            sp2A8.operator*(var_f17_3632);
+                            sp2A8 = sp298.operator*(var_f17_3632);
                             sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2A8);
                             sp168 = 1.0f;
                             sp16C = 1.0f;

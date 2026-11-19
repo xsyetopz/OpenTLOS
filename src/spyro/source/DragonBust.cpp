@@ -325,7 +325,7 @@ void DragonBust::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'DragonBust::State'
 void DragonBust::ActivatingBUpdate() {
     f64 sp90;                                       /* compiler-managed */
     f64 sp88;                                       /* compiler-managed */
@@ -654,7 +654,7 @@ void DragonBust::ActivatingAEnter() {
     f64 sp50;
     f64 sp48;
     f64 sp40;
-    f64 sp30;
+    MKVector3 sp30;
     MKVector3 sp20;
     f32 sp18;
     f64 sp10;
@@ -680,12 +680,12 @@ void DragonBust::ActivatingAEnter() {
     temp_r4_766 = this->unk118;
     if (temp_r4_766 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_766, 1U);
-        sp20.operator*(150.0f);
-        ((MKProp *) &sp30)->GetPos();
+        sp20 = ((MKVector3 *) (&MKVector3::up))->operator*(150.0f);
+        sp30 = GetPos();
         sp10 = sp30 + M2C_BITWISE(f64, sp20);
         temp_r3_791 = this->unk118;
         sp40 = sp10;
-        sp18 = sp38 + sp20.unk8;
+        sp18 = sp30.unk8 + sp20.unk8;
         temp_r3_791->unk10 = sp10;
         temp_r3_791->unk18 = (f64) sp18;
         temp_r3_797 = temp_r3_791->unk3C;
@@ -760,7 +760,6 @@ void DragonBust::SlidingIntoPlaceUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void DragonBust::SlidingIntoPlaceEnter() {
     f64 sp38;
     f64 sp30;                                       /* compiler-managed */
@@ -831,7 +830,6 @@ void DragonBust::SlidingIntoPlaceEnter() {
     sp30 = (f32) sp30 * var_f3_1002;
     (*(f32 *) ((u8 *) &sp28 + 0xc)) *= var_f3_1002;
 }
-#endif
 
 #if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *)' does not match 'HeroInterface::GetProp()'
 void DragonBust::SlideUpdate() {

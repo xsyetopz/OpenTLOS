@@ -186,14 +186,14 @@ void *BurningWick::Update() {
     sp200 = (f64) spE0;
     sp208 = (f64) spE8;
     MKModel_CalculateRefPointWorldPosition(this->unk70, this->unk4C, &this->unk88);
-    sp1C0.operator*(this->unk80);
+    sp1C0 = ((MKVector3 *) &sp200)->operator*(this->unk80);
     sp70 = M2C_FIELD(this, f64 *, 0x88) + M2C_BITWISE(f64, sp1C0);
     this->unk98 = sp70;
     sp78 = this->unk88.unk8 + sp1C0.unk8;
     sp1D0 = sp70;
     this->unkA0 = (f64) sp78;
     sp1D8 = (f64) sp78;
-    sp1A0.operator*(this->unk80);
+    sp1A0 = ((MKVector3 *) &sp200)->operator*(this->unk80);
     sp60 = this->unk98 + M2C_BITWISE(f64, sp1A0);
     this->unkA8 = sp60;
     sp68 = (f32) M2C_FIELD(this, f64 *, 0xA0) + sp1A0.unk8;
@@ -301,15 +301,15 @@ void *BurningWick::Update() {
     sp170 = (f64) sp20;
     sp178 = (f64) sp28;
     sp1E8 = temp_f3_438;
-    sp180.operator*(this->unk80);
+    sp180 = ((MKVector3 *) &sp170)->operator*(this->unk80);
     sp50 = this->unk98 + M2C_BITWISE(f64, sp180);
     this->unk50 = sp50;
     sp58 = (f32) M2C_FIELD(this, f64 *, 0xA0) + sp180.unk8;
     sp190 = sp50;
     sp198 = (f64) sp58;
     M2C_FIELD(this, f32 *, 0x58) = (f64) sp58;
-    sp140.operator*(var_f28_255);
-    sp150.operator*(gUpdateTimeDelta);
+    sp140 = ((MKVector3 *) &sp1F0)->operator*(var_f28_255);
+    sp150 = sp140.operator*(gUpdateTimeDelta);
     temp_f0_480 = sp150 * 5.424144515e-315;
     sp40 = temp_f0_480;
     sp160 = temp_f0_480;
@@ -393,7 +393,7 @@ void *BurningWick::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: undefined identifier 'unksp3FC'
 void BurningWick::Draw() {
     Matrix sp400;
     f64 sp3F8;                                      /* compiler-managed */
@@ -1008,14 +1008,14 @@ void BurningWick::InitData(const int &arg0, MKModel *arg1, const MKVector3 &arg2
     sp80 = (f64) sp30;
     sp88 = (f64) sp38;
     MKModel_CalculateRefPointWorldPosition(this->unk70, this->unk4C, &this->unk88);
-    sp60.operator*(this->unk80);
+    sp60 = ((MKVector3 *) &sp80)->operator*(this->unk80);
     sp20 = M2C_FIELD(this, f64 *, 0x88) + M2C_BITWISE(f64, sp60);
     this->unk98 = sp20;
     sp28 = this->unk88.unk8 + sp60.unk8;
     sp70 = sp20;
     this->unkA0 = (f64) sp28;
     sp78 = (f64) sp28;
-    sp40.operator*(this->unk80);
+    sp40 = ((MKVector3 *) &sp80)->operator*(this->unk80);
     sp10 = this->unk98 + M2C_BITWISE(f64, sp40);
     this->unk50 = sp10;
     sp18 = (f32) M2C_FIELD(this, f64 *, 0xA0) + sp40.unk8;

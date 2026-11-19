@@ -6,6 +6,7 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CollisionObject.h"
 #include "spyro/source/KDProp.h"

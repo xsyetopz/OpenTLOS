@@ -686,7 +686,7 @@ u8 EnemyGoal_GraphTurn::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_GraphTurn::Activate() {
     f64 sp58;
     f64 sp50;
@@ -1967,7 +1967,7 @@ void EnemyGoal_FollowGraph::AddGoal_Fly() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr' Too many errors printed, aborting program
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_FollowGraph::AddGoal_Flee() {
     Character *temp_r4_4006;
     Character *temp_r4_4010;
@@ -4208,7 +4208,14 @@ void EnemyGoal_GraphJump::Activate() {
     f64 sp2D0;                                      /* compiler-managed */
     f64 sp2C8;
     f64 sp2C0;
-    MKProp sp270;
+    f64 sp2B8;
+    f64 sp2B0;
+    f64 sp2A8;
+    f64 sp2A0;
+    f64 sp298;
+    f64 sp290;
+    f64 sp280;
+    MKVector3 sp270;
     f64 sp268;
     f64 sp260;
     f64 sp250;
@@ -4222,12 +4229,12 @@ void EnemyGoal_GraphJump::Activate() {
     f64 sp200;
     f64 sp1F8;
     f64 sp1F0;
-    M2C_UNK sp1E0;
+    MKVector3 sp1E0;
     f64 sp1D8;
     f64 sp1D0;
     f64 sp1C8;
     f64 sp1C0;
-    M2C_UNK sp1B0;
+    MKVector3 sp1B0;
     f64 sp1A8;
     f64 sp1A0;
     f64 sp198;
@@ -4337,16 +4344,16 @@ void EnemyGoal_GraphJump::Activate() {
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
     ((Enemy *) this->unkC)->SetAnim((AnimSequenceType) 9, 0, 0, 0.15f, 0U, 0U);
-    sp270.GetPos();
+    sp270 = ((MKProp *) this->unkC)->GetPos();
     temp_r4_8261 = this->unkC->unkA80;
-    M2C_FIELD(temp_r4_8261->__vptr, M2C_UNK (**)(s32 *, CharacterGraphNode *), 0x30)(&sp270.unk10, temp_r4_8261);
-    spA0 = sp270.unk10 - M2C_BITWISE(f64, sp270);
+    M2C_FIELD(temp_r4_8261->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp280, temp_r4_8261);
+    spA0 = sp280 - M2C_BITWISE(f64, sp270);
     var_f5_8275 = 0.0f;
     sp2D0 = spA0;
-    spA8 = M2C_BITWISE(f32, sp270.unk18) - M2C_BITWISE(f32, sp270.unk8);
-    sp270.unk20 = spA0;
+    spA8 = sp288 - sp270.unk8;
+    sp290 = spA0;
     sp2D8 = (f64) spA8;
-    sp270.unk28 = (f64) spA8;
+    sp298 = (f64) spA8;
     (*(f32 *) ((u8 *) &sp2C8 + 0xc)) = 0.0f;
     var_f4_8290 = ((f32) sp2D8 * (f32) sp2D8) + (((f32) sp2D0 * (f32) sp2D0) + (0.0f * 0.0f));
     if (var_f4_8290 > 0.000001f) {
@@ -4455,8 +4462,8 @@ void EnemyGoal_GraphJump::Activate() {
     }
     temp_r4_8500 = this->unkC->unkA80;
     M2C_FIELD(temp_r4_8500->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp210, temp_r4_8500);
-    sp270.unk40 = sp210;
-    sp270.unk48 = sp218;
+    sp2B0 = sp210;
+    sp2B8 = sp218;
     temp_r6_8515 = this->unkC;
     temp_f30_8520 = M2C_FIELD(temp_r6_8515->unk5D8, f32 *, 8);
     sp1F0 = sp210;
@@ -4466,19 +4473,19 @@ void EnemyGoal_GraphJump::Activate() {
     sp208 = sp2C8;
     this->unk48 = GetTotalTime((MKVector3) &sp200, (MKVector3) &sp1F0, temp_f31_8530, temp_f30_8520);
     this->unk30.AddNode(*((MKVector3 *) &sp2C0));
-    sp1C0 = M2C_BITWISE(f64, sp270.unk40);
-    sp1C8 = (f64) sp270.unk48;
+    sp1C0 = sp2B0;
+    sp1C8 = sp2B8;
     sp1D0 = sp2C0;
     sp1D8 = sp2C8;
-    ((EnemyGoal_GraphJump *) &sp1E0)->GetParabolaCentre((MKVector3) this, (MKVector3) &sp1D0, temp_f31_8530, temp_f30_8520);
-    this->unk30.AddNode(*((MKVector3 *) &sp1E0));
-    this->unk30.AddNode(*((MKVector3 *) &sp270.unk40));
-    sp190 = M2C_BITWISE(f64, sp270.unk40);
-    sp198 = (f64) sp270.unk48;
+    sp1E0 = GetParabolaCentre((MKVector3) &sp1D0, (MKVector3) &sp1C0, temp_f31_8530, temp_f30_8520);
+    this->unk30.AddNode(sp1E0);
+    this->unk30.AddNode(*((MKVector3 *) &sp2B0));
+    sp190 = sp2B0;
+    sp198 = sp2B8;
     sp1A0 = sp2C0;
     sp1A8 = sp2C8;
-    ((EnemyGoal_GraphJump *) &sp1B0)->GetParabolaCentre((MKVector3) this, (MKVector3) &sp1A0, temp_f31_8530, temp_f30_8520);
-    Tools_GetClosestSplineTime(&this->unk30, *((MKVector3 *) &sp1B0), 0x32);
+    sp1B0 = GetParabolaCentre((MKVector3) &sp1A0, (MKVector3) &sp190, temp_f31_8530, temp_f30_8520);
+    Tools_GetClosestSplineTime(&this->unk30, sp1B0, 0x32);
     this->unk4C = M2C_ERROR(/* Read from unset register $f1 */);
     M2C_STRUCT_COPY((s32) &sp31C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp1C = 0.0f;
@@ -4598,11 +4605,11 @@ void EnemyGoal_GraphJump::Activate() {
     spB4 = (*(f32 *) ((u8 *) &sp130 + 0x4)) * var_f1_8724;
     spB0 = (f32) sp130 * var_f1_8724;
     spB8 = (f32) sp138 * var_f1_8724;
-    sp270.unk30 = (f64) spB0;
-    sp270.unk38 = (f64) spB8;
-    sp30 = -M2C_BITWISE(f32, sp270.unk30);
-    sp34 = -M2C_BITWISE(f32, sp270.unk34);
-    sp38 = -M2C_BITWISE(f32, sp270.unk38);
+    sp2A0 = (f64) spB0;
+    sp2A8 = (f64) spB8;
+    sp30 = -(f32) sp2A0;
+    sp34 = -(*(f32 *) ((u8 *) &sp2A0 + 0x4));
+    sp38 = -(f32) sp2A8;
     sp110 = (f64) sp30;
     sp118 = (f64) sp38;
     sp60 = (MKVector3::up.unk4 * (f32) sp118) - (MKVector3::up.unk8 * (*(f32 *) ((u8 *) &sp110 + 0x4)));
@@ -4610,9 +4617,9 @@ void EnemyGoal_GraphJump::Activate() {
     sp68 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp110 + 0x4))) - (MKVector3::up.unk4 * (f32) sp110);
     sp120 = (f64) sp60;
     sp128 = (f64) sp68;
-    sp270.unk30 = (f64) sp60;
-    sp270.unk38 = (f64) sp68;
-    sp320.RotateYaw(&sp320, KDMath_GetYaw(*((MKVector3 *) &sp270.unk30)) - 3.1415927f);
+    sp2A0 = (f64) sp60;
+    sp2A8 = (f64) sp68;
+    sp320.RotateYaw(&sp320, KDMath_GetYaw(*((MKVector3 *) &sp2A0)) - 3.1415927f);
     sp58 = -sp320.unk8;
     sp48 = -sp320.unk28;
     sp108 = (f64) sp58;
@@ -4694,12 +4701,12 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     f64 sp1E0;
     f64 sp1D8;
     KDUniformSpline sp1C0;
-    M2C_UNK sp1B0;
+    MKVector3 sp1B0;
     M2C_UNK sp1A0;
     f64 sp190;
-    M2C_UNK sp180;
+    MKVector3 sp180;
     f64 sp170;
-    M2C_UNK sp160;
+    MKVector3 sp160;
     f64 sp150;
     f64 sp148;
     f64 sp140;
@@ -4877,7 +4884,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     } else {
         var_f1_9530 = temp_f30_9506 - 1.0f;
     }
-    ((KDSplinePathSegment *) &sp1B0)->GetVelocity(var_f1_9530);
+    sp1B0 = ((KDSplinePathSegment *) this->unk10)->GetVelocity(var_f1_9530);
     if (temp_f30_9506 > 1.0f) {
         temp_r6_9539 = this->unkC;
         temp_r6_9539->unk640->GraphFollowingOn((CharacterGraphNode *) temp_r6_9539->unkA80, temp_r6_9539->unkA84, (GraphFollowBehaviours) temp_r6_9539->unkA90, &temp_r6_9539->unk870);
@@ -4960,7 +4967,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                     ((KDUniformSpline *) &sp190)->GetMeasure(0.0f, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
                     sp220 = sp190;
                     sp228 = sp198;
-                    ((KDSplinePathSegment *) &sp180)->GetVelocity(0.0f);
+                    sp180 = ((KDSplinePathSegment *) this->unk10)->GetVelocity(0.0f);
                     temp_f1_9745 = this->unk2C;
                     if (temp_f1_9745 != 0.0f) {
                         var_f2_9753 = (temp_f1_9745 * gUpdateTimeDelta) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -4972,7 +4979,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                     ((KDUniformSpline *) &sp170)->GetMeasure(var_f30_9705, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
                     sp220 = sp170;
                     sp228 = sp178;
-                    ((KDSplinePathSegment *) &sp160)->GetVelocity(var_f30_9705);
+                    sp160 = ((KDSplinePathSegment *) this->unk10)->GetVelocity(var_f30_9705);
                     temp_f2_9785 = this->unk2C;
                     if (temp_f2_9785 != 0.0f) {
                         var_f2_9753 = ((temp_f2_9785 * gUpdateTimeDelta) + this->unk28) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -5264,7 +5271,7 @@ void EnemyGoal_GraphGlidePath::Activate() {
     f64 sp70;
     f64 sp68;
     f64 sp60;
-    f64 sp50;
+    MKVector3 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -5334,9 +5341,8 @@ void EnemyGoal_GraphGlidePath::Activate() {
     spC4 = (*(f32 *) ((u8 *) &sp60 + 0x4));
     spC8 = (f32) sp68;
     spCC = 0.0f;
-    ((Matrix *) &sp50)->GetRotationRPY();
-    M2C_FIELD(this, f64 *, 0x18) = sp50;
-    M2C_FIELD(this, f64 *, 0x20) = sp58;
+    sp50 = ((Matrix *) &spA0)->GetRotationRPY();
+    M2C_FIELD(this, MKVector3 *, 0x18) = sp50;
 }
 #endif
 
@@ -5372,12 +5378,12 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     f64 sp1E0;
     f64 sp1D8;
     KDUniformSpline sp1C0;
-    M2C_UNK sp1B0;
+    MKVector3 sp1B0;
     M2C_UNK sp1A0;
     f64 sp190;
-    M2C_UNK sp180;
+    MKVector3 sp180;
     f64 sp170;
-    M2C_UNK sp160;
+    MKVector3 sp160;
     f64 sp150;
     f64 sp148;
     f64 sp140;
@@ -5521,7 +5527,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     } else {
         var_f1_10747 = temp_f30_10713 - (f32) (s32) temp_f30_10713;
     }
-    ((KDSplinePathSegment *) &sp1B0)->GetVelocity(var_f1_10747);
+    sp1B0 = ((KDSplinePathSegment *) this->unk10)->GetVelocity(var_f1_10747);
     if (temp_f30_10713 > 1.0f) {
         temp_r6_10766 = this->unkC;
         temp_r6_10766->unk640->GraphFollowingOn((CharacterGraphNode *) temp_r6_10766->unkA80, temp_r6_10766->unkA84, (GraphFollowBehaviours) temp_r6_10766->unkA90, &temp_r6_10766->unk870);
@@ -5567,7 +5573,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                     ((KDUniformSpline *) &sp190)->GetMeasure(0.0f, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
                     sp220 = sp190;
                     sp228 = sp198;
-                    ((KDSplinePathSegment *) &sp180)->GetVelocity(0.0f);
+                    sp180 = ((KDSplinePathSegment *) this->unk10)->GetVelocity(0.0f);
                     temp_f1_10899 = this->unk2C;
                     if (temp_f1_10899 != 0.0f) {
                         var_f2_10907 = (temp_f1_10899 * gUpdateTimeDelta) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -5579,7 +5585,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                     ((KDUniformSpline *) &sp170)->GetMeasure(var_f30_10859, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
                     sp220 = sp170;
                     sp228 = sp178;
-                    ((KDSplinePathSegment *) &sp160)->GetVelocity(var_f30_10859);
+                    sp160 = ((KDSplinePathSegment *) this->unk10)->GetVelocity(var_f30_10859);
                     temp_f2_10937 = this->unk2C;
                     if (temp_f2_10937 != 0.0f) {
                         var_f2_10907 = ((temp_f2_10937 * gUpdateTimeDelta) + this->unk28) / M2C_FIELD(this->unk10, f32 *, 0x38);
@@ -5871,7 +5877,7 @@ void EnemyGoal_GraphFlyPath::Activate() {
     f64 sp70;
     f64 sp68;
     f64 sp60;
-    f64 sp50;
+    MKVector3 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -5941,9 +5947,8 @@ void EnemyGoal_GraphFlyPath::Activate() {
     spC4 = (*(f32 *) ((u8 *) &sp60 + 0x4));
     spC8 = (f32) sp68;
     spCC = 0.0f;
-    ((Matrix *) &sp50)->GetRotationRPY();
-    M2C_FIELD(this, f64 *, 0x18) = sp50;
-    M2C_FIELD(this, f64 *, 0x20) = sp58;
+    sp50 = ((Matrix *) &spA0)->GetRotationRPY();
+    M2C_FIELD(this, MKVector3 *, 0x18) = sp50;
 }
 #endif
 

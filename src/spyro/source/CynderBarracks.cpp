@@ -111,46 +111,50 @@ void CynderBarracks::Deinit() {
     Shatterable::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'P24CynderBarracksDescriptor'
 void CynderBarracks::Init() {
+    CynderBarracksDescriptor *temp_r3;
+
     Shatterable::Init();
     this->unk1AC = 0x32;
     this->unk1B0 = 0.0f;
     SetState((CynderBarracksState) 0);
-    this->unk1B4.Init(checked_cast<P24CynderBarracksDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x16C, (MKProp *) this);
+    temp_r3 = checked_cast<CynderBarracksDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk1B4.Init((EnemyGeneratorDescriptor *) ((s8 *) temp_r3 + 0x16C), (MKProp *) this);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void CynderBarracksDescriptor::LoadDone() {
-    ShatterableDescriptor::LoadDone();
-    this->unk16C.LoadDone();
-}
-#endif
+    EnemyGeneratorDescriptor *temp_r3;
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
+    ShatterableDescriptor::LoadDone();
+    temp_r3 = (EnemyGeneratorDescriptor *) ((s8 *) this + 0x16C);
+    temp_r3->LoadDone();
+}
+
 s32 CynderBarracksDescriptor::LoadLine(MKIniLine *arg0) {
+    EnemyGeneratorDescriptor *temp_r3;
     s32 var_r31_301;
 
     var_r31_301 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (this->unk16C.LoadLine(arg0) != 0)) {
+    temp_r3 = (EnemyGeneratorDescriptor *) ((s8 *) this + 0x16C);
+    if (((u8) ShatterableDescriptor::LoadLine(arg0) != 0) || ((u8) temp_r3->LoadLine(arg0) != 0)) {
         var_r31_301 = 1;
     }
     return var_r31_301;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void CynderBarracksDescriptor::Deinit() {
-    this->unk16C.Deinit();
+    EnemyGeneratorDescriptor *temp_r3;
+
+    temp_r3 = (EnemyGeneratorDescriptor *) ((s8 *) this + 0x16C);
+    temp_r3->Deinit();
     ShatterableDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void CynderBarracksDescriptor::Init() {
+    EnemyGeneratorDescriptor *temp_r3;
+
     ShatterableDescriptor::Init();
     this->unk64 |= 0x2000;
-    this->unk16C.Init();
+    temp_r3 = (EnemyGeneratorDescriptor *) ((s8 *) this + 0x16C);
+    temp_r3->Init();
 }
-#endif

@@ -124,14 +124,14 @@ void Character::UpdateCollisionItems() {
     temp_r0_70 = M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x6C);
     switch (temp_r0_70) {                           /* irregular */
     case 0:
-        sp48.operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60));
+        sp48 = ((MKVector3 *) &this->unkD0)->operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60));
         sp18 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp48);
         this->unk60 = sp18;
         sp20 = this->unk588.unk8 + sp48.unk8;
         sp58 = sp18;
         this->unk68 = (f64) sp20;
         sp60 = (f64) sp20;
-        sp28.operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x64));
+        sp28 = ((MKVector3 *) &this->unkD0)->operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x64));
         sp8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp28);
         this->unk70 = sp8;
         sp10 = this->unk588.unk8 + sp28.unk8;
@@ -147,7 +147,6 @@ void Character::UpdateCollisionItems() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void Character::GetDesiredHeadingMatrix(Matrix *arg0) {
     f64 sp98;
     f64 sp90;
@@ -261,7 +260,6 @@ void Character::GetDesiredHeadingMatrix(Matrix *arg0) {
     arg0->unk28 = (f32) sp78;
     arg0->unk2C = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match 'MKVector3::operator*(float)const '
 void Character::ClearHorizForces() {
@@ -463,7 +461,7 @@ void Character::UpdateRotation() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: pointer/array required
 MKVector3 *Character::UpdateVelocity() {
     f64 spF8;
     f64 spF0;
@@ -588,7 +586,7 @@ MKVector3 *Character::UpdateVelocity() {
     if (!(((u8) this->unk6B5 >> 4U) & 1) && (this->unk5E4 < 0.0f) && ((s32) this->unk110.unk16C <= 0)) {
         if (IsSteeringEnabled() == 0) {
             temp_f30_860 = gUpdateTimeDelta;
-            spC0.operator*(this->unk5E4);
+            spC0 = ((MKVector3 *) (&MKVector3::up))->operator*(this->unk5E4);
             temp_f0_867 = spC0 * (f64) temp_f30_860;
             sp40 = temp_f0_867;
             spD0 = temp_f0_867;
@@ -597,7 +595,7 @@ MKVector3 *Character::UpdateVelocity() {
             M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_867);
             this->unk5A0 += (f32) spD8;
             temp_f29_888 = gUpdateTimeDelta;
-            spA0.operator*(this->unk5E4);
+            spA0 = ((MKVector3 *) (&MKVector3::up))->operator*(this->unk5E4);
             temp_f0_893 = spA0 * (f64) temp_f29_888;
             sp30 = temp_f0_893;
             spB0 = temp_f0_893;
@@ -802,7 +800,7 @@ void Character::StopMovement(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: ')' expected
 void Character::UpdateMovementArbitrary() {
     MKCollisionResult sp310;
     f64 sp308;
@@ -897,6 +895,8 @@ void Character::UpdateMovementArbitrary() {
     f32 sp8;
     f32 *temp_r29_1450;
     f32 *temp_r29_1647;
+    f32 *var_r4_1672;
+    f32 *var_r4_1709;
     f32 temp_f28_1788;
     f32 temp_f2_1375;
     f32 temp_f2_1414;
@@ -1019,8 +1019,8 @@ void Character::UpdateMovementArbitrary() {
             M2C_FIELD(this, f64 *, 0xF8) = (f64) sp310.unk18;
             this->unk6B5 |= 0x40;
         } else {
-            sp220.operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60));
-            sp230.operator*(1.1f);
+            sp220 = ((MKVector3 *) &this->unkD0)->operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60));
+            sp230 = sp220.operator*(1.1f);
             temp_f0_1547 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp230);
             sp30 = temp_f0_1547;
             sp240 = temp_f0_1547;
@@ -1032,7 +1032,7 @@ void Character::UpdateMovementArbitrary() {
             sp250 = spC0;
             sp2F8 = (f64) spC8;
             sp258 = (f64) spC8;
-            sp200.operator*(-((1.1f * M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60)) + 20.0f));
+            sp200 = ((MKVector3 *) &this->unkD0)->operator*(-((1.1f * M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60)) + 20.0f));
             spB0 = sp2F0 + M2C_BITWISE(f64, sp200);
             sp2E0 = spB0;
             spB8 = (f32) sp2F8 + sp200.unk8;
@@ -1044,8 +1044,8 @@ void Character::UpdateMovementArbitrary() {
                 M2C_FIELD(this, f64 *, 0xF8) = (f64) sp310.unk18;
                 this->unk6B5 |= 0x40;
             } else {
-                sp1C0.operator*(-200.0f);
-                sp1D0.operator*(-100.0f);
+                sp1C0 = ((MKVector3 *) &this->unkC0)->operator*(-200.0f);
+                sp1D0 = ((MKVector3 *) &this->unkD0)->operator*(-100.0f);
                 temp_f0_1623 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp1D0);
                 sp20 = temp_f0_1623;
                 sp1E0 = temp_f0_1623;
@@ -1068,9 +1068,11 @@ void Character::UpdateMovementArbitrary() {
             }
         }
         if (var_r31_1373 != 0) {
-
+            var_r4_1672 = &this->unkF0;
+        } else {
+            var_r4_1672 = &this->unkD0;
         }
-        sp190.operator*(10.0f);
+        sp190 = ((MKVector3 *) var_r4_1672)->operator*(10.0f);
         temp_f0_1682 = M2C_FIELD(this, f64 *, 0x588) + sp300;
         sp10 = temp_f0_1682;
         sp1A0 = temp_f0_1682;
@@ -1084,9 +1086,11 @@ void Character::UpdateMovementArbitrary() {
         sp1B8 = (f64) sp98;
         sp2F8 = (f64) sp98;
         if (var_r31_1373 != 0) {
-
+            var_r4_1709 = &this->unkF0;
+        } else {
+            var_r4_1709 = &this->unkD0;
         }
-        sp170.operator*(50.0f);
+        sp170 = ((MKVector3 *) var_r4_1709)->operator*(50.0f);
         sp80 = sp2F0 - M2C_BITWISE(f64, sp170);
         sp2E0 = sp80;
         sp88 = (f32) sp2F8 - sp170.unk8;
@@ -1118,7 +1122,7 @@ void Character::UpdateMovementArbitrary() {
             this->unk110.unk58 = sp310.unk50;
         } else {
             temp_f28_1788 = gUpdateTimeDelta;
-            sp140.operator*(-980.0f);
+            sp140 = ((MKVector3 *) &this->unkD0)->operator*(-980.0f);
             temp_f0_1795 = sp140 * (f64) temp_f28_1788;
             sp60 = temp_f0_1795;
             sp150 = temp_f0_1795;
@@ -1144,10 +1148,10 @@ void Character::UpdateMovementArbitrary() {
 
 #if 0 // DRAFT: '(' expected
 void Character::UpdateMovementNormal() {
-    struct __vt *sp84;
-    f32 sp80;
+    struct __vt *vtable84;
+    s32 sp80;
     s8 sp7C;
-    f32 sp78;
+    s32 sp78;
     s32 sp74;
     s8 sp70;
     f32 sp68;
@@ -1155,7 +1159,7 @@ void Character::UpdateMovementNormal() {
     f32 sp60;
     s32 sp5C;
     s32 sp58;
-    f64 sp48;
+    MKVector3 sp48;
     MKVector3 sp38;
     f64 sp30;
     f64 sp28;
@@ -1165,31 +1169,32 @@ void Character::UpdateMovementNormal() {
     f32 temp_f1_1942;
     f32 temp_f31_1970;
     f64 temp_f0_1975;
+    u8 var_r30_1912;
 
-    sp84 = &__vt;
+    vtable84 = &__vt;
     sp58 = 0x30;
     sp5C = 0;
-    sp84 = &__vt;
+    vtable84 = &__vt;
     sp60 = 0.0f;
     sp64 = 0.0f;
     sp68 = 0.0f;
     sp70 = 0;
     sp74 = -1;
-    sp78 = 0.0f;
+    sp78 = 0;
     sp7C = 0;
-    sp80 = 0.0f;
+    sp80 = 0;
     sp58 = 0x31;
     if (this->unk6B5 & 1) {
         this->unk110.unk440 = (MKMessage *) &sp58;
     }
     UpdateRotation();
     UpdateVelocity();
+    var_r30_1912 = 0;
     if ((IsSteeringEnabled() != 0) || (((u8) this->unk6B5 >> 1U) & 1)) {
-
+        var_r30_1912 = 1;
     }
-    ((MovementObject *) &sp48)->Update((u8) &this->unk588);
-    this->unk100 = sp48;
-    this->unk108 = sp50;
+    sp48 = ((MovementObject *) &this->unk588)->Update(var_r30_1912);
+    *(MKVector3 *) &this->unk100 = sp48;
     this->unk110.unk440 = NULL;
     temp_f1_1942 = (this->unk5A0 * this->unkD8) + ((this->unk598 * this->unkD0) + (this->unk59C * this->unkD4));
     if (!(((u8) this->unk6B5 >> 4U) & 1) && (temp_f1_1942 < 0.0f) && ((s32) this->unk110.unk16C > 0) && ((MKProp *) this->unk63C == NULL) && (this->unk5F0 & 1)) {
@@ -1197,7 +1202,7 @@ void Character::UpdateMovementNormal() {
         M2C_FIELD(this, f32 *, 0x598) = (f64) ((f64) M2C_FIELD(this, f32 *, 0x598) - M2C_BITWISE(f64, sp38));
         this->unk5A0 -= sp38.unk8;
         temp_f31_1970 = gUpdateTimeDelta;
-        sp18.operator*(this->unk5E4);
+        sp18 = ((MKVector3 *) &this->unkD0)->operator*(this->unk5E4);
         temp_f0_1975 = sp18 * (f64) temp_f31_1970;
         sp8 = temp_f0_1975;
         sp28 = temp_f0_1975;
@@ -1487,9 +1492,11 @@ void Character::PlatformUpdate() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void Character::RotateNodePYR(int arg0, const MKVector3 &arg1) {
-    Animation sp30;
+    Matrix sp50;
+    f64 sp48;
+    f64 sp40;
+    MKVector3 sp30;
     f64 sp28;
     f64 sp20;
     f32 sp18;
@@ -1497,26 +1504,26 @@ void Character::RotateNodePYR(int arg0, const MKVector3 &arg1) {
     f32 sp10;
 
     if (arg0 >= 0) {
-        sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
-        sp30.unk10 = M2C_BITWISE(f64, sp30);
-        sp30.unk18 = sp30.unk8;
-        ((Matrix *) &sp30.unk20)->SetIdentity();
-        sp10 = -M2C_BITWISE(f32, sp30.unk10);
-        sp14 = -M2C_BITWISE(f32, sp30.unk14);
-        sp18 = -M2C_BITWISE(f32, sp30.unk18);
+        sp30 = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeOrigin(arg0);
+        *(MKVector3 *) &sp40 = sp30;
+        sp50.SetIdentity();
+        sp10 = -(f32) sp40;
+        sp14 = -(*(f32 *) ((u8 *) &sp40 + 0x4));
+        sp18 = -(f32) sp48;
         sp20 = (f64) sp10;
         sp28 = (f64) sp18;
-        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
-        ((Matrix *) &sp30.unk20)->RotatePYR((Matrix *) &sp30.unk20, arg1);
-        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
-        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &sp30.unk20, (AnimationMatrixPosition) 2, 0U);
+        sp50.Translate(&sp50, *((MKVector3 *) &sp20));
+        sp50.RotatePYR(&sp50, arg1);
+        sp50.Translate(&sp50, *((MKVector3 *) &sp40));
+        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, &sp50, (AnimationMatrixPosition) 2, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void Character::RotateNodePitch(int arg0, float arg1) {
-    Animation sp30;
+    Matrix sp50;
+    f64 sp48;
+    f64 sp40;
+    MKVector3 sp30;
     f64 sp28;
     f64 sp20;
     f32 sp18;
@@ -1524,26 +1531,26 @@ void Character::RotateNodePitch(int arg0, float arg1) {
     f32 sp10;
 
     if (arg0 >= 0) {
-        sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
-        sp30.unk10 = M2C_BITWISE(f64, sp30);
-        sp30.unk18 = sp30.unk8;
-        ((Matrix *) &sp30.unk20)->SetIdentity();
-        sp10 = -M2C_BITWISE(f32, sp30.unk10);
-        sp14 = -M2C_BITWISE(f32, sp30.unk14);
-        sp18 = -M2C_BITWISE(f32, sp30.unk18);
+        sp30 = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeOrigin(arg0);
+        *(MKVector3 *) &sp40 = sp30;
+        sp50.SetIdentity();
+        sp10 = -(f32) sp40;
+        sp14 = -(*(f32 *) ((u8 *) &sp40 + 0x4));
+        sp18 = -(f32) sp48;
         sp20 = (f64) sp10;
         sp28 = (f64) sp18;
-        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
-        ((Matrix *) &sp30.unk20)->RotatePitch((Matrix *) &sp30.unk20, arg1);
-        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
-        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &sp30.unk20, (AnimationMatrixPosition) 2, 0U);
+        sp50.Translate(&sp50, *((MKVector3 *) &sp20));
+        sp50.RotatePitch(&sp50, arg1);
+        sp50.Translate(&sp50, *((MKVector3 *) &sp40));
+        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, &sp50, (AnimationMatrixPosition) 2, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
 void Character::RotateNodeYaw(int arg0, float arg1) {
-    Animation sp30;
+    Matrix sp50;
+    f64 sp48;
+    f64 sp40;
+    MKVector3 sp30;
     f64 sp28;
     f64 sp20;
     f32 sp18;
@@ -1551,22 +1558,20 @@ void Character::RotateNodeYaw(int arg0, float arg1) {
     f32 sp10;
 
     if (arg0 >= 0) {
-        sp30.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
-        sp30.unk10 = M2C_BITWISE(f64, sp30);
-        sp30.unk18 = sp30.unk8;
-        ((Matrix *) &sp30.unk20)->SetIdentity();
-        sp10 = -M2C_BITWISE(f32, sp30.unk10);
-        sp14 = -M2C_BITWISE(f32, sp30.unk14);
-        sp18 = -M2C_BITWISE(f32, sp30.unk18);
+        sp30 = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeOrigin(arg0);
+        *(MKVector3 *) &sp40 = sp30;
+        sp50.SetIdentity();
+        sp10 = -(f32) sp40;
+        sp14 = -(*(f32 *) ((u8 *) &sp40 + 0x4));
+        sp18 = -(f32) sp48;
         sp20 = (f64) sp10;
         sp28 = (f64) sp18;
-        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp20));
-        ((Matrix *) &sp30.unk20)->RotateYaw((Matrix *) &sp30.unk20, arg1);
-        ((Matrix *) &sp30.unk20)->Translate((Matrix *) &sp30.unk20, *((MKVector3 *) &sp30.unk10));
-        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, (Matrix *) &sp30.unk20, (AnimationMatrixPosition) 2, 0U);
+        sp50.Translate(&sp50, *((MKVector3 *) &sp20));
+        sp50.RotateYaw(&sp50, arg1);
+        sp50.Translate(&sp50, *((MKVector3 *) &sp40));
+        ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(arg0, &sp50, (AnimationMatrixPosition) 2, 0U);
     }
 }
-#endif
 
 s32 Character::HasAnimFinished() {
     s32 temp_r4_2656;
@@ -2546,7 +2551,7 @@ s32 Character::LoadDone() {
     }
     temp_r3_4504 = this->unk4;
     if (temp_r3_4504 != NULL) {
-        this->unk8 = (void *) (MKModel_GetWorldMatrix(temp_r3_4504));
+        this->unk8 = MKModel_GetWorldMatrix(temp_r3_4504);
     }
     MKProp::LoadDone();
     if (((void *) this->unk630 == NULL) && ((MKModel *) this->unk4 == NULL)) {
@@ -2598,7 +2603,7 @@ s32 Character::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 Character::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
@@ -2662,7 +2667,7 @@ void Character::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected Too many errors printed, aborting program
+#if 0 // DRAFT: ')' expected
 void Character::Init() {
     void *temp_r4_4861;
     void *var_r3_4851;

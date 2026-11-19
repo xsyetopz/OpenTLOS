@@ -13,6 +13,7 @@ class EventMessage;
 class MKIniLine;
 class MKMessage;
 class MKProp;
+class MKVector3;
 class SpawnPointObject;
 class SpawnerObject;
 
@@ -67,9 +68,9 @@ public:
 
 class EnemyGeneratorDoor {
 public:
-    void GetSpawnPos(void);
-    void GetDoorDir(void);
-    void GetDoorPos(void);
+    MKVector3 GetSpawnPos(void);
+    MKVector3 GetDoorDir(void);
+    MKVector3 GetDoorPos(void);
     void Close(void);
     void Open(void);
     void Deinit(void);

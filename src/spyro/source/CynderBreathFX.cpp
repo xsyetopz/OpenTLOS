@@ -325,8 +325,8 @@ void CynderBreathFX::BreathFire() {
     spC0 = MKVector(1.0f, 1.0f, 1.0f);
     spD0 = MKVector(-1.0f, -1.0f, -1.0f);
     spE0 = KDRand_Vector(spD0, spC0);
-    spF0.operator*(500.0f);
-    sp100.operator*(3500.0f);
+    spF0 = spE0.operator*(500.0f);
+    sp100 = ((MKVector3 *) &sp150)->operator*(3500.0f);
     sp40 = sp100 + M2C_BITWISE(f64, spF0);
     temp_r3_503 = M2C_FIELD(temp_r30_470, void **, 0x70);
     sp110 = sp40;
@@ -353,8 +353,8 @@ void CynderBreathFX::BreathFire() {
     sp60 = MKVector(1.0f, 1.0f, 1.0f);
     sp70 = MKVector(-1.0f, -1.0f, -1.0f);
     sp80 = KDRand_Vector(sp70, sp60);
-    sp90.operator*(500.0f);
-    spA0.operator*(3500.0f);
+    sp90 = sp80.operator*(500.0f);
+    spA0 = ((MKVector3 *) &sp150)->operator*(3500.0f);
     sp30 = spA0 + M2C_BITWISE(f64, sp90);
     temp_r3_583 = M2C_FIELD(temp_r30_470, void **, 0x74);
     spB0 = sp30;
@@ -379,7 +379,7 @@ void CynderBreathFX::BreathFire() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *CynderBreathFX::Update() {
     s8 spA0;
     f64 sp98;
@@ -430,7 +430,7 @@ void *CynderBreathFX::Update() {
             temp_f30_712 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f29_717 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp28 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f29_717, temp_f30_712);
-            sp38.operator*(this->unk1D0);
+            sp38 = sp28.operator*(this->unk1D0);
             sp8 = sp38 * (f64) temp_f28_709;
             sp88 = 0x417;
             sp90 = sp8;

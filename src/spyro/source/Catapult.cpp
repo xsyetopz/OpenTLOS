@@ -253,7 +253,7 @@ s32 Catapult::CanLoadBall() {
     return this->unkF8.GetState() == 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp80'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Catapult::State'
 void Catapult::SetBall(Ball *arg0) {
     f64 spB0;
     f64 spA8;
@@ -261,7 +261,7 @@ void Catapult::SetBall(Ball *arg0) {
     f64 sp98;
     f64 sp90;
     f64 sp88;
-    f64 sp78;
+    MKVector3 sp78;
     f64 sp70;
     f64 sp68;
     f64 sp60;
@@ -286,12 +286,11 @@ void Catapult::SetBall(Ball *arg0) {
     temp_r5_113 = M2C_FIELD(this->unk12C, void **, 8);
     spA8 = M2C_FIELD(temp_r5_113, f64 *, 0x30);
     spB0 = M2C_FIELD(temp_r5_113, f64 *, 0x38);
-    ((Catapult *) &sp78)->GetAmmoPos();
+    sp78 = GetAmmoPos();
     sp20 = 0.0f;
     sp18 = 0.0f;
     sp1C = 100.0f;
-    sp98 = sp78;
-    spA0 = sp80;
+    *(MKVector3 *) &sp98 = sp78;
     sp48 = (f64) sp18;
     sp50 = (f64) sp20;
     temp_f0_134 = spA8 + sp98;
@@ -319,23 +318,29 @@ void Catapult::SetBall(Ball *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: identifier 'Catapult::GetAmmoDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void Catapult::GetAmmoDir() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     Matrix sp10;
 
-    MKModel_GetRefPointMatrix(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKModel **, 4), M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>(*M2C_ERROR(/* Read from unset register $r4 */)), s32 *, 0x70), &sp10, 1U);
-    M2C_FIELD(this, f64 *, 0) = (f64) sp10.unk10;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10.unk18;
+    MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x70), &sp10, 1U);
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp10.unk10;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10.unk18;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: identifier 'Catapult::GetAmmoPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void Catapult::GetAmmoPos() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     Matrix sp10;
 
-    MKModel_GetRefPointMatrix(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKModel **, 4), M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>(*M2C_ERROR(/* Read from unset register $r4 */)), s32 *, 0x70), &sp10, 1U);
-    M2C_FIELD(this, f64 *, 0) = (f64) sp10.unk30;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10.unk38;
+    MKModel_GetRefPointMatrix(this->unk4, M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x70), &sp10, 1U);
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp10.unk30;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10.unk38;
+    return result;
 }
 #endif
 
@@ -478,20 +483,20 @@ void Catapult::WindBackEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spA8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Catapult::FireUpdate() {
     Matrix spD0;
     f64 spC8;
     f64 spC0;
     f64 spB8;
     f64 spB0;
-    f64 spA0;
+    MKVector3 spA0;
     f64 sp98;
     f64 sp90;
     MKVector3 sp80;
     MKVector3 sp70;
     MKVector3 sp60;
-    M2C_UNK sp50;
+    MKVector3 sp50;
     f64 sp48;
     f64 sp40;
     f32 sp38;
@@ -505,15 +510,14 @@ void Catapult::FireUpdate() {
     u32 temp_r30_546;
     u32 temp_r3_576;
 
-    ((Catapult *) &spA0)->GetAmmoPos();
+    spA0 = GetAmmoPos();
     temp_r30_546 = this->unk12C;
-    spC0 = spA0;
-    spC8 = spA8;
+    *(MKVector3 *) &spC0 = spA0;
     if (temp_r30_546 != 0) {
-        ((Catapult *) &sp50)->GetAmmoDir();
-        sp60.operator*(M2C_FIELD(temp_r30_546, f32 *, 0x274));
-        sp70.operator*(M2C_FIELD(temp_r30_546, f32 *, 0x280));
-        sp80.operator*(0.5f);
+        sp50 = GetAmmoDir();
+        sp60 = sp50.operator*(M2C_FIELD(temp_r30_546, f32 *, 0x274));
+        sp70 = sp60.operator*(M2C_FIELD(temp_r30_546, f32 *, 0x280));
+        sp80 = sp70.operator*(0.5f);
         sp20 = spC0 + M2C_BITWISE(f64, sp80);
         temp_r3_576 = this->unk12C;
         sp90 = sp20;
@@ -573,7 +577,7 @@ void Catapult::LoadAmmoUpdate() {
     MKVector3 sp50;
     MKVector3 sp40;
     MKVector3 sp30;
-    M2C_UNK sp20;
+    MKVector3 sp20;
     f32 sp18;
     f64 sp10;
     f32 sp8;
@@ -592,10 +596,10 @@ void Catapult::LoadAmmoUpdate() {
     this->unk138 = var_f3_770;
     temp_r31_779 = this->unk12C;
     if (temp_r31_779 != 0) {
-        ((Catapult *) &sp20)->GetAmmoDir();
-        sp30.operator*(M2C_FIELD(temp_r31_779, f32 *, 0x274));
-        sp40.operator*(M2C_FIELD(temp_r31_779, f32 *, 0x280));
-        sp50.operator*(0.5f);
+        sp20 = GetAmmoDir();
+        sp30 = sp20.operator*(M2C_FIELD(temp_r31_779, f32 *, 0x274));
+        sp40 = sp30.operator*(M2C_FIELD(temp_r31_779, f32 *, 0x280));
+        sp50 = sp40.operator*(0.5f);
         sp8 = 0.0f;
         sp60.GetMeasure(this->unk138, (Matrix *) &this->unk118, KDSpline_PositionMixer);
         sp10 = M2C_BITWISE(f64, sp60) + M2C_BITWISE(f64, sp50);
@@ -628,17 +632,16 @@ void Catapult::IdleEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: ')' expected
 void *Catapult::Update() {
-    f64 sp10;
+    MKVector3 sp10;
     s32 sp8;
     f32 temp_f1_915;
     f32 var_f1_923;
     void *temp_r4_933;
 
-    ((Catapult *) &sp10)->GetAmmoPos();
-    this->unk90 = sp10;
-    this->unk98 = sp18;
+    sp10 = GetAmmoPos();
+    *(MKVector3 *) &this->unk90 = sp10;
     KDProp::Update();
     this->unk14C = 0;
     this->unkF8.Update(this, 0);
@@ -657,9 +660,9 @@ void *Catapult::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Catapult::State'
 void Catapult::Reset() {
-    f64 sp8;
+    MKVector3 sp8;
 
     KDProp::Reset();
     this->unk118.unk8 = 0.0f;
@@ -667,9 +670,8 @@ void Catapult::Reset() {
     this->unk138 = 0.0f;
     this->unk13C = 1.0f;
     this->unk12C = 0;
-    ((Catapult *) &sp8)->GetAmmoPos();
-    this->unk90 = sp8;
-    this->unk98 = sp10;
+    sp8 = GetAmmoPos();
+    *(MKVector3 *) &this->unk90 = sp8;
     SetState((Catapult::State) 0);
     this->unk14C = 0;
 }

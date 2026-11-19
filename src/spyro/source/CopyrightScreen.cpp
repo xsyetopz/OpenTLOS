@@ -16,10 +16,9 @@ s32 stricmp(void *, u32);                           /* extern */
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: type mismatch 'KDMemoryCard *' and 'int'
 void CopyrightScreen::Update() {
     s32 sp8;
-    KDMemoryCard *temp_r3_129;
+    s32 temp_r3_129;
     KDMemoryCard *temp_r3_141;
     KDMemoryCard *temp_r3_157;
     KDMemoryCard *temp_r3_179;
@@ -34,8 +33,8 @@ void CopyrightScreen::Update() {
 
     UIScreen::Update();
     temp_r0_21 = this->unkC8;
-    switch (temp_r0_21) {                           /* switch 1; irregular */
-    case 0:                                         /* switch 1 */
+    switch (temp_r0_21) {
+    case 0:
         this->unkCC += gUpdateTimeDelta / 0.25f;
         temp_f0_40 = this->unkCC;
         if (temp_f0_40 < 1.0f) {
@@ -52,14 +51,14 @@ void CopyrightScreen::Update() {
             this->unkCC = 0.0f;
         }
         break;
-    case 1:                                         /* switch 1 */
+    case 1:
         this->unkCC += gUpdateTimeDelta / 4.5f;
         if ((this->unkCC >= 1.0f) && ((u8) *CopyrightScreen::bMemoryCardCheckDone != 0)) {
             this->unkC8 = 2;
             this->unkCC = 0.0f;
         }
         break;
-    case 2:                                         /* switch 1 */
+    case 2:
         if (this->unkCC >= 1.0f) {
             temp_r3_86 = (void **) (ui_cast<UISystem *, UIContainer *>(GetRoot()));
             sp8 = 0xF;
@@ -77,13 +76,14 @@ void CopyrightScreen::Update() {
         break;
     }
     temp_r0_115 = this->unkD0;
-    switch (temp_r0_115) {                          /* switch 2; irregular */
-    case 1:                                         /* switch 2 */
+    switch (temp_r0_115) {
+    case 1:
         if (KDMemoryCard::Update() == 0) {
-            this->unkD4 += 1;
-            temp_r3_129 = this->unkD4;
+            /* unkD4 is a plain s32 counter (asm: lwz/addi/stw/cmpwi), not a KDMemoryCard pointer. */
+            M2C_FIELD(this, s32 *, 0xD4) += 1;
+            temp_r3_129 = M2C_FIELD(this, s32 *, 0xD4);
             if (temp_r3_129 < 2) {
-                this->unkD8 = (KDMemoryCard *) (KDMemoryCard::GetCard((s32) temp_r3_129));
+                this->unkD8 = (KDMemoryCard *) (KDMemoryCard::GetCard(temp_r3_129));
                 this->unkD8->SetState((KDMCState) 2);
             } else {
                 this->unkD8 = (KDMemoryCard *) (KDMemoryCard::GetFirstAvailable());
@@ -97,7 +97,7 @@ void CopyrightScreen::Update() {
             }
         }
         break;
-    case 2:                                         /* switch 2 */
+    case 2:
         if (KDMemoryCard::Update() == 0) {
             temp_r3_157 = this->unkD8;
             temp_r4_158 = temp_r3_157->unk9;
@@ -124,27 +124,26 @@ void CopyrightScreen::Update() {
             }
         }
         break;
-    default:                                        /* switch 2 */
+    default:
         *CopyrightScreen::bMemoryCardCheckDone = 1;
         break;
     }
-    if (stricmp("VideoMaker", this->unk4) == 0) {
+    if (stricmp((void *) "VideoMaker", this->unk4) == 0) {
         this->unk18.unk40 |= 8;
         this->unk18.unk30 += gUpdateTimeDelta / 150.0f;
     }
-    if (((stricmp("Developer", this->unk4) == 0) || (stricmp("VideoMaker", this->unk4) == 0)) && (MKInput_GetState(3, (MKInputDevices) 0, NULL, NULL) > 0.0f)) {
+    if (((stricmp((void *) "Developer", this->unk4) == 0) || (stricmp((void *) "VideoMaker", this->unk4) == 0)) && (MKInput_GetState(3, (MKInputDevices) 0, NULL, NULL) > 0.0f)) {
         temp_r0_257 = this->unkC8;
-        switch (temp_r0_257) {                      /* switch 3; irregular */
-        case 0:                                     /* switch 3 */
+        switch (temp_r0_257) {
+        case 0:
             this->unkC8 = 2;
             return;
-        case 1:                                     /* switch 3 */
+        case 1:
             this->unkCC = 1.0f;
             break;
         }
     }
 }
-#endif
 
 void CopyrightScreen::OnEnter() {
     UIScreen::OnEnter();

@@ -14,7 +14,7 @@ public:
     u32 GetPathSegment(void);
     void GetNearestPointOnBoundingRegion(const MKVector3 &, MKVector3 *, MKVector3 *);
     s32 GetFirstIntersectionPlane(const MKVector3 &, const MKVector3 &, MKVector3 *, MKVector3 *);
-    void GetRegionPos(void);
+    MKVector3 GetRegionPos(void);
     u8 IsPointWithin(const MKVector3 &);
     s32 TryChangeRegion(const MKVector3 &);
     void SetupRegion(KDLocalPathSegment *);

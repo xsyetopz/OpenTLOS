@@ -125,13 +125,11 @@ u8 DreadWingGoal_PickUp::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'P9DreadWing'
 void DreadWingGoal_PickUp::Activate() {
     this->unk8 = 0;
-    ((DreadWing *) (checked_cast<P9DreadWing))->PickUpDropBox(5Enemy>__FP5Enemy(this->unkC), this->unk10);
+    ((DreadWing *) (checked_cast<DreadWing *, Enemy>(this->unkC)))->PickUpDropBox(this->unk10);
     this->unk8 = 2;
 }
-#endif
 
 void DreadWingGoal_PickUp::Init(Enemy *arg0) {
     this->unk8 = 1;

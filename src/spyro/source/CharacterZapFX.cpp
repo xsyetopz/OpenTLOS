@@ -375,7 +375,7 @@ void CharacterZapFX::SpawnZap() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: undefined identifier 'sp148'
 void CharacterZapFX::Update() {
     f64 sp140;
     M2C_UNK sp10C;

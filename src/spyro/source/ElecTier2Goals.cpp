@@ -72,7 +72,6 @@ void ElecTier2Goal_FlyToTarget::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 ElecTier2Goal_FlyToTarget::Update() {
     f64 sp48;                                       /* compiler-managed */
     f64 sp40;                                       /* compiler-managed */
@@ -185,7 +184,6 @@ block_31:
     }
     return this->unk8;
 }
-#endif
 
 void ElecTier2Goal_FlyToTarget::Activate() {
     this->unk8 = 0;
@@ -507,10 +505,10 @@ u8 ElecTier2Goal_PatrolMode::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void ElecTier2Goal_PatrolMode::Activate() {
-    f32 sp18;
-    M2C_UNK sp8;
+    MKVector3 sp18;
+    MKVector3 sp8;
     Enemy *temp_r30_984;
     Enemy *temp_r3_950;
     Enemy *temp_r4_963;
@@ -537,12 +535,12 @@ void ElecTier2Goal_PatrolMode::Activate() {
         if (var_r30_972 != 0) {
             temp_r30_984 = this->unkC;
             if (((u8) M2C_FIELD(temp_r30_984, u8 *, 0x8B9) >> 6U) & 1) {
-                ((AITargetData *) &sp18)->GetPos();
-                temp_f3_995 = sp20 - temp_r30_984->unk588.unk8;
-                temp_f2_997 = sp18 - temp_r30_984->unk588.unk0;
+                sp18 = temp_r30_984->unk870.GetPos();
+                temp_f3_995 = sp18.unk8 - temp_r30_984->unk588.unk8;
+                temp_f2_997 = M2C_BITWISE(f32, sp18) - temp_r30_984->unk588.unk0;
                 if (((temp_f2_997 * temp_f2_997) + (temp_f3_995 * temp_f3_995)) < 250000.0f) {
-                    ((AITargetData *) &sp8)->GetPos();
-                    if (this->unkC->unk588.unk4 > spC) {
+                    sp8 = this->unkC->unk870.GetPos();
+                    if (this->unkC->unk588.unk4 > sp8.unk4) {
                         AddSubgoal((Goal<Enemy> *) this->unk2C);
                     }
                 }

@@ -92,7 +92,7 @@ public:
     virtual s32 GetMoveToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
     virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
-    virtual void GetVel(void);
+    virtual MKVector3 GetVel(void);
     virtual void * GetCollisionInfo(void);
     virtual f32 GetCollisionRadius(void);
     virtual f32 GetCollisionHeight(void);
@@ -499,9 +499,12 @@ inline void *Enemy::GetCollisionInfo() {
     return this->unk634;
 }
 
-inline void Enemy::GetVel() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x598);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x5A0);
+inline MKVector3 Enemy::GetVel() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(this, f64 *, 0x598);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(this, f64 *, 0x5A0);
+    return result;
 }
 
 inline s32 Enemy::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
@@ -545,15 +548,15 @@ inline void Enemy::GetProp() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'spC'
+#if 0 // DRAFT: undefined identifier 'fabs'
 inline u8 Enemy::IsInsideEnemyRegion() {
-    M2C_UNK sp8;
+    MKVector3 sp8;
     u8 var_r31_10920;
 
     var_r31_10920 = 0;
     if (this->unk800.IsPointWithin(this->unk588) != 0) {
-        ((EnemyRegion *) &sp8)->GetRegionPos();
-        if ((f32) fabs(spC - this->unk588.unk4) <= 500.0f) {
+        sp8 = this->unk800.GetRegionPos();
+        if ((f32) fabs(sp8.unk4 - this->unk588.unk4) <= 500.0f) {
             var_r31_10920 = 1;
         }
     }

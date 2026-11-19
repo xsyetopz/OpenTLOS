@@ -175,7 +175,6 @@ void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector
 }
 
 extern "C" void free(void *);
-
 void EarthBreathWhirlWinds::Deinit() {
     u32 *base;
     u32 *p;

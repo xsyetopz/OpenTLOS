@@ -219,7 +219,7 @@ loop_52:
                 sp23C = -1;
                 sp240 = 0;
                 if (MKCollision_RayCollide(*((MKVector3 *) &sp188), *temp_r28_593, (MKCollisionResult *) &sp1F0, (MKCollisionMode) 7, 0x04000000) != 0) {
-                    sp158.operator*(10.0f);
+                    sp158 = ((MKVector3 *) &sp200)->operator*(10.0f);
                     temp_f0_207 = (f64) sp1F0 + M2C_BITWISE(f64, sp158);
                     sp28 = temp_f0_207;
                     M2C_FIELD(temp_r28_593, f64 *, 0) = temp_f0_207;

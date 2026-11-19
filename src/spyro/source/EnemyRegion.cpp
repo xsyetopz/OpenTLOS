@@ -262,7 +262,7 @@ loop_5:
         sp28 = (f32) sp98 * var_f3_392;
         sp130.unk10 = (f64) sp20;
         sp130.unk18 = (f64) sp28;
-        sp70.operator*(this->unk2C);
+        sp70 = ((MKVector3 *) &sp130.unk10)->operator*(this->unk2C);
         sp10 = this->unk0 - M2C_BITWISE(f64, sp70);
         M2C_FIELD(arg1, f64 *, 0) = sp10;
         sp18 = (f32) M2C_FIELD(this, f64 *, 8) - sp70.unk8;
@@ -368,7 +368,7 @@ loop_6:
             spA0 = temp_f0_549;
             sp18 = arg1.unk8 - arg0.unk8;
             spA8 = (f64) sp18;
-            spB0.operator*(var_f30_473);
+            spB0 = ((MKVector3 *) &spA0)->operator*(var_f30_473);
             sp20 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, spB0);
             M2C_FIELD(arg2, f64 *, 0) = sp20;
             sp28 = arg0.unk8 + spB0.unk8;
@@ -445,34 +445,29 @@ block_33:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
-void EnemyRegion::GetRegionPos() {
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    f32 temp_f3_748;
-    f32 temp_f6_754;
-    f32 temp_f7_760;
-    void *temp_r5_745;
+MKVector3 EnemyRegion::GetRegionPos(void) {
+    MKVector3 result;
+    f32 *m;
+    f32 x;
+    f32 y;
+    f32 z;
 
-    if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), u8 *, 0x31) != 0) {
-        temp_r5_745 = M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 0x10), void **, 0x30);
-        if (temp_r5_745 != NULL) {
-            temp_f3_748 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 4);
-            temp_f6_754 = *M2C_ERROR(/* Read from unset register $r4 */);
-            temp_f7_760 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 8);
-            sp8 = M2C_FIELD(temp_r5_745, f32 *, 0x30) + ((temp_f7_760 * M2C_FIELD(temp_r5_745, f32 *, 0x20)) + ((temp_f6_754 * M2C_FIELD(temp_r5_745, f32 *, 0)) + (temp_f3_748 * M2C_FIELD(temp_r5_745, f32 *, 0x10))));
-            spC = M2C_FIELD(temp_r5_745, f32 *, 0x34) + ((temp_f7_760 * M2C_FIELD(temp_r5_745, f32 *, 0x24)) + ((temp_f6_754 * M2C_FIELD(temp_r5_745, f32 *, 4)) + (temp_f3_748 * M2C_FIELD(temp_r5_745, f32 *, 0x14))));
-            sp10 = M2C_FIELD(temp_r5_745, f32 *, 0x38) + ((temp_f7_760 * M2C_FIELD(temp_r5_745, f32 *, 0x28)) + ((temp_f6_754 * M2C_FIELD(temp_r5_745, f32 *, 8)) + (temp_f3_748 * M2C_FIELD(temp_r5_745, f32 *, 0x18))));
-            this->unk0 = (f64) sp8;
-            this->unk8 = (f64) sp10;
-            return;
+    if ((u8) this->unk31 != 0) {
+        m = M2C_FIELD(this->unk10, f32 **, 0x30);
+        if (m != NULL) {
+            x = M2C_FIELD(this, f32 *, 0);
+            y = M2C_FIELD(this, f32 *, 4);
+            z = M2C_FIELD(this, f32 *, 8);
+            result.unk0 = M2C_FIELD(m, f32 *, 0x30) + ((z * M2C_FIELD(m, f32 *, 0x20)) + ((x * M2C_FIELD(m, f32 *, 0)) + (y * M2C_FIELD(m, f32 *, 0x10))));
+            result.unk4 = M2C_FIELD(m, f32 *, 0x34) + ((z * M2C_FIELD(m, f32 *, 0x24)) + ((x * M2C_FIELD(m, f32 *, 4)) + (y * M2C_FIELD(m, f32 *, 0x14))));
+            result.unk8 = M2C_FIELD(m, f32 *, 0x38) + ((z * M2C_FIELD(m, f32 *, 0x28)) + ((x * M2C_FIELD(m, f32 *, 8)) + (y * M2C_FIELD(m, f32 *, 0x18))));
+            return result;
         }
     }
-    this->unk0 = *M2C_ERROR(/* Read from unset register $r4 */);
-    this->unk8 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 8);
+    M2C_FIELD(&result, f64 *, 0) = this->unk0;
+    M2C_FIELD(&result, f64 *, 8) = this->unk8;
+    return result;
 }
-#endif
 
 u8 EnemyRegion::IsPointWithin(const MKVector3 &arg0) {
     f32 temp_f1_806;
@@ -497,76 +492,76 @@ u8 EnemyRegion::IsPointWithin(const MKVector3 &arg0) {
     return var_r0_807;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDPathManager' to 'KDLocalPathSegment *'
 s32 EnemyRegion::TryChangeRegion(const MKVector3 &arg0) {
-    f32 sp8C;
-    f32 sp88;
-    f32 sp84;
-    f32 sp80;
-    s32 sp7C;
-    s32 sp78;
+    KDPathIterator iter;
+    KDPathManager mgr;
+    MKVector3 centroid;
+    KDLocalPathSegment *seg;
     s32 sp74;
-    KDPathIterator sp68;
-    KDPathManager sp38;
-    MKVector3 sp28;
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    f32 temp_f3_900;
-    f32 temp_f6_906;
-    f32 temp_f7_912;
-    f64 temp_f1_892;
-    s32 temp_cr0_eq_857;
-    void *temp_r3_891;
+    s32 sp78;
+    s32 sp7C;
+    f32 sp80;
+    f32 sp84;
+    f32 sp88;
+    f32 sp8C;
+    f32 *matrix;
+    f32 x;
+    f32 y;
+    f32 z;
+    f32 tx;
+    f32 ty;
+    f32 tz;
+    f32 dy;
 
-    sp68.Init();
-    sp38.NearestPointLocalSegment(1, arg0);
-    temp_cr0_eq_857 = (KDLocalPathSegment *) sp38 == NULL;
-    sp68 = (KDLocalPathSegment *) sp38;
-    sp68.unk4 = sp38.unk4;
-    sp68.unk8 = M2C_BITWISE(u8, sp38.unk8);
-    if ((temp_cr0_eq_857 == 0) && (temp_cr0_eq_857 == 0) && (((u8) this->unk31 == 0) || ((KDLocalPathSegment *) sp38 != (u32) this->unk10))) {
-        sp74 = 0;
-        sp78 = 0;
-        sp7C = 0;
-        sp80 = 0.0f;
-        sp84 = 0.0f;
-        sp88 = 0.0f;
-        sp8C = 0.0f;
-        ((BoundingRegion *) &sp74)->Init((KDLocalPathSegment *) sp38);
-        if (((BoundingRegion *) &sp74)->IsPointWithin(arg0) != 0) {
-            sp28 = PolygonCentroid((KDPathSegment *) (KDLocalPathSegment *) sp38);
-            temp_r3_891 = ((KDLocalPathSegment *) sp38)->unk30;
-            temp_f1_892 = M2C_BITWISE(f64, sp28);
-            sp38.unk20 = temp_f1_892;
-            sp38.unk28 = (f64) sp28.unk8;
-            sp38.unk10 = temp_f1_892;
-            sp38.unk18 = (f64) sp28.unk8;
-            if (temp_r3_891 != NULL) {
-                temp_f3_900 = M2C_BITWISE(f32, sp38.unk14);
-                temp_f6_906 = M2C_BITWISE(f32, sp38.unk10);
-                temp_f7_912 = M2C_BITWISE(f32, sp38.unk18);
-                sp8 = M2C_FIELD(temp_r3_891, f32 *, 0x30) + ((temp_f7_912 * M2C_FIELD(temp_r3_891, f32 *, 0x20)) + ((temp_f6_906 * M2C_FIELD(temp_r3_891, f32 *, 0)) + (temp_f3_900 * M2C_FIELD(temp_r3_891, f32 *, 0x10))));
-                spC = M2C_FIELD(temp_r3_891, f32 *, 0x34) + ((temp_f7_912 * M2C_FIELD(temp_r3_891, f32 *, 0x24)) + ((temp_f6_906 * M2C_FIELD(temp_r3_891, f32 *, 4)) + (temp_f3_900 * M2C_FIELD(temp_r3_891, f32 *, 0x14))));
-                sp10 = M2C_FIELD(temp_r3_891, f32 *, 0x38) + ((temp_f7_912 * M2C_FIELD(temp_r3_891, f32 *, 0x28)) + ((temp_f6_906 * M2C_FIELD(temp_r3_891, f32 *, 8)) + (temp_f3_900 * M2C_FIELD(temp_r3_891, f32 *, 0x18))));
-                sp18 = (f64) sp8;
-                sp20 = (f64) sp10;
-                sp38.unk10 = (f64) sp8;
-                sp38.unk18 = (f64) sp10;
-            }
-            if ((f32) fabs(M2C_BITWISE(f32, sp38.unk14) - arg0.unk4) < 500.0f) {
-                SetupRegion((KDLocalPathSegment *) sp38);
-                return 1;
-            }
-            goto block_9;
-        }
+    iter.Init();
+    mgr.NearestPointLocalSegment(1, arg0);
+    iter.unk0 = (void *) mgr.unk0;
+    iter.unk4 = mgr.unk4;
+    iter.unk8 = M2C_FIELD(&mgr, u8 *, 8);
+    seg = (KDLocalPathSegment *) mgr.unk0;
+    if (seg == NULL) {
+        return 0;
     }
-block_9:
+    if ((u8) this->unk31 != 0 && (s32) seg == this->unk10) {
+        return 0;
+    }
+
+    sp74 = 0;
+    sp78 = 0;
+    sp7C = 0;
+    sp80 = 0.0f;
+    sp84 = 0.0f;
+    sp88 = 0.0f;
+    sp8C = 0.0f;
+    ((BoundingRegion *) &sp74)->Init(seg);
+    if ((u8) ((BoundingRegion *) &sp74)->IsPointWithin(arg0) == 0) {
+        return 0;
+    }
+
+    centroid = PolygonCentroid((KDPathSegment *) seg);
+    M2C_FIELD(&mgr, f64 *, 0x10) = M2C_FIELD(&centroid, f64 *, 0);
+    M2C_FIELD(&mgr, f64 *, 0x18) = M2C_FIELD(&centroid, f64 *, 8);
+    M2C_FIELD(&mgr, f64 *, 0x20) = M2C_FIELD(&centroid, f64 *, 0);
+    M2C_FIELD(&mgr, f64 *, 0x28) = M2C_FIELD(&centroid, f64 *, 8);
+    matrix = (f32 *) seg->unk30;
+    if (matrix != NULL) {
+        x = centroid.unk0;
+        y = centroid.unk4;
+        z = centroid.unk8;
+        tx = M2C_FIELD(matrix, f32 *, 0x30) + ((z * M2C_FIELD(matrix, f32 *, 0x20)) + ((x * M2C_FIELD(matrix, f32 *, 0)) + (y * M2C_FIELD(matrix, f32 *, 0x10))));
+        ty = M2C_FIELD(matrix, f32 *, 0x34) + ((z * M2C_FIELD(matrix, f32 *, 0x24)) + ((x * M2C_FIELD(matrix, f32 *, 4)) + (y * M2C_FIELD(matrix, f32 *, 0x14))));
+        tz = M2C_FIELD(matrix, f32 *, 0x38) + ((z * M2C_FIELD(matrix, f32 *, 0x28)) + ((x * M2C_FIELD(matrix, f32 *, 8)) + (y * M2C_FIELD(matrix, f32 *, 0x18))));
+        M2C_FIELD(&mgr, f32 *, 0x10) = tx;
+        M2C_FIELD(&mgr, f32 *, 0x14) = ty;
+        M2C_FIELD(&mgr, f32 *, 0x18) = tz;
+    }
+    dy = M2C_FIELD(&mgr, f32 *, 0x14) - arg0.unk4;
+    if (dy < 500.0f && dy > -500.0f) {
+        SetupRegion(seg);
+        return 1;
+    }
     return 0;
 }
-#endif
 
 void EnemyRegion::SetupRegion(KDLocalPathSegment *arg0) {
     MKVector3 sp8;
@@ -586,66 +581,61 @@ void EnemyRegion::SetupRegion(KDLocalPathSegment *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDPathManager' to 'long'
 void EnemyRegion::SetupRegion(const MKVector3 &arg0, float arg1) {
-    KDPathIterator sp68;
-    KDPathManager sp38;
-    MKVector3 sp28;
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    f32 temp_f3_1059;
-    f32 temp_f6_1065;
-    f32 temp_f7_1071;
-    f64 temp_f1_1051;
-    s32 temp_cr0_eq_1033;
-    void *temp_r3_1050;
+    KDPathIterator iter;
+    KDPathManager mgr;
+    MKVector3 centroid;
+    KDLocalPathSegment *seg;
+    f32 *matrix;
+    f32 x;
+    f32 y;
+    f32 z;
+    f32 tx;
+    f32 ty;
+    f32 tz;
+    f32 dy;
 
-    sp68.Init();
-    sp38.NearestPointLocalSegment(1, arg0);
-    sp68 = (s32) sp38;
-    sp68.unk4 = sp38.unk4;
-    sp68.unk8 = M2C_BITWISE(u8, sp38.unk8);
+    iter.Init();
+    mgr.NearestPointLocalSegment(1, arg0);
+    iter.unk0 = (void *) mgr.unk0;
+    iter.unk4 = mgr.unk4;
+    iter.unk8 = M2C_FIELD(&mgr, u8 *, 8);
     this->unk31 = 0;
     this->unk30 = 0;
     this->unk0 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk8 = M2C_FIELD(&arg0, f64 *, 8);
     this->unk2C = arg1;
-    temp_cr0_eq_1033 = (KDLocalPathSegment *) sp68 == NULL;
-    if ((temp_cr0_eq_1033 == 0) && (temp_cr0_eq_1033 == 0)) {
-        ((BoundingRegion *) &this->unk10)->Init((KDLocalPathSegment *) sp68);
-        if (((BoundingRegion *) &this->unk10)->IsPointWithin(arg0) != 0) {
-            this->unk30 = PolygonWindingOrderIsClockWise((KDPathSegment *) (KDLocalPathSegment *) sp68);
-            sp28 = PolygonCentroid((KDPathSegment *) (KDLocalPathSegment *) sp68);
-            temp_r3_1050 = ((KDLocalPathSegment *) sp68)->unk30;
-            temp_f1_1051 = M2C_BITWISE(f64, sp28);
-            sp38.unk20 = temp_f1_1051;
-            sp38.unk28 = (f64) sp28.unk8;
-            sp38.unk10 = temp_f1_1051;
-            sp38.unk18 = (f64) sp28.unk8;
-            if (temp_r3_1050 != NULL) {
-                temp_f3_1059 = M2C_BITWISE(f32, sp38.unk14);
-                temp_f6_1065 = M2C_BITWISE(f32, sp38.unk10);
-                temp_f7_1071 = M2C_BITWISE(f32, sp38.unk18);
-                sp8 = M2C_FIELD(temp_r3_1050, f32 *, 0x30) + ((temp_f7_1071 * M2C_FIELD(temp_r3_1050, f32 *, 0x20)) + ((temp_f6_1065 * M2C_FIELD(temp_r3_1050, f32 *, 0)) + (temp_f3_1059 * M2C_FIELD(temp_r3_1050, f32 *, 0x10))));
-                spC = M2C_FIELD(temp_r3_1050, f32 *, 0x34) + ((temp_f7_1071 * M2C_FIELD(temp_r3_1050, f32 *, 0x24)) + ((temp_f6_1065 * M2C_FIELD(temp_r3_1050, f32 *, 4)) + (temp_f3_1059 * M2C_FIELD(temp_r3_1050, f32 *, 0x14))));
-                sp10 = M2C_FIELD(temp_r3_1050, f32 *, 0x38) + ((temp_f7_1071 * M2C_FIELD(temp_r3_1050, f32 *, 0x28)) + ((temp_f6_1065 * M2C_FIELD(temp_r3_1050, f32 *, 8)) + (temp_f3_1059 * M2C_FIELD(temp_r3_1050, f32 *, 0x18))));
-                sp18 = (f64) sp8;
-                sp20 = (f64) sp10;
-                sp38.unk10 = (f64) sp8;
-                sp38.unk18 = (f64) sp10;
+    seg = (KDLocalPathSegment *) iter.unk0;
+    if (seg != NULL) {
+        ((BoundingRegion *) &this->unk10)->Init(seg);
+        if ((u8) ((BoundingRegion *) &this->unk10)->IsPointWithin(arg0) != 0) {
+            this->unk30 = PolygonWindingOrderIsClockWise((KDPathSegment *) seg);
+            centroid = PolygonCentroid((KDPathSegment *) seg);
+            M2C_FIELD(&mgr, f64 *, 0x10) = M2C_FIELD(&centroid, f64 *, 0);
+            M2C_FIELD(&mgr, f64 *, 0x18) = M2C_FIELD(&centroid, f64 *, 8);
+            M2C_FIELD(&mgr, f64 *, 0x20) = M2C_FIELD(&centroid, f64 *, 0);
+            M2C_FIELD(&mgr, f64 *, 0x28) = M2C_FIELD(&centroid, f64 *, 8);
+            matrix = (f32 *) seg->unk30;
+            if (matrix != NULL) {
+                x = centroid.unk0;
+                y = centroid.unk4;
+                z = centroid.unk8;
+                tx = M2C_FIELD(matrix, f32 *, 0x30) + ((z * M2C_FIELD(matrix, f32 *, 0x20)) + ((x * M2C_FIELD(matrix, f32 *, 0)) + (y * M2C_FIELD(matrix, f32 *, 0x10))));
+                ty = M2C_FIELD(matrix, f32 *, 0x34) + ((z * M2C_FIELD(matrix, f32 *, 0x24)) + ((x * M2C_FIELD(matrix, f32 *, 4)) + (y * M2C_FIELD(matrix, f32 *, 0x14))));
+                tz = M2C_FIELD(matrix, f32 *, 0x38) + ((z * M2C_FIELD(matrix, f32 *, 0x28)) + ((x * M2C_FIELD(matrix, f32 *, 8)) + (y * M2C_FIELD(matrix, f32 *, 0x18))));
+                M2C_FIELD(&mgr, f32 *, 0x10) = tx;
+                M2C_FIELD(&mgr, f32 *, 0x14) = ty;
+                M2C_FIELD(&mgr, f32 *, 0x18) = tz;
             }
-            if ((f32) fabs(M2C_BITWISE(f32, sp38.unk14) - arg0.unk4) < 500.0f) {
+            dy = M2C_FIELD(&mgr, f32 *, 0x14) - arg0.unk4;
+            if (dy < 500.0f && dy > -500.0f) {
                 this->unk31 = 1;
-                this->unk0 = M2C_BITWISE(f64, sp38.unk20);
-                this->unk8 = M2C_BITWISE(f64, sp38.unk28);
+                this->unk0 = M2C_FIELD(&mgr, f64 *, 0x20);
+                this->unk8 = M2C_FIELD(&mgr, f64 *, 0x28);
             }
         }
     }
 }
-#endif
 
 void EnemyRegion::Deinit() {
     this->unk31 = 0;

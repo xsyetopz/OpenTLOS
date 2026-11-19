@@ -37,7 +37,6 @@
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
-#include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -212,22 +211,21 @@ void Elevator::GoingUpState() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'PlatformAttachDetachMsg'
 void Elevator::Message(MKMessage *arg0) {
-    s32 spC;
-    s32 sp8;
+    struct {
+        s32 unk0;
+        s32 unk4;
+    } sp8;
     s32 temp_r0_333;
     u32 *temp_r3_421;
     void ***temp_r3_362;
     void **temp_r3_379;
     void **temp_r5_376;
-    void *temp_r3_360;
-    void *temp_r3_419;
     void *temp_r4_384;
     void *var_r26_388;
 
     temp_r0_333 = arg0->unk0;
-    switch (temp_r0_333) {                          /* irregular */
+    switch (temp_r0_333) {
     case -3:
         if (this->unk140 >= this->unk128) {
             this->unk154 = 1;
@@ -236,37 +234,33 @@ void Elevator::Message(MKMessage *arg0) {
         this->unk14C = this->unkB8;
         break;
     case 35:
-        temp_r3_360 = checked_cast<PlatformAttachDetachMsg *, MKMessage>(arg0);
-        temp_r3_362 = M2C_FIELD(temp_r3_360, void ****, 8);
+        temp_r3_362 = M2C_FIELD(arg0, void ****, 8);
         if ((temp_r3_362 != NULL) && ((void **) *temp_r3_362 != NULL)) {
-            temp_r5_376 = *M2C_FIELD(temp_r3_360, void ****, 8);
-            if (temp_r5_376 != M2C_FIELD(*gb, u32 (**)(void **), 0xC)(gb)) {
+            temp_r5_376 = *M2C_FIELD(arg0, void ****, 8);
+            if ((u32) temp_r5_376 != M2C_FIELD(*gb, u32 (**)(void **), 0xC)(gb)) {
                 temp_r3_379 = this->unk120;
                 if (temp_r3_379 != NULL) {
                     temp_r4_384 = M2C_FIELD(*temp_r3_379, void **, 0x28);
-                    if (temp_r4_384 != (u32) M2C_FIELD(*temp_r5_376, u32 *, 0x28)) {
+                    if ((u32) temp_r4_384 != (u32) M2C_FIELD(*temp_r5_376, u32 *, 0x28)) {
                         var_r26_388 = temp_r4_384;
-loop_16:
-                        if (var_r26_388 != NULL) {
-                            spC = 0;
-                            sp8 = 0x24;
-                            M2C_FIELD(M2C_FIELD(var_r26_388, void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(var_r26_388, &sp8);
+                        while (var_r26_388 != NULL) {
+                            sp8.unk0 = 0x24;
+                            sp8.unk4 = 0;
+                            M2C_FIELD(M2C_FIELD(var_r26_388, void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(var_r26_388, (s32 *) &sp8);
                             var_r26_388 = M2C_FIELD(var_r26_388, void **, 0x38);
-                            goto loop_16;
                         }
                         this->unk124 = 0;
                     }
                 }
                 this->unk124 += 1;
-                this->unk120 = *M2C_FIELD(temp_r3_360, void ****, 8);
-                M2C_FIELD(temp_r3_360, s8 *, 0xC) = 1;
+                this->unk120 = *M2C_FIELD(arg0, void ****, 8);
+                M2C_FIELD(arg0, s8 *, 0xC) = 1;
             }
         }
         break;
     case 36:
-        temp_r3_419 = checked_cast<PlatformAttachDetachMsg *, MKMessage>(arg0);
-        temp_r3_421 = M2C_FIELD(temp_r3_419, u32 **, 8);
-        if ((temp_r3_421 != NULL) && ((u32) *temp_r3_421 != 0U) && ((u32) *M2C_FIELD(temp_r3_419, u32 **, 8) != M2C_FIELD(*gb, u32 (**)(void **), 0xC)(gb))) {
+        temp_r3_421 = M2C_FIELD(arg0, u32 **, 8);
+        if ((temp_r3_421 != NULL) && ((u32) *temp_r3_421 != 0U) && ((u32) *M2C_FIELD(arg0, u32 **, 8) != M2C_FIELD(*gb, u32 (**)(void **), 0xC)(gb))) {
             this->unk124 -= 1;
             if ((s32) this->unk124 <= 0) {
                 this->unk120 = NULL;
@@ -276,7 +270,6 @@ loop_16:
     }
     GameProp::Message(arg0);
 }
-#endif
 
 void Elevator::PropUpdate() {
     s32 temp_r0_469;

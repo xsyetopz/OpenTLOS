@@ -338,7 +338,7 @@ void DropBox::Message(MKMessage *arg0) {
     f64 sp28;
     f32 sp20;
     f64 sp18;
-    f64 sp8;
+    MKVector3 sp8;
     s32 temp_r0_521;
     void **temp_r3_553;
     void *temp_r3_557;
@@ -388,9 +388,8 @@ void DropBox::Message(MKMessage *arg0) {
             sp78 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             spA8 = 0;
             if (this != NULL) {
-                ((MKProp *) &sp8)->GetPos();
-                sp88 = sp8;
-                sp90 = sp10;
+                sp8 = GetPos();
+                *(MKVector3 *) &sp88 = sp8;
             } else {
                 sp88 = 0.0f;
                 (*(f32 *) ((u8 *) &sp84 + 0x8)) = 0.0f;
@@ -509,7 +508,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *DropBox::Update() {
     s8 sp271;
     s8 sp270;
@@ -572,7 +571,7 @@ void *DropBox::Update() {
     f32 sp70;
     f32 sp68;
     f64 sp60;
-    f64 sp50;
+    MKVector3 sp50;
     f32 sp48;
     f64 sp40;
     f32 sp38;
@@ -778,9 +777,8 @@ void *DropBox::Update() {
                 sp240 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp270 = 0;
                 if (this != NULL) {
-                    ((MKProp *) &sp50)->GetPos();
-                    sp250 = sp50;
-                    sp258 = sp58;
+                    sp50 = GetPos();
+                    *(MKVector3 *) &sp250 = sp50;
                 } else {
                     sp250 = 0.0f;
                     (*(f32 *) ((u8 *) &sp24C + 0x8)) = 0.0f;

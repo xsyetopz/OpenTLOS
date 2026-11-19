@@ -225,10 +225,10 @@ void BoulderRamp::BoulderSinkingUpdate() {
     } else {
         var_f1_88 = -120.00001f;
     }
-    sp18.operator*(var_f1_88);
-    sp28.operator*(gUpdateTimeDelta);
-    sp38.operator*(44.444447f);
-    sp48.operator*(gUpdateTimeDelta);
+    sp18 = ((MKVector3 *) &Matrix::identity)->operator*(var_f1_88);
+    sp28 = sp18.operator*(gUpdateTimeDelta);
+    sp38 = ((MKVector3 *) (&MKVector3::up))->operator*(44.444447f);
+    sp48 = sp38.operator*(gUpdateTimeDelta);
     temp_f0_110 = sp48 + M2C_BITWISE(f64, sp28);
     sp8 = temp_f0_110;
     sp58 = temp_f0_110;
@@ -281,9 +281,9 @@ void BoulderRamp::ReceivingBoulderUpdate() {
     this->unkE8 = var_f3_190;
     temp_r31_199 = this->unkF0;
     if (temp_r31_199 != NULL) {
-        sp20.operator*(temp_r31_199->unk274);
-        sp30.operator*(temp_r31_199->unk280);
-        sp40.operator*(0.5f);
+        sp20 = ((MKVector3 *) (&MKVector3::up))->operator*(temp_r31_199->unk274);
+        sp30 = sp20.operator*(temp_r31_199->unk280);
+        sp40 = sp30.operator*(0.5f);
         sp8 = 0.0f;
         sp50.GetMeasure(this->unkE8, &this->unkF4, KDSpline_PositionMixer);
         sp10 = M2C_BITWISE(f64, sp50) + M2C_BITWISE(f64, sp40);

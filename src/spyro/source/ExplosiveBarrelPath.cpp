@@ -90,8 +90,10 @@ void ExplosiveBarrelPath::EmitDust(const MKVector3 &arg0, const MKVector3 &arg1,
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'ExplosiveBarrelPath::BarrelData *' to 'Matrix *'
-void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg1) {
+#if 0 // DRAFT: identifier 'ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *)' redeclared was declared as: 'MKVector3 (ExplosiveBarrelPath::BarrelData *)'
+void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg2) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp78;
     f64 sp70;
     f64 sp68;
@@ -109,13 +111,13 @@ void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg1)
     f64 temp_f0_169;
     f64 temp_f0_181;
 
-    temp_f30_142 = (f32) fmod(M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 4), 1.0);
+    temp_f30_142 = (f32) fmod(arg2->unk4, 1.0);
     spC = 0.0f;
-    sp50.GetMeasure(temp_f30_142, arg1 + 0x50, KDSpline_PositionMixer);
+    sp50.GetMeasure(temp_f30_142, &this->unk50, KDSpline_PositionMixer);
     sp70 = M2C_BITWISE(f64, sp50);
     sp78 = (f64) sp50.unk8;
     sp8 = 0.0f;
-    ((KDUniformSpline *) &sp40)->GetMeasure(temp_f30_142, arg1 + 0x64, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp40)->GetMeasure(temp_f30_142, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
     sp50.unk10 = sp40;
     sp68 = sp48;
     temp_f0_169 = sp70 + M2C_BITWISE(f64, sp50.unk10);
@@ -125,9 +127,10 @@ void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg1)
     sp38 = (f64) sp18;
     temp_f0_181 = temp_f0_169 * 5.222099017e-315;
     sp20 = temp_f0_181;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_181;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_181;
     sp28 = (f32) sp38 * 0.5f;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp28;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp28;
+    return result;
 }
 #endif
 
@@ -700,7 +703,7 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
     spE0 = temp_f0_1061;
     sp28 = spD8 + spC0.unk8;
     spE8 = (f64) sp28;
-    spF0.operator*(0.5f);
+    spF0 = ((MKVector3 *) &spE0)->operator*(0.5f);
     sp50 = spF0 - this->unk200;
     var_f4_1085 = 0.0f;
     this->unk210 = sp50;
@@ -763,27 +766,31 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
 }
 #endif
 
+#if 0 // DRAFT: identifier 'ExplosiveBarrelPath::GetStandDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void ExplosiveBarrelPath::GetStandDir() {
-    ExplosiveBarrelPath *temp_r31_1223;
-
-    temp_r31_1223 = M2C_ERROR(/* Read from unset register $r4 */);
-    if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), u8 *, 0x1B1) == 0) {
-        temp_r31_1223->CalcStandPosAndDir();
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    if ((u8) this->unk1B1 == 0) {
+        CalcStandPosAndDir();
     }
-    M2C_FIELD(this, f64 *, 0) = (f64) temp_r31_1223->unk210;
-    M2C_FIELD(this, f64 *, 8) = (f64) temp_r31_1223->unk218;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unk210;
+    M2C_FIELD(sret, f64 *, 8) = (f64) this->unk218;
+    return result;
 }
+#endif
 
+#if 0 // DRAFT: identifier 'ExplosiveBarrelPath::GetStandPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void ExplosiveBarrelPath::GetStandPos() {
-    ExplosiveBarrelPath *temp_r31_1249;
-
-    temp_r31_1249 = M2C_ERROR(/* Read from unset register $r4 */);
-    if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), u8 *, 0x1B1) == 0) {
-        temp_r31_1249->CalcStandPosAndDir();
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    if ((u8) this->unk1B1 == 0) {
+        CalcStandPosAndDir();
     }
-    M2C_FIELD(this, f64 *, 0) = (f64) temp_r31_1249->unk200;
-    M2C_FIELD(this, f64 *, 8) = (f64) temp_r31_1249->unk208;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unk200;
+    M2C_FIELD(sret, f64 *, 8) = (f64) this->unk208;
+    return result;
 }
+#endif
 
 #if 0 // DRAFT: ')' expected
 void ExplosiveBarrelPath::Message(MKMessage *arg0) {
@@ -826,7 +833,13 @@ block_13:
 
 #if 0 // DRAFT: ')' expected
 void *ExplosiveBarrelPath::Update() {
-    ExplosiveBarrelPath spC0;
+    MKCollisionResult spF0;
+    f64 spE8;
+    f32 spE4;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    MKVector3 spC0;
     f64 spB8;
     f64 spB0;
     f64 spA8;
@@ -853,12 +866,14 @@ void *ExplosiveBarrelPath::Update() {
     f64 sp10;
     s32 sp8;
     ExplosiveBarrel *temp_r28_1381;
+    ExplosiveBarrelPath::BarrelData *temp_r25_1424;
     MKProp *temp_r4_1524;
     f32 temp_f1_1572;
     f32 temp_f29_1562;
     f32 temp_f3_1543;
     f64 temp_f0_1482;
     f64 temp_f0_1633;
+    f64 temp_f1_1467;
     s32 temp_r3_1361;
     s32 temp_r5_1654;
     s32 var_ctr_1433;
@@ -901,11 +916,12 @@ void *ExplosiveBarrelPath::Update() {
             }
         } else {
             temp_r28_1381->Enable();
-            UpdateBarrelModel(((u8 *) temp_r30_1380) + 0x78);
+            temp_r25_1424 = (ExplosiveBarrelPath::BarrelData *) (((u8 *) temp_r30_1380) + 0x78);
+            UpdateBarrelModel(temp_r25_1424);
             var_r3_1431 = 0;
             var_ctr_1433 = 0xF;
             do {
-                temp_r5_1437 = &spC0.unk30 + var_r3_1431;
+                temp_r5_1437 = &spF0 + var_r3_1431;
                 M2C_FIELD(temp_r5_1437, f32 *, 0) = 0.0f;
                 var_r3_1431 += 0x58;
                 M2C_FIELD(temp_r5_1437, f32 *, 4) = 0.0f;
@@ -931,24 +947,25 @@ void *ExplosiveBarrelPath::Update() {
                 var_ctr_1433 -= 1;
             } while (var_ctr_1433 != 0);
             var_r25_1465 = 0;
-            spC0.GetBarrelMiddle((ExplosiveBarrelPath::BarrelData *) this);
-            spC0.unk20 = M2C_BITWISE(f64, spC0);
-            spC0.unk28 = M2C_BITWISE(f64, spC0.unk8);
+            spC0 = GetBarrelMiddle(temp_r25_1424);
+            temp_f1_1467 = M2C_BITWISE(f64, spC0);
+            spE0 = temp_f1_1467;
+            spE8 = (f64) spC0.unk8;
             sp50 = 0.0f;
             sp54 = M2C_FIELD(temp_r30_1380, f32 *, 0x88);
             sp58 = 0.0f;
             spA0 = (f64) sp50;
             spA8 = (f64) sp58;
-            temp_f0_1482 = (f64) spC0.unk20 + spA0;
+            temp_f0_1482 = temp_f1_1467 + spA0;
             sp40 = temp_f0_1482;
             spB0 = temp_f0_1482;
-            sp48 = M2C_BITWISE(f32, spC0.unk28) + (f32) spA8;
+            sp48 = (f32) spE8 + (f32) spA8;
             spB8 = (f64) sp48;
-            if (MKCollision_SphereCollide(*((MKVector3 *) &spB0), 100.0f, (MKCollisionResult *) &spC0.unk30, 0xF, (MKCollisionMode) 7, 0) != 0) {
+            if (MKCollision_SphereCollide(*((MKVector3 *) &spB0), 100.0f, &spF0, 0xF, (MKCollisionMode) 7, 0) != 0) {
                 var_r3_1502 = 0;
                 var_ctr_1503 = 0xF;
 loop_18:
-                temp_r4_1506 = &spC0.unk30 + var_r3_1502;
+                temp_r4_1506 = &spF0 + var_r3_1502;
                 if (((u8) M2C_FIELD(temp_r4_1506, u8 *, 0x50) != 0) && (temp_r4_1510 = M2C_FIELD(temp_r4_1506, void **, 0x48), ((temp_r4_1510 == NULL) == 0)) && (var_r0_1513 = M2C_FIELD(temp_r4_1510, u32 *, 8), ((var_r0_1513 == 0U) == 0))) {
 
                 } else {
@@ -987,7 +1004,7 @@ loop_18:
                 }
                 if ((M2C_FIELD(temp_r30_1380, f32 *, 0x88) < 20.0f) && ((u8) M2C_FIELD(temp_r30_1380, u8 *, 0x91) != 0)) {
                     M2C_FIELD(temp_r30_1380, u8 *, 0x91) = 0U;
-                    Tools_GetFloor(*((MKVector3 *) &spC0.unk20), 300.0f, &spC0.unk24);
+                    Tools_GetFloor(*((MKVector3 *) &spE0), 300.0f, &spE4);
                     var_r25_1606 = 0;
                     do {
                         sp28 = 1.0f;
@@ -1001,13 +1018,13 @@ loop_18:
                         sp80 = (f64) sp30;
                         sp88 = (f64) sp38;
                         sp90 = KDRand_Vector(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70));
-                        *(MKVector3 *) &spC0.unk10 = sp90;
-                        temp_f0_1633 = M2C_BITWISE(f64, spC0.unk10) * 5.5769738e-315;
+                        *(MKVector3 *) &spD0 = sp90;
+                        temp_f0_1633 = spD0 * 5.5769738e-315;
                         sp10 = temp_f0_1633;
                         sp60 = temp_f0_1633;
-                        sp18 = M2C_BITWISE(f32, spC0.unk18) * 200.0f;
+                        sp18 = (f32) spD8 * 200.0f;
                         sp68 = (f64) sp18;
-                        EmitDust(*((MKVector3 *) &spC0.unk20), *((MKVector3 *) &sp60), MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
+                        EmitDust(*((MKVector3 *) &spE0), *((MKVector3 *) &sp60), MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
                         var_r25_1606 += 1;
                     } while (var_r25_1606 < 0xF);
                 }
@@ -1121,22 +1138,20 @@ s32 ExplosiveBarrelPath::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 ExplosiveBarrelPath::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    MKIniLine sp58;
+    MKVector3 sp58;
     MKVector3 sp48;
     MKVector3 sp38;
-    MKIniLine sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     MKVector3 sp8;
     MKIniLine *var_r30_1936;
     MKIniLine *var_r30_2010;
-    f64 temp_f0_1951;
-    f64 temp_f0_2025;
     f64 temp_f1_1950;
     f64 temp_f1_2024;
     s32 temp_r3_1937;
@@ -1153,14 +1168,13 @@ s32 ExplosiveBarrelPath::LoadLine(MKIniLine *arg0) {
             ((KDUniformSpline *) &this->unk50)->Init(temp_r3_1937, 0U);
 loop_9:
             if (var_r30_1936 != NULL) {
-                sp58.GetVector3((s32) var_r30_1936);
+                sp58 = var_r30_1936->GetVector3(0);
                 temp_f1_1950 = M2C_BITWISE(f64, sp58);
-                temp_f0_1951 = M2C_BITWISE(f64, sp58.unk8);
                 sp78 = temp_f1_1950;
-                sp80 = temp_f0_1951;
+                sp80 = (f64) sp58.unk8;
                 if ((u8) this->unk1B0 != 0) {
                     this->unk190 = temp_f1_1950;
-                    this->unk198 = temp_f0_1951;
+                    this->unk198 = (f64) sp58.unk8;
                     this->unk1A0 = sp78;
                     this->unk1A8 = sp80;
                     this->unk1B0 = 0;
@@ -1184,14 +1198,13 @@ loop_9:
             ((KDUniformSpline *) &this->unk50.unk14)->Init(temp_r3_2011, 0U);
 loop_18:
             if (var_r30_2010 != NULL) {
-                sp28.GetVector3((s32) var_r30_2010);
+                sp28 = var_r30_2010->GetVector3(0);
                 temp_f1_2024 = M2C_BITWISE(f64, sp28);
-                temp_f0_2025 = M2C_BITWISE(f64, sp28.unk8);
                 sp68 = temp_f1_2024;
-                sp70 = temp_f0_2025;
+                sp70 = (f64) sp28.unk8;
                 if ((u8) this->unk1B0 != 0) {
                     this->unk190 = temp_f1_2024;
-                    this->unk198 = temp_f0_2025;
+                    this->unk198 = (f64) sp28.unk8;
                     this->unk1A0 = sp68;
                     this->unk1A8 = sp70;
                     this->unk1B0 = 0;

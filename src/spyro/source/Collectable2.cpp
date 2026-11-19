@@ -260,7 +260,7 @@ void Collectable2::Draw() {
     MKModel_Draw(this->unk4, NULL);
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *Collectable2::Update() {
     MKVector3 sp260;
     MKVector3 sp250;
@@ -471,7 +471,7 @@ void *Collectable2::Update() {
         sp198 = (f32) sp198 * var_f4_713;
         (*(f32 *) ((u8 *) &sp190 + 0xc)) *= var_f4_713;
         sp1A0 = (f32) sp1A0 * var_f4_713;
-        spB8.operator*(50.0f);
+        spB8 = ((MKVector3 *) &sp198)->operator*(50.0f);
         temp_f0_733 = sp1A8 + M2C_BITWISE(f64, spB8);
         sp18 = temp_f0_733;
         temp_r3_738 = this->unk74;

@@ -206,7 +206,6 @@ void Enemy::UpdateModel() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void Enemy::SnapToDirOfHitSource() {
     f64 sp28;                                       /* compiler-managed */
     f64 sp20;                                       /* compiler-managed */
@@ -289,7 +288,6 @@ void Enemy::SnapToDirOfHitSource() {
     M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(this, f64 *, 0xE8);
     this->unk6B5 |= 0x40;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk2A4'
 void Enemy::ChillFx_Update() {
@@ -381,7 +379,7 @@ void Enemy::ChillFx_Update() {
                 M2C_FIELD(temp_r3_549, f32 *, 0x1C) = 1.0f;
                 sp28 = MKVector(0.0f, MKRand_Float((int *) &gViewSeed, -50.0f, 25.0f), 0.0f);
                 sp38 = KDRand_UnitVectorXZ();
-                sp48.operator*(150.0f);
+                sp48 = sp38.operator*(150.0f);
                 sp8 = sp48 + M2C_BITWISE(f64, sp28);
                 M2C_FIELD(temp_r28_554, f64 *, 0) = sp8;
                 sp10 = sp48.unk8 + sp28.unk8;
@@ -702,11 +700,11 @@ void Enemy::SetWorldMatrix(Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp78'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Enemy::UpdateLighting() {
     f64 sp88;                                       /* compiler-managed */
     f64 sp80;                                       /* compiler-managed */
-    f64 sp70;
+    MKVector3 sp70;
     f64 sp68;
     f64 sp60;
     f64 sp58;
@@ -743,11 +741,11 @@ void Enemy::UpdateLighting() {
         sp60 = temp_f0_1303;
         sp28 = M2C_FIELD(temp_r4_1295, f32 *, 8) + (f32) sp58;
         sp68 = (f64) sp28;
-        ((LightManager *) &sp70)->CalculateLightPosForShadow(*((MKVector3 *) gb.unk80));
+        sp70 = ((LightManager *) gb.unk80)->CalculateLightPosForShadow(*((MKVector3 *) &sp60));
         temp_r3_1320 = ((u8 *) this->unk8) + 0x30;
-        sp10 = M2C_FIELD(temp_r3_1320, f64 *, 0) - sp70;
+        sp10 = M2C_FIELD(temp_r3_1320, f64 *, 0) - M2C_BITWISE(f64, sp70);
         sp80 = sp10;
-        sp18 = M2C_FIELD(temp_r3_1320, f32 *, 8) - sp78;
+        sp18 = M2C_FIELD(temp_r3_1320, f32 *, 8) - sp70.unk8;
         sp88 = (f64) sp18;
         var_f4_1341 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + ((*(f32 *) ((u8 *) &sp70 + 0x14)) * (*(f32 *) ((u8 *) &sp70 + 0x14))));
         if (var_f4_1341 > 0.000001f) {
@@ -1308,7 +1306,7 @@ loop_56:
                         temp_r5_2350 = this->unk8;
                         sp1A0 = M2C_FIELD(temp_r5_2350, f64 *, 0x30);
                         sp1A8 = M2C_FIELD(temp_r5_2350, f64 *, 0x38);
-                        spD0.operator*(0.5f);
+                        spD0 = ((MKVector3 *) &sp1D0)->operator*(0.5f);
                         MKRand_Float(0.0f, 1.0f);
                         MKRand_Float(0.25f, 1.0f);
                         MKRand_Float(0.0f, 1.0f);
@@ -1318,7 +1316,7 @@ loop_56:
                         spF0 = temp_f0_2374;
                         sp28 = spE0.unk8 * spD0.unk8;
                         spF8 = (f64) sp28;
-                        sp100.operator*(0.5f);
+                        sp100 = ((MKVector3 *) &sp1E0)->operator*(0.5f);
                         temp_f0_2391 = sp100 + spF0;
                         sp30 = temp_f0_2391;
                         sp110 = temp_f0_2391;
@@ -1413,7 +1411,7 @@ void Enemy::DoBlockFx(unsigned int arg0, const MKVector3 &arg1) {
         sp48 = MKVector(1.0f, 1.0f, 1.0f);
         sp58 = MKVector(-1.0f, 0.0f, -1.0f);
         sp68 = KDRand_Vector(sp58, sp48);
-        sp78.operator*(0.5f);
+        sp78 = sp68.operator*(0.5f);
         sp8 = sp78 + M2C_FIELD(this, f64 *, 0xC0);
         spA8 = sp8;
         sp10 = sp78.unk8 + this->unkC8;
@@ -1908,7 +1906,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spB4'
+#if 0 // DRAFT: undefined identifier 'fabs'
 void Enemy::CheckForHazards() {
     MKCollisionResult sp130;
     f64 sp128;
@@ -1925,7 +1923,7 @@ void Enemy::CheckForHazards() {
     f64 spD0;
     f64 spC8;
     f64 spC0;
-    M2C_UNK spB0;
+    MKVector3 spB0;
     f64 spA8;
     f64 spA0;
     f64 sp98;
@@ -2036,8 +2034,8 @@ void Enemy::CheckForHazards() {
             if ((var_r31_3618 == 0) && (temp_r4_3765 = this->unkB09, ((((temp_r4_3765 >> 2U) & 1) == 0) == 0))) {
                 if ((s32) this->unk110.unk16C > 0) {
                     this->unkB09 = temp_r4_3765 & ~4;
-                    ((EnemyRegion *) &spB0)->GetRegionPos();
-                    if ((f32) fabs(spB4 - this->unk588.unk4) > 100.0f) {
+                    spB0 = this->unk800.GetRegionPos();
+                    if ((f32) fabs(spB0.unk4 - this->unk588.unk4) > 100.0f) {
                         SetupEnemyRegion(this->unk588, 1000.0f);
                     }
                 } else if ((this->unkAB0 - this->unk588.unk4) > 500.0f) {
@@ -3094,7 +3092,7 @@ s32 Enemy::CheckMeleeHit(EnemyAttack *arg0, int arg1) {
     f64 sp58;
     f64 sp50;
     f64 sp48;
-    f64 sp38;
+    MKVector3 sp38;
     f32 sp30;
     f64 sp28;
     f32 sp20;
@@ -3213,7 +3211,7 @@ loop_68:
                 (*(f32 *) ((u8 *) &sp68 + 0x14)) *= var_f5_6162;
                 sp80 = (f32) sp80 * var_f5_6162;
             }
-            temp_r3_6260 = this->unkA30->unk0 + var_r21_6111;
+            temp_r3_6260 = (void *) (this->unkA30->unk0 + var_r21_6111);
             M2C_FIELD(temp_r3_6260, MKVector3 *, 0) = sp68;
             if (var_r29_6091 != 0) {
                 var_r25_6264 = 0;
@@ -3240,11 +3238,11 @@ loop_40:
                         }
                         if (var_r3_6285 == NULL) {
                             if (var_r26_6123 != 0) {
-                                ((MKProp *) &sp38)->GetPos();
+                                sp38 = var_r17_6276->GetPos();
                                 sp18 = sp38 - M2C_FIELD(temp_r18_6269, f64 *, 0);
                                 var_f5_6315 = 0.0f;
                                 sp78 = sp18;
-                                sp20 = sp40 - M2C_FIELD(temp_r18_6269, f32 *, 8);
+                                sp20 = sp38.unk8 - M2C_FIELD(temp_r18_6269, f32 *, 8);
                                 sp48 = sp18;
                                 sp80 = (f64) sp20;
                                 sp50 = (f64) sp20;
@@ -3394,7 +3392,7 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 u8 Enemy::HurtHero(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int arg3) {
     s8 sp89;
     u8 sp88;
@@ -3412,25 +3410,25 @@ u8 Enemy::HurtHero(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int a
     f64 sp50;
     f64 sp48;
     f64 sp40;
-    MKProp *sp3C;
-    MKProp *sp38;
+    s32 sp3C;
+    s32 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
     f64 sp18;
-    f64 sp8;
+    MKVector3 sp8;
     f32 temp_f1_6598;
     f32 temp_f2_6582;
     u32 *temp_r3_6656;
 
     temp_f2_6582 = arg1->unk34;
     sp18 = M2C_FIELD(&arg2, f64 *, 0) * (f64) temp_f2_6582;
-    sp3C = NULL;
+    sp3C = 0;
     sp28 = sp18;
     sp20 = arg2.unk8 * temp_f2_6582;
     sp30 = (f64) sp20;
     temp_f1_6598 = this->unkA38->GetEnemyAttackSetting((EnemySettingType) 5, arg1);
-    sp38 = (MKProp *)7;
+    sp38 = 7;
     sp60 = arg1->unk48;
     sp64 = this;
     sp40 = sp28;
@@ -3445,9 +3443,8 @@ u8 Enemy::HurtHero(MKProp *arg0, EnemyAttack *arg1, const MKVector3 &arg2, int a
     sp58 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp88 = 0;
     if (this != NULL) {
-        ((MKProp *) &sp8)->GetPos();
-        sp68 = sp8;
-        sp70 = sp10;
+        sp8 = GetPos();
+        *(MKVector3 *) &sp68 = sp8;
     } else {
         sp68 = 0.0f;
         (*(f32 *) ((u8 *) &sp64 + 0x8)) = 0.0f;
@@ -3527,11 +3524,11 @@ void Enemy::SetupExclusionRegion() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spC'
+#if 0 // DRAFT: undefined identifier 'fabs'
 void Enemy::TryChangeEnemyRegion() {
-    M2C_UNK sp28;
-    AITargetData sp18;
-    M2C_UNK sp8;
+    MKVector3 sp28;
+    MKVector3 sp18;
+    MKVector3 sp8;
     u8 var_r31_6795;
     u8 var_r31_6812;
 
@@ -3542,27 +3539,27 @@ void Enemy::TryChangeEnemyRegion() {
             var_r31_6795 = 1;
         }
         if (var_r31_6795 != 0) {
-            ((AITargetData *) &sp28)->GetPos();
+            sp28 = this->unk870.GetPos();
             var_r31_6812 = 0;
-            if (this->unk800.IsPointWithin(*((MKVector3 *) &sp28)) != 0) {
-                ((EnemyRegion *) &sp8)->GetRegionPos();
-                if ((f32) fabs(spC - sp2C) <= 500.0f) {
+            if (this->unk800.IsPointWithin(sp28) != 0) {
+                sp8 = this->unk800.GetRegionPos();
+                if ((f32) fabs(sp8.unk4 - sp28.unk4) <= 500.0f) {
                     var_r31_6812 = 1;
                 }
             }
             this->unk870.SetInsideRegion(var_r31_6812);
-            sp18.GetPos();
-            this->unk870.SetInsideExclusionRegion(this->unk838.IsPointWithin(*((MKVector3 *) &sp18)));
+            sp18 = this->unk870.GetPos();
+            this->unk870.SetInsideExclusionRegion(this->unk838.IsPointWithin(sp18));
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spC'
+#if 0 // DRAFT: undefined identifier 'fabs'
 void Enemy::SetupEnemyRegion(const MKVector3 &arg0, float arg1) {
-    M2C_UNK sp28;
-    AITargetData sp18;
-    M2C_UNK sp8;
+    MKVector3 sp28;
+    MKVector3 sp18;
+    MKVector3 sp8;
     u8 var_r31_6863;
     u8 var_r31_6880;
 
@@ -3573,22 +3570,22 @@ void Enemy::SetupEnemyRegion(const MKVector3 &arg0, float arg1) {
         var_r31_6863 = 1;
     }
     if (var_r31_6863 != 0) {
-        ((AITargetData *) &sp28)->GetPos();
+        sp28 = this->unk870.GetPos();
         var_r31_6880 = 0;
-        if (this->unk800.IsPointWithin(*((MKVector3 *) &sp28)) != 0) {
-            ((EnemyRegion *) &sp8)->GetRegionPos();
-            if ((f32) fabs(spC - sp2C) <= 500.0f) {
+        if (this->unk800.IsPointWithin(sp28) != 0) {
+            sp8 = this->unk800.GetRegionPos();
+            if ((f32) fabs(sp8.unk4 - sp28.unk4) <= 500.0f) {
                 var_r31_6880 = 1;
             }
         }
         this->unk870.SetInsideRegion(var_r31_6880);
-        sp18.GetPos();
-        this->unk870.SetInsideExclusionRegion(this->unk838.IsPointWithin(*((MKVector3 *) &sp18)));
+        sp18 = this->unk870.GetPos();
+        this->unk870.SetInsideExclusionRegion(this->unk838.IsPointWithin(sp18));
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void Enemy::UpdateFlyingRotations(Matrix *arg0, MKVector3 *arg1, MKVector3 arg2, float arg3, float arg4, float arg5) {
     f32 sp2EC;
     f32 sp2E8;
@@ -3958,12 +3955,12 @@ void Enemy::Enable() {
     Character::Enable();
 }
 
-#if 0 // DRAFT: undefined identifier 'spC'
+#if 0 // DRAFT: undefined identifier 'fabs'
 s32 Enemy::SelectTarget() {
-    M2C_UNK sp38;
-    M2C_UNK sp28;
-    AITargetData sp18;
-    M2C_UNK sp8;
+    MKVector3 sp38;
+    MKVector3 sp28;
+    MKVector3 sp18;
+    MKVector3 sp8;
     u8 var_r29_7730;
     u8 var_r30_7666;
     u8 var_r30_7693;
@@ -3985,22 +3982,22 @@ s32 Enemy::SelectTarget() {
         this->unk870.Update(this->unk588);
         var_r30_7709 = 1;
         if (!(this->unk870.GetDist() < this->unkA38->unk130)) {
-            ((AITargetData *) &sp38)->GetDir();
-            if (IsInsideFOV(*((MKVector3 *) &sp38)) == 0) {
+            sp38 = this->unk870.GetDir();
+            if (IsInsideFOV(sp38) == 0) {
                 var_r30_7709 = 0;
             }
         }
-        ((AITargetData *) &sp28)->GetPos();
+        sp28 = this->unk870.GetPos();
         var_r29_7730 = 0;
-        if (this->unk800.IsPointWithin(*((MKVector3 *) &sp28)) != 0) {
-            ((EnemyRegion *) &sp8)->GetRegionPos();
-            if ((f32) fabs(spC - sp2C) <= 500.0f) {
+        if (this->unk800.IsPointWithin(sp28) != 0) {
+            sp8 = this->unk800.GetRegionPos();
+            if ((f32) fabs(sp8.unk4 - sp28.unk4) <= 500.0f) {
                 var_r29_7730 = 1;
             }
         }
         this->unk870.SetInsideRegion(var_r29_7730);
-        sp18.GetPos();
-        this->unk870.SetInsideExclusionRegion(this->unk838.IsPointWithin(*((MKVector3 *) &sp18)));
+        sp18 = this->unk870.GetPos();
+        this->unk870.SetInsideExclusionRegion(this->unk838.IsPointWithin(sp18));
         this->unk870.SetInsideFOV(var_r30_7709);
     }
     return 0;
@@ -4495,7 +4492,7 @@ s32 Enemy::CanMoveAwayLeft() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp14'
+#if 0 // DRAFT: undefined identifier 'fabs'
 u8 Enemy::CanMoveAwayForward() {
     f64 spD8;
     f64 spD0;
@@ -4521,7 +4518,7 @@ u8 Enemy::CanMoveAwayForward() {
     f64 sp30;
     f32 sp28;
     f64 sp20;
-    M2C_UNK sp10;
+    MKVector3 sp10;
     u8 spC;
     void *sp8;
     f32 temp_f3_8592;
@@ -4577,8 +4574,8 @@ u8 Enemy::CanMoveAwayForward() {
     var_r30_8668 = 0;
     var_r29_8670 = 0;
     if (this->unk800.IsPointWithin(*((MKVector3 *) &spC0)) != 0) {
-        ((EnemyRegion *) &sp10)->GetRegionPos();
-        if ((f32) fabs(sp14 - (*(f32 *) ((u8 *) &spC0 + 0x4))) <= 500.0f) {
+        sp10 = this->unk800.GetRegionPos();
+        if ((f32) fabs(sp10.unk4 - (*(f32 *) ((u8 *) &spC0 + 0x4))) <= 500.0f) {
             var_r29_8670 = 1;
         }
     }
@@ -4595,7 +4592,7 @@ u8 Enemy::CanMoveAwayForward() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp88'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 u8 Enemy::CanMoveAwayBack() {
     f64 spE8;
     f64 spE0;
@@ -4609,7 +4606,7 @@ u8 Enemy::CanMoveAwayBack() {
     f64 spA0;
     f64 sp98;
     f64 sp90;
-    f32 sp80;
+    MKVector3 sp80;
     f32 sp78;
     f64 sp70;
     f32 sp68;
@@ -4622,7 +4619,7 @@ u8 Enemy::CanMoveAwayBack() {
     f64 sp30;
     f32 sp28;
     f64 sp20;
-    M2C_UNK sp10;
+    MKVector3 sp10;
     u8 spC;
     void *sp8;
     f32 temp_f3_8755;
@@ -4677,8 +4674,8 @@ u8 Enemy::CanMoveAwayBack() {
         var_r30_8814 = 1;
     }
     if (var_r30_8814 != 0) {
-        ((AITargetData *) &sp80)->GetDir();
-        if (((this->unkC8 * sp88) + ((this->unkC0 * sp80) + (this->unkC4 * sp84))) > 0.0f) {
+        sp80 = this->unk870.GetDir();
+        if (((this->unkC8 * sp80.unk8) + ((this->unkC0 * M2C_BITWISE(f32, sp80)) + (this->unkC4 * sp80.unk4))) > 0.0f) {
             var_r29_8812 = 1;
         }
     }
@@ -4694,8 +4691,8 @@ u8 Enemy::CanMoveAwayBack() {
     if (var_r29_8812 != 0) {
         var_r27_8865 = 0;
         if (this->unk800.IsPointWithin(*((MKVector3 *) &spD0)) != 0) {
-            ((EnemyRegion *) &sp10)->GetRegionPos();
-            if ((f32) fabs(sp14 - (*(f32 *) ((u8 *) &spD0 + 0x4))) <= 500.0f) {
+            sp10 = this->unk800.GetRegionPos();
+            if ((f32) fabs(sp10.unk4 - (*(f32 *) ((u8 *) &spD0 + 0x4))) <= 500.0f) {
                 var_r27_8865 = 1;
             }
         }
@@ -4902,7 +4899,7 @@ u8 Enemy::CanIdle() {
     return var_r4_9581;
 }
 
-#if 0 // DRAFT: undefined identifier 'spC'
+#if 0 // DRAFT: undefined identifier 'fabs'
 u8 Enemy::CanStrafeRight(AITargetData *arg0) {
     f64 sp50;
     f64 sp48;
@@ -4913,7 +4910,7 @@ u8 Enemy::CanStrafeRight(AITargetData *arg0) {
     f32 sp28;
     f32 sp20;
     f64 sp18;
-    M2C_UNK sp8;
+    MKVector3 sp8;
     f32 temp_f3_9621;
     f32 temp_f6_9627;
     f32 temp_f7_9633;
@@ -4944,8 +4941,8 @@ u8 Enemy::CanStrafeRight(AITargetData *arg0) {
         sp20 = this->unk588.unk8 + (f32) sp40;
         sp50 = (f64) sp20;
         if (this->unk800.IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
-            ((EnemyRegion *) &sp8)->GetRegionPos();
-            if ((f32) fabs(spC - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
+            sp8 = this->unk800.GetRegionPos();
+            if ((f32) fabs(sp8.unk4 - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
                 var_r29_9657 = 1;
             }
         }
@@ -4961,7 +4958,7 @@ u8 Enemy::CanStrafeRight(AITargetData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spC'
+#if 0 // DRAFT: undefined identifier 'fabs'
 u8 Enemy::CanStrafeLeft(AITargetData *arg0) {
     f64 sp50;
     f64 sp48;
@@ -4972,7 +4969,7 @@ u8 Enemy::CanStrafeLeft(AITargetData *arg0) {
     f32 sp28;
     f32 sp20;
     f64 sp18;
-    M2C_UNK sp8;
+    MKVector3 sp8;
     f32 temp_f3_9734;
     f32 temp_f6_9740;
     f32 temp_f7_9746;
@@ -5003,8 +5000,8 @@ u8 Enemy::CanStrafeLeft(AITargetData *arg0) {
         sp20 = this->unk588.unk8 + (f32) sp40;
         sp50 = (f64) sp20;
         if (this->unk800.IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
-            ((EnemyRegion *) &sp8)->GetRegionPos();
-            if ((f32) fabs(spC - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
+            sp8 = this->unk800.GetRegionPos();
+            if ((f32) fabs(sp8.unk4 - (*(f32 *) ((u8 *) &sp48 + 0x4))) <= 500.0f) {
                 var_r29_9770 = 1;
             }
         }
@@ -5022,11 +5019,17 @@ u8 Enemy::CanStrafeLeft(AITargetData *arg0) {
 
 #if 0 // DRAFT: undefined identifier 'fabs'
 s32 Enemy::IsObscuringCamera(int *arg0) {
-    AITargetData sp60;
+    f64 sp98;                                       /* compiler-managed */
+    f64 sp90;                                       /* compiler-managed */
+    f64 sp88;                                       /* compiler-managed */
+    f64 sp80;                                       /* compiler-managed */
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
     f64 sp58;
     f64 sp50;
-    f32 sp40;
-    f64 sp30;
+    MKVector3 sp40;
+    MKVector3 sp30;
     f32 sp28;
     f64 sp20;
     f32 sp18;
@@ -5055,19 +5058,19 @@ s32 Enemy::IsObscuringCamera(int *arg0) {
             var_r29_9856 = 1;
         }
         if ((var_r29_9856 != 0) && (this->unk870.GetDistSq() < AVOID_CAMERA_TARGET_DIST_SQ)) {
-            sp60.GetPos();
+            sp60 = this->unk870.GetPos();
             temp_r3_9877 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
             temp_f1_9878 = M2C_FIELD(temp_r3_9877, f64 *, 0x30);
-            sp60.unk10 = temp_f1_9878;
-            sp60.unk18 = M2C_FIELD(temp_r3_9877, f64 *, 0x38);
+            sp70 = temp_f1_9878;
+            sp78 = M2C_FIELD(temp_r3_9877, f64 *, 0x38);
             temp_f0_9884 = temp_f1_9878 - M2C_BITWISE(f64, sp60);
             sp20 = temp_f0_9884;
             var_f4_9890 = 0.0f;
-            sp60.unk30 = temp_f0_9884;
-            sp28 = (f32) sp60.unk18 - sp60.unk8;
-            sp60.unk34 = 0.0f;
-            sp60.unk38 = (f64) sp28;
-            var_f5_9903 = (sp60.unk38 * sp60.unk38) + ((sp60.unk30 * sp60.unk30) + (0.0f * 0.0f));
+            sp90 = temp_f0_9884;
+            sp28 = (f32) sp78 - sp60.unk8;
+            (*(f32 *) ((u8 *) &sp78 + 0x1c)) = 0.0f;
+            sp98 = (f64) sp28;
+            var_f5_9903 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (0.0f * 0.0f));
             if (var_f5_9903 > 0.000001f) {
                 if (var_f5_9903 > 0.0f) {
                     temp_f1_9908 = __frsqrte(var_f5_9903);
@@ -5104,26 +5107,25 @@ s32 Enemy::IsObscuringCamera(int *arg0) {
                 }
                 var_f4_9890 = 1.0f / var_f5_9903;
             }
-            sp60.unk30 *= var_f4_9890;
-            sp60.unk34 *= var_f4_9890;
-            sp60.unk38 *= var_f4_9890;
-            ((AITargetData *) &sp40)->GetDir();
-            sp10 = -sp40;
-            sp14 = -sp44;
-            sp18 = -sp48;
+            sp90 = (f32) sp90 * var_f4_9890;
+            (*(f32 *) ((u8 *) &sp78 + 0x1c)) *= var_f4_9890;
+            sp98 = (f32) sp98 * var_f4_9890;
+            sp40 = this->unk870.GetDir();
+            sp10 = -M2C_BITWISE(f32, sp40);
+            sp14 = -sp40.unk4;
+            sp18 = -sp40.unk8;
             sp50 = (f64) sp10;
             sp58 = (f64) sp18;
-            if (((sp60.unk38 * (f32) sp58) + ((sp60.unk30 * (f32) sp50) + (sp60.unk34 * (*(f32 *) ((u8 *) &sp50 + 0x4))))) >= AVOID_CAMERA_TARGET_COS_ANGLE) {
-                ((AITargetData *) &sp30)->GetDir();
-                sp60.unk20 = sp30;
-                sp60.unk28 = sp38;
-                temp_f5_10019 = -(f32) sp60.unk20;
-                (*(f32 *) ((u8 *) &sp60 + 0x24)) = 0.0f;
+            if (((sp98 * (f32) sp58) + ((sp90 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp78 + 0x1c)) * (*(f32 *) ((u8 *) &sp50 + 0x4))))) >= AVOID_CAMERA_TARGET_COS_ANGLE) {
+                sp30 = this->unk870.GetDir();
+                *(MKVector3 *) &sp80 = sp30;
+                temp_f5_10019 = -(f32) sp80;
+                (*(f32 *) ((u8 *) &sp78 + 0xc)) = 0.0f;
                 temp_f2_10023 = (f32) temp_f5_10019;
-                temp_f0_10024 = (sp60.unk30 * (f32) sp60.unk28) + (sp60.unk34 * 0.0f);
-                sp60.unk20 = (f32) sp60.unk28;
-                sp60.unk28 = (f32) temp_f5_10019;
-                temp_f30_10027 = (sp60.unk38 * temp_f2_10023) + temp_f0_10024;
+                temp_f0_10024 = (sp90 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp78 + 0x1c)) * 0.0f);
+                sp80 = (f32) sp88;
+                sp88 = (f32) temp_f5_10019;
+                temp_f30_10027 = (sp98 * temp_f2_10023) + temp_f0_10024;
                 if ((temp_f30_10027 >= 0.0f) && (CanStrafeLeft(0) != 0)) {
                     *arg0 = -1;
                     goto block_34;
@@ -5445,7 +5447,7 @@ block_31:
 }
 #endif
 
-#if 0 // DRAFT: function call 'GetCollisionHeight(Enemy *, float)' does not match 'Enemy::GetCollisionHeight()'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 s32 Enemy::IsTargetBehindWall(AITargetData *arg0) {
     MKCollisionResult sp1C0;
     f64 sp1B8;
@@ -5458,8 +5460,16 @@ s32 Enemy::IsTargetBehindWall(AITargetData *arg0) {
     f64 sp180;
     f64 sp178;
     f64 sp170;
-    AITargetData sp120;
-    f64 sp110;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    MKVector3 sp120;
+    MKVector3 sp110;
     f64 sp108;
     f64 sp100;
     f64 spF8;
@@ -5469,7 +5479,7 @@ s32 Enemy::IsTargetBehindWall(AITargetData *arg0) {
     f64 spD0;
     f64 spC8;
     f64 spC0;
-    f64 spB0;
+    MKVector3 spB0;
     f32 spA8;
     f32 spA4;
     f32 spA0;
@@ -5523,42 +5533,42 @@ s32 Enemy::IsTargetBehindWall(AITargetData *arg0) {
         }
         if (var_r28_10967 != 0) {
             temp_f28_10984 = GetCollisionRadius();
-            sp120.GetDir();
-            temp_f0_10990 = sp120.unk0 * temp_f28_10984;
+            sp120 = arg0->GetDir();
+            temp_f0_10990 = sp120 * temp_f28_10984;
             sp80 = temp_f0_10990;
             temp_f1_10995 = sp120.unk8 * (f32) temp_f28_10984;
-            sp120.unk10 = temp_f0_10990;
+            sp130 = temp_f0_10990;
             sp88 = temp_f1_10995;
-            sp120.unk18 = (f64) sp88;
+            sp138 = (f64) sp88;
             temp_f1_11003 = GetCollisionHeight(temp_f1_10995);
             temp_r3_11005 = this->unk8;
             spA0 = 0.0f;
             spA4 = temp_f1_11003;
             spA8 = 0.0f;
-            sp120.unk20 = (f64) spA0;
-            sp120.unk30 = M2C_FIELD(temp_r3_11005, f64 *, 0x30);
-            sp120.unk28 = (f64) spA8;
-            sp120.unk38 = M2C_FIELD(temp_r3_11005, f64 *, 0x38);
-            temp_f0_11019 = (f64) sp120.unk30 + sp120.unk20;
+            sp140 = (f64) spA0;
+            sp150 = M2C_FIELD(temp_r3_11005, f64 *, 0x30);
+            sp148 = (f64) spA8;
+            sp158 = M2C_FIELD(temp_r3_11005, f64 *, 0x38);
+            temp_f0_11019 = sp150 + sp140;
             sp90 = temp_f0_11019;
-            sp120.unk40 = temp_f0_11019;
-            sp98 = sp120.unk38 + (f32) sp120.unk28;
-            sp120.unk40.unk8 = (f64) sp98;
-            temp_f0_11031 = M2C_BITWISE(f64, sp120.unk40) + temp_f0_10990;
+            sp160 = temp_f0_11019;
+            sp98 = (f32) sp158 + (f32) sp148;
+            sp168 = (f64) sp98;
+            temp_f0_11031 = sp160 + temp_f0_10990;
             sp70 = temp_f0_11031;
             sp1B0 = temp_f0_11031;
-            sp78 = M2C_BITWISE(f32, sp120.unk40.unk8) + (f32) sp120.unk18;
+            sp78 = (f32) sp168 + (f32) sp138;
             sp1B8 = (f64) sp78;
             sp64 = M2C_FIELD(arg0->unk40.Get()->__vptr, f32 (**)(), 0x3C)();
             sp60 = 0.0f;
             sp68 = 0.0f;
             sp100 = (f64) sp60;
             sp108 = (f64) sp68;
-            ((AITargetData *) &sp110)->GetPos();
+            sp110 = arg0->GetPos();
             temp_f0_11061 = sp110 + sp100;
             sp50 = temp_f0_11061;
             sp1A0 = temp_f0_11061;
-            sp58 = sp118 + (f32) sp108;
+            sp58 = sp110.unk8 + (f32) sp108;
             sp1A8 = (f64) sp58;
             sp40 = sp1A0 - sp1B0;
             sp190 = sp40;
@@ -5611,12 +5621,11 @@ s32 Enemy::IsTargetBehindWall(AITargetData *arg0) {
             sp198 = (f32) sp198 * var_f4_11158;
 loop_32:
             if (var_r27_11165 > temp_r29_11179) {
-                ((AITargetData *) &spB0)->GetPos();
-                M2C_FIELD(this, f64 *, 0x720) = spB0;
-                M2C_FIELD(this, f64 *, 0x728) = spB8;
+                spB0 = arg0->GetPos();
+                M2C_FIELD(this, MKVector3 *, 0x720) = spB0;
                 goto block_34;
             }
-            spE0.operator*(500.0f * (f32) (var_r27_11165 - 1));
+            spE0 = ((MKVector3 *) &sp190)->operator*(500.0f * (f32) (var_r27_11165 - 1));
             sp30 = sp1B0 + M2C_BITWISE(f64, spE0);
             spF0 = sp30;
             sp38 = (f32) sp1B8 + spE0.unk8;
@@ -6082,16 +6091,16 @@ void Enemy::SetAnim(MKAnim *arg0, float arg1, float arg2, float arg3, unsigned i
 s32 Enemy::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     sp18 = MKVector(0.0f, 0.5f * GetCollisionHeight(), 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -6103,7 +6112,7 @@ s32 Enemy::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 s32 Enemy::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
@@ -6114,10 +6123,10 @@ s32 Enemy::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
         MKModel_CalculateNodeWorldPosition(this->unk4, (s32) temp_r4_12034, arg1);
     } else {
         sp18 = MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
-        ((MKProp *) &sp28)->GetPos();
+        sp28 = GetPos();
         sp8 = sp28 + M2C_BITWISE(f64, sp18);
         M2C_FIELD(arg1, f64 *, 0) = sp8;
-        sp10 = sp30 + sp18.unk8;
+        sp10 = sp28.unk8 + sp18.unk8;
         sp38 = sp8;
         sp40 = (f64) sp10;
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;

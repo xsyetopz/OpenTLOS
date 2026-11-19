@@ -73,9 +73,14 @@ void EarthBossGoal_MoveToTarget::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal type
 u8 EarthBossGoal_MoveToTarget::Update() {
-    AITargetData sp50;
+    s8 sp78;
+    f64 sp70;
+    f64 sp68;
+    s32 sp64;
+    s32 sp60;
+    MKVector3 sp50;
     f64 sp48;
     f64 sp40;
     MKVector3 sp30;
@@ -169,26 +174,25 @@ u8 EarthBossGoal_MoveToTarget::Update() {
         var_r30_136 = 1;
     }
     if (var_r30_136 != 0) {
-        sp50.GetDir();
+        sp50 = this->unkC->unk870.GetDir();
         temp_r4_158 = this->unkC;
-        M2C_FIELD(temp_r4_158, f64 *, 0xE0) = M2C_BITWISE(f64, sp50);
-        M2C_FIELD(temp_r4_158, f64 *, 0xE8) = (f64) sp50.unk8;
+        M2C_FIELD(temp_r4_158, MKVector3 *, 0xE0) = sp50;
         temp_r4_158->unk6B5 |= 0x40;
     }
     if ((((MKAnimScript *) this->unkC->unk630)->CheckEvent(9) != 0) || (((MKAnimScript *) this->unkC->unk630)->CheckEvent(0xA) != 0)) {
         temp_f31_199 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unkC->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
-        (*(s32 *) ((u8 *) &sp50 + 0x14)) = 0;
+        sp64 = 0;
         sp20 = MKVector(0.05f, 0.8f, 0.05f);
-        sp30.operator*(500.0f);
+        sp30 = sp20.operator*(500.0f);
         sp10 = sp30 * (f64) temp_f31_199;
-        sp50.unk10 = 0x417;
+        sp60 = 0x417;
         sp18 = sp30.unk8 * temp_f31_199;
-        sp50.unk18 = sp10;
-        sp50.unk20 = (f64) sp18;
-        sp50.unk28 = 1;
+        sp68 = sp10;
+        sp70 = (f64) sp18;
+        sp78 = 1;
         sp40 = sp10;
         sp48 = (f64) sp18;
-        M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, f64 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp50.unk10, sp10);
+        M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp60, sp10);
     }
     temp_r3_237 = this->unkC;
     var_r30_238 = 0;
@@ -554,7 +558,7 @@ u8 EarthBossGoal_MeleeAttack3::Update() {
         temp_f31_967 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unkC->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
         sp4C = 0;
         sp18 = MKVector(0.05f, 0.8f, 0.05f);
-        sp28.operator*(500.0f);
+        sp28 = sp18.operator*(500.0f);
         sp8 = sp28 * (f64) temp_f31_967;
         sp48 = 0x417;
         sp10 = sp28.unk8 * temp_f31_967;
@@ -745,7 +749,7 @@ u8 EarthBossGoal_MeleeAttack2::Update() {
         temp_f31_1352 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unkC->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
         sp4C = 0;
         sp18 = MKVector(0.05f, 0.8f, 0.05f);
-        sp28.operator*(500.0f);
+        sp28 = sp18.operator*(500.0f);
         sp8 = sp28 * (f64) temp_f31_1352;
         sp48 = 0x417;
         sp10 = sp28.unk8 * temp_f31_1352;
@@ -946,7 +950,7 @@ u8 EarthBossGoal_MeleeAttack1::Update() {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EarthBossGoal_MeleeAttack1::Activate() {
-    M2C_UNK sp8;
+    MKVector3 sp8;
     AnimSequence *temp_r4_1769;
     AttackSweepData *temp_r3_1792;
     AttackerManager *var_r3_1817;
@@ -998,8 +1002,8 @@ loop_2:
     this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     this->unk10 = 0.0f;
     this->unk14 = 0;
-    ((AITargetData *) &sp8)->GetPos();
-    ((EarthBossArm *) (M2C_FIELD(this->unkC, EarthBossArm **, 0xCC0)))->Aim(*((MKVector3 *) &sp8));
+    sp8 = this->unkC->unk870.GetPos();
+    ((EarthBossArm *) (M2C_FIELD(this->unkC, EarthBossArm **, 0xCC0)))->Aim(sp8);
 }
 #endif
 
@@ -1371,7 +1375,7 @@ u8 EarthBossGoal_AttackPhase1::Update() {
 }
 
 u8 EarthBossGoal_AttackPhase1::SelectAttack() {
-    AITargetData sp8;
+    MKVector3 sp8;
     Enemy *temp_r3_2709;
     f32 temp_f0_2778;
     f32 temp_f1_2760;
@@ -1409,8 +1413,8 @@ u8 EarthBossGoal_AttackPhase1::SelectAttack() {
         return 0U;
     }
     temp_f28_2734 = NormaliseAngle(KDMath_GetYaw(*((MKVector3 *) &this->unkC->unkC0)));
-    sp8.GetDir();
-    temp_f29_2742 = NormaliseAngle(KDMath_GetYaw(*((MKVector3 *) &sp8)));
+    sp8 = this->unkC->unk870.GetDir();
+    temp_f29_2742 = NormaliseAngle(KDMath_GetYaw(sp8));
     var_r25_2745 = *this->unkC->unkA38->unk228;
 loop_20:
     if (var_r25_2745 != NULL) {

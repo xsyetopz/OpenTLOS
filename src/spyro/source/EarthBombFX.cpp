@@ -197,6 +197,7 @@ void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
 }
 #endif
 
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match 'KDSound_Stop(int *)'
 void EarthBombFX::Deinit() {
     ManagedLight *temp_r4_261;
 
@@ -205,9 +206,10 @@ void EarthBombFX::Deinit() {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_261, 0U);
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->FreeManagedLight(this->unk100);
     }
-    KDSound_Stop((int *) &this->unk180);
+    KDSound_Stop((s32 *) (this + 0x180));
     GameProp::Deinit();
 }
+#endif
 
 void EarthBombFX::Draw() {
     EarthBombFXDescriptor *desc;
@@ -716,11 +718,11 @@ loop_18:
 #endif
 
 void EarthBombFX::Message(MKMessage *arg0) {
-    ((KDSoundPlayer *) &this->unk180)->Message(arg0);
+    ((KDSoundPlayer *) (this + 0x180))->Message(arg0);
     GameProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *EarthBombFX::Update() {
     u8 sp388;
     s32 sp384;
@@ -898,7 +900,7 @@ void *EarthBombFX::Update() {
 
     temp_r31_1166 = checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = 1;
-    ((KDSoundFader *) &this->unk180)->Update(GS_SpyroEarthAttack5LP, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) (this + 0x180))->Update(GS_SpyroEarthAttack5LP, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     if ((u8) this->unkE0 != 0) {
         var_f6_1185 = 0.5f * (0.85f * gUpdateTimeDelta);
         if (var_f6_1185 < 1.0f) {
@@ -944,7 +946,7 @@ void *EarthBombFX::Update() {
         sp330 = temp_f0_1270;
         sp318 = temp_f2_1269;
         sp320 = temp_f0_1270;
-        sp248.operator*(gUpdateTimeDelta);
+        sp248 = ((MKVector3 *) &this->unkD0)->operator*(gUpdateTimeDelta);
         spA8 = sp328 + M2C_BITWISE(f64, sp248);
         sp258 = spA8;
         temp_f30_1288 = gUpdateTimeDelta;
@@ -1229,7 +1231,7 @@ void EarthBombFX::Init() {
     this->unk108.unkC = 1.0f;
     this->unk118 = NULL;
     this->unk11C = 1000.0f;
-    ((KDSoundFader *) &this->unk180)->Init(0.25f, 0.25f);
+    ((KDSoundFader *) (this + 0x180))->Init(0.25f, 0.25f);
 }
 
 void EarthBombFXDescriptor::Deinit() {

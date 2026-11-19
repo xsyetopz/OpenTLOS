@@ -32,30 +32,27 @@ void BobProperty::UpdateDynamicBone(MKDynamicBone *arg0, void *arg1) {
     }
 }
 
-#if 0 // DRAFT: pointer/array required
 void BobProperty::Command(int arg0) {
-    switch (arg0) {                                 /* irregular */
+    switch (arg0) {
     case 1:
-        *(*KDProperty::pInstanceMem + (this->unk8 + 0x14)) = 1;
+        *(*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 0x14)) = 1;
         return;
     case 2:
-        *(*KDProperty::pInstanceMem + (this->unk8 + 0x14)) = 0;
+        *(*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 0x14)) = 0;
         return;
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match 'stricmp(signed char *, long *)'
+extern "C" s32 stricmp(const char *, const char *);
 s32 BobProperty::ResolveCommand(const char *arg0) const {
-    s32 temp_r3_105;
-
     if (stricmp(arg0, "Activate") == 0) {
         return 1;
     }
-    temp_r3_105 = stricmp(arg0, "Deactivate") - 1;
-    return 2 & ((temp_r3_105 - temp_r3_105) - !M2C_CARRY);
+    if (stricmp(arg0, "Deactivate") == 0) {
+        return 2;
+    }
+    return 0;
 }
-#endif
 
 void BobProperty::Update() {
     f64 sp40;
@@ -111,7 +108,7 @@ void BobProperty::Update() {
 
 #if 0 // DRAFT: ')' expected
 void BobProperty::ResolveInstance() {
-    f64 sp8;
+    MKVector3 sp8;
     u16 temp_r30_252;
     void *temp_r30_270;
     void *temp_r3_235;
@@ -127,10 +124,9 @@ void BobProperty::ResolveInstance() {
     }
     this->unk34 = MKModel_GetSubObjectIndex(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), (SubObjectType) 0, this->unk10);
     temp_r30_252 = Tools_GetMatchingNodeIndex(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), this->unk10 + 2);
-    ((Animation *) &sp8)->GetNodeOrigin(MKModel_GetAnimation(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4)));
+    sp8 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4))))->GetNodeOrigin((s32) temp_r30_252);
     temp_r3_264 = *KDProperty::pInstanceMem + this->unk8;
-    M2C_FIELD(temp_r3_264, f64 *, 0) = sp8;
-    M2C_FIELD(temp_r3_264, f64 *, 8) = sp10;
+    M2C_FIELD(temp_r3_264, MKVector3 *, 0) = sp8;
     temp_r30_270 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(temp_r30_270, void **, 0x60) = MKDynamicBone_AddDynamicBone(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), (s32) temp_r30_252);
     temp_r5_277 = *KDProperty::pInstanceMem + this->unk8;
@@ -138,11 +134,9 @@ void BobProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to 'bool *'
 s32 BobProperty::LoadLineInstance(MKIniLine *arg0) {
-    arg0->LoadBool("Enabled", *KDProperty::pInstanceMem + (this->unk8 + 0x14), 0);
+    return arg0->LoadBool("Enabled", (bool *) (*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 0x14)), 0);
 }
-#endif
 
 void BobProperty::InitInstance() {
     MKIniLine *var_r31_329;
@@ -164,29 +158,25 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: ')' expected
 void BobProperty::Resolve(KDPropertySet *arg0) {
-    if (((u32) this->unk14 == 0) && ((s8 *) this->unk10 != NULL) && (stricmp"localToWorld" == 0)) {
-        this->unk14 = property_cast<KDMatrixProperty *, KDProperty *>(arg0->Find(this->unk10));
+    if (((u32) this->unk14 == 0) && (this->unk10 != NULL) && (stricmp((const char *) this->unk10, "localToWorld") == 0)) {
+        this->unk14 = (u32) property_cast<KDMatrixProperty *, KDProperty *>((KDProperty *) arg0->Find((const char *) this->unk10));
     }
     this->unk30 = 6.2831855f / this->unk30;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 BobProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_409;
 
-    if ((MKIniLine *) this->unk18 == NULL) {
+    if (this->unk18 == NULL) {
         this->unk18 = arg0;
     }
     var_r31_409 = 0;
-    if ((arg0->LoadString("subObject", &this->unk10, 0) != 0) || (arg0->LoadVector3("Range", (MKVector3 *) &this->unk20, 0) != 0) || (arg0->LoadFloat("Period", &this->unk30, 0) != 0)) {
+    if ((arg0->LoadString("subObject", (const char **) &this->unk10, 0) != 0) || (arg0->LoadVector3("Range", (MKVector3 *) &this->unk20, 0) != 0) || (arg0->LoadFloat("Period", &this->unk30, 0) != 0)) {
         var_r31_409 = 1;
     }
     return var_r31_409;
 }
-#endif
 
 BobProperty::BobProperty() {
     f64 sp20;

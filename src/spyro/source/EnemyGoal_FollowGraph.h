@@ -237,7 +237,7 @@ public:
     virtual void Activate(void);
     virtual u8 Update(void);
     virtual void Terminate(void);
-    void GetParabolaCentre(MKVector3, MKVector3, float, float);
+    MKVector3 GetParabolaCentre(MKVector3, MKVector3, float, float);
     f32 GetParabolaApexTimeFromP2(MKVector3, MKVector3, float, float);
     f32 GetParabolaApexTimeFromP1(MKVector3, MKVector3, float, float);
     f32 GetTotalTime(MKVector3, MKVector3, float, float);
@@ -318,8 +318,10 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: pointer/array required
-inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg1, float arg2, float arg3) {
+#if 0 // DRAFT: identifier 'EnemyGoal_GraphJump::GetParabolaCentre(MKVector3, MKVector3, float, float)' redeclared was declared as: 'MKVector3 (MKVector3, MKVector3, float, flo
+inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg2, MKVector3 arg3, float farg0, float farg1) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 spC0;
     f64 spB8;
     f64 spB0;                                       /* compiler-managed */
@@ -352,27 +354,25 @@ inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg
     f32 var_f2_9081;
     f64 temp_f0_9053;
     f64 temp_f4_9034;
-    void *temp_r31_9001;
 
-    temp_r31_9001 = M2C_ERROR(/* Read from unset register $r6 */);
-    sp88 = *M2C_ERROR(/* Read from unset register $r6 */);
-    sp90 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f64 *, 8);
-    sp98 = M2C_FIELD(arg1, f64 *, 0);
-    spA0 = M2C_FIELD(arg1, f64 *, 8);
-    temp_f29_9019 = ((EnemyGoal_GraphJump *) arg0)->GetParabolaApexTimeFromP1((MKVector3) &sp98, (MKVector3) &sp88, arg2, arg3);
-    sp68 = M2C_FIELD(temp_r31_9001, f64 *, 0);
-    sp70 = M2C_FIELD(temp_r31_9001, f64 *, 8);
-    sp78 = M2C_FIELD(arg1, f64 *, 0);
-    sp80 = M2C_FIELD(arg1, f64 *, 8);
-    temp_f1_9032 = ((EnemyGoal_GraphJump *) arg0)->GetParabolaApexTimeFromP2((MKVector3) &sp78, (MKVector3) &sp68, arg2, arg3);
-    temp_f4_9034 = *(f64 *) arg1;
-    sp18 = M2C_FIELD(temp_r31_9001, f64 *, 0) - temp_f4_9034;
+    sp88 = M2C_FIELD(arg3, f64 *, 0);
+    sp90 = M2C_FIELD(arg3, f64 *, 8);
+    sp98 = M2C_FIELD(arg2, f64 *, 0);
+    spA0 = M2C_FIELD(arg2, f64 *, 8);
+    temp_f29_9019 = GetParabolaApexTimeFromP1((MKVector3) &sp98, (MKVector3) &sp88, farg0, farg1);
+    sp68 = M2C_FIELD(arg3, f64 *, 0);
+    sp70 = M2C_FIELD(arg3, f64 *, 8);
+    sp78 = M2C_FIELD(arg2, f64 *, 0);
+    sp80 = M2C_FIELD(arg2, f64 *, 8);
+    temp_f1_9032 = GetParabolaApexTimeFromP2((MKVector3) &sp78, (MKVector3) &sp68, farg0, farg1);
+    temp_f4_9034 = *(f64 *) arg2;
+    sp18 = *(f64 *) arg3 - temp_f4_9034;
     temp_f3_9040 = temp_f29_9019 / (temp_f29_9019 + temp_f1_9032);
-    temp_f5_9041 = (f32) M2C_FIELD(arg1, f64 *, 8);
+    temp_f5_9041 = (f32) M2C_FIELD(arg2, f64 *, 8);
     spA8 = sp18;
     sp58 = sp18;
     (*(f32 *) ((u8 *) &spA8 + 0x4)) = 0.0f;
-    sp20 = (f32) M2C_FIELD(temp_r31_9001, f64 *, 8) - temp_f5_9041;
+    sp20 = (f32) M2C_FIELD(arg3, f64 *, 8) - temp_f5_9041;
     sp60 = (f64) sp20;
     spB0 = (f64) sp20;
     temp_f0_9053 = spA8 * (f64) temp_f3_9040;
@@ -380,24 +380,25 @@ inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg
     temp_f1_9057 = (f32) spB0 * temp_f3_9040;
     spB0 = temp_f1_9057;
     sp8 = temp_f4_9034 + temp_f0_9053;
-    sp38 = M2C_FIELD(arg1, f64 *, 0);
-    sp28 = M2C_FIELD(temp_r31_9001, f64 *, 0);
+    sp38 = M2C_FIELD(arg2, f64 *, 0);
+    sp28 = M2C_FIELD(arg3, f64 *, 0);
     sp10 = temp_f5_9041 + temp_f1_9057;
     sp48 = sp8;
     sp50 = (f64) sp10;
     spB8 = sp8;
     spC0 = (f64) sp10;
-    sp40 = M2C_FIELD(arg1, f64 *, 8);
-    sp30 = M2C_FIELD(temp_r31_9001, f64 *, 8);
+    sp40 = M2C_FIELD(arg2, f64 *, 8);
+    sp30 = M2C_FIELD(arg3, f64 *, 8);
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if ((*(f32 *) ((u8 *) &sp38 + 0x4)) == (*(f32 *) ((u8 *) &sp28 + 0x4))) {
-        var_f2_9081 = arg2;
+        var_f2_9081 = farg0;
     } else {
-        var_f2_9081 = arg2 + ((*(f32 *) ((u8 *) &sp28 + 0x4)) - (*(f32 *) ((u8 *) &sp38 + 0x4)));
+        var_f2_9081 = farg0 + ((*(f32 *) ((u8 *) &sp28 + 0x4)) - (*(f32 *) ((u8 *) &sp38 + 0x4)));
     }
-    (*(f32 *) ((u8 *) &spB8 + 0x4)) = M2C_FIELD(arg1, f32 *, 4) + var_f2_9081;
-    M2C_FIELD(this, f64 *, 0) = spB8;
-    M2C_FIELD(this, f64 *, 8) = spC0;
+    (*(f32 *) ((u8 *) &spB8 + 0x4)) = M2C_FIELD(arg2, f32 *, 4) + var_f2_9081;
+    M2C_FIELD(sret, f64 *, 0) = spB8;
+    M2C_FIELD(sret, f64 *, 8) = spC0;
+    return result;
 }
 #endif
 

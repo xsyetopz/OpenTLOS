@@ -35,15 +35,15 @@ public:
     virtual void * Update(void);
     virtual void Message(MKMessage *);
     void EmitDust(const MKVector3 &, const MKVector3 &, float);
-    void GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *);
+    MKVector3 GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *);
     void UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *);
     s32 GetNextInactiveBarrelID(void);
     void PushBarrel(int);
     void ExplodeBarrel(int);
     s32 SpawnBarrel(MKProp *);
     void CalcStandPosAndDir(void);
-    void GetStandDir(void);
-    void GetStandPos(void);
+    MKVector3 GetStandDir(void);
+    MKVector3 GetStandPos(void);
     /* 0x04c */ MKProp* unk4C;
     /* 0x050 */ Matrix unk50;
     /* 0x090 */ u8 pad90[0x100];

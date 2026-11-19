@@ -97,7 +97,7 @@ void BigBeetleHive::EmitGoopDrips() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void BigBeetleHive::Message(MKMessage *arg0) {
     f64 spC8;
     f64 spC0;
@@ -321,13 +321,11 @@ block_14:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void BigBeetleHive::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {
-    KDSound_Play3d(GS_OBBigHiveSmash1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
-    KDSound_Play3d(GS_OBBigHiveSmash2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
-    Shatterable::Shatter(arg0, arg1, arg2, arg3, 1U, 0U);
+    KDSound_Play3d(GS_OBBigHiveSmash1, (const MKVector3 *) ((u8 *) this->unk8 + 0x30), 0U, -1, 0.0f, false);
+    KDSound_Play3d(GS_OBBigHiveSmash2, (const MKVector3 *) ((u8 *) this->unk8 + 0x30), 0U, -1, 0.0f, false);
+    Shatterable::Shatter(arg0, arg1, arg2, arg3, true, false);
 }
-#endif
 
 void BigBeetleHive::UpdateAttachedNests() {
     Matrix sp10;
@@ -348,18 +346,19 @@ void BigBeetleHive::UpdateAttachedNests() {
     } while (var_r29_518 < 5);
 }
 
-#if 0 // DRAFT: ')' expected
 void *BigBeetleHive::Update() {
+    BigBeetleHiveDescriptor *desc;
+
     Shatterable::Update();
     UpdateAttachedNests();
-    if ((s32) this->unk180 == (s32) (M2C_FIELD(checked_cast<BigBeetleHiveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160) - 1)) {
+    desc = checked_cast<BigBeetleHiveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if ((s32) this->unk180 == (s32) (M2C_FIELD(desc, s32 *, 0x160) - 1)) {
         EmitGoopDrips();
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)' does not match 'Tools_GetMatchingRefPointIndex(MKModel *, const char *)'
 f32 BigBeetleHive::Resolve() {
+    BeetleNestSmall *nest;
     s32 var_r28_585;
     s32 var_r31_587;
     void *temp_r29_589;
@@ -368,51 +367,44 @@ f32 BigBeetleHive::Resolve() {
     var_r28_585 = 0;
     var_r31_587 = 0;
     do {
-        temp_r29_589 = this + var_r31_587;
+        temp_r29_589 = (u8 *) this + var_r31_587;
         if ((s32) M2C_FIELD(temp_r29_589, s32 *, 0x1B0) != -1) {
-            M2C_FIELD(temp_r29_589, s32 *, 0x1B4) = (s32) Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf("r_attach%d", var_r28_585));
-            M2C_FIELD(temp_r29_589, s32 *, 0x1AC) = (long) (checked_cast<BeetleNestSmall *, MKProp>(MKSceneManager::PropResolver_Resolve(M2C_FIELD(temp_r29_589, s32 *, 0x1B0))));
+            M2C_FIELD(temp_r29_589, s32 *, 0x1B4) = (s32) Tools_GetMatchingRefPointIndex(this->unk4, (const char *) Str_Printf("r_attach%d", var_r28_585));
+            nest = checked_cast<BeetleNestSmall *, MKProp>(MKSceneManager::PropResolver_Resolve(M2C_FIELD(temp_r29_589, s32 *, 0x1B0)));
+            M2C_FIELD(temp_r29_589, s32 *, 0x1AC) = (long) nest;
         }
         var_r28_585 += 1;
         var_r31_587 += 0xC;
     } while (var_r28_585 < 5);
 }
-#endif
 
 s32 BigBeetleHive::LoadDone() {
     Shatterable::LoadDone();
     this->unk1A8 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_spine1"));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 BigBeetleHive::LoadLine(MKIniLine *arg0) {
-    f32 var_f1_654;
     s32 temp_ret_654;
     s32 temp_ret_674;
     s32 var_r29_661;
     s32 var_r31_663;
 
     temp_ret_654 = Shatterable::LoadLine(arg0);
-    var_f1_654 = M2C_BITWISE(f32, temp_ret_654);
-    if (temp_ret_654 != 0) {
+    if ((u8) temp_ret_654 != 0) {
         return 1;
     }
     var_r29_661 = 0;
     var_r31_663 = 0;
-loop_3:
-    temp_ret_674 = (const char *) (arg0->LoadInt(Str_Printf("NestID%d", var_r29_661, var_f1_654), this + (var_r31_663 + 0x1B0), 0));
-    var_f1_654 = M2C_BITWISE(f32, temp_ret_674);
-    if (temp_ret_674 != 0) {
-        return 1;
-    }
-    var_r29_661 += 1;
-    var_r31_663 += 0xC;
-    if (var_r29_661 >= 5) {
-        return 0;
-    }
-    goto loop_3;
+    do {
+        temp_ret_674 = arg0->LoadInt((const char *) Str_Printf("NestID%d", var_r29_661), (int *) ((u8 *) this + (var_r31_663 + 0x1B0)), 0);
+        if ((u8) temp_ret_674 != 0) {
+            return 1;
+        }
+        var_r29_661 += 1;
+        var_r31_663 += 0xC;
+    } while (var_r29_661 < 5);
+    return 0;
 }
-#endif
 
 void BigBeetleHive::Init() {
     s32 var_ctr_707;
@@ -434,7 +426,6 @@ void BigBeetleHive::Init() {
     this->unk1E8 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)' does not match 'Tools_GetMatchingRefPointIndex(MKModel *, const char *)'
 void BigBeetleHiveDescriptor::LoadDone() {
     s32 temp_r0_746;
     s32 var_r29_734;
@@ -445,18 +436,18 @@ void BigBeetleHiveDescriptor::LoadDone() {
     var_r29_734 = 0;
     var_r31_736 = 0;
     do {
-        temp_r3_744 = Tools_GetMatchingRefPointIndex(this->unk2C, Str_Printf("r_fxemit%d", var_r29_734));
+        temp_r3_744 = Tools_GetMatchingRefPointIndex(this->unk2C, (const char *) Str_Printf("r_fxemit%d", var_r29_734));
         var_r29_734 += 1;
         temp_r0_746 = var_r31_736 + 0x170;
         var_r31_736 += 4;
-        *(this + temp_r0_746) = (s32) temp_r3_744;
+        M2C_FIELD(this, s32 *, temp_r0_746) = (s32) temp_r3_744;
     } while (var_r29_734 < 5);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void BigBeetleHiveDescriptor::Init() {
+    StickyPS *fx;
+
     ShatterableDescriptor::Init();
-    this->unk16C = checked_cast<StickyPS *, MKProp>(gMK->CreateProp("FireGoopPS"));
+    fx = checked_cast<StickyPS *, MKProp>(gMK->CreateProp("FireGoopPS"));
+    M2C_FIELD(this, StickyPS **, 0x16C) = fx;
 }
-#endif

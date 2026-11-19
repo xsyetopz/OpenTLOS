@@ -456,7 +456,7 @@ void EnemyGoal_LeapAttackMiss::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 u8 EnemyGoal_LeapAttackMiss::Update() {
     f64 spA8;
     f64 spA0;
@@ -540,7 +540,7 @@ u8 EnemyGoal_LeapAttackMiss::Update() {
     sp98 = temp_f1_824;
     if (!(((u8) this->unk3C >> 6U) & 1) && ((((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + ((*(f32 *) ((u8 *) &spA0 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))))) > 0.001f)) {
         temp_f31_846 = gUpdateTimeDelta;
-        sp60.operator*(500.0f);
+        sp60 = ((MKVector3 *) &temp_r4_821->unkC0)->operator*(500.0f);
         temp_f0_853 = sp60 * (f64) temp_f31_846;
         sp20 = temp_f0_853;
         temp_r3_858 = this->unkC;
@@ -784,8 +784,16 @@ u8 EnemyGoal_AttackMeleeLoop::Update() {
     f64 sp100;
     f64 spF8;
     f64 spF0;
-    AITargetData spA0;
-    f64 sp90;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    MKVector3 spA0;
+    MKVector3 sp90;
     f32 sp88;
     f64 sp80;
     f32 sp78;
@@ -801,7 +809,7 @@ u8 EnemyGoal_AttackMeleeLoop::Update() {
     f64 sp30;
     f32 sp28;
     f64 sp20;
-    M2C_UNK sp10;
+    MKVector3 sp10;
     s32 spC;
     f32 sp8;
     AnimSequence *temp_r4_1364;
@@ -884,20 +892,20 @@ u8 EnemyGoal_AttackMeleeLoop::Update() {
                 temp_r3_1418 = this->unkC;
                 temp_f0_1422 = *(temp_r3_1418 + 0xD0) * temp_f1_1417;
                 sp80 = temp_f0_1422;
-                spA0.unk10 = temp_f0_1422;
+                spB0 = temp_f0_1422;
                 sp88 = M2C_FIELD(temp_r3_1418, f32 *, 0xD8) * (f32) temp_f1_1417;
-                spA0.unk18 = (f64) sp88;
+                spB8 = (f64) sp88;
                 temp_f0_1433 = temp_f0_1422 * 5.222099017e-315;
                 sp70 = temp_f0_1433;
                 temp_r4_1435 = temp_r3_1418 + 0x588;
-                spA0.unk20 = temp_f0_1433;
-                sp78 = (f32) spA0.unk18 * 0.5f;
-                spA0.unk28 = (f64) sp78;
+                spC0 = temp_f0_1433;
+                sp78 = (f32) spB8 * 0.5f;
+                spC8 = (f64) sp78;
                 temp_f0_1445 = *temp_r4_1435 + temp_f0_1433;
                 sp60 = temp_f0_1445;
                 temp_r5_1447 = temp_r3_1418 + 0x90;
                 sp110 = temp_f0_1445;
-                sp68 = M2C_FIELD(temp_r3_1418, f32 *, 0x590) + (f32) spA0.unk28;
+                sp68 = M2C_FIELD(temp_r3_1418, f32 *, 0x590) + (f32) spC8;
                 sp118 = (f64) sp68;
                 temp_f0_1458 = sp110 + *temp_r5_1447;
                 sp50 = temp_f0_1458;
@@ -933,16 +941,16 @@ loop_26:
                             sp48 = (MKVector3::up.unk0 * temp_f7_1520) - (MKVector3::up.unk4 * temp_f5_1527);
                             spF0 = (f64) sp40;
                             spF8 = (f64) sp48;
-                            spA0.GetDir();
-                            sp8 = ((f32) spF8 * spA0.unk8) + (((f32) spF0 * M2C_BITWISE(f32, spA0)) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))));
+                            spA0 = ((AITargetData *) (temp_r6_1500 + 0x870))->GetDir();
+                            sp8 = ((f32) spF8 * spA0.unk8) + (((f32) spF0 * M2C_BITWISE(f32, spA0)) + ((*(f32 *) ((u8 *) &spF0 + 0x4)) * spA0.unk4));
                             spC = (M2C_BITWISE(s32, sp8) & 0x80000000) | 0x3F800000;
                             temp_f1_1555 = M2C_BITWISE(f32, spC);
                             sp30 = spF0 * (f64) temp_f1_1555;
                             sp38 = (f32) spF8 * temp_f1_1555;
-                            spA0.unk40 = sp30;
-                            spA0.unk40.unk8 = (f64) sp38;
+                            spE0 = sp30;
+                            spE8 = (f64) sp38;
                             temp_r3_1569 = this->unkC;
-                            if (((Enemy *) temp_r3_1569)->MeleeDamageTarget(var_r29_1491, M2C_FIELD(temp_r3_1569, EnemyAttack **, 0xA20), *((MKVector3 *) &spA0.unk40), -1) != 0) {
+                            if (((Enemy *) temp_r3_1569)->MeleeDamageTarget(var_r29_1491, M2C_FIELD(temp_r3_1569, EnemyAttack **, 0xA20), *((MKVector3 *) &spE0), -1) != 0) {
                                 ((Enemy *) this->unkC)->SetHitTarget(1U);
                                 temp_r3_1577 = this->unkC;
                                 temp_r4_1580 = M2C_FIELD(temp_r3_1577, AnimSequence **, 0xA50);
@@ -987,10 +995,9 @@ block_36:
                 var_r30_1657 = 1;
             }
             if (var_r30_1657 != 0) {
-                ((AITargetData *) &sp90)->GetDir();
+                sp90 = ((AITargetData *) (this->unkC + 0x870))->GetDir();
                 temp_r4_1673 = this->unkC;
-                M2C_FIELD(temp_r4_1673, f64 *, 0xE0) = sp90;
-                M2C_FIELD(temp_r4_1673, f64 *, 0xE8) = sp98;
+                M2C_FIELD(temp_r4_1673, MKVector3 *, 0xE0) = sp90;
                 M2C_FIELD(temp_r4_1673, u8 *, 0x6B5) = (u8) (M2C_FIELD(temp_r4_1673, u8 *, 0x6B5) | 0x40);
             }
         }
@@ -998,16 +1005,16 @@ block_36:
         temp_f0_1688 = *(temp_r30_1683 + 0x588) + *(temp_r30_1683 + 0x90);
         sp20 = temp_f0_1688;
         var_r29_1694 = 0;
-        spA0.unk30 = temp_f0_1688;
+        spD0 = temp_f0_1688;
         sp28 = M2C_FIELD(temp_r30_1683, f32 *, 0x590) + M2C_FIELD(temp_r30_1683, f32 *, 0x98);
-        spA0.unk38 = (f64) sp28;
-        if (((EnemyRegion *) (temp_r30_1683 + 0x800))->IsPointWithin(*((MKVector3 *) &spA0.unk30)) != 0) {
-            ((EnemyRegion *) &sp10)->GetRegionPos();
-            if ((f32) fabs(sp14 - spA0.unk34) <= 500.0f) {
+        spD8 = (f64) sp28;
+        if (((EnemyRegion *) (temp_r30_1683 + 0x800))->IsPointWithin(*((MKVector3 *) &spD0)) != 0) {
+            sp10 = ((EnemyRegion *) (temp_r30_1683 + 0x800))->GetRegionPos();
+            if ((f32) fabs(sp10.unk4 - (*(f32 *) ((u8 *) &spD0 + 0x4))) <= 500.0f) {
                 var_r29_1694 = 1;
             }
         }
-        if ((var_r29_1694 == 0) || (((EnemyRegion *) (this->unkC + 0x838))->IsPointWithin(*((MKVector3 *) &spA0.unk30)) != 0) || ((s32) M2C_FIELD(M2C_FIELD(this->unkC, void **, 0x630), s32 *, 0x44) >= 2)) {
+        if ((var_r29_1694 == 0) || (((EnemyRegion *) (this->unkC + 0x838))->IsPointWithin(*((MKVector3 *) &spD0)) != 0) || ((s32) M2C_FIELD(M2C_FIELD(this->unkC, void **, 0x630), s32 *, 0x44) >= 2)) {
             temp_r3_1732 = this->unkC;
             temp_r4_1735 = M2C_FIELD(temp_r3_1732, AnimSequence **, 0xA50);
             ((Enemy *) temp_r3_1732)->SetAnim(temp_r4_1735, (AnimTransition *) &temp_r4_1735->unk40, 0.15f, 0U);
@@ -1028,9 +1035,9 @@ block_36:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_AttackMeleeLoop::Activate() {
-    f64 sp8;
+    MKVector3 sp8;
     AnimSequence *temp_r4_1789;
     AttackSweepData *temp_r3_1821;
     AttackerManager *var_r3_1849;
@@ -1048,10 +1055,9 @@ void EnemyGoal_AttackMeleeLoop::Activate() {
     ((Enemy *) temp_r3_1787)->SetAnim(temp_r4_1789, (AnimTransition *) temp_r4_1789, 0.15f, 0U);
     temp_r5_1792 = this->unkC;
     M2C_FIELD(temp_r5_1792, f32 *, 0x68C) = (f32) M2C_FIELD(M2C_FIELD(temp_r5_1792, void **, 0xA38), f32 *, 0x15C);
-    ((AITargetData *) &sp8)->GetDir();
+    sp8 = ((AITargetData *) (this->unkC + 0x870))->GetDir();
     temp_r4_1800 = this->unkC;
-    M2C_FIELD(temp_r4_1800, f64 *, 0xE0) = sp8;
-    M2C_FIELD(temp_r4_1800, f64 *, 0xE8) = sp10;
+    M2C_FIELD(temp_r4_1800, MKVector3 *, 0xE0) = sp8;
     M2C_FIELD(temp_r4_1800, u8 *, 0x6B5) = (u8) (M2C_FIELD(temp_r4_1800, u8 *, 0x6B5) | 0x40);
     temp_r4_1809 = this->unkC;
 loop_2:
@@ -1163,9 +1169,9 @@ u8 EnemyGoal_AttackMelee::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_AttackMelee::Activate() {
-    f64 sp8;
+    MKVector3 sp8;
     AnimSequence *temp_r4_2046;
     AttackSweepData *temp_r3_2093;
     AttackerManager *var_r3_2118;
@@ -1192,10 +1198,9 @@ void EnemyGoal_AttackMelee::Activate() {
         var_r30_2050 = 1;
     }
     if (var_r30_2050 != 0) {
-        ((AITargetData *) &sp8)->GetDir();
+        sp8 = this->unkC->unk870.GetDir();
         temp_r4_2071 = this->unkC;
-        M2C_FIELD(temp_r4_2071, f64 *, 0xE0) = sp8;
-        M2C_FIELD(temp_r4_2071, f64 *, 0xE8) = sp10;
+        M2C_FIELD(temp_r4_2071, MKVector3 *, 0xE0) = sp8;
         temp_r4_2071->unk6B5 |= 0x40;
     }
     temp_r4_2081 = this->unkC;
@@ -1329,7 +1334,7 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp1B8;
     f64 sp1B0;
     f64 sp1A8;
-    M2C_UNK sp198;
+    MKVector3 sp198;
     f64 sp190;
     f64 sp188;
     MKVector3 sp178;
@@ -1341,7 +1346,7 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp148;
     f64 sp140;
     f64 sp138;
-    M2C_UNK sp128;
+    MKVector3 sp128;
     f64 sp120;
     f64 sp118;
     MKVector3 sp108;
@@ -1357,7 +1362,7 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 spB8;
     f32 spB0;
     f64 spA8;
-    M2C_UNK sp98;
+    MKVector3 sp98;
     f32 sp90;
     f64 sp88;
     f32 sp80;
@@ -1376,6 +1381,7 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp18;
     f64 sp10;
     f64 sp8;
+    Enemy *temp_r30_2467;
     Enemy *temp_r4_2614;
     f64 temp_f0_2406;
     f64 temp_f0_2416;
@@ -1398,9 +1404,9 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     sp1A8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp1B0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if (arg0 != 0) {
-        ((AITargetData *) &sp198)->GetPos();
-        this->unkC->unk800.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp198), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
-        sp178.operator*(100.0f);
+        sp198 = this->unkC->unk870.GetPos();
+        this->unkC->unk800.GetNearestPointOnBoundingRegion(sp198, (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
+        sp178 = ((MKVector3 *) &sp1B8)->operator*(100.0f);
         sp68 = sp1D8 + M2C_BITWISE(f64, sp178);
         sp188 = sp68;
         sp70 = (f32) sp1E0 + sp178.unk8;
@@ -1431,10 +1437,11 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
             sp1D8 += temp_f0_2448;
             sp1E0 = (f32) sp1E0 + (f32) sp150;
         } else {
+            temp_r30_2467 = this->unkC;
             var_r29_2469 = 0;
-            if (this->unkC->unk800.IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
-                ((EnemyRegion *) &sp98)->GetRegionPos();
-                if ((f32) fabs(sp9C - (*(f32 *) ((u8 *) &sp1C8 + 0x4))) <= 500.0f) {
+            if (temp_r30_2467->unk800.IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
+                sp98 = temp_r30_2467->unk800.GetRegionPos();
+                if ((f32) fabs(sp98.unk4 - (*(f32 *) ((u8 *) &sp1C8 + 0x4))) <= 500.0f) {
                     var_r29_2469 = 1;
                 }
             }
@@ -1444,11 +1451,11 @@ void EnemyGoal_MeleeAttackMode::CalculateRegionEdgeMoveTarget(bool arg0) {
             }
         }
     } else {
-        ((AITargetData *) &sp128)->GetPos();
-        this->unkC->unk838.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp128), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
+        sp128 = this->unkC->unk870.GetPos();
+        this->unkC->unk838.GetNearestPointOnBoundingRegion(sp128, (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
         sp1B8 *= 1.58735232e-314;
         sp1C0 = (f32) sp1C0 * -1.0f;
-        sp108.operator*(100.0f);
+        sp108 = ((MKVector3 *) &sp1B8)->operator*(100.0f);
         sp48 = sp1D8 + M2C_BITWISE(f64, sp108);
         sp118 = sp48;
         sp50 = (f32) sp1E0 + sp108.unk8;

@@ -277,7 +277,7 @@ void IceTier2::Deinit() {
 s32 IceTier2::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
@@ -286,10 +286,10 @@ s32 IceTier2::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
         MKModel_CalculateNodeWorldPosition(this->unk4, M2C_FIELD(checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x270), arg1);
     } else {
         sp18 = MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
-        ((MKProp *) &sp28)->GetPos();
+        sp28 = GetPos();
         sp8 = sp28 + M2C_BITWISE(f64, sp18);
         M2C_FIELD(arg1, f64 *, 0) = sp8;
-        sp10 = sp30 + sp18.unk8;
+        sp10 = sp28.unk8 + sp18.unk8;
         sp38 = sp8;
         sp40 = (f64) sp10;
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;

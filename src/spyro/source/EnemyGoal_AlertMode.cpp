@@ -75,7 +75,7 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp1B8;
     f64 sp1B0;
     f64 sp1A8;
-    M2C_UNK sp198;
+    MKVector3 sp198;
     f64 sp190;
     f64 sp188;
     MKVector3 sp178;
@@ -87,7 +87,7 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp148;
     f64 sp140;
     f64 sp138;
-    M2C_UNK sp128;
+    MKVector3 sp128;
     f64 sp120;
     f64 sp118;
     MKVector3 sp108;
@@ -103,7 +103,7 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 spB8;
     f32 spB0;
     f64 spA8;
-    M2C_UNK sp98;
+    MKVector3 sp98;
     f32 sp90;
     f64 sp88;
     f32 sp80;
@@ -122,6 +122,7 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 sp18;
     f64 sp10;
     f64 sp8;
+    Enemy *temp_r31_156;
     Enemy *temp_r4_302;
     f64 temp_f0_105;
     f64 temp_f0_125;
@@ -144,9 +145,9 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     sp1A8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp1B0 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if (arg0 != 0) {
-        ((AITargetData *) &sp198)->GetPos();
-        this->unkC->unk800.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp198), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
-        sp178.operator*(100.0f);
+        sp198 = this->unk20->GetPos();
+        this->unkC->unk800.GetNearestPointOnBoundingRegion(sp198, (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
+        sp178 = ((MKVector3 *) &sp1B8)->operator*(100.0f);
         sp68 = sp1D8 + M2C_BITWISE(f64, sp178);
         sp188 = sp68;
         sp70 = (f32) sp1E0 + sp178.unk8;
@@ -177,10 +178,11 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
             sp1D8 += temp_f0_137;
             sp1E0 = (f32) sp1E0 + (f32) sp150;
         } else {
+            temp_r31_156 = this->unkC;
             var_r30_158 = 0;
-            if (this->unkC->unk800.IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
-                ((EnemyRegion *) &sp98)->GetRegionPos();
-                if ((f32) fabs(sp9C - (*(f32 *) ((u8 *) &sp1C8 + 0x4))) <= 500.0f) {
+            if (temp_r31_156->unk800.IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
+                sp98 = temp_r31_156->unk800.GetRegionPos();
+                if ((f32) fabs(sp98.unk4 - (*(f32 *) ((u8 *) &sp1C8 + 0x4))) <= 500.0f) {
                     var_r30_158 = 1;
                 }
             }
@@ -190,11 +192,11 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
             }
         }
     } else {
-        ((AITargetData *) &sp128)->GetPos();
-        this->unkC->unk838.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp128), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
+        sp128 = this->unk20->GetPos();
+        this->unkC->unk838.GetNearestPointOnBoundingRegion(sp128, (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
         sp1B8 *= 1.58735232e-314;
         sp1C0 = (f32) sp1C0 * -1.0f;
-        sp108.operator*(100.0f);
+        sp108 = ((MKVector3 *) &sp1B8)->operator*(100.0f);
         sp48 = sp1D8 + M2C_BITWISE(f64, sp108);
         sp118 = sp48;
         sp50 = (f32) sp1E0 + sp108.unk8;
@@ -694,10 +696,13 @@ void EnemyGoal_AlertMode::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'float'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 u8 EnemyGoal_AlertMode::Update() {
-    AITargetData sp48;
-    f64 sp38;
+    f64 sp70;
+    f64 sp68;
+    MKVector3 sp58;
+    MKVector3 sp48;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
@@ -731,11 +736,11 @@ u8 EnemyGoal_AlertMode::Update() {
             temp_r3_1300 = (temp_r0_1299 >> 6U) & 1;
             if ((temp_r3_1300 == 0) || ((u32) ((temp_r0_1299 >> 5U) & 1) != 0)) {
                 CalculateRegionEdgeMoveTarget(temp_r3_1300 == 0);
-                sp48.GetPos();
-                ((AITargetData *) &sp48.unk10)->GetPos();
-                temp_f4_1321 = (*(f32 *) ((u8 *) &sp48 + 0x14)) - (*(f32 *) ((u8 *) &sp48 + 0x4));
-                temp_f5_1323 = (f32) sp48.unk10 - M2C_BITWISE(f32, sp48);
-                temp_f3_1327 = (f32) sp48.unk18 - sp48.unk8;
+                sp48 = this->unkC->unk8C0.GetPos();
+                sp58 = this->unk20->GetPos();
+                temp_f4_1321 = sp58.unk4 - sp48.unk4;
+                temp_f5_1323 = M2C_BITWISE(f32, sp58) - M2C_BITWISE(f32, sp48);
+                temp_f3_1327 = sp58.unk8 - sp48.unk8;
                 if (((temp_f3_1327 * temp_f3_1327) + ((temp_f5_1323 * temp_f5_1323) + (temp_f4_1321 * temp_f4_1321))) < 1000000.0f) {
                     temp_r3_1334 = this->unkC;
                     temp_f30_1339 = temp_r3_1334->GetCollisionRadius();
@@ -744,19 +749,19 @@ u8 EnemyGoal_AlertMode::Update() {
                     sp1C = 50.0f + temp_f30_1339;
                     sp30 = (f64) sp20;
                     sp28 = (f64) sp18;
-                    ((AITargetData *) &sp38)->GetPos();
+                    sp38 = this->unkC->unk8C0.GetPos();
                     sp8 = sp38 + sp28;
                     temp_f3_1364 = 2.0f * temp_f30_1339;
                     var_f31_1365 = 200.0f;
-                    sp48.unk20 = sp8;
-                    sp10 = sp40 + (f32) sp30;
-                    sp48.unk28 = (f64) sp10;
+                    sp68 = sp8;
+                    sp10 = sp38.unk8 + (f32) sp30;
+                    sp70 = (f64) sp10;
                     if (var_f31_1365 > temp_f3_1364) {
 
                     } else {
                         var_f31_1365 = temp_f3_1364;
                     }
-                    if (!(this->unkC->unk8C0.GetDist() > var_f31_1365) || (MKCollision_SphereCollide(*((MKVector3 *) &sp48.unk20), temp_f30_1339, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0)) {
+                    if (!(this->unkC->unk8C0.GetDist() > var_f31_1365) || (MKCollision_SphereCollide(*((MKVector3 *) &sp68), temp_f30_1339, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0)) {
                         this->unk8 = 1;
                     }
                 } else {

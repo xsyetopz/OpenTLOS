@@ -125,7 +125,8 @@ void EnemyGoal_HitSquished::Terminate() {
 
 #if 0 // DRAFT: undefined identifier 'unkAC8'
 u8 EnemyGoal_HitSquished::Update() {
-    Matrix sp30;
+    Matrix sp40;
+    MKVector3 sp30;
     f64 sp28;
     f64 sp20;
     f32 sp18;
@@ -167,7 +168,7 @@ u8 EnemyGoal_HitSquished::Update() {
     case 1:
         temp_f31_110 = this->unk14 / 0.75f;
         M2C_STRUCT_COPY((s32) &sp30.unkC + 4, MKModel_GetWorldMatrix(this->unkC->unk4) - 4 + 4, 0x40);
-        sp30.NormaliseScale();
+        sp30 = sp40.NormaliseScale();
         temp_f30_136 = (0.25f * (temp_f31_110 * _table_sinf((35.0f * this->unk14) + 1.5707964f))) + 1.0f;
         temp_f3_139 = temp_f31_110 * _table_sinf(25.0f * this->unk14);
         sp18 = temp_f30_136;
@@ -929,14 +930,15 @@ void EnemyGoal_HitStand::Activate() {
     this->unkC->EnableBlurFX(1U);
 }
 
-#if 0 // DRAFT: undefined identifier 'spC'
+#if 0 // DRAFT: undefined identifier 'fabs'
 void EnemyGoal_HitFall::Terminate() {
-    M2C_UNK sp8;
+    MKVector3 sp8;
     Enemy *temp_r3_1686;
     Enemy *temp_r3_1690;
     Enemy *temp_r3_1698;
     Enemy *temp_r3_1702;
     Enemy *temp_r3_1713;
+    Enemy *temp_r4_1706;
     Enemy *temp_r5_1694;
 
     temp_r3_1686 = this->unkC;
@@ -951,10 +953,11 @@ void EnemyGoal_HitFall::Terminate() {
     temp_r3_1698->unk6B5 &= ~2;
     temp_r3_1702 = this->unkC;
     temp_r3_1702->unk6B5 &= ~1;
-    if (this->unkC->unkAC8 > 0.0f) {
-        ((EnemyRegion *) &sp8)->GetRegionPos();
+    temp_r4_1706 = this->unkC;
+    if (temp_r4_1706->unkAC8 > 0.0f) {
+        sp8 = temp_r4_1706->unk800.GetRegionPos();
         temp_r3_1713 = this->unkC;
-        if ((f32) fabs(spC - temp_r3_1713->unk588.unk4) > 100.0f) {
+        if ((f32) fabs(sp8.unk4 - temp_r3_1713->unk588.unk4) > 100.0f) {
             temp_r3_1713->SetupEnemyRegion(temp_r3_1713->unk588, 1000.0f);
         }
     }
@@ -2291,7 +2294,7 @@ u8 EnemyGoal_HitKnockdown::Update() {
         if (!(((u8) temp_r3_3733->unk6B5 >> 1U) & 1)) {
             if (GetPushOutWallNormal(temp_r3_3733, &sp1D8) != 0) {
                 temp_r3_3741 = this->unkC;
-                sp178.operator*(temp_r3_3741->GetCollisionHeight());
+                sp178 = sp1D8.operator*(temp_r3_3741->GetCollisionHeight());
                 sp68 = sp178 * 5.28426686e-315;
                 temp_r3_3757 = this->unkC;
                 sp188 = sp68;
@@ -2475,7 +2478,7 @@ block_72:
                             this->unkC->unkA4 = 0.0f;
                             sp150 = (f64) sp50;
                             (*(f32 *) ((u8 *) &sp1B0 + 0xc)) = -0.5f;
-                            sp118.operator*(var_f29_4024);
+                            sp118 = ((MKVector3 *) &sp1B8)->operator*(var_f29_4024);
                             sp38 = sp118 * 5.24282163e-315;
                             temp_r3_4153 = this->unkC;
                             sp128 = sp38;
@@ -2625,9 +2628,13 @@ void EnemyGoal_HitKnockdown::Activate() {
     Enemy *temp_r4_4465;
     Enemy *temp_r4_4470;
     Enemy *temp_r4_4548;
+    Enemy *temp_r4_4566;
     Enemy *temp_r4_4582;
+    Enemy *temp_r4_4588;
     Enemy *temp_r4_4619;
+    Enemy *temp_r4_4637;
     Enemy *temp_r4_4653;
+    Enemy *temp_r4_4659;
     Enemy *temp_r4_4705;
     Enemy *temp_r5_4506;
     Enemy *temp_r5_4723;
@@ -2672,17 +2679,19 @@ void EnemyGoal_HitKnockdown::Activate() {
         temp_r4_4548 = this->unkC;
         temp_r4_4548->unk6B5 |= 2;
         this->unkC->unk5E4 = 0.0f;
-        sp118.operator*(-fInitialKnockdownForce);
-        sp128.operator*(0.75f);
-        sp138.operator*(-this->unkC->unk928);
+        sp118 = ((MKVector3 *) &this->unkC->unkD0)->operator*(-fInitialKnockdownForce);
+        sp128 = sp118.operator*(0.75f);
+        temp_r4_4566 = this->unkC;
+        sp138 = ((MKVector3 *) &temp_r4_4566->unkC0)->operator*(-temp_r4_4566->unk928);
         sp38 = sp138 + M2C_BITWISE(f64, sp128);
         temp_r4_4582 = this->unkC;
         sp148 = sp38;
         sp40 = sp138.unk8 + sp128.unk8;
         M2C_FIELD(temp_r4_4582, f32 *, 0x598) = sp38;
         M2C_FIELD(temp_r4_4582, f32 *, 0x5A0) = (f64) sp40;
+        temp_r4_4588 = this->unkC;
         sp150 = (f64) sp40;
-        spF8.operator*(this->unkC->unk928);
+        spF8 = ((MKVector3 *) &temp_r4_4588->unkC0)->operator*(temp_r4_4588->unk928);
         sp28 = spF8 * 5.24282163e-315;
         temp_r3_4601 = this->unkC;
         sp108 = sp28;
@@ -2697,17 +2706,19 @@ void EnemyGoal_HitKnockdown::Activate() {
             temp_r4_4619 = this->unkC;
             temp_r4_4619->unk6B5 |= 2;
             this->unkC->unk5E4 = 0.0f;
-            spB8.operator*(-fInitialKnockdownForce);
-            spC8.operator*(1.25f);
-            spD8.operator*(-this->unkC->unk928);
+            spB8 = ((MKVector3 *) &this->unkC->unkD0)->operator*(-fInitialKnockdownForce);
+            spC8 = spB8.operator*(1.25f);
+            temp_r4_4637 = this->unkC;
+            spD8 = ((MKVector3 *) &temp_r4_4637->unkC0)->operator*(-temp_r4_4637->unk928);
             sp18 = spD8 + M2C_BITWISE(f64, spC8);
             temp_r4_4653 = this->unkC;
             spE8 = sp18;
             sp20 = spD8.unk8 + spC8.unk8;
             M2C_FIELD(temp_r4_4653, f32 *, 0x598) = sp18;
             M2C_FIELD(temp_r4_4653, f32 *, 0x5A0) = (f64) sp20;
+            temp_r4_4659 = this->unkC;
             spF0 = (f64) sp20;
-            sp98.operator*(this->unkC->unk928);
+            sp98 = ((MKVector3 *) &temp_r4_4659->unkC0)->operator*(temp_r4_4659->unk928);
             sp8 = sp98 * 5.24282163e-315;
             temp_r3_4672 = this->unkC;
             spA8 = sp8;
@@ -3315,7 +3326,7 @@ block_7:
     sp60 = (f32) sp60 * var_f4_5680;
     (*(f32 *) ((u8 *) &sp58 + 0xc)) *= var_f4_5680;
     sp68 = (f32) sp68 * var_f4_5680;
-    sp30.operator*((f32) (this->unkC->unk940 + 1));
+    sp30 = ((MKVector3 *) &sp60)->operator*((f32) (this->unkC->unk940 + 1));
     temp_f0_5786 = sp30 * 5.5769738e-315;
     sp10 = temp_f0_5786;
     temp_r3_5791 = this->unkC;

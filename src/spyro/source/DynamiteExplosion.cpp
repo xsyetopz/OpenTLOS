@@ -823,7 +823,7 @@ loop_70:
             if (temp_f30_1157 > 0.0f) {
                 sp34C = 0;
                 sp1B8 = MKVector(1.0f, 1.0f, 1.0f);
-                sp1C8.operator*(500.0f);
+                sp1C8 = sp1B8.operator*(500.0f);
                 sp48 = sp1C8 * (f64) temp_f30_1157;
                 sp348 = 0x417;
                 sp350 = sp48;
@@ -849,8 +849,8 @@ loop_70:
     sp30 = -(f32) sp330;
     sp178 = (f64) sp28;
     sp180 = (f64) sp30;
-    sp188.operator*(700.0f);
-    sp198.operator*(arg1);
+    sp188 = ((MKVector3 *) &sp178)->operator*(700.0f);
+    sp198 = sp188.operator*(arg1);
     sp38 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp198);
     sp1A8 = sp38;
     sp40 = arg0.unk8 + sp198.unk8;
@@ -877,7 +877,7 @@ loop_70:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp4B0;
     Matrix sp470;
@@ -1104,7 +1104,7 @@ loop_4:
             M2C_FIELD(temp_r3_1407, f32 *, 0x14) = 0.25f;
             M2C_FIELD(temp_r3_1407, f32 *, 0x18) = 0.25f;
             M2C_FIELD(temp_r3_1407, f32 *, 0x1C) = 1.0f;
-            sp3A0.operator*(1000.0f);
+            sp3A0 = ((MKVector3 *) &sp400)->operator*(1000.0f);
             sp70 = sp3A0 * (f64) arg1;
             M2C_FIELD(temp_r23_1410, f64 *, 0) = sp70;
             sp78 = sp3A0.unk8 * arg1;
@@ -1225,7 +1225,7 @@ loop_4:
             if (temp_f28_1711 > 0.0f) {
                 sp414 = 0;
                 sp340 = MKVector(1.0f, 1.0f, 1.0f);
-                sp350.operator*(500.0f);
+                sp350 = sp340.operator*(500.0f);
                 sp60 = sp350 * (f64) temp_f28_1711;
                 sp410 = 0x417;
                 sp418 = sp60;
@@ -1251,8 +1251,8 @@ loop_4:
     sp28 = -(f32) sp3E8;
     sp300 = (f64) sp20;
     sp308 = (f64) sp28;
-    sp310.operator*(700.0f);
-    sp320.operator*(arg1);
+    sp310 = ((MKVector3 *) &sp300)->operator*(700.0f);
+    sp320 = sp310.operator*(arg1);
     sp50 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp320);
     sp330 = sp50;
     sp58 = arg0.unk8 + sp320.unk8;
@@ -1428,7 +1428,7 @@ loop_66:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal type
 void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp4C0;
     Matrix sp480;
@@ -1725,7 +1725,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
             if (temp_f26_2532 > 0.0f) {
                 sp45C = 0;
                 sp3B8 = MKVector(1.0f, 1.0f, 1.0f);
-                sp3C8.operator*(500.0f);
+                sp3C8 = sp3B8.operator*(500.0f);
                 sp78 = sp3C8 * (f64) temp_f26_2532;
                 sp458 = 0x417;
                 sp460 = sp78;
@@ -1751,8 +1751,8 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     sp30 = -(f32) sp430;
     sp378 = (f64) sp28;
     sp380 = (f64) sp30;
-    sp388.operator*(700.0f);
-    sp398.operator*(arg1);
+    sp388 = ((MKVector3 *) &sp378)->operator*(700.0f);
+    sp398 = sp388.operator*(arg1);
     sp68 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp398);
     sp3A8 = sp68;
     sp70 = arg0.unk8 + sp398.unk8;
@@ -1933,7 +1933,7 @@ loop_58:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp470;
     Matrix sp430;
@@ -2169,7 +2169,7 @@ loop_8:
             M2C_FIELD(temp_r3_3202, f32 *, 0x20) = 0.0f;
             M2C_FIELD(temp_r3_3202, f32 *, 0x28) = 0.0f;
             M2C_FIELD(temp_r3_3202, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
-            sp3A0.operator*(1000.0f);
+            sp3A0 = ((MKVector3 *) &sp400)->operator*(1000.0f);
             sp70 = sp3A0 * (f64) arg1;
             M2C_FIELD(temp_r24_3205, f64 *, 0) = sp70;
             sp78 = sp3A0.unk8 * arg1;
@@ -2189,7 +2189,7 @@ loop_8:
             M2C_FIELD(temp_r3_3248, f32 *, 0x20) = 0.0f;
             M2C_FIELD(temp_r3_3248, f32 *, 0x28) = 0.0f;
             M2C_FIELD(temp_r3_3248, f32 *, 0x24) = 0.0f;
-            sp380.operator*(500.0f);
+            sp380 = ((MKVector3 *) &sp400)->operator*(500.0f);
             sp60 = sp380 * (f64) arg1;
             M2C_FIELD(temp_r24_3251, f64 *, 0) = sp60;
             sp68 = sp380.unk8 * arg1;
@@ -2294,7 +2294,7 @@ loop_8:
             if (temp_f21_3506 > 0.0f) {
                 sp414 = 0;
                 sp320 = MKVector(1.0f, 1.0f, 1.0f);
-                sp330.operator*(500.0f);
+                sp330 = sp320.operator*(500.0f);
                 sp50 = sp330 * (f64) temp_f21_3506;
                 sp410 = 0x417;
                 sp418 = sp50;
@@ -2320,8 +2320,8 @@ loop_8:
     sp28 = -(f32) sp3E8;
     sp2E0 = (f64) sp20;
     sp2E8 = (f64) sp28;
-    sp2F0.operator*(700.0f);
-    sp300.operator*(arg1);
+    sp2F0 = ((MKVector3 *) &sp2E0)->operator*(700.0f);
+    sp300 = sp2F0.operator*(arg1);
     sp40 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp300);
     sp310 = sp40;
     sp48 = arg0.unk8 + sp300.unk8;

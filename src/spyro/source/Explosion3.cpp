@@ -196,8 +196,8 @@ loop_2:
             M2C_FIELD(temp_r3_236, f32 *, 0x28) = (f32) (1.0f / temp_f0_234);
             M2C_FIELD(temp_r3_236, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_236, f32 *, 0x24));
         }
-        sp90.operator*(100.0f);
-        spA0.operator*(this->unk64);
+        sp90 = arg4.operator*(100.0f);
+        spA0 = sp90.operator*(this->unk64);
         sp10 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, spA0);
         temp_r3_265 = this->unk58;
         spB0 = sp10;

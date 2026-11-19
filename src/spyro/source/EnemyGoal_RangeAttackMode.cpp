@@ -118,11 +118,15 @@ void EnemyGoal_AttackProjectile::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'AITargetData' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 u8 EnemyGoal_AttackProjectile::Update() {
-    AITargetData sp228;
-    f64 sp218;
-    f64 sp208;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    MKVector3 sp228;
+    MKVector3 sp218;
+    MKVector3 sp208;
     MKVector3 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
@@ -132,7 +136,12 @@ u8 EnemyGoal_AttackProjectile::Update() {
     f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
-    MKProp sp168;
+    f64 sp1B0;
+    f64 sp1A8;
+    MKVector3 sp198;
+    MKVector3 sp188;
+    MKVector3 sp178;
+    MKVector3 sp168;
     f64 sp160;
     f64 sp158;
     f64 sp150;
@@ -149,7 +158,7 @@ u8 EnemyGoal_AttackProjectile::Update() {
     f64 spF8;
     f64 spF0;
     f64 spE8;
-    f64 spD8;
+    MKVector3 spD8;
     MKVector3 spC8;
     f32 spC0;
     f32 spBC;
@@ -238,8 +247,8 @@ u8 EnemyGoal_AttackProjectile::Update() {
 
     ActivateIfInactive();
     var_r29_118 = 0;
-    sp228.unk20 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    sp228.unk28 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    sp248 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    sp250 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     temp_r3_122 = this->unkC;
     temp_r31_125 = temp_r3_122->unkA20;
     temp_r3_122->unkB08 &= ~0x10;
@@ -250,16 +259,13 @@ u8 EnemyGoal_AttackProjectile::Update() {
     if (var_r29_118 != 0) {
         temp_r4_140 = this->unkC;
         temp_r4_140->unk870.Update(temp_r4_140->unk588);
-        sp228.GetPos();
-        this->unk38 = M2C_BITWISE(f64, sp228);
-        this->unk40 = (f64) sp228.unk8;
-        ((AITargetData *) &sp218)->GetDir();
-        sp228.unk20 = sp218;
-        sp228.unk28 = sp220;
-        ((AITargetData *) &sp208)->GetDir();
+        sp228 = this->unkC->unk870.GetPos();
+        *(MKVector3 *) &this->unk38 = sp228;
+        sp218 = this->unkC->unk870.GetDir();
+        *(MKVector3 *) &sp248 = sp218;
+        sp208 = this->unkC->unk870.GetDir();
         temp_r4_164 = this->unkC;
-        M2C_FIELD(temp_r4_164, f64 *, 0xE0) = sp208;
-        M2C_FIELD(temp_r4_164, f64 *, 0xE8) = sp210;
+        M2C_FIELD(temp_r4_164, MKVector3 *, 0xE0) = sp208;
         temp_r4_164->unk6B5 |= 0x40;
     } else {
         temp_r3_177 = this->unkC->unk8;
@@ -272,8 +278,8 @@ u8 EnemyGoal_AttackProjectile::Update() {
         sp1F0 = (f64) sp80;
         sp1F8 = Normalise(*((MKVector3 *) &sp1E8));
         temp_f1_197 = M2C_BITWISE(f64, sp1F8);
-        sp228.unk20 = temp_f1_197;
-        sp228.unk28 = (f64) sp1F8.unk8;
+        sp248 = temp_f1_197;
+        sp250 = (f64) sp1F8.unk8;
         temp_r4_202 = this->unkC;
         M2C_FIELD(temp_r4_202, f64 *, 0xE0) = temp_f1_197;
         M2C_FIELD(temp_r4_202, f64 *, 0xE8) = (f64) sp1F8.unk8;
@@ -293,10 +299,10 @@ u8 EnemyGoal_AttackProjectile::Update() {
             if ((s32) temp_r31_125->unk80 == 5) {
                 this->unk18 = this->unk38;
                 this->unk20 = this->unk40;
-                temp_f0_259 = sp228.unk20 * 5.5769738e-315;
+                temp_f0_259 = sp248 * 5.5769738e-315;
                 sp68 = temp_f0_259;
                 sp1C8 = temp_f0_259;
-                sp70 = (f32) sp228.unk28 * 200.0f;
+                sp70 = (f32) sp250 * 200.0f;
                 sp1D0 = (f64) sp70;
                 this->unk18 += temp_f0_259;
                 M2C_FIELD(this, f64 *, 0x20) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x20) + (f32) sp1D0);
@@ -311,19 +317,19 @@ u8 EnemyGoal_AttackProjectile::Update() {
     if ((temp_r3_291 != NULL) && (M2C_FIELD(M2C_FIELD(temp_r3_291, void **, 0x44), u8 (**)(), 0x58)() != 0)) {
         temp_r3_300 = this->unkC;
         temp_f30_305 = temp_r3_300->GetCollisionRadius();
-        sp168.GetDir();
-        ((MKVector3 *) &sp168.unk10)->operator*(temp_f30_305);
+        sp168 = ((MKProp *) this->unkC)->GetDir();
+        sp178 = sp168.operator*(temp_f30_305);
         temp_r3_313 = this->unkC;
-        *((MKVector3 *) &sp168.unk20) = MKVector(0.0f, temp_r3_313->GetCollisionHeight(), 0.0f);
-        ((MKProp *) &sp168.unk30)->GetPos();
-        temp_f0_329 = sp168.unk30 + (f64) sp168.unk20;
+        sp188 = MKVector(0.0f, temp_r3_313->GetCollisionHeight(), 0.0f);
+        sp198 = ((MKProp *) this->unkC)->GetPos();
+        temp_f0_329 = sp198 + M2C_BITWISE(f64, sp188);
         sp8 = temp_f0_329;
-        sp168.unk40 = temp_f0_329;
-        sp10 = M2C_BITWISE(f32, sp168.unk38) + M2C_BITWISE(f32, sp168.unk28);
-        sp168.unk48 = (f64) sp10;
-        sp58 = M2C_BITWISE(f64, sp168.unk40) + M2C_BITWISE(f64, sp168.unk10);
+        sp1A8 = temp_f0_329;
+        sp10 = sp198.unk8 + sp188.unk8;
+        sp1B0 = (f64) sp10;
+        sp58 = sp1A8 + M2C_BITWISE(f64, sp178);
         M2C_FIELD(this, f64 *, 0x28) = sp58;
-        sp60 = sp168.unk48 + M2C_BITWISE(f32, sp168.unk18);
+        sp60 = (f32) sp1B0 + sp178.unk8;
         sp1B8 = sp58;
         M2C_FIELD(this, f64 *, 0x30) = (f64) sp60;
         temp_r4_352 = temp_r31_125->unk84;
@@ -334,10 +340,10 @@ u8 EnemyGoal_AttackProjectile::Update() {
         this->unk18 = this->unk38;
         this->unk20 = this->unk40;
         if ((s32) temp_r31_125->unk80 == 5) {
-            temp_f0_371 = sp228.unk20 * 5.5769738e-315;
+            temp_f0_371 = sp248 * 5.5769738e-315;
             sp48 = temp_f0_371;
             sp158 = temp_f0_371;
-            sp50 = (f32) sp228.unk28 * 200.0f;
+            sp50 = (f32) sp250 * 200.0f;
             sp160 = (f64) sp50;
             this->unk18 += temp_f0_371;
             M2C_FIELD(this, f64 *, 0x20) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x20) + (f32) sp160);
@@ -384,12 +390,12 @@ u8 EnemyGoal_AttackProjectile::Update() {
             sp150 = (f64) spB0;
             temp_f0_478 = sp148 + temp_f0_437;
             sp88 = temp_f0_478;
-            sp228.unk10 = temp_f0_478;
+            sp238 = temp_f0_478;
             sp90 = (f32) sp150 + (f32) sp120;
-            sp228.unk18 = (f64) sp90;
+            sp240 = (f64) sp90;
             temp_r4_488 = temp_r31_125->unk84;
             if ((u32) temp_r4_488 != -1U) {
-                MKModel_CalculateRefPointWorldPosition(temp_r5_451->unk4, temp_r4_488, (MKVector3 *) &sp228.unk10);
+                MKModel_CalculateRefPointWorldPosition(temp_r5_451->unk4, temp_r4_488, (MKVector3 *) &sp238);
             }
             temp_r3_498 = this->unkC->unkA2C;
             M2C_FIELD(M2C_FIELD(temp_r3_498, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK), 0x74)(temp_r3_498, 0);
@@ -397,20 +403,20 @@ u8 EnemyGoal_AttackProjectile::Update() {
                 this->unk18 = this->unk38;
                 this->unk20 = this->unk40;
                 temp_f1_514 = MKRand_Float((int *) &gViewSeed, 100.0f, 200.0f);
-                temp_f0_517 = sp228.unk20 * temp_f1_514;
+                temp_f0_517 = sp248 * temp_f1_514;
                 sp28 = temp_f0_517;
                 spF8 = temp_f0_517;
-                sp30 = (f32) sp228.unk28 * (f32) temp_f1_514;
+                sp30 = (f32) sp250 * (f32) temp_f1_514;
                 sp100 = (f64) sp30;
                 this->unk18 -= temp_f0_517;
                 M2C_FIELD(this, f64 *, 0x20) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x20) - (f32) sp100);
             }
             if ((u8) this->unk48 != 0) {
-                spC8.operator*(300.0f);
-                ((MKProp *) &spD8)->GetPos();
+                spC8 = ((MKVector3 *) &sp248)->operator*(300.0f);
+                spD8 = ((MKProp *) this->unkC)->GetPos();
                 sp18 = spD8 + M2C_BITWISE(f64, spC8);
                 this->unk18 = sp18;
-                sp20 = spE0 + spC8.unk8;
+                sp20 = spD8.unk8 + spC8.unk8;
                 spE8 = sp18;
                 this->unk20 = (f64) sp20;
                 spF0 = (f64) sp20;
@@ -421,7 +427,7 @@ u8 EnemyGoal_AttackProjectile::Update() {
             M2C_FIELD(M2C_FIELD(temp_r3_570, void **, 0x44), M2C_UNK (**)(void *), 0x40)(temp_r3_570);
             temp_r6_575 = this->unkC;
             temp_r3_579 = temp_r6_575->unkA2C;
-            M2C_FIELD(M2C_FIELD(temp_r3_579, void **, 0x44), M2C_UNK (**)(void *, f64 *, f64 *, Enemy *, M2C_UNK, M2C_UNK, f32), 0x4C)(temp_r3_579, &sp228.unk10, &this->unk18, temp_r6_575, 0, 0, temp_r31_125->unk88);
+            M2C_FIELD(M2C_FIELD(temp_r3_579, void **, 0x44), M2C_UNK (**)(void *, f64 *, f64 *, Enemy *, M2C_UNK, M2C_UNK, f32), 0x4C)(temp_r3_579, &sp238, &this->unk18, temp_r6_575, 0, 0, temp_r31_125->unk88);
         }
         temp_r3_588 = this->unkC->unkA2C;
         if (temp_r3_588 != NULL) {
@@ -466,11 +472,11 @@ u8 EnemyGoal_AttackProjectile::Update() {
 void EnemyGoal_AttackProjectile::Activate() {
     f64 sp90;
     f64 sp88;
-    f64 sp78;
-    f64 sp68;
+    MKVector3 sp78;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
-    f64 sp48;
+    MKVector3 sp48;
     MKVector3 sp38;
     f64 sp30;
     f64 sp28;
@@ -528,18 +534,16 @@ loop_6:
     if (var_r29_733 != 0) {
         temp_r4_746 = this->unkC;
         temp_r4_746->unk870.Update(temp_r4_746->unk588);
-        ((AITargetData *) &sp78)->GetPos();
-        this->unk38 = sp78;
-        this->unk40 = sp80;
-        ((AITargetData *) &sp68)->GetDir();
-        sp88 = sp68;
-        sp90 = sp70;
+        sp78 = this->unkC->unk870.GetPos();
+        *(MKVector3 *) &this->unk38 = sp78;
+        sp68 = this->unkC->unk870.GetDir();
+        *(MKVector3 *) &sp88 = sp68;
     } else {
-        sp38.operator*(1500.0f);
-        ((MKProp *) &sp48)->GetPos();
+        sp38 = ((MKVector3 *) &this->unkC->unkC0)->operator*(1500.0f);
+        sp48 = ((MKProp *) this->unkC)->GetPos();
         sp18 = sp48 + M2C_BITWISE(f64, sp38);
         this->unk38 = sp18;
-        sp20 = sp50 + sp38.unk8;
+        sp20 = sp48.unk8 + sp38.unk8;
         sp58 = sp18;
         this->unk40 = (f64) sp20;
         temp_r3_790 = this->unkC;

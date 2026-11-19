@@ -45,16 +45,16 @@ extern M2C_UNK gb;
 s32 BarricadeProp::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
     sp18 = MKVector(0.0f, 100.0f, 0.0f);
-    ((MKProp *) &sp28)->GetPos();
+    sp28 = GetPos();
     sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = sp30 + sp18.unk8;
+    sp10 = sp28.unk8 + sp18.unk8;
     sp38 = sp8;
     sp40 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -64,20 +64,22 @@ s32 BarricadeProp::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 BarricadeProp::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    MKProp sp38;
+    f64 sp50;
+    f64 sp48;
+    MKVector3 sp38;
     MKVector3 sp28;
-    M2C_UNK sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
 
-    ((MKProp *) &sp18)->GetDir();
-    sp28.operator*(-150.0f);
-    sp38.GetPos();
+    sp18 = GetDir();
+    sp28 = sp18.operator*(-150.0f);
+    sp38 = GetPos();
     sp8 = sp38 + M2C_BITWISE(f64, sp28);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = M2C_BITWISE(f32, sp38.unk8) + sp28.unk8;
-    sp38.unk10 = sp8;
-    sp38.unk18 = (f64) sp10;
+    sp10 = sp38.unk8 + sp28.unk8;
+    sp48 = sp8;
+    sp50 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
     return 1;
 }

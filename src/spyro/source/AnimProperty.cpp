@@ -26,96 +26,102 @@ void *malloc(s32);                                  /* extern */
 s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: pointer/array required
 void AnimProperty::Update() {
-    f32 temp_f0_89;
-    f32 var_f1_79;
-    s32 temp_r3_107;
-    s32 temp_r5_80;
-    s32 var_ctr_83;
-    s32 var_r29_72;
-    s32 var_r30_71;
-    s32 var_r3_82;
-    s32 var_r6_81;
+    KDProp *prop;
+    MKAnimScript *anim;
+    f32 temp_f0;
+    f32 var_f1;
+    s32 flags;
+    s32 temp_r3;
+    s32 temp_r5;
+    s32 var_ctr;
+    s32 var_r29;
+    s32 var_r30;
+    s32 var_r3;
+    s32 var_r6;
 
-    if (((u8) *(*KDProperty::pInstanceMem + this->unk8) != 0) && ((M2C_FIELD(M2C_FIELD(checked_cast<KDProp *, MKProp>(*KDProperty::pInstanceMem), void **, 0x80), s32 *, 0x2C) & 1) || (M2C_FIELD(M2C_FIELD(checked_cast<KDProp *, MKProp>(*KDProperty::pInstanceMem), void **, 0x80), s32 *, 0x2C) & 2))) {
-        var_r30_71 = 0;
-        var_r29_72 = 0;
-        if ((s32) this->unk18 > 1) {
+    if ((u8) *(*(u8 **) KDProperty::pInstanceMem + this->unk8) == 0) {
+        return;
+    }
+    prop = checked_cast<KDProp *, MKProp>(*(MKProp **) KDProperty::pInstanceMem);
+    flags = M2C_FIELD(M2C_FIELD(prop, void **, 0x80), s32 *, 0x2C);
+    if ((flags & 1) == 0) {
+        prop = checked_cast<KDProp *, MKProp>(*(MKProp **) KDProperty::pInstanceMem);
+        flags = M2C_FIELD(M2C_FIELD(prop, void **, 0x80), s32 *, 0x2C);
+        if ((flags & 2) == 0) {
+            return;
+        }
+    }
+    var_r30 = 0;
+    var_r29 = 0;
+    if ((s32) this->unk18 > 1) {
 loop_4:
-            var_f1_79 = MKRand_Float((int *) &gViewSeed, 0.0f, this->unk20);
-            temp_r5_80 = this->unk18;
-            var_r6_81 = 0;
-            var_r3_82 = 0;
-            var_ctr_83 = temp_r5_80;
-            if (temp_r5_80 > 0) {
+        var_f1 = MKRand_Float((int *) &gViewSeed, 0.0f, this->unk20);
+        temp_r5 = this->unk18;
+        var_r6 = 0;
+        var_r3 = 0;
+        var_ctr = temp_r5;
+        if (temp_r5 > 0) {
 loop_5:
-                temp_f0_89 = *(this->unk14 + (var_r3_82 + 4));
-                if (var_f1_79 <= temp_f0_89) {
-                    var_r30_71 = var_r6_81;
-                } else {
-                    var_f1_79 -= temp_f0_89;
-                    var_r6_81 += 1;
-                    var_r3_82 += 8;
-                    var_ctr_83 -= 1;
-                    if (var_ctr_83 != 0) {
-                        goto loop_5;
-                    }
-                }
-            }
-            var_r29_72 += 1;
-            if (var_r29_72 < temp_r5_80) {
-                temp_r3_107 = *(*KDProperty::pInstanceMem + (this->unk8 + 4));
-                if ((var_r30_71 == temp_r3_107) && ((s32) this->unk1C != temp_r3_107)) {
-                    goto loop_4;
+            temp_f0 = *(f32 *) ((s8 *) this->unk14 + (var_r3 + 4));
+            if (var_f1 <= temp_f0) {
+                var_r30 = var_r6;
+            } else {
+                var_f1 -= temp_f0;
+                var_r6 += 1;
+                var_r3 += 8;
+                var_ctr -= 1;
+                if (var_ctr != 0) {
+                    goto loop_5;
                 }
             }
         }
-        *(*KDProperty::pInstanceMem + (this->unk8 + 4)) = var_r30_71;
-        ((MKAnimScript *) (M2C_FIELD(checked_cast<KDProp *, MKProp>(*KDProperty::pInstanceMem), MKAnimScript **, 0x80)))->SetAnim(*(this->unk14 + (var_r30_71 * 8)), 1.0f, 0.0f, 0, -1);
+        var_r29 += 1;
+        if (var_r29 < temp_r5) {
+            temp_r3 = *(s32 *) (*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 4));
+            if ((var_r30 == temp_r3) && ((s32) this->unk1C != temp_r3)) {
+                goto loop_4;
+            }
+        }
     }
+    *(s32 *) (*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 4)) = var_r30;
+    prop = checked_cast<KDProp *, MKProp>(*(MKProp **) KDProperty::pInstanceMem);
+    anim = M2C_FIELD(prop, MKAnimScript **, 0x80);
+    anim->SetAnim(*(MKAnim **) ((s8 *) this->unk14 + var_r30 * 8), 1.0f, 0.0f, 0, -1);
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void AnimProperty::Command(int arg0) {
-    switch (arg0) {                                 /* irregular */
+    switch (arg0) {
+    case 1:
     case 3:
-        *(*KDProperty::pInstanceMem + this->unk8) = 1;
+        *(*(u8 **) KDProperty::pInstanceMem + this->unk8) = 1;
         return;
     case 2:
-        *(*KDProperty::pInstanceMem + this->unk8) = 0;
+        *(*(u8 **) KDProperty::pInstanceMem + this->unk8) = 0;
         return;
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[6])' does not match 'stricmp(signed char *, long *)'
+extern "C" s32 stricmp(const char *, const char *);
 s32 AnimProperty::ResolveCommand(const char *arg0) const {
-    s32 temp_r3_174;
-
-    temp_r3_174 = stricmp(arg0, "Reset") - 1;
-    return 3 & ((temp_r3_174 - temp_r3_174) - !M2C_CARRY);
+    return stricmp(arg0, "Reset") == 0 ? 3 : 0;
 }
-#endif
 
-#if 0 // DRAFT: function call 'property_cast(KDPropertyCommand *)' does not match 'property_cast<...>(T1)'
 void AnimProperty::Resolve(KDPropertySet *arg0) {
-    s32 var_r30_199;
-    s32 var_r31_200;
+    KDProperty *found;
+    s32 i;
+    s32 off;
 
-    this->unk10 = property_cast<KDAnimScriptProperty *, KDProperty *>(arg0->Find("defaultAnimScript"));
-    var_r30_199 = 0;
-    var_r31_200 = 0;
-loop_2:
-    if (var_r30_199 < (s32) this->unk18) {
-        var_r30_199 += 1;
-        *(this->unk14 + var_r31_200) = ((MKAnimScript *) (M2C_FIELD(this->unk10, MKAnimScript **, 0x10)))->GetAnim(*(this->unk14 + var_r31_200));
-        var_r31_200 += 8;
-        goto loop_2;
+    found = (KDProperty *) arg0->Find("defaultAnimScript");
+    this->unk10 = property_cast<KDAnimScriptProperty *, KDProperty *>(found);
+    i = 0;
+    off = 0;
+    while (i < (s32) this->unk18) {
+        i += 1;
+        *(void **) ((s8 *) this->unk14 + off) = ((MKAnimScript *) M2C_FIELD(this->unk10, MKAnimScript **, 0x10))->GetAnim(*(const char **) ((s8 *) this->unk14 + off));
+        off += 8;
     }
 }
-#endif
 
 void AnimProperty::Deinit() {
     void *temp_r31_230;
@@ -130,65 +136,53 @@ void AnimProperty::Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal type
 void AnimProperty::LoadDone() {
-    f32 temp_f0_274;
-    f32 var_f2_256;
-    s32 temp_r0_262;
-    s32 var_r4_258;
-    s32 var_r6_257;
+    f32 temp_f0;
+    f32 max;
+    s32 i;
+    s32 off;
 
-    var_f2_256 = 0.0f;
-    var_r6_257 = 0;
-    var_r4_258 = 0;
-loop_4:
-    if (var_r6_257 < (s32) this->unk18) {
-        temp_r0_262 = var_r4_258 + 4;
-        if (*(this->unk14 + temp_r0_262) > var_f2_256) {
-            this->unk1C = var_r6_257;
-            var_f2_256 = *(this->unk14 + temp_r0_262);
+    max = 0.0f;
+    i = 0;
+    off = 0;
+    while (i < (s32) this->unk18) {
+        if (*(f32 *) ((s8 *) this->unk14 + off + 4) > max) {
+            this->unk1C = i;
+            max = *(f32 *) ((s8 *) this->unk14 + off + 4);
         }
-        var_r6_257 += 1;
-        temp_f0_274 = *(this->unk14 + (var_r4_258 + 4));
-        var_r4_258 += 8;
-        this->unk20 += temp_f0_274;
-        goto loop_4;
+        i += 1;
+        temp_f0 = *(f32 *) ((s8 *) this->unk14 + off + 4);
+        off += 8;
+        this->unk20 += temp_f0;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 s32 AnimProperty::LoadLine(MKIniLine *arg0) {
-    MKIniLine *var_r30_306;
-    s32 temp_r0_336;
-    s32 temp_r31_310;
-    s32 var_r31_325;
-    void *var_r3_318;
+    MKIniLine *line;
+    s32 size;
+    s32 off;
+    void *mem;
 
     if (arg0->IsField("AnimNames") != 0) {
-        var_r30_306 = arg0->unkC->GetSubLine(arg0);
+        line = arg0->unkC->GetSubLine(arg0);
         this->unk18 = arg0->GetNmbrOfSubLines();
-        temp_r31_310 = this->unk18 * 8;
+        size = this->unk18 * 8;
         if (MKHeap::Current() != NULL) {
-            var_r3_318 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_310, NULL, 0);
+            mem = MKHeap::Current()->Alloc(size, NULL, 0);
         } else {
-            var_r3_318 = malloc(temp_r31_310);
+            mem = malloc(size);
         }
-        this->unk14 = var_r3_318;
-        var_r31_325 = 0;
-loop_6:
-        if (var_r30_306 != NULL) {
-            *(this->unk14 + var_r31_325) = var_r30_306->GetFieldName();
-            temp_r0_336 = var_r31_325 + 4;
-            var_r31_325 += 8;
-            *(this->unk14 + temp_r0_336) = var_r30_306->GetFloat(0);
-            var_r30_306 = var_r30_306->unkC->GetNextLine(var_r30_306);
-            goto loop_6;
+        this->unk14 = mem;
+        off = 0;
+        while (line != NULL) {
+            *(s8 **) ((s8 *) this->unk14 + off) = line->GetFieldName();
+            *(f32 *) ((s8 *) this->unk14 + off + 4) = line->GetFloat(0);
+            off += 8;
+            line = line->unkC->GetNextLine(line);
         }
     }
     return 0;
 }
-#endif
 
 void AnimProperty::Init(char *arg0) {
     this->unk4 = (signed char *) (arg0);

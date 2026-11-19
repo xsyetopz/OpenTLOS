@@ -128,7 +128,7 @@ s32 Credits_Active() {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'Credits_PopulatePage'
+void Credits_PopulatePage();
 void Credits_Message(MKMessage *arg0) {
     MKIniLine *temp_r3_263;
     MKIniLine *temp_r4_246;
@@ -139,7 +139,7 @@ void Credits_Message(MKMessage *arg0) {
     switch (temp_r0_220) {                          /* irregular */
     case 0xB5:
         if ((MKIni *) pCredits != NULL) {
-            ((TimeDeltaModifier *) (&gb + 0x2CC))->Reset();
+            ((TimeDeltaModifier *) ((s8 *) &gb + 0x2CC))->Reset();
             M2C_FIELD(pCredits, s8 *, 0xF0) = 1;
             M2C_FIELD(pCredits, s32 *, 0xA8) = 0;
             M2C_FIELD(pCredits, MKIniLine **, 0xA0) = pCredits->GetFirstLine();
@@ -165,31 +165,12 @@ loop_7:
         break;
     }
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
+extern "C" s32 atoi(const char *);
+void DummyRenderText(TextCharStrip **, int, const Matrix &);
 void Credits_Draw() {
     Matrix sp90;
-    f64 sp88;
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    f64 sp68;
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
+    MKVector3 vec;
     MKIniLine *temp_r28_486;
     MKIniLine *temp_r28_529;
     MKIniLine *temp_r3_505;
@@ -198,8 +179,8 @@ void Credits_Draw() {
     MKIniLine *var_r29_333;
     f32 var_f27_363;
     f32 var_f31_362;
+    s8 *var_r28_409;
     s32 temp_cr0_eq_532;
-    s32 var_r28_409;
     u8 temp_r0_411;
 
     if (((MKIni *) pCredits != NULL) && ((u8) M2C_FIELD(pCredits, u8 *, 0xF0) != 0)) {
@@ -212,12 +193,10 @@ void Credits_Draw() {
         }
         var_r29_333 = M2C_FIELD(pCredits, MKIniLine **, 0xA0);
         sp90.SetIdentity();
-        sp40 = 320.0f;
-        sp44 = M2C_FIELD(pCredits, f32 *, 0xEC);
-        sp48 = 0.0f;
-        sp80 = (f64) sp40;
-        sp88 = (f64) sp48;
-        sp90.Translate(&sp90, *((MKVector3 *) &sp80));
+        vec.unk0 = 320.0f;
+        vec.unk4 = M2C_FIELD(pCredits, f32 *, 0xEC);
+        vec.unk8 = 0.0f;
+        sp90.Translate(&sp90, vec);
 loop_31:
         if ((sp90.unk34 < 512.0f) && (var_r29_333 != NULL)) {
             var_f31_362 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->GetHeight();
@@ -231,63 +210,57 @@ loop_31:
             } else if (var_r29_333->IsField("space") != 0) {
                 var_f27_363 = M2C_FIELD(pCredits, f32 *, 0xB8);
             }
-            var_r28_409 = var_r29_333->GetString(0);
+            var_r28_409 = (s8 *) var_r29_333->GetString(0);
             if (var_r28_409 != 0) {
                 temp_r0_411 = *var_r28_409;
                 if (((s8) temp_r0_411 >= 0x30) && ((s8) temp_r0_411 <= 0x39)) {
-                    var_r28_409 = *(gpTranslation_StringArray + (atoi() * 4));
+                    var_r28_409 = ((s8 **) gpTranslation_StringArray)[atoi((const char *) var_r28_409)];
                 }
             }
-            if ((u32) var_r28_409 != 0U) {
-                var_f31_362 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString((s8 *) var_r28_409, 512.0f, 256.0f * var_f27_363, &sp90, 9, 0x80808080U, var_f27_363, var_f27_363, DummyRenderText, 0U);
-                sp38 = 0.0f;
-                sp30 = 0.0f;
-                sp34 = 0.5f * var_f31_362;
-                sp78 = (f64) sp38;
-                sp70 = (f64) sp30;
-                sp90.Translate(&sp90, *((MKVector3 *) &sp70));
-                ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString((s8 *) var_r28_409, 512.0f, var_f31_362, &sp90, 9, 0x80808080U, var_f27_363, var_f27_363, NULL, 0U);
-                sp28 = 0.0f;
-                sp20 = 0.0f;
-                sp24 = -0.5f * var_f31_362;
-                sp68 = (f64) sp28;
-                sp60 = (f64) sp20;
-                sp90.Translate(&sp90, *((MKVector3 *) &sp60));
+            if (var_r28_409 != NULL) {
+                var_f31_362 = ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString((const char *) var_r28_409, 512.0f, 256.0f * var_f27_363, &sp90, 9, 0x80808080U, var_f27_363, var_f27_363, DummyRenderText, 0U);
+                vec.unk0 = 0.0f;
+                vec.unk4 = 0.5f * var_f31_362;
+                vec.unk8 = 0.0f;
+                sp90.Translate(&sp90, vec);
+                ((MKFont *) (M2C_FIELD(&gb, MKFont **, 0x318)))->DrawString((const char *) var_r28_409, 512.0f, var_f31_362, &sp90, 9, 0x80808080U, var_f27_363, var_f27_363, NULL, 0U);
+                vec.unk0 = 0.0f;
+                vec.unk4 = -0.5f * var_f31_362;
+                vec.unk8 = 0.0f;
+                sp90.Translate(&sp90, vec);
             }
             if ((var_f31_362 + sp90.unk34) < 0.0f) {
                 temp_r28_486 = M2C_FIELD(pCredits, MKIniLine **, 0xA0);
                 M2C_FIELD(pCredits, MKIniLine **, 0xA0) = temp_r28_486->unkC->GetNextLine(temp_r28_486);
-                if (((MKIniLine *) M2C_FIELD(pCredits, MKIniLine **, 0xA0) == NULL) && ((MKIni *) temp_r28_486->unkC == (MKIni *) pCredits) && (((MKIni *) (pCredits + 0x50))->GetFirstLine() != NULL)) {
-                    temp_r3_505 = ((MKIni *) (pCredits + 0x50))->GetFirstLine();
+                if ((M2C_FIELD(pCredits, MKIniLine **, 0xA0) == NULL) && ((MKIni *) temp_r28_486->unkC == (MKIni *) pCredits) && (((MKIni *) ((s8 *) pCredits + 0x50))->GetFirstLine() != NULL)) {
+                    temp_r3_505 = ((MKIni *) ((s8 *) pCredits + 0x50))->GetFirstLine();
                     M2C_FIELD(pCredits, MKIniLine **, 0xA0) = temp_r3_505->unkC->GetSubLine(temp_r3_505);
                 }
                 M2C_FIELD(pCredits, f32 *, 0xEC) = (f32) (M2C_FIELD(pCredits, f32 *, 0xEC) + var_f31_362);
             }
-            sp18 = 0.0f;
-            sp10 = 0.0f;
-            sp14 = var_f31_362;
-            sp58 = (f64) sp18;
-            sp50 = (f64) sp10;
-            sp90.Translate(&sp90, *((MKVector3 *) &sp50));
+            vec.unk0 = 0.0f;
+            vec.unk4 = var_f31_362;
+            vec.unk8 = 0.0f;
+            sp90.Translate(&sp90, vec);
             temp_r28_529 = var_r29_333;
             temp_r3_531 = var_r29_333->unkC->GetNextLine(var_r29_333);
             temp_cr0_eq_532 = temp_r3_531 == NULL;
             var_r29_333 = temp_r3_531;
-            if ((temp_cr0_eq_532 != 0) && ((MKIni *) temp_r28_529->unkC == (MKIni *) pCredits) && (((MKIni *) (pCredits + 0x50))->GetFirstLine() != NULL)) {
-                temp_r3_545 = ((MKIni *) (pCredits + 0x50))->GetFirstLine();
+            if ((temp_cr0_eq_532 != 0) && ((MKIni *) temp_r28_529->unkC == (MKIni *) pCredits) && (((MKIni *) ((s8 *) pCredits + 0x50))->GetFirstLine() != NULL)) {
+                temp_r3_545 = ((MKIni *) ((s8 *) pCredits + 0x50))->GetFirstLine();
                 var_r29_333 = temp_r3_545->unkC->GetSubLine(temp_r3_545);
             }
             goto loop_31;
         }
     }
 }
-#endif
 
 void DummyRenderText(TextCharStrip **arg0, int arg1, const Matrix &arg2) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKIni' to 'DialogBoxContext *'
+void Credits_PopulatePage(void);
+
 s32 Credits_Update() {
     s32 spC;
     s32 sp8;
@@ -304,7 +277,7 @@ s32 Credits_Update() {
     s32 var_r3_683;
     s32 var_r5_682;
     u8 var_r31_599;
-    void *temp_r3_745;
+    MKProp *temp_r3_745;
     void *temp_r4_694;
 
     if (((MKIni *) pCredits == NULL) || ((u8) M2C_FIELD(pCredits, u8 *, 0xF0) == 0)) {
@@ -321,13 +294,13 @@ s32 Credits_Update() {
             var_r28_616 = 0;
 loop_10:
             if (var_r28_616 < 0xA) {
-                temp_r3_630 = *(pCredits + (var_r30_615 + 0xBC));
+                temp_r3_630 = M2C_FIELD(pCredits, DialogBoxContext **, var_r30_615 + 0xBC);
                 if (temp_r3_630 != NULL) {
                     DialogBox_ReleaseContext(temp_r3_630);
                     temp_r0_621 = var_r30_615 + 0xBC;
                     var_r28_616 += 1;
                     var_r30_615 += 4;
-                    *(pCredits + temp_r0_621) = 0;
+                    M2C_FIELD(pCredits, DialogBoxContext **, temp_r0_621) = NULL;
                     goto loop_10;
                 }
             }
@@ -351,7 +324,7 @@ loop_10:
                 var_r3_683 = 0;
 loop_19:
                 if (var_r5_682 < 0xA) {
-                    temp_r4_694 = *(pCredits + (var_r3_683 + 0xBC));
+                    temp_r4_694 = M2C_FIELD(pCredits, void **, var_r3_683 + 0xBC);
                     if (temp_r4_694 != NULL) {
                         M2C_FIELD(temp_r4_694, f32 *, 0x2C) = (f32) (temp_f1_612 / 0.5f);
                         var_r5_682 += 1;
@@ -383,17 +356,16 @@ block_21:
         break;
     }
     if (var_r31_599 != 0) {
-        temp_r3_745 = M2C_FIELD(pCredits, void **, 0xA4);
+        temp_r3_745 = M2C_FIELD(pCredits, MKProp **, 0xA4);
         if (temp_r3_745 != NULL) {
             spC = 0;
             sp8 = 0xA5;
-            M2C_FIELD(M2C_FIELD(temp_r3_745, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+            temp_r3_745->Message((MKMessage *) &sp8);
         }
         M2C_FIELD(pCredits, u8 *, 0xF0) = 0U;
     }
     return var_r31_599 == 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void Credits_PopulatePage() {
@@ -521,7 +493,6 @@ void Credits_AddPageLine(const char *arg0, float arg1, float arg2) {
     M2C_FIELD(temp_r3_1073, s32 *, 4) = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKIni' to 'DialogBoxContext *'
 void Credits_Deinit() {
     DialogBoxContext *temp_r3_1128;
     MKIni *temp_r30_1134;
@@ -535,13 +506,13 @@ void Credits_Deinit() {
         var_r31_1114 = 0;
 loop_3:
         if (var_r29_1112 < 0xA) {
-            temp_r3_1128 = *(pCredits + (var_r31_1114 + 0xBC));
+            temp_r3_1128 = M2C_FIELD(pCredits, DialogBoxContext **, var_r31_1114 + 0xBC);
             if (temp_r3_1128 != NULL) {
                 DialogBox_ReleaseContext(temp_r3_1128);
                 temp_r0_1119 = var_r31_1114 + 0xBC;
                 var_r29_1112 += 1;
                 var_r31_1114 += 4;
-                *(pCredits + temp_r0_1119) = 0;
+                M2C_FIELD(pCredits, DialogBoxContext **, temp_r0_1119) = NULL;
                 goto loop_3;
             }
         }
@@ -555,9 +526,7 @@ loop_3:
         pCredits = NULL;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void Credits_Init(MKProp *arg0) {
     MKIni *var_r3_1176;
 
@@ -575,14 +544,13 @@ void Credits_Init(MKProp *arg0) {
     M2C_FIELD(pCredits, f32 *, 0xB0) = 1.0f;
     M2C_FIELD(pCredits, f32 *, 0xB4) = 1.0f;
     M2C_FIELD(pCredits, f32 *, 0xB8) = 1.0f;
-    pCredits->Init("credits.ini", 0, platformCode);
+    pCredits->Init("credits.ini", 0, (const char *) platformCode);
     if ((s32) gDisplay == 0) {
-        ((MKIni *) (pCredits + 0x50))->Init("credits-pal.ini", 0, platformCode);
+        ((MKIni *) ((s8 *) pCredits + 0x50))->Init("credits-pal.ini", 0, (const char *) platformCode);
     }
     M2C_FIELD(pCredits, MKProp **, 0xA4) = arg0;
-    if ((s32) *MKHeap::tempMemOverride > 0) {
+    if (*(s32 *) MKHeap::tempMemOverride > 0) {
         MKHeap::DeactivateTempMemOverride();
     }
     DialogBox_bAllowOverCutscene = 1;
 }
-#endif

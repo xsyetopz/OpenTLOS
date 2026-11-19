@@ -125,7 +125,7 @@ void ElementalShield::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, long, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, unsigned in
 void *ElementalShield::Update() {
     s8 spC1;
     s8 spC0;
@@ -153,7 +153,7 @@ void *ElementalShield::Update() {
     f64 sp40;
     f32 sp38;
     f64 sp30;
-    f64 sp20;
+    MKVector3 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -235,9 +235,8 @@ block_29:
                 sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spC0 = 0;
                 if (this != NULL) {
-                    ((MKProp *) &sp20)->GetPos();
-                    spA0 = sp20;
-                    spA8 = sp28;
+                    sp20 = GetPos();
+                    *(MKVector3 *) &spA0 = sp20;
                 } else {
                     spA0 = 0.0f;
                     (*(f32 *) ((u8 *) &sp9C + 0x8)) = 0.0f;

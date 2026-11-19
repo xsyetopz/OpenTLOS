@@ -88,7 +88,6 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg1, float arg2, ContextInfo *arg3, MKCollisionResult *arg4, const MKVector3 &arg5) {
     f64 sp208;
     f64 sp200;
@@ -362,7 +361,6 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
         break;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp18'
 void CollisionObject::SortResults() {
@@ -466,7 +464,7 @@ void CollisionObject::PerformPushOut(MKVector3 *arg0) {
     s8 spC0;
     f64 spB8;                                       /* compiler-managed */
     f64 spB0;                                       /* compiler-managed */
-    u32 spAC;
+    MKProp *spAC;
     s32 spA8;
     f64 spA0;
     f64 sp98;
@@ -484,19 +482,19 @@ void CollisionObject::PerformPushOut(MKVector3 *arg0) {
     f32 sp30;
     f32 sp2C;
     f32 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
     MKProp *temp_r3_1039;
     MKProp *temp_r3_942;
+    MKProp *var_r0_930;
+    MKProp *var_r4_989;
     f32 *temp_r6_892;
     f32 temp_f30_894;
     s32 temp_r3_897;
     s32 var_r27_916;
     s32 var_r30_915;
-    u32 var_r0_930;
-    u32 var_r4_989;
     u8 *var_r26_914;
     void *temp_r3_927;
     void *temp_r3_945;
@@ -519,12 +517,12 @@ loop_22:
             if (var_r30_915 < temp_r3_897) {
                 if ((u8) *var_r26_914 != 0) {
                     temp_r4_923 = &spD8 + var_r27_916;
-                    if (((u8) M2C_FIELD(temp_r4_923, u8 *, 0x50) != 0) && (temp_r3_927 = M2C_FIELD(temp_r4_923, void **, 0x48), ((temp_r3_927 == NULL) == 0)) && (var_r0_930 = M2C_FIELD(temp_r3_927, u32 *, 8), ((var_r0_930 == 0U) == 0))) {
+                    if (((u8) M2C_FIELD(temp_r4_923, u8 *, 0x50) != 0) && (temp_r3_927 = M2C_FIELD(temp_r4_923, void **, 0x48), ((temp_r3_927 == NULL) == 0)) && (var_r0_930 = M2C_FIELD(temp_r3_927, MKProp **, 8), ((var_r0_930 == NULL) == 0))) {
 
                     } else {
-                        var_r0_930 = 0U;
+                        var_r0_930 = NULL;
                     }
-                    if ((var_r0_930 != 0U) && (M2C_FIELD(temp_r4_923, s32 *, 0x44) & 0x40000000)) {
+                    if ((var_r0_930 != NULL) && (M2C_FIELD(temp_r4_923, s32 *, 0x44) & 0x40000000)) {
                         temp_r3_942 = this->unk470;
                         if (temp_r3_942 != NULL) {
                             temp_r3_945 = temp_r3_942->unk8;
@@ -542,10 +540,10 @@ loop_22:
                             sp48 *= 5.634608575e-315;
                             sp84 = 0;
                             sp50 = (f32) sp50 * 500.0f;
-                            if (((u8) M2C_FIELD(temp_r4_923, u8 *, 0x50) != 0) && (temp_r3_986 = M2C_FIELD(temp_r4_923, void **, 0x48), ((temp_r3_986 == NULL) == 0)) && (var_r4_989 = M2C_FIELD(temp_r3_986, u32 *, 8), ((var_r4_989 == 0U) == 0))) {
+                            if (((u8) M2C_FIELD(temp_r4_923, u8 *, 0x50) != 0) && (temp_r3_986 = M2C_FIELD(temp_r4_923, void **, 0x48), ((temp_r3_986 == NULL) == 0)) && (var_r4_989 = M2C_FIELD(temp_r3_986, MKProp **, 8), ((var_r4_989 == NULL) == 0))) {
 
                             } else {
-                                var_r4_989 = 0U;
+                                var_r4_989 = NULL;
                             }
                             sp80 = 7;
                             spA8 = 1;
@@ -561,10 +559,9 @@ loop_22:
                             sp98 = M2C_FIELD(&MKVector3::one, f64 *, 0);
                             spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                             spD0 = 0;
-                            if (var_r4_989 != 0U) {
-                                ((MKProp *) &sp18)->GetPos();
-                                spB0 = sp18;
-                                spB8 = sp20;
+                            if (var_r4_989 != NULL) {
+                                sp18 = var_r4_989->GetPos();
+                                *(MKVector3 *) &spB0 = sp18;
                             } else {
                                 spB0 = 0.0f;
                                 (*(f32 *) ((u8 *) &spAC + 0x8)) = 0.0f;
@@ -588,7 +585,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'double'
 void CollisionObject::ResolveCollisionsQuick(MKVector3 *arg0, MKVector3 *arg1, int arg2) {
     MKCollisionResult sp1D0;
     u8 sp1B0;
@@ -913,7 +910,7 @@ loop_63:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'double' to 'const MKVector3 &'
 void CollisionObject::ResolveCollisions(MKVector3 *arg0, MKVector3 *arg1, int arg2) {
     u8 sp158;
     s32 sp154;

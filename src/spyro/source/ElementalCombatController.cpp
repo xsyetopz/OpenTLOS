@@ -48,8 +48,8 @@ M2C_UNK __destroy_arr(EventMessage *, EventMessage *(*)(EventMessage *, s16), M2
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'long'
-extern s32 gb;
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'HeroInterface *'
+extern HeroInterface *gb;
 #endif
 
 void ElementalCombatController::AttemptSpawn() {
@@ -77,13 +77,13 @@ void ElementalCombatController::AttemptSpawn() {
     }
 }
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
+#if 0 // DRAFT: pointer/array required
 void ElementalCombatController::SetupSpawnPoints() {
     f64 sp30;
     f64 sp28;
     f64 sp20;
     f64 sp18;
-    HeroInterface sp8;
+    MKVector3 sp8;
     Matrix *temp_r25_183;
     s32 var_r29_153;
     s32 var_r31_151;
@@ -103,9 +103,8 @@ loop_2:
         sp28 = M2C_FIELD(temp_r4_163, f64 *, 0);
         sp30 = M2C_FIELD(temp_r4_163, f64 *, 8);
         M2C_FIELD(M2C_FIELD(temp_r26_159, void **, 0x124), s32 *, 4) = (s32) (this->unk3E0 | 0x4200);
-        sp8.GetPos();
-        sp18 = M2C_BITWISE(f64, sp8);
-        sp20 = sp10;
+        sp8 = gb->GetPos();
+        *(MKVector3 *) &sp18 = sp8;
         (*(f32 *) ((u8 *) &sp18 + 0x4)) = (*(f32 *) ((u8 *) &sp28 + 0x4));
         this->unkC8.AddSpawnPoint(((u8 *) temp_r26_159) + 0x120);
         temp_r25_183 = (Matrix *) (((u8 *) temp_r26_159) + 0x130);

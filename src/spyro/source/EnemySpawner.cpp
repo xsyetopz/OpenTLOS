@@ -129,21 +129,19 @@ void EnemySpawner::Reset() {
     this->unk90.SetDefaults();
 }
 
-#if 0 // DRAFT: illegal operand
 s32 EnemySpawner::LoadDone() {
     MKProp::LoadDone();
     if (!(this->unk10 & 0x160000)) {
         PropFlagsClear((unsigned int *) &this->unk10, 0x80000U);
     }
-    this->unk50.SetRotationPYR(MKProp::loadInfo + 0x50);
+    this->unk50.SetRotationPYR(M2C_FIELD(&MKProp::loadInfo, MKVector3 *, 0x50));
     this->unk50.unk30 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x40);
-    this->unk50.unk34 = M2C_BITWISE(f32, MKProp::loadInfo.__vptr);
+    this->unk50.unk34 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x44);
     this->unk50.unk38 = MKProp::loadInfo.unk48;
     this->unk50.unk3C = 1.0f;
     this->unk90.LoadDone((u32) this->unk18);
     this->unk90.AddSpawnPointBegin(this->unkE0);
 }
-#endif
 
 s32 EnemySpawner::LoadLine(MKIniLine *arg0) {
     if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0) || (arg0->LoadInt("iMaxSpawnPoints", (int *) &this->unkE0, 0) != 0) || (DataMap_LoadLine(arg0, "EnemyType", &enemyTypeDataMap, (unsigned int *) &this->unkE4) != 0) || (this->unk90.LoadLine(arg0) != 0)) {
@@ -157,7 +155,7 @@ void EnemySpawner::Deinit() {
     this->unk90.Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Action'
+void EnemySpawnPool_Action(SpawnAction, int, MKProp **, SpawnerObject *);
 void EnemySpawner::Init() {
     MKProp::Init();
     this->unk50.SetIdentity();
@@ -165,7 +163,6 @@ void EnemySpawner::Init() {
     this->unk10 |= 0x80000;
     this->unk90.Init(EnemySpawnPool_Action, 0);
 }
-#endif
 
 void EnemySpawnerDescriptor::Deinit() {
     MKPropDescriptor::Deinit();

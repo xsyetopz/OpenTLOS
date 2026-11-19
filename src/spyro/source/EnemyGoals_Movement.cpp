@@ -89,10 +89,10 @@ void EnemyGoal_Jump::Terminate() {
 
 #if 0 // DRAFT: undefined identifier 'unk8C0'
 u8 EnemyGoal_Jump::Update() {
-    M2C_UNK sp98;
+    MKVector3 sp98;
     f64 sp90;
     f64 sp88;
-    f64 sp78;
+    MKVector3 sp78;
     f64 sp70;
     f64 sp68;
     f64 sp60;
@@ -151,15 +151,15 @@ u8 EnemyGoal_Jump::Update() {
         }
     }
     if (var_r30_70 != 0) {
-        ((AITargetData *) &sp98)->GetPos();
+        sp98 = this->unkC->unk8C0.GetPos();
         temp_r5_91 = this->unkC;
         temp_f31_100 = this->unk14;
-        temp_f30_102 = ((sp9C - temp_r5_91->unk588.unk4) + this->unk18) - M2C_FIELD(temp_r5_91->unk5D8, f32 *, 8);
-        ((AITargetData *) &sp78)->GetDir();
+        temp_f30_102 = ((sp98.unk4 - temp_r5_91->unk588.unk4) + this->unk18) - M2C_FIELD(temp_r5_91->unk5D8, f32 *, 8);
+        sp78 = temp_r5_91->unk8C0.GetDir();
         sp28 = sp78 * (f64) temp_f31_100;
         temp_r3_111 = this->unkC;
         sp88 = sp28;
-        sp30 = sp80 * temp_f31_100;
+        sp30 = sp78.unk8 * temp_f31_100;
         M2C_FIELD(temp_r3_111, f64 *, 0x598) = sp28;
         M2C_FIELD(temp_r3_111, f64 *, 0x5A0) = (f64) sp30;
         temp_r3_117 = this->unkC;
@@ -190,8 +190,8 @@ u8 EnemyGoal_Jump::Update() {
             temp_r6_172 = this->unkC;
             if ((u32) M2C_FIELD(temp_r6_172->unk630, u32 *, 0x20) == (u32) temp_r6_172->unkA50->unk20) {
                 temp_f31_181 = this->unk1C;
-                sp38.operator*(M2C_FIELD(temp_r6_172->unk5D8, f32 *, 8));
-                sp48.operator*(gUpdateTimeDelta);
+                sp38 = ((MKVector3 *) &temp_r6_172->unkD0)->operator*(M2C_FIELD(temp_r6_172->unk5D8, f32 *, 8));
+                sp48 = sp38.operator*(gUpdateTimeDelta);
                 temp_f0_191 = sp48 * (f64) temp_f31_181;
                 sp8 = temp_f0_191;
                 temp_r3_196 = this->unkC;
@@ -253,7 +253,7 @@ block_32:
 
 #if 0 // DRAFT: undefined identifier 'unk8C0'
 void EnemyGoal_Jump::Activate() {
-    f64 sp8;
+    MKVector3 sp8;
     Character *temp_r3_328;
     Character *temp_r3_336;
     Character *temp_r4_346;
@@ -272,10 +272,9 @@ void EnemyGoal_Jump::Activate() {
     this->unkC->unk8C0.Set(*this->unk10, 0U);
     temp_r4_346 = this->unkC;
     temp_r4_346->unk8C0.Update(temp_r4_346->unk588);
-    ((AITargetData *) &sp8)->GetDir();
+    sp8 = this->unkC->unk8C0.GetDir();
     temp_r4_354 = this->unkC;
-    M2C_FIELD(temp_r4_354, f64 *, 0xE0) = sp8;
-    M2C_FIELD(temp_r4_354, f64 *, 0xE8) = sp10;
+    M2C_FIELD(temp_r4_354, MKVector3 *, 0xE0) = sp8;
     temp_r4_354->unk6B5 |= 0x40;
 }
 #endif
@@ -738,7 +737,11 @@ void EnemyGoal_MoveToTarget::Terminate() {
 
 #if 0 // DRAFT: undefined identifier 'unkA38'
 u8 EnemyGoal_MoveToTarget::Update() {
-    AITargetData sp48;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    MKVector3 sp48;
     f64 sp40;
     f64 sp38;
     f32 sp30;
@@ -773,9 +776,9 @@ u8 EnemyGoal_MoveToTarget::Update() {
     temp_r3_1337 = this->unk10;
     if (temp_r3_1337 != NULL) {
         temp_r5_1342 = this->unkC->unk8;
-        sp48.unk10 = M2C_FIELD(temp_r5_1342, f64 *, 0x30);
-        sp48.unk18 = M2C_FIELD(temp_r5_1342, f64 *, 0x38);
-        temp_r3_1337->Update(*((MKVector3 *) &sp48.unk10));
+        sp58 = M2C_FIELD(temp_r5_1342, f64 *, 0x30);
+        sp60 = M2C_FIELD(temp_r5_1342, f64 *, 0x38);
+        temp_r3_1337->Update(*((MKVector3 *) &sp58));
     }
     UpdateStuckness();
     temp_r3_1351 = this->unk10;
@@ -805,12 +808,12 @@ u8 EnemyGoal_MoveToTarget::Update() {
             sp2C = 50.0f + temp_f30_1427;
             sp40 = (f64) sp30;
             sp38 = (f64) sp28;
-            sp48.GetPos();
-            temp_f0_1444 = sp48.unk0 + sp38;
+            sp48 = this->unk10->GetPos();
+            temp_f0_1444 = sp48 + sp38;
             sp18 = temp_f0_1444;
-            sp48.unk20 = temp_f0_1444;
+            sp68 = temp_f0_1444;
             sp20 = sp48.unk8 + (f32) sp40;
-            sp48.unk28 = (f64) sp20;
+            sp70 = (f64) sp20;
             if (this->unk10->GetDist() <= this->unk18) {
                 this->unk8 = 2;
                 return this->unk8;
@@ -844,7 +847,7 @@ u8 EnemyGoal_MoveToTarget::Update() {
                     spC = M2C_FIELD(var_r3_1489, u8 *, 4);
                     M2C_FIELD(var_r3_1489, u8 *, 4) = 0U;
                 }
-                if (MKCollision_SphereCollide(*((MKVector3 *) &sp48.unk20), temp_f30_1427, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0) {
+                if (MKCollision_SphereCollide(*((MKVector3 *) &sp68), temp_f30_1427, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0) {
                     this->unk8 = 3;
                     if (sp8 != NULL) {
                         M2C_FIELD(sp8, u8 *, 4) = spC;
@@ -1270,14 +1273,15 @@ void EnemyGoal_FollowPath::Reset() {
     this->unk10 = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp30'
+#if 0 // DRAFT: undefined identifier 'unk800'
 u8 EnemyGoal_Strafe::Update() {
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f32 sp20;
     f64 sp18;
-    M2C_UNK sp8;
+    MKVector3 sp8;
+    Character *temp_r30_2513;
     Character *temp_r3_2475;
     Character *temp_r3_2542;
     Character *temp_r3_2551;
@@ -1286,6 +1290,7 @@ u8 EnemyGoal_Strafe::Update() {
     u8 var_r29_2515;
     u8 var_r30_2459;
     void *temp_r3_2455;
+    void *temp_r4_2490;
 
     ActivateIfInactive();
     temp_r3_2455 = this->unk10;
@@ -1307,20 +1312,21 @@ block_6:
         sp38 = temp_f0_2480;
         sp20 = temp_r3_2475->unk588.unk8 + temp_r3_2475->unk98;
         sp40 = (f64) sp20;
-        if ((void *) this->unk10 != NULL) {
-            ((AITargetData *) &sp28)->GetDir();
+        temp_r4_2490 = this->unk10;
+        if (temp_r4_2490 != NULL) {
+            sp28 = ((AITargetData *) temp_r4_2490)->GetDir();
             temp_r4_2495 = this->unkC;
-            M2C_FIELD(temp_r4_2495, f64 *, 0xE0) = sp28;
-            M2C_FIELD(temp_r4_2495, f64 *, 0xE8) = sp30;
+            M2C_FIELD(temp_r4_2495, MKVector3 *, 0xE0) = sp28;
             temp_r4_2495->unk6B5 |= 0x40;
         }
         if (this->unkC->HasAnimFinished() != 0) {
             this->unk8 = 2;
         } else {
+            temp_r30_2513 = this->unkC;
             var_r29_2515 = 0;
-            if (this->unkC->unk800.IsPointWithin(*((MKVector3 *) &sp38)) != 0) {
-                ((EnemyRegion *) &sp8)->GetRegionPos();
-                if ((f32) fabs(spC - (*(f32 *) ((u8 *) &sp38 + 0x4))) <= 500.0f) {
+            if (temp_r30_2513->unk800.IsPointWithin(*((MKVector3 *) &sp38)) != 0) {
+                sp8 = temp_r30_2513->unk800.GetRegionPos();
+                if ((f32) fabs(sp8.unk4 - (*(f32 *) ((u8 *) &sp38 + 0x4))) <= 500.0f) {
                     var_r29_2515 = 1;
                 }
             }
@@ -1367,7 +1373,7 @@ void EnemyGoal_BackupFromTarget::Terminate() {
 u8 EnemyGoal_BackupFromTarget::Update() {
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f64 sp8;
     AITargetData *temp_r3_2639;
@@ -1401,10 +1407,9 @@ u8 EnemyGoal_BackupFromTarget::Update() {
         sp28 = temp_f0_2708;
         sp10 = temp_r3_2703->unk588.unk8 + temp_r3_2703->unk98;
         sp30 = (f64) sp10;
-        ((AITargetData *) &sp18)->GetDir();
+        sp18 = this->unk10->GetDir();
         temp_r4_2721 = this->unkC;
-        M2C_FIELD(temp_r4_2721, f64 *, 0xE0) = sp18;
-        M2C_FIELD(temp_r4_2721, f64 *, 0xE8) = sp20;
+        M2C_FIELD(temp_r4_2721, MKVector3 *, 0xE0) = sp18;
         temp_r4_2721->unk6B5 |= 0x40;
         if ((this->unk10->GetDist() >= this->unk14) && ((temp_r3_2736 = this->unkC, (((u8) temp_r3_2736->unkA38->unk17E == 0) != 0)) || (((Character *) temp_r3_2736)->HasAnimFinished() != 0))) {
             this->unk8 = 2;

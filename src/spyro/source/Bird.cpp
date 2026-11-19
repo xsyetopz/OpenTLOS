@@ -90,10 +90,19 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Volume' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     f64 sp200;
-    Volume sp178;
+    f64 sp1F8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;                                      /* compiler-managed */
+    f64 sp188;                                      /* compiler-managed */
+    MKVector3 sp178;
     f64 sp170;
     f64 sp168;
     MKVector3 sp158;
@@ -169,9 +178,8 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     void *temp_r3_205;
     void *temp_r3_632;
 
-    sp178.GetRandPos();
-    sp178.unk30 = M2C_BITWISE(f64, sp178);
-    sp178.unk38 = sp178.unk8;
+    sp178 = this->unkE0.GetRandPos();
+    *(MKVector3 *) &sp1A8 = sp178;
     if ((arg1 != 0) && (temp_r5_196 = this->unk178, ((temp_r5_196 == 0) == 0))) {
         temp_r3_205 = ((u8 *) this->unk174) + (MKRand_Int((int *) &gViewSeed, 0, temp_r5_196) * 0x10);
         temp_f1_206 = M2C_FIELD(temp_r3_205, f64 *, 0);
@@ -222,12 +230,12 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         sp70 = (f32) sp20 - arg0->unk38;
         sp150 = (f64) sp70;
         sp158 = Normalise(*((MKVector3 *) &sp148));
-        *(MKVector3 *) &sp178.unk20 = sp158;
+        *(MKVector3 *) &sp198 = sp158;
         arg0->unk88 = 1;
     } else {
-        sp88 = sp178.unk30 - M2C_FIELD(arg0, f64 *, 0x30);
+        sp88 = sp1A8 - M2C_FIELD(arg0, f64 *, 0x30);
         sp138 = sp88;
-        sp90 = (f32) sp178.unk38 - arg0->unk38;
+        sp90 = (f32) sp1B0 - arg0->unk38;
         sp140 = (f64) sp90;
         var_f29_336 = ((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + ((*(f32 *) ((u8 *) &sp138 + 0x4)) * (*(f32 *) ((u8 *) &sp138 + 0x4))));
         if (var_f29_336 > 0.0f) {
@@ -274,14 +282,14 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
             var_f29_336 = 1000.0f;
         }
         var_f28_293 = var_f29_336;
-        temp_f1_417 = sp178.unk30 - M2C_FIELD(arg0, f64 *, 0x30);
+        temp_f1_417 = sp1A8 - M2C_FIELD(arg0, f64 *, 0x30);
         sp58 = temp_f1_417;
         sp118 = temp_f1_417;
-        sp60 = (f32) sp178.unk38 - arg0->unk38;
+        sp60 = (f32) sp1B0 - arg0->unk38;
         sp120 = (f64) sp60;
         sp128 = Normalise(*((MKVector3 *) &sp118));
-        *(MKVector3 *) &sp178.unk20 = sp128;
-        spF8.operator*(var_f29_336);
+        *(MKVector3 *) &sp198 = sp128;
+        spF8 = ((MKVector3 *) &sp198)->operator*(var_f29_336);
         sp48 = M2C_FIELD(arg0, f64 *, 0x30) + M2C_BITWISE(f64, spF8);
         arg0->unk88 = 0;
         sp108 = sp48;
@@ -290,19 +298,19 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         sp110 = (f64) sp50;
         sp20 = (f64) sp50;
     }
-    sp178.unk40 = M2C_FIELD(arg0, f64 *, 0x30);
-    sp178.unk40.unk8 = (f64) M2C_FIELD(arg0, f32 *, 0x38);
-    sp178.unk80 = sp18;
+    sp1B8 = M2C_FIELD(arg0, f64 *, 0x30);
+    sp1C0 = (f64) M2C_FIELD(arg0, f32 *, 0x38);
+    sp1F8 = sp18;
     sp200 = sp20;
     temp_f3_467 = arg0->unk20;
-    acos((arg0->unk28 * (f32) sp178.unk28) + ((temp_f3_467 * (f32) sp178.unk20) + (arg0->unk24 * (*(f32 *) ((u8 *) &sp178 + 0x24)))), (f32) sp178.unk20, temp_f3_467, (f32) sp178.unk28);
+    acos((arg0->unk28 * (f32) sp1A0) + ((temp_f3_467 * (f32) sp198) + (arg0->unk24 * (*(f32 *) ((u8 *) &sp198 + 0x4)))), (f32) sp198, temp_f3_467, (f32) sp1A0);
     sp78 = -arg0->unk20;
     sp7C = -arg0->unk24;
     var_r29_486 = 0;
     var_r27_488 = 0;
     sp80 = -arg0->unk28;
-    sp178.unk10 = (f64) sp78;
-    sp178.unk18 = (f64) sp80;
+    sp188 = (f64) sp78;
+    sp190 = (f64) sp80;
     do {
         sp38 = -arg0->unk20;
         sp3C = -arg0->unk24;
@@ -310,8 +318,8 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         spD8 = (f64) sp38;
         spE0 = (f64) sp40;
         KDMath_Smooth<MKVector3>(spE8, *((MKVector3 *) &spD8), (f32) var_r29_486 / 3.0f, 1.0f);
-        *(MKVector3 *) &sp178.unk10 = spE8;
-        var_f4_531 = ((f32) sp178.unk18 * (f32) sp178.unk18) + (((f32) sp178.unk10 * (f32) sp178.unk10) + ((*(f32 *) ((u8 *) &sp178 + 0x14)) * (*(f32 *) ((u8 *) &sp178 + 0x14))));
+        *(MKVector3 *) &sp188 = spE8;
+        var_f4_531 = ((f32) sp190 * (f32) sp190) + (((f32) sp188 * (f32) sp188) + ((*(f32 *) ((u8 *) &sp178 + 0x14)) * (*(f32 *) ((u8 *) &sp178 + 0x14))));
         if (var_f4_531 > 0.000001f) {
             if (var_f4_531 > 0.0f) {
                 temp_f1_537 = __frsqrte(var_f4_531);
@@ -350,13 +358,13 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         } else {
             var_f4_598 = 0.0f;
         }
-        sp178.unk10 = (f32) sp178.unk10 * var_f4_598;
+        sp188 = (f32) sp188 * var_f4_598;
         (*(f32 *) ((u8 *) &sp178 + 0x14)) *= var_f4_598;
-        sp178.unk18 = (f32) sp178.unk18 * var_f4_598;
-        spA8.operator*(var_f28_293);
-        spB8.operator*((f32) (var_r29_486 + 1) * 0.25f);
+        sp190 = (f32) sp190 * var_f4_598;
+        spA8 = ((MKVector3 *) &sp188)->operator*(var_f28_293);
+        spB8 = spA8.operator*((f32) (var_r29_486 + 1) * 0.25f);
         sp28 = M2C_FIELD(arg0, f64 *, 0x30) + M2C_BITWISE(f64, spB8);
-        temp_r3_632 = &sp178.unk40 + (var_r27_488 + 0x10);
+        temp_r3_632 = &sp1B8 + (var_r27_488 + 0x10);
         var_r29_486 += 1;
         var_r27_488 += 0x10;
         M2C_FIELD(temp_r3_632, f64 *, 0) = sp28;
@@ -370,7 +378,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     arg0->unk68.unk8 = 0.0f;
     arg0->unk68.unk4 = 0;
     do {
-        arg0->unk68.AddNode(sp178.unk40 + var_r29_648);
+        arg0->unk68.AddNode(sp1B8 + var_r29_648);
         var_r26_647 += 1;
         var_r29_648 += 0x10;
     } while (var_r26_647 < 5);
@@ -759,7 +767,7 @@ loop_63:
 f32 BirdCritter::Resolve() {
     f64 sp20;
     f64 sp18;
-    f64 sp8;
+    MKVector3 sp8;
     Bird *temp_r30_1502;
     f32 temp_f30_1514;
     s32 temp_r5_1526;
@@ -780,10 +788,9 @@ loop_7:
             temp_f30_1514 = M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C);
             temp_r30_1502->unk8C = MKRand_Float((int *) &gViewSeed, M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x88), temp_f30_1514);
         }
-        ((Volume *) &sp8)->GetRandPos();
+        sp8 = this->unkE0.GetRandPos();
         temp_r5_1526 = this->unk178;
-        sp18 = sp8;
-        sp20 = sp10;
+        *(MKVector3 *) &sp18 = sp8;
         if (temp_r5_1526 != 0) {
             temp_r4_1540 = ((u8 *) this->unk174) + (MKRand_Int((int *) &gViewSeed, 0, temp_r5_1526) * 0x10);
             sp18 = M2C_FIELD(temp_r4_1540, f64 *, 0);
@@ -824,7 +831,6 @@ s32 BirdCritter::LoadDone() {
     this->unk170 = var_r3_1631;
 }
 
-extern "C" void *malloc(u32);
 extern "C" void *malloc(u32);
 s32 BirdCritter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r30_1689;

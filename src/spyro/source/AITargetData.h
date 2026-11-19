@@ -13,9 +13,9 @@ class AITargetData {
 public:
     f32 GetDistSq(void);
     f32 GetDist(void);
-    void GetVel(void);
-    void GetDir(void);
-    void GetPos(void);
+    MKVector3 GetVel(void);
+    MKVector3 GetDir(void);
+    MKVector3 GetPos(void);
     void * GetProp(void);
     s32 IsAttackable(void);
     void Update(const MKVector3 &);

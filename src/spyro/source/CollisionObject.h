@@ -69,8 +69,8 @@ public:
     virtual void SetScale(float);
     virtual void Reset(const MKVector3 &, const MKVector3 &);
     virtual void IgnoreAll(bool);
-    virtual void GetPos(void);
-    virtual void GetOffset(void);
+    virtual MKVector3 GetPos(void);
+    virtual MKVector3 GetOffset(void);
     virtual s32 SphereCheck(const MKVector3 &, const MKVector3 &, float, MKCollisionResult *, MKCollisionMode, int);
     virtual void ResolveCollisions(MKVector3 *, MKVector3 *, int);
     virtual void ResolveCollisionsQuick(MKVector3 *, MKVector3 *, int);
@@ -211,22 +211,32 @@ inline void CollisionObject::Reset(const MKVector3 &arg0, const MKVector3 &arg1)
 
 }
 
-inline void CollisionObject::GetPos() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x450);
-    this->unk8 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x458);
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline MKVector3 CollisionObject::GetPos() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unk450;
+    M2C_FIELD(sret, f64 *, 8) = (f64) this->unk458;
+    return result;
 }
+#endif
 
-inline void CollisionObject::GetOffset() {
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline MKVector3 CollisionObject::GetOffset() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
 
     sp8 = 0.0f;
     sp10 = 0.0f;
-    spC = M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 0x460), f32 *, 4);
-    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    this->unk8 = (f64) sp10;
+    spC = M2C_FIELD(this->unk460, f32 *, 4);
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
+#endif
 
 inline s32 CollisionObject::GetOwner() {
     return (s32) this->unk470;

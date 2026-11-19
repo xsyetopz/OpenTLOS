@@ -879,7 +879,7 @@ s32 EarthBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKModel *'
 void EarthBreathFX::DrawSeedBullets() {
     Matrix sp60;
     f32 sp50;
@@ -985,8 +985,8 @@ loop_28:
             sp60.unk34 = temp_r3_1673->unk4;
             sp60.unk38 = temp_r3_1673->unk8;
             sp60.unk3C = 1.0f;
-            MKModel_SetWorldMatrix(this->unk128, sp60);
-            MKModel_Draw(this->unk128, NULL);
+            MKModel_SetWorldMatrix(M2C_BITWISE(MKModel *, this->unk12C), sp60);
+            MKModel_Draw(M2C_BITWISE(MKModel *, this->unk12C), NULL);
             var_r31_1534 += 4;
             goto loop_28;
         }
@@ -994,9 +994,9 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void EarthBreathFX::UpdateSeedBullets() {
-    f64 sp180;
+    MKVector3 sp180;
     f64 sp170;
     f64 sp168;
     f64 sp160;
@@ -1168,7 +1168,7 @@ loop_54:
                     if (var_r28_1755 == 0) {
                         temp_r3_1906 = *var_r29_1748;
                         if (((u8) M2C_FIELD(temp_r3_1906, u8 *, 0x28) == 0) || ((u8) M2C_FIELD(temp_r3_1906, u8 *, 0x29) == 0)) {
-                            sp110.operator*(5.0f);
+                            sp110 = sp180.operator*(5.0f);
                             sp20 = sp170 + M2C_BITWISE(f64, sp110);
                             sp160 = sp20;
                             sp28 = (f32) sp178 + sp110.unk8;
@@ -1229,7 +1229,7 @@ loop_54:
                                 sp10 = *(temp_r3_2029 + 0x10) + sp180;
                                 M2C_FIELD(temp_r3_2029, f64 *, 0x10) = sp10;
                                 temp_f1_2041 = 0.75f * var_f0_1941;
-                                sp18 = M2C_FIELD(temp_r3_2029, f32 *, 0x18) + sp188;
+                                sp18 = M2C_FIELD(temp_r3_2029, f32 *, 0x18) + sp180.unk8;
                                 sp100 = sp10;
                                 M2C_FIELD(temp_r3_2029, f32 *, 0x18) = (f64) sp18;
                                 sp108 = (f64) sp18;
@@ -1243,7 +1243,7 @@ loop_54:
                             temp_f0_2064 = sp180 * 5.28426686e-315;
                             sp70 = temp_f0_2064;
                             spC0 = temp_f0_2064;
-                            sp78 = sp188 * 1.5f;
+                            sp78 = sp180.unk8 * 1.5f;
                             spC8 = (f64) sp78;
                             temp_f21_2077 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                             temp_f22_2082 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -1320,7 +1320,7 @@ void *EarthBreathFX::SpawnSeedBullet(const MKVector3 &arg0, const MKVector3 &arg
         M2C_FIELD(temp_r31_2216, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
         M2C_FIELD(temp_r31_2216, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         sp28 = MKVector(0.0f, 200.0f, 0.0f);
-        sp38.operator*(3500.0f);
+        sp38 = arg1.operator*(3500.0f);
         temp_f0_2235 = sp38 + M2C_BITWISE(f64, sp28);
         sp8 = temp_f0_2235;
         sp48 = temp_f0_2235;
@@ -1387,7 +1387,7 @@ loop_11:
         }
     }
     this->unkC8 = NULL;
-    MKModel_Destroy(this->unk128);
+    MKModel_Destroy(M2C_BITWISE(MKModel *, this->unk12C));
     MKModel_Destroy(this->unk140);
     temp_r4_2335 = this->unkB8;
     if (temp_r4_2335 != NULL) {
@@ -1450,8 +1450,8 @@ void *EarthBreathFX::Update() {
     temp_r4_2416 = this->unkB8;
     if (temp_r4_2416 != NULL) {
         if (this->unk12C > 0.0f) {
-            sp58.operator*(5000.0f);
-            sp68.operator*(gUpdateTimeDelta);
+            sp58 = ((MKVector3 *) &this->unk130)->operator*(5000.0f);
+            sp68 = sp58.operator*(gUpdateTimeDelta);
             temp_r4_2431 = this->unkB8;
             sp18 = temp_r4_2431->unk10 + M2C_BITWISE(f64, sp68);
             temp_r4_2431->unk10 = sp18;
@@ -1557,7 +1557,7 @@ f32 EarthBreathFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to 'float'
 void EarthBreathFX::Init() {
     EarthBombFX *temp_r3_2717;
     MKVector3 **temp_r3_2649;
@@ -1594,7 +1594,7 @@ void EarthBreathFX::Init() {
     this->unkC8 = temp_r4_2655 + 4;
     M2C_FIELD(temp_r4_2655, MKVector3 ***, 4) = NULL;
     this->unkBC = 0.0f;
-    this->unk128 = MKModel_Create("FX0018_EarthShot", NULL, 2, NULL);
+    this->unk12C = M2C_BITWISE(f32, MKModel_Create("FX0018_EarthShot", NULL, 2, NULL));
     this->unkC0 = checked_cast<FuryFXEarth *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXEarth"));
     this->unkC4 = checked_cast<FuryFXEarth2 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FuryFXEarth2"));
     this->unk12C = 0.0f;

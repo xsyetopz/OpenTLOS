@@ -1,5 +1,6 @@
 #include "spyro/source/DataMap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKVector3.h"
 #include <m2c_macros.h>
 
 s32 stricmp(s8 *);                                  /* extern */
@@ -55,8 +56,6 @@ s32 DataMap_GetName(const DataMap *arg0, unsigned int arg1) {
     }
     return 0;
 }
-
-extern "C" s32 stricmp(s8 *, s8 *);
 
 extern "C" s32 stricmp(s8 *, s8 *);
 

@@ -17,20 +17,33 @@ f32 AITargetData::GetDist() {
     return this->unk30;
 }
 
+#if 0 // DRAFT: identifier 'AITargetData::GetVel()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void AITargetData::GetVel() {
-    this->unk0 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x10);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x18);
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unk10;
+    M2C_FIELD(sret, f64 *, 8) = (f64) this->unk18;
+    return result;
 }
+#endif
 
+#if 0 // DRAFT: identifier 'AITargetData::GetDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void AITargetData::GetDir() {
-    this->unk0 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x20);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x28);
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unk20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) this->unk28;
+    return result;
 }
+#endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: identifier 'AITargetData::GetPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void AITargetData::GetPos() {
-    this->unk0 = *M2C_ERROR(/* Read from unset register $r4 */);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 8);
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unk0;
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(this, f64 *, 8);
+    return result;
 }
 #endif
 

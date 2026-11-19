@@ -152,12 +152,20 @@ void Enemy::Message(MKMessage *arg0) {
     f64 sp3D8;
     f64 sp3D0;
     f64 sp3C8;
-    MKProp sp378;
+    MKVector3 sp3B8;
+    MKVector3 sp3A8;
+    MKVector3 sp398;
+    MKVector3 sp388;
+    MKVector3 sp378;
     f64 sp370;
     f64 sp368;
     f64 sp360;
     f64 sp358;
-    MKProp sp308;
+    MKVector3 sp348;
+    MKVector3 sp338;
+    MKVector3 sp328;
+    MKVector3 sp318;
+    MKVector3 sp308;
     MKVector3 sp2F8;
     f64 sp2F0;
     f64 sp2E8;
@@ -178,15 +186,17 @@ void Enemy::Message(MKMessage *arg0) {
     f64 sp268;
     f64 sp260;
     f64 sp258;
-    f64 sp250;                                      /* compiler-managed */
-    f64 sp248;                                      /* compiler-managed */
-    f64 sp240;                                      /* compiler-managed */
-    f64 sp238;                                      /* compiler-managed */
-    f64 sp230;                                      /* compiler-managed */
-    f64 sp228;                                      /* compiler-managed */
-    MKProp sp208;
+    f64 sp250;
+    f64 sp248;
+    f64 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    MKVector3 sp208;
     MKVector3 sp1F8;
-    M2C_UNK sp1E8;
+    MKVector3 sp1E8;
     f64 sp1E0;
     f64 sp1D8;
     f64 sp1D0;
@@ -208,7 +218,7 @@ void Enemy::Message(MKMessage *arg0) {
     f64 sp148;
     f64 sp140;
     f64 sp138;
-    f64 sp128;
+    MKVector3 sp128;
     MKVector3 sp118;
     f32 sp110;
     f64 sp108;
@@ -263,6 +273,7 @@ void Enemy::Message(MKMessage *arg0) {
     EnemyDescriptor *temp_r4_1353;
     EnemyGenerator *temp_r3_2226;
     IsInAlertRangeMsg *temp_r25_1772;
+    MKProp *temp_r3_1290;
     SpawnPointObject *temp_r4_2225;
     f32 temp_f0_1462;
     f32 temp_f0_195;
@@ -340,7 +351,6 @@ void Enemy::Message(MKMessage *arg0) {
     u8 var_r4_1429;
     u8 var_r4_728;
     u8 var_r4_774;
-    void **temp_r3_1290;
     void **temp_r3_1973;
     void **temp_r3_2029;
     void **temp_r3_2054;
@@ -437,16 +447,16 @@ block_409:
                 var_r27_278 = 1;
                 var_r26_280 = 8;
                 temp_f31_294 = GetCollisionRadius();
-                sp378.GetPos();
-                *((MKVector3 *) &sp378.unk10) = KDMath_Sub2D(*((MKVector3 *) &sp448), *((MKVector3 *) &sp378));
-                *((MKVector3 *) &sp378.unk20) = Normalise(*((MKVector3 *) &sp378.unk10));
-                ((MKVector3 *) &sp378.unk30)->operator*(temp_f31_294);
-                ((MKProp *) &sp378.unk40)->GetPos();
-                temp_f0_315 = sp378.unk40 + M2C_BITWISE(f64, sp378.unk30);
+                sp378 = GetPos();
+                sp388 = KDMath_Sub2D(*((MKVector3 *) &sp448), sp378);
+                sp398 = Normalise(sp388);
+                sp3A8 = sp398.operator*(temp_f31_294);
+                sp3B8 = GetPos();
+                temp_f0_315 = sp3B8 + M2C_BITWISE(f64, sp3A8);
                 sp68 = temp_f0_315;
                 sp448 = temp_f0_315;
                 var_f31_281 = 0.8f;
-                sp70 = sp378.unk48 + M2C_BITWISE(f32, sp378.unk38);
+                sp70 = sp3B8.unk8 + sp3A8.unk8;
                 sp3C8 = temp_f0_315;
                 sp450 = (f64) sp70;
                 sp3D0 = (f64) sp70;
@@ -545,14 +555,14 @@ block_103:
                         } else {
                             var_r26_280 = 8;
                             temp_f31_545 = GetCollisionRadius();
-                            sp308.GetPos();
-                            *((MKVector3 *) &sp308.unk10) = KDMath_Sub2D(*((MKVector3 *) &sp448), *((MKVector3 *) &sp308));
-                            *((MKVector3 *) &sp308.unk20) = Normalise(*((MKVector3 *) &sp308.unk10));
-                            ((MKVector3 *) &sp308.unk30)->operator*(temp_f31_545);
-                            ((MKProp *) &sp308.unk40)->GetPos();
-                            sp58 = sp308.unk40 + M2C_BITWISE(f64, sp308.unk30);
+                            sp308 = GetPos();
+                            sp318 = KDMath_Sub2D(*((MKVector3 *) &sp448), sp308);
+                            sp328 = Normalise(sp318);
+                            sp338 = sp328.operator*(temp_f31_545);
+                            sp348 = GetPos();
+                            sp58 = sp348 + M2C_BITWISE(f64, sp338);
                             sp358 = sp58;
-                            sp60 = sp308.unk48 + M2C_BITWISE(f32, sp308.unk38);
+                            sp60 = sp348.unk8 + sp338.unk8;
                             temp_r29_578 = *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64));
                             sp448 = sp58;
                             sp360 = (f64) sp60;
@@ -733,7 +743,7 @@ block_199:
                             if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk40.Get() != NULL)) {
                                 var_r27_990 = 1;
                             }
-                            if ((var_r27_990 != 0) && (this->unk870.GetProp() == (void **) M2C_FIELD(temp_r3_812, void ***, 8))) {
+                            if ((var_r27_990 != 0) && (this->unk870.GetProp() == (MKProp *) M2C_FIELD(temp_r3_812, MKProp **, 8))) {
                                 this->unkB08 |= 1;
                             }
                             if (this->unkAA0 > 0.0f) {
@@ -783,22 +793,22 @@ block_199:
                     var_r27_1286 = 0;
                     sp3F8 = M2C_FIELD(temp_r3_812, f64 *, 0x10);
                     sp400 = (f64) M2C_FIELD(temp_r3_812, f32 *, 0x18);
-                    temp_r3_1290 = M2C_FIELD(temp_r3_812, void ***, 8);
+                    temp_r3_1290 = M2C_FIELD(temp_r3_812, MKProp **, 8);
                     if ((temp_r3_1290 != NULL) && (temp_r25_815 & 0x100)) {
-                        if (M2C_FIELD(*temp_r3_1290, s32 *, 0xC) & 8) {
+                        if (M2C_FIELD(temp_r3_1290->unk0, s32 *, 0xC) & 8) {
                             var_r27_1286 = 1;
                             sp3F8 = M2C_FIELD(temp_r3_812, f64 *, 0x10);
                             sp400 = (f64) M2C_FIELD(temp_r3_812, f32 *, 0x18);
                         } else {
                             temp_f31_1311 = GetCollisionRadius();
-                            ((MKProp *) &sp1E8)->GetDir();
-                            sp1F8.operator*(temp_f31_1311);
-                            sp208.GetPos();
+                            sp1E8 = ((MKProp *) (M2C_FIELD(temp_r3_812, MKProp **, 8)))->GetDir();
+                            sp1F8 = sp1E8.operator*(temp_f31_1311);
+                            sp208 = GetPos();
                             sp28 = sp208 - M2C_BITWISE(f64, sp1F8);
-                            sp208.unk10 = sp28;
-                            sp30 = M2C_BITWISE(f32, sp208.unk8) - sp1F8.unk8;
+                            sp218 = sp28;
+                            sp30 = sp208.unk8 - sp1F8.unk8;
                             sp3F8 = sp28;
-                            sp208.unk18 = (f64) sp30;
+                            sp220 = (f64) sp30;
                             sp400 = (f64) sp30;
                         }
                     }
@@ -1216,10 +1226,10 @@ block_199:
     case 166:                                       /* switch 1 */
         temp_r25_2386 = checked_cast<GetConvexFuryTargetPosMsg *, MKMessage>(arg0);
         sp118 = MKVector(0.0f, 150.0f, 0.0f);
-        ((MKProp *) &sp128)->GetPos();
+        sp128 = GetPos();
         sp18 = sp128 + M2C_BITWISE(f64, sp118);
         M2C_FIELD(temp_r25_2386, f64 *, 8) = sp18;
-        sp20 = sp130 + sp118.unk8;
+        sp20 = sp128.unk8 + sp118.unk8;
         sp138 = sp18;
         sp140 = (f64) sp20;
         M2C_FIELD(temp_r25_2386, f64 *, 0x10) = (f64) sp20;

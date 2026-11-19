@@ -143,7 +143,7 @@ void ElementalSpline::StateESTurningOffUpdate() {
     KDUniformSpline sp30;
     f32 sp28;
     f64 sp20;
-    f64 sp10;
+    MKVector3 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f2_175;
@@ -229,9 +229,8 @@ void ElementalSpline::StateESTurningOffUpdate() {
                 sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spC0 = 0;
                 if (this != NULL) {
-                    ((MKProp *) &sp10)->GetPos();
-                    spA0 = sp10;
-                    spA8 = sp18;
+                    sp10 = GetPos();
+                    *(MKVector3 *) &spA0 = sp10;
                 } else {
                     spA0 = 0.0f;
                     (*(f32 *) ((u8 *) &sp9C + 0x8)) = 0.0f;
@@ -282,7 +281,7 @@ void ElementalSpline::StateESOnUpdate() {
     KDUniformSpline sp30;
     f32 sp28;
     f64 sp20;
-    f64 sp10;
+    MKVector3 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f2_419;
@@ -366,9 +365,8 @@ void ElementalSpline::StateESOnUpdate() {
             sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
             spC0 = 0;
             if (this != NULL) {
-                ((MKProp *) &sp10)->GetPos();
-                spA0 = sp10;
-                spA8 = sp18;
+                sp10 = GetPos();
+                *(MKVector3 *) &spA0 = sp10;
             } else {
                 spA0 = 0.0f;
                 (*(f32 *) ((u8 *) &sp9C + 0x8)) = 0.0f;
@@ -418,7 +416,7 @@ void ElementalSpline::StateESTurningOnUpdate() {
     KDUniformSpline sp30;
     f32 sp28;
     f64 sp20;
-    f64 sp10;
+    MKVector3 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f2_673;
@@ -504,9 +502,8 @@ void ElementalSpline::StateESTurningOnUpdate() {
                 sp90 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spC0 = 0;
                 if (this != NULL) {
-                    ((MKProp *) &sp10)->GetPos();
-                    spA0 = sp10;
-                    spA8 = sp18;
+                    sp10 = GetPos();
+                    *(MKVector3 *) &spA0 = sp10;
                 } else {
                     spA0 = 0.0f;
                     (*(f32 *) ((u8 *) &sp9C + 0x8)) = 0.0f;
@@ -615,7 +612,7 @@ loop_7:
         sp118 = spC8;
         sp120 = spD0;
         sp98 = KDRand_UnitVectorXZ();
-        spA8.operator*(this->unkB4);
+        spA8 = sp98.operator*(this->unkB4);
         sp38 = spA8 * 5.439686476e-315;
         spB8 = sp38;
         sp40 = spA8.unk8 * 20.0f;
@@ -630,7 +627,7 @@ loop_7:
         sp118 = sp88;
         sp120 = sp90;
         sp58 = KDRand_UnitVectorXZ();
-        sp68.operator*(this->unkB4);
+        sp68 = sp58.operator*(this->unkB4);
         sp28 = sp68 * 5.398241246e-315;
         sp78 = sp28;
         sp30 = sp68.unk8 * 10.0f;
@@ -739,7 +736,7 @@ void ElementalSpline::EmitElectricityParticles(float arg0, float arg1) {
     f64 sp98;
     f64 sp90;
     f64 sp88;
-    f64 sp78;
+    MKVector3 sp78;
     f64 sp70;
     f64 sp68;
     MKVector3 sp58;
@@ -806,10 +803,10 @@ loop_3:
         spE8 = sp98;
         spF0 = spA0;
         temp_f30_1416 = this->unkB4;
-        ((KDSplinePathSegment *) &sp78)->GetVelocity(MKRand_Float((int *) &gViewSeed, arg0, arg1));
+        sp78 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(MKRand_Float((int *) &gViewSeed, arg0, arg1));
         sp28 = sp78 * (f64) temp_f30_1416;
         spC8.unk10 = sp28;
-        sp30 = sp80 * temp_f30_1416;
+        sp30 = sp78.unk8 * temp_f30_1416;
         sp88 = sp28;
         spE0 = (f64) sp30;
         sp90 = (f64) sp30;
@@ -1022,11 +1019,11 @@ void ElementalSpline::DrawEarthSpline(float arg0, float arg1) {
     f64 sp1A8;                                      /* compiler-managed */
     f64 sp1A0;
     KDUniformSpline sp188;
-    f64 sp178;
+    MKVector3 sp178;
     f64 sp168;
-    f64 sp158;
+    MKVector3 sp158;
     f64 sp148;
-    f64 sp138;
+    MKVector3 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
@@ -1146,9 +1143,8 @@ loop_65:
             if (arg1 < var_f1_1991) {
                 var_f1_1991 = arg1;
             }
-            ((KDSplinePathSegment *) &sp178)->GetVelocity(var_f1_1991);
-            sp1A8 = sp178;
-            sp1B0 = sp180;
+            sp178 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_1991);
+            *(MKVector3 *) &sp1A8 = sp178;
         } else if (var_r30_1969 == 0) {
             var_f1_2011 = 1.0f;
             if (arg0 < var_f1_2011) {
@@ -1162,9 +1158,8 @@ loop_65:
             if (arg0 < var_f1_2024) {
                 var_f1_2024 = arg0;
             }
-            ((KDSplinePathSegment *) &sp158)->GetVelocity(var_f1_2024);
-            sp1A8 = sp158;
-            sp1B0 = sp160;
+            sp158 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_2024);
+            *(MKVector3 *) &sp1A8 = sp158;
         } else {
             var_f1_2051 = ((f32) var_r30_1969 * this->unkFC) + arg0;
             if (var_f1_2051 < 1.0f) {
@@ -1182,9 +1177,8 @@ loop_65:
             } else {
                 var_f1_2078 = 1.0f;
             }
-            ((KDSplinePathSegment *) &sp138)->GetVelocity(var_f1_2078);
-            sp1A8 = sp138;
-            sp1B0 = sp140;
+            sp138 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_2078);
+            *(MKVector3 *) &sp1A8 = sp138;
         }
         sp38 = sp1D8 - sp1C8;
         sp1B8 = sp38;
@@ -1359,11 +1353,11 @@ void ElementalSpline::DrawIceSpline(float arg0, float arg1) {
     f64 sp1A8;                                      /* compiler-managed */
     f64 sp1A0;
     KDUniformSpline sp188;
-    f64 sp178;
+    MKVector3 sp178;
     f64 sp168;
-    f64 sp158;
+    MKVector3 sp158;
     f64 sp148;
-    f64 sp138;
+    MKVector3 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
@@ -1483,9 +1477,8 @@ loop_65:
             if (arg1 < var_f1_2583) {
                 var_f1_2583 = arg1;
             }
-            ((KDSplinePathSegment *) &sp178)->GetVelocity(var_f1_2583);
-            sp1A8 = sp178;
-            sp1B0 = sp180;
+            sp178 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_2583);
+            *(MKVector3 *) &sp1A8 = sp178;
         } else if (var_r30_2561 == 0) {
             var_f1_2603 = 1.0f;
             if (arg0 < var_f1_2603) {
@@ -1499,9 +1492,8 @@ loop_65:
             if (arg0 < var_f1_2616) {
                 var_f1_2616 = arg0;
             }
-            ((KDSplinePathSegment *) &sp158)->GetVelocity(var_f1_2616);
-            sp1A8 = sp158;
-            sp1B0 = sp160;
+            sp158 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_2616);
+            *(MKVector3 *) &sp1A8 = sp158;
         } else {
             var_f1_2643 = ((f32) var_r30_2561 * this->unkFC) + arg0;
             if (var_f1_2643 < 1.0f) {
@@ -1519,9 +1511,8 @@ loop_65:
             } else {
                 var_f1_2670 = 1.0f;
             }
-            ((KDSplinePathSegment *) &sp138)->GetVelocity(var_f1_2670);
-            sp1A8 = sp138;
-            sp1B0 = sp140;
+            sp138 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_2670);
+            *(MKVector3 *) &sp1A8 = sp138;
         }
         sp38 = sp1D8 - sp1C8;
         sp1B8 = sp38;
@@ -1696,15 +1687,15 @@ void ElementalSpline::DrawElectricitySpline(float arg0, float arg1) {
     f64 sp160;                                      /* compiler-managed */
     f64 sp158;
     KDUniformSpline sp140;
-    f64 sp130;
+    MKVector3 sp130;
     f64 sp120;
-    f64 sp110;
+    MKVector3 sp110;
     f64 sp108;
     f64 sp100;
     f64 spF0;
     MKVector3 spE0;
     MKVector3 spD0;
-    f64 spC0;
+    MKVector3 spC0;
     f64 spB8;
     f64 spB0;
     f64 spA8;
@@ -1804,9 +1795,8 @@ loop_65:
             if (arg1 < var_f1_3171) {
                 var_f1_3171 = arg1;
             }
-            ((KDSplinePathSegment *) &sp130)->GetVelocity(var_f1_3171);
-            sp160 = sp130;
-            sp168 = sp138;
+            sp130 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_3171);
+            *(MKVector3 *) &sp160 = sp130;
         } else if (var_r30_3149 == 0) {
             var_f1_3191 = 1.0f;
             if (arg0 < var_f1_3191) {
@@ -1820,12 +1810,11 @@ loop_65:
             if (arg0 < var_f1_3204) {
                 var_f1_3204 = arg0;
             }
-            ((KDSplinePathSegment *) &sp110)->GetVelocity(var_f1_3204);
-            sp160 = sp110;
-            sp168 = sp118;
+            sp110 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_3204);
+            *(MKVector3 *) &sp160 = sp110;
         } else {
             spD0 = KDRand_UnitVector();
-            spE0.operator*(this->unkB4);
+            spE0 = spD0.operator*(this->unkB4);
             var_f1_3237 = ((f32) var_r30_3149 * this->unkFC) + arg0;
             if (var_f1_3237 < 1.0f) {
 
@@ -1845,9 +1834,8 @@ loop_65:
             } else {
                 var_f1_3270 = 1.0f;
             }
-            ((KDSplinePathSegment *) &spC0)->GetVelocity(var_f1_3270);
-            sp160 = spC0;
-            sp168 = spC8;
+            spC0 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_3270);
+            *(MKVector3 *) &sp160 = spC0;
         }
         sp50 = sp190 - sp180;
         sp170 = sp50;
@@ -1988,7 +1976,7 @@ loop_65:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'Matrix *'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'Matrix *' Too many errors printed, aborting program
 void ElementalSpline::DrawFireSpline(float arg0, float arg1) {
     s32 sp304;
     s32 sp300;
@@ -2007,11 +1995,11 @@ void ElementalSpline::DrawFireSpline(float arg0, float arg1) {
     f64 sp268;                                      /* compiler-managed */
     f64 sp260;
     KDUniformSpline sp248;
-    f64 sp238;
+    MKVector3 sp238;
     f64 sp228;
-    f64 sp218;
+    MKVector3 sp218;
     f64 sp208;
-    f64 sp1F8;
+    MKVector3 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
@@ -2170,9 +2158,8 @@ loop_73:
             if (arg1 < var_f1_3740) {
                 var_f1_3740 = arg1;
             }
-            ((KDSplinePathSegment *) &sp238)->GetVelocity(var_f1_3740);
-            sp268 = sp238;
-            sp270 = sp240;
+            sp238 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_3740);
+            *(MKVector3 *) &sp268 = sp238;
         } else if (var_r30_3717 == 0) {
             var_f1_3760 = 1.0f;
             if (arg0 < var_f1_3760) {
@@ -2186,9 +2173,8 @@ loop_73:
             if (arg0 < var_f1_3773) {
                 var_f1_3773 = arg0;
             }
-            ((KDSplinePathSegment *) &sp218)->GetVelocity(var_f1_3773);
-            sp268 = sp218;
-            sp270 = sp220;
+            sp218 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_3773);
+            *(MKVector3 *) &sp268 = sp218;
         } else {
             var_f1_3800 = ((f32) var_r30_3717 * this->unkFC) + arg0;
             if (var_f1_3800 < 1.0f) {
@@ -2206,9 +2192,8 @@ loop_73:
             } else {
                 var_f1_3827 = 1.0f;
             }
-            ((KDSplinePathSegment *) &sp1F8)->GetVelocity(var_f1_3827);
-            sp268 = sp1F8;
-            sp270 = sp200;
+            sp1F8 = ((KDSplinePathSegment *) this->unkB0)->GetVelocity(var_f1_3827);
+            *(MKVector3 *) &sp268 = sp1F8;
         }
         sp38 = sp298 - sp288;
         sp278 = sp38;

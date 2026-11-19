@@ -7,6 +7,7 @@
 #include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -20,21 +21,17 @@ static MKParticleSystem::Envelope gCrashMistPSEnv[5] = {
     { 1.0f, 0.0f, 1.0f, 0.0f, 0.0f },
 };
 
-#if 0 // DRAFT: undefined identifier 'unksp8'
 void CrashMistPS::UpdateParticles() {
+    u8 sp8[0x8];
     MKParticleChunk *var_r3_57;
 
     MKParticleSystem::UpdateParticles();
-    var_r3_57 = GetFirstParticle(&unksp8);
-loop_2:
-    if (var_r3_57 != NULL) {
-        var_r3_57 = GetNextParticle(&unksp8);
-        goto loop_2;
+    var_r3_57 = GetFirstParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+    while (var_r3_57 != NULL) {
+        var_r3_57 = GetNextParticle((MKBaseParticleSystem::ParticleRec *) sp8);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void CrashMistPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, const float &arg3, const MKVector4 &arg4, const float &arg5) {
     void *temp_r31_92;
     void *temp_r3_89;
@@ -49,12 +46,11 @@ void CrashMistPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float
         M2C_FIELD(temp_r3_89, f64 *, 0x18) = (f64) M2C_FIELD(&arg4, f64 *, 8);
         M2C_FIELD(temp_r31_92, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r31_92, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD(temp_r31_92, f32 *, 0x1C) = (f32) &arg2;
-        M2C_FIELD(temp_r31_92, f32 *, 0x20) = (f32) &arg5;
-        M2C_FIELD(temp_r31_92, f32 *, 0x18) = (f32) (&arg3 * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
+        M2C_FIELD(temp_r31_92, f32 *, 0x1C) = arg2;
+        M2C_FIELD(temp_r31_92, f32 *, 0x20) = arg5;
+        M2C_FIELD(temp_r31_92, f32 *, 0x18) = arg3 * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
     }
 }
-#endif
 
 void CrashMistPS::Deinit() {
     MKParticleSystem::Deinit();

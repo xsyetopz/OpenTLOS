@@ -61,7 +61,7 @@ void DartTrap::SetAnim(int arg0) {
     this->unk80->SetAnim(M2C_FIELD((checked_cast<DartTrapDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (arg0 * 4)), MKAnim **, 0x70), this->unkA0, 0.0f, 0, -1);
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void DartTrap::Shoot() {
     MKCollisionResult spC0;
     MKVector3 spB0;
@@ -162,7 +162,7 @@ void DartTrap::Shoot() {
         sp90 = (f32) sp90 * var_f4_207;
         (*(f32 *) ((u8 *) &sp88 + 0xc)) *= var_f4_207;
         sp98 = (f32) sp98 * var_f4_207;
-        sp70.operator*(2000.0f);
+        sp70 = ((MKVector3 *) &sp90)->operator*(2000.0f);
         sp20 = M2C_BITWISE(f64, spB0) + M2C_BITWISE(f64, sp70);
         sp80 = sp20;
         sp28 = spB0.unk8 + sp70.unk8;

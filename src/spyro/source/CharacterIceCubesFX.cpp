@@ -105,7 +105,8 @@ void CharacterIceCubesFX::Draw() {
 
 #if 0 // DRAFT: illegal type
 void CharacterIceCubesFX::Shatter() {
-    Matrix sp10;
+    Matrix sp20;
+    MKVector3 sp10;
     s32 var_r28_150;
     s32 var_r29_149;
     s32 var_r31_148;
@@ -124,9 +125,9 @@ loop_5:
             temp_r3_154 = *(this->unk14 + var_r28_150);
             if (temp_r3_154 != NULL) {
                 M2C_STRUCT_COPY((s32) &sp10.unkC + 4, MKModel_GetWorldMatrix(M2C_FIELD(temp_r3_154, MKModel **, 4)) - 4 + 4, 0x40);
-                sp10.NormaliseScale();
-                ((Matrix *) &sp10.unk10)->Scale3x3((Matrix *) &sp10.unk10, *(*(this->unk4 + var_r29_149) + 0x10));
-                MKModel_SetWorldMatrix(M2C_FIELD(*(this->unk14 + var_r28_150), MKModel **, 4), *((Matrix *) &sp10.unk10));
+                sp10 = sp20.NormaliseScale();
+                sp20.Scale3x3(&sp20, *(*(this->unk4 + var_r29_149) + 0x10));
+                MKModel_SetWorldMatrix(M2C_FIELD(*(this->unk14 + var_r28_150), MKModel **, 4), sp20);
                 temp_r3_187 = *(this->unk14 + var_r28_150);
                 M2C_FIELD(M2C_FIELD(temp_r3_187, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 0x94)(temp_r3_187, 0, 0, -1, 0, 1, 0);
                 *(this->unk14 + var_r28_150) = 0;
