@@ -318,36 +318,35 @@ loop_8:
     }
 }
 
-#if 0 // DRAFT: type mismatch 'IceBossStalactite **' and 'IceBossStalactite ***'
 void IceBossStalactiteSpawner::Deinit() {
     IceBossStalactite ***var_r31_502;
     IceBossStalactite ***var_r3_503;
     IceBossStalactite ***var_r4_501;
-    IceBossStalactite **temp_r0_506;
-    IceBossStalactite **temp_r0_525;
+    u32 temp_r0_506;
     u32 temp_r0_511;
+    u32 temp_r0_525;
 
     var_r4_501 = this->unk10;
     var_r31_502 = var_r4_501;
     var_r3_503 = var_r4_501;
 loop_3:
     temp_r0_511 = M2C_FIELD(var_r3_503, u32 *, -4);
-    var_r3_503 -= 4;
+    var_r3_503 -= 1;
     if (temp_r0_511 != 0U) {
-        temp_r0_506 = *var_r3_503;
-        if (temp_r0_506 < var_r31_502) {
+        temp_r0_506 = (u32) *var_r3_503;
+        if (temp_r0_506 < (u32) var_r31_502) {
             var_r31_502 = (IceBossStalactite ***) temp_r0_506;
         }
         goto loop_3;
     }
-    if (var_r3_503 != &gEmptyPtrListDL) {
+    if (var_r3_503 != (IceBossStalactite ***) &gEmptyPtrListDL) {
 loop_9:
-        temp_r0_525 = *var_r4_501;
-        if (temp_r0_525 != NULL) {
-            if (temp_r0_525 < var_r31_502) {
+        temp_r0_525 = (u32) *var_r4_501;
+        if (temp_r0_525 != 0U) {
+            if (temp_r0_525 < (u32) var_r31_502) {
                 var_r31_502 = (IceBossStalactite ***) temp_r0_525;
             }
-            var_r4_501 += 4;
+            var_r4_501 += 1;
             goto loop_9;
         }
         if (MKHeap::Current() != NULL) {
@@ -358,7 +357,6 @@ loop_9:
     }
     this->unk10 = NULL;
 }
-#endif
 
 void IceBossStalactiteSpawner::Init(MKProp *arg0, int arg1, int arg2) {
     IceBossStalactite ***temp_r3_588;
@@ -688,7 +686,6 @@ void IceBossStalactite::Drop(bool arg0, bool arg1) {
     this->unk246 = (this->unk246 & ~0x80) | ((arg1 << 7) & 0x80);
 }
 
-#if 0 // DRAFT: ')' expected
 void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
     f32 spBC;
     f32 spB8;
@@ -723,6 +720,7 @@ void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
     f32 sp18;
     f32 sp14;
     f32 sp10;
+    IceBossStalactiteDescriptor *desc;
     f32 temp_f0_1219;
     f32 temp_f10_1217;
     f32 temp_f11_1221;
@@ -800,13 +798,13 @@ void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
             KDSound_Play3d(GS_ElecBossCrystalForm, (MKVector3 *) &this->unk208, 0U, -1, 0.0f, 0U);
         }
     }
-    if ((u8) M2C_FIELD(checked_cast<IceBossStalactiteDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x114) != 0) {
-        ((Targetable *) &this->unkC8)->RegisterTargetable();
+    desc = checked_cast<IceBossStalactiteDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if ((u8) M2C_FIELD(desc, u8 *, 0x114) != 0) {
+        ((Targetable *) ((s8 *) this + 0xC8))->RegisterTargetable();
     }
     this->unk245 = 0;
     Enable();
 }
-#endif
 
 void IceBossStalactite::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {
     f32 temp_f1_1367;
@@ -1593,9 +1591,10 @@ s32 IceBossStalactite::LoadDone() {
     this->unk246 |= 0x80;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void IceBossStalactiteDescriptor::LoadDone() {
+    IceBitsPS *ps;
+
     ShatterableDescriptor::LoadDone();
-    this->unk16C = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));
+    ps = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));
+    M2C_FIELD(this, IceBitsPS **, 0x16C) = ps;
 }
-#endif
