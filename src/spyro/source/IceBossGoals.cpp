@@ -3080,29 +3080,29 @@ u8 IceBossGoal_Think::AddGoal_FollowSpawnPath() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void IceBossGoal_Think::AddGoal_AttackPhase3() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x83) == 0) {
+    if (IsPresent(0x83) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk48);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void IceBossGoal_Think::AddGoal_AttackPhase2() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x82) == 0) {
+    if (IsPresent(0x82) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk44);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void IceBossGoal_Think::AddGoal_AttackPhase1() {
     Goal<IceBoss> *temp_r6_6290;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x81) == 0) {
+    if (IsPresent(0x81) == 0) {
         RemoveAllSubgoals();
         if ((u8) this->unk21 != 0) {
             this->unk21 = 0;
@@ -3119,36 +3119,36 @@ void IceBossGoal_Think::AddGoal_AttackPhase1() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void IceBossGoal_Think::AddGoal_SummonWeapon() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x80) == 0) {
+    if (IsPresent(0x80) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk3C);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void IceBossGoal_Think::AddGoal_FormShield() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x7F) == 0) {
+    if (IsPresent(0x7F) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk38);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void IceBossGoal_Think::AddGoal_FormWeapon() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x7E) == 0) {
+    if (IsPresent(0x7E) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk34);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void IceBossGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x5B) == 0) {
+    if (IsPresent(0x5B) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
     }

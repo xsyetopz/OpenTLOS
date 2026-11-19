@@ -1588,7 +1588,7 @@ void ScriptButton::Init() {
     this->unk90 = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void OptionButton::Message(UIMessage *arg0) {
     s32 sp14;
     s32 sp10;
@@ -1610,7 +1610,7 @@ void OptionButton::Message(UIMessage *arg0) {
         case 1:
             if (((u8) this->unk15 != 0) && ((u8) this->unk16 != 0)) {
                 sp14 = 2;
-                M2C_FIELD(this->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp14);
+                Message(&sp14);
                 M2C_FIELD(this, f32 *, 0x24) = 1.0f;
                 this->unk18.unk30 = M2C_BITWISE(f32, this->unk98);
             } else {
@@ -1623,12 +1623,12 @@ void OptionButton::Message(UIMessage *arg0) {
         case 4:
             if ((u8) this->unk16 != 0) {
                 spC = 2;
-                M2C_FIELD(this->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&spC);
+                Message(&spC);
             }
             break;
         case 8:
             sp8 = 2;
-            M2C_FIELD(this->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+            Message(&sp8);
             break;
         }
     }

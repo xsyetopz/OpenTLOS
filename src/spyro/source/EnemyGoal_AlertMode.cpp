@@ -162,14 +162,14 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 s32 EnemyGoal_AlertMode::AddGoal_MoveAwayFromHero() {
     Enemy *temp_r3_352;
     Enemy *temp_r4_330;
 
     if ((u8) this->unk8 == 0) {
         temp_r4_330 = this->unkC;
-        if ((((u8) M2C_FIELD(temp_r4_330, u8 *, 0xB08) >> 6U) & 1) && (((u8) M2C_FIELD(temp_r4_330, u8 *, 0xB09) >> 6U) & 1) && (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x38)(0x4F) == 0) && (IsPresent(0x28) == 0)) {
+        if ((((u8) M2C_FIELD(temp_r4_330, u8 *, 0xB08) >> 6U) & 1) && (((u8) M2C_FIELD(temp_r4_330, u8 *, 0xB09) >> 6U) & 1) && (IsActive(0x4F) == 0) && (IsPresent(0x28) == 0)) {
             temp_r3_352 = this->unkC;
             if (temp_r3_352->CanMoveAwayFromHero() != 0) {
                 AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);

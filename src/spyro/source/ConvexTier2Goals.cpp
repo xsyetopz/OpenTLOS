@@ -224,13 +224,13 @@ u8 ConvexTier2Goal_Think::IsFollowingSpawnPath() {
     return ((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 4U) & 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void ConvexTier2Goal_Think::AddGoal_FollowSpawnGraph() {
     Enemy *temp_r3_468;
     Enemy *temp_r3_472;
     Goal<Enemy> *temp_r5_459;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x2A) == 0) {
+    if (IsPresent(0x2A) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
         temp_r5_459 = this->unk30;
@@ -244,13 +244,13 @@ void ConvexTier2Goal_Think::AddGoal_FollowSpawnGraph() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void ConvexTier2Goal_Think::AddGoal_FollowSpawnPath() {
     Enemy *temp_r3_529;
     Enemy *temp_r3_533;
     Goal<Enemy> *temp_r6_509;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x22) == 0) {
+    if (IsPresent(0x22) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
         temp_r6_509 = this->unk2C;
@@ -272,17 +272,17 @@ void ConvexTier2Goal_Think::AddGoal_FollowSpawnPath() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void ConvexTier2Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
-    if (((s32) arg0->unk28 != 0xE) && (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x38)(0x59) == 0)) {
+    if (((s32) arg0->unk28 != 0xE) && (IsActive(0x59) == 0)) {
         AddSubgoalToFront__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void ConvexTier2Goal_Think::AddGoal_PatrolMode() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x53) == 0) {
+    if (IsPresent(0x53) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
     }

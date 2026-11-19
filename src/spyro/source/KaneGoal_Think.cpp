@@ -24,12 +24,12 @@ void KaneGoal_Think::AddGoal_Idle() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void KaneGoal_Think::AddGoal_FollowSpawnGraph() {
     s32 temp_r3_64;
     s32 temp_r3_69;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x2A) == 0) {
+    if (IsPresent(0x2A) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
         temp_r3_64 = this->unkC;

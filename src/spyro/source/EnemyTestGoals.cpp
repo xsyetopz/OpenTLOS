@@ -80,7 +80,7 @@ void EnemyTestGoal_MoveToTarget::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void EnemyTest_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     s32 temp_r0_286;
     s32 temp_r0_338;
@@ -89,13 +89,13 @@ void EnemyTest_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
 
     var_r30_226 = 0;
     if ((s32) arg0->unk28 == 6) {
-        if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x38)(0x11) == 0) {
+        if (IsActive(0x11) == 0) {
             AddGoal_Hit(arg0);
             var_r30_226 = 1;
         }
     } else {
         var_r30_244 = 0;
-        if ((M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x38)(0x11) == 0) && ((IsActive(0xB) != 0) || (IsActive(0x13) != 0) || (IsActive(0xC) != 0))) {
+        if ((IsActive(0x11) == 0) && ((IsActive(0xB) != 0) || (IsActive(0x13) != 0) || (IsActive(0xC) != 0))) {
             var_r30_244 = 1;
         }
         if (var_r30_244 != 0) {
@@ -132,7 +132,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void EnemyTest_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     f32 var_f31_372;
     s32 temp_r0_512;
@@ -156,7 +156,7 @@ void EnemyTest_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
 
     var_r26_369 = arg0->unk28;
     var_f31_372 = 0.0f;
-    temp_r27_375 = M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x38)(8);
+    temp_r27_375 = IsActive(8);
     temp_r20_382 = IsActive(0xB);
     temp_r21_389 = IsActive(0xE);
     temp_r22_396 = IsActive(0xC);
@@ -250,11 +250,11 @@ block_42:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void EnemyTest_Think::AddGoal_Idle() {
     Goal<Enemy> *temp_r4_641;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0) == 0) {
+    if (IsPresent(0) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
         temp_r4_641 = this->unk20;

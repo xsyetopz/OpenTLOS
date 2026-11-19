@@ -4610,7 +4610,7 @@ block_87:
         }
         goto block_87;
     case 0x39:                                      /* switch 1 */
-        if (IsChildWidget() != 0) {
+        if (IsChildWidget(M2C_FIELD(arg1, MKWidget **, 0)) != 0) {
             temp_r0_8060 = M2C_FIELD(arg1, u16 *, 4);
             switch ((s32) temp_r0_8060) {           /* switch 2; irregular */
             case 8:                                 /* switch 2 */
@@ -5347,7 +5347,7 @@ void MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal type
 s32 MKWidgetScrollBar::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp180;
     f64 sp178;
@@ -5466,7 +5466,7 @@ s32 MKWidgetScrollBar::MessageHandler(unsigned int arg0, unsigned int arg1) {
 
     switch (arg0) {                                 /* switch 1 */
     case 0x47:                                      /* switch 1 */
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK, s8 **), 0xC)(5, this->unk4 + 0x38);
+        MessageHandler(5, this->unk4 + 0x38);
         GetThumbFromValue();
     default:                                        /* switch 1 */
 block_139:

@@ -169,13 +169,13 @@ u8 ConvexTier3Goal_Think::IsFollowingSpawnPath() {
     return ((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 4U) & 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void ConvexTier3Goal_Think::AddGoal_FollowSpawnGraph() {
     Enemy *temp_r3_363;
     Enemy *temp_r3_367;
     Goal<Enemy> *temp_r5_354;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x2A) == 0) {
+    if (IsPresent(0x2A) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
         temp_r5_354 = this->unk2C;
@@ -189,13 +189,13 @@ void ConvexTier3Goal_Think::AddGoal_FollowSpawnGraph() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void ConvexTier3Goal_Think::AddGoal_FollowSpawnPath() {
     Enemy *temp_r3_424;
     Enemy *temp_r3_428;
     Goal<Enemy> *temp_r6_404;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x22) == 0) {
+    if (IsPresent(0x22) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
         temp_r6_404 = this->unk28;
@@ -217,9 +217,9 @@ void ConvexTier3Goal_Think::AddGoal_FollowSpawnPath() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void ConvexTier3Goal_Think::AddGoal_PatrolMode() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x53) == 0) {
+    if (IsPresent(0x53) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
     }

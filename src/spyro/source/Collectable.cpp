@@ -634,7 +634,7 @@ void Collectable::CollectingStateInit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'int' to
 void Collectable::MagnetisedState() {
     f64 spA8;                                       /* compiler-managed */
     f64 spA0;                                       /* compiler-managed */
@@ -668,12 +668,12 @@ void Collectable::MagnetisedState() {
 
     temp_r4_1351 = this->unkC0;
     if (temp_r4_1351 == NULL) {
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK), 0x5C)(8);
+        SetState(8);
         return;
     }
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (this->unk7C == 50.0f) {
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK), 0x5C)(8);
+        SetState(8);
         return;
     }
     temp_r3_1373 = M2C_FIELD(temp_r4_1351, void **, 8);
@@ -1260,7 +1260,7 @@ void Collectable::FallingState() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'int' to
 void Collectable::SpawnDynamic(const MKVector3 &arg0) {
     f64 sp40;
     f64 sp38;
@@ -1269,7 +1269,7 @@ void Collectable::SpawnDynamic(const MKVector3 &arg0) {
     f32 sp10;
     f32 temp_f31_2694;
 
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK), 0x5C)(2);
+    SetState(2);
     this->unk50 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk58 = M2C_FIELD(&arg0, f64 *, 8);
     this->unk134 = 1.0f;
@@ -1290,7 +1290,7 @@ void Collectable::SpawnDynamic(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'int' to
 void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
     MKCollisionResult sp80;
     f64 sp78;
@@ -1320,7 +1320,7 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
     s32 var_r0_2873;
     u32 var_r3_2792;
 
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK), 0x5C)(2);
+    SetState(2);
     this->unk134 = 1.0f;
     this->unk138 = 0.0f;
     this->unk13C = 0;
@@ -1792,7 +1792,7 @@ block_81:
     case 0x14:                                      /* switch 1 */
         temp_r0_3699 = this->unkD4;
         if (temp_r0_3699 == 7) {
-            M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK, M2C_UNK *, M2C_UNK *, M2C_UNK *), 0x5C)(6);
+            SetState(6);
             this->unkC0 = NULL;
         } else if (temp_r0_3699 == 8) {
             this->unk121 = 1;

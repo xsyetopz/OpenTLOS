@@ -17,7 +17,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void FloatingPlatform::UpdateMove() {
     f64 sp78;
     f64 sp70;
@@ -36,7 +36,7 @@ void FloatingPlatform::UpdateMove() {
     f32 var_f0_76;
 
     if ((u8) this->unk1B0 == 0) {
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(MKVector3 *), 0x38)(&this->unk1B8);
+        SetPos(this->unk1B8);
         return;
     }
     if ((s32) this->unk108.unk38 > 0) {

@@ -6792,18 +6792,18 @@ void CynderBossGoal_LandingFlight::Init(Cynder *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void CynderBossGoal_Think::AddGoal_AttackPhase3() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0xA8) == 0) {
+    if (IsPresent(0xA8) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk44);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void CynderBossGoal_Think::AddGoal_AttackPhase2(EAPItem *arg0) {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0xA7) == 0) {
+    if (IsPresent(0xA7) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk40);
         M2C_FIELD(this->unk40, EAPItem **, 0x20) = arg0;
@@ -6811,9 +6811,9 @@ void CynderBossGoal_Think::AddGoal_AttackPhase2(EAPItem *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void CynderBossGoal_Think::AddGoal_AttackPhase1(EAPItem *arg0) {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0xA6) == 0) {
+    if (IsPresent(0xA6) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk3C);
         M2C_FIELD(this->unk3C, EAPItem **, 0x20) = arg0;
@@ -6821,11 +6821,11 @@ void CynderBossGoal_Think::AddGoal_AttackPhase1(EAPItem *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void CynderBossGoal_Think::AddGoal_Idle() {
     Goal<Cynder> *temp_r6_13345;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x38)(0) == 0) {
+    if (IsActive(0) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
         temp_r6_13345 = this->unk28;

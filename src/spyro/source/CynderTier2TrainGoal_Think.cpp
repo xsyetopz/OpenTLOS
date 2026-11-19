@@ -18,11 +18,11 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void CynderTier2TrainGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     Enemy *temp_r4_44;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x5B) == 0) {
+    if (IsPresent(0x5B) == 0) {
         temp_r4_44 = this->unkC;
         M2C_FIELD(temp_r4_44, f64 *, 0x910) = (f64) arg0->unk0;
         M2C_FIELD(temp_r4_44, f64 *, 0x918) = (f64) arg0->unk8;
@@ -79,9 +79,9 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void CynderTier2TrainGoal_Think::AddGoal_TrainAttackMode(AITargetData *arg0) {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x62) == 0) {
+    if (IsPresent(0x62) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
         M2C_FIELD(this->unk24, AITargetData **, 0x24) = arg0;
@@ -89,9 +89,9 @@ void CynderTier2TrainGoal_Think::AddGoal_TrainAttackMode(AITargetData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void CynderTier2TrainGoal_Think::AddGoal_SpawnOnTrain() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x61) == 0) {
+    if (IsPresent(0x61) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk20);
         this->unk30 = 1;
@@ -99,7 +99,7 @@ void CynderTier2TrainGoal_Think::AddGoal_SpawnOnTrain() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void CynderTier2TrainGoal_Think::Arbitrate() {
     EnemyDamageFeedback sp8;
     Enemy *temp_r3_274;
@@ -108,7 +108,7 @@ void CynderTier2TrainGoal_Think::Arbitrate() {
         AddGoal_SpawnOnTrain();
         return;
     }
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x61) == 0) {
+    if (IsPresent(0x61) == 0) {
         if (this->unkC->WasHit() != 0) {
             sp8.Init();
             this->unkC->TakeDamage(&sp8, 0U);

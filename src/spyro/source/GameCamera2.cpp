@@ -262,7 +262,7 @@ void GameCamera2::MiscMessage(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void GameCamera2::HeroStateHelperMessage(MKMessage *arg0) {
     f32 sp90;
     f64 sp88;
@@ -295,7 +295,7 @@ void GameCamera2::HeroStateHelperMessage(MKMessage *arg0) {
     case 0x434:
         sp1C = 0;
         sp18 = 0x431;
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp18);
+        Message(&sp18);
         return;
     case 0x435:
         temp_r3_536 = checked_cast<KDDataMessage<MKVector3, 1077> *, MKMessage>(arg0);
@@ -317,7 +317,7 @@ void GameCamera2::HeroStateHelperMessage(MKMessage *arg0) {
     case 0x436:
         sp14 = 0;
         sp10 = 0x433;
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
+        Message(&sp10);
         return;
     case 0x15C:
         temp_ret_586 = atoi(M2C_FIELD(checked_cast<SendArgMessage *, MKMessage>(arg0), s32 *, 0xC));
@@ -333,7 +333,7 @@ void GameCamera2::HeroStateHelperMessage(MKMessage *arg0) {
     case 0x15D:
         spC = 0;
         sp8 = 0x442;
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        Message(&sp8);
         break;
     }
 }
@@ -1316,14 +1316,14 @@ void GameCamera2::SlowMoAirCombatUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void GameCamera2::SlowMoAirCombatExit() {
     s32 spC;
     s32 sp8;
 
     spC = 0;
     sp8 = 0x446;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+    Message(&sp8);
 }
 #endif
 

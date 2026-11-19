@@ -554,7 +554,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void Crate::Spin() {
     f32 temp_f1_1063;
     f32 temp_f1_1100;
@@ -563,7 +563,7 @@ void Crate::Spin() {
     temp_f1_1063 = this->unk168 - gUpdateTimeDelta;
     this->unk168 = temp_f1_1063;
     if (temp_f1_1063 < 0.0f) {
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK), 0x48)(0);
+        Shatter(0);
         return;
     }
     temp_r4_1074 = this->unk8;
@@ -577,11 +577,9 @@ void Crate::Spin() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void Crate::Fall() {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK), 0x48)(0);
+    Shatter(0);
 }
-#endif
 
 void Crate::Burn() {
     s32 var_ctr_1148;

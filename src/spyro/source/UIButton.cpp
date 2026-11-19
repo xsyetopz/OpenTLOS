@@ -56,7 +56,7 @@ void UIButtonGroup::Message(UIMessage *arg0) {
     if ((u32) temp_r0_87 <= 0xCU) {
         switch (temp_r0_87) {
         case 1:
-            M2C_FIELD(this->__vptr, u8 (**)(s32), 0x38)(arg0->unk4);
+            SetSelection(arg0->unk4);
             goto block_26;
         case 6:
             M2C_FIELD(GetChild((s32) this->unk60)->__vptr, M2C_UNK (**)(UIMessage *), 0x2C)(arg0);
@@ -103,7 +103,7 @@ loop_14:
             }
             return;
         case 12:
-            if (M2C_FIELD(this->__vptr, u8 (**)(s32), 0x38)(arg0->unk4) != 0) {
+            if (SetSelection(arg0->unk4) != 0) {
                 OnSelectionChanged();
                 return;
             }

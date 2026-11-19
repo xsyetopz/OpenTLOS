@@ -373,11 +373,11 @@ block_39:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void SwampTier1Goal_Think::AddGoal_AlertMode(AITargetData *arg0) {
     Goal<SwampTier1> *temp_r4_705;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x54) == 0) {
+    if (IsPresent(0x54) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__27CompositeGoal<10SwampTier1>FP18Goal<10SwampTier1>((CompositeGoal<SwampTier1> *) this, (Goal<SwampTier1> *) this->unk34);
         temp_r4_705 = this->unk34;
@@ -388,9 +388,9 @@ void SwampTier1Goal_Think::AddGoal_AlertMode(AITargetData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void SwampTier1Goal_Think::AddGoal_Respawn() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x1E) == 0) {
+    if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__27CompositeGoal<10SwampTier1>FP18Goal<10SwampTier1>((CompositeGoal<SwampTier1> *) this, (Goal<SwampTier1> *) this->unk2C);
     }
@@ -410,9 +410,9 @@ void SwampTier1Goal_Think::AddGoal_Spawn() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void SwampTier1Goal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x5B) == 0) {
+    if (IsPresent(0x5B) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__27CompositeGoal<10SwampTier1>FP18Goal<10SwampTier1>((CompositeGoal<SwampTier1> *) this, (Goal<SwampTier1> *) this->unk28);
         AddGoal_Hit(arg0);
@@ -420,7 +420,7 @@ void SwampTier1Goal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' != 'int'
 void SwampTier1Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     Enemy *temp_r4_874;
     Goal<SwampTier1> *temp_r3_903;
@@ -428,7 +428,7 @@ void SwampTier1Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     s32 temp_r0_863;
     s32 temp_r3_864;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x38)(0x59) != 0) {
+    if (IsActive(0x59) != 0) {
         if (IsActive(0x14) == 0) {
             temp_r0_842 = arg0->unk28;
             if (temp_r0_842 != 0) {
@@ -474,16 +474,16 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void SwampTier1Goal_Think::AddGoal_Idle() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0) == 0) {
+    if (IsPresent(0) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__27CompositeGoal<10SwampTier1>FP18Goal<10SwampTier1>((CompositeGoal<SwampTier1> *) this, (Goal<SwampTier1> *) this->unk20);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void SwampTier1Goal_Think::Arbitrate() {
     EnemyDamageFeedback sp8;
     Enemy *temp_r3_1021;
@@ -504,7 +504,7 @@ void SwampTier1Goal_Think::Arbitrate() {
         AddGoal_Spawn();
         return;
     }
-    temp_r30_971 = M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x38);
+    temp_r30_971 = IsPresent(0x38);
     if ((this->unkC->WasHit() != 0) && (sp8.Init(), this->unkC->TakeDamage(&sp8, 0U), ((IsPresent(0x5B) == 0) != 0))) {
         temp_r4_990 = this->unkC;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);

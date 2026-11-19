@@ -1121,14 +1121,14 @@ void Character::UpdateMovementNormal() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void Character::UpdateMovement() {
     s32 temp_r30_2022;
     u32 temp_r0_2021;
     void *temp_r31_2055;
 
     temp_r0_2021 = this->unk680;
-    temp_r30_2022 = M2C_FIELD(this->__vptr, s32 (**)(M2C_UNK), 0x3C)(0);
+    temp_r30_2022 = EnableCollision(0);
     switch ((s32) temp_r0_2021) {                   /* irregular */
     case 0:
         UpdateMovementNormal();
@@ -1986,7 +1986,7 @@ void Character::Enable() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void Character::Message(MKMessage *arg0) {
     f32 temp_f1_3856;
     f32 temp_f2_3988;
@@ -2018,13 +2018,13 @@ void Character::Message(MKMessage *arg0) {
             Deactivate();
             goto block_88;
         default:
-            M2C_FIELD(this->__vptr, s8 (**)(s32), 0x3C)(((u32) this->unk10 >> 0x14U) & 1);
+            EnableCollision(((u32) this->unk10 >> 0x14U) & 1);
             goto block_88;
         case 213:
             Reset();
             goto block_88;
         case 82:
-            temp_r28_3797 = M2C_FIELD(this->__vptr, s8 (**)(s32), 0x3C)(0);
+            temp_r28_3797 = EnableCollision(0);
             M2C_FIELD(checked_cast<CollisionMsg *, MKMessage>(arg0), s8 *, 8) = temp_r28_3797;
             goto block_88;
         case 83:
@@ -2103,7 +2103,7 @@ void Character::Message(MKMessage *arg0) {
             goto block_88;
         case 29:
             this->unk6A0 = 1.16e-43f;
-            M2C_FIELD(this->__vptr, M2C_UNK (**)(f32 *), 0x2C)(&this->unk6A0);
+            Message(&this->unk6A0);
             this->unk600.Show(((u32) this->unk10 >> 0x12U) & 1);
             goto block_88;
         case 34:

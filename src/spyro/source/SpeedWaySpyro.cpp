@@ -2558,7 +2558,7 @@ s32 SpeedWaySpyro::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SpeedWaySpyro::Deinit() {
     s32 spC;
     s32 sp8;
@@ -2566,7 +2566,7 @@ void SpeedWaySpyro::Deinit() {
 
     spC = 0;
     sp8 = 0xB4;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+    Message(&sp8);
     this->unk180.Deinit();
     this->unk2FC.Deinit();
     this->unk17C.Deinit();

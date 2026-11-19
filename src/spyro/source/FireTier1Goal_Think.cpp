@@ -1183,25 +1183,25 @@ void EnemyGoal_FlyTakeoff::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void FireTier1Goal_Think::AddGoal_Respawn() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x1E) == 0) {
+    if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void FireTier1Goal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x5B) == 0) {
+    if (IsPresent(0x5B) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void FireTier1Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     Character *temp_r3_2550;
     Character *temp_r3_2557;
@@ -1215,7 +1215,7 @@ void FireTier1Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     u8 temp_r3_2497;
 
     var_r31_2477 = arg0->unk28;
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x5B) == 0) {
+    if (IsPresent(0x5B) == 0) {
         if (IsActive(0x59) != 0) {
             temp_r3_2497 = IsActive(8);
             temp_r4_2498 = arg0->unk20;
@@ -1278,20 +1278,20 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void FireTier1Goal_Think::AddGoal_PatrolMode() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x64) == 0) {
+    if (IsPresent(0x64) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void FireTier1Goal_Think::AddGoal_AlertMode(AITargetData *arg0) {
     Goal<Enemy> *temp_r4_2667;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x54) == 0) {
+    if (IsPresent(0x54) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
         temp_r4_2667 = this->unk28;

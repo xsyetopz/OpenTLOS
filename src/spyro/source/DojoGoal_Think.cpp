@@ -234,12 +234,12 @@ block_39:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void DojoGoal_Think::AddGoal_FollowSpawnGraph() {
     Enemy *temp_r3_471;
     Enemy *temp_r3_476;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x2A) == 0) {
+    if (IsPresent(0x2A) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk48);
         temp_r3_471 = this->unk20;
@@ -250,25 +250,25 @@ void DojoGoal_Think::AddGoal_FollowSpawnGraph() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void DojoGoal_Think::AddGoal_ReceiveOrders() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x4D) == 0) {
+    if (IsPresent(0x4D) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk4C);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void DojoGoal_Think::AddGoal_Respawn() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x1E) == 0) {
+    if (IsPresent(0x1E) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk38);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void DojoGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     Enemy *temp_r4_572;
     s32 temp_r0_576;
@@ -280,7 +280,7 @@ void DojoGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     u8 var_r31_658;
 
     var_r29_553 = 0;
-    if ((((u8) M2C_FIELD(this->unk20, u8 *, 0xB0A) >> 5U) & 1) && (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x5B) == 0)) {
+    if ((((u8) M2C_FIELD(this->unk20, u8 *, 0xB0A) >> 5U) & 1) && (IsPresent(0x5B) == 0)) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk34);
         return;
@@ -338,7 +338,7 @@ loop_29:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void DojoGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     Enemy *temp_r3_893;
     Enemy *temp_r4_956;
@@ -362,7 +362,7 @@ void DojoGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
 
     var_r28_728 = arg0->unk28;
     var_f31_731 = 0.0f;
-    temp_r29_734 = M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x38)(8);
+    temp_r29_734 = IsActive(8);
     temp_r31_741 = IsActive(0xB);
     temp_r23_748 = IsActive(0xE);
     temp_r24_755 = IsActive(0xC);
@@ -462,11 +462,11 @@ block_58:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void DojoGoal_Think::AddGoal_AlertMode(AITargetData *arg0) {
     Goal<Enemy> *temp_r4_1014;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x54) == 0) {
+    if (IsPresent(0x54) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
         temp_r4_1014 = this->unk2C;
@@ -477,11 +477,11 @@ void DojoGoal_Think::AddGoal_AlertMode(AITargetData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void DojoGoal_Think::AddGoal_Idle() {
     Goal<Enemy> *temp_r4_1050;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0) == 0) {
+    if (IsPresent(0) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
         temp_r4_1050 = this->unk24;
@@ -494,9 +494,9 @@ void DojoGoal_Think::AddGoal_Idle() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void DojoGoal_Think::AddGoal_PatrolMode() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x53) == 0) {
+    if (IsPresent(0x53) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
     }

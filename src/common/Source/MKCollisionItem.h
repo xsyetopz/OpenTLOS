@@ -175,7 +175,7 @@ public:
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 inline void MKCollisionCapsuleItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(MKCollisionCapsuleItem *), 0xC)(this);
+    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0xC)();
 }
 #endif
 

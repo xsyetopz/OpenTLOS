@@ -1700,29 +1700,29 @@ void EarthBossGoal_AttackPhase1::Init(EarthBoss *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void EarthBossGoal_Think::AddGoal_AttackPhase1() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x94) == 0) {
+    if (IsPresent(0x94) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk34);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void EarthBossGoal_Think::AddGoal_Spawn() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x38)(0x38) == 0) {
+    if (IsActive(0x38) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk30);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void EarthBossGoal_Think::AddGoal_Idle() {
     Goal<EarthBoss> *temp_r5_3356;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x38)(0) == 0) {
+    if (IsActive(0) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk24);
         temp_r5_3356 = this->unk24;
@@ -1735,9 +1735,9 @@ void EarthBossGoal_Think::AddGoal_Idle() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void EarthBossGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x5B) == 0) {
+    if (IsPresent(0x5B) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk2C);
     }

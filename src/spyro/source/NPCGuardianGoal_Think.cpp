@@ -5,12 +5,12 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(M2C_UNK);                                /* extern */
 
 void NPCGuardianGoal_Think::AddGoal_Idle() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0xCA) == 0) {
+    if (IsPresent(0xCA) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
         M2C_FIELD(this->unk24, s32 *, 0x10) = (s32) (this->unkC + 0x870);
@@ -18,13 +18,13 @@ void NPCGuardianGoal_Think::AddGoal_Idle() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void NPCGuardianGoal_Think::AddGoal_FollowSpawnGraph() {
     Goal<Enemy> *temp_r4_70;
     s32 temp_r4_60;
     s32 temp_r4_66;
 
-    if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK), 0x3C)(0x2A) == 0) {
+    if (IsPresent(0x2A) == 0) {
         RemoveAllSubgoals();
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
         temp_r4_60 = this->unkC;

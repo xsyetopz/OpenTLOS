@@ -442,7 +442,7 @@ block_73:
     case 0xC5:
         arg_sp14 = 0;
         arg_sp10 = 0xB5;
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&arg_sp10);
+        Message(&arg_sp10);
         if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C) != 0) {
             temp_r29_1073 = this->unk8 + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C), temp_r29_1073, 0U, -1, 0.0f, 0U);

@@ -187,14 +187,13 @@ void LavaCannon::SetState(int arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void LavaCannon::Message(MKMessage *arg0) {
     s32 temp_r0_459;
 
     temp_r0_459 = arg0->unk0;
     switch (temp_r0_459) {                          /* irregular */
     case 0xB5:
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 0xE0)(0, 0, -1, 0);
+        Shatter(0, 0, -1, 0);
         break;
     case 0x4E:
         if (M2C_BITWISE(u32, this->unk230) == (u32) arg0->unk4) {
@@ -204,7 +203,6 @@ void LavaCannon::Message(MKMessage *arg0) {
     }
     Shatterable::Message(arg0);
 }
-#endif
 
 void LavaCannon::Reset() {
     Shatterable::Reset();

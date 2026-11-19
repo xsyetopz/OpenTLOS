@@ -137,7 +137,7 @@ void Enemy::TestForSpikes() {
     if (((s32) this->unk110.unk16C > 0) && (this->unk110.unk4C & 0x80)) {
         spC = 0;
         sp8 = 0xE0;
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        Message(&sp8);
     }
 }
 #endif
@@ -2643,11 +2643,9 @@ void Enemy::Despawn(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void Enemy::Spawn(EnemyGeneratorDoor *arg0) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(SpawnPointObject *), 0x124)(arg0->unk18);
+    Spawn(arg0->unk18);
 }
-#endif
 
 #if 0 // DRAFT: function call 'Spawn(long *, long *, SpawnerObject *)' does not match
 s32 Enemy::Spawn(SpawnPointObject *arg0) {
