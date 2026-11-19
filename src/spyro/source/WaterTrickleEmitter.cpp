@@ -1,0 +1,274 @@
+#include "spyro/source/WaterTrickleEmitter.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/WaterDripPS.h"
+#include "common/Source/StdMath.h"
+#include <m2c_macros.h>
+
+f64 acos();                                         /* extern */
+s32 stricmp(s8 *);                                  /* extern */
+extern f32 gUpdateTimeDelta;
+extern s32 gViewSeed;
+extern M2C_UNK gb;
+static s8 lit_stringBase0[0x49] = {
+    0x4D,
+    0x69,
+    0x6E,
+    0x45,
+    0x6D,
+    0x69,
+    0x74,
+    0x52,
+    0x61,
+    0x74,
+    0x65,
+    0,
+    0x4D,
+    0x61,
+    0x78,
+    0x45,
+    0x6D,
+    0x69,
+    0x74,
+    0x52,
+    0x61,
+    0x74,
+    0x65,
+    0,
+    0x4E,
+    0x75,
+    0x6D,
+    0x50,
+    0x65,
+    0x72,
+    0x45,
+    0x6D,
+    0x69,
+    0x74,
+    0,
+    0x4D,
+    0x69,
+    0x6E,
+    0x45,
+    0x6D,
+    0x69,
+    0x74,
+    0x56,
+    0x65,
+    0x6C,
+    0,
+    0x4D,
+    0x61,
+    0x78,
+    0x45,
+    0x6D,
+    0x69,
+    0x74,
+    0x56,
+    0x65,
+    0x6C,
+    0,
+    0x41,
+    0x6E,
+    0x67,
+    0x6C,
+    0x65,
+    0,
+    0x57,
+    0x61,
+    0x79,
+    0x70,
+    0x6F,
+    0x69,
+    0x6E,
+    0x74,
+    0x73,
+    0,
+}; /* const */
+
+void WaterTrickleEmitter::Deinit() {
+    MKProp::Deinit();
+    if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
+        this->unk4C.Deinit();
+    }
+}
+
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix *' to
+void WaterTrickleEmitter::Update() {
+    f64 sp68;                                       /* compiler-managed */
+    f64 sp60;                                       /* compiler-managed */
+    MKVector3 sp50;
+    f64 sp48;
+    f64 sp40;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+    M2C_UNK *var_r30_89;
+    f32 temp_f0_177;
+    f32 temp_f28_136;
+    f32 temp_f29_130;
+    f32 temp_f30_141;
+    f32 temp_f4_152;
+    s32 var_r29_104;
+    void *temp_r3_117;
+
+    this->unk80 = this->unk80 + gUpdateTimeDelta;
+    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    if (this->unk80 == MKRand_Float(&gViewSeed, M2C_BITWISE(f32, this->unk4C.unk2C), M2C_BITWISE(f32, this->unk4C.unk30))) {
+        var_r30_89 = NULL;
+        sp38 = 0.0f;
+        sp30 = 0.0f;
+        sp34 = 0.0f;
+        this->unk80 = 0.0f;
+        sp68 = (f64) sp38;
+        sp60 = (f64) sp30;
+        if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
+            var_r30_89 = &this->unk4C;
+        }
+        var_r29_104 = 0;
+loop_10:
+        if (var_r29_104 < M2C_BITWISE(s32, this->unk4C.unk34)) {
+            if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
+                this->unk4C.GetPositionAlongPath(0.0f, sp50);
+            } else {
+                temp_r3_117 = this->unk8;
+                sp50 = M2C_FIELD(temp_r3_117, f64 *, 0x30);
+                sp50.unk8 = M2C_FIELD(temp_r3_117, f64 *, 0x38);
+                if (this->unkA0.unk38 > 0.0f) {
+                    temp_f29_130 = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                    MKRand_Float(&gViewSeed, this->unkA0.unk3C, 1.0f);
+                    temp_f28_136 = (f32) acos();
+                    temp_f30_141 = MKRand_Float(&gViewSeed, M2C_BITWISE(f32, this->unk84), this->unk88);
+                    _table_sincosf(temp_f28_136, sp18, sp14);
+                    _table_sincosf(temp_f29_130, sp10, spC);
+                    temp_f4_152 = sp18 * temp_f30_141;
+                    sp68 = sp14 * temp_f30_141;
+                    unksp64 = sp10 * temp_f4_152;
+                    sp60 = spC * temp_f4_152;
+                    unksp6C = 0.0f;
+                } else {
+                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
+                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                    temp_f0_177 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * MKRand_Float(&gViewSeed, M2C_BITWISE(f32, this->unk84), this->unk88);
+                    sp40 = sp20;
+                    sp28 = temp_f0_177;
+                    sp60 = sp20;
+                    sp48 = (f64) sp28;
+                    sp68 = (f64) sp28;
+                }
+            }
+            sp8 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
+            ((WaterDripPS *) (M2C_FIELD(&gb, WaterDripPS **, 0x6C)))->Emit(sp50, *((MKVector3 *) &sp60), sp8, 1U, 0U, (KDPathSegment *) var_r30_89);
+            var_r29_104 += 1;
+            goto loop_10;
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk34'
+void WaterTrickleEmitter::LoadDone() {
+    M2C_UNK *temp_r3_239;
+    M2C_UNK *temp_r3_245;
+
+    MKProp::LoadDone();
+    if ((u8) M2C_FIELD(this, u8 *, 0x94) != 0) {
+        this->unk4C.LoadDone();
+        this->unk4C.unk34 = 1e-45f;
+    }
+    this->unkA0.SetIdentity();
+    temp_r3_239 = &this->unkA0;
+    temp_r3_239->RotatePYR((Matrix *) temp_r3_239, loadInfo + 0x50);
+    temp_r3_245 = &this->unkA0;
+    temp_r3_245->Scale3x3((Matrix *) temp_r3_245, loadInfo + 0x60);
+    this->unkA0.unk28 = M2C_FIELD(&loadInfo, f32 *, 0x40);
+    this->unkA0.unk2C = M2C_BITWISE(f32, loadInfo.__vptr);
+    this->unkA0.unk30 = loadInfo.unk48;
+    this->unkA0.unk34 = 1.0f;
+    this->unkA0.unk3C = _table_sinf(1.5707964f + this->unkA0.unk38);
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'signed char[73]' to
+s32 WaterTrickleEmitter::LoadLine(MKIniLine *arg0) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0, (f32 *) &this->unk4C.unk2C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC], (f32 *) &this->unk4C.unk30, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x18], (s32 *) &this->unk4C.unk34, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x23], (f32 *) &this->unk84, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x2E], &this->unk88, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x39], &this->unkA0.unk38, 0) != 0)) {
+        return 1;
+    }
+    if (arg0->GetFieldName() != NULL) {
+        arg0->GetFieldName();
+        if (stricmp(&lit_stringBase0[0x3F]) == 0) {
+            if (arg0->GetNmbrOfSubLines() == 0) {
+                M2C_FIELD(this, s8 *, 0x94) = 0;
+            } else {
+                M2C_FIELD(this, s8 *, 0x94) = 1;
+            }
+            this->unk4C.Init();
+            this->unk4C.LoadLine(arg0);
+        }
+    }
+    return 0;
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'Matrix *' to
+void WaterTrickleEmitter::Init() {
+    M2C_UNK *temp_r3_391;
+
+    MKProp::Init();
+    M2C_FIELD(this, s8 *, 0x94) = 0;
+    temp_r3_391 = &this->unkA0;
+    this->unk4C.unk2C = 0.0f;
+    this->unk4C.unk30 = 0.0f;
+    this->unk80 = 0.0f;
+    this->unk4C.unk34 = 0.0f;
+    this->unk8 = temp_r3_391;
+    temp_r3_391->SetIdentity();
+    this->unk84 = 0.0f;
+    this->unk88 = 200.0f;
+    this->unkA0.unk38 = 0.0f;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk60'
+void WaterTrickleEmitterDescriptor::Init() {
+    f64 sp50;
+    f64 sp48;
+    f32 sp38;
+    f64 sp30;
+    f64 sp28;
+    f32 sp20;
+    f32 sp1C;
+    f32 sp18;
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+
+    MKPropDescriptor::Init();
+    this->unk1C = (BoundingVolume *) &this->unk60;
+    MKVector(200.0f, 200.0f, 200.0f);
+    sp18 = -sp38;
+    sp1C = -sp3C;
+    sp20 = -sp40;
+    M2C_FIELD(this, f64 *, 0x60) = (f64) sp18;
+    sp10 = 400.0f;
+    sp8 = 400.0f;
+    spC = 400.0f;
+    this->unk68 = (f64) sp20;
+    this->unk70 = (f64) sp8;
+    sp48 = (f64) sp18;
+    sp50 = (f64) sp20;
+    sp28 = (f64) sp8;
+    sp30 = (f64) sp10;
+    this->unk78 = (f64) sp10;
+}
+#endif

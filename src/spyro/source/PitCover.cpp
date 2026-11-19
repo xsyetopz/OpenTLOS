@@ -1,0 +1,165 @@
+#include "spyro/source/PitCover.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKVector3.h"
+#include "spyro/source/Game.h"
+#include "spyro/source/KDProp.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/StdMath.h"
+#include "common/Source/Str.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/Tools.h"
+#include <m2c_macros.h>
+
+extern s32 GS_PitTrapFall;
+extern s32 gViewSeed;
+extern GameGlobals gb;
+
+#if 0 // DRAFT: undefined identifier 'sp60'
+static s8 lit_stringBase0[0xB] = { 0x72, 0x5F, 0x66, 0x78, 0x65, 0x6D, 0x69, 0x74, 0x25, 0x64, 0 }; /* const */
+
+void PitCover::Message(MKMessage *arg0) {
+    MKVector3 sp180;
+    MKVector3 sp170;
+    MKVector3 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    MKVector3 sp100;
+    MKVector3 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    MKVector3 spB0;
+    MKVector3 spA0;
+    f64 sp98;
+    f64 sp90;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp68;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp28;
+    f32 sp18;
+    s32 spC;
+    f32 sp8;
+    f32 temp_f1_172;
+    f32 temp_f1_230;
+    s32 temp_r0_55;
+    s32 var_r30_121;
+
+    temp_r0_55 = arg0->unk0;
+    if (temp_r0_55 != 0xB5) {
+        if (temp_r0_55 < 0xB5) {
+            if (temp_r0_55 != 0x63) {
+                goto block_7;
+            }
+            goto block_4;
+        }
+        goto block_7;
+    }
+block_4:
+    if ((u8) this->unk70.unk4 != 0) {
+        Disable();
+        MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk90, &sp180);
+        MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk94, &sp170);
+        MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk9C, &sp160);
+        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+        sp140 = sp60;
+        sp68 = sp170.unk8 - sp180.unk8;
+        sp170 = sp60;
+        sp148 = (f64) sp68;
+        sp170.unk8 = (f64) sp68;
+        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+        sp160 = sp50;
+        sp58 = sp160.unk8 - sp180.unk8;
+        sp130 = sp50;
+        sp160.unk8 = (f64) sp58;
+        sp138 = (f64) sp58;
+        KDSound_Play3d(GS_PitTrapFall, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        var_r30_121 = 0;
+        do {
+            __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), spF0);
+            __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), sp100);
+            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp110 = sp20;
+            sp28 = sp180.unk8 + sp100.unk8;
+            sp118 = (f64) sp28;
+            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp120 = sp40;
+            sp150 = sp40;
+            sp48 = (f32) sp118 + spF0.unk8;
+            sp128 = (f64) sp48;
+            sp158 = (f64) sp48;
+            spC = MKRand_Int(&gViewSeed, 0, 2);
+            temp_f1_172 = 300.0f * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            sp88 = 0.0f;
+            sp80 = 0.0f;
+            sp84 = temp_f1_172;
+            spE8 = (f64) sp88;
+            spE0 = (f64) sp80;
+            gb.unk234->Emit(*((MKVector3 *) &sp150), *((MKVector3 *) &spE0), 10.0f, spC, 1U);
+            __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), spA0);
+            __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), spB0);
+            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            spC0 = sp10;
+            sp18 = sp180.unk8 + spB0.unk8;
+            spC8 = (f64) sp18;
+            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            spD0 = sp30;
+            sp150 = sp30;
+            sp38 = (f32) spC8 + spA0.unk8;
+            spD8 = (f64) sp38;
+            sp158 = (f64) sp38;
+            temp_f1_230 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
+            sp78 = 0.0f;
+            sp8 = temp_f1_230;
+            sp70 = 0.0f;
+            sp74 = 0.0f;
+            sp98 = (f64) sp78;
+            sp90 = (f64) sp70;
+            gb.EmitDust(*((MKVector3 *) &sp150), *((MKVector3 *) &sp90), sp8, 0.0f);
+            var_r30_121 += 1;
+        } while (var_r30_121 < 0x1E);
+block_7:
+        KDProp::Message(arg0);
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'Str_Printf(signed char[11], long)' does not match
+void PitCover::LoadDone() {
+    s32 temp_r0_286;
+    s32 var_r29_274;
+    s32 var_r31_276;
+    u16 temp_r3_284;
+    void *temp_r3_292;
+
+    KDProp::LoadDone();
+    var_r29_274 = 0;
+    var_r31_276 = 0;
+    do {
+        temp_r3_284 = Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf(lit_stringBase0, var_r29_274));
+        var_r29_274 += 1;
+        temp_r0_286 = var_r31_276 + 0x90;
+        var_r31_276 += 4;
+        *(this + temp_r0_286) = (s32) temp_r3_284;
+    } while (var_r29_274 < 4);
+    temp_r3_292 = this->unk0;
+    M2C_FIELD(temp_r3_292, s32 *, 0xC) = (s32) (M2C_FIELD(temp_r3_292, s32 *, 0xC) | 0x10);
+}
+#endif

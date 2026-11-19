@@ -1,0 +1,189 @@
+#include "spyro/source/SpikeTrap.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKProp.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Trap.h"
+#include "unplaced_templates.h"
+#include "spyro/source/PropFlags.h"
+#include <m2c_macros.h>
+
+static s8 lit_stringBase0[0x40] = {
+    0x4F,
+    0x6E,
+    0x50,
+    0x72,
+    0x65,
+    0x73,
+    0x73,
+    0x65,
+    0x64,
+    0,
+    0x4F,
+    0x6E,
+    0x52,
+    0x65,
+    0x6C,
+    0x65,
+    0x61,
+    0x73,
+    0x65,
+    0x64,
+    0,
+    0x69,
+    0x6E,
+    0x61,
+    0x63,
+    0x74,
+    0x69,
+    0x76,
+    0x65,
+    0,
+    0x61,
+    0x63,
+    0x74,
+    0x69,
+    0x76,
+    0x61,
+    0x74,
+    0x69,
+    0x6E,
+    0x67,
+    0,
+    0x61,
+    0x63,
+    0x74,
+    0x69,
+    0x76,
+    0x61,
+    0x74,
+    0x65,
+    0x64,
+    0,
+    0x64,
+    0x65,
+    0x61,
+    0x63,
+    0x74,
+    0x69,
+    0x76,
+    0x61,
+    0x74,
+    0x69,
+    0x6E,
+    0x67,
+    0,
+}; /* const */
+
+void SpikeTrap::SetState(int arg0) {
+    this->unkE0 = arg0;
+    this->unk80->SetAnim(M2C_FIELD((checked_cast<SpikeTrapDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unkE0 * 4)), MKAnim **, 0xE4), 1.0f, 0.0f, 0, -1);
+}
+
+void SpikeTrap::Message(MKMessage *arg0) {
+    if ((s32) arg0->unk0 != 0x12) {
+
+    } else {
+        M2C_FIELD(this, s8 *, 0xE4) = 1;
+    }
+    Trap::Message(arg0);
+}
+
+void SpikeTrap::Reset() {
+    Trap::Reset();
+    M2C_FIELD(this, s8 *, 0xE4) = 0;
+    SetState(0);
+}
+
+#if 0 // DRAFT: expression syntax error
+void SpikeTrap::Update() {
+    s32 temp_r0_132;
+
+    GameProp::Update();
+    if (this->unk10 & 0x20000) {
+        temp_r0_132 = this->unkE0;
+        switch (temp_r0_132) {                      /* irregular */
+        default:
+        case 0:
+            if ((u8) M2C_FIELD(this, u8 *, 0xE4) != 0) {
+                SetState(1);
+            }
+            break;
+        case 1:
+            if (this->unk80->unk2C & 1) {
+                this->unkE4.Send((MKProp *) this);
+                SetState(2);
+            }
+            break;
+        case 2:
+            if ((u8) M2C_FIELD(this, u8 *, 0xE4) == 0) {
+                this->unkE8.Send((MKProp *) this);
+                SetState(3);
+            }
+            break;
+        case 3:
+            if (this->unk80->unk2C & 1) {
+                SetState(0);
+            }
+            break;
+        }
+        M2C_FIELD(this, u8 *, 0xE4) = 0U;
+    }
+}
+#endif
+
+void SpikeTrap::LoadDone() {
+    Trap::LoadDone();
+}
+
+#if 0 // DRAFT: expression syntax error
+s32 SpikeTrap::LoadLine(MKIniLine *arg0) {
+    s32 var_r31_216;
+
+    var_r31_216 = 0;
+    if ((Trap::LoadLine(arg0) != 0) || (this->unkE4.LoadLine(arg0, lit_stringBase0) != 0) || (this->unkE8.LoadLine(arg0, &lit_stringBase0[0xA]) != 0)) {
+        var_r31_216 = 1;
+    }
+    return var_r31_216;
+}
+#endif
+
+void SpikeTrap::Deinit() {
+    GameProp::Deinit();
+}
+
+#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
+void SpikeTrap::Init() {
+    Trap::Init();
+    PropFlagsSet((u32 *) &this->unk10, 0x80000U);
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+void SpikeTrapDescriptor::LoadDone() {
+    GamePropDescriptor::LoadDone();
+    this->unkE4 = this->unk34->GetAnim(&lit_stringBase0[0x15]);
+    this->unkE8 = this->unk34->GetAnim(&lit_stringBase0[0x1E]);
+    this->unkEC = this->unk34->GetAnim(&lit_stringBase0[0x29]);
+    this->unkF0 = this->unk34->GetAnim(&lit_stringBase0[0x33]);
+}
+#endif
+
+#if 0 // DRAFT: identifier 'SpikeTrapDescriptor::LoadLine(MKIniLine *)' redeclared
+void SpikeTrapDescriptor::LoadLine(MKIniLine *arg0) {
+    GamePropDescriptor::LoadLine(arg0);
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+void SpikeTrapDescriptor::Init() {
+    TrapDescriptor::Init();
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<SpikeTrapDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
+
+}
+#endif

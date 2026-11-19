@@ -1,0 +1,850 @@
+#include "spyro/source/Shwimma.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Critters.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/Volume.h"
+#include "unplaced_templates.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/StdMath.h"
+#include "common/gc/MKModel_GC.h"
+#include <m2c_macros.h>
+
+M2C_UNK free(void *);                               /* extern */
+void *malloc(s32);                                  /* extern */
+extern f32 gUpdateTimeDelta;
+extern s32 gViewSeed;
+#if 0 // DRAFT: undefined identifier 'unk170'
+static s8 lit_stringBase0[0x52] = {
+    0x57,
+    0x61,
+    0x6C,
+    0x6B,
+    0,
+    0x52,
+    0x75,
+    0x6E,
+    0,
+    0x47,
+    0x6C,
+    0x69,
+    0x64,
+    0x65,
+    0x5F,
+    0x45,
+    0x6E,
+    0x74,
+    0x65,
+    0x72,
+    0,
+    0x47,
+    0x6C,
+    0x69,
+    0x64,
+    0x65,
+    0x5F,
+    0x43,
+    0x79,
+    0x63,
+    0x6C,
+    0x65,
+    0,
+    0x47,
+    0x6C,
+    0x69,
+    0x64,
+    0x65,
+    0x5F,
+    0x45,
+    0x78,
+    0x69,
+    0x74,
+    0,
+    0x41,
+    0x6C,
+    0x65,
+    0x72,
+    0x74,
+    0,
+    0x49,
+    0x64,
+    0x6C,
+    0x65,
+    0x5F,
+    0x30,
+    0x31,
+    0,
+    0x49,
+    0x64,
+    0x6C,
+    0x65,
+    0x5F,
+    0x30,
+    0x32,
+    0,
+    0x49,
+    0x64,
+    0x6C,
+    0x65,
+    0x5F,
+    0x30,
+    0x33,
+    0,
+    0x49,
+    0x64,
+    0x6C,
+    0x65,
+    0x5F,
+    0x30,
+    0x34,
+    0,
+}; /* const */
+
+void ShwimmaCritter::Deinit() {
+    MKHeap *temp_r3_57;
+    void *temp_r31_54;
+
+    temp_r31_54 = this->unk170;
+    if (temp_r31_54 != NULL) {
+        temp_r3_57 = MKHeap::Current();
+        if (temp_r3_57 != NULL) {
+            ((MKHeap *) (temp_r3_57->Current()))->Free(temp_r31_54, NULL, 0);
+        } else {
+            free(temp_r31_54);
+        }
+    }
+    this->unk170 = NULL;
+    Critters::Deinit();
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk170'
+void ShwimmaCritter::Draw() {
+    s32 var_r30_92;
+    s32 var_r31_93;
+    void *temp_r29_97;
+    var_r30_92 = 0;
+    var_r31_93 = 0;
+loop_4:
+    if (var_r30_92 < (s32) this->unk90) {
+        temp_r29_97 = this->unk170 + var_r31_93;
+        if ((s32) M2C_FIELD(temp_r29_97, s32 *, 0x60) != 0) {
+            this->unk80->SetAnim(M2C_FIELD(temp_r29_97, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
+            this->unk80->JumpToPos(M2C_FIELD(temp_r29_97, f32 *, 0x54), -1);
+            M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (temp_r29_97 - 4) + 4, 0x40);
+            MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
+            MKModel_Draw(this->unk4, NULL);
+        }
+        var_r30_92 += 1;
+        var_r31_93 += 0x90;
+        goto loop_4;
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk170'
+void ShwimmaCritter::Update() {
+    Volume sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp98;
+    f32 sp90;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp70;
+    f32 sp60;
+    f32 sp50;
+    f32 sp40;
+    f32 sp30;
+    f32 sp20;
+    f32 sp10;
+    MKProp *temp_r0_174;
+    MKProp *temp_r0_316;
+    MKProp *temp_r27_352;
+    MKProp *temp_r27_491;
+    MKProp *temp_r27_529;
+    Shwimma *temp_r30_165;
+    f32 temp_f0_516;
+    f32 temp_f1_377;
+    s32 var_r28_160;
+    s32 var_r31_159;
+
+    var_r31_159 = 0;
+    var_r28_160 = 0;
+loop_38:
+    if (var_r31_159 < (s32) this->unk90) {
+        temp_r30_165 = this->unk170 + var_r28_160;
+        temp_r30_165->unk30.unk34 -= gUpdateTimeDelta;
+        temp_r30_165->unk30.unk24 += temp_r30_165->unk30.unk28 * gUpdateTimeDelta;
+        temp_r0_174 = temp_r30_165->unk30.unk30;
+        if (temp_r0_174 != (MKProp *)5) {
+            if (temp_r0_174 < 5) {
+                if (temp_r0_174 != NULL) {
+                    if (temp_r0_174 >= 0) {
+                        if (temp_r0_174 < 3) {
+                            temp_f1_377 = temp_r30_165->unk30.unk24;
+                            if (temp_f1_377 > 1.0f) {
+                                temp_r30_165->unk30.unk24 = temp_f1_377 - 1.0f;
+                            }
+                            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
+                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                            spC8 = sp58;
+                            sp60 = M2C_FIELD(temp_r30_165, f32 *, 0x80) * M2C_FIELD(temp_r30_165, f32 *, 0x88);
+                            spD0 = (f64) sp60;
+                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                            spD8 = sp48;
+                            sp50 = (f32) spD0 * gUpdateTimeDelta;
+                            spE0 = (f64) sp50;
+                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
+                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                            sp128.unk20 = sp38;
+                            sp40 = temp_r30_165->unk30.unk8 + (f32) spE0;
+                            temp_r30_165->unk30.unk0 = (f32) sp128.unk20;
+                            sp128.unk28 = (f64) sp40;
+                            temp_r30_165->unk30.unk4 = unksp14C;
+                            temp_r30_165->unk30.unk8 = (f32) sp128.unk28;
+                            temp_r30_165->unk30.unkC = 1.0f;
+                            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                            if (temp_r30_165->unk30.unk34 == 0.0f) {
+                                SetAlertState(temp_r30_165);
+                            }
+                        } else {
+                            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
+                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                            spA8 = sp28;
+                            sp30 = M2C_FIELD(temp_r30_165, f32 *, 0x80) * M2C_FIELD(temp_r30_165, f32 *, 0x88);
+                            spB0 = (f64) sp30;
+                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                            spB8 = sp18;
+                            sp20 = (f32) spB0 * gUpdateTimeDelta;
+                            spC0 = (f64) sp20;
+                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
+                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                            sp128.unk10 = sp8;
+                            sp10 = M2C_BITWISE(f32, temp_r30_165->unk30.unk8) + (f32) spC0;
+                            temp_r30_165->unk30.unk0 = (f32) sp128.unk10;
+                            sp128.unk18 = (f64) sp10;
+                            temp_r30_165->unk30.unk4 = unksp13C;
+                            temp_r30_165->unk30.unk8 = (f32) sp128.unk18;
+                            temp_r30_165->unk30.unkC = 1.0f;
+                            if ((MKProp *) temp_r30_165->unk30.unk30 == (MKProp *)3) {
+                                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+                                if (temp_r30_165->unk30.unk24 == 1.0f) {
+                                    temp_r30_165->unk30.unk30 = (MKProp *)4;
+                                    temp_r27_491 = temp_r30_165->unk30.unk30;
+                                    temp_r30_165->unk30.unk20 = *(checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (((s32) temp_r27_491 * 4) + 0x70));
+                                    temp_r30_165->unk30.unk28 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_165->unk30.unk20, s16 *, 4) / 30.0f));
+                                    temp_r30_165->unk30.unk24 = 0.0f;
+                                }
+                            } else {
+                                temp_f0_516 = temp_r30_165->unk30.unk24;
+                                if (temp_f0_516 > 1.0f) {
+                                    temp_r30_165->unk30.unk24 = temp_f0_516 - 1.0f;
+                                }
+                                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                                if (M2C_BITWISE(f32, temp_r30_165->unk30.unk34) == 0.0f) {
+                                    temp_r30_165->unk30.unk30 = (MKProp *)5;
+                                    temp_r27_529 = temp_r30_165->unk30.unk30;
+                                    temp_r30_165->unk30.unk20 = *(checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (((s32) temp_r27_529 * 4) + 0x70));
+                                    temp_r30_165->unk30.unk28 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_165->unk30.unk20, s16 *, 4) / 30.0f));
+                                    temp_r30_165->unk30.unk24 = 0.0f;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    sp128.GetRandPos();
+                    sp80 = 0.0f;
+                    sp128.unk30 = M2C_BITWISE(f64, sp128);
+                    sp78 = 0.0f;
+                    sp7C = -500.0f;
+                    unksp15C = M2C_FIELD(this->unk8, f32 *, 0x34);
+                    spE8 = (f64) sp78;
+                    sp128.unk38 = sp128.unk8;
+                    sp128.unk40 = 0.0f;
+                    sp128.unk40.unk4 = 0.0f;
+                    sp128.unk40.unk8 = 0.0f;
+                    sp128.unk40.unk10 = 0.0f;
+                    sp128.unk40.unk14 = 0.0f;
+                    sp128.unk40.unk18 = 0.0f;
+                    sp128.unk40.unk20 = 0.0f;
+                    sp128.unk40.unk24 = 0.0f;
+                    sp128.unk40.unk28 = 0.0f;
+                    sp128.unk40.unk2C = 1.0f;
+                    sp128.unk40.unk30 = 0.0f;
+                    sp128.unk40.unk34 = 0.0f;
+                    sp128.unk40.unk38 = 0;
+                    unksp1A2 = 0;
+                    unksp1A3 = 0;
+                    sp128.unk40.unk3C = 0.0f;
+                    sp128.unk40.unk40 = 3.4028235e38f;
+                    sp128.unk40.unk44 = 0.0f;
+                    sp128.unk40.unk48 = 0.0f;
+                    sp128.unk40.unk4C = nanf;
+                    sp128.unk40.unk50 = 0;
+                    spF0 = (f64) sp80;
+                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+                    spA0 = 0.0f;
+                    sp98 = 0.0f;
+                    sp9C = 200.0f;
+                    sp70 = (f32) sp128.unk38 + (f32) spF0;
+                    sp108 = (f64) sp98;
+                    spF8 = sp68;
+                    sp100 = (f64) sp70;
+                    sp110 = (f64) spA0;
+                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+                    sp118 = sp88;
+                    sp90 = (f32) sp128.unk38 + (f32) sp110;
+                    sp120 = (f64) sp90;
+                    if (MKCollision_RayCollide(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8), (MKCollisionResult *) &sp128.unk40, (MKCollisionMode) 4, 0x0C000000) != 0) {
+                        sp128.unk30 = M2C_BITWISE(f64, sp128.unk40);
+                        sp128.unk38 = (f64) sp128.unk40.unk8;
+                    }
+                    M2C_STRUCT_COPY(temp_r30_165, &identity, 0x40);
+                    temp_r30_165->unk30.unk0 = (f32) sp128.unk30;
+                    temp_r30_165->unk30.unk4 = unksp15C;
+                    temp_r30_165->unk30.unk8 = (f32) sp128.unk38;
+                    temp_r30_165->unk30.unkC = 1.0f;
+                    SetAlertState(temp_r30_165);
+                }
+            } else if (temp_r0_174 < 0xB) {
+                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+                if (temp_r30_165->unk30.unk24 == 1.0f) {
+                    if (M2C_BITWISE(f32, temp_r30_165->unk30.unk34) < 0.0f) {
+                        temp_r30_165->unk30.unk30 = MKRand_Int(&gViewSeed, 0, 3) + 1;
+                        temp_r0_316 = temp_r30_165->unk30.unk30;
+                        switch (temp_r0_316) {      /* irregular */
+                        case 1:
+                            FindNewMoveParameters(temp_r30_165, 200.0f);
+                            /* fallthrough */
+                        case 2:
+                            FindNewMoveParameters(temp_r30_165, 350.0f);
+                            /* fallthrough */
+                        case 3:
+                            FindNewMoveParameters(temp_r30_165, 450.0f);
+                            temp_r30_165->unk30.unk34 = 4.0f;
+                            break;
+                        }
+                    } else {
+                        temp_r30_165->unk30.unk30 = MKRand_Int(&gViewSeed, 0, 5) + 6;
+                        temp_r27_352 = temp_r30_165->unk30.unk30;
+                        temp_r30_165->unk30.unk20 = *(checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (((s32) temp_r27_352 * 4) + 0x70));
+                        temp_r30_165->unk30.unk28 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_165->unk30.unk20, s16 *, 4) / 30.0f));
+                        temp_r30_165->unk30.unk24 = 0.0f;
+                    }
+                }
+            }
+        } else {
+            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+            if (temp_r30_165->unk30.unk24 == 1.0f) {
+                SetAlertState(temp_r30_165);
+            }
+        }
+        var_r31_159 += 1;
+        var_r28_160 += 0x90;
+        goto loop_38;
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+void ShwimmaCritter::SetAlertState(Shwimma *arg0) {
+    MKProp *temp_r31_606;
+
+    arg0->unk30.unk34 = 4.0f * MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+    arg0->unk30.unk30 = MKRand_Int(&gViewSeed, 0, 5) + 6;
+    temp_r31_606 = arg0->unk30.unk30;
+    arg0->unk30.unk20 = M2C_FIELD((checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((s32) temp_r31_606 * 4)), f32 *, 0x70);
+    arg0->unk30.unk28 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk30.unk20, s16 *, 4) / 30.0f));
+    arg0->unk30.unk24 = 0.0f;
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
+void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
+    s8 sp230;
+    s32 sp22C;
+    s32 sp228;
+    s32 sp224;
+    f32 sp220;
+    s32 sp21C;
+    s8 sp21B;
+    s8 sp21A;
+    s16 sp218;
+    f32 sp214;
+    f32 sp210;
+    f32 sp20C;
+    f32 sp208;
+    f32 sp204;
+    f32 sp200;
+    f32 sp1F8;
+    f32 sp1F4;
+    f32 sp1F0;
+    f32 sp1E8;
+    f32 sp1E4;
+    f32 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;
+    f64 sp1A0;
+    f64 sp198;
+    f64 sp190;
+    f64 sp188;
+    f64 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF8;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f32 spD8;
+    f32 spD4;
+    f32 spD0;
+    f32 spC8;
+    f32 spC4;
+    f32 spC0;
+    f32 spB8;
+    f32 spA8;
+    f32 spA4;
+    f32 spA0;
+    f32 sp98;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp48;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+    MKProp *temp_r30_658;
+    f32 temp_f1_1000;
+    f32 temp_f2_999;
+    f32 temp_f3_1001;
+    f32 var_f0_932;
+    f32 var_f3_918;
+    f32 var_f4_851;
+    f32 var_f5_1006;
+    f64 temp_f1_1011;
+    f64 temp_f1_1017;
+    f64 temp_f1_1021;
+    f64 temp_f1_857;
+    f64 temp_f1_863;
+    f64 temp_f1_867;
+    s32 temp_r3_1040;
+    s32 temp_r3_886;
+    s32 var_r0_1050;
+    s32 var_r0_896;
+
+    temp_r30_658 = arg0->unk30.unk30;
+    arg0->unk30.unk20 = M2C_FIELD((checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((s32) temp_r30_658 * 4)), f32 *, 0x70);
+    spD8 = 0.0f;
+    spA8 = 0.0f;
+    spA0 = 0.0f;
+    spA4 = -500.0f;
+    spD0 = 0.0f;
+    spD4 = 1.0f;
+    sp140 = (f64) spA0;
+    sp1C0 = (f64) spD0;
+    sp1C8 = (f64) spD8;
+    sp148 = (f64) spA8;
+    arg0->unk30.unk28 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk30.unk20, s16 *, 4) / 30.0f));
+    arg0->unk30.unk24 = 0.0f;
+    M2C_FIELD(arg0, f32 *, 0x88) = arg1;
+    sp1D0 = M2C_FIELD(arg0, f64 *, 0x30);
+    sp1D8 = M2C_FIELD(arg0, f64 *, 0x38);
+    sp1E0 = 0.0f;
+    sp1E4 = 0.0f;
+    sp1E8 = 0.0f;
+    sp1F0 = 0.0f;
+    sp1F4 = 0.0f;
+    sp1F8 = 0.0f;
+    sp200 = 0.0f;
+    sp204 = 0.0f;
+    sp208 = 0.0f;
+    sp20C = 1.0f;
+    sp210 = 0.0f;
+    sp214 = 0.0f;
+    sp218 = 0;
+    sp21A = 0;
+    sp21B = 0;
+    sp21C = 0;
+    sp220 = 3.4028235e38f;
+    sp224 = 0;
+    sp228 = 0;
+    sp22C = -1;
+    sp230 = 0;
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+    sp98 = (f32) sp1D8 + (f32) sp148;
+    spC8 = 0.0f;
+    spC0 = 0.0f;
+    spC4 = 200.0f;
+    sp150 = sp90;
+    sp160 = (f64) spC0;
+    sp158 = (f64) sp98;
+    sp168 = (f64) spC8;
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+    sp170 = spB0;
+    spB8 = (f32) sp1D8 + (f32) sp168;
+    sp178 = (f64) spB8;
+    if (MKCollision_RayCollide(*((MKVector3 *) &sp170), *((MKVector3 *) &sp150), (MKCollisionResult *) &sp1E0, (MKCollisionMode) 4, 0x0C000000) != 0) {
+        sp1D0 = (f64) sp1E0;
+        sp1D8 = (f64) sp1E8;
+        sp1C0 = (f64) sp1F0;
+        sp1C8 = (f64) sp1F8;
+    }
+    sp130.GetRandPos();
+    sp60 = 0.0f;
+    sp64 = -500.0f;
+    sp68 = 0.0f;
+    sp1B0 = sp130;
+    spF0 = (f64) sp60;
+    sp1B8 = sp138;
+    spF8 = (f64) sp68;
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
+    sp88 = 0.0f;
+    sp80 = 0.0f;
+    sp84 = 200.0f;
+    sp58 = (f32) sp1B8 + (f32) spF8;
+    sp110 = (f64) sp80;
+    sp100 = sp50;
+    sp108 = (f64) sp58;
+    sp118 = (f64) sp88;
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
+    sp120 = sp70;
+    sp78 = (f32) sp1B8 + (f32) sp118;
+    sp128 = (f64) sp78;
+    if (MKCollision_RayCollide(*((MKVector3 *) &sp120), *((MKVector3 *) &sp100), (MKCollisionResult *) &sp1E0, (MKCollisionMode) 4, 0x0C000000) != 0) {
+        sp1B0 = (f64) sp1E0;
+        sp1B8 = (f64) sp1E8;
+    }
+    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp1A0 = sp40;
+    sp48 = (f32) sp1B8 - (f32) sp1D8;
+    sp1A8 = (f64) sp48;
+    var_f4_851 = ((f32) sp1A8 * (f32) sp1A8) + (((f32) sp1A0 * (f32) sp1A0) + (unksp1A4 * unksp1A4));
+    if (var_f4_851 > 1e-12f) {
+        if (var_f4_851 > 0.0f) {
+            temp_f1_857 = __frsqrte(var_f4_851);
+            temp_f1_863 = 0.5 * temp_f1_857 * -(((f64) var_f4_851 * (temp_f1_857 * temp_f1_857)) - 3.0);
+            temp_f1_867 = 0.5 * temp_f1_863 * -(((f64) var_f4_851 * (temp_f1_863 * temp_f1_863)) - 3.0);
+            var_f4_851 = (f32) ((f64) var_f4_851 * (0.5 * temp_f1_867 * -(((f64) var_f4_851 * (temp_f1_867 * temp_f1_867)) - 3.0)));
+        } else if (var_f4_851 < M2C_BITWISE(f32, 0.0)) {
+            var_f4_851 = __float_nan;
+        } else {
+            spC = var_f4_851;
+            temp_r3_886 = M2C_BITWISE(s32, spC) & 0x7F800000;
+            switch (temp_r3_886) {                  /* switch 1; irregular */
+            case 0x7F800000:                        /* switch 1 */
+                if (M2C_BITWISE(s32, spC) & 0x7FFFFF) {
+                    var_r0_896 = 1;
+                } else {
+                    var_r0_896 = 2;
+                }
+                break;
+            case 0x0:                               /* switch 1 */
+                if (M2C_BITWISE(s32, spC) & 0x7FFFFF) {
+                    var_r0_896 = 5;
+                } else {
+                    var_r0_896 = 3;
+                }
+                break;
+            default:                                /* switch 1 */
+                var_r0_896 = 4;
+                break;
+            }
+            if (var_r0_896 == 1) {
+                var_f4_851 = __float_nan;
+            }
+        }
+        var_f3_918 = 1.0f / var_f4_851;
+    } else {
+        var_f3_918 = 0.0f;
+    }
+    sp24 = unksp1A4 * var_f3_918;
+    sp20 = (f32) sp1A0 * var_f3_918;
+    var_f0_932 = 0.0f;
+    sp28 = (f32) sp1A8 * var_f3_918;
+    spE0 = (f64) sp20;
+    spE8 = (f64) sp28;
+    sp30 = -(f32) spE0;
+    sp34 = -unkspE4;
+    sp38 = -(f32) spE8;
+    sp190 = (f64) sp30;
+    sp198 = (f64) sp38;
+    sp10 = (unksp194 * (f32) sp1C8) - ((f32) sp198 * unksp1C4);
+    sp14 = ((f32) sp198 * (f32) sp1C0) - ((f32) sp190 * (f32) sp1C8);
+    sp18 = ((f32) sp190 * unksp1C4) - (unksp194 * (f32) sp1C0);
+    sp180 = (f64) sp10;
+    sp188 = (f64) sp18;
+    arg0->unk0 = (f32) sp180;
+    arg0->unk4 = unksp184;
+    arg0->unk8 = (f32) sp188;
+    arg0->unkC = 0.0f;
+    arg0->unk10 = (f32) sp1C0;
+    arg0->unk14 = unksp1C4;
+    arg0->unk18 = (f32) sp1C8;
+    arg0->unk1C = 0.0f;
+    arg0->unk20 = (f32) sp190;
+    arg0->unk24 = unksp194;
+    arg0->unk28 = (f32) sp198;
+    arg0->unk2C = 0.0f;
+    arg0->unk30.unk0 = (f32) sp1D0;
+    arg0->unk30.unk4 = unksp1D4;
+    arg0->unk30.unk8 = (f32) sp1D8;
+    arg0->unk30.unkC = 1.0f;
+    M2C_FIELD(arg0, f64 *, 0x68) = sp1D0;
+    M2C_FIELD(arg0, f64 *, 0x70) = sp1D8;
+    M2C_FIELD(arg0, f64 *, 0x78) = sp1A0;
+    arg0->unk30.unk50 = sp1A8;
+    temp_f2_999 = arg0->unk30.unk48;
+    temp_f1_1000 = arg0->unk30.unk4C;
+    temp_f3_1001 = (f32) M2C_FIELD(arg0, f64 *, 0x80);
+    var_f5_1006 = (temp_f3_1001 * temp_f3_1001) + ((temp_f2_999 * temp_f2_999) + (temp_f1_1000 * temp_f1_1000));
+    if (var_f5_1006 > 0.000001f) {
+        if (var_f5_1006 > 0.0f) {
+            temp_f1_1011 = __frsqrte(var_f5_1006);
+            temp_f1_1017 = 0.5 * temp_f1_1011 * -(((f64) var_f5_1006 * (temp_f1_1011 * temp_f1_1011)) - 3.0);
+            temp_f1_1021 = 0.5 * temp_f1_1017 * -(((f64) var_f5_1006 * (temp_f1_1017 * temp_f1_1017)) - 3.0);
+            var_f5_1006 = (f32) ((f64) var_f5_1006 * (0.5 * temp_f1_1021 * -(((f64) var_f5_1006 * (temp_f1_1021 * temp_f1_1021)) - 3.0)));
+        } else if (var_f5_1006 < M2C_BITWISE(f32, 0.0)) {
+            var_f5_1006 = __float_nan;
+        } else {
+            sp8 = var_f5_1006;
+            temp_r3_1040 = M2C_BITWISE(s32, sp8) & 0x7F800000;
+            switch (temp_r3_1040) {                 /* switch 2; irregular */
+            case 0x7F800000:                        /* switch 2 */
+                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                    var_r0_1050 = 1;
+                } else {
+                    var_r0_1050 = 2;
+                }
+                break;
+            case 0x0:                               /* switch 2 */
+                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                    var_r0_1050 = 5;
+                } else {
+                    var_r0_1050 = 3;
+                }
+                break;
+            default:                                /* switch 2 */
+                var_r0_1050 = 4;
+                break;
+            }
+            if (var_r0_1050 == 1) {
+                var_f5_1006 = __float_nan;
+            }
+        }
+        var_f0_932 = 1.0f / var_f5_1006;
+    } else {
+        var_f5_1006 = 0.0f;
+    }
+    arg0->unk30.unk48 *= var_f0_932;
+    arg0->unk30.unk4C *= var_f0_932;
+    M2C_FIELD(arg0, f64 *, 0x80) = (f32) ((f32) M2C_FIELD(arg0, f64 *, 0x80) * var_f0_932);
+    arg0->unk30.unk34 = var_f5_1006 / M2C_FIELD(arg0, f32 *, 0x88);
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk170'
+void ShwimmaCritter::Resolve() {
+    s32 temp_r0_1123;
+    s32 var_r3_1117;
+    s32 var_r6_1118;
+
+    MKProp::Resolve();
+    var_r3_1117 = 0;
+    var_r6_1118 = 0;
+loop_2:
+    if (var_r6_1118 < (s32) this->unk90) {
+        temp_r0_1123 = var_r3_1117 + 0x60;
+        var_r6_1118 += 1;
+        var_r3_1117 += 0x90;
+        *(this->unk170 + temp_r0_1123) = 0;
+        goto loop_2;
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk170'
+void ShwimmaCritter::LoadDone() {
+    MKHeap *temp_r3_1149;
+    s32 temp_r31_1148;
+    void *var_r3_1156;
+
+    Critters::LoadDone();
+    temp_r31_1148 = this->unk90 * 0x90;
+    temp_r3_1149 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
+    if (temp_r3_1149 != NULL) {
+        var_r3_1156 = ((MKHeap *) (temp_r3_1149->Current()))->Alloc(temp_r31_1148, NULL, 0);
+    } else {
+        var_r3_1156 = malloc(temp_r31_1148);
+    }
+    this->unk170 = var_r3_1156;
+}
+#endif
+
+void ShwimmaCritter::Init() {
+    Critters::Init();
+}
+
+void ShwimmaCritterDescriptor::Deinit() {
+    KDPropDescriptor::Deinit();
+}
+
+#if 0 // DRAFT: expression syntax error
+void ShwimmaCritterDescriptor::LoadDone() {
+    s8 *temp_r30_1205;
+    s8 *temp_r30_1223;
+    s8 *temp_r30_1241;
+    s8 *temp_r30_1259;
+    s8 *temp_r30_1277;
+    s8 *temp_r30_1295;
+    s8 *temp_r30_1313;
+    s8 *temp_r30_1331;
+    s8 *temp_r30_1349;
+    s8 *temp_r30_1367;
+    void *var_r3_1215;
+    void *var_r3_1233;
+    void *var_r3_1251;
+    void *var_r3_1269;
+    void *var_r3_1287;
+    void *var_r3_1305;
+    void *var_r3_1323;
+    void *var_r3_1341;
+    void *var_r3_1359;
+    void *var_r3_1377;
+
+    KDPropDescriptor::LoadDone();
+    temp_r30_1205 = this->unk34;
+    if (temp_r30_1205->Exists(lit_stringBase0) != 0) {
+        var_r3_1215 = temp_r30_1205->GetAnim(lit_stringBase0);
+    } else {
+        var_r3_1215 = NULL;
+    }
+    this->unk74 = (s32) var_r3_1215;
+    temp_r30_1223 = this->unk34;
+    if (temp_r30_1223->Exists(&lit_stringBase0[5]) != 0) {
+        var_r3_1233 = temp_r30_1223->GetAnim(&lit_stringBase0[5]);
+    } else {
+        var_r3_1233 = NULL;
+    }
+    this->unk78 = (s32) var_r3_1233;
+    temp_r30_1241 = this->unk34;
+    if (temp_r30_1241->Exists(&lit_stringBase0[9]) != 0) {
+        var_r3_1251 = temp_r30_1241->GetAnim(&lit_stringBase0[9]);
+    } else {
+        var_r3_1251 = NULL;
+    }
+    this->unk7C = (s32) var_r3_1251;
+    temp_r30_1259 = this->unk34;
+    if (temp_r30_1259->Exists(&lit_stringBase0[0x15]) != 0) {
+        var_r3_1269 = temp_r30_1259->GetAnim(&lit_stringBase0[0x15]);
+    } else {
+        var_r3_1269 = NULL;
+    }
+    this->unk80 = (s32) var_r3_1269;
+    temp_r30_1277 = this->unk34;
+    if (temp_r30_1277->Exists(&lit_stringBase0[0x21]) != 0) {
+        var_r3_1287 = temp_r30_1277->GetAnim(&lit_stringBase0[0x21]);
+    } else {
+        var_r3_1287 = NULL;
+    }
+    this->unk84 = (s32) var_r3_1287;
+    temp_r30_1295 = this->unk34;
+    if (temp_r30_1295->Exists(&lit_stringBase0[0x2C]) != 0) {
+        var_r3_1305 = temp_r30_1295->GetAnim(&lit_stringBase0[0x2C]);
+    } else {
+        var_r3_1305 = NULL;
+    }
+    this->unk88 = (s32) var_r3_1305;
+    temp_r30_1313 = this->unk34;
+    if (temp_r30_1313->Exists(&lit_stringBase0[0x32]) != 0) {
+        var_r3_1323 = temp_r30_1313->GetAnim(&lit_stringBase0[0x32]);
+    } else {
+        var_r3_1323 = NULL;
+    }
+    this->unk8C = (s32) var_r3_1323;
+    temp_r30_1331 = this->unk34;
+    if (temp_r30_1331->Exists(&lit_stringBase0[0x3A]) != 0) {
+        var_r3_1341 = temp_r30_1331->GetAnim(&lit_stringBase0[0x3A]);
+    } else {
+        var_r3_1341 = NULL;
+    }
+    this->unk90 = (s32) var_r3_1341;
+    temp_r30_1349 = this->unk34;
+    if (temp_r30_1349->Exists(&lit_stringBase0[0x42]) != 0) {
+        var_r3_1359 = temp_r30_1349->GetAnim(&lit_stringBase0[0x42]);
+    } else {
+        var_r3_1359 = NULL;
+    }
+    this->unk94 = (s32) var_r3_1359;
+    temp_r30_1367 = this->unk34;
+    if (temp_r30_1367->Exists(&lit_stringBase0[0x4A]) != 0) {
+        var_r3_1377 = temp_r30_1367->GetAnim(&lit_stringBase0[0x4A]);
+    } else {
+        var_r3_1377 = NULL;
+    }
+    this->unk98 = (s32) var_r3_1377;
+}
+#endif
+
+void ShwimmaCritterDescriptor::Init() {
+    KDPropDescriptor::Init();
+}
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
+
+}
+#endif

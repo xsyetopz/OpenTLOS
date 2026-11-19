@@ -1,0 +1,80 @@
+#include "spyro/source/UIStringTable.h"
+#include "common/Source/MKStringCache.h"
+#include <m2c_macros.h>
+
+extern UIStringTable *pStringTable;
+
+#if 0 // DRAFT: type mismatch
+s32 UIStringTable::Remove(const char *arg0) {
+    MKStringCache *temp_r3_18;
+    u8 var_r31_19;
+
+    if (arg0 != NULL) {
+        temp_r3_18 = this->unk4;
+        var_r31_19 = 0;
+        if ((arg0 >= temp_r3_18) && (arg0 < (void *) (this->unk4 + temp_r3_18->GetUsedLength()))) {
+            var_r31_19 = 1;
+        }
+        if (var_r31_19 == 0) {
+            return 0;
+        }
+        goto block_6;
+    }
+block_6:
+    if (this->unk4->Find(arg0) == NULL) {
+        return 0;
+    }
+    this->unk0 -= 1;
+    return 1;
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'MKStringCache *' to
+s32 UIStringTable::Add(const char *arg0) {
+    if (arg0 == NULL) {
+        return 0;
+    }
+    this->unk0 += 1;
+    return this->unk4->Add(arg0);
+}
+#endif
+
+void UIStringTable::Deinit() {
+    this->unk4->Destroy();
+    this->unk4 = NULL;
+}
+
+#if 0 // DRAFT: pointer/array required
+void UIStringTable::Init(int arg0) {
+    this->unk4 = arg0->Create(arg0);
+    this->unk0 = 0;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+UIStringTable::UIStringTable() {
+    this->unk4 = NULL;
+    this->unk0 = 0;
+    return this;
+}
+#endif
+
+void UIStringTable_Remove(const char *arg0) {
+    pStringTable->Remove(arg0);
+}
+
+void UIStringTable_Add(const char *arg0) {
+    pStringTable->Add(arg0);
+}
+
+UIStringTable *UIStringTable_GetCurrent() {
+    return pStringTable;
+}
+
+UIStringTable *UIStringTable_SetCurrent(UIStringTable *arg0) {
+    UIStringTable *temp_r0_165;
+
+    temp_r0_165 = pStringTable;
+    pStringTable = arg0;
+    return temp_r0_165;
+}

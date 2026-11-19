@@ -1,0 +1,1020 @@
+#include "spyro/source/SiegeTower.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDynamicBone.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Ball.h"
+#include "spyro/source/EnergyBeam.h"
+#include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/TargetManager.h"
+#include "unplaced_templates.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/Tools.h"
+#include <m2c_macros.h>
+
+extern s32 GS_SiegeTowerExtra2;
+extern s32 GS_SiegeTowerExtra3;
+extern MKSceneManager *gMK;
+extern f32 gUpdateTimeDelta;
+extern M2C_UNK gb;
+#if 0 // DRAFT: illegal use of incomplete struct/union/class
+static struct _struct_siegeTowerGroups_0x18 siegeTowerGroups[8];
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1C0'
+static s8 lit_stringBase0[0x6E] = {
+    0x72,
+    0x5F,
+    0x61,
+    0x6D,
+    0x6D,
+    0x6F,
+    0,
+    0x6D,
+    0x5F,
+    0x70,
+    0x33,
+    0x30,
+    0x32,
+    0x38,
+    0x5F,
+    0x64,
+    0x69,
+    0x73,
+    0x63,
+    0,
+    0x66,
+    0x54,
+    0x61,
+    0x72,
+    0x67,
+    0x65,
+    0x74,
+    0x52,
+    0x61,
+    0x6E,
+    0x67,
+    0x65,
+    0,
+    0x67,
+    0x72,
+    0x6F,
+    0x75,
+    0x70,
+    0,
+    0x66,
+    0x78,
+    0x65,
+    0x6D,
+    0x69,
+    0x74,
+    0x30,
+    0,
+    0x66,
+    0x78,
+    0x65,
+    0x6D,
+    0x69,
+    0x74,
+    0x31,
+    0,
+    0x5A,
+    0x61,
+    0x70,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0x4C,
+    0x6F,
+    0x6F,
+    0x70,
+    0,
+    0x5A,
+    0x61,
+    0x70,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0x4C,
+    0x6F,
+    0x6F,
+    0x70,
+    0x32,
+    0,
+    0x54,
+    0x75,
+    0x72,
+    0x6E,
+    0x69,
+    0x6E,
+    0x67,
+    0x53,
+    0x6F,
+    0x75,
+    0x6E,
+    0x64,
+    0x4C,
+    0x6F,
+    0x6F,
+    0x70,
+    0,
+    0x45,
+    0x6E,
+    0x65,
+    0x72,
+    0x67,
+    0x79,
+    0x42,
+    0x65,
+    0x61,
+    0x6D,
+    0,
+}; /* const */
+
+void SiegeTower::ZapBall(Ball *arg0) {
+    f64 sp10;
+    f64 sp8;
+    f64 temp_f0_133;
+    f64 temp_f1_131;
+    s32 temp_r3_137;
+    s32 temp_r3_95;
+    u32 temp_r4_112;
+    void *temp_r3_121;
+    void *temp_r3_127;
+
+    temp_r3_95 = this->unk1C0.unk78;
+    if ((u32) temp_r3_95 != 0U) {
+        M2C_FIELD(temp_r3_95, s32 *, 0x130) = 0;
+    }
+    this->unk1C0.unk78 = 0x11->CreateInstance((ProjectileType) arg0);
+    if ((u32) this->unk1C0.unk78 != 0U) {
+        this->unk280.unk4 = M2C_BITWISE(f32, arg0);
+        this->unk270.unkC = 0.5f;
+        M2C_FIELD(this->unk1C0.unk78, SiegeTower **, 0x130) = this;
+        temp_r4_112 = this->unk324;
+        if (temp_r4_112 != -1U) {
+            MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_112, (MKVector3 *) &this->unk250.unkC);
+        } else {
+            temp_r3_121 = this->unk8;
+            M2C_FIELD(this, f64 *, 0x270) = (f64) M2C_FIELD(temp_r3_121, f64 *, 0x30);
+            M2C_FIELD(this, f64 *, 0x278) = (f64) M2C_FIELD(temp_r3_121, f64 *, 0x38);
+        }
+        temp_r3_127 = arg0->unk8;
+        temp_f1_131 = M2C_FIELD(temp_r3_127, f64 *, 0x30);
+        temp_f0_133 = M2C_FIELD(temp_r3_127, f64 *, 0x38);
+        sp8 = temp_f1_131;
+        M2C_FIELD(this, f64 *, 0x280) = temp_f1_131;
+        M2C_FIELD(this, f64 *, 0x288) = temp_f0_133;
+        temp_r3_137 = this->unk1C0.unk78;
+        sp10 = temp_f0_133;
+        M2C_FIELD(M2C_FIELD(temp_r3_137, void **, 0x44), M2C_UNK (**)(s32, f32 *, f32 *, M2C_UNK, M2C_UNK, f64), 0x50)(temp_r3_137, &this->unk250.unkC, &this->unk260.unkC, 0, 0, temp_f1_131);
+        KDSound_Play3d(GS_SiegeTowerExtra2, arg0->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1C0'
+void SiegeTower::Shoot(Targetable *arg0) {
+    s8 sp99;
+    s8 sp98;
+    s32 sp94;
+    f32 sp90;
+    s32 sp8C;
+    s8 sp8A;
+    s8 sp89;
+    s8 sp88;
+    f64 sp80;                                       /* compiler-managed */
+    f64 sp78;                                       /* compiler-managed */
+    SiegeTower *sp74;
+    s32 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    MKProp *sp4C;
+    MKProp *sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp18;
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+    f64 temp_f1_202;
+    s32 temp_r3_210;
+    u32 temp_r4_183;
+    void *temp_r3_192;
+    void *temp_r6_198;
+
+    if (((u32) this->unk1C0.unk78 == 0U) && (arg0 != NULL)) {
+        this->unk1C0.unk78 = 0x11->CreateInstance((ProjectileType) arg0);
+        if ((u32) this->unk1C0.unk78 != 0U) {
+            this->unk270.unkC = 2.0f;
+            M2C_FIELD(this->unk1C0.unk78, SiegeTower **, 0x130) = this;
+            temp_r4_183 = this->unk324;
+            if (temp_r4_183 != -1U) {
+                MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_183, (MKVector3 *) &this->unk250.unkC);
+            } else {
+                temp_r3_192 = this->unk8;
+                M2C_FIELD(this, f64 *, 0x270) = (f64) M2C_FIELD(temp_r3_192, f64 *, 0x30);
+                M2C_FIELD(this, f64 *, 0x278) = (f64) M2C_FIELD(temp_r3_192, f64 *, 0x38);
+            }
+            temp_r6_198 = this->unk8;
+            temp_f1_202 = M2C_FIELD(temp_r6_198, f64 *, 0x30);
+            sp38 = temp_f1_202;
+            sp40 = M2C_FIELD(temp_r6_198, f64 *, 0x38);
+            M2C_FIELD(arg0->__vptr, M2C_UNK (**)(Targetable *, f64 *, f32 *, void *, f64), 0x2C)(arg0, &sp38, &this->unk260.unkC, temp_r6_198, temp_f1_202);
+            temp_r3_210 = this->unk1C0.unk78;
+            M2C_FIELD(M2C_FIELD(temp_r3_210, void **, 0x44), M2C_UNK (**)(s32, f32 *, f32 *, M2C_UNK, M2C_UNK), 0x50)(temp_r3_210, &this->unk250.unkC, &this->unk260.unkC, 0, 0);
+            sp10 = 0.0f;
+            sp8 = 0.0f;
+            spC = 0.0f;
+            sp4C = NULL;
+            sp28 = (f64) sp8;
+            sp30 = (f64) sp10;
+            sp48 = (MKProp *)7;
+            sp70 = 1;
+            sp74 = this;
+            sp50 = (f64) sp8;
+            sp58 = (f64) sp10;
+            sp88 = 1;
+            sp94 = 2;
+            sp90 = 100.0f;
+            sp89 = 0;
+            sp8A = 0;
+            sp8C = -1;
+            sp60 = M2C_FIELD(&one, f64 *, 0);
+            sp68 = M2C_FIELD(&one, f64 *, 8);
+            sp98 = 0;
+            if (this != NULL) {
+                sp18.GetPos();
+                sp78 = sp18;
+                sp80 = sp20;
+            } else {
+                sp78 = 0.0f;
+                unksp7C = 0.0f;
+                sp80 = 0.0f;
+            }
+            sp99 = 1;
+            M2C_FIELD(M2C_FIELD(M2C_FIELD(arg0->__vptr, void *(**)(Targetable *), 8)(arg0), void **, 0x44), M2C_UNK (**)(MKProp **), 0x2C)(&sp48);
+            KDSound_Play3d(GS_SiegeTowerExtra2, M2C_FIELD(M2C_FIELD(arg0->__vptr, void *(**)(Targetable *), 8)(arg0), s32 *, 8) + 0x30, 0U, -1, 0.0f, 0U);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1C0'
+void SiegeTower::UpdateShooting(Targetable *arg0) {
+    M2C_UNK sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    M2C_UNK sp28;
+    f64 sp20;
+    f64 sp18;
+    f32 sp10;
+    f32 temp_r3_330;
+    f64 temp_f0_409;
+    f64 temp_f1_359;
+    f64 temp_f1_408;
+    s32 temp_r3_321;
+    u32 temp_r4_340;
+    u32 temp_r4_391;
+    void *temp_r3_349;
+    void *temp_r3_400;
+    void *temp_r3_407;
+    void *temp_r6_355;
+
+    if ((u32) this->unk1C0.unk78 != 0U) {
+        this->unk270.unkC -= gUpdateTimeDelta;
+        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+        if (this->unk270.unkC == 0.0f) {
+            temp_r3_321 = this->unk1C0.unk78;
+            M2C_FIELD(M2C_FIELD(temp_r3_321, void **, 0x44), M2C_UNK (**)(s32), 0x54)(temp_r3_321);
+            M2C_FIELD(this->unk1C0.unk78, s32 *, 0x130) = 0;
+            this->unk1C0.unk78 = 0;
+            temp_r3_330 = this->unk280.unk4;
+            if (M2C_BITWISE(u32, temp_r3_330) != 0U) {
+                ((Ball *) (M2C_BITWISE(Ball *, temp_r3_330)))->Smash();
+                this->unk280.unk4 = 0.0f;
+            }
+        } else {
+            if (arg0 != NULL) {
+                temp_r4_340 = this->unk324;
+                if (temp_r4_340 != -1U) {
+                    MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_340, (MKVector3 *) &this->unk250.unkC);
+                } else {
+                    temp_r3_349 = this->unk8;
+                    M2C_FIELD(this, f64 *, 0x270) = (f64) M2C_FIELD(temp_r3_349, f64 *, 0x30);
+                    M2C_FIELD(this, f64 *, 0x278) = (f64) M2C_FIELD(temp_r3_349, f64 *, 0x38);
+                }
+                temp_r6_355 = this->unk8;
+                temp_f1_359 = M2C_FIELD(temp_r6_355, f64 *, 0x30);
+                sp48 = temp_f1_359;
+                sp50 = M2C_FIELD(temp_r6_355, f64 *, 0x38);
+                M2C_FIELD(arg0->__vptr, M2C_UNK (**)(Targetable *, f64 *, M2C_UNK *, void *, f64), 0x2C)(arg0, &sp48, &sp58, temp_r6_355, temp_f1_359);
+                MKVector(0.0f, 100.0f, 0.0f);
+                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                M2C_FIELD(this, f64 *, 0x280) = sp8;
+                sp10 = sp60 + sp30;
+                sp38 = sp8;
+                sp40 = (f64) sp10;
+                M2C_FIELD(this, f64 *, 0x288) = (f64) sp10;
+                return;
+            }
+            if (M2C_BITWISE(u32, this->unk280.unk4) != 0U) {
+                temp_r4_391 = this->unk324;
+                if (temp_r4_391 != -1U) {
+                    MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_391, (MKVector3 *) &this->unk250.unkC);
+                } else {
+                    temp_r3_400 = this->unk8;
+                    M2C_FIELD(this, f64 *, 0x270) = (f64) M2C_FIELD(temp_r3_400, f64 *, 0x30);
+                    M2C_FIELD(this, f64 *, 0x278) = (f64) M2C_FIELD(temp_r3_400, f64 *, 0x38);
+                }
+                temp_r3_407 = M2C_FIELD(this->unk280.unk4, void **, 8);
+                temp_f1_408 = M2C_FIELD(temp_r3_407, f64 *, 0x30);
+                temp_f0_409 = M2C_FIELD(temp_r3_407, f64 *, 0x38);
+                sp18 = temp_f1_408;
+                M2C_FIELD(this, f64 *, 0x280) = temp_f1_408;
+                sp20 = temp_f0_409;
+                M2C_FIELD(this, f64 *, 0x288) = temp_f0_409;
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1C0'
+void SiegeTower::CalcSpikeBeamPositions() {
+    void *temp_r3_431;
+
+    temp_r3_431 = checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r3_431, s32 *, 0x170), (MKVector3 *) &this->unk1C0.unk80);
+    MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r3_431, s32 *, 0x174), (MKVector3 *) &this->unk24C);
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1C0'
+void SiegeTower::FreeElecBeams() {
+    s32 temp_r4_458;
+    void *temp_r3_457;
+
+    temp_r3_457 = checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    temp_r4_458 = this->unk1C0.unk7C;
+    if ((u32) temp_r4_458 != 0U) {
+        ((EnergyBeam *) (M2C_FIELD(temp_r3_457, EnergyBeam **, 0x16C)))->FreeEnergyBeam((EnergyBeam::Beam *) temp_r4_458);
+        this->unk1C0.unk7C = 0;
+    }
+}
+#endif
+
+#if 0 // DRAFT: ')' expected
+void SiegeTower::AllocElecBeams() {
+    ((EnergyBeam *) (M2C_FIELD(checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x16C)))->SpawnEnergyBeam((MKVector3 *) &this->unk1C0.unk80, (MKVector3 *) &this->unk24C, 0.25f);
+    this->unk1C0.unk7C = M2C_ERROR(/* Read from unset register $r3 */);
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk280'
+void SiegeTower::Message(MKMessage *arg0) {
+    s32 temp_r0_510;
+    s32 temp_r3_544;
+    void *temp_r3_535;
+
+    this->unk280.unkC.Message(arg0);
+    this->unk2C8.Message(arg0);
+    temp_r0_510 = arg0->unk0;
+    if (temp_r0_510 != 0x31) {
+        if (temp_r0_510 < 0x31) {
+            switch (temp_r0_510) {                  /* irregular */
+            case 5:
+                break;
+            case 21:
+                temp_r3_544 = this->unk1C0.unk78;
+                if ((u32) temp_r3_544 != 0U) {
+                    M2C_FIELD(M2C_FIELD(temp_r3_544, void **, 0x44), M2C_UNK (**)(), 0x54)();
+                    M2C_FIELD(this->unk1C0.unk78, s32 *, 0x130) = 0;
+                    this->unk1C0.unk78 = 0;
+                }
+                goto block_17;
+            }
+        } else if (temp_r0_510 < 0xB4) {
+            if (temp_r0_510 != 0x79) {
+                goto block_17;
+            }
+            temp_r3_535 = checked_cast<FindInteractivePropMsg *, MKMessage>(arg0);
+            if ((s32) M2C_FIELD(temp_r3_535, s32 *, 8) == 3) {
+                M2C_FIELD(temp_r3_535, SiegeTower **, 0xC) = this;
+            }
+        } else {
+            if (temp_r0_510 < 0xB6) {
+                this->unk1B0.Message(arg0);
+            }
+block_17:
+            this->unk1B0.Message(arg0);
+            Shatterable::Message(arg0);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk324'
+void SiegeTower::UpdateTurning(MKVector3 arg0) {
+    MKVector3 spB0;
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;                                       /* compiler-managed */
+    f64 sp90;                                       /* compiler-managed */
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    MKVector3 sp60;
+    f64 sp58;
+    f64 sp50;
+    f32 sp48;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp8;
+    f32 temp_f0_709;
+    f32 temp_f10_710;
+    f32 temp_f2_714;
+    f32 temp_f3_717;
+    f32 temp_f8_716;
+    f32 temp_f9_706;
+    f32 var_f11_730;
+    f32 var_f2_780;
+    f32 var_f4_635;
+    f32 var_f7_622;
+    f32 var_f7_765;
+    f64 temp_f1_640;
+    f64 temp_f1_646;
+    f64 temp_f1_650;
+    s32 temp_r3_669;
+    s32 var_r0_679;
+    s8 var_r0_789;
+    u32 temp_r4_582;
+    void *temp_r5_581;
+
+    temp_r5_581 = this->unk8;
+    temp_r4_582 = this->unk324;
+    spA0 = M2C_FIELD(temp_r5_581, f64 *, 0x30);
+    spA8 = M2C_FIELD(temp_r5_581, f64 *, 0x38);
+    if (temp_r4_582 != -1U) {
+        MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_582, &spB0);
+    } else {
+        sp60.operator*(100.0f);
+        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp70 = sp10;
+        sp18 = (f32) spA8 + sp60.unk8;
+        spB0 = sp10;
+        sp78 = (f64) sp18;
+        spB0.unk8 = (f64) sp18;
+    }
+    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    var_f7_622 = 0.0f;
+    sp90 = sp40;
+    sp48 = spB0.unk8 - (f32) spA8;
+    unksp94 = 0.0f;
+    sp98 = (f64) sp48;
+    var_f4_635 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (0.0f * 0.0f));
+    if (var_f4_635 > 0.000001f) {
+        if (var_f4_635 > 0.0f) {
+            temp_f1_640 = __frsqrte(var_f4_635);
+            temp_f1_646 = 0.5 * temp_f1_640 * -(((f64) var_f4_635 * (temp_f1_640 * temp_f1_640)) - 3.0);
+            temp_f1_650 = 0.5 * temp_f1_646 * -(((f64) var_f4_635 * (temp_f1_646 * temp_f1_646)) - 3.0);
+            var_f4_635 = (f32) ((f64) var_f4_635 * (0.5 * temp_f1_650 * -(((f64) var_f4_635 * (temp_f1_650 * temp_f1_650)) - 3.0)));
+        } else if (var_f4_635 < M2C_BITWISE(f32, 0.0)) {
+            var_f4_635 = __float_nan;
+        } else {
+            sp8 = var_f4_635;
+            temp_r3_669 = M2C_BITWISE(s32, sp8) & 0x7F800000;
+            switch (temp_r3_669) {                  /* irregular */
+            case 0x7F800000:
+                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                    var_r0_679 = 1;
+                } else {
+                    var_r0_679 = 2;
+                }
+                break;
+            case 0x0:
+                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                    var_r0_679 = 5;
+                } else {
+                    var_r0_679 = 3;
+                }
+                break;
+            default:
+                var_r0_679 = 4;
+                break;
+            }
+            if (var_r0_679 == 1) {
+                var_f4_635 = __float_nan;
+            }
+        }
+        var_f7_622 = 1.0f / var_f4_635;
+    }
+    temp_f9_706 = unksp94 * var_f7_622;
+    sp38 = 0.0f;
+    temp_f0_709 = M2C_FIELD(arg0, f32 *, 4);
+    temp_f10_710 = (f32) sp90 * var_f7_622;
+    temp_f2_714 = M2C_FIELD(arg0, f32 *, 0);
+    sp58 = (f64) sp38;
+    temp_f8_716 = (f32) sp98 * var_f7_622;
+    temp_f3_717 = M2C_FIELD(arg0, f32 *, 8);
+    sp30 = 0.0f;
+    sp34 = 1.0f;
+    sp50 = (f64) sp30;
+    var_f11_730 = 15.0f * (1.0f - ((temp_f3_717 * temp_f8_716) + ((temp_f2_714 * temp_f10_710) + (temp_f0_709 * temp_f9_706))));
+    sp90 = temp_f10_710;
+    unksp94 = temp_f9_706;
+    sp98 = temp_f8_716;
+    sp28 = ((f32) sp50 * temp_f9_706) - (unksp54 * temp_f10_710);
+    sp20 = (unksp54 * temp_f8_716) - ((f32) sp58 * temp_f9_706);
+    sp24 = ((f32) sp58 * temp_f10_710) - ((f32) sp50 * temp_f8_716);
+    sp88 = (f64) sp28;
+    sp80 = (f64) sp20;
+    if (var_f11_730 < 1.0f) {
+
+    } else {
+        var_f11_730 = 1.0f;
+    }
+    if (var_f11_730 > -1.0f) {
+
+    } else {
+        var_f11_730 = -1.0f;
+    }
+    var_f7_765 = 1.5f * var_f11_730;
+    if (((temp_f3_717 * (f32) sp88) + ((temp_f2_714 * (f32) sp80) + (temp_f0_709 * unksp84))) > 0.0f) {
+        var_f7_765 = -var_f7_765;
+    }
+    M2C_FIELD(this, f32 *, 0x1B8) = (f32) ((var_f7_765 * gUpdateTimeDelta) + M2C_FIELD(this, f32 *, 0x1B8));
+    if (var_f7_765 < 0.0f) {
+        var_f2_780 = -var_f7_765;
+    } else {
+        var_f2_780 = var_f7_765;
+    }
+    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    if (var_f2_780 == 0.02f) {
+        var_r0_789 = 1;
+    } else {
+        var_r0_789 = 0;
+    }
+    M2C_FIELD(this, s8 *, 0x32D) = var_r0_789;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'arg_sp2C'
+void SiegeTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
+    s16 temp_r31_855;
+    M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
+    arg_sp10 = -arg0->unk0;
+    arg_sp14 = -arg0->unk4;
+    arg_sp18 = -arg0->unk8;
+    arg_sp20 = (f64) arg_sp10;
+    arg_sp28 = (f64) arg_sp18;
+    arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) &arg_sp20));
+    arg_sp30.RotateYaw((Matrix *) &arg_sp30, arg0->unk10);
+    arg_sp30.Translate((Matrix *) &arg_sp30, *((MKVector3 *) arg0));
+    temp_r31_855 = M2C_FIELD(this->unk20, s16 *, 0x70);
+    ((Animation *) (MKModel_GetAnimation(M2C_BITWISE(MKModel *, this->unk24))))->SetCustomMatrix((s32) temp_r31_855, (Matrix *) &arg_sp30, (AnimationMatrixPosition) 4, 0U);
+}
+#endif
+
+#if 0 // DRAFT: ')' expected
+void SiegeTower::Update() {
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;                                       /* compiler-managed */
+    f64 sp58;                                       /* compiler-managed */
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f32 sp20;
+    f32 sp10;
+    s32 sp8;
+    KDSynkerPlayer3 *temp_r3_1030;
+    Targetable *var_r31_1066;
+    f32 temp_f31_1052;
+    f32 var_f1_1302;
+    f32 var_f31_1137;
+    f32 var_f4_1124;
+    f64 temp_f1_1103;
+    f64 temp_f1_1142;
+    f64 temp_f1_1148;
+    f64 temp_f1_1152;
+    s32 temp_r0_1049;
+    s32 temp_r3_1013;
+    s32 temp_r3_1171;
+    s32 var_r0_1181;
+    u8 var_r29_887;
+    u8 var_r29_932;
+    u8 var_r31_1027;
+    u8 var_r31_891;
+    u8 var_r31_936;
+    u8 var_r31_977;
+    void *temp_r29_1029;
+    void *temp_r3_1111;
+    void *temp_r4_914;
+    void *temp_r4_959;
+    void *temp_r4_992;
+    void *temp_r6_1094;
+    void *temp_r6_1102;
+
+    Shatterable::Update();
+    if ((s32) M2C_FIELD(checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x178) != 0) {
+        var_r29_887 = 0;
+        if ((u32) this->unk1C0.unk78 != 0U) {
+            var_r31_891 = 0;
+            if ((((KDSynkerPlayer3 *) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), KDSynkerPlayer3 **, 0x78) != NULL) || ((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (M2C_FIELD(&gb, void **, 0xC) + 0x24))->GetState() != 0)) {
+                var_r31_891 = 1;
+            }
+            if (var_r31_891 == 0) {
+                var_r29_887 = 1;
+            }
+        }
+        temp_r4_914 = checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        sp8 = 1;
+        this->unk280.unkC.Update(M2C_FIELD(temp_r4_914, s32 *, 0x178), 1U, var_r29_887, NULL, (MKVector3 *) &this->unk260.unkC, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    }
+    if ((s32) M2C_FIELD(checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x17C) != 0) {
+        var_r29_932 = 0;
+        if ((u32) this->unk1C0.unk78 != 0U) {
+            var_r31_936 = 0;
+            if ((((KDSynkerPlayer3 *) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), KDSynkerPlayer3 **, 0x78) != NULL) || ((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (M2C_FIELD(&gb, void **, 0xC) + 0x24))->GetState() != 0)) {
+                var_r31_936 = 1;
+            }
+            if (var_r31_936 == 0) {
+                var_r29_932 = 1;
+            }
+        }
+        temp_r4_959 = checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        sp8 = 1;
+        this->unk2C8.Update(M2C_FIELD(temp_r4_959, s32 *, 0x17C), 1U, var_r29_932, NULL, (MKVector3 *) &this->unk260.unkC, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    }
+    if ((s32) M2C_FIELD(checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x180) != 0) {
+        var_r31_977 = 0;
+        if (((u8) M2C_FIELD(this, u8 *, 0x32D) != 0) && (IsDead() == 0)) {
+            var_r31_977 = 1;
+        }
+        temp_r4_992 = checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        sp8 = 1;
+        this->unk2F0.Update(M2C_FIELD(temp_r4_992, s32 *, 0x180), 1U, var_r31_977, NULL, (MKVector3 *) &this->unk250.unkC, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    }
+    if ((MKProp *) this->unk170 == (s32) (M2C_FIELD(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160) - 1)) {
+        FreeElecBeams();
+        temp_r3_1013 = this->unk1C0.unk78;
+        if ((u32) temp_r3_1013 != 0U) {
+            M2C_FIELD(M2C_FIELD(temp_r3_1013, void **, 0x44), M2C_UNK (**)(), 0x54)();
+            M2C_FIELD(this->unk1C0.unk78, s32 *, 0x130) = 0;
+            this->unk1C0.unk78 = 0;
+        }
+    } else {
+        var_r31_1027 = 0;
+        temp_r29_1029 = M2C_FIELD(&gb, void **, 0xC);
+        temp_r3_1030 = M2C_FIELD(temp_r29_1029, KDSynkerPlayer3 **, 0x78);
+        if (((temp_r3_1030 != NULL) && (temp_r3_1030->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_1029, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r29_1029 + 0x24))->GetState() == 2))) {
+            var_r31_1027 = 1;
+        }
+        if (var_r31_1027 == 0) {
+            temp_r0_1049 = this->unk16C;
+            if (temp_r0_1049 == 2) {
+                temp_f31_1052 = M2C_BITWISE(f32, this->unk1C0.unk24);
+                this->unk1C0.unk24 = 0.0f;
+                this->unk1B0.Update();
+                this->unk1C0.unk24 = temp_f31_1052;
+            } else if (temp_r0_1049 != 3) {
+                this->unk1B0.Update();
+            }
+        }
+        var_r31_1066 = NULL;
+        if (M2C_BITWISE(u32, this->unk280.unk4) == 0U) {
+            var_r31_1066 = ((TargetContext *) (M2C_FIELD(&gb, s32 *, 0x20) + 8))->Get();
+        }
+        if ((var_r31_1066 != NULL) && (M2C_FIELD(var_r31_1066->__vptr, u8 (**)(Targetable *), 0x20)(var_r31_1066) != 0)) {
+            var_r31_1066 = NULL;
+        }
+        if (var_r31_1066 != NULL) {
+            temp_r6_1094 = M2C_FIELD(M2C_FIELD(var_r31_1066->__vptr, void *(**)(Targetable *), 8)(var_r31_1066), void **, 8);
+            sp68 = M2C_FIELD(temp_r6_1094, f64 *, 0x30);
+            sp70 = M2C_FIELD(temp_r6_1094, f64 *, 0x38);
+            temp_r6_1102 = this->unk8;
+            temp_f1_1103 = M2C_FIELD(temp_r6_1102, f64 *, 0x30);
+            sp48 = temp_f1_1103;
+            sp50 = M2C_FIELD(temp_r6_1102, f64 *, 0x38);
+            M2C_FIELD(var_r31_1066->__vptr, M2C_UNK (**)(Targetable *, f64 *, f64 *, void *, f64), 0x2C)(var_r31_1066, &sp48, &sp68, temp_r6_1102, temp_f1_1103);
+            temp_r3_1111 = this->unk8;
+            sp38 = M2C_FIELD(temp_r3_1111, f64 *, 0x30);
+            sp40 = M2C_FIELD(temp_r3_1111, f64 *, 0x38);
+            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            var_f4_1124 = 0.0f;
+            sp58 = sp18;
+            sp20 = (f32) sp70 - (f32) sp40;
+            unksp5C = 0.0f;
+            sp60 = (f64) sp20;
+            var_f31_1137 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (0.0f * 0.0f));
+            if (var_f31_1137 > 0.000001f) {
+                if (var_f31_1137 > 0.0f) {
+                    temp_f1_1142 = __frsqrte(var_f31_1137);
+                    temp_f1_1148 = 0.5 * temp_f1_1142 * -(((f64) var_f31_1137 * (temp_f1_1142 * temp_f1_1142)) - 3.0);
+                    temp_f1_1152 = 0.5 * temp_f1_1148 * -(((f64) var_f31_1137 * (temp_f1_1148 * temp_f1_1148)) - 3.0);
+                    var_f31_1137 = (f32) ((f64) var_f31_1137 * (0.5 * temp_f1_1152 * -(((f64) var_f31_1137 * (temp_f1_1152 * temp_f1_1152)) - 3.0)));
+                } else if (var_f31_1137 < M2C_BITWISE(f32, 0.0)) {
+                    var_f31_1137 = __float_nan;
+                } else {
+                    sp10 = var_f31_1137;
+                    temp_r3_1171 = M2C_BITWISE(s32, sp10) & 0x7F800000;
+                    switch (temp_r3_1171) {         /* irregular */
+                    case 0x7F800000:
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
+                            var_r0_1181 = 1;
+                        } else {
+                            var_r0_1181 = 2;
+                        }
+                        break;
+                    case 0x0:
+                        if (M2C_BITWISE(s32, sp10) & 0x7FFFFF) {
+                            var_r0_1181 = 5;
+                        } else {
+                            var_r0_1181 = 3;
+                        }
+                        break;
+                    default:
+                        var_r0_1181 = 4;
+                        break;
+                    }
+                    if (var_r0_1181 == 1) {
+                        var_f31_1137 = __float_nan;
+                    }
+                }
+                var_f4_1124 = 1.0f / var_f31_1137;
+            } else {
+                var_f31_1137 = 0.0f;
+            }
+            sp58 = (f32) sp58 * var_f4_1124;
+            unksp5C *= var_f4_1124;
+            sp60 = (f32) sp60 * var_f4_1124;
+            sp28 = (f64) sp58;
+            sp30 = (f64) sp60;
+            UpdateTurning((MKVector3) &sp28);
+            if ((M2C_ERROR(/* Read from unset register $f1 */) < 0.1f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((var_f31_1137 == this->unk280.unk0) != 0))) {
+                if ((u32) this->unk1C0.unk78 == 0U) {
+                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                    if (this->unk31C == 0.0f) {
+                        if ((KDSound_IsVoicePlaying(this->unk328) == 0) || ((u8) M2C_FIELD(this, u8 *, 0x32C) != 0)) {
+                            M2C_FIELD(this, u8 *, 0x32C) = 0U;
+                            this->unk320 = 0.0f;
+                            KDSound_Stop(&this->unk328);
+                            this->unk328 = KDSound_Play3d(GS_SiegeTowerExtra3, (MKVector3 *) &this->unk250.unkC, 0U, -1, 0.0f, 0U);
+                        }
+                        this->unk31C = 1.5f;
+                    }
+                }
+                this->unk31C -= gUpdateTimeDelta;
+                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                if (this->unk31C == 0.0f) {
+                    this->unk31C = 0.0f;
+                    M2C_FIELD(this, u8 *, 0x32C) = 1U;
+                    this->unk320 = 0.75f;
+                    Shoot(var_r31_1066);
+                }
+            } else if (((u8) M2C_FIELD(this, u8 *, 0x32C) == 0) && (KDSound_IsVoicePlaying(this->unk328) != 0)) {
+                M2C_FIELD(this, u8 *, 0x32C) = 1U;
+                this->unk320 = 0.75f;
+            }
+        }
+        if ((u8) M2C_FIELD(this, u8 *, 0x32C) != 0) {
+            var_f1_1302 = this->unk320 * this->unk318;
+            if (var_f1_1302 < 1.0f) {
+
+            } else {
+                var_f1_1302 = 1.0f;
+            }
+            if (var_f1_1302 > 0.0f) {
+
+            } else {
+                var_f1_1302 = 0.0f;
+            }
+            KDSound_SetVolume(this->unk328, var_f1_1302);
+            this->unk320 -= gUpdateTimeDelta;
+            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+            if (this->unk320 == 0.0f) {
+                KDSound_Stop(&this->unk328);
+            }
+        }
+        UpdateShooting(var_r31_1066);
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk324'
+void SiegeTower::Resolve() {
+    u32 temp_r4_1352;
+    void *temp_r3_1361;
+
+    Shatterable::Resolve();
+    temp_r4_1352 = this->unk324;
+    if (temp_r4_1352 != -1U) {
+        MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_1352, (MKVector3 *) &this->unk250.unkC);
+    } else {
+        temp_r3_1361 = this->unk8;
+        M2C_FIELD(this, f64 *, 0x270) = (f64) M2C_FIELD(temp_r3_1361, f64 *, 0x30);
+        M2C_FIELD(this, f64 *, 0x278) = (f64) M2C_FIELD(temp_r3_1361, f64 *, 0x38);
+    }
+    this->unk1B0.Resolve();
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1B0'
+void SiegeTower::LoadDone() {
+    f64 sp8;
+    f32 temp_r0_1422;
+    s32 var_ctr_1431;
+    s32 var_r3_1430;
+    struct _struct_siegeTowerGroups_0x18 *temp_r4_1429;
+    u16 temp_r30_1398;
+
+    Shatterable::LoadDone();
+    this->unk1B0.LoadDone();
+    this->unk324 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0);
+    temp_r30_1398 = Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[7]);
+    sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+    M2C_FIELD(this, f64 *, 0x1A8) = sp8;
+    M2C_FIELD(this, f64 *, 0x1B0) = sp10;
+    MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, (s32) temp_r30_1398), (void (*)(MKDynamicBone *, void *)) &SiegeTower::UpdateTurretBone, &this->unk198);
+    M2C_FIELD(this, f32 *, 0x1B8) = 0.0f;
+    CalcSpikeBeamPositions();
+    AllocElecBeams();
+    temp_r0_1422 = this->unk280.unk8;
+    if (M2C_BITWISE(s32, temp_r0_1422) < 0xFF) {
+        temp_r4_1429 = &siegeTowerGroups[M2C_BITWISE(s32, temp_r0_1422)];
+        var_r3_1430 = 0;
+        var_ctr_1431 = 6;
+loop_2:
+        if ((u32) *(temp_r4_1429 + var_r3_1430) == 0U) {
+            *(temp_r4_1429 + var_r3_1430) = this;
+            return;
+        }
+        var_r3_1430 += 4;
+        var_ctr_1431 -= 1;
+        if (var_ctr_1431 == 0) {
+
+        } else {
+            goto loop_2;
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1B0'
+s32 SiegeTower::LoadLine(MKIniLine *arg0) {
+    if ((Shatterable::LoadLine(arg0) != 0) || (M2C_FIELD(M2C_FIELD(this, void **, 0x1C0), u8 (**)(f64 *, MKIniLine *), 8)(&this->unk1B0, arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x14], &this->unk280.unk0, 0) != 0)) {
+        return 1;
+    }
+    if (arg0->IsField(&lit_stringBase0[0x21]) != 0) {
+        this->unk280.unk8 = M2C_BITWISE(f32, arg0->GetInt(0));
+        return 1;
+    }
+    return 0;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1B0'
+void SiegeTower::Deinit() {
+    s32 temp_r3_1516;
+    s32 var_ctr_1542;
+    s32 var_r3_1537;
+    struct _struct_siegeTowerGroups_0x18 *temp_r5_1546;
+
+    this->unk1B0.Deinit();
+    temp_r3_1516 = this->unk1C0.unk78;
+    if ((u32) temp_r3_1516 != 0U) {
+        M2C_FIELD(temp_r3_1516, s32 *, 0x130) = 0;
+    }
+    this->unk1C0.unk78 = 0;
+    KDSound_Stop((s32 *) &this->unk280.unkC);
+    KDSound_Stop(&this->unk2C8);
+    KDSound_Stop(&this->unk2F0);
+    KDSound_Stop(&this->unk328);
+    FreeElecBeams();
+    if (M2C_BITWISE(s32, this->unk280.unk8) < 0xFF) {
+        var_r3_1537 = 0;
+        var_ctr_1542 = 6;
+        do {
+            temp_r5_1546 = &siegeTowerGroups[M2C_BITWISE(s32, this->unk280.unk8)];
+            if ((u32) *(temp_r5_1546 + var_r3_1537) == this) {
+                *(temp_r5_1546 + var_r3_1537) = 0;
+            }
+            var_r3_1537 += 4;
+            var_ctr_1542 -= 1;
+        } while (var_ctr_1542 != 0);
+    }
+    Shatterable::Deinit();
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1B0'
+void SiegeTower::Init() {
+    Shatterable::Init();
+    this->unk1B0.Init(checked_cast<P20SiegeTowerDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x184, (MKProp *) this);
+    this->unk1C0.unk78 = 0;
+    this->unk270.unkC = 0.0f;
+    this->unk280.unkC.Init(0.05f, 0.25f);
+    this->unk2C8.Init(0.05f, 0.25f);
+    this->unk2F0.Init(0.25f, 0.25f);
+    this->unk260.unkC = 0.0f;
+    this->unk270.unk0 = 0.0f;
+    this->unk270.unk4 = 0.0f;
+    M2C_FIELD(this, s8 *, 0x32D) = 0;
+    this->unk328 = 0;
+    this->unk31C = 0.0f;
+    M2C_FIELD(this, s8 *, 0x32C) = 0;
+    this->unk320 = 0.0f;
+    this->unk318 = (1.3333334f * (f32) KDSound_GetSoundEventVol(GS_SiegeTowerExtra3)) / 255.0f;
+    this->unk280.unk4 = 0.0f;
+    this->unk280.unk8 = 3.57e-43f;
+    this->unk280.unk0 = 3000.0f;
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+void SiegeTowerDescriptor::LoadDone() {
+    ShatterableDescriptor::LoadDone();
+    this->unk184.LoadDone();
+    this->unk170 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x27]);
+    this->unk174 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x2F]);
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+s32 SiegeTowerDescriptor::LoadLine(MKIniLine *arg0) {
+    s32 var_r31_1674;
+
+    var_r31_1674 = 0;
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x37], &this->unk178) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x44], &this->unk17C) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x52], &this->unk180) != 0) || (this->unk184.LoadLine(arg0) != 0)) {
+        var_r31_1674 = 1;
+    }
+    return var_r31_1674;
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+void SiegeTowerDescriptor::Deinit() {
+    this->unk184.Deinit();
+    ShatterableDescriptor::Deinit();
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+void SiegeTowerDescriptor::Init() {
+    ShatterableDescriptor::Init();
+    this->unk64 |= 0x2000;
+    this->unk178 = 0;
+    this->unk17C = 0;
+    this->unk180 = 0;
+    this->unk16C = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x63]));
+    this->unk184.Init();
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'siegeTowerGroups'
+s32 SiegeTower_GetSiegeTower(int arg0, int arg1) {
+    return *(&siegeTowerGroups[arg0] + (arg1 * 4));
+}
+#endif
+
+s32 SiegeTower_GetMaxPerGroup() {
+    return 6;
+}
+
+#if 0 // DRAFT: undefined identifier 'siegeTowerGroups'
+void SiegeTower_InitModule() {
+    memset(siegeTowerGroups, 0, 0xC0U);
+}
+#endif
+
+#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
+void checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
+
+}
+#endif

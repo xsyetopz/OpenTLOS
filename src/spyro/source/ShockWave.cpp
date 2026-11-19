@@ -1,0 +1,657 @@
+#include "spyro/source/ShockWave.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDProp.h"
+#include "unplaced_templates.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKShockWave_MP.h"
+#include "common/Source/MKView.h"
+#include "common/Source/Str.h"
+#include "common/gc/MKModel_GC.h"
+#include "spyro/source/GameConsole.h"
+#include <m2c_macros.h>
+
+extern f32 gUpdateTimeDelta;
+extern void **gb;
+#if 0 // DRAFT: undefined identifier 'arg_sp14'
+static s8 lit_stringBase0[0x5A] = {
+    0x73,
+    0x65,
+    0x6E,
+    0x64,
+    0x20,
+    0x25,
+    0x73,
+    0x20,
+    0x25,
+    0x64,
+    0,
+    0x50,
+    0x30,
+    0x31,
+    0x38,
+    0x32,
+    0x5F,
+    0x44,
+    0x75,
+    0x73,
+    0x74,
+    0x77,
+    0x61,
+    0x76,
+    0x65,
+    0,
+    0x5A,
+    0x5F,
+    0x52,
+    0x6F,
+    0x6F,
+    0x74,
+    0,
+    0x5A,
+    0x5F,
+    0x52,
+    0x69,
+    0x6D,
+    0x5F,
+    0x4E,
+    0x6F,
+    0x72,
+    0x74,
+    0x68,
+    0,
+    0x5A,
+    0x5F,
+    0x52,
+    0x69,
+    0x6D,
+    0x5F,
+    0x45,
+    0x61,
+    0x73,
+    0x74,
+    0,
+    0x5A,
+    0x5F,
+    0x52,
+    0x69,
+    0x6D,
+    0x5F,
+    0x53,
+    0x6F,
+    0x75,
+    0x74,
+    0x68,
+    0,
+    0x5A,
+    0x5F,
+    0x52,
+    0x69,
+    0x6D,
+    0x5F,
+    0x57,
+    0x65,
+    0x73,
+    0x74,
+    0,
+    0x50,
+    0x30,
+    0x31,
+    0x39,
+    0x31,
+    0x5F,
+    0x57,
+    0x61,
+    0x72,
+    0x70,
+    0,
+}; /* const */
+
+void ShockWave::UpdateShockWave(int arg0) {
+    f32 temp_f0_115;
+    f32 temp_f0_181;
+    f32 temp_f0_247;
+    f32 temp_f0_313;
+    f32 temp_f0_65;
+    f32 temp_f31_165;
+    f32 temp_f31_231;
+    f32 temp_f31_297;
+    f32 temp_f31_99;
+    f32 temp_f3_139;
+    f32 temp_f3_205;
+    f32 temp_f3_271;
+    f32 temp_f3_337;
+    s32 temp_r29_58;
+    s32 temp_r30_146;
+    s32 temp_r30_212;
+    s32 temp_r30_278;
+    s32 temp_r30_344;
+    s32 temp_r30_78;
+    void *temp_r29_286;
+    void *temp_r30_154;
+    void *temp_r30_220;
+    void *temp_r31_77;
+    if ((u8) this->unk160 != 0) {
+        temp_r29_58 = arg0 * 0x28;
+        arg_sp14 = 1.0f;
+        temp_f0_65 = M2C_FIELD((this + temp_r29_58), f32 *, 0x9C) / 500.0f;
+        arg_sp10 = temp_f0_65;
+        arg_sp18 = temp_f0_65;
+        arg_sp80 = (f64) arg_sp10;
+        arg_sp88 = (f64) arg_sp18;
+        arg_sp90.SetIdentity();
+        arg_sp90.Scale3x3((Matrix *) &arg_sp90, *((MKVector3 *) &arg_sp80));
+        temp_r31_77 = this + temp_r29_58;
+        temp_r30_78 = M2C_FIELD(temp_r31_77, s32 *, 0xA4);
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_78, (Matrix *) &arg_sp90, (AnimationMatrixPosition) 2, 0U);
+        arg_sp90.SetIdentity();
+        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r31_77, s32 *, 0xA8), (MKVector3 *) &arg_sp70);
+        arg_sp60 = arg_sp70;
+        temp_f31_99 = arg_sp74;
+        arg_sp68 = arg_sp78;
+        arg_sp74 = temp_f31_99 + 200.0f;
+        arg_sp64 -= 600.0f;
+        if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp70), *((MKVector3 *) &arg_sp60), (MKCollisionResult *) &arg_spD0, (MKCollisionMode) 1, 0) != 0) {
+            temp_f0_115 = arg_spD4 + 20.0f;
+            if ((temp_f31_99 < temp_f0_115) && ((temp_f0_115 - temp_f31_99) > 20.0f)) {
+                arg_spD4 = (0.4f * (arg_spD4 - 20.0f)) + 20.0f;
+            }
+            arg_sp50 = arg_spC0;
+            arg_sp58 = arg_spC8;
+            temp_f3_139 = 20.0f + (arg_spD4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
+            arg_spC0 = (f32) arg_sp50;
+            arg_spC8 = (f32) arg_sp58;
+            arg_sp54 = temp_f3_139;
+            arg_spC4 = temp_f3_139;
+            arg_spCC = 1.0f;
+        }
+        temp_r30_146 = M2C_FIELD(temp_r31_77, s32 *, 0xA8);
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_146, (Matrix *) &arg_sp90, (AnimationMatrixPosition) 2, 0U);
+        temp_r30_154 = this + temp_r29_58;
+        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r30_154, s32 *, 0xAC), (MKVector3 *) &arg_sp70);
+        arg_sp60 = arg_sp70;
+        temp_f31_165 = arg_sp74;
+        arg_sp68 = arg_sp78;
+        arg_sp74 = temp_f31_165 + 200.0f;
+        arg_sp64 -= 600.0f;
+        if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp70), *((MKVector3 *) &arg_sp60), (MKCollisionResult *) &arg_spD0, (MKCollisionMode) 1, 0) != 0) {
+            temp_f0_181 = arg_spD4 + 20.0f;
+            if ((temp_f31_165 < temp_f0_181) && ((temp_f0_181 - temp_f31_165) > 20.0f)) {
+                arg_spD4 = (0.4f * (arg_spD4 - 20.0f)) + 20.0f;
+            }
+            arg_sp40 = arg_spC0;
+            arg_sp48 = arg_spC8;
+            temp_f3_205 = 20.0f + (arg_spD4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
+            arg_spC0 = (f32) arg_sp40;
+            arg_spC8 = (f32) arg_sp48;
+            arg_sp44 = temp_f3_205;
+            arg_spC4 = temp_f3_205;
+            arg_spCC = 1.0f;
+        }
+        temp_r30_212 = M2C_FIELD(temp_r30_154, s32 *, 0xAC);
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_212, (Matrix *) &arg_sp90, (AnimationMatrixPosition) 2, 0U);
+        temp_r30_220 = this + temp_r29_58;
+        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r30_220, s32 *, 0xB0), (MKVector3 *) &arg_sp70);
+        arg_sp60 = arg_sp70;
+        temp_f31_231 = arg_sp74;
+        arg_sp68 = arg_sp78;
+        arg_sp74 = temp_f31_231 + 200.0f;
+        arg_sp64 -= 600.0f;
+        if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp70), *((MKVector3 *) &arg_sp60), (MKCollisionResult *) &arg_spD0, (MKCollisionMode) 1, 0) != 0) {
+            temp_f0_247 = arg_spD4 + 20.0f;
+            if ((temp_f31_231 < temp_f0_247) && ((temp_f0_247 - temp_f31_231) > 20.0f)) {
+                arg_spD4 = (0.4f * (arg_spD4 - 20.0f)) + 20.0f;
+            }
+            arg_sp30 = arg_spC0;
+            arg_sp38 = arg_spC8;
+            temp_f3_271 = 20.0f + (arg_spD4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
+            arg_spC0 = (f32) arg_sp30;
+            arg_spC8 = (f32) arg_sp38;
+            arg_sp34 = temp_f3_271;
+            arg_spC4 = temp_f3_271;
+            arg_spCC = 1.0f;
+        }
+        temp_r30_278 = M2C_FIELD(temp_r30_220, s32 *, 0xB0);
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_278, (Matrix *) &arg_sp90, (AnimationMatrixPosition) 2, 0U);
+        temp_r29_286 = this + temp_r29_58;
+        MKModel_CalculateNodeWorldPosition(M2C_FIELD(temp_r31_77, MKModel **, 0xA0), M2C_FIELD(temp_r29_286, s32 *, 0xB4), (MKVector3 *) &arg_sp70);
+        arg_sp60 = arg_sp70;
+        temp_f31_297 = arg_sp74;
+        arg_sp68 = arg_sp78;
+        arg_sp74 = temp_f31_297 + 200.0f;
+        arg_sp64 -= 600.0f;
+        if (MKCollision_RayCollide(*((MKVector3 *) &arg_sp70), *((MKVector3 *) &arg_sp60), (MKCollisionResult *) &arg_spD0, (MKCollisionMode) 1, 0) != 0) {
+            temp_f0_313 = arg_spD4 + 20.0f;
+            if ((temp_f31_297 < temp_f0_313) && ((temp_f0_313 - temp_f31_297) > 20.0f)) {
+                arg_spD4 = (0.4f * (arg_spD4 - 20.0f)) + 20.0f;
+            }
+            arg_sp20 = arg_spC0;
+            arg_sp28 = arg_spC8;
+            temp_f3_337 = 20.0f + (arg_spD4 - M2C_FIELD(MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_77, MKModel **, 0xA0)), f32 *, 0x34));
+            arg_spC0 = (f32) arg_sp20;
+            arg_spC8 = (f32) arg_sp28;
+            arg_sp24 = temp_f3_337;
+            arg_spC4 = temp_f3_337;
+            arg_spCC = 1.0f;
+        }
+        temp_r30_344 = M2C_FIELD(temp_r29_286, s32 *, 0xB4);
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r31_77, MKModel **, 0xA0))))->SetCustomMatrix(temp_r30_344, (Matrix *) &arg_sp90, (AnimationMatrixPosition) 2, 0U);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'ShockWave' to
+s32 ShockWave::Start(MKVector3 arg0, float arg1, float arg2, bool arg3, bool arg4, bool arg5) {
+    f32 temp_f1_415;
+    s32 temp_r25_452;
+    s32 temp_r25_478;
+    s32 var_ctr_389;
+    s32 var_r23_473;
+    s32 var_r26_474;
+    s32 var_r31_387;
+    s32 var_r3_388;
+    void *temp_r24_472;
+    void *temp_r3_424;
+    void *temp_r3_435;
+    void *temp_r3_446;
+    void *temp_r4_460;
+    var_r31_387 = 0;
+    var_r3_388 = 0;
+    var_ctr_389 = 4;
+loop_1:
+    if ((u8) *(this + (var_r3_388 + 0x90)) != 0) {
+        var_r31_387 += 1;
+        var_r3_388 += 0x28;
+        var_ctr_389 -= 1;
+        if (var_ctr_389 != 0) {
+            goto loop_1;
+        }
+    }
+    if (var_r31_387 >= 4) {
+        return -1;
+    }
+    if ((s32) this->unk150 == 0) {
+        MKShockWave_Enable(*((MKVector3 *) arg0));
+        MKModel_SetPosition(this->unk4, *((MKVector3 *) arg0));
+    }
+    temp_f1_415 = arg2 / 500.0f;
+    arg_sp18 = temp_f1_415;
+    arg_sp10 = temp_f1_415;
+    arg_sp14 = temp_f1_415;
+    arg_sp28 = (f64) arg_sp18;
+    arg_sp20 = (f64) arg_sp10;
+    temp_r3_424 = M2C_FIELD(checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C);
+    M2C_FIELD(temp_r3_424, f64 *, 0) = (f64) this->unk130;
+    M2C_FIELD(temp_r3_424, f64 *, 8) = (f64) this->unk138;
+    M2C_FIELD(temp_r3_424, f64 *, 0x10) = (f64) this->unk140;
+    M2C_FIELD(temp_r3_424, f64 *, 0x18) = (f64) this->unk148;
+    temp_r3_435 = M2C_FIELD(checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C);
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
+    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+    M2C_FIELD(temp_r3_435, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_435, f32 *, 8) * (f32) arg_sp28);
+    temp_r3_446 = M2C_FIELD(checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C);
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
+    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r5, 0x0, qr0 */);
+    temp_r25_452 = var_r31_387 * 0x28;
+    M2C_FIELD((temp_r3_446 + 0x10), f32 *, 8) = (f32) (M2C_FIELD(temp_r3_446, f32 *, 0x18) * (f32) arg_sp28);
+    MKModel_SetPosition(M2C_FIELD((this + temp_r25_452), MKModel **, 0xA0), *((MKVector3 *) arg0));
+    temp_r4_460 = this + temp_r25_452;
+    M2C_FIELD(temp_r4_460, f32 *, 0x9C) = arg1;
+    M2C_FIELD(temp_r4_460, f32 *, 0x94) = arg2;
+    M2C_FIELD(temp_r4_460, s8 *, 0x90) = 1;
+    M2C_FIELD(temp_r4_460, f32 *, 0x98) = 0.0f;
+    this->unk150 += 1;
+    arg_sp30.SetIdentity();
+    temp_r24_472 = this + temp_r25_452;
+    var_r23_473 = 0;
+    var_r26_474 = 0;
+    do {
+        temp_r25_478 = *(temp_r24_472 + (var_r26_474 + 0xA4));
+        ((Animation *) (MKModel_GetAnimation(M2C_FIELD(temp_r24_472, MKModel **, 0xA0))))->SetCustomMatrix(temp_r25_478, (Matrix *) &arg_sp30, (AnimationMatrixPosition) 2, 0U);
+        var_r23_473 += 1;
+        var_r26_474 += 4;
+    } while (var_r23_473 <= 4);
+    this->unk160 = arg3;
+    this->unk161 = arg4;
+    this->unk162 = arg5;
+    UpdateShockWave(var_r31_387);
+    return var_r31_387;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'arg_sp2C'
+void ShockWave::Draw() {
+    s32 var_r29_525;
+    s32 var_r31_526;
+    void *temp_r30_528;
+    void *temp_r3_565;
+    if ((u8) this->unk160 != 0) {
+        var_r29_525 = 0;
+        var_r31_526 = 0;
+        do {
+            temp_r30_528 = this + var_r31_526;
+            if ((u8) M2C_FIELD(temp_r30_528, u8 *, 0x90) != 0) {
+                M2C_STRUCT_COPY((s32) &arg_sp2C + 4, MKModel_GetWorldMatrix(this->unk15C) - 4 + 4, 0x40);
+                arg_sp30.SetIdentity();
+                MKView_GetCameraMatrix();
+                arg_sp20.GetRotationPYR();
+                arg_sp30.SetRotationYaw(arg_sp24 - 3.1415927f);
+                arg_sp30.RotateRoll((Matrix *) &arg_sp30, M2C_FIELD(temp_r30_528, f32 *, 0x98));
+                arg_sp30.Scale3x3((Matrix *) &arg_sp30, 0.015f * M2C_FIELD(temp_r30_528, f32 *, 0x9C));
+                temp_r3_565 = this->unk8;
+                arg_sp10 = M2C_FIELD(temp_r3_565, f64 *, 0x30);
+                arg_sp18 = M2C_FIELD(temp_r3_565, f64 *, 0x38);
+                arg_sp60 = (f32) arg_sp10;
+                arg_sp64 = arg_sp14;
+                arg_sp68 = (f32) arg_sp18;
+                arg_sp6C = 1.0f;
+                MKModel_SetAlpha(this->unk15C, 1.0f - (M2C_FIELD(temp_r30_528, f32 *, 0x9C) / M2C_FIELD(temp_r30_528, f32 *, 0x94)));
+                MKModel_SetWorldMatrix(this->unk15C, *((Matrix *) &arg_sp30));
+                MKModel_Draw(this->unk15C, NULL);
+                MKModel_SetAlpha(M2C_FIELD(temp_r30_528, MKModel **, 0xA0), MKModel_GetAlpha(this->unk15C));
+                MKModel_Draw(M2C_FIELD(temp_r30_528, MKModel **, 0xA0), NULL);
+            }
+            var_r29_525 += 1;
+            var_r31_526 += 0x28;
+        } while (var_r29_525 < 4);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+void ShockWave::Update() {
+    s8 spD1;
+    s8 spD0;
+    s32 spCC;
+    f32 spC8;
+    s32 spC4;
+    s8 spC2;
+    s8 spC1;
+    s8 spC0;
+    f64 spB8;                                       /* compiler-managed */
+    f64 spB0;                                       /* compiler-managed */
+    ShockWave *spAC;
+    s32 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    s32 sp84;
+    s32 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;                                       /* compiler-managed */
+    f64 sp60;                                       /* compiler-managed */
+    f64 sp58;
+    f64 sp50;
+    HeroInterface sp40;
+    f64 sp30;
+    f64 sp20;
+    f32 sp18;
+    f32 sp8;
+    f32 temp_f0_691;
+    f32 temp_f0_800;
+    f32 temp_f1_676;
+    f32 temp_f2_680;
+    f32 temp_f2_796;
+    f32 temp_f30_684;
+    f32 temp_f5_941;
+    f32 var_f29_658;
+    f32 var_f3_789;
+    f32 var_f4_722;
+    f64 temp_f1_728;
+    f64 temp_f1_734;
+    f64 temp_f1_738;
+    s32 temp_r3_757;
+    s32 var_r0_767;
+    s32 var_r28_626;
+    s32 var_r30_625;
+    u8 temp_ret_815;
+    void *temp_r27_640;
+    void *temp_r31_628;
+
+    var_r30_625 = 0;
+    var_r28_626 = 0;
+    do {
+        temp_r31_628 = this + var_r28_626;
+        if ((u8) M2C_FIELD(temp_r31_628, u8 *, 0x90) != 0) {
+            M2C_FIELD(temp_r31_628, f32 *, 0x9C) = (f32) ((1200.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r31_628, f32 *, 0x9C));
+            temp_r27_640 = MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_628, MKModel **, 0xA0)) + 0x30;
+            sp40.GetPos();
+            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
+            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp18 = (f32) sp40.unk8 - M2C_FIELD(temp_r27_640, f32 *, 8);
+            var_f29_658 = -((0.166f * M2C_FIELD(temp_r31_628, f32 *, 0x94)) - M2C_FIELD(temp_r31_628, f32 *, 0x9C));
+            sp70 = sp10;
+            sp50 = sp10;
+            sp58 = (f64) sp18;
+            sp78 = (f64) sp18;
+            unksp74 = 0.0f;
+            if (var_f29_658 > 0.0f) {
+
+            } else {
+                var_f29_658 = 0.0f;
+            }
+            temp_f1_676 = (f32) sp70 * (f32) sp70;
+            temp_f2_680 = (f32) sp78 * (f32) sp78;
+            temp_f30_684 = temp_f2_680 + (temp_f1_676 + (unksp74 * unksp74));
+            if (M2C_FIELD(*gb, u8 (**)(void **, f32, f32), 0x64)(gb, temp_f1_676, temp_f2_680) == 0) {
+                temp_f0_691 = 0.9f * M2C_FIELD(temp_r31_628, f32 *, 0x9C);
+                if ((temp_f30_684 < (temp_f0_691 * temp_f0_691)) && (temp_f30_684 > (var_f29_658 * var_f29_658)) && ((u8) this->unk160 != 0) && (((u8) this->unk161 != 0) || ((u8) this->unk162 != 0))) {
+                    sp60 = sp70;
+                    sp68 = sp78;
+                    sp84 = 0;
+                    var_f4_722 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
+                    if (var_f4_722 > 0.000001f) {
+                        if (var_f4_722 > 0.0f) {
+                            temp_f1_728 = __frsqrte(var_f4_722);
+                            temp_f1_734 = 0.5 * temp_f1_728 * -(((f64) var_f4_722 * (temp_f1_728 * temp_f1_728)) - 3.0);
+                            temp_f1_738 = 0.5 * temp_f1_734 * -(((f64) var_f4_722 * (temp_f1_734 * temp_f1_734)) - 3.0);
+                            var_f4_722 = (f32) ((f64) var_f4_722 * (0.5 * temp_f1_738 * -(((f64) var_f4_722 * (temp_f1_738 * temp_f1_738)) - 3.0)));
+                        } else if (var_f4_722 < M2C_BITWISE(f32, 0.0)) {
+                            var_f4_722 = __float_nan;
+                        } else {
+                            sp8 = var_f4_722;
+                            temp_r3_757 = M2C_BITWISE(s32, sp8) & 0x7F800000;
+                            switch (temp_r3_757) {  /* irregular */
+                            case 0x7F800000:
+                                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                                    var_r0_767 = 1;
+                                } else {
+                                    var_r0_767 = 2;
+                                }
+                                break;
+                            case 0x0:
+                                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                                    var_r0_767 = 5;
+                                } else {
+                                    var_r0_767 = 3;
+                                }
+                                break;
+                            default:
+                                var_r0_767 = 4;
+                                break;
+                            }
+                            if (var_r0_767 == 1) {
+                                var_f4_722 = __float_nan;
+                            }
+                        }
+                        var_f3_789 = 1.0f / var_f4_722;
+                    } else {
+                        var_f3_789 = 0.0f;
+                    }
+                    temp_f2_796 = (f32) sp60 * var_f3_789;
+                    temp_f0_800 = (f32) sp68 * var_f3_789;
+                    sp60 = temp_f2_796;
+                    unksp64 *= var_f3_789;
+                    sp68 = temp_f0_800;
+                    sp68 = temp_f0_800 * 205.0f;
+                    temp_ret_815 = M2C_FIELD(*gb, u8 (**)(void **, M2C_UNK, f32), 0x50)(gb, M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */), temp_f2_796);
+                    if (temp_ret_815 == 0) {
+                        Console_Execute(Str_Printf(lit_stringBase0, this->unk158, this->unk154, M2C_BITWISE(f32, temp_ret_815)));
+                    }
+                    if ((u8) this->unk161 != 0) {
+                        sp80 = 7;
+                        spA8 = 1;
+                        spAC = this;
+                        sp88 = (f64) sp60;
+                        sp90 = (f64) sp68;
+                        spC0 = 0;
+                        spCC = 2;
+                        spC8 = 10.0f;
+                        spC1 = 0;
+                        spC2 = 1;
+                        spC4 = -1;
+                        sp98 = M2C_FIELD(&one, f64 *, 0);
+                        spA0 = M2C_FIELD(&one, f64 *, 8);
+                        spD0 = 0;
+                        if (this != NULL) {
+                            sp30.GetPos();
+                            spB0 = sp30;
+                            spB8 = sp38;
+                        } else {
+                            spB0 = 0.0f;
+                            unkspB4 = 0.0f;
+                            spB8 = 0.0f;
+                        }
+                        spD1 = 0;
+                    } else if ((u8) this->unk162 != 0) {
+                        sp80 = 7;
+                        spA8 = 1;
+                        spAC = this;
+                        sp88 = (f64) sp60;
+                        sp90 = (f64) sp68;
+                        spC0 = 1;
+                        spCC = 2;
+                        spC8 = 0.0f;
+                        spC1 = 0;
+                        spC2 = 1;
+                        spC4 = -1;
+                        sp98 = M2C_FIELD(&one, f64 *, 0);
+                        spA0 = M2C_FIELD(&one, f64 *, 8);
+                        spD0 = 0;
+                        if (this != NULL) {
+                            sp20.GetPos();
+                            spB0 = sp20;
+                            spB8 = sp28;
+                        } else {
+                            spB0 = 0.0f;
+                            unkspB4 = 0.0f;
+                            spB8 = 0.0f;
+                        }
+                        spD1 = 0;
+                    }
+                    M2C_FIELD(*gb, M2C_UNK (**)(void **, s32 *), 0x1C)(gb, &sp80);
+                }
+            }
+            UpdateShockWave(var_r30_625);
+            M2C_FIELD(temp_r31_628, f32 *, 0x98) = (f32) (M2C_FIELD(temp_r31_628, f32 *, 0x98) + 0.02f);
+            temp_f5_941 = M2C_FIELD(temp_r31_628, f32 *, 0x9C);
+            MKShockWave_Set(var_r30_625, temp_f5_941 - 400.0f, 500.0f, 150.0f * (1.0f - (temp_f5_941 / M2C_FIELD(temp_r31_628, f32 *, 0x94))));
+            if (M2C_FIELD(temp_r31_628, f32 *, 0x9C) > M2C_FIELD(temp_r31_628, f32 *, 0x94)) {
+                M2C_FIELD(temp_r31_628, u8 *, 0x90) = 0U;
+                this->unk150 -= 1;
+                if ((s32) this->unk150 == 0) {
+                    MKShockWave_Disable();
+                }
+            }
+        }
+        var_r30_625 += 1;
+        var_r28_626 += 0x28;
+    } while (var_r30_625 < 4);
+}
+#endif
+
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+void ShockWave::SetMessage(int arg0, const char *arg1) {
+    this->unk154 = arg0;
+    this->unk158 = arg1;
+}
+#endif
+
+#if 0 // DRAFT: illegal operand
+void ShockWave::Reset() {
+    s32 temp_r0_1002;
+    s32 var_ctr_1000;
+    s32 var_r3_998;
+
+    KDProp::Reset();
+    var_r3_998 = 0;
+    this->unk150 = 0;
+    var_ctr_1000 = 4;
+    do {
+        temp_r0_1002 = var_r3_998 + 0x90;
+        var_r3_998 += 0x28;
+        *(this + temp_r0_1002) = 0;
+        var_ctr_1000 -= 1;
+    } while (var_ctr_1000 != 0);
+    MKShockWave_Disable();
+}
+#endif
+
+#if 0 // DRAFT: function call 'MKModel_Destroy(ShockWave)' does not match
+void ShockWave::Deinit() {
+    s32 var_r30_1022;
+    s32 var_r31_1023;
+
+    var_r30_1022 = 0;
+    var_r31_1023 = 0;
+    do {
+        MKModel_Destroy(*(this + (var_r31_1023 + 0xA0)));
+        var_r30_1022 += 1;
+        var_r31_1023 += 0x28;
+    } while (var_r30_1022 < 4);
+    MKModel_Destroy(this->unk15C);
+    MKShockWave_Disable();
+    KDProp::Deinit();
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+void ShockWave::LoadDone() {
+    Animation *temp_r3_1075;
+    MKHeap **temp_r3_1102;
+    s32 var_r28_1057;
+    s32 var_r30_1056;
+    void *temp_r29_1065;
+
+    KDProp::LoadDone();
+    this->unk160 = 1;
+    var_r30_1056 = 0;
+    var_r28_1057 = 0;
+    this->unk161 = 1;
+    this->unk162 = 1;
+    this->unk154 = 0;
+    this->unk158 = NULL;
+    this->unk150 = 0;
+    do {
+        temp_r29_1065 = this + var_r30_1056;
+        M2C_FIELD(temp_r29_1065, s8 *, 0x90) = 0;
+        M2C_FIELD(temp_r29_1065, MKModel **, 0xA0) = MKModel_Create(&lit_stringBase0[0xB], &lit_stringBase0[0xB], 2, NULL);
+        temp_r3_1075 = MKModel_GetAnimation(M2C_FIELD(temp_r29_1065, MKModel **, 0xA0));
+        temp_r3_1075->EnableCustomMatrices(1U);
+        M2C_FIELD(temp_r29_1065, s32 *, 0xA4) = temp_r3_1075->GetNodeIndex(&lit_stringBase0[0x1A]);
+        M2C_FIELD(temp_r29_1065, s32 *, 0xA8) = temp_r3_1075->GetNodeIndex(&lit_stringBase0[0x21]);
+        M2C_FIELD(temp_r29_1065, s32 *, 0xAC) = temp_r3_1075->GetNodeIndex(&lit_stringBase0[0x2D]);
+        M2C_FIELD(temp_r29_1065, s32 *, 0xB0) = temp_r3_1075->GetNodeIndex(&lit_stringBase0[0x38]);
+        M2C_FIELD(temp_r29_1065, s32 *, 0xB4) = temp_r3_1075->GetNodeIndex(&lit_stringBase0[0x44]);
+        temp_r3_1102 = MKModel_GetBoundingVolume(M2C_FIELD(temp_r29_1065, MKModel **, 0xA0), (SubObjectType) 0, -1);
+        var_r28_1057 += 1;
+        var_r30_1056 += 0x28;
+        this->unk130 = M2C_FIELD(temp_r3_1102, f64 *, 0);
+        this->unk138 = M2C_FIELD(temp_r3_1102, f64 *, 8);
+        this->unk140 = M2C_FIELD(temp_r3_1102, f64 *, 0x10);
+        this->unk148 = M2C_FIELD(temp_r3_1102, f64 *, 0x18);
+    } while (var_r28_1057 < 4);
+    this->unk15C = MKModel_Create(&lit_stringBase0[0x4F], NULL, 2, NULL);
+}
+#endif
