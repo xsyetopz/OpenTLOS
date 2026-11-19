@@ -42,13 +42,13 @@ s32 UIObject::Message(UIMessage *arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[7], const char[5])' does not match 'stricmp(signed char *, long *, long *)'
+extern "C" s32 stricmp(const char *, const char *);
 UIContainer *UIObject::Find(const char *arg0) {
     UIContainer *temp_r3_83;
     UIObject *var_r31_55;
 
     var_r31_55 = NULL;
-    if (stricmp(arg0, "system", "this") == 0) {
+    if (stricmp(arg0, "system") == 0) {
         return GetRoot();
     }
     if (stricmp(arg0, "this") == 0) {
@@ -69,7 +69,6 @@ UIContainer *UIObject::Find(const char *arg0) {
     }
     return (UIContainer *) var_r31_55;
 }
-#endif
 
 void UIObject::Resolve() {
 
@@ -116,7 +115,6 @@ s32 UIObject::LoadLine(UIDataLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKIniLine *' to 'UIDataLine *'
 s32 UIObject::Load(const char *arg0, const char *arg1) {
     MKIni sp8;
     MKIniLine *temp_r3_260;
@@ -132,18 +130,15 @@ s32 UIObject::Load(const char *arg0, const char *arg1) {
     if ((u8) temp_r31_255 != 0) {
         temp_r3_260 = sp8.GetFirstLine();
         var_r31_264 = temp_r3_260->unkC->GetSubLine(temp_r3_260);
-loop_5:
-        if (var_r31_264 != NULL) {
-            LoadLine(var_r31_264);
+        while (var_r31_264 != NULL) {
+            LoadLine((UIDataLine *) var_r31_264);
             var_r31_264 = var_r31_264->unkC->GetNextLine(var_r31_264);
-            goto loop_5;
         }
         sp8.Deinit();
         return 1;
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void UIObject::Deinit() {
