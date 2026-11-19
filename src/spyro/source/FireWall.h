@@ -31,7 +31,7 @@ public:
     /* 0x068 */ f32 unk68;
 };
 
-class FireWallDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class FireWallDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

@@ -3,6 +3,7 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKVector4.h"
+#include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/UIStringTable.h"
 
 class CutsceneObject;
@@ -10,6 +11,7 @@ class CutsceneSystem;
 class CutsceneSystem_cpp;
 class GameSynkerPlayer;
 class GameVideo;
+class KDSynkerPlayer3;
 class MKAnimScript;
 class MKIni;
 class MKModel;
@@ -101,7 +103,7 @@ public:
     void __sinit(void);
 };
 
-class GameSynkerPlayer {
+class GameSynkerPlayer : public KDSynkerPlayer3 {  // base: inlined ctor vtable stores
 public:
     virtual void Init(const char *, bool, bool, MKIni *);
     virtual void Deinit(void);

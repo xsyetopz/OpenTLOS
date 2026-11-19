@@ -24,7 +24,7 @@ public:
     /* 0x054 */ Matrix* unk54;
 };
 
-class KDDropShadowDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class KDDropShadowDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

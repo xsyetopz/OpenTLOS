@@ -93,7 +93,7 @@ public:
     void __sinit(void);
 };
 
-class TriggerPlaneGroupObject : public TriggerObject {  // base: vtable prefix
+class TriggerPlaneGroupObject : public TriggerObject {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void LoadDone(void);
@@ -123,7 +123,7 @@ public:
     /* 0x0c4 */ s32 unkC4;
 };
 
-class TriggerPolyObject : public TriggerObject {  // base: vtable prefix
+class TriggerPolyObject : public TriggerObject {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);
@@ -141,7 +141,7 @@ public:
     /* 0x0a8 */ f32 unkA8;
 };
 
-class TriggerSphereObject : public TriggerObject {  // base: vtable prefix
+class TriggerSphereObject : public TriggerObject {  // base: inlined ctor vtable stores
 public:
     virtual void LoadDone(void);
     virtual s32 CheckPos(const MKVector3 &);

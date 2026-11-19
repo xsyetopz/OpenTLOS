@@ -54,7 +54,7 @@ class EnemyAttack;
 class EnemyDamageFeedback;
 class MKProp;
 
-class CynderBossGoal_AttackFlight : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_AttackFlight : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -79,7 +79,7 @@ public:
     /* 0x03c */ void** unk3C;
 };
 
-class CynderBossGoal_AttackPhase1 : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_AttackPhase1 : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -101,7 +101,7 @@ public:
     /* 0x028 */ Goal<Cynder>* unk28;
 };
 
-class CynderBossGoal_AttackPhase2 : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_AttackPhase2 : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -123,7 +123,7 @@ public:
     /* 0x028 */ Goal<Cynder>* unk28;
 };
 
-class CynderBossGoal_AttackPhase3 : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_AttackPhase3 : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -147,7 +147,7 @@ public:
     /* 0x034 */ Goal<Cynder>* unk34;
 };
 
-class CynderBossGoal_BreathAttack : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_BreathAttack : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -161,7 +161,7 @@ public:
     /* 0x018 */ u8 unk18;
 };
 
-class CynderBossGoal_Death : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_Death : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -171,7 +171,7 @@ public:
     /* 0x00c */ MKProp* unkC;
 };
 
-class CynderBossGoal_Dive : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_Dive : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -181,7 +181,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class CynderBossGoal_Fly : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_Fly : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -192,7 +192,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class CynderBossGoal_FlyAlongSpline : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_FlyAlongSpline : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -212,7 +212,7 @@ public:
     /* 0x024 */ u8 unk24;
 };
 
-class CynderBossGoal_FlyAlongWaypoints : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_FlyAlongWaypoints : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -225,7 +225,7 @@ public:
     /* 0x018 */ s32 unk18;
 };
 
-class CynderBossGoal_FlyAttack1 : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_FlyAttack1 : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -235,7 +235,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class CynderBossGoal_FlyAttack2 : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_FlyAttack2 : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -245,7 +245,7 @@ public:
     /* 0x00c */ MKProp* unkC;
 };
 
-class CynderBossGoal_FlyAttack3 : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_FlyAttack3 : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -255,7 +255,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class CynderBossGoal_FlyToDive : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_FlyToDive : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -266,7 +266,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class CynderBossGoal_FlyingInWait : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_FlyingInWait : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -289,7 +289,7 @@ public:
     /* 0x030 */ void** unk30;
 };
 
-class CynderBossGoal_GlideToAttack : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_GlideToAttack : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -299,7 +299,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class CynderBossGoal_GlideToLand : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_GlideToLand : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -309,7 +309,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class CynderBossGoal_HitByFury : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_HitByFury : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -320,7 +320,7 @@ public:
     /* 0x010 */ u8 unk10;
 };
 
-class CynderBossGoal_Hover : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_Hover : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -330,7 +330,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class CynderBossGoal_HoverAttack : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_HoverAttack : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -340,7 +340,7 @@ public:
     /* 0x00c */ Cynder* unkC;
 };
 
-class CynderBossGoal_HoverAttackMode : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_HoverAttackMode : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -367,7 +367,7 @@ public:
     /* 0x03c */ u8 unk3C;
 };
 
-class CynderBossGoal_HoverLeft : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_HoverLeft : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -377,7 +377,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class CynderBossGoal_HoverRight : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_HoverRight : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -387,7 +387,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class CynderBossGoal_Idle : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_Idle : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -400,7 +400,7 @@ public:
     /* 0x014 */ s32 unk14;
 };
 
-class CynderBossGoal_Land : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_Land : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -411,7 +411,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class CynderBossGoal_LandingFlight : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_LandingFlight : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -435,7 +435,7 @@ public:
     /* 0x038 */ Goal<Cynder>* unk38;
 };
 
-class CynderBossGoal_Leap : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_Leap : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -451,7 +451,7 @@ public:
     /* 0x020 */ u8 unk20;
 };
 
-class CynderBossGoal_MeleeAttack : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_MeleeAttack : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -462,7 +462,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class CynderBossGoal_MoveToTarget : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_MoveToTarget : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -492,7 +492,7 @@ public:
     /* 0x03e */ u8 unk3E;
 };
 
-class CynderBossGoal_RunningTakeOff : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_RunningTakeOff : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -502,7 +502,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class CynderBossGoal_Stage2Fury : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_Stage2Fury : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -514,7 +514,7 @@ public:
     /* 0x010 */ s32 unk10;
 };
 
-class CynderBossGoal_Stage3Fury : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_Stage3Fury : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -525,7 +525,7 @@ public:
     /* 0x010 */ u8 unk10;
 };
 
-class CynderBossGoal_TakeOff : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_TakeOff : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -535,7 +535,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class CynderBossGoal_TestMode : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_TestMode : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -566,7 +566,7 @@ public:
     /* 0x050 */ f32 unk50;
 };
 
-class CynderBossGoal_TestTaunt : public Goal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_TestTaunt : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -577,7 +577,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class CynderBossGoal_Think : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderBossGoal_Think : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -618,7 +618,7 @@ public:
     void __sinit(void);
 };
 
-class CynderGoal_FlyingAttackMode : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderGoal_FlyingAttackMode : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -646,7 +646,7 @@ public:
     /* 0x040 */ s8 unk40;
 };
 
-class CynderGoal_GroundAttackMode : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderGoal_GroundAttackMode : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -681,7 +681,7 @@ public:
     /* 0x044 */ u8 unk44;
 };
 
-class CynderGoal_TurnToAttack : public Goal<Cynder> {  // base: vtable prefix
+class CynderGoal_TurnToAttack : public Goal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);

@@ -46,7 +46,7 @@ public:
     /* 0x1c2 */ u8 unk1C2;
 };
 
-class CheckPointDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class CheckPointDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     /* 0x06d */ u8 pad6D[0x3];

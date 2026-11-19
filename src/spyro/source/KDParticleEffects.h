@@ -96,7 +96,7 @@ public:
     /* 0x028 */ void* unk28;
 };
 
-class KDParticleSystemProperty : public KDProperty {  // base: vtable prefix
+class KDParticleSystemProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void Resolve(KDPropertySet *);

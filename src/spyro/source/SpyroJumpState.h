@@ -10,14 +10,14 @@ class SpyroJumpState_cpp;
 class SpyroState;
 class SpyroStateMessages;
 
-class SpyroJumpState : public SpyroState {  // base: vtable prefix
+class SpyroJumpState : public SpyroState {  // base: inlined ctor vtable stores
 public:
     virtual void Init(Spyro *);
     virtual void Deinit(void);
     virtual void Enter(SpyroStateMessages &);
     virtual void Exit(void);
     virtual void Update(void);
-    virtual u8 Transition(void);
+    virtual s32 Transition(void);
     virtual void GetStateInfo(void);
     void SetStrafeJump(bool);
     s32 DoubleJumpTransition(void);

@@ -31,7 +31,7 @@ public:
     /* 0x060 */ s32 unk60;
 };
 
-class UIPropDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class UIPropDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

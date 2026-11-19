@@ -4,8 +4,6 @@
 #include <dolphin/types.h>
 
 class AttackerManager;
-class ColObjDescriptor;
-class MKCollisionInfo;
 class MKProp;
 class MKVector3;
 class TargetContext;
@@ -53,23 +51,23 @@ public:
 
 class Targetable {
 public:
-    virtual void Init(ColObjDescriptor *, const MKVector3 &, bool, MKCollisionInfo *, bool, bool, unsigned int, MKProp *, bool) = 0;
-    virtual void Deinit(void) = 0;
-    virtual s32 Update(MKVector3 *, float, bool) = 0;
-    virtual s32 Teleport(const MKVector3 &, float, int) = 0;
-    virtual s32 HasHitFloor(void) = 0;
-    virtual s32 HasHitWall(void) = 0;
-    virtual s32 HasHitRoof(void) = 0;
-    virtual s32 HasHitAnything(void) = 0;
-    virtual u32 GetFloorProp(void) = 0;
-    virtual s32 GetOwner(void) = 0;
-    virtual void SetOwner(MKProp *) = 0;
-    virtual s32 GetFloorMaterialID(void) = 0;
-    virtual u32 GetProp(void) = 0;
-    virtual void SetRotation(MKVector3 *, MKVector3) = 0;
-    virtual void SetScale(float) = 0;
-    virtual void Reset(const MKVector3 &, const MKVector3 &) = 0;
-    virtual void GetAttackerManager(void);
+    virtual void pure_slot0() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot1() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot2() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot3() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot4() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot5() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot6() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot7() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot8() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot9() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot10() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot11() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot12() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot13() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot14() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot15() = 0;  // name unknown: no descendant fills this slot
+    virtual s32 GetAttackerManager(void);
     void UnregisterTargetable(void);
     void RegisterTargetable(void);
     static u8 pTargetManager[0x4];
@@ -77,10 +75,8 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: illegal return value in void/constructor/destructor function
-inline void Targetable::GetAttackerManager() {
+inline s32 Targetable::GetAttackerManager() {
     return 0;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_TARGETMANAGER_H

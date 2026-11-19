@@ -30,7 +30,7 @@ public:
     /* 0x0ac */ s32 unkAC;
 };
 
-class ConnectorDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ConnectorDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

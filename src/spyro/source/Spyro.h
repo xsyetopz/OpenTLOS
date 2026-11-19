@@ -457,7 +457,7 @@ public:
     /* 0x018 */ s32 unk18;
 };
 
-class SpyroDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class SpyroDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

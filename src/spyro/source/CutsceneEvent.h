@@ -42,7 +42,7 @@ class ScriptCE;
 class SpawnGemsCE;
 class TeleportCE;
 
-class AlphaChangeCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class AlphaChangeCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(void);
@@ -51,7 +51,7 @@ public:
     /* 0x008 */ f32 unk8;
 };
 
-class AttachActorToRefPointCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class AttachActorToRefPointCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(void);
@@ -61,7 +61,7 @@ public:
     /* 0x00c */ s32 unkC;
 };
 
-class AttachCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class AttachCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(void);
@@ -74,7 +74,7 @@ public:
     /* 0x024 */ s32 unk24;
 };
 
-class AttachPropCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class AttachPropCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(void);
@@ -84,7 +84,7 @@ public:
     /* 0x00c */ s32 unkC;
 };
 
-class AttachPropToRefPointCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class AttachPropToRefPointCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(void);
@@ -94,7 +94,7 @@ public:
     /* 0x00c */ s32 unkC;
 };
 
-class AttachScaleOffsetCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class AttachScaleOffsetCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Update(void);
@@ -105,7 +105,7 @@ public:
     /* 0x020 */ s32 unk20;
 };
 
-class BreathEffectCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class BreathEffectCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void LoadDone(void);
@@ -136,7 +136,7 @@ public:
     /* 0x058 */ s32 unk58;
 };
 
-class CameraShakeCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class CameraShakeCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Update(void);
@@ -145,7 +145,7 @@ public:
     /* 0x010 */ f64 unk10;
 };
 
-class ColorCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class ColorCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Enter(void);
@@ -157,7 +157,7 @@ public:
     /* 0x028 */ MKModel* unk28;
 };
 
-class DepthOfFieldCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class DepthOfFieldCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Enter(void);
@@ -173,7 +173,7 @@ public:
     /* 0x020 */ f32 unk20;
 };
 
-class DisableShadowCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class DisableShadowCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Enter(void);
@@ -181,7 +181,7 @@ public:
     /* 0x004 */ s32 unk4;
 };
 
-class DisableWobbleTechCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class DisableWobbleTechCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Enter(void);
@@ -189,7 +189,7 @@ public:
     /* 0x004 */ MKModel* unk4;
 };
 
-class DropShadowCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class DropShadowCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Update(void);
@@ -198,7 +198,7 @@ public:
     /* 0x00c */ f32 unkC;
 };
 
-class ExplosionCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class ExplosionCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Update(void);
@@ -206,7 +206,7 @@ public:
     /* 0x008 */ f32 unk8;
 };
 
-class ExplosionNodeCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class ExplosionNodeCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Update(void);
@@ -215,7 +215,7 @@ public:
     /* 0x00c */ f32 unkC;
 };
 
-class FadeCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class FadeCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);
@@ -228,7 +228,7 @@ public:
     /* 0x014 */ f32 unk14;
 };
 
-class ImageCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class ImageCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual s32 LoadLine(void);
@@ -249,7 +249,7 @@ public:
     /* 0x044 */ f32 unk44;
 };
 
-class LavaBubbleCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class LavaBubbleCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Enter(void);
@@ -267,7 +267,7 @@ public:
     /* 0x004 */ f32 unk4;
 };
 
-class PlayMusicCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class PlayMusicCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(void);
@@ -278,7 +278,7 @@ public:
     /* 0x024 */ u8 unk24;
 };
 
-class PlaySecondaryAnimCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class PlaySecondaryAnimCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual s32 LoadLine(void);
@@ -294,14 +294,14 @@ public:
     /* 0x08c */ s32 unk8C;
 };
 
-class ResetClothCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class ResetClothCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Update(void);
     /* 0x004 */ MKModel* unk4;
 };
 
-class ScaleCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class ScaleCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Update(void);
@@ -310,7 +310,7 @@ public:
     /* 0x018 */ MKModel* unk18;
 };
 
-class ScriptCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class ScriptCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual s32 LoadLine(void);
@@ -318,7 +318,7 @@ public:
     /* 0x004 */ s8* unk4;
 };
 
-class SpawnGemsCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class SpawnGemsCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(void);
     virtual void Enter(void);
@@ -330,7 +330,7 @@ public:
     /* 0x018 */ s32 unk18;
 };
 
-class TeleportCE : public KDSynkerPlayerEvent {  // base: vtable prefix
+class TeleportCE : public KDSynkerPlayerEvent {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(void);

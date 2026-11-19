@@ -17,7 +17,7 @@ class SwampTier2Goal_Hide;
 class SwampTier2Goal_MoveToTarget;
 class SwampTier2Goal_Think;
 
-class SwampTier2Goal_AlertMode : public CompositeGoal<SwampTier2> {  // base: vtable prefix
+class SwampTier2Goal_AlertMode : public CompositeGoal<SwampTier2> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -45,7 +45,7 @@ public:
     /* 0x040 */ u8 unk40;
 };
 
-class SwampTier2Goal_Attack1 : public Goal<SwampTier2> {  // base: vtable prefix
+class SwampTier2Goal_Attack1 : public Goal<SwampTier2> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -58,7 +58,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class SwampTier2Goal_Attack2 : public Goal<SwampTier2> {  // base: vtable prefix
+class SwampTier2Goal_Attack2 : public Goal<SwampTier2> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -71,7 +71,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class SwampTier2Goal_Hide : public Goal<SwampTier2> {  // base: vtable prefix
+class SwampTier2Goal_Hide : public Goal<SwampTier2> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -85,7 +85,7 @@ public:
     /* 0x010 */ u8 unk10;
 };
 
-class SwampTier2Goal_MoveToTarget : public Goal<SwampTier2> {  // base: vtable prefix
+class SwampTier2Goal_MoveToTarget : public Goal<SwampTier2> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -100,7 +100,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class SwampTier2Goal_Think : public CompositeGoal<SwampTier2> {  // base: vtable prefix
+class SwampTier2Goal_Think : public CompositeGoal<SwampTier2> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

@@ -8,7 +8,7 @@ class Character;
 class Enemy;
 class NPCGuardianGoal_Idle;
 
-class NPCGuardianGoal_Idle : public Goal<Enemy> {  // base: vtable prefix
+class NPCGuardianGoal_Idle : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);

@@ -2,6 +2,7 @@
 #define COMMON_SOURCE_MKCOLLISIONITEM_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKCollisionManager.h"
 #include "common/Source/MKCollisionUtil.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -15,6 +16,7 @@ class MKCollisionEllipsoid;
 class MKCollisionGroundHint;
 class MKCollisionInfo;
 class MKCollisionItem;
+class MKCollisionItemBase;
 class MKCollisionManager;
 class MKCollisionMode;
 class MKCollisionModel;
@@ -29,7 +31,7 @@ class MKVector3;
 class MKVector4;
 class Matrix;
 
-class MKCollisionItem {
+class MKCollisionItem : public MKCollisionItemBase {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual s32 RayCollide(MKCollisionRay &, MKCollisionResult *) = 0;
@@ -62,7 +64,7 @@ public:
     /* 0x058 */ MKHeap* unk58;
 };
 
-class MKCollisionCapsuleItem : public MKCollisionItem {  // base: vtable prefix
+class MKCollisionCapsuleItem : public MKCollisionItem {  // base: inlined ctor vtable stores
 public:
     virtual s32 RayCollide(MKCollisionRay &, MKCollisionResult *);
     virtual void SweepSphereCollide(MKCollisionRay &, MKCollisionResult *);
@@ -93,7 +95,7 @@ public:
     /* 0x0ac */ MKVector3* unkAC;
 };
 
-class MKCollisionModelItem : public MKCollisionItem {  // base: vtable prefix
+class MKCollisionModelItem : public MKCollisionItem {  // base: inlined ctor vtable stores
 public:
     virtual s32 RayCollide(MKCollisionRay &, MKCollisionResult *);
     virtual s32 GetGroundPoint(const MKCollisionRay &, MKCollisionResult *, MKCollisionGroundHint *);
@@ -140,7 +142,7 @@ public:
     /* 0x12c */ s32 unk12C;
 };
 
-class MKCollisionSphereItem : public MKCollisionItem {  // base: vtable prefix
+class MKCollisionSphereItem : public MKCollisionItem {  // base: inlined ctor vtable stores
 public:
     virtual s32 RayCollide(MKCollisionRay &, MKCollisionResult *);
     virtual void SweepSphereCollide(MKCollisionRay &, MKCollisionResult *);

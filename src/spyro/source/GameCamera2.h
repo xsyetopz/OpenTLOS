@@ -2,7 +2,6 @@
 #define SPYRO_SOURCE_GAMECAMERA2_H
 
 #include <dolphin/types.h>
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/KDCamera.h"
 
@@ -11,9 +10,9 @@ class GameCamera2Descriptor;
 class GameCameraEmuStateMachine;
 class KDCamera;
 class KDCameraDeltaStages;
+class KDCameraDescriptor;
 class MKIniLine;
 class MKMessage;
-class MKPropDescriptor;
 class MKVector3;
 class Targetable;
 
@@ -119,7 +118,7 @@ public:
     /* 0x2b4 */ f32 unk2B4;
 };
 
-class GameCamera2Descriptor : public MKPropDescriptor {  // base: vtable prefix
+class GameCamera2Descriptor : public KDCameraDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
@@ -127,7 +126,7 @@ public:
     virtual void Deinit(void);
     u8 LoadDeltaStages(MKIniLine *);
     KDCameraDeltaStages * GetDeltaStages(int);
-    /* 0x044 */ u8 pad44[0x38];
+    /* 0x004 */ u8 pad4[0x78];
     /* 0x07c */ f32 unk7C;
     /* 0x080 */ u8 pad80[0x14];
     /* 0x094 */ s32 unk94;

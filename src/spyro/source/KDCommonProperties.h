@@ -24,7 +24,26 @@ class MKAnim;
 class MKIniLine;
 class MKMessage;
 
-class KDAmbientSoundProperty : public KDProperty {  // base: vtable prefix
+class KDSoundAttachmentProperty : public KDProperty {  // base: inlined ctor vtable stores
+public:
+    virtual void Init(const char *);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void Resolve(KDPropertySet *);
+    virtual void * GetClassInfo(void) const;
+    virtual s32 ResolveCommand(const char *) const;
+    virtual s32 GetInstanceDataSize(void) const;
+    virtual void InitInstance(void);
+    virtual void Command(int);
+    static u8 classInfo[0x10];
+    /* 0x004 */ s8* unk4;
+    /* 0x008 */ s32 unk8;
+    /* 0x00c */ u8 padC[0x4];
+    /* 0x010 */ s32 unk10;
+    /* 0x014 */ s8* unk14;
+    /* 0x018 */ s8* unk18;
+};
+
+class KDAmbientSoundProperty : public KDSoundAttachmentProperty {  // base: inlined ctor vtable stores
 public:
     virtual void Init(const char *);
     virtual s32 LoadLine(MKIniLine *);
@@ -65,7 +84,7 @@ public:
     /* 0x014 */ KDPropertyCommand unk14;
 };
 
-class KDAnimProperty : public KDProperty {  // base: vtable prefix
+class KDAnimProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void Resolve(KDPropertySet *);
@@ -107,7 +126,7 @@ public:
     /* 0x024 */ u8 unk24;
 };
 
-class KDPathFollowerProperty : public KDProperty {  // base: vtable prefix
+class KDPathFollowerProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void Resolve(KDPropertySet *);
@@ -146,25 +165,6 @@ public:
     /* 0x00c */ s32 unkC;
     /* 0x010 */ s8* unk10;
     /* 0x014 */ u32 unk14;
-};
-
-class KDSoundAttachmentProperty : public KDProperty {  // base: vtable prefix
-public:
-    virtual void Init(const char *);
-    virtual s32 LoadLine(MKIniLine *);
-    virtual void Resolve(KDPropertySet *);
-    virtual void * GetClassInfo(void) const;
-    virtual s32 ResolveCommand(const char *) const;
-    virtual s32 GetInstanceDataSize(void) const;
-    virtual void InitInstance(void);
-    virtual void Command(int);
-    static u8 classInfo[0x10];
-    /* 0x004 */ s8* unk4;
-    /* 0x008 */ s32 unk8;
-    /* 0x00c */ u8 padC[0x4];
-    /* 0x010 */ s32 unk10;
-    /* 0x014 */ s8* unk14;
-    /* 0x018 */ s8* unk18;
 };
 
 void KDCommonProperties_RegisterAll(KDPropertyClassRegistry *);

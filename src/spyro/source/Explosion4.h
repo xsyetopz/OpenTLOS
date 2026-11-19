@@ -49,7 +49,7 @@ public:
     /* 0x0a8 */ u8 unkA8;
 };
 
-class Explosion4Descriptor : public MKPropDescriptor {  // base: vtable prefix
+class Explosion4Descriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

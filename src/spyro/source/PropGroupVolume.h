@@ -36,7 +36,7 @@ public:
     /* 0x2ad */ u8 unk2AD;
 };
 
-class PropGroupVolumeDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class PropGroupVolumeDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

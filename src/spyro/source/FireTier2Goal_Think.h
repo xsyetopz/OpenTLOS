@@ -15,7 +15,7 @@ class FireTier2Goal_Think;
 class MKHeap;
 class MKVector3;
 
-class FireTier2Goal_JumpOutOfLava : public CompositeGoal<Enemy> {  // base: vtable prefix
+class FireTier2Goal_JumpOutOfLava : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -45,7 +45,7 @@ public:
     /* 0x058 */ u8 unk58;
 };
 
-class FireTier2Goal_MoveToLavaEdge : public Goal<Enemy> {  // base: vtable prefix
+class FireTier2Goal_MoveToLavaEdge : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);

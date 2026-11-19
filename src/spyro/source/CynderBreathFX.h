@@ -50,7 +50,7 @@ public:
     /* 0x1d0 */ f32 unk1D0;
 };
 
-class CynderBreathFXDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class CynderBreathFXDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     /* 0x06d */ u8 pad6D[0x3];

@@ -2,15 +2,15 @@
 #define SPYRO_SOURCE_FALLINGLEAVES_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKParticleSystem.h"
-#include "common/Source/MKProp.h"
 
 class FallingLeaves;
 class FallingLeavesDescriptor;
 class FallingLeaves_cpp;
+class MKBaseParticleSystemDescriptor;
 class MKMessage;
 class MKParticleSystem;
-class MKPropDescriptor;
 class MKVector3;
 class WindFX;
 
@@ -39,7 +39,7 @@ public:
     /* 0x1e1 */ u8 unk1E1;
 };
 
-class FallingLeavesDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class FallingLeavesDescriptor : public MKBaseParticleSystemDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

@@ -67,7 +67,7 @@ public:
     /* 0x14d */ u8 unk14D;
 };
 
-class CatapultDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class CatapultDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

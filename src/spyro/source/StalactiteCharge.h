@@ -87,7 +87,7 @@ public:
     /* 0x178 */ f64 unk178;
 };
 
-class StalactiteChargeDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class StalactiteChargeDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

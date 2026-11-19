@@ -12,7 +12,7 @@ class SwampTier1;
 class SwampTier1Goal_Hit;
 class SwampTier1Goal_Think;
 
-class SwampTier1Goal_Hit : public CompositeGoal<SwampTier1> {  // base: vtable prefix
+class SwampTier1Goal_Hit : public CompositeGoal<SwampTier1> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -40,7 +40,7 @@ public:
     /* 0x040 */ s32 unk40;
 };
 
-class SwampTier1Goal_Think : public CompositeGoal<SwampTier1> {  // base: vtable prefix
+class SwampTier1Goal_Think : public CompositeGoal<SwampTier1> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

@@ -45,7 +45,7 @@ public:
     /* 0x114 */ s32 unk114;
 };
 
-class ElectricFenceDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ElectricFenceDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

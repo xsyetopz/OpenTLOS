@@ -29,7 +29,7 @@ class MKProp;
 class MKVector3;
 class TargetContext;
 
-class EnemyGoal_BarricadeHide : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_BarricadeHide : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -38,7 +38,7 @@ public:
     /* 0x008 */ u8 unk8;
 };
 
-class EnemyGoal_BarricadeKick : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_BarricadeKick : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -49,7 +49,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class EnemyGoal_Despawn : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Despawn : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -60,7 +60,7 @@ public:
     /* 0x00c */ MKProp* unkC;
 };
 
-class EnemyGoal_FollowGraph : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_FollowGraph : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -139,7 +139,7 @@ public:
     /* 0x095 */ u8 unk95;
 };
 
-class EnemyGoal_GraphBarricade : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GraphBarricade : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -172,7 +172,7 @@ public:
     /* 0x21c */ s32 unk21C;
 };
 
-class EnemyGoal_GraphFly : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GraphFly : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -184,7 +184,7 @@ public:
     /* 0x010 */ u8 unk10;
 };
 
-class EnemyGoal_GraphFlyPath : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GraphFlyPath : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -200,7 +200,7 @@ public:
     /* 0x02c */ f32 unk2C;
 };
 
-class EnemyGoal_GraphGlidePath : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GraphGlidePath : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -216,7 +216,7 @@ public:
     /* 0x02c */ f32 unk2C;
 };
 
-class EnemyGoal_GraphHover : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GraphHover : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -230,7 +230,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class EnemyGoal_GraphJump : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GraphJump : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -257,7 +257,7 @@ public:
     /* 0x04c */ f32 unk4C;
 };
 
-class EnemyGoal_GraphRun : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GraphRun : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -273,7 +273,7 @@ public:
     /* 0x018 */ s32 unk18;
 };
 
-class EnemyGoal_GraphSummonWall : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GraphSummonWall : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -286,7 +286,7 @@ public:
     /* 0x010 */ void* unk10;
 };
 
-class EnemyGoal_GraphTurn : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GraphTurn : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -301,7 +301,7 @@ public:
     /* 0x020 */ f32 unk20;
 };
 
-class EnemyGoal_GraphWalk : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GraphWalk : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);

@@ -49,14 +49,14 @@ public:
     /* 0x070 */ Matrix* unk70;
 };
 
-class KDParticleBoxEmitter : public KDParticleEmitter {  // base: vtable prefix
+class KDParticleBoxEmitter : public KDParticleEmitter {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual ~KDParticleBoxEmitter(void);
     void InitBoxParticlePostion(KDParticleEmitter *, MKParticle *);
 };
 
-class KDParticleLineEmitter : public KDParticleEmitter {  // base: vtable prefix
+class KDParticleLineEmitter : public KDParticleEmitter {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual ~KDParticleLineEmitter(void);

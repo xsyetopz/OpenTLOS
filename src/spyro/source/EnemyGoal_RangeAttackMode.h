@@ -15,7 +15,7 @@ class MKAttachment;
 class MKVector3;
 class Targetable;
 
-class EnemyGoal_AttackProjectile : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_AttackProjectile : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -35,7 +35,7 @@ public:
     /* 0x048 */ u8 unk48;
 };
 
-class EnemyGoal_RangeAttackMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_RangeAttackMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

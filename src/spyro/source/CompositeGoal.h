@@ -7,7 +7,7 @@
 class Cynder;
 
 template <class T0>
-class CompositeGoal : public Goal<T0> {  // base: vtable prefix
+class CompositeGoal : public Goal<T0> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

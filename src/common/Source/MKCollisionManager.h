@@ -22,7 +22,7 @@ class Matrix;
 
 class MKCollisionItemBase {
 public:
-    virtual void pure_slot0() = 0;  // name unknown: no descendant fills this slot
+    virtual void Deinit(void) = 0;
 };
 
 class MKCollisionManager {

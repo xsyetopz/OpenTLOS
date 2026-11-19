@@ -35,7 +35,7 @@ public:
     /* 0x0b0 */ MKVector4 unkB0;
 };
 
-class FallingDustPropDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class FallingDustPropDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     /* 0x06d */ u8 pad6D[0x3];

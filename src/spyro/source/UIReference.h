@@ -11,7 +11,7 @@ class UIDataLine;
 class UIObject;
 class UIReference;
 
-class UIReference : public UIObject {  // base: vtable prefix
+class UIReference : public UIObject {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(UIDataLine *);

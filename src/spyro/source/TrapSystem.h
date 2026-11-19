@@ -25,7 +25,7 @@ public:
     /* 0x050 */ Matrix unk50;
 };
 
-class TrapSystemDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class TrapSystemDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     /* 0x044 */ u8 pad44[0x1c];

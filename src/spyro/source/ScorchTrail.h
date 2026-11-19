@@ -33,7 +33,7 @@ public:
     /* 0x058 */ f32 unk58;
 };
 
-class ScorchTrailDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ScorchTrailDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

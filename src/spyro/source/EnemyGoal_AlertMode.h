@@ -9,7 +9,7 @@ class AITargetData;
 class Enemy;
 class EnemyGoal_AlertMode;
 
-class EnemyGoal_AlertMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_AlertMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

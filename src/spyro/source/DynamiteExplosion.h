@@ -32,7 +32,7 @@ public:
     /* 0x050 */ DynamiteExplosion::Explosion** unk50;
 };
 
-class DynamiteExplosionDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class DynamiteExplosionDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

@@ -11,7 +11,7 @@ class Enemy;
 class EnemyAttack;
 class EnemyGoal_GroundAttackMode;
 
-class EnemyGoal_GroundAttackMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GroundAttackMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

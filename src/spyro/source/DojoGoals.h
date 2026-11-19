@@ -8,7 +8,7 @@ class Character;
 class DojoGoal_SpawnIdle;
 class Enemy;
 
-class DojoGoal_SpawnIdle : public Goal<Enemy> {  // base: vtable prefix
+class DojoGoal_SpawnIdle : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);

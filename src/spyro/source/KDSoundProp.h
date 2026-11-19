@@ -33,7 +33,7 @@ public:
     /* 0x0a0 */ s32 unkA0;
 };
 
-class KDSoundPropDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class KDSoundPropDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     /* 0x044 */ u8 pad44[0x20];

@@ -29,7 +29,7 @@ public:
     /* 0x060 */ u8 unk60;
 };
 
-class FootStepFXDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class FootStepFXDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void LoadDone(void);

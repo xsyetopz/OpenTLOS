@@ -7,7 +7,7 @@
 class CutscenePropDescriptor;
 class MKPropDescriptor;
 
-class CutscenePropDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class CutscenePropDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

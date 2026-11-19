@@ -35,7 +35,7 @@ public:
     /* 0x0e4 */ f32 unkE4;
 };
 
-class WaterTrickleEmitterDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class WaterTrickleEmitterDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     /* 0x044 */ u8 pad44[0x24];

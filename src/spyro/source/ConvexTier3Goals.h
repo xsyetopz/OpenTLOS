@@ -11,7 +11,7 @@ class ConvexTier3Goal_PatrolMode;
 class ConvexTier3Goal_Think;
 class Enemy;
 
-class ConvexTier3Goal_FlyIdle : public Goal<Enemy> {  // base: vtable prefix
+class ConvexTier3Goal_FlyIdle : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -21,7 +21,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class ConvexTier3Goal_PatrolMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class ConvexTier3Goal_PatrolMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -41,7 +41,7 @@ public:
     /* 0x024 */ Goal<Enemy>* unk24;
 };
 
-class ConvexTier3Goal_Think : public CompositeGoal<Enemy> {  // base: vtable prefix
+class ConvexTier3Goal_Think : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

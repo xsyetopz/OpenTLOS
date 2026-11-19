@@ -51,7 +51,7 @@ public:
     /* 0x0f4 */ SwarmEntity** unkF4;
 };
 
-class SwarmPropDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class SwarmPropDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     /* 0x06d */ u8 pad6D[0xb];

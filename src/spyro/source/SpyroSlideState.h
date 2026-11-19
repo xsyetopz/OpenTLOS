@@ -12,14 +12,14 @@ class SpyroState;
 class SpyroStateMessages;
 class SpyroStuck;
 
-class SpyroSlideState : public SpyroState {  // base: vtable prefix
+class SpyroSlideState : public SpyroState {  // base: inlined ctor vtable stores
 public:
     virtual void Init(Spyro *);
     virtual void Deinit(void);
     virtual void Enter(SpyroStateMessages &);
     virtual void Exit(void);
     virtual void Update(void);
-    virtual u8 Transition(void);
+    virtual s32 Transition(void);
     virtual void GetStateInfo(void);
     static u8 states[0x24];
     /* 0x004 */ u8 pad4[0x24];

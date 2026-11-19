@@ -12,7 +12,7 @@ class EnemyDamageFeedback;
 class EnemyTestGoal_MoveToTarget;
 class EnemyTest_Think;
 
-class EnemyTestGoal_MoveToTarget : public Goal<Enemy> {  // base: vtable prefix
+class EnemyTestGoal_MoveToTarget : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -27,7 +27,7 @@ public:
     /* 0x018 */ f32 unk18;
 };
 
-class EnemyTest_Think : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyTest_Think : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

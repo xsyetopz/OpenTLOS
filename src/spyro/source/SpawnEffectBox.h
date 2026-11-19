@@ -36,7 +36,7 @@ public:
     /* 0x0fc */ f32 unkFC;
 };
 
-class SpawnEffectBoxDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class SpawnEffectBoxDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(MKIniLine *);
     /* 0x044 */ u8 pad44[0x1c];

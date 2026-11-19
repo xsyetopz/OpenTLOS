@@ -27,7 +27,7 @@ public:
     /* 0x0e0 */ MKCollisionInfo unkE0;
 };
 
-class WaterVolumeDescriptor : public KDWaterVolumeDescriptor {  // base: vtable prefix
+class WaterVolumeDescriptor : public KDWaterVolumeDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     /* 0x004 */ u8 pad4[0x8];

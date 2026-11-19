@@ -2,20 +2,20 @@
 #define SPYRO_SOURCE_SPYROHEROINTERFACE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/HeroInterface.h"
 
+class HeroInterface;
 class MKMessage;
+class MKPropDescriptor;
 class MKVector3;
-class Spyro;
-class SpyroEffects;
 class SpyroHeroInterface;
-class SpyroLighting;
 class StatType;
 
-class SpyroHeroInterface {
+class SpyroHeroInterface : public HeroInterface {  // base: inlined ctor vtable stores
 public:
     virtual s32 GetHeroType(void);
-    virtual Spyro * GetProp(void);
-    virtual Spyro * GetTargetable(void);
+    virtual void * GetProp(void);
+    virtual MKPropDescriptor ** GetTargetable(void);
     virtual void Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
@@ -25,17 +25,17 @@ public:
     virtual void GetCollisionCentre(void);
     virtual s32 GetCollisionIgnoreMaterials(void);
     virtual void GetCollisionInfo(void);
-    virtual SpyroLighting * GetLighting(void);
-    virtual SpyroEffects * GetEffects(void);
+    virtual s32 GetLighting(void);
+    virtual s32 GetEffects(void);
     virtual void GetInput(void);
-    virtual u8 IsInputActive(void);
+    virtual s32 IsInputActive(void);
     virtual void GetCamera(void);
     virtual s32 IsActive(void);
-    virtual void IsInvincible(void);
-    virtual u8 IsDying(void);
-    virtual u8 IsFrozen(void);
+    virtual s32 IsInvincible(void);
+    virtual s32 IsDying(void);
+    virtual s32 IsFrozen(void);
     virtual s32 IsHurting(void);
-    virtual u8 IsRespawning(void);
+    virtual s32 IsRespawning(void);
     virtual s32 InAir(void);
     virtual s32 IsIdle(void);
     virtual f32 GetCollectHeight(void);
@@ -52,12 +52,14 @@ inline s32 SpyroHeroInterface::GetHeroType() {
     return 0;
 }
 
-inline Spyro *SpyroHeroInterface::GetProp() {
+#if 0 // DRAFT: undefined identifier 'Spyro'
+inline void *SpyroHeroInterface::GetProp() {
     return M2C_FIELD(this, Spyro **, 4);
 }
+#endif
 
-#if 0 // DRAFT: illegal type
-inline Spyro *SpyroHeroInterface::GetTargetable() {
+#if 0 // DRAFT: undefined identifier 'Spyro'
+inline MKPropDescriptor **SpyroHeroInterface::GetTargetable() {
     Spyro *temp_r3_17436;
 
     temp_r3_17436 = M2C_FIELD(this, Spyro **, 4);
@@ -155,45 +157,45 @@ inline void SpyroHeroInterface::GetCollisionInfo() {
     M2C_FIELD(M2C_FIELD(temp_r3_17596, void **, 0x44), M2C_UNK (**)(void *), 0xC8)(temp_r3_17596);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
-inline SpyroLighting *SpyroHeroInterface::GetLighting() {
+inline s32 SpyroHeroInterface::GetLighting() {
     return M2C_FIELD(this, s32 *, 4) + 0x430;
+}
+
+#if 0 // DRAFT: undefined identifier 'SpyroEffects'
+inline s32 SpyroHeroInterface::GetEffects() {
+    return M2C_FIELD(M2C_FIELD(this, void **, 4), SpyroEffects **, 0x260);
 }
 #endif
 
-inline SpyroEffects *SpyroHeroInterface::GetEffects() {
-    return M2C_FIELD(M2C_FIELD(this, void **, 4), SpyroEffects **, 0x260);
-}
-
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Spyro'
+#if 0 // DRAFT: undefined identifier 'Spyro'
 inline void SpyroHeroInterface::GetInput() {
     ((Spyro *) (M2C_FIELD(this, Spyro **, 4)))->GetInput();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Spyro'
+#if 0 // DRAFT: undefined identifier 'Spyro'
 inline void SpyroHeroInterface::GetCamera() {
     ((Spyro *) (M2C_FIELD(this, Spyro **, 4)))->GetCamera();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Spyro'
+#if 0 // DRAFT: undefined identifier 'Spyro'
 inline void SpyroHeroInterface::UpdateCameraInfo(const MKVector3 &arg0) {
     ((Spyro *) (M2C_FIELD(this, Spyro **, 4)))->UpdateCameraInfo(arg0);
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Spyro'
-inline void SpyroHeroInterface::IsInvincible() {
+#if 0 // DRAFT: undefined identifier 'Spyro'
+inline s32 SpyroHeroInterface::IsInvincible() {
     ((Spyro *) (M2C_FIELD(this, Spyro **, 4)))->IsInvincible();
 }
 #endif
 
-inline u8 SpyroHeroInterface::IsDying() {
+inline s32 SpyroHeroInterface::IsDying() {
     return M2C_FIELD(M2C_FIELD(this, void **, 4), u8 *, 0x3CD);
 }
 
-inline u8 SpyroHeroInterface::IsFrozen() {
+inline s32 SpyroHeroInterface::IsFrozen() {
     return M2C_FIELD(M2C_FIELD(this, void **, 4), u8 *, 0x3CE);
 }
 
@@ -201,7 +203,7 @@ inline s32 SpyroHeroInterface::IsHurting() {
     return M2C_FIELD(M2C_FIELD(this, void **, 4), s32 *, 0x5C) == 9;
 }
 
-inline u8 SpyroHeroInterface::IsRespawning() {
+inline s32 SpyroHeroInterface::IsRespawning() {
     return M2C_FIELD(M2C_FIELD(this, void **, 4), u8 *, 0x3CF);
 }
 
@@ -225,7 +227,7 @@ inline s32 SpyroHeroInterface::IsActive() {
     return 0;
 }
 
-inline u8 SpyroHeroInterface::IsInputActive() {
+inline s32 SpyroHeroInterface::IsInputActive() {
     return M2C_FIELD(M2C_FIELD(this, void **, 4), u8 *, 0x1C4);
 }
 

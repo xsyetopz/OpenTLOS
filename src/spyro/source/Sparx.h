@@ -173,7 +173,7 @@ public:
     /* 0x2d0 */ f32 unk2D0;
 };
 
-class SparxDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class SparxDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

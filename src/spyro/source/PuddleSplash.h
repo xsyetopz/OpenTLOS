@@ -22,7 +22,7 @@ public:
     /* 0x04c */ void* unk4C;
 };
 
-class PuddleSplashDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class PuddleSplashDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

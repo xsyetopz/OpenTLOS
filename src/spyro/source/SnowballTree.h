@@ -35,7 +35,7 @@ public:
     /* 0x0c4 */ u8 unkC4;
 };
 
-class SnowballTreeDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class SnowballTreeDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

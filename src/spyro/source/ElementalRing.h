@@ -25,7 +25,7 @@ public:
     /* 0x050 */ f32 unk50;
 };
 
-class ElementalRingDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ElementalRingDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

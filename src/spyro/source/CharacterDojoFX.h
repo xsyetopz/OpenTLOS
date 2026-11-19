@@ -3,14 +3,16 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKVector4.h"
+#include "spyro/source/CharacterBodyFX.h"
 
 class CBFXNode;
+class CharacterBodyFX;
 class CharacterBodyFXData;
 class CharacterDojoFX;
 class MKModel;
 class MKVector4;
 
-class CharacterDojoFX {
+class CharacterDojoFX : public CharacterBodyFX {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void InitData(CharacterBodyFXData *, MKModel *, CBFXNode *);

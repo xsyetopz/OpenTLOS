@@ -8,7 +8,7 @@
 class Enemy;
 class NPCGuardianGoal_Think;
 
-class NPCGuardianGoal_Think : public CompositeGoal<Enemy> {  // base: vtable prefix
+class NPCGuardianGoal_Think : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

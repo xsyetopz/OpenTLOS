@@ -36,7 +36,7 @@ public:
     /* 0x088 */ KDSpline unk88;
 };
 
-class TrainTrackDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class TrainTrackDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

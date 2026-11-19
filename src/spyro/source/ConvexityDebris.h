@@ -38,7 +38,7 @@ public:
     /* 0x080 */ MKVector4 unk80;
 };
 
-class ConvexityDebrisDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ConvexityDebrisDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

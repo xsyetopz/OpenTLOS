@@ -63,7 +63,7 @@ public:
     /* 0x0e4 */ u32 unkE4;
 };
 
-class EnemySpawnerDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class EnemySpawnerDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void LoadDone(void);

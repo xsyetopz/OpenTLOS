@@ -116,7 +116,7 @@ public:
     /* 0x144 */ u8 unk144;
 };
 
-class CollectableDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class CollectableDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
@@ -175,7 +175,7 @@ public:
     /* 0x068 */ Matrix* unk68;
 };
 
-class CollectableSpawnerDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class CollectableSpawnerDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

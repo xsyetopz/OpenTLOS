@@ -2,17 +2,19 @@
 #define SPYRO_SOURCE_TRAINCHASESPYROHEROINTERFACE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/HeroInterface.h"
 
+class HeroInterface;
 class MKMessage;
+class MKPropDescriptor;
 class StatType;
-class TrainChaseSpyro;
 class TrainChaseSpyroHeroInterface;
 
-class TrainChaseSpyroHeroInterface {
+class TrainChaseSpyroHeroInterface : public HeroInterface {  // base: inlined ctor vtable stores
 public:
     virtual s32 GetHeroType(void);
-    virtual TrainChaseSpyro * GetProp(void);
-    virtual s32 GetTargetable(void);
+    virtual void * GetProp(void);
+    virtual MKPropDescriptor ** GetTargetable(void);
     virtual void Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
@@ -48,11 +50,13 @@ inline s32 TrainChaseSpyroHeroInterface::GetHeroType() {
     return 2;
 }
 
-inline TrainChaseSpyro *TrainChaseSpyroHeroInterface::GetProp() {
+#if 0 // DRAFT: undefined identifier 'TrainChaseSpyro'
+inline void *TrainChaseSpyroHeroInterface::GetProp() {
     return M2C_FIELD(this, TrainChaseSpyro **, 4);
 }
+#endif
 
-inline s32 TrainChaseSpyroHeroInterface::GetTargetable() {
+inline MKPropDescriptor **TrainChaseSpyroHeroInterface::GetTargetable() {
     return 0;
 }
 
@@ -136,13 +140,13 @@ inline s32 TrainChaseSpyroHeroInterface::GetEffects() {
     return 0;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'TrainChaseSpyro'
+#if 0 // DRAFT: undefined identifier 'TrainChaseSpyro'
 inline void TrainChaseSpyroHeroInterface::GetInput() {
     ((TrainChaseSpyro *) (M2C_FIELD(this, TrainChaseSpyro **, 4)))->GetInput();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'TrainChaseSpyro'
+#if 0 // DRAFT: undefined identifier 'TrainChaseSpyro'
 inline void TrainChaseSpyroHeroInterface::GetCamera() {
     ((TrainChaseSpyro *) (M2C_FIELD(this, TrainChaseSpyro **, 4)))->GetCamera();
 }

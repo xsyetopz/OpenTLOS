@@ -32,7 +32,7 @@ public:
     /* 0x0c8 */ s32 unkC8;
 };
 
-class CollapsiblePropDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class CollapsiblePropDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void LoadDone(void);

@@ -70,7 +70,7 @@ public:
     /* 0x23c */ f32 unk23C;
 };
 
-class ExplosiveBarrelPathDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ExplosiveBarrelPathDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

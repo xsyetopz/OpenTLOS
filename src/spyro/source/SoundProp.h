@@ -19,7 +19,7 @@ public:
     virtual void Disable(void);
 };
 
-class SoundPropDescriptor : public KDSoundPropDescriptor {  // base: vtable prefix
+class SoundPropDescriptor : public KDSoundPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(MKIniLine *);
     /* 0x004 */ u8 pad4[0x8];

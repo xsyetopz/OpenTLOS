@@ -268,16 +268,16 @@ public:
 class DojoLesson {
 public:
     virtual void Init(DojoController *, int);
-    virtual void pure_slot1() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot2() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot3() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot4() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot5() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot6() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot7() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot8() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot9() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot10() = 0;  // name unknown: no descendant fills this slot
+    virtual void SetupNumEnemies(void) = 0;
+    virtual void SetupSpawnPoints(void) = 0;
+    virtual void SetupTimer(void) = 0;
+    virtual s32 IsSubLessonComplete(void) = 0;
+    virtual u8 IsLessonComplete(void) = 0;
+    virtual s32 HasFailedLesson(void) = 0;
+    virtual u8 HasSucceededLesson(void) = 0;
+    virtual void IncrementNumInterations(void) = 0;
+    virtual void TurnOffAbilities(void) = 0;
+    virtual void MakeChildrenInvulnerable(void) = 0;
     void UpdateCombatArcs(void);
     /* 0x004 */ DojoController* unk4;
     /* 0x008 */ s32 unk8;
@@ -286,7 +286,7 @@ public:
     /* 0x014 */ s32 unk14;
 };
 
-class EarthDojoLesson {
+class EarthDojoLesson : public DojoLesson {  // base: inlined ctor vtable stores
 public:
     virtual void Init(DojoController *, int);
     virtual void SetupNumEnemies(void);
@@ -321,7 +321,7 @@ public:
     /* 0x014 */ s32 unk14;
 };
 
-class ElectricDojoLesson {
+class ElectricDojoLesson : public DojoLesson {  // base: inlined ctor vtable stores
 public:
     virtual void Init(DojoController *, int);
     virtual void SetupNumEnemies(void);
@@ -356,7 +356,7 @@ public:
     /* 0x014 */ s32 unk14;
 };
 
-class FireDojoLesson {
+class FireDojoLesson : public DojoLesson {  // base: inlined ctor vtable stores
 public:
     virtual void Init(DojoController *, int);
     virtual void SetupNumEnemies(void);
@@ -401,7 +401,7 @@ public:
     /* 0x014 */ s32 unk14;
 };
 
-class IceDojoLesson {
+class IceDojoLesson : public DojoLesson {  // base: inlined ctor vtable stores
 public:
     virtual void Init(DojoController *, int);
     virtual void SetupNumEnemies(void);

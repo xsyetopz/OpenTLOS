@@ -7,7 +7,7 @@
 class ElementalShieldDescriptor;
 class KDPropDescriptor;
 
-class ElementalShieldDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class ElementalShieldDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void LoadDone(void);
 };

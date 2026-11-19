@@ -12,7 +12,7 @@ class MKProp;
 class MKVector3;
 class SpyroCollisionObject;
 
-class SpyroCollisionObject : public CollisionObject {  // base: vtable prefix
+class SpyroCollisionObject : public CollisionObject {  // base: inlined ctor vtable stores
 public:
     virtual void Init(ColObjDescriptor *, const MKVector3 &, bool, MKCollisionInfo *, bool, bool, unsigned int, MKProp *, bool);
     virtual s32 Update(MKVector3 *, float, bool);

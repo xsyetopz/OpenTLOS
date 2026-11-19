@@ -2,13 +2,15 @@
 #define SPYRO_SOURCE_CHARACTERFIREFX_H
 
 #include <dolphin/types.h>
+#include "spyro/source/CharacterBodyFX.h"
 
 class CBFXNode;
+class CharacterBodyFX;
 class CharacterBodyFXData;
 class CharacterFireFX;
 class MKModel;
 
-class CharacterFireFX {
+class CharacterFireFX : public CharacterBodyFX {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void InitData(CharacterBodyFXData *, MKModel *, CBFXNode *);

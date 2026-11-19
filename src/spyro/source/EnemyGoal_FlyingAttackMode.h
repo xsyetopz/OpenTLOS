@@ -11,7 +11,7 @@ class EnemyGoal_AttackFlying;
 class EnemyGoal_FlyingAttackMode;
 class Targetable;
 
-class EnemyGoal_AttackFlying : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_AttackFlying : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -22,7 +22,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class EnemyGoal_FlyingAttackMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_FlyingAttackMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

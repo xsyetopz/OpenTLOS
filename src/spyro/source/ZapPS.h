@@ -2,11 +2,11 @@
 #define SPYRO_SOURCE_ZAPPS_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKParticleSystem.h"
-#include "common/Source/MKProp.h"
 
+class MKBaseParticleSystemDescriptor;
 class MKParticleSystem;
-class MKPropDescriptor;
 class MKVector3;
 class MKVector4;
 class ZapPS;
@@ -23,12 +23,9 @@ public:
     void Emit(const MKVector3 &, const MKVector3 &, const float &, MKVector4);
 };
 
-class ZapPSDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ZapPSDescriptor : public MKBaseParticleSystemDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
-    /* 0x044 */ u8 pad44[0x3c];
-    /* 0x080 */ s32 unk80;
-    /* 0x084 */ f32 unk84;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

@@ -27,7 +27,7 @@ public:
     /* 0x018 */ s32 unk18;
 };
 
-class KDClothProperty : public KDProperty {  // base: vtable prefix
+class KDClothProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void Resolve(KDPropertySet *);

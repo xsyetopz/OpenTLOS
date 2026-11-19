@@ -51,7 +51,7 @@ public:
     /* 0x11c */ f32 unk11C;
 };
 
-class TrapSpawnPoolDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class TrapSpawnPoolDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

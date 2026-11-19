@@ -7,7 +7,6 @@
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIImage.h"
 #include "spyro/source/UIMessage.h"
-#include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UISystem.h"
 #include "spyro/source/UIText.h"
@@ -42,7 +41,6 @@ class UIDataLine;
 class UIEvent;
 class UIImage;
 class UIMessage;
-class UIObject;
 class UIPie;
 class UIScreen;
 class UISystem;
@@ -110,7 +108,7 @@ public:
     /* 0x0e0 */ u8 unkE0;
 };
 
-class ImageArc : public UIObject {  // base: vtable prefix
+class ImageArc : public UIImage {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Draw(const RenderContext &);
@@ -283,7 +281,7 @@ public:
     /* 0x0c8 */ f32 unkC8;
 };
 
-class PromptGroup : public UIContainer {  // base: vtable prefix
+class PromptGroup : public UIContainer {  // base: inlined ctor vtable stores
 public:
     virtual void Message(UIMessage *);
     void Reset(void);
@@ -469,7 +467,6 @@ inline HealthSafetyScreen::HealthSafetyScreen() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 inline void ImageArc::Init() {
     UIImage::Init();
     this->unk70 = 2.0f;
@@ -477,7 +474,6 @@ inline void ImageArc::Init() {
     this->unk78 = 0.0f;
     this->unk7C = 6.2831855f;
 }
-#endif
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline LanguageButtonGroup::LanguageButtonGroup() {

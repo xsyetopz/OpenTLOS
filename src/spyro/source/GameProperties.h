@@ -19,7 +19,7 @@ class MessageBroadcasterProperty;
 class MessageHandlerProperty;
 class TimerProperty;
 
-class CameraShakeProperty : public KDProperty {  // base: vtable prefix
+class CameraShakeProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void * GetClassInfo(void) const;
@@ -32,7 +32,7 @@ public:
     /* 0x018 */ f32 unk18;
 };
 
-class CollisionSphereProperty : public KDProperty {  // base: vtable prefix
+class CollisionSphereProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual void Init(const char *);
     virtual s32 LoadLine(MKIniLine *);
@@ -53,7 +53,7 @@ public:
     /* 0x01c */ u32 unk1C;
 };
 
-class EventMessageProperty : public KDProperty {  // base: vtable prefix
+class EventMessageProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual void Init(const char *);
     virtual s32 LoadLine(MKIniLine *);
@@ -77,7 +77,7 @@ public:
     void __sinit(void);
 };
 
-class MessageBroadcasterProperty : public KDProperty {  // base: vtable prefix
+class MessageBroadcasterProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual void Init(const char *);
     virtual s32 LoadLine(MKIniLine *);

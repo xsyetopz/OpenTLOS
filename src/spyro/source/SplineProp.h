@@ -32,7 +32,7 @@ public:
     /* 0x0b4 */ f32 unkB4;
 };
 
-class SplinePropDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class SplinePropDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

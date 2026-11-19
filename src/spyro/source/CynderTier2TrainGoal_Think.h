@@ -14,7 +14,7 @@ class EnemyDamageFeedback;
 class EnemyGoal_SpawnOnTrain;
 class EnemyGoal_TrainAttackMode;
 
-class CynderTier2TrainGoal_Think : public CompositeGoal<Enemy> {  // base: vtable prefix
+class CynderTier2TrainGoal_Think : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -48,7 +48,7 @@ public:
     void __sinit(void);
 };
 
-class EnemyGoal_SpawnOnTrain : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_SpawnOnTrain : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -60,7 +60,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class EnemyGoal_TrainAttackMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_TrainAttackMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

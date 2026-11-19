@@ -2,14 +2,16 @@
 #define SPYRO_SOURCE_SPYROFURYSTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/SpyroState.h"
 
 class MKMessage;
 class Spyro;
 class SpyroFuryState;
 class SpyroFuryState_cpp;
+class SpyroState;
 class SpyroStateMessages;
 
-class SpyroFuryState {
+class SpyroFuryState : public SpyroState {  // base: inlined ctor vtable stores
 public:
     virtual void Init(Spyro *);
     virtual void Deinit(void);

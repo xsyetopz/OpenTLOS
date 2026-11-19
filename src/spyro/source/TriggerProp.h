@@ -90,7 +90,7 @@ public:
     /* 0x080 */ s8 unk80;
 };
 
-class TriggerPlaneGroupPropDescriptor : public TriggerPropDescriptor {  // base: vtable prefix
+class TriggerPlaneGroupPropDescriptor : public TriggerPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

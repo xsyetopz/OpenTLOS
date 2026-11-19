@@ -28,19 +28,19 @@ class TriggerBoxPropDescriptor;
 class TriggerPropDescriptor;
 class VolcanoRumbleDescriptor;
 
-class ChunkPropDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ChunkPropDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 
-class ConsolePropDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ConsolePropDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 
-class CrashMistPSDescriptor : public MKBaseParticleSystemDescriptor {  // base: vtable prefix
+class CrashMistPSDescriptor : public MKBaseParticleSystemDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 
-class CrashSparkPSDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class CrashSparkPSDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 
@@ -49,7 +49,7 @@ public:
     void __sinit(void);
 };
 
-class CreditsPropDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class CreditsPropDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 
@@ -57,23 +57,23 @@ class CrittersDescriptor : public KDPropDescriptor {  // base: ctor/dtor vtable 
 public:
 };
 
-class EnvironmentFXDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class EnvironmentFXDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 
-class GunPowderFuseDescriptor : public SplinePropDescriptor {  // base: vtable prefix
+class GunPowderFuseDescriptor : public SplinePropDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 
-class ScriptPropDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class ScriptPropDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 
-class SparkleEffectDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class SparkleEffectDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 
-class SparxPathDescriptor : public SplinePropDescriptor {  // base: vtable prefix
+class SparxPathDescriptor : public SplinePropDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 
@@ -81,7 +81,7 @@ class TriggerBoxPropDescriptor : public TriggerPropDescriptor {  // base: ctor/d
 public:
 };
 
-class VolcanoRumbleDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class VolcanoRumbleDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
 };
 

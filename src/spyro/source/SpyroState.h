@@ -18,7 +18,7 @@ public:
     virtual void Enter(SpyroStateMessages &) = 0;
     virtual void Exit(void) = 0;
     virtual void Update(void) = 0;
-    virtual u8 Transition(void) = 0;
+    virtual s32 Transition(void) = 0;
     virtual void ProcessAnimEvent(unsigned int);
     virtual void Message(MKMessage *);
     virtual void GetStateInfo(void);

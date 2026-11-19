@@ -2,15 +2,17 @@
 #define SPYRO_SOURCE_CHARACTERICECUBESFX_H
 
 #include <dolphin/types.h>
+#include "spyro/source/CharacterBodyFX.h"
 
 class CBFXNode;
+class CharacterBodyFX;
 class CharacterBodyFXData;
 class CharacterIceCubesFX;
 class MKHeap;
 class MKModel;
 class MKPropDescriptor;
 
-class CharacterIceCubesFX {
+class CharacterIceCubesFX : public CharacterBodyFX {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void InitData(CharacterBodyFXData *, MKModel *, CBFXNode *);

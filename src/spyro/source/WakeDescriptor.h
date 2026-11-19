@@ -7,7 +7,7 @@
 class MKPropDescriptor;
 class WakeDescriptor;
 
-class WakeDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class WakeDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

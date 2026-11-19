@@ -39,7 +39,7 @@ public:
     /* 0x0c4 */ f32 unkC4;
 };
 
-class LightningStrikeFXDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class LightningStrikeFXDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     class StrikeArc;
     virtual void Init(void);

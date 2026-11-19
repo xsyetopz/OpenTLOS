@@ -2,21 +2,23 @@
 #define SPYRO_SOURCE_SPYROCHARGESTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/SpyroState.h"
 
 class MKMessage;
 class Spyro;
 class SpyroChargeState;
 class SpyroChargeState_cpp;
+class SpyroState;
 class SpyroStateMessages;
 
-class SpyroChargeState {
+class SpyroChargeState : public SpyroState {  // base: inlined ctor vtable stores
 public:
     virtual void Init(Spyro *);
     virtual void Deinit(void);
     virtual void Enter(SpyroStateMessages &);
     virtual void Exit(void);
     virtual void Update(void);
-    virtual u8 Transition(void);
+    virtual s32 Transition(void);
     virtual void ProcessAnimEvent(unsigned int);
     virtual void Message(MKMessage *);
     virtual void GetStateInfo(void);

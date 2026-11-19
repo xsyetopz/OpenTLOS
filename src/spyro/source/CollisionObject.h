@@ -2,7 +2,6 @@
 #define SPYRO_SOURCE_COLLISIONOBJECT_H
 
 #include <dolphin/types.h>
-#include "spyro/source/TargetManager.h"
 
 class ColObjDescriptor;
 class CollisionObject;
@@ -13,7 +12,6 @@ class MKCollisionResult;
 class MKMessage;
 class MKProp;
 class MKVector3;
-class Targetable;
 
 class ColObjDescriptor {
 public:
@@ -48,7 +46,7 @@ public:
     /* 0x164 */ s32 unk164;
 };
 
-class CollisionObject : public Targetable {  // base: ctor/dtor vtable stores
+class CollisionObject {
 public:
     virtual void Init(ColObjDescriptor *, const MKVector3 &, bool, MKCollisionInfo *, bool, bool, unsigned int, MKProp *, bool);
     virtual void Deinit(void);

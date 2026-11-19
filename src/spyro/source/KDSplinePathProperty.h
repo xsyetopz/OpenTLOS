@@ -2,13 +2,13 @@
 #define SPYRO_SOURCE_KDSPLINEPATHPROPERTY_H
 
 #include <dolphin/types.h>
-#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDPathProperty.h"
 
-class KDProperty;
+class KDPathProperty;
 class KDSplinePathProperty;
 class MKIniLine;
 
-class KDSplinePathProperty : public KDProperty {  // base: vtable prefix
+class KDSplinePathProperty : public KDPathProperty {  // base: inlined ctor vtable stores
 public:
     virtual void * GetClassInfo(void) const;
     virtual s32 GetInstanceDataSize(void) const;

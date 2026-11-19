@@ -35,7 +35,7 @@ public:
     /* 0x0b0 */ u8 unkB0;
 };
 
-class DartTrapDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class DartTrapDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void LoadDone(void);

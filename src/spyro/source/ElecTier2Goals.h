@@ -19,7 +19,7 @@ class ElecTier2Goal_Think;
 class Enemy;
 class EnemyDamageFeedback;
 
-class ElecTier2Goal_Attack : public Goal<Enemy> {  // base: vtable prefix
+class ElecTier2Goal_Attack : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -30,7 +30,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class ElecTier2Goal_FlyIdle : public Goal<Enemy> {  // base: vtable prefix
+class ElecTier2Goal_FlyIdle : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -40,7 +40,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class ElecTier2Goal_FlyToTarget : public Goal<Enemy> {  // base: vtable prefix
+class ElecTier2Goal_FlyToTarget : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -53,7 +53,7 @@ public:
     /* 0x020 */ f32 unk20;
 };
 
-class ElecTier2Goal_GroundMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class ElecTier2Goal_GroundMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -75,7 +75,7 @@ public:
     /* 0x02c */ Goal<Enemy>* unk2C;
 };
 
-class ElecTier2Goal_Idle : public Goal<Enemy> {  // base: vtable prefix
+class ElecTier2Goal_Idle : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -89,7 +89,7 @@ public:
     /* 0x018 */ s32 unk18;
 };
 
-class ElecTier2Goal_Land : public Goal<Enemy> {  // base: vtable prefix
+class ElecTier2Goal_Land : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -100,7 +100,7 @@ public:
     /* 0x010 */ void* unk10;
 };
 
-class ElecTier2Goal_PatrolMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class ElecTier2Goal_PatrolMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -123,7 +123,7 @@ public:
     /* 0x030 */ void** unk30;
 };
 
-class ElecTier2Goal_TakeOff : public Goal<Enemy> {  // base: vtable prefix
+class ElecTier2Goal_TakeOff : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -134,7 +134,7 @@ public:
     /* 0x010 */ void* unk10;
 };
 
-class ElecTier2Goal_Think : public CompositeGoal<Enemy> {  // base: vtable prefix
+class ElecTier2Goal_Think : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

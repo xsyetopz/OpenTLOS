@@ -38,7 +38,7 @@ public:
     /* 0x078 */ f32 unk78;
 };
 
-class Collectable2Descriptor : public MKPropDescriptor {  // base: vtable prefix
+class Collectable2Descriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

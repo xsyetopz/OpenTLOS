@@ -55,7 +55,7 @@ public:
     /* 0x140 */ u8 unk140;
 };
 
-class SeeSawDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class SeeSawDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

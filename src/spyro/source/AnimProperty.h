@@ -10,7 +10,7 @@ class KDProperty;
 class KDPropertySet;
 class MKIniLine;
 
-class AnimProperty : public KDProperty {  // base: vtable prefix
+class AnimProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual s32 LoadLine(MKIniLine *);

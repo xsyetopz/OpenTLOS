@@ -34,7 +34,7 @@ class MKProp;
 class NPCGoal_Rescue;
 class TargetContext;
 
-class EnemyGoal_Alert : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Alert : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -49,7 +49,7 @@ public:
     /* 0x018 */ f32 unk18;
 };
 
-class EnemyGoal_AttackIdle : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_AttackIdle : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -64,7 +64,7 @@ public:
     /* 0x018 */ u8 unk18;
 };
 
-class EnemyGoal_Frozen : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Frozen : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -75,7 +75,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class EnemyGoal_GiveOrders : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_GiveOrders : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -88,7 +88,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class EnemyGoal_Hide : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Hide : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -101,7 +101,7 @@ public:
     /* 0x014 */ u8 unk14;
 };
 
-class EnemyGoal_Idle : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Idle : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -118,7 +118,7 @@ public:
     /* 0x020 */ u8 unk20;
 };
 
-class EnemyGoal_Kong : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Kong : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -145,7 +145,7 @@ public:
     /* 0x038 */ Goal<Enemy>* unk38;
 };
 
-class EnemyGoal_OperateLever : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_OperateLever : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -170,7 +170,7 @@ public:
     /* 0x03c */ u8 unk3C;
 };
 
-class EnemyGoal_PullLever : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_PullLever : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -184,7 +184,7 @@ public:
     /* 0x010 */ TargetContext unk10;
 };
 
-class EnemyGoal_PushBarrel : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_PushBarrel : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -198,7 +198,7 @@ public:
     /* 0x014 */ s32 unk14;
 };
 
-class EnemyGoal_ReceiveOrders : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_ReceiveOrders : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -209,7 +209,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class EnemyGoal_Sleep : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Sleep : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -220,7 +220,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class EnemyGoal_Spawn : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Spawn : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -233,7 +233,7 @@ public:
     /* 0x010 */ s32 unk10;
 };
 
-class EnemyGoal_SpawnFromEnemyGenerator : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_SpawnFromEnemyGenerator : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -249,7 +249,7 @@ public:
     /* 0x014 */ u8 unk14;
 };
 
-class EnemyGoal_SpawnIdle : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_SpawnIdle : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -263,7 +263,7 @@ public:
     /* 0x011 */ u8 unk11;
 };
 
-class EnemyGoal_Summon : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Summon : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -278,7 +278,7 @@ public:
     /* 0x018 */ u8 unk18;
 };
 
-class EnemyGoal_Turn : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Turn : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -295,7 +295,7 @@ public:
     void __sinit(void);
 };
 
-class NPCGoal_Rescue : public Goal<Enemy> {  // base: vtable prefix
+class NPCGoal_Rescue : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);

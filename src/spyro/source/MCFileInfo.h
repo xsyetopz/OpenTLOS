@@ -11,7 +11,7 @@ class RenderContext;
 class UIContainer;
 class UIMessage;
 
-class MCFileInfo : public UIContainer {  // base: vtable prefix
+class MCFileInfo : public UIContainer {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

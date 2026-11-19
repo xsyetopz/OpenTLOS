@@ -17,7 +17,7 @@ class EnemyGoal_LeapAttackRecover;
 class EnemyGoal_MeleeAttackMode;
 class Targetable;
 
-class EnemyGoal_AttackMagicWall : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_AttackMagicWall : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -31,7 +31,7 @@ public:
     /* 0x015 */ s8 unk15;
 };
 
-class EnemyGoal_AttackMelee : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_AttackMelee : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -45,7 +45,7 @@ public:
     /* 0x014 */ u8 unk14;
 };
 
-class EnemyGoal_AttackMeleeLoop : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_AttackMeleeLoop : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -58,7 +58,7 @@ public:
     /* 0x010 */ s8 unk10;
 };
 
-class EnemyGoal_LeapAttackHit : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_LeapAttackHit : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -69,7 +69,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class EnemyGoal_LeapAttackMiss : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_LeapAttackMiss : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -85,7 +85,7 @@ public:
     /* 0x03c */ u8 unk3C;
 };
 
-class EnemyGoal_LeapAttackRecover : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_LeapAttackRecover : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -106,7 +106,7 @@ public:
     /* 0x024 */ Goal<Enemy>* unk24;
 };
 
-class EnemyGoal_MeleeAttackMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_MeleeAttackMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

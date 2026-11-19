@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_SPYROCOMBATSTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/SpyroState.h"
 #include "spyro/source/TargetManager.h"
 
 class CombatStateData;
@@ -11,6 +12,7 @@ class MKVector3;
 class Spyro;
 class SpyroCombatState;
 class SpyroCombatState_cpp;
+class SpyroState;
 class SpyroStateMessages;
 class TargetContext;
 class Targetable;
@@ -75,7 +77,7 @@ public:
     /* 0x053 */ u8 unk53;
 };
 
-class SpyroCombatState {
+class SpyroCombatState : public SpyroState {  // base: inlined ctor vtable stores
 public:
     virtual void Init(Spyro *);
     virtual void Deinit(void);

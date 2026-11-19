@@ -81,7 +81,7 @@ public:
     /* 0x108 */ s32 unk108;
 };
 
-class EventCameraDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class EventCameraDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

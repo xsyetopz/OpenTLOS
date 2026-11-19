@@ -2,13 +2,13 @@
 #define SPYRO_SOURCE_CRASHFIREPS_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKParticleSystem.h"
-#include "common/Source/MKProp.h"
 
 class CrashFirePS;
 class CrashFirePSDescriptor;
+class MKBaseParticleSystemDescriptor;
 class MKParticleSystem;
-class MKPropDescriptor;
 class MKVector3;
 
 class CrashFirePS : public MKParticleSystem {  // base: ctor/dtor vtable stores
@@ -22,12 +22,9 @@ public:
     void Emit(const MKVector3 &, const MKVector3 &, const float &);
 };
 
-class CrashFirePSDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class CrashFirePSDescriptor : public MKBaseParticleSystemDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
-    /* 0x044 */ u8 pad44[0x3c];
-    /* 0x080 */ s32 unk80;
-    /* 0x084 */ f32 unk84;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

@@ -25,7 +25,7 @@ public:
     /* 0x094 */ s32 unk94;
 };
 
-class RefFXEmitterDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class RefFXEmitterDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Resolve(void);
     /* 0x06d */ u8 pad6D[0x2b];

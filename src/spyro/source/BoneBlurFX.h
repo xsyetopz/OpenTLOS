@@ -43,7 +43,7 @@ public:
     /* 0x07c */ u8 unk7C;
 };
 
-class BoneBlurFXDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class BoneBlurFXDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

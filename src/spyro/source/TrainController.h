@@ -36,7 +36,7 @@ public:
     /* 0x06c */ s8 unk6C;
 };
 
-class TrainControllerDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class TrainControllerDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

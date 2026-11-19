@@ -36,7 +36,7 @@ public:
     /* 0x0ac */ s32 unkAC;
 };
 
-class SparxHintDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class SparxHintDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

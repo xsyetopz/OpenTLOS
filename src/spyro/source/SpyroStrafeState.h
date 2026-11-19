@@ -2,15 +2,17 @@
 #define SPYRO_SOURCE_SPYROSTRAFESTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/SpyroState.h"
 
 class KDInput;
 class MKMessage;
 class Spyro;
+class SpyroState;
 class SpyroStateMessages;
 class SpyroStrafeState;
 class SpyroStrafeState_cpp;
 
-class SpyroStrafeState {
+class SpyroStrafeState : public SpyroState {  // base: inlined ctor vtable stores
 public:
     class InputOverride {
     public:

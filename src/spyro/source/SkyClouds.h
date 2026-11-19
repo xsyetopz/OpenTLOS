@@ -44,7 +44,7 @@ public:
     /* 0x0d0 */ f32 unkD0;
 };
 
-class SkyCloudsDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class SkyCloudsDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     /* 0x044 */ u8 pad44[0x24];

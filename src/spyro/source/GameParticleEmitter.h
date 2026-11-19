@@ -22,7 +22,20 @@ class MKVector4;
 class PointDirEmitter;
 class SparksPS;
 
-class DirectedLineEmitter {
+class EmitterProperty {
+public:
+    virtual void Init(void) = 0;
+    virtual s32 LoadLine(MKIniLine *) = 0;
+    virtual void LoadDone(void) = 0;
+    virtual void Update(void) = 0;
+    virtual void Draw(void) = 0;
+    virtual void Deinit(void) = 0;
+    virtual void GetEmissionData(MKVector3 *, MKVector3 *, MKVector3 *, MKVector4 *) = 0;
+    virtual void SetDirection(const MKVector3 &) = 0;
+    virtual void SetPosition(const MKVector3 &) = 0;
+};
+
+class DirectedLineEmitter : public EmitterProperty {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
@@ -50,19 +63,6 @@ public:
     /* 0x0a4 */ s32 unkA4;
     /* 0x0a8 */ f32 unkA8;
     /* 0x0ac */ f32 unkAC;
-};
-
-class EmitterProperty {
-public:
-    virtual void pure_slot0() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot1() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot2() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot3() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot4() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot5() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot6() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot7() = 0;  // name unknown: no descendant fills this slot
-    virtual void pure_slot8() = 0;  // name unknown: no descendant fills this slot
 };
 
 class GameParticleEmitter : public GameProp {  // base: vtable prefix
@@ -110,7 +110,7 @@ public:
     /* 0x108 */ MKVector4 unk108;
 };
 
-class PointDirEmitter {
+class PointDirEmitter : public EmitterProperty {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

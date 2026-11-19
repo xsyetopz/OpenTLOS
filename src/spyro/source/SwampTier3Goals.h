@@ -16,7 +16,7 @@ class SwampTier3Goal_Patrol;
 class SwampTier3Goal_Summon;
 class SwampTier3Goal_Think;
 
-class SwampTier3Goal_Cower : public Goal<SwampTier3> {  // base: vtable prefix
+class SwampTier3Goal_Cower : public Goal<SwampTier3> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -27,7 +27,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class SwampTier3Goal_Hit : public CompositeGoal<SwampTier3> {  // base: vtable prefix
+class SwampTier3Goal_Hit : public CompositeGoal<SwampTier3> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -50,7 +50,7 @@ public:
     /* 0x030 */ Goal<SwampTier3>* unk30;
 };
 
-class SwampTier3Goal_Patrol : public CompositeGoal<SwampTier3> {  // base: vtable prefix
+class SwampTier3Goal_Patrol : public CompositeGoal<SwampTier3> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -72,7 +72,7 @@ public:
     /* 0x02c */ Goal<SwampTier3>* unk2C;
 };
 
-class SwampTier3Goal_Summon : public CompositeGoal<SwampTier3> {  // base: vtable prefix
+class SwampTier3Goal_Summon : public CompositeGoal<SwampTier3> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -94,7 +94,7 @@ public:
     /* 0x028 */ s32 unk28;
 };
 
-class SwampTier3Goal_Think : public CompositeGoal<SwampTier3> {  // base: vtable prefix
+class SwampTier3Goal_Think : public CompositeGoal<SwampTier3> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

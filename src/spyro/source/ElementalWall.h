@@ -72,7 +72,7 @@ public:
     /* 0x130 */ s32 unk130;
 };
 
-class ElementalWallDescriptor : public SplinePropDescriptor {  // base: vtable prefix
+class ElementalWallDescriptor : public SplinePropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void LoadDone(void);
     /* 0x004 */ u8 pad4[0x5c];

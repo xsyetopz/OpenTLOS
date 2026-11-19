@@ -13,7 +13,7 @@ class EnemyGoal_DefensiveMode;
 class EnemyGoal_ShieldBlock;
 class EnemyGoal_ShieldCharge;
 
-class EnemyGoal_Block : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Block : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -27,7 +27,7 @@ public:
     /* 0x018 */ f32 unk18;
 };
 
-class EnemyGoal_DefensiveMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_DefensiveMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -52,7 +52,7 @@ public:
     /* 0x034 */ void** unk34;
 };
 
-class EnemyGoal_ShieldBlock : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_ShieldBlock : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -69,7 +69,7 @@ public:
     /* 0x01d */ u8 unk1D;
 };
 
-class EnemyGoal_ShieldCharge : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_ShieldCharge : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);

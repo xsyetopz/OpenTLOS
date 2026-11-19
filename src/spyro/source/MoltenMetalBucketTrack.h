@@ -35,7 +35,7 @@ public:
     /* 0x0e8 */ f32 unkE8;
 };
 
-class MoltenMetalBucketTrackDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class MoltenMetalBucketTrackDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

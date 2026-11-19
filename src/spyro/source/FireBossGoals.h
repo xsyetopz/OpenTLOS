@@ -17,7 +17,7 @@ class FireBossGoal_Think;
 class FireBossGoal_Turn;
 class MKProp;
 
-class FireBossGoal_Crash : public Goal<FireBoss> {  // base: vtable prefix
+class FireBossGoal_Crash : public Goal<FireBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -28,7 +28,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class FireBossGoal_Death : public Goal<FireBoss> {  // base: vtable prefix
+class FireBossGoal_Death : public Goal<FireBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -42,7 +42,7 @@ public:
     /* 0x014 */ u8 unk14;
 };
 
-class FireBossGoal_Stage1 : public Goal<FireBoss> {  // base: vtable prefix
+class FireBossGoal_Stage1 : public Goal<FireBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -53,7 +53,7 @@ public:
     /* 0x00c */ FireBoss* unkC;
 };
 
-class FireBossGoal_Stage2 : public Goal<FireBoss> {  // base: vtable prefix
+class FireBossGoal_Stage2 : public Goal<FireBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -64,7 +64,7 @@ public:
     /* 0x00c */ FireBoss* unkC;
 };
 
-class FireBossGoal_Stage3 : public Goal<FireBoss> {  // base: vtable prefix
+class FireBossGoal_Stage3 : public Goal<FireBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -75,7 +75,7 @@ public:
     /* 0x00c */ FireBoss* unkC;
 };
 
-class FireBossGoal_Stage4 : public Goal<FireBoss> {  // base: vtable prefix
+class FireBossGoal_Stage4 : public Goal<FireBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -86,7 +86,7 @@ public:
     /* 0x00c */ FireBoss* unkC;
 };
 
-class FireBossGoal_Think : public CompositeGoal<FireBoss> {  // base: vtable prefix
+class FireBossGoal_Think : public CompositeGoal<FireBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -117,7 +117,7 @@ public:
     /* 0x050 */ s8 unk50;
 };
 
-class FireBossGoal_Turn : public Goal<FireBoss> {  // base: vtable prefix
+class FireBossGoal_Turn : public Goal<FireBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);

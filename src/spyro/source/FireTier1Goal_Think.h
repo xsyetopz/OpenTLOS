@@ -22,7 +22,7 @@ class FireTier1Goal_Patrol;
 class FireTier1Goal_Think;
 class MKVector3;
 
-class EnemyGoal_FlyIdle : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_FlyIdle : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -35,7 +35,7 @@ public:
     /* 0x014 */ s32 unk14;
 };
 
-class EnemyGoal_FlyLand : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_FlyLand : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -52,7 +52,7 @@ public:
     /* 0x028 */ f64 unk28;
 };
 
-class EnemyGoal_FlyTakeoff : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_FlyTakeoff : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -64,7 +64,7 @@ public:
     /* 0x010 */ u8 unk10;
 };
 
-class EnemyGoal_FlyToAttackTarget : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_FlyToAttackTarget : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -78,7 +78,7 @@ public:
     /* 0x018 */ f32 unk18;
 };
 
-class EnemyGoal_FlyToTarget : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_FlyToTarget : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -98,7 +98,7 @@ public:
     /* 0x02c */ u8 unk2C;
 };
 
-class EnemyGoal_WalkToTargetArb : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_WalkToTargetArb : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -110,7 +110,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class EnemyGoal_WanderAroundPointArb : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_WanderAroundPointArb : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -136,7 +136,7 @@ public:
     /* 0x050 */ f32 unk50;
 };
 
-class FireTier1Goal_Patrol : public CompositeGoal<Enemy> {  // base: vtable prefix
+class FireTier1Goal_Patrol : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -163,7 +163,7 @@ public:
     /* 0x048 */ MKVector3 unk48;
 };
 
-class FireTier1Goal_Think : public CompositeGoal<Enemy> {  // base: vtable prefix
+class FireTier1Goal_Think : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);

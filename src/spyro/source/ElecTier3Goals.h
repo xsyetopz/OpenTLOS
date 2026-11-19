@@ -16,7 +16,7 @@ class Enemy;
 class EnemyDamageFeedback;
 class EnemyGoal_TestSB;
 
-class ElecTier3Goal_PatrolMode : public CompositeGoal<Enemy> {  // base: vtable prefix
+class ElecTier3Goal_PatrolMode : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -38,7 +38,7 @@ public:
     /* 0x02c */ Goal<Enemy>* unk2C;
 };
 
-class ElecTier3Goal_Scan : public Goal<Enemy> {  // base: vtable prefix
+class ElecTier3Goal_Scan : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -50,7 +50,7 @@ public:
     /* 0x010 */ ElecTier3* unk10;
 };
 
-class ElecTier3Goal_Spawn : public Goal<Enemy> {  // base: vtable prefix
+class ElecTier3Goal_Spawn : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -63,7 +63,7 @@ public:
     /* 0x014 */ f32 unk14;
 };
 
-class ElecTier3Goal_Think : public CompositeGoal<Enemy> {  // base: vtable prefix
+class ElecTier3Goal_Think : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);
@@ -112,7 +112,7 @@ public:
     /* 0x054 */ u8 unk54;
 };
 
-class EnemyGoal_TestSB : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_TestSB : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);

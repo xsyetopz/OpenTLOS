@@ -152,7 +152,7 @@ public:
     /* 0x468 */ MKMaterial* unk468;
 };
 
-class EarthBossArmDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class EarthBossArmDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void LoadDone(void);
 };

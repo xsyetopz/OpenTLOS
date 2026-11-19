@@ -2,10 +2,10 @@
 #define SPYRO_SOURCE_GEM_H
 
 #include <dolphin/types.h>
-#include "common/Source/MKProp.h"
 #include "spyro/source/Collectable.h"
 
 class Collectable;
+class CollectableDescriptor;
 class CollectableState;
 class Gem;
 class GemDescriptor;
@@ -13,7 +13,7 @@ class Gem_cpp;
 class MKIniLine;
 class MKMaterial;
 class MKMessage;
-class MKPropDescriptor;
+class MKModel;
 class MKVector3;
 
 class Gem : public Collectable {  // base: ctor/dtor vtable stores
@@ -33,13 +33,15 @@ public:
     /* 0x148 */ s32 unk148;
 };
 
-class GemDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class GemDescriptor : public CollectableDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Deinit(void);
-    /* 0x044 */ u8 pad44[0x22];
+    /* 0x004 */ u8 pad4[0x28];
+    /* 0x02c */ MKModel* unk2C;
+    /* 0x030 */ u8 pad30[0x36];
     /* 0x066 */ s8 unk66;
     /* 0x067 */ u8 pad67[0x5];
     /* 0x06c */ f32 unk6C;

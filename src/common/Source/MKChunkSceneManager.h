@@ -24,7 +24,7 @@ public:
     /* 0x00c */ u8 unkC;
 };
 
-class MKChunkSceneManager : public MKSceneManager {  // base: vtable prefix
+class MKChunkSceneManager : public MKSceneManager {  // base: inlined ctor vtable stores
 public:
     virtual void Init(MKSceneManagerInit *);
     virtual void Deinit(void);

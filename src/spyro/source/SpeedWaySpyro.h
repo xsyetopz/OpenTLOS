@@ -2,7 +2,6 @@
 #define SPYRO_SOURCE_SPEEDWAYSPYRO_H
 
 #include <dolphin/types.h>
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDProp.h"
@@ -13,6 +12,7 @@ class HeroInterface;
 class HurtMessage;
 class KDInput;
 class KDProp;
+class KDPropDescriptor;
 class MKAnim;
 class MKIniLine;
 class MKMessage;
@@ -257,13 +257,13 @@ public:
     /* 0x8c4 */ s32 unk8C4;
 };
 
-class SpeedWaySpyroDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class SpeedWaySpyroDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Deinit(void);
-    /* 0x044 */ u8 pad44[0x64];
+    /* 0x06d */ u8 pad6D[0x3b];
     /* 0x0a8 */ f32 unkA8;
     /* 0x0ac */ f32 unkAC;
     /* 0x0b0 */ f32 unkB0;

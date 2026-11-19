@@ -29,7 +29,7 @@ class IceBossGoal_Stalactite;
 class IceBossGoal_SummonWeapon;
 class IceBossGoal_Think;
 
-class IceBossGoal_AttackPhase1 : public CompositeGoal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_AttackPhase1 : public CompositeGoal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -56,7 +56,7 @@ public:
     /* 0x038 */ Goal<IceBoss>* unk38;
 };
 
-class IceBossGoal_AttackPhase2 : public CompositeGoal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_AttackPhase2 : public CompositeGoal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -82,7 +82,7 @@ public:
     /* 0x034 */ Goal<IceBoss>* unk34;
 };
 
-class IceBossGoal_AttackPhase3 : public CompositeGoal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_AttackPhase3 : public CompositeGoal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -109,7 +109,7 @@ public:
     /* 0x038 */ Goal<IceBoss>* unk38;
 };
 
-class IceBossGoal_Cutscene1 : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_Cutscene1 : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -120,19 +120,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class IceBossGoal_Cutscene2 : public Goal<IceBoss> {  // base: vtable prefix
-public:
-    virtual void Activate(void);
-    virtual u8 Update(void);
-    virtual void Terminate(void);
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ u8 unk8;
-    /* 0x009 */ u8 pad9[0x3];
-    /* 0x00c */ Enemy* unkC;
-    /* 0x010 */ f32 unk10;
-};
-
-class IceBossGoal_Cutscene3 : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_Cutscene2 : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -144,7 +132,19 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class IceBossGoal_FormShield : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_Cutscene3 : public Goal<IceBoss> {  // base: inlined ctor vtable stores
+public:
+    virtual void Activate(void);
+    virtual u8 Update(void);
+    virtual void Terminate(void);
+    /* 0x004 */ u8 pad4[0x4];
+    /* 0x008 */ u8 unk8;
+    /* 0x009 */ u8 pad9[0x3];
+    /* 0x00c */ Enemy* unkC;
+    /* 0x010 */ f32 unk10;
+};
+
+class IceBossGoal_FormShield : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -155,7 +155,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class IceBossGoal_FormWeapon : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_FormWeapon : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -166,7 +166,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class IceBossGoal_IceBreath : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_IceBreath : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -184,7 +184,7 @@ public:
     /* 0x01c */ void* unk1C;
 };
 
-class IceBossGoal_IceWave : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_IceWave : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -196,7 +196,7 @@ public:
     /* 0x010 */ u8 unk10;
 };
 
-class IceBossGoal_MeleeAttack1 : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_MeleeAttack1 : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -208,7 +208,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class IceBossGoal_MeleeAttack2 : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_MeleeAttack2 : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -219,7 +219,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class IceBossGoal_MeleeAttack3 : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_MeleeAttack3 : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -230,7 +230,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class IceBossGoal_MoveToPoint : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_MoveToPoint : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -245,7 +245,7 @@ public:
     /* 0x060 */ f32 unk60;
 };
 
-class IceBossGoal_MoveToTarget : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_MoveToTarget : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -258,7 +258,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class IceBossGoal_Stalactite : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_Stalactite : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -269,7 +269,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class IceBossGoal_SummonWeapon : public Goal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_SummonWeapon : public Goal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -280,7 +280,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class IceBossGoal_Think : public CompositeGoal<IceBoss> {  // base: vtable prefix
+class IceBossGoal_Think : public CompositeGoal<IceBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

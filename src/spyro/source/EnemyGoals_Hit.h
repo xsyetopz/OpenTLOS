@@ -24,7 +24,7 @@ class EnemyGoal_HitStand;
 class EnemyGoals_Hit_cpp;
 class MKVector3;
 
-class EnemyGoal_Hit : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Hit : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -55,7 +55,7 @@ public:
     /* 0x050 */ Goal<Enemy>* unk50;
 };
 
-class EnemyGoal_HitAirCombo : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitAirCombo : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -69,7 +69,7 @@ public:
     /* 0x014 */ u8 unk14;
 };
 
-class EnemyGoal_HitArmourDestroyed : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitArmourDestroyed : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -80,7 +80,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class EnemyGoal_HitBurn : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitBurn : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -91,7 +91,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class EnemyGoal_HitFall : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitFall : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -102,7 +102,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class EnemyGoal_HitFlinch : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitFlinch : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -114,7 +114,7 @@ public:
     /* 0x010 */ u8 unk10;
 };
 
-class EnemyGoal_HitFrozen : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitFrozen : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -126,7 +126,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class EnemyGoal_HitKnockback : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitKnockback : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -137,7 +137,7 @@ public:
     /* 0x010 */ u8 unk10;
 };
 
-class EnemyGoal_HitKnockdown : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitKnockdown : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -156,7 +156,7 @@ public:
     /* 0x040 */ u8 unk40;
 };
 
-class EnemyGoal_HitKnockdownSlide : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitKnockdownSlide : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -171,7 +171,7 @@ public:
     /* 0x038 */ u8 unk38;
 };
 
-class EnemyGoal_HitKnockup : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitKnockup : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -183,7 +183,7 @@ public:
     /* 0x010 */ u8 unk10;
 };
 
-class EnemyGoal_HitShock : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitShock : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -194,7 +194,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class EnemyGoal_HitSquished : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitSquished : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -208,7 +208,7 @@ public:
     /* 0x018 */ s32 unk18;
 };
 
-class EnemyGoal_HitStand : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_HitStand : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);

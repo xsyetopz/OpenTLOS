@@ -12,7 +12,7 @@ class FireBossDriverGoal_Crash;
 class FireBossDriverGoal_Idle;
 class FireBossDriverGoal_Think;
 
-class FireBossDriverGoal_Charge : public Goal<Enemy> {  // base: vtable prefix
+class FireBossDriverGoal_Charge : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -25,7 +25,7 @@ public:
     /* 0x010 */ Enemy* unk10;
 };
 
-class FireBossDriverGoal_Crash : public Goal<Enemy> {  // base: vtable prefix
+class FireBossDriverGoal_Crash : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -38,7 +38,7 @@ public:
     /* 0x010 */ Enemy* unk10;
 };
 
-class FireBossDriverGoal_Idle : public Goal<Enemy> {  // base: vtable prefix
+class FireBossDriverGoal_Idle : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -49,7 +49,7 @@ public:
     /* 0x010 */ void* unk10;
 };
 
-class FireBossDriverGoal_Think : public CompositeGoal<Enemy> {  // base: vtable prefix
+class FireBossDriverGoal_Think : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

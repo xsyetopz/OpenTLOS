@@ -12,7 +12,7 @@ class EnemyDamageFeedback;
 class EnemyGoal_Think;
 class MKProp;
 
-class EnemyGoal_Think : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Think : public CompositeGoal<Enemy> {  // base: ctor/dtor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

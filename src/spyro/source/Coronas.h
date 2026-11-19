@@ -46,7 +46,7 @@ public:
     /* 0x04c */ void* unk4C;
 };
 
-class CoronasDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class CoronasDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void LoadDone(void);

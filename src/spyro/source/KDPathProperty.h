@@ -8,7 +8,7 @@ class KDPathProperty;
 class KDProperty;
 class MKIniLine;
 
-class KDPathProperty : public KDProperty {  // base: vtable prefix
+class KDPathProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual void * GetClassInfo(void) const;
     virtual s32 GetInstanceDataSize(void) const;

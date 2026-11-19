@@ -2,10 +2,12 @@
 #define SPYRO_SOURCE_SHATTERONCOLLISIONMSG_H
 
 #include <dolphin/types.h>
+#include "spyro/source/ShatterExtendedMsg.h"
 
+class ShatterExtendedMsg;
 class ShatterOnCollisionMsg;
 
-class ShatterOnCollisionMsg {
+class ShatterOnCollisionMsg : public ShatterExtendedMsg {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

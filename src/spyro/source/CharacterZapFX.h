@@ -2,15 +2,17 @@
 #define SPYRO_SOURCE_CHARACTERZAPFX_H
 
 #include <dolphin/types.h>
+#include "spyro/source/CharacterBodyFX.h"
 
 class CBFXNode;
+class CharacterBodyFX;
 class CharacterBodyFXData;
 class CharacterZapFX;
 class CharacterZapFX_cpp;
 class MKHeap;
 class MKModel;
 
-class CharacterZapFX {
+class CharacterZapFX : public CharacterBodyFX {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void InitData(CharacterBodyFXData *, MKModel *, CBFXNode *);

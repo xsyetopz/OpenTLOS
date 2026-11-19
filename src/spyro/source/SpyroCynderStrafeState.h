@@ -3,6 +3,7 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/SpyroAnimTables.h"
+#include "spyro/source/SpyroState.h"
 #include "spyro/source/SpyroTools.h"
 
 class MKMessage;
@@ -10,10 +11,11 @@ class Spyro;
 class SpyroCynderStrafeState;
 class SpyroCynderStrafeState_cpp;
 class SpyroStartCycleAnimTable;
+class SpyroState;
 class SpyroStateMessages;
 class SpyroStuck;
 
-class SpyroCynderStrafeState {
+class SpyroCynderStrafeState : public SpyroState {  // base: inlined ctor vtable stores
 public:
     virtual void Init(Spyro *);
     virtual void Deinit(void);

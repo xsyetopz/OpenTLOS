@@ -9,7 +9,7 @@ class Cynder;
 class CynderConcurrentGoal_Think;
 class EnemyDamageFeedback;
 
-class CynderConcurrentGoal_Think : public CompositeGoal<Cynder> {  // base: vtable prefix
+class CynderConcurrentGoal_Think : public CompositeGoal<Cynder> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

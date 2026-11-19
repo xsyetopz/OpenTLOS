@@ -28,7 +28,7 @@ public:
     /* 0x050 */ Matrix unk50;
 };
 
-class LookAtPropDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class LookAtPropDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
 };

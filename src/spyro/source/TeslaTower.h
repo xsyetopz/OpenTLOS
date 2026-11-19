@@ -56,7 +56,7 @@ public:
     /* 0x1c8 */ f32 unk1C8;
 };
 
-class TeslaTowerDescriptor : public KDPropDescriptor {  // base: vtable prefix
+class TeslaTowerDescriptor : public KDPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void LoadDone(void);

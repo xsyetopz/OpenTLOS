@@ -36,7 +36,7 @@ public:
     /* 0x070 */ u8 unk70;
 };
 
-class Explosion3Descriptor : public MKPropDescriptor {  // base: vtable prefix
+class Explosion3Descriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

@@ -31,7 +31,7 @@ public:
     /* 0x079 */ u8 unk79;
 };
 
-class LockOnTargetDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class LockOnTargetDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void LoadDone(void);

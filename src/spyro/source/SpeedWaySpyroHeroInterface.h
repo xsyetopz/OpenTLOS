@@ -2,16 +2,18 @@
 #define SPYRO_SOURCE_SPEEDWAYSPYROHEROINTERFACE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/HeroInterface.h"
 
+class HeroInterface;
 class MKMessage;
 class MKPropDescriptor;
 class SpeedWaySpyroHeroInterface;
 class StatType;
 
-class SpeedWaySpyroHeroInterface {
+class SpeedWaySpyroHeroInterface : public HeroInterface {  // base: inlined ctor vtable stores
 public:
     virtual s32 GetHeroType(void);
-    virtual MKPropDescriptor ** GetProp(void);
+    virtual void * GetProp(void);
     virtual MKPropDescriptor ** GetTargetable(void);
     virtual void Update(void);
     virtual void Draw(void);
@@ -21,7 +23,7 @@ public:
     virtual f32 GetCollideRadius(void);
     virtual void GetCollisionCentre(void);
     virtual s32 GetCollisionIgnoreMaterials(void);
-    virtual MKPropDescriptor ** GetCollisionInfo(void);
+    virtual void GetCollisionInfo(void);
     virtual s32 GetLighting(void);
     virtual s32 GetEffects(void);
     virtual void GetInput(void);
@@ -48,7 +50,7 @@ inline s32 SpeedWaySpyroHeroInterface::GetHeroType() {
     return 1;
 }
 
-inline MKPropDescriptor **SpeedWaySpyroHeroInterface::GetProp() {
+inline void *SpeedWaySpyroHeroInterface::GetProp() {
     return M2C_FIELD(this, MKPropDescriptor ***, 4);
 }
 
@@ -134,8 +136,8 @@ inline s32 SpeedWaySpyroHeroInterface::GetCollisionIgnoreMaterials() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
-inline MKPropDescriptor **SpeedWaySpyroHeroInterface::GetCollisionInfo() {
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline void SpeedWaySpyroHeroInterface::GetCollisionInfo() {
     return M2C_FIELD(this, s32 *, 4) + 0x70;
 }
 #endif

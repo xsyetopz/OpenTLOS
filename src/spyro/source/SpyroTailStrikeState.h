@@ -2,18 +2,20 @@
 #define SPYRO_SOURCE_SPYROTAILSTRIKESTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/SpyroState.h"
 #include "spyro/source/SpyroTools.h"
 
 class MKCollisionInfo;
 class MKMessage;
 class MKProp;
 class Spyro;
+class SpyroState;
 class SpyroStateMessages;
 class SpyroStuck;
 class SpyroTailStrikeState;
 class SpyroTailStrikeState_cpp;
 
-class SpyroTailStrikeState {
+class SpyroTailStrikeState : public SpyroState {  // base: inlined ctor vtable stores
 public:
     virtual void Init(Spyro *);
     virtual void Deinit(void);

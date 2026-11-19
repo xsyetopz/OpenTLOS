@@ -27,7 +27,7 @@ public:
     /* 0x050 */ KDVolume unk50;
 };
 
-class KDWaterVolumeDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class KDWaterVolumeDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);

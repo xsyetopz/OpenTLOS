@@ -7,7 +7,7 @@
 class EarthTier3Goal_Spawn;
 class Enemy;
 
-class EarthTier3Goal_Spawn : public Goal<Enemy> {  // base: vtable prefix
+class EarthTier3Goal_Spawn : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);

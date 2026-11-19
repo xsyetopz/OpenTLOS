@@ -2,15 +2,17 @@
 #define SPYRO_SOURCE_SPYROAIRCOMBATSTATE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/SpyroState.h"
 
 class MKMessage;
 class Spyro;
 class SpyroAirCombatState;
 class SpyroAirCombatState_cpp;
+class SpyroState;
 class SpyroStateMessages;
 class Targetable;
 
-class SpyroAirCombatState {
+class SpyroAirCombatState : public SpyroState {  // base: inlined ctor vtable stores
 public:
     virtual void Init(Spyro *);
     virtual void Deinit(void);

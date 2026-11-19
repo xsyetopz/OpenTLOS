@@ -19,7 +19,7 @@ class EarthBossGoal_Think;
 class Enemy;
 class EnemyDamageFeedback;
 
-class EarthBossGoal_AttackPhase1 : public CompositeGoal<EarthBoss> {  // base: vtable prefix
+class EarthBossGoal_AttackPhase1 : public CompositeGoal<EarthBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -49,7 +49,7 @@ public:
     /* 0x03c */ u8 unk3C;
 };
 
-class EarthBossGoal_AttackPhase2 : public CompositeGoal<EarthBoss> {  // base: vtable prefix
+class EarthBossGoal_AttackPhase2 : public CompositeGoal<EarthBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -72,7 +72,7 @@ public:
     /* 0x028 */ Goal<EarthBoss>* unk28;
 };
 
-class EarthBossGoal_AttackPhase3 : public CompositeGoal<EarthBoss> {  // base: vtable prefix
+class EarthBossGoal_AttackPhase3 : public CompositeGoal<EarthBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -95,7 +95,7 @@ public:
     /* 0x028 */ Goal<EarthBoss>* unk28;
 };
 
-class EarthBossGoal_MeleeAttack1 : public Goal<EarthBoss> {  // base: vtable prefix
+class EarthBossGoal_MeleeAttack1 : public Goal<EarthBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -108,7 +108,7 @@ public:
     /* 0x014 */ u8 unk14;
 };
 
-class EarthBossGoal_MeleeAttack2 : public Goal<EarthBoss> {  // base: vtable prefix
+class EarthBossGoal_MeleeAttack2 : public Goal<EarthBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -120,7 +120,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class EarthBossGoal_MeleeAttack3 : public Goal<EarthBoss> {  // base: vtable prefix
+class EarthBossGoal_MeleeAttack3 : public Goal<EarthBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -131,7 +131,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class EarthBossGoal_MeleeAttack4 : public Goal<EarthBoss> {  // base: vtable prefix
+class EarthBossGoal_MeleeAttack4 : public Goal<EarthBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -143,7 +143,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class EarthBossGoal_MeleeAttack5 : public Goal<EarthBoss> {  // base: vtable prefix
+class EarthBossGoal_MeleeAttack5 : public Goal<EarthBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -154,7 +154,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class EarthBossGoal_MoveToTarget : public Goal<EarthBoss> {  // base: vtable prefix
+class EarthBossGoal_MoveToTarget : public Goal<EarthBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Reset(void);
     virtual void Activate(void);
@@ -168,7 +168,7 @@ public:
     /* 0x014 */ f32 unk14;
 };
 
-class EarthBossGoal_Think : public CompositeGoal<EarthBoss> {  // base: vtable prefix
+class EarthBossGoal_Think : public CompositeGoal<EarthBoss> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Reset(void);

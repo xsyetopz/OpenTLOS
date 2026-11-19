@@ -7,7 +7,7 @@
 class KDProperty;
 class PhrasePlayerProperty;
 
-class PhrasePlayerProperty : public KDProperty {  // base: vtable prefix
+class PhrasePlayerProperty : public KDProperty {  // base: inlined ctor vtable stores
 public:
     virtual void * GetClassInfo(void) const;
     virtual s32 ResolveCommand(const char *) const;

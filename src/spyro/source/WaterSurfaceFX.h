@@ -35,7 +35,7 @@ public:
     /* 0x05c */ WaterSurfaceFX::Wake** unk5C;
 };
 
-class WaterSurfaceFXDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class WaterSurfaceFXDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Deinit(void);

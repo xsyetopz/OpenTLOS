@@ -41,7 +41,7 @@ public:
     /* 0x080 */ PolyRegion unk80;
 };
 
-class WeatherRegionDescriptor : public MKPropDescriptor {  // base: vtable prefix
+class WeatherRegionDescriptor : public MKPropDescriptor {  // base: inlined ctor vtable stores
 public:
     virtual void Init(void);
     virtual void Update(void);

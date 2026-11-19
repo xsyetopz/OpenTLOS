@@ -20,7 +20,7 @@ class EnemyGoal_DyingWhirlwind;
 class EnemyGoal_Respawn;
 class MKProp;
 
-class EnemyGoal_Death : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Death : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -38,7 +38,7 @@ public:
     /* 0x020 */ Goal<Enemy>* unk20;
 };
 
-class EnemyGoal_Dying : public CompositeGoal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Dying : public CompositeGoal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Deinit(void);
     virtual void Activate(void);
@@ -66,7 +66,7 @@ public:
     /* 0x044 */ Goal<Enemy>* unk44;
 };
 
-class EnemyGoal_DyingAirborn : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_DyingAirborn : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -76,7 +76,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class EnemyGoal_DyingBurnt : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_DyingBurnt : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -86,7 +86,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class EnemyGoal_DyingDefault : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_DyingDefault : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -96,7 +96,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class EnemyGoal_DyingFrozen : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_DyingFrozen : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -107,7 +107,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class EnemyGoal_DyingSquished : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_DyingSquished : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -118,7 +118,7 @@ public:
     /* 0x010 */ f32 unk10;
 };
 
-class EnemyGoal_DyingStoned : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_DyingStoned : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -128,7 +128,7 @@ public:
     /* 0x00c */ Enemy* unkC;
 };
 
-class EnemyGoal_DyingTrain : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_DyingTrain : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -138,7 +138,7 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
-class EnemyGoal_DyingWhirlwind : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_DyingWhirlwind : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
@@ -151,7 +151,7 @@ public:
     /* 0x018 */ f32 unk18;
 };
 
-class EnemyGoal_Respawn : public Goal<Enemy> {  // base: vtable prefix
+class EnemyGoal_Respawn : public Goal<Enemy> {  // base: inlined ctor vtable stores
 public:
     virtual void Activate(void);
     virtual u8 Update(void);
