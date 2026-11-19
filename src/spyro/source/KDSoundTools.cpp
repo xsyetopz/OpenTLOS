@@ -468,7 +468,6 @@ void KDSoundFlangedFader::Stop() {
 }
 
 extern "C" double sin(double);
-
 void KDSoundFlangedFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, MKVector3 *arg4, unsigned int arg5, int arg6) {
     ((KDSoundFader *) this)->Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, true);
     ((KDSoundFader *) &this->unk28)->Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, true);

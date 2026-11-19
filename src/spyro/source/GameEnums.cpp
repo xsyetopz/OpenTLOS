@@ -1,5 +1,6 @@
 #include "spyro/source/GameEnums.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKVector3.h"
 #include "spyro/source/DataMap.h"
 #include <m2c_macros.h>
 

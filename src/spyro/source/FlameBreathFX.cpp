@@ -567,7 +567,7 @@ loop_57:
         if (temp_r4_788 != NULL) {
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_788, 1U);
             sp120 = MKVector(0.0f, 300.0f, 0.0f);
-            sp130.operator*(500.0f);
+            sp130 = arg1.operator*(500.0f);
             temp_f0_807 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp130);
             sp10 = temp_f0_807;
             sp140 = temp_f0_807;
@@ -1601,7 +1601,7 @@ block_64:
         if (temp_r4_2178 != NULL) {
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2178, 1U);
             sp4D8 = MKVector(0.0f, 300.0f, 0.0f);
-            sp4E8.operator*(0.5f * sp2C);
+            sp4E8 = arg2.operator*(0.5f * sp2C);
             temp_f0_2199 = M2C_FIELD(&arg1, f64 *, 0) + M2C_BITWISE(f64, sp4E8);
             sp38 = temp_f0_2199;
             sp4F8 = temp_f0_2199;

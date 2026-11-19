@@ -61,7 +61,7 @@ void LensFlare::DrawSun(MKVector3 arg0, float arg1) {
     MKEndPrimitive();
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void LensFlare::Draw() {
     f64 spB8;
     f64 spB0;

@@ -14,6 +14,7 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
 #include "spyro/source/Coronas.h"
 #include "spyro/source/CrashFirePS.h"
 #include "spyro/source/KDSpline.h"

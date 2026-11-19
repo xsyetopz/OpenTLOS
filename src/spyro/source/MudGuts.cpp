@@ -65,7 +65,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     f64 sp88;
     f64 sp80;
@@ -77,7 +77,7 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     f64 sp50;                                       /* compiler-managed */
     f64 sp48;
     f64 sp40;
-    f64 sp30;
+    MKVector3 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -88,6 +88,7 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     f32 var_f31_192;
     f32 var_f3_259;
     f64 temp_f0_173;
+    f64 temp_f1_166;
     f64 temp_f1_198;
     f64 temp_f1_204;
     f64 temp_f1_208;
@@ -102,10 +103,11 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     sp88 = arg0->unk38;
     sp70 = (f64) sp20;
     sp78 = (f64) sp28;
-    ((Volume *) &sp30)->GetRandPos();
-    sp60 = sp30;
-    sp68 = sp38;
-    temp_f0_173 = sp30 - arg0->unk30;
+    sp30 = this->unkE0.GetRandPos();
+    temp_f1_166 = M2C_BITWISE(f64, sp30);
+    sp60 = temp_f1_166;
+    sp68 = (f64) sp30.unk8;
+    temp_f0_173 = temp_f1_166 - arg0->unk30;
     sp10 = temp_f0_173;
     temp_f3_179 = arg0->unk4;
     sp50 = temp_f0_173;
@@ -206,7 +208,7 @@ loop_15:
                 sp20 = -temp_r29_339->unk28;
                 sp48 = (f64) sp18;
                 sp50 = (f64) sp20;
-                sp28.operator*(200.0f * gUpdateTimeDelta);
+                sp28 = ((MKVector3 *) &sp48)->operator*(200.0f * gUpdateTimeDelta);
                 temp_f0_377 = *(temp_r29_339 + 0x30) + M2C_BITWISE(f64, sp28);
                 sp8 = temp_f0_377;
                 sp38 = temp_f0_377;
@@ -237,9 +239,9 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spC'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 f32 MudGutsCritter::Resolve() {
-    f32 sp8;
+    MKVector3 sp8;
     MudGuts *temp_r28_471;
     s32 var_r29_464;
     s32 var_r31_465;
@@ -251,10 +253,10 @@ loop_2:
     if (var_r29_464 < (s32) this->unk90) {
         temp_r28_471 = (MudGuts *) (((u8 *) this->unk170) + var_r31_465);
         M2C_STRUCT_COPY(temp_r28_471, &Matrix::identity, 0x40);
-        ((Volume *) &sp8)->GetRandPos();
-        M2C_FIELD(temp_r28_471, f32 *, 0x30) = sp8;
-        M2C_FIELD(temp_r28_471, f32 *, 0x34) = spC;
-        M2C_FIELD(temp_r28_471, f32 *, 0x38) = sp10;
+        sp8 = this->unkE0.GetRandPos();
+        M2C_FIELD(temp_r28_471, f32 *, 0x30) = M2C_BITWISE(f32, sp8);
+        M2C_FIELD(temp_r28_471, f32 *, 0x34) = sp8.unk4;
+        M2C_FIELD(temp_r28_471, f32 *, 0x38) = sp8.unk8;
         M2C_FIELD(temp_r28_471, f32 *, 0x3C) = 1.0f;
         temp_r28_471->unk60 = 0;
         FindNewSwimParameters(temp_r28_471);

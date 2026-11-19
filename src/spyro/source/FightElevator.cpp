@@ -247,9 +247,10 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'FightElevator' to 'unsigned long'
+#if 0 // DRAFT: illegal implicit conversion from 'FightElevator' to 'FightElevatorAnchor *'
 void FightElevator::SetBeamPositions() {
-    f64 sp8;
+    MKVector3 sp8;
+    FightElevatorAnchor *temp_r4_333;
     s32 var_r29_323;
     s32 var_r30_325;
     s32 var_r31_324;
@@ -263,11 +264,11 @@ void FightElevator::SetBeamPositions() {
     this->unk288 = M2C_FIELD(temp_r3_326, f64 *, 0x30);
     this->unk290 = M2C_FIELD(temp_r3_326, f64 *, 0x38);
     do {
-        if ((u32) *(this + (var_r30_325 + 0x29C)) != 0U) {
-            ((FightElevatorAnchor *) &sp8)->GetZapAnchorPos();
+        temp_r4_333 = *(this + (var_r30_325 + 0x29C));
+        if (temp_r4_333 != NULL) {
+            sp8 = temp_r4_333->GetZapAnchorPos();
             temp_r3_341 = this + (var_r31_324 + 0x228);
-            M2C_FIELD(temp_r3_341, f64 *, 0) = sp8;
-            M2C_FIELD(temp_r3_341, f64 *, 8) = sp10;
+            M2C_FIELD(temp_r3_341, MKVector3 *, 0) = sp8;
         }
         var_r29_323 += 1;
         var_r30_325 += 4;
@@ -490,7 +491,7 @@ void FightElevator::UpdateMove() {
     M2C_UNK sp4C;
     f64 sp40;
     KDUniformSpline sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
 
     sp10 = 0.0f;
@@ -503,9 +504,8 @@ void FightElevator::UpdateMove() {
     sp50.unk38 = (f32) sp40;
     sp50.unk3C = 1.0f;
     MKModel_SetWorldMatrix(this->unk4, sp50);
-    ((Matrix *) &sp18)->GetRotationPYR();
-    M2C_FIELD(this, f64 *, 0x110) = sp18;
-    M2C_FIELD(this, f64 *, 0x118) = sp20;
+    sp18 = sp50.GetRotationPYR();
+    M2C_FIELD(this, MKVector3 *, 0x110) = sp18;
 }
 #endif
 

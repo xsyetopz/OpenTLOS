@@ -40,7 +40,7 @@ public:
     void Deinit(void);
     void GetMeasure(float, Matrix *, float *) const;
     void GetMatrix(int, Matrix *) const;
-    void GetNextPositionFast(float, Matrix *, int *, float *) const;
+    MKVector3 GetNextPositionFast(float, Matrix *, int *, float *) const;
     s32 AddNode(const MKVector3 &);
     void Init(void *, int, bool);
     void Init(int, bool);

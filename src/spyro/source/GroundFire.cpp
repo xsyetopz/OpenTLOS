@@ -100,7 +100,7 @@ loop_9:
     this->unk0 = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void GroundFire::Update() {
     BreathHitMessage spC8;
     f64 spC0;

@@ -698,7 +698,7 @@ void IceBossStomp::EmitSnowRing() {
             M2C_FIELD(temp_r3_1012, f32 *, 0x20) = 0.0f;
             M2C_FIELD(temp_r3_1012, f32 *, 0x28) = 0.0f;
             sp28 = MKVector(0.0f, 300.0f, 0.0f);
-            sp38.operator*(2000.0f);
+            sp38 = ((MKVector3 *) &sp68)->operator*(2000.0f);
             sp8 = sp38 + M2C_BITWISE(f64, sp28);
             M2C_FIELD(temp_r28_1017, f64 *, 0) = sp8;
             sp10 = sp38.unk8 + sp28.unk8;
@@ -1287,7 +1287,7 @@ block_22:
             temp_f26_1909 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f28_1914 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp188 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_1914, temp_f26_1909);
-            sp198.operator*(50.0f);
+            sp198 = sp188.operator*(50.0f);
             sp18 = sp198 * (f64) temp_f27_1901;
             sp328 = 0x417;
             sp330 = sp18;
@@ -1305,7 +1305,6 @@ block_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
 void IceBossStomp::Collided(MKCollisionResult &arg0) {
     s8 spD1;
     s8 spD0;
@@ -1329,7 +1328,7 @@ void IceBossStomp::Collided(MKCollisionResult &arg0) {
     M2C_UNK sp3C;
     f64 sp38;
     f64 sp30;
-    f64 sp20;
+    MKVector3 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -1365,9 +1364,8 @@ void IceBossStomp::Collided(MKCollisionResult &arg0) {
     spA0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     spD0 = 0;
     if (temp_r4_2020 != NULL) {
-        ((MKProp *) &sp20)->GetPos();
-        spB0 = sp20;
-        spB8 = sp28;
+        sp20 = temp_r4_2020->GetPos();
+        *(MKVector3 *) &spB0 = sp20;
     } else {
         spB0 = 0.0f;
         (*(f32 *) ((u8 *) &spAC + 0x8)) = 0.0f;
@@ -1388,9 +1386,8 @@ void IceBossStomp::Collided(MKCollisionResult &arg0) {
         Disable();
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'void' to 'KDInput *'
 void IceBossStomp::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, int arg3, int arg4) {
     s8 sp1B0;
     s32 sp1AC;

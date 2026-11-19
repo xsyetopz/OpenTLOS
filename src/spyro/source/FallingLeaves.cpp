@@ -486,7 +486,7 @@ loop_51:
                 M2C_FIELD(var_r31_467, f64 *, 0) = (f64) (M2C_FIELD(var_r31_467, f64 *, 0) + temp_f0_497);
                 var_r31_467->unk8 += (f32) sp1E8;
                 temp_f30_517 = gUpdateTimeDelta;
-                sp1C0.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 0.25f));
+                sp1C0 = ((MKVector3 *) &sp220)->operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 0.25f));
                 temp_f0_524 = sp1C0 * (f64) temp_f30_517;
                 sp70 = temp_f0_524;
                 sp1D0 = temp_f0_524;
@@ -822,7 +822,7 @@ void *FallingLeaves::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
     MKCollisionResult spD8;
     f64 spD0;                                       /* compiler-managed */
@@ -929,7 +929,7 @@ void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void FallingLeaves::Emit() {
     MKCollisionResult spC8;
     f64 spC0;                                       /* compiler-managed */

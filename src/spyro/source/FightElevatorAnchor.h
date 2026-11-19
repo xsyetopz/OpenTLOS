@@ -7,6 +7,7 @@
 class FightElevatorAnchor;
 class MKIniLine;
 class MKSceneManager;
+class MKVector3;
 class Shatterable;
 
 class FightElevatorAnchor : public Shatterable {  // base: vtable prefix
@@ -17,7 +18,7 @@ public:
     virtual s32 LoadDone(void);
     virtual void * Update(void);
     FightElevatorAnchor(void);
-    void GetZapAnchorPos(void);
+    MKVector3 GetZapAnchorPos(void);
     /* 0x1a8 */ MKSceneManager* unk1A8;
     /* 0x1ac */ s32 unk1AC;
 };

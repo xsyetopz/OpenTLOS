@@ -62,7 +62,6 @@ static u8 lit_689 = 1;
 
 static f32 IMPACT_LIGHT_RADIUS = 1000.0f;           /* const */
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
     f64 sp130;                                      /* compiler-managed */
     f64 sp128;                                      /* compiler-managed */
@@ -251,169 +250,78 @@ void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
         return;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 s32 LiquidFX::Emit(const int &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, const float &arg4, float arg5, bool arg6, BreathHitMessage *arg7, int arg8, int arg9) {
-    s8 spE8;
-    s32 spE4;
-    s32 spE0;
-    s32 spDC;
-    f32 spD8;
-    s32 spD4;
-    s8 spD3;
-    s8 spD2;
-    s16 spD0;
-    f32 spCC;
-    f32 spC8;
-    f32 spC4;
-    f32 spC0;
-    f32 spBC;
-    f32 spB8;
-    f32 spB0;
-    f32 spAC;
-    f32 spA8;
-    f32 spA0;
-    f32 sp9C;
-    f32 sp98;
-    f64 sp90;
-    f64 sp88;
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    f64 sp68;
-    f64 sp60;
-    f64 sp58;
-    MKVector3 sp48;
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp30;
-    f64 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f64 sp8;
-    f32 temp_f29_497;
-    f32 temp_f29_524;
-    f32 temp_f30_502;
-    f32 temp_f30_529;
-    f64 temp_f0_428;
-    f64 temp_f4_464;
-    f64 temp_f5_462;
-    void *temp_r3_554;
-    void *temp_r3_574;
-    void *temp_r3_585;
-    void *temp_r4_374;
-    void *temp_r4_475;
-    void *temp_r4_481;
-    void *temp_r4_487;
-    void *temp_r4_493;
-    void *temp_r4_517;
+    u8 *slot;
+    MKCollisionResult hit;
+    MKVector3 groundPos;
+    MKVector3 vel;
+    f32 offX;
+    f32 offY;
+    f32 offZ;
+    f32 rndA;
+    f32 rndB;
+    f32 rndC;
+    f32 rndD;
+    f32 rndE;
 
-    temp_r4_374 = this + (this->unk3F5C * 0xA0);
-    if ((u8) M2C_FIELD(temp_r4_374, u8 *, 0x158) != 0) {
+    slot = (u8 *) this + (this->unk3F5C * 0xA0);
+    if (M2C_FIELD(slot, u8 *, 0x158) != 0) {
         return 0;
     }
-    M2C_FIELD(temp_r4_374, u8 *, 0x158) = 1U;
-    sp98 = 0.0f;
-    sp9C = 0.0f;
-    spA0 = 0.0f;
-    spA8 = 0.0f;
-    spAC = 0.0f;
-    spB0 = 0.0f;
-    spB8 = 0.0f;
-    spBC = 0.0f;
-    spC0 = 0.0f;
-    spC4 = 1.0f;
-    spC8 = 0.0f;
-    spCC = 0.0f;
-    spD0 = 0;
-    spD2 = 0;
-    spD3 = 0;
-    spD4 = 0;
-    spD8 = 3.4028235e38f;
-    spDC = 0;
-    spE0 = 0;
-    spE4 = -1;
-    spE8 = 0;
+    M2C_FIELD(slot, u8 *, 0x158) = 1;
+    hit.Init();
     if (arg6 != 0) {
-        M2C_FIELD((this + (this->unk3F5C * 0xA0)), f32 *, 0x154) = arg5;
+        M2C_FIELD(slot, f32 *, 0x154) = arg5;
     } else {
-        sp40 = 0.0f;
-        sp38 = 0.0f;
-        sp3C = 200.0f;
-        sp80 = (f64) sp40;
-        sp78 = (f64) sp38;
-        temp_f0_428 = M2C_FIELD(&arg1, f64 *, 0) + sp78;
-        sp28 = temp_f0_428;
-        sp88 = temp_f0_428;
-        sp30 = arg1.unk8 + (f32) sp80;
-        sp90 = (f64) sp30;
-        if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp88), 3000.0f, (MKCollisionResult *) &sp98, 0, 2, NULL, (MKCollisionMode) 6) != 0) {
-            M2C_FIELD((this + (this->unk3F5C * 0xA0)), f32 *, 0x154) = sp9C;
+        offX = 0.0f;
+        offY = 200.0f;
+        offZ = 0.0f;
+        groundPos.unk0 = arg1.unk0 + offX;
+        groundPos.unk4 = arg1.unk4 + offY;
+        groundPos.unk8 = arg1.unk8 + offZ;
+        if (MKCollision_GetGroundPoint(groundPos, 3000.0f, &hit, 0, 2, NULL, (MKCollisionMode) 6) != 0) {
+            M2C_FIELD(slot, f32 *, 0x154) = hit.unk4;
         }
     }
-    temp_f5_462 = M2C_FIELD(&arg3, f64 *, 0);
-    M2C_FIELD((this + (this->unk3F5C * 0xA0)), f32 *, 0x14C) = 0.0f;
-    temp_f4_464 = M2C_FIELD(&arg3, f64 *, 8);
-    M2C_FIELD((this + (this->unk3F5C * 0xA0)), f32 *, 0x150) = (f32) &arg4;
-    temp_r4_475 = this + ((this->unk3F5C * 0xA0) + 0xC8);
-    M2C_FIELD(temp_r4_475, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
-    M2C_FIELD(temp_r4_475, f64 *, 8) = (f64) M2C_FIELD(&arg1, f32 *, 8);
-    temp_r4_481 = this + ((this->unk3F5C * 0xA0) + 0xE8);
-    M2C_FIELD(temp_r4_481, f64 *, 0) = temp_f5_462;
-    M2C_FIELD(temp_r4_481, f64 *, 8) = temp_f4_464;
-    temp_r4_487 = this + ((this->unk3F5C * 0xA0) + 0xF8);
-    M2C_FIELD(temp_r4_487, f64 *, 0) = temp_f5_462;
-    M2C_FIELD(temp_r4_487, f64 *, 8) = temp_f4_464;
-    temp_r4_493 = this + ((this->unk3F5C * 0xA0) + 0xD8);
-    M2C_FIELD(temp_r4_493, f64 *, 0) = (f64) M2C_FIELD(&arg2, f64 *, 0);
-    M2C_FIELD(temp_r4_493, f64 *, 8) = (f64) M2C_FIELD(&arg2, f64 *, 8);
-    temp_f29_497 = MKRand_Float((int *) &gViewSeed, 0.0f, 20.0f);
-    temp_f30_502 = MKRand_Float((int *) &gViewSeed, 0.0f, 20.0f);
-    sp18 = MKRand_Float((int *) &gViewSeed, 0.0f, 20.0f);
-    sp1C = temp_f30_502;
-    sp20 = temp_f29_497;
-    temp_r4_517 = this + ((this->unk3F5C * 0xA0) + 0x108);
-    M2C_FIELD(temp_r4_517, f64 *, 0) = (f64) sp18;
-    sp68 = (f64) sp18;
-    sp70 = (f64) sp20;
-    M2C_FIELD(temp_r4_517, f64 *, 8) = (f64) sp20;
-    temp_f29_524 = MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f);
-    temp_f30_529 = MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f);
-    sp48 = MKVector(MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f), temp_f30_529, temp_f29_524);
-    sp8 = sp48 * 5.081185235e-315;
-    sp10 = sp48.unk8 * 0.05f;
-    temp_r3_554 = this + ((this->unk3F5C * 0xA0) + 0x118);
-    M2C_FIELD(temp_r3_554, f64 *, 0) = sp8;
-    M2C_FIELD(temp_r3_554, f64 *, 8) = (f64) sp10;
-    sp58 = sp8;
-    sp60 = (f64) sp10;
-    M2C_FIELD((this + (this->unk3F5C * 0xA0)), s8 *, 0x159) = 0;
-    M2C_FIELD((this + (this->unk3F5C * 0xA0)), f32 *, 0x148) = 0.0f;
-    M2C_FIELD((this + (this->unk3F5C * 0xA0)), f32 *, 0x160) = 0.0f;
-    temp_r3_574 = this + (this->unk3F5C * 0xA0);
-    M2C_FIELD(temp_r3_574, f32 *, 0x15C) = (f32) ((M2C_FIELD(temp_r3_574, f32 *, 0x100) + (M2C_FIELD(temp_r3_574, f32 *, 0xF8) + M2C_FIELD(temp_r3_574, f32 *, 0xFC))) / 3.0f);
-    temp_r3_585 = this + ((this->unk3F5C * 0xA0) + 0x138);
-    M2C_FIELD(temp_r3_585, f32 *, 0) = 0.0f;
-    M2C_FIELD(temp_r3_585, f32 *, 4) = 0.0f;
-    M2C_FIELD(temp_r3_585, f32 *, 8) = 0.0f;
-    M2C_FIELD((this + (this->unk3F5C * 0xA0)), s32 *, 0x164) = arg_spC;
-    if (arg_sp8 != 0) {
-        KDSound_Play3d(arg_sp8, this + ((this->unk3F5C * 0xA0) + 0xC8), 0U, -1, 0.0f, 0U);
+    M2C_FIELD(slot, f32 *, 0x14C) = 0.0f;
+    M2C_FIELD(slot, f32 *, 0x150) = arg4;
+    M2C_FIELD(slot, MKVector3 *, 0xC8) = arg1;
+    M2C_FIELD(slot, MKVector3 *, 0xE8) = arg3;
+    M2C_FIELD(slot, MKVector3 *, 0xF8) = arg3;
+    M2C_FIELD(slot, MKVector3 *, 0xD8) = arg2;
+    rndA = MKRand_Float((int *) &gViewSeed, 0.0f, 20.0f);
+    rndB = MKRand_Float((int *) &gViewSeed, 0.0f, 20.0f);
+    rndC = MKRand_Float((int *) &gViewSeed, 0.0f, 20.0f);
+    M2C_FIELD(slot, f32 *, 0x108) = rndC;
+    M2C_FIELD(slot, f32 *, 0x10C) = rndB;
+    M2C_FIELD(slot, f32 *, 0x110) = rndA;
+    rndD = MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f);
+    rndE = MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f);
+    vel = MKVector(MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f), rndE, rndD);
+    M2C_FIELD(slot, f32 *, 0x118) = vel.unk0 * 0.05f;
+    M2C_FIELD(slot, f32 *, 0x11C) = vel.unk4 * 0.05f;
+    M2C_FIELD(slot, f32 *, 0x120) = vel.unk8 * 0.05f;
+    M2C_FIELD(slot, s8 *, 0x159) = 0;
+    M2C_FIELD(slot, f32 *, 0x148) = 0.0f;
+    M2C_FIELD(slot, f32 *, 0x160) = 0.0f;
+    M2C_FIELD(slot, f32 *, 0x15C) = (M2C_FIELD(slot, f32 *, 0x100) + (M2C_FIELD(slot, f32 *, 0xF8) + M2C_FIELD(slot, f32 *, 0xFC))) / 3.0f;
+    M2C_FIELD(slot, f32 *, 0x138) = 0.0f;
+    M2C_FIELD(slot, f32 *, 0x13C) = 0.0f;
+    M2C_FIELD(slot, f32 *, 0x140) = 0.0f;
+    M2C_FIELD(slot, s32 *, 0x164) = arg9;
+    if (arg8 != 0) {
+        KDSound_Play3d(arg8, (const MKVector3 *) (slot + 0xC8), 0U, -1, 0.0f, false);
     }
     this->unk3F5C += 1;
     this->unk3F60 += 1;
-    if ((s32) this->unk3F5C >= 0x64) {
+    if (this->unk3F5C >= 0x64) {
         this->unk3F5C = 0;
     }
-    this->unk3F78 = (long) (&arg0);
+    this->unk3F78 = arg0;
     this->unk3F80 = arg7;
     return 1;
 }
-#endif
 
 void LiquidFX::Deinit() {
     ManagedLight *temp_r4_659;
@@ -434,7 +342,7 @@ void LiquidFX::Deinit() {
     ((KDSpline *) &this->unk3F48)->Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void LiquidFX::Draw() {
     f64 sp3F50;
     f64 sp3F48;
@@ -929,21 +837,21 @@ void LiquidFX::Draw() {
     spB18 = (f64) sp4A8;
     spB00 = (f64) sp490;
     spB08 = (f64) sp498;
-    sp9D0.operator*(35.0f);
+    sp9D0 = ((MKVector3 *) &spB10)->operator*(35.0f);
     sp40 = -(f32) spB00;
     sp44 = -(*(f32 *) ((u8 *) &spB00 + 0x4));
     sp48 = -(f32) spB08;
     sp9E0 = (f64) sp40;
     sp9E8 = (f64) sp48;
-    sp9F0.operator*(35.0f);
+    sp9F0 = ((MKVector3 *) &sp9E0)->operator*(35.0f);
     sp230 = sp9F0 + sp9D0;
     spA00 = sp230;
     sp238 = sp9F0.unk8 + sp9D0.unk8;
     spCA0 = sp230;
     spA08 = (f64) sp238;
     spCA8 = (f64) sp238;
-    sp9A0.operator*(35.0f);
-    sp9B0.operator*(35.0f);
+    sp9A0 = ((MKVector3 *) &spB10)->operator*(35.0f);
+    sp9B0 = ((MKVector3 *) &spB00)->operator*(35.0f);
     sp220 = sp9B0 + sp9A0;
     sp30 = -(f32) spB10;
     sp34 = -(*(f32 *) ((u8 *) &spB10 + 0x4));
@@ -955,8 +863,8 @@ void LiquidFX::Draw() {
     spCB8 = (f64) sp228;
     sp960 = (f64) sp30;
     sp968 = (f64) sp38;
-    sp970.operator*(35.0f);
-    sp980.operator*(35.0f);
+    sp970 = ((MKVector3 *) &sp960)->operator*(35.0f);
+    sp980 = ((MKVector3 *) &spB00)->operator*(35.0f);
     sp210 = sp980 + sp970;
     sp20 = -(f32) spB10;
     sp24 = -(*(f32 *) ((u8 *) &spB10 + 0x4));
@@ -968,13 +876,13 @@ void LiquidFX::Draw() {
     spCC8 = (f64) sp218;
     sp910 = (f64) sp20;
     sp918 = (f64) sp28;
-    sp920.operator*(35.0f);
+    sp920 = ((MKVector3 *) &sp910)->operator*(35.0f);
     sp10 = -(f32) spB00;
     sp14 = -(*(f32 *) ((u8 *) &spB00 + 0x4));
     sp18 = -(f32) spB08;
     sp930 = (f64) sp10;
     sp938 = (f64) sp18;
-    sp940.operator*(35.0f);
+    sp940 = ((MKVector3 *) &sp930)->operator*(35.0f);
     sp200 = sp940 + sp920;
     spCD0 = sp200;
     sp208 = sp940.unk8 + sp920.unk8;
@@ -1645,7 +1553,7 @@ loop_62:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *LiquidFX::Update() {
     u8 sp360;
     s32 sp35C;
@@ -2126,7 +2034,7 @@ void *LiquidFX::Update() {
                         M2C_FIELD(temp_r27_2717, f32 *, 0x14C) = 0.0f;
                         if (((ManagedLight *) this->unk3F84 != NULL) && (EventCamera_GetCurrent() == NULL)) {
                             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(this->unk3F84, 1U);
-                            sp248.operator*(100.0f);
+                            sp248 = ((MKVector3 *) &sp320)->operator*(100.0f);
                             spB8 = (f64) sp310 + M2C_BITWISE(f64, sp248);
                             temp_r3_3178 = this->unk3F84;
                             sp258 = spB8;
@@ -2498,21 +2406,18 @@ s32 LiquidFX::LoadDone() {
     this->unk3F74 = (MKMaterial *) (MKMaterial_Create("fx_380"));
 }
 
-#if 0 // DRAFT: illegal operand
 void LiquidFX::Init() {
-    s32 temp_r0_3961;
-    s32 var_ctr_3959;
-    s32 var_r3_3956;
+    s32 off;
+    s32 count;
 
     GameProp::Init();
-    var_r3_3956 = 0;
-    var_ctr_3959 = 0x64;
+    off = 0;
+    count = 0x64;
     do {
-        temp_r0_3961 = var_r3_3956 + 0x158;
-        var_r3_3956 += 0xA0;
-        *(this + temp_r0_3961) = 0;
-        var_ctr_3959 -= 1;
-    } while (var_ctr_3959 != 0);
+        M2C_FIELD(this, u8 *, off + 0x158) = 0;
+        off += 0xA0;
+        count -= 1;
+    } while (count != 0);
     ((KDSpline *) &this->unk3F48)->Init(0x64, 0U);
     this->unk3F5C = 0;
     this->unk3F60 = 0;
@@ -2526,14 +2431,16 @@ void LiquidFX::Init() {
     this->unk3F88 = 0.0f;
     this->unk3F78 = 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void LiquidFXDescriptor::LoadDone() {
+    MKProp *prop;
+    CrashMistPS *mist;
+
     GamePropDescriptor::LoadDone();
-    this->unkE4 = checked_cast<CrashMistPS *, MKProp>(gMK->CreateProp("CrashMistPS"));
+    prop = gMK->CreateProp("CrashMistPS");
+    mist = checked_cast<CrashMistPS *, MKProp>(prop);
+    M2C_FIELD(this, CrashMistPS **, 0xE4) = mist;
 }
-#endif
 
 void LiquidFXDescriptor::Deinit() {
     LiquidFXDescriptor *temp_r3_4028;
@@ -2556,15 +2463,16 @@ void LiquidFXDescriptor::Deinit() {
     this->unkE8 = 0;
 }
 
-#if 0 // DRAFT: pointer/array required
 void LiquidFXDescriptor::Init() {
+    LiquidFXDescriptor **first;
+
     GamePropDescriptor::Init();
-    this->unkF0 = (LiquidFXDescriptor *) (*LiquidFXDescriptor::pFirstDesc);
+    first = (LiquidFXDescriptor **) LiquidFXDescriptor::pFirstDesc;
+    this->unkF0 = *first;
     this->unkEC = NULL;
-    if ((LiquidFXDescriptor *) *LiquidFXDescriptor::pFirstDesc != NULL) {
-        (*LiquidFXDescriptor::pFirstDesc)->unkEC = this;
+    if (*first != NULL) {
+        (*first)->unkEC = this;
     }
-    *LiquidFXDescriptor::pFirstDesc = (unsigned char) (this);
-    this->unkE8 = (long) (gMK->GetWorkingChunk());
+    *first = this;
+    this->unkE8 = (s32) gMK->GetWorkingChunk();
 }
-#endif

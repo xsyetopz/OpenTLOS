@@ -1,4 +1,5 @@
 #include "spyro/source/KDVolume.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include <m2c_macros.h>
 
@@ -118,7 +119,10 @@ void KDVolume::UpdateMatrix(Matrix &arg0) {
     this->unk84 = var_f12_85;
 }
 
+#if 0 // DRAFT: identifier 'KDVolume::GetCenterPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void KDVolume::GetCenterPos() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp50;
     f64 sp48;
     f64 sp40;
@@ -137,16 +141,18 @@ void KDVolume::GetCenterPos() {
     sp30 = (0.5f * M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18)) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 8);
     sp48 = (f64) sp28;
     sp50 = (f64) sp30;
-    sp18 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x70) + (((f32) sp50 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x60)) + (((f32) sp48 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x40)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x50))));
-    sp1C = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x74) + (((f32) sp50 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x64)) + (((f32) sp48 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x44)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x54))));
-    sp20 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x78) + (((f32) sp50 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x68)) + (((f32) sp48 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x48)) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x58))));
-    this->unk0 = (f64) sp18;
+    sp18 = this->unk40.unk30 + (((f32) sp50 * this->unk40.unk20) + (((f32) sp48 * this->unk40.unk0) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * this->unk40.unk10)));
+    sp1C = this->unk40.unk34 + (((f32) sp50 * this->unk40.unk24) + (((f32) sp48 * this->unk40.unk4) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * this->unk40.unk14)));
+    sp20 = this->unk40.unk38 + (((f32) sp50 * this->unk40.unk28) + (((f32) sp48 * this->unk40.unk8) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * this->unk40.unk18)));
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp18;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
     sp8 = (f64) sp18;
     sp10 = (f64) sp20;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp20;
+    return result;
 }
+#endif
 
 s32 KDVolume::IsWithinXZ(const MKVector3 &arg0, float *arg1) {
     f32 sp8;

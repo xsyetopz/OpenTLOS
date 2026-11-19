@@ -47,8 +47,8 @@ public:
     void SetState(int);
     void Release(void);
     void Pull(void);
-    void GetStandDir(void);
-    void GetStandPos(void);
+    MKVector3 GetStandDir(void);
+    MKVector3 GetStandPos(void);
     /* 0x0c8 */ u8 padC8[0x8];
     /* 0x0d0 */ s32 unkD0;
     /* 0x0d4 */ u8 padD4[0x4];

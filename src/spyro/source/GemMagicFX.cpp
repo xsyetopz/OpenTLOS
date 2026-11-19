@@ -301,16 +301,16 @@ void GemMagicFX::Draw() {
     sp1C8 = (f64) spA8;
     sp170 = (f64) sp40;
     sp178 = (f64) sp48;
-    sp180.operator*(30.000002f);
-    sp190.operator*(30.000002f);
+    sp180 = ((MKVector3 *) &sp170)->operator*(30.000002f);
+    sp190 = ((MKVector3 *) &sp1C0)->operator*(30.000002f);
     sp80 = sp190 + M2C_BITWISE(f64, sp180);
     sp1A0 = sp80;
     sp88 = sp190.unk8 + sp180.unk8;
     sp210 = sp80;
     sp1A8 = (f64) sp88;
     sp218 = (f64) sp88;
-    sp140.operator*(30.000002f);
-    sp150.operator*(30.000002f);
+    sp140 = ((MKVector3 *) &sp1B0)->operator*(30.000002f);
+    sp150 = ((MKVector3 *) &sp1C0)->operator*(30.000002f);
     sp70 = sp150 + M2C_BITWISE(f64, sp140);
     sp38 = -(f32) sp1B8;
     sp78 = sp150.unk8 + sp140.unk8;
@@ -322,26 +322,26 @@ void GemMagicFX::Draw() {
     sp228 = (f64) sp78;
     spF0 = (f64) sp30;
     spF8 = (f64) sp38;
-    sp100.operator*(30.000002f);
+    sp100 = ((MKVector3 *) &spF0)->operator*(30.000002f);
     sp20 = -(f32) sp1C0;
     sp24 = -(*(f32 *) ((u8 *) &sp1C0 + 0x4));
     sp28 = -(f32) sp1C8;
     sp110 = (f64) sp20;
     sp118 = (f64) sp28;
-    sp120.operator*(30.000002f);
+    sp120 = ((MKVector3 *) &sp110)->operator*(30.000002f);
     sp60 = sp120 + M2C_BITWISE(f64, sp100);
     sp130 = sp60;
     sp68 = sp120.unk8 + sp100.unk8;
     sp230 = sp60;
     sp138 = (f64) sp68;
     sp238 = (f64) sp68;
-    spB0.operator*(30.000002f);
+    spB0 = ((MKVector3 *) &sp1B0)->operator*(30.000002f);
     sp10 = -(f32) sp1C0;
     sp14 = -(*(f32 *) ((u8 *) &sp1C0 + 0x4));
     sp18 = -(f32) sp1C8;
     spC0 = (f64) sp10;
     spC8 = (f64) sp18;
-    spD0.operator*(30.000002f);
+    spD0 = ((MKVector3 *) &spC0)->operator*(30.000002f);
     sp50 = spD0 + M2C_BITWISE(f64, spB0);
     spE0 = sp50;
     sp58 = spD0.unk8 + spB0.unk8;
@@ -365,7 +365,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *GemMagicFX::Update() {
     f64 sp228;                                      /* compiler-managed */
     f64 sp220;                                      /* compiler-managed */
@@ -690,7 +690,7 @@ loop_66:
                     sp130 = KDMath_Slerp(*((MKVector3 *) &temp_r29_993->unk10), *((MKVector3 *) &sp220), 0.75f * temp_f24_956);
                     M2C_FIELD(temp_r29_993, MKVector3 *, 0x10) = sp130;
                     temp_f27_967 = gUpdateTimeDelta;
-                    sp110.operator*((1000.0f * temp_f24_956) + 1000.0f);
+                    sp110 = ((MKVector3 *) &temp_r29_993->unk10)->operator*((1000.0f * temp_f24_956) + 1000.0f);
                     temp_f0_971 = sp110 * (f64) temp_f27_967;
                     sp10 = temp_f0_971;
                     sp120 = temp_f0_971;
@@ -708,7 +708,6 @@ loop_66:
 #endif
 
 static f32 lit_699 = 0.7f;
-
 void GemMagicFX::Init() {
     MKHeap *var_r3_1038;
     MKHeap *var_r3_1071;

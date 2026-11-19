@@ -5,7 +5,6 @@
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
-#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
@@ -46,11 +45,11 @@ void *FightElevatorAnchor::Update() {
     }
 }
 
-void FightElevatorAnchor::GetZapAnchorPos() {
+MKVector3 FightElevatorAnchor::GetZapAnchorPos() {
     MKVector3 sp8;
 
-    MKModel_CalculateRefPointWorldPosition(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKModel **, 4), M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x1AC), &sp8);
-    M2C_FIELD(this, MKVector3 *, 0) = sp8;
+    MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk1AC, &sp8);
+    return sp8;
 }
 
 s32 FightElevatorAnchor::LoadDone() {

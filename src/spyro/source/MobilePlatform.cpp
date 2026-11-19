@@ -94,9 +94,12 @@ void MobilePlatform::UpdateSag() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKVector3 *'
+#if 0 // DRAFT: undefined identifier 'spA0'
 void MobilePlatform::SetYaw(float arg0, float arg1) {
-    KDSplinePathSegment spB8;
+    f64 spE0;
+    f64 spD8;
+    PlatformRider spC8;
+    MKVector3 spB8;
     f64 spB0;
     f64 spA8;
     KDUniformSpline sp88;
@@ -120,30 +123,27 @@ void MobilePlatform::SetYaw(float arg0, float arg1) {
     f32 sp8;
     f32 temp_f1_209;
     f32 temp_f1_259;
-    f32 temp_f2_158;
     f32 var_f0_246;
     f32 var_f1_236;
     f32 var_f4_212;
 
     if ((s32) this->unk19C.unk30.unk0 > 1) {
-        spB8.GetVelocity(arg0);
-        ((PlatformRider *) &spB8.unk10)->ToWorldDir(*((MKVector3 *) &this->unk150));
-        spB8.unk20 = spB8.unk10;
-        temp_f2_158 = M2C_BITWISE(f32, spB8.unk20);
-        spB8.unk28 = M2C_BITWISE(f64, spB8.unk18);
-        spB8.unk24 = 0.0f;
-        if (((((f32) spB8.unk28 * (f32) spB8.unk28) + ((temp_f2_158 * temp_f2_158) + (0.0f * 0.0f))) < 0.0001f) && (arg0 == 0.0f)) {
+        spB8 = ((KDSplinePathSegment *) &this->unk19C)->GetVelocity(arg0);
+        spC8.ToWorldDir(*((MKVector3 *) &this->unk150));
+        *(PlatformRider *) &spD8 = spC8;
+        (*(f32 *) ((u8 *) &spD8 + 0x4)) = 0.0f;
+        if (((((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (0.0f * 0.0f))) < 0.0001f) && (arg0 == 0.0f)) {
             sp88.GetAcceleration(arg0);
             ((PlatformRider *) &sp88.unk10)->ToWorldDir(*((MKVector3 *) &this->unk150));
             sp28 = sp88.unk10 * 5.811479333e-315;
             spA8 = sp28;
             sp30 = spA0 * 10000.0f;
-            spB8.unk20 = sp28;
+            spD8 = sp28;
             spB0 = (f64) sp30;
-            spB8.unk28 = (f64) sp30;
+            spE0 = (f64) sp30;
         }
-        spB8.unk24 = 0.0f;
-        if ((((f32) spB8.unk28 * (f32) spB8.unk28) + (((f32) spB8.unk20 * (f32) spB8.unk20) + (0.0f * 0.0f))) > 0.0001f) {
+        (*(f32 *) ((u8 *) &spD8 + 0x4)) = 0.0f;
+        if ((((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (0.0f * 0.0f))) > 0.0001f) {
             temp_f1_209 = (f32) atan2();
             if ((s32) this->unk184 == 0) {
                 var_f4_212 = 1.0f;

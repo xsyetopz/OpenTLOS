@@ -115,15 +115,25 @@ void Lever::Pull() {
     SetState(1);
 }
 
+#if 0 // DRAFT: identifier 'Lever::GetStandDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void Lever::GetStandDir() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0xE8);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0xF0);
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unkE8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) this->unkF0;
+    return result;
 }
+#endif
 
+#if 0 // DRAFT: identifier 'Lever::GetStandPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void Lever::GetStandPos() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0xD8);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0xE0);
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unkD8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) this->unkE0;
+    return result;
 }
+#endif
 
 #if 0 // DRAFT: ')' expected
 void Lever::Message(MKMessage *arg0) {

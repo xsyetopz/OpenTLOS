@@ -27,7 +27,7 @@
 
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void FXBase::Burst(const MKVector3 &arg0) {
     Matrix sp130;
     M2C_UNK sp12C;

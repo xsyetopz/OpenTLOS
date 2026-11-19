@@ -136,7 +136,7 @@ loop_6:
         sp60.unk10 = temp_f0_167;
         sp18 = sp60.unk8 - (f32) spB8;
         sp78 = (f64) sp18;
-        sp80.operator*(0.5f);
+        sp80 = ((MKVector3 *) &sp60.unk10)->operator*(0.5f);
         sp30 = M2C_BITWISE(f64, spA0.unk10) + M2C_BITWISE(f64, sp80);
         sp20 = 0.0f;
         sp24 = 100.0f;
@@ -555,22 +555,20 @@ f32 MoltenMetalBucketTrack::Resolve() {
     Update();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MoltenMetalBucketTrack::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    MKIniLine sp58;
+    MKVector3 sp58;
     MKVector3 sp48;
     MKVector3 sp38;
-    MKIniLine sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     MKVector3 sp8;
     MKIniLine *var_r30_1016;
     MKIniLine *var_r30_942;
-    f64 temp_f0_1031;
-    f64 temp_f0_957;
     f64 temp_f1_1030;
     f64 temp_f1_956;
     s32 temp_r3_1017;
@@ -586,14 +584,13 @@ s32 MoltenMetalBucketTrack::LoadLine(MKIniLine *arg0) {
             ((KDUniformSpline *) &this->unk4C)->Init(temp_r3_943, 0U);
 loop_9:
             if (var_r30_942 != NULL) {
-                sp58.GetVector3((s32) var_r30_942);
+                sp58 = var_r30_942->GetVector3(0);
                 temp_f1_956 = M2C_BITWISE(f64, sp58);
-                temp_f0_957 = M2C_BITWISE(f64, sp58.unk8);
                 sp78 = temp_f1_956;
-                sp80 = temp_f0_957;
+                sp80 = (f64) sp58.unk8;
                 if ((u8) this->unkE0 != 0) {
                     M2C_FIELD(this, f64 *, 0x80) = temp_f1_956;
-                    M2C_FIELD(this, f64 *, 0x88) = temp_f0_957;
+                    M2C_FIELD(this, f64 *, 0x88) = (f64) sp58.unk8;
                     this->unk90 = sp78;
                     this->unk98 = sp80;
                     this->unkE0 = 0;
@@ -617,14 +614,13 @@ loop_9:
             ((KDUniformSpline *) &this->unk4C.unk14)->Init(temp_r3_1017, 0U);
 loop_18:
             if (var_r30_1016 != NULL) {
-                sp28.GetVector3((s32) var_r30_1016);
+                sp28 = var_r30_1016->GetVector3(0);
                 temp_f1_1030 = M2C_BITWISE(f64, sp28);
-                temp_f0_1031 = M2C_BITWISE(f64, sp28.unk8);
                 sp68 = temp_f1_1030;
-                sp70 = temp_f0_1031;
+                sp70 = (f64) sp28.unk8;
                 if ((u8) this->unkE0 != 0) {
                     M2C_FIELD(this, f64 *, 0x80) = temp_f1_1030;
-                    M2C_FIELD(this, f64 *, 0x88) = temp_f0_1031;
+                    M2C_FIELD(this, f64 *, 0x88) = (f64) sp28.unk8;
                     this->unk90 = sp68;
                     this->unk98 = sp70;
                     this->unkE0 = 0;

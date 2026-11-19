@@ -22,21 +22,17 @@ void KDCameraSimpleDelta::Override::EnableSmoothDelta(float farg0) {
     M2C_FIELD(this, f32 *, 0xC) = farg0;
 }
 
-#if 0 // DRAFT: illegal operand
 void KDCameraSimpleDelta::Override::DisableSmoothPitch() {
     M2C_FIELD(this, s32 *, 0x10) = (s32) (M2C_FIELD(this, s32 *, 0x10) & 0xFFFFFFFE);
     M2C_FIELD(this, f32 *, 8) = 0.0f;
     M2C_FIELD(this, f32 *, 4) = 0.0f;
-    M2C_FIELD(this, KDCameraSimpleDelta::Override *, 0) = 0;
+    M2C_FIELD(this, u8 *, 0) = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 void KDCameraSimpleDelta::Override::EnableSmoothPitch(float farg0, float farg1, bool arg1) {
     EnableSmoothPitch(farg0, farg1);
-    *this = arg1;
+    M2C_FIELD(this, u8 *, 0) = arg1;
 }
-#endif
 
 void KDCameraSimpleDelta::Override::EnableSmoothPitch(float farg0, float farg1) {
     M2C_FIELD(this, s32 *, 0x10) = (s32) (M2C_FIELD(this, s32 *, 0x10) | 1);
@@ -44,7 +40,6 @@ void KDCameraSimpleDelta::Override::EnableSmoothPitch(float farg0, float farg1) 
     M2C_FIELD(this, f32 *, 8) = farg1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 KDCameraSimpleDelta::IsUsingIdealDelta() {
     f64 sp48;
     f64 sp40;
@@ -167,21 +162,11 @@ u8 KDCameraSimpleDelta::IsUsingIdealDelta() {
     }
     return 1U;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void KDCameraSimpleDelta::OverrideUpdate() {
-    f64 sp50;                                       /* compiler-managed */
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
+    MKVector3 sp48;
+    MKVector3 sp38;
     MKVector3 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
     f32 temp_f0_287;
     f32 temp_f0_295;
     f32 temp_f0_356;
@@ -257,27 +242,23 @@ void KDCameraSimpleDelta::OverrideUpdate() {
         }
     }
     if (this->unk54 & 2) {
-        sp18 = 0.0f;
-        sp1C = this->unk18;
-        sp20 = this->unk1C;
-        sp48 = (f64) sp18;
-        sp50 = (f64) sp20;
-        sp8 = 0.0f;
-        spC = this->unk4;
-        sp10 = this->unk8;
-        sp38 = (f64) sp8;
-        sp40 = (f64) sp10;
-        KDMath_CriticalDamp<MKVector3>(sp28, *((MKVector3 *) &sp48), *((MKVector3 *) &sp38), this->unk50, gUpdateTimeDelta);
-        sp48 += M2C_BITWISE(f64, sp28);
-        sp50 = (f32) sp50 + sp28.unk8;
-        this->unk18 = (*(f32 *) ((u8 *) &sp48 + 0x4));
-        this->unk1C = sp50;
+        sp48.unk0 = 0.0f;
+        sp48.unk4 = this->unk18;
+        sp48.unk8 = this->unk1C;
+        sp38.unk0 = 0.0f;
+        sp38.unk4 = this->unk4;
+        sp38.unk8 = this->unk8;
+        KDMath_CriticalDamp<MKVector3>(sp28, sp48, sp38, this->unk50, gUpdateTimeDelta);
+        sp48.unk0 += sp28.unk0;
+        sp48.unk4 += sp28.unk4;
+        sp48.unk8 += sp28.unk8;
+        this->unk18 = sp48.unk4;
+        this->unk1C = sp48.unk8;
         if (IsUsingIdealDelta() != 0) {
             ((KDCameraSimpleDelta::Override *) &this->unk44)->DisableSmoothDelta();
         }
     }
 }
-#endif
 
 void KDCameraSimpleDelta::DisableDeltaOverride(float arg0) {
     if (IsUsingIdealDelta() == 0) {
@@ -413,32 +394,22 @@ void KDCameraSimpleDelta::SetDeltaStages(KDCameraDeltaStages *arg0, bool arg1, b
     }
 }
 
-void KDCameraSimpleDelta::GetDeltaVectorAtPitch(float arg0) {
+#pragma dont_inline on
+MKVector3 KDCameraSimpleDelta::GetDeltaVectorAtPitch(float farg0) {
+    MKVector3 result;
     Matrix sp30;
-    f64 sp28;
-    f64 sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 temp_f0_844;
     f32 temp_f1_839;
-    f32 temp_f2_842;
 
     sp30.SetIdentity();
-    sp30.SetRotationPitch(arg0);
-    sp20 = (f64) sp30.unk20;
-    sp28 = (f64) sp30.unk28;
-    temp_f1_839 = ((KDCameraSimpleDelta *) (M2C_ERROR(/* Read from unset register $r4 */)))->GetCurrentDelta();
-    temp_f2_842 = (*(f32 *) ((u8 *) &sp20 + 0x4)) * temp_f1_839;
-    temp_f0_844 = (f32) sp28 * temp_f1_839;
-    sp10 = 0.0f;
-    sp14 = temp_f2_842;
-    sp18 = temp_f0_844;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp18;
+    sp30.SetRotationPitch(farg0);
+    temp_f1_839 = GetCurrentDelta();
+    result.unk0 = 0.0f;
+    result.unk4 = sp30.unk24 * temp_f1_839;
+    result.unk8 = sp30.unk28 * temp_f1_839;
+    return result;
 }
+#pragma dont_inline reset
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void KDCameraSimpleDelta::Update(const MKVector3 &arg0) {
     f64 sp48;
     f64 sp40;
@@ -520,7 +491,6 @@ void KDCameraSimpleDelta::Update(const MKVector3 &arg0) {
     }
     OverrideUpdate();
 }
-#endif
 
 void KDCameraSimpleDelta::ClearData() {
     ((KDCameraDeltaDrag *) &this->unk28)->ClearData();
@@ -633,7 +603,7 @@ void KDCameraDeltaStagesEx::Init(float *arg0, float *arg1) {
     this->unk0 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[15])' does not match 'stricmp(signed char *, signed char *)'
+extern "C" s32 stricmp(s8 *, s8 *);
 s32 KDCameraDeltaStages::LoadLine(MKIniLine *arg0, char *arg1) {
     s8 *sp8;
 
@@ -649,14 +619,12 @@ s32 KDCameraDeltaStages::LoadLine(MKIniLine *arg0, char *arg1) {
         goto block_8;
     }
 block_8:
-    arg0->GetFieldName();
-    if (stricmp("deltaStageType") == 0) {
+    if (stricmp(arg0->GetFieldName(), (s8 *) "deltaStageType") == 0) {
         sp8 = NULL;
-        if ((arg0->AsString(0, &sp8) != 0) && (stricmp(sp8, arg1) == 0)) {
+        if ((arg0->AsString(0, (const char **) &sp8) != 0) && (stricmp(sp8, (s8 *) arg1) == 0)) {
             pCurrentLoadingStage_514 = this;
             return 1;
         }
     }
     return 0;
 }
-#endif

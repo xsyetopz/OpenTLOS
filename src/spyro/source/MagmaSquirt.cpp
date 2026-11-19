@@ -115,7 +115,7 @@ void MagmaSquirt::Draw() {
 
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *MagmaSquirt::Update() {
     f64 sp140;
     f64 sp138;

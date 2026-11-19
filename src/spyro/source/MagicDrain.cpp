@@ -95,7 +95,7 @@ void MagicDrain::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3)
             M2C_FIELD(temp_r3_131, f64 *, 0x18) = (f64) M2C_FIELD(temp_r4_125, f64 *, 8);
         }
     }
-    this->unk1B8 = 0.0f;
+    M2C_FIELD(this, f32 *, 0x1B8) = 0.0f;
     sp8 = -1;
     this->unk160.Init((MKProp *) this, 1, 0, 0, 0, 0, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }

@@ -13,6 +13,7 @@ class KDProperty;
 class KDPropertyClassRegistry;
 class KDPropertySet;
 class MKIniLine;
+class MKVector3;
 class MKVector4;
 
 class KDParticleEmitterProperty : public KDProperty {  // base: ctor/dtor vtable stores
@@ -31,7 +32,7 @@ public:
     virtual void Update(void);
     virtual void Command(int);
     virtual void SetColor(MKVector4);
-    virtual void GetColor(void);
+    virtual MKVector3 GetColor(void);
     KDParticleEmitterProperty(void);
     static u8 classInfo[0x10];
     /* 0x010 */ MKIniLine* unk10;
@@ -153,13 +154,18 @@ inline void KDParticleEmitterProperty::SetColor(MKVector4 arg0) {
 }
 #endif
 
-inline void KDParticleEmitterProperty::GetColor() {
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline MKVector3 KDParticleEmitterProperty::GetColor() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     void *temp_r4_106;
 
-    temp_r4_106 = (void *) (*KDProperty::pInstanceMem + (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 8));
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_106, f64 *, 0);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_106, f64 *, 8);
+    temp_r4_106 = (void *) (*KDProperty::pInstanceMem + (this->unk8 + 8));
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(temp_r4_106, f64 *, 0);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(temp_r4_106, f64 *, 8);
+    return result;
 }
+#endif
 
 inline s32 KDParticleEmitterProperty::GetInstanceDataSize() const {
     return 0x78;

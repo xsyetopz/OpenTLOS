@@ -56,13 +56,11 @@ extern void **gMK;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'unkC8'
 void GuardianCageCrystal::Deinit() {
-    ((Targetable *) &this->unkC8)->UnregisterTargetable();
+    ((Targetable *) ((s8 *) this + 0xC8))->UnregisterTargetable();
     Shatterable::Deinit();
     KDSound_Stop((int *) &this->unk1D8);
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void GuardianCageCrystal::Explode() {
@@ -112,13 +110,12 @@ void GuardianCageCrystal::Draw() {
     Shatterable::Draw();
 }
 
-#if 0 // DRAFT: undefined identifier 'spE0'
 void *GuardianCageCrystal::Update() {
     f64 sp100;
     f64 spF8;
     f64 spF0;
     f64 spE8;
-    f64 spD8;
+    MKVector3 spD8;
     f64 spD0;
     f64 spC8;
     f64 spC0;
@@ -170,9 +167,8 @@ void *GuardianCageCrystal::Update() {
     ((KDSoundFader *) &this->unk1D8)->Update(GS_EnergyBeamLP, 1U, this->unk1D4 == 0, NULL, &this->unk200, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     Shatterable::Update();
     if ((u8) this->unk1D4 == 0) {
-        ((GuardianCage *) &spD8)->GetBeamPosition((s32) this->unk1D0);
-        this->unk1B8 = spD8;
-        this->unk1C0 = spE0;
+        spD8 = ((GuardianCage *) this->unk1D0)->GetBeamPosition(this->unk1CC);
+        *(MKVector3 *) &this->unk1B8 = spD8;
         temp_f29_227 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f1_231 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         var_f4_232 = 0.0f;
@@ -255,19 +251,17 @@ void *GuardianCageCrystal::Update() {
         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &spF8), *((MKVector3 *) &spE8), sp14, *((MKVector4 *) &sp88), 0.0f);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to 'long *'
 f32 GuardianCageCrystal::Resolve() {
-    f64 sp8;
+    MKVector3 sp8;
     void *temp_r31_441;
 
     this->unk1D0 = (long *) (checked_cast<GuardianCage *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, M2C_UNK *), 0x60)(gMK, "FireGuardianCage")));
     temp_r31_441 = checked_cast<GuardianCageCrystalDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) Tools_GetMatchingRefPointIndex(this->unk4, "beam"), &this->unk1A8);
-    ((GuardianCage *) &sp8)->GetBeamPosition((s32) this->unk1D0);
-    this->unk1B8 = sp8;
-    this->unk1C0 = sp10;
+    sp8 = ((GuardianCage *) this->unk1D0)->GetBeamPosition(this->unk1CC);
+    *(MKVector3 *) &this->unk1B8 = sp8;
     ((EnergyBeam *) (M2C_FIELD(temp_r31_441, EnergyBeam **, 0x16C)))->SpawnEnergyBeam(&this->unk1A8, (MKVector3 *) &this->unk1B8, 1.0f);
     this->unk1C8 = M2C_ERROR(/* Read from unset register $r3 */);
     ((Targetable *) &this->unkC8)->UnregisterTargetable();
@@ -336,12 +330,12 @@ void GuardianCageCrystalDescriptor::Deinit() {
     ShatterableDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void GuardianCageCrystalDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
-    this->unk16C = checked_cast<EnergyBeam *, MKProp>(((MKSceneManager *) gMK)->CreateProp("EnergyBeam"));
+    MKProp *prop = ((MKSceneManager *) gMK)->CreateProp("EnergyBeam");
+    EnergyBeam *beam = checked_cast<EnergyBeam *, MKProp>(prop);
+    M2C_FIELD(this, EnergyBeam **, 0x16C) = beam;
 }
-#endif
 
 void GuardianCageCrystalDescriptor::Init() {
     ShatterableDescriptor::Init();

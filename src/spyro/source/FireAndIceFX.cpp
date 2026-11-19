@@ -391,7 +391,7 @@ void FireAndIceFX::Update() {
                 return;
             }
             sp28 = MKVector(100.0f, 100.0f, 100.0f);
-            sp38.operator*(gUpdateTimeDelta);
+            sp38 = ((MKVector3 *) &this->unk50)->operator*(gUpdateTimeDelta);
             temp_f0_694 = M2C_FIELD(this, f64 *, 0x40) + M2C_BITWISE(f64, sp38);
             sp8 = temp_f0_694;
             sp48 = temp_f0_694;

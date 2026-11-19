@@ -182,7 +182,7 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
     sp180 = temp_f0_139;
     sp18 = (f32) M2C_FIELD(arg1, f64 *, 0x28) - (f32) M2C_FIELD(arg1, f64 *, 0x18);
     sp188 = (f64) sp18;
-    sp190.operator*(0.5f);
+    sp190 = ((MKVector3 *) &sp180)->operator*(0.5f);
     sp20 = (f64) M2C_FIELD(arg1, f32 *, 0x10) + M2C_BITWISE(f64, sp190);
     sp1A0 = sp20;
     sp28 = (f32) M2C_FIELD(arg1, f64 *, 0x18) + sp190.unk8;
@@ -268,69 +268,41 @@ void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *a
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'unsigned char'
 void HeatDistortPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, float arg3) {
     MKVector3 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f64 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    MKHeap *temp_r3_348;
+    MKVector3 sp38;
+    MKVector3 sp28;
     s32 var_ctr_346;
     s32 var_r30_345;
-    void *temp_r3_402;
-    void *temp_r6_361;
-    void *temp_r6_372;
 
     if ((s32) this->unkC < 0x63) {
         var_r30_345 = 0;
         var_ctr_346 = 0x64;
-loop_2:
-        temp_r3_348 = this->unk4;
-        if ((u8) *(temp_r3_348 + (var_r30_345 + 0x60)) == 0) {
-            M2C_FIELD((temp_r3_348 + var_r30_345), s8 *, 0x60) = 1;
-            temp_r6_361 = this->unk4 + var_r30_345;
-            M2C_FIELD(temp_r6_361, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-            M2C_FIELD(temp_r6_361, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-            sp10 = 6.2831855f;
-            temp_r6_372 = this->unk4 + (var_r30_345 + 0x40);
-            M2C_FIELD(temp_r6_372, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
-            M2C_FIELD(temp_r6_372, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-            sp20 = 0.0f;
-            M2C_FIELD((this->unk4 + var_r30_345), f32 *, 0x50) = arg2;
-            sp8 = 6.2831855f;
-            M2C_FIELD((this->unk4 + var_r30_345), f32 *, 0x54) = arg3;
-            spC = 6.2831855f;
-            M2C_FIELD((this->unk4 + var_r30_345), f32 *, 0x58) = arg3;
-            sp18 = 0.0f;
-            sp1C = 0.0f;
-            sp28 = (f64) sp8;
-            sp30 = (f64) sp10;
-            sp38 = (f64) sp18;
-            sp40 = (f64) sp20;
-            sp48 = KDRand_Vector(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
-            temp_r3_402 = this->unk4 + (var_r30_345 + 0x30);
-            M2C_FIELD(temp_r3_402, MKVector3 *, 0) = sp48;
-            *(this->unk8 + (this->unkC * 4)) = this->unk4 + var_r30_345;
-            this->unkC += 1;
-            return;
-        }
-        var_r30_345 += 0x70;
-        var_ctr_346 -= 1;
-        if (var_ctr_346 == 0) {
-
-        } else {
-            goto loop_2;
-        }
+        do {
+            if (M2C_FIELD(this->unk4, u8 *, var_r30_345 + 0x60) == 0) {
+                M2C_FIELD(this->unk4, s8 *, var_r30_345 + 0x60) = 1;
+                M2C_FIELD(this->unk4, MKVector3 *, var_r30_345) = arg0;
+                M2C_FIELD(this->unk4, MKVector3 *, var_r30_345 + 0x40) = arg1;
+                M2C_FIELD(this->unk4, f32 *, var_r30_345 + 0x50) = arg2;
+                M2C_FIELD(this->unk4, f32 *, var_r30_345 + 0x54) = arg3;
+                M2C_FIELD(this->unk4, f32 *, var_r30_345 + 0x58) = arg3;
+                sp28.unk0 = 6.2831855f;
+                sp28.unk4 = 6.2831855f;
+                sp28.unk8 = 6.2831855f;
+                sp38.unk0 = 0.0f;
+                sp38.unk4 = 0.0f;
+                sp38.unk8 = 0.0f;
+                sp48 = KDRand_Vector(sp38, sp28);
+                M2C_FIELD(this->unk4, MKVector3 *, var_r30_345 + 0x30) = sp48;
+                M2C_FIELD(this->unk8, s8 **, this->unkC * 4) = (s8 *) this->unk4 + var_r30_345;
+                this->unkC += 1;
+                return;
+            }
+            var_r30_345 += 0x70;
+            var_ctr_346 -= 1;
+        } while (var_ctr_346 != 0);
     }
 }
-#endif
 
 void HeatDistortPS::Deinit() {
     MKHeap *temp_r31_436;
@@ -351,135 +323,99 @@ void HeatDistortPS::Deinit() {
     free(temp_r31_450);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'signed char *'
+f32 Xform3D2D(MKVector3 *, const MKVector3 &, Matrix *);
+s32 DistortParticleCompare(const void *, const void *);
+extern "C" M2C_UNK qsort(void *, M2C_UNK, M2C_UNK, s32 (*)(const void *, const void *));
 void HeatDistortPS::Draw() {
-    Matrix spE0;
-    Matrix spA0;
-    Matrix sp60;
-    M2C_UNK sp5C;
-    f64 sp58;
-    f64 sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f32 sp28;
-    f32 sp24;
+    Matrix worldToScreen;
+    Matrix camera;
+    Matrix particle;
+    MKVector3 sp50;
+    void *p;
     f32 sp20;
-    f32 sp18;
-    f32 sp14;
+    f32 sp24;
+    f32 sp28;
     f32 sp10;
-    HeatDistortPS::DistortParticle *temp_r4_642;
-    f32 temp_f11_553;
-    f32 temp_f12_544;
-    f32 temp_f13_540;
-    f32 temp_f30_535;
-    f32 temp_f3_580;
-    f32 temp_f6_586;
-    f32 temp_f7_550;
-    f32 temp_f7_592;
-    f32 temp_f9_551;
-    s32 var_r29_509;
-    s32 var_r29_637;
-    s32 var_r30_510;
-    s32 var_r30_638;
-    void *temp_r6_533;
+    f32 sp14;
+    f32 sp18;
+    f32 posX;
+    f32 posY;
+    f32 posZ;
+    s32 i;
+    s32 off;
 
-    M2C_STRUCT_COPY((s32) &sp60.unk3C + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
-    M2C_STRUCT_COPY((s32) &sp5C + 4, MKView_GetWorldToScreenMatrix() - 4 + 4, 0x40);
-    var_r29_509 = 0;
-    var_r30_510 = 0;
-loop_2:
-    if (var_r29_509 < (s32) this->unkC) {
-        M2C_STRUCT_COPY((s32) &spA0.unk3C + 4, (s32) &sp60.unk3C + 4, 0x40);
-        spE0.Scale3x3(&spE0, M2C_FIELD(*(this->unk8 + var_r30_510), f32 *, 0x50));
-        temp_r6_533 = *(this->unk8 + var_r30_510);
-        temp_f30_535 = M2C_FIELD(temp_r6_533, f32 *, 0);
-        spE0.unk30 = temp_f30_535;
-        temp_f13_540 = M2C_FIELD(temp_r6_533, f32 *, 4);
-        spE0.unk34 = temp_f13_540;
-        temp_f12_544 = M2C_FIELD(temp_r6_533, f32 *, 8);
-        spE0.unk38 = temp_f12_544;
-        spE0.unk3C = 1.0f;
-        temp_f7_550 = this->unk10.unk4;
-        temp_f9_551 = this->unk10.unk0;
-        temp_f11_553 = this->unk10.unk8;
-        sp20 = temp_f30_535 + ((temp_f11_553 * spE0.unk20) + ((temp_f9_551 * M2C_BITWISE(f32, spE0)) + (temp_f7_550 * spE0.unk10)));
-        sp24 = temp_f13_540 + ((temp_f11_553 * spE0.unk24) + ((temp_f9_551 * spE0.unk4) + (temp_f7_550 * spE0.unk14)));
-        sp28 = temp_f12_544 + ((temp_f11_553 * spE0.unk28) + ((temp_f9_551 * spE0.unk8) + (temp_f7_550 * spE0.unk18)));
-        sp40 = (f64) sp20;
-        sp48 = (f64) sp28;
-        sp50 = (f64) sp20;
-        sp58 = (f64) sp28;
-        M2C_FIELD(*(this->unk8 + var_r30_510), f32 *, 0x5C) = Xform3D2D(((u8 *) temp_r6_533) + 0x10, *((MKVector3 *) &sp50), &sp60);
-        temp_f3_580 = this->unk40.unk4;
-        temp_f6_586 = this->unk40.unk0;
-        temp_f7_592 = this->unk40.unk8;
-        sp10 = spE0.unk30 + ((temp_f7_592 * spE0.unk20) + ((temp_f6_586 * M2C_BITWISE(f32, spE0)) + (temp_f3_580 * spE0.unk10)));
-        sp14 = spE0.unk34 + ((temp_f7_592 * spE0.unk24) + ((temp_f6_586 * spE0.unk4) + (temp_f3_580 * spE0.unk14)));
-        sp18 = spE0.unk38 + ((temp_f7_592 * spE0.unk28) + ((temp_f6_586 * spE0.unk8) + (temp_f3_580 * spE0.unk18)));
-        sp50 = (f64) sp10;
-        sp58 = (f64) sp18;
-        sp30 = (f64) sp10;
-        sp38 = (f64) sp18;
-        Xform3D2D(*(this->unk8 + var_r30_510) + 0x20, *((MKVector3 *) &sp50), &sp60);
-        var_r29_509 += 1;
-        var_r30_510 += 4;
-        goto loop_2;
+    M2C_STRUCT_COPY(&camera, MKView_GetCameraMatrix(), 0x40);
+    M2C_STRUCT_COPY(&worldToScreen, MKView_GetWorldToScreenMatrix(), 0x40);
+    i = 0;
+    off = 0;
+    while (i < (s32) this->unkC) {
+        M2C_STRUCT_COPY(&particle, &camera, 0x40);
+        particle.Scale3x3(&particle, M2C_FIELD(M2C_FIELD(this->unk8, void **, off), f32 *, 0x50));
+        p = M2C_FIELD(this->unk8, void **, off);
+        posX = M2C_FIELD(p, f32 *, 0x0);
+        particle.unk30 = posX;
+        posY = M2C_FIELD(p, f32 *, 0x4);
+        particle.unk34 = posY;
+        posZ = M2C_FIELD(p, f32 *, 0x8);
+        particle.unk38 = posZ;
+        particle.unk3C = 1.0f;
+
+        sp20 = posX + ((this->unk10.unk8 * particle.unk20) + ((this->unk10.unk0 * particle.unk0) + (this->unk10.unk4 * particle.unk10)));
+        sp24 = posY + ((this->unk10.unk8 * particle.unk24) + ((this->unk10.unk0 * particle.unk4) + (this->unk10.unk4 * particle.unk14)));
+        sp28 = posZ + ((this->unk10.unk8 * particle.unk28) + ((this->unk10.unk0 * particle.unk8) + (this->unk10.unk4 * particle.unk18)));
+        sp50.unk0 = sp20;
+        sp50.unk4 = sp24;
+        sp50.unk8 = sp28;
+        M2C_FIELD(p, f32 *, 0x5C) = Xform3D2D((MKVector3 *) ((s8 *) p + 0x10), sp50, &worldToScreen);
+
+        sp10 = particle.unk30 + ((this->unk40.unk8 * particle.unk20) + ((this->unk40.unk0 * particle.unk0) + (this->unk40.unk4 * particle.unk10)));
+        sp14 = particle.unk34 + ((this->unk40.unk8 * particle.unk24) + ((this->unk40.unk0 * particle.unk4) + (this->unk40.unk4 * particle.unk14)));
+        sp18 = particle.unk38 + ((this->unk40.unk8 * particle.unk28) + ((this->unk40.unk0 * particle.unk8) + (this->unk40.unk4 * particle.unk18)));
+        sp50.unk0 = sp10;
+        sp50.unk4 = sp14;
+        sp50.unk8 = sp18;
+        Xform3D2D((MKVector3 *) ((s8 *) p + 0x20), sp50, &worldToScreen);
+
+        i += 1;
+        off += 4;
     }
-    qsort(this->unk8, 4, DistortParticleCompare);
+    qsort(this->unk8, this->unkC, 4, DistortParticleCompare);
     MKMaterial_SetMaterial(this->unk0);
     MKPrimitive(0xC, 0x10);
-    var_r29_637 = 0;
-    var_r30_638 = 0;
-loop_7:
-    if (var_r29_637 < (s32) this->unkC) {
-        temp_r4_642 = *(this->unk8 + var_r30_638);
-        if (M2C_FIELD(temp_r4_642, f32 *, 0x5C) > 800.0f) {
-            DrawParticle(temp_r4_642, &spA0);
+    i = 0;
+    off = 0;
+    while (i < (s32) this->unkC) {
+        p = M2C_FIELD(this->unk8, void **, off);
+        if (M2C_FIELD(p, f32 *, 0x5C) > 800.0f) {
+            DrawParticle((HeatDistortPS::DistortParticle *) p, &camera);
         }
-        var_r29_637 += 1;
-        var_r30_638 += 4;
-        goto loop_7;
+        i += 1;
+        off += 4;
     }
     MKEndPrimitive();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'void *'
 void HeatDistortPS::Update() {
-    f64 sp60;
-    f64 sp58;
-    MKVector3 sp48;
-    MKVector3 sp38;
-    f64 sp30;
-    f64 sp28;
-    f32 sp20;
-    f64 sp18;
-    f32 sp10;
-    f64 sp8;
-    MKHeap *temp_r5_727;
     f32 temp_f27_743;
     f32 temp_f28_690;
     f32 temp_f2_700;
     f32 var_f0_701;
-    f64 temp_f0_759;
-    f64 temp_f0_785;
+    f32 sp8;
+    f32 spC;
+    f32 sp10;
+    MKVector3 sp38;
+    MKVector3 sp48;
     s32 temp_r31_696;
     s32 temp_r3_723;
     s32 var_r30_692;
     void *temp_r3_698;
-    void *temp_r3_767;
-    void *temp_r3_781;
-    void *temp_r3_804;
     void *temp_r4_717;
 
     temp_f28_690 = (f32) pow(0.75, gUpdateTimeDelta);
     var_r30_692 = 0;
-loop_11:
-    if (var_r30_692 < (s32) this->unkC) {
+    while (var_r30_692 < (s32) this->unkC) {
         temp_r31_696 = var_r30_692 * 4;
-        temp_r3_698 = *(this->unk8 + temp_r31_696);
+        temp_r3_698 = M2C_FIELD(this->unk8, void **, temp_r31_696);
         temp_f2_700 = M2C_FIELD(temp_r3_698, f32 *, 0x58);
         var_f0_701 = M2C_FIELD(temp_r3_698, f32 *, 0x54) - gUpdateTimeDelta;
         if (var_f0_701 < temp_f2_700) {
@@ -493,43 +429,33 @@ loop_11:
             var_f0_701 = 0.0f;
         }
         M2C_FIELD(temp_r3_698, f32 *, 0x54) = var_f0_701;
-        temp_r4_717 = *(this->unk8 + temp_r31_696);
+        temp_r4_717 = M2C_FIELD(this->unk8, void **, temp_r31_696);
         if (M2C_FIELD(temp_r4_717, f32 *, 0x54) <= 0.0f) {
             temp_r3_723 = var_r30_692 + 1;
             M2C_FIELD(temp_r4_717, s8 *, 0x60) = 0;
-            temp_r5_727 = this->unk8;
-            memcpy(temp_r5_727 + temp_r31_696, temp_r5_727 + (temp_r3_723 * 4), (this->unkC - temp_r3_723) * 4);
+            memcpy((s8 *) this->unk8 + temp_r31_696, (s8 *) this->unk8 + (temp_r3_723 * 4), (this->unkC - temp_r3_723) * 4);
             var_r30_692 -= 1;
             this->unkC -= 1;
         } else {
             temp_f27_743 = MKRand_Float((int *) &gViewSeed, 6.2831855f, 6.2831855f);
             sp38 = MKVector(MKRand_Float((int *) &gViewSeed, 3.1415927f, 3.1415927f), temp_f27_743, 0.0f);
-            sp48.operator*(gUpdateTimeDelta);
-            temp_f0_759 = sp48 * 5.263544247e-315;
-            sp18 = temp_f0_759;
-            sp58 = temp_f0_759;
-            temp_r3_767 = *(this->unk8 + temp_r31_696) + 0x30;
-            sp20 = sp48.unk8 * 1.0f;
-            sp60 = (f64) sp20;
-            M2C_FIELD(temp_r3_767, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_767, f64 *, 0) + temp_f0_759);
-            M2C_FIELD(temp_r3_767, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_767, f32 *, 8) + (f32) sp60);
-            temp_r3_781 = *(this->unk8 + temp_r31_696);
-            temp_f0_785 = *(temp_r3_781 + 0x40) * (f64) gUpdateTimeDelta;
-            sp8 = temp_f0_785;
-            sp28 = temp_f0_785;
-            sp10 = M2C_FIELD(temp_r3_781, f32 *, 0x48) * gUpdateTimeDelta;
-            sp30 = (f64) sp10;
-            M2C_FIELD(temp_r3_781, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_781, f64 *, 0) + temp_f0_785);
-            M2C_FIELD(temp_r3_781, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_781, f32 *, 8) + (f32) sp30);
-            temp_r3_804 = *(this->unk8 + temp_r31_696) + 0x40;
-            M2C_FIELD(temp_r3_804, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_804, f64 *, 0) * (f64) temp_f28_690);
-            M2C_FIELD(temp_r3_804, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_804, f32 *, 8) * temp_f28_690);
+            sp48 = sp38.operator*(gUpdateTimeDelta);
+            M2C_FIELD(temp_r3_698, f32 *, 0x30) = M2C_FIELD(temp_r3_698, f32 *, 0x30) + (sp48.unk0 * 1.0f);
+            M2C_FIELD(temp_r3_698, f32 *, 0x34) = M2C_FIELD(temp_r3_698, f32 *, 0x34) + (sp48.unk4 * 1.0f);
+            M2C_FIELD(temp_r3_698, f32 *, 0x38) = M2C_FIELD(temp_r3_698, f32 *, 0x38) + (sp48.unk8 * 1.0f);
+            sp8 = M2C_FIELD(temp_r3_698, f32 *, 0x40) * gUpdateTimeDelta;
+            spC = M2C_FIELD(temp_r3_698, f32 *, 0x44) * gUpdateTimeDelta;
+            sp10 = M2C_FIELD(temp_r3_698, f32 *, 0x48) * gUpdateTimeDelta;
+            M2C_FIELD(temp_r3_698, f32 *, 0x30) = M2C_FIELD(temp_r3_698, f32 *, 0x30) + sp8;
+            M2C_FIELD(temp_r3_698, f32 *, 0x34) = M2C_FIELD(temp_r3_698, f32 *, 0x34) + spC;
+            M2C_FIELD(temp_r3_698, f32 *, 0x38) = M2C_FIELD(temp_r3_698, f32 *, 0x38) + sp10;
+            M2C_FIELD(temp_r3_698, f32 *, 0x40) = M2C_FIELD(temp_r3_698, f32 *, 0x40) * temp_f28_690;
+            M2C_FIELD(temp_r3_698, f32 *, 0x44) = M2C_FIELD(temp_r3_698, f32 *, 0x44) * temp_f28_690;
+            M2C_FIELD(temp_r3_698, f32 *, 0x48) = M2C_FIELD(temp_r3_698, f32 *, 0x48) * temp_f28_690;
         }
         var_r30_692 += 1;
-        goto loop_11;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void HeatDistortPS::Init() {
@@ -612,16 +538,16 @@ void HeatDistortPS::Init() {
     sp1C0 = (f64) spA0;
     sp168 = (f64) sp38;
     sp170 = (f64) sp40;
-    sp178.operator*(50.0f);
-    sp188.operator*(50.0f);
+    sp178 = ((MKVector3 *) &sp168)->operator*(50.0f);
+    sp188 = ((MKVector3 *) &sp1B8)->operator*(50.0f);
     sp78 = sp188 + M2C_BITWISE(f64, sp178);
     M2C_FIELD(this, f64 *, 0x10) = sp78;
     sp80 = sp188.unk8 + sp178.unk8;
     sp198 = sp78;
     sp1A0 = (f64) sp80;
     M2C_FIELD(this, f64 *, 0x18) = (f64) sp80;
-    sp138.operator*(50.0f);
-    sp148.operator*(50.0f);
+    sp138 = ((MKVector3 *) &sp1A8)->operator*(50.0f);
+    sp148 = ((MKVector3 *) &sp1B8)->operator*(50.0f);
     temp_f0_909 = sp148 + M2C_BITWISE(f64, sp138);
     sp68 = temp_f0_909;
     M2C_FIELD(this, f64 *, 0x20) = temp_f0_909;
@@ -634,26 +560,26 @@ void HeatDistortPS::Init() {
     sp30 = -(f32) sp1B0;
     spE8 = (f64) sp28;
     spF0 = (f64) sp30;
-    spF8.operator*(50.0f);
+    spF8 = ((MKVector3 *) &spE8)->operator*(50.0f);
     sp18 = -(f32) sp1B8;
     sp1C = -(*(f32 *) ((u8 *) &sp1B8 + 0x4));
     sp20 = -(f32) sp1C0;
     sp108 = (f64) sp18;
     sp110 = (f64) sp20;
-    sp118.operator*(50.0f);
+    sp118 = ((MKVector3 *) &sp108)->operator*(50.0f);
     sp58 = sp118 + M2C_BITWISE(f64, spF8);
     M2C_FIELD(this, f64 *, 0x30) = sp58;
     sp60 = sp118.unk8 + spF8.unk8;
     sp128 = sp58;
     sp130 = (f64) sp60;
     M2C_FIELD(this, f64 *, 0x38) = (f64) sp60;
-    spA8.operator*(50.0f);
+    spA8 = ((MKVector3 *) &sp1A8)->operator*(50.0f);
     sp8 = -(f32) sp1B8;
     spC = -(*(f32 *) ((u8 *) &sp1B8 + 0x4));
     sp10 = -(f32) sp1C0;
     spB8 = (f64) sp8;
     spC0 = (f64) sp10;
-    spC8.operator*(50.0f);
+    spC8 = ((MKVector3 *) &spB8)->operator*(50.0f);
     sp48 = spC8 + M2C_BITWISE(f64, spA8);
     M2C_FIELD(this, f64 *, 0x40) = sp48;
     sp50 = spC8.unk8 + spA8.unk8;
@@ -687,8 +613,6 @@ void HeatDistortPS::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const void' to 'signed char *'
 s32 DistortParticleCompare(const void *arg0, const void *arg1) {
-    return -(s32) (M2C_FIELD(*arg0, f32 *, 0x5C) - M2C_FIELD(*arg1, f32 *, 0x5C));
+    return -(s32) (M2C_FIELD(*(const void **) arg0, f32 *, 0x5C) - M2C_FIELD(*(const void **) arg1, f32 *, 0x5C));
 }
-#endif

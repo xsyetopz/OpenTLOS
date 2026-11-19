@@ -7,6 +7,7 @@
 #include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"

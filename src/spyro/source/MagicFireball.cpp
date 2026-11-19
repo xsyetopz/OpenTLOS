@@ -93,7 +93,7 @@ void MagicFireball::Deactivate() {
     GameProp::Deactivate();
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *MagicFireball::Update() {
     Matrix sp130;
     Matrix spF0;
@@ -222,7 +222,7 @@ void *MagicFireball::Update() {
         sp78 = MKVector(1.0f, 1.0f, 1.0f);
         sp88 = MKVector(-1.0f, -1.0f, -1.0f);
         sp98 = KDRand_Vector(sp88, sp78);
-        spA8.operator*(25.0f);
+        spA8 = sp98.operator*(25.0f);
         sp38 = sp130.unk30 + M2C_BITWISE(f64, spA8);
         M2C_FIELD(temp_r3_308, f64 *, 0) = sp38;
         sp40 = sp130.unk38 + spA8.unk8;
@@ -343,8 +343,8 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     f64 spB8;
     f64 spB0;
     f64 spA8;
-    f64 sp98;
-    f64 sp88;
+    MKVector3 sp98;
+    MKVector3 sp88;
     f32 sp80;
     f64 sp78;
     f32 sp70;
@@ -405,7 +405,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
             sp148 = MKVector(1.0f, 1.0f, 1.0f);
             sp158 = MKVector(-1.0f, 0.0f, -1.0f);
             sp168 = KDRand_Vector(sp158, sp148);
-            sp178.operator*(25.0f);
+            sp178 = sp168.operator*(25.0f);
             sp58 = sp1C0.unk30 + M2C_BITWISE(f64, sp178);
             M2C_FIELD(temp_r3_509, f64 *, 0) = sp58;
             sp60 = sp1C0.unk38 + sp178.unk8;
@@ -427,7 +427,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
             spE8 = MKVector(1.0f, 1.0f, 1.0f);
             spF8 = MKVector(-1.0f, 0.0f, -1.0f);
             sp108 = KDRand_Vector(spF8, spE8);
-            sp118.operator*(500.0f);
+            sp118 = sp108.operator*(500.0f);
             sp38 = sp1A8 + M2C_BITWISE(f64, sp118);
             M2C_FIELD(temp_r25_514, f64 *, 0) = sp38;
             sp40 = (f32) sp1B0 + sp118.unk8;
@@ -462,9 +462,8 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     sp278 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2A8 = 0;
     if (temp_r4_630 != NULL) {
-        ((MKProp *) &sp98)->GetPos();
-        sp288 = sp98;
-        sp290 = spA0;
+        sp98 = temp_r4_630->GetPos();
+        *(MKVector3 *) &sp288 = sp98;
     } else {
         sp288 = 0.0f;
         (*(f32 *) ((u8 *) &sp284 + 0x8)) = 0.0f;
@@ -568,9 +567,8 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     sp278 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2A8 = 0;
     if (temp_r4_819 != NULL) {
-        ((MKProp *) &sp88)->GetPos();
-        sp288 = sp88;
-        sp290 = sp90;
+        sp88 = temp_r4_819->GetPos();
+        *(MKVector3 *) &sp288 = sp88;
     } else {
         sp288 = 0.0f;
         (*(f32 *) ((u8 *) &sp284 + 0x8)) = 0.0f;

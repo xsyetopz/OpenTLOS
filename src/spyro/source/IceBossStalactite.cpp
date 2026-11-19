@@ -76,8 +76,10 @@ static s32 lit_644 = 0;
 
 static u8 lit_683 = 1;
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
-void IceBossStalactiteSpawner::GetSpawnPoint(const MKVector3 &arg0, int arg1) {
+#if 0 // DRAFT: identifier 'IceBossStalactiteSpawner::GetSpawnPoint(const MKVector3 &, int)' redeclared was declared as: 'MKVector3 (const MKVector3 &, int)' now declared as: '
+void IceBossStalactiteSpawner::GetSpawnPoint(const MKVector3 &arg2, int arg3) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp40;
     f64 sp38;
     MKVector3 sp28;
@@ -88,25 +90,23 @@ void IceBossStalactiteSpawner::GetSpawnPoint(const MKVector3 &arg0, int arg1) {
     f32 temp_f31_68;
     f64 temp_f0_79;
     f64 temp_f0_90;
-    s32 temp_r7_51;
 
-    temp_r7_51 = (s32) M2C_ERROR(/* Read from unset register $r6 */) / 5;
-    temp_f31_68 = (500.0f * (f32) temp_r7_51) + 500.0f;
-    sp28 = KDMath_GetDirection(NormaliseAngle(M2C_FIELD(&arg0, f32 *, 0x1C) + (1.2566371f * (f32) (M2C_ERROR(/* Read from unset register $r6 */) - (temp_r7_51 * 5)))));
+    temp_f31_68 = (500.0f * (f32) (arg3 / 5)) + 500.0f;
+    sp28 = KDMath_GetDirection(NormaliseAngle(M2C_FIELD(this, f32 *, 0x1C) + (1.2566371f * (f32) (arg3 % 5))));
     temp_f0_79 = sp28 * (f64) temp_f31_68;
     sp8 = temp_f0_79;
     sp38 = temp_f0_79;
     sp10 = sp28.unk8 * temp_f31_68;
     sp40 = (f64) sp10;
-    temp_f0_90 = M2C_FIELD(arg1, f64 *, 0) + temp_f0_79;
+    temp_f0_90 = M2C_FIELD(&arg2, f64 *, 0) + temp_f0_79;
     sp18 = temp_f0_90;
-    this->unk0 = temp_f0_90;
-    sp20 = M2C_FIELD(arg1, f32 *, 8) + (f32) sp40;
-    this->unk8 = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_90;
+    sp20 = arg2.unk8 + (f32) sp40;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp20;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void IceBossStalactiteSpawner::Fire(const MKVector3 &arg0) {
     f64 sp48;
     f64 sp40;
@@ -187,7 +187,6 @@ loop_22:
         }
     }
 }
-#endif
 
 void IceBossStalactiteSpawner::DropIndividual(int arg0, bool arg1) {
     IceBossStalactite ***var_r7_248;
@@ -218,9 +217,10 @@ void IceBossStalactiteSpawner::SpawnSingleAtPos(const MKVector3 &arg0) {
     ((IceBossStalactite *) (**temp_r3_292))->Spawn(arg0, 1U, 0U);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'IceBossStalactiteSpawner' to 'double'
 void IceBossStalactiteSpawner::Spawn(const MKVector3 &arg0) {
-    IceBossStalactiteSpawner sp8;
+    f64 sp20;
+    f64 sp18;
+    MKVector3 sp8;
     IceBossStalactite ***temp_r5_331;
     IceBossStalactite ***temp_r7_360;
     IceBossStalactite ***var_r3_332;
@@ -255,16 +255,14 @@ loop_10:
         temp_r7_360 = this->unk10 - 4;
         this->unk10 = temp_r7_360;
         temp_r28_364 = **temp_r7_360;
-        sp8.GetSpawnPoint(*((MKVector3 *) this), (s32) this);
-        sp8.unk10 = M2C_BITWISE(f64, sp8);
-        sp8.unk18 = sp8.unk8;
-        sp8.unk14 = M2C_FIELD(this, f32 *, 4);
-        temp_r28_364->Spawn(*((MKVector3 *) &sp8.unk10), 0U, 1U);
+        sp8 = GetSpawnPoint(*((MKVector3 *) this), var_r29_348);
+        *(MKVector3 *) &sp18 = sp8;
+        (*(f32 *) ((u8 *) &sp18 + 0x4)) = M2C_FIELD(this, f32 *, 4);
+        temp_r28_364->Spawn(*((MKVector3 *) &sp18), 0U, 1U);
         var_r29_348 += 1;
         goto loop_10;
     }
 }
-#endif
 
 void IceBossStalactiteSpawner::Reset() {
     IceBossStalactite ***var_r31_396;
@@ -645,7 +643,7 @@ void IceBossStalactite::StickInGround(const MKVector3 &arg0) {
     sp28 = temp_f0_1010;
     sp10 = this->unk210 - sp58.unk8;
     sp30 = (f64) sp10;
-    sp38.operator*(temp_f1_1006);
+    sp38 = ((MKVector3 *) &sp28)->operator*(temp_f1_1006);
     sp18 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp38);
     this->unk208 = sp18;
     sp20 = arg0.unk8 + sp38.unk8;
@@ -1322,8 +1320,8 @@ block_6:
                     sp3D8 = KDMath_Slerp(*((MKVector3 *) &this->unk1C8), *((MKVector3 *) &sp3C8), 3.1415927f * gUpdateTimeDelta);
                     *(MKVector3 *) &this->unk1C8 = sp3D8;
                 }
-                sp398.operator*(980.0f);
-                sp3A8.operator*(gUpdateTimeDelta);
+                sp398 = ((MKVector3 *) &this->unk1A8)->operator*(980.0f);
+                sp3A8 = sp398.operator*(gUpdateTimeDelta);
                 temp_f0_2003 = sp3A8 * 5.122630465e-315;
                 sp68 = temp_f0_2003;
                 sp3B8 = temp_f0_2003;

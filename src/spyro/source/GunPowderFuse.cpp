@@ -478,7 +478,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp2F0'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void GunPowderFuse::Draw() {
     Matrix sp350;
     M2C_UNK sp34C;
@@ -486,16 +486,9 @@ void GunPowderFuse::Draw() {
     f32 sp33C;
     f32 sp338;
     f64 sp330;
-    f64 sp328;
-    f64 sp320;                                      /* compiler-managed */
-    f64 sp318;                                      /* compiler-managed */
-    f64 sp310;                                      /* compiler-managed */
-    f64 sp308;                                      /* compiler-managed */
-    f64 sp300;
-    f64 sp2F8;
-    f64 sp2E8;
-    f64 sp2D8;
-    f64 sp2C8;
+    KDSplinePathSegment sp2E8;
+    MKVector3 sp2D8;
+    MKVector3 sp2C8;
     f64 sp2C0;
     f64 sp2B8;
     f64 sp2B0;
@@ -505,18 +498,24 @@ void GunPowderFuse::Draw() {
     f64 sp290;
     f64 sp288;
     f64 sp280;
-    f64 sp278;                                      /* compiler-managed */
-    f64 sp270;                                      /* compiler-managed */
-    f64 sp268;                                      /* compiler-managed */
+    f64 sp278;
+    f64 sp270;
+    f64 sp268;
     f64 sp260;
-    f64 sp258;                                      /* compiler-managed */
-    KDSplinePathSegment sp238;
-    f64 sp228;
-    KDSplinePathSegment sp208;
-    f64 sp1F8;
-    KDSplinePathSegment sp1D8;
-    f64 sp1C8;
-    f64 sp1B8;
+    f64 sp258;
+    f64 sp250;
+    f64 sp248;
+    f64 sp238;
+    MKVector3 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp208;
+    MKVector3 sp1F8;
+    f64 sp1F0;
+    f64 sp1E8;
+    f64 sp1D8;
+    MKVector3 sp1C8;
+    MKVector3 sp1B8;
     f64 sp1B0;
     f64 sp1A8;
     f64 sp1A0;
@@ -583,9 +582,13 @@ void GunPowderFuse::Draw() {
     f32 sp14;
     f32 sp10;
     BurnPoint *var_r28_1093;
+    f32 temp_f0_1397;
+    f32 temp_f0_891;
     f32 temp_f18_1504;
     f32 temp_f18_762;
     f32 temp_f18_998;
+    f32 temp_f1_789;
+    f32 temp_f1_890;
     f32 temp_f20_748;
     f32 temp_f21_746;
     f32 temp_f22_744;
@@ -595,6 +598,8 @@ void GunPowderFuse::Draw() {
     f32 temp_f26_1097;
     f32 temp_f27_1049;
     f32 temp_f29_720;
+    f32 temp_f2_1296;
+    f32 temp_f2_790;
     f32 temp_f30_1555;
     f32 temp_f31_1513;
     f32 temp_f3_1379;
@@ -668,20 +673,22 @@ void GunPowderFuse::Draw() {
             temp_f20_748 = MKVector3::up.unk0;
 loop_44:
             if (var_r29_745 < (s32) (this->unk2B4 + 1)) {
-                ((MKProp *) &sp2D8)->GetPos();
+                sp2D8 = GetPos();
                 temp_f18_762 = (f32) var_r29_745 * temp_f29_720;
-                ((KDSplinePathSegment *) &sp2E8)->GetPosition(temp_f18_762);
-                sp78 = sp2E8 - sp2D8;
-                sp328 = sp78;
-                sp2F8 = sp78;
-                sp80 = sp2F0 - sp2E0;
-                (*(f32 *) ((u8 *) &sp328 + 0x4)) += 1.0f;
-                sp300 = (f64) sp80;
+                sp2E8.GetPosition(temp_f18_762);
+                sp78 = sp2E8.unk0 - M2C_BITWISE(f64, sp2D8);
+                sp2E8.unk30.unk10 = sp78;
+                sp2E8.unk10 = sp78;
+                sp80 = sp2E8.unk8 - sp2D8.unk8;
+                sp2E8.unk44 = M2C_BITWISE(f32, sp2E8.unk44) + 1.0f;
+                sp2E8.unk18 = (f64) sp80;
                 sp330 = (f64) sp80;
-                ((KDSplinePathSegment *) &sp2C8)->GetVelocity(temp_f18_762);
-                sp318 = sp2C8;
-                sp320 = sp2D0;
-                var_f4_797 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + ((*(f32 *) ((u8 *) &sp300 + 0x1c)) * (*(f32 *) ((u8 *) &sp300 + 0x1c))));
+                sp2C8 = this->unkB0->GetVelocity(temp_f18_762);
+                sp2E8.unk30 = M2C_BITWISE(f64, sp2C8);
+                temp_f1_789 = M2C_BITWISE(f32, sp2E8.unk30);
+                temp_f2_790 = M2C_BITWISE(f32, sp2E8.unk30.unk4);
+                sp2E8.unk30.unk8 = (f64) sp2C8.unk8;
+                var_f4_797 = (sp2E8.unk30.unk8 * sp2E8.unk30.unk8) + ((temp_f1_789 * temp_f1_789) + (temp_f2_790 * temp_f2_790));
                 if (var_f4_797 > 0.000001f) {
                     if (var_f4_797 > 0.0f) {
                         temp_f1_803 = __frsqrte(var_f4_797);
@@ -720,20 +727,22 @@ loop_44:
                 } else {
                     var_f2_864 = 0.0f;
                 }
-                temp_f4_871 = (*(f32 *) ((u8 *) &sp300 + 0x1c)) * var_f2_864;
-                temp_f3_873 = (f32) sp320 * var_f2_864;
-                temp_f5_874 = (f32) sp318 * var_f2_864;
-                (*(f32 *) ((u8 *) &sp300 + 0x1c)) = temp_f4_871;
-                sp318 = temp_f5_874;
-                sp320 = temp_f3_873;
+                temp_f4_871 = M2C_BITWISE(f32, sp2E8.unk30.unk4) * var_f2_864;
+                temp_f3_873 = sp2E8.unk30.unk8 * var_f2_864;
+                temp_f5_874 = M2C_BITWISE(f32, sp2E8.unk30) * var_f2_864;
+                sp2E8.unk30.unk4 = temp_f4_871;
+                sp2E8.unk30 = temp_f5_874;
+                sp2E8.unk30.unk8 = temp_f3_873;
                 sp68 = (temp_f22_744 * temp_f3_873) - (temp_f21_746 * temp_f4_871);
                 sp6C = (temp_f21_746 * temp_f5_874) - (temp_f20_748 * temp_f3_873);
                 sp70 = (temp_f20_748 * temp_f4_871) - (temp_f22_744 * temp_f5_874);
-                sp308 = (f64) sp68;
-                sp310 = (f64) sp70;
+                sp2E8.unk20 = (f64) sp68;
+                temp_f1_890 = M2C_BITWISE(f32, sp2E8.unk20);
+                temp_f0_891 = M2C_BITWISE(f32, sp2E8.unk24);
+                sp2E8.unk28 = (f64) sp70;
                 sp2B8 = (f64) sp68;
                 sp2C0 = (f64) sp70;
-                var_f4_900 = ((f32) sp310 * (f32) sp310) + (((f32) sp308 * (f32) sp308) + ((*(f32 *) ((u8 *) &sp300 + 0xc)) * (*(f32 *) ((u8 *) &sp300 + 0xc))));
+                var_f4_900 = ((f32) sp2E8.unk28 * (f32) sp2E8.unk28) + ((temp_f1_890 * temp_f1_890) + (temp_f0_891 * temp_f0_891));
                 if (var_f4_900 > 0.000001f) {
                     if (var_f4_900 > 0.0f) {
                         temp_f1_906 = __frsqrte(var_f4_900);
@@ -776,21 +785,21 @@ loop_44:
                 sp13C = 1.0f;
                 sp140 = 1.0f;
                 sp144 = 1.0f;
-                sp308 = (f32) sp308 * var_f2_967;
+                sp2E8.unk20 = M2C_BITWISE(f32, sp2E8.unk20) * var_f2_967;
                 temp_f18_998 = 4.0f * ((f32) var_r29_745 / (f32) this->unk2B4);
-                (*(f32 *) ((u8 *) &sp300 + 0xc)) *= var_f2_967;
-                sp310 = (f32) sp310 * var_f2_967;
+                sp2E8.unk24 = M2C_BITWISE(f32, sp2E8.unk24) * var_f2_967;
+                sp2E8.unk28 = (f32) sp2E8.unk28 * var_f2_967;
                 sp2A8 = (f64) sp138;
                 sp2B0 = (f64) sp140;
                 MKSetColorV(*((MKVector4 *) &sp2A8));
                 MKSetTexCoord1F(temp_f18_998, 0.95f);
                 temp_f26_1007 = this->unkB4;
-                temp_f0_1009 = (f64) sp308 * (f64) temp_f26_1007;
+                temp_f0_1009 = (f64) sp2E8.unk20 * (f64) temp_f26_1007;
                 sp128 = temp_f0_1009;
                 sp288 = temp_f0_1009;
-                sp130 = sp310 * temp_f26_1007;
+                sp130 = sp2E8.unk28 * temp_f26_1007;
                 sp290 = (f64) sp130;
-                temp_f0_1020 = sp328 + temp_f0_1009;
+                temp_f0_1020 = M2C_BITWISE(f64, sp2E8.unk30.unk10) + temp_f0_1009;
                 sp118 = temp_f0_1020;
                 sp298 = temp_f0_1020;
                 sp120 = (f32) sp330 + (f32) sp290;
@@ -806,12 +815,12 @@ loop_44:
                 MKSetColorV(*((MKVector4 *) &sp278));
                 MKSetTexCoord1F(temp_f18_998, 0.05f);
                 temp_f27_1049 = this->unkB4;
-                temp_f0_1051 = (f64) sp308 * (f64) temp_f27_1049;
+                temp_f0_1051 = (f64) sp2E8.unk20 * (f64) temp_f27_1049;
                 spF8 = temp_f0_1051;
                 sp258 = temp_f0_1051;
-                sp100 = sp310 * temp_f27_1049;
+                sp100 = sp2E8.unk28 * temp_f27_1049;
                 sp260 = (f64) sp100;
-                temp_f0_1062 = sp328 - temp_f0_1051;
+                temp_f0_1062 = M2C_BITWISE(f64, sp2E8.unk30.unk10) - temp_f0_1051;
                 spE8 = temp_f0_1062;
                 sp268 = temp_f0_1062;
                 spF0 = (f32) sp330 - (f32) sp260;
@@ -867,35 +876,35 @@ loop_116:
 loop_114:
             if (var_r29_1176 < (s32) (var_r30_1162 + 1)) {
                 if (var_r29_1176 == 0) {
-                    ((MKProp *) &sp228)->GetPos();
-                    sp238.GetPosition(var_f28_1106);
-                    sp58 = sp238.unk0 - sp228;
-                    sp238.unk10 = sp58;
-                    sp60 = sp238.unk8 - sp230;
-                    sp328 = sp58;
-                    sp238.unk18 = (f64) sp60;
+                    sp228 = GetPos();
+                    ((KDSplinePathSegment *) &sp238)->GetPosition(var_f28_1106);
+                    sp58 = sp238 - M2C_BITWISE(f64, sp228);
+                    sp248 = sp58;
+                    sp60 = sp240 - sp228.unk8;
+                    sp2E8.unk30.unk10 = sp58;
+                    sp250 = (f64) sp60;
                     sp330 = (f64) sp60;
                 } else if (var_r29_1176 == var_r30_1162) {
-                    ((MKProp *) &sp1F8)->GetPos();
-                    sp208.GetPosition(var_f27_1111);
-                    sp48 = sp208.unk0 - sp1F8;
-                    sp208.unk10 = sp48;
-                    sp50 = sp208.unk8 - sp200;
-                    sp328 = sp48;
-                    sp208.unk18 = (f64) sp50;
+                    sp1F8 = GetPos();
+                    ((KDSplinePathSegment *) &sp208)->GetPosition(var_f27_1111);
+                    sp48 = sp208 - M2C_BITWISE(f64, sp1F8);
+                    sp218 = sp48;
+                    sp50 = sp210 - sp1F8.unk8;
+                    sp2E8.unk30.unk10 = sp48;
+                    sp220 = (f64) sp50;
                     sp330 = (f64) sp50;
                 } else {
-                    ((MKProp *) &sp1C8)->GetPos();
+                    sp1C8 = GetPos();
                     sp20 = ((f32) var_r29_1176 * temp_f29_720) + var_f28_1106;
-                    sp1D8.GetPosition(Clamp<float>(0.0f, sp20, 1.0f));
-                    sp38 = sp1D8.unk0 - sp1C8;
-                    sp1D8.unk10 = sp38;
-                    sp40 = sp1D8.unk8 - sp1D0;
-                    sp328 = sp38;
-                    sp1D8.unk18 = (f64) sp40;
+                    ((KDSplinePathSegment *) &sp1D8)->GetPosition(Clamp<float>(0.0f, sp20, 1.0f));
+                    sp38 = sp1D8 - M2C_BITWISE(f64, sp1C8);
+                    sp1E8 = sp38;
+                    sp40 = sp1E0 - sp1C8.unk8;
+                    sp2E8.unk30.unk10 = sp38;
+                    sp1F0 = (f64) sp40;
                     sp330 = (f64) sp40;
                 }
-                (*(f32 *) ((u8 *) &sp328 + 0x4)) += 1.0f;
+                sp2E8.unk44 = M2C_BITWISE(f32, sp2E8.unk44) + 1.0f;
                 var_f1_1275 = ((f32) var_r29_1176 * temp_f29_720) + var_f28_1106;
                 if (var_f1_1275 < 1.0f) {
 
@@ -907,10 +916,11 @@ loop_114:
                 } else {
                     var_f1_1275 = 0.0f;
                 }
-                ((KDSplinePathSegment *) &sp1B8)->GetVelocity(var_f1_1275);
-                sp318 = sp1B8;
-                sp320 = sp1C0;
-                var_f4_1303 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + ((*(f32 *) ((u8 *) &sp300 + 0x1c)) * (*(f32 *) ((u8 *) &sp300 + 0x1c))));
+                sp1B8 = this->unkB0->GetVelocity(var_f1_1275);
+                sp2E8.unk30 = M2C_BITWISE(f64, sp1B8);
+                temp_f2_1296 = M2C_BITWISE(f32, sp2E8.unk30.unk4);
+                sp2E8.unk30.unk8 = (f64) sp1B8.unk8;
+                var_f4_1303 = ((f32) sp2E8.unk30.unk8 * (f32) sp2E8.unk30.unk8) + (((f32) sp2E8.unk30 * (f32) sp2E8.unk30) + (temp_f2_1296 * temp_f2_1296));
                 if (var_f4_1303 > 0.000001f) {
                     if (var_f4_1303 > 0.0f) {
                         temp_f1_1309 = __frsqrte(var_f4_1303);
@@ -949,20 +959,21 @@ loop_114:
                 } else {
                     var_f2_1370 = 0.0f;
                 }
-                temp_f4_1377 = (*(f32 *) ((u8 *) &sp300 + 0x1c)) * var_f2_1370;
-                temp_f3_1379 = (f32) sp320 * var_f2_1370;
-                temp_f5_1380 = (f32) sp318 * var_f2_1370;
-                (*(f32 *) ((u8 *) &sp300 + 0x1c)) = temp_f4_1377;
-                sp318 = temp_f5_1380;
-                sp320 = temp_f3_1379;
+                temp_f4_1377 = M2C_BITWISE(f32, sp2E8.unk30.unk4) * var_f2_1370;
+                temp_f3_1379 = (f32) sp2E8.unk30.unk8 * var_f2_1370;
+                temp_f5_1380 = (f32) sp2E8.unk30 * var_f2_1370;
+                sp2E8.unk30.unk4 = temp_f4_1377;
+                sp2E8.unk30 = temp_f5_1380;
+                sp2E8.unk30.unk8 = temp_f3_1379;
                 sp28 = (temp_f24_1094 * temp_f3_1379) - (temp_f25_1096 * temp_f4_1377);
                 sp2C = (temp_f25_1096 * temp_f5_1380) - (temp_f26_1097 * temp_f3_1379);
                 sp30 = (temp_f26_1097 * temp_f4_1377) - (temp_f24_1094 * temp_f5_1380);
-                sp308 = (f64) sp28;
-                sp310 = (f64) sp30;
+                sp2E8.unk20 = (f64) sp28;
+                temp_f0_1397 = M2C_BITWISE(f32, sp2E8.unk24);
+                sp2E8.unk28 = (f64) sp30;
                 sp1A8 = (f64) sp28;
                 sp1B0 = (f64) sp30;
-                var_f4_1406 = ((f32) sp310 * (f32) sp310) + (((f32) sp308 * (f32) sp308) + ((*(f32 *) ((u8 *) &sp300 + 0xc)) * (*(f32 *) ((u8 *) &sp300 + 0xc))));
+                var_f4_1406 = ((f32) sp2E8.unk28 * (f32) sp2E8.unk28) + (((f32) sp2E8.unk20 * (f32) sp2E8.unk20) + (temp_f0_1397 * temp_f0_1397));
                 if (var_f4_1406 > 0.000001f) {
                     if (var_f4_1406 > 0.0f) {
                         temp_f1_1412 = __frsqrte(var_f4_1406);
@@ -1005,21 +1016,21 @@ loop_114:
                 spDC = 1.0f;
                 spE0 = 1.0f;
                 spE4 = 1.0f;
-                sp308 = (f32) sp308 * var_f2_1473;
+                sp2E8.unk20 = (f32) sp2E8.unk20 * var_f2_1473;
                 temp_f18_1504 = 4.0f * ((f32) var_r29_1176 / (f32) this->unk2B4);
-                (*(f32 *) ((u8 *) &sp300 + 0xc)) *= var_f2_1473;
-                sp310 = (f32) sp310 * var_f2_1473;
+                sp2E8.unk24 = M2C_BITWISE(f32, sp2E8.unk24) * var_f2_1473;
+                sp2E8.unk28 = (f32) sp2E8.unk28 * var_f2_1473;
                 sp198 = (f64) spD8;
                 sp1A0 = (f64) spE0;
                 MKSetColorV(*((MKVector4 *) &sp198));
                 MKSetTexCoord1F(temp_f18_1504, 0.95f);
                 temp_f31_1513 = this->unkB4;
-                temp_f0_1515 = (f64) sp308 * (f64) temp_f31_1513;
+                temp_f0_1515 = (f64) sp2E8.unk20 * (f64) temp_f31_1513;
                 spC8 = temp_f0_1515;
                 sp178 = temp_f0_1515;
-                spD0 = sp310 * temp_f31_1513;
+                spD0 = sp2E8.unk28 * temp_f31_1513;
                 sp180 = (f64) spD0;
-                temp_f0_1526 = sp328 + temp_f0_1515;
+                temp_f0_1526 = sp2E8.unk30.unk10 + temp_f0_1515;
                 spB8 = temp_f0_1526;
                 sp188 = temp_f0_1526;
                 spC0 = (f32) sp330 + (f32) sp180;
@@ -1035,12 +1046,12 @@ loop_114:
                 MKSetColorV(*((MKVector4 *) &sp168));
                 MKSetTexCoord1F(temp_f18_1504, 0.05f);
                 temp_f30_1555 = this->unkB4;
-                temp_f0_1557 = (f64) sp308 * (f64) temp_f30_1555;
+                temp_f0_1557 = (f64) sp2E8.unk20 * (f64) temp_f30_1555;
                 sp98 = temp_f0_1557;
                 sp148 = temp_f0_1557;
-                spA0 = sp310 * temp_f30_1555;
+                spA0 = sp2E8.unk28 * temp_f30_1555;
                 sp150 = (f64) spA0;
-                temp_f0_1568 = sp328 - temp_f0_1557;
+                temp_f0_1568 = sp2E8.unk30.unk10 - temp_f0_1557;
                 sp88 = temp_f0_1568;
                 sp158 = temp_f0_1568;
                 sp90 = (f32) sp330 - (f32) sp150;

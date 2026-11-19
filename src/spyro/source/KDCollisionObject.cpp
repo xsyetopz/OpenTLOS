@@ -442,7 +442,7 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: type mismatch 'long' and 'MKVector3 *'
 void KDCollisionObject::ResolveCollisions(KDCollisionObject *arg0, MKVector3 *arg1, MKVector3 *arg2, int arg3, float arg4, MKCollisionMode arg5, int arg6) {
     s32 sp1F8;
     s32 sp140;

@@ -44,7 +44,6 @@ static s32 error_message[8] = { 0xFFFFFFFF, 0xFFFFFFFF, 0x66, 0x67, 0x67, 0x68, 
 static s32 message_575[8] = { 0xFFFFFFFF, 0x71, 0x5C, 0x60, 0x5E, 0x5F, 0x5D, 0x60 };
 
 extern "C" int stricmp(const char *, const char *);
-
 void MCActionScreen::Abort() {
     void *temp_r5_85;
 

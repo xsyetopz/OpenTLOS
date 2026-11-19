@@ -47,7 +47,6 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/Autosave.h"
-#include "spyro/source/GameLanguage.h"
 #include "spyro/source/Hud.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/UIControls.h"
@@ -307,6 +306,7 @@ void FrontEnd_Deinit() {
     Hud_DeinitModule();
 }
 
+#if 0 // DRAFT: undefined identifier 'GameLanguage_GetCode'
 void FrontEnd_Init() {
     s32 sp8[2];
     MCLoadCheckScreen *temp_r3_666;
@@ -499,6 +499,7 @@ loop_51:
         }
     }
 }
+#endif
 
 void FrontEnd_cpp::__sinit() {
     frontEndStrings.UIStringTable();

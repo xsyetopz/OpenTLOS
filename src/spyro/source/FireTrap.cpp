@@ -68,180 +68,91 @@ void FireTrap::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: function call 'GetProp(HeroInterface *, void *, double)' does not match 'HeroInterface::GetProp()'
 void *FireTrap::Update() {
-    s8 sp199;
-    s8 sp198;
-    s32 sp194;
-    f32 sp190;
-    s32 sp18C;
-    s8 sp18A;
-    s8 sp189;
-    s8 sp188;
-    f64 sp180;                                      /* compiler-managed */
-    f64 sp178;                                      /* compiler-managed */
-    FireTrap *sp174;
-    s32 sp170;
-    f64 sp168;
-    f64 sp160;
-    f64 sp158;
-    f64 sp150;
-    s32 sp14C;
-    s32 sp148;
-    f64 sp140;
-    f64 sp138;
-    f64 sp130;
-    f64 sp128;
-    f64 sp120;
-    f64 sp118;
-    f64 sp110;
-    f64 sp108;
-    f64 sp100;
-    f64 spF8;
-    f64 spF0;
-    f64 spE8;
-    f64 spE0;
-    f64 spD8;
-    f64 spD0;
-    f64 spC8;
-    f64 spC0;
-    f64 spB8;
-    f64 spB0;
-    f64 spA8;
-    f64 spA0;
-    f64 sp98;
-    f64 sp90;
-    f64 sp88;
-    f32 sp80;
-    f64 sp78;
-    f32 sp70;
-    f64 sp68;
-    f64 sp58;
-    f32 sp50;
-    f32 sp4C;
-    f32 sp48;
-    f32 sp40;
-    f64 sp38;
-    f32 sp30;
-    f64 sp28;
-    f32 sp20;
-    f64 sp18;
-    f32 sp10;
-    f64 sp8;
-    f32 temp_f1_271;
-    f64 temp_f0_132;
-    f64 temp_f0_240;
-    f64 temp_f0_254;
-    f64 temp_f0_294;
-    f64 temp_f0_97;
-    f64 temp_f1_117;
-    f64 temp_f1_126;
-    f64 temp_f1_228;
-    s32 temp_r3_79;
-    void *temp_r3_125;
-    void *temp_r3_226;
-    void *temp_r4_114;
-    void *temp_r5_286;
-    void *temp_r5_89;
+    struct {
+        s32 unk0;
+        s32 unk4;
+        MKVector3 unk8;
+        MKVector3 unk18;
+        s32 unk28;
+        FireTrap *unk2C;
+        MKVector3 unk30;
+        s8 unk40;
+        s8 unk41;
+        s8 unk42;
+        s32 unk44;
+        f32 unk48;
+        s32 unk4C;
+        s8 unk50;
+        s8 unk51;
+    } msg;
+    MKVector3 *pos;
+    MKVector3 *heroPos;
+    MKVector3 dir;
+    MKVector3 delta;
+    MKVector3 emitPos;
+    f32 scale;
 
     GameProp::Update();
-    temp_r3_79 = this->unk10;
-    if ((temp_r3_79 & 0x20000) && (temp_r3_79 & 0x80000)) {
+    if ((this->unk10 & 0x20000) && (this->unk10 & 0x80000)) {
+        pos = (MKVector3 *) ((u8 *) this->unk8 + 0x30);
+
         if (this->unkE0 > 1.0f) {
-            temp_r5_89 = this->unk8;
-            sp128 = M2C_FIELD(temp_r5_89, f64 *, 0x30);
-            sp130 = M2C_FIELD(temp_r5_89, f64 *, 0x38);
-            temp_f0_97 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.647722104e-315;
-            sp78 = temp_f0_97;
-            sp118 = temp_f0_97;
-            sp80 = MKVector3::up.unk8 * 650.0f;
-            sp120 = (f64) sp80;
-            ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp128), *((MKVector3 *) &sp118), 6.0f);
-            temp_r4_114 = this->unk8;
-            temp_f1_117 = M2C_FIELD(temp_r4_114, f64 *, 0x30);
-            spF8 = temp_f1_117;
-            sp100 = M2C_FIELD(temp_r4_114, f64 *, 0x38);
-            temp_r3_125 = M2C_FIELD(gb.unk0->GetProp(temp_r4_114, temp_f1_117), void **, 8);
-            temp_f1_126 = M2C_FIELD(temp_r3_125, f64 *, 0x30);
-            sp108 = temp_f1_126;
-            sp110 = M2C_FIELD(temp_r3_125, f64 *, 0x38);
-            temp_f0_132 = temp_f1_126 - spF8;
-            sp68 = temp_f0_132;
-            sp138 = temp_f0_132;
-            sp70 = (f32) sp110 - (f32) sp100;
-            (*(f32 *) ((u8 *) &sp138 + 0x4)) = 0.0f;
-            sp140 = (f64) sp70;
-            if ((((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + (0.0f * 0.0f))) < 10000.0f) {
-                sp14C = 0;
-                sp8 = sp138 * 5.439686476e-315;
-                sp10 = (f32) sp140 * 20.0f;
-                spE8 = sp8;
-                spF0 = (f64) sp10;
-                sp148 = 7;
-                sp170 = 1;
-                sp174 = this;
-                sp150 = sp8;
-                sp158 = (f64) sp10;
-                sp188 = 0;
-                sp194 = 2;
-                sp190 = 10.0f;
-                sp189 = 0;
-                sp18A = 1;
-                sp18C = -1;
-                sp160 = M2C_FIELD(&MKVector3::one, f64 *, 0);
-                sp168 = M2C_FIELD(&MKVector3::one, f64 *, 8);
-                sp198 = 0;
+            dir.unk0 = MKVector3::up.unk0 * 650.0f;
+            dir.unk4 = MKVector3::up.unk4 * 650.0f;
+            dir.unk8 = MKVector3::up.unk8 * 650.0f;
+            ((CrashFirePS *) gb.unk68)->Emit(*pos, dir, 6.0f);
+
+            heroPos = (MKVector3 *) ((u8 *) M2C_FIELD(gb.unk0->GetProp(), void **, 8) + 0x30);
+            delta.unk0 = heroPos->unk0 - pos->unk0;
+            delta.unk4 = 0.0f;
+            delta.unk8 = heroPos->unk8 - pos->unk8;
+            if ((delta.unk8 * delta.unk8) + ((delta.unk0 * delta.unk0) + (0.0f * 0.0f)) < 10000.0f) {
+                msg.unk0 = 7;
+                msg.unk4 = 0;
+                msg.unk8.unk0 = delta.unk0 * 20.0f;
+                msg.unk8.unk4 = 0.0f;
+                msg.unk8.unk8 = delta.unk8 * 20.0f;
+                msg.unk18 = MKVector3::one;
+                msg.unk28 = 1;
+                msg.unk2C = this;
                 if (this != NULL) {
-                    ((MKProp *) &sp58)->GetPos();
-                    sp178 = sp58;
-                    sp180 = sp60;
+                    msg.unk30 = *pos;
                 } else {
-                    sp178 = 0.0f;
-                    (*(f32 *) ((u8 *) &sp174 + 0x8)) = 0.0f;
-                    sp180 = 0.0f;
+                    msg.unk30.unk0 = 0.0f;
+                    msg.unk30.unk4 = 0.0f;
+                    msg.unk30.unk8 = 0.0f;
                 }
-                sp199 = 0;
-                gb.unk0->Message(&sp148);
+                msg.unk40 = 0;
+                msg.unk41 = 0;
+                msg.unk42 = 1;
+                msg.unk44 = -1;
+                msg.unk48 = 10.0f;
+                msg.unk4C = 2;
+                msg.unk50 = 0;
+                msg.unk51 = 0;
+                gb.unk0->Message((MKMessage *) &msg);
             }
         }
         if ((this->unkE0 < 1.0f) && (MKRand_Int((int *) &gViewSeed, 0, 0xA) == 0)) {
-            temp_r3_226 = this->unk8;
-            sp48 = 0.0f;
-            temp_f1_228 = M2C_FIELD(temp_r3_226, f64 *, 0x30);
-            sp4C = 15.0f;
-            sp50 = 0.0f;
-            spB8 = (f64) sp48;
-            spC8 = temp_f1_228;
-            spC0 = (f64) sp50;
-            spD0 = M2C_FIELD(temp_r3_226, f64 *, 0x38);
-            temp_f0_240 = temp_f1_228 + spB8;
-            sp38 = temp_f0_240;
-            spD8 = temp_f0_240;
-            sp40 = (f32) spD0 + (f32) spC0;
-            spE0 = (f64) sp40;
-            temp_f0_254 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.60222949e-315;
-            sp28 = temp_f0_254;
-            spA8 = temp_f0_254;
-            sp30 = MKVector3::up.unk8 * 300.0f;
-            spB0 = (f64) sp30;
-            ((SparksPS *) gb.unk84)->Emit(*((MKVector3 *) &spD8), *((MKVector3 *) &spA8), 5.0f);
+            emitPos.unk0 = pos->unk0;
+            emitPos.unk4 = pos->unk4 + 15.0f;
+            emitPos.unk8 = pos->unk8;
+            dir.unk0 = MKVector3::up.unk0 * 300.0f;
+            dir.unk4 = MKVector3::up.unk4 * 300.0f;
+            dir.unk8 = MKVector3::up.unk8 * 300.0f;
+            ((SparksPS *) gb.unk84)->Emit(emitPos, dir, 5.0f);
         }
-        temp_f1_271 = this->unkE0;
-        if (((temp_f1_271 > 0.5f) && (temp_f1_271 < 1.0f)) || (MKRand_Int((int *) &gViewSeed, 0, 0xA) == 0)) {
-            temp_r5_286 = this->unk8;
-            sp98 = M2C_FIELD(temp_r5_286, f64 *, 0x30);
-            spA0 = M2C_FIELD(temp_r5_286, f64 *, 0x38);
-            temp_f0_294 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.647722104e-315;
-            sp18 = temp_f0_294;
-            sp88 = temp_f0_294;
-            sp20 = MKVector3::up.unk8 * 650.0f;
-            sp90 = (f64) sp20;
-            gb.EmitDust(*((MKVector3 *) &sp98), *((MKVector3 *) &sp88), 0.5f, 0.0f);
+        scale = this->unkE0;
+        if (((scale > 0.5f) && (scale < 1.0f)) || (MKRand_Int((int *) &gViewSeed, 0, 0xA) == 0)) {
+            dir.unk0 = MKVector3::up.unk0 * 650.0f;
+            dir.unk4 = MKVector3::up.unk4 * 650.0f;
+            dir.unk8 = MKVector3::up.unk8 * 650.0f;
+            gb.EmitDust(*pos, dir, 0.5f, 0.0f);
         }
         this->unkE0 += gUpdateTimeDelta;
     }
 }
-#endif
 
 void FireTrap::Reset() {
     PropFlagsSet((unsigned int *) &this->unk10, 0x80000U);

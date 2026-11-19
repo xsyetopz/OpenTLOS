@@ -14,63 +14,68 @@
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: undefined identifier 'sp10'
-void MovementObject::UpdateCollisions(MKVector3 &arg0, bool arg1) {
+#if 0 // DRAFT: identifier 'MovementObject::UpdateCollisions(MKVector3 &, bool)' redeclared was declared as: 'MKVector3 (MKVector3 &, bool)' now declared as: 'void (MKVector3 &
+void MovementObject::UpdateCollisions(MKVector3 &arg2, bool arg3) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp8;
+    CollisionObject *temp_r3_41;
+    CollisionObject *temp_r3_59;
+    CollisionObject *temp_r3_66;
+    CollisionObject *temp_r3_80;
+    CollisionObject *temp_r3_91;
+    CollisionObject *temp_r4_49;
     f32 temp_f31_114;
-    void **temp_r3_41;
-    void **temp_r3_59;
-    void **temp_r3_66;
-    void **temp_r3_80;
-    void **temp_r3_91;
-    void **temp_r4_49;
 
-    M2C_FIELD(&arg0, s32 *, 0x68) = (s32) (M2C_FIELD(&arg0, s32 *, 0x68) & 0xFFFFFFF8);
-    if (!(M2C_FIELD(&arg0, s32 *, 0x60) & 1)) {
-        M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + M2C_FIELD(arg1, f64 *, 0));
-        arg0.unk8 += M2C_FIELD(arg1, f32 *, 8);
-        this->unk0 = M2C_FIELD(arg1, f64 *, 0);
-        this->unk8 = (f64) M2C_FIELD(arg1, f32 *, 8);
-        return;
+    M2C_FIELD(this, s32 *, 0x68) = (s32) (M2C_FIELD(this, s32 *, 0x68) & 0xFFFFFFF8);
+    if (!(this->unk60 & 1)) {
+        this->unk0 += M2C_FIELD(&arg2, f64 *, 0);
+        M2C_FIELD(this, f32 *, 8) = (f32) (M2C_FIELD(this, f32 *, 8) + arg2.unk8);
+        M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&arg2, f64 *, 0);
+        M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&arg2, f32 *, 8);
+        return result;
     }
-    temp_r3_41 = M2C_FIELD(&arg0, void ***, 0x54);
-    M2C_FIELD(*temp_r3_41, M2C_UNK (**)(void **, u8, M2C_UNK, f32), 0x10)(temp_r3_41, arg1, 0, 0.0f);
-    temp_r4_49 = M2C_FIELD(&arg0, void ***, 0x54);
-    M2C_FIELD(*temp_r4_49, M2C_UNK (**)(f64 *, void **), 0x4C)(&sp8, temp_r4_49);
-    M2C_FIELD(&arg0, f64 *, 0) = sp8;
-    M2C_FIELD(&arg0, f32 *, 8) = sp10;
-    temp_r3_59 = M2C_FIELD(&arg0, void ***, 0x54);
-    if (M2C_FIELD(*temp_r3_59, u8 (**)(void **, f64), 0x18)(temp_r3_59, sp8) != 0) {
-        temp_r3_66 = M2C_FIELD(&arg0, void ***, 0x54);
-        M2C_FIELD(&arg0, s32 *, 0x70) = M2C_FIELD(*temp_r3_66, s32 (**)(void **), 0x28)(temp_r3_66);
-        M2C_FIELD(&arg0, s32 *, 0x68) = (s32) (M2C_FIELD(&arg0, s32 *, 0x68) | 1);
+    temp_r3_41 = this->unk54;
+    temp_r3_41->Update(&arg2, 0, 0.0f);
+    temp_r4_49 = this->unk54;
+    M2C_FIELD(temp_r4_49->__vptr, M2C_UNK (**)(f64 *, CollisionObject *), 0x4C)(&sp8, temp_r4_49);
+    this->unk0 = sp8;
+    this->unk8 = sp10;
+    temp_r3_59 = this->unk54;
+    if (temp_r3_59->HasHitFloor(sp8) != 0) {
+        temp_r3_66 = this->unk54;
+        M2C_FIELD(this, s32 *, 0x70) = temp_r3_66->GetFloorProp();
+        M2C_FIELD(this, s32 *, 0x68) = (s32) (M2C_FIELD(this, s32 *, 0x68) | 1);
     } else {
-        M2C_FIELD(&arg0, s32 *, 0x70) = 0;
+        M2C_FIELD(this, s32 *, 0x70) = 0;
     }
-    temp_r3_80 = M2C_FIELD(&arg0, void ***, 0x54);
-    if (M2C_FIELD(*temp_r3_80, u8 (**)(void **), 0x1C)(temp_r3_80) != 0) {
-        M2C_FIELD(&arg0, s32 *, 0x68) = (s32) (M2C_FIELD(&arg0, s32 *, 0x68) | 2);
+    temp_r3_80 = this->unk54;
+    if (temp_r3_80->HasHitWall() != 0) {
+        M2C_FIELD(this, s32 *, 0x68) = (s32) (M2C_FIELD(this, s32 *, 0x68) | 2);
     }
-    temp_r3_91 = M2C_FIELD(&arg0, void ***, 0x54);
-    if (M2C_FIELD(*temp_r3_91, u8 (**)(void **), 0x20)(temp_r3_91) != 0) {
-        M2C_FIELD(&arg0, s32 *, 0x68) = (s32) (M2C_FIELD(&arg0, s32 *, 0x68) | 4);
+    temp_r3_91 = this->unk54;
+    if (temp_r3_91->HasHitRoof() != 0) {
+        M2C_FIELD(this, s32 *, 0x68) = (s32) (M2C_FIELD(this, s32 *, 0x68) | 4);
     }
-    if (M2C_FIELD(&arg0, s32 *, 0x60) & 2) {
-        M2C_FIELD(&arg0, f64 *, 0x10) = (f64) M2C_FIELD(arg1, f64 *, 0);
-        M2C_FIELD(&arg0, f64 *, 0x18) = (f64) M2C_FIELD(arg1, f32 *, 8);
-        if ((u8) M2C_ERROR(/* Read from unset register $r6 */) != 0) {
+    if (this->unk60 & 2) {
+        M2C_FIELD(this, f64 *, 0x10) = (f64) M2C_FIELD(&arg2, f64 *, 0);
+        M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(&arg2, f32 *, 8);
+        if (arg3 != 0) {
             temp_f31_114 = 1.0f / gUpdateTimeDelta;
-            M2C_FIELD(&arg0, f64 *, 0x10) = (f64) (M2C_FIELD(&arg0, f64 *, 0x10) * (f64) temp_f31_114);
-            M2C_FIELD(&arg0, f64 *, 0x18) = (f32) ((f32) M2C_FIELD(&arg0, f64 *, 0x18) * temp_f31_114);
+            M2C_FIELD(this, f64 *, 0x10) = (f64) (M2C_FIELD(this, f64 *, 0x10) * (f64) temp_f31_114);
+            this->unk18 *= temp_f31_114;
         }
     }
-    this->unk0 = M2C_FIELD(arg1, f64 *, 0);
-    this->unk8 = (f64) M2C_FIELD(arg1, f32 *, 8);
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&arg2, f64 *, 0);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&arg2, f32 *, 8);
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to 'float'
-void MovementObject::Update(bool arg0) {
+#if 0 // DRAFT: identifier 'MovementObject::Update(bool)' redeclared was declared as: 'MKVector3 (bool)' now declared as: 'void (bool)'
+void MovementObject::Update(bool arg2) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     MKCollisionResult spB8;
     f64 spB0;
     f64 spA8;
@@ -96,41 +101,41 @@ void MovementObject::Update(bool arg0) {
     f32 sp18;
     f32 sp10;
     f64 sp8;
+    CollisionObject *temp_r3_177;
     f32 temp_f3_288;
     f32 temp_f4_245;
     f32 temp_f4_284;
     f32 temp_f5_282;
+    f64 *temp_r5_178;
     f64 temp_f0_261;
     f64 temp_f2_159;
     f64 temp_f5_241;
     s32 temp_r3_179;
-    s32 temp_r5_178;
     u32 var_r0_196;
     void **var_r3_220;
-    void *temp_r3_177;
     void *temp_r3_217;
     void *temp_r4_193;
     void *var_r3_209;
     void *var_r4_185;
 
-    if ((u32) M2C_FIELD(arg0, u32 *, 0x64) == 1U) {
-        this->unk0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-        this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-        return;
+    if ((u32) this->unk64 == 1U) {
+        M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+        M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+        return result;
     }
-    temp_f2_159 = M2C_FIELD(arg0, f64 *, 0x18);
-    sp48 = M2C_FIELD(arg0, f64 *, 0x10);
+    temp_f2_159 = M2C_FIELD(this, f64 *, 0x18);
+    sp48 = M2C_FIELD(this, f64 *, 0x10);
     spB0 = temp_f2_159;
     (*(f32 *) ((u8 *) &sp48 + 0x4)) = 0.0f;
     sp50 = temp_f2_159;
     spA8 = sp48;
     if ((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * (*(f32 *) ((u8 *) &spA8 + 0x4))))) < 1.0f) {
-        temp_r3_177 = M2C_FIELD(arg0, void **, 0x54);
-        temp_r5_178 = (long) (((u8 *) temp_r3_177) + 8);
-        temp_r3_179 = M2C_FIELD(temp_r3_177, s32 *, 0x16C);
+        temp_r3_177 = this->unk54;
+        temp_r5_178 = &temp_r3_177->unk8;
+        temp_r3_179 = temp_r3_177->unk16C;
         if (temp_r3_179 > 0) {
             if (temp_r3_179 != 0) {
-                var_r4_185 = (void *) (temp_r5_178 + ((temp_r3_179 - 1) * 0x58));
+                var_r4_185 = temp_r5_178 + ((temp_r3_179 - 1) * 0x58);
             } else {
                 var_r4_185 = NULL;
             }
@@ -141,7 +146,7 @@ void MovementObject::Update(bool arg0) {
             }
             if (var_r0_196 != 0U) {
                 if (temp_r3_179 != 0) {
-                    var_r3_209 = (void *) (temp_r5_178 + ((temp_r3_179 - 1) * 0x58));
+                    var_r3_209 = temp_r5_178 + ((temp_r3_179 - 1) * 0x58);
                 } else {
                     var_r3_209 = NULL;
                 }
@@ -161,9 +166,9 @@ block_22:
             sp20 = 0.0f;
             sp58 = (f64) sp18;
             sp60 = (f64) sp20;
-            temp_f5_241 = M2C_FIELD(arg0, f64 *, 0);
+            temp_f5_241 = this->unk0;
             sp8 = temp_f5_241 - sp58;
-            temp_f4_245 = M2C_FIELD(arg0, f32 *, 8);
+            temp_f4_245 = M2C_FIELD(this, f32 *, 8);
             sp40 = 0.0f;
             sp38 = 0.0f;
             sp3C = 50.0f;
@@ -178,26 +183,27 @@ block_22:
             sp30 = temp_f4_245 + (f32) sp80;
             sp90 = (f64) sp30;
             if (MKCollision_RayCollide(*((MKVector3 *) &sp88), *((MKVector3 *) &sp68), &spB8, (MKCollisionMode) 5, 0) != 0) {
-                temp_f5_282 = spB8.unk4 - M2C_FIELD(arg0, f32 *, 4);
-                temp_f4_284 = M2C_BITWISE(f32, spB8) - (f32) M2C_FIELD(arg0, f64 *, 0);
-                temp_f3_288 = spB8.unk8 - M2C_FIELD(arg0, f32 *, 8);
+                temp_f5_282 = spB8.unk4 - M2C_FIELD(this, f32 *, 4);
+                temp_f4_284 = M2C_BITWISE(f32, spB8) - (f32) M2C_FIELD(this, f64 *, 0);
+                temp_f3_288 = spB8.unk8 - M2C_FIELD(this, f32 *, 8);
                 if (((temp_f3_288 * temp_f3_288) + ((temp_f4_284 * temp_f4_284) + (temp_f5_282 * temp_f5_282))) < 20.0f) {
-                    this->unk0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-                    this->unk8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-                    return;
+                    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+                    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+                    return result;
                 }
             }
             goto block_25;
         }
     }
 block_25:
-    sp98 = M2C_FIELD(arg0, f64 *, 0x10);
-    spA0 = M2C_FIELD(arg0, f64 *, 0x18);
-    if ((u8) M2C_ERROR(/* Read from unset register $r5 */) != 0) {
+    sp98 = M2C_FIELD(this, f64 *, 0x10);
+    spA0 = M2C_FIELD(this, f64 *, 0x18);
+    if (arg2 != 0) {
         sp98 *= (f64) gUpdateTimeDelta;
         spA0 = (f32) spA0 * gUpdateTimeDelta;
     }
-    UpdateCollisions(*((MKVector3 *) arg0), (u8) &sp98);
+    *(sret) = UpdateCollisions(*((MKVector3 *) &sp98), arg2);
+    return result;
 }
 #endif
 

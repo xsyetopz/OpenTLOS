@@ -139,7 +139,7 @@ void FuryFXEarth2::CalcMatrixForVortexElement(FuryFXEarth2::VortexAttachmentPoin
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void FuryFXEarth2::EmitTimedSparks() {
     f64 spF8;
     f64 spF0;
@@ -1272,7 +1272,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to 'long' Too many errors printed, aborting program
 void FuryFXEarth2::Init() {
     s32 var_ctr_2185;
     void *temp_r3_2187;
@@ -1281,7 +1281,7 @@ void FuryFXEarth2::Init() {
     void *var_r5_2181;
 
     FuryFX::Init();
-    this->unk90 = (long) (checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves")));
+    this->unk90 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
     SetDefaults();
     this->unkB0 = MKModel_Create("p9013_FireRockLavaLarge", NULL, 2, NULL);
     this->unkB4 = MKModel_Create("p9014_FireRockLavaMedium", NULL, 2, NULL);

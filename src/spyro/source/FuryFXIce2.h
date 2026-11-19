@@ -37,7 +37,6 @@ public:
     /* 0x0a0 */ f32 unkA0;
     /* 0x0a4 */ u8 padA4[0x4];
     /* 0x0a8 */ BreathHitMessage unkA8;
-    /* 0x0fc */ u8 padFC[0x4];
     /* 0x100 */ Matrix** unk100;
     /* 0x104 */ MKModel* unk104;
     /* 0x108 */ Targetable*** unk108;

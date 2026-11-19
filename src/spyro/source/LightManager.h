@@ -17,7 +17,7 @@ public:
     virtual void Deinit(void);
     void EnableLight(ManagedLight *, bool);
     void FreeManagedLight(ManagedLight *);
-    void CalculateLightPosForShadow(const MKVector3 &);
+    MKVector3 CalculateLightPosForShadow(const MKVector3 &);
     void * AllocManagedLight(const MKVector3 &, const MKVector3 &, const MKVector4 &, const float &, const int &, const bool &);
     void DisableAllLights(void);
     /* 0x04c */ u8 unk4C;

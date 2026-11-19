@@ -69,12 +69,11 @@ s32 KDSynkerPlayerEvent::LoadProp(const char *arg0, MKProp **arg1) {
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadVector3(const char *arg0, MKVector3 *arg1) {
-    MKIniLine sp8;
+    MKVector3 sp8;
 
     if (((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->IsField(arg0) != 0) {
-        sp8.GetVector3((s32) KDSynkerPlayerEvent::pLine.__vptr);
-        M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp8);
-        M2C_FIELD(arg1, f64 *, 8) = M2C_BITWISE(f64, sp8.unk8);
+        sp8 = ((MKIniLine *) KDSynkerPlayerEvent::pLine.__vptr)->GetVector3(0);
+        M2C_FIELD(arg1, MKVector3 *, 0) = sp8;
         return 1;
     }
     return 0;

@@ -307,7 +307,7 @@ void GoopFXDescriptor::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXDescriptor::GoopNode *arg2, GoopFXDescriptor::Goop *arg3) {
     f64 spA8;                                       /* compiler-managed */
     f64 spA0;                                       /* compiler-managed */
@@ -393,7 +393,7 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
         spA8 = (f32) spA8 * var_f5_554;
         if ((u8) M2C_FIELD(arg1, u8 *, 0x20) == 0) {
             temp_f31_576 = gUpdateTimeDelta;
-            sp80.operator*(temp_f29_569);
+            sp80 = ((MKVector3 *) &spA0)->operator*(temp_f29_569);
             temp_f0_582 = sp80 * (f64) temp_f31_576;
             sp30 = temp_f0_582;
             sp90 = temp_f0_582;
@@ -409,7 +409,7 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
             sp18 = -spA8;
             sp50 = (f64) sp10;
             sp58 = (f64) sp18;
-            sp60.operator*(temp_f29_569);
+            sp60 = ((MKVector3 *) &sp50)->operator*(temp_f29_569);
             temp_f0_624 = sp60 * (f64) temp_f30_612;
             sp20 = temp_f0_624;
             sp70 = temp_f0_624;
@@ -595,7 +595,7 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
                 sp160 = 0;
                 if (MKCollision_RayCollide(*((MKVector3 *) &sp100), *temp_r30_787, (MKCollisionResult *) &sp110, (MKCollisionMode) 7, 0x0C000000) != 0) {
                     if ((TwoFrozenNodes(arg1) == 0) && (var_r28_783 != 4)) {
-                        spB0.operator*(5.0f);
+                        spB0 = ((MKVector3 *) &sp120)->operator*(5.0f);
                         sp40 = (f64) sp110 + M2C_BITWISE(f64, spB0);
                         M2C_FIELD(temp_r30_787, f64 *, 0) = sp40;
                         sp48 = sp118 + spB0.unk8;
@@ -658,7 +658,7 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
                         sp80 = temp_f0_1009;
                         sp18 = M2C_FIELD(temp_r30_787, f32 *, 0x18) + sp128;
                         sp88 = (f64) sp18;
-                        sp90.operator*(var_f1_925);
+                        sp90 = ((MKVector3 *) &sp80)->operator*(var_f1_925);
                         sp30 = sp90 * 5.24282163e-315;
                         M2C_FIELD(temp_r30_787, f32 *, 0x10) = sp30;
                         sp38 = sp90.unk8 * 0.75f;

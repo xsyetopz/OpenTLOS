@@ -45,10 +45,10 @@ public:
     u8 IsUsingIdealPitch(void);
     f32 GetIdealDelta(void);
     f32 GetCurrentPitch(void);
-    void GetIdealDeltaVector(void);
-    void GetCurrentDeltaVector(void);
+    MKVector3 GetIdealDeltaVector(void);
+    MKVector3 GetCurrentDeltaVector(void);
     u8 IsUsingIdealStages(void);
-    void GetCurrentTargetOffset(void);
+    MKVector3 GetCurrentTargetOffset(void);
     u8 IsUsingIdealDelta(void);
     void OverrideUpdate(void);
     void DisableDeltaOverride(float);
@@ -57,7 +57,7 @@ public:
     void EnablePitchOverride(float, float);
     void EnableOverride(float, float, float);
     void SetDeltaStages(KDCameraDeltaStages *, bool, bool);
-    void GetDeltaVectorAtPitch(float);
+    MKVector3 GetDeltaVectorAtPitch(float);
     f32 GetCurrentDelta(void);
     void Update(const MKVector3 &);
     void ClearData(void);
@@ -154,7 +154,6 @@ inline u8 KDCameraSimpleDelta::IsUsingIdealPitch() {
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 inline f32 KDCameraSimpleDelta::GetIdealDelta() {
     f64 sp28;
     f64 sp20;
@@ -216,7 +215,6 @@ inline f32 KDCameraSimpleDelta::GetIdealDelta() {
     }
     return var_f1_2060;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Min'
 inline f32 KDCameraSimpleDelta::GetCurrentPitch() {
@@ -234,41 +232,47 @@ inline f32 KDCameraSimpleDelta::GetCurrentPitch() {
 }
 #endif
 
+#if 0 // DRAFT: identifier 'KDCameraSimpleDelta::GetIdealDeltaVector()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void KDCameraSimpleDelta::GetIdealDeltaVector() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
-    KDCameraDeltaStagesEx *temp_r31_1211;
     f32 temp_f31_1213;
     f32 temp_f31_1216;
 
-    temp_r31_1211 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_f31_1213 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x28);
-    temp_f31_1216 = temp_r31_1211->GetZDelta() + temp_f31_1213;
-    spC = temp_r31_1211->GetYDelta();
+    temp_f31_1213 = this->unk28;
+    temp_f31_1216 = ((KDCameraDeltaStagesEx *) this)->GetZDelta() + temp_f31_1213;
+    spC = ((KDCameraDeltaStagesEx *) this)->GetYDelta();
     sp8 = 0.0f;
     sp10 = temp_f31_1216;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
+#endif
 
+#if 0 // DRAFT: identifier 'KDCameraSimpleDelta::GetCurrentDeltaVector()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void KDCameraSimpleDelta::GetCurrentDeltaVector() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f31_1247;
     f32 temp_f31_1250;
-    s32 temp_r31_1245;
 
-    temp_r31_1245 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_f31_1247 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x28);
-    temp_f31_1250 = ((KDCameraDeltaStagesEx *) (temp_r31_1245 + 0x14))->GetZDelta() + temp_f31_1247;
-    spC = ((KDCameraDeltaStagesEx *) (temp_r31_1245 + 0x14))->GetYDelta();
+    temp_f31_1247 = this->unk28;
+    temp_f31_1250 = ((KDCameraDeltaStagesEx *) &this->unk14)->GetZDelta() + temp_f31_1247;
+    spC = ((KDCameraDeltaStagesEx *) &this->unk14)->GetYDelta();
     sp8 = 0.0f;
     sp10 = temp_f31_1250;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
+#endif
 
 inline u8 KDCameraSimpleDelta::IsUsingIdealStages() {
     u8 var_r31_3678;
@@ -280,19 +284,23 @@ inline u8 KDCameraSimpleDelta::IsUsingIdealStages() {
     return var_r31_3678;
 }
 
+#if 0 // DRAFT: identifier 'KDCameraSimpleDelta::GetCurrentTargetOffset()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void KDCameraSimpleDelta::GetCurrentTargetOffset() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
 
     sp8 = 0.0f;
-    spC = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x1C);
+    spC = this->unk1C;
     sp10 = 0.0f;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
+#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 inline f32 KDCameraSimpleDelta::GetCurrentDelta() {
     f64 sp28;
     f64 sp20;
@@ -354,6 +362,5 @@ inline f32 KDCameraSimpleDelta::GetCurrentDelta() {
     }
     return var_f1_892;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_KDCAMERASIMPLEDELTA_H

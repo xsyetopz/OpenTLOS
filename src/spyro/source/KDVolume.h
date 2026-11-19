@@ -15,7 +15,7 @@ public:
     f32 GetHeight(void);
     f32 GetWidth(void);
     void UpdateMatrix(Matrix &);
-    void GetCenterPos(void);
+    MKVector3 GetCenterPos(void);
     s32 IsWithinXZ(const MKVector3 &, float *);
     s32 IsWithin(const MKVector3 &, float *);
     void Deinit(void);
@@ -51,7 +51,6 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 inline f32 KDVolume::GetDepth() {
     f32 sp8;
     f32 temp_f0_164;
@@ -103,9 +102,7 @@ inline f32 KDVolume::GetDepth() {
     }
     return 0.5f * var_f4_171;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 inline f32 KDVolume::GetHeight() {
     f32 sp8;
     f32 temp_f0_245;
@@ -157,9 +154,7 @@ inline f32 KDVolume::GetHeight() {
     }
     return 0.5f * var_f4_252;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 inline f32 KDVolume::GetWidth() {
     f32 sp8;
     f32 temp_f0_326;
@@ -211,6 +206,5 @@ inline f32 KDVolume::GetWidth() {
     }
     return 0.5f * var_f4_333;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_KDVOLUME_H

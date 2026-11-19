@@ -423,7 +423,7 @@ loop_2:
     sp90 = temp_f0_625;
     sp18 = (f32) M2C_FIELD(this, f64 *, 0x78) - (f32) M2C_FIELD(this, f64 *, 0x68);
     sp98 = (f64) sp18;
-    spA0.operator*(0.5f);
+    spA0 = ((MKVector3 *) &sp90)->operator*(0.5f);
     sp40 = this->unk60 + M2C_BITWISE(f64, spA0);
     spB0 = sp40;
     sp48 = (f32) M2C_FIELD(this, f64 *, 0x68) + spA0.unk8;
@@ -551,7 +551,7 @@ void LightningStrikeFXDescriptor::FlashLightningLight(const MKVector3 &arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, float arg3) {
     MKVector3 sp180;
     MKVector3 sp170;

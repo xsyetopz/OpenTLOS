@@ -69,7 +69,7 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'spF8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     s8 sp1E0;
     s32 sp1DC;
@@ -110,7 +110,7 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     f64 sp110;
     f64 sp108;
     f64 sp100;
-    f64 spF0;
+    MKVector3 spF0;
     f64 spE8;
     f64 spE0;
     f64 spD8;
@@ -211,13 +211,13 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
         sp170 = (f64) sp1A0;
         sp178 = (f64) sp1A8;
     }
-    ((Volume *) &spF0)->GetRandPos();
+    spF0 = this->unkE0.GetRandPos();
     sp30 = 0.0f;
     sp34 = -500.0f;
     sp38 = 0.0f;
-    sp160 = spF0;
+    sp160 = M2C_BITWISE(f64, spF0);
     spB0 = (f64) sp30;
-    sp168 = spF8;
+    sp168 = (f64) spF0.unk8;
     spB8 = (f64) sp38;
     sp20 = sp160 + spB0;
     sp58 = 0.0f;
@@ -414,7 +414,7 @@ void GrubbleCritter::SetHideState(Grubble *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Volume' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void *GrubbleCritter::Update() {
     s8 sp2E8;
     s32 sp2E4;
@@ -446,7 +446,27 @@ void *GrubbleCritter::Update() {
     s8 sp27B;
     s8 sp27A;
     s16 sp278;
-    Volume sp1F0;
+    f32 sp274;
+    f32 sp270;
+    f32 sp26C;
+    f32 sp268;
+    f32 sp264;
+    f32 sp260;
+    f32 sp258;
+    f32 sp254;
+    f32 sp250;
+    f32 sp248;
+    f32 sp244;
+    f32 sp240;
+    f64 sp238;
+    f64 sp230;
+    f64 sp228;
+    f64 sp220;
+    f64 sp218;
+    f64 sp210;
+    f64 sp208;
+    f64 sp200;
+    MKVector3 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
     f64 sp1D8;
@@ -529,7 +549,6 @@ void *GrubbleCritter::Update() {
     f64 temp_f1_761;
     f64 temp_f1_767;
     f64 temp_f1_771;
-    f64 temp_f5_679;
     f64 temp_f5_940;
     s32 temp_r0_614;
     s32 temp_r27_1003;
@@ -550,19 +569,19 @@ loop_50:
         temp_r0_614 = M2C_FIELD(temp_r30_605, s32 *, 0x60);
         switch (temp_r0_614) {                      /* switch 1; irregular */
         case 0:                                     /* switch 1 */
-            sp1F0.GetRandPos();
+            sp1F0 = this->unkE0.GetRandPos();
             spF8 = 0.0f;
             spF0 = 0.0f;
             spF4 = 1.0f;
             spC8 = 0.0f;
-            sp1F0.unk30 = (f64) spF0;
-            sp1F0.unk38 = (f64) spF8;
+            sp220 = (f64) spF0;
+            sp228 = (f64) spF8;
             spC0 = 0.0f;
             spC4 = -500.0f;
-            sp1F0.unk40 = M2C_BITWISE(f64, sp1F0);
-            sp1F0.unk40.unk4 = M2C_FIELD(this->unk8, f32 *, 0x34);
+            sp230 = M2C_BITWISE(f64, sp1F0);
+            (*(f32 *) ((u8 *) &sp230 + 0x4)) = M2C_FIELD(this->unk8, f32 *, 0x34);
             sp1B0 = (f64) spC0;
-            sp1F0.unk40.unk8 = sp1F0.unk8;
+            sp238 = (f64) sp1F0.unk8;
             sp298 = 0.0f;
             sp29C = 0.0f;
             sp2A0 = 0.0f;
@@ -585,26 +604,25 @@ loop_50:
             sp2E4 = -1;
             sp2E8 = 0;
             sp1B8 = (f64) spC8;
-            temp_f5_679 = M2C_BITWISE(f64, sp1F0.unk40);
-            spB0 = temp_f5_679 + sp1B0;
+            spB0 = sp230 + sp1B0;
             spE8 = 0.0f;
             spE0 = 0.0f;
             spE4 = 200.0f;
-            spB8 = sp1F0.unk40.unk8 + (f32) sp1B8;
+            spB8 = (f32) sp238 + (f32) sp1B8;
             sp1D0 = (f64) spE0;
             sp1C0 = spB0;
             sp1C8 = (f64) spB8;
             sp1D8 = (f64) spE8;
-            temp_f0_700 = temp_f5_679 + sp1D0;
+            temp_f0_700 = sp230 + sp1D0;
             spD0 = temp_f0_700;
             sp1E0 = temp_f0_700;
-            spD8 = sp1F0.unk40.unk8 + (f32) sp1D8;
+            spD8 = (f32) sp238 + (f32) sp1D8;
             sp1E8 = (f64) spD8;
             if (MKCollision_RayCollide(*((MKVector3 *) &sp1E0), *((MKVector3 *) &sp1C0), (MKCollisionResult *) &sp298, (MKCollisionMode) 4, 0x0C000000) != 0) {
-                sp1F0.unk40 = (f64) sp298;
-                sp1F0.unk40.unk8 = (f64) sp2A0;
-                sp1F0.unk30 = (f64) sp2A8;
-                sp1F0.unk38 = (f64) sp2B0;
+                sp230 = (f64) sp298;
+                sp238 = (f64) sp2A0;
+                sp220 = (f64) sp2A8;
+                sp228 = (f64) sp2B0;
             }
             spA8 = -1.0f;
             sp98 = 1.0f;
@@ -660,12 +678,12 @@ loop_50:
             sp80 = M2C_BITWISE(f32, sp1A0) * var_f3_822;
             sp84 = sp1A0.unk4 * var_f3_822;
             sp88 = sp1A0.unk8 * var_f3_822;
-            sp1F0.unk20 = (f64) sp80;
-            sp1F0.unk28 = (f64) sp88;
-            KDMath_BuildMatrixFromUp(temp_r30_605, *((MKVector3 *) &sp1F0.unk30), *((MKVector3 *) &sp1F0.unk20));
-            temp_r30_605->unk30 = (f32) sp1F0.unk40;
-            temp_r30_605->unk34 = sp1F0.unk40.unk4;
-            temp_r30_605->unk38 = (f32) sp1F0.unk40.unk8;
+            sp210 = (f64) sp80;
+            sp218 = (f64) sp88;
+            KDMath_BuildMatrixFromUp(temp_r30_605, *((MKVector3 *) &sp220), *((MKVector3 *) &sp210));
+            temp_r30_605->unk30 = (f32) sp230;
+            temp_r30_605->unk34 = (*(f32 *) ((u8 *) &sp230 + 0x4));
+            temp_r30_605->unk38 = (f32) sp238;
             temp_r30_605->unk3C = 1.0f;
             M2C_FIELD(temp_r30_605, s32 *, 0x60) = 4;
             FindNewWalkParameters((Grubble *) temp_r30_605);
@@ -674,9 +692,9 @@ loop_50:
             sp70 = -temp_r30_605->unk20;
             sp74 = -temp_r30_605->unk24;
             sp78 = -temp_r30_605->unk28;
-            sp1F0.unk10 = (f64) sp70;
-            sp1F0.unk18 = (f64) sp78;
-            sp160.operator*(200.0f * gUpdateTimeDelta);
+            sp200 = (f64) sp70;
+            sp208 = (f64) sp78;
+            sp160 = ((MKVector3 *) &sp200)->operator*(200.0f * gUpdateTimeDelta);
             temp_f0_881 = (f64) M2C_FIELD(temp_r30_605, f32 *, 0x30) + M2C_BITWISE(f64, sp160);
             sp10 = temp_f0_881;
             sp170 = temp_f0_881;
@@ -693,18 +711,18 @@ loop_50:
             sp40 = 0.0f;
             sp44 = -500.0f;
             sp48 = 0.0f;
-            sp1F0.unk40.unk10 = 0.0f;
-            sp1F0.unk40.unk14 = 0.0f;
-            sp1F0.unk40.unk18 = 0.0f;
-            sp1F0.unk40.unk20 = 0.0f;
-            sp1F0.unk40.unk24 = 0.0f;
-            sp1F0.unk40.unk28 = 0.0f;
-            sp1F0.unk40.unk30 = 0.0f;
-            sp1F0.unk40.unk34 = 0.0f;
-            sp1F0.unk40.unk38 = 0.0f;
-            sp1F0.unk40.unk3C = 1.0f;
-            sp1F0.unk80 = 0.0f;
-            sp1F0.unk84 = 0.0f;
+            sp240 = 0.0f;
+            sp244 = 0.0f;
+            sp248 = 0.0f;
+            sp250 = 0.0f;
+            sp254 = 0.0f;
+            sp258 = 0.0f;
+            sp260 = 0.0f;
+            sp264 = 0.0f;
+            sp268 = 0.0f;
+            sp26C = 1.0f;
+            sp270 = 0.0f;
+            sp274 = 0.0f;
             sp278 = 0;
             sp27A = 0;
             sp27B = 0;
@@ -732,10 +750,10 @@ loop_50:
             sp150 = temp_f0_961;
             sp58 = temp_f4_946 + (f32) sp148;
             sp158 = (f64) sp58;
-            if (MKCollision_RayCollide(*((MKVector3 *) &sp150), *((MKVector3 *) &sp130), (MKCollisionResult *) &sp1F0.unk40.unk10, (MKCollisionMode) 4, 0x0C000000) != 0) {
-                temp_r30_605->unk30 = sp1F0.unk40.unk10;
-                temp_r30_605->unk34 = sp1F0.unk40.unk14;
-                temp_r30_605->unk38 = sp1F0.unk40.unk18;
+            if (MKCollision_RayCollide(*((MKVector3 *) &sp150), *((MKVector3 *) &sp130), (MKCollisionResult *) &sp240, (MKCollisionMode) 4, 0x0C000000) != 0) {
+                temp_r30_605->unk30 = sp240;
+                temp_r30_605->unk34 = sp244;
+                temp_r30_605->unk38 = sp248;
                 temp_r30_605->unk3C = 1.0f;
             }
             if (M2C_FIELD(temp_r30_605, f32 *, 0x64) <= 0.0f) {

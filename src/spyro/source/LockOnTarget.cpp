@@ -19,7 +19,7 @@
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 void LockOnTarget::Draw() {
     f32 sp118;
     f32 sp114;

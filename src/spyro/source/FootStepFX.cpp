@@ -207,7 +207,7 @@ loop_5:
             sp350 = temp_f0_121;
             spA8 = (f32) sp348 + sp320.unk8;
             sp358 = (f64) spA8;
-            sp360.operator*(50.0f);
+            sp360 = ((MKVector3 *) &sp350)->operator*(50.0f);
             sp120 = sp360 * (f64) arg5;
             sp380 = sp120;
             sp128 = sp360.unk8 * arg5;
@@ -279,7 +279,7 @@ loop_19:
             sp290 = temp_f0_294;
             sp78 = (f32) sp288 + sp260.unk8;
             sp298 = (f64) sp78;
-            sp2A0.operator*(50.0f);
+            sp2A0 = ((MKVector3 *) &sp290)->operator*(50.0f);
             sp100 = sp2A0 * (f64) arg5;
             sp380 = sp100;
             sp108 = sp2A0.unk8 * arg5;
@@ -337,7 +337,7 @@ loop_26:
             sp200 = temp_f0_418;
             sp48 = (f32) sp1F8 + sp1D0.unk8;
             sp208 = (f64) sp48;
-            sp210.operator*(50.0f);
+            sp210 = ((MKVector3 *) &sp200)->operator*(50.0f);
             spE0 = sp210 * (f64) arg5;
             sp380 = spE0;
             spE8 = sp210.unk8 * arg5;
@@ -391,7 +391,7 @@ loop_34:
             sp180 = temp_f0_536;
             sp18 = (f32) sp178 + sp150.unk8;
             sp188 = (f64) sp18;
-            sp190.operator*(50.0f);
+            sp190 = ((MKVector3 *) &sp180)->operator*(50.0f);
             spD0 = sp190 * (f64) arg5;
             sp380 = spD0;
             spD8 = sp190.unk8 * arg5;
@@ -421,7 +421,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3) {
     f64 sp288;
     f64 sp280;
@@ -649,8 +649,8 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     spD8 = (f32) sp258 * var_f3_835;
     sp270 = (f64) spD0;
     sp278 = (f64) spD8;
-    sp210.operator*(arg3);
-    sp220.operator*(arg3);
+    sp210 = ((MKVector3 *) &sp270)->operator*(arg3);
+    sp220 = ((MKVector3 *) &sp280)->operator*(arg3);
     temp_f0_861 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp220);
     sp80 = temp_f0_861;
     sp230 = temp_f0_861;
@@ -664,8 +664,8 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     spC8 = (f32) sp238 + sp210.unk8;
     sp248 = (f64) spC8;
     M2C_FIELD(temp_r5_886, f64 *, 8) = (f64) spC8;
-    sp1C0.operator*(arg3);
-    sp1D0.operator*(arg3);
+    sp1C0 = ((MKVector3 *) &sp270)->operator*(arg3);
+    sp1D0 = ((MKVector3 *) &sp280)->operator*(arg3);
     sp70 = -M2C_BITWISE(f32, sp1D0);
     sp74 = -sp1D0.unk4;
     sp78 = -sp1D0.unk8;
@@ -684,13 +684,13 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     spB8 = (f32) sp1F8 + sp1C0.unk8;
     sp208 = (f64) spB8;
     M2C_FIELD(temp_r5_938, f64 *, 8) = (f64) spB8;
-    sp170.operator*(arg3);
+    sp170 = ((MKVector3 *) &sp270)->operator*(arg3);
     sp50 = -M2C_BITWISE(f32, sp170);
     sp54 = -sp170.unk4;
     sp58 = -sp170.unk8;
     sp180 = (f64) sp50;
     sp188 = (f64) sp58;
-    sp190.operator*(arg3);
+    sp190 = ((MKVector3 *) &sp280)->operator*(arg3);
     temp_f0_964 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp190);
     sp40 = temp_f0_964;
     sp1A0 = temp_f0_964;
@@ -704,13 +704,13 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     spA8 = (f32) sp1A8 + (f32) sp188;
     sp1B8 = (f64) spA8;
     M2C_FIELD(temp_r5_990, f64 *, 8) = (f64) spA8;
-    sp110.operator*(arg3);
+    sp110 = ((MKVector3 *) &sp270)->operator*(arg3);
     sp30 = -M2C_BITWISE(f32, sp110);
     sp34 = -sp110.unk4;
     sp38 = -sp110.unk8;
     sp120 = (f64) sp30;
     sp128 = (f64) sp38;
-    sp130.operator*(arg3);
+    sp130 = ((MKVector3 *) &sp280)->operator*(arg3);
     sp20 = -M2C_BITWISE(f32, sp130);
     sp24 = -sp130.unk4;
     sp28 = -sp130.unk8;

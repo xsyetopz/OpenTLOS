@@ -285,7 +285,7 @@ void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
     f64 sp70;
     f64 sp68;
     f64 sp60;
-    f64 sp50;
+    MKVector3 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -344,9 +344,8 @@ void KDSP_Actor::UpdateAimNode(MKAnimScript *arg0, MKVector3 &arg1, int arg2) {
         sp134 = 0.0f;
         sp138 = 0.0f;
         sp13C = 1.0f;
-        ((Animation *) &sp50)->GetNodeOrigin(MKModel_GetAnimation(arg0->unk8));
-        spB0 = sp50;
-        spB8 = sp58;
+        sp50 = ((Animation *) (MKModel_GetAnimation(arg0->unk8)))->GetNodeOrigin(arg2);
+        *(MKVector3 *) &spB0 = sp50;
         sp40 = -(f32) spB0;
         sp44 = -(*(f32 *) ((u8 *) &spB0 + 0x4));
         sp48 = -(f32) spB8;
@@ -1007,8 +1006,8 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
     f64 sp70;
     f64 sp68;
     f64 sp60;
-    f64 sp50;
-    f32 sp40;
+    MKVector3 sp50;
+    MKVector3 sp40;
     MKVector3 sp30;
     f32 sp28;
     f64 sp20;
@@ -1145,14 +1144,13 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
                     M2C_STRUCT_COPY((s32) &sp1AC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                     sp1B0.SetLookAt(*((MKVector3 *) &spB0), *((MKVector3 *) &spF0));
                     sp1F0.Multiply3x3(&sp1F0, &sp1B0);
-                    ((Matrix *) &sp50)->GetRotationPYR();
-                    spE0 = sp50;
-                    spE8 = sp58;
+                    sp50 = sp1F0.GetRotationPYR();
+                    *(MKVector3 *) &spE0 = sp50;
                 } else {
-                    ((Matrix *) &sp40)->GetRotationPYR();
-                    spE0 = sp40;
-                    spE4 = sp44;
-                    spE8 = sp48;
+                    sp40 = var_r3_1921->GetRotationPYR();
+                    spE0 = M2C_BITWISE(f32, sp40);
+                    spE4 = sp40.unk4;
+                    spE8 = sp40.unk8;
                     spEC = 1.0f;
                 }
             }
@@ -1907,7 +1905,7 @@ void KDSP_Actor::ResolveLipsBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
 }
 #endif
 
-#if 0 // DRAFT: illegal type Too many errors printed, aborting program
+#if 0 // DRAFT: illegal type
 void KDSP_Actor::ResolveVoiceBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
     s32 temp_r31_3236;
     s32 temp_r3_3226;
@@ -2439,7 +2437,7 @@ u8 LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSy
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12K DSynkerHeapP15KDSP_GenericBarii_vRi'
+#if 0 // DRAFT: function call 'LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12K DSynkerHeapP15KDSP_GenericBarii_vRi(KDSP_Actor *, KDSynkerHeap *, MKIn
 void KDSP_Actor::LoadActorSection(KDSynkerHeap *arg0, MKIniLine *arg1, int &arg2) {
     s32 sp64;
     s32 sp60;
@@ -2554,8 +2552,8 @@ loop_25:
 
 #if 0 // DRAFT: illegal type
 s32 KDSP_Actor::LoadADSPaths(KDSynkerHeap *arg0, MKIniLine *arg1) {
-    MKIniLine sp18;
-    MKIniLine sp8;
+    MKVector3 sp18;
+    MKVector3 sp8;
     MKIniLine *var_r26_4646;
     MKIniLine *var_r26_4692;
     MKIniLine *var_r28_4635;
@@ -2613,11 +2611,11 @@ loop_20:
                     } else if (var_r26_4692->IsField("AimAtPath") != 0) {
                         M2C_FIELD(var_r29_4631, s8 *, 4) = var_r26_4692->GetBool(0);
                     } else if (var_r26_4692->IsField("pos") != 0) {
-                        sp18.GetVector3((s32) var_r26_4692);
-                        ((KDUniformSpline *) (((u8 *) var_r29_4631) + 8))->AddNode(*((MKVector3 *) &sp18));
+                        sp18 = var_r26_4692->GetVector3(0);
+                        ((KDUniformSpline *) (((u8 *) var_r29_4631) + 8))->AddNode(sp18);
                     } else if (var_r26_4692->IsField("rot") != 0) {
-                        sp8.GetVector3((s32) var_r26_4692);
-                        ((KDUniformSpline *) (((u8 *) var_r29_4631) + 0x1C))->AddNode(*((MKVector3 *) &sp8));
+                        sp8 = var_r26_4692->GetVector3(0);
+                        ((KDUniformSpline *) (((u8 *) var_r29_4631) + 0x1C))->AddNode(sp8);
                     }
                     var_r26_4692 = var_r26_4692->unkC->GetNextLine(var_r26_4692);
                     goto loop_20;

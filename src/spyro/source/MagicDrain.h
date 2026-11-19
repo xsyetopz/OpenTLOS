@@ -39,7 +39,6 @@ public:
     /* 0x159 */ u8 pad159[0x3];
     /* 0x15c */ ManagedLight* unk15C;
     /* 0x160 */ BreathHitMessage unk160;
-    /* 0x1b4 */ u8 pad1B4[0x4];
     /* 0x1b8 */ f32 unk1B8;
 };
 

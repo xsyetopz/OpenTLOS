@@ -70,7 +70,7 @@ public:
 
 class IceBossStalactiteSpawner {
 public:
-    void GetSpawnPoint(const MKVector3 &, int);
+    MKVector3 GetSpawnPoint(const MKVector3 &, int);
     void Fire(const MKVector3 &);
     void DropIndividual(int, bool);
     void SpawnSingleAtPos(const MKVector3 &);

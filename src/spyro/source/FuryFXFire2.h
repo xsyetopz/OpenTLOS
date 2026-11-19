@@ -44,7 +44,6 @@ public:
     /* 0x0e8 */ f32 unkE8;
     /* 0x0ec */ u8 padEC[0x4];
     /* 0x0f0 */ BreathHitMessage unkF0;
-    /* 0x144 */ u8 pad144[0x4];
     /* 0x148 */ MKModel* unk148;
     /* 0x14c */ f32 unk14C;
     /* 0x150 */ FuryFXFire2::Meteor** unk150;

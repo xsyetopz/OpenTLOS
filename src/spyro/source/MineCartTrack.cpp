@@ -634,22 +634,20 @@ s32 MineCartTrack::LoadDone() {
     } while (var_r29_936 < 4);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MineCartTrack::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    MKIniLine sp58;
+    MKVector3 sp58;
     MKVector3 sp48;
     MKVector3 sp38;
-    MKIniLine sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     MKVector3 sp8;
     MKIniLine *var_r30_1015;
     MKIniLine *var_r30_1089;
-    f64 temp_f0_1030;
-    f64 temp_f0_1104;
     f64 temp_f1_1029;
     f64 temp_f1_1103;
     s32 temp_r3_1016;
@@ -666,14 +664,13 @@ s32 MineCartTrack::LoadLine(MKIniLine *arg0) {
             ((KDUniformSpline *) &this->unk50)->Init(temp_r3_1016, 0U);
 loop_9:
             if (var_r30_1015 != NULL) {
-                sp58.GetVector3((s32) var_r30_1015);
+                sp58 = var_r30_1015->GetVector3(0);
                 temp_f1_1029 = M2C_BITWISE(f64, sp58);
-                temp_f0_1030 = M2C_BITWISE(f64, sp58.unk8);
                 sp78 = temp_f1_1029;
-                sp80 = temp_f0_1030;
+                sp80 = (f64) sp58.unk8;
                 if ((u8) this->unk100 != 0) {
                     this->unkA0 = temp_f1_1029;
-                    this->unkA8 = temp_f0_1030;
+                    this->unkA8 = (f64) sp58.unk8;
                     this->unkB0 = sp78;
                     this->unkB8 = sp80;
                     this->unk100 = 0;
@@ -697,14 +694,13 @@ loop_9:
             ((KDUniformSpline *) &this->unk50.unk14)->Init(temp_r3_1090, 0U);
 loop_18:
             if (var_r30_1089 != NULL) {
-                sp28.GetVector3((s32) var_r30_1089);
+                sp28 = var_r30_1089->GetVector3(0);
                 temp_f1_1103 = M2C_BITWISE(f64, sp28);
-                temp_f0_1104 = M2C_BITWISE(f64, sp28.unk8);
                 sp68 = temp_f1_1103;
-                sp70 = temp_f0_1104;
+                sp70 = (f64) sp28.unk8;
                 if ((u8) this->unk100 != 0) {
                     this->unkA0 = temp_f1_1103;
-                    this->unkA8 = temp_f0_1104;
+                    this->unkA8 = (f64) sp28.unk8;
                     this->unkB0 = sp68;
                     this->unkB8 = sp70;
                     this->unk100 = 0;

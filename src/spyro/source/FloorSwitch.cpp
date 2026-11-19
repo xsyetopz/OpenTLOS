@@ -160,7 +160,7 @@ void FloorSwitch::Draw() {
     GameProp::Draw();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *FloorSwitch::Update() {
     s8 sp130;
     f64 sp128;

@@ -252,7 +252,7 @@ void Leviathan::EmitWaterSpray() {
     sp50 = -M2C_FIELD(temp_r5_237, f32 *, 0x28);
     sp268 = (f64) sp48;
     sp270 = (f64) sp50;
-    sp278.operator*(2000.0f);
+    sp278 = ((MKVector3 *) &sp268)->operator*(2000.0f);
     temp_r5_254 = this->unk8;
     spD8 = *(temp_r5_254 + 0x30) + M2C_BITWISE(f64, sp278);
     sp288 = spD8;
@@ -260,14 +260,14 @@ void Leviathan::EmitWaterSpray() {
     sp2C8 = spD8;
     sp290 = (f64) spE0;
     sp2D0 = (f64) spE0;
-    sp218.operator*(500.0f);
+    sp218 = ((MKVector3 *) (((u8 *) temp_r5_254) + 0x20))->operator*(500.0f);
     temp_r5_274 = this->unk8;
     sp38 = -M2C_FIELD(temp_r5_274, f32 *, 0);
     sp3C = -M2C_FIELD(temp_r5_274, f32 *, 4);
     sp40 = -M2C_FIELD(temp_r5_274, f32 *, 8);
     sp228 = (f64) sp38;
     sp230 = (f64) sp40;
-    sp238.operator*(1000.0f);
+    sp238 = ((MKVector3 *) &sp228)->operator*(1000.0f);
     temp_f0_294 = sp2C8 + M2C_BITWISE(f64, sp238);
     sp28 = temp_f0_294;
     sp248 = temp_f0_294;
@@ -280,8 +280,8 @@ void Leviathan::EmitWaterSpray() {
     spD0 = (f32) sp250 + sp218.unk8;
     sp260 = (f64) spD0;
     sp2E0 = (f64) spD0;
-    sp1D8.operator*(500.0f);
-    sp1E8.operator*(1000.0f);
+    sp1D8 = ((MKVector3 *) (((u8 *) this->unk8) + 0x20))->operator*(500.0f);
+    sp1E8 = ((MKVector3 *) this->unk8)->operator*(1000.0f);
     temp_f0_329 = sp2C8 + M2C_BITWISE(f64, sp1E8);
     sp18 = temp_f0_329;
     sp1F8 = temp_f0_329;
@@ -310,7 +310,7 @@ void Leviathan::EmitWaterSpray() {
         var_r28_379 = 0;
 loop_2:
         if (var_r29_367 != 0) {
-            sp198.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
+            sp198 = ((MKVector3 *) &sp2A8)->operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp88 = sp2D8 + M2C_BITWISE(f64, sp198);
             sp1A8 = sp88;
             sp90 = (f32) sp2E0 + sp198.unk8;
@@ -318,7 +318,7 @@ loop_2:
             sp1B0 = (f64) sp90;
             sp300 = (f64) sp90;
         } else {
-            sp178.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
+            sp178 = ((MKVector3 *) &sp298)->operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp78 = sp2B8 + M2C_BITWISE(f64, sp178);
             sp188 = sp78;
             sp80 = (f32) sp2C0 + sp178.unk8;
@@ -333,12 +333,12 @@ loop_2:
         sp10 = -M2C_FIELD(temp_r5_430, f32 *, 0x28);
         spF8 = (f64) sp8;
         sp100 = (f64) sp10;
-        sp108.operator*(4000.0f);
-        sp118.operator*(temp_f31_431);
+        sp108 = ((MKVector3 *) &spF8)->operator*(4000.0f);
+        sp118 = sp108.operator*(temp_f31_431);
         sp128 = MKVector(1.0f, 1.0f, 1.0f);
         sp138 = MKVector(-1.0f, 0.0f, -1.0f);
         sp148 = KDRand_Vector(sp138, sp128);
-        sp158.operator*(3000.0f);
+        sp158 = sp148.operator*(3000.0f);
         sp68 = sp158 + M2C_BITWISE(f64, sp118);
         temp_r3_477 = this->unk1A0;
         sp168 = sp68;
@@ -489,7 +489,7 @@ void Leviathan::EmitHugeSplash() {
     sp50 = -M2C_FIELD(temp_r5_570, f32 *, 0x28);
     sp268 = (f64) sp48;
     sp270 = (f64) sp50;
-    sp278.operator*(2000.0f);
+    sp278 = ((MKVector3 *) &sp268)->operator*(2000.0f);
     temp_r5_587 = this->unk8;
     spD8 = *(temp_r5_587 + 0x30) + M2C_BITWISE(f64, sp278);
     sp288 = spD8;
@@ -497,14 +497,14 @@ void Leviathan::EmitHugeSplash() {
     sp2C8 = spD8;
     sp290 = (f64) spE0;
     sp2D0 = (f64) spE0;
-    sp218.operator*(500.0f);
+    sp218 = ((MKVector3 *) (((u8 *) temp_r5_587) + 0x20))->operator*(500.0f);
     temp_r5_607 = this->unk8;
     sp38 = -M2C_FIELD(temp_r5_607, f32 *, 0);
     sp3C = -M2C_FIELD(temp_r5_607, f32 *, 4);
     sp40 = -M2C_FIELD(temp_r5_607, f32 *, 8);
     sp228 = (f64) sp38;
     sp230 = (f64) sp40;
-    sp238.operator*(1000.0f);
+    sp238 = ((MKVector3 *) &sp228)->operator*(1000.0f);
     temp_f0_627 = sp2C8 + M2C_BITWISE(f64, sp238);
     sp28 = temp_f0_627;
     sp248 = temp_f0_627;
@@ -517,8 +517,8 @@ void Leviathan::EmitHugeSplash() {
     spD0 = (f32) sp250 + sp218.unk8;
     sp260 = (f64) spD0;
     sp2E0 = (f64) spD0;
-    sp1D8.operator*(500.0f);
-    sp1E8.operator*(1000.0f);
+    sp1D8 = ((MKVector3 *) (((u8 *) this->unk8) + 0x20))->operator*(500.0f);
+    sp1E8 = ((MKVector3 *) this->unk8)->operator*(1000.0f);
     temp_f0_662 = sp2C8 + M2C_BITWISE(f64, sp1E8);
     sp18 = temp_f0_662;
     sp1F8 = temp_f0_662;
@@ -547,7 +547,7 @@ void Leviathan::EmitHugeSplash() {
         var_r28_712 = 0;
 loop_2:
         if (var_r29_700 != 0) {
-            sp198.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
+            sp198 = ((MKVector3 *) &sp2A8)->operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp88 = sp2D8 + M2C_BITWISE(f64, sp198);
             sp1A8 = sp88;
             sp90 = (f32) sp2E0 + sp198.unk8;
@@ -555,7 +555,7 @@ loop_2:
             sp1B0 = (f64) sp90;
             sp300 = (f64) sp90;
         } else {
-            sp178.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
+            sp178 = ((MKVector3 *) &sp298)->operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp78 = sp2B8 + M2C_BITWISE(f64, sp178);
             sp188 = sp78;
             sp80 = (f32) sp2C0 + sp178.unk8;
@@ -570,12 +570,12 @@ loop_2:
         sp10 = -M2C_FIELD(temp_r5_763, f32 *, 0x28);
         spF8 = (f64) sp8;
         sp100 = (f64) sp10;
-        sp108.operator*(4000.0f);
-        sp118.operator*(temp_f31_764);
+        sp108 = ((MKVector3 *) &spF8)->operator*(4000.0f);
+        sp118 = sp108.operator*(temp_f31_764);
         sp128 = MKVector(1.0f, 5.0f, 1.0f);
         sp138 = MKVector(-1.0f, 0.0f, -1.0f);
         sp148 = KDRand_Vector(sp138, sp128);
-        sp158.operator*(3000.0f);
+        sp158 = sp148.operator*(3000.0f);
         sp68 = sp158 + M2C_BITWISE(f64, sp118);
         temp_r3_810 = this->unk1A0;
         sp168 = sp68;
@@ -633,7 +633,7 @@ void Leviathan::UpdateMove() {
     f64 sp70;
     f64 sp68;
     f64 sp60;
-    f64 sp50;
+    MKVector3 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -878,9 +878,8 @@ void Leviathan::UpdateMove() {
         spF0.unk38 = (f32) spE8;
         spF0.unk3C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, spF0);
-        ((Matrix *) &sp50)->GetRotationPYR();
-        M2C_FIELD(this, f64 *, 0x110) = sp50;
-        M2C_FIELD(this, f64 *, 0x118) = sp58;
+        sp50 = spF0.GetRotationPYR();
+        M2C_FIELD(this, MKVector3 *, 0x110) = sp50;
     }
 }
 #endif

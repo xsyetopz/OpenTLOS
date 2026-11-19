@@ -309,7 +309,7 @@ void *FallingDustProp::Update() {
             }
             var_r25_322 = 0;
             do {
-                sp220.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
+                sp220 = ((MKVector3 *) &sp2D0)->operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
                 sp70 = M2C_BITWISE(f64, sp340) + M2C_BITWISE(f64, sp220);
                 sp230 = sp70;
                 sp78 = sp340.unk8 + sp220.unk8;
@@ -335,7 +335,7 @@ void *FallingDustProp::Update() {
                 sp1D8 = (f64) sp58;
                 sp318 = (f64) sp58;
                 ((FlyingChunkPS *) gb.unkA4)->Emit(*((MKVector3 *) &sp320), *((MKVector3 *) &sp310), *((MKVector3 *) &sp300), *((MKVector3 *) &sp2F0), MKRand_Float((int *) &gViewSeed, 0.2f, 0.4f), *((MKVector4 *) &sp2E0), 0, NULL);
-                sp180.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
+                sp180 = ((MKVector3 *) &sp2D0)->operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
                 sp40 = M2C_BITWISE(f64, sp340) + M2C_BITWISE(f64, sp180);
                 sp190 = sp40;
                 sp48 = sp340.unk8 + sp180.unk8;
@@ -377,7 +377,7 @@ void *FallingDustProp::Update() {
                 sp88 = sp2B0.unk8 - sp2C0.unk8;
                 sp288 = (f64) sp88;
                 do {
-                    sp120.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
+                    sp120 = ((MKVector3 *) &sp280)->operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
                     sp20 = M2C_BITWISE(f64, sp2C0) + M2C_BITWISE(f64, sp120);
                     sp130 = sp20;
                     sp28 = sp2C0.unk8 + sp120.unk8;

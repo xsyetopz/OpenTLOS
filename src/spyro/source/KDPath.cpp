@@ -408,7 +408,7 @@ loop_1:
     M2C_FIELD(&arg1, f64 *, 8) = (f64) sp10;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'float'
 void KDSplinePathSegment::LoadDone() {
     f64 sp58;
     f64 sp50;
@@ -771,7 +771,7 @@ void KDPathSegment::Resolve() {
 
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal type
 void KDPathSegment::LoadDone() {
     f64 sp28;
     f64 sp20;

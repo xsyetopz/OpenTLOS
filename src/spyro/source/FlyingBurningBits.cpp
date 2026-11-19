@@ -162,7 +162,7 @@ void FlyingBurningBits::Deinit() {
     this->unk0 = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: undefined identifier 'sp378'
 void FlyingBurningBits::Draw() {
     M2C_UNK sp34C;
     f64 sp340;
@@ -528,7 +528,7 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void FlyingBurningBits::Update() {
     f64 spB8;
     f64 spB0;

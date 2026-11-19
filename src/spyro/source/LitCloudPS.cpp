@@ -27,7 +27,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void LitCloudPS::Explode() {
     f64 sp50;
     f64 sp48;
@@ -358,7 +358,7 @@ loop_2:
             sp18 = MKVector(1.0f, 1.0f, 1.0f);
             sp28 = MKVector(-1.0f, -1.0f, -1.0f);
             sp38 = KDRand_Vector(sp28, sp18);
-            sp48.operator*(25.0f);
+            sp48 = sp38.operator*(25.0f);
             sp8 = sp48 * (f64) temp_f31_558;
             temp_r3_584 = (void *) (M2C_FIELD(&arg0, s32 *, 0x7C) + (var_r30_497 + 0x20));
             M2C_FIELD(temp_r3_584, f64 *, 0) = sp8;
@@ -528,16 +528,16 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp288 = (f64) sp118;
     sp220 = (f64) sp40;
     sp228 = (f64) sp48;
-    sp230.operator*(M2C_FIELD(arg1, f32 *, 0x44));
-    sp240.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp230 = ((MKVector3 *) &sp220)->operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp240 = ((MKVector3 *) &sp280)->operator*(M2C_FIELD(arg1, f32 *, 0x44));
     spA0 = sp240 + M2C_BITWISE(f64, sp230);
     sp350 = spA0;
     spA8 = sp240.unk8 + sp230.unk8;
     sp250 = spA0;
     sp358 = (f64) spA8;
     sp258 = (f64) spA8;
-    sp1F0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
-    sp200.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp1F0 = ((MKVector3 *) &sp270)->operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp200 = ((MKVector3 *) &sp280)->operator*(M2C_FIELD(arg1, f32 *, 0x44));
     sp90 = sp200 + M2C_BITWISE(f64, sp1F0);
     sp38 = -(f32) sp278;
     sp98 = sp200.unk8 + sp1F0.unk8;
@@ -549,26 +549,26 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp1A8 = (f64) sp38;
     sp210 = sp90;
     sp218 = (f64) sp98;
-    sp1B0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp1B0 = ((MKVector3 *) &sp1A0)->operator*(M2C_FIELD(arg1, f32 *, 0x44));
     sp20 = -(f32) sp280;
     sp24 = -(*(f32 *) ((u8 *) &sp280 + 0x4));
     sp28 = -(f32) sp288;
     sp1C0 = (f64) sp20;
     sp1C8 = (f64) sp28;
-    sp1D0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp1D0 = ((MKVector3 *) &sp1C0)->operator*(M2C_FIELD(arg1, f32 *, 0x44));
     sp80 = sp1D0 + M2C_BITWISE(f64, sp1B0);
     sp370 = sp80;
     sp88 = sp1D0.unk8 + sp1B0.unk8;
     sp1E0 = sp80;
     sp378 = (f64) sp88;
     sp1E8 = (f64) sp88;
-    sp160.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp160 = ((MKVector3 *) &sp270)->operator*(M2C_FIELD(arg1, f32 *, 0x44));
     sp10 = -(f32) sp280;
     sp14 = -(*(f32 *) ((u8 *) &sp280 + 0x4));
     sp18 = -(f32) sp288;
     sp170 = (f64) sp10;
     sp178 = (f64) sp18;
-    sp180.operator*(M2C_FIELD(arg1, f32 *, 0x44));
+    sp180 = ((MKVector3 *) &sp170)->operator*(M2C_FIELD(arg1, f32 *, 0x44));
     sp70 = sp180 + M2C_BITWISE(f64, sp160);
     sp190 = sp70;
     sp78 = sp180.unk8 + sp160.unk8;

@@ -362,7 +362,6 @@ void KDMath_RotateVectorByYaw(const MKVector3 &arg1, float farg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 s32 KDMath_BuildMatrixFromUp(Matrix *arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
     f64 sp88;                                       /* compiler-managed */
     f64 sp80;                                       /* compiler-managed */
@@ -534,9 +533,7 @@ s32 KDMath_BuildMatrixFromUp(Matrix *arg0, const MKVector3 &arg1, const MKVector
     arg0->unk2C = 0.0f;
     return 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 s8 KDMath_BuildMatrixFromFwd(Matrix *arg0, const MKVector3 &arg1, MKVector3 *arg2) {
     f64 sp88;
     f64 sp80;
@@ -717,9 +714,7 @@ s8 KDMath_BuildMatrixFromFwd(Matrix *arg0, const MKVector3 &arg1, MKVector3 *arg
     arg0->unk1C = 0.0f;
     return 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 f32 KDMath_GetPitch(const MKVector3 &arg0) {
     f32 sp8;
     f32 temp_f0_1266;
@@ -779,7 +774,6 @@ f32 KDMath_GetPitch(const MKVector3 &arg0) {
     }
     return var_f1_1334;
 }
-#endif
 
 f32 KDMath_GetYaw(const MKVector3 &arg0) {
     f32 temp_f2_1356;

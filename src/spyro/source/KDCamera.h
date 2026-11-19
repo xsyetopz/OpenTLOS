@@ -63,15 +63,15 @@ public:
     virtual s32 IgnoreCollision(MKCollisionResult &);
     virtual void MiscMessage(MKMessage *);
     void GetYaw(void);
-    void GetXZDir(void);
-    void GetTarget(void);
+    MKVector3 GetXZDir(void);
+    MKVector3 GetTarget(void);
     static f32 GetSafePitch(float, float);
     void GetSmoothToAngleDelta(float, float, float);
     void GetSmoothedAngleOffset(float, float, float);
-    void GetIdealSource(const MKVector3 &, const MKVector3 &, MKVector3 *);
+    MKVector3 GetIdealSource(const MKVector3 &, const MKVector3 &, MKVector3 *);
     static f32 GetUpdatedSourceY(const MKVector3 &, const MKVector3 &, int);
-    void GetUpdatedSource(const MKVector3 &, const MKVector3 &, const MKVector3 *, float);
-    void GetUpdatedTarget(void);
+    MKVector3 GetUpdatedSource(const MKVector3 &, const MKVector3 &, const MKVector3 *, float);
+    MKVector3 GetUpdatedTarget(void);
     void SetCameraCollisionInfoItems(bool);
     s32 SnapToDirectionForce(const MKVector3 &);
     u8 SnapToDirection(const MKVector3 &);
@@ -80,7 +80,7 @@ public:
     u8 IsPointSafeAndViewClearSweep(const MKVector3 &, const MKVector3 &, float, int, MKCollisionResult *);
     u8 IsPointSafeAndViewClear(const MKVector3 &, const MKVector3 &, MKCollisionResult *);
     u8 IsPointSafe(const MKVector3 &, MKCollisionResult *);
-    void GetCollisionObjectPos(void);
+    MKVector3 GetCollisionObjectPos(void);
     s8 TryTeleport(const MKVector3 &, bool);
     void Teleport(const MKVector3 &, bool);
     void UpdateStoredCollisionData(bool);
@@ -109,7 +109,7 @@ public:
     void GetDeltaTargetVelocity(void);
     void HeroMoveYawUpdate(void);
     void GetHeroTargetPos(void);
-    void GetHeroTargetPos(const MKVector3 &);
+    MKVector3 GetHeroTargetPos(const MKVector3 &);
     void UpdateLTW(void);
     void SetLTW(const Matrix &);
     f32 GetMoveYaw(void);
@@ -317,8 +317,10 @@ inline void KDCamera::GetYaw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: identifier 'KDCamera::GetXZDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void KDCamera::GetXZDir() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp48;
     f64 sp40;
     f64 sp38;
@@ -340,7 +342,7 @@ inline void KDCamera::GetXZDir() {
     void *temp_r4_2649;
 
     var_f4_2648 = 0.0f;
-    temp_r4_2649 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
+    temp_r4_2649 = this->unk8;
     sp14 = 0.0f;
     sp40 = M2C_FIELD(temp_r4_2649, f64 *, 0x20);
     sp48 = M2C_FIELD(temp_r4_2649, f64 *, 0x28);
@@ -388,18 +390,24 @@ inline void KDCamera::GetXZDir() {
     sp24 = (*(f32 *) ((u8 *) &sp30 + 0x4)) * var_f4_2648;
     sp20 = (f32) sp30 * var_f4_2648;
     sp28 = (f32) sp38 * var_f4_2648;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp20;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp28;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp28;
+    return result;
 }
 #endif
 
+#if 0 // DRAFT: identifier 'KDCamera::GetTarget()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void KDCamera::GetTarget() {
-    void *temp_r4_2903;
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    KDCameraPoint *temp_r4_2903;
 
-    temp_r4_2903 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 0xA4);
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_2903, f64 *, 0);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_2903, f64 *, 8);
+    temp_r4_2903 = this->unkA4;
+    M2C_FIELD(sret, f64 *, 0) = (f64) temp_r4_2903->unk0;
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(temp_r4_2903, f64 *, 8);
+    return result;
 }
+#endif
 
 inline f32 KDCamera::GetFieldOfView() {
     return M2C_FIELD(this->unk0, f32 *, 0x70);

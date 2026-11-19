@@ -255,7 +255,7 @@ void Gondola::UpdateMove() {
     f64 sp1A0;
     f64 sp198;
     f64 sp190;
-    f64 sp180;
+    MKVector3 sp180;
     f32 sp178;
     f64 sp170;
     f64 sp160;
@@ -652,7 +652,7 @@ void Gondola::UpdateMove() {
             sp3C8 = (f64) sp108;
             sp240 = MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.0f, 2000.0f), 0.0f);
             sp250 = __ml(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), *((MKVector3 *) &sp3C0));
-            sp260.operator*(2000.0f);
+            sp260 = sp250.operator*(2000.0f);
             temp_f0_903 = sp260 + M2C_BITWISE(f64, sp240);
             sp80 = temp_f0_903;
             sp270 = temp_f0_903;
@@ -893,9 +893,8 @@ void Gondola::UpdateMove() {
         sp448 = sp408;
         sp44C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &sp410));
-        ((Matrix *) &sp180)->GetRotationPYR();
-        M2C_FIELD(this, f64 *, 0x110) = sp180;
-        M2C_FIELD(this, f64 *, 0x118) = sp188;
+        sp180 = ((Matrix *) &sp410)->GetRotationPYR();
+        M2C_FIELD(this, MKVector3 *, 0x110) = sp180;
     }
 }
 #endif

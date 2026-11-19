@@ -255,19 +255,19 @@ void LavaCannon::Reset() {
     this->unk264 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Animation *' to 'int'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void LavaCannon::Draw() {
     Matrix sp110;
     Matrix spD0;
     Matrix sp90;
     f64 sp88;
     f64 sp80;
-    f32 sp70;
-    M2C_UNK sp60;
+    MKVector3 sp70;
+    MKVector3 sp60;
     f64 sp58;
     f64 sp50;
-    f32 sp40;
-    M2C_UNK sp30;
+    MKVector3 sp40;
+    MKVector3 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -285,34 +285,34 @@ void LavaCannon::Draw() {
     sp90.SetRotationPitch(this->unk248);
     sp110.SetIdentity();
     temp_r30_545 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((Animation *) &sp70)->GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
-    sp20 = -sp70;
-    sp24 = -sp74;
-    sp28 = -sp78;
+    sp70 = ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->GetNodeOrigin(M2C_FIELD(temp_r30_545, s32 *, 0x188));
+    sp20 = -M2C_BITWISE(f32, sp70);
+    sp24 = -sp70.unk4;
+    sp28 = -sp70.unk8;
     sp80 = (f64) sp20;
     sp88 = (f64) sp28;
     sp110.Translate(&sp110, *((MKVector3 *) &sp80));
     sp110.Multiply(&sp110, &sp90);
     temp_r30_576 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((Animation *) &sp60)->GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
-    sp110.Translate(&sp110, *((MKVector3 *) &sp60));
+    sp60 = ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->GetNodeOrigin(M2C_FIELD(temp_r30_576, s32 *, 0x188));
+    sp110.Translate(&sp110, sp60);
     temp_r30_590 = M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188);
     ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_590, &sp110, (AnimationMatrixPosition) 2, 0U);
     sp90.SetIdentity();
     sp90.SetRotationYaw(this->unk24C);
     spD0.SetIdentity();
     temp_r30_608 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((Animation *) &sp40)->GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
-    sp10 = -sp40;
-    sp14 = -sp44;
-    sp18 = -sp48;
+    sp40 = ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->GetNodeOrigin(M2C_FIELD(temp_r30_608, s32 *, 0x184));
+    sp10 = -M2C_BITWISE(f32, sp40);
+    sp14 = -sp40.unk4;
+    sp18 = -sp40.unk8;
     sp50 = (f64) sp10;
     sp58 = (f64) sp18;
     spD0.Translate(&spD0, *((MKVector3 *) &sp50));
     spD0.Multiply(&spD0, &sp90);
     temp_r30_639 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((Animation *) &sp30)->GetNodeOrigin(MKModel_GetAnimation(this->unk80->unk8));
-    spD0.Translate(&spD0, *((MKVector3 *) &sp30));
+    sp30 = ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->GetNodeOrigin(M2C_FIELD(temp_r30_639, s32 *, 0x184));
+    spD0.Translate(&spD0, sp30);
     temp_r30_653 = M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x184);
     ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_653, &spD0, (AnimationMatrixPosition) 2, 0U);
     Shatterable::Draw();
@@ -513,7 +513,7 @@ f32 LavaCannon::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp2C' Too many errors printed, aborting program
+#if 0 // DRAFT: undefined identifier 'unksp2C'
 s32 LavaCannon::LoadDone() {
     Matrix sp70;
     Matrix sp30;
@@ -539,25 +539,21 @@ s32 LavaCannon::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKIniLine *' to 'int'
 s32 LavaCannon::LoadLine(MKIniLine *arg0) {
-    MKIniLine sp28;
-    MKIniLine sp18;
-    MKIniLine sp8;
+    MKVector3 sp28;
+    MKVector3 sp18;
+    MKVector3 sp8;
     s32 var_r29_1272;
 
     if (arg0->IsField("LavaCannonTarget_01") != 0) {
-        sp28.GetVector3(arg0->unkC->GetSubLine(arg0));
-        this->unk1A8 = M2C_BITWISE(f64, sp28);
-        this->unk1B0 = M2C_BITWISE(f64, sp28.unk8);
+        sp28 = ((MKIniLine *) (arg0->unkC->GetSubLine(arg0)))->GetVector3(0);
+        *(MKVector3 *) &this->unk1A8 = sp28;
     } else if (arg0->IsField("LavaCannonTarget_02") != 0) {
-        sp18.GetVector3(arg0->unkC->GetSubLine(arg0));
-        this->unk1B8 = M2C_BITWISE(f64, sp18);
-        this->unk1C0 = M2C_BITWISE(f64, sp18.unk8);
+        sp18 = ((MKIniLine *) (arg0->unkC->GetSubLine(arg0)))->GetVector3(0);
+        *(MKVector3 *) &this->unk1B8 = sp18;
     } else if (arg0->IsField("LavaCannonTarget_03") != 0) {
-        sp8.GetVector3(arg0->unkC->GetSubLine(arg0));
-        this->unk1C8 = M2C_BITWISE(f64, sp8);
-        this->unk1D0 = M2C_BITWISE(f64, sp8.unk8);
+        sp8 = ((MKIniLine *) (arg0->unkC->GetSubLine(arg0)))->GetVector3(0);
+        *(MKVector3 *) &this->unk1C8 = sp8;
     }
     var_r29_1272 = 0;
     if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadFloat("SpeedMultiplier", &this->unk258, 0) != 0)) {
@@ -565,7 +561,6 @@ s32 LavaCannon::LoadLine(MKIniLine *arg0) {
     }
     return var_r29_1272;
 }
-#endif
 
 void LavaCannon::Deinit() {
     void *temp_r4_1302;

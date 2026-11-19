@@ -108,7 +108,7 @@ void MineCart::Message(MKMessage *arg0) {
     s8 spD0;
     s32 spCC;
     s32 spC8;
-    s8 *spC4;
+    f64 *spC4;
     f64 *spC0;
     s32 spBC;
     s32 spB8;
@@ -128,7 +128,7 @@ void MineCart::Message(MKMessage *arg0) {
     f64 sp48;
     f32 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     f32 sp20;
     f64 sp18;
     f32 sp10;
@@ -186,9 +186,8 @@ void MineCart::Message(MKMessage *arg0) {
                 spF8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 sp128 = 0;
                 if (this != NULL) {
-                    ((MKProp *) &sp28)->GetPos();
-                    sp108 = sp28;
-                    sp110 = sp30;
+                    sp28 = GetPos();
+                    *(MKVector3 *) &sp108 = sp28;
                 } else {
                     sp108 = 0.0f;
                     (*(f32 *) ((u8 *) &sp104 + 0x8)) = 0.0f;
@@ -215,7 +214,7 @@ void MineCart::Message(MKMessage *arg0) {
                 sp80 = (f64) sp10;
                 spB8 = 0x22;
                 spC0 = &sp78;
-                spC4 = (s8 *) &sp68;
+                spC4 = &sp68;
                 spC8 = 0;
                 spCC = 0;
                 spD0 = 0;
@@ -228,7 +227,7 @@ void MineCart::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void MineCart::UpdateEffects() {
     f64 sp158;                                      /* compiler-managed */
     f64 sp150;
@@ -379,7 +378,7 @@ void MineCart::UpdateEffects() {
         spB0 = temp_f0_534;
         sp18 = M2C_FIELD(temp_r4_530, f32 *, 8) + M2C_FIELD(temp_r5_531, f32 *, 8);
         spB8 = (f64) sp18;
-        spC0.operator*(temp_f1_529);
+        spC0 = ((MKVector3 *) &spB0)->operator*(temp_f1_529);
         sp20 = spC0 * 5.398241246e-315;
         this->unk168 = sp20;
         sp28 = spC0.unk8 * 10.0f;
@@ -496,7 +495,7 @@ void *MineCart::Update() {
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 f32 MineCart::Resolve() {
-    Animation sp8;
+    MKVector3 sp8;
     s32 var_r27_776;
     s32 var_r31_778;
     s8 *temp_r29_784;
@@ -510,10 +509,9 @@ f32 MineCart::Resolve() {
         do {
             temp_r29_784 = Str_Printf("d_minecart_wheel_%.2d", var_r27_776 + 1);
             temp_r26_791 = (const char *) (((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex(temp_r29_784));
-            sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
+            sp8 = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeOrigin((s32) temp_r26_791);
             temp_r29_798 = this + var_r31_778;
-            M2C_FIELD(temp_r29_798, f64 *, 0x120) = M2C_BITWISE(f64, sp8);
-            M2C_FIELD(temp_r29_798, f64 *, 0x128) = sp8.unk8;
+            M2C_FIELD(temp_r29_798, MKVector3 *, 0x120) = sp8;
             MKDynamicBone_SetUpdater(MKDynamicBone_GetDynamicBone(this->unk4, (s32) temp_r26_791), (void (*)(MKDynamicBone *, void *)) &MineCart::UpdateWheelBone, ((u8 *) temp_r29_798) + 0x120);
             var_r27_776 += 1;
             var_r31_778 += 0x18;

@@ -75,7 +75,7 @@ void PointDirEmitter::SetDirection(const MKVector3 &arg0) {
     this->unk20 = M2C_FIELD(&arg0, f64 *, 8);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector3 *arg2, MKVector4 *arg3) {
     Matrix sp100;
     M2C_UNK spFC;
@@ -408,8 +408,8 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             sp148 = temp_f0_581;
             sp70 = sp158.unk8 - arg0->unk8;
             sp150 = (f64) sp70;
-            spD8.operator*(0.5f * ((std *) (M2C_ERROR(/* Read from unset register $r3 */)))->sin(100.0f * this->unk38));
-            spE8.operator*(0.5f);
+            spD8 = ((MKVector3 *) &sp148)->operator*(0.5f * ((std *) (M2C_ERROR(/* Read from unset register $r3 */)))->sin(100.0f * this->unk38));
+            spE8 = ((MKVector3 *) &sp148)->operator*(0.5f);
             temp_f0_607 = spE8 + M2C_BITWISE(f64, spD8);
             sp48 = temp_f0_607;
             spF8 = temp_f0_607;

@@ -290,7 +290,7 @@ block_14:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: function call does not match prototype
 void FlyingMonkey::Collided(MKCollisionResult &arg0) {
     s8 spD9;
     s8 spD8;
@@ -309,7 +309,7 @@ void FlyingMonkey::Collided(MKCollisionResult &arg0) {
     f64 sp98;
     f64 sp90;
     s32 sp8C;
-    MKProp *sp88;
+    s32 sp88;
     s8 sp86;
     s8 sp85;
     s8 sp84;
@@ -323,13 +323,13 @@ void FlyingMonkey::Collided(MKCollisionResult &arg0) {
     f64 sp60;
     f64 sp58;
     MKProp *sp50;
-    MKProp *sp4C;
-    MKProp *sp48;
+    s32 sp4C;
+    s32 sp48;
     f64 sp40;
     f64 sp38;
     f64 sp30;
     f64 sp28;
-    f64 sp18;
+    MKVector3 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -350,12 +350,12 @@ void FlyingMonkey::Collided(MKCollisionResult &arg0) {
         temp_r9_529 = this->unk130;
         if (temp_r9_529 != NULL) {
             if (M2C_FIELD(M2C_FIELD(var_r31_520, void **, 0), s32 *, 0xC) & 8) {
-                sp4C = NULL;
+                sp4C = 0;
                 temp_r7_542 = temp_r9_529->unk8;
                 temp_f3_546 = M2C_FIELD(temp_r7_542, f64 *, 0x30);
                 temp_f2_547 = M2C_FIELD(temp_r7_542, f64 *, 0x38);
                 sp38 = temp_f3_546;
-                sp48 = (MKProp *)4;
+                sp48 = 4;
                 sp50 = temp_r9_529;
                 sp58 = temp_f3_546;
                 sp60 = temp_f2_547;
@@ -370,7 +370,7 @@ void FlyingMonkey::Collided(MKCollisionResult &arg0) {
                 sp80 = 0;
                 sp6C = 1.0f;
                 sp40 = temp_f2_547;
-                M2C_FIELD(M2C_FIELD(var_r31_520, void **, 0x44), M2C_UNK (**)(void *, MKProp **, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32, f64, f64), 0x2C)(var_r31_520, &sp48, 0x4000, 4, temp_r7_542, 0, 10.0f, temp_f2_547, temp_f3_546);
+                M2C_FIELD(M2C_FIELD(var_r31_520, void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32, f64, f64), 0x2C)(var_r31_520, &sp48, 0x4000, 4, temp_r7_542, 0, 10.0f, temp_f2_547, temp_f3_546);
             } else {
                 sp10 = 0.0f;
                 sp8 = 0.0f;
@@ -378,7 +378,7 @@ void FlyingMonkey::Collided(MKCollisionResult &arg0) {
                 sp8C = 0;
                 sp28 = (f64) sp8;
                 sp30 = (f64) sp10;
-                sp88 = (MKProp *)7;
+                sp88 = 7;
                 spB0 = 1;
                 spB4 = temp_r9_529;
                 sp90 = (f64) sp8;
@@ -393,16 +393,15 @@ void FlyingMonkey::Collided(MKCollisionResult &arg0) {
                 spA8 = M2C_FIELD(&MKVector3::one, f64 *, 8);
                 spD8 = 0;
                 if (temp_r9_529 != NULL) {
-                    ((MKProp *) &sp18)->GetPos();
-                    spB8 = sp18;
-                    spC0 = sp20;
+                    sp18 = temp_r9_529->GetPos();
+                    *(MKVector3 *) &spB8 = sp18;
                 } else {
                     spB8 = 0.0f;
                     (*(f32 *) ((u8 *) &spB4 + 0x8)) = 0.0f;
                     spC0 = 0.0f;
                 }
                 spD9 = 0;
-                M2C_FIELD(M2C_FIELD(var_r31_520, void **, 0x44), M2C_UNK (**)(void *, MKProp **, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32, f64, f64), 0x2C)(var_r31_520, &sp88);
+                M2C_FIELD(M2C_FIELD(var_r31_520, void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32, f64, f64), 0x2C)(var_r31_520, &sp88);
             }
         }
     }

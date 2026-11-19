@@ -35,39 +35,27 @@
 M2C_UNK free(MKHeap *);                             /* extern */
 MKHeap *malloc(s32);                                /* extern */
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'long *'
 s32 *KDMessageStorage::GetMessageAtIndex(int arg0) {
-    return *(this->unk0 + (arg0 * 4));
+    return ((s32 **) this->unk0)[arg0];
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void *KDMessageStorage::GetDesc(int arg0) {
-    s32 temp_r0_20;
-    s32 var_ctr_22;
     s32 var_r5_21;
+    s32 var_ctr_22;
     void *temp_r6_27;
 
-    temp_r0_20 = this->unk10;
     var_r5_21 = 0;
-    var_ctr_22 = temp_r0_20;
-    if (temp_r0_20 > 0) {
-loop_1:
-        temp_r6_27 = this->unkC + var_r5_21;
+    var_ctr_22 = this->unk10;
+    while (var_ctr_22 > 0) {
+        temp_r6_27 = (s8 *) this->unkC + var_r5_21;
         if (arg0 == (s32) M2C_FIELD(temp_r6_27, s32 *, 8)) {
             return temp_r6_27;
         }
         var_r5_21 += 0xC;
         var_ctr_22 -= 1;
-        if (var_ctr_22 == 0) {
-            /* Duplicate return node #4. Try simplifying control flow for better match */
-            return NULL;
-        }
-        goto loop_1;
     }
     return NULL;
 }
-#endif
 
 s32 *KDMessageStorage::GetMessage(int arg0) {
     s32 var_r31_50;
@@ -84,31 +72,21 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: illegal type
 s32 KDMessageStorage::CanMessageBeStored(int arg0) {
-    s32 temp_r0_82;
-    s32 var_ctr_84;
     s32 var_r5_83;
+    s32 var_ctr_84;
 
-    temp_r0_82 = this->unk10;
     var_r5_83 = 0;
-    var_ctr_84 = temp_r0_82;
-    if (temp_r0_82 > 0) {
-loop_1:
-        if (arg0 == (s32) *(this->unkC + (var_r5_83 + 8))) {
+    var_ctr_84 = this->unk10;
+    while (var_ctr_84 > 0) {
+        if (arg0 == M2C_FIELD(this->unkC, s32 *, var_r5_83 + 8)) {
             return 1;
         }
         var_r5_83 += 0xC;
         var_ctr_84 -= 1;
-        if (var_ctr_84 == 0) {
-            /* Duplicate return node #4. Try simplifying control flow for better match */
-            return 0;
-        }
-        goto loop_1;
     }
     return 0;
 }
-#endif
 
 u8 KDMessageStorage::IsMessageStored(int arg0) {
     s32 var_r31_112;
@@ -125,7 +103,6 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: function call 'memcpy(MKHeap, MKMessage *, unsigned long)' does not match 'memcpy(void *, const void *, unsigned int)'
 void KDMessageStorage::StoreMessage(MKMessage *arg0) {
     void *temp_r31_156;
 
@@ -135,11 +112,11 @@ void KDMessageStorage::StoreMessage(MKMessage *arg0) {
         return;
     }
     this->unk4 += 1;
-    memcpy(*(this->unk0 + (this->unk4 * 4)), arg0, M2C_FIELD(GetDesc(arg0->unk0), u32 *, 4));
+    temp_r31_156 = GetDesc(arg0->unk0);
+    memcpy(((void **) this->unk0)[this->unk4], arg0, M2C_FIELD(temp_r31_156, u32 *, 4));
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'MKHeap *'
+extern "C" void free(void *);
 void KDMessageStorage::Deinit() {
     MKHeap *temp_r30_198;
     MKHeap *temp_r30_218;
@@ -148,28 +125,25 @@ void KDMessageStorage::Deinit() {
 
     var_r29_193 = 0;
     var_r31_194 = 0;
-loop_5:
-    if (var_r29_193 < (s32) this->unk8) {
-        temp_r30_198 = *(this->unk0 + var_r31_194);
+    while (var_r29_193 < (s32) this->unk8) {
+        temp_r30_198 = M2C_FIELD(this->unk0, MKHeap **, var_r31_194);
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_198, NULL, 0);
+            MKHeap::Current()->Free(temp_r30_198, NULL, 0);
         } else {
-            free(temp_r30_198);
+            free((void *) temp_r30_198);
         }
         var_r29_193 += 1;
         var_r31_194 += 4;
-        goto loop_5;
     }
     temp_r30_218 = this->unk0;
     if (MKHeap::Current() != NULL) {
-        ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_218, NULL, 0);
+        MKHeap::Current()->Free(temp_r30_218, NULL, 0);
         return;
     }
-    free(temp_r30_218);
+    free((void *) temp_r30_218);
 }
-#endif
 
-#if 0 // DRAFT: illegal type
+extern "C" void *malloc(unsigned long);
 void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
     MKHeap *var_r3_273;
     MKHeap *var_r3_310;
@@ -189,7 +163,7 @@ void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
     this->unk10 = 0;
     do {
         temp_r4_251 = this->unk10;
-        temp_r3_255 = *(this->unkC + ((temp_r4_251 * 0xC) + 4));
+        temp_r3_255 = M2C_FIELD(this->unkC, s32 *, (temp_r4_251 * 0xC) + 4);
         if (temp_r3_255 != 0) {
             this->unk10 = temp_r4_251 + 1;
         }
@@ -197,9 +171,9 @@ void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
     this->unk8 = arg1;
     temp_r30_265 = this->unk8 * 4;
     if (MKHeap::Current() != NULL) {
-        var_r3_273 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_265, NULL, 0));
+        var_r3_273 = (MKHeap *) MKHeap::Current()->Alloc(temp_r30_265, NULL, 0);
     } else {
-        var_r3_273 = malloc(temp_r30_265);
+        var_r3_273 = (MKHeap *) malloc((unsigned long) temp_r30_265);
     }
     this->unk0 = var_r3_273;
     var_r29_280 = 0;
@@ -209,7 +183,7 @@ void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
     if (temp_r0_282 > 0) {
         do {
             var_r5_289 = var_r29_280;
-            temp_r0_290 = *(this->unkC + (var_r3_281 + 4));
+            temp_r0_290 = M2C_FIELD(this->unkC, s32 *, var_r3_281 + 4);
             if (temp_r0_290 > var_r29_280) {
                 var_r5_289 = temp_r0_290;
             }
@@ -220,19 +194,16 @@ void KDMessageStorage::Init(KDMessageStorageDescriptor *arg0, int arg1) {
     }
     var_r28_299 = 0;
     var_r30_300 = 0;
-loop_16:
-    if (var_r28_299 < (s32) this->unk8) {
+    while (var_r28_299 < (s32) this->unk8) {
         if (MKHeap::Current() != NULL) {
-            var_r3_310 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(var_r29_280, NULL, 0));
+            var_r3_310 = (MKHeap *) MKHeap::Current()->Alloc(var_r29_280, NULL, 0);
         } else {
-            var_r3_310 = malloc(var_r29_280);
+            var_r3_310 = (MKHeap *) malloc((unsigned long) var_r29_280);
         }
-        *(this->unk0 + var_r30_300) = var_r3_310;
-        memset(*(this->unk0 + var_r30_300), 0xFC, (u32) var_r29_280);
+        M2C_FIELD(this->unk0, MKHeap **, var_r30_300) = var_r3_310;
+        memset(M2C_FIELD(this->unk0, MKHeap **, var_r30_300), 0xFC, (u32) var_r29_280);
         var_r28_299 += 1;
         var_r30_300 += 4;
-        goto loop_16;
     }
     this->unk4 = -1;
 }
-#endif

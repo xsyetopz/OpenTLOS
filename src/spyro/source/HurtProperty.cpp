@@ -30,7 +30,7 @@ void HurtProperty::DoHurt() {
     s8 sp100;
     f64 spF8;                                       /* compiler-managed */
     f64 spF0;                                       /* compiler-managed */
-    u32 spEC;
+    MKProp *spEC;
     s32 spE8;
     f64 spE0;
     f64 spD8;
@@ -47,7 +47,7 @@ void HurtProperty::DoHurt() {
     f64 sp50;
     f64 sp48;
     f64 sp40;
-    f64 sp30;
+    MKVector3 sp30;
     f32 sp28;
     f64 sp20;
     f32 sp18;
@@ -74,7 +74,7 @@ void HurtProperty::DoHurt() {
     sp68 = (f64) sp18;
     spC0 = 7;
     spE8 = 1;
-    spEC = *KDProperty::pInstanceMem;
+    spEC = (MKProp *) (*KDProperty::pInstanceMem);
     spC8 = (f64) sp10;
     spD0 = (f64) sp18;
     sp100 = 0;
@@ -86,10 +86,9 @@ void HurtProperty::DoHurt() {
     spD8 = M2C_FIELD(&MKVector3::one, f64 *, 0);
     spE0 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp110 = 0;
-    if ((u32) *KDProperty::pInstanceMem != 0U) {
-        ((MKProp *) &sp30)->GetPos();
-        spF0 = sp30;
-        spF8 = sp38;
+    if ((MKProp *) *KDProperty::pInstanceMem != NULL) {
+        sp30 = ((MKProp *) (*KDProperty::pInstanceMem))->GetPos();
+        *(MKVector3 *) &spF0 = sp30;
     } else {
         spF0 = 0.0f;
         (*(f32 *) ((u8 *) &spEC + 0x8)) = 0.0f;

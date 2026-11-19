@@ -7,6 +7,7 @@
 class HeroInterface;
 class MKMessage;
 class MKPropDescriptor;
+class MKVector3;
 
 class HeroInterface {
 public:
@@ -19,7 +20,7 @@ public:
     virtual void Enable(void) = 0;
     virtual void Disable(void) = 0;
     virtual f32 GetCollideRadius(void) = 0;
-    virtual void GetCollisionCentre(void) = 0;
+    virtual MKVector3 GetCollisionCentre(void) = 0;
     virtual s32 GetCollisionIgnoreMaterials(void) = 0;
     virtual MKPropDescriptor ** GetCollisionInfo(void) = 0;
     virtual s32 GetLighting(void) = 0;
@@ -39,9 +40,9 @@ public:
     virtual s32 IsFuryActive(void) = 0;
     virtual void AddStat(StatType, float) = 0;
     void * GetPosPtr(void);
-    void GetXZDir(void);
-    void GetDir(void);
-    void GetPos(void);
+    MKVector3 GetXZDir(void);
+    MKVector3 GetDir(void);
+    MKVector3 GetPos(void);
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
@@ -54,12 +55,14 @@ inline void *HeroInterface::GetPosPtr() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
+#if 0 // DRAFT: identifier 'HeroInterface::GetXZDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void HeroInterface::GetXZDir() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp58;
     f64 sp50;
-    HeroInterface sp40;
-    HeroInterface sp30;
+    MKVector3 sp40;
+    MKVector3 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -75,12 +78,12 @@ inline void HeroInterface::GetXZDir() {
     s32 temp_r3_634;
     s32 var_r0_644;
 
-    sp30.GetDir();
-    sp40.GetDir();
+    sp30 = GetDir();
+    sp40 = GetDir();
     var_f4_585 = 0.0f;
     sp10 = M2C_BITWISE(f32, sp40);
     sp14 = 0.0f;
-    sp18 = sp38;
+    sp18 = sp30.unk8;
     sp50 = (f64) sp10;
     sp58 = (f64) sp18;
     var_f5_600 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + ((*(f32 *) ((u8 *) &sp50 + 0x4)) * (*(f32 *) ((u8 *) &sp50 + 0x4))));
@@ -123,34 +126,41 @@ inline void HeroInterface::GetXZDir() {
     sp24 = (*(f32 *) ((u8 *) &sp50 + 0x4)) * var_f4_585;
     sp20 = (f32) sp50 * var_f4_585;
     sp28 = (f32) sp58 * var_f4_585;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp20;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp28;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp28;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: identifier 'HeroInterface::GetDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void HeroInterface::GetDir() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
     void *temp_r3_701;
 
-    temp_r3_701 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r4 */), void *(**)(M2C_UNK), 0xC)(M2C_ERROR(/* Read from unset register $r4 */)), void **, 8);
+    temp_r3_701 = M2C_FIELD(M2C_FIELD(this->__vptr, void * (**)(HeroInterface *), 0xC)(this), void **, 8);
     sp8 = -M2C_FIELD(temp_r3_701, f32 *, 0x20);
     spC = -M2C_FIELD(temp_r3_701, f32 *, 0x24);
     sp10 = -M2C_FIELD(temp_r3_701, f32 *, 0x28);
-    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: identifier 'HeroInterface::GetPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void HeroInterface::GetPos() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     void *temp_r3_387;
 
-    temp_r3_387 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r4 */), void *(**)(M2C_UNK), 0xC)(M2C_ERROR(/* Read from unset register $r4 */)), void **, 8);
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r3_387, f64 *, 0x30);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r3_387, f64 *, 0x38);
+    temp_r3_387 = M2C_FIELD(M2C_FIELD(this->__vptr, void * (**)(HeroInterface *), 0xC)(this), void **, 8);
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(temp_r3_387, f64 *, 0x30);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(temp_r3_387, f64 *, 0x38);
+    return result;
 }
 #endif
 

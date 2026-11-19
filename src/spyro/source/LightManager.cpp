@@ -85,30 +85,28 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk34'
 void LightManager::FreeManagedLight(ManagedLight *arg0) {
-    s32 temp_r0_156;
-    void *temp_r3_149;
+    s32 idx;
 
     if (arg0 != NULL) {
-        arg0->unk34 = 0;
+        M2C_FIELD(arg0, s8 *, 0x34) = 0;
         M2C_FIELD(arg0, s8 *, 0x48) = 0;
-        temp_r3_149 = arg0->unk3C;
-        if (temp_r3_149 != NULL) {
-            OmniLight_Destroy((OmniLight *) temp_r3_149);
+        if (arg0->unk3C != NULL) {
+            OmniLight_Destroy((OmniLight *) arg0->unk3C);
             arg0->unk3C = NULL;
         }
-        temp_r0_156 = M2C_FIELD(arg0, s32 *, 0x44);
-        if (temp_r0_156 >= 0) {
-            M2C_FIELD((this + (temp_r0_156 * 4)), s32 *, 0x4C) = 0;
+        idx = M2C_FIELD(arg0, s32 *, 0x44);
+        if (idx >= 0) {
+            M2C_FIELD(((s8 *) this) + (idx * 4), s32 *, 0x4C) = 0;
             M2C_FIELD(arg0, s32 *, 0x44) = -1;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
-void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
+#if 0 // DRAFT: identifier 'LightManager::CalculateLightPosForShadow(const MKVector3 &)' redeclared was declared as: 'MKVector3 (const MKVector3 &)' now declared as: 'void (con
+void LightManager::CalculateLightPosForShadow(const MKVector3 &arg2) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp58;                                       /* compiler-managed */
     f64 sp50;
     f64 sp48;                                       /* compiler-managed */
@@ -137,12 +135,12 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
     void *temp_r6_195;
 
     var_r5_180 = 0;
-    sp50 = *M2C_ERROR(/* Read from unset register $r5 */);
-    sp58 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f64 *, 8);
+    sp50 = M2C_FIELD(&arg2, f64 *, 0);
+    sp58 = M2C_FIELD(&arg2, f64 *, 8);
     var_ctr_183 = 4;
     do {
         temp_r8_185 = var_r5_180 + 0x4C;
-        temp_r6_186 = *(&arg0 + temp_r8_185);
+        temp_r6_186 = *(this + temp_r8_185);
         if ((temp_r6_186 != NULL) && ((u8) M2C_FIELD(temp_r6_186, u8 *, 0x34) != 0) && ((u8) M2C_FIELD(temp_r6_186, u8 *, 0x40) != 0)) {
             temp_r6_195 = ((u8 *) temp_r6_186) + 0x10;
             sp20 = M2C_FIELD(temp_r6_195, f64 *, 0) - sp50;
@@ -189,7 +187,7 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
                 var_f5_283 = 0.0f;
                 var_f6_216 = 0.0f;
             }
-            temp_f7_294 = M2C_FIELD(*(&arg0 + temp_r8_185), f32 *, 0x38);
+            temp_f7_294 = M2C_FIELD(*(this + temp_r8_185), f32 *, 0x38);
             temp_f3_296 = (f32) sp48 * var_f5_283;
             sp40 = (f32) sp40 * var_f5_283;
             (*(f32 *) ((u8 *) &sp38 + 0xc)) *= var_f5_283;
@@ -208,45 +206,37 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
         var_r5_180 += 4;
         var_ctr_183 -= 1;
     } while (var_ctr_183 != 0);
-    M2C_FIELD(this, f64 *, 0) = sp50;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp58;
+    M2C_FIELD(sret, f64 *, 0) = sp50;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp58;
+    return result;
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void *LightManager::AllocManagedLight(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, const float &arg3, const int &arg4, const bool &arg5) {
-    s32 var_ctr_341;
-    s32 var_r10_340;
-    void *temp_r12_344;
+    u8 *light;
+    s32 i;
 
-    var_r10_340 = 0;
-    var_ctr_341 = 0x48;
-loop_1:
-    temp_r12_344 = ((u8 *) this->unk5C) + var_r10_340;
-    if ((u8) M2C_FIELD(temp_r12_344, u8 *, 0x48) == 0) {
-        M2C_FIELD(temp_r12_344, s8 *, 0x34) = 0;
-        M2C_FIELD(temp_r12_344, u8 *, 0x48) = 1U;
-        M2C_FIELD(temp_r12_344, f32 *, 0x38) = (f32) &arg3;
-        M2C_FIELD(temp_r12_344, s32 *, 0x30) = (s32) &arg4;
-        M2C_FIELD(temp_r12_344, f64 *, 0x20) = (f64) M2C_FIELD(&arg2, f64 *, 0);
-        M2C_FIELD(temp_r12_344, f64 *, 0x28) = (f64) M2C_FIELD(&arg2, f64 *, 8);
-        M2C_FIELD(temp_r12_344, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
-        M2C_FIELD(temp_r12_344, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD(temp_r12_344, f64 *, 0x10) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-        M2C_FIELD(temp_r12_344, f64 *, 0x18) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-        M2C_FIELD(temp_r12_344, u8 *, 0x40) = (u8) &arg5;
-        M2C_FIELD(temp_r12_344, s32 *, 0x44) = -1;
-        M2C_FIELD(temp_r12_344, s32 *, 0x3C) = 0;
-        return temp_r12_344;
+    for (i = 0; i < 0x48; i++) {
+        light = ((u8 *) this->unk5C) + i * 0x50;
+        if (M2C_FIELD(light, u8 *, 0x48) == 0) {
+            M2C_FIELD(light, s8 *, 0x34) = 0;
+            M2C_FIELD(light, u8 *, 0x48) = 1;
+            M2C_FIELD(light, f32 *, 0x38) = arg3;
+            M2C_FIELD(light, s32 *, 0x30) = arg4;
+            M2C_FIELD(light, f64 *, 0x20) = M2C_FIELD(&arg2, f64 *, 0);
+            M2C_FIELD(light, f64 *, 0x28) = M2C_FIELD(&arg2, f64 *, 8);
+            M2C_FIELD(light, f64 *, 0) = M2C_FIELD(&arg1, f64 *, 0);
+            M2C_FIELD(light, f64 *, 8) = M2C_FIELD(&arg1, f64 *, 8);
+            M2C_FIELD(light, f64 *, 0x10) = M2C_FIELD(&arg0, f64 *, 0);
+            M2C_FIELD(light, f64 *, 0x18) = M2C_FIELD(&arg0, f64 *, 8);
+            M2C_FIELD(light, u8 *, 0x40) = (u8) arg5;
+            M2C_FIELD(light, s32 *, 0x44) = -1;
+            M2C_FIELD(light, s32 *, 0x3C) = 0;
+            return light;
+        }
     }
-    var_r10_340 += 0x50;
-    var_ctr_341 -= 1;
-    if (var_ctr_341 == 0) {
-        return NULL;
-    }
-    goto loop_1;
+    return NULL;
 }
-#endif
 
 void LightManager::Deinit() {
     void *temp_r31_390;
@@ -262,51 +252,36 @@ void LightManager::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'ManagedLight *'
 void LightManager::DisableAllLights() {
-    s32 var_r30_423;
-    s32 var_r31_424;
+    s32 i;
+    s32 off;
 
-    var_r30_423 = 0;
-    var_r31_424 = 0;
+    i = 0;
+    off = 0;
     do {
-        EnableLight(((u8 *) this->unk5C) + var_r31_424, 0U);
-        var_r30_423 += 1;
-        var_r31_424 += 0x50;
-    } while (var_r30_423 < 0x48);
+        EnableLight((ManagedLight *) (((u8 *) this->unk5C) + off), false);
+        i += 1;
+        off += 0x50;
+    } while (i < 0x48);
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void LightManager::Init() {
-    s32 temp_r0_486;
-    s32 temp_r4_484;
-    s32 temp_r6_483;
-    s32 var_ctr_479;
-    s32 var_r3_473;
-    void *var_r3_458;
+    u8 *light;
+    s32 i;
 
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_458 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1680, NULL, 0);
+        this->unk5C = ((MKHeap *) (MKHeap::Current()))->Alloc(0x1680, NULL, 0);
     } else {
-        var_r3_458 = malloc(0x1680);
+        this->unk5C = malloc(0x1680);
     }
-    this->unk5C = var_r3_458;
     memset(this->unk5C, 0, 0x1680U);
     memset(&this->unk4C, 0, 0x10U);
-    var_r3_473 = 0;
-    var_ctr_479 = 0x48;
-    do {
-        temp_r6_483 = var_r3_473 + 0x48;
-        temp_r4_484 = var_r3_473 + 0x44;
-        *(this->unk5C + (var_r3_473 + 0x34)) = 0;
-        temp_r0_486 = var_r3_473 + 0x3C;
-        var_r3_473 += 0x50;
-        *(this->unk5C + temp_r6_483) = 0;
-        *(this->unk5C + temp_r4_484) = -1;
-        *(this->unk5C + temp_r0_486) = 0;
-        var_ctr_479 -= 1;
-    } while (var_ctr_479 != 0);
+    for (i = 0; i < 0x48; i++) {
+        light = ((u8 *) this->unk5C) + i * 0x50;
+        M2C_FIELD(light, u8 *, 0x34) = 0;
+        M2C_FIELD(light, u8 *, 0x48) = 0;
+        M2C_FIELD(light, s32 *, 0x44) = -1;
+        M2C_FIELD(light, s32 *, 0x3C) = 0;
+    }
 }
-#endif

@@ -52,7 +52,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void LavaSmashProp::PostShatter() {
     s8 sp288;
     f64 sp280;

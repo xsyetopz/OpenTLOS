@@ -93,7 +93,7 @@ void Exhumor::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *Exhumor::Update() {
     MKVector3 sp88;
     f64 sp80;
@@ -203,7 +203,7 @@ void MiningMoleLeader::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *MiningMoleLeader::Update() {
     f64 spE0;
     f64 spD8;

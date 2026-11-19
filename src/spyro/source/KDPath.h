@@ -141,7 +141,7 @@ public:
 
 class KDSplinePathSegment {
 public:
-    void GetVelocity(float);
+    MKVector3 GetVelocity(float);
     void LoadDone(void);
     u8 LoadWaypoints(MKIniLine *, const char *);
     u8 LoadLine(MKIniLine *, const char *);
@@ -214,8 +214,10 @@ inline f32 KDPathSegmentProp::Resolve() {
     ((KDPathSegment *) &this->unk4C)->Resolve();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'int' to 'Matrix *'
-inline void KDSplinePathSegment::GetVelocity(float arg0) {
+#if 0 // DRAFT: identifier 'KDSplinePathSegment::GetVelocity(float)' redeclared was declared as: 'MKVector3 (float)' now declared as: 'void (float)'
+inline void KDSplinePathSegment::GetVelocity(float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     KDUniformSpline sp30;
     f64 sp28;
     f64 sp20;
@@ -225,14 +227,15 @@ inline void KDSplinePathSegment::GetVelocity(float arg0) {
     f64 temp_f0_373;
 
     sp8 = 0.0f;
-    sp30.GetMeasure(arg0, M2C_ERROR(/* Read from unset register $r4 */) + 0x30, KDSpline_VelocityMixer);
+    sp30.GetMeasure(farg0, (Matrix *) &this->unk30, KDSpline_VelocityMixer);
     sp20 = M2C_BITWISE(f64, sp30);
     sp28 = (f64) sp30.unk8;
     temp_f0_373 = sp20 * (f64) sp8;
     sp10 = temp_f0_373;
-    this->unk0 = temp_f0_373;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_373;
     sp18 = (f32) sp28 * sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp18;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    return result;
 }
 #endif
 

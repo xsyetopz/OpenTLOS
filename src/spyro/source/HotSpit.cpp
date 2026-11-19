@@ -46,7 +46,7 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern MKPropDescriptor *pHotSpitDescriptor;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *HotSpit::Update() {
     Matrix sp1F0;
     Matrix sp1B0;
@@ -179,7 +179,7 @@ void *HotSpit::Update() {
         temp_f29_187 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
         temp_f28_192 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
         sp148 = MKVector(MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f), temp_f28_192, temp_f29_187);
-        sp158.operator*(3.0f);
+        sp158 = sp148.operator*(3.0f);
         temp_f0_207 = sp158 * (f64) temp_f31_182;
         sp38 = temp_f0_207;
         sp168 = temp_f0_207;
@@ -219,7 +219,7 @@ void *HotSpit::Update() {
         MKModel_SetWorldMatrix(this->unk4, sp1B0);
     }
     spE8 = MKVector(0.0f, 200.0f, 0.0f);
-    spF8.operator*(0.5f);
+    spF8 = ((MKVector3 *) &this->unkC8)->operator*(0.5f);
     sp18 = spF8 + M2C_BITWISE(f64, spE8);
     sp80 = -1.0f;
     sp70 = 1.0f;
@@ -327,8 +327,8 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     f32 spA0;
     f32 sp9C;
     f32 sp98;
-    f64 sp88;
-    f64 sp78;
+    MKVector3 sp88;
+    MKVector3 sp78;
     f32 sp70;
     f64 sp68;
     f32 sp60;
@@ -383,8 +383,8 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
         sp158 = MKVector(1.0f, 1.5f, 1.0f);
         sp168 = MKVector(-1.0f, 1.0f, -1.0f);
         sp178 = KDRand_Vector(sp168, sp158);
-        sp188.operator*(3000.0f);
-        sp198.operator*(2.0f);
+        sp188 = sp178.operator*(3000.0f);
+        sp198 = ((MKVector3 *) &this->unkC8)->operator*(2.0f);
         sp48 = sp198 + M2C_BITWISE(f64, sp188);
         sp98 = 1.0f;
         sp9C = 1.0f;
@@ -406,8 +406,8 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
         spE8 = MKVector(1.0f, 1.5f, 1.0f);
         spF8 = MKVector(-1.0f, 1.0f, -1.0f);
         sp108 = KDRand_Vector(spF8, spE8);
-        sp118.operator*(1000.0f);
-        sp128.operator*(0.5f);
+        sp118 = sp108.operator*(1000.0f);
+        sp128 = ((MKVector3 *) &this->unkC8)->operator*(0.5f);
         sp38 = sp128 + M2C_BITWISE(f64, sp118);
         sp138 = sp38;
         sp40 = sp128.unk8 + sp118.unk8;
@@ -440,9 +440,8 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     sp298 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2C8 = 0;
     if (temp_r4_555 != NULL) {
-        ((MKProp *) &sp88)->GetPos();
-        sp2A8 = sp88;
-        sp2B0 = sp90;
+        sp88 = temp_r4_555->GetPos();
+        *(MKVector3 *) &sp2A8 = sp88;
     } else {
         sp2A8 = 0.0f;
         (*(f32 *) ((u8 *) &sp2A4 + 0x8)) = 0.0f;
@@ -566,9 +565,8 @@ block_24:
     sp298 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     sp2C8 = 0;
     if (temp_r4_764 != NULL) {
-        ((MKProp *) &sp78)->GetPos();
-        sp2A8 = sp78;
-        sp2B0 = sp80;
+        sp78 = temp_r4_764->GetPos();
+        *(MKVector3 *) &sp2A8 = sp78;
     } else {
         sp2A8 = 0.0f;
         (*(f32 *) ((u8 *) &sp2A4 + 0x8)) = 0.0f;

@@ -6,13 +6,14 @@
 
 class HeroDataMessage;
 class KDCameraHeroData;
+class MKVector3;
 class Matrix;
 
 class KDCameraHeroData {
 public:
     u8 IsMoving(void);
     void Copy(HeroDataMessage &);
-    void GetDir(void);
+    MKVector3 GetDir(void);
     /* 0x000 */ u8 pad0[0x10];
     /* 0x010 */ Matrix unk10;
     /* 0x050 */ f64 unk50;
@@ -158,18 +159,21 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
 }
 #endif
 
+#if 0 // DRAFT: identifier 'KDCameraHeroData::GetDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void KDCameraHeroData::GetDir() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f64 sp8;
     f64 temp_f0_5287;
-    void *temp_r4_5284;
 
-    temp_r4_5284 = (void *) (M2C_ERROR(/* Read from unset register $r4 */) + 0x30);
-    temp_f0_5287 = M2C_FIELD(temp_r4_5284, f64 *, 0) * 1.58735232e-314;
+    temp_f0_5287 = M2C_FIELD(this, f64 *, 0x30) * 1.58735232e-314;
     sp8 = temp_f0_5287;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_5287;
-    sp10 = M2C_FIELD(temp_r4_5284, f32 *, 8) * -1.0f;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_5287;
+    sp10 = this->unk10.unk28 * -1.0f;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
+#endif
 
 #endif  // SPYRO_SOURCE_KDCAMERAHERODATA_H

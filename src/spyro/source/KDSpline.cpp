@@ -37,7 +37,7 @@ static Matrix splinePosMixer = {
 static Matrix *KDSpline_PositionMixer = &splinePosMixer;
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: pointer/array required
 void KDUniformSpline::RegulateSpeed() {
     f64 sp50;
     f64 sp48;
@@ -605,7 +605,7 @@ loop_63:
                     sp2F8 = temp_f0_628;
                     sp40 = (f32) sp480 - (f32) sp470;
                     sp300 = (f64) sp40;
-                    sp308.operator*(0.5f);
+                    sp308 = ((MKVector3 *) &sp2F8)->operator*(0.5f);
                     temp_f25_644 = 1.0f / (temp_f24_479 + temp_f23_480);
                     spB8 = sp308 * (f64) temp_f25_644;
                     sp318 = spB8;
@@ -837,7 +837,7 @@ loop_105:
                 sp1C8 = temp_f0_1172;
                 sp20 = sp430 - (f32) sp420;
                 sp1D0 = (f64) sp20;
-                sp1D8.operator*(0.5f);
+                sp1D8 = ((MKVector3 *) &sp1C8)->operator*(0.5f);
                 temp_f27_1188 = 1.0f / (temp_f22_1011 + var_f24_1013);
                 sp48 = sp1D8 * (f64) temp_f27_1188;
                 sp1E8 = sp48;
@@ -1201,8 +1201,10 @@ void KDUniformSpline::GetMatrix(int arg0, Matrix *arg1) const {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
-void KDUniformSpline::GetNextPositionFast(float arg0, Matrix *arg1, int *arg2, float *arg3) const {
+#if 0 // DRAFT: identifier 'KDUniformSpline::GetNextPositionFast(float, Matrix *, int *, float *)const ' redeclared was declared as: 'MKVector3 (float, Matrix *, int *, float *
+void KDUniformSpline::GetNextPositionFast(float farg0, Matrix *arg2, int *arg3, float *arg4) const {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp30;
     f64 sp28;
     f32 sp20;
@@ -1211,35 +1213,33 @@ void KDUniformSpline::GetNextPositionFast(float arg0, Matrix *arg1, int *arg2, f
     f32 sp10;
     f32 spC;
     f32 sp8;
-    f32 *temp_r29_1825;
     f32 temp_f30_1842;
     f32 temp_f30_1903;
     f32 temp_f31_1897;
     f32 temp_f3_1887;
-    f32 temp_r3_1832;
+    s32 temp_r3_1832;
 
-    temp_r29_1825 = M2C_ERROR(/* Read from unset register $r7 */);
-    if ((M2C_BITWISE(s32, arg1->unk4) > 0) && (arg1->unk8 == 0.0f)) {
-        temp_r3_1832 = arg1->unkC;
-        M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r3_1832, f64 *, 0);
-        M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r3_1832, f64 *, 8);
-        return;
+    if (((s32) this->unk4 > 0) && (this->unk8 == 0.0f)) {
+        temp_r3_1832 = this->unkC;
+        M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(temp_r3_1832, f64 *, 0);
+        M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(temp_r3_1832, f64 *, 8);
+        return result;
     }
-    temp_f30_1842 = arg0 * arg1->unk8;
-    if (*temp_r29_1825 == 0.0f) {
-        *arg3 = nanf;
+    temp_f30_1842 = farg0 * this->unk8;
+    if (*arg4 == 0.0f) {
+        *arg3 = -1;
     }
-    if (temp_f30_1842 >= *temp_r29_1825) {
+    if (temp_f30_1842 >= *arg4) {
 loop_8:
-        if ((temp_f30_1842 >= *temp_r29_1825) && (M2C_BITWISE(s32, *arg3) < (s32) (M2C_BITWISE(s32, arg1->unk4) - 2))) {
-            *arg3 = M2C_BITWISE(f32, (M2C_BITWISE(s32, *arg3) + 1));
-            *temp_r29_1825 += *(M2C_BITWISE(s32, arg1->unkC) + ((M2C_BITWISE(s32, *arg3) << 5) + 0x1C));
+        if ((temp_f30_1842 >= *arg4) && ((s32) *arg3 < (s32) (this->unk4 - 2))) {
+            *arg3 += 1;
+            *arg4 += *(this->unkC + ((*arg3 << 5) + 0x1C));
             goto loop_8;
         }
-        ((KDUniformSpline *) arg1)->GetMatrix(M2C_BITWISE(s32, *arg3), (Matrix *) arg2);
+        GetMatrix(*arg3, arg2);
     }
-    temp_f3_1887 = *(M2C_BITWISE(s32, arg1->unkC) + ((M2C_BITWISE(s32, *arg3) << 5) + 0x1C));
-    temp_f31_1897 = (temp_f30_1842 - (*temp_r29_1825 - temp_f3_1887)) / temp_f3_1887;
+    temp_f3_1887 = *(this->unkC + ((*arg3 << 5) + 0x1C));
+    temp_f31_1897 = (temp_f30_1842 - (*arg4 - temp_f3_1887)) / temp_f3_1887;
     temp_f30_1903 = temp_f31_1897 * temp_f31_1897;
     sp20 = temp_f31_1897;
     sp1C = temp_f30_1903;
@@ -1247,11 +1247,12 @@ loop_8:
     sp18 = temp_f31_1897 * temp_f30_1903;
     (*(f32 *) ((u8 *) &sp30 + 0x4)) = 1.0f;
     sp28 = (f64) sp18;
-    sp8 = M2C_FIELD(arg2, f32 *, 0x30) + (((f32) sp30 * M2C_FIELD(arg2, f32 *, 0x20)) + (((f32) sp28 * M2C_BITWISE(f32, M2C_FIELD(arg2, s32 *, 0))) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * M2C_FIELD(arg2, f32 *, 0x10))));
-    spC = M2C_FIELD(arg2, f32 *, 0x34) + (((f32) sp30 * M2C_FIELD(arg2, f32 *, 0x24)) + (((f32) sp28 * M2C_FIELD(arg2, f32 *, 4)) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * M2C_FIELD(arg2, f32 *, 0x14))));
-    sp10 = M2C_FIELD(arg2, f32 *, 0x38) + (((f32) sp30 * M2C_FIELD(arg2, f32 *, 0x28)) + (((f32) sp28 * M2C_FIELD(arg2, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * M2C_FIELD(arg2, f32 *, 0x18))));
-    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    sp8 = arg2->unk30 + (((f32) sp30 * arg2->unk20) + (((f32) sp28 * arg2->unk0) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * arg2->unk10)));
+    spC = arg2->unk34 + (((f32) sp30 * arg2->unk24) + (((f32) sp28 * arg2->unk4) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * arg2->unk14)));
+    sp10 = arg2->unk38 + (((f32) sp30 * arg2->unk28) + (((f32) sp28 * arg2->unk8) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * arg2->unk18)));
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
 #endif
 
@@ -1474,7 +1475,7 @@ s32 KDUniformSpline::AddNode(const MKVector3 &arg0) {
     M2C_FIELD(temp_r3_2264, f32 *, 0x14) = spB8.unk4;
     M2C_FIELD(temp_r3_2264, f32 *, 0x18) = spB8.unk8;
     if (((u8) this->unk10 >> 7U) & 1) {
-        temp_r5_2278 = (void *) (this->unkC + ((this->unk4 << 5) + 0x10));
+        temp_r5_2278 = this->unkC + ((this->unk4 << 5) + 0x10);
         temp_f2_2279 = M2C_FIELD(temp_r5_2278, f32 *, 0);
         temp_f1_2280 = M2C_FIELD(temp_r5_2278, f32 *, 4);
         temp_f3_2282 = M2C_FIELD(temp_r5_2278, f32 *, 8);
@@ -1523,7 +1524,7 @@ s32 KDUniformSpline::AddNode(const MKVector3 &arg0) {
     }
     if ((s32) this->unk4 == 2) {
         temp_r4_2371 = this->unkC;
-        temp_r30_2374 = (void *) (temp_r4_2371 + 0x30);
+        temp_r30_2374 = temp_r4_2371 + 0x30;
         sp68 = __ml(3.0f, *(temp_r4_2371 + 0x10));
         temp_f0_2380 = sp68 - M2C_FIELD(temp_r30_2374, f64 *, 0);
         sp18 = temp_f0_2380;
@@ -1821,8 +1822,8 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
     }
     if ((u8) this->unk10 != 0) {
         temp_r5_2799 = this->unkC;
-        temp_r4_2802 = temp_r5_2799 + ((temp_r4_2770 - 2) << 5);
-        temp_r3_2803 = temp_r5_2799 + ((temp_r4_2770 - 1) << 5);
+        temp_r4_2802 = (void *) (temp_r5_2799 + ((temp_r4_2770 - 2) << 5));
+        temp_r3_2803 = (void *) (temp_r5_2799 + ((temp_r4_2770 - 1) << 5));
         spC0 = M2C_FIELD(temp_r3_2803, f64 *, 0) - M2C_FIELD(temp_r4_2802, f64 *, 0);
         sp240 = spC0;
         spC8 = M2C_FIELD(temp_r3_2803, f32 *, 8) - M2C_FIELD(temp_r4_2802, f32 *, 8);
@@ -1861,7 +1862,7 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
                 var_f30_2824 = __float_nan;
             }
         }
-        temp_r3_2891 = this->unkC + ((this->unk4 - 1) << 5);
+        temp_r3_2891 = (void *) (this->unkC + ((this->unk4 - 1) << 5));
         spB0 = M2C_FIELD(&arg0, f64 *, 0) - M2C_FIELD(temp_r3_2891, f64 *, 0);
         sp230 = spB0;
         spB8 = arg0.unk8 - M2C_FIELD(temp_r3_2891, f32 *, 8);
@@ -1908,24 +1909,24 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
         sp28 = sp1B0.unk8 + sp1A0.unk8;
         sp1C8 = (f64) sp28;
         sp1D0 = Normalise(*((MKVector3 *) &sp1C0));
-        sp1E0.operator*(var_f30_2824 + var_f29_2912);
+        sp1E0 = sp1D0.operator*(var_f30_2824 + var_f29_2912);
         sp70 = sp1E0 * 5.222099017e-315;
         sp1F0 = sp70;
         sp78 = sp1E0.unk8 * 0.5f;
-        temp_r3_3016 = this->unkC + (((this->unk4 - 1) << 5) + 0x10);
+        temp_r3_3016 = (void *) (this->unkC + (((this->unk4 - 1) << 5) + 0x10));
         M2C_FIELD(temp_r3_3016, f64 *, 0) = sp70;
         sp1F8 = (f64) sp78;
         M2C_FIELD(temp_r3_3016, f64 *, 8) = (f64) sp78;
     } else {
         temp_r5_3024 = this->unkC;
-        temp_r3_3026 = temp_r5_3024 + ((temp_r4_2770 - 2) << 5);
+        temp_r3_3026 = (void *) (temp_r5_3024 + ((temp_r4_2770 - 2) << 5));
         temp_f0_3029 = M2C_FIELD(&arg0, f64 *, 0) - M2C_FIELD(temp_r3_3026, f64 *, 0);
         sp10 = temp_f0_3029;
         sp180 = temp_f0_3029;
         sp18 = arg0.unk8 - M2C_FIELD(temp_r3_3026, f32 *, 8);
         sp188 = (f64) sp18;
         sp60 = temp_f0_3029 * 5.222099017e-315;
-        temp_r3_3049 = temp_r5_3024 + (((temp_r4_2770 - 1) << 5) + 0x10);
+        temp_r3_3049 = (void *) (temp_r5_3024 + (((temp_r4_2770 - 1) << 5) + 0x10));
         M2C_FIELD(temp_r3_3049, f64 *, 0) = sp60;
         sp68 = (f32) sp188 * 0.5f;
         sp190 = sp60;
@@ -1934,7 +1935,7 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
     }
     temp_r4_3057 = this->unk4;
     temp_r6_3059 = this->unkC;
-    temp_r31_3066 = temp_r6_3059 + (((temp_r4_3057 - 1) << 5) + 0x10);
+    temp_r31_3066 = (void *) (temp_r6_3059 + (((temp_r4_3057 - 1) << 5) + 0x10));
     sp150 = __ml(3.0f, *(temp_r6_3059 + ((temp_r4_3057 << 5) + 0x10)));
     temp_f0_3072 = sp150 - M2C_FIELD(temp_r31_3066, f64 *, 0);
     sp50 = temp_f0_3072;
@@ -1942,14 +1943,14 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
     sp58 = sp150.unk8 - M2C_FIELD(temp_r31_3066, f32 *, 8);
     sp168 = (f64) sp58;
     sp170 = __ml(0.5f, *((MKVector3 *) &sp160));
-    temp_r3_3092 = this->unkC + ((this->unk4 << 5) + 0x10);
+    temp_r3_3092 = (void *) (this->unkC + ((this->unk4 << 5) + 0x10));
     M2C_FIELD(temp_r3_3092, MKVector3 *, 0) = sp170;
     if ((u8) this->unk10 != 0) {
         temp_r3_3098 = this->unk4;
         temp_r7_3099 = this->unkC;
         temp_r3_3101 = temp_r3_3098 << 5;
-        temp_r6_3103 = temp_r7_3099 + ((temp_r3_3098 - 1) << 5);
-        temp_r5_3104 = temp_r7_3099 + temp_r3_3101;
+        temp_r6_3103 = (void *) (temp_r7_3099 + ((temp_r3_3098 - 1) << 5));
+        temp_r5_3104 = (void *) (temp_r7_3099 + temp_r3_3101);
         temp_f0_3107 = M2C_FIELD(temp_r5_3104, f64 *, 0) - M2C_FIELD(temp_r6_3103, f64 *, 0);
         spA0 = temp_f0_3107;
         sp220 = temp_f0_3107;
@@ -1957,12 +1958,12 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
         sp228 = (f64) spA8;
         sp130 = Normalise(*(temp_r7_3099 + (temp_r3_3101 + 0x10)));
         sp140 = __ml(((MKVector3 *) &sp220)->Magnitude(), sp130);
-        temp_r3_3132 = this->unkC + ((this->unk4 << 5) + 0x10);
+        temp_r3_3132 = (void *) (this->unkC + ((this->unk4 << 5) + 0x10));
         M2C_FIELD(temp_r3_3132, MKVector3 *, 0) = sp140;
     }
     if ((s32) this->unk4 == 2) {
         temp_r4_3139 = this->unkC;
-        temp_r31_3142 = temp_r4_3139 + 0x30;
+        temp_r31_3142 = (void *) (temp_r4_3139 + 0x30);
         sp100 = __ml(3.0f, *(temp_r4_3139 + 0x10));
         temp_f0_3148 = sp100 - M2C_FIELD(temp_r31_3142, f64 *, 0);
         sp40 = temp_f0_3148;
@@ -1990,7 +1991,6 @@ s32 KDSpline::AddNode(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to 'void *'
 void KDSpline::Init(int arg0, bool arg1) {
     void *var_r3_3234;
 
@@ -1998,7 +1998,7 @@ void KDSpline::Init(int arg0, bool arg1) {
         if (MKHeap::Current() != NULL) {
             var_r3_3234 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 << 5, NULL, 0);
         } else {
-            var_r3_3234 = malloc(arg0 << 5);
+            var_r3_3234 = (void *) (malloc(arg0 << 5));
         }
         this->unkC = (s32) var_r3_3234;
     } else {
@@ -2009,7 +2009,6 @@ void KDSpline::Init(int arg0, bool arg1) {
     this->unk8 = 0.0f;
     this->unk10 = arg1;
 }
-#endif
 
 #if 0 // DRAFT: illegal function overloading
 void KDSpline_GetMeasure(const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, const MKVector3 &arg4, float farg0, Matrix *arg5) {

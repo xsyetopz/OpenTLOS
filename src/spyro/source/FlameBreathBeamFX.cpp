@@ -359,65 +359,52 @@ void FlameBreathBeam::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void FlameBreathBeam::ResetBeamNodes(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
-    f64 spC0;
-    f64 spB8;
-    MKVector3 spA8;
+    MKVector3 *vecA;
+    MKVector3 *vecB;
+    MKVector3 *vecC;
+    MKVector3 *posA8;
+    MKVector3 *posA0;
+    MKVector3 delta;
     MKVector3 sp98;
-    f64 sp90;
-    f64 sp88;
-    f64 sp80;
-    f64 sp78;
-    MKVector3 sp68;
+    MKVector3 spA8;
     MKVector3 sp58;
-    f64 sp50;
-    f64 sp48;
-    f32 sp40;
-    f64 sp38;
-    f32 sp30;
-    f64 sp28;
-    f32 sp20;
-    f64 sp18;
-    f32 sp10;
-    f64 sp8;
-    f64 temp_f0_581;
-    f64 temp_f0_618;
+    MKVector3 sp68;
+    f32 mag;
 
-    this->unk88 = M2C_FIELD(arg0, f64 *, 0);
-    this->unk90 = M2C_FIELD(arg0, f64 *, 8);
-    this->unkB8 = M2C_FIELD(arg1, f64 *, 0);
-    this->unkC0 = M2C_FIELD(arg1, f64 *, 8);
-    this->unk78 = M2C_FIELD(arg2, f64 *, 0);
-    this->unk80 = M2C_FIELD(arg2, f64 *, 8);
-    temp_f0_581 = this->unkB8 - this->unk88;
-    sp18 = temp_f0_581;
-    sp88 = temp_f0_581;
-    sp20 = (f32) M2C_FIELD(this, f64 *, 0xC0) - (f32) M2C_FIELD(this, f64 *, 0x90);
-    sp90 = (f64) sp20;
-    sp98.operator*(((MKVector3 *) &sp88)->Magnitude());
-    spA8.operator*(0.75f);
-    sp38 = this->unk88 + M2C_BITWISE(f64, spA8);
-    this->unkA8 = sp38;
-    sp40 = (f32) M2C_FIELD(this, f64 *, 0x90) + spA8.unk8;
-    spB8 = sp38;
-    this->unkB0 = (f64) sp40;
-    spC0 = (f64) sp40;
-    temp_f0_618 = this->unkB8 - this->unk88;
-    sp8 = temp_f0_618;
-    sp48 = temp_f0_618;
-    sp10 = (f32) M2C_FIELD(this, f64 *, 0xC0) - (f32) M2C_FIELD(this, f64 *, 0x90);
-    sp50 = (f64) sp10;
-    sp58.operator*(((MKVector3 *) &sp48)->Magnitude());
-    sp68.operator*(0.35f);
-    sp28 = this->unk88 + M2C_BITWISE(f64, sp68);
-    this->unk98 = sp28;
-    sp30 = (f32) M2C_FIELD(this, f64 *, 0x90) + sp68.unk8;
-    sp78 = sp28;
-    sp80 = (f64) sp30;
-    this->unkA0 = (f64) sp30;
+    vecA = (MKVector3 *) ((u8 *) this + 0x88);
+    vecB = (MKVector3 *) ((u8 *) this + 0xB8);
+    vecC = (MKVector3 *) ((u8 *) this + 0x78);
+    posA8 = (MKVector3 *) ((u8 *) this + 0xA8);
+    posA0 = (MKVector3 *) ((u8 *) this + 0x98);
+    *vecA = arg0;
+    *vecB = arg1;
+    *vecC = arg2;
+
+    delta.unk0 = vecB->unk0 - vecA->unk0;
+    delta.unk4 = vecB->unk4 - vecA->unk4;
+    delta.unk8 = vecB->unk8 - vecA->unk8;
+    mag = delta.Magnitude();
+    sp98.unk0 = arg2.unk0 * mag;
+    sp98.unk4 = arg2.unk4 * mag;
+    sp98.unk8 = arg2.unk8 * mag;
+    spA8.unk0 = sp98.unk0 * 0.75f;
+    spA8.unk4 = sp98.unk4 * 0.75f;
+    spA8.unk8 = sp98.unk8 * 0.75f;
+    posA8->unk0 = vecA->unk0 + spA8.unk0;
+    posA8->unk4 = vecA->unk4 + spA8.unk4;
+    posA8->unk8 = vecA->unk8 + spA8.unk8;
+
+    sp58.unk0 = arg2.unk0 * mag;
+    sp58.unk4 = arg2.unk4 * mag;
+    sp58.unk8 = arg2.unk8 * mag;
+    sp68.unk0 = sp58.unk0 * 0.35f;
+    sp68.unk4 = sp58.unk4 * 0.35f;
+    sp68.unk8 = sp58.unk8 * 0.35f;
+    posA0->unk0 = vecA->unk0 + sp68.unk0;
+    posA0->unk4 = vecA->unk4 + sp68.unk4;
+    posA0->unk8 = vecA->unk8 + sp68.unk8;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void FlameBreathBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
@@ -505,8 +492,8 @@ void FlameBreathBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3
     spF0 = temp_f0_693;
     sp28 = (f32) M2C_FIELD(this, f64 *, 0xC0) - (f32) M2C_FIELD(this, f64 *, 0x90);
     spF8 = (f64) sp28;
-    sp100.operator*(((MKVector3 *) &spF0)->Magnitude());
-    sp110.operator*(0.35f);
+    sp100 = ((MKVector3 *) arg2)->operator*(((MKVector3 *) &spF0)->Magnitude());
+    sp110 = sp100.operator*(0.35f);
     sp40 = this->unk88 + M2C_BITWISE(f64, sp110);
     this->unk98 = sp40;
     sp48 = (f32) M2C_FIELD(this, f64 *, 0x90) + sp110.unk8;
@@ -519,8 +506,8 @@ void FlameBreathBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3
     spB0 = temp_f0_734;
     sp18 = (f32) M2C_FIELD(this, f64 *, 0xC0) - (f32) M2C_FIELD(this, f64 *, 0x90);
     spB8 = (f64) sp18;
-    spC0.operator*(((MKVector3 *) &spB0)->Magnitude());
-    spD0.operator*(0.75f);
+    spC0 = ((MKVector3 *) arg2)->operator*(((MKVector3 *) &spB0)->Magnitude());
+    spD0 = spC0.operator*(0.75f);
     sp30 = this->unk88 + M2C_BITWISE(f64, spD0);
     this->unkA8 = sp30;
     sp38 = (f32) M2C_FIELD(this, f64 *, 0x90) + spD0.unk8;

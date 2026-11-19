@@ -126,8 +126,8 @@ loop_25:
                 sp4C = 1.0f;
                 spC0 = (f64) sp50;
                 spB8 = (f64) sp48;
-                sp58.operator*(temp_f28_172 * temp_f1_184);
-                sp68.operator*(temp_f27_178);
+                sp58 = ((MKVector3 *) &spB8)->operator*(temp_f28_172 * temp_f1_184);
+                sp68 = ((MKVector3 *) &this->unk178)->operator*(temp_f27_178);
                 temp_f0_202 = sp68 + M2C_BITWISE(f64, sp58);
                 sp18 = temp_f0_202;
                 sp78 = temp_f0_202;

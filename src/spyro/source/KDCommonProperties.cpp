@@ -251,7 +251,6 @@ void KDPathFollowerProperty::UpdateSplinePath() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void KDPathFollowerProperty::UpdateNormalPath() {
     f64 sp88;
     f64 sp80;
@@ -406,7 +405,6 @@ void KDPathFollowerProperty::UpdateNormalPath() {
     M2C_FIELD(temp_r3_715, f32 *, 0x38) = (f32) sp88;
     M2C_FIELD(temp_r3_715, f32 *, 0x3C) = 1.0f;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void KDPathFollowerProperty::Update() {
@@ -912,13 +910,13 @@ loop_9:
         if (var_r4_1704 != NULL) {
             var_r0_1707 = var_r4_1704;
         } else {
-            var_r0_1707 = "";
+            var_r0_1707 = (signed char *) ("");
         }
         if (var_r0_1707 != NULL) {
             if (var_r4_1704 != NULL) {
 
             } else {
-                var_r4_1704 = "";
+                var_r4_1704 = (signed char *) ("");
             }
             this->unk20 = temp_r3_1693->GetEventByName(var_r4_1704, (MKAnimScriptedEvent::EventType) 0);
         }
@@ -943,7 +941,7 @@ void KDRefPointProperty::Update() {
     Matrix *temp_r3_1796;
 
     MKModel_GetRefPointMatrix(*(*KDProperty::pInstanceMem + M2C_FIELD(this->unk10, s32 *, 8)), (s32) this->unk14, *KDProperty::pInstanceMem + this->unk8, 0U);
-    temp_r3_1796 = (Matrix *) (*KDProperty::pInstanceMem + this->unk8);
+    temp_r3_1796 = *KDProperty::pInstanceMem + this->unk8;
     temp_r3_1796->Multiply4x4(temp_r3_1796, MKModel_GetWorldMatrix(*(*KDProperty::pInstanceMem + M2C_FIELD(this->unk10, s32 *, 8))));
 }
 #endif

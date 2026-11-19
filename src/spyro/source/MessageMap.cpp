@@ -1,5 +1,6 @@
 #include "spyro/source/MessageMap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKVector3.h"
 #include <m2c_macros.h>
 
 s32 stricmp(s8 *, s32);                             /* extern */

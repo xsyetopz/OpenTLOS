@@ -110,7 +110,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     f64 sp180;
     f64 sp178;
     f64 sp170;
-    f64 sp160;
+    MKVector3 sp160;
     f64 sp158;
     f64 sp150;
     MKVector3 sp140;
@@ -236,9 +236,8 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
         sp1F0 = (f64) sp220;
         sp1F8 = (f64) sp228;
     }
-    ((Volume *) &sp160)->GetRandPos();
-    sp1E0 = sp160;
-    sp1E8 = sp168;
+    sp160 = this->unkE0.GetRandPos();
+    *(MKVector3 *) &sp1E0 = sp160;
     (*(f32 *) ((u8 *) &sp1E0 + 0x4)) = (*(f32 *) ((u8 *) &sp200 + 0x4));
     sp90 = sp1E0 - arg0->unk30;
     sp1D0 = sp90;
@@ -289,7 +288,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     sp1D8 = (f32) sp1D8 * var_f4_360;
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (var_f5_293 == 200.0f) {
-        sp140.operator*(MKRand_Float((int *) &gViewSeed, 100.0f, 200.0f));
+        sp140 = ((MKVector3 *) &sp1D0)->operator*(MKRand_Float((int *) &gViewSeed, 100.0f, 200.0f));
         sp20 = sp200 + M2C_BITWISE(f64, sp140);
         sp150 = sp20;
         sp28 = (f32) sp208 + sp140.unk8;
@@ -588,7 +587,7 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
     f64 sp130;
     f64 sp128;
     f64 sp120;
-    f64 sp110;
+    MKVector3 sp110;
     f64 sp108;
     f64 sp100;
     f64 spF8;
@@ -708,14 +707,14 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
         sp1A0 = (f64) sp1D0;
         sp1A8 = (f64) sp1D8;
     }
-    ((Volume *) &sp110)->GetRandPos();
+    sp110 = this->unkE0.GetRandPos();
     sp50 = 0.0f;
     sp54 = -500.0f;
-    sp190 = sp110;
+    sp190 = M2C_BITWISE(f64, sp110);
     sp58 = 0.0f;
     (*(f32 *) ((u8 *) &sp190 + 0x4)) = (*(f32 *) ((u8 *) &sp1B0 + 0x4));
     spD0 = (f64) sp50;
-    sp198 = sp118;
+    sp198 = (f64) sp110.unk8;
     spD8 = (f64) sp58;
     sp40 = sp190 + spD0;
     sp78 = 0.0f;
@@ -868,9 +867,32 @@ void IceSnoatCritter::SetBounceState(IceSnoat *arg0) {
     FindNewBounceParameters(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'Volume' to 'double'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 f32 IceSnoatCritter::Resolve() {
-    Volume sp88;
+    s8 spF8;
+    s32 spF4;
+    s32 spF0;
+    s32 spEC;
+    f32 spE8;
+    s32 spE4;
+    s8 spE3;
+    s8 spE2;
+    s16 spE0;
+    f32 spDC;
+    f32 spD8;
+    f32 spD4;
+    f32 spD0;
+    f32 spCC;
+    f32 spC8;
+    f32 spC0;
+    f32 spBC;
+    f32 spB8;
+    f32 spB0;
+    f32 spAC;
+    f32 spA8;
+    f64 spA0;
+    f64 sp98;
+    MKVector3 sp88;
     f64 sp80;
     f64 sp78;
     f64 sp70;
@@ -900,58 +922,58 @@ f32 IceSnoatCritter::Resolve() {
 loop_4:
     if (var_r29_1389 < (s32) this->unk90) {
         temp_r28_1398 = (IceSnoat *) (((u8 *) this->unk170) + var_r31_1391);
-        sp88.GetRandPos();
+        sp88 = this->unkE0.GetRandPos();
         sp20 = 0.0f;
-        sp88.unk10 = M2C_BITWISE(f64, sp88);
+        sp98 = M2C_BITWISE(f64, sp88);
         sp18 = 0.0f;
         sp1C = -500.0f;
-        (*(f32 *) ((u8 *) &sp88 + 0x14)) = M2C_FIELD(this->unk8, f32 *, 0x34);
+        (*(f32 *) ((u8 *) &sp98 + 0x4)) = M2C_FIELD(this->unk8, f32 *, 0x34);
         sp48 = (f64) sp18;
-        sp88.unk18 = sp88.unk8;
-        sp88.unk20 = 0.0f;
-        (*(f32 *) ((u8 *) &sp88 + 0x24)) = 0.0f;
-        sp88.unk28 = 0.0f;
-        sp88.unk30 = 0.0f;
-        (*(f32 *) ((u8 *) &sp88 + 0x34)) = 0.0f;
-        sp88.unk38 = 0.0f;
-        sp88.unk40 = 0.0f;
-        sp88.unk40.unk4 = 0.0f;
-        sp88.unk40.unk8 = 0.0f;
-        sp88.unk40.unkC = 1.0f;
-        sp88.unk40.unk10 = 0.0f;
-        sp88.unk40.unk14 = 0.0f;
-        sp88.unk40.unk18 = 0;
-        (*(u8 *) ((u8 *) &sp88 + 0x5a)) = 0;
-        (*(u8 *) ((u8 *) &sp88 + 0x5b)) = 0;
-        sp88.unk40.unk1C = 0.0f;
-        sp88.unk40.unk20 = 3.4028235e38f;
-        sp88.unk40.unk24 = 0.0f;
-        sp88.unk40.unk28 = 0.0f;
-        sp88.unk40.unk2C = nanf;
-        sp88.unk40.unk30 = 0;
+        spA0 = (f64) sp88.unk8;
+        spA8 = 0.0f;
+        spAC = 0.0f;
+        spB0 = 0.0f;
+        spB8 = 0.0f;
+        spBC = 0.0f;
+        spC0 = 0.0f;
+        spC8 = 0.0f;
+        spCC = 0.0f;
+        spD0 = 0.0f;
+        spD4 = 1.0f;
+        spD8 = 0.0f;
+        spDC = 0.0f;
+        spE0 = 0;
+        spE2 = 0;
+        spE3 = 0;
+        spE4 = 0;
+        spE8 = 3.4028235e38f;
+        spEC = 0;
+        spF0 = 0;
+        spF4 = -1;
+        spF8 = 0;
         sp50 = (f64) sp20;
-        sp8 = sp88.unk10 + sp48;
+        sp8 = sp98 + sp48;
         sp40 = 0.0f;
         sp38 = 0.0f;
         sp3C = 200.0f;
-        sp10 = (f32) sp88.unk18 + (f32) sp50;
+        sp10 = (f32) spA0 + (f32) sp50;
         sp68 = (f64) sp38;
         sp58 = sp8;
         sp60 = (f64) sp10;
         sp70 = (f64) sp40;
-        temp_f0_1457 = sp88.unk10 + sp68;
+        temp_f0_1457 = sp98 + sp68;
         sp28 = temp_f0_1457;
         sp78 = temp_f0_1457;
-        sp30 = (f32) sp88.unk18 + (f32) sp70;
+        sp30 = (f32) spA0 + (f32) sp70;
         sp80 = (f64) sp30;
-        if (MKCollision_RayCollide(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58), (MKCollisionResult *) &sp88.unk20, (MKCollisionMode) 4, 0x0C000000) != 0) {
-            sp88.unk10 = sp88.unk20;
-            sp88.unk18 = sp88.unk28;
+        if (MKCollision_RayCollide(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58), (MKCollisionResult *) &spA8, (MKCollisionMode) 4, 0x0C000000) != 0) {
+            sp98 = (f64) spA8;
+            spA0 = (f64) spB0;
         }
         M2C_STRUCT_COPY(temp_r28_1398, &Matrix::identity, 0x40);
-        M2C_FIELD(temp_r28_1398, f32 *, 0x30) = (f32) sp88.unk10;
-        M2C_FIELD(temp_r28_1398, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp88 + 0x14));
-        M2C_FIELD(temp_r28_1398, f32 *, 0x38) = (f32) sp88.unk18;
+        M2C_FIELD(temp_r28_1398, f32 *, 0x30) = (f32) sp98;
+        M2C_FIELD(temp_r28_1398, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp98 + 0x4));
+        M2C_FIELD(temp_r28_1398, f32 *, 0x38) = (f32) spA0;
         M2C_FIELD(temp_r28_1398, f32 *, 0x3C) = 1.0f;
         SetBounceState(temp_r28_1398);
         var_r29_1389 += 1;

@@ -8,6 +8,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
 #include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDProp.h"
 #include <m2c_macros.h>

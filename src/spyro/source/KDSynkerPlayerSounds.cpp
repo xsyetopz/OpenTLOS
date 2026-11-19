@@ -157,134 +157,126 @@ s32 KDSP_Sounds::WaitingForSoundPackage(int *arg0) {
     return var_r31_281;
 }
 
-#if 0 // DRAFT: function call 'Sound_Play3d(long, unsigned int, long, float, float)' does not match 'Sound_Play3d(int, unsigned char, MKVector3 *, float, float)'
 s32 KDSP_Sounds::Update(int arg0, float arg1, int arg2, int *arg3, int *arg4) {
-    KDSP_Actor *temp_r3_432;
-    SoundBankHeader *temp_r3_390;
-    s32 temp_r0_322;
-    s32 temp_r0_354;
-    s32 temp_r3_348;
-    s32 temp_r3_363;
-    s32 temp_r3_370;
-    s32 temp_r3_422;
-    s32 temp_r3_461;
-    s32 temp_r3_473;
-    s32 temp_r7_330;
-    s32 var_ctr_323;
-    s32 var_r31_318;
-    s32 var_r3_321;
-    s32 var_r4_438;
-    s32 var_r8_320;
-    u8 var_r5_328;
-    void *temp_r6_329;
+    KDSP_Actor *actor;
+    SoundBankHeader *bank;
+    const char *lang;
+    const char *name;
+    u8 *entry;
+    s32 result;
+    s32 k;
+    s32 count;
+    s32 start;
+    s32 cur;
+    s32 temp;
+    s32 id;
+    s32 matrix;
+    s32 next;
 
     *arg4 = -1;
-    var_r31_318 = 1;
+    result = 1;
     this->unk10 = -1;
-    var_r8_320 = 0;
-    var_r3_321 = 0;
-    temp_r0_322 = this->unk8;
-    var_ctr_323 = temp_r0_322;
-    if (temp_r0_322 > 0) {
-loop_1:
-        var_r5_328 = 0;
-        temp_r6_329 = ((u8 *) this->unkC) + var_r3_321;
-        temp_r7_330 = M2C_FIELD(temp_r6_329, s32 *, 0);
-        if ((arg0 >= temp_r7_330) && (arg0 < (s32) (temp_r7_330 + M2C_FIELD(temp_r6_329, s32 *, 4)))) {
-            var_r5_328 = 1;
+    k = 0;
+    count = this->unk8;
+    while (k < count) {
+        entry = (u8 *) this->unkC + k * 0x18;
+        start = M2C_FIELD(entry, s32 *, 0);
+        if ((arg0 >= start) && (arg0 < start + M2C_FIELD(entry, s32 *, 4))) {
+            this->unk10 = k;
+            break;
         }
-        if (var_r5_328 != 0) {
-            this->unk10 = var_r8_320;
-        } else {
-            var_r8_320 += 1;
-            var_r3_321 += 0x18;
-            var_ctr_323 -= 1;
-            if (var_ctr_323 != 0) {
-                goto loop_1;
-            }
-        }
+        k += 1;
     }
-    temp_r3_348 = this->unk10;
-    if ((temp_r3_348 != -1) && (temp_r3_348 != (s32) this->unk18)) {
-        temp_r0_354 = this->unk14;
-        if (temp_r0_354 == temp_r3_348) {
+    temp = this->unk10;
+    if ((temp != -1) && (temp != (s32) this->unk18)) {
+        if (this->unk14 == temp) {
             if (MKPackage_QIsLoaded(*arg3, NULL, NULL) != 0) {
-                temp_r3_363 = this->unk20;
-                if (temp_r3_363 != -1) {
-                    Sound_Stop(temp_r3_363);
+                cur = this->unk20;
+                if (cur != -1) {
+                    Sound_Stop(cur);
                     this->unk20 = -1;
                 }
-                temp_r3_370 = this->unk1C;
-                if (temp_r3_370 != -1) {
-                    Sound_UnloadBank(temp_r3_370);
+                cur = this->unk1C;
+                if (cur != -1) {
+                    Sound_UnloadBank(cur);
                     this->unk1C = -1;
                 }
-                GetDynamicBankName(this->unk14);
-                if (MKArchive_Exists(M2C_ERROR(/* Read from unset register $r3 */), NULL) != 0) {
-                    GetDynamicBankName(this->unk14);
-                    temp_r3_390 = (SoundBankHeader *) (MKArchive_Load(M2C_ERROR(/* Read from unset register $r3 */), NULL, NULL, -1));
-                    this->unk1C = Sound_LoadBankFromMemory(temp_r3_390, 0U, -1);
+                entry = (u8 *) this->unkC + this->unk14 * 0x18;
+                lang = ((const char *(*)(int)) GameLanguage_GetAudioCode)(-1);
+                name = (const char *) Str_Printf("%s%s.gsb", M2C_FIELD(entry, s8 **, 8), lang);
+                if ((u8) MKArchive_Exists(name, NULL) != 0) {
+                    entry = (u8 *) this->unkC + this->unk14 * 0x18;
+                    lang = ((const char *(*)(int)) GameLanguage_GetAudioCode)(-1);
+                    name = (const char *) Str_Printf("%s%s.gsb", M2C_FIELD(entry, s8 **, 8), lang);
+                    bank = (SoundBankHeader *) MKArchive_Load(name, NULL, NULL, -1);
+                    this->unk1C = Sound_LoadBankFromMemory(bank, 0, -1);
                     if (MKHeap::Current() != NULL) {
-                        ((MKHeap *) (MKHeap::Current()))->Free(temp_r3_390, NULL, 0);
+                        ((MKHeap *) MKHeap::Current())->Free(bank, NULL, 0);
                     } else {
-                        free(temp_r3_390);
+                        free(bank);
                     }
                 }
                 MKPackage_QFree(*arg3);
                 *arg3 = 0;
                 if (((u8) this->unk0 != 0) && ((u8) this->unk1 != 0)) {
-                    GetDynamicSoundName(this->unk14);
-                    temp_r3_422 = Sound_GetID(M2C_ERROR(/* Read from unset register $r3 */));
-                    if (temp_r3_422 != 0) {
-                        if (((u8) this->unk2 != 0) && (temp_r3_432 = M2C_FIELD((((u8 *) this->unkC) + (this->unk14 * 0x18)), KDSP_Actor **, 0x14), ((temp_r3_432 == NULL) == 0))) {
-                            if (temp_r3_432->unk40 & 4) {
-                                var_r4_438 = (long) (temp_r3_432->unk34);
+                    entry = (u8 *) this->unkC + this->unk14 * 0x18;
+                    lang = ((const char *(*)(int)) GameLanguage_GetAudioCode)(-1);
+                    name = (const char *) Str_Printf("%s%s", M2C_FIELD(entry, s8 **, 8), lang);
+                    id = Sound_GetID(name);
+                    if (id != 0) {
+                        actor = M2C_FIELD(entry, KDSP_Actor **, 0x14);
+                        if (((u8) this->unk2 != 0) && (actor != NULL)) {
+                            if (actor->unk40 & 4) {
+                                matrix = (s32) actor->unk34;
                             } else {
-                                var_r4_438 = MKModel_GetWorldMatrix(temp_r3_432->GetModel());
+                                matrix = MKModel_GetWorldMatrix(actor->GetModel());
                             }
-                            Sound_Play3d(temp_r3_422, 0xFFU, var_r4_438 + 0x30, 1000000.0f, 10000.0f);
-                            this->unk20 = M2C_ERROR(/* Read from unset register $r3 */);
+                            this->unk20 = ((s32 (*)(int, unsigned char, MKVector3 *, float, float)) Sound_Play3d)(id, 0xFF, (MKVector3 *) (matrix + 0x30), 1000000.0f, 10000.0f);
                         } else {
-                            Sound_Play(temp_r3_422);
-                            this->unk20 = M2C_ERROR(/* Read from unset register $r3 */);
+                            this->unk20 = ((s32 (*)(int)) Sound_Play)(id);
                         }
                         if (arg1 != 1.0f) {
-                            temp_r3_461 = this->unk20;
-                            if (temp_r3_461 != -1) {
-                                KDSound_SetPitch(temp_r3_461, arg1);
+                            cur = this->unk20;
+                            if (cur != -1) {
+                                KDSound_SetPitch(cur, arg1);
                             }
                         }
                     }
                 }
                 this->unk18 = this->unk14;
                 this->unk14 = -1;
-                temp_r3_473 = this->unk18 + 1;
-                if (temp_r3_473 < (s32) this->unk8) {
-                    this->unk14 = temp_r3_473;
-                    GetDynamicBankName(this->unk14);
-                    *arg3 = MKPackage_QLoadDynamic(M2C_ERROR(/* Read from unset register $r3 */), 0, NULL);
+                next = this->unk18 + 1;
+                if (next < (s32) this->unk8) {
+                    this->unk14 = next;
+                    entry = (u8 *) this->unkC + this->unk14 * 0x18;
+                    lang = ((const char *(*)(int)) GameLanguage_GetAudioCode)(-1);
+                    name = (const char *) Str_Printf("%s%s.gsb", M2C_FIELD(entry, s8 **, 8), lang);
+                    *arg3 = MKPackage_QLoadDynamic(name, 0, NULL);
                 }
             } else {
-                var_r31_318 = 0;
+                result = 0;
             }
-        } else if (temp_r0_354 != -1) {
+        } else if (this->unk14 != -1) {
             MKPackage_QCancel(*arg3);
             if (MKPackage_QIsLoaded(*arg3, NULL, NULL) != 0) {
                 MKPackage_QFree(*arg3);
                 *arg3 = 0;
                 this->unk14 = this->unk10;
-                GetDynamicBankName(this->unk14);
-                *arg3 = MKPackage_QLoadDynamic(M2C_ERROR(/* Read from unset register $r3 */), 0, NULL);
+                entry = (u8 *) this->unkC + this->unk14 * 0x18;
+                lang = ((const char *(*)(int)) GameLanguage_GetAudioCode)(-1);
+                name = (const char *) Str_Printf("%s%s.gsb", M2C_FIELD(entry, s8 **, 8), lang);
+                *arg3 = MKPackage_QLoadDynamic(name, 0, NULL);
             }
         } else {
-            this->unk14 = temp_r3_348;
-            GetDynamicBankName(this->unk14);
-            *arg3 = MKPackage_QLoadDynamic(M2C_ERROR(/* Read from unset register $r3 */), 0, NULL);
+            this->unk14 = temp;
+            entry = (u8 *) this->unkC + this->unk14 * 0x18;
+            lang = ((const char *(*)(int)) GameLanguage_GetAudioCode)(-1);
+            name = (const char *) Str_Printf("%s%s.gsb", M2C_FIELD(entry, s8 **, 8), lang);
+            *arg3 = MKPackage_QLoadDynamic(name, 0, NULL);
         }
     }
-    return var_r31_318;
+    return result;
 }
-#endif
 
 void KDSP_Sounds::UnloadPlaying(int *arg0) {
     if (((s32) this->unk14 != -1) && (MKPackage_QIsLoaded(*arg0, NULL, NULL) != 0)) {

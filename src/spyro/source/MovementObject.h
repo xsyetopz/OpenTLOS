@@ -12,8 +12,8 @@ class MovementObjectDescriptor;
 
 class MovementObject {
 public:
-    void UpdateCollisions(MKVector3 &, bool);
-    void Update(bool);
+    MKVector3 UpdateCollisions(MKVector3 &, bool);
+    MKVector3 Update(bool);
     s32 LoadLine(MKIniLine *);
     void Init(MovementObjectDescriptor *, CollisionObject *);
     MovementObject(void);

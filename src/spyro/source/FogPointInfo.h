@@ -7,8 +7,8 @@ class FogPointInfo;
 
 class FogPointInfo {
 public:
-    void operator/(float);
-    void operator*(float);
+    FogPointInfo operator/(float);
+    FogPointInfo operator*(float);
 };
 
 #endif  // SPYRO_SOURCE_FOGPOINTINFO_H

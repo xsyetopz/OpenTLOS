@@ -7,6 +7,7 @@
 class KDMatrixProperty;
 class KDPositionProperty;
 class MKIniLine;
+class MKVector3;
 class Matrix;
 
 class KDMatrixProperty : public KDPositionProperty {  // base: ctor/dtor vtable stores
@@ -15,7 +16,7 @@ public:
     virtual s32 GetInstanceDataSize(void) const;
     virtual void InitInstance(void);
     virtual s32 LoadLineInstance(MKIniLine *);
-    virtual void GetPos(void) const;
+    virtual MKVector3 GetPos(void) const;
     virtual s32 GetPosRef(void) const;
     virtual s32 GetMatrixRef(void) const;
     virtual void GetMatrix(Matrix *) const;
@@ -48,13 +49,18 @@ inline void KDMatrixProperty::GetMatrix(Matrix *arg0) const {
     M2C_STRUCT_COPY(arg0, *KDProperty::pInstanceMem + this->unk8, 0x40);
 }
 
-inline void KDMatrixProperty::GetPos() const {
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline MKVector3 KDMatrixProperty::GetPos() const {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     void *temp_r4_24275;
 
-    temp_r4_24275 = (void *) (*KDProperty::pInstanceMem + (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30));
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_24275, f64 *, 0);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_24275, f64 *, 8);
+    temp_r4_24275 = (void *) (*KDProperty::pInstanceMem + (this->unk8 + 0x30));
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(temp_r4_24275, f64 *, 0);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(temp_r4_24275, f64 *, 8);
+    return result;
 }
+#endif
 
 inline s32 KDMatrixProperty::GetPosRef() const {
     return *KDProperty::pInstanceMem + (this->unk8 + 0x30);
