@@ -134,11 +134,9 @@ void PlatformRider::Resolve() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'PlatformRider *' to 'int *'
 void PlatformRider::LoadLine(MKIniLine *arg0) {
-    arg0->LoadInt("platformID", this + 4, 0);
+    arg0->LoadInt("platformID", &M2C_FIELD(this, int *, 4), 0);
 }
-#endif
 
 void PlatformRider::Init() {
     M2C_FIELD(this, s32 *, 4) = 0;
@@ -146,25 +144,21 @@ void PlatformRider::Init() {
     M2C_FIELD(this, s8 *, 8) = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double' to 'const MKVector3 &'
 void Platform::UpdateBob() {
+    PlatformDescriptor *desc;
     f64 sp10;
     f64 sp8;
     f32 temp_f2_237;
-    void *temp_r3_221;
-    void *temp_r3_226;
 
-    temp_r3_221 = checked_cast<PlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    if ((u8) M2C_FIELD(temp_r3_221, u8 *, 0x118) != 0) {
-        temp_r3_226 = this->unk8;
-        sp8 = M2C_FIELD(temp_r3_226, f64 *, 0x30);
-        sp10 = M2C_FIELD(temp_r3_226, f64 *, 0x38);
-        temp_f2_237 = M2C_FIELD(temp_r3_221, f32 *, 0x11C);
-        (*(f32 *) ((u8 *) &sp8 + 0x4)) += temp_f2_237 * _table_sinf(6.2831855f * (this->unkB8 * M2C_FIELD(temp_r3_221, f32 *, 0x120)));
-        SetPos(sp8, temp_f2_237);
+    desc = checked_cast<PlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if (desc->unk118 != 0) {
+        sp8 = M2C_FIELD(this->unk8, f64 *, 0x30);
+        sp10 = M2C_FIELD(this->unk8, f64 *, 0x38);
+        temp_f2_237 = desc->unk11C;
+        (*(f32 *) ((u8 *) &sp8 + 0x4)) += temp_f2_237 * _table_sinf(6.2831855f * (this->unkB8 * desc->unk120));
+        SetPos(*(MKVector3 *) &sp8);
     }
 }
-#endif
 
 void Platform::UpdateSway() {
     f64 sp10;                                       /* compiler-managed */
@@ -277,16 +271,17 @@ void Platform::UpdateShadow() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'Platform *' to 'PlatformAttachment *'
 f32 Platform::Resolve() {
+    PlatformDescriptor *desc;
+
     KDPropEx::Resolve();
     this->unk150.Resolve();
-    this->unk150.Attach(this + 0x15C);
-    if ((M2C_FIELD(checked_cast<PlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xFC) > 0.0f) && ((u8) this->unk175 != 0)) {
+    this->unk150.Attach((PlatformAttachment *) ((s8 *) this + 0x15C));
+    desc = checked_cast<PlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if ((desc->unkFC > 0.0f) && (this->unk175 != 0)) {
         UpdateShadow();
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void Platform::Message(MKMessage *arg0) {
@@ -326,8 +321,9 @@ void Platform::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 void Platform::PropUpdate() {
+    PlatformDescriptor *desc;
+
     GameProp::PropUpdate();
     this->unk108.BeginUpdate();
     this->unk108.UpdateTilt();
@@ -336,25 +332,23 @@ void Platform::PropUpdate() {
     UpdateRotate();
     UpdateBob();
     this->unk108.EndUpdate();
-    if ((M2C_FIELD(checked_cast<PlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xFC) > 0.0f) && ((u8) this->unk175 != 0)) {
+    desc = checked_cast<PlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if ((desc->unkFC > 0.0f) && (this->unk175 != 0)) {
         UpdateShadow();
     }
     UpdateScale();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to 'MKVector3 *'
 s32 Platform::LoadDone() {
     M2C_FIELD(&MKProp::loadInfo, f64 *, 0x60) = (f64) M2C_FIELD(&MKVector3::one, f64 *, 0);
     M2C_FIELD(&MKProp::loadInfo, f64 *, 0x68) = (f64) M2C_FIELD(&MKVector3::one, f64 *, 8);
     GameProp::LoadDone();
     this->unkC8 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x50);
     this->unkD0 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x58);
-    this->unk108.LoadDone((MKProp *) this, &MKProp::loadInfo + 0x60);
+    this->unk108.LoadDone((MKProp *) this, (MKVector3 *) ((s8 *) &MKProp::loadInfo + 0x60));
     M2C_FIELD(this, f64 *, 0x110) = (f64) this->unkC8;
     M2C_FIELD(this, f64 *, 0x118) = (f64) this->unkD0;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 Platform::LoadLine(MKIniLine *arg0) {
@@ -374,11 +368,13 @@ void Platform::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'P18PlatformDescriptor'
 void Platform::Init() {
+    PlatformDescriptor *desc;
+
     GameProp::Init();
     this->unk150.Init();
-    this->unk108.Init(checked_cast<P18PlatformDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0xE4, &this->unk70);
+    desc = checked_cast<PlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk108.Init((PlatformObjectDesc *) ((s8 *) desc + 0xE4), (MKCollisionInfo *) ((s8 *) this + 0x70));
     M2C_FIELD(this, f32 *, 0xE8) = 0.0f;
     M2C_FIELD(this, f32 *, 0xEC) = 0.0f;
     M2C_FIELD(this, f32 *, 0xF0) = 0.0f;
@@ -395,7 +391,6 @@ void Platform::Init() {
     this->unk175 = 1;
     M2C_FIELD(this, Platform **, 0x15C) = this;
 }
-#endif
 
 void PlatformDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
@@ -403,22 +398,19 @@ void PlatformDescriptor::LoadDone() {
     this->unkEC = 0.1f * this->unkE8;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 PlatformDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_817;
 
     var_r31_817 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("maxTilt", &this->unkE4, 0) != 0) || (arg0->LoadBool("bUpdateRotationMatrix", &this->unkF5, 0) != 0) || (arg0->LoadFloat("rotVel", &this->unkF8, 0) != 0) || (arg0->LoadFloat("maxShadowHeight", &this->unkFC, 0) != 0) || (arg0->LoadBool("enableSway", &this->unk104, 0) != 0) || (arg0->LoadBool("enableBob", &this->unk118, 0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("maxTilt", &M2C_FIELD(this, f32 *, 0xE4), 0) != 0) || (arg0->LoadBool("bUpdateRotationMatrix", (bool *) &this->unkF5, 0) != 0) || (arg0->LoadFloat("rotVel", &this->unkF8, 0) != 0) || (arg0->LoadFloat("maxShadowHeight", &this->unkFC, 0) != 0) || (arg0->LoadBool("enableSway", (bool *) &this->unk104, 0) != 0) || (arg0->LoadBool("enableBob", (bool *) &this->unk118, 0) != 0)) {
         var_r31_817 = 1;
     }
     return var_r31_817;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void PlatformDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkE4 = 0.5f;
+    M2C_FIELD(this, f32 *, 0xE4) = 0.5f;
     this->unkE8 = 0.0f;
     this->unkEC = 0.0f;
     this->unkF0 = 6.0f;
@@ -435,4 +427,3 @@ void PlatformDescriptor::Init() {
     this->unk11C = 50.0f;
     this->unk120 = 0.3f;
 }
-#endif
