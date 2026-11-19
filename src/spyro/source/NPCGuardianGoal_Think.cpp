@@ -107,17 +107,18 @@ void NPCGuardianGoal_Think::Reset() {
     this->unk30 &= ~0x80;
 }
 
-#if 0 // DRAFT: ')' expected
 void NPCGuardianGoal_Think::Arbitrate() {
+    NPCGuardian *temp_r3_cast;
     s32 temp_r0_141;
 
     temp_r0_141 = this->unk20;
-    switch (temp_r0_141) {                          /* irregular */
+    switch (temp_r0_141) {
     case 0:
         AddGoal_Idle();
         return;
     case 1:
-        if (((u8) M2C_FIELD(checked_cast<NPCGuardian *, Enemy>((Enemy *) this->unkC), u8 *, 0xB10) != 0) && (IsFollowingSpawnGraph() != 0)) {
+        temp_r3_cast = checked_cast<NPCGuardian *, Enemy>((Enemy *) this->unkC);
+        if (((u8) temp_r3_cast->unkB10 != 0) && (IsFollowingSpawnGraph() != 0)) {
             AddGoal_FollowSpawnGraph();
             return;
         }
@@ -132,7 +133,6 @@ void NPCGuardianGoal_Think::Arbitrate() {
         return;
     }
 }
-#endif
 
 void NPCGuardianGoal_Think::Terminate() {
     this->unk8 = 1;
