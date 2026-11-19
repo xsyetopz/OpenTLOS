@@ -2464,113 +2464,75 @@ void ElementalSpline::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource * (const char *)' to 'MKMaterial *'
 f32 ElementalSpline::Resolve() {
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    f64 sp68;
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f64 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
+    MKVector4 vec;
     s32 temp_r0_4497;
 
     MKProp::Resolve();
     ((KDStateMachine<ElementalSpline> *) &this->unkC0)->SetState(this, 3, 0U);
     temp_r0_4497 = this->unk110;
-    switch (temp_r0_4497) {                         /* irregular */
+    switch (temp_r0_4497) {
     case 0:
-        this->unkF4 = MKMaterial_Create"FX_ElementalFlameWall";
-        this->unkF8 = MKMaterial_Create"FX_ElementalFlameWall1";
-        ((KDSound_SoundWall *) &this->unk120)->Init(((u8 *) this->unkB0) + 0x30, this->unkB4, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        this->unkF4 = (MKMaterial *) MKMaterial_Create("FX_ElementalFlameWall");
+        this->unkF8 = (MKMaterial *) MKMaterial_Create("FX_ElementalFlameWall1");
+        ((KDSound_SoundWall *) &this->unk120)->Init((KDUniformSpline *) (((u8 *) this->unkB0) + 0x30), this->unkB4, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 100.0f;
         }
         if ((this->unkE0.unk0 == 0.0f) || (this->unkE0.unk4 == 0.0f) || (this->unkE0.unk8 == 0.0f) || (this->unkE0.unkC == 0.0f)) {
-            sp38 = 1.0f;
-            sp3C = 0.5f;
-            sp40 = 0.0f;
-            sp44 = 1.0f;
-            M2C_FIELD(this, f32 *, 0xE0) = (f64) sp38;
-            sp78 = (f64) sp38;
-            sp80 = (f64) sp40;
-            M2C_FIELD(this, f32 *, 0xE8) = (f64) sp40;
+            vec.unk0 = 1.0f;
+            vec.unk4 = 0.5f;
+            vec.unk8 = 0.0f;
+            vec.unkC = 1.0f;
+            this->unkE0 = vec;
         }
         break;
     case 1:
-        this->unkF4 = MKMaterial_Create"FX_ElementalElectricityWall";
-        ((KDSound_SoundWall *) &this->unk120)->Init(((u8 *) this->unkB0) + 0x30, this->unkB4, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        this->unkF4 = (MKMaterial *) MKMaterial_Create("FX_ElementalElectricityWall");
+        ((KDSound_SoundWall *) &this->unk120)->Init((KDUniformSpline *) (((u8 *) this->unkB0) + 0x30), this->unkB4, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 25.0f;
         }
         if ((this->unkE0.unk0 == 0.0f) || (this->unkE0.unk4 == 0.0f) || (this->unkE0.unk8 == 0.0f) || (this->unkE0.unkC == 0.0f)) {
-            sp28 = 1.0f;
-            sp2C = 0.0f;
-            sp30 = 0.2f;
-            sp34 = 1.0f;
-            M2C_FIELD(this, f32 *, 0xE0) = (f64) sp28;
-            sp68 = (f64) sp28;
-            sp70 = (f64) sp30;
-            M2C_FIELD(this, f32 *, 0xE8) = (f64) sp30;
+            vec.unk0 = 1.0f;
+            vec.unk4 = 0.0f;
+            vec.unk8 = 0.2f;
+            vec.unkC = 1.0f;
+            this->unkE0 = vec;
         }
         break;
     case 2:
-        this->unkF4 = MKMaterial_Create"FX_ElementalEarthSpline";
-        ((KDSound_SoundWall *) &this->unk120)->Init(((u8 *) this->unkB0) + 0x30, this->unkB4, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        this->unkF4 = (MKMaterial *) MKMaterial_Create("FX_ElementalEarthSpline");
+        ((KDSound_SoundWall *) &this->unk120)->Init((KDUniformSpline *) (((u8 *) this->unkB0) + 0x30), this->unkB4, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 300.0f;
         }
         if ((this->unkE0.unk0 == 0.0f) || (this->unkE0.unk4 == 0.0f) || (this->unkE0.unk8 == 0.0f) || (this->unkE0.unkC == 0.0f)) {
-            sp18 = 0.25f;
-            sp1C = 0.25f;
-            sp20 = 0.75f;
-            sp24 = 0.5f;
-            M2C_FIELD(this, f32 *, 0xE0) = (f64) sp18;
-            sp58 = (f64) sp18;
-            sp60 = (f64) sp20;
-            M2C_FIELD(this, f32 *, 0xE8) = (f64) sp20;
+            vec.unk0 = 0.25f;
+            vec.unk4 = 0.25f;
+            vec.unk8 = 0.75f;
+            vec.unkC = 0.5f;
+            this->unkE0 = vec;
         }
         break;
     case 3:
-        this->unkF4 = MKMaterial_Create"FX_ElementalEarthSpline";
-        ((KDSound_SoundWall *) &this->unk120)->Init(((u8 *) this->unkB0) + 0x30, this->unkB4, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        this->unkF4 = (MKMaterial *) MKMaterial_Create("FX_ElementalEarthSpline");
+        ((KDSound_SoundWall *) &this->unk120)->Init((KDUniformSpline *) (((u8 *) this->unkB0) + 0x30), this->unkB4, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 100.0f;
         }
         if ((this->unkE0.unk0 == 0.0f) || (this->unkE0.unk4 == 0.0f) || (this->unkE0.unk8 == 0.0f) || (this->unkE0.unkC == 0.0f)) {
-            sp8 = 0.0f;
-            spC = 1.0f;
-            sp10 = 0.2f;
-            sp14 = 0.33f;
-            M2C_FIELD(this, f32 *, 0xE0) = (f64) sp8;
-            sp48 = (f64) sp8;
-            sp50 = (f64) sp10;
-            M2C_FIELD(this, f32 *, 0xE8) = (f64) sp10;
+            vec.unk0 = 0.0f;
+            vec.unk4 = 1.0f;
+            vec.unk8 = 0.2f;
+            vec.unkC = 0.33f;
+            this->unkE0 = vec;
         }
         break;
     }
     this->unkFC = 1.0f / (f32) this->unk114;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 ElementalSpline::LoadLine(MKIniLine *arg0) {
     if (((SplineProp *) this)->SplineProp::LoadLine(arg0) != 0) {
         return 1U;
@@ -2594,7 +2556,7 @@ s32 ElementalSpline::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadInt("SubDivisions", (int *) &this->unk114, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadBool("HurtHero", &this->unk118, 0) != 0) {
+    if (arg0->LoadBool("HurtHero", (bool *) &this->unk118, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadVector4("EffectColour", &this->unkE0, 0) != 0) {
@@ -2605,7 +2567,6 @@ s32 ElementalSpline::LoadLine(MKIniLine *arg0) {
     }
     return (u8) (this->unkD8.LoadLine(arg0, "OnComplete") != 0);
 }
-#endif
 
 void ElementalSpline::Deinit() {
     MKMaterial *temp_r3_4902;
