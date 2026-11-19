@@ -400,15 +400,15 @@ void SparxFX::Enable() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
+float _table_sinf(float);
+
 void SparxFX::GetGlowDrawParams(float &arg0, float &arg1) {
     f32 temp_f31_755;
 
     temp_f31_755 = _table_sinf(this->unkB0);
-    &arg0 = 0.25f * ((8.0f * (_table_sinf(this->unkAC) * this->unkCC)) + 100.0f);
-    &arg1 = (8.0f * temp_f31_755) + 75.0f;
+    arg0 = 0.25f * ((8.0f * (_table_sinf(this->unkAC) * this->unkCC)) + 100.0f);
+    arg1 = (8.0f * temp_f31_755) + 75.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'double *' to 'MKVector4'
 void SparxFX::Draw() {
@@ -746,12 +746,13 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_Create(const char[21], MKHeap *, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 s32 SparxFX::LoadDone() {
     MKAnimScript *var_r3_1491;
+    const char *name;
 
     MKProp::LoadDone();
-    this->unk4 = MKModel_Create("A002_sparx_Billboard", ((Animation *) (M2C_FIELD(this->unk0, Animation **, 0x30)))->GetName(), 2, NULL);
+    name = (const char *) ((Animation *) (M2C_FIELD(this->unk0, Animation **, 0x30)))->GetName();
+    this->unk4 = MKModel_Create("A002_sparx_Billboard", name, 2, NULL);
     if (MKHeap::Current() != NULL) {
         var_r3_1491 = (MKAnimScript *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x58, NULL, 0));
     } else {
@@ -760,9 +761,8 @@ s32 SparxFX::LoadDone() {
     this->unkE8 = var_r3_1491;
     this->unkE8->Init(M2C_FIELD(this->unk0, MKAnimScript **, 0x34), this->unk4);
     this->unkE8->SetAnimation(MKModel_GetAnimation(this->unk4));
-    this->unkE8->SetAnim(this->unkE8->GetAnim(1), 1.0f, 0.0f, 0, -1);
+    this->unkE8->SetAnim((MKAnim *) this->unkE8->GetAnim(1), 1.0f, 0.0f, 0, -1);
 }
-#endif
 
 f32 SparxFX::Resolve() {
     f64 sp40;
