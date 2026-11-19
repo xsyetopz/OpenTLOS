@@ -70,29 +70,27 @@ void NPCGuardian::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
 }
 
-#if 0 // DRAFT: ')' expected
 f32 NPCGuardian::Resolve() {
-    MKSceneManager *temp_r3_74;
+    NPCGuardianGoal_Think *temp_r3_goal;
     s32 temp_r31_86;
     u32 temp_r3_78;
 
     Enemy::Resolve();
-    temp_r3_74 = this->unkB18;
-    if (temp_r3_74 != NULL) {
-        temp_r3_78 = (unsigned long) (checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_74)));
+    if ((s32) this->unkB18 != 0) {
+        temp_r3_78 = (u32) checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkB18));
         if (temp_r3_78 != 0U) {
             this->unkA80 = temp_r3_78 + 0x50;
             this->unkA90 = 0;
         }
     }
     temp_r31_86 = this->unkB1C;
-    M2C_FIELD(checked_cast<NPCGuardianGoal_Think *, Goal<Enemy>>((Goal<Enemy> *) this->unkA3C), s32 *, 0x20) = temp_r31_86;
+    temp_r3_goal = checked_cast<NPCGuardianGoal_Think *, Goal<Enemy> >((Goal<Enemy> *) this->unkA3C);
+    temp_r3_goal->unk20 = temp_r31_86;
     if (!(this->unk680 & 0x160000)) {
         Disable();
     }
-    this->unkB14.Send(NULL);
+    return this->unkB14.Send(NULL);
 }
-#endif
 
 s32 NPCGuardian::LoadDone() {
     Enemy::LoadDone();
