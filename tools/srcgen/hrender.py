@@ -108,11 +108,13 @@ def class_body(model: Model, name: str, refs: Refs, nested: set) -> list[str]:
             refs.ctype(typ)
         add(f"static {typ} {s['name']};" if typ else f"static u8 {s['name']}[{s['size']:#x}];")
     fields = sorted((int(o), f) for o, f in model.fields.get(name, {}).get("fields", {}).items())
-    pos = model.end(base) if base else 0
+    pos = model.sizeof(base) if base else 0
     vp = model.vptr_of(name)
-    if vp is not None and not model.vptr_of(base):
+    if vp is not None and not model.vptr_of(base) and vp >= pos:
         # This class introduces the vptr; MWCC places it at the first virtual
-        # declaration, so data members before it are declared first.
+        # declaration, so data members before it are declared first. A vptr
+        # inside the base's extent came from a higher ancestor whose own ctor
+        # left no store to record.
         pre = fields_text(model, [x for x in fields if x[0] < vp], pos, vp, refs)
         lines[data_at:data_at] = pre
         pos = vp + 4
@@ -137,7 +139,10 @@ def fields_text(model: Model, fields: list, pos: int, stop, refs: Refs) -> list[
             continue
         arr = "".join(re.findall(r"\[\w+\]", typ))
         base_t = typ.split("[")[0].strip()
-        if not base_t.endswith("*") and any(not model.embeddable(n) for n in type_names(base_t)):
+        # A template instantiation is judged as a whole: its bare template name
+        # is no class, and its arguments may be used only through pointers.
+        names = [base_t] if "<" in base_t and base_t in model.classes else type_names(base_t)
+        if not base_t.endswith("*") and any(not model.embeddable(n) for n in names):
             continue  # by-value class that cannot be embedded; the padding covers it
         if off > pos:
             lines.append(f"    /* {pos:#05x} */ u8 pad{pos:X}[{off - pos:#x}];")
@@ -175,15 +180,21 @@ def template_body(model: Model, tname: str, refs: Refs) -> list[str]:
     body = class_body(model, pattern, inner, nested)
     lines = [subst(pattern, l) for l in body]
     lines[0] = f"template <{', '.join('class ' + p for p in params)}>\n" + lines[0]
-    seen = set(lines)
+    # Instantiations can disagree on a member's return type (m2c typed each
+    # copy separately); the first declaration of a signature wins.
+    def key(l: str) -> str:
+        m = re.search(r"(~?\w+\(.*)$", l)
+        return m.group(1) if m else l
+
+    seen = {key(l) for l in lines}
     for inst in insts:
         if inst == pattern or inst not in typed:
             continue
         extra = Refs()
         for l in class_body(model, inst, extra, set())[2:-1]:
             l = subst(inst, l)
-            if l not in seen and "/* 0x" not in l:
-                seen.add(l)
+            if key(l) not in seen and "/* 0x" not in l:
+                seen.add(key(l))
                 lines.insert(-1, l)
     args = set(split_args(pattern))
     for n in inner.named | inner.complete:

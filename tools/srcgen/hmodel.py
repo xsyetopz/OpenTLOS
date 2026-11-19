@@ -15,7 +15,8 @@ from pathlib import Path
 from retvotes import arg_returns
 
 SIZES = {"s8": 1, "u8": 1, "s16": 2, "u16": 2, "s32": 4, "u32": 4, "f32": 4, "f64": 8, "s64": 8, "u64": 8}
-DEF = re.compile(r"^(?:static )?([\w ]+?[\s*]+)(\w+__\w*)\(.*\) \{$")
+# Mangled names of template members carry <>, commas and digits after `__`.
+DEF = re.compile(r"^(?:static )?([\w ]+?[\s*]+)(\w+__[^\s(]*)\(.*\) \{$")
 DECL = re.compile(r"^(?:extern |static )?([\w ]+?[\s*]+)([A-Za-z_]\w*)(?:\[[^\]]*\])?;")
 SDK_TYPE = re.compile(r"^\}\s*(\w+)\s*;|^typedef [^{;]*?(\w+)\s*;", re.M)
 KEYWORDS = {"return", "goto", "case", "else", "do"}
@@ -414,7 +415,7 @@ class Model:
             return 0
         c = self.classes.get(name, {})
         vp = self.vptr_of(name)
-        best = self.end(c["base"], (*seen, name)) if c.get("base") else 0
+        best = self.sizeof(c["base"], (*seen, name)) if c.get("base") else 0
         best = max(best, c.get("size") or 0)
         if vp is not None:
             best = max(best, vp + 4)
@@ -422,6 +423,32 @@ class Model:
             best = max(best, int(off) + self.type_size(f["type"][0], (*seen, name)))
         self.size_cache[name] = best
         return best
+
+    def align(self, name: str, seen=()) -> int:
+        """Alignment of a class: its widest member's, the vptr's, or its base's.
+
+        f64 members make it 8 because the headers declare them as f64, and
+        MWCC then rounds the class to 8; CollisionObject's sizeof is 0x478,
+        which the asm confirms with Character's field at 0x110 + 0x478.
+        """
+        if name in seen:
+            return 4
+        c = self.classes.get(name, {})
+        out = 4 if self.vptr_of(name) is not None else 1
+        if c.get("base"):
+            out = max(out, self.align(c["base"], (*seen, name)))
+        for f in self.fields.get(name, {}).get("fields", {}).values():
+            base = f["type"][0].split("[")[0].strip()
+            if base.endswith("*"):
+                out = max(out, 4)
+            else:
+                out = max(out, SIZES[base] if base in SIZES else self.align(base, (*seen, name)))
+        return out
+
+    def sizeof(self, name: str, seen=()) -> int:
+        """`end` rounded up to the class's alignment: MWCC keeps a base's tail padding."""
+        a = self.align(name, seen)
+        return -(-self.end(name, seen) // a) * a
 
     def type_size(self, typ: str, seen=()) -> int:
         arr = 1
@@ -432,7 +459,7 @@ class Model:
             return 4 * arr
         if base in SIZES:
             return SIZES[base] * arr
-        return max(self.end(base, seen), 1) * arr
+        return max(self.sizeof(base, seen), 1) * arr
 
 
 def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path, votes: Path | None = None) -> Model:
