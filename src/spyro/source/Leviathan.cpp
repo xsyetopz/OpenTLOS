@@ -1067,7 +1067,7 @@ void Leviathan::SetAnim(int arg0) {
     this->unk80->SetAnim(M2C_FIELD((this + (arg0 * 4)), MKAnim **, 0x1A8), 1.0f, 0.5f, 0, -1);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *[3]' to 'const char **'
+static const char *pLeviathanAnimEvents[3] = { "SmallSplashes", "HugeSplashes", NULL };
 s32 Leviathan::LoadDone() {
     Platform::LoadDone();
     if ((u32) this->unk18C != 0U) {
@@ -1077,40 +1077,35 @@ s32 Leviathan::LoadDone() {
     }
     this->unk80->InitEvents(pLeviathanAnimEvents);
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
+extern "C" s32 stricmp(s8 *, s8 *);
 s32 Leviathan::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
-    MKIniLine *var_r30_1785;
-    s32 temp_r3_1772;
+    MKIniLine *var_r30;
+    s32 temp_r3;
 
-    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("", &this->unk198, 0) != 0) || (arg0->LoadFloat("", &this->unk1BC, 0) != 0)) {
+    if (((u8) Platform::LoadLine(arg0) != 0) || ((u8) arg0->LoadFloat("speed", &this->unk198, 0) != 0) || ((u8) arg0->LoadFloat("waterheight", &this->unk1BC, 0) != 0)) {
         return 1;
     }
-    arg0->GetFieldName();
-    if (stricmp"" == 0) {
+    if (stricmp(arg0->GetFieldName(), (s8 *) "waypoints") == 0) {
         if ((u32) this->unk18C != 0U) {
             return 0;
         }
-        temp_r3_1772 = arg0->GetNmbrOfSubLines();
-        if (temp_r3_1772 == 0) {
+        temp_r3 = arg0->GetNmbrOfSubLines();
+        if (temp_r3 == 0) {
             return 0;
         }
-        ((KDUniformSpline *) &this->unk180)->Init(temp_r3_1772, 0U);
-        var_r30_1785 = arg0->unkC->GetSubLine(arg0);
-loop_11:
-        if (var_r30_1785 != NULL) {
-            var_r30_1785->AsVector3(0, &sp8);
+        ((KDUniformSpline *) &this->unk180)->Init(temp_r3, 0U);
+        var_r30 = arg0->unkC->GetSubLine(arg0);
+        while (var_r30 != NULL) {
+            var_r30->AsVector3(0, &sp8);
             ((KDUniformSpline *) &this->unk180)->AddNode(sp8);
-            var_r30_1785 = var_r30_1785->unkC->GetNextLine(var_r30_1785);
-            goto loop_11;
+            var_r30 = var_r30->unkC->GetNextLine(var_r30);
         }
         return 1;
     }
     return 0;
 }
-#endif
 
 void Leviathan::Init() {
     Platform::Init();
