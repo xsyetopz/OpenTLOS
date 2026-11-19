@@ -907,15 +907,3 @@ void Enemies_Ice_cpp::__sinit() {
     M2C_FIELD(&iceTier2BodyFXInit, f64 *, 0x298) = (f64) sp10;
 }
 #endif
-
-#if 0 // DRAFT: undefined identifier 'lit_1720lit_GetCollisionInfo'
-void IceTier2::lit_1720lit_GetCollisionInfo() {
-    ((IceTier2 *) (this - 0x6B8))->IceTier2::GetCollisionInfo();
-}
-#endif
-
-#if 0 // DRAFT: undefined identifier 'lit_1720lit_GetAimPoint'
-void IceTier2::lit_1720lit_GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((IceTier2 *) (this - 0x6B8))->IceTier2::GetAimPoint(arg0, arg1);
-}
-#endif

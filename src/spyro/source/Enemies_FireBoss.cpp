@@ -2714,15 +2714,3 @@ void Enemies_FireBoss_cpp::__sinit() {
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (0.5 * temp_f4_5769 * -((2014000.0 * (temp_f4_5769 * temp_f4_5769)) - 3.0)));
     SPYRO_MIN_JUMP_Y_VELOCITY = temp_f0_5783;
 }
-
-#if 0 // DRAFT: undefined identifier 'lit_1720lit_GetAimPoint'
-void FireBoss::lit_1720lit_GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((FireBoss *) (this - 0x6B8))->FireBoss::GetAimPoint(arg0, arg1);
-}
-#endif
-
-#if 0 // DRAFT: undefined identifier 'lit_1720lit_GetLookToPoint'
-void FireBoss::lit_1720lit_GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((FireBoss *) (this - 0x6B8))->FireBoss::GetLookToPoint(arg0, arg1);
-}
-#endif

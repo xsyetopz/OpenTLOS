@@ -2124,15 +2124,3 @@ void IceBoss_UpdateParams(void *arg0) {
         pIceBossDesc->unk2DC = iStalactiteGemsF;
     }
 }
-
-#if 0 // DRAFT: undefined identifier 'lit_1720lit_GetAimPoint'
-void IceBoss::lit_1720lit_GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((IceBoss *) (this - 0x6B8))->IceBoss::GetAimPoint(arg0, arg1);
-}
-#endif
-
-#if 0 // DRAFT: undefined identifier 'lit_1720lit_GetLookToPoint'
-void IceBoss::lit_1720lit_GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((IceBoss *) (this - 0x6B8))->IceBoss::GetLookToPoint(arg0, arg1);
-}
-#endif

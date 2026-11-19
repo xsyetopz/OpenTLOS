@@ -516,9 +516,3 @@ void ExplosiveBarrelDescriptor::Init() {
     this->unk164 |= 0x40;
     this->unk178 = 1.0f;
 }
-
-#if 0 // DRAFT: undefined identifier 'lit_200lit_IsDead'
-void ExplosiveBarrel::lit_200lit_IsDead() {
-    ((ExplosiveBarrel *) (this - 0xC8))->ExplosiveBarrel::IsDead();
-}
-#endif

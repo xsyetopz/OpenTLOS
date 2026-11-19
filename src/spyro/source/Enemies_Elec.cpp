@@ -1060,27 +1060,3 @@ void Enemies_Elec_cpp::__sinit() {
     M2C_FIELD(&elecTier1BodyFXInit, f64 *, 0x178) = (f64) sp10;
 }
 #endif
-
-#if 0 // DRAFT: undefined identifier 'lit_1720lit_GetAimPoint'
-void ElecTier2::lit_1720lit_GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((ElecTier2 *) (this - 0x6B8))->ElecTier2::GetAimPoint(arg0, arg1);
-}
-#endif
-
-#if 0 // DRAFT: undefined identifier 'lit_1720lit_GetLookToPoint'
-void ElecTier2::lit_1720lit_GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((ElecTier2 *) (this - 0x6B8))->ElecTier2::GetLookToPoint(arg0, arg1);
-}
-#endif
-
-#if 0 // DRAFT: undefined identifier 'lit_1720lit_GetAimPoint'
-void ElecTier3::lit_1720lit_GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((ElecTier3 *) (this - 0x6B8))->ElecTier3::GetAimPoint(arg0, arg1);
-}
-#endif
-
-#if 0 // DRAFT: undefined identifier 'lit_1720lit_GetLookToPoint'
-void ElecTier3::lit_1720lit_GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((ElecTier3 *) (this - 0x6B8))->ElecTier3::GetLookToPoint(arg0, arg1);
-}
-#endif

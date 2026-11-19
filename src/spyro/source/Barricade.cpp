@@ -159,15 +159,3 @@ void BarricadeProp::Init() {
     this->unk19C = 0;
     Shatterable::Init();
 }
-
-#if 0 // DRAFT: undefined identifier 'lit_200lit_GetLookToPoint'
-void BarricadeProp::lit_200lit_GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((BarricadeProp *) (this - 0xC8))->BarricadeProp::GetLookToPoint(arg0, arg1);
-}
-#endif
-
-#if 0 // DRAFT: undefined identifier 'lit_200lit_GetMoveToPoint'
-void BarricadeProp::lit_200lit_GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    ((BarricadeProp *) (this - 0xC8))->BarricadeProp::GetMoveToPoint(arg0, arg1);
-}
-#endif
