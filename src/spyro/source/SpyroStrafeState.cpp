@@ -60,14 +60,13 @@ extern M2C_UNK gb;
 static M2C_UNK lit_728;                                /* unable to generate initializer: unknown type */
 SpyroStrafeState states__16SpyroStrafeState;        /* unable to generate initializer: confusing struct layout */
 
-#if 0 // DRAFT: illegal operand
 void SpyroStrafeState::InputOverride::Set(KDInput *arg1) {
     f32 var_f1_46;
     f32 var_f1_68;
     u8 var_r3_34;
     u8 var_r3_56;
 
-    M2C_FIELD(this, SpyroStrafeState::InputOverride *, 0) = 1;
+    M2C_FIELD(this, u8 *, 0) = 1;
     var_r3_34 = 0;
     if (((u8) arg1->unk5 != 0) || ((u8) arg1->unk4 != 0)) {
         var_r3_34 = 1;
@@ -90,7 +89,6 @@ void SpyroStrafeState::InputOverride::Set(KDInput *arg1) {
     M2C_FIELD(this, f32 *, 8) = var_f1_68;
     M2C_FIELD(this, f32 *, 0xC) = arg1->GetLeftMag();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to 'KDInput *'
 void SpyroStrafeState::SetDesiredVelocity() {
@@ -497,7 +495,6 @@ u8 SpyroStrafeState::AnyToDodgeTranstion() {
     return var_r3_742;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroStrafeState::DodgeForwardBackTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -507,6 +504,7 @@ u8 SpyroStrafeState::DodgeForwardBackTransition() {
     s32 spC;
     s32 sp8;
     InputModifier *temp_r3_821;
+    f32 var_f1_820;
     u8 var_r3_851;
     u8 var_r4_823;
 
@@ -523,32 +521,27 @@ u8 SpyroStrafeState::DodgeForwardBackTransition() {
         var_r4_823 = 1;
     }
     if (var_r4_823 != 0) {
-
+        var_f1_820 = 0.0f;
     } else {
-        MKInput_GetState(0xA, (MKInputDevices) temp_r3_821->unk0, NULL, NULL);
+        var_f1_820 = MKInput_GetState(0xA, (MKInputDevices) temp_r3_821->unk0, NULL, NULL);
     }
-    var_r3_851 = this->unk10->TryChangeState(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1, 4U, (MKMessage *) &sp8, 0U);
+    var_r3_851 = this->unk10->TryChangeState((var_f1_820 == 0.0f), 4U, (MKMessage *) &sp8, 0U);
     if (var_r3_851 == 0) {
-        this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0);
-        var_r3_851 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
+        var_r3_851 = (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk24 > 0.5f);
         if (var_r3_851 != 0) {
             var_r3_851 = AnyToDodgeTranstion();
         }
     }
     if (var_r3_851 == 0) {
-        if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && ((s32) this->unk14.unk0 != 1)) {
+        if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && (M2C_FIELD(this, s32 *, 0x14) != 1)) {
             this->unk14.SetState(this, 1, 0U);
             return 1U;
         }
-        var_r3_851 = 0;
-        /* Duplicate return node #14. Try simplifying control flow for better match */
-        return var_r3_851;
+        return 0U;
     }
     return var_r3_851;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStrafeState::DodgeForwardBackUpdate() {
     if (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk24 > 0.5f) {
         this->unk38 = 0;
@@ -559,7 +552,6 @@ void SpyroStrafeState::DodgeForwardBackUpdate() {
     UpdateCircleTargetMovement();
     DodgeForwardBackTransition();
 }
-#endif
 
 void SpyroStrafeState::DodgeForwardBackExit() {
     this->unk38 = 0;
@@ -568,11 +560,10 @@ void SpyroStrafeState::DodgeForwardBackExit() {
     this->unk3C = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to 'KDInput *'
 void SpyroStrafeState::DodgeForwardBackEnter() {
     u32 var_r4_958;
 
-    ((SpyroStrafeState::InputOverride *) &this->unk38)->Set(this->unk10->GetInput());
+    ((SpyroStrafeState::InputOverride *) &this->unk38)->Set((KDInput *) this->unk10->GetInput());
     if (((InputModifier *) (this->unk10->GetInput()))->GetLeftY() > 0.0f) {
         var_r4_958 = 0x17;
     } else {
@@ -580,9 +571,7 @@ void SpyroStrafeState::DodgeForwardBackEnter() {
     }
     this->unk10->SetAnim(var_r4_958, 0.1f, (Spyro::AnimScriptNode) 0, 4U, 1.0f);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroStrafeState::DodgeLeftRightTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -591,9 +580,10 @@ u8 SpyroStrafeState::DodgeLeftRightTransition() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    InputModifier *temp_r3_998;
-    u8 var_r3_1028;
-    u8 var_r4_1000;
+    InputModifier *temp_r3_821;
+    f32 var_f1_820;
+    u8 var_r3_851;
+    u8 var_r4_823;
 
     spC = 0;
     sp10 = 0x10;
@@ -602,38 +592,33 @@ u8 SpyroStrafeState::DodgeLeftRightTransition() {
     sp18 = 0.2f;
     sp1C = 1;
     sp1D = 1;
-    temp_r3_998 = this->unk10->GetInput();
-    var_r4_1000 = 0;
-    if (((u8) temp_r3_998->unk5 != 0) || ((u8) temp_r3_998->unk4 != 0)) {
-        var_r4_1000 = 1;
+    temp_r3_821 = this->unk10->GetInput();
+    var_r4_823 = 0;
+    if (((u8) temp_r3_821->unk5 != 0) || ((u8) temp_r3_821->unk4 != 0)) {
+        var_r4_823 = 1;
     }
-    if (var_r4_1000 != 0) {
-
+    if (var_r4_823 != 0) {
+        var_f1_820 = 0.0f;
     } else {
-        MKInput_GetState(0xA, (MKInputDevices) temp_r3_998->unk0, NULL, NULL);
+        var_f1_820 = MKInput_GetState(0xA, (MKInputDevices) temp_r3_821->unk0, NULL, NULL);
     }
-    var_r3_1028 = this->unk10->TryChangeState(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1, 4U, (MKMessage *) &sp8, 0U);
-    if (var_r3_1028 == 0) {
-        this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0);
-        var_r3_1028 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
-        if (var_r3_1028 != 0) {
-            var_r3_1028 = AnyToDodgeTranstion();
+    var_r3_851 = this->unk10->TryChangeState((var_f1_820 == 0.0f), 4U, (MKMessage *) &sp8, 0U);
+    if (var_r3_851 == 0) {
+        var_r3_851 = (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk24 > 0.5f);
+        if (var_r3_851 != 0) {
+            var_r3_851 = AnyToDodgeTranstion();
         }
     }
-    if (var_r3_1028 == 0) {
-        if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && ((s32) this->unk14.unk0 != 1)) {
+    if (var_r3_851 == 0) {
+        if ((this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1) && (M2C_FIELD(this, s32 *, 0x14) != 1)) {
             this->unk14.SetState(this, 1, 0U);
             return 1U;
         }
-        var_r3_1028 = 0;
-        /* Duplicate return node #14. Try simplifying control flow for better match */
-        return var_r3_1028;
+        return 0U;
     }
-    return var_r3_1028;
+    return var_r3_851;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStrafeState::DodgeLeftRightUpdate() {
     if (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk24 > 0.5f) {
         this->unk38 = 0;
@@ -644,7 +629,6 @@ void SpyroStrafeState::DodgeLeftRightUpdate() {
     UpdateCircleTargetMovement();
     DodgeLeftRightTransition();
 }
-#endif
 
 void SpyroStrafeState::DodgeLeftRightExit() {
     this->unk38 = 0;
@@ -653,11 +637,10 @@ void SpyroStrafeState::DodgeLeftRightExit() {
     this->unk3C = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to 'KDInput *'
 void SpyroStrafeState::DodgeLeftRightEnter() {
     u32 var_r4_1135;
 
-    ((SpyroStrafeState::InputOverride *) &this->unk38)->Set(this->unk10->GetInput());
+    ((SpyroStrafeState::InputOverride *) &this->unk38)->Set((KDInput *) this->unk10->GetInput());
     if (((InputModifier *) (this->unk10->GetInput()))->GetLeftX() < 0.0f) {
         var_r4_1135 = 0x14;
     } else {
@@ -665,7 +648,6 @@ void SpyroStrafeState::DodgeLeftRightEnter() {
     }
     this->unk10->SetAnim(var_r4_1135, 0.1f, (Spyro::AnimScriptNode) 0, 4U, 1.0f);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStrafeState::CircleTargetTransition() {
@@ -857,11 +839,8 @@ void SpyroStrafeState::ProcessAnimEvent(unsigned int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal function definition
 void SpyroStrafeState::Message(MKMessage *arg0) {
-
 }
-#endif
 
 s32 SpyroStrafeState::Transition() {
     s32 var_r31_1561;
@@ -897,7 +876,6 @@ void SpyroStrafeState::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroStrafeState::Exit() {
     s32 spC;
     s32 sp8;
@@ -909,9 +887,8 @@ void SpyroStrafeState::Exit() {
     temp_r3_1628 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x43F;
-    M2C_FIELD(temp_r3_1628->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+    temp_r3_1628->Message((MKMessage *) &sp8);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroStrafeState::Enter(SpyroStateMessages &arg0) {
