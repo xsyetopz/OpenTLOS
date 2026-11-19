@@ -122,29 +122,24 @@ void *CutsceneProp::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk6C'
 s32 CutsceneProp::LoadLine(MKIniLine *arg0) {
-    s32 var_r31_300;
+    s32 result = 0;
 
-    var_r31_300 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadBool("bLevelIntro", &this->unk50.unk6C, 0) != 0) || (arg0->LoadFloat("MusicDuckValue", &this->unk50.unk68, 0) != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0) || (this->unk50.LoadLine(arg0) != 0)) {
-        var_r31_300 = 1;
+    if (((u8) MKProp::LoadLine(arg0) != 0) || ((u8) arg0->LoadBool("bLevelIntro", (bool *) &this->unkBC, 0) != 0) || ((u8) arg0->LoadFloat("MusicDuckValue", &this->unkB8, 0) != 0) || ((u8) PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0) || ((u8) this->unk50.LoadLine(arg0) != 0)) {
+        result = 1;
     }
-    return var_r31_300;
+    return result;
 }
-#endif
 
 void CutsceneProp::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk6C'
 void CutsceneProp::Init() {
     MKProp::Init();
-    this->unk50.unk6C = 0;
-    this->unk50.unk68 = 0.0f;
+    this->unkBC = 0;
+    this->unkB8 = 0.0f;
     PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
-    this->unk50.unk6D = 0;
-    this->unk50.unk6E = 0;
+    this->unkBD = 0;
+    this->unkBE = 0;
 }
-#endif

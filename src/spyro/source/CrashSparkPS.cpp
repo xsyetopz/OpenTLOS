@@ -956,27 +956,16 @@ void CrashSparkPS::Deinit() {
     }
 }
 
-#if 0 // DRAFT: illegal type
 void CrashSparkPS::Init() {
-    s32 temp_r0_1624;
-    s32 var_ctr_1621;
-    s32 var_r4_1617;
-    void *var_r3_1611;
-
+    void *p;
     MKProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_1611 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x3E80, NULL, 0);
+        p = MKHeap::Current()->Alloc(0x3E80, NULL, 0);
     } else {
-        var_r3_1611 = malloc(0x3E80);
+        p = malloc(0x3E80);
     }
-    var_r4_1617 = 0;
-    this->unk4C = var_r3_1611;
-    var_ctr_1621 = 0xC8;
-    do {
-        temp_r0_1624 = var_r4_1617 + 0x34;
-        var_r4_1617 += 0x50;
-        *(this->unk4C + temp_r0_1624) = 0;
-        var_ctr_1621 -= 1;
-    } while (var_ctr_1621 != 0);
+    this->unk4C = p;
+    for (s32 i = 0; i < 0xC8; i++) {
+        *((u8 *) this->unk4C + i * 0x50 + 0x34) = 0;
+    }
 }
-#endif

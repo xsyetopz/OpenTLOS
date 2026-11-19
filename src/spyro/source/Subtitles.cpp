@@ -76,118 +76,103 @@ void Subtitles_Draw() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'Subtitles_GetText'
 void Subtitles_Update() {
-    f32 temp_f0_218;
-    f32 temp_f1_147;
-    f32 temp_f1_188;
-    f32 temp_f1_246;
-    f32 temp_f1_292;
-    f32 temp_f1_320;
-    f32 var_f0_139;
-    f32 var_f0_179;
-    f32 var_f0_208;
-    f32 var_f1_260;
-    f32 var_f2_235;
+    f32 divisor;
+    f32 timer;
     s32 *temp_r26_272;
     s32 var_r5_155;
 
+    s8 *Subtitles_GetText(const char *, s32 *);
+
     if ((u8) M2C_FIELD(&sub, u8 *, 0x84) != 0) {
-        if ((s8 *) M2C_FIELD(&sub, s8 **, 4) != NULL) {
-            if ((s32) gDisplay == 1) {
-                var_f0_139 = 60.0f;
+        if (M2C_FIELD(&sub, s8 **, 4) != NULL) {
+            if (gDisplay == 1) {
+                divisor = 60.0f;
             } else {
-                var_f0_139 = 50.0f;
+                divisor = 50.0f;
             }
-            temp_f1_147 = M2C_FIELD(&sub, f32 *, 0) - (1.0f / var_f0_139);
-            M2C_FIELD(&sub, f32 *, 0) = temp_f1_147;
-            M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
-            if (temp_f1_147 == 0.0f) {
+            timer = M2C_FIELD(&sub, f32 *, 0) - (1.0f / divisor);
+            M2C_FIELD(&sub, f32 *, 0) = timer;
+            if (timer <= 0.0f) {
                 M2C_FIELD(&sub, s8 **, 4) = NULL;
                 var_r5_155 = 5;
-                if ((s32) M2C_FIELD(&sub, s32 *, 8) == 0) {
+                if (M2C_FIELD(&sub, s32 *, 8) == 0) {
                     var_r5_155 = 9;
                 }
-                ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle(NULL, var_r5_155, M2C_FIELD(&sub, s32 *, 8) == 1);
+                M2C_FIELD(&gb, CutsceneSystem **, 0xC)->SetCustomSubtitle(NULL, var_r5_155, M2C_FIELD(&sub, s32 *, 8) == 1);
             }
-        } else if ((s32) M2C_FIELD(&sub, s32 *, 8) == 2) {
-            if ((s32) gDisplay == 1) {
-                var_f0_179 = 60.0f;
+        } else if (M2C_FIELD(&sub, s32 *, 8) == 2) {
+            if (gDisplay == 1) {
+                divisor = 60.0f;
             } else {
-                var_f0_179 = 50.0f;
+                divisor = 50.0f;
             }
-            temp_f1_188 = M2C_FIELD(&sub, f32 *, 0) - (1.0f / var_f0_179);
-            M2C_FIELD(&sub, f32 *, 0) = temp_f1_188;
-            M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
-            if (temp_f1_188 == 0.0f) {
+            timer = M2C_FIELD(&sub, f32 *, 0) - (1.0f / divisor);
+            M2C_FIELD(&sub, f32 *, 0) = timer;
+            if (timer <= 0.0f) {
                 M2C_FIELD(&sub, s32 *, 8) = 0;
                 M2C_FIELD(&sub, u8 *, 0x10) = 0U;
                 M2C_FIELD(&sub, u8 *, 0x11) = 1U;
             }
         }
         if ((u8) M2C_FIELD(&sub, u8 *, 0x10) != 0) {
-            if ((s32) gDisplay == 1) {
-                var_f0_208 = 60.0f;
+            if (gDisplay == 1) {
+                divisor = 60.0f;
             } else {
-                var_f0_208 = 50.0f;
+                divisor = 50.0f;
             }
-            temp_f0_218 = M2C_FIELD(&sub, f32 *, 0xC) + (1.0f / var_f0_208);
-            M2C_FIELD(&sub, f32 *, 0xC) = temp_f0_218;
-            M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
-            if (temp_f0_218 == 1.0f) {
+            timer = M2C_FIELD(&sub, f32 *, 0xC) + (1.0f / divisor);
+            M2C_FIELD(&sub, f32 *, 0xC) = timer;
+            if (timer >= 1.0f) {
                 M2C_FIELD(&sub, f32 *, 0xC) = 1.0f;
                 M2C_FIELD(&sub, u8 *, 0x10) = 0U;
             }
         } else if ((u8) M2C_FIELD(&sub, u8 *, 0x11) != 0) {
-            if ((s32) gDisplay == 1) {
-                var_f2_235 = 60.0f;
+            if (gDisplay == 1) {
+                divisor = 60.0f;
             } else {
-                var_f2_235 = 50.0f;
+                divisor = 50.0f;
             }
-            temp_f1_246 = M2C_FIELD(&sub, f32 *, 0xC) - (1.0f / var_f2_235);
-            M2C_FIELD(&sub, f32 *, 0xC) = temp_f1_246;
-            M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
-            if (temp_f1_246 == 0.0f) {
+            timer = M2C_FIELD(&sub, f32 *, 0xC) - (1.0f / divisor);
+            M2C_FIELD(&sub, f32 *, 0xC) = timer;
+            if (timer <= 0.0f) {
                 M2C_FIELD(&sub, f32 *, 0xC) = 0.0f;
                 M2C_FIELD(&sub, u8 *, 0x10) = 0U;
                 M2C_FIELD(&sub, u8 *, 0x11) = 0U;
             }
         }
-        if ((s32) gDisplay == 1) {
-            var_f1_260 = 60.0f;
+        if (gDisplay == 1) {
+            divisor = 60.0f;
         } else {
-            var_f1_260 = 50.0f;
+            divisor = 50.0f;
         }
-        temp_r26_272 = &sub + 0x80;
-        M2C_FIELD(&sub, f32 *, 0x70) = (f32) (M2C_FIELD(&sub, f32 *, 0x70) + (1.0f / var_f1_260));
+        temp_r26_272 = (s32 *) ((u8 *) &sub + 0x80);
+        M2C_FIELD(&sub, f32 *, 0x70) = M2C_FIELD(&sub, f32 *, 0x70) + (1.0f / divisor);
 loop_38:
-        if (((MKIniLine *) M2C_FIELD(&sub, MKIniLine **, 0x64) != NULL) && (((MKIniLine *) (M2C_FIELD(&sub, MKIniLine **, 0x64)))->GetFloat(0) <= M2C_FIELD(&sub, f32 *, 0x70))) {
-            if (((MKIniLine *) (M2C_FIELD(&sub, MKIniLine **, 0x64)))->IsField("subtitle") != 0) {
-                M2C_FIELD(&sub, s8 **, 4) = Subtitles_GetText(((MKIniLine *) (M2C_FIELD(&sub, MKIniLine **, 0x64)))->GetString(2), temp_r26_272);
-                temp_f1_292 = ((MKIniLine *) (M2C_FIELD(&sub, MKIniLine **, 0x64)))->GetFloat(1);
+        if (M2C_FIELD(&sub, MKIniLine **, 0x64) != NULL && M2C_FIELD(&sub, MKIniLine **, 0x64)->GetFloat(0) <= M2C_FIELD(&sub, f32 *, 0x70)) {
+            if ((u8) M2C_FIELD(&sub, MKIniLine **, 0x64)->IsField("subtitle") != 0) {
+                M2C_FIELD(&sub, s8 **, 4) = Subtitles_GetText((const char *) M2C_FIELD(&sub, MKIniLine **, 0x64)->GetString(2), temp_r26_272);
                 M2C_FIELD(&sub, s32 *, 8) = 0;
-                M2C_FIELD(&sub, f32 *, 0) = temp_f1_292;
-                ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle(M2C_FIELD(&sub, s8 **, 4), 9, 0U);
-            } else if (((MKIniLine *) (M2C_FIELD(&sub, MKIniLine **, 0x64)))->IsField("credit") != 0) {
-                M2C_FIELD(&sub, s8 **, 4) = Subtitles_GetText(((MKIniLine *) (M2C_FIELD(&sub, MKIniLine **, 0x64)))->GetString(2), temp_r26_272);
-                temp_f1_320 = ((MKIniLine *) (M2C_FIELD(&sub, MKIniLine **, 0x64)))->GetFloat(1);
+                M2C_FIELD(&sub, f32 *, 0) = M2C_FIELD(&sub, MKIniLine **, 0x64)->GetFloat(1);
+                M2C_FIELD(&gb, CutsceneSystem **, 0xC)->SetCustomSubtitle((const char *) M2C_FIELD(&sub, s8 **, 4), 9, 0U);
+            } else if ((u8) M2C_FIELD(&sub, MKIniLine **, 0x64)->IsField("credit") != 0) {
+                M2C_FIELD(&sub, s8 **, 4) = Subtitles_GetText((const char *) M2C_FIELD(&sub, MKIniLine **, 0x64)->GetString(2), temp_r26_272);
                 M2C_FIELD(&sub, s32 *, 8) = 1;
-                M2C_FIELD(&sub, f32 *, 0) = temp_f1_320;
-                ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle(M2C_FIELD(&sub, s8 **, 4), 5, 1U);
-            } else if (((MKIniLine *) (M2C_FIELD(&sub, MKIniLine **, 0x64)))->IsField("logo") != 0) {
+                M2C_FIELD(&sub, f32 *, 0) = M2C_FIELD(&sub, MKIniLine **, 0x64)->GetFloat(1);
+                M2C_FIELD(&gb, CutsceneSystem **, 0xC)->SetCustomSubtitle((const char *) M2C_FIELD(&sub, s8 **, 4), 5, 1U);
+            } else if ((u8) M2C_FIELD(&sub, MKIniLine **, 0x64)->IsField("logo") != 0) {
                 M2C_FIELD(&sub, s8 **, 4) = NULL;
-                M2C_FIELD(&sub, f32 *, 0) = ((MKIniLine *) (M2C_FIELD(&sub, MKIniLine **, 0x64)))->GetFloat(1);
+                M2C_FIELD(&sub, f32 *, 0) = M2C_FIELD(&sub, MKIniLine **, 0x64)->GetFloat(1);
                 M2C_FIELD(&sub, s32 *, 8) = 2;
                 M2C_FIELD(&sub, u8 *, 0x10) = 1U;
                 M2C_FIELD(&sub, u8 *, 0x11) = 0U;
                 M2C_FIELD(&sub, f32 *, 0xC) = 0.0f;
             }
-            M2C_FIELD(&sub, MKIniLine **, 0x64) = ((MKIni *) (M2C_FIELD(&sub, MKIniLine **, 0x64)->unkC))->GetNextLine(M2C_FIELD(&sub, MKIniLine **, 0x64));
+            M2C_FIELD(&sub, MKIniLine **, 0x64) = M2C_FIELD(&sub, MKIniLine **, 0x64)->unkC->GetNextLine(M2C_FIELD(&sub, MKIniLine **, 0x64));
             goto loop_38;
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 s8 *Subtitles_GetText(const char *arg0, int *arg1) {

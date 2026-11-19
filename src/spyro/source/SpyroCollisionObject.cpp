@@ -401,18 +401,12 @@ s32 SpyroCollisionObject::Update(MKVector3 *arg0, float arg1, bool arg2) {
     this->unk47C = (var_f2_592 * (temp_f3_600 - temp_f1_602)) + temp_f1_602;
 }
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8'
 void SpyroCollisionObject::Init(ColObjDescriptor *arg0, const MKVector3 &arg1, bool arg2, MKCollisionInfo *arg3, bool arg4, bool arg5, unsigned int arg6, MKProp *arg7, bool arg8) {
     MKVector3 sp10;
-    s32 spC;
-    s32 sp8;
 
-    sp8 = arg_sp8;
-    spC = (s32) arg_spC;
-    CollisionObject::Init(arg0, arg1, arg2, arg3, arg4, arg5, arg6, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
+    CollisionObject::Init(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
     sp10 = MKVector(0.0f, M2C_FIELD(this->unk460, f32 *, 4), 0.0f);
     *(MKVector3 *) &this->unk480 = sp10;
     this->unk47C = 20.0f;
     this->unk478 = 20.0f;
 }
-#endif

@@ -462,7 +462,6 @@ loop_32:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'Matrix *' and 'Matrix **'
 void ConvexityBreathFX::Deinit() {
     Matrix **var_r31_809;
     Matrix **var_r3_810;
@@ -478,22 +477,22 @@ void ConvexityBreathFX::Deinit() {
     var_r3_810 = var_r4_808;
 loop_3:
     temp_r0_818 = M2C_FIELD(var_r3_810, u32 *, -4);
-    var_r3_810 -= 4;
+    var_r3_810 -= 1;
     if (temp_r0_818 != 0U) {
         temp_r0_813 = *var_r3_810;
-        if (temp_r0_813 < var_r31_809) {
+        if ((Matrix **) temp_r0_813 < var_r31_809) {
             var_r31_809 = (Matrix **) temp_r0_813;
         }
         goto loop_3;
     }
-    if (var_r3_810 != &gEmptyPtrListDL) {
+    if (var_r3_810 != (Matrix **) &gEmptyPtrListDL) {
 loop_9:
         temp_r0_832 = *var_r4_808;
         if (temp_r0_832 != NULL) {
-            if (temp_r0_832 < var_r31_809) {
+            if ((Matrix **) temp_r0_832 < var_r31_809) {
                 var_r31_809 = (Matrix **) temp_r0_832;
             }
-            var_r4_808 += 4;
+            var_r4_808 += 1;
             goto loop_9;
         }
         if (MKHeap::Current() != NULL) {
@@ -507,7 +506,6 @@ loop_9:
     MKModel_Destroy(this->unk160);
     BaseBreathFX::Deinit();
 }
-#endif
 
 void ConvexityBreathFX::Draw() {
     Matrix sp70;
