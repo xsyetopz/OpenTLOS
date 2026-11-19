@@ -306,7 +306,7 @@ loop_27:
                         sp18 = (f32) sp178 - temp_f0_381;
                         spF0 = sp10;
                         spF8 = (f64) sp18;
-                        sp100.operator*(temp_f3_348 / (temp_f3_348 - temp_f8_410));
+                        sp100 = ((MKVector3 *) &spF0)->operator*(temp_f3_348 / (temp_f3_348 - temp_f8_410));
                         sp30 = M2C_FIELD(temp_r30_311, f64 *, 0x40) + M2C_BITWISE(f64, sp100);
                         temp_f2_455 = M2C_FIELD(temp_r30_311, f32 *, 0x58);
                         temp_f1_456 = M2C_FIELD(temp_r30_311, f32 *, 0x78);
@@ -423,44 +423,33 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: function call 'MKModel_GetSubObjectBoneIndex(MKModel *, SubObjectType, KDShatterPool)' does not match 'MKModel_GetSubObjectBoneIndex(const MKModel *, SubObjectT
 void KDShatter2::ResetSubObjectMatrices() {
-    KDShatterPool *temp_r4_759;
-    KDShatterPool *temp_r4_778;
-    s16 temp_r29_749;
-    s32 var_r30_738;
-    s32 var_r30_765;
-    s32 var_r31_739;
-    s32 var_r31_766;
+    s32 i;
+    s32 off;
+    s16 bone;
 
-    if ((KDShatterPool *) this->unk50 != NULL) {
-        if (MKModel_GetAnimation(this->unk4C) != NULL) {
-            var_r30_738 = 0;
-            var_r31_739 = 0;
-loop_4:
-            temp_r4_759 = this->unk50;
-            if (var_r30_738 < (s32) temp_r4_759->unk1640) {
-                temp_r29_749 = MKModel_GetSubObjectBoneIndex(this->unk4C, (SubObjectType) 0, *(temp_r4_759 + (var_r31_739 + 0xA0)));
-                ((Animation *) (MKModel_GetAnimation(this->unk4C)))->SetCustomMatrix((s32) temp_r29_749, NULL, (AnimationMatrixPosition) 4, 0U);
-                var_r30_738 += 1;
-                var_r31_739 += 0xB0;
-                goto loop_4;
-            }
-            return;
+    if (unk50 == NULL) {
+        return;
+    }
+    if (MKModel_GetAnimation(unk4C) != NULL) {
+        i = 0;
+        off = 0;
+        while (i < unk50->unk1640) {
+            bone = MKModel_GetSubObjectBoneIndex(unk4C, (SubObjectType) 0, M2C_FIELD(unk50, s32 *, off + 0xA0));
+            MKModel_GetAnimation(unk4C)->SetCustomMatrix(bone, NULL, (AnimationMatrixPosition) 4, false);
+            i += 1;
+            off += 0xB0;
         }
-        var_r30_765 = 0;
-        var_r31_766 = 0;
-loop_8:
-        temp_r4_778 = this->unk50;
-        if (var_r30_765 < (s32) temp_r4_778->unk1640) {
-            MKModel_SetSubObjectLocalMatrix(this->unk4C, (SubObjectType) 0, *(temp_r4_778 + (var_r31_766 + 0xA0)), NULL);
-            var_r30_765 += 1;
-            var_r31_766 += 0xB0;
-            goto loop_8;
-        }
+        return;
+    }
+    i = 0;
+    off = 0;
+    while (i < unk50->unk1640) {
+        MKModel_SetSubObjectLocalMatrix(unk4C, (SubObjectType) 0, M2C_FIELD(unk50, s32 *, off + 0xA0), NULL);
+        i += 1;
+        off += 0xB0;
     }
 }
-#endif
 
 void KDShatter2::Reset() {
     Finish();
@@ -470,7 +459,7 @@ void KDShatter2::Reset() {
     ResetSubObjectMatrices();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void KDShatter2::SetHitPlane(int arg0) {
     MKCollisionResult spA8;
     f64 spA0;                                       /* compiler-managed */
@@ -509,7 +498,7 @@ void KDShatter2::SetHitPlane(int arg0) {
 loop_2:
     if (var_r29_830 <= (s32) this->unk50->unk1640) {
         (*(f32 *) ((u8 *) &sp98 + 0x4)) = -((this->unk0 * temp_f31_833) - (*(f32 *) ((u8 *) &sp98 + 0x4)));
-        sp68.operator*(this->unk8);
+        sp68 = ((MKVector3 *) &sp98)->operator*(this->unk8);
         temp_f0_852 = sp68 * (f64) temp_f31_833;
         sp28 = temp_f0_852;
         sp78 = temp_f0_852;
@@ -895,47 +884,41 @@ void KDShatter2::Init() {
     this->unk54 = NULL;
 }
 
-#if 0 // DRAFT: type mismatch 'KDShatterPool *' and 'KDShatterPool **'
 void KDShatter2::DeinitModule() {
-    KDShatterPool **var_r31_1519;
-    KDShatterPool **var_r3_1520;
-    KDShatterPool **var_r4_1518;
-    KDShatterPool *temp_r0_1523;
-    KDShatterPool *temp_r0_1542;
-    u32 temp_r0_1528;
+    KDShatterPool **p;
+    KDShatterPool **q;
+    u32 min;
+    u32 v;
 
-    var_r4_1518 = shatterPool;
-    var_r31_1519 = var_r4_1518;
-    var_r3_1520 = var_r4_1518;
-loop_3:
-    temp_r0_1528 = M2C_FIELD(var_r3_1520, u32 *, -4);
-    var_r3_1520 -= 4;
-    if (temp_r0_1528 != 0U) {
-        temp_r0_1523 = *var_r3_1520;
-        if (temp_r0_1523 < var_r31_1519) {
-            var_r31_1519 = &temp_r0_1523->unk0;
+    min = (u32) shatterPool;
+    p = shatterPool;
+    p -= 1;
+    v = (u32) *p;
+    while (v != 0) {
+        if (v < min) {
+            min = v;
         }
-        goto loop_3;
+        p -= 1;
+        v = (u32) *p;
     }
-    if (var_r3_1520 != &gEmptyPtrListDL) {
-loop_9:
-        temp_r0_1542 = *var_r4_1518;
-        if (temp_r0_1542 != NULL) {
-            if (temp_r0_1542 < var_r31_1519) {
-                var_r31_1519 = &temp_r0_1542->unk0;
+    if (p != (KDShatterPool **) &gEmptyPtrListDL) {
+        q = shatterPool;
+        v = (u32) *q;
+        while (v != 0) {
+            if (v < min) {
+                min = v;
             }
-            var_r4_1518 += 4;
-            goto loop_9;
+            q += 1;
+            v = (u32) *q;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1519, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((const void *) min, NULL, 0);
         } else {
-            free((u16 *) var_r31_1519);
+            free((u16 *) min);
         }
     }
     shatterPool = NULL;
 }
-#endif
 
 void KDShatter2::InitModule() {
     s32 var_ctr_1595;
