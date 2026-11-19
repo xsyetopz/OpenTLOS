@@ -13,6 +13,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from mstatic import static_methods
+from sret import struct_returns
 from retvotes import arg_returns
 
 SIZES = {"s8": 1, "u8": 1, "s16": 2, "u16": 2, "s32": 4, "u32": 4, "f32": 4, "f64": 8, "s64": 8, "u64": 8}
@@ -150,6 +151,7 @@ class Model:
         self.size_cache: dict = {}
         self.sdk: set = set()  # SDK type names, set by the caller when known
         self.statics: set = set()  # mangled static methods (mstatic), set by load_model
+        self.sret: dict = {}  # mangled free function -> class it returns by hidden pointer (sret), set by load_model
         self.nested: dict = {}  # outer class -> inner names, set by the caller
         for name, f in fields.items():  # structs m2c saw that have no methods
             if name not in classes and "<" not in name:
@@ -533,6 +535,8 @@ def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path, votes: Pa
     model = Model(json.loads(classes.read_text()), json.loads(fields.read_text()), rets, globs, stems)
     model.sdk, model.ctx = sdk_types(ctx), ctx
     model.statics = static_methods(model.classes, ROOT / "build" / VERSION / "asm")
+    model.sret = struct_returns(model, ROOT / "build" / VERSION / "asm")
+    model.rets |= model.sret
     for c in model.classes.values():
         for m in c["methods"]:
             if m["mangled"] in model.statics:

@@ -25,8 +25,10 @@ else
   python3 tools/srcgen/cctx.py $MODEL "$OUT/ctx.c" "$OUT/cnames.json" | tail -1
   timeout 1500 python3 tools/srcgen/run_m2c.py "$M2C" build/G6SE7D/asm "$OUT/m2c" --context "$OUT/ctx.c" --jobs 10 | tail -1
 fi
+# Prototype-only headers of this run tell cxxconv which header declares each free function.
+python3 tools/srcgen/headers.py $MODEL "$OUT/protos" --m2c-votes "$OUT/m2c" | tail -1
 timeout 1200 python3 tools/srcgen/cxxconv.py $MODEL "$OUT/cnames.json" "$OUT/m2c" build/G6SE7D/asm "$OUT/stage" \
-  --inline-root "$OUT/inl" --hdr-root "$S/hdr" --fixes fixes --m2c-votes "$OUT/m2c" | tail -1
+  --inline-root "$OUT/inl" --hdr-root "$OUT/protos" --fixes fixes --m2c-votes "$OUT/m2c" | tail -1
 python3 tools/srcgen/headers.py $MODEL "$OUT/hdr" --inline-root "$OUT/inl" --m2c-votes "$OUT/m2c" | tail -1
 cp "$S/hdr/unplaced_templates.h" "$OUT/hdr/"
 # Fencing a header can unblock or break another; repeat until stable.

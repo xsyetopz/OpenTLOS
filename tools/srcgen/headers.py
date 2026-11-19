@@ -43,16 +43,29 @@ VERSION = "G6SE7D"
 GUARD = re.compile(r"[^A-Za-z0-9]")
 
 
+UNPLACED_INLINES = "unplaced_inlines.cpp"
+
+
 def globals_by_tu(stems: dict) -> tuple[dict, dict]:
-    """Global-scope free functions and data objects of each game/engine TU."""
+    """Global-scope free functions and data objects of each game/engine TU.
+
+    A free function with only weak copies was inline in a header the binary
+    does not name; its prototype goes to `unplaced_inlines.h` (key
+    UNPLACED_INLINES) so callers such as `sp18 = MKVector(0.0f, 50.0f, 0.0f);`
+    compile. Template instances are tmplfuncs.py's.
+    """
     splits = Splits(str(ROOT / "config" / VERSION / "splits.txt"))
     tus = set(stems.values())
     free, data = defaultdict(list), defaultdict(list)
-    for s in load(str(ROOT / "config" / VERSION / "symbols.txt")):
-        if "scope:global" not in s.attrs:
+    syms = load(str(ROOT / "config" / VERSION / "symbols.txt"))
+    placed = {s.name for s in syms if "scope:global" in s.attrs}
+    for s in syms:
+        weak = ("scope:weak" in s.attrs and s.kind == "function" and "<" not in s.name and s.name not in placed
+                and not s.name.startswith("__"))  # operators: callers spell them as operators
+        if "scope:global" not in s.attrs and not weak:
             continue
-        tu = splits.tu_at(s.section, s.addr)
-        if tu not in tus:
+        tu = UNPLACED_INLINES if weak else splits.tu_at(s.section, s.addr)
+        if tu not in tus and not weak:
             continue
         try:
             sym = parse(s.name) if "__" in s.name else None

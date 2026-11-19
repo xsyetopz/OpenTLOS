@@ -96,8 +96,10 @@ class Symbol:
 class CallRewriter:
     """Rewrites a body given the model's virtual/static knowledge and the enclosing class."""
 
-    def __init__(self, virtuals: set, statics: set, cls: str | None, ancestors: set):
+    def __init__(self, virtuals: set, statics: set, cls: str | None, ancestors: set, sret: dict | None = None):
         self.virtuals, self.statics, self.cls, self.ancestors = virtuals, statics, cls, ancestors
+        self.sret = sret or {}  # mangled -> returned class; the first m2c argument is the destination
+        self.dests: dict[str, str] = {}  # local -> class a struct-returning call stored into it
         self.cache: dict = {}
 
     def symbol(self, tok: str):
@@ -111,6 +113,16 @@ class CallRewriter:
         return self.cache[tok]
 
     def call(self, tok: str, sym: Symbol, args: list[str]) -> str:
+        if tok in self.sret and args:
+            dest = args[0]
+            target = dest[1:] if re.fullmatch(r"&[\w.>-]+", dest) else f"*({dest})"
+            if re.fullmatch(r"&\w+", dest):
+                self.dests[dest[1:]] = self.sret[tok]
+            value = self.plain_call(tok, sym, args[1:])
+            return value if dest == "NULL" else f"{target} = {value}"
+        return self.plain_call(tok, sym, args)
+
+    def plain_call(self, tok: str, sym: Symbol, args: list[str]) -> str:
         member = sym.cls and sym.raw not in OPERATORS and tok not in self.statics
         params = args[1:] if member else args
         params = [ref_arg(a) if i < len(sym.refs) and sym.refs[i] else a for i, a in enumerate(params)]

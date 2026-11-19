@@ -18,13 +18,15 @@ tools/srcgen/install.sh $TMPDIR/run                # copies into src/, rebuilds,
 | Class model (bases, vtables, methods, secondary bases) | `classes.py` | `build/srcgen/classes.json` |
 | Field votes from m2c's per-TU inferences | `fields.py` | `build/srcgen/fields.json` |
 | Static methods: parameterless, body never reads r3, and at most 15% of callers write r3 before the `bl` | `mstatic.py` | used by `hmodel.load_model` |
+| Struct returns: free functions whose body reads the GPR after their last parameter before writing it (r3 holds the hidden result pointer); m2c sees `void f(T *sret, ...)`, the C++ returns `T`, and call sites assign the value to the former destination argument | `sret.py` | used by `hmodel.load_model`, `cctx.py`, `cxxconv.py` |
 | C context of all classes for m2c | `cctx.py` | `ctx.c`, `cnames.json` |
 | m2c with context | `run_m2c.py` | `m2c/` |
 | m2c input fixes: jump-table names, realigned frames, paired-single code lowered to lane ps0 (vector source restored by hand) | `asm_prep.py` | used by `run_m2c.py` |
 | C to C++ | `cxxconv.py` | `stage/`, header inlines |
 | `void *` byte arithmetic (`p + 0x30`) as `(u8 *)` arithmetic; dereferences left alone | `voidarith.py` | used by `cxxconv.py` |
 | Undeclared `unkspX` stack reads as typed reads inside the enclosing local (type from the asm access) | `stackslots.py` | used by `cxxconv.py` |
-| Headers | `headers.py` | `hdr/` |
+| 16-byte class copies m2c split into two `f64` moves (`lfd`/`stfd` pairs) as one class assignment | `structcopy.py` | used by `cxxconv.py` |
+| Headers (first prototype-only into `protos/`, which tells `cxxconv.py` where each free function is declared; helpers with only weak copies go to `unplaced_inlines.h`) | `headers.py` | `hdr/` |
 | By-value enums (no forward declaration in C++03; real header unknown) | `henums.py` | `hdr/unplaced_enums.h` |
 | C's implicit pointer and integer conversions made explicit casts on whole-statement assignments and returns, before fencing; pointer-float pairs stay errors | `castfix.py` | used by `fence.py` |
 | Fencing | `fence.py` | `fenced/`, `fence.tsv` |

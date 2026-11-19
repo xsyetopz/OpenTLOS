@@ -41,6 +41,7 @@ from cxxtypes import K, parse, render  # noqa: E402
 from henums import HEADER as ENUM_HEADER, mentions, value_enums  # noqa: E402
 from hmodel import Model, header_key, load_model, type_names  # noqa: E402
 from hrender import member_name  # noqa: E402
+from structcopy import merge_copies  # noqa: E402
 from m2ccalls import CallRewriter, devirtualize, split_args, type_this_vcalls  # noqa: E402
 
 FUNC = re.compile(r"^(?P<ret>[^\s/#].*?)\s*\b(?P<name>[A-Za-z_][\w<>,@$]*)\((?P<params>.*)\) \{$")
@@ -178,6 +179,20 @@ def params_of(sig: str) -> list[tuple[str, str]]:
     return out
 
 
+def sret_body(body: str, typ: str) -> str:
+    """m2c's body of a struct-returning function as one that returns `result`.
+
+    m2c writes through the hidden pointer it was given as `sret`; a local
+    takes its place, and every exit returns it.
+    """
+    head, rest = body.split("{", 1)
+    rest = re.sub(r"\breturn;", "return result;", rest)
+    inner = rest.rstrip()[:-1].rstrip()
+    if not inner.endswith("return result;"):
+        inner += "\n    return result;"
+    return f"{head}{{\n    {typ} result;\n    {typ} *sret = &result;{inner}\n}}"
+
+
 class Converter:
     def __init__(self, model: Model, cnames: dict, owner_of: dict, sdk: dict, free: dict, fixes: Path | None = None):
         self.model, self.cnames, self.owner_of, self.sdk, self.free = model, cnames, owner_of, sdk, free
@@ -210,6 +225,10 @@ class Converter:
         params = params_of(sig)
         if cls and params and params[0][1] == "this":
             params = params[1:]
+        sret = self.model.sret.get(mangled)
+        if sret and params and params[0][1] == "sret":
+            params = params[1:]
+            body = sret_body(body, sret)
         names = {cls} if cls else set()
         if not sym or not sym.type.terms or sym.type.terms[-1].kind != K.FUNCTION:
             return f"{ret} {mangled}({sig}) {body}", names
@@ -238,7 +257,13 @@ class Converter:
             # MWCC returns `this` from a ctor implicitly; source states no value.
             body = re.sub(r"\n\s*return this;\n\}$", "\n}", body)
             body = re.sub(r"\breturn this;", "return;", body)
-        body = CallRewriter(self.virtuals, self.statics, cls, ancestors).rewrite(body)
+        calls = CallRewriter(self.virtuals, self.statics, cls, ancestors, self.model.sret)
+        body = calls.rewrite(body)
+        for local, typ in calls.dests.items():
+            # m2c types a stack slot from its accesses; a vector copied as two
+            # doubles reads `f64 sp18;`. The call's return type is the slot's type.
+            body = re.sub(rf"(?m)^(\s+)[\w ]+?\s*\b{local};$", rf"\g<1>{typ} {local};", body, count=1)
+        body = merge_copies(body, lambda t: self.model.sizeof(t) if t in self.model.classes else 0)
         name = member_name(cls, raw)[0] if cls else quals[-1]
         ret = self.model.decl_rets().get(mangled, ret)
         head = "" if special else ret + (" " if not ret.endswith("*") else "")

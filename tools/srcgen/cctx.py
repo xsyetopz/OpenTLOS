@@ -116,6 +116,9 @@ class CContext:
         if cls and mangled not in self.model.statics:
             params.insert(0, f"{cname(cls)} *this")
         ret = self.ctype(self.model.rets.get(mangled, "void"))
+        if mangled in self.model.sret:  # m2c's PPC backend has no struct returns; the pointer is explicit
+            params.insert(0, f"{self.ctype(self.model.sret[mangled])} *sret")
+            ret = "void"
         name = sym.name.qualified_name[-1] if sym.name.qualified_name else None
         if str(name) in ("__ct", "__dt"):
             ret = f"{cname(cls)} *"
