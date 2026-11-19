@@ -558,17 +558,15 @@ void SquishBoulder::Init() {
     ((KDSoundFader *) &this->unk1D8)->Init(0.25f, 0.25f);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void SquishBoulderDescriptor::Init() {
-    void *temp_r3_1000;
-    void *temp_r3_995;
+    KDEnvParticleSystem *beam;
+    FallingLeaves *leaves;
 
     ShatterableDescriptor::Init();
-    this->unk16C = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("EarthBeamBlastPS"));
-    this->unk170 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
-    temp_r3_995 = this->unk170;
-    M2C_FIELD(M2C_FIELD(temp_r3_995, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r3_995);
-    temp_r3_1000 = this->unk170;
-    M2C_FIELD(M2C_FIELD(temp_r3_1000, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r3_1000);
+    beam = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("EarthBeamBlastPS"));
+    M2C_FIELD(this, KDEnvParticleSystem **, 0x16C) = beam;
+    leaves = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
+    M2C_FIELD(this, FallingLeaves **, 0x170) = leaves;
+    M2C_FIELD(this, FallingLeaves **, 0x170)->Reset();
+    M2C_FIELD(this, FallingLeaves **, 0x170)->Enable();
 }
-#endif
