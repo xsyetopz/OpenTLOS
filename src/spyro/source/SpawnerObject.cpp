@@ -49,87 +49,80 @@ void SpawnerObject::AllDied() {
     this->unk3C.Send(NULL);
 }
 
-#if 0 // DRAFT: pointer/array required
 void SpawnerObject::AllChildrenDied(SpawnerObject *arg0) {
-    s32 temp_cr0_eq_44;
-    s32 var_r8_36;
+    void **var_r8_36;
     u8 var_r6_33;
+    u8 prev_r6;
     void *temp_r5_55;
 
     var_r6_33 = 1;
-    var_r8_36 = this->unk8.unk0;
+    var_r8_36 = (void **) this->unk8.unk0;
 loop_7:
     temp_r5_55 = *var_r8_36;
     if (temp_r5_55 != NULL) {
-        if ((u32) M2C_FIELD(temp_r5_55, u32 *, 0) == arg0) {
-            M2C_FIELD(temp_r5_55, u8 *, 4) = 1U;
+        if (M2C_FIELD(temp_r5_55, SpawnerObject **, 0) == arg0) {
+            M2C_FIELD(temp_r5_55, u8 *, 4) = 1;
         }
-        temp_cr0_eq_44 = var_r6_33 == 0;
+        prev_r6 = var_r6_33;
         var_r6_33 = 0;
-        if ((temp_cr0_eq_44 == 0) && ((u8) M2C_FIELD(*var_r8_36, u8 *, 4) != 0)) {
+        if (prev_r6 != 0 && M2C_FIELD(*var_r8_36, u8 *, 4) != 0) {
             var_r6_33 = 1;
         }
-        var_r8_36 += 4;
+        var_r8_36 += 1;
         goto loop_7;
     }
     if (var_r6_33 != 0) {
         this->unk40.Send(NULL);
     }
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void SpawnerObject::RemoveChildSpawner(SpawnerObject *arg0) {
-    s32 temp_r4_79;
-    s32 var_r6_73;
-    u32 *temp_r3_82;
-    u32 *temp_r5_90;
+    void **var_r6_73;
+    void **temp_r4_79;
+    void *temp_r3_82;
+    void *temp_r5_90;
 
-    var_r6_73 = this->unk8.unk0;
-loop_4:
+    var_r6_73 = (void **) this->unk8.unk0;
     temp_r5_90 = *var_r6_73;
-    if (temp_r5_90 == NULL) {
-        return;
-    }
-    if ((u32) *temp_r5_90 == arg0) {
-        temp_r4_79 = this->unk8.unk0;
-        this->unk8.unk0 = temp_r4_79 + 4;
-        temp_r3_82 = *temp_r4_79;
-        *temp_r4_79 = (u32 *) *var_r6_73;
-        *var_r6_73 = temp_r3_82;
-        return;
-    }
-    var_r6_73 += 4;
-    goto loop_4;
-}
-#endif
-
-#if 0 // DRAFT: pointer/array required
-void SpawnerObject::AddChildSpawner(SpawnerObject *arg0) {
-    s32 temp_r5_114;
-    s32 var_r6_102;
-    u32 *temp_r5_110;
-    void *temp_r3_116;
-
-    var_r6_102 = this->unk8.unk0;
-loop_3:
-    temp_r5_110 = *var_r6_102;
-    if (temp_r5_110 == NULL) {
-        temp_r5_114 = this->unk8.unk0 - 4;
-        this->unk8.unk0 = temp_r5_114;
-        temp_r3_116 = *temp_r5_114;
-        if (temp_r3_116 != NULL) {
-            M2C_FIELD(temp_r3_116, SpawnerObject **, 0) = arg0;
-            M2C_FIELD(temp_r3_116, s8 *, 4) = 0;
+    while (temp_r5_90 != NULL) {
+        if (M2C_FIELD(temp_r5_90, SpawnerObject **, 0) == arg0) {
+            temp_r4_79 = (void **) this->unk8.unk0;
+            this->unk8.unk0 = (s32) (temp_r4_79 + 1);
+            temp_r3_82 = *temp_r4_79;
+            *temp_r4_79 = *var_r6_73;
+            *var_r6_73 = temp_r3_82;
             return;
         }
-        arg0->SetParentSpawner(NULL);
-    } else if ((u32) *temp_r5_110 != arg0) {
-        var_r6_102 += 4;
-        goto loop_3;
+        var_r6_73 += 1;
+        temp_r5_90 = *var_r6_73;
     }
 }
-#endif
+
+void SpawnerObject::AddChildSpawner(SpawnerObject *arg0) {
+    void **temp_r5_114;
+    void **var_r6_102;
+    void *temp_r3_116;
+    void *temp_r5_110;
+
+    var_r6_102 = (void **) this->unk8.unk0;
+    temp_r5_110 = *var_r6_102;
+    while (temp_r5_110 != NULL) {
+        if (M2C_FIELD(temp_r5_110, SpawnerObject **, 0) == arg0) {
+            return;
+        }
+        var_r6_102 += 1;
+        temp_r5_110 = *var_r6_102;
+    }
+    temp_r5_114 = (void **) (this->unk8.unk0 - 4);
+    this->unk8.unk0 = (s32) temp_r5_114;
+    temp_r3_116 = *temp_r5_114;
+    if (temp_r3_116 != NULL) {
+        M2C_FIELD(temp_r3_116, SpawnerObject **, 0) = arg0;
+        M2C_FIELD(temp_r3_116, u8 *, 4) = 0;
+        return;
+    }
+    arg0->SetParentSpawner(NULL);
+}
 
 void SpawnerObject::SetParentSpawner(SpawnerObject *arg0) {
     SpawnerObject *temp_r3_143;
@@ -227,7 +220,6 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void *SpawnerObject::Spawn(MKProp *arg0) {
     u8 sp14;
     void *sp10;
@@ -241,32 +233,26 @@ void *SpawnerObject::Spawn(MKProp *arg0) {
     spC = 0;
     temp_r4_282 = this->unk44;
     var_r3_283 = temp_r4_282;
-loop_2:
-    if ((u32) *var_r3_283 != 0) {
-        var_r3_283 += 4;
-        goto loop_2;
+    while ((u32) *var_r3_283 != 0) {
+        var_r3_283 += 1;
     }
     var_r29_292 = 0;
-loop_8:
-    if (var_r29_292 >= (s32) ((s32) (var_r3_283 - temp_r4_282) / 4)) {
-        goto block_9;
-    }
-    temp_r3_301 = GetSpawnPointObject();
-    if (temp_r3_301 != NULL) {
+    while (var_r29_292 < (s32) (var_r3_283 - temp_r4_282)) {
+        temp_r3_301 = this->GetSpawnPointObject();
+        if (temp_r3_301 == NULL) {
+            return NULL;
+        }
         sp8 = 0x33;
         sp14 = 0;
         sp10 = temp_r3_301;
-        arg0->Message(&sp8);
+        arg0->Message((MKMessage *) &sp8);
         if (sp14 != 0) {
             return temp_r3_301;
         }
         var_r29_292 += 1;
-        goto loop_8;
     }
-block_9:
     return NULL;
 }
-#endif
 
 SpawnPointObject *SpawnerObject::GetSpawnPointObject() {
     f64 sp40;
@@ -399,7 +385,6 @@ void SpawnerObject::ItemWasRecycled(MKProp *arg0) {
     RemoveItem(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpawnerObject::KillAll() {
     s32 spC;
     s32 sp8;
@@ -410,53 +395,46 @@ void SpawnerObject::KillAll() {
     if (((u8) this->unk4C >> 6U) & 1) {
         this->unk10.unk0 = 1;
         var_r29_548 = this->unk48;
-loop_3:
         temp_r3_561 = *var_r29_548;
-        if (temp_r3_561 != NULL) {
+        while (temp_r3_561 != NULL) {
             temp_r3_551 = *temp_r3_561;
             spC = 0;
             sp8 = 0xE0;
-            temp_r3_551->Message(&sp8);
-            var_r29_548 += 4;
-            goto loop_3;
+            temp_r3_551->Message((MKMessage *) &sp8);
+            var_r29_548 += 1;
+            temp_r3_561 = *var_r29_548;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpawnerObject::DespawnAll() {
     s32 spC;
     s32 sp8;
-    MKProp ***temp_r3_583;
     MKProp ***var_r29_587;
     MKProp **temp_r4_606;
     MKProp *temp_r28_592;
+    MKProp ***temp_r3_583;
 
     if (((u8) this->unk4C >> 6U) & 1) {
         temp_r3_583 = this->unk48;
-        if ((MKProp **) *temp_r3_583 != NULL) {
+        if (*temp_r3_583 != NULL) {
             var_r29_587 = temp_r3_583;
-loop_4:
             temp_r4_606 = *var_r29_587;
-            if (temp_r4_606 != NULL) {
+            while (temp_r4_606 != NULL) {
                 temp_r28_592 = *temp_r4_606;
-                DespawnItem((SpawnItemObject *) temp_r4_606, 0U);
+                DespawnItem((SpawnItemObject *) temp_r4_606, 0);
                 spC = 0;
                 sp8 = 0x37;
-                temp_r28_592->Message(&sp8);
-                var_r29_587 += 4;
-                goto loop_4;
+                temp_r28_592->Message((MKMessage *) &sp8);
+                var_r29_587 += 1;
+                temp_r4_606 = *var_r29_587;
             }
-loop_7:
-            if ((MKProp **) *this->unk48 != NULL) {
-                this->unk48 += 4;
-                goto loop_7;
+            while (*this->unk48 != NULL) {
+                this->unk48 += 1;
             }
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpawnerObject::DespawnItem(SpawnItemObject *arg0, bool arg1) {
@@ -511,7 +489,6 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpawnerObject::DespawnItem(MKProp *arg0, bool arg1) {
     s32 spC;
     s32 sp8;
@@ -521,27 +498,24 @@ void SpawnerObject::DespawnItem(MKProp *arg0, bool arg1) {
     MKProp **temp_r4_767;
 
     var_r31_738 = this->unk48;
-loop_4:
     temp_r4_767 = *var_r31_738;
-    if (temp_r4_767 == NULL) {
-        return;
+    while (temp_r4_767 != NULL) {
+        if (*temp_r4_767 == arg0) {
+            DespawnItem((SpawnItemObject *) temp_r4_767, arg1);
+            spC = 0;
+            sp8 = 0x37;
+            arg0->Message((MKMessage *) &sp8);
+            temp_r3_756 = this->unk48;
+            this->unk48 = temp_r3_756 + 1;
+            temp_r4_759 = *temp_r3_756;
+            *temp_r3_756 = *var_r31_738;
+            *var_r31_738 = temp_r4_759;
+            return;
+        }
+        var_r31_738 += 1;
+        temp_r4_767 = *var_r31_738;
     }
-    if ((MKProp *) *temp_r4_767 == arg0) {
-        DespawnItem((SpawnItemObject *) temp_r4_767, arg1);
-        spC = 0;
-        sp8 = 0x37;
-        arg0->Message(&sp8);
-        temp_r3_756 = this->unk48;
-        this->unk48 = temp_r3_756 + 4;
-        temp_r4_759 = *temp_r3_756;
-        *temp_r3_756 = *var_r31_738;
-        *var_r31_738 = temp_r4_759;
-        return;
-    }
-    var_r31_738 += 4;
-    goto loop_4;
 }
-#endif
 
 MKProp *SpawnerObject::TrySpawnItem(int arg0) {
     MKProp *sp8;
@@ -671,7 +645,6 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpawnerObject::RemoveItem(MKProp *arg0) {
     s32 spC;
     s32 sp8;
@@ -690,20 +663,19 @@ loop_5:
             if ((MKProp *) *temp_r3_1060 == arg0) {
                 spC = 0;
                 sp8 = 0x37;
-                arg0->Message(&sp8);
+                arg0->Message((MKMessage *) &sp8);
                 temp_r3_1049 = this->unk48;
-                this->unk48 = temp_r3_1049 + 4;
+                this->unk48 = temp_r3_1049 + 1;
                 temp_r4_1052 = *temp_r3_1049;
                 *temp_r3_1049 = *var_r31_1033;
                 *var_r31_1033 = temp_r4_1052;
                 return;
             }
-            var_r31_1033 += 4;
+            var_r31_1033 += 1;
             goto loop_5;
         }
     }
 }
-#endif
 
 void SpawnerObject::RemoveAllSpawnPoints(bool arg0) {
     u32 *var_r31_1084;
@@ -852,56 +824,53 @@ void SpawnerObject::AddSpawnPointBegin(int arg0) {
     }
 }
 
-#if 0 // DRAFT: pointer/array required
 void SpawnerObject::Deinit() {
-    MKProp ***var_r30_1384;
-    MKProp ***var_r3_1385;
-    MKProp ***var_r4_1383;
-    MKProp **temp_r0_1388;
-    MKProp **temp_r0_1407;
+    SpawnerObject ***var_r30_1294;
     SpawnerObject **temp_r3_1302;
-    s32 var_r30_1294;
     s32 var_r30_1306;
-    s32 var_r3_1307;
-    s32 var_r4_1305;
-    u32 *temp_r30_1360;
-    u32 *temp_r3_1355;
+    u32 *var_r4_1305;
+    u32 *var_r3_1307;
     u32 temp_r0_1310;
     u32 temp_r0_1315;
     u32 temp_r0_1329;
+    u32 *temp_r3_1355;
+    u32 *temp_r30_1360;
+    s32 var_r30_1384;
+    u32 *var_r4_1383;
+    u32 *var_r3_1385;
+    u32 temp_r0_1388;
     u32 temp_r0_1393;
+    u32 temp_r0_1407;
 
     SetParentSpawner(NULL);
-    var_r30_1294 = this->unk8.unk0;
-loop_2:
+    var_r30_1294 = (SpawnerObject ***) this->unk8.unk0;
     temp_r3_1302 = *var_r30_1294;
-    if (temp_r3_1302 != NULL) {
-        ((SpawnerObject *) (*temp_r3_1302))->SetParentSpawner(NULL);
-        var_r30_1294 += 4;
-        goto loop_2;
+    while (temp_r3_1302 != NULL) {
+        (*temp_r3_1302)->SetParentSpawner(NULL);
+        var_r30_1294 += 1;
+        temp_r3_1302 = *var_r30_1294;
     }
-    var_r4_1305 = this->unk8.unk0;
-    var_r30_1306 = var_r4_1305;
+    var_r4_1305 = (u32 *) this->unk8.unk0;
+    var_r30_1306 = (s32) var_r4_1305;
     var_r3_1307 = var_r4_1305;
-loop_6:
     temp_r0_1315 = M2C_FIELD(var_r3_1307, u32 *, -4);
-    var_r3_1307 -= 4;
-    if (temp_r0_1315 != 0U) {
+    var_r3_1307 -= 1;
+    while (temp_r0_1315 != 0U) {
         temp_r0_1310 = *var_r3_1307;
         if (temp_r0_1310 < (u32) var_r30_1306) {
             var_r30_1306 = (s32) temp_r0_1310;
         }
-        goto loop_6;
+        temp_r0_1315 = M2C_FIELD(var_r3_1307, u32 *, -4);
+        var_r3_1307 -= 1;
     }
-    if ((u32) var_r3_1307 != &gEmptyPtrListDL) {
-loop_12:
+    if ((u32) var_r3_1307 != (u32) &gEmptyPtrListDL) {
         temp_r0_1329 = *var_r4_1305;
-        if (temp_r0_1329 != 0U) {
+        while (temp_r0_1329 != 0U) {
             if (temp_r0_1329 < (u32) var_r30_1306) {
                 var_r30_1306 = (s32) temp_r0_1329;
             }
-            var_r4_1305 += 4;
-            goto loop_12;
+            var_r4_1305 += 1;
+            temp_r0_1329 = *var_r4_1305;
         }
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free((void *) var_r30_1306, NULL, 0);
@@ -910,14 +879,14 @@ loop_12:
         }
     }
     this->unk8.unk0 = 0;
-    RemoveAllSpawnPoints(0U);
+    RemoveAllSpawnPoints(0);
     if (((u8) this->unk4C >> 7U) & 1) {
         do {
-            temp_r3_1355 = this->unk44 - 4;
+            temp_r3_1355 = this->unk44 - 1;
             this->unk44 = temp_r3_1355;
         } while ((u32) *temp_r3_1355 != 0);
         temp_r30_1360 = this->unk44;
-        if (temp_r30_1360 != &gEmptyPtrList) {
+        if (temp_r30_1360 != (u32 *) &gEmptyPtrList) {
             if (MKHeap::Current() != NULL) {
                 ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_1360, NULL, 0);
             } else {
@@ -927,31 +896,30 @@ loop_12:
         this->unk44 = NULL;
     }
     if (((u8) this->unk4C >> 6U) & 1) {
-        var_r4_1383 = this->unk48;
-        var_r30_1384 = var_r4_1383;
+        var_r4_1383 = (u32 *) this->unk48;
+        var_r30_1384 = (s32) var_r4_1383;
         var_r3_1385 = var_r4_1383;
-loop_27:
         temp_r0_1393 = M2C_FIELD(var_r3_1385, u32 *, -4);
-        var_r3_1385 -= 4;
-        if (temp_r0_1393 != 0U) {
+        var_r3_1385 -= 1;
+        while (temp_r0_1393 != 0U) {
             temp_r0_1388 = *var_r3_1385;
-            if (temp_r0_1388 < var_r30_1384) {
-                var_r30_1384 = (MKProp ***) temp_r0_1388;
+            if (temp_r0_1388 < (u32) var_r30_1384) {
+                var_r30_1384 = (s32) temp_r0_1388;
             }
-            goto loop_27;
+            temp_r0_1393 = M2C_FIELD(var_r3_1385, u32 *, -4);
+            var_r3_1385 -= 1;
         }
-        if (var_r3_1385 != &gEmptyPtrListDL) {
-loop_33:
+        if ((u32) var_r3_1385 != (u32) &gEmptyPtrListDL) {
             temp_r0_1407 = *var_r4_1383;
-            if (temp_r0_1407 != NULL) {
-                if (temp_r0_1407 < var_r30_1384) {
-                    var_r30_1384 = (MKProp ***) temp_r0_1407;
+            while (temp_r0_1407 != 0U) {
+                if (temp_r0_1407 < (u32) var_r30_1384) {
+                    var_r30_1384 = (s32) temp_r0_1407;
                 }
-                var_r4_1383 += 4;
-                goto loop_33;
+                var_r4_1383 += 1;
+                temp_r0_1407 = *var_r4_1383;
             }
             if (MKHeap::Current() != NULL) {
-                ((MKHeap *) (MKHeap::Current()))->Free(var_r30_1384, NULL, 0);
+                ((MKHeap *) (MKHeap::Current()))->Free((void *) var_r30_1384, NULL, 0);
             } else {
                 free((u32 *) var_r30_1384);
             }
@@ -961,7 +929,6 @@ loop_33:
     this->unk4C &= ~0x80;
     this->unk4C &= ~0x40;
 }
-#endif
 
 void SpawnerObject::LoadDone(unsigned int arg0) {
     MKProp ***temp_r3_1484;
@@ -1048,7 +1015,6 @@ void SpawnerObject::LoadDone(int arg0, int arg1, bool arg2, unsigned int arg3) {
     M2C_FIELD(temp_r3_1574, MKProp ****, 4) = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 SpawnerObject::LoadLine(MKIniLine *arg0) {
     s32 spC;
     u8 sp8;
@@ -1058,11 +1024,11 @@ s32 SpawnerObject::LoadLine(MKIniLine *arg0) {
     if ((arg0->LoadFloat("fSpawnDelay", &this->unk30, 0) != 0) || (arg0->LoadFloat("fDelayBetweenSpawns", &this->unk34, 0) != 0) || (arg0->LoadInt("iMaxSpawnItems", (int *) &this->unk28, 0) != 0) || (arg0->LoadInt("iMaxSpawnAmount", (int *) &this->unk24, 0) != 0) || (this->unk3C.LoadLine(arg0, "OnAllDead") != 0) || (this->unk40.LoadLine(arg0, "OnChildSpawnerAllDead") != 0)) {
         return 1;
     }
-    if (arg0->LoadBool("bOnlySpawnOffscreen", &sp8, 0) != 0) {
+    if (arg0->LoadBool("bOnlySpawnOffscreen", (bool *) &sp8, 0) != 0) {
         this->unk4C = (this->unk4C & ~0x20) | ((sp8 << 5) & 0x20);
         goto block_14;
     }
-    if (arg0->LoadBool("bLockSpawnPoints", &sp8, 0) != 0) {
+    if (arg0->LoadBool("bLockSpawnPoints", (bool *) &sp8, 0) != 0) {
         this->unk4C = (this->unk4C & ~0x10) | ((sp8 << 4) & 0x10);
         goto block_14;
     }
@@ -1073,10 +1039,8 @@ block_14:
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: identifier 'arg1' redeclared
-void SpawnerObject::Init(void (*arg1)(SpawnAction, int, MKProp **, SpawnerObject *), int arg1) {
+void SpawnerObject::Init(void (*arg0)(SpawnAction, int, MKProp **, SpawnerObject *), int arg1) {
     s32 temp_r3_1769;
     s32 temp_r4_1775;
     s32 var_ctr_1767;
@@ -1121,7 +1085,6 @@ void SpawnerObject::Init(void (*arg1)(SpawnAction, int, MKProp **, SpawnerObject
     M2C_FIELD(temp_r4_1775, s32 *, 4) = 0;
     SetDefaults();
 }
-#endif
 
 void SpawnItemObject::SetDefaults() {
     this->unk0 = NULL;
