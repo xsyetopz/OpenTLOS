@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import re
 
+from classes import qualified
 from cxxtypes import K, parse
 from hrender import member_name
 
@@ -66,6 +67,10 @@ class Symbol:
         self.is_func = bool(terms) and terms[-1].kind == K.FUNCTION
         self.cls = "::".join(quals[:-1]) or None
         self.raw = quals[-1] if quals else mangled
+        if not self.is_func and not self.cls:
+            static = qualified(mangled)  # `zero__9MKVector3`: the demangler loses the class
+            if static:
+                self.cls, self.raw = static[0], static[1]
         fn = terms[-1] if self.is_func else None
         params = [p for p in (fn.function_params or [])] if fn else []
         self.refs = [bool(p.terms) and p.terms[0].kind == K.REFERENCE for p in params]
