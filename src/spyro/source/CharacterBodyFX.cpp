@@ -21,27 +21,21 @@ CharacterBodyFX ***malloc(s32);                     /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: pointer/array required
 void CharacterBodyFX::SetDataActive(bool arg0) {
-    s32 temp_r0_27;
-    s32 var_r4_21;
-    s32 var_r7_22;
+    s32 i;
+    s32 off;
 
     this->unk10 = arg0;
-    if (((u8) this->unk10 == 0) && ((CharacterBodyFXData *) this->unk8 != NULL) && ((u32) this->unk4 != 0U)) {
-        var_r4_21 = 0;
-        var_r7_22 = 0;
-loop_5:
-        if (var_r7_22 < (s32) this->unk8->unk4) {
-            temp_r0_27 = var_r4_21 + 0x60;
-            var_r7_22 += 1;
-            var_r4_21 += 0x70;
-            *(this->unk4 + temp_r0_27) = 0;
-            goto loop_5;
+    if (this->unk10 == 0 && this->unk8 != NULL && this->unk4 != 0) {
+        off = 0;
+        i = 0;
+        while (i < this->unk8->unk4) {
+            ((u8 *) this->unk4)[off + 0x60] = 0;
+            i += 1;
+            off += 0x70;
         }
     }
 }
-#endif
 
 void CharacterBodyFXManager::DestroyInstance(CharacterBodyFX *arg0) {
     CharacterBodyFX ***temp_r4_54;
@@ -137,69 +131,48 @@ CharacterBodyFX *CharacterBodyFXManager::CreateInstance(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'CharacterBodyFX **' and 'CharacterBodyFX ***'
 void CharacterBodyFXManager::Deinit() {
-    CharacterBodyFX ***var_r31_239;
-    CharacterBodyFX ***var_r31_267;
-    CharacterBodyFX ***var_r3_268;
-    CharacterBodyFX ***var_r4_263;
-    CharacterBodyFX **temp_r0_271;
-    CharacterBodyFX **temp_r0_290;
-    CharacterBodyFX **temp_r3_254;
-    CharacterBodyFX *temp_r3_242;
-    u32 temp_r0_276;
+    CharacterBodyFX ***var31;
+    CharacterBodyFX ***r3;
+    CharacterBodyFX ***slot;
+    CharacterBodyFX **entry;
 
-    var_r31_239 = this->unk0;
-loop_2:
-    if (var_r31_239 != NULL) {
-        temp_r3_254 = *var_r31_239;
-        if (temp_r3_254 == NULL) {
-
-        } else {
-            temp_r3_242 = *temp_r3_254;
-            temp_r3_242->Deinit();
-            operator delete(**var_r31_239);
-            var_r31_239 += 4;
-            goto loop_2;
+    var31 = this->unk0;
+    while (var31 != NULL && *var31 != NULL) {
+        (**var31)->Deinit();
+        operator delete(**var31);
+        var31 += 1;
+    }
+    while (*this->unk0 != NULL) {
+        this->unk0 += 1;
+    }
+    var31 = this->unk0;
+    slot = this->unk0;
+    r3 = this->unk0;
+    r3 -= 1;
+    entry = *r3;
+    while (entry != NULL) {
+        if ((u32) entry < (u32) var31) {
+            var31 = (CharacterBodyFX ***) entry;
         }
+        r3 -= 1;
+        entry = *r3;
     }
-loop_6:
-    var_r4_263 = this->unk0;
-    if ((CharacterBodyFX **) *var_r4_263 != NULL) {
-        this->unk0 += 4;
-        goto loop_6;
-    }
-    var_r31_267 = var_r4_263;
-    var_r3_268 = var_r4_263;
-loop_10:
-    temp_r0_276 = M2C_FIELD(var_r3_268, u32 *, -4);
-    var_r3_268 -= 4;
-    if (temp_r0_276 != 0U) {
-        temp_r0_271 = *var_r3_268;
-        if (temp_r0_271 < var_r31_267) {
-            var_r31_267 = (CharacterBodyFX ***) temp_r0_271;
-        }
-        goto loop_10;
-    }
-    if (var_r3_268 != &gEmptyPtrListDL) {
-loop_16:
-        temp_r0_290 = *var_r4_263;
-        if (temp_r0_290 != NULL) {
-            if (temp_r0_290 < var_r31_267) {
-                var_r31_267 = (CharacterBodyFX ***) temp_r0_290;
+    if ((u32) r3 != (u32) &gEmptyPtrListDL) {
+        while (*slot != NULL) {
+            if ((u32) *slot < (u32) var31) {
+                var31 = (CharacterBodyFX ***) *slot;
             }
-            var_r4_263 += 4;
-            goto loop_16;
+            slot += 1;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_267, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free(var31, NULL, 0);
         } else {
-            free(var_r31_267);
+            free(var31);
         }
     }
     this->unk0 = NULL;
 }
-#endif
 
 void CharacterBodyFXManager::Draw() {
     CharacterBodyFX ***var_r31_322;
@@ -266,31 +239,25 @@ void CharacterBodyFXManager::Init() {
     M2C_FIELD(temp_r3_411, CharacterBodyFX ****, 4) = NULL;
 }
 
-#if 0 // DRAFT: illegal operand
 void *CharacterBodyFX::GetRandomNode(CBFXNode *arg0) {
-    CharacterBodyFXData *temp_r3_432;
-    s32 temp_r31_453;
-    s32 temp_r3_442;
-    s32 temp_r5_444;
-    s32 var_r4_445;
+    s32 idx;
+    s32 node;
+    s32 r;
 
-    temp_r3_432 = this->unk8;
-    if (temp_r3_432 == NULL) {
+    if (this->unk8 == NULL) {
         return NULL;
     }
-    temp_r3_442 = MKRand_Int((int *) &gViewSeed, 0, temp_r3_432->unk4 - 1);
-    temp_r5_444 = this->unk4;
-    var_r4_445 = temp_r3_442;
-    if (((u32) (temp_r5_444 + (temp_r3_442 * 0x70)) == arg0) && (temp_r3_442 > 0)) {
-        var_r4_445 = temp_r3_442 - 1;
+    r = MKRand_Int((int *) &gViewSeed, 0, this->unk8->unk4 - 1);
+    node = r;
+    if ((u8 *) this->unk4 + r * 0x70 == (u8 *) arg0 && r > 0) {
+        node = r - 1;
     }
-    temp_r31_453 = var_r4_445 * 0x70;
-    if (((u8) M2C_FIELD((temp_r5_444 + temp_r31_453), u8 *, 0x60) == 0) || ((u8) this->unk10 == 0)) {
-        CalculateNodeData(var_r4_445);
+    idx = node * 0x70;
+    if (((u8 *) this->unk4)[idx + 0x60] == 0 || this->unk10 == 0) {
+        this->CalculateNodeData(node);
     }
-    return (void *) (this->unk4 + temp_r31_453);
+    return (void *) ((u8 *) this->unk4 + idx);
 }
-#endif
 
 void CharacterBodyFX::Deinit() {
     s32 temp_r31_483;
@@ -408,57 +375,47 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void CharacterBodyFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
-    CharacterBodyFX ***var_r3_736;
-    CharacterBodyFXData *temp_r3_771;
-    s32 temp_r28_728;
-    s32 temp_r3_762;
-    s32 var_r27_746;
-    s32 var_r29_742;
-    s32 var_r30_747;
-    void *temp_r3_765;
+    s32 size;
+    s32 i;
+    s32 off;
+    s32 src;
+    void *mem;
 
     this->unkC = arg1;
-    if ((s32) arg0->unk4 == 0) {
+    if (arg0->unk4 == 0) {
         this->unk8 = NULL;
         return;
     }
     this->unk8 = arg0;
     if (arg2 == NULL) {
         this->unk11 = 0;
-        temp_r28_728 = this->unk8->unk4 * 0x70;
+        size = this->unk8->unk4 * 0x70;
         if (MKHeap::Current() != NULL) {
-            var_r3_736 = (CharacterBodyFX ***) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_728, NULL, 0));
+            mem = ((MKHeap *) (MKHeap::Current()))->Alloc(size, NULL, 0);
         } else {
-            var_r3_736 = malloc(temp_r28_728);
+            mem = malloc(size);
         }
-        var_r29_742 = 0;
-        this->unk4 = (s32) var_r3_736;
-        var_r27_746 = 0;
-        var_r30_747 = 0;
-loop_8:
-        temp_r3_771 = this->unk8;
-        if (var_r27_746 < (s32) temp_r3_771->unk4) {
-            *(this->unk4 + var_r30_747) = temp_r3_771->unk0 + var_r29_742;
-            *(this->unk4 + (var_r30_747 + 0x60)) = 0;
-            ((Matrix *) (this->unk4 + (var_r30_747 + 0x20)))->SetIdentity();
-            temp_r3_762 = var_r30_747 + 8;
-            var_r27_746 += 1;
-            var_r30_747 += 0x70;
-            temp_r3_765 = (void *) (this->unk4 + temp_r3_762);
-            var_r29_742 += 0x30;
-            M2C_FIELD(temp_r3_765, f32 *, 0) = 0.0f;
-            M2C_FIELD(temp_r3_765, f32 *, 4) = 0.0f;
-            M2C_FIELD(temp_r3_765, f32 *, 8) = 0.0f;
-            goto loop_8;
+        this->unk4 = (s32) mem;
+        i = 0;
+        off = 0;
+        src = 0;
+        while (i < this->unk8->unk4) {
+            *(s32 *) ((u8 *) this->unk4 + off) = (s32) this->unk8->unk0 + src;
+            ((u8 *) this->unk4)[off + 0x60] = 0;
+            ((Matrix *) ((u8 *) this->unk4 + off + 0x20))->SetIdentity();
+            *(f32 *) ((u8 *) this->unk4 + off + 8) = 0.0f;
+            *(f32 *) ((u8 *) this->unk4 + off + 12) = 0.0f;
+            *(f32 *) ((u8 *) this->unk4 + off + 16) = 0.0f;
+            i += 1;
+            off += 0x70;
+            src += 0x30;
         }
         return;
     }
     this->unk11 = 1;
     this->unk4 = (s32) arg2;
 }
-#endif
 
 void CharacterBodyFX::Init() {
     this->unk4 = 0;
@@ -470,27 +427,23 @@ void CharacterBodyFXData::Deinit() {
 
 }
 
-#if 0 // DRAFT: illegal type
 void CharacterBodyFXData::Init(CharacterBodyFxInit *arg0, int arg1, MKAnimScript *arg2) {
-    s32 var_r30_815;
-    s32 var_r31_816;
-    void *temp_r4_822;
+    s32 i;
+    s32 off;
+    u8 *entry;
 
-    var_r30_815 = 0;
-    var_r31_816 = 0;
+    i = 0;
+    off = 0;
     this->unk0 = arg0;
     this->unk4 = arg1;
-loop_5:
-    if (var_r30_815 < (s32) this->unk4) {
-        temp_r4_822 = this->unk0 + var_r31_816;
-        if ((s32) M2C_FIELD(temp_r4_822, s32 *, 0) == 0) {
-            *(this->unk0 + (var_r31_816 + 8)) = (s32) Tools_GetMatchingNodeIndex(arg2->unk8, M2C_FIELD(temp_r4_822, s8 **, 4));
+    while (i < this->unk4) {
+        entry = (u8 *) this->unk0 + off;
+        if (*(s32 *) entry == 0) {
+            *(s32 *) ((u8 *) this->unk0 + off + 8) = (u16) Tools_GetMatchingNodeIndex(arg2->unk8, *(char **) (entry + 4));
         } else {
-            *(this->unk0 + (var_r31_816 + 8)) = (s32) Tools_GetMatchingRefPointIndex(arg2->unk8, M2C_FIELD(temp_r4_822, s8 **, 4));
+            *(s32 *) ((u8 *) this->unk0 + off + 8) = (u16) Tools_GetMatchingRefPointIndex(arg2->unk8, *(char **) (entry + 4));
         }
-        var_r30_815 += 1;
-        var_r31_816 += 0x30;
-        goto loop_5;
+        i += 1;
+        off += 0x30;
     }
 }
-#endif
