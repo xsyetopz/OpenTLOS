@@ -9,7 +9,7 @@ not yet compilable; its error tells a fixer where to start.
 ## Pipeline
 
 ```sh
-tools/srcgen/pipeline.sh $TMPDIR/run [--classes]   # about 40-60 minutes
+tools/srcgen/pipeline.sh $TMPDIR/run [--classes | --reuse <run>]   # about 40-60 minutes
 tools/srcgen/install.sh $TMPDIR/run                # copies into src/, rebuilds, verifies the DOL
 ```
 
@@ -29,6 +29,36 @@ tools/srcgen/install.sh $TMPDIR/run                # copies into src/, rebuilds,
 
 `fence.tsv` lists every TU with its fenced and total block counts; it is the
 fixers' worklist.
+
+`--reuse <run>` starts at `cxxconv.py` with an earlier run's `ctx.c` and
+`m2c/`. It is valid only when the class layout is unchanged: m2c names a
+field `unkXXX` by its offset in `ctx.c`, so a layout change renames fields
+throughout the drafts.
+
+## Class layout
+
+A base is recorded only with binary evidence: vtable stores in the ctor or
+dtor, a call to the base ctor as the ctor's first call on unchanged `r3`,
+or inlined base vtable stores. The class's `// base:` comment names that
+evidence.
+
+The headers, `ctx.c` and `hmodel.Model` share one layout so that header
+offsets equal the asm's offsets. These rules follow MWCC:
+
+- A class's size is its last field's end rounded to its alignment, and a
+  derived class starts after the base's rounded size. MWCC keeps the base's
+  tail padding.
+- Alignment is the widest member's. f64 counts as 8, so CollisionObject
+  is 0x478, not 0x474, and Character's first field sits at 0x110 + 0x478.
+- The vptr sits at the first virtual declaration. A class that introduces
+  it declares any data members that precede it first.
+- A field vote that starts inside an earlier field is dropped. It adds
+  neither a member nor size (KDScriptProperty's 0x14 vote inside its 0x10
+  KDPropertyCommandList).
+
+`tools/srcgen/mwcc.py`'s `compile_one` compiles a probe of
+`char p[(int)&((C*)0)->field + 1];` lines, which shows where MWCC actually
+put each member.
 
 ## Hand fixes
 
