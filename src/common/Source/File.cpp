@@ -23,7 +23,6 @@ void File_FileServerFilename(const char *arg0) {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'openFiles'
 s32 File_IsAnyBusy() {
     s32 var_r28_45;
     s32 var_r29_43;
@@ -34,7 +33,7 @@ s32 File_IsAnyBusy() {
     var_r28_45 = 0;
     var_r31_46 = 0;
     do {
-        if ((s32) M2C_FIELD((openFiles + var_r31_46), s32 *, 0x3C) != -1) {
+        if ((s32) M2C_FIELD(((u8 *) &semaJobCount + 0x1340 + var_r31_46), s32 *, 0x3C) != -1) {
             var_r29_43 += File_IsBusy(var_r28_45);
         }
         var_r28_45 += 1;
@@ -42,32 +41,25 @@ s32 File_IsAnyBusy() {
     } while (var_r28_45 < 0x14);
     return var_r29_43;
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 s32 File_Sync(int arg0, int arg1) {
-loop_2:
-    if ((s32) openFiles[arg0].unk44 != 0) {
+    while ((s32) M2C_FIELD((u8 *) &semaJobCount + 0x1340 + (arg0 * 0x58), s32 *, 0x44) != 0) {
         VIWaitForRetrace();
-        goto loop_2;
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_openFiles_0x58'
 s32 File_IsBusy(int arg0) {
-    struct _struct_openFiles_0x58 *temp_r3_105;
+    u8 *temp_r3;
 
     if ((arg0 != -1) && (arg0 < 0x14)) {
-        temp_r3_105 = (_struct_openFiles_0x58 *) (&openFiles[arg0]);
-        if ((s32) temp_r3_105->unk3C != -1) {
-            return temp_r3_105->unk44;
+        temp_r3 = (u8 *) &semaJobCount + 0x1340 + (arg0 * 0x58);
+        if ((s32) M2C_FIELD(temp_r3, s32 *, 0x3C) != -1) {
+            return M2C_FIELD(temp_r3, s32 *, 0x44);
         }
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 u32 File_Length(const char *arg0) {
@@ -172,28 +164,27 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 s32 File_Read(int arg0, void *arg1, int arg2, int arg3) {
     s32 var_r6_0;
     u32 temp_r0_372;
     u32 temp_r4_369;
     u32 temp_r4_371;
-    void *temp_r31_332;
-    void *temp_r8_337;
+    u8 *temp_r31_332;
+    u8 *temp_r8_337;
 
     var_r6_0 = arg3;
     if ((arg0 != -1) && (arg0 < 0x14)) {
-        temp_r31_332 = &semaJobCount + 0x1340 + (arg0 * 0x58);
+        temp_r31_332 = (u8 *) &semaJobCount + 0x1340 + (arg0 * 0x58);
         if ((s32) M2C_FIELD(temp_r31_332, s32 *, 0x3C) != -1) {
-            temp_r8_337 = &semaJobCount + 0x1A20;
-            *(temp_r8_337 + (jobListHead * 0x4C)) = 2;
-            M2C_FIELD((((u8 *) temp_r8_337) + (jobListHead * 0x4C)), s32 *, 4) = arg0;
-            M2C_FIELD((((u8 *) temp_r8_337) + (jobListHead * 0x4C)), void **, 8) = arg1;
-            M2C_FIELD((((u8 *) temp_r8_337) + (jobListHead * 0x4C)), s32 *, 0xC) = arg2;
+            temp_r8_337 = (u8 *) &semaJobCount + 0x1A20;
+            M2C_FIELD(temp_r8_337 + (jobListHead * 0x4C), s32 *, 0) = 2;
+            M2C_FIELD(temp_r8_337 + (jobListHead * 0x4C), s32 *, 4) = arg0;
+            M2C_FIELD(temp_r8_337 + (jobListHead * 0x4C), void **, 8) = arg1;
+            M2C_FIELD(temp_r8_337 + (jobListHead * 0x4C), s32 *, 0xC) = arg2;
             if (var_r6_0 < arg2) {
                 var_r6_0 = arg2;
             }
-            M2C_FIELD((&semaJobCount + 0x1A20 + (jobListHead * 0x4C)), s32 *, 0x10) = var_r6_0;
+            M2C_FIELD(temp_r8_337 + (jobListHead * 0x4C), s32 *, 0x10) = var_r6_0;
             M2C_FIELD(temp_r31_332, s32 *, 0x48) = 0;
             M2C_FIELD(temp_r31_332, s32 *, 0x44) = (s32) (M2C_FIELD(temp_r31_332, s32 *, 0x44) + 1);
             temp_r4_369 = jobListHead + 1;
@@ -214,7 +205,6 @@ loop_8:
     }
     return -1;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'OSSemaphore' to 'long'
 s32 File_Close(int arg0) {
