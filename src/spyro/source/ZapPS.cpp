@@ -21,13 +21,10 @@ static MKParticleSystem::Envelope gZapPSEnv[5] = {
     { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f },
 };
 
-#if 0 // DRAFT: undefined identifier 'unksp8'
 void ZapPS::UpdateParticles() {
-    f64 sp28;
-    f64 sp20;
-    f32 sp18;
-    f64 sp10;
+    void *sp8[2];
     MKParticleChunk *var_r31_64;
+    void *temp_r30_67;
     MKParticleSystem::Envelope *temp_r3_108;
     MKParticleSystem::Envelope *temp_r5_113;
     MKParticleSystem::Envelope *temp_r5_146;
@@ -35,28 +32,27 @@ void ZapPS::UpdateParticles() {
     f32 temp_f3_122;
     f32 temp_f5_115;
     f32 temp_f6_110;
+    f32 tx;
+    f32 ty;
+    f32 tz;
     f32 var_f0_126;
-    f64 temp_f0_83;
-    s32 temp_r0_109;
     s32 temp_r4_107;
-    void *temp_r30_67;
+    s32 temp_r0_109;
 
     this->unk128 += gUpdateTimeDelta;
-    var_r31_64 = GetFirstParticle(&unksp8);
-loop_10:
-    if (var_r31_64 != NULL) {
+    var_r31_64 = GetFirstParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+    while (var_r31_64 != NULL) {
         temp_r30_67 = var_r31_64->unk2C;
         temp_f30_71 = this->unk128 - M2C_FIELD(temp_r30_67, f32 *, 0x10);
         if (temp_f30_71 > this->unk12C) {
-            var_r31_64 = DestroyParticle(&unksp8);
+            var_r31_64 = DestroyParticle((MKBaseParticleSystem::ParticleRec *) sp8);
         } else {
-            temp_f0_83 = M2C_FIELD(temp_r30_67, f64 *, 0) * (f64) gUpdateTimeDelta;
-            sp10 = temp_f0_83;
-            sp20 = temp_f0_83;
-            sp18 = M2C_FIELD(temp_r30_67, f32 *, 8) * gUpdateTimeDelta;
-            sp28 = (f64) sp18;
-            M2C_FIELD(var_r31_64, f64 *, 0) = (f64) (M2C_FIELD(var_r31_64, f64 *, 0) + temp_f0_83);
-            var_r31_64->unk8 += (f32) sp28;
+            tx = M2C_FIELD(temp_r30_67, f32 *, 0) * gUpdateTimeDelta;
+            ty = M2C_FIELD(temp_r30_67, f32 *, 4) * gUpdateTimeDelta;
+            tz = M2C_FIELD(temp_r30_67, f32 *, 8) * gUpdateTimeDelta;
+            M2C_FIELD(var_r31_64, f32 *, 0) = M2C_FIELD(var_r31_64, f32 *, 0) + tx;
+            M2C_FIELD(var_r31_64, f32 *, 4) = M2C_FIELD(var_r31_64, f32 *, 4) + ty;
+            var_r31_64->unk8 += tz;
             var_r31_64->unk24 = 2.0f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
             temp_r4_107 = M2C_FIELD(temp_r30_67, s32 *, 0x14);
             temp_r3_108 = this->unk134;
@@ -80,14 +76,11 @@ loop_10:
             var_r31_64->unk1C = var_f0_126;
             temp_r5_146 = &this->unk134[temp_r0_109];
             var_r31_64->unk28 = M2C_FIELD(temp_r30_67, f32 *, 0x1C) * ((temp_f3_122 * temp_r5_146->unk10) + temp_r5_146->unk8);
-            var_r31_64 = GetNextParticle(&unksp8);
+            var_r31_64 = GetNextParticle((MKBaseParticleSystem::ParticleRec *) sp8);
         }
-        goto loop_10;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void ZapPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, MKVector4 arg3) {
     void *temp_r30_185;
     void *temp_r3_182;
@@ -100,15 +93,14 @@ void ZapPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2
         M2C_FIELD(temp_r3_182, f32 *, 0x20) = (f32) MKRand_Int((int *) &gViewSeed, 0, 3);
         M2C_FIELD(temp_r30_185, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r30_185, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD(temp_r30_185, f32 *, 0x1C) = (f32) &arg2;
+        M2C_FIELD(temp_r30_185, f32 *, 0x1C) = arg2;
         M2C_FIELD(temp_r30_185, f32 *, 0x20) = 1.0f;
         M2C_FIELD(temp_r30_185, f32 *, 0x18) = (f32) (2.0f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
-        M2C_FIELD(temp_r3_182, f64 *, 0x10) = (f64) M2C_FIELD(arg3, f64 *, 0);
-        M2C_FIELD(temp_r3_182, f64 *, 0x18) = (f64) M2C_FIELD(arg3, f64 *, 8);
+        M2C_FIELD(temp_r3_182, f64 *, 0x10) = (f64) M2C_FIELD(&arg3, f64 *, 0);
+        M2C_FIELD(temp_r3_182, f64 *, 0x18) = (f64) M2C_FIELD(&arg3, f64 *, 8);
         M2C_FIELD(temp_r3_182, f32 *, 0x24) = (f32) (2.0f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
     }
 }
-#endif
 
 void ZapPS::Deinit() {
     MKParticleSystem::Deinit();
