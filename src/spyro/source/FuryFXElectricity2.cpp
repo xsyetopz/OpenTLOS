@@ -627,7 +627,6 @@ void FuryFXElectricity2::SetDefaults() {
     this->unk94 = 0.0f;
 }
 
-#if 0 // DRAFT: type mismatch 'void ****' and 'long *'
 void FuryFXElectricity2::Deinit() {
     ManagedLight *temp_r4_1025;
     u32 temp_r0_993;
@@ -650,7 +649,7 @@ loop_3:
         }
         goto loop_3;
     }
-    if (var_r3_985 != &gEmptyPtrListDL) {
+    if (var_r3_985 != (void ****) &gEmptyPtrListDL) {
 loop_9:
         temp_r0_1007 = *var_r4_983;
         if (temp_r0_1007 != NULL) {
@@ -673,7 +672,6 @@ loop_9:
     }
     FuryFX::Deinit();
 }
-#endif
 
 void FuryFXElectricity2::Draw() {
 
