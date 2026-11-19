@@ -36,7 +36,8 @@ extern M2C_UNK gb;
 static s32 lit_548 = 0;
 static u8 lit_549 = 0;
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'Corona *'
+extern "C" void free(void *);
+
 void FireWall::Deinit() {
     MKHeap *temp_r29_68;
     s32 temp_r0_60;
@@ -46,14 +47,12 @@ void FireWall::Deinit() {
     MKProp::Deinit();
     var_r31_47 = 0;
     var_r28_50 = 0;
-loop_2:
-    if (var_r28_50 < (s32) this->unk4C) {
-        ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(*(this->unk50 + (var_r31_47 + 0x2C)));
+    while (var_r28_50 < this->unk4C) {
+        ((Coronas *) M2C_FIELD(&gb, Coronas **, 0x64))->Free(*(Corona **) ((u8 *) this->unk50 + (var_r31_47 + 0x2C)));
         temp_r0_60 = var_r31_47 + 0x2C;
         var_r28_50 += 1;
         var_r31_47 += 0x30;
-        *(this->unk50 + temp_r0_60) = 0;
-        goto loop_2;
+        *(Corona **) ((u8 *) this->unk50 + temp_r0_60) = NULL;
     }
     temp_r29_68 = this->unk50;
     if (temp_r29_68 != NULL) {
@@ -61,10 +60,9 @@ loop_2:
             ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_68, NULL, 0);
             return;
         }
-        free(temp_r29_68);
+        free((void *) temp_r29_68);
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void FireWall::Draw() {
@@ -390,146 +388,109 @@ loop_83:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void *FireWall::Update() {
-    f64 sp98;
-    f64 sp90;
-    f64 sp88;
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    MKVector3 sp60;
-    f64 sp58;
-    f64 sp50;
-    MKVector3 sp40;
-    f32 sp38;
-    f64 sp30;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp18;
-    f64 sp10;
-    f32 sp8;
-    MKHeap *temp_r3_772;
-    MKHeap *temp_r4_815;
-    MKHeap *temp_r5_727;
-    MKHeap *temp_r7_722;
-    f32 temp_f0_776;
-    f32 temp_f1_876;
-    f32 var_f0_695;
-    f32 var_f0_787;
-    f64 temp_f0_822;
-    s32 temp_r0_773;
-    s32 temp_r29_816;
-    s32 temp_r3_813;
-    s32 temp_r6_723;
-    s32 var_r28_828;
-    s32 var_r29_740;
-    s32 var_r30_741;
-    s32 var_r3_716;
-    s32 var_r8_718;
-    void *temp_r4_819;
-    void *temp_r4_841;
-    void *temp_r4_852;
-    void *temp_r5_818;
+    MKVector3 delta;
+    MKVector3 scaled;
+    MKVector3 pos;
+    MKVector3 vel;
+    f32 life;
+    f32 rnd;
+    f32 t;
+    f32 *a;
+    f32 *b;
+    f32 *cur;
+    f32 *p;
+    u8 *rec;
+    s32 off;
+    s32 i;
+    s32 idx;
+    s32 aOff;
+    s32 bOff;
+    s32 k;
 
-    var_f0_695 = this->unk60 + gUpdateTimeDelta;
-    if (var_f0_695 < 0.0175f) {
-
+    t = this->unk60 + gUpdateTimeDelta;
+    if (t < 0.0175f) {
     } else {
-        var_f0_695 = 0.0175f;
+        t = 0.0175f;
     }
-    if (var_f0_695 > 0.0f) {
-
+    if (t > 0.0f) {
     } else {
-        var_f0_695 = 0.0f;
+        t = 0.0f;
     }
-    this->unk60 = var_f0_695;
+    this->unk60 = t;
     if (this->unk60 >= 0.0175f) {
-        var_r3_716 = 0;
-        var_r8_718 = 0;
+        off = 0;
+        i = 0;
         this->unk60 = 0.0f;
-loop_11:
-        if (var_r8_718 < (s32) this->unk4C) {
-            temp_r7_722 = this->unk50;
-            temp_r6_723 = var_r3_716 + 0x28;
-            *(temp_r7_722 + temp_r6_723) = *(temp_r7_722 + temp_r6_723) + 1;
-            temp_r5_727 = this->unk50;
-            if ((s32) *(temp_r5_727 + temp_r6_723) > 0x3F) {
-                *(temp_r5_727 + temp_r6_723) = 0;
+        while (i < (s32) this->unk4C) {
+            M2C_FIELD(this->unk50, s32 *, off + 0x28) += 1;
+            if (M2C_FIELD(this->unk50, s32 *, off + 0x28) > 0x3F) {
+                M2C_FIELD(this->unk50, s32 *, off + 0x28) = 0;
             }
-            var_r8_718 += 1;
-            var_r3_716 += 0x30;
-            goto loop_11;
+            i += 1;
+            off += 0x30;
         }
     }
-    var_r29_740 = 0;
-    var_r30_741 = 0;
-loop_16:
-    if (var_r29_740 < (s32) this->unk4C) {
-        if ((u32) *(this->unk50 + (var_r30_741 + 0x2C)) != 0U) {
-            M2C_FIELD(*(this->unk50 + (var_r30_741 + 0x2C)), f32 *, 0x24) = (f32) (1.5f * MKRand_Float((int *) &gViewSeed, 0.9f, 1.0f));
-            M2C_FIELD(*(this->unk50 + (var_r30_741 + 0x2C)), f32 *, 0x2C) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
+
+    i = 0;
+    off = 0;
+    while (i < (s32) this->unk4C) {
+        if (M2C_FIELD(this->unk50, u32 *, off + 0x2C) != 0U) {
+            rec = M2C_FIELD(this->unk50, u8 **, off + 0x2C);
+            *(f32 *) (rec + 0x24) = 1.5f * MKRand_Float((int *) &gViewSeed, 0.9f, 1.0f);
+            *(f32 *) (rec + 0x2C) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         }
-        temp_r3_772 = this->unk50;
-        temp_r0_773 = var_r30_741 + 0x24;
-        var_r29_740 += 1;
-        temp_f0_776 = *(temp_r3_772 + temp_r0_773);
-        var_r30_741 += 0x30;
-        *(temp_r3_772 + temp_r0_773) = (gUpdateTimeDelta * MKRand_Float((int *) &gViewSeed, 0.1f, 0.75f)) + temp_f0_776;
-        goto loop_16;
+        rnd = MKRand_Float((int *) &gViewSeed, 0.1f, 0.75f);
+        p = (f32 *) ((u8 *) this->unk50 + (off + 0x24));
+        *p = *p + gUpdateTimeDelta * rnd;
+        i += 1;
+        off += 0x30;
     }
-    var_f0_787 = this->unk64 + gUpdateTimeDelta;
-    if (var_f0_787 < 0.0015f) {
 
+    t = this->unk64 + gUpdateTimeDelta;
+    if (t < 0.0015f) {
     } else {
-        var_f0_787 = 0.0015f;
+        t = 0.0015f;
     }
-    if (var_f0_787 > 0.0f) {
-
+    if (t > 0.0f) {
     } else {
-        var_f0_787 = 0.0f;
+        t = 0.0f;
     }
-    this->unk64 = var_f0_787;
+    this->unk64 = t;
     if (this->unk64 >= 0.0015f) {
         this->unk64 = 0.0f;
-        temp_r3_813 = MKRand_Int((int *) &gViewSeed, 0, this->unk4C - 1);
-        temp_r4_815 = this->unk50;
-        temp_r29_816 = temp_r3_813 * 0x30;
-        temp_r5_818 = temp_r4_815 + temp_r29_816;
-        temp_r4_819 = temp_r4_815 + ((temp_r3_813 + 1) * 0x30);
-        temp_f0_822 = M2C_FIELD(temp_r4_819, f64 *, 0) - M2C_FIELD(temp_r5_818, f64 *, 0);
-        sp30 = temp_f0_822;
-        var_r28_828 = 0;
-        sp90 = temp_f0_822;
-        sp38 = M2C_FIELD(temp_r4_819, f32 *, 8) - M2C_FIELD(temp_r5_818, f32 *, 8);
-        sp98 = (f64) sp38;
+        idx = MKRand_Int((int *) &gViewSeed, 0, this->unk4C - 1);
+        aOff = idx * 0x30;
+        bOff = (idx + 1) * 0x30;
+        a = (f32 *) ((u8 *) this->unk50 + aOff);
+        b = (f32 *) ((u8 *) this->unk50 + bOff);
+        delta.unk0 = b[0] - a[0];
+        delta.unk4 = b[1] - a[1];
+        delta.unk8 = b[2] - a[2];
+
+        k = 0;
         do {
-            temp_r4_841 = temp_r29_816 + this->unk50;
-            sp80 = M2C_FIELD(temp_r4_841, f64 *, 0);
-            sp88 = M2C_FIELD(temp_r4_841, f64 *, 8);
-            sp60.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
-            temp_r4_852 = this->unk50 + temp_r29_816;
-            sp10 = M2C_FIELD(temp_r4_852, f64 *, 0) + M2C_BITWISE(f64, sp60);
-            sp70 = sp10;
-            sp18 = M2C_FIELD(temp_r4_852, f32 *, 8) + sp60.unk8;
-            sp80 = sp10;
-            sp78 = (f64) sp18;
-            sp88 = (f64) sp18;
-            sp8 = MKRand_Float((int *) &gViewSeed, 3.0f, 4.0f);
-            temp_f1_876 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 0.1f);
-            sp28 = 0.0f;
-            sp20 = 0.0f;
-            sp24 = temp_f1_876;
-            sp58 = (f64) sp28;
-            sp50 = (f64) sp20;
-            ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &sp80), *((MKVector3 *) &sp50), sp8);
-            var_r28_828 += 1;
-        } while (var_r28_828 < 3);
-        sp40.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
+            cur = (f32 *) ((u8 *) this->unk50 + aOff);
+            pos.unk0 = cur[0];
+            pos.unk4 = cur[1];
+            pos.unk8 = cur[2];
+            rnd = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+            scaled.unk0 = delta.unk0 * rnd;
+            scaled.unk4 = delta.unk4 * rnd;
+            scaled.unk8 = delta.unk8 * rnd;
+            pos.unk0 = cur[0] + scaled.unk0;
+            pos.unk4 = cur[1] + scaled.unk4;
+            pos.unk8 = cur[2] + scaled.unk8;
+            life = MKRand_Float((int *) &gViewSeed, 3.0f, 4.0f);
+            vel.unk0 = 0.0f;
+            vel.unk4 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 0.1f);
+            vel.unk8 = 0.0f;
+            M2C_FIELD(&gb, CrashFirePS **, 0x68)->Emit(pos, vel, life);
+            k += 1;
+        } while (k < 3);
+        MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'stricmp(const char[10])' does not match 'stricmp(signed char *)'
 s32 FireWall::LoadLine(MKIniLine *arg0) {
