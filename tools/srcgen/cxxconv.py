@@ -77,8 +77,11 @@ def free_functions(hdr_root: Path) -> dict[str, str]:
 
 def drop_types(text: str) -> str:
     """Remove top-level struct/union/typedef blocks and warning comments."""
-    out, depth, skipping = [], 0, False
+    out, depth, skipping, comment = [], 0, False, False
     for line in text.splitlines(keepends=True):
+        if comment or line.startswith("/* Warning:"):
+            comment = "*/" not in line
+            continue
         if not skipping and re.match(r"^(typedef )?(struct|union) [^;]*\{\s*$", line):
             skipping, depth = True, 0
         if skipping:
@@ -86,7 +89,7 @@ def drop_types(text: str) -> str:
             if depth <= 0 and "}" in line:
                 skipping = False
             continue
-        if line.startswith("/* Warning:") or re.match(r"^typedef (struct|union) \w+ \w+;", line):
+        if re.match(r"^typedef (struct|union) \w+ \w+;", line):
             continue
         out.append(line)
     return "".join(out)
@@ -165,6 +168,8 @@ def params_of(sig: str) -> list[tuple[str, str]]:
 class Converter:
     def __init__(self, model: Model, cnames: dict, owner_of: dict, sdk: dict, free: dict):
         self.model, self.cnames, self.owner_of, self.sdk, self.free = model, cnames, owner_of, sdk, free
+        headers = set(free.values()) | {o.rsplit(".", 1)[0] + ".h" for o in owner_of.values()}
+        self.has_header = lambda stem: stem + ".h" in headers
         self.virtuals, self.statics, self.method_cls = set(), set(), {}
         self.vtables = {n: c["vtable"] for n, c in model.classes.items() if c.get("vtable")}
         for n, c in model.classes.items():
@@ -283,7 +288,8 @@ class Converter:
         includes += sorted({self.sdk[n] for n in SDK_NAME.findall(code) if n in self.sdk})
         includes += sorted({self.free[n] for n in re.findall(r"\b(\w+)\s*\(", code)
                             if n in self.free and self.free[n] != stem + ".h"} - set(includes))
-        head = [f'#include "{stem}.h"'] + [f'#include "{i}"' for i in includes] + ["#include <m2c_macros.h>", ""]
+        own = [f'#include "{stem}.h"'] if self.has_header(stem) else []
+        head = own + [f'#include "{i}"' for i in includes] + ["#include <m2c_macros.h>", ""]
         return "\n".join(head) + "\n" + body, self.cxx_names("\n\n".join(inline))
 
 
