@@ -219,12 +219,12 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 s32 TrapSpawnPool::LoadDone() {
     s32 temp_r31_411;
     s32 var_r30_426;
     s32 var_r31_427;
     void **var_r3_419;
+    TrapSpawnPoolDescriptor *temp_r4_desc;
 
     MKProp::LoadDone();
     temp_r31_411 = this->unk90 * 4;
@@ -236,16 +236,14 @@ s32 TrapSpawnPool::LoadDone() {
     this->unk9C = var_r3_419;
     var_r30_426 = 0;
     var_r31_427 = 0;
-loop_5:
-    if (var_r30_426 < (s32) this->unk90) {
-        gMK->CreatePropDeferred(M2C_FIELD(checked_cast<TrapSpawnPoolDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s8 **, 0x60), this->unk9C + var_r31_427);
+    while (var_r30_426 < (s32) this->unk90) {
+        temp_r4_desc = checked_cast<TrapSpawnPoolDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        gMK->CreatePropDeferred((const char *) temp_r4_desc->unk60,(MKProp **) ((u8 *) this->unk9C + var_r31_427));
         var_r30_426 += 1;
         var_r31_427 += 4;
-        goto loop_5;
     }
-    ((KDPathSegment *) &this->unkB4)->LoadDone();
+    this->unkB4.LoadDone();
 }
-#endif
 
 s32 TrapSpawnPool::LoadLine(MKIniLine *arg0) {
     s32 var_r31_462;
@@ -271,43 +269,39 @@ void TrapSpawnPool::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'Matrix *'
 void TrapSpawnPool::Init() {
     MKProp::Init();
     this->unk90 = 0;
     this->unk94 = 0.0f;
     this->unk98 = 0.0f;
-    ((KDPathSegment *) &this->unkB4)->Init();
+    this->unkB4.Init();
     this->unk50.SetIdentity();
-    this->unkF8 = 0.0f;
     this->unkFC = 0.0f;
+    this->unk100 = 0.0f;
     this->unkF8 = 0.0f;
-    this->unk100 = 1.0f;
+    this->unk104 = 1.0f;
+    this->unk10C = 0.0f;
     this->unk108 = 0.0f;
-    this->unk104 = 0.0f;
-    M2C_FIELD(this, s8 *, 0x110) = 0;
-    this->unkB4.unk30 = 0.0f;
+    this->unk110 = 0;
     this->unkB4.unk34 = 0.0f;
     this->unkEC = 0.0f;
+    this->unkF0 = 0.0f;
     PropFlagsInit((unsigned int *) &this->unk10, 0x160000U);
     this->unk8 = &this->unk50;
-    M2C_FIELD(this, s32 *, 0x114) = 0xA;
-    this->unk114 = 600.0f;
-    this->unk118 = 0.0f;
+    this->unk114 = 0xA;
+    this->unk118 = 600.0f;
+    this->unk11C = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 TrapSpawnPoolDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_669;
 
     var_r31_669 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadBool("bRoll", (u8 *) &this->unk64, 0) != 0) || (arg0->LoadString("propName", &this->unk60, 0) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadBool("bRoll", (bool *) &this->unk64, 0) != 0) || (arg0->LoadString("propName", (const char **) &this->unk60, 0) != 0)) {
         var_r31_669 = 1;
     }
     return var_r31_669;
 }
-#endif
 
 void TrapSpawnPoolDescriptor::Init() {
     MKPropDescriptor::Init();

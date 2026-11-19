@@ -70,103 +70,92 @@ void TrainController::SetStage(int arg0) {
     this->unk60 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void TrainController::Message(MKMessage *arg0) {
-    s32 sp54;
-    s32 sp50;
-    s32 sp4C;
-    s32 sp48;
-    s32 sp44;
-    s32 sp40;
-    s32 sp3C;
-    s32 sp38;
-    s32 sp34;
-    s32 sp30;
-    s32 sp2C;
-    s32 sp28;
-    s32 sp24;
-    s32 sp20;
-    s32 sp1C;
-    s32 sp18;
-    s32 sp14;
-    s32 sp10;
-    s32 spC;
-    s32 sp8;
+    s32 sp50[2];
+    s32 sp48[2];
+    s32 sp40[2];
+    s32 sp38[2];
+    s32 sp30[2];
+    s32 sp28[2];
+    s32 sp20[2];
+    s32 sp18[2];
+    s32 sp10[2];
+    s32 sp8[2];
     SteamTrain *temp_r3_306;
     SteamTrain *temp_r3_334;
     SteamTrain *temp_r3_402;
     SteamTrain *temp_r3_411;
     s32 temp_r0_104;
-    void *temp_r3_166;
-    void *temp_r3_180;
-    void *temp_r3_194;
-    void *temp_r3_208;
-    void *temp_r3_227;
-    void *temp_r3_241;
-    void *temp_r3_255;
-    void *temp_r3_269;
-    void *temp_r3_355;
-    void *temp_r3_369;
-    void *temp_r3_379;
-    void *temp_r3_390;
-    void *temp_r3_419;
+    MKProp *temp_r3_166;
+    MKProp *temp_r3_180;
+    MKProp *temp_r3_194;
+    MKProp *temp_r3_208;
+    MKProp *temp_r3_227;
+    MKProp *temp_r3_241;
+    MKProp *temp_r3_255;
+    MKProp *temp_r3_269;
+    MKProp *temp_r3_355;
+    MKProp *temp_r3_369;
+    MKProp *temp_r3_379;
+    MKProp *temp_r3_390;
+    MKProp *temp_r3_419;
 
     MKProp::Message(arg0);
     temp_r0_104 = arg0->unk0;
-    switch (temp_r0_104) {                          /* irregular */
+    switch (temp_r0_104) {
     case 0xB5:
         Enable();
         Reset();
         temp_r3_166 = MKSceneManager::PropResolver_Resolve((s32) this->unk50);
         if (temp_r3_166 != NULL) {
-            sp4C = 0;
-            sp48 = 0xB5;
-            M2C_FIELD(M2C_FIELD(temp_r3_166, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp48);
+            sp48[1] = 0;
+            sp48[0] = 0xB5;
+            temp_r3_166->Message((MKMessage *) sp48);
         }
         temp_r3_180 = MKSceneManager::PropResolver_Resolve((s32) this->unk4C);
         if (temp_r3_180 != NULL) {
-            sp44 = 0;
-            sp40 = 0xB5;
-            M2C_FIELD(M2C_FIELD(temp_r3_180, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp40);
+            sp40[1] = 0;
+            sp40[0] = 0xB5;
+            temp_r3_180->Message((MKMessage *) sp40);
         }
         temp_r3_194 = MKSceneManager::PropResolver_Resolve((s32) this->unk54);
         if (temp_r3_194 != NULL) {
-            sp3C = 0;
-            sp38 = 0xB5;
-            M2C_FIELD(M2C_FIELD(temp_r3_194, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp38);
+            sp38[1] = 0;
+            sp38[0] = 0xB5;
+            temp_r3_194->Message((MKMessage *) sp38);
         }
         temp_r3_208 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_208 != NULL) {
-            sp34 = 0;
-            sp30 = 0xB5;
-            M2C_FIELD(M2C_FIELD(temp_r3_208, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp30);
+            sp30[1] = 0;
+            sp30[0] = 0xB5;
+            temp_r3_208->Message((MKMessage *) sp30);
         }
-        this->unk68.Send((MKProp *) this);
+        this->unk68.Send(this);
         return;
     case 0xB4:
         temp_r3_227 = MKSceneManager::PropResolver_Resolve((s32) this->unk50);
         if (temp_r3_227 != NULL) {
-            sp2C = 0;
-            sp28 = 0xB4;
-            M2C_FIELD(M2C_FIELD(temp_r3_227, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp28);
+            sp28[1] = 0;
+            sp28[0] = 0xB4;
+            temp_r3_227->Message((MKMessage *) sp28);
         }
         temp_r3_241 = MKSceneManager::PropResolver_Resolve((s32) this->unk4C);
         if (temp_r3_241 != NULL) {
-            sp24 = 0;
-            sp20 = 0xB4;
-            M2C_FIELD(M2C_FIELD(temp_r3_241, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp20);
+            sp20[1] = 0;
+            sp20[0] = 0xB4;
+            temp_r3_241->Message((MKMessage *) sp20);
         }
         temp_r3_255 = MKSceneManager::PropResolver_Resolve((s32) this->unk54);
         if (temp_r3_255 != NULL) {
-            sp1C = 0;
-            sp18 = 0xB4;
-            M2C_FIELD(M2C_FIELD(temp_r3_255, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp18);
+            sp18[1] = 0;
+            sp18[0] = 0xB4;
+            temp_r3_255->Message((MKMessage *) sp18);
         }
         temp_r3_269 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_269 != NULL) {
-            sp14 = 0;
-            sp10 = 0xB4;
-            M2C_FIELD(M2C_FIELD(temp_r3_269, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp10);
+            sp10[1] = 0;
+            sp10[0] = 0xB4;
+            temp_r3_269->Message((MKMessage *) sp10);
         }
         Disable();
         return;
@@ -198,12 +187,12 @@ void TrainController::Message(MKMessage *arg0) {
     case 0x13F:
         temp_r3_334 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk50));
         if (temp_r3_334 != NULL) {
-            temp_r3_334->Stop(0U);
+            temp_r3_334->Stop(false);
         }
         SetStage(7);
         return;
     case 0x140:
-        this->unk64.Send((MKProp *) this);
+        this->unk64.Send(this);
         return;
     case 0x148:
         this->unk6C = 1;
@@ -211,25 +200,25 @@ void TrainController::Message(MKMessage *arg0) {
     case 0x149:
         temp_r3_355 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_355 != NULL) {
-            M2C_FIELD(M2C_FIELD(temp_r3_355, void **, 0x44), M2C_UNK (**)(MKMessage *), 0x2C)(arg0);
+            temp_r3_355->Message(arg0);
         }
         this->unk6C = 0;
         return;
     case 0x14A:
         temp_r3_369 = MKSceneManager::PropResolver_Resolve((s32) this->unk50);
         if (temp_r3_369 != NULL) {
-            M2C_FIELD(M2C_FIELD(temp_r3_369, void **, 0x44), M2C_UNK (**)(MKMessage *), 0x2C)(arg0);
+            temp_r3_369->Message(arg0);
         }
         temp_r3_379 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_379 != NULL) {
-            M2C_FIELD(M2C_FIELD(temp_r3_379, void **, 0x44), M2C_UNK (**)(MKMessage *), 0x2C)(arg0);
+            temp_r3_379->Message(arg0);
             return;
         }
         return;
     case 0x14B:
         temp_r3_390 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_390 != NULL) {
-            M2C_FIELD(M2C_FIELD(temp_r3_390, void **, 0x44), M2C_UNK (**)(MKMessage *), 0x2C)(arg0);
+            temp_r3_390->Message(arg0);
             return;
         }
         break;
@@ -243,27 +232,26 @@ void TrainController::Message(MKMessage *arg0) {
     case 0x141:
         temp_r3_411 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk50));
         if (temp_r3_411 != NULL) {
-            temp_r3_411->Stop(1U);
+            temp_r3_411->Stop(true);
             return;
         }
         break;
     case 0x143:
         temp_r3_419 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_419 != NULL) {
-            sp54 = 0;
-            sp50 = 0x148;
-            M2C_FIELD(M2C_FIELD(temp_r3_419, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp50);
+            sp50[1] = 0;
+            sp50[0] = 0x148;
+            temp_r3_419->Message((MKMessage *) sp50);
             return;
         }
         break;
     case 0x1C:
-        spC = 0;
-        sp8 = 0xB4;
-        Message(&sp8);
+        sp8[1] = 0;
+        sp8[0] = 0xB4;
+        Message((MKMessage *) sp8);
         break;
     }
 }
-#endif
 
 void *TrainController::Update() {
     SteamTrainCaboose *temp_r3_482;
@@ -278,42 +266,37 @@ void *TrainController::Update() {
     this->unk60 += gUpdateTimeDelta;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void TrainController::Reset() {
-    s32 spC;
-    s32 sp8;
+    s32 sp8[2];
+    TrainChaseSpyro *temp_r3_522;
     SteamTrain *temp_r3_532;
-    void *temp_r3_522;
 
     MKProp::Reset();
-    if (M2C_FIELD(*gMK, u8 (**)(void **, TrainController *, s32), 0x9C)(gMK, this, *MKResource::sWorkingChunkID) != 0) {
+    if ((u8) ((MKSceneManager *) gMK)->IsEnabled(this, *(s32 *) MKResource::sWorkingChunkID) != 0) {
         temp_r3_522 = checked_cast<TrainChaseSpyro *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk58));
         if (temp_r3_522 != NULL) {
-            M2C_FIELD(M2C_FIELD(temp_r3_522, void **, 0x44), M2C_UNK (**)(), 0x20)();
+            temp_r3_522->Reset();
         }
         temp_r3_532 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk50));
         if (temp_r3_532 != NULL) {
-            M2C_FIELD(temp_r3_532->__vptr, M2C_UNK (**)(), 0x20)();
+            temp_r3_532->Reset();
         }
         SetStage(0);
-        spC = 0;
-        sp8 = 0xD5;
-        M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, f32), 0x94)(gMK, &sp8, 0x40000, 1, 0, 1, 0.0f);
+        sp8[0] = 0xD5;
+        sp8[1] = 0;
+        ((MKSceneManager *) gMK)->SendMessage((MKMessage *) sp8, 0x40000, true, NULL, 0.0f, true);
     }
     this->unk6C = 0;
 }
-#endif
 
-#if 0 // DRAFT: function call 'Disable(MKProp *, void *)' does not match 'MKProp::Disable()'
 s32 TrainController::LoadDone() {
     void *temp_r4_577;
 
     MKProp::LoadDone();
     temp_r4_577 = this->unk0;
     M2C_FIELD(temp_r4_577, s32 *, 0xC) = (s32) (M2C_FIELD(temp_r4_577, s32 *, 0xC) | 0x20);
-    Disable(temp_r4_577);
+    Disable();
 }
-#endif
 
 s32 TrainController::LoadLine(MKIniLine *arg0) {
     s32 var_r31_602;
@@ -336,60 +319,54 @@ void TrainController::Init() {
     this->unk6C = 0;
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[14])' does not match 'stricmp(signed char *, signed char *)'
 s32 TrainControllerDescriptor::LoadLine(MKIniLine *arg0) {
-    MKIniLine *temp_ret_789;
-    MKIniLine *var_r22_726;
-    MKIniLine *var_r28_701;
-    f32 temp_f1_789;
-    s32 var_r26_718;
-    s32 var_r30_716;
-    s8 *temp_r21_735;
-    u8 var_r29_719;
-    void *temp_r4_725;
+    s8 *name;
+    MKIniLine *var_r22;
+    f32 *var_r23;
+    f32 *var_r24;
+    f32 *var_r25;
+    s32 var_r26;
+    MKIniLine *var_r28;
+    u8 var_r29;
+    s32 var_r30;
 
-    var_r28_701 = arg0;
+    var_r28 = arg0;
     if (MKPropDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (var_r28_701->IsField("Stage_01") != 0) {
-        var_r30_716 = 0;
-        var_r26_718 = 0;
-        var_r29_719 = 0;
-loop_15:
-        if (var_r29_719 == 0) {
-            temp_r4_725 = this + var_r26_718;
-            var_r22_726 = var_r28_701->unkC->GetSubLine(var_r28_701);
-loop_12:
-            if (var_r22_726 != NULL) {
-                temp_r21_735 = var_r22_726->GetFieldName();
-                if (stricmp("SpyroMaxSpeed") == 0) {
-                    var_r22_726->AsFloat(0, ((u8 *) temp_r4_725) + 0x60);
-                    M2C_FIELD(temp_r4_725, f32 *, 0x60) = (f32) (M2C_FIELD(temp_r4_725, f32 *, 0x60) * 100.0f);
-                } else if (stricmp(temp_r21_735, "TrainMaxSpeed") == 0) {
-                    var_r22_726->AsFloat(0, ((u8 *) temp_r4_725) + 0x64);
-                    M2C_FIELD(temp_r4_725, f32 *, 0x64) = (f32) (M2C_FIELD(temp_r4_725, f32 *, 0x64) * 100.0f);
-                } else if (stricmp(temp_r21_735, "DestroyCaboose") == 0) {
-                    var_r22_726->AsFloat(0, ((u8 *) temp_r4_725) + 0x68);
-                }
-                var_r22_726 = var_r22_726->unkC->GetNextLine(var_r22_726);
-                goto loop_12;
-            }
-            var_r30_716 += 1;
-            var_r26_718 += 0xC;
-            temp_ret_789 = var_r28_701->unkC->GetNextLine(var_r28_701);
-            temp_f1_789 = M2C_BITWISE(f32, temp_ret_789);
-            var_r28_701 = temp_ret_789;
-            if (var_r28_701->IsField(Str_Printf("Stage_%02d", var_r30_716 + 1, temp_f1_789)) == 0) {
-                var_r29_719 = 1;
-            }
-            goto loop_15;
-        }
-        return 1;
+    if (var_r28->IsField("Stage_01") == 0) {
+        return 0;
     }
-    return 0;
+    var_r30 = 0;
+    var_r26 = 0;
+    var_r29 = 0;
+    while (var_r29 == 0) {
+        var_r22 = var_r28->unkC->GetSubLine(var_r28);
+        var_r25 = (f32 *) ((u8 *) this + var_r26 + 0x60);
+        var_r24 = (f32 *) ((u8 *) this + var_r26 + 0x64);
+        var_r23 = (f32 *) ((u8 *) this + var_r26 + 0x68);
+        while (var_r22 != NULL) {
+            name = var_r22->GetFieldName();
+            if (stricmp(name, (s8 *) "SpyroMaxSpeed") == 0) {
+                var_r22->AsFloat(0, var_r25);
+                *var_r25 = *var_r25 * 100.0f;
+            } else if (stricmp(name, (s8 *) "TrainMaxSpeed") == 0) {
+                var_r22->AsFloat(0, var_r24);
+                *var_r24 = *var_r24 * 100.0f;
+            } else if (stricmp(name, (s8 *) "DestroyCaboose") == 0) {
+                var_r22->AsFloat(0, var_r23);
+            }
+            var_r22 = var_r22->unkC->GetNextLine(var_r22);
+        }
+        var_r30 += 1;
+        var_r26 += 0xC;
+        var_r28 = var_r28->unkC->GetNextLine(var_r28);
+        if (var_r28->IsField((const char *) Str_Printf("Stage_%02d", var_r30 + 1)) == 0) {
+            var_r29 = 1;
+        }
+    }
+    return 1;
 }
-#endif
 
 void TrainControllerDescriptor::Init() {
     s32 var_ctr_829;
