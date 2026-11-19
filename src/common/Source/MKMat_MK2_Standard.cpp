@@ -118,7 +118,6 @@ void Updater_ColorPulse(MKMaterial *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void Updater_Animate(MKMaterial *arg0, void *arg1) {
     f32 temp_f0_152;
     f32 temp_f1_150;
@@ -149,20 +148,14 @@ void Updater_Animate(MKMaterial *arg0, void *arg1) {
             M2C_FIELD(arg1, f32 *, 4) = 0.0f;
         }
     }
-    ((Matrix *) (arg0->unk24 + 0x40))->SetIdentity();
+    ((Matrix *) ((u8 *) arg0->unk24 + 0x40))->SetIdentity();
     M2C_FIELD(arg0->unk24, f32 *, 0x70) = (f32) M2C_FIELD(arg1, f32 *, 0);
     M2C_FIELD(arg0->unk24, f32 *, 0x74) = (f32) M2C_FIELD(arg1, f32 *, 4);
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void Updater_SinRotate(MKMaterial *arg0, void *arg1) {
     Matrix sp90;
     Matrix sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -185,35 +178,25 @@ void Updater_SinRotate(MKMaterial *arg0, void *arg1) {
     temp_f29_247 = M2C_FIELD(arg1, f32 *, 4) * temp_f1_242;
     sp20 = temp_f31_234;
     sp24 = temp_f30_236;
-    sp48 = (f64) sp28;
-    sp40 = (f64) sp20;
     sp90.SetRotationToNone();
-    sp10 = -(f32) sp40;
-    sp14 = -(*(f32 *) ((u8 *) &sp40 + 0x4));
-    sp18 = -(f32) sp48;
-    sp30 = (f64) sp10;
-    sp38 = (f64) sp18;
-    sp90.unk30 = (f32) sp30;
-    sp90.unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
-    sp90.unk38 = (f32) sp38;
+    sp10 = -sp20;
+    sp14 = -sp24;
+    sp18 = -sp28;
+    sp90.unk30 = sp10;
+    sp90.unk34 = sp14;
+    sp90.unk38 = sp18;
     sp90.unk3C = 1.0f;
     sp50.SetRotationRoll(temp_f29_247);
-    sp50.unk30 = (f32) sp40;
-    sp50.unk34 = (*(f32 *) ((u8 *) &sp40 + 0x4));
-    sp50.unk38 = (f32) sp48;
+    sp50.unk30 = sp20;
+    sp50.unk34 = sp24;
+    sp50.unk38 = sp28;
     sp50.unk3C = 1.0f;
-    ((Matrix *) (arg0->unk24 + 0x40))->Multiply(&sp90, &sp50);
+    ((Matrix *) ((u8 *) arg0->unk24 + 0x40))->Multiply(&sp90, &sp50);
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void Updater_Rotate(MKMaterial *arg0, void *arg1) {
     Matrix sp90;
     Matrix sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -232,28 +215,22 @@ void Updater_Rotate(MKMaterial *arg0, void *arg1) {
     sp20 = temp_f31_326;
     sp24 = temp_f30_328;
     sp28 = 0.0f;
-    sp40 = (f64) sp20;
-    sp48 = (f64) sp28;
     sp90.SetRotationToNone();
-    sp10 = -(f32) sp40;
-    sp14 = -(*(f32 *) ((u8 *) &sp40 + 0x4));
-    sp18 = -(f32) sp48;
-    sp30 = (f64) sp10;
-    sp38 = (f64) sp18;
-    sp90.unk30 = (f32) sp30;
-    sp90.unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
-    sp90.unk38 = (f32) sp38;
+    sp10 = -sp20;
+    sp14 = -sp24;
+    sp18 = -sp28;
+    sp90.unk30 = sp10;
+    sp90.unk34 = sp14;
+    sp90.unk38 = sp18;
     sp90.unk3C = 1.0f;
     sp50.SetRotationRoll(M2C_FIELD(arg1, f32 *, 4));
-    sp50.unk30 = (f32) sp40;
-    sp50.unk34 = (*(f32 *) ((u8 *) &sp40 + 0x4));
-    sp50.unk38 = (f32) sp48;
+    sp50.unk30 = sp20;
+    sp50.unk34 = sp24;
+    sp50.unk38 = sp28;
     sp50.unk3C = 1.0f;
-    ((Matrix *) (arg0->unk24 + 0x40))->Multiply(&sp90, &sp50);
+    ((Matrix *) ((u8 *) arg0->unk24 + 0x40))->Multiply(&sp90, &sp50);
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void Updater_SinScroll(MKMaterial *arg0, void *arg1) {
     f32 temp_f29_416;
     f32 temp_f30_415;
@@ -268,13 +245,12 @@ void Updater_SinScroll(MKMaterial *arg0, void *arg1) {
     NormaliseAngle(M2C_FIELD(arg1, f32 *, 0));
     M2C_FIELD(arg1, f32 *, 4) = (f32) ((temp_f29_416 * (2.0f * (3.1415927f * gUpdateTimeDelta))) + M2C_FIELD(arg1, f32 *, 4));
     NormaliseAngle(M2C_FIELD(arg1, f32 *, 4));
-    ((Matrix *) (arg0->unk24 + 0x40))->SetIdentity();
+    ((Matrix *) ((u8 *) arg0->unk24 + 0x40))->SetIdentity();
     M2C_FIELD(arg0->unk24, f32 *, 0x70) = (f32) (temp_f31_414 * _table_sinf(M2C_FIELD(arg1, f32 *, 0)));
     M2C_FIELD(arg0->unk24, f32 *, 0x74) = (f32) (temp_f30_415 * _table_sinf(M2C_FIELD(arg1, f32 *, 4)));
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to 'void *'
+extern "C" f64 fmod(f64, f64);
 void Updater_Scroll(MKMaterial *arg0, void *arg1) {
     f32 temp_f0_485;
     f32 temp_f1_474;
@@ -301,19 +277,18 @@ void Updater_Scroll(MKMaterial *arg0, void *arg1) {
     } else {
         temp_f29_498 = (M2C_FIELD(temp_r3_475, f32 *, 0x140) * gUpdateTimeDelta) + M2C_FIELD(arg1, f32 *, 0);
         temp_f28_500 = (M2C_FIELD(temp_r3_475, f32 *, 0x144) * gUpdateTimeDelta) + M2C_FIELD(arg1, f32 *, 4);
-        M2C_FIELD(arg1, f32 *, 0) = (f32) fmod(M2C_BITWISE(void *, temp_f29_498), M2C_BITWISE(f32, 1.0), M2C_BITWISE(f64, gUpdateTimeDelta));
-        M2C_FIELD(arg1, f32 *, 4) = (f32) fmod(M2C_BITWISE(void *, temp_f28_500), M2C_BITWISE(f32, 1.0));
+        M2C_FIELD(arg1, f32 *, 0) = (f32) fmod(temp_f29_498, 1.0);
+        M2C_FIELD(arg1, f32 *, 4) = (f32) fmod(temp_f28_500, 1.0);
         if (temp_f29_498 != M2C_FIELD(arg1, f32 *, 0)) {
             M2C_FIELD(arg1, f32 *, 8) = temp_f31_480;
         } else if (temp_f28_500 != M2C_FIELD(arg1, f32 *, 4)) {
             M2C_FIELD(arg1, f32 *, 8) = temp_f30_481;
         }
     }
-    ((Matrix *) (arg0->unk24 + 0x40))->SetIdentity();
+    ((Matrix *) ((u8 *) arg0->unk24 + 0x40))->SetIdentity();
     M2C_FIELD(arg0->unk24, f32 *, 0x70) = (f32) M2C_FIELD(arg1, f32 *, 0);
     M2C_FIELD(arg0->unk24, f32 *, 0x74) = (f32) M2C_FIELD(arg1, f32 *, 4);
 }
-#endif
 
 void MKMat_MK2_Standard_DESTROY(MKMaterial *arg0) {
     MKMaterial *temp_r3_553;
