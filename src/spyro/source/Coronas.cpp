@@ -26,101 +26,53 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal type
 void Coronas::Free(Corona *arg0) {
-    MKZRequest *temp_r3_54;
-    s32 temp_r3_64;
-    s32 var_ctr_48;
-    s32 var_r31_47;
-    void *temp_r3_51;
-    void *temp_r4_63;
+    s32 i;
+    Corona *slot;
 
-    var_r31_47 = 0;
-    var_ctr_48 = 0x46;
-loop_1:
-    temp_r3_51 = ((u8 *) this->unk4C) + var_r31_47;
-    if (temp_r3_51 == arg0) {
-        temp_r3_54 = M2C_FIELD(temp_r3_51, MKZRequest **, 0x20);
-        if (temp_r3_54 != NULL) {
-            MKZRequest_Destroy(temp_r3_54);
-            M2C_FIELD((((u8 *) this->unk4C) + var_r31_47), s32 *, 0x20) = 0;
-        }
-        temp_r4_63 = this->unk4C;
-        temp_r3_64 = var_r31_47 + 0x31;
-        *(temp_r4_63 + temp_r3_64) = *(temp_r4_63 + temp_r3_64) & ~0x80;
-        return;
-    }
-    var_r31_47 += 0x38;
-    var_ctr_48 -= 1;
-    if (var_ctr_48 == 0) {
-        return;
-    }
-    goto loop_1;
-}
-#endif
-
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
-void *Coronas::Alloc(const MKVector3 &arg0, const MKVector4 &arg1, const float &arg2, const int &arg3, const bool &arg4) {
-    s32 temp_r3_150;
-    s32 temp_r3_163;
-    s32 temp_r7_102;
-    s32 var_ctr_92;
-    s32 var_r29_91;
-    u8 temp_r4_106;
-    void *temp_r3_112;
-    void *temp_r3_123;
-    void *temp_r3_130;
-    void *temp_r3_141;
-    void *temp_r3_95;
-    void *temp_r4_162;
-    void *temp_r5_139;
-
-    var_r29_91 = 0;
-    var_ctr_92 = 0x46;
-loop_1:
-    temp_r3_95 = ((u8 *) this->unk4C) + var_r29_91;
-    if (!(((u8) M2C_FIELD(temp_r3_95, u8 *, 0x31) >> 7U) & 1)) {
-        temp_r7_102 = var_r29_91 + 0x31;
-        M2C_FIELD(temp_r3_95, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-        temp_r4_106 = (unsigned char) (&arg4);
-        M2C_FIELD(temp_r3_95, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-        temp_r3_112 = ((u8 *) this->unk4C) + (var_r29_91 + 0x10);
-        M2C_FIELD(temp_r3_112, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
-        M2C_FIELD(temp_r3_112, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD((((u8 *) this->unk4C) + var_r29_91), f32 *, 0x24) = (f32) &arg2;
-        M2C_FIELD((((u8 *) this->unk4C) + var_r29_91), s8 *, 0x30) = (s8) &arg3;
-        temp_r3_123 = this->unk4C;
-        *(temp_r3_123 + temp_r7_102) = *(temp_r3_123 + temp_r7_102) | 0x40;
-        M2C_FIELD((((u8 *) this->unk4C) + var_r29_91), f32 *, 0x2C) = 0.0f;
-        temp_r3_130 = this->unk4C;
-        *(temp_r3_130 + temp_r7_102) = (*(temp_r3_130 + temp_r7_102) & ~0x20) | ((temp_r4_106 << 5) & 0x20);
-        if (temp_r4_106 != 0) {
-            M2C_FIELD((((u8 *) this->unk4C) + var_r29_91), void **, 0x20) = MKZRequest_Create();
-            temp_r5_139 = this->unk4C;
-            temp_r3_141 = M2C_FIELD((((u8 *) temp_r5_139) + var_r29_91), void **, 0x20);
-            if (temp_r3_141 != NULL) {
-                M2C_FIELD(temp_r3_141, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-                M2C_FIELD(temp_r3_141, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-            } else {
-                temp_r3_150 = var_r29_91 + 0x31;
-                *(temp_r5_139 + temp_r3_150) = *(temp_r5_139 + temp_r3_150) & ~0x20;
+    for (i = 0; i < 0x46; i++) {
+        slot = (Corona *) ((u8 *) this->unk4C + i * 0x38);
+        if (slot == arg0) {
+            if (slot->unk20 != NULL) {
+                MKZRequest_Destroy(slot->unk20);
+                slot->unk20 = NULL;
             }
-        } else {
-            M2C_FIELD((((u8 *) this->unk4C) + var_r29_91), s32 *, 0x20) = 0;
+            slot->unk31 &= ~0x80;
+            return;
         }
-        temp_r4_162 = this->unk4C;
-        temp_r3_163 = var_r29_91 + 0x31;
-        *(temp_r4_162 + temp_r3_163) = *(temp_r4_162 + temp_r3_163) | 0x80;
-        return ((u8 *) this->unk4C) + var_r29_91;
     }
-    var_r29_91 += 0x38;
-    var_ctr_92 -= 1;
-    if (var_ctr_92 == 0) {
-        return NULL;
-    }
-    goto loop_1;
 }
-#endif
+
+void *Coronas::Alloc(const MKVector3 &arg0, const MKVector4 &arg1, const float &arg2, const int &arg3, const bool &arg4) {
+    s32 i;
+    Corona *slot;
+
+    for (i = 0; i < 0x46; i++) {
+        slot = (Corona *) ((u8 *) this->unk4C + i * 0x38);
+        if (!((slot->unk31 >> 7) & 1)) {
+            *(MKVector3 *) &slot->unk0 = arg0;
+            slot->unk10 = arg1;
+            slot->unk24 = arg2;
+            slot->unk30 = (u8) arg3;
+            slot->unk31 |= 0x40;
+            slot->unk2C = 0.0f;
+            slot->unk31 = (slot->unk31 & ~0x20) | ((arg4 & 1) << 5);
+            if (arg4) {
+                slot->unk20 = (MKZRequest *) MKZRequest_Create();
+                if (slot->unk20 != NULL) {
+                    *(MKVector3 *) slot->unk20 = arg0;
+                } else {
+                    slot->unk31 &= ~0x20;
+                }
+            } else {
+                slot->unk20 = NULL;
+            }
+            slot->unk31 |= 0x80;
+            return slot;
+        }
+    }
+    return NULL;
+}
 
 void *Coronas::Update() {
     MKProp::Update();
@@ -497,49 +449,26 @@ f32 Coronas::Resolve() {
 
 }
 
-#if 0 // DRAFT: illegal type
 s32 Coronas::LoadDone() {
-    s32 temp_r0_953;
-    s32 temp_r4_950;
-    s32 temp_r5_949;
-    s32 temp_r7_948;
-    s32 var_ctr_944;
-    s32 var_r3_942;
-    s8 temp_r6_952;
-    void *temp_r5_964;
-    void *temp_r6_958;
-    void *temp_r8_947;
-    void *var_r3_933;
+    s32 i;
+    Corona *slot;
 
     MKProp::LoadDone();
     if (MKHeap::Current() != NULL) {
-        var_r3_933 = ((MKHeap *) (MKHeap::Current()))->Alloc(0xF50, NULL, 0);
+        this->unk4C = ((MKHeap *) (MKHeap::Current()))->Alloc(0xF50, NULL, 0);
     } else {
-        var_r3_933 = malloc(0xF50);
+        this->unk4C = malloc(0xF50);
     }
-    this->unk4C = var_r3_933;
-    var_r3_942 = 0;
-    var_ctr_944 = 0x46;
-    do {
-        temp_r8_947 = this->unk4C;
-        temp_r7_948 = var_r3_942 + 0x31;
-        temp_r5_949 = var_r3_942 + 0x20;
-        temp_r4_950 = var_r3_942 + 0x28;
-        temp_r6_952 = *(temp_r8_947 + temp_r7_948) & ~0x80;
-        temp_r0_953 = var_r3_942 + 0x2C;
-        var_r3_942 += 0x38;
-        *(temp_r8_947 + temp_r7_948) = temp_r6_952;
-        *(this->unk4C + temp_r5_949) = 0;
-        temp_r6_958 = this->unk4C;
-        *(temp_r6_958 + temp_r7_948) = *(temp_r6_958 + temp_r7_948) & ~0x20;
-        *(this->unk4C + temp_r4_950) = 1.0f;
-        temp_r5_964 = this->unk4C;
-        *(temp_r5_964 + temp_r7_948) = *(temp_r5_964 + temp_r7_948) & ~0x40;
-        *(this->unk4C + temp_r0_953) = 0.0f;
-        var_ctr_944 -= 1;
-    } while (var_ctr_944 != 0);
+    for (i = 0; i < 0x46; i++) {
+        slot = (Corona *) ((u8 *) this->unk4C + i * 0x38);
+        slot->unk31 &= ~0x80;
+        slot->unk20 = NULL;
+        slot->unk31 &= ~0x20;
+        slot->unk28 = 1.0f;
+        slot->unk31 &= ~0x40;
+        slot->unk2C = 0.0f;
+    }
 }
-#endif
 
 s32 Coronas::LoadLine(MKIniLine *arg0) {
     MKProp::LoadLine(arg0);
@@ -554,25 +483,18 @@ void CoronasDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'CoronasDescriptor' to 'MKMaterial *'
 void CoronasDescriptor::Deinit() {
-    MKMaterial *temp_r3_1035;
-    s32 var_r30_1031;
-    s32 var_r31_1032;
-
     MKPropDescriptor::Deinit();
-    var_r30_1031 = 0;
-    var_r31_1032 = 0;
-    do {
-        temp_r3_1035 = *(this + (var_r31_1032 + 0x60));
-        if (temp_r3_1035 != NULL) {
-            MKMaterial_Destroy(temp_r3_1035);
-        }
-        var_r30_1031 += 1;
-        var_r31_1032 += 4;
-    } while (var_r30_1031 < 3);
+    if (this->unk60 != 0) {
+        MKMaterial_Destroy((MKMaterial *) this->unk60);
+    }
+    if (this->unk64 != 0) {
+        MKMaterial_Destroy((MKMaterial *) this->unk64);
+    }
+    if (this->unk68 != 0) {
+        MKMaterial_Destroy((MKMaterial *) this->unk68);
+    }
 }
-#endif
 
 void CoronasDescriptor::Init() {
     MKPropDescriptor::Init();

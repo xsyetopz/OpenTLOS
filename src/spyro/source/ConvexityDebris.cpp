@@ -47,7 +47,6 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match 'KDSound_Stop(int *)'
 void ConvexityDebris::Deinit() {
     MKHeap *temp_r0_63;
     MKHeap *temp_r0_82;
@@ -63,7 +62,7 @@ loop_2:
     if (var_r31_46 != NULL) {
         temp_r3_54 = var_r31_46->unk0;
         if (temp_r3_54 != NULL) {
-            KDSound_Stop((s32 *) temp_r3_54);
+            KDSound_Stop((int *) temp_r3_54);
             var_r31_46 += 4;
             goto loop_2;
         }
@@ -81,7 +80,7 @@ loop_7:
         }
         goto loop_7;
     }
-    if (var_r3_60 != &gEmptyPtrListDL) {
+    if (var_r3_60 != (MKHeap *) &gEmptyPtrListDL) {
 loop_13:
         temp_r0_82 = var_r4_58->unk0;
         if (temp_r0_82 != NULL) {
@@ -101,7 +100,6 @@ loop_13:
     this->unk50.Deinit();
     MKProp::Deinit();
 }
-#endif
 
 void ConvexityDebris::Message(MKMessage *arg0) {
     MKHeap *temp_r31_160;
@@ -412,21 +410,11 @@ void ConvexityDebris::Init() {
     this->unk78 = 1.0f;
 }
 
-#if 0 // DRAFT: function call 'MKModel_Destroy(ConvexityDebrisDescriptor)' does not match 'MKModel_Destroy(MKModel *)'
 void ConvexityDebrisDescriptor::Deinit() {
-    s32 var_r30_766;
-    s32 var_r31_767;
-
-    var_r30_766 = 0;
-    var_r31_767 = 0;
-    do {
-        MKModel_Destroy(*(this + (var_r31_767 + 0x60)));
-        var_r30_766 += 1;
-        var_r31_767 += 4;
-    } while (var_r30_766 < 2);
+    MKModel_Destroy((MKModel *) this->unk60);
+    MKModel_Destroy((MKModel *) this->unk64);
     MKPropDescriptor::Deinit();
 }
-#endif
 
 void ConvexityDebrisDescriptor::Init() {
     MKPropDescriptor::Init();
