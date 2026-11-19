@@ -83,12 +83,9 @@ void BoneBlurFX::Teleport() {
     TakeFrameSnapshot();
 }
 
-#if 0 // DRAFT: illegal type
 void BoneBlurFX::CalcUVs() {
     Matrix sp20;
     MKVector3 sp10;
-    s32 temp_r0_182;
-    s32 temp_r3_181;
     s32 var_r28_170;
     s32 var_r29_153;
     s32 var_r30_171;
@@ -97,49 +94,40 @@ void BoneBlurFX::CalcUVs() {
     if (var_r29_153 < 0) {
         var_r29_153 = this->unk54 - 1;
     }
-    M2C_STRUCT_COPY((s32) &sp10.unkC + 4, MKView_GetWorldToScreenMatrix() - 4 + 4, 0x40);
+    M2C_STRUCT_COPY(&sp20, MKView_GetWorldToScreenMatrix(), 0x40);
     var_r28_170 = 0;
     var_r30_171 = 0;
-loop_4:
-    if (var_r28_170 < (s32) this->unk68) {
-        Xform3D2D(&sp10, *(this->unk58[var_r29_153] + var_r30_171), &sp20);
-        temp_r3_181 = var_r30_171 + 0x10;
-        temp_r0_182 = var_r30_171 + 0x14;
+    while (var_r28_170 < (s32) this->unk68) {
+        u8 *node = (u8 *) this->unk58[var_r29_153];
+        Xform3D2D(&sp10, *(MKVector3 *) (node + var_r30_171), &sp20);
+        *(f32 *) (node + var_r30_171 + 0x10) = sp10.unk0;
+        *(f32 *) (node + var_r30_171 + 0x14) = sp10.unk4;
         var_r28_170 += 1;
         var_r30_171 += 0x20;
-        *(this->unk58[var_r29_153] + temp_r3_181) = M2C_BITWISE(f32, sp10);
-        *(this->unk58[var_r29_153] + temp_r0_182) = sp10.unk4;
-        goto loop_4;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void BoneBlurFX::TakeFrameSnapshot() {
-    s32 temp_r0_223;
     s32 temp_r3_265;
     s32 var_r28_216;
     s32 var_r29_218;
     s32 var_r30_217;
-    void *temp_r5_222;
 
-    if ((BoneBlurFX::BlurNode *) *this->unk58 != NULL) {
+    if (this->unk58[0] != NULL) {
         var_r28_216 = 0;
         var_r30_217 = 0;
         var_r29_218 = 0;
-loop_7:
-        if (var_r28_216 < (s32) this->unk68) {
-            temp_r5_222 = this->unk64 + var_r29_218;
-            temp_r0_223 = M2C_FIELD(temp_r5_222, s32 *, 8);
+        while (var_r28_216 < (s32) this->unk68) {
+            u8 *temp_r5_222 = (u8 *) this->unk64 + var_r29_218;
+            s32 temp_r0_223 = M2C_FIELD(temp_r5_222, s32 *, 8);
             if (temp_r0_223 == 0) {
-                MKModel_CalculateNodeWorldPosition(this->unk74, M2C_FIELD(temp_r5_222, s32 *, 4), this->unk58[this->unk4C] + var_r30_217);
+                MKModel_CalculateNodeWorldPosition(this->unk74, M2C_FIELD(temp_r5_222, s32 *, 4), (MKVector3 *) ((u8 *) this->unk58[this->unk4C] + var_r30_217));
             } else if (temp_r0_223 == 1) {
-                MKModel_CalculateRefPointWorldPosition(this->unk74, M2C_FIELD(temp_r5_222, s32 *, 4), this->unk58[this->unk4C] + var_r30_217);
+                MKModel_CalculateRefPointWorldPosition(this->unk74, M2C_FIELD(temp_r5_222, s32 *, 4), (MKVector3 *) ((u8 *) this->unk58[this->unk4C] + var_r30_217));
             }
             var_r28_216 += 1;
             var_r30_217 += 0x20;
             var_r29_218 += 0xC;
-            goto loop_7;
         }
         this->unk4C += 1;
         if ((s32) this->unk4C >= (s32) this->unk54) {
@@ -154,7 +142,6 @@ loop_7:
         }
     }
 }
-#endif
 
 void BoneBlurFX::EnableBlur(bool arg0) {
     u8 temp_r4_294;
@@ -179,59 +166,53 @@ void BoneBlurFX::EnableBlur(bool arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal type
 void BoneBlurFX::InitData(MKModel *arg0, BoneBlurFXNodeDef *arg1, int arg2, int **arg3, int arg4, int arg5, bool arg6) {
-    BoneBlurFX::BlurNode **var_r3_389;
-    s32 temp_r0_348;
-    s32 temp_r30_381;
     s32 var_r29_336;
     s32 var_r30_337;
-    s32 var_r3_398;
+    s32 temp_r0_348;
+    u8 *temp_r4_347;
+    s32 temp_r30_381;
+    BoneBlurFX::BlurNode **var_r3_389;
     s32 var_r6_395;
-    void *temp_r4_347;
+    s32 var_r3_398;
 
     var_r29_336 = 0;
     var_r30_337 = 0;
     this->unk74 = arg0;
     this->unk64 = arg1;
     this->unk68 = arg2;
-    this->unk5C = (long **) (arg3);
+    this->unk5C = (s32 **) arg3;
     this->unk60 = arg4;
     this->unk7C = arg6;
-loop_6:
-    if (var_r29_336 < (s32) this->unk68) {
-        temp_r4_347 = this->unk64 + var_r30_337;
+    while (var_r29_336 < (s32) this->unk68) {
+        temp_r4_347 = (u8 *) this->unk64 + var_r30_337;
         temp_r0_348 = M2C_FIELD(temp_r4_347, s32 *, 8);
         if (temp_r0_348 == 0) {
-            *(this->unk64 + (var_r30_337 + 4)) = (s32) Tools_GetMatchingNodeIndex(this->unk74, M2C_FIELD(temp_r4_347, s8 **, 0));
+            M2C_FIELD(temp_r4_347, s32 *, 4) = (s32) (u16) Tools_GetMatchingNodeIndex(this->unk74, M2C_FIELD(temp_r4_347, const char **, 0));
         } else if (temp_r0_348 == 1) {
-            *(this->unk64 + (var_r30_337 + 4)) = (s32) Tools_GetMatchingRefPointIndex(this->unk74, M2C_FIELD(temp_r4_347, s8 **, 0));
+            M2C_FIELD(temp_r4_347, s32 *, 4) = (s32) (u16) Tools_GetMatchingRefPointIndex(this->unk74, M2C_FIELD(temp_r4_347, const char **, 0));
         }
         var_r29_336 += 1;
         var_r30_337 += 0xC;
-        goto loop_6;
     }
     this->unk54 = arg5;
     this->unk4C = 0;
     this->unk50 = 0;
     temp_r30_381 = this->unk54 << 5;
     if (MKHeap::Current() != NULL) {
-        var_r3_389 = (BoneBlurFX::BlurNode **) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r30_381, NULL, 0));
+        var_r3_389 = (BoneBlurFX::BlurNode **) MKHeap::Current()->Alloc(temp_r30_381, NULL, 0);
     } else {
         var_r3_389 = malloc(temp_r30_381);
     }
-    var_r6_395 = 0;
     this->unk58 = var_r3_389;
+    var_r6_395 = 0;
     var_r3_398 = 0;
-loop_12:
-    if (var_r6_395 < (s32) this->unk54) {
+    while (var_r6_395 < (s32) this->unk54) {
         var_r6_395 += 1;
-        *(this->unk58 + var_r3_398) = 0;
+        *(s32 *) ((u8 *) this->unk58 + var_r3_398) = 0;
         var_r3_398 += 4;
-        goto loop_12;
     }
 }
-#endif
 
 void BoneBlurFX::Deinit() {
     BoneBlurFX::BlurNode **temp_r31_434;
@@ -252,47 +233,19 @@ void BoneBlurFX::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal type
 void BoneBlurFX::Draw() {
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    f64 sp68;
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f64 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
+    MKVector4 col;
+    f32 var_f29;
     f32 var_f30_532;
+    s32 var_r3_487;
     s32 var_r22_480;
-    s32 var_r22_527;
-    s32 var_r23_523;
     s32 var_r25_533;
     s32 var_r26_526;
     s32 var_r27_522;
     s32 var_r28_481;
-    s32 var_r3_487;
-    void *temp_r3_552;
-    void *temp_r3_582;
-    void *temp_r3_621;
-    void *temp_r3_652;
+    u8 *base;
 
-    if (((u8) this->unk6C != 0) && ((BoneBlurFX::BlurNode *) *this->unk58 != NULL)) {
+    if (this->unk6C != 0 && this->unk58[0] != NULL) {
         CalcUVs();
         var_r22_480 = 0;
         var_r28_481 = this->unk4C - 1;
@@ -300,93 +253,65 @@ void BoneBlurFX::Draw() {
             var_r28_481 = this->unk54 - 1;
         }
         var_r3_487 = var_r28_481;
-loop_7:
-        if (var_r3_487 != (s32) this->unk50) {
+        while (var_r3_487 != (s32) this->unk50) {
             var_r3_487 -= 1;
             var_r22_480 += 1;
             if (var_r3_487 < 0) {
                 var_r3_487 = this->unk54 - 1;
             }
-            goto loop_7;
         }
+        var_f29 = 1.0f / (f32) var_r22_480;
         if ((s32) (var_r22_480 + 1) >= 2) {
             MKMaterial_SetMaterial(this->unk70);
             MKPrimitive(0xC, 0x10);
             MKSetMatrix(Matrix::identity);
             var_r27_522 = 0;
-            var_r23_523 = 0;
-loop_19:
-            if (var_r27_522 < (s32) this->unk60) {
+            while (var_r27_522 < (s32) this->unk60) {
                 var_r26_526 = 1;
-                var_r22_527 = 4;
-loop_17:
-                if (var_r26_526 <= (s32) (**(var_r23_523 + this->unk5C) - 1)) {
+                while (var_r26_526 <= (s32) (this->unk5C[var_r27_522][0] - 1)) {
                     MKBegin((var_r22_480 + 1) * 2);
                     var_f30_532 = 1.0f;
                     var_r25_533 = var_r28_481;
-loop_15:
-                    if (var_r25_533 != (s32) this->unk50) {
-                        sp38 = 1.0f;
-                        sp3C = 1.0f;
-                        sp40 = 1.0f;
-                        sp44 = var_f30_532;
-                        sp78 = (f64) sp38;
-                        sp80 = (f64) sp40;
-                        MKSetColorV(*((MKVector4 *) &sp78));
-                        temp_r3_552 = this->unk58[var_r28_481] + (*(var_r22_527 + *(var_r23_523 + this->unk5C)) << 5);
-                        MKSetTexCoord1F(M2C_FIELD(temp_r3_552, f32 *, 0x10), M2C_FIELD(temp_r3_552, f32 *, 0x14));
-                        MKSetPositionV(*(this->unk58[var_r25_533] + (*(var_r22_527 + *(var_r23_523 + this->unk5C)) << 5)));
-                        sp28 = 1.0f;
-                        sp2C = 1.0f;
-                        sp30 = 1.0f;
-                        sp34 = var_f30_532;
-                        sp68 = (f64) sp28;
-                        sp70 = (f64) sp30;
-                        MKSetColorV(*((MKVector4 *) &sp68));
-                        temp_r3_582 = this->unk58[var_r28_481] + (*(var_r22_527 + (*(var_r23_523 + this->unk5C) + 4)) << 5);
-                        MKSetTexCoord1F(M2C_FIELD(temp_r3_582, f32 *, 0x10), M2C_FIELD(temp_r3_582, f32 *, 0x14));
-                        MKSetPositionV(*(this->unk58[var_r25_533] + (*(var_r22_527 + (*(var_r23_523 + this->unk5C) + 4)) << 5)));
+                    while (var_r25_533 != (s32) this->unk50) {
+                        col.unk0 = 1.0f;
+                        col.unk4 = 1.0f;
+                        col.unk8 = 1.0f;
+                        col.unkC = var_f30_532;
+                        MKSetColorV(col);
+                        base = (u8 *) this->unk58[var_r28_481] + (this->unk5C[var_r27_522][var_r26_526] << 5);
+                        MKSetTexCoord1F(M2C_FIELD(base, f32 *, 0x10), M2C_FIELD(base, f32 *, 0x14));
+                        MKSetPositionV(*(MKVector3 *) ((u8 *) this->unk58[var_r25_533] + (this->unk5C[var_r27_522][var_r26_526] << 5)));
+                        MKSetColorV(col);
+                        base = (u8 *) this->unk58[var_r28_481] + (this->unk5C[var_r27_522][var_r26_526 + 1] << 5);
+                        MKSetTexCoord1F(M2C_FIELD(base, f32 *, 0x10), M2C_FIELD(base, f32 *, 0x14));
+                        MKSetPositionV(*(MKVector3 *) ((u8 *) this->unk58[var_r25_533] + (this->unk5C[var_r27_522][var_r26_526 + 1] << 5)));
                         var_r25_533 -= 1;
                         if (var_r25_533 < 0) {
                             var_r25_533 = this->unk54 - 1;
                         }
-                        var_f30_532 -= 1.0f / (f32) var_r22_480;
-                        goto loop_15;
+                        var_f30_532 -= var_f29;
                     }
-                    sp18 = 1.0f;
-                    sp1C = 1.0f;
-                    sp20 = 1.0f;
-                    sp24 = var_f30_532;
-                    sp58 = (f64) sp18;
-                    sp60 = (f64) sp20;
-                    MKSetColorV(*((MKVector4 *) &sp58));
-                    temp_r3_621 = this->unk58[var_r28_481] + (*(*(var_r23_523 + this->unk5C) + var_r22_527) << 5);
-                    MKSetTexCoord1F(M2C_FIELD(temp_r3_621, f32 *, 0x10), M2C_FIELD(temp_r3_621, f32 *, 0x14));
-                    MKSetPositionV(*(this->unk58[this->unk50] + (*(*(var_r23_523 + this->unk5C) + var_r22_527) << 5)));
-                    sp8 = 1.0f;
-                    spC = 1.0f;
-                    sp10 = 1.0f;
-                    sp14 = var_f30_532;
-                    sp48 = (f64) sp8;
-                    sp50 = (f64) sp10;
-                    MKSetColorV(*((MKVector4 *) &sp48));
-                    temp_r3_652 = this->unk58[var_r28_481] + (*(*(var_r23_523 + this->unk5C) + (var_r22_527 + 4)) << 5);
-                    MKSetTexCoord1F(M2C_FIELD(temp_r3_652, f32 *, 0x10), M2C_FIELD(temp_r3_652, f32 *, 0x14));
-                    MKSetPositionV(*(this->unk58[this->unk50] + (*(*(var_r23_523 + this->unk5C) + (var_r22_527 + 4)) << 5)));
+                    col.unk0 = 1.0f;
+                    col.unk4 = 1.0f;
+                    col.unk8 = 1.0f;
+                    col.unkC = var_f30_532;
+                    MKSetColorV(col);
+                    base = (u8 *) this->unk58[var_r28_481] + (this->unk5C[var_r27_522][var_r26_526] << 5);
+                    MKSetTexCoord1F(M2C_FIELD(base, f32 *, 0x10), M2C_FIELD(base, f32 *, 0x14));
+                    MKSetPositionV(*(MKVector3 *) ((u8 *) this->unk58[this->unk50] + (this->unk5C[var_r27_522][var_r26_526] << 5)));
+                    MKSetColorV(col);
+                    base = (u8 *) this->unk58[var_r28_481] + (this->unk5C[var_r27_522][var_r26_526 + 1] << 5);
+                    MKSetTexCoord1F(M2C_FIELD(base, f32 *, 0x10), M2C_FIELD(base, f32 *, 0x14));
+                    MKSetPositionV(*(MKVector3 *) ((u8 *) this->unk58[this->unk50] + (this->unk5C[var_r27_522][var_r26_526 + 1] << 5)));
                     MKEnd();
                     var_r26_526 += 1;
-                    var_r22_527 += 4;
-                    goto loop_17;
                 }
                 var_r27_522 += 1;
-                var_r23_523 += 4;
-                goto loop_19;
             }
             MKEndPrimitive();
         }
     }
 }
-#endif
 
 void *BoneBlurFX::Update() {
     if (((u8) this->unk6C != 0) && ((u8) this->unk7C != 0)) {
