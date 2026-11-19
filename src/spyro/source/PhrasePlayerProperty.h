@@ -14,6 +14,7 @@ public:
     virtual s32 GetInstanceDataSize(void) const;
     virtual void InitInstance(void);
     virtual void Command(int);
+    static PhrasePlayerProperty classInfo;
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;
 };

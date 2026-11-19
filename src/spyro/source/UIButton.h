@@ -22,6 +22,7 @@ public:
     virtual void OnSelection(void);
     virtual void OnDeselection(void);
     virtual void SetColor(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x11];
     /* 0x015 */ u8 unk15;
     /* 0x016 */ u8 unk16;
@@ -45,6 +46,7 @@ public:
     virtual void Message(UIMessage *);
     virtual s32 SetSelection(int);
     virtual void OnSelectionChanged(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x11];
     /* 0x015 */ u8 unk15;
     /* 0x016 */ u8 pad16[0x4e];

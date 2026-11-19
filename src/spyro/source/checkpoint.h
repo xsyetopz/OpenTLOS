@@ -28,6 +28,7 @@ public:
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     void SetCurrentCheckPoint(CheckPoint *);
+    static u8 pCurrentCheckPoint[0x4];
     /* 0x089 */ u8 pad89[0x47];
     /* 0x0d0 */ MKVector3 unkD0;
     /* 0x0e0 */ MKVector3 unkE0;

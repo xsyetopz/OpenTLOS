@@ -45,6 +45,7 @@ public:
     void NoTargetUpdate(void);
     void NoTargetExit(void);
     void NoTargetEnter(void);
+    static SpyroStrafeState states;
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ Spyro* unk10;
     /* 0x014 */ u8 pad14[0x14];

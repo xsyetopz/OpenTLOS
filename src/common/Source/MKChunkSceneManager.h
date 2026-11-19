@@ -68,6 +68,8 @@ public:
     virtual void FindDescriptorInLocalChunk(const char *);
     virtual u32 FindTerrainModel(const char *);
     MKChunkSceneManager * StripExtension(const char *, char);
+    static u8 bChunksUseHeaps[0x1];
+    static u8 bPackageSystemInUse[0x1];
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ void* unk8;
     /* 0x00c */ u8 padC[0xd];

@@ -122,6 +122,7 @@ public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
     virtual void Deinit(void);
+    static u8 bDrawLocator[0x1];
     /* 0x048 */ u8 pad48[0x1c];
     /* 0x064 */ s8 unk64;
     /* 0x065 */ u8 pad65[0x1];

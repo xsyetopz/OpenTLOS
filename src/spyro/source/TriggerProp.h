@@ -41,6 +41,8 @@ public:
     void UpdateActiveList(void);
     void RemoveFromActiveList(TriggerProp *);
     void AddToActiveList(TriggerProp *);
+    static u8 pFirstActiveTrigger[0x4];
+    static u8 pFirstTrigger[0x4];
     /* 0x04c */ s16 unk4C;
     /* 0x04e */ u8 pad4E[0x42];
     /* 0x090 */ MKPropDescriptor* unk90;

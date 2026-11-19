@@ -43,6 +43,8 @@ public:
     void SetIdleState(LavaFiddler *);
     void FindNewWalkParameters(LavaFiddler *);
     void SetHideState(LavaFiddler *);
+    /* 0x168 */ u8 pad168[0x8];
+    /* 0x170 */ void* unk170;
 };
 
 class LavaFiddlerCritterDescriptor : public CrittersDescriptor {  // base: ctor/dtor vtable stores

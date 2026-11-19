@@ -17,6 +17,9 @@ public:
     void operator+(const MKVector3 &) const;
     f32 MagSquared(void) const;
     u8 IsNear(const MKVector3 &, float) const;
+    static MKVector3 zero;
+    static MKVector3 one;
+    static MKVector3 up;
     /* 0x000 */ f32 unk0;
     /* 0x004 */ f32 unk4;
     /* 0x008 */ f32 unk8;

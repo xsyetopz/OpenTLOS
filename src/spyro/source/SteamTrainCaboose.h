@@ -75,6 +75,7 @@ public:
     void Action(SpawnAction, int, MKProp **, SpawnerObject *);
     void Deinit(void);
     void Init(void);
+    static u8 pInstance[0x4];
     /* 0x000 */ u8 pad0[0x8];
     /* 0x008 */ EventMessage unk8;
     /* 0x00c */ EventMessage unkC;

@@ -80,6 +80,17 @@ public:
     void Deinit(void);
     void Create(void);
     void Init(void);
+    static MKCloth globalCollisionPrim;
+    static MKCloth sweepSpheres;
+    static MKCloth spheres;
+    static MKCloth planes;
+    static MKCloth capsules;
+    static u8 globalForces[0x60];
+    static u8 includedSweepCount[0x4];
+    static u8 includedSphereCount[0x4];
+    static u8 includedPlaneCount[0x4];
+    static u8 includedCapsuleCount[0x4];
+    static u8 clothCreateDisabled[0x1];
     /* 0x000 */ u8 pad0[0x4];
     /* 0x004 */ MKHeap* unk4;
     /* 0x008 */ u8 unk8;

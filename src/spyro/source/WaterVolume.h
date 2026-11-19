@@ -2,10 +2,12 @@
 #define SPYRO_SOURCE_WATERVOLUME_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKCollision.h"
 #include "spyro/source/KDWaterVolume.h"
 
 class KDWaterVolume;
 class KDWaterVolumeDescriptor;
+class MKCollisionInfo;
 class MKIniLine;
 class MKMessage;
 class WaterVolume;
@@ -21,6 +23,8 @@ public:
     virtual void Resolve(void);
     virtual void Message(MKMessage *);
     virtual s32 IsEnabled(void);
+    /* 0x0d8 */ u8 padD8[0x8];
+    /* 0x0e0 */ MKCollisionInfo unkE0;
 };
 
 class WaterVolumeDescriptor : public KDWaterVolumeDescriptor {  // base: vtable prefix

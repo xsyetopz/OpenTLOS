@@ -155,6 +155,7 @@ public:
     void StateFleeUpdate(void);
     void StateFleeEnter(void);
     void TriggerDamageFX(const MKVector3 &, float);
+    static u8 states[0xd8];
     /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ s32* unkC8;
     /* 0x0cc */ u8 padCC[0x4];

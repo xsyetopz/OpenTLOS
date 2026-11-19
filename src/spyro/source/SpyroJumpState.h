@@ -38,6 +38,7 @@ public:
     void JumpStartExit(void);
     void JumpStartEnter(void);
     void GetJumpVel(void);
+    static SpyroJumpState states;
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ f64 unk8;
     /* 0x010 */ Spyro* unk10;

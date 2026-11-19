@@ -12,6 +12,7 @@ public:
     virtual void * GetClassInfo(void) const;
     virtual s32 GetInstanceDataSize(void) const;
     virtual void InitInstance(void);
+    static KDModelProperty classInfo;
 };
 
 #endif  // SPYRO_SOURCE_KDMODELPROPERTY_H

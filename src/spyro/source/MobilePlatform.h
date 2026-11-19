@@ -32,6 +32,7 @@ public:
     void UpdateSag(void);
     void SetYaw(float, float);
     f32 GetTime(void);
+    static u8 mpfLoadInfo[0x10];
     /* 0x17c */ u8 pad17C[0x4];
     /* 0x180 */ f32 unk180;
     /* 0x184 */ s32 unk184;
@@ -76,6 +77,7 @@ public:
     virtual void Deinit(void);
     MobilePlatformDescriptor(void);
     s32 IsDescriptor(MKPropDescriptor *);
+    static u8 pFirstDesc[0x4];
     /* 0x124 */ f32 unk124;
     /* 0x128 */ f32 unk128;
     /* 0x12c */ s32 unk12C;

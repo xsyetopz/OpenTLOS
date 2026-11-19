@@ -53,12 +53,14 @@ class UIVideoScreen;
 class DSText : public UIText {  // base: ctor/dtor vtable stores
 public:
     virtual void Init(void);
+    static u8 descriptor[0x14];
 };
 
 class GameText : public DSText {  // base: ctor/dtor vtable stores
 public:
     virtual void Draw(const RenderContext &);
     GameText(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x64];
     /* 0x068 */ s8* unk68;
     /* 0x06c */ s32 unk6C;
@@ -71,6 +73,7 @@ public:
     virtual void OnEnter(void);
     virtual void OnExit(void);
     HealthSafetyScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x64];
     /* 0x068 */ s32 unk68;
     /* 0x06c */ s32 unk6C;
@@ -111,6 +114,7 @@ class ImageArc : public UIObject {  // base: vtable prefix
 public:
     virtual void Init(void);
     virtual void Draw(const RenderContext &);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x14];
     /* 0x018 */ Attributes unk18;
     /* 0x05a */ u8 pad5A[0xa];
@@ -134,6 +138,7 @@ public:
     virtual void Message(UIMessage *);
     virtual s32 SetSelection(int);
     ScriptButtonGroup(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x64];
     /* 0x068 */ s32 unk68;
     /* 0x06c */ u8 pad6C[0x14];
@@ -145,12 +150,14 @@ class LanguageButtonGroup : public ScriptButtonGroup {  // base: vtable prefix
 public:
     virtual void LoadDone(void);
     LanguageButtonGroup(void);
+    static u8 descriptor[0x14];
 };
 
 class LocalizedVideoScreen : public UIVideoScreen {  // base: vtable prefix
 public:
     virtual void LoadDone(void);
     LocalizedVideoScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0xdc];
     /* 0x0e0 */ s8* unkE0;
 };
@@ -166,6 +173,7 @@ public:
     virtual void Message(UIMessage *);
     MarkerButtonGroup(void);
     u8 GetTargetAttributes(Attributes *);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x14];
     /* 0x018 */ Attributes unk18;
     /* 0x05a */ u8 pad5A[0xe];
@@ -184,6 +192,7 @@ public:
     virtual void Update(void);
     virtual void Message(UIMessage *);
     NoisyButtonGroup(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x74];
     /* 0x078 */ f32 unk78;
 };
@@ -192,6 +201,7 @@ class NoisySystem : public UISystem {  // base: ctor/dtor vtable stores
 public:
     virtual void Message(UIMessage *);
     NoisySystem(void);
+    static u8 descriptor[0x14];
 };
 
 class ScriptButton : public UIButton {  // base: ctor/dtor vtable stores
@@ -206,6 +216,7 @@ public:
     virtual void SetOnSelect(const char *);
     virtual void SetOnDeselect(const char *);
     ScriptButton(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x8c];
     /* 0x090 */ s8* unk90;
     /* 0x094 */ s8* unk94;
@@ -219,6 +230,7 @@ public:
     virtual void Update(void);
     virtual void Message(UIMessage *);
     OptionButton(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ OptionButton* unk4;
     /* 0x008 */ u8 pad8[0xc];
     /* 0x014 */ u8 unk14;
@@ -240,6 +252,7 @@ public:
     virtual s32 LoadLine(UIDataLine *);
     virtual void LoadDone(void);
     virtual void Draw(const RenderContext &);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x14];
     /* 0x018 */ f64 unk18;
     /* 0x020 */ f64 unk20;
@@ -274,6 +287,7 @@ class PromptGroup : public UIContainer {  // base: vtable prefix
 public:
     virtual void Message(UIMessage *);
     void Reset(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x48];
     /* 0x04c */ f32 unk4C;
     /* 0x050 */ u8 pad50[0x10];
@@ -287,6 +301,7 @@ public:
     virtual void Resolve(void);
     virtual void Message(UIMessage *);
     PromptText(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ u8 pad8[0x60];
     /* 0x068 */ s8* unk68;
@@ -305,6 +320,7 @@ public:
     virtual void Message(UIMessage *);
     void SetPositions(void);
     RadialButtonGroup(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x8];
     /* 0x00c */ UIContainer* unkC;
     /* 0x010 */ u8 pad10[0x5];
@@ -350,6 +366,7 @@ public:
     virtual void Update(void);
     virtual void Message(UIMessage *);
     ScriptProgressBar(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x14];
     /* 0x018 */ Attributes unk18;
     /* 0x05a */ u8 pad5A[0x6e];
@@ -368,6 +385,7 @@ public:
     virtual s32 LoadLine(UIDataLine *);
     virtual void DoExit(void);
     ScriptVideoScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x124];
     /* 0x128 */ s8* unk128;
 };
@@ -378,6 +396,7 @@ public:
     virtual void Update(void);
     virtual void Message(UIMessage *);
     ThrobButton(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x11];
     /* 0x015 */ u8 unk15;
     /* 0x016 */ u8 unk16;
@@ -394,6 +413,7 @@ class UIPie : public UIImage {  // base: ctor/dtor vtable stores
 public:
     virtual void Init(void);
     virtual void Draw(const RenderContext &);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x14];
     /* 0x018 */ Attributes unk18;
     /* 0x05a */ u8 pad5A[0xa];

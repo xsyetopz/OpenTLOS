@@ -15,6 +15,7 @@ public:
     virtual void Update(void);
     virtual void OnEnter(void);
     LanguageSelectScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x64];
     /* 0x068 */ s32 unk68;
     /* 0x06c */ s32 unk6C;

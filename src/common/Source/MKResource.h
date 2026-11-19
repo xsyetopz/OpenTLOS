@@ -9,6 +9,8 @@ class MKResource {
 public:
     void InitialiseResource(void);
     s32 IsResourceAvailable(void);
+    static u8 sWorkingChunkID[0x4];
+    static u8 sWorkingChunkIndex[0x4];
     /* 0x000 */ u8 pad0[0x20];
     /* 0x020 */ s32 unk20;
     /* 0x024 */ u8 pad24[0x4];

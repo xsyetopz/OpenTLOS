@@ -25,6 +25,7 @@ public:
     virtual void OnRight(void);
     virtual void OnSelect(void);
     virtual void OnCancel(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x8];
     /* 0x00c */ void** unkC;
     /* 0x010 */ u8 pad10[0x58];

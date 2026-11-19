@@ -44,6 +44,7 @@ public:
     void FallUpdate(void);
     void FallExit(void);
     void FallEnter(void);
+    static u8 states[0x90];
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ f64 unk8;
     /* 0x010 */ Spyro* unk10;

@@ -7,12 +7,16 @@
 #include "spyro/source/GameMessages.h"
 
 class BreathHitMessage;
+class Corona;
 class FuryFXFire;
 class FuryFXFire_cpp;
 class HeroHurtReactionType;
+class MKMaterial;
 class MKMessage;
+class MKModel;
 class MKProp;
 class MKVector3;
+class ManagedLight;
 class Matrix;
 
 class FuryFXFire : public MKProp {  // base: ctor/dtor vtable stores
@@ -36,7 +40,21 @@ public:
     void UpdateDragons(void);
     /* 0x04c */ u8 pad4C[0x44];
     /* 0x090 */ Matrix unk90;
-    /* 0x11c */ u8 pad11C[0x174];
+    /* 0x0d0 */ f32 unkD0;
+    /* 0x0d4 */ f32 unkD4;
+    /* 0x0d8 */ f32 unkD8;
+    /* 0x0dc */ u8 padDC[0x4];
+    /* 0x0e0 */ MKMaterial* unkE0;
+    /* 0x0e4 */ MKMaterial* unkE4;
+    /* 0x0e8 */ ManagedLight* unkE8;
+    /* 0x0ec */ MKModel* unkEC;
+    /* 0x0f0 */ MKModel* unkF0;
+    /* 0x0f4 */ Corona* unkF4;
+    /* 0x0f8 */ f32 unkF8;
+    /* 0x0fc */ f32 unkFC;
+    /* 0x100 */ f32 unk100;
+    /* 0x104 */ s32 unk104;
+    /* 0x108 */ u8 pad108[0x188];
     /* 0x290 */ BreathHitMessage unk290;
     /* 0x2e1 */ u8 pad2E1[0x7];
     /* 0x2e8 */ s32 unk2E8;

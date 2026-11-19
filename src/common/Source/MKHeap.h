@@ -38,6 +38,13 @@ public:
     void DeInit(void);
     void Init(int, int, const char *, void *);
     void InitModule(void);
+    static u8 heapObjects[0x28];
+    static u8 heapList[0x28];
+    static u8 peak[0x4];
+    static u8 mainHeapPeak[0x4];
+    static u8 tempHeapPeak[0x4];
+    static u8 currentHeap[0x4];
+    static u8 tempMemOverride[0x4];
     /* 0x000 */ MKHeap* unk0;
     /* 0x004 */ s32 unk4;
     /* 0x008 */ s32 unk8;

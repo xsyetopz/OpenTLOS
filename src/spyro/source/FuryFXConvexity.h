@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_FURYFXCONVEXITY_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/WindFX.h"
@@ -12,7 +13,9 @@ class FuryFXConvexity_cpp;
 class KDSoundFader;
 class MKHeap;
 class MKMessage;
+class MKModel;
 class MKVector3;
+class ManagedLight;
 class Matrix;
 class WindFX;
 
@@ -37,7 +40,14 @@ public:
     void SetDefaults(void);
     /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ Matrix unk90;
-    /* 0x11c */ u8 pad11C[0x8];
+    /* 0x0d0 */ f64 unkD0;
+    /* 0x0d8 */ f64 unkD8;
+    /* 0x0e0 */ MKVector3 unkE0;
+    /* 0x0f0 */ s32 unkF0;
+    /* 0x0f4 */ f32 unkF4;
+    /* 0x0f8 */ ManagedLight* unkF8;
+    /* 0x0fc */ s32 unkFC;
+    /* 0x100 */ u8 pad100[0x24];
     /* 0x124 */ s32 unk124;
     /* 0x128 */ u8 pad128[0x24];
     /* 0x14c */ u8 unk14C;
@@ -53,6 +63,7 @@ public:
     /* 0x16c */ u8 pad16C[0x4];
     /* 0x170 */ WindFX unk170;
     /* 0x1a0 */ Matrix unk1A0;
+    /* 0x1e0 */ MKModel* unk1E0;
 };
 
 class FuryFXConvexity_cpp {

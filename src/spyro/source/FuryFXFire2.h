@@ -4,8 +4,10 @@
 #include <dolphin/types.h>
 #include "common/Source/Matrix.h"
 #include "spyro/source/FuryFX.h"
+#include "spyro/source/GameMessages.h"
 #include "spyro/source/GroundFire.h"
 
+class BreathHitMessage;
 class ClusterBomb;
 class Explosion4;
 class FuryFX;
@@ -34,8 +36,15 @@ public:
     void SetDefaults(void);
     /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ Matrix unk90;
-    /* 0x11c */ u8 pad11C[0x24];
-    /* 0x140 */ s8 unk140;
+    /* 0x0d0 */ s32 unkD0;
+    /* 0x0d4 */ u8 padD4[0x4];
+    /* 0x0d8 */ f32 unkD8;
+    /* 0x0dc */ f32 unkDC;
+    /* 0x0e0 */ f32 unkE0;
+    /* 0x0e4 */ u8 padE4[0x4];
+    /* 0x0e8 */ f32 unkE8;
+    /* 0x0ec */ u8 padEC[0x4];
+    /* 0x0f0 */ BreathHitMessage unkF0;
     /* 0x141 */ u8 pad141[0x7];
     /* 0x148 */ MKModel* unk148;
     /* 0x14c */ f32 unk14C;

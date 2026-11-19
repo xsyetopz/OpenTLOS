@@ -33,6 +33,8 @@ public:
     void UpdateCameraAlpha(void);
     void AddCollisionSubObject(int, MKCollisionInfo *);
     void SetColorToGround(void);
+    static u8 pCustomAnimScrName[0x4];
+    static u8 pCustomModelName[0x4];
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ f64 unk50;
     /* 0x058 */ f64 unk58;

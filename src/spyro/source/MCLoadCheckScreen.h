@@ -14,6 +14,7 @@ public:
     virtual void Resolve(void);
     virtual void OnEnter(void);
     MCLoadCheckScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0xcc];
     /* 0x0d0 */ s32 unkD0;
     /* 0x0d4 */ void** unkD4;

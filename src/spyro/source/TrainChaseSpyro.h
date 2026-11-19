@@ -92,6 +92,7 @@ public:
     void StateChaseEnter(void);
     void SetAnim(int, float, int);
     void UpdateSpyro(void);
+    static u8 states[0x90];
     /* 0x0c4 */ u8 padC4[0xc];
     /* 0x0d0 */ f32 unkD0;
     /* 0x0d4 */ f32 unkD4;

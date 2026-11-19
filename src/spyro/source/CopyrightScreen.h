@@ -13,6 +13,8 @@ public:
     virtual void Update(void);
     virtual void OnEnter(void);
     CopyrightScreen(void);
+    static u8 descriptor[0x14];
+    static u8 bMemoryCardCheckDone[0x1];
     /* 0x004 */ s32 unk4;
     /* 0x008 */ u8 pad8[0x10];
     /* 0x018 */ f32 unk18;

@@ -41,7 +41,7 @@ public:
     void GetStandPos(void);
     /* 0x04c */ MKProp* unk4C;
     /* 0x050 */ Matrix unk50;
-    /* 0x0dc */ u8 padDC[0xb4];
+    /* 0x090 */ u8 pad90[0x100];
     /* 0x190 */ f64 unk190;
     /* 0x198 */ f64 unk198;
     /* 0x1a0 */ f64 unk1A0;

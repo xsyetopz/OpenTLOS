@@ -29,6 +29,7 @@ public:
     void Add(UIObject *);
     UIObject * GetChild(int);
     UIObject * FindChild(const char *);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x8];
     /* 0x00c */ UIContainer* unkC;
     /* 0x010 */ u8 pad10[0x8];

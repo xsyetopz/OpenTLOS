@@ -51,6 +51,8 @@ public:
     virtual void Draw(void);
     SwampFlutterCritter(void);
     void FindNewFlyParameters(SwampFlutter *);
+    /* 0x168 */ u8 pad168[0x8];
+    /* 0x170 */ void* unk170;
 };
 
 class SwampFlutterCritterDescriptor : public CrittersDescriptor {  // base: ctor/dtor vtable stores

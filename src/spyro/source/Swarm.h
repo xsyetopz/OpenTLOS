@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_SWARM_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDProp.h"
 
@@ -9,6 +10,7 @@ class KDProp;
 class KDPropDescriptor;
 class MKIniLine;
 class MKMessage;
+class MKVector3;
 class MKVector4;
 class Matrix;
 class SwarmEntity;
@@ -42,6 +44,11 @@ public:
     void DrawEntity(SwarmEntity *, const Matrix &, const MKVector4 &, float);
     /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ Matrix unk90;
+    /* 0x0d0 */ MKVector3 unkD0;
+    /* 0x0e0 */ u8 padE0[0x8];
+    /* 0x0e8 */ f64 unkE8;
+    /* 0x0f0 */ s32 unkF0;
+    /* 0x0f4 */ SwarmEntity** unkF4;
 };
 
 class SwarmPropDescriptor : public KDPropDescriptor {  // base: vtable prefix

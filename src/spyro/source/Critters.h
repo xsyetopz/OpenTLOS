@@ -4,11 +4,13 @@
 #include <dolphin/types.h>
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Volume.h"
 
 class Critters;
 class KDProp;
 class MKIniLine;
 class Matrix;
+class Volume;
 
 class Critters : public KDProp {  // base: ctor/dtor vtable stores
 public:
@@ -23,6 +25,7 @@ public:
     /* 0x090 */ s32 unk90;
     /* 0x094 */ u8 pad94[0xc];
     /* 0x0a0 */ Matrix unkA0;
+    /* 0x0e0 */ Volume unkE0;
 };
 
 #endif  // SPYRO_SOURCE_CRITTERS_H

@@ -68,6 +68,10 @@ public:
     s32 LoadActorModel(const char *, MKModel **);
     s32 LoadActorAnimScript(const char *, MKAnimScript **);
     u8 LoadActorID(const char *, int *);
+    static KDSynkerPlayerEvent loadInfo;
+    static KDSynkerPlayerEvent updateData;
+    static KDSynkerPlayerEvent pSynker;
+    static KDSynkerPlayerEvent pLine;
 };
 
 class KDSynkerPlayerEventCreationTable {

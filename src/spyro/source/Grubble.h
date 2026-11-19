@@ -39,6 +39,8 @@ public:
     GrubbleCritter(void);
     void FindNewWalkParameters(Grubble *);
     void SetHideState(Grubble *);
+    /* 0x168 */ u8 pad168[0x8];
+    /* 0x170 */ void* unk170;
 };
 
 class GrubbleCritterDescriptor : public CrittersDescriptor {  // base: ctor/dtor vtable stores

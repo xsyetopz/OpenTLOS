@@ -7,6 +7,7 @@
 
 class BaseBreathFX;
 class ConvexityBreathFX;
+class MKMaterial;
 class MKMessage;
 class MKModel;
 class MKProp;
@@ -36,10 +37,19 @@ public:
     /* 0x0c0 */ f32 unkC0;
     /* 0x0c4 */ u8 padC4[0xc];
     /* 0x0d0 */ Matrix unkD0;
-    /* 0x15c */ u8 pad15C[0x4];
+    /* 0x110 */ MKModel* unk110;
+    /* 0x114 */ MKMaterial* unk114;
+    /* 0x118 */ Matrix** unk118;
+    /* 0x11c */ f32 unk11C;
+    /* 0x120 */ f32 unk120;
+    /* 0x124 */ s32 unk124;
+    /* 0x128 */ u8 pad128[0x28];
+    /* 0x150 */ f64 unk150;
+    /* 0x158 */ f64 unk158;
     /* 0x160 */ MKModel* unk160;
     /* 0x164 */ u8 pad164[0xc];
     /* 0x170 */ Matrix unk170;
+    /* 0x1b0 */ f32 unk1B0;
 };
 
 #endif  // SPYRO_SOURCE_CONVEXITYBREATHFX_H

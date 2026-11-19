@@ -2,6 +2,7 @@
 #define SPYRO_SOURCE_FURYFXEARTH_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/GameMessages.h"
@@ -9,6 +10,7 @@
 
 class BreathHitMessage;
 class Corona;
+class FallingLeaves;
 class FuryFX;
 class FuryFXEarth;
 class FuryFXEarth_cpp;
@@ -36,7 +38,12 @@ public:
     /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ WindFX unk90;
     /* 0x0c0 */ Matrix unkC0;
-    /* 0x14c */ u8 pad14C[0x4];
+    /* 0x100 */ FallingLeaves* unk100;
+    /* 0x104 */ s32 unk104;
+    /* 0x108 */ f32 unk108;
+    /* 0x10c */ f32 unk10C;
+    /* 0x110 */ MKVector3 unk110;
+    /* 0x120 */ u8 pad120[0x30];
     /* 0x150 */ f32 unk150;
     /* 0x154 */ f32 unk154;
     /* 0x158 */ f32 unk158;

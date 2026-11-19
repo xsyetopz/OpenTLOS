@@ -13,8 +13,11 @@ public:
     void GetRandPos(void);
     void UpdateMatrix(Matrix &);
     void Init(Matrix &);
+    static u8 boundingVolume[0x20];
     /* 0x000 */ u8 pad0[0x40];
     /* 0x040 */ Matrix unk40;
+    /* 0x080 */ f32 unk80;
+    /* 0x084 */ f32 unk84;
 };
 
 class Volume_cpp {

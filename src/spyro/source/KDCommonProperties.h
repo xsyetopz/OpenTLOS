@@ -35,6 +35,7 @@ public:
     virtual void DeinitInstance(void);
     virtual void Update(void);
     virtual void Command(int);
+    static u8 classInfo[0x10];
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ s32 unk8;
     /* 0x00c */ u8 padC[0x4];
@@ -56,6 +57,7 @@ public:
     virtual s32 Query(int);
     virtual void Update(void);
     KDAnimEventProperty(void);
+    static u8 classInfo[0x10];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;
     /* 0x00c */ s32 unkC;
@@ -70,6 +72,7 @@ public:
     virtual void * GetClassInfo(void) const;
     virtual s32 ResolveCommand(const char *) const;
     virtual void Command(int);
+    static u8 classInfo[0x10];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ u8 pad8[0x8];
     /* 0x010 */ void* unk10;
@@ -95,6 +98,7 @@ public:
     virtual void Trigger(void);
     virtual void Message(MKMessage *);
     KDMessageHandlerProperty(void);
+    static u8 classInfo[0x10];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;
     /* 0x00c */ KDProperty* unkC;
@@ -118,6 +122,7 @@ public:
     virtual void Command(int);
     void UpdateSplinePath(void);
     void UpdateNormalPath(void);
+    static u8 classInfo[0x10];
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ s32 unk8;
     /* 0x00c */ u8 padC[0x4];
@@ -135,6 +140,7 @@ public:
     virtual s32 Query(int);
     virtual void Update(void);
     KDRefPointProperty(void);
+    static u8 classInfo[0x10];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;
     /* 0x00c */ s32 unkC;
@@ -152,6 +158,7 @@ public:
     virtual s32 GetInstanceDataSize(void) const;
     virtual void InitInstance(void);
     virtual void Command(int);
+    static u8 classInfo[0x10];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;
     /* 0x00c */ u8 padC[0x4];

@@ -17,6 +17,7 @@ public:
     virtual s32 LoadLineInstance(MKIniLine *);
     virtual void LoadDoneInstance(void);
     virtual void ResolveInstance(void);
+    static KDPathProperty classInfo;
 };
 
 #endif  // SPYRO_SOURCE_KDPATHPROPERTY_H

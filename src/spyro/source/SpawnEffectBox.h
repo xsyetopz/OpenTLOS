@@ -24,6 +24,16 @@ public:
     virtual void Message(MKMessage *);
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ KDVolume unk50;
+    /* 0x0d8 */ u8 padD8[0x8];
+    /* 0x0e0 */ s8* unkE0;
+    /* 0x0e4 */ void* unkE4;
+    /* 0x0e8 */ s32 unkE8;
+    /* 0x0ec */ s32 unkEC;
+    /* 0x0f0 */ u8 unkF0;
+    /* 0x0f1 */ u8 padF1[0x3];
+    /* 0x0f4 */ f32 unkF4;
+    /* 0x0f8 */ f32 unkF8;
+    /* 0x0fc */ f32 unkFC;
 };
 
 class SpawnEffectBoxDescriptor : public MKPropDescriptor {  // base: vtable prefix

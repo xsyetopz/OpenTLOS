@@ -25,7 +25,10 @@ public:
     virtual void Draw(void);
     virtual void Message(MKMessage *);
     /* 0x04c */ Matrix unk4C;
-    /* 0x0d8 */ u8 padD8[0x8];
+    /* 0x08c */ u8 pad8C[0x4];
+    /* 0x090 */ f64 unk90;
+    /* 0x098 */ f64 unk98;
+    /* 0x0a0 */ u8 padA0[0x40];
     /* 0x0e0 */ u8 unkE0;
     /* 0x0e1 */ u8 padE1[0x3];
     /* 0x0e4 */ s32 unkE4;

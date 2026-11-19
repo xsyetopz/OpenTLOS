@@ -9,6 +9,7 @@ class OmniLight;
 class OmniLight {
 public:
     void CalculateColor(const MKVector3 &, const MKVector3 &);
+    static u8 totalEnabled[0x4];
     /* 0x000 */ f64 unk0;
     /* 0x008 */ f64 unk8;
     /* 0x010 */ u8 pad10[0x20];

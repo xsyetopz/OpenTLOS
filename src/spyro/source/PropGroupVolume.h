@@ -23,6 +23,8 @@ public:
     virtual void Reset(void);
     u8 LoadOverlayName(MKIniLine *);
     void CullGroups(const MKVector3 &);
+    static PropGroupVolume overlay;
+    static u8 overlayCount[0x4];
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ PolyRegion unk50;
     /* 0x09c */ u8 pad9C[0x4];
@@ -38,6 +40,7 @@ class PropGroupVolumeDescriptor : public MKPropDescriptor {  // base: vtable pre
 public:
     virtual void Init(void);
     virtual void Deinit(void);
+    static u8 pFirstDesc[0x4];
     /* 0x048 */ u8 pad48[0x18];
     /* 0x060 */ void* unk60;
     /* 0x064 */ PropGroupVolumeDescriptor* unk64;

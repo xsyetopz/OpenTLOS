@@ -32,7 +32,7 @@ public:
     /* 0x030 */ f64 unk30;
     /* 0x038 */ f64 unk38;
     /* 0x040 */ Matrix unk40;
-    /* 0x0cc */ u8 padCC[0x18];
+    /* 0x080 */ u8 pad80[0x64];
     /* 0x0e4 */ s8 unkE4;
     /* 0x0e5 */ u8 padE5[0x3];
     /* 0x0e8 */ Texture unkE8;

@@ -52,6 +52,9 @@ public:
     void Update_Loading(void);
     void Update(void);
     void SetPlaySpeed(float);
+    static u8 pCameraProp[0x4];
+    static u8 pActorCallback[0x4];
+    static u8 pEventCreationTable[0x4];
     /* 0x004 */ KDSynkerHeap unk4;
     /* 0x028 */ s8 unk28;
     /* 0x029 */ u8 pad29[0x1f];

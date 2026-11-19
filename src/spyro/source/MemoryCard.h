@@ -25,6 +25,10 @@ public:
     void PopScreen(void);
     MemoryCardScreen(void);
     void ExamineCard(void);
+    static u8 selectedFile[0x4];
+    static u8 operation[0x4];
+    static u8 selectedCard[0x4];
+    static u8 bNewGame[0x1];
     /* 0x004 */ u8 pad4[0xc4];
     /* 0x0c8 */ UIContainer* unkC8;
 };
@@ -34,6 +38,7 @@ public:
     virtual void Update(void);
     virtual void OnEnter(void);
     MCSaveScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ s8* unk4;
 };
 
@@ -41,6 +46,7 @@ class MCText : public DSText {  // base: ctor/dtor vtable stores
 public:
     virtual void Draw(const RenderContext &);
     MCText(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x14];
     /* 0x018 */ Attributes unk18;
     /* 0x05a */ u8 pad5A[0xa];

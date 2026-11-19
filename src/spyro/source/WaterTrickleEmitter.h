@@ -31,6 +31,8 @@ public:
     /* 0x094 */ u8 unk94;
     /* 0x095 */ u8 pad95[0xb];
     /* 0x0a0 */ Matrix unkA0;
+    /* 0x0e0 */ f32 unkE0;
+    /* 0x0e4 */ f32 unkE4;
 };
 
 class WaterTrickleEmitterDescriptor : public MKPropDescriptor {  // base: vtable prefix

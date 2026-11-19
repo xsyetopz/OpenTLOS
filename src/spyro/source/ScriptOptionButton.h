@@ -10,6 +10,7 @@ class ScriptOptionButton;
 class ScriptOptionButton : public ScriptButton {  // base: vtable prefix
 public:
     ScriptOptionButton(void);
+    static u8 descriptor[0x14];
 };
 
 #endif  // SPYRO_SOURCE_SCRIPTOPTIONBUTTON_H

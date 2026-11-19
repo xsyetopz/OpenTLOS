@@ -36,6 +36,16 @@ public:
     void EnableTrigger(bool);
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ Matrix unk10;
+    /* 0x050 */ s32 unk50;
+    /* 0x054 */ s32 unk54;
+    /* 0x058 */ u8 pad58[0x8];
+    /* 0x060 */ f32 unk60;
+    /* 0x064 */ f32 unk64;
+    /* 0x068 */ f32 unk68;
+    /* 0x06c */ u8 pad6C[0x4];
+    /* 0x070 */ f32 unk70;
+    /* 0x074 */ f32 unk74;
+    /* 0x078 */ f32 unk78;
 };
 
 class TriggerBoxObject : public TriggerObject {  // base: ctor/dtor vtable stores
@@ -47,8 +57,27 @@ public:
     virtual s32 CheckTarget(void);
     virtual s32 LoadLine(char *, MKIniLine *);
     virtual void LoadDone(const MKVector3 &, const Matrix &);
+    static u8 tempBoxRot[0x10];
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ Matrix unk10;
+    /* 0x050 */ s32 unk50;
+    /* 0x054 */ MKSceneManager* unk54;
+    /* 0x058 */ u8 pad58[0x8];
+    /* 0x060 */ f32 unk60;
+    /* 0x064 */ f32 unk64;
+    /* 0x068 */ f32 unk68;
+    /* 0x06c */ u8 pad6C[0x4];
+    /* 0x070 */ f32 unk70;
+    /* 0x074 */ f32 unk74;
+    /* 0x078 */ f32 unk78;
+    /* 0x07c */ u8 pad7C[0x4];
+    /* 0x080 */ f32 unk80;
+    /* 0x084 */ f32 unk84;
+    /* 0x088 */ f32 unk88;
+    /* 0x08c */ u8 pad8C[0x4];
+    /* 0x090 */ f32 unk90;
+    /* 0x094 */ f32 unk94;
+    /* 0x098 */ f32 unk98;
     /* 0x09c */ u8 pad9C[0x4];
     /* 0x0a0 */ f32 unkA0;
     /* 0x0a4 */ f32 unkA4;

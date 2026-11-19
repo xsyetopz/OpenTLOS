@@ -34,6 +34,7 @@ public:
     void SetBoulder(Ball *);
     s32 HasBoulder(void);
     void SetState(BoulderRamp::State);
+    static u8 states[0x90];
     /* 0x0e0 */ s32 unkE0;
     /* 0x0e4 */ u32 unkE4;
     /* 0x0e8 */ f32 unkE8;

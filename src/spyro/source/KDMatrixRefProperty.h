@@ -18,6 +18,7 @@ public:
     virtual s32 GetMatrixRef(void) const;
     virtual void GetMatrix(Matrix *) const;
     KDMatrixRefProperty(void);
+    static KDMatrixRefProperty classInfo;
 };
 
 #endif  // SPYRO_SOURCE_KDMATRIXREFPROPERTY_H

@@ -61,6 +61,8 @@ public:
     void GetMoveVelocityHorz(void);
     void SetDesiredVelocityHorz(void);
     void ClampMovementUpdate(void);
+    static u8 states[0x90];
+    static u8 jumpStates[0x6c];
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ f64 unk8;
     /* 0x010 */ Spyro* unk10;

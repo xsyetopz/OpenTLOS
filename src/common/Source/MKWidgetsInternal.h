@@ -77,6 +77,7 @@ public:
     u8 IsFlagSet(unsigned int) const;
     MKWidget(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidget_FactoryFunc(void);
+    static u8 sMKWidgetDescriptor[0x18];
     /* 0x004 */ s8** unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x3];
@@ -106,6 +107,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetButton(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetButton_FactoryFunc(void);
+    static u8 sMKWidgetButtonDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -128,6 +130,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetCheckBox(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetCheckBox_FactoryFunc(void);
+    static u8 sMKWidgetCheckBoxDescriptor[0x18];
     /* 0x004 */ u32* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -145,6 +148,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetCheckMark(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetCheckMark_FactoryFunc(void);
+    static u8 sMKWidgetCheckMarkDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -161,6 +165,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetColor(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetColor_FactoryFunc(void);
+    static u8 sMKWidgetColorDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
 };
@@ -176,6 +181,7 @@ public:
     s32 ListBoxHook(MKWidget *, unsigned int, unsigned int, void *);
     MKWidgetComboBox(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetComboBox_FactoryFunc(void);
+    static u8 sMKWidgetComboBoxDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -204,6 +210,7 @@ public:
     void GetChildIndex(MKWidget *);
     MKWidgetContainer(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetContainer_FactoryFunc(void);
+    static u8 sMKWidgetContainerDescriptor[0x18];
     /* 0x004 */ u8 pad4[0x1c];
     /* 0x020 */ u32 unk20;
     /* 0x024 */ u8 pad24[0x4];
@@ -234,6 +241,7 @@ public:
     u32 EditableMessageHook(MKWidget *, unsigned int, unsigned int, void *);
     MKWidgetEditable(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetEditable_FactoryFunc(void);
+    static u8 sMKWidgetEditableDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 pad8[0x10];
     /* 0x018 */ MKWidget* unk18;
@@ -260,6 +268,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetEnvelope(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetEnvelope_FactoryFunc(void);
+    static u8 sMKWidgetEnvelopeDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ f64 unk8;
     /* 0x010 */ u8 pad10[0x18];
@@ -279,6 +288,7 @@ public:
     virtual void ArrangeChildren(void);
     MKWidgetFrame(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetFrame_FactoryFunc(void);
+    static u8 sMKWidgetFrameDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -295,6 +305,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetFoldupFrame(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetFoldupFrame_FactoryFunc(void);
+    static u8 sMKWidgetFoldupFrameDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 pad8[0x38];
     /* 0x040 */ f32 unk40;
@@ -317,6 +328,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetImage(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetImage_FactoryFunc(void);
+    static u8 sMKWidgetImageDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 pad8[0x10];
     /* 0x018 */ MKWidget* unk18;
@@ -337,6 +349,7 @@ public:
     void GetChildrenRange(MKVector3 *, MKVector3 *);
     MKWidgetScrollableFrame(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetScrollableFrame_FactoryFunc(void);
+    static u8 sMKWidgetScrollableFrameDescriptor[0x18];
     /* 0x004 */ s32 unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -376,6 +389,7 @@ public:
     void SortChildren(void);
     MKWidgetListBox(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetListBox_FactoryFunc(void);
+    static u8 sMKWidgetListBoxDescriptor[0x18];
     /* 0x004 */ MKWidgetListBox* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -404,6 +418,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetListItem(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetListItem_FactoryFunc(void);
+    static u8 sMKWidgetListItemDescriptor[0x18];
     /* 0x004 */ u32* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -412,6 +427,7 @@ public:
 
 class MKWidgetRenderContext {
 public:
+    static u8 identity[0x50];
     /* 0x000 */ f32 unk0;
     /* 0x004 */ f32 unk4;
     /* 0x008 */ f32 unk8;
@@ -449,6 +465,7 @@ public:
     void GetValueFromThumb(void);
     MKWidgetScrollBar(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetScrollBar_FactoryFunc(void);
+    static u8 sMKWidgetScrollBarDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -469,6 +486,10 @@ class MKWidgetSerialise {
 public:
     void SerialiseVersion(void);
     u8 GetMetaData(MKWidgetMetaData *&, unsigned int);
+    static u8 metaDataResolveIndex[0x4];
+    static u8 pMetaDataFile[0x4];
+    static u8 pHierarchyFile[0x4];
+    static u8 pIndexList[0x4];
     /* 0x000 */ u8 pad0[0x4];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;
@@ -479,6 +500,7 @@ public:
     virtual ~MKWidgetSlider(void);
     MKWidgetSlider(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetSlider_FactoryFunc(void);
+    static u8 sMKWidgetSliderDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -504,6 +526,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetString(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetString_FactoryFunc(void);
+    static u8 sMKWidgetStringDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0xf];
@@ -523,6 +546,7 @@ public:
     MKWidget * ChangeFocus(MKWidget *);
     MKWidgetSystem(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetSystem_FactoryFunc(void);
+    static u8 sMKWidgetSystemDescriptor[0x18];
     /* 0x004 */ u8 pad4[0x24];
     /* 0x028 */ MKWidget* unk28;
     /* 0x02c */ u8 pad2C[0x14];
@@ -551,6 +575,7 @@ public:
     void FreeResources(void);
     MKWidgetTabStrip(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetTabStrip_FactoryFunc(void);
+    static u8 sMKWidgetTabStripDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 pad8[0xc];
     /* 0x014 */ void* unk14;
@@ -572,6 +597,7 @@ public:
     s32 GetCharIndexFromPoint(const MKVector3 &);
     MKWidgetTextBox(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetTextBox_FactoryFunc(void);
+    static u8 sMKWidgetTextBoxDescriptor[0x18];
     /* 0x004 */ MKHeap* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -595,6 +621,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetThumb(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetThumb_FactoryFunc(void);
+    static u8 sMKWidgetThumbDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 pad8[0x28];
     /* 0x030 */ f64 unk30;
@@ -614,6 +641,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetVector(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetVector_FactoryFunc(void);
+    static u8 sMKWidgetVectorDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x1f];
@@ -638,6 +666,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetWindow(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetWindow_FactoryFunc(void);
+    static u8 sMKWidgetWindowDescriptor[0x18];
     /* 0x004 */ void* unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0x17];
@@ -670,6 +699,7 @@ public:
     virtual void BuildAggregateMetaData(void);
     MKWidgetWindowTitleBar(MKWidgetDescriptor *);
     MKWidgetEditable * MKWidgetWindowTitleBar_FactoryFunc(void);
+    static u8 sMKWidgetWindowTitleBarDescriptor[0x18];
     /* 0x004 */ s32 unk4;
     /* 0x008 */ u8 unk8;
     /* 0x009 */ u8 pad9[0xf];

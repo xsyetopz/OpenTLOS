@@ -52,6 +52,7 @@ public:
     void GetPos(void);
     void GetDir(void);
     MKProp(void);
+    static MKProp loadInfo;
     /* 0x048 */ f32 unk48;
 };
 

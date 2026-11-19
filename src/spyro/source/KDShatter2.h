@@ -64,6 +64,10 @@ public:
     /* 0x000 */ KDShatterPool* unk0;
     /* 0x004 */ u8 pad4[0x15fc];
     /* 0x1600 */ Matrix unk1600;
+    /* 0x1640 */ s32 unk1640;
+    /* 0x1644 */ s32 unk1644;
+    /* 0x1648 */ f32 unk1648;
+    /* 0x164c */ KDShatter2* unk164C;
 };
 
 #endif  // SPYRO_SOURCE_KDSHATTER2_H

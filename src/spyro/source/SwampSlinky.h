@@ -19,6 +19,8 @@ public:
     virtual void Update(void);
     virtual void Draw(void);
     SwampSlinky(void);
+    /* 0x168 */ u8 pad168[0x8];
+    /* 0x170 */ void* unk170;
 };
 
 class SwampSlinkyDescriptor : public CrittersDescriptor {  // base: ctor/dtor vtable stores

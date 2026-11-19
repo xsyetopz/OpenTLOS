@@ -43,6 +43,26 @@ public:
     /* 0x050 */ f64 unk50;
     /* 0x058 */ f64 unk58;
     /* 0x060 */ Matrix unk60;
+    /* 0x0a0 */ void* unkA0;
+    /* 0x0a4 */ s8 unkA4;
+    /* 0x0a5 */ u8 padA5[0x3];
+    /* 0x0a8 */ f32 unkA8;
+    /* 0x0ac */ f32 unkAC;
+    /* 0x0b0 */ f32 unkB0;
+    /* 0x0b4 */ u8 unkB4;
+    /* 0x0b5 */ u8 padB5[0x3];
+    /* 0x0b8 */ u32 unkB8;
+    /* 0x0bc */ u32 unkBC;
+    /* 0x0c0 */ u32 unkC0;
+    /* 0x0c4 */ u32 unkC4;
+    /* 0x0c8 */ MKBaseParticleSystem* unkC8;
+    /* 0x0cc */ s32 unkCC;
+    /* 0x0d0 */ MKParticleChunk* unkD0;
+    /* 0x0d4 */ s32 unkD4;
+    /* 0x0d8 */ s32 unkD8;
+    /* 0x0dc */ u8 unkDC;
+    /* 0x0dd */ u8 padDD[0x3];
+    /* 0x0e0 */ f32 unkE0;
 };
 
 class MKBaseParticleSystemDescriptor : public MKPropDescriptor {  // base: ctor/dtor vtable stores

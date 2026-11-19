@@ -20,6 +20,7 @@ public:
     virtual void Update(void);
     virtual void LoadResources(void);
     virtual void FreeResources(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x11];
     /* 0x015 */ u8 unk15;
     /* 0x016 */ u8 pad16[0x4a];
@@ -38,6 +39,7 @@ public:
     virtual void LoadResources(void);
     virtual void FreeResources(void);
     void UpdateMatrix(RenderContext *);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x14];
     /* 0x018 */ Attributes unk18;
     /* 0x05a */ u8 pad5A[0x6];

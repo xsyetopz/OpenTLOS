@@ -42,6 +42,8 @@ public:
     virtual void Draw(void);
     MudGutsCritter(void);
     void FindNewSwimParameters(MudGuts *);
+    /* 0x168 */ u8 pad168[0x8];
+    /* 0x170 */ void* unk170;
 };
 
 class MudGutsCritterDescriptor : public CrittersDescriptor {  // base: ctor/dtor vtable stores

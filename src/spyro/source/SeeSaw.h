@@ -37,9 +37,15 @@ public:
     void Attach(PlatformAttachment *);
     /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ Matrix unk90;
-    /* 0x11c */ u8 pad11C[0x4];
-    /* 0x120 */ PlatformAttachment* unk120;
-    /* 0x124 */ PlatformAttachment* unk124;
+    /* 0x0d0 */ f64 unkD0;
+    /* 0x0d8 */ f64 unkD8;
+    /* 0x0e0 */ f32 unkE0;
+    /* 0x0e4 */ f32 unkE4;
+    /* 0x0e8 */ f32 unkE8;
+    /* 0x0ec */ u8 padEC[0x4];
+    /* 0x0f0 */ s32 unkF0;
+    /* 0x0f4 */ u8 padF4[0x24];
+    /* 0x118 */ PlatformAttachment unk118;
     /* 0x128 */ f32 unk128;
     /* 0x12c */ f32 unk12C;
     /* 0x130 */ f32 unk130;

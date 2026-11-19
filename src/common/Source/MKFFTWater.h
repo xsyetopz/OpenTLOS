@@ -112,6 +112,8 @@ public:
     void BuildVisibleTypesList(void);
     u8 WaterTypeExistsInMesh(const char *);
     void Init(const char *);
+    static u8 typesVisible[0x28];
+    static u8 numTypesVisible[0x4];
     /* 0x000 */ u8 pad0[0x4];
     /* 0x004 */ MKModel* unk4;
     /* 0x008 */ s32 unk8;

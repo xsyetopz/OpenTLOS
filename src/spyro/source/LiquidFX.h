@@ -61,6 +61,7 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     LiquidFXDescriptor(void);
+    static u8 pFirstDesc[0x4];
     /* 0x0e5 */ u8 padE5[0x3];
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ LiquidFXDescriptor* unkEC;

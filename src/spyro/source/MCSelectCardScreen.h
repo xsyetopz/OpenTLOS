@@ -16,6 +16,7 @@ public:
     void ClearDisplay(void);
     void UpdateDisplay(void);
     MCSelectCardScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0xc4];
     /* 0x0c8 */ void** unkC8;
     /* 0x0cc */ u8 padCC[0x4];

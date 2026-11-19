@@ -25,6 +25,7 @@ public:
     virtual void * GetClassInfo(void) const;
     virtual s32 ResolveCommand(const char *) const;
     virtual void Command(int);
+    static u8 classInfo[0x10];
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ f32 unk10;
     /* 0x014 */ f32 unk14;
@@ -42,6 +43,7 @@ public:
     virtual void InitInstance(void);
     virtual void ResolveInstance(void);
     virtual void Command(int);
+    static u8 classInfo[0x10];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;
     /* 0x00c */ u8 padC[0x4];
@@ -63,6 +65,7 @@ public:
     virtual void DeinitInstance(void);
     virtual s32 LoadLineInstance(MKIniLine *);
     virtual void Command(int);
+    static u8 classInfo[0x10];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;
     /* 0x00c */ u8 padC[0x4];
@@ -86,6 +89,7 @@ public:
     virtual void ResolveInstance(void);
     virtual void Update(void);
     virtual void Command(int);
+    static u8 classInfo[0x10];
     /* 0x004 */ s8* unk4;
     /* 0x008 */ s32 unk8;
     /* 0x00c */ u8 padC[0x4];
@@ -99,6 +103,7 @@ public:
     virtual void Resolve(KDPropertySet *);
     virtual void * GetClassInfo(void) const;
     MessageHandlerProperty(void);
+    static u8 classInfo[0x10];
     /* 0x004 */ u8 pad4[0x18];
     /* 0x01c */ s8* unk1C;
 };
@@ -114,6 +119,7 @@ public:
     virtual void Update(void);
     virtual void Command(int);
     TimerProperty(void);
+    static u8 classInfo[0x10];
     /* 0x004 */ s32 unk4;
     /* 0x008 */ s32 unk8;
     /* 0x00c */ s32 unkC;

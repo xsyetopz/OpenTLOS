@@ -15,6 +15,7 @@ public:
     virtual void OnEnter(void);
     virtual void OnExit(void);
     TitleScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x54];
     /* 0x058 */ u16 unk58;
     /* 0x05a */ u8 pad5A[0xe];

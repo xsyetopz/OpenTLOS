@@ -36,6 +36,7 @@ public:
     s32 IsOfType(KDPropertyClassInfo *) const;
     void SetOwnerProp(MKProp *);
     u64 GetOwnerProp(void);
+    static u8 pInstanceMem[0x4];
     /* 0x004 */ u8 pad4[0x8];
     /* 0x00c */ KDProperty* unkC;
 };
@@ -103,6 +104,7 @@ public:
     virtual s32 ResolveCommand(const char *) const;
     virtual void Command(int);
     virtual void Trigger(void);
+    static u8 classInfo[0x10];
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ KDPropertyCommandList unk10;
 };

@@ -17,6 +17,7 @@ class LevelButton : public ThrobButton {  // base: vtable prefix
 public:
     virtual void Init(void);
     LevelButton(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ LevelButton* unk4;
     /* 0x008 */ u8 pad8[0x98];
     /* 0x0a0 */ s32 unkA0;
@@ -26,6 +27,7 @@ class LevelSelectButtons : public MarkerButtonGroup {  // base: vtable prefix
 public:
     virtual void Init(void);
     LevelSelectButtons(void);
+    static u8 descriptor[0x14];
 };
 
 class LevelSelectScreen : public UIScreen {  // base: ctor/dtor vtable stores
@@ -38,6 +40,7 @@ public:
     virtual void OnEnter(void);
     void Populate(void);
     LevelSelectScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x64];
     /* 0x068 */ s32 unk68;
     /* 0x06c */ s32 unk6C;

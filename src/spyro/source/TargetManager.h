@@ -72,6 +72,7 @@ public:
     virtual void GetAttackerManager(void);
     void UnregisterTargetable(void);
     void RegisterTargetable(void);
+    static u8 pTargetManager[0x4];
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ void* unk8;
     /* 0x00c */ u8 padC[0x38];

@@ -7,6 +7,7 @@
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 
 class EnemySpawnPointData;
 class EnemySpawner;
@@ -23,6 +24,7 @@ class Matrix;
 class SpawnPoint;
 class SpawnPointData;
 class SpawnPointObject;
+class SpawnerObject;
 
 class EnemySpawnPointData : public SpawnPointData {  // base: ctor/dtor vtable stores
 public:
@@ -55,7 +57,8 @@ public:
     virtual void Message(MKMessage *);
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ Matrix unk50;
-    /* 0x0dc */ u8 padDC[0x4];
+    /* 0x090 */ SpawnerObject unk90;
+    /* 0x0dd */ u8 padDD[0x3];
     /* 0x0e0 */ s32 unkE0;
     /* 0x0e4 */ u32 unkE4;
 };

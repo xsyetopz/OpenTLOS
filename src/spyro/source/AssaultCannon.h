@@ -60,6 +60,7 @@ public:
     void SetAnim(int, int, float);
     void TakeDamage(float, const MKVector3 &);
     void SetDefaults(void);
+    static u8 states[0xb4];
 };
 
 class AssaultCannonDescriptor : public MKPropDescriptor {  // base: vtable prefix

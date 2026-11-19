@@ -52,6 +52,8 @@ public:
     LineSegmentTrailPool * Alloc(void);
     void Deinit(void);
     void Init(void);
+    static u8 pTrailPool[0x4];
+    static u8 refCount[0x4];
     /* 0x000 */ u8 pad0[0x24];
     /* 0x024 */ s8 unk24;
 };

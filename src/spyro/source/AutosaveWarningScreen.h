@@ -13,6 +13,7 @@ public:
     virtual void OnEnter(void);
     virtual void OnExit(void);
     AutosaveWarningScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x64];
     /* 0x068 */ s32 unk68;
     /* 0x06c */ s32 unk6C;

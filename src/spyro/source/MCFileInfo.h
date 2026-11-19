@@ -19,6 +19,7 @@ public:
     virtual void Resolve(void);
     virtual void Message(UIMessage *);
     void Reset(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8* unk4;
     /* 0x008 */ u8 pad8[0x10];
     /* 0x018 */ Attributes unk18;

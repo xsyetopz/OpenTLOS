@@ -2,7 +2,9 @@
 #define SPYRO_SOURCE_TESLATOWER_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/EnergyBeam.h"
 #include "spyro/source/KDProp.h"
 
 class KDProp;
@@ -33,7 +35,16 @@ public:
     void UpdateTurretBone(MKDynamicBone *, void *);
     /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ Matrix unk90;
-    /* 0x11c */ u8 pad11C[0x20];
+    /* 0x0d0 */ f64 unkD0;
+    /* 0x0d8 */ f64 unkD8;
+    /* 0x0e0 */ MKVector3 unkE0;
+    /* 0x0f0 */ f64 unkF0;
+    /* 0x0f8 */ f64 unkF8;
+    /* 0x100 */ f64 unk100;
+    /* 0x108 */ f64 unk108;
+    /* 0x110 */ EnergyBeam::Beam* unk110;
+    /* 0x114 */ s32 unk114;
+    /* 0x118 */ u8 pad118[0x24];
     /* 0x13c */ s32 unk13C;
     /* 0x140 */ u8 pad140[0x24];
     /* 0x164 */ s32 unk164;

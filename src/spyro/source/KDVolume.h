@@ -20,6 +20,7 @@ public:
     s32 IsWithin(const MKVector3 &, float *);
     void Deinit(void);
     void Init(Matrix &);
+    static u8 boundingVolume[0x20];
     /* 0x000 */ u8 pad0[0x20];
     /* 0x020 */ f32 unk20;
     /* 0x024 */ f32 unk24;
@@ -30,6 +31,8 @@ public:
     /* 0x038 */ f32 unk38;
     /* 0x03c */ u8 pad3C[0x4];
     /* 0x040 */ Matrix unk40;
+    /* 0x080 */ f32 unk80;
+    /* 0x084 */ f32 unk84;
 };
 
 class KDVolume_cpp {

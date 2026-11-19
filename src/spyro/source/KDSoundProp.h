@@ -30,6 +30,7 @@ public:
     /* 0x058 */ f32 unk58;
     /* 0x05c */ f32 unk5C;
     /* 0x060 */ Matrix unk60;
+    /* 0x0a0 */ s32 unkA0;
 };
 
 class KDSoundPropDescriptor : public MKPropDescriptor {  // base: vtable prefix

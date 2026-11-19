@@ -8,6 +8,7 @@ class ChunkData;
 class ChunkData {
 public:
     ChunkData(void);
+    static u8 pCurrentEventStrings[0x4];
 };
 
 #endif  // SPYRO_SOURCE_CHUNKDATA_H

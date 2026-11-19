@@ -36,6 +36,7 @@ public:
     void StateFloatingUpdate(void);
     void StateFloatingEnter(void);
     void GetBeamPosition(int);
+    static u8 states[0x90];
     /* 0x0c4 */ u8 padC4[0x4];
     /* 0x0c8 */ s32 unkC8;
     /* 0x0cc */ s32 unkCC;

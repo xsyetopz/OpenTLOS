@@ -29,6 +29,15 @@ public:
     u8 ParseCodeEvent(MKIniLine *, char *);
     u8 ParseFrameNo(MKIniLine *);
     u8 ParseEventType(MKIniLine *);
+    static u8 pSrcAnim[0x4];
+    static u8 pSoundEventKeyWord[0x4];
+    static u8 pSubObjectEnableEventKeyWord[0x4];
+    static u8 pSubObjectDisableEventKeyWord[0x4];
+    static u8 pSubObjectEnableAllEventKeyWord[0x4];
+    static u8 pSubObjectDisableAllEventKeyWord[0x4];
+    static u8 pAliasMaterialEventKeyWord[0x4];
+    static u8 pOnEnterKeyWord[0x4];
+    static u8 pOnExitKeyWord[0x4];
     /* 0x000 */ u8 pad0[0x4];
     /* 0x004 */ s16 unk4;
     /* 0x006 */ s16 unk6;

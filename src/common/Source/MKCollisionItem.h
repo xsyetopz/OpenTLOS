@@ -133,6 +133,10 @@ public:
     /* 0x098 */ f32 unk98;
     /* 0x09c */ u8 pad9C[0x4];
     /* 0x0a0 */ Matrix unkA0;
+    /* 0x0e0 */ u8 padE0[0x40];
+    /* 0x120 */ MKCollisionModel* unk120;
+    /* 0x124 */ f32 unk124;
+    /* 0x128 */ MKModel* unk128;
     /* 0x12c */ s32 unk12C;
 };
 

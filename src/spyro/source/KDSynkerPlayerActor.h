@@ -68,6 +68,8 @@ public:
     u8 LoadADSPropID(MKIniLine *);
     void LoadActorDataSection(KDSynkerHeap *, MKIniLine *);
     void Init(void);
+    static u8 pEnvelopeData[0x4];
+    static u8 pInput[0x4];
     /* 0x000 */ u8 pad0[0x28];
     /* 0x028 */ f32 unk28;
     /* 0x02c */ u8 pad2C[0x4];

@@ -20,6 +20,7 @@ public:
     virtual void ProcessAnimEvent(unsigned int);
     virtual void Message(MKMessage *);
     virtual void GetStateInfo(void);
+    static u8 states[0x24];
     /* 0x004 */ u8 pad4[0x24];
     /* 0x028 */ f64 unk28;
     /* 0x030 */ f32 unk30;

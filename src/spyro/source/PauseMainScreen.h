@@ -16,6 +16,7 @@ public:
     virtual void Resolve(void);
     virtual void OnEnter(void);
     ExitConfirmScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ s32 unk4;
     /* 0x008 */ u8 pad8[0x60];
     /* 0x068 */ s32 unk68;
@@ -54,6 +55,7 @@ public:
     virtual void OnEnter(void);
     virtual void OnExit(void);
     PauseMainScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x64];
     /* 0x068 */ s32 unk68;
     /* 0x06c */ s32 unk6C;

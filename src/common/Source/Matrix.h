@@ -42,6 +42,7 @@ public:
     void SetZero(void);
     void SetIdentity(void);
     void CopyRotation(const Matrix *);
+    static Matrix identity;
     /* 0x000 */ f32 unk0;
     /* 0x004 */ f32 unk4;
     /* 0x008 */ f32 unk8;
@@ -58,23 +59,6 @@ public:
     /* 0x034 */ f32 unk34;
     /* 0x038 */ f32 unk38;
     /* 0x03c */ f32 unk3C;
-    /* 0x040 */ f32 unk40;
-    /* 0x044 */ f32 unk44;
-    /* 0x048 */ f32 unk48;
-    /* 0x04c */ f32 unk4C;
-    /* 0x050 */ f32 unk50;
-    /* 0x054 */ f32 unk54;
-    /* 0x058 */ f32 unk58;
-    /* 0x05c */ u8 pad5C[0x4];
-    /* 0x060 */ s32 unk60;
-    /* 0x064 */ f32 unk64;
-    /* 0x068 */ f32 unk68;
-    /* 0x06c */ f32 unk6C;
-    /* 0x070 */ f32 unk70;
-    /* 0x074 */ f32 unk74;
-    /* 0x078 */ f32 unk78;
-    /* 0x07c */ u8 pad7C[0xc];
-    /* 0x088 */ f32 unk88;
 };
 
 #endif  // COMMON_SOURCE_MATRIX_H

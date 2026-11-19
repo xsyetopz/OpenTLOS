@@ -38,6 +38,8 @@ public:
     void ModuleInit(void);
     GameData(void);
     void SetSaveChunk(ChunkInfo *);
+    static u8 gameData[0x1b4];
+    static u8 bModuleInitialised[0x1];
     /* 0x000 */ u8 pad0[0x20];
     /* 0x020 */ s8 unk20;
     /* 0x021 */ u8 pad21[0x3f];

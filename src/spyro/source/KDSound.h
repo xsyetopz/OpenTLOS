@@ -43,6 +43,8 @@ public:
     void ResolveSoundIDs(void);
     void Deinit(void);
     void Init(const char *, int);
+    static u8 firstInvalidSoundID[0x4];
+    static u8 lastInvalidSoundID[0x4];
     /* 0x000 */ u8 pad0[0x4];
     /* 0x004 */ s32 unk4;
     /* 0x008 */ MKHeap* unk8;

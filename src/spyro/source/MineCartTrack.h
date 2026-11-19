@@ -26,7 +26,15 @@ public:
     /* 0x04c */ u8 unk4C;
     /* 0x04d */ u8 pad4D[0x3];
     /* 0x050 */ Matrix unk50;
-    /* 0x0dc */ u8 padDC[0x24];
+    /* 0x090 */ f32 unk90;
+    /* 0x094 */ f32 unk94;
+    /* 0x098 */ f32 unk98;
+    /* 0x09c */ u8 pad9C[0x4];
+    /* 0x0a0 */ f64 unkA0;
+    /* 0x0a8 */ f64 unkA8;
+    /* 0x0b0 */ f64 unkB0;
+    /* 0x0b8 */ f64 unkB8;
+    /* 0x0c0 */ u8 padC0[0x40];
     /* 0x100 */ u8 unk100;
     /* 0x101 */ u8 pad101[0x3];
     /* 0x104 */ s32 unk104;

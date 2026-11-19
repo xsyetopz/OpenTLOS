@@ -46,7 +46,11 @@ public:
     void DrawIceWall(float, float);
     void DrawElectricityWall(float, float);
     void DrawFireWall(float, float);
-    /* 0x0dc */ u8 padDC[0x4];
+    /* 0x0b8 */ u8 padB8[0x8];
+    /* 0x0c0 */ f64 unkC0;
+    /* 0x0c8 */ f64 unkC8;
+    /* 0x0d0 */ f64 unkD0;
+    /* 0x0d8 */ f64 unkD8;
     /* 0x0e0 */ s32 unkE0;
     /* 0x0e4 */ u8 padE4[0x10];
     /* 0x0f4 */ MKMaterial* unkF4;

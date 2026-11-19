@@ -17,6 +17,8 @@ public:
     virtual void OnEnter(void);
     void Abort(void);
     MCActionScreen(void);
+    static u8 descriptor[0x14];
+    static u8 action[0x4];
     /* 0x004 */ u8 pad4[0xc4];
     /* 0x0c8 */ void** unkC8;
     /* 0x0cc */ u8 padCC[0x4];

@@ -2,9 +2,11 @@
 #define SPYRO_SOURCE_GUNPOWDERFUSE_H
 
 #include <dolphin/types.h>
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/SplineProp.h"
 
 class BurnPoint;
+class EventMessage;
 class GunPowderFuse;
 class GunPowderFuse_cpp;
 class MKIniLine;
@@ -33,7 +35,9 @@ public:
     u8 IsBurntOut(void);
     u8 IsBurning(void);
     void Burn(float);
-    /* 0x0dc */ u8 padDC[0x1c8];
+    /* 0x0b8 */ u8 padB8[0x8];
+    /* 0x0c0 */ EventMessage unkC0;
+    /* 0x0c4 */ u8 padC4[0x1e0];
     /* 0x2a4 */ MKMaterial* unk2A4;
     /* 0x2a8 */ f32 unk2A8;
     /* 0x2ac */ f32 unk2AC;

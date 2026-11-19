@@ -20,7 +20,7 @@ public:
     void SetMaxParticleAge(float);
     void CalculateEnvelope(void);
     void SetEnvelope(MKParticleSystem::Envelope *, int);
-    /* 0x0ec */ u8 padEC[0x4];
+    /* 0x0e4 */ u8 padE4[0xc];
     /* 0x0f0 */ f32 unkF0;
     /* 0x0f4 */ u8 unkF4;
     /* 0x0f5 */ u8 padF5[0x3];

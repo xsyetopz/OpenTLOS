@@ -5,6 +5,7 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/Matrix.h"
 
+class KDSplinePathSegment;
 class MKIniLine;
 class MKProp;
 class MKPropDescriptor;
@@ -23,6 +24,12 @@ public:
     virtual void CalcBounds(void);
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ Matrix unk50;
+    /* 0x090 */ f64 unk90;
+    /* 0x098 */ f64 unk98;
+    /* 0x0a0 */ f64 unkA0;
+    /* 0x0a8 */ f64 unkA8;
+    /* 0x0b0 */ KDSplinePathSegment* unkB0;
+    /* 0x0b4 */ f32 unkB4;
 };
 
 class SplinePropDescriptor : public MKPropDescriptor {  // base: vtable prefix

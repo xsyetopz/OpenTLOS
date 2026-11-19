@@ -22,6 +22,7 @@ public:
     virtual void LoadResources(void);
     virtual void FreeResources(void);
     void SetUVs(float, float, float, float);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x14];
     /* 0x018 */ Attributes unk18;
     /* 0x05a */ u8 pad5A[0x6];

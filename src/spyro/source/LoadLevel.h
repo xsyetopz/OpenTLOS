@@ -25,6 +25,7 @@ public:
     virtual void OnEnter(void);
     virtual void OnExit(void);
     LoadingScreen(void);
+    static u8 descriptor[0x14];
     /* 0x004 */ u8 pad4[0x14];
     /* 0x018 */ f32 unk18;
     /* 0x01c */ f32 unk1C;
@@ -64,6 +65,7 @@ public:
 
 class UIObjectDescriptor {
 public:
+    static UIObjectDescriptor list;
     /* 0x000 */ MCLoadCheckScreen* unk0;
 };
 

@@ -42,6 +42,10 @@ public:
     void InitModule(void);
     s32 GetNextCard(void);
     void * GetCard(int);
+    static KDMemoryCard stateData;
+    static u8 state[0x4];
+    static u8 numCardsPresent[0x4];
+    static u8 currentCard[0x4];
     /* 0x000 */ u8 pad0[0x4];
     /* 0x004 */ s32 unk4;
     /* 0x008 */ u8 unk8;

@@ -33,6 +33,7 @@ public:
     virtual void SetColor(MKVector4);
     virtual void GetColor(void);
     KDParticleEmitterProperty(void);
+    static u8 classInfo[0x10];
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ s32 unk8;
     /* 0x00c */ s32 unkC;
@@ -54,6 +55,7 @@ public:
     virtual void ResolveInstance(void);
     virtual void Update(void);
     virtual void Command(int);
+    static u8 classInfo[0x10];
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ s32 unk8;
     /* 0x00c */ u8 padC[0x4];
@@ -83,6 +85,7 @@ public:
     virtual void ResolveInstance(void);
     virtual void Update(void);
     virtual void Command(int);
+    static u8 classInfo[0x10];
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ s32 unk8;
     /* 0x00c */ u8 padC[0x4];
@@ -105,6 +108,7 @@ public:
     virtual void ResolveInstance(void);
     virtual void Update(void);
     virtual void Command(int);
+    static u8 classInfo[0x10];
     /* 0x004 */ u8 pad4[0x14];
     /* 0x018 */ u8 unk18;
 };

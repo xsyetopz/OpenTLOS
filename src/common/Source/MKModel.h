@@ -26,6 +26,19 @@ public:
     /* 0x008 */ MKAttachment* unk8;
     /* 0x00c */ u8 padC[0x4];
     /* 0x010 */ Matrix unk10;
+    /* 0x050 */ f64 unk50;
+    /* 0x058 */ u8 pad58[0x4];
+    /* 0x05c */ f32 unk5C;
+    /* 0x060 */ f32 unk60;
+    /* 0x064 */ f32 unk64;
+    /* 0x068 */ f32 unk68;
+    /* 0x06c */ f32 unk6C;
+    /* 0x070 */ Animation* unk70;
+    /* 0x074 */ u8 pad74[0xc];
+    /* 0x080 */ void* unk80;
+    /* 0x084 */ ModelCloth* unk84;
+    /* 0x088 */ void* unk88;
+    /* 0x08c */ void* unk8C;
 };
 
 class MKModelSLW {

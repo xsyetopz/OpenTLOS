@@ -23,6 +23,8 @@ public:
     ShwimmaCritter(void);
     void SetAlertState(Shwimma *);
     void FindNewMoveParameters(Shwimma *, float);
+    /* 0x168 */ u8 pad168[0x8];
+    /* 0x170 */ void* unk170;
 };
 
 class Shwimma {

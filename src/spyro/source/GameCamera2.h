@@ -82,6 +82,8 @@ public:
     void TrainExit(void);
     void TrainEnter(void);
     void InitModule(void);
+    static u8 pPossibleStateChanges[0x4];
+    static u8 pEmuStateDescriptors[0x4];
     /* 0x210 */ u8 pad210[0x10];
     /* 0x220 */ f32 unk220;
     /* 0x224 */ f32 unk224;

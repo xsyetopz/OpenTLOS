@@ -73,6 +73,8 @@ public:
     void Release(void);
     void Deactivate(void);
     void Activate(void);
+    static u8 idCounter[0x4];
+    static u8 pResolver[0x4];
     /* 0x004 */ u32 unk4;
     /* 0x008 */ void* unk8;
     /* 0x00c */ s32 unkC;

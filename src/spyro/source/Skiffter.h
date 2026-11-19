@@ -22,6 +22,10 @@ public:
     virtual void Update(void);
     virtual void Draw(void);
     SkiffterCritter(void);
+    /* 0x168 */ u8 pad168[0x8];
+    /* 0x170 */ void* unk170;
+    /* 0x174 */ void* unk174;
+    /* 0x178 */ s32 unk178;
 };
 
 class SkiffterCritterDescriptor : public CrittersDescriptor {  // base: ctor/dtor vtable stores

@@ -249,6 +249,13 @@ public:
     void DrawDebug(void);
     void DrawSpyro(void);
     void GetCollisionCentre(void);
+    static u8 pNodeNames[0x18];
+    static u8 stateCreators[0xf0];
+    static u8 mediumFSMStates[0x6c];
+    static u8 pRefPointNames[0x4];
+    static u8 defaultEvents[0x8];
+    static u8 pAnimScrNodeNames[0x8];
+    static u8 pInstance[0x4];
     /* 0x04c */ s32* unk4C;
     /* 0x050 */ u8 pad50[0x4];
     /* 0x054 */ SpyroStateMachine unk54;

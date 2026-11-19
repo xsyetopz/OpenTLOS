@@ -13,6 +13,8 @@ class FuryFXIce;
 class FuryFXIce_cpp;
 class IceBreathSnowFlakes;
 class MKMaterial;
+class MKModel;
+class MKPropDescriptor;
 class MKVector3;
 class ManagedLight;
 class Matrix;
@@ -50,6 +52,10 @@ public:
     /* 0x11c */ u8 pad11C[0x4];
     /* 0x120 */ WindFX unk120;
     /* 0x150 */ Matrix unk150;
+    /* 0x190 */ MKModel* unk190;
+    /* 0x194 */ MKMaterial* unk194;
+    /* 0x198 */ s32 unk198;
+    /* 0x19c */ MKPropDescriptor* unk19C;
 };
 
 class FuryFXIce_cpp {

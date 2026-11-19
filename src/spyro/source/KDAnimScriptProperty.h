@@ -12,6 +12,7 @@ public:
     virtual void * GetClassInfo(void) const;
     virtual s32 GetInstanceDataSize(void) const;
     virtual void InitInstance(void);
+    static KDAnimScriptProperty classInfo;
 };
 
 #endif  // SPYRO_SOURCE_KDANIMSCRIPTPROPERTY_H

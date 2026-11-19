@@ -114,6 +114,7 @@ public:
     void * GetEdge(FireBossGraphNode *, int);
     void AddEdges(FireBossGraphNode *, KDUniformSpline *, float, float, int, bool, unsigned char, unsigned char);
     void Init(const MKVector3 &, int);
+    static u8 pGraph[0x4];
     /* 0x000 */ u8 pad0[0x4];
     /* 0x004 */ s32 unk4;
     /* 0x008 */ f64 unk8;

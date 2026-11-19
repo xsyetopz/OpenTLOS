@@ -25,6 +25,17 @@ public:
     /* 0x058 */ s32 unk58;
     /* 0x05c */ void* unk5C;
     /* 0x060 */ Matrix unk60;
+    /* 0x0a0 */ f32 unkA0;
+    /* 0x0a4 */ f32 unkA4;
+    /* 0x0a8 */ f32 unkA8;
+    /* 0x0ac */ u8 padAC[0x4];
+    /* 0x0b0 */ f64 unkB0;
+    /* 0x0b8 */ f64 unkB8;
+    /* 0x0c0 */ u32 unkC0;
+    /* 0x0c4 */ f32 unkC4;
+    /* 0x0c8 */ u8 padC8[0x4];
+    /* 0x0cc */ f32 unkCC;
+    /* 0x0d0 */ f32 unkD0;
 };
 
 #endif  // SPYRO_SOURCE_WAKE_H

@@ -70,6 +70,8 @@ public:
     void PropResolver_Remove(MKProp *);
     void PropResolver_Add(MKProp *, const char *);
     void PropResolver_Init(void);
+    static u8 pPropMapping[0x4];
+    static u8 nmbrOfMappings[0x4];
     /* 0x004 */ f32 unk4;
     /* 0x008 */ f32 unk8;
     /* 0x00c */ s8** unkC;

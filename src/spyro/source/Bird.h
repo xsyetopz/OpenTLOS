@@ -64,6 +64,10 @@ public:
     void SetFlyingLoopState(Bird *);
     void SetFlyingEnterState(Bird *);
     void SetIdleState(Bird *);
+    /* 0x168 */ u8 pad168[0x8];
+    /* 0x170 */ void* unk170;
+    /* 0x174 */ void* unk174;
+    /* 0x178 */ s32 unk178;
 };
 
 class BirdCritterDescriptor : public CrittersDescriptor {  // base: ctor/dtor vtable stores

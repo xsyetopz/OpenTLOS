@@ -17,6 +17,7 @@ public:
     virtual s32 LoadLineInstance(MKIniLine *);
     virtual void GetPos(void) const;
     virtual s32 GetPosRef(void) const;
+    static KDPositionProperty classInfo;
 };
 
 #endif  // SPYRO_SOURCE_KDPOSITIONPROPERTY_H

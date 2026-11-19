@@ -35,6 +35,9 @@ public:
     /* 0x0c8 */ Matrix* unkC8;
     /* 0x0cc */ u8 padCC[0x4];
     /* 0x0d0 */ Matrix unkD0;
+    /* 0x110 */ Matrix unk110;
+    /* 0x150 */ s32 unk150;
+    /* 0x154 */ u8 pad154[0x8];
     /* 0x15c */ f32 unk15C;
     /* 0x160 */ f32 unk160;
     /* 0x164 */ u8 pad164[0x170];

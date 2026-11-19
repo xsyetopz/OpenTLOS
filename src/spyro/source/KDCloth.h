@@ -35,6 +35,7 @@ public:
     virtual s32 Query(int);
     virtual void LoadDoneInstance(void);
     virtual void Update(void);
+    static u8 classInfo[0x10];
     /* 0x004 */ u8 pad4[0xc];
     /* 0x010 */ s8* unk10;
     /* 0x014 */ KDClothDescriptor unk14;

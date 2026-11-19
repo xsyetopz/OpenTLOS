@@ -90,6 +90,8 @@ public:
     void AddPath(KDPathSegment *);
     void Deinit(void);
     void Init(int);
+    static u8 pPathLists[0x4];
+    static u8 numTypes[0x4];
     /* 0x000 */ u8 pad0[0x4];
     /* 0x004 */ s32 unk4;
     /* 0x008 */ f32 unk8;

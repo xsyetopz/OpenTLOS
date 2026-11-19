@@ -4,7 +4,11 @@
 #include <dolphin/types.h>
 #include "common/Source/MKProp.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDSpline.h"
 
+class KDPathSegment;
+class KDUniformSpline;
 class MKIniLine;
 class MKProp;
 class MKPropDescriptor;
@@ -24,7 +28,12 @@ public:
     virtual void Update(void);
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ Matrix unk50;
-    /* 0x0dc */ u8 padDC[0xc];
+    /* 0x090 */ s32 unk90;
+    /* 0x094 */ f32 unk94;
+    /* 0x098 */ f32 unk98;
+    /* 0x09c */ void** unk9C;
+    /* 0x0a0 */ KDUniformSpline unkA0;
+    /* 0x0b4 */ KDPathSegment unkB4;
     /* 0x0e8 */ f32 unkE8;
     /* 0x0ec */ f32 unkEC;
     /* 0x0f0 */ f32 unkF0;

@@ -42,6 +42,8 @@ public:
     void LoadAmmoUpdate(void);
     void IdleEnter(void);
     void Unload(void);
+    static u8 states[0xb4];
+    static u8 pEvents[0x8];
     /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ f64 unk90;
     /* 0x098 */ f64 unk98;

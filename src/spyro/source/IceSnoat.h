@@ -55,6 +55,8 @@ public:
     void FindNewRunParameters(IceSnoat *);
     void SetRunState(IceSnoat *);
     void SetBounceState(IceSnoat *);
+    /* 0x168 */ u8 pad168[0x8];
+    /* 0x170 */ void* unk170;
 };
 
 class IceSnoatCritterDescriptor : public CrittersDescriptor {  // base: ctor/dtor vtable stores

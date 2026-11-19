@@ -14,6 +14,7 @@ class FuryFXEarth2;
 class MKMaterial;
 class MKModel;
 class MKProp;
+class MKPropDescriptor;
 class MKVector3;
 class ManagedLight;
 class Matrix;
@@ -56,6 +57,11 @@ public:
     /* 0x140 */ MKModel* unk140;
     /* 0x144 */ u8 pad144[0xc];
     /* 0x150 */ Matrix unk150;
+    /* 0x190 */ MKPropDescriptor* unk190;
+    /* 0x194 */ f32 unk194;
+    /* 0x198 */ u8 unk198;
+    /* 0x199 */ u8 pad199[0x3];
+    /* 0x19c */ f32 unk19C;
 };
 
 #endif  // SPYRO_SOURCE_EARTHBREATHFX_H

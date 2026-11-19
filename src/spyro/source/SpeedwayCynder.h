@@ -62,6 +62,7 @@ public:
     void GlideEnter(void);
     void StateEnter(void);
     void UpdateLookAtNodes(void);
+    static u8 states[0x90];
     /* 0x089 */ u8 pad89[0x7];
     /* 0x090 */ NodeLookAtIK unk90;
     /* 0x0d8 */ NodeLookAtIK unkD8;
