@@ -107,11 +107,9 @@ void TrainGate::Init() {
     this->unkD4 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void TrainGateDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkE4 = ((MKAnimScript *) this->unk34)->GetAnim("closed");
+    M2C_FIELD(this, MKAnim **, 0xE4) = (MKAnim *) ((MKAnimScript *) this->unk34)->GetAnim("closed");
     this->unkE8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("opening"));
     this->unkEC = (long) (((MKAnimScript *) this->unk34)->GetAnim("open"));
 }
-#endif

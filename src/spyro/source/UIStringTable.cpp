@@ -9,7 +9,6 @@
 
 extern UIStringTable *pStringTable;
 
-#if 0 // DRAFT: type mismatch 'const char *' and 'MKStringCache *'
 s32 UIStringTable::Remove(const char *arg0) {
     MKStringCache *temp_r3_18;
     u8 var_r31_19;
@@ -17,7 +16,7 @@ s32 UIStringTable::Remove(const char *arg0) {
     if (arg0 != NULL) {
         temp_r3_18 = this->unk4;
         var_r31_19 = 0;
-        if ((arg0 >= temp_r3_18) && (arg0 < (void *) (this->unk4 + temp_r3_18->GetUsedLength()))) {
+        if (((s32) arg0 >= (s32) temp_r3_18) && ((s32) arg0 < (s32) this->unk4 + (s32) temp_r3_18->GetUsedLength())) {
             var_r31_19 = 1;
         }
         if (var_r31_19 == 0) {
@@ -32,7 +31,6 @@ block_6:
     this->unk0 -= 1;
     return 1;
 }
-#endif
 
 s32 UIStringTable::Add(const char *arg0) {
     if (arg0 == NULL) {

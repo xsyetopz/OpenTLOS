@@ -80,20 +80,17 @@ f32 WaterVolume::Resolve() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, MKCollisionInfo *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, temp_r5_98, 0x40F);
 }
 
-#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match 'MKModel_Create(const char *, const char *, int, MKModelSLW *)'
 s32 WaterVolume::LoadDone() {
     Matrix sp10;
-    M2C_UNK spC;
     s32 temp_r31_161;
 
     KDWaterVolume::LoadDone();
-    this->unk4 = MKModel_Create(MKModel_GetName(M2C_FIELD(this->unk0, MKModel **, 0x2C)), NULL, 2, NULL);
-    M2C_STRUCT_COPY((s32) &spC + 4, (s32) &this->unk50.unk3C + 4, 0x40);
+    this->unk4 = MKModel_Create((const char *) MKModel_GetName(M2C_FIELD(this->unk0, MKModel **, 0x2C)), NULL, 2, NULL);
+    M2C_STRUCT_COPY(&sp10, (u8 *) &this->unk50 + 0x40, 0x40);
     MKModel_SetWorldMatrix(this->unk4, sp10);
     temp_r31_161 = MKModel_GetSubObjectIndex(this->unk4, (SubObjectType) 0, "C_Collide");
     ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(this->unk4, temp_r31_161, (MKCollisionMode) 1, &this->unkE0, 0U);
 }
-#endif
 
 s32 WaterVolume::LoadLine(MKIniLine *arg0) {
     s32 var_r31_189;

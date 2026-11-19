@@ -33,7 +33,6 @@ void UIScreen::OnUp() {
     this->unk80.Send();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void UIScreen::OnExit() {
     s32 sp8;
     UIContainer *temp_r3_103;
@@ -41,9 +40,8 @@ void UIScreen::OnExit() {
     this->unk74.Send();
     temp_r3_103 = this->unkC;
     sp8 = 0x8001;
-    temp_r3_103->Message(&sp8);
+    temp_r3_103->Message((UIMessage *) &sp8);
 }
-#endif
 
 void UIScreen::OnEnter() {
     this->unk68.Send();

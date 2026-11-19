@@ -17,48 +17,46 @@ MKHeap *malloc(M2C_UNK);                            /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void WhirlWindFX::Deinit() {
-    MKHeap *temp_r0_51;
-    MKHeap *temp_r0_70;
-    MKHeap *var_r31_47;
-    MKHeap *var_r3_48;
-    MKHeap *var_r4_46;
+    u32 *var_r4_46;
+    u32 *var_r3_48;
+    u32 var_r31_47;
     u32 temp_r0_56;
+    u32 temp_r0_51;
+    u32 temp_r0_70;
 
-    var_r4_46 = this->unk4C;
-    var_r31_47 = var_r4_46;
+    var_r4_46 = (u32 *) this->unk4C;
+    var_r31_47 = (u32) var_r4_46;
     var_r3_48 = var_r4_46;
 loop_3:
     temp_r0_56 = M2C_FIELD(var_r3_48, u32 *, -4);
-    var_r3_48 -= 4;
+    var_r3_48 -= 1;
     if (temp_r0_56 != 0U) {
-        temp_r0_51 = var_r3_48->unk0;
+        temp_r0_51 = *var_r3_48;
         if (temp_r0_51 < var_r31_47) {
             var_r31_47 = temp_r0_51;
         }
         goto loop_3;
     }
-    if (var_r3_48 != &gEmptyPtrListDL) {
+    if (var_r3_48 != (u32 *) &gEmptyPtrListDL) {
 loop_9:
-        temp_r0_70 = var_r4_46->unk0;
-        if (temp_r0_70 != NULL) {
+        temp_r0_70 = *var_r4_46;
+        if (temp_r0_70 != 0U) {
             if (temp_r0_70 < var_r31_47) {
                 var_r31_47 = temp_r0_70;
             }
-            var_r4_46 += 4;
+            var_r4_46 += 1;
             goto loop_9;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_47, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) var_r31_47, NULL, 0);
         } else {
-            free(var_r31_47);
+            free((MKHeap *) var_r31_47);
         }
     }
     this->unk4C = NULL;
     MKProp::Deinit();
 }
-#endif
 
 void WhirlWindFX::DrawWhirlWind(WhirlWindFX::WhirlWind *arg0) {
 
