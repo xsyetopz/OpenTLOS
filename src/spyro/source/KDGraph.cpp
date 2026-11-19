@@ -83,25 +83,21 @@ s32 KDGraphNode::GetLink(int arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'const KDGraphNode' to 'unsigned long'
 s32 KDGraphNode::IsLinked(KDGraphNode *arg0) const {
     s32 var_ctr_263;
     s32 var_r5_262;
 
     var_r5_262 = 0;
     var_ctr_263 = 6;
-loop_1:
-    if ((u32) *(this + (var_r5_262 + 0x18)) == arg0) {
-        return 1;
-    }
-    var_r5_262 += 4;
-    var_ctr_263 -= 1;
-    if (var_ctr_263 == 0) {
-        return 0;
-    }
-    goto loop_1;
+    do {
+        if (M2C_FIELD((s8 *) this + var_r5_262, u32 *, 0x18) == (u32) arg0) {
+            return 1;
+        }
+        var_r5_262 += 4;
+        var_ctr_263 -= 1;
+    } while (var_ctr_263 != 0);
+    return 0;
 }
-#endif
 
 s32 KDGraphNode::Unlink(int arg0) {
     void *temp_r4_282;
@@ -115,29 +111,24 @@ s32 KDGraphNode::Unlink(int arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDGraphNode' to 'unsigned long'
 s32 KDGraphNode::Unlink(KDGraphNode *arg0) {
     s32 var_ctr_303;
     s32 var_r5_302;
 
     var_r5_302 = 0;
     var_ctr_303 = 6;
-loop_1:
-    if (arg0 == (u32) *(this + (var_r5_302 + 0x18))) {
-        M2C_FIELD((this + var_r5_302), s32 *, 0x18) = 0;
-        this->unk30 -= 1;
-        return 1;
-    }
-    var_r5_302 += 4;
-    var_ctr_303 -= 1;
-    if (var_ctr_303 == 0) {
-        return 0;
-    }
-    goto loop_1;
+    do {
+        if ((u32) arg0 == M2C_FIELD((s8 *) this + var_r5_302, u32 *, 0x18)) {
+            M2C_FIELD((s8 *) this + var_r5_302, s32 *, 0x18) = 0;
+            this->unk30 -= 1;
+            return 1;
+        }
+        var_r5_302 += 4;
+        var_ctr_303 -= 1;
+    } while (var_ctr_303 != 0);
+    return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDGraphNode' to 'unsigned long'
 s32 KDGraphNode::Link(KDGraphNode *arg0, int arg1) {
     s32 var_ctr_332;
     s32 var_r5_331;
@@ -149,8 +140,8 @@ s32 KDGraphNode::Link(KDGraphNode *arg0, int arg1) {
         var_r5_331 = 0;
         var_ctr_332 = 6;
 loop_2:
-        if ((u32) *(this + (var_r5_331 + 0x18)) == 0U) {
-            M2C_FIELD((this + var_r5_331), KDGraphNode **, 0x18) = arg0;
+        if (M2C_FIELD((s8 *) this + var_r5_331, u32 *, 0x18) == 0U) {
+            M2C_FIELD((s8 *) this + var_r5_331, KDGraphNode **, 0x18) = arg0;
             this->unk30 += 1;
             return var_r6_330;
         }
@@ -158,12 +149,11 @@ loop_2:
         var_r5_331 += 4;
         var_ctr_332 -= 1;
         if (var_ctr_332 == 0) {
-            /* Duplicate return node #8. Try simplifying control flow for better match */
             return -1;
         }
         goto loop_2;
     }
-    temp_r6_352 = this + (arg1 * 4);
+    temp_r6_352 = (s8 *) this + (arg1 * 4);
     if ((KDGraphNode *) M2C_FIELD(temp_r6_352, KDGraphNode **, 0x18) == NULL) {
         M2C_FIELD(temp_r6_352, KDGraphNode **, 0x18) = arg0;
         this->unk30 += 1;
@@ -171,7 +161,6 @@ loop_2:
     }
     return -1;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void KDGraphNode::Init() {
