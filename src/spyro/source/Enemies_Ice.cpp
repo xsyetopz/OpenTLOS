@@ -158,50 +158,46 @@ void IceTier2::SetupCollision() {
     this->unkB10 = (MKCollisionInfo *) this->unk634;
 }
 
-#if 0 // DRAFT: ')' expected
 void IceTier2::OnArmourDestroyed() {
-    CharacterBreathFX *temp_r4_192;
+    IceTier2Descriptor *desc;
+    CharacterBreathFX *breath;
 
     SetCurrAnimSet(1);
     this->unkB60 = 1;
-    MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), 1U, 1U);
-    temp_r4_192 = this->unkA0C;
-    if (temp_r4_192 != NULL) {
-        temp_r4_192->unk10 &= ~0x40;
+    desc = checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, desc->unk2B8, 1, 1);
+    breath = this->unkA0C;
+    if (breath != NULL) {
+        breath->unk10 &= ~0x40;
     }
     M2C_FIELD(this->unk634, s8 *, 4) = 0;
     this->unkB14->unk4 = 1;
     this->unk634 = this->unkB14;
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 s32 IceTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
-    s32 var_r8_221;
-    u32 var_r7_220;
-    void *temp_r3_233;
+    IceTier2Descriptor *desc;
+    u32 sum;
+    s32 i;
 
-    var_r7_220 = 0U;
-    var_r8_221 = 0;
+    sum = 0U;
+    i = 0;
     this->unkB60 = 0;
     this->unk634 = this->unkB10;
-loop_2:
-    if ((s8) M2C_FIELD((&fingerprintData + var_r8_221), u8 *, 8) != 0) {
-        temp_r3_233 = &fingerprintData + var_r8_221;
-        var_r8_221 += 1;
-        var_r7_220 += (s8) M2C_FIELD(temp_r3_233, u8 *, 8);
-        goto loop_2;
+    while ((s8) fingerprintData[i + 8] != 0) {
+        sum += (s8) fingerprintData[i + 8];
+        i += 1;
     }
-    if (var_r7_220 != (u32) M2C_FIELD(&fingerprintData, u32 *, 0x108)) {
+    if (sum != M2C_FIELD(fingerprintData, u32 *, 0x108)) {
         this->unkB01 |= 0x80;
     }
     if (Enemy::Spawn(arg0, arg1) != 0) {
-        MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), 0U, 1U);
+        desc = checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, desc->unk2B8, 0, 1);
         return 1;
     }
     return 0;
 }
-#endif
 
 void IceTier2::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
