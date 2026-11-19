@@ -412,7 +412,7 @@ void BoneBlurFX::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void BoneBlurFXDescriptor::DrawInstances() {
     void *var_r30_773;
     void *var_r31_768;
@@ -447,7 +447,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void BoneBlurFXDescriptor::Deinit() {
     BoneBlurFXDescriptor *temp_r4_822;
     BoneBlurFXDescriptor *temp_r4_828;
@@ -470,7 +470,7 @@ void BoneBlurFXDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void BoneBlurFXDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk68 = (BoneBlurFXDescriptor *) pFirstDesc.__vptr;

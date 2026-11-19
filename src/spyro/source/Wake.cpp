@@ -290,7 +290,7 @@ loop_41:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void Wake::Reset() {
     f64 sp20;
     f64 sp18;
@@ -335,7 +335,7 @@ void Wake::Deinit() {
     this->unk4C = NULL;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
+#if 0 // DRAFT: undefined identifier 'unk40'
 void Wake::Init() {
     MKHeap *temp_r3_587;
     void *var_r3_594;

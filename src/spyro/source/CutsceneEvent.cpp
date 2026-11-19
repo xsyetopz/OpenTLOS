@@ -8,7 +8,6 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Collectable.h"
-#include "spyro/source/CutsceneSystem.h"
 #include "spyro/source/Explosion4.h"
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/KDSynkerPlayerActorList.h"
@@ -148,7 +147,7 @@ s32 LavaBubbleCE::LoadLine() {
     return var_r31_208;
 }
 
-#if 0 // DRAFT: undefined identifier 'pLine'
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 ImageCE::LoadVector2(const char *arg0, MKVector2 *arg1) {
     u8 var_r31_248;
 
@@ -210,7 +209,7 @@ void ImageCE::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'updateData'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void ImageCE::Update() {
     this->unk40 = M2C_BITWISE(f32, updateData.__vptr);
     this->unk44 = (M2C_FIELD(&updateData, f32 *, 4) - (f32) M2C_FIELD(&updateData, s32 *, 8)) / (f32) M2C_FIELD(&updateData, s32 *, 0xC);
@@ -273,13 +272,13 @@ s32 SpawnGemsCE::LoadLine() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pSynker'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void DisableShadowCE::Exit() {
     ((Shadow *) (M2C_FIELD(pSynker.__vptr, s32 *, 0x104) + (this->unk4 * 0x138)))->Show(1U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pSynker'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void DisableShadowCE::Enter() {
     ((Shadow *) (M2C_FIELD(pSynker.__vptr, s32 *, 0x104) + (this->unk4 * 0x138)))->Show(0U);
 }
@@ -449,7 +448,7 @@ void FadeCE::Exit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'updateData'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void FadeCE::Update() {
     this->unk14 = M2C_BITWISE(f32, updateData.__vptr);
     M2C_FIELD(&gb, f64 *, 0x40) = (f64) this->unk8;
@@ -697,7 +696,7 @@ void ScriptCE::Enter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pLine'
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 ScriptCE::LoadLine() {
     s32 temp_r31_1782;
     s32 var_r31_1774;
@@ -1049,11 +1048,5 @@ void AttachCE::Init() {
     this->unk8.unk4 = 0.0f;
     this->unk8.unk8 = 0.0f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GameSynkerPlayer *, KDSynkerPlayer3>(KDSynkerPlayer3 *arg0) {
-
-}
-#endif
 
 /* KDSynkerPlayerEventCreationTableHelper<PlaySecondaryAnimCE>::Create (void) */

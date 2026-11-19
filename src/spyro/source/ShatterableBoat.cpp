@@ -1204,12 +1204,6 @@ void ShatterableBoatDescriptor::Init() {
     this->unk170 = GS_PLACEHOLDER;
 }
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_200lit_GetTimeLastHit'
 void ShatterableBoat::lit_200lit_GetTimeLastHit() {
     ((ShatterableBoat *) (this - 0xC8))->ShatterableBoat::GetTimeLastHit();

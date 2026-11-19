@@ -315,9 +315,3 @@ void ConvexTier2Descriptor::Init() {
     EnemyDescriptor::Init();
     this->unkD0 = 0.0f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ConvexTier2Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

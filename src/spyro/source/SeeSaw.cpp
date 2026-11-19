@@ -26,6 +26,7 @@ void SeeSaw::Detach(PlatformAttachment *arg0) {
     arg0->unk8 = arg0;
 }
 
+#if 0 // DRAFT: undefined identifier 'unk88'
 void SeeSaw::Attach(PlatformAttachment *arg0) {
     arg0->unk8 = (PlatformAttachment *) &this->unk90.unk88;
     arg0->unkC = this->unk124;
@@ -33,8 +34,9 @@ void SeeSaw::Attach(PlatformAttachment *arg0) {
     arg0->unkC->unk8 = arg0;
     this->unk13C += 1;
 }
+#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk60'
 void SeeSaw::Message(MKMessage *arg0) {
     s32 temp_r0_111;
     void *temp_r3_120;
@@ -331,7 +333,7 @@ s32 SeeSaw::LoadLine(MKIniLine *arg0) {
     return var_r31_699;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk60'
 void SeeSaw::Resolve() {
     void *temp_r31_751;
 
@@ -341,7 +343,7 @@ void SeeSaw::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch
+#if 0 // DRAFT: undefined identifier 'unk120'
 void SeeSaw::Deinit() {
     s32 spC;
     s32 sp8;
@@ -397,9 +399,3 @@ void SeeSawDescriptor::Init() {
     this->unk80 = 100.0f;
     this->unk84 = 0.0000005f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SeeSawDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

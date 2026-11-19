@@ -80,9 +80,3 @@ void GamePropColoredDescriptor::Init() {
     this->unkE4 = NULL;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GamePropColoredDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

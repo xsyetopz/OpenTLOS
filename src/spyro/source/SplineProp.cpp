@@ -6,7 +6,7 @@
 #include <m2c_macros.h>
 
 extern f32 *KDSpline_PositionMixer;
-#if 0 // DRAFT: undefined identifier 'sp48'
+#if 0 // DRAFT: undefined identifier 'unk60'
 static BoundingVolume volume;                       /* type too large by 0x10; unable to generate initializer: not enough data */
 
 void SplineProp::CalcBounds() {
@@ -160,7 +160,7 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unk60'
 void SplineProp::LoadDone() {
     KDUniformSpline sp10;
     f32 sp8;
@@ -179,7 +179,7 @@ void SplineProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk60'
 s32 SplineProp::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
@@ -202,7 +202,7 @@ s32 SplineProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk60'
 void SplineProp::Deinit() {
     s32 temp_r3_292;
 
@@ -216,11 +216,13 @@ void SplineProp::Deinit() {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk60'
 void SplineProp::Init() {
     MKProp::Init();
     this->unk50.unk60 = 0;
     this->unk50.unk64 = 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'volume'
 void SplinePropDescriptor::Init() {

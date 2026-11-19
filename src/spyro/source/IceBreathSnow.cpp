@@ -93,7 +93,7 @@ void IceBreathSnow::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gIceBreathSnowEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void IceBreathSnow::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 10.5f;
@@ -105,11 +105,5 @@ void IceBreathSnow::Init() {
     SetMaxParticleAge(0.35f);
     this->unk60.unk50 = 0.0f;
     this->unkF0 = 0.0f;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MKBaseParticleSystemDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

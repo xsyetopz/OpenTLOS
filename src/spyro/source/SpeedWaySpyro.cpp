@@ -2715,30 +2715,6 @@ void SpeedWaySpyroDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpeedWayFuturePosRequestMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpeedwayCynder *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpeedWay *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_818'
 void SpeedWaySpyro_cpp::__sinit() {
     s32 sp44;

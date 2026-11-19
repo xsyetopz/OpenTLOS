@@ -17,7 +17,7 @@ void *malloc(s32);                                  /* extern */
 extern MKSceneManager *gMK;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk44'
 void TrapSpawnPool::Update() {
     u8 sp1C;
     s32 sp18;
@@ -59,10 +59,12 @@ loop_6:
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk44'
 void TrapSpawnPool::Reset() {
     MKProp::Reset();
     this->unk50.unk44 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unk50.unk48;
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'unk84'
 void TrapSpawnPool::Resolve() {
@@ -208,7 +210,7 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to
+#if 0 // DRAFT: undefined identifier 'unk40'
 void TrapSpawnPool::LoadDone() {
     MKHeap *temp_r3_412;
     s32 temp_r31_411;
@@ -238,7 +240,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier 'unk40'
 s32 TrapSpawnPool::LoadLine(MKIniLine *arg0) {
     s32 var_r31_462;
 
@@ -250,7 +252,7 @@ s32 TrapSpawnPool::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk64'
 void TrapSpawnPool::Deinit() {
     MKHeap *temp_r3_589;
     f32 temp_r31_588;
@@ -268,7 +270,7 @@ void TrapSpawnPool::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk40'
 void TrapSpawnPool::Init() {
     MKProp::Init();
     this->unk50.unk40 = 0.0f;
@@ -318,11 +320,5 @@ void TrapSpawnPoolDescriptor::Init() {
     this->unk1C = (BoundingVolume *) &this->unk70;
     this->unk60 = NULL;
     M2C_FIELD(this, s8 *, 0x64) = 0;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TrapSpawnPoolDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

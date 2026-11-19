@@ -117,7 +117,7 @@ void FlameBreathPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gFlameBreathPSEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void FlameBreathPS::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 10.5f;
@@ -137,11 +137,5 @@ void FlameBreathPSDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();
     this->unk80 = 1;
     this->unk84 = 1.0f / (f32) this->unk80;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FlameBreathPSDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

@@ -100,7 +100,7 @@ void MCText::Draw(const RenderContext &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'selectedCard'
+#if 0 // DRAFT: expression syntax error
 void MemoryCardScreen::ExamineCard() {
     s32 temp_r30_344;
     s32 var_ctr_319;
@@ -180,7 +180,7 @@ void MemoryCardScreen::OnExit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'operation'
+#if 0 // DRAFT: expression syntax error
 void MemoryCardScreen::OnEnter() {
     UIObject *var_r30_429;
     s32 temp_r3_426;

@@ -104,9 +104,3 @@ loop_2:
     this->unk9C = checked_cast<Steam *, MKProp>(gMK->CreateProp("Steam"));
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<RefFXEmitterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

@@ -76,7 +76,7 @@ void Connector::Init() {
     memset(&this->unk50.unk48, 0, 0xCU);
 }
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void ConnectorDescriptor::Deinit() {
     ConnectorDescriptor *temp_r4_211;
     ConnectorDescriptor *temp_r4_217;
@@ -99,7 +99,7 @@ void ConnectorDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void ConnectorDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk68 = (ConnectorDescriptor *) pFirstDesc.__vptr;
@@ -162,11 +162,5 @@ loop_17:
 block_13:
     var_r29_291 = checked_cast<Connector *, MKProp>(var_r29_291->unk38);
     goto loop_14;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Connector *, MKProp>(MKProp *arg0) {
-
 }
 #endif

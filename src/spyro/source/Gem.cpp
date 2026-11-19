@@ -453,12 +453,6 @@ void GemDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GemDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 void Gem_cpp::__sinit() {
     f32 temp_f0_925;
     f64 temp_f1_906;

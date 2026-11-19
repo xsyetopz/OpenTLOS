@@ -247,9 +247,3 @@ void WobblePropDescriptor::Init() {
     this->unkE8 = 0.05f;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<WobblePropDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

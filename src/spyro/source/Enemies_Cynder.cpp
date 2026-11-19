@@ -1752,48 +1752,6 @@ void CynderTier1Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EnemyGoal_Think *, Goal<Enemy>>(Goal<Enemy> *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<BoneBlurFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ZapPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Ball *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CynderTier3Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CynderTier1Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<BallDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'cynderTier1BodyFXInit'
 void Enemies_Cynder_cpp::__sinit() {
     f32 sp540;

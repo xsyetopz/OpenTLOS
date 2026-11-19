@@ -505,7 +505,7 @@ block_127:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'action'
+#if 0 // DRAFT: expression syntax error
 void MCActionScreen::OnEnter() {
     s32 spB4;
     s32 spB0;

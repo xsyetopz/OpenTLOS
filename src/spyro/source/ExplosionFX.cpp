@@ -18,7 +18,7 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void ExplosionFX::CreateShockwave(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     f64 sp20;
     f64 sp18;
@@ -164,7 +164,7 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp1BC'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void ExplosionFX::DrawShockwaves() {
     f64 sp220;
     f64 sp218;
@@ -466,6 +466,7 @@ void ExplosionFX::Draw() {
     DrawShockwaves();
 }
 
+#if 0 // DRAFT: undefined identifier 'unk40'
 void ExplosionFX::Update() {
     Matrix **temp_r4_862;
     Matrix **temp_r4_891;
@@ -514,6 +515,7 @@ loop_10:
         goto loop_10;
     }
 }
+#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ExplosionFX::Init() {

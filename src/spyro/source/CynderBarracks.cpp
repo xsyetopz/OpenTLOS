@@ -131,9 +131,3 @@ void CynderBarracksDescriptor::Init() {
     this->unk16C.Init();
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CynderBarracksDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

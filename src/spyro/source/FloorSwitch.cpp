@@ -541,18 +541,6 @@ void FloorSwitchDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IsActivatedMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 void FloorSwitch_cpp::__sinit() {
     f64 temp_f1_1156;
     f64 temp_f1_1164;

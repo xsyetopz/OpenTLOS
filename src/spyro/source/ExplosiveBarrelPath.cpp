@@ -1159,15 +1159,3 @@ void ExplosiveBarrelPathDescriptor::Init() {
     this->unkC |= 0x802;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ExplosiveBarrel *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ExplosiveBarrelPathDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

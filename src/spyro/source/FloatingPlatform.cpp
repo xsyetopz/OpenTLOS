@@ -177,7 +177,6 @@ void FloatingPlatform::Resolve() {
     this->unk190 = MKModel_GetRefPointIndex(this->unk4, "r_flame");
 }
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
 void FloatingPlatform::LoadDone() {
     Platform::LoadDone();
     this->unk188 *= 100.0f;
@@ -185,7 +184,6 @@ void FloatingPlatform::LoadDone() {
     M2C_FIELD(this, f64 *, 0x1B8) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x40);
     M2C_FIELD(this, f64 *, 0x1C0) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x48);
 }
-#endif
 
 #if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
 s32 FloatingPlatform::LoadLine(MKIniLine *arg0) {

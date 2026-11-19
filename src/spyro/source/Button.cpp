@@ -100,9 +100,3 @@ void ButtonDescriptor::LoadDone() {
     this->unkF0 = this->unk34->GetAnim("deactivating");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ButtonDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

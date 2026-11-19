@@ -34,12 +34,14 @@ void SparxPath::Message(MKMessage *arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk70'
 void SparxPath::Resolve() {
     MKProp::Resolve();
     this->unk50.unk70 *= 100.0f;
 }
+#endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk70'
 s32 SparxPath::LoadLine(MKIniLine *arg0) {
     s32 var_r31_123;
 
@@ -55,10 +57,12 @@ void SparxPath::Deinit() {
     SplineProp::Deinit();
 }
 
+#if 0 // DRAFT: undefined identifier 'unk70'
 void SparxPath::Init() {
     this->unk50.unk70 = 200.0f;
     SplineProp::Init();
 }
+#endif
 
 void SparxPath_cpp::__sinit() {
     f32 temp_f0_217;

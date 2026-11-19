@@ -12,7 +12,7 @@ void *malloc(s32);                                  /* extern */
 s32 stricmp(s8 *);                                  /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern void **gb;
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk44'
 static TriggerBoxObject tempBoxRot__16TriggerBoxObject; /* type too large by 0xAC; unable to generate initializer: confusing struct layout */
 
 s32 TriggerPolyObject::CheckTarget() {
@@ -44,7 +44,7 @@ s32 TriggerPolyObject::CheckTarget() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk78'
 s32 TriggerPolyObject::CheckPos(const MKVector3 &arg0) {
     f32 temp_f1_81;
     s32 var_r31_84;
@@ -62,7 +62,7 @@ s32 TriggerPolyObject::CheckPos(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk78'
 void TriggerPolyObject::LoadDone() {
     f32 temp_f1_126;
     f32 temp_f1_134;
@@ -89,7 +89,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk70'
 s32 TriggerPolyObject::LoadLine(char *arg0, MKIniLine *arg1) {
     MKHeap *temp_r3_174;
     MKIniLine *var_r28_192;
@@ -126,7 +126,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk74'
 void TriggerPolyObject::Deinit() {
     MKHeap *temp_r3_234;
     f32 temp_r31_233;
@@ -141,6 +141,7 @@ void TriggerPolyObject::Deinit() {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk70'
 void TriggerPolyObject::Init() {
     TriggerObject::Init();
     this->unk10.unk70 = 0.0f;
@@ -148,8 +149,9 @@ void TriggerPolyObject::Init() {
     this->unkA4 = 9.99999e7f;
     this->unkA8 = -9.99999e7f;
 }
+#endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk70'
 s32 TriggerPlaneGroupObject::AddPlane(TriggerPlaneObject *arg0) {
     TriggerPlaneObject ***temp_r5_295;
     f32 var_r6_280;
@@ -282,7 +284,7 @@ void TriggerPlaneGroupObject::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk70'
 void TriggerPlaneGroupObject::Deinit() {
     MKHeap *temp_r3_642;
     f32 var_r31_616;
@@ -332,7 +334,7 @@ void TriggerPlaneObject::LoadDone() {
     this->unkC4 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'tempBoxRot'
+#if 0 // DRAFT: expression syntax error
 void TriggerBoxObject::LoadDone(const MKVector3 &arg0, const Matrix &arg1) {
     tempBoxRot.__vptr = 0.0f;
     tempBoxRot.unk4 = 0.0f;
@@ -347,7 +349,7 @@ void TriggerBoxObject::LoadDone(const MKVector3 &arg0, const Matrix &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'tempBoxRot'
+#if 0 // DRAFT: expression syntax error
 void TriggerBoxObject::LoadDone() {
     this->unk10.SetRotationPYR(*((MKVector3 *) &tempBoxRot));
     tempBoxRot.__vptr = 0.0f;
@@ -392,7 +394,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void TriggerSphereObject::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -416,7 +418,7 @@ void TriggerSphereObject::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
+#if 0 // DRAFT: undefined identifier 'unk70'
 s32 TriggerSphereObject::LoadLine(char *arg0, MKIniLine *arg1) {
     f64 sp18;
     f64 sp10;
@@ -473,11 +475,14 @@ loop_11:
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk70'
 void TriggerSphereObject::Init(float arg0) {
     TriggerObject::Init();
     this->unk10.unk70 = arg0;
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unk40'
 u16 TriggerObject::Update() {
     f32 temp_r3_1086;
     f32 temp_r3_1097;
@@ -504,7 +509,9 @@ u16 TriggerObject::Update() {
     }
     return M2C_BITWISE(u16, this->unk10.unk40);
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unk40'
 void TriggerObject::EnableTrigger(bool arg0) {
     if (arg0 != 0) {
         this->unk10.unk40 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk10.unk40) | 1));
@@ -512,6 +519,7 @@ void TriggerObject::EnableTrigger(bool arg0) {
     }
     this->unk10.unk40 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk10.unk40) & ~9));
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'IsWithIn'
 void TriggerObject::Message(MKMessage *arg0) {
@@ -534,9 +542,11 @@ void TriggerObject::Message(MKMessage *arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk40'
 void TriggerObject::Reset() {
     this->unk10.unk40 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk10.unk40) & 0xFFFFFFF1));
 }
+#endif
 
 #if 0 // DRAFT: function call 'stricmp(const char[4])' does not match
 u8 TriggerObject::LoadLine(MKIniLine *arg0) {
@@ -558,6 +568,7 @@ u8 TriggerObject::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk40'
 void TriggerObject::Init() {
     this->unk10.SetIdentity();
     this->unk10.unk40 = 1e-45f;
@@ -568,11 +579,6 @@ void TriggerObject::Init() {
     this->unk10.unk60 = 2.0f;
     this->unk10.unk64 = 2.0f;
     this->unk10.unk68 = 2.0f;
-}
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IsWithIn *, MKMessage>(MKMessage *arg0) {
-
 }
 #endif
 

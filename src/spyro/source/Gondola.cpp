@@ -855,18 +855,6 @@ void GondolaDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SkyClouds *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GondolaDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 void Gondola_cpp::__sinit() {
     f32 temp_f0_1815;
     f64 temp_f1_1796;

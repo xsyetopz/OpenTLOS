@@ -982,18 +982,6 @@ void StalactiteChargeDescriptor::Init() {
     this->unk60 = GS_PLACEHOLDER;
 }
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CutsceneProp *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<StalactiteChargeDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_672'
 void StalactiteCharge_cpp::__sinit() {
     s32 sp2C;

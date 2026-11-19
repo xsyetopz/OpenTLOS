@@ -229,9 +229,3 @@ void CynderElecAttackDescriptor::Deinit() {
     pCynderElecAttackDescriptor = NULL;
     KDPropExDescriptor::Deinit();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CynderElecAttackDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

@@ -209,12 +209,6 @@ void SnowBallTree_InitModule() {
 
 }
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 void SnowballTree_cpp::__sinit() {
     f32 temp_f0_585;
     f64 temp_f1_566;

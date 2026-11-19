@@ -1258,21 +1258,3 @@ void FireBombFX::Init() {
     this->unk1BC.Init(3, 0U);
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ClusterBomb *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ShapedTrailFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

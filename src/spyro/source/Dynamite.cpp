@@ -879,15 +879,3 @@ void DynamiteDescriptor::Init() {
     this->unkF4 = 0;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Dynamite *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DynamiteDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

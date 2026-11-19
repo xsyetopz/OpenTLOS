@@ -2372,24 +2372,6 @@ void DojoEnemyDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EnemySpawnPointData *, SpawnPointData>(SpawnPointData *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CharacterDojoFX *, CharacterBodyFX>(CharacterBodyFX *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'dojoTier1BodyFXInit'
 void Enemies_Dojo_cpp::__sinit() {
     f32 sp380;

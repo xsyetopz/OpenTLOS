@@ -10,7 +10,7 @@
 s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void ControllerRumbleProperty::DoRumble() {
     void **temp_r3_49;
     void *temp_r31_45;
@@ -40,7 +40,7 @@ s32 ControllerRumbleProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 s32 ControllerRumbleProperty::LoadLineInstance(MKIniLine *arg0) {
     s32 var_r31_148;
 
@@ -52,7 +52,7 @@ s32 ControllerRumbleProperty::LoadLineInstance(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void ControllerRumbleProperty::InitInstance() {
     MKIniLine *var_r31_235;
     void *temp_r3_229;

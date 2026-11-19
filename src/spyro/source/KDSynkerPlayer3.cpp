@@ -260,7 +260,7 @@ void KDSynkerPlayer3::Unload() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pActorCallback'
+#if 0 // DRAFT: expression syntax error
 void KDSynkerPlayer3::Draw() {
     KDSP_Actor *temp_r3_526;
     s32 temp_r30_520;

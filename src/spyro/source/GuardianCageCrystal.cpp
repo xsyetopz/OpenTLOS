@@ -303,21 +303,3 @@ void GuardianCageCrystalDescriptor::LoadDone() {
 void GuardianCageCrystalDescriptor::Init() {
     ShatterableDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GuardianCage *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EnergyBeam *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GuardianCageCrystalDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

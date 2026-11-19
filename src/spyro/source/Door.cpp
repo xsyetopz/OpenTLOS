@@ -133,9 +133,3 @@ void DoorDescriptor::Init() {
     this->unkF4 = 0;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DoorDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

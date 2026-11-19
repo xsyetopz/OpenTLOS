@@ -923,12 +923,6 @@ void DragonBust::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FloorSwitch *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier '__ptmf_null'
 void DragonBust_cpp::__sinit() {
     s32 sp10;

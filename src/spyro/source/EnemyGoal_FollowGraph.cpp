@@ -5767,21 +5767,3 @@ void EnemyGoal_GraphWalk::Activate() {
     }
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CynderTier3 *, Enemy>(Enemy *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElementalSpline *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpawnPoint *, MKProp>(MKProp *arg0) {
-
-}
-#endif

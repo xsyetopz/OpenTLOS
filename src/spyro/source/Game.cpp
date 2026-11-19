@@ -1204,12 +1204,6 @@ void Game_VideoEventCallback(GameVideoEvent arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Spyro *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: pointer/array required
 void Game_cpp::__sinit() {
     f32 sp14;

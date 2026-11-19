@@ -1693,7 +1693,7 @@ void OptionButton::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'descriptor'
+#if 0 // DRAFT: expression syntax error
 void ThrobButton::Message(UIMessage *arg0) {
     s32 temp_r0_3670;
     void *var_r31_3729;
@@ -1755,7 +1755,7 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'descriptor'
+#if 0 // DRAFT: expression syntax error
 void ThrobButton::Update() {
     UIContainer::Update();
     if ((u8) this->unk15 == 0) {
@@ -2231,211 +2231,6 @@ loop_6:
     }
     var_r30_4452 = (UIObject *) var_r30_4452->unkC;
     goto loop_6;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
-s32 ui_cast<UIImage *, UIObject *>(UIObject *arg0) {
-    UIImage *sp8;
-
-    sp8 = NULL;
-    ui_cast_ptr<UIImage, UIObject>(sp8, arg0);
-    return (s32) sp8;
-}
-#endif
-
-#if 0 // DRAFT: declaration syntax error
-UIObject *ui_cast<OptionButton *, UIObject *>(UIObject *arg0) {
-    OptionButton *sp8;
-
-    sp8 = NULL;
-    ui_cast_ptr<OptionButton, UIObject>(sp8, arg0);
-    return (UIObject *) sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
-ScriptProgressBar *ui_cast<ScriptProgressBar *, UIObject *>(UIObject *arg0) {
-    ScriptProgressBar *sp8;
-
-    sp8 = NULL;
-    ui_cast_ptr<ScriptProgressBar, UIObject>(sp8, arg0);
-    return sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
-PromptGroup *ui_cast<PromptGroup *, UIObject *>(UIObject *arg0) {
-    PromptGroup *sp8;
-
-    sp8 = NULL;
-    ui_cast_ptr<PromptGroup, UIObject>(sp8, arg0);
-    return sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
-UIScreen *ui_cast<UIScreen *, UIContainer *>(UIContainer *arg0) {
-    UIScreen *sp8;
-
-    sp8 = NULL;
-    ui_cast_ptr<UIScreen, UIContainer>(sp8, arg0);
-    return sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void ui_cast_ptr<UIScreen, UIContainer>(UIScreen *&arg0, UIContainer *arg1) {
-    u8 var_r0_4627;
-    void *var_r5_4622;
-
-    if (arg1 != NULL) {
-        var_r5_4622 = arg1->unk8;
-loop_2:
-        if (var_r5_4622 == &descriptor) {
-            var_r0_4627 = 1;
-        } else {
-            var_r5_4622 = M2C_FIELD(var_r5_4622, void **, 4);
-            if (var_r5_4622 == NULL) {
-                var_r0_4627 = 0;
-            } else {
-                goto loop_2;
-            }
-        }
-        if (var_r0_4627 != 0) {
-            &arg0 = checked_cast<UIScreen *, UIContainer>(arg1);
-        }
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void ui_cast_ptr<PromptGroup, UIObject>(PromptGroup *&arg0, UIObject *arg1) {
-    u8 var_r0_4664;
-    void *var_r5_4659;
-
-    if (arg1 != NULL) {
-        var_r5_4659 = arg1->unk8;
-loop_2:
-        if (var_r5_4659 == &descriptor) {
-            var_r0_4664 = 1;
-        } else {
-            var_r5_4659 = M2C_FIELD(var_r5_4659, void **, 4);
-            if (var_r5_4659 == NULL) {
-                var_r0_4664 = 0;
-            } else {
-                goto loop_2;
-            }
-        }
-        if (var_r0_4664 != 0) {
-            &arg0 = checked_cast<PromptGroup *, UIObject>(arg1);
-        }
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void ui_cast_ptr<ScriptProgressBar, UIObject>(ScriptProgressBar *&arg0, UIObject *arg1) {
-    u8 var_r0_4701;
-    void *var_r5_4696;
-
-    if (arg1 != NULL) {
-        var_r5_4696 = arg1->unk8;
-loop_2:
-        if (var_r5_4696 == &descriptor) {
-            var_r0_4701 = 1;
-        } else {
-            var_r5_4696 = M2C_FIELD(var_r5_4696, void **, 4);
-            if (var_r5_4696 == NULL) {
-                var_r0_4701 = 0;
-            } else {
-                goto loop_2;
-            }
-        }
-        if (var_r0_4701 != 0) {
-            &arg0 = checked_cast<ScriptProgressBar *, UIObject>(arg1);
-        }
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void ui_cast_ptr<OptionButton, UIObject>(OptionButton *&arg0, UIObject *arg1) {
-    u8 var_r0_4738;
-    void *var_r5_4733;
-
-    if (arg1 != NULL) {
-        var_r5_4733 = arg1->unk8;
-loop_2:
-        if (var_r5_4733 == &descriptor) {
-            var_r0_4738 = 1;
-        } else {
-            var_r5_4733 = M2C_FIELD(var_r5_4733, void **, 4);
-            if (var_r5_4733 == NULL) {
-                var_r0_4738 = 0;
-            } else {
-                goto loop_2;
-            }
-        }
-        if (var_r0_4738 != 0) {
-            &arg0 = checked_cast<OptionButton *, UIObject>(arg1);
-        }
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void ui_cast_ptr<UIImage, UIObject>(UIImage *&arg0, UIObject *arg1) {
-    u8 var_r0_4775;
-    void *var_r5_4770;
-
-    if (arg1 != NULL) {
-        var_r5_4770 = arg1->unk8;
-loop_2:
-        if (var_r5_4770 == &descriptor) {
-            var_r0_4775 = 1;
-        } else {
-            var_r5_4770 = M2C_FIELD(var_r5_4770, void **, 4);
-            if (var_r5_4770 == NULL) {
-                var_r0_4775 = 0;
-            } else {
-                goto loop_2;
-            }
-        }
-        if (var_r0_4775 != 0) {
-            &arg0 = checked_cast<UIImage *, UIObject>(arg1);
-        }
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<UIImage *, UIObject>(UIObject *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<OptionButton *, UIObject>(UIObject *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ScriptProgressBar *, UIObject>(UIObject *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PromptGroup *, UIObject>(UIObject *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<UIScreen *, UIContainer>(UIContainer *arg0) {
-
 }
 #endif
 

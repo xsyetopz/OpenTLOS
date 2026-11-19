@@ -1322,15 +1322,3 @@ void IceBossStalactiteDescriptor::LoadDone() {
     this->unk16C = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IceBossStalactite *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IceBossStalactiteDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

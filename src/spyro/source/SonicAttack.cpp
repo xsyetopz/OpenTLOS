@@ -284,7 +284,7 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void SonicAttack::SpawnSonicRing(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp20;
     f64 sp18;

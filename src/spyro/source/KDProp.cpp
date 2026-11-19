@@ -324,7 +324,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pCustomAnimScrName'
+#if 0 // DRAFT: expression syntax error
 void KDProp::LoadDone() {
     MKAnim *var_r3_627;
     MKAnim *var_r3_647;
@@ -529,11 +529,5 @@ void KDProp_InitModule(KDPropModuleInfo *arg0) {
     M2C_FIELD(&modInfo, s32 *, 0x10) = (s32) arg0->unk10;
     M2C_FIELD(&modInfo, u8 *, 0x14) = (u8) arg0->unk14;
     M2C_FIELD(&modInfo, u8 *, 0x15) = (u8) arg0->unk15;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDS_Message_PropGetCollisionColor *, MKMessage>(MKMessage *arg0) {
-
 }
 #endif

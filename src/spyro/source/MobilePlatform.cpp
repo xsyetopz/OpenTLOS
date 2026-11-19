@@ -593,7 +593,7 @@ void MobilePlatform::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'mpfLoadInfo'
+#if 0 // DRAFT: expression syntax error
 s32 MobilePlatform::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1449;
 
@@ -621,7 +621,7 @@ void MobilePlatform::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'mpfLoadInfo'
+#if 0 // DRAFT: expression syntax error
 void MobilePlatform::Init() {
     Platform::Init();
     M2C_FIELD(&mpfLoadInfo, s8 *, 0xC) = 0;
@@ -649,7 +649,7 @@ void MobilePlatform::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 s32 MobilePlatformDescriptor::IsDescriptor(MKPropDescriptor *arg0) {
     s8 *var_r4_1682;
     s8 *var_r5_1670;
@@ -692,7 +692,7 @@ s32 MobilePlatformDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void MobilePlatformDescriptor::Deinit() {
     MobilePlatformDescriptor *temp_r4_1813;
     MobilePlatformDescriptor *temp_r4_1819;
@@ -715,7 +715,7 @@ void MobilePlatformDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void MobilePlatformDescriptor::Init() {
     PlatformDescriptor::Init();
     this->unkF0 = 2.5f;
@@ -739,11 +739,5 @@ void MobilePlatformDescriptor::Init() {
     }
     pFirstDesc.unk0 = (s8 *) this;
     this->unk144 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

@@ -16,7 +16,7 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal use of non-static member
 void SwampFlutterCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -35,7 +35,7 @@ void SwampFlutterCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SwampFlutterCritter::Draw() {
     s32 var_r30_92;
     s32 var_r31_93;
@@ -245,7 +245,7 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SwampFlutterCritter::Update() {
     f64 sp60;
     f64 sp58;
@@ -305,7 +305,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SwampFlutterCritter::Resolve() {
     f64 sp20;
     f64 sp18;
@@ -343,7 +343,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
 void SwampFlutterCritter::LoadDone() {
     MKHeap *temp_r3_644;
     s32 temp_r31_643;
@@ -359,7 +358,6 @@ void SwampFlutterCritter::LoadDone() {
     }
     this->unk170 = var_r3_651;
 }
-#endif
 
 void SwampFlutterCritter::Init() {
     Critters::Init();
@@ -388,9 +386,3 @@ void SwampFlutterCritterDescriptor::LoadDone() {
 void SwampFlutterCritterDescriptor::Init() {
     KDPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SwampFlutterCritterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

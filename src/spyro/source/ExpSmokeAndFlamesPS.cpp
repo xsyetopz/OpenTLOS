@@ -177,7 +177,7 @@ void ExpSmokeAndFlamesPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gExpSmokeAndFlamesPSEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void ExpSmokeAndFlamesPS::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 150.5f;
@@ -197,11 +197,5 @@ void ExpSmokeAndFlamesPSDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();
     this->unk80 = 1;
     this->unk84 = 1.0f / (f32) this->unk80;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ExpSmokeAndFlamesPSDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

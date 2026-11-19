@@ -899,9 +899,3 @@ void SiegeTower_InitModule() {
     memset(siegeTowerGroups, 0, 0xC0U);
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SiegeTowerDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

@@ -144,7 +144,7 @@ void SuckeyPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &a
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gSuckeyPSEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void SuckeyPS::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 5.0f;

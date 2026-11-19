@@ -15,7 +15,7 @@
 
 s32 stricmp(s8 *, s8 *, s8 *);                      /* extern */
 extern MKSceneManager *gMK;
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 static KDParticleSystemProperty classInfo__24KDParticleSystemProperty; /* type too large by 0xC */
 static KDParticleEmitterProperty classInfo__25KDParticleEmitterProperty; /* type too large by 0x14 */
 static KDParticleLineEmitterProperty classInfo__29KDParticleLineEmitterProperty; /* type too large by 0x1C */
@@ -39,7 +39,7 @@ void KDParticleBoxEmitterProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleBoxEmitterProperty::Update() {
     KDParticleEmitter *temp_r31_172;
     void **temp_r3_176;
@@ -56,7 +56,7 @@ void KDParticleBoxEmitterProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleBoxEmitterProperty::ResolveInstance() {
     void *temp_r3_215;
     void *temp_r3_223;
@@ -71,7 +71,7 @@ void KDParticleBoxEmitterProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleBoxEmitterProperty::InitInstance() {
     M2C_UNK **temp_r5_243;
     MKIniLine *var_r31_259;
@@ -108,7 +108,7 @@ s32 KDParticleBoxEmitterProperty::LoadLine(MKIniLine *arg0) {
     return var_r31_307;
 }
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleLineEmitterProperty::Command(int arg0) {
     void **temp_r3_351;
     void *temp_r31_357;
@@ -127,7 +127,7 @@ void KDParticleLineEmitterProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleLineEmitterProperty::Update() {
     KDParticleEmitter *temp_r31_396;
     void **temp_r3_400;
@@ -144,7 +144,7 @@ void KDParticleLineEmitterProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleLineEmitterProperty::ResolveInstance() {
     void *temp_r3_435;
     void *temp_r4_440;
@@ -160,7 +160,7 @@ void KDParticleLineEmitterProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleLineEmitterProperty::InitInstance() {
     M2C_UNK **temp_r5_463;
     MKIniLine *var_r31_479;
@@ -207,7 +207,7 @@ s32 KDParticleLineEmitterProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleEmitterProperty::Command(int arg0) {
     void **temp_r3_601;
     void *temp_r31_607;
@@ -258,7 +258,7 @@ s32 KDParticleEmitterProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleEmitterProperty::Update() {
     KDParticleEmitter *temp_r31_708;
     void **temp_r3_720;
@@ -277,13 +277,13 @@ void KDParticleEmitterProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleEmitterProperty::ResolveInstance() {
     *(pInstanceMem.__vptr + (this->unk8 + 0x28)) = *(pInstanceMem.__vptr + this->unk18->unk8);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleEmitterProperty::InitInstance() {
     M2C_UNK **temp_r4_765;
     MKIniLine *var_r31_778;
@@ -354,7 +354,7 @@ KDParticleEmitterProperty::KDParticleEmitterProperty() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleSystemProperty::Command(int arg0) {
     if (arg0 != 1) {
         return;
@@ -380,7 +380,7 @@ void KDParticleSystemProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDParticleSystemProperty::ResolveInstance() {
     MKHeap **temp_r3_993;
     MKModel *temp_r3_988;
@@ -482,30 +482,6 @@ void KDParticleEffects_RegisterAll(KDPropertyClassRegistry *arg0) {
 #endif
 
 /* KDPropertyConstructor<KDParticleBoxEmitterProperty>::Construct (void) */
-
-#if 0 // DRAFT: identifier 'property_cast<...>(T1)' redeclared
-KDParticleSystemProperty *property_cast<KDParticleSystemProperty *, KDProperty *>(KDProperty *arg0) {
-    KDParticleSystemProperty *sp8;
-
-    sp8 = NULL;
-    property_cast_ptr<KDParticleSystemProperty, KDProperty>(sp8, arg0);
-    return sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void property_cast_ptr<KDParticleSystemProperty, KDProperty>(KDParticleSystemProperty *&arg0, KDProperty *arg1) {
-    if ((arg1 != NULL) && (arg1->IsOfType((KDPropertyClassInfo *) &classInfo) != 0)) {
-        &arg0 = checked_cast<KDParticleSystemProperty *, KDProperty>(arg1);
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDParticleSystemProperty *, KDProperty>(KDProperty *arg0) {
-
-}
-#endif
 
 #if 0 // DRAFT: undefined identifier 'classInfo'
 void KDParticleEffects_cpp::__sinit() {

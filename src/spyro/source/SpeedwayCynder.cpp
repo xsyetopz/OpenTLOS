@@ -1279,12 +1279,6 @@ void SpeedwayCynder::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpeedWaySpyro *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
 void SpeedwayCynder_cpp::__sinit() {
     f64 temp_f0_3083;
     f64 temp_f1_3053;

@@ -33,7 +33,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk48'
 void ConvexityBreathFX::DrawRings() {
     f64 sp20;
     f64 sp18;
@@ -70,7 +70,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk48'
 void ConvexityBreathFX::UpdateRings() {
     Matrix sp8;
     Matrix *temp_r31_208;
@@ -117,7 +117,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk48'
 void ConvexityBreathFX::SpawnRing(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp20;
     f64 sp18;
@@ -149,7 +149,7 @@ void ConvexityBreathFX::SpawnRing(const MKVector3 &arg0, const MKVector3 &arg1) 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
+#if 0 // DRAFT: undefined identifier 'unk50'
 s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const float &arg3) {
     f64 sp190;
     f64 sp188;
@@ -423,7 +423,7 @@ loop_32:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk40'
 void ConvexityBreathFX::Deinit() {
     MKHeap *temp_r3_835;
     f32 var_r31_809;
@@ -513,14 +513,14 @@ void ConvexityBreathFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk54'
 void ConvexityBreathFX::Message(MKMessage *arg0) {
     this->unkD0.unk54.Message(arg0);
     KDProp::Message(arg0);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk50'
 void ConvexityBreathFX::Update() {
     BreathHitMessage sp258;
     MKCollisionResult sp200;
@@ -754,7 +754,7 @@ block_33:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to
+#if 0 // DRAFT: undefined identifier 'unk40'
 void ConvexityBreathFX::Init() {
     MKHeap *temp_r3_1473;
     MKModel *temp_r3_1523;

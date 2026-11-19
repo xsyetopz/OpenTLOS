@@ -521,24 +521,6 @@ void ExplosiveBarrelDescriptor::Init() {
     this->unk178 = 1.0f;
 }
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IsExplodingBarrelMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<BurningWick *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ExplosiveBarrelDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_200lit_IsDead'
 void ExplosiveBarrel::lit_200lit_IsDead() {
     ((ExplosiveBarrel *) (this - 0xC8))->ExplosiveBarrel::IsDead();

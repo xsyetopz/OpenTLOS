@@ -34,9 +34,3 @@ void GuardTower::Init() {
     this->unk1F8 = 0.0f;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GuardTowerDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

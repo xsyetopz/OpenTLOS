@@ -152,7 +152,7 @@ void WeatherSnowPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gWeatherSnowPSEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void WeatherSnowPS::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 10.5f;

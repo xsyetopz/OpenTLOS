@@ -89,9 +89,3 @@ void DreadWingGoal_PickUp::Init(Enemy *arg0) {
         this->unk9 = 1;
     }
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DreadWing *, Enemy>(Enemy *arg0) {
-
-}
-#endif

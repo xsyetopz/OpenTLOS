@@ -4,7 +4,6 @@
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/AssaultCannon.h"
@@ -118,7 +117,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: undefined identifier 'Current'
 s32 TotemPolePuzzle::LoadLine(MKIniLine *arg0) {
     s8 *sp10;
     s32 spC;
@@ -363,12 +362,6 @@ void TotemPolePiece::Init() {
     this->unkDC = 0.0f;
     this->unkD8 = 0.0f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TotemPolePiece *, MKProp>(MKProp *arg0) {
-
-}
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_200lit_IsAttacking'
 void TotemPolePiece::lit_200lit_IsAttacking() {

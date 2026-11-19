@@ -175,7 +175,7 @@ block_20:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'query'
+#if 0 // DRAFT: expression syntax error
 void MCQueryScreen::OnEnter() {
     s32 spA4;
     s32 spA0;

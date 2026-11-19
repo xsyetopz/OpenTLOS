@@ -94,9 +94,3 @@ void TrainGateDescriptor::Resolve() {
     this->unkEC = this->unk34->GetAnim("open");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TrainGateDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

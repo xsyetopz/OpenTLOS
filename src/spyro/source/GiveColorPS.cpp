@@ -172,7 +172,7 @@ void GiveColorPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'unk48'
 void GiveColorPS::Init() {
     f64 sp40;
     f64 sp38;

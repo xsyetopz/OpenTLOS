@@ -1335,12 +1335,6 @@ void FuryFXElectricity::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LitCloudPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
 void FuryFXElectricity_cpp::__sinit() {
     f32 temp_f0_2920;
     f64 temp_f1_2901;

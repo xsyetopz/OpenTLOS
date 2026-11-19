@@ -766,15 +766,3 @@ void PoisonBombDescriptor::Init() {
     ProjectileDescriptor::Init();
     this->unkF4 = -1;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PoisonBomb *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PoisonBombDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

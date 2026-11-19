@@ -896,9 +896,3 @@ void WaterSurfaceFXDescriptor::Init() {
     this->unk6C = MKMaterial_Create("fx_RippleSub");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<WaterSurfaceFXDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

@@ -2303,12 +2303,6 @@ void ElementalSplineDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElementalSplineDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_685'
 void ElementalSpline_cpp::__sinit() {
     s32 sp2C;

@@ -35,6 +35,7 @@ void WaterVolume::Message(MKMessage *arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk50'
 void WaterVolume::Resolve() {
     s8 sp14;
     f32 *sp10;
@@ -50,6 +51,7 @@ void WaterVolume::Resolve() {
     sp14 = 1;
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f32 *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, temp_r5_98, 0x40F);
 }
+#endif
 
 #if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
 void WaterVolume::LoadDone() {
@@ -75,6 +77,7 @@ s32 WaterVolume::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk50'
 void WaterVolume::Deinit() {
     f32 *sp10;
     s32 spC;
@@ -86,6 +89,7 @@ void WaterVolume::Deinit() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, 0x410);
     KDWaterVolume::Deinit();
 }
+#endif
 
 #if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void WaterVolume::Init() {

@@ -1073,9 +1073,3 @@ void DojoGoal_Think::Init(Enemy *arg0) {
     this->unk20 = checked_cast<DojoEnemy *, Enemy>(arg0);
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DojoEnemy *, Enemy>(Enemy *arg0) {
-
-}
-#endif

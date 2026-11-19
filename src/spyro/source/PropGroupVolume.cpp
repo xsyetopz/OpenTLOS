@@ -73,7 +73,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'overlayCount'
+#if 0 // DRAFT: expression syntax error
 void PropGroupVolume::CullGroups(const MKVector3 &arg0) {
     f32 temp_f0_286;
     f32 temp_f1_241;
@@ -255,7 +255,7 @@ void PropGroupVolume::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void PropGroupVolumeDescriptor::Deinit() {
     PropGroupVolumeDescriptor *temp_r4_586;
     PropGroupVolumeDescriptor *temp_r4_592;
@@ -278,7 +278,7 @@ void PropGroupVolumeDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void PropGroupVolumeDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk68 = (PropGroupVolumeDescriptor *) pFirstDesc.__vptr;
@@ -288,11 +288,5 @@ void PropGroupVolumeDescriptor::Init() {
     }
     pFirstDesc.__vptr = this;
     this->unk60 = M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK);
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PropGroupVolume *, MKProp>(MKProp *arg0) {
-
 }
 #endif

@@ -919,18 +919,6 @@ void FightElevatorDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FightElevatorAnchor *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FightElevatorDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 void FightElevator_cpp::__sinit() {
     f64 temp_f1_1800;
     f64 temp_f1_1808;

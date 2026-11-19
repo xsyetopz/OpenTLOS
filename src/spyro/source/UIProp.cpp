@@ -162,9 +162,3 @@ void UIProp::Init() {
 void UIPropDescriptor::Init() {
     MKPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ScreenMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif

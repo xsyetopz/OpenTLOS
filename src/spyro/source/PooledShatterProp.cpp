@@ -19,12 +19,6 @@ void PooledShatterProp::Update() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ShatterableDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_200lit_IsAttacking'
 void Shatterable::lit_200lit_IsAttacking() {
     ((Shatterable *) (this - 0xC8))->Shatterable::IsAttacking();

@@ -289,9 +289,3 @@ void PuddleSplashDescriptor::Init() {
     this->unk6C = MKMaterial_Create("fx_365");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PuddleSplashDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

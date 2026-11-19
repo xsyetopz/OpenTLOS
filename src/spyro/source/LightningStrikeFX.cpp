@@ -1303,15 +1303,3 @@ void LightningStrikeFXDescriptor::Init() {
     this->unkA0 = 0.0f;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LightningStrikeFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LightningStrikeFXDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

@@ -1054,15 +1054,3 @@ void CrateDescriptor::Init() {
     this->unk128.Init((KDPropExDescriptor *) this);
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TargetPositionRequest *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CrateDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

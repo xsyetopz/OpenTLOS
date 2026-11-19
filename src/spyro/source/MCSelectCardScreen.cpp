@@ -372,7 +372,7 @@ block_54:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'selectedCard'
+#if 0 // DRAFT: expression syntax error
 void MCSelectCardScreen::OnEnter() {
     MemoryCardScreen::OnEnter();
     selectedCard.__vptr = NULL;
@@ -408,44 +408,3 @@ void MCSelectCardScreen::Init() {
     this->unkE4 = NULL;
     M2C_FIELD(this, s8 *, 0xF0) = 0;
 }
-
-#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
-MCSaveScreen *ui_cast<MCSaveScreen *, UIScreen *>(UIScreen *arg0) {
-    MCSaveScreen *sp8;
-
-    sp8 = NULL;
-    ui_cast_ptr<MCSaveScreen, UIScreen>(sp8, arg0);
-    return sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void ui_cast_ptr<MCSaveScreen, UIScreen>(MCSaveScreen *&arg0, UIScreen *arg1) {
-    u8 var_r0_774;
-    void *var_r5_769;
-
-    if (arg1 != NULL) {
-        var_r5_769 = arg1->unk8;
-loop_2:
-        if (var_r5_769 == &descriptor) {
-            var_r0_774 = 1;
-        } else {
-            var_r5_769 = M2C_FIELD(var_r5_769, void **, 4);
-            if (var_r5_769 == NULL) {
-                var_r0_774 = 0;
-            } else {
-                goto loop_2;
-            }
-        }
-        if (var_r0_774 != 0) {
-            &arg0 = checked_cast<MCSaveScreen *, UIScreen>(arg1);
-        }
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MCSaveScreen *, UIScreen>(UIScreen *arg0) {
-
-}
-#endif

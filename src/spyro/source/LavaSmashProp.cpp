@@ -448,9 +448,3 @@ void LavaSmashPropDescriptor::Init() {
     this->unk184 = 0.25f;
     this->unk17C = GS_PLACEHOLDER;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

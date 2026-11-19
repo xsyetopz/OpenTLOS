@@ -788,7 +788,7 @@ void KDCamera::GetCollisionObjectPos() {
     M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_1570, f64 *, 0x248);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDCamera::CameraWasTeleported(bool arg0) {
     f64 sp10;
     f64 sp8;
@@ -844,7 +844,7 @@ void KDCamera::Teleport(const MKVector3 &arg0, bool arg1) {
     gAssertBool = TryTeleport(arg0, arg1);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDCamera::UpdateStoredCollisionData(bool arg0) {
     f64 sp20;
     f64 sp18;
@@ -1130,9 +1130,11 @@ void KDCamera::CutSceneUpdate() {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk48'
 void KDCamera::CutSceneExit() {
     this->unk60.unk48 = 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: expression syntax error
 void KDCamera::ChaseUpdate() {
@@ -2369,7 +2371,7 @@ u32 KDCamera::PlayerRotatedCamera() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk44'
 void KDCamera::UpdateLTW() {
     Matrix *temp_r31_4600;
     f32 temp_f1_4652;
@@ -2517,7 +2519,7 @@ void KDCamera::DrawCamera() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'ClearData'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void KDCamera::ClearData() {
     KDCameraDeltaStagesEx *temp_r5_4908;
     KDCameraHeroMoveYaw *temp_r3_4923;
@@ -2775,7 +2777,7 @@ void KDCamera::LoadDone() {
     KDSound_SetListener((Matrix *) this->unk8);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDCamera::Deinit() {
     M2C_UNK *temp_r0_5382;
     M2C_UNK *temp_r0_5401;
@@ -3016,7 +3018,7 @@ void KDCamera::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'bModuleInitialised'
+#if 0 // DRAFT: illegal operand
 void KDCamera::InitModule() {
     bModuleInitialised = 1;
 }
@@ -3083,69 +3085,3 @@ void KDCameraDescriptor::Init() {
     M2C_FIELD(this->unkA4, f32 *, 0x34) = -0.8f;
     M2C_FIELD(this->unkA4, f32 *, 0x38) = -1.0f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TestCameraSnapMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<MKCollisionInfo *, 1040> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<AddCameraCollisionItemMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<float, 1035> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<HeroDataMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDS_Message_SetCameraSimple *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDS_Message_SetCamera *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<MKVector3, 1048> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ShakeCameraUpdatePosMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ShakeCameraOnMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ShakeCameraMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif

@@ -1475,9 +1475,3 @@ void IceBossStompDescriptor::Init() {
     this->unkF8 = "p3018_bossicecharge";
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IceBossStompDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

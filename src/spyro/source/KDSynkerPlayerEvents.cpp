@@ -154,7 +154,7 @@ s32 KDSynkerPlayerEvent::LoadProp(const char *arg0, MKProp **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pLine'
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadVector3(const char *arg0, MKVector3 *arg1) {
     MKIniLine sp8;
 
@@ -168,7 +168,7 @@ s32 KDSynkerPlayerEvent::LoadVector3(const char *arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pLine'
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadFloat(const char *arg0, float *arg1) {
     if (pLine.__vptr->IsField(arg0) != 0) {
         *arg1 = pLine.__vptr->GetFloat(0);
@@ -178,7 +178,7 @@ s32 KDSynkerPlayerEvent::LoadFloat(const char *arg0, float *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pLine'
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadString(const char *arg0, char *arg1) {
     if (pLine.__vptr->IsField(arg0) != 0) {
         strcpy(arg1, pLine.__vptr->GetString(0));
@@ -188,7 +188,7 @@ s32 KDSynkerPlayerEvent::LoadString(const char *arg0, char *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pLine'
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadBool(const char *arg0, bool *arg1) {
     if (pLine.__vptr->IsField(arg0) != 0) {
         *arg1 = pLine.__vptr->GetInt(0) != 0;
@@ -198,7 +198,7 @@ s32 KDSynkerPlayerEvent::LoadBool(const char *arg0, bool *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pLine'
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 KDSynkerPlayerEvent::LoadInt(const char *arg0, int *arg1) {
     if (pLine.__vptr->IsField(arg0) != 0) {
         *arg1 = pLine.__vptr->GetInt(0);
@@ -208,7 +208,7 @@ u8 KDSynkerPlayerEvent::LoadInt(const char *arg0, int *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pSynker'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void KDSynkerPlayerEvent::LoadNode(const char *arg0, MKModel **arg1, int *arg2) {
     NodeLoadLine1((KDSynkerPlayer3 *) pSynker.__vptr, (MKIniLine *) pLine.__vptr, arg0, arg1, NULL, NULL, arg2);
 }
@@ -239,7 +239,7 @@ s32 KDSynkerPlayerEvent::LoadActorAnimScript(const char *arg0, MKAnimScript **ar
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pLine'
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 KDSynkerPlayerEvent::LoadActorID(const char *arg0, int *arg1) {
     if (pLine.__vptr->IsField(arg0) != 0) {
         *arg1 = ((KDSP_ActorList *) (pSynker.__vptr + 0x100))->GetActorId(pLine.__vptr->GetString(0));

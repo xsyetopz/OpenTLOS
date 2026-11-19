@@ -141,14 +141,14 @@ void GameData::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void GameData::ModuleDeinit() {
     gameData.Deinit();
     bModuleInitialised = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: expression syntax error
 void GameData::ModuleInit() {
     gameData.Init();
     bModuleInitialised = 1;

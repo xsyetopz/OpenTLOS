@@ -112,9 +112,3 @@ void LavaBallDescriptor::Deinit() {
     pLavaBallDescriptor = NULL;
     KDPropExDescriptor::Deinit();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LavaBallDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

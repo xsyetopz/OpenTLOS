@@ -1055,30 +1055,6 @@ void FireTier1Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GoopFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireTier3Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireTier2Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireTier1Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'fireTier1BodyFXInit'
 void Enemies_Fire_cpp::__sinit() {
     f32 sp3A0;

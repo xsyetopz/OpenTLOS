@@ -119,9 +119,3 @@ void ChestDescriptor::LoadDone() {
     this->unkEC = this->unk34->GetAnim("Open");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ChestDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

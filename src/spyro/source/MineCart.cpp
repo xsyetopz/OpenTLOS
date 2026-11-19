@@ -529,9 +529,3 @@ void MineCartDescriptor::Init() {
     this->unkEC = 0.25f;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MineCartDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

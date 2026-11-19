@@ -2,7 +2,6 @@
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKMaterial.h"
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -476,12 +475,6 @@ void SwampTier1::Init() {
 void SwampTier1Descriptor::LoadDone() {
     EnemyDescriptor::LoadDone();
     this->unk244.Init(&swampTier1BodyFXInit, 7, (MKAnimScript *) this->unk34);
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EarthShockwave *, MKProp>(MKProp *arg0) {
-
 }
 #endif
 

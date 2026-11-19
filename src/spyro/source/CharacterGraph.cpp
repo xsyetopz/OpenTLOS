@@ -92,7 +92,7 @@ void CharacterGraphNodeProp::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to
 void CharacterGraphNodeProp::LoadDone() {
     f64 sp10;
     f64 sp8;
@@ -411,11 +411,5 @@ CharacterGraphNode::CharacterGraphNode() {
     this->unk48 = 0;
     this->unk3C = 0;
     return this;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CharacterGraphNode *, KDGraphNode>(KDGraphNode *arg0) {
-
 }
 #endif

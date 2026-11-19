@@ -776,9 +776,3 @@ void EarthBreathWhirlWindsDescriptor::Init() {
     this->unk60 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EarthBreathWhirlWindsDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

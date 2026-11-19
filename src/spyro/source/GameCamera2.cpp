@@ -855,7 +855,7 @@ void GameCamera2::AdjustPitchWithFloorDisable() {
     this->unk2A0 &= ~0x80;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk44'
 void GameCamera2::CollSlideUpdate(const MKVector3 &arg0) {
     s8 sp1C0;
     f32 sp1BC;
@@ -2480,7 +2480,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pEmuStateDescriptors'
+#if 0 // DRAFT: expression syntax error
 void GameCamera2::Init() {
     GameCamera2Descriptor *temp_r3_5023;
     M2C_UNK *temp_r3_5055;
@@ -2538,7 +2538,7 @@ void GameCamera2::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pPossibleStateChanges'
+#if 0 // DRAFT: expression syntax error
 void GameCamera2::InitModule() {
     f32 sp1C;
     s32 sp18;
@@ -2776,101 +2776,5 @@ void GameCamera2Descriptor::Init() {
     this->unk9C = 0x40;
     this->unkA0 = 8;
     this->unkB4 = 0x20;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<float, 1112> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TeleportCameraByOffsetMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<MKVector3, 1101> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SendArgMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<MKVector3, 1077> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<MKProp *, 1111> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<MKProp *, 1110> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<AddCameraTrackedShakePropMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<Targetable *, 1088> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<MKVector3, 1086> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SmoothCameraToDirectionUpdateMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<HoldGivenDirectionMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<bool, 1027> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDataMessage<MKVector3, 1064> *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TrainCameraUpdateDataMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GameCamera2Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

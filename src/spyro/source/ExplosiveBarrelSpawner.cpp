@@ -53,9 +53,3 @@ void ExplosiveBarrelSpawnerDescriptor::Init() {
     this->unkE4 = 1;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ExplosiveBarrelSpawnerDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

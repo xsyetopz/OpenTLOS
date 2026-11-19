@@ -19,7 +19,6 @@
 #include "spyro/source/SB2.h"
 #include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/SpawnerObject.h"
-#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
@@ -3081,21 +3080,6 @@ void EnemyGoal_Idle::Reset() {
     this->unk20 &= ~0x20;
     this->unk1C = 0;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Lever *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-Targetable *checked_cast<Targetable *, Lever>(Lever *arg0) {
-    if (arg0 != NULL) {
-        return (Targetable *) &arg0->unkC8;
-    }
-    return (Targetable *) arg0;
-}
-#endif
 
 void EnemyGoals_cpp::__sinit() {
     f32 temp_f0_6150;

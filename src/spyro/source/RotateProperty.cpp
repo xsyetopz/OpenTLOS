@@ -25,7 +25,7 @@ void RotateProperty::UpdateDynamicBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void RotateProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 1:
@@ -50,7 +50,7 @@ s32 RotateProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void RotateProperty::Update() {
     Matrix *temp_r3_265;
     Matrix *temp_r3_283;
@@ -188,7 +188,7 @@ void RotateProperty::LoadLineInstance(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void RotateProperty::InitInstance() {
     MKIniLine *var_r31_491;
     void *temp_r3_476;

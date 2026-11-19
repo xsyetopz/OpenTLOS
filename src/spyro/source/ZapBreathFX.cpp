@@ -2896,18 +2896,6 @@ void Zap::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ZapCage *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Enemy *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
 void ZapBreathFX_cpp::__sinit() {
     f32 temp_f0_6266;
     f64 temp_f1_6247;

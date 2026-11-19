@@ -93,7 +93,7 @@ void CloudPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gCloudPSEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void CloudPS::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 10.5f;
@@ -113,11 +113,5 @@ void CloudPSDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();
     this->unk80 = 1;
     this->unk84 = 1.0f / (f32) this->unk80;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CloudPSDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

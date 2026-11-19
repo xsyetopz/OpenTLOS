@@ -641,9 +641,3 @@ void ElementalRingDescriptor::Init() {
     this->unk70 = MKMaterial_Create("FX_RingElementConvex");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElementalRingDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

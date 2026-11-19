@@ -2,7 +2,7 @@
 #include "spyro/source/PhrasePlayer.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 
 void PhrasePlayerProperty::Command(int arg0) {

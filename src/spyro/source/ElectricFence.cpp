@@ -715,9 +715,3 @@ s32 ElectricFenceDescriptor::LoadLine(MKIniLine *arg0) {
     return var_r31_1373;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

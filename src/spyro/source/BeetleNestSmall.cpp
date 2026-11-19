@@ -214,9 +214,3 @@ void BeetleNestSmallDescriptor::Init() {
     this->unk178 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp("GoopFX"));
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

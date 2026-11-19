@@ -267,9 +267,3 @@ void SolidSlugDescriptor::Deinit() {
     M2C_FIELD(this, s8 *, 0xF0) = 0;
     KDPropExDescriptor::Deinit();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SolidSlugDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

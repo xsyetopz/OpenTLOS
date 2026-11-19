@@ -626,9 +626,3 @@ void TrainTrackDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk27C = 0;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TrainTrackDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

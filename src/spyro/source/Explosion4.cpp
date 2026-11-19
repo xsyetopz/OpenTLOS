@@ -1568,9 +1568,3 @@ void Explosion4Descriptor::Init() {
     this->unk68 = MKModel_Create("FX0001_Exp2Shockwave", NULL, 2, NULL);
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Explosion4Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

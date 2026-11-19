@@ -21,7 +21,7 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal use of non-static member
 void SwampSlinky::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -40,7 +40,7 @@ void SwampSlinky::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SwampSlinky::Draw() {
     Matrix *temp_r29_97;
     s32 var_r30_89;
@@ -62,7 +62,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SwampSlinky::Update() {
     s8 sp208;
     s32 sp204;
@@ -279,7 +279,7 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SwampSlinky::LoadDone() {
     Volume sp100;
     f64 spF8;
@@ -509,9 +509,3 @@ void SwampSlinkyDescriptor::LoadDone() {
 void SwampSlinkyDescriptor::Init() {
     KDPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

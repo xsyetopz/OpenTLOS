@@ -481,9 +481,3 @@ void PlatformObject::Init(PlatformObjectDesc *arg0, MKCollisionInfo *arg1) {
     sp20 = (f64) sp10;
     M2C_FIELD(this, f64 *, 0x20) = (f64) sp10;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PlatformMoveMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif

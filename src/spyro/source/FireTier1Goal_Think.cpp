@@ -1544,9 +1544,3 @@ void FireTier1Goal_Think::Init(Enemy *arg0) {
     }
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireTier1 *, Enemy>(Enemy *arg0) {
-
-}
-#endif

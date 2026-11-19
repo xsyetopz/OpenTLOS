@@ -93,9 +93,3 @@ void FireMolePrison::Init() {
     M2C_FIELD(this, s8 *, 0x210) = 0;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireMolePrisonDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

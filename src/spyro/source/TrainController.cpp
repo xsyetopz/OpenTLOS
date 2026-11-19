@@ -422,18 +422,6 @@ void TrainControllerDescriptor::Init() {
     } while (var_ctr_829 != 0);
 }
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SteamTrainCaboose *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TrainControllerDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 void TrainController_cpp::__sinit() {
     f32 temp_f0_891;
     f64 temp_f1_872;

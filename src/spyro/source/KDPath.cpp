@@ -125,7 +125,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pPathLists'
+#if 0 // DRAFT: expression syntax error
 KDPathSegment *KDPathManager::GetPathList(int arg0) {
     return *(pPathLists.unk0 + ((s32) this * 4));
 }
@@ -157,7 +157,7 @@ void KDPathManager::RemovePath(KDPathSegment *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pPathLists'
+#if 0 // DRAFT: expression syntax error
 void KDPathManager::AddPath(KDPathSegment *arg0) {
     f64 spC0;
     f64 spB8;
@@ -242,7 +242,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pPathLists'
+#if 0 // DRAFT: expression syntax error
 void KDPathManager::Deinit() {
     KDPathManager *temp_r31_550;
     MKHeap *temp_r3_553;
@@ -261,7 +261,7 @@ void KDPathManager::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'numTypes'
+#if 0 // DRAFT: expression syntax error
 void KDPathManager::Init(int arg0) {
     KDPathManager *var_r3_592;
     MKHeap *temp_r3_585;

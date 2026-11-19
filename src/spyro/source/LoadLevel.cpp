@@ -453,47 +453,6 @@ void LoadingScreen::Resolve() {
     pText = ui_cast<UIText *, UIObject *>(FindChild("Text"));
 }
 
-#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
-void **ui_cast<UISystem *, UIObject *>(UIObject *arg0) {
-    UISystem *sp8;
-
-    sp8 = NULL;
-    ui_cast_ptr<UISystem, UIObject>(sp8, arg0);
-    return &sp8->__vptr;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void ui_cast_ptr<UISystem, UIObject>(UISystem *&arg0, UIObject *arg1) {
-    u8 var_r0_955;
-    void *var_r5_950;
-
-    if (arg1 != NULL) {
-        var_r5_950 = arg1->unk8;
-loop_2:
-        if (var_r5_950 == &descriptor) {
-            var_r0_955 = 1;
-        } else {
-            var_r5_950 = M2C_FIELD(var_r5_950, void **, 4);
-            if (var_r5_950 == NULL) {
-                var_r0_955 = 0;
-            } else {
-                goto loop_2;
-            }
-        }
-        if (var_r0_955 != 0) {
-            &arg0 = checked_cast<UISystem *, UIObject>(arg1);
-        }
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<UISystem *, UIObject>(UIObject *arg0) {
-
-}
-#endif
-
 void LoadLevel_cpp::__sinit() {
     residentLSStrings.UIStringTable();
 }

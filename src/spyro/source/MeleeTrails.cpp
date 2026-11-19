@@ -474,9 +474,3 @@ void MeleeTrailsDescriptor::Init() {
     temp_r3_889->unk4 = 0;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MeleeTrailsDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

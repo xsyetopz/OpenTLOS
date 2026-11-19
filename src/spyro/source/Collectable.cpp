@@ -2244,7 +2244,7 @@ void Collectable::ClearData() {
     this->unk144 &= ~0x80;
 }
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
 void Collectable::LoadDone() {
     this->unk50 = M2C_FIELD(&loadInfo, f64 *, 0x40);
     this->unk58 = M2C_FIELD(&loadInfo, f64 *, 0x48);
@@ -2442,47 +2442,5 @@ void CollectableDescriptor::Init() {
     sp20 = (f64) sp10;
     M2C_FIELD(this, f64 *, 0xB0) = (f64) sp10;
     this->unkB8 = MKMaterial_Create("FX_DropShadow");
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Collectable *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CollectableSpawnerDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FindNearestCollectableMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CollectableControlMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MKProp *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CollectRequestMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CollectableDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

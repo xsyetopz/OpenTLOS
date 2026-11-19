@@ -241,7 +241,7 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: illegal implicit conversion from 'ConvexityDebrisDescriptor *' to
 void ConvexityDebris::LoadDone() {
     f64 spF0;
     f64 spE8;
@@ -408,11 +408,5 @@ void ConvexityDebrisDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = MKModel_Create("P6001_TiltPlatform_A", NULL, 2, NULL);
     this->unk64 = MKModel_Create("P6001_TiltPlatform_C", NULL, 2, NULL);
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ConvexityDebrisDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

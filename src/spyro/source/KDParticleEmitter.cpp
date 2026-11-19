@@ -354,15 +354,3 @@ void KDParticleEmitter::Init() {
     this->unk48 = &KDParticleEmitter::InitPointParticleParameters;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDParticleBoxEmitter *, KDParticleEmitter>(KDParticleEmitter *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDParticleLineEmitter *, KDParticleEmitter>(KDParticleEmitter *arg0) {
-
-}
-#endif

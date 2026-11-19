@@ -20,7 +20,7 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern GameStateMachine gGMState;
 extern void **gMK;
 extern M2C_UNK gb;
-#if 0 // DRAFT: undefined identifier 'pCurrentCheckPoint'
+#if 0 // DRAFT: expression syntax error
 static BoundingVolume unitVolume;                   /* type too large by 0x10; unable to generate initializer: not enough data */
 
 void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
@@ -149,7 +149,7 @@ void CheckPoint::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pCustomAnimScrName'
+#if 0 // DRAFT: expression syntax error
 void CheckPoint::LoadDone() {
     f64 sp60;
     f64 sp58;
@@ -316,18 +316,6 @@ void CheckPointDescriptor::Init() {
     this->unk70 = 0;
     this->unk74 = 0;
     this->unk78 = 0;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LevelStartMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CheckPointDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif
 

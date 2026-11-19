@@ -17,7 +17,7 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern KDShatterPool **shatterPool;
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk4C'
 void ShatterPoolFifo() {
     KDShatterPool *temp_r3_15;
 
@@ -140,7 +140,7 @@ block_8:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDShatterPool *' to
+#if 0 // DRAFT: undefined identifier 'unk48'
 void KDShatter2::Update() {
     KDShatterPool *temp_r3_642;
     KDShatterPool *temp_r4_268;
@@ -369,7 +369,7 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDShatter2::ResetSubObjectMatrices() {
     KDShatterPool *temp_r4_759;
     KDShatterPool *temp_r4_778;
@@ -416,7 +416,7 @@ void KDShatter2::Reset() {
     ResetSubObjectMatrices();
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp9C'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDShatter2::SetHitPlane(int arg0) {
     MKCollisionResult spA8;
     f64 spA0;                                       /* compiler-managed */
@@ -490,7 +490,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: ';' expected
 void KDShatter2::SetInitialGroundPlane() {
     MKCollisionResult spC8;
     MKVector3 spB8;
@@ -571,7 +571,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'ShatterPoolFifo'
+#if 0 // DRAFT: declaration syntax error
 void KDShatter2::Shatter(int arg0, MKVector3 *arg1) {
     f64 sp68;
     MKVector3 sp58;
@@ -668,7 +668,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDShatterPool *' to
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDShatter2::EnableSubObjectMatrices(bool arg0) {
     KDShatterPool *temp_r3_1262;
     Matrix *var_r6_1244;
@@ -926,7 +926,7 @@ void KDShatter2::InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'KDShatter2 *' to
+#if 0 // DRAFT: undefined identifier 'unk48'
 void KDShatterPool::Init(KDShatter2 *arg0, MKModel *arg1, unsigned short *arg2) {
     f64 sp108;
     f64 sp100;

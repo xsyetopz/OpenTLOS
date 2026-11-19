@@ -1370,21 +1370,3 @@ loop_4:
     M2C_FIELD(arg0, f64 *, 8) = (f64) sp20;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PooledShatterProp *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElementalRing *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IceBitsPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif

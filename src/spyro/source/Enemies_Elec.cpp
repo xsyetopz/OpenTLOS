@@ -932,24 +932,6 @@ void ElecTier1Descriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElecTier3Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElecTier2Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElecTier1Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'elecTier1BodyFXInit'
 void Enemies_Elec_cpp::__sinit() {
     f32 sp100;

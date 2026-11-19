@@ -223,9 +223,3 @@ void ConveyorBucket::Init() {
     this->unkE8 = 0.0f;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CollisionObjectCollideMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif

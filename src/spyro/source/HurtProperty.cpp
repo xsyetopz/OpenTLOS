@@ -78,7 +78,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void HurtProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 1:
@@ -110,7 +110,7 @@ s32 HurtProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void HurtProperty::Update() {
     if ((u8) *(pInstanceMem.__vptr + this->unk8) != 0) {
         DoHurt();
@@ -122,7 +122,7 @@ void HurtProperty::ResolveInstance() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void HurtProperty::LoadDoneInstance() {
     *(pInstanceMem.__vptr + this->unk8) = this->unk20;
 }
@@ -140,7 +140,7 @@ s32 HurtProperty::LoadLineInstance(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void HurtProperty::InitInstance() {
     MKIniLine *var_r31_339;
 
@@ -188,29 +188,5 @@ HurtProperty::HurtProperty() {
     this->unk1C = 0.0f;
     this->unk20 = 0;
     return this;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast<...>(T1)' redeclared
-void **property_cast<KDMatrixProperty *, KDProperty *>(KDProperty *arg0) {
-    KDMatrixProperty *sp8;
-
-    sp8 = NULL;
-    property_cast_ptr<KDMatrixProperty, KDProperty>(sp8, arg0);
-    return &sp8->__vptr;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void property_cast_ptr<KDMatrixProperty, KDProperty>(KDMatrixProperty *&arg0, KDProperty *arg1) {
-    if ((arg1 != NULL) && (arg1->IsOfType((KDPropertyClassInfo *) &classInfo) != 0)) {
-        &arg0 = checked_cast<KDMatrixProperty *, KDProperty>(arg1);
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDMatrixProperty *, KDProperty>(KDProperty *arg0) {
-
 }
 #endif

@@ -152,7 +152,7 @@ void WeatherEmbersPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gWeatherEmbersPSEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void WeatherEmbersPS::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 15.0f;

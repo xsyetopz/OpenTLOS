@@ -227,9 +227,3 @@ void LockOnTargetDescriptor::LoadDone() {
     this->unk64 = MKMaterial_Create("Fx_159");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

@@ -214,9 +214,3 @@ void TrapDescriptor::Init() {
     this->unkC = 0x10;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TrapSystem *, MKProp>(MKProp *arg0) {
-
-}
-#endif

@@ -271,7 +271,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gameData'
+#if 0 // DRAFT: undefined identifier 'unk40'
 s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
     s32 temp_r0_472;
     s32 temp_r29_495;
@@ -308,6 +308,7 @@ s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk40'
 void FuryFXFire2::SetDefaults() {
     SetDefaults();
     this->unk90.unk40 = 0.0f;
@@ -318,6 +319,7 @@ void FuryFXFire2::SetDefaults() {
     this->unk90.unk58 = 0.0f;
     this->unk14C = 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: type mismatch
 void FuryFXFire2::Deinit() {
@@ -366,6 +368,7 @@ loop_9:
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk40'
 void FuryFXFire2::Draw() {
     f32 temp_r0_628;
 
@@ -381,8 +384,9 @@ void FuryFXFire2::Draw() {
         return;
     }
 }
+#endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp2A8'
+#if 0 // DRAFT: undefined identifier 'unk58'
 void FuryFXFire2::Update() {
     f32 temp_f1_1457;
     f32 temp_f22_1384;

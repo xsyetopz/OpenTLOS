@@ -397,12 +397,6 @@ void CynderBreathFXDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CynderBreathFXDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'unk4'
 void CynderBreathFX_cpp::__sinit() {
     streamHitMsg.unk4 = 0;

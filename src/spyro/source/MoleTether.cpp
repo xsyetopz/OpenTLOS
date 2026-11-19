@@ -147,9 +147,3 @@ void MoleTetherDescriptor::LoadDone() {
     this->unk16C = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MoleTetherDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

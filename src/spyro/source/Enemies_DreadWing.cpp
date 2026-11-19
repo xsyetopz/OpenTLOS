@@ -298,18 +298,6 @@ void DreadWingDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DropBox *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DropBoxDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'dreadWingBodyFXInit'
 void Enemies_DreadWing_cpp::__sinit() {
     f32 sp1C0;

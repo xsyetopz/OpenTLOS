@@ -88,7 +88,7 @@ void KDVolume::UpdateMatrix(Matrix &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'boundingVolume'
+#if 0 // DRAFT: expression syntax error
 void KDVolume::GetCenterPos() {
     f64 sp50;
     f64 sp48;

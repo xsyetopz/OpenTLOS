@@ -154,7 +154,7 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk40'
 void FuryFXConvexity::DrawDragonChasers() {
     KDSoundFader **var_r31_271;
     KDSoundFader *temp_r4_284;
@@ -1050,7 +1050,7 @@ loop_41:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk68'
 void FuryFXConvexity::ResetFury() {
     s32 spC;
     s32 sp8;
@@ -1072,7 +1072,7 @@ void FuryFXConvexity::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2CC'
+#if 0 // DRAFT: undefined identifier 'unk60'
 s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
     f64 sp128;
     f64 sp120;
@@ -1196,6 +1196,7 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk60'
 void FuryFXConvexity::SetDefaults() {
     SetDefaults();
     this->unk90.unk60 = 0;
@@ -1204,8 +1205,9 @@ void FuryFXConvexity::SetDefaults() {
     this->unk14C = 0;
     this->unk164 = 0.0f;
 }
+#endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk68'
 void FuryFXConvexity::Deinit() {
     KDSoundFader **var_r31_2359;
     KDSoundFader **var_r3_2360;
@@ -1285,7 +1287,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp8'
+#if 0 // DRAFT: undefined identifier 'unk64'
 void FuryFXConvexity::Update() {
     f32 temp_f14_2737;
     f32 temp_f14_3057;
@@ -1994,7 +1996,7 @@ block_159:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk68'
 void FuryFXConvexity::Resolve() {
     f64 sp80;
     f64 sp78;
@@ -2073,7 +2075,7 @@ void FuryFXConvexity::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
+#if 0 // DRAFT: undefined identifier 'unk40'
 void FuryFXConvexity::Init() {
     f64 sp40;
     f64 sp38;

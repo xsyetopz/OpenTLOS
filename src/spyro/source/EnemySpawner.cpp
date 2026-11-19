@@ -89,7 +89,7 @@ void EnemySpawner::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk40'
 void EnemySpawner::Reset() {
     MKProp::Reset();
     this->unk50.unk40.DespawnAll();
@@ -122,14 +122,14 @@ s32 EnemySpawner::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk40'
 void EnemySpawner::Deinit() {
     MKProp::Deinit();
     this->unk50.unk40.Deinit();
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk40'
 void EnemySpawner::Init() {
     MKProp::Init();
     this->unk50.SetIdentity();
@@ -214,7 +214,7 @@ void SpawnPoint::Resolve() {
     this->unk50.Resolve();
 }
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SpawnPoint::LoadDone() {
     MKProp::LoadDone();
     this->unk50.LoadDone();
@@ -361,27 +361,3 @@ void EnemySpawnPointData::Init() {
     this->unk20 = NULL;
     this->unk24 = NULL;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GetSpawnerObjectMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GetSpawnPointObjectMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CharacterGraphNodeProp *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDSplinePathSegmentProp *, MKProp>(MKProp *arg0) {
-
-}
-#endif

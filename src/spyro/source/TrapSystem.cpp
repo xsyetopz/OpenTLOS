@@ -65,7 +65,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: illegal operand
 void TrapSystem::LoadDone() {
     MKProp::LoadDone();
     this->unk50.SetIdentity();

@@ -21,7 +21,7 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal use of non-static member
 void GrubbleCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -40,7 +40,7 @@ void GrubbleCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void GrubbleCritter::Draw() {
     s32 var_r30_92;
     s32 var_r31_93;
@@ -396,7 +396,7 @@ void GrubbleCritter::SetHideState(Grubble *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void GrubbleCritter::Update() {
     s8 sp2E8;
     s32 sp2E4;
@@ -746,7 +746,7 @@ loop_50:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void GrubbleCritter::Resolve() {
     s32 temp_r0_1151;
     s32 var_r3_1145;
@@ -766,7 +766,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
 void GrubbleCritter::LoadDone() {
     MKHeap *temp_r3_1177;
     s32 temp_r31_1176;
@@ -782,7 +781,6 @@ void GrubbleCritter::LoadDone() {
     }
     this->unk170 = var_r3_1184;
 }
-#endif
 
 void GrubbleCritter::Init() {
     Critters::Init();
@@ -838,9 +836,3 @@ void GrubbleCritterDescriptor::LoadDone() {
 void GrubbleCritterDescriptor::Init() {
     KDPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GrubbleCritterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

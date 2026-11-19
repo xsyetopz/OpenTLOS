@@ -379,7 +379,7 @@ void Sparx::StateAction_SpyroFallExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Sparx::StateAction_SpyroFallEnter() {
     this->unk50.unk70 = M2C_BITWISE(f32, localOffset);
 }
@@ -395,7 +395,7 @@ void Sparx::StateAction_SpyroJumpExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Sparx::StateAction_SpyroJumpEnter() {
     f32 temp_r3_673;
 
@@ -426,7 +426,7 @@ void Sparx::StateAction_SpyroSpeedwayExit() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Sparx::StateAction_SpyroSpeedwayEnter() {
     this->unk50.unk70 = M2C_BITWISE(f32, &localOffset[1]);
 }
@@ -577,7 +577,7 @@ void Sparx::StateAction_SpyroChargeExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'localOffset'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Sparx::StateAction_SpyroChargeEnter() {
     this->unk50.unk70 = M2C_BITWISE(f32, &localOffset[1]);
 }
@@ -593,7 +593,7 @@ void Sparx::StateAction_SpyroWalkRunExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'localOffset'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Sparx::StateAction_SpyroWalkRunEnter() {
     this->unk50.unk70 = M2C_BITWISE(f32, &localOffset[1]);
 }
@@ -849,7 +849,7 @@ void Sparx::StateAction_SpyroLongIdle2Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'localOffset'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Sparx::StateAction_SpyroLongIdle2Exit() {
     this->unk50.unk70 = M2C_BITWISE(f32, &localOffset[1]);
 }
@@ -924,13 +924,13 @@ void Sparx::StateAction_SpyroLongIdle1Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'localOffset'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Sparx::StateAction_SpyroLongIdle1Exit() {
     this->unk50.unk70 = M2C_BITWISE(f32, &localOffset[1]);
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk44'
 void Sparx::StateAction_SpyroLongIdle1Enter() {
     f64 sp40;
     f64 sp38;
@@ -1010,7 +1010,7 @@ void Sparx::StateAction_SpyroIdleExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'localOffset'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Sparx::StateAction_SpyroIdleEnter() {
     f32 temp_r4_1949;
 
@@ -1047,7 +1047,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk48'
 void Sparx::Disable() {
     f32 temp_r3_2014;
 
@@ -1057,7 +1057,7 @@ void Sparx::Disable() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk48'
 void Sparx::Enable() {
     f32 temp_r3_2034;
 
@@ -1248,7 +1248,7 @@ void Sparx::Draw() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: undefined identifier 'unk74'
 void Sparx::Update() {
     MKCollisionResult sp130;
     f64 sp128;
@@ -1438,9 +1438,11 @@ void Sparx::Update() {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk74'
 void Sparx::Teleport() {
     this->unk50.unk74 = 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'sp8'
 void Sparx::SetHint(SparxHintMsg *arg0) {
@@ -1672,7 +1674,7 @@ block_19:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk4C'
 void Sparx::SetState(int arg0, bool arg1) {
     this->unk50.unk4C.SetState(this, arg0, arg1);
 }
@@ -1740,7 +1742,7 @@ void Sparx::Spawn() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7C'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Sparx::RespawnOnSpyroDeath() {
     f64 sp60;
     f64 sp58;
@@ -1815,7 +1817,7 @@ void Sparx::RespawnOnSpyroDeath() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7C'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Sparx::Reset() {
     MKProp::Reset();
     this->unk50.unk70 = 0.0f;
@@ -1852,7 +1854,7 @@ void Sparx::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk44'
 void Sparx::Resolve() {
     MKProp::Resolve();
     gb.GetSpyro();
@@ -1866,7 +1868,7 @@ void Sparx::SetDefaults() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Sparx::LoadDone() {
     this->unk8 = &this->unk50;
     MKProp::LoadDone();
@@ -1882,7 +1884,7 @@ void Sparx::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk44'
 void Sparx::Deinit() {
     f32 temp_r3_3624;
 
@@ -1896,7 +1898,7 @@ void Sparx::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
+#if 0 // DRAFT: undefined identifier 'unk40'
 void Sparx::Init() {
     MKProp::Init();
     this->unk50.unk40 = M2C_BITWISE(f32, checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0));
@@ -2009,42 +2011,6 @@ void SparxDescriptor::Init() {
     this->unkB8 = 3;
     this->unkBC = 8.0f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SetSparxColorMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SparxCatapultMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SparxHintMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LeaderStateMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SparxFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SparxDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
 
 #if 0 // DRAFT: undefined identifier 'localOffset'
 void Sparx_cpp::__sinit() {

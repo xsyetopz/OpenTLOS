@@ -498,9 +498,3 @@ void HotSpitDescriptor::Deinit() {
     pHotSpitDescriptor = NULL;
     KDPropExDescriptor::Deinit();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<HotSpitDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

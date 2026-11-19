@@ -386,27 +386,3 @@ void Explosion3Descriptor::Init() {
     this->unk60 = GS_Explosion5;
     this->unk64 = GS_Rumble1Soft;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ExplosionFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ExpShock *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ExpSmokeAndFlamesPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Explosion3Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

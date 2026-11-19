@@ -25,7 +25,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 extern MessageMap globalMessageMap;
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 static MessageHandlerProperty classInfo__22MessageHandlerProperty; /* type too large by 0x18 */
 static TimerProperty classInfo__13TimerProperty;    /* type too large by 0x14 */
 static CameraShakeProperty classInfo__19CameraShakeProperty; /* type too large by 0xC */
@@ -53,13 +53,13 @@ u8 EventMessageProperty::LoadLineInstance(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void EventMessageProperty::DeinitInstance() {
     ((EventMessage *) (pInstanceMem.__vptr + this->unk8))->Deinit();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void EventMessageProperty::InitInstance() {
     ((EventMessage *) (pInstanceMem.__vptr + this->unk8))->Init();
 }
@@ -94,7 +94,7 @@ void EventMessageProperty::Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void CollisionSphereProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 1:
@@ -152,7 +152,7 @@ void CollisionSphereProperty::Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void CollisionSphereProperty::ResolveInstance() {
     f64 sp20;
     f64 sp18;
@@ -186,7 +186,7 @@ void CollisionSphereProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void MessageBroadcasterProperty::Update() {
     s32 spC;
     s8 *sp8;
@@ -202,7 +202,7 @@ void MessageBroadcasterProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void MessageBroadcasterProperty::Command(int arg0) {
     s32 spC;
     s8 *sp8;
@@ -251,7 +251,7 @@ s32 MessageBroadcasterProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void MessageBroadcasterProperty::ResolveInstance() {
     *(pInstanceMem.__vptr + this->unk8) = 0;
 }
@@ -311,7 +311,7 @@ s32 CameraShakeProperty::LoadLine(MKIniLine *arg0) {
     return var_r31_696;
 }
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void TimerProperty::Command(int arg0) {
     if (arg0 != 1) {
         KDScriptProperty::Command(arg0);
@@ -322,7 +322,7 @@ void TimerProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void TimerProperty::Update() {
     void *temp_r4_769;
     void *temp_r5_780;

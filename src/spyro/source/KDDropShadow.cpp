@@ -113,9 +113,3 @@ void KDDropShadowDescriptor::Init() {
     this->unk60 = 0x32;
     this->unk64 = 1.0f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

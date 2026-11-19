@@ -587,7 +587,7 @@ void MineCartTrack::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'unk6C'
 void MineCartTrack::Init() {
     s32 var_ctr_1332;
     s32 var_r3_1330;
@@ -634,11 +634,5 @@ void MineCartTrackDescriptor::Init() {
     this->unk70 = M2C_FIELD(&zero, f64 *, 0);
     this->unk78 = M2C_FIELD(&zero, f64 *, 8);
     this->unk1C = (BoundingVolume *) &this->unk60;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MineCart *, MKProp>(MKProp *arg0) {
-
 }
 #endif

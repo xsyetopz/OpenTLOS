@@ -334,7 +334,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF0'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void KDParticleSystem::Init() {
     MKBaseParticleSystem::Init();
     this->unkF4 = 0.0f;

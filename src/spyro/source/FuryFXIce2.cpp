@@ -31,7 +31,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk50'
 void FuryFXIce2::ResetFury() {
     Matrix **temp_r3_60;
     Matrix **var_r6_55;

@@ -540,7 +540,7 @@ void MoltenMetalBucketTrack::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'identity'
+#if 0 // DRAFT: undefined identifier 'unk50'
 void MoltenMetalBucketTrack::Init() {
     MKProp::Init();
     M2C_STRUCT_COPY((s32) &this->unk4C.unk50 + 4, (s32) (&identity - 4) + 4, 0x40);
@@ -572,17 +572,5 @@ void MoltenMetalBucketTrackDescriptor::Init() {
     this->unk78 = M2C_FIELD(&zero, f64 *, 8);
     this->unk1C = (BoundingVolume *) &this->unk60;
     this->unk80 = MKMaterial_Create("p0017_FireSteelLedgeRail");
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MoltenMetalBucket *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MoltenMetalBucketTrackDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

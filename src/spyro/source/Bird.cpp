@@ -25,7 +25,7 @@ extern f32 *KDSpline_PositionMixer;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk174'
+#if 0 // DRAFT: illegal use of non-static member
 void BirdCritter::Deinit() {
     MKHeap *temp_r3_55;
     MKHeap *temp_r3_85;
@@ -64,7 +64,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void BirdCritter::Draw() {
     s32 var_r30_120;
     s32 var_r31_121;
@@ -489,7 +489,7 @@ void BirdCritter::SetIdleState(Bird *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void BirdCritter::Update() {
     f64 sp108;                                      /* compiler-managed */
     f64 sp100;                                      /* compiler-managed */
@@ -757,7 +757,7 @@ loop_63:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void BirdCritter::Resolve() {
     f64 sp20;
     f64 sp18;
@@ -812,7 +812,6 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
 void BirdCritter::LoadDone() {
     MKHeap *temp_r3_1624;
     s32 temp_r31_1623;
@@ -828,9 +827,8 @@ void BirdCritter::LoadDone() {
     }
     this->unk170 = var_r3_1631;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk178'
+#if 0 // DRAFT: pointer/array required
 s32 BirdCritter::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_1671;
     MKIniLine *var_r30_1689;
@@ -868,13 +866,11 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk178'
 void BirdCritter::Init() {
     Critters::Init();
     this->unk178 = 0;
     this->unk174 = NULL;
 }
-#endif
 
 void BirdCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
@@ -959,9 +955,3 @@ void BirdCritterDescriptor::Init() {
     this->unk8C = 10.0f;
     this->unk90 = GS_PLACEHOLDER;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<BirdCritterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

@@ -76,9 +76,3 @@ void IceExplosionDescriptor::Init() {
     gMK->CreatePropDeferred("IceExplosionFlashPS", &this->unk60);
     gMK->CreatePropDeferred("IceExplosionShockPS", &this->unk64);
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IceExplosionDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

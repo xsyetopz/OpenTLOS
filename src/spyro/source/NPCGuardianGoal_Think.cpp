@@ -230,9 +230,3 @@ void NPCGuardianGoal_Think::Init(Enemy *arg0) {
     this->unk30 &= ~0x80;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<NPCGuardian *, Enemy>(Enemy *arg0) {
-
-}
-#endif

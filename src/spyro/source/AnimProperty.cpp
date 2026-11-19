@@ -15,7 +15,7 @@ void *malloc(s32);                                  /* extern */
 s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void AnimProperty::Update() {
     f32 temp_f0_89;
     f32 var_f1_79;
@@ -67,7 +67,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void AnimProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 3:
@@ -196,35 +196,5 @@ void AnimProperty::Init(char *arg0) {
     this->unk18 = 0;
     this->unk20 = 0.0f;
     this->unk1C = 0;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast<...>(T1)' redeclared
-KDAnimScriptProperty *property_cast<KDAnimScriptProperty *, KDProperty *>(KDProperty *arg0) {
-    KDAnimScriptProperty *sp8;
-
-    sp8 = NULL;
-    property_cast_ptr<KDAnimScriptProperty, KDProperty>(sp8, arg0);
-    return sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void property_cast_ptr<KDAnimScriptProperty, KDProperty>(KDAnimScriptProperty *&arg0, KDProperty *arg1) {
-    if ((arg1 != NULL) && (arg1->IsOfType((KDPropertyClassInfo *) &classInfo) != 0)) {
-        &arg0 = checked_cast<KDAnimScriptProperty *, KDProperty>(arg1);
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDAnimScriptProperty *, KDProperty>(KDProperty *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDProp *, MKProp>(MKProp *arg0) {
-
 }
 #endif

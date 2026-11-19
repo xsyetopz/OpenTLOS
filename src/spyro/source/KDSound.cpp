@@ -891,7 +891,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'firstInvalidSoundID'
+#if 0 // DRAFT: expression syntax error
 void GlobalSoundData::InvalidateSoundIDRange(int arg0, int arg1) {
     firstInvalidSoundID.unk0 = (void *) arg0;
     lastInvalidSoundID.unk0 = (void *) arg1;

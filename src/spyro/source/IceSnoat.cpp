@@ -21,7 +21,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal use of non-static member
 void IceSnoatCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -40,7 +40,7 @@ void IceSnoatCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void IceSnoatCritter::Draw() {
     s32 var_r30_92;
     s32 var_r31_93;
@@ -381,7 +381,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void IceSnoatCritter::Update() {
     f64 spD0;
     f64 spC8;
@@ -827,7 +827,7 @@ void IceSnoatCritter::SetBounceState(IceSnoat *arg0) {
     FindNewBounceParameters(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void IceSnoatCritter::Resolve() {
     Volume sp88;
     f64 sp80;
@@ -916,7 +916,6 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
 void IceSnoatCritter::LoadDone() {
     MKHeap *temp_r3_1533;
     s32 temp_r31_1532;
@@ -932,7 +931,6 @@ void IceSnoatCritter::LoadDone() {
     }
     this->unk170 = var_r3_1540;
 }
-#endif
 
 void IceSnoatCritter::Init() {
     Critters::Init();
@@ -979,9 +977,3 @@ void IceSnoatCritterDescriptor::LoadDone() {
 void IceSnoatCritterDescriptor::Init() {
     KDPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IceSnoatCritterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

@@ -210,7 +210,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk64'
 void SwarmProp::Update() {
     f64 sp118;                                      /* compiler-managed */
     f64 sp110;
@@ -537,7 +537,7 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier 'unk60'
 s32 SwarmProp::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
         return 1;
@@ -546,7 +546,7 @@ s32 SwarmProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk64'
 void SwarmProp::Deinit() {
     MKHeap *temp_r3_1084;
     f32 var_r31_1058;
@@ -591,14 +591,10 @@ loop_9:
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk60'
 void SwarmProp::Init() {
     KDProp::Init();
     this->unk90.unk60 = 5;
     this->unkC = (BoundingVolume *) &this->unk90.unk40;
-}
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SwarmPropDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

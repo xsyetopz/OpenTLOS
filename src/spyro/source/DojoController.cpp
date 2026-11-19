@@ -7252,33 +7252,6 @@ DojoController::DojoController() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-Targetable *checked_cast<Enemy *, Targetable>(Targetable *arg0) {
-    if (arg0 != NULL) {
-        return arg0 - 0x6B8;
-    }
-    return arg0;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DragonStatue *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElementalWall *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SparxHint *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_761'
 void DojoController_cpp::__sinit() {
     s32 sp50;

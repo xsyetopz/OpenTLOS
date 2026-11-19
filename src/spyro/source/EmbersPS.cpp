@@ -79,7 +79,7 @@ void EmbersPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &a
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'gEmbersPSEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void EmbersPS::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 5.0f;

@@ -2595,21 +2595,3 @@ void IceBreathFX::Init() {
     this->unk1A0 = 0.0f;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IceExplosion *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FuryFXIce2 *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FuryFXIce *, MKProp>(MKProp *arg0) {
-
-}
-#endif

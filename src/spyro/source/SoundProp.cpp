@@ -9,7 +9,7 @@
 
 extern void **gMK;
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: undefined identifier 'unk40'
 void SoundProp::Disable() {
     if ((s32) this->unk4C != 0) {
         KDSound_Stop((s32 *) &this->unk60.unk40);

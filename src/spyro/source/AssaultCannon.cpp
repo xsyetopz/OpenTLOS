@@ -3508,12 +3508,6 @@ void AssaultCannonDescriptor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_723'
 void AssaultCannon_cpp::__sinit() {
     s32 sp10;

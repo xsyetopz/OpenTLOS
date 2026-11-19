@@ -23,7 +23,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal use of non-static member
 void LavaFiddlerCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -42,7 +42,7 @@ void LavaFiddlerCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void LavaFiddlerCritter::Draw() {
     s32 var_r30_92;
     s32 var_r31_93;
@@ -595,7 +595,7 @@ void LavaFiddlerCritter::SetHideState(LavaFiddler *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void LavaFiddlerCritter::Update() {
     s8 sp168;
     s32 sp164;
@@ -812,7 +812,7 @@ loop_35:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void LavaFiddlerCritter::Resolve() {
     Volume sp100;
     f64 spF8;
@@ -990,7 +990,6 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
 void LavaFiddlerCritter::LoadDone() {
     MKHeap *temp_r3_1578;
     s32 temp_r31_1577;
@@ -1006,7 +1005,6 @@ void LavaFiddlerCritter::LoadDone() {
     }
     this->unk170 = var_r3_1585;
 }
-#endif
 
 void LavaFiddlerCritter::Init() {
     Critters::Init();
@@ -1080,9 +1078,3 @@ void LavaFiddlerCritterDescriptor::LoadDone() {
 void LavaFiddlerCritterDescriptor::Init() {
     KDPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LavaFiddlerCritterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

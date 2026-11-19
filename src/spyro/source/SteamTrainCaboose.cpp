@@ -147,7 +147,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstance'
+#if 0 // DRAFT: expression syntax error
 void TrainChaseSpawnPool::Init() {
     Enemy ***temp_r3_249;
     Enemy ***temp_r4_255;
@@ -763,23 +763,5 @@ void SteamTrainCabooseDescriptor::LoadDone() {
     this->unkEC = this->unk34->GetAnim("flinch");
     this->unkF0 = this->unk34->GetAnim("crash");
     this->unkF4 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3"));
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Collectable2 *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SteamTrain *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SteamTrainCabooseDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

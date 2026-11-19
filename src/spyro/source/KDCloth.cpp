@@ -151,27 +151,3 @@ void KDClothDescriptor::Init() {
     this->unk18 = -1;
     this->unk10 = -1;
 }
-
-#if 0 // DRAFT: identifier 'property_cast<...>(T1)' redeclared
-s8 *property_cast<KDModelProperty *, KDProperty *>(KDProperty *arg0) {
-    KDModelProperty *sp8;
-
-    sp8 = NULL;
-    property_cast_ptr<KDModelProperty, KDProperty>(sp8, arg0);
-    return (s8 *) sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void property_cast_ptr<KDModelProperty, KDProperty>(KDModelProperty *&arg0, KDProperty *arg1) {
-    if ((arg1 != NULL) && (arg1->IsOfType((KDPropertyClassInfo *) &classInfo) != 0)) {
-        &arg0 = checked_cast<KDModelProperty *, KDProperty>(arg1);
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDModelProperty *, KDProperty>(KDProperty *arg0) {
-
-}
-#endif

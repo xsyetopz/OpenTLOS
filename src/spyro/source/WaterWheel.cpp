@@ -57,14 +57,12 @@ void WaterWheel::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
 void WaterWheel::LoadDone() {
     Platform::LoadDone();
     this->unk180 = M2C_FIELD(&loadInfo, f32 *, 0x50);
     M2C_FIELD(this, f64 *, 0x1B0) = (f64) M2C_FIELD(&loadInfo, f32 *, 0x50);
     M2C_FIELD(this, f64 *, 0x1B8) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x58);
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void WaterWheel::Init() {

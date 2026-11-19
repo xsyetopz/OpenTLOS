@@ -480,12 +480,6 @@ loop_51:
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<NoisySystem *, UIObject>(UIObject *arg0) {
-
-}
-#endif
-
 void FrontEnd_cpp::__sinit() {
     frontEndStrings.UIStringTable();
 }

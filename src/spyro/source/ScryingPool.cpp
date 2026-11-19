@@ -95,9 +95,3 @@ void ScryingPoolDescriptor::Init() {
     this->unkC0 = GS_PLACEHOLDER;
     this->unkC4 = GS_PLACEHOLDER;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ScryingPoolDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

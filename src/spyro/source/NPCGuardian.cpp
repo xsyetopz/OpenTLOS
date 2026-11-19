@@ -91,9 +91,3 @@ void NPCGuardian::Init() {
     this->unk110.unkA00 = 0;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<NPCGuardianGoal_Think *, Goal<Enemy>>(Goal<Enemy> *arg0) {
-
-}
-#endif

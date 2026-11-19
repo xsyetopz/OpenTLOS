@@ -298,9 +298,3 @@ void SteamFireBallDescriptor::Deinit() {
     pSteamFireBallDescriptor = NULL;
     KDPropExDescriptor::Deinit();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SteamFireBallDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

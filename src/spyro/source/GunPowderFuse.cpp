@@ -38,7 +38,7 @@ extern GameGlobals gb;
 static s32 lit_743 = 2;
 static u8 lit_744 = 0;
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'unk60'
 void GunPowderFuse::EmitBurn(float arg0) {
     f64 sp100;
     f64 spF8;
@@ -1296,7 +1296,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk70'
 void GunPowderFuse::Burn(float arg0) {
     f64 sp30;
     KDUniformSpline sp18;
@@ -1366,7 +1366,7 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_GetClosestSplineTime(long, MKVector3, long)' does not
+#if 0 // DRAFT: undefined identifier 'unk60'
 void GunPowderFuse::Message(MKMessage *arg0) {
     MKVector3 *sp10;
     s32 spC;
@@ -1501,7 +1501,7 @@ void GunPowderFuse::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'unk64'
 void GunPowderFuse::Init() {
     s32 var_r29_2789;
     s32 var_r31_2787;

@@ -23,7 +23,7 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal use of non-static member
 void FlowerCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -42,7 +42,7 @@ void FlowerCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void FlowerCritter::Draw() {
     f32 temp_f1_132;
     s32 temp_r0_120;
@@ -84,7 +84,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void FlowerCritter::Update() {
     s8 sp278;
     s32 sp274;
@@ -355,7 +355,7 @@ loop_26:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void FlowerCritter::LoadDone() {
     Volume sp138;
     f64 sp130;
@@ -520,7 +520,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk174'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 FlowerCritter::LoadLine(MKIniLine *arg0) {
     s32 var_r31_895;
 
@@ -532,12 +532,10 @@ s32 FlowerCritter::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk174'
 void FlowerCritter::Init() {
     Critters::Init();
     this->unk174 = 0;
 }
-#endif
 
 void FlowerCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
@@ -607,9 +605,3 @@ void FlowerCritterDescriptor::LoadDone() {
 void FlowerCritterDescriptor::Init() {
     KDPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FlowerCritterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

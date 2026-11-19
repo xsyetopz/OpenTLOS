@@ -504,7 +504,7 @@ void GuardianCage::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void GuardianCage::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -565,12 +565,6 @@ void GuardianCage::Init() {
     this->unk138 = 2;
     this->unk13C = 2;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Guardian *, MKProp>(MKProp *arg0) {
-
-}
-#endif
 
 #if 0 // DRAFT: undefined identifier '__ptmf_null'
 void GuardianCage_cpp::__sinit() {

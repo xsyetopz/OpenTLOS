@@ -316,7 +316,7 @@ void Platform::PropUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: undefined identifier 'one'
 void Platform::LoadDone() {
     M2C_FIELD(&loadInfo, f64 *, 0x60) = (f64) M2C_FIELD(&one, f64 *, 0);
     M2C_FIELD(&loadInfo, f64 *, 0x68) = (f64) M2C_FIELD(&one, f64 *, 8);
@@ -411,17 +411,5 @@ void PlatformDescriptor::Init() {
     this->unk118 = 0;
     this->unk11C = 50.0f;
     this->unk120 = 0.3f;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CollisionInfoRequest *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PlatformDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

@@ -40,7 +40,7 @@ void FallingLeaves::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spA0'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void FallingLeaves::Draw() {
     MKParticleChunk *var_r27_169;
     f32 temp_f18_339;
@@ -966,7 +966,7 @@ void FallingLeaves::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gFallingLeavesEnvelope'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void FallingLeaves::Init() {
     s32 temp_r0_2027;
     s32 var_ctr_2025;
@@ -996,12 +996,6 @@ void FallingLeaves::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void FallingLeavesDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FallingLeavesDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif
 

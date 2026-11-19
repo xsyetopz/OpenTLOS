@@ -65,9 +65,3 @@ void MineCartDoorDescriptor::LoadDone() {
     this->unkF0 = this->unk34->GetAnim("Closed");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MineCartDoorDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

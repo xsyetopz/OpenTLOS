@@ -167,7 +167,7 @@ void CynderEnergyCrystal::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk40'
 void CynderEnergyCrystal::Init() {
     GameProp::Init();
     this->unkC8 = NULL;
@@ -188,11 +188,5 @@ void CynderEnergyCrystalDescriptor::Init() {
     this->unkE4.unk18 = 0x0C000000;
     this->unkE4.unk0 = 100.0f;
     this->unkE4.unk4 = -50.0f;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CynderEnergyCrystalDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

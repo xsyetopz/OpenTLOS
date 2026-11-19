@@ -28,7 +28,7 @@ void KDGraphNodeProp::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: undefined identifier 'unk50'
 void KDGraphNodeProp::LoadDone() {
     f64 sp10;
     f64 sp8;
@@ -208,11 +208,5 @@ KDGraphNode::KDGraphNode() {
         var_ctr_403 -= 1;
     } while (var_ctr_403 != 0);
     return this;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDGraphNodeProp *, MKProp>(MKProp *arg0) {
-
 }
 #endif

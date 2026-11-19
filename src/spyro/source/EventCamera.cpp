@@ -1828,24 +1828,6 @@ EventCamera *EventCamera_GetCurrent() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EnemySpawner *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FuryEventCameraMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GetNearestEventCameraMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
 void EventCamera_cpp::__sinit() {
     f32 temp_f0_3870;
     f64 temp_f1_3851;

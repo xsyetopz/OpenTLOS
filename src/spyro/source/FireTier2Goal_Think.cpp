@@ -911,9 +911,3 @@ void FireTier2Goal_MoveToLavaEdge::Activate() {
     this->unkC->unk110.unk4D4 = 0.0f;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireTier2 *, Enemy>(Enemy *arg0) {
-
-}
-#endif

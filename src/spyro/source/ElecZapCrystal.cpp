@@ -263,7 +263,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ElecZapCrystal::LoadDone() {
     f32 var_f1_464;
     s32 temp_r0_481;

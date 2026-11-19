@@ -334,9 +334,3 @@ void DartTrapDescriptor::Init() {
     } while (var_ctr_729 != 0);
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DartTrapDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

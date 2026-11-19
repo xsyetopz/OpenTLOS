@@ -439,12 +439,6 @@ void IceTier1Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IceTier2Descriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'iceTier1BodyFXInit'
 void Enemies_Ice_cpp::__sinit() {
     f32 sp3A0;

@@ -1,24 +1,8 @@
 #include "spyro/source/EarthBeamFX.h"
-#include "common/Source/MKProp.h"
-#include "spyro/source/StickyPS.h"
-#include "spyro/source/SuckeyPS.h"
-#include "unplaced_templates.h"
 #include <m2c_macros.h>
 
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<StickyPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SuckeyPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
 
 void EarthBeamFX_cpp::__sinit() {
     f32 temp_f0_55;

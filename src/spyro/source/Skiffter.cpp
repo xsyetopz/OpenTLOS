@@ -20,7 +20,7 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal use of non-static member
 void SkiffterCritter::Deinit() {
     MKHeap *temp_r3_57;
     MKHeap *temp_r3_76;
@@ -51,7 +51,7 @@ void SkiffterCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SkiffterCritter::Draw() {
     s32 var_r30_112;
     s32 var_r31_113;
@@ -1125,7 +1125,7 @@ loop_197:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SkiffterCritter::Resolve() {
     MKHeap *temp_r3_1790;
     s32 temp_r0_1810;
@@ -1160,7 +1160,7 @@ void SkiffterCritter::LoadDone() {
     Critters::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk178'
+#if 0 // DRAFT: pointer/array required
 s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_1864;
     MKIniLine *var_r28_1883;
@@ -1198,13 +1198,11 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk178'
 void SkiffterCritter::Init() {
     Critters::Init();
     this->unk178 = 0;
     this->unk174 = NULL;
 }
-#endif
 
 void SkiffterCritterDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
@@ -1265,9 +1263,3 @@ void SkiffterCritterDescriptor::LoadDone() {
 void SkiffterCritterDescriptor::Init() {
     KDPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SkiffterCritterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

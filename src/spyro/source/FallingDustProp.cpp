@@ -400,9 +400,3 @@ void FallingDustPropDescriptor::Init() {
     this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DustPuffPS"));
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FallingDustPropDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

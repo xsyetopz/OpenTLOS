@@ -1133,9 +1133,3 @@ void FlyingChunkPSDescriptor::Init() {
     this->unkF8.unk4 = 0.0f;
     this->unkF8.unk8 = 0.0f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FlyingChunkPSDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

@@ -581,9 +581,3 @@ void MagicFireballDescriptor::Deinit() {
     pMagicFireballDescriptor = NULL;
     KDPropExDescriptor::Deinit();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MagicFireballDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

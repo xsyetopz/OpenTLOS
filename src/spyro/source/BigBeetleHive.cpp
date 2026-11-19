@@ -425,15 +425,3 @@ void BigBeetleHiveDescriptor::Init() {
     this->unk16C = checked_cast<StickyPS *, MKProp>(gMK->CreateProp("FireGoopPS"));
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<BeetleNestSmall *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<BigBeetleHiveDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

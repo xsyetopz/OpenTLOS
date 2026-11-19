@@ -20,7 +20,7 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal use of non-static member
 void ShwimmaCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -39,7 +39,7 @@ void ShwimmaCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void ShwimmaCritter::Draw() {
     s32 var_r30_92;
     s32 var_r31_93;
@@ -63,7 +63,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void ShwimmaCritter::Update() {
     Volume sp128;
     f64 sp120;
@@ -612,7 +612,7 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void ShwimmaCritter::Resolve() {
     s32 temp_r0_1123;
     s32 var_r3_1117;
@@ -632,7 +632,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
 void ShwimmaCritter::LoadDone() {
     MKHeap *temp_r3_1149;
     s32 temp_r31_1148;
@@ -648,7 +647,6 @@ void ShwimmaCritter::LoadDone() {
     }
     this->unk170 = var_r3_1156;
 }
-#endif
 
 void ShwimmaCritter::Init() {
     Critters::Init();
@@ -758,9 +756,3 @@ void ShwimmaCritterDescriptor::LoadDone() {
 void ShwimmaCritterDescriptor::Init() {
     KDPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

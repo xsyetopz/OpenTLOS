@@ -1055,9 +1055,3 @@ void FireWallDescriptor::Init() {
     this->unk60 = MKMaterial_Create("fx_004");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireWallDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

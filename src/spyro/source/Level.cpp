@@ -222,7 +222,7 @@ void Level::EnvDomeChanged() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'levelInfoCount'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
 void *Level::GetStartLevelInfo() {
     s32 var_ctr_294;
     s32 var_r3_292;
@@ -452,7 +452,7 @@ MKModel *Level::GetEnvDome() {
     return var_r31_620;
 }
 
-#if 0 // DRAFT: undefined identifier 'levelInfoCount'
+#if 0 // DRAFT: function call 'stricmp(Level *, unsigned char)' does not match
 void *Level::GetLevelByName(const char *arg0) {
     s32 var_r30_694;
     s32 var_r31_695;
@@ -714,7 +714,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pChunkInfo'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
 Level *Level::GetNextChunk(ChunkInfo *arg0) {
     Level *temp_r0_1123;
     Level *var_r4_1117;
@@ -757,7 +757,7 @@ Level *Level::GetNextChunk(ChunkInfo *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'chunkInfoCount'
+#if 0 // DRAFT: function call 'stricmp(Level *)' does not match
 void *Level::GetChunkByName(const char *arg0) {
     s32 var_r30_1175;
     s32 var_r31_1176;
@@ -1944,7 +1944,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pGlobalLevelIni'
+#if 0 // DRAFT: expression syntax error
 void Level::InitLevelInfo() {
     LevelInfo *temp_r3_3813;
     MKHeap *temp_r3_3747;
@@ -2055,7 +2055,7 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pGlobalLevelIni'
+#if 0 // DRAFT: illegal operand
 void Level::InitModule() {
     operator new(0x50U, NULL, 0);
     pGlobalLevelIni = (MKIni *) M2C_ERROR(/* Read from unset register $r3 */);
@@ -2068,7 +2068,7 @@ void Level::InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'materialInfoAllocCount'
+#if 0 // DRAFT: illegal operand
 MaterialInfo *Level::AllocMaterialInfo() {
     s32 temp_r0_3907;
 
@@ -2078,7 +2078,7 @@ MaterialInfo *Level::AllocMaterialInfo() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'terrainInfoAllocCount'
+#if 0 // DRAFT: illegal operand
 TerrainInfo *Level::AllocTerrainInfo() {
     s32 temp_r0_3918;
 
@@ -2088,7 +2088,7 @@ TerrainInfo *Level::AllocTerrainInfo() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'chunkInfoAllocCount'
+#if 0 // DRAFT: illegal operand
 ChunkInfo *Level::AllocChunkInfo() {
     s32 temp_r0_3930;
 
@@ -2098,7 +2098,7 @@ ChunkInfo *Level::AllocChunkInfo() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pLevelInfo'
+#if 0 // DRAFT: illegal operand
 LevelInfo *Level::AllocLevelInfo() {
     s32 temp_r0_3946;
 
@@ -2738,138 +2738,6 @@ void WorldInfo::Init() {
     this->unk18->Init();
     this->unk18->unk0 = (s8 *) pGlobalLV3Name;
     this->unk18->unkC = 0;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PuddleSplash *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<BoneBlurFXDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EarthBreathWhirlWinds *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Explosion4 *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DynamiteExplosion *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<GemMagicFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FallingLeaves *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElectricSparks *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FlyingChunkPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EnemyDeathFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ZapArcFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LavaBubbleFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<AshesPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SparksPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDEnvParticleSystem *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EmbersPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<WaterDripPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CrashFirePS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LightManager *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Coronas *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CollectableSpawner *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FootStepFX *, MKProp>(MKProp *arg0) {
-
 }
 #endif
 

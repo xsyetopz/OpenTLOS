@@ -260,9 +260,3 @@ void SpeedwayAADescriptor::Deinit() {
     pSpeedwayAADescriptor = NULL;
     KDPropExDescriptor::Deinit();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpeedwayAADescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

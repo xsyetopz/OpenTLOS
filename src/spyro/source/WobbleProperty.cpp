@@ -12,7 +12,7 @@ extern s32 GS_PLACEHOLDER;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void WobbleProperty::Command(int arg0) {
     if (arg0 == 1) {
         *(pInstanceMem.__vptr + (this->unk8 + 0xC)) = 0;
@@ -27,7 +27,7 @@ s32 WobbleProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void WobbleProperty::Update() {
     f64 sp1A8;
     f64 sp1A0;
@@ -252,7 +252,7 @@ void WobbleProperty::ResolveInstance() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void WobbleProperty::LoadDoneInstance() {
     MKModel *temp_r28_479;
     f32 var_f4_510;
@@ -315,7 +315,7 @@ void WobbleProperty::LoadLineInstance(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void WobbleProperty::InitInstance() {
     f32 var_r31_632;
     void *temp_r4_629;

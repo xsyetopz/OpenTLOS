@@ -114,9 +114,3 @@ void SpikeTrapDescriptor::Init() {
     TrapDescriptor::Init();
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpikeTrapDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

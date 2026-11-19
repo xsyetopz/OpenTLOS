@@ -26,7 +26,7 @@ void BobProperty::UpdateDynamicBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void BobProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 1:
@@ -51,7 +51,7 @@ s32 BobProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void BobProperty::Update() {
     f64 sp40;
     f64 sp38;
@@ -136,7 +136,7 @@ void BobProperty::LoadLineInstance(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void BobProperty::InitInstance() {
     MKIniLine *var_r31_329;
     void *temp_r3_322;

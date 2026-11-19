@@ -217,12 +217,6 @@ void CollapsiblePropDescriptor::Init() {
     this->unk78 = 0;
 }
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CollapsiblePropDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 void CollapsibleProp_cpp::__sinit() {
     f32 temp_f0_529;
     f64 temp_f1_510;

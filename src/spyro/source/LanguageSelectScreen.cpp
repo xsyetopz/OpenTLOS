@@ -217,7 +217,7 @@ void LanguageSelectScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'descriptor'
+#if 0 // DRAFT: expression syntax error
 void LanguageSelectScreen::LoadDone() {
     s32 sp8;
     MKHeap *temp_r3_492;
@@ -323,47 +323,6 @@ void LanguageSelectScreen::Init() {
     UIContainer::Init();
     this->unkBC.unk4 = 0;
     this->unkBC.unk8 = NULL;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast<...>(T1)' redeclared
-UIObject *ui_cast<ScriptButton *, UIObject *>(UIObject *arg0) {
-    ScriptButton *sp8;
-
-    sp8 = NULL;
-    ui_cast_ptr<ScriptButton, UIObject>(sp8, arg0);
-    return (UIObject *) sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'ui_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void ui_cast_ptr<ScriptButton, UIObject>(ScriptButton *&arg0, UIObject *arg1) {
-    u8 var_r0_769;
-    void *var_r5_764;
-
-    if (arg1 != NULL) {
-        var_r5_764 = arg1->unk8;
-loop_2:
-        if (var_r5_764 == &descriptor) {
-            var_r0_769 = 1;
-        } else {
-            var_r5_764 = M2C_FIELD(var_r5_764, void **, 4);
-            if (var_r5_764 == NULL) {
-                var_r0_769 = 0;
-            } else {
-                goto loop_2;
-            }
-        }
-        if (var_r0_769 != 0) {
-            &arg0 = checked_cast<ScriptButton *, UIObject>(arg1);
-        }
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ScriptButton *, UIObject>(UIObject *arg0) {
-
 }
 #endif
 

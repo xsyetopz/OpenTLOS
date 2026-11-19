@@ -13,7 +13,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: undefined identifier 'unk54'
 void Elevator::Move(float arg0) {
     s8 sp80;
     s32 sp7C;
@@ -108,6 +108,7 @@ loop_12:
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk68'
 void Elevator::WaitState() {
     if (this->unkE0.unk68 < this->unkB8) {
         if ((u8) M2C_FIELD(this, u8 *, 0x154) != 0) {
@@ -119,8 +120,9 @@ void Elevator::WaitState() {
         this->unkE0.unk6C = this->unkB8;
     }
 }
+#endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: undefined identifier 'unk68'
 void Elevator::ShudderState() {
     f64 sp10;
     f64 sp8;
@@ -183,7 +185,7 @@ void Elevator::GoingUpState() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'PlatformAttachDetachMsg'
+#if 0 // DRAFT: undefined identifier 'unk60'
 void Elevator::Message(MKMessage *arg0) {
     s32 spC;
     s32 sp8;
@@ -250,7 +252,7 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'unk70'
 void Elevator::PropUpdate() {
     f32 temp_r0_469;
 
@@ -280,7 +282,7 @@ void Elevator::PropUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkspC'
+#if 0 // DRAFT: undefined identifier 'unk60'
 void Elevator::Reset() {
     f64 sp10;
     f64 sp8;
@@ -356,6 +358,7 @@ void Elevator::LoadDone() {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk48'
 s32 Elevator::LoadLine(MKIniLine *arg0) {
     s32 var_r31_684;
 
@@ -365,8 +368,9 @@ s32 Elevator::LoadLine(MKIniLine *arg0) {
     }
     return var_r31_684;
 }
+#endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk40'
 void Elevator::Deinit() {
     s32 spC;
     s32 sp8;
@@ -391,7 +395,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void Elevator::Init() {
     GameProp::Init();
     this->unkE0.SetIdentity();
@@ -408,11 +412,5 @@ void Elevator::Init() {
     this->unkE0.unk6C = 0.0f;
     this->unkE0.unk40 = 0.0f;
     this->unkE0.unk44 = 0.0f;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PlatformAttachDetachMsg *, MKMessage>(MKMessage *arg0) {
-
 }
 #endif

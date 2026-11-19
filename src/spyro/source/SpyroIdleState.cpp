@@ -498,12 +498,6 @@ void SpyroIdleState::Init(Spyro *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpyroOneOffIdleMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_728'
 void SpyroIdleState_cpp::__sinit() {
     f64 temp_f0_1466;

@@ -936,9 +936,3 @@ void ScorchTrailDescriptor::Init() {
     this->unk6C = MKMaterial_Create("fx_333");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ScorchTrailDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

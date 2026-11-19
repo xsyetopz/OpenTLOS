@@ -4,7 +4,7 @@
 #include <m2c_macros.h>
 
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier 'boundingVolume'
+#if 0 // DRAFT: expression syntax error
 static Volume boundingVolume__6Volume;              /* type too large by 0xAC; unable to generate initializer: confusing struct layout */
 
 void Volume::GetRandPos() {

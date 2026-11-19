@@ -476,7 +476,7 @@ void TargetManager::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pTargetManager'
+#if 0 // DRAFT: expression syntax error
 void Targetable::UnregisterTargetable() {
     pTargetManager.__vptr->Remove(this);
     this->unk4 = (void **(*)(TargetManager **, f64, f32))-1;

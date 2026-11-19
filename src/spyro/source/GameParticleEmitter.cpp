@@ -2,7 +2,6 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -895,7 +894,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: illegal type
 void GameParticleEmitter::LoadDone() {
     f32 temp_f0_1821;
     u32 temp_r0_1846;
@@ -1018,21 +1017,3 @@ void GameParticleEmitter::Init() {
     this->unkE0 = 1;
     this->unkE4 = 10000.0f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LavaSteamPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FoundryGas *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LiquidFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif

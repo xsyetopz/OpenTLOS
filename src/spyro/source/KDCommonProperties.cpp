@@ -29,7 +29,7 @@ static KDAnimProperty classInfo__14KDAnimProperty;  /* type too large by 0x10 */
 static KDMessageHandlerProperty classInfo__24KDMessageHandlerProperty; /* type too large by 0x18 */
 static KDPathProperty classInfo__14KDPathProperty;
 static KDSplinePathProperty classInfo__20KDSplinePathProperty;
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 static KDPathFollowerProperty classInfo__22KDPathFollowerProperty; /* type too large by 0xC */
 static KDSoundAttachmentProperty classInfo__25KDSoundAttachmentProperty; /* type too large by 0xC */
 static KDAmbientSoundProperty classInfo__22KDAmbientSoundProperty; /* type too large by 0x18 */
@@ -50,13 +50,13 @@ void KDAmbientSoundProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDAmbientSoundProperty::DeinitInstance() {
     KDSound_Stop(pInstanceMem.__vptr + this->unk8);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDAmbientSoundProperty::InitInstance() {
     void *temp_r3_107;
 
@@ -92,7 +92,7 @@ void KDAmbientSoundProperty::Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDAmbientSoundProperty::Command(int arg0) {
     void *temp_r5_210;
 
@@ -113,7 +113,7 @@ void KDAmbientSoundProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDSoundAttachmentProperty::InitInstance() {
     *(pInstanceMem.__vptr + this->unk8) = 0;
 }
@@ -155,7 +155,7 @@ void KDSoundAttachmentProperty::Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDSoundAttachmentProperty::Command(int arg0) {
     s32 temp_r31_363;
     s8 *temp_r3_353;
@@ -192,7 +192,7 @@ s32 KDSoundAttachmentProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDPathFollowerProperty::UpdateSplinePath() {
     f64 sp28;
     KDUniformSpline sp10;
@@ -233,7 +233,7 @@ void KDPathFollowerProperty::UpdateSplinePath() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDPathFollowerProperty::UpdateNormalPath() {
     f64 sp88;
     f64 sp80;
@@ -380,7 +380,7 @@ void KDPathFollowerProperty::UpdateNormalPath() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDPathFollowerProperty::Update() {
     if ((u8) *(pInstanceMem.__vptr + this->unk8) != 0) {
         if ((u8) this->unk10 != 0) {
@@ -392,7 +392,7 @@ void KDPathFollowerProperty::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDPathFollowerProperty::ResolveInstance() {
     void *temp_r31_766;
     void *temp_r4_785;
@@ -409,7 +409,7 @@ void KDPathFollowerProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 s32 KDPathFollowerProperty::LoadLineInstance(MKIniLine *arg0) {
     s32 var_r30_835;
     void *temp_r3_824;
@@ -426,7 +426,7 @@ s32 KDPathFollowerProperty::LoadLineInstance(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDPathFollowerProperty::InitInstance() {
     void *temp_r3_872;
 
@@ -463,7 +463,7 @@ u8 KDPathFollowerProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDPathFollowerProperty::Command(int arg0) {
     f64 sp88;
     f64 sp80;
@@ -637,7 +637,7 @@ void KDMessageHandlerProperty::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDMessageHandlerProperty::Trigger() {
     KDPropertyCommand **var_r29_1269;
     KDPropertyCommand *temp_r3_1275;
@@ -677,7 +677,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDMessageHandlerProperty::InitInstance() {
     *(pInstanceMem.__vptr + this->unk8) = 0;
 }
@@ -747,7 +747,7 @@ void KDMessageHandlerProperty::Init(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDAnimProperty::Command(int arg0) {
     s32 var_r5_1459;
 
@@ -813,7 +813,7 @@ s32 KDAnimProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDAnimEventProperty::Update() {
     MKAnimScript *temp_r31_1615;
     s32 temp_r4_1628;
@@ -905,7 +905,7 @@ s32 KDAnimEventProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void KDRefPointProperty::Update() {
     Matrix *temp_r3_1796;
 
@@ -987,102 +987,6 @@ void KDCommonProperties_RegisterAll(KDPropertyClassRegistry *arg0) {
         arg0->Add((KDPropertyClassInfo *) (&classInfo + 0xE0));
         KDParticleEffects_RegisterAll(arg0);
     }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast<...>(T1)' redeclared
-s8 *property_cast<KDPositionProperty *, KDProperty *>(KDProperty *arg0) {
-    KDPositionProperty *sp8;
-
-    sp8 = NULL;
-    property_cast_ptr<KDPositionProperty, KDProperty>(sp8, arg0);
-    return (s8 *) sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast<...>(T1)' redeclared
-KDSplinePathProperty *property_cast<KDSplinePathProperty *, KDPathProperty *>(KDPathProperty *arg0) {
-    KDSplinePathProperty *sp8;
-
-    sp8 = NULL;
-    property_cast_ptr<KDSplinePathProperty, KDPathProperty>(sp8, arg0);
-    return sp8;
-}
-#endif
-
-#if 0 // DRAFT: declaration syntax error
-KDPathProperty *property_cast<KDPathProperty *, KDProperty *>(KDProperty *arg0) {
-    KDPathProperty *sp8;
-
-    sp8 = NULL;
-    property_cast_ptr<KDPathProperty, KDProperty>(sp8, arg0);
-    return sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast<...>(T1)' redeclared
-KDMessageHandlerProperty *property_cast<KDMessageHandlerProperty *, KDProperty *>(KDProperty *arg0) {
-    KDMessageHandlerProperty *sp8;
-
-    sp8 = NULL;
-    property_cast_ptr<KDMessageHandlerProperty, KDProperty>(sp8, arg0);
-    return sp8;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void property_cast_ptr<KDMessageHandlerProperty, KDProperty>(KDMessageHandlerProperty *&arg0, KDProperty *arg1) {
-    if ((arg1 != NULL) && (arg1->IsOfType((KDPropertyClassInfo *) &classInfo) != 0)) {
-        &arg0 = checked_cast<KDMessageHandlerProperty *, KDProperty>(arg1);
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void property_cast_ptr<KDPathProperty, KDProperty>(KDPathProperty *&arg0, KDProperty *arg1) {
-    if ((arg1 != NULL) && (arg1->IsOfType((KDPropertyClassInfo *) &classInfo) != 0)) {
-        &arg0 = checked_cast<KDPathProperty *, KDProperty>(arg1);
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void property_cast_ptr<KDSplinePathProperty, KDPathProperty>(KDSplinePathProperty *&arg0, KDPathProperty *arg1) {
-    if ((arg1 != NULL) && (arg1->IsOfType((KDPropertyClassInfo *) &classInfo) != 0)) {
-        &arg0 = checked_cast<KDSplinePathProperty *, KDPathProperty>(arg1);
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'property_cast_ptr<...>(T0 *&, T1 *)' redeclared
-void property_cast_ptr<KDPositionProperty, KDProperty>(KDPositionProperty *&arg0, KDProperty *arg1) {
-    if ((arg1 != NULL) && (arg1->IsOfType((KDPropertyClassInfo *) &classInfo) != 0)) {
-        &arg0 = checked_cast<KDPositionProperty *, KDProperty>(arg1);
-    }
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDPositionProperty *, KDProperty>(KDProperty *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDSplinePathProperty *, KDPathProperty>(KDPathProperty *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDPathProperty *, KDProperty>(KDProperty *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDMessageHandlerProperty *, KDProperty>(KDProperty *arg0) {
-
 }
 #endif
 

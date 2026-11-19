@@ -242,7 +242,6 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'propertyClassRegistry'
 s32 KDPropExDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_455;
 
@@ -252,9 +251,8 @@ s32 KDPropExDescriptor::LoadLine(MKIniLine *arg0) {
     }
     return var_r31_455;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'propertyClassRegistry'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
 void KDPropExDescriptor::Init() {
     KDCommonProperties_RegisterAll((KDPropertyClassRegistry *) &propertyClassRegistry);
     KDPropDescriptor::Init();

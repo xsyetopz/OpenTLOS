@@ -98,7 +98,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pGraph'
+#if 0 // DRAFT: expression syntax error
 void FireBossGraphNode::AddEdges(FireBossGraphNode *arg0, KDUniformSpline *arg1, float arg2, float arg3, int arg4, bool arg5, unsigned char arg6, unsigned char arg7) {
     s32 var_r28_166;
     s32 var_r3_191;
@@ -2695,24 +2695,6 @@ void FireBossDescriptor::Init() {
     } while (var_r28_5224 < 8);
     this->unk3D8 = 0;
     this->unk3DC = NULL;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Projectile *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireBossDriver *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireBossDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif
 

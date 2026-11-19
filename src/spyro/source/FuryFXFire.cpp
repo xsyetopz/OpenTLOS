@@ -54,7 +54,7 @@ static u8 lit_910 = 0;
 
 static u8 lit_1163 = 0;
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk58'
 void FuryFXFire::ResetFury() {
     s32 spC;
     s32 sp8;
@@ -284,7 +284,7 @@ void FuryFXFire::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
+#if 0 // DRAFT: undefined identifier 'unk74'
 void FuryFXFire::Draw() {
     f32 temp_f2_459;
     f32 temp_r0_442;
@@ -323,7 +323,7 @@ void FuryFXFire::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp48'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void FuryFXFire::UpdateDragons() {
     MKVector3 *temp_r25_660;
     f32 temp_f1_602;
@@ -458,7 +458,7 @@ void FuryFXFire::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'unk70'
 void FuryFXFire::Update() {
     KDSynkerPlayer3 *temp_r3_2372;
     f32 temp_f19_2670;

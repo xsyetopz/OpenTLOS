@@ -264,7 +264,7 @@ void FuryFXEarth::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: undefined identifier 'unk44'
 s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     f64 sp30;
     f64 sp28;
@@ -372,11 +372,13 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk44'
 void FuryFXEarth::SetDefaults() {
     SetDefaults();
     this->unkC0.unk44 = 0.0f;
     this->unkC0.unk48 = 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: pointer/array required
 void FuryFXEarth::Deinit() {
@@ -402,7 +404,7 @@ void FuryFXEarth::Draw() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'MKVector'
+#if 0 // DRAFT: undefined identifier 'unk4C'
 void FuryFXEarth::EmitLeaves() {
     f64 spC8;
     f64 spC0;
@@ -466,7 +468,7 @@ void FuryFXEarth::EmitLeaves() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk48'
 void FuryFXEarth::Update() {
     f64 sp2A0;
     f64 sp298;
@@ -990,18 +992,6 @@ void FuryFXEarth::Init() {
     this->unk1C0 = (MKPropDescriptor *)-1;
     M2C_FIELD(this, s8 *, 0x1C8) = 0;
     M2C_FIELD(this, s32 *, 0x1CC) = 0;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SquishBoulder *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SquishBoulderDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif
 

@@ -801,7 +801,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'nanf'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void TeslaTower::Init() {
     KDProp::Init();
     this->unk90.unk14 = 0.0f;
@@ -847,11 +847,5 @@ void TeslaTowerDescriptor::LoadDone() {
 void TeslaTowerDescriptor::Init() {
     KDPropDescriptor::Init();
     this->unk74 = MKMaterial_Create("teslaLight");
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

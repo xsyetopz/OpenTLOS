@@ -583,9 +583,3 @@ void MoltenMetalBucketDescriptor::Init() {
     this->unk120 = 0.25f;
     this->unk124 = 0.25f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

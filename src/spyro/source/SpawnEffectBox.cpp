@@ -19,7 +19,7 @@ extern MKSceneManager *gMK;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'unk6C'
 void SpawnEffectBox::Update() {
     f64 sp58;
     f64 sp50;
@@ -78,7 +78,7 @@ void SpawnEffectBox::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'unk6C'
 void SpawnEffectBox::Message(MKMessage *arg0) {
     s32 temp_r0_411;
 
@@ -96,7 +96,7 @@ void SpawnEffectBox::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: undefined identifier 'unk50'
 void SpawnEffectBox::LoadDone() {
     MKHeap *temp_r3_471;
     f32 var_r3_458;
@@ -137,7 +137,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
+#if 0 // DRAFT: undefined identifier 'unk50'
 s32 SpawnEffectBox::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r26_592;
     u8 var_r30_604;
@@ -165,7 +165,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk54'
 void SpawnEffectBox::Deinit() {
     MKHeap *temp_r3_661;
     f32 temp_r31_658;
@@ -184,7 +184,7 @@ void SpawnEffectBox::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: undefined identifier 'unk50'
 void SpawnEffectBox::Init() {
     MKProp::Init();
     this->unk50.unk40.unk50 = 0.0f;
@@ -206,11 +206,5 @@ s32 SpawnEffectBoxDescriptor::LoadLine(MKIniLine *arg0) {
         var_r31_720 = 1;
     }
     return var_r31_720;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpawnEffectBoxDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

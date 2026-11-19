@@ -113,7 +113,7 @@ void ExpShock::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gExpShockEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void ExpShock::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 200.5f;
@@ -133,11 +133,5 @@ void ExpShockDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();
     this->unk80 = 1;
     this->unk84 = 1.0f / (f32) this->unk80;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ExpShockDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

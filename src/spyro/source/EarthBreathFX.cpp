@@ -410,7 +410,7 @@ void EarthBreathFX::DrawShotgunMuzzelFlash() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: undefined identifier 'unk44'
 s32 EarthBreathFX::ShootShotgun(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
     ManagedLight *temp_r3_1227;
     ManagedLight *temp_r3_1240;
@@ -1453,29 +1453,5 @@ void EarthBreathFX::Init() {
     } while (var_r29_2710 < 8);
     M2C_FIELD(this, s8 *, 0x198) = 0;
     this->unk150.unk44 = 0.0f;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EarthBombFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FuryFXEarth2 *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FuryFXEarth *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

@@ -152,7 +152,7 @@ void WeatherAshPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gWeatherAshPSEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void WeatherAshPS::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 10.5f;

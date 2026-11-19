@@ -106,9 +106,3 @@ void FXBaseDescriptor::Init() {
     this->unkD8 = 0.0f;
     this->unkDC = 0.0f;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FXBaseDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

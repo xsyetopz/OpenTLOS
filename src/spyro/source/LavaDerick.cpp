@@ -128,12 +128,6 @@ void LavaDerickDescriptor::Resolve() {
     CalcBounds();
 }
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LavaDerickDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 void LavaDerick_cpp::__sinit() {
     f32 temp_f0_247;
     f64 temp_f1_228;

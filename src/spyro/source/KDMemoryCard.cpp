@@ -339,7 +339,7 @@ void KDMemoryCard::SetState(KDMCState arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'currentCard'
+#if 0 // DRAFT: expression syntax error
 s32 KDMemoryCard::Update() {
     s32 var_r3_743;
 
@@ -358,13 +358,13 @@ s32 KDMemoryCard::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'state'
+#if 0 // DRAFT: expression syntax error
 s32 KDMemoryCard::WasErrorDuringLast() {
     return state.unk0 == 1;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'numCardsPresent'
+#if 0 // DRAFT: expression syntax error
 void KDMemoryCard::Reset(bool arg0) {
     this->unk8 = 1;
     if ((u8) this->unk9 != arg0) {
@@ -413,7 +413,7 @@ void KDMemoryCard::InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'currentCard'
+#if 0 // DRAFT: expression syntax error
 s32 KDMemoryCard::GetNextCard() {
     if ((u32) currentCard.unk0 >= &card[1]) {
         return 0;

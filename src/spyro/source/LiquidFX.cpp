@@ -1952,7 +1952,7 @@ void LiquidFXDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void LiquidFXDescriptor::Deinit() {
     LiquidFXDescriptor *temp_r3_4028;
     LiquidFXDescriptor *temp_r3_4034;
@@ -1975,7 +1975,7 @@ void LiquidFXDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void LiquidFXDescriptor::Init() {
     GamePropDescriptor::Init();
     this->unkF0 = (LiquidFXDescriptor *) pFirstDesc.unk0;
@@ -1985,17 +1985,5 @@ void LiquidFXDescriptor::Init() {
     }
     pFirstDesc.unk0 = (s8 *) this;
     this->unkE8 = gMK->GetWorkingChunk();
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CrashMistPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LiquidFXDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

@@ -26,7 +26,7 @@ void SwayProperty::UpdateDynamicBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void SwayProperty::Command(int arg0) {
     switch (arg0) {                                 /* irregular */
     case 1:
@@ -51,7 +51,7 @@ s32 SwayProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void SwayProperty::Update() {
     Matrix *temp_r3_270;
     Matrix *temp_r3_288;
@@ -192,7 +192,7 @@ void SwayProperty::LoadLineInstance(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pInstanceMem'
+#if 0 // DRAFT: expression syntax error
 void SwayProperty::InitInstance() {
     MKIniLine *var_r31_496;
     void *temp_r3_481;

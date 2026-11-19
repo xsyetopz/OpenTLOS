@@ -563,12 +563,6 @@ void Catapult_InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CatapultDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_723'
 void Catapult_cpp::__sinit() {
     s32 sp10;

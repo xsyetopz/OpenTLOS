@@ -338,15 +338,3 @@ void SteamValveDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
     this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, "r_fxemit0");
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Steam *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SteamValveDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

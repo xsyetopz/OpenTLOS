@@ -882,24 +882,6 @@ void InGame_Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ShowMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DojoDialogButtonsMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DojoDialogMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'zero'
 void InGame_cpp::__sinit() {
     f64 temp_f0_1925;

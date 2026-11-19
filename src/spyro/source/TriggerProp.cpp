@@ -136,7 +136,7 @@ void TriggerBoxProp::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstActiveTrigger'
+#if 0 // DRAFT: expression syntax error
 void TriggerProp::UpdateActiveList() {
     void *temp_r29_423;
     void *var_r30_418;
@@ -156,7 +156,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstActiveTrigger'
+#if 0 // DRAFT: expression syntax error
 void TriggerProp::RemoveFromActiveList(TriggerProp *arg0) {
     MKPropDescriptor *temp_r4_467;
     TriggerProp *temp_r4_473;
@@ -335,6 +335,7 @@ void TriggerProp::OnEnter() {
     }
 }
 
+#if 0 // DRAFT: undefined identifier 'unk44'
 void TriggerProp::Update() {
     TriggerObject *temp_r3_834;
     f32 temp_r3_879;
@@ -403,6 +404,7 @@ void TriggerProp::Update() {
         }
     }
 }
+#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
 void TriggerProp::Reset() {
@@ -415,7 +417,7 @@ void TriggerProp::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void TriggerProp::LoadDone() {
     TriggerObject *temp_r3_1100;
     TriggerObject *temp_r3_1108;
@@ -484,7 +486,7 @@ u8 TriggerProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstTrigger'
+#if 0 // DRAFT: expression syntax error
 void TriggerProp::Deinit() {
     MKPropDescriptor *temp_r3_1349;
     TriggerObject *temp_r3_1366;
@@ -560,29 +562,5 @@ void TriggerPropDescriptor::Init() {
     this->unk80 = 1;
     sp20 = (f64) sp10;
     this->unkC = this->unkC | 0x40000 | 2;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TriggerPlaneObject *, TriggerObject>(TriggerObject *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TriggerPlaneGroupObject *, TriggerObject>(TriggerObject *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TriggerProp *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TriggerPropDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif

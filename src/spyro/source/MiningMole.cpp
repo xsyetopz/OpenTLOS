@@ -2,7 +2,6 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CrashFirePS.h"
@@ -472,23 +471,5 @@ void MiningMole::Init() {
     this->unk110.unkA00->Init((Enemy *) this);
     M2C_FIELD(this->unk110.unkA00, s8 *, 0x38) = 1;
     this->unk110.unk92C = (Goal<Enemy> *) this->unk110.unkA00;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FreeMiningMoleBounceMessage *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<NPCGoal_Think *, Goal<Enemy>>(Goal<Enemy> *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MoleTether *, MKProp>(MKProp *arg0) {
-
 }
 #endif

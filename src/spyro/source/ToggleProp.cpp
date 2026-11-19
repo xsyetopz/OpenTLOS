@@ -90,9 +90,3 @@ void TogglePropDescriptor::Init() {
     M2C_FIELD(this, s8 *, 0x81) = 1;
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<TogglePropDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

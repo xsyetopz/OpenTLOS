@@ -11,7 +11,7 @@
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDSoundProp::Play() {
     s32 sp8;
 
@@ -21,7 +21,7 @@ void KDSoundProp::Play() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDSoundProp::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != -4) {
 
@@ -33,7 +33,7 @@ void KDSoundProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDSoundProp::Update() {
     s32 sp8;
     f32 temp_r3_110;
@@ -69,7 +69,7 @@ void KDSoundProp::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDSoundProp::Reset() {
     MKProp::Reset();
     KDSound_Stop((s32 *) &this->unk60.unk40);
@@ -78,7 +78,7 @@ void KDSoundProp::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void KDSoundProp::LoadDone() {
     MKProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&loadInfo - 4) + 4, 0x40);
@@ -112,13 +112,14 @@ s32 KDSoundProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDSoundProp::Deinit() {
     MKProp::Deinit();
     KDSound_Stop((s32 *) &this->unk60.unk40);
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk40'
 void KDSoundProp::Init() {
     MKProp::Init();
     this->unk50 = 0;
@@ -130,6 +131,7 @@ void KDSoundProp::Init() {
     this->unk60.SetIdentity();
     this->unk8 = &this->unk60;
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'unk60'
 void KDSoundPropDescriptor::Init() {

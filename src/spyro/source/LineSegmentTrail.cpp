@@ -44,7 +44,7 @@ void LineSegmentTrailPool::Free(LSTrail *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'pTrailPool'
+#if 0 // DRAFT: expression syntax error
 LineSegmentTrailPool *LineSegmentTrailPool::Alloc() {
     f64 sp20;
     f64 sp18;
@@ -85,7 +85,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'refCount'
+#if 0 // DRAFT: expression syntax error
 void LineSegmentTrailPool::Deinit() {
     MKHeap *temp_r3_161;
     MKHeap *temp_r3_179;
@@ -136,7 +136,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'refCount'
+#if 0 // DRAFT: expression syntax error
 void LineSegmentTrailPool::Init() {
     f64 sp20;
     f64 sp18;

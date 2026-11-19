@@ -15,12 +15,10 @@ s32 KDWaterVolume::IsEnabled() {
     return 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
 void KDWaterVolume::LoadDone() {
     MKProp::LoadDone();
     this->unk50.Init(*((Matrix *) &loadInfo));
 }
-#endif
 
 void KDWaterVolume::Deinit() {
     this->unk50.Deinit();
@@ -222,7 +220,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void KDWaterVolumeDescriptor::Deinit() {
     void *var_r3_378;
     void *var_r4_385;
@@ -248,17 +246,11 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void KDWaterVolumeDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = 0;
     this->unk68 = (KDWaterVolumeDescriptor *) pFirstDesc.__vptr;
     pFirstDesc.__vptr = this;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<KDWaterVolume *, MKProp>(MKProp *arg0) {
-
 }
 #endif

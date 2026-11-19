@@ -403,9 +403,3 @@ void FlyingMonkeyDescriptor::Deinit() {
     pFlyingMonkeyDescriptor = NULL;
     KDPropExDescriptor::Deinit();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FlyingMonkeyDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

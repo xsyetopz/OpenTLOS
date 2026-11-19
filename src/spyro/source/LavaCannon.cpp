@@ -615,9 +615,3 @@ void LavaCannonDescriptor::Init() {
     this->unk194 = GS_PLACEHOLDER;
     this->unk198 = GS_PLACEHOLDER;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<LavaCannonDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

@@ -152,7 +152,7 @@ void IceBreathSnowFlakes::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gIceBreathSnowFlakesEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void IceBreathSnowFlakes::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 10.5f;

@@ -119,9 +119,3 @@ void FireBossDriverDescriptor::Init() {
     EnemyDescriptor::Init();
     this->unk1D5 = 0;
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<Goal<Enemy> *, FireBossDriverGoal_Think>(FireBossDriverGoal_Think *arg0) {
-
-}
-#endif

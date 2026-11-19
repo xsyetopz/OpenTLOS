@@ -18,7 +18,7 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal use of non-static member
 void MudGutsCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -37,7 +37,7 @@ void MudGutsCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void MudGutsCritter::Draw() {
     s32 var_r30_92;
     s32 var_r31_93;
@@ -162,7 +162,7 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void MudGutsCritter::Update() {
     f64 sp50;
     f64 sp48;
@@ -228,7 +228,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void MudGutsCritter::Resolve() {
     f32 sp8;
     MudGuts *temp_r28_471;
@@ -256,7 +256,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
 void MudGutsCritter::LoadDone() {
     MKHeap *temp_r3_521;
     s32 temp_r31_520;
@@ -272,7 +271,6 @@ void MudGutsCritter::LoadDone() {
     }
     this->unk170 = var_r3_528;
 }
-#endif
 
 void MudGutsCritter::Init() {
     Critters::Init();
@@ -310,9 +308,3 @@ void MudGutsCritterDescriptor::LoadDone() {
 void MudGutsCritterDescriptor::Init() {
     KDPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<MudGutsCritterDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

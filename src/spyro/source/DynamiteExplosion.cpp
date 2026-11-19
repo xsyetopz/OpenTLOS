@@ -2112,9 +2112,3 @@ void DynamiteExplosionDescriptor::Init() {
     this->unk80 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DynamiteExpIceSnow"));
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DynamiteExplosionDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

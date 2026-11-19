@@ -61,7 +61,7 @@ void ShatterablePlatform::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: undefined identifier 'unk1A8'
 void ShatterablePlatform::LoadDone() {
     Shatterable::LoadDone();
     M2C_FIELD(this, f64 *, 0x208) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x50);

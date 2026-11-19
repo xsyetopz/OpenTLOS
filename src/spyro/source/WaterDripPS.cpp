@@ -1101,9 +1101,3 @@ void WaterDripPS::Init() {
     this->unk4C = var_r3_1774;
     memset(this->unk4C, 0, 0x6E0U);
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<PathDestroyedMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif

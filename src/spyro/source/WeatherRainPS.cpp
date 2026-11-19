@@ -125,7 +125,7 @@ void WeatherRainPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gWeatherRainPSEnv'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void WeatherRainPS::Init() {
     MKParticleSystem::Init();
     this->unk60.unk48 = 2.5f;

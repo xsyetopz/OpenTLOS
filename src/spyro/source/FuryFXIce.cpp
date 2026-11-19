@@ -1058,12 +1058,6 @@ void FuryFXIce::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<IceBreathSnowFlakes *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
 void FuryFXIce_cpp::__sinit() {
     f32 temp_f0_2280;
     f64 temp_f1_2261;

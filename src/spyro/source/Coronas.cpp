@@ -504,9 +504,3 @@ void CoronasDescriptor::Init() {
     this->unk68 = MKMaterial_Create("fx_174");
 }
 #endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CoronasDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

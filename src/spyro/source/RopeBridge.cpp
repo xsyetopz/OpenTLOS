@@ -1073,7 +1073,7 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'unk58'
 void RopeBridge::ApplyForce(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp80;
     f64 sp78;
@@ -2150,7 +2150,7 @@ s32 RopeBridgeDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void RopeBridgeDescriptor::Deinit() {
     RopeBridgeDescriptor *temp_r4_3909;
     RopeBridgeDescriptor *temp_r4_3915;
@@ -2173,7 +2173,7 @@ void RopeBridgeDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pFirstDesc'
+#if 0 // DRAFT: expression syntax error
 void RopeBridgeDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = 0;
@@ -2185,30 +2185,6 @@ void RopeBridgeDescriptor::Init() {
     }
     pFirstDesc.__vptr = this;
     this->unk64 = M2C_FIELD(*gMK, s32 (**)(void **), 0x7C)(gMK);
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<DropBoxDroppedMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<RopeBridgeAttachDetachMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ApplyForceMsg *, MKMessage>(MKMessage *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<RopeBridgeDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif
 

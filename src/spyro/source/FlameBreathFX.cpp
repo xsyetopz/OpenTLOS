@@ -1925,30 +1925,6 @@ void FlameBreathFX::Init() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FireBombFX *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FuryFXFire2 *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FuryFXFire *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<FlameBreathPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'unk4'
 void FlameBreathFX_cpp::__sinit() {
     streamHitMsg.unk4 = 0;

@@ -1,6 +1,5 @@
 #include "spyro/source/SpyroJumpState.h"
 #include "common/Source/MKAnimScript.h"
-#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/InputModifier.h"
@@ -1162,12 +1161,6 @@ void SpyroJumpState::Init(Spyro *arg0) {
     this->unk58 = 0x19;
     this->unk5C = 0x19;
     this->unk60 = &this->unk50;
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SpyroProjectVelMsg *, MKMessage>(MKMessage *arg0) {
-
 }
 #endif
 

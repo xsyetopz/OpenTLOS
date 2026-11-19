@@ -361,12 +361,6 @@ void BoulderRamp_InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<BoulderRampDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif
-
 #if 0 // DRAFT: undefined identifier 'lit_631'
 void BoulderRamp_cpp::__sinit() {
     s32 sp10;

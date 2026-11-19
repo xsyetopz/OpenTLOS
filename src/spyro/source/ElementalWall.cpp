@@ -56,10 +56,12 @@ static s32 lit_917 = 1;
 
 static u8 lit_996 = 1;
 
+#if 0 // DRAFT: undefined identifier 'unk54'
 void ElementalWall::CalcBounds() {
     SplineProp::CalcBounds();
     this->unk50.unk54 += this->unk110;
 }
+#endif
 
 void ElementalWall::StateEWOffExit() {
 
@@ -2064,12 +2066,6 @@ void ElementalWall::Init() {
 void ElementalWallDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
     this->unk60 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<ElementalWallDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif
 

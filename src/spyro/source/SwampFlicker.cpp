@@ -21,7 +21,7 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal use of non-static member
 void SwampFlicker::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -40,7 +40,7 @@ void SwampFlicker::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SwampFlicker::Draw() {
     Matrix *temp_r29_97;
     s32 var_r30_89;
@@ -62,7 +62,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SwampFlicker::Update() {
     s8 sp208;
     s32 sp204;
@@ -285,7 +285,7 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk170'
+#if 0 // DRAFT: illegal type
 void SwampFlicker::LoadDone() {
     Volume sp100;
     f64 spF8;
@@ -524,9 +524,3 @@ void SwampFlickerDescriptor::LoadDone() {
 void SwampFlickerDescriptor::Init() {
     KDPropDescriptor::Init();
 }
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
-}
-#endif

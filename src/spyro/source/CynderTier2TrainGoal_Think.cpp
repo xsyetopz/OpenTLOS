@@ -556,12 +556,6 @@ void EnemyGoal_SpawnOnTrain::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<CynderTier2Train *, Enemy>(Enemy *arg0) {
-
-}
-#endif
-
 void CynderTier2TrainGoal_Think_cpp::__sinit() {
     f32 temp_f0_1229;
     f64 temp_f1_1210;

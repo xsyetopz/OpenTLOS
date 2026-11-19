@@ -916,13 +916,11 @@ loop_45:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
 void WeatherRegion::LoadDone() {
     MKProp::LoadDone();
     this->unk50 = M2C_FIELD(&loadInfo, f64 *, 0x40);
     M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x48);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 WeatherRegion::LoadLine(MKIniLine *arg0) {
@@ -973,47 +971,5 @@ void WeatherRegionDescriptor::Init() {
     MKPropDescriptor::Init();
     M2C_STRUCT_COPY((s32) &this->unk9C + 4, (s32) (&identity - 4) + 4, 0x40);
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) &this->unk9C + 4, 0x40);
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<WeatherRainPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<WeatherConvexityPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<WeatherSporesPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<WeatherEmbersPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<WeatherAshPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<WeatherSnowPS *, MKProp>(MKProp *arg0) {
-
-}
-#endif
-
-#if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
-void checked_cast<WeatherRegionDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {
-
 }
 #endif
