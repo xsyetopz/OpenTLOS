@@ -51,25 +51,17 @@ f32 ScriptedCounterProp::Resolve() {
     MKProp::Resolve();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 ScriptedCounterProp::LoadLine(MKIniLine *arg0) {
-    f32 var_f1_98;
-    s32 temp_ret_117;
-    s32 temp_ret_98;
     s32 var_r29_105;
     s32 var_r31_107;
 
-    temp_ret_98 = MKProp::LoadLine(arg0);
-    var_f1_98 = M2C_BITWISE(f32, temp_ret_98);
-    if (temp_ret_98 != 0) {
+    if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
     var_r29_105 = 0;
     var_r31_107 = 0;
 loop_3:
-    temp_ret_117 = (const char *) (((EventMessage *) (this + (var_r31_107 + 0x4C)))->LoadLine(arg0, Str_Printf("OnEventCount%d", var_r29_105 + 1, var_f1_98)));
-    var_f1_98 = M2C_BITWISE(f32, temp_ret_117);
-    if (temp_ret_117 != 0) {
+    if (((EventMessage *) ((u8 *) this + (var_r31_107 + 0x4C)))->LoadLine(arg0, (const char *) Str_Printf("OnEventCount%d", var_r29_105 + 1)) != 0) {
         return 1;
     }
     var_r29_105 += 1;
@@ -79,7 +71,6 @@ loop_3:
     }
     goto loop_3;
 }
-#endif
 
 void ScriptedCounterProp::Init() {
     s32 var_r30_146;

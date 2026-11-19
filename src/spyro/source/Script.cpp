@@ -127,40 +127,29 @@ void *ScriptProp::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s32 ScriptProp::LoadLine(MKIniLine *arg0) {
-    f32 var_f1_280;
-    s32 temp_ret_280;
-    s32 temp_ret_299;
     s32 var_r29_287;
     s32 var_r31_289;
     s32 var_r31_314;
 
-    temp_ret_280 = MKProp::LoadLine(arg0);
-    var_f1_280 = M2C_BITWISE(f32, temp_ret_280);
-    if (temp_ret_280 != 0) {
+    if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
     var_r29_287 = 0;
     var_r31_289 = 0;
-loop_3:
-    temp_ret_299 = (const char *) (((EventMessage *) (this + (var_r31_289 + 0x58)))->LoadLine(arg0, Str_Printf("Message%d", var_r29_287, var_f1_280)));
-    var_f1_280 = M2C_BITWISE(f32, temp_ret_299);
-    if (temp_ret_299 != 0) {
-        return 1;
-    }
-    var_r29_287 += 1;
-    var_r31_289 += 4;
-    if (var_r29_287 >= 0xA) {
-        var_r31_314 = 0;
-        if ((arg0->LoadFloat("delay", &this->unk4C, 0) != 0) || (arg0->LoadBool("bDelayEachMessage", &this->unk54, 0) != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0)) {
-            var_r31_314 = 1;
+    do {
+        if (((EventMessage *) ((u8 *) this + (var_r31_289 + 0x58)))->LoadLine(arg0, (const char *) Str_Printf("Message%d", var_r29_287)) != 0) {
+            return 1;
         }
-        return var_r31_314;
+        var_r29_287 += 1;
+        var_r31_289 += 4;
+    } while (var_r29_287 < 0xA);
+    var_r31_314 = 0;
+    if ((arg0->LoadFloat("delay", &this->unk4C, 0) != 0) || (arg0->LoadBool("bDelayEachMessage", (bool *) &this->unk54, 0) != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0)) {
+        var_r31_314 = 1;
     }
-    goto loop_3;
+    return var_r31_314;
 }
-#endif
 
 void ScriptProp::Init() {
     MKProp::Init();

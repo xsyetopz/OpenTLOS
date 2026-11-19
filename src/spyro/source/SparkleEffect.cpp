@@ -77,7 +77,6 @@ s32 SparkleEffect::LoadDone() {
     MKProp::LoadDone();
 }
 
-#if 0 // DRAFT: illegal operand
 void SparkleEffect::Init() {
     s32 temp_r0_208;
     s32 var_ctr_206;
@@ -95,8 +94,6 @@ void SparkleEffect::Init() {
     do {
         temp_r0_208 = var_r3_200 + 0x54;
         var_r3_200 += 0x14;
-        *(this + temp_r0_208) = 0;
-        var_ctr_206 -= 1;
-    } while (var_ctr_206 != 0);
+        *(u8 *) ((u8 *) this + temp_r0_208) = 0;
+    } while (--var_ctr_206 != 0);
 }
-#endif
