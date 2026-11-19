@@ -28,6 +28,7 @@ CFLAGS = [
     "-maxerrors 1",
     "-nosyspath",
     "-i include",
+    "-i include/libc",
     "-i src",
 ]
 

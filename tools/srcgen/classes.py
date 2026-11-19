@@ -15,13 +15,17 @@ Per class the output records:
            "vtable prefix": otherwise, the class with the longest vtable whose every
              slot this class shares or overrides by name, and which implements at
              least one shared slot itself (siblings only share their parent's slots).
+  vptr     offset where the class's own ctor stores its vtable pointer.
   owner    the TU defining most of the class's methods (header placement).
+  size_max upper bound on sizeof from `new(N)` followed by the class's ctor, or
+           from the smallest bounded derived class ("size_evidence").
 Nothing here is verified against source; it is the evidence base for headers.
 """
 
 from __future__ import annotations
 
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -67,24 +71,75 @@ def class_name(mangled: str):
     return str(term) if term.kind == CxxTerm.Kind.QUALIFIED and not rest else None
 
 
-def vtable_store_pairs(asm_root: Path) -> Counter:
-    """(base vtable, derived vtable) pairs from vtable stores in ctors and dtors."""
+VT_ADDI = re.compile(r"\taddi (r\d+), r\d+, __vt__(\w+)@l$")
+STW = re.compile(r"\tstw (r\d+), (-?0x[0-9a-f]+|\d+)\((r\d+)\)$")
+
+
+def vtable_store_pairs(asm_root: Path) -> tuple[Counter, dict]:
+    """(base vtable, derived vtable) pairs from successive vtable stores to one slot.
+
+    A ctor stores the base vtable into `this`, then its own (a dtor the reverse).
+    Slots are keyed by base register and offset, so member objects whose ctors
+    are inlined (a UIImage inside MarkerButtonGroup) form their own sequences.
+    Also returns each class's vptr offset: where its own ctor stores its vtable.
+    MWCC puts the vptr where the first virtual function is declared among the
+    data members, so it is not always 0 (MKProp's is 0x44).
+    """
     pairs: Counter = Counter()
+    vptr: dict = defaultdict(Counter)
     for f in sorted(asm_root.glob("*/**/*.s")):
-        cur, vts = None, []
+        cur, regs, slots = None, {}, defaultdict(list)
         for line in f.read_text().splitlines():
             if line.startswith(".fn "):
-                cur, vts = line[4:].split(",")[0], []
+                cur, regs, slots = line[4:].split(",")[0], {}, defaultdict(list)
             elif line.startswith(".endfn"):
                 if cur and cur.startswith(("__ct__", "__dt__")):
-                    seq = [v for i, v in enumerate(vts) if i == 0 or vts[i - 1] != v]
-                    if cur.startswith("__dt__"):
-                        seq.reverse()
-                    pairs.update(zip(seq, seq[1:]))
+                    for vts in slots.values():
+                        seq = [v for i, v in enumerate(vts) if i == 0 or vts[i - 1] != v]
+                        if cur.startswith("__dt__"):
+                            seq.reverse()
+                        pairs.update(zip(seq, seq[1:]))
                 cur = None
-            elif cur and "__vt__" in line and "@l" in line:
-                vts.append(line.split("__vt__", 1)[1].split("@", 1)[0])
-    return pairs
+            elif cur:
+                m = VT_ADDI.search(line)
+                if m:
+                    regs[m.group(1)] = m.group(2)
+                    continue
+                m = STW.search(line)
+                if m and m.group(1) in regs:
+                    slots[(m.group(3), m.group(2))].append(regs[m.group(1)])
+                    if cur.startswith(f"__ct__{regs[m.group(1)]}F"):
+                        vptr[regs[m.group(1)]][int(m.group(2), 0)] += 1
+    return pairs, {k: v.most_common(1)[0][0] for k, v in vptr.items()}
+
+
+NEW = re.compile(r"\tli r3, (0x[0-9a-fA-F]+|\d+)$")
+CT = re.compile(r"\tbl __ct__(\w+?)F")
+
+
+def alloc_sizes(asm_root: Path) -> dict:
+    """Upper bound of each class's size from `new(size, file, line)` followed by its ctor.
+
+    The bound is the smallest size seen: when a derived ctor is inlined, the call
+    left after `new` is the base ctor, and the allocation is the derived size.
+    """
+    sizes: dict = {}
+    for f in sorted(asm_root.glob("*/**/*.s")):
+        lines = f.read_text().splitlines()
+        for i, line in enumerate(lines):
+            if "bl __nw__FUlPCci" not in line:
+                continue
+            n = next((int(m.group(1), 0) for b in reversed(lines[max(0, i - 8):i]) if (m := NEW.search(b))), None)
+            for a in lines[i + 1:i + 14]:
+                m = CT.search(a)
+                if m:
+                    cls = class_name(m.group(1))
+                    if n and cls:
+                        sizes[cls] = min(n, sizes.get(cls, n))
+                    break
+                if "\tbl " in a or "\tblr" in a:
+                    break
+    return sizes
 
 
 def main() -> int:
@@ -113,13 +168,16 @@ def main() -> int:
         cls, member, typ = q
         if s.kind == "function":
             classes[cls]["methods"].append({"name": member, "mangled": s.name, "type": typ,
-                                            "addr": f"0x{s.addr:08X}", "size": s.size, "tu": tu})
+                                            "addr": f"0x{s.addr:08X}", "size": s.size, "tu": tu,
+                                            "weak": "scope:weak" in s.attrs})
         else:
             classes[cls]["statics"].append({"name": member, "mangled": s.name, "size": s.size, "tu": tu})
 
     owner_of = {}
     for name, c in classes.items():
-        votes = Counter(m["tu"] for m in c["methods"]) or Counter([c.get("vtable_tu")])
+        # Weak methods are inline copies; the defining TU has the strong ones.
+        votes = (Counter(m["tu"] for m in c["methods"] if not m["weak"])
+                 or Counter(m["tu"] for m in c["methods"]) or Counter([c.get("vtable_tu")]))
         c["owner"] = votes.most_common(1)[0][0]
         owner_of[name] = c["owner"]
         slots = set(c["vtable"] or [])
@@ -131,7 +189,12 @@ def main() -> int:
         return q[1] + q[2] if q else slot
 
     stored = {}
-    for (base, derived), _ in vtable_store_pairs(ROOT / "build" / VERSION / "asm").most_common():
+    pairs, vptr = vtable_store_pairs(ROOT / "build" / VERSION / "asm")
+    for mangled, off in vptr.items():
+        cls = class_name(mangled)
+        if cls in classes:
+            classes[cls]["vptr"] = off
+    for (base, derived), _ in pairs.most_common():
         b, d = class_name(base), class_name(derived)
         if b and d and b != d and d not in stored:
             stored[d] = b
@@ -155,6 +218,19 @@ def main() -> int:
         if best:
             c["base"] = best
             c["base_evidence"] = "vtable prefix"
+
+    for name, n in alloc_sizes(ROOT / "build" / VERSION / "asm").items():
+        if name in classes:
+            classes[name]["size_max"], classes[name]["size_evidence"] = n, "new+ctor"
+    # A base is never larger than any class derived from it.
+    for name in list(classes):
+        n, cur = classes[name].get("size_max"), classes[name].get("base")
+        seen = {name}
+        while n and cur in classes and cur not in seen:
+            seen.add(cur)
+            if classes[cur].get("size_max", n + 1) > n:
+                classes[cur]["size_max"], classes[cur]["size_evidence"] = n, f"derived {name}"
+            n, cur = classes[cur]["size_max"], classes[cur].get("base")
 
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(dict(sorted(classes.items())), indent=1))
