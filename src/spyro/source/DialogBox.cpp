@@ -136,7 +136,10 @@ static u8 .L_8035CF68[0x62] = {
 }; /* const */
 #endif
 
-#if 0 // DRAFT: undefined identifier 'DialogBox_DrawBackground'
+void DialogBox_DrawBackground(DialogBoxContext *);
+void DialogBox_DrawBorder(DialogBoxContext *);
+void DialogBox_DrawTab(DialogBoxContext *);
+void DialogBox_DrawText(DialogBoxContext *);
 void DialogBox_Draw() {
     DialogBoxContext *temp_r27_35;
     s32 var_r28_31;
@@ -151,9 +154,9 @@ void DialogBox_Draw() {
             var_r28_31 = 0;
             var_r31_33 = 0;
             do {
-                temp_r27_35 = (DialogBoxContext *) (&contexts + var_r31_33);
-                if (((u32) temp_r27_35->unk30 != NULL) && ((u8) temp_r27_35->unkAC == (u8) M2C_FIELD(&gb, u8 *, 0x395))) {
-                    if ((u32) temp_r27_35->unk0 != 0U) {
+                temp_r27_35 = (DialogBoxContext *) ((s8 *) &contexts + var_r31_33);
+                if ((temp_r27_35->unk30 != NULL) && ((u8) temp_r27_35->unkAC == (u8) M2C_FIELD(&gb, u8 *, 0x395))) {
+                    if (temp_r27_35->unk0 != 0) {
                         DialogBox_DrawBackground(temp_r27_35);
                         DialogBox_DrawBorder(temp_r27_35);
                         DialogBox_DrawTab(temp_r27_35);
@@ -166,7 +169,6 @@ void DialogBox_Draw() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk6C'
 void DialogBox_Update() {
@@ -459,7 +461,6 @@ loop_4:
     return var_r31_484;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'DialogBoxTheme' to 'MKMaterial *'
 void DialogBox_FreeTheme(DialogBoxTheme *arg0) {
     MKFont *temp_r3_584;
     MKMaterial *temp_r3_589;
@@ -483,7 +484,7 @@ void DialogBox_FreeTheme(DialogBoxTheme *arg0) {
     var_r30_599 = 2;
     var_r31_600 = 8;
     do {
-        temp_r3_602 = *(arg0 + var_r31_600);
+        temp_r3_602 = *(MKMaterial **) ((s8 *) arg0 + var_r31_600);
         if (temp_r3_602 != NULL) {
             MKMaterial_Destroy(temp_r3_602);
         }
@@ -492,9 +493,7 @@ void DialogBox_FreeTheme(DialogBoxTheme *arg0) {
     } while (var_r30_599 >= 0);
     memset(arg0, 0, 0x20U);
 }
-#endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char *, long, const char *, float)' does not match 'Str_Printf(const char *, ...)'
 s8 *DialogBox_LoadTheme(const char *arg0, const char *arg1, float arg2, float arg3) {
     MKResource *temp_ret_667;
     MKResource *temp_ret_679;
@@ -529,24 +528,22 @@ loop_4:
         var_r29_658 = 0;
         var_r31_660 = 0;
         do {
-            temp_ret_667 = MKMaterial_Create(Str_Printf((s8 *) (lit_stringBase0 + 0x12), var_r29_658 + 1, arg0, var_f1_0));
-            var_f1_0 = M2C_BITWISE(f32, temp_ret_667);
+            temp_ret_667 = MKMaterial_Create((const char *) Str_Printf((const char *) (lit_stringBase0 + 0x12), var_r29_658 + 1, arg0, var_f1_0));
             var_r29_658 += 1;
-            var_r28_637[var_r31_660] = (signed char) (temp_ret_667);
+            M2C_FIELD(var_r28_637, MKResource **, var_r31_660) = temp_ret_667;
             var_r31_660 += 4;
         } while (var_r29_658 < 3);
-        temp_ret_679 = MKMaterial_Create(Str_Printf((s8 *) (lit_stringBase0 + 0x25), arg0, var_f1_0));
+        temp_ret_679 = MKMaterial_Create((const char *) Str_Printf((const char *) (lit_stringBase0 + 0x25), arg0, var_f1_0));
         M2C_FIELD(var_r28_637, MKResource **, 0xC) = temp_ret_679;
-        temp_ret_687 = MKMaterial_Create(Str_Printf((s8 *) (lit_stringBase0 + 0x37), arg0, M2C_BITWISE(f32, temp_ret_679)));
-        var_r4_636 = (s8 *) (u32) (u64) temp_ret_687;
+        temp_ret_687 = MKMaterial_Create((const char *) Str_Printf((const char *) (lit_stringBase0 + 0x37), arg0, var_f1_0));
+        var_r4_636 = (s8 *) temp_ret_687;
         M2C_FIELD(var_r28_637, MKResource **, 0x10) = temp_ret_687;
     }
     M2C_FIELD(var_r28_637, f32 *, 0x14) = temp_f30_632;
     M2C_FIELD(var_r28_637, f32 *, 0x18) = arg3;
-    M2C_FIELD(var_r28_637, void **, 0x1C) = (const char *) (((MKFont *) arg1)->Create(var_r4_636));
+    M2C_FIELD(var_r28_637, MKFont **, 0x1C) = ((MKFont *) arg1)->Create((const char *) var_r4_636);
     return var_r28_637;
 }
-#endif
 
 void DialogBox_DeinitModule() {
     s32 var_r29_713;
@@ -1014,10 +1011,9 @@ loop_40:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to 'signed char *' Too many errors printed, aborting program
 void DialogBox_ColorButtons(const char *arg0, char *arg1, int arg2, int arg3) {
     s32 var_r29_1624;
-    s8 *var_r27_1625;
+    const char *var_r27_1625;
     s8 *var_r28_1626;
     s8 *var_r28_1648;
     s8 *var_r28_1735;
@@ -1040,11 +1036,11 @@ void DialogBox_ColorButtons(const char *arg0, char *arg1, int arg2, int arg3) {
 
     var_r29_1624 = arg2;
     var_r27_1625 = arg0;
-    var_r28_1626 = arg1;
+    var_r28_1626 = (s8 *) arg1;
     var_r31_1627 = 0;
     var_r30_1628 = 0;
     if (var_r29_1624 != 0) {
-        var_r3_1640 = Str_Printf((s8 *) (lit_stringBase0 + 0x49), &buttonColorBright, lit_stringBase0, M2C_FIELD(&buttonColorBright, f32 *, 0), M2C_FIELD(&buttonColorBright, f32 *, 4), M2C_FIELD(&buttonColorBright, f32 *, 8), M2C_FIELD(&buttonColorBright, f32 *, 0xC));
+        var_r3_1640 = Str_Printf((const char *) (lit_stringBase0 + 0x49), &buttonColorBright, M2C_FIELD(&buttonColorBright, f32 *, 0), M2C_FIELD(&buttonColorBright, f32 *, 4), M2C_FIELD(&buttonColorBright, f32 *, 8), M2C_FIELD(&buttonColorBright, f32 *, 0xC));
         do {
             temp_r4_1642 = (u8) *var_r3_1640;
             var_r3_1640 += 1;
@@ -1058,7 +1054,7 @@ loop_22:
             if ((s8) temp_r3_1696 == 0x3C) {
                 temp_r0_1654 = M2C_FIELD(var_r27_1625, u8 *, 1);
                 var_r31_1627 = 1;
-                switch ((s8) temp_r0_1654) {        /* irregular */
+                switch ((s8) temp_r0_1654) {
                 case 0x2F:
                     temp_r0_1659 = M2C_FIELD(var_r27_1625, u8 *, 2);
                     if ((s8) temp_r0_1659 != 0x66) {
@@ -1102,7 +1098,7 @@ block_10:
         var_r28_1626 = var_r28_1648 - 1;
     }
     if ((s8) (u8) *var_r27_1625 != 0) {
-        var_r3_1727 = Str_Printf((s8 *) (lit_stringBase0 + 0x49), &buttonColorDull, lit_stringBase0, M2C_FIELD(&buttonColorDull, f32 *, 0), M2C_FIELD(&buttonColorDull, f32 *, 4), M2C_FIELD(&buttonColorDull, f32 *, 8), M2C_FIELD(&buttonColorDull, f32 *, 0xC));
+        var_r3_1727 = Str_Printf((const char *) (lit_stringBase0 + 0x49), &buttonColorDull, M2C_FIELD(&buttonColorDull, f32 *, 0), M2C_FIELD(&buttonColorDull, f32 *, 4), M2C_FIELD(&buttonColorDull, f32 *, 8), M2C_FIELD(&buttonColorDull, f32 *, 0xC));
         do {
             temp_r4_1729 = (u8) *var_r3_1727;
             var_r3_1727 += 1;
@@ -1126,7 +1122,6 @@ block_10:
         } while ((s8) temp_r3_1748 != 0);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void DialogBox_DrawTab(DialogBoxContext *arg0) {
