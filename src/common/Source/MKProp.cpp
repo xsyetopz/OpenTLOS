@@ -44,25 +44,21 @@ M2C_UNK free(s8 *);                                 /* extern */
 s32 stricmp(M2C_UNK *, Texture *);                  /* extern */
 extern void *gMK;
 
-#if 0 // DRAFT: identifier 'MKPropDescriptor::CreateInstance()' redeclared was declared as: 'MKProp * ()' now declared as: 'void * ()'
-void *MKPropDescriptor::CreateInstance() {
-    void *var_r31_18;
+MKProp *MKPropDescriptor::CreateInstance() {
+    MKProp *var_r31_18;
 
-    var_r31_18 = this->unk28;
-loop_4:
-    if (var_r31_18 == NULL) {
-        return NULL;
+    var_r31_18 = (MKProp *) this->unk28;
+    while (var_r31_18 != NULL) {
+        if (var_r31_18->unk18 & 0x80000000) {
+            var_r31_18->Enable();
+            return var_r31_18;
+        }
+        var_r31_18 = var_r31_18->unk38;
     }
-    if (M2C_FIELD(var_r31_18, s32 *, 0x18) & 0x80000000) {
-        M2C_FIELD(M2C_FIELD(var_r31_18, void **, 0x44), M2C_UNK (**)(void *), 0x30)(var_r31_18);
-        return (MKProp *) (var_r31_18);
-    }
-    var_r31_18 = M2C_FIELD(var_r31_18, void **, 0x38);
-    goto loop_4;
+    return NULL;
 }
-#endif
 
-#if 0 // DRAFT: function call 'stricmp(const char[6])' does not match 'stricmp(long *, Texture *)'
+extern "C" s32 stricmp(const char *, const char *);
 void MKPropDescriptor::ParseGMSection(MKIni *arg0, MKIniLine *arg1) {
     MKIniLine *temp_r3_58;
     MKIniLine *var_r31_54;
@@ -72,16 +68,14 @@ loop_1:
     temp_r3_58 = arg0->GetNextLine(var_r31_54);
     var_r31_54 = temp_r3_58;
     if ((var_r31_54 != NULL) && (temp_r3_58->GetFieldName() != NULL)) {
-        var_r31_54->GetFieldName();
-        if (stricmp("alias") != 0) {
-            LoadLine(var_r31_54);
+        if (stricmp((const char *) var_r31_54->GetFieldName(), "alias") != 0) {
+            this->LoadLine(var_r31_54);
         }
     }
     if ((var_r31_54 != NULL) && (var_r31_54->GetSectionName() == NULL)) {
         goto loop_1;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void MKPropDescriptor::LoadDone() {
@@ -526,19 +520,16 @@ s32 MKProp::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'long'
 s32 MKProp::LoadLine(MKIniLine *arg0) {
     s32 var_r4_1383;
 
     if (arg0->LoadInt("ID", (int *) &this->unk14, 0) != 0) {
         if ((s32) this->unk14 != 0) {
             var_r4_1383 = arg0->GetString(1);
-            if (var_r4_1383 != 0) {
-
-            } else {
-                var_r4_1383 = *this->unk0;
+            if (var_r4_1383 == 0) {
+                var_r4_1383 = *(s32 *) this->unk0;
             }
-            MKSceneManager::PropResolver_Add(this, (s8 *) var_r4_1383);
+            MKSceneManager::PropResolver_Add(this, (const char *) var_r4_1383);
         }
         return 1;
     }
@@ -563,7 +554,6 @@ block_17:
     ((MKPropLoadInfo *) &MKProp::loadInfo)->LoadLine(arg0);
     return 0;
 }
-#endif
 
 void MKProp::Init() {
     this->unk1E = 0;

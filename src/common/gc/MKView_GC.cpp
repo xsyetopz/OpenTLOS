@@ -1,4 +1,5 @@
 #include "common/gc/MKView_GC.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "dolphin/gx.h"
 #include "dolphin/os.h"

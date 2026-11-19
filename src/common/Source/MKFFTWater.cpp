@@ -531,7 +531,6 @@ f32 MKFFTNormalMap::GetDirectionScale(float arg0, float arg1) {
     return arg0;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 f32 MKFFTNormalMap::GetAmplitude(const MKVector3 &arg0) {
     f64 sp38;                                       /* compiler-managed */
     f64 sp30;                                       /* compiler-managed */
@@ -655,9 +654,8 @@ f32 MKFFTNormalMap::GetAmplitude(const MKVector3 &arg0) {
     }
     return var_f1_886;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal operand
 void MKFFTNormalMap::BuildWave() {
     f64 sp30;
     f64 sp28;
@@ -1386,7 +1384,7 @@ loop_6:
     if (temp_r0_2554 != 0) {
         temp_r28_2557 = temp_r0_2554 * 0x5168;
         if (MKHeap::Current() != NULL) {
-            var_r3_2565 = (short *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_2557, NULL, 0));
+            var_r3_2565 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r28_2557, NULL, 0);
         } else {
             var_r3_2565 = malloc(temp_r28_2557);
         }
@@ -1394,7 +1392,7 @@ loop_6:
     }
     if (var_r29_2521 != 0) {
         if (MKHeap::Current() != NULL) {
-            var_r3_2582 = (short *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x7740, NULL, 0));
+            var_r3_2582 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x7740, NULL, 0);
         } else {
             var_r3_2582 = malloc(0x7740);
         }

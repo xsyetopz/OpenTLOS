@@ -49,8 +49,8 @@ public:
     virtual void Message(MKMessage *);
     virtual void Enable(void);
     virtual void Disable(void);
-    void GetPos(void);
-    void GetDir(void);
+    MKVector3 GetPos(void);
+    MKVector3 GetDir(void);
     MKProp(void);
     static MKProp loadInfo;
     /* 0x048 */ f32 unk48;
@@ -114,19 +114,24 @@ inline MKProp::MKProp() {
 inline MKProp::~MKProp() {
 }
 
+#if 0 // DRAFT: identifier 'MKProp::GetDir()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void MKProp::GetDir() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
     void *temp_r4_2427;
 
-    temp_r4_2427 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
+    temp_r4_2427 = this->unk8;
     sp8 = -M2C_FIELD(temp_r4_2427, f32 *, 0x20);
     spC = -M2C_FIELD(temp_r4_2427, f32 *, 0x24);
     sp10 = -M2C_FIELD(temp_r4_2427, f32 *, 0x28);
-    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
+#endif
 
 inline void MKProp::Enable() {
     this->unk18 &= 0x7FFFFFFF;
@@ -136,12 +141,17 @@ inline void MKProp::Disable() {
     this->unk18 |= 0x80000000;
 }
 
+#if 0 // DRAFT: identifier 'MKProp::GetPos()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 inline void MKProp::GetPos() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     void *temp_r4_571;
 
-    temp_r4_571 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_571, f64 *, 0x30);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_571, f64 *, 0x38);
+    temp_r4_571 = this->unk8;
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(temp_r4_571, f64 *, 0x30);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(temp_r4_571, f64 *, 0x38);
+    return result;
 }
+#endif
 
 #endif  // COMMON_SOURCE_MKPROP_H

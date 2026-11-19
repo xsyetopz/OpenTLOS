@@ -35,7 +35,7 @@ void MKCollision_GetVertexColorFromPoly(const MKVector3 *arg0, MKVector4 *arg1) 
     } while (var_ctr_17 != 0);
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'const double' to 'MKVector3 *'
 u8 MKCollision_SweepSphereToEdge(const MKCollisionRay &arg0, const MKVector3 &arg1, const MKVector3 &arg2, MKCollisionResult *arg3, float *arg4) {
     s8 sp160;
     s32 sp15C;
@@ -286,7 +286,7 @@ block_46:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'const double' to 'MKVector3 *'
 u8 MKCollision_SweepSphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCollisionResult *arg2, int arg3, MKCollisionDirection arg4) {
     u8 sp1C8;
     s32 sp1C4;
@@ -650,7 +650,7 @@ loop_80:
         if ((var_r0_865 != 0) && (var_f24_834 <= arg2->unk40)) {
             M2C_FIELD(arg2, f64 *, 0) = (f64) M2C_FIELD(temp_r31_833, f64 *, 0);
             M2C_FIELD(arg2, f64 *, 8) = (f64) M2C_FIELD(temp_r31_833, f32 *, 8);
-            spC0.operator*(var_f24_834);
+            spC0 = ((MKVector3 *) arg0.unk40)->operator*(var_f24_834);
             temp_f0_989 = arg0.unk20 - M2C_FIELD(temp_r31_833, f64 *, 0);
             sp20 = temp_f0_989;
             spD0 = temp_f0_989;
@@ -674,7 +674,6 @@ loop_80:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 u8 MKCollision_SphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCollisionResult *arg2, int arg3, MKCollisionDirection arg4) {
     f64 sp290;                                      /* compiler-managed */
     f64 sp288;
@@ -1053,7 +1052,6 @@ loop_50:
     }
     return arg2->unk50;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
 s32 MKCollision_Clip3D(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float &arg3, float &arg4) {
@@ -1209,7 +1207,7 @@ u8 SweepToPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const 
         spD0 = sp40;
         spD8 = (f64) sp48;
         M2C_FIELD(arg5, f64 *, 0x18) = (f64) sp48;
-        spB0.operator*(temp_f7_1735);
+        spB0 = arg3.operator*(temp_f7_1735);
         sp30 = spB0 + M2C_FIELD(&arg0, f64 *, 0);
         M2C_FIELD(arg5, f64 *, 0) = sp30;
         sp38 = spB0.unk8 + arg0.unk8;
@@ -1237,7 +1235,7 @@ u8 SweepToPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const 
         spA0 = temp_f2_1838;
         spA8 = (f64) sp28;
         M2C_FIELD(arg5, f64 *, 0x18) = (f64) sp28;
-        sp70.operator*(arg2);
+        sp70 = ((MKVector3 *) &arg5->unk10)->operator*(arg2);
         sp80 = InterpolateLinear(arg0, arg1, temp_f31_1828);
         sp10 = sp80 - M2C_BITWISE(f64, sp70);
         M2C_FIELD(arg5, f64 *, 0) = sp10;
@@ -1354,14 +1352,14 @@ void MKCollisionEllipsoid::CreateAABB(Matrix *arg0) {
     sp110 = temp_f0_2037;
     sp38 = (f32) spD8 + spB0.unk8;
     sp118 = (f64) sp38;
-    sp80.operator*(0.5f);
+    sp80 = ((MKVector3 *) &sp110)->operator*(0.5f);
     sp20 = sp150.unk30 - M2C_BITWISE(f64, sp80);
     this->unk90 = sp20;
     sp28 = sp150.unk38 - sp80.unk8;
     sp90 = sp20;
     sp98 = (f64) sp28;
     M2C_FIELD(this, f64 *, 0x98) = (f64) sp28;
-    sp60.operator*(0.5f);
+    sp60 = ((MKVector3 *) &sp110)->operator*(0.5f);
     sp10 = sp150.unk30 + M2C_BITWISE(f64, sp60);
     this->unkA0 = sp10;
     sp18 = sp150.unk38 + sp60.unk8;

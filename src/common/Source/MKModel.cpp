@@ -203,13 +203,14 @@ void MKModel_CalculateRefPointWorldPosition(const MKModel *arg0, int arg1, MKVec
 void MKModel_CalculateNodeWorldMatrix(const MKModel *arg0, int arg1, Matrix *arg2) {
     f64 sp38;
     f64 sp30;
-    f32 sp20;
+    MKVector3 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     s16 sp8;
     MKAttachment *temp_r7_433;
     Matrix *var_r31_432;
+    f32 temp_f6_536;
     s32 temp_r0_437;
 
     var_r31_432 = (Matrix *) (&arg0->unk10);
@@ -240,11 +241,12 @@ void MKModel_CalculateNodeWorldMatrix(const MKModel *arg0, int arg1, Matrix *arg
     }
     sp8 = (s16) arg1;
     arg0->unk70->CalculateMatrices(arg2, 1, &sp8, var_r31_432);
-    ((Animation *) &sp20)->GetNodeOrigin((s32) arg0->unk70);
-    sp10 = (sp28 * arg2->unk20) + ((sp20 * arg2->unk0) + (sp24 * arg2->unk10));
-    sp14 = (sp28 * arg2->unk24) + ((sp20 * arg2->unk4) + (sp24 * arg2->unk14));
+    sp20 = arg0->unk70->GetNodeOrigin(arg1);
+    temp_f6_536 = M2C_BITWISE(f32, sp20);
+    sp10 = (sp20.unk8 * arg2->unk20) + ((temp_f6_536 * arg2->unk0) + (sp20.unk4 * arg2->unk10));
+    sp14 = (sp20.unk8 * arg2->unk24) + ((temp_f6_536 * arg2->unk4) + (sp20.unk4 * arg2->unk14));
     sp30 = (f64) sp10;
-    sp18 = (sp28 * arg2->unk28) + ((sp20 * arg2->unk8) + (sp24 * arg2->unk18));
+    sp18 = (sp20.unk8 * arg2->unk28) + ((temp_f6_536 * arg2->unk8) + (sp20.unk4 * arg2->unk18));
     arg2->unk30 += (f32) sp30;
     sp38 = (f64) sp18;
     arg2->unk34 += (*(f32 *) ((u8 *) &sp30 + 0x4));
@@ -257,13 +259,14 @@ void MKModel_CalculateNodeWorldPosition(const MKModel *arg0, int arg1, MKVector3
     Matrix sp50;
     f64 sp40;
     f64 sp38;
-    f32 sp28;
+    MKVector3 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     s16 sp10;
     MKAttachment *temp_r7_593;
     Matrix *var_r31_592;
+    f32 temp_f6_698;
     s32 temp_r0_597;
 
     var_r31_592 = (Matrix *) (&arg0->unk10);
@@ -294,10 +297,11 @@ void MKModel_CalculateNodeWorldPosition(const MKModel *arg0, int arg1, MKVector3
     }
     sp10 = (s16) arg1;
     arg0->unk70->CalculateMatrices(&sp50, 1, &sp10, var_r31_592);
-    ((Animation *) &sp28)->GetNodeOrigin((s32) arg0->unk70);
-    sp18 = sp50.unk30 + ((sp30 * sp50.unk20) + ((sp28 * M2C_BITWISE(f32, sp50)) + (sp2C * sp50.unk10)));
-    sp1C = sp50.unk34 + ((sp30 * sp50.unk24) + ((sp28 * sp50.unk4) + (sp2C * sp50.unk14)));
-    sp20 = sp50.unk38 + ((sp30 * sp50.unk28) + ((sp28 * sp50.unk8) + (sp2C * sp50.unk18)));
+    sp28 = arg0->unk70->GetNodeOrigin(arg1);
+    temp_f6_698 = M2C_BITWISE(f32, sp28);
+    sp18 = sp50.unk30 + ((sp28.unk8 * sp50.unk20) + ((temp_f6_698 * M2C_BITWISE(f32, sp50)) + (sp28.unk4 * sp50.unk10)));
+    sp1C = sp50.unk34 + ((sp28.unk8 * sp50.unk24) + ((temp_f6_698 * sp50.unk4) + (sp28.unk4 * sp50.unk14)));
+    sp20 = sp50.unk38 + ((sp28.unk8 * sp50.unk28) + ((temp_f6_698 * sp50.unk8) + (sp28.unk4 * sp50.unk18)));
     M2C_FIELD(arg2, f64 *, 0) = (f64) sp18;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
@@ -524,7 +528,7 @@ void MKModel_EnableSubObject(MKModel *arg0, SubObjectType arg1, int arg2, bool a
 }
 #endif
 
-#if 0 // DRAFT: illegal type Too many errors printed, aborting program
+#if 0 // DRAFT: illegal type
 u8 MKModel_GetSubObjectFlag(const MKModel *arg0, SubObjectType arg1, int arg2) {
     u8 var_r4_1198;
 
@@ -565,7 +569,7 @@ s32 MKModel_GetSubObjectIndex(const MKModel *arg0, SubObjectType arg1, const cha
     return sp8;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: pointer/array required Too many errors printed, aborting program
 s32 MKModel_SubObjectExists(const MKModel *arg0, SubObjectType arg1, const char *arg2, int *arg3) {
     s16 temp_r0_1376;
     s16 var_ctr_1377;
@@ -632,7 +636,7 @@ loop_21:
         var_ctr_1377 = temp_r0_1376;
         if (temp_r0_1376 > 0) {
 loop_24:
-            var_r28_1382 = (unsigned short *) (M2C_FIELD(temp_r4_1375, s32 *, 0x60) + var_r3_1374);
+            var_r28_1382 = M2C_FIELD(temp_r4_1375, s32 *, 0x60) + var_r3_1374;
             if ((u16) *var_r28_1382 == 2) {
 
             } else {

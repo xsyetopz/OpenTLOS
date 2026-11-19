@@ -37,9 +37,9 @@ public:
     Matrix * CalculateMatrices(Matrix *, int, short *, const Matrix *);
     void ConvertFrameToMatrix(Matrix *, int);
     void CalculateFrame(Animation::FrameInstance *, AnimationData::Node *, bool, bool);
-    void GetPositionalOffset(float);
+    MKVector3 GetPositionalOffset(float);
     s32 GetNodeName(int);
-    void GetNodeOrigin(int);
+    MKVector3 GetNodeOrigin(int);
     s8 GetNodeParentIndex(int);
     s8 GetNodeIndex(const char *);
     u8 NodeExists(const char *, int *);

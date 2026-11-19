@@ -220,7 +220,7 @@ void MKDynamicBone::Update() {
     f64 sp3A8;
     f64 sp3A0;
     f64 sp398;
-    f32 sp388;
+    MKVector3 sp388;
     f64 sp380;
     f64 sp378;
     MKVector3 sp368;
@@ -366,6 +366,7 @@ void MKDynamicBone::Update() {
     f32 temp_f25_222;
     f32 temp_f3_410;
     f32 temp_f3_698;
+    f32 temp_f6_742;
     f32 temp_f8_1005;
     f32 temp_f8_818;
     f32 temp_f8_911;
@@ -462,7 +463,7 @@ void MKDynamicBone::Update() {
                 break;
             }
             sp4A8 = Normalise(*((MKVector3 *) &sp558));
-            sp4B8.operator*(temp_f25_222);
+            sp4B8 = sp4A8.operator*(temp_f25_222);
             sp198 = sp588 + M2C_BITWISE(f64, sp4B8);
             sp4C8 = sp198;
             sp1A0 = (f32) sp590 + sp4B8.unk8;
@@ -555,7 +556,7 @@ void MKDynamicBone::Update() {
             sp20 = this->unk8 - (f32) sp590;
             sp3F0 = (f64) sp20;
             sp3F8 = Normalise(*((MKVector3 *) &sp3E8));
-            sp408.operator*(temp_f25_222);
+            sp408 = sp3F8.operator*(temp_f25_222);
             sp128 = sp588 + M2C_BITWISE(f64, sp408);
             M2C_FIELD(this, f64 *, 0) = sp128;
             sp130 = (f32) sp590 + sp408.unk8;
@@ -627,10 +628,11 @@ void MKDynamicBone::Update() {
                     sp3B0 = (f64) sp220;
                     sp6A0.SetRotateAroundAxis(*((MKVector3 *) &sp3A8), temp_f22_701);
                 }
-                ((Animation *) &sp388)->GetNodeOrigin(MKModel_GetAnimation(this->unk24));
-                spE8 = sp660.unk30 + ((sp390 * sp660.unk20) + ((sp388 * M2C_BITWISE(f32, sp660)) + (sp38C * sp660.unk10)));
-                spEC = sp660.unk34 + ((sp390 * sp660.unk24) + ((sp388 * sp660.unk4) + (sp38C * sp660.unk14)));
-                spF0 = sp660.unk38 + ((sp390 * sp660.unk28) + ((sp388 * sp660.unk8) + (sp38C * sp660.unk18)));
+                sp388 = ((Animation *) (MKModel_GetAnimation(this->unk24)))->GetNodeOrigin((s32) temp_r29_219);
+                temp_f6_742 = M2C_BITWISE(f32, sp388);
+                spE8 = sp660.unk30 + ((sp388.unk8 * sp660.unk20) + ((temp_f6_742 * M2C_BITWISE(f32, sp660)) + (sp388.unk4 * sp660.unk10)));
+                spEC = sp660.unk34 + ((sp388.unk8 * sp660.unk24) + ((temp_f6_742 * sp660.unk4) + (sp388.unk4 * sp660.unk14)));
+                spF0 = sp660.unk38 + ((sp388.unk8 * sp660.unk28) + ((temp_f6_742 * sp660.unk8) + (sp388.unk4 * sp660.unk18)));
                 sp538 = (f64) spE8;
                 sp540 = (f64) spF0;
                 sp398 = (f64) spE8;
@@ -665,7 +667,7 @@ void MKDynamicBone::Update() {
             sp360 = (f64) spD0;
             temp_f0_847 = ((*(f32 *) ((u8 *) &sp530 + 0x4)) * (*(f32 *) ((u8 *) &sp350 + 0x4))) + (((f32) sp530 * (f32) sp350) + (((f32) sp528 * (f32) sp348) + ((*(f32 *) ((u8 *) &sp528 + 0x4)) * (*(f32 *) ((u8 *) &sp348 + 0x4)))));
             if (temp_f0_847 > temp_f8_818) {
-                sp328.operator*(temp_f8_818 - temp_f0_847);
+                sp328 = ((MKVector3 *) &sp518)->operator*(temp_f8_818 - temp_f0_847);
                 spB8 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp328);
                 M2C_FIELD(this, f64 *, 0) = spB8;
                 spC0 = this->unk8 + sp328.unk8;
@@ -675,7 +677,7 @@ void MKDynamicBone::Update() {
             } else {
                 temp_f1_870 = M2C_FIELD(temp_r31_217, f32 *, 0x50);
                 if (temp_f0_847 < temp_f1_870) {
-                    sp308.operator*(temp_f1_870 - temp_f0_847);
+                    sp308 = ((MKVector3 *) &sp518)->operator*(temp_f1_870 - temp_f0_847);
                     spA8 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp308);
                     M2C_FIELD(this, f64 *, 0) = spA8;
                     spB0 = this->unk8 + sp308.unk8;
@@ -703,7 +705,7 @@ void MKDynamicBone::Update() {
             sp2F0 = (f64) spA0;
             temp_f0_941 = ((*(f32 *) ((u8 *) &sp530 + 0x4)) * (*(f32 *) ((u8 *) &sp2E0 + 0x4))) + (((f32) sp530 * (f32) sp2E0) + (((f32) sp528 * (f32) sp2D8) + ((*(f32 *) ((u8 *) &sp528 + 0x4)) * (*(f32 *) ((u8 *) &sp2D8 + 0x4)))));
             if (temp_f0_941 > temp_f8_911) {
-                sp2B8.operator*(temp_f8_911 - temp_f0_941);
+                sp2B8 = ((MKVector3 *) &sp518)->operator*(temp_f8_911 - temp_f0_941);
                 sp88 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp2B8);
                 M2C_FIELD(this, f64 *, 0) = sp88;
                 sp90 = this->unk8 + sp2B8.unk8;
@@ -713,7 +715,7 @@ void MKDynamicBone::Update() {
             } else {
                 temp_f1_964 = M2C_FIELD(temp_r31_217, f32 *, 0x54);
                 if (temp_f0_941 < temp_f1_964) {
-                    sp298.operator*(temp_f1_964 - temp_f0_941);
+                    sp298 = ((MKVector3 *) &sp518)->operator*(temp_f1_964 - temp_f0_941);
                     sp78 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp298);
                     M2C_FIELD(this, f64 *, 0) = sp78;
                     sp80 = this->unk8 + sp298.unk8;
@@ -741,7 +743,7 @@ void MKDynamicBone::Update() {
             sp280 = (f64) sp70;
             temp_f0_1035 = ((*(f32 *) ((u8 *) &sp530 + 0x4)) * (*(f32 *) ((u8 *) &sp270 + 0x4))) + (((f32) sp530 * (f32) sp270) + (((f32) sp528 * (f32) sp268) + ((*(f32 *) ((u8 *) &sp528 + 0x4)) * (*(f32 *) ((u8 *) &sp268 + 0x4)))));
             if (temp_f0_1035 > temp_f8_1005) {
-                sp248.operator*(temp_f8_1005 - temp_f0_1035);
+                sp248 = ((MKVector3 *) &sp518)->operator*(temp_f8_1005 - temp_f0_1035);
                 sp58 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp248);
                 M2C_FIELD(this, f64 *, 0) = sp58;
                 sp60 = this->unk8 + sp248.unk8;
@@ -751,7 +753,7 @@ void MKDynamicBone::Update() {
             } else {
                 temp_f1_1058 = M2C_FIELD(temp_r31_217, f32 *, 0x58);
                 if (temp_f0_1035 < temp_f1_1058) {
-                    sp228.operator*(temp_f1_1058 - temp_f0_1035);
+                    sp228 = ((MKVector3 *) &sp518)->operator*(temp_f1_1058 - temp_f0_1035);
                     sp48 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp228);
                     M2C_FIELD(this, f64 *, 0) = sp48;
                     sp50 = this->unk8 + sp228.unk8;

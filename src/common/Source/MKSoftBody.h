@@ -71,7 +71,7 @@ public:
     void Teleport(const Matrix &);
     void Settle(int, Matrix *);
     void Reset(void);
-    void GetWorldBindPos(int);
+    MKVector3 GetWorldBindPos(int);
     f64 GetWorldPos(MKVector3 &, int, Matrix *);
     void UpdateInternal(Matrix *);
     void UpdateCollisionPrims(void);

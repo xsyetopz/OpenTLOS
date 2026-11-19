@@ -1128,6 +1128,7 @@ f64 MKCollisionModel::SweepBoxToTri(const MKSweptBox &arg0, MKVector3 *arg1, MKB
     f64 sp10;
     f32 spC;
     MKBestResult *sp8;
+    MKVector3 *temp_r22_2112;
     MKVector3 *temp_r4_1643;
     f32 temp_f0_1411;
     f32 temp_f0_1770;
@@ -1535,7 +1536,7 @@ loop_15:
                             sp18 = temp_f2_1663;
                             sp430 = sp10;
                             sp438 = (f64) sp18;
-                            sp440.operator*(temp_f1_1910);
+                            sp440 = ((MKVector3 *) &sp430)->operator*(temp_f1_1910);
                             sp50 = *temp_r21_1613 + M2C_BITWISE(f64, sp440);
                             M2C_FIELD(temp_r27_1608, f64 *, 0) = sp50;
                             sp58 = M2C_FIELD(temp_r3_1607, f32 *, 0x468) + sp440.unk8;
@@ -1632,6 +1633,7 @@ loop_15:
         var_r19_2107 = 0;
         temp_r21_2108 = sp8 + var_r30_2102;
         sp758 = (double *) (((u8 *) temp_r3_2105) + 0x280);
+        temp_r22_2112 = (MKVector3 *) (((u8 *) temp_r21_2108) + 0x20);
         sp754 = (float *) (((u8 *) temp_r3_2105) + 0x288);
         sp750 = (float *) (((u8 *) temp_r4_2106) + 0x404);
         sp74C = (float *) (((u8 *) temp_r4_2106) + 0x400);
@@ -1782,10 +1784,10 @@ loop_51:
                     M2C_FIELD(temp_r23_2125, f64 *, 8) = sp628;
                     M2C_FIELD(temp_r21_2108, f32 *, 0x34) = temp_f28_2204;
                     M2C_FIELD(temp_r21_2108, f64 *, 0x20) = (f64) sp30;
-                    M2C_FIELD((((u8 *) temp_r21_2108) + 0x20), f64 *, 8) = (f64) sp38;
+                    M2C_FIELD(temp_r22_2112, f64 *, 8) = (f64) sp38;
                     sp390 = (f64) sp30;
                     sp398 = (f64) sp38;
-                    sp370.operator*(M2C_FIELD(temp_r21_2108, f32 *, 0x30));
+                    sp370 = temp_r22_2112->operator*(M2C_FIELD(temp_r21_2108, f32 *, 0x30));
                     sp20 = M2C_FIELD(temp_r23_2125, f64 *, 0) - M2C_BITWISE(f64, sp370);
                     var_f1_2160 = sp20;
                     M2C_FIELD(temp_r21_2108, f64 *, 0) = var_f1_2160;
@@ -1877,7 +1879,7 @@ loop_6:
                 sp80 = temp_f0_2579;
                 sp28 = (f32) spB8 - (f32) spC8;
                 sp88 = (f64) sp28;
-                sp90.operator*(spC);
+                sp90 = ((MKVector3 *) &sp80)->operator*(spC);
                 sp40 = spC0 + M2C_BITWISE(f64, sp90);
                 temp_r3_2596 = arg1 + var_r30_2551;
                 var_r27_2550 += 1;
@@ -1893,7 +1895,7 @@ loop_6:
             sp50 = temp_f0_2612;
             sp18 = (f32) spB8 - (f32) spC8;
             sp58 = (f64) sp18;
-            sp60.operator*(sp8);
+            sp60 = ((MKVector3 *) &sp50)->operator*(sp8);
             sp30 = spC0 + M2C_BITWISE(f64, sp60);
             temp_r3_2630 = arg1 + var_r30_2551;
             var_r27_2550 += 1;
@@ -3477,14 +3479,14 @@ u8 FindClippedLocalRay(const MKVector3 &arg0, ColGridData *arg1, MKVector3 *arg2
         } else {
             var_f3_5105 = var_f2_5096;
         }
-        spD0.operator*(0.0001f + var_f1_5088);
+        spD0 = ((MKVector3 *) &sp140)->operator*(0.0001f + var_f1_5088);
         sp30 = sp160 + M2C_BITWISE(f64, spD0);
         M2C_FIELD(arg2, f64 *, 0) = sp30;
         sp38 = (f32) sp168 + spD0.unk8;
         spE0 = sp30;
         spE8 = (f64) sp38;
         M2C_FIELD(arg2, f32 *, 8) = (f64) sp38;
-        spB0.operator*(var_f3_5105 - 0.0001f);
+        spB0 = ((MKVector3 *) &sp140)->operator*(var_f3_5105 - 0.0001f);
         sp20 = sp160 + M2C_BITWISE(f64, spB0);
         M2C_FIELD(arg3, f64 *, 0) = sp20;
         sp28 = (f32) sp168 + spB0.unk8;
@@ -5392,7 +5394,7 @@ u8 RayTestTri(MKCollisionModel *arg0, const MKCollisionRay &arg1, int arg2, MKVe
     if ((temp_f29_8240 < 0.0f) || (temp_f29_8240 > arg4->unk40) || (temp_f29_8240 > 1.0f)) {
         return 0U;
     }
-    sp70.operator*(temp_f29_8240);
+    sp70 = ((MKVector3 *) &var_r29_8145->unk40)->operator*(temp_f29_8240);
     sp30 = var_r29_8145->unk20 + M2C_BITWISE(f64, sp70);
     temp_r4_8271 = &lit_405 - 4;
     M2C_FIELD(arg4, f64 *, 0) = sp30;

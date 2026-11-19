@@ -56,7 +56,7 @@ public:
     s32 AsInt(int, int *);
     s32 AsBool(int, bool *);
     s32 AsFlag(int, int *);
-    void GetVector3(int);
+    MKVector3 GetVector3(int);
     f32 GetFloat(int);
     s32 GetInt(int);
     s32 GetFlag(int);

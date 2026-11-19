@@ -959,7 +959,7 @@ void MKWidgetFoldupFrame::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3' Too many errors printed, aborting program
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
 MKWidget *MKWidgetFoldupFrame::TestPoint(MKVector3 *arg0) {
     f64 sp20;
     f64 sp18;
@@ -2533,7 +2533,7 @@ loop_26:
         if (var_r24_4661 < temp_r26_4664) {
             sp48 = 0.0f;
             sp4C = 26.0f;
-            temp_r4_4677 = ((u8 *) this->unk4) + 0x38;
+            temp_r4_4677 = (signed char **) (((u8 *) this->unk4) + 0x38);
             sp50 = 0.0f;
             sp78 = (f64) sp48;
             sp80 = (f64) sp50;
@@ -4187,7 +4187,7 @@ void MKWidgetListBox::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetRenderContext' to 'MKWidgetRenderContext *' Too many errors printed, aborting program
+#if 0 // DRAFT: illegal implicit conversion from 'MKWidgetRenderContext' to 'MKWidgetRenderContext *'
 void MKWidgetListBox::Draw(MKWidgetRenderContext arg0) {
     M2C_UNK sp100;
     M2C_UNK spFC;
@@ -5120,7 +5120,7 @@ MKWidget *MKWidgetScrollBar::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKVector4 *'
+#if 0 // DRAFT: function call 'WidgetDrawBevel(MKVector3, MKVector3, float, void, MKVector4, unsigned int, unsigned int)' does not match 'WidgetDrawBevel(const MKVector3 &, con
 s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
     M2C_UNK sp150;
     M2C_UNK sp14C;
@@ -5188,7 +5188,7 @@ s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
             sp50 = (0.5f * temp_f2_9649) - 2.0f;
             sp54 = (0.25f * temp_f2_9649) - 2.0f;
             spA0 = (f64) sp50;
-            temp_r29_9658 = MKWidget_GetMetric(1);
+            temp_r29_9658 = (MKVector4 *) (MKWidget_GetMetric(1));
             WidgetDrawBevel(*((MKVector3 *) &spA0), *((MKVector3 *) &sp90), 2.0f, *(MKWidget_GetMetric(0)), *temp_r29_9658, 1U, 0U);
         } else {
             sp28 = 0.0f;
@@ -5202,7 +5202,7 @@ s32 MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
             sp30 = (0.25f * temp_f2_9689) - 2.0f;
             sp34 = (0.5f * temp_f2_9689) - 2.0f;
             sp80 = (f64) sp30;
-            temp_r29_9698 = MKWidget_GetMetric(1);
+            temp_r29_9698 = (MKVector4 *) (MKWidget_GetMetric(1));
             WidgetDrawBevel(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70), 2.0f, *(MKWidget_GetMetric(0)), *temp_r29_9698, 1U, 0U);
         }
     } else {
@@ -5542,7 +5542,7 @@ block_139:
             sp168 = this;
             sp16C = 1;
             sp16E = 0;
-            sp170 = ((u8 *) this->unk4) + 0x68;
+            sp170 = (signed char **) (((u8 *) this->unk4) + 0x68);
             sp174 = 0;
             MKWidget_SendMessage((MKWidget *) this, 0x39U, (u32) &sp168);
         }
@@ -5758,7 +5758,7 @@ void MKWidgetThumb::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKVector4 *'
+#if 0 // DRAFT: function call 'WidgetDrawBevel(MKVector3, MKVector3, float, void, MKVector4, unsigned int, unsigned int)' does not match 'WidgetDrawBevel(const MKVector3 &, con
 s32 MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
     MKVector4 *temp_r31_10768;
     s8 **temp_r30_10765;
@@ -5770,13 +5770,13 @@ s32 MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
     MKSetMatrix(*((Matrix *) arg0));
     WidgetDrawBox(MKVector3::zero, *(MKVector3 *) (((u8 *) this->unk4) + 0x38), 0x1A);
     temp_r30_10765 = this->unk4;
-    temp_r31_10768 = MKWidget_GetMetric(1);
+    temp_r31_10768 = (MKVector4 *) (MKWidget_GetMetric(1));
     WidgetDrawBevel(MKVector3::zero, *(MKVector3 *) (temp_r30_10765 + 0x38), 1.0f, *(MKWidget_GetMetric(0)), *temp_r31_10768, 0U, 0U);
     MKEndPrimitive();
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'signed char **'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp1F0;                                      /* compiler-managed */
     f64 sp1E8;
@@ -5863,8 +5863,8 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
     case 0x64:
         M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(arg1, f64 *, 0);
         this->unk30 = M2C_FIELD(arg1, f64 *, 8);
-        sp168.operator*(0.5f);
-        temp_r4_10829 = ((u8 *) this->unk4) + 8;
+        sp168 = ((MKVector3 *) (((u8 *) this->unk4) + 0x38))->operator*(0.5f);
+        temp_r4_10829 = (signed char **) (((u8 *) this->unk4) + 8);
         sp78 = M2C_FIELD(temp_r4_10829, f64 *, 0) + M2C_BITWISE(f64, sp168);
         sp178 = sp78;
         sp80 = M2C_FIELD(temp_r4_10829, f32 *, 8) + sp168.unk8;
@@ -5876,7 +5876,7 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         temp_f1_10852 = M2C_BITWISE(f64, sp158);
         sp1E8 = temp_f1_10852;
         sp1F0 = (f64) sp158.unk8;
-        temp_r3_10858 = ((u8 *) this->unk4) + 0x38;
+        temp_r3_10858 = (signed char **) (((u8 *) this->unk4) + 0x38);
         temp_f0_10860 = M2C_FIELD(temp_r3_10858, f64 *, 0) * 5.222099017e-315;
         sp68 = temp_f0_10860;
         sp138 = temp_f0_10860;
@@ -5889,8 +5889,8 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
     case 0x65:
         M2C_FIELD(this, f64 *, 0x38) = (f64) M2C_FIELD(arg1, f64 *, 0);
         this->unk40 = M2C_FIELD(arg1, f64 *, 8);
-        sp118.operator*(0.5f);
-        temp_r4_10893 = ((u8 *) this->unk4) + 8;
+        sp118 = ((MKVector3 *) (((u8 *) this->unk4) + 0x38))->operator*(0.5f);
+        temp_r4_10893 = (signed char **) (((u8 *) this->unk4) + 8);
         sp58 = M2C_FIELD(temp_r4_10893, f64 *, 0) + M2C_BITWISE(f64, sp118);
         sp128 = sp58;
         sp60 = M2C_FIELD(temp_r4_10893, f32 *, 8) + sp118.unk8;
@@ -5902,7 +5902,7 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         temp_f1_10916 = M2C_BITWISE(f64, sp108);
         sp1D8 = temp_f1_10916;
         sp1E0 = (f64) sp108.unk8;
-        temp_r3_10922 = ((u8 *) this->unk4) + 0x38;
+        temp_r3_10922 = (signed char **) (((u8 *) this->unk4) + 0x38);
         temp_f0_10924 = M2C_FIELD(temp_r3_10922, f64 *, 0) * 5.222099017e-315;
         sp48 = temp_f0_10924;
         spE8 = temp_f0_10924;
@@ -6187,7 +6187,7 @@ void MKWidgetCheckMark::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKVector4 *'
+#if 0 // DRAFT: function call 'WidgetDrawBevel(MKVector3, MKVector3, float, void, MKVector4, unsigned int, unsigned int)' does not match 'WidgetDrawBevel(const MKVector3 &, con
 s32 MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
     f64 sp70;
     f64 sp68;
@@ -6219,7 +6219,7 @@ s32 MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
     MKSetBaseColorV(arg0->unk40);
     MKSetMatrix(*((Matrix *) arg0));
     temp_r29_11515 = this->unk4;
-    temp_r30_11518 = MKWidget_GetMetric(1);
+    temp_r30_11518 = (MKVector4 *) (MKWidget_GetMetric(1));
     WidgetDrawBevel(MKVector3::zero, *(MKVector3 *) (temp_r29_11515 + 0x38), 1.0f, *(MKWidget_GetMetric(0)), *temp_r30_11518, 1U, 0U);
     if (((u8) this->unk29 != 0) || ((s32) M2C_FIELD(this->unk4, s32 *, 0x68) == 2)) {
         temp_r3_11539 = MKWidget_GetMetric(0x1A);
@@ -6232,7 +6232,7 @@ s32 MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
     }
     sp18 = 1.0f;
     sp1C = 1.0f;
-    temp_r4_11558 = ((u8 *) this->unk4) + 0x38;
+    temp_r4_11558 = (signed char **) (((u8 *) this->unk4) + 0x38);
     sp20 = 0.0f;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
@@ -6355,7 +6355,7 @@ void MKWidgetButton::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3'
+#if 0 // DRAFT: illegal implicit conversion from 'double *' to 'MKVector3' Too many errors printed, aborting program
 MKWidget *MKWidgetButton::TestPoint(MKVector3 *arg0) {
     f64 sp10;
     f64 sp8;
@@ -8108,7 +8108,7 @@ void MKWidgetSystem::UpdateState() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetRenderContext' to 'long'
+#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetRenderContext' to 'long' Too many errors printed, aborting program
 void MKWidgetSystem::Draw(MKWidgetRenderContext arg0) {
     M2C_UNK sp100;
     M2C_UNK spFC;
@@ -9291,7 +9291,7 @@ u8 PushScissorRect(MKWidgetScissorRect *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: undefined identifier 'unk4' Too many errors printed, aborting program
 void ApplyScissorRect() {
     f32 temp_f28_17510;
     f32 temp_f30_17495;

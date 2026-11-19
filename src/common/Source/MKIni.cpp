@@ -425,16 +425,21 @@ s32 MKIniLine::AsFlag(int arg0, int *arg1) {
     return 1;
 }
 
-void MKIniLine::GetVector3(int arg0) {
+#if 0 // DRAFT: identifier 'MKIniLine::GetVector3(int)' redeclared was declared as: 'MKVector3 (int)' now declared as: 'void (int)'
+void MKIniLine::GetVector3(int arg2) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp10;
     f64 sp8;
 
     sp8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp10 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    ((MKIniLine *) arg0)->AsVector3(M2C_ERROR(/* Read from unset register $r5 */), (MKVector3 *) &sp8);
-    M2C_FIELD(this, f64 *, 0) = sp8;
-    M2C_FIELD(this, f64 *, 8) = sp10;
+    AsVector3(arg2, (MKVector3 *) &sp8);
+    M2C_FIELD(sret, f64 *, 0) = sp8;
+    M2C_FIELD(sret, f64 *, 8) = sp10;
+    return result;
 }
+#endif
 
 #if 0 // DRAFT: illegal type
 f32 MKIniLine::GetFloat(int arg0) {
@@ -670,13 +675,12 @@ s32 MKIni::Init(const char *arg0, int arg1, const char *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: illegal operand Too many errors printed, aborting program
 void iniSectionCompare(const void *arg0, const void *arg1) {
     stricmp((s8 *) arg0, ((MKIniLine *) (&pIni_CurrentLineArray[*arg1]))->GetSectionName());
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char *' to 'signed char *' Too many errors printed, aborting program
 s32 StringHash(const char *arg0, int arg1) {
     s8 *var_r4_1543;
     u32 temp_r3_1542;
@@ -686,7 +690,7 @@ s32 StringHash(const char *arg0, int arg1) {
 
     var_r31_1541 = 0;
     temp_r3_1542 = strlen(arg0);
-    var_r4_1543 = arg0;
+    var_r4_1543 = (signed char *) (arg0);
     var_ctr_1544 = temp_r3_1542;
     if (temp_r3_1542 > 0U) {
         do {
@@ -698,4 +702,3 @@ s32 StringHash(const char *arg0, int arg1) {
     }
     return var_r31_1541 % arg1;
 }
-#endif

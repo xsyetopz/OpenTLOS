@@ -1008,13 +1008,13 @@ f32 GetHorizontalAngle(MKVector3 *arg0) {
     return (f32) atan2(arg0->unk0, arg0->unk8);
 }
 
-#if 0 // DRAFT: undefined identifier 'voiceList'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_voiceList_0xB0'
 void Sound_Update3d(int arg0, int arg1, MKVector3 *arg2) {
     struct _struct_voiceList_0xB0 *temp_r3_1278;
     struct _struct_voiceList_0xB0 *temp_r4_1257;
 
     if ((s32) (u8) arg0 < 0x40) {
-        temp_r4_1257 = &voiceList[(u8) arg0];
+        temp_r4_1257 = (_struct_voiceList_0xB0 *) (&voiceList[(u8) arg0]);
         if ((arg0 == (s32) temp_r4_1257->unk8) && ((u8) temp_r4_1257->unk13 != 0)) {
             if (arg2 != NULL) {
                 temp_r4_1257->unk20 = M2C_FIELD(arg2, f64 *, 0);
@@ -1179,14 +1179,14 @@ void Sound_Stop3d(int arg0) {
     Sound_Stop(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'voiceList'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_voiceList_0xB0'
 s32 Sound_IsVoicePlaying(int arg0) {
     struct _struct_voiceList_0xB0 *temp_r4_1651;
     u16 temp_r0_1661;
     void *temp_r3_1655;
 
     if ((s32) (u8) arg0 < 0x40) {
-        temp_r4_1651 = &voiceList[(u8) arg0];
+        temp_r4_1651 = (_struct_voiceList_0xB0 *) (&voiceList[(u8) arg0]);
         if (arg0 == (s32) temp_r4_1651->unk8) {
             temp_r3_1655 = temp_r4_1651->unk4;
             if (temp_r3_1655 == NULL) {
@@ -2143,7 +2143,7 @@ block_13:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'voiceList'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[1120]' to 'long'
 s32 Sound_UnloadBank(int arg0) {
     s32 temp_r3_3497;
     s32 temp_r4_3498;
@@ -2158,7 +2158,7 @@ s32 Sound_UnloadBank(int arg0) {
 
     temp_r6_3492 = numReservedAreas - 1;
     temp_r7_3494 = temp_r6_3492 * 0x8C;
-    temp_r8_3495 = (long) (*(&reservedBankIDs + temp_r7_3494));
+    temp_r8_3495 = *(&reservedBankIDs + temp_r7_3494);
     temp_r3_3497 = M2C_FIELD((&reservedBankIDs + temp_r7_3494), s32 *, 4);
     temp_r4_3498 = temp_r8_3495 * 0x68;
     var_r28_3499 = temp_r8_3495;
@@ -2284,7 +2284,7 @@ void Sound_InitModule() {
     } while (var_ctr_3673 != 0);
     temp_r27_3686 = (gMaxSounds + 1) * 0x68;
     if (MKHeap::Current() != NULL) {
-        var_r3_3694 = (SoundBankHeader *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3686, NULL, 0));
+        var_r3_3694 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3686, NULL, 0);
     } else {
         var_r3_3694 = malloc(temp_r27_3686);
     }
@@ -2334,20 +2334,20 @@ loop_10:
     M2C_FIELD(gStreamingBuffer, s8 *, 0x20068) = 0;
     M2C_FIELD(gStreamingBuffer, s8 *, 0x20069) = 0;
     if (MKHeap::Current() != NULL) {
-        var_r3_3771 = (SoundBankHeader *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10000, NULL, 0));
+        var_r3_3771 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10000, NULL, 0);
     } else {
         var_r3_3771 = malloc(0x10000);
     }
     soundBankReadBuffer->unk4 = var_r3_3771;
     if (MKHeap::Current() != NULL) {
-        var_r3_3787 = (SoundBankHeader *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x10000, NULL, 0));
+        var_r3_3787 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x10000, NULL, 0);
     } else {
         var_r3_3787 = malloc(0x10000);
     }
     temp_r27_3796 = gMaxSounds * 0x68;
     soundBankReadBuffer[1].unk4 = var_r3_3787;
     if (MKHeap::Current() != NULL) {
-        var_r3_3805 = (SoundBankHeader *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3796, NULL, 0));
+        var_r3_3805 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r27_3796, NULL, 0);
     } else {
         var_r3_3805 = malloc(temp_r27_3796);
     }

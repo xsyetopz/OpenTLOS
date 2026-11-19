@@ -8,13 +8,13 @@ class MKVector3_cpp;
 
 class MKVector3 {
 public:
-    void operator*(float) const;
+    MKVector3 operator*(float) const;
     f32 Magnitude(void) const;
-    void operator/(float) const;
+    MKVector3 operator/(float) const;
     f32 Normalise(void);
-    void operator-(void) const;
-    void operator-(const MKVector3 &) const;
-    void operator+(const MKVector3 &) const;
+    MKVector3 operator-(void) const;
+    MKVector3 operator-(const MKVector3 &) const;
+    MKVector3 operator+(const MKVector3 &) const;
     f32 MagSquared(void) const;
     u8 IsNear(const MKVector3 &, float) const;
     static MKVector3 zero;
@@ -24,7 +24,7 @@ public:
     /* 0x004 */ f32 unk4;
     /* 0x008 */ f32 unk8;
     /* 0x00c */ f32 unkC;
-};
+} __attribute__((aligned(8)));
 
 class MKVector3_cpp {
 public:
@@ -37,7 +37,6 @@ MKVector3 Min(const MKVector3 &, const MKVector3 &);
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 inline f32 MKVector3::Magnitude() const {
     f32 sp8;
     f32 temp_f0_2107;
@@ -89,7 +88,6 @@ inline f32 MKVector3::Magnitude() const {
     }
     return var_f1_2115;
 }
-#endif
 
 inline f32 MKVector3::MagSquared() const {
     f32 temp_f0_3372;
@@ -102,7 +100,6 @@ inline f32 MKVector3::MagSquared() const {
     return (temp_f2_3374 * temp_f2_3374) + ((temp_f1_3371 * temp_f1_3371) + (temp_f0_3372 * temp_f0_3372));
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 inline f32 MKVector3::Normalise() {
     f32 sp8;
     f32 temp_f0_2532;
@@ -166,7 +163,6 @@ inline f32 MKVector3::Normalise() {
     this->unk8 *= var_f2_2607;
     return var_f1_2606;
 }
-#endif
 
 inline u8 MKVector3::IsNear(const MKVector3 &arg0, float arg1) const {
     f64 sp30;

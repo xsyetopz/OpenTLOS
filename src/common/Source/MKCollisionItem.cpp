@@ -28,18 +28,21 @@ void MKCollisionCapsuleItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResul
 
 }
 
-void MKCollisionCapsuleItem::GetRadius() {
+MKVector3 MKCollisionCapsuleItem::GetRadius() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f0_66;
 
-    temp_f0_66 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0xA0);
+    temp_f0_66 = this->unkA0;
     sp8 = temp_f0_66;
     spC = temp_f0_66;
     sp10 = temp_f0_66;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
 
 #if 0 // DRAFT: illegal operand
@@ -195,6 +198,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
     f64 temp_f0_371;
     s32 var_r26_320;
     s32 var_r30_324;
+    s32 var_r31_322;
     u8 var_r27_180;
 
     temp_f1_175 = this->unk60.unk4;
@@ -266,6 +270,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
     temp_f0_316 = sp1B0 + temp_f0_305;
     sp78 = temp_f0_316;
     var_r26_320 = 0;
+    var_r31_322 = 0;
     var_r30_324 = 0;
     temp_f7_326 = this->unkA0;
     sp168 = temp_f0_316;
@@ -286,7 +291,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
     do {
         temp_f25_362 = *(&sp198 + var_r30_324);
         temp_f31_366 = 0.01f + temp_f25_362;
-        sp108.operator*(1.0f);
+        sp108 = ((MKVector3 *) (&arg0 + (var_r31_322 + 0xC8)))->operator*(1.0f);
         temp_f31_369 = 1.0f / temp_f31_366;
         temp_f0_371 = sp108 * (f64) temp_f31_369;
         sp48 = temp_f0_371;
@@ -302,6 +307,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
         }
         var_r26_320 += 1;
         var_r30_324 += 4;
+        var_r31_322 += 0x20;
     } while (var_r26_320 < 6);
     if (var_f28_348 > arg1->unk40) {
         var_r27_180 = 1;
@@ -321,7 +327,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
         } else {
             var_f1_422 = temp_f0_423;
         }
-        spB8.operator*(var_f1_422);
+        spB8 = ((MKVector3 *) &arg1->unk10)->operator*(var_f1_422);
         sp18 = arg0.unk30 + (((f32) sp170 * arg0.unk20) + (((f32) sp168 * arg0.unk0) + ((*(f32 *) ((u8 *) &sp168 + 0x4)) * arg0.unk10)));
         sp1C = arg0.unk34 + (((f32) sp170 * arg0.unk24) + (((f32) sp168 * arg0.unk4) + ((*(f32 *) ((u8 *) &sp168 + 0x4)) * arg0.unk14)));
         sp20 = arg0.unk38 + (((f32) sp170 * arg0.unk28) + (((f32) sp168 * arg0.unk8) + ((*(f32 *) ((u8 *) &sp168 + 0x4)) * arg0.unk18)));
@@ -340,7 +346,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp148;
     f64 sp140;
@@ -523,7 +529,7 @@ s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResul
         arg1->unk14 *= var_f1_738;
         arg1->unk18 *= var_f1_738;
         arg1->unk48 = this->unk8;
-        spA0.operator*(this->unkA0);
+        spA0 = ((MKVector3 *) &arg1->unk10)->operator*(this->unkA0);
         temp_f0_761 = sp140 + M2C_BITWISE(f64, spA0);
         sp10 = temp_f0_761;
         M2C_FIELD(arg1, f64 *, 0) = temp_f0_761;
@@ -538,7 +544,7 @@ s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResul
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: undefined identifier 'unksp7C'
 s32 MKCollisionCapsuleItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     MKCollisionRay spD8;
     M2C_UNK spD4;
@@ -683,7 +689,7 @@ s32 MKCollisionCapsuleItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *
         sp18 = temp_f0_1061;
         sp40 = sp10;
         sp48 = temp_f0_1061;
-        sp50.operator*(Clamp<float>(0.0f, spC, 1.0f));
+        sp50 = ((MKVector4 *) &sp40)->operator*(Clamp<float>(0.0f, spC, 1.0f));
         sp20 = M2C_FIELD(this, f64 *, 0x80) + M2C_BITWISE(f64, sp50);
         temp_f0_1082 = M2C_FIELD(this, f64 *, 0x88) + (f64) sp50.unk8;
         sp28 = temp_f0_1082;
@@ -757,18 +763,21 @@ void MKCollisionCapsuleItem::Init(MKVector3 *arg0, MKVector3 *arg1, float arg2, 
 }
 #endif
 
-void MKCollisionSphereItem::GetRadius() {
+MKVector3 MKCollisionSphereItem::GetRadius() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f0_1468;
 
-    temp_f0_1468 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x84);
+    temp_f0_1468 = this->unk84;
     sp8 = temp_f0_1468;
     spC = temp_f0_1468;
     sp10 = temp_f0_1468;
-    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
@@ -1286,7 +1295,7 @@ loop_108:
             M2C_FIELD(temp_r5_2272, f32 *, 0x30) = var_f1_2052;
             M2C_FIELD(temp_r5_2272, f64 *, 0x10) = sp1F8;
             M2C_FIELD(temp_r5_2272, f64 *, 0x18) = sp200;
-            sp138.operator*(var_f1_2052);
+            sp138 = ((MKVector3 *) &sp208)->operator*(var_f1_2052);
             temp_f0_2283 = sp1F8 - M2C_BITWISE(f64, sp138);
             sp48 = temp_f0_2283;
             temp_r3_2285 = arg2 + var_r28_2204;
@@ -1581,7 +1590,7 @@ block_74:
         } else {
             var_f1_2761 = temp_f0_2762;
         }
-        sp48.operator*(var_f1_2761);
+        sp48 = ((MKVector3 *) &arg1->unk10)->operator*(var_f1_2761);
         sp18 = this->unk60 + M2C_BITWISE(f64, sp48);
         M2C_FIELD(arg1, f64 *, 0) = sp18;
         sp20 = M2C_FIELD(this, f32 *, 0x68) + sp48.unk8;
@@ -1599,7 +1608,7 @@ block_74:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 MKCollisionSphereItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp58;
     f64 sp50;
@@ -1682,7 +1691,7 @@ s32 MKCollisionSphereItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult
         arg1->unk14 *= var_f1_2932;
         arg1->unk18 *= var_f1_2932;
         arg1->unk48 = this->unk8;
-        sp30.operator*(this->unk84);
+        sp30 = ((MKVector3 *) &arg1->unk10)->operator*(this->unk84);
         temp_f0_2956 = this->unk60 + M2C_BITWISE(f64, sp30);
         sp10 = temp_f0_2956;
         M2C_FIELD(arg1, f64 *, 0) = temp_f0_2956;
@@ -1784,8 +1793,10 @@ void MKCollisionModelItem::UnLoad() {
     this->unk128 = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp44'
-void MKCollisionModelItem::LocaliseRay(const MKCollisionRay &arg0) {
+#if 0 // DRAFT: identifier 'MKCollisionModelItem::LocaliseRay(const MKCollisionRay &)' redeclared was declared as: 'MKCollisionRay (const MKCollisionRay &)' now declared as: 'v
+void MKCollisionModelItem::LocaliseRay(const MKCollisionRay &arg2) {
+    MKCollisionRay result;
+    MKCollisionRay *sret = &result;
     MKCollisionRay sp48;
     f64 sp40;
     f64 sp38;
@@ -1816,24 +1827,24 @@ void MKCollisionModelItem::LocaliseRay(const MKCollisionRay &arg0) {
     f32 temp_f8_3200;
     f32 temp_f9_3192;
 
-    temp_f3_3168 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 0x34);
-    temp_f2_3170 = M2C_FIELD(&arg0, f32 *, 0xB0);
-    temp_f1_3171 = M2C_FIELD(&arg0, f32 *, 0xB4);
-    temp_f7_3173 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 0x24);
-    temp_f0_3176 = M2C_FIELD(&arg0, f32 *, 0xB8);
-    temp_f13_3178 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 0x30);
-    temp_f11_3180 = M2C_FIELD(&arg0, f32 *, 0xA0);
-    temp_f8_3182 = M2C_FIELD(&arg0, f32 *, 0xA4);
-    temp_f5_3184 = M2C_FIELD(&arg0, f32 *, 0xA8);
-    temp_f30_3185 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 0x20);
-    temp_f31_3188 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 0x38);
-    temp_f12_3190 = M2C_FIELD(&arg0, f32 *, 0xC0);
-    temp_f9_3192 = M2C_FIELD(&arg0, f32 *, 0xC4);
-    temp_f13_3194 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 0x28);
-    temp_f6_3196 = M2C_FIELD(&arg0, f32 *, 0xC8);
-    temp_f11_3198 = M2C_FIELD(&arg0, f32 *, 0xD0);
-    temp_f8_3200 = M2C_FIELD(&arg0, f32 *, 0xD4);
-    temp_f5_3202 = M2C_FIELD(&arg0, f32 *, 0xD8);
+    temp_f3_3168 = M2C_FIELD(&arg2, f32 *, 0x34);
+    temp_f2_3170 = this->unkA0.unk10;
+    temp_f1_3171 = this->unkA0.unk14;
+    temp_f7_3173 = M2C_FIELD(&arg2, f32 *, 0x24);
+    temp_f0_3176 = this->unkA0.unk18;
+    temp_f13_3178 = M2C_FIELD(&arg2, f32 *, 0x30);
+    temp_f11_3180 = this->unkA0.unk0;
+    temp_f8_3182 = this->unkA0.unk4;
+    temp_f5_3184 = this->unkA0.unk8;
+    temp_f30_3185 = M2C_FIELD(&arg2, f32 *, 0x20);
+    temp_f31_3188 = arg2.unk38;
+    temp_f12_3190 = this->unkA0.unk20;
+    temp_f9_3192 = this->unkA0.unk24;
+    temp_f13_3194 = arg2.unk28;
+    temp_f6_3196 = this->unkA0.unk28;
+    temp_f11_3198 = this->unkA0.unk30;
+    temp_f8_3200 = this->unkA0.unk34;
+    temp_f5_3202 = this->unkA0.unk38;
     sp8 = temp_f11_3198 + ((temp_f31_3188 * temp_f12_3190) + ((temp_f13_3178 * temp_f11_3180) + (temp_f3_3168 * temp_f2_3170)));
     spC = temp_f8_3200 + ((temp_f31_3188 * temp_f9_3192) + ((temp_f13_3178 * temp_f8_3182) + (temp_f3_3168 * temp_f1_3171)));
     sp10 = temp_f5_3202 + ((temp_f31_3188 * temp_f6_3196) + ((temp_f13_3178 * temp_f5_3184) + (temp_f3_3168 * temp_f0_3176)));
@@ -1844,8 +1855,9 @@ void MKCollisionModelItem::LocaliseRay(const MKCollisionRay &arg0) {
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    sp48.Init(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28), M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 0x50) * M2C_FIELD(&arg0, f32 *, 0x124), M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), u32 *, 0x58));
-    M2C_STRUCT_COPY((s32) (this - 4) + 4, (s32) &unksp44 + 4, 0x60);
+    sp48.Init(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28), arg2.unk50 * this->unk124, (u32) arg2.unk58);
+    M2C_STRUCT_COPY((s32) (sret - 4) + 4, (s32) &unksp44 + 4, 0x60);
+    return result;
 }
 #endif
 
@@ -1906,32 +1918,31 @@ void MKCollisionModelItem::ToWorldResult(const MKCollisionResult &arg0, MKCollis
     }
 }
 
-void MKCollisionModelItem::GetRadius() {
+MKVector3 MKCollisionModelItem::GetRadius() {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f64 sp30;
     f64 sp28;
     f32 sp20;
     f64 sp18;
     f32 sp10;
     f64 sp8;
+    MKCollisionModel *temp_r4_3366;
     f64 temp_f0_3371;
     f64 temp_f0_3383;
-    s32 temp_r4_3366;
-    void *temp_r4_3368;
-    void *temp_r5_3367;
 
-    temp_r4_3366 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x120);
-    temp_r5_3367 = (void *) (temp_r4_3366 + 8);
-    temp_r4_3368 = (void *) (temp_r4_3366 + 0x18);
-    temp_f0_3371 = M2C_FIELD(temp_r4_3368, f64 *, 0) - M2C_FIELD(temp_r5_3367, f64 *, 0);
+    temp_r4_3366 = this->unk120;
+    temp_f0_3371 = M2C_FIELD(temp_r4_3366, f64 *, 0x18) - M2C_FIELD(temp_r4_3366, f64 *, 8);
     sp8 = temp_f0_3371;
     sp28 = temp_f0_3371;
-    sp10 = M2C_FIELD(temp_r4_3368, f32 *, 8) - M2C_FIELD(temp_r5_3367, f32 *, 8);
+    sp10 = temp_r4_3366->unk8.unk18 - temp_r4_3366->unk8.unk8;
     sp30 = (f64) sp10;
     temp_f0_3383 = temp_f0_3371 * 5.222099017e-315;
     sp18 = temp_f0_3383;
-    M2C_FIELD(this, f64 *, 0) = temp_f0_3383;
+    M2C_FIELD(sret, f64 *, 0) = temp_f0_3383;
     sp20 = (f32) sp30 * 0.5f;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp20;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp20;
+    return result;
 }
 
 s32 MKCollisionModelItem::GetVerts(unsigned int arg0, MKVector3 *arg1) {
@@ -2101,10 +2112,10 @@ loop_5:
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk5C'
 s32 MKCollisionModelItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     MKCollisionRay sp68;
-    M2C_UNK sp64;
-    M2C_UNK sp8;
+    MKCollisionRay sp8;
     M2C_UNK sp4;
     MKCollisionResult *temp_r28_3825;
     s32 temp_r3_3818;
@@ -2114,8 +2125,8 @@ s32 MKCollisionModelItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult 
     if ((MKModel *) this->unk128 == NULL) {
         return 0;
     }
-    ((MKCollisionModelItem *) &sp8)->LocaliseRay(*((MKCollisionRay *) this));
-    M2C_STRUCT_COPY((s32) &sp64 + 4, (s32) &sp4 + 4, 0x60);
+    sp8 = LocaliseRay(arg0);
+    M2C_STRUCT_COPY((s32) &sp8.unk5C + 4, (s32) &sp4 + 4, 0x60);
     this->unk120->unk28 = &this->unk60;
     this->unk120->unk2C = &arg0;
     temp_r3_3818 = this->unk120->SphereTest(sp68, arg1, arg2);
@@ -2138,6 +2149,7 @@ loop_5:
     this->unk120->unk2C = NULL;
     return temp_r3_3818;
 }
+#endif
 
 s32 MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     MKCollisionRay spC0;
@@ -2163,14 +2175,14 @@ s32 MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionRe
     f32 sp70;
     f32 sp6C;
     f32 sp68;
-    M2C_UNK sp8;
+    MKCollisionRay sp8;
     M2C_UNK sp4;
     s32 var_r29_3897;
 
     if ((MKModel *) this->unk128 == NULL) {
         return 0;
     }
-    ((MKCollisionModelItem *) &sp8)->LocaliseRay(*((MKCollisionRay *) this));
+    sp8 = LocaliseRay(arg0);
     M2C_STRUCT_COPY((s32) &spBC + 4, (s32) &sp4 + 4, 0x60);
     sp68 = 0.0f;
     var_r29_3897 = 0;
@@ -2233,14 +2245,14 @@ s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollision
     f32 sp70;
     f32 sp6C;
     f32 sp68;
-    M2C_UNK sp8;
+    MKCollisionRay sp8;
     M2C_UNK sp4;
     s32 var_r29_3996;
 
     if ((MKModel *) this->unk128 == NULL) {
         return 0;
     }
-    ((MKCollisionModelItem *) &sp8)->LocaliseRay(*((MKCollisionRay *) this));
+    sp8 = LocaliseRay(arg0);
     M2C_STRUCT_COPY((s32) &spBC + 4, (s32) &sp4 + 4, 0x60);
     sp68 = 0.0f;
     sp6C = 0.0f;
@@ -2302,14 +2314,14 @@ s32 MKCollisionModelItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *ar
     f32 sp70;
     f32 sp6C;
     f32 sp68;
-    M2C_UNK sp8;
+    MKCollisionRay sp8;
     M2C_UNK sp4;
     s32 var_r29_4090;
 
     if ((MKModel *) this->unk128 == NULL) {
         return 0;
     }
-    ((MKCollisionModelItem *) &sp8)->LocaliseRay(*((MKCollisionRay *) this));
+    sp8 = LocaliseRay(arg0);
     M2C_STRUCT_COPY((s32) &spBC + 4, (s32) &sp4 + 4, 0x60);
     sp68 = 0.0f;
     var_r29_4090 = 0;

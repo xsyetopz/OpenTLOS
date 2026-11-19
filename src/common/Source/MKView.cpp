@@ -43,16 +43,13 @@ f32 *MKView_GetOrthoRect() {
     return (float *) (pStack + 0x64);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'Texture *'
 Texture *MKView_GetRenderTarget(Texture **arg0) {
     if (arg0 != NULL) {
-        *arg0 = pStack[1].unk3C;
+        *arg0 = M2C_FIELD(pStack + 1, Texture **, 0x3C);
     }
-    return pStack[1].unk38;
+    return M2C_FIELD(pStack + 1, Texture **, 0x38);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 Frustum *MKView_GetWorldFrustum() {
     f32 sp14;
     f32 sp10;
@@ -297,7 +294,6 @@ Frustum *MKView_GetWorldFrustum() {
     worldFrustum_333.ApplyMatrix(&viewFrustum_332, pStack);
     return &worldFrustum_333;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'BoundingVolume'
 s32 MKView_VisibilityTest(const BoundingVolume &arg0, const Matrix &arg1) {
@@ -377,7 +373,7 @@ void MKView_TransformPoint2Dto3D(float arg0, float arg1, float arg2, MKVector3 *
     temp_f28_869 = temp_f29_863 * temp_r31_855[1].unk20;
     temp_f26_870 = arg0 - ((0.5f * temp_r31_855[1].unk2C) + temp_r31_855[1].unk24);
     temp_f27_871 = arg1 - ((0.5f * temp_r31_855[1].unk30) + temp_r31_855[1].unk28);
-    sp58.operator*(arg2);
+    sp58 = ((MKVector3 *) &temp_r31_855->unk20)->operator*(arg2);
     sp28 = M2C_FIELD(temp_r31_855, f64 *, 0x30) + M2C_BITWISE(f64, sp58);
     M2C_FIELD(arg3, f64 *, 0) = sp28;
     sp30 = temp_r31_855->unk38 + sp58.unk8;
@@ -527,7 +523,7 @@ void MKView_SetProjection(float arg0, float arg1, float arg2) {
     MKView_SettingsCounter += 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to 'Matrix *'
+extern "C" f64 tan(f64);
 Matrix *MKView_GetProjectionMatrix() {
     f32 temp_f2_1245;
     f32 temp_f2_1275;
@@ -547,7 +543,7 @@ Matrix *MKView_GetProjectionMatrix() {
             temp_f3_1242 = pStack[1].unk1C;
             temp_f2_1245 = temp_f3_1242 - pStack[1].unk18;
             temp_f31_1248 = temp_f3_1242 / temp_f2_1245;
-            temp_f3_1256 = 1.0f / (f32) tan(M2C_BITWISE(Matrix *, (pStack[1].unk14 * 0.5f)), temp_f2_1245, temp_f3_1242);
+            temp_f3_1256 = 1.0f / (f32) tan((f64) (pStack[1].unk14 * 0.5f));
             projectionMatrix_252.unk28 = temp_f31_1248;
             projectionMatrix_252.unk14 = temp_f3_1256;
             projectionMatrix_252.unk0 = temp_f3_1256 / pStack[1].unk20;
@@ -566,7 +562,6 @@ Matrix *MKView_GetProjectionMatrix() {
     }
     return &projectionMatrix_252;
 }
-#endif
 
 Matrix *MKView_GetWorldToScreenMatrix() {
     Matrix *temp_r31_1323;
@@ -605,7 +600,6 @@ void MKView_SetCameraMatrix(const Matrix &arg0) {
     MKView_SettingsCounter += 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     Matrix spB0;
     f64 spA0;                                       /* compiler-managed */
@@ -787,7 +781,6 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
     pStack->unk3C = 1.0f;
     MKView_SettingsCounter += 1;
 }
-#endif
 
 void MKView_GetViewport() {
 
@@ -819,13 +812,11 @@ void MKView_Push() {
     pStack += 0x80;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Texture *' to 'float'
 void MKView_SetRenderTarget(Texture *arg0, Texture *arg1) {
-    pStack[1].unk38 = arg0;
-    pStack[1].unk3C = arg1;
+    M2C_FIELD(pStack + 1, Texture **, 0x38) = arg0;
+    M2C_FIELD(pStack + 1, Texture **, 0x3C) = arg1;
     MKView_SettingsCounter += 1;
 }
-#endif
 
 void MKView_InitModule() {
     f64 spE0;

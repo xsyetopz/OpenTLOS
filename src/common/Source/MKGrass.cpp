@@ -665,7 +665,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal type
 void MKGrass_ProcessTypes(void *arg0) {
     M2C_UNK sp30;
     f64 sp28;                                       /* compiler-managed */

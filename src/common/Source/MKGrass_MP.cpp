@@ -72,10 +72,7 @@ void MKGrass_DrawSubObject(const Frustum &arg0, const MKModel *arg1, const MKAtt
     f32 sp118;
     f32 sp114;
     f32 sp110;
-    f32 sp10C;
-    f32 sp108;
-    f32 sp104;
-    M2C_UNK sp100;
+    MKVector3 sp100;
     f32 spFC;
     f32 spF8;
     f32 spF4;
@@ -365,12 +362,12 @@ loop_88:
                             temp_f1_467 = ((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + ((*(f32 *) ((u8 *) &sp98 + 0x4)) * (*(f32 *) ((u8 *) &sp98 + 0x4))));
                             if (temp_f1_467 > 0.000001f) {
                                 temp_f0_471 = (f32) __frsqrte(temp_f1_467);
-                                M2C_FIELD(&sp100, f32 *, 0) = (f32) ((f32) sp98 * temp_f0_471);
-                                M2C_FIELD(&sp100, f32 *, 4) = (f32) ((*(f32 *) ((u8 *) &sp98 + 0x4)) * temp_f0_471);
-                                M2C_FIELD(&sp100, f32 *, 8) = (f32) ((f32) spA0 * temp_f0_471);
+                                sp100.unk0 = (f32) sp98 * temp_f0_471;
+                                sp100.unk4 = (*(f32 *) ((u8 *) &sp98 + 0x4)) * temp_f0_471;
+                                sp100.unk8 = (f32) spA0 * temp_f0_471;
                             }
-                            sp68.operator*(M2C_FIELD(temp_r27_82, f32 *, 0x54));
-                            sp78.operator*(var_f29_345);
+                            sp68 = ((MKVector3 *) (((u8 *) temp_r27_82) + 0x48))->operator*(M2C_FIELD(temp_r27_82, f32 *, 0x54));
+                            sp78 = sp100.operator*(var_f29_345);
                             sp18 = sp78 + M2C_BITWISE(f64, sp68);
                             sp88 = sp18;
                             sp20 = sp78.unk8 + sp68.unk8;
@@ -378,35 +375,35 @@ loop_88:
                             temp_f1_506 = ((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))));
                             if (temp_f1_506 > 0.000001f) {
                                 temp_f0_510 = (f32) __frsqrte(temp_f1_506);
-                                M2C_FIELD(&sp100, f32 *, 0) = (f32) ((f32) sp88 * temp_f0_510);
-                                M2C_FIELD(&sp100, f32 *, 4) = (f32) ((*(f32 *) ((u8 *) &sp88 + 0x4)) * temp_f0_510);
-                                M2C_FIELD(&sp100, f32 *, 8) = (f32) ((f32) sp90 * temp_f0_510);
+                                sp100.unk0 = (f32) sp88 * temp_f0_510;
+                                sp100.unk4 = (*(f32 *) ((u8 *) &sp88 + 0x4)) * temp_f0_510;
+                                sp100.unk8 = (f32) sp90 * temp_f0_510;
                             }
-                            temp_f4_520 = -sp108;
-                            temp_f8_522 = M2C_FIELD(&sp100, f32 *, 4);
-                            temp_f7_523 = M2C_FIELD(&sp100, f32 *, 8);
+                            temp_f4_520 = -sp100.unk8;
+                            temp_f8_522 = sp100.unk4;
+                            temp_f7_523 = sp100.unk8;
                             temp_f6_524 = (f32) temp_f4_520;
-                            temp_f9_525 = M2C_FIELD(&sp100, f32 *, 0);
+                            temp_f9_525 = sp100.unk0;
                             sp110 = 0.0f;
                             sp114 = (f32) temp_f4_520;
-                            sp118 = sp104;
+                            sp118 = sp100.unk4;
                             sp11C = 0.0f;
-                            spF0 = (temp_f6_524 * temp_f7_523) - (sp104 * temp_f8_522);
-                            spF4 = (sp104 * temp_f9_525) - (0.0f * temp_f7_523);
+                            spF0 = (temp_f6_524 * temp_f7_523) - (sp100.unk4 * temp_f8_522);
+                            spF4 = (sp100.unk4 * temp_f9_525) - (0.0f * temp_f7_523);
                             spF8 = (0.0f * temp_f8_522) - (temp_f6_524 * temp_f9_525);
                         } else {
                             temp_f9_542 = M2C_FIELD(temp_r27_82, f32 *, 0x48);
-                            M2C_FIELD(&sp100, f32 *, 0) = temp_f9_542;
+                            sp100.unk0 = temp_f9_542;
                             temp_f5_547 = sp234->unk4;
                             temp_f8_548 = M2C_FIELD(temp_r27_82, f32 *, 0x4C);
                             temp_f3_553 = (MKVector3::up.unk0 * (*(f32 *) ((u8 *) &sp190 + 0x4))) - (temp_f5_547 * (f32) sp190);
                             temp_f2_554 = sp234->unk8;
-                            sp104 = temp_f8_548;
+                            sp100.unk4 = temp_f8_548;
                             temp_f7_559 = M2C_FIELD(temp_r27_82, f32 *, 0x50);
                             temp_f4_560 = (temp_f2_554 * (f32) sp190) - (MKVector3::up.unk0 * (f32) sp198);
                             temp_f5_561 = (temp_f5_547 * (f32) sp198) - (temp_f2_554 * (*(f32 *) ((u8 *) &sp190 + 0x4)));
-                            sp108 = temp_f7_559;
-                            sp10C = 0.0f;
+                            sp100.unk8 = temp_f7_559;
+                            sp100.unkC = 0.0f;
                             spF0 = temp_f5_561;
                             spF4 = temp_f4_560;
                             spF8 = temp_f3_553;
@@ -415,7 +412,7 @@ loop_88:
                             sp118 = (temp_f5_561 * temp_f8_548) - (temp_f4_560 * temp_f9_542);
                         }
                         spFC = 0.0f;
-                        sp10C = 0.0f;
+                        sp100.unkC = 0.0f;
                         sp11C = 0.0f;
                         sp120 = 0.0f;
                         sp124 = 0.0f;
@@ -465,7 +462,7 @@ loop_86:
                             temp_f15_678 = M2C_FIELD(temp_r4_650, f32 *, 0x4A0) * temp_f21_669;
                             temp_f14_680 = M2C_FIELD(temp_r4_650, f32 *, 0x4A4) * temp_f21_669;
                             temp_f23_705 = (spF4 * temp_f15_678) + (sp114 * temp_f24_675);
-                            temp_f25_709 = temp_f21_669 * sp104;
+                            temp_f25_709 = temp_f21_669 * sp100.unk4;
                             temp_f12_712 = (spF4 * temp_f14_680) + (sp114 * temp_f15_678);
                             temp_f9_714 = (temp_f16_661 * (f32) M2C_FIELD(&sp1D0, f64 *, 0)) + ((temp_f18_658 * (f32) sp170) + (temp_f17_659 * M2C_BITWISE(f32, sp1A0)));
                             temp_f7_715 = (temp_f16_661 * (*(f32 *) ((u8 *) &sp1D0 + 0x4))) + ((temp_f18_658 * (*(f32 *) ((u8 *) &sp170 + 0x4))) + (temp_f17_659 * (*(f32 *) ((u8 *) &sp1A0 + 0x4))));
@@ -531,9 +528,9 @@ loop_86:
                             pBlob->unk4 = temp_f23_705;
                             pBlob->unk8 = (temp_f23_705 * var_f19_664) + ((spF8 * temp_f15_678) + (sp118 * temp_f24_675));
                             pBlob->unkC = 0.0f;
-                            pBlob->unk10 = (temp_f25_709 * var_f20_662) + (temp_f21_669 * M2C_FIELD(&sp100, f32 *, 0));
+                            pBlob->unk10 = (temp_f25_709 * var_f20_662) + (temp_f21_669 * sp100.unk0);
                             pBlob->unk14 = temp_f25_709;
-                            pBlob->unk18 = (temp_f25_709 * var_f19_664) + (temp_f21_669 * sp108);
+                            pBlob->unk18 = (temp_f25_709 * var_f19_664) + (temp_f21_669 * sp100.unk8);
                             pBlob->unk1C = 0.0f;
                             pBlob->unk20 = (temp_f12_712 * var_f20_662) + ((spF0 * temp_f14_680) + (sp110 * temp_f15_678));
                             pBlob->unk24 = temp_f12_712;
@@ -594,84 +591,80 @@ void MKGrass_InitDraw() {
 
 }
 
-#if 0 // DRAFT: illegal type
 u32 OptimiseGrassTypeData(MKModel *arg0, GrassUsedType *arg1) {
-    s32 temp_r31_1024;
-    s32 temp_r3_1009;
-    s32 var_r24_1003;
-    s32 var_r24_1046;
-    s32 var_r25_1002;
-    s32 var_r25_1047;
-    s32 var_r27_1001;
-    s32 var_r28_1044;
-    u32 temp_r30_1039;
-    void *temp_r29_1004;
-    void *temp_r31_1051;
-    void *temp_r31_1082;
-    void *temp_r3_1076;
-    void *temp_r5_1059;
-    void *var_r27_1048;
-    void *var_r3_1032;
+    s32 dataBytes;
+    s32 subObjectCount;
+    s32 srcOffset;
+    s32 dstOffset;
+    s32 usedCount;
+    s32 size;
+    s32 alignedSize;
+    s32 headerBytes;
+    u32 totalBytes;
+    u8 *oldTable;
+    u8 *table;
+    u8 *cursor;
+    u8 *entry;
+    u8 *dst;
 
-    var_r27_1001 = 0;
-    var_r25_1002 = 0;
-    var_r24_1003 = 0;
-    temp_r29_1004 = arg1->unk4;
-loop_2:
-    if (var_r25_1002 < MKModel_GetNmbrOfSubObjects(arg0, (SubObjectType) 0)) {
-        var_r25_1002 += 1;
-        temp_r3_1009 = *(temp_r29_1004 + (var_r24_1003 + 4));
-        var_r24_1003 += 0xC;
-        var_r27_1001 = ((temp_r3_1009 + 0xF) & 0xFFFFFFF0) + var_r27_1001 + 0x10;
-        goto loop_2;
+    /* Pass 1: header bytes per sub-object, each data block 16-aligned plus 16. */
+    dataBytes = 0;
+    subObjectCount = 0;
+    srcOffset = 0;
+    oldTable = (u8 *) arg1->unk4;
+    while (subObjectCount < MKModel_GetNmbrOfSubObjects(arg0, (SubObjectType) 0)) {
+        subObjectCount += 1;
+        size = M2C_FIELD(oldTable + srcOffset, s32 *, 4);
+        srcOffset += 0xC;
+        dataBytes = ((size + 0xF) & 0xFFFFFFF0) + dataBytes + 0x10;
     }
-    temp_r31_1024 = ((arg1->unk2 * 0xC) + 0xF) & 0xFFFFFFF0;
+
+    headerBytes = ((arg1->unk2 * 0xC) + 0xF) & 0xFFFFFFF0;
     if (MKHeap::Current() != NULL) {
-        var_r3_1032 = ((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_1024 + var_r27_1001, NULL, 0);
+        table = (u8 *) ((MKHeap *) (MKHeap::Current()))->Alloc(headerBytes + dataBytes, NULL, 0);
     } else {
-        var_r3_1032 = malloc(temp_r31_1024 + var_r27_1001);
+        table = (u8 *) malloc(headerBytes + dataBytes);
     }
-    arg1->unk4 = var_r3_1032;
-    temp_r30_1039 = temp_r31_1024 + var_r27_1001;
-    memset(arg1->unk4, 0, temp_r30_1039);
-    var_r28_1044 = 0;
-    var_r24_1046 = 0 * 0xC;
-    var_r25_1047 = 0;
-    var_r27_1048 = arg1->unk4 + temp_r31_1024;
-loop_13:
-    if (var_r28_1044 < (s32) arg1->unk2) {
-        temp_r31_1051 = ((u8 *) temp_r29_1004) + var_r24_1046;
-        if ((u16) M2C_FIELD(temp_r31_1051, u16 *, 2) != 0) {
-            temp_r5_1059 = arg1->unk4 + var_r25_1047;
-            M2C_FIELD(temp_r5_1059, u16 *, 0) = (u16) M2C_FIELD(temp_r31_1051, u16 *, 0);
-            M2C_FIELD(temp_r5_1059, u16 *, 2) = (u16) M2C_FIELD(temp_r31_1051, u16 *, 2);
-            M2C_FIELD(temp_r5_1059, u32 *, 4) = (u32) M2C_FIELD(temp_r31_1051, u32 *, 4);
-            M2C_FIELD(temp_r5_1059, void **, 8) = (void *) M2C_FIELD(temp_r31_1051, void **, 8);
-            *(arg1->unk4 + (var_r25_1047 + 8)) = var_r27_1048;
-            *(arg1->unk4 + (var_r25_1047 + 4)) = (M2C_FIELD(temp_r31_1051, u32 *, 4) + 0xF) & 0xFFFFFFF0;
-            temp_r3_1076 = arg1->unk4 + var_r25_1047;
-            var_r27_1048 += M2C_FIELD(temp_r3_1076, s32 *, 4);
-            memcpy(M2C_FIELD(temp_r3_1076, void **, 8), M2C_FIELD(temp_r31_1051, void **, 8), M2C_FIELD(temp_r31_1051, u32 *, 4));
-            temp_r31_1082 = M2C_FIELD(temp_r31_1051, void **, 8);
+    arg1->unk4 = table;
+    totalBytes = headerBytes + dataBytes;
+    memset(arg1->unk4, 0, totalBytes);
+
+    /* Pass 2: compact the used entries and move their data behind the header table. */
+    cursor = table + headerBytes;
+    srcOffset = 0;
+    dstOffset = 0;
+    usedCount = 0;
+    while (usedCount < (s32) arg1->unk2) {
+        entry = oldTable + srcOffset;
+        if (M2C_FIELD(entry, u16 *, 2) != 0) {
+            dst = table + dstOffset;
+            M2C_FIELD(dst, u16 *, 0) = M2C_FIELD(entry, u16 *, 0);
+            M2C_FIELD(dst, u16 *, 2) = M2C_FIELD(entry, u16 *, 2);
+            M2C_FIELD(dst, u32 *, 4) = M2C_FIELD(entry, u32 *, 4);
+            M2C_FIELD(dst, void **, 8) = M2C_FIELD(entry, void **, 8);
+            M2C_FIELD(dst, u8 **, 8) = cursor;
+            alignedSize = (M2C_FIELD(entry, u32 *, 4) + 0xF) & 0xFFFFFFF0;
+            M2C_FIELD(dst, s32 *, 4) = alignedSize;
+            cursor += M2C_FIELD(dst, s32 *, 4);
+            memcpy(M2C_FIELD(dst, void **, 8), M2C_FIELD(entry, void **, 8), M2C_FIELD(entry, u32 *, 4));
             if (MKHeap::Current() != NULL) {
-                ((MKHeap *) (MKHeap::Main()))->TFree(temp_r31_1082, NULL, 0);
+                ((MKHeap *) (MKHeap::Main()))->TFree(M2C_FIELD(entry, void **, 8), NULL, 0);
             } else {
-                free(temp_r31_1082);
+                free(M2C_FIELD(entry, void **, 8));
             }
-            var_r28_1044 += 1;
-            var_r25_1047 += 0xC;
+            usedCount += 1;
+            dstOffset += 0xC;
         }
-        var_r24_1046 += 0xC;
-        goto loop_13;
+        srcOffset += 0xC;
     }
+
     if (MKHeap::Current() != NULL) {
-        ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_1004, NULL, 0);
+        ((MKHeap *) (MKHeap::Current()))->Free(oldTable, NULL, 0);
     } else {
-        free(temp_r29_1004);
+        free(oldTable);
     }
-    return temp_r30_1039;
+    return totalBytes;
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKMaterial_GetEffectType(MKMaterial *, signed char **)' does not match 'MKMaterial_GetEffectType(MKMaterial *, const char **)'
 void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType *arg2) {

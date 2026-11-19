@@ -33,7 +33,7 @@ static s32 MKSoftBody_enableCloth = 1;
 #endif
 static f32 clothFaceEffect = 0.5f;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'SoftSweepSphere *' to 'float'
 f32 SoftSweepSphere::UpdatePos(const MKVector3 &arg0) {
     f64 sp28;
     f64 sp20;
@@ -222,7 +222,7 @@ s32 SoftSweepSphere::TestPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     temp_f1_247 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + ((*(f32 *) ((u8 *) &sp140 + 0x4)) * (*(f32 *) ((u8 *) &sp140 + 0x4))));
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if ((temp_f0_169 == 0.0f) || (this->unk34 == 0.0f)) {
-        spE0.operator*(this->unk30 / std::sqrtf(temp_f1_247));
+        spE0 = ((MKVector3 *) &sp140)->operator*(this->unk30 / std::sqrtf(temp_f1_247));
         sp40 = this->unk0 + M2C_BITWISE(f64, spE0);
         M2C_FIELD(arg1, f64 *, 0) = sp40;
         sp48 = M2C_FIELD(this, f32 *, 8) + spE0.unk8;
@@ -329,7 +329,7 @@ block_31:
             var_f4_420 = __float_nan;
         }
     }
-    spA0.operator*(this->unk30 / var_f4_420);
+    spA0 = ((MKVector3 *) &sp140)->operator*(this->unk30 / var_f4_420);
     sp10 = this->unk0 + M2C_BITWISE(f64, spA0);
     M2C_FIELD(arg1, f64 *, 0) = sp10;
     sp18 = M2C_FIELD(this, f32 *, 8) + spA0.unk8;
@@ -410,7 +410,6 @@ void MKCloth::DisableClothCreate(bool arg0) {
     *MKCloth::clothCreateDisabled = arg0;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKCloth::LightCloth() {
     f64 sp88;
     f64 sp80;
@@ -547,7 +546,6 @@ loop_24:
         goto loop_24;
     }
 }
-#endif
 
 void MKCloth::SatisfyConstraints() {
     f32 temp_f0_869;
@@ -1015,7 +1013,7 @@ loop_88:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal type
 void MKCloth::CollideHull(ClothNode *arg0, int arg1, ClothCollisionHull &arg2, const Matrix *arg3) {
     M2C_UNK sp70;
     f64 sp68;                                       /* compiler-managed */
@@ -1862,7 +1860,7 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void MKCloth::UpdateGlobalCollisionPrims() {
     MKVector3 sp90;
     MKVector3 sp70;
@@ -1976,7 +1974,6 @@ void MKCloth::SetFriction(float arg0) {
     this->unkD4 = arg0;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKCloth::SetCollisionCapsule(int arg0, const MKVector3 &arg1, const MKVector3 &arg2, float farg0) {
     f64 sp28;
     f64 sp20;
@@ -2062,7 +2059,6 @@ void MKCloth::SetCollisionCapsule(int arg0, const MKVector3 &arg1, const MKVecto
     M2C_FIELD(temp_r3_3185, f32 *, 0x40) = farg0;
     M2C_FIELD(temp_r3_3185, f32 *, 0x48) = (f32) -(farg0 / M2C_FIELD(temp_r3_3185, f32 *, 0x44));
 }
-#endif
 
 s32 MKCloth::AllocateCapsule() {
     s32 var_ctr_3211;
@@ -2229,7 +2225,7 @@ void MKCloth::SetInternalCollisionCapsule(int arg0, const MKVector3 &arg1, const
     temp_r5_3437 = this->unkC0 + temp_r31_3431;
     M2C_FIELD(temp_r5_3437, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
     M2C_FIELD(temp_r5_3437, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-    sp38.operator*(arg3);
+    sp38 = arg2.operator*(arg3);
     sp18 = M2C_FIELD(&arg1, f64 *, 0) + M2C_BITWISE(f64, sp38);
     temp_r3_3456 = this->unkC0 + (temp_r31_3431 + 0x10);
     M2C_FIELD(temp_r3_3456, f64 *, 0) = sp18;
@@ -2290,7 +2286,7 @@ void MKCloth::SetInternalCollisionSphere(int arg0, const MKVector4 &arg1) {
     M2C_FIELD(temp_r3_3558, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void *' to 'MKModel **' Too many errors printed, aborting program
+#if 0 // DRAFT: illegal operand
 void MKCloth::CreateInternalCollisionSpheres(int arg0) {
     MKModel **temp_r5_3593;
     MKModel **var_r3_3580;
@@ -2299,7 +2295,7 @@ void MKCloth::CreateInternalCollisionSpheres(int arg0) {
     s32 var_r4_3586;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_3580 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x18, NULL, 0);
+        var_r3_3580 = (MKModel **) (((MKHeap *) (MKHeap::Current()))->Alloc(arg0 * 0x18, NULL, 0));
     } else {
         var_r3_3580 = malloc(arg0 * 0x18);
     }
@@ -2430,7 +2426,6 @@ void MKCloth::SetNode(int arg0, const MKVector3 &arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKCloth::ApplyScale(const MKVector3 &arg0) {
     f64 sp28;                                       /* compiler-managed */
     f64 sp20;
@@ -2514,7 +2509,6 @@ loop_19:
     this->unkE0 = M2C_FIELD(&arg0, f64 *, 0);
     this->unkE8 = (f64) M2C_FIELD(&arg0, f32 *, 8);
 }
-#endif
 
 void MKCloth::Teleport(const Matrix &arg0) {
     f64 sp20;
@@ -2668,7 +2662,10 @@ loop_4:
 }
 #endif
 
-void MKCloth::GetWorldBindPos(int arg0) {
+#if 0 // DRAFT: identifier 'MKCloth::GetWorldBindPos(int)' redeclared was declared as: 'MKVector3 (int)' now declared as: 'void (int)'
+void MKCloth::GetWorldBindPos(int arg2) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -2678,22 +2675,23 @@ void MKCloth::GetWorldBindPos(int arg0) {
     void *temp_r3_4192;
     void *temp_r4_4198;
 
-    temp_r3_4192 = (void *) (MKModel_GetWorldMatrix(M2C_FIELD(arg0, MKModel **, 0xC)));
-    temp_r4_4198 = (void *) (M2C_FIELD(M2C_FIELD(arg0, void **, 4), s32 *, 4) + (M2C_ERROR(/* Read from unset register $r5 */) << 5));
+    temp_r3_4192 = (void *) (MKModel_GetWorldMatrix(this->unkC));
+    temp_r4_4198 = (void *) (M2C_FIELD(M2C_FIELD(this, void **, 4), s32 *, 4) + (arg2 << 5));
     temp_f6_4200 = M2C_FIELD(temp_r4_4198, f32 *, 4);
     temp_f7_4201 = M2C_FIELD(temp_r4_4198, f32 *, 0);
     temp_f6_4209 = M2C_FIELD(temp_r4_4198, f32 *, 8);
     sp8 = M2C_FIELD(temp_r3_4192, f32 *, 0x30) + ((temp_f6_4209 * M2C_FIELD(temp_r3_4192, f32 *, 0x20)) + ((temp_f7_4201 * M2C_FIELD(temp_r3_4192, f32 *, 0)) + (temp_f6_4200 * M2C_FIELD(temp_r3_4192, f32 *, 0x10))));
     spC = M2C_FIELD(temp_r3_4192, f32 *, 0x34) + ((temp_f6_4209 * M2C_FIELD(temp_r3_4192, f32 *, 0x24)) + ((temp_f7_4201 * M2C_FIELD(temp_r3_4192, f32 *, 4)) + (temp_f6_4200 * M2C_FIELD(temp_r3_4192, f32 *, 0x14))));
     sp10 = M2C_FIELD(temp_r3_4192, f32 *, 0x38) + ((temp_f6_4209 * M2C_FIELD(temp_r3_4192, f32 *, 0x28)) + ((temp_f7_4201 * M2C_FIELD(temp_r3_4192, f32 *, 8)) + (temp_f6_4200 * M2C_FIELD(temp_r3_4192, f32 *, 0x18))));
-    this->unk0 = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    return result;
 }
+#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'void *'
 f64 MKCloth::GetWorldPos(MKVector3 &arg0, int arg1, Matrix *arg2) {
-    f32 sp50;
-    f64 sp48;
+    MKVector3 sp48;
     f64 sp40;
     f64 sp38;
     MKVector3 sp28;
@@ -2723,8 +2721,8 @@ f64 MKCloth::GetWorldPos(MKVector3 &arg0, int arg1, Matrix *arg2) {
     }
     temp_r4_4283 = M2C_FIELD(this, void **, 4);
     temp_r5_4284 = arg1 << 6;
-    temp_r28_4289 = (void *) (M2C_FIELD(temp_r4_4283, s32 *, 0xC) + temp_r5_4284);
-    temp_r6_4295 = (void *) (M2C_FIELD(temp_r4_4283, s32 *, 4) + (M2C_FIELD(temp_r28_4289, s32 *, 0x20) << 5));
+    temp_r28_4289 = M2C_FIELD(temp_r4_4283, s32 *, 0xC) + temp_r5_4284;
+    temp_r6_4295 = M2C_FIELD(temp_r4_4283, s32 *, 4) + (M2C_FIELD(temp_r28_4289, s32 *, 0x20) << 5);
     temp_f28_4297 = M2C_FIELD(temp_r6_4295, f32 *, 8);
     temp_f3_4298 = M2C_FIELD(temp_r6_4295, f64 *, 0);
     var_f1_4303 = M2C_FIELD(var_r3_4277, f64 *, 0);
@@ -2736,10 +2734,10 @@ f64 MKCloth::GetWorldPos(MKVector3 &arg0, int arg1, Matrix *arg2) {
             temp_f24_4318 = M2C_FIELD(temp_r6_4295, f32 *, 8);
             temp_r5_4319 = &arg2[temp_r0_4314];
             temp_f2_4320 = M2C_FIELD(temp_r6_4295, f64 *, 0);
-            sp50 = (f32) (((f64) temp_r5_4319->unk8 * temp_f2_4320) + (((f64) temp_r5_4319->unk18 * temp_f2_4320) + (((f64) temp_r5_4319->unk28 * (f64) temp_f24_4318) + (f64) temp_r5_4319->unk38)));
-            sp48 = (M2C_FIELD(temp_r5_4319, f64 *, 0) * temp_f2_4320) + ((M2C_FIELD(temp_r5_4319, f64 *, 0x10) * temp_f2_4320) + ((M2C_FIELD(temp_r5_4319, f64 *, 0x20) * (f64) temp_f24_4318) + M2C_FIELD(temp_r5_4319, f64 *, 0x30)));
-            sp18.operator*(M2C_FIELD(temp_r28_4289, f32 *, 0x3C));
-            sp28.operator*(M2C_FIELD(temp_r28_4289, f32 *, 0x38));
+            sp48.unk8 = (f32) (((f64) temp_r5_4319->unk8 * temp_f2_4320) + (((f64) temp_r5_4319->unk18 * temp_f2_4320) + (((f64) temp_r5_4319->unk28 * (f64) temp_f24_4318) + (f64) temp_r5_4319->unk38)));
+            sp48 = (f64) ((M2C_FIELD(temp_r5_4319, f64 *, 0) * temp_f2_4320) + ((M2C_FIELD(temp_r5_4319, f64 *, 0x10) * temp_f2_4320) + ((M2C_FIELD(temp_r5_4319, f64 *, 0x20) * (f64) temp_f24_4318) + M2C_FIELD(temp_r5_4319, f64 *, 0x30))));
+            sp18 = sp48.operator*(M2C_FIELD(temp_r28_4289, f32 *, 0x3C));
+            sp28 = arg0.operator*(M2C_FIELD(temp_r28_4289, f32 *, 0x38));
             sp8 = sp28 + M2C_BITWISE(f64, sp18);
             var_f1_4303 = sp8;
             M2C_FIELD(&arg0, f64 *, 0) = var_f1_4303;
@@ -2753,7 +2751,7 @@ f64 MKCloth::GetWorldPos(MKVector3 &arg0, int arg1, Matrix *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'void *'
 void MKCloth::UpdateInternal(Matrix *arg0) {
     f32 sp70;
     f32 sp6C;
@@ -2811,7 +2809,7 @@ void MKCloth::UpdateInternal(Matrix *arg0) {
     void *temp_r4_4750;
     void *temp_r5_4707;
 
-    temp_r3_4396 = (void *) (MKModel_GetWorldMatrix(this->unkC));
+    temp_r3_4396 = MKModel_GetWorldMatrix(this->unkC);
     temp_f1_4397 = M2C_FIELD(temp_r3_4396, f32 *, 0);
     temp_f0_4398 = M2C_FIELD(temp_r3_4396, f32 *, 4);
     temp_f3_4400 = M2C_FIELD(temp_r3_4396, f32 *, 8);
@@ -2967,7 +2965,7 @@ loop_66:
             GetWorldPos(sp58, var_r31_4686, arg0);
             temp_r5_4707 = M2C_FIELD(this, void **, 4);
             temp_r3_4711 = *(M2C_FIELD(temp_r5_4707, s32 *, 0xC) + (var_r28_4687 + 0x20));
-            temp_r4_4713 = (void *) (M2C_FIELD(this, s32 *, 0) + (temp_r3_4711 * 0x38));
+            temp_r4_4713 = M2C_FIELD(this, s32 *, 0) + (temp_r3_4711 * 0x38);
             sp58 = M2C_BITWISE(f64, sp58) - M2C_FIELD(temp_r4_4713, f64 *, 0);
             sp58.unk8 -= M2C_FIELD(temp_r4_4713, f32 *, 8);
             sp48 = __ml(1.0f - *(M2C_FIELD(temp_r5_4707, s32 *, 4) + ((temp_r3_4711 << 5) + 0x14)), sp58);
@@ -2983,7 +2981,7 @@ loop_66:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to 'void *'
 void MKCloth::UpdateCollisionPrims() {
     MKVector3 spB0;
     M2C_UNK spA0;
@@ -3049,7 +3047,7 @@ loop_7:
     var_r28_4843 = 0;
 loop_29:
     if (var_r30_4841 < (s32) this->unkB0) {
-        temp_r3_4849 = (void *) (MKModel_GetRefPointData(this->unkC, this->unkAC[var_r28_4843]));
+        temp_r3_4849 = MKModel_GetRefPointData(this->unkC, this->unkAC[var_r28_4843]);
         temp_f1_4850 = M2C_FIELD(temp_r3_4849, f32 *, 0x60);
         temp_f0_4851 = M2C_FIELD(temp_r3_4849, f32 *, 0x64);
         var_f4_4854 = (temp_f1_4850 * temp_f1_4850) + (temp_f0_4851 * temp_f0_4851);
@@ -3159,7 +3157,7 @@ loop_54:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'MKMaterial *' to 'unsigned long'
 void MKCloth::Draw() {
     f64 sp58;
     f64 sp50;
@@ -3218,7 +3216,7 @@ loop_10:
                     temp_r3_5266 = M2C_FIELD(this, void **, 4);
                     if (var_r27_5180 < (u32) M2C_FIELD(temp_r3_5266, u32 *, 0x18)) {
                         MKMaterial_RenderVerticesBegin((s32) *(M2C_FIELD(temp_r3_5266, MKMaterial ***, 0x1C) + (var_r24_5181 + 8)));
-                        var_r26_5191 = (unsigned long) (*(M2C_FIELD(M2C_FIELD(this, void **, 4), MKMaterial ***, 0x1C) + (var_r24_5181 + 0xC)));
+                        var_r26_5191 = *(M2C_FIELD(M2C_FIELD(this, void **, 4), MKMaterial ***, 0x1C) + (var_r24_5181 + 0xC));
                         var_r23_5192 = var_r26_5191 * 4;
 loop_8:
                         temp_r5_5254 = M2C_FIELD(this, void **, 4);
@@ -3335,7 +3333,7 @@ void MKCloth::Deinit() {
 
 #if 0 // DRAFT: pointer/array required
 void MKCloth::Create() {
-    M2C_UNK sp8;
+    MKVector3 sp8;
     f64 temp_f30_5455;
     f64 temp_f31_5457;
     s32 temp_r0_5473;
@@ -3353,12 +3351,12 @@ void MKCloth::Create() {
 loop_2:
     temp_r29_5481 = M2C_FIELD(this, void **, 4);
     if (var_r28_5454 < (s32) M2C_FIELD(temp_r29_5481, s32 *, 0)) {
-        ((MKCloth *) &sp8)->GetWorldBindPos((s32) this);
-        SetNode(var_r28_5454, *((MKVector3 *) &sp8), *(M2C_FIELD(temp_r29_5481, s32 *, 4) + (var_r30_5458 + 0x10)));
+        sp8 = GetWorldBindPos(var_r28_5454);
+        SetNode(var_r28_5454, sp8, *(M2C_FIELD(temp_r29_5481, s32 *, 4) + (var_r30_5458 + 0x10)));
         temp_r0_5473 = var_r31_5456 + 0x20;
         var_r28_5454 += 1;
         var_r31_5456 += 0x38;
-        temp_r3_5476 = (void *) (M2C_FIELD(this, s32 *, 0) + temp_r0_5473);
+        temp_r3_5476 = M2C_FIELD(this, s32 *, 0) + temp_r0_5473;
         var_r30_5458 += 0x20;
         M2C_FIELD(temp_r3_5476, f64 *, 0) = temp_f30_5455;
         M2C_FIELD(temp_r3_5476, f64 *, 8) = temp_f31_5457;
@@ -3428,6 +3426,7 @@ void MKCloth::Init() {
     SetIterations(3);
 }
 
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKCloth *'
 void ModelCloth::Draw() {
     MKCloth *temp_r3_5615;
     s32 var_r30_5610;
@@ -3440,7 +3439,7 @@ void ModelCloth::Draw() {
         var_r31_5611 = 0;
 loop_5:
         if (var_r30_5610 < (s32) this->unk4) {
-            temp_r3_5615 = (MKCloth *) (((u8 *) this->unk8) + var_r31_5611);
+            temp_r3_5615 = ((u8 *) this->unk8) + var_r31_5611;
             if ((u8) temp_r3_5615->unk8 == 0) {
                 temp_r3_5615->Create();
             }
@@ -3463,8 +3462,9 @@ loop_11:
         }
     }
 }
+#endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKCloth *'
 void ModelCloth::Update() {
     Matrix sp160;
     f64 sp150;
@@ -3546,7 +3546,7 @@ void ModelCloth::Update() {
         var_r29_5689 = 0;
 loop_6:
         if (var_r28_5688 < (s32) this->unk4) {
-            temp_r3_5693 = (MKCloth *) (((u8 *) this->unk8) + var_r29_5689);
+            temp_r3_5693 = ((u8 *) this->unk8) + var_r29_5689;
             if ((u8) temp_r3_5693->unk8 == 0) {
                 temp_r3_5693->Create();
             }
@@ -3750,6 +3750,7 @@ void MKClothManager::Deinit() {
 }
 #endif
 
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKModel **'
 void MKClothManager::Init() {
     MKModel **temp_r3_6159;
     MKModel **temp_r3_6165;
@@ -3759,11 +3760,11 @@ void MKClothManager::Init() {
 
     temp_r30_6126 = M2C_FIELD(&gMKDefaults, s32 *, 0xA4);
     if (temp_r30_6126 == 0) {
-        this->unk0 = (MKModel **) (&gEmptyPtrList + 4);
+        this->unk0 = &gEmptyPtrList + 4;
         return;
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_6142 = (MKModel **) (((MKHeap *) (MKHeap::Current()))->Alloc((temp_r30_6126 + 2) * 4, NULL, 0));
+        var_r3_6142 = ((MKHeap *) (MKHeap::Current()))->Alloc((temp_r30_6126 + 2) * 4, NULL, 0);
     } else {
         var_r3_6142 = malloc((temp_r30_6126 + 2) * 4);
     }
@@ -3782,6 +3783,7 @@ void MKClothManager::Init() {
     this->unk0 = temp_r3_6165 + 4;
     M2C_FIELD(temp_r3_6165, s32 *, 4) = 0;
 }
+#endif
 
 void SoftBody_Deinit() {
 

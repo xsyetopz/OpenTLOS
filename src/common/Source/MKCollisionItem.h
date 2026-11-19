@@ -42,7 +42,7 @@ public:
     virtual void EllipsoidsTest(MKCollisionEllipsoid *, int, MKCollisionAABB, MKCollisionResult *) = 0;
     virtual void Update(void) = 0;
     virtual s32 GetVerts(unsigned int, MKVector3 *);
-    virtual void GetRadius(void) = 0;
+    virtual MKVector3 GetRadius(void) = 0;
     virtual void UnLoad(void);
     virtual void ReLoad(MKModel *);
     void Init(MKCollisionInfo *, int, unsigned int, MKCollisionManager *);
@@ -72,7 +72,7 @@ public:
     virtual void SweepBoxCollide(const MKSweptBox &, MKBestResult *, MKBestResult *, MKBestResult *, int);
     virtual void EllipsoidsTest(MKCollisionEllipsoid *, int, MKCollisionAABB, MKCollisionResult *);
     virtual void Update(void);
-    virtual void GetRadius(void);
+    virtual MKVector3 GetRadius(void);
     void Init(MKVector3 *, MKVector3 *, float, const MKVector4 &, const MKVector4 &, MKCollisionMode, MKCollisionInfo *, int, unsigned int, MKCollisionManager *);
     /* 0x05c */ u8 pad5C[0x4];
     /* 0x060 */ MKVector3 unk60;
@@ -98,10 +98,10 @@ public:
     virtual void EllipsoidsTest(MKCollisionEllipsoid *, int, MKCollisionAABB, MKCollisionResult *);
     virtual void Update(void);
     virtual s32 GetVerts(unsigned int, MKVector3 *);
-    virtual void GetRadius(void);
+    virtual MKVector3 GetRadius(void);
     virtual void UnLoad(void);
     virtual void ReLoad(MKModel *);
-    void LocaliseRay(const MKCollisionRay &);
+    MKCollisionRay LocaliseRay(const MKCollisionRay &);
     void ToWorldResult(const MKCollisionResult &, MKCollisionResult *);
     void Init(MKCollisionModel *, MKModel *, int, MKCollisionMode, MKCollisionInfo *, int, unsigned int, MKCollisionManager *);
     /* 0x05c */ u8 unk5C;
@@ -140,7 +140,7 @@ public:
     virtual void SweepBoxCollide(const MKSweptBox &, MKBestResult *, MKBestResult *, MKBestResult *, int);
     virtual void EllipsoidsTest(MKCollisionEllipsoid *, int, MKCollisionAABB, MKCollisionResult *);
     virtual void Update(void);
-    virtual void GetRadius(void);
+    virtual MKVector3 GetRadius(void);
     void Init(MKVector3 *, float, float, const MKVector4 &, MKCollisionMode, MKCollisionInfo *, int, unsigned int, MKCollisionManager *);
     /* 0x05c */ u8 pad5C[0x4];
     /* 0x060 */ f64 unk60;

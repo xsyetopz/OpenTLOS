@@ -543,12 +543,12 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
     MKAnimScript_LVECalc sp98;
     f64 sp90;                                       /* compiler-managed */
     f64 sp88;
-    f64 sp78;
-    f64 sp68;
+    MKVector3 sp78;
+    MKVector3 sp68;
     f64 sp60;
     f64 sp58;
-    f64 sp48;
-    f64 sp38;
+    MKVector3 sp48;
+    MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
@@ -612,12 +612,10 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
                 sp174 = temp_r6_1239 ^ 0x80000000;
                 temp_f31_1251 = (f32) temp_r6_1239;
                 temp_f30_1253 = (f32) M2C_FIELD(temp_r7_1235, s16 *, 0xC) - temp_f31_1251;
-                ((Animation *) &sp78)->GetPositionalOffset((M2C_BITWISE(f32, sp100) * temp_f30_1253) + temp_f31_1251);
-                sp128 = sp78;
-                sp130 = sp80;
-                ((Animation *) &sp68)->GetPositionalOffset((sp100.unk4 * temp_f30_1253) + temp_f31_1251);
-                sp138 = sp68;
-                sp140 = sp70;
+                sp78 = arg0->GetPositionalOffset((M2C_BITWISE(f32, sp100) * temp_f30_1253) + temp_f31_1251);
+                *(MKVector3 *) &sp128 = sp78;
+                sp68 = arg0->GetPositionalOffset((sp100.unk4 * temp_f30_1253) + temp_f31_1251);
+                *(MKVector3 *) &sp138 = sp68;
                 sp18 = sp138 - sp128;
                 sp58 = sp18;
                 sp20 = (f32) sp140 - (f32) sp130;
@@ -625,12 +623,10 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
                 sp60 = (f64) sp20;
                 sp90 = (f64) sp20;
                 if ((u8) sp100.unk10 != 0) {
-                    ((Animation *) &sp48)->GetPositionalOffset((sp100.unk8 * temp_f30_1253) + temp_f31_1251);
-                    sp148 = sp48;
-                    sp150 = sp50;
-                    ((Animation *) &sp38)->GetPositionalOffset((sp100.unkC * temp_f30_1253) + temp_f31_1251);
-                    sp158 = sp38;
-                    sp160 = sp40;
+                    sp48 = arg0->GetPositionalOffset((sp100.unk8 * temp_f30_1253) + temp_f31_1251);
+                    *(MKVector3 *) &sp148 = sp48;
+                    sp38 = arg0->GetPositionalOffset((sp100.unkC * temp_f30_1253) + temp_f31_1251);
+                    *(MKVector3 *) &sp158 = sp38;
                     temp_f0_1310 = sp158 - sp148;
                     sp8 = temp_f0_1310;
                     sp28 = temp_f0_1310;
@@ -793,7 +789,7 @@ loop_20:
         if (var_r30_1596 < (s16) M2C_FIELD(temp_r31_1567, s16 *, 0x1C)) {
             temp_r3_1600 = this->unk8;
             if (temp_r3_1600 != NULL) {
-                temp_r26_1604 = M2C_FIELD(temp_r31_1567, s32 *, 0x20) + var_r27_1597;
+                temp_r26_1604 = (void *) (M2C_FIELD(temp_r31_1567, s32 *, 0x20) + var_r27_1597);
                 if ((s16) M2C_FIELD(temp_r26_1604, s16 *, 6) == (s32) arg1) {
                     temp_r25_1608 = M2C_FIELD(temp_r26_1604, s16 *, 4);
                     if (temp_r25_1608 == 4) {
@@ -875,7 +871,7 @@ loop_27:
         if (var_r29_1734 < (s16) M2C_FIELD(temp_r4_1818, s16 *, 0x1C)) {
             temp_r3_1738 = this->unk8;
             if (temp_r3_1738 != NULL) {
-                temp_r26_1742 = (void *) (M2C_FIELD(temp_r4_1818, s32 *, 0x20) + var_r27_1735);
+                temp_r26_1742 = M2C_FIELD(temp_r4_1818, s32 *, 0x20) + var_r27_1735;
                 temp_r4_1743 = M2C_FIELD(temp_r26_1742, s16 *, 6);
                 if ((temp_r4_1743 != -1) && (temp_r4_1743 != -2)) {
                     temp_r5_1749 = M2C_FIELD(temp_r26_1742, s16 *, 4);
@@ -1470,7 +1466,7 @@ s8 *MKAnimScript::GetMeshName() {
     return *M2C_FIELD(this->unk4, s8 ***, 0x34);
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal type Too many errors printed, aborting program
 s32 MKAnimScript::Exists(const char *arg0) {
     s32 var_r30_2700;
     s32 var_r31_2701;

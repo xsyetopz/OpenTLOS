@@ -178,7 +178,7 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
         }
         *(MKVector3 *) &spD8 = spB8;
         if (arg5 != 0) {
-            sp78.operator*(arg2);
+            sp78 = ((MKVector3 *) &spE8)->operator*(arg2);
             sp38 = spF8 + M2C_BITWISE(f64, sp78);
             sp88 = sp38;
             sp40 = (f32) sp100 + sp78.unk8;
@@ -186,7 +186,7 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
             sp90 = (f64) sp40;
             spD0 = (f64) sp40;
         } else {
-            sp58.operator*(100.0f + arg2);
+            sp58 = ((MKVector3 *) &spE8)->operator*(100.0f + arg2);
             sp28 = M2C_BITWISE(f64, spB8) + M2C_BITWISE(f64, sp58);
             sp68 = sp28;
             sp30 = spB8.unk8 + sp58.unk8;

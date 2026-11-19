@@ -106,7 +106,7 @@ void Updater_ColorPulse(MKMaterial *arg0, void *arg1) {
     sp10 = temp_f0_103;
     sp48 = sp8;
     sp50 = temp_f0_103;
-    sp58.operator*(temp_f1_96);
+    sp58 = ((MKVector4 *) &sp48)->operator*(temp_f1_96);
     sp18 = sp88 + M2C_BITWISE(f64, sp58);
     temp_f0_117 = sp90 + (f64) sp58.unk8;
     sp20 = temp_f0_117;

@@ -136,7 +136,7 @@ void MKShape_DrawPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     MKEndPrimitive();
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, int arg3, int arg4, const MKVector4 &arg5, const Matrix &arg6, bool arg7) {
     f64 sp1A0;
     f64 sp198;

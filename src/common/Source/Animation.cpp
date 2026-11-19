@@ -802,8 +802,10 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
-void Animation::GetPositionalOffset(float arg0) {
+#if 0 // DRAFT: identifier 'Animation::GetPositionalOffset(float)' redeclared was declared as: 'MKVector3 (float)' now declared as: 'void (float)'
+void Animation::GetPositionalOffset(float farg0) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     f32 spA8;
     f32 spA4;
     f32 spA0;
@@ -825,7 +827,6 @@ void Animation::GetPositionalOffset(float arg0) {
     f64 sp18;
     f32 sp10;
     f64 sp8;
-    Animation *temp_r27_1327;
     f32 var_f31_1326;
     f64 temp_f0_1641;
     s32 temp_r0_1331;
@@ -851,20 +852,19 @@ void Animation::GetPositionalOffset(float arg0) {
     void *temp_r9_1540;
     void *temp_r9_1597;
 
-    var_f31_1326 = arg0;
-    temp_r27_1327 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_r3_1330 = temp_r27_1327->GetTemplate(arg0);
-    temp_r0_1331 = temp_r27_1327->unk28;
+    var_f31_1326 = farg0;
+    temp_r3_1330 = GetTemplate(farg0);
+    temp_r0_1331 = this->unk28;
     if (temp_r0_1331 == -1) {
         sp28 = 0.0f;
         sp2C = 0.0f;
         sp30 = 0.0f;
-        M2C_FIELD(this, f64 *, 0) = (f64) sp28;
-        this->unk8 = (f64) sp30;
-        return;
+        M2C_FIELD(sret, f64 *, 0) = (f64) sp28;
+        M2C_FIELD(sret, f64 *, 8) = (f64) sp30;
+        return result;
     }
     if (var_f31_1326 < 0.0f) {
-        var_f31_1326 = M2C_FIELD((temp_r27_1327 + ((temp_r0_1331 * 0x48) + 0x30)), f32 *, 0x38);
+        var_f31_1326 = M2C_FIELD((this + ((temp_r0_1331 * 0x48) + 0x30)), f32 *, 0x38);
     }
     temp_r30_1353 = M2C_FIELD(temp_r3_1330, void **, 0x28);
     temp_r27_1356 = ((u8 *) temp_r30_1353) + ((temp_r0_1331 << 5) + 0x20);
@@ -937,8 +937,9 @@ loop_8:
             sp90 = (f64) sp20;
         }
     }
-    M2C_FIELD(this, f64 *, 0) = (f64) sp88;
-    this->unk8 = sp90;
+    M2C_FIELD(sret, f64 *, 0) = (f64) sp88;
+    M2C_FIELD(sret, f64 *, 8) = sp90;
+    return result;
 }
 #endif
 
@@ -946,13 +947,18 @@ s32 Animation::GetNodeName(int arg0) {
     return M2C_FIELD((M2C_FIELD(this->unk0, s32 *, 0x28) + (arg0 << 5)), s32 *, 0x30);
 }
 
-void Animation::GetNodeOrigin(int arg0) {
+#if 0 // DRAFT: identifier 'Animation::GetNodeOrigin(int)' redeclared was declared as: 'MKVector3 (int)' now declared as: 'void (int)'
+void Animation::GetNodeOrigin(int arg2) {
+    MKVector3 result;
+    MKVector3 *sret = &result;
     void *temp_r4_1700;
 
-    temp_r4_1700 = M2C_FIELD((arg0 + (M2C_ERROR(/* Read from unset register $r5 */) * 0x48)), void **, 0x60);
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_1700, f64 *, 0);
-    this->unk8 = M2C_FIELD(temp_r4_1700, f64 *, 8);
+    temp_r4_1700 = M2C_FIELD((this + (arg2 * 0x48)), void **, 0x60);
+    M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(temp_r4_1700, f64 *, 0);
+    M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(temp_r4_1700, f64 *, 8);
+    return result;
 }
+#endif
 
 s8 Animation::GetNodeParentIndex(int arg0) {
     return (s8) M2C_FIELD((M2C_FIELD(this->unk0, s32 *, 0x28) + (arg0 << 5)), u8 *, 0x36);
@@ -1570,9 +1576,9 @@ loop_4:
         temp_r3_2955 = Str_Printf("%s.anm", arg0);
         MKArchive_Exists(temp_r3_2955, (int *) &sp8);
         if (MKHeap::Current() != NULL) {
-            var_r31_2925 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x34, NULL, 0));
+            var_r31_2925 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x34, NULL, 0);
         } else {
-            var_r31_2925 = (signed char *) (malloc(0x34));
+            var_r31_2925 = malloc(0x34);
         }
         memset(var_r31_2925, 0, 0x34U);
         temp_r3_2978 = Animation_pTemplates;
