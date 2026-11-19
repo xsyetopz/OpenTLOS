@@ -35,6 +35,8 @@
 #include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
+#include "unplaced_enums.h"
+#include "spyro/source/EnemySpawnPool.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 

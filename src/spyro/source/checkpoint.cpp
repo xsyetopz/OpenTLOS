@@ -68,19 +68,18 @@ extern void **gMK;
 extern M2C_UNK gb;
 static BoundingVolume unitVolume;                   /* type too large by 0x10; unable to generate initializer: not enough data */
 
-#if 0 // DRAFT: illegal operand
 void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
     ChunkInfo *temp_r4_63;
     u8 var_r3_64;
     void *temp_r5_65;
 
-    if ((CheckPoint *) *CheckPoint::pCurrentCheckPoint != arg0) {
-        *CheckPoint::pCurrentCheckPoint = (unsigned char) (arg0);
+    if (*(CheckPoint **) CheckPoint::pCurrentCheckPoint != arg0) {
+        *(CheckPoint **) CheckPoint::pCurrentCheckPoint = arg0;
         if (arg0 != NULL) {
             temp_r4_63 = arg0->unk1B8;
             var_r3_64 = 0;
             temp_r5_65 = temp_r4_63->unk4;
-            if ((temp_r5_65 != NULL) && ((u32) M2C_FIELD(temp_r5_65, u32 *, 0x118) == temp_r4_63)) {
+            if ((temp_r5_65 != NULL) && (M2C_FIELD(temp_r5_65, ChunkInfo **, 0x118) == temp_r4_63)) {
                 var_r3_64 = 1;
             }
             if (var_r3_64 == 0) {
@@ -89,7 +88,6 @@ void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
         }
     }
 }
-#endif
 
 f32 CheckPoint::Resolve() {
     MKProp::Resolve();
@@ -199,7 +197,7 @@ s32 CheckPoint::LoadDone() {
     f64 sp48;
     f64 sp40;
     f64 sp38;
-    f64 sp28;
+    MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
@@ -253,10 +251,10 @@ s32 CheckPoint::LoadDone() {
     M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *, f64 *, void *, f64), 0x28)(&this->unk100, &sp48, temp_r5_436, temp_f1_439);
     if ((u8) this->unk1C1 == 0) {
         sp18 = MKVector(300.0f, 0.0f, 0.0f);
-        ((MKProp *) &sp28)->GetPos();
+        sp28 = GetPos();
         sp8 = sp28 - M2C_BITWISE(f64, sp18);
         this->unkF0 = sp8;
-        sp10 = sp30 - sp18.unk8;
+        sp10 = sp28.unk8 - sp18.unk8;
         sp38 = sp8;
         sp40 = (f64) sp10;
         this->unkF8 = (f64) sp10;
@@ -313,7 +311,6 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void CheckPoint::Deinit() {
     s32 temp_r3_722;
 
@@ -322,12 +319,11 @@ void CheckPoint::Deinit() {
     if ((temp_r3_722 != 0) && (KDSound_IsVoicePlaying(temp_r3_722) != 0)) {
         KDSound_Stop((int *) &this->unk1BC);
     }
-    if ((u32) *CheckPoint::pCurrentCheckPoint == this) {
+    if (*(CheckPoint **) CheckPoint::pCurrentCheckPoint == this) {
         CheckPoint::SetCurrentCheckPoint(NULL);
     }
     KDProp::Deinit();
 }
-#endif
 
 void CheckPoint::Init() {
     KDProp::Init();

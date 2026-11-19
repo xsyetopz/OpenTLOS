@@ -15,7 +15,6 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 inline f32 std::sqrtf(float farg0) {
     f32 sp8;
     f32 var_f1_0;
@@ -61,7 +60,6 @@ inline f32 std::sqrtf(float farg0) {
     }
     return var_f1_0;
 }
-#endif
 
 inline f32 std::sin(float arg0) {
     return (f32) sin((f64) arg0);
