@@ -275,8 +275,7 @@ loop_4:
             return;
         }
         M2C_FIELD(temp_r4_394, f32 *, 0x24) = (f32) (M2C_FIELD(temp_r4_394, f32 *, 0x24) - gUpdateTimeDelta);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r4_394, f32 *, 0x24) == 0.0f) {
+        if (M2C_FIELD(temp_r4_394, f32 *, 0x24) <= 0.0f) {
             temp_r4_382 = M2C_FIELD(this, void ***, 0x60);
             M2C_FIELD(this, void ***, 0x60) = (void **) (temp_r4_382 + 4);
             temp_r5_385 = *temp_r4_382;
@@ -464,8 +463,7 @@ loop_4:
             return;
         }
         M2C_FIELD(temp_r4_655, f32 *, 0x24) = (f32) (M2C_FIELD(temp_r4_655, f32 *, 0x24) - gUpdateTimeDelta);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r4_655, f32 *, 0x24) == 0.0f) {
+        if (M2C_FIELD(temp_r4_655, f32 *, 0x24) <= 0.0f) {
             temp_r4_643 = M2C_FIELD(this, void ***, 0x5C);
             M2C_FIELD(this, void ***, 0x5C) = (void **) (temp_r4_643 + 4);
             temp_r5_646 = *temp_r4_643;
@@ -650,12 +648,19 @@ void ScorchTrail::Draw() {
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -668,6 +673,8 @@ void ScorchTrail::Draw() {
     MKHeap *temp_r3_975;
     MKHeap *temp_r4_907;
     f32 temp_f1_1121;
+    f32 temp_f28_1200;
+    f32 temp_f29_1150;
     f32 temp_f2_1085;
     f32 temp_f2_896;
     f32 temp_f4_1084;
@@ -680,6 +687,12 @@ void ScorchTrail::Draw() {
     f32 var_f26_1125;
     f32 var_f3_1068;
     f32 var_f4_1001;
+    f64 temp_f0_1160;
+    f64 temp_f0_1170;
+    f64 temp_f0_1183;
+    f64 temp_f0_1202;
+    f64 temp_f0_1212;
+    f64 temp_f0_1225;
     f64 temp_f1_1007;
     f64 temp_f1_1013;
     f64 temp_f1_1017;
@@ -694,6 +707,10 @@ void ScorchTrail::Draw() {
     s32 var_r31_928;
     s32 var_r5_901;
     void *temp_r3_1081;
+    void *temp_r3_978;
+    void *temp_r4_1177;
+    void *temp_r4_1219;
+    void *temp_r4_977;
 
     MKView_Push();
     MKView_GetProjection(NULL, &spC, NULL);
@@ -739,11 +756,11 @@ loop_13:
                 }
                 temp_r5_974 = var_r31_928 * 0x30;
                 temp_r3_975 = this->unk4C;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                temp_r4_977 = temp_r3_975 + temp_r5_974;
+                temp_r3_978 = temp_r3_975 + (var_r0_969 * 0x30);
+                sp30 = M2C_FIELD(temp_r3_978, f64 *, 0) - M2C_FIELD(temp_r4_977, f64 *, 0);
                 sp160 = sp30;
-                sp38 = M2C_FIELD((temp_r3_975 + (var_r0_969 * 0x30)), f32 *, 8) - M2C_FIELD((temp_r3_975 + temp_r5_974), f32 *, 8);
+                sp38 = M2C_FIELD(temp_r3_978, f32 *, 8) - M2C_FIELD(temp_r4_977, f32 *, 8);
                 sp140 = sp30;
                 sp168 = (f64) sp38;
                 sp148 = (f64) sp38;
@@ -831,39 +848,47 @@ loop_13:
             }
             MKSetColorV(*((MKVector4 *) &sp170));
             MKSetTexCoord1F(0.0f, var_f25_948);
+            temp_f29_1150 = this->unk58;
             spA0 = -(f32) sp150;
             spA4 = -unksp154;
             spA8 = -(f32) sp158;
             spE0 = (f64) spA0;
             spE8 = (f64) spA8;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            spF0 = sp90;
-            sp98 = (f32) spE8 * this->unk58;
+            temp_f0_1160 = spE0 * (f64) temp_f29_1150;
+            sp90 = temp_f0_1160;
+            spF0 = temp_f0_1160;
+            sp98 = (f32) spE8 * temp_f29_1150;
             spF8 = (f64) sp98;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-            sp100 = sp80;
+            temp_f0_1170 = temp_f0_1160 * (f64) var_f26_1125;
+            sp80 = temp_f0_1170;
+            sp100 = temp_f0_1170;
+            temp_r4_1177 = this->unk4C + temp_r27_1104;
             sp88 = (f32) spF8 * var_f26_1125;
             sp108 = (f64) sp88;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp110 = sp70;
-            sp78 = M2C_FIELD((this->unk4C + temp_r27_1104), f32 *, 8) + (f32) sp108;
+            temp_f0_1183 = M2C_FIELD(temp_r4_1177, f64 *, 0) + temp_f0_1170;
+            sp70 = temp_f0_1183;
+            sp110 = temp_f0_1183;
+            sp78 = M2C_FIELD(temp_r4_1177, f32 *, 8) + (f32) sp108;
             sp118 = (f64) sp78;
             MKSetPositionV(*((MKVector3 *) &sp110));
             MKSetColorV(*((MKVector4 *) &sp170));
             MKSetTexCoord1F(1.0f, var_f25_948);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            spB0 = sp60;
-            sp68 = (f32) sp158 * this->unk58;
+            temp_f28_1200 = this->unk58;
+            temp_f0_1202 = sp150 * (f64) temp_f28_1200;
+            sp60 = temp_f0_1202;
+            spB0 = temp_f0_1202;
+            sp68 = (f32) sp158 * temp_f28_1200;
             spB8 = (f64) sp68;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-            spC0 = sp50;
+            temp_f0_1212 = temp_f0_1202 * (f64) var_f26_1125;
+            sp50 = temp_f0_1212;
+            spC0 = temp_f0_1212;
+            temp_r4_1219 = this->unk4C + temp_r27_1104;
             sp58 = (f32) spB8 * var_f26_1125;
             spC8 = (f64) sp58;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spD0 = sp40;
-            sp48 = M2C_FIELD((this->unk4C + temp_r27_1104), f32 *, 8) + (f32) spC8;
+            temp_f0_1225 = M2C_FIELD(temp_r4_1219, f64 *, 0) + temp_f0_1212;
+            sp40 = temp_f0_1225;
+            spD0 = temp_f0_1225;
+            sp48 = M2C_FIELD(temp_r4_1219, f32 *, 8) + (f32) spC8;
             spD8 = (f64) sp48;
             MKSetPositionV(*((MKVector3 *) &spD0));
             var_f25_948 += 5.0f / (f32) var_r27_929;
@@ -915,8 +940,7 @@ void ScorchTrail::Update() {
         temp_r0_1311 = temp_r5_1308 + 0x20;
         *(temp_r4_1309 + temp_r0_1311) = *(temp_r4_1309 + temp_r0_1311) - gUpdateTimeDelta;
         temp_r4_1316 = this->unk4C + temp_r5_1308;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r4_1316, f32 *, 0x20) == 0.0f) {
+        if (M2C_FIELD(temp_r4_1316, f32 *, 0x20) <= 0.0f) {
             M2C_FIELD(temp_r4_1316, s32 *, 0x24) = 0;
         }
         var_r6_1300 += 1;

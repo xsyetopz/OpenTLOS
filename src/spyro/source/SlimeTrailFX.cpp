@@ -183,6 +183,7 @@ void SlimeTrailFXManager::Update() {
     f64 sp48;
     KDUniformSpline sp30;
     f32 sp28;
+    f64 sp20;
     f32 spC;
     f32 sp8;
     MKHeap *temp_r3_400;
@@ -211,7 +212,7 @@ loop_27:
                     sp30.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) var_r31_212->unk0, KDSpline_PositionMixer);
                     sp50 = M2C_BITWISE(f64, sp30);
                     sp58 = (f64) sp30.unk8;
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp20 = sp60 - sp50;
                     sp30.unk10 = sp20;
                     sp28 = (f32) sp68 - (f32) sp58;
                     temp_f2_243 = M2C_BITWISE(f32, sp30.unk10);
@@ -250,8 +251,7 @@ loop_27:
                             var_f31_252 = __float_nan;
                         }
                     }
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if (var_f31_252 == (f32) (1.15 * M2C_FIELD(*gb, f64 (**)(void **), 0x28)(gb))) {
+                    if (var_f31_252 <= (f32) (1.15 * M2C_FIELD(*gb, f64 (**)(void **), 0x28)(gb))) {
                         sp74 = 0;
                         sp70 = 7;
                         sp98 = 1;
@@ -453,7 +453,9 @@ void SlimeTrailFX::Draw() {
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp74;
@@ -466,8 +468,11 @@ void SlimeTrailFX::Draw() {
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -476,6 +481,10 @@ void SlimeTrailFX::Draw() {
     f32 temp_f25_708;
     f32 temp_f26_709;
     f32 temp_f2_732;
+    f64 temp_f0_793;
+    f64 temp_f0_804;
+    f64 temp_f0_861;
+    f64 temp_f0_872;
     s32 temp_r26_657;
     s32 var_r25_670;
 
@@ -509,8 +518,7 @@ void SlimeTrailFX::Draw() {
             sp168 = (f64) sp18;
             sp160 = (f64) sp10;
             Normalise(sp170);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
+            sp20 = sp170 * (f64) temp_f26_709;
             sp180 = sp20;
             sp28 = sp170.unk8 * temp_f26_709;
             sp1B0.unk10 = sp20;
@@ -534,12 +542,14 @@ void SlimeTrailFX::Draw() {
                 MKSetColorV(*((MKVector4 *) &sp130));
             }
             MKSetTexCoord1F(0.0f, temp_f24_685);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-            sp110 = sp90;
+            temp_f0_793 = M2C_BITWISE(f64, sp1B0.unk10) * 5.53552857e-315;
+            sp90 = temp_f0_793;
+            sp110 = temp_f0_793;
             sp98 = (f32) sp1C8 * 100.0f;
             sp118 = (f64) sp98;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp120 = sp80;
+            temp_f0_804 = sp1E0 + temp_f0_793;
+            sp80 = temp_f0_804;
+            sp120 = temp_f0_804;
             sp88 = (f32) sp1E8 + (f32) sp118;
             sp128 = (f64) sp88;
             MKSetPositionV(*((MKVector3 *) &sp120));
@@ -566,12 +576,14 @@ void SlimeTrailFX::Draw() {
             sp58 = -(f32) sp1C8;
             spC0 = (f64) sp50;
             spC8 = (f64) sp58;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-            spD0 = sp40;
+            temp_f0_861 = spC0 * 5.53552857e-315;
+            sp40 = temp_f0_861;
+            spD0 = temp_f0_861;
             sp48 = (f32) spC8 * 100.0f;
             spD8 = (f64) sp48;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spE0 = sp30;
+            temp_f0_872 = sp1E0 + temp_f0_861;
+            sp30 = temp_f0_872;
+            spE0 = temp_f0_872;
             sp38 = (f32) sp1E8 + (f32) spD8;
             spE8 = (f64) sp38;
             MKSetPositionV(*((MKVector3 *) &spE0));

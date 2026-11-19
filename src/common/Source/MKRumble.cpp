@@ -158,7 +158,7 @@ loop_27:
             temp_r0_293 = M2C_FIELD(temp_r30_220, s32 *, 0x14);
             (&sp10[0])[temp_r0_293] += var_f31_227 * temp_r30_220->unk4;
             (&sp30[0])[temp_r0_293] += var_f31_227 * temp_r30_220->unk8;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
             if (temp_r30_220->unk18 == 1.0f) {
                 temp_r0_308 = effectsPlaying - 1;
                 if (var_r29_216 < temp_r0_308) {

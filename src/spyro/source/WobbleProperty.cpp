@@ -49,8 +49,11 @@ void WobbleProperty::Update() {
     f64 sp118;
     f64 sp110;
     f32 sp108;
+    f64 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
+    f64 spE0;
     f64 spD8;
     f64 spD0;
     f64 spC8;
@@ -65,14 +68,20 @@ void WobbleProperty::Update() {
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
-    f32 temp_f1_129;
     f32 temp_f1_86;
     f32 temp_f30_124;
     f32 temp_f3_350;
@@ -81,15 +90,24 @@ void WobbleProperty::Update() {
     f32 var_f31_259;
     f32 var_f4_215;
     f32 var_f7_144;
+    f64 temp_f0_266;
+    f64 temp_f0_277;
+    f64 temp_f0_287;
+    f64 temp_f0_297;
+    f64 temp_f0_307;
+    f64 temp_f0_317;
+    f64 temp_f1_232;
     f64 temp_f2_154;
     f64 temp_f2_160;
     f64 temp_f2_164;
+    f64 temp_f2_265;
     s32 temp_r0_391;
     s32 temp_r3_183;
     s32 temp_r3_392;
     s32 temp_r3_404;
     s32 var_r0_193;
     void *temp_r30_116;
+    void *temp_r3_123;
     void *temp_r3_256;
     void *temp_r3_335;
     void *temp_r4_334;
@@ -105,16 +123,14 @@ void WobbleProperty::Update() {
         sp1A0 = sp160;
         temp_r30_116 = *KDProperty::pInstanceMem + this->unk8;
         sp1A8 = sp168;
+        temp_r3_123 = *(*KDProperty::pInstanceMem + this->unk8);
         temp_f30_124 = M2C_FIELD(*gb, f32 (**)(void **, void *, f64), 0x28)(gb, *KDProperty::pInstanceMem, sp160) + M2C_FIELD(temp_r30_116, f32 *, 4);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        temp_f1_129 = temp_f30_124 * temp_f30_124;
+        sp100 = M2C_FIELD(temp_r3_123, f64 *, 0) - sp1A0;
         sp190 = sp100;
-        sp108 = M2C_FIELD(*(*KDProperty::pInstanceMem + this->unk8), f32 *, 8) - (f32) sp1A8;
+        sp108 = M2C_FIELD(temp_r3_123, f32 *, 8) - (f32) sp1A8;
         sp198 = (f64) sp108;
         var_f7_144 = ((f32) sp198 * (f32) sp198) + (((f32) sp190 * (f32) sp190) + (unksp194 * unksp194));
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (var_f7_144 == temp_f1_129) {
+        if (var_f7_144 <= (temp_f30_124 * temp_f30_124)) {
             if (var_f7_144 > 1e-12f) {
                 if (var_f7_144 > 0.0f) {
                     temp_f2_154 = __frsqrte(var_f7_144);
@@ -158,11 +174,12 @@ void WobbleProperty::Update() {
             sp88 = (f32) sp198 * var_f4_215;
             sp120 = (f64) sp80;
             sp128 = (f64) sp88;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f30 */);
-            sp130 = spF0;
+            temp_f1_232 = sp120 * (f64) temp_f30_124;
+            spF0 = temp_f1_232;
+            sp130 = temp_f1_232;
             spF8 = (f32) sp128 * temp_f30_124;
             sp138 = (f64) spF8;
-            M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
+            spE0 = sp1A0 + temp_f1_232;
             spE8 = (f32) sp1A8 + (f32) sp138;
             sp140 = spE0;
             temp_r3_256 = *(*KDProperty::pInstanceMem + this->unk8);
@@ -172,32 +189,38 @@ void WobbleProperty::Update() {
             } else {
                 var_f31_259 = 1.0f;
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f2 */);
+            temp_f2_265 = M2C_FIELD(temp_r3_256, f64 *, 0);
+            temp_f0_266 = sp140 - temp_f2_265;
+            sp70 = temp_f0_266;
             temp_f4_269 = M2C_FIELD(temp_r3_256, f32 *, 8);
-            spB0 = sp70;
+            spB0 = temp_f0_266;
             sp78 = (f32) sp148 - temp_f4_269;
             spB8 = (f64) sp78;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spA0 = sp60;
+            temp_f0_277 = temp_f0_266 * (f64) var_f31_259;
+            sp60 = temp_f0_277;
+            spA0 = temp_f0_277;
             sp68 = (f32) spB8 * var_f31_259;
             spA8 = (f64) sp68;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-            sp90 = sp50;
+            temp_f0_287 = temp_f2_265 + temp_f0_277;
+            sp50 = temp_f0_287;
+            sp90 = temp_f0_287;
             sp58 = temp_f4_269 + (f32) spA8;
             sp98 = (f64) sp58;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f2 */);
-            spD0 = sp40;
+            temp_f0_297 = sp140 - sp90;
+            sp40 = temp_f0_297;
+            spD0 = temp_f0_297;
             sp48 = (f32) sp148 - (f32) sp98;
             spD8 = (f64) sp48;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spC0 = sp30;
+            temp_f0_307 = temp_f0_297 * (f64) var_f31_259;
+            sp30 = temp_f0_307;
+            spC0 = temp_f0_307;
             sp38 = (f32) spD8 * var_f31_259;
             spC8 = (f64) sp38;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-            M2C_FIELD(temp_r3_256, f64 *, 0) = sp20;
+            temp_f0_317 = sp90 + temp_f0_307;
+            sp20 = temp_f0_317;
+            M2C_FIELD(temp_r3_256, f64 *, 0) = temp_f0_317;
             sp28 = (f32) sp98 + (f32) spC8;
-            sp150 = sp20;
+            sp150 = temp_f0_317;
             M2C_FIELD(temp_r3_256, f32 *, 8) = (f64) sp28;
             sp158 = (f64) sp28;
             temp_r4_334 = *KDProperty::pInstanceMem + this->unk8;
@@ -208,12 +231,11 @@ void WobbleProperty::Update() {
             sp178 = M2C_FIELD(temp_r3_335, f64 *, 0x18);
             if (((s32) this->unk30 != 0) && ((u8) this->unk40 == 0) && (this->unk24 == 0.0f)) {
                 temp_f3_350 = M2C_FIELD(temp_r4_334, f32 *, 8);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
+                sp10 = sp180 - sp170;
                 sp110 = sp10;
                 sp18 = (f32) sp188 - (f32) sp178;
                 sp118 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114))) == (temp_f3_350 * temp_f3_350)) {
+                if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114))) >= (temp_f3_350 * temp_f3_350)) {
                     this->unk40 = 1;
                     this->unk24 = this->unk1C;
                     M2C_FIELD((this + (this->unk3C * 4)), s32 *, 0x34) = KDSound_Play3d(this->unk30, M2C_FIELD(*KDProperty::pInstanceMem, s32 *, 8) + 0x30, 0U, -1, 0.0f, 0U);

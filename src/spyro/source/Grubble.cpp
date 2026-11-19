@@ -68,7 +68,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp60'
+#if 0 // DRAFT: expression syntax error
 void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     s8 sp1E0;
     s32 sp1DC;
@@ -125,23 +125,31 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f3_314;
     f32 var_f31_327;
     f32 var_f3_394;
+    f64 temp_f0_220;
+    f64 temp_f0_283;
+    f64 temp_f0_308;
     f64 temp_f1_333;
     f64 temp_f1_339;
     f64 temp_f1_343;
@@ -182,7 +190,7 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     sp1E0 = 0;
     sp100 = (f64) sp70;
     sp108 = (f64) sp78;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+    sp60 = sp180 + sp100;
     sp98 = 0.0f;
     sp90 = 0.0f;
     sp94 = 200.0f;
@@ -191,8 +199,9 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     sp110 = sp60;
     sp118 = (f64) sp68;
     sp128 = (f64) sp98;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
-    sp130 = sp80;
+    temp_f0_220 = sp180 + sp120;
+    sp80 = temp_f0_220;
+    sp130 = temp_f0_220;
     sp88 = (f32) sp188 + (f32) sp128;
     sp138 = (f64) sp88;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp130), *((MKVector3 *) &sp110), (MKCollisionResult *) &sp190, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -209,7 +218,7 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     spB0 = (f64) sp30;
     sp168 = spF8;
     spB8 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
+    sp20 = sp160 + spB0;
     sp58 = 0.0f;
     sp50 = 0.0f;
     sp54 = 200.0f;
@@ -218,18 +227,19 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
     spC0 = sp20;
     spC8 = (f64) sp28;
     spD8 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
-    spE0 = sp40;
+    temp_f0_283 = sp160 + spD0;
+    sp40 = temp_f0_283;
+    spE0 = temp_f0_283;
     sp48 = (f32) sp168 + (f32) spD8;
     spE8 = (f64) sp48;
     if (MKCollision_RayCollide(*((MKVector3 *) &spE0), *((MKVector3 *) &spC0), (MKCollisionResult *) &sp190, (MKCollisionMode) 4, 0x0C000000) != 0) {
         sp160 = (f64) sp190;
         sp168 = (f64) sp198;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_308 = sp160 - arg0->unk30;
+    sp10 = temp_f0_308;
     temp_f3_314 = arg0->unk4;
-    sp150 = sp10;
+    sp150 = temp_f0_308;
     sp18 = (f32) sp168 - (f32) M2C_FIELD(arg0, f64 *, 0x38);
     unksp154 = temp_f3_314;
     sp158 = (f64) sp18;
@@ -291,7 +301,6 @@ void GrubbleCritter::FindNewWalkParameters(Grubble *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void GrubbleCritter::SetHideState(Grubble *arg0) {
     s8 spD8;
     s32 spD4;
@@ -326,11 +335,15 @@ void GrubbleCritter::SetHideState(Grubble *arg0) {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f4_543;
+    f64 temp_f0_558;
+    f64 temp_f5_537;
     s32 temp_r0_468;
     s32 temp_r31_479;
 
@@ -371,8 +384,8 @@ void GrubbleCritter::SetHideState(Grubble *arg0) {
         spD0 = 0;
         spD4 = -1;
         spD8 = 0;
-        M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r6, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+        temp_f5_537 = arg0->unk30;
+        sp8 = temp_f5_537 + sp48;
         sp40 = 0.0f;
         temp_f4_543 = M2C_FIELD(arg0, f32 *, 0x38);
         sp38 = 0.0f;
@@ -382,12 +395,13 @@ void GrubbleCritter::SetHideState(Grubble *arg0) {
         sp60 = (f64) sp10;
         sp68 = (f64) sp38;
         sp70 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-        sp78 = sp28;
+        temp_f0_558 = temp_f5_537 + sp68;
+        sp28 = temp_f0_558;
+        sp78 = temp_f0_558;
         sp30 = temp_f4_543 + (f32) sp70;
         sp80 = (f64) sp30;
         if (MKCollision_RayCollide(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58), (MKCollisionResult *) &sp88, (MKCollisionMode) 4, 0x0C000000) != 0) {
-            M2C_FIELD(arg0, f32 *, 0x30) = sp88;
+            M2C_FIELD(arg0, f64 *, 0x30) = sp88;
             M2C_FIELD(arg0, f32 *, 0x34) = sp8C;
             M2C_FIELD(arg0, f32 *, 0x38) = sp90;
             M2C_FIELD(arg0, f32 *, 0x3C) = 1.0f;
@@ -398,7 +412,6 @@ void GrubbleCritter::SetHideState(Grubble *arg0) {
         return;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void GrubbleCritter::Update() {
@@ -468,10 +481,12 @@ void GrubbleCritter::Update() {
     f32 spE4;
     f32 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
     f32 spC4;
     f32 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
     f32 spA4;
     f32 spA0;
@@ -488,12 +503,16 @@ void GrubbleCritter::Update() {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     Matrix *temp_r30_605;
     f32 temp_f0_899;
@@ -502,9 +521,15 @@ void GrubbleCritter::Update() {
     f32 temp_f4_946;
     f32 var_f3_822;
     f32 var_f4_755;
+    f64 temp_f0_700;
+    f64 temp_f0_881;
+    f64 temp_f0_961;
+    f64 temp_f1_1091;
     f64 temp_f1_761;
     f64 temp_f1_767;
     f64 temp_f1_771;
+    f64 temp_f5_679;
+    f64 temp_f5_940;
     s32 temp_r0_614;
     s32 temp_r27_1003;
     s32 temp_r27_1044;
@@ -559,7 +584,8 @@ loop_50:
             sp2E4 = -1;
             sp2E8 = 0;
             sp1B8 = (f64) spC8;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+            temp_f5_679 = M2C_BITWISE(f64, sp1F0.unk40);
+            spB0 = temp_f5_679 + sp1B0;
             spE8 = 0.0f;
             spE0 = 0.0f;
             spE4 = 200.0f;
@@ -568,8 +594,9 @@ loop_50:
             sp1C0 = spB0;
             sp1C8 = (f64) spB8;
             sp1D8 = (f64) spE8;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-            sp1E0 = spD0;
+            temp_f0_700 = temp_f5_679 + sp1D0;
+            spD0 = temp_f0_700;
+            sp1E0 = temp_f0_700;
             spD8 = sp1F0.unk40.unk8 + (f32) sp1D8;
             sp1E8 = (f64) spD8;
             if (MKCollision_RayCollide(*((MKVector3 *) &sp1E0), *((MKVector3 *) &sp1C0), (MKCollisionResult *) &sp298, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -649,9 +676,9 @@ loop_50:
             sp1F0.unk10 = (f64) sp70;
             sp1F0.unk18 = (f64) sp78;
             sp160.operator*(200.0f * gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp170 = sp10;
+            temp_f0_881 = (f64) M2C_FIELD(temp_r30_605, f32 *, 0x30) + M2C_BITWISE(f64, sp160);
+            sp10 = temp_f0_881;
+            sp170 = temp_f0_881;
             sp18 = temp_r30_605->unk38 + sp160.unk8;
             temp_r30_605->unk30 = (f32) sp170;
             sp178 = (f64) sp18;
@@ -688,8 +715,8 @@ loop_50:
             sp290 = 0;
             sp120 = (f64) sp40;
             sp128 = (f64) sp48;
-            M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+            temp_f5_940 = (f64) M2C_FIELD(temp_r30_605, f32 *, 0x30);
+            sp30 = temp_f5_940 + sp120;
             sp68 = 0.0f;
             temp_f4_946 = temp_r30_605->unk38;
             sp60 = 0.0f;
@@ -699,8 +726,9 @@ loop_50:
             sp130 = sp30;
             sp138 = (f64) sp38;
             sp148 = (f64) sp68;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-            sp150 = sp50;
+            temp_f0_961 = temp_f5_940 + sp140;
+            sp50 = temp_f0_961;
+            sp150 = temp_f0_961;
             sp58 = temp_f4_946 + (f32) sp148;
             sp158 = (f64) sp58;
             if (MKCollision_RayCollide(*((MKVector3 *) &sp150), *((MKVector3 *) &sp130), (MKCollisionResult *) &sp1F0.unk40.unk10, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -709,8 +737,7 @@ loop_50:
                 temp_r30_605->unk38 = sp1F0.unk40.unk18;
                 temp_r30_605->unk3C = 1.0f;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r30_605, f32 *, 0x64) == 0.0f) {
+            if (M2C_FIELD(temp_r30_605, f32 *, 0x64) <= 0.0f) {
                 FindNewWalkParameters((Grubble *) temp_r30_605);
             }
             break;
@@ -729,8 +756,7 @@ loop_50:
             if (temp_f1_1030 > 1.0f) {
                 M2C_FIELD(temp_r30_605, f32 *, 0x54) = (f32) (temp_f1_1030 - 1.0f);
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r30_605, f32 *, 0x64) == 0.0f) {
+            if (M2C_FIELD(temp_r30_605, f32 *, 0x64) <= 0.0f) {
                 M2C_FIELD(temp_r30_605, s32 *, 0x60) = 3;
                 temp_r27_1044 = M2C_FIELD(temp_r30_605, s32 *, 0x60);
                 M2C_FIELD(temp_r30_605, void **, 0x50) = (void *) *(checked_cast<GrubbleCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_1044 * 4) + 0x70));
@@ -747,15 +773,14 @@ loop_50:
         }
         if ((s32) M2C_FIELD(temp_r30_605, s32 *, 0x60) == 4) {
             temp_r3_1090 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
-            sp100 = M2C_FIELD(temp_r3_1090, f64 *, 0x30);
+            temp_f1_1091 = M2C_FIELD(temp_r3_1090, f64 *, 0x30);
+            sp100 = temp_f1_1091;
             sp108 = M2C_FIELD(temp_r3_1090, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp20 = temp_f1_1091 - (f64) M2C_FIELD(temp_r30_605, f32 *, 0x30);
             sp110 = sp20;
             sp28 = (f32) sp108 - temp_r30_605->unk38;
             sp118 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114))) == 250000.0f) {
+            if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114))) <= 250000.0f) {
                 SetHideState((Grubble *) temp_r30_605);
             }
         }

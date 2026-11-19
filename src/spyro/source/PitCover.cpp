@@ -14,7 +14,7 @@ extern s32 GS_PitTrapFall;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: undefined identifier 'sp60'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void PitCover::Message(MKMessage *arg0) {
     MKVector3 sp180;
     MKVector3 sp170;
@@ -48,15 +48,26 @@ void PitCover::Message(MKMessage *arg0) {
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     s32 spC;
     f32 sp8;
     f32 temp_f1_172;
     f32 temp_f1_230;
+    f64 temp_f0_139;
+    f64 temp_f0_151;
+    f64 temp_f0_203;
+    f64 temp_f0_215;
+    f64 temp_f2_84;
     s32 temp_r0_55;
     s32 var_r30_121;
 
@@ -76,13 +87,14 @@ block_4:
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk90, &sp180);
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk94, &sp170);
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk9C, &sp160);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+        temp_f2_84 = M2C_BITWISE(f64, sp180);
+        sp60 = M2C_BITWISE(f64, sp170) - temp_f2_84;
         sp140 = sp60;
         sp68 = sp170.unk8 - sp180.unk8;
         sp170 = sp60;
         sp148 = (f64) sp68;
         sp170.unk8 = (f64) sp68;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+        sp50 = M2C_BITWISE(f64, sp160) - temp_f2_84;
         sp160 = sp50;
         sp58 = sp160.unk8 - sp180.unk8;
         sp130 = sp50;
@@ -93,13 +105,15 @@ block_4:
         do {
             __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), spF0);
             __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), sp100);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp110 = sp20;
+            temp_f0_139 = M2C_BITWISE(f64, sp180) + M2C_BITWISE(f64, sp100);
+            sp20 = temp_f0_139;
+            sp110 = temp_f0_139;
             sp28 = sp180.unk8 + sp100.unk8;
             sp118 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp120 = sp40;
-            sp150 = sp40;
+            temp_f0_151 = sp110 + M2C_BITWISE(f64, spF0);
+            sp40 = temp_f0_151;
+            sp120 = temp_f0_151;
+            sp150 = temp_f0_151;
             sp48 = (f32) sp118 + spF0.unk8;
             sp128 = (f64) sp48;
             sp158 = (f64) sp48;
@@ -113,13 +127,15 @@ block_4:
             gb.unk234->Emit(*((MKVector3 *) &sp150), *((MKVector3 *) &spE0), 10.0f, spC, 1U);
             __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), spA0);
             __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), spB0);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spC0 = sp10;
+            temp_f0_203 = M2C_BITWISE(f64, sp180) + M2C_BITWISE(f64, spB0);
+            sp10 = temp_f0_203;
+            spC0 = temp_f0_203;
             sp18 = sp180.unk8 + spB0.unk8;
             spC8 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spD0 = sp30;
-            sp150 = sp30;
+            temp_f0_215 = spC0 + M2C_BITWISE(f64, spA0);
+            sp30 = temp_f0_215;
+            spD0 = temp_f0_215;
+            sp150 = temp_f0_215;
             sp38 = (f32) spC8 + spA0.unk8;
             spD8 = (f64) sp38;
             sp158 = (f64) sp38;

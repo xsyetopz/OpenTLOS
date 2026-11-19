@@ -514,8 +514,7 @@ f32 MKFFTNormalMap::GetDirectionScale(float arg0, float arg1) {
     f32 temp_f3_718;
 
     temp_f3_718 = this->unk501C;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f3_718 == 1.0f) {
+    if (temp_f3_718 >= 1.0f) {
         return (arg0 * (2.0f - temp_f3_718)) + (temp_f3_718 - 1.0f);
     }
     if ((temp_f3_718 < 1.0f) && (arg1 < 0.0f)) {

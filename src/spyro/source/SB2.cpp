@@ -176,7 +176,7 @@ void SB2::Arbitrate() {
             sp58 = (f64) sp18;
             sp60 = (f64) sp20;
             if ((((f32) sp90 * (f32) spA0) + (((f32) sp88 * (f32) sp98) + (unksp8C * unksp9C))) < 0.0f) {
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                sp98 *= 1.58735232e-314;
                 spA0 = (f32) spA0 * -1.0f;
             }
             temp_r3_182 = this + temp_r31_82;
@@ -186,7 +186,7 @@ void SB2::Arbitrate() {
             sp8 = M2C_FIELD(temp_r5_88, f64 *, 0x100);
             sp10 = M2C_FIELD(temp_r5_88, f64 *, 0x108);
             if ((((f32) sp10 * temp_f11_133) + (((f32) sp8 * temp_f10_125) + (unkspC * temp_f7_121))) < 0.0f) {
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f1 */);
+                sp98 *= 1.58735232e-314;
                 spA0 *= -1.0f;
             }
             M2C_FIELD(temp_r5_88, f64 *, 0x100) = sp98;
@@ -434,7 +434,7 @@ void SB2::GraphFollowingAny() {
     f64 spF8;
     f64 spF0;
     MKVector3 spE0;
-    M2C_UNK spD0;
+    f64 spD0;
     f64 spC0;
     MKVector3 spB0;
     MKVector3 spA0;
@@ -442,13 +442,16 @@ void SB2::GraphFollowingAny() {
     f64 sp88;
     f64 sp80;
     MKVector3 sp70;
-    M2C_UNK sp60;
+    f64 sp60;
     f64 sp50;
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     Character *temp_r3_1017;
     Character *temp_r3_1040;
@@ -515,8 +518,7 @@ void SB2::GraphFollowingAny() {
     sp140 = sp130;
     sp148 = sp138;
     temp_r3_693 = this->unk0;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_r3_693->unk694 == 0.0f) {
+    if (temp_r3_693->unk694 <= 0.0f) {
         var_f31_698 = 1.0f;
     } else {
         var_f31_698 = 3.0f;
@@ -547,7 +549,7 @@ void SB2::GraphFollowingAny() {
         temp_f2_752 = (f32) sp158 - (f32) sp148;
         var_f4_740 = (temp_f2_752 * temp_f2_752) + ((temp_f3_749 * temp_f3_749) + (temp_f4_747 * temp_f4_747));
     }
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp30 = sp150 - sp140;
     sp40 = sp30;
     sp38 = (f32) sp158 - (f32) sp148;
     sp48 = (f64) sp38;
@@ -585,10 +587,9 @@ loop_19:
                     M2C_FIELD(this, f32 *, 0x440) = (f64) sp120.unk8;
                 } else {
                     temp_r4_872 = this->unk448;
-                    M2C_FIELD(temp_r4_872->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&spD0, temp_r4_872);
+                    M2C_FIELD(temp_r4_872->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&spD0, temp_r4_872);
                     M2C_FIELD(temp_r29_847->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&spE0, temp_r29_847);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp20 = spE0 - spD0;
                     M2C_FIELD(this, f32 *, 0x438) = sp20;
                     sp28 = spE0.unk8 - spD8;
                     spF0 = sp20;
@@ -692,10 +693,9 @@ loop_19:
                     M2C_FIELD(this, f32 *, 0x440) = (f64) spB0.unk8;
                 } else {
                     temp_r4_1099 = this->unk448;
-                    M2C_FIELD(temp_r4_1099->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp60, temp_r4_1099);
+                    M2C_FIELD(temp_r4_1099->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp60, temp_r4_1099);
                     M2C_FIELD(temp_r31_1074->__vptr, M2C_UNK (**)(MKVector3 *, CharacterGraphNode *), 0x30)(&sp70, temp_r31_1074);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp10 = sp70 - sp60;
                     M2C_FIELD(this, f32 *, 0x438) = sp10;
                     sp18 = sp70.unk8 - sp68;
                     sp80 = sp10;
@@ -766,11 +766,14 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
     M2C_UNK sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
-    M2C_UNK sp48;
+    f64 sp58;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -793,6 +796,7 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
     f32 var_f4_1532;
     f32 var_f6_1359;
     f32 var_f7_1377;
+    f64 temp_f0_1264;
     f64 temp_f1_1250;
     f64 temp_f1_1298;
     f64 temp_f1_1304;
@@ -824,11 +828,12 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
         M2C_FIELD(temp_r4_1248->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *, f64), 0x30)(&spA8, temp_r4_1248, temp_f1_1250);
         spB8.unk30 = spA8;
         spB8.unk38 = spB0;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-        spB8.unk20 = sp38;
+        temp_f0_1264 = M2C_BITWISE(f64, spB8.unk40) - sp108;
+        sp38 = temp_f0_1264;
+        spB8.unk20 = temp_f0_1264;
         sp40 = M2C_BITWISE(f32, spB8.unk40.unk8) - (f32) sp110;
         spB8.unk28 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+        sp28 = (f64) spB8.unk30 - sp108;
         sp30 = spB8.unk38 - (f32) sp110;
         var_f4_1289 = ((f32) spB8.unk28 * (f32) spB8.unk28) + (((f32) spB8.unk20 * (f32) spB8.unk20) + (unkspDC * unkspDC));
         spB8.unk10 = sp28;
@@ -930,11 +935,10 @@ void SB2::GraphFollowing_EvadeMidNodeTraversal() {
                 M2C_FIELD(this, f64 *, 0x440) = (f64) sp98.unk8;
             } else {
                 temp_r4_1496 = this->unk448;
-                M2C_FIELD(temp_r4_1496->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp48, temp_r4_1496);
+                M2C_FIELD(temp_r4_1496->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp48, temp_r4_1496);
                 temp_r4_1502 = this->unk44C;
-                M2C_FIELD(temp_r4_1502->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp58, temp_r4_1502);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                M2C_FIELD(temp_r4_1502->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp58, temp_r4_1502);
+                sp18 = sp58 - sp48;
                 M2C_FIELD(this, f64 *, 0x438) = sp18;
                 sp20 = sp60 - sp50;
                 sp68 = sp18;
@@ -1066,7 +1070,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
     M2C_UNK spA8;
     f64 spA0;
     f64 sp98;
-    M2C_UNK sp88;
+    f64 sp88;
     f64 sp78;
     f64 sp70;
     f64 sp68;
@@ -1074,9 +1078,13 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
@@ -1222,13 +1230,13 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
     unksp16C = unksp17C;
     spC8.GetVel();
     spD8.operator*(var_f29_1742);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp48 = sp168 + M2C_BITWISE(f64, spD8);
     sp138 = sp48;
     sp50 = (f32) sp170 + spD8.unk8;
     spE8 = sp48;
     spF0 = (f64) sp50;
     sp140 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp38 = sp48 - sp178;
     sp138 = sp38;
     sp40 = (f32) sp140 - (f32) sp180;
     spB8 = sp38;
@@ -1286,9 +1294,8 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
                 temp_r3_2037 = this->unk448->GetLink(var_r30_2015);
                 M2C_FIELD(temp_r3_2037->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&spA8, temp_r3_2037);
                 temp_r3_2046 = this->unk448->GetLink(var_r30_2015);
-                M2C_FIELD(temp_r3_2046->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp88, temp_r3_2046);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                M2C_FIELD(temp_r3_2046->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp88, temp_r3_2046);
+                sp28 = sp88 - sp178;
                 sp128 = sp28;
                 sp30 = sp90 - (f32) sp180;
                 sp130 = (f64) sp30;
@@ -1350,7 +1357,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
                 sp158 = sp78;
                 unksp15C = unksp17C;
                 sp160 = sp80;
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp18 = sp78 - sp178;
                 sp128 = sp18;
                 sp20 = (f32) sp160 - (f32) sp180;
                 sp130 = (f64) sp20;
@@ -1422,11 +1429,14 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
     M2C_UNK sp70;
     f64 sp68;
     f64 sp60;
-    M2C_UNK sp50;
-    M2C_UNK sp40;
+    f64 sp50;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     CharacterGraphNode *temp_r3_2606;
@@ -1442,6 +1452,7 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
     f32 var_f4_2530;
     f32 var_f6_2441;
     f32 var_f7_2459;
+    f64 temp_f0_2346;
     f64 temp_f1_2332;
     f64 temp_f1_2380;
     f64 temp_f1_2386;
@@ -1467,11 +1478,12 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
         M2C_FIELD(temp_r4_2330->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *, f64), 0x30)(&spA0, temp_r4_2330, temp_f1_2332);
         spB0.unk30 = spA0;
         spB0.unk38 = spA8;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-        spB0.unk20 = sp30;
+        temp_f0_2346 = M2C_BITWISE(f64, spB0.unk40) - sp100;
+        sp30 = temp_f0_2346;
+        spB0.unk20 = temp_f0_2346;
         sp38 = M2C_BITWISE(f32, spB0.unk40.unk8) - (f32) sp108;
         spB0.unk28 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+        sp20 = (f64) spB0.unk30 - sp100;
         sp28 = spB0.unk38 - (f32) sp108;
         var_f4_2371 = ((f32) spB0.unk28 * (f32) spB0.unk28) + (((f32) spB0.unk20 * (f32) spB0.unk20) + (unkspD4 * unkspD4));
         spB0.unk10 = sp20;
@@ -1573,11 +1585,10 @@ void SB2::GraphFollowing_PursuitMidNodeTraversal() {
                 M2C_FIELD(this, f64 *, 0x440) = (f64) sp90.unk8;
             } else {
                 temp_r4_2578 = this->unk448;
-                M2C_FIELD(temp_r4_2578->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp40, temp_r4_2578);
+                M2C_FIELD(temp_r4_2578->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp40, temp_r4_2578);
                 temp_r4_2584 = this->unk44C;
-                M2C_FIELD(temp_r4_2584->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp50, temp_r4_2584);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                M2C_FIELD(temp_r4_2584->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp50, temp_r4_2584);
+                sp10 = sp50 - sp40;
                 M2C_FIELD(this, f64 *, 0x438) = sp10;
                 sp18 = sp58 - sp48;
                 sp60 = sp10;
@@ -1664,7 +1675,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
     M2C_UNK spA8;
     f64 spA0;
     f64 sp98;
-    M2C_UNK sp88;
+    f64 sp88;
     f64 sp78;
     f64 sp70;
     f64 sp68;
@@ -1672,9 +1683,13 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
@@ -1813,13 +1828,13 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
     unksp16C = unksp17C;
     spC8.GetVel();
     spD8.operator*(var_f29_2718);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp48 = sp168 + M2C_BITWISE(f64, spD8);
     sp138 = sp48;
     sp50 = (f32) sp170 + spD8.unk8;
     spE8 = sp48;
     spF0 = (f64) sp50;
     sp140 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp38 = sp48 - sp178;
     sp138 = sp38;
     sp40 = (f32) sp140 - (f32) sp180;
     spB8 = sp38;
@@ -1877,9 +1892,8 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
                 temp_r3_3013 = this->unk448->GetLink(var_r30_2991);
                 M2C_FIELD(temp_r3_3013->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&spA8, temp_r3_3013);
                 temp_r3_3022 = this->unk448->GetLink(var_r30_2991);
-                M2C_FIELD(temp_r3_3022->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp88, temp_r3_3022);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                M2C_FIELD(temp_r3_3022->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp88, temp_r3_3022);
+                sp28 = sp88 - sp178;
                 sp128 = sp28;
                 sp30 = sp90 - (f32) sp180;
                 sp130 = (f64) sp30;
@@ -1941,7 +1955,7 @@ s32 SB2::GraphFollowing_PursuitSelectLink() {
                 sp158 = sp78;
                 unksp15C = unksp17C;
                 sp160 = sp80;
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp18 = sp78 - sp178;
                 sp128 = sp18;
                 sp20 = (f32) sp160 - (f32) sp180;
                 sp130 = (f64) sp20;
@@ -2103,9 +2117,10 @@ void SB2::GraphFollowingOn(CharacterGraphNode *arg0, CharacterGraphNode *arg1, G
     f64 sp50;
     f64 sp48;
     f64 sp40;
-    M2C_UNK sp30;
-    M2C_UNK sp20;
+    f64 sp30;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     Character *temp_r3_3495;
     f32 temp_f0_3547;
@@ -2142,9 +2157,8 @@ void SB2::GraphFollowingOn(CharacterGraphNode *arg0, CharacterGraphNode *arg1, G
                 M2C_FIELD(this, f64 *, 0x440) = (f64) sp70.unk8;
             } else {
                 sp20.GetPos();
-                M2C_FIELD(arg0->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp30, arg0);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                M2C_FIELD(arg0->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp30, arg0);
+                sp10 = sp30 - sp20;
                 M2C_FIELD(this, f64 *, 0x438) = sp10;
                 sp18 = sp38 - sp28;
                 sp40 = sp10;
@@ -2247,16 +2261,24 @@ void SB2::HazardAvoidance() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     Character *temp_r3_3661;
     Character *temp_r3_3667;
     f32 temp_f1_3665;
-    f32 temp_f2_3690;
+    f32 temp_f31_3682;
+    f64 temp_f0_3686;
+    f64 temp_f0_3703;
+    f64 temp_f1_3694;
+    void *temp_r3_3684;
     void *temp_r3_3692;
     void *temp_r3_3787;
 
@@ -2268,20 +2290,23 @@ void SB2::HazardAvoidance() {
     sp5C = temp_f1_3665;
     spD0 = (f64) sp60;
     spC8 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    temp_f2_3690 = M2C_FIELD((this + ((this->unk3F8 * 0x98) + 0x100)), f32 *, 8) * (300.0f + M2C_FIELD(temp_r3_3667->__vptr, f32 (**)(Character *, f64, f32), 0x100)(temp_r3_3667, (f64) sp58, 0.0f));
+    temp_f31_3682 = 300.0f + M2C_FIELD(temp_r3_3667->__vptr, f32 (**)(Character *, f64, f32), 0x100)(temp_r3_3667, (f64) sp58, 0.0f);
+    temp_r3_3684 = this + ((this->unk3F8 * 0x98) + 0x100);
+    temp_f0_3686 = M2C_FIELD(temp_r3_3684, f64 *, 0) * (f64) temp_f31_3682;
+    sp48 = temp_f0_3686;
     temp_r3_3692 = this->unk0->unk8;
-    sp78 = sp48;
-    sp50 = temp_f2_3690;
-    sp88 = M2C_FIELD(temp_r3_3692, f64 *, 0x30);
+    sp78 = temp_f0_3686;
+    temp_f1_3694 = M2C_FIELD(temp_r3_3692, f64 *, 0x30);
+    sp50 = M2C_FIELD(temp_r3_3684, f32 *, 8) * temp_f31_3682;
+    sp88 = temp_f1_3694;
     sp80 = (f64) sp50;
     sp90 = M2C_FIELD(temp_r3_3692, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp98 = sp38;
+    temp_f0_3703 = temp_f1_3694 + temp_f0_3686;
+    sp38 = temp_f0_3703;
+    sp98 = temp_f0_3703;
     sp40 = (f32) sp90 + (f32) sp80;
     spA0 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp28 = sp98 + spC8;
     sp20 = 0.0f;
     sp18 = 0.0f;
     sp1C = 500.0f;
@@ -2290,7 +2315,7 @@ void SB2::HazardAvoidance() {
     sp68 = (f64) sp18;
     spC0 = (f64) sp30;
     sp70 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp8 = spB8 - sp68;
     spA8 = sp8;
     spD8 = 0.0f;
     sp10 = (f32) spC0 - (f32) sp70;
@@ -2330,7 +2355,7 @@ void SB2::HazardAvoidanceOn() {
     this->unk460 |= 0x10000;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp40'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SB2::Containment() {
     f64 spB8;
     f64 spB0;
@@ -2345,9 +2370,13 @@ void SB2::Containment() {
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     Character *temp_r3_3830;
@@ -2357,6 +2386,9 @@ void SB2::Containment() {
     f32 var_f3_3831;
     f32 var_f4_3900;
     f32 var_f4_4047;
+    f64 temp_f0_3850;
+    f64 temp_f0_3861;
+    f64 temp_f1_3840;
     f64 temp_f1_3903;
     f64 temp_f1_3909;
     f64 temp_f1_3913;
@@ -2368,6 +2400,7 @@ void SB2::Containment() {
     s32 var_r0_3942;
     s32 var_r0_4089;
     void *temp_r3_3838;
+    void *temp_r3_3848;
     void *temp_r3_3974;
     void *temp_r3_3982;
     void *temp_r3_3995;
@@ -2385,21 +2418,24 @@ void SB2::Containment() {
         var_f3_3831 = 0.1f;
     }
     temp_r3_3838 = temp_r3_3830->unk8;
+    temp_f1_3840 = M2C_FIELD(temp_r3_3838, f64 *, 0x30);
     temp_f31_3842 = 500.0f * var_f3_3831;
-    spB0 = M2C_FIELD(temp_r3_3838, f64 *, 0x30);
+    spB0 = temp_f1_3840;
     spB8 = M2C_FIELD(temp_r3_3838, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp70 = sp40;
-    sp48 = M2C_FIELD((this + ((this->unk3F8 * 0x98) + 0x100)), f32 *, 8) * temp_f31_3842;
+    temp_r3_3848 = this + ((this->unk3F8 * 0x98) + 0x100);
+    temp_f0_3850 = M2C_FIELD(temp_r3_3848, f64 *, 0) * (f64) temp_f31_3842;
+    sp40 = temp_f0_3850;
+    sp70 = temp_f0_3850;
+    sp48 = M2C_FIELD(temp_r3_3848, f32 *, 8) * temp_f31_3842;
     sp78 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spA0 = sp30;
+    temp_f0_3861 = temp_f1_3840 + temp_f0_3850;
+    sp30 = temp_f0_3861;
+    spA0 = temp_f0_3861;
     sp38 = (f32) spB8 + (f32) sp78;
     spA8 = (f64) sp38;
     temp_r3_3871 = this->unk4;
     if ((temp_r3_3871 != NULL) && (temp_r3_3871->GetFirstIntersectionPlane(*((MKVector3 *) &spB0), *((MKVector3 *) &spA0), &sp90, &sp80) != 0)) {
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp20 = spB0 - M2C_BITWISE(f64, sp90);
         sp60 = sp20;
         sp28 = (f32) spB8 - sp90.unk8;
         sp68 = (f64) sp28;
@@ -2454,7 +2490,7 @@ void SB2::Containment() {
     }
     temp_r3_4018 = M2C_FIELD(this, EnemyRegion **, 8);
     if ((temp_r3_4018 != NULL) && (temp_r3_4018->GetFirstIntersectionPlane(*((MKVector3 *) &spB0), *((MKVector3 *) &spA0), &sp90, &sp80) != 0)) {
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp10 = spB0 - M2C_BITWISE(f64, sp90);
         sp50 = sp10;
         sp18 = (f32) spB8 - sp90.unk8;
         sp58 = (f64) sp18;
@@ -2564,23 +2600,38 @@ void SB2::WallAvoidance() {
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f64 sp10;
     f64 sp8;
     Character *temp_r3_4209;
     Character *temp_r3_4214;
     Character *temp_r3_4231;
     f32 temp_f0_4223;
-    f32 temp_f1_4253;
     f32 temp_f29_4217;
     f32 var_f2_4222;
+    f64 temp_f0_4249;
+    f64 temp_f0_4260;
+    f64 temp_f0_4277;
+    f64 temp_f0_4289;
+    f64 temp_f0_4302;
+    f64 temp_f0_4314;
+    f64 temp_f1_4242;
+    f64 temp_f1_4268;
     s32 temp_r4_4245;
     s32 temp_r5_4390;
+    void *temp_r3_4247;
     void *temp_r3_4266;
+    void *temp_r3_4293;
     void *temp_r3_4421;
     void *temp_r5_4382;
     void *temp_r5_4404;
@@ -2601,36 +2652,43 @@ void SB2::WallAvoidance() {
     sp7C = var_f2_4222;
     sp120 = (f64) sp80;
     sp118 = (f64) sp78;
+    temp_f1_4242 = M2C_FIELD(temp_r3_4231->__vptr, f64 (**)(Character *, f64), 0x100)(temp_r3_4231, (f64) sp78);
     temp_r4_4245 = this->unk3F8 * 0x98;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-    temp_f1_4253 = M2C_FIELD((this + (temp_r4_4245 + 0x100)), f32 *, 8) * M2C_FIELD(temp_r3_4231->__vptr, f32 (**)(Character *, f64), 0x100)(temp_r3_4231, (f64) sp78);
-    spB8 = sp68;
-    sp70 = temp_f1_4253;
+    temp_r3_4247 = this + (temp_r4_4245 + 0x100);
+    temp_f0_4249 = M2C_FIELD(temp_r3_4247, f64 *, 0) * temp_f1_4242;
+    sp68 = temp_f0_4249;
+    spB8 = temp_f0_4249;
+    sp70 = M2C_FIELD(temp_r3_4247, f32 *, 8) * (f32) temp_f1_4242;
     spC0 = (f64) sp70;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    temp_f0_4260 = temp_f0_4249 * 0.0;
+    sp58 = temp_f0_4260;
     temp_r3_4266 = this->unk0->unk8;
-    spC8 = sp58;
+    spC8 = temp_f0_4260;
+    temp_f1_4268 = M2C_FIELD(temp_r3_4266, f64 *, 0x30);
     sp60 = (f32) spC0 * 0.0f;
-    spD8 = M2C_FIELD(temp_r3_4266, f64 *, 0x30);
+    spD8 = temp_f1_4268;
     spD0 = (f64) sp60;
     spE0 = M2C_FIELD(temp_r3_4266, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spE8 = sp48;
+    temp_f0_4277 = temp_f1_4268 + temp_f0_4260;
+    sp48 = temp_f0_4277;
+    spE8 = temp_f0_4277;
     sp50 = (f32) spE0 + (f32) spD0;
     spF0 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp108 = sp38;
+    temp_f0_4289 = spE8 + sp118;
+    sp38 = temp_f0_4289;
+    temp_r3_4293 = this + (temp_r4_4245 + 0x100);
+    sp108 = temp_f0_4289;
     sp40 = (f32) spF0 + (f32) sp120;
     sp110 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    spA8 = sp28;
-    sp30 = M2C_FIELD((this + (temp_r4_4245 + 0x100)), f32 *, 8) * 300.0f;
+    temp_f0_4302 = M2C_FIELD(temp_r3_4293, f64 *, 0) * 5.60222949e-315;
+    sp28 = temp_f0_4302;
+    spA8 = temp_f0_4302;
+    sp30 = M2C_FIELD(temp_r3_4293, f32 *, 8) * 300.0f;
     spB0 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_f0_4314 = sp108 + temp_f0_4302;
+    sp18 = temp_f0_4314;
     sp128 = 0.0f;
-    spF8 = sp18;
+    spF8 = temp_f0_4314;
     sp20 = (f32) sp110 + (f32) spB0;
     sp12C = 0.0f;
     sp100 = (f64) sp20;
@@ -2726,11 +2784,17 @@ void SB2::ObstacleAvoidance() {
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     u8 spC;
     void *sp8;
     AITargetData *temp_r3_4628;
@@ -2739,16 +2803,25 @@ void SB2::ObstacleAvoidance() {
     Character *temp_r3_4486;
     Character *temp_r3_4494;
     f32 temp_f1_4492;
-    f32 temp_f1_4516;
     f32 temp_f29_4489;
     f32 temp_f30_4482;
+    f64 temp_f0_4512;
+    f64 temp_f0_4523;
+    f64 temp_f0_4540;
+    f64 temp_f0_4552;
+    f64 temp_f0_4565;
+    f64 temp_f0_4576;
+    f64 temp_f1_4505;
+    f64 temp_f1_4531;
     s32 temp_r3_4712;
     s32 temp_r4_4508;
     u32 temp_r3_4612;
     u32 var_r29_4600;
     u8 var_r30_4633;
     void **var_r3_4686;
+    void *temp_r3_4510;
     void *temp_r3_4529;
+    void *temp_r3_4556;
     void *temp_r3_4706;
     void *var_r28_4629;
 
@@ -2764,36 +2837,43 @@ void SB2::ObstacleAvoidance() {
     sp74 = temp_f1_4492;
     spF8 = (f64) sp78;
     spF0 = (f64) sp70;
+    temp_f1_4505 = M2C_FIELD(temp_r3_4494->__vptr, f64 (**)(Character *, f64, f32), 0x100)(temp_r3_4494, (f64) sp70, 0.0f);
     temp_r4_4508 = this->unk3F8 * 0x98;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-    temp_f1_4516 = M2C_FIELD((this + (temp_r4_4508 + 0x100)), f32 *, 8) * M2C_FIELD(temp_r3_4494->__vptr, f32 (**)(Character *, f64, f32), 0x100)(temp_r3_4494, (f64) sp70, 0.0f);
-    sp90 = sp60;
-    sp68 = temp_f1_4516;
+    temp_r3_4510 = this + (temp_r4_4508 + 0x100);
+    temp_f0_4512 = M2C_FIELD(temp_r3_4510, f64 *, 0) * temp_f1_4505;
+    sp60 = temp_f0_4512;
+    sp90 = temp_f0_4512;
+    sp68 = M2C_FIELD(temp_r3_4510, f32 *, 8) * (f32) temp_f1_4505;
     sp98 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    temp_f0_4523 = temp_f0_4512 * 0.0;
+    sp50 = temp_f0_4523;
     temp_r3_4529 = this->unk0->unk8;
-    spA0 = sp50;
+    spA0 = temp_f0_4523;
+    temp_f1_4531 = M2C_FIELD(temp_r3_4529, f64 *, 0x30);
     sp58 = (f32) sp98 * 0.0f;
-    spB0 = M2C_FIELD(temp_r3_4529, f64 *, 0x30);
+    spB0 = temp_f1_4531;
     spA8 = (f64) sp58;
     spB8 = M2C_FIELD(temp_r3_4529, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spC0 = sp40;
+    temp_f0_4540 = temp_f1_4531 + temp_f0_4523;
+    sp40 = temp_f0_4540;
+    spC0 = temp_f0_4540;
     sp48 = (f32) spB8 + (f32) spA8;
     spC8 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spE0 = sp30;
+    temp_f0_4552 = spC0 + spF0;
+    sp30 = temp_f0_4552;
+    temp_r3_4556 = this + (temp_r4_4508 + 0x100);
+    spE0 = temp_f0_4552;
     sp38 = (f32) spC8 + (f32) spF8;
     spE8 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp80 = sp20;
-    sp28 = M2C_FIELD((this + (temp_r4_4508 + 0x100)), f32 *, 8) * temp_f30_4482;
+    temp_f0_4565 = M2C_FIELD(temp_r3_4556, f64 *, 0) * (f64) temp_f30_4482;
+    sp20 = temp_f0_4565;
+    sp80 = temp_f0_4565;
+    sp28 = M2C_FIELD(temp_r3_4556, f32 *, 8) * temp_f30_4482;
     sp88 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_f0_4576 = spE0 + temp_f0_4565;
+    sp10 = temp_f0_4576;
     sp100 = 0.0f;
-    spD0 = sp10;
+    spD0 = temp_f0_4576;
     sp18 = (f32) spE8 + (f32) sp88;
     sp104 = 0.0f;
     spD8 = (f64) sp18;
@@ -2892,13 +2972,18 @@ void SB2::PathFollowingSetGoal() {
     f64 sp80;
     f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
@@ -2976,7 +3061,7 @@ void SB2::PathFollowingSetGoal() {
         spC8.GetMeasure(this->unk424, (Matrix *) &this->unk420->unk30, KDSpline_VelocityMixer);
         spB8 = M2C_BITWISE(f64, spC8);
         spC0 = (f64) spC8.unk8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp68 = spB8 * (f64) sp14;
         temp_r30_4840 = this->unk0;
         sp70 = (f32) spC0 * sp14;
         sp118 = sp68;
@@ -2995,21 +3080,19 @@ void SB2::PathFollowingSetGoal() {
         temp_r5_4884 = ((u8) this->unk434 >> 5U) & 1;
         temp_f0_4885 = (temp_f2_4879 * temp_f2_4879) + (temp_f3_4876 * temp_f3_4876);
         if (temp_r5_4884 != 0) {
-            M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
+            sp58 = sp138 - sp128;
             spA8 = sp58;
             sp60 = (f32) sp140 - (f32) sp130;
             spB0 = (f64) sp60;
             var_r6_4910 = (u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU;
         } else {
-            M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
+            sp48 = sp138 - sp128;
             sp98 = sp48;
             sp50 = (f32) sp140 - (f32) sp130;
             spA0 = (f64) sp50;
             var_r6_4910 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
         }
         temp_f7_4942 = 2.0f * var_f1_4863;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if ((temp_f0_4885 < (var_f1_4863 * var_f1_4863)) || (((u8) var_r6_4910 != 0) && (temp_f0_4885 < (temp_f7_4942 * temp_f7_4942)))) {
             var_f1_4982 = temp_f30_4786 * this->unk428;
             if (temp_r5_4884 != 0) {
@@ -3115,13 +3198,13 @@ void SB2::PathFollowingSetGoal() {
         this->unk434 &= ~8;
         temp_f0_5222 = (temp_f2_5216 * temp_f2_5216) + (temp_f3_5213 * temp_f3_5213);
         if (((u8) this->unk434 >> 5U) & 1) {
-            M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
+            sp28 = sp138 - sp128;
             sp88 = sp28;
             sp30 = (f32) sp140 - (f32) sp130;
             sp90 = (f64) sp30;
             var_r0_5246 = (((f32) sp90 * (f32) sp110) + (((f32) sp88 * M2C_BITWISE(f32, spF8.unk10)) + (unksp8C * sp10C))) < 0.0f;
         } else {
-            M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
+            sp18 = sp138 - sp128;
             sp78 = sp18;
             sp20 = (f32) sp140 - (f32) sp130;
             sp80 = (f64) sp20;
@@ -3168,6 +3251,7 @@ void SB2::PathFollowingOn(KDSplinePathSegment *arg0, bool arg1, bool arg2, bool 
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     Character *temp_r3_5462;
     Character *temp_r3_5475;
     KDSplinePathSegment *temp_r7_5420;
@@ -3239,7 +3323,7 @@ void SB2::PathFollowingOn(KDSplinePathSegment *arg0, bool arg1, bool arg2, bool 
         temp_f3_5488 = (f32) sp60 - (f32) sp50;
         temp_f2_5489 = (f32) sp58 - (f32) sp48;
         temp_f6_5492 = (temp_f2_5489 * temp_f2_5489) + (temp_f3_5488 * temp_f3_5488);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
+        sp8 = sp58 - sp48;
         sp10 = temp_f3_5488;
         sp28 = sp8;
         sp30 = (f64) sp10;
@@ -3319,8 +3403,11 @@ void SB2::WanderSetGoal() {
     f64 sp170;
     f64 sp168;
     f32 sp160;
+    f64 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp140;
+    f64 sp138;
     f32 sp130;
     f32 sp12C;
     f32 sp128;
@@ -3328,12 +3415,16 @@ void SB2::WanderSetGoal() {
     f32 sp11C;
     f32 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
     f32 spFC;
     f32 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
     f32 spBC;
     f32 spB8;
@@ -3341,6 +3432,7 @@ void SB2::WanderSetGoal() {
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
@@ -3377,7 +3469,6 @@ void SB2::WanderSetGoal() {
     f32 temp_f10_6143;
     f32 temp_f11_6141;
     f32 temp_f12_6139;
-    f32 temp_f1_5906;
     f32 temp_f25_5671;
     f32 temp_f26_5679;
     f32 temp_f5_6023;
@@ -3390,7 +3481,14 @@ void SB2::WanderSetGoal() {
     f32 temp_f8_5999;
     f32 temp_f9_5979;
     f32 temp_f9_6158;
+    f64 temp_f0_5754;
+    f64 temp_f0_5902;
+    f64 temp_f0_5913;
+    f64 temp_f0_5930;
+    f64 temp_f0_5952;
     f64 temp_f1_5892;
+    f64 temp_f1_5899;
+    f64 temp_f1_5921;
     s32 temp_r0_5783;
     void *temp_r3_5633;
     void *temp_r3_5715;
@@ -3421,8 +3519,7 @@ void SB2::WanderSetGoal() {
             sp318.operator*(M2C_FIELD(temp_r3_5601->__vptr, f32 (**)(Character *), 0x100)(temp_r3_5601));
             sp328.operator*(1.5f);
             sp338.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp108 = sp338 + M2C_BITWISE(f64, sp328);
             sp3B8 = sp108;
             sp110 = M2C_BITWISE(f32, sp338.unk8) + sp328.unk8;
             sp338.unk10 = sp108;
@@ -3434,8 +3531,7 @@ void SB2::WanderSetGoal() {
             sp100 = -M2C_FIELD(temp_r3_5633, f32 *, 0x28);
             sp308 = (f64) spF8;
             sp310 = (f64) sp100;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((((f32) sp310 * this->unk408) + (((f32) sp308 * M2C_FIELD(this, f32 *, 0x400)) + (unksp30C * this->unk404))) == 0.5f) {
+            if ((((f32) sp310 * this->unk408) + (((f32) sp308 * M2C_FIELD(this, f32 *, 0x400)) + (unksp30C * this->unk404))) >= 0.5f) {
                 this->unk418 = 0;
             }
         } else {
@@ -3446,8 +3542,7 @@ void SB2::WanderSetGoal() {
             sp2C8.GetDir();
             sp2D8.operator*(temp_f25_5671);
             sp2E8.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            spE8 = sp2E8 + M2C_BITWISE(f64, sp2D8);
             sp3B8 = spE8;
             spF0 = M2C_BITWISE(f32, sp2E8.unk8) + sp2D8.unk8;
             sp2E8.unk10 = spE8;
@@ -3463,17 +3558,18 @@ void SB2::WanderSetGoal() {
             sp30 = ((f32) sp3B0 * M2C_FIELD(temp_r3_5715, f32 *, 0x28)) + ((temp_f7_5713 * M2C_FIELD(temp_r3_5715, f32 *, 8)) + (unksp3AC * M2C_FIELD(temp_r3_5715, f32 *, 0x18)));
             sp2A8 = (f64) sp28;
             sp2B0 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+            spD8 = sp2A8 * 1.58735232e-314;
             sp3A8 = spD8;
             spE0 = (f32) sp2B0 * -1.0f;
             sp2B8 = spD8;
             sp2C0 = (f64) spE0;
             sp3B0 = (f64) spE0;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-            sp298 = spC8;
+            temp_f0_5754 = sp3A8 * (f64) temp_f26_5679;
+            spC8 = temp_f0_5754;
+            sp298 = temp_f0_5754;
             spD0 = (f32) sp3B0 * temp_f26_5679;
             sp2A0 = (f64) spD0;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp3B8 += temp_f0_5754;
             sp3C0 = (f32) sp3C0 + (f32) sp2A0;
             this->unk410 += 0.15f * KDRand_Gaussian();
             if ((f32) fabs(this->unk410) > 1.0471973f) {
@@ -3510,7 +3606,7 @@ void SB2::WanderSetGoal() {
                         sp260 = (f64) spB0;
                         sp270 = (f64) spC0;
                         if ((((f32) sp260 * (f32) sp3B0) + (((f32) sp258 * (f32) sp3A8) + (unksp25C * unksp3AC))) < 0.0f) {
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                            sp3A8 *= 1.58735232e-314;
                             sp3B0 = (f32) sp3B0 * -1.0f;
                         }
                         sp338.unk40 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -3520,26 +3616,31 @@ void SB2::WanderSetGoal() {
                         temp_f1_5892 = M2C_FIELD(temp_r4_5891, f64 *, 0x30);
                         sp248 = temp_f1_5892;
                         sp250 = M2C_FIELD(temp_r4_5891, f64 *, 0x38);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                        temp_f1_5906 = sp3B0 * M2C_FIELD(temp_r3_5890->__vptr, f32 (**)(Character *, void *, f64), 0x100)(temp_r3_5890, temp_r4_5891, temp_f1_5892);
-                        sp208 = sp158;
-                        sp160 = temp_f1_5906;
+                        temp_f1_5899 = M2C_FIELD(temp_r3_5890->__vptr, f64 (**)(Character *, void *, f64), 0x100)(temp_r3_5890, temp_r4_5891, temp_f1_5892);
+                        temp_f0_5902 = sp3A8 * temp_f1_5899;
+                        sp158 = temp_f0_5902;
+                        sp208 = temp_f0_5902;
+                        sp160 = sp3B0 * (f32) temp_f1_5899;
                         sp210 = (f64) sp160;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                        temp_f0_5913 = temp_f0_5902 * 5.28426686e-315;
+                        sp148 = temp_f0_5913;
                         temp_r3_5919 = this->unk0->unk8;
-                        sp218 = sp148;
+                        sp218 = temp_f0_5913;
+                        temp_f1_5921 = M2C_FIELD(temp_r3_5919, f64 *, 0x30);
                         sp150 = (f32) sp210 * 1.5f;
-                        sp228 = M2C_FIELD(temp_r3_5919, f64 *, 0x30);
+                        sp228 = temp_f1_5921;
                         sp220 = (f64) sp150;
                         sp230 = M2C_FIELD(temp_r3_5919, f64 *, 0x38);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp238 = sp138;
+                        temp_f0_5930 = temp_f1_5921 + temp_f0_5913;
+                        sp138 = temp_f0_5930;
+                        sp238 = temp_f0_5930;
                         sp140 = (f32) sp230 + (f32) sp220;
                         sp240 = (f64) sp140;
                         if (this->unk4->GetFirstIntersectionPlane(*((MKVector3 *) &sp248), *((MKVector3 *) &sp238), (MKVector3 *) &sp398, (MKVector3 *) &sp338.unk40) != 0) {
                             this->unk418 = 1;
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            sp1E8 = sp98;
+                            temp_f0_5952 = sp388 + M2C_BITWISE(f64, sp338.unk40);
+                            sp98 = temp_f0_5952;
+                            sp1E8 = temp_f0_5952;
                             spA0 = (f32) sp390 + sp338.unk48;
                             sp1F0 = (f64) spA0;
                             Normalise(sp1F8);
@@ -3582,7 +3683,7 @@ void SB2::WanderSetGoal() {
                         sp1A8 = M2C_FIELD(temp_r3_6062, f64 *, 0x30);
                         sp1B0 = M2C_FIELD(temp_r3_6062, f64 *, 0x38);
                         ((EnemyRegion *) (M2C_FIELD(this, EnemyRegion **, 8)))->GetFirstIntersectionPlane(*((MKVector3 *) &sp1A8), *((MKVector3 *) &sp3B8), (MKVector3 *) &sp398, (MKVector3 *) &sp388);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                        sp388 *= 1.58735232e-314;
                         temp_f7_6078 = (f32) sp390 * -1.0f;
                         sp390 = temp_f7_6078;
                         sp70 = (MKVector3::up.unk0 * unksp38C) - (MKVector3::up.unk4 * (f32) sp388);
@@ -3599,7 +3700,7 @@ void SB2::WanderSetGoal() {
                         sp190 = (f64) sp60;
                         sp1A0 = (f64) sp70;
                         if ((((f32) sp190 * (f32) sp3B0) + (((f32) sp188 * (f32) sp3A8) + (unksp18C * unksp3AC))) < 0.0f) {
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f3, $f3, $f28 */);
+                            sp3A8 *= 1.58735232e-314;
                             sp3B0 = (f32) sp3B0 * -1.0f;
                         }
                         temp_r3_6135 = this->unk0->unk8;
@@ -3760,6 +3861,7 @@ u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f0_6656;
     f32 var_f30_6564;
@@ -3847,8 +3949,7 @@ u8 SB2::PursuitPredictPos(MKVector3 *arg0) {
     sp40.GetVel();
     sp50.operator*(var_f30_6564);
     sp60.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp10 = sp60.unk0 + M2C_BITWISE(f64, sp50);
     M2C_FIELD(arg0, f64 *, 0) = sp10;
     sp18 = sp60.unk8 + sp50.unk8;
     sp60.unk10 = sp10;

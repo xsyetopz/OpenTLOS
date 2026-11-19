@@ -647,8 +647,7 @@ u8 SpyroCynderStrafeState::JumpTransition() {
 
     var_r3_705 = AnyToDodgeTranstion();
     if (var_r3_705 == 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk10->unk33C == 0.0f) && ((s32) this->unk18.unk0 != 3)) {
+        if ((this->unk10->unk33C <= 0.0f) && ((s32) this->unk18.unk0 != 3)) {
             this->unk18.SetState(this, 3, 0U);
             return 1U;
         }
@@ -1115,7 +1114,7 @@ u8 SpyroCynderStrafeState::ClampVelocity() {
     return this->unk14 != 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp40'
+#if 0 // DRAFT: undefined identifier 'unkspB4'
 void SpyroCynderStrafeState::GetMoveVelocityHorz() {
     f64 spB8;
     f64 spB0;
@@ -1133,7 +1132,9 @@ void SpyroCynderStrafeState::GetMoveVelocityHorz() {
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -1142,10 +1143,13 @@ void SpyroCynderStrafeState::GetMoveVelocityHorz() {
     f32 sp10;
     f32 sp8;
     SpyroCynderStrafeState *temp_r30_1630;
+    f32 temp_f29_1647;
     f32 temp_f31_1653;
     f32 var_f1_1640;
     f32 var_f1_1762;
     f32 var_f4_1695;
+    f64 temp_f0_1665;
+    f64 temp_f0_1675;
     f64 temp_f1_1701;
     f64 temp_f1_1707;
     f64 temp_f1_1711;
@@ -1159,19 +1163,22 @@ void SpyroCynderStrafeState::GetMoveVelocityHorz() {
         if (var_f1_1640 < 0.0f) {
             var_f1_1640 = -var_f1_1640;
         }
+        temp_f29_1647 = 750.0f * var_f1_1640;
         temp_f31_1653 = ((InputModifier *) (temp_r30_1630->unk10->GetInput()))->GetLeftX();
         sp50 = temp_r30_1630->unk38;
         sp54 = 0.0f;
         sp58 = -temp_r30_1630->unk30;
         sp70 = (f64) sp50;
         sp78 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp80 = sp40;
+        temp_f0_1665 = sp70 * (f64) temp_f31_1653;
+        sp40 = temp_f0_1665;
+        sp80 = temp_f0_1665;
         sp48 = (f32) sp78 * temp_f31_1653;
         sp88 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spB0 = sp30;
-        sp38 = (f32) sp88 * (750.0f * var_f1_1640);
+        temp_f0_1675 = temp_f0_1665 * (f64) temp_f29_1647;
+        sp30 = temp_f0_1675;
+        spB0 = temp_f0_1675;
+        sp38 = (f32) sp88 * temp_f29_1647;
         spB8 = (f64) sp38;
         if (temp_r30_1630->ClampVelocity() != 0) {
             var_f4_1695 = ((f32) spB8 * (f32) spB8) + (((f32) spB0 * (f32) spB0) + (unkspB4 * unkspB4));

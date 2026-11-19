@@ -92,7 +92,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void GroundFire::Update() {
     BreathHitMessage spC8;
     f64 spC0;
@@ -113,7 +113,9 @@ void GroundFire::Update() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -127,6 +129,8 @@ void GroundFire::Update() {
     f32 temp_f1_198;
     f32 temp_f25_159;
     f32 temp_f2_199;
+    f64 temp_f0_172;
+    f64 temp_f0_184;
 
     var_r28_137 = this->unk0;
 loop_8:
@@ -145,14 +149,14 @@ loop_8:
             sp78 = (f64) sp48;
             sp80 = (f64) sp50;
             KDRand_Vector(sp98, *((MKVector3 *) &sp88));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-            spA8 = sp38;
+            temp_f0_172 = sp98 * (f64) temp_f25_159;
+            sp38 = temp_f0_172;
+            spA8 = temp_f0_172;
             sp40 = sp98.unk8 * temp_f25_159;
             spB0 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r26, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spB8 = sp28;
+            temp_f0_184 = M2C_FIELD(temp_r26_306, f64 *, 0x28) + temp_f0_172;
+            sp28 = temp_f0_184;
+            spB8 = temp_f0_184;
             sp30 = M2C_FIELD(temp_r26_306, f32 *, 0x30) + (f32) spB0;
             spC0 = (f64) sp30;
             temp_f1_198 = 100.0f * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
@@ -167,8 +171,7 @@ loop_8:
             sp8 = 1;
             temp_r26_306->Update(temp_r26_306->unk44, 1U, M2C_FIELD(temp_r26_306, u8 *, 0x48), NULL, (MKVector3 *) &temp_r26_306->unk28, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             temp_r26_306->unk3C = M2C_BITWISE(f32, temp_r26_306->unk3C) - gUpdateTimeDelta;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_BITWISE(f32, temp_r26_306->unk3C) == 0.0f) {
+            if (M2C_BITWISE(f32, temp_r26_306->unk3C) <= 0.0f) {
                 spC8.unk4 = 0;
                 temp_r4_244 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), MKProp *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0));
                 sp8 = -1;
@@ -179,12 +182,10 @@ loop_8:
                 temp_r26_306->unk3C = 0.25f;
             }
             temp_r26_306->unk38 -= gUpdateTimeDelta;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r26_306->unk38 == 0.25f) {
+            if (temp_r26_306->unk38 <= 0.25f) {
                 M2C_FIELD(temp_r26_306, u8 *, 0x48) = 0U;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r26_306->unk38 == 0.0f) {
+            if (temp_r26_306->unk38 <= 0.0f) {
                 KDSound_Stop((s32 *) temp_r26_306);
                 temp_r3_294 = this->unk0;
                 this->unk0 = (MKHeap *) &temp_r3_294->unk4;

@@ -404,8 +404,7 @@ loop_4:
     if (temp_r3_209 != NULL) {
         M2C_FIELD(temp_r3_209, f32 *, 4) = (f32) (M2C_FIELD(temp_r3_209, f32 *, 4) - gUpdateTimeDelta);
         temp_r3_184 = *var_r31_176;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r3_184, f32 *, 4) == 0.0f) {
+        if (M2C_FIELD(temp_r3_184, f32 *, 4) <= 0.0f) {
             ConsoleCmds_pSenderProp = M2C_FIELD(temp_r3_184, s32 *, 8);
             Console_Execute(M2C_FIELD(*var_r31_176, s8 **, 0));
             commandBuffer.Free(M2C_FIELD(*var_r31_176, s8 **, 0));
@@ -1544,8 +1543,7 @@ f32 CmdDelay(int arg0, char **arg1) {
 
     if (arg0 == 3) {
         temp_f1_2197 = (f32) atof(M2C_FIELD(arg1, s8 **, 4));
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f1_2197 == 0.0f) {
+        if (temp_f1_2197 <= 0.0f) {
             Console_Print("%s: 'delay' should be greater than zero\n", M2C_FIELD(arg1, s8 **, 0), temp_f1_2197);
             return 0.0f;
         }
@@ -1662,8 +1660,7 @@ f32 CmdLessEqual(int arg0, char **arg1) {
 
     if (arg0 == 3) {
         temp_f31_2506 = Console_Execute(M2C_FIELD(arg1, s8 **, 8));
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (Console_Execute(M2C_FIELD(arg1, s8 **, 4)) == temp_f31_2506) {
+        if (Console_Execute(M2C_FIELD(arg1, s8 **, 4)) <= temp_f31_2506) {
             return 1.0f;
         }
         return 0.0f;
@@ -1695,8 +1692,7 @@ f32 CmdGreaterEqual(int arg0, char **arg1) {
 
     if (arg0 == 3) {
         temp_f31_2591 = Console_Execute(M2C_FIELD(arg1, s8 **, 8));
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (Console_Execute(M2C_FIELD(arg1, s8 **, 4)) == temp_f31_2591) {
+        if (Console_Execute(M2C_FIELD(arg1, s8 **, 4)) >= temp_f31_2591) {
             return 1.0f;
         }
         return 0.0f;
@@ -1822,8 +1818,7 @@ loop_20:
     temp_r0_2887 = (arg0 == 6) + 4;
     if (var_f31_2877 > 0.0f) {
 loop_29:
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_2764->AsFloat() == temp_f30_2872) {
+        if (temp_r3_2764->AsFloat() <= temp_f30_2872) {
             Console_Execute(arg1[temp_r0_2887]);
             temp_r3_2764->SetAsFloat(var_f31_2877 + temp_r3_2764->AsFloat());
             goto loop_29;
@@ -1832,8 +1827,7 @@ loop_29:
     }
     if (var_f31_2877 < 0.0f) {
 loop_34:
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_r3_2764->AsFloat() == temp_f30_2872) {
+        if (temp_r3_2764->AsFloat() >= temp_f30_2872) {
             Console_Execute(arg1[temp_r0_2887]);
             temp_r3_2764->SetAsFloat(var_f31_2877 + temp_r3_2764->AsFloat());
             goto loop_34;

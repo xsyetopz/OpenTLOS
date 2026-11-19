@@ -2,7 +2,7 @@
 #include "common/Source/MKVector3.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'sp60'
+#if 0 // DRAFT: undefined identifier 'unksp134'
 void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     f64 sp148;                                      /* compiler-managed */
     f64 sp140;
@@ -25,15 +25,22 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     f64 spA8;
     f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -42,13 +49,21 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     f32 temp_f0_138;
     f32 temp_f0_332;
     f32 temp_f2_184;
+    f32 temp_f2_21;
+    f32 temp_f2_336;
     f32 var_f0_188;
     f32 var_f4_259;
     f32 var_f4_45;
     f32 var_f5_58;
+    f64 temp_f0_162;
+    f64 temp_f0_349;
+    f64 temp_f0_39;
+    f64 temp_f1_179;
+    f64 temp_f1_25;
     f64 temp_f1_264;
     f64 temp_f1_270;
     f64 temp_f1_274;
+    f64 temp_f1_339;
     f64 temp_f1_63;
     f64 temp_f1_69;
     f64 temp_f1_73;
@@ -58,19 +73,19 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     s32 var_r0_303;
     void *temp_r29_22;
 
+    temp_f2_21 = M2C_FIELD(&arg0, f32 *, 0x10);
     temp_r29_22 = M2C_ERROR(/* Read from unset register $r5 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-    sp110 = sp60;
-    sp68 = arg0.unk8 * M2C_FIELD(&arg0, f32 *, 0x10);
-    sp140 = sp60;
+    temp_f1_25 = M2C_FIELD(&arg0, f64 *, 0) * (f64) temp_f2_21;
+    sp60 = temp_f1_25;
+    sp110 = temp_f1_25;
+    sp68 = arg0.unk8 * temp_f2_21;
+    sp140 = temp_f1_25;
     sp118 = (f64) sp68;
     sp148 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_39 = M2C_FIELD(&arg0, f64 *, 0x20) - M2C_FIELD(temp_r29_22, f64 *, 0);
+    sp90 = temp_f0_39;
     var_f4_45 = 0.0f;
-    sp130 = sp90;
+    sp130 = temp_f0_39;
     sp98 = M2C_FIELD(&arg0, f32 *, 0x28) - M2C_FIELD(temp_r29_22, f32 *, 8);
     unksp134 = 0.0f;
     sp138 = (f64) sp98;
@@ -127,16 +142,15 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     }
     spE0.operator*(var_f5_58 / temp_f0_138);
     spF0.operator*(M2C_FIELD(&arg0, f32 *, 0x10));
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp100 = sp50;
+    temp_f0_162 = spF0 * 5.325712093e-315;
+    sp50 = temp_f0_162;
+    sp100 = temp_f0_162;
     sp58 = spF0.unk8 * 3.0f;
     sp108 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp140 += temp_f0_162;
     sp148 = (f32) sp148 + (f32) sp108;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f1_179 = M2C_FIELD(temp_r29_22, f64 *, 0);
+    sp70 = temp_f1_179 - M2C_FIELD(&arg0, f64 *, 0x20);
     temp_f2_184 = M2C_FIELD(temp_r29_22, f32 *, 8);
     var_f0_188 = 0.0f;
     sp120 = sp70;
@@ -148,13 +162,13 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     sp18 = M2C_FIELD(&arg0, f32 *, 0x68) + (((f32) sp128 * M2C_FIELD(&arg0, f32 *, 0x58)) + (((f32) sp120 * M2C_FIELD(&arg0, f32 *, 0x38)) + (0.0f * M2C_FIELD(&arg0, f32 *, 0x48))));
     spC0 = (f64) sp10;
     spC8 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: ps_add $f3, $f3, $f1 */);
+    sp40 = spC0 + temp_f1_179;
     sp120 = sp40;
     sp48 = (f32) spC8 + temp_f2_184;
     spD0 = sp40;
     spD8 = (f64) sp48;
     sp128 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f3, $f1 */);
+    sp30 = sp120 - temp_f1_179;
     spB0 = sp30;
     sp38 = (f32) sp128 - temp_f2_184;
     sp130 = sp30;
@@ -201,28 +215,31 @@ void WindFX::GetSwirlVelocity(const MKVector3 &arg0) {
     sp130 = (f32) sp130 * var_f0_188;
     unksp134 *= var_f0_188;
     sp138 = temp_f0_332;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
-    sp28 = temp_f0_332 * M2C_FIELD(&arg0, f32 *, 0x10);
-    spA0 = sp20;
+    temp_f2_336 = M2C_FIELD(&arg0, f32 *, 0x10);
+    temp_f1_339 = (f64) sp130 * (f64) temp_f2_336;
+    sp20 = temp_f1_339;
+    sp28 = temp_f0_332 * temp_f2_336;
+    spA0 = temp_f1_339;
     spA8 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    this->unk0 = sp140;
+    temp_f0_349 = sp140 + spA0;
+    sp140 = temp_f0_349;
+    this->unk0 = temp_f0_349;
     sp148 += (f32) spA8;
     this->unk8 = (f64) sp148;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void WindFX::GetGlobalVelocity(const MKVector3 &arg0) {
     f32 sp10;
+    f64 sp8;
+    f32 temp_f2_375;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
+    temp_f2_375 = M2C_FIELD(&arg0, f32 *, 0x10);
+    sp8 = M2C_FIELD(&arg0, f64 *, 0) * (f64) temp_f2_375;
     this->unk0 = sp8;
-    sp10 = arg0.unk8 * M2C_FIELD(&arg0, f32 *, 0x10);
+    sp10 = arg0.unk8 * temp_f2_375;
     this->unk8 = (f64) sp10;
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void WindFX::GetVelocity(const MKVector3 &arg0) {

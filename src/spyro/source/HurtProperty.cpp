@@ -41,12 +41,15 @@ void HurtProperty::DoHurt() {
     f64 sp40;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     TargetManager ***var_r31_109;
     TargetManager **temp_r3_157;
     f32 temp_f2_130;
+    f64 temp_f0_125;
+    f64 temp_f1_119;
     void **temp_r3_46;
     void *temp_r3_115;
     void *temp_r4_118;
@@ -93,15 +96,16 @@ loop_8:
             temp_r3_115 = (*temp_r3_157)->unk8.unk0();
             if (temp_r3_115 != NULL) {
                 temp_r4_118 = M2C_FIELD(temp_r3_115, void **, 8);
-                sp40 = M2C_FIELD(temp_r4_118, f64 *, 0x30);
+                temp_f1_119 = M2C_FIELD(temp_r4_118, f64 *, 0x30);
+                sp40 = temp_f1_119;
                 sp48 = M2C_FIELD(temp_r4_118, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                temp_f0_125 = temp_f1_119 - sp70;
+                sp20 = temp_f0_125;
                 temp_f2_130 = this->unk1C;
-                sp50 = sp20;
+                sp50 = temp_f0_125;
                 sp28 = (f32) sp48 - (f32) sp78;
                 sp58 = (f64) sp28;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54))) == (temp_f2_130 * temp_f2_130)) {
+                if ((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54))) <= (temp_f2_130 * temp_f2_130)) {
                     M2C_FIELD(M2C_FIELD(temp_r3_115, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&spC0);
                 }
             }

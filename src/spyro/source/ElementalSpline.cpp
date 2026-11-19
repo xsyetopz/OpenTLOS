@@ -102,6 +102,7 @@ void ElementalSpline::StateESTurningOffUpdate() {
     f64 sp48;
     KDUniformSpline sp30;
     f32 sp28;
+    f64 sp20;
     f64 sp10;
     f32 spC;
     f32 sp8;
@@ -114,8 +115,7 @@ void ElementalSpline::StateESTurningOffUpdate() {
     s32 var_r0_222;
     void *temp_r3_134;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk10C == this->unk108) {
+    if (this->unk10C >= this->unk108) {
         this->unkC0.SetState(this, 3, 0U);
         this->unkD8.Send(NULL);
         return;
@@ -133,7 +133,7 @@ void ElementalSpline::StateESTurningOffUpdate() {
             sp30.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), this->unkB0 + 0x30, KDSpline_PositionMixer);
             sp50 = M2C_BITWISE(f64, sp30);
             sp58 = (f64) sp30.unk8;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp20 = sp60 - sp50;
             sp30.unk10 = sp20;
             sp28 = (f32) sp68 - (f32) sp58;
             temp_f2_175 = M2C_BITWISE(f32, sp30.unk10);
@@ -172,8 +172,7 @@ void ElementalSpline::StateESTurningOffUpdate() {
                     var_f31_180 = __float_nan;
                 }
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (var_f31_180 == gb.unk0->GetCollideRadius()) {
+            if (var_f31_180 <= gb.unk0->GetCollideRadius()) {
                 sp74 = 0;
                 sp70 = 7;
                 sp98 = 5;
@@ -242,6 +241,7 @@ void ElementalSpline::StateESOnUpdate() {
     f64 sp48;
     KDUniformSpline sp30;
     f32 sp28;
+    f64 sp20;
     f64 sp10;
     f32 spC;
     f32 sp8;
@@ -254,8 +254,7 @@ void ElementalSpline::StateESOnUpdate() {
     s32 var_r0_466;
     void *temp_r3_383;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk10C == this->unk104) {
+    if (this->unk10C >= this->unk104) {
         this->unkC0.SetState(this, 2, 0U);
         return;
     }
@@ -271,7 +270,7 @@ void ElementalSpline::StateESOnUpdate() {
         sp30.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), this->unkB0 + 0x30, KDSpline_PositionMixer);
         sp50 = M2C_BITWISE(f64, sp30);
         sp58 = (f64) sp30.unk8;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp20 = sp60 - sp50;
         sp30.unk10 = sp20;
         sp28 = (f32) sp68 - (f32) sp58;
         temp_f2_419 = M2C_BITWISE(f32, sp30.unk10);
@@ -310,8 +309,7 @@ void ElementalSpline::StateESOnUpdate() {
                 var_f31_424 = __float_nan;
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (var_f31_424 == gb.unk0->GetCollideRadius()) {
+        if (var_f31_424 <= gb.unk0->GetCollideRadius()) {
             sp74 = 0;
             sp70 = 7;
             sp98 = 5;
@@ -379,6 +377,7 @@ void ElementalSpline::StateESTurningOnUpdate() {
     f64 sp48;
     KDUniformSpline sp30;
     f32 sp28;
+    f64 sp20;
     f64 sp10;
     f32 spC;
     f32 sp8;
@@ -391,8 +390,7 @@ void ElementalSpline::StateESTurningOnUpdate() {
     s32 var_r0_720;
     void *temp_r3_632;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk10C == this->unk100) {
+    if (this->unk10C >= this->unk100) {
         this->unkC0.SetState(this, 1, 0U);
         this->unkD4.Send(NULL);
         return;
@@ -410,7 +408,7 @@ void ElementalSpline::StateESTurningOnUpdate() {
             sp30.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), this->unkB0 + 0x30, KDSpline_PositionMixer);
             sp50 = M2C_BITWISE(f64, sp30);
             sp58 = (f64) sp30.unk8;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp20 = sp60 - sp50;
             sp30.unk10 = sp20;
             sp28 = (f32) sp68 - (f32) sp58;
             temp_f2_673 = M2C_BITWISE(f32, sp30.unk10);
@@ -449,8 +447,7 @@ void ElementalSpline::StateESTurningOnUpdate() {
                     var_f31_678 = __float_nan;
                 }
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (var_f31_678 == gb.unk0->GetCollideRadius()) {
+            if (var_f31_678 <= gb.unk0->GetCollideRadius()) {
                 sp74 = 0;
                 sp70 = 7;
                 sp98 = 5;
@@ -497,7 +494,8 @@ void ElementalSpline::EmitEarthParticles(float arg0, float arg1) {
     KDUniformSpline spF8;
     f64 spF0;
     f64 spE8;
-    KDUniformSpline spC8;
+    f64 spD8;
+    f64 spC8;
     f64 spC0;
     f64 spB8;
     MKVector3 spA8;
@@ -507,8 +505,11 @@ void ElementalSpline::EmitEarthParticles(float arg0, float arg1) {
     MKVector3 sp68;
     M2C_UNK sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     s32 sp1C;
     f32 sp18;
@@ -523,6 +524,7 @@ void ElementalSpline::EmitEarthParticles(float arg0, float arg1) {
     f32 temp_f27_860;
     f32 temp_f27_947;
     f32 temp_f30_884;
+    f64 temp_f0_887;
     s32 var_r0_1055;
     s32 var_r0_934;
     s32 var_r26_949;
@@ -544,11 +546,11 @@ loop_2:
         sp120 = (f64) spF8.unk8;
         temp_f30_884 = this->unkB4;
         KDRand_UnitVectorXZ();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spF8.unk10 = sp48;
+        temp_f0_887 = spD8 * (f64) temp_f30_884;
+        sp48 = temp_f0_887;
+        spF8.unk10 = temp_f0_887;
         sp50 = spE0 * temp_f30_884;
-        spE8 = sp48;
+        spE8 = temp_f0_887;
         sp110 = (f64) sp50;
         spF0 = (f64) sp50;
         sp10C += this->unkB4;
@@ -569,12 +571,11 @@ loop_7:
         temp_f1_956 = MKRand_Float(&gViewSeed, arg0, arg1);
         spC = 0.0f;
         spC8.GetMeasure(temp_f1_956, this->unkB0 + 0x30, KDSpline_PositionMixer);
-        sp118 = M2C_BITWISE(f64, spC8);
-        sp120 = (f64) spC8.unk8;
+        sp118 = spC8;
+        sp120 = spD0;
         KDRand_UnitVectorXZ();
         spA8.operator*(this->unkB4);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+        sp38 = spA8 * 5.439686476e-315;
         spB8 = sp38;
         sp40 = spA8.unk8 * 20.0f;
         spF8.unk10 = sp38;
@@ -589,8 +590,7 @@ loop_7:
         sp120 = (f64) sp88.unk8;
         KDRand_UnitVectorXZ();
         sp68.operator*(this->unkB4);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+        sp28 = sp68 * 5.398241246e-315;
         sp78 = sp28;
         sp30 = sp68.unk8 * 10.0f;
         spF8.unk10 = sp28;
@@ -613,8 +613,9 @@ void ElementalSpline::EmitIceParticles(float arg0, float arg1) {
     f64 sp40;
     f64 sp38;
     f64 sp30;
-    M2C_UNK sp20;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     MKPropDescriptor *temp_r28_1127;
@@ -628,8 +629,7 @@ void ElementalSpline::EmitIceParticles(float arg0, float arg1) {
     void *temp_r3_1145;
     void *temp_r3_1226;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C == this->unkF0) {
+    if (gb.unk30C >= this->unkF0) {
         temp_r28_1127 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
         temp_f1_1130 = MKRand_Float(&gViewSeed, arg0, arg1);
         spC = 0.0f;
@@ -660,8 +660,7 @@ loop_8:
         sp78 = sp48;
         temp_f30_1208 = this->unkB4;
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp10 = sp20 * (f64) temp_f30_1208;
         sp30 = sp10;
         sp18 = sp28 * temp_f30_1208;
         sp50.unk10 = sp10;
@@ -695,18 +694,22 @@ void ElementalSpline::EmitElectricityParticles(float arg0, float arg1) {
     KDUniformSpline spC8;
     f64 spC0;
     f64 spB8;
-    KDUniformSpline sp98;
+    f64 spA8;
+    f64 sp98;
     f64 sp90;
     f64 sp88;
-    M2C_UNK sp78;
+    f64 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
@@ -721,6 +724,7 @@ void ElementalSpline::EmitElectricityParticles(float arg0, float arg1) {
     f32 var_f4_1463;
     f32 var_f4_1530;
     f32 var_f4_1543;
+    f64 temp_f0_1439;
     f64 temp_f1_1469;
     f64 temp_f1_1475;
     f64 temp_f1_1479;
@@ -729,8 +733,7 @@ void ElementalSpline::EmitElectricityParticles(float arg0, float arg1) {
     s32 var_r0_1508;
     s32 var_r27_1330;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C == this->unkF0) {
+    if (gb.unk30C >= this->unkF0) {
         var_r27_1330 = 0;
         temp_f25_1333 = (f32) fabs(arg0 - arg1);
 loop_3:
@@ -745,8 +748,7 @@ loop_3:
             spE8 = M2C_BITWISE(f64, spC8);
             spF0 = (f64) spC8.unk8;
             KDRand_UnitVector();
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+            sp38 = spA8 * 5.60222949e-315;
             spC8.unk10 = sp38;
             sp40 = spB0 * 300.0f;
             spB8 = sp38;
@@ -760,12 +762,11 @@ loop_3:
         temp_f1_1400 = MKRand_Float(&gViewSeed, arg0, arg1);
         spC = 0.0f;
         sp98.GetMeasure(temp_f1_1400, this->unkB0 + 0x30, KDSpline_PositionMixer);
-        spE8 = M2C_BITWISE(f64, sp98);
-        spF0 = (f64) sp98.unk8;
+        spE8 = sp98;
+        spF0 = spA0;
         temp_f30_1416 = this->unkB4;
         sp78.GetVelocity(MKRand_Float(&gViewSeed, arg0, arg1));
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp28 = sp78 * (f64) temp_f30_1416;
         spC8.unk10 = sp28;
         sp30 = sp80 * temp_f30_1416;
         sp88 = sp28;
@@ -773,12 +774,12 @@ loop_3:
         sp90 = (f64) sp30;
         temp_f29_1435 = this->unkB4;
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp68 = sp18;
+        temp_f0_1439 = sp58 * (f64) temp_f29_1435;
+        sp18 = temp_f0_1439;
+        sp68 = temp_f0_1439;
         sp20 = sp60 * temp_f29_1435;
         sp70 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        spC8.unk10 = sp28 + temp_f0_1439;
         temp_f4_1455 = (f32) spE0 + (f32) sp70;
         spE0 = temp_f4_1455;
         var_f4_1463 = (temp_f4_1455 * temp_f4_1455) + (((f32) spC8.unk10 * (f32) spC8.unk10) + (spDC * spDC));
@@ -848,16 +849,21 @@ void ElementalSpline::EmitFireParticles(float arg0, float arg1) {
     KDUniformSpline spD0;
     f64 spC8;
     f64 spC0;
-    KDUniformSpline spA0;
+    f64 spB0;
+    f64 spA0;
     f64 sp98;
     f64 sp90;
-    KDUniformSpline sp70;
+    f64 sp80;
+    f64 sp70;
     f64 sp68;
     f64 sp60;
-    M2C_UNK sp50;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -873,8 +879,7 @@ void ElementalSpline::EmitFireParticles(float arg0, float arg1) {
     s32 var_r0_1798;
     s32 var_r25_1688;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C == this->unkF0) {
+    if (gb.unk30C >= this->unkF0) {
         temp_f1_1635 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp10 = 0.0f;
         spD0.GetMeasure(temp_f1_1635, this->unkB0 + 0x30, KDSpline_PositionMixer);
@@ -882,8 +887,7 @@ void ElementalSpline::EmitFireParticles(float arg0, float arg1) {
         spF8 = (f64) spD0.unk8;
         temp_f24_1649 = this->unkB4;
         KDRand_UnitVectorXZ();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
+        sp40 = spB0 * (f64) temp_f24_1649;
         spD0.unk10 = sp40;
         sp48 = spB8 * temp_f24_1649;
         spC0 = sp40;
@@ -902,13 +906,12 @@ loop_3:
             temp_f1_1696 = MKRand_Float(&gViewSeed, arg0, arg1);
             spC = 0.0f;
             spA0.GetMeasure(temp_f1_1696, this->unkB0 + 0x30, KDSpline_PositionMixer);
-            spF0 = M2C_BITWISE(f64, spA0);
-            spF8 = (f64) spA0.unk8;
+            spF0 = spA0;
+            spF8 = spA8;
             temp_f24_1710 = this->unkB4;
             unkspF4 -= temp_f24_1710;
             KDRand_UnitVectorXZ();
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
+            sp30 = sp80 * (f64) temp_f24_1710;
             spD0.unk10 = sp30;
             sp38 = sp88 * temp_f24_1710;
             sp90 = sp30;
@@ -920,12 +923,11 @@ loop_3:
             temp_f1_1743 = MKRand_Float(&gViewSeed, arg0, arg1);
             sp8 = 0.0f;
             sp70.GetMeasure(temp_f1_1743, this->unkB0 + 0x30, KDSpline_PositionMixer);
-            spF0 = M2C_BITWISE(f64, sp70);
-            spF8 = (f64) sp70.unk8;
+            spF0 = sp70;
+            spF8 = sp78;
             temp_f29_1756 = this->unkB4;
             KDRand_UnitVectorXZ();
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+            sp20 = sp50 * (f64) temp_f29_1756;
             spD0.unk10 = sp20;
             sp28 = sp58 * temp_f29_1756;
             sp60 = sp20;
@@ -1003,12 +1005,19 @@ void ElementalSpline::DrawEarthSpline(float arg0, float arg1) {
     f64 spB0;
     f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -1018,6 +1027,8 @@ void ElementalSpline::DrawEarthSpline(float arg0, float arg1) {
     f32 sp14;
     f32 sp10;
     f32 temp_f20_2327;
+    f32 temp_f26_2338;
+    f32 temp_f27_2388;
     f32 temp_f2_2319;
     f32 temp_f30_2387;
     f32 temp_f31_2337;
@@ -1034,6 +1045,12 @@ void ElementalSpline::DrawEarthSpline(float arg0, float arg1) {
     f32 var_f4_2114;
     f32 var_f5_2181;
     f32 var_f6_2198;
+    f64 temp_f0_2340;
+    f64 temp_f0_2350;
+    f64 temp_f0_2361;
+    f64 temp_f0_2390;
+    f64 temp_f0_2400;
+    f64 temp_f0_2411;
     f64 temp_f1_2120;
     f64 temp_f1_2126;
     f64 temp_f1_2130;
@@ -1128,7 +1145,7 @@ loop_65:
             sp1A8 = sp138;
             sp1B0 = sp140;
         }
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp38 = sp1D8 - sp1C8;
         sp1B8 = sp38;
         sp40 = (f32) sp1E0 - (f32) sp1D0;
         sp1C0 = (f64) sp40;
@@ -1231,23 +1248,27 @@ loop_65:
         sp188.unk10 = (f64) sp28;
         sp1A0 = (f64) sp30;
         sp110 = M2C_FIELD(temp_r3_2285, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp1D8 -= sp108;
         temp_f2_2319 = (f32) sp1E0 - (f32) sp110;
         sp1E0 = temp_f2_2319;
         temp_f20_2327 = 4.0f * ((f32) var_r30_1969 / (f32) this->unk114);
         MKSetColorV(this->unkE0);
         MKSetTexCoord1F(temp_f20_2327, 0.95f);
         temp_f31_2337 = MKRand_Float(&gViewSeed, 1.0f, 4.0f);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-        spD8 = sp98;
-        spA0 = (f32) sp1A0 * (this->unkB4 * 0.5f);
+        temp_f26_2338 = this->unkB4 * 0.5f;
+        temp_f0_2340 = M2C_BITWISE(f64, sp188.unk10) * (f64) temp_f26_2338;
+        sp98 = temp_f0_2340;
+        spD8 = temp_f0_2340;
+        spA0 = (f32) sp1A0 * temp_f26_2338;
         spE0 = (f64) spA0;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spE8 = sp88;
+        temp_f0_2350 = temp_f0_2340 * (f64) temp_f31_2337;
+        sp88 = temp_f0_2350;
+        spE8 = temp_f0_2350;
         sp90 = (f32) spE0 * temp_f31_2337;
         spF0 = (f64) sp90;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        spF8 = sp78;
+        temp_f0_2361 = sp1D8 - temp_f0_2350;
+        sp78 = temp_f0_2361;
+        spF8 = temp_f0_2361;
         sp80 = temp_f2_2319 - (f32) spF0;
         sp100 = (f64) sp80;
         MKSetPositionV(*((MKVector3 *) &spF8));
@@ -1255,16 +1276,20 @@ loop_65:
         MKSetColorV(this->unkE0);
         MKSetTexCoord1F(temp_f20_2327, 0.05f);
         temp_f30_2387 = MKRand_Float(&gViewSeed, 1.0f, 4.0f);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        spA8 = sp68;
-        sp70 = (f32) sp1A0 * (this->unkB4 * 0.5f);
+        temp_f27_2388 = this->unkB4 * 0.5f;
+        temp_f0_2390 = M2C_BITWISE(f64, sp188.unk10) * (f64) temp_f27_2388;
+        sp68 = temp_f0_2390;
+        spA8 = temp_f0_2390;
+        sp70 = (f32) sp1A0 * temp_f27_2388;
         spB0 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spB8 = sp58;
+        temp_f0_2400 = temp_f0_2390 * (f64) temp_f30_2387;
+        sp58 = temp_f0_2400;
+        spB8 = temp_f0_2400;
         sp60 = (f32) spB0 * temp_f30_2387;
         spC0 = (f64) sp60;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spC8 = sp48;
+        temp_f0_2411 = sp1D8 + temp_f0_2400;
+        sp48 = temp_f0_2411;
+        spC8 = temp_f0_2411;
         sp50 = sp1E0 + (f32) spC0;
         spD0 = (f64) sp50;
         MKSetPositionV(*((MKVector3 *) &spC8));
@@ -1317,12 +1342,19 @@ void ElementalSpline::DrawIceSpline(float arg0, float arg1) {
     f64 spB0;
     f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -1332,6 +1364,8 @@ void ElementalSpline::DrawIceSpline(float arg0, float arg1) {
     f32 sp14;
     f32 sp10;
     f32 temp_f20_2919;
+    f32 temp_f26_2930;
+    f32 temp_f27_2980;
     f32 temp_f2_2911;
     f32 temp_f30_2979;
     f32 temp_f31_2929;
@@ -1348,6 +1382,12 @@ void ElementalSpline::DrawIceSpline(float arg0, float arg1) {
     f32 var_f4_2706;
     f32 var_f5_2773;
     f32 var_f6_2790;
+    f64 temp_f0_2932;
+    f64 temp_f0_2942;
+    f64 temp_f0_2953;
+    f64 temp_f0_2982;
+    f64 temp_f0_2992;
+    f64 temp_f0_3003;
     f64 temp_f1_2712;
     f64 temp_f1_2718;
     f64 temp_f1_2722;
@@ -1442,7 +1482,7 @@ loop_65:
             sp1A8 = sp138;
             sp1B0 = sp140;
         }
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp38 = sp1D8 - sp1C8;
         sp1B8 = sp38;
         sp40 = (f32) sp1E0 - (f32) sp1D0;
         sp1C0 = (f64) sp40;
@@ -1545,23 +1585,27 @@ loop_65:
         sp188.unk10 = (f64) sp28;
         sp1A0 = (f64) sp30;
         sp110 = M2C_FIELD(temp_r3_2877, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp1D8 -= sp108;
         temp_f2_2911 = (f32) sp1E0 - (f32) sp110;
         sp1E0 = temp_f2_2911;
         temp_f20_2919 = 4.0f * ((f32) var_r30_2561 / (f32) this->unk114);
         MKSetColorV(this->unkE0);
         MKSetTexCoord1F(temp_f20_2919, 0.95f);
         temp_f31_2929 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-        spD8 = sp98;
-        spA0 = (f32) sp1A0 * (this->unkB4 * 0.5f);
+        temp_f26_2930 = this->unkB4 * 0.5f;
+        temp_f0_2932 = M2C_BITWISE(f64, sp188.unk10) * (f64) temp_f26_2930;
+        sp98 = temp_f0_2932;
+        spD8 = temp_f0_2932;
+        spA0 = (f32) sp1A0 * temp_f26_2930;
         spE0 = (f64) spA0;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spE8 = sp88;
+        temp_f0_2942 = temp_f0_2932 * (f64) temp_f31_2929;
+        sp88 = temp_f0_2942;
+        spE8 = temp_f0_2942;
         sp90 = (f32) spE0 * temp_f31_2929;
         spF0 = (f64) sp90;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        spF8 = sp78;
+        temp_f0_2953 = sp1D8 - temp_f0_2942;
+        sp78 = temp_f0_2953;
+        spF8 = temp_f0_2953;
         sp80 = temp_f2_2911 - (f32) spF0;
         sp100 = (f64) sp80;
         MKSetPositionV(*((MKVector3 *) &spF8));
@@ -1569,16 +1613,20 @@ loop_65:
         MKSetColorV(this->unkE0);
         MKSetTexCoord1F(temp_f20_2919, 0.05f);
         temp_f30_2979 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        spA8 = sp68;
-        sp70 = (f32) sp1A0 * (this->unkB4 * 0.5f);
+        temp_f27_2980 = this->unkB4 * 0.5f;
+        temp_f0_2982 = M2C_BITWISE(f64, sp188.unk10) * (f64) temp_f27_2980;
+        sp68 = temp_f0_2982;
+        spA8 = temp_f0_2982;
+        sp70 = (f32) sp1A0 * temp_f27_2980;
         spB0 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spB8 = sp58;
+        temp_f0_2992 = temp_f0_2982 * (f64) temp_f30_2979;
+        sp58 = temp_f0_2992;
+        spB8 = temp_f0_2992;
         sp60 = (f32) spB0 * temp_f30_2979;
         spC0 = (f64) sp60;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spC8 = sp48;
+        temp_f0_3003 = sp1D8 + temp_f0_2992;
+        sp48 = temp_f0_3003;
+        spC8 = temp_f0_3003;
         sp50 = sp1E0 + (f32) spC0;
         spD0 = (f64) sp50;
         MKSetPositionV(*((MKVector3 *) &spC8));
@@ -1612,7 +1660,7 @@ void ElementalSpline::DrawElectricitySpline(float arg0, float arg1) {
     f64 sp110;
     f64 sp108;
     f64 sp100;
-    M2C_UNK spF0;
+    f64 spF0;
     MKVector3 spE0;
     f64 spD0;
     f64 spC0;
@@ -1627,18 +1675,24 @@ void ElementalSpline::DrawElectricitySpline(float arg0, float arg1) {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     f32 temp_f22_3537;
     f32 temp_f2_3504;
+    f32 temp_f30_3544;
+    f32 temp_f31_3507;
     f32 temp_f7_3472;
     f32 temp_f8_3470;
     f32 temp_f9_3469;
@@ -1652,12 +1706,15 @@ void ElementalSpline::DrawElectricitySpline(float arg0, float arg1) {
     f32 var_f4_3306;
     f32 var_f5_3373;
     f32 var_f6_3390;
+    f64 temp_f0_3509;
+    f64 temp_f0_3546;
     f64 temp_f1_3312;
     f64 temp_f1_3318;
     f64 temp_f1_3322;
     f64 temp_f1_3400;
     f64 temp_f1_3406;
     f64 temp_f1_3410;
+    f64 temp_f3_3500;
     s32 temp_r0_3127;
     s32 temp_r3_3341;
     s32 temp_r3_3429;
@@ -1735,8 +1792,7 @@ loop_65:
                 var_f1_3237 = 1.0f;
             }
             spF0.GetPosition(var_f1_3237);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp60 = spF0 + M2C_BITWISE(f64, spE0);
             sp68 = spF8 + spE0.unk8;
             sp190 = sp60;
             sp198 = (f64) sp68;
@@ -1752,7 +1808,7 @@ loop_65:
             sp160 = spC0;
             sp168 = spC8;
         }
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp50 = sp190 - sp180;
         sp170 = sp50;
         sp58 = (f32) sp198 - (f32) sp188;
         sp178 = (f64) sp58;
@@ -1855,24 +1911,29 @@ loop_65:
         sp140.unk10 = (f64) sp40;
         sp158 = (f64) sp48;
         sp98 = M2C_FIELD(temp_r3_3477, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f3, $f1, $f0 */);
+        temp_f3_3500 = sp190 - sp90;
+        sp190 = temp_f3_3500;
         temp_f2_3504 = (f32) sp198 - (f32) sp98;
         sp198 = temp_f2_3504;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp80 = sp30;
-        sp38 = (f32) sp158 * (this->unkB4 * 0.5f);
+        temp_f31_3507 = this->unkB4 * 0.5f;
+        temp_f0_3509 = M2C_BITWISE(f64, sp140.unk10) * (f64) temp_f31_3507;
+        sp30 = temp_f0_3509;
+        sp80 = temp_f0_3509;
+        sp38 = (f32) sp158 * temp_f31_3507;
         sp88 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
+        sp190 = temp_f3_3500 - temp_f0_3509;
         sp198 = temp_f2_3504 - (f32) sp88;
         temp_f22_3537 = 4.0f * ((f32) var_r30_3149 / (f32) this->unk114);
         MKSetColorV(this->unkE0);
         MKSetTexCoord1F(temp_f22_3537, 0.95f);
         MKSetPositionV(*((MKVector3 *) &sp190));
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp70 = sp20;
-        sp28 = (f32) sp158 * this->unkB4;
+        temp_f30_3544 = this->unkB4;
+        temp_f0_3546 = M2C_BITWISE(f64, sp140.unk10) * (f64) temp_f30_3544;
+        sp20 = temp_f0_3546;
+        sp70 = temp_f0_3546;
+        sp28 = (f32) sp158 * temp_f30_3544;
         sp78 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp190 += temp_f0_3546;
         sp198 += (f32) sp78;
         MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
         MKSetColorV(this->unkE0);
@@ -1945,20 +2006,31 @@ void ElementalSpline::DrawFireSpline(float arg0, float arg1) {
     f32 spFC;
     f32 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB4;
     f32 spB0;
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -1968,6 +2040,10 @@ void ElementalSpline::DrawFireSpline(float arg0, float arg1) {
     f32 sp14;
     f32 sp10;
     f32 temp_f17_4085;
+    f32 temp_f23_4097;
+    f32 temp_f24_4126;
+    f32 temp_f25_4182;
+    f32 temp_f26_4226;
     f32 temp_f27_4180;
     f32 temp_f31_4224;
     f32 temp_f7_4029;
@@ -1984,6 +2060,16 @@ void ElementalSpline::DrawFireSpline(float arg0, float arg1) {
     f32 var_f3_4018;
     f32 var_f4_3863;
     f32 var_f5_3930;
+    f64 temp_f0_4099;
+    f64 temp_f0_4110;
+    f64 temp_f0_4128;
+    f64 temp_f0_4139;
+    f64 temp_f0_4184;
+    f64 temp_f0_4194;
+    f64 temp_f0_4205;
+    f64 temp_f0_4228;
+    f64 temp_f0_4238;
+    f64 temp_f0_4249;
     f64 temp_f1_3869;
     f64 temp_f1_3875;
     f64 temp_f1_3879;
@@ -2083,7 +2169,7 @@ loop_73:
             sp268 = sp1F8;
             sp270 = sp200;
         }
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp38 = sp298 - sp288;
         sp278 = sp38;
         sp40 = (f32) sp2A0 - (f32) sp290;
         sp280 = (f64) sp40;
@@ -2186,7 +2272,7 @@ loop_73:
         sp248.unk10 = (f64) sp28;
         sp260 = (f64) sp30;
         sp1D0 = M2C_FIELD(temp_r3_4034, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp298 -= sp1C8;
         temp_r0_4060 = this->unk114;
         sp304 = temp_r0_4060 ^ 0x80000000;
         sp300 = 0x43300000;
@@ -2201,22 +2287,28 @@ loop_73:
         MKSetColorV(*((MKVector4 *) &sp1B8));
         MKSetTexCoord1F(temp_f17_4085, 0.95f);
         if (sp25C > 0.0f) {
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-            sp198 = spE8;
-            spF0 = (f32) sp260 * (this->unkB4 * 0.5f);
+            temp_f23_4097 = this->unkB4 * 0.5f;
+            temp_f0_4099 = M2C_BITWISE(f64, sp248.unk10) * (f64) temp_f23_4097;
+            spE8 = temp_f0_4099;
+            sp198 = temp_f0_4099;
+            spF0 = (f32) sp260 * temp_f23_4097;
             sp1A0 = (f64) spF0;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp1A8 = spD8;
+            temp_f0_4110 = sp298 - temp_f0_4099;
+            spD8 = temp_f0_4110;
+            sp1A8 = temp_f0_4110;
             spE0 = sp2A0 - (f32) sp1A0;
             sp1B0 = (f64) spE0;
             MKSetPositionV(*((MKVector3 *) &sp1A8));
         } else {
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-            sp178 = spC8;
-            spD0 = (f32) sp260 * (this->unkB4 * 0.5f);
+            temp_f24_4126 = this->unkB4 * 0.5f;
+            temp_f0_4128 = M2C_BITWISE(f64, sp248.unk10) * (f64) temp_f24_4126;
+            spC8 = temp_f0_4128;
+            sp178 = temp_f0_4128;
+            spD0 = (f32) sp260 * temp_f24_4126;
             sp180 = (f64) spD0;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp188 = spB8;
+            temp_f0_4139 = sp298 + temp_f0_4128;
+            spB8 = temp_f0_4139;
+            sp188 = temp_f0_4139;
             spC0 = sp2A0 + (f32) sp180;
             sp190 = (f64) spC0;
             MKSetPositionV(*((MKVector3 *) &sp188));
@@ -2232,31 +2324,39 @@ loop_73:
         MKSetTexCoord1F(temp_f17_4085, 0.05f);
         if (sp25C > 0.0f) {
             temp_f27_4180 = MKRand_Float(&gViewSeed, 2.0f, 4.0f);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-            sp138 = sp98;
-            spA0 = (f32) sp260 * (this->unkB4 * 0.5f);
+            temp_f25_4182 = this->unkB4 * 0.5f;
+            temp_f0_4184 = M2C_BITWISE(f64, sp248.unk10) * (f64) temp_f25_4182;
+            sp98 = temp_f0_4184;
+            sp138 = temp_f0_4184;
+            spA0 = (f32) sp260 * temp_f25_4182;
             sp140 = (f64) spA0;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-            sp148 = sp88;
+            temp_f0_4194 = temp_f0_4184 * (f64) temp_f27_4180;
+            sp88 = temp_f0_4194;
+            sp148 = temp_f0_4194;
             sp90 = (f32) sp140 * temp_f27_4180;
             sp150 = (f64) sp90;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp158 = sp78;
+            temp_f0_4205 = sp298 + temp_f0_4194;
+            sp78 = temp_f0_4205;
+            sp158 = temp_f0_4205;
             sp80 = sp2A0 + (f32) sp150;
             sp160 = (f64) sp80;
             MKSetPositionV(*((MKVector3 *) &sp158));
         } else {
             temp_f31_4224 = MKRand_Float(&gViewSeed, 2.0f, 4.0f);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-            sp108 = sp68;
-            sp70 = (f32) sp260 * (this->unkB4 * 0.5f);
+            temp_f26_4226 = this->unkB4 * 0.5f;
+            temp_f0_4228 = M2C_BITWISE(f64, sp248.unk10) * (f64) temp_f26_4226;
+            sp68 = temp_f0_4228;
+            sp108 = temp_f0_4228;
+            sp70 = (f32) sp260 * temp_f26_4226;
             sp110 = (f64) sp70;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp118 = sp58;
+            temp_f0_4238 = temp_f0_4228 * (f64) temp_f31_4224;
+            sp58 = temp_f0_4238;
+            sp118 = temp_f0_4238;
             sp60 = (f32) sp110 * temp_f31_4224;
             sp120 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp128 = sp48;
+            temp_f0_4249 = sp298 - temp_f0_4238;
+            sp48 = temp_f0_4249;
+            sp128 = temp_f0_4249;
             sp50 = sp2A0 - (f32) sp120;
             sp130 = (f64) sp50;
             MKSetPositionV(*((MKVector3 *) &sp128));

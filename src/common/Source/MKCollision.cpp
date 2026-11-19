@@ -66,7 +66,7 @@ void MKCollision_MangleName(const char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: undefined identifier '__vt'
 u8 MKCollision_GetGroundPoint(const MKVector3 &arg0, float arg1, MKCollisionResult *arg2, int arg3, int arg4, MKCollisionGroundHint *arg5, MKCollisionMode arg6) {
     MKCollisionRay sp150;
     u8 sp148;
@@ -134,8 +134,10 @@ u8 MKCollision_GetGroundPoint(const MKVector3 &arg0, float arg1, MKCollisionResu
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     MKCollisionManager **var_r30_219;
     MKCollisionManager *temp_r3_364;
+    f64 temp_f0_168;
     u8 var_r0_282;
     u8 var_r31_212;
 
@@ -144,9 +146,9 @@ u8 MKCollision_GetGroundPoint(const MKVector3 &arg0, float arg1, MKCollisionResu
     sp20 = 0.0f;
     sp28 = (f64) sp18;
     sp30 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r24, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp38 = sp8;
+    temp_f0_168 = M2C_FIELD(&arg0, f64 *, 0) - sp28;
+    sp8 = temp_f0_168;
+    sp38 = temp_f0_168;
     sp10 = arg0.unk8 - (f32) sp30;
     sp40 = (f64) sp10;
     if ((arg5 != NULL) && (arg2 != NULL)) {
@@ -222,28 +224,25 @@ loop_18:
             if (((f32) sp58 > temp_r3_364->unk0) && ((f32) sp48 < temp_r3_364->unk10) && (unksp5C > temp_r3_364->unk4) && (unksp4C < temp_r3_364->unk14) && ((f32) sp60 > temp_r3_364->unk8) && ((f32) sp50 < temp_r3_364->unk18)) {
                 var_r0_282 = 1;
             }
-            if ((var_r0_282 != 0) && (temp_r3_364->GetGroundPoint(arg0, *((MKVector3 *) &sp38), (MKCollisionResult *) &spA0, arg3, arg4, (MKCollisionGroundHint *) &sp68, arg6) != 0)) {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (spE0 == sp138) {
-                    var_r31_212 = 1;
-                    spF8 = (f64) spA0;
-                    sp100 = (f64) spA8;
-                    sp108 = (f64) spB0;
-                    sp110 = (f64) spB8;
-                    sp118 = (f64) spC0;
-                    sp120 = (f64) spC8;
-                    sp128 = spD0;
-                    sp12C = spD4;
-                    sp130 = (s32) spD8;
-                    sp134 = spDC;
-                    sp138 = spE0;
-                    sp13C = spE4;
-                    sp140 = spE8;
-                    sp144 = spEC;
-                    sp148 = spF0;
-                    if (arg5 != NULL) {
-                        arg5->Set(&sp68);
-                    }
+            if ((var_r0_282 != 0) && (temp_r3_364->GetGroundPoint(arg0, *((MKVector3 *) &sp38), (MKCollisionResult *) &spA0, arg3, arg4, (MKCollisionGroundHint *) &sp68, arg6) != 0) && (spE0 <= sp138)) {
+                var_r31_212 = 1;
+                spF8 = (f64) spA0;
+                sp100 = (f64) spA8;
+                sp108 = (f64) spB0;
+                sp110 = (f64) spB8;
+                sp118 = (f64) spC0;
+                sp120 = (f64) spC8;
+                sp128 = spD0;
+                sp12C = spD4;
+                sp130 = (s32) spD8;
+                sp134 = spDC;
+                sp138 = spE0;
+                sp13C = spE4;
+                sp140 = spE8;
+                sp144 = spEC;
+                sp148 = spF0;
+                if (arg5 != NULL) {
+                    arg5->Set(&sp68);
                 }
             }
             var_r30_219 += 4;
@@ -271,7 +270,7 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: undefined identifier 'unksp7C'
 s32 MKCollision_SphereCollide(const MKVector3 &arg0, float arg1, MKCollisionResult *arg2, int arg3, MKCollisionMode arg4, int arg5) {
     s8 spD8;
     s32 spD4;
@@ -308,11 +307,14 @@ s32 MKCollision_SphereCollide(const MKVector3 &arg0, float arg1, MKCollisionResu
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKCollisionManager **var_r30_571;
     MKCollisionManager *temp_r3_617;
     MKCollisionResult *var_r26_465;
     f32 temp_f4_481;
+    f64 temp_f2_476;
     s32 var_ctr_540;
     s32 var_r27_466;
     s32 var_r31_501;
@@ -327,15 +329,15 @@ s32 MKCollision_SphereCollide(const MKVector3 &arg0, float arg1, MKCollisionResu
     sp2C = arg1;
     sp60 = (f64) sp30;
     sp58 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r25, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f1 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f1 */);
+    temp_f2_476 = M2C_FIELD(&arg0, f64 *, 0);
+    sp18 = temp_f2_476 - (f64) sp28;
     temp_f4_481 = arg0.unk8;
     sp48 = sp18;
     sp20 = temp_f4_481 - (f32) sp60;
     sp68 = sp18;
     sp50 = (f64) sp20;
     sp70 = (f64) sp20;
+    sp8 = temp_f2_476 + (f64) sp28;
     sp10 = temp_f4_481 + (f32) sp60;
     var_r31_501 = 0;
     sp38 = sp8;
@@ -420,7 +422,7 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: illegal operand
 u8 MKCollision_SweepSphereCollide(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKCollisionResult *arg3, MKCollisionMode arg4, int arg5) {
     u8 sp150;
     s32 sp14C;
@@ -480,7 +482,9 @@ u8 MKCollision_SweepSphereCollide(const MKVector3 &arg0, const MKVector3 &arg1, 
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKCollisionManager **var_r30_754;
     MKCollisionManager *temp_r3_839;
     u8 var_r0_768;
@@ -492,16 +496,14 @@ u8 MKCollision_SweepSphereCollide(const MKVector3 &arg0, const MKVector3 &arg1, 
     sp80 = (f64) sp30;
     sp78 = (f64) sp28;
     Min(sp58, arg0);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp18 = sp58 - sp78;
     sp68 = sp18;
     sp20 = sp58.unk8 - (f32) sp80;
     sp88 = sp18;
     sp70 = (f64) sp20;
     sp90 = (f64) sp20;
     Max(sp38, arg0);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp38 + sp78;
     sp10 = sp38.unk8 + (f32) sp80;
     sp48 = sp8;
     sp50 = (f64) sp10;
@@ -559,26 +561,23 @@ loop_13:
         if (((f32) sp98 > temp_r3_839->unk0) && ((f32) sp88 < temp_r3_839->unk10) && (unksp9C > temp_r3_839->unk4) && (unksp8C < temp_r3_839->unk14) && ((f32) spA0 > temp_r3_839->unk8) && ((f32) sp90 < temp_r3_839->unk18)) {
             var_r0_768 = 1;
         }
-        if ((var_r0_768 != 0) && (temp_r3_839->SweepSphereCollide(arg0, arg1, arg2, (MKCollisionResult *) &spA8, arg4, arg5) != 0)) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (spE8 == sp140) {
-                var_r31_753 = 1;
-                sp100 = (f64) spA8;
-                sp108 = (f64) spB0;
-                sp110 = (f64) spB8;
-                sp118 = (f64) spC0;
-                sp120 = (f64) spC8;
-                sp128 = (f64) spD0;
-                sp130 = spD8;
-                sp134 = spDC;
-                sp138 = (s32) spE0;
-                sp13C = spE4;
-                sp140 = spE8;
-                sp144 = spEC;
-                sp148 = spF0;
-                sp14C = spF4;
-                sp150 = spF8;
-            }
+        if ((var_r0_768 != 0) && (temp_r3_839->SweepSphereCollide(arg0, arg1, arg2, (MKCollisionResult *) &spA8, arg4, arg5) != 0) && (spE8 <= sp140)) {
+            var_r31_753 = 1;
+            sp100 = (f64) spA8;
+            sp108 = (f64) spB0;
+            sp110 = (f64) spB8;
+            sp118 = (f64) spC0;
+            sp120 = (f64) spC8;
+            sp128 = (f64) spD0;
+            sp130 = spD8;
+            sp134 = spDC;
+            sp138 = (s32) spE0;
+            sp13C = spE4;
+            sp140 = spE8;
+            sp144 = spEC;
+            sp148 = spF0;
+            sp14C = spF4;
+            sp150 = spF8;
         }
         var_r30_754 += 4;
         goto loop_13;
@@ -717,26 +716,23 @@ loop_13:
             if (((f32) sp38 > temp_r3_1064->unk0) && ((f32) sp28 < temp_r3_1064->unk10) && (unksp3C > temp_r3_1064->unk4) && (unksp2C < temp_r3_1064->unk14) && ((f32) sp40 > temp_r3_1064->unk8) && ((f32) sp30 < temp_r3_1064->unk18)) {
                 var_r0_992 = 1;
             }
-            if ((var_r0_992 != 0) && (temp_r3_1064->RayCollide(arg0, arg1, (MKCollisionResult *) &sp48, arg3, arg4) != 0)) {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (sp88 == spE0) {
-                    var_r31_936 = 1;
-                    spA0 = (f64) sp48;
-                    spA8 = (f64) sp50;
-                    spB0 = (f64) sp58;
-                    spB8 = (f64) sp60;
-                    spC0 = (f64) sp68;
-                    spC8 = (f64) sp70;
-                    spD0 = sp78;
-                    spD4 = sp7C;
-                    spD8 = (s32) sp80;
-                    spDC = sp84;
-                    spE0 = sp88;
-                    spE4 = sp8C;
-                    spE8 = sp90;
-                    spEC = sp94;
-                    spF0 = sp98;
-                }
+            if ((var_r0_992 != 0) && (temp_r3_1064->RayCollide(arg0, arg1, (MKCollisionResult *) &sp48, arg3, arg4) != 0) && (sp88 <= spE0)) {
+                var_r31_936 = 1;
+                spA0 = (f64) sp48;
+                spA8 = (f64) sp50;
+                spB0 = (f64) sp58;
+                spB8 = (f64) sp60;
+                spC0 = (f64) sp68;
+                spC8 = (f64) sp70;
+                spD0 = sp78;
+                spD4 = sp7C;
+                spD8 = (s32) sp80;
+                spDC = sp84;
+                spE0 = sp88;
+                spE4 = sp8C;
+                spE8 = sp90;
+                spEC = sp94;
+                spF0 = sp98;
             }
             var_r30_941 += 4;
             goto loop_13;

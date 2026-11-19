@@ -885,7 +885,7 @@ s32 GetVideoVolume() {
     return ((u32) var_r4_1033 >> 1U) & 0x7F;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void Refresh3DSoundPosition(int arg0) {
     f64 sp58;
     f64 sp50;
@@ -896,6 +896,7 @@ void Refresh3DSoundPosition(int arg0) {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f2_1165;
     f32 temp_f30_1097;
@@ -911,12 +912,12 @@ void Refresh3DSoundPosition(int arg0) {
     s32 var_r0_1140;
     struct _struct_voiceList_0xB0 *temp_r3_1163;
     struct _struct_voiceList_0xB0 *temp_r4_1189;
+    struct _struct_voiceList_0xB0 *temp_r5_1062;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r5, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_r5_1062 = &voiceList[arg0];
+    sp10 = temp_r5_1062->unk20 - M2C_FIELD(&listenPos, f64 *, 0);
     sp20 = sp10;
-    sp18 = voiceList[arg0].unk28 - M2C_FIELD(&listenPos, f32 *, 8);
+    sp18 = temp_r5_1062->unk28 - M2C_FIELD(&listenPos, f32 *, 8);
     sp30 = sp10;
     sp28 = (f64) sp18;
     sp38 = (f64) sp18;
@@ -963,8 +964,7 @@ void Refresh3DSoundPosition(int arg0) {
     temp_r3_1163 = &voiceList[arg0];
     temp_r3_1163->unk30 = var_f4_1098;
     temp_f2_1165 = temp_r3_1163->unk1C;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (var_f4_1098 == temp_f2_1165) {
+    if (var_f4_1098 <= temp_f2_1165) {
         var_f2_1169 = 0.0f;
     } else {
         var_f2_1169 = (var_f4_1098 - temp_f2_1165) / (temp_r3_1163->unk18 - temp_f2_1165);

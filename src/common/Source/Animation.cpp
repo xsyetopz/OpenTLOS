@@ -821,9 +821,12 @@ void Animation::GetPositionalOffset(float arg0) {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     Animation *temp_r27_1327;
     f32 var_f31_1326;
+    f64 temp_f0_1641;
     s32 temp_r0_1331;
     s32 temp_r27_1407;
     s32 temp_r27_1472;
@@ -919,12 +922,13 @@ loop_8:
             spA4 = 0.00006103888f * (f32) M2C_FIELD(temp_r9_1597, s16 *, 6);
             DecompressVector(temp_r30_1595 + (M2C_FIELD(temp_r31_1588, u16 *, 2) * 8), &sp68);
             DecompressVector(temp_r30_1595 + (M2C_FIELD(temp_r31_1588, u16 *, 6) * 8), &spA8);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp38 = sp8;
+            temp_f0_1641 = (f64) sp68 - (f64) sp78;
+            sp8 = temp_f0_1641;
+            sp38 = temp_f0_1641;
             sp10 = sp70 - sp80;
             sp40 = (f64) sp10;
             __ml((var_f31_1326 - (f32) temp_r3_1389) / (f32) (temp_r4_1454 - temp_r3_1389), sp48);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp18 = (f64) sp78 + M2C_BITWISE(f64, sp48);
             sp58 = sp18;
             sp20 = sp80 + sp48.unk8;
             sp88 = sp18;
@@ -1008,41 +1012,51 @@ MKHeap *Animation::GetName() {
     return (MKHeap *) this->unk0;
 }
 
+#if 0 // DRAFT: illegal explicit conversion from 'Animation *' to
 f32 Animation::InterpolateFrameData(Animation::FrameInstance *arg1, float farg0, const MKVector3 &arg2, const MKVector4 &arg3, const MKVector3 &arg4, const MKVector3 &arg5, const MKVector4 &arg6, const MKVector3 &arg7) {
+    f32 temp_f9_1876;
+    f32 temp_f9_1880;
     f64 temp_f0_1825;
+    f64 temp_f0_1837;
+    f64 temp_f0_1847;
+    f64 temp_f1_1831;
+    f64 temp_f1_1843;
+    f64 temp_f1_1852;
+    f64 temp_f2_1840;
+    f64 temp_f3_1850;
+    f64 temp_f4_1833;
+    f64 temp_f8_1875;
+    f64 var_f5_1862;
+    f64 var_f6_1863;
 
-    temp_f0_1825 = M2C_ERROR(/* psq_l unimplemented */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f5, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f4, $f4, $f13 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f6, $f3, $f1 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f5, $f5, $f13, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f7, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f6, $f6, $f13, $f1 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f7, $f7, $f13, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f8, $f3, $f1 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f7, $f0, $f2 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f8, $f8, $f13, $f1 */);
-    M2C_ERROR(/* unknown instruction: ps_madd $f9, $f1, $f3, $f7 */);
-    if (!(M2C_ERROR(/* unknown instruction: ps_sum0 $f9, $f9, $f9, $f9 */) < (f32) (temp_f0_1825 - temp_f0_1825))) {
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f5, $f0, $f4 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f6, $f1, $f4 */);
-        M2C_ERROR(/* unknown instruction: ps_madds0 $f5, $f2, $f13, $f5 */);
-        M2C_ERROR(/* unknown instruction: ps_madds0 $f6, $f3, $f13, $f6 */);
+    temp_f0_1825 = M2C_FIELD(&arg2, f64 *, 0);
+    temp_f1_1831 = M2C_FIELD(&arg2, f64 *, 8);
+    temp_f4_1833 = 5.263544247e-315 - (f64) farg0;
+    temp_f0_1837 = M2C_FIELD(&arg4, f64 *, 0);
+    temp_f2_1840 = M2C_FIELD(&arg6, f64 *, 0);
+    M2C_FIELD(arg1, f64 *, 0) = (f64) (((M2C_FIELD(&arg5, f64 *, 0) - temp_f0_1825) * (f64) farg0) + temp_f0_1825);
+    temp_f1_1843 = M2C_FIELD(&arg4, f64 *, 8);
+    M2C_FIELD(arg1, f64 *, 8) = (f64) (((M2C_FIELD(&arg5, f64 *, 8) - temp_f1_1831) * (f64) farg0) + temp_f1_1831);
+    temp_f0_1847 = M2C_FIELD(&arg3, f64 *, 0);
+    M2C_FIELD(arg1, f64 *, 0x20) = (f64) (((M2C_FIELD(&arg7, f64 *, 0) - temp_f0_1837) * (f64) farg0) + temp_f0_1837);
+    temp_f3_1850 = M2C_FIELD(&arg6, f64 *, 8);
+    temp_f1_1852 = M2C_FIELD(&arg3, f64 *, 8);
+    M2C_FIELD(arg1, f64 *, 0x28) = (f64) (((M2C_FIELD(&arg7, f64 *, 8) - temp_f1_1843) * (f64) farg0) + temp_f1_1843);
+    if (!((f32) (2.0 * ((temp_f1_1852 * temp_f3_1850) + (temp_f0_1847 * temp_f2_1840))) < (f32) (temp_f0_1825 - temp_f0_1825))) {
+        var_f5_1862 = (temp_f2_1840 * (f64) farg0) + (temp_f0_1847 * temp_f4_1833);
+        var_f6_1863 = (temp_f3_1850 * (f64) farg0) + (temp_f1_1852 * temp_f4_1833);
     } else {
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f5, $f0, $f4 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f9, $f2, $f13 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f6, $f1, $f4 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f3, $f13 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f5, $f9, $f5 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f6, $f0, $f6 */);
+        var_f5_1862 = (temp_f2_1840 * (f64) farg0) - (temp_f0_1847 * temp_f4_1833);
+        var_f6_1863 = (temp_f3_1850 * (f64) farg0) - (temp_f1_1852 * temp_f4_1833);
     }
-    M2C_ERROR(/* unknown instruction: ps_mul $f7, $f5, $f5 */);
-    M2C_ERROR(/* unknown instruction: ps_madd $f8, $f6, $f6, $f7 */);
-    M2C_ERROR(/* unknown instruction: ps_sum0 $f8, $f8, $f8, $f8 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f5, $f5, $f9 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f6, $f6, $f9 */);
-    return M2C_ERROR(/* psq_l unimplemented */);
+    temp_f8_1875 = 2.0 * ((var_f6_1863 * var_f6_1863) + (var_f5_1862 * var_f5_1862));
+    temp_f9_1876 = __frsqrte(temp_f8_1875);
+    temp_f9_1880 = -((temp_f9_1876 * temp_f9_1876 * (f32) temp_f8_1875) - 3.0f) * (temp_f9_1876 * 0.5f);
+    M2C_FIELD(arg1, f64 *, 0x10) = (f64) (var_f5_1862 * (f64) temp_f9_1880);
+    M2C_FIELD(arg1, f64 *, 0x18) = (f64) (var_f6_1863 * (f64) temp_f9_1880);
+    return M2C_BITWISE(f32, this);
 }
+#endif
 
 #if 0 // DRAFT: pointer/array required
 void Animation::InterpolateFrame(Animation::FrameInstance *arg1, AnimationData::Node *arg2, float farg0) {

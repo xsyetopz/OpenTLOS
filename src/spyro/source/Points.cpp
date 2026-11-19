@@ -25,9 +25,11 @@ void WindPoints_Update(const MKVector3 &arg0, WindInfo *arg1) {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 var_f4_107;
     f32 var_f4_40;
+    f64 temp_f0_127;
     f64 temp_f1_46;
     f64 temp_f1_52;
     f64 temp_f1_56;
@@ -81,9 +83,9 @@ void WindPoints_Update(const MKVector3 &arg0, WindInfo *arg1) {
     unksp44 *= var_f4_107;
     sp48 = (f32) sp48 * var_f4_107;
     MKGrass_SetWindDirection(*((MKVector3 *) &sp40), sp50);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp20 = sp10;
+    temp_f0_127 = sp40 * (f64) sp50;
+    sp10 = temp_f0_127;
+    sp20 = temp_f0_127;
     sp18 = sp48 * sp50;
     sp28 = (f64) sp18;
     MKWind_SetConstantWind(*((MKVector3 *) &sp20));
@@ -101,13 +103,13 @@ void WindPoints_Blend(const WindPointInfo &arg0, const WindPointInfo &arg1, floa
     MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f31_656;
 
     temp_f31_656 = 1.0f - arg2;
     __ml(temp_f31_656, sp18);
     __ml(arg2, sp28);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp28 + M2C_BITWISE(f64, sp18);
     sp38 = sp8;
     sp10 = sp28.unk8 + sp18.unk8;
     sp58 = sp8;
@@ -241,6 +243,8 @@ FogPointInfo FogPoints_Blend(const FogPointInfo &arg0, const FogPointInfo &arg1,
     f64 sp38;
     MKVector4 sp28;
     MKVector4 sp18;
+    f64 sp10;
+    f64 sp8;
     f32 temp_f31_1687;
     void *temp_r31_1684;
 
@@ -248,10 +252,8 @@ FogPointInfo FogPoints_Blend(const FogPointInfo &arg0, const FogPointInfo &arg1,
     temp_f31_1687 = 1.0f - arg2;
     __ml(temp_f31_1687, sp18);
     __ml(arg2, sp28);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = M2C_FIELD(&sp28, f64 *, 0) + M2C_BITWISE(f64, sp18);
+    sp10 = M2C_FIELD(&sp28, f64 *, 8) + (f64) sp18.unk8;
     sp38 = sp8;
     sp40 = sp10;
     sp58 = sp8;

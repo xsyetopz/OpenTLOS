@@ -406,8 +406,7 @@ void LoadingScreen::Update() {
     UIScreen::Update();
     this->unkBC.unk8 = (4.0f * gUpdateTimeDelta) + M2C_BITWISE(f32, this->unkBC.unk8);
     if ((u8) M2C_FIELD(this, u8 *, 0xC8) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk18.unk0 == 0.0f) {
+        if (this->unk18.unk0 <= 0.0f) {
             UIScreen::OnExit();
         }
         var_f3_828 = 0.0f;

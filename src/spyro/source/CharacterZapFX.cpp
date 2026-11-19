@@ -128,9 +128,11 @@ void CharacterZapFX::Draw() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     MKHeap *temp_r3_224;
     MKHeap *temp_r3_364;
+    MKHeap *temp_r4_252;
     MKHeap *var_r31_193;
     f32 temp_f5_226;
     f32 temp_f7_227;
@@ -143,6 +145,7 @@ void CharacterZapFX::Draw() {
     s32 temp_r27_397;
     s32 temp_r3_313;
     s32 var_r0_323;
+    void *temp_r3_256;
 
     if ((u8) this->unk14 != 0) {
         var_r31_193 = this->unk48;
@@ -162,13 +165,13 @@ loop_23:
             sp30 = 0.0f + ((temp_f9_231 * spB8) + ((temp_f7_227 * sp98) + (temp_f5_226 * spA8)));
             sp78 = (f64) sp28;
             sp80 = (f64) sp30;
+            temp_r4_252 = temp_r3_224->unk0;
             sp48 = (f64) sp28;
+            temp_r3_256 = temp_r3_224->unk4 + 8;
             sp50 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp18 = M2C_FIELD(temp_r3_256, f64 *, 0) - M2C_FIELD(temp_r4_252, f64 *, 8);
             sp68 = sp18;
-            sp20 = M2C_FIELD((temp_r3_224->unk4 + 8), f32 *, 8) - temp_r3_224->unk0->unk10;
+            sp20 = M2C_FIELD(temp_r3_256, f32 *, 8) - temp_r4_252->unk10;
             sp70 = (f64) sp20;
             sp38 = sp18;
             sp40 = (f64) sp20;
@@ -257,6 +260,7 @@ void CharacterZapFX::SpawnZap() {
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp54;
@@ -265,6 +269,7 @@ void CharacterZapFX::SpawnZap() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp24;
@@ -285,6 +290,8 @@ void CharacterZapFX::SpawnZap() {
     f32 temp_f30_479;
     f32 temp_f30_515;
     f32 temp_f30_577;
+    f64 temp_f0_534;
+    f64 temp_f0_591;
 
     if ((CharacterBodyFXData *) this->unk8 != NULL) {
         temp_r3_468 = this->unk48 - 4;
@@ -312,8 +319,9 @@ void CharacterZapFX::SpawnZap() {
             sp78 = temp_f30_515;
             spC0 = (f64) sp70;
             spC8 = (f64) sp78;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            spD0 = sp60;
+            temp_f0_534 = spC0 * 5.634608575e-315;
+            sp60 = temp_f0_534;
+            spD0 = temp_f0_534;
             sp68 = (f32) spC8 * 500.0f;
             spD8 = (f64) sp68;
             temp_f1_546 = MKRand_Float(&gViewSeed, 5.0f, 7.0f);
@@ -332,8 +340,9 @@ void CharacterZapFX::SpawnZap() {
             sp48 = temp_f29_572;
             sp90 = (f64) sp40;
             sp98 = (f64) sp48;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spA0 = sp30;
+            temp_f0_591 = sp90 * 5.634608575e-315;
+            sp30 = temp_f0_591;
+            spA0 = temp_f0_591;
             sp38 = (f32) sp98 * 500.0f;
             spA8 = (f64) sp38;
             temp_f1_603 = MKRand_Float(&gViewSeed, 5.0f, 7.0f);
@@ -352,7 +361,7 @@ void CharacterZapFX::SpawnZap() {
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void CharacterZapFX::Update() {
-    M2C_UNK sp140;
+    f64 sp140;
     M2C_UNK sp10C;
     f64 sp100;                                      /* compiler-managed */
     f64 spF8;                                       /* compiler-managed */
@@ -366,7 +375,7 @@ void CharacterZapFX::Update() {
     f64 spB8;
     f64 spB0;
     f64 spA8;
-    M2C_UNK sp98;
+    f64 sp98;
     f64 sp90;
     f64 sp88;
     f32 sp80;
@@ -376,6 +385,7 @@ void CharacterZapFX::Update() {
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp4C;
@@ -384,7 +394,9 @@ void CharacterZapFX::Update() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     MKHeap *temp_r3_688;
@@ -400,6 +412,8 @@ void CharacterZapFX::Update() {
     f32 temp_f30_937;
     f32 var_f4_763;
     f32 var_f7_830;
+    f64 temp_f0_870;
+    f64 temp_f0_966;
     f64 temp_f1_769;
     f64 temp_f1_775;
     f64 temp_f1_779;
@@ -417,8 +431,7 @@ loop_6:
             temp_r3_700 = var_r5_675->unk0;
             if (temp_r3_700 != NULL) {
                 temp_r3_700->unk18 -= gUpdateTimeDelta;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (var_r5_675->unk0->unk18 == 0.0f) {
+                if (var_r5_675->unk0->unk18 <= 0.0f) {
                     temp_r3_688 = this->unk48;
                     this->unk48 = (MKHeap *) &temp_r3_688->unk4;
                     temp_r4_691 = temp_r3_688->unk0;
@@ -430,15 +443,13 @@ loop_6:
             }
         }
         this->unk18 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk18 == 0.0f) {
+        if (this->unk18 <= 0.0f) {
             this->unk18 = 0.1f;
             SpawnZap();
         }
         this->unk1C -= gUpdateTimeDelta;
         this->unk17 = 0;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk1C == 0.0f) && (GetRandomNode(NULL) != NULL)) {
+        if ((this->unk1C <= 0.0f) && (GetRandomNode(NULL) != NULL)) {
             temp_f30_738 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f29_743 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
             sp78 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -501,9 +512,9 @@ loop_6:
             spD8 = (f64) sp68;
             sp14 = temp_f1_856;
             spE0 = (f64) sp70;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spE8 = sp58;
+            temp_f0_870 = sp140 + spD8;
+            sp58 = temp_f0_870;
+            spE8 = temp_f0_870;
             sp60 = sp148 + (f32) spE0;
             spF0 = (f64) sp60;
             gb.unk94->Trigger(*((MKVector3 *) &spE8), *((MKVector3 *) &spF8), sp14, lit_749, (MKVector4) &spC8);
@@ -511,8 +522,7 @@ loop_6:
             this->unk17 = 1;
         }
         this->unk24 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk24 == 0.0f) {
+        if (this->unk24 <= 0.0f) {
             this->unk24 = 0.1f;
             temp_f29_909 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f30_914 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -526,28 +536,24 @@ loop_6:
             temp_f29_932 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f30_937 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f30_937, temp_f29_932);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp28 = sp98 * 5.356796015e-315;
             this->unk38 = sp28;
             sp30 = spA0 * 5.0f;
             spA8 = sp28;
             spB0 = (f64) sp30;
             this->unk40 = (f64) sp30;
         } else {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp88 = sp18;
+            temp_f0_966 = this->unk38 * (f64) gUpdateTimeDelta;
+            sp18 = temp_f0_966;
+            sp88 = temp_f0_966;
             sp20 = (f32) M2C_FIELD(this, f64 *, 0x40) * gUpdateTimeDelta;
             sp90 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+            this->unk28 += temp_f0_966;
             M2C_FIELD(this, f64 *, 0x30) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x30) + (f32) sp90);
         }
     }
     this->unk20 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk20 == 0.0f) {
+    if (this->unk20 <= 0.0f) {
         if (((u8) this->unk16 != 0) && (gb.unk0->GetHeroType() == 0)) {
             if ((u8) this->unk15 == 0) {
                 var_r30_1010 = 0;

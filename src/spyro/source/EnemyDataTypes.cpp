@@ -95,18 +95,8 @@ s32 **EnemyMovementManager::SelectAnim() {
             if ((this->unk4 & temp_r12_91) && (!(temp_r12_91 & 1) || ((s32) this->unk8 == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC))) && (!(temp_r12_91 & 2) || ((s32) this->unkC == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC))) && (!(temp_r12_91 & 4) || ((s32) this->unk10 == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC)))) {
                 temp_r9_115 = M2C_FIELD(temp_r31_89, s32 **, 0);
                 temp_f2_116 = temp_r11_44->unk694;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (temp_f2_116 == M2C_FIELD(temp_r9_115, f32 *, 4)) {
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if (temp_f2_116 == M2C_FIELD(temp_r9_115, f32 *, 8)) {
-                        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                        if (temp_f1_84 == M2C_FIELD(temp_r9_115, f32 *, 0xC)) {
-                            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                            if ((temp_f1_84 == M2C_FIELD(temp_r9_115, f32 *, 0x10)) && ((var_r4_40 == NULL) || ((s32) **var_r4_40 < (s32) M2C_FIELD(temp_r9_115, s32 *, 0)) || ((var_r6_41 == (s32) M2C_FIELD(temp_r31_89, s32 *, 8)) && (M2C_BITWISE(s32, var_r7_42) == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC))))) {
-                                var_r4_40 = temp_r31_89;
-                            }
-                        }
-                    }
+                if ((temp_f2_116 >= M2C_FIELD(temp_r9_115, f32 *, 4)) && (temp_f2_116 <= M2C_FIELD(temp_r9_115, f32 *, 8)) && (temp_f1_84 >= M2C_FIELD(temp_r9_115, f32 *, 0xC)) && (temp_f1_84 <= M2C_FIELD(temp_r9_115, f32 *, 0x10)) && ((var_r4_40 == NULL) || ((s32) **var_r4_40 < (s32) M2C_FIELD(temp_r9_115, s32 *, 0)) || ((var_r6_41 == (s32) M2C_FIELD(temp_r31_89, s32 *, 8)) && (M2C_BITWISE(s32, var_r7_42) == (s32) M2C_FIELD(temp_r31_89, s32 *, 0xC))))) {
+                    var_r4_40 = temp_r31_89;
                 }
             }
             var_r8_59 += 0x14;

@@ -64,9 +64,8 @@ void MCText::Draw(const RenderContext &arg0) {
     sp58 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
     sp50 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     unksp5C = 1.0f;
-    if (((MKFont *) this->unk64 >= 0) && ((MKFont *) this->unk64 != NULL) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk18.unk34 == 0.0f) == 0))) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk18.unk38 == 0.0f) {
+    if (((MKFont *) this->unk64 >= 0) && ((MKFont *) this->unk64 != NULL) && !(this->unk18.unk34 <= 0.0f)) {
+        if (this->unk18.unk38 <= 0.0f) {
             return;
         }
         spA0.RenderContext();

@@ -251,7 +251,9 @@ SpawnPointObject *SpawnerObject::GetSpawnPointObject() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     SpawnPointObject *var_r28_360;
+    f64 temp_f0_390;
     s32 temp_r25_371;
     s32 temp_r30_356;
     s32 temp_r3_420;
@@ -283,9 +285,9 @@ loop_9:
                 sp20 = 0.0f;
                 sp28 = (f64) sp18;
                 sp30 = (f64) sp20;
-                M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-                sp38 = sp8;
+                temp_f0_390 = M2C_FIELD(var_r28_360, f64 *, 0x40) + sp28;
+                sp8 = temp_f0_390;
+                sp38 = temp_f0_390;
                 sp10 = var_r28_360->unk48 + (f32) sp30;
                 sp40 = (f64) sp10;
                 if (((Frustum *) (M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0))->IsVisible(*((MKVector3 *) &sp38), 100.0f) != 0) {
@@ -572,8 +574,7 @@ void SpawnerObject::TrySpawnItems(int arg0, bool arg1) {
             return;
         }
         var_r28_896 = 1;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk34 == 0.000001f) {
+        if (this->unk34 <= 0.000001f) {
             if (temp_r3_887 > 0) {
                 temp_r4_904 = this->unk28;
                 var_r0_905 = temp_r3_887 - this->unk20;

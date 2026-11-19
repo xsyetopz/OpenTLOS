@@ -12,6 +12,7 @@ extern f32 gUpdateTimeDelta;
 #if 0 // DRAFT: undefined identifier 'sp10'
 void MovementObject::UpdateCollisions(MKVector3 &arg0, bool arg1) {
     f64 sp8;
+    f32 temp_f31_114;
     void **temp_r3_41;
     void **temp_r3_59;
     void **temp_r3_66;
@@ -21,10 +22,7 @@ void MovementObject::UpdateCollisions(MKVector3 &arg0, bool arg1) {
 
     M2C_FIELD(&arg0, s32 *, 0x68) = (s32) (M2C_FIELD(&arg0, s32 *, 0x68) & 0xFFFFFFF8);
     if (!(M2C_FIELD(&arg0, s32 *, 0x60) & 1)) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+        M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + M2C_FIELD(arg1, f64 *, 0));
         arg0.unk8 += M2C_FIELD(arg1, f32 *, 8);
         this->unk0 = M2C_FIELD(arg1, f64 *, 0);
         this->unk8 = (f64) M2C_FIELD(arg1, f32 *, 8);
@@ -56,10 +54,9 @@ void MovementObject::UpdateCollisions(MKVector3 &arg0, bool arg1) {
         M2C_FIELD(&arg0, f64 *, 0x10) = (f64) M2C_FIELD(arg1, f64 *, 0);
         M2C_FIELD(&arg0, f64 *, 0x18) = (f64) M2C_FIELD(arg1, f32 *, 8);
         if ((u8) M2C_ERROR(/* Read from unset register $r6 */) != 0) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r29, $r0, 0x0, qr0 */);
-            M2C_FIELD(&arg0, f64 *, 0x18) = (f32) ((f32) M2C_FIELD(&arg0, f64 *, 0x18) * (1.0f / gUpdateTimeDelta));
+            temp_f31_114 = 1.0f / gUpdateTimeDelta;
+            M2C_FIELD(&arg0, f64 *, 0x10) = (f64) (M2C_FIELD(&arg0, f64 *, 0x10) * (f64) temp_f31_114);
+            M2C_FIELD(&arg0, f64 *, 0x18) = (f32) ((f32) M2C_FIELD(&arg0, f64 *, 0x18) * temp_f31_114);
         }
     }
     this->unk0 = M2C_FIELD(arg1, f64 *, 0);
@@ -88,15 +85,19 @@ void MovementObject::Update(bool arg0) {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f3_288;
     f32 temp_f4_245;
     f32 temp_f4_284;
     f32 temp_f5_282;
+    f64 temp_f0_261;
     f64 temp_f2_159;
+    f64 temp_f5_241;
     s32 temp_r3_179;
     s32 temp_r5_178;
     u32 var_r0_196;
@@ -155,8 +156,8 @@ block_22:
             sp20 = 0.0f;
             sp58 = (f64) sp18;
             sp60 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f5, $f0 */);
+            temp_f5_241 = M2C_FIELD(arg0, f64 *, 0);
+            sp8 = temp_f5_241 - sp58;
             temp_f4_245 = M2C_FIELD(arg0, f32 *, 8);
             sp40 = 0.0f;
             sp38 = 0.0f;
@@ -166,13 +167,14 @@ block_22:
             sp68 = sp8;
             sp70 = (f64) sp10;
             sp80 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-            sp88 = sp28;
+            temp_f0_261 = temp_f5_241 + sp78;
+            sp28 = temp_f0_261;
+            sp88 = temp_f0_261;
             sp30 = temp_f4_245 + (f32) sp80;
             sp90 = (f64) sp30;
             if (MKCollision_RayCollide(*((MKVector3 *) &sp88), *((MKVector3 *) &sp68), &spB8, (MKCollisionMode) 5, 0) != 0) {
                 temp_f5_282 = spB8.unk4 - M2C_FIELD(arg0, f32 *, 4);
-                temp_f4_284 = M2C_BITWISE(f32, spB8) - M2C_FIELD(arg0, f32 *, 0);
+                temp_f4_284 = M2C_BITWISE(f32, spB8) - (f32) M2C_FIELD(arg0, f64 *, 0);
                 temp_f3_288 = spB8.unk8 - M2C_FIELD(arg0, f32 *, 8);
                 if (((temp_f3_288 * temp_f3_288) + ((temp_f4_284 * temp_f4_284) + (temp_f5_282 * temp_f5_282))) < 20.0f) {
                     this->unk0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -187,7 +189,7 @@ block_25:
     sp98 = M2C_FIELD(arg0, f64 *, 0x10);
     spA0 = M2C_FIELD(arg0, f64 *, 0x18);
     if ((u8) M2C_ERROR(/* Read from unset register $r5 */) != 0) {
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp98 *= (f64) gUpdateTimeDelta;
         spA0 = (f32) spA0 * gUpdateTimeDelta;
     }
     UpdateCollisions(*((MKVector3 *) arg0), (u8) &sp98);

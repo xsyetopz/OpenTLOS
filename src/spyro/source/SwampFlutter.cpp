@@ -84,6 +84,7 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -116,8 +117,7 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
     sp80.GetRandPos();
     spB0 = sp80;
     spB8 = sp88;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp20 = sp80 - M2C_FIELD(arg0, f64 *, 0x30);
     arg0->unk68 = sp20;
     sp28 = (f32) spB8 - arg0->unk38;
     sp70 = sp20;
@@ -259,10 +259,16 @@ void SwampFlutterCritter::Update() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     SwampFlutter *temp_r4_439;
     f32 temp_f1_453;
+    f64 temp_f0_464;
+    f64 temp_f0_474;
+    f64 temp_f0_486;
     s32 var_r30_433;
     s32 var_r31_434;
 
@@ -280,26 +286,26 @@ loop_8:
             if (temp_f1_453 > 1.0f) {
                 temp_r4_439->unk54 = temp_f1_453 - 1.0f;
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r4, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp38 = sp28;
+            temp_f0_464 = temp_r4_439->unk68 * 5.5769738e-315;
+            sp28 = temp_f0_464;
+            sp38 = temp_f0_464;
             sp30 = M2C_FIELD(temp_r4_439, f32 *, 0x70) * 200.0f;
             sp40 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp48 = sp18;
+            temp_f0_474 = temp_f0_464 * (f64) gUpdateTimeDelta;
+            sp18 = temp_f0_474;
+            sp48 = temp_f0_474;
             sp20 = (f32) sp40 * gUpdateTimeDelta;
             sp50 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp58 = sp8;
+            temp_f0_486 = *(temp_r4_439 + 0x30) + temp_f0_474;
+            sp8 = temp_f0_486;
+            sp58 = temp_f0_486;
             sp10 = temp_r4_439->unk38 + (f32) sp50;
             M2C_FIELD(temp_r4_439, f32 *, 0x30) = (f32) sp58;
             sp60 = (f64) sp10;
             temp_r4_439->unk34 = unksp5C;
             temp_r4_439->unk38 = (f32) sp60;
             temp_r4_439->unk3C = 1.0f;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r4_439->unk64 == 0.0f) {
+            if (temp_r4_439->unk64 <= 0.0f) {
                 FindNewFlyParameters(temp_r4_439);
             }
         }

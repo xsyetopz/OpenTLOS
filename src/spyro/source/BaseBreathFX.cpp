@@ -71,8 +71,7 @@ void BaseBreathFX::CreateCollisionTest(const MKVector3 &arg0, const MKVector3 &a
     void *temp_r4_139;
     void *temp_r9_103;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk94 == 0.125f) {
+    if (this->unk94 >= 0.125f) {
         var_r8_99 = 0;
         this->unk94 = 0.0f;
         var_ctr_101 = 0x1E;
@@ -158,14 +157,19 @@ void BaseBreathFX::Update() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKVector3 *temp_r4_278;
+    f64 temp_f0_231;
+    f64 temp_f0_323;
     f64 temp_f1_338;
     s32 temp_r0_376;
     s32 var_r29_212;
     s32 var_r31_211;
     u32 var_r3_291;
     void *temp_r0_227;
+    void *temp_r3_229;
     void *temp_r3_314;
     void *temp_r3_318;
     void *temp_r3_340;
@@ -176,7 +180,9 @@ void BaseBreathFX::Update() {
     void *temp_r3_383;
     void *temp_r4_217;
     void *temp_r4_233;
+    void *temp_r4_320;
     void *temp_r5_299;
+    void *temp_r5_319;
 
     var_r31_211 = 0;
     var_r29_212 = 0;
@@ -187,15 +193,14 @@ void BaseBreathFX::Update() {
             M2C_FIELD(temp_r4_217, f64 *, 0x10) = (f64) M2C_FIELD(temp_r4_217, f64 *, 0);
             M2C_FIELD(temp_r4_217, f64 *, 0x18) = (f64) M2C_FIELD(temp_r4_217, f64 *, 8);
             temp_r0_227 = this->unk90;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            temp_r3_229 = temp_r0_227 + (var_r29_212 + 0x20);
+            temp_f0_231 = M2C_FIELD(temp_r3_229, f64 *, 0) * (f64) gUpdateTimeDelta;
+            sp18 = temp_f0_231;
             temp_r4_233 = temp_r0_227 + var_r29_212;
-            sp48 = sp18;
-            sp20 = M2C_FIELD((temp_r0_227 + (var_r29_212 + 0x20)), f32 *, 8) * gUpdateTimeDelta;
+            sp48 = temp_f0_231;
+            sp20 = M2C_FIELD(temp_r3_229, f32 *, 8) * gUpdateTimeDelta;
             sp50 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+            M2C_FIELD(temp_r4_233, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_233, f64 *, 0) + temp_f0_231);
             M2C_FIELD(temp_r4_233, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_233, f32 *, 8) + (f32) sp50);
             sp58 = 0.0f;
             sp5C = 0.0f;
@@ -234,11 +239,12 @@ void BaseBreathFX::Update() {
                         M2C_FIELD(temp_r3_314, f64 *, 0) = (f64) sp58;
                         M2C_FIELD(temp_r3_314, f64 *, 8) = (f64) sp60;
                         temp_r3_318 = this->unk90 + var_r29_212;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        sp28 = sp8;
-                        sp10 = M2C_FIELD((temp_r3_318 + 0x10), f32 *, 8) - M2C_FIELD((temp_r3_318 + 0x48), f32 *, 8);
+                        temp_r5_319 = temp_r3_318 + 0x48;
+                        temp_r4_320 = temp_r3_318 + 0x10;
+                        temp_f0_323 = M2C_FIELD(temp_r4_320, f64 *, 0) - M2C_FIELD(temp_r5_319, f64 *, 0);
+                        sp8 = temp_f0_323;
+                        sp28 = temp_f0_323;
+                        sp10 = M2C_FIELD(temp_r4_320, f32 *, 8) - M2C_FIELD(temp_r5_319, f32 *, 8);
                         sp30 = (f64) sp10;
                         Normalise(sp38);
                         temp_f1_338 = M2C_BITWISE(f64, sp38);
@@ -268,8 +274,7 @@ block_12:
                 temp_r0_376 = var_r29_212 + 0x30;
                 *(temp_r3_375 + temp_r0_376) = *(temp_r3_375 + temp_r0_376) + gUpdateTimeDelta;
                 temp_r3_383 = this->unk90 + var_r29_212;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(temp_r3_383, f32 *, 0x30) == 0.45f) {
+                if (M2C_FIELD(temp_r3_383, f32 *, 0x30) >= 0.45f) {
                     M2C_FIELD(temp_r3_383, s8 *, 0x6C) = 0;
                 }
             }

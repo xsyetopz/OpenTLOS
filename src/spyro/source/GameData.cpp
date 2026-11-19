@@ -283,8 +283,7 @@ s32 GameStats::GetGemAvailable(StatType arg0) {
             } else {
                 var_r5_554 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x24), void **, 4);
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((f32) M2C_FIELD(var_r5_554, s32 *, 0x28) == M2C_FIELD((this + ((s32) arg0 * 0x18)), f32 *, 0xC)) {
+            if ((f32) M2C_FIELD(var_r5_554, s32 *, 0x28) <= M2C_FIELD((this + ((s32) arg0 * 0x18)), f32 *, 0xC)) {
                 return 0;
             }
             goto block_9;
@@ -597,8 +596,7 @@ void Stat::Add(float arg0, bool arg1) {
     if (arg1 == 0) {
         this->unk8 = this->unk0;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk0 == this->unk4) {
+    if (this->unk0 >= this->unk4) {
         temp_r12_1059 = M2C_FIELD(this, M2C_UNK (**)(Stat *), 0x10);
         if (temp_r12_1059 != NULL) {
             temp_r12_1059(this);

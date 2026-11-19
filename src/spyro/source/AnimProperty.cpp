@@ -39,8 +39,7 @@ loop_4:
             if (temp_r5_80 > 0) {
 loop_5:
                 temp_f0_89 = *(this->unk14 + (var_r3_82 + 4));
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (var_f1_79 == temp_f0_89) {
+                if (var_f1_79 <= temp_f0_89) {
                     var_r30_71 = var_r6_81;
                 } else {
                     var_f1_79 -= temp_f0_89;

@@ -26,7 +26,7 @@ void FireTrap::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp78'
+#if 0 // DRAFT: pointer/array required
 void FireTrap::Update() {
     s8 sp199;
     s8 sp198;
@@ -71,17 +71,30 @@ void FireTrap::Update() {
     f64 sp90;
     f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_271;
+    f64 temp_f0_132;
+    f64 temp_f0_240;
+    f64 temp_f0_254;
+    f64 temp_f0_294;
+    f64 temp_f0_97;
     f64 temp_f1_117;
+    f64 temp_f1_126;
+    f64 temp_f1_228;
     s32 temp_r3_79;
     void *temp_r3_125;
     void *temp_r3_226;
@@ -96,9 +109,9 @@ void FireTrap::Update() {
             temp_r5_89 = this->unk8;
             sp128 = M2C_FIELD(temp_r5_89, f64 *, 0x30);
             sp130 = M2C_FIELD(temp_r5_89, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp118 = sp78;
+            temp_f0_97 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.647722104e-315;
+            sp78 = temp_f0_97;
+            sp118 = temp_f0_97;
             sp80 = MKVector3::up.unk8 * 650.0f;
             sp120 = (f64) sp80;
             gb.unk68->Emit(*((MKVector3 *) &sp128), *((MKVector3 *) &sp118), 6.0f);
@@ -107,16 +120,18 @@ void FireTrap::Update() {
             spF8 = temp_f1_117;
             sp100 = M2C_FIELD(temp_r4_114, f64 *, 0x38);
             temp_r3_125 = M2C_FIELD(gb.unk0->GetProp(temp_r4_114, temp_f1_117), void **, 8);
-            sp108 = M2C_FIELD(temp_r3_125, f64 *, 0x30);
+            temp_f1_126 = M2C_FIELD(temp_r3_125, f64 *, 0x30);
+            sp108 = temp_f1_126;
             sp110 = M2C_FIELD(temp_r3_125, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp138 = sp68;
+            temp_f0_132 = temp_f1_126 - spF8;
+            sp68 = temp_f0_132;
+            sp138 = temp_f0_132;
             sp70 = (f32) sp110 - (f32) sp100;
             unksp13C = 0.0f;
             sp140 = (f64) sp70;
             if ((((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + (0.0f * 0.0f))) < 10000.0f) {
                 sp14C = 0;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                sp8 = sp138 * 5.439686476e-315;
                 sp10 = (f32) sp140 * 20.0f;
                 spE8 = sp8;
                 spF0 = (f64) sp10;
@@ -150,19 +165,21 @@ void FireTrap::Update() {
         if ((this->unkE0 < 1.0f) && (MKRand_Int(&gViewSeed, 0, 0xA) == 0)) {
             temp_r3_226 = this->unk8;
             sp48 = 0.0f;
+            temp_f1_228 = M2C_FIELD(temp_r3_226, f64 *, 0x30);
             sp4C = 15.0f;
             sp50 = 0.0f;
             spB8 = (f64) sp48;
-            spC8 = M2C_FIELD(temp_r3_226, f64 *, 0x30);
+            spC8 = temp_f1_228;
             spC0 = (f64) sp50;
             spD0 = M2C_FIELD(temp_r3_226, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spD8 = sp38;
+            temp_f0_240 = temp_f1_228 + spB8;
+            sp38 = temp_f0_240;
+            spD8 = temp_f0_240;
             sp40 = (f32) spD0 + (f32) spC0;
             spE0 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spA8 = sp28;
+            temp_f0_254 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.60222949e-315;
+            sp28 = temp_f0_254;
+            spA8 = temp_f0_254;
             sp30 = MKVector3::up.unk8 * 300.0f;
             spB0 = (f64) sp30;
             gb.unk84->Emit(*((MKVector3 *) &spD8), *((MKVector3 *) &spA8), 5.0f);
@@ -172,9 +189,9 @@ void FireTrap::Update() {
             temp_r5_286 = this->unk8;
             sp98 = M2C_FIELD(temp_r5_286, f64 *, 0x30);
             spA0 = M2C_FIELD(temp_r5_286, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp88 = sp18;
+            temp_f0_294 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.647722104e-315;
+            sp18 = temp_f0_294;
+            sp88 = temp_f0_294;
             sp20 = MKVector3::up.unk8 * 650.0f;
             sp90 = (f64) sp20;
             gb.EmitDust(*((MKVector3 *) &sp98), *((MKVector3 *) &sp88), 0.5f, 0.0f);

@@ -68,8 +68,7 @@ void ElementalWall::StateEWOffExit() {
 
 #if 0 // DRAFT: expression syntax error
 void ElementalWall::StateEWOffUpdate() {
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk124 == this->unk120) {
+    if (this->unk124 >= this->unk120) {
         this->unkE0.SetState(this, 3, 0U);
         return;
     }
@@ -91,8 +90,7 @@ void ElementalWall::StateEWTurningOffExit() {
 
 #if 0 // DRAFT: expression syntax error
 void ElementalWall::StateEWTurningOffUpdate() {
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk124 == this->unk120) {
+    if (this->unk124 >= this->unk120) {
         this->unk10C = 0.0f;
         this->unkE0.SetState(this, 3, 0U);
         return;
@@ -170,6 +168,7 @@ void ElementalWall::StateEWOnUpdate() {
     KDUniformSpline sp50;
     Matrix sp40;
     f32 sp38;
+    f64 sp30;
     f64 sp20;
     f64 sp10;
     f32 spC;
@@ -177,6 +176,7 @@ void ElementalWall::StateEWOnUpdate() {
     f32 temp_f1_363;
     f32 var_f1_555;
     f32 var_f30_371;
+    f64 temp_f0_353;
     f64 temp_f1_374;
     f64 temp_f1_380;
     f64 temp_f1_384;
@@ -212,8 +212,9 @@ void ElementalWall::StateEWOnUpdate() {
         sp50.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp70 = M2C_BITWISE(f64, sp50);
         sp78 = (f64) sp50.unk8;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp50.unk10 = sp30;
+        temp_f0_353 = sp80 - sp70;
+        sp30 = temp_f0_353;
+        sp50.unk10 = temp_f0_353;
         sp38 = (f32) sp88 - (f32) sp78;
         temp_f1_363 = M2C_BITWISE(f32, sp50.unk10);
         sp64 = 0.0f;
@@ -262,40 +263,36 @@ void ElementalWall::StateEWOnUpdate() {
             this->unkD0 = sp80;
             this->unkD8 = sp88;
         }
-        if ((u8) this->unk11C != 0) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (var_f30_371 == (1.5f * gb.unk0->GetCollideRadius())) {
-                sp110 = 7;
-                sp114 = 0;
-                sp138 = 2;
-                sp13C = this;
-                sp118 = this->unkC0;
-                sp120 = this->unkC8;
-                sp150 = 1;
-                sp15C = 2;
-                sp158 = 10.0f;
-                sp151 = 0;
-                sp152 = 0;
-                sp154 = -1;
-                sp128 = M2C_FIELD(&MKVector3::one, f64 *, 0);
-                sp130 = M2C_FIELD(&MKVector3::one, f64 *, 8);
-                sp160 = 0;
-                if (this != NULL) {
-                    sp20.GetPos();
-                    sp140 = sp20;
-                    sp148 = sp28;
-                } else {
-                    sp140 = 0.0f;
-                    unksp144 = 0.0f;
-                    sp148 = 0.0f;
-                }
-                sp161 = 0;
-                gb.unk0->Message(&sp110);
-                return;
+        if (((u8) this->unk11C != 0) && (var_f30_371 <= (1.5f * gb.unk0->GetCollideRadius()))) {
+            sp110 = 7;
+            sp114 = 0;
+            sp138 = 2;
+            sp13C = this;
+            sp118 = this->unkC0;
+            sp120 = this->unkC8;
+            sp150 = 1;
+            sp15C = 2;
+            sp158 = 10.0f;
+            sp151 = 0;
+            sp152 = 0;
+            sp154 = -1;
+            sp128 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+            sp130 = M2C_FIELD(&MKVector3::one, f64 *, 8);
+            sp160 = 0;
+            if (this != NULL) {
+                sp20.GetPos();
+                sp140 = sp20;
+                sp148 = sp28;
+            } else {
+                sp140 = 0.0f;
+                unksp144 = 0.0f;
+                sp148 = 0.0f;
             }
+            sp161 = 0;
+            gb.unk0->Message(&sp110);
+            return;
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((var_f30_371 == (1.5f * gb.unk0->GetCollideRadius())) && (unksp84 > -((2.0f * gb.unk0->GetCollideRadius()) - unksp74))) {
+        if ((var_f30_371 <= (1.5f * gb.unk0->GetCollideRadius())) && (unksp84 > -((2.0f * gb.unk0->GetCollideRadius()) - unksp74))) {
             var_f1_555 = unksp84 - unksp74;
             if (var_f1_555 < 0.0f) {
                 var_f1_555 = -var_f1_555;
@@ -365,8 +362,7 @@ void ElementalWall::StateEWTurningOnExit() {
 
 #if 0 // DRAFT: expression syntax error
 void ElementalWall::StateEWTurningOnUpdate() {
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk124 == this->unk120) {
+    if (this->unk124 >= this->unk120) {
         this->unk10C = this->unk110;
         this->unkE0.SetState(this, 1, 0U);
         return;
@@ -393,13 +389,15 @@ void ElementalWall::EmitEarthParticles(float arg0, float arg1) {
     KDUniformSpline spF8;
     f64 spF0;
     f64 spE8;
-    KDUniformSpline spC8;
+    f64 spD8;
+    f64 spC8;
     f64 spC0;
     f64 spB8;
-    KDUniformSpline sp98;
+    f64 spA8;
+    f64 sp98;
     f64 sp90;
     f64 sp88;
-    M2C_UNK sp78;
+    f64 sp78;
     f64 sp70;
     f64 sp68;
     f32 sp64;
@@ -407,8 +405,11 @@ void ElementalWall::EmitEarthParticles(float arg0, float arg1) {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     s32 sp1C;
     f32 sp18;
@@ -425,16 +426,14 @@ void ElementalWall::EmitEarthParticles(float arg0, float arg1) {
     f32 temp_f3_833;
     s32 var_r26_867;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C == this->unkFC) {
+    if (gb.unk30C >= this->unkFC) {
         temp_f1_802 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp10 = 0.0f;
         spF8.GetMeasure(temp_f1_802, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp118 = M2C_BITWISE(f64, spF8);
         sp120 = (f64) spF8.unk8;
         KDRand_UnitVectorXZ();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
+        sp48 = spD8 * 5.49408334e-315;
         spF8.unk10 = sp48;
         sp50 = spE0 * 50.0f;
         spE8 = sp48;
@@ -451,11 +450,10 @@ loop_3:
             temp_f1_874 = MKRand_Float(&gViewSeed, arg0, arg1);
             spC = 0.0f;
             spC8.GetMeasure(temp_f1_874, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-            sp118 = M2C_BITWISE(f64, spC8);
-            sp120 = (f64) spC8.unk8;
+            sp118 = spC8;
+            sp120 = spD0;
             KDRand_UnitVectorXZ();
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+            sp38 = spA8 * 5.53552857e-315;
             spF8.unk10 = sp38;
             sp40 = spB0 * 100.0f;
             spB8 = sp38;
@@ -468,11 +466,10 @@ loop_3:
             temp_f1_920 = MKRand_Float(&gViewSeed, arg0, arg1);
             sp8 = 0.0f;
             sp98.GetMeasure(temp_f1_920, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-            sp118 = M2C_BITWISE(f64, sp98);
-            sp120 = (f64) sp98.unk8;
+            sp118 = sp98;
+            sp120 = spA0;
             KDRand_UnitVectorXZ();
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+            sp28 = sp78 * 5.53552857e-315;
             spF8.unk10 = sp28;
             sp30 = sp80 * 100.0f;
             sp88 = sp28;
@@ -507,8 +504,9 @@ void ElementalWall::EmitIceParticles(float arg0, float arg1) {
     f64 sp40;
     f64 sp38;
     f64 sp30;
-    M2C_UNK sp20;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     MKPropDescriptor *temp_r29_1053;
@@ -519,8 +517,7 @@ void ElementalWall::EmitIceParticles(float arg0, float arg1) {
     void *temp_r3_1071;
     void *temp_r3_1154;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C == this->unkFC) {
+    if (gb.unk30C >= this->unkFC) {
         temp_r29_1053 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
         temp_f1_1056 = MKRand_Float(&gViewSeed, arg0, arg1);
         spC = 0.0f;
@@ -545,8 +542,7 @@ loop_8:
         sp70 = sp40;
         sp78 = sp48;
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp10 = sp20 * 5.56078426e-315;
         sp30 = sp10;
         sp18 = sp28 * 150.0f;
         sp50.unk10 = sp10;
@@ -580,7 +576,8 @@ void ElementalWall::EmitElectricityParticles(float arg0, float arg1) {
     KDUniformSpline sp88;
     f64 sp80;
     f64 sp78;
-    KDUniformSpline sp58;
+    f64 sp68;
+    f64 sp58;
     f64 sp48;
     f64 sp40;
     f64 sp38;
@@ -589,6 +586,7 @@ void ElementalWall::EmitElectricityParticles(float arg0, float arg1) {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -596,8 +594,7 @@ void ElementalWall::EmitElectricityParticles(float arg0, float arg1) {
     f32 temp_f1_1292;
     s32 var_r29_1232;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C == this->unkFC) {
+    if (gb.unk30C >= this->unkFC) {
         var_r29_1232 = 0;
 loop_3:
         if (var_r29_1232 < (s32) ((s32) this->unk104 / 2)) {
@@ -608,8 +605,7 @@ loop_3:
             spB0 = (f64) sp88.unk8;
             unkspAC += this->unk110 * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
             KDRand_UnitVector();
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            sp18 = sp68 * 5.60222949e-315;
             sp78 = sp18;
             sp20 = sp70 * 300.0f;
             sp88.unk10 = sp18;
@@ -622,8 +618,8 @@ loop_3:
         temp_f1_1292 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp8 = 0.0f;
         sp58.GetMeasure(temp_f1_1292, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-        spA8 = M2C_BITWISE(f64, sp58);
-        spB0 = (f64) sp58.unk8;
+        spA8 = sp58;
+        spB0 = sp60;
         unkspAC += this->unk10C * (this->unk118 * (f32) (s32) ((f32) this->unk108 * MKRand_Float(&gViewSeed, 0.0f, 1.0f)));
         KDRand_UnitVector();
         sp28 = 1.0f;
@@ -650,13 +646,15 @@ void ElementalWall::EmitFireParticles(float arg0, float arg1) {
     KDUniformSpline spF0;
     f64 spE8;
     f64 spE0;
-    KDUniformSpline spC0;
+    f64 spD0;
+    f64 spC0;
     f64 spB8;
     f64 spB0;
-    KDUniformSpline sp90;
+    f64 spA0;
+    f64 sp90;
     f64 sp88;
     f64 sp80;
-    M2C_UNK sp70;
+    f64 sp70;
     f64 sp68;
     f64 sp60;
     f32 sp5C;
@@ -664,8 +662,11 @@ void ElementalWall::EmitFireParticles(float arg0, float arg1) {
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -680,16 +681,14 @@ void ElementalWall::EmitFireParticles(float arg0, float arg1) {
     f32 temp_f2_1508;
     s32 var_r27_1475;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C == this->unkFC) {
+    if (gb.unk30C >= this->unkFC) {
         temp_f1_1420 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp10 = 0.0f;
         spF0.GetMeasure(temp_f1_1420, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp110 = M2C_BITWISE(f64, spF0);
         sp118 = (f64) spF0.unk8;
         KDRand_UnitVectorXZ();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
+        sp40 = spD0 * 5.5769738e-315;
         spF0.unk10 = sp40;
         sp48 = spD8 * 200.0f;
         spE0 = sp40;
@@ -704,11 +703,10 @@ loop_3:
             temp_f1_1481 = MKRand_Float(&gViewSeed, arg0, arg1);
             spC = 0.0f;
             spC0.GetMeasure(temp_f1_1481, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-            sp110 = M2C_BITWISE(f64, spC0);
-            sp118 = (f64) spC0.unk8;
+            sp110 = spC0;
+            sp118 = spC8;
             KDRand_UnitVectorXZ();
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+            sp30 = spA0 * 5.45263811e-315;
             spF0.unk10 = sp30;
             sp38 = spA8 * 25.0f;
             spB0 = sp30;
@@ -721,11 +719,10 @@ loop_3:
             temp_f1_1526 = MKRand_Float(&gViewSeed, arg0, arg1);
             sp8 = 0.0f;
             sp90.GetMeasure(temp_f1_1526, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-            sp110 = M2C_BITWISE(f64, sp90);
-            sp118 = (f64) sp90.unk8;
+            sp110 = sp90;
+            sp118 = sp98;
             KDRand_UnitVectorXZ();
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+            sp20 = sp70 * 5.49408334e-315;
             spF0.unk10 = sp20;
             sp28 = sp78 * 50.0f;
             sp80 = sp20;
@@ -787,15 +784,15 @@ void ElementalWall::DrawEarthWall(float arg0, float arg1) {
     f64 sp1E0;
     f64 sp1D8;                                      /* compiler-managed */
     KDSplinePathSegment sp1B8;
-    M2C_UNK sp1A8;
+    f64 sp1A8;
     KDSplinePathSegment sp188;
-    M2C_UNK sp178;
+    f64 sp178;
     f64 sp168;
     f64 sp160;
     f64 sp158;
     f64 sp150;
     f64 sp148;
-    M2C_UNK sp138;
+    f64 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
@@ -804,7 +801,7 @@ void ElementalWall::DrawEarthWall(float arg0, float arg1) {
     f64 sp108;
     f64 sp100;
     f64 spF8;
-    M2C_UNK spE8;
+    f64 spE8;
     f64 spE0;
     f64 spD8;
     f64 spD0;
@@ -818,18 +815,25 @@ void ElementalWall::DrawEarthWall(float arg0, float arg1) {
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 temp_f0_1979;
@@ -854,6 +858,11 @@ void ElementalWall::DrawEarthWall(float arg0, float arg1) {
     f32 var_f3_2055;
     f32 var_f4_1885;
     f32 var_f4_1988;
+    f64 temp_f0_2073;
+    f64 temp_f0_2122;
+    f64 temp_f0_2133;
+    f64 temp_f0_2149;
+    f64 temp_f0_2212;
     f64 temp_f1_1891;
     f64 temp_f1_1897;
     f64 temp_f1_1901;
@@ -910,8 +919,7 @@ loop_61:
                 var_f1_1801 = arg1;
             }
             sp1B8.GetPosition(var_f1_1801);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp58 = sp1B8.unk0 - sp1A8;
             sp1B8.unk10 = sp58;
             sp60 = sp1B8.unk8 - sp1B0;
             sp208 = sp58;
@@ -926,8 +934,7 @@ loop_61:
                 var_f1_1838 = 1.0f;
             }
             sp188.GetPosition(var_f1_1838);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp48 = sp188.unk0 - sp178;
             sp188.unk10 = sp48;
             sp50 = sp188.unk8 - sp180;
             sp208 = sp48;
@@ -1036,12 +1043,12 @@ loop_61:
         sp1B8.unk30.unk4 = M2C_BITWISE(f32, sp1B8.unk30.unk4) * var_f3_2055;
         sp1B8.unk30.unk8 *= var_f3_2055;
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp148 = sp28;
+        temp_f0_2073 = sp138 * 5.398241246e-315;
+        sp28 = temp_f0_2073;
+        sp148 = temp_f0_2073;
         sp30 = sp140 * 10.0f;
         sp150 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp208 += temp_f0_2073;
         sp210 = (f32) sp210 + (f32) sp150;
         temp_f18_2105 = 4.0f * ((f32) var_r27_1790 / (f32) this->unk104);
         temp_f1_2106 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
@@ -1053,22 +1060,24 @@ loop_61:
         sp130 = (f64) spB0;
         MKSetColorV(*((MKVector4 *) &sp128));
         MKSetTexCoord1F(temp_f18_2105, 0.95f);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp108 = sp98;
+        temp_f0_2122 = (f64) sp1B8.unk30 * 5.45263811e-315;
+        sp98 = temp_f0_2122;
+        sp108 = temp_f0_2122;
         spA0 = sp1B8.unk30.unk8 * 25.0f;
         sp110 = (f64) spA0;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp118 = sp88;
+        temp_f0_2133 = sp208 + temp_f0_2122;
+        sp88 = temp_f0_2133;
+        sp118 = temp_f0_2133;
         sp90 = sp210 + (f32) sp110;
         sp120 = (f64) sp90;
         MKSetPositionV(*((MKVector3 *) &sp118));
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        spF8 = sp18;
+        temp_f0_2149 = spE8 * 5.439686476e-315;
+        sp18 = temp_f0_2149;
+        spF8 = temp_f0_2149;
         sp20 = spF0 * 20.0f;
         sp100 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp208 += temp_f0_2149;
         sp210 += (f32) sp100;
         MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
         MKSetColorV(*((MKVector4 *) &sp1B8.unk20));
@@ -1087,8 +1096,9 @@ loop_61:
         sp7C = (this->unk10C * var_f18_2185) + temp_f1_2200;
         spD0 = (f64) sp80;
         spC8 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spD8 = sp68;
+        temp_f0_2212 = sp208 + spC8;
+        sp68 = temp_f0_2212;
+        spD8 = temp_f0_2212;
         sp70 = sp210 + (f32) spD0;
         spE0 = (f64) sp70;
         MKSetPositionV(*((MKVector3 *) &spD8));
@@ -1113,15 +1123,15 @@ void ElementalWall::DrawIceWall(float arg0, float arg1) {
     f64 sp1E0;
     f64 sp1D8;                                      /* compiler-managed */
     KDSplinePathSegment sp1B8;
-    M2C_UNK sp1A8;
+    f64 sp1A8;
     KDSplinePathSegment sp188;
-    M2C_UNK sp178;
+    f64 sp178;
     f64 sp168;
     f64 sp160;
     f64 sp158;
     f64 sp150;
     f64 sp148;
-    M2C_UNK sp138;
+    f64 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
@@ -1130,7 +1140,7 @@ void ElementalWall::DrawIceWall(float arg0, float arg1) {
     f64 sp108;
     f64 sp100;
     f64 spF8;
-    M2C_UNK spE8;
+    f64 spE8;
     f64 spE0;
     f64 spD8;
     f64 spD0;
@@ -1144,18 +1154,25 @@ void ElementalWall::DrawIceWall(float arg0, float arg1) {
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 temp_f0_2571;
@@ -1180,6 +1197,11 @@ void ElementalWall::DrawIceWall(float arg0, float arg1) {
     f32 var_f3_2647;
     f32 var_f4_2477;
     f32 var_f4_2580;
+    f64 temp_f0_2665;
+    f64 temp_f0_2714;
+    f64 temp_f0_2725;
+    f64 temp_f0_2741;
+    f64 temp_f0_2804;
     f64 temp_f1_2483;
     f64 temp_f1_2489;
     f64 temp_f1_2493;
@@ -1236,8 +1258,7 @@ loop_61:
                 var_f1_2393 = arg1;
             }
             sp1B8.GetPosition(var_f1_2393);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp58 = sp1B8.unk0 - sp1A8;
             sp1B8.unk10 = sp58;
             sp60 = sp1B8.unk8 - sp1B0;
             sp208 = sp58;
@@ -1252,8 +1273,7 @@ loop_61:
                 var_f1_2430 = 1.0f;
             }
             sp188.GetPosition(var_f1_2430);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp48 = sp188.unk0 - sp178;
             sp188.unk10 = sp48;
             sp50 = sp188.unk8 - sp180;
             sp208 = sp48;
@@ -1362,12 +1382,12 @@ loop_61:
         sp1B8.unk30.unk4 = M2C_BITWISE(f32, sp1B8.unk30.unk4) * var_f3_2647;
         sp1B8.unk30.unk8 *= var_f3_2647;
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp148 = sp28;
+        temp_f0_2665 = sp138 * 5.398241246e-315;
+        sp28 = temp_f0_2665;
+        sp148 = temp_f0_2665;
         sp30 = sp140 * 10.0f;
         sp150 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp208 += temp_f0_2665;
         sp210 = (f32) sp210 + (f32) sp150;
         temp_f18_2697 = 4.0f * ((f32) var_r27_2382 / (f32) this->unk104);
         temp_f1_2698 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
@@ -1379,22 +1399,24 @@ loop_61:
         sp130 = (f64) spB0;
         MKSetColorV(*((MKVector4 *) &sp128));
         MKSetTexCoord1F(temp_f18_2697, 0.95f);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp108 = sp98;
+        temp_f0_2714 = (f64) sp1B8.unk30 * 5.45263811e-315;
+        sp98 = temp_f0_2714;
+        sp108 = temp_f0_2714;
         spA0 = sp1B8.unk30.unk8 * 25.0f;
         sp110 = (f64) spA0;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp118 = sp88;
+        temp_f0_2725 = sp208 + temp_f0_2714;
+        sp88 = temp_f0_2725;
+        sp118 = temp_f0_2725;
         sp90 = sp210 + (f32) sp110;
         sp120 = (f64) sp90;
         MKSetPositionV(*((MKVector3 *) &sp118));
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        spF8 = sp18;
+        temp_f0_2741 = spE8 * 5.439686476e-315;
+        sp18 = temp_f0_2741;
+        spF8 = temp_f0_2741;
         sp20 = spF0 * 20.0f;
         sp100 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp208 += temp_f0_2741;
         sp210 += (f32) sp100;
         MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
         MKSetColorV(*((MKVector4 *) &sp1B8.unk20));
@@ -1413,8 +1435,9 @@ loop_61:
         sp7C = (this->unk10C * var_f18_2777) + temp_f1_2792;
         spD0 = (f64) sp80;
         spC8 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spD8 = sp68;
+        temp_f0_2804 = sp208 + spC8;
+        sp68 = temp_f0_2804;
+        spD8 = temp_f0_2804;
         sp70 = sp210 + (f32) spD0;
         spE0 = (f64) sp70;
         MKSetPositionV(*((MKVector3 *) &spD8));
@@ -1437,7 +1460,7 @@ void ElementalWall::DrawElectricityWall(float arg0, float arg1) {
     f64 sp110;
     f64 sp108;
     f64 sp100;
-    M2C_UNK spF0;
+    f64 spF0;
     MKProp spA0;
     MKVector3 sp90;
     M2C_UNK sp80;
@@ -1454,9 +1477,13 @@ void ElementalWall::DrawElectricityWall(float arg0, float arg1) {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f24_3063;
+    f64 temp_f0_3002;
     s32 temp_r3_3095;
     s32 var_r30_2904;
     s32 var_r31_2925;
@@ -1480,8 +1507,7 @@ loop_7:
             if ((var_r31_2925 == 0) || (var_r31_2925 == temp_r3_3095)) {
                 spA0.unk40.GetPos();
                 spF0.GetPosition((f32) var_r31_2925 * this->unk114);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp30 = spF0 - M2C_BITWISE(f64, spA0.unk40);
                 sp38 = spF8 - spA0.unk48;
                 sp110 = sp30;
                 sp118 = (f64) sp38;
@@ -1493,12 +1519,12 @@ loop_7:
                 sp90.operator*(20.0f);
                 spA0.GetPos();
                 spA0.unk10.GetPosition((f32) var_r31_2925 * this->unk114);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                spA0.unk20 = sp10;
+                temp_f0_3002 = spA0.unk10 - M2C_BITWISE(f64, spA0);
+                sp10 = temp_f0_3002;
+                spA0.unk20 = temp_f0_3002;
                 sp18 = M2C_BITWISE(f32, spA0.unk18) - M2C_BITWISE(f32, spA0.unk8);
                 spA0.unk28 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp20 = (f64) spA0.unk20 + M2C_BITWISE(f64, sp90);
                 sp110 = sp20;
                 sp28 = M2C_BITWISE(f32, spA0.unk28) + sp90.unk8;
                 sp118 = (f64) sp28;
@@ -1552,15 +1578,15 @@ void ElementalWall::DrawFireWall(float arg0, float arg1) {
     f64 sp398;
     f64 sp390;                                      /* compiler-managed */
     KDSplinePathSegment sp370;
-    M2C_UNK sp360;
+    f64 sp360;
     KDSplinePathSegment sp340;
-    M2C_UNK sp330;
+    f64 sp330;
     f64 sp320;
     f64 sp318;
     f64 sp310;
     f64 sp308;
     f64 sp300;
-    M2C_UNK sp2F0;
+    f64 sp2F0;
     f64 sp2E8;
     f64 sp2E0;
     f64 sp2D8;
@@ -1569,15 +1595,15 @@ void ElementalWall::DrawFireWall(float arg0, float arg1) {
     f64 sp2C0;
     f64 sp2B8;
     f64 sp2B0;
-    M2C_UNK sp2A0;
+    f64 sp2A0;
     f64 sp298;                                      /* compiler-managed */
     f64 sp290;                                      /* compiler-managed */
     f64 sp288;
     f64 sp280;                                      /* compiler-managed */
     KDSplinePathSegment sp260;
-    M2C_UNK sp250;
+    f64 sp250;
     KDSplinePathSegment sp230;
-    M2C_UNK sp220;
+    f64 sp220;
     f64 sp218;
     f64 sp210;
     f64 sp200;
@@ -1592,7 +1618,7 @@ void ElementalWall::DrawFireWall(float arg0, float arg1) {
     f64 sp1B0;
     f64 sp1A8;
     f64 sp1A0;
-    M2C_UNK sp190;
+    f64 sp190;
     f64 sp188;
     f64 sp180;
     f64 sp178;
@@ -1606,35 +1632,49 @@ void ElementalWall::DrawFireWall(float arg0, float arg1) {
     f32 sp154;
     f32 sp150;
     f32 sp148;
+    f64 sp140;
     f32 sp138;
+    f64 sp130;
     f32 sp128;
     f32 sp124;
     f32 sp120;
     f32 sp118;
+    f64 sp110;
     f32 sp10C;
     f32 sp108;
     f32 sp104;
     f32 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
     f32 spD4;
     f32 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -1680,6 +1720,16 @@ void ElementalWall::DrawFireWall(float arg0, float arg1) {
     f32 var_f4_3452;
     f32 var_f4_3829;
     f32 var_f4_3932;
+    f64 temp_f0_3537;
+    f64 temp_f0_3586;
+    f64 temp_f0_3597;
+    f64 temp_f0_3613;
+    f64 temp_f0_3676;
+    f64 temp_f0_3791;
+    f64 temp_f0_4045;
+    f64 temp_f0_4056;
+    f64 temp_f0_4072;
+    f64 temp_f0_4131;
     f64 temp_f1_3355;
     f64 temp_f1_3361;
     f64 temp_f1_3365;
@@ -1749,8 +1799,7 @@ loop_61:
                 var_f1_3265 = arg1;
             }
             sp370.GetPosition(var_f1_3265);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            spB0 = sp370.unk0 - sp360;
             sp370.unk10 = spB0;
             spB8 = sp370.unk8 - sp368;
             sp3C0 = spB0;
@@ -1765,8 +1814,7 @@ loop_61:
                 var_f1_3302 = 1.0f;
             }
             sp340.GetPosition(var_f1_3302);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            spA0 = sp340.unk0 - sp330;
             sp340.unk10 = spA0;
             spA8 = sp340.unk8 - sp338;
             sp3C0 = spA0;
@@ -1875,12 +1923,12 @@ loop_61:
         sp370.unk30.unk4 = M2C_BITWISE(f32, sp370.unk30.unk4) * var_f3_3519;
         sp370.unk30.unk8 *= var_f3_3519;
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-        sp300 = sp80;
+        temp_f0_3537 = sp2F0 * 5.398241246e-315;
+        sp80 = temp_f0_3537;
+        sp300 = temp_f0_3537;
         sp88 = sp2F8 * 10.0f;
         sp308 = (f64) sp88;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp3C0 += temp_f0_3537;
         sp3C8 = (f32) sp3C8 + (f32) sp308;
         temp_f15_3569 = 4.0f * ((f32) var_r25_3254 / (f32) this->unk104);
         temp_f1_3570 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
@@ -1892,22 +1940,24 @@ loop_61:
         sp2E8 = (f64) sp158;
         MKSetColorV(*((MKVector4 *) &sp2E0));
         MKSetTexCoord1F(temp_f15_3569, 0.95f);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-        sp2C0 = sp140;
+        temp_f0_3586 = (f64) sp370.unk30 * 5.45263811e-315;
+        sp140 = temp_f0_3586;
+        sp2C0 = temp_f0_3586;
         sp148 = sp370.unk30.unk8 * 25.0f;
         sp2C8 = (f64) sp148;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp2D0 = sp130;
+        temp_f0_3597 = sp3C0 + temp_f0_3586;
+        sp130 = temp_f0_3597;
+        sp2D0 = temp_f0_3597;
         sp138 = sp3C8 + (f32) sp2C8;
         sp2D8 = (f64) sp138;
         MKSetPositionV(*((MKVector3 *) &sp2D0));
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-        sp2B0 = sp70;
+        temp_f0_3613 = sp2A0 * 5.439686476e-315;
+        sp70 = temp_f0_3613;
+        sp2B0 = temp_f0_3613;
         sp78 = sp2A8 * 20.0f;
         sp2B8 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp3C0 += temp_f0_3613;
         sp3C8 += (f32) sp2B8;
         MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
         MKSetColorV(*((MKVector4 *) &sp370.unk20));
@@ -1926,8 +1976,9 @@ loop_61:
         sp124 = (this->unk10C * var_f15_3649) + temp_f1_3664;
         sp288 = (f64) sp128;
         sp280 = (f64) sp120;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp290 = sp110;
+        temp_f0_3676 = sp3C0 + sp280;
+        sp110 = temp_f0_3676;
+        sp290 = temp_f0_3676;
         sp118 = sp3C8 + (f32) sp288;
         sp298 = (f64) sp118;
         MKSetPositionV(*((MKVector3 *) &sp290));
@@ -1953,8 +2004,7 @@ loop_117:
                 var_f1_3724 = arg1;
             }
             sp260.GetPosition(var_f1_3724);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp60 = sp260.unk0 - sp250;
             sp260.unk10 = sp60;
             sp68 = sp260.unk8 - sp258;
             sp3C0 = sp60;
@@ -1969,8 +2019,7 @@ loop_117:
                 var_f1_3761 = 1.0f;
             }
             sp230.GetPosition(var_f1_3761);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp50 = sp230.unk0 - sp220;
             sp230.unk10 = sp50;
             sp58 = sp230.unk8 - sp228;
             sp3C0 = sp50;
@@ -1978,12 +2027,12 @@ loop_117:
             sp3C8 = (f64) sp58;
         }
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp210 = sp40;
+        temp_f0_3791 = sp200 * 5.398241246e-315;
+        sp40 = temp_f0_3791;
+        sp210 = temp_f0_3791;
         sp48 = sp208 * 10.0f;
         sp218 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp3C0 += temp_f0_3791;
         sp3C8 = (f32) sp3C8 + (f32) sp218;
         sp1F0.GetVelocity((f32) var_r26_3712 * this->unk114);
         sp370.unk30.unk10 = sp1F0;
@@ -2094,22 +2143,24 @@ loop_117:
         sp1D8 = (f64) sp108;
         MKSetColorV(*((MKVector4 *) &sp1D0));
         MKSetTexCoord1F(temp_f16_4028, 0.95f);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp1B0 = spF0;
+        temp_f0_4045 = (f64) sp370.unk30 * 5.45263811e-315;
+        spF0 = temp_f0_4045;
+        sp1B0 = temp_f0_4045;
         spF8 = sp370.unk30.unk8 * 25.0f;
         sp1B8 = (f64) spF8;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp1C0 = spE0;
+        temp_f0_4056 = sp3C0 - temp_f0_4045;
+        spE0 = temp_f0_4056;
+        sp1C0 = temp_f0_4056;
         spE8 = sp3C8 - (f32) sp1B8;
         sp1C8 = (f64) spE8;
         MKSetPositionV(*((MKVector3 *) &sp1C0));
         KDRand_UnitVector();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp1A0 = sp20;
+        temp_f0_4072 = sp190 * 5.439686476e-315;
+        sp20 = temp_f0_4072;
+        sp1A0 = temp_f0_4072;
         sp28 = sp198 * 20.0f;
         sp1A8 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp3C0 += temp_f0_4072;
         sp3C8 += (f32) sp1A8;
         MKSetColorV(*((MKVector4 *) &sp370.unk20));
         MKSetTexCoord1F(temp_f16_4028, 0.05f);
@@ -2127,8 +2178,9 @@ loop_117:
         spD4 = (this->unk10C * var_f15_4104) + temp_f1_4119;
         sp178 = (f64) spD8;
         sp170 = (f64) spD0;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp180 = spC0;
+        temp_f0_4131 = sp3C0 + sp170;
+        spC0 = temp_f0_4131;
+        sp180 = temp_f0_4131;
         spC8 = sp3C8 + (f32) sp178;
         sp188 = (f64) spC8;
         MKSetPositionV(*((MKVector3 *) &sp180));

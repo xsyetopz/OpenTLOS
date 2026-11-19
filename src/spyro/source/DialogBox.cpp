@@ -658,70 +658,67 @@ void DialogBox_DrawText(DialogBoxContext *arg0) {
         sp60.unk3C = 1.0f;
         sp60.unk34 = -((0.5f * ((f32) (var_r3_870 - 1) * temp_f26_820)) - ((0.5f * temp_f28_808) + temp_f31_805));
 loop_33:
-        if (var_r25_889 < temp_r26_867) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((var_f25_830 == 1.0f) && ((u8) arg0->unk44 == 0)) {
-                temp_r28_904 = &sp2A0 + var_r21_891;
-                var_r23_905 = temp_r28_904->unk4;
-                temp_r0_907 = (s32) var_f25_830;
-                if (var_r23_905 > temp_r0_907) {
-                    var_r23_905 = temp_r0_907;
-                    var_r24_894 = 1;
-                }
-                var_f25_830 -= (f32) var_r23_905;
-                if (var_r25_889 >= (s32) arg0->unk40) {
-                    var_r3_923 = &spA0;
-                    if (var_r23_905 > 0) {
-                        var_r6_927 = var_r23_905;
-                        if (var_r24_894 != 0) {
-                            var_r6_927 = var_r23_905 - 1;
-                        }
-                        var_r3_923 = DialogBox_strncpy(var_r3_923, temp_r28_904, 0, var_r6_927);
-                    }
-                    var_f28_935 = 0.0f;
-                    *var_r3_923 = 0;
-                    if ((s8) (u8) spA0 != 0) {
-                        var_f28_935 = temp_f27_807 * var_r30_810->CalcLength(&spA0);
-                        if (arg0->unkC & 8) {
-                            var_f1_949 = temp_r28_904->unk10;
-                        } else {
-                            var_f1_949 = temp_f29_806;
-                        }
-                        var_r30_810->DrawString(&spA0, var_f1_949, temp_f26_820, &sp60, 0, temp_r21_856, temp_f27_807, temp_f27_807, NULL, 1U);
-                    }
-                    if (var_r24_894 != 0) {
-                        sp20 = var_f28_935;
-                        sp24 = 0.0f;
-                        sp28 = 0.0f;
-                        sp40 = (f64) sp20;
-                        sp48 = (f64) sp28;
-                        sp60.Translate(&sp60, *((MKVector3 *) &sp40));
-                        *DialogBox_strncpy(&spA0, temp_r28_904, var_r23_905 - 1, 1) = 0;
-                        sp58 = (f64) M2C_FIELD(arg0, f32 *, 0x28);
-                        sp50 = (f64) M2C_FIELD(arg0, f32 *, 0x20);
-                        temp_f5_995 = unksp5C * var_f25_830;
-                        unksp5C = temp_f5_995;
-                        if (arg0->unkC & 8) {
-                            var_f1_1023 = temp_r28_904->unk10;
-                        } else {
-                            var_f1_1023 = temp_f29_806;
-                        }
-                        var_r30_810->DrawString(&spA0, var_f1_1023, temp_f26_820, &sp60, 0, (s32) (128.0f * (f32) sp50) | (((s32) (128.0f * unksp54) << 8) | (((s32) (128.0f * temp_f5_995) << 0x18) | ((s32) (128.0f * (f32) sp58) << 0x10))), temp_f27_807, temp_f27_807, NULL, 1U);
-                    }
-                    sp14 = temp_f26_820;
-                    sp10 = 0.0f;
-                    sp18 = 0.0f;
-                    sp30 = (f64) sp10;
-                    sp38 = (f64) sp18;
-                    sp60.Translate(&sp60, *((MKVector3 *) &sp30));
-                }
-                var_r25_889 += 1;
-                var_r21_891 += 0x14;
-                if ((s32) (var_r25_889 - arg0->unk40) > var_r27_853) {
-                    arg0->unk44 = 1;
-                }
-                goto loop_33;
+        if ((var_r25_889 < temp_r26_867) && (var_f25_830 >= 1.0f) && ((u8) arg0->unk44 == 0)) {
+            temp_r28_904 = &sp2A0 + var_r21_891;
+            var_r23_905 = temp_r28_904->unk4;
+            temp_r0_907 = (s32) var_f25_830;
+            if (var_r23_905 > temp_r0_907) {
+                var_r23_905 = temp_r0_907;
+                var_r24_894 = 1;
             }
+            var_f25_830 -= (f32) var_r23_905;
+            if (var_r25_889 >= (s32) arg0->unk40) {
+                var_r3_923 = &spA0;
+                if (var_r23_905 > 0) {
+                    var_r6_927 = var_r23_905;
+                    if (var_r24_894 != 0) {
+                        var_r6_927 = var_r23_905 - 1;
+                    }
+                    var_r3_923 = DialogBox_strncpy(var_r3_923, temp_r28_904, 0, var_r6_927);
+                }
+                var_f28_935 = 0.0f;
+                *var_r3_923 = 0;
+                if ((s8) (u8) spA0 != 0) {
+                    var_f28_935 = temp_f27_807 * var_r30_810->CalcLength(&spA0);
+                    if (arg0->unkC & 8) {
+                        var_f1_949 = temp_r28_904->unk10;
+                    } else {
+                        var_f1_949 = temp_f29_806;
+                    }
+                    var_r30_810->DrawString(&spA0, var_f1_949, temp_f26_820, &sp60, 0, temp_r21_856, temp_f27_807, temp_f27_807, NULL, 1U);
+                }
+                if (var_r24_894 != 0) {
+                    sp20 = var_f28_935;
+                    sp24 = 0.0f;
+                    sp28 = 0.0f;
+                    sp40 = (f64) sp20;
+                    sp48 = (f64) sp28;
+                    sp60.Translate(&sp60, *((MKVector3 *) &sp40));
+                    *DialogBox_strncpy(&spA0, temp_r28_904, var_r23_905 - 1, 1) = 0;
+                    sp58 = (f64) M2C_FIELD(arg0, f32 *, 0x28);
+                    sp50 = (f64) M2C_FIELD(arg0, f32 *, 0x20);
+                    temp_f5_995 = unksp5C * var_f25_830;
+                    unksp5C = temp_f5_995;
+                    if (arg0->unkC & 8) {
+                        var_f1_1023 = temp_r28_904->unk10;
+                    } else {
+                        var_f1_1023 = temp_f29_806;
+                    }
+                    var_r30_810->DrawString(&spA0, var_f1_1023, temp_f26_820, &sp60, 0, (s32) (128.0f * (f32) sp50) | (((s32) (128.0f * unksp54) << 8) | (((s32) (128.0f * temp_f5_995) << 0x18) | ((s32) (128.0f * (f32) sp58) << 0x10))), temp_f27_807, temp_f27_807, NULL, 1U);
+                }
+                sp14 = temp_f26_820;
+                sp10 = 0.0f;
+                sp18 = 0.0f;
+                sp30 = (f64) sp10;
+                sp38 = (f64) sp18;
+                sp60.Translate(&sp60, *((MKVector3 *) &sp30));
+            }
+            var_r25_889 += 1;
+            var_r21_891 += 0x14;
+            if ((s32) (var_r25_889 - arg0->unk40) > var_r27_853) {
+                arg0->unk44 = 1;
+            }
+            goto loop_33;
         }
         if ((var_r25_889 >= temp_r26_867) && (var_r24_894 == 0)) {
             arg0->unk45 = 1;

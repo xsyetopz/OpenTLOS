@@ -160,9 +160,10 @@ void CheckPoint::LoadDone() {
     f64 sp48;
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKModel *temp_r3_391;
     f64 temp_f0_413;
     f64 temp_f1_412;
@@ -215,8 +216,7 @@ void CheckPoint::LoadDone() {
     if ((u8) this->unk1C1 == 0) {
         MKVector(300.0f, 0.0f, 0.0f);
         sp28.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp8 = sp28 - sp18;
         this->unkF0 = sp8;
         sp10 = sp30 - sp20;
         sp38 = sp8;

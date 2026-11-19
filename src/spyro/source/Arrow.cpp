@@ -17,7 +17,7 @@ void Arrow::Fire(const Matrix &arg0, float arg1, float arg2) {
     this->unkE8 = arg2;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp48'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void Arrow::Update() {
     s8 sp119;
     s8 sp118;
@@ -52,16 +52,24 @@ void Arrow::Update() {
     f64 sp60;
     f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f64 sp18;
     f32 sp10;
-    f32 temp_f1_142;
+    f64 sp8;
     f32 temp_f1_165;
     f32 temp_f29_132;
-    f32 temp_f30_133;
+    f64 temp_f0_138;
+    f64 temp_f0_148;
+    f64 temp_f0_195;
     f64 temp_f1_180;
+    f64 temp_f1_189;
+    f64 temp_f30_133;
     s32 temp_r3_126;
+    void *temp_r3_136;
     void *temp_r3_188;
     void *temp_r4_177;
     void *temp_r5_282;
@@ -71,21 +79,21 @@ void Arrow::Update() {
     if ((temp_r3_126 & 0x20000) && (temp_r3_126 & 0x80000)) {
         temp_f29_132 = gUpdateTimeDelta;
         temp_f30_133 = -this->unkE0;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        temp_f1_142 = M2C_FIELD((MKModel_GetWorldMatrix(this->unk4) + 0x20), f32 *, 8) * temp_f30_133;
-        sp98 = sp48;
-        sp50 = temp_f1_142;
+        temp_r3_136 = MKModel_GetWorldMatrix(this->unk4) + 0x20;
+        temp_f0_138 = M2C_FIELD(temp_r3_136, f64 *, 0) * temp_f30_133;
+        sp48 = temp_f0_138;
+        sp98 = temp_f0_138;
+        sp50 = M2C_FIELD(temp_r3_136, f32 *, 8) * (f32) temp_f30_133;
         spA0 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        spA8 = sp38;
+        temp_f0_148 = temp_f0_138 * (f64) temp_f29_132;
+        sp38 = temp_f0_148;
+        spA8 = temp_f0_148;
         sp40 = (f32) spA0 * temp_f29_132;
         spB0 = (f64) sp40;
         MKModel_SetPosition(this->unk4, *((MKVector3 *) &spA8));
         this->unkE4 += gUpdateTimeDelta;
         temp_f1_165 = this->unkE8;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unkE4 == temp_f1_165) {
+        if (this->unkE4 >= temp_f1_165) {
             this->unkE4 = temp_f1_165;
             Disable();
         }
@@ -94,16 +102,18 @@ void Arrow::Update() {
         sp78 = temp_f1_180;
         sp80 = M2C_FIELD(temp_r4_177, f64 *, 0x38);
         temp_r3_188 = M2C_FIELD(gb.unk0->GetProp(temp_r4_177, temp_f1_180), void **, 8);
-        sp88 = M2C_FIELD(temp_r3_188, f64 *, 0x30);
+        temp_f1_189 = M2C_FIELD(temp_r3_188, f64 *, 0x30);
+        sp88 = temp_f1_189;
         sp90 = M2C_FIELD(temp_r3_188, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        spB8 = sp28;
+        temp_f0_195 = temp_f1_189 - sp78;
+        sp28 = temp_f0_195;
+        spB8 = temp_f0_195;
         sp30 = (f32) sp90 - (f32) sp80;
         unkspBC = 0.0f;
         spC0 = (f64) sp30;
         if ((((f32) spC0 * (f32) spC0) + (((f32) spB8 * (f32) spB8) + (0.0f * 0.0f))) < 10000.0f) {
             spCC = 0;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp8 = spB8 * 5.439686476e-315;
             sp10 = (f32) spC0 * 20.0f;
             sp68 = sp8;
             sp70 = (f64) sp10;

@@ -43,7 +43,7 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
     f64 spE8;
     f64 spE0;
     f64 spD8;
-    M2C_UNK spC8;
+    f64 spC8;
     f64 spC0;
     f64 spB8;
     MKVector3 spA8;
@@ -60,10 +60,12 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -81,9 +83,12 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
     f32 var_f27_64;
     f32 var_f3_223;
     f32 var_f4_156;
+    f64 temp_f0_242;
+    f64 temp_f0_91;
     f64 temp_f1_162;
     f64 temp_f1_168;
     f64 temp_f1_172;
+    f64 temp_f1_294;
     s32 temp_r3_191;
     s32 var_r0_201;
 
@@ -100,14 +105,12 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
         temp_f29_75 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f28_80 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_80, temp_f29_75);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        spD8 = sp28;
+        temp_f0_91 = spC8 * (f64) var_f27_64;
+        sp28 = temp_f0_91;
+        spD8 = temp_f0_91;
         sp30 = spD0 * var_f27_64;
         spE0 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
+        M2C_FIELD(arg0, f64 *, 0) = (f64) (M2C_FIELD(arg0, f64 *, 0) + temp_f0_91);
         arg0->unk8 += (f32) spE0;
     }
     if (arg1 != NULL) {
@@ -171,8 +174,9 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
         sp40 = spA8.unk8 * var_f3_223;
         spB8 = (f64) sp38;
         spC0 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spE8 = sp48;
+        temp_f0_242 = spB8 * (f64) temp_f31_133;
+        sp48 = temp_f0_242;
+        spE8 = temp_f0_242;
         sp50 = (f32) spC0 * temp_f31_133;
         spF0 = (f64) sp50;
         sp100.RotatePYR(&sp100, *((MKVector3 *) &spE8));
@@ -186,10 +190,9 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp20;
         sp78 = (f64) sp18;
         sp80 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
-        arg1->unk8 *= MKRand_Float(&gViewSeed, this->unk10, this->unkC);
+        temp_f1_294 = MKRand_Float(&gViewSeed, this->unk10, this->unkC);
+        M2C_FIELD(arg1, f64 *, 0) = (f64) (M2C_FIELD(arg1, f64 *, 0) * temp_f1_294);
+        arg1->unk8 *= (f32) temp_f1_294;
     }
     if (arg2 != NULL) {
         temp_f1_308 = MKRand_Float(&gViewSeed, this->unk8, this->unk4);
@@ -259,7 +262,7 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
     MKVector3 spD8;
     f64 spD0;
     f64 spC8;
-    M2C_UNK spB8;
+    f64 spB8;
     MKVector3 spA8;
     f64 spA0;
     f64 sp98;
@@ -267,14 +270,20 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
     f64 sp80;
     f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_629;
     f32 temp_f1_686;
     f32 temp_f1_740;
@@ -286,6 +295,14 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
     f32 temp_f31_647;
     f32 temp_f31_731;
     f32 var_f29_636;
+    f64 temp_f0_544;
+    f64 temp_f0_555;
+    f64 temp_f0_581;
+    f64 temp_f0_607;
+    f64 temp_f0_663;
+    f64 temp_f0_706;
+    f64 temp_f1_767;
+    f64 temp_f3_543;
     s32 temp_r0_693;
     s32 temp_r3_448;
     s32 temp_r3_530;
@@ -331,35 +348,34 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
         if (temp_r3_530 & 8) {
             this->unk3C.unk2C.GetPositionAlongPath(this->unk38, sp168);
             temp_f31_541 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
-            sp108 = sp8;
+            temp_f3_543 = M2C_FIELD(arg0, f64 *, 0);
+            temp_f0_544 = M2C_BITWISE(f64, sp168) - temp_f3_543;
+            sp8 = temp_f0_544;
+            sp108 = temp_f0_544;
             sp10 = sp168.unk8 - arg0->unk8;
             sp110 = (f64) sp10;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp118 = sp58;
+            temp_f0_555 = temp_f0_544 * (f64) temp_f31_541;
+            sp58 = temp_f0_555;
+            sp118 = temp_f0_555;
             sp60 = (f32) sp110 * temp_f31_541;
             sp120 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+            M2C_FIELD(arg0, f64 *, 0) = (f64) (temp_f3_543 + temp_f0_555);
             arg0->unk8 += (f32) sp120;
         } else if (temp_r3_530 & 0x10) {
             this->unk3C.unk2C.GetPositionAlongPath(this->unk38, sp158);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp148 = sp68;
+            temp_f0_581 = M2C_BITWISE(f64, sp158) - M2C_FIELD(arg0, f64 *, 0);
+            sp68 = temp_f0_581;
+            sp148 = temp_f0_581;
             sp70 = sp158.unk8 - arg0->unk8;
             sp150 = (f64) sp70;
             spD8.operator*(0.5f * ((std *) (M2C_ERROR(/* Read from unset register $r3 */)))->sin(100.0f * this->unk38));
             spE8.operator*(0.5f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spF8 = sp48;
+            temp_f0_607 = spE8 + M2C_BITWISE(f64, spD8);
+            sp48 = temp_f0_607;
+            spF8 = temp_f0_607;
             sp50 = spE8.unk8 + spD8.unk8;
             sp100 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+            M2C_FIELD(arg0, f64 *, 0) = (f64) (M2C_FIELD(arg0, f64 *, 0) + temp_f0_607);
             arg0->unk8 += (f32) sp100;
         }
         if (this->unk9C & 0x20) {
@@ -373,14 +389,12 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             temp_f31_647 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f28_652 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_652, temp_f31_647);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            spC8 = sp38;
+            temp_f0_663 = spB8 * (f64) var_f29_636;
+            sp38 = temp_f0_663;
+            spC8 = temp_f0_663;
             sp40 = spC0 * var_f29_636;
             spD0 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+            M2C_FIELD(arg0, f64 *, 0) = (f64) (M2C_FIELD(arg0, f64 *, 0) + temp_f0_663);
             arg0->unk8 += (f32) spD0;
         }
     }
@@ -396,8 +410,9 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
         case 0:
             this->unk3C.GetPositionAlongPath(this->unk38, sp138);
             this->unk3C.unk2C.GetPositionAlongPath(this->unk38, sp128);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp98 = sp28;
+            temp_f0_706 = M2C_BITWISE(f64, sp128) - M2C_BITWISE(f64, sp138);
+            sp28 = temp_f0_706;
+            sp98 = temp_f0_706;
             sp30 = sp128.unk8 - sp138.unk8;
             spA0 = (f64) sp30;
             Normalise(spA8);
@@ -422,10 +437,9 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             M2C_FIELD(arg1, f64 *, 8) = (f64) this->unk20;
             break;
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
-        arg1->unk8 *= MKRand_Float(&gViewSeed, this->unk10, this->unkC);
+        temp_f1_767 = MKRand_Float(&gViewSeed, this->unk10, this->unkC);
+        M2C_FIELD(arg1, f64 *, 0) = (f64) (M2C_FIELD(arg1, f64 *, 0) * temp_f1_767);
+        arg1->unk8 *= (f32) temp_f1_767;
     }
 }
 #endif
@@ -539,25 +553,31 @@ void GameParticleEmitter::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal type
 void GameParticleEmitter::Update() {
     f64 sp30;
     f64 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_1088;
+    f64 temp_f1_1082;
     u32 temp_r0_1129;
     void **temp_r3_1110;
     void *temp_r3_1081;
+    void *temp_r4_1080;
 
     if ((u8) this->unkE0 != 0) {
+        temp_r4_1080 = this->unk8 + 0x30;
         temp_r3_1081 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
-        sp18 = M2C_FIELD(temp_r3_1081, f64 *, 0x30);
+        temp_f1_1082 = M2C_FIELD(temp_r3_1081, f64 *, 0x30);
+        sp18 = temp_f1_1082;
         sp20 = M2C_FIELD(temp_r3_1081, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp28 = sp8;
-        sp10 = (f32) sp20 - M2C_FIELD((this->unk8 + 0x30), f32 *, 8);
+        temp_f0_1088 = temp_f1_1082 - M2C_FIELD(temp_r4_1080, f64 *, 0);
+        sp8 = temp_f0_1088;
+        sp28 = temp_f0_1088;
+        sp10 = (f32) sp20 - M2C_FIELD(temp_r4_1080, f32 *, 8);
         sp30 = (f64) sp10;
         this->unk24 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C));
         if (!(this->unk24 > this->unkE4)) {
@@ -566,8 +586,7 @@ void GameParticleEmitter::Update() {
                 M2C_FIELD(*temp_r3_1110, M2C_UNK (**)(), 0x14)();
             }
             this->unkD8 += gUpdateTimeDelta;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (this->unkD8 == this->unkD4) {
+            if (this->unkD8 >= this->unkD4) {
                 this->unkD8 = 0.0f;
                 temp_r0_1129 = this->unkCC;
                 switch (temp_r0_1129) {
@@ -775,7 +794,9 @@ void GameParticleEmitter::EmitHeat() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_1502;
+    f64 temp_f0_1512;
     s32 var_r30_1486;
     void **temp_r3_1490;
 
@@ -791,8 +812,9 @@ loop_3:
             sp20 = 0.0f;
             sp28 = (f64) sp18;
             sp30 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp38 = sp8;
+            temp_f0_1512 = sp28 * 5.61841903e-315;
+            sp8 = temp_f0_1512;
+            sp38 = temp_f0_1512;
             sp10 = (f32) sp30 * 400.0f;
             sp40 = (f64) sp10;
             gb.unk240.Emit(sp58, *((MKVector3 *) &sp38), sp48, 1.0f);

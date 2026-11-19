@@ -98,8 +98,7 @@ void ElementalCombatController::Update() {
         this->unkC8.GetNumberActive();
         if ((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
             this->unk3EC += gUpdateTimeDelta;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (this->unk3EC == M2C_FIELD(this, f32 *, 0x3EC)) {
+            if (this->unk3EC >= M2C_FIELD(this, f32 *, 0x3EC)) {
                 temp_r3_240 = this->unk3E0;
                 if (temp_r3_240 > 0) {
                     ((EventMessage *) (this + (((temp_r3_240 - 1) * 4) + 0x3A0)))->Send((MKProp *) this);

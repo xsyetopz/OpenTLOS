@@ -21,12 +21,13 @@ static s8 name_982[0x20];
 
 static u32 testID = 1U;
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionAABB' to
 s32 MKCollisionManager::CalcMaxGridOverlap(const MKCollisionAABB &arg0, Matrix *arg1, MKCollisionMode arg2) {
     MKCollisionAABB sp30;
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 var_f4_43;
     f64 temp_f1_46;
@@ -40,7 +41,7 @@ s32 MKCollisionManager::CalcMaxGridOverlap(const MKCollisionAABB &arg0, Matrix *
     if ((s32) arg2 & 1) {
         sp30.unk14 = sp30.unk4;
     }
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = (f64) sp30.unk10 - M2C_BITWISE(f64, sp30);
     sp20 = sp10;
     sp18 = sp30.unk18 - sp30.unk8;
     sp28 = (f64) sp18;
@@ -1201,7 +1202,7 @@ loop_45:
                     }
                     if (var_r20_1670 != 0) {
                         temp_r3_1760 = M2C_FIELD(var_r17_1666, void **, 8);
-                        if ((M2C_FIELD(M2C_FIELD(temp_r3_1760, void **, 0), u8 (**)(void *, MKCollisionRay *, f32 *, M2C_UNK **), 0x10)(temp_r3_1760, &spA0, &sp158, &sp68) != 0) && ((temp_cr0_eq_1770 = var_r29_1540 == 0, (temp_cr0_eq_1770 != 0)) || ((temp_cr0_eq_1770 == 0) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((sp198 == sp140) != 0))))) {
+                        if ((M2C_FIELD(M2C_FIELD(temp_r3_1760, void **, 0), u8 (**)(void *, MKCollisionRay *, f32 *, M2C_UNK **), 0x10)(temp_r3_1760, &spA0, &sp158, &sp68) != 0) && ((temp_cr0_eq_1770 = var_r29_1540 == 0, (temp_cr0_eq_1770 != 0)) || ((temp_cr0_eq_1770 == 0) && (sp198 <= sp140)))) {
                             var_r29_1540 = 1;
                             var_r30_1539 = NULL;
                             sp100 = (f64) sp158;
@@ -1285,7 +1286,7 @@ loop_82:
                     }
                     if (var_r18_1854 != 0) {
                         temp_r3_1944 = M2C_FIELD(var_r17_1849, void **, 8);
-                        if ((M2C_FIELD(M2C_FIELD(temp_r3_1944, void **, 0), u8 (**)(void *, MKCollisionRay *, f32 *, M2C_UNK **), 0x10)(temp_r3_1944, &spA0, &sp158, &sp68) != 0) && ((temp_cr0_eq_1954 = var_r29_1540 == 0, (temp_cr0_eq_1954 != 0)) || ((temp_cr0_eq_1954 == 0) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((sp198 == sp140) != 0))))) {
+                        if ((M2C_FIELD(M2C_FIELD(temp_r3_1944, void **, 0), u8 (**)(void *, MKCollisionRay *, f32 *, M2C_UNK **), 0x10)(temp_r3_1944, &spA0, &sp158, &sp68) != 0) && ((temp_cr0_eq_1954 = var_r29_1540 == 0, (temp_cr0_eq_1954 != 0)) || ((temp_cr0_eq_1954 == 0) && (sp198 <= sp140)))) {
                             var_r29_1540 = 1;
                             var_r30_1539 = NULL;
                             sp100 = (f64) sp158;
@@ -1721,7 +1722,9 @@ void MKCollisionManager::AddCapsule(MKVector3 *arg0, MKVector3 *arg1, float arg2
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     MKCollisionManager *spC;
     u32 sp8;
     MKCollisionCapsuleItem *temp_r31_2671;
@@ -1741,16 +1744,14 @@ void MKCollisionManager::AddCapsule(MKVector3 *arg0, MKVector3 *arg1, float arg2
     sp88 = (f64) sp38;
     sp80 = (f64) sp30;
     Min(sp60, *arg0);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp20 = sp60 - sp80;
     sp70 = sp20;
     sp28 = sp60.unk8 - (f32) sp88;
     sp90 = sp20;
     sp78 = (f64) sp28;
     sp98 = (f64) sp28;
     Max(sp40, *arg0);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp10 = sp40 + sp80;
     sp50 = sp10;
     sp18 = sp40.unk8 + (f32) sp88;
     spA0 = sp10;
@@ -1785,9 +1786,12 @@ void MKCollisionManager::AddSphere(MKVector3 *arg0, float arg1, float arg2, cons
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     MKCollisionSphereItem *temp_r31_2794;
     f32 temp_f3_2820;
+    f64 temp_f2_2815;
 
     operator new(0x90U, NULL, 0);
     temp_r31_2794 = M2C_ERROR(/* Read from unset register $r3 */);
@@ -1802,15 +1806,15 @@ void MKCollisionManager::AddSphere(MKVector3 *arg0, float arg1, float arg2, cons
     sp38 = arg1;
     sp60 = (f64) sp30;
     sp68 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r26, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f1 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f1 */);
+    temp_f2_2815 = M2C_FIELD(arg0, f64 *, 0);
+    sp20 = temp_f2_2815 - (f64) sp30;
     temp_f3_2820 = arg0->unk8;
     sp50 = sp20;
     sp70 = sp20;
     sp28 = temp_f3_2820 - (f32) sp68;
     sp58 = (f64) sp28;
     sp78 = (f64) sp28;
+    sp10 = temp_f2_2815 + (f64) sp30;
     sp18 = temp_f3_2820 + (f32) sp68;
     sp40 = sp10;
     sp48 = (f64) sp18;
@@ -2125,8 +2129,7 @@ u8 UpdateBestResult(MKCollisionModel *arg0, bool arg1, const MKCollisionResult &
 
     if (arg1 != 0) {
         temp_f2_3358 = arg2.unk40;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f2_3358 == arg3->unk40) {
+        if (temp_f2_3358 <= arg3->unk40) {
             M2C_FIELD(arg3, f64 *, 0) = (f64) M2C_FIELD(&arg2, f64 *, 0);
             M2C_FIELD(arg3, f64 *, 8) = (f64) M2C_FIELD(&arg2, f64 *, 8);
             M2C_FIELD(arg3, f64 *, 0x10) = (f64) M2C_FIELD(&arg2, f64 *, 0x10);
@@ -2169,7 +2172,7 @@ void GetInterpolatedColorFromPoly(const MKVector3 &arg0, const MKVector3 *arg1) 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp148'
+#if 0 // DRAFT: undefined identifier 'unksp1BC'
 void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const MKVector4 *arg2) {
     f64 sp1D0;
     f64 sp1C8;
@@ -2188,11 +2191,14 @@ void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const 
     f64 sp160;
     f64 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp140;
+    f64 sp138;
     f32 sp130;
     f32 sp12C;
     f32 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp110;
     f32 sp10C;
     f32 sp108;
@@ -2205,13 +2211,29 @@ void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const 
     f64 spD0;
     f64 spC8;
     f32 spC0;
+    f64 spB8;
     f64 spB0;
     f64 spA8;
     f64 spA0;
     f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
+    f64 sp8;
     f32 temp_f0_3549;
     f32 temp_f1_3547;
     f32 temp_f29_3484;
@@ -2220,20 +2242,41 @@ void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const 
     f32 temp_f6_3474;
     f32 var_f2_3528;
     f32 var_f3_3564;
+    f32 var_f4_3668;
     f32 var_f6_3641;
+    f64 temp_f0_3470;
+    f64 temp_f0_3482;
+    f64 temp_f0_3579;
+    f64 temp_f0_3589;
+    f64 temp_f0_3614;
+    f64 temp_f0_3624;
+    f64 temp_f0_3634;
+    f64 temp_f0_3680;
+    f64 temp_f0_3690;
+    f64 temp_f0_3700;
+    f64 temp_f13_3468;
+    f64 temp_f2_3511;
+    f64 temp_f2_3572;
+    f64 temp_f2_3674;
+    f64 temp_f31_3481;
+    f64 temp_f3_3679;
+    f64 temp_f5_3469;
+    f64 temp_f7_3578;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f13, $r5, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f13, $f5 */);
+    temp_f13_3468 = M2C_FIELD(arg2, f64 *, 0x10);
+    temp_f5_3469 = M2C_FIELD(arg2, f64 *, 0);
+    temp_f0_3470 = temp_f13_3468 - temp_f5_3469;
+    sp148 = temp_f0_3470;
     temp_f30_3473 = M2C_FIELD(arg2, f32 *, 0x18);
     temp_f6_3474 = arg2->unk8;
-    sp1C8 = sp148;
+    sp1C8 = temp_f0_3470;
     sp150 = temp_f30_3473 - temp_f6_3474;
     sp1D0 = (f64) sp150;
-    M2C_ERROR(/* unknown instruction: psq_lx $f31, $r5, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f31, $f5 */);
+    temp_f31_3481 = M2C_FIELD(arg2, f64 *, 0x20);
+    temp_f0_3482 = temp_f31_3481 - temp_f5_3469;
+    sp138 = temp_f0_3482;
     temp_f29_3484 = M2C_FIELD(arg2, f32 *, 0x28);
-    sp1B8 = sp138;
+    sp1B8 = temp_f0_3482;
     sp140 = temp_f29_3484 - temp_f6_3474;
     sp1C0 = (f64) sp140;
     sp12C = ((f32) sp1C0 * (f32) sp1C8) - ((f32) sp1B8 * (f32) sp1D0);
@@ -2241,9 +2284,9 @@ void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const 
     sp130 = ((f32) sp1B8 * unksp1CC) - (unksp1BC * (f32) sp1C8);
     sp1A8 = (f64) sp128;
     sp1B0 = (f64) sp130;
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f2, $f2, $f5 */);
-    sp198 = sp118;
+    temp_f2_3511 = M2C_FIELD(arg1, f64 *, 0) - temp_f5_3469;
+    sp118 = temp_f2_3511;
+    sp198 = temp_f2_3511;
     sp120 = arg1->unk8 - temp_f6_3474;
     sp1A0 = (f64) sp120;
     var_f2_3528 = 0.0f;
@@ -2267,36 +2310,39 @@ void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const 
     } else {
         var_f3_3564 = 0.0f;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r6, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $r6, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r6, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f7, $r6, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f7 */);
+    temp_f2_3572 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f64 *, 0x10);
+    sp88 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f64 *, 0x20) - temp_f2_3572;
+    temp_f7_3578 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f64 *, 0x18);
+    temp_f0_3579 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f64 *, 0x28) - temp_f7_3578;
+    sp90 = temp_f0_3579;
     spF8 = sp88;
-    sp100 = sp90;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
+    sp100 = temp_f0_3579;
+    sp78 = spF8 * (f64) var_f3_3564;
+    temp_f0_3589 = temp_f0_3579 * (f64) var_f3_3564;
+    sp80 = temp_f0_3589;
     spE8 = sp78;
-    spF0 = sp80;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f7, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f31, $f13 */);
+    spF0 = temp_f0_3589;
+    sp68 = temp_f2_3572 + spE8;
+    sp70 = temp_f7_3578 + temp_f0_3589;
     sp178 = sp68;
     sp180 = sp70;
+    sp58 = temp_f31_3481 - temp_f13_3468;
     sp60 = temp_f29_3484 - temp_f30_3473;
     spD8 = sp58;
     spE0 = (f64) sp60;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    spC8 = sp48;
+    temp_f0_3614 = spD8 * (f64) var_f3_3564;
+    sp48 = temp_f0_3614;
+    spC8 = temp_f0_3614;
     sp50 = (f32) spE0 * var_f3_3564;
     spD0 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f13, $f0 */);
-    sp158 = sp38;
+    temp_f0_3624 = temp_f13_3468 + temp_f0_3614;
+    sp38 = temp_f0_3624;
+    sp158 = temp_f0_3624;
     sp40 = temp_f30_3473 + (f32) spD0;
     sp160 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f5 */);
-    sp168 = spB8;
+    temp_f0_3634 = temp_f0_3624 - temp_f5_3469;
+    spB8 = temp_f0_3634;
+    sp168 = temp_f0_3634;
     var_f6_3641 = 0.0f;
     spC0 = (f32) sp160 - temp_f6_3474;
     sp170 = (f64) spC0;
@@ -2310,21 +2356,26 @@ void InterpolateVertexColor(const MKVector3 &arg0, const MKVector3 *arg1, const 
         var_f6_3641 = 1.0f;
     }
     if (var_f6_3641 > 0.0f) {
-
+        var_f4_3668 = var_f6_3641;
+    } else {
+        var_f4_3668 = 0.0f;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r6, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f3, $r6, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
+    temp_f2_3674 = *M2C_ERROR(/* Read from unset register $r6 */);
+    sp28 = sp178 - temp_f2_3674;
+    temp_f3_3679 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f64 *, 8);
+    temp_f0_3680 = sp180 - temp_f3_3679;
+    sp30 = temp_f0_3680;
     spA8 = sp28;
-    spB0 = sp30;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f4 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f4 */);
+    spB0 = temp_f0_3680;
+    sp18 = spA8 * (f64) var_f4_3668;
+    temp_f0_3690 = temp_f0_3680 * (f64) var_f4_3668;
+    sp20 = temp_f0_3690;
     sp98 = sp18;
-    spA0 = sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+    spA0 = temp_f0_3690;
+    sp8 = temp_f2_3674 + sp98;
+    temp_f0_3700 = temp_f3_3679 + temp_f0_3690;
+    sp10 = temp_f0_3700;
     M2C_FIELD(&arg0, f64 *, 0) = sp8;
-    M2C_FIELD(&arg0, f64 *, 8) = sp10;
+    M2C_FIELD(&arg0, f64 *, 8) = temp_f0_3700;
 }
 #endif

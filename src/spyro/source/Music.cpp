@@ -424,8 +424,7 @@ void Music_Update() {
     if ((var_r31_832 != NULL) && ((s32) M2C_FIELD(var_r31_832, s32 *, 0x14) == 1)) {
         temp_f1_844 = stingTimerElapsed + gUpdateTimeDelta;
         stingTimerElapsed = temp_f1_844;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_844 == M2C_FIELD(var_r31_832, f32 *, 0x18)) {
+        if (temp_f1_844 >= M2C_FIELD(var_r31_832, f32 *, 0x18)) {
             Music_Stop(-1.0f);
             if ((u8) M2C_FIELD(var_r31_832, u8 *, 0x1D) != 0) {
                 Music_Resume();

@@ -26,9 +26,7 @@ loop_2:
         sp10.GetVelocity(*((MKVector3 *) arg0));
         sp10.unk10 = M2C_BITWISE(f64, sp10);
         sp10.unk18 = sp10.unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r31, 0x0, qr0 */);
+        M2C_FIELD(temp_r31_59, f64 *, 0) = (f64) (M2C_FIELD(temp_r31_59, f64 *, 0) + (f64) sp10.unk10);
         M2C_FIELD(temp_r31_59, f32 *, 8) = (f32) (M2C_FIELD(temp_r31_59, f32 *, 8) + (f32) sp10.unk8);
         var_r3_56 = GetNextParticle(&unksp8);
         goto loop_2;
@@ -43,7 +41,9 @@ void IceBreathSnowFlakes::UpdateParticles() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     MKParticleChunk *var_r30_109;
     MKParticleSystem::Envelope *temp_r3_199;
     f32 temp_f29_116;
@@ -52,6 +52,8 @@ void IceBreathSnowFlakes::UpdateParticles() {
     f32 temp_f5_206;
     f32 temp_f6_201;
     f32 var_f0_217;
+    f64 temp_f0_128;
+    f64 temp_f0_149;
     s32 temp_r3_173;
     s32 temp_r3_187;
     s32 temp_r4_198;
@@ -69,23 +71,19 @@ loop_12:
         if (temp_f29_116 > this->unk12C) {
             var_r30_109 = DestroyParticle(&unksp8);
         } else {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp40 = sp20;
+            temp_f0_128 = M2C_FIELD(temp_r29_112, f64 *, 0) * (f64) gUpdateTimeDelta;
+            sp20 = temp_f0_128;
+            sp40 = temp_f0_128;
             sp28 = M2C_FIELD(temp_r29_112, f32 *, 8) * gUpdateTimeDelta;
             sp48 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+            M2C_FIELD(var_r30_109, f64 *, 0) = (f64) (M2C_FIELD(var_r30_109, f64 *, 0) + temp_f0_128);
             var_r30_109->unk8 += (f32) sp48;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp30 = sp10;
+            temp_f0_149 = M2C_FIELD(this, f64 *, 0x108) * (f64) gUpdateTimeDelta;
+            sp10 = temp_f0_149;
+            sp30 = temp_f0_149;
             sp18 = this->unk110 * gUpdateTimeDelta;
             sp38 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+            M2C_FIELD(temp_r29_112, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_112, f64 *, 0) + temp_f0_149);
             M2C_FIELD(temp_r29_112, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_112, f32 *, 8) + (f32) sp38);
             var_r30_109->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r29_112, f32 *, 0x18);
             temp_r3_173 = M2C_FIELD(checked_cast<MKBaseParticleSystemDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80);

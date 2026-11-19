@@ -55,9 +55,8 @@ void UIText::Draw(const RenderContext &arg0) {
     sp34 = 0.0f;
     sp68 = (f64) sp38;
     sp60 = (f64) sp30;
-    if ((((s8 *) this->unk60 != NULL) || ((MKFont *) this->unk64 >= 0)) && ((MKFont *) this->unk64 != NULL) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk18.unk34 == 0.0f) == 0))) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk18.unk38 == 0.0f) {
+    if ((((s8 *) this->unk60 != NULL) || ((MKFont *) this->unk64 >= 0)) && ((MKFont *) this->unk64 != NULL) && !(this->unk18.unk34 <= 0.0f)) {
+        if (this->unk18.unk38 <= 0.0f) {
             return;
         }
         spB0.RenderContext();

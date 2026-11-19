@@ -79,9 +79,11 @@ void TotemPolePuzzle::LoadDone() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
+    f64 temp_f0_171;
     s32 var_r30_124;
     s32 var_r31_126;
 
@@ -98,7 +100,7 @@ loop_2:
         spC = this->unkD0;
         sp60 = (f64) sp10;
         sp58 = (f64) sp8;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp68 += sp58;
         var_r30_124 += 1;
         var_r31_126 += 4;
         sp70 = (f32) sp70 + (f32) sp60;
@@ -109,9 +111,9 @@ loop_2:
     sp30 = 0.0f;
     sp38 = (f64) sp28;
     sp40 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp48 = sp18;
+    temp_f0_171 = this->unkE0 - sp38;
+    sp18 = temp_f0_171;
+    sp48 = temp_f0_171;
     sp20 = (f32) M2C_FIELD(this, f64 *, 0xE8) - (f32) sp40;
     sp50 = (f64) sp20;
     MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp48));
@@ -344,8 +346,7 @@ void TotemPolePiece::Update() {
     if (var_f1_599 < 0.0f) {
         var_f1_599 = -var_f1_599;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (var_f1_599 == 0.000001f) {
+    if (var_f1_599 <= 0.000001f) {
         this->unkDC = temp_f2_598;
     }
     M2C_STRUCT_COPY((s32) &spC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);

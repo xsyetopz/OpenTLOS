@@ -59,7 +59,9 @@ void RotateProperty::Update() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -69,6 +71,7 @@ void RotateProperty::Update() {
     f32 temp_f2_160;
     f32 temp_f2_177;
     f32 temp_f2_194;
+    f64 temp_f0_217;
     s32 temp_r0_159;
     s32 temp_r0_175;
     s32 temp_r0_192;
@@ -76,19 +79,18 @@ void RotateProperty::Update() {
     s32 temp_r3_260;
     void *temp_r3_130;
     void *temp_r3_140;
+    void *temp_r3_214;
+    void *temp_r5_213;
     void *temp_r6_264;
 
     temp_r3_130 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) M2C_FIELD(temp_r3_130, u8 *, 0x84) != 0) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
+        sp20 = M2C_FIELD(this, f64 *, 0x20) * (f64) gUpdateTimeDelta;
         temp_r3_140 = temp_r3_130 + 0x40;
         sp60 = sp20;
         sp28 = this->unk28 * gUpdateTimeDelta;
         sp68 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+        M2C_FIELD(temp_r3_140, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_140, f64 *, 0) + sp20);
         M2C_FIELD(temp_r3_140, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_140, f32 *, 8) + (f32) sp68);
         temp_r0_159 = this->unk8 + 0x40;
         temp_f2_160 = *(*KDProperty::pInstanceMem + temp_r0_159);
@@ -113,11 +115,12 @@ void RotateProperty::Update() {
         }
         if ((s32) this->unk30 < 0) {
             temp_r3_212 = *KDProperty::pInstanceMem + this->unk8;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp50 = sp30;
-            sp38 = M2C_FIELD((temp_r3_212 + 0x50), f32 *, 8) + M2C_FIELD((temp_r3_212 + 0x40), f32 *, 8);
+            temp_r5_213 = temp_r3_212 + 0x40;
+            temp_r3_214 = temp_r3_212 + 0x50;
+            temp_f0_217 = M2C_FIELD(temp_r3_214, f64 *, 0) + M2C_FIELD(temp_r5_213, f64 *, 0);
+            sp30 = temp_f0_217;
+            sp50 = temp_f0_217;
+            sp38 = M2C_FIELD(temp_r3_214, f32 *, 8) + M2C_FIELD(temp_r5_213, f32 *, 8);
             sp58 = (f64) sp38;
             MKModel_SetRotation(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4), *((MKVector3 *) &sp50));
             M2C_STRUCT_COPY((s32) &unksp6C + 4, MKModel_GetWorldMatrix(M2C_FIELD(*KDProperty::pInstanceMem, MKModel **, 4)) - 4 + 4, 0x40);

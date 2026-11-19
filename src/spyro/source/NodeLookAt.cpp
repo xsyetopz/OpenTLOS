@@ -30,6 +30,7 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -66,6 +67,7 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
     f32 var_f11_219;
     f32 var_f2_213;
     f32 var_f31_210;
+    f64 temp_f0_104;
     u32 temp_r30_22;
     u32 temp_r30_30;
     u32 temp_r30_366;
@@ -89,9 +91,9 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
         sp60 = sp220.unk38 + (((f32) spD0 * sp220.unk28) + (((f32) spC8 * sp220.unk8) + (unkspCC * sp220.unk18)));
         sp88.unk30 = (f64) sp58;
         spC0 = (f64) sp60;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp88.unk20 = sp48;
+        temp_f0_104 = M2C_FIELD(arg0, f64 *, 0) - sp88.unk30;
+        sp48 = temp_f0_104;
+        sp88.unk20 = temp_f0_104;
         temp_f5_114 = M2C_BITWISE(f32, sp88.unk24);
         sp50 = arg0->unk8 - (f32) spC0;
         temp_f6_121 = M2C_BITWISE(f32, sp88.unk20);
@@ -193,8 +195,7 @@ void NodeLookAtIK::Update(MKVector3 *arg0) {
 #endif
 
 f32 ApplyThreshhold(float arg0, float arg1) {
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (arg0 == 0.0f) {
+    if (arg0 >= 0.0f) {
         if (arg0 < arg1) {
             return 0.0f;
         }
@@ -264,6 +265,7 @@ void NodeLookAt::Update(MKVector3 *arg0) {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -299,6 +301,7 @@ void NodeLookAt::Update(MKVector3 *arg0) {
     f32 var_f1_637;
     f32 var_f30_746;
     f32 var_f31_743;
+    f64 temp_f0_731;
     s32 temp_r29_661;
     u32 temp_r29_622;
     u32 temp_r30_662;
@@ -348,8 +351,9 @@ block_10:
             sp88.unk30 = (f64) sp48;
             spC0 = (f64) sp50;
             sp88.GetNodeOrigin(MKModel_GetAnimation(this->unk30));
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp88.unk20 = sp38;
+            temp_f0_731 = sp88.unk30 - M2C_BITWISE(f64, sp88);
+            sp38 = temp_f0_731;
+            sp88.unk20 = temp_f0_731;
             sp40 = (f32) spC0 - (f32) sp88.unk8;
             sp88.unk28 = (f64) sp40;
             var_f31_743 = KDMath_GetYaw(*((MKVector3 *) &sp88.unk20));

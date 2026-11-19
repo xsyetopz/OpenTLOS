@@ -48,6 +48,7 @@ void KDVolume::UpdateMatrix(Matrix &arg0) {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -92,9 +93,7 @@ void KDVolume::UpdateMatrix(Matrix &arg0) {
     sp50 = (f64) sp20;
     sp68 = (f64) sp18;
     sp70 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f13, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f12, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f12, $f13, $f12 */);
+    sp28 = M2C_FIELD(KDVolume::boundingVolume, f64 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f64 *, 0x10);
     var_f12_85 = unksp6C;
     sp58 = sp28;
     sp30 = (f32) M2C_FIELD(KDVolume::boundingVolume, f64 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18);
@@ -172,21 +171,12 @@ s32 KDVolume::IsWithinXZ(const MKVector3 &arg0, float *arg1) {
     sp18 = (f64) sp8;
     sp10 = this->unk38 + ((temp_f8_223 * this->unk28) + ((temp_f7_217 * this->unk8) + (temp_f6_213 * this->unk18)));
     sp20 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((f32) sp18 == M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((f32) sp18 == (M2C_FIELD(KDVolume::boundingVolume, f32 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x10))) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((f32) sp20 == M2C_FIELD(KDVolume::boundingVolume, f32 *, 8)) {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((f32) sp20 == (M2C_FIELD(KDVolume::boundingVolume, f32 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18))) {
-                    if (arg1 != NULL) {
-                        *arg1 = this->unk84;
-                    }
-                    return 1;
-                }
-            }
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
+    if (((f32) sp18 == M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) && ((f32) sp18 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x10))) && ((f32) sp20 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 8)) && ((f32) sp20 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18)))) {
+        if (arg1 != NULL) {
+            *arg1 = this->unk84;
         }
+        return 1;
     }
     return 0;
 }
@@ -216,24 +206,8 @@ s32 KDVolume::IsWithin(const MKVector3 &arg0, float *arg1) {
         sp10 = this->unk38 + ((temp_f8_304 * this->unk28) + ((temp_f7_299 * this->unk8) + (temp_f3_285 * this->unk18)));
         sp18 = (f64) sp8;
         sp20 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((f32) sp18 == M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((f32) sp18 == (M2C_FIELD(KDVolume::boundingVolume, f32 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x10))) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (unksp1C == M2C_FIELD(KDVolume::boundingVolume, f32 *, 4)) {
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if (unksp1C == (M2C_FIELD(KDVolume::boundingVolume, f32 *, 4) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x14))) {
-                        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                        if ((f32) sp20 == M2C_FIELD(KDVolume::boundingVolume, f32 *, 8)) {
-                            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                            if ((f32) sp20 == (M2C_FIELD(KDVolume::boundingVolume, f32 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18))) {
-                                var_r0_295 = 1;
-                            }
-                        }
-                    }
-                }
-            }
+        if (((f32) sp18 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) && ((f32) sp18 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x10))) && (unksp1C >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 4)) && (unksp1C <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 4) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x14))) && ((f32) sp20 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 8)) && ((f32) sp20 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18)))) {
+            var_r0_295 = 1;
         }
         if (var_r0_295 != 0) {
             if (arg1 != NULL) {

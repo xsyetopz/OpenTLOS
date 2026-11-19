@@ -35,7 +35,9 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -52,6 +54,8 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
     f32 temp_f3_258;
     f32 var_f1_208;
     f32 var_f1_266;
+    f64 temp_f0_112;
+    f64 temp_f0_122;
     s32 temp_r0_355;
     s32 temp_r28_301;
     s32 var_ctr_353;
@@ -83,12 +87,14 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
         sp48 = temp_f28_93;
         sp60 = (f64) sp40;
         sp68 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp70 = sp30;
+        temp_f0_112 = sp60 * 5.65176949e-315;
+        sp30 = temp_f0_112;
+        sp70 = temp_f0_112;
         sp38 = (f32) sp68 * 700.0f;
         sp78 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp90 = sp20;
+        temp_f0_122 = temp_f0_112 * (f64) temp_f31_88;
+        sp20 = temp_f0_122;
+        sp90 = temp_f0_122;
         sp28 = (f32) sp78 * temp_f31_88;
         sp98 = (f64) sp28;
         temp_f27_135 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);

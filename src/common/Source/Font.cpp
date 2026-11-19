@@ -861,8 +861,7 @@ loop_49:
             var_r23_1477 = NULL;
             var_r22_1478 = NULL;
 loop_24:
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((var_f24_1466 == arg1) || (arg1 == 0.0f)) {
+            if ((var_f24_1466 <= arg1) || (arg1 == 0.0f)) {
                 sp8 = var_r29_1459 - arg0;
                 var_r22_1478 = GetCharacter(arg0, &sp8, &spC);
                 var_r29_1459 = &arg0[sp8];

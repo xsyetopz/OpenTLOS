@@ -58,7 +58,9 @@ void AITargetData::Update(const MKVector3 &arg0) {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     Targetable *temp_r3_140;
@@ -72,6 +74,8 @@ void AITargetData::Update(const MKVector3 &arg0) {
     f32 var_f1_382;
     f32 var_f4_181;
     f32 var_f4_315;
+    f64 temp_f0_153;
+    f64 temp_f0_287;
     f64 temp_f1_187;
     f64 temp_f1_193;
     f64 temp_f1_197;
@@ -91,12 +95,11 @@ void AITargetData::Update(const MKVector3 &arg0) {
             temp_r3_140 = this->unk40.Get();
             if (temp_r3_140 != NULL) {
                 if (M2C_FIELD(temp_r3_140->__vptr, u8 (**)(MKVector3 *, AITargetData *), 0x24)(&arg0, this) != 0) {
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    this->unk20 = sp20;
+                    temp_f0_153 = this->unk0 - M2C_FIELD(&arg0, f64 *, 0);
+                    sp20 = temp_f0_153;
+                    this->unk20 = temp_f0_153;
                     sp28 = this->unk8 - arg0.unk8;
-                    sp50 = sp20;
+                    sp50 = temp_f0_153;
                     this->unk28 = (f64) sp28;
                     sp58 = (f64) sp28;
                     this->unk34 = M2C_FIELD(this, f32 *, 0x24);
@@ -160,12 +163,11 @@ void AITargetData::Update(const MKVector3 &arg0) {
             }
             break;
         case 2:                                     /* switch 1 */
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            this->unk20 = sp10;
+            temp_f0_287 = this->unk0 - M2C_FIELD(&arg0, f64 *, 0);
+            sp10 = temp_f0_287;
+            this->unk20 = temp_f0_287;
             sp18 = this->unk8 - arg0.unk8;
-            sp30 = sp10;
+            sp30 = temp_f0_287;
             this->unk28 = (f64) sp18;
             sp38 = (f64) sp18;
             this->unk34 = M2C_FIELD(this, f32 *, 0x24);

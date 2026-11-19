@@ -9,7 +9,7 @@ CustomMaterialUpdater **malloc(M2C_UNK);            /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp5C'
 void CustomMaterialUpdateManager::UpdateCameraRelativeScroll(CustomMaterialUpdater *arg0) {
     Matrix sp60;
     f64 sp58;
@@ -19,12 +19,14 @@ void CustomMaterialUpdateManager::UpdateCameraRelativeScroll(CustomMaterialUpdat
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     CustomMaterialUpdater **temp_r7_20;
     f32 temp_f2_54;
     f32 temp_f2_69;
+    f64 temp_f0_28;
     f64 temp_f5_23;
     f64 temp_f6_22;
     void *temp_r3_21;
@@ -35,34 +37,26 @@ void CustomMaterialUpdateManager::UpdateCameraRelativeScroll(CustomMaterialUpdat
     temp_f5_23 = M2C_FIELD(temp_r3_21, f64 *, 0x38);
     sp50 = temp_f6_22;
     sp58 = temp_f5_23;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r7, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_28 = sp50 - M2C_FIELD(temp_r7_20, f64 *, 0);
+    sp20 = temp_f0_28;
     M2C_FIELD(temp_r7_20, f64 *, 0) = temp_f6_22;
-    sp40 = sp20;
+    sp40 = temp_f0_28;
     sp28 = (f32) sp58 - M2C_FIELD(temp_r7_20, f32 *, 8);
     M2C_FIELD(temp_r7_20, f32 *, 8) = temp_f5_23;
     sp48 = (f64) sp28;
     M2C_FIELD(temp_r7_20, f32 *, 0x14) = (f32) ((((f32) sp40 / 10000.0f) * M2C_FIELD(temp_r7_20, f32 *, 0x10)) + M2C_FIELD(temp_r7_20, f32 *, 0x14));
     M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) -((((f32) sp48 / 10000.0f) * M2C_FIELD(temp_r7_20, f32 *, 0x10)) - M2C_FIELD(temp_r7_20, f32 *, 0x18));
     temp_f2_54 = M2C_FIELD(temp_r7_20, f32 *, 0x14);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f2_54 == 5.0f) {
+    if (temp_f2_54 >= 5.0f) {
         M2C_FIELD(temp_r7_20, f32 *, 0x14) = (f32) (temp_f2_54 - 5.0f);
-    } else {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f2_54 == -5.0f) {
-            M2C_FIELD(temp_r7_20, f32 *, 0x14) = (f32) (temp_f2_54 + 5.0f);
-        }
+    } else if (temp_f2_54 <= -5.0f) {
+        M2C_FIELD(temp_r7_20, f32 *, 0x14) = (f32) (temp_f2_54 + 5.0f);
     }
     temp_f2_69 = M2C_FIELD(temp_r7_20, f32 *, 0x18);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f2_69 == 5.0f) {
+    if (temp_f2_69 >= 5.0f) {
         M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) (temp_f2_69 - 5.0f);
-    } else {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f2_69 == -5.0f) {
-            M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) (temp_f2_69 + 5.0f);
-        }
+    } else if (temp_f2_69 <= -5.0f) {
+        M2C_FIELD(temp_r7_20, f32 *, 0x18) = (f32) (temp_f2_69 + 5.0f);
     }
     M2C_STRUCT_COPY((s32) &unksp5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp10 = M2C_FIELD(temp_r7_20, f32 *, 0x14);

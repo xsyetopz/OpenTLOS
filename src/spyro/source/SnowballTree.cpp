@@ -68,17 +68,13 @@ void SnowballTree::Update() {
     temp_f2_134 = this->unkBC;
     if (temp_f2_134 > 0.0f) {
         this->unkBC = temp_f2_134 - gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkBC == 0.0f) {
+        if (this->unkBC <= 0.0f) {
             this->unkB8 = KDSound_Play3d(M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x7C), &this->unkA0, 0U, -1, 0.0f, 0U);
         }
     }
-    if (((s32) M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x7C) != 0) && (KDSound_IsVoicePlaying(this->unkB8) == 0)) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkBC == 0.0f) {
-            temp_f31_172 = M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x84);
-            this->unkBC = MKRand_Float(&gViewSeed, M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80), temp_f31_172);
-        }
+    if (((s32) M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x7C) != 0) && (KDSound_IsVoicePlaying(this->unkB8) == 0) && (this->unkBC <= 0.0f)) {
+        temp_f31_172 = M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x84);
+        this->unkBC = MKRand_Float(&gViewSeed, M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80), temp_f31_172);
     }
     if (((u8) this->unkC4 != 0) && (this->unk80->unk2C & 1)) {
         this->unk80->SetAnim(M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x88), 1.0f, 0.0f, 0, -1);
@@ -92,9 +88,10 @@ void SnowballTree::LoadDone() {
     MKVector3 sp48;
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     s32 temp_r29_251;
     s32 var_r28_232;
     s32 var_r31_234;
@@ -103,8 +100,7 @@ void SnowballTree::LoadDone() {
     KDProp::LoadDone();
     MKVector(0.0f, 600.0f, 0.0f);
     sp28.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp28 + sp18;
     var_r28_232 = 0;
     var_r31_234 = 0;
     M2C_FIELD(this, f64 *, 0xA0) = sp8;

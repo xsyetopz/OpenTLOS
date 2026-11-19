@@ -39,7 +39,9 @@ void SpeedwayAA::Update() {
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -50,6 +52,9 @@ void SpeedwayAA::Update() {
     MKProp *temp_r3_87;
     f32 var_f4_200;
     f32 var_f5_221;
+    f64 temp_f0_136;
+    f64 temp_f0_147;
+    f64 temp_f1_130;
     f64 temp_f1_226;
     f64 temp_f1_232;
     f64 temp_f1_236;
@@ -80,23 +85,24 @@ void SpeedwayAA::Update() {
         M2C_FIELD(var_r4_84, u8 *, 4) = 0U;
     }
     this->unk140 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk140 == 0.0f) {
+    if (this->unk140 <= 0.0f) {
         this->unk140 = 0.0f;
         Disable();
     } else {
         temp_r3_122 = this->unk14C;
         if (((temp_r3_122 >> 7U) & 1) && ((temp_r3_122 >> 6U) & 1)) {
             temp_r3_127 = this->unk8;
-            sp90 = M2C_FIELD(temp_r3_127, f64 *, 0x30);
+            temp_f1_130 = M2C_FIELD(temp_r3_127, f64 *, 0x30);
+            sp90 = temp_f1_130;
             sp98 = M2C_FIELD(temp_r3_127, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp50 = sp40;
+            temp_f0_136 = this->unkC8 * (f64) gUpdateTimeDelta;
+            sp40 = temp_f0_136;
+            sp50 = temp_f0_136;
             sp48 = M2C_FIELD(this, f32 *, 0xD0) * gUpdateTimeDelta;
             sp58 = (f64) sp48;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp80 = sp30;
+            temp_f0_147 = temp_f1_130 + temp_f0_136;
+            sp30 = temp_f0_147;
+            sp80 = temp_f0_147;
             sp38 = (f32) sp98 + (f32) sp58;
             sp88 = (f64) sp38;
             if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp90), *((MKVector3 *) &sp80), 10.0f, &sp130, (MKCollisionMode) 7, 0) != 0) {

@@ -76,13 +76,10 @@ u8 NPCGuardianGoal_Idle::Update() {
         if ((temp_r5_154 != NULL) && ((u32) M2C_FIELD(temp_r5_154, u32 *, 0x20) == (u32) M2C_FIELD(M2C_FIELD(temp_r3_152, void **, 0x630), u32 *, 0x20))) {
             var_r6_153 = 1;
         }
-        if ((var_r6_153 != 0) && (temp_r3_152->HasAnimFinished() != 0)) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unk14) {
-                temp_r6_176 = this->unkC;
-                temp_r3_182 = temp_r6_176->unkA38->GetAnimSequence(1, 9, temp_r6_176->unkAE4, NULL);
-                this->unkC->SetAnim(temp_r3_182, temp_r3_182 + 0x40, 0.15f, 0U);
-            }
+        if ((var_r6_153 != 0) && (temp_r3_152->HasAnimFinished() != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk14)) {
+            temp_r6_176 = this->unkC;
+            temp_r3_182 = temp_r6_176->unkA38->GetAnimSequence(1, 9, temp_r6_176->unkAE4, NULL);
+            this->unkC->SetAnim(temp_r3_182, temp_r3_182 + 0x40, 0.15f, 0U);
         }
         temp_r3_191 = this->unkC;
         var_r6_192 = 0;

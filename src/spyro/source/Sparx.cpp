@@ -64,7 +64,10 @@ void Sparx::StateAction_StrafeTargetUpdate() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_69;
+    f64 temp_f0_88;
+    f64 temp_f1_82;
     void **temp_r30_49;
     void *temp_r31_59;
     void *temp_r3_81;
@@ -80,10 +83,12 @@ void Sparx::StateAction_StrafeTargetUpdate() {
         sp30 = (f64) sp20;
         sp28 = (f64) sp18;
         temp_r3_81 = M2C_FIELD(M2C_FIELD(*temp_r30_49, void *(**)(void **, f64, f32, f32), 8)(temp_r30_49, (f64) sp18, 75.0f, 2.0f), void **, 8);
-        sp38 = M2C_FIELD(temp_r3_81, f64 *, 0x30);
+        temp_f1_82 = M2C_FIELD(temp_r3_81, f64 *, 0x30);
+        sp38 = temp_f1_82;
         sp40 = M2C_FIELD(temp_r3_81, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp48 = sp8;
+        temp_f0_88 = temp_f1_82 + sp28;
+        sp8 = temp_f0_88;
+        sp48 = temp_f0_88;
         sp10 = (f32) sp40 + (f32) sp30;
         sp50 = (f64) sp10;
         UpdateLerpToWorldPos(*((MKVector3 *) &sp48), M2C_FIELD(temp_r31_59, f32 *, 0x98), 0.1f);
@@ -112,7 +117,7 @@ s32 Sparx::SetPath(SparxPath *arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp84'
 void Sparx::StateAction_FollowPathUpdate() {
     f64 sp88;
     f64 sp80;
@@ -125,13 +130,16 @@ void Sparx::StateAction_FollowPathUpdate() {
     MKVector3 sp40;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     SparxPath *temp_r30_342;
     SparxPath *temp_r4_309;
     f32 temp_f1_271;
     f32 var_f4_201;
+    f64 temp_f1_176;
     f64 temp_f1_204;
     f64 temp_f1_210;
     f64 temp_f1_214;
@@ -144,10 +152,10 @@ void Sparx::StateAction_FollowPathUpdate() {
 
     if ((u8) this->unk1FD == 0) {
         temp_r3_175 = this->unk1F4->unk8;
-        sp70 = M2C_FIELD(temp_r3_175, f64 *, 0x30);
+        temp_f1_176 = M2C_FIELD(temp_r3_175, f64 *, 0x30);
+        sp70 = temp_f1_176;
         sp78 = M2C_FIELD(temp_r3_175, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp20 = temp_f1_176 - this->unk208;
         sp80 = sp20;
         sp28 = (f32) sp78 - this->unk210;
         sp88 = (f64) sp28;
@@ -187,8 +195,7 @@ void Sparx::StateAction_FollowPathUpdate() {
         }
         this->unk200 += this->unk1F4->unkC0 / var_f4_201;
         temp_f1_271 = this->unk200;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_271 == 1.0f) {
+        if (temp_f1_271 >= 1.0f) {
             temp_r3_278 = this->unk1F4->unk8;
             temp_f2_279 = M2C_FIELD(temp_r3_278, f64 *, 0x30);
             temp_f1_280 = M2C_FIELD(temp_r3_278, f64 *, 0x38);
@@ -201,8 +208,7 @@ void Sparx::StateAction_FollowPathUpdate() {
             return;
         }
         sp40.operator*(temp_f1_271);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp10 = this->unk208 + M2C_BITWISE(f64, sp40);
         M2C_FIELD(this, f64 *, 0x2B0) = sp10;
         sp18 = this->unk210 + sp40.unk8;
         sp50 = sp10;
@@ -219,8 +225,7 @@ void Sparx::StateAction_FollowPathUpdate() {
     sp30.GetMeasure(this->unk200, (Matrix *) &this->unk1F4->unkB0->unk30, KDSpline_PositionMixer);
     M2C_FIELD(this, f64 *, 0x2B0) = sp30;
     this->unk2B0 = sp38;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk200 == 1.0f) {
+    if (this->unk200 >= 1.0f) {
         temp_r30_342 = this->unk1F4;
         SetState(0, 1U);
         if (temp_r30_342 != NULL) {
@@ -342,20 +347,17 @@ void Sparx::StateAction_SpyroHintEnter() {
     s32 temp_r0_558;
     void *temp_r3_588;
 
-    if (((s32) this->unk4C != 2) && (PhrasePlayer_IsAnyEventPlaying() == 0)) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_BITWISE(f32, this->unk2A8) == 0.0f) {
-            temp_r0_558 = this->unk4C;
-            switch (temp_r0_558) {                  /* irregular */
-            case 0:
-                this->unk298.unkC = M2C_BITWISE(f32, PhrasePlayer_PlayEvent("SparxSomethingOfInterest"));
-                break;
-            case 1:
-                this->unk298.unkC = M2C_BITWISE(f32, PhrasePlayer_PlayEvent("SparxDojoComeHere"));
-                break;
-            }
-            this->unk2A8 = M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xB4);
+    if (((s32) this->unk4C != 2) && (PhrasePlayer_IsAnyEventPlaying() == 0) && (M2C_BITWISE(f32, this->unk2A8) <= 0.0f)) {
+        temp_r0_558 = this->unk4C;
+        switch (temp_r0_558) {                      /* irregular */
+        case 0:
+            this->unk298.unkC = M2C_BITWISE(f32, PhrasePlayer_PlayEvent("SparxSomethingOfInterest"));
+            break;
+        case 1:
+            this->unk298.unkC = M2C_BITWISE(f32, PhrasePlayer_PlayEvent("SparxDojoComeHere"));
+            break;
         }
+        this->unk2A8 = M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xB4);
     }
     if ((u8) this->unk1F2 != 0) {
         temp_r3_588 = M2C_FIELD(this->unk1E8, void **, 8);
@@ -514,15 +516,19 @@ void Sparx::CalculateAttackPosition(bool arg0) {
     f64 sp68;
     f64 sp60;
     f64 sp58;
-    M2C_UNK sp48;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
-    f32 temp_f0_1009;
+    f32 temp_f2_1000;
     f32 temp_f3_965;
+    void *temp_r3_1003;
     void *temp_r3_963;
     void *temp_r4_1017;
 
@@ -534,26 +540,25 @@ void Sparx::CalculateAttackPosition(bool arg0) {
         sp10 = -M2C_FIELD(temp_r3_963, f32 *, 0x28);
         sp78 = (f64) sp8;
         sp80 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp38 = sp78 * (f64) temp_f3_965;
         sp88 = sp38;
         sp40 = (f32) sp80 * temp_f3_965;
         sp98 = sp38;
         sp90 = (f64) sp40;
         spA0 = (f64) sp40;
     } else {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        temp_f0_1009 = M2C_FIELD((M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8) + 0x20), f32 *, 8) * (100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x88));
+        temp_f2_1000 = 100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x88);
+        temp_r3_1003 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8) + 0x20;
+        sp28 = M2C_FIELD(temp_r3_1003, f64 *, 0) * (f64) temp_f2_1000;
         sp68 = sp28;
-        sp30 = temp_f0_1009;
+        sp30 = M2C_FIELD(temp_r3_1003, f32 *, 8) * temp_f2_1000;
         sp98 = sp28;
         sp70 = (f64) sp30;
         spA0 = (f64) sp30;
     }
     temp_r4_1017 = this->unk94;
-    M2C_FIELD(M2C_FIELD(temp_r4_1017, void **, 0x44), M2C_UNK (**)(M2C_UNK *, void *), 0x84)(&sp48, temp_r4_1017);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    M2C_FIELD(M2C_FIELD(temp_r4_1017, void **, 0x44), M2C_UNK (**)(f64 *, void *), 0x84)(&sp48, temp_r4_1017);
+    sp18 = sp48 + sp98;
     M2C_FIELD(this, f64 *, 0x278) = sp18;
     sp20 = sp50 + (f32) spA0;
     sp58 = sp18;
@@ -616,7 +621,7 @@ void Sparx::CalculateLongIdle2Spline() {
     f64 spC0;
     f64 spB8;
     f64 spB0;
-    M2C_UNK spA0;
+    f64 spA0;
     f64 sp98;
     f64 sp90;
     f64 sp88;
@@ -628,21 +633,27 @@ void Sparx::CalculateLongIdle2Spline() {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     Frustum *temp_r28_1165;
     f32 temp_f27_1203;
     f32 temp_f4_1336;
     f32 var_f4_1222;
     f32 var_f5_1288;
+    f64 temp_f0_1352;
     f64 temp_f1_1227;
     f64 temp_f1_1233;
     f64 temp_f1_1237;
+    f64 temp_f5_1332;
     s32 temp_r3_1256;
     s32 var_r0_1266;
     s32 var_r24_1169;
@@ -778,8 +789,7 @@ loop_35:
     unksp124 *= var_f5_1288;
     sp128 = (f32) sp128 * var_f5_1288;
     sp100.operator*(MKRand_Float(&gViewSeed, 250.0f, 5250.0f));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp20 = M2C_FIELD(this, f64 *, 0x2B0) + M2C_BITWISE(f64, sp100);
     sp40 = 0.0f;
     sp44 = 10000.0f;
     sp28 = M2C_FIELD(this, f32 *, 0x2B8) + sp100.unk8;
@@ -790,8 +800,8 @@ loop_35:
     sp110 = sp20;
     sp118 = (f64) sp28;
     spC8 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: psq_lx $f5, $r25, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+    temp_f5_1332 = this->unk1B8;
+    sp30 = temp_f5_1332 + spC0;
     temp_f4_1336 = (f32) M2C_FIELD(this, f64 *, 0x1C0);
     sp68 = 0.0f;
     sp60 = 0.0f;
@@ -801,14 +811,14 @@ loop_35:
     spD0 = sp30;
     spD8 = (f64) sp38;
     spE8 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-    spF0 = sp50;
+    temp_f0_1352 = temp_f5_1332 + spE0;
+    sp50 = temp_f0_1352;
+    spF0 = temp_f0_1352;
     sp58 = temp_f4_1336 + (f32) spE8;
     spF8 = (f64) sp58;
     if (MKCollision_RayCollide(*((MKVector3 *) &spF0), *((MKVector3 *) &spD0), &this->unk220, (MKCollisionMode) 7, 0x04000000) != 0) {
         MKVector(0.0f, MKRand_Float(&gViewSeed, 500.0f, 1500.0f), 0.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp10 = M2C_FIELD(this, f64 *, 0x220) + spA0;
         this->unk1B8 = sp10;
         sp18 = this->unk220.unk8 + spA8;
         spB0 = sp10;
@@ -837,8 +847,7 @@ void Sparx::StateAction_SpyroLongIdle2Update() {
     void *temp_r31_1560;
 
     this->unk1D8 += gUpdateTimeDelta * (1.0f / M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xBC));
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk1D8 == 1.0f) {
+    if (this->unk1D8 >= 1.0f) {
         SetState(0, 0U);
         return;
     }
@@ -882,7 +891,7 @@ void Sparx::StateAction_SpyroLongIdle1Update() {
 
     UpdateLerpToLocalOffset(M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x94));
     this->unkEC += gUpdateTimeDelta * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xB0);
-    if (((this->unkF4 == 1.0f) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((this->unkF0 == (100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xAC))) != 0))) || ((this->unkF4 == -1.0f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unkF0 == (100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xA8))) != 0)))) {
+    if (((this->unkF4 == 1.0f) && (this->unkF0 >= (100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xAC)))) || ((this->unkF4 == -1.0f) && (this->unkF0 <= (100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xA8))))) {
         this->unkF4 = -this->unkF4;
     }
     this->unkF0 += 100.0f * this->unkF4 * gUpdateTimeDelta;
@@ -930,20 +939,20 @@ void Sparx::StateAction_SpyroLongIdle1Exit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void Sparx::StateAction_SpyroLongIdle1Enter() {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
+    f64 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
     void *temp_r4_1777;
 
     sp18.operator*(200.0f);
     temp_r4_1777 = this->unk94;
-    M2C_FIELD(M2C_FIELD(temp_r4_1777, void **, 0x44), M2C_UNK (**)(M2C_UNK *, void *), 0x84)(&sp28, temp_r4_1777);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    M2C_FIELD(M2C_FIELD(temp_r4_1777, void **, 0x44), M2C_UNK (**)(f64 *, void *), 0x84)(&sp28, temp_r4_1777);
+    sp8 = sp28 + M2C_BITWISE(f64, sp18);
     M2C_FIELD(this, f64 *, 0xD8) = sp8;
     sp10 = sp30 + sp18.unk8;
     sp38 = sp8;
@@ -1061,25 +1070,27 @@ void Sparx::Enable() {
     temp_r3_2034->Enable();
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: undefined identifier 'unksp3C'
 u8 Sparx::UpdateLerpToWorldPos(const MKVector3 &arg0, float arg1, float arg2) {
     f64 sp40;
     f64 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_2053;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp38 = sp18;
+    temp_f0_2053 = M2C_FIELD(&arg0, f64 *, 0) - M2C_FIELD(this, f64 *, 0x2B0);
+    sp18 = temp_f0_2053;
+    sp38 = temp_f0_2053;
     sp20 = arg0.unk8 - M2C_FIELD(this, f32 *, 0x2B8);
     sp40 = (f64) sp20;
     if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) < arg2) {
         return 0U;
     }
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f4 */);
+    sp8 = sp38 * (f64) arg1;
     sp10 = (f32) sp40 * arg1;
     this->unk2B8 = sp8;
     this->unk2C0 = (f64) sp10;
@@ -1116,16 +1127,22 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 var_f4_2221;
     f32 var_f4_2288;
+    f64 temp_f0_2331;
     f64 temp_f1_2227;
     f64 temp_f1_2233;
     f64 temp_f1_2237;
@@ -1152,17 +1169,14 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
         if (this->unkC4 > 3.0f) {
             spD0 = (f64) M2C_FIELD(temp_r3_2114, f32 *, 0x30);
             spD8 = (f64) M2C_FIELD(temp_r3_2114, f32 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp10 = M2C_FIELD(this, f64 *, 0x2B0) - spD0;
             sp70 = sp10;
             sp18 = M2C_FIELD(this, f32 *, 0x2B8) - (f32) spD8;
             sp80 = sp10;
             sp78 = (f64) sp18;
             sp88 = (f64) sp18;
             if (((((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (unksp74 * unksp74))) < 2250000.0f) && (MKCollision_RayCollide(*((MKVector3 *) &this->unk2AC), *((MKVector3 *) &sp120), &this->unk220, (MKCollisionMode) 7, 0x04000000) != 0)) {
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp60 = M2C_FIELD(this, f64 *, 0x220) - M2C_FIELD(this, f64 *, 0x2B0);
                 sp100 = sp60;
                 sp68 = this->unk220.unk8 - M2C_FIELD(this, f32 *, 0x2B8);
                 sp108 = (f64) sp68;
@@ -1209,8 +1223,7 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
                 unksp104 *= var_f4_2288;
                 sp108 = (f32) sp108 * var_f4_2288;
                 spB0.operator*(50.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp30 = M2C_FIELD(this, f64 *, 0x220) - M2C_BITWISE(f64, spB0);
                 spC0 = sp30;
                 sp38 = this->unk220.unk8 - spB0.unk8;
                 sp120 = sp30;
@@ -1222,12 +1235,12 @@ void Sparx::UpdateLerpToLocalOffset(float arg0) {
         sp120 = M2C_FIELD(this, f64 *, 0x2B0);
         sp128 = this->unk2B0;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    spF0 = sp50;
+    temp_f0_2331 = sp120 - M2C_FIELD(this, f64 *, 0x2B0);
+    sp50 = temp_f0_2331;
+    spF0 = temp_f0_2331;
     sp58 = (f32) sp128 - M2C_FIELD(this, f32 *, 0x2B8);
     spF8 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp20 = temp_f0_2331 * (f64) arg0;
     this->unk2B8 = sp20;
     sp28 = (f32) spF8 * arg0;
     spA0 = sp20;
@@ -1270,8 +1283,11 @@ void Sparx::Update() {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp24;
@@ -1286,15 +1302,17 @@ void Sparx::Update() {
     SparxFX *temp_r6_2638;
     SparxFX *temp_r7_2619;
     f32 *temp_r30_2553;
-    f32 temp_f0_2544;
     f32 temp_f1_2418;
     f32 temp_f2_2394;
     f32 temp_f2_2417;
+    f32 temp_f30_2538;
     f32 temp_f3_2419;
     f32 var_f0_2399;
     f32 var_f2_2492;
     f32 var_f31_2491;
     f32 var_f4_2424;
+    f64 temp_f0_2513;
+    f64 temp_f0_2579;
     f64 temp_f1_2430;
     f64 temp_f1_2436;
     f64 temp_f1_2440;
@@ -1362,20 +1380,17 @@ void Sparx::Update() {
     M2C_FIELD(this, f32 *, 0x2C4) = (f32) (M2C_FIELD(this, f32 *, 0x2C4) * var_f2_2492);
     M2C_FIELD(this, f32 *, 0x2C8) = (f32) (M2C_FIELD(this, f32 *, 0x2C8) * var_f2_2492);
     if (var_f31_2491 > 0.0f) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp120 = sp40;
+        temp_f0_2513 = this->unk2B8 * (f64) var_f31_2491;
+        sp40 = temp_f0_2513;
+        sp120 = temp_f0_2513;
         sp48 = M2C_FIELD(this, f32 *, 0x2C8) * var_f31_2491;
         sp128 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        M2C_FIELD(this, f64 *, 0x2B0) = (f64) (M2C_FIELD(this, f64 *, 0x2B0) + temp_f0_2513);
         M2C_FIELD(this, f32 *, 0x2B8) = (f32) (M2C_FIELD(this, f32 *, 0x2B8) + (f32) sp128);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        temp_f0_2544 = M2C_FIELD(this, f32 *, 0x2C8) * -((gUpdateTimeDelta * (100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C))) - var_f31_2491);
+        temp_f30_2538 = -((gUpdateTimeDelta * (100.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C))) - var_f31_2491);
+        sp30 = this->unk2B8 * (f64) temp_f30_2538;
         this->unk2B8 = sp30;
-        sp38 = temp_f0_2544;
+        sp38 = M2C_FIELD(this, f32 *, 0x2C8) * temp_f30_2538;
         sp110 = sp30;
         sp118 = (f64) sp38;
         this->unk2C0 = (f64) sp38;
@@ -1392,9 +1407,9 @@ void Sparx::Update() {
     sp68 = 0.0f;
     spF0 = (f64) sp60;
     spF8 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp100 = sp50;
+    temp_f0_2579 = (f64) M2C_FIELD(this, f32 *, 0x80) + spF0;
+    sp50 = temp_f0_2579;
+    sp100 = temp_f0_2579;
     sp58 = this->unk50.unk38 + (f32) spF8;
     sp108 = (f64) sp58;
     if (MKCollision_RayCollide(*((MKVector3 *) temp_r30_2553), *((MKVector3 *) &sp100), &sp130, (MKCollisionMode) 4, 0x04000000) != 0) {
@@ -1436,7 +1451,7 @@ void Sparx::Teleport() {
     this->unkC4 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: undefined identifier 'unksp3C'
 void Sparx::SetHint(SparxHintMsg *arg0) {
     s32 spEC;
     s32 spE8;
@@ -1489,7 +1504,11 @@ void Sparx::SetHint(SparxHintMsg *arg0) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_2965;
+    f64 temp_f0_2983;
     s32 temp_r5_2906;
     s32 temp_r5_3023;
     s32 temp_r5_3055;
@@ -1556,12 +1575,14 @@ void Sparx::SetHint(SparxHintMsg *arg0) {
             temp_r3_2958 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 8);
             sp48 = M2C_FIELD(temp_r3_2958, f64 *, 0x30);
             sp50 = M2C_FIELD(temp_r3_2958, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
-            sp28 = sp8;
+            temp_f0_2965 = sp48 - sp68;
+            sp8 = temp_f0_2965;
+            sp28 = temp_f0_2965;
             sp10 = (f32) sp50 - (f32) sp70;
             sp30 = (f64) sp10;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
-            sp38 = sp18;
+            temp_f0_2983 = sp48 - sp58;
+            sp18 = temp_f0_2983;
+            sp38 = temp_f0_2983;
             sp20 = (f32) sp50 - (f32) sp60;
             sp40 = (f64) sp20;
             if ((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) < (((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C)))) {
@@ -1691,11 +1712,12 @@ u8 Sparx::GetTaskMode() {
 void Sparx::Spawn() {
     f64 sp60;
     f64 sp58;
-    M2C_UNK sp48;
+    f64 sp48;
     MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -1709,9 +1731,8 @@ void Sparx::Spawn() {
     this->unk278.unkC = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
     sp38.operator*(1000.0f);
     temp_r4_3268 = this->unk94;
-    M2C_FIELD(M2C_FIELD(temp_r4_3268, void **, 0x44), M2C_UNK (**)(M2C_UNK *, void *), 0x84)(&sp48, temp_r4_3268);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    M2C_FIELD(M2C_FIELD(temp_r4_3268, void **, 0x44), M2C_UNK (**)(f64 *, void *), 0x84)(&sp48, temp_r4_3268);
+    sp18 = sp48 + M2C_BITWISE(f64, sp38);
     sp10 = 0.0f;
     sp20 = sp50 + sp38.unk8;
     M2C_FIELD(this, f64 *, 0x2B0) = sp18;
@@ -1738,11 +1759,12 @@ void Sparx::Spawn() {
 void Sparx::RespawnOnSpyroDeath() {
     f64 sp60;
     f64 sp58;
-    M2C_UNK sp48;
+    f64 sp48;
     MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -1783,9 +1805,8 @@ void Sparx::RespawnOnSpyroDeath() {
         this->unk278.unkC = 2.0f * M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80);
         sp38.operator*(1000.0f);
         temp_r4_3404 = this->unk94;
-        M2C_FIELD(M2C_FIELD(temp_r4_3404, void **, 0x44), M2C_UNK (**)(M2C_UNK *, void *), 0x84)(&sp48, temp_r4_3404);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        M2C_FIELD(M2C_FIELD(temp_r4_3404, void **, 0x44), M2C_UNK (**)(f64 *, void *), 0x84)(&sp48, temp_r4_3404);
+        sp18 = sp48 + M2C_BITWISE(f64, sp38);
         sp10 = 0.0f;
         sp20 = sp50 + sp38.unk8;
         M2C_FIELD(this, f64 *, 0x2B0) = sp18;
@@ -1937,7 +1958,6 @@ void Sparx::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void SparxDescriptor::LoadDone() {
     f64 sp40;
     f64 sp38;
@@ -1947,6 +1967,7 @@ void SparxDescriptor::LoadDone() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKPropDescriptor::LoadDone();
     sp18 = -1.0f;
@@ -1956,8 +1977,7 @@ void SparxDescriptor::LoadDone() {
     this->unk68 = (f64) sp20;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp8 = this->unk60 * 1.591496843e-314;
     this->unk70 = sp8;
     sp10 = (f32) M2C_FIELD(this, f64 *, 0x68) * -2.0f;
     sp28 = sp8;
@@ -1965,7 +1985,6 @@ void SparxDescriptor::LoadDone() {
     sp30 = (f64) sp10;
     this->unk1C = (BoundingVolume *) &this->unk60;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SparxDescriptor::LoadLine(MKIniLine *arg0) {

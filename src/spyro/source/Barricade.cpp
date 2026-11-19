@@ -16,14 +16,14 @@ extern M2C_UNK gb;
 s32 BarricadeProp::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKVector(0.0f, 100.0f, 0.0f);
     sp28.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;
     sp38 = sp8;
@@ -39,12 +39,12 @@ s32 BarricadeProp::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     MKVector3 sp28;
     M2C_UNK sp18;
     f32 sp10;
+    f64 sp8;
 
     sp18.GetDir();
     sp28.operator*(-150.0f);
     sp38.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp38 + M2C_BITWISE(f64, sp28);
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = M2C_BITWISE(f32, sp38.unk8) + sp28.unk8;
     sp38.unk10 = sp8;
@@ -74,6 +74,7 @@ void BarricadeProp::Message(MKMessage *arg0) {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -81,6 +82,7 @@ void BarricadeProp::Message(MKMessage *arg0) {
     f32 sp8;
     f32 temp_f1_208;
     f32 temp_f26_171;
+    f64 temp_f0_196;
     s32 temp_r0_237;
     s32 var_r29_162;
     void *temp_r5_170;
@@ -105,9 +107,9 @@ void BarricadeProp::Message(MKMessage *arg0) {
             sp60 = (f64) sp30;
             sp68 = (f64) sp38;
             KDRand_Vector(sp80, *((MKVector3 *) &sp70));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp90 = sp20;
+            temp_f0_196 = sp80 * 5.717499035e-315;
+            sp20 = temp_f0_196;
+            sp90 = temp_f0_196;
             sp28 = sp80.unk8 * 2000.0f;
             sp98 = (f64) sp28;
             temp_f1_208 = MKRand_Float(&gViewSeed, 10.0f, 15.0f);

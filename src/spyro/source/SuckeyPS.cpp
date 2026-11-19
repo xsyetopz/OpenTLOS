@@ -14,6 +14,7 @@ void SuckeyPS::UpdateParticles() {
     f64 sp30;
     MKVector3 sp20;
     f32 sp18;
+    f64 sp10;
     MKParticleChunk *var_r30_77;
     MKParticleSystem::Envelope *temp_r3_141;
     f32 temp_f2_82;
@@ -54,8 +55,7 @@ loop_18:
             }
             M2C_FIELD(temp_r29_80, f32 *, 0x20) = var_f0_95;
             sp20.operator*(M2C_FIELD(temp_r29_80, f32 *, 0x20));
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp10 = M2C_FIELD(temp_r29_80, f64 *, 0x10) + M2C_BITWISE(f64, sp20);
             M2C_FIELD(var_r30_77, f64 *, 0) = sp10;
             sp18 = M2C_FIELD(temp_r29_80, f32 *, 0x18) + sp20.unk8;
             sp30 = sp10;
@@ -106,6 +106,7 @@ void SuckeyPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &a
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     void *temp_r30_220;
     void *temp_r3_215;
 
@@ -130,8 +131,7 @@ void SuckeyPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &a
         sp48 = (f64) sp18;
         sp50 = (f64) sp20;
         sp28.operator*(M2C_FIELD(temp_r30_220, f32 *, 0x20));
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp8 = M2C_FIELD(temp_r30_220, f64 *, 0x10) + M2C_BITWISE(f64, sp28);
         M2C_FIELD(temp_r3_215, f64 *, 0) = sp8;
         sp10 = (f32) M2C_FIELD(temp_r30_220, f64 *, 0x18) + sp28.unk8;
         sp38 = sp8;

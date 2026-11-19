@@ -258,7 +258,7 @@ void MoltenMetalBucket::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: illegal type
 void MoltenMetalBucket::Update() {
     s8 sp1A8;
     s32 sp1A4;
@@ -302,6 +302,7 @@ void MoltenMetalBucket::Update() {
     f64 spB0;
     f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
@@ -309,40 +310,47 @@ void MoltenMetalBucket::Update() {
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     s32 spC;
     s32 sp8;
     f32 temp_f30_382;
+    f32 temp_f3_470;
     f32 var_f29_377;
     f32 var_f3_372;
     f32 var_f4_282;
     f32 var_f4_349;
+    f64 temp_f0_434;
     f64 temp_f1_288;
     f64 temp_f1_294;
     f64 temp_f1_298;
+    f64 temp_f4_413;
     s32 temp_r3_317;
     s32 var_r0_327;
     u8 var_r30_384;
+    void *temp_r3_225;
     void *temp_r3_240;
     void *temp_r4_533;
     void *temp_r4_554;
     void *temp_r4_575;
 
     GameProp::Update();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_r3_225 = this->unk8 + 0x30;
+    sp18 = M2C_FIELD(temp_r3_225, f64 *, 0) - this->unkC8;
     this->unkD8 = sp18;
-    sp20 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) - this->unkD0;
+    sp20 = M2C_FIELD(temp_r3_225, f32 *, 8) - this->unkD0;
     sp118 = sp18;
     this->unkE0 = (f64) sp20;
     temp_r3_240 = this->unk8;
@@ -352,7 +360,7 @@ void MoltenMetalBucket::Update() {
     if (((u8) this->unkE8 >> 7U) & 1) {
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), &sp148);
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8), &sp138);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp98 = M2C_BITWISE(f64, sp138) - M2C_BITWISE(f64, sp148);
         sp108 = sp98;
         spA0 = sp138.unk8 - sp148.unk8;
         sp110 = (f64) spA0;
@@ -400,8 +408,7 @@ void MoltenMetalBucket::Update() {
         sp90 = (f32) sp110 * var_f4_349;
         sp128 = (f64) sp88;
         sp130 = (f64) sp90;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (unksp12C == 0.0f) {
+        if (unksp12C <= 0.0f) {
             var_f3_372 = 1.5f * unksp12C;
             if (var_f3_372 < 0.0f) {
                 var_f3_372 = -var_f3_372;
@@ -435,7 +442,8 @@ void MoltenMetalBucket::Update() {
             sp1A4 = -1;
             sp1A8 = 0;
             spD0 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+            temp_f4_413 = M2C_BITWISE(f64, sp148);
+            sp48 = temp_f4_413 + spC8;
             sp80 = 0.0f;
             sp78 = 0.0f;
             sp7C = -50.0f;
@@ -444,8 +452,9 @@ void MoltenMetalBucket::Update() {
             spD8 = sp48;
             spE0 = (f64) sp50;
             spF0 = (f64) sp80;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
-            spF8 = sp68;
+            temp_f0_434 = temp_f4_413 + spE8;
+            sp68 = temp_f0_434;
+            spF8 = temp_f0_434;
             sp70 = sp148.unk8 + (f32) spF0;
             sp100 = (f64) sp70;
             if (MKCollision_RayCollide(*((MKVector3 *) &spF8), *((MKVector3 *) &spD8), (MKCollisionResult *) &sp158, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -456,9 +465,10 @@ void MoltenMetalBucket::Update() {
             }
             sp8 = -1;
             this->unk180.Init((MKProp *) this, 1, 0, 0, 0, 0, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            temp_f3_470 = 100.0f * temp_f30_382;
+            sp38 = sp128 * (f64) temp_f3_470;
             sp30 = 1.5f;
-            sp40 = (f32) sp130 * (100.0f * temp_f30_382);
+            sp40 = (f32) sp130 * temp_f3_470;
             sp28 = temp_f30_382;
             sp2C = temp_f30_382;
             spB8 = sp38;

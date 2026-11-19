@@ -97,17 +97,22 @@ void WobbleProp::Update() {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKVector3 *temp_r30_287;
-    f32 temp_f0_257;
     f32 temp_f28_174;
     f32 temp_f28_351;
     f32 temp_f29_193;
     f32 temp_f2_252;
     f32 temp_f31_209;
     f32 var_f1_322;
+    f64 temp_f0_191;
+    f64 temp_f0_332;
     s32 temp_ret_322;
     void *temp_r3_231;
     void *temp_r4_249;
@@ -126,10 +131,10 @@ void WobbleProp::Update() {
         }
     }
     temp_r5_188 = this->unkC8;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_191 = M2C_FIELD(temp_r5_188, f64 *, 0) - spB8;
+    sp38 = temp_f0_191;
     temp_f29_193 = temp_f28_174 * temp_f28_174;
-    spA8 = sp38;
+    spA8 = temp_f0_191;
     sp40 = M2C_FIELD(temp_r5_188, f32 *, 8) - (f32) spC0;
     spB0 = (f64) sp40;
     temp_f31_209 = ((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC));
@@ -138,7 +143,7 @@ void WobbleProp::Update() {
         M2C_FIELD(temp_r5_188, f64 *, 0x18) = (f64) M2C_FIELD(temp_r5_188, f32 *, 8);
         Normalise(sp68);
         sp78.operator*(temp_f28_174);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp8 = spB8 + M2C_BITWISE(f64, sp78);
         temp_r3_231 = this->unkC8;
         sp88 = sp8;
         sp10 = (f32) spC0 + sp78.unk8;
@@ -149,15 +154,11 @@ void WobbleProp::Update() {
         if (((s32) M2C_FIELD(checked_cast<WobblePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4) != 0) && ((u8) this->unkDC == 0)) {
             temp_r4_249 = this->unkC8;
             temp_f2_252 = temp_f28_174 * M2C_FIELD(checked_cast<WobblePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xE8);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            temp_f0_257 = temp_f2_252 * temp_f2_252;
+            sp28 = M2C_FIELD(temp_r4_249, f64 *, 0) - *(temp_r4_249 + 0x10);
             sp58 = sp28;
             sp30 = M2C_FIELD(temp_r4_249, f32 *, 8) - (f32) M2C_FIELD(temp_r4_249, f64 *, 0x18);
             sp60 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C))) == temp_f0_257) {
+            if ((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C))) >= (temp_f2_252 * temp_f2_252)) {
                 this->unkDC = 1;
                 if (KDSound_IsVoicePlaying(this->unkD8) != 0) {
                     KDSound_Stop(&this->unkD8);
@@ -177,28 +178,24 @@ void WobbleProp::Update() {
     }
     temp_ret_322 = KDSound_IsVoicePlaying(this->unkD8);
     var_f1_322 = M2C_BITWISE(f32, temp_ret_322);
-    if (temp_ret_322 != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f31_209 == temp_f29_193) {
-            temp_r4_328 = this->unkC8;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp48 = sp18;
-            sp20 = M2C_FIELD(temp_r4_328, f32 *, 8) - (f32) M2C_FIELD(temp_r4_328, f64 *, 0x18);
-            sp50 = (f64) sp20;
-            var_f1_322 = ((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C);
-            temp_f28_351 = ((f32) sp50 * (f32) sp50) + var_f1_322;
-            if ((this->unkE0 < 1.0f) && (temp_f28_351 < 1.0f)) {
-                KDSound_SetVolume(this->unkD8, this->unkE8 * (2.0f * this->unkE4));
-                this->unkE4 -= gUpdateTimeDelta;
-                var_f1_322 = this->unkE4;
-                if (var_f1_322 < 0.0f) {
-                    this->unkE4 = 0.0f;
-                }
+    if ((temp_ret_322 != 0) && (temp_f31_209 >= temp_f29_193)) {
+        temp_r4_328 = this->unkC8;
+        temp_f0_332 = M2C_FIELD(temp_r4_328, f64 *, 0) - *(temp_r4_328 + 0x10);
+        sp18 = temp_f0_332;
+        sp48 = temp_f0_332;
+        sp20 = M2C_FIELD(temp_r4_328, f32 *, 8) - (f32) M2C_FIELD(temp_r4_328, f64 *, 0x18);
+        sp50 = (f64) sp20;
+        var_f1_322 = ((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C);
+        temp_f28_351 = ((f32) sp50 * (f32) sp50) + var_f1_322;
+        if ((this->unkE0 < 1.0f) && (temp_f28_351 < 1.0f)) {
+            KDSound_SetVolume(this->unkD8, this->unkE8 * (2.0f * this->unkE4));
+            this->unkE4 -= gUpdateTimeDelta;
+            var_f1_322 = this->unkE4;
+            if (var_f1_322 < 0.0f) {
+                this->unkE4 = 0.0f;
             }
-            this->unkE0 = temp_f28_351;
         }
+        this->unkE0 = temp_f28_351;
     }
     return M2C_BITWISE(void *, var_f1_322);
 }

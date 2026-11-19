@@ -98,8 +98,7 @@ void CollapsibleProp::Update() {
         } else {
             var_f0_225 = 0.0f;
         }
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk94 == var_f0_225) {
+        if (this->unk94 >= var_f0_225) {
             SetState((CollapsibleProp::State) 2);
         }
         break;
@@ -110,8 +109,7 @@ void CollapsibleProp::Update() {
         break;
     case 3:
         this->unk94 += gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk94 == 5.0f) {
+        if (this->unk94 >= 5.0f) {
             SetState((CollapsibleProp::State) 4);
         }
         break;

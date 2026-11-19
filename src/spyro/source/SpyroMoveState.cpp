@@ -79,8 +79,7 @@ u8 SpyroMoveState::SelectState(float arg0) {
     }
     if (var_f31_160 != 0.0f) {
         temp_f0_171 = 0.75f - arg0;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((var_f31_160 == (temp_f0_171 * temp_f0_171)) && ((s32) this->unk14.unk0 != 1)) {
+        if ((var_f31_160 <= (temp_f0_171 * temp_f0_171)) && ((s32) this->unk14.unk0 != 1)) {
             this->unk14.SetState(this, 1, 0U);
             var_r3_184 = 1;
         } else {
@@ -88,8 +87,7 @@ u8 SpyroMoveState::SelectState(float arg0) {
         }
         if (var_r3_184 == 0) {
             temp_f0_192 = 0.75f + arg0;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((var_f31_160 == (temp_f0_192 * temp_f0_192)) && ((s32) this->unk14.unk0 != 2)) {
+            if ((var_f31_160 >= (temp_f0_192 * temp_f0_192)) && ((s32) this->unk14.unk0 != 2)) {
                 this->unk14.SetState(this, 2, 0U);
                 return 1U;
             }
@@ -277,8 +275,7 @@ s32 SpyroMoveState::Transition() {
         }
         if (var_r28_278 == 0) {
             var_r25_501 = 0;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk54) && (this->unk10->LavaTransition() != 0)) {
+            if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk54) && (this->unk10->LavaTransition() != 0)) {
                 var_r25_501 = 1;
             }
             if (var_r25_501 == 0) {
@@ -312,17 +309,23 @@ void SpyroMoveState::Update() {
     f64 sp58;
     f64 sp50;
     f64 sp48;
-    M2C_UNK sp38;
-    M2C_UNK sp28;
+    f64 sp38;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKProp *temp_r3_586;
     MKProp *temp_r3_705;
     MKProp *temp_r3_722;
     Spyro *temp_r5_581;
+    f32 temp_f2_627;
+    f32 temp_f2_683;
     f32 temp_f31_650;
     f32 var_f0_657;
     f64 temp_f0_577;
+    f64 temp_f0_630;
+    f64 temp_f0_686;
     f64 temp_f1_576;
     s32 temp_r3_588;
     s32 temp_r3_724;
@@ -365,9 +368,11 @@ void SpyroMoveState::Update() {
     }
     M2C_FIELD(this->unk10, s8 *, 0x3D2) = 0;
     sp38.CalcYawTurnDir(30.0f);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp68 = sp18;
-    sp20 = sp40 * this->unk4C;
+    temp_f2_627 = this->unk4C;
+    temp_f0_630 = sp38 * (f64) temp_f2_627;
+    sp18 = temp_f0_630;
+    sp68 = temp_f0_630;
+    sp20 = sp40 * temp_f2_627;
     sp70 = (f64) sp20;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp68), 3800.0f);
     if (this->unk14.GetState() == 2) {
@@ -389,9 +394,11 @@ void SpyroMoveState::Update() {
         this->unk10->unk3C0 = 0.0f;
     }
     sp28.CalcYawTurnDir(30.0f);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp58 = sp8;
-    sp10 = sp30 * this->unk4C;
+    temp_f2_683 = this->unk4C;
+    temp_f0_686 = sp28 * (f64) temp_f2_683;
+    sp8 = temp_f0_686;
+    sp58 = temp_f0_686;
+    sp10 = sp30 * temp_f2_683;
     sp60 = (f64) sp10;
     this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp58), 30.0f);
     this->unk14.Update(this, 0);

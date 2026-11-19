@@ -43,8 +43,8 @@ void Sludge::Update() {
     M2C_UNK sp108;
     f64 sp100;
     f64 spF8;
-    M2C_UNK spE8;
-    M2C_UNK spD8;
+    f64 spE8;
+    f64 spD8;
     f64 spD0;
     f64 spC8;
     MKVector3 spB8;
@@ -62,8 +62,11 @@ void Sludge::Update() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 temp_f1_228;
@@ -76,6 +79,8 @@ void Sludge::Update() {
     f32 var_f30_242;
     f32 var_f4_76;
     f32 var_f5_97;
+    f64 temp_f0_205;
+    f64 temp_f0_267;
     f64 temp_f1_102;
     f64 temp_f1_108;
     f64 temp_f1_112;
@@ -144,14 +149,12 @@ void Sludge::Update() {
         temp_f29_190 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
         MKVector(MKRand_Float(&gViewSeed, 1.0f, 3.0f), temp_f29_190, temp_f30_185);
         sp118.operator*(3.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp128 = sp38;
+        temp_f0_205 = sp118 * (f64) temp_f31_180;
+        sp38 = temp_f0_205;
+        sp128 = temp_f0_205;
         sp40 = sp118.unk8 * temp_f31_180;
         sp130 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        M2C_FIELD(this, f64 *, 0x150) = (f64) (M2C_FIELD(this, f64 *, 0x150) + temp_f0_205);
         this->unk158 += (f32) sp130;
         KDMath_BuildMatrixFromFwd(&sp170, *((MKVector3 *) &sp158), (MKVector3 *) &sp148);
         temp_f1_228 = _table_sinf(this->unk158);
@@ -172,9 +175,9 @@ void Sludge::Update() {
         }
         MKVector(var_f1_248, var_f30_242, 0.25f * var_f29_232);
         MKVector(1.0f, 1.0f, 1.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spF8 = sp28;
+        temp_f0_267 = spE8 + spD8;
+        sp28 = temp_f0_267;
+        spF8 = temp_f0_267;
         sp30 = spF0 + spE0;
         sp100 = (f64) sp30;
         sp170.Scale3x3(&sp170, *((MKVector3 *) &spF8));
@@ -189,8 +192,7 @@ void Sludge::Update() {
     KDRand_Vector(sp98, sp88);
     spA8.operator*(500.0f);
     spB8.operator*(0.5f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp18 = spB8 + M2C_BITWISE(f64, spA8);
     spC8 = sp18;
     sp20 = spB8.unk8 + spA8.unk8;
     sp138 = sp18;
@@ -291,9 +293,13 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     f64 sp88;
     f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -306,6 +312,8 @@ void Sludge::Collided(MKCollisionResult &arg0) {
     MKProp *temp_r4_742;
     f32 var_f4_628;
     f32 var_f5_666;
+    f64 temp_f0_793;
+    f64 temp_f0_804;
     f64 temp_f1_671;
     f64 temp_f1_677;
     f64 temp_f1_681;
@@ -333,8 +341,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
         KDRand_Vector(sp198, sp188);
         sp1A8.operator*(3000.0f);
         sp1B8.operator*(2.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp48 = sp1B8 + M2C_BITWISE(f64, sp1A8);
         spA8 = 1.0f;
         spAC = 1.0f;
         sp50 = sp1B8.unk8 + sp1A8.unk8;
@@ -357,8 +364,7 @@ void Sludge::Collided(MKCollisionResult &arg0) {
         KDRand_Vector(sp128, sp118);
         sp138.operator*(1000.0f);
         sp148.operator*(0.5f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp38 = sp148 + M2C_BITWISE(f64, sp138);
         sp158 = sp38;
         sp40 = sp148.unk8 + sp138.unk8;
         sp1E8 = sp38;
@@ -509,13 +515,14 @@ void Sludge::Collided(MKCollisionResult &arg0) {
         sp2D0 = 0.0f;
     }
     sp2E9 = 0;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    spB8 = sp68;
+    temp_f0_793 = (f64) sp1D8 * 5.64367472e-315;
+    sp68 = temp_f0_793;
+    spB8 = temp_f0_793;
     sp70 = sp1E0 * 600.0f;
     spC0 = (f64) sp70;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spC8 = sp58;
+    temp_f0_804 = sp200.unk30 + temp_f0_793;
+    sp58 = temp_f0_804;
+    spC8 = temp_f0_804;
     sp60 = sp200.unk38 + (f32) spC0;
     spD0 = (f64) sp60;
     if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp200.unk30), *((MKVector3 *) &spC8), 200.0f, (MKCollisionResult *) &sp240, (MKCollisionMode) 2, 0x08000000) != 0) {

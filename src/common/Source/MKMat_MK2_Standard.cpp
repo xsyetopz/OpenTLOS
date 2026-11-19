@@ -60,11 +60,17 @@ void Updater_ColorPulse(MKMaterial *arg0, void *arg1) {
     f32 sp30;
     f32 sp2C;
     f32 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
+    f64 sp8;
     f32 temp_f1_96;
     f32 temp_f4_65;
     f32 temp_f5_64;
     f32 temp_f6_62;
     f32 temp_f9_60;
+    f64 temp_f0_103;
+    f64 temp_f0_117;
     void *temp_r3_120;
     void *temp_r3_56;
 
@@ -87,18 +93,20 @@ void Updater_ColorPulse(MKMaterial *arg0, void *arg1) {
     sp80 = (f64) sp30;
     *arg1 = (f32) fmod(temp_r3_56, (M2C_FIELD(temp_r3_56, f32 *, 0x190) * gUpdateTimeDelta) + *arg1, 1.0, (f64) sp28, temp_f4_65, temp_f5_64, temp_f6_62, (f64) sp40, (f64) sp38, temp_f9_60);
     temp_f1_96 = 0.5f * (1.0f + _table_sinf(6.2831855f * *arg1));
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f31 */);
+    sp8 = sp78 - sp88;
+    temp_f0_103 = (f64) sp30 - sp90;
+    sp10 = temp_f0_103;
     sp48 = sp8;
-    sp50 = sp10;
+    sp50 = temp_f0_103;
     sp58.operator*(temp_f1_96);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f31, $f0 */);
+    sp18 = sp88 + M2C_BITWISE(f64, sp58);
+    temp_f0_117 = sp90 + (f64) sp58.unk8;
+    sp20 = temp_f0_117;
     temp_r3_120 = arg0->unk24;
     M2C_FIELD(temp_r3_120, f64 *, 0x30) = sp18;
     sp68 = sp18;
-    sp70 = sp20;
-    M2C_FIELD(temp_r3_120, f64 *, 0x38) = sp20;
+    sp70 = temp_f0_117;
+    M2C_FIELD(temp_r3_120, f64 *, 0x38) = temp_f0_117;
 }
 #endif
 

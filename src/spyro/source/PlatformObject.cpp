@@ -93,7 +93,7 @@ s8 PlatformObject::Attach(PlatformAttachment *arg0) {
     return 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: illegal type
 void PlatformObject::UpdateAttached() {
     u8 sp70;
     void *sp6C;
@@ -109,6 +109,7 @@ void PlatformObject::UpdateAttached() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -125,6 +126,7 @@ void PlatformObject::UpdateAttached() {
     s32 var_r29_154;
     u8 temp_r6_218;
     void *temp_r3_145;
+    void *temp_r3_148;
     void *temp_r3_172;
     void *temp_r5_177;
     void *temp_r5_219;
@@ -134,12 +136,11 @@ void PlatformObject::UpdateAttached() {
 
     temp_r3_145 = this->unk3C;
     if (temp_r3_145 != NULL) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r3_148 = temp_r3_145 + 0x40;
+        sp18 = M2C_FIELD(this, f64 *, 8) - M2C_FIELD(temp_r3_148, f64 *, 0);
         var_r29_154 = 0;
         sp48 = sp18;
-        sp20 = this->unk10 - M2C_FIELD((temp_r3_145 + 0x40), f32 *, 8);
+        sp20 = this->unk10 - M2C_FIELD(temp_r3_148, f32 *, 8);
         sp38 = sp18;
         sp50 = (f64) sp20;
         sp40 = (f64) sp20;
@@ -223,6 +224,7 @@ void PlatformObject::UpdateTilt() {
     f32 temp_f1_421;
     f32 temp_f1_437;
     f32 temp_f1_440;
+    f32 temp_f31_357;
     f32 temp_f3_332;
     f32 temp_f3_367;
     f32 var_f2_389;
@@ -246,8 +248,9 @@ void PlatformObject::UpdateTilt() {
                 sp18 = M2C_BITWISE(f64, sp8);
                 sp20 = (f64) sp8.unk8;
                 temp_r3_354 = this->unk0;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                temp_f1_363 = (f32) sp20 * (temp_r3_354->unk0 / temp_r3_354->unk4);
+                temp_f31_357 = temp_r3_354->unk0 / temp_r3_354->unk4;
+                sp18 *= (f64) temp_f31_357;
+                temp_f1_363 = (f32) sp20 * temp_f31_357;
                 sp20 = temp_f1_363;
                 temp_f3_367 = -temp_f1_363;
                 var_f4_370 = 0.5f * (temp_r3_354->unkC * gUpdateTimeDelta);
@@ -331,6 +334,7 @@ void PlatformObject::BeginUpdate() {
     MKHeap *temp_r3_581;
     Platform *temp_r3_635;
     PlatformAttachment *var_r27_626;
+    f32 temp_f1_707;
     f32 temp_f3_643;
     f32 temp_f6_649;
     f32 temp_f7_658;
@@ -346,6 +350,7 @@ void PlatformObject::BeginUpdate() {
     void *temp_r3_678;
     void *temp_r3_681;
     void *temp_r3_703;
+    void *temp_r4_680;
     void *var_r3_589;
 
     temp_r0_576 = this->unk38;
@@ -390,23 +395,20 @@ loop_6:
             M2C_FIELD(temp_r3_645, f64 *, 8) = (f64) sp18;
             temp_r3_678 = this->unk3C;
             sp20 = (f64) sp10;
+            temp_r4_680 = temp_r3_678 + temp_r0_641;
             temp_r3_681 = temp_r3_678 + 0x50;
             sp28 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+            M2C_FIELD(temp_r3_681, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_681, f64 *, 0) + M2C_FIELD(temp_r4_680, f64 *, 0));
             var_r28_616 += 1;
             var_r30_618 += 0x10;
-            M2C_FIELD(temp_r3_681, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_681, f32 *, 8) + M2C_FIELD((temp_r3_678 + temp_r0_641), f32 *, 8));
+            M2C_FIELD(temp_r3_681, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_681, f32 *, 8) + M2C_FIELD(temp_r4_680, f32 *, 8));
             var_r27_626 = var_r27_626->unk8;
             goto loop_6;
         }
         temp_r3_703 = this->unk3C + 0x50;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_FIELD(temp_r3_703, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_703, f32 *, 8) * (1.0f / (f32) var_r28_616));
+        temp_f1_707 = 1.0f / (f32) var_r28_616;
+        M2C_FIELD(temp_r3_703, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_703, f64 *, 0) * (f64) temp_f1_707);
+        M2C_FIELD(temp_r3_703, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_703, f32 *, 8) * temp_f1_707);
     }
 }
 #endif

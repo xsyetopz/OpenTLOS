@@ -67,7 +67,9 @@ void LightningStrikeFX::Strike() {
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
@@ -78,6 +80,7 @@ void LightningStrikeFX::Strike() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -101,6 +104,9 @@ void LightningStrikeFX::Strike() {
     f32 var_f3_305;
     f32 var_f4_238;
     f32 var_f4_90;
+    f64 temp_f0_177;
+    f64 temp_f0_189;
+    f64 temp_f0_325;
     f64 temp_f1_102;
     f64 temp_f1_106;
     f64 temp_f1_244;
@@ -172,14 +178,15 @@ void LightningStrikeFX::Strike() {
     sp80 = sp148.unk8 * var_f3_157;
     sp158 = (f64) sp78;
     sp160 = (f64) sp80;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+    temp_f0_177 = sp158 * 5.852924563e-315;
+    sp98 = temp_f0_177;
     temp_r4_182 = this->unk4C;
-    sp168 = sp98;
+    sp168 = temp_f0_177;
     spA0 = (f32) sp160 * 20000.0f;
     sp170 = (f64) spA0;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp178 = sp88;
+    temp_f0_189 = M2C_FIELD(temp_r4_182, f64 *, 0) + temp_f0_177;
+    sp88 = temp_f0_189;
+    sp178 = temp_f0_189;
     sp90 = temp_r4_182->unk8 + (f32) sp170;
     sp180 = (f64) sp90;
     temp_r31_61->SpawnStrikeArc(*temp_r4_182, *((MKVector3 *) &sp178), 5.0f, 0.25f);
@@ -241,8 +248,9 @@ void LightningStrikeFX::Strike() {
         sp40 = sp108.unk8 * var_f3_305;
         sp118 = (f64) sp38;
         sp120 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        sp188 = sp48;
+        temp_f0_325 = sp118 * 5.65986426e-315;
+        sp48 = temp_f0_325;
+        sp188 = temp_f0_325;
         sp50 = (f32) sp120 * 800.0f;
         sp190 = (f64) sp50;
         sp30 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
@@ -324,15 +332,12 @@ void LightningStrikeFX::Update() {
     this->unkC4 = var_f0_495;
     this->unkC0 -= gUpdateTimeDelta;
     temp_f31_515 = this->unkC4;
-    if (temp_f31_515 > 0.0f) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkC0 == 0.0f) {
-            this->unkC0 = -((temp_f31_515 * 0.25f) - 1.0f) * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-            temp_r30_536 = MKRand_Int(&gViewSeed, 0, this->unk50);
-            temp_r31_540 = MKRand_Int(&gViewSeed, 0, this->unk50);
-            temp_r5_543 = this->unk4C;
-            ((LightningStrikeFXDescriptor *) (checked_cast<P27LightningStrikeFXDescriptor))->SpawnStrikeArc(*(16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)), temp_r5_543[temp_r31_540], &temp_r5_543[temp_r30_536], 2.0f, 0.125f);
-        }
+    if ((temp_f31_515 > 0.0f) && (this->unkC0 <= 0.0f)) {
+        this->unkC0 = -((temp_f31_515 * 0.25f) - 1.0f) * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        temp_r30_536 = MKRand_Int(&gViewSeed, 0, this->unk50);
+        temp_r31_540 = MKRand_Int(&gViewSeed, 0, this->unk50);
+        temp_r5_543 = this->unk4C;
+        ((LightningStrikeFXDescriptor *) (checked_cast<P27LightningStrikeFXDescriptor))->SpawnStrikeArc(*(16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)), temp_r5_543[temp_r31_540], &temp_r5_543[temp_r30_536], 2.0f, 0.125f);
     }
 }
 #endif
@@ -362,6 +367,7 @@ void LightningStrikeFX::LoadDone() {
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -369,12 +375,14 @@ void LightningStrikeFX::LoadDone() {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f3_673;
     f32 temp_f3_708;
     f32 temp_f6_680;
     f32 temp_f7_686;
     f32 temp_f8_714;
     f32 temp_f9_720;
+    f64 temp_f0_625;
     s32 var_r30_574;
 
     MKProp::LoadDone();
@@ -404,15 +412,13 @@ loop_2:
         this->unk78 = (f64) spC0.unk8;
         goto loop_2;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp90 = sp10;
+    temp_f0_625 = this->unk70 - this->unk60;
+    sp10 = temp_f0_625;
+    sp90 = temp_f0_625;
     sp18 = (f32) M2C_FIELD(this, f64 *, 0x78) - (f32) M2C_FIELD(this, f64 *, 0x68);
     sp98 = (f64) sp18;
     spA0.operator*(0.5f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp40 = this->unk60 + M2C_BITWISE(f64, spA0);
     spB0 = sp40;
     sp48 = (f32) M2C_FIELD(this, f64 *, 0x68) + spA0.unk8;
     this->unkB0 = (f32) spB0;
@@ -442,10 +448,7 @@ loop_2:
     sp88 = (f64) sp38;
     sp70 = (f64) sp20;
     sp78 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r29, $r3, 0x0, qr0 */);
+    this->unk70 -= this->unk60;
     M2C_FIELD(this, f64 *, 0x78) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x78) - (f32) M2C_FIELD(this, f64 *, 0x68));
     this->unkC = (BoundingVolume *) &this->unk60;
     return 0x70;
@@ -581,10 +584,15 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
     f64 spA8;
     f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -592,15 +600,27 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     LightningStrikeFXDescriptor::StrikeArc **temp_r6_945;
+    f32 temp_f1_1078;
     f32 temp_f1_1166;
     f32 temp_f1_1237;
     f32 var_f4_1012;
+    f64 temp_f0_1091;
+    f64 temp_f0_1146;
+    f64 temp_f0_1178;
+    f64 temp_f0_1217;
+    f64 temp_f0_1249;
     f64 temp_f1_1015;
     f64 temp_f1_1021;
     f64 temp_f1_1025;
+    f64 temp_f1_1139;
+    f64 temp_f1_1171;
+    f64 temp_f1_1210;
+    f64 temp_f1_1242;
     s32 temp_r3_1044;
     s32 var_r0_1054;
     void *temp_r31_955;
@@ -629,9 +649,7 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
         Normalise(sp180);
         M2C_FIELD(temp_r31_955, f64 *, 0) = M2C_BITWISE(f64, sp180);
         M2C_FIELD(temp_r31_955, f64 *, 8) = (f64) sp180.unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp90 = M2C_FIELD(&arg1, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0);
         sp140 = sp90;
         sp98 = arg1.unk8 - arg0.unk8;
         sp148 = (f64) sp98;
@@ -669,47 +687,46 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
                 var_f4_1012 = __float_nan;
             }
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r31, 0x0, qr0 */);
-        M2C_FIELD(temp_r31_955, f64 *, 8) = (f32) ((f32) M2C_FIELD(temp_r31_955, f64 *, 8) * (200.0f * (var_f4_1012 / 1000.0f)));
+        temp_f1_1078 = 200.0f * (var_f4_1012 / 1000.0f);
+        M2C_FIELD(temp_r31_955, f64 *, 0) = (f64) (M2C_FIELD(temp_r31_955, f64 *, 0) * (f64) temp_f1_1078);
+        M2C_FIELD(temp_r31_955, f64 *, 8) = (f32) ((f32) M2C_FIELD(temp_r31_955, f64 *, 8) * temp_f1_1078);
         M2C_FIELD(temp_r31_955, f32 *, 0x4C) = arg3;
         M2C_FIELD(temp_r31_955, f32 *, 0x10) = arg3;
         M2C_FIELD(temp_r31_955, f32 *, 0x48) = arg2;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp120 = sp10;
+        temp_f0_1091 = M2C_FIELD(&arg1, f64 *, 0) + M2C_FIELD(&arg0, f64 *, 0);
+        sp10 = temp_f0_1091;
+        sp120 = temp_f0_1091;
         sp18 = arg1.unk8 + arg0.unk8;
         sp128 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp20 = temp_f0_1091 * 5.222099017e-315;
         M2C_FIELD(temp_r31_955, f64 *, 0x38) = sp20;
         sp28 = (f32) sp128 * 0.5f;
         sp130 = sp20;
         sp138 = (f64) sp28;
         M2C_FIELD(temp_r31_955, f64 *, 0x40) = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+        M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
         if (arg2 == 2.0f) {
             KDSound_Play3d(GS_Lightning3, temp_r31_955 + 0x38, 0U, -1, 0.0f, 0U);
             return;
         }
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (arg2 == 5.0f) {
+        if (arg2 >= 5.0f) {
             temp_r3_1138 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
-            spE0 = M2C_FIELD(temp_r3_1138, f64 *, 0x30);
+            temp_f1_1139 = M2C_FIELD(temp_r3_1138, f64 *, 0x30);
+            spE0 = temp_f1_1139;
             spE8 = M2C_FIELD(temp_r3_1138, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            spF0 = sp70;
+            temp_f0_1146 = temp_f1_1139 - M2C_FIELD(temp_r31_955, f64 *, 0x18);
+            sp70 = temp_f0_1146;
+            spF0 = temp_f0_1146;
             sp78 = (f32) spE8 - (f32) M2C_FIELD(temp_r31_955, f64 *, 0x20);
             spF8 = (f64) sp78;
             temp_f1_1166 = (f32) spF8 * (f32) spF8;
             temp_r3_1170 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, f32, f32), 0xC)(gb, temp_f1_1166, (f32) spF8), void **, 8);
-            sp100 = M2C_FIELD(temp_r3_1170, f64 *, 0x30);
+            temp_f1_1171 = M2C_FIELD(temp_r3_1170, f64 *, 0x30);
+            sp100 = temp_f1_1171;
             sp108 = M2C_FIELD(temp_r3_1170, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp110 = sp80;
+            temp_f0_1178 = temp_f1_1171 - M2C_FIELD(temp_r31_955, f64 *, 0x38);
+            sp80 = temp_f0_1178;
+            sp110 = temp_f0_1178;
             sp88 = (f32) sp108 - (f32) M2C_FIELD(temp_r31_955, f64 *, 0x40);
             sp118 = (f64) sp88;
             if ((((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114))) > (temp_f1_1166 + (((f32) spF0 * (f32) spF0) + (unkspF4 * unkspF4)))) {
@@ -717,20 +734,22 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
                 M2C_FIELD(temp_r31_955, f64 *, 0x40) = (f64) M2C_FIELD(temp_r31_955, f64 *, 0x20);
             }
             temp_r3_1209 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
-            spA0 = M2C_FIELD(temp_r3_1209, f64 *, 0x30);
+            temp_f1_1210 = M2C_FIELD(temp_r3_1209, f64 *, 0x30);
+            spA0 = temp_f1_1210;
             spA8 = M2C_FIELD(temp_r3_1209, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            spB0 = sp50;
+            temp_f0_1217 = temp_f1_1210 - M2C_FIELD(temp_r31_955, f64 *, 0x28);
+            sp50 = temp_f0_1217;
+            spB0 = temp_f0_1217;
             sp58 = (f32) spA8 - (f32) M2C_FIELD(temp_r31_955, f64 *, 0x30);
             spB8 = (f64) sp58;
             temp_f1_1237 = (f32) spB8 * (f32) spB8;
             temp_r3_1241 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, f32, f32), 0xC)(gb, temp_f1_1237, (f32) spB8), void **, 8);
-            spC0 = M2C_FIELD(temp_r3_1241, f64 *, 0x30);
+            temp_f1_1242 = M2C_FIELD(temp_r3_1241, f64 *, 0x30);
+            spC0 = temp_f1_1242;
             spC8 = M2C_FIELD(temp_r3_1241, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            spD0 = sp60;
+            temp_f0_1249 = temp_f1_1242 - M2C_FIELD(temp_r31_955, f64 *, 0x38);
+            sp60 = temp_f0_1249;
+            spD0 = temp_f0_1249;
             sp68 = (f32) spC8 - (f32) M2C_FIELD(temp_r31_955, f64 *, 0x40);
             spD8 = (f64) sp68;
             if ((((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (unkspD4 * unkspD4))) > (temp_f1_1237 + (((f32) spB0 * (f32) spB0) + (unkspB4 * unkspB4)))) {
@@ -745,7 +764,7 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp1A0'
+#if 0 // DRAFT: undefined identifier 'unksp34C'
 void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::StrikeArc *arg1) {
     f64 sp348;                                      /* compiler-managed */
     f64 sp340;
@@ -800,12 +819,16 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     f64 sp1B8;
     f64 sp1B0;
     f32 sp1A8;
+    f64 sp1A0;
     f32 sp198;
+    f64 sp190;
     f32 sp188;
+    f64 sp180;
     f32 sp178;
     f32 sp174;
     f32 sp170;
     f32 sp168;
+    f64 sp160;
     f32 sp158;
     f32 sp154;
     f32 sp150;
@@ -814,27 +837,40 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     f32 sp144;
     f32 sp140;
     f32 sp138;
+    f64 sp130;
     f32 sp128;
+    f64 sp120;
     f32 sp118;
     f32 sp114;
     f32 sp110;
     f32 sp108;
+    f64 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
     f32 spC4;
     f32 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -844,7 +880,6 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     f32 sp18;
     f32 sp14;
     f32 sp10;
-    f32 temp_f1_1379;
     f32 temp_f25_1818;
     f32 temp_f25_1882;
     f32 temp_f26_1740;
@@ -861,6 +896,20 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     f32 var_f4_1517;
     f32 var_f4_1647;
     f32 var_f6_1714;
+    f64 temp_f0_1334;
+    f64 temp_f0_1346;
+    f64 temp_f0_1375;
+    f64 temp_f0_1750;
+    f64 temp_f0_1762;
+    f64 temp_f0_1792;
+    f64 temp_f0_1804;
+    f64 temp_f0_1833;
+    f64 temp_f0_1858;
+    f64 temp_f0_1869;
+    f64 temp_f0_1898;
+    f64 temp_f0_1923;
+    f64 temp_f0_1935;
+    f64 temp_f1_1372;
     f64 temp_f1_1417;
     f64 temp_f1_1423;
     f64 temp_f1_1427;
@@ -870,6 +919,7 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     f64 temp_f1_1653;
     f64 temp_f1_1659;
     f64 temp_f1_1663;
+    f64 temp_f3_1333;
     s32 temp_r3_1446;
     s32 temp_r3_1552;
     s32 temp_r3_1682;
@@ -877,29 +927,30 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     s32 var_r0_1562;
     s32 var_r0_1692;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f3, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
+    temp_f3_1333 = M2C_FIELD(arg1, f64 *, 0x18);
+    temp_f0_1334 = M2C_FIELD(arg1, f64 *, 0x28) - temp_f3_1333;
+    sp1A0 = temp_f0_1334;
     temp_f5_1337 = M2C_FIELD(arg1, f32 *, 0x20);
-    sp2E0 = sp1A0;
+    sp2E0 = temp_f0_1334;
     sp1A8 = M2C_FIELD(arg1, f32 *, 0x30) - temp_f5_1337;
     sp2E8 = (f64) sp1A8;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    sp2F0 = sp190;
+    temp_f0_1346 = temp_f0_1334 * 5.222099017e-315;
+    sp190 = temp_f0_1346;
+    sp2F0 = temp_f0_1346;
     sp198 = (f32) sp2E8 * 0.5f;
     sp2F8 = (f64) sp198;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+    sp180 = temp_f3_1333 + temp_f0_1346;
     sp340 = sp180;
     temp_f27_1367 = 1.0f - (M2C_FIELD(arg1, f32 *, 0x10) / M2C_FIELD(arg1, f32 *, 0x4C));
     sp188 = temp_f5_1337 + (f32) sp2F8;
     sp348 = (f64) sp188;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    temp_f1_1379 = M2C_FIELD(arg1, f32 *, 8) * _table_sinf(6.2831855f * temp_f27_1367);
-    sp2D0 = sp40;
-    sp48 = temp_f1_1379;
+    temp_f1_1372 = _table_sinf(6.2831855f * temp_f27_1367);
+    temp_f0_1375 = M2C_FIELD(arg1, f64 *, 0) * temp_f1_1372;
+    sp40 = temp_f0_1375;
+    sp2D0 = temp_f0_1375;
+    sp48 = M2C_FIELD(arg1, f32 *, 8) * (f32) temp_f1_1372;
     sp2D8 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp340 += temp_f0_1375;
     sp348 = (f32) sp348 + (f32) sp2D8;
     M2C_STRUCT_COPY((s32) &unksp34C + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
     var_f4_1411 = (sp358 * sp358) + ((sp350 * sp350) + (sp354 * sp354));
@@ -946,9 +997,7 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     sp178 = sp358 * var_f3_1478;
     sp320 = (f64) sp170;
     sp328 = (f64) sp178;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp160 = M2C_FIELD(arg1, f64 *, 0x28) - M2C_FIELD(arg1, f64 *, 0x18);
     sp2C0 = sp160;
     sp168 = M2C_FIELD(arg1, f32 *, 0x30) - M2C_FIELD(arg1, f32 *, 0x20);
     sp2C8 = (f64) sp168;
@@ -1063,14 +1112,15 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     MKBegin(6);
     MKSetColorV(*((MKVector4 *) &sp300));
     MKSetTexCoord1F(0.0f, 0.0f);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
+    temp_f0_1750 = (f64) sp330 * (f64) temp_f26_1740;
+    sp130 = temp_f0_1750;
     temp_f31_1755 = sp338 * temp_f26_1740;
-    sp280 = sp130;
+    sp280 = temp_f0_1750;
     sp138 = temp_f31_1755;
     sp288 = (f64) sp138;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp290 = sp120;
+    temp_f0_1762 = M2C_FIELD(arg1, f64 *, 0x18) + temp_f0_1750;
+    sp120 = temp_f0_1762;
+    sp290 = temp_f0_1762;
     sp128 = M2C_FIELD(arg1, f32 *, 0x20) + (f32) sp288;
     sp298 = (f64) sp128;
     MKSetPositionV(*((MKVector3 *) &sp290));
@@ -1084,25 +1134,27 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     sp114 = temp_f29_1783;
     sp258 = (f64) sp118;
     sp250 = (f64) sp110;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-    sp260 = sp100;
+    temp_f0_1792 = sp250 * (f64) temp_f26_1740;
+    sp100 = temp_f0_1792;
+    sp260 = temp_f0_1792;
     sp108 = (f32) sp258 * temp_f26_1740;
     sp268 = (f64) sp108;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp270 = spF0;
+    temp_f0_1804 = M2C_FIELD(arg1, f64 *, 0x18) + temp_f0_1792;
+    spF0 = temp_f0_1804;
+    sp270 = temp_f0_1804;
     spF8 = M2C_FIELD(arg1, f32 *, 0x20) + (f32) sp268;
     sp278 = (f64) spF8;
     MKSetPositionV(*((MKVector3 *) &sp270));
     temp_f25_1818 = 0.0f + 1.0f;
     MKSetColorV(*((MKVector4 *) &sp300));
     MKSetTexCoord1F(0.0f, temp_f25_1818);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
+    spE0 = (f64) sp330 * (f64) temp_f26_1740;
     spE8 = temp_f31_1755;
     sp230 = spE0;
     sp238 = (f64) spE8;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp240 = spD0;
+    temp_f0_1833 = sp340 + sp230;
+    spD0 = temp_f0_1833;
+    sp240 = temp_f0_1833;
     spD8 = sp348 + (f32) sp238;
     sp248 = (f64) spD8;
     MKSetPositionV(*((MKVector3 *) &sp240));
@@ -1113,25 +1165,27 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     spC8 = temp_f28_1780;
     sp200 = (f64) spC0;
     sp208 = (f64) spC8;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-    sp210 = spB0;
+    temp_f0_1858 = sp200 * (f64) temp_f26_1740;
+    spB0 = temp_f0_1858;
+    sp210 = temp_f0_1858;
     spB8 = (f32) sp208 * temp_f26_1740;
     sp218 = (f64) spB8;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp220 = spA0;
+    temp_f0_1869 = sp340 + temp_f0_1858;
+    spA0 = temp_f0_1869;
+    sp220 = temp_f0_1869;
     spA8 = sp348 + (f32) sp218;
     sp228 = (f64) spA8;
     MKSetPositionV(*((MKVector3 *) &sp220));
     temp_f25_1882 = temp_f25_1818 + 1.0f;
     MKSetColorV(*((MKVector4 *) &sp300));
     MKSetTexCoord1F(0.0f, temp_f25_1882);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
+    sp90 = (f64) sp330 * (f64) temp_f26_1740;
     sp98 = temp_f31_1755;
     sp1E0 = sp90;
     sp1E8 = (f64) sp98;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp1F0 = sp80;
+    temp_f0_1898 = M2C_FIELD(arg1, f64 *, 0x28) + sp1E0;
+    sp80 = temp_f0_1898;
+    sp1F0 = temp_f0_1898;
     sp88 = M2C_FIELD(arg1, f32 *, 0x30) + (f32) sp1E8;
     sp1F8 = (f64) sp88;
     MKSetPositionV(*((MKVector3 *) &sp1F0));
@@ -1142,13 +1196,14 @@ void LightningStrikeFXDescriptor::DrawStrikeArc(LightningStrikeFXDescriptor::Str
     sp78 = temp_f28_1780;
     sp1B0 = (f64) sp70;
     sp1B8 = (f64) sp78;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-    sp1C0 = sp60;
+    temp_f0_1923 = sp1B0 * (f64) temp_f26_1740;
+    sp60 = temp_f0_1923;
+    sp1C0 = temp_f0_1923;
     sp68 = (f32) sp1B8 * temp_f26_1740;
     sp1C8 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp1D0 = sp50;
+    temp_f0_1935 = M2C_FIELD(arg1, f64 *, 0x28) + temp_f0_1923;
+    sp50 = temp_f0_1935;
+    sp1D0 = temp_f0_1935;
     sp58 = M2C_FIELD(arg1, f32 *, 0x30) + (f32) sp1C8;
     sp1D8 = (f64) sp58;
     MKSetPositionV(*((MKVector3 *) &sp1D0));
@@ -1267,8 +1322,7 @@ loop_4:
         temp_r3_2125 = *var_r5_2102;
         if (temp_r3_2125 != NULL) {
             M2C_FIELD(temp_r3_2125, f32 *, 0x10) = (f32) (M2C_FIELD(temp_r3_2125, f32 *, 0x10) - gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r3_2125, f32 *, 0x10) == 0.0f) {
+            if (M2C_FIELD(temp_r3_2125, f32 *, 0x10) <= 0.0f) {
                 temp_r3_2113 = this->unk98;
                 this->unk98 = temp_r3_2113 + 4;
                 temp_r4_2116 = *temp_r3_2113;
@@ -1295,8 +1349,7 @@ loop_4:
     temp_r4_2149 = this->unk60;
     if (temp_r4_2149 != NULL) {
         temp_f2_2152 = this->unkA0;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f2_2152 == 0.0f) {
+        if (temp_f2_2152 <= 0.0f) {
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2149, 0U);
         } else {
             temp_f31_2167 = temp_f2_2152 / 0.75f;

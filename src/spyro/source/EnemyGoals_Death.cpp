@@ -168,8 +168,7 @@ u8 EnemyGoal_Respawn::Update() {
 
     ActivateIfInactive();
     temp_r3_211 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C == M2C_FIELD(temp_r3_211, f32 *, 0xA74)) {
+    if (gb.unk30C >= M2C_FIELD(temp_r3_211, f32 *, 0xA74)) {
         sp60 = M2C_FIELD(temp_r3_211, f32 *, 0x5B8);
         sp64 = M2C_FIELD(temp_r3_211, f32 *, 0x5BC);
         sp68 = M2C_FIELD(temp_r3_211, f32 *, 0x5C0);
@@ -216,8 +215,7 @@ void EnemyGoal_Respawn::Activate() {
 
     this->unk8 = 0;
     temp_r4_303 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C == M2C_FIELD(temp_r4_303, f32 *, 0xA74)) {
+    if (gb.unk30C >= M2C_FIELD(temp_r4_303, f32 *, 0xA74)) {
         temp_f1_309 = M2C_FIELD(temp_r4_303, f32 *, 0xAB4);
         if (temp_f1_309 > 0.0f) {
             M2C_FIELD(temp_r4_303, f32 *, 0xA74) = (f32) (gb.unk30C + temp_f1_309);
@@ -632,8 +630,7 @@ void EnemyGoal_Dying::Init(Enemy *arg0) {
 u8 EnemyGoal_DyingSquished::Update() {
     ActivateIfInactive();
     this->unk10 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk10 == 0.0f) {
+    if (this->unk10 <= 0.0f) {
         this->unk8 = 2;
     }
     return this->unk8;
@@ -671,7 +668,7 @@ void EnemyGoal_DyingSquished::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp88'
+#if 0 // DRAFT: undefined identifier 'unksp13C'
 u8 EnemyGoal_DyingWhirlwind::Update() {
     f32 sp1AC;
     f32 sp1A8;
@@ -702,15 +699,17 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
     f64 spC8;
     f64 spC0;
     f64 spB8;
-    M2C_UNK spA8;
+    f64 spA8;
     f32 spA0;
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
     f32 sp5C;
     f32 sp58;
@@ -718,14 +717,18 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     Character *temp_r3_1234;
     Character *temp_r3_1245;
     Character *temp_r3_1267;
     Character *temp_r3_1295;
     Character *temp_r3_1301;
+    Character *temp_r3_1359;
     Character *temp_r3_1461;
     Character *temp_r4_1196;
     f32 temp_f1_1357;
@@ -735,6 +738,9 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
     f32 temp_f25_1427;
     f32 temp_f3_1286;
     f32 temp_f4_1214;
+    f64 temp_f0_1256;
+    f64 temp_f0_1376;
+    f64 temp_f0_1388;
     s32 temp_r0_1184;
     s32 var_r28_1338;
 
@@ -748,13 +754,12 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
         sp9C = 4000.0f * gUpdateTimeDelta;
         sp110 = (f64) spA0;
         sp108 = (f64) sp98;
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
+        sp88 = M2C_FIELD(temp_r4_1196, f64 *, 0x588) + sp108;
         temp_f4_1214 = this->unk14;
         sp138 = sp88;
         sp90 = temp_r4_1196->unk588.unk4 + (f32) sp110;
         sp140 = (f64) sp90;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+        M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
         if (temp_r4_1196->unk588.unk0 == temp_f4_1214) {
             unksp13C = temp_f4_1214;
             this->unk10 = 1;
@@ -771,16 +776,15 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
         sp7C = 4000.0f * gUpdateTimeDelta;
         sp100 = (f64) sp80;
         spF8 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        M2C_FIELD(temp_r3_1245, f64 *, 0x588) = sp68;
-        sp128 = sp68;
+        temp_f0_1256 = M2C_FIELD(temp_r3_1245, f64 *, 0x588) - spF8;
+        sp68 = temp_f0_1256;
+        M2C_FIELD(temp_r3_1245, f64 *, 0x588) = temp_f0_1256;
+        sp128 = temp_f0_1256;
         sp70 = temp_r3_1245->unk588.unk4 - (f32) sp100;
         M2C_FIELD(temp_r3_1245, f32 *, 0x590) = (f64) sp70;
         temp_r3_1267 = this->unkC;
         sp130 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_1267->unk588.unk0 == this->unk18) {
+        if (temp_r3_1267->unk588.unk0 <= this->unk18) {
             M2C_STRUCT_COPY((s32) &sp16C + 4, MKModel_GetWorldMatrix(temp_r3_1267->unk4) - 4 + 4, 0x40);
             temp_f3_1286 = this->unk18;
             sp1A0 = (f32) sp128;
@@ -801,6 +805,7 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
                 temp_f23_1355 = -_table_sinf(1.5707964f + temp_f22_1352);
                 temp_f1_1357 = _table_sinf(temp_f22_1352);
                 sp48 = 0.0f;
+                temp_r3_1359 = this->unkC;
                 sp4C = 100.0f;
                 sp60 = temp_f23_1355;
                 sp50 = 0.0f;
@@ -810,13 +815,14 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
                 sp118 = (f64) sp58;
                 sp120 = (f64) sp60;
                 spE0 = (f64) sp50;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                spE8 = sp38;
-                sp40 = this->unkC->unk588.unk4 + (f32) spE0;
+                temp_f0_1376 = M2C_FIELD(temp_r3_1359, f64 *, 0x588) + spD8;
+                sp38 = temp_f0_1376;
+                spE8 = temp_f0_1376;
+                sp40 = temp_r3_1359->unk588.unk4 + (f32) spE0;
                 spF0 = (f64) sp40;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-                spC8 = sp28;
+                temp_f0_1388 = sp118 * 5.65986426e-315;
+                sp28 = temp_f0_1388;
+                spC8 = temp_f0_1388;
                 sp30 = (f32) sp120 * 800.0f;
                 spD0 = (f64) sp30;
                 sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
@@ -828,8 +834,7 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
                 temp_f23_1422 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                 temp_f25_1427 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                 MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f25_1427, temp_f23_1422);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
+                sp18 = spA8 * 5.398241246e-315;
                 sp148 = 0x417;
                 sp150 = sp18;
                 sp20 = spB0 * 10.0f;
@@ -885,6 +890,8 @@ void EnemyGoal_DyingWhirlwind::Activate() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_1575;
     f64 temp_f3_1567;
     f64 temp_f4_1565;
     void *temp_r3_1563;
@@ -931,9 +938,10 @@ void EnemyGoal_DyingWhirlwind::Activate() {
     sp70 = M2C_FIELD(temp_r4_1529, f64 *, 0x38);
     sp30 = (f64) sp20;
     sp40 = temp_f3_1567;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_1575 = sp38 - sp28;
+    sp8 = temp_f0_1575;
     sp58 = temp_f4_1565;
-    sp48 = sp8;
+    sp48 = temp_f0_1575;
     sp10 = (f32) sp40 - (f32) sp30;
     sp60 = temp_f3_1567;
     sp50 = (f64) sp10;
@@ -963,7 +971,7 @@ void EnemyGoal_DyingTrain::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier 'unk5B0'
 u8 EnemyGoal_DyingAirborn::Update() {
     Matrix sp80;
     M2C_UNK sp7C;
@@ -978,35 +986,37 @@ u8 EnemyGoal_DyingAirborn::Update() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     Character *temp_r29_1768;
     Character *temp_r3_1680;
     Character *temp_r3_1703;
+    f64 temp_f0_1684;
+    f64 temp_f1_1713;
     u32 *temp_r4_1774;
     u8 var_r30_1769;
     void *temp_r3_1709;
 
     ActivateIfInactive();
     temp_r3_1680 = this->unkC;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp50 = sp10;
+    temp_f0_1684 = M2C_FIELD(temp_r3_1680, f64 *, 0x5A8) * (f64) gUpdateTimeDelta;
+    sp10 = temp_f0_1684;
+    sp50 = temp_f0_1684;
     sp18 = temp_r3_1680->unk5B0 * gUpdateTimeDelta;
     sp58 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+    M2C_FIELD(temp_r3_1680, f64 *, 0x598) = (f64) (M2C_FIELD(temp_r3_1680, f64 *, 0x598) + temp_f0_1684);
     temp_r3_1680->unk59C += (f32) sp58;
     temp_r3_1703 = this->unkC;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp20 = M2C_FIELD(temp_r3_1703, f64 *, 0x598) * (f64) gUpdateTimeDelta;
     temp_r3_1709 = temp_r3_1703->unk8;
+    temp_f1_1713 = M2C_FIELD(temp_r3_1709, f64 *, 0x30);
     sp30 = sp20;
     sp28 = temp_r3_1703->unk59C * gUpdateTimeDelta;
-    sp40 = M2C_FIELD(temp_r3_1709, f64 *, 0x30);
+    sp40 = temp_f1_1713;
     sp38 = (f64) sp28;
     sp48 = M2C_FIELD(temp_r3_1709, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp40 = temp_f1_1713 + sp30;
     sp70 = sp40;
     sp60 = M2C_FIELD(&MKVector3::up, f64 *, 0);
     sp48 = (f32) sp48 + (f32) sp38;
@@ -1085,7 +1095,7 @@ u8 EnemyGoal_DyingStoned::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp60'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void EnemyGoal_DyingStoned::Activate() {
     f64 spE8;
     f64 spE0;
@@ -1105,20 +1115,30 @@ void EnemyGoal_DyingStoned::Activate() {
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
+    Enemy *temp_r3_1936;
+    Enemy *temp_r3_2003;
     f32 temp_f28_1984;
     f32 temp_f28_2025;
     f32 temp_f29_1979;
     f32 temp_f29_2030;
+    f64 temp_f0_1946;
+    f64 temp_f0_1998;
+    f64 temp_f0_2011;
+    f64 temp_f0_2044;
     s32 var_r30_1972;
     void *temp_r3_1921;
 
@@ -1129,14 +1149,15 @@ void EnemyGoal_DyingStoned::Activate() {
         M2C_FIELD(M2C_FIELD(temp_r3_1921, void **, 0x44), M2C_UNK (**)(), 0x20)();
         M2C_FIELD(M2C_FIELD(temp_r3_1921, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r3_1921);
         sp70 = 0.0f;
+        temp_r3_1936 = this->unkC;
         sp74 = 200.0f;
         sp78 = 0.0f;
         spB0 = (f64) sp70;
         spB8 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spC0 = sp60;
-        sp68 = this->unkC->unk588.unk4 + (f32) spB8;
+        temp_f0_1946 = M2C_FIELD(temp_r3_1936, f64 *, 0x588) + spB0;
+        sp60 = temp_f0_1946;
+        spC0 = temp_f0_1946;
+        sp68 = temp_r3_1936->unk588.unk4 + (f32) spB8;
         spC8 = (f64) sp68;
         MKModel_SetPosition(M2C_FIELD(temp_r3_1921, MKModel **, 4), *((MKVector3 *) &spC0));
         M2C_FIELD(M2C_FIELD(temp_r3_1921, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 0x94)(temp_r3_1921, 0, 0, -1, 0, 1, 0);
@@ -1150,14 +1171,16 @@ void EnemyGoal_DyingStoned::Activate() {
         sp58 = temp_f29_1979;
         sp90 = (f64) sp50;
         sp98 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spA0 = sp40;
+        temp_f0_1998 = sp90 * 5.53552857e-315;
+        sp40 = temp_f0_1998;
+        temp_r3_2003 = this->unkC;
+        spA0 = temp_f0_1998;
         sp48 = (f32) sp98 * 100.0f;
         spA8 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spE0 = sp30;
-        sp38 = this->unkC->unk588.unk4 + (f32) spA8;
+        temp_f0_2011 = M2C_FIELD(temp_r3_2003, f64 *, 0x588) + temp_f0_1998;
+        sp30 = temp_f0_2011;
+        spE0 = temp_f0_2011;
+        sp38 = temp_r3_2003->unk588.unk4 + (f32) spA8;
         spE8 = (f64) sp38;
         temp_f28_2025 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f29_2030 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -1166,8 +1189,9 @@ void EnemyGoal_DyingStoned::Activate() {
         sp28 = temp_f28_2025;
         sp80 = (f64) sp20;
         sp88 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spD0 = sp10;
+        temp_f0_2044 = sp80 * 5.60222949e-315;
+        sp10 = temp_f0_2044;
+        spD0 = temp_f0_2044;
         sp18 = (f32) sp88 * 300.0f;
         spD8 = (f64) sp18;
         sp8 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
@@ -1238,6 +1262,7 @@ u8 EnemyGoal_DyingBurnt::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     u8 spC;
     void *sp8;
     Character *temp_r29_2231;
@@ -1248,6 +1273,7 @@ u8 EnemyGoal_DyingBurnt::Update() {
     Character *temp_r4_2209;
     Character *temp_r4_2314;
     CharacterFireFX *temp_r3_2221;
+    f64 temp_f0_2320;
     u32 *temp_r4_2240;
     u32 *temp_r4_2253;
     u32 *temp_r4_2278;
@@ -1311,10 +1337,9 @@ u8 EnemyGoal_DyingBurnt::Update() {
             M2C_FIELD(temp_r4_2305, u8 *, 4) = 0U;
         }
         temp_r4_2314 = this->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp20 = sp10;
+        temp_f0_2320 = M2C_FIELD(temp_r4_2314, f64 *, 0x588) + M2C_FIELD(temp_r4_2314, f64 *, 0x90);
+        sp10 = temp_f0_2320;
+        sp20 = temp_f0_2320;
         sp18 = temp_r4_2314->unk588.unk4 + temp_r4_2314->unk98;
         sp28 = (f64) sp18;
         if (MKCollision_RayCollide(*((MKVector3 *) &temp_r4_2314->unk588), *((MKVector3 *) &sp20), &sp30, (MKCollisionMode) 7, M2C_FIELD(temp_r4_2314->unk110.unk460, s32 *, 0x18)) != 0) {
@@ -1380,6 +1405,7 @@ u8 EnemyGoal_DyingDefault::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     u8 spC;
     void *sp8;
     Character *temp_r29_2464;
@@ -1388,6 +1414,7 @@ u8 EnemyGoal_DyingDefault::Update() {
     Character *temp_r3_2535;
     Character *temp_r3_2578;
     Character *temp_r4_2555;
+    f64 temp_f0_2561;
     u32 *temp_r4_2473;
     u32 *temp_r4_2486;
     u32 *temp_r4_2515;
@@ -1442,10 +1469,9 @@ u8 EnemyGoal_DyingDefault::Update() {
             M2C_FIELD(temp_r4_2546, u8 *, 4) = 0U;
         }
         temp_r4_2555 = this->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp20 = sp10;
+        temp_f0_2561 = M2C_FIELD(temp_r4_2555, f64 *, 0x588) + M2C_FIELD(temp_r4_2555, f64 *, 0x90);
+        sp10 = temp_f0_2561;
+        sp20 = temp_f0_2561;
         sp18 = temp_r4_2555->unk588.unk4 + temp_r4_2555->unk98;
         sp28 = (f64) sp18;
         if (MKCollision_RayCollide(*((MKVector3 *) &temp_r4_2555->unk588), *((MKVector3 *) &sp20), &sp30, (MKCollisionMode) 7, M2C_FIELD(temp_r4_2555->unk110.unk460, s32 *, 0x18)) != 0) {

@@ -30,7 +30,9 @@ void TrainTrack::Build() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     s32 sp18;
     s32 sp14;
     s32 sp10;
@@ -39,6 +41,8 @@ void TrainTrack::Build() {
     f32 var_f1_210;
     f32 var_f1_316;
     f32 var_f1_90;
+    f64 temp_f0_199;
+    f64 temp_f0_305;
     s32 temp_r3_121;
     s32 temp_r3_153;
     s32 temp_ret_338;
@@ -130,8 +134,9 @@ loop_19:
             spB0 = M2C_BITWISE(f64, sp70);
             spB8 = (f64) sp70.unk8;
             MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r24_178, MKModel **, 4), sp14, &spA0);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp60 = sp30;
+            temp_f0_199 = M2C_BITWISE(f64, spA0) - spB0;
+            sp30 = temp_f0_199;
+            sp60 = temp_f0_199;
             sp38 = spA0.unk8 - (f32) spB8;
             var_f1_210 = (f32) sp60 * (f32) sp60;
             sp68 = (f64) sp38;
@@ -169,8 +174,9 @@ loop_30:
             sp90 = sp50;
             sp98 = sp58;
             MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r28_284, MKModel **, 4), spC, (MKVector3 *) &sp70.unk10);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp40 = sp20;
+            temp_f0_305 = M2C_BITWISE(f64, sp70.unk10) - sp90;
+            sp20 = temp_f0_305;
+            sp40 = temp_f0_305;
             sp28 = sp88 - (f32) sp98;
             var_f1_316 = (f32) sp40 * (f32) sp40;
             sp48 = (f64) sp28;
@@ -213,6 +219,7 @@ void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 var_f3_514;
     f32 var_f4_447;
@@ -228,7 +235,7 @@ void TrainTrack::GetTrackZAxis(int arg0, float arg1) {
     sp40.GetTrackPos(arg0, 100.0f + arg1, M2C_ERROR(/* Read from unset register $r5 */));
     sp60 = sp40;
     sp68 = sp48;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = sp70 - sp60;
     sp30 = sp10;
     sp18 = (f32) sp78 - (f32) sp68;
     sp38 = (f64) sp18;
@@ -378,6 +385,7 @@ void TrainTrack::GetTrackXAxis(int arg0, float arg1) {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 var_f3_793;
     f32 var_f4_726;
@@ -393,7 +401,7 @@ void TrainTrack::GetTrackXAxis(int arg0, float arg1) {
     sp40.GetTrackPos(arg0, arg1, M2C_ERROR(/* Read from unset register $r5 */));
     sp60 = sp40;
     sp68 = sp48;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = sp70 - sp60;
     sp30 = sp10;
     sp18 = (f32) sp78 - (f32) sp68;
     sp38 = (f64) sp18;
@@ -454,8 +462,11 @@ void TrainTrack::GetTrackPos(int arg0, float arg1, int arg2) {
     f64 sp48;
     KDSpline sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 var_f30_844;
+    f64 temp_f0_890;
     s32 temp_r31_868;
     s32 temp_r4_840;
 
@@ -493,13 +504,12 @@ block_13:
             sp68.GetMeasure(var_f30_844, temp_r31_868 + 0x60);
             M2C_FIELD(arg0, f64 *, 0xB0) = sp68;
             M2C_FIELD(arg0, f64 *, 0xB8) = sp70;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp48 = sp8;
+            temp_f0_890 = M2C_FIELD(arg0, f64 *, 0xA0) + M2C_FIELD(arg0, f64 *, 0xB0);
+            sp8 = temp_f0_890;
+            sp48 = temp_f0_890;
             sp10 = (f32) M2C_FIELD(arg0, f64 *, 0xA8) + (f32) M2C_FIELD(arg0, f64 *, 0xB8);
             sp50 = (f64) sp10;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp18 = temp_f0_890 * 5.222099017e-315;
             M2C_FIELD(arg0, f64 *, 0xC0) = sp18;
             sp20 = (f32) sp50 * 0.5f;
             sp58 = sp18;

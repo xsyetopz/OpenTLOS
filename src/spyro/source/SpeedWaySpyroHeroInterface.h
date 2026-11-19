@@ -99,17 +99,19 @@ inline f32 SpeedWaySpyroHeroInterface::GetCollideRadius() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
 inline void SpeedWaySpyroHeroInterface::GetCollisionCentre() {
     f64 sp40;
     f64 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f1_6788;
+    f64 temp_f0_6805;
+    f64 temp_f1_6794;
     void *temp_r31_6782;
     void *temp_r3_6792;
 
@@ -118,17 +120,18 @@ inline void SpeedWaySpyroHeroInterface::GetCollisionCentre() {
     sp8 = 0.0f;
     temp_r3_6792 = M2C_FIELD(M2C_FIELD(temp_r31_6782, void **, 4), void **, 8);
     spC = temp_f1_6788;
+    temp_f1_6794 = M2C_FIELD(temp_r3_6792, f64 *, 0x30);
     sp10 = 0.0f;
     sp28 = (f64) sp8;
-    sp38 = M2C_FIELD(temp_r3_6792, f64 *, 0x30);
+    sp38 = temp_f1_6794;
     sp30 = (f64) sp10;
     sp40 = M2C_FIELD(temp_r3_6792, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0) = sp18;
+    temp_f0_6805 = temp_f1_6794 + sp28;
+    sp18 = temp_f0_6805;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_6805;
     sp20 = (f32) sp40 + (f32) sp30;
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 inline s32 SpeedWaySpyroHeroInterface::GetCollisionIgnoreMaterials() {

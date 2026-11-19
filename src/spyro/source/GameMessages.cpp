@@ -22,16 +22,23 @@ u8 FuryEventCameraMsg::IsSenderBehindWall(EventCamera *arg0) {
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
+    f32 temp_f2_185;
     f32 temp_f2_50;
     f32 temp_f3_52;
     f32 temp_f3_56;
     f32 var_f4_126;
     f32 var_f5_59;
     f64 *var_r4_200;
+    f64 temp_f0_188;
+    f64 temp_f0_198;
     f64 temp_f0_34;
     f64 temp_f1_65;
     f64 temp_f1_71;
@@ -50,7 +57,7 @@ u8 FuryEventCameraMsg::IsSenderBehindWall(EventCamera *arg0) {
         sp90.unk40 = M2C_FIELD(temp_r3_31, f64 *, 0x30);
         sp90.unk58 = M2C_BITWISE(f64, sp90.unk8);
         sp90.unk48 = temp_f0_34;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp40 = M2C_BITWISE(f64, sp90.unk40) - sp90.unk50;
         sp90.unk30 = sp40;
         sp48 = (f32) temp_f0_34 - (f32) sp90.unk58;
         temp_f2_50 = M2C_BITWISE(f32, sp90.unk30);
@@ -107,20 +114,23 @@ loop_28:
             goto block_29;
         }
         sp70.operator*(500.0f * (f32) (var_r29_133 - 1));
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+        sp30 = sp90.unk50 + M2C_BITWISE(f64, sp70);
         sp80 = sp30;
         sp38 = (f32) sp90.unk58 + sp70.unk8;
         sp90.unk20 = sp30;
         sp88 = (f64) sp38;
         sp90.unk28 = (f64) sp38;
         if (var_r29_133 != temp_r31_147) {
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp60 = sp20;
-            sp28 = sp90.unk38 * (500.0f * (f32) var_r29_133);
+            temp_f2_185 = 500.0f * (f32) var_r29_133;
+            temp_f0_188 = (f64) sp90.unk30 * (f64) temp_f2_185;
+            sp20 = temp_f0_188;
+            sp60 = temp_f0_188;
+            sp28 = sp90.unk38 * temp_f2_185;
             sp68 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+            temp_f0_198 = sp90.unk50 + temp_f0_188;
+            sp10 = temp_f0_198;
             var_r4_200 = &sp50;
-            sp50 = sp10;
+            sp50 = temp_f0_198;
             sp18 = (f32) sp90.unk58 + (f32) sp68;
             sp58 = (f64) sp18;
         } else {
@@ -143,16 +153,19 @@ block_29:
 s32 FuryEventCameraMsg::AddCamera(EventCamera *arg0) {
     f64 sp80;
     f64 sp78;
-    M2C_UNK sp68;
+    f64 sp68;
     f64 sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
-    M2C_UNK sp38;
+    f64 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_297;
     s32 temp_r0_280;
     s32 var_ctr_328;
     s32 var_r30_325;
@@ -170,8 +183,9 @@ s32 FuryEventCameraMsg::AddCamera(EventCamera *arg0) {
             sp58 = M2C_FIELD(temp_r5_289, f64 *, 0x30);
             sp60 = M2C_FIELD(temp_r5_289, f64 *, 0x38);
             sp68.GetSourceStart();
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp78 = sp18;
+            temp_f0_297 = sp68 - sp58;
+            sp18 = temp_f0_297;
+            sp78 = temp_f0_297;
             sp20 = sp70 - (f32) sp60;
             sp80 = (f64) sp20;
             M2C_FIELD((this + (this->unk58 * 4)), f32 *, 0x30) = (f32) (((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C)));
@@ -194,7 +208,7 @@ s32 FuryEventCameraMsg::AddCamera(EventCamera *arg0) {
         sp28 = M2C_FIELD(temp_r5_345, f64 *, 0x30);
         sp30 = M2C_FIELD(temp_r5_345, f64 *, 0x38);
         sp38.GetSourceStart();
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp8 = sp38 - sp28;
         temp_r3_357 = this + (var_r30_325 * 4);
         sp48 = sp8;
         sp10 = sp40 - (f32) sp30;

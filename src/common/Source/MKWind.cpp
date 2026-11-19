@@ -49,8 +49,9 @@ void MKWind_GetVelocity(const MKVector3 &arg0) {
 void MKWind::Init(float arg0, float arg1, float arg2, float arg3, const MKVector3 &arg4, float arg5) {
     f64 sp38;
     f64 sp30;
-    M2C_UNK sp20;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     MKWind *temp_r27_273;
@@ -198,8 +199,7 @@ void MKWind::Init(float arg0, float arg1, float arg2, float arg3, const MKVector
         temp_f23_305 = _table_sinf(temp_f23_295);
         temp_f24_308 = _table_sinf(var_f24_281);
         MKVector(_table_sinf(temp_f21_297) * temp_f24_308, temp_f23_305, temp_f22_302);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+        sp10 = sp20 * (f64) var_f28_111;
         M2C_FIELD(temp_r27_273, f64 *, 0) = sp10;
         sp18 = sp28 * var_f28_111;
         sp30 = sp10;

@@ -14,6 +14,7 @@ void CloudPS::UpdateParticles() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     MKParticleChunk *var_r30_72;
     MKParticleSystem::Envelope *temp_r3_141;
     f32 temp_f30_79;
@@ -22,6 +23,7 @@ void CloudPS::UpdateParticles() {
     f32 temp_f5_148;
     f32 temp_f6_143;
     f32 var_f0_159;
+    f64 temp_f0_91;
     s32 temp_r3_115;
     s32 temp_r3_129;
     s32 temp_r4_140;
@@ -39,14 +41,12 @@ loop_12:
         if (temp_f30_79 > this->unk12C) {
             var_r30_72 = DestroyParticle(&unksp8);
         } else {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp20 = sp10;
+            temp_f0_91 = M2C_FIELD(temp_r29_75, f64 *, 0) * (f64) gUpdateTimeDelta;
+            sp10 = temp_f0_91;
+            sp20 = temp_f0_91;
             sp18 = M2C_FIELD(temp_r29_75, f32 *, 8) * gUpdateTimeDelta;
             sp28 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+            M2C_FIELD(var_r30_72, f64 *, 0) = (f64) (M2C_FIELD(var_r30_72, f64 *, 0) + temp_f0_91);
             var_r30_72->unk8 += (f32) sp28;
             var_r30_72->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r29_75, f32 *, 0x18);
             temp_r3_115 = M2C_FIELD(checked_cast<CloudPSDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80);

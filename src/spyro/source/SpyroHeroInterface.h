@@ -109,7 +109,6 @@ inline f32 SpyroHeroInterface::GetCollideRadius() {
     return 100.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
 inline void SpyroHeroInterface::GetCollisionCentre() {
     f64 sp60;
     f64 sp58;
@@ -121,30 +120,36 @@ inline void SpyroHeroInterface::GetCollisionCentre() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_17556;
+    f64 temp_f0_17569;
+    f64 temp_f1_17544;
     void *temp_r4_17542;
     void *temp_r5_17540;
 
     temp_r5_17540 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 4);
     temp_r4_17542 = M2C_FIELD(temp_r5_17540, void **, 8);
     sp30 = 0.0f;
+    temp_f1_17544 = M2C_FIELD(temp_r4_17542, f64 *, 0x30);
     sp28 = 0.0f;
     sp2C = 100.0f;
-    sp48 = M2C_FIELD(temp_r4_17542, f64 *, 0x30);
+    sp48 = temp_f1_17544;
     sp58 = (f64) sp28;
     sp60 = (f64) sp30;
     sp50 = M2C_FIELD(temp_r4_17542, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp38 = sp18;
+    temp_f0_17556 = temp_f1_17544 + sp58;
+    sp18 = temp_f0_17556;
+    sp38 = temp_f0_17556;
     sp20 = (f32) sp50 + (f32) sp60;
     sp40 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r5, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0) = sp8;
+    temp_f0_17569 = sp38 + M2C_FIELD(temp_r5_17540, f64 *, 0x368);
+    sp8 = temp_f0_17569;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_17569;
     sp10 = (f32) sp40 + M2C_FIELD(temp_r5_17540, f32 *, 0x370);
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
-#endif
 
 inline s32 SpyroHeroInterface::GetCollisionIgnoreMaterials() {
     return 0x220;

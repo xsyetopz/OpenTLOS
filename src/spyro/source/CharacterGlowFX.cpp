@@ -105,11 +105,17 @@ void CharacterGlowFX::Draw() {
     f32 spBC;
     f32 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -135,6 +141,8 @@ void CharacterGlowFX::Draw() {
     f32 var_f4_237;
     f32 var_f5_310;
     f32 var_f6_327;
+    f64 temp_f0_554;
+    f64 temp_f0_593;
     f64 temp_f1_249;
     f64 temp_f1_255;
     f64 temp_f1_259;
@@ -149,6 +157,8 @@ void CharacterGlowFX::Draw() {
     s32 var_r24_167;
     u8 var_r22_89;
     void *temp_r24_91;
+    void *temp_r4_551;
+    void *temp_r4_590;
 
     if ((u8) this->unk14 != 0) {
         var_r22_89 = 0;
@@ -290,8 +300,7 @@ loop_49:
                 sp210 = (f64) sp50;
                 sp218.operator*(temp_f27_232);
                 sp228.operator*(temp_f27_232);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                spA8 = sp228 + M2C_BITWISE(f64, sp218);
                 sp238 = spA8;
                 spB0 = sp228.unk8 + sp218.unk8;
                 sp300 = spA8;
@@ -299,8 +308,7 @@ loop_49:
                 sp308 = (f64) spB0;
                 sp1D8.operator*(temp_f27_232);
                 sp1E8.operator*(temp_f27_232);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp98 = sp1E8 + M2C_BITWISE(f64, sp1D8);
                 sp38 = -sp288;
                 sp3C = -unksp28C;
                 spA0 = sp1E8.unk8 + sp1D8.unk8;
@@ -318,8 +326,7 @@ loop_49:
                 sp1A8 = (f64) sp28;
                 sp1B0 = (f64) sp30;
                 sp1B8.operator*(temp_f27_232);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp88 = sp1B8 + M2C_BITWISE(f64, sp198);
                 sp1C8 = sp88;
                 sp90 = sp1B8.unk8 + sp198.unk8;
                 sp320 = sp88;
@@ -332,17 +339,17 @@ loop_49:
                 sp158 = (f64) sp18;
                 sp160 = (f64) sp20;
                 sp168.operator*(temp_f27_232);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp78 = sp168 + M2C_BITWISE(f64, sp148);
                 sp330 = sp78;
                 sp80 = sp168.unk8 + sp148.unk8;
                 sp178 = sp78;
                 sp338 = (f64) sp80;
                 sp180 = (f64) sp80;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp128 = sp68;
-                sp70 = M2C_FIELD((this->unk4 + (var_r22_168 + 8)), f32 *, 8) - (f32) sp2B0;
+                temp_r4_551 = this->unk4 + (var_r22_168 + 8);
+                temp_f0_554 = M2C_FIELD(temp_r4_551, f64 *, 0) - sp2A8;
+                sp68 = temp_f0_554;
+                sp128 = temp_f0_554;
+                sp70 = M2C_FIELD(temp_r4_551, f32 *, 8) - (f32) sp2B0;
                 sp130 = (f64) sp70;
                 Normalise(sp138);
                 sp278 = M2C_BITWISE(f64, sp138);
@@ -354,11 +361,12 @@ loop_49:
                 sp268 = (f64) spD8;
                 sp270 = (f64) spE0;
                 sp108.operator*(25.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                temp_r4_590 = this->unk4 + (var_r22_168 + 8);
+                temp_f0_593 = M2C_FIELD(temp_r4_590, f64 *, 0) + M2C_BITWISE(f64, sp108);
+                sp58 = temp_f0_593;
                 unksp37C = 1.0f;
-                sp118 = sp58;
-                sp60 = M2C_FIELD((this->unk4 + (var_r22_168 + 8)), f32 *, 8) + sp108.unk8;
+                sp118 = temp_f0_593;
+                sp60 = M2C_FIELD(temp_r4_590, f32 *, 8) + sp108.unk8;
                 sp120 = (f64) sp60;
                 sp370 = (f32) sp118;
                 unksp374 = unksp11C;
@@ -414,8 +422,7 @@ void CharacterGlowFX::Update() {
         }
         this->unk1C = var_f0_701;
         CharacterBodyFX::Update();
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk1C == 0.0f) {
+        if (this->unk1C <= 0.0f) {
             sp8 = 1.0f;
             spC = 1.0f;
             sp10 = 1.0f;

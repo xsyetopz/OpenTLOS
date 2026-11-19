@@ -577,14 +577,14 @@ inline void Spyro::GetVel() {
 inline s32 Spyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKVector(0.0f, 160.0f, 0.0f);
     sp28.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;
     sp38 = sp8;
@@ -598,14 +598,14 @@ inline s32 Spyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 inline s32 Spyro::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKVector(0.0f, 160.0f, 0.0f);
     sp28.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;
     sp38 = sp8;
@@ -660,7 +660,6 @@ inline void Spyro::GetProp() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 inline void Spyro::GetCollisionCentre() {
     f64 sp60;
     f64 sp58;
@@ -669,30 +668,36 @@ inline void Spyro::GetCollisionCentre() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_1876;
+    f64 temp_f0_1889;
+    f64 temp_f1_1864;
     void *temp_r5_1862;
 
     temp_r5_1862 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
     sp1C = 100.0f;
+    temp_f1_1864 = M2C_FIELD(temp_r5_1862, f64 *, 0x30);
     sp18 = 0.0f;
     sp20 = 0.0f;
     sp38 = (f64) sp18;
-    sp48 = M2C_FIELD(temp_r5_1862, f64 *, 0x30);
+    sp48 = temp_f1_1864;
     sp40 = (f64) sp20;
     sp50 = M2C_FIELD(temp_r5_1862, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp58 = sp8;
+    temp_f0_1876 = temp_f1_1864 + sp38;
+    sp8 = temp_f0_1876;
+    sp58 = temp_f0_1876;
     sp10 = (f32) sp50 + (f32) sp40;
     sp60 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r4, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0) = sp28;
+    temp_f0_1889 = sp58 + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x368);
+    sp28 = temp_f0_1889;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_1889;
     sp30 = (f32) sp60 + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x370);
     M2C_FIELD(this, f64 *, 8) = (f64) sp30;
 }
-#endif
 
 #endif  // SPYRO_SOURCE_SPYRO_H

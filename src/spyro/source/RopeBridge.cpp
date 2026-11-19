@@ -74,9 +74,12 @@ void RopeBridge::FindBrokenPlank(const MKVector3 &arg0) {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f0_138;
     f32 temp_f30_106;
     f32 var_f31_105;
+    f64 temp_f0_122;
+    f64 temp_f1_116;
     s32 var_r30_108;
     s32 var_r31_109;
     void *temp_r3_115;
@@ -88,11 +91,12 @@ void RopeBridge::FindBrokenPlank(const MKVector3 &arg0) {
 loop_4:
     if (var_r30_108 < (s32) this->unk188) {
         temp_r3_115 = MKModel_GetWorldMatrix(*(this->unk184 + (var_r31_109 + 0x48)));
-        sp28 = M2C_FIELD(temp_r3_115, f64 *, 0x30);
+        temp_f1_116 = M2C_FIELD(temp_r3_115, f64 *, 0x30);
+        sp28 = temp_f1_116;
         sp30 = M2C_FIELD(temp_r3_115, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp18 = sp8;
+        temp_f0_122 = temp_f1_116 - M2C_FIELD(&arg0, f64 *, 0);
+        sp8 = temp_f0_122;
+        sp18 = temp_f0_122;
         sp10 = (f32) sp30 - temp_f30_106;
         sp20 = (f64) sp10;
         temp_f0_138 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C));
@@ -128,8 +132,7 @@ u8 RopeBridge::Attach(RopeBridgeAttachment *arg0, MKCollisionInfo *arg1) {
     s32 var_r3_225;
     void *temp_r3_211;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) - arg0->unk10) == 0.5f) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) - arg0->unk10) >= 0.5f) {
         if (KDSound_IsVoicePlaying(arg0->unk14) != 0) {
             KDSound_Stop(&arg0->unk14);
         }
@@ -227,7 +230,7 @@ void RopeBridge::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void RopeBridge::Draw() {
     f64 sp68;
     f64 sp60;
@@ -237,7 +240,9 @@ void RopeBridge::Draw() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     Matrix *temp_r3_398;
@@ -268,7 +273,7 @@ void RopeBridge::Draw() {
     sp60 = M2C_FIELD(temp_r3_398, f64 *, 0x30);
     sp68 = M2C_FIELD(temp_r3_398, f64 *, 0x38);
     MKModel_CalculateCentre(M2C_FIELD(this->unk184, MKModel **, 0x48), &sp50);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp20 = sp60 - M2C_BITWISE(f64, sp50);
     sp40 = sp20;
     sp28 = (f32) sp68 - sp50.unk8;
     sp48 = (f64) sp28;
@@ -307,7 +312,7 @@ void RopeBridge::Draw() {
         }
     }
     MKModel_CalculateCentre(M2C_FIELD((this->unk184 + (this->unk188 * 0x50)), MKModel **, -8), &sp50);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = sp60 - M2C_BITWISE(f64, sp50);
     sp30 = sp10;
     sp18 = (f32) sp68 - sp50.unk8;
     sp38 = (f64) sp18;
@@ -425,28 +430,53 @@ void RopeBridge::UpdatePlanks(int arg0, float arg1, float arg2) {
     f64 spE0;
     f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f32 temp_f29_1237;
     f32 temp_f31_764;
     f32 temp_f3_1188;
     f32 temp_f3_1234;
     f32 temp_f3_1244;
+    f32 temp_f3_1285;
     f32 temp_f3_961;
     f32 temp_f5_881;
     f32 temp_f5_958;
     f32 temp_f6_1192;
     f32 temp_f7_887;
     f32 temp_f7_968;
+    f64 temp_f0_1075;
+    f64 temp_f0_1133;
+    f64 temp_f0_1162;
+    f64 temp_f0_1293;
+    f64 temp_f0_769;
+    f64 temp_f0_802;
+    f64 temp_f0_855;
+    f64 temp_f4_997;
+    f64 temp_f6_1239;
+    f64 temp_f8_963;
     s32 temp_r0_1093;
     s32 temp_r0_1149;
     s32 temp_r0_723;
@@ -487,23 +517,32 @@ void RopeBridge::UpdatePlanks(int arg0, float arg1, float arg2) {
     void *temp_r3_806;
     void *temp_r4_1050;
     void *temp_r4_1060;
+    void *temp_r4_1160;
+    void *temp_r4_1212;
     void *temp_r4_1243;
     void *temp_r4_1288;
     void *temp_r4_1309;
+    void *temp_r4_800;
     void *temp_r4_843;
     void *temp_r4_848;
     void *temp_r4_859;
     void *temp_r5_1071;
     void *temp_r5_1124;
+    void *temp_r5_1210;
     void *temp_r5_1254;
     void *temp_r5_751;
+    void *temp_r5_853;
     void *temp_r6_1023;
     void *temp_r6_1036;
     void *temp_r6_1207;
     void *temp_r6_1289;
+    void *temp_r6_910;
+    void *temp_r6_933;
     void *temp_r6_969;
     void *temp_r6_984;
     void *temp_r7_1007;
+    void *temp_r7_908;
+    void *temp_r7_931;
     void *temp_r8_905;
     void *temp_r8_928;
 
@@ -528,35 +567,31 @@ loop_4:
 loop_10:
         if (var_r31_744 < (s32) (this->unk188 - 1)) {
             temp_r5_751 = this->unk180 + var_r29_746;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r5_751, f32 *, 0x40)) {
+            if (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r5_751, f32 *, 0x40)) {
                 M2C_FIELD(temp_r5_751, f64 *, 0) = (f64) M2C_FIELD(temp_r5_751, f64 *, 0x10);
                 M2C_FIELD(temp_r5_751, f64 *, 8) = (f64) M2C_FIELD(temp_r5_751, f64 *, 0x18);
                 temp_f31_764 = gUpdateTimeDelta;
                 sp1A8.operator*(arg2);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                sp1B8 = spB8;
+                temp_f0_769 = sp1A8 * (f64) temp_f31_764;
+                spB8 = temp_f0_769;
+                sp1B8 = temp_f0_769;
                 temp_r3_777 = this->unk180 + (var_r29_746 + 0x20);
                 spC0 = sp1A8.unk8 * temp_f31_764;
                 sp1C0 = (f64) spC0;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+                M2C_FIELD(temp_r3_777, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_777, f64 *, 0) - temp_f0_769);
                 temp_r0_785 = var_r29_746 + 0x24;
                 M2C_FIELD(temp_r3_777, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_777, f32 *, 8) - (f32) sp1C0);
                 temp_r3_792 = this->unk180;
                 *(temp_r3_792 + temp_r0_785) = -((980.0f * gUpdateTimeDelta) - *(temp_r3_792 + temp_r0_785));
                 temp_r0_798 = this->unk180;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                temp_r4_800 = temp_r0_798 + (var_r29_746 + 0x20);
+                temp_f0_802 = M2C_FIELD(temp_r4_800, f64 *, 0) * (f64) gUpdateTimeDelta;
+                spA8 = temp_f0_802;
                 temp_r3_806 = temp_r0_798 + (var_r29_746 + 0x10);
-                sp198 = spA8;
-                spB0 = M2C_FIELD((temp_r0_798 + (var_r29_746 + 0x20)), f32 *, 8) * gUpdateTimeDelta;
+                sp198 = temp_f0_802;
+                spB0 = M2C_FIELD(temp_r4_800, f32 *, 8) * gUpdateTimeDelta;
                 sp1A0 = (f64) spB0;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+                M2C_FIELD(temp_r3_806, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_806, f64 *, 0) + temp_f0_802);
                 M2C_FIELD(temp_r3_806, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_806, f32 *, 8) + (f32) sp1A0);
             }
             var_r31_744 += 1;
@@ -577,15 +612,14 @@ loop_15:
             temp_r4_848 = this->unk180;
             *(temp_r4_848 + temp_r0_840) = *(temp_r4_848 + temp_r0_840) - 32.666668f;
             temp_r0_852 = this->unk180;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f4 */);
+            temp_r5_853 = temp_r0_852 + (var_r3_836 + 0x20);
+            temp_f0_855 = M2C_FIELD(temp_r5_853, f64 *, 0) * 5.059081113e-315;
+            sp98 = temp_f0_855;
             temp_r4_859 = temp_r0_852 + (var_r3_836 + 0x10);
-            sp188 = sp98;
-            spA0 = M2C_FIELD((temp_r0_852 + (var_r3_836 + 0x20)), f32 *, 8) * 0.033333335f;
+            sp188 = temp_f0_855;
+            spA0 = M2C_FIELD(temp_r5_853, f32 *, 8) * 0.033333335f;
             sp190 = (f64) spA0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+            M2C_FIELD(temp_r4_859, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_859, f64 *, 0) + temp_f0_855);
             var_r6_835 += 1;
             var_r3_836 += 0x48;
             M2C_FIELD(temp_r4_859, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_859, f32 *, 8) + (f32) sp190);
@@ -602,63 +636,54 @@ loop_27:
                 if (var_r4_897 < (s32) this->unk188) {
                     if (var_r4_897 < (s32) this->unk1A4) {
                         temp_r8_905 = this->unk180;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r6, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r7, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f4, $f5, $f4 */);
+                        temp_r7_908 = temp_r8_905 + (var_r5_898 + 0x10);
+                        temp_r6_910 = temp_r8_905 + (((var_r4_897 - 1) * 0x48) + 0x10);
+                        sp88 = M2C_FIELD(temp_r6_910, f64 *, 0) - M2C_FIELD(temp_r7_908, f64 *, 0);
                         sp178 = sp88;
-                        sp90 = M2C_FIELD((temp_r8_905 + (((var_r4_897 - 1) * 0x48) + 0x10)), f32 *, 8) - M2C_FIELD((temp_r8_905 + (var_r5_898 + 0x10)), f32 *, 8);
+                        sp90 = M2C_FIELD(temp_r6_910, f32 *, 8) - M2C_FIELD(temp_r7_908, f32 *, 8);
                         sp1D8 = sp88;
                         sp180 = (f64) sp90;
                         sp1E0 = (f64) sp90;
                     } else {
                         temp_r8_928 = this->unk180;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r6, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r7, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f4, $f5, $f4 */);
+                        temp_r7_931 = temp_r8_928 + (var_r5_898 + 0x10);
+                        temp_r6_933 = temp_r8_928 + (((var_r4_897 + 1) * 0x48) + 0x10);
+                        sp78 = M2C_FIELD(temp_r6_933, f64 *, 0) - M2C_FIELD(temp_r7_931, f64 *, 0);
                         sp168 = sp78;
-                        sp80 = M2C_FIELD((temp_r8_928 + (((var_r4_897 + 1) * 0x48) + 0x10)), f32 *, 8) - M2C_FIELD((temp_r8_928 + (var_r5_898 + 0x10)), f32 *, 8);
+                        sp80 = M2C_FIELD(temp_r6_933, f32 *, 8) - M2C_FIELD(temp_r7_931, f32 *, 8);
                         sp1D8 = sp78;
                         sp170 = (f64) sp80;
                         sp1E0 = (f64) sp80;
                     }
                     temp_f5_958 = ((((f32) sp1E0 * (f32) sp1E0) + (((f32) sp1D8 * (f32) sp1D8) + (unksp1DC * unksp1DC))) * (1.0f / temp_f7_887)) + (temp_f5_881 - ((temp_f5_881 * temp_f5_881) / temp_f7_887));
                     temp_f3_961 = (0.4f * (temp_f5_958 - this->unk18C)) / temp_f5_958;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f8, $f8, $f3 */);
+                    temp_f8_963 = sp1D8 * (f64) temp_f3_961;
+                    sp1D8 = temp_f8_963;
                     temp_f7_968 = (f32) sp1E0 * temp_f3_961;
                     temp_r6_969 = this->unk180 + (var_r5_898 + 0x10);
                     sp1E0 = temp_f7_968;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r6, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f4, $f4, $f8 */);
-                    M2C_ERROR(/* unknown instruction: psq_stx $f4, $zero, $r6, 0x0, qr0 */);
+                    M2C_FIELD(temp_r6_969, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_969, f64 *, 0) + temp_f8_963);
                     M2C_FIELD(temp_r6_969, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_969, f32 *, 8) + temp_f7_968);
                     temp_r0_977 = this->unk1A4;
                     if (var_r4_897 < temp_r0_977) {
                         temp_r6_984 = this->unk180 + (((var_r4_897 - 1) * 0x48) + 0x10);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r6, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f4, $f4, $f8 */);
-                        M2C_ERROR(/* unknown instruction: psq_stx $f4, $zero, $r6, 0x0, qr0 */);
+                        M2C_FIELD(temp_r6_984, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_984, f64 *, 0) - temp_f8_963);
                         M2C_FIELD(temp_r6_984, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_984, f32 *, 8) - temp_f7_968);
                     } else if (var_r4_897 == temp_r0_977) {
-                        M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f4, $f4, $f3 */);
-                        sp158 = sp68;
+                        temp_f4_997 = M2C_FIELD(&MKVector3::up, f64 *, 0) * (f64) temp_f3_961;
+                        sp68 = temp_f4_997;
+                        sp158 = temp_f4_997;
                         temp_r7_1007 = this->unk180 + (((var_r4_897 - 1) * 0x48) + 0x10);
                         sp70 = MKVector3::up.unk8 * temp_f3_961;
                         sp160 = (f64) sp70;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r7, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f4, $f5, $f4 */);
-                        M2C_ERROR(/* unknown instruction: psq_stx $f4, $zero, $r7, 0x0, qr0 */);
+                        M2C_FIELD(temp_r7_1007, f64 *, 0) = (f64) (M2C_FIELD(temp_r7_1007, f64 *, 0) - temp_f4_997);
                         M2C_FIELD(temp_r7_1007, f32 *, 8) = (f32) (M2C_FIELD(temp_r7_1007, f32 *, 8) - (f32) sp160);
                         temp_r6_1023 = this->unk180 + (((var_r4_897 + 1) * 0x48) + 0x10);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r6, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f4, $f4, $f8 */);
-                        M2C_ERROR(/* unknown instruction: psq_stx $f4, $zero, $r6, 0x0, qr0 */);
+                        M2C_FIELD(temp_r6_1023, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_1023, f64 *, 0) - temp_f8_963);
                         M2C_FIELD(temp_r6_1023, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_1023, f32 *, 8) - temp_f7_968);
                     } else {
                         temp_r6_1036 = this->unk180 + (((var_r4_897 + 1) * 0x48) + 0x10);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r6, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f4, $f4, $f8 */);
-                        M2C_ERROR(/* unknown instruction: psq_stx $f4, $zero, $r6, 0x0, qr0 */);
+                        M2C_FIELD(temp_r6_1036, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_1036, f64 *, 0) - temp_f8_963);
                         M2C_FIELD(temp_r6_1036, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_1036, f32 *, 8) - temp_f7_968);
                     }
                     var_r4_897 += 1;
@@ -680,15 +705,13 @@ loop_27:
 loop_31:
         if (var_r27_1066 < (s32) this->unk188) {
             temp_r5_1071 = this->unk180 + var_r29_1067;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp128 = sp18;
+            temp_f0_1075 = *(temp_r5_1071 + 0x10) - M2C_FIELD(temp_r5_1071, f64 *, 0);
+            sp18 = temp_f0_1075;
+            sp128 = temp_f0_1075;
             sp20 = M2C_FIELD(temp_r5_1071, f32 *, 0x18) - M2C_FIELD(temp_r5_1071, f32 *, 8);
             sp130 = (f64) sp20;
             sp138.operator*(1.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            sp58 = sp138 * 5.46558974e-315;
             temp_r0_1093 = var_r29_1067 + 0x20;
             var_r27_1066 += 1;
             var_r29_1067 += 0x48;
@@ -710,29 +733,26 @@ loop_35:
         M2C_FIELD(temp_r5_1124, f64 *, 0) = (f64) M2C_FIELD(temp_r5_1124, f64 *, 0x10);
         M2C_FIELD(temp_r5_1124, f64 *, 8) = (f64) M2C_FIELD(temp_r5_1124, f64 *, 0x18);
         sp108.operator*(arg2);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        sp118 = sp48;
+        temp_f0_1133 = sp108 * (f64) arg1;
+        sp48 = temp_f0_1133;
+        sp118 = temp_f0_1133;
         temp_r3_1141 = this->unk180 + (var_r29_1116 + 0x20);
         sp50 = sp108.unk8 * arg1;
         sp120 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+        M2C_FIELD(temp_r3_1141, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_1141, f64 *, 0) - temp_f0_1133);
         temp_r0_1149 = var_r29_1116 + 0x24;
         M2C_FIELD(temp_r3_1141, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_1141, f32 *, 8) - (f32) sp120);
         temp_r3_1155 = this->unk180;
         *(temp_r3_1155 + temp_r0_1149) = *(temp_r3_1155 + temp_r0_1149) - (980.0f * arg1);
         temp_r0_1159 = this->unk180;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+        temp_r4_1160 = temp_r0_1159 + (var_r29_1116 + 0x20);
+        temp_f0_1162 = M2C_FIELD(temp_r4_1160, f64 *, 0) * (f64) arg1;
+        sp38 = temp_f0_1162;
         temp_r3_1166 = temp_r0_1159 + (var_r29_1116 + 0x10);
-        spF8 = sp38;
-        sp40 = M2C_FIELD((temp_r0_1159 + (var_r29_1116 + 0x20)), f32 *, 8) * arg1;
+        spF8 = temp_f0_1162;
+        sp40 = M2C_FIELD(temp_r4_1160, f32 *, 8) * arg1;
         sp100 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+        M2C_FIELD(temp_r3_1166, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_1166, f64 *, 0) + temp_f0_1162);
         var_r27_1115 += 1;
         var_r29_1116 += 0x48;
         M2C_FIELD(temp_r3_1166, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_1166, f32 *, 8) + (f32) sp100);
@@ -749,25 +769,23 @@ loop_39:
             if (var_r8_1202 < (s32) this->unk188) {
                 temp_r6_1207 = this->unk180;
                 temp_r7_1208 = (var_r8_1202 + 1) * 0x48;
-                M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r5, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
+                temp_r5_1210 = temp_r6_1207 + (var_r3_1203 + 0x10);
+                temp_r4_1212 = temp_r6_1207 + (temp_r7_1208 + 0x10);
+                spC8 = M2C_FIELD(temp_r4_1212, f64 *, 0) - M2C_FIELD(temp_r5_1210, f64 *, 0);
                 sp1C8 = spC8;
-                spD0 = M2C_FIELD((temp_r6_1207 + (temp_r7_1208 + 0x10)), f32 *, 8) - M2C_FIELD((temp_r6_1207 + (var_r3_1203 + 0x10)), f32 *, 8);
+                spD0 = M2C_FIELD(temp_r4_1212, f32 *, 8) - M2C_FIELD(temp_r5_1210, f32 *, 8);
                 sp1D0 = (f64) spD0;
                 temp_f3_1234 = ((((f32) sp1D0 * (f32) sp1D0) + (((f32) sp1C8 * (f32) sp1C8) + (unksp1CC * unksp1CC))) * (1.0f / temp_f6_1192)) + (temp_f3_1188 - ((temp_f3_1188 * temp_f3_1188) / temp_f6_1192));
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f6, $f6, $f29 */);
+                temp_f29_1237 = (0.4f * (temp_f3_1234 - this->unk18C)) / temp_f3_1234;
+                temp_f6_1239 = sp1C8 * (f64) temp_f29_1237;
+                sp1C8 = temp_f6_1239;
                 temp_r4_1243 = temp_r6_1207 + (var_r3_1203 + 0x10);
-                temp_f3_1244 = (f32) sp1D0 * ((0.4f * (temp_f3_1234 - this->unk18C)) / temp_f3_1234);
+                temp_f3_1244 = (f32) sp1D0 * temp_f29_1237;
                 sp1D0 = temp_f3_1244;
-                M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f2, $f2, $f6 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f2, $zero, $r4, 0x0, qr0 */);
+                M2C_FIELD(temp_r4_1243, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_1243, f64 *, 0) + temp_f6_1239);
                 M2C_FIELD(temp_r4_1243, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_1243, f32 *, 8) + temp_f3_1244);
                 temp_r5_1254 = this->unk180 + (temp_r7_1208 + 0x10);
-                M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r5, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f2, $f2, $f6 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f2, $zero, $r5, 0x0, qr0 */);
+                M2C_FIELD(temp_r5_1254, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_1254, f64 *, 0) - temp_f6_1239);
                 var_r8_1202 += 1;
                 var_r3_1203 += 0x48;
                 M2C_FIELD(temp_r5_1254, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_1254, f32 *, 8) - temp_f3_1244);
@@ -785,22 +803,22 @@ loop_39:
     }
     var_r7_1283 = 0;
     var_r3_1284 = 0;
+    temp_f3_1285 = 1.0f / arg1;
 loop_43:
     if (var_r7_1283 < (s32) this->unk188) {
         temp_r4_1288 = this->unk180;
         temp_r6_1289 = temp_r4_1288 + var_r3_1284;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r6, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        spD8 = sp8;
+        temp_f0_1293 = *(temp_r6_1289 + 0x10) - M2C_FIELD(temp_r6_1289, f64 *, 0);
+        sp8 = temp_f0_1293;
+        spD8 = temp_f0_1293;
         sp10 = M2C_FIELD(temp_r6_1289, f32 *, 0x18) - M2C_FIELD(temp_r6_1289, f32 *, 8);
         spE0 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp28 = temp_f0_1293 * (f64) temp_f3_1285;
         temp_r4_1309 = temp_r4_1288 + (var_r3_1284 + 0x20);
         var_r7_1283 += 1;
         var_r3_1284 += 0x48;
         M2C_FIELD(temp_r4_1309, f64 *, 0) = sp28;
-        sp30 = (f32) spE0 * (1.0f / arg1);
+        sp30 = (f32) spE0 * temp_f3_1285;
         spE8 = sp28;
         spF0 = (f64) sp30;
         M2C_FIELD(temp_r4_1309, f64 *, 8) = (f64) sp30;
@@ -882,7 +900,9 @@ void RopeBridge::UpdatePlankMatrices() {
     f32 spFC;
     f32 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
     f32 spCC;
     f32 spC8;
@@ -890,7 +910,9 @@ void RopeBridge::UpdatePlankMatrices() {
     f32 spBC;
     f32 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
@@ -907,8 +929,11 @@ void RopeBridge::UpdatePlankMatrices() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 temp_f0_1969;
     f32 temp_f1_1970;
@@ -923,6 +948,11 @@ void RopeBridge::UpdatePlankMatrices() {
     f32 temp_f7_1852;
     f32 var_f2_1535;
     f32 var_f4_1469;
+    f64 temp_f0_1607;
+    f64 temp_f0_1657;
+    f64 temp_f0_1691;
+    f64 temp_f0_1763;
+    f64 temp_f0_1832;
     f64 temp_f1_1474;
     f64 temp_f1_1480;
     f64 temp_f1_1484;
@@ -932,15 +962,25 @@ void RopeBridge::UpdatePlankMatrices() {
     s32 var_r24_1369;
     s32 var_r25_1368;
     s32 var_r28_1367;
+    void *temp_r3_1424;
+    void *temp_r3_1447;
     void *temp_r3_1633;
     void *temp_r3_1661;
     void *temp_r3_1943;
     void *temp_r3_1984;
     void *temp_r4_1373;
+    void *temp_r4_1423;
+    void *temp_r4_1445;
     void *temp_r4_1635;
+    void *temp_r4_1688;
+    void *temp_r4_1760;
+    void *temp_r4_1829;
     void *temp_r4_1902;
     void *temp_r5_1419;
     void *temp_r5_1442;
+    void *temp_r5_1686;
+    void *temp_r5_1759;
+    void *temp_r5_1828;
     void *temp_r6_1683;
     void *temp_r6_1755;
     void *temp_r6_1824;
@@ -967,21 +1007,21 @@ loop_40:
         sp2BC = 0.0f;
         if (var_r28_1367 == (s32) (this->unk1A4 - 1)) {
             temp_r5_1419 = this->unk180;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_r4_1423 = temp_r5_1419 + (((var_r28_1367 - 2) * 0x48) + 0x10);
+            temp_r3_1424 = temp_r5_1419 + (((var_r28_1367 - 1) * 0x48) + 0x10);
+            spE8 = M2C_FIELD(temp_r3_1424, f64 *, 0) - M2C_FIELD(temp_r4_1423, f64 *, 0);
             sp248 = spE8;
-            spF0 = M2C_FIELD((temp_r5_1419 + (((var_r28_1367 - 1) * 0x48) + 0x10)), f32 *, 8) - M2C_FIELD((temp_r5_1419 + (((var_r28_1367 - 2) * 0x48) + 0x10)), f32 *, 8);
+            spF0 = M2C_FIELD(temp_r3_1424, f32 *, 8) - M2C_FIELD(temp_r4_1423, f32 *, 8);
             sp298 = spE8;
             sp250 = (f64) spF0;
             sp2A0 = (f64) spF0;
         } else {
             temp_r5_1442 = this->unk180;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_r4_1445 = temp_r5_1442 + (var_r25_1368 + 0x10);
+            temp_r3_1447 = temp_r5_1442 + (((var_r28_1367 + 1) * 0x48) + 0x10);
+            spD8 = M2C_FIELD(temp_r3_1447, f64 *, 0) - M2C_FIELD(temp_r4_1445, f64 *, 0);
             sp238 = spD8;
-            spE0 = M2C_FIELD((temp_r5_1442 + (((var_r28_1367 + 1) * 0x48) + 0x10)), f32 *, 8) - M2C_FIELD((temp_r5_1442 + (var_r25_1368 + 0x10)), f32 *, 8);
+            spE0 = M2C_FIELD(temp_r3_1447, f32 *, 8) - M2C_FIELD(temp_r4_1445, f32 *, 8);
             sp298 = spD8;
             sp240 = (f64) spE0;
             sp2A0 = (f64) spE0;
@@ -1053,9 +1093,9 @@ loop_40:
         sp2B0.Multiply3x3((Matrix *) &sp2B0, &this->unk110);
         if (((u8) this->unk1A8 != 0) && (MKCollision_SphereCollide(sp2E0, 50.0f, &sp330, 1, (MKCollisionMode) 7, 0x7FFFFFFE) != 0)) {
             sp1F8.operator*(30.000002f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp208 = spA8;
+            temp_f0_1607 = sp2E0 + M2C_BITWISE(f64, sp1F8);
+            spA8 = temp_f0_1607;
+            sp208 = temp_f0_1607;
             spB0 = sp2E0.unk8 + sp1F8.unk8;
             sp210 = (f64) spB0;
             sp2E0 = (f32) sp208;
@@ -1074,21 +1114,23 @@ loop_40:
             sp1D8 = (f64) sp48;
             sp1D0 = (f64) sp60;
             sp1E0 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
+            temp_f0_1657 = (f64) sp48 * sp1C8;
+            sp98 = temp_f0_1657;
             temp_r3_1661 = temp_r3_1633 + (var_r25_1368 + 0x20);
-            M2C_FIELD(temp_r3_1661, f64 *, 0) = sp98;
-            sp1E8 = sp98;
+            M2C_FIELD(temp_r3_1661, f64 *, 0) = temp_f0_1657;
+            sp1E8 = temp_f0_1657;
             spA0 = (f32) sp1E0 * (f32) sp1D0;
             sp1F0 = (f64) spA0;
             M2C_FIELD(temp_r3_1661, f64 *, 8) = (f64) spA0;
         }
         if ((var_r28_1367 == 0) || (var_r28_1367 == (s32) (this->unk188 - 1)) || (temp_r3_1678 = this->unk1A4, ((var_r28_1367 == temp_r3_1678) != 0))) {
             temp_r6_1683 = this->unk180;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp198 = sp38;
-            sp40 = M2C_FIELD((temp_r6_1683 + (((var_r28_1367 + 1) * 0x48) + 0x10)), f32 *, 8) + M2C_FIELD((temp_r6_1683 + (var_r25_1368 + 0x10)), f32 *, 8);
+            temp_r5_1686 = temp_r6_1683 + (var_r25_1368 + 0x10);
+            temp_r4_1688 = temp_r6_1683 + (((var_r28_1367 + 1) * 0x48) + 0x10);
+            temp_f0_1691 = M2C_FIELD(temp_r4_1688, f64 *, 0) + M2C_FIELD(temp_r5_1686, f64 *, 0);
+            sp38 = temp_f0_1691;
+            sp198 = temp_f0_1691;
+            sp40 = M2C_FIELD(temp_r4_1688, f32 *, 8) + M2C_FIELD(temp_r5_1686, f32 *, 8);
             sp1A0 = (f64) sp40;
             sp1A8.operator*(0.5f);
             temp_f7_1711 = M2C_BITWISE(f32, sp1A8);
@@ -1103,11 +1145,12 @@ loop_40:
             sp2E0.unk8 = (f32) sp1C0;
         } else if (var_r28_1367 == (s32) (temp_r3_1678 - 1)) {
             temp_r6_1755 = this->unk180;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp168 = sp28;
-            sp30 = M2C_FIELD((temp_r6_1755 + (((var_r28_1367 - 1) * 0x48) + 0x10)), f32 *, 8) + M2C_FIELD((temp_r6_1755 + (((var_r28_1367 - 2) * 0x48) + 0x10)), f32 *, 8);
+            temp_r5_1759 = temp_r6_1755 + (((var_r28_1367 - 2) * 0x48) + 0x10);
+            temp_r4_1760 = temp_r6_1755 + (((var_r28_1367 - 1) * 0x48) + 0x10);
+            temp_f0_1763 = M2C_FIELD(temp_r4_1760, f64 *, 0) + M2C_FIELD(temp_r5_1759, f64 *, 0);
+            sp28 = temp_f0_1763;
+            sp168 = temp_f0_1763;
+            sp30 = M2C_FIELD(temp_r4_1760, f32 *, 8) + M2C_FIELD(temp_r5_1759, f32 *, 8);
             sp170 = (f64) sp30;
             sp178.operator*(0.5f);
             temp_f7_1783 = M2C_BITWISE(f32, sp178);
@@ -1122,11 +1165,12 @@ loop_40:
             sp2E0.unk8 = (f32) sp190;
         } else {
             temp_r6_1824 = this->unk180;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp138 = sp18;
-            sp20 = M2C_FIELD((temp_r6_1824 + (((var_r28_1367 + 1) * 0x48) + 0x10)), f32 *, 8) + M2C_FIELD((temp_r6_1824 + (((var_r28_1367 - 1) * 0x48) + 0x10)), f32 *, 8);
+            temp_r5_1828 = temp_r6_1824 + (((var_r28_1367 - 1) * 0x48) + 0x10);
+            temp_r4_1829 = temp_r6_1824 + (((var_r28_1367 + 1) * 0x48) + 0x10);
+            temp_f0_1832 = M2C_FIELD(temp_r4_1829, f64 *, 0) + M2C_FIELD(temp_r5_1828, f64 *, 0);
+            sp18 = temp_f0_1832;
+            sp138 = temp_f0_1832;
+            sp20 = M2C_FIELD(temp_r4_1829, f32 *, 8) + M2C_FIELD(temp_r5_1828, f32 *, 8);
             sp140 = (f64) sp20;
             sp148.operator*(0.5f);
             temp_f7_1852 = M2C_BITWISE(f32, sp148);
@@ -1197,7 +1241,9 @@ void RopeBridge::ApplyForce(const MKVector3 &arg0, const MKVector3 &arg1) {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f10_2036;
     f32 temp_f11_2039;
     f32 temp_f11_2068;
@@ -1214,10 +1260,13 @@ void RopeBridge::ApplyForce(const MKVector3 &arg0, const MKVector3 &arg1) {
     f32 temp_f30_2043;
     f32 temp_f31_2051;
     f32 temp_f3_2110;
+    f32 temp_f4_2112;
     f32 temp_f5_2032;
     f32 temp_f5_2102;
     f32 temp_f6_2034;
     f32 var_f0_2173;
+    f64 *temp_r4_2120;
+    f64 temp_f1_2117;
     s32 temp_r0_2090;
     s32 temp_r5_2162;
     s32 var_ctr_2093;
@@ -1259,29 +1308,27 @@ void RopeBridge::ApplyForce(const MKVector3 &arg0, const MKVector3 &arg1) {
 loop_2:
         temp_r5_2097 = temp_r6_2061 + var_r4_2092;
         temp_f2_2098 = M2C_FIELD(temp_r5_2097, f32 *, 0x60);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f2_2098 == (f32) sp80) {
+        if (temp_f2_2098 >= (f32) sp80) {
             temp_f5_2102 = M2C_FIELD(temp_r5_2097, f32 *, 0x18);
             temp_f3_2110 = ((f32) sp80 - temp_f5_2102) / (temp_f2_2098 - temp_f5_2102);
             sp68 = (f32) sp68 * 0.2f;
+            temp_f4_2112 = 1.0f - temp_f3_2110;
             temp_f2_2113 = (f32) sp70 * 0.2f;
             sp70 = temp_f2_2113;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-            sp20 = temp_f2_2113 * (1.0f - temp_f3_2110);
-            sp58 = sp18;
+            temp_f1_2117 = (f64) sp68 * (f64) temp_f4_2112;
+            sp18 = temp_f1_2117;
+            temp_r4_2120 = temp_r5_2097 + 0x20;
+            sp20 = temp_f2_2113 * temp_f4_2112;
+            sp58 = temp_f1_2117;
             sp60 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+            *temp_r4_2120 += sp58;
             M2C_FIELD(temp_r5_2097, f32 *, 0x28) = (f32) (M2C_FIELD(temp_r5_2097, f32 *, 0x28) + (f32) sp60);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
+            sp8 = (f64) sp68 * (f64) temp_f3_2110;
             sp10 = temp_f2_2113 * temp_f3_2110;
             sp48 = sp8;
             temp_r4_2146 = this->unk180 + (((var_r7_2091 + 1) * 0x48) + 0x20);
             sp50 = (f64) sp10;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+            M2C_FIELD(temp_r4_2146, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_2146, f64 *, 0) + sp48);
             M2C_FIELD(temp_r4_2146, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_2146, f32 *, 8) + (f32) sp50);
             if ((var_r7_2091 != 0) && (var_r7_2091 != (s32) (this->unk188 - 1))) {
                 temp_r5_2162 = var_r7_2091 * 0x50;
@@ -1374,19 +1421,21 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal type
 void RopeBridge::Update() {
     f64 sp38;
     f64 sp30;
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f0_2336;
     f32 temp_f1_2447;
     f32 temp_f2_2322;
     f32 var_f31_2327;
     f32 var_f4_2381;
+    f64 temp_f1_2358;
     f64 temp_f1_2384;
     f64 temp_f1_2390;
     f64 temp_f1_2394;
@@ -1394,6 +1443,7 @@ void RopeBridge::Update() {
     s32 temp_r3_2413;
     s32 var_r0_2423;
     void *temp_r3_2357;
+    void *temp_r4_2356;
 
     MKProp::Update();
     temp_f2_2322 = this->unk19C;
@@ -1418,13 +1468,14 @@ void RopeBridge::Update() {
             this->unk10 = temp_r3_2346 & 0xFFFFBFFF;
         }
     }
+    temp_r4_2356 = this->unk8 + 0x30;
     temp_r3_2357 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
-    sp20 = M2C_FIELD(temp_r3_2357, f64 *, 0x30);
+    temp_f1_2358 = M2C_FIELD(temp_r3_2357, f64 *, 0x30);
+    sp20 = temp_f1_2358;
     sp28 = M2C_FIELD(temp_r3_2357, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = temp_f1_2358 - M2C_FIELD(temp_r4_2356, f64 *, 0);
     sp30 = sp10;
-    sp18 = (f32) sp28 - M2C_FIELD((this->unk8 + 0x30), f32 *, 8);
+    sp18 = (f32) sp28 - M2C_FIELD(temp_r4_2356, f32 *, 8);
     sp38 = (f64) sp18;
     var_f4_2381 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
     if (var_f4_2381 > 0.0f) {
@@ -1546,10 +1597,12 @@ void RopeBridge::Resolve() {
     f32 sp11C;
     f32 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
     f32 spFC;
     f32 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
     f32 spDC;
     f32 spD8;
@@ -1561,12 +1614,16 @@ void RopeBridge::Resolve() {
     f32 spBC;
     f32 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
     f32 sp5C;
     f32 sp58;
@@ -1575,8 +1632,11 @@ void RopeBridge::Resolve() {
     f64 sp40;
     f64 sp38;
     f64 sp30;
+    f64 sp28;
     f64 sp20;
+    f64 sp18;
     f64 sp10;
+    f64 sp8;
     f32 temp_f0_2601;
     f32 temp_f0_2705;
     f32 temp_f10_2718;
@@ -1589,6 +1649,7 @@ void RopeBridge::Resolve() {
     f32 temp_f27_2592;
     f32 temp_f2_2595;
     f32 temp_f2_2721;
+    f32 temp_f31_2824;
     f32 temp_f3_2598;
     f32 temp_f3_2727;
     f32 temp_f4_2602;
@@ -1602,6 +1663,11 @@ void RopeBridge::Resolve() {
     f32 temp_f8_2588;
     f32 temp_f8_2700;
     f32 temp_f9_2711;
+    f64 temp_f0_2571;
+    f64 temp_f0_2682;
+    f64 temp_f0_2694;
+    f64 temp_f13_2692;
+    f64 temp_f13_2749;
     s32 temp_r0_2858;
     s32 temp_r3_2864;
     s32 var_r29_2797;
@@ -1644,9 +1710,10 @@ void RopeBridge::Resolve() {
     sp250 = (f64) sp130;
     sp1C8 = (f64) sp118;
     sp1D0 = (f64) sp120;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f8 */);
+    temp_f0_2571 = sp1C8 * 5.46558975e-315;
+    sp108 = temp_f0_2571;
     temp_f5_2576 = this->unk60;
-    sp1D8 = sp108;
+    sp1D8 = temp_f0_2571;
     temp_f6_2578 = this->unk50;
     sp110 = (f32) sp1D0 * 30.000002f;
     sp1E0 = (f64) sp110;
@@ -1665,7 +1732,7 @@ void RopeBridge::Resolve() {
     sp100 = temp_f1_2604 + (((f32) sp1E0 * temp_f0_2601) + (((f32) sp1D8 * temp_f26_2597) + (unksp1DC * temp_f13_2593)));
     sp238 = (f64) spF8;
     sp240 = (f64) sp100;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f11, $f11, $f9 */);
+    spE8 = sp258 * 5.49408334e-315;
     spF0 = (f32) sp260 * 50.0f;
     sp1B8 = spE8;
     sp1C0 = (f64) spF0;
@@ -1690,15 +1757,17 @@ void RopeBridge::Resolve() {
     sp220 = (f64) spD0;
     sp208 = (f64) spB8;
     sp210 = (f64) spC0;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    sp188 = spA8;
+    temp_f0_2682 = sp218 * 5.46558975e-315;
+    spA8 = temp_f0_2682;
+    sp188 = temp_f0_2682;
     spB0 = (f32) sp220 * 30.000002f;
     sp190 = (f64) spB0;
-    M2C_ERROR(/* unknown instruction: psq_lx $f13, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f13, $f0 */);
+    temp_f13_2692 = this->unk170;
+    temp_f0_2694 = temp_f13_2692 - temp_f0_2682;
+    sp98 = temp_f0_2694;
     temp_f12_2696 = this->unk178;
     temp_f8_2700 = this->unk60;
-    sp198 = sp98;
+    sp198 = temp_f0_2694;
     temp_f4_2702 = this->unk64;
     spA0 = temp_f12_2696 - (f32) sp190;
     temp_f0_2705 = this->unk68;
@@ -1717,13 +1786,14 @@ void RopeBridge::Resolve() {
     sp90 = temp_f3_2727 + (((f32) sp1A0 * temp_f2_2721) + (((f32) sp198 * temp_f1_2713) + (unksp19C * temp_f0_2705)));
     sp1F8 = (f64) sp88;
     sp200 = (f64) sp90;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f26, $f26, $f30 */);
+    sp78 = sp218 * 5.49408334e-315;
     sp80 = (f32) sp220 * 50.0f;
     sp168 = sp78;
     sp170 = (f64) sp80;
-    M2C_ERROR(/* unknown instruction: ps_add $f13, $f13, $f27 */);
+    temp_f13_2749 = temp_f13_2692 + sp168;
+    sp68 = temp_f13_2749;
     sp70 = temp_f12_2696 + (f32) sp170;
-    sp178 = sp68;
+    sp178 = temp_f13_2749;
     sp180 = (f64) sp70;
     sp58 = temp_f11_2723 + (((f32) sp180 * temp_f10_2718) + (((f32) sp178 * temp_f9_2711) + (unksp17C * temp_f8_2700)));
     sp5C = temp_f7_2725 + (((f32) sp180 * temp_f6_2720) + (((f32) sp178 * temp_f5_2712) + (unksp17C * temp_f4_2702)));
@@ -1737,24 +1807,20 @@ void RopeBridge::Resolve() {
     }
     var_r31_2796 = 0;
     var_r29_2797 = 0;
-    M2C_ERROR(/* unknown instruction: ps_sub $f29, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f28, $f0, $f27 */);
 loop_6:
     temp_r3_2864 = this->unk188;
     if (var_r31_2796 < temp_r3_2864) {
-        M2C_ERROR(/* unknown instruction: psq_stx $f28, $zero, $r27, 0x0, qr0 */);
+        temp_f31_2824 = (f32) var_r31_2796 / (f32) (temp_r3_2864 - 1);
+        sp28 = sp208 - sp248;
+        sp30 = sp210 - sp250;
         sp48 = sp28;
         sp50 = sp30;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r25, 0x0, qr0 */);
+        sp18 = sp48 * (f64) temp_f31_2824;
+        sp20 = sp50 * (f64) temp_f31_2824;
         sp38 = sp18;
         sp40 = sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f27, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r23, 0x0, qr0 */);
+        sp8 = sp248 + sp38;
+        sp10 = sp250 + sp40;
         sp148 = sp8;
         sp150 = sp10;
         MKModel_SetColor(*(this->unk184 + (var_r29_2797 + 0x48)), *((MKVector4 *) &sp148));
@@ -1777,8 +1843,9 @@ void RopeBridge::BuildBridgeStartPosition() {
     f64 sp48;
     MKVector3 sp38;
     MKVector3 sp28;
-    M2C_UNK sp18;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_2925;
     f32 temp_f4_2917;
     f32 var_f3_2915;
@@ -1813,8 +1880,7 @@ loop_5:
         MKVector(0.0f, temp_f1_2925 * (1.0f - temp_f1_2925) * 4.07f * (this->unk178 * var_f3_2915), 0.0f);
         sp28.operator*((f32) var_r30_2906);
         sp38.operator/((f32) this->unk188);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp8 = sp38 - sp18;
         temp_r4_2964 = var_r28_2908 + 0x20;
         temp_r5_2966 = var_r28_2908 + 0x30;
         var_r30_2906 += 1;
@@ -1873,8 +1939,11 @@ void RopeBridge::SetUpCullingLocalToWorld() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f0_3106;
     f32 temp_f29_3094;
     f32 temp_f29_3123;
@@ -1884,6 +1953,7 @@ void RopeBridge::SetUpCullingLocalToWorld() {
     f32 var_f2_3100;
     f32 var_f30_3105;
     f32 var_f3_3113;
+    f64 temp_f0_3150;
 
     temp_f29_3094 = *MKModel_GetBoundingVolume(M2C_FIELD(this->unk184, MKModel **, 0x48), (SubObjectType) 0, -1);
     var_f2_3100 = M2C_FIELD(MKModel_GetBoundingVolume(M2C_FIELD(this->unk184, MKModel **, 0x48), (SubObjectType) 0, -1), f32 *, 0x10) - temp_f29_3094;
@@ -1912,18 +1982,17 @@ void RopeBridge::SetUpCullingLocalToWorld() {
     }
     sp6C = var_f1_3125;
     sp70 = temp_f4_3121;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+    sp8 = (f64) sp68 * 5.222099017e-315;
     sp10 = temp_f4_3121 * 0.5f;
     sp48 = sp8;
     sp50 = (f64) sp10;
     this->unk90.Scale3x3((Matrix *) &this->unk50, *((MKVector3 *) &sp48));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp38 = sp28;
+    temp_f0_3150 = M2C_FIELD(this, f64 *, 0x150) + M2C_FIELD(this, f64 *, 0x160);
+    sp28 = temp_f0_3150;
+    sp38 = temp_f0_3150;
     sp30 = this->unk158 + this->unk168;
     sp40 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp18 = temp_f0_3150 * 5.222099017e-315;
     sp58 = sp18;
     temp_f2_3171 = (0.5f * (var_f30_3105 + temp_f29_3123)) + this->unk154;
     sp20 = (f32) sp40 * 0.5f;
@@ -1937,7 +2006,7 @@ void RopeBridge::SetUpCullingLocalToWorld() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: undefined identifier 'unksp5C'
 void RopeBridge::CalculateTranformationMatrices() {
     f64 sp60;
     f64 sp58;
@@ -1946,6 +2015,7 @@ void RopeBridge::CalculateTranformationMatrices() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -1956,9 +2026,7 @@ void RopeBridge::CalculateTranformationMatrices() {
     f32 temp_f6_3259;
     f32 temp_f7_3265;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp28 = M2C_FIELD(this, f64 *, 0x160) - M2C_FIELD(this, f64 *, 0x150);
     sp58 = sp28;
     sp30 = this->unk168 - this->unk158;
     unksp5C = 0.0f;
@@ -1988,11 +2056,12 @@ void RopeBridge::CalculateTranformationMatrices() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier 'unksp24'
 void RopeBridge::LoadDone() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     MKHeap *temp_r3_3432;
     f32 temp_f3_3406;
@@ -2023,9 +2092,7 @@ void RopeBridge::LoadDone() {
     void *var_r3_3439;
 
     MKProp::LoadDone();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = M2C_FIELD(this, f64 *, 0x160) - M2C_FIELD(this, f64 *, 0x150);
     sp20 = sp10;
     sp18 = this->unk168 - this->unk158;
     sp28 = (f64) sp18;
@@ -2112,10 +2179,7 @@ loop_25:
         M2C_FIELD(temp_r4_3531, f64 *, 0) = (f64) M2C_FIELD(temp_r4_3531, f64 *, 0x10);
         M2C_FIELD(temp_r4_3531, f64 *, 8) = (f64) M2C_FIELD(temp_r4_3531, f64 *, 0x18);
         temp_r5_3537 = this->unk180 + (var_r3_3526 + 0x20);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r5, 0x0, qr0 */);
+        M2C_FIELD(temp_r5_3537, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_3537, f64 *, 0) - M2C_FIELD(temp_r5_3537, f64 *, 0));
         temp_r0_3542 = var_r3_3526 + 0x24;
         M2C_FIELD(temp_r5_3537, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_3537, f32 *, 8) - M2C_FIELD(temp_r5_3537, f32 *, 8));
         temp_r4_3547 = this->unk180;
@@ -2123,10 +2187,7 @@ loop_25:
         temp_r4_3552 = this->unk180 + var_r3_3526;
         temp_r5_3553 = temp_r4_3552 + 0x20;
         temp_r4_3554 = temp_r4_3552 + 0x10;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+        M2C_FIELD(temp_r4_3554, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_3554, f64 *, 0) + M2C_FIELD(temp_r5_3553, f64 *, 0));
         var_r6_3525 += 1;
         var_r3_3526 += 0x48;
         M2C_FIELD(temp_r4_3554, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_3554, f32 *, 8) + M2C_FIELD(temp_r5_3553, f32 *, 8));

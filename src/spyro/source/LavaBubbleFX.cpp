@@ -61,14 +61,16 @@ void LavaBubbleFX::Deinit() {
 void LavaBubbleFX::CreateBubble(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp80;
     f64 sp78;
-    M2C_UNK sp68;
+    f64 sp68;
     f64 sp60;
     f64 sp58;
-    M2C_UNK sp48;
+    f64 sp48;
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
@@ -111,8 +113,7 @@ loop_1:
         M2C_FIELD(temp_r4_137, f64 *, 8) = temp_f4_116;
         M2C_FIELD((this->unkC8 + var_r29_97), f32 *, 0x40) = -50.0f;
         MKVector(0.0f, 5.0f, 0.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp28 = M2C_FIELD(&arg0, f64 *, 0) + sp68;
         temp_r3_154 = this->unkC8 + (var_r29_97 + 0x60);
         M2C_FIELD(temp_r3_154, f64 *, 0) = sp28;
         sp30 = arg0.unk8 + sp70;
@@ -127,8 +128,7 @@ loop_1:
             temp_r4_181 = this->unkC8 + var_r29_97;
             MKVector(0.0f, (25.0f * M2C_FIELD(temp_r4_181, f32 *, 0x24)) + M2C_FIELD(temp_r4_181, f32 *, 0x40), 0.0f);
             temp_r3_187 = this->unkC8 + var_r29_97;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp18 = M2C_FIELD(temp_r3_187, f64 *, 0) + sp48;
             temp_r3_196 = M2C_FIELD(temp_r3_187, void **, 0x5C);
             M2C_FIELD(temp_r3_196, f64 *, 0) = sp18;
             sp20 = M2C_FIELD(temp_r3_187, f32 *, 8) + sp50;
@@ -208,9 +208,13 @@ void LavaBubbleFX::DrawBubbleRings() {
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp54;
@@ -251,8 +255,7 @@ void LavaBubbleFX::DrawBubbleRings() {
     sp198 = (f64) sp48;
     sp1A0.operator*(10.0f);
     sp1B0.operator*(10.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp90 = sp1B0 + M2C_BITWISE(f64, sp1A0);
     sp1C0 = sp90;
     sp98 = sp1B0.unk8 + sp1A0.unk8;
     sp240 = sp90;
@@ -260,8 +263,7 @@ void LavaBubbleFX::DrawBubbleRings() {
     sp248 = (f64) sp98;
     sp160.operator*(10.0f);
     sp170.operator*(10.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp80 = sp170 + M2C_BITWISE(f64, sp160);
     sp38 = -(f32) sp1E8;
     sp88 = sp170.unk8 + sp160.unk8;
     sp30 = -(f32) sp1E0;
@@ -279,8 +281,7 @@ void LavaBubbleFX::DrawBubbleRings() {
     sp130 = (f64) sp20;
     sp138 = (f64) sp28;
     sp140.operator*(10.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp70 = sp140 + M2C_BITWISE(f64, sp120);
     sp150 = sp70;
     sp78 = sp140.unk8 + sp120.unk8;
     sp260 = sp70;
@@ -293,8 +294,7 @@ void LavaBubbleFX::DrawBubbleRings() {
     spE0 = (f64) sp10;
     spE8 = (f64) sp18;
     spF0.operator*(10.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp60 = spF0 + M2C_BITWISE(f64, spD0);
     var_r28_409 = 0;
     var_r26_411 = 0;
     sp100 = sp60;
@@ -349,11 +349,13 @@ void LavaBubbleFX::Draw() {
     M2C_UNK sp3C;
     f64 sp38;
     f64 sp30;
-    M2C_UNK sp20;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     s32 var_r29_533;
     s32 var_r31_532;
     void *temp_r3_536;
+    void *temp_r3_574;
 
     DrawBubbleRings();
     var_r31_532 = 0;
@@ -364,10 +366,10 @@ void LavaBubbleFX::Draw() {
             M2C_STRUCT_COPY((s32) &sp3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             sp40.Scale3x3(&sp40, *(this->unkC8 + (var_r29_533 + 0x10)));
             MKVector(0.0f, *(this->unkC8 + (var_r29_533 + 0x40)), 0.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            temp_r3_574 = this->unkC8 + var_r29_533;
+            sp10 = M2C_FIELD(temp_r3_574, f64 *, 0) + sp20;
             sp30 = sp10;
-            sp18 = M2C_FIELD((this->unkC8 + var_r29_533), f32 *, 8) + sp28;
+            sp18 = M2C_FIELD(temp_r3_574, f32 *, 8) + sp28;
             sp38 = (f64) sp18;
             sp40.unk30 = (f32) sp30;
             sp40.unk34 = unksp34;
@@ -383,7 +385,7 @@ void LavaBubbleFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp60'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void LavaBubbleFX::Update() {
     f64 sp228;                                      /* compiler-managed */
     f64 sp220;                                      /* compiler-managed */
@@ -393,7 +395,7 @@ void LavaBubbleFX::Update() {
     MKVector3 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
-    M2C_UNK sp1D0;
+    f64 sp1D0;
     f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
@@ -420,25 +422,34 @@ void LavaBubbleFX::Update() {
     MKVector3 spF0;
     M2C_UNK spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
     f32 spC4;
     f32 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f64 sp38;
+    f64 sp30;
     MKVector3 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     MKHeap *temp_r3_1345;
@@ -456,6 +467,7 @@ void LavaBubbleFX::Update() {
     f32 temp_f1_1262;
     f32 temp_f1_1265;
     f32 temp_f1_1305;
+    f32 temp_f1_872;
     f32 temp_f1_936;
     f32 temp_f1_939;
     f32 temp_f22_1031;
@@ -484,6 +496,12 @@ void LavaBubbleFX::Update() {
     f32 var_f4_792;
     f32 var_f5_1091;
     f32 var_f5_859;
+    f64 temp_f0_1004;
+    f64 temp_f0_1017;
+    f64 temp_f0_1050;
+    f64 temp_f0_1184;
+    f64 temp_f0_750;
+    f64 temp_f1_767;
     f64 temp_f1_798;
     f64 temp_f1_804;
     f64 temp_f1_808;
@@ -516,7 +534,12 @@ void LavaBubbleFX::Update() {
     void *temp_r3_920;
     void *temp_r3_946;
     void *temp_r3_954;
+    void *temp_r4_1011;
+    void *temp_r4_1181;
+    void *temp_r4_716;
     void *temp_r4_734;
+    void *temp_r4_747;
+    void *temp_r4_766;
     void *temp_r4_885;
     void *temp_r5_695;
     void *temp_r5_968;
@@ -551,11 +574,11 @@ void LavaBubbleFX::Update() {
                 sp1F0.operator*(0.5f);
                 sp200.operator*(temp_f28_699);
                 temp_r3_714 = this->unkC8;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                temp_r4_716 = temp_r3_714 + (var_r27_655 + 0x20);
+                sp60 = M2C_FIELD(temp_r4_716, f64 *, 0) + M2C_BITWISE(f64, sp200);
                 temp_r3_723 = temp_r3_714 + (var_r27_655 + 0x10);
                 M2C_FIELD(temp_r3_723, f64 *, 0) = sp60;
-                sp68 = M2C_FIELD((temp_r3_714 + (var_r27_655 + 0x20)), f32 *, 8) + sp200.unk8;
+                sp68 = M2C_FIELD(temp_r4_716, f32 *, 8) + sp200.unk8;
                 sp210 = sp60;
                 M2C_FIELD(temp_r3_723, f64 *, 8) = (f64) sp68;
                 sp218 = (f64) sp68;
@@ -563,22 +586,24 @@ void LavaBubbleFX::Update() {
                 if ((u32) M2C_FIELD(temp_r4_734, u32 *, 0x5C) != 0U) {
                     MKVector(0.0f, (25.0f * M2C_FIELD(temp_r4_734, f32 *, 0x24)) + M2C_FIELD(temp_r4_734, f32 *, 0x40), 0.0f);
                     temp_r3_746 = this->unkC8;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                    temp_r4_747 = temp_r3_746 + var_r27_655;
+                    temp_f0_750 = M2C_FIELD(temp_r4_747, f64 *, 0) + sp1D0;
+                    sp50 = temp_f0_750;
                     temp_r0_752 = var_r27_655 + 0x5C;
                     temp_r3_757 = *(temp_r3_746 + temp_r0_752);
-                    sp1E0 = sp50;
-                    sp58 = M2C_FIELD((temp_r3_746 + var_r27_655), f32 *, 8) + sp1D8;
-                    M2C_FIELD(temp_r3_757, f64 *, 0) = sp50;
+                    sp1E0 = temp_f0_750;
+                    sp58 = M2C_FIELD(temp_r4_747, f32 *, 8) + sp1D8;
+                    M2C_FIELD(temp_r3_757, f64 *, 0) = temp_f0_750;
                     M2C_FIELD(temp_r3_757, f64 *, 8) = (f64) sp58;
                     temp_r3_765 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
-                    sp1C0 = M2C_FIELD(temp_r3_765, f64 *, 0x30);
+                    temp_r4_766 = *(this->unkC8 + temp_r0_752);
+                    temp_f1_767 = M2C_FIELD(temp_r3_765, f64 *, 0x30);
+                    sp1C0 = temp_f1_767;
                     sp1E8 = (f64) sp58;
                     sp1C8 = M2C_FIELD(temp_r3_765, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    spD0 = temp_f1_767 - M2C_FIELD(temp_r4_766, f64 *, 0);
                     sp220 = spD0;
-                    spD8 = (f32) sp1C8 - M2C_FIELD(*(this->unkC8 + temp_r0_752), f32 *, 8);
+                    spD8 = (f32) sp1C8 - M2C_FIELD(temp_r4_766, f32 *, 8);
                     sp228 = (f64) spD8;
                     var_f4_792 = ((f32) sp228 * (f32) sp228) + (((f32) sp220 * (f32) sp220) + (unksp224 * unksp224));
                     if (var_f4_792 > 0.000001f) {
@@ -620,24 +645,20 @@ void LavaBubbleFX::Update() {
                         var_f5_859 = 0.0f;
                     }
                     temp_f2_871 = (f32) sp228 * var_f5_859;
+                    temp_f1_872 = (75.0f * temp_f28_699) + 100.0f;
                     sp220 = (f32) sp220 * var_f5_859;
                     unksp224 *= var_f5_859;
                     sp228 = temp_f2_871;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-                    sp48 = temp_f2_871 * ((75.0f * temp_f28_699) + 100.0f);
+                    sp40 = (f64) sp220 * (f64) temp_f1_872;
+                    sp48 = temp_f2_871 * temp_f1_872;
                     temp_r4_885 = *(this->unkC8 + (var_r27_655 + 0x5C));
                     sp1B0 = sp40;
                     sp1B8 = (f64) sp48;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+                    M2C_FIELD(temp_r4_885, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_885, f64 *, 0) + sp1B0);
                     M2C_FIELD(temp_r4_885, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_885, f32 *, 8) + (f32) sp1B8);
                     MKVector(0.5f, 0.25f, 0.0f, 1.0f);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+                    sp30 = M2C_FIELD(&sp190, f64 *, 0) * (f64) temp_f28_699;
+                    sp38 = M2C_FIELD(&sp190, f64 *, 8) * (f64) temp_f28_699;
                     temp_r0_911 = var_r27_655 + 0x5C;
                     temp_r3_914 = *(this->unkC8 + temp_r0_911);
                     M2C_FIELD(temp_r3_914, f64 *, 0x10) = sp30;
@@ -660,8 +681,7 @@ void LavaBubbleFX::Update() {
                     M2C_FIELD(M2C_FIELD(temp_r3_946, void **, 0x5C), f32 *, 0x24) = (f32) (3.0f * M2C_FIELD(temp_r3_946, f32 *, 0x14));
                 }
                 temp_r3_954 = this->unkC8 + var_r27_655;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(temp_r3_954, f32 *, 0x30) == 0.5f) {
+                if (M2C_FIELD(temp_r3_954, f32 *, 0x30) >= 0.5f) {
                     M2C_FIELD(temp_r3_954, s32 *, 0x34) = 2;
                     var_r26_966 = 0;
                     temp_r5_968 = this->unkC8 + (var_r27_655 + 0x48);
@@ -678,14 +698,16 @@ void LavaBubbleFX::Update() {
                         spC8 = temp_f23_985;
                         sp160 = (f64) spC0;
                         sp168 = (f64) spC8;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                        sp170 = spB0;
+                        temp_f0_1004 = sp160 * 5.50703498e-315;
+                        spB0 = temp_f0_1004;
+                        sp170 = temp_f0_1004;
+                        temp_r4_1011 = this->unkC8 + var_r27_655;
                         spB8 = (f32) sp168 * 60.000004f;
                         sp178 = (f64) spB8;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp180 = spA0;
-                        spA8 = M2C_FIELD((this->unkC8 + var_r27_655), f32 *, 8) + (f32) sp178;
+                        temp_f0_1017 = M2C_FIELD(temp_r4_1011, f64 *, 0) + temp_f0_1004;
+                        spA0 = temp_f0_1017;
+                        sp180 = temp_f0_1017;
+                        spA8 = M2C_FIELD(temp_r4_1011, f32 *, 8) + (f32) sp178;
                         sp188 = (f64) spA8;
                         temp_f22_1031 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                         temp_f23_1036 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
@@ -694,8 +716,9 @@ void LavaBubbleFX::Update() {
                         sp98 = temp_f22_1031;
                         sp140 = (f64) sp90;
                         sp148 = (f64) sp98;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                        sp150 = sp80;
+                        temp_f0_1050 = sp140 * 5.61032426e-315;
+                        sp80 = temp_f0_1050;
+                        sp150 = temp_f0_1050;
                         sp88 = (f32) sp148 * 350.0f;
                         sp158 = (f64) sp88;
                         temp_f1_1062 = MKRand_Float(&gViewSeed, 3.0f, 8.0f);
@@ -761,10 +784,11 @@ void LavaBubbleFX::Update() {
                 *(temp_r4_1149 + temp_r0_1147) = var_f0_1153;
                 MKVector(100.0f, 100.0f, 100.0f);
                 spF0.operator*(gUpdateTimeDelta);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp100 = sp10;
-                sp18 = M2C_FIELD((this->unkC8 + (var_r27_655 + 0x10)), f32 *, 8) + spF0.unk8;
+                temp_r4_1181 = this->unkC8 + (var_r27_655 + 0x10);
+                temp_f0_1184 = M2C_FIELD(temp_r4_1181, f64 *, 0) + M2C_BITWISE(f64, spF0);
+                sp10 = temp_f0_1184;
+                sp100 = temp_f0_1184;
+                sp18 = M2C_FIELD(temp_r4_1181, f32 *, 8) + spF0.unk8;
                 sp108 = (f64) sp18;
                 MKVector(0.0f, 0.0f, 0.0f);
                 Min(sp20, *((MKVector3 *) &sp100));
@@ -800,8 +824,7 @@ void LavaBubbleFX::Update() {
                 }
                 temp_r5_1270 = this->unkC8;
                 temp_r0_1271 = var_r27_655 + 0x30;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (*(temp_r5_1270 + temp_r0_1271) == 3.0f) {
+                if (*(temp_r5_1270 + temp_r0_1271) >= 3.0f) {
                     *(temp_r5_1270 + temp_r0_1271) = 0.0f;
                     *(this->unkC8 + (var_r27_655 + 0x3C)) = 0;
                     *(this->unkC8 + (var_r27_655 + 0x34)) = 0;
@@ -836,8 +859,7 @@ void LavaBubbleFX::Update() {
                 temp_f2_1341 = (var_f3_1329 * (0.0f - temp_f2_1336)) + temp_f2_1336;
                 M2C_FIELD(temp_r3_1320, f32 *, 0x74) = (f32) ((var_f3_1329 * (0.0f - temp_f2_1341)) + temp_f2_1341);
                 temp_r3_1345 = this->unkC8;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (*(temp_r3_1345 + temp_r0_1337) == 0.001f) {
+                if (*(temp_r3_1345 + temp_r0_1337) <= 0.001f) {
                     *(temp_r3_1345 + temp_r0_1337) = 0.0f;
                 }
             }

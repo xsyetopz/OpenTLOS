@@ -286,20 +286,15 @@ u32 EAPManager::EvaluateCondition(EAPItem *arg0, EAPCondition *arg1, Enemy *arg2
         case 1:
             temp_f31_450 = arg0->unk0->unk28;
             temp_f1_451 = arg3->GetDist();
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f1_451 == arg0->unk0->unk24) {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (temp_f1_451 == temp_f31_450) {
-                    return 1U;
-                }
+            if ((temp_f1_451 >= arg0->unk0->unk24) && (temp_f1_451 <= temp_f31_450)) {
+                return 1U;
             }
             /* Duplicate return node #44. Try simplifying control flow for better match */
             return 0U;
         case 2:
             temp_f31_466 = arg0->unk0->unk28;
             temp_f1_467 = arg3->GetDist();
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((temp_f1_467 != arg0->unk0->unk24) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_467 == temp_f31_466) == 0))) {
+            if (!(temp_f1_467 >= arg0->unk0->unk24) || !(temp_f1_467 <= temp_f31_466)) {
                 return 1U;
             }
             /* Duplicate return node #44. Try simplifying control flow for better match */
@@ -356,7 +351,6 @@ u32 EAPManager::EvaluateCondition(EAPItem *arg0, EAPCondition *arg1, Enemy *arg2
             return var_r4_576;
         case 7:
             arg2->unkA20->GetEnemyAttackSetting((EnemySettingType) 7, arg0->unk0);
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
             return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
         case 8:
             arg2->unkA20->GetEnemyAttackSetting((EnemySettingType) 7, arg0->unk0);
@@ -473,7 +467,7 @@ loop_17:
             if (var_r26_791 < (s32) M2C_FIELD(temp_r3_850, s32 *, 8)) {
                 var_f30_796 = 0.0f;
                 temp_r25_797 = M2C_FIELD(temp_r3_850, s32 *, 4) + var_r17_792;
-                if (((s32) temp_r25_797->unk8 != 1) && (!(M2C_FIELD(M2C_FIELD(temp_r3_850, void **, 0), s32 *, 0x38) & 0x1000) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((M2C_FIELD(GameData::gameData, f32 *, 0xA0) == 0.0f) == 0)))) {
+                if (((s32) temp_r25_797->unk8 != 1) && (!(M2C_FIELD(M2C_FIELD(temp_r3_850, void **, 0), s32 *, 0x38) & 0x1000) || !(M2C_FIELD(GameData::gameData, f32 *, 0xA0) <= 0.0f))) {
                     if (EvaluateCondition(temp_r4_849 + var_r18_787, temp_r25_797, arg0, arg1) != 0) {
                         var_f30_796 = temp_r25_797->unkC;
                         if (var_r28_790 == 0) {
@@ -524,8 +518,7 @@ block_16:
             if (temp_r0_884 > 0) {
 loop_26:
                 temp_f0_889 = *(&sp8.unk10 + var_r3_883);
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (temp_f0_889 == 0.0f) {
+                if (temp_f0_889 >= 0.0f) {
                     var_f28_749 += temp_f0_889 / var_f29_746;
                     if (var_f28_749 > temp_f1_876) {
                         return M2C_FIELD(temp_r5_880, s32 *, 0) + (var_r6_882 * 0xC);

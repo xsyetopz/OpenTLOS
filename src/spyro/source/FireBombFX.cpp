@@ -15,7 +15,6 @@
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
-#include "spyro/source/KDSpline.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/ShapedTrailFX.h"
 #include "unplaced_templates.h"
@@ -117,8 +116,11 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     u8 sp10;
     void *spC;
     f32 sp8;
@@ -129,7 +131,9 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     ShapedTrailFX *temp_r3_147;
     ShapedTrailFX *temp_r4_136;
     f32 temp_f1_137;
+    f32 temp_f2_410;
     f32 var_f4_346;
+    f64 temp_f0_413;
     f64 temp_f1_245;
     f64 temp_f1_349;
     f64 temp_f1_355;
@@ -248,9 +252,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         return;
     case 1:                                         /* switch 1 */
     case 2:                                         /* switch 1 */
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r25, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp38 = M2C_FIELD(&arg7, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0);
         sp58 = sp38;
         sp40 = arg7.unk8 - arg0.unk8;
         sp60 = (f64) sp40;
@@ -288,13 +290,13 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
                 var_f4_346 = __float_nan;
             }
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp48 = sp28;
-        sp30 = arg1.unk8 * (0.5f * var_f4_346);
+        temp_f2_410 = 0.5f * var_f4_346;
+        temp_f0_413 = M2C_FIELD(&arg1, f64 *, 0) * (f64) temp_f2_410;
+        sp28 = temp_f0_413;
+        sp48 = temp_f0_413;
+        sp30 = arg1.unk8 * temp_f2_410;
         sp50 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r25, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp18 = M2C_FIELD(&arg0, f64 *, 0) + temp_f0_413;
         sp68 = sp18;
         sp20 = arg0.unk8 + (f32) sp50;
         sp70 = (f64) sp20;
@@ -391,9 +393,13 @@ void FireBombFX::DrawFlameBall() {
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -416,6 +422,8 @@ void FireBombFX::DrawFlameBall() {
     f32 var_f4_677;
     f32 var_f5_751;
     f32 var_f6_768;
+    f64 temp_f0_877;
+    f64 temp_f0_955;
     f64 temp_f1_690;
     f64 temp_f1_696;
     f64 temp_f1_700;
@@ -565,17 +573,16 @@ void FireBombFX::DrawFlameBall() {
         sp1B0 = (f64) sp50;
         sp1B8.operator*(this->unkC8 * this->unk128);
         sp1C8.operator*(this->unkC8 * this->unk128);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp238 = sp88;
+        temp_f0_877 = sp1C8 + M2C_BITWISE(f64, sp1B8);
+        sp88 = temp_f0_877;
+        sp238 = temp_f0_877;
         sp90 = sp1C8.unk8 + sp1B8.unk8;
-        sp1D8 = sp88;
+        sp1D8 = temp_f0_877;
         sp240 = (f64) sp90;
         sp1E0 = (f64) sp90;
         sp178.operator*(this->unkC8 * this->unk128);
         sp188.operator*(this->unkC8 * this->unk128);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp78 = sp188 + M2C_BITWISE(f64, sp178);
         sp40 = -sp210;
         sp80 = sp188.unk8 + sp178.unk8;
         sp38 = -sp208;
@@ -593,11 +600,11 @@ void FireBombFX::DrawFlameBall() {
         sp148 = (f64) sp28;
         sp150 = (f64) sp30;
         sp158.operator*(this->unkC8 * this->unk128);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp258 = sp68;
+        temp_f0_955 = sp158 + M2C_BITWISE(f64, sp138);
+        sp68 = temp_f0_955;
+        sp258 = temp_f0_955;
         sp70 = sp158.unk8 + sp138.unk8;
-        sp168 = sp68;
+        sp168 = temp_f0_955;
         sp260 = (f64) sp70;
         sp170 = (f64) sp70;
         spE8.operator*(this->unkC8 * this->unk128);
@@ -607,8 +614,7 @@ void FireBombFX::DrawFlameBall() {
         spF8 = (f64) sp18;
         sp100 = (f64) sp20;
         sp108.operator*(this->unkC8 * this->unk128);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp58 = sp108 + M2C_BITWISE(f64, spE8);
         sp268 = sp58;
         sp60 = sp108.unk8 + spE8.unk8;
         sp118 = sp58;
@@ -666,6 +672,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
@@ -673,8 +680,11 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     s32 sp8;
     MKProp *temp_r3_1197;
     ManagedLight *temp_r4_1297;
@@ -682,7 +692,10 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
     f32 temp_f26_1313;
     f32 temp_f27_1314;
     f32 var_f26_1207;
+    f64 temp_f0_1336;
+    f64 temp_f0_1357;
     f64 temp_f1_1190;
+    f64 temp_f1_1222;
     f64 temp_f2_1279;
     s32 var_r31_1312;
     u8 var_r31_1121;
@@ -721,15 +734,14 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
             var_f26_1207 = 400.0f;
         }
         temp_r3_1221 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
-        spC0 = M2C_FIELD(temp_r3_1221, f64 *, 0x30);
+        temp_f1_1222 = M2C_FIELD(temp_r3_1221, f64 *, 0x30);
+        spC0 = temp_f1_1222;
         spC8 = M2C_FIELD(temp_r3_1221, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp60 = temp_f1_1222 - M2C_FIELD(&arg1, f64 *, 0);
         spD0 = sp60;
         sp68 = (f32) spC8 - arg1.unk8;
         spD8 = (f64) sp68;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (unkspD4 * unkspD4))) == (var_f26_1207 * var_f26_1207)) {
+        if ((((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (unkspD4 * unkspD4))) <= (var_f26_1207 * var_f26_1207)) {
             this->unk130.unk50 = 0;
             this->unk130.unk30 = NULL;
             if (gb.unk0->GetHeroType() == 0) {
@@ -765,19 +777,18 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
             sp90 = (f64) sp40;
             sp98 = (f64) sp48;
             KDRand_Vector(spB0, *((MKVector3 *) &spA0));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            spE0 = sp30;
+            temp_f0_1336 = spB0 * 5.717499035e-315;
+            sp30 = temp_f0_1336;
+            spE0 = temp_f0_1336;
             sp38 = spB0.unk8 * 2000.0f;
             spE8 = (f64) sp38;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+            sp20 = M2C_FIELD(&arg0, f64 *, 0) * 5.53552857e-315;
             sp28 = temp_f26_1313 * 100.0f;
             sp70 = sp20;
             sp78 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp80 = sp10;
+            temp_f0_1357 = M2C_FIELD(&arg1, f64 *, 0) + sp70;
+            sp10 = temp_f0_1357;
+            sp80 = temp_f0_1357;
             sp18 = temp_f27_1314 + (f32) sp78;
             sp88 = (f64) sp18;
             ((ClusterBomb *) (M2C_FIELD(this, ClusterBomb **, 0x1B4)))->SpawnClusterBomb(*((MKVector3 *) &sp80), *((MKVector3 *) &spE0));
@@ -853,7 +864,8 @@ void FireBombFX::Update() {
     MKVector3 sp408;
     f64 sp400;
     f64 sp3F8;
-    KDUniformSpline sp3D8;
+    f64 sp3E8;
+    f64 sp3D8;
     f64 sp3D0;
     f64 sp3C8;
     f64 sp3C0;
@@ -898,7 +910,9 @@ void FireBombFX::Update() {
     f32 sp28C;
     f32 sp288;
     f32 sp280;
+    f64 sp278;
     f32 sp270;
+    f64 sp268;
     f32 sp260;
     f32 sp25C;
     f32 sp258;
@@ -909,24 +923,31 @@ void FireBombFX::Update() {
     f32 sp23C;
     f32 sp238;
     f32 sp230;
+    f64 sp228;
     f32 sp220;
     f32 sp21C;
     f32 sp218;
     f32 sp210;
+    f64 sp208;
     f32 sp200;
+    f64 sp1F8;
     f32 sp1F0;
     f32 sp1EC;
     f32 sp1E8;
     f32 sp1E0;
+    f64 sp1D8;
     f32 sp1D0;
     f32 sp1CC;
     f32 sp1C8;
     f32 sp1C0;
+    f64 sp1B8;
     f32 sp1B0;
+    f64 sp1A8;
     f32 sp1A0;
     f32 sp19C;
     f32 sp198;
     f32 sp190;
+    f64 sp188;
     f32 sp184;
     f32 sp180;
     f32 sp17C;
@@ -935,11 +956,14 @@ void FireBombFX::Update() {
     f32 sp16C;
     f32 sp168;
     f32 sp160;
+    f64 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp140;
     f32 sp13C;
     f32 sp138;
     f32 sp130;
+    f64 sp128;
     f32 sp124;
     f32 sp120;
     f32 sp11C;
@@ -963,7 +987,21 @@ void FireBombFX::Update() {
     f64 spB0;
     f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp1C;
@@ -976,8 +1014,8 @@ void FireBombFX::Update() {
     ManagedLight *temp_r3_2290;
     ManagedLight *temp_r3_2419;
     ManagedLight *temp_r3_2436;
-    f32 temp_f0_1941;
     f32 temp_f0_2437;
+    f32 temp_f1_1981;
     f32 temp_f1_2149;
     f32 temp_f1_2289;
     f32 temp_f26_2258;
@@ -998,12 +1036,31 @@ void FireBombFX::Update() {
     f32 temp_f30_2173;
     f32 temp_f3_2311;
     f32 temp_f5_1541;
+    f32 temp_f6_2321;
     f32 var_f0_1674;
+    f32 var_f25_2342;
     f32 var_f4_1833;
     f32 var_f6_1766;
     f32 var_f7_1524;
     f32 var_f7_2303;
+    f64 temp_f0_1566;
+    f64 temp_f0_1579;
     f64 temp_f0_1611;
+    f64 temp_f0_1645;
+    f64 temp_f0_1985;
+    f64 temp_f0_1996;
+    f64 temp_f0_2093;
+    f64 temp_f0_2104;
+    f64 temp_f0_2137;
+    f64 temp_f0_2196;
+    f64 temp_f0_2207;
+    f64 temp_f0_2240;
+    f64 temp_f0_2353;
+    f64 temp_f0_2363;
+    f64 temp_f0_2373;
+    f64 temp_f0_2383;
+    f64 temp_f0_2393;
+    f64 temp_f0_2403;
     f64 temp_f1_1610;
     f64 temp_f3_1772;
     f64 temp_f3_1778;
@@ -1018,6 +1075,8 @@ void FireBombFX::Update() {
     void *temp_r3_2295;
     void *temp_r3_2424;
     void *temp_r3_2439;
+    void *temp_r4_1573;
+    void *temp_r5_1930;
 
     temp_r0_1444 = M2C_FIELD(this, s32 *, 0x1BC);
     switch (temp_r0_1444) {                         /* switch 1; irregular */
@@ -1061,15 +1120,16 @@ void FireBombFX::Update() {
         sp438 = (f64) sp288;
         sp440 = (f64) sp290;
         KDRand_Vector(sp458, *((MKVector3 *) &sp448));
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp468 = sp278;
+        temp_f0_1566 = sp458 * 5.49408334e-315;
+        sp278 = temp_f0_1566;
+        sp468 = temp_f0_1566;
+        temp_r4_1573 = this->unk8 + 0x30;
         sp280 = sp458.unk8 * 50.0f;
         sp470 = (f64) sp280;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp478 = sp268;
-        sp270 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) sp470;
+        temp_f0_1579 = M2C_FIELD(temp_r4_1573, f64 *, 0) + temp_f0_1566;
+        sp268 = temp_f0_1579;
+        sp478 = temp_f0_1579;
+        sp270 = M2C_FIELD(temp_r4_1573, f32 *, 8) + (f32) sp470;
         sp480 = (f64) sp270;
         sp25C = MKRand_Float(&gViewSeed, 100.0f, 200.0f);
         sp258 = 0.0f;
@@ -1088,7 +1148,7 @@ void FireBombFX::Update() {
         switch (temp_r0_1616) {                     /* switch 2; irregular */
         case 0:                                     /* switch 2 */
             sp408.operator*(gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp98 = sp4F8 + M2C_BITWISE(f64, sp408);
             sp418 = sp98;
             temp_f28_1635 = gUpdateTimeDelta;
             spA0 = (f32) sp500 + sp408.unk8;
@@ -1096,14 +1156,12 @@ void FireBombFX::Update() {
             sp420 = (f64) spA0;
             sp4F0 = (f64) spA0;
             MKVector(0.0f, -1960.0f, 0.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            sp3F8 = sp88;
+            temp_f0_1645 = sp3E8 * (f64) temp_f28_1635;
+            sp88 = temp_f0_1645;
+            sp3F8 = temp_f0_1645;
             sp90 = sp3F0 * temp_f28_1635;
             sp400 = (f64) sp90;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+            this->unkD0 += temp_f0_1645;
             M2C_FIELD(this, f32 *, 0xD8) = (f32) (M2C_FIELD(this, f32 *, 0xD8) + (f32) sp400);
             break;
         case 1:                                     /* switch 2 */
@@ -1122,8 +1180,8 @@ void FireBombFX::Update() {
             this->unk1D4 = var_f0_1674;
             sp14 = 0.0f;
             sp3D8.GetMeasure(this->unk1D4, (Matrix *) &this->unk1BC, KDSpline_PositionMixer);
-            sp4E8 = M2C_BITWISE(f64, sp3D8);
-            sp4F0 = (f64) sp3D8.unk8;
+            sp4E8 = sp3D8;
+            sp4F0 = sp3E0;
             if (this->unk1D4 == 1.0f) {
                 this->unk104 = 4.0f;
             }
@@ -1229,11 +1287,10 @@ void FireBombFX::Update() {
             Explode(*((MKVector3 *) &sp4C8), *((MKVector3 *) &sp4D8), sp5D8);
         } else {
             M2C_STRUCT_COPY((s32) &sp510.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            temp_f0_1941 = (f32) sp4F0 - M2C_FIELD((MKModel_GetWorldMatrix(this->unk4) + 0x30), f32 *, 8);
+            temp_r5_1930 = MKModel_GetWorldMatrix(this->unk4) + 0x30;
+            sp228 = sp4E8 - M2C_FIELD(temp_r5_1930, f64 *, 0);
             sp220 = 0.0f;
-            sp230 = temp_f0_1941;
+            sp230 = (f32) sp4F0 - M2C_FIELD(temp_r5_1930, f32 *, 8);
             sp218 = 0.0f;
             sp21C = 1.0f;
             sp4B8 = sp228;
@@ -1245,13 +1302,15 @@ void FireBombFX::Update() {
             sp510.RotateRoll(&sp510, 2.0f * this->unk100);
             sp510.Multiply3x3(&sp510, &sp550);
             MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp4E8));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp3B8 = sp208;
-            sp210 = sp510.unk18 * this->unkC8;
+            temp_f1_1981 = this->unkC8;
+            temp_f0_1985 = sp510.unk10 * (f64) temp_f1_1981;
+            sp208 = temp_f0_1985;
+            sp3B8 = temp_f0_1985;
+            sp210 = sp510.unk18 * temp_f1_1981;
             sp3C0 = (f64) sp210;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp498 = sp1F8;
+            temp_f0_1996 = sp4E8 + temp_f0_1985;
+            sp1F8 = temp_f0_1996;
+            sp498 = temp_f0_1996;
             sp200 = (f32) sp4F0 + (f32) sp3C0;
             sp4A0 = (f64) sp200;
             if ((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) {
@@ -1263,8 +1322,7 @@ void FireBombFX::Update() {
                 sp3A8 = (f64) sp1E8;
                 gb.unk68->Emit(*((MKVector3 *) &sp498), *((MKVector3 *) &sp3A8), sp24);
             } else {
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+                sp1D8 = sp510.unk10 * 5.56078426e-315;
                 sp1E0 = sp510.unk18 * 150.0f;
                 sp398 = sp1D8;
                 sp3A0 = (f64) sp1E0;
@@ -1285,12 +1343,14 @@ void FireBombFX::Update() {
             sp1D0 = temp_f28_2075;
             sp368 = (f64) sp1C8;
             sp370 = (f64) sp1D0;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp378 = sp1B8;
+            temp_f0_2093 = sp368 * (f64) temp_f30_2070;
+            sp1B8 = temp_f0_2093;
+            sp378 = temp_f0_2093;
             sp1C0 = (f32) sp370 * temp_f30_2070;
             sp380 = (f64) sp1C0;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp388 = sp1A8;
+            temp_f0_2104 = sp4E8 + temp_f0_2093;
+            sp1A8 = temp_f0_2104;
+            sp388 = temp_f0_2104;
             sp1B0 = (f32) sp4F0 + (f32) sp380;
             sp390 = (f64) sp1B0;
             temp_f28_2118 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -1300,8 +1360,9 @@ void FireBombFX::Update() {
             sp1A0 = temp_f28_2118;
             sp348 = (f64) sp198;
             sp350 = (f64) sp1A0;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-            sp358 = sp188;
+            temp_f0_2137 = sp348 * 5.676053805e-315;
+            sp188 = temp_f0_2137;
+            sp358 = temp_f0_2137;
             sp190 = (f32) sp350 * 1000.0f;
             sp360 = (f64) sp190;
             temp_f1_2149 = MKRand_Float(&gViewSeed, 15.0f, 20.0f);
@@ -1322,12 +1383,14 @@ void FireBombFX::Update() {
             sp170 = temp_f28_2178;
             sp308 = (f64) sp168;
             sp310 = (f64) sp170;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp318 = sp158;
+            temp_f0_2196 = sp308 * (f64) temp_f30_2173;
+            sp158 = temp_f0_2196;
+            sp318 = temp_f0_2196;
             sp160 = (f32) sp310 * temp_f30_2173;
             sp320 = (f64) sp160;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp328 = sp148;
+            temp_f0_2207 = sp4E8 + temp_f0_2196;
+            sp148 = temp_f0_2207;
+            sp328 = temp_f0_2207;
             sp150 = (f32) sp4F0 + (f32) sp320;
             sp330 = (f64) sp150;
             temp_f28_2221 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -1337,8 +1400,9 @@ void FireBombFX::Update() {
             sp140 = temp_f28_2221;
             sp2E8 = (f64) sp138;
             sp2F0 = (f64) sp140;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-            sp2F8 = sp128;
+            temp_f0_2240 = sp2E8 * 5.61841903e-315;
+            sp128 = temp_f0_2240;
+            sp2F8 = temp_f0_2240;
             sp130 = (f32) sp2F0 * 400.0f;
             sp300 = (f64) sp130;
             sp18 = MKRand_Float(&gViewSeed, 2.5f, 8.0f);
@@ -1371,6 +1435,7 @@ void FireBombFX::Update() {
             spF8 = 1.0f;
             temp_f2_2319 = (var_f7_2303 * (1000.0f - temp_f3_2311)) + temp_f3_2311;
             spFC = 0.0f;
+            temp_f6_2321 = 0.5f * (temp_f1_2289 * 1.0f);
             sp100 = 0.0f;
             sp104 = 1.0f;
             this->unk124 = (var_f7_2303 * (1000.0f - temp_f2_2319)) + temp_f2_2319;
@@ -1382,33 +1447,41 @@ void FireBombFX::Update() {
             sp2C0 = (f64) sp100;
             sp2C8 = (f64) sp108;
             sp2D0 = (f64) sp110;
-            if ((0.5f * (temp_f1_2289 * 1.0f)) < 1.0f) {
-
+            if (temp_f6_2321 < 1.0f) {
+                var_f25_2342 = temp_f6_2321;
+            } else {
+                var_f25_2342 = 1.0f;
             }
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f2 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f5, $f4 */);
+            sp78 = sp2B8 - sp2C8;
+            temp_f0_2353 = sp2C0 - sp2D0;
+            sp80 = temp_f0_2353;
             spC8 = sp78;
-            spD0 = sp80;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
+            spD0 = temp_f0_2353;
+            sp68 = spC8 * (f64) var_f25_2342;
+            temp_f0_2363 = temp_f0_2353 * (f64) var_f25_2342;
+            sp70 = temp_f0_2363;
             spB8 = sp68;
-            spC0 = sp70;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+            spC0 = temp_f0_2363;
+            sp58 = sp2C8 + spB8;
+            temp_f0_2373 = sp2D0 + temp_f0_2363;
+            sp60 = temp_f0_2373;
             spA8 = sp58;
-            spB0 = sp60;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f2 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f5, $f3 */);
+            spB0 = temp_f0_2373;
+            sp48 = sp2B8 - spA8;
+            temp_f0_2383 = sp2C0 - spB0;
+            sp50 = temp_f0_2383;
             spE8 = sp48;
-            spF0 = sp50;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
+            spF0 = temp_f0_2383;
+            sp38 = spE8 * (f64) var_f25_2342;
+            temp_f0_2393 = temp_f0_2383 * (f64) var_f25_2342;
+            sp40 = temp_f0_2393;
             spD8 = sp38;
-            spE0 = sp40;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+            spE0 = temp_f0_2393;
+            sp28 = spA8 + spD8;
+            temp_f0_2403 = spB0 + temp_f0_2393;
+            sp30 = temp_f0_2403;
             sp488 = sp28;
-            sp490 = sp30;
+            sp490 = temp_f0_2403;
             KDMath_Smooth<MKVector4>(sp2A8, this->unk110, 0.5f, 1.0f);
             M2C_FIELD(this, f64 *, 0x110) = M2C_BITWISE(f64, sp2A8);
             M2C_FIELD(this, f64 *, 0x118) = (f64) sp2A8.unk8;

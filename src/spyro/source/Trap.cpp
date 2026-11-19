@@ -57,25 +57,27 @@ s32 Trap::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     return 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKProp' to
 s32 Trap::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp80;
     f64 sp78;
     MKProp sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_80;
 
     sp28.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp28.unk10 = sp8;
+    temp_f0_80 = M2C_FIELD(&arg0, f64 *, 0) - M2C_BITWISE(f64, sp28);
+    sp8 = temp_f0_80;
+    sp28.unk10 = temp_f0_80;
     sp10 = arg0.unk8 - M2C_BITWISE(f32, sp28.unk8);
     sp28.unk18 = (f64) sp10;
     Normalise(*((MKVector3 *) &sp28.unk20));
     sp28.unk30.operator*(100.0f);
     sp28.unk40.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp18 = sp28.unk40 + M2C_BITWISE(f64, sp28.unk30);
     M2C_FIELD(arg1, f64 *, 0) = sp18;
     sp20 = sp28.unk48 + M2C_BITWISE(f32, sp28.unk38);
     sp78 = sp18;

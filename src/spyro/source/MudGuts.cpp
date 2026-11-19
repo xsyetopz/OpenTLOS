@@ -79,10 +79,12 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f3_179;
     f32 var_f31_192;
     f32 var_f3_259;
+    f64 temp_f0_173;
     f64 temp_f1_198;
     f64 temp_f1_204;
     f64 temp_f1_208;
@@ -100,10 +102,10 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
     sp30.GetRandPos();
     sp60 = sp30;
     sp68 = sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_173 = sp30 - arg0->unk30;
+    sp10 = temp_f0_173;
     temp_f3_179 = arg0->unk4;
-    sp50 = sp10;
+    sp50 = temp_f0_173;
     sp18 = (f32) sp68 - (f32) M2C_FIELD(arg0, f64 *, 0x38);
     unksp54 = temp_f3_179;
     sp58 = (f64) sp18;
@@ -176,8 +178,10 @@ void MudGutsCritter::Update() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     MudGuts *temp_r29_339;
     f32 temp_f1_430;
+    f64 temp_f0_377;
     s32 temp_r0_348;
     s32 var_r30_333;
     s32 var_r31_334;
@@ -200,17 +204,16 @@ loop_15:
                 sp48 = (f64) sp18;
                 sp50 = (f64) sp20;
                 sp28.operator*(200.0f * gUpdateTimeDelta);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp38 = sp8;
+                temp_f0_377 = *(temp_r29_339 + 0x30) + M2C_BITWISE(f64, sp28);
+                sp8 = temp_f0_377;
+                sp38 = temp_f0_377;
                 sp10 = M2C_FIELD(temp_r29_339, f32 *, 0x38) + sp28.unk8;
                 M2C_FIELD(temp_r29_339, f32 *, 0x30) = (f32) sp38;
                 sp40 = (f64) sp10;
                 M2C_FIELD(temp_r29_339, f32 *, 0x34) = unksp3C;
                 M2C_FIELD(temp_r29_339, f32 *, 0x38) = (f32) sp40;
                 M2C_FIELD(temp_r29_339, f32 *, 0x3C) = 1.0f;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (((temp_r29_339->unk64 == 0.0f) && ((s32) temp_r29_339->unk60 == 0)) || (((s32) temp_r29_339->unk60 == 1) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_r29_339->unk54 == 1.0f) != 0)))) {
+                if (((temp_r29_339->unk64 <= 0.0f) && ((s32) temp_r29_339->unk60 == 0)) || (((s32) temp_r29_339->unk60 == 1) && (temp_r29_339->unk54 >= 1.0f))) {
                     if (MKRand_Int(&gViewSeed, 0, 5) == 0) {
                         temp_r29_339->unk60 = 1;
                     } else {

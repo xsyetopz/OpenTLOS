@@ -58,7 +58,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2, MKCollisionResult *arg3, int arg4) {
     u8 sp98;
     s32 sp94;
@@ -89,6 +89,8 @@ s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_158;
 
     sp20 = 0.0f;
     sp1C = -arg1;
@@ -116,9 +118,9 @@ s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2
     sp98 = 0;
     sp28 = (f64) sp18;
     sp30 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp38 = sp8;
+    temp_f0_158 = M2C_FIELD(this, f64 *, 0) + sp28;
+    sp8 = temp_f0_158;
+    sp38 = temp_f0_158;
     sp10 = M2C_BITWISE(f32, this->unk8) + (f32) sp30;
     sp40 = (f64) sp10;
     if (MKCollision_RayCollide(*((MKVector3 *) this), *((MKVector3 *) &sp38), (MKCollisionResult *) &sp48, (MKCollisionMode) 1, (s32) arg3) != 0) {

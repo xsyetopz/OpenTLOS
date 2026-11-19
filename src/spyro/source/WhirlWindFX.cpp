@@ -87,8 +87,7 @@ loop_4:
             return;
         }
         temp_r4_158->unk40 = M2C_BITWISE(f32, temp_r4_158->unk40) - gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_BITWISE(f32, temp_r4_158->unk40) == 0.0f) {
+        if (M2C_BITWISE(f32, temp_r4_158->unk40) <= 0.0f) {
             temp_r4_146 = this->unk4C;
             this->unk4C = (MKHeap *) &temp_r4_146->unk4;
             temp_r5_149 = temp_r4_146->unk0;

@@ -200,9 +200,13 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -391,8 +395,7 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         sp1A0 = (f64) sp50;
         sp1A8.operator*(temp_f31_317);
         sp1B8.operator*(temp_f31_317);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp88 = sp1B8 + M2C_BITWISE(f64, sp1A8);
         sp1C8 = sp88;
         sp90 = sp1B8.unk8 + sp1A8.unk8;
         sp218 = sp88;
@@ -400,8 +403,7 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         sp220 = (f64) sp90;
         sp168.operator*(temp_f31_317);
         sp178.operator*(temp_f31_317);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp78 = sp178 + M2C_BITWISE(f64, sp168);
         sp38 = -sp1F8;
         sp3C = -unksp1FC;
         sp80 = sp178.unk8 + sp168.unk8;
@@ -419,8 +421,7 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         sp138 = (f64) sp28;
         sp140 = (f64) sp30;
         sp148.operator*(temp_f31_317);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp68 = sp148 + M2C_BITWISE(f64, sp128);
         sp158 = sp68;
         sp70 = sp148.unk8 + sp128.unk8;
         sp238 = sp68;
@@ -433,8 +434,7 @@ void Coronas::DrawCorona(Corona *arg0, Matrix *arg1) {
         spE8 = (f64) sp18;
         spF0 = (f64) sp20;
         spF8.operator*(temp_f31_317);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp58 = spF8 + M2C_BITWISE(f64, spD8);
         sp248 = sp58;
         sp60 = spF8.unk8 + spD8.unk8;
         sp108 = sp58;

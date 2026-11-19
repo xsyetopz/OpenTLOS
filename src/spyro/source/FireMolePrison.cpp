@@ -65,7 +65,7 @@ void FireMolePrison::Update() {
     if (temp_f1_117 > 0.0f) {
         this->unk1F8 = temp_f1_117 - gUpdateTimeDelta;
     }
-    if ((IsDead() == 0) && (KDSound_IsVoicePlaying(this->unk208) == 0) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((M2C_BITWISE(f32, this->unk1F8) == 0.0f) != 0))) {
+    if ((IsDead() == 0) && (KDSound_IsVoicePlaying(this->unk208) == 0) && (M2C_BITWISE(f32, this->unk1F8) <= 0.0f)) {
         this->unk1F8 = MKRand_Float(&gViewSeed, 1.0f, 4.0f);
         this->unk208 = KDSound_Play3d(GS_MoleHelpMe, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
     } else if ((IsDead() != 0) && (KDSound_IsVoicePlaying(this->unk208) != 0)) {

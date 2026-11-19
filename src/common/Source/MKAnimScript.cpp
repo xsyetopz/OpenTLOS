@@ -547,9 +547,12 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f30_1253;
     f32 temp_f31_1251;
+    f64 temp_f0_1310;
     s16 temp_r6_1239;
     s32 temp_r3_1132;
     u32 temp_r3_1188;
@@ -574,8 +577,7 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
         } else {
             if (temp_r3_1132 & 4) {
                 this->unk30 += this->unk34 * gUpdateTimeDelta;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (this->unk30 == 1.0f) {
+                if (this->unk30 >= 1.0f) {
                     this->unk30 = 1.0f;
                     this->unk2C &= 0xFFFFFFFB;
                     this->unk10 = NULL;
@@ -611,9 +613,7 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
                 sp68.GetPositionalOffset((sp100.unk4 * temp_f30_1253) + temp_f31_1251);
                 sp138 = sp68;
                 sp140 = sp70;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp18 = sp138 - sp128;
                 sp58 = sp18;
                 sp20 = (f32) sp140 - (f32) sp130;
                 sp88 = sp18;
@@ -626,13 +626,12 @@ void MKAnimScript::Animate(Animation *arg0, int arg1, MKVector3 *arg2) {
                     sp38.GetPositionalOffset((sp100.unkC * temp_f30_1253) + temp_f31_1251);
                     sp158 = sp38;
                     sp160 = sp40;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp28 = sp8;
+                    temp_f0_1310 = sp158 - sp148;
+                    sp8 = temp_f0_1310;
+                    sp28 = temp_f0_1310;
                     sp10 = (f32) sp160 - (f32) sp150;
                     sp30 = (f64) sp10;
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                    sp88 += temp_f0_1310;
                     sp90 = (f32) sp90 + (f32) sp30;
                 }
             }
@@ -710,8 +709,7 @@ loop_8:
         return 0U;
     }
     temp_f2_1471 = this->unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f2_1471 == 1.0f) {
+    if (temp_f2_1471 >= 1.0f) {
         this->unkC |= 1;
         this->unk4 = 1.0f;
         arg1->unk4 = this->unk4;
@@ -850,8 +848,7 @@ void MKAnimScript::CheckEvents() {
     void *temp_r26_1742;
 
     if ((u32) this->unk20 != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk38 == 0.0f) {
+        if (this->unk38 >= 0.0f) {
             var_r31_1710 = this->unk3C;
             var_r30_1711 = this->unk40;
         } else {
@@ -1000,8 +997,7 @@ s32 MKAnimScript::GetEvent(int arg1, MKAnimScriptedEvent::EventType arg2) {
     if ((temp_r3_1933 == 0) || (temp_r0_1936 = this->unk3C, temp_r4_1937 = this->unk40, ((temp_r0_1936 == temp_r4_1937) != 0))) {
         return 0;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk38 == 0.0f) {
+    if (this->unk38 >= 0.0f) {
         var_r30_1949 = temp_r0_1936;
         var_r29_1950 = temp_r4_1937;
     } else {
@@ -1131,8 +1127,7 @@ void MKAnimScript::SetAnim(MKAnim *arg0, float arg1, float arg2, int arg3, int a
         this->unk48 = 0;
         if ((arg0 != (u32) this->unk20) || (var_r3_2107 != 0) || (arg3 & 4)) {
             var_f31_2146 = 0.0f;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (arg1 == 0.0f) {
+            if (arg1 >= 0.0f) {
 
             } else {
                 var_f31_2146 = 1.0f;

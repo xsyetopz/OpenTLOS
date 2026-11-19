@@ -83,9 +83,13 @@ void PuddleSplash::Draw() {
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp54;
@@ -134,8 +138,7 @@ void PuddleSplash::Draw() {
     sp198 = (f64) sp48;
     sp1A0.operator*(10.0f);
     sp1B0.operator*(10.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp90 = sp1B0 + M2C_BITWISE(f64, sp1A0);
     sp1C0 = sp90;
     sp98 = sp1B0.unk8 + sp1A0.unk8;
     sp240 = sp90;
@@ -143,8 +146,7 @@ void PuddleSplash::Draw() {
     sp248 = (f64) sp98;
     sp160.operator*(10.0f);
     sp170.operator*(10.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp80 = sp170 + M2C_BITWISE(f64, sp160);
     sp38 = -(f32) sp1E8;
     sp88 = sp170.unk8 + sp160.unk8;
     sp30 = -(f32) sp1E0;
@@ -162,8 +164,7 @@ void PuddleSplash::Draw() {
     sp130 = (f64) sp20;
     sp138 = (f64) sp28;
     sp140.operator*(10.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp70 = sp140 + M2C_BITWISE(f64, sp120);
     sp150 = sp70;
     sp78 = sp140.unk8 + sp120.unk8;
     sp260 = sp70;
@@ -176,8 +177,7 @@ void PuddleSplash::Draw() {
     spE0 = (f64) sp10;
     spE8 = (f64) sp18;
     spF0.operator*(10.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp60 = spF0 + M2C_BITWISE(f64, spD0);
     var_r28_249 = 0;
     var_r26_251 = 0;
     sp100 = sp60;
@@ -286,8 +286,7 @@ void PuddleSplash::Update() {
         if ((u8) M2C_FIELD(temp_r6_460, u8 *, 0x20) != 0) {
             M2C_FIELD(temp_r6_460, f32 *, 0x14) = (f32) (M2C_FIELD(temp_r6_460, f32 *, 0x14) - gUpdateTimeDelta);
             temp_r6_469 = this->unk4C + var_r4_453;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r6_469, f32 *, 0x14) == 0.0f) {
+            if (M2C_FIELD(temp_r6_469, f32 *, 0x14) <= 0.0f) {
                 M2C_FIELD(temp_r6_469, s8 *, 0x20) = 0;
             }
         }

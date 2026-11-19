@@ -68,13 +68,9 @@ void SpeedwayCynder::UpdateSound() {
     if (temp_f1_90 > 0.0f) {
         this->unk36C = temp_f1_90 - gUpdateTimeDelta;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk368 == 0.5f) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk36C == 0.0f) {
-            this->unk370 = KDSound_Play3d(GS_SWCynderTaunt, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
-            this->unk36C = 10.0f;
-        }
+    if ((this->unk368 <= 0.5f) && (this->unk36C <= 0.0f)) {
+        this->unk370 = KDSound_Play3d(GS_SWCynderTaunt, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        this->unk36C = 10.0f;
     }
 }
 #endif
@@ -250,7 +246,7 @@ s32 SpeedwayCynder::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, 
 
 #if 0 // DRAFT: expression syntax error
 void SpeedwayCynder::UpdateFireBomb() {
-    M2C_UNK sp1D0;
+    f64 sp1D0;
     M2C_UNK sp1BC;
     M2C_UNK sp180;
     M2C_UNK sp17C;
@@ -282,24 +278,40 @@ void SpeedwayCynder::UpdateFireBomb() {
     f32 spB4;
     f32 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
-    f32 temp_f1_552;
-    f32 temp_f1_579;
+    f64 sp10;
+    f32 temp_f2_637;
+    f64 temp_f0_548;
+    f64 temp_f0_559;
+    f64 temp_f0_575;
+    f64 temp_f0_602;
+    f64 temp_f0_643;
+    f64 temp_f0_653;
+    f64 temp_f1_545;
+    f64 temp_f1_571;
+    f64 temp_f1_592;
     void *temp_r3_588;
 
     this->unk374 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((this->unk374 == 0.0f) && (this->unk390 < CYNDER_SHOOT_FIRE_BALL_END_TIME)) {
+    if ((this->unk374 <= 0.0f) && (this->unk390 < CYNDER_SHOOT_FIRE_BALL_END_TIME)) {
         sp180.GetPathMatrix(this->unk37C->unk2C0);
         M2C_STRUCT_COPY((s32) &sp1BC + 4, (s32) &sp17C + 4, 0x40);
         spB0 = -sp1E0;
@@ -307,50 +319,57 @@ void SpeedwayCynder::UpdateFireBomb() {
         spB8 = -sp1E8;
         sp170 = (f64) spB0;
         sp178 = (f64) spB8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        temp_f1_552 = sp1C8 * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        spF0 = sp70;
-        sp78 = temp_f1_552;
+        temp_f1_545 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f0_548 = sp1C0 * temp_f1_545;
+        sp70 = temp_f0_548;
+        spF0 = temp_f0_548;
+        sp78 = sp1C8 * (f32) temp_f1_545;
         spF8 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        sp100 = sp60;
+        temp_f0_559 = temp_f0_548 * 5.676053805e-315;
+        sp60 = temp_f0_559;
+        sp100 = temp_f0_559;
         sp68 = (f32) spF8 * 1000.0f;
         sp108 = (f64) sp68;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        temp_f1_579 = sp1D8 * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp110 = spA0;
-        spA8 = temp_f1_579;
+        temp_f1_571 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f0_575 = sp1D0 * temp_f1_571;
+        spA0 = temp_f0_575;
+        sp110 = temp_f0_575;
+        spA8 = sp1D8 * (f32) temp_f1_571;
         sp118 = (f64) spA8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+        sp90 = temp_f0_575 * 5.676053805e-315;
         temp_r3_588 = this->unk8;
+        temp_f1_592 = M2C_FIELD(temp_r3_588, f64 *, 0x30);
         sp120 = sp90;
         sp98 = (f32) sp118 * 1000.0f;
-        sp130 = M2C_FIELD(temp_r3_588, f64 *, 0x30);
+        sp130 = temp_f1_592;
         sp128 = (f64) sp98;
         sp138 = M2C_FIELD(temp_r3_588, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp140 = sp80;
+        temp_f0_602 = temp_f1_592 + sp120;
+        sp80 = temp_f0_602;
+        sp140 = temp_f0_602;
         sp88 = (f32) sp138 + (f32) sp128;
         sp148 = (f64) sp88;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp50 = sp140 + temp_f0_559;
         sp160 = sp50;
         sp40 = -sp1E0;
         sp58 = (f32) sp148 + (f32) sp108;
         sp44 = -sp1E4;
         sp168 = (f64) sp58;
         sp48 = -sp1E8;
+        temp_f2_637 = 0.5f + this->unk368;
         spC0 = (f64) sp40;
         spC8 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-        spD0 = sp30;
+        temp_f0_643 = spC0 * 5.836775494e-315;
+        sp30 = temp_f0_643;
+        spD0 = temp_f0_643;
         sp38 = (f32) spC8 * 15000.0f;
         spD8 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spE0 = sp20;
-        sp28 = (f32) spD8 * (0.5f + this->unk368);
+        temp_f0_653 = temp_f0_643 * (f64) temp_f2_637;
+        sp20 = temp_f0_653;
+        spE0 = temp_f0_653;
+        sp28 = (f32) spD8 * temp_f2_637;
         spE8 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp10 = sp160 + temp_f0_653;
         sp18 = (f32) sp168 + (f32) spE8;
         sp150 = sp10;
         sp158 = (f64) sp18;
@@ -385,11 +404,14 @@ void SpeedwayCynder::UpdateBreath() {
     f64 sp60;
     f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 temp_f1_856;
     f32 temp_f2_733;
@@ -397,6 +419,9 @@ void SpeedwayCynder::UpdateBreath() {
     f32 var_f4_771;
     f32 var_f4_838;
     f64 temp_f0_887;
+    f64 temp_f0_916;
+    f64 temp_f0_928;
+    f64 temp_f1_748;
     f64 temp_f1_777;
     f64 temp_f1_783;
     f64 temp_f1_787;
@@ -414,10 +439,10 @@ void SpeedwayCynder::UpdateBreath() {
             sp100 = (f64) sp110.unk38;
             temp_f31_743 = temp_f2_733 + gUpdateTimeDelta;
             temp_r3_747 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, f64, f32), 0xC)(gb, (f64) sp110.unk30, temp_f2_733), void **, 8);
-            spC8 = M2C_FIELD(temp_r3_747, f64 *, 0x30);
+            temp_f1_748 = M2C_FIELD(temp_r3_747, f64 *, 0x30);
+            spC8 = temp_f1_748;
             spD0 = M2C_FIELD(temp_r3_747, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp48 = temp_f1_748 - sp110.unk30;
             spD8 = sp48;
             sp50 = (f32) spD0 - sp110.unk38;
             spE0 = (f64) sp50;
@@ -488,13 +513,15 @@ void SpeedwayCynder::UpdateBreath() {
                 temp_f3_912 = this->unk328;
                 sp68 = temp_f4_911;
                 sp70 = temp_f3_912;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp78 = sp28;
+                temp_f0_916 = sp68 * 5.73465995e-315;
+                sp28 = temp_f0_916;
+                sp78 = temp_f0_916;
                 sp30 = (f32) sp70 * 2800.0f;
                 sp80 = (f64) sp30;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                temp_f0_928 = spF8 + temp_f0_916;
+                sp18 = temp_f0_928;
                 sp58 = temp_f4_911;
-                sp88 = sp18;
+                sp88 = temp_f0_928;
                 sp20 = (f32) sp100 + (f32) sp80;
                 sp60 = temp_f3_912;
                 sp90 = (f64) sp20;
@@ -559,7 +586,7 @@ void SpeedwayCynder::PostLTWUpdate() {
 
 #if 0 // DRAFT: undefined identifier 'KDMath_CriticalDampenedValue'
 void SpeedwayCynder::UpdateLTW(const Matrix *arg0, bool arg1) {
-    M2C_UNK sp1C0;
+    f64 sp1C0;
     f64 sp1A0;
     Matrix sp150;
     f64 sp148;
@@ -598,10 +625,14 @@ void SpeedwayCynder::UpdateLTW(const Matrix *arg0, bool arg1) {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 *temp_r3_1324;
     f32 var_f1_1270;
     f32 var_f31_1261;
+    f64 temp_f0_1286;
+    f64 temp_f0_1298;
 
     M2C_STRUCT_COPY((s32) &sp150.unk3C + 4, (s32) (arg0 - 4) + 4, 0x40);
     if (arg1 != 0) {
@@ -669,13 +700,14 @@ void SpeedwayCynder::UpdateLTW(const Matrix *arg0, bool arg1) {
     }
     sp70.operator*(var_f1_1270);
     sp80.operator*(var_f31_1261);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp90 = sp10;
+    temp_f0_1286 = sp1C0 - M2C_BITWISE(f64, sp80);
+    sp10 = temp_f0_1286;
+    sp90 = temp_f0_1286;
     sp18 = sp1C8 - sp80.unk8;
     sp98 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    spA0 = sp20;
+    temp_f0_1298 = sp90 - M2C_BITWISE(f64, sp70);
+    sp20 = temp_f0_1298;
+    spA0 = temp_f0_1298;
     sp28 = (f32) sp98 - sp70.unk8;
     this->unk310 = (f32) spA0;
     spA8 = (f64) sp28;
@@ -737,6 +769,7 @@ void SpeedwayCynder::EventCameraUpdate() {
     f64 sp30;                                       /* compiler-managed */
     f64 sp28;                                       /* compiler-managed */
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 var_f1_1454;
     f32 var_f3_1581;
@@ -760,8 +793,7 @@ void SpeedwayCynder::EventCameraUpdate() {
     sp40 = sp108;
     sp50.GetPathMatrix(this->unk37C->unk2C0);
     M2C_STRUCT_COPY((s32) &spCC + 4, (s32) &sp4C + 4, 0x40);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp18 = sp38 - sp100;
     sp28 = sp18;
     sp20 = (f32) sp40 - (f32) sp108;
     sp30 = (f64) sp20;
@@ -852,7 +884,6 @@ u8 SpeedwayCynder::AnyToBiteTransition() {
 
     var_r4_1704 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
     if (var_r4_1704 != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         var_r4_1704 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
     }
     if (var_r4_1704 != 0) {
@@ -986,14 +1017,13 @@ void SpeedwayCynder::BiteUpdate() {
             sp8 = temp_f1_1859;
             sp10 = temp_f2_1860;
             sp40 = temp_f2_1860;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
             if ((f32) sp38 == CYNDER_MAX_BITE_SIDE_OFFSET) {
                 SetAnim(4, 0.0f, 0U);
             } else {
                 sp28 = temp_f1_1859;
                 sp30 = temp_f2_1860;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((f32) sp28 == -CYNDER_MAX_BITE_SIDE_OFFSET) {
+                if ((f32) sp28 <= -CYNDER_MAX_BITE_SIDE_OFFSET) {
                     SetAnim(5, 0.0f, 0U);
                 } else {
                     SetAnim(3, 0.0f, 0U);

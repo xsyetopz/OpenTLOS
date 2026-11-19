@@ -52,11 +52,15 @@ void MKDynamicBone::Reset() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     s16 sp10;
     Animation *temp_r3_49;
     Matrix *temp_r30_34;
     f32 temp_f31_37;
+    f64 temp_f0_148;
+    f64 temp_f0_160;
     s16 temp_r29_36;
     s32 temp_r31_47;
     u16 temp_r28_38;
@@ -117,15 +121,15 @@ void MKDynamicBone::Reset() {
         break;
     }
     Normalise(sp68);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp78 = sp28;
+    temp_f0_148 = sp68 * (f64) temp_f31_37;
+    sp28 = temp_f0_148;
+    sp78 = temp_f0_148;
     sp30 = sp68.unk8 * temp_f31_37;
     sp80 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0) = sp18;
-    sp88 = sp18;
+    temp_f0_160 = spE0.unk30 + temp_f0_148;
+    sp18 = temp_f0_160;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_160;
+    sp88 = temp_f0_160;
     sp20 = spE0.unk38 + (f32) sp80;
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
     sp90 = (f64) sp20;
@@ -246,6 +250,7 @@ void MKDynamicBone::Update() {
     f64 sp238;
     MKVector3 sp228;
     f32 sp220;
+    f64 sp218;
     f32 sp214;
     f32 sp210;
     f32 sp20C;
@@ -259,6 +264,7 @@ void MKDynamicBone::Update() {
     f32 sp1EC;
     f32 sp1E8;
     f32 sp1E0;
+    f64 sp1D8;
     f32 sp1D0;
     f32 sp1CC;
     f32 sp1C8;
@@ -269,15 +275,25 @@ void MKDynamicBone::Update() {
     f32 sp1AC;
     f32 sp1A8;
     f32 sp1A0;
+    f64 sp198;
     f32 sp190;
+    f64 sp188;
     f32 sp180;
+    f64 sp178;
     f32 sp170;
+    f64 sp168;
     f32 sp160;
+    f64 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp140;
+    f64 sp138;
     f32 sp130;
+    f64 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
     f32 spFC;
     f32 spF8;
@@ -292,24 +308,32 @@ void MKDynamicBone::Update() {
     f32 spCC;
     f32 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA4;
     f32 spA0;
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     s16 sp12;
     s16 sp10;
@@ -325,6 +349,7 @@ void MKDynamicBone::Update() {
     f32 temp_f1_1058;
     f32 temp_f1_468;
     f32 temp_f1_500;
+    f32 temp_f1_711;
     f32 temp_f1_870;
     f32 temp_f1_964;
     f32 temp_f22_404;
@@ -340,6 +365,15 @@ void MKDynamicBone::Update() {
     f32 var_f28_479;
     f32 var_f28_631;
     f32 var_f29_444;
+    f64 temp_f0_1082;
+    f64 temp_f0_408;
+    f64 temp_f0_485;
+    f64 temp_f0_503;
+    f64 temp_f0_550;
+    f64 temp_f1_530;
+    f64 temp_f2_405;
+    f64 temp_f2_496;
+    f64 temp_f3_518;
     f64 temp_f5_634;
     f64 temp_f5_640;
     f64 temp_f5_644;
@@ -422,7 +456,7 @@ void MKDynamicBone::Update() {
             }
             Normalise(sp4A8);
             sp4B8.operator*(temp_f25_222);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp198 = sp588 + M2C_BITWISE(f64, sp4B8);
             sp4C8 = sp198;
             sp1A0 = (f32) sp590 + sp4B8.unk8;
             sp5A8 = sp198;
@@ -436,20 +470,20 @@ void MKDynamicBone::Update() {
             sp5B0 = (f64) sp6A0.unk38;
         }
         temp_f22_404 = 1.0f / gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r27, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
+        temp_f2_405 = M2C_FIELD(this, f64 *, 0);
+        temp_f0_408 = temp_f2_405 - M2C_FIELD(this, f64 *, 0x10);
+        sp38 = temp_f0_408;
         temp_f3_410 = this->unk8;
-        sp488 = sp38;
+        sp488 = temp_f0_408;
         sp40 = temp_f3_410 - this->unk18;
         sp490 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
+        sp188 = temp_f0_408 * (f64) temp_f22_404;
         sp498 = sp188;
         sp190 = (f32) sp490 * temp_f22_404;
         sp5C8 = sp188;
         sp4A0 = (f64) sp190;
         sp5D0 = (f64) sp190;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+        sp178 = sp5A8 - temp_f2_405;
         sp478 = sp178;
         sp180 = (f32) sp5B0 - temp_f3_410;
         sp598 = sp178;
@@ -465,7 +499,7 @@ void MKDynamicBone::Update() {
         sp30 = -(f32) sp5D0;
         sp458 = (f64) sp28;
         sp460 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+        sp168 = sp458 * (f64) var_f29_444;
         temp_f1_468 = 1.0f / (gUpdateTimeDelta * gUpdateTimeDelta);
         sp468 = sp168;
         sp5B8 = sp168;
@@ -477,56 +511,57 @@ void MKDynamicBone::Update() {
         } else {
             var_f28_479 = temp_f1_468;
         }
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        sp448 = sp158;
+        temp_f0_485 = sp598 * (f64) var_f28_479;
+        sp158 = temp_f0_485;
+        sp448 = temp_f0_485;
         sp160 = (f32) sp5A0 * var_f28_479;
         sp450 = (f64) sp160;
-        M2C_ERROR(/* unknown instruction: ps_add $f2, $f1, $f0 */);
+        temp_f2_496 = sp5B8 + temp_f0_485;
+        sp5B8 = temp_f2_496;
         temp_f1_500 = (f32) sp5C0 + (f32) sp450;
         sp5C0 = temp_f1_500;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f0, $f27 */);
+        temp_f0_503 = temp_f2_496 + M2C_FIELD(temp_r28_220, f64 *, 0);
+        sp5B8 = temp_f0_503;
         temp_f0_507 = temp_f1_500 + temp_r28_220->unk8;
         sp5C0 = temp_f0_507;
+        sp148 = temp_f0_503 * (f64) gUpdateTimeDelta;
         sp150 = temp_f0_507 * gUpdateTimeDelta;
         sp438 = sp148;
         sp440 = (f64) sp150;
-        M2C_ERROR(/* unknown instruction: ps_add $f3, $f1, $f0 */);
+        temp_f3_518 = sp5C8 + sp438;
+        sp5C8 = temp_f3_518;
         M2C_FIELD(this, f64 *, 0x10) = (f64) M2C_FIELD(this, f64 *, 0);
         M2C_FIELD(this, f32 *, 0x18) = (f64) M2C_FIELD(this, f32 *, 8);
         temp_f0_526 = (f32) sp5D0 + (f32) sp440;
         sp5D0 = temp_f0_526;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f3, $f31 */);
+        temp_f1_530 = temp_f3_518 * (f64) gUpdateTimeDelta;
+        sp138 = temp_f1_530;
         sp140 = temp_f0_526 * gUpdateTimeDelta;
-        sp428 = sp138;
+        sp428 = temp_f1_530;
         sp430 = (f64) sp140;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r27, 0x0, qr0 */);
+        M2C_FIELD(this, f64 *, 0) = (f64) (M2C_FIELD(this, f64 *, 0) + sp428);
         this->unk8 += (f32) sp430;
         if ((s32) temp_r26_277 != 0) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp3E8 = sp18;
+            temp_f0_550 = M2C_FIELD(this, f64 *, 0) - sp588;
+            sp18 = temp_f0_550;
+            sp3E8 = temp_f0_550;
             sp20 = this->unk8 - (f32) sp590;
             sp3F0 = (f64) sp20;
             Normalise(sp3F8);
             sp408.operator*(temp_f25_222);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
+            sp128 = sp588 + M2C_BITWISE(f64, sp408);
             M2C_FIELD(this, f64 *, 0) = sp128;
             sp130 = (f32) sp590 + sp408.unk8;
             sp418 = sp128;
             M2C_FIELD(this, f32 *, 8) = (f64) sp130;
             sp420 = (f64) sp130;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+            sp118 = M2C_FIELD(this, f64 *, 0) - sp588;
             sp3D8 = sp118;
             sp120 = this->unk8 - (f32) sp590;
             sp578 = sp118;
             sp3E0 = (f64) sp120;
             sp580 = (f64) sp120;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+            sp108 = sp5A8 - sp588;
             sp110 = (f32) sp5B0 - (f32) sp590;
             sp568 = sp108;
             sp570 = (f64) sp110;
@@ -578,8 +613,9 @@ void MKDynamicBone::Update() {
             if (temp_f22_701 != 0.0f) {
                 sp6A0.SetIdentity();
                 if (var_f28_631 > 0.0001f) {
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                    sp220 = (f32) sp550 * (1.0f / var_f28_631);
+                    temp_f1_711 = 1.0f / var_f28_631;
+                    sp218 = sp548 * (f64) temp_f1_711;
+                    sp220 = (f32) sp550 * temp_f1_711;
                     sp3A8 = sp218;
                     sp3B0 = (f64) sp220;
                     sp6A0.SetRotateAroundAxis(*((MKVector3 *) &sp3A8), temp_f22_701);
@@ -624,8 +660,7 @@ void MKDynamicBone::Update() {
             temp_f0_847 = (unksp534 * unksp354) + (((f32) sp530 * (f32) sp350) + (((f32) sp528 * (f32) sp348) + (unksp52C * unksp34C)));
             if (temp_f0_847 > temp_f8_818) {
                 sp328.operator*(temp_f8_818 - temp_f0_847);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                spB8 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp328);
                 M2C_FIELD(this, f64 *, 0) = spB8;
                 spC0 = this->unk8 + sp328.unk8;
                 sp338 = spB8;
@@ -635,8 +670,7 @@ void MKDynamicBone::Update() {
                 temp_f1_870 = M2C_FIELD(temp_r31_217, f32 *, 0x50);
                 if (temp_f0_847 < temp_f1_870) {
                     sp308.operator*(temp_f1_870 - temp_f0_847);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                    spA8 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp308);
                     M2C_FIELD(this, f64 *, 0) = spA8;
                     spB0 = this->unk8 + sp308.unk8;
                     sp318 = spA8;
@@ -665,8 +699,7 @@ void MKDynamicBone::Update() {
             temp_f0_941 = (unksp534 * unksp2E4) + (((f32) sp530 * (f32) sp2E0) + (((f32) sp528 * (f32) sp2D8) + (unksp52C * unksp2DC)));
             if (temp_f0_941 > temp_f8_911) {
                 sp2B8.operator*(temp_f8_911 - temp_f0_941);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp88 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp2B8);
                 M2C_FIELD(this, f64 *, 0) = sp88;
                 sp90 = this->unk8 + sp2B8.unk8;
                 sp2C8 = sp88;
@@ -676,8 +709,7 @@ void MKDynamicBone::Update() {
                 temp_f1_964 = M2C_FIELD(temp_r31_217, f32 *, 0x54);
                 if (temp_f0_941 < temp_f1_964) {
                     sp298.operator*(temp_f1_964 - temp_f0_941);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                    sp78 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp298);
                     M2C_FIELD(this, f64 *, 0) = sp78;
                     sp80 = this->unk8 + sp298.unk8;
                     sp2A8 = sp78;
@@ -706,8 +738,7 @@ void MKDynamicBone::Update() {
             temp_f0_1035 = (unksp534 * unksp274) + (((f32) sp530 * (f32) sp270) + (((f32) sp528 * (f32) sp268) + (unksp52C * unksp26C)));
             if (temp_f0_1035 > temp_f8_1005) {
                 sp248.operator*(temp_f8_1005 - temp_f0_1035);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp58 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp248);
                 M2C_FIELD(this, f64 *, 0) = sp58;
                 sp60 = this->unk8 + sp248.unk8;
                 sp258 = sp58;
@@ -717,8 +748,7 @@ void MKDynamicBone::Update() {
                 temp_f1_1058 = M2C_FIELD(temp_r31_217, f32 *, 0x58);
                 if (temp_f0_1035 < temp_f1_1058) {
                     sp228.operator*(temp_f1_1058 - temp_f0_1035);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                    sp48 = M2C_FIELD(this, f64 *, 0) + M2C_BITWISE(f64, sp228);
                     M2C_FIELD(this, f64 *, 0) = sp48;
                     sp50 = this->unk8 + sp228.unk8;
                     sp238 = sp48;
@@ -726,9 +756,9 @@ void MKDynamicBone::Update() {
                     M2C_FIELD(this, f32 *, 8) = (f64) sp50;
                 }
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp508 = sp1D8;
+            temp_f0_1082 = M2C_FIELD(this, f64 *, 0) - sp5A8;
+            sp1D8 = temp_f0_1082;
+            sp508 = temp_f0_1082;
             sp1E0 = this->unk8 - (f32) sp5B0;
             sp510 = (f64) sp1E0;
             sp5E0.Translate(&sp5E0, *((MKVector3 *) &sp508));

@@ -195,6 +195,7 @@ s32 ShockWave::Start(MKVector3 arg0, float arg1, float arg2, bool arg3, bool arg
     void *temp_r3_435;
     void *temp_r3_446;
     void *temp_r4_460;
+    void *temp_r5_447;
 
     var_r31_387 = 0;
     var_r3_388 = 0;
@@ -227,16 +228,13 @@ loop_1:
     M2C_FIELD(temp_r3_424, f64 *, 0x10) = (f64) this->unk140;
     M2C_FIELD(temp_r3_424, f64 *, 0x18) = (f64) this->unk148;
     temp_r3_435 = M2C_FIELD(checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+    M2C_FIELD(temp_r3_435, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_435, f64 *, 0) * sp20);
     M2C_FIELD(temp_r3_435, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_435, f32 *, 8) * (f32) sp28);
     temp_r3_446 = M2C_FIELD(checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r5, 0x0, qr0 */);
+    temp_r5_447 = temp_r3_446 + 0x10;
+    M2C_FIELD(temp_r5_447, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_447, f64 *, 0) * sp20);
     temp_r25_452 = var_r31_387 * 0x28;
-    M2C_FIELD((temp_r3_446 + 0x10), f32 *, 8) = (f32) (M2C_FIELD(temp_r3_446, f32 *, 0x18) * (f32) sp28);
+    M2C_FIELD(temp_r5_447, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_446, f32 *, 0x18) * (f32) sp28);
     MKModel_SetPosition(M2C_FIELD((this + temp_r25_452), MKModel **, 0xA0), *((MKVector3 *) arg0));
     temp_r4_460 = this + temp_r25_452;
     M2C_FIELD(temp_r4_460, f32 *, 0x9C) = arg1;
@@ -339,6 +337,7 @@ void ShockWave::Update() {
     f64 sp30;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f0_691;
     f32 temp_f0_800;
@@ -353,6 +352,7 @@ void ShockWave::Update() {
     f64 temp_f1_728;
     f64 temp_f1_734;
     f64 temp_f1_738;
+    f64 temp_f1_805;
     s32 temp_r3_757;
     s32 var_r0_767;
     s32 var_r28_626;
@@ -369,9 +369,7 @@ void ShockWave::Update() {
             M2C_FIELD(temp_r31_628, f32 *, 0x9C) = (f32) ((1200.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r31_628, f32 *, 0x9C));
             temp_r27_640 = MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_628, MKModel **, 0xA0)) + 0x30;
             sp40.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp10 = sp40 - M2C_FIELD(temp_r27_640, f64 *, 0);
             sp18 = sp48 - M2C_FIELD(temp_r27_640, f32 *, 8);
             var_f29_658 = -((0.166f * M2C_FIELD(temp_r31_628, f32 *, 0x94)) - M2C_FIELD(temp_r31_628, f32 *, 0x9C));
             sp70 = sp10;
@@ -437,8 +435,10 @@ void ShockWave::Update() {
                     sp60 = temp_f2_796;
                     unksp64 *= var_f3_789;
                     sp68 = temp_f0_800;
+                    temp_f1_805 = (f64) sp60 * 5.578592756e-315;
+                    sp60 = temp_f1_805;
                     sp68 = temp_f0_800 * 205.0f;
-                    temp_ret_815 = M2C_FIELD(*gb, u8 (**)(void **, M2C_UNK, f32), 0x50)(gb, M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */), temp_f2_796);
+                    temp_ret_815 = M2C_FIELD(*gb, u8 (**)(void **, f64, f32), 0x50)(gb, temp_f1_805, temp_f2_796);
                     if (temp_ret_815 == 0) {
                         Console_Execute(Str_Printf("send %s %d", this->unk158, this->unk154, M2C_BITWISE(f32, temp_ret_815)));
                     }
@@ -446,7 +446,7 @@ void ShockWave::Update() {
                         sp80 = 7;
                         spA8 = 1;
                         spAC = this;
-                        sp88 = (f64) sp60;
+                        sp88 = sp60;
                         sp90 = (f64) sp68;
                         spC0 = 0;
                         spCC = 2;
@@ -471,7 +471,7 @@ void ShockWave::Update() {
                         sp80 = 7;
                         spA8 = 1;
                         spAC = this;
-                        sp88 = (f64) sp60;
+                        sp88 = sp60;
                         sp90 = (f64) sp68;
                         spC0 = 1;
                         spCC = 2;

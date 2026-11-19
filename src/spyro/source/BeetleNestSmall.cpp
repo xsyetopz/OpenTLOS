@@ -59,8 +59,11 @@ void BeetleNestSmall::Update() {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
@@ -68,6 +71,8 @@ void BeetleNestSmall::Update() {
     KDSynkerPlayer3 *temp_r3_137;
     SpawnPointObject *temp_r30_253;
     f32 temp_f3_194;
+    f64 temp_f0_192;
+    f64 temp_f0_203;
     s32 temp_r3_99;
     s32 temp_r4_252;
     s32 var_r28_246;
@@ -76,6 +81,7 @@ void BeetleNestSmall::Update() {
     void *temp_r29_136;
     void *temp_r3_187;
     void *temp_r3_236;
+    void *temp_r4_190;
 
     Shatterable::Update();
     temp_r3_99 = this->unk80->unk2C;
@@ -98,18 +104,19 @@ void BeetleNestSmall::Update() {
                 this->unk80->SetAnim(M2C_FIELD(checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x174), 1.0f, 0.0f, 0, -1);
                 MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk208, &sp98);
                 temp_r3_187 = checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                temp_f3_194 = M2C_FIELD((this->unk8 + 0x10), f32 *, 8);
-                sp68 = sp38;
+                temp_r4_190 = this->unk8 + 0x10;
+                temp_f0_192 = M2C_FIELD(temp_r4_190, f64 *, 0) * 5.53552857e-315;
+                sp38 = temp_f0_192;
+                temp_f3_194 = M2C_FIELD(temp_r4_190, f32 *, 8);
+                sp68 = temp_f0_192;
                 sp40 = temp_f3_194 * 100.0f;
                 sp70 = (f64) sp40;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp78 = sp28;
+                temp_f0_203 = M2C_BITWISE(f64, sp98) + temp_f0_192;
+                sp28 = temp_f0_203;
+                sp78 = temp_f0_203;
                 sp30 = sp98.unk8 + (f32) sp70;
                 sp80 = (f64) sp30;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                sp18 = M2C_FIELD(temp_r4_190, f64 *, 0) * 5.7700341e-315;
                 sp20 = temp_f3_194 * 5000.0f;
                 sp8 = 1.0f;
                 spC = 1.0f;

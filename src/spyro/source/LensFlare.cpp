@@ -62,7 +62,7 @@ void LensFlare::DrawSun(MKVector3 arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp30'
+#if 0 // DRAFT: undefined identifier 'unksp84'
 void LensFlare::Draw() {
     f64 spB8;
     f64 spB0;
@@ -80,12 +80,15 @@ void LensFlare::Draw() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     MKVector3 *temp_r4_338;
+    MKVector3 *temp_r5_201;
     MKZRequest *temp_r3_339;
     f32 temp_f0_365;
     f32 temp_f0_374;
@@ -103,6 +106,7 @@ void LensFlare::Draw() {
     f32 var_f2_381;
     f32 var_f3_295;
     f32 var_f4_228;
+    f64 temp_f1_205;
     f64 temp_f1_234;
     f64 temp_f1_240;
     f64 temp_f1_244;
@@ -116,13 +120,14 @@ void LensFlare::Draw() {
     void *temp_r3_306;
 
     if (((MKZRequest *) this->unk8 != NULL) && ((u8) this->unk98 != 0)) {
+        temp_r5_201 = this->unk38;
         temp_r3_204 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
-        sp70 = M2C_FIELD(temp_r3_204, f64 *, 0x30);
+        temp_f1_205 = M2C_FIELD(temp_r3_204, f64 *, 0x30);
+        sp70 = temp_f1_205;
         sp78 = M2C_FIELD(temp_r3_204, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp30 = temp_f1_205 - M2C_FIELD(temp_r5_201, f64 *, 0);
         sp80 = sp30;
-        sp38 = (f32) sp78 - this->unk38->unk8;
+        sp38 = (f32) sp78 - temp_r5_201->unk8;
         sp88 = (f64) sp38;
         var_f4_228 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
         if (var_f4_228 > 1e-12f) {
@@ -171,8 +176,7 @@ void LensFlare::Draw() {
         spB0 = (f64) sp20;
         spB8 = (f64) sp28;
         sp68 = M2C_FIELD(temp_r3_306, f64 *, 0x28);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((((f32) spB8 * (f32) sp68) + (((f32) spB0 * (f32) sp60) + (unkspB4 * unksp64))) != -0.707f) {
+        if (!((((f32) spB8 * (f32) sp68) + (((f32) spB0 * (f32) sp60) + (unkspB4 * unksp64))) >= -0.707f)) {
             if ((u8) M2C_FIELD(&gb, u8 *, 0x395) != 0) {
                 this->unk94 = 5;
             }
@@ -211,65 +215,55 @@ void LensFlare::Draw() {
             } else {
                 var_f2_381 = 0.0f;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f3_349 == -128.0f) {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (temp_f3_349 == 768.0f) {
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (spA0.unk4 == -128.0f) {
-                        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                        if (spA0.unk4 == 638.0f) {
-                            temp_f4_412 = this->unk20;
-                            if (temp_f4_412 != 0.0f) {
-                                temp_f3_416 = this->unk50;
-                                this->unk50 = (0.16666667f * (temp_f4_412 - temp_f3_416)) + temp_f3_416;
-                                var_f27_425 = this->unk50 * (var_f2_381 * 0.0078125f);
-                                sp50 = M2C_BITWISE(f64, spA0);
-                                sp58 = (f64) spA0.unk8;
-                                DrawSun((MKVector3) &sp50, var_f27_425);
-                                MKMaterial_SetMaterial(this->unk0);
-                                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-                                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                                sp90 = sp10;
-                                sp18 = this->unk48 - spA0.unk8;
-                                sp40 = sp10;
-                                sp48 = (f64) sp18;
-                                sp98 = (f64) sp18;
-                                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                                temp_f26_459 = (0.5f * var_f27_425) / 7.0f;
-                                sp98 = (f32) sp98 * 0.21428572f;
-                                MKPrimitive(0xC, 0);
-                                var_r27_467 = 0;
-                                var_r30_469 = 0;
-                                do {
-                                    temp_r5_472 = *(&flareIndex + var_r30_469);
-                                    temp_r4_474 = temp_r5_472 >> 0x1FU;
-                                    temp_f25_489 = (f32) (((temp_r5_472 & 1) ^ temp_r4_474) - temp_r4_474) * 0.5f;
-                                    temp_f24_490 = (f32) ((s32) temp_r5_472 / 2) * 0.5f;
-                                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                                    var_f27_425 -= temp_f26_459;
-                                    spA0.unk8 += sp98;
-                                    temp_f23_504 = 32.0f * *(this + (var_r30_469 + 0x70)) * this->unk8C;
-                                    MKBegin(4);
-                                    MKSetColorF(var_f27_425, var_f27_425, var_f27_425, var_f27_425);
-                                    MKSetTexCoord1F(temp_f25_489, temp_f24_490);
-                                    MKSetPositionF(M2C_BITWISE(f32, spA0) - temp_f23_504, spA0.unk4 - temp_f23_504, 0.0f);
-                                    temp_f22_520 = 0.5f + temp_f25_489;
-                                    MKSetTexCoord1F(temp_f22_520, temp_f24_490);
-                                    MKSetPositionF(M2C_BITWISE(f32, spA0) - temp_f23_504, spA0.unk4 + temp_f23_504, 0.0f);
-                                    temp_f24_530 = 0.5f + temp_f24_490;
-                                    MKSetTexCoord1F(temp_f25_489, temp_f24_530);
-                                    MKSetPositionF(M2C_BITWISE(f32, spA0) + temp_f23_504, spA0.unk4 - temp_f23_504, 0.0f);
-                                    MKSetTexCoord1F(temp_f22_520, temp_f24_530);
-                                    MKSetPositionF(M2C_BITWISE(f32, spA0) + temp_f23_504, spA0.unk4 + temp_f23_504, 0.0f);
-                                    MKEnd();
-                                    var_r27_467 += 1;
-                                    var_r30_469 += 4;
-                                } while (var_r27_467 < 7);
-                                MKEndPrimitive();
-                            }
-                        }
-                    }
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
+            if ((temp_f3_349 == -128.0f) && (temp_f3_349 <= 768.0f) && (spA0.unk4 >= -128.0f) && (spA0.unk4 <= 638.0f)) {
+                temp_f4_412 = this->unk20;
+                if (temp_f4_412 != 0.0f) {
+                    temp_f3_416 = this->unk50;
+                    this->unk50 = (0.16666667f * (temp_f4_412 - temp_f3_416)) + temp_f3_416;
+                    var_f27_425 = this->unk50 * (var_f2_381 * 0.0078125f);
+                    sp50 = M2C_BITWISE(f64, spA0);
+                    sp58 = (f64) spA0.unk8;
+                    DrawSun((MKVector3) &sp50, var_f27_425);
+                    MKMaterial_SetMaterial(this->unk0);
+                    sp10 = M2C_FIELD(this, f64 *, 0x40) - M2C_BITWISE(f64, spA0);
+                    sp90 = sp10;
+                    sp18 = this->unk48 - spA0.unk8;
+                    sp40 = sp10;
+                    sp48 = (f64) sp18;
+                    sp98 = (f64) sp18;
+                    sp90 *= 5.168812293e-315;
+                    temp_f26_459 = (0.5f * var_f27_425) / 7.0f;
+                    sp98 = (f32) sp98 * 0.21428572f;
+                    MKPrimitive(0xC, 0);
+                    var_r27_467 = 0;
+                    var_r30_469 = 0;
+                    do {
+                        temp_r5_472 = *(&flareIndex + var_r30_469);
+                        temp_r4_474 = temp_r5_472 >> 0x1FU;
+                        temp_f25_489 = (f32) (((temp_r5_472 & 1) ^ temp_r4_474) - temp_r4_474) * 0.5f;
+                        temp_f24_490 = (f32) ((s32) temp_r5_472 / 2) * 0.5f;
+                        spA0 = M2C_BITWISE(f64, spA0) + sp90;
+                        var_f27_425 -= temp_f26_459;
+                        spA0.unk8 += sp98;
+                        temp_f23_504 = 32.0f * *(this + (var_r30_469 + 0x70)) * this->unk8C;
+                        MKBegin(4);
+                        MKSetColorF(var_f27_425, var_f27_425, var_f27_425, var_f27_425);
+                        MKSetTexCoord1F(temp_f25_489, temp_f24_490);
+                        MKSetPositionF(M2C_BITWISE(f32, spA0) - temp_f23_504, spA0.unk4 - temp_f23_504, 0.0f);
+                        temp_f22_520 = 0.5f + temp_f25_489;
+                        MKSetTexCoord1F(temp_f22_520, temp_f24_490);
+                        MKSetPositionF(M2C_BITWISE(f32, spA0) - temp_f23_504, spA0.unk4 + temp_f23_504, 0.0f);
+                        temp_f24_530 = 0.5f + temp_f24_490;
+                        MKSetTexCoord1F(temp_f25_489, temp_f24_530);
+                        MKSetPositionF(M2C_BITWISE(f32, spA0) + temp_f23_504, spA0.unk4 - temp_f23_504, 0.0f);
+                        MKSetTexCoord1F(temp_f22_520, temp_f24_530);
+                        MKSetPositionF(M2C_BITWISE(f32, spA0) + temp_f23_504, spA0.unk4 + temp_f23_504, 0.0f);
+                        MKEnd();
+                        var_r27_467 += 1;
+                        var_r30_469 += 4;
+                    } while (var_r27_467 < 7);
+                    MKEndPrimitive();
                 }
             }
         }

@@ -246,8 +246,7 @@ void GameStateMachine::Update() {
             var_f3_431 = 0.5f;
         }
         this->unk24 += M2C_FIELD(&gDisplay, f32 *, 0xC) / var_f3_431;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk24 == 1.0f) {
+        if (this->unk24 >= 1.0f) {
             SwitchOut();
             this->unk2C = 0;
             var_r30_376 = 0;
@@ -279,8 +278,7 @@ void GameStateMachine::Update() {
             var_f3_489 = 0.5f;
         }
         this->unk24 -= M2C_FIELD(&gDisplay, f32 *, 0xC) / var_f3_489;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk24 == 0.0f) {
+        if (this->unk24 <= 0.0f) {
             this->unk30 = 0;
             this->unk24 = 0.0f;
         }

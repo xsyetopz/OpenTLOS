@@ -33,7 +33,9 @@ void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
     MKVector3 sp38;
     M2C_UNK sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKVector3 **temp_r3_51;
     MKVector3 **temp_r3_55;
     MKVector3 *temp_r31_57;
@@ -50,8 +52,7 @@ void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, -1.0f, -1.0f);
             KDRand_Vector(sp88, sp78);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp18 = sp88 * 5.370091495e-315;
             M2C_FIELD(temp_r31_57, f64 *, 0x10) = sp18;
             sp20 = sp88.unk8 * 6.2831855f;
             sp98 = sp18;
@@ -60,8 +61,7 @@ void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, -1.0f, -1.0f);
             KDRand_Vector(sp48, sp38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            sp8 = sp48 * 5.370091495e-315;
             M2C_FIELD(temp_r31_57, f64 *, 0x20) = sp8;
             sp10 = sp48.unk8 * 6.2831855f;
             sp58 = sp8;
@@ -232,9 +232,13 @@ void ConvexityVortex::Update() {
     f64 sp60;
     f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     s32 sp8;
     MKVector3 **temp_r3_681;
@@ -244,6 +248,10 @@ void ConvexityVortex::Update() {
     f32 temp_f30_562;
     f32 var_f28_477;
     f32 var_f3_544;
+    f64 temp_f0_430;
+    f64 temp_f0_460;
+    f64 temp_f0_569;
+    f64 temp_f0_591;
     f64 temp_f1_483;
     f64 temp_f1_489;
     f64 temp_f1_493;
@@ -251,12 +259,12 @@ void ConvexityVortex::Update() {
     s32 temp_r3_512;
     s32 var_r0_522;
     u8 var_r6_646;
+    void *temp_r3_457;
     void *temp_r3_636;
     void *temp_r4_407;
 
     this->unkA4 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((this->unkA4 == 0.0f) && ((u8) this->unkA8 != 0)) {
+    if ((this->unkA4 <= 0.0f) && ((u8) this->unkA8 != 0)) {
         this->unkA4 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
         temp_r4_407 = this->unk8;
         spE8 = M2C_FIELD(temp_r4_407, f64 *, 0x30);
@@ -265,12 +273,12 @@ void ConvexityVortex::Update() {
         MKVector(-1.0f, 0.1f, -1.0f);
         KDRand_Vector(spA8, sp98);
         Normalise(spB8);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        spC8 = sp38;
+        temp_f0_430 = spB8 * 5.907017874e-315;
+        sp38 = temp_f0_430;
+        spC8 = temp_f0_430;
         sp40 = spB8.unk8 * 50000.0f;
         spD0 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        spE8 += temp_f0_430;
         spF0 = (f32) spF0 + (f32) spD0;
         SpawnElement(*((MKVector3 *) &spE8));
     }
@@ -279,11 +287,11 @@ loop_39:
     if (var_r30_451 != NULL) {
         temp_r31_693 = *var_r30_451;
         if (temp_r31_693 != NULL) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            spD8 = sp48;
-            sp50 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) - temp_r31_693->unk8;
+            temp_r3_457 = this->unk8 + 0x30;
+            temp_f0_460 = M2C_FIELD(temp_r3_457, f64 *, 0) - M2C_FIELD(temp_r31_693, f64 *, 0);
+            sp48 = temp_f0_460;
+            spD8 = temp_f0_460;
+            sp50 = M2C_FIELD(temp_r3_457, f32 *, 8) - temp_r31_693->unk8;
             spE0 = (f64) sp50;
             var_f28_477 = ((f32) spE0 * (f32) spE0) + (((f32) spD8 * (f32) spD8) + (unkspDC * unkspDC));
             if (var_f28_477 > 0.000001f) {
@@ -331,39 +339,32 @@ loop_39:
             if ((s32) M2C_FIELD(temp_r31_693, s32 *, 0x38) != 3) {
                 temp_f30_562 = gUpdateTimeDelta;
                 sp68.operator*(20000.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp78 = sp28;
+                temp_f0_569 = sp68 * (f64) temp_f30_562;
+                sp28 = temp_f0_569;
+                sp78 = temp_f0_569;
                 sp30 = sp68.unk8 * temp_f30_562;
                 sp80 = (f64) sp30;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r31, 0x0, qr0 */);
+                M2C_FIELD(temp_r31_693, f64 *, 0) = (f64) (M2C_FIELD(temp_r31_693, f64 *, 0) + temp_f0_569);
                 temp_r31_693->unk8 += (f32) sp80;
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp58 = sp18;
+            temp_f0_591 = M2C_FIELD(temp_r31_693, f64 *, 0x20) * (f64) gUpdateTimeDelta;
+            sp18 = temp_f0_591;
+            sp58 = temp_f0_591;
             sp20 = M2C_FIELD(temp_r31_693, f32 *, 0x28) * gUpdateTimeDelta;
             sp60 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+            M2C_FIELD(temp_r31_693, f64 *, 0x10) = (f64) (M2C_FIELD(temp_r31_693, f64 *, 0x10) + temp_f0_591);
             M2C_FIELD(temp_r31_693, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r31_693, f32 *, 0x18) + (f32) sp60);
             M2C_FIELD(temp_r31_693, f32 *, 0x34) = (f32) (M2C_FIELD(temp_r31_693, f32 *, 0x34) - gUpdateTimeDelta);
             if (M2C_FIELD(temp_r31_693, f32 *, 0x34) < 0.0f) {
                 M2C_FIELD(temp_r31_693, f32 *, 0x34) = 0.0f;
             }
-            if ((s32) M2C_FIELD(temp_r31_693, s32 *, 0x38) != 3) {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (var_f28_477 == 1000.0f) {
-                    M2C_FIELD(temp_r31_693, s32 *, 0x38) = 3;
-                    KDSound_Play3d(GS_ConvexFlyingPlatformStop, temp_r31_693, 0U, -1, 0.0f, 0U);
-                    M2C_FIELD(temp_r31_693, f32 *, 0x34) = 0.5f;
-                    temp_r3_636 = this->unk8;
-                    M2C_FIELD(temp_r31_693, f64 *, 0) = (f64) M2C_FIELD(temp_r3_636, f64 *, 0x30);
-                    M2C_FIELD(temp_r31_693, f32 *, 8) = (f64) M2C_FIELD(temp_r3_636, f64 *, 0x38);
-                }
+            if (((s32) M2C_FIELD(temp_r31_693, s32 *, 0x38) != 3) && (var_f28_477 <= 1000.0f)) {
+                M2C_FIELD(temp_r31_693, s32 *, 0x38) = 3;
+                KDSound_Play3d(GS_ConvexFlyingPlatformStop, temp_r31_693, 0U, -1, 0.0f, 0U);
+                M2C_FIELD(temp_r31_693, f32 *, 0x34) = 0.5f;
+                temp_r3_636 = this->unk8;
+                M2C_FIELD(temp_r31_693, f64 *, 0) = (f64) M2C_FIELD(temp_r3_636, f64 *, 0x30);
+                M2C_FIELD(temp_r31_693, f32 *, 8) = (f64) M2C_FIELD(temp_r3_636, f64 *, 0x38);
             }
             sp8 = 1;
             var_r6_646 = 0;
@@ -376,8 +377,7 @@ loop_39:
 
             } else {
                 M2C_FIELD(temp_r31_693, f32 *, 0x30) = (f32) (M2C_FIELD(temp_r31_693, f32 *, 0x30) * (M2C_FIELD(temp_r31_693, f32 *, 0x34) / 0.5f));
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (M2C_FIELD(temp_r31_693, f32 *, 0x34) == 0.0f) {
+                if (M2C_FIELD(temp_r31_693, f32 *, 0x34) <= 0.0f) {
                     M2C_FIELD(temp_r31_693, s32 *, 0x38) = 0;
                     KDSound_Stop((s32 *) (temp_r31_693 + 0x40));
                     temp_r3_681 = this->unkA0;

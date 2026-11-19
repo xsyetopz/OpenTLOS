@@ -54,7 +54,9 @@ void PoisonBomb::EmitPoisonTrail() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     MKVector3 *temp_r31_91;
+    f64 temp_f0_107;
 
     sp30 = -1.0f;
     sp20 = 1.0f;
@@ -68,9 +70,9 @@ void PoisonBomb::EmitPoisonTrail() {
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
     KDRand_Vector(sp58, *((MKVector3 *) &sp48));
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp68 = sp8;
+    temp_f0_107 = sp58 * 5.53552857e-315;
+    sp8 = temp_f0_107;
+    sp68 = temp_f0_107;
     sp10 = sp58.unk8 * 100.0f;
     sp70 = (f64) sp10;
     ((HeatDistortPS *) (&gb + 0x240))->Emit(*temp_r31_91, *((MKVector3 *) &sp68), 1.0f, MKRand_Float(&gViewSeed, 3.0f, 4.0f));
@@ -153,10 +155,16 @@ void PoisonBomb::Collided(MKCollisionResult &arg0) {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f28_308;
+    f32 temp_f2_339;
     f32 temp_f4_305;
+    f64 temp_f0_324;
+    f64 temp_f0_342;
 
     Projectile::Collided(arg0);
     if (((u8) this->unk174 >> 7U) & 1) {
@@ -166,29 +174,25 @@ void PoisonBomb::Collided(MKCollisionResult &arg0) {
     temp_f4_305 = arg0.unk18;
     temp_f28_308 = (M2C_FIELD(this, f32 *, 0xD0) * temp_f4_305) + ((M2C_FIELD(this, f32 *, 0xC8) * arg0.unk10) + (M2C_FIELD(this, f32 *, 0xCC) * arg0.unk14));
     if (temp_f28_308 < 0.0f) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+        sp28 = (f64) M2C_FIELD(&arg0, f32 *, 0x10) * 5.398241246e-315;
         sp30 = temp_f4_305 * 10.0f;
         sp48 = sp28;
         sp50 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp58 = sp18;
+        temp_f0_324 = M2C_FIELD(&arg0, f64 *, 0) + sp48;
+        sp18 = temp_f0_324;
+        sp58 = temp_f0_324;
         sp20 = arg0.unk8 + (f32) sp50;
         sp60 = (f64) sp20;
         MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp58));
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp38 = sp8;
-        sp10 = arg0.unk18 * (2.0f * temp_f28_308);
+        temp_f2_339 = 2.0f * temp_f28_308;
+        temp_f0_342 = (f64) M2C_FIELD(&arg0, f32 *, 0x10) * (f64) temp_f2_339;
+        sp8 = temp_f0_342;
+        sp38 = temp_f0_342;
+        sp10 = arg0.unk18 * temp_f2_339;
         sp40 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+        this->unkC8 -= temp_f0_342;
         M2C_FIELD(this, f32 *, 0xD0) = (f32) (M2C_FIELD(this, f32 *, 0xD0) - (f32) sp40);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+        this->unkC8 *= 5.222099017e-315;
         M2C_FIELD(this, f32 *, 0xD0) = (f32) (M2C_FIELD(this, f32 *, 0xD0) * 0.5f);
         this->unk168 = 0.75f * -this->unk168;
         this->unk170 += 1;
@@ -250,6 +254,7 @@ void PoisonBomb::Update() {
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f64 sp30;
     f32 sp28;
     f32 sp24;
@@ -264,10 +269,12 @@ void PoisonBomb::Update() {
     f32 temp_f4_611;
     f32 var_f0_672;
     f32 var_f0_849;
+    f64 temp_f1_702;
     s32 temp_r0_544;
     s32 temp_r3_572;
     u8 temp_r3_563;
     u8 var_r30_505;
+    void *temp_r30_696;
     void *temp_r3_701;
     void *temp_r3_818;
     void *temp_r4_693;
@@ -278,8 +285,7 @@ void PoisonBomb::Update() {
     temp_f2_466 = this->unk1BC;
     if (temp_f2_466 > 0.0f) {
         this->unk1BC = temp_f2_466 - gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk1BC == 0.0f) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) == 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x60)(M2C_FIELD(&gb, void ***, 0)) == 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x58)(M2C_FIELD(&gb, void ***, 0)) == 0)) {
+        if ((this->unk1BC <= 0.0f) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) == 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x60)(M2C_FIELD(&gb, void ***, 0)) == 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x58)(M2C_FIELD(&gb, void ***, 0)) == 0)) {
             var_r30_505 = 0;
             if ((((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (M2C_FIELD(&gb, void **, 0xC) + 0x24))->GetState() != 0)) {
                 var_r30_505 = 1;
@@ -327,8 +333,7 @@ void PoisonBomb::Update() {
     case 2:
         EmitPoisonTrail();
         this->unk1C0 = 1;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk160 == 0.0f) {
+        if (this->unk160 <= 0.0f) {
             this->unk180 = 3;
             this->unk1B8 = KDSound_Play3d(GS_PoisonBombExtra1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
             this->unk160 = 15.0f;
@@ -354,19 +359,18 @@ void PoisonBomb::Update() {
             var_f0_672 = 0.0f;
         }
         this->unk1D0 = var_f0_672;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk188 == 0.0f) {
+        if (this->unk188 <= 0.0f) {
             temp_r4_693 = this->unk8;
+            temp_r30_696 = temp_r4_693 + 0x30;
             temp_r3_701 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, void *), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_r4_693), void **, 8);
-            sp80 = M2C_FIELD(temp_r3_701, f64 *, 0x30);
+            temp_f1_702 = M2C_FIELD(temp_r3_701, f64 *, 0x30);
+            sp80 = temp_f1_702;
             sp88 = M2C_FIELD(temp_r3_701, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp40 = temp_f1_702 - M2C_FIELD(temp_r30_696, f64 *, 0);
             sp90 = sp40;
-            sp48 = (f32) sp88 - M2C_FIELD((temp_r4_693 + 0x30), f32 *, 8);
+            sp48 = (f32) sp88 - M2C_FIELD(temp_r30_696, f32 *, 8);
             sp98 = (f64) sp48;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (unksp94 * unksp94))) == 90000.0f) {
+            if ((((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (unksp94 * unksp94))) <= 90000.0f) {
                 sp18 = 0.0f;
                 sp10 = 0.0f;
                 sp14 = 0.0f;
@@ -404,8 +408,7 @@ void PoisonBomb::Update() {
                 }
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk160 == 0.0f) {
+        if (this->unk160 <= 0.0f) {
             M2C_FIELD(M2C_FIELD(checked_cast<PoisonBombDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0xF0), s32 *, 0x68) = (s32) GS_PoisonBombExtra2;
             M2C_FIELD(M2C_FIELD(checked_cast<PoisonBombDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0xF0), s32 *, 0x6C) = 0;
             temp_r3_818 = M2C_FIELD(checked_cast<PoisonBombDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0xF0);
@@ -437,8 +440,7 @@ void PoisonBomb::Update() {
             var_f0_849 = 0.0f;
         }
         this->unk160 = var_f0_849;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk160 == 0.0f) {
+        if (this->unk160 <= 0.0f) {
             Disable();
         }
         break;

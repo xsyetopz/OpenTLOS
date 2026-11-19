@@ -49,12 +49,14 @@ void Volume::GetRandPos() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f1_40;
     f32 temp_f30_30;
     f32 temp_f31_38;
+    f64 temp_f0_54;
     void *temp_r31_22;
 
     temp_r31_22 = M2C_ERROR(/* Read from unset register $r4 */);
@@ -66,9 +68,9 @@ void Volume::GetRandPos() {
     sp40 = (f64) sp30;
     sp28 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x10) * temp_f1_40;
     sp38 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp48 = sp18;
+    temp_f0_54 = M2C_FIELD(Volume::boundingVolume, f64 *, 0) + (f64) sp28;
+    sp18 = temp_f0_54;
+    sp48 = temp_f0_54;
     sp20 = M2C_FIELD(Volume::boundingVolume, f32 *, 8) + (f32) sp40;
     sp50 = (f64) sp20;
     spC = M2C_FIELD(temp_r31_22, f32 *, 0x74) + (((f32) sp50 * M2C_FIELD(temp_r31_22, f32 *, 0x64)) + (((f32) sp48 * M2C_FIELD(temp_r31_22, f32 *, 0x44)) + (unksp4C * M2C_FIELD(temp_r31_22, f32 *, 0x54))));
@@ -90,6 +92,7 @@ void Volume::UpdateMatrix(Matrix &arg0) {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -134,9 +137,7 @@ void Volume::UpdateMatrix(Matrix &arg0) {
     sp50 = (f64) sp20;
     sp68 = (f64) sp18;
     sp70 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f13, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f12, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f12, $f13, $f12 */);
+    sp28 = M2C_FIELD(Volume::boundingVolume, f64 *, 0) + M2C_FIELD(Volume::boundingVolume, f64 *, 0x10);
     var_f12_186 = unksp6C;
     sp58 = sp28;
     sp30 = (f32) M2C_FIELD(Volume::boundingVolume, f64 *, 8) + M2C_FIELD(Volume::boundingVolume, f32 *, 0x18);

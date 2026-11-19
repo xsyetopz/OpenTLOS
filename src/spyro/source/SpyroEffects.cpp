@@ -574,12 +574,14 @@ u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     s32 sp14;
     f32 sp10;
     s32 sp8;
     SpyroSoundPlayer *temp_r4_1045;
     f32 var_f5_933;
     f32 var_f6_942;
+    f64 temp_f1_1022;
     f64 temp_f2_947;
     f64 temp_f2_953;
     f64 temp_f2_957;
@@ -640,9 +642,9 @@ u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
         unksp4C *= var_f5_933;
         sp50 = (f32) sp50 * var_f5_933;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-    sp38 = sp18;
+    temp_f1_1022 = arg0->unk0 * 5.23867711e-315;
+    sp18 = temp_f1_1022;
+    sp38 = temp_f1_1022;
     sp20 = arg0->unk8 * 0.7f;
     sp40 = (f64) sp20;
     sp14 = arg0->unk28;
@@ -702,8 +704,7 @@ void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
             sp20 = temp_f0_1141;
             if ((u8) arg0->unk3E != 0) {
                 temp_r28_1149 = &GameData::gameData[0x70] + 0x48;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) == M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
+                if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
                     temp_r3_1158 = ((FuryFXConvexity *) (M2C_FIELD(this->unk4, FuryFXConvexity **, 0xBC)))->Trigger(arg0->unk10);
                     var_r27_1134 = temp_r3_1158;
                     if (temp_r3_1158 != 0) {
@@ -717,12 +718,9 @@ void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
                         ((KDSound_AfterRumble *) (this->unk4 + 0x40))->Trigger((MKVector3) &sp8, GS_Rumble1, 7.5f, 2000.0f);
                     }
                 }
-            } else {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) == M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
-                    arg0->unk24 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-                    var_r27_1134 = TriggerFury(arg0);
-                }
+            } else if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
+                arg0->unk24 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
+                var_r27_1134 = TriggerFury(arg0);
             }
             *arg0->unk38 = var_r27_1134;
         }
@@ -1161,8 +1159,7 @@ block_192:
                 }
                 var_f30_1938 += ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetOngoingBreathCost();
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((var_f30_1938 == M2C_FIELD(GameData::gameData, f32 *, 0xA0)) || ((u8) arg0->unk3E != 0) || ((temp_r4_2045 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5, (((s32) (M2C_FIELD((&GameData::gameData[0x70] + temp_r4_2045), s32 *, 0x60) & 1) == 1) != 0)) && ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158) == 0) && ((s32) *(&GameData::gameData[0x70] + (temp_r4_2045 + 0x7C)) == 0) && ((u8) var_r26_1501 != 0))) {
+            if ((var_f30_1938 <= M2C_FIELD(GameData::gameData, f32 *, 0xA0)) || ((u8) arg0->unk3E != 0) || ((temp_r4_2045 = M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5, (((s32) (M2C_FIELD((&GameData::gameData[0x70] + temp_r4_2045), s32 *, 0x60) & 1) == 1) != 0)) && ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158) == 0) && ((s32) *(&GameData::gameData[0x70] + (temp_r4_2045 + 0x7C)) == 0) && ((u8) var_r26_1501 != 0))) {
                 if ((u8) arg0->unk3E != 0) {
                     TriggerConvexity(arg0);
                 } else {

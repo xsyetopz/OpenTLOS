@@ -128,17 +128,29 @@ void DamageShieldEffect::DrawRipples() {
     f32 sp11C;
     f32 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp4C;
@@ -157,6 +169,14 @@ void DamageShieldEffect::DrawRipples() {
     f32 sp8;
     f32 temp_f24_349;
     f32 temp_f4_344;
+    f64 *temp_r30_376;
+    f64 temp_f0_378;
+    f64 temp_f0_406;
+    f64 temp_f0_433;
+    f64 temp_f0_460;
+    f64 temp_f26_333;
+    f64 temp_f28_331;
+    f64 temp_f31_328;
     s32 var_r28_317;
     s32 var_r31_319;
     void *temp_r29_336;
@@ -181,8 +201,7 @@ void DamageShieldEffect::DrawRipples() {
     sp290 = (f64) sp40;
     sp298.operator*(30.0f);
     sp2A8.operator*(30.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp88 = sp2A8 + M2C_BITWISE(f64, sp298);
     sp2B8 = sp88;
     sp90 = sp2A8.unk8 + sp298.unk8;
     sp2F8 = sp88;
@@ -190,8 +209,7 @@ void DamageShieldEffect::DrawRipples() {
     sp300 = (f64) sp90;
     sp258.operator*(30.0f);
     sp268.operator*(30.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp78 = sp268 + M2C_BITWISE(f64, sp258);
     sp30 = -(f32) sp2E0;
     sp80 = sp268.unk8 + sp258.unk8;
     sp28 = -(f32) sp2D8;
@@ -209,8 +227,7 @@ void DamageShieldEffect::DrawRipples() {
     sp228 = (f64) sp18;
     sp230 = (f64) sp20;
     sp238.operator*(30.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp68 = sp238 + M2C_BITWISE(f64, sp218);
     sp248 = sp68;
     sp70 = sp238.unk8 + sp218.unk8;
     sp318 = sp68;
@@ -223,8 +240,7 @@ void DamageShieldEffect::DrawRipples() {
     sp1D8 = (f64) sp8;
     sp1E0 = (f64) sp10;
     sp1E8.operator*(30.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp58 = sp1E8 + M2C_BITWISE(f64, sp1C8);
     var_r28_317 = 0;
     var_r31_319 = 0;
     sp328 = sp58;
@@ -232,9 +248,9 @@ void DamageShieldEffect::DrawRipples() {
     sp1F8 = sp58;
     sp330 = (f64) sp60;
     sp200 = (f64) sp60;
-    M2C_ERROR(/* unknown instruction: psq_lx $f31, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f28, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f26, $zero, $r29, 0x0, qr0 */);
+    temp_f31_328 = sp308;
+    temp_f28_331 = sp328;
+    temp_f26_333 = sp318;
     do {
         temp_r29_336 = this + var_r31_319;
         if ((u8) M2C_FIELD(temp_r29_336, u8 *, 0xB8) != 0) {
@@ -251,49 +267,50 @@ void DamageShieldEffect::DrawRipples() {
             MKBegin(4);
             MKSetColorV(*((MKVector4 *) &sp2C8));
             MKSetTexCoord1F(1.0f, 1.0f);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f31, $f24 */);
+            sp108 = temp_f31_328 * (f64) temp_f24_349;
             sp110 = (f32) sp310 * temp_f24_349;
             sp198 = sp108;
             sp1A0 = (f64) sp110;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp1A8 = spF8;
+            temp_r30_376 = temp_r29_336 + 0xA0;
+            temp_f0_378 = sp108 + *temp_r30_376;
+            spF8 = temp_f0_378;
+            sp1A8 = temp_f0_378;
             sp100 = (f32) sp1A0 + M2C_FIELD(temp_r29_336, f32 *, 0xA8);
             sp1B0 = (f64) sp100;
             MKSetPositionV(*((MKVector3 *) &sp1A8));
             MKSetColorV(*((MKVector4 *) &sp2C8));
             MKSetTexCoord1F(0.0f, 1.0f);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
+            spE8 = sp2F8 * (f64) temp_f24_349;
             spF0 = (f32) sp300 * temp_f24_349;
             sp178 = spE8;
             sp180 = (f64) spF0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp188 = spD8;
+            temp_f0_406 = spE8 + *temp_r30_376;
+            spD8 = temp_f0_406;
+            sp188 = temp_f0_406;
             spE0 = (f32) sp180 + M2C_FIELD(temp_r29_336, f32 *, 0xA8);
             sp190 = (f64) spE0;
             MKSetPositionV(*((MKVector3 *) &sp188));
             MKSetColorV(*((MKVector4 *) &sp2C8));
             MKSetTexCoord1F(1.0f, 0.0f);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f28, $f24 */);
+            spC8 = temp_f28_331 * (f64) temp_f24_349;
             spD0 = (f32) sp330 * temp_f24_349;
             sp158 = spC8;
             sp160 = (f64) spD0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp168 = spB8;
+            temp_f0_433 = spC8 + *temp_r30_376;
+            spB8 = temp_f0_433;
+            sp168 = temp_f0_433;
             spC0 = (f32) sp160 + M2C_FIELD(temp_r29_336, f32 *, 0xA8);
             sp170 = (f64) spC0;
             MKSetPositionV(*((MKVector3 *) &sp168));
             MKSetColorV(*((MKVector4 *) &sp2C8));
             MKSetTexCoord1F(0.0f, 0.0f);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f26, $f24 */);
+            spA8 = temp_f26_333 * (f64) temp_f24_349;
             spB0 = (f32) sp320 * temp_f24_349;
             sp138 = spA8;
             sp140 = (f64) spB0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp148 = sp98;
+            temp_f0_460 = spA8 + *temp_r30_376;
+            sp98 = temp_f0_460;
+            sp148 = temp_f0_460;
             spA0 = (f32) sp140 + M2C_FIELD(temp_r29_336, f32 *, 0xA8);
             sp150 = (f64) spA0;
             MKSetPositionV(*((MKVector3 *) &sp148));
@@ -358,8 +375,7 @@ void DamageShieldEffect::Update() {
             temp_r5_576 = this + var_r3_569;
             if ((u8) M2C_FIELD(temp_r5_576, u8 *, 0xB8) != 0) {
                 M2C_FIELD(temp_r5_576, f32 *, 0xB4) = (f32) (M2C_FIELD(temp_r5_576, f32 *, 0xB4) + gUpdateTimeDelta);
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(temp_r5_576, f32 *, 0xB4) == 1.0f) {
+                if (M2C_FIELD(temp_r5_576, f32 *, 0xB4) >= 1.0f) {
                     M2C_FIELD(temp_r5_576, u8 *, 0xB8) = 0U;
                 } else {
                     M2C_FIELD(temp_r5_576, f32 *, 0xB0) = (f32) ((8.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r5_576, f32 *, 0xB0));
@@ -369,8 +385,7 @@ void DamageShieldEffect::Update() {
             var_ctr_574 -= 1;
         } while (var_ctr_574 != 0);
         this->unk9C -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk9C == 0.0f) {
+        if (this->unk9C <= 0.0f) {
             temp_f31_610 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
             temp_f3_619 = 640.0f * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
             sp10 = 0.0f;
@@ -386,8 +401,7 @@ void DamageShieldEffect::Update() {
         switch (temp_r0_637) {                      /* irregular */
         case 0:
             temp_f1_649 = this->unk284;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f1_649 == 2.0f) {
+            if (temp_f1_649 >= 2.0f) {
                 this->unk280 = 1;
                 this->unk284 = 0.0f;
                 return;
@@ -396,8 +410,7 @@ void DamageShieldEffect::Update() {
             return;
         case 1:
             this->unk288 = 1.0f;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (this->unk284 == 6.0f) {
+            if (this->unk284 >= 6.0f) {
                 this->unk280 = 2;
                 this->unk284 = 0.0f;
                 return;
@@ -405,8 +418,7 @@ void DamageShieldEffect::Update() {
             break;
         case 2:
             temp_f2_678 = this->unk284;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f2_678 == 2.0f) {
+            if (temp_f2_678 >= 2.0f) {
                 this->unk280 = 3;
                 return;
             }

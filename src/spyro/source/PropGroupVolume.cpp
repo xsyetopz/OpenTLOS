@@ -129,13 +129,9 @@ loop_23:
                 if (!(M2C_FIELD(var_r28_235, s32 *, 0x18) & 0x80000000)) {
                     temp_f1_241 = M2C_BITWISE(f32, this->unk4);
                     var_r26_242 = 0;
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                     var_r30_218 += 1;
-                    if (temp_f1_241 == M2C_FIELD(var_r28_235, f32 *, 0x70)) {
-                        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                        if ((temp_f1_241 == M2C_FIELD(var_r28_235, f32 *, 0x74)) && (((BoundingRegion *) (var_r28_235 + 0x54))->IsPointWithin(*((MKVector3 *) this)) != 0)) {
-                            var_r26_242 = 1;
-                        }
+                    if ((temp_f1_241 >= M2C_FIELD(var_r28_235, f32 *, 0x70)) && (temp_f1_241 <= M2C_FIELD(var_r28_235, f32 *, 0x74)) && (((BoundingRegion *) (var_r28_235 + 0x54))->IsPointWithin(*((MKVector3 *) this)) != 0)) {
+                        var_r26_242 = 1;
                     }
                     if (var_r26_242 != 0) {
                         zoneEnableMask |= M2C_FIELD(var_r28_235, s32 *, 0xA0);

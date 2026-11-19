@@ -55,6 +55,7 @@ void SpeedWay::GetPathMatrix(float arg0) {
     f64 sp88;
     f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
     f32 sp64;
     f32 sp60;
@@ -65,9 +66,14 @@ void SpeedWay::GetPathMatrix(float arg0) {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f6_166;
+    f64 temp_f0_113;
+    f64 temp_f0_90;
 
     sp160.GetPosition(arg0);
     sp1A0 = M2C_BITWISE(f64, sp160);
@@ -81,8 +87,9 @@ void SpeedWay::GetPathMatrix(float arg0) {
     sp130.GetVelocity(arg0);
     sp170 = M2C_BITWISE(f64, sp130);
     sp178 = sp130.unk8;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp110 = sp70;
+    temp_f0_90 = sp190 - sp1A0;
+    sp70 = temp_f0_90;
+    sp110 = temp_f0_90;
     sp78 = (f32) sp198 - (f32) sp1A8;
     sp118 = (f64) sp78;
     Normalise(sp120);
@@ -90,8 +97,9 @@ void SpeedWay::GetPathMatrix(float arg0) {
     sp1B4 = sp120.unk4;
     sp1B8 = sp120.unk8;
     sp1BC = 0.0f;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spE0 = sp20;
+    temp_f0_113 = sp180 + sp170;
+    sp20 = temp_f0_113;
+    spE0 = temp_f0_113;
     sp28 = (f32) sp188 + (f32) sp178;
     spE8 = (f64) sp28;
     Normalise(spF0);
@@ -125,11 +133,11 @@ void SpeedWay::GetPathMatrix(float arg0) {
     sp1B4 = spB0.unk4;
     sp1B8 = spB0.unk8;
     sp1BC = 0.0f;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp10 = sp1A0 + sp190;
     sp18 = (f32) sp1A8 + (f32) sp198;
     sp80 = sp10;
     sp88 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp30 = sp80 * 5.222099017e-315;
     sp90 = sp30;
     sp38 = (f32) sp88 * 0.5f;
     sp1EC = 1.0f;

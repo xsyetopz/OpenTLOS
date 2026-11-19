@@ -68,21 +68,26 @@ void SpyroStrafeState::SetDesiredVelocity() {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_272;
     f32 temp_f2_130;
     f32 var_f31_248;
     f32 var_f4_121;
     f32 var_f5_177;
+    f64 temp_f0_149;
     f64 temp_f1_182;
     f64 temp_f1_188;
     f64 temp_f1_192;
@@ -101,8 +106,7 @@ void SpyroStrafeState::SetDesiredVelocity() {
     }
     var_f4_121 = 0.0f;
     if (spDC != 0.0f) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp60 = M2C_FIELD(this, f64 *, 0x28) * (f64) spD8;
         temp_f2_130 = this->unk30;
         sp50 = temp_f2_130;
         sp54 = 0.0f;
@@ -112,11 +116,12 @@ void SpyroStrafeState::SetDesiredVelocity() {
         spC0 = sp60;
         spC8 = (f64) sp68;
         sp98 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        spB0 = sp40;
+        temp_f0_149 = sp90 * (f64) spD4;
+        sp40 = temp_f0_149;
+        spB0 = temp_f0_149;
         sp48 = (f32) sp98 * spD4;
         spB8 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp30 = spC0 + temp_f0_149;
         sp80 = sp30;
         sp38 = (f32) spC8 + (f32) spB8;
         sp88 = (f64) sp38;
@@ -171,7 +176,7 @@ void SpyroStrafeState::SetDesiredVelocity() {
                 var_f31_248 = 750.0f * spDC;
             }
         }
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp10 = spA0 * (f64) var_f31_248;
         sp18 = (f32) spA8 * var_f31_248;
         sp70 = sp10;
         sp78 = (f64) sp18;
@@ -197,6 +202,7 @@ void SpyroStrafeState::UpdateCircleTargetMovement() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -205,6 +211,7 @@ void SpyroStrafeState::UpdateCircleTargetMovement() {
     Spyro *temp_r3_361;
     f32 var_f4_436;
     f32 var_f5_453;
+    f64 temp_f0_434;
     f64 temp_f1_458;
     f64 temp_f1_464;
     f64 temp_f1_468;
@@ -256,9 +263,10 @@ void SpyroStrafeState::UpdateCircleTargetMovement() {
         sp40 = M2C_FIELD(temp_r3_423, f64 *, 0x30);
         sp88 = M2C_FIELD(temp_r5_422, f64 *, 0x38);
         sp48 = M2C_FIELD(temp_r3_423, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_f0_434 = sp80 - sp40;
+        sp20 = temp_f0_434;
         var_f4_436 = 0.0f;
-        sp70 = sp20;
+        sp70 = temp_f0_434;
         unksp74 = 0.0f;
         sp28 = (f32) sp88 - (f32) sp48;
         sp78 = (f64) sp28;
@@ -812,9 +820,11 @@ void SpyroStrafeState::ProcessAnimEvent(unsigned int arg0) {
 
 }
 
+#if 0 // DRAFT: illegal function definition
 void SpyroStrafeState::Message(MKMessage *arg0) {
 
 }
+#endif
 
 s32 SpyroStrafeState::Transition() {
     s32 var_r31_1561;

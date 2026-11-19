@@ -22,12 +22,14 @@ f32 MKFont_DrawStringJustified(MKFont *arg0, const char *arg1, const MKVector3 &
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     s32 sp8;
     f32 temp_f1_102;
     f32 temp_f28_79;
     f32 temp_f31_43;
     f32 var_f27_46;
+    f64 temp_f0_119;
     s32 temp_r31_90;
     s8 *var_r30_40;
 
@@ -64,9 +66,9 @@ loop_20:
                 sp30 = -((0.5f * temp_f1_102) - (0.5f * arg3));
             }
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp20 = sp10;
+        temp_f0_119 = (f64) sp30 + M2C_FIELD(&arg2, f64 *, 0);
+        sp10 = temp_f0_119;
+        sp20 = temp_f0_119;
         sp18 = (f32) sp38 + temp_f28_79;
         sp28 = (f64) sp18;
         MKFont_DrawString(arg0, var_r30_40, *((MKVector3 *) &sp20), arg6, arg7, sp8, arg9);
@@ -129,7 +131,7 @@ loop_22:
                 }
             }
             MKFont_GetCharPos(&sp10, arg1, var_r31_193, arg6);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp20 = (f64) sp20 + M2C_BITWISE(f64, sp10);
             sp28 = (f32) sp28 + M2C_BITWISE(f32, sp10.unk8);
         } else {
             var_r31_193 += temp_r5_239;
@@ -138,7 +140,7 @@ loop_22:
             goto loop_22;
         }
     }
-    arg0->unk0 = (f64) sp20;
+    arg0->unk0 = sp20;
     M2C_FIELD(arg0, f64 *, 8) = (f64) sp28;
 }
 #endif

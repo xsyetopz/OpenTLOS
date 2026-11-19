@@ -137,6 +137,7 @@ void ElementalShield::Update() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f64 sp20;
     f32 sp18;
     f32 sp14;
@@ -147,6 +148,8 @@ void ElementalShield::Update() {
     f32 temp_f1_293;
     f32 var_f0_320;
     f32 var_f0_365;
+    f64 temp_f0_417;
+    f64 temp_f1_411;
     s32 temp_r0_306;
     void *temp_r3_410;
 
@@ -154,8 +157,7 @@ void ElementalShield::Update() {
     this->unkC4.Update(this->unkBC, 1U, this->unk90 != 0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unkA0 += 6.0f * gUpdateTimeDelta;
     temp_f1_293 = this->unkA0;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f1_293 == 6.2831855f) {
+    if (temp_f1_293 >= 6.2831855f) {
         this->unkA0 = temp_f1_293 - 6.2831855f;
     }
     KDProp::Update();
@@ -178,8 +180,7 @@ void ElementalShield::Update() {
         }
         this->unk94 = var_f0_320;
         this->unk9C = 1.0f - this->unk94;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk94 == 0.0f) {
+        if (this->unk94 <= 0.0f) {
             this->unk94 = 10.0f;
             this->unk90 = 2;
         }
@@ -188,16 +189,16 @@ block_29:
         temp_r30_400 = this->unkAC;
         if (temp_r30_400 != NULL) {
             temp_r3_410 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
-            sp50 = M2C_FIELD(temp_r3_410, f64 *, 0x30);
+            temp_f1_411 = M2C_FIELD(temp_r3_410, f64 *, 0x30);
+            sp50 = temp_f1_411;
             sp58 = M2C_FIELD(temp_r3_410, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp60 = sp30;
+            temp_f0_417 = temp_f1_411 - M2C_FIELD(temp_r30_400, f64 *, 0);
+            sp30 = temp_f0_417;
+            sp60 = temp_f0_417;
             sp38 = (f32) sp58 - temp_r30_400->unk8;
             sp68 = (f64) sp38;
             temp_f0_434 = 50.0f * this->unk9C * this->unk98;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64))) == (temp_f0_434 * temp_f0_434)) {
+            if ((((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64))) <= (temp_f0_434 * temp_f0_434)) {
                 sp18 = 0.0f;
                 sp10 = 0.0f;
                 sp14 = 0.0f;
@@ -234,8 +235,7 @@ block_29:
         }
         break;
     case 2:
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk94 == 0.0f) && ((u8) this->unkA8 == 0)) {
+        if ((this->unk94 <= 0.0f) && ((u8) this->unkA8 == 0)) {
             this->unk94 = 1.0f;
             this->unk90 = 3;
         }
@@ -254,8 +254,7 @@ block_29:
         }
         this->unk94 = var_f0_365;
         this->unk9C = this->unk94;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk94 == 0.0f) {
+        if (this->unk94 <= 0.0f) {
             this->unk90 = 0;
             KDSound_Play3d(this->unkB8, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
             this->unkAC = NULL;

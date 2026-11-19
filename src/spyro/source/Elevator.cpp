@@ -14,7 +14,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: undefined identifier 'unksp4C'
 void Elevator::Move(float arg0) {
     s8 sp80;
     s32 sp7C;
@@ -35,6 +35,7 @@ void Elevator::Move(float arg0) {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_71;
     f32 temp_f2_141;
     f32 temp_f30_81;
@@ -42,6 +43,8 @@ void Elevator::Move(float arg0) {
     f32 temp_f4_51;
     f32 var_f0_52;
     f32 var_f0_64;
+    f64 temp_f0_104;
+    f64 temp_f1_92;
     void **temp_r3_80;
     void *temp_r3_90;
     void *var_r30_87;
@@ -76,14 +79,16 @@ loop_12:
         if (var_r30_87 != NULL) {
             temp_r3_90 = M2C_FIELD(var_r30_87, void **, 8);
             sp18 = 0.0f;
+            temp_f1_92 = M2C_FIELD(temp_r3_90, f64 *, 0x30);
             sp1C = temp_f30_81;
             sp20 = 0.0f;
             sp28 = (f64) sp18;
-            sp38 = M2C_FIELD(temp_r3_90, f64 *, 0x30);
+            sp38 = temp_f1_92;
             sp30 = (f64) sp20;
             sp40 = M2C_FIELD(temp_r3_90, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp58 = sp8;
+            temp_f0_104 = temp_f1_92 + sp28;
+            sp8 = temp_f0_104;
+            sp58 = temp_f0_104;
             sp6C = 0;
             sp10 = (f32) sp40 + (f32) sp30;
             sp68 = 0x22;
@@ -163,8 +168,7 @@ void Elevator::ShudderState() {
 
 void Elevator::GoingDownState() {
     Move(-1.0f);
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk13C == this->unk12C) {
+    if (this->unk13C <= this->unk12C) {
         this->unk150 = 4;
         this->unk148 = 0.5f + this->unkB8;
     }
@@ -172,8 +176,7 @@ void Elevator::GoingDownState() {
 
 void Elevator::GoingUpState() {
     Move(1.0f);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk13C == this->unk128) {
+    if (this->unk13C >= this->unk128) {
         this->unk154 = 1;
         this->unk150 = 4;
         this->unk148 = 0.5f + this->unkB8;
@@ -197,8 +200,7 @@ void Elevator::Message(MKMessage *arg0) {
     temp_r0_333 = arg0->unk0;
     switch (temp_r0_333) {                          /* irregular */
     case -3:
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk140 == this->unk128) {
+        if (this->unk140 >= this->unk128) {
             this->unk154 = 1;
         }
         this->unk150 = 0;
@@ -294,8 +296,7 @@ void Elevator::Reset() {
     this->unkE0.unk3C = 1.0f;
     this->unk148 = this->unkB8 + MKRand_Float(&gViewSeed, 0.0f, 2.0f);
     this->unk150 = 1;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk140 == this->unk128) {
+    if (this->unk140 >= this->unk128) {
         this->unk154 = 1;
     } else {
         this->unk154 = 0;
@@ -331,8 +332,7 @@ void Elevator::LoadDone() {
     }
     temp_f1_636 = this->unk140;
     temp_f0_637 = this->unk128;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f1_636 == temp_f0_637) {
+    if (temp_f1_636 >= temp_f0_637) {
         this->unk140 = temp_f0_637;
         this->unk154 = 1;
     } else {

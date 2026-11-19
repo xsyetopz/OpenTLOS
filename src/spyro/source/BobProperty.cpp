@@ -57,10 +57,14 @@ void BobProperty::Update() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_137;
-    f32 temp_f1_158;
     f32 var_f0_140;
+    f64 temp_f0_154;
+    f64 temp_f0_165;
+    f64 temp_f1_150;
     void *temp_r31_148;
     void *temp_r3_129;
     void *temp_r3_193;
@@ -75,15 +79,15 @@ void BobProperty::Update() {
         }
         M2C_FIELD(temp_r3_129, f32 *, 0x10) = var_f0_140;
         temp_r31_148 = *KDProperty::pInstanceMem + this->unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        temp_f1_158 = this->unk28 * _table_sinf(M2C_FIELD(temp_r31_148, f32 *, 0x10));
-        sp28 = sp18;
-        sp20 = temp_f1_158;
+        temp_f1_150 = _table_sinf(M2C_FIELD(temp_r31_148, f32 *, 0x10));
+        temp_f0_154 = M2C_FIELD(this, f64 *, 0x20) * temp_f1_150;
+        sp18 = temp_f0_154;
+        sp28 = temp_f0_154;
+        sp20 = this->unk28 * (f32) temp_f1_150;
         sp30 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp38 = sp8;
+        temp_f0_165 = sp28 + M2C_FIELD(temp_r31_148, f64 *, 0);
+        sp8 = temp_f0_165;
+        sp38 = temp_f0_165;
         sp10 = (f32) sp30 + M2C_FIELD(temp_r31_148, f32 *, 8);
         sp40 = (f64) sp10;
         if ((s32) this->unk34 < 0) {

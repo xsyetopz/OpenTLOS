@@ -76,8 +76,7 @@ f32 KDSound_SoundDucking_ForceDuck(SoundEventInstance **arg0) {
         break;
     case 3:                                         /* switch 1 */
         var_f31_53 = ((1.0f - M2C_FIELD(&soundDuckData, f32 *, 0x14)) * (M2C_FIELD(&soundDuckData, f32 *, 0) * M2C_FIELD(&soundDuckData, f32 *, 0x10))) + M2C_FIELD(&soundDuckData, f32 *, 0x14);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (var_f31_53 == 0.99f) {
+        if (var_f31_53 >= 0.99f) {
             var_f31_53 = 1.0f;
         }
         break;
@@ -168,15 +167,13 @@ loop_10:
         }
         switch ((s32) M2C_FIELD(&soundDuckData, s32 *, 0x18)) { /* irregular */
         case 1:
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&soundDuckData, f32 *, 0) == M2C_FIELD(&soundDuckData, f32 *, 4)) {
+            if (M2C_FIELD(&soundDuckData, f32 *, 0) >= M2C_FIELD(&soundDuckData, f32 *, 4)) {
                 M2C_FIELD(&soundDuckData, s32 *, 0x18) = 2;
                 return;
             }
             break;
         case 3:
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&soundDuckData, f32 *, 0) == M2C_FIELD(&soundDuckData, f32 *, 8)) {
+            if (M2C_FIELD(&soundDuckData, f32 *, 0) >= M2C_FIELD(&soundDuckData, f32 *, 8)) {
                 M2C_FIELD(&soundDuckData, s32 *, 0x18) = 0;
             }
             break;
@@ -285,53 +282,50 @@ loop_46:
             M2C_FIELD(temp_r24_431, s32 *, 8) = 0;
         }
     }
-    if ((s32) M2C_FIELD(temp_r24_431, s32 *, 8) > 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (var_f31_400 == var_f30_401) {
-            if (arg0 != NULL) {
-                temp_r25_468 = this->unk10 + var_r25_427;
-                temp_r3_469 = M2C_FIELD(temp_r25_468, s8 **, 0);
-                if ((temp_r3_469 != NULL) && ((temp_r4_472 = M2C_FIELD(temp_r25_468, s32 *, 8), ((temp_r4_472 == 0) != 0)) || ((temp_r4_472 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r4_472 <= (s32) *GlobalSoundData::lastInvalidSoundID)))) {
-                    M2C_FIELD(temp_r25_468, s32 *, 8) = Sound_GetID(temp_r3_469);
-                    temp_r3_484 = M2C_FIELD(temp_r25_468, s32 *, 8);
-                    if ((temp_r3_484 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r3_484 <= (s32) *GlobalSoundData::lastInvalidSoundID)) {
-                        M2C_FIELD(temp_r25_468, s32 *, 8) = 0;
-                    }
-                }
-                Sound_Play3d(M2C_FIELD(temp_r25_468, s32 *, 8), (u8) var_r29_405, arg0, (f32) arg1->unk4, (f32) arg1->unk8);
-                var_r24_512 = M2C_ERROR(/* Read from unset register $r3 */);
-                if ((var_r24_512 > 0) && ((temp_f1_515 = this->unk4, ((temp_f1_515 == 1.0f) == 0)) || (this->unk8 != 1.0f))) {
-                    temp_f1_524 = MKRand_Float(&gViewSeed, temp_f1_515, this->unk8);
-                    Sound_SetPitch3d(var_r24_512, temp_f1_524);
-                    if (arg3 != NULL) {
-                        *arg3 = temp_f1_524;
-                    }
-                }
-            } else {
-                temp_r25_534 = this->unk10 + var_r25_427;
-                temp_r3_535 = M2C_FIELD(temp_r25_534, s8 **, 0);
-                if ((temp_r3_535 != NULL) && ((temp_r4_538 = M2C_FIELD(temp_r25_534, s32 *, 8), ((temp_r4_538 == 0) != 0)) || ((temp_r4_538 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r4_538 <= (s32) *GlobalSoundData::lastInvalidSoundID)))) {
-                    M2C_FIELD(temp_r25_534, s32 *, 8) = Sound_GetID(temp_r3_535);
-                    temp_r3_550 = M2C_FIELD(temp_r25_534, s32 *, 8);
-                    if ((temp_r3_550 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r3_550 <= (s32) *GlobalSoundData::lastInvalidSoundID)) {
-                        M2C_FIELD(temp_r25_534, s32 *, 8) = 0;
-                    }
-                }
-                Sound_PlayV(M2C_FIELD(temp_r25_534, s32 *, 8), (u8) var_r29_405, (u8) var_r29_405);
-                var_r24_512 = M2C_ERROR(/* Read from unset register $r3 */);
-                if ((var_r24_512 > 0) && ((temp_f1_567 = this->unk4, ((temp_f1_567 == 1.0f) == 0)) || (this->unk8 != 1.0f))) {
-                    temp_f1_576 = MKRand_Float(&gViewSeed, temp_f1_567, this->unk8);
-                    Sound_SetPitch(var_r24_512, temp_f1_576);
-                    if (arg3 != NULL) {
-                        *arg3 = temp_f1_576;
-                    }
+    if (((s32) M2C_FIELD(temp_r24_431, s32 *, 8) > 0) && (var_f31_400 <= var_f30_401)) {
+        if (arg0 != NULL) {
+            temp_r25_468 = this->unk10 + var_r25_427;
+            temp_r3_469 = M2C_FIELD(temp_r25_468, s8 **, 0);
+            if ((temp_r3_469 != NULL) && ((temp_r4_472 = M2C_FIELD(temp_r25_468, s32 *, 8), ((temp_r4_472 == 0) != 0)) || ((temp_r4_472 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r4_472 <= (s32) *GlobalSoundData::lastInvalidSoundID)))) {
+                M2C_FIELD(temp_r25_468, s32 *, 8) = Sound_GetID(temp_r3_469);
+                temp_r3_484 = M2C_FIELD(temp_r25_468, s32 *, 8);
+                if ((temp_r3_484 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r3_484 <= (s32) *GlobalSoundData::lastInvalidSoundID)) {
+                    M2C_FIELD(temp_r25_468, s32 *, 8) = 0;
                 }
             }
-            if (var_r24_512 < 0) {
-                var_r24_512 = 0;
+            Sound_Play3d(M2C_FIELD(temp_r25_468, s32 *, 8), (u8) var_r29_405, arg0, (f32) arg1->unk4, (f32) arg1->unk8);
+            var_r24_512 = M2C_ERROR(/* Read from unset register $r3 */);
+            if ((var_r24_512 > 0) && ((temp_f1_515 = this->unk4, ((temp_f1_515 == 1.0f) == 0)) || (this->unk8 != 1.0f))) {
+                temp_f1_524 = MKRand_Float(&gViewSeed, temp_f1_515, this->unk8);
+                Sound_SetPitch3d(var_r24_512, temp_f1_524);
+                if (arg3 != NULL) {
+                    *arg3 = temp_f1_524;
+                }
             }
-            return var_r24_512;
+        } else {
+            temp_r25_534 = this->unk10 + var_r25_427;
+            temp_r3_535 = M2C_FIELD(temp_r25_534, s8 **, 0);
+            if ((temp_r3_535 != NULL) && ((temp_r4_538 = M2C_FIELD(temp_r25_534, s32 *, 8), ((temp_r4_538 == 0) != 0)) || ((temp_r4_538 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r4_538 <= (s32) *GlobalSoundData::lastInvalidSoundID)))) {
+                M2C_FIELD(temp_r25_534, s32 *, 8) = Sound_GetID(temp_r3_535);
+                temp_r3_550 = M2C_FIELD(temp_r25_534, s32 *, 8);
+                if ((temp_r3_550 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r3_550 <= (s32) *GlobalSoundData::lastInvalidSoundID)) {
+                    M2C_FIELD(temp_r25_534, s32 *, 8) = 0;
+                }
+            }
+            Sound_PlayV(M2C_FIELD(temp_r25_534, s32 *, 8), (u8) var_r29_405, (u8) var_r29_405);
+            var_r24_512 = M2C_ERROR(/* Read from unset register $r3 */);
+            if ((var_r24_512 > 0) && ((temp_f1_567 = this->unk4, ((temp_f1_567 == 1.0f) == 0)) || (this->unk8 != 1.0f))) {
+                temp_f1_576 = MKRand_Float(&gViewSeed, temp_f1_567, this->unk8);
+                Sound_SetPitch(var_r24_512, temp_f1_576);
+                if (arg3 != NULL) {
+                    *arg3 = temp_f1_576;
+                }
+            }
         }
+        if (var_r24_512 < 0) {
+            var_r24_512 = 0;
+        }
+        return var_r24_512;
     }
     var_r31_426 += 1;
     var_r25_427 += 0xC;
@@ -1379,8 +1373,13 @@ u8 KDS_IsSoundInRange(int arg0, MKProp *arg1, const MKVector3 *arg2) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKVector3 *var_r5_0;
+    f64 temp_f0_2792;
+    f64 temp_f0_2822;
+    f64 temp_f1_2815;
     void *temp_r4_2812;
 
     var_r5_0 = arg2;
@@ -1388,23 +1387,22 @@ u8 KDS_IsSoundInRange(int arg0, MKProp *arg1, const MKVector3 *arg2) {
         var_r5_0 = arg1->unk8 + 0x30;
     }
     if (var_r5_0 != NULL) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp48 = sp18;
+        temp_f0_2792 = M2C_FIELD(var_r5_0, f64 *, 0) - M2C_FIELD(M2C_FIELD(&kdsData, void **, 0x140), f64 *, 0);
+        sp18 = temp_f0_2792;
+        sp48 = temp_f0_2792;
         sp20 = var_r5_0->unk8 - M2C_FIELD(M2C_FIELD(&kdsData, void **, 0x140), f32 *, 8);
         sp50 = (f64) sp20;
     } else {
         temp_r4_2812 = arg1->unk8;
-        sp28 = M2C_FIELD(temp_r4_2812, f64 *, 0x30);
+        temp_f1_2815 = M2C_FIELD(temp_r4_2812, f64 *, 0x30);
+        sp28 = temp_f1_2815;
         sp30 = M2C_FIELD(temp_r4_2812, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp38 = sp8;
+        temp_f0_2822 = temp_f1_2815 - M2C_FIELD(M2C_FIELD(&kdsData, void **, 0x140), f64 *, 0);
+        sp8 = temp_f0_2822;
+        sp38 = temp_f0_2822;
         sp10 = (f32) sp30 - M2C_FIELD(M2C_FIELD(&kdsData, void **, 0x140), f32 *, 8);
         sp40 = (f64) sp10;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 #endif

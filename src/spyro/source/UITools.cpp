@@ -383,10 +383,8 @@ void ImageArc::Draw(const RenderContext &arg0) {
     s32 var_r28_702;
     s32 var_r29_679;
 
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk70 != 0.0f) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk74 == 0.0f) {
+    if (!(this->unk70 <= 0.0f)) {
+        if (this->unk74 <= 0.0f) {
             return;
         }
         sp20.RenderContext(arg0, this->unk18);
@@ -517,8 +515,7 @@ void RadialButtonGroup::Update() {
         } else {
             var_f2_849 = MKInput_GetState(0x10, (MKInputDevices) M2C_FIELD(temp_r3_836, s32 *, 0), NULL, NULL);
         }
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (((var_f1_825 * var_f1_825) + (var_f2_849 * var_f2_849)) == 0.4489f) {
+        if (((var_f1_825 * var_f1_825) + (var_f2_849 * var_f2_849)) >= 0.4489f) {
             temp_r3_868 = this->unkFC;
             var_f3_880 = (f32) atan2(var_f1_825) + (3.1415927f / (f32) temp_r3_868);
             if (var_f3_880 < 0.0f) {
@@ -1241,12 +1238,9 @@ void NoisyButtonGroup::Message(UIMessage *arg0) {
     if (temp_r0_2548 < 0xA) {
         if (temp_r0_2548 != 6) {
 
-        } else {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_BITWISE(f32, this->unk6C.unk4) == 0.0f) {
-                this->unk6C.unk4 = 0.15f;
-                KDSound_Play(GS_MenuSelect, 0U, -1);
-            }
+        } else if (M2C_BITWISE(f32, this->unk6C.unk4) <= 0.0f) {
+            this->unk6C.unk4 = 0.15f;
+            KDSound_Play(GS_MenuSelect, 0U, -1);
         }
         goto block_10;
     }
@@ -1694,8 +1688,7 @@ void OptionButton::Update() {
             M2C_FIELD(this, f32 *, 0x24) = var_f3_3577;
         } else {
             temp_f2_3588 = M2C_FIELD(this, f32 *, 0x24);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_f2_3588 == 0.0f) {
+            if (temp_f2_3588 <= 0.0f) {
                 sp8 = 3;
                 Message(&sp8);
             } else {

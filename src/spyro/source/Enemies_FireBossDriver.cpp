@@ -104,9 +104,7 @@ void FireBossDriverDescriptor::LoadDone() {
     sp10 = 300.0f;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+    M2C_FIELD(temp_r3_269, f64 *, 0x10) = (f64) (M2C_FIELD(temp_r3_269, f64 *, 0x10) + sp18);
     temp_r3_269->unk18 += (f32) sp20;
     M2C_FIELD(this, s8 *, 0x74) = 0;
 }

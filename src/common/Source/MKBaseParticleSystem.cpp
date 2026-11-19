@@ -184,13 +184,14 @@ void MKParticleSystem_InitModule(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp4C'
 void MKBaseParticleSystem::DrawChunk(Matrix *arg0, MKVector4 *arg1, MKParticleChunk *arg2) {
     f64 sp48;
     f64 sp40;
     f64 sp38;
     f64 sp30;
     f64 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -265,19 +266,12 @@ loop_5:
         temp_f25_356 = temp_f0_335 * (temp_f6_349 - temp_f5_350);
         temp_f23_357 = temp_f0_335 * (temp_f7_343 + temp_f2_344);
         temp_f22_358 = temp_f0_335 * (temp_f6_349 + temp_f5_350);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r21, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r23, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r21, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r23, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r27, 0x0, qr0 */);
+        sp20 = M2C_FIELD(arg1, f64 *, 0) * M2C_FIELD(temp_r23_301, f64 *, 0x10);
+        sp28 = M2C_FIELD(arg1, f64 *, 8) * M2C_FIELD(temp_r23_301, f64 *, 0x18);
         sp40 = sp20;
         sp48 = sp28;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r26, 0x0, qr0 */);
+        sp40 *= (f64) unksp4C;
+        sp48 *= (f64) unksp4C;
         var_f0_383 = 2.0f * unksp4C;
         if (var_f0_383 < 1.0f) {
 
@@ -596,7 +590,7 @@ loop_15:
     return temp_r3_905;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp54'
 void MKBaseParticleSystem::Draw(Matrix *arg0, MKVector4 *arg1) {
     M2C_UNK spA0;
     f64 sp58;
@@ -607,11 +601,13 @@ void MKBaseParticleSystem::Draw(Matrix *arg0, MKVector4 *arg1) {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     MKParticleChunk *var_r30_987;
     f32 temp_f3_1004;
     f32 temp_f3_1094;
     f32 temp_f6_1008;
     f32 temp_f7_1017;
+    f64 temp_f0_1039;
     s32 var_r10_1065;
     s32 var_r11_1068;
     s32 var_r3_1069;
@@ -645,11 +641,11 @@ loop_6:
                     sp38 = arg0->unk38 + ((temp_f7_1017 * arg0->unk28) + ((temp_f6_1008 * arg0->unk8) + (temp_f3_1004 * arg0->unk18)));
                     sp40 = (f64) sp30;
                     sp48 = (f64) sp38;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    temp_f0_1039 = (f64) sp30 - M2C_FIELD(temp_r31_982, f64 *, 0);
+                    sp20 = temp_f0_1039;
                     var_r7_997 += 1;
                     var_r4_999 += 0x30;
-                    sp50 = sp20;
+                    sp50 = temp_f0_1039;
                     sp28 = (f32) sp48 - M2C_FIELD(temp_r31_982, f32 *, 8);
                     sp58 = (f64) sp28;
                     *(&spA0 + var_r3_998) = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
@@ -713,18 +709,18 @@ void MKBaseParticleSystem::Draw() {
     MKBaseParticleSystem *temp_r3_1194;
     u32 temp_r0_1211;
     u32 var_r3_1210;
+    void *temp_r3_1176;
+    void *temp_r3_1182;
 
     this->unkBC = OSGetTick();
     sp10 = this->unk58;
     sp8 = this->unk50;
     unksp14 *= this->unk20;
-    if ((u32) M2C_FIELD(this->unk0, u32 *, 0x2C) == 0U) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+    temp_r3_1176 = this->unk0;
+    if ((u32) M2C_FIELD(temp_r3_1176, u32 *, 0x2C) == 0U) {
+        temp_r3_1182 = M2C_FIELD(M2C_FIELD(temp_r3_1176, void **, 0x38), s32 *, 0x24) + 0x30;
+        sp8 *= M2C_FIELD(temp_r3_1182, f64 *, 0);
+        sp10 *= M2C_FIELD(temp_r3_1182, f64 *, 8);
     }
     temp_r3_1194 = this->unkC8;
     if (temp_r3_1194 != NULL) {
@@ -787,8 +783,7 @@ void MKBaseParticleSystem::Update() {
     if ((MKBaseParticleSystem *) this->unkC8 == NULL) {
         if ((u8) this->unkDC != 0) {
             temp_f1_1288 = this->unkE0;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_f1_1288 == 0.0f) {
+            if (temp_f1_1288 <= 0.0f) {
                 this->unkDC = 0;
                 this->unkE0 = 0.0f;
                 if (OnTimeOut() == 0) {

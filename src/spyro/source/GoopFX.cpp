@@ -171,6 +171,7 @@ void GoopFXDescriptor::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float 
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
@@ -196,6 +197,7 @@ void GoopFXDescriptor::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float 
     f32 temp_f6_383;
     f32 temp_f7_381;
     f32 temp_f8_379;
+    f64 temp_f1_308;
     s32 var_ctr_397;
     s32 var_r27_299;
     s32 var_r30_292;
@@ -218,12 +220,12 @@ void GoopFXDescriptor::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float 
             M2C_FIELD(temp_r28_283, f64 *, 0xC8) = (f64) M2C_FIELD(&arg3, f64 *, 0);
             M2C_FIELD(temp_r28_283, f64 *, 0xD0) = (f64) M2C_FIELD(&arg3, f64 *, 8);
             do {
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                temp_f1_308 = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+                sp60 = M2C_FIELD(&arg1, f64 *, 0) * temp_f1_308;
                 temp_r3_314 = temp_r28_283 + var_r30_292;
                 var_r27_299 += 1;
                 var_r30_292 += 0x28;
-                sp68 = temp_f31_297 * MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+                sp68 = temp_f31_297 * (f32) temp_f1_308;
                 M2C_FIELD(temp_r3_314, f64 *, 0x10) = sp60;
                 M2C_FIELD(temp_r3_314, f64 *, 0x18) = (f64) sp68;
                 spC0 = sp60;
@@ -291,7 +293,7 @@ void GoopFXDescriptor::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp40'
+#if 0 // DRAFT: undefined identifier 'unkspA4'
 void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXDescriptor::GoopNode *arg2, GoopFXDescriptor::Goop *arg3) {
     f64 spA8;                                       /* compiler-managed */
     f64 spA0;                                       /* compiler-managed */
@@ -304,8 +306,11 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -315,6 +320,8 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
     f32 temp_f31_576;
     f32 var_f5_554;
     f32 var_f6_487;
+    f64 temp_f0_582;
+    f64 temp_f0_624;
     f64 temp_f2_493;
     f64 temp_f2_499;
     f64 temp_f2_503;
@@ -322,9 +329,7 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
     s32 var_r0_532;
 
     if (((u8) M2C_FIELD(arg1, u8 *, 0x20) == 0) || ((u8) M2C_FIELD(arg2, u8 *, 0x20) == 0)) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+        sp40 = M2C_FIELD(arg1, f64 *, 0) - M2C_FIELD(arg2, f64 *, 0);
         spA0 = sp40;
         sp48 = M2C_FIELD(arg1, f32 *, 8) - M2C_FIELD(arg2, f32 *, 8);
         spA8 = (f64) sp48;
@@ -375,14 +380,12 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
         if ((u8) M2C_FIELD(arg1, u8 *, 0x20) == 0) {
             temp_f31_576 = gUpdateTimeDelta;
             sp80.operator*(temp_f29_569);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp90 = sp30;
+            temp_f0_582 = sp80 * (f64) temp_f31_576;
+            sp30 = temp_f0_582;
+            sp90 = temp_f0_582;
             sp38 = sp80.unk8 * temp_f31_576;
             sp98 = (f64) sp38;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+            M2C_FIELD(arg1, f64 *, 0x10) = (f64) (M2C_FIELD(arg1, f64 *, 0x10) + temp_f0_582);
             M2C_FIELD(arg1, f32 *, 0x18) = (f32) (M2C_FIELD(arg1, f32 *, 0x18) + (f32) sp98);
         }
         if ((u8) M2C_FIELD(arg2, u8 *, 0x20) == 0) {
@@ -393,14 +396,12 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
             sp50 = (f64) sp10;
             sp58 = (f64) sp18;
             sp60.operator*(temp_f29_569);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp70 = sp20;
+            temp_f0_624 = sp60 * (f64) temp_f30_612;
+            sp20 = temp_f0_624;
+            sp70 = temp_f0_624;
             sp28 = sp60.unk8 * temp_f30_612;
             sp78 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+            M2C_FIELD(arg2, f64 *, 0x10) = (f64) (M2C_FIELD(arg2, f64 *, 0x10) + temp_f0_624);
             M2C_FIELD(arg2, f32 *, 0x18) = (f32) (M2C_FIELD(arg2, f32 *, 0x18) + (f32) sp78);
         }
     }
@@ -456,7 +457,7 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
     f64 spF0;
     f64 spE8;
     f64 spE0;
-    M2C_UNK spD0;
+    f64 spD0;
     f64 spC8;
     f64 spC0;
     MKVector3 spB0;
@@ -468,11 +469,17 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     MKVector3 *temp_r30_787;
     f32 temp_f0_918;
@@ -483,6 +490,9 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
     f32 var_f1_771;
     f32 var_f1_925;
     f32 var_f2_992;
+    f64 temp_f0_1009;
+    f64 temp_f0_799;
+    f64 temp_f0_824;
     f64 temp_f2_931;
     f64 temp_f2_937;
     f64 temp_f2_941;
@@ -493,6 +503,7 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
     s32 var_r25_784;
     s32 var_r28_783;
     s32 var_r3_757;
+    void *temp_r29_792;
 
     temp_f28_703 = (f32) pow(0.125, gUpdateTimeDelta);
     UpdateGoopNodes((GoopFXDescriptor::GoopNode *) arg1, arg1 + 0x28, arg1);
@@ -504,20 +515,17 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
     UpdateGoopNodes(arg1 + 0xA0, arg1 + 0x50, arg1);
     UpdateGoopNodes(arg1 + 0xA0, arg1 + 0x78, arg1);
     M2C_FIELD(arg1, f32 *, 0xD8) = (f32) (M2C_FIELD(arg1, f32 *, 0xD8) - gUpdateTimeDelta);
-    if ((s32) M2C_FIELD(arg1, s32 *, 0xE0) == 1) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(arg1, f32 *, 0xD8) == 0.0f) {
-            var_r3_757 = 0;
-            M2C_FIELD(arg1, s32 *, 0xE0) = 2;
-            M2C_FIELD(arg1, f32 *, 0xD8) = 2.0f;
-            var_ctr_763 = 5;
-            do {
-                temp_r0_765 = var_r3_757 + 0x20;
-                var_r3_757 += 0x28;
-                *(arg1 + temp_r0_765) = 0;
-                var_ctr_763 -= 1;
-            } while (var_ctr_763 != 0);
-        }
+    if (((s32) M2C_FIELD(arg1, s32 *, 0xE0) == 1) && (M2C_FIELD(arg1, f32 *, 0xD8) <= 0.0f)) {
+        var_r3_757 = 0;
+        M2C_FIELD(arg1, s32 *, 0xE0) = 2;
+        M2C_FIELD(arg1, f32 *, 0xD8) = 2.0f;
+        var_ctr_763 = 5;
+        do {
+            temp_r0_765 = var_r3_757 + 0x20;
+            var_r3_757 += 0x28;
+            *(arg1 + temp_r0_765) = 0;
+            var_ctr_763 -= 1;
+        } while (var_ctr_763 != 0);
     }
     var_f1_771 = 2.0f;
     if ((s32) M2C_FIELD(arg1, s32 *, 0xE0) == 1) {
@@ -528,31 +536,26 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
     do {
         temp_r30_787 = arg1 + var_r25_784;
         if ((u8) M2C_FIELD(temp_r30_787, u8 *, 0x20) == 0) {
+            temp_r29_792 = temp_r30_787 + 0x10;
             sp100 = M2C_FIELD(temp_r30_787, f64 *, 0);
             sp108 = M2C_FIELD(temp_r30_787, f64 *, 8);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spF0 = sp60;
+            temp_f0_799 = M2C_FIELD(temp_r29_792, f64 *, 0) * (f64) gUpdateTimeDelta;
+            sp60 = temp_f0_799;
+            spF0 = temp_f0_799;
             sp68 = M2C_FIELD(temp_r30_787, f32 *, 0x18) * gUpdateTimeDelta;
             spF8 = (f64) sp68;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+            M2C_FIELD(temp_r30_787, f64 *, 0) = (f64) (M2C_FIELD(temp_r30_787, f64 *, 0) + temp_f0_799);
             temp_r30_787->unk8 = (f32) temp_r30_787->unk8 + (f32) spF8;
             temp_f30_820 = gUpdateTimeDelta;
             MKVector(0.0f, -3000.0f * var_f1_771, 0.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            spE0 = sp50;
+            temp_f0_824 = spD0 * (f64) temp_f30_820;
+            sp50 = temp_f0_824;
+            spE0 = temp_f0_824;
             sp58 = spD8 * temp_f30_820;
             spE8 = (f64) sp58;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+            M2C_FIELD(temp_r29_792, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_792, f64 *, 0) + temp_f0_824);
             M2C_FIELD(temp_r30_787, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r30_787, f32 *, 0x18) + (f32) spE8);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+            M2C_FIELD(temp_r29_792, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_792, f64 *, 0) * (f64) temp_f28_703);
             M2C_FIELD(temp_r30_787, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r30_787, f32 *, 0x18) * temp_f28_703);
             if ((s32) M2C_FIELD(arg1, s32 *, 0xE0) == 1) {
                 sp110 = 0.0f;
@@ -579,7 +582,7 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
                 if (MKCollision_RayCollide(*((MKVector3 *) &sp100), *temp_r30_787, (MKCollisionResult *) &sp110, (MKCollisionMode) 7, 0x0C000000) != 0) {
                     if ((TwoFrozenNodes(arg1) == 0) && (var_r28_783 != 4)) {
                         spB0.operator*(5.0f);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                        sp40 = (f64) sp110 + M2C_BITWISE(f64, spB0);
                         M2C_FIELD(temp_r30_787, f64 *, 0) = sp40;
                         sp48 = sp118 + spB0.unk8;
                         spC0 = sp40;
@@ -636,22 +639,19 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
                         M2C_FIELD(temp_r30_787, f32 *, 0x10) = (f32) (M2C_FIELD(temp_r30_787, f32 *, 0x10) * var_f2_992);
                         M2C_FIELD(temp_r30_787, f32 *, 0x14) = (f32) (M2C_FIELD(temp_r30_787, f32 *, 0x14) * var_f2_992);
                         M2C_FIELD(temp_r30_787, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r30_787, f32 *, 0x18) * var_f2_992);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r29, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-                        sp80 = sp10;
+                        temp_f0_1009 = M2C_FIELD(temp_r29_792, f64 *, 0) + sp120;
+                        sp10 = temp_f0_1009;
+                        sp80 = temp_f0_1009;
                         sp18 = M2C_FIELD(temp_r30_787, f32 *, 0x18) + sp128;
                         sp88 = (f64) sp18;
                         sp90.operator*(var_f1_925);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                        sp30 = sp90 * 5.24282163e-315;
                         M2C_FIELD(temp_r30_787, f32 *, 0x10) = sp30;
                         sp38 = sp90.unk8 * 0.75f;
                         spA0 = sp30;
-                        M2C_FIELD((temp_r30_787 + 0x10), f64 *, 8) = (f64) sp38;
+                        M2C_FIELD(temp_r29_792, f64 *, 8) = (f64) sp38;
                         spA8 = (f64) sp38;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                        sp20 = (f64) sp110 + sp120;
                         M2C_FIELD(temp_r30_787, f64 *, 0) = sp20;
                         sp28 = sp118 + sp128;
                         sp70 = sp20;
@@ -664,8 +664,7 @@ u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
         var_r28_783 += 1;
         var_r25_784 += 0x28;
     } while (var_r28_783 < 5);
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((M2C_FIELD(arg1, f32 *, 0xD8) == 0.0f) && ((s32) M2C_FIELD(arg1, s32 *, 0xE0) == 2)) {
+    if ((M2C_FIELD(arg1, f32 *, 0xD8) <= 0.0f) && ((s32) M2C_FIELD(arg1, s32 *, 0xE0) == 2)) {
         return 0U;
     }
     return 1U;

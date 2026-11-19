@@ -178,7 +178,7 @@ s32 ConvexTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ConvexTier2::UpdateCollisionItems() {
     f64 sp60;
     f64 sp58;
@@ -187,19 +187,19 @@ void ConvexTier2::UpdateCollisionItems() {
     f64 sp38;
     MKVector3 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     sp48.operator*(200.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp18 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp48);
     this->unk60 = sp18;
     sp20 = this->unk588.unk4 + sp48.unk8;
     sp58 = sp18;
     sp60 = (f64) sp20;
     this->unk68 = (f64) sp20;
     sp28.operator*(1000.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp8 = M2C_FIELD(this, f64 *, 0x588) - M2C_BITWISE(f64, sp28);
     this->unk70 = sp8;
     sp10 = this->unk588.unk4 - sp28.unk8;
     sp38 = sp8;

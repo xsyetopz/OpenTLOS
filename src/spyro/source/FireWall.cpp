@@ -82,8 +82,11 @@ void FireWall::Draw() {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -106,6 +109,8 @@ void FireWall::Draw() {
     f32 var_f3_447;
     f32 var_f4_265;
     f32 var_f4_380;
+    f64 temp_f0_527;
+    f64 temp_f0_592;
     f64 temp_f1_271;
     f64 temp_f1_277;
     f64 temp_f1_281;
@@ -128,7 +133,10 @@ void FireWall::Draw() {
     u32 var_r5_151;
     u8 var_r0_609;
     u8 var_r0_628;
+    void *temp_r3_242;
+    void *temp_r3_520;
     void *temp_r3_568;
+    void *temp_r4_241;
 
     MKMaterial_SetMaterial(M2C_FIELD(checked_cast<FireWallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x60));
     MKPrimitive(0xC, 0);
@@ -153,19 +161,12 @@ loop_88:
         }
         if (var_r0_628 != 0) {
             MKBegin(4);
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((var_f22_168 == 1.0f) && (var_f21_167 < 0.75f)) {
+            if ((var_f22_168 >= 1.0f) && (var_f21_167 < 0.75f)) {
                 var_f22_168 -= 1.0f;
                 var_f21_167 += 0.25f;
-            } else {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (var_f22_168 == 1.0f) {
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (var_f21_167 == 0.75f) {
-                        var_f22_168 -= 1.0f;
-                        var_f21_167 = 0.0f;
-                    }
-                }
+            } else if ((var_f22_168 >= 1.0f) && (var_f21_167 >= 0.75f)) {
+                var_f22_168 -= 1.0f;
+                var_f21_167 = 0.0f;
             }
             var_r27_202 = 0;
             var_r26_203 = 1;
@@ -192,11 +193,11 @@ loop_83:
                 if ((s32) var_r28_174 < (s32) (this->unk4C - 2)) {
                     temp_r3_236 = var_r28_174 + var_r25_211;
                     temp_r5_237 = this->unk50;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    temp_r4_241 = temp_r5_237 + (temp_r3_236 * 0x30);
+                    temp_r3_242 = temp_r5_237 + ((temp_r3_236 + 1) * 0x30);
+                    sp30 = M2C_FIELD(temp_r3_242, f64 *, 0) - M2C_FIELD(temp_r4_241, f64 *, 0);
                     spF0 = sp30;
-                    sp38 = M2C_FIELD((temp_r5_237 + ((temp_r3_236 + 1) * 0x30)), f32 *, 8) - M2C_FIELD((temp_r5_237 + (temp_r3_236 * 0x30)), f32 *, 8);
+                    sp38 = M2C_FIELD(temp_r3_242, f32 *, 8) - M2C_FIELD(temp_r4_241, f32 *, 8);
                     spC0 = sp30;
                     spF8 = (f64) sp38;
                     spC8 = (f64) sp38;
@@ -294,7 +295,7 @@ loop_83:
                 spE0 = (f32) spE0 * var_f3_447;
                 unkspE4 *= var_f3_447;
                 spE8 = temp_f0_458;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f23 */);
+                spE0 = (f64) spE0 * 5.41119288e-315;
                 spE8 = temp_f0_458 * 12.5f;
                 if (((s32) var_r28_174 == 0) && (var_r25_211 == 0)) {
                     spE0 = 0.0f;
@@ -324,13 +325,14 @@ loop_83:
                 sp68 = 0.0f;
                 temp_r23_515 = (var_r28_174 + var_r25_211) * 0x30;
                 sp60 = 0.0f;
+                temp_r3_520 = this->unk50 + temp_r23_515;
                 sp64 = 0.75f * this->unk68;
                 sp88 = (f64) sp68;
                 sp80 = (f64) sp60;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                spD0 = sp50;
-                sp58 = M2C_FIELD((this->unk50 + temp_r23_515), f32 *, 8) + (f32) sp88;
+                temp_f0_527 = M2C_FIELD(temp_r3_520, f64 *, 0) + sp80;
+                sp50 = temp_f0_527;
+                spD0 = temp_f0_527;
+                sp58 = M2C_FIELD(temp_r3_520, f32 *, 8) + (f32) sp88;
                 spD8 = (f64) sp58;
                 MKSetColorF(1.0f, 1.0f, 1.0f, 0.0f);
                 var_f0_542 = 1.0f;
@@ -359,8 +361,9 @@ loop_83:
                     var_f2_576 = 0.0f;
                 }
                 MKSetTexCoord1F(temp_f19_560, var_f2_576);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp70 = sp40;
+                temp_f0_592 = spD0 + spE0;
+                sp40 = temp_f0_592;
+                sp70 = temp_f0_592;
                 sp48 = (f32) spD8 + (f32) spE8;
                 sp78 = (f64) sp48;
                 MKSetPositionV(*((MKVector3 *) &sp70));
@@ -391,20 +394,22 @@ void FireWall::Update() {
     f64 sp50;
     MKVector3 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     MKHeap *temp_r3_772;
     MKHeap *temp_r4_815;
     MKHeap *temp_r5_727;
     MKHeap *temp_r7_722;
     f32 temp_f0_776;
-    f32 temp_f1_830;
     f32 temp_f1_876;
     f32 var_f0_695;
     f32 var_f0_787;
+    f64 temp_f0_822;
     s32 temp_r0_773;
     s32 temp_r29_816;
     s32 temp_r3_813;
@@ -414,7 +419,10 @@ void FireWall::Update() {
     s32 var_r30_741;
     s32 var_r3_716;
     s32 var_r8_718;
+    void *temp_r4_819;
     void *temp_r4_841;
+    void *temp_r4_852;
+    void *temp_r5_818;
 
     var_f0_695 = this->unk60 + gUpdateTimeDelta;
     if (var_f0_695 < 0.0175f) {
@@ -428,8 +436,7 @@ void FireWall::Update() {
         var_f0_695 = 0.0f;
     }
     this->unk60 = var_f0_695;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk60 == 0.0175f) {
+    if (this->unk60 >= 0.0175f) {
         var_r3_716 = 0;
         var_r8_718 = 0;
         this->unk60 = 0.0f;
@@ -475,29 +482,28 @@ loop_16:
         var_f0_787 = 0.0f;
     }
     this->unk64 = var_f0_787;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk64 == 0.0015f) {
+    if (this->unk64 >= 0.0015f) {
         this->unk64 = 0.0f;
         temp_r3_813 = MKRand_Int(&gViewSeed, 0, this->unk4C - 1);
         temp_r4_815 = this->unk50;
         temp_r29_816 = temp_r3_813 * 0x30;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r5_818 = temp_r4_815 + temp_r29_816;
+        temp_r4_819 = temp_r4_815 + ((temp_r3_813 + 1) * 0x30);
+        temp_f0_822 = M2C_FIELD(temp_r4_819, f64 *, 0) - M2C_FIELD(temp_r5_818, f64 *, 0);
+        sp30 = temp_f0_822;
         var_r28_828 = 0;
-        temp_f1_830 = M2C_FIELD((temp_r4_815 + ((temp_r3_813 + 1) * 0x30)), f32 *, 8) - M2C_FIELD((temp_r4_815 + temp_r29_816), f32 *, 8);
-        sp90 = sp30;
-        sp38 = temp_f1_830;
+        sp90 = temp_f0_822;
+        sp38 = M2C_FIELD(temp_r4_819, f32 *, 8) - M2C_FIELD(temp_r5_818, f32 *, 8);
         sp98 = (f64) sp38;
         do {
             temp_r4_841 = temp_r29_816 + this->unk50;
             sp80 = M2C_FIELD(temp_r4_841, f64 *, 0);
             sp88 = M2C_FIELD(temp_r4_841, f64 *, 8);
             sp60.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            temp_r4_852 = this->unk50 + temp_r29_816;
+            sp10 = M2C_FIELD(temp_r4_852, f64 *, 0) + M2C_BITWISE(f64, sp60);
             sp70 = sp10;
-            sp18 = M2C_FIELD((this->unk50 + temp_r29_816), f32 *, 8) + sp60.unk8;
+            sp18 = M2C_FIELD(temp_r4_852, f32 *, 8) + sp60.unk8;
             sp80 = sp10;
             sp78 = (f64) sp18;
             sp88 = (f64) sp18;
@@ -551,11 +557,14 @@ s32 FireWall::LoadLine(MKIniLine *arg0) {
     f64 spB8;
     f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp6C;
     f32 sp68;
     f32 sp64;
@@ -567,6 +576,7 @@ s32 FireWall::LoadLine(MKIniLine *arg0) {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -605,6 +615,10 @@ s32 FireWall::LoadLine(MKIniLine *arg0) {
     f32 var_f4_1489;
     f32 var_f4_1601;
     f32 var_f5_1445;
+    f64 temp_f0_1049;
+    f64 temp_f0_1247;
+    f64 temp_f0_1571;
+    f64 temp_f0_1720;
     f64 temp_f1_1069;
     f64 temp_f1_1075;
     f64 temp_f1_1079;
@@ -638,8 +652,10 @@ s32 FireWall::LoadLine(MKIniLine *arg0) {
     s32 var_r28_1201;
     s32 var_r30_1200;
     void *temp_r3_1218;
+    void *temp_r3_1243;
     void *temp_r3_1472;
     void *temp_r3_1579;
+    void *temp_r3_1713;
     void *temp_r4_1480;
     void *temp_r6_1593;
 
@@ -678,8 +694,9 @@ loop_32:
                 sp150.GetMeasure(var_f22_1026, (Matrix *) &sp1C0, KDSpline_PositionMixer);
                 sp190 = sp150;
                 sp198 = sp158;
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp140 = spA0;
+                temp_f0_1049 = sp150 - sp1A0;
+                spA0 = temp_f0_1049;
+                sp140 = temp_f0_1049;
                 spA8 = (f32) sp198 - (f32) sp1A8;
                 sp148 = (f64) spA8;
                 var_f4_1066 = ((f32) sp148 * (f32) sp148) + (((f32) sp140 * (f32) sp140) + (unksp144 * unksp144));
@@ -768,11 +785,12 @@ loop_130:
                     sp24 = 0.0f;
                     sp120.GetMeasure(var_f1_1221, (Matrix *) &sp1C0, KDSpline_PositionMixer);
                     sp180 = sp120;
+                    temp_r3_1243 = this->unk50 + var_r28_1201;
                     sp188 = sp128;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp160.unk10 = sp90;
-                    sp98 = (f32) sp188 - M2C_FIELD((this->unk50 + var_r28_1201), f32 *, 8);
+                    temp_f0_1247 = sp120 - M2C_FIELD(temp_r3_1243, f64 *, 0);
+                    sp90 = temp_f0_1247;
+                    sp160.unk10 = temp_f0_1247;
+                    sp98 = (f32) sp188 - M2C_FIELD(temp_r3_1243, f32 *, 8);
                     temp_f1_1255 = M2C_BITWISE(f32, sp160.unk10);
                     sp178 = (f64) sp98;
                     var_f4_1264 = ((f32) sp178 * (f32) sp178) + ((temp_f1_1255 * temp_f1_1255) + (sp174 * sp174));
@@ -923,14 +941,13 @@ loop_130:
                     M2C_FIELD(temp_r4_1480, f32 *, 0) = (f32) (M2C_FIELD(temp_r4_1480, f32 *, 0) * var_f1_1555);
                     M2C_FIELD(temp_r4_1480, f32 *, 4) = (f32) (M2C_FIELD(temp_r4_1480, f32 *, 4) * var_f1_1555);
                     M2C_FIELD(temp_r4_1480, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_1480, f32 *, 8) * var_f1_1555);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    spE0 = sp30;
+                    temp_f0_1571 = (f64) sp160.unk10 * 5.356796015e-315;
+                    sp30 = temp_f0_1571;
+                    spE0 = temp_f0_1571;
                     temp_r3_1579 = this->unk50 + (var_r28_1201 + 0x10);
                     sp38 = sp178 * 5.0f;
                     spE8 = (f64) sp38;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+                    M2C_FIELD(temp_r3_1579, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_1579, f64 *, 0) + temp_f0_1571);
                     M2C_FIELD(temp_r3_1579, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_1579, f32 *, 8) + (f32) spE8);
                     temp_r6_1593 = this->unk50 + (var_r28_1201 + 0x10);
                     temp_f1_1594 = M2C_FIELD(temp_r6_1593, f32 *, 0);
@@ -990,13 +1007,14 @@ loop_130:
                     spB8 = (f64) sp68;
                     sp88 = 0.0f;
                     sp80 = 0.0f;
+                    temp_r3_1713 = this->unk50 + var_r28_1201;
                     sp84 = 0.25f * this->unk68;
                     spC8 = (f64) sp88;
                     spC0 = (f64) sp80;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    spD0 = sp70;
-                    sp78 = M2C_FIELD((this->unk50 + var_r28_1201), f32 *, 8) + (f32) spC8;
+                    temp_f0_1720 = M2C_FIELD(temp_r3_1713, f64 *, 0) + spC0;
+                    sp70 = temp_f0_1720;
+                    spD0 = temp_f0_1720;
+                    sp78 = M2C_FIELD(temp_r3_1713, f32 *, 8) + (f32) spC8;
                     spD8 = (f64) sp78;
                     temp_r0_1738 = var_r28_1201 + 0x2C;
                     var_r30_1200 += 1;

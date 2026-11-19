@@ -171,7 +171,7 @@ void BoulderRamp::BoulderSinkingExit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void BoulderRamp::BoulderSinkingUpdate() {
     f64 sp70;                                       /* compiler-managed */
     f64 sp68;
@@ -182,9 +182,11 @@ void BoulderRamp::BoulderSinkingUpdate() {
     MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
     Ball *temp_r3_126;
     MKVector3 *temp_r31_154;
     f32 var_f1_88;
+    f64 temp_f0_110;
     u32 temp_r0_76;
     u32 temp_r5_79;
     void *temp_r6_78;
@@ -203,12 +205,12 @@ void BoulderRamp::BoulderSinkingUpdate() {
     sp28.operator*(gUpdateTimeDelta);
     sp38.operator*(44.444447f);
     sp48.operator*(gUpdateTimeDelta);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp58 = sp8;
+    temp_f0_110 = sp48 + M2C_BITWISE(f64, sp28);
+    sp8 = temp_f0_110;
+    sp58 = temp_f0_110;
     sp10 = sp48.unk8 + sp28.unk8;
     sp60 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp68 -= temp_f0_110;
     temp_r3_126 = this->unkF0;
     temp_r3_126->unkE0 = sp68;
     sp70 = (f32) sp70 - (f32) sp60;
@@ -229,7 +231,7 @@ void BoulderRamp::BoulderSinkingEnter() {
     this->unkEC = 1.8f;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void BoulderRamp::ReceivingBoulderUpdate() {
     f64 sp68;
     KDUniformSpline sp50;
@@ -237,6 +239,7 @@ void BoulderRamp::ReceivingBoulderUpdate() {
     MKVector3 sp30;
     MKVector3 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     Ball *temp_r31_199;
     Ball *temp_r3_231;
@@ -259,7 +262,7 @@ void BoulderRamp::ReceivingBoulderUpdate() {
         sp40.operator*(0.5f);
         sp8 = 0.0f;
         sp50.GetMeasure(this->unkE8, &this->unkF4, KDSpline_PositionMixer);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp10 = M2C_BITWISE(f64, sp50) + M2C_BITWISE(f64, sp40);
         temp_r3_231 = this->unkF0;
         sp50.unk10 = sp10;
         sp18 = sp50.unk8 + sp40.unk8;
@@ -277,7 +280,7 @@ void BoulderRamp::ReceivingBoulderUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp58'
+#if 0 // DRAFT: undefined identifier 'AddNode'
 void BoulderRamp::ReceivingBoulderEnter() {
     f64 spE0;
     f64 spD8;
@@ -296,28 +299,39 @@ void BoulderRamp::ReceivingBoulderEnter() {
     f64 sp70;
     f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_348;
+    f64 temp_f1_325;
+    f64 temp_f1_337;
+    f64 temp_f2_283;
+    f64 temp_f2_294;
     void *temp_r3_291;
     void *temp_r4_282;
 
     temp_r4_282 = this->unkF0->unk8;
-    spD8 = M2C_FIELD(temp_r4_282, f64 *, 0x30);
+    temp_f2_283 = M2C_FIELD(temp_r4_282, f64 *, 0x30);
+    spD8 = temp_f2_283;
     spE0 = M2C_FIELD(temp_r4_282, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f3 */);
+    sp58 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.522576936e-315;
     temp_r3_291 = this->unk8;
+    temp_f2_294 = M2C_FIELD(temp_r3_291, f64 *, 0x30);
     sp60 = MKVector3::up.unk8 * 80.0f;
     sp98 = sp58;
-    spA8 = M2C_FIELD(temp_r3_291, f64 *, 0x30);
+    spA8 = temp_f2_294;
     spA0 = (f64) sp60;
     spB0 = M2C_FIELD(temp_r3_291, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
+    sp48 = temp_f2_294 + sp98;
     sp20 = 0.0f;
     sp18 = 0.0f;
     sp1C = 100.0f;
@@ -326,16 +340,19 @@ void BoulderRamp::ReceivingBoulderEnter() {
     spD0 = (f64) sp50;
     sp68 = (f64) sp18;
     sp70 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
-    sp78 = sp38;
+    temp_f1_325 = temp_f2_283 + spC8;
+    sp38 = temp_f1_325;
+    sp78 = temp_f1_325;
     sp40 = (f32) spE0 + (f32) spD0;
     sp80 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-    sp88 = sp28;
+    temp_f1_337 = temp_f1_325 * 5.222099017e-315;
+    sp28 = temp_f1_337;
+    sp88 = temp_f1_337;
     sp30 = (f32) sp80 * 0.5f;
     sp90 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spB8 = sp8;
+    temp_f0_348 = temp_f1_337 + sp68;
+    sp8 = temp_f0_348;
+    spB8 = temp_f0_348;
     sp10 = (f32) sp90 + (f32) sp70;
     spC0 = (f64) sp10;
     this->unkF4.unk8 = 0.0f;

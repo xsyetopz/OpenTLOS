@@ -129,6 +129,7 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     Matrix **temp_r3_162;
     Matrix **temp_r3_166;
@@ -139,6 +140,7 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
     f64 temp_f1_239;
     f64 temp_f1_245;
     f64 temp_f1_249;
+    f64 temp_f1_319;
     s32 temp_r3_268;
     s32 var_r0_278;
 
@@ -216,11 +218,11 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
             spD0 = (f64) sp20;
             spD8 = (f64) sp28;
             KDMath_BuildMatrixFromFwd(temp_r31_168, *((MKVector3 *) &spD0), (MKVector3 *) &sp110);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
+            temp_f1_319 = sp120 * 5.56078426e-315;
+            sp120 = temp_f1_319;
             temp_f3_323 = (f32) sp128 * 150.0f;
             sp128 = temp_f3_323;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp120 = temp_f1_319 + this->unk98;
             sp128 = temp_f3_323 + this->unkA0;
             temp_r31_168->unk30 = (f32) sp120;
             temp_r31_168->unk34 = unksp124;
@@ -234,8 +236,7 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
                 MKVector(-1.0f, 0.0f, -1.0f);
                 KDRand_Vector(sp90, sp80);
                 spA0.operator*(2000.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp10 = this->unk98 + M2C_BITWISE(f64, spA0);
                 M2C_FIELD(temp_r31_168, f64 *, 0x40) = sp10;
                 sp18 = this->unkA0 + spA0.unk8;
                 spB0 = sp10;
@@ -302,15 +303,22 @@ void FuryFXIce2::UpdateIceSpears() {
     f64 spB8;
     f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -322,17 +330,24 @@ void FuryFXIce2::UpdateIceSpears() {
     Matrix **var_r29_446;
     Matrix *temp_r30_934;
     Matrix *temp_r4_925;
+    f32 temp_f1_750;
     f32 temp_f2_553;
     f32 temp_f31_473;
     f32 var_f1_897;
     f32 var_f2_729;
     f32 var_f3_640;
     f32 var_f4_573;
+    f64 temp_f0_486;
+    f64 temp_f0_537;
+    f64 temp_f0_723;
+    f64 temp_f0_753;
+    f64 temp_f0_765;
     f64 temp_f0_815;
     f64 temp_f1_579;
     f64 temp_f1_585;
     f64 temp_f1_589;
     f64 temp_f1_814;
+    f64 temp_f3_548;
     s32 temp_r0_454;
     s32 temp_r3_608;
     s32 var_r0_618;
@@ -360,14 +375,13 @@ loop_56:
                 sp140 = (f64) sp20;
                 sp148 = (f64) sp28;
                 sp150.operator*(4000.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                sp160 = sp50;
+                temp_f0_486 = sp150 * (f64) temp_f31_473;
+                sp50 = temp_f0_486;
+                sp160 = temp_f0_486;
                 sp58 = sp150.unk8 * temp_f31_473;
                 sp168 = (f64) sp58;
                 temp_r30_934->Translate(temp_r30_934, *((MKVector3 *) &sp160));
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (M2C_FIELD(temp_r30_934, f32 *, 0x54) == 0.0f) {
+                if (M2C_FIELD(temp_r30_934, f32 *, 0x54) <= 0.0f) {
                     temp_r3_504 = M2C_FIELD(temp_r30_934, void ***, 0x58);
                     if (temp_r3_504 != NULL) {
                         M2C_FIELD(*temp_r3_504, M2C_UNK (**)(f32 *, f64 *), 0x2C)(&temp_r30_934->unk30, &sp1D0);
@@ -378,16 +392,16 @@ loop_56:
                     MKVector(1.0f, 0.0f, 1.0f);
                     MKVector(-1.0f, 0.0f, -1.0f);
                     KDRand_Vector(sp120, sp110);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                    sp130 = sp40;
+                    temp_f0_537 = sp120 * 5.53552857e-315;
+                    sp40 = temp_f0_537;
+                    sp130 = temp_f0_537;
                     sp48 = sp120.unk8 * 100.0f;
                     sp138 = (f64) sp48;
-                    M2C_ERROR(/* unknown instruction: ps_add $f3, $f1, $f0 */);
+                    temp_f3_548 = sp1D0 + temp_f0_537;
+                    sp1D0 = temp_f3_548;
                     temp_f2_553 = (f32) sp1D8 + (f32) sp138;
                     sp1D8 = temp_f2_553;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
+                    spA0 = temp_f3_548 - M2C_FIELD(temp_r30_934, f64 *, 0x30);
                     sp1C0 = spA0;
                     spA8 = temp_f2_553 - temp_r30_934->unk38;
                     sp1C8 = (f64) spA8;
@@ -459,10 +473,10 @@ loop_56:
                     sp190 = M2C_FIELD(temp_r30_934, f64 *, 0x40);
                     sp198 = M2C_FIELD(temp_r30_934, f64 *, 0x48);
                 }
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                temp_f0_723 = sp190 - M2C_FIELD(temp_r30_934, f64 *, 0x30);
+                sp80 = temp_f0_723;
                 var_f2_729 = M2C_FIELD(temp_r30_934, f32 *, 0x54);
-                sp180 = sp80;
+                sp180 = temp_f0_723;
                 sp88 = (f32) sp198 - temp_r30_934->unk38;
                 sp188 = (f64) sp88;
                 if (var_f2_729 < 2.0f) {
@@ -475,21 +489,22 @@ loop_56:
                 } else {
                     var_f2_729 = 0.0f;
                 }
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                spF0 = sp70;
-                sp78 = (f32) sp188 * -((var_f2_729 * 0.5f) - 1.0f);
+                temp_f1_750 = -((var_f2_729 * 0.5f) - 1.0f);
+                temp_f0_753 = sp180 * (f64) temp_f1_750;
+                sp70 = temp_f0_753;
+                spF0 = temp_f0_753;
+                sp78 = (f32) sp188 * temp_f1_750;
                 spF8 = (f64) sp78;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp170 = sp60;
+                temp_f0_765 = M2C_FIELD(temp_r30_934, f64 *, 0x30) + temp_f0_753;
+                sp60 = temp_f0_765;
+                sp170 = temp_f0_765;
                 sp68 = temp_r30_934->unk38 + (f32) spF8;
                 temp_r30_934->unk30 = (f32) sp170;
                 sp178 = (f64) sp68;
                 temp_r30_934->unk34 = unksp174;
                 temp_r30_934->unk38 = (f32) sp178;
                 temp_r30_934->unk3C = 1.0f;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((M2C_FIELD(temp_r30_934, f32 *, 0x54) == 0.0f) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), (((((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184))) == 10000.0f) != 0))) {
+                if ((M2C_FIELD(temp_r30_934, f32 *, 0x54) <= 0.0f) || ((((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184))) <= 10000.0f)) {
                     M2C_FIELD(temp_r30_934, f32 *, 0x54) = 1.0f;
                     M2C_FIELD(temp_r30_934, s32 *, 0x50) = 3;
                     this->unkA8.unk50 = 0;
@@ -516,8 +531,7 @@ loop_56:
                         spB0 = (f64) sp10;
                         spB8 = (f64) sp18;
                         spC0.operator*(200.0f);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                        sp30 = M2C_FIELD(temp_r30_934, f64 *, 0x30) + M2C_BITWISE(f64, spC0);
                         M2C_FIELD(temp_r3_840, f64 *, 0) = sp30;
                         sp38 = temp_r30_934->unk38 + spC0.unk8;
                         M2C_FIELD(temp_r3_840, f64 *, 8) = (f64) sp38;
@@ -546,8 +560,7 @@ loop_56:
                     var_f1_897 = 0.0f;
                 }
                 temp_r30_934->Scale3x3(temp_r30_934, var_f1_897);
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (M2C_FIELD(temp_r30_934, f32 *, 0x54) == 0.0f) {
+                if (M2C_FIELD(temp_r30_934, f32 *, 0x54) <= 0.0f) {
                     M2C_FIELD(temp_r30_934, s32 *, 0x50) = 0;
                     temp_r3_922 = this->unk100;
                     this->unk100 = temp_r3_922 + 4;
@@ -571,10 +584,13 @@ void FuryFXIce2::FindInRangeTargets(float arg0) {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKModel *temp_r3_1063;
     MKModel *temp_r3_1067;
     TargetManager ***var_r29_978;
     TargetManager **temp_r30_1076;
+    f64 temp_f0_1042;
+    f64 temp_f1_1035;
     void *temp_r3_1034;
     void *temp_r3_985;
 
@@ -592,15 +608,15 @@ loop_14:
             temp_r3_985 = (*temp_r30_1076)->unk8.unk0(temp_r30_1076);
             if ((temp_r3_985 != NULL) && ((M2C_FIELD(*temp_r30_1076, u8 (**)(TargetManager **), 0x18)(temp_r30_1076) == 0) || ((((u32 (*)(TargetManager **)) (*temp_r30_1076)->unk8.unk4)(temp_r30_1076) != 0U) && (((Character *) (((Character *(*)(TargetManager **)) (*temp_r30_1076)->unk8.unk4)(temp_r30_1076)))->IsActive() != 0))) && (temp_r3_985 != M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u32 (**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0))) && (M2C_FIELD(*gMK, u8 (**)(void **, void *, s32), 0x9C)(gMK, temp_r3_985, *MKResource::sWorkingChunkID) != 0)) {
                 temp_r3_1034 = M2C_FIELD((*temp_r30_1076)->unk8.unk0(temp_r30_1076), void **, 8);
-                sp18 = M2C_FIELD(temp_r3_1034, f64 *, 0x30);
+                temp_f1_1035 = M2C_FIELD(temp_r3_1034, f64 *, 0x30);
+                sp18 = temp_f1_1035;
                 sp20 = M2C_FIELD(temp_r3_1034, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp28 = sp8;
+                temp_f0_1042 = temp_f1_1035 - this->unk98;
+                sp8 = temp_f0_1042;
+                sp28 = temp_f0_1042;
                 sp10 = (f32) sp20 - this->unkA0;
                 sp30 = (f64) sp10;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C))) == arg0) {
+                if ((((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C))) <= arg0) {
                     temp_r3_1063 = this->unk104;
                     if ((u32) M2C_FIELD(temp_r3_1063, u32 *, -4) != 0U) {
                         temp_r3_1067 = temp_r3_1063 - 4;
@@ -750,7 +766,6 @@ void FuryFXIce2::Draw() {
     DrawIceSpears();
 }
 
-#if 0 // DRAFT: undefined identifier 'sp68'
 void FuryFXIce2::Update() {
     s8 sp158;
     s32 sp154;
@@ -793,21 +808,29 @@ void FuryFXIce2::Update() {
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_1411;
     f32 temp_f28_1406;
     f32 temp_f29_1409;
     f32 temp_f31_1405;
     f32 var_f0_1382;
+    f64 temp_f0_1508;
+    f64 temp_f1_1421;
+    f64 temp_f1_1432;
     s32 temp_r0_1357;
 
     FuryFX::Update();
@@ -818,8 +841,7 @@ void FuryFXIce2::Update() {
         switch (temp_r0_1357) {                     /* irregular */
         case 1:
             TargetAndSpawnIceSpear();
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk94 == 0.0f) {
+            if (this->unk94 <= 0.0f) {
                 this->unk94 = 1.5f;
                 this->unk90 = 2;
                 return;
@@ -847,16 +869,17 @@ void FuryFXIce2::Update() {
             sp7C = 0.0f;
             spD0 = (f64) sp80;
             spC8 = (f64) sp78;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f30 */);
-            spD8 = sp68;
+            temp_f1_1421 = spC8 * 5.717499035e-315;
+            sp68 = temp_f1_1421;
+            spD8 = temp_f1_1421;
             sp70 = (f32) spD0 * 2000.0f;
             spE0 = (f64) sp70;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
-            spE8 = sp58;
+            temp_f1_1432 = temp_f1_1421 * (f64) temp_f31_1405;
+            sp58 = temp_f1_1432;
+            spE8 = temp_f1_1432;
             sp60 = (f32) spE0 * temp_f31_1405;
             spF0 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
+            sp48 = spE8 + this->unk98;
             sp20 = 0.0f;
             sp50 = (f32) spF0 + this->unkA0;
             sp18 = 0.0f;
@@ -886,7 +909,7 @@ void FuryFXIce2::Update() {
             sp154 = -1;
             sp158 = 0;
             sp90 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: ps_add $f1, $f4, $f1 */);
+            sp8 = spF8 + sp88;
             sp10 = (f32) sp100 + (f32) sp90;
             sp40 = 0.0f;
             sp38 = 0.0f;
@@ -895,21 +918,20 @@ void FuryFXIce2::Update() {
             spA8 = (f64) sp38;
             spA0 = (f64) sp10;
             spB0 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
-            spB8 = sp28;
+            temp_f0_1508 = spF8 + spA8;
+            sp28 = temp_f0_1508;
+            spB8 = temp_f0_1508;
             sp30 = (f32) sp100 + (f32) spB0;
             spC0 = (f64) sp30;
             MKCollision_RayCollide(*((MKVector3 *) &spB8), *((MKVector3 *) &sp98), (MKCollisionResult *) &sp108, (MKCollisionMode) 4, 0x0C000000);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk94 == 0.0f) {
+            if (this->unk94 <= 0.0f) {
                 this->unk94 = 0.5f;
                 this->unk90 = 3;
                 return;
             }
             break;
         case 3:
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk94 == 0.0f) {
+            if (this->unk94 <= 0.0f) {
                 this->unk94 = 0.0f;
                 this->unk90 = 0;
                 M2C_FIELD(&gb, s8 *, 0x381) = 0;
@@ -918,7 +940,6 @@ void FuryFXIce2::Update() {
         }
     }
 }
-#endif
 
 void FuryFXIce2::Resolve() {
     FuryFX::Resolve();

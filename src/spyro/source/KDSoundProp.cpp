@@ -60,8 +60,7 @@ void KDSoundProp::Update() {
         break;
     case 3:
         this->unk54 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk54 == 0.0f) {
+        if (this->unk54 <= 0.0f) {
             this->unk4C = 1;
         }
         break;

@@ -141,17 +141,13 @@ void KDSound_SoundWall::Init(KDUniformSpline *arg0, float arg1, int arg2, int ar
     this->unk68 = (s32) (this->unk28->unk8 / 50.0f);
     this->unk6C = 0;
     temp_r4_238 = this->unk28;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_r4_238->unk8 == 200.0f) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk50 == 200.0f) {
-            sp8 = 0.0f;
-            sp10.GetMeasure(0.5f, (Matrix *) temp_r4_238, KDSpline_PositionMixer);
-            this->unk40 = M2C_BITWISE(f64, sp10);
-            this->unk48 = (f64) sp10.unk8;
-            M2C_FIELD(this, f32 *, 0x44) = (f32) ((this->unk50 * 0.5f) + M2C_FIELD(this, f32 *, 0x44));
-            this->unk68 = 0;
-        }
+    if ((temp_r4_238->unk8 <= 200.0f) && (this->unk50 <= 200.0f)) {
+        sp8 = 0.0f;
+        sp10.GetMeasure(0.5f, (Matrix *) temp_r4_238, KDSpline_PositionMixer);
+        this->unk40 = M2C_BITWISE(f64, sp10);
+        this->unk48 = (f64) sp10.unk8;
+        M2C_FIELD(this, f32 *, 0x44) = (f32) ((this->unk50 * 0.5f) + M2C_FIELD(this, f32 *, 0x44));
+        this->unk68 = 0;
     }
 }
 #endif
@@ -353,8 +349,7 @@ void KDSound_AfterRumble::Update() {
             }
         } else {
             this->unk64 -= gUpdateTimeDelta;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk64 == 0.0f) {
+            if (this->unk64 <= 0.0f) {
                 this->unk68 = 2;
                 this->unk0 = KDSound_Play3d(this->unk60, (MKVector3 *) &this->unk20, 0U, -1, 0.0f, 0U);
                 this->unk4 = KDSound_Play3d(this->unk60, (MKVector3 *) &this->unk30, 0U, -1, 0.0f, 0U);
@@ -378,20 +373,26 @@ void KDSound_AfterRumble::Message(MKMessage *arg0) {
 void KDSound_AfterRumble::Trigger(MKVector3 arg0, int arg1, float arg2, float arg3) {
     f64 spC0;
     f64 spB8;
-    M2C_UNK spA8;
+    f64 spA8;
     f64 spA0;
     f64 sp98;
-    M2C_UNK sp88;
+    f64 sp88;
     f64 sp80;
     f64 sp78;
-    M2C_UNK sp68;
+    f64 sp68;
     f64 sp60;
     f64 sp58;
-    M2C_UNK sp48;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_736;
+    f64 temp_f0_777;
 
     M2C_FIELD(this, f64 *, 0x10) = (f64) M2C_FIELD(arg0, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(arg0, f64 *, 8);
@@ -402,32 +403,30 @@ void KDSound_AfterRumble::Trigger(MKVector3 arg0, int arg1, float arg2, float ar
         Stop();
     }
     MKVector(this->unk6C, 0.0f, 0.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0x20) = sp38;
+    temp_f0_736 = M2C_FIELD(this, f64 *, 0x10) + spA8;
+    sp38 = temp_f0_736;
+    M2C_FIELD(this, f64 *, 0x20) = temp_f0_736;
     sp40 = this->unk18 + spB0;
-    spB8 = sp38;
+    spB8 = temp_f0_736;
     M2C_FIELD(this, f64 *, 0x28) = (f64) sp40;
     spC0 = (f64) sp40;
     MKVector(-this->unk6C, 0.0f, 0.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp28 = M2C_FIELD(this, f64 *, 0x10) + sp88;
     M2C_FIELD(this, f64 *, 0x30) = sp28;
     sp30 = this->unk18 + sp90;
     sp98 = sp28;
     M2C_FIELD(this, f64 *, 0x38) = (f64) sp30;
     spA0 = (f64) sp30;
     MKVector(0.0f, 0.0f, this->unk6C);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0x40) = sp18;
+    temp_f0_777 = M2C_FIELD(this, f64 *, 0x10) + sp68;
+    sp18 = temp_f0_777;
+    M2C_FIELD(this, f64 *, 0x40) = temp_f0_777;
     sp20 = this->unk18 + sp70;
-    sp78 = sp18;
+    sp78 = temp_f0_777;
     M2C_FIELD(this, f64 *, 0x48) = (f64) sp20;
     sp80 = (f64) sp20;
     MKVector(0.0f, 0.0f, -this->unk6C);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = M2C_FIELD(this, f64 *, 0x10) + sp48;
     M2C_FIELD(this, f64 *, 0x50) = sp8;
     sp10 = this->unk18 + sp50;
     sp58 = sp8;
@@ -474,8 +473,7 @@ void KDSoundFlangedFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, M
         case 0:                                     /* switch 1 */
             this->unk6C += gUpdateTimeDelta * this->unk60;
             temp_f1_898 = this->unk6C;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f1_898 == 360.0f) {
+            if (temp_f1_898 >= 360.0f) {
                 this->unk6C = temp_f1_898 - 360.0f;
             }
             KDSound_SetPitch(this->unk28, (this->unk68 * (f32) sin((f64) (0.017453292f * this->unk6C))) + this->unk64);

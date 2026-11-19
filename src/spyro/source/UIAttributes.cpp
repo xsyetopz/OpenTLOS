@@ -183,14 +183,8 @@ void RenderContext::AddState(const Attributes &arg0) {
         Matrix::Multiply(&sp30, (Matrix *) this);
     }
     if (arg0.unk40 & 1) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r3, 0x0, qr0 */);
+        this->unk40 *= M2C_FIELD(&arg0, f64 *, 0);
+        this->unk48 *= arg0.unk8;
     }
 }
 #endif

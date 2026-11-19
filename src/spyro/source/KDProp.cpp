@@ -120,9 +120,14 @@ void KDProp::SetColorToGround() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
     u8 spC;
     MKCollisionInfo *sp8;
     MKCollisionInfo *temp_r4_181;
+    f64 temp_f0_211;
+    f64 temp_f0_249;
     void *temp_r3_199;
 
     this->unk88 &= ~0x40;
@@ -143,21 +148,19 @@ void KDProp::SetColorToGround() {
         sp98 = M2C_FIELD(temp_r3_199, f64 *, 0x38);
         MKModel_CalculateCentre(this->unk4, &sp80);
         unksp94 = sp80.unk4;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp70 = sp20;
+        temp_f0_211 = sp90 - spA0;
+        sp20 = temp_f0_211;
+        sp70 = temp_f0_211;
         sp28 = (f32) sp98 - (f32) spA8;
         sp78 = (f64) sp28;
         if (MKCollision_RayCollide(*((MKVector3 *) &sp90), *((MKVector3 *) &sp70), &spB0, (MKCollisionMode) 4, M2C_FIELD(&modInfo, s32 *, 0)) != 0) {
             if ((u8) M2C_FIELD(&modInfo, u8 *, 0x15) != 0) {
                 Tools_GroundColor((MKCollisionResult *) &sp50);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
+                sp10 = M2C_FIELD(&sp50, f64 *, 0) * this->unk50;
+                temp_f0_249 = M2C_FIELD(&sp50, f64 *, 8) * this->unk58;
+                sp18 = temp_f0_249;
                 sp60 = sp10;
-                sp68 = sp18;
+                sp68 = temp_f0_249;
                 MKModel_SetColor(this->unk4, *((MKVector4 *) &sp60));
             } else {
                 Tools_GroundColor((MKCollisionResult *) &sp40);
@@ -335,6 +338,8 @@ void KDProp::LoadDone() {
     MKModel *temp_r3_678;
     MKModel *temp_r3_715;
     MKResource *var_r3_603;
+    f32 temp_f31_742;
+    f64 *temp_r0_744;
     s32 var_r29_768;
     s32 var_r29_791;
     s8 *var_r29_594;
@@ -401,10 +406,10 @@ void KDProp::LoadDone() {
     if ((temp_r3_715 != NULL) && ((this->unk8 = MKModel_GetWorldMatrix(temp_r3_715), this->unk50 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70), this->unk58 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78), (((f32) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70) == 1.0f) == 0)) || (M2C_FIELD(&MKProp::loadInfo, f32 *, 0x74) != 1.0f) || ((f32) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78) != 1.0f))) {
         MKModel_SetColor(this->unk4, MKProp::loadInfo + 0x70);
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_FIELD(&MKProp::loadInfo, f32 *, 0x68) = (f32) (M2C_FIELD(&MKProp::loadInfo, f32 *, 0x68) * M2C_FIELD(temp_r3_584, f32 *, 0x68));
+    temp_f31_742 = M2C_FIELD(temp_r3_584, f32 *, 0x68);
+    temp_r0_744 = &MKProp::loadInfo + 0x60;
+    *temp_r0_744 *= (f64) temp_f31_742;
+    M2C_FIELD(&MKProp::loadInfo, f32 *, 0x68) = (f32) (M2C_FIELD(&MKProp::loadInfo, f32 *, 0x68) * temp_f31_742);
     MKProp::LoadDone();
     if (((MKAnimScript *) this->unk80 == NULL) && ((MKModel *) this->unk4 == NULL)) {
         this->unk10 = (this->unk10 & 0xFFFFFFFC) | 2;

@@ -126,13 +126,18 @@ void EnergyBeam::DrawBeam(EnergyBeam::Beam *arg1) {
     f64 spC0;
     f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -159,6 +164,11 @@ void EnergyBeam::DrawBeam(EnergyBeam::Beam *arg1) {
     f32 var_f27_293;
     f32 var_f3_401;
     f32 var_f4_334;
+    f64 temp_f0_495;
+    f64 temp_f0_506;
+    f64 temp_f0_537;
+    f64 temp_f0_548;
+    f64 temp_f1_217;
     f64 temp_f1_340;
     f64 temp_f1_346;
     f64 temp_f1_350;
@@ -185,10 +195,10 @@ void EnergyBeam::DrawBeam(EnergyBeam::Beam *arg1) {
     sp198 = sp1E0;
     temp_r3_215 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     sp1A0 = sp1E8;
-    sp168 = M2C_FIELD(temp_r3_215, f64 *, 0x30);
+    temp_f1_217 = M2C_FIELD(temp_r3_215, f64 *, 0x30);
+    sp168 = temp_f1_217;
     sp170 = M2C_FIELD(temp_r3_215, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r27, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    spA8 = temp_f1_217 - M2C_FIELD(arg1, f64 *, 0x160);
     sp188 = spA8;
     spB0 = (f32) sp170 - M2C_FIELD(arg1, f32 *, 0x168);
     sp190 = (f64) spB0;
@@ -315,12 +325,14 @@ loop_45:
         MKSetColorV(*((MKVector4 *) &sp1A8));
         temp_f27_490 = 2.0f * var_f27_293;
         MKSetTexCoord1F(0.0f, temp_f27_490);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-        spE8 = sp98;
+        temp_f0_495 = sp1B8 * (f64) temp_f24_185;
+        sp98 = temp_f0_495;
+        spE8 = temp_f0_495;
         spA0 = (f32) sp1C0 * temp_f24_185;
         spF0 = (f64) spA0;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spF8 = sp88;
+        temp_f0_506 = sp1C8 + temp_f0_495;
+        sp88 = temp_f0_506;
+        spF8 = temp_f0_506;
         sp90 = (f32) sp1D0 + (f32) spF0;
         sp100 = (f64) sp90;
         MKSetPositionV(*((MKVector3 *) &spF8));
@@ -331,12 +343,14 @@ loop_45:
         sp80 = -(f32) sp1C0;
         spB8 = (f64) sp78;
         spC0 = (f64) sp80;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-        spC8 = sp68;
+        temp_f0_537 = spB8 * (f64) temp_f24_185;
+        sp68 = temp_f0_537;
+        spC8 = temp_f0_537;
         sp70 = (f32) spC0 * temp_f24_185;
         spD0 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spD8 = sp58;
+        temp_f0_548 = sp1C8 + temp_f0_537;
+        sp58 = temp_f0_548;
+        spD8 = temp_f0_548;
         sp60 = (f32) sp1D0 + (f32) spD0;
         spE0 = (f64) sp60;
         MKSetPositionV(*((MKVector3 *) &spD8));
@@ -347,7 +361,7 @@ loop_45:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp64'
 void EnergyBeam::ResetSafePositions(EnergyBeam::Beam *arg1) {
     f64 sp68;                                       /* compiler-managed */
     f64 sp60;                                       /* compiler-managed */
@@ -356,7 +370,9 @@ void EnergyBeam::ResetSafePositions(EnergyBeam::Beam *arg1) {
     MKVector3 sp40;
     MKVector3 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 var_f3_692;
     f32 var_f4_625;
@@ -367,13 +383,16 @@ void EnergyBeam::ResetSafePositions(EnergyBeam::Beam *arg1) {
     s32 var_r0_670;
     s32 var_r28_699;
     s32 var_r30_701;
+    void *temp_r3_604;
+    void *temp_r3_727;
     void *temp_r3_734;
+    void *temp_r4_603;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_r4_603 = M2C_FIELD(arg1, void **, 0);
+    temp_r3_604 = M2C_FIELD(arg1, void **, 4);
+    sp20 = M2C_FIELD(temp_r3_604, f64 *, 0) - M2C_FIELD(temp_r4_603, f64 *, 0);
     sp60 = sp20;
-    sp28 = M2C_FIELD(M2C_FIELD(arg1, void **, 4), f32 *, 8) - M2C_FIELD(M2C_FIELD(arg1, void **, 0), f32 *, 8);
+    sp28 = M2C_FIELD(temp_r3_604, f32 *, 8) - M2C_FIELD(temp_r4_603, f32 *, 8);
     sp68 = (f64) sp28;
     var_f4_625 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
     if (var_f4_625 > 0.000001f) {
@@ -424,13 +443,13 @@ void EnergyBeam::ResetSafePositions(EnergyBeam::Beam *arg1) {
     do {
         sp30.operator*(var_f4_625 / 7.0f);
         sp40.operator*((f32) var_r28_699);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_r3_727 = M2C_FIELD(arg1, void **, 0);
+        sp10 = M2C_FIELD(temp_r3_727, f64 *, 0) + M2C_BITWISE(f64, sp40);
         temp_r3_734 = arg1 + (var_r30_701 + 0x40);
         var_r28_699 += 1;
         var_r30_701 += 0x50;
         M2C_FIELD(temp_r3_734, f64 *, 0) = sp10;
-        sp18 = M2C_FIELD(M2C_FIELD(arg1, void **, 0), f32 *, 8) + sp40.unk8;
+        sp18 = M2C_FIELD(temp_r3_727, f32 *, 8) + sp40.unk8;
         sp50 = sp10;
         sp58 = (f64) sp18;
         M2C_FIELD(temp_r3_734, f64 *, 8) = (f64) sp18;
@@ -445,13 +464,18 @@ void EnergyBeam::UpdateTargetVelocities(EnergyBeam::Beam *arg1) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f0_813;
     f32 temp_f0_820;
     f32 temp_f1_812;
     f32 temp_f30_787;
     f32 temp_f31_776;
     f32 temp_f3_814;
+    f64 *temp_r0_827;
+    f64 temp_f0_791;
+    f64 temp_f0_802;
     s32 var_r30_778;
     s32 var_r31_779;
     void *temp_r3_785;
@@ -462,27 +486,25 @@ void EnergyBeam::UpdateTargetVelocities(EnergyBeam::Beam *arg1) {
     do {
         temp_r3_785 = arg1 + var_r31_779;
         temp_f30_787 = MKRand_Float(&gViewSeed, 50.0f, 100.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp28 = sp8;
+        temp_f0_791 = M2C_FIELD(temp_r3_785, f64 *, 0x40) - M2C_FIELD(temp_r3_785, f64 *, 0x20);
+        sp8 = temp_f0_791;
+        sp28 = temp_f0_791;
         sp10 = M2C_FIELD(temp_r3_785, f32 *, 0x48) - M2C_FIELD(temp_r3_785, f32 *, 0x28);
         sp30 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        M2C_FIELD(temp_r3_785, f64 *, 0x50) = sp18;
+        temp_f0_802 = temp_f0_791 * (f64) temp_f30_787;
+        sp18 = temp_f0_802;
+        M2C_FIELD(temp_r3_785, f64 *, 0x50) = temp_f0_802;
         sp20 = (f32) sp30 * temp_f30_787;
-        sp38 = sp18;
+        sp38 = temp_f0_802;
         M2C_FIELD(temp_r3_785, f64 *, 0x58) = (f64) sp20;
         temp_f1_812 = (f32) M2C_FIELD(temp_r3_785, f64 *, 0x50);
         temp_f0_813 = M2C_FIELD(temp_r3_785, f32 *, 0x54);
         temp_f3_814 = (f32) M2C_FIELD(temp_r3_785, f64 *, 0x58);
         sp40 = (f64) sp20;
         temp_f0_820 = 100.0f * M2C_FIELD(arg1, f32 *, 0xC);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (((temp_f3_814 * temp_f3_814) + ((temp_f1_812 * temp_f1_812) + (temp_f0_813 * temp_f0_813))) == (temp_f0_820 * temp_f0_820)) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r0, 0x0, qr0 */);
+        if (((temp_f3_814 * temp_f3_814) + ((temp_f1_812 * temp_f1_812) + (temp_f0_813 * temp_f0_813))) >= (temp_f0_820 * temp_f0_820)) {
+            temp_r0_827 = temp_r3_785 + 0x30;
+            *temp_r0_827 *= (f64) temp_f31_776;
             M2C_FIELD(temp_r3_785, f32 *, 0x38) = (f32) (M2C_FIELD(temp_r3_785, f32 *, 0x38) * temp_f31_776);
         }
         var_r30_778 += 1;
@@ -530,7 +552,9 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
     MKVector3 sp38;
     M2C_UNK sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKHeap *temp_r29_907;
     MKHeap *temp_r6_898;
     MKHeap *temp_r6_905;
@@ -563,8 +587,7 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
             temp_f27_932 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f27_932, temp_f28_927);
             sp68.operator*(2500.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            sp18 = sp68 * (f64) temp_f30_924;
             temp_r28_948 = temp_r29_907 + var_r31_919;
             M2C_FIELD(temp_r28_948, f64 *, 0x30) = sp18;
             sp20 = sp68.unk8 * temp_f30_924;
@@ -575,8 +598,7 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
             temp_f28_967 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_967, temp_f27_962);
             sp38.operator*(200.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp8 = M2C_FIELD(temp_r28_948, f64 *, 0x40) + M2C_BITWISE(f64, sp38);
             M2C_FIELD(temp_r28_948, f64 *, 0x20) = sp8;
             sp10 = M2C_FIELD(temp_r28_948, f32 *, 0x48) + sp38.unk8;
             sp48 = sp8;
@@ -592,7 +614,7 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: illegal type
 void EnergyBeam::Update() {
     f64 spA0;
     f64 sp98;
@@ -602,18 +624,27 @@ void EnergyBeam::Update() {
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKHeap *temp_r30_1204;
     MKHeap *temp_r4_1065;
     MKHeap *var_r27_1048;
     f32 temp_f26_1152;
     f32 temp_f27_1147;
+    f64 *temp_r0_1113;
+    f64 *temp_r28_1092;
+    f64 temp_f0_1090;
+    f64 temp_f0_1111;
+    f64 temp_f0_1177;
     s32 temp_r4_1076;
     s32 var_r26_1060;
     s32 var_r31_1061;
@@ -644,45 +675,40 @@ loop_11:
                         M2C_FIELD(temp_r3_1078, f64 *, 8) = (f64) M2C_FIELD(temp_r4_1076, f64 *, 8);
                     } else {
                         temp_r29_1086 = temp_r30_1204 + var_r31_1061;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                        sp88 = sp38;
+                        temp_f0_1090 = M2C_FIELD(temp_r29_1086, f64 *, 0x50) * (f64) gUpdateTimeDelta;
+                        sp38 = temp_f0_1090;
+                        temp_r28_1092 = temp_r29_1086 + 0x30;
+                        sp88 = temp_f0_1090;
                         sp40 = M2C_FIELD(temp_r29_1086, f32 *, 0x58) * gUpdateTimeDelta;
                         sp90 = (f64) sp40;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
+                        *temp_r28_1092 += temp_f0_1090;
                         M2C_FIELD(temp_r29_1086, f32 *, 0x38) = (f32) (M2C_FIELD(temp_r29_1086, f32 *, 0x38) + (f32) sp90);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                        sp78 = sp28;
+                        temp_f0_1111 = *temp_r28_1092 * (f64) gUpdateTimeDelta;
+                        sp28 = temp_f0_1111;
+                        temp_r0_1113 = temp_r29_1086 + 0x20;
+                        sp78 = temp_f0_1111;
                         sp30 = M2C_FIELD(temp_r29_1086, f32 *, 0x38) * gUpdateTimeDelta;
                         sp80 = (f64) sp30;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r0, 0x0, qr0 */);
+                        *temp_r0_1113 += temp_f0_1111;
                         M2C_FIELD(temp_r29_1086, f32 *, 0x28) = (f32) (M2C_FIELD(temp_r29_1086, f32 *, 0x28) + (f32) sp80);
                         M2C_FIELD(temp_r29_1086, f32 *, 0x60) = (f32) (M2C_FIELD(temp_r29_1086, f32 *, 0x60) - gUpdateTimeDelta);
-                        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                        if (M2C_FIELD(temp_r29_1086, f32 *, 0x60) == 0.0f) {
+                        if (M2C_FIELD(temp_r29_1086, f32 *, 0x60) <= 0.0f) {
                             M2C_FIELD(temp_r29_1086, f32 *, 0x60) = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
                             temp_f27_1147 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                             temp_f26_1152 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                             MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f26_1152, temp_f27_1147);
-                            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                            sp18 = sp58 * 5.180653787e-315;
                             sp98 = sp18;
                             sp20 = sp60 * 0.25f;
                             sp68 = sp18;
                             sp70 = (f64) sp20;
                             spA0 = (f64) sp20;
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                            sp48 = sp8;
+                            temp_f0_1177 = sp98 * 5.72858887e-315;
+                            sp8 = temp_f0_1177;
+                            sp48 = temp_f0_1177;
                             sp10 = (f32) spA0 * 2500.0f;
                             sp50 = (f64) sp10;
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
+                            *temp_r28_1092 += temp_f0_1177;
                             M2C_FIELD(temp_r29_1086, f32 *, 0x38) = (f32) (M2C_FIELD(temp_r29_1086, f32 *, 0x38) + (f32) sp50);
                         }
                     }

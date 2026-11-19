@@ -206,8 +206,7 @@ s32 EarthDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_332;
 
     temp_r4_332 = this->unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_332, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_332, u8 *, 0x3BF) != 0)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_332, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_332, u8 *, 0x3BF) != 0)) {
         M2C_FIELD(temp_r4_332, u8 *, 0x3BF) = 0U;
         return 1;
     }
@@ -218,8 +217,7 @@ s32 EarthDojoLesson::HasFailedBreath1() {
     DojoController *temp_r4_355;
 
     temp_r4_355 = this->unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_355, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_355, u8 *, 0x3BF) != 0)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_355, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_355, u8 *, 0x3BF) != 0)) {
         M2C_FIELD(temp_r4_355, u8 *, 0x3BF) = 0U;
         return 1;
     }
@@ -273,14 +271,17 @@ void EarthDojoLesson::SetupFurySpawnPoints() {
     MKVector3 sp70;
     MKVector3 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     DojoController *temp_r3_469;
     DojoController *temp_r3_475;
@@ -334,9 +335,7 @@ void EarthDojoLesson::SetupFurySpawnPoints() {
         sp108 = temp_r3_469->unk388;
     }
     temp_r3_475 = this->unk4;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp50 = M2C_FIELD(temp_r3_475, f64 *, 0x378) - M2C_FIELD(temp_r3_475, f64 *, 0x388);
     sp130 = sp50;
     sp58 = temp_r3_475->unk378.unk0 - (f32) M2C_FIELD(temp_r3_475, f64 *, 0x390);
     sp138 = (f64) sp58;
@@ -402,8 +401,7 @@ loop_26:
             sp128 = (f64) sp48;
             spB0.operator*(temp_f28_449);
             temp_r6_623 = this->unk4;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp30 = M2C_FIELD(temp_r6_623, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
             sp38 = temp_r6_623->unk378.unk0 + spB0.unk8;
             spC0 = sp30;
@@ -448,8 +446,7 @@ loop_31:
             sp128 = (f64) sp28;
             sp70.operator*(temp_f28_449);
             temp_r6_735 = this->unk4;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp10 = M2C_FIELD(temp_r6_735, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
             sp18 = temp_r6_735->unk378.unk0 + sp70.unk8;
             sp80 = sp10;
@@ -682,8 +679,7 @@ void EarthDojoLesson::IncrementNumInterations() {
                 return;
             }
         } else {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) == M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
+            if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
                 DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
                 spC = 0;
                 spC = 0;
@@ -937,8 +933,7 @@ s32 IceDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_1826;
 
     temp_r4_1826 = this->unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_1826, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_1826, u8 *, 0x3BF) != 0)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_1826, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_1826, u8 *, 0x3BF) != 0)) {
         M2C_FIELD(temp_r4_1826, u8 *, 0x3BF) = 0U;
         return 1;
     }
@@ -949,8 +944,7 @@ s32 IceDojoLesson::HasFailedBreath1() {
     DojoController *temp_r4_1849;
 
     temp_r4_1849 = this->unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_1849, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_1849, u8 *, 0x3BF) != 0)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_1849, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_1849, u8 *, 0x3BF) != 0)) {
         M2C_FIELD(temp_r4_1849, u8 *, 0x3BF) = 0U;
         return 1;
     }
@@ -1004,14 +998,17 @@ void IceDojoLesson::SetupFurySpawnPoints() {
     MKVector3 sp70;
     MKVector3 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     DojoController *temp_r3_1963;
     DojoController *temp_r3_1969;
@@ -1065,9 +1062,7 @@ void IceDojoLesson::SetupFurySpawnPoints() {
         sp108 = temp_r3_1963->unk388;
     }
     temp_r3_1969 = this->unk4;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp50 = M2C_FIELD(temp_r3_1969, f64 *, 0x378) - M2C_FIELD(temp_r3_1969, f64 *, 0x388);
     sp130 = sp50;
     sp58 = temp_r3_1969->unk378.unk0 - (f32) M2C_FIELD(temp_r3_1969, f64 *, 0x390);
     sp138 = (f64) sp58;
@@ -1133,8 +1128,7 @@ loop_26:
             sp128 = (f64) sp48;
             spB0.operator*(temp_f28_1943);
             temp_r6_2117 = this->unk4;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp30 = M2C_FIELD(temp_r6_2117, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
             sp38 = temp_r6_2117->unk378.unk0 + spB0.unk8;
             spC0 = sp30;
@@ -1179,8 +1173,7 @@ loop_31:
             sp128 = (f64) sp28;
             sp70.operator*(temp_f28_1943);
             temp_r6_2229 = this->unk4;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp10 = M2C_FIELD(temp_r6_2229, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
             sp18 = temp_r6_2229->unk378.unk0 + sp70.unk8;
             sp80 = sp10;
@@ -1439,8 +1432,7 @@ void IceDojoLesson::IncrementNumInterations() {
                 return;
             }
         } else {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) == M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
+            if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
                 DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
                 spC = 0;
                 spC = 0;
@@ -1607,7 +1599,7 @@ u8 ElectricDojoLesson::HasSucceededFury() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_2532'
+#if 0 // DRAFT: expression syntax error
 u8 ElectricDojoLesson::HasSucceededBreath2() {
     s32 spC;
     s32 sp8;
@@ -1784,12 +1776,9 @@ s32 ElectricDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_3531;
 
     temp_r4_3531 = this->unk4;
-    if ((u8) M2C_FIELD(temp_r4_3531, u8 *, 0x3BF) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_3531, f32 *, 0x398)) {
-            M2C_FIELD(temp_r4_3531, u8 *, 0x3BF) = 0U;
-            return 1;
-        }
+    if (((u8) M2C_FIELD(temp_r4_3531, u8 *, 0x3BF) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_3531, f32 *, 0x398))) {
+        M2C_FIELD(temp_r4_3531, u8 *, 0x3BF) = 0U;
+        return 1;
     }
     return 0;
 }
@@ -1798,12 +1787,9 @@ s32 ElectricDojoLesson::HasFailedBreath1() {
     DojoController *temp_r4_3554;
 
     temp_r4_3554 = this->unk4;
-    if ((u8) M2C_FIELD(temp_r4_3554, u8 *, 0x3BF) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_3554, f32 *, 0x398)) {
-            M2C_FIELD(temp_r4_3554, u8 *, 0x3BF) = 0U;
-            return 1;
-        }
+    if (((u8) M2C_FIELD(temp_r4_3554, u8 *, 0x3BF) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_3554, f32 *, 0x398))) {
+        M2C_FIELD(temp_r4_3554, u8 *, 0x3BF) = 0U;
+        return 1;
     }
     return 0;
 }
@@ -1855,14 +1841,17 @@ void ElectricDojoLesson::SetupFurySpawnPoints() {
     MKVector3 sp70;
     MKVector3 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     DojoController *temp_r3_3668;
     DojoController *temp_r3_3674;
@@ -1916,9 +1905,7 @@ void ElectricDojoLesson::SetupFurySpawnPoints() {
         sp108 = temp_r3_3668->unk388;
     }
     temp_r3_3674 = this->unk4;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp50 = M2C_FIELD(temp_r3_3674, f64 *, 0x378) - M2C_FIELD(temp_r3_3674, f64 *, 0x388);
     sp130 = sp50;
     sp58 = temp_r3_3674->unk378.unk0 - (f32) M2C_FIELD(temp_r3_3674, f64 *, 0x390);
     sp138 = (f64) sp58;
@@ -1984,8 +1971,7 @@ loop_26:
             sp128 = (f64) sp48;
             spB0.operator*(temp_f28_3648);
             temp_r6_3822 = this->unk4;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp30 = M2C_FIELD(temp_r6_3822, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
             sp38 = temp_r6_3822->unk378.unk0 + spB0.unk8;
             spC0 = sp30;
@@ -2030,8 +2016,7 @@ loop_31:
             sp128 = (f64) sp28;
             sp70.operator*(temp_f28_3648);
             temp_r6_3934 = this->unk4;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp10 = M2C_FIELD(temp_r6_3934, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
             sp18 = temp_r6_3934->unk378.unk0 + sp70.unk8;
             sp80 = sp10;
@@ -2079,7 +2064,7 @@ s32 ElectricDojoLesson::IsBreath2Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier 'unksp64'
 void ElectricDojoLesson::SetupBreath2SpawnPoints() {
     CharacterGraphNode *sp70;
     f64 sp68;                                       /* compiler-managed */
@@ -2093,6 +2078,7 @@ void ElectricDojoLesson::SetupBreath2SpawnPoints() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     DojoController *temp_r3_4070;
     DojoController *temp_r3_4191;
@@ -2101,6 +2087,7 @@ void ElectricDojoLesson::SetupBreath2SpawnPoints() {
     DojoController *temp_r3_4233;
     f32 var_f4_4081;
     f32 var_f5_4094;
+    f64 temp_f0_4075;
     f64 temp_f1_4099;
     f64 temp_f1_4105;
     f64 temp_f1_4109;
@@ -2109,11 +2096,10 @@ void ElectricDojoLesson::SetupBreath2SpawnPoints() {
     s32 var_r0_4138;
 
     temp_r3_4070 = this->unk4;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_4075 = M2C_FIELD(temp_r3_4070, f64 *, 0x388) - M2C_FIELD(temp_r3_4070, f64 *, 0x378);
+    sp10 = temp_f0_4075;
     var_f4_4081 = 0.0f;
-    sp60 = sp10;
+    sp60 = temp_f0_4075;
     sp18 = M2C_FIELD(temp_r3_4070, f32 *, 0x390) - temp_r3_4070->unk378.unk0;
     unksp64 = 0.0f;
     sp68 = (f64) sp18;
@@ -2213,7 +2199,7 @@ s32 ElectricDojoLesson::IsBreath1Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp40'
+#if 0 // DRAFT: undefined identifier 'unkspB4'
 void ElectricDojoLesson::SetupBreath1SpawnPoints() {
     CharacterGraphNode *spC0;
     f64 spB8;                                       /* compiler-managed */
@@ -2231,6 +2217,7 @@ void ElectricDojoLesson::SetupBreath1SpawnPoints() {
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -2255,6 +2242,7 @@ void ElectricDojoLesson::SetupBreath1SpawnPoints() {
     f32 temp_f4_4413;
     f32 var_f4_4341;
     f32 var_f5_4328;
+    f64 temp_f0_4322;
     f64 temp_f1_4346;
     f64 temp_f1_4352;
     f64 temp_f1_4356;
@@ -2266,11 +2254,10 @@ void ElectricDojoLesson::SetupBreath1SpawnPoints() {
     switch (temp_r0_4309) {                         /* switch 1; irregular */
     case 0:                                         /* switch 1 */
         temp_r3_4317 = this->unk4;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_f0_4322 = M2C_FIELD(temp_r3_4317, f64 *, 0x388) - M2C_FIELD(temp_r3_4317, f64 *, 0x378);
+        sp40 = temp_f0_4322;
         var_f5_4328 = 0.0f;
-        spB0 = sp40;
+        spB0 = temp_f0_4322;
         sp48 = M2C_FIELD(temp_r3_4317, f32 *, 0x390) - temp_r3_4317->unk378.unk0;
         unkspB4 = 0.0f;
         spB8 = (f64) sp48;
@@ -2468,8 +2455,7 @@ void ElectricDojoLesson::IncrementNumInterations() {
                 return;
             }
         } else {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) == M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
+            if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
                 DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
                 spC = 0;
                 spC = 0;
@@ -3043,12 +3029,9 @@ s32 FireDojoLesson::HasFailedBreath2() {
     DojoController *temp_r4_5995;
 
     temp_r4_5995 = this->unk4;
-    if ((u8) M2C_FIELD(temp_r4_5995, u8 *, 0x3BF) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_5995, f32 *, 0x398)) {
-            M2C_FIELD(temp_r4_5995, u8 *, 0x3BF) = 0U;
-            return 1;
-        }
+    if (((u8) M2C_FIELD(temp_r4_5995, u8 *, 0x3BF) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_5995, f32 *, 0x398))) {
+        M2C_FIELD(temp_r4_5995, u8 *, 0x3BF) = 0U;
+        return 1;
     }
     return 0;
 }
@@ -3057,8 +3040,7 @@ s32 FireDojoLesson::HasFailedBreath1() {
     DojoController *temp_r4_6018;
 
     temp_r4_6018 = this->unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_6018, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_6018, u8 *, 0x3BF) != 0)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_6018, f32 *, 0x398)) && ((u8) M2C_FIELD(temp_r4_6018, u8 *, 0x3BF) != 0)) {
         M2C_FIELD(temp_r4_6018, u8 *, 0x3BF) = 0U;
         return 1;
     }
@@ -3073,21 +3055,15 @@ s32 FireDojoLesson::HasFailedMeleeKnockBack() {
     temp_r0_6041 = this->unk10;
     if ((temp_r0_6041 != 2) && (temp_r0_6041 != 3)) {
         temp_r5_6046 = this->unk4;
-        if ((u8) M2C_FIELD(temp_r5_6046, u8 *, 0x3C2) != 0) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&gb, f32 *, 0x30C) == temp_r5_6046->unk3A4) {
-                M2C_FIELD(temp_r5_6046, u8 *, 0x3C2) = 0U;
-                return 1;
-            }
+        if (((u8) M2C_FIELD(temp_r5_6046, u8 *, 0x3C2) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r5_6046->unk3A4)) {
+            M2C_FIELD(temp_r5_6046, u8 *, 0x3C2) = 0U;
+            return 1;
         }
     }
     temp_r4_6062 = this->unk4;
-    if ((u8) M2C_FIELD(temp_r4_6062, u8 *, 0x3BF) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_6062, f32 *, 0x398)) {
-            M2C_FIELD(temp_r4_6062, u8 *, 0x3BF) = 0U;
-            return 1;
-        }
+    if (((u8) M2C_FIELD(temp_r4_6062, u8 *, 0x3BF) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_6062, f32 *, 0x398))) {
+        M2C_FIELD(temp_r4_6062, u8 *, 0x3BF) = 0U;
+        return 1;
     }
     return 0;
 }
@@ -3107,12 +3083,9 @@ s32 FireDojoLesson::HasFailedMeleeKnockUp() {
         }
     }
     temp_r4_6106 = this->unk4;
-    if ((u8) M2C_FIELD(temp_r4_6106, u8 *, 0x3BF) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_6106, f32 *, 0x398)) {
-            M2C_FIELD(temp_r4_6106, u8 *, 0x3BF) = 0U;
-            return 1;
-        }
+    if (((u8) M2C_FIELD(temp_r4_6106, u8 *, 0x3BF) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_6106, f32 *, 0x398))) {
+        M2C_FIELD(temp_r4_6106, u8 *, 0x3BF) = 0U;
+        return 1;
     }
     return 0;
 }
@@ -3168,14 +3141,17 @@ void FireDojoLesson::SetupFurySpawnPoints() {
     MKVector3 sp70;
     MKVector3 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     DojoController *temp_r3_6233;
     DojoController *temp_r3_6239;
@@ -3229,9 +3205,7 @@ void FireDojoLesson::SetupFurySpawnPoints() {
         sp108 = temp_r3_6233->unk388;
     }
     temp_r3_6239 = this->unk4;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp50 = M2C_FIELD(temp_r3_6239, f64 *, 0x378) - M2C_FIELD(temp_r3_6239, f64 *, 0x388);
     sp130 = sp50;
     sp58 = temp_r3_6239->unk378.unk0 - (f32) M2C_FIELD(temp_r3_6239, f64 *, 0x390);
     sp138 = (f64) sp58;
@@ -3297,8 +3271,7 @@ loop_26:
             sp128 = (f64) sp48;
             spB0.operator*(temp_f28_6213);
             temp_r6_6387 = this->unk4;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp30 = M2C_FIELD(temp_r6_6387, f64 *, 0x378) + M2C_BITWISE(f64, spB0);
             sp110 = sp30;
             sp38 = temp_r6_6387->unk378.unk0 + spB0.unk8;
             spC0 = sp30;
@@ -3343,8 +3316,7 @@ loop_31:
             sp128 = (f64) sp28;
             sp70.operator*(temp_f28_6213);
             temp_r6_6499 = this->unk4;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp10 = M2C_FIELD(temp_r6_6499, f64 *, 0x378) + M2C_BITWISE(f64, sp70);
             sp110 = sp10;
             sp18 = temp_r6_6499->unk378.unk0 + sp70.unk8;
             sp80 = sp10;
@@ -3392,7 +3364,7 @@ s32 FireDojoLesson::IsBreath2Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp54'
 void FireDojoLesson::SetupBreath2SpawnPoints() {
     CharacterGraphNode *sp60;
     f64 sp58;                                       /* compiler-managed */
@@ -3402,6 +3374,7 @@ void FireDojoLesson::SetupBreath2SpawnPoints() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -3415,6 +3388,7 @@ void FireDojoLesson::SetupBreath2SpawnPoints() {
     f32 temp_f6_6739;
     f32 var_f4_6654;
     f32 var_f5_6667;
+    f64 temp_f0_6648;
     f64 temp_f1_6672;
     f64 temp_f1_6678;
     f64 temp_f1_6682;
@@ -3426,11 +3400,10 @@ void FireDojoLesson::SetupBreath2SpawnPoints() {
     switch (temp_r0_6635) {                         /* switch 1; irregular */
     case 0:                                         /* switch 1 */
         temp_r3_6643 = this->unk4;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_f0_6648 = M2C_FIELD(temp_r3_6643, f64 *, 0x388) - M2C_FIELD(temp_r3_6643, f64 *, 0x378);
+        sp20 = temp_f0_6648;
         var_f4_6654 = 0.0f;
-        sp50 = sp20;
+        sp50 = temp_f0_6648;
         sp28 = M2C_FIELD(temp_r3_6643, f32 *, 0x390) - temp_r3_6643->unk378.unk0;
         unksp54 = 0.0f;
         sp58 = (f64) sp28;
@@ -3582,7 +3555,7 @@ s32 FireDojoLesson::IsMeleeKnockBackComplete() {
     return this->unk10 > 3;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp70'
+#if 0 // DRAFT: undefined identifier 'unksp184'
 void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
     CharacterGraphNode *sp190;
     f64 sp188;                                      /* compiler-managed */
@@ -3620,12 +3593,19 @@ void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
     f64 sp88;
     f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     DojoController *temp_r3_6971;
     DojoController *temp_r3_7097;
@@ -3641,19 +3621,24 @@ void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
     f32 temp_f5_7200;
     f32 var_f6_6982;
     f32 var_f7_6995;
+    f64 temp_f0_7232;
+    f64 temp_f2_6976;
+    f64 temp_f2_7198;
+    f64 temp_f2_7209;
     f64 temp_f3_7000;
     f64 temp_f3_7006;
     f64 temp_f3_7010;
+    f64 temp_f6_7197;
+    f64 temp_f7_7196;
     s32 temp_r0_7068;
     s32 temp_r3_7029;
     s32 var_r0_7039;
 
     temp_r3_6971 = this->unk4;
-    M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
+    temp_f2_6976 = M2C_FIELD(temp_r3_6971, f64 *, 0x388) - M2C_FIELD(temp_r3_6971, f64 *, 0x378);
+    sp70 = temp_f2_6976;
     var_f6_6982 = 0.0f;
-    sp180 = sp70;
+    sp180 = temp_f2_6976;
     sp78 = M2C_FIELD(temp_r3_6971, f32 *, 0x390) - temp_r3_6971->unk378.unk0;
     unksp184 = 0.0f;
     sp188 = (f64) sp78;
@@ -3736,29 +3721,32 @@ void FireDojoLesson::SetupMeleeKnockBackSpawnPoints() {
     case 3:                                         /* switch 2 */
         temp_r3_7191 = this->unk4;
         temp_f1_7192 = M2C_BITWISE(f32, temp_r3_7191->unk720);
-        M2C_ERROR(/* unknown instruction: psq_lx $f7, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f6, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f2, $f7, $f6 */);
+        temp_f7_7196 = M2C_FIELD(temp_r3_7191, f64 *, 0x378);
+        temp_f6_7197 = M2C_FIELD(temp_r3_7191, f64 *, 0x388);
+        temp_f2_7198 = temp_f7_7196 - temp_f6_7197;
+        sp60 = temp_f2_7198;
         temp_f5_7200 = temp_r3_7191->unk378.unk0;
         temp_f4_7203 = temp_f5_7200 - M2C_FIELD(temp_r3_7191, f32 *, 0x390);
-        spE0 = sp60;
+        spE0 = temp_f2_7198;
         sp68 = temp_f4_7203;
         spE8 = (f64) sp68;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f0 */);
-        spF0 = sp50;
+        temp_f2_7209 = temp_f2_7198 * (f64) temp_f1_7192;
+        sp50 = temp_f2_7209;
+        spF0 = temp_f2_7209;
         sp58 = (f32) spE8 * temp_f1_7192;
         spF8 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f7, $f0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f7, $f6 */);
+        sp40 = temp_f7_7196 + spF0;
         sp48 = temp_f5_7200 + (f32) spF8;
+        sp30 = temp_f7_7196 - temp_f6_7197;
         sp38 = temp_f4_7203;
         spC0 = sp30;
         spC8 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f1 */);
-        spD0 = sp20;
+        temp_f0_7232 = spC0 * (f64) temp_f1_7192;
+        sp20 = temp_f0_7232;
+        spD0 = temp_f0_7232;
         sp28 = (f32) spC8 * temp_f1_7192;
         spD8 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f7, $f0 */);
+        sp10 = temp_f7_7196 - temp_f0_7232;
         spA0 = (f64) sp180;
         spA8 = (f64) sp188;
         spB0 = sp40;
@@ -3826,7 +3814,7 @@ s32 FireDojoLesson::IsMeleeKnockUpComplete() {
     return this->unk10 > 3;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp30'
+#if 0 // DRAFT: undefined identifier 'unksp144'
 void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
     f64 sp148;                                      /* compiler-managed */
     f64 sp140;                                      /* compiler-managed */
@@ -3863,6 +3851,7 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -3887,6 +3876,7 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
     f32 temp_f31_7579;
     f32 var_f4_7396;
     f32 var_f5_7409;
+    f64 temp_f0_7390;
     f64 temp_f1_7414;
     f64 temp_f1_7420;
     f64 temp_f1_7424;
@@ -3895,11 +3885,10 @@ void FireDojoLesson::SetupMeleeKnockUpSpawnPoints() {
     s32 var_r0_7453;
 
     temp_r3_7385 = this->unk4;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_7390 = M2C_FIELD(temp_r3_7385, f64 *, 0x388) - M2C_FIELD(temp_r3_7385, f64 *, 0x378);
+    sp30 = temp_f0_7390;
     var_f4_7396 = 0.0f;
-    sp140 = sp30;
+    sp140 = temp_f0_7390;
     sp38 = M2C_FIELD(temp_r3_7385, f32 *, 0x390) - temp_r3_7385->unk378.unk0;
     unksp144 = 0.0f;
     sp148 = (f64) sp38;
@@ -4168,8 +4157,7 @@ void FireDojoLesson::IncrementNumInterations() {
                 return;
             }
         } else {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) == M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
+            if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
                 DialogBox_ColorButtons(M2C_FIELD(gpTranslation_StringArray, s8 **, 0x6DC), (s8 *) &this->unk4->unk460, 0, 0x200);
                 spC = 0;
                 spC = 0;
@@ -4500,8 +4488,7 @@ void DojoController::StateDojoFinishExit() {
 
 #if 0 // DRAFT: expression syntax error
 void DojoController::StateDojoFinishUpdate() {
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unk3A8) {
+    if (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk3A8) {
         this->unk310.unk4C.SetState(this, 7, 0U);
         M2C_FIELD(&gb, s8 *, 5) = 1;
         M2C_FIELD(&gb, s8 *, 6) = 1;
@@ -4612,8 +4599,7 @@ void DojoController::StateDojoSuccessUpdate() {
     s32 temp_r4_9002;
     void **temp_r3_9001;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unk66C) {
+    if (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk66C) {
         sp8C = NULL;
         sp88 = 0x163;
         sp8C = this;
@@ -4621,8 +4607,7 @@ void DojoController::StateDojoSuccessUpdate() {
     }
     this->unk2C0.GetNumberActive();
     if (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) && (this->unk310.GetNumberActive(), (((s32) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0))) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 == 0)) {
+        if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 == 0)) {
             if ((u8) this->unk3BC == 0) {
                 switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
                 case 0:
@@ -4836,15 +4821,13 @@ void DojoController::StateDojoFailUpdate() {
     s32 temp_r4_9411;
     void **temp_r3_9410;
 
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unk66C) {
+    if (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk66C) {
         sp8C = NULL;
         sp88 = 0x163;
         sp8C = this;
         InGame_SystemMessage((MKMessage *) &sp88);
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 == 0)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsEventPlaying(this->unk7E4) == 0) && ((s32) this->unk7E4 == 0)) {
         if ((u8) this->unk3BC == 0) {
             switch ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x18C)) { /* irregular */
             case 0:
@@ -5058,47 +5041,39 @@ void DojoController::StateDojoFightUpdate() {
         } else {
             var_f2_9752 = 0.0f;
         }
-        if (var_f2_9752 != 0.0f) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((1.0f + var_f2_9752) == this->unk814) {
-                this->unk814 = var_f2_9752;
-                this->unk818 = KDSound_Play(GS_DojoTickTock, 0U, -1);
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (this->unk814 == 10.0f) {
-                    this->unk814 = M2C_BITWISE(f32, KDSound_Play(GS_DojoWarningBeep, 0U, -1));
-                    temp_f1_9785 = this->unk814;
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if (temp_f1_9785 == 10.0f) {
-                        KDSound_SetPitch(M2C_BITWISE(s32, this->unk814), (0.05f * (10.0f - temp_f1_9785)) + 1.0f);
-                    }
+        if ((var_f2_9752 != 0.0f) && ((1.0f + var_f2_9752) <= this->unk814)) {
+            this->unk814 = var_f2_9752;
+            this->unk818 = KDSound_Play(GS_DojoTickTock, 0U, -1);
+            if (this->unk814 <= 10.0f) {
+                this->unk814 = M2C_BITWISE(f32, KDSound_Play(GS_DojoWarningBeep, 0U, -1));
+                temp_f1_9785 = this->unk814;
+                if (temp_f1_9785 <= 10.0f) {
+                    KDSound_SetPitch(M2C_BITWISE(s32, this->unk814), (0.05f * (10.0f - temp_f1_9785)) + 1.0f);
                 }
             }
         }
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x3BE) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unk3A8) {
-            temp_r3_9806 = this->unk70;
-            if (M2C_FIELD(M2C_FIELD(temp_r3_9806, void **, 0), u8 (**)(void **), 0x24)(temp_r3_9806) != 0) {
-                temp_r3_9813 = this->unk70;
-                if (((s32) M2C_FIELD(temp_r3_9813, s32 *, 0x14) == 0) && ((temp_r4_9817 = M2C_FIELD(temp_r3_9813, s32 *, 8), ((temp_r4_9817 == 1) != 0)) || (temp_r4_9817 == 2))) {
-                    DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((temp_r4_9817 - 1) * 4) + M2C_FIELD(temp_r3_9813, s32 *, 0x10) + 0x1AF) * 4)), (s8 *) &this->unk460, this->unk668, 0x200);
-                }
-                temp_r3_9836 = this->unk70;
-                temp_r30_9838 = M2C_FIELD(temp_r3_9836, s32 *, 0x10);
-                M2C_FIELD(M2C_FIELD(temp_r3_9836, void **, 0), M2C_UNK (**)(void **), 0x28)(temp_r3_9836);
-                temp_r3_9842 = this->unk70;
-                if (temp_r30_9838 != (s32) M2C_FIELD(temp_r3_9842, s32 *, 0x10)) {
-                    if (M2C_FIELD(M2C_FIELD(temp_r3_9842, void **, 0), u8 (**)(), 0x1C)() != 0) {
-                        this->unk310.unk4C.SetState(this, 6, 0U);
-                        return;
-                    }
-                    this->unk310.unk4C.SetState(this, 4, 0U);
+    if (((u8) M2C_FIELD(this, u8 *, 0x3BE) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk3A8)) {
+        temp_r3_9806 = this->unk70;
+        if (M2C_FIELD(M2C_FIELD(temp_r3_9806, void **, 0), u8 (**)(void **), 0x24)(temp_r3_9806) != 0) {
+            temp_r3_9813 = this->unk70;
+            if (((s32) M2C_FIELD(temp_r3_9813, s32 *, 0x14) == 0) && ((temp_r4_9817 = M2C_FIELD(temp_r3_9813, s32 *, 8), ((temp_r4_9817 == 1) != 0)) || (temp_r4_9817 == 2))) {
+                DialogBox_ColorButtons(*(gpTranslation_StringArray + ((((temp_r4_9817 - 1) * 4) + M2C_FIELD(temp_r3_9813, s32 *, 0x10) + 0x1AF) * 4)), (s8 *) &this->unk460, this->unk668, 0x200);
+            }
+            temp_r3_9836 = this->unk70;
+            temp_r30_9838 = M2C_FIELD(temp_r3_9836, s32 *, 0x10);
+            M2C_FIELD(M2C_FIELD(temp_r3_9836, void **, 0), M2C_UNK (**)(void **), 0x28)(temp_r3_9836);
+            temp_r3_9842 = this->unk70;
+            if (temp_r30_9838 != (s32) M2C_FIELD(temp_r3_9842, s32 *, 0x10)) {
+                if (M2C_FIELD(M2C_FIELD(temp_r3_9842, void **, 0), u8 (**)(), 0x1C)() != 0) {
+                    this->unk310.unk4C.SetState(this, 6, 0U);
                     return;
                 }
-                M2C_FIELD(this, u8 *, 0x3BE) = 0U;
-                goto block_24;
+                this->unk310.unk4C.SetState(this, 4, 0U);
+                return;
             }
+            M2C_FIELD(this, u8 *, 0x3BE) = 0U;
+            goto block_24;
         }
     }
 block_24:
@@ -5538,27 +5513,24 @@ void DojoController::StateDojoInstructUpdate() {
         }
         M2C_FIELD(this, u8 *, 0x3C1) = 1U;
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x3C1) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsAnyEventPlaying() == 0)) {
-            temp_r3_10648 = this->unk5C;
-            sp24 = 0;
-            sp20 = 0xB4;
-            M2C_FIELD(temp_r3_10648->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_10648, &sp20, 0);
-            temp_r3_10658 = this->unk400;
-            sp1C = 0;
-            sp18 = 0xBC;
-            M2C_FIELD(M2C_FIELD(temp_r3_10658, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_10658, &sp18, 0);
-            this->unk310.unk4C.SetState(this, 3, 0U);
-            M2C_FIELD(this, u8 *, 0x3C1) = 0U;
-            temp_r3_10675 = this->unk70;
-            M2C_FIELD(M2C_FIELD(temp_r3_10675, void **, 0), M2C_UNK (**)(void **), 0x14)(temp_r3_10675);
-            if ((void **) M2C_FIELD(&gb, void ***, 0) != NULL) {
-                temp_r3_10688 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(), 0xC)();
-                spC = 0;
-                sp8 = 0xAA;
-                M2C_FIELD(M2C_FIELD(temp_r3_10688, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
-            }
+    if (((u8) M2C_FIELD(this, u8 *, 0x3C1) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x398)) && (PhrasePlayer_IsAnyEventPlaying() == 0)) {
+        temp_r3_10648 = this->unk5C;
+        sp24 = 0;
+        sp20 = 0xB4;
+        M2C_FIELD(temp_r3_10648->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_10648, &sp20, 0);
+        temp_r3_10658 = this->unk400;
+        sp1C = 0;
+        sp18 = 0xBC;
+        M2C_FIELD(M2C_FIELD(temp_r3_10658, void **, 0x44), M2C_UNK (**)(s32, s32 *, M2C_UNK), 0x2C)(temp_r3_10658, &sp18, 0);
+        this->unk310.unk4C.SetState(this, 3, 0U);
+        M2C_FIELD(this, u8 *, 0x3C1) = 0U;
+        temp_r3_10675 = this->unk70;
+        M2C_FIELD(M2C_FIELD(temp_r3_10675, void **, 0), M2C_UNK (**)(void **), 0x14)(temp_r3_10675);
+        if ((void **) M2C_FIELD(&gb, void ***, 0) != NULL) {
+            temp_r3_10688 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(), 0xC)();
+            spC = 0;
+            sp8 = 0xAA;
+            M2C_FIELD(M2C_FIELD(temp_r3_10688, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
         }
     }
 }
@@ -5717,8 +5689,7 @@ void DojoLesson::UpdateCombatArcs() {
         this->unk4->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
     }
     temp_r3_11039 = this->unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_FIELD(&gb, f32 *, 0x30C) == temp_r3_11039->unk39C) {
+    if (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r3_11039->unk39C) {
         temp_r3_11039->ClearCombatArcs();
         this->unk4->unk39C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
     }
@@ -5764,12 +5735,9 @@ void DojoController::Update() {
     if (M2C_FIELD(&gb, f32 *, 0x30C) > 0.0f) {
         this->unk310.unk4C.Update(this, 0);
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x7F0) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this, f32 *, 0x39C)) {
-            M2C_FIELD(this, u8 *, 0x7F0) = 0U;
-            this->unk7E4 = PhrasePlayer_PlayEvent(this + 0x7F1);
-        }
+    if (((u8) M2C_FIELD(this, u8 *, 0x7F0) != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x39C))) {
+        M2C_FIELD(this, u8 *, 0x7F0) = 0U;
+        this->unk7E4 = PhrasePlayer_PlayEvent(this + 0x7F1);
     }
     MKProp::Update();
 }
@@ -5803,10 +5771,12 @@ void DojoController::SetupSmashPropsVanguard(int arg0, MKVector3 arg1, MKVector3
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f1_11435;
     f32 temp_f3_11250;
     f32 temp_f6_11246;
     f32 temp_f7_11244;
+    f64 temp_f2_11432;
     s32 temp_r21_11479;
     s32 temp_r3_11385;
     s32 var_r23_11275;
@@ -5865,11 +5835,11 @@ loop_17:
                 spD8 = (f64) sp60.unk8;
             }
         }
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f30 */);
+        temp_f2_11432 = spD0 * (f64) arg3;
+        spD0 = temp_f2_11432;
         temp_f1_11435 = (f32) spD8 * arg3;
         spD8 = temp_f1_11435;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
+        sp10 = *(f64 *) arg1 + temp_f2_11432;
         spF0 = sp10;
         sp18 = (f32) M2C_FIELD(arg1, f64 *, 8) + temp_f1_11435;
         sp50 = sp10;
@@ -5913,14 +5883,17 @@ void DojoController::SetupSpawnPointsRandomGraph(DojoTiers arg0, CharacterGraphN
     f64 sp98;
     f64 sp90;
     f64 sp88;
-    M2C_UNK sp78;
+    f64 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -5991,7 +5964,7 @@ loop_68:
                             temp_r3_11608 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
                             sp98 = M2C_FIELD(temp_r3_11608, f64 *, 0x30);
                             spA0 = M2C_FIELD(temp_r3_11608, f64 *, 0x38);
-                            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                            sp38 = spD8 - sp98;
                             spA8 = sp38;
                             sp40 = (f32) spE0 - (f32) spA0;
                             spB0 = (f64) sp40;
@@ -6038,8 +6011,8 @@ loop_68:
 block_27:
                             if (arg6 != 0.0f) {
                                 temp_r4_11704 = *arg4;
-                                M2C_FIELD(temp_r4_11704->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp78, temp_r4_11704);
-                                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                                M2C_FIELD(temp_r4_11704->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp78, temp_r4_11704);
+                                sp28 = spD8 - sp78;
                                 sp88 = sp28;
                                 sp30 = (f32) spE0 - sp80;
                                 sp90 = (f64) sp30;
@@ -6086,8 +6059,8 @@ block_27:
 block_47:
                                 if (arg7 != 0.0f) {
                                     temp_r4_11800 = *arg4;
-                                    M2C_FIELD(temp_r4_11800->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *), 0x30)(&sp58, temp_r4_11800);
-                                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                                    M2C_FIELD(temp_r4_11800->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *), 0x30)(&sp58, temp_r4_11800);
+                                    sp18 = spD8 - sp58;
                                     sp68 = sp18;
                                     sp20 = (f32) spE0 - sp60;
                                     sp70 = (f64) sp20;
@@ -6258,7 +6231,9 @@ void DojoController::SetupSpawnPointsVanguard(DojoTiers arg0, MKVector3 arg1, MK
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     Matrix *temp_r20_12311;
     Matrix *temp_r21_12521;
     f32 temp_f0_12305;
@@ -6267,6 +6242,9 @@ void DojoController::SetupSpawnPointsVanguard(DojoTiers arg0, MKVector3 arg1, MK
     f32 temp_f2_12501;
     f32 temp_f5_12099;
     f32 temp_f7_12095;
+    f64 temp_f0_12292;
+    f64 temp_f1_12286;
+    f64 temp_f1_12498;
     s32 temp_r3_12239;
     s32 temp_r3_12365;
     s32 temp_r3_12454;
@@ -6331,15 +6309,16 @@ loop_19:
                         sp130 = (f64) spB8.unk8;
                     }
                 }
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f30 */);
+                temp_f1_12286 = sp128 * (f64) arg3;
+                sp128 = temp_f1_12286;
                 temp_f2_12289 = (f32) sp130 * arg3;
                 sp130 = temp_f2_12289;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f1 */);
+                temp_f0_12292 = *(f64 *) arg1 + temp_f1_12286;
+                sp18 = temp_f0_12292;
                 temp_r21_12294 = this + var_r22_12134;
-                sp148 = sp18;
+                sp148 = temp_f0_12292;
                 sp20 = (f32) M2C_FIELD(arg1, f64 *, 8) + temp_f2_12289;
-                spA8 = sp18;
+                spA8 = temp_f0_12292;
                 sp150 = (f64) sp20;
                 temp_f0_12305 = this->unk37C;
                 spB0 = (f64) sp20;
@@ -6404,11 +6383,11 @@ loop_39:
                     sp130 = (f64) sp48.unk8;
                 }
             }
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f30 */);
+            temp_f1_12498 = sp128 * (f64) arg3;
+            sp128 = temp_f1_12498;
             temp_f2_12501 = (f32) sp130 * arg3;
             sp130 = temp_f2_12501;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f1 */);
+            sp8 = *(void *) arg1 + temp_f1_12498;
             temp_r20_12506 = this + var_r22_12348;
             sp148 = sp8;
             sp10 = (f32) M2C_FIELD(arg1, f64 *, 8) + temp_f2_12501;

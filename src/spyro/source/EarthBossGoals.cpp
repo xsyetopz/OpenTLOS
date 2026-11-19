@@ -39,6 +39,7 @@ u8 EarthBossGoal_MoveToTarget::Update() {
     MKVector3 sp30;
     M2C_UNK sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     Enemy *temp_r3_141;
     Enemy *temp_r3_237;
@@ -137,8 +138,7 @@ u8 EarthBossGoal_MoveToTarget::Update() {
         unksp64 = 0;
         MKVector(0.05f, 0.8f, 0.05f);
         sp30.operator*(500.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp10 = sp30 * (f64) temp_f31_199;
         sp50.unk10 = 0x417;
         sp18 = sp30.unk8 * temp_f31_199;
         sp50.unk18 = sp10;
@@ -153,7 +153,7 @@ u8 EarthBossGoal_MoveToTarget::Update() {
     if (((u8) M2C_FIELD(temp_r3_237, u8 *, 0x8B8) == 2) || (temp_r3_237->unk870.unk30.Get() != NULL)) {
         var_r30_238 = 1;
     }
-    if ((var_r30_238 == 0) || (this->unkC->unk838.unk28.GetDist() < 1500.0f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) != 0))) {
+    if ((var_r30_238 == 0) || (this->unkC->unk838.unk28.GetDist() < 1500.0f) || (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk10)) {
         this->unk8 = 2;
     }
     return this->unk8;
@@ -379,12 +379,9 @@ u8 EarthBossGoal_MeleeAttack4::Update() {
                         var_r5_687 = 1;
                     }
                 }
-                if (var_r5_687 != 0) {
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) {
-                        temp_r4_715 = temp_r3_672->unkA38;
-                        temp_r3_672->SetAnim((AnimSequence *) temp_r4_715, (AnimTransition *) &temp_r4_715->__vptr, 0.0f, 0U);
-                    }
+                if ((var_r5_687 != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk10)) {
+                    temp_r4_715 = temp_r3_672->unkA38;
+                    temp_r3_672->SetAnim((AnimSequence *) temp_r4_715, (AnimTransition *) &temp_r4_715->__vptr, 0.0f, 0U);
                 }
             }
         }
@@ -505,6 +502,7 @@ u8 EarthBossGoal_MeleeAttack3::Update() {
     MKVector3 sp28;
     M2C_UNK sp18;
     f32 sp10;
+    f64 sp8;
     Enemy *temp_r3_1005;
     f32 temp_f31_967;
 
@@ -517,8 +515,7 @@ u8 EarthBossGoal_MeleeAttack3::Update() {
         sp4C = 0;
         MKVector(0.05f, 0.8f, 0.05f);
         sp28.operator*(500.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp8 = sp28 * (f64) temp_f31_967;
         sp48 = 0x417;
         sp10 = sp28.unk8 * temp_f31_967;
         sp50 = sp8;
@@ -644,6 +641,7 @@ u8 EarthBossGoal_MeleeAttack2::Update() {
     MKVector3 sp28;
     M2C_UNK sp18;
     f32 sp10;
+    f64 sp8;
     Enemy *temp_r29_1236;
     Enemy *temp_r29_1272;
     Enemy *temp_r3_1223;
@@ -696,7 +694,7 @@ u8 EarthBossGoal_MeleeAttack2::Update() {
             if ((temp_r5_1296 != NULL) && (M2C_BITWISE(u32, temp_r5_1296->unk20) == (u32) M2C_FIELD(temp_r3_1294, MKAnimScript **, 0x630)->unk20)) {
                 var_r6_1295 = 1;
             }
-            if ((var_r6_1295 != 0) && ((((u8) M2C_FIELD(temp_r3_1294, u8 *, 0xB08) >> 1U) & 1) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) != 0)))) {
+            if ((var_r6_1295 != 0) && ((((u8) M2C_FIELD(temp_r3_1294, u8 *, 0xB08) >> 1U) & 1) || (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk10))) {
                 temp_r4_1319 = temp_r3_1294->unkA38;
                 temp_r3_1294->SetAnim((AnimSequence *) temp_r4_1319, (AnimTransition *) &temp_r4_1319->__vptr, 0.0f, 0U);
                 M2C_FIELD(this->unkC, s8 *, 0xC2E) = 0;
@@ -708,8 +706,7 @@ u8 EarthBossGoal_MeleeAttack2::Update() {
         sp4C = 0;
         MKVector(0.05f, 0.8f, 0.05f);
         sp28.operator*(500.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp8 = sp28 * (f64) temp_f31_1352;
         sp48 = 0x417;
         sp10 = sp28.unk8 * temp_f31_1352;
         sp50 = sp8;
@@ -885,7 +882,7 @@ u8 EarthBossGoal_MeleeAttack1::Update() {
                 if (((s32) temp_r5_1681->unk38C == 4) && ((u8) temp_r5_1681->unk358 == 0)) {
                     var_r4_1680 = 1;
                 }
-                if (((var_r4_1680 == 0) && ((u8) temp_r5_1681->unk390 == 0)) || (((u8) M2C_FIELD(temp_r3_1679, u8 *, 0xB08) >> 1U) & 1) || (((u8) this->unk14 != 0) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) != 0)))) {
+                if (((var_r4_1680 == 0) && ((u8) temp_r5_1681->unk390 == 0)) || (((u8) M2C_FIELD(temp_r3_1679, u8 *, 0xB08) >> 1U) & 1) || (((u8) this->unk14 != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk10))) {
                     temp_r4_1710 = temp_r3_1679->unkA38;
                     temp_r3_1679->SetAnim((AnimSequence *) temp_r4_1710, (AnimTransition *) &temp_r4_1710->__vptr, 0.0f, 0U);
                     ((EarthBossArm *) (M2C_FIELD(this->unkC, EarthBossArm **, 0xCC0)))->Retract();
@@ -1033,8 +1030,7 @@ void EarthBossGoal_AttackPhase3::Activate() {
         return;
     }
     if (temp_r3_1988->unk838.unk28.GetDist() < 500.0f) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unkA7C) {
+        if (!(M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkC->unkA7C)) {
             AddGoal_AttackIdle();
             return;
         }
@@ -1182,8 +1178,7 @@ void EarthBossGoal_AttackPhase2::Activate() {
         return;
     }
     if (temp_r3_2298->unk838.unk28.GetDist() < 1000.0f) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unkA7C) {
+        if (!(M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkC->unkA7C)) {
             AddGoal_AttackIdle();
             return;
         }
@@ -1342,8 +1337,7 @@ u8 EarthBossGoal_AttackPhase1::Update() {
     temp_r3_2630 = this->unk24;
     if (M2C_FIELD(*temp_r3_2630, u8 (**)(void **), 0x28)(temp_r3_2630) != 0) {
         temp_r4_2637 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == temp_r4_2637->unkA7C) {
+        if (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_2637->unkA7C) {
             temp_r5_2645 = M2C_FIELD(temp_r4_2637, void **, 0x630);
             var_r4_2646 = 0;
             if (((u32) M2C_FIELD(temp_r5_2645, u32 *, 0x2C) >> 1U) & 1) {
@@ -1421,12 +1415,8 @@ loop_20:
             temp_f27_2758 = M2C_FIELD(temp_r26_2810, f32 *, 0x18);
             temp_f1_2760 = this->unkC->unk838.unk28.GetDist();
             var_r0_2762 = 0;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f1_2760 == M2C_FIELD(temp_r26_2810, f32 *, 0x14)) {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (temp_f1_2760 == temp_f27_2758) {
-                    var_r0_2762 = 1;
-                }
+            if ((temp_f1_2760 >= M2C_FIELD(temp_r26_2810, f32 *, 0x14)) && (temp_f1_2760 <= temp_f27_2758)) {
+                var_r0_2762 = 1;
             }
             if (var_r0_2762 != 0) {
                 if (temp_f30_2753 > temp_f31_2757) {
@@ -1529,8 +1519,7 @@ void EarthBossGoal_AttackPhase1::Activate() {
         }
     } else {
 block_10:
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unkA7C) {
+        if (!(M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkC->unkA7C)) {
             AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk24);
             return;
         }
@@ -1855,6 +1844,7 @@ void EarthBossGoal_Think::Arbitrate() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     EarthBossArm *temp_r3_3883;
     Enemy *temp_r3_3608;
@@ -1899,8 +1889,7 @@ void EarthBossGoal_Think::Arbitrate() {
                 M2C_FIELD(this->unkC, s32 *, 0xCE0) = KDSound_Play3d(GS_SSFlinch, this->unkC->unk8 + 0x30, 0U, -1, 0.0f, 0U);
             }
             temp_r5_3699 = this->unkC;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r5_3699->unkAB0 == 0.0f) {
+            if (temp_r5_3699->unkAB0 <= 0.0f) {
                 temp_r4_3706 = temp_r5_3699->unkAD0;
                 if (M2C_BITWISE(s32, temp_r4_3706) < (s32) (M2C_FIELD(temp_r5_3699->unkA20, s32 *, 0x11C) - 1)) {
                     temp_r5_3699->unkAD0 = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r4_3706) + 1));
@@ -1920,8 +1909,7 @@ loop_13:
                 if (((u32) (var_r8_3733 - 4) > 1U) && (temp_r6_3740 = this->unkC, temp_r7_3741 = temp_r6_3740 + var_r4_3734, (((u32) sp78.unk10 == (u32) M2C_FIELD(temp_r7_3741, u32 *, 0xB10)) != 0)) && ((u8) M2C_FIELD(temp_r7_3741, u8 *, 0xB55) == 0)) {
                     if ((var_r8_3733 != 2) || ((s32) M2C_FIELD(temp_r6_3740, EarthBossArm **, 0xCC0)->unk38C == 0)) {
                         var_r0_3728 = 1;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                        sp18 = *(temp_r7_3741 + 0xB18) - M2C_BITWISE(f64, sp78);
                         var_f4_3766 = 0.0f;
                         M2C_FIELD(temp_r7_3741, f64 *, 0xB38) = sp18;
                         sp20 = M2C_FIELD(temp_r7_3741, f32 *, 0xB20) - (f32) sp78.unk8;
@@ -1986,8 +1974,7 @@ loop_13:
                 }
             }
             temp_r3_3877 = this->unkC;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r3_3877->unkAB0 == 0.0f) {
+            if (temp_r3_3877->unkAB0 <= 0.0f) {
                 temp_r3_3883 = M2C_FIELD(temp_r3_3877, EarthBossArm **, 0xCC0);
                 if ((s32) temp_r3_3883->unk38C != 0) {
                     temp_r3_3883->Retract();

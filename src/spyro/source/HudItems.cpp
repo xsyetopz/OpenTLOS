@@ -61,15 +61,13 @@ u8 HudItem_Update(HudItem *arg0) {
         break;
     case 1:
         arg0->unk10 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (arg0->unk10 == 0.0f) {
+        if (arg0->unk10 <= 0.0f) {
             HudItem_SetState(arg0, (HudItemState) 2, 0U);
         }
         break;
     case 3:
         arg0->unk10 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (arg0->unk10 == 0.0f) {
+        if (arg0->unk10 <= 0.0f) {
             HudItem_SetState(arg0, (HudItemState) 0, 0U);
         }
         break;
@@ -134,8 +132,7 @@ void HudItem_SetState(HudItem *arg0, HudItemState arg1, bool arg2) {
                 }
                 break;
             case 2:                                 /* switch 2 */
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (arg0->unk10 == 0.0f) {
+                if (arg0->unk10 <= 0.0f) {
                     arg0->unk0 = 2;
                     arg0->unk10 = 1.0f;
                 }
@@ -186,12 +183,9 @@ block_45:
                 arg0->unk0 = 1;
                 arg0->unk10 = 0.5f - arg0->unk10;
             }
-        } else {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (arg0->unk10 == 0.0f) {
-                arg0->unk0 = 0;
-                arg0->unk10 = 0.0f;
-            }
+        } else if (arg0->unk10 <= 0.0f) {
+            arg0->unk0 = 0;
+            arg0->unk10 = 0.0f;
         }
         break;
     }

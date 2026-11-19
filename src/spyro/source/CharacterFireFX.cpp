@@ -30,8 +30,7 @@ void CharacterFireFX::EmitFire() {
     void *temp_r31_76;
 
     this->unk14 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk14 == 0.0f) {
+    if (this->unk14 <= 0.0f) {
         this->unk14 = 0.0f;
         var_r29_36 = 0;
         do {
@@ -72,8 +71,7 @@ void CharacterFireFX::EmitSmoke() {
     void **temp_r3_129;
 
     this->unk18 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk18 == 0.0f) {
+    if (this->unk18 <= 0.0f) {
         this->unk18 = 0.1f;
         temp_r3_129 = GetRandomNode(NULL);
         if (temp_r3_129 != NULL) {
@@ -115,8 +113,7 @@ void CharacterFireFX::Update() {
         case 1:
             EmitFire();
             EmitSmoke();
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk1C == 0.0f) {
+            if (this->unk1C <= 0.0f) {
                 this->unk20 = 2;
                 this->unk1C = 1.0f;
                 return;
@@ -124,8 +121,7 @@ void CharacterFireFX::Update() {
             break;
         case 2:
             EmitSmoke();
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk1C == 0.0f) {
+            if (this->unk1C <= 0.0f) {
                 this->unk20 = 0;
                 SetDataActive(0U);
             }

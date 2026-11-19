@@ -28,11 +28,9 @@ Matrix **SplitPath::GetPathData(float arg0, float *arg1) {
 loop_1:
         temp_r6_18 = this->unk0 + var_r5_12;
         temp_f3_19 = M2C_FIELD(temp_r6_18, f32 *, 0xC);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (arg0 == temp_f3_19) {
+        if (arg0 >= temp_f3_19) {
             temp_f0_23 = M2C_FIELD(temp_r6_18, f32 *, 0x10);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (arg0 == temp_f0_23) {
+            if (arg0 <= temp_f0_23) {
                 if (arg1 != NULL) {
                     temp_f4_30 = M2C_FIELD(temp_r6_18, f32 *, 4);
                     *arg1 = (((arg0 - temp_f3_19) / (temp_f0_23 - temp_f3_19)) * (M2C_FIELD(temp_r6_18, f32 *, 8) - temp_f4_30)) + temp_f4_30;
@@ -58,17 +56,20 @@ void SplitPath::GetVelocity(float arg0) {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     Matrix *temp_r4_62;
+    f64 temp_f0_77;
 
     temp_r4_62 = *((SplitPath *) (M2C_ERROR(/* Read from unset register $r4 */)))->GetPathData(arg0, &spC);
     sp8 = 0.0f;
     sp30.GetMeasure(spC, temp_r4_62, KDSpline_VelocityMixer);
     sp20 = M2C_BITWISE(f64, sp30);
     sp28 = (f64) sp30.unk8;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_FIELD(this, f64 *, 0) = sp10;
+    temp_f0_77 = sp20 * (f64) sp8;
+    sp10 = temp_f0_77;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_77;
     sp18 = (f32) sp28 * sp8;
     this->unk8 = (f64) sp18;
 }

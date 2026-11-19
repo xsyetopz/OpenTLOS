@@ -51,8 +51,7 @@ void SparkleEffect::Update() {
                 temp_f1_128 = (var_f2_118 * (1.0f - temp_f1_125)) + temp_f1_125;
                 M2C_FIELD(temp_r5_87, f32 *, 0x60) = (f32) ((var_f2_118 * (1.0f - temp_f1_128)) + temp_f1_128);
             }
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((M2C_FIELD(temp_r5_87, f32 *, 0x58) == 3.0f) && ((((u8) M2C_FIELD(temp_r5_87, u8 *, 0x5C) == 0) && ((u8) this->unk124 == 0)) || ((u8) this->unk124 != 0))) {
+            if ((M2C_FIELD(temp_r5_87, f32 *, 0x58) >= 3.0f) && ((((u8) M2C_FIELD(temp_r5_87, u8 *, 0x5C) == 0) && ((u8) this->unk124 == 0)) || ((u8) this->unk124 != 0))) {
                 M2C_FIELD(temp_r5_87, u8 *, 0x54) = 0U;
             }
         }
@@ -60,8 +59,7 @@ void SparkleEffect::Update() {
         var_ctr_85 -= 1;
     } while (var_ctr_85 != 0);
     this->unk11C += gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk11C == this->unk118) {
+    if (this->unk11C >= this->unk118) {
         this->unk11C = 0.0f;
         FindNewSparklePoint();
     }

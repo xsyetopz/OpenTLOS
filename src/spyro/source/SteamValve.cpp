@@ -115,21 +115,30 @@ void SteamValve::Update() {
     f64 spF0;
     f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -137,20 +146,31 @@ void SteamValve::Update() {
     f32 spC;
     f32 sp8;
     f32 temp_f1_173;
-    f32 temp_f1_203;
     f32 temp_f2_262;
-    f32 temp_f3_431;
     f32 temp_f4_261;
     f32 temp_f5_259;
     f32 var_f28_175;
+    f64 temp_f0_142;
+    f64 temp_f0_199;
+    f64 temp_f0_209;
+    f64 temp_f0_271;
+    f64 temp_f0_301;
+    f64 temp_f0_311;
+    f64 temp_f0_321;
+    f64 temp_f0_426;
+    f64 temp_f1_194;
+    f64 temp_f1_421;
+    f64 temp_f6_280;
     s32 var_r30_136;
+    void *temp_r3_197;
     void *temp_r3_256;
+    void *temp_r4_140;
+    void *temp_r4_424;
     void *var_r30_345;
 
     GameProp::Update();
     this->unkD8 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((this->unkD8 == 0.0f) && ((u8) this->unkDD != 0)) {
+    if ((this->unkD8 <= 0.0f) && ((u8) this->unkDD != 0)) {
         if ((u8) this->unkDC != 0) {
             this->unkD8 = this->unkD4;
         } else {
@@ -159,10 +179,11 @@ void SteamValve::Update() {
             MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SteamValveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), &sp1C8);
             var_r30_136 = 0;
             do {
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-                sp198 = spD8;
-                spE0 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * -1000.0f;
+                temp_r4_140 = this->unk8 + 0x20;
+                temp_f0_142 = M2C_FIELD(temp_r4_140, f64 *, 0) * 1.628603276e-314;
+                spD8 = temp_f0_142;
+                sp198 = temp_f0_142;
+                spE0 = M2C_FIELD(temp_r4_140, f32 *, 8) * -1000.0f;
                 sp1A0 = (f64) spE0;
                 sp10 = MKRand_Float(&gViewSeed, 3.0f, 7.0f);
                 this->unkC8->Emit(sp1C8, *((MKVector3 *) &sp198), sp10);
@@ -178,14 +199,16 @@ void SteamValve::Update() {
             var_f28_175 = (0.75f * (this->unkD8 / temp_f1_173)) + 0.25f;
         }
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SteamValveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), &sp1B8);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        temp_f1_203 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * MKRand_Float(&gViewSeed, -1500.0f, -1000.0f);
-        sp178 = spC8;
-        spD0 = temp_f1_203;
+        temp_f1_194 = MKRand_Float(&gViewSeed, -1500.0f, -1000.0f);
+        temp_r3_197 = this->unk8 + 0x20;
+        temp_f0_199 = M2C_FIELD(temp_r3_197, f64 *, 0) * temp_f1_194;
+        spC8 = temp_f0_199;
+        sp178 = temp_f0_199;
+        spD0 = M2C_FIELD(temp_r3_197, f32 *, 8) * (f32) temp_f1_194;
         sp180 = (f64) spD0;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        sp188 = spB8;
+        temp_f0_209 = temp_f0_199 * (f64) var_f28_175;
+        spB8 = temp_f0_209;
+        sp188 = temp_f0_209;
         spC0 = (f32) sp180 * var_f28_175;
         sp190 = (f64) spC0;
         spC = var_f28_175 * MKRand_Float(&gViewSeed, 3.0f, 4.75f);
@@ -220,11 +243,13 @@ void SteamValve::Update() {
         spB0 = temp_f2_262;
         sp148 = (f64) spA8;
         sp150 = (f64) spB0;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp158 = sp98;
+        temp_f0_271 = sp148 * 5.51933903e-315;
+        sp98 = temp_f0_271;
+        sp158 = temp_f0_271;
         spA0 = (f32) sp150 * 75.0f;
         sp160 = (f64) spA0;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
+        temp_f6_280 = M2C_BITWISE(f64, sp1B8);
+        sp88 = temp_f6_280 + temp_f0_271;
         sp80 = temp_f2_262;
         sp78 = temp_f5_259;
         sp7C = temp_f4_261;
@@ -233,16 +258,19 @@ void SteamValve::Update() {
         sp168 = sp88;
         sp170 = (f64) sp90;
         sp110 = (f64) sp80;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp118 = sp68;
+        temp_f0_301 = sp108 * 5.634608575e-315;
+        sp68 = temp_f0_301;
+        sp118 = temp_f0_301;
         sp70 = (f32) sp110 * 500.0f;
         sp120 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        sp128 = sp58;
+        temp_f0_311 = temp_f0_301 * (f64) var_f28_175;
+        sp58 = temp_f0_311;
+        sp128 = temp_f0_311;
         sp60 = (f32) sp120 * var_f28_175;
         sp130 = (f64) sp60;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
-        sp138 = sp48;
+        temp_f0_321 = temp_f6_280 + temp_f0_311;
+        sp48 = temp_f0_321;
+        sp138 = temp_f0_321;
         sp50 = sp1B8.unk8 + (f32) sp130;
         sp140 = (f64) sp50;
         if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp168), *((MKVector3 *) &sp138), 20.0f, (MKCollisionResult *) &sp230, (MKCollisionMode) 7, 0) != 0) {
@@ -287,11 +315,12 @@ void SteamValve::Update() {
         }
     } else {
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SteamValveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), &sp1A8);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        temp_f3_431 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * MKRand_Float(&gViewSeed, -300.0f, -100.0f);
-        spE8 = sp28;
-        sp30 = temp_f3_431;
+        temp_f1_421 = MKRand_Float(&gViewSeed, -300.0f, -100.0f);
+        temp_r4_424 = this->unk8 + 0x20;
+        temp_f0_426 = M2C_FIELD(temp_r4_424, f64 *, 0) * temp_f1_421;
+        sp28 = temp_f0_426;
+        spE8 = temp_f0_426;
+        sp30 = M2C_FIELD(temp_r4_424, f32 *, 8) * (f32) temp_f1_421;
         spF0 = (f64) sp30;
         sp8 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
         this->unkC8->Emit(sp1A8, *((MKVector3 *) &spE8), sp8);

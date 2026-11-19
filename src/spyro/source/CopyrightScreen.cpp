@@ -51,15 +51,13 @@ void CopyrightScreen::Update() {
         break;
     case 1:                                         /* switch 1 */
         this->unkBC.unk8 = M2C_BITWISE(f32, this->unkBC.unk8) + (gUpdateTimeDelta / 4.5f);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_BITWISE(f32, this->unkBC.unk8) == 1.0f) && ((u8) *CopyrightScreen::bMemoryCardCheckDone != 0)) {
+        if ((M2C_BITWISE(f32, this->unkBC.unk8) >= 1.0f) && ((u8) *CopyrightScreen::bMemoryCardCheckDone != 0)) {
             this->unkBC.unk4 = 2;
             this->unkBC.unk8 = 0.0f;
         }
         break;
     case 2:                                         /* switch 1 */
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_BITWISE(f32, this->unkBC.unk8) == 1.0f) {
+        if (M2C_BITWISE(f32, this->unkBC.unk8) >= 1.0f) {
             temp_r3_86 = ui_cast<UISystem *, UIContainer *>(GetRoot());
             sp8 = 0xF;
             M2C_FIELD(*temp_r3_86, M2C_UNK (**)(s32 *), 0x2C)(&sp8);

@@ -53,7 +53,10 @@ static u8 MKGrass_bEnable = 1;
 static MKHeap lit_stringBase0;                         /* extra bytes: 0xA; unable to generate initializer: non-zero padding; const */
 
 void MKGrass_Draw() {
-    Frustum spA0;
+    f32 spD8;
+    f32 spD4;
+    f32 spD0;
+    f64 spA0;
     f32 sp9C;
     f64 sp98;
     f64 sp90;
@@ -68,10 +71,12 @@ void MKGrass_Draw() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     BoundingVolume *temp_r4_235;
     GrassSubObject *temp_r21_218;
@@ -87,6 +92,8 @@ void MKGrass_Draw() {
     f32 temp_f4_55;
     f32 var_f3_130;
     f32 var_f4_63;
+    f64 temp_f0_258;
+    f64 temp_f0_38;
     f64 temp_f1_69;
     f64 temp_f1_75;
     f64 temp_f1_79;
@@ -112,16 +119,15 @@ void MKGrass_Draw() {
 
     if ((MKModel **) *drawQueue != NULL) {
         M2C_STRUCT_COPY((s32) &sp9C + 4, MKView_GetWorldFrustum() - 4 + 4, 0x70);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp60 = sp10;
-        sp18 = spA0.unk8 * -0.5f;
+        temp_f0_38 = spA0 * 1.583207797e-314;
+        sp10 = temp_f0_38;
+        sp60 = temp_f0_38;
+        sp18 = spA8 * -0.5f;
         sp68 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r0, 0x0, qr0 */);
-        temp_f4_55 = spA0.unk38 - (f32) sp68;
-        spA0.unk38 = temp_f4_55;
-        var_f4_63 = (temp_f4_55 * temp_f4_55) + ((spA0.unk30 * spA0.unk30) + (spA0.unk34 * spA0.unk34));
+        spD0 = (f64) (spD0 - temp_f0_38);
+        temp_f4_55 = spD8 - (f32) sp68;
+        spD8 = temp_f4_55;
+        var_f4_63 = (temp_f4_55 * temp_f4_55) + ((spD0 * spD0) + (spD4 * spD4));
         if (var_f4_63 > 0.000001f) {
             if (var_f4_63 > 0.0f) {
                 temp_f1_69 = __frsqrte(var_f4_63);
@@ -160,9 +166,9 @@ void MKGrass_Draw() {
         } else {
             var_f3_130 = 0.0f;
         }
-        spA0.unk30 *= var_f3_130;
-        spA0.unk34 *= var_f3_130;
-        spA0.unk38 *= var_f3_130;
+        spD0 *= var_f3_130;
+        spD4 *= var_f3_130;
+        spD8 *= var_f3_130;
         temp_r3_144 = MKView_GetCameraMatrix();
         M2C_FIELD(&MKGrass_cameraPos, f64 *, 0) = (f64) M2C_FIELD(temp_r3_144, f64 *, 0x30);
         M2C_FIELD(&MKGrass_cameraPos, f64 *, 8) = (f64) M2C_FIELD(temp_r3_144, f64 *, 0x38);
@@ -200,7 +206,7 @@ loop_45:
 loop_42:
                             if (var_r22_211 < (s32) M2C_FIELD(temp_r31_199, u16 *, 0xA)) {
                                 temp_r21_218 = M2C_FIELD(temp_r31_199, s32 *, 0xC) + var_r18_212;
-                                if (!(MKModel_GetSubObjectFlag(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0) & 0xF) && (!(((u8) M2C_FIELD(*var_r26_188, MKModel **, 0)->unk5 >> 6U) & 1) || ((temp_r3_231 = temp_r21_218->unk0 << 6, temp_r5_233 = M2C_FIELD(M2C_FIELD(temp_r25_191->unk0, void **, 0x30), s32 *, 0x50), temp_r4_235 = temp_r5_233 + temp_r3_231, temp_f3_236 = *(temp_r5_233 + (temp_r3_231 + 0xC)), sp40 = (0.5f * temp_r4_235->unk10) + temp_r4_235->unk0, sp44 = (0.5f * temp_r4_235->unk14) + temp_r4_235->unk4, sp48 = (0.5f * temp_r4_235->unk18) + temp_r4_235->unk8, sp90 = (f64) sp40, sp98 = (f64) sp48, sp9C = temp_f3_236, M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */), M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */), sp50 = sp30, sp38 = (f32) sp98 - (f32) M2C_FIELD(&MKGrass_cameraPos, f64 *, 8), temp_f1_269 = M2C_FIELD(M2C_FIELD(temp_r29_161, void **, 0x2C), f32 *, 0x34) + temp_f3_236, sp58 = (f64) sp38, (((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54))) > (temp_f1_269 * temp_f1_269)) == 0)) && (spA0.IsVisible(temp_r4_235) != 0)))) {
+                                if (!(MKModel_GetSubObjectFlag(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0) & 0xF) && (!(((u8) M2C_FIELD(*var_r26_188, MKModel **, 0)->unk5 >> 6U) & 1) || ((temp_r3_231 = temp_r21_218->unk0 << 6, temp_r5_233 = M2C_FIELD(M2C_FIELD(temp_r25_191->unk0, void **, 0x30), s32 *, 0x50), temp_r4_235 = temp_r5_233 + temp_r3_231, temp_f3_236 = *(temp_r5_233 + (temp_r3_231 + 0xC)), sp40 = (0.5f * temp_r4_235->unk10) + temp_r4_235->unk0, sp44 = (0.5f * temp_r4_235->unk14) + temp_r4_235->unk4, sp48 = (0.5f * temp_r4_235->unk18) + temp_r4_235->unk8, sp90 = (f64) sp40, sp98 = (f64) sp48, sp9C = temp_f3_236, temp_f0_258 = (f64) sp40 - M2C_FIELD(&MKGrass_cameraPos, f64 *, 0), sp30 = temp_f0_258, sp50 = temp_f0_258, sp38 = (f32) sp98 - (f32) M2C_FIELD(&MKGrass_cameraPos, f64 *, 8), temp_f1_269 = M2C_FIELD(M2C_FIELD(temp_r29_161, void **, 0x2C), f32 *, 0x34) + temp_f3_236, sp58 = (f64) sp38, (((((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54))) > (temp_f1_269 * temp_f1_269)) == 0)) && (spA0.IsVisible(temp_r4_235) != 0)))) {
                                     temp_r3_290 = MKModel_GetBoundingVolume(temp_r25_191, (SubObjectType) 0, (s32) temp_r21_218->unk0);
                                     var_r17_292 = 0;
                                     sp20 = (0.5f * M2C_FIELD(temp_r3_290, f32 *, 0x10)) + M2C_FIELD(temp_r3_290, f32 *, 0);
@@ -218,7 +224,7 @@ loop_42:
                                     } else {
                                         var_r3_328 = 0;
                                     }
-                                    MKGrass_DrawSubObject(spA0, temp_r25_191, temp_r25_191->unk8, (MKGrassType *) temp_r29_161, temp_r21_218, var_r17_292, var_r3_328, &sp80);
+                                    MKGrass_DrawSubObject(*((Frustum *) &spA0), temp_r25_191, temp_r25_191->unk8, (MKGrassType *) temp_r29_161, temp_r21_218, var_r17_292, var_r3_328, &sp80);
                                 }
                                 var_r22_211 += 1;
                                 var_r18_212 += 0xC;

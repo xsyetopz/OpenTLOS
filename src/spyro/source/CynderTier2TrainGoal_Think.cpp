@@ -113,8 +113,7 @@ void CynderTier2TrainGoal_Think::Arbitrate() {
         if (this->unkC->WasHit() != 0) {
             sp8.Init();
             this->unkC->TakeDamage(&sp8, 0U);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unkC->unkAB0 == 0.0f) {
+            if (this->unkC->unkAB0 <= 0.0f) {
                 AddGoal_Death(&sp8);
                 return;
             }
@@ -339,7 +338,9 @@ void EnemyGoal_TrainAttackMode::Activate() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     AITargetData *temp_r3_704;
     AttackerManager *temp_r3_826;
     CharacterFireFX *temp_r29_812;
@@ -351,6 +352,9 @@ void EnemyGoal_TrainAttackMode::Activate() {
     Goal<Enemy> *temp_r6_895;
     f32 temp_f1_759;
     f32 temp_f1_842;
+    f64 temp_f0_754;
+    f64 temp_f1_733;
+    f64 temp_f1_744;
     s32 temp_r31_772;
     s32 var_r29_831;
     u8 var_r28_708;
@@ -369,18 +373,20 @@ void EnemyGoal_TrainAttackMode::Activate() {
         }
         temp_r3_725 = this->unkC;
         temp_r28_731 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_f1_733 = temp_r3_725->GetCollisionRadius(M2C_FIELD(&gb, s32 *, 0x3B8));
         temp_r3_734 = this->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp18 = M2C_FIELD(temp_r3_734, f64 *, 0xD0) * temp_f1_733;
         temp_r4_741 = temp_r3_734->unk8;
-        sp20 = temp_r3_734->unkD8 * temp_r3_725->GetCollisionRadius(M2C_FIELD(&gb, s32 *, 0x3B8));
+        temp_f1_744 = M2C_FIELD(temp_r4_741, f64 *, 0x30);
+        sp20 = temp_r3_734->unkD8 * (f32) temp_f1_733;
         sp28 = sp18;
-        sp38 = M2C_FIELD(temp_r4_741, f64 *, 0x30);
+        sp38 = temp_f1_744;
         sp30 = (f64) sp20;
         sp40 = M2C_FIELD(temp_r4_741, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_754 = temp_f1_744 + sp28;
+        sp8 = temp_f0_754;
         temp_f1_759 = (f32) sp40 + (f32) sp30;
-        sp48 = sp8;
+        sp48 = temp_f0_754;
         sp10 = temp_f1_759;
         sp50 = (f64) sp10;
         temp_r31_772 = temp_r28_731->IsVisible(*((MKVector3 *) &sp48), temp_r3_734->GetCollisionRadius(temp_r4_741, temp_f1_759, (f32) sp40, sp18));
@@ -388,8 +394,7 @@ void EnemyGoal_TrainAttackMode::Activate() {
             this->unk20 = M2C_FIELD(&gb, f32 *, 0x30C) + 5.0f;
         }
         temp_r3_790 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_FIELD(&gb, f32 *, 0x30C) == temp_r3_790->unkA7C) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk20) != 0))) {
+        if ((M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r3_790->unkA7C) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk20)) {
             if ((CharacterFireFX *) temp_r3_790->unkA08 == NULL) {
                 temp_r3_790->SelectAttack(0x10, M2C_FIELD(temp_r3_790->unk630, s32 *, 8) + 0x5A);
             }

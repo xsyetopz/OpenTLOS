@@ -110,7 +110,7 @@ void IceBoss::GetCharacterName() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void IceBoss::UpdateWeaponCollisionCapsule() {
     Matrix sp70;
     f64 sp68;
@@ -120,20 +120,20 @@ void IceBoss::UpdateWeaponCollisionCapsule() {
     f64 sp40;
     MKVector3 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
 
     CalcSubObjWorldMatrix(M2C_FIELD((this + (M2C_FIELD(this, s32 *, 0xB18) * 0x28)), s32 *, 0xE44), &sp70);
     sp50.operator*(M2C_FIELD((this + (M2C_FIELD(this, s32 *, 0xB18) * 0x28)), f32 *, 0xE64));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp20 = sp70.unk30 + M2C_BITWISE(f64, sp50);
     M2C_FIELD(this, f64 *, 0xF60) = sp20;
     sp28 = sp70.unk38 + sp50.unk8;
     sp60 = sp20;
     M2C_FIELD(this, f64 *, 0xF68) = (f64) sp28;
     sp68 = (f64) sp28;
     sp30.operator*(M2C_FIELD((this + (M2C_FIELD(this, s32 *, 0xB18) * 0x28)), f32 *, 0xE68));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = sp70.unk30 - M2C_BITWISE(f64, sp30);
     M2C_FIELD(this, f64 *, 0xF70) = sp10;
     sp18 = sp70.unk38 - sp30.unk8;
     sp40 = sp10;
@@ -175,9 +175,10 @@ s32 IceBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     Matrix sp50;
     f64 sp48;
     f64 sp40;
-    M2C_UNK sp30;
-    M2C_UNK sp20;
+    f64 sp30;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
 
     if (((u8) M2C_FIELD(this, u8 *, 0xFB8) != 0) && (arg1 != NULL)) {
         CalcSubObjWorldMatrix(M2C_FIELD((this + (M2C_FIELD(this, s32 *, 0xB18) * 0x28)), s32 *, 0xE44), &sp50);
@@ -188,8 +189,7 @@ s32 IceBoss::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     if (arg1 != NULL) {
         MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
         sp30.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp10 = sp30 + sp20;
         M2C_FIELD(arg1, f64 *, 0) = sp10;
         sp18 = sp38 + sp28;
         sp40 = sp10;
@@ -244,11 +244,17 @@ void IceBoss::UpdateSummonWeapon() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f3_489;
     f32 var_f0_467;
     f32 var_f31_477;
+    f64 temp_f0_486;
+    f64 temp_f0_497;
+    f64 temp_f2_485;
     s32 temp_r3_530;
     void *temp_r3_438;
     void *temp_r3_539;
@@ -272,18 +278,19 @@ void IceBoss::UpdateSummonWeapon() {
         } else {
             var_f31_477 = 0.0f;
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+        temp_f2_485 = M2C_FIELD(this, f64 *, 0xF10);
+        temp_f0_486 = sp70.unk30 - temp_f2_485;
+        sp30 = temp_f0_486;
         temp_f3_489 = this->unkEE0.unk20;
-        sp50 = sp30;
+        sp50 = temp_f0_486;
         sp38 = sp70.unk38 - temp_f3_489;
         sp58 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp40 = sp20;
+        temp_f0_497 = temp_f0_486 * (f64) var_f31_477;
+        sp20 = temp_f0_497;
+        sp40 = temp_f0_497;
         sp28 = (f32) sp58 * var_f31_477;
         sp48 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
+        sp10 = temp_f2_485 + temp_f0_497;
         sp60 = sp10;
         sp18 = temp_f3_489 + (f32) sp48;
         this->unkF20.unk18 = (f32) sp60;
@@ -293,8 +300,7 @@ void IceBoss::UpdateSummonWeapon() {
         this->unkF20.unk24 = 1.0f;
         MKModel_SetWorldMatrix(M2C_FIELD(M2C_FIELD(this, void **, 0xF94), MKModel **, 4), *((Matrix *) &this->unkEE0.unk28));
         temp_r3_530 = M2C_FIELD(this, s32 *, 0xB18) * 0x28;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == *(this + (temp_r3_530 + 0xE58))) {
+        if (M2C_FIELD(&gb, f32 *, 0x30C) >= *(this + (temp_r3_530 + 0xE58))) {
             M2C_FIELD((this + temp_r3_530), s8 *, 0xE54) = 0;
             temp_r3_539 = M2C_FIELD(this, void **, 0xF94);
             M2C_FIELD(M2C_FIELD(temp_r3_539, void **, 0x44), M2C_UNK (**)(void *), 0x34)(temp_r3_539);
@@ -320,6 +326,8 @@ void IceBoss::SummonWeapon() {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
+    f64 temp_f0_633;
     u8 *temp_r3_635;
     void *temp_r3_607;
 
@@ -333,9 +341,10 @@ void IceBoss::SummonWeapon() {
     sp40 = (f64) sp20;
     sp48 = (f64) sp28;
     M2C_STRUCT_COPY((s32) &this->unkEC4 + 4, (s32) &sp4C + 4, 0x40);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    temp_f0_633 = sp40 * 5.7700341e-315;
+    sp10 = temp_f0_633;
     temp_r3_635 = &this->unkEC8;
-    sp30 = sp10;
+    sp30 = temp_f0_633;
     sp18 = (f32) sp48 * 5000.0f;
     sp38 = (f64) sp18;
     temp_r3_635->Translate((Matrix *) temp_r3_635, *((MKVector3 *) &sp30));
@@ -390,10 +399,12 @@ void IceBoss::UpdateFormShield() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp1C;
@@ -402,6 +413,7 @@ void IceBoss::UpdateFormShield() {
     f32 temp_f1_782;
     f32 temp_f2_781;
     f32 var_f0_786;
+    f64 temp_f0_861;
 
     if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(7) != 0) {
         M2C_FIELD(this, u8 *, 0xFBA) = 1U;
@@ -451,12 +463,12 @@ void IceBoss::UpdateFormShield() {
             sp98 = (f64) sp58;
             spA0 = (f64) sp60;
             KDRand_Vector(spB8, *((MKVector3 *) &spA8));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spC8 = sp48;
+            temp_f0_861 = spB8 * 5.222099017e-315;
+            sp48 = temp_f0_861;
+            spC8 = temp_f0_861;
             sp50 = spB8.unk8 * 0.5f;
             spD0 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp28 = spC8 + sp88;
             sp18 = 1.0f;
             sp1C = 0.0f;
             sp30 = (f32) spD0 + (f32) sp90;
@@ -545,7 +557,7 @@ void IceBoss::UpdatePhrasesAndSounds() {
     var_r29_1131 = 0;
     var_r30_1132 = 0;
 loop_3:
-    if ((temp_f30_1125 != 0.0f) && (*(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x300)) != 0.0f) && (this->unk1008 > *(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x300))) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f30_1125 == *(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x300))) != 0))) {
+    if ((temp_f30_1125 != 0.0f) && (*(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x300)) != 0.0f) && (this->unk1008 > *(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x300))) && (temp_f30_1125 <= *(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x300)))) {
         this->unkFF4 = M2C_FIELD(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x34C);
         this->unkFEC.unk0 = checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_1132 + 0x2E0);
     } else {
@@ -568,7 +580,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp68'
+#if 0 // DRAFT: undefined identifier 'spE0'
 void IceBoss::CheckAnimEvents() {
     Matrix sp160;
     f64 sp150;
@@ -585,7 +597,7 @@ void IceBoss::CheckAnimEvents() {
     f64 spF8;
     f64 spF0;
     f64 spE8;
-    M2C_UNK spD8;
+    f64 spD8;
     f64 spD0;
     f64 spC8;
     f64 spC0;
@@ -600,8 +612,11 @@ void IceBoss::CheckAnimEvents() {
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp3C;
@@ -617,6 +632,8 @@ void IceBoss::CheckAnimEvents() {
     f32 sp10;
     CharacterFireFX *temp_r4_1326;
     f32 var_f1_1321;
+    f64 temp_f0_1253;
+    f64 temp_f0_1265;
     f64 temp_f0_1345;
     f64 temp_f2_1344;
     s32 temp_r0_1328;
@@ -632,20 +649,20 @@ void IceBoss::CheckAnimEvents() {
         sp80 = -sp160.unk28;
         spF8 = (f64) sp78;
         sp100 = (f64) sp80;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp108 = sp68;
+        temp_f0_1253 = spF8 * 5.5769738e-315;
+        sp68 = temp_f0_1253;
+        sp108 = temp_f0_1253;
         sp70 = (f32) sp100 * 200.0f;
         sp110 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_1265 = sp160.unk30 + temp_f0_1253;
+        sp58 = temp_f0_1265;
         var_r30_1267 = 0;
-        sp148 = sp58;
+        sp148 = temp_f0_1265;
         sp60 = sp160.unk38 + (f32) sp110;
         sp150 = (f64) sp60;
         do {
             KDRand_UnitVectorXZ();
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp48 = spD8 * 5.60222949e-315;
             spE8 = sp48;
             sp50 = spE0 * 300.0f;
             sp138 = sp48;
@@ -743,10 +760,12 @@ void IceBoss::UpdateFormWeapon() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp1C;
@@ -755,6 +774,7 @@ void IceBoss::UpdateFormWeapon() {
     f32 temp_f1_1466;
     f32 temp_f2_1465;
     f32 var_f0_1470;
+    f64 temp_f0_1545;
 
     if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(7) != 0) {
         M2C_FIELD(this, u8 *, 0xFB9) = 1U;
@@ -804,12 +824,12 @@ void IceBoss::UpdateFormWeapon() {
             sp98 = (f64) sp58;
             spA0 = (f64) sp60;
             KDRand_Vector(spB8, *((MKVector3 *) &spA8));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spC8 = sp48;
+            temp_f0_1545 = spB8 * 5.222099017e-315;
+            sp48 = temp_f0_1545;
+            spC8 = temp_f0_1545;
             sp50 = spB8.unk8 * 0.5f;
             spD0 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp28 = spC8 + sp88;
             sp18 = 1.0f;
             sp1C = 0.0f;
             sp30 = (f32) spD0 + (f32) sp90;
@@ -1030,14 +1050,10 @@ s32 IceBoss::TryChangeStage() {
 
     temp_f1_2026 = GetHealthPercentage();
     temp_r31_2027 = this->unkAFC;
-    if ((temp_r31_2027 != 4) && (temp_r31_2027 != 9) && (temp_r31_2027 != 0xE)) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f1_2026 == M2C_FIELD(&fIceBossStageHealth[temp_r31_2027], f32 *, 4)) {
-            this->unkAFC = temp_r31_2027 + 1;
-        }
+    if ((temp_r31_2027 != 4) && (temp_r31_2027 != 9) && (temp_r31_2027 != 0xE) && (temp_f1_2026 <= M2C_FIELD(&fIceBossStageHealth[temp_r31_2027], f32 *, 4))) {
+        this->unkAFC = temp_r31_2027 + 1;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f1_2026 == 0.0f) {
+    if (temp_f1_2026 <= 0.0f) {
         temp_r0_2049 = this->unkAD0;
         switch (M2C_BITWISE(s32, temp_r0_2049)) {   /* irregular */
         case 0:
@@ -1390,13 +1406,17 @@ void IceBoss::Draw() {
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
+    f64 temp_f0_2907;
+    f64 temp_f0_2925;
     u8 var_r30_2779;
     void *temp_r3_2811;
     void *temp_r3_2862;
@@ -1441,12 +1461,14 @@ void IceBoss::Draw() {
         spD0.Translate(&spD0, *((MKVector3 *) &sp90));
         spB0 = (f64) spD0.unk30;
         spB8 = (f64) spD0.unk38;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
-        sp60 = sp40;
+        temp_f0_2907 = spC0 - spA0;
+        sp40 = temp_f0_2907;
+        sp60 = temp_f0_2907;
         sp48 = (f32) spC8 - (f32) spA8;
         sp68 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
-        sp50 = sp30;
+        temp_f0_2925 = spB0 - spA0;
+        sp30 = temp_f0_2925;
+        sp50 = temp_f0_2925;
         sp38 = (f32) spB8 - (f32) spA8;
         sp58 = (f64) sp38;
         if ((((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64))) > (((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54)))) {
@@ -1477,9 +1499,10 @@ void IceBoss::Draw() {
 void IceBoss::Update() {
     f64 sp48;
     f64 sp40;
-    M2C_UNK sp30;
-    M2C_UNK sp20;
+    f64 sp30;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     s32 sp8;
 
     Enemy::Update();
@@ -1499,8 +1522,7 @@ void IceBoss::Update() {
     }
     MKVector(0.0f, 400.0f, 0.0f);
     sp30.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp10 = sp30 + sp20;
     this->unkF68 = sp10;
     sp18 = sp38 + sp28;
     sp40 = sp10;
@@ -1591,11 +1613,17 @@ void IceBoss::SetupCameraSpline(float arg0, float arg1, MKVector3 arg2, MKVector
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -1610,6 +1638,7 @@ void IceBoss::SetupCameraSpline(float arg0, float arg1, MKVector3 arg2, MKVector
     f64 temp_f1_3239;
     f64 temp_f1_3245;
     f64 temp_f1_3249;
+    f64 temp_f1_3534;
     s32 temp_r3_3268;
     s32 temp_r3_3547;
     s32 var_r0_3278;
@@ -1695,7 +1724,7 @@ loop_32:
             }
             temp_f30_3360 = arg0 + var_f0_3329;
             sp168.operator*(temp_f30_3360);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp68 = sp1B8 + M2C_BITWISE(f64, sp168);
             temp_r6_3375 = M2C_FIELD(temp_r31_3217, void **, 0x70);
             sp178 = sp68;
             sp70 = (f32) sp1C0 + sp168.unk8;
@@ -1704,7 +1733,7 @@ loop_32:
             M2C_FIELD(temp_r6_3375, f64 *, 8) = (f64) sp70;
             KDMath_Slerp(sp138, *((MKVector3 *) arg2), 0.7853982f);
             sp148.operator*(temp_f30_3360);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp58 = sp1B8 + M2C_BITWISE(f64, sp148);
             sp60 = (f32) sp1C0 + sp148.unk8;
             temp_r5_3401 = M2C_FIELD(temp_r31_3217, void **, 0x70) + M2C_FIELD(temp_r31_3217, s32 *, 0x68);
             M2C_FIELD(temp_r5_3401, f64 *, 0) = sp58;
@@ -1712,7 +1741,7 @@ loop_32:
             sp160 = (f64) sp60;
             M2C_FIELD(temp_r5_3401, f64 *, 8) = (f64) sp60;
             sp118.operator*(temp_f30_3360);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp48 = sp1B8 + M2C_BITWISE(f64, sp118);
             temp_r6_3421 = M2C_FIELD(temp_r31_3217, void **, 0x70) + (M2C_FIELD(temp_r31_3217, s32 *, 0x68) * 2);
             sp50 = (f32) sp1C0 + sp118.unk8;
             M2C_FIELD(temp_r6_3421, f64 *, 0) = sp48;
@@ -1721,7 +1750,7 @@ loop_32:
             M2C_FIELD(temp_r6_3421, f64 *, 8) = (f64) sp50;
             KDMath_Slerp(spE8, *((MKVector3 *) arg2), -0.7853982f);
             spF8.operator*(temp_f30_3360);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp38 = sp1B8 + M2C_BITWISE(f64, spF8);
             sp40 = (f32) sp1C0 + spF8.unk8;
             temp_r5_3448 = M2C_FIELD(temp_r31_3217, void **, 0x70) + (M2C_FIELD(temp_r31_3217, s32 *, 0x68) * 3);
             M2C_FIELD(temp_r5_3448, f64 *, 0) = sp38;
@@ -1729,7 +1758,7 @@ loop_32:
             sp110 = (f64) sp40;
             M2C_FIELD(temp_r5_3448, f64 *, 8) = (f64) sp40;
             spC8.operator*(temp_f30_3360);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp28 = sp1B8 - M2C_BITWISE(f64, spC8);
             temp_r4_3466 = M2C_FIELD(temp_r31_3217, void **, 0x70) + (M2C_FIELD(temp_r31_3217, s32 *, 0x68) * 4);
             sp30 = (f32) sp1C0 - spC8.unk8;
             M2C_FIELD(temp_r4_3466, f64 *, 0) = sp28;
@@ -1758,10 +1787,10 @@ loop_32:
             goto loop_32;
         }
         temp_r3_3533 = this->unk8;
-        sp88 = M2C_FIELD(temp_r3_3533, f64 *, 0x30);
+        temp_f1_3534 = M2C_FIELD(temp_r3_3533, f64 *, 0x30);
+        sp88 = temp_f1_3534;
         sp90 = M2C_FIELD(temp_r3_3533, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp18 = temp_f1_3534 + *(f64 *) arg3;
         temp_r3_3547 = this->unkAF8;
         sp98 = sp18;
         sp20 = (f32) sp90 + M2C_FIELD(arg3, f32 *, 8);

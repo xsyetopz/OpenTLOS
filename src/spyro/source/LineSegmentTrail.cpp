@@ -282,11 +282,16 @@ void LineSegmentTrail::UpdateTrail(LSTrail *arg0) {
     f32 sp40;
     f32 sp3C;
     f32 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
     f32 sp8;
     MKVector3 *temp_r5_402;
+    f64 temp_f0_466;
     s32 var_ctr_379;
     s32 var_r3_375;
     void *temp_r5_382;
@@ -330,14 +335,13 @@ void LineSegmentTrail::UpdateTrail(LSTrail *arg0) {
                 sp98 = (f64) sp48;
                 spA0 = (f64) sp50;
                 sp70 = (f64) sp40;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                sp28 = sp68 * 5.325712093e-315;
+                temp_f0_466 = (f64) sp40 * 5.325712093e-315;
+                sp30 = temp_f0_466;
                 sp78 = sp28;
-                sp80 = sp30;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp80 = temp_f0_466;
+                sp18 = arg0->unk8 - sp78;
+                sp20 = arg0->unk10 - temp_f0_466;
                 sp8 = 1.0f;
                 spC = 1.0f;
                 sp10 = 1.0f;
@@ -349,8 +353,7 @@ void LineSegmentTrail::UpdateTrail(LSTrail *arg0) {
                 Clamp<MKVector4>(spA8, *((MKVector4 *) &sp98), *((MKVector4 *) &sp88));
                 arg0->unk8 = M2C_BITWISE(f64, spA8);
                 arg0->unk10 = (f64) spA8.unk8;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (M2C_FIELD(arg0, f32 *, 0x14) == 0.01f) {
+                if (M2C_FIELD(arg0, f32 *, 0x14) <= 0.01f) {
                     FreeActiveTrail(arg0);
                 }
             }

@@ -328,24 +328,28 @@ void ShatterObjectDescriptor::Init(KDPropExDescriptor *arg0) {
     this->unk8C = GS_PLACEHOLDER;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void Crate::UpdateShadow(bool arg0) {
     MKVector3 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     f64 sp50;
     f64 sp48;
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_773;
     f32 var_f0_709;
     f32 var_f0_723;
+    f64 temp_f0_754;
+    f64 temp_f0_766;
 
     if (arg0 != 0) {
         var_f0_709 = (1.8f * gUpdateTimeDelta) + this->unk168;
@@ -372,14 +376,15 @@ void Crate::UpdateShadow(bool arg0) {
         sp50 = (f64) sp20;
         sp48 = (f64) sp18;
         KDRand_Box(4.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp68 = sp28;
+        temp_f0_754 = sp58 + M2C_BITWISE(f64, sp78);
+        sp28 = temp_f0_754;
+        sp68 = temp_f0_754;
         sp30 = sp60 + sp78.unk8;
         sp70 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_766 = sp68 + sp48;
+        sp8 = temp_f0_766;
         temp_f1_773 = (f32) sp70 + (f32) sp50;
-        sp38 = sp8;
+        sp38 = temp_f0_766;
         sp10 = temp_f1_773;
         sp40 = (f64) sp10;
         ((SpyroLighting *) (M2C_FIELD(*gb, SpyroLighting *(**)(void **, f32, f32), 0x38)(gb, temp_f1_773, (f32) sp70)))->ApplyPointLight((MKVector3) &sp38, 500.0f, this->unk168);
@@ -507,8 +512,7 @@ loop_6:
 
 void Crate::Respawn() {
     this->unkCC += gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unkCC == 1.0f) {
+    if (this->unkCC >= 1.0f) {
         this->unkCC = 1.0f;
         this->unkC8 = 1;
     }
@@ -543,8 +547,7 @@ loop_7:
     if ((s32) this->unkE0.unk44 != 1) {
         M2C_FIELD(this, u8 *, 0x178) = 0U;
         this->unk16C = M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x10C);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk16C == 0.0f) {
+        if (this->unk16C <= 0.0f) {
             Disable();
             return;
         }
@@ -604,8 +607,8 @@ void Crate::Message(MKMessage *arg0) {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     Attachment *temp_r4_1259;
-    f32 temp_f1_1322;
     f32 temp_f31_1310;
     f64 temp_f1_1246;
     f64 temp_f2_1247;
@@ -616,8 +619,10 @@ void Crate::Message(MKMessage *arg0) {
     u8 var_r28_1166;
     u8 var_r29_1169;
     void *temp_r3_1241;
+    void *temp_r3_1311;
     void *temp_r4_1245;
     void *temp_r4_1269;
+    void *temp_r4_1313;
 
     var_r28_1166 = 0;
     temp_r0_1167 = this->unkC8;
@@ -686,12 +691,11 @@ block_38:
         GameProp::Message(arg0);
         if (M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x10C) > 0.0f) {
             temp_f31_1310 = 1.5f * M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            temp_f1_1322 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) - M2C_FIELD(gb->GetPosPtr(), f32 *, 8);
+            temp_r3_1311 = gb->GetPosPtr();
+            temp_r4_1313 = this->unk8 + 0x30;
+            sp8 = M2C_FIELD(temp_r4_1313, f64 *, 0) - M2C_FIELD(temp_r3_1311, f64 *, 0);
             sp18 = sp8;
-            sp10 = temp_f1_1322;
+            sp10 = M2C_FIELD(temp_r4_1313, f32 *, 8) - M2C_FIELD(temp_r3_1311, f32 *, 8);
             sp20 = (f64) sp10;
             sp28 = sp8;
             sp30 = (f64) sp10;
@@ -723,8 +727,8 @@ void Crate::Update() {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f1_1469;
-    f32 temp_f1_1521;
     f32 temp_f2_1488;
     f32 temp_f31_1461;
     f32 temp_f31_1509;
@@ -732,6 +736,8 @@ void Crate::Update() {
     s32 temp_r0_1400;
     s32 temp_r0_1565;
     void *temp_r30_1401;
+    void *temp_r3_1510;
+    void *temp_r4_1512;
 
     if ((s32) this->unkC8 != 0) {
         temp_r0_1400 = this->unkC8;
@@ -763,16 +769,14 @@ void Crate::Update() {
         temp_f2_1488 = this->unk16C;
         if (temp_f2_1488 > 0.0f) {
             this->unk16C = temp_f2_1488 - gUpdateTimeDelta;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk16C == 0.0f) {
+            if (this->unk16C <= 0.0f) {
                 this->unk70.unk4 = 0;
                 temp_f31_1509 = 1.5f * M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                temp_f1_1521 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) - M2C_FIELD(((HeroInterface *) ((HeroInterface *) M2C_FIELD(&gb, void ***, 0)))->GetPosPtr(), f32 *, 8);
+                temp_r3_1510 = ((HeroInterface *) ((HeroInterface *) M2C_FIELD(&gb, void ***, 0)))->GetPosPtr();
+                temp_r4_1512 = this->unk8 + 0x30;
+                sp10 = M2C_FIELD(temp_r4_1512, f64 *, 0) - M2C_FIELD(temp_r3_1510, f64 *, 0);
                 sp30 = sp10;
-                sp18 = temp_f1_1521;
+                sp18 = M2C_FIELD(temp_r4_1512, f32 *, 8) - M2C_FIELD(temp_r3_1510, f32 *, 8);
                 sp38 = (f64) sp18;
                 sp40 = sp10;
                 sp48 = (f64) sp18;

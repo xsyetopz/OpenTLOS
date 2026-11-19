@@ -54,7 +54,6 @@ void SpyroCombatState::CometDashTransition() {
     } else {
         var_r5_37 = 4;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     this->unk10->TryChangeState(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1, var_r5_37, NULL, 0U);
 }
 
@@ -68,7 +67,9 @@ void SpyroCombatState::CometDashUpdate() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     Spyro *temp_r3_71;
+    f64 temp_f0_97;
     void *temp_r4_72;
 
     temp_r3_71 = this->unk10;
@@ -81,8 +82,9 @@ void SpyroCombatState::CometDashUpdate() {
     if (temp_r3_71->unk430.unk28.GetHitTarget() == 0) {
         this->unk10->unk430.unk28.GetTargetDir((MKVector3 *) &sp38);
     }
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp28 = sp8;
+    temp_f0_97 = sp38 * 5.7204941e-315;
+    sp8 = temp_f0_97;
+    sp28 = temp_f0_97;
     sp10 = (f32) sp40 * 2100.0f;
     sp30 = (f64) sp10;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp28), 3800.0f);
@@ -282,7 +284,6 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
 void SpyroCombatState::ChargeKnockdownUpdate() {
     f64 sp60;
     f64 sp58;
@@ -291,11 +292,15 @@ void SpyroCombatState::ChargeKnockdownUpdate() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
     Spyro *temp_r3_470;
+    f64 temp_f0_489;
+    f64 temp_f0_499;
     void *temp_r4_472;
 
     ChargeKnockdownTransition();
@@ -306,17 +311,18 @@ void SpyroCombatState::ChargeKnockdownUpdate() {
     sp10 = -M2C_FIELD(temp_r4_472, f32 *, 0x28);
     sp38 = (f64) sp8;
     sp40 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp48 = sp28;
+    temp_f0_489 = sp38 * 1.624458753e-314;
+    sp28 = temp_f0_489;
+    sp48 = temp_f0_489;
     sp30 = (f32) sp40 * -500.0f;
     sp50 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp58 = sp18;
+    temp_f0_499 = temp_f0_489 * (f64) gUpdateTimeDelta;
+    sp18 = temp_f0_499;
+    sp58 = temp_f0_499;
     sp20 = (f32) sp50 * gUpdateTimeDelta;
     sp60 = (f64) sp20;
     temp_r3_470->SetDeltaPos(*((MKVector3 *) &sp58));
 }
-#endif
 
 void SpyroCombatState::ChargeKnockdownExit() {
 
@@ -343,16 +349,21 @@ void SpyroCombatState::ChargeKnockdownEnter() {
     f64 sp80;
     f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     MKProp *temp_r3_595;
     Spyro *temp_r3_564;
     Spyro *temp_r3_604;
@@ -360,6 +371,9 @@ void SpyroCombatState::ChargeKnockdownEnter() {
     Spyro *temp_r4_682;
     f32 temp_f2_636;
     f32 temp_f30_609;
+    f64 temp_f0_699;
+    f64 temp_f0_711;
+    f64 temp_f0_721;
     f64 temp_f1_660;
     f64 temp_f2_658;
     s32 temp_r29_745;
@@ -398,8 +412,7 @@ loop_5:
             Normalise(*((MKVector3 *) &spD8.unk30));
             spD8.unk40.operator*(temp_f30_609);
             sp128.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp8 = sp128 + M2C_BITWISE(f64, spD8.unk40);
             temp_f2_636 = M2C_BITWISE(f32, sp128.unk8);
             sp188.unk10 = sp8;
             sp10 = temp_f2_636 + spD8.unk48;
@@ -433,19 +446,22 @@ loop_5:
                 sp88 = (f64) sp38;
                 sp90 = (f64) sp40;
                 spA0 = M2C_FIELD(temp_r3_684, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-                spA8 = sp68;
+                temp_f0_699 = sp98 - sp128.unk30;
+                sp68 = temp_f0_699;
+                spA8 = temp_f0_699;
                 sp70 = (f32) spA0 - (f32) sp128.unk38;
                 spB0 = (f64) sp70;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                spB8 = sp58;
+                temp_f0_711 = temp_f0_699 * 5.222099017e-315;
+                sp58 = temp_f0_711;
+                spB8 = temp_f0_711;
                 sp60 = (f32) spB0 * 0.5f;
                 spC0 = (f64) sp60;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-                spC8 = sp48;
+                temp_f0_721 = sp128.unk30 + temp_f0_711;
+                sp48 = temp_f0_721;
+                spC8 = temp_f0_721;
                 sp50 = (f32) sp128.unk38 + (f32) spC0;
                 spD0 = (f64) sp50;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp28 = spC8 + sp88;
                 sp20 = 0.0f;
                 sp18 = 0.0f;
                 temp_r29_745 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
@@ -719,7 +735,7 @@ void SpyroCombatState::CombatExit() {
 void SpyroCombatState::CombatEnter() {
     MKCollisionResult spD8;
     MKProp sp88;
-    MKProp *sp78;
+    f64 sp78;
     f64 sp70;
     f64 sp68;
     MKVector3 sp58;
@@ -730,7 +746,9 @@ void SpyroCombatState::CombatEnter() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     Spyro *temp_r3_1301;
     Spyro *temp_r3_1429;
     f32 temp_f31_1459;
@@ -752,8 +770,7 @@ void SpyroCombatState::CombatEnter() {
     temp_r30_1302 = this->unk28;
     MKVector(0.0f, temp_r3_1301->GetCollisionHeight(), 0.0f);
     sp88.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp18 = sp88 + sp78;
     sp88.unk40 = sp18;
     sp20 = M2C_BITWISE(f32, sp88.unk8) + sp80;
     sp88.unk10 = sp18;
@@ -761,7 +778,7 @@ void SpyroCombatState::CombatEnter() {
     sp88.unk18 = (f64) sp20;
     sp48.GetDir();
     sp58.operator*(500.0f);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = M2C_BITWISE(f64, sp88.unk40) + M2C_BITWISE(f64, sp58);
     sp68 = sp8;
     sp10 = sp88.unk48 + sp58.unk8;
     sp88.unk30 = sp8;
@@ -873,6 +890,7 @@ void SpyroCombatState::Update() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -881,6 +899,7 @@ void SpyroCombatState::Update() {
     f32 var_f1_1692;
     f32 var_f4_1751;
     f32 var_f4_1818;
+    f64 temp_f1_1728;
     f64 temp_f1_1757;
     f64 temp_f1_1763;
     f64 temp_f1_1767;
@@ -942,9 +961,10 @@ block_19:
             sp38 = M2C_FIELD(temp_r4_1716, f64 *, 0x38);
             temp_r3_1715->unk430.unk28.GetLastCombatEnemy();
             temp_r3_1727 = M2C_FIELD(M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), void *(**)(), 8)(), void **, 8);
-            sp40 = M2C_FIELD(temp_r3_1727, f64 *, 0x30);
+            temp_f1_1728 = M2C_FIELD(temp_r3_1727, f64 *, 0x30);
+            sp40 = temp_f1_1728;
             sp48 = M2C_FIELD(temp_r3_1727, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp20 = temp_f1_1728 - sp30;
             sp50 = sp20;
             sp28 = (f32) sp48 - (f32) sp38;
             sp58 = (f64) sp28;

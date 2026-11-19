@@ -75,8 +75,11 @@ void ZapCage::Update() {
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -95,6 +98,10 @@ void ZapCage::Update() {
     f32 temp_f5_244;
     f32 temp_f6_278;
     f32 temp_f8_289;
+    f64 temp_f0_186;
+    f64 temp_f0_206;
+    f64 temp_f0_226;
+    f64 temp_f1_200;
     s32 temp_r0_127;
     void *temp_r29_332;
     void *temp_r3_198;
@@ -120,28 +127,32 @@ void ZapCage::Update() {
         sp20 = (0.5f * M2C_FIELD(temp_r30_164, f32 *, 0x18)) + M2C_FIELD(temp_r30_164, f32 *, 8);
         sp128.unk10 = (f64) sp18;
         sp128.unk18 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp178 = sp78;
-        sp128.unk20 = sp78;
+        temp_f0_186 = M2C_BITWISE(f64, sp128.unk10) + M2C_BITWISE(f64, sp128);
+        sp78 = temp_f0_186;
+        sp178 = temp_f0_186;
+        sp128.unk20 = temp_f0_186;
         sp80 = M2C_BITWISE(f32, sp128.unk18) + M2C_BITWISE(f32, sp128.unk8);
         sp180 = (f64) sp80;
         temp_r3_198 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
         sp128.unk28 = (f64) sp80;
-        spF8 = M2C_FIELD(temp_r3_198, f64 *, 0x30);
+        temp_f1_200 = M2C_FIELD(temp_r3_198, f64 *, 0x30);
+        spF8 = temp_f1_200;
         sp100 = M2C_FIELD(temp_r3_198, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp108 = sp68;
+        temp_f0_206 = temp_f1_200 - temp_f0_186;
+        sp68 = temp_f0_206;
+        sp108 = temp_f0_206;
         sp70 = (f32) sp100 - (f32) sp180;
         sp110 = (f64) sp70;
         Normalise(sp118);
         temp_f2_220 = M2C_FIELD(temp_r30_164, f32 *, 0xC);
         sp128.unk30 = M2C_BITWISE(f64, sp118);
         sp128.unk38 = (f64) sp118.unk8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spE8 = sp58;
+        temp_f0_226 = M2C_BITWISE(f64, sp128.unk30) * (f64) temp_f2_220;
+        sp58 = temp_f0_226;
+        spE8 = temp_f0_226;
         sp60 = M2C_BITWISE(f32, sp128.unk38) * temp_f2_220;
         spF0 = (f64) sp60;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp178 += temp_f0_226;
         temp_f5_244 = temp_f2_220 / 300.0f;
         sp40 = 0.0f;
         sp50 = 0.0f;
@@ -176,15 +187,13 @@ void ZapCage::Update() {
         ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &sp178), *((MKVector3 *) &sp128.unk40), sp10, lit_720, (MKVector4) &sp98);
         temp_r29_332 = checked_cast<Enemy *, MKProp>(this->unk54);
         this->unk5C -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk5C == 0.0f) {
+        if (this->unk5C <= 0.0f) {
             this->unk5C = 0.3f;
             sp1D0.unk4 = 0;
             sp1D0.Init(NULL, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(1, 1, 0), 1, 0, 1, 0, 0, -1);
             M2C_FIELD(M2C_FIELD(temp_r29_332, void **, 0x44), M2C_UNK (**)(void *, BreathHitMessage *), 0x2C)(temp_r29_332, &sp1D0);
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk50 == 0.0f) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((M2C_FIELD(temp_r29_332, f32 *, 0xAC8) == 0.0f) != 0))) {
+        if ((this->unk50 <= 0.0f) || (M2C_FIELD(temp_r29_332, f32 *, 0xAC8) <= 0.0f)) {
             M2C_FIELD(temp_r29_332, u8 *, 0xB02) = (u8) (M2C_FIELD(temp_r29_332, u8 *, 0xB02) & ~0x40);
             this->unk4C = 0;
             Disable(0);

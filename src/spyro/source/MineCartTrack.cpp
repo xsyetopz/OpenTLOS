@@ -119,14 +119,20 @@ void MineCartTrack::Update() {
     f64 sp150;
     f64 sp148;
     f32 sp140;
+    f64 sp138;
     f32 sp130;
+    f64 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
     f32 spEC;
     f32 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
     f32 spCC;
     f32 spC8;
@@ -137,11 +143,14 @@ void MineCartTrack::Update() {
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     s32 sp60;
     s32 sp5C;
     s32 sp58;
@@ -178,6 +187,11 @@ void MineCartTrack::Update() {
     f32 var_f4_383;
     f32 var_f4_450;
     f32 var_f4_495;
+    f64 temp_f0_215;
+    f64 temp_f0_227;
+    f64 temp_f0_238;
+    f64 temp_f0_249;
+    f64 temp_f0_621;
     f64 temp_f1_284;
     f64 temp_f1_290;
     f64 temp_f1_294;
@@ -187,6 +201,8 @@ void MineCartTrack::Update() {
     f64 temp_f1_501;
     f64 temp_f1_507;
     f64 temp_f1_511;
+    f64 temp_f1_677;
+    f64 temp_f1_749;
     s32 temp_r3_313;
     s32 temp_r3_418;
     s32 temp_r3_530;
@@ -226,8 +242,7 @@ void MineCartTrack::Update() {
             if (var_f29_131 > 1.0f) {
                 var_f29_131 = 1.0f;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((temp_f30_128 == 0.99f) && ((u8) this->unk144 != 0)) {
+            if ((temp_f30_128 >= 0.99f) && ((u8) this->unk144 != 0)) {
                 temp_r3_143 = M2C_FIELD(temp_r31_115, MineCart **, 0x78);
                 sp60 = 0;
                 sp5C = 0xBF;
@@ -253,23 +268,27 @@ void MineCartTrack::Update() {
                 sp228.GetMeasure(var_f29_131, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
                 sp2B8 = sp228;
                 sp2C0 = sp230;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp218 = sp138;
+                temp_f0_215 = sp2E8 + sp2D8;
+                sp138 = temp_f0_215;
+                sp218 = temp_f0_215;
                 sp140 = (f32) sp2F0 + (f32) sp2E0;
                 sp220 = (f64) sp140;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                sp2A8 = sp128;
+                temp_f0_227 = temp_f0_215 * 5.222099017e-315;
+                sp128 = temp_f0_227;
+                sp2A8 = temp_f0_227;
                 sp130 = (f32) sp220 * 0.5f;
                 sp2B0 = (f64) sp130;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp208 = sp118;
+                temp_f0_238 = sp2C8 + sp2B8;
+                sp118 = temp_f0_238;
+                sp208 = temp_f0_238;
                 sp120 = (f32) sp2D0 + (f32) sp2C0;
                 sp210 = (f64) sp120;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                sp298 = sp108;
+                temp_f0_249 = temp_f0_238 * 5.222099017e-315;
+                sp108 = temp_f0_249;
+                sp298 = temp_f0_249;
                 sp110 = (f32) sp210 * 0.5f;
                 sp2A0 = (f64) sp110;
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                spF8 = sp2A8 - temp_f0_249;
                 sp1F8 = spF8;
                 sp100 = (f32) sp2B0 - (f32) sp2A0;
                 sp200 = (f64) sp100;
@@ -317,7 +336,7 @@ void MineCartTrack::Update() {
                 spF0 = (f32) sp200 * var_f3_345;
                 sp288 = (f64) spE8;
                 sp290 = (f64) spF0;
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                spD8 = sp2E8 - sp2D8;
                 sp1E8 = spD8;
                 spE0 = (f32) sp2F0 - (f32) sp2E0;
                 sp1F0 = (f64) spE0;
@@ -426,8 +445,9 @@ void MineCartTrack::Update() {
                 temp_r3_614 = M2C_FIELD(temp_r31_115, MineCart **, 0x78);
                 sp1A8 = temp_r3_614->unk168;
                 sp1B0 = temp_r3_614->unk168;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp1B8 = sp68;
+                temp_f0_621 = sp2A8 + sp1A8;
+                sp68 = temp_f0_621;
+                sp1B8 = temp_f0_621;
                 sp70 = (f32) sp2B0 + (f32) sp1B0;
                 sp1C0 = (f64) sp70;
                 sp330 = (f32) sp1B8;
@@ -456,11 +476,12 @@ void MineCartTrack::Update() {
                     if (temp_r3_670 != NULL) {
                         temp_r5_674 = M2C_FIELD(temp_r3_670, void **, 8);
                         temp_r4_675 = M2C_FIELD(temp_r31_115, MineCart **, 0x78)->unk8;
+                        temp_f1_677 = M2C_FIELD(temp_r4_675, f64 *, 0x30);
                         sp178 = M2C_FIELD(temp_r5_674, f64 *, 0x30);
-                        sp188 = M2C_FIELD(temp_r4_675, f64 *, 0x30);
+                        sp188 = temp_f1_677;
                         sp180 = M2C_FIELD(temp_r5_674, f64 *, 0x38);
                         sp190 = M2C_FIELD(temp_r4_675, f64 *, 0x38);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                        sp98 = temp_f1_677 - sp178;
                         sp198 = sp98;
                         spA0 = (f32) sp190 - (f32) sp180;
                         sp1A0 = (f64) spA0;
@@ -480,11 +501,12 @@ void MineCartTrack::Update() {
                     if (temp_r3_742 != NULL) {
                         temp_r5_746 = M2C_FIELD(temp_r3_742, void **, 8);
                         temp_r4_747 = M2C_FIELD(temp_r31_115, MineCart **, 0x78)->unk8;
+                        temp_f1_749 = M2C_FIELD(temp_r4_747, f64 *, 0x30);
                         sp148 = M2C_FIELD(temp_r5_746, f64 *, 0x30);
-                        sp158 = M2C_FIELD(temp_r4_747, f64 *, 0x30);
+                        sp158 = temp_f1_749;
                         sp150 = M2C_FIELD(temp_r5_746, f64 *, 0x38);
                         sp160 = M2C_FIELD(temp_r4_747, f64 *, 0x38);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                        sp88 = temp_f1_749 - sp148;
                         sp168 = sp88;
                         sp90 = (f32) sp160 - (f32) sp150;
                         sp170 = (f64) sp90;

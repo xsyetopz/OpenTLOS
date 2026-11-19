@@ -418,13 +418,9 @@ void KDParticleSystemProperty::ResolveInstance() {
         M2C_FIELD(temp_r4_994, f64 *, 0x70) = (f64) M2C_FIELD(temp_r3_993, f64 *, 0x10);
         M2C_FIELD(temp_r4_994, f64 *, 0x78) = (f64) M2C_FIELD(temp_r3_993, f64 *, 0x18);
         temp_r3_1005 = M2C_FIELD(temp_r31_987, void **, 0) + 0x60;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+        M2C_FIELD(temp_r3_1005, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_1005, f64 *, 0) * 5.28426686e-315);
         M2C_FIELD(temp_r3_1005, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_1005, f32 *, 8) * 1.5f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r3, $r0, 0x0, qr0 */);
+        M2C_FIELD(temp_r3_1005, f64 *, 0x10) = (f64) (M2C_FIELD(temp_r3_1005, f64 *, 0x10) * 5.28426686e-315);
         M2C_FIELD(temp_r3_1005, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r3_1005, f32 *, 0x18) * 1.5f);
         M2C_FIELD(temp_r3_1005, f32 *, 0xC) = (f32) (M2C_FIELD(temp_r3_1005, f32 *, 0xC) * 1.5f);
     } else {

@@ -29,10 +29,14 @@ u8 SwampTier1Goal_Hit::Update() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     s32 sp8;
     Enemy *temp_r3_63;
     Enemy *temp_r3_73;
+    f64 temp_f0_93;
+    f64 temp_f1_83;
     s32 var_r6_99;
     void *temp_r4_80;
 
@@ -42,17 +46,18 @@ u8 SwampTier1Goal_Hit::Update() {
     temp_r3_63 = this->unkC;
     if (((u8) M2C_FIELD(temp_r3_63->unkA20, u8 *, 0x121) != 0) && (temp_r3_63->InWaterVolume(*((MKVector3 *) &temp_r3_63->unk588), &sp8) != 0)) {
         temp_r3_73 = this->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp20 = M2C_FIELD(temp_r3_73, f64 *, 0xC0) * 5.398241246e-315;
         temp_r4_80 = temp_r3_73->unk8;
+        temp_f1_83 = M2C_FIELD(temp_r4_80, f64 *, 0x30);
         sp28 = temp_r3_73->unkC8 * 10.0f;
         sp30 = sp20;
-        sp40 = M2C_FIELD(temp_r4_80, f64 *, 0x30);
+        sp40 = temp_f1_83;
         sp38 = (f64) sp28;
         sp48 = M2C_FIELD(temp_r4_80, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_93 = temp_f1_83 + sp30;
+        sp10 = temp_f0_93;
         var_r6_99 = 0x4000;
-        sp50 = sp10;
+        sp50 = temp_f0_93;
         sp18 = (f32) sp48 + (f32) sp38;
         sp58 = (f64) sp18;
         if (sp8 & 1) {
@@ -224,10 +229,12 @@ u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     M2C_UNK sp18;
     u8 sp14;
     void *sp10;
@@ -248,6 +255,8 @@ u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
     f32 temp_f1_632;
     f32 temp_f2_526;
     f32 temp_f31_428;
+    f64 temp_f0_443;
+    f64 temp_f0_538;
     u8 var_r0_403;
     u8 var_r29_577;
     u8 var_r30_463;
@@ -271,9 +280,9 @@ u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
         sp5C = 50.0f + temp_f31_428;
         sp80 = (f64) sp60;
         sp78 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spB8 = sp48;
+        temp_f0_443 = M2C_FIELD(temp_r3_433, f64 *, 0x720) + (f64) sp58;
+        sp48 = temp_f0_443;
+        spB8 = temp_f0_443;
         sp50 = temp_r3_433->unk710.unk8 + (f32) sp80;
         spC0 = (f64) sp50;
         temp_r4_453 = temp_r3_433->unk634;
@@ -314,9 +323,9 @@ u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
         sp3C = temp_f2_526;
         sp70 = (f64) sp40;
         sp68 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        spA8 = sp28;
+        temp_f0_538 = M2C_FIELD(temp_r3_527, f64 *, 0x720) + (f64) sp38;
+        sp28 = temp_f0_538;
+        spA8 = temp_f0_538;
         sp30 = temp_r3_527->unk710.unk8 + (f32) sp70;
         spB0 = (f64) sp30;
         temp_r4_548 = temp_r3_527->unk634;
@@ -336,8 +345,7 @@ u8 SwampTier1Goal_Think::AddGoal_MoveToLastPlayerPos() {
         var_r29_577 = 0;
         if (temp_r28_576->unk750.unkA0.IsPointWithin(temp_r28_576->unk710) != 0) {
             sp18.GetRegionPos();
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((f32) fabs(sp1C - temp_r28_576->unk710.unk4) == 500.0f) {
+            if ((f32) fabs(sp1C - temp_r28_576->unk710.unk4) <= 500.0f) {
                 var_r29_577 = 1;
             }
         }
@@ -508,8 +516,7 @@ void SwampTier1Goal_Think::Arbitrate() {
     temp_r30_971 = IsPresent(0x38);
     if ((this->unkC->WasHit() != 0) && (sp8.Init(), this->unkC->TakeDamage(&sp8, 0U), ((IsPresent(0x5B) == 0) != 0))) {
         temp_r4_990 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r4_990->unkAB0 == 0.0f) {
+        if (temp_r4_990->unkAB0 <= 0.0f) {
             if (((u8) M2C_FIELD(temp_r4_990, u8 *, 0xB01) >> 4U) & 1) {
                 temp_r3_999 = temp_r4_990->unkA2C;
                 if (temp_r3_999 != NULL) {

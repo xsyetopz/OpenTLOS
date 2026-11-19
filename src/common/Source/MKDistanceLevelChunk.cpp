@@ -378,9 +378,13 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     Matrix *temp_r3_711;
     Matrix *temp_r3_749;
     Matrix *temp_r3_799;
@@ -391,7 +395,15 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
     f32 temp_r3_830;
     f32 var_f1_640;
     f32 var_f1_651;
+    f64 *temp_r5_713;
+    f64 *temp_r5_751;
+    f64 *temp_r5_801;
+    f64 *temp_r5_839;
     f64 temp_f1_648;
+    f64 temp_f1_714;
+    f64 temp_f1_752;
+    f64 temp_f1_802;
+    f64 temp_f1_840;
     s32 temp_r3_662;
     s32 temp_r3_742;
     s32 temp_r3_792;
@@ -459,10 +471,11 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
                 M2C_FIELD(temp_r29_709, MKProp **, 0) = arg0;
                 temp_r3_711 = MKView_GetCameraMatrix();
                 temp_r4_712 = arg0->unk8;
-                spB8 = M2C_FIELD(temp_r4_712, f64 *, 0x30);
+                temp_r5_713 = temp_r3_711 + 0x30;
+                temp_f1_714 = M2C_FIELD(temp_r4_712, f64 *, 0x30);
+                spB8 = temp_f1_714;
                 spC0 = M2C_FIELD(temp_r4_712, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp38 = temp_f1_714 - *temp_r5_713;
                 spA8 = sp38;
                 sp40 = (f32) spC0 - temp_r3_711->unk38;
                 spB0 = (f64) sp40;
@@ -475,10 +488,11 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
             M2C_FIELD(temp_r29_747, MKProp **, 0) = arg0;
             temp_r3_749 = MKView_GetCameraMatrix();
             temp_r4_750 = arg0->unk8;
-            sp98 = M2C_FIELD(temp_r4_750, f64 *, 0x30);
+            temp_r5_751 = temp_r3_749 + 0x30;
+            temp_f1_752 = M2C_FIELD(temp_r4_750, f64 *, 0x30);
+            sp98 = temp_f1_752;
             spA0 = M2C_FIELD(temp_r4_750, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp28 = temp_f1_752 - *temp_r5_751;
             sp88 = sp28;
             sp30 = (f32) spA0 - temp_r3_749->unk38;
             sp90 = (f64) sp30;
@@ -493,10 +507,11 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
                 M2C_FIELD(temp_r29_797, MKProp **, 0) = arg0;
                 temp_r3_799 = MKView_GetCameraMatrix();
                 temp_r4_800 = arg0->unk8;
-                sp78 = M2C_FIELD(temp_r4_800, f64 *, 0x30);
+                temp_r5_801 = temp_r3_799 + 0x30;
+                temp_f1_802 = M2C_FIELD(temp_r4_800, f64 *, 0x30);
+                sp78 = temp_f1_802;
                 sp80 = M2C_FIELD(temp_r4_800, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp18 = temp_f1_802 - *temp_r5_801;
                 sp68 = sp18;
                 sp20 = (f32) sp80 - temp_r3_799->unk38;
                 sp70 = (f64) sp20;
@@ -509,10 +524,11 @@ void MKDistanceLevelChunk::AddPropToDrawList(MKProp *arg0, int arg1, float arg2,
             M2C_FIELD(temp_r29_835, MKProp **, 0) = arg0;
             temp_r3_837 = MKView_GetCameraMatrix();
             temp_r4_838 = arg0->unk8;
-            sp58 = M2C_FIELD(temp_r4_838, f64 *, 0x30);
+            temp_r5_839 = temp_r3_837 + 0x30;
+            temp_f1_840 = M2C_FIELD(temp_r4_838, f64 *, 0x30);
+            sp58 = temp_f1_840;
             sp60 = M2C_FIELD(temp_r4_838, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp8 = temp_f1_840 - *temp_r5_839;
             sp48 = sp8;
             sp10 = (f32) sp60 - temp_r3_837->unk38;
             sp50 = (f64) sp10;
@@ -579,7 +595,7 @@ void MKDistanceLevelChunk::CheckPropVisRecursive(SMNode *arg0, int arg1) {
             }
             temp_f0_961 = var_f6_950 * var_f6_950;
             var_f30_907 = temp_f0_961;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
             if (var_f31_904 != temp_f0_961) {
                 goto block_11;
             }
@@ -633,9 +649,13 @@ void MKDistanceLevelChunk::CalcGlobalPropVis() {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKPropDescriptor *temp_r3_1051;
     MKPropDescriptor *temp_r3_1069;
     MKPropDescriptor *temp_r3_1168;
@@ -647,6 +667,14 @@ void MKDistanceLevelChunk::CalcGlobalPropVis() {
     f32 temp_r3_1090;
     f32 temp_r3_1226;
     f32 var_r31_1023;
+    f64 *temp_r5_1099;
+    f64 *temp_r5_1137;
+    f64 *temp_r5_1197;
+    f64 *temp_r5_1235;
+    f64 temp_f1_1100;
+    f64 temp_f1_1138;
+    f64 temp_f1_1198;
+    f64 temp_f1_1236;
     s32 temp_r3_1042;
     s32 temp_r3_1128;
     s32 temp_r3_1188;
@@ -696,10 +724,11 @@ loop_32:
                     M2C_FIELD(temp_r28_1095, f32 *, 0) = var_r31_1023;
                     temp_r3_1097 = MKView_GetCameraMatrix();
                     temp_r4_1098 = M2C_FIELD(var_r31_1023, void **, 8);
-                    spB8 = M2C_FIELD(temp_r4_1098, f64 *, 0x30);
+                    temp_r5_1099 = temp_r3_1097 + 0x30;
+                    temp_f1_1100 = M2C_FIELD(temp_r4_1098, f64 *, 0x30);
+                    spB8 = temp_f1_1100;
                     spC0 = M2C_FIELD(temp_r4_1098, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp38 = temp_f1_1100 - *temp_r5_1099;
                     spA8 = sp38;
                     sp40 = (f32) spC0 - temp_r3_1097->unk38;
                     spB0 = (f64) sp40;
@@ -711,10 +740,11 @@ loop_32:
                     M2C_FIELD(temp_r28_1133, f32 *, 0) = var_r31_1023;
                     temp_r3_1135 = MKView_GetCameraMatrix();
                     temp_r4_1136 = M2C_FIELD(var_r31_1023, void **, 8);
-                    sp98 = M2C_FIELD(temp_r4_1136, f64 *, 0x30);
+                    temp_r5_1137 = temp_r3_1135 + 0x30;
+                    temp_f1_1138 = M2C_FIELD(temp_r4_1136, f64 *, 0x30);
+                    sp98 = temp_f1_1138;
                     spA0 = M2C_FIELD(temp_r4_1136, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp28 = temp_f1_1138 - *temp_r5_1137;
                     sp88 = sp28;
                     sp30 = (f32) spA0 - temp_r3_1135->unk38;
                     sp90 = (f64) sp30;
@@ -736,10 +766,11 @@ loop_32:
                     M2C_FIELD(temp_r28_1193, f32 *, 0) = var_r31_1023;
                     temp_r3_1195 = MKView_GetCameraMatrix();
                     temp_r4_1196 = M2C_FIELD(var_r31_1023, void **, 8);
-                    sp78 = M2C_FIELD(temp_r4_1196, f64 *, 0x30);
+                    temp_r5_1197 = temp_r3_1195 + 0x30;
+                    temp_f1_1198 = M2C_FIELD(temp_r4_1196, f64 *, 0x30);
+                    sp78 = temp_f1_1198;
                     sp80 = M2C_FIELD(temp_r4_1196, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp18 = temp_f1_1198 - *temp_r5_1197;
                     sp68 = sp18;
                     sp20 = (f32) sp80 - temp_r3_1195->unk38;
                     sp70 = (f64) sp20;
@@ -751,10 +782,11 @@ loop_32:
                     M2C_FIELD(temp_r28_1231, f32 *, 0) = var_r31_1023;
                     temp_r3_1233 = MKView_GetCameraMatrix();
                     temp_r4_1234 = M2C_FIELD(var_r31_1023, void **, 8);
-                    sp58 = M2C_FIELD(temp_r4_1234, f64 *, 0x30);
+                    temp_r5_1235 = temp_r3_1233 + 0x30;
+                    temp_f1_1236 = M2C_FIELD(temp_r4_1234, f64 *, 0x30);
+                    sp58 = temp_f1_1236;
                     sp60 = M2C_FIELD(temp_r4_1234, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp8 = temp_f1_1236 - *temp_r5_1235;
                     sp48 = sp8;
                     sp10 = (f32) sp60 - temp_r3_1233->unk38;
                     sp50 = (f64) sp10;
@@ -781,6 +813,7 @@ void MKDistanceLevelChunk::CalcDynamicPropVis() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     BoundingVolume *var_r28_1325;
     Matrix *temp_r3_1347;
     f32 temp_f1_1372;
@@ -815,9 +848,7 @@ loop_18:
             }
             temp_r5_1336 = MKView_VisibilityTest(*var_r28_1325, *(M2C_FIELD(var_r31_1299, Matrix **, 8)));
             temp_cr0_eq_1336 = temp_r5_1336 == 0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp8 = M2C_FIELD(var_r28_1325, f64 *, 0) + M2C_FIELD(var_r28_1325, f64 *, 0x10);
             sp10 = var_r28_1325->unk8 + var_r28_1325->unk18;
             if (temp_cr0_eq_1336 == 0) {
                 temp_r3_1347 = M2C_FIELD(var_r31_1299, Matrix **, 8);
@@ -1116,7 +1147,7 @@ loop_24:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SMTree::LinkUpRow(int arg0, int arg1, int arg2) {
     f64 sp90;
     f64 sp88;
@@ -1129,13 +1160,18 @@ void SMTree::LinkUpRow(int arg0, int arg1, int arg2) {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     BoundingVolume *temp_r3_1914;
     BoundingVolume *var_r29_1916;
     BoundingVolume *var_r30_1915;
     f32 temp_f2_1979;
     f32 var_f1_1978;
+    f64 temp_f0_1925;
+    f64 temp_f0_1939;
     s32 var_r31_1913;
 
     var_r31_1913 = 0;
@@ -1146,16 +1182,14 @@ loop_5:
     if (var_r31_1913 < arg1) {
         var_r30_1915->unk20 = (s32) var_r29_1916;
         var_r30_1915->unk24 = (s32) (var_r29_1916 + 0x30);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp68 = sp18;
+        temp_f0_1925 = M2C_FIELD(var_r29_1916, f64 *, 0) + M2C_FIELD(var_r29_1916, f64 *, 0x10);
+        sp18 = temp_f0_1925;
+        sp68 = temp_f0_1925;
         sp20 = var_r29_1916->unk8 + var_r29_1916->unk18;
         sp70 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp58 = sp28;
+        temp_f0_1939 = M2C_FIELD(var_r29_1916, f64 *, 0x30) + M2C_FIELD(var_r29_1916, f64 *, 0x40);
+        sp28 = temp_f0_1939;
+        sp58 = temp_f0_1939;
         sp30 = M2C_FIELD(var_r29_1916, f32 *, 0x38) + M2C_FIELD(var_r29_1916, f32 *, 0x48);
         sp60 = (f64) sp30;
         Max(sp48, *((MKVector3 *) &sp58));
@@ -1164,8 +1198,7 @@ loop_5:
         Min(sp78, *(MKVector3 *) (var_r29_1916 + 0x30));
         M2C_FIELD(var_r30_1915, f64 *, 0) = M2C_BITWISE(f64, sp78);
         M2C_FIELD(var_r30_1915, f64 *, 8) = (f64) sp78.unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp8 = sp38 - M2C_FIELD(var_r30_1915, f64 *, 0);
         M2C_FIELD(var_r30_1915, f64 *, 0x10) = sp8;
         sp10 = (f32) sp40 - var_r30_1915->unk8;
         sp88 = sp8;
@@ -1267,7 +1300,7 @@ void SMTree::PairUp(int arg0, int arg1, int arg2) {
             arg_sp70 = (f64) arg_sp20;
             arg_sp78 = (f64) arg_sp28;
             arg_spC8 = (f64) arg_sp28;
-            M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
+            arg_sp60 = arg_sp10 - arg_spC0;
             arg_spB0 = arg_sp60;
             arg_sp68 = (f32) arg_sp18 - (f32) arg_spC8;
             arg_spB8 = (f64) arg_sp68;

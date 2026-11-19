@@ -87,8 +87,7 @@ void SpyroSoundPlayer::PlaySounds(int arg0, bool arg1) {
     sp8 = 1;
     ((KDSoundFader *) (this + temp_r30_41))->Update(temp_r29_46, 0U, var_r31_73, NULL, NULL, 0U, temp_r28_48, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_r3_91 = this + temp_r30_41;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (M2C_FIELD(temp_r3_91, f32 *, 8) == 0.0f) {
+    if (M2C_FIELD(temp_r3_91, f32 *, 8) <= 0.0f) {
         M2C_FIELD(temp_r3_91, s32 *, 0x28) = 2;
     }
 }

@@ -242,7 +242,7 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spD8'
+#if 0 // DRAFT: illegal type
 void Leviathan::EmitWaterSpray() {
     f64 sp300;
     f64 sp2F8;
@@ -300,13 +300,21 @@ void Leviathan::EmitWaterSpray() {
     f64 spF0;
     f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp64;
     f32 sp60;
     f32 sp5C;
@@ -318,18 +326,24 @@ void Leviathan::EmitWaterSpray() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
     MKProp *temp_r3_477;
     f32 temp_f0_507;
     f32 temp_f31_431;
+    f64 temp_f0_294;
+    f64 temp_f0_306;
+    f64 temp_f0_329;
     s32 var_r28_379;
     s32 var_r29_367;
     void *temp_r27_492;
     void *temp_r3_489;
     void *temp_r5_237;
+    void *temp_r5_254;
     void *temp_r5_274;
     void *temp_r5_430;
 
@@ -340,10 +354,10 @@ void Leviathan::EmitWaterSpray() {
     sp268 = (f64) sp48;
     sp270 = (f64) sp50;
     sp278.operator*(2000.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_r5_254 = this->unk8;
+    spD8 = *(temp_r5_254 + 0x30) + M2C_BITWISE(f64, sp278);
     sp288 = spD8;
-    spE0 = M2C_FIELD(this->unk8, f32 *, 0x38) + sp278.unk8;
+    spE0 = M2C_FIELD(temp_r5_254, f32 *, 0x38) + sp278.unk8;
     sp2C8 = spD8;
     sp290 = (f64) spE0;
     sp2D0 = (f64) spE0;
@@ -355,35 +369,38 @@ void Leviathan::EmitWaterSpray() {
     sp228 = (f64) sp38;
     sp230 = (f64) sp40;
     sp238.operator*(1000.0f);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp248 = sp28;
+    temp_f0_294 = sp2C8 + M2C_BITWISE(f64, sp238);
+    sp28 = temp_f0_294;
+    sp248 = temp_f0_294;
     sp30 = (f32) sp2D0 + sp238.unk8;
     sp250 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp258 = spC8;
-    sp2D8 = spC8;
+    temp_f0_306 = sp248 + M2C_BITWISE(f64, sp218);
+    spC8 = temp_f0_306;
+    sp258 = temp_f0_306;
+    sp2D8 = temp_f0_306;
     spD0 = (f32) sp250 + sp218.unk8;
     sp260 = (f64) spD0;
     sp2E0 = (f64) spD0;
     sp1D8.operator*(500.0f);
     sp1E8.operator*(1000.0f);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-    sp1F8 = sp18;
+    temp_f0_329 = sp2C8 + M2C_BITWISE(f64, sp1E8);
+    sp18 = temp_f0_329;
+    sp1F8 = temp_f0_329;
     sp20 = (f32) sp2D0 + sp1E8.unk8;
     sp200 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spB8 = sp1F8 + M2C_BITWISE(f64, sp1D8);
     sp208 = spB8;
     spC0 = (f32) sp200 + sp1D8.unk8;
     sp2B8 = spB8;
     sp210 = (f64) spC0;
     sp2C0 = (f64) spC0;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
+    spA8 = sp2C8 - sp2D8;
     sp1C8 = spA8;
     spB0 = (f32) sp2D0 - (f32) sp2E0;
     sp2A8 = spA8;
     sp1D0 = (f64) spB0;
     sp2B0 = (f64) spB0;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
+    sp98 = sp2C8 - sp2B8;
     var_r29_367 = 0;
     sp1B8 = sp98;
     spA0 = (f32) sp2D0 - (f32) sp2C0;
@@ -395,7 +412,7 @@ void Leviathan::EmitWaterSpray() {
 loop_2:
         if (var_r29_367 != 0) {
             sp198.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp88 = sp2D8 + M2C_BITWISE(f64, sp198);
             sp1A8 = sp88;
             sp90 = (f32) sp2E0 + sp198.unk8;
             sp2F8 = sp88;
@@ -403,7 +420,7 @@ loop_2:
             sp300 = (f64) sp90;
         } else {
             sp178.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp78 = sp2B8 + M2C_BITWISE(f64, sp178);
             sp188 = sp78;
             sp80 = (f32) sp2C0 + sp178.unk8;
             sp2F8 = sp78;
@@ -423,8 +440,7 @@ loop_2:
         MKVector(-1.0f, 0.0f, -1.0f);
         KDRand_Vector(sp148, sp138);
         sp158.operator*(3000.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp68 = sp158 + M2C_BITWISE(f64, sp118);
         temp_r3_477 = this->unk1A0;
         sp168 = sp68;
         sp70 = sp158.unk8 + sp118.unk8;
@@ -463,7 +479,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spD8'
+#if 0 // DRAFT: illegal type
 void Leviathan::EmitHugeSplash() {
     f64 sp300;
     f64 sp2F8;
@@ -521,13 +537,21 @@ void Leviathan::EmitHugeSplash() {
     f64 spF0;
     f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp64;
     f32 sp60;
     f32 sp5C;
@@ -539,18 +563,24 @@ void Leviathan::EmitHugeSplash() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
     MKProp *temp_r3_810;
     f32 temp_f0_840;
     f32 temp_f31_764;
+    f64 temp_f0_627;
+    f64 temp_f0_639;
+    f64 temp_f0_662;
     s32 var_r28_712;
     s32 var_r29_700;
     void *temp_r27_825;
     void *temp_r3_822;
     void *temp_r5_570;
+    void *temp_r5_587;
     void *temp_r5_607;
     void *temp_r5_763;
 
@@ -561,10 +591,10 @@ void Leviathan::EmitHugeSplash() {
     sp268 = (f64) sp48;
     sp270 = (f64) sp50;
     sp278.operator*(2000.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_r5_587 = this->unk8;
+    spD8 = *(temp_r5_587 + 0x30) + M2C_BITWISE(f64, sp278);
     sp288 = spD8;
-    spE0 = M2C_FIELD(this->unk8, f32 *, 0x38) + sp278.unk8;
+    spE0 = M2C_FIELD(temp_r5_587, f32 *, 0x38) + sp278.unk8;
     sp2C8 = spD8;
     sp290 = (f64) spE0;
     sp2D0 = (f64) spE0;
@@ -576,35 +606,38 @@ void Leviathan::EmitHugeSplash() {
     sp228 = (f64) sp38;
     sp230 = (f64) sp40;
     sp238.operator*(1000.0f);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp248 = sp28;
+    temp_f0_627 = sp2C8 + M2C_BITWISE(f64, sp238);
+    sp28 = temp_f0_627;
+    sp248 = temp_f0_627;
     sp30 = (f32) sp2D0 + sp238.unk8;
     sp250 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp258 = spC8;
-    sp2D8 = spC8;
+    temp_f0_639 = sp248 + M2C_BITWISE(f64, sp218);
+    spC8 = temp_f0_639;
+    sp258 = temp_f0_639;
+    sp2D8 = temp_f0_639;
     spD0 = (f32) sp250 + sp218.unk8;
     sp260 = (f64) spD0;
     sp2E0 = (f64) spD0;
     sp1D8.operator*(500.0f);
     sp1E8.operator*(1000.0f);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-    sp1F8 = sp18;
+    temp_f0_662 = sp2C8 + M2C_BITWISE(f64, sp1E8);
+    sp18 = temp_f0_662;
+    sp1F8 = temp_f0_662;
     sp20 = (f32) sp2D0 + sp1E8.unk8;
     sp200 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spB8 = sp1F8 + M2C_BITWISE(f64, sp1D8);
     sp208 = spB8;
     spC0 = (f32) sp200 + sp1D8.unk8;
     sp2B8 = spB8;
     sp210 = (f64) spC0;
     sp2C0 = (f64) spC0;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
+    spA8 = sp2C8 - sp2D8;
     sp1C8 = spA8;
     spB0 = (f32) sp2D0 - (f32) sp2E0;
     sp2A8 = spA8;
     sp1D0 = (f64) spB0;
     sp2B0 = (f64) spB0;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
+    sp98 = sp2C8 - sp2B8;
     var_r29_700 = 0;
     sp1B8 = sp98;
     spA0 = (f32) sp2D0 - (f32) sp2C0;
@@ -616,7 +649,7 @@ void Leviathan::EmitHugeSplash() {
 loop_2:
         if (var_r29_700 != 0) {
             sp198.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp88 = sp2D8 + M2C_BITWISE(f64, sp198);
             sp1A8 = sp88;
             sp90 = (f32) sp2E0 + sp198.unk8;
             sp2F8 = sp88;
@@ -624,7 +657,7 @@ loop_2:
             sp300 = (f64) sp90;
         } else {
             sp178.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp78 = sp2B8 + M2C_BITWISE(f64, sp178);
             sp188 = sp78;
             sp80 = (f32) sp2C0 + sp178.unk8;
             sp2F8 = sp78;
@@ -644,8 +677,7 @@ loop_2:
         MKVector(-1.0f, 0.0f, -1.0f);
         KDRand_Vector(sp148, sp138);
         sp158.operator*(3000.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp68 = sp158 + M2C_BITWISE(f64, sp118);
         temp_r3_810 = this->unk1A0;
         sp168 = sp68;
         sp70 = sp158.unk8 + sp118.unk8;
@@ -710,6 +742,7 @@ void Leviathan::UpdateMove() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -729,11 +762,13 @@ void Leviathan::UpdateMove() {
     f32 var_f4_1090;
     f32 var_f4_992;
     f32 var_f7_983;
+    f64 temp_f0_1289;
     f64 temp_f1_1003;
     f64 temp_f1_1007;
     f64 temp_f1_1096;
     f64 temp_f1_1102;
     f64 temp_f1_1106;
+    f64 temp_f1_1276;
     f64 temp_f1_997;
     f64 temp_f4_1194;
     f64 temp_f4_1200;
@@ -925,15 +960,17 @@ void Leviathan::UpdateMove() {
         if (((spD8 * temp_f5_1263) + ((spD0 * temp_f7_1261) + (unkspD4 * temp_f6_1259))) < 0.0f) {
             var_f2_1186 = -var_f2_1186;
         }
+        temp_f1_1276 = M2C_FIELD(this, f64 *, 0x110);
         sp30 = 0.0f;
         sp34 = var_f2_1186;
         sp38 = 0.0f;
         sp90.unk10 = (f64) sp30;
-        sp60 = M2C_FIELD(this, f64 *, 0x110);
+        sp60 = temp_f1_1276;
         spA8 = (f64) sp38;
         sp68 = M2C_FIELD(this, f64 *, 0x118);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp70 = sp20;
+        temp_f0_1289 = temp_f1_1276 + M2C_BITWISE(f64, sp90.unk10);
+        sp20 = temp_f0_1289;
+        sp70 = temp_f0_1289;
         sp28 = (f32) sp68 + (f32) spA8;
         sp78 = (f64) sp28;
         spF0.SetRotationPYR(*((MKVector3 *) &sp70));
@@ -957,7 +994,7 @@ void Leviathan::Update() {
     f64 spD0;
     f64 spC8;
     f64 spC0;
-    M2C_UNK spB0;
+    f64 spB0;
     f64 spA8;
     f64 spA0;
     f64 sp98;
@@ -965,12 +1002,16 @@ void Leviathan::Update() {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -978,6 +1019,7 @@ void Leviathan::Update() {
     f32 var_f1_1362;
     f32 var_f3_1473;
     f32 var_f4_1406;
+    f64 temp_f0_1510;
     f64 temp_f1_1412;
     f64 temp_f1_1418;
     f64 temp_f1_1422;
@@ -1002,7 +1044,7 @@ void Leviathan::Update() {
         sp80.GetMeasure(var_f1_1362, (Matrix *) &this->unk180, KDSpline_VelocityMixer);
         sp70 = M2C_BITWISE(f64, sp80);
         sp78 = (f64) sp80.unk8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+        sp60 = sp70 * (f64) sp18;
         spC0 = sp60;
         sp68 = (f32) sp78 * sp18;
         spC8 = (f64) sp68;
@@ -1050,17 +1092,18 @@ void Leviathan::Update() {
         sp58 = (f32) spC8 * var_f3_1473;
         spE0 = (f64) sp50;
         spE8 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp40 = spE0 * 5.717499035e-315;
         spA0 = sp40;
         sp48 = (f32) spE8 * 2000.0f;
         sp14 = 0.0f;
         spA8 = (f64) sp48;
         spB0.GetMeasure(this->unk194, (Matrix *) &this->unk180, KDSpline_PositionMixer);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spD0 = sp30;
+        temp_f0_1510 = spB0 + spA0;
+        sp30 = temp_f0_1510;
+        spD0 = temp_f0_1510;
         sp38 = spB8 + (f32) spA8;
         spD8 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp20 = spE0 * 5.7700341e-315;
         sp28 = (f32) spE8 * 5000.0f;
         sp80.unk10 = sp20;
         sp98 = (f64) sp28;

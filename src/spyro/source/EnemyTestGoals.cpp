@@ -40,8 +40,7 @@ void EnemyTestGoal_MoveToTarget::Terminate() {
 u8 EnemyTestGoal_MoveToTarget::Update() {
     ActivateIfInactive();
     this->unkC->unk9E8.Update();
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk18) || (this->unk10->GetDist() < this->unk14) || (this->unkC->unk638->PathFollowingHasLooped() != 0)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk18) || (this->unk10->GetDist() < this->unk14) || (this->unkC->unk638->PathFollowingHasLooped() != 0)) {
         this->unk8 = 2;
     }
     return this->unk8;
@@ -333,8 +332,7 @@ void EnemyTest_Think::Arbitrate() {
         this->unkC->TakeDamage(&sp8, 0U);
         temp_r3_855 = this->unkC;
         M2C_FIELD(temp_r3_855, u8 *, 0xB0A) = (u8) (M2C_FIELD(temp_r3_855, u8 *, 0xB0A) & ~1);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((M2C_FIELD(this->unkC, f32 *, 0xAC8) == 0.0f) && (IsPresent(0x29) == 0)) {
+        if ((M2C_FIELD(this->unkC, f32 *, 0xAC8) <= 0.0f) && (IsPresent(0x29) == 0)) {
             AddGoal_Death(&sp8);
             return;
         }

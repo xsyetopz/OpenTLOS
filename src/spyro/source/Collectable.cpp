@@ -55,7 +55,9 @@ void CollectableSpawner::Emit(SpawnInfo *arg0) {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_127;
     f32 temp_f1_156;
     f32 temp_f2_105;
@@ -63,6 +65,8 @@ void CollectableSpawner::Emit(SpawnInfo *arg0) {
     f32 temp_f30_122;
     f32 temp_f31_125;
     f32 var_f29_111;
+    f64 temp_f0_137;
+    f64 temp_f0_148;
     s32 temp_r3_186;
     void *temp_r3_166;
     void *temp_r3_179;
@@ -97,15 +101,16 @@ loop_3:
         sp2C = 0.0f;
         sp40 = (f64) sp30;
         sp38 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp48 = sp18;
+        temp_f0_137 = sp38 * (f64) temp_f30_122;
+        sp18 = temp_f0_137;
+        sp48 = temp_f0_137;
         sp20 = (f32) sp40 * temp_f30_122;
         sp50 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_148 = M2C_FIELD(arg0, f64 *, 0) + temp_f0_137;
+        sp8 = temp_f0_148;
         temp_f2_151 = arg0->unk8;
         temp_f1_156 = temp_f2_151 + (f32) sp50;
-        sp58 = sp8;
+        sp58 = temp_f0_148;
         sp10 = temp_f1_156;
         sp60 = (f64) sp10;
         unksp5C = arg0->unk4;
@@ -574,8 +579,7 @@ void Collectable::CollectedState() {
         M2C_STRUCT_COPY((s32) &spC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
         Tools_SetMatrixScale(&sp10, this->unkE0);
         MKModel_SetWorldMatrix(this->unk4, sp10);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unkE0 == 1.0f) {
+        if (this->unkE0 >= 1.0f) {
             this->unkF8 = 0.0f;
             if ((u8) M2C_FIELD(this->unk124, u8 *, 0x67) != 0) {
                 CalcShadowPos();
@@ -619,8 +623,7 @@ void Collectable::CollectingState() {
     if (temp_f2_1226 > 0.0f) {
         this->unkE0 = -((4.0f * gUpdateTimeDelta) - temp_f2_1226);
     }
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((this->unkE8 == 0.0f) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unkE0 == 0.0f) != 0)) || ((s32) this->unk124->unk9C & 0x400)) {
+    if ((this->unkE8 <= 0.0f) || (this->unkE0 <= 0.0f) || ((s32) this->unk124->unk9C & 0x400)) {
         this->unkE8 = 0.0f;
         this->unkE0 = 0.0f;
         SetState(0xA);
@@ -637,14 +640,11 @@ void Collectable::CollectingStateInit() {
     s32 temp_r3_1309;
 
     temp_r5_1292 = this->unk124;
-    if ((s32) temp_r5_1292->unkBC > -1) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == temp_r5_1292->unkA0) {
-            temp_r5_1292->unkA0 = M2C_FIELD(&gb, f32 *, 0x30C) + 0.05f;
-            temp_r3_1309 = PlayCollectSound();
-            if (((s32) this->unk124->unk9C & 0x80) && (temp_r3_1309 > 0)) {
-                Sound_MusicDuckVolume(0U, temp_r3_1309, 0xF);
-            }
+    if (((s32) temp_r5_1292->unkBC > -1) && (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r5_1292->unkA0)) {
+        temp_r5_1292->unkA0 = M2C_FIELD(&gb, f32 *, 0x30C) + 0.05f;
+        temp_r3_1309 = PlayCollectSound();
+        if (((s32) this->unk124->unk9C & 0x80) && (temp_r3_1309 > 0)) {
+            Sound_MusicDuckVolume(0U, temp_r3_1309, 0xF);
         }
     }
     this->unk121 = 0;
@@ -666,8 +666,11 @@ void Collectable::MagnetisedState() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_1491;
     f32 temp_f28_1493;
@@ -675,6 +678,7 @@ void Collectable::MagnetisedState() {
     f32 var_f29_1406;
     f32 var_f4_1473;
     f64 temp_f0_1375;
+    f64 temp_f0_1520;
     f64 temp_f1_1412;
     f64 temp_f1_1418;
     f64 temp_f1_1422;
@@ -689,8 +693,7 @@ void Collectable::MagnetisedState() {
         SetState(8);
         return;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk7C == 50.0f) {
+    if (this->unk7C >= 50.0f) {
         SetState(8);
         return;
     }
@@ -702,9 +705,7 @@ void Collectable::MagnetisedState() {
     this->unk98 = temp_f2_1376;
     sp98 = temp_f2_1376;
     M2C_FIELD(this, f32 *, 0x94) = (f32) (M2C_FIELD(this, f32 *, 0x94) + this->unkD8);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp30 = this->unk90 - this->unk50;
     spA0 = sp30;
     sp38 = (f32) M2C_FIELD(this, f64 *, 0x98) - M2C_FIELD(this, f32 *, 0x58);
     spA8 = (f64) sp38;
@@ -757,21 +758,18 @@ void Collectable::MagnetisedState() {
     sp50.operator*(temp_f1_1491);
     sp60.operator*(32.0f);
     sp70.operator*(var_f29_1406);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp20 = sp70 * (f64) temp_f31_1492;
     this->unk70 = sp20;
     sp28 = sp70.unk8 * temp_f31_1492;
     sp80 = sp20;
     M2C_FIELD(this, f64 *, 0x78) = (f64) sp28;
     sp88 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp40 = sp10;
+    temp_f0_1520 = this->unk70 * (f64) gUpdateTimeDelta;
+    sp10 = temp_f0_1520;
+    sp40 = temp_f0_1520;
     sp18 = (f32) M2C_FIELD(this, f64 *, 0x78) * gUpdateTimeDelta;
     sp48 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+    this->unk50 += temp_f0_1520;
     M2C_FIELD(this, f32 *, 0x58) = (f32) (M2C_FIELD(this, f32 *, 0x58) + (f32) sp48);
     this->unk7C = temp_f28_1493;
     if (((u8) M2C_FIELD(this->unk124, u8 *, 0x67) != 0) && (((s32) M2C_FIELD(&gb, f32 *, 0x30C) % 5) == 0)) {
@@ -790,8 +788,7 @@ void Collectable::IdleState() {
         this->unkF4 = this->unk124->unk74 * _table_sinf(this->unkEC);
         this->unkEC += this->unk124->unk78 * gUpdateTimeDelta;
         temp_f1_1600 = this->unkEC;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_1600 == 6.2831855f) {
+        if (temp_f1_1600 >= 6.2831855f) {
             this->unkEC = temp_f1_1600 - 6.2831855f;
         }
     }
@@ -808,8 +805,7 @@ void Collectable::IdleState() {
     }
     if (this->unkFC < 0.0f) {
         this->unkE0 = -((4.0f * gUpdateTimeDelta) - this->unkE0);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkE0 == 0.0f) {
+        if (this->unkE0 <= 0.0f) {
             this->unkFC = 0.0f;
             this->unkE0 = 1.0f;
             SetState(0);
@@ -829,8 +825,7 @@ void Collectable::JustSpawnedState() {
         this->unkF4 = this->unk124->unk74 * _table_sinf(this->unkEC);
         this->unkEC += this->unk124->unk78 * gUpdateTimeDelta;
         temp_f1_1692 = this->unkEC;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_1692 == 6.2831855f) {
+        if (temp_f1_1692 >= 6.2831855f) {
             this->unkEC = temp_f1_1692 - 6.2831855f;
         }
     }
@@ -863,7 +858,9 @@ void Collectable::SpawningState() {
     MKVector3 sp38;
     M2C_UNK sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKHeap *temp_r3_1756;
     MKHeap *temp_r4_2004;
     f32 temp_f1_1811;
@@ -883,14 +880,14 @@ void Collectable::SpawningState() {
     f32 temp_f8_1893;
     f32 var_f1_1985;
     f32 var_f29_1904;
+    f64 temp_f0_1916;
 
     temp_r3_1756 = this->unk124;
     if ((s32) temp_r3_1756->unk9C & 2) {
         this->unk60.unk4 += temp_r3_1756->unk6C * gUpdateTimeDelta;
     }
     temp_f2_1766 = this->unk7C;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f2_1766 == 1.0f) {
+    if (temp_f2_1766 >= 1.0f) {
         this->unk7C = 1.0f;
         this->unk50 = this->unk90;
         this->unk58 = this->unk98;
@@ -925,22 +922,19 @@ void Collectable::SpawningState() {
             var_f29_1904 = temp_f5_1901;
             M2C_FIELD(this, f32 *, 0x54) = (f32) ((this->unk100 * (500.0f * temp_f5_1901 * (1.0f - temp_f8_1893))) + ((temp_f8_1893 * (M2C_FIELD(this, f32 *, 0x94) - temp_f7_1894)) + temp_f7_1894));
             if ((s32) this->unk124->unk9C & 0x4000) {
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                sp78 = sp18;
+                temp_f0_1916 = this->unkA0 * (f64) gUpdateTimeDelta;
+                sp18 = temp_f0_1916;
+                sp78 = temp_f0_1916;
                 sp20 = this->unkA8 * gUpdateTimeDelta;
                 sp80 = (f64) sp20;
-                M2C_ERROR(/* unknown instruction: psq_lx $f2, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+                M2C_FIELD(this, f64 *, 0x60) = (f64) (M2C_FIELD(this, f64 *, 0x60) + temp_f0_1916);
                 this->unk60.unk8 += (f32) sp80;
                 if (this->unk138 > temp_f5_1901) {
                     MKVector(1.0f, 1.0f, 1.0f);
                     MKVector(-1.0f, -1.0f, -1.0f);
                     KDRand_Vector(sp48, sp38);
                     sp58.operator*(3.1415927f);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                    sp8 = sp58 * 5.304989477e-315;
                     this->unkA0 = sp8;
                     sp10 = sp58.unk8 * 2.0f;
                     sp68 = sp8;
@@ -1012,7 +1006,9 @@ void Collectable::SlidingState() {
     f64 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f31_2215;
+    f64 temp_f0_2222;
 
     if (MKCollision_SphereCollide(*((MKVector3 *) &this->unk50), 20.0f, NULL, 1, (MKCollisionMode) 7, 0) == 0) {
         if (FindGround() == 0) {
@@ -1025,14 +1021,12 @@ void Collectable::SlidingState() {
     } else {
         temp_f31_2215 = gUpdateTimeDelta;
         sp18.operator*(this->unk108);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp28 = sp8;
+        temp_f0_2222 = sp18 * (f64) temp_f31_2215;
+        sp8 = temp_f0_2222;
+        sp28 = temp_f0_2222;
         sp10 = sp18.unk8 * temp_f31_2215;
         sp30 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        this->unk50 += temp_f0_2222;
         M2C_FIELD(this, f32 *, 0x58) = (f32) (M2C_FIELD(this, f32 *, 0x58) + (f32) sp30);
         this->unk108 += 980.0f * this->unk10C * gUpdateTimeDelta;
     }
@@ -1051,10 +1045,12 @@ u8 Collectable::FindGround() {
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -1062,6 +1058,7 @@ u8 Collectable::FindGround() {
     f32 sp8;
     f32 var_f4_2344;
     f32 var_f4_2412;
+    f64 temp_f0_2307;
     f64 temp_f1_2350;
     f64 temp_f1_2356;
     f64 temp_f1_2360;
@@ -1085,13 +1082,12 @@ u8 Collectable::FindGround() {
         sp68 = (f64) sp38;
         sp60 = (f64) sp30;
         this->unk10C = 1.0f - (((f32) M2C_FIELD(this, f64 *, 0x118) * MKVector3::up.unk8) + (((f32) M2C_FIELD(this, f64 *, 0x110) * MKVector3::up.unk0) + (M2C_FIELD(this, f32 *, 0x114) * MKVector3::up.unk4)));
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp70 = sp40;
+        temp_f0_2307 = this->unk50 - this->unk90;
+        sp40 = temp_f0_2307;
+        sp70 = temp_f0_2307;
         sp48 = M2C_FIELD(this, f32 *, 0x58) - (f32) M2C_FIELD(this, f64 *, 0x98);
         sp78 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp20 = sp70 - sp60;
         sp10 = -MKVector3::up.unk0;
         sp80 = sp20;
         sp28 = (f32) sp78 - (f32) sp68;
@@ -1179,7 +1175,7 @@ u8 Collectable::FindGround() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void Collectable::FallingState() {
     f64 sp90;
     f64 sp88;
@@ -1191,6 +1187,7 @@ void Collectable::FallingState() {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -1215,18 +1212,17 @@ void Collectable::FallingState() {
     f32 temp_f8_2614;
     f32 temp_f9_2551;
     f32 temp_f9_2590;
+    f64 temp_f0_2519;
 
     if (this->unk7C > 0.0f) {
         temp_f31_2512 = gUpdateTimeDelta;
         sp78.operator*(this->unk108);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp88 = sp38;
+        temp_f0_2519 = sp78 * (f64) temp_f31_2512;
+        sp38 = temp_f0_2519;
+        sp88 = temp_f0_2519;
         sp40 = sp78.unk8 * temp_f31_2512;
         sp90 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        this->unk50 += temp_f0_2519;
         M2C_FIELD(this, f32 *, 0x58) = (f32) (M2C_FIELD(this, f32 *, 0x58) + (f32) sp90);
         this->unk7C -= gUpdateTimeDelta;
         this->unk108 += 980.0f * gUpdateTimeDelta;
@@ -1285,6 +1281,7 @@ void Collectable::SpawnDynamic(const MKVector3 &arg0) {
     MKVector3 sp28;
     M2C_UNK sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f31_2694;
 
     SetState(2);
@@ -1296,8 +1293,7 @@ void Collectable::SpawnDynamic(const MKVector3 &arg0) {
     temp_f31_2694 = MKRand_Float(&gViewSeed, 100.0f, 280.0f);
     KDRand_UnitVector();
     sp28.operator*(temp_f31_2694);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp28);
     this->unk90 = sp8;
     sp10 = arg0.unk8 + sp28.unk8;
     sp38 = sp8;
@@ -1322,7 +1318,9 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f0_2777;
@@ -1333,6 +1331,7 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 temp_f1_2834;
     f64 temp_f1_2840;
     f64 temp_f1_2844;
+    f64 temp_f2_2911;
     s32 temp_cr0_eq_2799;
     s32 temp_r3_2863;
     s32 var_r0_2873;
@@ -1363,7 +1362,7 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
         }
         temp_cr0_eq_2799 = var_r3_2792 == 0U;
         if ((temp_cr0_eq_2799 != 0) || ((temp_cr0_eq_2799 == 0) && (var_r3_2792 != (void *) this->unkC8))) {
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp20 = sp60 - sp70;
             sp50 = sp20;
             sp28 = (f32) sp68 - (f32) sp78;
             sp58 = (f64) sp28;
@@ -1412,10 +1411,11 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
             sp50 = (f32) sp50 * var_f3_2895;
             unksp54 *= var_f3_2895;
             sp58 = temp_f0_2906;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f31 */);
+            temp_f2_2911 = (f64) sp50 * 5.49408334e-315;
+            sp50 = temp_f2_2911;
             temp_f1_2913 = temp_f0_2906 * 50.0f;
             sp58 = temp_f1_2913;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+            sp10 = M2C_BITWISE(f64, sp80) - temp_f2_2911;
             sp30 = sp10;
             sp18 = sp80.unk8 - temp_f1_2913;
             sp60 = sp10;
@@ -1497,16 +1497,21 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     Collectable *spC;
     s32 sp8;
     MKProp *var_r4_3260;
     MKVector3 *var_r28_3046;
     f32 temp_f4_3222;
+    f64 temp_f0_3237;
+    f64 temp_f5_3216;
     void *temp_r3_3164;
 
     this->unk134 = 1.0f;
@@ -1547,8 +1552,7 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
             MKVector(-1.0f, -1.0f, -1.0f);
             KDRand_Vector(spC0, spB0);
             spD0.operator*(3.1415927f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp10 = spD0 * 5.304989477e-315;
             this->unkA0 = sp10;
             sp18 = spD0.unk8 * 2.0f;
             spE0 = sp10;
@@ -1589,8 +1593,8 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
             sp140 = 0;
             sp60 = (f64) sp30;
             sp68 = (f64) sp38;
-            M2C_ERROR(/* unknown instruction: psq_lx $f5, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+            temp_f5_3216 = this->unk50;
+            sp20 = temp_f5_3216 + sp60;
             sp58 = 0.0f;
             temp_f4_3222 = (f32) M2C_FIELD(this, f64 *, 0x58);
             sp50 = 0.0f;
@@ -1600,8 +1604,9 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
             sp70 = sp20;
             sp78 = (f64) sp28;
             sp88 = (f64) sp58;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-            sp90 = sp40;
+            temp_f0_3237 = temp_f5_3216 + sp80;
+            sp40 = temp_f0_3237;
+            sp90 = temp_f0_3237;
             sp48 = temp_f4_3222 + (f32) sp88;
             sp98 = (f64) sp48;
             if (MKCollision_RayCollide(*((MKVector3 *) &sp90), *((MKVector3 *) &sp70), (MKCollisionResult *) &spF0, (MKCollisionMode) 7, 0) != 0) {
@@ -1634,11 +1639,13 @@ void Collectable::Message(MKMessage *arg0) {
     f64 sp58;
     HeroInterface sp48;
     f32 sp40;
+    f64 sp38;
     f64 sp30;
     f64 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     M2C_UNK *temp_r5_3759;
     M2C_UNK *temp_r6_3765;
     M2C_UNK *temp_r7_3764;
@@ -1648,7 +1655,9 @@ void Collectable::Message(MKMessage *arg0) {
     f32 temp_f3_3456;
     f32 temp_f3_3473;
     f32 temp_f4_3499;
+    f64 temp_f0_3421;
     f64 temp_f1_3345;
+    f64 temp_f1_3409;
     f64 temp_f1_3632;
     f64 temp_f2_3501;
     f64 temp_f3_3500;
@@ -1696,14 +1705,15 @@ block_81:
                 if (temp_r3_3402 != NULL) {
                     this->unkC0 = checked_cast<MKProp *, MKProp>(temp_r3_3402);
                     temp_r3_3407 = M2C_FIELD(temp_r3_3400, void **, 0x10);
-                    sp98 = M2C_FIELD(temp_r3_3407, f64 *, 0);
+                    temp_f1_3409 = M2C_FIELD(temp_r3_3407, f64 *, 0);
+                    sp98 = temp_f1_3409;
                     this->unkD8 = M2C_FIELD(temp_r3_3400, f32 *, 0x14);
                     spA0 = M2C_FIELD(temp_r3_3407, f64 *, 8);
                     unksp9C += M2C_FIELD(temp_r3_3400, f32 *, 0x14);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    temp_f0_3421 = temp_f1_3409 - this->unk50;
+                    sp38 = temp_f0_3421;
                     temp_r3_3425 = this->unk124;
-                    sp88 = sp38;
+                    sp88 = temp_f0_3421;
                     sp40 = (f32) spA0 - M2C_FIELD(this, f32 *, 0x58);
                     sp90 = (f64) sp40;
                     if ((u8) M2C_FIELD(temp_r3_3425, u8 *, 0x68) != 0) {
@@ -1716,7 +1726,7 @@ block_81:
                         }
                         if (var_r0_3448 != 0) {
                             temp_r0_3467 = this->unkD4;
-                            if ((temp_r0_3467 != 0) && (temp_r0_3467 < 7) && ((temp_f3_3473 = temp_r3_3425->unkA4, ((temp_f3_3473 == 0.0f) != 0)) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), (((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) == temp_f3_3473) != 0)))) {
+                            if ((temp_r0_3467 != 0) && (temp_r0_3467 < 7) && ((temp_f3_3473 = temp_r3_3425->unkA4, ((temp_f3_3473 == 0.0f) != 0)) || ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) <= temp_f3_3473))) {
                                 SetState(7);
                                 this->unkF0 = M2C_FIELD(temp_r3_3400, f32 *, 0x1C);
                             }
@@ -1731,8 +1741,7 @@ block_81:
                     sp60 = temp_f2_3501;
                     unksp9C += M2C_FIELD(temp_r3_3400, f32 *, 0x14);
                     spA0 = temp_f2_3501;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp8 = sp98 - this->unk50;
                     sp18 = sp8;
                     sp10 = (f32) spA0 - M2C_FIELD(this, f32 *, 0x58);
                     sp20 = (f64) sp10;
@@ -1935,9 +1944,13 @@ void Collectable::DrawShadow() {
     f32 spCC;
     f32 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
@@ -1945,21 +1958,30 @@ void Collectable::DrawShadow() {
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f10_3857;
     f32 temp_f10_3893;
     f32 temp_f6_3856;
     f32 temp_f6_3887;
     f32 temp_f8_3855;
     f32 temp_f8_3891;
+    f64 temp_f0_3937;
+    f64 temp_f0_3949;
+    f64 temp_f0_3985;
+    f64 temp_f0_4033;
+    f64 temp_f0_4068;
 
     spF8 = 0.0f;
     spFC = 0.0f;
@@ -2008,14 +2030,15 @@ void Collectable::DrawShadow() {
     sp208 = (f64) sp78;
     sp210 = (f64) sp80;
     sp218.operator*(50.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp228 = sp58;
+    temp_f0_3937 = sp218 + M2C_BITWISE(f64, sp1F8);
+    sp58 = temp_f0_3937;
+    sp228 = temp_f0_3937;
     sp60 = sp218.unk8 + sp1F8.unk8;
     sp230 = (f64) sp60;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp238 = spB8;
-    sp2B8 = spB8;
+    temp_f0_3949 = sp228 + sp278;
+    spB8 = temp_f0_3949;
+    sp238 = temp_f0_3949;
+    sp2B8 = temp_f0_3949;
     spC0 = (f32) sp230 + (f32) sp280;
     sp240 = (f64) spC0;
     sp2C0 = (f64) spC0;
@@ -2026,12 +2049,12 @@ void Collectable::DrawShadow() {
     sp1A8 = (f64) sp48;
     sp1B0 = (f64) sp50;
     sp1B8.operator*(50.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp1C8 = sp38;
+    temp_f0_3985 = sp1B8 + M2C_BITWISE(f64, sp198);
+    sp38 = temp_f0_3985;
+    sp1C8 = temp_f0_3985;
     sp40 = sp1B8.unk8 + sp198.unk8;
     sp1D0 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spA8 = sp1C8 + sp278;
     spB0 = (f32) sp1D0 + (f32) sp280;
     sp28 = -(f32) sp298;
     sp2C = -unksp29C;
@@ -2044,12 +2067,12 @@ void Collectable::DrawShadow() {
     sp150 = (f64) sp30;
     sp158.operator*(50.0f);
     sp168.operator*(50.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp178 = sp18;
+    temp_f0_4033 = sp168 + M2C_BITWISE(f64, sp158);
+    sp18 = temp_f0_4033;
+    sp178 = temp_f0_4033;
     sp20 = sp168.unk8 + sp158.unk8;
     sp180 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp98 = sp178 + sp278;
     sp188 = sp98;
     spA0 = (f32) sp180 + (f32) sp280;
     sp2D8 = sp98;
@@ -2057,12 +2080,12 @@ void Collectable::DrawShadow() {
     sp2E0 = (f64) spA0;
     sp108.operator*(50.0f);
     sp118.operator*(50.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp128 = sp8;
+    temp_f0_4068 = sp118 + M2C_BITWISE(f64, sp108);
+    sp8 = temp_f0_4068;
+    sp128 = temp_f0_4068;
     sp10 = sp118.unk8 + sp108.unk8;
     sp130 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp88 = sp128 + sp278;
     sp2E8 = sp88;
     sp90 = (f32) sp130 + (f32) sp280;
     sp138 = sp88;

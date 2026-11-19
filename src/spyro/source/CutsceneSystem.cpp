@@ -518,15 +518,13 @@ loop_20:
             }
             if ((u8) this->unk9C != 0) {
                 this->unk90 += gUpdateTimeDelta;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (this->unk90 == 1.0f) {
+                if (this->unk90 >= 1.0f) {
                     this->unk90 = 1.0f;
                     this->unk9C = 0;
                 }
             } else if ((u8) this->unk9D != 0) {
                 this->unk90 -= gUpdateTimeDelta;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (this->unk90 == 0.0f) {
+                if (this->unk90 <= 0.0f) {
                     this->unk90 = 0.0f;
                     this->unk9D = 0;
                     this->unk80 = NULL;
@@ -620,8 +618,7 @@ void CutsceneSystem::Location::Update() {
         break;
     case 2:
         M2C_FIELD(this, f32 *, 0xC) = (f32) (M2C_FIELD(this, f32 *, 0xC) - gUpdateTimeDelta);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(this, f32 *, 0xC) != 0.0f) {
+        if (!(M2C_FIELD(this, f32 *, 0xC) <= 0.0f)) {
             temp_r3_1338 = M2C_FIELD(this, void **, 0x18);
             var_r31_1339 = 0;
             if ((((u32) M2C_FIELD(temp_r3_1338, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(temp_r3_1338, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (temp_r3_1338 + 0x24))->GetState() != NULL)) {

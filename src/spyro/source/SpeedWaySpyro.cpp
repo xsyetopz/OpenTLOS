@@ -433,12 +433,16 @@ u8 SpeedwayFX::Update(const Matrix *arg0, bool arg1) {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     TargetManager ***var_r30_382;
     TargetManager **temp_r27_549;
@@ -449,6 +453,11 @@ u8 SpeedwayFX::Update(const Matrix *arg0, bool arg1) {
     f32 var_f0_445;
     f32 var_f30_370;
     f32 var_f5_512;
+    f64 temp_f0_427;
+    f64 temp_f0_574;
+    f64 temp_f0_616;
+    f64 temp_f0_628;
+    f64 temp_f1_421;
     f64 temp_f2_451;
     f64 temp_f2_457;
     f64 temp_f2_461;
@@ -485,10 +494,12 @@ loop_38:
                 if (temp_r27_549 != NULL) {
                     if (((*temp_r27_549)->unk8.unk0(temp_r27_549) != NULL) && (M2C_FIELD(*temp_r27_549, u8 (**)(TargetManager **), 0x18)(temp_r27_549) != 0) && ((((u32 (*)(TargetManager **)) (*temp_r27_549)->unk8.unk4)(temp_r27_549) == 0U) || (((Character *) (((Character *(*)(TargetManager **)) (*temp_r27_549)->unk8.unk4)(temp_r27_549)))->IsActive() != 0))) {
                         temp_r3_420 = M2C_FIELD((*temp_r27_549)->unk8.unk0(temp_r27_549), void **, 8);
-                        spE0 = M2C_FIELD(temp_r3_420, f64 *, 0x30);
+                        temp_f1_421 = M2C_FIELD(temp_r3_420, f64 *, 0x30);
+                        spE0 = temp_f1_421;
                         spE8 = M2C_FIELD(temp_r3_420, f64 *, 0x38);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        sp110 = sp50;
+                        temp_f0_427 = temp_f1_421 - sp130;
+                        sp50 = temp_f0_427;
+                        sp110 = temp_f0_427;
                         sp58 = (f32) spE8 - (f32) sp138;
                         sp118 = (f64) sp58;
                         var_f0_445 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114));
@@ -537,7 +548,7 @@ loop_38:
                         sp110 = temp_f6_521;
                         unksp114 = temp_f4_523;
                         sp118 = temp_f5_524;
-                        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                        M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                         if ((var_f0_445 == 30000.0f) && (var_f0_445 < var_f30_370) && (((temp_f5_524 * (f32) sp128) + ((temp_f6_521 * (f32) sp120) + (temp_f4_523 * unksp124))) > 0.85f)) {
                             var_f30_370 = var_f0_445;
                             var_r31_372 = temp_r27_549;
@@ -552,11 +563,12 @@ loop_38:
                 M2C_FIELD(*var_r31_372, M2C_UNK (**)(f64 *, TargetManager **), 0x30)(&spD0, var_r31_372);
                 spF0 = spD0;
                 spF8 = spD8;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                spC0 = sp40;
+                temp_f0_574 = spF0 * 5.507034975e-315;
+                sp40 = temp_f0_574;
+                spC0 = temp_f0_574;
                 sp48 = (f32) spF8 * 60.0f;
                 spC8 = (f64) sp48;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp100 += temp_f0_574;
                 sp108 += (f32) spC8;
             } else {
                 sp20 = -arg0->unk10;
@@ -566,13 +578,15 @@ loop_38:
                 sp78 = (f64) sp28;
                 sp80.operator*(10000.0f);
                 sp90.operator*(20000.0f);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                spA0 = sp10;
+                temp_f0_616 = sp130 + M2C_BITWISE(f64, sp90);
+                sp10 = temp_f0_616;
+                spA0 = temp_f0_616;
                 sp18 = (f32) sp138 + sp90.unk8;
                 spA8 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                spB0 = sp30;
-                sp100 = sp30;
+                temp_f0_628 = spA0 + M2C_BITWISE(f64, sp80);
+                sp30 = temp_f0_628;
+                spB0 = temp_f0_628;
+                sp100 = temp_f0_628;
                 sp38 = (f32) spA8 + sp80.unk8;
                 spB8 = (f64) sp38;
                 sp108 = (f64) sp38;
@@ -614,7 +628,6 @@ u8 SpeedWaySpyro::UsePulledBackCamera() {
 }
 
 s32 SpeedWaySpyro::IsDead() {
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 
@@ -744,8 +757,10 @@ void SpeedWaySpyro::SetMatrix(const Matrix &arg0, bool arg1) {
     f64 sp30;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f2_1099;
     f32 var_f0_1111;
+    f64 temp_f0_1091;
     void *temp_r3_1083;
 
     M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) (&arg0 - 4) + 4, 0x40);
@@ -758,10 +773,10 @@ void SpeedWaySpyro::SetMatrix(const Matrix &arg0, bool arg1) {
             temp_r3_1083 = this->unk8;
             sp30 = M2C_FIELD(temp_r3_1083, f64 *, 0x30);
             sp38 = M2C_FIELD(temp_r3_1083, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_f0_1091 = sp50.unk30 - sp30;
+            sp10 = temp_f0_1091;
             temp_f2_1099 = sp50.unk38 - (f32) sp38;
-            sp40 = sp10;
+            sp40 = temp_f0_1091;
             sp18 = temp_f2_1099;
             sp48 = (f64) sp18;
             if (M2C_FIELD(M2C_FIELD(this, void **, 0x398), s32 (**)(M2C_UNK *, f64 *, M2C_UNK, f32, f32), 0x10)(&this->unk398, &sp40, 0, 0.0f, temp_f2_1099) == 8) {
@@ -798,7 +813,7 @@ void SpeedWaySpyro::Hurt(HurtMessage *arg0) {
 
 #if 0 // DRAFT: ')' expected
 u8 SpeedWaySpyro::DealDamage(float arg0) {
-    if (((u8) M2C_FIELD(&gb, u8 *, 0x3B4) != 0) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), (((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1) == 0) != 0)) || !(this->unk98 & 0x20) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((M2C_FIELD(GameData::gameData, f32 *, 0x70) == 0.0f) != 0))) {
+    if (((u8) M2C_FIELD(&gb, u8 *, 0x3B4) != 0) || !(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1) || !(this->unk98 & 0x20) || (M2C_FIELD(GameData::gameData, f32 *, 0x70) <= 0.0f)) {
         return 0U;
     }
     ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Add(arg0, 1U);
@@ -881,7 +896,9 @@ void SpeedWaySpyro::UpdateDrift(float arg0) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f2_1460;
     f32 temp_f2_1496;
     f32 temp_f2_1509;
@@ -896,6 +913,8 @@ void SpeedWaySpyro::UpdateDrift(float arg0) {
     f32 temp_f5_1514;
     f32 var_f1_1498;
     f32 var_f1_1547;
+    f64 temp_f0_1582;
+    f64 temp_f0_1607;
     s32 var_r30_1485;
     s32 var_r30_1534;
     u8 var_r0_1400;
@@ -962,25 +981,21 @@ block_12:
             M2C_FIELD(this, f32 *, 0x354) = (f32) (var_f1_1547 * ((1.0f - temp_f30_1518) * temp_f2_1545));
         }
         KDMath_CriticalDamp<MKVector3>(sp68, *((MKVector3 *) &this->unk340), *((MKVector3 *) &this->unk350), GetCurrXYDriftFactor(), gUpdateTimeDelta);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        this->unk340 += M2C_BITWISE(f64, sp68);
         M2C_FIELD(this, f64 *, 0x348) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x348) + sp68.unk8);
         temp_r5_1578 = checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp48 = sp18;
+        temp_f0_1582 = this->unk318 + this->unk340;
+        sp18 = temp_f0_1582;
+        sp48 = temp_f0_1582;
         sp20 = M2C_FIELD(this, f32 *, 0x320) + (f32) M2C_FIELD(this, f64 *, 0x348);
         sp50 = (f64) sp20;
         ClampMagnitude(sp58, M2C_FIELD(temp_r5_1578, f32 *, 0x164));
         this->unk318 = M2C_BITWISE(f64, sp58);
         this->unk320 = (f64) sp58.unk8;
         temp_r5_1603 = checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp28 = sp8;
+        temp_f0_1607 = this->unk308 + this->unk340;
+        sp8 = temp_f0_1607;
+        sp28 = temp_f0_1607;
         sp10 = M2C_FIELD(this, f32 *, 0x310) + (f32) M2C_FIELD(this, f64 *, 0x348);
         sp30 = (f64) sp10;
         ClampMagnitude(sp38, M2C_FIELD(temp_r5_1603, f32 *, 0x164));
@@ -1003,50 +1018,60 @@ u8 SpeedWaySpyro::GetBestMovementOffset(const MKVector3 &arg0, const MKVector3 &
     f64 sp68;
     f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
-    f32 temp_f1_1779;
-    f32 temp_f1_1805;
     f32 temp_f1_1927;
+    f32 temp_f2_1772;
+    f32 temp_f2_1798;
     f32 temp_f30_1922;
     f32 temp_f31_1920;
     f32 var_f30_1851;
+    f64 temp_f0_1775;
+    f64 temp_f0_1786;
+    f64 temp_f0_1801;
+    f64 temp_f0_1812;
+    f64 temp_f0_1831;
     f64 temp_f1_1854;
     f64 temp_f1_1860;
     f64 temp_f1_1864;
     s32 temp_r3_1883;
     s32 var_r0_1893;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    temp_f1_1779 = arg2.unk8 * M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164);
-    sp80 = sp50;
-    sp58 = temp_f1_1779;
+    temp_f2_1772 = M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164);
+    temp_f0_1775 = M2C_FIELD(&arg2, f64 *, 0) * (f64) temp_f2_1772;
+    sp50 = temp_f0_1775;
+    sp80 = temp_f0_1775;
+    sp58 = arg2.unk8 * temp_f2_1772;
     sp88 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    spA0 = sp40;
+    temp_f0_1786 = M2C_FIELD(&arg1, f64 *, 0) - temp_f0_1775;
+    sp40 = temp_f0_1786;
+    spA0 = temp_f0_1786;
     sp48 = arg1.unk8 - (f32) sp88;
     spA8 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    temp_f1_1805 = arg2.unk8 * M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164);
-    sp70 = sp30;
-    sp38 = temp_f1_1805;
+    temp_f2_1798 = M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164);
+    temp_f0_1801 = M2C_FIELD(&arg2, f64 *, 0) * (f64) temp_f2_1798;
+    sp30 = temp_f0_1801;
+    sp70 = temp_f0_1801;
+    sp38 = arg2.unk8 * temp_f2_1798;
     sp78 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp90 = sp20;
+    temp_f0_1812 = M2C_FIELD(&arg1, f64 *, 0) + temp_f0_1801;
+    sp20 = temp_f0_1812;
+    sp90 = temp_f0_1812;
     sp28 = arg1.unk8 + (f32) sp78;
     sp98 = (f64) sp28;
     if (Tools_GetPointDistanceFromLine(arg0, *((MKVector3 *) &spA0), *((MKVector3 *) &sp90), &spC) != 0) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp60 = sp10;
+        temp_f0_1831 = M2C_FIELD(&arg0, f64 *, 0) - spA0;
+        sp10 = temp_f0_1831;
+        sp60 = temp_f0_1831;
         sp18 = arg0.unk8 - (f32) spA8;
         sp68 = (f64) sp18;
         var_f30_1851 = (((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64))) - (spC * spC);
@@ -1159,22 +1184,39 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     KDMath_CriticalDampenedValue<MKVector3> sp1A0;
     KDMath_CriticalDampenedValue<MKVector3> sp190;
     f32 sp188;
+    f64 sp180;
     f32 sp178;
+    f64 sp170;
     f32 sp168;
+    f64 sp160;
     f32 sp158;
+    f64 sp150;
     f32 sp148;
+    f64 sp140;
     f32 sp138;
+    f64 sp130;
     f32 sp128;
+    f64 sp120;
     f32 sp118;
+    f64 sp110;
     f32 sp108;
+    f64 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
@@ -1182,7 +1224,9 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -1193,10 +1237,16 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     f32 sp14;
     f32 sp10;
     f32 *temp_r29_2092;
-    f32 temp_f1_2296;
-    f32 temp_f1_2315;
-    f32 temp_f1_2409;
+    f32 temp_f1_2065;
+    f32 temp_f26_2379;
+    f32 temp_f27_2351;
+    f32 temp_f2_2071;
     f32 temp_f2_2276;
+    f32 temp_f2_2289;
+    f32 temp_f2_2308;
+    f32 temp_f2_2348;
+    f32 temp_f2_2376;
+    f32 temp_f2_2402;
     f32 temp_f3_2349;
     f32 temp_f3_2377;
     f32 temp_f4_2489;
@@ -1204,6 +1254,23 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     f32 var_f1_2017;
     f32 var_f30_2200;
     f32 var_f3_2267;
+    f64 temp_f0_2029;
+    f64 temp_f0_2068;
+    f64 temp_f0_2080;
+    f64 temp_f0_2095;
+    f64 temp_f0_2292;
+    f64 temp_f0_2311;
+    f64 temp_f0_2322;
+    f64 temp_f0_2334;
+    f64 temp_f0_2353;
+    f64 temp_f0_2363;
+    f64 temp_f0_2381;
+    f64 temp_f0_2391;
+    f64 temp_f0_2405;
+    f64 temp_f0_2416;
+    f64 temp_f0_2428;
+    f64 temp_f0_2440;
+    f64 temp_f0_2471;
     f64 temp_f1_2206;
     f64 temp_f1_2212;
     f64 temp_f1_2216;
@@ -1224,12 +1291,12 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         var_f1_2017 = GetCurrCameraZ();
     }
     sp2D0.operator*(var_f1_2017);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp2E0 = sp50;
+    temp_f0_2029 = sp390.unkF0 - M2C_BITWISE(f64, sp2D0);
+    sp50 = temp_f0_2029;
+    sp2E0 = temp_f0_2029;
     sp58 = sp488 - sp2D0.unk8;
     sp2E8 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    spA0 = sp2E0 - M2C_BITWISE(f64, sp2C0);
     sp2F0 = spA0;
     spA8 = (f32) sp2E8 - sp2C0.unk8;
     this->unk210 = (f32) sp2F0;
@@ -1240,23 +1307,26 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     if (arg1 == 0) {
         UpdateDrift(arg0);
     }
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp380 = sp180;
-    sp188 = M2C_BITWISE(f32, sp390.unk94.unk30) * M2C_FIELD(this, f32 *, 0x308);
+    temp_f1_2065 = M2C_FIELD(this, f32 *, 0x308);
+    temp_f0_2068 = M2C_BITWISE(f64, sp390.unk94.unk28) * (f64) temp_f1_2065;
+    sp180 = temp_f0_2068;
+    temp_f2_2071 = M2C_FIELD(this, f32 *, 0x30C);
+    sp380 = temp_f0_2068;
+    sp188 = M2C_BITWISE(f32, sp390.unk94.unk30) * temp_f1_2065;
     sp388 = (f64) sp188;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp370 = sp170;
-    sp178 = sp390.unkD8 * M2C_FIELD(this, f32 *, 0x30C);
+    temp_f0_2080 = sp390.unkD0 * (f64) temp_f2_2071;
+    sp170 = temp_f0_2080;
+    sp370 = temp_f0_2080;
+    sp178 = sp390.unkD8 * temp_f2_2071;
     sp378 = (f64) sp178;
     this->unk1A0.CopyRotation((Matrix *) &sp390.unk94.unk28);
     temp_r29_2092 = &this->unk210;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp2A0 = sp40;
+    temp_f0_2095 = (f64) M2C_FIELD(this, f32 *, 0x210) + sp380;
+    sp40 = temp_f0_2095;
+    sp2A0 = temp_f0_2095;
     sp48 = this->unk218 + (f32) sp388;
     sp2A8 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp90 = sp2A0 + sp370;
     sp2B0 = sp90;
     sp98 = (f32) sp2A8 + (f32) sp378;
     this->unk1A0.unk30 = (f32) sp2B0;
@@ -1334,62 +1404,73 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         sp360 = temp_f2_2276;
         unksp364 *= var_f3_2267;
         sp368 = (f32) sp368 * var_f3_2267;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        temp_f1_2296 = M2C_BITWISE(f32, sp390.unk94.unk30) * (temp_f2_2276 * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk164);
-        sp350 = sp160;
-        sp168 = temp_f1_2296;
+        temp_f2_2289 = temp_f2_2276 * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk164;
+        temp_f0_2292 = M2C_BITWISE(f64, sp390.unk94.unk28) * (f64) temp_f2_2289;
+        sp160 = temp_f0_2292;
+        sp350 = temp_f0_2292;
+        sp168 = M2C_BITWISE(f32, sp390.unk94.unk30) * temp_f2_2289;
         sp358 = (f64) sp168;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        temp_f1_2315 = sp390.unkD8 * (unksp364 * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk16C);
-        sp340 = sp150;
-        sp158 = temp_f1_2315;
+        temp_f2_2308 = unksp364 * (var_f30_2200 / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164)) * this->unk16C;
+        temp_f0_2311 = sp390.unkD0 * (f64) temp_f2_2308;
+        sp150 = temp_f0_2311;
+        sp340 = temp_f0_2311;
+        sp158 = sp390.unkD8 * temp_f2_2308;
         sp348 = (f64) sp158;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp270 = sp140;
+        temp_f0_2322 = sp390.unkF0 + temp_f0_2292;
+        sp140 = temp_f0_2322;
+        sp270 = temp_f0_2322;
         sp148 = sp488 + (f32) sp358;
         sp278 = (f64) sp148;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp330 = sp130;
+        temp_f0_2334 = sp270 + temp_f0_2311;
+        sp130 = temp_f0_2334;
+        sp330 = temp_f0_2334;
         sp138 = (f32) sp278 + (f32) sp348;
         sp338 = (f64) sp138;
+        temp_f2_2348 = this->unk154;
         temp_f3_2349 = M2C_FIELD(this, f32 *, 0x308) / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-        sp260 = sp120;
-        sp128 = M2C_BITWISE(f32, sp390.unk94.unk30) * this->unk154;
+        temp_f27_2351 = temp_f3_2349;
+        temp_f0_2353 = M2C_BITWISE(f64, sp390.unk94.unk28) * (f64) temp_f2_2348;
+        sp120 = temp_f0_2353;
+        sp260 = temp_f0_2353;
+        sp128 = M2C_BITWISE(f32, sp390.unk94.unk30) * temp_f2_2348;
         sp268 = (f64) sp128;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        sp320 = sp110;
+        temp_f0_2363 = temp_f0_2353 * (f64) temp_f27_2351;
+        sp110 = temp_f0_2363;
+        sp320 = temp_f0_2363;
         sp118 = (f32) sp268 * temp_f3_2349;
         sp328 = (f64) sp118;
+        temp_f2_2376 = this->unk15C;
         temp_f3_2377 = M2C_FIELD(this, f32 *, 0x30C) / M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x164);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-        sp250 = sp100;
-        sp108 = sp390.unkD8 * this->unk15C;
+        temp_f26_2379 = temp_f3_2377;
+        temp_f0_2381 = sp390.unkD0 * (f64) temp_f2_2376;
+        sp100 = temp_f0_2381;
+        sp250 = temp_f0_2381;
+        sp108 = sp390.unkD8 * temp_f2_2376;
         sp258 = (f64) sp108;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-        sp310 = spF0;
+        temp_f0_2391 = temp_f0_2381 * (f64) temp_f26_2379;
+        spF0 = temp_f0_2391;
+        sp310 = temp_f0_2391;
         spF8 = (f32) sp258 * temp_f3_2377;
         sp318 = (f64) spF8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-        temp_f1_2409 = sp390.unkD8 * M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x188);
-        sp220 = spE0;
-        spE8 = temp_f1_2409;
+        temp_f2_2402 = M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x188);
+        temp_f0_2405 = sp390.unkD0 * (f64) temp_f2_2402;
+        spE0 = temp_f0_2405;
+        sp220 = temp_f0_2405;
+        spE8 = sp390.unkD8 * temp_f2_2402;
         sp228 = (f64) spE8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp230 = spD0;
+        temp_f0_2416 = (f64) M2C_FIELD(this, f32 *, 0x210) + temp_f0_2405;
+        spD0 = temp_f0_2416;
+        sp230 = temp_f0_2416;
         spD8 = this->unk218 + (f32) sp228;
         sp238 = (f64) spD8;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp240 = spC0;
+        temp_f0_2428 = sp230 + temp_f0_2363;
+        spC0 = temp_f0_2428;
+        sp240 = temp_f0_2428;
         spC8 = (f32) sp238 + (f32) sp328;
         sp248 = (f64) spC8;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp300 = spB0;
+        temp_f0_2440 = sp240 + temp_f0_2391;
+        spB0 = temp_f0_2440;
+        sp300 = temp_f0_2440;
         spB8 = (f32) sp248 + (f32) sp318;
         sp308 = (f64) spB8;
         M2C_STRUCT_COPY((s32) &sp390.unk4C.unk2C + 4, (s32) &sp390.unk94.unk24 + 4, 0x40);
@@ -1397,9 +1478,9 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         sp390.unk94.unk1C = unksp334;
         sp390.unk94.unk20 = (f32) sp338;
         sp390.unk94.unk24 = 1.0f;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp200 = sp80;
+        temp_f0_2471 = sp300 - sp390.unk94.unk18;
+        sp80 = temp_f0_2471;
+        sp200 = temp_f0_2471;
         sp88 = (f32) sp308 - (f32) sp338;
         sp208 = (f64) sp88;
         Normalise(sp210);
@@ -1495,17 +1576,17 @@ void SpeedWaySpyro::SetTargetMovementOffset(const MKVector3 &arg0) {
 }
 #endif
 
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SpeedWaySpyro::UpdateMovementOffset() {
     MKVector3 sp8;
 
     if (this->unk98 & 2) {
         KDMath_CriticalDamp<MKVector3>(sp8, *((MKVector3 *) &this->unk308), *((MKVector3 *) &this->unk318), this->unk338, gUpdateTimeDelta);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        this->unk308 += M2C_BITWISE(f64, sp8);
         M2C_FIELD(this, f32 *, 0x310) = (f32) (M2C_FIELD(this, f32 *, 0x310) + sp8.unk8);
     }
 }
+#endif
 
 void SpeedWaySpyro::UpdateSplineTime() {
     f32 temp_f1_2830;
@@ -1625,8 +1706,7 @@ void SpeedWaySpyro::UpdateStageInfo() {
                 var_f2_3008 = temp_f0_3009;
             }
             this->unk304 = var_f2_3008;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(GameData::gameData, f32 *, 0xA0) == 0.0f) {
+            if (M2C_FIELD(GameData::gameData, f32 *, 0xA0) <= 0.0f) {
                 this->unkA4 = 0;
             }
         } else {
@@ -1657,8 +1737,7 @@ block_34:
                     var_f2_3078 = temp_f0_3079;
                 }
                 this->unk304 = var_f2_3078;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (M2C_FIELD(GameData::gameData, f32 *, 0xA0) == 0.0f) {
+                if (M2C_FIELD(GameData::gameData, f32 *, 0xA0) <= 0.0f) {
                     this->unkA5 = 0;
                 }
             } else {
@@ -2014,7 +2093,7 @@ s32 SpeedWaySpyro::DeathTransition() {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SpeedWaySpyro::DeathUpdate() {
     f64 sp60;
     f64 sp58;
@@ -2023,9 +2102,11 @@ void SpeedWaySpyro::DeathUpdate() {
     MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f2_3870;
     f32 temp_f2_3876;
     f32 var_f3_3863;
+    f64 temp_f0_3896;
 
     var_f3_3863 = 0.5f * (2.0f * gUpdateTimeDelta);
     if (var_f3_3863 < 1.0f) {
@@ -2040,14 +2121,12 @@ void SpeedWaySpyro::DeathUpdate() {
     sp28.operator*(gUpdateTimeDelta);
     sp38.operator*(this->unk9C);
     sp48.operator*(gUpdateTimeDelta);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp58 = sp8;
+    temp_f0_3896 = sp48 + M2C_BITWISE(f64, sp28);
+    sp8 = temp_f0_3896;
+    sp58 = temp_f0_3896;
     sp10 = sp48.unk8 + sp28.unk8;
     sp60 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+    this->unk2D8 += temp_f0_3896;
     this->unk2E0 += (f32) sp60;
     SetTargetMovementOffset(MKVector3::zero);
     DeathTransition();
@@ -2193,29 +2272,31 @@ u8 SpeedWaySpyro::PowerRollTransition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
 void SpeedWaySpyro::PowerRollUpdate() {
     f64 sp40;
     f64 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_4356;
+    f64 temp_f0_4368;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    sp28 = sp18;
+    temp_f0_4356 = M2C_FIELD(this, f64 *, 0x130) * 5.325712093e-315;
+    sp18 = temp_f0_4356;
+    sp28 = temp_f0_4356;
     sp20 = this->unk130.unk8 * 3.0f;
     sp30 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp38 = sp8;
+    temp_f0_4368 = this->unk318 + temp_f0_4356;
+    sp8 = temp_f0_4368;
+    sp38 = temp_f0_4368;
     sp10 = M2C_FIELD(this, f32 *, 0x320) + (f32) sp30;
     sp40 = (f64) sp10;
     SetTargetMovementOffset(*((MKVector3 *) &sp38));
     PowerRollTransition();
 }
-#endif
 
 void SpeedWaySpyro::PowerRollExit() {
     this->unk370 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -2390,10 +2471,14 @@ void SpeedWaySpyro::MoveUpdate() {
     f64 sp48;
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f31_4764;
+    f64 temp_f0_4768;
+    f64 temp_f0_4780;
     s32 var_r0_4753;
     void *temp_r31_4745;
 
@@ -2406,14 +2491,14 @@ void SpeedWaySpyro::MoveUpdate() {
     }
     temp_f31_4764 = gUpdateTimeDelta * M2C_FIELD((temp_r31_4745 + (var_r0_4753 * 0x38)), f32 *, 0x74);
     sp28.GetJoyDir();
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp38 = sp18;
+    temp_f0_4768 = sp28 * (f64) temp_f31_4764;
+    sp18 = temp_f0_4768;
+    sp38 = temp_f0_4768;
     sp20 = sp30 * temp_f31_4764;
     sp40 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp48 = sp8;
+    temp_f0_4780 = this->unk318 + temp_f0_4768;
+    sp8 = temp_f0_4780;
+    sp48 = temp_f0_4780;
     sp10 = M2C_FIELD(this, f32 *, 0x320) + (f32) sp40;
     sp50 = (f64) sp10;
     SetTargetMovementOffset(*((MKVector3 *) &sp48));
@@ -2586,6 +2671,7 @@ void SpeedWaySpyro::Update() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKAnimScript *temp_r3_5295;
 
     this->unk2E8 = 0;
@@ -2602,8 +2688,7 @@ void SpeedWaySpyro::Update() {
     this->unk194 += gUpdateTimeDelta;
     UpdateMovementOffset();
     UpdateCameraAndSpyro(this->unk2C0, 0U, 0U);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp8 = M2C_FIELD(this, f64 *, 0x1D0) - sp28;
     M2C_FIELD(this, f64 *, 0x2C8) = sp8;
     sp10 = this->unk1A0.unk38 - (f32) sp30;
     sp18 = sp8;
@@ -2764,7 +2849,7 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
     f64 sp118;
     f32 sp114;
     Matrix *sp110;
-    M2C_UNK sp100;
+    f64 sp100;
     M2C_UNK spE0;
     M2C_UNK spD0;
     M2C_UNK spCC;
@@ -2775,9 +2860,12 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
     s32 sp80;
     MKProp sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f1_5850;
     f32 var_f1_5853;
+    f64 temp_f0_5881;
     s32 temp_r0_5678;
     u32 temp_r4_5927;
     void ***temp_r29_5779;
@@ -2846,12 +2934,12 @@ void SpeedWaySpyro::Message(MKMessage *arg0) {
         M2C_STRUCT_COPY((s32) &spCC + 4, (s32) &sp8C + 4, 0x40);
         __ml(M2C_FIELD(this, f32 *, 0x30C), *((MKVector3 *) &sp30.unk10));
         __ml(M2C_FIELD(this, f32 *, 0x308), *((MKVector3 *) &sp30.unk20));
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp30.unk30 = sp10;
+        temp_f0_5881 = sp100 + (f64) sp30.unk20;
+        sp10 = temp_f0_5881;
+        sp30.unk30 = temp_f0_5881;
         sp18 = sp108 + M2C_BITWISE(f32, sp30.unk28);
         sp30.unk38 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp20 = M2C_BITWISE(f64, sp30.unk30) + M2C_BITWISE(f64, sp30.unk10);
         M2C_FIELD(temp_r3_5841, f64 *, 0x10) = sp20;
         sp28 = M2C_BITWISE(f32, sp30.unk38) + M2C_BITWISE(f32, sp30.unk18);
         sp30.unk40 = sp20;

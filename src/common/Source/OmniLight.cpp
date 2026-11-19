@@ -9,29 +9,33 @@ extern u8 bSuspendAll;
 extern M2C_UNK gEmptyPtrListDL;
 extern M2C_UNK *lightList;
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp48;                                       /* compiler-managed */
     f64 sp40;                                       /* compiler-managed */
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
     f32 sp8;
+    f32 temp_f0_143;
     f32 temp_f5_131;
     f32 temp_f6_125;
     f32 temp_f7_127;
+    f32 var_f2_137;
     f32 var_f3_35;
     f32 var_f5_118;
     f32 var_f6_34;
+    f64 temp_f1_149;
     f64 temp_f2_57;
     f64 temp_f2_63;
     f64 temp_f2_67;
     s32 temp_r5_86;
     s32 var_r0_96;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r4, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+    sp20 = M2C_FIELD(&arg1, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0x10);
     sp40 = sp20;
     sp28 = arg1.unk8 - M2C_FIELD(&arg0, f32 *, 0x18);
     sp48 = (f64) sp28;
@@ -44,6 +48,8 @@ void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
     }
     if (var_f3_35 > 0.0f) {
 
+    } else {
+        var_f3_35 = 0.0f;
     }
     if (var_f6_34 > 0.000001f) {
         if (var_f6_34 > 0.0f) {
@@ -88,15 +94,16 @@ void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
     temp_f5_131 = (f32) sp48 * var_f5_118;
     sp40 = temp_f7_127;
     unksp44 = temp_f6_125;
+    var_f2_137 = (temp_f5_131 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 8)) + ((temp_f7_127 * *M2C_ERROR(/* Read from unset register $r6 */)) + (temp_f6_125 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 4)));
     sp48 = temp_f5_131;
-    if (((temp_f5_131 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 8)) + ((temp_f7_127 * *M2C_ERROR(/* Read from unset register $r6 */)) + (temp_f6_125 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f32 *, 4)))) < 0.0f) {
-
+    if (var_f2_137 < 0.0f) {
+        var_f2_137 = -var_f2_137;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r4, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-    sp38 = sp18;
+    temp_f0_143 = (1.0f - var_f3_35) * var_f2_137;
+    sp10 = M2C_FIELD(&arg0, f64 *, 0) * (f64) temp_f0_143;
+    temp_f1_149 = M2C_FIELD(&arg0, f64 *, 8) * (f64) temp_f0_143;
+    sp18 = temp_f1_149;
+    sp38 = temp_f1_149;
     unksp3C = 1.0f;
     this->unk0 = sp10;
     sp30 = sp10;
@@ -115,13 +122,17 @@ s32 OmniLight_FindNearestGroup(const MKVector3 &arg0, float arg1, OmniLight **ar
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     M2C_UNK *temp_r3_202;
+    M2C_UNK *temp_r5_222;
     M2C_UNK *temp_r7_279;
     M2C_UNK *var_r8_186;
     f32 temp_f0_207;
     f32 temp_f0_256;
     f32 temp_f1_257;
+    f64 temp_f0_225;
     s32 *temp_r7_262;
     s32 temp_r4_264;
     s32 temp_r9_231;
@@ -143,9 +154,7 @@ loop_11:
         temp_r7_279 = *var_r8_186;
         if (temp_r7_279 != NULL) {
             if ((u8) M2C_FIELD(temp_r7_279, u8 *, 0x30) != 0) {
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp8 = M2C_FIELD(&arg0, f64 *, 0) - *(temp_r7_279 + 0x10);
                 temp_r3_202 = *var_r8_186;
                 sp48 = sp8;
                 sp10 = arg0.unk8 - M2C_FIELD(temp_r7_279, f32 *, 0x18);
@@ -154,13 +163,13 @@ loop_11:
                 sp38 = sp8;
                 sp40 = (f64) sp10;
                 if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < (temp_f0_207 * temp_f0_207)) {
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r6, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    temp_r5_222 = temp_r3_202 + 0x10;
+                    temp_f0_225 = M2C_FIELD(temp_r6_187, f64 *, 0) - M2C_FIELD(temp_r5_222, f64 *, 0);
+                    sp18 = temp_f0_225;
                     temp_r9_231 = var_r31_179 - 1;
                     *(&sp58 + var_r27_180) = temp_r7_279;
-                    sp28 = sp18;
-                    sp20 = M2C_FIELD(temp_r6_187, f32 *, 8) - M2C_FIELD((temp_r3_202 + 0x10), f32 *, 8);
+                    sp28 = temp_f0_225;
+                    sp20 = M2C_FIELD(temp_r6_187, f32 *, 8) - M2C_FIELD(temp_r5_222, f32 *, 8);
                     sp30 = (f64) sp20;
                     *(&spDC + var_r27_180) = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C));
                     var_r3_249 = temp_r9_231 * 4;
@@ -216,14 +225,19 @@ void OmniLight_FindNearest(const MKVector3 &arg0, float arg1) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    M2C_UNK *temp_r3_330;
     M2C_UNK *temp_r3_339;
+    M2C_UNK *temp_r3_359;
     M2C_UNK *temp_r3_390;
     M2C_UNK *var_r31_315;
     M2C_UNK *var_r5_324;
     f32 temp_f1_344;
     f32 temp_f1_380;
     f32 var_f0_322;
+    f64 temp_f1_362;
     void *temp_r4_323;
 
     var_r31_315 = NULL;
@@ -235,17 +249,16 @@ loop_9:
         temp_r3_390 = *var_r5_324;
         if (temp_r3_390 != NULL) {
             if ((u8) M2C_FIELD(temp_r3_390, u8 *, 0x30) != 0) {
-                M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r30, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+                temp_r3_330 = temp_r3_390 + 0x10;
+                sp8 = M2C_FIELD(&arg0, f64 *, 0) - M2C_FIELD(temp_r3_330, f64 *, 0);
                 temp_r3_339 = *var_r5_324;
                 sp48 = sp8;
-                sp10 = arg0.unk8 - M2C_FIELD((temp_r3_390 + 0x10), f32 *, 8);
+                sp10 = arg0.unk8 - M2C_FIELD(temp_r3_330, f32 *, 8);
                 temp_f1_344 = arg1 + M2C_FIELD(temp_r3_339, f32 *, 0x20);
                 sp50 = (f64) sp10;
                 sp38 = sp8;
                 sp40 = (f64) sp10;
-                if (((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < (temp_f1_344 * temp_f1_344)) && ((M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */), M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */), M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */), sp28 = sp18, sp20 = M2C_FIELD(temp_r4_323, f32 *, 8) - M2C_FIELD((temp_r3_339 + 0x10), f32 *, 8), sp30 = (f64) sp20, temp_f1_380 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C)), ((var_r31_315 == NULL) != 0)) || (temp_f1_380 < var_f0_322))) {
+                if (((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < (temp_f1_344 * temp_f1_344)) && ((temp_r3_359 = temp_r3_339 + 0x10, temp_f1_362 = M2C_FIELD(temp_r4_323, f64 *, 0) - M2C_FIELD(temp_r3_359, f64 *, 0), sp18 = temp_f1_362, sp28 = temp_f1_362, sp20 = M2C_FIELD(temp_r4_323, f32 *, 8) - M2C_FIELD(temp_r3_359, f32 *, 8), sp30 = (f64) sp20, temp_f1_380 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C)), ((var_r31_315 == NULL) != 0)) || (temp_f1_380 < var_f0_322))) {
                     var_r31_315 = *var_r5_324;
                     var_f0_322 = temp_f1_380;
                 }

@@ -16,7 +16,9 @@ void WeatherRainPS::UpdateParticles() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     MKParticleChunk *var_r30_66;
     MKParticleSystem::Envelope *temp_r3_156;
     f32 temp_f29_73;
@@ -25,6 +27,8 @@ void WeatherRainPS::UpdateParticles() {
     f32 temp_f4_162;
     f32 temp_f5_158;
     f32 var_f0_172;
+    f64 temp_f0_106;
+    f64 temp_f0_85;
     s32 temp_r3_130;
     s32 temp_r3_144;
     s32 temp_r4_155;
@@ -42,23 +46,19 @@ loop_12:
         if (temp_f29_73 > this->unk12C) {
             var_r30_66 = DestroyParticle(&unksp8);
         } else {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp40 = sp20;
+            temp_f0_85 = M2C_FIELD(temp_r29_69, f64 *, 0) * (f64) gUpdateTimeDelta;
+            sp20 = temp_f0_85;
+            sp40 = temp_f0_85;
             sp28 = M2C_FIELD(temp_r29_69, f32 *, 8) * gUpdateTimeDelta;
             sp48 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+            M2C_FIELD(var_r30_66, f64 *, 0) = (f64) (M2C_FIELD(var_r30_66, f64 *, 0) + temp_f0_85);
             var_r30_66->unk8 += (f32) sp48;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp30 = sp10;
+            temp_f0_106 = M2C_FIELD(this, f64 *, 0x108) * (f64) gUpdateTimeDelta;
+            sp10 = temp_f0_106;
+            sp30 = temp_f0_106;
             sp18 = this->unk110 * gUpdateTimeDelta;
             sp38 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+            M2C_FIELD(temp_r29_69, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_69, f64 *, 0) + temp_f0_106);
             M2C_FIELD(temp_r29_69, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_69, f32 *, 8) + (f32) sp38);
             var_r30_66->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r29_69, f32 *, 0x1C);
             temp_r3_130 = M2C_FIELD(checked_cast<MKBaseParticleSystemDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80);

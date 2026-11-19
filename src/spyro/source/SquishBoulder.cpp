@@ -39,7 +39,7 @@ void SquishBoulder::EmitLandingEffects() {
     s32 sp2F0;
     f32 sp2E8;
     f32 sp2E4;
-    f32 sp2E0;
+    f32 sp2E0;                                      /* compiler-managed */
     f64 sp2D8;
     f64 sp2D0;
     f64 sp2C8;
@@ -62,12 +62,12 @@ void SquishBoulder::EmitLandingEffects() {
     f64 sp240;
     f64 sp238;
     f64 sp230;
-    M2C_UNK sp220;
+    f64 sp220;
     f64 sp218;
     f64 sp210;
     f64 sp208;
     f64 sp200;
-    M2C_UNK sp1F0;
+    f64 sp1F0;
     MKVector3 sp1E0;
     f64 sp1D8;
     f64 sp1D0;
@@ -83,28 +83,33 @@ void SquishBoulder::EmitLandingEffects() {
     f64 sp180;
     f64 sp178;
     f64 sp170;
-    M2C_UNK sp160;
+    f64 sp160;
     f64 sp158;
     f64 sp150;
-    M2C_UNK sp140;
+    f64 sp140;
     f32 sp138;
     f32 sp134;
     f32 sp130;
     f32 sp128;
+    f64 sp120;
     f32 sp118;
     f32 sp114;
     f32 sp110;
     f32 sp108;
+    f64 sp100;
     f32 spFC;
     f32 spF8;
     f32 spF4;
     f32 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
     f32 spD4;
     f32 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
     f32 spA4;
     f32 spA0;
@@ -112,10 +117,12 @@ void SquishBoulder::EmitLandingEffects() {
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
@@ -123,7 +130,9 @@ void SquishBoulder::EmitLandingEffects() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     s32 sp14;
@@ -137,6 +146,10 @@ void SquishBoulder::EmitLandingEffects() {
     f32 temp_f27_160;
     f32 var_f4_352;
     f32 var_f5_400;
+    f64 temp_f0_132;
+    f64 temp_f0_179;
+    f64 temp_f0_328;
+    f64 temp_f0_371;
     f64 temp_f1_405;
     f64 temp_f1_411;
     f64 temp_f1_415;
@@ -159,7 +172,7 @@ void SquishBoulder::EmitLandingEffects() {
         sp2E0 = _table_sinf(temp_f20_102);
         sp2E4 = 0.0f;
         sp2E8 = temp_f21_105;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
+        sp2E0 = (f64) sp2E0 * 5.697262106e-315;
         sp2E8 = (f32) temp_f21_105 * 1500.0f;
         temp_f1_121 = MKRand_Float(&gViewSeed, 0.8f, 1.2f);
         sp130 = 0.0f;
@@ -168,9 +181,9 @@ void SquishBoulder::EmitLandingEffects() {
         sp1C = temp_f1_121;
         sp270 = (f64) sp130;
         sp278 = (f64) sp138;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp280 = sp120;
+        temp_f0_132 = M2C_FIELD(this, f64 *, 0x290) + sp270;
+        sp120 = temp_f0_132;
+        sp280 = temp_f0_132;
         sp128 = this->unk260.unk24 + (f32) sp278;
         sp288 = (f64) sp128;
         gb.EmitDust(*((MKVector3 *) &sp280), *((MKVector3 *) &sp2E0), sp1C, 0.0f);
@@ -185,8 +198,9 @@ void SquishBoulder::EmitLandingEffects() {
         sp118 = temp_f27_160;
         sp250 = (f64) sp110;
         sp258 = (f64) sp118;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-        sp260 = sp100;
+        temp_f0_179 = sp250 * 5.676053805e-315;
+        sp100 = temp_f0_179;
+        sp260 = temp_f0_179;
         sp108 = (f32) sp258 * 1000.0f;
         sp268 = (f64) sp108;
         sp18 = MKRand_Float(&gViewSeed, 25.0f, 35.0f);
@@ -205,8 +219,7 @@ void SquishBoulder::EmitLandingEffects() {
     if (temp_r3_224 != NULL) {
         temp_r27_229 = M2C_FIELD(temp_r3_224, void **, 0x2C);
         MKVector(0.0f, 100.0f, 0.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp80 = M2C_FIELD(this, f64 *, 0x290) + sp220;
         M2C_FIELD(temp_r3_224, f64 *, 0) = sp80;
         sp88 = this->unk260.unk24 + sp228;
         sp230 = sp80;
@@ -230,8 +243,7 @@ void SquishBoulder::EmitLandingEffects() {
     var_r29_281 = 0;
     do {
         MKVector(0.0f, 100.0f, 0.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp60 = M2C_FIELD(this, f64 *, 0x290) + sp1F0;
         sp48 = 1.0f;
         sp58 = -1.0f;
         sp68 = this->unk260.unk24 + sp1F8;
@@ -250,8 +262,9 @@ void SquishBoulder::EmitLandingEffects() {
         KDRand_Vector(sp1E0, *((MKVector3 *) &sp1D0));
         sp2C0 = M2C_BITWISE(f64, sp1E0);
         sp2C8 = (f64) sp1E0.unk8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-        sp1B0 = spE0;
+        temp_f0_328 = sp2C0 * 5.60222949e-315;
+        spE0 = temp_f0_328;
+        sp1B0 = temp_f0_328;
         spE8 = (f32) sp2C8 * 300.0f;
         sp1B8 = (f64) spE8;
         sp14 = MKRand_Int(&gViewSeed, 0, 3);
@@ -267,12 +280,12 @@ void SquishBoulder::EmitLandingEffects() {
     sp2B0 = M2C_FIELD(temp_r3_358, f64 *, 0x30);
     sp2B8 = M2C_FIELD(temp_r3_358, f64 *, 0x38);
     sp188 = (f64) spD8;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp190 = spC0;
+    temp_f0_371 = M2C_FIELD(this, f64 *, 0x290) + sp180;
+    spC0 = temp_f0_371;
+    sp190 = temp_f0_371;
     spC8 = this->unk260.unk24 + (f32) sp188;
     sp198 = (f64) spC8;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    spB0 = sp190 - sp2B0;
     sp1A0 = spB0;
     spB8 = (f32) sp198 - (f32) sp2B8;
     sp1A8 = (f64) spB8;
@@ -327,8 +340,7 @@ void SquishBoulder::EmitLandingEffects() {
     KDMath_BuildMatrixFromFwd(&sp310, *((MKVector3 *) &sp2A0), (MKVector3 *) &sp290);
     sp310.Scale3x3(&sp310, 2.5f);
     MKVector(0.0f, 200.0f, 0.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp30 = M2C_FIELD(this, f64 *, 0x290) + sp160;
     sp170 = sp30;
     sp38 = this->unk260.unk24 + sp168;
     sp178 = (f64) sp38;
@@ -340,8 +352,7 @@ void SquishBoulder::EmitLandingEffects() {
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
         sp2F4 = 0;
         MKVector(0.0f, 1.0f, 0.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
+        sp20 = sp140 * 5.676053805e-315;
         sp2F0 = 0x417;
         sp2F8 = sp20;
         sp28 = sp148 * 1000.0f;
@@ -435,12 +446,16 @@ void SquishBoulder::Update() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     s32 sp14;
     s32 sp10;
     s32 sp8;
     f32 temp_f2_865;
     f32 temp_r3_899;
+    f64 temp_f0_846;
+    f64 temp_f0_858;
     s32 temp_r0_813;
     u8 var_r0_860;
 
@@ -451,8 +466,7 @@ void SquishBoulder::Update() {
     temp_r0_813 = M2C_FIELD(this, s32 *, 0x1D4);
     switch (temp_r0_813) {                          /* irregular */
     case 0:
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(this, f32 *, 0x1D0) == 0.0f) {
+        if (M2C_FIELD(this, f32 *, 0x1D0) <= 0.0f) {
             M2C_FIELD(this, s32 *, 0x1D4) = 1;
         }
     default:
@@ -465,18 +479,19 @@ block_15:
         sp40 = 0.0f;
         sp48 = (f64) sp38;
         sp50 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp58 = sp28;
+        temp_f0_846 = sp48 * (f64) gUpdateTimeDelta;
+        sp28 = temp_f0_846;
+        sp58 = temp_f0_846;
         sp30 = (f32) sp50 * gUpdateTimeDelta;
         sp60 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_858 = M2C_FIELD(this, f64 *, 0x290) + temp_f0_846;
+        sp18 = temp_f0_858;
         var_r0_860 = 0;
         temp_f2_865 = M2C_FIELD(this, f32 *, 0x1C4);
-        sp68 = sp18;
+        sp68 = temp_f0_858;
         sp20 = this->unk260.unk24 + (f32) sp60;
         sp70 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+        M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
         if (unksp6C == temp_f2_865) {
             unksp6C = temp_f2_865;
             var_r0_860 = 1;

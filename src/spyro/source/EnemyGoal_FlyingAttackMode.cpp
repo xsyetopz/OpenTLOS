@@ -260,7 +260,9 @@ void EnemyGoal_FlyingAttackMode::Activate() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     AITargetData *temp_r3_439;
     AttackerManager *var_r28_551;
     Frustum *temp_r29_466;
@@ -274,6 +276,9 @@ void EnemyGoal_FlyingAttackMode::Activate() {
     Targetable *temp_r3_530;
     Targetable *var_r4_594;
     f32 temp_f1_494;
+    f64 temp_f0_489;
+    f64 temp_f1_468;
+    f64 temp_f1_479;
     s32 temp_r29_506;
     s32 var_r30_561;
     s32 var_r3_570;
@@ -294,18 +299,20 @@ void EnemyGoal_FlyingAttackMode::Activate() {
         }
         temp_r3_460 = this->unkC;
         temp_r29_466 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_f1_468 = M2C_FIELD(M2C_FIELD(temp_r3_460, void **, 0x44), f64 (**)(Targetable *, s32), 0x100)(temp_r3_460, M2C_FIELD(&gb, s32 *, 0x3B8));
         temp_r3_469 = this->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp18 = *(temp_r3_469 + 0xD0) * temp_f1_468;
         temp_r4_476 = M2C_FIELD(temp_r3_469, void **, 8);
-        sp20 = M2C_FIELD(temp_r3_469, f32 *, 0xD8) * M2C_FIELD(M2C_FIELD(temp_r3_460, void **, 0x44), f32 (**)(Targetable *, s32), 0x100)(temp_r3_460, M2C_FIELD(&gb, s32 *, 0x3B8));
+        temp_f1_479 = M2C_FIELD(temp_r4_476, f64 *, 0x30);
+        sp20 = M2C_FIELD(temp_r3_469, f32 *, 0xD8) * (f32) temp_f1_468;
         sp28 = sp18;
-        sp38 = M2C_FIELD(temp_r4_476, f64 *, 0x30);
+        sp38 = temp_f1_479;
         sp30 = (f64) sp20;
         sp40 = M2C_FIELD(temp_r4_476, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_489 = temp_f1_479 + sp28;
+        sp8 = temp_f0_489;
         temp_f1_494 = (f32) sp40 + (f32) sp30;
-        sp48 = sp8;
+        sp48 = temp_f0_489;
         sp10 = temp_f1_494;
         sp50 = (f64) sp10;
         temp_r29_506 = temp_r29_466->IsVisible(*((MKVector3 *) &sp48), M2C_FIELD(M2C_FIELD(temp_r3_469, void **, 0x44), f32 (**)(Targetable *, void *, f32, f32, f64), 0x100)(temp_r3_469, temp_r4_476, temp_f1_494, (f32) sp40, sp18));

@@ -42,8 +42,7 @@ loop_5:
             var_r31_51 = 1;
             M2C_FIELD(temp_r3_59, f32 *, 0x1C) = (f32) (M2C_FIELD(temp_r3_59, f32 *, 0x1C) * temp_f31_53);
             temp_r4_69 = this->unk54[var_r30_54];
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r4_69, f32 *, 0x1C) == 0.05f) {
+            if (M2C_FIELD(temp_r4_69, f32 *, 0x1C) <= 0.05f) {
                 temp_r3_75 = var_r30_54 + 1;
                 M2C_FIELD(temp_r4_69, s8 *, 0x48) = 0;
                 temp_r6_79 = this->unk54;
@@ -63,17 +62,19 @@ void SkyClouds::UpdateCameraVel() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: undefined identifier 'unksp1C'
 void SkyClouds::UpdateClouds() {
     f64 sp30;
     f64 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     SkyClouds::CloudEmitter **temp_r3_166;
     SkyClouds::CloudEmitter **var_r31_125;
     SkyClouds::CloudEmitter *temp_r4_169;
     SkyClouds::CloudEmitter *temp_r4_178;
+    f64 temp_f0_142;
     void *temp_r3_128;
 
     var_r31_125 = this->unkC0;
@@ -85,13 +86,12 @@ loop_5:
         temp_r4_178 = *var_r31_125;
         if (temp_r4_178 != NULL) {
             M2C_FIELD(temp_r4_178, f32 *, 0x20) = (f32) (M2C_FIELD(temp_r4_178, f32 *, 0x20) - gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp18 = sp8;
+            temp_f0_142 = sp28 - M2C_FIELD(temp_r4_178, f64 *, 0);
+            sp8 = temp_f0_142;
+            sp18 = temp_f0_142;
             sp10 = (f32) sp30 - M2C_FIELD(temp_r4_178, f32 *, 8);
             sp20 = (f64) sp10;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) == 4.9e7f) && (DestroyByOwner(temp_r4_178) == 0)) {
+            if (((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) >= 4.9e7f) && (DestroyByOwner(temp_r4_178) == 0)) {
                 temp_r3_166 = this->unkC0;
                 this->unkC0 = temp_r3_166 + 4;
                 temp_r4_169 = *temp_r3_166;
@@ -127,7 +127,9 @@ void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, 
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
@@ -138,6 +140,7 @@ void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, 
     f32 temp_f1_275;
     f32 temp_f26_269;
     f32 temp_f31_271;
+    f64 temp_f0_287;
     s32 var_r30_225;
 
     temp_r3_215 = this->unkC0;
@@ -176,13 +179,12 @@ void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, 
                 sp14 = temp_f1_275;
                 sp58 = (f64) sp8;
                 sp60 = (f64) sp10;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-                sp68 = sp28;
+                temp_f0_287 = spB8 * M2C_FIELD(temp_r31_221, f64 *, 0x10);
+                sp28 = temp_f0_287;
+                sp68 = temp_f0_287;
                 sp30 = (f32) spC0 * (f32) M2C_FIELD(temp_r31_221, f64 *, 0x18);
                 sp70 = (f64) sp30;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp18 = sp68 + M2C_FIELD(temp_r31_221, f64 *, 0);
                 sp20 = (f32) sp70 + (f32) M2C_FIELD(temp_r31_221, f64 *, 8);
                 sp78 = sp18;
                 sp80 = (f64) sp20;
@@ -354,9 +356,13 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -394,8 +400,7 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     sp180 = (f64) sp50;
     sp188.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     sp198.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp88 = sp198 + M2C_BITWISE(f64, sp188);
     sp2B0 = sp88;
     sp90 = sp198.unk8 + sp188.unk8;
     sp1A8 = sp88;
@@ -403,8 +408,7 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     sp1B0 = (f64) sp90;
     sp148.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
     sp158.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp78 = sp158 + M2C_BITWISE(f64, sp148);
     sp40 = -(f32) sp1D0;
     sp80 = sp158.unk8 + sp148.unk8;
     sp38 = -(f32) sp1C8;
@@ -422,8 +426,7 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     sp118 = (f64) sp28;
     sp120 = (f64) sp30;
     sp128.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp68 = sp128 + M2C_BITWISE(f64, sp108);
     sp2D0 = sp68;
     sp70 = sp128.unk8 + sp108.unk8;
     sp138 = sp68;
@@ -436,8 +439,7 @@ void SkyClouds::DrawCloudlet(SkyClouds::CloudParticle *arg1, Matrix *arg2) {
     spC8 = (f64) sp18;
     spD0 = (f64) sp20;
     spD8.operator*(M2C_FIELD(arg1, f32 *, 0x3C));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp58 = spD8 + M2C_BITWISE(f64, spB8);
     spE8 = sp58;
     sp60 = spD8.unk8 + spB8.unk8;
     sp2E0 = sp58;
@@ -548,7 +550,7 @@ void SkyClouds::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: undefined identifier 'unksp3C'
 void SkyClouds::Update() {
     f64 sp50;
     f64 sp48;
@@ -557,10 +559,14 @@ void SkyClouds::Update() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f3_999;
     f32 temp_f4_1007;
     f32 var_f3_975;
+    f64 temp_f3_1018;
+    f64 temp_f3_1042;
     s32 var_r3_961;
     s32 var_r6_957;
     void *temp_r4_1006;
@@ -604,21 +610,19 @@ loop_12:
             M2C_FIELD(temp_r4_1006, f32 *, 0x30) = (f32) (6.2831855f - temp_f4_1007);
         }
         temp_r4_1015 = *(this->unk54 + var_r3_961);
-        M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f3, $f4, $f3 */);
-        sp38 = sp18;
+        temp_f3_1018 = sp48 - M2C_FIELD(temp_r4_1015, f64 *, 0);
+        sp18 = temp_f3_1018;
+        sp38 = temp_f3_1018;
         sp20 = (f32) sp50 - M2C_FIELD(temp_r4_1015, f32 *, 8);
         sp40 = (f64) sp20;
         M2C_FIELD(temp_r4_1015, f32 *, 0x38) = (f32) (((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C)));
         temp_r4_1038 = *(this->unk54 + var_r3_961);
-        M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f3, $f3, $f0 */);
-        sp28 = sp8;
+        temp_f3_1042 = *(temp_r4_1038 + 0x20) * (f64) gUpdateTimeDelta;
+        sp8 = temp_f3_1042;
+        sp28 = temp_f3_1042;
         sp10 = M2C_FIELD(temp_r4_1038, f32 *, 0x28) * gUpdateTimeDelta;
         sp30 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f3, $f4, $f3 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f3, $zero, $r4, 0x0, qr0 */);
+        M2C_FIELD(temp_r4_1038, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_1038, f64 *, 0) + temp_f3_1042);
         var_r6_957 += 1;
         var_r3_961 += 4;
         M2C_FIELD(temp_r4_1038, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_1038, f32 *, 8) + (f32) sp30);

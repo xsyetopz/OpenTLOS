@@ -55,6 +55,7 @@ void TeslaTower::UpdateTurretTurning() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -71,6 +72,7 @@ void TeslaTower::UpdateTurretTurning() {
     f32 temp_r31_101;
     f32 var_f12_127;
     f32 var_f4_144;
+    f64 temp_f0_125;
     f64 temp_f1_149;
     f64 temp_f1_155;
     f64 temp_f1_159;
@@ -92,9 +94,10 @@ void TeslaTower::UpdateTurretTurning() {
     sp50 = -spD0.unk28;
     sp98 = (f64) sp48;
     spA0 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_125 = spB8 - M2C_BITWISE(f64, spA8);
+    sp38 = temp_f0_125;
     var_f12_127 = 0.0f;
-    sp88 = sp38;
+    sp88 = temp_f0_125;
     unksp8C = 0.0f;
     sp40 = (f32) spC0 - spA8.unk8;
     sp90 = (f64) sp40;
@@ -243,8 +246,7 @@ loop_19:
         temp_f2_410 = unksp54 - unksp84;
         temp_f3_411 = (f32) sp50 - (f32) sp80;
         temp_f2_414 = (f32) sp58 - (f32) sp88;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (((temp_f2_414 * temp_f2_414) + ((temp_f3_411 * temp_f3_411) + (temp_f2_410 * temp_f2_410))) == temp_f31_339) {
+        if (((temp_f2_414 * temp_f2_414) + ((temp_f3_411 * temp_f3_411) + (temp_f2_410 * temp_f2_410))) <= temp_f31_339) {
             temp_r3_426 = (*temp_r30_559)->unk8.unk0(temp_r30_559);
             if (temp_r3_426 != NULL) {
                 if (arg0 != 0) {
@@ -253,8 +255,7 @@ loop_19:
                     sp48 = M2C_FIELD(temp_r6_431, f64 *, 0x38);
                     ZapTarget(sp70, *((MKVector3 *) &sp40));
                     if (temp_r3_426 == M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u32 (**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0))) {
-                        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                        if (this->unk90.unk2C == 0.0f) {
+                        if (this->unk90.unk2C <= 0.0f) {
                             sp18 = 0.0f;
                             sp10 = 0.0f;
                             sp14 = 0.0f;
@@ -370,12 +371,16 @@ void TeslaTower::DrawLightCone() {
     f32 spCC;
     f32 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp6C;
@@ -387,6 +392,7 @@ void TeslaTower::DrawLightCone() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -396,6 +402,7 @@ void TeslaTower::DrawLightCone() {
     f32 sp10;
     f32 temp_f1_657;
     f32 temp_f23_655;
+    f32 temp_f30_924;
     f32 temp_f5_812;
     f32 temp_f6_810;
     f32 temp_f7_809;
@@ -403,6 +410,10 @@ void TeslaTower::DrawLightCone() {
     f32 var_f0_731;
     f32 var_f31_615;
     f32 var_f4_798;
+    f64 temp_f0_907;
+    f64 temp_f0_933;
+    f64 temp_f0_943;
+    f64 temp_f0_954;
     f64 temp_f2_737;
     f64 temp_f2_743;
     f64 temp_f2_747;
@@ -462,7 +473,7 @@ void TeslaTower::DrawLightCone() {
     sp168.GetMeasure(this->unk90.unk14, &this->unk90);
     sp1D8 = sp168;
     sp1E0 = sp170;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp38 = sp168 - M2C_BITWISE(f64, sp1E8);
     sp1C8 = sp38;
     sp40 = (f32) sp1E0 - sp1E8.unk8;
     sp158 = sp38;
@@ -555,30 +566,33 @@ void TeslaTower::DrawLightCone() {
         MKSetColorV(*((MKVector4 *) &sp1F8));
         MKSetTexCoord1F(0.0f, 0.0f);
         temp_r29_905 = &sp250 + var_r30_896;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp118 = spB8;
+        temp_f0_907 = M2C_FIELD(temp_r29_905, f64 *, 0) * 5.122630465e-315;
+        spB8 = temp_f0_907;
+        sp118 = temp_f0_907;
         spC0 = M2C_FIELD(temp_r29_905, f32 *, 8) * 0.1f;
         sp120 = (f64) spC0;
         MKSetPositionV(*((MKVector3 *) &sp118));
         MKSetColorV(*((MKVector4 *) &sp1F8));
         MKSetTexCoord1F(0.0f, 0.0f);
         sp90 = 1.25f * var_f0_731;
+        temp_f30_924 = this->unk90.unk30;
         sp88 = 0.0f;
         sp8C = 0.0f;
         spE0 = (f64) sp90;
         spD8 = (f64) sp88;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        spE8 = spA8;
+        temp_f0_933 = M2C_FIELD(temp_r29_905, f64 *, 0) * 5.37751863e-315;
+        spA8 = temp_f0_933;
+        spE8 = temp_f0_933;
         spB0 = M2C_FIELD(temp_r29_905, f32 *, 8) * 7.0f;
         spF0 = (f64) spB0;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spF8 = sp98;
-        spA0 = (f32) spF0 * this->unk90.unk30;
+        temp_f0_943 = temp_f0_933 * (f64) temp_f30_924;
+        sp98 = temp_f0_943;
+        spF8 = temp_f0_943;
+        spA0 = (f32) spF0 * temp_f30_924;
         sp100 = (f64) spA0;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp108 = sp78;
+        temp_f0_954 = spF8 + spD8;
+        sp78 = temp_f0_954;
+        sp108 = temp_f0_954;
         sp80 = (f32) sp100 + (f32) spE0;
         sp110 = (f64) sp80;
         MKSetPositionV(*((MKVector3 *) &sp108));
@@ -678,17 +692,13 @@ void TeslaTower::Update() {
     case 0:
         this->unk90.unk14 += this->unk90.unk18 * gUpdateTimeDelta;
         if (this->unk90.unk18 > 0.0f) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (this->unk90.unk14 == 1.0f) {
+            if (this->unk90.unk14 >= 1.0f) {
                 this->unk90.unk14 = 1.0f;
                 this->unk90.unk18 = -this->unk90.unk18;
             }
-        } else {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk14 == 0.0f) {
-                this->unk90.unk14 = 0.0f;
-                this->unk90.unk18 = -this->unk90.unk18;
-            }
+        } else if (this->unk90.unk14 <= 0.0f) {
+            this->unk90.unk14 = 0.0f;
+            this->unk90.unk18 = -this->unk90.unk18;
         }
         if (FindZapTargets(0U) != 0) {
             this->unk90.unk24 = 1e-45f;
@@ -712,8 +722,7 @@ void TeslaTower::Update() {
         ((ZapPS *) (M2C_FIELD(checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x78)))->Emit(sp58, *((MKVector3 *) &sp48), sp10, (MKVector4) &sp38);
         temp_r3_1265 = FindZapTargets(0U);
         this->unk90.unk28 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk90.unk28 == 0.0f) || (temp_r3_1265 == 0)) {
+        if ((this->unk90.unk28 <= 0.0f) || (temp_r3_1265 == 0)) {
             if (temp_r3_1265 != 0) {
                 this->unk90.unk28 = 1.5f;
                 this->unk90.unk24 = 3e-45f;
@@ -726,8 +735,7 @@ void TeslaTower::Update() {
     case 2:
         temp_r3_1294 = FindZapTargets(1U);
         this->unk90.unk28 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk90.unk28 == 0.0f) || (temp_r3_1294 == 0)) {
+        if ((this->unk90.unk28 <= 0.0f) || (temp_r3_1294 == 0)) {
             this->unk90.unk28 = 0.0f;
             this->unk90.unk24 = 0.0f;
             ((EnergyBeam *) (M2C_FIELD(checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x70)))->FreeEnergyBeam(this->unk110);
@@ -764,7 +772,7 @@ void TeslaTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp90'
+#if 0 // DRAFT: illegal type
 void TeslaTower::LoadDone() {
     Matrix sp1A0;
     f64 sp198;
@@ -793,6 +801,7 @@ void TeslaTower::LoadDone() {
     f64 spB0;
     f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
@@ -809,22 +818,31 @@ void TeslaTower::LoadDone() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f64 sp28;
     f64 sp20;
     f64 sp18;
     f64 sp10;
+    f32 temp_f25_1474;
+    f32 temp_f29_1454;
     f32 temp_f3_1598;
     f32 temp_f3_1635;
     f32 temp_f6_1607;
     f32 temp_f7_1613;
     f32 temp_f8_1641;
     f32 temp_f9_1647;
+    f64 temp_f0_1692;
+    f64 temp_f2_1481;
+    f64 temp_f3_1461;
     f64 temp_f3_1501;
     s32 var_r28_1502;
     s32 var_r30_1504;
     void *temp_r29_1519;
     void *temp_r3_1429;
+    void *temp_r3_1436;
     void *temp_r5_1435;
+    void *temp_r6_1453;
+    void *temp_r6_1473;
 
     KDProp::LoadDone();
     this->unk90.unk20 = M2C_BITWISE(f32, Tools_GetMatchingRefPointIndex(this->unk4, "zap"));
@@ -832,26 +850,23 @@ void TeslaTower::LoadDone() {
     this->unkD0 = M2C_FIELD(temp_r3_1429, f64 *, 0);
     this->unkD8 = M2C_FIELD(temp_r3_1429, f64 *, 8);
     temp_r5_1435 = M2C_FIELD(this->unk0, void **, 0x1C);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_r3_1436 = temp_r5_1435 + 0x10;
+    sp90 = M2C_FIELD(temp_r5_1435, f64 *, 0) + M2C_FIELD(temp_r3_1436, f64 *, 0);
     M2C_FIELD(this, f64 *, 0xE0) = sp90;
-    sp98 = M2C_FIELD(temp_r5_1435, f32 *, 8) + M2C_FIELD((temp_r5_1435 + 0x10), f32 *, 8);
+    sp98 = M2C_FIELD(temp_r5_1435, f32 *, 8) + M2C_FIELD(temp_r3_1436, f32 *, 8);
     sp170 = sp90;
     M2C_FIELD(this, f64 *, 0xE8) = (f64) sp98;
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f24, $f31, $f29, $f24 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f1, $f2, $f29, $f1 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f24, $f30, $f3, $f24 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f1, $f2, $f3, $f1 */);
+    temp_r6_1453 = this->unk8;
+    temp_f29_1454 = (f32) M2C_FIELD(this, f64 *, 0xD8);
+    temp_f3_1461 = this->unkD0;
     sp178 = (f64) sp98;
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f1, $f2, $f3, $f1 */);
-    M2C_FIELD(this, f64 *, 0xD8) = (f32) M2C_ERROR(/* unknown instruction: ps_madds0 $f24, $f31, $f3, $f24 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f28, $f27, $f25, $f28 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f25, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f28, $f26, $f2, $f28 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f0, $f1, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f2, $f0 */);
-    this->unkE0.unk8 = M2C_ERROR(/* unknown instruction: ps_madds0 $f28, $f27, $f2, $f28 */);
+    M2C_FIELD(this, f64 *, 0xD8) = (f32) (((f64) M2C_FIELD(temp_r6_1453, f32 *, 8) * temp_f3_1461) + (((f64) M2C_FIELD(temp_r6_1453, f32 *, 0x18) * temp_f3_1461) + (((f64) M2C_FIELD(temp_r6_1453, f32 *, 0x28) * (f64) temp_f29_1454) + (f64) M2C_FIELD(temp_r6_1453, f32 *, 0x38))));
+    this->unkD0 = (M2C_FIELD(temp_r6_1453, f64 *, 0) * temp_f3_1461) + ((M2C_FIELD(temp_r6_1453, f64 *, 0x10) * temp_f3_1461) + ((M2C_FIELD(temp_r6_1453, f64 *, 0x20) * (f64) temp_f29_1454) + M2C_FIELD(temp_r6_1453, f64 *, 0x30)));
+    temp_r6_1473 = this->unk8;
+    temp_f25_1474 = this->unkE0.unk8;
+    temp_f2_1481 = M2C_FIELD(this, f64 *, 0xE0);
+    this->unkE0.unk8 = (f32) (((f64) M2C_FIELD(temp_r6_1473, f32 *, 8) * temp_f2_1481) + (((f64) M2C_FIELD(temp_r6_1473, f32 *, 0x18) * temp_f2_1481) + (((f64) M2C_FIELD(temp_r6_1473, f32 *, 0x28) * (f64) temp_f25_1474) + (f64) M2C_FIELD(temp_r6_1473, f32 *, 0x38))));
+    M2C_FIELD(this, f64 *, 0xE0) = (f64) ((M2C_FIELD(temp_r6_1473, f64 *, 0) * temp_f2_1481) + ((M2C_FIELD(temp_r6_1473, f64 *, 0x10) * temp_f2_1481) + ((M2C_FIELD(temp_r6_1473, f64 *, 0x20) * (f64) temp_f25_1474) + M2C_FIELD(temp_r6_1473, f64 *, 0x30))));
     Min(sp160, *((MKVector3 *) &this->unkD0));
     sp190 = M2C_BITWISE(f64, sp160);
     sp198 = (f64) sp160.unk8;
@@ -888,18 +903,14 @@ loop_2:
     sp78 = 400.0f;
     sp110 = (f64) sp70;
     sp118 = (f64) sp78;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+    this->unkD0 -= sp110;
     sp68 = 400.0f;
     sp60 = 400.0f;
     sp64 = 400.0f;
     M2C_FIELD(this, f64 *, 0xD8) = (f32) ((f32) M2C_FIELD(this, f64 *, 0xD8) - (f32) sp118);
     sp100 = (f64) sp60;
     sp108 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+    M2C_FIELD(this, f64 *, 0xE0) = (f64) (M2C_FIELD(this, f64 *, 0xE0) + sp100);
     this->unkE0.unk8 += (f32) sp108;
     M2C_STRUCT_COPY((s32) &unksp19C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
     sp1A0.Inverse(&sp1A0);
@@ -931,9 +942,10 @@ loop_2:
     this->unkD0 = sp20;
     sp18 = (f64) spC0.unk8;
     this->unkD8 = sp28;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0xE0) = sp30;
-    spB0 = sp30;
+    temp_f0_1692 = sp10 - sp20;
+    sp30 = temp_f0_1692;
+    M2C_FIELD(this, f64 *, 0xE0) = temp_f0_1692;
+    spB0 = temp_f0_1692;
     sp38 = (f32) sp18 - (f32) sp28;
     M2C_FIELD(this, f64 *, 0xE8) = (f64) sp38;
     spB8 = (f64) sp38;

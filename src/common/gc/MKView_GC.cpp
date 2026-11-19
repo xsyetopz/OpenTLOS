@@ -219,10 +219,10 @@ void UpdateLighting() {
         sp80 = (f32) sp80 * var_f3_391;
         sp84 *= var_f3_391;
         sp88 = temp_f0_402;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f28 */);
+        sp80 = (f64) sp80 * 6.088608896e-315;
         temp_f2_409 = temp_f0_402 * 1000000.0f;
         sp88 = temp_f2_409;
-        GXInitLightPos((GXLightObj *) (lightColors + 0x80), -sp80, -sp84, -temp_f2_409);
+        GXInitLightPos((GXLightObj *) (lightColors + 0x80), -(f32) sp80, -sp84, -temp_f2_409);
         GXInitLightAttnA((GXLightObj *) (lightColors + 0x80), 1.0f, 0.0f, 0.0f);
         GXInitLightDistAttn((GXLightObj *) (lightColors + 0x80), 0.0f, 0.0f, GX_DA_OFF);
         switch (var_r30_212) {                      /* switch 2; irregular */

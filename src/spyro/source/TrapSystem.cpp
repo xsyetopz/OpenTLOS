@@ -83,7 +83,6 @@ void TrapSystem::Init() {
     this->unk4C = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void TrapSystemDescriptor::Init() {
     f64 sp40;
     f64 sp38;
@@ -93,6 +92,7 @@ void TrapSystemDescriptor::Init() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKPropDescriptor::Init();
     sp18 = -30.000002f;
@@ -102,8 +102,7 @@ void TrapSystemDescriptor::Init() {
     this->unk68 = (f64) sp20;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp8 = this->unk60 * 1.591496843e-314;
     this->unk70 = sp8;
     sp10 = (f32) M2C_FIELD(this, f64 *, 0x68) * -2.0f;
     sp28 = sp8;
@@ -111,4 +110,3 @@ void TrapSystemDescriptor::Init() {
     sp30 = (f64) sp10;
     this->unk1C = (BoundingVolume *) &this->unk60;
 }
-#endif

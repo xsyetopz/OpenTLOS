@@ -100,8 +100,7 @@ loop_10:
             sp8.NormaliseScale();
             temp_f1_185 = 1.0f - temp_f25_183;
             temp_r31_208->Scale3x3(temp_r31_208, 1.0f + (temp_f1_185 * -((6.0f * temp_f1_185) - 20.0f)));
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r31_208, f32 *, 0x40) == 0.0f) {
+            if (M2C_FIELD(temp_r31_208, f32 *, 0x40) <= 0.0f) {
                 temp_r3_196 = this->unk118;
                 this->unk118 = temp_r3_196 + 4;
                 temp_r4_199 = *temp_r3_196;
@@ -152,7 +151,7 @@ s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVect
     f64 sp178;                                      /* compiler-managed */
     f64 sp170;                                      /* compiler-managed */
     f64 sp168;                                      /* compiler-managed */
-    M2C_UNK sp158;
+    f64 sp158;
     f64 sp150;
     f64 sp148;
     f64 sp140;
@@ -181,13 +180,17 @@ s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVect
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -204,7 +207,10 @@ s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVect
     f32 var_f3_638;
     f32 var_f4_571;
     f32 var_f5_499;
+    f64 temp_f0_414;
     f64 temp_f0_670;
+    f64 temp_f0_725;
+    f64 temp_f1_408;
     f64 temp_f1_577;
     f64 temp_f1_583;
     f64 temp_f1_587;
@@ -256,11 +262,12 @@ loop_32:
         if (temp_r31_536 != NULL) {
             if (((*temp_r31_536)->unk8.unk0(temp_r31_536) != NULL) && (M2C_FIELD(*temp_r31_536, u8 (**)(TargetManager **), 0x18)(temp_r31_536) != 0) && ((((u32 (*)(TargetManager **)) (*temp_r31_536)->unk8.unk4)(temp_r31_536) == 0U) || (((Character *) (((Character *(*)(TargetManager **)) (*temp_r31_536)->unk8.unk4)(temp_r31_536)))->IsActive() != 0))) {
                 temp_r3_407 = M2C_FIELD((*temp_r31_536)->unk8.unk0(temp_r31_536), void **, 8);
-                sp118 = M2C_FIELD(temp_r3_407, f64 *, 0x30);
+                temp_f1_408 = M2C_FIELD(temp_r3_407, f64 *, 0x30);
+                sp118 = temp_f1_408;
                 sp120 = M2C_FIELD(temp_r3_407, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp168 = sp58;
+                temp_f0_414 = temp_f1_408 - (f64) M2C_FIELD(&arg1, f32 *, 0);
+                sp58 = temp_f0_414;
+                sp168 = temp_f0_414;
                 sp60 = (f32) sp120 - arg1.unk8;
                 sp170 = (f64) sp60;
                 var_f0_432 = ((f32) sp170 * (f32) sp170) + (((f32) sp168 * (f32) sp168) + (unksp16C * unksp16C));
@@ -309,7 +316,7 @@ loop_32:
                 sp168 = temp_f6_508;
                 unksp16C = temp_f4_510;
                 sp170 = temp_f5_511;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                 if ((var_f0_432 == 10000.0f) && (var_f0_432 < var_f30_365) && (((temp_f5_511 * arg2.unk8) + ((temp_f6_508 * arg2.unk0) + (temp_f4_510 * arg2.unk4))) > 0.9f)) {
                     var_f30_365 = var_f0_432;
                     var_r30_356 = temp_r31_536;
@@ -320,9 +327,8 @@ loop_32:
         }
     }
     if (var_r30_356 != NULL) {
-        M2C_FIELD(*var_r30_356, M2C_UNK (**)(TargetManager **, MKVector3 *, M2C_UNK *), 0x2C)(var_r30_356, &arg1, &sp158);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        M2C_FIELD(*var_r30_356, M2C_UNK (**)(TargetManager **, MKVector3 *, f64 *), 0x2C)(var_r30_356, &arg1, &sp158);
+        sp38 = sp158 - (f64) M2C_FIELD(&arg1, f32 *, 0);
         sp178 = sp38;
         sp40 = sp160 - arg1.unk8;
         sp180 = (f64) sp40;
@@ -391,13 +397,13 @@ loop_32:
         MKVector(-1.0f, -1.0f, -1.0f);
         KDRand_Vector(spB8, spA8);
         spC8.operator*(0.5f);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spD8 = sp18;
+        temp_f0_725 = (f64) sp178 + M2C_BITWISE(f64, spC8);
+        sp18 = temp_f0_725;
+        spD8 = temp_f0_725;
         sp20 = sp180 + spC8.unk8;
         spE0 = (f64) sp20;
         Normalise(spE8);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp28 = spE8 * (f64) temp_f31_704;
         spF8 = sp28;
         sp30 = spE8.unk8 * temp_f31_704;
         sp138 = sp28;
@@ -563,24 +569,34 @@ void ConvexityBreathFX::Update() {
     f32 spF4;
     f32 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
     f32 spB4;
     f32 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -591,11 +607,21 @@ void ConvexityBreathFX::Update() {
     f32 temp_f27_1357;
     f32 temp_f2_1169;
     f32 temp_f2_1252;
+    f32 temp_f3_1075;
     f32 temp_f3_1134;
+    f32 temp_f3_1251;
     f32 temp_f4_1250;
     f32 temp_f5_1248;
     f32 var_f0_1054;
     f32 var_f0_1320;
+    f64 temp_f0_1086;
+    f64 temp_f0_1096;
+    f64 temp_f0_1108;
+    f64 temp_f0_1145;
+    f64 temp_f0_1155;
+    f64 temp_f0_1262;
+    f64 temp_f0_1273;
+    f64 temp_f0_1370;
     s32 temp_r0_1038;
     void *var_r3_1214;
 
@@ -619,22 +645,25 @@ void ConvexityBreathFX::Update() {
             var_f0_1054 = 0.0f;
         }
         this->unkB0 = var_f0_1054;
+        temp_f3_1075 = this->unkC0;
         spF0 = -this->unkD0.unk20;
         spF4 = -this->unkD0.unk24;
         spF8 = -this->unkD0.unk28;
         sp1A0 = (f64) spF0;
         sp1A8 = (f64) spF8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp1B0 = spE0;
-        spE8 = (f32) sp1A8 * this->unkC0;
+        temp_f0_1086 = sp1A0 * (f64) temp_f3_1075;
+        spE0 = temp_f0_1086;
+        sp1B0 = temp_f0_1086;
+        spE8 = (f32) sp1A8 * temp_f3_1075;
         sp1B8 = (f64) spE8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-        sp1C0 = spD0;
+        temp_f0_1096 = temp_f0_1086 * 5.676053805e-315;
+        spD0 = temp_f0_1096;
+        sp1C0 = temp_f0_1096;
         spD8 = (f32) sp1B8 * 1000.0f;
         sp1C8 = (f64) spD8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp1F0 = spC0;
+        temp_f0_1108 = M2C_FIELD(this, f64 *, 0x100) + temp_f0_1096;
+        spC0 = temp_f0_1108;
+        sp1F0 = temp_f0_1108;
         spC8 = this->unkD0.unk38 + (f32) sp1C8;
         sp1F8 = (f64) spC8;
         this->unkB8 = 10.0f;
@@ -646,16 +675,17 @@ void ConvexityBreathFX::Update() {
         spB8 = -this->unkD0.unk28;
         sp170 = (f64) spB0;
         sp178 = (f64) spB8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp180 = spA0;
+        temp_f0_1145 = sp170 * (f64) temp_f3_1134;
+        spA0 = temp_f0_1145;
+        sp180 = temp_f0_1145;
         spA8 = (f32) sp178 * temp_f3_1134;
         sp188 = (f64) spA8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-        sp190 = sp90;
+        temp_f0_1155 = temp_f0_1145 * 5.676053805e-315;
+        sp90 = temp_f0_1155;
+        sp190 = temp_f0_1155;
         sp98 = (f32) sp188 * 1000.0f;
         sp198 = (f64) sp98;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp80 = M2C_FIELD(this, f64 *, 0x100) + temp_f0_1155;
         temp_f2_1169 = this->unkD0.unk38;
         sp1E0 = sp80;
         sp88 = temp_f2_1169 + (f32) sp198;
@@ -680,27 +710,28 @@ void ConvexityBreathFX::Update() {
             }
         }
         this->unk11C -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk11C == 0.0f) {
+        if (this->unk11C <= 0.0f) {
             this->unk11C = 0.05f;
             temp_f5_1248 = -this->unkD0.unk20;
             temp_f4_1250 = -this->unkD0.unk24;
+            temp_f3_1251 = this->unkC0;
             temp_f2_1252 = -this->unkD0.unk28;
             sp70 = temp_f5_1248;
             sp74 = temp_f4_1250;
             sp78 = temp_f2_1252;
             sp140 = (f64) sp70;
             sp148 = (f64) sp78;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp150 = sp60;
-            sp68 = (f32) sp148 * this->unkC0;
+            temp_f0_1262 = sp140 * (f64) temp_f3_1251;
+            sp60 = temp_f0_1262;
+            sp150 = temp_f0_1262;
+            sp68 = (f32) sp148 * temp_f3_1251;
             sp158 = (f64) sp68;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            sp160 = sp50;
+            temp_f0_1273 = temp_f0_1262 * 5.634608575e-315;
+            sp50 = temp_f0_1273;
+            sp160 = temp_f0_1273;
             sp58 = (f32) sp158 * 500.0f;
             sp168 = (f64) sp58;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp40 = M2C_FIELD(this, f64 *, 0x100) + temp_f0_1273;
             sp38 = temp_f2_1252;
             sp30 = temp_f5_1248;
             sp48 = this->unkD0.unk38 + (f32) sp168;
@@ -711,8 +742,7 @@ void ConvexityBreathFX::Update() {
             sp138 = (f64) sp38;
             SpawnRing(*((MKVector3 *) &sp1D0), *((MKVector3 *) &sp130));
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkB0 == 0.0f) {
+        if (this->unkB0 <= 0.0f) {
             this->unkAC = 2;
             this->unkB0 = 0.25f;
         }
@@ -725,10 +755,10 @@ block_33:
         sp100 = (f64) sp10;
         sp108 = (f64) sp18;
         sp110.operator*(2000.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+        temp_f0_1370 = sp110 * (f64) temp_f27_1357;
+        sp20 = temp_f0_1370;
         temp_r3_1372 = &this->unkD0;
-        sp120 = sp20;
+        sp120 = temp_f0_1370;
         sp28 = sp110.unk8 * temp_f27_1357;
         sp128 = (f64) sp28;
         temp_r3_1372->Translate(temp_r3_1372, *((MKVector3 *) &sp120));
@@ -749,8 +779,7 @@ block_33:
         temp_f1_1340 = 10.0f * (this->unkB0 / 0.25f);
         this->unkB8 = temp_f1_1340;
         this->unkBC = temp_f1_1340;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkB0 == 0.0f) {
+        if (this->unkB0 <= 0.0f) {
             this->unkAC = 0;
         }
         goto block_33;

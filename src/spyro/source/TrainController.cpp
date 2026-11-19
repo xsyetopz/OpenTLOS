@@ -269,11 +269,9 @@ void TrainController::Update() {
     u64 temp_ret_471;
 
     MKProp::Update();
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_FIELD((checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk5C * 0xC)), f32 *, 0x68) == 0.0f) {
+    if (M2C_FIELD((checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk5C * 0xC)), f32 *, 0x68) >= 0.0f) {
         temp_ret_471 = checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk60 == M2C_FIELD((temp_ret_471 + (this->unk5C * 0xC)), f32 *, 0x68)) {
+        if (this->unk60 >= M2C_FIELD((temp_ret_471 + (this->unk5C * 0xC)), f32 *, 0x68)) {
             temp_r3_482 = checked_cast<SteamTrainCaboose *, MKProp>(this->unk54->PropResolver_Resolve((s32) (u32) temp_ret_471));
             if ((temp_r3_482 != NULL) && (temp_r3_482->IsBlownUp() == 0)) {
                 temp_r3_482->BlowUp();

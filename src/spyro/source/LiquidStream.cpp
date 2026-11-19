@@ -47,13 +47,17 @@ void LiquidStream::Draw() {
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp6C;
     f32 sp68;
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -62,7 +66,12 @@ void LiquidStream::Draw() {
     f32 sp10;
     M2C_UNK *temp_r4_68;
     M2C_UNK *var_r3_69;
+    f32 temp_f0_249;
+    f32 temp_f30_206;
     f32 var_f24_223;
+    f64 temp_f0_108;
+    f64 temp_f0_132;
+    f64 temp_f0_153;
     s32 temp_r29_297;
     s32 temp_r30_79;
     s32 var_r27_295;
@@ -71,6 +80,7 @@ void LiquidStream::Draw() {
     s32 var_r31_280;
     s32 var_r31_85;
     void *temp_r3_238;
+    void *temp_r4_105;
     void *temp_r4_127;
     void *temp_r5_102;
     void *var_r29_98;
@@ -99,11 +109,11 @@ loop_14:
             if (var_r29_98 != NULL) {
                 temp_r5_102 = M2C_FIELD(var_r29_98, void **, 0x28);
                 if (temp_r5_102 == NULL) {
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp110 = sp50;
-                    sp58 = M2C_FIELD(M2C_FIELD(var_r29_98, void **, 0x2C), f32 *, 8) - M2C_FIELD(var_r29_98, f32 *, 8);
+                    temp_r4_105 = M2C_FIELD(var_r29_98, void **, 0x2C);
+                    temp_f0_108 = M2C_FIELD(temp_r4_105, f64 *, 0) - M2C_FIELD(var_r29_98, f64 *, 0);
+                    sp50 = temp_f0_108;
+                    sp110 = temp_f0_108;
+                    sp58 = M2C_FIELD(temp_r4_105, f32 *, 8) - M2C_FIELD(var_r29_98, f32 *, 8);
                     sp118 = (f64) sp58;
                     Normalise(sp120);
                     sp140 = M2C_BITWISE(f64, sp120);
@@ -111,20 +121,18 @@ loop_14:
                 } else {
                     temp_r4_127 = M2C_FIELD(var_r29_98, void **, 0x2C);
                     if (temp_r4_127 == NULL) {
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        spF0 = sp40;
+                        temp_f0_132 = M2C_FIELD(var_r29_98, f64 *, 0) - M2C_FIELD(temp_r5_102, f64 *, 0);
+                        sp40 = temp_f0_132;
+                        spF0 = temp_f0_132;
                         sp48 = M2C_FIELD(var_r29_98, f32 *, 8) - M2C_FIELD(temp_r5_102, f32 *, 8);
                         spF8 = (f64) sp48;
                         Normalise(sp100);
                         sp140 = M2C_BITWISE(f64, sp100);
                         sp148 = (f64) sp100.unk8;
                     } else {
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        spD0 = sp30;
+                        temp_f0_153 = M2C_FIELD(temp_r4_127, f64 *, 0) - M2C_FIELD(temp_r5_102, f64 *, 0);
+                        sp30 = temp_f0_153;
+                        spD0 = temp_f0_153;
                         sp38 = M2C_FIELD(temp_r4_127, f32 *, 8) - M2C_FIELD(temp_r5_102, f32 *, 8);
                         spD8 = (f64) sp38;
                         Normalise(spE0);
@@ -140,6 +148,7 @@ loop_14:
                 Normalise(spC0);
                 sp150 = M2C_BITWISE(f64, spC0);
                 sp158 = (f64) spC0.unk8;
+                temp_f30_206 = M2C_FIELD(var_r29_98, f32 *, 0x24);
                 sp14 = ((f32) sp158 * (f32) sp140) - ((f32) sp150 * (f32) sp148);
                 sp18 = ((f32) sp150 * unksp144) - (unksp154 * (f32) sp140);
                 sp10 = (unksp154 * (f32) sp148) - ((f32) sp158 * unksp144);
@@ -147,28 +156,25 @@ loop_14:
                 spA0 = (f64) sp10;
                 sp160 = (f64) sp10;
                 sp168 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                sp70 = sp150 * (f64) temp_f30_206;
                 var_f24_223 = 0.0f;
                 var_r28_224 = 0;
-                sp78 = (f32) sp158 * M2C_FIELD(var_r29_98, f32 *, 0x24);
+                sp78 = (f32) sp158 * temp_f30_206;
                 sp130 = sp70;
                 sp138 = (f64) sp78;
                 do {
                     sp170.SetRotateAroundAxis(*((MKVector3 *) &sp140), var_f24_223);
                     temp_r3_238 = &sp1B0 + var_r31_85;
                     var_r28_224 += 1;
-                    sp170.unk30 = M2C_FIELD(var_r29_98, f32 *, 0);
+                    sp170.unk30 = (f32) M2C_FIELD(var_r29_98, f64 *, 0);
                     var_f24_223 += 1.2566371f;
                     var_r31_85 += 0x10;
                     sp170.unk34 = M2C_FIELD(var_r29_98, f32 *, 4);
-                    M2C_ERROR(/* unknown instruction: ps_madds0 $f1, $f29, $f27, $f0 */);
-                    M2C_ERROR(/* unknown instruction: ps_madds0 $f2, $f3, $f27, $f2 */);
-                    M2C_ERROR(/* unknown instruction: ps_madds1 $f1, $f28, $f25, $f1 */);
-                    M2C_ERROR(/* unknown instruction: ps_madds1 $f2, $f3, $f25, $f2 */);
-                    sp170.unk38 = M2C_FIELD(var_r29_98, f32 *, 8);
-                    M2C_ERROR(/* unknown instruction: ps_madds0 $f2, $f3, $f25, $f2 */);
+                    temp_f0_249 = M2C_FIELD(var_r29_98, f32 *, 8);
+                    sp170.unk38 = temp_f0_249;
                     sp170.unk3C = 1.0f;
-                    M2C_FIELD(temp_r3_238, f32 *, 8) = (f32) M2C_ERROR(/* unknown instruction: ps_madds0 $f1, $f29, $f25, $f1 */);
+                    M2C_FIELD(temp_r3_238, f32 *, 8) = (f32) (((f64) sp170.unk8 * sp130) + (((f64) sp170.unk18 * sp130) + (((f64) sp170.unk28 * (f64) (f32) sp138) + (f64) temp_f0_249)));
+                    M2C_FIELD(temp_r3_238, f64 *, 0) = (f64) ((M2C_BITWISE(f64, sp170) * sp130) + (((f64) sp170.unk10 * sp130) + (((f64) sp170.unk20 * (f64) (f32) sp138) + (f64) sp170.unk30)));
                 } while (var_r28_224 < 6);
                 var_r29_98 = M2C_FIELD(var_r29_98, void **, 0x2C);
                 goto loop_14;
@@ -236,9 +242,13 @@ void LiquidStream::Update() {
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     M2C_UNK *temp_r0_463;
@@ -261,6 +271,10 @@ void LiquidStream::Update() {
     f32 var_f3_729;
     f32 var_f4_497;
     f32 var_f4_662;
+    f64 temp_f0_584;
+    f64 temp_f0_610;
+    f64 temp_f0_747;
+    f64 temp_f0_777;
     f64 temp_f1_503;
     f64 temp_f1_509;
     f64 temp_f1_513;
@@ -282,8 +296,7 @@ void LiquidStream::Update() {
             temp_f2_371 = this->unk5C;
             if (temp_f2_371 > 0.0f) {
                 this->unk5C = temp_f2_371 - gUpdateTimeDelta;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (this->unk5C == 0.0f) {
+                if (this->unk5C <= 0.0f) {
                     this->unk5C = 0.0f;
                     if ((u32) M2C_FIELD(this->unk54, u32 *, -4) != 0U) {
                         this->unk60 = 0;
@@ -312,8 +325,7 @@ void LiquidStream::Update() {
 loop_41:
         if (var_r31_422 != NULL) {
             M2C_FIELD(var_r31_422, f32 *, 0x20) = (f32) (M2C_FIELD(var_r31_422, f32 *, 0x20) - gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(var_r31_422, f32 *, 0x20) == 0.0f) {
+            if (M2C_FIELD(var_r31_422, f32 *, 0x20) <= 0.0f) {
                 temp_r3_433 = M2C_FIELD(var_r31_422, void **, 0x28);
                 if (temp_r3_433 != NULL) {
                     M2C_FIELD(temp_r3_433, M2C_UNK **, 0x2C) = (M2C_UNK *) M2C_FIELD(var_r31_422, M2C_UNK **, 0x2C);
@@ -391,23 +403,20 @@ loop_18:
                 sp78 = (f32) spE8 * var_f3_564;
                 sp100 = (f64) sp70;
                 sp108 = (f64) sp78;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                spD0 = sp40;
+                temp_f0_584 = sp100 * 5.398241246e-315;
+                sp40 = temp_f0_584;
+                spD0 = temp_f0_584;
                 sp48 = (f32) sp108 * 10.0f;
                 spD8 = (f64) sp48;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+                M2C_FIELD(var_r31_422, f64 *, 0x10) = (f64) (M2C_FIELD(var_r31_422, f64 *, 0x10) + temp_f0_584);
                 M2C_FIELD(var_r31_422, f32 *, 0x18) = (f32) (M2C_FIELD(var_r31_422, f32 *, 0x18) + (f32) spD8);
                 M2C_FIELD(var_r31_422, f32 *, 0x14) = (f32) -((980.0f * gUpdateTimeDelta) - M2C_FIELD(var_r31_422, f32 *, 0x14));
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                spC0 = sp30;
+                temp_f0_610 = M2C_FIELD(var_r31_422, f64 *, 0x10) * (f64) gUpdateTimeDelta;
+                sp30 = temp_f0_610;
+                spC0 = temp_f0_610;
                 sp38 = M2C_FIELD(var_r31_422, f32 *, 0x18) * gUpdateTimeDelta;
                 spC8 = (f64) sp38;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r31, 0x0, qr0 */);
+                M2C_FIELD(var_r31_422, f64 *, 0) = (f64) (M2C_FIELD(var_r31_422, f64 *, 0) + temp_f0_610);
                 M2C_FIELD(var_r31_422, f32 *, 8) = (f32) (M2C_FIELD(var_r31_422, f32 *, 8) + (f32) spC8);
                 var_r31_422 = M2C_FIELD(var_r31_422, M2C_UNK **, 0x2C);
             }
@@ -465,26 +474,23 @@ loop_18:
             sp58 = (f32) spB8 * var_f3_729;
             spF0 = (f64) sp50;
             spF8 = (f64) sp58;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-            spA0 = sp20;
+            temp_f0_747 = spF0 * 5.398241246e-315;
+            sp20 = temp_f0_747;
+            spA0 = temp_f0_747;
             temp_r3_754 = this->unk50 + 0x10;
             sp28 = (f32) spF8 * 10.0f;
             spA8 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+            M2C_FIELD(temp_r3_754, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_754, f64 *, 0) + temp_f0_747);
             M2C_FIELD(temp_r3_754, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_754, f32 *, 8) + (f32) spA8);
             temp_r3_767 = this->unk50;
             M2C_FIELD(temp_r3_767, f32 *, 0x14) = (f32) -((980.0f * gUpdateTimeDelta) - M2C_FIELD(temp_r3_767, f32 *, 0x14));
             temp_r4_773 = this->unk50;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp90 = sp10;
+            temp_f0_777 = *(temp_r4_773 + 0x10) * (f64) gUpdateTimeDelta;
+            sp10 = temp_f0_777;
+            sp90 = temp_f0_777;
             sp18 = M2C_FIELD(temp_r4_773, f32 *, 0x18) * gUpdateTimeDelta;
             sp98 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+            M2C_FIELD(temp_r4_773, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_773, f64 *, 0) + temp_f0_777);
             M2C_FIELD(temp_r4_773, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_773, f32 *, 8) + (f32) sp98);
         }
         var_r3_797 = M2C_FIELD(this->unk50, M2C_UNK **, 0x2C);

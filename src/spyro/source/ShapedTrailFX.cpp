@@ -89,6 +89,7 @@ void ShapedTrailFX::Draw() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -103,7 +104,9 @@ void ShapedTrailFX::Draw() {
     f32 temp_f1_225;
     f32 temp_f20_699;
     f32 temp_f21_217;
+    f32 temp_f26_429;
     f32 temp_f27_267;
+    f32 temp_f28_656;
     f32 var_f21_492;
     f32 var_f22_471;
     f32 var_f27_204;
@@ -111,6 +114,8 @@ void ShapedTrailFX::Draw() {
     f32 var_f3_608;
     f32 var_f4_311;
     f32 var_f4_541;
+    f64 *temp_r5_427;
+    f64 *temp_r5_654;
     f64 temp_f0_744;
     f64 temp_f1_317;
     f64 temp_f1_323;
@@ -119,6 +124,8 @@ void ShapedTrailFX::Draw() {
     f64 temp_f1_553;
     f64 temp_f1_557;
     f64 temp_f1_742;
+    f64 temp_f2_438;
+    f64 temp_f3_665;
     s32 temp_r0_718;
     s32 temp_r3_346;
     s32 temp_r3_576;
@@ -201,7 +208,7 @@ loop_13:
             sp68.GetMeasure(0.0f, (Matrix *) &this->unk60, KDSpline_VelocityMixer);
             sp58 = sp68;
             sp60 = sp70;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
+            sp38 = sp58 * (f64) sp1C;
             spD8 = sp38;
             sp40 = (f32) sp60 * sp1C;
             spE0 = (f64) sp40;
@@ -258,15 +265,14 @@ loop_13:
             sp110.unk3C = 1.0f;
 loop_36:
             if (var_r6_413 < (s32) this->unk90) {
+                temp_r5_427 = &sp290 + var_r3_415;
+                temp_f26_429 = M2C_FIELD(temp_r5_427, f32 *, 8);
                 temp_r4_430 = &sp1F0 + var_r3_415;
                 var_r6_413 += 1;
                 var_r3_415 += 0x10;
-                M2C_ERROR(/* unknown instruction: ps_madds0 $f23, $f24, $f26, $f23 */);
-                M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f26, $f0 */);
-                M2C_ERROR(/* unknown instruction: ps_madds1 $f23, $f25, $f2, $f23 */);
-                M2C_ERROR(/* unknown instruction: ps_madds1 $f0, $f3, $f2, $f0 */);
-                M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f2, $f0 */);
-                M2C_FIELD(temp_r4_430, f32 *, 8) = (f32) M2C_ERROR(/* unknown instruction: ps_madds0 $f23, $f24, $f2, $f23 */);
+                temp_f2_438 = M2C_FIELD(temp_r5_427, f64 *, 0);
+                M2C_FIELD(temp_r4_430, f32 *, 8) = (f32) (((f64) sp110.unk8 * temp_f2_438) + (((f64) sp110.unk18 * temp_f2_438) + (((f64) sp110.unk28 * (f64) temp_f26_429) + (f64) sp110.unk38)));
+                M2C_FIELD(temp_r4_430, f64 *, 0) = (f64) ((M2C_BITWISE(f64, sp110) * temp_f2_438) + (((f64) sp110.unk10 * temp_f2_438) + (((f64) sp110.unk20 * (f64) temp_f26_429) + (f64) sp110.unk30)));
                 goto loop_36;
             }
             var_r30_461 = 0;
@@ -362,15 +368,14 @@ loop_80:
 loop_72:
                 temp_r4_676 = this->unk90;
                 if (var_r6_641 < temp_r4_676) {
+                    temp_r5_654 = &sp290 + var_r3_643;
+                    temp_f28_656 = M2C_FIELD(temp_r5_654, f32 *, 8);
                     temp_r4_657 = &sp150 + var_r3_643;
                     var_r6_641 += 1;
                     var_r3_643 += 0x10;
-                    M2C_ERROR(/* unknown instruction: ps_madds0 $f31, $f30, $f28, $f31 */);
-                    M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f28, $f0 */);
-                    M2C_ERROR(/* unknown instruction: ps_madds1 $f31, $f29, $f3, $f31 */);
-                    M2C_ERROR(/* unknown instruction: ps_madds1 $f0, $f2, $f3, $f0 */);
-                    M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f3, $f0 */);
-                    M2C_FIELD(temp_r4_657, f32 *, 8) = (f32) M2C_ERROR(/* unknown instruction: ps_madds0 $f31, $f30, $f3, $f31 */);
+                    temp_f3_665 = M2C_FIELD(temp_r5_654, f64 *, 0);
+                    M2C_FIELD(temp_r4_657, f32 *, 8) = (f32) (((f64) sp110.unk8 * temp_f3_665) + (((f64) sp110.unk18 * temp_f3_665) + (((f64) sp110.unk28 * (f64) temp_f28_656) + (f64) sp110.unk38)));
+                    M2C_FIELD(temp_r4_657, f64 *, 0) = (f64) ((M2C_BITWISE(f64, sp110) * temp_f3_665) + (((f64) sp110.unk10 * temp_f3_665) + (((f64) sp110.unk20 * (f64) temp_f28_656) + (f64) sp110.unk30)));
                     goto loop_72;
                 }
                 MKBegin((temp_r4_676 + 1) * 2);
@@ -460,8 +465,7 @@ void ShapedTrailFX::UpdateTrail() {
                 }
                 M2C_FIELD(temp_r3_853, f32 *, 0) = var_f0_860;
                 temp_r3_877 = this->unk80 + var_r4_846;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(temp_r3_877, f32 *, 0) == this->unk9C) {
+                if (M2C_FIELD(temp_r3_877, f32 *, 0) >= this->unk9C) {
                     M2C_FIELD(temp_r3_877, s8 *, 4) = 0;
                     *(this->unk80 + var_r4_846) = 0.0f;
                 } else {

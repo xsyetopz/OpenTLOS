@@ -33,23 +33,24 @@ void WaterTrickleEmitter::Update() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
     f32 sp8;
     M2C_UNK *var_r30_89;
-    f32 temp_f0_177;
     f32 temp_f28_136;
     f32 temp_f29_130;
     f32 temp_f30_141;
     f32 temp_f4_152;
+    f64 temp_f1_168;
     s32 var_r29_104;
     void *temp_r3_117;
+    void *temp_r3_171;
 
     this->unk84 = M2C_BITWISE(f32, this->unk84) + gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_BITWISE(f32, this->unk84) == MKRand_Float(&gViewSeed, M2C_BITWISE(f32, this->unk4C.unk2C), M2C_BITWISE(f32, this->unk4C.unk30))) {
+    if (M2C_BITWISE(f32, this->unk84) >= MKRand_Float(&gViewSeed, M2C_BITWISE(f32, this->unk4C.unk2C), M2C_BITWISE(f32, this->unk4C.unk30))) {
         var_r30_89 = NULL;
         sp38 = 0.0f;
         sp30 = 0.0f;
@@ -82,11 +83,11 @@ loop_10:
                     sp60 = spC * temp_f4_152;
                     unksp6C = 0.0f;
                 } else {
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    temp_f0_177 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * MKRand_Float(&gViewSeed, this->unk88, this->unk8C);
+                    temp_f1_168 = MKRand_Float(&gViewSeed, this->unk88, this->unk8C);
+                    temp_r3_171 = this->unk8 + 0x20;
+                    sp20 = M2C_FIELD(temp_r3_171, f64 *, 0) * temp_f1_168;
                     sp40 = sp20;
-                    sp28 = temp_f0_177;
+                    sp28 = M2C_FIELD(temp_r3_171, f32 *, 8) * (f32) temp_f1_168;
                     sp60 = sp20;
                     sp48 = (f64) sp28;
                     sp68 = (f64) sp28;

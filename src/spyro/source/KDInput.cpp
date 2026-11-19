@@ -7,13 +7,14 @@
 
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier 'unksp34'
 f32 KDInput::RumblePlay3D(float arg0, float arg1, float arg2, MKVector3 *arg3, float arg4, char arg5, float arg6, bool arg7) {
     f64 sp38;
     f64 sp30;
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f26_164;
     f32 temp_f27_166;
@@ -21,6 +22,7 @@ f32 KDInput::RumblePlay3D(float arg0, float arg1, float arg2, MKVector3 *arg3, f
     f32 var_f26_154;
     f32 var_f4_89;
     f64 temp_f1_102;
+    f64 temp_f1_66;
     f64 temp_f1_92;
     f64 temp_f1_98;
     s32 temp_r3_121;
@@ -34,10 +36,10 @@ f32 KDInput::RumblePlay3D(float arg0, float arg1, float arg2, MKVector3 *arg3, f
         return -1.0f;
     }
     temp_r3_65 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
-    sp20 = M2C_FIELD(temp_r3_65, f64 *, 0x30);
+    temp_f1_66 = M2C_FIELD(temp_r3_65, f64 *, 0x30);
+    sp20 = temp_f1_66;
     sp28 = M2C_FIELD(temp_r3_65, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = temp_f1_66 - M2C_FIELD(arg3, f64 *, 0);
     sp30 = sp10;
     sp18 = (f32) sp28 - arg3->unk8;
     sp38 = (f64) sp18;

@@ -101,27 +101,30 @@ Tools_Ortho::Tools_Ortho() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: pointer/array required
 void Tools_CalculateVelocity(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, float arg3) {
     f64 sp48;
     f64 sp40;
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
+    f32 temp_f3_247;
     f32 temp_f6_245;
     f32 var_f6_179;
+    f64 temp_f0_161;
     f64 temp_f3_182;
     f64 temp_f3_188;
     f64 temp_f3_192;
     s32 temp_r6_211;
     s32 var_r0_221;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
-    sp40 = sp20;
+    temp_f0_161 = *M2C_ERROR(/* Read from unset register $r5 */) - M2C_FIELD(&arg1, f64 *, 0);
+    sp20 = temp_f0_161;
+    sp40 = temp_f0_161;
     sp28 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 8) - arg1.unk8;
     unksp44 = 0.0f;
     sp48 = (f64) sp28;
@@ -161,8 +164,9 @@ void Tools_CalculateVelocity(const MKVector3 &arg0, const MKVector3 &arg1, float
     }
     if (var_f6_179 > 0.0f) {
         temp_f6_245 = var_f6_179 / arg2;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f1 */);
-        sp18 = (f32) sp48 * (1.0f / temp_f6_245);
+        temp_f3_247 = 1.0f / temp_f6_245;
+        sp10 = sp40 * (f64) temp_f3_247;
+        sp18 = (f32) sp48 * temp_f3_247;
         sp30 = sp10;
         sp38 = (f64) sp18;
         unksp34 = -((0.5f * arg3 * temp_f6_245) - ((M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 4) - arg1.unk4) / temp_f6_245));
@@ -175,7 +179,7 @@ void Tools_CalculateVelocity(const MKVector3 &arg0, const MKVector3 &arg1, float
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp44'
 s32 Tools_GetPointDistanceFromLine(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float *arg3) {
     f32 sp58;
     f32 sp54;
@@ -185,7 +189,9 @@ s32 Tools_GetPointDistanceFromLine(const MKVector3 &arg0, const MKVector3 &arg1,
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f10_384;
@@ -199,6 +205,7 @@ s32 Tools_GetPointDistanceFromLine(const MKVector3 &arg0, const MKVector3 &arg1,
     f32 temp_f9_380;
     f32 var_f4_304;
     f32 var_f4_426;
+    f64 temp_f0_412;
     f64 temp_f1_307;
     f64 temp_f1_313;
     f64 temp_f1_317;
@@ -210,9 +217,7 @@ s32 Tools_GetPointDistanceFromLine(const MKVector3 &arg0, const MKVector3 &arg1,
     s32 var_r0_346;
     s32 var_r0_468;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp20 = M2C_FIELD(&arg2, f64 *, 0) - M2C_FIELD(&arg1, f64 *, 0);
     sp40 = sp20;
     sp28 = arg2.unk8 - arg1.unk8;
     sp48 = (f64) sp28;
@@ -268,10 +273,10 @@ s32 Tools_GetPointDistanceFromLine(const MKVector3 &arg0, const MKVector3 &arg1,
     sp50 = (temp_f2_394 * temp_f9_380) + temp_f7_373;
     sp54 = (temp_f2_394 * temp_f10_384) + temp_f6_377;
     sp58 = temp_f2_406;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_412 = (f64) M2C_FIELD(&arg0, f32 *, 0) - (f64) sp50;
+    sp10 = temp_f0_412;
     sp18 = temp_f11_385 - temp_f2_406;
-    sp30 = sp10;
+    sp30 = temp_f0_412;
     sp38 = (f64) sp18;
     var_f4_426 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
     if (var_f4_426 > 0.0f) {
@@ -346,10 +351,14 @@ void Tools_PushOut(MKCollisionResult *arg0, MKVector3 &arg1, int arg2, float arg
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f8_637;
+    f64 temp_f7_632;
     s32 var_ctr_564;
     s32 var_r11_552;
     s32 var_r12_557;
@@ -413,8 +422,8 @@ loop_3:
         sp90 = M2C_FIELD(&arg1, f64 *, 0);
         sp98 = M2C_FIELD(&arg1, f64 *, 8);
         DoPush(&spA0, arg1, var_r11_552, sp8, arg5);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f7, $f1, $f0 */);
+        temp_f7_632 = M2C_FIELD(&arg1, f64 *, 0) - sp90;
+        sp20 = temp_f7_632;
         temp_f8_637 = arg1.unk8 - (f32) sp98;
         sp40 = sp20;
         sp28 = temp_f8_637;
@@ -422,11 +431,12 @@ loop_3:
         sp50 = sp20;
         sp58 = (f64) sp28;
         if (!((((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44))) < (sp8 * sp8))) {
+            sp10 = temp_f7_632;
             sp18 = temp_f8_637;
             sp60 = sp10;
             sp68 = (f64) sp18;
             ClampMagnitude(sp70, sp8);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp30 = sp90 + M2C_BITWISE(f64, sp70);
             M2C_FIELD(&arg1, f64 *, 0) = sp30;
             sp38 = (f32) sp98 + sp70.unk8;
             sp80 = sp30;
@@ -462,11 +472,17 @@ void DoPush(PushOutResult *arg0, MKVector3 &arg1, int arg2, float &arg3, float a
     f64 sp98;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -474,8 +490,18 @@ void DoPush(PushOutResult *arg0, MKVector3 &arg1, int arg2, float &arg3, float a
     f32 temp_f0_782;
     f32 temp_f0_828;
     f32 temp_f23_732;
+    f32 temp_f24_1035;
+    f32 temp_f25_1010;
+    f32 temp_f26_985;
+    f32 temp_f27_848;
+    f32 temp_f28_823;
+    f32 temp_f2_785;
     f32 temp_f4_990;
     f32 temp_f6_856;
+    f64 temp_f0_805;
+    f64 temp_f0_965;
+    f64 temp_f4_831;
+    f64 temp_f7_804;
 
     sp10 = arg2;
     sp108 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -487,9 +513,7 @@ void DoPush(PushOutResult *arg0, MKVector3 &arg1, int arg2, float &arg3, float a
         sp110 = sp160.unk18;
         if (GetClosest(arg0, sp10, arg1, *((MKVector3 *) &sp108), arg3, temp_f23_732, sp180) != 0) {
 loop_3:
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r26, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp28 = sp160.unk10 + sp180.unk10;
             sp108 = sp28;
             sp30 = (f32) sp160.unk18 + (f32) sp180.unk18;
             spA8 = sp28;
@@ -497,25 +521,28 @@ loop_3:
             spB0 = (f64) sp30;
             temp_f0_782 = ((f32) sp110 * (f32) sp160.unk18) + (((f32) sp108 * (f32) sp160.unk10) + (unksp10C * unksp174));
             if (!(temp_f0_782 < 0.01f)) {
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                sp110 = (f32) sp110 * (1.0f / temp_f0_782);
+                temp_f2_785 = 1.0f / temp_f0_782;
+                sp108 *= (f64) temp_f2_785;
+                sp110 = (f32) sp110 * temp_f2_785;
                 if (GetClosest(arg0, sp10, arg1, *((MKVector3 *) &sp108), arg3, temp_f23_732, sp1A0) != 0) {
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f7, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f7 */);
-                    spF8 = sp78;
+                    temp_f7_804 = sp1A0.unk10;
+                    temp_f0_805 = sp160.unk10 + temp_f7_804;
+                    sp78 = temp_f0_805;
+                    spF8 = temp_f0_805;
                     sp80 = (f32) sp160.unk18 + (f32) sp1A0.unk18;
                     sp100 = (f64) sp80;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                    temp_f0_828 = (f32) sp100 * (1.0f / (((f32) sp100 * (f32) sp160.unk18) + (((f32) spF8 * (f32) sp160.unk10) + (unkspFC * unksp174))));
+                    temp_f28_823 = 1.0f / (((f32) sp100 * (f32) sp160.unk18) + (((f32) spF8 * (f32) sp160.unk10) + (unkspFC * unksp174)));
+                    spF8 = temp_f0_805 * (f64) temp_f28_823;
+                    temp_f0_828 = (f32) sp100 * temp_f28_823;
                     sp100 = temp_f0_828;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r31, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f4, $f4, $f7 */);
-                    spE8 = sp68;
+                    temp_f4_831 = sp180.unk10 + temp_f7_804;
+                    sp68 = temp_f4_831;
+                    spE8 = temp_f4_831;
                     sp70 = (f32) sp180.unk18 + (f32) sp1A0.unk18;
                     spF0 = (f64) sp70;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f4, $f4, $f27 */);
-                    temp_f6_856 = (f32) spF0 * (1.0f / (((f32) spF0 * (f32) sp180.unk18) + (((f32) spE8 * (f32) sp180.unk10) + (unkspEC * unksp194))));
+                    temp_f27_848 = 1.0f / (((f32) spF0 * (f32) sp180.unk18) + (((f32) spE8 * (f32) sp180.unk10) + (unkspEC * unksp194)));
+                    spE8 = temp_f4_831 * (f64) temp_f27_848;
+                    temp_f6_856 = (f32) spF0 * temp_f27_848;
                     spF0 = temp_f6_856;
                     if (((temp_f0_828 * (f32) sp180.unk18) + (((f32) spF8 * (f32) sp180.unk10) + (unkspFC * unksp194))) > 1.0f) {
                         sp180 = M2C_BITWISE(f64, sp1A0);
@@ -555,29 +582,29 @@ loop_3:
                     sp108 = (f64) sp18;
                     sp110 = (f64) sp20;
                     if (GetClosest(arg0, sp10, arg1, *((MKVector3 *) &sp108), arg3, temp_f23_732, sp1C0) != 0) {
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r26, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f1, $f1, $f0 */);
+                        temp_f0_965 = sp1C0.unk10;
+                        sp58 = sp160.unk10 + temp_f0_965;
                         spD8 = sp58;
                         sp60 = (f32) sp160.unk18 + (f32) sp1C0.unk18;
                         spE0 = (f64) sp60;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f26 */);
-                        temp_f4_990 = (f32) spE0 * (1.0f / (((f32) spE0 * (f32) sp160.unk18) + (((f32) spD8 * (f32) sp160.unk10) + (unkspDC * unksp174))));
+                        temp_f26_985 = 1.0f / (((f32) spE0 * (f32) sp160.unk18) + (((f32) spD8 * (f32) sp160.unk10) + (unkspDC * unksp174)));
+                        spD8 *= (f64) temp_f26_985;
+                        temp_f4_990 = (f32) spE0 * temp_f26_985;
                         spE0 = temp_f4_990;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f1, $f1, $f0 */);
+                        sp48 = sp180.unk10 + temp_f0_965;
                         spC8 = sp48;
                         sp50 = (f32) sp180.unk18 + (f32) sp1C0.unk18;
                         spD0 = (f64) sp50;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f7, $f7, $f25 */);
-                        spD0 = (f32) spD0 * (1.0f / (((f32) spD0 * (f32) sp180.unk18) + (((f32) spC8 * (f32) sp180.unk10) + (unkspCC * unksp194))));
-                        M2C_ERROR(/* unknown instruction: psq_lx $f7, $zero, $r29, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f7, $f0 */);
+                        temp_f25_1010 = 1.0f / (((f32) spD0 * (f32) sp180.unk18) + (((f32) spC8 * (f32) sp180.unk10) + (unkspCC * unksp194)));
+                        spC8 *= (f64) temp_f25_1010;
+                        spD0 = (f32) spD0 * temp_f25_1010;
+                        sp38 = sp1A0.unk10 + temp_f0_965;
                         spB8 = sp38;
                         sp40 = (f32) sp1A0.unk18 + (f32) sp1C0.unk18;
                         spC0 = (f64) sp40;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f6, $f6, $f24 */);
-                        spC0 = (f32) spC0 * (1.0f / (((f32) spC0 * (f32) sp1A0.unk18) + (((f32) spB8 * (f32) sp1A0.unk10) + (unkspBC * unksp1B4))));
+                        temp_f24_1035 = 1.0f / (((f32) spC0 * (f32) sp1A0.unk18) + (((f32) spB8 * (f32) sp1A0.unk10) + (unkspBC * unksp1B4)));
+                        spB8 *= (f64) temp_f24_1035;
+                        spC0 = (f32) spC0 * temp_f24_1035;
                         if ((((temp_f4_990 * (f32) sp180.unk18) + (((f32) spD8 * (f32) sp180.unk10) + (unkspDC * unksp194))) > 1.0f) && (((temp_f4_990 * (f32) sp1A0.unk18) + (((f32) spD8 * (f32) sp1A0.unk10) + (unkspDC * unksp1B4))) > 1.0f)) {
                             sp180 = M2C_BITWISE(f64, sp1C0);
                             sp180.unk8 = sp1C0.unk8;
@@ -618,7 +645,9 @@ u8 GetClosest(PushOutResult *arg0, int &arg1, MKVector3 &arg2, const MKVector3 &
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     PushOutResult *temp_r4_1252;
     PushOutResult *temp_r6_1239;
     f32 temp_f10_1179;
@@ -627,6 +656,8 @@ u8 GetClosest(PushOutResult *arg0, int &arg1, MKVector3 &arg2, const MKVector3 &
     f32 temp_f12_1188;
     f32 temp_f2_1202;
     f32 var_f0_1162;
+    f64 temp_f1_1216;
+    f64 temp_f2_1174;
     s32 temp_r0_1161;
     s32 temp_r5_1249;
     s32 var_ctr_1167;
@@ -643,18 +674,17 @@ u8 GetClosest(PushOutResult *arg0, int &arg1, MKVector3 &arg2, const MKVector3 &
     var_ctr_1167 = temp_r0_1161;
     if (temp_r0_1161 > 0) {
         do {
-            M2C_ERROR(/* unknown instruction: psq_lx $f7, $zero, $r5, 0x0, qr0 */);
             temp_r10_1172 = arg0 + var_r9_1160;
-            M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r10, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f2, $f7, $f2 */);
+            temp_f2_1174 = M2C_FIELD(&arg2, f64 *, 0) - M2C_FIELD(temp_r10_1172, f64 *, 0);
+            sp18 = temp_f2_1174;
             temp_f10_1179 = M2C_FIELD(temp_r10_1172, f32 *, 0x14);
-            sp38 = sp18;
+            sp38 = temp_f2_1174;
             temp_f11_1183 = M2C_FIELD(temp_r10_1172, f32 *, 0x10);
             sp20 = arg2.unk8 - M2C_FIELD(temp_r10_1172, f32 *, 8);
             temp_f12_1188 = M2C_FIELD(temp_r10_1172, f32 *, 0x18);
             sp40 = (f64) sp20;
             temp_f10_1196 = 1.0f - ((arg3.unk8 * temp_f12_1188) + ((arg3.unk0 * temp_f11_1183) + (arg3.unk4 * temp_f10_1179)));
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
             if (temp_f10_1196 != 0.01f) {
                 temp_f2_1202 = ((((f32) sp40 * temp_f12_1188) + (((f32) sp38 * temp_f11_1183) + (unksp3C * temp_f10_1179))) - &arg4) / temp_f10_1196;
                 if (temp_f2_1202 < var_f0_1162) {
@@ -668,14 +698,12 @@ u8 GetClosest(PushOutResult *arg0, int &arg1, MKVector3 &arg2, const MKVector3 &
         } while (var_ctr_1167 != 0);
     }
     &arg4 += var_f0_1162;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r6, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-    sp28 = sp8;
+    temp_f1_1216 = (f64) M2C_FIELD(&arg3, f32 *, 0) * (f64) var_f0_1162;
+    sp8 = temp_f1_1216;
+    sp28 = temp_f1_1216;
     sp10 = arg3.unk8 * var_f0_1162;
     sp30 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r5, 0x0, qr0 */);
+    M2C_FIELD(&arg2, f64 *, 0) = (f64) (M2C_FIELD(&arg2, f64 *, 0) + sp28);
     arg2.unk8 += (f32) sp30;
     if (var_r11_1156 == -1) {
         return 0U;
@@ -920,6 +948,7 @@ f32 Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, int
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 temp_f0_1889;
@@ -928,6 +957,7 @@ f32 Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, int
     f32 var_f27_1847;
     f32 var_f29_1853;
     f32 var_f30_1851;
+    f64 temp_f0_1873;
 
     M2C_STRUCT_COPY((s32) &sp5C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     var_f27_1847 = 0.0f;
@@ -942,9 +972,9 @@ loop_4:
         sp38.GetNextPositionFast(temp_f26_1859, (Matrix *) arg0, &sp60, &sp14);
         sp38.unk10 = M2C_BITWISE(f64, sp38);
         sp50 = (f64) sp38.unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp28 = sp18;
+        temp_f0_1873 = M2C_BITWISE(f64, sp38.unk10) - M2C_FIELD(&arg1, f64 *, 0);
+        sp18 = temp_f0_1873;
+        sp28 = temp_f0_1873;
         sp20 = (f32) sp50 - temp_f23_1855;
         sp30 = (f64) sp20;
         temp_f0_1889 = ((f32) sp30 * (f32) sp30) + (((f32) sp28 * (f32) sp28) + (unksp2C * unksp2C));
@@ -997,8 +1027,7 @@ s32 Tools_Line2DToCircleIntersect(const MKVector3 &arg0, const MKVector3 &arg1, 
     sp20 = (f64) sp10;
     sp28 = (f64) sp18;
     temp_f5_2020 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f5_2020 == temp_f6_1999) {
+    if (temp_f5_2020 <= temp_f6_1999) {
         &arg4 = 0.0f;
         return 1;
     }
@@ -1057,6 +1086,7 @@ void Tools_GetClosestPtOnLine2D(const MKVector3 &arg0, const MKVector3 &arg1, co
     f64 sp48;
     MKVector3 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -1067,6 +1097,7 @@ void Tools_GetClosestPtOnLine2D(const MKVector3 &arg0, const MKVector3 &arg1, co
     f32 temp_f4_2122;
     f32 temp_f4_2155;
     f32 temp_f5_2133;
+    f64 temp_f0_2196;
 
     temp_f4_2122 = arg1.unk0;
     sp8 = arg2.unk0 - temp_f4_2122;
@@ -1098,9 +1129,9 @@ void Tools_GetClosestPtOnLine2D(const MKVector3 &arg0, const MKVector3 &arg1, co
         return;
     }
     __ml(temp_f1_2173, sp38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(&arg0, f64 *, 0) = sp28;
+    temp_f0_2196 = (f64) M2C_FIELD(&arg1, f32 *, 0) + M2C_BITWISE(f64, sp38);
+    sp28 = temp_f0_2196;
+    M2C_FIELD(&arg0, f64 *, 0) = temp_f0_2196;
     sp30 = arg1.unk8 + sp38.unk8;
     M2C_FIELD(&arg0, f64 *, 8) = (f64) sp30;
 }
@@ -1167,7 +1198,7 @@ s32 Tools_Line2DToLine2DIntersect(const MKVector3 &arg0, const MKVector3 &arg1, 
     return 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void Tools_UpdateSphereCollideResults(MKCollisionResult *arg0, int arg1, const MKVector3 &arg2) {
     f64 sp40;
     f64 sp38;
@@ -1175,7 +1206,9 @@ void Tools_UpdateSphereCollideResults(MKCollisionResult *arg0, int arg1, const M
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f30_2332;
+    f64 temp_f0_2342;
     f64 temp_f5_2354;
     s32 var_r29_2335;
     s32 var_r31_2336;
@@ -1186,11 +1219,10 @@ void Tools_UpdateSphereCollideResults(MKCollisionResult *arg0, int arg1, const M
     var_r31_2336 = 0;
 loop_4:
     if (var_r29_2335 < arg1) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
         temp_r30_2340 = arg0 + var_r31_2336;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp18 = sp8;
+        temp_f0_2342 = M2C_FIELD(&arg2, f64 *, 0) - M2C_FIELD(temp_r30_2340, f64 *, 0);
+        sp8 = temp_f0_2342;
+        sp18 = temp_f0_2342;
         sp10 = temp_f30_2332 - M2C_FIELD(temp_r30_2340, f32 *, 8);
         sp20 = (f64) sp10;
         Normalise(sp28);
@@ -1338,7 +1370,7 @@ s32 Tools_GetFloor(const MKVector3 &arg0, float arg1, float *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: undefined identifier 'unksp5C'
 f32 Tools_CylinderTest(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector3 &arg3) {
     f64 sp60;
     f64 sp58;
@@ -1349,15 +1381,17 @@ f32 Tools_CylinderTest(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f10_2588;
     f32 temp_f1_2621;
     f32 temp_f7_2603;
     f32 var_f1_2637;
+    f64 temp_f3_2584;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
+    temp_f3_2584 = M2C_FIELD(&arg0, f64 *, 0);
+    sp18 = M2C_FIELD(&arg1, f64 *, 0) - temp_f3_2584;
     temp_f10_2588 = arg0.unk8;
     sp58 = sp18;
     sp20 = arg1.unk8 - temp_f10_2588;
@@ -1365,16 +1399,14 @@ f32 Tools_CylinderTest(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
     sp38 = sp18;
     sp40 = (f64) sp20;
     temp_f7_2603 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C));
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
+    sp8 = M2C_FIELD(&arg3, f64 *, 0) - temp_f3_2584;
     sp48 = sp8;
     sp10 = arg3.unk8 - temp_f10_2588;
     sp50 = (f64) sp10;
     sp28 = sp8;
     temp_f1_2621 = ((f32) sp60 * (f32) sp50) + (((f32) sp58 * (f32) sp48) + (unksp5C * unksp4C));
     sp30 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((temp_f1_2621 == 0.0f) || (temp_f1_2621 > temp_f7_2603)) {
+    if ((temp_f1_2621 <= 0.0f) || (temp_f1_2621 > temp_f7_2603)) {
         return -1.0f;
     }
     var_f1_2637 = (((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) - ((temp_f1_2621 * temp_f1_2621) / temp_f7_2603);

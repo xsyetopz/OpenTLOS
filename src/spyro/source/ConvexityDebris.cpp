@@ -120,15 +120,17 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: illegal explicit conversion from 'KDSpline' to
 void ConvexityDebris::Draw() {
     Matrix sp50;
     f64 sp40;
     KDSpline sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     MKHeap *temp_r31_248;
     MKHeap *var_r30_190;
+    f64 temp_f0_218;
 
     if ((s32) this->unk64 != 0) {
         var_r30_190 = this->unk4C;
@@ -141,10 +143,10 @@ loop_3:
                 sp50.Scale3x3(&sp50, temp_r31_248->unk6C);
                 sp10 = this->unk68 + M2C_BITWISE(f32, temp_r31_248->unk68);
                 sp28.GetMeasure(Clamp<float>(0.0f, sp10, 1.0f), (Matrix *) &this->unk50);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                temp_f0_218 = M2C_BITWISE(f64, sp28) + M2C_FIELD(temp_r31_248, f64 *, 0x48);
+                sp18 = temp_f0_218;
                 sp50.unk3C = 1.0f;
-                sp28.unk10 = sp18;
+                sp28.unk10 = temp_f0_218;
                 sp20 = sp28.unk8 + M2C_BITWISE(f32, temp_r31_248->unk50);
                 sp40 = (f64) sp20;
                 sp50.unk30 = M2C_BITWISE(f32, sp28.unk10);
@@ -166,6 +168,7 @@ void ConvexityDebris::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     s32 sp8;
     MKHeap *temp_r31_405;
     MKHeap *temp_r3_311;
@@ -175,6 +178,7 @@ void ConvexityDebris::Update() {
     f32 temp_f1_396;
     f32 var_f0_328;
     f32 var_f2_386;
+    f64 temp_f0_351;
     s32 temp_r0_315;
 
     var_r30_293 = this->unk4C;
@@ -212,20 +216,17 @@ loop_22:
         if (var_r30_344 != NULL) {
             temp_r31_405 = var_r30_344->unk0;
             if (temp_r31_405 != NULL) {
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                sp20 = sp10;
+                temp_f0_351 = M2C_FIELD(temp_r31_405, f64 *, 0x28) * (f64) gUpdateTimeDelta;
+                sp10 = temp_f0_351;
+                sp20 = temp_f0_351;
                 sp18 = M2C_FIELD(temp_r31_405, f32 *, 0x30) * gUpdateTimeDelta;
                 sp28 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+                M2C_FIELD(temp_r31_405, f64 *, 0x38) = (f64) (M2C_FIELD(temp_r31_405, f64 *, 0x38) + temp_f0_351);
                 temp_r31_405->unk40 = M2C_BITWISE(f32, temp_r31_405->unk40) + (f32) sp28;
                 MKModel_GetPosition((MKModel *) temp_r31_405->unk70);
                 M2C_FIELD(temp_r31_405, f64 *, 0x58) = (f64) *M2C_ERROR(/* Read from unset register $r3 */);
                 M2C_FIELD(temp_r31_405, f64 *, 0x60) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f64 *, 8);
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if ((this->unk68 + M2C_BITWISE(f32, temp_r31_405->unk68)) == 1.0f) {
+                if ((this->unk68 + M2C_BITWISE(f32, temp_r31_405->unk68)) >= 1.0f) {
                     var_f2_386 = 0.5f * (3.0f * gUpdateTimeDelta);
                     if (var_f2_386 < 1.0f) {
 
@@ -240,8 +241,7 @@ loop_22:
                 goto loop_22;
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk68 == 1.0f) {
+        if (this->unk68 >= 1.0f) {
             this->unk64 = 0;
         }
     }
@@ -266,8 +266,11 @@ void ConvexityDebris::LoadDone() {
     MKVector3 sp48;
     M2C_UNK sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKHeap *temp_r30_469;
     MKHeap *temp_r3_467;
     f32 temp_f28_463;
@@ -292,8 +295,7 @@ loop_4:
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, -1.0f, -1.0f);
             KDRand_Vector(spD8, spC8);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            sp28 = spD8 * 5.370091495e-315;
             M2C_FIELD(temp_r30_469, f64 *, 0x38) = sp28;
             sp30 = spD8.unk8 * 6.2831855f;
             spE8 = sp28;
@@ -302,8 +304,7 @@ loop_4:
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, -1.0f, -1.0f);
             KDRand_Vector(sp98, sp88);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+            sp18 = sp98 * 5.328646264e-315;
             M2C_FIELD(temp_r30_469, f64 *, 0x28) = sp18;
             sp20 = sp98.unk8 * 3.1415927f;
             spA8 = sp18;
@@ -313,8 +314,7 @@ loop_4:
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, -1.0f, -1.0f);
             KDRand_Vector(sp58, sp48);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp8 = sp58 * (f64) temp_f31_533;
             M2C_FIELD(temp_r30_469, f64 *, 0x48) = sp8;
             sp10 = sp58.unk8 * temp_f31_533;
             sp68 = sp8;

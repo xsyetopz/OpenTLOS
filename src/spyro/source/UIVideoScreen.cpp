@@ -224,17 +224,8 @@ block_69:
     temp_r3_341 = this->unkE4;
     if (temp_r3_341 != NULL) {
         temp_f1_344 = GameVideo_GetRemainingTime(temp_r3_341);
-        if ((u8) M2C_FIELD(this, u8 *, 0xF5) != 0) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_BITWISE(f32, this->unkE0) == M2C_BITWISE(f32, this->unkE4)) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (temp_f1_344 == 0.0f) {
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if ((temp_f1_344 == 0.5f) && ((u8) M2C_FIELD(this, u8 *, 0xFB) == 0)) {
-                        this->unkBC.unk4.Send();
-                    }
-                }
-            }
+        if (((u8) M2C_FIELD(this, u8 *, 0xF5) != 0) && (M2C_BITWISE(f32, this->unkE0) <= M2C_BITWISE(f32, this->unkE4)) && (temp_f1_344 >= 0.0f) && (temp_f1_344 <= 0.5f) && ((u8) M2C_FIELD(this, u8 *, 0xFB) == 0)) {
+            this->unkBC.unk4.Send();
         }
         if ((GameVideo_Update(this->unkE4) == 0) && (((u8) M2C_FIELD(this, u8 *, 0xF5) == 0) || (M2C_BITWISE(f32, this->unkE0) != 1.0f))) {
             this->unkBC.unk4.Send();

@@ -1564,6 +1564,7 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     Character *temp_r4_3227;
     Character *temp_r4_3233;
@@ -1571,6 +1572,7 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
     f32 var_f1_3366;
     f32 var_f3_3351;
     f32 var_f4_3284;
+    f64 temp_f1_3257;
     f64 temp_f1_3290;
     f64 temp_f1_3296;
     f64 temp_f1_3300;
@@ -1593,11 +1595,12 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
         if (temp_ret_3245 != 0) {
             temp_r5_3254 = M2C_FIELD(checked_cast<MKProp *, MKProp>(this->unkC->unkA84->unk3C->PropResolver_Resolve((s32) (u32) temp_ret_3245)), void **, 8);
             temp_r3_3255 = this->unkC->unk8;
+            temp_f1_3257 = M2C_FIELD(temp_r3_3255, f64 *, 0x30);
             sp20 = M2C_FIELD(temp_r5_3254, f64 *, 0x30);
-            sp30 = M2C_FIELD(temp_r3_3255, f64 *, 0x30);
+            sp30 = temp_f1_3257;
             sp28 = M2C_FIELD(temp_r5_3254, f64 *, 0x38);
             sp38 = M2C_FIELD(temp_r3_3255, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp10 = temp_f1_3257 - sp20;
             sp40 = sp10;
             sp18 = (f32) sp38 - (f32) sp28;
             sp48 = (f64) sp18;
@@ -2098,6 +2101,7 @@ u8 EnemyGoal_FollowGraph::Update() {
     f64 sp40;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -2155,6 +2159,7 @@ u8 EnemyGoal_FollowGraph::Update() {
     f32 temp_f31_4365;
     f32 var_f31_4781;
     f32 var_f31_4791;
+    f64 temp_f0_4758;
     f64 temp_f1_4745;
     s32 temp_r0_4449;
     s32 temp_r0_4519;
@@ -2239,7 +2244,7 @@ block_19:
         this->unk8 = 0;
         return this->unk8;
     }
-    if ((((u8) this->unk95 >> 7U) & 1) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk20) != 0)) && (IsPresent(0) != 0)) {
+    if ((((u8) this->unk95 >> 7U) & 1) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk20) && (IsPresent(0) != 0)) {
         if ((s32) this->unk14 > 0) {
             this->unk18 += 1;
             temp_r0_4449 = this->unk18;
@@ -2363,16 +2368,16 @@ block_19:
             M2C_FIELD(temp_r4_4742->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *, void *, f64), 0x30)(&sp50, temp_r4_4742, temp_r5_4743, temp_f1_4745);
             spB0 = sp50;
             spB8 = sp58;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_f0_4758 = spC0 - spB0;
+            sp20 = temp_f0_4758;
             temp_r3_4760 = this->unkC;
-            spA0 = sp20;
+            spA0 = temp_f0_4758;
             sp28 = (f32) spC8 - (f32) spB8;
             spA8 = (f64) sp28;
             if (!(((u8) M2C_FIELD(temp_r3_4760->unk638, u8 *, 0x464) >> 5U) & 1)) {
                 unkspA4 = 0.0f;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r3_4760->unk694 == 0.0f) {
+            if (temp_r3_4760->unk694 <= 0.0f) {
                 var_f31_4781 = 1.0f;
             } else {
                 var_f31_4781 = 3.0f;
@@ -3573,6 +3578,7 @@ void EnemyGoal_GraphJump::Terminate() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -3641,7 +3647,7 @@ void EnemyGoal_GraphJump::Terminate() {
     sp50.GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
     sp14 = 0.0f;
     sp50.unk10.GetMeasure(1.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp20 = M2C_BITWISE(f64, sp50.unk10) - M2C_BITWISE(f64, sp50);
     this->unk20 = sp20;
     sp28 = sp68 - sp50.unk8;
     sp70 = sp20;
@@ -3761,7 +3767,9 @@ u8 EnemyGoal_GraphJump::Update() {
     f32 spF4;
     f32 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
     f32 spC4;
     f32 spC0;
@@ -3884,7 +3892,7 @@ u8 EnemyGoal_GraphJump::Update() {
                 sp1E0.GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
                 sp1C = 0.0f;
                 sp1E0.unk10.GetMeasure(1.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                spD0 = M2C_BITWISE(f64, sp1E0.unk10) - M2C_BITWISE(f64, sp1E0);
                 this->unk20 = spD0;
                 spD8 = sp1F8 - sp1E0.unk8;
                 sp200 = spD0;
@@ -4070,8 +4078,7 @@ u8 EnemyGoal_GraphJump::Update() {
                     sp160.GetMeasure(var_f1_7979, (Matrix *) &this->unk30, KDSpline_PositionMixer);
                     sp210.unk10 = sp160;
                     sp228 = sp168;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    spE0 = M2C_BITWISE(f64, sp210.unk10) - this->unk10;
                     sp150 = spE0;
                     spE8 = (f32) sp228 - (f32) M2C_FIELD(this, f64 *, 0x18);
                     sp158 = (f64) spE8;
@@ -4136,8 +4143,7 @@ u8 EnemyGoal_GraphJump::Update() {
                     }
                 }
                 temp_f3_8141 = this->unk44;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (temp_f3_8141 == 1.0f) {
+                if (temp_f3_8141 >= 1.0f) {
                     sp50 = -sp280;
                     sp54 = -sp280.unk4;
                     sp58 = -sp280.unk8;
@@ -4193,7 +4199,7 @@ void EnemyGoal_GraphJump::Activate() {
     MKProp sp270;
     f64 sp268;
     f64 sp260;
-    M2C_UNK sp250;
+    f64 sp250;
     f64 sp248;
     f64 sp240;
     f64 sp238;
@@ -4233,6 +4239,7 @@ void EnemyGoal_GraphJump::Activate() {
     f64 spF0;
     f32 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
     f32 spC4;
     f32 spC0;
@@ -4240,7 +4247,9 @@ void EnemyGoal_GraphJump::Activate() {
     f32 spB4;
     f32 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
@@ -4319,8 +4328,7 @@ void EnemyGoal_GraphJump::Activate() {
     sp270.GetPos();
     temp_r4_8261 = this->unkC->unkA80;
     M2C_FIELD(temp_r4_8261->__vptr, M2C_UNK (**)(s32 *, CharacterGraphNode *), 0x30)(&sp270.unk10, temp_r4_8261);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    spA0 = sp270.unk10 - M2C_BITWISE(f64, sp270);
     var_f5_8275 = 0.0f;
     sp2D0 = spA0;
     spA8 = M2C_BITWISE(f32, sp270.unk18) - M2C_BITWISE(f32, sp270.unk8);
@@ -4380,9 +4388,8 @@ void EnemyGoal_GraphJump::Activate() {
     temp_f1_8382 = M2C_FIELD(temp_r5_8380, f64 *, 0x30);
     sp240 = temp_f1_8382;
     sp248 = M2C_FIELD(temp_r5_8380, f64 *, 0x38);
-    M2C_FIELD(temp_r4_8381->__vptr, M2C_UNK (**)(M2C_UNK *, CharacterGraphNode *, void *, f64, f64, f32), 0x30)(&sp250, temp_r4_8381, temp_r5_8380, temp_f1_8382, (f64) sp2D0, temp_f3_8362);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    M2C_FIELD(temp_r4_8381->__vptr, M2C_UNK (**)(f64 *, CharacterGraphNode *, void *, f64, f64, f32), 0x30)(&sp250, temp_r4_8381, temp_r5_8380, temp_f1_8382, (f64) sp2D0, temp_f3_8362);
+    spD0 = sp250 - sp240;
     sp260 = spD0;
     spD8 = sp258 - (f32) sp248;
     sp268 = (f64) spD8;
@@ -4466,7 +4473,7 @@ void EnemyGoal_GraphJump::Activate() {
     sp160.GetMeasure(0.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
     sp18 = 0.0f;
     sp160.unk10.GetMeasure(1.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp90 = M2C_BITWISE(f64, sp160.unk10) - M2C_BITWISE(f64, sp160);
     sp2D0 = sp90;
     sp98 = sp178 - sp160.unk8;
     sp2D8 = (f64) sp98;
@@ -4681,19 +4688,19 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     M2C_UNK sp180;
     f64 sp170;
     M2C_UNK sp160;
-    M2C_UNK sp150;
+    f64 sp150;
     f64 sp148;
     f64 sp140;
     f64 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
-    M2C_UNK sp110;
+    f64 sp110;
     f64 sp108;
     f64 sp100;
     f64 spF8;
     f64 spF0;
-    M2C_UNK spE0;
+    f64 spE0;
     f64 spD8;
     f64 spD0;
     f64 spC8;
@@ -4701,17 +4708,23 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     f64 spB8;
     f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp24;
@@ -4757,9 +4770,12 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     f32 temp_f1_9745;
     f32 temp_f1_9944;
     f32 temp_f2_10046;
+    f32 temp_f2_10276;
     f32 temp_f2_10311;
+    f32 temp_f2_10434;
     f32 temp_f2_9480;
     f32 temp_f2_9785;
+    f32 temp_f2_9920;
     f32 temp_f30_9506;
     f32 temp_f30_9661;
     f32 temp_f30_9681;
@@ -4835,8 +4851,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     temp_r4_9500 = this->unk10;
     temp_f30_9506 = this->unk28 / M2C_FIELD(temp_r4_9500, f32 *, 0x38);
     sp20 = 0.0f;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f30_9506 == 1.0f) {
+    if (temp_f30_9506 <= 1.0f) {
         var_f1_9512 = temp_f30_9506;
     } else {
         var_f1_9512 = temp_f30_9506 - 1.0f;
@@ -4844,7 +4859,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     sp1C0.GetMeasure(var_f1_9512, temp_r4_9500 + 0x30, KDSpline_PositionMixer);
     sp220 = M2C_BITWISE(f64, sp1C0);
     sp228 = (f64) sp1C0.unk8;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if (temp_f30_9506 == 1.0f) {
         var_f1_9530 = temp_f30_9506;
     } else {
@@ -4922,8 +4937,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                 M2C_FIELD(temp_r3_9694, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_9694, u8 *, 0x464) & ~0x80);
                 this->unkC->unk638->ObstacleAvoidanceOff();
                 var_f30_9705 = this->unk28 / M2C_FIELD(this->unk10, f32 *, 0x38);
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (var_f30_9705 == 1.0f) {
+                if (var_f30_9705 <= 1.0f) {
 
                 } else {
                     var_f30_9705 -= (f32) (s32) var_f30_9705;
@@ -4963,7 +4977,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                     var_f1_9821 = var_f2_9753;
                 }
                 sp150.GetMeasure(var_f1_9821, this->unk10 + 0x30, KDSpline_PositionMixer);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                spA0 = sp150 - sp220;
                 sp140 = spA0;
                 spA8 = sp158 - (f32) sp228;
                 sp210 = spA0;
@@ -4997,10 +5011,11 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                 temp_r3_9911 = this->unkC;
                 M2C_FIELD(temp_r3_9911, f64 *, 0x588) = sp220;
                 M2C_FIELD(temp_r3_9911, f64 *, 0x590) = sp228;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                temp_f2_9920 = 0.01f * (1.0f / gUpdateTimeDelta);
+                sp60 = sp210 * (f64) temp_f2_9920;
                 temp_r3_9928 = this->unkC;
                 sp120 = sp60;
-                sp68 = (f32) sp218 * (0.01f * (1.0f / gUpdateTimeDelta));
+                sp68 = (f32) sp218 * temp_f2_9920;
                 M2C_FIELD(temp_r3_9928, f64 *, 0x598) = sp60;
                 sp128 = (f64) sp68;
                 M2C_FIELD(temp_r3_9928, f64 *, 0x5A0) = (f64) sp68;
@@ -5065,7 +5080,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                 var_f1_10070 = var_f2_10055;
             }
             sp110.GetMeasure(var_f1_10070, this->unk10 + 0x30, KDSpline_PositionMixer);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp90 = sp110 - sp220;
             sp100 = sp90;
             sp98 = sp118 - (f32) sp228;
             sp200 = sp90;
@@ -5144,10 +5159,11 @@ u8 EnemyGoal_GraphGlidePath::Update() {
             temp_r3_10267 = this->unkC;
             M2C_FIELD(temp_r3_10267, f64 *, 0x588) = sp220;
             M2C_FIELD(temp_r3_10267, f64 *, 0x590) = sp228;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            temp_f2_10276 = 0.01f * (1.0f / gUpdateTimeDelta);
+            sp50 = sp200 * (f64) temp_f2_10276;
             temp_r3_10285 = this->unkC;
             spF0 = sp50;
-            sp58 = (f32) sp208 * (0.01f * (1.0f / gUpdateTimeDelta));
+            sp58 = (f32) sp208 * temp_f2_10276;
             M2C_FIELD(temp_r3_10285, f64 *, 0x598) = sp50;
             M2C_FIELD(temp_r3_10285, f64 *, 0x5A0) = (f64) sp58;
             spF8 = (f64) sp58;
@@ -5171,7 +5187,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
         var_f1_10335 = var_f2_10320;
     }
     spE0.GetMeasure(var_f1_10335, this->unk10 + 0x30, KDSpline_PositionMixer);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp80 = spE0 - sp220;
     spD0 = sp80;
     sp88 = spE8 - (f32) sp228;
     sp1C0.unk10 = sp80;
@@ -5205,10 +5221,11 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     temp_r3_10425 = this->unkC;
     M2C_FIELD(temp_r3_10425, f64 *, 0x588) = sp220;
     M2C_FIELD(temp_r3_10425, f64 *, 0x590) = sp228;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    temp_f2_10434 = 0.01f * (1.0f / gUpdateTimeDelta);
+    sp30 = M2C_BITWISE(f64, sp1C0.unk10) * (f64) temp_f2_10434;
     temp_r3_10442 = this->unkC;
     spB0 = sp30;
-    sp38 = (f32) sp1D8 * (0.01f * (1.0f / gUpdateTimeDelta));
+    sp38 = (f32) sp1D8 * temp_f2_10434;
     M2C_FIELD(temp_r3_10442, f64 *, 0x598) = sp30;
     spB8 = (f64) sp38;
     M2C_FIELD(temp_r3_10442, f64 *, 0x5A0) = (f64) sp38;
@@ -5349,19 +5366,19 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     M2C_UNK sp180;
     f64 sp170;
     M2C_UNK sp160;
-    M2C_UNK sp150;
+    f64 sp150;
     f64 sp148;
     f64 sp140;
     f64 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
-    M2C_UNK sp110;
+    f64 sp110;
     f64 sp108;
     f64 sp100;
     f64 spF8;
     f64 spF0;
-    M2C_UNK spE0;
+    f64 spE0;
     f64 spD8;
     f64 spD0;
     f64 spC8;
@@ -5369,17 +5386,23 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     f64 spB8;
     f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp24;
@@ -5416,8 +5439,11 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     f32 temp_f1_11094;
     f32 temp_f2_10689;
     f32 temp_f2_10937;
+    f32 temp_f2_11070;
     f32 temp_f2_11196;
+    f32 temp_f2_11424;
     f32 temp_f2_11459;
+    f32 temp_f2_11580;
     f32 temp_f30_10713;
     f32 temp_f30_10815;
     f32 temp_f30_10835;
@@ -5469,8 +5495,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     temp_r4_10707 = this->unk10;
     temp_f30_10713 = this->unk28 / M2C_FIELD(temp_r4_10707, f32 *, 0x38);
     sp20 = 0.0f;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f30_10713 == 1.0f) {
+    if (temp_f30_10713 <= 1.0f) {
         var_f1_10719 = temp_f30_10713;
     } else {
         var_f1_10719 = temp_f30_10713 - (f32) (s32) temp_f30_10713;
@@ -5478,7 +5503,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     sp1C0.GetMeasure(var_f1_10719, temp_r4_10707 + 0x30, KDSpline_PositionMixer);
     sp220 = M2C_BITWISE(f64, sp1C0);
     sp228 = (f64) sp1C0.unk8;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if (temp_f30_10713 == 1.0f) {
         var_f1_10747 = temp_f30_10713;
     } else {
@@ -5519,8 +5544,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                 M2C_FIELD(temp_r3_10848, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_10848, u8 *, 0x464) & ~0x80);
                 this->unkC->unk638->ObstacleAvoidanceOff();
                 var_f30_10859 = this->unk28 / M2C_FIELD(this->unk10, f32 *, 0x38);
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (var_f30_10859 == 1.0f) {
+                if (var_f30_10859 <= 1.0f) {
 
                 } else {
                     var_f30_10859 -= (f32) (s32) var_f30_10859;
@@ -5560,7 +5584,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                     var_f1_10971 = var_f2_10907;
                 }
                 sp150.GetMeasure(var_f1_10971, this->unk10 + 0x30, KDSpline_PositionMixer);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                spA0 = sp150 - sp220;
                 sp140 = spA0;
                 spA8 = sp158 - (f32) sp228;
                 sp210 = spA0;
@@ -5594,10 +5618,11 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                 temp_r3_11061 = this->unkC;
                 M2C_FIELD(temp_r3_11061, f64 *, 0x588) = sp220;
                 M2C_FIELD(temp_r3_11061, f64 *, 0x590) = sp228;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                temp_f2_11070 = 0.01f * (1.0f / gUpdateTimeDelta);
+                sp60 = sp210 * (f64) temp_f2_11070;
                 temp_r3_11078 = this->unkC;
                 sp120 = sp60;
-                sp68 = (f32) sp218 * (0.01f * (1.0f / gUpdateTimeDelta));
+                sp68 = (f32) sp218 * temp_f2_11070;
                 M2C_FIELD(temp_r3_11078, f64 *, 0x598) = sp60;
                 sp128 = (f64) sp68;
                 M2C_FIELD(temp_r3_11078, f64 *, 0x5A0) = (f64) sp68;
@@ -5662,7 +5687,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                 var_f1_11218 = var_f2_11205;
             }
             sp110.GetMeasure(var_f1_11218, this->unk10 + 0x30, KDSpline_PositionMixer);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp90 = sp110 - sp220;
             sp100 = sp90;
             sp98 = sp118 - (f32) sp228;
             sp200 = sp90;
@@ -5741,10 +5766,11 @@ u8 EnemyGoal_GraphFlyPath::Update() {
             temp_r3_11415 = this->unkC;
             M2C_FIELD(temp_r3_11415, f64 *, 0x588) = sp220;
             M2C_FIELD(temp_r3_11415, f64 *, 0x590) = sp228;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            temp_f2_11424 = 0.01f * (1.0f / gUpdateTimeDelta);
+            sp50 = sp200 * (f64) temp_f2_11424;
             temp_r3_11433 = this->unkC;
             spF0 = sp50;
-            sp58 = (f32) sp208 * (0.01f * (1.0f / gUpdateTimeDelta));
+            sp58 = (f32) sp208 * temp_f2_11424;
             M2C_FIELD(temp_r3_11433, f64 *, 0x598) = sp50;
             M2C_FIELD(temp_r3_11433, f64 *, 0x5A0) = (f64) sp58;
             spF8 = (f64) sp58;
@@ -5768,7 +5794,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
         var_f1_11481 = var_f2_11468;
     }
     spE0.GetMeasure(var_f1_11481, this->unk10 + 0x30, KDSpline_PositionMixer);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp80 = spE0 - sp220;
     spD0 = sp80;
     sp88 = spE8 - (f32) sp228;
     sp1C0.unk10 = sp80;
@@ -5802,10 +5828,11 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     temp_r3_11571 = this->unkC;
     M2C_FIELD(temp_r3_11571, f64 *, 0x588) = sp220;
     M2C_FIELD(temp_r3_11571, f64 *, 0x590) = sp228;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    temp_f2_11580 = 0.01f * (1.0f / gUpdateTimeDelta);
+    sp30 = M2C_BITWISE(f64, sp1C0.unk10) * (f64) temp_f2_11580;
     temp_r3_11588 = this->unkC;
     spB0 = sp30;
-    sp38 = (f32) sp1D8 * (0.01f * (1.0f / gUpdateTimeDelta));
+    sp38 = (f32) sp1D8 * temp_f2_11580;
     M2C_FIELD(temp_r3_11588, f64 *, 0x598) = sp30;
     spB8 = (f64) sp38;
     M2C_FIELD(temp_r3_11588, f64 *, 0x5A0) = (f64) sp38;
@@ -5926,8 +5953,7 @@ u8 EnemyGoal_GraphHover::Update() {
 
     ActivateIfInactive();
     this->unk10 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk10 == 0.0f) {
+    if (this->unk10 <= 0.0f) {
         this->unk8 = 2;
     }
     temp_r30_11807 = this->unkC;

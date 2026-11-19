@@ -98,7 +98,9 @@ void GuardianCageCrystal::Update() {
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -106,6 +108,7 @@ void GuardianCageCrystal::Update() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp1C;
@@ -118,11 +121,15 @@ void GuardianCageCrystal::Update() {
     f32 temp_f30_378;
     f32 var_f4_232;
     f32 var_f5_247;
+    f64 temp_f0_328;
+    f64 temp_f0_341;
+    f64 temp_f0_365;
     f64 temp_f1_252;
     f64 temp_f1_258;
     f64 temp_f1_262;
     s32 temp_r3_281;
     s32 var_r0_291;
+    void *temp_r4_335;
 
     sp8 = 1;
     this->unk1C8.Update(GS_EnergyBeamLP, 1U, M2C_FIELD(this, u8 *, 0x1D4) == 0, NULL, &this->unk200, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
@@ -181,22 +188,25 @@ void GuardianCageCrystal::Update() {
         sp50 = (f32) spB0 * var_f4_232;
         spB8 = (f64) sp48;
         spC0 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spC8 = sp68;
+        temp_f0_328 = spB8 * 5.50703498e-315;
+        sp68 = temp_f0_328;
+        spC8 = temp_f0_328;
+        temp_r4_335 = this->unk8 + 0x30;
         sp70 = (f32) spC0 * 60.000004f;
         spD0 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spF8 = sp58;
-        sp60 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) spD0;
+        temp_f0_341 = M2C_FIELD(temp_r4_335, f64 *, 0) + temp_f0_328;
+        sp58 = temp_f0_341;
+        spF8 = temp_f0_341;
+        sp60 = M2C_FIELD(temp_r4_335, f32 *, 8) + (f32) spD0;
         sp100 = (f64) sp60;
         sp3C = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
         sp38 = 0.0f;
         sp40 = 0.0f;
         sp98 = (f64) sp38;
         spA0 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spE8 = sp28;
+        temp_f0_365 = sp98 * 5.676053805e-315;
+        sp28 = temp_f0_365;
+        spE8 = temp_f0_365;
         sp30 = (f32) spA0 * 1000.0f;
         spF0 = (f64) sp30;
         temp_f30_378 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
@@ -249,7 +259,10 @@ void GuardianCageCrystal::Reset() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_538;
     void *temp_r3_523;
 
     this->unkC8.UnregisterTargetable();
@@ -259,13 +272,12 @@ void GuardianCageCrystal::Reset() {
         ((EnergyBeam *) (M2C_FIELD(temp_r3_523, EnergyBeam **, 0x16C)))->SpawnEnergyBeam((MKVector3 *) &this->unk198, &this->unk1A8, 1.0f);
         M2C_FIELD(this, u32 *, 0x1C8) = (u32) M2C_ERROR(/* Read from unset register $r3 */);
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp28 = sp8;
+    temp_f0_538 = M2C_FIELD(this, f64 *, 0x1A8) + M2C_FIELD(this, f64 *, 0x1B8);
+    sp8 = temp_f0_538;
+    sp28 = temp_f0_538;
     sp10 = M2C_FIELD(this, f32 *, 0x1B0) + this->unk1A8.unk8;
     sp30 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp18 = temp_f0_538 * 5.222099017e-315;
     M2C_FIELD(this, f64 *, 0x200) = sp18;
     sp20 = (f32) sp30 * 0.5f;
     sp38 = sp18;

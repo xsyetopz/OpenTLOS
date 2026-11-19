@@ -219,14 +219,17 @@ inline void KDSplinePathSegment::GetVelocity(float arg0) {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
+    f64 temp_f0_373;
 
     sp8 = 0.0f;
     sp30.GetMeasure(arg0, M2C_ERROR(/* Read from unset register $r4 */) + 0x30, KDSpline_VelocityMixer);
     sp20 = M2C_BITWISE(f64, sp30);
     sp28 = (f64) sp30.unk8;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    this->unk0 = sp10;
+    temp_f0_373 = sp20 * (f64) sp8;
+    sp10 = temp_f0_373;
+    this->unk0 = temp_f0_373;
     sp18 = (f32) sp28 * sp8;
     M2C_FIELD(this, f64 *, 8) = (f64) sp18;
 }

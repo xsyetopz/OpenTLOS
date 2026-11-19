@@ -87,15 +87,20 @@ inline void KDUniformSpline::GetAcceleration(float arg0) const {
     f64 sp38;
     KDUniformSpline sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
+    f32 temp_f31_328;
+    f64 temp_f0_331;
 
     sp8 = 0.0f;
     sp20.GetMeasure(arg0, M2C_ERROR(/* Read from unset register $r4 */), KDSpline_AccelerationMixer);
     sp20.unk10 = M2C_BITWISE(f64, sp20);
+    temp_f31_328 = sp8 * sp8;
     sp38 = (f64) sp20.unk8;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_FIELD(this, f64 *, 0) = sp10;
-    sp18 = (f32) sp38 * (sp8 * sp8);
+    temp_f0_331 = M2C_BITWISE(f64, sp20.unk10) * (f64) temp_f31_328;
+    sp10 = temp_f0_331;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_331;
+    sp18 = (f32) sp38 * temp_f31_328;
     M2C_FIELD(this, f64 *, 8) = (f64) sp18;
 }
 #endif
@@ -105,14 +110,17 @@ inline void KDUniformSpline::GetVelocity(float arg0) const {
     f64 sp38;
     KDUniformSpline sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
+    f64 temp_f0_817;
 
     sp8 = 0.0f;
     sp20.GetMeasure(arg0, M2C_ERROR(/* Read from unset register $r4 */), KDSpline_VelocityMixer);
     sp20.unk10 = M2C_BITWISE(f64, sp20);
     sp38 = (f64) sp20.unk8;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_FIELD(this, f64 *, 0) = sp10;
+    temp_f0_817 = M2C_BITWISE(f64, sp20.unk10) * (f64) sp8;
+    sp10 = temp_f0_817;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_817;
     sp18 = (f32) sp38 * sp8;
     M2C_FIELD(this, f64 *, 8) = (f64) sp18;
 }

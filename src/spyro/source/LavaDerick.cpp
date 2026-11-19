@@ -114,10 +114,7 @@ void *LavaDerickDescriptor::CalcBounds() {
     }
     temp_r3_159->unk18 = var_f0_163;
     temp_r4_171 = this->unk1C;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+    M2C_FIELD(temp_r4_171, f32 *, 0x10) = (f64) ((f64) M2C_FIELD(temp_r4_171, f32 *, 0x10) - (f64) M2C_FIELD(temp_r4_171, f32 *, 0));
     temp_r4_171->unk18 -= temp_r4_171->unk8;
     return &temp_r4_171->unk10;
 }

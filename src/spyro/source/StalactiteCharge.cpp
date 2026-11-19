@@ -47,7 +47,7 @@ void StalactiteCharge::StateSCResetEnter() {
     f64 sp118;                                      /* compiler-managed */
     KDSplinePathSegment spD0;
     KDSplinePathSegment spB0;
-    M2C_UNK spA0;
+    f64 spA0;
     f64 sp98;
     f64 sp90;
     f64 sp88;
@@ -55,9 +55,13 @@ void StalactiteCharge::StateSCResetEnter() {
     f64 sp68;
     f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -73,9 +77,11 @@ void StalactiteCharge::StateSCResetEnter() {
     f32 temp_f6_289;
     f32 var_f2_281;
     f32 var_f4_214;
+    f64 temp_f0_342;
     f64 temp_f1_220;
     f64 temp_f1_226;
     f64 temp_f1_230;
+    f64 temp_f1_314;
     s32 temp_r3_249;
     s32 temp_r3_357;
     s32 var_r0_259;
@@ -94,8 +100,7 @@ loop_25:
         if (var_r30_103 == (s32) (temp_r3_357 - 1)) {
             spD0.GetPosition(this->unkD8 * (f32) var_r30_103);
             spD0.unk10.GetPosition((this->unkD8 * (f32) var_r30_103) - 1.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp30 = spD0.unk10 - M2C_BITWISE(f64, spD0);
             spD0.unk20 = sp30;
             sp38 = M2C_BITWISE(f32, spD0.unk18) - spD0.unk8;
             spD0.unk30.unk10 = sp30;
@@ -104,8 +109,7 @@ loop_25:
         } else {
             spA0.GetPosition(this->unkD8 * (f32) (var_r30_103 + 1));
             spB0.GetPosition(this->unkD8 * (f32) var_r30_103);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp20 = spB0.unk0 - spA0;
             spB0.unk10 = sp20;
             sp28 = spB0.unk8 - spA8;
             spD0.unk30.unk10 = sp20;
@@ -166,14 +170,16 @@ loop_25:
         sp90 = (f64) sp10;
         spD0.unk30 = (f64) sp10;
         spD0.unk30.unk8 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-        sp58 = (f32) (f64) sp18 * MKRand_Float(&gViewSeed, -temp_f2_303, temp_f2_303);
+        temp_f1_314 = MKRand_Float(&gViewSeed, -temp_f2_303, temp_f2_303);
+        sp50 = M2C_BITWISE(f64, spD0.unk30) * temp_f1_314;
+        sp58 = (f32) (f64) sp18 * (f32) temp_f1_314;
         sp60 = sp50;
         sp68 = (f64) sp58;
         spC = 0.0f;
         sp70.GetMeasure(this->unkD8 * (f32) var_r30_103, (Matrix *) &this->unkEC->unk30, KDSpline_PositionMixer);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp70.unk10 = sp40;
+        temp_f0_342 = M2C_BITWISE(f64, sp70) + sp60;
+        sp40 = temp_f0_342;
+        sp70.unk10 = temp_f0_342;
         sp48 = sp70.unk8 + (f32) sp68;
         sp88 = (f64) sp48;
         this->unk4C->SpawnSingleAtPos(*((MKVector3 *) &sp70.unk10));
@@ -207,7 +213,7 @@ void StalactiteCharge::StateSCLerpCameraExit() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp10);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp68'
+#if 0 // DRAFT: expression syntax error
 void StalactiteCharge::StateSCLerpCameraUpdate() {
     s32 sp174;
     KDS_Message_SetCameraSimple sp170;
@@ -234,17 +240,28 @@ void StalactiteCharge::StateSCLerpCameraUpdate() {
     f64 sp80;
     f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     s32 sp14;
     s32 sp10;
     f32 temp_f1_600;
     f32 temp_f30_525;
     f32 temp_f4_552;
     f32 var_f0_510;
+    f64 temp_f0_528;
+    f64 temp_f0_561;
+    f64 temp_f0_572;
+    f64 temp_f0_582;
+    f64 temp_f0_593;
     void *temp_r3_496;
     void *temp_r4_610;
 
@@ -263,12 +280,12 @@ void StalactiteCharge::StateSCLerpCameraUpdate() {
     }
     this->unkF4 = var_f0_510;
     temp_f30_525 = _table_sinf(0.33333334f * (3.1415927f * this->unkF4));
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    spB8 = sp68;
+    temp_f0_528 = this->unk120 * 5.5769738e-315;
+    sp68 = temp_f0_528;
+    spB8 = temp_f0_528;
     sp70 = this->unk128 * 200.0f;
     spC0 = (f64) sp70;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+    sp58 = temp_f0_528 * (f64) temp_f30_525;
     sp60 = (f32) spC0 * temp_f30_525;
     spD8 = this->unk110;
     temp_f4_552 = 0.33333334f * this->unkF4;
@@ -277,21 +294,25 @@ void StalactiteCharge::StateSCLerpCameraUpdate() {
     spD0 = (f64) sp60;
     spE0 = this->unk118;
     spF0 = this->unk108;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-    sp88 = sp38;
+    temp_f0_561 = spD8 - spE8;
+    sp38 = temp_f0_561;
+    sp88 = temp_f0_561;
     sp40 = (f32) spE0 - (f32) spF0;
     sp90 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp78 = sp28;
+    temp_f0_572 = temp_f0_561 * (f64) temp_f4_552;
+    sp28 = temp_f0_572;
+    sp78 = temp_f0_572;
     sp30 = (f32) sp90 * temp_f4_552;
     sp80 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    spF8 = sp18;
+    temp_f0_582 = spE8 + temp_f0_572;
+    sp18 = temp_f0_582;
+    spF8 = temp_f0_582;
     sp20 = (f32) spF0 + (f32) sp80;
     sp100 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_f0_593 = spF8 + spC8;
+    sp48 = temp_f0_593;
     temp_f1_600 = (f32) sp100 + (f32) spD0;
-    sp118 = sp48;
+    sp118 = temp_f0_593;
     sp50 = temp_f1_600;
     sp120 = (f64) sp50;
     temp_r4_610 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, f32, f32, f32, f32, f32, f64, f64), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_f1_600, (f32) sp100, (f32) spF0, temp_f4_552, 0.33333334f, (f64) sp60, sp58), void **, 8);
@@ -354,23 +375,31 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     f64 sp100;
     f64 spF8;
     f32 spF0;
+    f64 spE8;
     f64 spE0;
     f64 spD8;
     f64 spD0;
     f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f64 sp30;
     f64 sp28;
     s32 sp20;
@@ -386,6 +415,10 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     f32 var_f2_893;
     f32 var_f4_826;
     f64 temp_f0_706;
+    f64 temp_f0_763;
+    f64 temp_f0_949;
+    f64 temp_f0_961;
+    f64 temp_f0_971;
     f64 temp_f1_832;
     f64 temp_f1_838;
     f64 temp_f1_842;
@@ -434,15 +467,14 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
         this->unk118 = sp238;
     } else {
         sp168.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp178 = sp38;
+        temp_f0_763 = this->unk100 - M2C_BITWISE(f64, sp168);
+        sp38 = temp_f0_763;
+        sp178 = temp_f0_763;
         sp40 = (f32) M2C_FIELD(this, f64 *, 0x108) - sp170;
         sp180 = (f64) sp40;
         KDMath_GetReflectedVector(sp188, *((MKVector3 *) &sp178));
         sp198.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp98 = sp198 + M2C_BITWISE(f64, sp188);
         this->unk110 = sp98;
         spA0 = sp1A0 + sp188.unk8;
         sp1A8 = sp98;
@@ -452,8 +484,7 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     temp_r3_801 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     sp158 = M2C_FIELD(temp_r3_801, f64 *, 0x30);
     sp160 = M2C_FIELD(temp_r3_801, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    spE8 = this->unk110 - sp158;
     sp1F8 = spE8;
     spF0 = (f32) M2C_FIELD(this, f64 *, 0x118) - (f32) sp160;
     sp200 = (f64) spF0;
@@ -509,8 +540,7 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     M2C_FIELD(this, f64 *, 0x128) = (f64) sp90;
     sp148 = (f64) sp88;
     sp150 = (f64) sp90;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    spB8 = this->unk120 * 5.5769738e-315;
     spC0 = this->unk128 * 200.0f;
     sp118 = this->unk110;
     sp128 = this->unk100;
@@ -518,23 +548,26 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     sp110 = (f64) spC0;
     sp120 = this->unk118;
     sp130 = this->unk108;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-    spD8 = sp78;
+    temp_f0_949 = sp118 - sp128;
+    sp78 = temp_f0_949;
+    spD8 = temp_f0_949;
     sp80 = (f32) sp120 - (f32) sp130;
     spE0 = (f64) sp80;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    spC8 = sp68;
+    temp_f0_961 = temp_f0_949 * 5.222099017e-315;
+    sp68 = temp_f0_961;
+    spC8 = temp_f0_961;
     sp70 = (f32) spE0 * 0.5f;
     spD0 = (f64) sp70;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    sp138 = sp58;
+    temp_f0_971 = sp128 + temp_f0_961;
+    sp58 = temp_f0_971;
+    sp138 = temp_f0_971;
     sp60 = (f32) sp130 + (f32) spD0;
     sp140 = (f64) sp60;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spA8 = sp138 + sp108;
     spB0 = (f32) sp140 + (f32) sp110;
     sp1E8 = spA8;
     sp1F0 = (f64) spB0;
-    if (MKCollision_SphereCollide(*((MKVector3 *) &sp1E8), M2C_ERROR(/* unknown instruction: ps_mr $f1, $f31 */), NULL, 1, (MKCollisionMode) 1, 0) != 0) {
+    if (MKCollision_SphereCollide(*((MKVector3 *) &sp1E8), 200.0f, NULL, 1, (MKCollisionMode) 1, 0) != 0) {
         sp48 = -(f32) M2C_FIELD(this, f64 *, 0x120);
         sp4C = -M2C_FIELD(this, f32 *, 0x124);
         sp50 = -this->unk128;
@@ -581,9 +614,11 @@ void StalactiteCharge::StateSCDropUpdate() {
     f64 sp60;
     f64 sp58;
     HeroInterface sp48;
-    M2C_UNK sp38;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     s32 sp14;
     s32 sp10;
     f32 spC;
@@ -595,6 +630,7 @@ void StalactiteCharge::StateSCDropUpdate() {
     f32 var_f1_1305;
     f32 var_f4_1224;
     f64 temp_f1_1108;
+    f64 temp_f1_1200;
     f64 temp_f1_1227;
     f64 temp_f1_1233;
     f64 temp_f1_1237;
@@ -638,10 +674,10 @@ void StalactiteCharge::StateSCDropUpdate() {
         this->unk4C->DropIndividual((this->unkE0 - 1) - this->unkE4, (this->unkE4 % (s32) (1.0f / (temp_f5_1158 / this->unkD4))) == 0);
     }
     temp_r3_1199 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), void **, 8);
-    sp68 = M2C_FIELD(temp_r3_1199, f64 *, 0x30);
+    temp_f1_1200 = M2C_FIELD(temp_r3_1199, f64 *, 0x30);
+    sp68 = temp_f1_1200;
     sp70 = M2C_FIELD(temp_r3_1199, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp28 = temp_f1_1200 - this->unk130;
     sp78 = sp28;
     sp30 = (f32) sp70 - this->unk138;
     sp80 = (f64) sp30;
@@ -704,8 +740,7 @@ void StalactiteCharge::StateSCDropUpdate() {
     spAC = 0;
     sp38.GetPosition(var_f1_1305);
     sp48.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp18 = sp48 - sp38;
     spA8 = 0x42E;
     spB0 = sp18;
     sp20 = sp50 - sp40;
@@ -729,11 +764,12 @@ void StalactiteCharge::StateSCDropEnter() {
     s32 sp70;
     f64 sp68;
     f64 sp60;
-    M2C_UNK sp50;
+    f64 sp50;
     f64 sp48;
     KDUniformSpline sp30;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f64 temp_f2_1403;
@@ -746,8 +782,7 @@ void StalactiteCharge::StateSCDropEnter() {
     sp30.unk10 = M2C_BITWISE(f64, sp30);
     sp48 = (f64) sp30.unk8;
     MKVector(0.7f, 0.7f, 0.7f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp10 = sp50 * 5.398241246e-315;
     temp_f2_1403 = M2C_BITWISE(f64, sp30.unk10);
     sp18 = sp58 * 10.0f;
     sp70 = 0x419;

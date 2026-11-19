@@ -93,11 +93,14 @@ void MKGrass_DrawSubObject(const Frustum &arg0, const MKModel *arg1, const MKAtt
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     Frustum *sp10;
     GrassStrip *var_r26_162;
@@ -172,9 +175,11 @@ void MKGrass_DrawSubObject(const Frustum &arg0, const MKModel *arg1, const MKAtt
     f64 *temp_r3_192;
     f64 *var_r23_196;
     f64 *var_r3_236;
+    f64 temp_f0_138;
     f64 temp_f14_743;
     f64 temp_f14_749;
     f64 temp_f14_753;
+    f64 temp_f1_274;
     f64 temp_f4_520;
     s16 var_r19_398;
     s16 var_r6_626;
@@ -231,10 +236,10 @@ void MKGrass_DrawSubObject(const Frustum &arg0, const MKModel *arg1, const MKAtt
         if (M2C_FIELD(temp_r27_82, f32 *, 0x38) == 0.0f) {
             var_r4_130 = &MKVector3::zero;
         } else {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f14 */);
+            temp_f0_138 = M2C_FIELD(&MKGrass_windDirection, f64 *, 0) * (f64) M2C_FIELD(&MKGrass_windDirection, f32 *, 0xC);
+            sp38 = temp_f0_138;
             var_r4_130 = (MKVector3 *) &spC8;
-            spC8 = sp38;
+            spC8 = temp_f0_138;
             sp40 = M2C_FIELD(&MKGrass_windDirection, f32 *, 8) * M2C_FIELD(&MKGrass_windDirection, f32 *, 0xC);
             spD0 = (f64) sp40;
         }
@@ -292,11 +297,11 @@ loop_90:
         } else {
             var_r3_236 = (f64 *) var_r26_162;
         }
-        spD8 = M2C_FIELD(var_r3_236, f64 *, 0);
+        temp_f1_274 = M2C_FIELD(var_r3_236, f64 *, 0);
+        spD8 = temp_f1_274;
         spE0 = M2C_FIELD(var_r3_236, f64 *, 8);
         temp_f4_278 = var_r26_162->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp48 = temp_f1_274 - M2C_FIELD(&MKGrass_cameraPos, f64 *, 0);
         spA8 = sp48;
         temp_f0_289 = M2C_FIELD(temp_r27_82, f32 *, 0x34) + temp_f4_278;
         sp50 = (f32) spE0 - M2C_FIELD(&MKGrass_cameraPos, f32 *, 8);
@@ -335,8 +340,7 @@ loop_88:
                 temp_f3_405 = (f32) M2C_FIELD(&sp1D0, f64 *, 0) - *sp238;
                 temp_f4_408 = (f32) sp1D0.unk8 - M2C_FIELD(&MKGrass_cameraPos, f32 *, 8);
                 var_f14_415 = 1.0f - (M2C_FIELD(temp_r27_82, f32 *, 0x808) * (((temp_f4_408 * temp_f4_408) + ((temp_f3_405 * temp_f3_405) + (temp_f1_401 * temp_f1_401))) - M2C_FIELD(temp_r27_82, f32 *, 0x804)));
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (var_f14_415 != (f32) sp220) {
+                if (!(var_f14_415 <= (f32) sp220)) {
                     if (var_f14_415 > 1.0f) {
                         var_f14_415 = 1.0f;
                     }
@@ -362,8 +366,7 @@ loop_88:
                             }
                             sp68.operator*(M2C_FIELD(temp_r27_82, f32 *, 0x54));
                             sp78.operator*(var_f29_345);
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                            sp18 = sp78 + M2C_BITWISE(f64, sp68);
                             sp88 = sp18;
                             sp20 = sp78.unk8 + sp68.unk8;
                             sp90 = (f64) sp20;
@@ -689,8 +692,11 @@ void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType 
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     s8 *sp10;
     f32 spC;
     f32 sp8;
@@ -702,8 +708,11 @@ void CreateGrassStripData(MKModel *arg0, MeshChunkExplorer *arg1, GrassUsedType 
     f32 var_f4_1291;
     f32 var_f4_1416;
     f64 *temp_r3_1245;
+    f64 *temp_r3_1274;
     f64 *temp_r3_1360;
     f64 temp_f0_1248;
+    f64 temp_f0_1372;
+    f64 temp_f0_1400;
     f64 temp_f1_1247;
     f64 temp_f1_1294;
     f64 temp_f1_1300;
@@ -787,11 +796,11 @@ loop_36:
                             spB8 = M2C_BITWISE(f64, sp88);
                             spC0 = (f64) sp88.unk8;
                             Max(sp78, *((MKVector3 *) &spB8));
+                            temp_r3_1274 = arg1->unk18;
                             spA8 = M2C_BITWISE(f64, sp78);
                             spB0 = (f64) sp78.unk8;
-                            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                            temp_f3_1284 = (f32) spA0 - (f32) M2C_FIELD(arg1->unk18, f64 *, 8);
+                            sp98 -= M2C_FIELD(temp_r3_1274, f64 *, 0);
+                            temp_f3_1284 = (f32) spA0 - (f32) M2C_FIELD(temp_r3_1274, f64 *, 8);
                             spA0 = temp_f3_1284;
                             var_f4_1291 = (temp_f3_1284 * temp_f3_1284) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C));
                             if (var_f4_1291 > 0.0f) {
@@ -838,19 +847,21 @@ loop_36:
                             spA0 = M2C_FIELD(temp_r3_1360, f64 *, 8);
                             goto loop_36;
                         }
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f3 */);
-                        sp58 = sp18;
+                        temp_f0_1372 = spB8 + spA8;
+                        sp18 = temp_f0_1372;
+                        sp58 = temp_f0_1372;
                         sp20 = (f32) spC0 + (f32) spB0;
                         sp60 = (f64) sp20;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                        sp28 = temp_f0_1372 * 5.222099017e-315;
                         sp68 = sp28;
                         sp30 = (f32) sp60 * 0.5f;
                         temp_r3_1394 = M2C_FIELD(temp_r22_1205, void **, 8) + (M2C_FIELD(temp_r22_1205, u16 *, 2) * 0x18);
                         M2C_FIELD(temp_r3_1394, f64 *, 0) = sp28;
                         M2C_FIELD(temp_r3_1394, f64 *, 8) = (f64) sp30;
                         sp70 = (f64) sp30;
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f3 */);
-                        sp48 = sp38;
+                        temp_f0_1400 = spB8 + spA8;
+                        sp38 = temp_f0_1400;
+                        sp48 = temp_f0_1400;
                         sp40 = (f32) spC0 + (f32) spB0;
                         sp50 = (f64) sp40;
                         var_f4_1416 = ((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C));
@@ -914,16 +925,20 @@ s16 CalculateGrassVertex(GrassVertex *arg0, GrassStrip *arg1, MeshChunkExplorer 
     f64 sp40;
     f64 sp38;
     f64 sp30;
-    M2C_UNK sp28;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
+    f64 sp10;
+    f64 sp8;
     f32 temp_f3_1558;
     f32 temp_f6_1565;
     f32 temp_f7_1571;
+    f64 *temp_r3_1603;
     f64 *temp_r4_1548;
     f64 *var_r3_1559;
     f64 *var_r3_1613;
+    f64 temp_f0_1611;
     s16 temp_r23_1556;
     s32 var_r22_1637;
     s32 var_r27_1638;
@@ -946,15 +961,13 @@ s16 CalculateGrassVertex(GrassVertex *arg0, GrassStrip *arg1, MeshChunkExplorer 
     arg0->unk0 = M2C_FIELD(var_r3_1559, f64 *, 0);
     arg0->unk8 = M2C_FIELD(var_r3_1559, f64 *, 8);
     if (arg6 != NULL) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r9, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r9, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
+        temp_r3_1603 = arg2->unk24;
+        sp8 = M2C_FIELD(arg6, f64 *, 0) * M2C_FIELD(temp_r3_1603, f64 *, 0);
+        temp_f0_1611 = M2C_FIELD(arg6, f64 *, 8) * M2C_FIELD(temp_r3_1603, f64 *, 8);
+        sp10 = temp_f0_1611;
         var_r3_1613 = &sp38;
         sp38 = sp8;
-        sp40 = sp10;
+        sp40 = temp_f0_1611;
     } else {
         var_r3_1613 = arg2->unk24;
     }
@@ -969,13 +982,8 @@ s16 CalculateGrassVertex(GrassVertex *arg0, GrassStrip *arg1, MeshChunkExplorer 
 loop_11:
         if (var_r22_1637 < arg4) {
             sp28.CalculateColor(*(*(arg5 + var_r27_1638)), *((MKVector3 *) arg0));
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r25, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r28, $r25, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r26, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r28, $r26, 0x0, qr0 */);
+            arg0->unk10 += sp28;
+            arg0->unk18 += sp30;
             var_r22_1637 += 1;
             var_r27_1638 += 4;
             goto loop_11;

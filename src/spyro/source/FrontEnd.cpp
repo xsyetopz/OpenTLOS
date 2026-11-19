@@ -190,8 +190,7 @@ void FrontEnd_Update() {
 
     if ((u8) bGoToNewGame != 0) {
         FrontEnd_SetFade(gUpdateTimeDelta + FrontEnd_GetFade());
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (FrontEnd_GetFade() == 0.99f) {
+        if (FrontEnd_GetFade() >= 0.99f) {
             FrontEnd_PlayBackgroundVideo(0U);
             temp_r0_344 = timeout + 1;
             timeout = temp_r0_344;
@@ -211,8 +210,7 @@ void FrontEnd_Update() {
     }
     if ((u8) bGoToVideo != 0) {
         FrontEnd_SetFade(gUpdateTimeDelta + FrontEnd_GetFade());
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (FrontEnd_GetFade() == 0.99f) {
+        if (FrontEnd_GetFade() >= 0.99f) {
             FrontEnd_PlayBackgroundVideo(0U);
             temp_r0_392 = timeout + 1;
             timeout = temp_r0_392;

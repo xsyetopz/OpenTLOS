@@ -48,7 +48,7 @@ void GunPowderFuse::EmitBurn(float arg0) {
     KDUniformSpline spD8;
     f64 spD0;
     f64 spC8;
-    M2C_UNK spB8;
+    f64 spB8;
     f64 spB0;
     f64 spA8;
     MKVector3 sp98;
@@ -57,11 +57,15 @@ void GunPowderFuse::EmitBurn(float arg0) {
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -74,6 +78,8 @@ void GunPowderFuse::EmitBurn(float arg0) {
     f32 temp_f31_170;
     f32 temp_f3_105;
     f32 temp_f3_116;
+    f64 temp_f0_174;
+    f64 temp_f0_185;
 
     sp8 = 0.0f;
     spD8.GetMeasure(arg0, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
@@ -81,8 +87,7 @@ void GunPowderFuse::EmitBurn(float arg0) {
     sp100 = (f64) spD8.unk8;
     temp_f29_88 = 100.0f * (this->unkB4 / 20.0f);
     KDRand_UnitVectorXZ();
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+    sp28 = spB8 * (f64) temp_f29_88;
     spD8.unk10 = sp28;
     sp30 = spC0 * temp_f29_88;
     spC8 = sp28;
@@ -99,8 +104,7 @@ void GunPowderFuse::EmitBurn(float arg0) {
     temp_f28_141 = MKRand_Float(&gViewSeed, 0.0f, this->unkB4);
     MKVector(MKRand_Float(&gViewSeed, -temp_f2_140 / 10.0f, temp_f2_140 / 10.0f), temp_f28_141, temp_f29_135);
     Normalise(sp98);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+    sp18 = sp98 * 5.634608575e-315;
     spD8.unk10 = sp18;
     sp20 = sp98.unk8 * 500.0f;
     spA8 = sp18;
@@ -108,13 +112,14 @@ void GunPowderFuse::EmitBurn(float arg0) {
     spB0 = (f64) sp20;
     temp_f31_170 = this->unkB4;
     KDRand_UnitVectorXZ();
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp68 = sp48;
+    temp_f0_174 = sp58 * (f64) temp_f31_170;
+    sp48 = temp_f0_174;
+    sp68 = temp_f0_174;
     sp50 = sp60 * temp_f31_170;
     sp70 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp78 = sp38;
+    temp_f0_185 = spF8 + temp_f0_174;
+    sp38 = temp_f0_185;
+    sp78 = temp_f0_185;
     sp40 = (f32) sp100 + (f32) sp70;
     sp80 = (f64) sp40;
     temp_f2_198 = this->unkB4;
@@ -140,19 +145,15 @@ BurnPoint *GunPowderFuse::GetFirst() {
     var_ctr_236 = 8;
     do {
         temp_f3_239 = *(this + (var_r3_235 + 0xCC));
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f3_239 == 1.0f) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f3_239 == 0.0f) {
-                if (temp_f3_239 < 0.0f) {
-                    var_f0_248 = -temp_f3_239;
-                } else {
-                    var_f0_248 = temp_f3_239;
-                }
-                if (var_f0_248 < var_f4_228) {
-                    var_f4_228 = temp_f3_239;
-                    var_r4_233 = var_r5_234;
-                }
+        if ((temp_f3_239 <= 1.0f) && (temp_f3_239 >= 0.0f)) {
+            if (temp_f3_239 < 0.0f) {
+                var_f0_248 = -temp_f3_239;
+            } else {
+                var_f0_248 = temp_f3_239;
+            }
+            if (var_f0_248 < var_f4_228) {
+                var_f4_228 = temp_f3_239;
+                var_r4_233 = var_r5_234;
             }
         }
         var_r5_234 += 1;
@@ -192,24 +193,20 @@ BurnPoint *GunPowderFuse::GetNextPositive(BurnPoint *arg0) {
     do {
         temp_r5_291 = this + var_r3_288;
         temp_f4_292 = M2C_FIELD(temp_r5_291, f32 *, 0xCC);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f4_292 == 1.0f) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((temp_f4_292 == 0.0f) && (M2C_FIELD(temp_r5_291, f32 *, 0xD0) == 1.0f) && (temp_f4_292 > var_f3_278)) {
-                temp_f4_306 = temp_f4_292 - arg0->unk8;
+        if ((temp_f4_292 <= 1.0f) && (temp_f4_292 >= 0.0f) && (M2C_FIELD(temp_r5_291, f32 *, 0xD0) == 1.0f) && (temp_f4_292 > var_f3_278)) {
+            temp_f4_306 = temp_f4_292 - arg0->unk8;
+            if (temp_f4_306 < 0.0f) {
+                var_f0_309 = -temp_f4_306;
+            } else {
+                var_f0_309 = temp_f4_306;
+            }
+            if ((var_f0_309 < var_f5_283) && ((void *) (temp_r5_291 + 0xC4) != arg0)) {
                 if (temp_f4_306 < 0.0f) {
-                    var_f0_309 = -temp_f4_306;
+                    var_f5_283 = -temp_f4_306;
                 } else {
-                    var_f0_309 = temp_f4_306;
+                    var_f5_283 = temp_f4_306;
                 }
-                if ((var_f0_309 < var_f5_283) && ((void *) (temp_r5_291 + 0xC4) != arg0)) {
-                    if (temp_f4_306 < 0.0f) {
-                        var_f5_283 = -temp_f4_306;
-                    } else {
-                        var_f5_283 = temp_f4_306;
-                    }
-                    var_r6_285 = var_r7_286;
-                }
+                var_r6_285 = var_r7_286;
             }
         }
         var_r7_286 += 1;
@@ -235,12 +232,8 @@ void GunPowderFuse::UpdatePartners() {
     do {
         temp_r30_360 = this + var_r31_358;
         temp_f0_361 = M2C_FIELD(temp_r30_360, f32 *, 0xCC);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f0_361 == 1.0f) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f0_361 == 0.0f) {
-                M2C_FIELD(temp_r30_360, s32 *, 0xD4) = GetPartner(temp_r30_360 + 0xC4);
-            }
+        if ((temp_f0_361 <= 1.0f) && (temp_f0_361 >= 0.0f)) {
+            M2C_FIELD(temp_r30_360, s32 *, 0xD4) = GetPartner(temp_r30_360 + 0xC4);
         }
         var_r29_357 += 1;
         var_r31_358 += 0x3C;
@@ -278,26 +271,22 @@ s32 GunPowderFuse::GetPartner(BurnPoint *arg0) {
         do {
             temp_r6_402 = this + var_r5_399;
             temp_f4_403 = M2C_FIELD(temp_r6_402, f32 *, 0xCC);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_f4_403 == 1.0f) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if ((temp_f4_403 == 0.0f) && (M2C_FIELD(temp_r6_402, f32 *, 0xD0) == -1.0f)) {
-                    temp_f0_415 = arg0->unk8;
-                    if (temp_f4_403 > temp_f0_415) {
-                        temp_f1_418 = temp_f4_403 - temp_f0_415;
+            if ((temp_f4_403 <= 1.0f) && (temp_f4_403 >= 0.0f) && (M2C_FIELD(temp_r6_402, f32 *, 0xD0) == -1.0f)) {
+                temp_f0_415 = arg0->unk8;
+                if (temp_f4_403 > temp_f0_415) {
+                    temp_f1_418 = temp_f4_403 - temp_f0_415;
+                    if (temp_f1_418 < 0.0f) {
+                        var_f0_421 = -temp_f1_418;
+                    } else {
+                        var_f0_421 = temp_f1_418;
+                    }
+                    if ((var_f0_421 < var_f5_391) && ((void *) (temp_r6_402 + 0xC4) != arg0)) {
                         if (temp_f1_418 < 0.0f) {
-                            var_f0_421 = -temp_f1_418;
+                            var_f5_391 = -temp_f1_418;
                         } else {
-                            var_f0_421 = temp_f1_418;
+                            var_f5_391 = temp_f1_418;
                         }
-                        if ((var_f0_421 < var_f5_391) && ((void *) (temp_r6_402 + 0xC4) != arg0)) {
-                            if (temp_f1_418 < 0.0f) {
-                                var_f5_391 = -temp_f1_418;
-                            } else {
-                                var_f5_391 = temp_f1_418;
-                            }
-                            var_r7_397 = var_r8_398;
-                        }
+                        var_r7_397 = var_r8_398;
                     }
                 }
             }
@@ -313,26 +302,22 @@ s32 GunPowderFuse::GetPartner(BurnPoint *arg0) {
         do {
             temp_r6_453 = this + var_r5_450;
             temp_f3_454 = M2C_FIELD(temp_r6_453, f32 *, 0xCC);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_f3_454 == 1.0f) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if ((temp_f3_454 == 0.0f) && (M2C_FIELD(temp_r6_453, f32 *, 0xD0) == 1.0f)) {
-                    temp_f0_465 = arg0->unk8;
-                    if (temp_f3_454 < temp_f0_465) {
-                        temp_f3_468 = temp_f3_454 - temp_f0_465;
+            if ((temp_f3_454 <= 1.0f) && (temp_f3_454 >= 0.0f) && (M2C_FIELD(temp_r6_453, f32 *, 0xD0) == 1.0f)) {
+                temp_f0_465 = arg0->unk8;
+                if (temp_f3_454 < temp_f0_465) {
+                    temp_f3_468 = temp_f3_454 - temp_f0_465;
+                    if (temp_f3_468 < 0.0f) {
+                        var_f0_471 = -temp_f3_468;
+                    } else {
+                        var_f0_471 = temp_f3_468;
+                    }
+                    if ((var_f0_471 < var_f5_391) && ((void *) (temp_r6_453 + 0xC4) != arg0)) {
                         if (temp_f3_468 < 0.0f) {
-                            var_f0_471 = -temp_f3_468;
+                            var_f5_391 = -temp_f3_468;
                         } else {
-                            var_f0_471 = temp_f3_468;
+                            var_f5_391 = temp_f3_468;
                         }
-                        if ((var_f0_471 < var_f5_391) && ((void *) (temp_r6_453 + 0xC4) != arg0)) {
-                            if (temp_f3_468 < 0.0f) {
-                                var_f5_391 = -temp_f3_468;
-                            } else {
-                                var_f5_391 = temp_f3_468;
-                            }
-                            var_r7_397 = var_r8_449;
-                        }
+                        var_r7_397 = var_r8_449;
                     }
                 }
             }
@@ -398,19 +383,15 @@ u8 GunPowderFuse::TooClose(float arg0) {
     var_ctr_594 = 8;
 loop_1:
     temp_f0_597 = *(this + (var_r4_592 + 0xCC));
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f0_597 == 1.0f) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f0_597 == 0.0f) {
-            var_f5_604 = temp_f0_597 - arg0;
-            if (var_f5_604 < 0.0f) {
-                var_f5_604 = -var_f5_604;
-            }
-            if (var_f5_604 < (2.0f * this->unk2A8)) {
-                return 1U;
-            }
-            goto block_7;
+    if ((temp_f0_597 <= 1.0f) && (temp_f0_597 >= 0.0f)) {
+        var_f5_604 = temp_f0_597 - arg0;
+        if (var_f5_604 < 0.0f) {
+            var_f5_604 = -var_f5_604;
         }
+        if (var_f5_604 < (2.0f * this->unk2A8)) {
+            return 1U;
+        }
+        goto block_7;
     }
 block_7:
     var_r4_592 += 0x3C;
@@ -434,8 +415,7 @@ u8 GunPowderFuse::HasAvailableBurnPoints() {
     var_ctr_630 = 8;
 loop_1:
     temp_f2_633 = *(this + (var_r4_629 + 0xCC));
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((temp_f2_633 != 1.0f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f2_633 == 0.0f) == 0))) {
+    if (!(temp_f2_633 <= 1.0f) || !(temp_f2_633 >= 0.0f)) {
         var_r5_628 += 1;
     }
     if (var_r5_628 == 2) {
@@ -459,7 +439,14 @@ void GunPowderFuse::Draw() {
     f32 sp338;
     f64 sp330;
     f64 sp328;
-    MKProp sp2D8;
+    f64 sp320;                                      /* compiler-managed */
+    f64 sp318;                                      /* compiler-managed */
+    f64 sp310;                                      /* compiler-managed */
+    f64 sp308;                                      /* compiler-managed */
+    f64 sp300;
+    f64 sp2F8;
+    f64 sp2E8;
+    f64 sp2D8;
     f64 sp2C8;
     f64 sp2C0;
     f64 sp2B8;
@@ -476,11 +463,11 @@ void GunPowderFuse::Draw() {
     f64 sp260;
     f64 sp258;                                      /* compiler-managed */
     KDSplinePathSegment sp238;
-    M2C_UNK sp228;
+    f64 sp228;
     KDSplinePathSegment sp208;
-    M2C_UNK sp1F8;
+    f64 sp1F8;
     KDSplinePathSegment sp1D8;
-    M2C_UNK sp1C8;
+    f64 sp1C8;
     f64 sp1B8;
     f64 sp1B0;
     f64 sp1A8;
@@ -501,32 +488,44 @@ void GunPowderFuse::Draw() {
     f32 sp13C;
     f32 sp138;
     f32 sp130;
+    f64 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp114;
     f32 sp110;
     f32 sp10C;
     f32 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE4;
     f32 spE0;
     f32 spDC;
     f32 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB4;
     f32 spB0;
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -536,27 +535,24 @@ void GunPowderFuse::Draw() {
     f32 sp14;
     f32 sp10;
     BurnPoint *var_r28_1093;
-    f32 temp_f0_1397;
-    f32 temp_f0_891;
     f32 temp_f18_1504;
     f32 temp_f18_762;
     f32 temp_f18_998;
-    f32 temp_f1_789;
-    f32 temp_f1_890;
     f32 temp_f20_748;
     f32 temp_f21_746;
     f32 temp_f22_744;
     f32 temp_f24_1094;
     f32 temp_f25_1096;
+    f32 temp_f26_1007;
     f32 temp_f26_1097;
+    f32 temp_f27_1049;
     f32 temp_f29_720;
-    f32 temp_f2_1296;
-    f32 temp_f2_790;
+    f32 temp_f30_1555;
+    f32 temp_f31_1513;
     f32 temp_f3_1379;
     f32 temp_f3_873;
     f32 temp_f4_1377;
     f32 temp_f4_871;
-    f32 temp_f4_895;
     f32 temp_f5_1380;
     f32 temp_f5_874;
     f32 var_f1_1132;
@@ -572,6 +568,14 @@ void GunPowderFuse::Draw() {
     f32 var_f4_1406;
     f32 var_f4_797;
     f32 var_f4_900;
+    f64 temp_f0_1009;
+    f64 temp_f0_1020;
+    f64 temp_f0_1051;
+    f64 temp_f0_1062;
+    f64 temp_f0_1515;
+    f64 temp_f0_1526;
+    f64 temp_f0_1557;
+    f64 temp_f0_1568;
     f64 temp_f1_1309;
     f64 temp_f1_1315;
     f64 temp_f1_1319;
@@ -618,21 +622,18 @@ loop_44:
             if (var_r29_745 < (s32) (this->unk2B4 + 1)) {
                 sp2D8.GetPos();
                 temp_f18_762 = (f32) var_r29_745 * temp_f29_720;
-                sp2D8.unk10.GetPosition(temp_f18_762);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp2E8.GetPosition(temp_f18_762);
+                sp78 = sp2E8 - sp2D8;
                 sp328 = sp78;
-                sp2D8.unk20 = sp78;
-                sp80 = M2C_BITWISE(f32, sp2D8.unk18) - M2C_BITWISE(f32, sp2D8.unk8);
+                sp2F8 = sp78;
+                sp80 = sp2F0 - sp2E0;
                 unksp32C += 1.0f;
-                sp2D8.unk28 = (f64) sp80;
+                sp300 = (f64) sp80;
                 sp330 = (f64) sp80;
                 sp2C8.GetVelocity(temp_f18_762);
-                sp2D8.unk40 = sp2C8;
-                temp_f1_789 = M2C_BITWISE(f32, sp2D8.unk40);
-                temp_f2_790 = M2C_BITWISE(f32, sp2D8.__vptr);
-                sp2D8.unk48 = sp2D0;
-                var_f4_797 = (sp2D8.unk48 * sp2D8.unk48) + ((temp_f1_789 * temp_f1_789) + (temp_f2_790 * temp_f2_790));
+                sp318 = sp2C8;
+                sp320 = sp2D0;
+                var_f4_797 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + (unksp31C * unksp31C));
                 if (var_f4_797 > 0.000001f) {
                     if (var_f4_797 > 0.0f) {
                         temp_f1_803 = __frsqrte(var_f4_797);
@@ -671,23 +672,20 @@ loop_44:
                 } else {
                     var_f2_864 = 0.0f;
                 }
-                temp_f4_871 = M2C_BITWISE(f32, sp2D8.__vptr) * var_f2_864;
-                temp_f3_873 = sp2D8.unk48 * var_f2_864;
-                temp_f5_874 = M2C_BITWISE(f32, sp2D8.unk40) * var_f2_864;
-                sp2D8.__vptr = temp_f4_871;
-                sp2D8.unk40 = temp_f5_874;
-                sp2D8.unk48 = temp_f3_873;
+                temp_f4_871 = unksp31C * var_f2_864;
+                temp_f3_873 = (f32) sp320 * var_f2_864;
+                temp_f5_874 = (f32) sp318 * var_f2_864;
+                unksp31C = temp_f4_871;
+                sp318 = temp_f5_874;
+                sp320 = temp_f3_873;
                 sp68 = (temp_f22_744 * temp_f3_873) - (temp_f21_746 * temp_f4_871);
                 sp6C = (temp_f21_746 * temp_f5_874) - (temp_f20_748 * temp_f3_873);
                 sp70 = (temp_f20_748 * temp_f4_871) - (temp_f22_744 * temp_f5_874);
-                sp2D8.unk30 = (f64) sp68;
-                temp_f1_890 = M2C_BITWISE(f32, sp2D8.unk30);
-                temp_f0_891 = M2C_BITWISE(f32, sp2D8.unk34);
-                sp2D8.unk38 = (f64) sp70;
-                temp_f4_895 = M2C_BITWISE(f32, sp2D8.unk38);
+                sp308 = (f64) sp68;
+                sp310 = (f64) sp70;
                 sp2B8 = (f64) sp68;
                 sp2C0 = (f64) sp70;
-                var_f4_900 = (temp_f4_895 * temp_f4_895) + ((temp_f1_890 * temp_f1_890) + (temp_f0_891 * temp_f0_891));
+                var_f4_900 = ((f32) sp310 * (f32) sp310) + (((f32) sp308 * (f32) sp308) + (unksp30C * unksp30C));
                 if (var_f4_900 > 0.000001f) {
                     if (var_f4_900 > 0.0f) {
                         temp_f1_906 = __frsqrte(var_f4_900);
@@ -730,20 +728,23 @@ loop_44:
                 sp13C = 1.0f;
                 sp140 = 1.0f;
                 sp144 = 1.0f;
-                sp2D8.unk30 = M2C_BITWISE(f32, sp2D8.unk30) * var_f2_967;
+                sp308 = (f32) sp308 * var_f2_967;
                 temp_f18_998 = 4.0f * ((f32) var_r29_745 / (f32) this->unk2B4);
-                sp2D8.unk34 = M2C_BITWISE(f32, sp2D8.unk34) * var_f2_967;
-                sp2D8.unk38 = M2C_BITWISE(f32, sp2D8.unk38) * var_f2_967;
+                unksp30C *= var_f2_967;
+                sp310 = (f32) sp310 * var_f2_967;
                 sp2A8 = (f64) sp138;
                 sp2B0 = (f64) sp140;
                 MKSetColorV(*((MKVector4 *) &sp2A8));
                 MKSetTexCoord1F(temp_f18_998, 0.95f);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-                sp288 = sp128;
-                sp130 = sp2D8.unk38 * this->unkB4;
+                temp_f26_1007 = this->unkB4;
+                temp_f0_1009 = (f64) sp308 * (f64) temp_f26_1007;
+                sp128 = temp_f0_1009;
+                sp288 = temp_f0_1009;
+                sp130 = sp310 * temp_f26_1007;
                 sp290 = (f64) sp130;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp298 = sp118;
+                temp_f0_1020 = sp328 + temp_f0_1009;
+                sp118 = temp_f0_1020;
+                sp298 = temp_f0_1020;
                 sp120 = (f32) sp330 + (f32) sp290;
                 sp2A0 = (f64) sp120;
                 MKSetPositionV(*((MKVector3 *) &sp298));
@@ -756,12 +757,15 @@ loop_44:
                 sp280 = (f64) sp110;
                 MKSetColorV(*((MKVector4 *) &sp278));
                 MKSetTexCoord1F(temp_f18_998, 0.05f);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-                sp258 = spF8;
-                sp100 = sp2D8.unk38 * this->unkB4;
+                temp_f27_1049 = this->unkB4;
+                temp_f0_1051 = (f64) sp308 * (f64) temp_f27_1049;
+                spF8 = temp_f0_1051;
+                sp258 = temp_f0_1051;
+                sp100 = sp310 * temp_f27_1049;
                 sp260 = (f64) sp100;
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp268 = spE8;
+                temp_f0_1062 = sp328 - temp_f0_1051;
+                spE8 = temp_f0_1062;
+                sp268 = temp_f0_1062;
                 spF0 = (f32) sp330 - (f32) sp260;
                 sp270 = (f64) spF0;
                 MKSetPositionV(*((MKVector3 *) &sp268));
@@ -817,8 +821,7 @@ loop_114:
                 if (var_r29_1176 == 0) {
                     sp228.GetPos();
                     sp238.GetPosition(var_f28_1106);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp58 = sp238.unk0 - sp228;
                     sp238.unk10 = sp58;
                     sp60 = sp238.unk8 - sp230;
                     sp328 = sp58;
@@ -827,8 +830,7 @@ loop_114:
                 } else if (var_r29_1176 == var_r30_1162) {
                     sp1F8.GetPos();
                     sp208.GetPosition(var_f27_1111);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp48 = sp208.unk0 - sp1F8;
                     sp208.unk10 = sp48;
                     sp50 = sp208.unk8 - sp200;
                     sp328 = sp48;
@@ -838,8 +840,7 @@ loop_114:
                     sp1C8.GetPos();
                     sp20 = ((f32) var_r29_1176 * temp_f29_720) + var_f28_1106;
                     sp1D8.GetPosition(Clamp<float>(0.0f, sp20, 1.0f));
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp38 = sp1D8.unk0 - sp1C8;
                     sp1D8.unk10 = sp38;
                     sp40 = sp1D8.unk8 - sp1D0;
                     sp328 = sp38;
@@ -859,10 +860,9 @@ loop_114:
                     var_f1_1275 = 0.0f;
                 }
                 sp1B8.GetVelocity(var_f1_1275);
-                sp2D8.unk40 = sp1B8;
-                temp_f2_1296 = M2C_BITWISE(f32, sp2D8.__vptr);
-                sp2D8.unk48 = sp1C0;
-                var_f4_1303 = ((f32) sp2D8.unk48 * (f32) sp2D8.unk48) + (((f32) sp2D8.unk40 * (f32) sp2D8.unk40) + (temp_f2_1296 * temp_f2_1296));
+                sp318 = sp1B8;
+                sp320 = sp1C0;
+                var_f4_1303 = ((f32) sp320 * (f32) sp320) + (((f32) sp318 * (f32) sp318) + (unksp31C * unksp31C));
                 if (var_f4_1303 > 0.000001f) {
                     if (var_f4_1303 > 0.0f) {
                         temp_f1_1309 = __frsqrte(var_f4_1303);
@@ -901,21 +901,20 @@ loop_114:
                 } else {
                     var_f2_1370 = 0.0f;
                 }
-                temp_f4_1377 = M2C_BITWISE(f32, sp2D8.__vptr) * var_f2_1370;
-                temp_f3_1379 = (f32) sp2D8.unk48 * var_f2_1370;
-                temp_f5_1380 = (f32) sp2D8.unk40 * var_f2_1370;
-                sp2D8.__vptr = temp_f4_1377;
-                sp2D8.unk40 = temp_f5_1380;
-                sp2D8.unk48 = temp_f3_1379;
+                temp_f4_1377 = unksp31C * var_f2_1370;
+                temp_f3_1379 = (f32) sp320 * var_f2_1370;
+                temp_f5_1380 = (f32) sp318 * var_f2_1370;
+                unksp31C = temp_f4_1377;
+                sp318 = temp_f5_1380;
+                sp320 = temp_f3_1379;
                 sp28 = (temp_f24_1094 * temp_f3_1379) - (temp_f25_1096 * temp_f4_1377);
                 sp2C = (temp_f25_1096 * temp_f5_1380) - (temp_f26_1097 * temp_f3_1379);
                 sp30 = (temp_f26_1097 * temp_f4_1377) - (temp_f24_1094 * temp_f5_1380);
-                sp2D8.unk30 = (f64) sp28;
-                temp_f0_1397 = M2C_BITWISE(f32, sp2D8.unk34);
-                sp2D8.unk38 = (f64) sp30;
+                sp308 = (f64) sp28;
+                sp310 = (f64) sp30;
                 sp1A8 = (f64) sp28;
                 sp1B0 = (f64) sp30;
-                var_f4_1406 = ((f32) sp2D8.unk38 * (f32) sp2D8.unk38) + (((f32) sp2D8.unk30 * (f32) sp2D8.unk30) + (temp_f0_1397 * temp_f0_1397));
+                var_f4_1406 = ((f32) sp310 * (f32) sp310) + (((f32) sp308 * (f32) sp308) + (unksp30C * unksp30C));
                 if (var_f4_1406 > 0.000001f) {
                     if (var_f4_1406 > 0.0f) {
                         temp_f1_1412 = __frsqrte(var_f4_1406);
@@ -958,20 +957,23 @@ loop_114:
                 spDC = 1.0f;
                 spE0 = 1.0f;
                 spE4 = 1.0f;
-                sp2D8.unk30 = (f32) sp2D8.unk30 * var_f2_1473;
+                sp308 = (f32) sp308 * var_f2_1473;
                 temp_f18_1504 = 4.0f * ((f32) var_r29_1176 / (f32) this->unk2B4);
-                sp2D8.unk34 = M2C_BITWISE(f32, sp2D8.unk34) * var_f2_1473;
-                sp2D8.unk38 = (f32) sp2D8.unk38 * var_f2_1473;
+                unksp30C *= var_f2_1473;
+                sp310 = (f32) sp310 * var_f2_1473;
                 sp198 = (f64) spD8;
                 sp1A0 = (f64) spE0;
                 MKSetColorV(*((MKVector4 *) &sp198));
                 MKSetTexCoord1F(temp_f18_1504, 0.95f);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                sp178 = spC8;
-                spD0 = sp2D8.unk38 * this->unkB4;
+                temp_f31_1513 = this->unkB4;
+                temp_f0_1515 = (f64) sp308 * (f64) temp_f31_1513;
+                spC8 = temp_f0_1515;
+                sp178 = temp_f0_1515;
+                spD0 = sp310 * temp_f31_1513;
                 sp180 = (f64) spD0;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp188 = spB8;
+                temp_f0_1526 = sp328 + temp_f0_1515;
+                spB8 = temp_f0_1526;
+                sp188 = temp_f0_1526;
                 spC0 = (f32) sp330 + (f32) sp180;
                 sp190 = (f64) spC0;
                 MKSetPositionV(*((MKVector3 *) &sp188));
@@ -984,12 +986,15 @@ loop_114:
                 sp170 = (f64) spB0;
                 MKSetColorV(*((MKVector4 *) &sp168));
                 MKSetTexCoord1F(temp_f18_1504, 0.05f);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp148 = sp98;
-                spA0 = sp2D8.unk38 * this->unkB4;
+                temp_f30_1555 = this->unkB4;
+                temp_f0_1557 = (f64) sp308 * (f64) temp_f30_1555;
+                sp98 = temp_f0_1557;
+                sp148 = temp_f0_1557;
+                spA0 = sp310 * temp_f30_1555;
                 sp150 = (f64) spA0;
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp158 = sp88;
+                temp_f0_1568 = sp328 - temp_f0_1557;
+                sp88 = temp_f0_1568;
+                sp158 = temp_f0_1568;
                 sp90 = (f32) sp330 - (f32) sp150;
                 sp160 = (f64) sp90;
                 MKSetPositionV(*((MKVector3 *) &sp158));
@@ -1219,101 +1224,97 @@ loop_33:
         do {
             temp_r31_1965 = this + var_r28_1962;
             temp_f1_1966 = M2C_FIELD(temp_r31_1965, f32 *, 0xCC);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_f1_1966 == 1.0f) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (temp_f1_1966 == 0.0f) {
-                    M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32), 0x94)(gMK, &sp48, 0, 0, M2C_FIELD(temp_r31_1965, void **, 0xC4), 1, 100.0f);
-                    EmitBurn(M2C_FIELD(temp_r31_1965, f32 *, 0xCC));
-                    if ((void *) M2C_FIELD(temp_r31_1965, void **, 0xC4) != NULL) {
-                        sp18 = 0.0f;
-                        spA0.GetMeasure(M2C_FIELD(temp_r31_1965, f32 *, 0xCC), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-                        temp_r4_2000 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
-                        M2C_FIELD(temp_r4_2000, f64 *, 0) = spA0;
-                        M2C_FIELD(temp_r4_2000, f64 *, 8) = spA8;
-                        temp_r3_2009 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
-                        M2C_FIELD(temp_r3_2009, f32 *, 0x2C) = (f32) (M2C_FIELD(temp_r3_2009, f32 *, 0x2C) + MKRand_Float(&gViewSeed, -1.0f, 1.0f));
-                    }
-                    M2C_FIELD(temp_r31_1965, f32 *, 0xCC) = (f32) ((M2C_FIELD(temp_r31_1965, f32 *, 0xD0) * (this->unk2A8 * gUpdateTimeDelta)) + M2C_FIELD(temp_r31_1965, f32 *, 0xCC));
-                    temp_r0_2021 = M2C_FIELD(temp_r31_1965, s32 *, 0xD4);
-                    if ((temp_r0_2021 != 0x64) && (temp_r0_2021 != -0x64)) {
-                        if (M2C_FIELD(temp_r31_1965, f32 *, 0xD0) == 1.0f) {
-                            temp_f1_2031 = M2C_FIELD(temp_r31_1965, f32 *, 0xCC);
-                            if (temp_f1_2031 > *(this + ((temp_r0_2021 * 0x3C) + 0xCC))) {
-                                sp20 = 0.0f;
-                                sp90.GetMeasure(temp_f1_2031, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-                                sp100 = sp90;
-                                sp108 = sp98;
-                                sp44 = 0;
-                                sp40 = 0x162;
-                                M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp40, 2, 1, &sp100, 1, 4.0f * this->unkB4);
-                                temp_r4_2065 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
-                                if (temp_r4_2065 != NULL) {
-                                    M2C_FIELD(temp_r4_2065, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2065, u8 *, 0x31) & ~0x40);
-                                }
-                                temp_r4_2076 = *(this + ((M2C_FIELD(temp_r31_1965, s32 *, 0xD4) * 0x3C) + 0xC4));
-                                if (temp_r4_2076 != NULL) {
-                                    M2C_FIELD(temp_r4_2076, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2076, u8 *, 0x31) & ~0x40);
-                                }
-                                M2C_FIELD(temp_r31_1965, f32 *, 0xCC) = 100.0f;
-                                *(this + ((M2C_FIELD(temp_r31_1965, s32 *, 0xD4) * 0x3C) + 0xCC)) = 100.0f;
-                                UpdatePartners();
+            if ((temp_f1_1966 <= 1.0f) && (temp_f1_1966 >= 0.0f)) {
+                M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32), 0x94)(gMK, &sp48, 0, 0, M2C_FIELD(temp_r31_1965, void **, 0xC4), 1, 100.0f);
+                EmitBurn(M2C_FIELD(temp_r31_1965, f32 *, 0xCC));
+                if ((void *) M2C_FIELD(temp_r31_1965, void **, 0xC4) != NULL) {
+                    sp18 = 0.0f;
+                    spA0.GetMeasure(M2C_FIELD(temp_r31_1965, f32 *, 0xCC), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+                    temp_r4_2000 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
+                    M2C_FIELD(temp_r4_2000, f64 *, 0) = spA0;
+                    M2C_FIELD(temp_r4_2000, f64 *, 8) = spA8;
+                    temp_r3_2009 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
+                    M2C_FIELD(temp_r3_2009, f32 *, 0x2C) = (f32) (M2C_FIELD(temp_r3_2009, f32 *, 0x2C) + MKRand_Float(&gViewSeed, -1.0f, 1.0f));
+                }
+                M2C_FIELD(temp_r31_1965, f32 *, 0xCC) = (f32) ((M2C_FIELD(temp_r31_1965, f32 *, 0xD0) * (this->unk2A8 * gUpdateTimeDelta)) + M2C_FIELD(temp_r31_1965, f32 *, 0xCC));
+                temp_r0_2021 = M2C_FIELD(temp_r31_1965, s32 *, 0xD4);
+                if ((temp_r0_2021 != 0x64) && (temp_r0_2021 != -0x64)) {
+                    if (M2C_FIELD(temp_r31_1965, f32 *, 0xD0) == 1.0f) {
+                        temp_f1_2031 = M2C_FIELD(temp_r31_1965, f32 *, 0xCC);
+                        if (temp_f1_2031 > *(this + ((temp_r0_2021 * 0x3C) + 0xCC))) {
+                            sp20 = 0.0f;
+                            sp90.GetMeasure(temp_f1_2031, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+                            sp100 = sp90;
+                            sp108 = sp98;
+                            sp44 = 0;
+                            sp40 = 0x162;
+                            M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp40, 2, 1, &sp100, 1, 4.0f * this->unkB4);
+                            temp_r4_2065 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
+                            if (temp_r4_2065 != NULL) {
+                                M2C_FIELD(temp_r4_2065, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2065, u8 *, 0x31) & ~0x40);
                             }
-                        } else {
-                            temp_f1_2095 = M2C_FIELD(temp_r31_1965, f32 *, 0xCC);
-                            if (temp_f1_2095 < *(this + ((temp_r0_2021 * 0x3C) + 0xCC))) {
-                                sp1C = 0.0f;
-                                sp80.GetMeasure(temp_f1_2095, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-                                spF0 = sp80;
-                                spF8 = sp88;
-                                sp3C = 0;
-                                sp38 = 0x162;
-                                M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp38, 2, 1, &spF0, 1, 4.0f * this->unkB4);
-                                temp_r4_2129 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
-                                if (temp_r4_2129 != NULL) {
-                                    M2C_FIELD(temp_r4_2129, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2129, u8 *, 0x31) & ~0x40);
-                                }
-                                temp_r4_2140 = *(this + ((M2C_FIELD(temp_r31_1965, s32 *, 0xD4) * 0x3C) + 0xC4));
-                                if (temp_r4_2140 != NULL) {
-                                    M2C_FIELD(temp_r4_2140, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2140, u8 *, 0x31) & ~0x40);
-                                }
-                                M2C_FIELD(temp_r31_1965, f32 *, 0xCC) = 100.0f;
-                                *(this + ((M2C_FIELD(temp_r31_1965, s32 *, 0xD4) * 0x3C) + 0xCC)) = 100.0f;
-                                UpdatePartners();
-                            }
-                        }
-                    } else {
-                        temp_f1_2158 = M2C_FIELD(temp_r31_1965, f32 *, 0xCC);
-                        if ((temp_f1_2158 > 1.0f) || (temp_f1_2158 < 0.0f)) {
-                            sp58 = 0.0f;
-                            sp50 = 0.0f;
-                            sp54 = 0.0f;
-                            spE8 = (f64) sp58;
-                            spD0.unk10 = (f64) sp50;
-                            if (M2C_FIELD(temp_r31_1965, f32 *, 0xCC) > 1.0f) {
-                                this->unk2B9 = 1;
-                                sp14 = 0.0f;
-                                sp70.GetMeasure(1.0f, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-                                spD0.unk10 = sp70;
-                                spE8 = sp78;
-                            }
-                            if (M2C_FIELD(temp_r31_1965, f32 *, 0xCC) < 0.0f) {
-                                this->unk2B8 = 1;
-                                sp10 = 0.0f;
-                                sp60.GetMeasure(0.0f, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
-                                spD0.unk10 = sp60;
-                                spE8 = sp68;
-                            }
-                            sp34 = 0;
-                            sp30 = 0x162;
-                            M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp30, 2, 1, &spD0.unk10, 1, 4.0f * this->unkB4);
-                            temp_r4_2227 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
-                            if (temp_r4_2227 != NULL) {
-                                M2C_FIELD(temp_r4_2227, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2227, u8 *, 0x31) & ~0x40);
+                            temp_r4_2076 = *(this + ((M2C_FIELD(temp_r31_1965, s32 *, 0xD4) * 0x3C) + 0xC4));
+                            if (temp_r4_2076 != NULL) {
+                                M2C_FIELD(temp_r4_2076, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2076, u8 *, 0x31) & ~0x40);
                             }
                             M2C_FIELD(temp_r31_1965, f32 *, 0xCC) = 100.0f;
+                            *(this + ((M2C_FIELD(temp_r31_1965, s32 *, 0xD4) * 0x3C) + 0xCC)) = 100.0f;
                             UpdatePartners();
                         }
+                    } else {
+                        temp_f1_2095 = M2C_FIELD(temp_r31_1965, f32 *, 0xCC);
+                        if (temp_f1_2095 < *(this + ((temp_r0_2021 * 0x3C) + 0xCC))) {
+                            sp1C = 0.0f;
+                            sp80.GetMeasure(temp_f1_2095, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+                            spF0 = sp80;
+                            spF8 = sp88;
+                            sp3C = 0;
+                            sp38 = 0x162;
+                            M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp38, 2, 1, &spF0, 1, 4.0f * this->unkB4);
+                            temp_r4_2129 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
+                            if (temp_r4_2129 != NULL) {
+                                M2C_FIELD(temp_r4_2129, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2129, u8 *, 0x31) & ~0x40);
+                            }
+                            temp_r4_2140 = *(this + ((M2C_FIELD(temp_r31_1965, s32 *, 0xD4) * 0x3C) + 0xC4));
+                            if (temp_r4_2140 != NULL) {
+                                M2C_FIELD(temp_r4_2140, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2140, u8 *, 0x31) & ~0x40);
+                            }
+                            M2C_FIELD(temp_r31_1965, f32 *, 0xCC) = 100.0f;
+                            *(this + ((M2C_FIELD(temp_r31_1965, s32 *, 0xD4) * 0x3C) + 0xCC)) = 100.0f;
+                            UpdatePartners();
+                        }
+                    }
+                } else {
+                    temp_f1_2158 = M2C_FIELD(temp_r31_1965, f32 *, 0xCC);
+                    if ((temp_f1_2158 > 1.0f) || (temp_f1_2158 < 0.0f)) {
+                        sp58 = 0.0f;
+                        sp50 = 0.0f;
+                        sp54 = 0.0f;
+                        spE8 = (f64) sp58;
+                        spD0.unk10 = (f64) sp50;
+                        if (M2C_FIELD(temp_r31_1965, f32 *, 0xCC) > 1.0f) {
+                            this->unk2B9 = 1;
+                            sp14 = 0.0f;
+                            sp70.GetMeasure(1.0f, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+                            spD0.unk10 = sp70;
+                            spE8 = sp78;
+                        }
+                        if (M2C_FIELD(temp_r31_1965, f32 *, 0xCC) < 0.0f) {
+                            this->unk2B8 = 1;
+                            sp10 = 0.0f;
+                            sp60.GetMeasure(0.0f, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
+                            spD0.unk10 = sp60;
+                            spE8 = sp68;
+                        }
+                        sp34 = 0;
+                        sp30 = 0x162;
+                        M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp30, 2, 1, &spD0.unk10, 1, 4.0f * this->unkB4);
+                        temp_r4_2227 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
+                        if (temp_r4_2227 != NULL) {
+                            M2C_FIELD(temp_r4_2227, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2227, u8 *, 0x31) & ~0x40);
+                        }
+                        M2C_FIELD(temp_r31_1965, f32 *, 0xCC) = 100.0f;
+                        UpdatePartners();
                     }
                 }
             }
@@ -1349,12 +1350,8 @@ u8 GunPowderFuse::IsBurntOut() {
     var_ctr_2292 = 8;
 loop_1:
     temp_f2_2295 = *(this + (var_r4_2291 + 0xCC));
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f2_2295 == 1.0f) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f2_2295 == 0.0f) {
-            return 0U;
-        }
+    if ((temp_f2_2295 <= 1.0f) && (temp_f2_2295 >= 0.0f)) {
+        return 0U;
     }
     var_r4_2291 += 0x3C;
     var_ctr_2292 -= 1;
@@ -1379,12 +1376,8 @@ u8 GunPowderFuse::IsBurning() {
     var_ctr_2328 = 8;
 loop_1:
     temp_f2_2331 = *(this + (var_r4_2327 + 0xCC));
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f2_2331 == 1.0f) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f2_2331 == 0.0f) {
-            return 1U;
-        }
+    if ((temp_f2_2331 <= 1.0f) && (temp_f2_2331 >= 0.0f)) {
+        return 1U;
     }
     var_r4_2327 += 0x3C;
     var_ctr_2328 -= 1;
@@ -1422,8 +1415,7 @@ void GunPowderFuse::Burn(float arg0) {
 loop_7:
         temp_r3_2394 = this + var_r30_2392;
         temp_f1_2395 = M2C_FIELD(temp_r3_2394, f32 *, 0xCC);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((temp_f1_2395 != 1.0f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_2395 == 0.0f) == 0))) {
+        if (!(temp_f1_2395 <= 1.0f) || !(temp_f1_2395 >= 0.0f)) {
             if (var_r29_2388 != 0) {
                 temp_r3_2407 = this + var_r30_2392;
                 M2C_FIELD(temp_r3_2407, f32 *, 0xD0) = -1.0f;

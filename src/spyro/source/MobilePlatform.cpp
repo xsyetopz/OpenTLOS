@@ -82,6 +82,7 @@ void MobilePlatform::SetYaw(float arg0, float arg1) {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -105,8 +106,7 @@ void MobilePlatform::SetYaw(float arg0, float arg1) {
         if (((((f32) spB8.unk28 * (f32) spB8.unk28) + ((temp_f2_158 * temp_f2_158) + (0.0f * 0.0f))) < 0.0001f) && (arg0 == 0.0f)) {
             sp88.GetAcceleration(arg0);
             sp88.unk10.ToWorldDir(*((MKVector3 *) &this->unk150));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            sp28 = sp88.unk10 * 5.811479333e-315;
             spA8 = sp28;
             sp30 = spA0 * 10000.0f;
             spB8.unk20 = sp28;
@@ -179,7 +179,7 @@ void MobilePlatform::UpdateScale() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'sp48'
+#if 0 // DRAFT: illegal implicit conversion from 'MobilePlatform *' to
 void MobilePlatform::UpdateMove() {
     f64 spD0;
     f64 spC8;
@@ -195,10 +195,12 @@ void MobilePlatform::UpdateMove() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     s32 sp20;
     s32 sp1C;
     s32 sp18;
@@ -215,6 +217,8 @@ void MobilePlatform::UpdateMove() {
     f32 temp_f1_587;
     f32 temp_f2_527;
     f32 var_f31_491;
+    f64 temp_f0_471;
+    f64 temp_f0_708;
     s32 temp_r0_486;
     s32 temp_r0_540;
     s32 temp_r3_510;
@@ -225,9 +229,9 @@ void MobilePlatform::UpdateMove() {
         sp5C = -this->unk244;
         spD0 = (f64) sp60;
         spC8 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spA8 = sp48;
+        temp_f0_471 = M2C_FIELD(this, f64 *, 0x250) + spC8;
+        sp48 = temp_f0_471;
+        spA8 = temp_f0_471;
         sp50 = M2C_FIELD(this, f32 *, 0x258) + (f32) spD0;
         spB0 = (f64) sp50;
         MKModel_SetPosition(this->unk4, *((MKVector3 *) &spA8));
@@ -256,7 +260,7 @@ void MobilePlatform::UpdateMove() {
         M2C_FIELD(this, s8 *, 0x218) = 1;
         if ((u8) this->unk1EC != 0) {
             temp_r0_540 = this->unk184;
-            if ((temp_r0_540 == 0) && ((temp_f1_543 = M2C_FIELD(this, f32 *, 0x1F4), M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((var_f31_491 == temp_f1_543) != 0)) || (M2C_BITWISE(f32, this->unk1F0) > var_f31_491))) {
+            if ((temp_r0_540 == 0) && ((temp_f1_543 = M2C_FIELD(this, f32 *, 0x1F4), ((var_f31_491 >= temp_f1_543) != 0)) || (M2C_BITWISE(f32, this->unk1F0) > var_f31_491))) {
                 sp20 = 0;
                 var_f31_491 = temp_f1_543;
                 sp1C = 0xB4;
@@ -267,7 +271,7 @@ void MobilePlatform::UpdateMove() {
                     KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x138), temp_r30_571, 0U, -1, 0.0f, 0U);
                 }
                 this->unk1F0 = -1.0f;
-            } else if ((temp_r0_540 == 1) && ((temp_f1_587 = M2C_FIELD(this, f32 *, 0x1F4), M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((var_f31_491 == temp_f1_587) != 0)) || (M2C_BITWISE(f32, this->unk1F0) < var_f31_491))) {
+            } else if ((temp_r0_540 == 1) && ((temp_f1_587 = M2C_FIELD(this, f32 *, 0x1F4), ((var_f31_491 <= temp_f1_587) != 0)) || (M2C_BITWISE(f32, this->unk1F0) < var_f31_491))) {
                 sp18 = 0;
                 var_f31_491 = temp_f1_587;
                 sp14 = 0xB4;
@@ -307,9 +311,9 @@ void MobilePlatform::UpdateMove() {
     sp3C = -this->unk244;
     spC0 = (f64) sp40;
     spB8 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp68 = sp28;
+    temp_f0_708 = M2C_FIELD(this, f64 *, 0x250) + spB8;
+    sp28 = temp_f0_708;
+    sp68 = temp_f0_708;
     sp30 = M2C_FIELD(this, f32 *, 0x258) + (f32) spC0;
     sp70 = (f64) sp30;
     MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp68));
@@ -410,8 +414,7 @@ block_73:
     case 0x23:
         temp_f2_933 = this->unk208;
         temp_r29_934 = checked_cast<PlatformAttachDetachMsg *, MKMessage>(arg0);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (((temp_f2_933 != 1.0f) || !(M2C_FIELD(this, f32 *, 0x214) > 0.0f)) && ((M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f2_933 == 0.0f) == 0)) || !(M2C_FIELD(this, f32 *, 0x214) < 0.0f)) && !(M2C_BITWISE(f32, this->unk200.unk0) > 0.0f)) {
+        if ((!(temp_f2_933 >= 1.0f) || !(M2C_FIELD(this, f32 *, 0x214) > 0.0f)) && (!(temp_f2_933 <= 0.0f) || !(M2C_FIELD(this, f32 *, 0x214) < 0.0f)) && !(M2C_BITWISE(f32, this->unk200.unk0) > 0.0f)) {
             M2C_FIELD(temp_r29_934, s8 *, 0xC) = 0;
             return;
         }
@@ -511,14 +514,13 @@ void MobilePlatform::PropUpdate() {
         return;
     }
     temp_f2_1213 = this->unk208;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (((temp_f2_1213 == 1.0f) && (M2C_FIELD(this, f32 *, 0x214) > 0.0f)) || ((M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f2_1213 == 0.0f) != 0)) && (M2C_FIELD(this, f32 *, 0x214) < 0.0f))) {
+    if (((temp_f2_1213 >= 1.0f) && (M2C_FIELD(this, f32 *, 0x214) > 0.0f)) || ((temp_f2_1213 <= 0.0f) && (M2C_FIELD(this, f32 *, 0x214) < 0.0f))) {
         this->unk70.unk4 = 1;
     }
     UpdateSag();
     Platform::PropUpdate();
     temp_f2_1238 = M2C_BITWISE(f32, this->unk200.unk0);
-    if ((temp_f2_1238 > 0.0f) && (temp_f0_1243 = temp_f2_1238 - gUpdateTimeDelta, this->unk200.unk0 = temp_f0_1243, M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f0_1243 == 0.0f) != 0))) {
+    if ((temp_f2_1238 > 0.0f) && (temp_f0_1243 = temp_f2_1238 - gUpdateTimeDelta, this->unk200.unk0 = temp_f0_1243, M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */), ((temp_f0_1243 == 0.0f) != 0))) {
         this->unk200.unk0 = -1.0f;
         if ((u8) M2C_FIELD(this, u8 *, 0x20C) != 0) {
             this->unk1F8.Send((MKProp *) this);

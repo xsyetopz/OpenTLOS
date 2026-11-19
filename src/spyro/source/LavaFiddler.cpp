@@ -81,7 +81,7 @@ void LavaFiddlerCritter::SetIdleState(LavaFiddler *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp98'
+#if 0 // DRAFT: expression syntax error
 void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     s8 sp258;
     s32 sp254;
@@ -146,19 +146,24 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     f32 spCC;
     f32 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -181,6 +186,9 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     f32 var_f7_446;
     f32 var_f8_461;
     f32 var_f8_551;
+    f64 temp_f0_263;
+    f64 temp_f0_326;
+    f64 temp_f0_351;
     f64 temp_f1_376;
     f64 temp_f1_382;
     f64 temp_f1_386;
@@ -236,7 +244,7 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     sp258 = 0;
     sp158 = (f64) spA8;
     sp160 = (f64) spB0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+    sp98 = sp1F8 + sp158;
     spD0 = 0.0f;
     spC8 = 0.0f;
     spCC = 200.0f;
@@ -245,8 +253,9 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     sp168 = sp98;
     sp170 = (f64) spA0;
     sp180 = (f64) spD0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
-    sp188 = spB8;
+    temp_f0_263 = sp1F8 + sp178;
+    spB8 = temp_f0_263;
+    sp188 = temp_f0_263;
     spC0 = (f32) sp200 + (f32) sp180;
     sp190 = (f64) spC0;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp188), *((MKVector3 *) &sp168), (MKCollisionResult *) &sp208, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -263,7 +272,7 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     sp108 = (f64) sp68;
     sp1E0 = sp150;
     sp110 = (f64) sp70;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
+    sp58 = sp1D8 + sp108;
     sp90 = 0.0f;
     sp88 = 0.0f;
     sp8C = 200.0f;
@@ -272,18 +281,19 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
     sp118 = sp58;
     sp120 = (f64) sp60;
     sp130 = (f64) sp90;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
-    sp138 = sp78;
+    temp_f0_326 = sp1D8 + sp128;
+    sp78 = temp_f0_326;
+    sp138 = temp_f0_326;
     sp80 = (f32) sp1E0 + (f32) sp130;
     sp140 = (f64) sp80;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp138), *((MKVector3 *) &sp118), (MKCollisionResult *) &sp208, (MKCollisionMode) 4, 0x0C000000) != 0) {
         sp1D8 = (f64) sp208;
         sp1E0 = (f64) sp210;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_351 = sp1D8 - arg0->unk30;
+    sp48 = temp_f0_351;
     temp_f3_357 = arg0->unk4;
-    sp1C8 = sp48;
+    sp1C8 = temp_f0_351;
     sp50 = (f32) sp1E0 - (f32) M2C_FIELD(arg0, f64 *, 0x38);
     unksp1CC = temp_f3_357;
     sp1D0 = (f64) sp50;
@@ -490,7 +500,6 @@ void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void LavaFiddlerCritter::SetHideState(LavaFiddler *arg0) {
     s8 spD8;
     s32 spD4;
@@ -525,11 +534,15 @@ void LavaFiddlerCritter::SetHideState(LavaFiddler *arg0) {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f4_895;
+    f64 temp_f0_910;
+    f64 temp_f5_889;
     s32 temp_r0_820;
     s32 temp_r31_831;
 
@@ -570,8 +583,8 @@ void LavaFiddlerCritter::SetHideState(LavaFiddler *arg0) {
         spD0 = 0;
         spD4 = -1;
         spD8 = 0;
-        M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r6, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+        temp_f5_889 = arg0->unk30;
+        sp8 = temp_f5_889 + sp48;
         sp40 = 0.0f;
         temp_f4_895 = M2C_FIELD(arg0, f32 *, 0x38);
         sp38 = 0.0f;
@@ -581,12 +594,13 @@ void LavaFiddlerCritter::SetHideState(LavaFiddler *arg0) {
         sp60 = (f64) sp10;
         sp68 = (f64) sp38;
         sp70 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-        sp78 = sp28;
+        temp_f0_910 = temp_f5_889 + sp68;
+        sp28 = temp_f0_910;
+        sp78 = temp_f0_910;
         sp30 = temp_f4_895 + (f32) sp70;
         sp80 = (f64) sp30;
         if (MKCollision_RayCollide(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58), (MKCollisionResult *) &sp88, (MKCollisionMode) 4, 0x0C000000) != 0) {
-            M2C_FIELD(arg0, f32 *, 0x30) = sp88;
+            M2C_FIELD(arg0, f64 *, 0x30) = sp88;
             M2C_FIELD(arg0, f32 *, 0x34) = sp8C;
             M2C_FIELD(arg0, f32 *, 0x38) = sp90;
             M2C_FIELD(arg0, f32 *, 0x3C) = 1.0f;
@@ -597,7 +611,6 @@ void LavaFiddlerCritter::SetHideState(LavaFiddler *arg0) {
         return;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void LavaFiddlerCritter::Update() {
@@ -645,20 +658,28 @@ void LavaFiddlerCritter::Update() {
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     LavaFiddler *temp_r30_957;
     f32 temp_f0_1047;
     f32 temp_f1_1178;
     f32 temp_f1_981;
     f32 temp_f4_1094;
+    f64 temp_f0_1029;
+    f64 temp_f0_1109;
+    f64 temp_f1_1242;
+    f64 temp_f5_1088;
     s32 temp_r0_1225;
     s32 temp_r0_966;
     s32 temp_r27_1151;
@@ -681,8 +702,7 @@ loop_35:
             if (temp_f1_981 > 1.0f) {
                 temp_r30_957->unk54 = temp_f1_981 - 1.0f;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r30_957->unk64 == 0.0f) {
+            if (temp_r30_957->unk64 <= 0.0f) {
                 FindNewWalkParameters(temp_r30_957);
             }
             break;
@@ -699,11 +719,11 @@ loop_35:
                 sp110 = (f64) sp20;
             }
             spD8.operator*(25.0f * gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spE8 = sp8;
+            temp_f0_1029 = temp_r30_957->unk30 + M2C_BITWISE(f64, spD8);
+            sp8 = temp_f0_1029;
+            spE8 = temp_f0_1029;
             sp10 = M2C_FIELD(temp_r30_957, f32 *, 0x38) + spD8.unk8;
-            M2C_FIELD(temp_r30_957, f32 *, 0x30) = (f32) spE8;
+            M2C_FIELD(temp_r30_957, f64 *, 0x30) = (f32) spE8;
             spF0 = (f64) sp10;
             M2C_FIELD(temp_r30_957, f32 *, 0x34) = unkspEC;
             M2C_FIELD(temp_r30_957, f32 *, 0x38) = (f32) spF0;
@@ -738,8 +758,8 @@ loop_35:
             sp168 = 0;
             sp98 = (f64) sp48;
             spA0 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+            temp_f5_1088 = temp_r30_957->unk30;
+            sp38 = temp_f5_1088 + sp98;
             sp70 = 0.0f;
             temp_f4_1094 = M2C_FIELD(temp_r30_957, f32 *, 0x38);
             sp68 = 0.0f;
@@ -749,18 +769,18 @@ loop_35:
             spA8 = sp38;
             spB0 = (f64) sp40;
             spC0 = (f64) sp70;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-            spC8 = sp58;
+            temp_f0_1109 = temp_f5_1088 + spB8;
+            sp58 = temp_f0_1109;
+            spC8 = temp_f0_1109;
             sp60 = temp_f4_1094 + (f32) spC0;
             spD0 = (f64) sp60;
             if (MKCollision_RayCollide(*((MKVector3 *) &spC8), *((MKVector3 *) &spA8), (MKCollisionResult *) &sp118, (MKCollisionMode) 4, 0x0C000000) != 0) {
-                M2C_FIELD(temp_r30_957, f32 *, 0x30) = sp118;
+                M2C_FIELD(temp_r30_957, f64 *, 0x30) = sp118;
                 M2C_FIELD(temp_r30_957, f32 *, 0x34) = sp11C;
                 M2C_FIELD(temp_r30_957, f32 *, 0x38) = sp120;
                 M2C_FIELD(temp_r30_957, f32 *, 0x3C) = 1.0f;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r30_957->unk64 == 0.0f) {
+            if (temp_r30_957->unk64 <= 0.0f) {
                 SetIdleState(temp_r30_957);
             }
             break;
@@ -779,8 +799,7 @@ loop_35:
             if (temp_f1_1178 > 1.0f) {
                 temp_r30_957->unk54 = temp_f1_1178 - 1.0f;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r30_957->unk64 == 0.0f) {
+            if (temp_r30_957->unk64 <= 0.0f) {
                 temp_r30_957->unk60 = 3;
                 temp_r27_1192 = temp_r30_957->unk60;
                 temp_r30_957->unk50 = *(checked_cast<LavaFiddlerCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_1192 * 4) + 0x70));
@@ -797,15 +816,14 @@ loop_35:
         temp_r0_1225 = temp_r30_957->unk60;
         if ((temp_r0_1225 == 0) || (temp_r0_1225 == 4) || (temp_r0_1225 == 5)) {
             temp_r3_1241 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
-            sp78 = M2C_FIELD(temp_r3_1241, f64 *, 0x30);
+            temp_f1_1242 = M2C_FIELD(temp_r3_1241, f64 *, 0x30);
+            sp78 = temp_f1_1242;
             sp80 = M2C_FIELD(temp_r3_1241, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp28 = temp_f1_1242 - temp_r30_957->unk30;
             sp88 = sp28;
             sp30 = (f32) sp80 - M2C_FIELD(temp_r30_957, f32 *, 0x38);
             sp90 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) == 250000.0f) {
+            if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) <= 250000.0f) {
                 SetHideState(temp_r30_957);
             }
         }
@@ -842,10 +860,12 @@ void LavaFiddlerCritter::Resolve() {
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -860,6 +880,7 @@ void LavaFiddlerCritter::Resolve() {
     f32 temp_f1_1437;
     f32 var_f3_1511;
     f32 var_f4_1444;
+    f64 temp_f0_1393;
     f64 temp_f1_1450;
     f64 temp_f1_1456;
     f64 temp_f1_1460;
@@ -910,7 +931,7 @@ loop_24:
         sp18C = -1;
         sp190 = 0;
         spC8 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+        sp40 = sp100.unk30 + spC0;
         sp78 = 0.0f;
         sp70 = 0.0f;
         sp74 = 200.0f;
@@ -919,8 +940,9 @@ loop_24:
         spD0 = sp40;
         spD8 = (f64) sp48;
         spE8 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-        spF0 = sp60;
+        temp_f0_1393 = sp100.unk30 + spE0;
+        sp60 = temp_f0_1393;
+        spF0 = temp_f0_1393;
         sp68 = (f32) sp100.unk38 + (f32) spE8;
         spF8 = (f64) sp68;
         if (MKCollision_RayCollide(*((MKVector3 *) &spF0), *((MKVector3 *) &spD0), (MKCollisionResult *) &sp100.unk40, (MKCollisionMode) 4, 0x0C000000) != 0) {

@@ -27,13 +27,19 @@ void FloatingPlatform::UpdateMove() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_169;
     f32 temp_f1_92;
     f32 temp_f2_154;
+    f32 temp_f5_116;
     f32 var_f0_76;
+    f64 temp_f0_123;
+    f64 temp_f0_133;
 
     if ((u8) this->unk1B0 == 0) {
         SetPos(this->unk1B8);
@@ -67,29 +73,29 @@ void FloatingPlatform::UpdateMove() {
         M2C_FIELD(this, f64 *, 0x1B8) = M2C_BITWISE(f64, sp50);
         M2C_FIELD(this, f64 *, 0x1C0) = (f64) sp50.unk8;
     } else {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-        sp40 = sp30;
-        sp38 = MKVector3::up.unk8 * this->unk180;
+        temp_f5_116 = this->unk180;
+        temp_f0_123 = M2C_FIELD(&MKVector3::up, f64 *, 0) * (f64) temp_f5_116;
+        sp30 = temp_f0_123;
+        sp40 = temp_f0_123;
+        sp38 = MKVector3::up.unk8 * temp_f5_116;
         sp48 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f4 */);
-        sp70 = sp20;
+        temp_f0_133 = temp_f0_123 * (f64) gUpdateTimeDelta;
+        sp20 = temp_f0_133;
+        sp70 = temp_f0_133;
         sp28 = (f32) sp48 * gUpdateTimeDelta;
         sp78 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp10 = M2C_FIELD(this, f64 *, 0x1B8) + temp_f0_133;
         sp50.unk10 = sp10;
         temp_f2_154 = this->unk184 + this->unk188;
         sp18 = this->unk1B8.unk8 + (f32) sp78;
         sp68 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+        M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
         if (sp64 == temp_f2_154) {
             sp64 = temp_f2_154;
             this->unk180 = 0.0f;
         }
         temp_f1_169 = this->unk184 + this->unk18C;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (sp64 == temp_f1_169) {
+        if (sp64 >= temp_f1_169) {
             sp64 = temp_f1_169;
             this->unk180 = 0.0f;
         }
@@ -123,9 +129,15 @@ void FloatingPlatform::PropUpdate() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
+    f64 temp_f0_265;
+    f64 temp_f0_294;
+    void *temp_r4_263;
+    void *temp_r4_292;
 
     Platform::PropUpdate();
     if ((u8) this->unk1B0 != 0) {
@@ -135,19 +147,21 @@ void FloatingPlatform::PropUpdate() {
         }
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk190, &sp50);
         if (MKRand_Int(&gViewSeed, 0, 3) == 0) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp40 = sp20;
-            sp28 = M2C_FIELD((this->unk8 + 0x10), f32 *, 8) * 150.0f;
+            temp_r4_263 = this->unk8 + 0x10;
+            temp_f0_265 = M2C_FIELD(temp_r4_263, f64 *, 0) * 5.56078426e-315;
+            sp20 = temp_f0_265;
+            sp40 = temp_f0_265;
+            sp28 = M2C_FIELD(temp_r4_263, f32 *, 8) * 150.0f;
             sp48 = (f64) sp28;
             spC = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
             ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(sp50, *((MKVector3 *) &sp40), spC);
         }
         if ((s32) this->unk108.unk38 > 0) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp30 = sp10;
-            sp18 = M2C_FIELD((this->unk8 + 0x10), f32 *, 8) * -1000.0f;
+            temp_r4_292 = this->unk8 + 0x10;
+            temp_f0_294 = M2C_FIELD(temp_r4_292, f64 *, 0) * 1.628603276e-314;
+            sp10 = temp_f0_294;
+            sp30 = temp_f0_294;
+            sp18 = M2C_FIELD(temp_r4_292, f32 *, 8) * -1000.0f;
             sp38 = (f64) sp18;
             sp8 = MKRand_Float(&gViewSeed, 2.0f, 8.0f);
             ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(sp50, *((MKVector3 *) &sp30), sp8);

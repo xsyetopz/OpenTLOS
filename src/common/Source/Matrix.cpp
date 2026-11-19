@@ -385,38 +385,46 @@ void Matrix::Multiply3x3(const Matrix *arg0, const Matrix *arg1) {
     this->unk2C = 0.0f;
 }
 
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix *' to
 f32 Matrix::Multiply(const Matrix *arg0, const Matrix *arg1) {
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f13, $f8, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f31, $f8, $f2 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f29, $f8, $f6 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f30, $f8, $f4 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f13, $f10, $f0, $f13 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f31, $f10, $f2, $f31 */);
-    M2C_ERROR(/* unknown instruction: ps_merge00 $f11, $f9, $f11 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f13, $f8, $f1, $f13 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f29, $f10, $f6, $f29 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f30, $f10, $f4, $f30 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f31, $f8, $f3, $f31 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f10, $f1, $f1 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f13, $f0, $f11 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f29, $f8, $f7, $f29 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f30, $f8, $f5, $f30 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f2, $f2, $f11 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f6, $f6, $f11 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f4, $f4, $f11 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f29, $f29, $f9 */);
-    M2C_ERROR(/* unknown instruction: ps_merge00 $f12, $f12, $f10 */);
-    M2C_ERROR(/* unknown instruction: ps_sum0 $f13, $f13, $f10, $f13 */);
-    M2C_ERROR(/* unknown instruction: ps_sum0 $f2, $f2, $f10, $f2 */);
-    M2C_ERROR(/* unknown instruction: ps_sum0 $f6, $f6, $f10, $f6 */);
-    M2C_ERROR(/* unknown instruction: ps_madd $f13, $f1, $f12, $f13 */);
-    M2C_ERROR(/* unknown instruction: ps_sum0 $f4, $f4, $f10, $f4 */);
-    M2C_ERROR(/* unknown instruction: ps_madd $f6, $f7, $f12, $f6 */);
-    M2C_ERROR(/* unknown instruction: ps_madd $f2, $f3, $f12, $f2 */);
-    M2C_ERROR(/* unknown instruction: ps_madd $f4, $f5, $f12, $f4 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f6, $f6, $f0 */);
-    return arg0->unk8;
+    f32 temp_f12_872;
+    f32 temp_f1_856;
+    f32 temp_f3_864;
+    f32 temp_f5_868;
+    f32 temp_f7_866;
+    f32 temp_f9_858;
+    f64 temp_f0_847;
+    f64 temp_f10_852;
+    f64 temp_f2_849;
+    f64 temp_f4_854;
+    f64 temp_f6_850;
+    f64 temp_f8_848;
+    f64 temp_f8_861;
+
+    temp_f0_847 = M2C_FIELD(arg0, f64 *, 0);
+    temp_f8_848 = M2C_FIELD(arg1, f64 *, 0);
+    temp_f2_849 = M2C_FIELD(arg0, f64 *, 0x10);
+    temp_f6_850 = M2C_FIELD(arg0, f64 *, 0x30);
+    temp_f10_852 = M2C_FIELD(arg1, f64 *, 0x10);
+    temp_f4_854 = M2C_FIELD(arg0, f64 *, 0x20);
+    temp_f1_856 = arg0->unk8;
+    temp_f9_858 = arg1->unk8;
+    temp_f8_861 = M2C_FIELD(arg1, f64 *, 0x20);
+    temp_f3_864 = arg0->unk18;
+    temp_f7_866 = arg0->unk38;
+    temp_f5_868 = arg0->unk28;
+    M2C_FIELD(this, f64 *, 0) = (f64) ((temp_f8_861 * (f64) temp_f1_856) + ((temp_f10_852 * temp_f0_847) + (temp_f8_848 * temp_f0_847)));
+    temp_f12_872 = arg1->unk28;
+    M2C_FIELD(this, f64 *, 0x10) = (f64) ((temp_f8_861 * (f64) temp_f3_864) + ((temp_f10_852 * temp_f2_849) + (temp_f8_848 * temp_f2_849)));
+    M2C_FIELD(this, f64 *, 0x20) = (f64) ((temp_f8_861 * (f64) temp_f5_868) + ((temp_f10_852 * temp_f4_854) + (temp_f8_848 * temp_f4_854)));
+    M2C_FIELD(this, f64 *, 0x30) = (f64) ((temp_f8_861 * (f64) temp_f7_866) + ((temp_f10_852 * temp_f6_850) + (temp_f8_848 * temp_f6_850)) + M2C_FIELD(arg1, f64 *, 0x30));
+    M2C_FIELD(this, f64 *, 8) = (f64) (((f64) temp_f1_856 * (f64) temp_f12_872) + (2.0 * (temp_f0_847 * (f64) temp_f9_858)));
+    M2C_FIELD(this, f64 *, 0x18) = (f64) (((f64) temp_f3_864 * (f64) temp_f12_872) + (2.0 * (temp_f2_849 * (f64) temp_f9_858)));
+    M2C_FIELD(this, f64 *, 0x28) = (f64) (((f64) temp_f5_868 * (f64) temp_f12_872) + (2.0 * (temp_f4_854 * (f64) temp_f9_858)));
+    M2C_FIELD(this, f64 *, 0x38) = (f64) (((f64) temp_f7_866 * (f64) temp_f12_872) + (2.0 * (temp_f6_850 * (f64) temp_f9_858)) + M2C_FIELD(arg1, f64 *, 0x38));
+    return M2C_BITWISE(f32, this);
 }
+#endif
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Matrix::InverseSimple(const Matrix *arg0) {
@@ -505,7 +513,7 @@ void Matrix::Transpose(const Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: undefined identifier 'unksp8C'
 void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
     f32 spB0;                                       /* compiler-managed */
     f32 spAC;
@@ -524,6 +532,7 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -531,9 +540,7 @@ void Matrix::SetLookAt(const MKVector3 &arg0, const MKVector3 &arg1) {
     f32 spC;
     f32 sp8;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp28 = M2C_FIELD(&arg1, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0);
     sp88 = sp28;
     sp30 = arg1.unk8 - arg0.unk8;
     sp78 = sp28;

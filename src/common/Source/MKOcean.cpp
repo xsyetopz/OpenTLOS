@@ -51,6 +51,7 @@ void MKOcean::BuildOceanWaves() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -71,6 +72,7 @@ void MKOcean::BuildOceanWaves() {
     f32 var_f20_206;
     f32 var_f24_102;
     f32 var_f4_218;
+    f64 temp_f0_160;
     f64 temp_f1_221;
     f64 temp_f1_227;
     f64 temp_f1_231;
@@ -115,8 +117,9 @@ void MKOcean::BuildOceanWaves() {
         sp34 = 0.0f;
         sp60 = (f64) sp30;
         sp68 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f21 */);
-        sp50 = sp20;
+        temp_f0_160 = sp60 * (f64) temp_f21_151;
+        sp20 = temp_f0_160;
+        sp50 = temp_f0_160;
         sp28 = (f32) sp68 * temp_f21_151;
         sp58 = (f64) sp28;
         temp_f20_171 = _table_sinf(1.5707964f + temp_f22_140);

@@ -25,11 +25,12 @@ void SpawnEffectBox::Update() {
     f64 sp50;
     f64 sp48;
     f64 sp40;
-    M2C_UNK sp30;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     s32 spC;
     s32 sp8;
     MKModel *temp_r3_118;
@@ -38,41 +39,40 @@ void SpawnEffectBox::Update() {
     f32 temp_f30_85;
     f32 temp_f31_74;
     f32 temp_f31_90;
+    f64 temp_f0_104;
     s32 temp_r5_126;
     void *temp_r31_117;
 
-    if ((u8) this->unkF0 != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unkFC) {
-            this->unkFC = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float(&gViewSeed, this->unkF4, this->unkF8);
-            temp_f29_71 = this->unk50.GetWidth();
-            temp_f31_74 = this->unk50.GetHeight();
-            temp_f30_77 = this->unk50.GetDepth();
-            sp30.GetCenterPos();
-            temp_f30_85 = MKRand_Float(&gViewSeed, -temp_f30_77, temp_f30_77);
-            temp_f31_90 = MKRand_Float(&gViewSeed, -temp_f31_74, temp_f31_74);
-            sp20 = MKRand_Float(&gViewSeed, -temp_f29_71, temp_f29_71);
-            sp24 = temp_f31_90;
-            sp28 = temp_f30_85;
-            sp40 = (f64) sp20;
-            sp48 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp50 = sp10;
-            sp18 = (f32) sp48 + sp38;
-            sp58 = (f64) sp18;
-            temp_r31_117 = *(this->unkE4 + (this->unkEC * 4));
-            temp_r3_118 = M2C_FIELD(temp_r31_117, MKModel **, 4);
-            if (temp_r3_118 != NULL) {
-                MKModel_SetPosition(temp_r3_118, *((MKVector3 *) &sp50));
-            }
-            temp_r5_126 = M2C_FIELD(checked_cast<SpawnEffectBoxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60);
-            spC = 0;
-            sp8 = temp_r5_126;
-            M2C_FIELD(M2C_FIELD(temp_r31_117, void **, 0x44), M2C_UNK (**)(void *, s32 *, s32), 0x2C)(temp_r31_117, &sp8, temp_r5_126);
-            this->unkEC += 1;
-            if ((s32) this->unkEC == (s32) this->unkE8) {
-                this->unkEC = 0;
-            }
+    if (((u8) this->unkF0 != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkFC)) {
+        this->unkFC = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float(&gViewSeed, this->unkF4, this->unkF8);
+        temp_f29_71 = this->unk50.GetWidth();
+        temp_f31_74 = this->unk50.GetHeight();
+        temp_f30_77 = this->unk50.GetDepth();
+        sp30.GetCenterPos();
+        temp_f30_85 = MKRand_Float(&gViewSeed, -temp_f30_77, temp_f30_77);
+        temp_f31_90 = MKRand_Float(&gViewSeed, -temp_f31_74, temp_f31_74);
+        sp20 = MKRand_Float(&gViewSeed, -temp_f29_71, temp_f29_71);
+        sp24 = temp_f31_90;
+        sp28 = temp_f30_85;
+        sp40 = (f64) sp20;
+        sp48 = (f64) sp28;
+        temp_f0_104 = (f64) sp20 + sp30;
+        sp10 = temp_f0_104;
+        sp50 = temp_f0_104;
+        sp18 = (f32) sp48 + sp38;
+        sp58 = (f64) sp18;
+        temp_r31_117 = *(this->unkE4 + (this->unkEC * 4));
+        temp_r3_118 = M2C_FIELD(temp_r31_117, MKModel **, 4);
+        if (temp_r3_118 != NULL) {
+            MKModel_SetPosition(temp_r3_118, *((MKVector3 *) &sp50));
+        }
+        temp_r5_126 = M2C_FIELD(checked_cast<SpawnEffectBoxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60);
+        spC = 0;
+        sp8 = temp_r5_126;
+        M2C_FIELD(M2C_FIELD(temp_r31_117, void **, 0x44), M2C_UNK (**)(void *, s32 *, s32), 0x2C)(temp_r31_117, &sp8, temp_r5_126);
+        this->unkEC += 1;
+        if ((s32) this->unkEC == (s32) this->unkE8) {
+            this->unkEC = 0;
         }
     }
 }

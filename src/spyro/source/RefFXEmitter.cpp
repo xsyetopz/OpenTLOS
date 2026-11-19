@@ -32,9 +32,11 @@ void RefFXEmitter::Update() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 temp_f2_71;
     f32 temp_f31_137;
+    f64 temp_f0_151;
     u8 var_r0_70;
     void *temp_r31_132;
 
@@ -47,8 +49,7 @@ void RefFXEmitter::Update() {
         var_r0_70 = 1;
     } else if (temp_f2_71 > 0.0f) {
         this->unk90 = temp_f2_71 - gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk90 == 0.0f) {
+        if (this->unk90 <= 0.0f) {
             this->unk90 = MKRand_Float(&gViewSeed, -1.0f, -0.2f);
         }
         var_r0_70 = 1;
@@ -67,8 +68,9 @@ void RefFXEmitter::Update() {
         sp30 = -sp60.unk18;
         sp38 = (f64) sp28;
         sp40 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp48 = sp18;
+        temp_f0_151 = sp38 * (f64) temp_f31_137;
+        sp18 = temp_f0_151;
+        sp48 = temp_f0_151;
         sp20 = (f32) sp40 * temp_f31_137;
         sp50 = (f64) sp20;
         sp10 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);

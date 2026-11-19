@@ -63,7 +63,7 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     f64 sp110;
     f64 sp108;
     f64 sp100;
-    M2C_UNK spF0;
+    f64 spF0;
     f64 spE8;
     f64 spE0;
     f64 spD8;
@@ -75,10 +75,12 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
     f32 sp64;
     f32 sp60;
@@ -86,15 +88,19 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     f32 temp_f1_255;
     f32 temp_f4_112;
+    f64 temp_f0_128;
+    f64 temp_f5_107;
 
     this->unkA8 = 1;
     this->unkA0 = 0.5f;
@@ -130,8 +136,8 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     sp220 = 0;
     sp110 = (f64) sp80;
     sp118 = (f64) sp88;
-    M2C_ERROR(/* unknown instruction: psq_lx $f5, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+    temp_f5_107 = this->unk90;
+    sp70 = temp_f5_107 + sp110;
     temp_f4_112 = (f32) M2C_FIELD(this, f64 *, 0x98);
     spA8 = 0.0f;
     spA0 = 0.0f;
@@ -141,8 +147,9 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     sp120 = sp70;
     sp128 = (f64) sp78;
     sp138 = (f64) spA8;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-    sp140 = sp90;
+    temp_f0_128 = temp_f5_107 + sp130;
+    sp90 = temp_f0_128;
+    sp140 = temp_f0_128;
     sp98 = temp_f4_112 + (f32) sp138;
     sp148 = (f64) sp98;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp140), *((MKVector3 *) &sp120), (MKCollisionResult *) &sp1D0, (MKCollisionMode) 4, 0x0C000002) != 0) {
@@ -160,8 +167,7 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
         sp174 = 0;
         MKVector(1.0f, 1.0f, 1.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp40 = spF0 * 5.56078426e-315;
         sp170 = 0x417;
         sp178 = sp40;
         sp48 = spF8 * 150.0f;
@@ -196,8 +202,7 @@ void EarthShockwave::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKVec
     spB0 = (f64) sp10;
     spB8 = (f64) sp18;
     spC0.operator*(175.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp20 = this->unk90 + M2C_BITWISE(f64, spC0);
     spD0 = sp20;
     sp28 = (f32) M2C_FIELD(this, f64 *, 0x98) + spC0.unk8;
     spD8 = (f64) sp28;
@@ -234,7 +239,7 @@ void EarthShockwave::Update() {
     M2C_UNK spBC;
     f32 spB0;
     f32 spAC;
-    f32 spA8;
+    f32 spA8;                                       /* compiler-managed */
     f64 spA0;
     f64 sp98;
     f64 sp90;
@@ -250,6 +255,7 @@ void EarthShockwave::Update() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -268,6 +274,7 @@ void EarthShockwave::Update() {
     f32 temp_f2_442;
     f32 temp_f2_547;
     f32 var_f0_410;
+    f64 temp_f0_561;
     s32 temp_r0_397;
     s32 temp_r28_496;
     s32 var_r27_507;
@@ -333,11 +340,11 @@ loop_14:
                 spAC = 100.0f * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
                 spA8 = (f32) sp98 * temp_f25_510;
                 spB0 = temp_f2_547;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                spA8 = (f64) spA8 + this->unk90;
                 spB0 = temp_f2_547 + M2C_FIELD(this, f32 *, 0x98);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-                sp58 = sp38;
+                temp_f0_561 = sp98 * 5.60222949e-315;
+                sp38 = temp_f0_561;
+                sp58 = temp_f0_561;
                 sp40 = (f32) spA0 * 300.0f;
                 sp60 = (f64) sp40;
                 sp14 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
@@ -347,8 +354,7 @@ loop_14:
                 goto loop_14;
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkA0 == 0.0f) {
+        if (this->unkA0 <= 0.0f) {
             this->unkA8 = 0;
         }
     }

@@ -539,18 +539,17 @@ void TriggerPropDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void TriggerPropDescriptor::Init() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKPropDescriptor::Init();
     this->unk60 = -100.0f;
     this->unk64 = 0.0f;
     this->unk68 = -100.0f;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp8 = (f64) M2C_FIELD(this, f32 *, 0x60) * 1.591496843e-314;
     this->unk70 = sp8;
     sp10 = this->unk68 * -2.0f;
     sp18 = sp8;
@@ -561,4 +560,3 @@ void TriggerPropDescriptor::Init() {
     sp20 = (f64) sp10;
     this->unkC = this->unkC | 0x40000 | 2;
 }
-#endif

@@ -114,17 +114,23 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     MKVector3 spB8;
     MKVector3 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
@@ -136,6 +142,9 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     f32 var_f4_531;
     f32 var_f4_598;
     f32 var_f5_229;
+    f64 temp_f1_206;
+    f64 temp_f1_296;
+    f64 temp_f1_417;
     f64 temp_f1_537;
     f64 temp_f1_543;
     f64 temp_f1_547;
@@ -164,10 +173,10 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     sp178.unk38 = sp178.unk8;
     if ((arg1 != 0) && (temp_r5_196 = this->unk178, ((temp_r5_196 == 0) == 0))) {
         temp_r3_205 = this->unk174 + (MKRand_Int(&gViewSeed, 0, temp_r5_196) * 0x10);
-        sp18 = M2C_FIELD(temp_r3_205, f64 *, 0);
+        temp_f1_206 = M2C_FIELD(temp_r3_205, f64 *, 0);
+        sp18 = temp_f1_206;
         sp20 = M2C_FIELD(temp_r3_205, f64 *, 8);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp98 = temp_f1_206 - M2C_FIELD(arg0, f64 *, 0x30);
         sp168 = sp98;
         spA0 = (f32) sp20 - arg0->unk38;
         sp170 = (f64) spA0;
@@ -206,9 +215,9 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
             }
         }
         var_f28_293 = var_f5_229;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-        sp148 = sp68;
+        temp_f1_296 = sp18 - M2C_FIELD(arg0, f64 *, 0x30);
+        sp68 = temp_f1_296;
+        sp148 = temp_f1_296;
         sp70 = (f32) sp20 - arg0->unk38;
         sp150 = (f64) sp70;
         Normalise(sp158);
@@ -216,8 +225,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         sp178.unk28 = (f64) sp158.unk8;
         arg0->unk88 = 1;
     } else {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp88 = sp178.unk30 - M2C_FIELD(arg0, f64 *, 0x30);
         sp138 = sp88;
         sp90 = (f32) sp178.unk38 - arg0->unk38;
         sp140 = (f64) sp90;
@@ -266,17 +274,16 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
             var_f29_336 = 1000.0f;
         }
         var_f28_293 = var_f29_336;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-        sp118 = sp58;
+        temp_f1_417 = sp178.unk30 - M2C_FIELD(arg0, f64 *, 0x30);
+        sp58 = temp_f1_417;
+        sp118 = temp_f1_417;
         sp60 = (f32) sp178.unk38 - arg0->unk38;
         sp120 = (f64) sp60;
         Normalise(sp128);
         sp178.unk20 = M2C_BITWISE(f64, sp128);
         sp178.unk28 = (f64) sp128.unk8;
         spF8.operator*(var_f29_336);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp48 = M2C_FIELD(arg0, f64 *, 0x30) + M2C_BITWISE(f64, spF8);
         arg0->unk88 = 0;
         sp108 = sp48;
         sp50 = arg0->unk38 + spF8.unk8;
@@ -350,8 +357,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
         sp178.unk18 = (f32) sp178.unk18 * var_f4_598;
         spA8.operator*(var_f28_293);
         spB8.operator*((f32) (var_r29_486 + 1) * 0.25f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp28 = M2C_FIELD(arg0, f64 *, 0x30) + M2C_BITWISE(f64, spB8);
         temp_r3_632 = &sp178.unk40 + (var_r27_488 + 0x10);
         var_r29_486 += 1;
         var_r27_488 += 0x10;
@@ -568,8 +574,7 @@ loop_63:
         temp_r30_1068->unk54 += temp_r30_1068->unk58 * gUpdateTimeDelta;
         if ((s32) M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x90) != 0) {
             temp_f1_1082 = temp_r30_1068->unk8C;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_f1_1082 == 0.0f) {
+            if (temp_f1_1082 <= 0.0f) {
                 KDSound_Play3d(M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x90), temp_r30_1068 + 0x30, 0U, -1, 0.0f, 0U);
                 temp_f31_1098 = M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C);
                 temp_r30_1068->unk8C = MKRand_Float(&gViewSeed, M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x88), temp_f31_1098);
@@ -580,12 +585,8 @@ loop_63:
         temp_r0_1112 = temp_r30_1068->unk60;
         switch (temp_r0_1112) {                     /* switch 1; irregular */
         default:                                    /* switch 1 */
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r30_1068->unk64 == 0.0f) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (temp_r30_1068->unk54 == 1.0f) {
-                    SetFlyingEnterState(temp_r30_1068);
-                }
+            if ((temp_r30_1068->unk64 <= 0.0f) && (temp_r30_1068->unk54 >= 1.0f)) {
+                SetFlyingEnterState(temp_r30_1068);
             }
             temp_f1_1140 = temp_r30_1068->unk54;
             if (temp_f1_1140 > 1.0f) {
@@ -593,8 +594,7 @@ loop_63:
             }
             break;
         case 3:                                     /* switch 1 */
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_r30_1068->unk54 == 1.0f) {
+            if (temp_r30_1068->unk54 >= 1.0f) {
                 SetFlyingLoopState(temp_r30_1068);
             }
             break;
@@ -738,8 +738,7 @@ loop_63:
             temp_r30_1068->unk34 = sp64;
             temp_r30_1068->unk38 = sp68;
             temp_r30_1068->unk3C = 1.0f;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_r30_1068->unk7C == 1.0f) {
+            if (temp_r30_1068->unk7C >= 1.0f) {
                 if ((u8) temp_r30_1068->unk88 != 0) {
                     SetFlyingExitState(temp_r30_1068);
                 } else {
@@ -748,8 +747,7 @@ loop_63:
             }
             break;
         case 5:                                     /* switch 1 */
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_r30_1068->unk54 == 1.0f) {
+            if (temp_r30_1068->unk54 >= 1.0f) {
                 SetIdleState(temp_r30_1068);
             }
             break;

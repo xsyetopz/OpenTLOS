@@ -30,8 +30,7 @@ loop_4:
             return;
         }
         M2C_FIELD(temp_r4_65, f32 *, 0x10) = (f32) (M2C_FIELD(temp_r4_65, f32 *, 0x10) - gUpdateTimeDelta);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r4_65, f32 *, 0x10) == 0.0f) {
+        if (M2C_FIELD(temp_r4_65, f32 *, 0x10) <= 0.0f) {
             temp_r4_53 = this->unk5C;
             this->unk5C = temp_r4_53 + 4;
             temp_r5_56 = *temp_r4_53;
@@ -43,7 +42,6 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp68'
 void WaterSurfaceFX::DrawRipple(WaterSurfaceFX::Ripple *arg1) {
     f64 sp120;
     f64 sp118;
@@ -71,22 +69,30 @@ void WaterSurfaceFX::DrawRipple(WaterSurfaceFX::Ripple *arg1) {
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f30_93;
     f32 temp_f31_109;
     f32 temp_f31_92;
     f32 temp_f4_87;
+    f64 temp_f0_120;
+    f64 temp_f0_145;
+    f64 temp_f0_170;
+    f64 temp_f0_195;
 
     temp_f4_87 = 1.0f - M2C_FIELD(arg1, f32 *, 0x10);
     temp_f31_92 = 1.0f - temp_f4_87;
@@ -106,9 +112,9 @@ void WaterSurfaceFX::DrawRipple(WaterSurfaceFX::Ripple *arg1) {
     sp80 = temp_f31_109;
     spF8 = (f64) sp78;
     sp100 = (f64) sp80;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp108 = sp68;
+    temp_f0_120 = M2C_FIELD(arg1, f64 *, 0) + spF8;
+    sp68 = temp_f0_120;
+    sp108 = temp_f0_120;
     sp70 = M2C_FIELD(arg1, f32 *, 8) + (f32) sp100;
     sp110 = (f64) sp70;
     MKSetPositionV(*((MKVector3 *) &sp108));
@@ -118,9 +124,9 @@ void WaterSurfaceFX::DrawRipple(WaterSurfaceFX::Ripple *arg1) {
     sp5C = 0.0f;
     spE0 = (f64) sp60;
     spD8 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spE8 = sp48;
+    temp_f0_145 = M2C_FIELD(arg1, f64 *, 0) + spD8;
+    sp48 = temp_f0_145;
+    spE8 = temp_f0_145;
     sp50 = M2C_FIELD(arg1, f32 *, 8) + (f32) spE0;
     spF0 = (f64) sp50;
     MKSetPositionV(*((MKVector3 *) &spE8));
@@ -130,9 +136,9 @@ void WaterSurfaceFX::DrawRipple(WaterSurfaceFX::Ripple *arg1) {
     sp3C = 0.0f;
     spC0 = (f64) sp40;
     spB8 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spC8 = sp28;
+    temp_f0_170 = M2C_FIELD(arg1, f64 *, 0) + spB8;
+    sp28 = temp_f0_170;
+    spC8 = temp_f0_170;
     sp30 = M2C_FIELD(arg1, f32 *, 8) + (f32) spC0;
     spD0 = (f64) sp30;
     MKSetPositionV(*((MKVector3 *) &spC8));
@@ -142,15 +148,14 @@ void WaterSurfaceFX::DrawRipple(WaterSurfaceFX::Ripple *arg1) {
     sp1C = 0.0f;
     spA0 = (f64) sp20;
     sp98 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spA8 = sp8;
+    temp_f0_195 = M2C_FIELD(arg1, f64 *, 0) + sp98;
+    sp8 = temp_f0_195;
+    spA8 = temp_f0_195;
     sp10 = M2C_FIELD(arg1, f32 *, 8) + (f32) spA0;
     spB0 = (f64) sp10;
     MKSetPositionV(*((MKVector3 *) &spA8));
     MKEnd();
 }
-#endif
 
 void WaterSurfaceFX::SpawnRipple(const MKVector3 &arg0, float arg1) {
     WaterSurfaceFX::Wake **temp_r5_222;
@@ -169,7 +174,7 @@ void WaterSurfaceFX::SpawnRipple(const MKVector3 &arg0, float arg1) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &arg2, const MKVector3 &arg3, float farg0) {
     f64 sp78;
     f64 sp70;
@@ -180,6 +185,7 @@ void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &ar
     f32 sp40;
     MKVector3 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -196,6 +202,7 @@ void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &ar
     s32 var_r0_258;
     s32 var_r0_326;
     s32 var_r31_250;
+    void *temp_r3_264;
     void *temp_r3_403;
     void *temp_r3_432;
     void *temp_r4_370;
@@ -211,11 +218,10 @@ void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &ar
         if (temp_r4_249 < 0) {
             var_r0_258 = 0x31;
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
+        temp_r3_264 = M2C_FIELD(arg1, s32 *, 0) + (var_r0_258 * 0x28);
+        sp20 = M2C_FIELD(temp_r3_264, f64 *, 0) - M2C_FIELD(&arg2, f64 *, 0);
         sp60 = sp20;
-        sp28 = M2C_FIELD((M2C_FIELD(arg1, s32 *, 0) + (var_r0_258 * 0x28)), f32 *, 8) - arg2.unk8;
+        sp28 = M2C_FIELD(temp_r3_264, f32 *, 8) - arg2.unk8;
         sp68 = (f64) sp28;
         var_f5_284 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
         if (var_f5_284 > 0.0f) {
@@ -251,8 +257,7 @@ void WaterSurfaceFX::AddWakeNode(WaterSurfaceFX::Wake *arg1, const MKVector3 &ar
                 var_f5_284 = __float_nan;
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (var_f5_284 != 25.0f) {
+        if (!(var_f5_284 <= 25.0f)) {
             this->unk54 += var_f5_284 / 100.0f;
             temp_f2_357 = this->unk54;
             if (temp_f2_357 > 5.0f) {
@@ -340,20 +345,38 @@ void WaterSurfaceFX::DrawWake(WaterSurfaceFX::Wake *arg1) {
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f23_652;
+    f32 temp_f26_735;
+    f32 temp_f27_673;
     f32 var_f21_638;
     f32 var_f25_634;
+    f64 temp_f0_675;
+    f64 temp_f0_685;
+    f64 temp_f0_695;
+    f64 temp_f0_706;
+    f64 temp_f0_737;
+    f64 temp_f0_747;
+    f64 temp_f0_757;
+    f64 temp_f0_768;
     s32 temp_r0_602;
     s32 temp_r28_644;
     s32 temp_r3_601;
@@ -403,22 +426,25 @@ loop_16:
                 MKSetColorV(*((MKVector4 *) &sp138));
                 MKSetTexCoord1F(1.0f, var_f21_638 + this->unk54);
                 temp_r4_671 = M2C_FIELD(arg1, s32 *, 0) + temp_r28_644;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-                spF8 = sp88;
+                temp_f27_673 = M2C_FIELD(temp_r4_671, f32 *, 0x20);
+                temp_f0_675 = *(temp_r4_671 + 0x10) * (f64) temp_f23_652;
+                sp88 = temp_f0_675;
+                spF8 = temp_f0_675;
                 sp90 = M2C_FIELD(temp_r4_671, f32 *, 0x18) * temp_f23_652;
                 sp100 = (f64) sp90;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
-                sp108 = sp78;
+                temp_f0_685 = temp_f0_675 * 5.60222949e-315;
+                sp78 = temp_f0_685;
+                sp108 = temp_f0_685;
                 sp80 = (f32) sp100 * 300.0f;
                 sp110 = (f64) sp80;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-                sp118 = sp68;
-                sp70 = (f32) sp110 * M2C_FIELD(temp_r4_671, f32 *, 0x20);
+                temp_f0_695 = temp_f0_685 * (f64) temp_f27_673;
+                sp68 = temp_f0_695;
+                sp118 = temp_f0_695;
+                sp70 = (f32) sp110 * temp_f27_673;
                 sp120 = (f64) sp70;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp128 = sp58;
+                temp_f0_706 = M2C_FIELD(temp_r4_671, f64 *, 0) - temp_f0_695;
+                sp58 = temp_f0_706;
+                sp128 = temp_f0_706;
                 sp60 = M2C_FIELD(temp_r4_671, f32 *, 8) - (f32) sp120;
                 sp130 = (f64) sp60;
                 MKSetPositionV(*((MKVector3 *) &sp128));
@@ -431,22 +457,25 @@ loop_16:
                 MKSetColorV(*((MKVector4 *) &spE8));
                 MKSetTexCoord1F(0.0f, var_f21_638 + this->unk54);
                 temp_r4_733 = M2C_FIELD(arg1, s32 *, 0) + temp_r28_644;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-                spA8 = sp38;
+                temp_f26_735 = M2C_FIELD(temp_r4_733, f32 *, 0x20);
+                temp_f0_737 = *(temp_r4_733 + 0x10) * (f64) temp_f23_652;
+                sp38 = temp_f0_737;
+                spA8 = temp_f0_737;
                 sp40 = M2C_FIELD(temp_r4_733, f32 *, 0x18) * temp_f23_652;
                 spB0 = (f64) sp40;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
-                spB8 = sp28;
+                temp_f0_747 = temp_f0_737 * 5.60222949e-315;
+                sp28 = temp_f0_747;
+                spB8 = temp_f0_747;
                 sp30 = (f32) spB0 * 300.0f;
                 spC0 = (f64) sp30;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-                spC8 = sp18;
-                sp20 = (f32) spC0 * M2C_FIELD(temp_r4_733, f32 *, 0x20);
+                temp_f0_757 = temp_f0_747 * (f64) temp_f26_735;
+                sp18 = temp_f0_757;
+                spC8 = temp_f0_757;
+                sp20 = (f32) spC0 * temp_f26_735;
                 spD0 = (f64) sp20;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                spD8 = sp8;
+                temp_f0_768 = M2C_FIELD(temp_r4_733, f64 *, 0) + temp_f0_757;
+                sp8 = temp_f0_768;
+                spD8 = temp_f0_768;
                 sp10 = M2C_FIELD(temp_r4_733, f32 *, 8) + (f32) spD0;
                 spE0 = (f64) sp10;
                 MKSetPositionV(*((MKVector3 *) &spD8));
@@ -481,8 +510,7 @@ loop_6:
         temp_r3_833 = M2C_FIELD(arg1, s32 *, 0);
         temp_r0_835 = (var_r6_828 * 0x28) + 0x24;
         *(temp_r3_833 + temp_r0_835) = *(temp_r3_833 + temp_r0_835) - gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (*(M2C_FIELD(arg1, s32 *, 0) + temp_r0_835) == 0.0f) {
+        if (*(M2C_FIELD(arg1, s32 *, 0) + temp_r0_835) <= 0.0f) {
             M2C_FIELD(arg1, s32 *, 4) = (s32) (M2C_FIELD(arg1, s32 *, 4) + 1);
             if ((s32) M2C_FIELD(arg1, s32 *, 4) >= 0x32) {
                 M2C_FIELD(arg1, s32 *, 4) = 0;
@@ -519,8 +547,7 @@ void WaterSurfaceFX::AddMovementForce(const MKVector3 &arg0, const MKVector3 &ar
     } else {
         var_f1_883 = var_f2_877;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (var_f1_883 == 400.0f) {
+    if (var_f1_883 >= 400.0f) {
         if (var_f2_877 < 0.0f) {
             var_f2_877 = -var_f2_877;
         }
@@ -573,7 +600,7 @@ void WaterSurfaceFX::AddMovementForce(const MKVector3 &arg0, const MKVector3 &ar
     sp10 = (f32) sp10 * var_f4_909;
     unksp14 *= var_f4_909;
     sp18 = (f32) sp18 * var_f4_909;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (var_f31_919 == 25.0f) {
         if ((WaterSurfaceFX::Wake *) this->unk50 == NULL) {
             SpawnWake();

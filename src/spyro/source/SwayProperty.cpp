@@ -59,6 +59,7 @@ void SwayProperty::Update() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -74,6 +75,7 @@ void SwayProperty::Update() {
     s32 temp_r0_194;
     s32 temp_r0_211;
     s32 temp_r3_265;
+    void *temp_r30_151;
     void *temp_r3_130;
     void *temp_r3_149;
     void *temp_r3_170;
@@ -89,11 +91,10 @@ void SwayProperty::Update() {
         }
         M2C_FIELD(temp_r3_130, f32 *, 0x80) = var_f0_141;
         temp_r3_149 = *KDProperty::pInstanceMem + this->unk8;
+        temp_r30_151 = temp_r3_149 + 0x40;
         sp40.operator*(_table_sinf(M2C_FIELD(temp_r3_149, f32 *, 0x80)));
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp28 = sp40.unk8 + M2C_FIELD((temp_r3_149 + 0x40), f32 *, 8);
+        sp20 = sp40 + M2C_FIELD(temp_r30_151, f64 *, 0);
+        sp28 = sp40.unk8 + M2C_FIELD(temp_r30_151, f32 *, 8);
         temp_r3_170 = *KDProperty::pInstanceMem + (this->unk8 + 0x50);
         M2C_FIELD(temp_r3_170, f64 *, 0) = sp20;
         M2C_FIELD(temp_r3_170, f64 *, 8) = (f64) sp28;

@@ -117,8 +117,7 @@ void MagicDrain::Update() {
     Projectile::Update();
     if (((u8) this->unk158 != 0) && ((MKVector3 *) this->unk150 != NULL) && ((MKVector3 *) this->unk154 != NULL)) {
         this->unk1B8 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk1B8 == 0.0f) {
+        if (this->unk1B8 <= 0.0f) {
             if (M2C_FIELD(GameData::gameData, f32 *, 0xA0) != 0.0f) {
                 sp20 = 1.0f;
                 sp30 = -1.0f;

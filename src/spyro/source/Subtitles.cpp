@@ -89,7 +89,7 @@ void Subtitles_Update() {
             }
             temp_f1_147 = M2C_BITWISE(f32, sub.unk0) - (1.0f / var_f0_139);
             sub.unk0 = temp_f1_147;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
             if (temp_f1_147 == 0.0f) {
                 sub.unk4 = 0;
                 var_r5_155 = 5;
@@ -106,7 +106,7 @@ void Subtitles_Update() {
             }
             temp_f1_188 = M2C_BITWISE(f32, sub.unk0) - (1.0f / var_f0_179);
             sub.unk0 = temp_f1_188;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
             if (temp_f1_188 == 0.0f) {
                 sub.unk8 = 0;
                 M2C_FIELD(&sub, u8 *, 0x10) = 0U;
@@ -121,7 +121,7 @@ void Subtitles_Update() {
             }
             temp_f0_218 = M2C_BITWISE(f32, sub.unkC) + (1.0f / var_f0_208);
             sub.unkC = temp_f0_218;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
             if (temp_f0_218 == 1.0f) {
                 sub.unkC = 1.0f;
                 M2C_FIELD(&sub, u8 *, 0x10) = 0U;
@@ -134,7 +134,7 @@ void Subtitles_Update() {
             }
             temp_f1_246 = M2C_BITWISE(f32, sub.unkC) - (1.0f / var_f2_235);
             sub.unkC = temp_f1_246;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
             if (temp_f1_246 == 0.0f) {
                 sub.unkC = 0.0f;
                 M2C_FIELD(&sub, u8 *, 0x10) = 0U;
@@ -148,32 +148,29 @@ void Subtitles_Update() {
         }
         sub.unk70 = M2C_BITWISE(f32, sub.unk70) + (1.0f / var_f1_260);
 loop_38:
-        if ((u32) sub.unk64 != 0) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (sub.unk64->GetFloat(0) == M2C_BITWISE(f32, sub.unk70)) {
-                if (sub.unk64->IsField("subtitle") != 0) {
-                    sub.unk4 = Subtitles_GetText(sub.unk64->GetString(2), (s32 *) &sub.unk80);
-                    temp_f1_292 = sub.unk64->GetFloat(1);
-                    sub.unk8 = 0;
-                    sub.unk0 = temp_f1_292;
-                    ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle((s8 *) sub.unk4, 9, 0U);
-                } else if (sub.unk64->IsField("credit") != 0) {
-                    sub.unk4 = Subtitles_GetText(sub.unk64->GetString(2), (s32 *) &sub.unk80);
-                    temp_f1_320 = sub.unk64->GetFloat(1);
-                    sub.unk8 = 1;
-                    sub.unk0 = temp_f1_320;
-                    ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle((s8 *) sub.unk4, 5, 1U);
-                } else if (sub.unk64->IsField("logo") != 0) {
-                    sub.unk4 = 0;
-                    sub.unk0 = sub.unk64->GetFloat(1);
-                    sub.unk8 = 2;
-                    M2C_FIELD(&sub, u8 *, 0x10) = 1U;
-                    M2C_FIELD(&sub, u8 *, 0x11) = 0U;
-                    sub.unkC = 0.0f;
-                }
-                sub.unk64 = ((MKIni *) (M2C_FIELD(sub.unk64, MKIni **, 0xC)))->GetNextLine((MKIniLine *) sub.unk64);
-                goto loop_38;
+        if (((u32) sub.unk64 != 0) && (sub.unk64->GetFloat(0) <= M2C_BITWISE(f32, sub.unk70))) {
+            if (sub.unk64->IsField("subtitle") != 0) {
+                sub.unk4 = Subtitles_GetText(sub.unk64->GetString(2), (s32 *) &sub.unk80);
+                temp_f1_292 = sub.unk64->GetFloat(1);
+                sub.unk8 = 0;
+                sub.unk0 = temp_f1_292;
+                ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle((s8 *) sub.unk4, 9, 0U);
+            } else if (sub.unk64->IsField("credit") != 0) {
+                sub.unk4 = Subtitles_GetText(sub.unk64->GetString(2), (s32 *) &sub.unk80);
+                temp_f1_320 = sub.unk64->GetFloat(1);
+                sub.unk8 = 1;
+                sub.unk0 = temp_f1_320;
+                ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle((s8 *) sub.unk4, 5, 1U);
+            } else if (sub.unk64->IsField("logo") != 0) {
+                sub.unk4 = 0;
+                sub.unk0 = sub.unk64->GetFloat(1);
+                sub.unk8 = 2;
+                M2C_FIELD(&sub, u8 *, 0x10) = 1U;
+                M2C_FIELD(&sub, u8 *, 0x11) = 0U;
+                sub.unkC = 0.0f;
             }
+            sub.unk64 = ((MKIni *) (M2C_FIELD(sub.unk64, MKIni **, 0xC)))->GetNextLine((MKIniLine *) sub.unk64);
+            goto loop_38;
         }
     }
 }

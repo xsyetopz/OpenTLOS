@@ -41,7 +41,7 @@ void Chest::Reset() {
     SetState(0);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: illegal type
 void Chest::Update() {
     f64 sp70;                                       /* compiler-managed */
     f64 sp68;
@@ -55,7 +55,13 @@ void Chest::Update() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f32 temp_f2_208;
+    f64 temp_f0_186;
+    f64 temp_f0_211;
+    f64 temp_f1_174;
     s32 temp_r0_140;
     void *temp_r3_172;
 
@@ -72,27 +78,29 @@ void Chest::Update() {
         case 2:
             if ((s32) this->unkE4 < 0xA) {
                 this->unkE8 += gUpdateTimeDelta;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (this->unkE8 == 0.05f) {
+                if (this->unkE8 >= 0.05f) {
                     this->unkE8 = 0.0f;
                     temp_r3_172 = this->unk8;
                     sp28 = 0.0f;
+                    temp_f1_174 = M2C_FIELD(temp_r3_172, f64 *, 0x30);
                     sp2C = 150.0f;
                     sp30 = 0.0f;
                     sp48 = (f64) sp28;
-                    sp58 = M2C_FIELD(temp_r3_172, f64 *, 0x30);
+                    sp58 = temp_f1_174;
                     sp50 = (f64) sp30;
                     sp60 = M2C_FIELD(temp_r3_172, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    sp68 = sp18;
+                    temp_f0_186 = temp_f1_174 + sp48;
+                    sp18 = temp_f0_186;
+                    sp68 = temp_f0_186;
                     sp20 = (f32) sp60 + (f32) sp50;
                     sp70 = (f64) sp20;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    sp38 = sp8;
-                    sp10 = M2C_FIELD(temp_r3_172, f32 *, 8) * ((200.0f * ((f32) this->unkE4 / 10.0f)) - 100.0f);
+                    temp_f2_208 = (200.0f * ((f32) this->unkE4 / 10.0f)) - 100.0f;
+                    temp_f0_211 = M2C_FIELD(temp_r3_172, f64 *, 0) * (f64) temp_f2_208;
+                    sp8 = temp_f0_211;
+                    sp38 = temp_f0_211;
+                    sp10 = M2C_FIELD(temp_r3_172, f32 *, 8) * temp_f2_208;
                     sp40 = (f64) sp10;
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp68 -= temp_f0_211;
                     sp70 = (f32) sp70 - (f32) sp40;
                     ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp68), 300.0f, ((3.1415927f * ((f32) this->unkE4 / 10.0f)) - KDMath_GetYaw(*(temp_r3_172 + 0x20))) - 1.5707964f);
                     this->unkE4 += 1;

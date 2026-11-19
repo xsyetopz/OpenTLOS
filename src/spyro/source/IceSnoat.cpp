@@ -130,19 +130,24 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     f32 spD4;
     f32 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
     f32 spB4;
     f32 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -150,13 +155,18 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 var_f3_541;
     f32 var_f4_360;
     f32 var_f4_474;
     f32 var_f5_293;
+    f64 temp_f0_218;
+    f64 temp_f0_237;
+    f64 temp_f0_430;
     f64 temp_f1_299;
     f64 temp_f1_305;
     f64 temp_f1_309;
@@ -204,8 +214,9 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     sp258 = 0;
     sp25C = -1;
     sp260 = 0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    sp180 = spA0;
+    temp_f0_218 = sp200 + sp170;
+    spA0 = temp_f0_218;
+    sp180 = temp_f0_218;
     spA8 = (f32) sp208 + (f32) sp178;
     sp188 = (f64) spA8;
     spD8 = 0.0f;
@@ -213,8 +224,9 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     spD4 = 200.0f;
     sp198 = (f64) spD8;
     sp190 = (f64) spD0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    sp1A0 = spC0;
+    temp_f0_237 = sp200 + sp190;
+    spC0 = temp_f0_237;
+    sp1A0 = temp_f0_237;
     spC8 = (f32) sp208 + (f32) sp198;
     sp1A8 = (f64) spC8;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp1A0), *((MKVector3 *) &sp180), (MKCollisionResult *) &sp210, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -227,8 +239,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     sp1E0 = sp160;
     sp1E8 = sp168;
     unksp1E4 = unksp204;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp90 = sp1E0 - arg0->unk30;
     sp1D0 = sp90;
     sp98 = (f32) sp1E8 - (f32) M2C_FIELD(arg0, f64 *, 0x38);
     sp1D8 = (f64) sp98;
@@ -275,10 +286,10 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     sp1D0 = (f32) sp1D0 * var_f4_360;
     unksp1D4 *= var_f4_360;
     sp1D8 = (f32) sp1D8 * var_f4_360;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (var_f5_293 == 200.0f) {
         sp140.operator*(MKRand_Float(&gViewSeed, 100.0f, 200.0f));
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp20 = sp200 + M2C_BITWISE(f64, sp140);
         sp150 = sp20;
         sp28 = (f32) sp208 + sp140.unk8;
         sp1E0 = sp20;
@@ -290,7 +301,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     sp68 = 0.0f;
     sp100 = (f64) sp60;
     sp108 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
+    sp50 = sp1E0 + sp100;
     sp88 = 0.0f;
     sp80 = 0.0f;
     sp84 = 200.0f;
@@ -299,15 +310,16 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     sp110 = sp50;
     sp118 = (f64) sp58;
     sp128 = (f64) sp88;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
-    sp130 = sp70;
+    temp_f0_430 = sp1E0 + sp120;
+    sp70 = temp_f0_430;
+    sp130 = temp_f0_430;
     sp78 = (f32) sp1E8 + (f32) sp128;
     sp138 = (f64) sp78;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp130), *((MKVector3 *) &sp110), (MKCollisionResult *) &sp210, (MKCollisionMode) 4, 0x0C000000) != 0) {
         sp1E0 = (f64) sp210;
         sp1E8 = (f64) sp218;
     }
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = sp1E0 - sp200;
     sp1D0 = sp10;
     sp18 = (f32) sp1E8 - (f32) sp208;
     sp1D8 = (f64) sp18;
@@ -402,17 +414,31 @@ void IceSnoatCritter::Update() {
     f64 sp70;
     f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     IceSnoat *temp_r28_641;
     f32 temp_f1_761;
+    f32 temp_f31_679;
     f32 var_f0_662;
+    f64 temp_f0_681;
+    f64 temp_f0_693;
+    f64 temp_f0_772;
+    f64 temp_f0_782;
+    f64 temp_f0_794;
+    f64 temp_f1_723;
     s32 temp_r0_650;
     s32 var_r29_635;
     s32 var_r31_636;
+    void *temp_r30_715;
     void *temp_r3_722;
 
     var_r29_635 = 0;
@@ -437,14 +463,15 @@ loop_24:
                 var_f0_662 = 0.0f;
             }
             temp_r28_641->unk54 = var_f0_662;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spA8 = sp58;
-            sp60 = M2C_FIELD(temp_r28_641, f32 *, 0x80) * temp_r28_641->unk54;
+            temp_f31_679 = temp_r28_641->unk54;
+            temp_f0_681 = temp_r28_641->unk78 * (f64) temp_f31_679;
+            sp58 = temp_f0_681;
+            spA8 = temp_f0_681;
+            sp60 = M2C_FIELD(temp_r28_641, f32 *, 0x80) * temp_f31_679;
             spB0 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spC8 = sp48;
+            temp_f0_693 = temp_r28_641->unk68 + temp_f0_681;
+            sp48 = temp_f0_693;
+            spC8 = temp_f0_693;
             sp50 = M2C_FIELD(temp_r28_641, f32 *, 0x70) + (f32) spB0;
             M2C_FIELD(temp_r28_641, f32 *, 0x30) = (f32) spC8;
             spD0 = (f64) sp50;
@@ -452,16 +479,16 @@ loop_24:
             M2C_FIELD(temp_r28_641, f32 *, 0x38) = (f32) spD0;
             M2C_FIELD(temp_r28_641, f32 *, 0x3C) = 1.0f;
             if (temp_r28_641->unk54 == 1.0f) {
+                temp_r30_715 = temp_r28_641 + 0x30;
                 temp_r3_722 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
-                sp88 = M2C_FIELD(temp_r3_722, f64 *, 0x30);
+                temp_f1_723 = M2C_FIELD(temp_r3_722, f64 *, 0x30);
+                sp88 = temp_f1_723;
                 sp90 = M2C_FIELD(temp_r3_722, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp38 = temp_f1_723 - M2C_FIELD(temp_r30_715, f64 *, 0);
                 sp98 = sp38;
-                sp40 = (f32) sp90 - M2C_FIELD((temp_r28_641 + 0x30), f32 *, 8);
+                sp40 = (f32) sp90 - M2C_FIELD(temp_r30_715, f32 *, 8);
                 spA0 = (f64) sp40;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C))) == 250000.0f) {
+                if ((((f32) spA0 * (f32) spA0) + (((f32) sp98 * (f32) sp98) + (unksp9C * unksp9C))) <= 250000.0f) {
                     SetRunState(temp_r28_641);
                 } else {
                     FindNewBounceParameters(temp_r28_641);
@@ -473,32 +500,31 @@ loop_24:
             if (temp_f1_761 > 1.0f) {
                 temp_r28_641->unk54 = temp_f1_761 - 1.0f;
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp68 = sp28;
+            temp_f0_772 = temp_r28_641->unk78 * 5.60222949e-315;
+            sp28 = temp_f0_772;
+            sp68 = temp_f0_772;
             sp30 = M2C_FIELD(temp_r28_641, f32 *, 0x80) * 300.0f;
             sp70 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp78 = sp18;
+            temp_f0_782 = temp_f0_772 * (f64) gUpdateTimeDelta;
+            sp18 = temp_f0_782;
+            sp78 = temp_f0_782;
             sp20 = (f32) sp70 * gUpdateTimeDelta;
             sp80 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spB8 = sp8;
+            temp_f0_794 = temp_r28_641->unk30 + temp_f0_782;
+            sp8 = temp_f0_794;
+            spB8 = temp_f0_794;
             sp10 = M2C_FIELD(temp_r28_641, f32 *, 0x38) + (f32) sp80;
             M2C_FIELD(temp_r28_641, f32 *, 0x30) = (f32) spB8;
             spC0 = (f64) sp10;
             M2C_FIELD(temp_r28_641, f32 *, 0x34) = unkspBC;
             M2C_FIELD(temp_r28_641, f32 *, 0x38) = (f32) spC0;
             M2C_FIELD(temp_r28_641, f32 *, 0x3C) = 1.0f;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r28_641->unk64 == 0.0f) {
+            if (temp_r28_641->unk64 <= 0.0f) {
                 SetAlertState(temp_r28_641);
             }
             break;
         case 2:
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_r28_641->unk54 == 0.5f) {
+            if (temp_r28_641->unk54 >= 0.5f) {
                 SetRunState(temp_r28_641);
             }
             break;
@@ -578,19 +604,24 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
     f32 spB4;
     f32 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -606,6 +637,9 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
     f32 var_f3_1162;
     f32 var_f4_1095;
     f32 var_f4_1237;
+    f64 temp_f0_1054;
+    f64 temp_f0_970;
+    f64 temp_f0_989;
     f64 temp_f1_1101;
     f64 temp_f1_1107;
     f64 temp_f1_1111;
@@ -653,8 +687,9 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
     sp208 = 0;
     sp20C = -1;
     sp210 = 0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    sp130 = sp80;
+    temp_f0_970 = sp1B0 + sp120;
+    sp80 = temp_f0_970;
+    sp130 = temp_f0_970;
     sp88 = (f32) sp1B8 + (f32) sp128;
     sp138 = (f64) sp88;
     spB8 = 0.0f;
@@ -662,8 +697,9 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
     spB4 = 200.0f;
     sp148 = (f64) spB8;
     sp140 = (f64) spB0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    sp150 = spA0;
+    temp_f0_989 = sp1B0 + sp140;
+    spA0 = temp_f0_989;
+    sp150 = temp_f0_989;
     spA8 = (f32) sp1B8 + (f32) sp148;
     sp158 = (f64) spA8;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp150), *((MKVector3 *) &sp130), (MKCollisionResult *) &sp1C0, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -681,7 +717,7 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
     spD0 = (f64) sp50;
     sp198 = sp118;
     spD8 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
+    sp40 = sp190 + spD0;
     sp78 = 0.0f;
     sp70 = 0.0f;
     sp74 = 200.0f;
@@ -690,15 +726,16 @@ void IceSnoatCritter::FindNewRunParameters(IceSnoat *arg0) {
     spE0 = sp40;
     spE8 = (f64) sp48;
     spF8 = (f64) sp78;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
-    sp100 = sp60;
+    temp_f0_1054 = sp190 + spF0;
+    sp60 = temp_f0_1054;
+    sp100 = temp_f0_1054;
     sp68 = (f32) sp198 + (f32) spF8;
     sp108 = (f64) sp68;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp100), *((MKVector3 *) &spE0), (MKCollisionResult *) &sp1C0, (MKCollisionMode) 4, 0x0C000000) != 0) {
         sp190 = (f64) sp1C0;
         sp198 = (f64) sp1C8;
     }
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp30 = sp190 - sp1B0;
     sp180 = sp30;
     sp38 = (f32) sp198 - (f32) sp1B8;
     sp188 = (f64) sp38;
@@ -846,11 +883,14 @@ void IceSnoatCritter::Resolve() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     IceSnoat *temp_r28_1398;
+    f64 temp_f0_1457;
     s32 var_r29_1389;
     s32 var_r31_1391;
 
@@ -890,7 +930,7 @@ loop_4:
         sp88.unk40.unk2C = nanf;
         sp88.unk40.unk30 = 0;
         sp50 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+        sp8 = sp88.unk10 + sp48;
         sp40 = 0.0f;
         sp38 = 0.0f;
         sp3C = 200.0f;
@@ -899,8 +939,9 @@ loop_4:
         sp58 = sp8;
         sp60 = (f64) sp10;
         sp70 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-        sp78 = sp28;
+        temp_f0_1457 = sp88.unk10 + sp68;
+        sp28 = temp_f0_1457;
+        sp78 = temp_f0_1457;
         sp30 = (f32) sp88.unk18 + (f32) sp70;
         sp80 = (f64) sp30;
         if (MKCollision_RayCollide(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58), (MKCollisionResult *) &sp88.unk20, (MKCollisionMode) 4, 0x0C000000) != 0) {

@@ -45,37 +45,44 @@ static s32 lit_644 = 0;
 
 static u8 lit_683 = 1;
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: undefined identifier 'sp30'
 void IceBossStalactiteSpawner::GetSpawnPoint(const MKVector3 &arg0, int arg1) {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f32 temp_f31_68;
+    f64 temp_f0_79;
+    f64 temp_f0_90;
     s32 temp_r7_51;
 
     temp_r7_51 = (s32) M2C_ERROR(/* Read from unset register $r6 */) / 5;
+    temp_f31_68 = (500.0f * (f32) temp_r7_51) + 500.0f;
     KDMath_GetDirection(NormaliseAngle(M2C_FIELD(&arg0, f32 *, 0x1C) + (1.2566371f * (f32) (M2C_ERROR(/* Read from unset register $r6 */) - (temp_r7_51 * 5)))));
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp38 = sp8;
-    sp10 = sp30 * ((500.0f * (f32) temp_r7_51) + 500.0f);
+    temp_f0_79 = sp28 * (f64) temp_f31_68;
+    sp8 = temp_f0_79;
+    sp38 = temp_f0_79;
+    sp10 = sp30 * temp_f31_68;
     sp40 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    this->unk0 = sp18;
+    temp_f0_90 = M2C_FIELD(arg1, f64 *, 0) + temp_f0_79;
+    sp18 = temp_f0_90;
+    this->unk0 = temp_f0_90;
     sp20 = M2C_FIELD(arg1, f32 *, 8) + (f32) sp40;
     this->unk8 = (f64) sp20;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp34'
 void IceBossStalactiteSpawner::Fire(const MKVector3 &arg0) {
     f64 sp48;
     f64 sp40;
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -90,9 +97,7 @@ void IceBossStalactiteSpawner::Fire(const MKVector3 &arg0) {
     s32 temp_r4_172;
     s32 var_r0_182;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp20 = M2C_FIELD(&arg0, f64 *, 0) - this->unk0;
     sp30 = sp20;
     sp28 = arg0.unk8 - M2C_FIELD(this, f32 *, 8);
     sp38 = (f64) sp28;
@@ -414,7 +419,9 @@ void IceBossStalactite::Collided(MKCollisionResult *arg0) {
     f64 sp98;
     f64 sp90;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
@@ -422,11 +429,16 @@ void IceBossStalactite::Collided(MKCollisionResult *arg0) {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     f32 sp8;
+    f64 temp_f0_770;
+    f64 temp_f0_781;
+    f64 temp_f0_862;
     s32 var_r28_834;
     u8 temp_r4_638;
     void *temp_r28_891;
@@ -501,13 +513,14 @@ void IceBossStalactite::Collided(MKCollisionResult *arg0) {
         }
         if (var_r0_754 == NULL) {
             MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk230, &sp110);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-            spF0 = sp70;
+            temp_f0_770 = this->unk1A8 * 5.398241246e-315;
+            sp70 = temp_f0_770;
+            spF0 = temp_f0_770;
             sp78 = M2C_FIELD(this, f32 *, 0x1C0) * 10.0f;
             spF8 = (f64) sp78;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp100 = sp60;
+            temp_f0_781 = M2C_BITWISE(f64, sp110) + temp_f0_770;
+            sp60 = temp_f0_781;
+            sp100 = temp_f0_781;
             sp68 = sp110.unk8 + (f32) spF8;
             sp108 = (f64) sp68;
             if (MKCollision_RayCollide(sp110, *((MKVector3 *) &sp100), &sp120, (MKCollisionMode) 4, 0) != 0) {
@@ -540,9 +553,9 @@ void IceBossStalactite::Collided(MKCollisionResult *arg0) {
                 spB0 = (f64) sp40;
                 spB8 = (f64) sp48;
                 KDRand_Vector(spD0, *((MKVector3 *) &spC0));
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                spE0 = sp30;
+                temp_f0_862 = spD0 * 5.64367472e-315;
+                sp30 = temp_f0_862;
+                spE0 = temp_f0_862;
                 sp38 = spD0.unk8 * 600.0f;
                 spE8 = (f64) sp38;
                 sp8 = MKRand_Float(&gViewSeed, 0.4f, 0.8f);
@@ -557,12 +570,12 @@ void IceBossStalactite::Collided(MKCollisionResult *arg0) {
                 M2C_FIELD(temp_r3_888, f64 *, 8) = (f64) this->unk1E0;
                 M2C_FIELD(temp_r3_888, f32 *, 0x20) = 0.0f;
                 M2C_FIELD(temp_r3_888, f32 *, 0x28) = 0.0f;
-                sp10 = -M2C_FIELD(this, f32 *, 0x1B8);
+                sp10 = -(f32) M2C_FIELD(this, f64 *, 0x1B8);
                 sp14 = -M2C_FIELD(this, f32 *, 0x1BC);
                 sp18 = -M2C_FIELD(this, f32 *, 0x1C0);
                 sp90 = (f64) sp10;
                 sp98 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                sp20 = sp90 * 5.634608575e-315;
                 M2C_FIELD(temp_r28_891, f64 *, 0) = sp20;
                 sp28 = (f32) sp98 * 500.0f;
                 spA0 = sp20;
@@ -595,22 +608,24 @@ void IceBossStalactite::StickInGround(const MKVector3 &arg0) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_1006;
+    f64 temp_f0_1010;
 
     MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk230, &sp58);
     KDSound_Stop((s32 *) &this->unk220);
     KDSound_Play3d(GS_IceBossIceEmbed, &sp58, 0U, -1, 0.0f, 0U);
     M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) | 0x20);
     temp_f1_1006 = MKRand_Float(&gViewSeed, 0.85f, 0.95f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
-    sp28 = sp8;
+    temp_f0_1010 = M2C_FIELD(this, f64 *, 0x208) - M2C_BITWISE(f64, sp58);
+    sp8 = temp_f0_1010;
+    sp28 = temp_f0_1010;
     sp10 = this->unk1F8.unk8 - sp58.unk8;
     sp30 = (f64) sp10;
     sp38.operator*(temp_f1_1006);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp18 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp38);
     M2C_FIELD(this, f64 *, 0x208) = sp18;
     sp20 = arg0.unk8 + sp38.unk8;
     sp48 = sp18;
@@ -790,8 +805,7 @@ void IceBossStalactite::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 
     if (((u8) M2C_FIELD(this, u8 *, 0x246) >> 7U) & 1) {
         var_r5_1364 = 3;
         temp_f1_1367 = M2C_FIELD(GameData::gameData, f32 *, 0xA0) / M2C_FIELD(GameData::gameData, f32 *, 0xA4);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_1367 == 0.9f) {
+        if (temp_f1_1367 >= 0.9f) {
             var_r5_1364 = 0;
         } else if (temp_f1_1367 > 0.75f) {
             var_r5_1364 = 1;
@@ -844,7 +858,7 @@ void IceBossStalactite::MeltFX() {
     f64 spD0;
     f64 spC8;
     f64 spC0;
-    M2C_UNK spB0;
+    f64 spB0;
     f64 spA8;
     f64 spA0;
     f64 sp98;
@@ -853,11 +867,14 @@ void IceBossStalactite::MeltFX() {
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -875,6 +892,7 @@ void IceBossStalactite::MeltFX() {
     f32 var_f1_1602;
     f32 var_f29_1499;
     f32 var_f30_1487;
+    f64 temp_f1_1666;
     u8 temp_r3_1570;
     void *temp_r3_1643;
     void *temp_r3_1663;
@@ -902,8 +920,7 @@ void IceBossStalactite::MeltFX() {
         sp84 = 0.0f;
         sp138 = (f64) sp88;
         sp130 = (f64) sp80;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp40 = M2C_FIELD(this, f64 *, 0x208) + sp130;
         sp110 = sp40;
         sp48 = this->unk1F8.unk8 + (f32) sp138;
         sp118 = (f64) sp48;
@@ -916,13 +933,11 @@ void IceBossStalactite::MeltFX() {
     this->unk224 = M2C_BITWISE(f32, this->unk224) - gUpdateTimeDelta;
     if (!(M2C_BITWISE(f32, this->unk224) > 0.0f)) {
         temp_f1_1554 = this->unk228;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f1_1554 == 0.0f) {
+        if (temp_f1_1554 <= 0.0f) {
             return;
         }
         this->unk228 = temp_f1_1554 - gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk228 == 0.0f) {
+        if (this->unk228 <= 0.0f) {
             DisableCollision();
         }
         temp_r3_1570 = M2C_FIELD(this, u8 *, 0x244);
@@ -955,24 +970,22 @@ void IceBossStalactite::MeltFX() {
             sp24 = 100.0f * gUpdateTimeDelta;
             spF8 = (f64) sp28;
             spF0 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+            M2C_FIELD(this, f64 *, 0x208) = (f64) (M2C_FIELD(this, f64 *, 0x208) - spF0);
             this->unk1F8.unk8 -= (f32) spF8;
             temp_r3_1643 = this->unk8;
             spE0 = M2C_FIELD(temp_r3_1643, f64 *, 0x30);
             spE8 = M2C_FIELD(temp_r3_1643, f64 *, 0x38);
             if (((20.0f * (1.0f - M2C_FIELD(this, f32 *, 0x1AC))) + unkspE4) > M2C_FIELD(this, f32 *, 0x1EC)) {
                 KDRand_UnitVectorXZ();
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                sp70 = spB0 * 5.46558975e-315;
                 temp_r3_1663 = this->unk8;
+                temp_f1_1666 = M2C_FIELD(temp_r3_1663, f64 *, 0x30);
                 sp78 = spB8 * 30.000002f;
                 spC0 = sp70;
-                spD0 = M2C_FIELD(temp_r3_1663, f64 *, 0x30);
+                spD0 = temp_f1_1666;
                 spC8 = (f64) sp78;
                 spD8 = M2C_FIELD(temp_r3_1663, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp60 = temp_f1_1666 + spC0;
                 sp50 = -MKVector3::up.unk0;
                 sp54 = -MKVector3::up.unk4;
                 sp68 = (f32) spD8 + (f32) spC8;
@@ -989,9 +1002,7 @@ void IceBossStalactite::MeltFX() {
             sp98 = (f64) sp18;
             sp14 = 980.0f * gUpdateTimeDelta * (1.0f + (1.0f - M2C_BITWISE(f32, this->unk21C)));
             sp90 = (f64) sp10;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+            M2C_FIELD(this, f64 *, 0x208) = (f64) (M2C_FIELD(this, f64 *, 0x208) - (f64) sp10);
             this->unk1F8.unk8 -= (f32) sp98;
         }
         sp140.unk30 = this->unk1F8.unk0;
@@ -1120,19 +1131,24 @@ void IceBossStalactite::Update() {
     f32 sp1CC;
     f32 sp1C8;
     f32 sp1C0;
+    f64 sp1B8;
     f32 sp1B0;
     f32 sp1AC;
     f32 sp1A8;
     f32 sp1A0;
+    f64 sp198;
     f32 sp190;
+    f64 sp188;
     f32 sp180;
     f32 sp17C;
     f32 sp178;
     f32 sp170;
+    f64 sp168;
     f32 sp160;
     f32 sp15C;
     f32 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp144;
     f32 sp140;
     f32 sp13C;
@@ -1141,15 +1157,19 @@ void IceBossStalactite::Update() {
     f32 sp12C;
     f32 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
     f32 spFC;
     f32 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
     f32 spDC;
     f32 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC4;
     f32 spC0;
     f32 spBC;
@@ -1168,6 +1188,7 @@ void IceBossStalactite::Update() {
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
     f32 sp5C;
     f32 sp58;
@@ -1216,6 +1237,16 @@ void IceBossStalactite::Update() {
     f32 temp_f7_2468;
     f32 temp_f8_1954;
     f32 var_f0_1893;
+    f64 temp_f0_2003;
+    f64 temp_f0_2040;
+    f64 temp_f0_2168;
+    f64 temp_f0_2180;
+    f64 temp_f0_2209;
+    f64 temp_f0_2296;
+    f64 temp_f0_2308;
+    f64 temp_f0_2337;
+    f64 temp_f1_2158;
+    f64 temp_f1_2286;
     s32 temp_r0_2107;
     s32 temp_r0_2573;
     u8 temp_r3_1856;
@@ -1251,199 +1282,199 @@ block_6:
                 M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) & ~0x10);
             }
             temp_r4_1908 = M2C_FIELD(this, u8 *, 0x244);
-            if ((temp_r4_1908 >> 7U) & 1) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this, f32 *, 0x218)) {
-                    if ((temp_r4_1908 >> 3U) & 1) {
-                        if ((s32) M2C_FIELD(this->unk210, s32 *, 0x20) == 2) {
-                            this->unk220 = KDSound_Play3d(GS_IceBossIceDrop, &this->unk1F8, 0U, -1, 0.0f, 0U);
-                        } else {
-                            this->unk220 = KDSound_Play3d(GS_ElecBossCrystalFly, &this->unk1F8, 0U, -1, 0.0f, 0U);
-                        }
-                        M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) & ~8);
-                    }
-                    temp_f6_1950 = -this->unk198;
-                    temp_f7_1952 = -M2C_FIELD(this, f32 *, 0x1AC);
-                    temp_f8_1954 = -M2C_FIELD(this, f32 *, 0x1B0);
-                    sp1C8 = temp_f6_1950;
-                    sp1CC = temp_f7_1952;
-                    sp1D0 = temp_f8_1954;
-                    sp3E8 = (f64) sp1C8;
-                    sp3F0 = (f64) sp1D0;
-                    if (((this->unk1C0 * (f32) sp3F0) + ((this->unk1B8 * (f32) sp3E8) + (this->unk1BC * unksp3EC))) < 0.99f) {
-                        sp80 = temp_f8_1954;
-                        sp78 = temp_f6_1950;
-                        sp7C = temp_f7_1952;
-                        sp3D0 = (f64) sp80;
-                        sp3C8 = (f64) sp78;
-                        KDMath_Slerp(sp3D8, *((MKVector3 *) &this->unk1B8), 3.1415927f * gUpdateTimeDelta);
-                        M2C_FIELD(this, f32 *, 0x1C8) = M2C_BITWISE(f64, sp3D8);
-                        M2C_FIELD(this, f32 *, 0x1D0) = (f64) sp3D8.unk8;
-                    }
-                    sp398.operator*(980.0f);
-                    sp3A8.operator*(gUpdateTimeDelta);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    sp3B8 = sp68;
-                    sp70 = sp3A8.unk8 * 0.1f;
-                    sp3C0 = (f64) sp70;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-                    M2C_FIELD(this, f32 *, 0x1C0) = (f32) (M2C_FIELD(this, f32 *, 0x1C0) + (f32) sp3C0);
-                    MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk230, &sp408);
-                    temp_r4_2029 = this->unk158 + (((s32) this->unk170 << 7) + 0x68);
-                    sp1C = temp_r4_2029;
-                    if (temp_r4_2029 != NULL) {
-                        sp20 = M2C_FIELD(temp_r4_2029, u8 *, 4);
-                        M2C_FIELD(temp_r4_2029, u8 *, 4) = 0U;
-                    }
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    sp388 = sp1B8;
-                    sp1C0 = sp408.unk8 + M2C_FIELD(this, f32 *, 0x1C0);
-                    sp390 = (f64) sp1C0;
-                    if (MKCollision_SweepSphereCollide(sp408, *((MKVector3 *) &sp388), 50.0f, &sp460, (MKCollisionMode) 7, 0) != 0) {
-                        Collided(&sp460);
+            if (((temp_r4_1908 >> 7U) & 1) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this, f32 *, 0x218))) {
+                if ((temp_r4_1908 >> 3U) & 1) {
+                    if ((s32) M2C_FIELD(this->unk210, s32 *, 0x20) == 2) {
+                        this->unk220 = KDSound_Play3d(GS_IceBossIceDrop, &this->unk1F8, 0U, -1, 0.0f, 0U);
                     } else {
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r3, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r3, 0x0, qr0 */);
-                        this->unk1F8.unk8 += M2C_FIELD(this, f32 *, 0x1C0);
+                        this->unk220 = KDSound_Play3d(GS_ElecBossCrystalFly, &this->unk1F8, 0U, -1, 0.0f, 0U);
                     }
-                    if (sp1C != NULL) {
-                        M2C_FIELD(sp1C, u8 *, 4) = sp20;
+                    M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) & ~8);
+                }
+                temp_f6_1950 = -this->unk198;
+                temp_f7_1952 = -M2C_FIELD(this, f32 *, 0x1AC);
+                temp_f8_1954 = -M2C_FIELD(this, f32 *, 0x1B0);
+                sp1C8 = temp_f6_1950;
+                sp1CC = temp_f7_1952;
+                sp1D0 = temp_f8_1954;
+                sp3E8 = (f64) sp1C8;
+                sp3F0 = (f64) sp1D0;
+                if (((this->unk1C0 * (f32) sp3F0) + ((this->unk1B8 * (f32) sp3E8) + (this->unk1BC * unksp3EC))) < 0.99f) {
+                    sp80 = temp_f8_1954;
+                    sp78 = temp_f6_1950;
+                    sp7C = temp_f7_1952;
+                    sp3D0 = (f64) sp80;
+                    sp3C8 = (f64) sp78;
+                    KDMath_Slerp(sp3D8, *((MKVector3 *) &this->unk1B8), 3.1415927f * gUpdateTimeDelta);
+                    M2C_FIELD(this, f32 *, 0x1C8) = M2C_BITWISE(f64, sp3D8);
+                    M2C_FIELD(this, f32 *, 0x1D0) = (f64) sp3D8.unk8;
+                }
+                sp398.operator*(980.0f);
+                sp3A8.operator*(gUpdateTimeDelta);
+                temp_f0_2003 = sp3A8 * 5.122630465e-315;
+                sp68 = temp_f0_2003;
+                sp3B8 = temp_f0_2003;
+                sp70 = sp3A8.unk8 * 0.1f;
+                sp3C0 = (f64) sp70;
+                this->unk1A8 += temp_f0_2003;
+                M2C_FIELD(this, f32 *, 0x1C0) = (f32) (M2C_FIELD(this, f32 *, 0x1C0) + (f32) sp3C0);
+                MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk230, &sp408);
+                temp_r4_2029 = this->unk158 + (((s32) this->unk170 << 7) + 0x68);
+                sp1C = temp_r4_2029;
+                if (temp_r4_2029 != NULL) {
+                    sp20 = M2C_FIELD(temp_r4_2029, u8 *, 4);
+                    M2C_FIELD(temp_r4_2029, u8 *, 4) = 0U;
+                }
+                temp_f0_2040 = M2C_BITWISE(f64, sp408) + this->unk1A8;
+                sp1B8 = temp_f0_2040;
+                sp388 = temp_f0_2040;
+                sp1C0 = sp408.unk8 + M2C_FIELD(this, f32 *, 0x1C0);
+                sp390 = (f64) sp1C0;
+                if (MKCollision_SweepSphereCollide(sp408, *((MKVector3 *) &sp388), 50.0f, &sp460, (MKCollisionMode) 7, 0) != 0) {
+                    Collided(&sp460);
+                } else {
+                    M2C_FIELD(this, f64 *, 0x208) = (f64) (M2C_FIELD(this, f64 *, 0x208) + this->unk1A8);
+                    this->unk1F8.unk8 += M2C_FIELD(this, f32 *, 0x1C0);
+                }
+                if (sp1C != NULL) {
+                    M2C_FIELD(sp1C, u8 *, 4) = sp20;
+                }
+                if ((u8) M2C_FIELD(this, u8 *, 0x245) != 0) {
+                    if ((s32) M2C_FIELD(this->unk210, s32 *, 0x20) == 1) {
+                        Shatter(0U, NULL, GS_ElecBossCrystalSmash, NULL);
+                    } else {
+                        Shatter(0U, NULL, -1, NULL);
                     }
-                    if ((u8) M2C_FIELD(this, u8 *, 0x245) != 0) {
-                        if ((s32) M2C_FIELD(this->unk210, s32 *, 0x20) == 1) {
-                            Shatter(0U, NULL, GS_ElecBossCrystalSmash, NULL);
-                        } else {
-                            Shatter(0U, NULL, -1, NULL);
-                        }
-                        M2C_FIELD(this, u8 *, 0x245) = 0U;
-                    }
-                    temp_r0_2107 = M2C_FIELD(this->unk210, s32 *, 0x20);
-                    switch (temp_r0_2107) {         /* switch 1; irregular */
-                    case 2:                         /* switch 1 */
-                        temp_f31_2120 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
-                        sp180 = 0.0f;
-                        sp178 = 0.0f;
-                        sp17C = 200.0f;
-                        sp330 = (f64) sp180;
-                        sp328 = (f64) sp178;
-                        temp_f28_2133 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f27_2138 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        sp1A8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        sp1AC = temp_f27_2138;
-                        sp1B0 = temp_f28_2133;
-                        sp338 = (f64) sp1A8;
-                        sp340 = (f64) sp1B0;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                        temp_r3_2154 = this->unk8;
-                        sp348 = sp198;
-                        sp1A0 = (f32) sp340 * 100.0f;
-                        sp358 = M2C_FIELD(temp_r3_2154, f64 *, 0x30);
-                        sp350 = (f64) sp1A0;
-                        sp360 = M2C_FIELD(temp_r3_2154, f64 *, 0x38);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp368 = sp188;
-                        sp190 = (f32) sp360 + (f32) sp350;
-                        sp370 = (f64) sp190;
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp378 = sp168;
-                        sp170 = (f32) sp370 + (f32) sp330;
-                        sp380 = (f64) sp170;
-                        temp_f27_2194 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f1_2198 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        sp160 = temp_f27_2194;
-                        sp158 = temp_f1_2198;
-                        sp15C = 1.0f;
-                        sp310 = (f64) sp160;
-                        sp308 = (f64) sp158;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                        sp318 = sp148;
-                        sp150 = (f32) sp310 * 310.0f;
-                        sp320 = (f64) sp150;
-                        sp18 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
-                        sp138 = temp_f31_2120;
-                        sp13C = temp_f31_2120;
-                        sp140 = 1.0f;
-                        sp144 = 1.0f;
-                        sp2F8 = (f64) sp138;
-                        sp300 = (f64) sp140;
-                        ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp378), *((MKVector3 *) &sp318), sp18, *((MKVector4 *) &sp2F8), 0.0f);
-                        break;
-                    case 1:                         /* switch 1 */
-                        temp_f31_2248 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
-                        sp100 = 0.0f;
-                        spF8 = 0.0f;
-                        spFC = 200.0f;
-                        sp2A0 = (f64) sp100;
-                        sp298 = (f64) spF8;
-                        temp_f27_2261 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f28_2266 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        sp128 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        sp12C = temp_f28_2266;
-                        sp130 = temp_f27_2261;
-                        sp2A8 = (f64) sp128;
-                        sp2B0 = (f64) sp130;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                        temp_r3_2282 = this->unk8;
-                        sp2B8 = sp118;
-                        sp120 = (f32) sp2B0 * 100.0f;
-                        sp2C8 = M2C_FIELD(temp_r3_2282, f64 *, 0x30);
-                        sp2C0 = (f64) sp120;
-                        sp2D0 = M2C_FIELD(temp_r3_2282, f64 *, 0x38);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp2D8 = sp108;
-                        sp110 = (f32) sp2D0 + (f32) sp2C0;
-                        sp2E0 = (f64) sp110;
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp2E8 = spE8;
-                        spF0 = (f32) sp2E0 + (f32) sp2A0;
-                        sp2F0 = (f64) spF0;
-                        temp_f29_2322 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f1_2326 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        spE0 = temp_f29_2322;
-                        spD8 = temp_f1_2326;
-                        spDC = 1.0f;
-                        sp280 = (f64) spE0;
-                        sp278 = (f64) spD8;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                        sp288 = spC8;
-                        spD0 = (f32) sp280 * 310.0f;
-                        sp290 = (f64) spD0;
-                        temp_f1_2349 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
-                        spB8 = temp_f31_2248;
-                        spBC = 0.0f;
-                        sp14 = temp_f1_2349;
-                        spC0 = temp_f31_2248;
-                        spC4 = 1.0f;
-                        sp268 = (f64) spB8;
-                        sp270 = (f64) spC0;
-                        ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp2E8), *((MKVector3 *) &sp288), sp14, *((MKVector4 *) &sp268), 0.0f);
-                        sp98 = 1.0f;
-                        sp9C = 0.0f;
-                        spA0 = 0.25f;
-                        spA4 = 1.0f;
-                        sp238 = (f64) sp98;
-                        sp240 = (f64) spA0;
-                        sp10 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                        temp_f30_2389 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f29_2394 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f1_2398 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        spB0 = temp_f30_2389;
-                        spA8 = temp_f1_2398;
-                        spAC = temp_f29_2394;
-                        sp250 = (f64) spB0;
-                        sp248 = (f64) spA8;
-                        temp_r9_2414 = this->unk8;
-                        sp258 = M2C_FIELD(temp_r9_2414, f64 *, 0x30);
-                        sp260 = M2C_FIELD(temp_r9_2414, f64 *, 0x38);
-                        ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &sp258), *((MKVector3 *) &sp248), sp10, lit_683, (MKVector4) &sp238);
-                        break;
-                    }
+                    M2C_FIELD(this, u8 *, 0x245) = 0U;
+                }
+                temp_r0_2107 = M2C_FIELD(this->unk210, s32 *, 0x20);
+                switch (temp_r0_2107) {             /* switch 1; irregular */
+                case 2:                             /* switch 1 */
+                    temp_f31_2120 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+                    sp180 = 0.0f;
+                    sp178 = 0.0f;
+                    sp17C = 200.0f;
+                    sp330 = (f64) sp180;
+                    sp328 = (f64) sp178;
+                    temp_f28_2133 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f27_2138 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    sp1A8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    sp1AC = temp_f27_2138;
+                    sp1B0 = temp_f28_2133;
+                    sp338 = (f64) sp1A8;
+                    sp340 = (f64) sp1B0;
+                    sp198 = sp338 * 5.53552857e-315;
+                    temp_r3_2154 = this->unk8;
+                    temp_f1_2158 = M2C_FIELD(temp_r3_2154, f64 *, 0x30);
+                    sp348 = sp198;
+                    sp1A0 = (f32) sp340 * 100.0f;
+                    sp358 = temp_f1_2158;
+                    sp350 = (f64) sp1A0;
+                    sp360 = M2C_FIELD(temp_r3_2154, f64 *, 0x38);
+                    temp_f0_2168 = temp_f1_2158 + sp348;
+                    sp188 = temp_f0_2168;
+                    sp368 = temp_f0_2168;
+                    sp190 = (f32) sp360 + (f32) sp350;
+                    sp370 = (f64) sp190;
+                    temp_f0_2180 = sp368 + sp328;
+                    sp168 = temp_f0_2180;
+                    sp378 = temp_f0_2180;
+                    sp170 = (f32) sp370 + (f32) sp330;
+                    sp380 = (f64) sp170;
+                    temp_f27_2194 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f1_2198 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    sp160 = temp_f27_2194;
+                    sp158 = temp_f1_2198;
+                    sp15C = 1.0f;
+                    sp310 = (f64) sp160;
+                    sp308 = (f64) sp158;
+                    temp_f0_2209 = sp308 * 5.603848443e-315;
+                    sp148 = temp_f0_2209;
+                    sp318 = temp_f0_2209;
+                    sp150 = (f32) sp310 * 310.0f;
+                    sp320 = (f64) sp150;
+                    sp18 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
+                    sp138 = temp_f31_2120;
+                    sp13C = temp_f31_2120;
+                    sp140 = 1.0f;
+                    sp144 = 1.0f;
+                    sp2F8 = (f64) sp138;
+                    sp300 = (f64) sp140;
+                    ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp378), *((MKVector3 *) &sp318), sp18, *((MKVector4 *) &sp2F8), 0.0f);
+                    break;
+                case 1:                             /* switch 1 */
+                    temp_f31_2248 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+                    sp100 = 0.0f;
+                    spF8 = 0.0f;
+                    spFC = 200.0f;
+                    sp2A0 = (f64) sp100;
+                    sp298 = (f64) spF8;
+                    temp_f27_2261 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f28_2266 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    sp128 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    sp12C = temp_f28_2266;
+                    sp130 = temp_f27_2261;
+                    sp2A8 = (f64) sp128;
+                    sp2B0 = (f64) sp130;
+                    sp118 = sp2A8 * 5.53552857e-315;
+                    temp_r3_2282 = this->unk8;
+                    temp_f1_2286 = M2C_FIELD(temp_r3_2282, f64 *, 0x30);
+                    sp2B8 = sp118;
+                    sp120 = (f32) sp2B0 * 100.0f;
+                    sp2C8 = temp_f1_2286;
+                    sp2C0 = (f64) sp120;
+                    sp2D0 = M2C_FIELD(temp_r3_2282, f64 *, 0x38);
+                    temp_f0_2296 = temp_f1_2286 + sp2B8;
+                    sp108 = temp_f0_2296;
+                    sp2D8 = temp_f0_2296;
+                    sp110 = (f32) sp2D0 + (f32) sp2C0;
+                    sp2E0 = (f64) sp110;
+                    temp_f0_2308 = sp2D8 + sp298;
+                    spE8 = temp_f0_2308;
+                    sp2E8 = temp_f0_2308;
+                    spF0 = (f32) sp2E0 + (f32) sp2A0;
+                    sp2F0 = (f64) spF0;
+                    temp_f29_2322 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f1_2326 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    spE0 = temp_f29_2322;
+                    spD8 = temp_f1_2326;
+                    spDC = 1.0f;
+                    sp280 = (f64) spE0;
+                    sp278 = (f64) spD8;
+                    temp_f0_2337 = sp278 * 5.603848443e-315;
+                    spC8 = temp_f0_2337;
+                    sp288 = temp_f0_2337;
+                    spD0 = (f32) sp280 * 310.0f;
+                    sp290 = (f64) spD0;
+                    temp_f1_2349 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
+                    spB8 = temp_f31_2248;
+                    spBC = 0.0f;
+                    sp14 = temp_f1_2349;
+                    spC0 = temp_f31_2248;
+                    spC4 = 1.0f;
+                    sp268 = (f64) spB8;
+                    sp270 = (f64) spC0;
+                    ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp2E8), *((MKVector3 *) &sp288), sp14, *((MKVector4 *) &sp268), 0.0f);
+                    sp98 = 1.0f;
+                    sp9C = 0.0f;
+                    spA0 = 0.25f;
+                    spA4 = 1.0f;
+                    sp238 = (f64) sp98;
+                    sp240 = (f64) spA0;
+                    sp10 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+                    temp_f30_2389 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f29_2394 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f1_2398 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    spB0 = temp_f30_2389;
+                    spA8 = temp_f1_2398;
+                    spAC = temp_f29_2394;
+                    sp250 = (f64) spB0;
+                    sp248 = (f64) spA8;
+                    temp_r9_2414 = this->unk8;
+                    sp258 = M2C_FIELD(temp_r9_2414, f64 *, 0x30);
+                    sp260 = M2C_FIELD(temp_r9_2414, f64 *, 0x38);
+                    ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &sp258), *((MKVector3 *) &sp248), sp10, lit_683, (MKVector4) &sp238);
+                    break;
                 }
             }
             M2C_STRUCT_COPY((s32) &sp41C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);

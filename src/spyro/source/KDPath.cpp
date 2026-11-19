@@ -22,6 +22,7 @@ void KDPathManager::NearestPointLocalSegment(int arg0, const MKVector3 &arg1) {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     KDPathSegment *var_r28_116;
     Matrix *var_r30_119;
     f32 temp_f10_142;
@@ -30,6 +31,7 @@ void KDPathManager::NearestPointLocalSegment(int arg0, const MKVector3 &arg1) {
     f32 temp_f5_139;
     f32 temp_f8_140;
     f32 var_f31_101;
+    f64 temp_f0_169;
     s32 var_r29_126;
     void *temp_r3_137;
 
@@ -58,9 +60,9 @@ loop_8:
             sp20 = var_r30_119->unk38 + ((temp_f10_142 * var_r30_119->unk28) + ((temp_f8_140 * var_r30_119->unk8) + (temp_f5_139 * var_r30_119->unk18)));
             sp28 = (f64) sp18;
             sp30 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp38 = sp8;
+            temp_f0_169 = (f64) sp18 - M2C_FIELD(&arg1, f64 *, 0);
+            sp8 = temp_f0_169;
+            sp38 = temp_f0_169;
             sp10 = (f32) sp30 - temp_f30_115;
             sp40 = (f64) sp10;
             temp_f29_185 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
@@ -86,11 +88,14 @@ void KDPathManager::NearestPoint(int arg0, const MKVector3 &arg1) {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     KDPathSegment *var_r30_250;
     f32 temp_f30_278;
     f32 temp_f31_249;
     f32 var_f29_235;
+    f64 temp_f0_262;
     s32 var_r31_253;
+    void *temp_r3_259;
 
     var_f29_235 = 1e11f;
     sp28.Init();
@@ -102,11 +107,11 @@ loop_7:
         var_r31_253 = 0;
 loop_5:
         if (var_r31_253 < (s32) var_r30_250->unk20) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp18 = sp8;
-            sp10 = M2C_FIELD((var_r30_250->unk24 + (var_r31_253 * var_r30_250->unk1C)), f32 *, 8) - temp_f31_249;
+            temp_r3_259 = var_r30_250->unk24 + (var_r31_253 * var_r30_250->unk1C);
+            temp_f0_262 = M2C_FIELD(temp_r3_259, f64 *, 0) - M2C_FIELD(&arg1, f64 *, 0);
+            sp8 = temp_f0_262;
+            sp18 = temp_f0_262;
+            sp10 = M2C_FIELD(temp_r3_259, f32 *, 8) - temp_f31_249;
             sp20 = (f64) sp10;
             temp_f30_278 = ((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C));
             if (temp_f30_278 < var_f29_235) {
@@ -176,56 +181,68 @@ void KDPathManager::AddPath(KDPathSegment *arg0) {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     KDPathNode **var_r3_382;
     KDPathNode *var_r31_383;
     KDPathNode *var_r4_379;
+    void *temp_r3_386;
+    void *temp_r3_422;
+    void *temp_r3_456;
+    void *temp_r3_496;
+    void *temp_r4_387;
+    void *temp_r4_457;
+    void *temp_r4_497;
+    void *temp_r5_421;
 
     var_r4_379 = NULL;
     var_r3_382 = *KDPathManager::pPathLists + (this->unk18 * 4);
     var_r31_383 = *var_r3_382;
 loop_10:
     if (var_r31_383 != NULL) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r3_386 = var_r31_383->unk24;
+        temp_r4_387 = this->unk24;
+        sp38 = M2C_FIELD(temp_r4_387, f64 *, 0) - M2C_FIELD(temp_r3_386, f64 *, 0);
         spA8 = sp38;
-        sp40 = M2C_FIELD(this->unk24, f32 *, 8) - M2C_FIELD(var_r31_383->unk24, f32 *, 8);
+        sp40 = M2C_FIELD(temp_r4_387, f32 *, 8) - M2C_FIELD(temp_r3_386, f32 *, 8);
         spB8 = sp38;
         spB0 = (f64) sp40;
         spC0 = (f64) sp40;
         if ((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + (unkspAC * unkspAC))) < 10000.0f) {
             KDPathNode::Link(var_r31_383);
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r5_421 = this->unk24;
+        temp_r3_422 = var_r31_383->unk24 + ((var_r31_383->unk20 - 1) * var_r31_383->unk1C);
+        sp28 = M2C_FIELD(temp_r5_421, f64 *, 0) - M2C_FIELD(temp_r3_422, f64 *, 0);
         sp88 = sp28;
-        sp30 = M2C_FIELD(this->unk24, f32 *, 8) - M2C_FIELD((var_r31_383->unk24 + ((var_r31_383->unk20 - 1) * var_r31_383->unk1C)), f32 *, 8);
+        sp30 = M2C_FIELD(temp_r5_421, f32 *, 8) - M2C_FIELD(temp_r3_422, f32 *, 8);
         sp90 = (f64) sp30;
         sp98 = sp28;
         spA0 = (f64) sp30;
         if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) < 10000.0f) {
             KDPathNode::Link((KDPathNode *) &var_r31_383->unk8);
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r3_456 = var_r31_383->unk24;
+        temp_r4_457 = this->unk24 + ((this->unk20 - 1) * this->unk1C);
+        sp18 = M2C_FIELD(temp_r4_457, f64 *, 0) - M2C_FIELD(temp_r3_456, f64 *, 0);
         sp68 = sp18;
-        sp20 = M2C_FIELD((this->unk24 + ((this->unk20 - 1) * this->unk1C)), f32 *, 8) - M2C_FIELD(var_r31_383->unk24, f32 *, 8);
+        sp20 = M2C_FIELD(temp_r4_457, f32 *, 8) - M2C_FIELD(temp_r3_456, f32 *, 8);
         sp70 = (f64) sp20;
         sp78 = sp18;
         sp80 = (f64) sp20;
         if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C))) < 10000.0f) {
             this->unk8.Link(var_r31_383);
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r3_496 = var_r31_383->unk24 + ((var_r31_383->unk20 - 1) * var_r31_383->unk1C);
+        temp_r4_497 = this->unk24 + ((this->unk20 - 1) * this->unk1C);
+        sp8 = M2C_FIELD(temp_r4_497, f64 *, 0) - M2C_FIELD(temp_r3_496, f64 *, 0);
         sp48 = sp8;
-        sp10 = M2C_FIELD((this->unk24 + ((this->unk20 - 1) * this->unk1C)), f32 *, 8) - M2C_FIELD((var_r31_383->unk24 + ((var_r31_383->unk20 - 1) * var_r31_383->unk1C)), f32 *, 8);
+        sp10 = M2C_FIELD(temp_r4_497, f32 *, 8) - M2C_FIELD(temp_r3_496, f32 *, 8);
         sp58 = sp8;
         sp50 = (f64) sp10;
         sp60 = (f64) sp10;
@@ -334,15 +351,21 @@ void KDPathSegment::GetPositionAlongPath(float arg0, MKVector3 &arg1) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_760;
+    f32 temp_f3_751;
     f32 temp_f4_743;
     f32 temp_f6_747;
     f32 temp_f7_718;
     f32 var_f2_712;
+    f64 temp_f0_756;
+    f64 temp_f5_740;
     s32 temp_r5_714;
     s32 var_ctr_719;
     s32 var_r8_711;
+    void *temp_r3_738;
     void *temp_r5_725;
     void *temp_r6_713;
     void *var_r7_716;
@@ -359,8 +382,7 @@ loop_1:
         temp_r5_725 = temp_r6_713 + (var_r8_711 * this->unk1C);
         var_r7_716 = temp_r5_725;
         var_f2_712 += M2C_FIELD(temp_r5_725, f32 *, 0xC);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (var_f2_712 != temp_f7_718) {
+        if (!(var_f2_712 >= temp_f7_718)) {
             var_r8_711 += 1;
             var_ctr_719 -= 1;
             if (var_ctr_719 != 0) {
@@ -368,18 +390,20 @@ loop_1:
             }
         }
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r7, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f5 */);
+    temp_r3_738 = temp_r6_713 + ((var_r8_711 - 1) * this->unk1C);
+    temp_f5_740 = M2C_FIELD(temp_r3_738, f64 *, 0);
+    sp18 = M2C_FIELD(var_r7_716, f64 *, 0) - temp_f5_740;
     temp_f4_743 = M2C_FIELD(var_r7_716, f32 *, 0xC);
-    temp_f6_747 = M2C_FIELD((temp_r6_713 + ((var_r8_711 - 1) * this->unk1C)), f32 *, 8);
+    temp_f6_747 = M2C_FIELD(temp_r3_738, f32 *, 8);
     sp38 = sp18;
+    temp_f3_751 = (temp_f7_718 - (var_f2_712 - temp_f4_743)) / temp_f4_743;
     sp20 = M2C_FIELD(var_r7_716, f32 *, 8) - temp_f6_747;
     sp40 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-    temp_f1_760 = (f32) sp40 * ((temp_f7_718 - (var_f2_712 - temp_f4_743)) / temp_f4_743);
+    temp_f0_756 = sp38 * (f64) temp_f3_751;
+    sp38 = temp_f0_756;
+    temp_f1_760 = (f32) sp40 * temp_f3_751;
     sp40 = temp_f1_760;
+    sp8 = temp_f5_740 + temp_f0_756;
     sp10 = temp_f6_747 + temp_f1_760;
     M2C_FIELD(&arg1, f64 *, 0) = sp8;
     sp28 = sp8;
@@ -397,11 +421,14 @@ void KDSplinePathSegment::LoadDone() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     MKVector3 *temp_r4_977;
     MKVector3 *temp_r5_887;
     f32 var_f5_912;
+    f64 temp_f0_894;
     f64 temp_f1_915;
     f64 temp_f1_921;
     f64 temp_f1_925;
@@ -415,6 +442,7 @@ void KDSplinePathSegment::LoadDone() {
     s32 var_r28_805;
     s32 var_r30_807;
     s32 var_r6_880;
+    void *temp_r3_890;
     void *temp_r4_891;
     void *temp_r5_839;
 
@@ -444,16 +472,14 @@ loop_8:
         }
         temp_r4_836 = this->unk30.unkC;
         temp_r5_839 = temp_r4_836 + ((this->unk30.unk0 - 1) << 5);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp10 = M2C_FIELD(temp_r4_836, f64 *, 0) - M2C_FIELD(temp_r5_839, f64 *, 0);
         sp30 = sp10;
         sp18 = M2C_FIELD(temp_r4_836, f32 *, 8) - M2C_FIELD(temp_r5_839, f32 *, 8);
         sp38 = (f64) sp18;
         sp40 = sp10;
         sp48 = (f64) sp18;
         if ((((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34))) < 10000.0f) {
-            M2C_FIELD(temp_r5_839, f32 *, 0) = (f32) M2C_FIELD(temp_r4_836, f32 *, 0);
+            M2C_FIELD(temp_r5_839, f64 *, 0) = (f32) M2C_FIELD(temp_r4_836, f64 *, 0);
             M2C_FIELD(temp_r5_839, f32 *, 4) = (f32) M2C_FIELD(temp_r4_836, f32 *, 4);
             M2C_FIELD(temp_r5_839, f32 *, 8) = (f32) M2C_FIELD(temp_r4_836, f32 *, 8);
             this->unk30.MergeEnds();
@@ -467,12 +493,12 @@ loop_35:
         if (var_r6_880 < (s32) this->unk20) {
             temp_r4_885 = this->unk1C;
             temp_r5_887 = this->unk24;
+            temp_r3_890 = temp_r5_887 + ((var_r6_880 - 1) * temp_r4_885);
             temp_r4_891 = temp_r5_887 + (var_r6_880 * temp_r4_885);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp50 = sp20;
-            sp28 = M2C_FIELD(temp_r4_891, f32 *, 8) - M2C_FIELD((temp_r5_887 + ((var_r6_880 - 1) * temp_r4_885)), f32 *, 8);
+            temp_f0_894 = M2C_FIELD(temp_r4_891, f64 *, 0) - M2C_FIELD(temp_r3_890, f64 *, 0);
+            sp20 = temp_f0_894;
+            sp50 = temp_f0_894;
+            sp28 = M2C_FIELD(temp_r4_891, f32 *, 8) - M2C_FIELD(temp_r3_890, f32 *, 8);
             sp58 = (f64) sp28;
             unksp5C = 0.0f;
             var_f5_912 = ((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54));
@@ -776,9 +802,11 @@ void KDPathSegment::LoadDone() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     MKHeap *temp_r3_1579;
     f32 var_f5_1633;
+    f64 temp_f0_1615;
     f64 temp_f1_1636;
     f64 temp_f1_1642;
     f64 temp_f1_1646;
@@ -789,6 +817,7 @@ void KDPathSegment::LoadDone() {
     s32 temp_r4_1606;
     s32 var_r0_1675;
     s32 var_r6_1601;
+    void *temp_r3_1611;
     void *temp_r4_1612;
     void *temp_r4_1698;
     void *temp_r5_1608;
@@ -813,12 +842,12 @@ loop_25:
         if (var_r6_1601 < (s32) this->unk20) {
             temp_r4_1606 = this->unk1C;
             temp_r5_1608 = this->unk24;
+            temp_r3_1611 = temp_r5_1608 + ((var_r6_1601 - 1) * temp_r4_1606);
             temp_r4_1612 = temp_r5_1608 + (var_r6_1601 * temp_r4_1606);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp20 = sp10;
-            sp18 = M2C_FIELD(temp_r4_1612, f32 *, 8) - M2C_FIELD((temp_r5_1608 + ((var_r6_1601 - 1) * temp_r4_1606)), f32 *, 8);
+            temp_f0_1615 = M2C_FIELD(temp_r4_1612, f64 *, 0) - M2C_FIELD(temp_r3_1611, f64 *, 0);
+            sp10 = temp_f0_1615;
+            sp20 = temp_f0_1615;
+            sp18 = M2C_FIELD(temp_r4_1612, f32 *, 8) - M2C_FIELD(temp_r3_1611, f32 *, 8);
             sp28 = (f64) sp18;
             unksp2C = 0.0f;
             var_f5_1633 = ((f32) sp28 * (f32) sp28) + (((f32) sp20 * (f32) sp20) + (unksp24 * unksp24));

@@ -150,6 +150,7 @@ void ElecZapCrystal::Update() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -163,6 +164,7 @@ void ElecZapCrystal::Update() {
     f32 temp_f27_391;
     f32 temp_f3_209;
     f32 var_f1_210;
+    f64 temp_f0_340;
     s32 temp_r0_249;
     s32 var_r28_316;
 
@@ -184,8 +186,7 @@ loop_10:
                 var_f1_210 = 0.0f;
             }
             M2C_FIELD(temp_r3_241, f32 *, 8) = var_f1_210;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r3_241, f32 *, 8) == 0.0f) {
+            if (M2C_FIELD(temp_r3_241, f32 *, 8) <= 0.0f) {
                 temp_r3_229 = this->unkB0;
                 this->unkB0 = temp_r3_229 + 4;
                 temp_r4_232 = *temp_r3_229;
@@ -200,8 +201,7 @@ loop_10:
     temp_r0_249 = this->unkB4;
     switch (temp_r0_249) {                          /* irregular */
     case 0:
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkBC == 0.0f) {
+        if (this->unkBC <= 0.0f) {
             temp_f27_266 = MKRand_Float(&gViewSeed, 0.2f, 0.5f);
             TriggerSubObjFader(M2C_FIELD((this + (MKRand_Int(&gViewSeed, 0, 4) * 4)), s32 *, 0xA0), temp_f27_266);
             this->unkB4 = 1;
@@ -228,9 +228,9 @@ loop_10:
                 sp70 = (f64) sp30;
                 sp78 = (f64) sp38;
                 KDRand_Vector(sp90, *((MKVector3 *) &sp80));
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                spA0 = sp20;
+                temp_f0_340 = sp90 * 5.717499035e-315;
+                sp20 = temp_f0_340;
+                spA0 = temp_f0_340;
                 sp28 = sp90.unk8 * 2000.0f;
                 spA8 = (f64) sp28;
                 sp8 = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
@@ -248,15 +248,13 @@ loop_10:
         return;
     case 1:
         this->unkC0 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkC0 == 0.0f) {
+        if (this->unkC0 <= 0.0f) {
             temp_f27_391 = MKRand_Float(&gViewSeed, 0.1f, 0.4f);
             TriggerSubObjFader(M2C_FIELD((this + (MKRand_Int(&gViewSeed, 0, 3) * 4)), s32 *, 0x94), temp_f27_391);
             KDSound_Play3d(GS_LightningCrystal2, &this->unkD8, 0U, -1, 0.0f, 0U);
             this->unkC0 = MKRand_Float(&gViewSeed, 0.1f, 0.2f);
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkBC == 0.0f) {
+        if (this->unkBC <= 0.0f) {
             this->unkB4 = 0;
             this->unkBC = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
         }

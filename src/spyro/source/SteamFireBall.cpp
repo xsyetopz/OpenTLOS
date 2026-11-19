@@ -22,7 +22,6 @@ extern f32 gUpdateTimeDelta;
 extern GameGlobals gb;
 extern MKPropDescriptor *pSteamFireBallDescriptor;
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void SteamFireBall::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, int arg4, int arg5) {
     s8 sp98;
     s32 sp94;
@@ -53,6 +52,8 @@ void SteamFireBall::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, f
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_88;
 
     sp20 = 0.0f;
     sp18 = 0.0f;
@@ -80,9 +81,9 @@ void SteamFireBall::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, f
     sp98 = 0;
     sp28 = (f64) sp18;
     sp30 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp38 = sp8;
+    temp_f0_88 = M2C_FIELD(&arg0, f64 *, 0) + sp28;
+    sp8 = temp_f0_88;
+    sp38 = temp_f0_88;
     sp10 = arg0.unk8 + (f32) sp30;
     sp40 = (f64) sp10;
     if (MKCollision_RayCollide(arg0, *((MKVector3 *) &sp38), (MKCollisionResult *) &sp48, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -94,7 +95,6 @@ void SteamFireBall::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, f
     this->unk150.Show(1U);
     Projectile::FireAtTarget(arg0, arg1, arg2, arg3, arg4, arg5);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk18'
 void SteamFireBall::Collided(MKCollisionResult &arg0) {
@@ -110,8 +110,7 @@ void SteamFireBall::Collided(MKCollisionResult &arg0) {
     this->unk150.Show(0U);
     var_r5_167 = 3;
     temp_f1_170 = M2C_FIELD(GameData::gameData, f32 *, 0xA0) / M2C_FIELD(GameData::gameData, f32 *, 0xA4);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f1_170 == 0.9f) {
+    if (temp_f1_170 >= 0.9f) {
         var_r5_167 = 0;
     } else if (temp_f1_170 > 0.75f) {
         var_r5_167 = 1;
@@ -154,8 +153,11 @@ void SteamFireBall::Update() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -166,6 +168,8 @@ void SteamFireBall::Update() {
     f32 var_f1_441;
     f32 var_f3_317;
     f32 var_f4_250;
+    f64 temp_f0_373;
+    f64 temp_f0_386;
     f64 temp_f1_256;
     f64 temp_f1_262;
     f64 temp_f1_266;
@@ -173,6 +177,7 @@ void SteamFireBall::Update() {
     f64 temp_f4_464;
     s32 temp_r3_285;
     s32 var_r0_295;
+    void *temp_r3_380;
     void *temp_r3_428;
     void *temp_r3_461;
 
@@ -235,18 +240,18 @@ void SteamFireBall::Update() {
     M2C_STRUCT_COPY((s32) &sp110.unk3C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
     sp150.RotateRoll(&sp150, 2.0f * M2C_BITWISE(f32, this->unk180));
     sp150.Multiply3x3(&sp150, &sp190);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    spC8 = sp48;
+    temp_f0_373 = sp150.unk10 * 5.53552857e-315;
+    sp48 = temp_f0_373;
+    spC8 = temp_f0_373;
+    temp_r3_380 = this->unk8 + 0x30;
     sp50 = sp150.unk18 * 100.0f;
     spD0 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spD8 = sp38;
-    sp40 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) spD0;
+    temp_f0_386 = M2C_FIELD(temp_r3_380, f64 *, 0) + temp_f0_373;
+    sp38 = temp_f0_386;
+    spD8 = temp_f0_386;
+    sp40 = M2C_FIELD(temp_r3_380, f32 *, 8) + (f32) spD0;
     spE0 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+    sp28 = sp150.unk10 * 5.56078426e-315;
     sp30 = sp150.unk18 * 150.0f;
     spB8 = sp28;
     spC0 = (f64) sp30;

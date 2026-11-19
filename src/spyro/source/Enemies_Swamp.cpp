@@ -55,10 +55,10 @@ void SwampTier3::CheckAnimEvents() {
     MKVector3 sp98;
     f64 sp90;
     f64 sp88;
-    M2C_UNK sp78;
+    f64 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     f64 sp50;
     f64 sp48;
     f32 sp44;
@@ -66,7 +66,9 @@ void SwampTier3::CheckAnimEvents() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     s32 spC;
     f32 sp8;
@@ -88,8 +90,7 @@ loop_9:
                 var_r26_110 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                    sp28 = sp78 * 5.53552857e-315;
                     spB8 = sp28;
                     sp30 = sp80 * 100.0f;
                     sp88 = sp28;
@@ -100,8 +101,7 @@ loop_9:
                     sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
                     gb.unk234->Emit(spA8, *((MKVector3 *) &spB8), sp10, spC, 1U);
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                    sp18 = sp58 * 5.53552857e-315;
                     sp68 = sp18;
                     sp20 = sp60 * 100.0f;
                     spB8 = sp18;
@@ -204,12 +204,14 @@ void SwampTier2::CheckAnimEvents() {
     MKVector3 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     f64 sp50;
     f64 sp48;
-    M2C_UNK sp38;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     s32 spC;
     f32 sp8;
@@ -230,8 +232,7 @@ loop_9:
                 var_r27_428 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                    sp28 = sp58 * 5.53552857e-315;
                     sp88 = sp28;
                     sp30 = sp60 * 100.0f;
                     unksp8C = 100.0f;
@@ -243,8 +244,7 @@ loop_9:
                     sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
                     gb.unk234->Emit(sp78, *((MKVector3 *) &sp88), sp10, spC, 1U);
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                    sp18 = sp38 * 5.53552857e-315;
                     sp88 = sp18;
                     sp20 = sp40 * 100.0f;
                     sp48 = sp18;
@@ -263,7 +263,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector4' to
 void SwampTier2::Draw() {
     f64 spB0;
     f64 spA8;
@@ -286,9 +286,15 @@ void SwampTier2::Draw() {
     f32 sp30;
     f32 sp2C;
     f32 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
+    f64 sp8;
     MKMaterial *temp_r3_529;
     f32 temp_f1_578;
     f64 *temp_r3_531;
+    f64 temp_f0_585;
+    f64 temp_f0_599;
     s32 temp_r0_536;
 
     temp_r3_529 = MKModel_GetMaterial(this->unk4, 1, 0U);
@@ -312,17 +318,19 @@ void SwampTier2::Draw() {
         sp80 = (f64) sp30;
         M2C_FIELD(this, f32 *, 0xB18) = (f32) fmod(M2C_FIELD(this, f32 *, 0xB18) + gUpdateTimeDelta, 1.0, (f64) sp28, 0.3f, (f64) sp40, (f64) sp38, 1.0f);
         temp_f1_578 = 0.5f * (1.0f + _table_sinf(6.2831855f * M2C_FIELD(this, f32 *, 0xB18)));
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f31 */);
+        sp8 = sp78 - sp88;
+        temp_f0_585 = (f64) sp30 - sp90;
+        sp10 = temp_f0_585;
         sp48 = sp8;
-        sp50 = sp10;
+        sp50 = temp_f0_585;
         sp58.operator*(temp_f1_578);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f31, $f0 */);
+        sp18 = sp88 + M2C_BITWISE(f64, sp58);
+        temp_f0_599 = sp90 + (f64) sp58.unk8;
+        sp20 = temp_f0_599;
         sp68 = sp18;
-        sp70 = sp20;
+        sp70 = temp_f0_599;
         sp98 = sp18;
-        spA0 = sp20;
+        spA0 = temp_f0_599;
         MKMaterial_SetColor(temp_r3_529, *((MKVector4 *) &sp98));
         break;
     case 2:
@@ -380,19 +388,21 @@ void SwampTier1::GetCharacterName() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: undefined identifier 'sp60'
 void SwampTier1::CheckAnimEvents() {
     f64 sp90;
     f64 sp88;
     MKVector3 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     f64 sp50;
     f64 sp48;
-    M2C_UNK sp38;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     s32 spC;
     f32 sp8;
@@ -411,8 +421,7 @@ loop_8:
                 var_r27_759 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                    sp28 = sp58 * 5.53552857e-315;
                     sp88 = sp28;
                     sp30 = sp60 * 100.0f;
                     unksp8C = 200.0f;
@@ -428,8 +437,7 @@ loop_8:
                 var_r27_801 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                    sp18 = sp38 * 5.53552857e-315;
                     sp88 = sp18;
                     sp20 = sp40 * 100.0f;
                     sp48 = sp18;

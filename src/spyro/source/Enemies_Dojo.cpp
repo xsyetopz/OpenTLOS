@@ -54,7 +54,7 @@ void DojoTier2::GetCharacterName() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp108'
+#if 0 // DRAFT: undefined identifier 'sp3D0'
 void DojoTier2::Despawn(bool arg0) {
     f64 sp460;
     f64 sp458;
@@ -74,19 +74,19 @@ void DojoTier2::Despawn(bool arg0) {
     M2C_UNK sp3E8;
     f64 sp3E0;
     f64 sp3D8;
-    M2C_UNK sp3C8;
+    f64 sp3C8;
     f64 sp3C0;
     f64 sp3B8;
-    M2C_UNK sp3A8;
+    f64 sp3A8;
     f64 sp3A0;
     f64 sp398;
-    M2C_UNK sp388;
+    f64 sp388;
     f64 sp380;
     f64 sp378;
-    M2C_UNK sp368;
+    f64 sp368;
     f64 sp360;
     f64 sp358;
-    M2C_UNK sp348;
+    f64 sp348;
     f64 sp340;
     f64 sp338;
     MKVector3 sp328;
@@ -95,7 +95,7 @@ void DojoTier2::Despawn(bool arg0) {
     M2C_UNK sp2F8;
     f64 sp2F0;
     f64 sp2E8;
-    M2C_UNK sp2D8;
+    f64 sp2D8;
     f64 sp2D0;
     f64 sp2C8;
     f64 sp2C0;
@@ -104,32 +104,32 @@ void DojoTier2::Despawn(bool arg0) {
     M2C_UNK sp298;
     f64 sp290;
     f64 sp288;
-    M2C_UNK sp278;
+    f64 sp278;
     f64 sp270;
     f64 sp268;
     f64 sp260;
     f64 sp258;
-    M2C_UNK sp248;
+    f64 sp248;
     f64 sp240;
     f64 sp238;
     f64 sp230;
     f64 sp228;
     f64 sp220;
     f64 sp218;
-    M2C_UNK sp208;
+    f64 sp208;
     f64 sp200;
     f64 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
     f64 sp1D8;
-    M2C_UNK sp1C8;
+    f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
-    M2C_UNK sp1A8;
+    f64 sp1A8;
     f64 sp1A0;
     f64 sp198;
-    M2C_UNK sp188;
+    f64 sp188;
     f32 sp184;
     f32 sp180;
     f32 sp17C;
@@ -143,23 +143,41 @@ void DojoTier2::Despawn(bool arg0) {
     f32 sp15C;
     f32 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp140;
+    f64 sp138;
     f32 sp130;
+    f64 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp2C;
@@ -181,6 +199,8 @@ void DojoTier2::Despawn(bool arg0) {
     f32 temp_f1_488;
     f32 temp_f1_655;
     f32 var_f17_517;
+    f64 temp_f0_728;
+    f64 temp_f0_803;
     s32 temp_r3_107;
     s32 temp_r3_532;
     s32 var_r19_414;
@@ -218,8 +238,7 @@ loop_49:
                 var_r21_135 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                    sp108 = sp3C8 * 5.61841903e-315;
                     sp3D8 = sp108;
                     sp110 = sp3D0 * 400.0f;
                     sp418 = sp108;
@@ -239,8 +258,7 @@ loop_49:
                 var_r21_190 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                    spF8 = sp3A8 * 5.61841903e-315;
                     sp3B8 = spF8;
                     sp100 = sp3B0 * 400.0f;
                     sp418 = spF8;
@@ -253,8 +271,7 @@ loop_49:
                 var_r21_228 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+                    spE8 = sp388 * 5.61841903e-315;
                     sp398 = spE8;
                     spF0 = sp390 * 400.0f;
                     sp418 = spE8;
@@ -271,8 +288,7 @@ loop_49:
                 var_r21_277 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
+                    spD8 = sp368 * 5.60222949e-315;
                     sp378 = spD8;
                     spE0 = sp370 * 300.0f;
                     sp418 = spD8;
@@ -286,8 +302,7 @@ loop_49:
                 var_r21_315 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
+                    spC8 = sp348 * 5.49408334e-315;
                     sp358 = spC8;
                     spD0 = sp350 * 50.0f;
                     sp418 = spC8;
@@ -301,8 +316,7 @@ loop_49:
                         MKVector(-1.0f, 0.0f, -1.0f);
                         KDRand_Vector(sp318, sp308);
                         sp328.operator*(50.0f);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                        spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp328);
                         M2C_FIELD(temp_r3_342, f64 *, 0) = spB8;
                         spC0 = this->unk588.unk4 + sp328.unk8;
                         sp338 = spB8;
@@ -339,8 +353,7 @@ loop_49:
                 var_r19_468 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
+                    spA8 = sp2D8 * 5.65986426e-315;
                     sp2E8 = spA8;
                     spB0 = sp2E0 * 800.0f;
                     sp418 = spA8;
@@ -377,8 +390,7 @@ loop_33:
                         temp_f16_573 = -_table_sinf((f32) sp460 + temp_f16_559) * (f32) sp450;
                         MKVector(_table_sinf(temp_f16_559) * (f32) sp458, 0.0f, temp_f16_573);
                         sp2A8.operator*(var_f17_517);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                        sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2A8);
                         sp168 = 1.0f;
                         sp16C = 1.0f;
                         spA0 = this->unk588.unk4 + sp2A8.unk8;
@@ -403,8 +415,7 @@ loop_33:
                 var_r19_634 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
+                    sp88 = sp278 * 5.65986426e-315;
                     sp288 = sp88;
                     sp90 = sp280 * 800.0f;
                     sp418 = sp88;
@@ -426,8 +437,7 @@ loop_33:
                 var_r19_688 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
+                    sp78 = sp248 * 5.61841903e-315;
                     sp258 = sp78;
                     sp80 = sp250 * 400.0f;
                     sp418 = sp78;
@@ -439,14 +449,13 @@ loop_33:
                     unksp41C = temp_f0_709;
                     sp400 = 0.75f;
                     sp404 = 1.0f;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                    sp148 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.51933903e-315;
                     sp150 = temp_f16_687 * 75.0f;
                     sp228 = sp148;
                     sp230 = (f64) sp150;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp238 = sp138;
+                    temp_f0_728 = M2C_FIELD(this, f64 *, 0x588) - sp228;
+                    sp138 = temp_f0_728;
+                    sp238 = temp_f0_728;
                     sp140 = this->unk588.unk4 - (f32) sp230;
                     sp240 = (f64) sp140;
                     gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
@@ -459,8 +468,7 @@ loop_33:
                 var_r19_764 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r21, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f21 */);
+                    sp68 = sp208 * 5.49408334e-315;
                     sp218 = sp68;
                     sp70 = sp210 * 50.0f;
                     sp418 = sp68;
@@ -468,14 +476,13 @@ loop_33:
                     sp420 = (f64) sp70;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
                     temp_r22_789 = checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                    sp128 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.49408334e-315;
                     sp130 = temp_f17_761 * 50.0f;
                     sp1E8 = sp128;
                     sp1F0 = (f64) sp130;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    sp1F8 = sp118;
+                    temp_f0_803 = M2C_FIELD(this, f64 *, 0x588) + sp1E8;
+                    sp118 = temp_f0_803;
+                    sp1F8 = temp_f0_803;
                     sp120 = this->unk588.unk4 + (f32) sp1F0;
                     sp200 = (f64) sp120;
                     sp18 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
@@ -486,8 +493,7 @@ loop_33:
                 var_r19_836 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r21, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f20 */);
+                    sp58 = sp1C8 * 5.60222949e-315;
                     sp1D8 = sp58;
                     sp60 = sp1D0 * 300.0f;
                     sp418 = sp58;
@@ -501,8 +507,7 @@ loop_33:
                 var_r19_876 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r21, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f19 */);
+                    sp48 = sp1A8 * 5.61841903e-315;
                     sp1B8 = sp48;
                     sp50 = sp1B0 * 400.0f;
                     sp418 = sp48;
@@ -516,8 +521,7 @@ loop_33:
                 var_r19_917 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r21, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f18 */);
+                    sp38 = sp188 * 5.60222949e-315;
                     sp198 = sp38;
                     sp40 = sp190 * 300.0f;
                     sp418 = sp38;
@@ -538,7 +542,7 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp108'
+#if 0 // DRAFT: undefined identifier 'sp3D0'
 void DojoTier2::CheckAnimEvents() {
     f64 sp460;
     f64 sp458;
@@ -558,19 +562,19 @@ void DojoTier2::CheckAnimEvents() {
     M2C_UNK sp3E8;
     f64 sp3E0;
     f64 sp3D8;
-    M2C_UNK sp3C8;
+    f64 sp3C8;
     f64 sp3C0;
     f64 sp3B8;
-    M2C_UNK sp3A8;
+    f64 sp3A8;
     f64 sp3A0;
     f64 sp398;
-    M2C_UNK sp388;
+    f64 sp388;
     f64 sp380;
     f64 sp378;
-    M2C_UNK sp368;
+    f64 sp368;
     f64 sp360;
     f64 sp358;
-    M2C_UNK sp348;
+    f64 sp348;
     f64 sp340;
     f64 sp338;
     MKVector3 sp328;
@@ -579,7 +583,7 @@ void DojoTier2::CheckAnimEvents() {
     M2C_UNK sp2F8;
     f64 sp2F0;
     f64 sp2E8;
-    M2C_UNK sp2D8;
+    f64 sp2D8;
     f64 sp2D0;
     f64 sp2C8;
     f64 sp2C0;
@@ -588,32 +592,32 @@ void DojoTier2::CheckAnimEvents() {
     M2C_UNK sp298;
     f64 sp290;
     f64 sp288;
-    M2C_UNK sp278;
+    f64 sp278;
     f64 sp270;
     f64 sp268;
     f64 sp260;
     f64 sp258;
-    M2C_UNK sp248;
+    f64 sp248;
     f64 sp240;
     f64 sp238;
     f64 sp230;
     f64 sp228;
     f64 sp220;
     f64 sp218;
-    M2C_UNK sp208;
+    f64 sp208;
     f64 sp200;
     f64 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
     f64 sp1D8;
-    M2C_UNK sp1C8;
+    f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
-    M2C_UNK sp1A8;
+    f64 sp1A8;
     f64 sp1A0;
     f64 sp198;
-    M2C_UNK sp188;
+    f64 sp188;
     f32 sp184;
     f32 sp180;
     f32 sp17C;
@@ -627,23 +631,41 @@ void DojoTier2::CheckAnimEvents() {
     f32 sp15C;
     f32 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp140;
+    f64 sp138;
     f32 sp130;
+    f64 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp2C;
@@ -665,6 +687,8 @@ void DojoTier2::CheckAnimEvents() {
     f32 temp_f1_1456;
     f32 temp_f1_1623;
     f32 var_f17_1485;
+    f64 temp_f0_1696;
+    f64 temp_f0_1771;
     s32 temp_r3_1075;
     s32 temp_r3_1500;
     s32 var_r20_1382;
@@ -703,8 +727,7 @@ loop_50:
                 var_r22_1103 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                    sp108 = sp3C8 * 5.61841903e-315;
                     sp3D8 = sp108;
                     sp110 = sp3D0 * 400.0f;
                     sp418 = sp108;
@@ -724,8 +747,7 @@ loop_50:
                 var_r22_1158 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                    spF8 = sp3A8 * 5.61841903e-315;
                     sp3B8 = spF8;
                     sp100 = sp3B0 * 400.0f;
                     sp418 = spF8;
@@ -738,8 +760,7 @@ loop_50:
                 var_r22_1196 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+                    spE8 = sp388 * 5.61841903e-315;
                     sp398 = spE8;
                     spF0 = sp390 * 400.0f;
                     sp418 = spE8;
@@ -756,8 +777,7 @@ loop_50:
                 var_r22_1245 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
+                    spD8 = sp368 * 5.60222949e-315;
                     sp378 = spD8;
                     spE0 = sp370 * 300.0f;
                     sp418 = spD8;
@@ -771,8 +791,7 @@ loop_50:
                 var_r22_1283 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
+                    spC8 = sp348 * 5.49408334e-315;
                     sp358 = spC8;
                     spD0 = sp350 * 50.0f;
                     sp418 = spC8;
@@ -786,8 +805,7 @@ loop_50:
                         MKVector(-1.0f, 0.0f, -1.0f);
                         KDRand_Vector(sp318, sp308);
                         sp328.operator*(50.0f);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                        spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp328);
                         M2C_FIELD(temp_r3_1310, f64 *, 0) = spB8;
                         spC0 = this->unk588.unk4 + sp328.unk8;
                         sp338 = spB8;
@@ -824,8 +842,7 @@ loop_50:
                 var_r20_1436 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
+                    spA8 = sp2D8 * 5.65986426e-315;
                     sp2E8 = spA8;
                     spB0 = sp2E0 * 800.0f;
                     sp418 = spA8;
@@ -862,8 +879,7 @@ loop_34:
                         temp_f16_1541 = -_table_sinf((f32) sp460 + temp_f16_1527) * (f32) sp450;
                         MKVector(_table_sinf(temp_f16_1527) * (f32) sp458, 0.0f, temp_f16_1541);
                         sp2A8.operator*(var_f17_1485);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                        sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2A8);
                         sp168 = 1.0f;
                         sp16C = 1.0f;
                         spA0 = this->unk588.unk4 + sp2A8.unk8;
@@ -888,8 +904,7 @@ loop_34:
                 var_r20_1602 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
+                    sp88 = sp278 * 5.65986426e-315;
                     sp288 = sp88;
                     sp90 = sp280 * 800.0f;
                     sp418 = sp88;
@@ -911,8 +926,7 @@ loop_34:
                 var_r20_1656 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
+                    sp78 = sp248 * 5.61841903e-315;
                     sp258 = sp78;
                     sp80 = sp250 * 400.0f;
                     sp418 = sp78;
@@ -924,14 +938,13 @@ loop_34:
                     unksp41C = temp_f0_1677;
                     sp400 = 0.75f;
                     sp404 = 1.0f;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                    sp148 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.51933903e-315;
                     sp150 = temp_f16_1655 * 75.0f;
                     sp228 = sp148;
                     sp230 = (f64) sp150;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp238 = sp138;
+                    temp_f0_1696 = M2C_FIELD(this, f64 *, 0x588) - sp228;
+                    sp138 = temp_f0_1696;
+                    sp238 = temp_f0_1696;
                     sp140 = this->unk588.unk4 - (f32) sp230;
                     sp240 = (f64) sp140;
                     gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
@@ -944,8 +957,7 @@ loop_34:
                 var_r20_1732 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f21 */);
+                    sp68 = sp208 * 5.49408334e-315;
                     sp218 = sp68;
                     sp70 = sp210 * 50.0f;
                     sp418 = sp68;
@@ -953,14 +965,13 @@ loop_34:
                     sp420 = (f64) sp70;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
                     temp_r23_1757 = checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                    sp128 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.49408334e-315;
                     sp130 = temp_f17_1729 * 50.0f;
                     sp1E8 = sp128;
                     sp1F0 = (f64) sp130;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    sp1F8 = sp118;
+                    temp_f0_1771 = M2C_FIELD(this, f64 *, 0x588) + sp1E8;
+                    sp118 = temp_f0_1771;
+                    sp1F8 = temp_f0_1771;
                     sp120 = this->unk588.unk4 + (f32) sp1F0;
                     sp200 = (f64) sp120;
                     sp18 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
@@ -971,8 +982,7 @@ loop_34:
                 var_r20_1804 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f20 */);
+                    sp58 = sp1C8 * 5.60222949e-315;
                     sp1D8 = sp58;
                     sp60 = sp1D0 * 300.0f;
                     sp418 = sp58;
@@ -986,8 +996,7 @@ loop_34:
                 var_r20_1844 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f19 */);
+                    sp48 = sp1A8 * 5.61841903e-315;
                     sp1B8 = sp48;
                     sp50 = sp1B0 * 400.0f;
                     sp418 = sp48;
@@ -1001,8 +1010,7 @@ loop_34:
                 var_r20_1885 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f18 */);
+                    sp38 = sp188 * 5.60222949e-315;
                     sp198 = sp38;
                     sp40 = sp190 * 300.0f;
                     sp418 = sp38;
@@ -1147,7 +1155,7 @@ void DojoTier1::GetCharacterName() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp108'
+#if 0 // DRAFT: undefined identifier 'sp3D0'
 void DojoTier1::Despawn(bool arg0) {
     f64 sp460;
     f64 sp458;
@@ -1167,19 +1175,19 @@ void DojoTier1::Despawn(bool arg0) {
     M2C_UNK sp3E8;
     f64 sp3E0;
     f64 sp3D8;
-    M2C_UNK sp3C8;
+    f64 sp3C8;
     f64 sp3C0;
     f64 sp3B8;
-    M2C_UNK sp3A8;
+    f64 sp3A8;
     f64 sp3A0;
     f64 sp398;
-    M2C_UNK sp388;
+    f64 sp388;
     f64 sp380;
     f64 sp378;
-    M2C_UNK sp368;
+    f64 sp368;
     f64 sp360;
     f64 sp358;
-    M2C_UNK sp348;
+    f64 sp348;
     f64 sp340;
     f64 sp338;
     MKVector3 sp328;
@@ -1188,7 +1196,7 @@ void DojoTier1::Despawn(bool arg0) {
     M2C_UNK sp2F8;
     f64 sp2F0;
     f64 sp2E8;
-    M2C_UNK sp2D8;
+    f64 sp2D8;
     f64 sp2D0;
     f64 sp2C8;
     f64 sp2C0;
@@ -1197,32 +1205,32 @@ void DojoTier1::Despawn(bool arg0) {
     M2C_UNK sp298;
     f64 sp290;
     f64 sp288;
-    M2C_UNK sp278;
+    f64 sp278;
     f64 sp270;
     f64 sp268;
     f64 sp260;
     f64 sp258;
-    M2C_UNK sp248;
+    f64 sp248;
     f64 sp240;
     f64 sp238;
     f64 sp230;
     f64 sp228;
     f64 sp220;
     f64 sp218;
-    M2C_UNK sp208;
+    f64 sp208;
     f64 sp200;
     f64 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
     f64 sp1D8;
-    M2C_UNK sp1C8;
+    f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
-    M2C_UNK sp1A8;
+    f64 sp1A8;
     f64 sp1A0;
     f64 sp198;
-    M2C_UNK sp188;
+    f64 sp188;
     f32 sp184;
     f32 sp180;
     f32 sp17C;
@@ -1236,23 +1244,41 @@ void DojoTier1::Despawn(bool arg0) {
     f32 sp15C;
     f32 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp140;
+    f64 sp138;
     f32 sp130;
+    f64 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp2C;
@@ -1274,6 +1300,8 @@ void DojoTier1::Despawn(bool arg0) {
     f32 temp_f1_2636;
     f32 temp_f1_2803;
     f32 var_f17_2665;
+    f64 temp_f0_2876;
+    f64 temp_f0_2951;
     s32 temp_r3_2255;
     s32 temp_r3_2680;
     s32 var_r19_2562;
@@ -1311,8 +1339,7 @@ loop_49:
                 var_r21_2283 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                    sp108 = sp3C8 * 5.61841903e-315;
                     sp3D8 = sp108;
                     sp110 = sp3D0 * 400.0f;
                     sp418 = sp108;
@@ -1332,8 +1359,7 @@ loop_49:
                 var_r21_2338 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                    spF8 = sp3A8 * 5.61841903e-315;
                     sp3B8 = spF8;
                     sp100 = sp3B0 * 400.0f;
                     sp418 = spF8;
@@ -1346,8 +1372,7 @@ loop_49:
                 var_r21_2376 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+                    spE8 = sp388 * 5.61841903e-315;
                     sp398 = spE8;
                     spF0 = sp390 * 400.0f;
                     sp418 = spE8;
@@ -1364,8 +1389,7 @@ loop_49:
                 var_r21_2425 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
+                    spD8 = sp368 * 5.60222949e-315;
                     sp378 = spD8;
                     spE0 = sp370 * 300.0f;
                     sp418 = spD8;
@@ -1379,8 +1403,7 @@ loop_49:
                 var_r21_2463 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
+                    spC8 = sp348 * 5.49408334e-315;
                     sp358 = spC8;
                     spD0 = sp350 * 50.0f;
                     sp418 = spC8;
@@ -1394,8 +1417,7 @@ loop_49:
                         MKVector(-1.0f, 0.0f, -1.0f);
                         KDRand_Vector(sp318, sp308);
                         sp328.operator*(50.0f);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                        spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp328);
                         M2C_FIELD(temp_r3_2490, f64 *, 0) = spB8;
                         spC0 = this->unk588.unk4 + sp328.unk8;
                         sp338 = spB8;
@@ -1432,8 +1454,7 @@ loop_49:
                 var_r19_2616 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
+                    spA8 = sp2D8 * 5.65986426e-315;
                     sp2E8 = spA8;
                     spB0 = sp2E0 * 800.0f;
                     sp418 = spA8;
@@ -1470,8 +1491,7 @@ loop_33:
                         temp_f16_2721 = -_table_sinf((f32) sp460 + temp_f16_2707) * (f32) sp450;
                         MKVector(_table_sinf(temp_f16_2707) * (f32) sp458, 0.0f, temp_f16_2721);
                         sp2A8.operator*(var_f17_2665);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                        sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2A8);
                         sp168 = 1.0f;
                         sp16C = 1.0f;
                         spA0 = this->unk588.unk4 + sp2A8.unk8;
@@ -1496,8 +1516,7 @@ loop_33:
                 var_r19_2782 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
+                    sp88 = sp278 * 5.65986426e-315;
                     sp288 = sp88;
                     sp90 = sp280 * 800.0f;
                     sp418 = sp88;
@@ -1519,8 +1538,7 @@ loop_33:
                 var_r19_2836 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
+                    sp78 = sp248 * 5.61841903e-315;
                     sp258 = sp78;
                     sp80 = sp250 * 400.0f;
                     sp418 = sp78;
@@ -1532,14 +1550,13 @@ loop_33:
                     unksp41C = temp_f0_2857;
                     sp400 = 0.75f;
                     sp404 = 1.0f;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                    sp148 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.51933903e-315;
                     sp150 = temp_f16_2835 * 75.0f;
                     sp228 = sp148;
                     sp230 = (f64) sp150;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp238 = sp138;
+                    temp_f0_2876 = M2C_FIELD(this, f64 *, 0x588) - sp228;
+                    sp138 = temp_f0_2876;
+                    sp238 = temp_f0_2876;
                     sp140 = this->unk588.unk4 - (f32) sp230;
                     sp240 = (f64) sp140;
                     gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
@@ -1552,8 +1569,7 @@ loop_33:
                 var_r19_2912 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r21, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f21 */);
+                    sp68 = sp208 * 5.49408334e-315;
                     sp218 = sp68;
                     sp70 = sp210 * 50.0f;
                     sp418 = sp68;
@@ -1561,14 +1577,13 @@ loop_33:
                     sp420 = (f64) sp70;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
                     temp_r22_2937 = checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                    sp128 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.49408334e-315;
                     sp130 = temp_f17_2909 * 50.0f;
                     sp1E8 = sp128;
                     sp1F0 = (f64) sp130;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    sp1F8 = sp118;
+                    temp_f0_2951 = M2C_FIELD(this, f64 *, 0x588) + sp1E8;
+                    sp118 = temp_f0_2951;
+                    sp1F8 = temp_f0_2951;
                     sp120 = this->unk588.unk4 + (f32) sp1F0;
                     sp200 = (f64) sp120;
                     sp18 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
@@ -1579,8 +1594,7 @@ loop_33:
                 var_r19_2984 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r21, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f20 */);
+                    sp58 = sp1C8 * 5.60222949e-315;
                     sp1D8 = sp58;
                     sp60 = sp1D0 * 300.0f;
                     sp418 = sp58;
@@ -1594,8 +1608,7 @@ loop_33:
                 var_r19_3024 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r21, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f19 */);
+                    sp48 = sp1A8 * 5.61841903e-315;
                     sp1B8 = sp48;
                     sp50 = sp1B0 * 400.0f;
                     sp418 = sp48;
@@ -1609,8 +1622,7 @@ loop_33:
                 var_r19_3065 = 0;
                 do {
                     KDRand_UnitVectorXZ();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r21, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f18 */);
+                    sp38 = sp188 * 5.60222949e-315;
                     sp198 = sp38;
                     sp40 = sp190 * 300.0f;
                     sp418 = sp38;
@@ -1631,7 +1643,7 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp108'
+#if 0 // DRAFT: undefined identifier 'sp3D0'
 void DojoTier1::CheckAnimEvents() {
     f64 sp460;
     f64 sp458;
@@ -1651,19 +1663,19 @@ void DojoTier1::CheckAnimEvents() {
     M2C_UNK sp3E8;
     f64 sp3E0;
     f64 sp3D8;
-    M2C_UNK sp3C8;
+    f64 sp3C8;
     f64 sp3C0;
     f64 sp3B8;
-    M2C_UNK sp3A8;
+    f64 sp3A8;
     f64 sp3A0;
     f64 sp398;
-    M2C_UNK sp388;
+    f64 sp388;
     f64 sp380;
     f64 sp378;
-    M2C_UNK sp368;
+    f64 sp368;
     f64 sp360;
     f64 sp358;
-    M2C_UNK sp348;
+    f64 sp348;
     f64 sp340;
     f64 sp338;
     MKVector3 sp328;
@@ -1672,7 +1684,7 @@ void DojoTier1::CheckAnimEvents() {
     M2C_UNK sp2F8;
     f64 sp2F0;
     f64 sp2E8;
-    M2C_UNK sp2D8;
+    f64 sp2D8;
     f64 sp2D0;
     f64 sp2C8;
     f64 sp2C0;
@@ -1681,32 +1693,32 @@ void DojoTier1::CheckAnimEvents() {
     M2C_UNK sp298;
     f64 sp290;
     f64 sp288;
-    M2C_UNK sp278;
+    f64 sp278;
     f64 sp270;
     f64 sp268;
     f64 sp260;
     f64 sp258;
-    M2C_UNK sp248;
+    f64 sp248;
     f64 sp240;
     f64 sp238;
     f64 sp230;
     f64 sp228;
     f64 sp220;
     f64 sp218;
-    M2C_UNK sp208;
+    f64 sp208;
     f64 sp200;
     f64 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
     f64 sp1D8;
-    M2C_UNK sp1C8;
+    f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
-    M2C_UNK sp1A8;
+    f64 sp1A8;
     f64 sp1A0;
     f64 sp198;
-    M2C_UNK sp188;
+    f64 sp188;
     f32 sp184;
     f32 sp180;
     f32 sp17C;
@@ -1720,23 +1732,41 @@ void DojoTier1::CheckAnimEvents() {
     f32 sp15C;
     f32 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp140;
+    f64 sp138;
     f32 sp130;
+    f64 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp2C;
@@ -1758,6 +1788,8 @@ void DojoTier1::CheckAnimEvents() {
     f32 temp_f1_3603;
     f32 temp_f1_3770;
     f32 var_f17_3632;
+    f64 temp_f0_3843;
+    f64 temp_f0_3918;
     s32 temp_r3_3222;
     s32 temp_r3_3647;
     s32 var_r20_3529;
@@ -1799,8 +1831,7 @@ loop_50:
                     var_r22_3250 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                        sp108 = sp3C8 * 5.61841903e-315;
                         sp3D8 = sp108;
                         sp110 = sp3D0 * 400.0f;
                         sp418 = sp108;
@@ -1820,8 +1851,7 @@ loop_50:
                     var_r22_3305 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                        spF8 = sp3A8 * 5.61841903e-315;
                         sp3B8 = spF8;
                         sp100 = sp3B0 * 400.0f;
                         sp418 = spF8;
@@ -1834,8 +1864,7 @@ loop_50:
                     var_r22_3343 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+                        spE8 = sp388 * 5.61841903e-315;
                         sp398 = spE8;
                         spF0 = sp390 * 400.0f;
                         sp418 = spE8;
@@ -1852,8 +1881,7 @@ loop_50:
                     var_r22_3392 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
+                        spD8 = sp368 * 5.60222949e-315;
                         sp378 = spD8;
                         spE0 = sp370 * 300.0f;
                         sp418 = spD8;
@@ -1867,8 +1895,7 @@ loop_50:
                     var_r22_3430 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
+                        spC8 = sp348 * 5.49408334e-315;
                         sp358 = spC8;
                         spD0 = sp350 * 50.0f;
                         sp418 = spC8;
@@ -1882,8 +1909,7 @@ loop_50:
                             MKVector(-1.0f, 0.0f, -1.0f);
                             KDRand_Vector(sp318, sp308);
                             sp328.operator*(50.0f);
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                            spB8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp328);
                             M2C_FIELD(temp_r3_3457, f64 *, 0) = spB8;
                             spC0 = this->unk588.unk4 + sp328.unk8;
                             sp338 = spB8;
@@ -1920,8 +1946,7 @@ loop_50:
                     var_r20_3583 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
+                        spA8 = sp2D8 * 5.65986426e-315;
                         sp2E8 = spA8;
                         spB0 = sp2E0 * 800.0f;
                         sp418 = spA8;
@@ -1958,8 +1983,7 @@ loop_34:
                             temp_f16_3688 = -_table_sinf((f32) sp460 + temp_f16_3674) * (f32) sp450;
                             MKVector(_table_sinf(temp_f16_3674) * (f32) sp458, 0.0f, temp_f16_3688);
                             sp2A8.operator*(var_f17_3632);
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                            sp98 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp2A8);
                             sp168 = 1.0f;
                             sp16C = 1.0f;
                             spA0 = this->unk588.unk4 + sp2A8.unk8;
@@ -1984,8 +2008,7 @@ loop_34:
                     var_r20_3749 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
+                        sp88 = sp278 * 5.65986426e-315;
                         sp288 = sp88;
                         sp90 = sp280 * 800.0f;
                         sp418 = sp88;
@@ -2007,8 +2030,7 @@ loop_34:
                     var_r20_3803 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f22 */);
+                        sp78 = sp248 * 5.61841903e-315;
                         sp258 = sp78;
                         sp80 = sp250 * 400.0f;
                         sp418 = sp78;
@@ -2020,14 +2042,13 @@ loop_34:
                         unksp41C = temp_f0_3824;
                         sp400 = 0.75f;
                         sp404 = 1.0f;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                        sp148 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.51933903e-315;
                         sp150 = temp_f16_3802 * 75.0f;
                         sp228 = sp148;
                         sp230 = (f64) sp150;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        sp238 = sp138;
+                        temp_f0_3843 = M2C_FIELD(this, f64 *, 0x588) - sp228;
+                        sp138 = temp_f0_3843;
+                        sp238 = temp_f0_3843;
                         sp140 = this->unk588.unk4 - (f32) sp230;
                         sp240 = (f64) sp140;
                         gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
@@ -2040,8 +2061,7 @@ loop_34:
                     var_r20_3879 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f21 */);
+                        sp68 = sp208 * 5.49408334e-315;
                         sp218 = sp68;
                         sp70 = sp210 * 50.0f;
                         sp418 = sp68;
@@ -2049,14 +2069,13 @@ loop_34:
                         sp420 = (f64) sp70;
                         unksp41C = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
                         temp_r23_3904 = checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                        sp128 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.49408334e-315;
                         sp130 = temp_f17_3876 * 50.0f;
                         sp1E8 = sp128;
                         sp1F0 = (f64) sp130;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp1F8 = sp118;
+                        temp_f0_3918 = M2C_FIELD(this, f64 *, 0x588) + sp1E8;
+                        sp118 = temp_f0_3918;
+                        sp1F8 = temp_f0_3918;
                         sp120 = this->unk588.unk4 + (f32) sp1F0;
                         sp200 = (f64) sp120;
                         sp18 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
@@ -2067,8 +2086,7 @@ loop_34:
                     var_r20_3951 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f20 */);
+                        sp58 = sp1C8 * 5.60222949e-315;
                         sp1D8 = sp58;
                         sp60 = sp1D0 * 300.0f;
                         sp418 = sp58;
@@ -2082,8 +2100,7 @@ loop_34:
                     var_r20_3991 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f19 */);
+                        sp48 = sp1A8 * 5.61841903e-315;
                         sp1B8 = sp48;
                         sp50 = sp1B0 * 400.0f;
                         sp418 = sp48;
@@ -2097,8 +2114,7 @@ loop_34:
                     var_r20_4032 = 0;
                     do {
                         KDRand_UnitVectorXZ();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f18 */);
+                        sp38 = sp188 * 5.60222949e-315;
                         sp198 = sp38;
                         sp40 = sp190 * 300.0f;
                         sp418 = sp38;
@@ -2242,6 +2258,7 @@ void DojoEnemy::Message(MKMessage *arg0) {
     MKVector3 sp28;
     M2C_UNK sp18;
     f32 sp10;
+    f64 sp8;
     s32 temp_r0_4331;
     s32 var_r29_4383;
     u32 **temp_r3_4350;
@@ -2293,8 +2310,7 @@ loop_11:
                         MKVector(1.0f, 0.5f, 1.0f);
                         MKVector(-1.0f, 0.25f, -1.0f);
                         KDRand_Vector(sp38, sp28);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                        sp8 = sp38 * 5.634608575e-315;
                         M2C_FIELD(temp_r28_4392, f64 *, 0) = sp8;
                         sp10 = sp38.unk8 * 500.0f;
                         sp48 = sp8;

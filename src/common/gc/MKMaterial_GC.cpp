@@ -105,55 +105,63 @@ void MKMaterial_SetFogPlanes(float arg0, float arg1) {
 }
 #endif
 
+#if 0 // DRAFT: pointer/array required
 f32 MKMaterial_SetVertex4F(int arg0, float arg1, float arg2, float arg3, float arg4) {
     f32 temp_f0_182;
-    f32 temp_f1_193;
-    f32 temp_f1_223;
+    s32 temp_r3_169;
+    s32 var_r3_0;
+    s8 temp_r3_202;
+    s8 temp_r3_235;
 
-    if (arg0 != 2) {
-        if (arg0 < 2) {
-            if (arg0 != 0) {
-                if (arg0 < 0) {
-                    return arg1;
+    var_r3_0 = arg0;
+    if (var_r3_0 != 2) {
+        if (var_r3_0 < 2) {
+            if (var_r3_0 != 0) {
+                if (var_r3_0 < 0) {
+                    return M2C_BITWISE(f32, var_r3_0);
                 }
                 if ((u8) MKPrimitive_bAlphaModulate != 0) {
                     temp_f0_182 = 255.0f * arg4;
                     M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xF) = -1;
-                    temp_f1_193 = M2C_FIELD(&MKPrimitive_colorModulate, f32 *, 4) * (arg2 * temp_f0_182);
+                    temp_r3_202 = (s8) (M2C_FIELD(&MKPrimitive_colorModulate, f32 *, 4) * (arg2 * temp_f0_182));
                     M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xC) = (s8) (M2C_FIELD(&MKPrimitive_colorModulate, f32 *, 0) * (arg1 * temp_f0_182));
-                    M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xD) = (s8) temp_f1_193;
+                    M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xD) = temp_r3_202;
                     M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xE) = (s8) (M2C_FIELD(&MKPrimitive_colorModulate, f32 *, 8) * (arg3 * temp_f0_182));
-                    return M2C_BITWISE(f32, (s32) temp_f1_193);
+                    return M2C_BITWISE(f32, temp_r3_202);
                 }
-                temp_f1_223 = 255.0f * (arg3 * M2C_FIELD(&MKPrimitive_colorModulate, f32 *, 8));
+                temp_r3_235 = (s8) (255.0f * (arg3 * M2C_FIELD(&MKPrimitive_colorModulate, f32 *, 8)));
                 M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xC) = (s8) (255.0f * (arg1 * M2C_FIELD(&MKPrimitive_colorModulate, f32 *, 0)));
                 M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xD) = (s8) (255.0f * (arg2 * M2C_FIELD(&MKPrimitive_colorModulate, f32 *, 4)));
-                M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xE) = (s8) temp_f1_223;
+                M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xE) = temp_r3_235;
                 M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xF) = (s8) (255.0f * (arg4 * M2C_FIELD(&MKPrimitive_colorModulate, f32 *, 0xC)));
-                return M2C_BITWISE(f32, (s32) temp_f1_223);
+                return M2C_BITWISE(f32, temp_r3_235);
             }
             *(f32 *)0xCC008000 = arg1;
             *(f32 *)0xCC008000 = arg2;
             *(f32 *)0xCC008000 = arg3;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r6, 0x0, qr0 */);
+            *(0xCC010000 - 0x8000) = (f64) M2C_FIELD(&MKPrimitive_CurrentVertex, f64 *, 0);
+            M2C_FIELD(((f32 *)0xCC010000 - 0x8000), f64 *, 4) = (f64) M2C_FIELD(&MKPrimitive_CurrentVertex, f32 *, 8);
             *(f32 *)0xCC008000 = (s8) ((s32) ((u8) M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xC) * M2C_FIELD(&MKPrimitive_BaseColor, u8 *, 0)) >> 7);
             *(f32 *)0xCC008000 = (s8) ((s32) ((u8) M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xD) * M2C_FIELD(&MKPrimitive_BaseColor, u8 *, 1)) >> 7);
             *(f32 *)0xCC008000 = (s8) ((s32) ((u8) M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xE) * M2C_FIELD(&MKPrimitive_BaseColor, u8 *, 2)) >> 7);
-            *(f32 *)0xCC008000 = (s8) ((s32) ((u8) M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xF) * M2C_FIELD(&MKPrimitive_BaseColor, u8 *, 3)) >> 7);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r6, $r0, 0x0, qr0 */);
-            return M2C_FIELD(&MKPrimitive_CurrentVertex, f32 *, 8);
+            temp_r3_169 = (s32) ((u8) M2C_FIELD(&MKPrimitive_CurrentVertex, s8 *, 0xF) * M2C_FIELD(&MKPrimitive_BaseColor, u8 *, 3)) >> 7;
+            *(f32 *)0xCC008000 = (s8) temp_r3_169;
+            *(0xCC010000 - 0x8000) = (f64) M2C_FIELD(&MKPrimitive_CurrentVertex, f64 *, 0x10);
+            return M2C_BITWISE(f32, temp_r3_169);
         }
-        if (arg0 < 4) {
-            M2C_FIELD(&MKPrimitive_CurrentVertex, f32 *, 0x10) = arg1;
-            M2C_FIELD(&MKPrimitive_CurrentVertex, f32 *, 0x14) = arg2;
+        if (var_r3_0 < 4) {
+            var_r3_0 = (s32) &MKPrimitive_CurrentVertex;
+            M2C_FIELD((s32) &MKPrimitive_CurrentVertex, f32 *, 0x10) = arg1;
+            M2C_FIELD((s32) &MKPrimitive_CurrentVertex, f32 *, 0x14) = arg2;
         }
-        return arg1;
+        return M2C_BITWISE(f32, var_r3_0);
     }
-    M2C_FIELD(&MKPrimitive_CurrentVertex, f32 *, 0) = arg1;
+    M2C_FIELD(&MKPrimitive_CurrentVertex, f64 *, 0) = arg1;
     M2C_FIELD(&MKPrimitive_CurrentVertex, f32 *, 4) = arg2;
     M2C_FIELD(&MKPrimitive_CurrentVertex, f32 *, 8) = arg3;
-    return arg1;
+    return M2C_BITWISE(f32, &MKPrimitive_CurrentVertex);
 }
+#endif
 
 void MKMaterial_GetVertexComponentHandleFromType(VERTEX_COMPONENT arg0) {
 
@@ -193,12 +201,15 @@ void MKMaterial_SetLocalities(const Matrix *arg0, const BoundingVolume *arg1, in
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)[16]' to
 void MKMaterial_RenderMeshChunk(MeshChunk *arg0) {
     f64 sp28;
     f64 sp20;
+    f64 sp18;
+    f64 sp10;
     s32 spC;
     s32 sp8;
+    MKVector4 *var_r4_305;
     f32 *temp_r29_395;
     s32 temp_r0_372;
     u8 var_r0_324;
@@ -208,15 +219,12 @@ void MKMaterial_RenderMeshChunk(MeshChunk *arg0) {
     void *temp_r30_412;
     void *temp_r3_333;
 
+    var_r4_305 = &MKVector4::one;
     if ((MKMaterial *) gpCurrentMaterial != NULL) {
-
+        var_r4_305 = &MKMaterial_GeometryColor + 0x50;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r4, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
+    sp10 = M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0) * M2C_FIELD(var_r4_305, f64 *, 0);
+    sp18 = M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 8) * M2C_FIELD(var_r4_305, f64 *, 8);
     var_r0_324 = 0;
     sp20 = sp10;
     sp28 = sp18;
@@ -306,18 +314,21 @@ void MKMaterial_RenderImmediateEnd() {
     GXSetCullMode(GX_CULL_NONE);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)[16]' to
 void MKMaterial_RenderImmediateBegin(unsigned int arg0, unsigned int arg1) {
     f64 sp48;
     f64 sp40;
     f64 sp38;
     f64 sp30;
+    f64 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     s32 spC;
     s32 sp8;
+    MKVector4 *var_r5_966;
     s32 temp_r0_1034;
     s32 temp_r3_1072;
     u8 temp_r0_1144;
@@ -327,15 +338,12 @@ void MKMaterial_RenderImmediateBegin(unsigned int arg0, unsigned int arg1) {
     void *temp_r7_1055;
     void *temp_r8_1047;
 
+    var_r5_966 = &MKVector4::one;
     if ((MKMaterial *) gpCurrentMaterial != NULL) {
-
+        var_r5_966 = &MKMaterial_GeometryColor + 0x50;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r5, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
+    sp20 = M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 0) * M2C_FIELD(var_r5_966, f64 *, 0);
+    sp28 = M2C_FIELD(&MKMaterial_GeometryColor, f64 *, 8) * M2C_FIELD(var_r5_966, f64 *, 8);
     var_r0_986 = 0;
     sp30 = sp20;
     sp38 = sp28;
@@ -360,16 +368,14 @@ void MKMaterial_RenderImmediateBegin(unsigned int arg0, unsigned int arg1) {
     M2C_FIELD(&MKPrimitive_BaseColor, s8 *, 3) = 0x80;
     currentPrim = arg0 & 7;
     currentType = arg0;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r8, 0x0, qr0 */);
     temp_r7_1055 = &MKMaterial_GeometryColor + 0x28;
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r7, 0x0, qr0 */);
+    M2C_FIELD(temp_r7_1055, f64 *, 0) = (f64) M2C_FIELD(temp_r8_1047, f64 *, 0);
     M2C_FIELD(temp_r7_1055, f32 *, 8) = (f32) M2C_FIELD(temp_r8_1047, f32 *, 8);
     M2C_FIELD(temp_r7_1055, u8 *, 0xC) = (u8) M2C_FIELD(temp_r8_1047, u8 *, 0xC);
     M2C_FIELD(temp_r7_1055, u8 *, 0xD) = (u8) M2C_FIELD(temp_r8_1047, u8 *, 0xD);
     M2C_FIELD(temp_r7_1055, u8 *, 0xE) = (u8) M2C_FIELD(temp_r8_1047, u8 *, 0xE);
     M2C_FIELD(temp_r7_1055, u8 *, 0xF) = (u8) M2C_FIELD(temp_r8_1047, u8 *, 0xF);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r8, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r7, $r0, 0x0, qr0 */);
+    M2C_FIELD(temp_r7_1055, f64 *, 0x10) = (f64) M2C_FIELD(temp_r8_1047, f64 *, 0x10);
     bLit = 1;
     temp_r3_1072 = MKMaterialInternal_GetCurrent();
     if ((temp_r3_1072 == 0) || (arg0 & 8) || ((s32) M2C_FIELD(M2C_FIELD(temp_r3_1072, void **, 0x24), s32 *, 0x28) != 0)) {

@@ -168,17 +168,15 @@ inline f32 MKVector3::Normalise() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 inline u8 MKVector3::IsNear(const MKVector3 &arg0, float arg1) const {
     f64 sp30;
     f64 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
+    sp8 = M2C_FIELD(this, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0);
     sp28 = sp8;
     sp10 = this->unk8 - arg0.unk8;
     sp30 = (f64) sp10;
@@ -186,6 +184,5 @@ inline u8 MKVector3::IsNear(const MKVector3 &arg0, float arg1) const {
     sp20 = (f64) sp10;
     return (u8) ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU);
 }
-#endif
 
 #endif  // COMMON_SOURCE_MKVECTOR3_H

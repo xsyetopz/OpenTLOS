@@ -62,14 +62,16 @@ void ShatterableBoat::SetDefaults() {
 s32 ShatterableBoat::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp30;
     f64 sp28;
-    M2C_UNK sp18;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    void *temp_r4_191;
 
     MKVector(0.0f, 100.0f, 0.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_r4_191 = this->unk8 + 0x30;
+    sp8 = M2C_FIELD(temp_r4_191, f64 *, 0) + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + sp20;
+    sp10 = M2C_FIELD(temp_r4_191, f32 *, 8) + sp20;
     sp28 = sp8;
     sp30 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -81,14 +83,16 @@ s32 ShatterableBoat::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 s32 ShatterableBoat::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp30;
     f64 sp28;
-    M2C_UNK sp18;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    void *temp_r4_229;
 
     MKVector(0.0f, 100.0f, 0.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_r4_229 = this->unk8 + 0x30;
+    sp8 = M2C_FIELD(temp_r4_229, f64 *, 0) + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + sp20;
+    sp10 = M2C_FIELD(temp_r4_229, f32 *, 8) + sp20;
     sp28 = sp8;
     sp30 = (f64) sp10;
     M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
@@ -274,7 +278,7 @@ block_23:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spD8'
+#if 0 // DRAFT: illegal type
 void ShatterableBoat::EmitWaterSpray() {
     f64 sp300;
     f64 sp2F8;
@@ -332,13 +336,21 @@ void ShatterableBoat::EmitWaterSpray() {
     f64 spF0;
     f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp64;
     f32 sp60;
     f32 sp5C;
@@ -350,18 +362,24 @@ void ShatterableBoat::EmitWaterSpray() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
     MKProp *temp_r3_814;
     f32 temp_f0_844;
     f32 temp_f31_768;
+    f64 temp_f0_631;
+    f64 temp_f0_643;
+    f64 temp_f0_666;
     s32 var_r28_716;
     s32 var_r29_704;
     void *temp_r27_829;
     void *temp_r3_826;
     void *temp_r5_574;
+    void *temp_r5_591;
     void *temp_r5_611;
     void *temp_r5_767;
 
@@ -372,10 +390,10 @@ void ShatterableBoat::EmitWaterSpray() {
     sp268 = (f64) sp48;
     sp270 = (f64) sp50;
     sp278.operator*(4000.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_r5_591 = this->unk8;
+    spD8 = *(temp_r5_591 + 0x30) + M2C_BITWISE(f64, sp278);
     sp288 = spD8;
-    spE0 = M2C_FIELD(this->unk8, f32 *, 0x38) + sp278.unk8;
+    spE0 = M2C_FIELD(temp_r5_591, f32 *, 0x38) + sp278.unk8;
     sp2C8 = spD8;
     sp290 = (f64) spE0;
     sp2D0 = (f64) spE0;
@@ -387,35 +405,38 @@ void ShatterableBoat::EmitWaterSpray() {
     sp228 = (f64) sp38;
     sp230 = (f64) sp40;
     sp238.operator*(1500.0f);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp248 = sp28;
+    temp_f0_631 = sp2C8 + M2C_BITWISE(f64, sp238);
+    sp28 = temp_f0_631;
+    sp248 = temp_f0_631;
     sp30 = (f32) sp2D0 + sp238.unk8;
     sp250 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp258 = spC8;
-    sp2D8 = spC8;
+    temp_f0_643 = sp248 + M2C_BITWISE(f64, sp218);
+    spC8 = temp_f0_643;
+    sp258 = temp_f0_643;
+    sp2D8 = temp_f0_643;
     spD0 = (f32) sp250 + sp218.unk8;
     sp260 = (f64) spD0;
     sp2E0 = (f64) spD0;
     sp1D8.operator*(1000.0f);
     sp1E8.operator*(1500.0f);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-    sp1F8 = sp18;
+    temp_f0_666 = sp2C8 + M2C_BITWISE(f64, sp1E8);
+    sp18 = temp_f0_666;
+    sp1F8 = temp_f0_666;
     sp20 = (f32) sp2D0 + sp1E8.unk8;
     sp200 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spB8 = sp1F8 + M2C_BITWISE(f64, sp1D8);
     sp208 = spB8;
     spC0 = (f32) sp200 + sp1D8.unk8;
     sp2B8 = spB8;
     sp210 = (f64) spC0;
     sp2C0 = (f64) spC0;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
+    spA8 = sp2C8 - sp2D8;
     sp1C8 = spA8;
     spB0 = (f32) sp2D0 - (f32) sp2E0;
     sp2A8 = spA8;
     sp1D0 = (f64) spB0;
     sp2B0 = (f64) spB0;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
+    sp98 = sp2C8 - sp2B8;
     var_r29_704 = 0;
     sp1B8 = sp98;
     spA0 = (f32) sp2D0 - (f32) sp2C0;
@@ -427,7 +448,7 @@ void ShatterableBoat::EmitWaterSpray() {
 loop_2:
         if (var_r29_704 != 0) {
             sp198.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp88 = sp2D8 + M2C_BITWISE(f64, sp198);
             sp1A8 = sp88;
             sp90 = (f32) sp2E0 + sp198.unk8;
             sp2F8 = sp88;
@@ -435,7 +456,7 @@ loop_2:
             sp300 = (f64) sp90;
         } else {
             sp178.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp78 = sp2B8 + M2C_BITWISE(f64, sp178);
             sp188 = sp78;
             sp80 = (f32) sp2C0 + sp178.unk8;
             sp2F8 = sp78;
@@ -455,8 +476,7 @@ loop_2:
         MKVector(-1.0f, 0.0f, -1.0f);
         KDRand_Vector(sp148, sp138);
         sp158.operator*(2000.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp68 = sp158 + M2C_BITWISE(f64, sp118);
         temp_r3_814 = this->unk240;
         sp168 = sp68;
         sp70 = sp158.unk8 + sp118.unk8;
@@ -525,6 +545,7 @@ void ShatterableBoat::UpdateMove() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -548,6 +569,7 @@ void ShatterableBoat::UpdateMove() {
     f32 var_f4_1000;
     f32 var_f4_1098;
     f32 var_f7_991;
+    f64 temp_f0_1323;
     f64 temp_f1_1005;
     f64 temp_f1_1011;
     f64 temp_f1_1015;
@@ -761,12 +783,13 @@ void ShatterableBoat::UpdateMove() {
         spC0.unk10 = (f64) sp40;
         spD8 = (f64) sp48;
         sp98 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp110 += sp90;
         sp70 = temp_f5_1286;
         sp78 = temp_f4_1296;
         sp118 = (f32) sp118 + (f32) sp98;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp80 = sp30;
+        temp_f0_1323 = sp70 + M2C_BITWISE(f64, spC0.unk10);
+        sp30 = temp_f0_1323;
+        sp80 = temp_f0_1323;
         sp38 = (f32) sp78 + (f32) spD8;
         sp88 = (f64) sp38;
         sp120.SetRotationPYR(*((MKVector3 *) &sp80));
@@ -778,12 +801,9 @@ void ShatterableBoat::UpdateMove() {
         sp60.GetRotationPYR();
         M2C_FIELD(this, f64 *, 0x1C8) = sp60;
         M2C_FIELD(this, f64 *, 0x1D0) = sp68;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f31_1285 == 0.0f) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((temp_f31_1285 == -0.5f) && ((s32) this->unk234 != 1)) {
-                EmitWaterSpray();
-            }
+        M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
+        if ((temp_f31_1285 == 0.0f) && (temp_f31_1285 >= -0.5f) && ((s32) this->unk234 != 1)) {
+            EmitWaterSpray();
         }
     }
 }
@@ -804,14 +824,14 @@ void ShatterableBoat::Update() {
     f64 sp290;
     f64 sp288;
     f64 sp280;
-    M2C_UNK sp270;
+    f64 sp270;
     f64 sp268;
     f64 sp260;
     f64 sp258;
     f64 sp250;
     f64 sp248;
     f64 sp240;
-    M2C_UNK sp230;
+    f64 sp230;
     f64 sp228;
     f64 sp220;
     MKVector3 sp210;
@@ -839,19 +859,26 @@ void ShatterableBoat::Update() {
     f64 spF8;
     f64 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
     f32 spD4;
     f32 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp54;
@@ -873,6 +900,7 @@ void ShatterableBoat::Update() {
     MKProp *temp_r3_1952;
     f32 temp_f0_1833;
     f32 temp_f0_1982;
+    f32 temp_f1_1621;
     f32 temp_f28_1757;
     f32 temp_f28_1906;
     f32 var_f1_1465;
@@ -925,8 +953,7 @@ void ShatterableBoat::Update() {
         }
         this->unk224 = (1.5f * (0.5f + var_f28_1440) * gUpdateTimeDelta) + M2C_BITWISE(f32, this->unk224);
         this->unk230 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk230 == 0.0f) {
+        if (this->unk230 <= 0.0f) {
             var_f1_1465 = M2C_FIELD(this, f32 *, 0x22C) - 0.001f;
             if (var_f1_1465 < 1.0f) {
 
@@ -942,7 +969,7 @@ void ShatterableBoat::Update() {
             sp100.GetMeasure(var_f1_1465, (Matrix *) &this->unk218, KDSpline_VelocityMixer);
             spF0 = M2C_BITWISE(f64, sp100);
             spF8 = (f64) sp100.unk8;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            spE0 = spF0 * (f64) sp18;
             sp280 = spE0;
             spE8 = (f32) spF8 * sp18;
             sp288 = (f64) spE8;
@@ -990,18 +1017,19 @@ void ShatterableBoat::Update() {
             spD8 = (f32) sp288 * var_f3_1576;
             sp2E0 = (f64) spD0;
             sp2E8 = (f64) spD8;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            spC0 = sp2E0 * 5.717499035e-315;
             sp260 = spC0;
             spC8 = (f32) sp2E8 * 2000.0f;
             sp14 = 0.0f;
             sp268 = (f64) spC8;
             sp270.GetMeasure(M2C_FIELD(this, f32 *, 0x22C), (Matrix *) &this->unk218, KDSpline_PositionMixer);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            spB0 = sp270 + sp260;
+            temp_f1_1621 = (3500.0f * var_f28_1440) + 5000.0f;
             spB8 = sp278 + (f32) sp268;
             sp2D0 = spB0;
             sp2D8 = (f64) spB8;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            spA8 = (f32) sp2E8 * ((3500.0f * var_f28_1440) + 5000.0f);
+            spA0 = sp2E0 * (f64) temp_f1_1621;
+            spA8 = (f32) sp2E8 * temp_f1_1621;
             sp250 = spA0;
             sp258 = (f64) spA8;
             ((WaterSurfaceFX *) (M2C_BITWISE(WaterSurfaceFX *, this->unk22C)))->AddMovementForce(*((MKVector3 *) &sp2D0), *((MKVector3 *) &sp250));
@@ -1022,9 +1050,7 @@ void ShatterableBoat::Update() {
     }
     ShatterablePlatform::Update();
     sp230.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp90 = sp230 - M2C_FIELD(this, f64 *, 0x328);
     M2C_FIELD(this, f64 *, 0x318) = sp90;
     sp98 = sp238 - this->unk318;
     sp240 = sp90;
@@ -1058,8 +1084,7 @@ loop_42:
             MKVector(-1.0f, 0.0f, -1.0f);
             KDRand_Vector(sp200, sp1F0);
             sp210.operator*(1000.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp80 = sp210 + M2C_BITWISE(f64, sp1D0);
             temp_r3_1803 = this->unk240;
             sp220 = sp80;
             sp88 = sp210.unk8 + sp1D0.unk8;
@@ -1124,8 +1149,7 @@ loop_49:
             MKVector(-1.0f, 0.0f, -1.0f);
             KDRand_Vector(sp170, sp160);
             sp180.operator*(1000.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp60 = sp180 + M2C_BITWISE(f64, sp140);
             temp_r3_1952 = this->unk240;
             sp190 = sp60;
             sp68 = sp180.unk8 + sp140.unk8;

@@ -58,7 +58,7 @@ void BigBeetleHive::EmitGoopDrips() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp60'
+#if 0 // DRAFT: illegal type
 void BigBeetleHive::Message(MKMessage *arg0) {
     f64 spC8;
     f64 spC0;
@@ -73,15 +73,19 @@ void BigBeetleHive::Message(MKMessage *arg0) {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     BigBeetleHive ***temp_r5_119;
@@ -89,13 +93,14 @@ void BigBeetleHive::Message(MKMessage *arg0) {
     BigBeetleHive **temp_r4_145;
     BigBeetleHive **var_r4_122;
     BigBeetleHive *temp_r0_131;
-    f32 temp_f2_315;
     f32 temp_r4_261;
     f32 temp_r4_417;
     f32 var_f3_238;
     f32 var_f3_394;
     f32 var_f4_171;
     f32 var_f4_327;
+    f64 temp_f0_256;
+    f64 temp_f0_412;
     f64 temp_f1_177;
     f64 temp_f1_183;
     f64 temp_f1_187;
@@ -109,6 +114,8 @@ void BigBeetleHive::Message(MKMessage *arg0) {
     s32 var_r0_372;
     void *temp_r3_118;
     void *temp_r3_304;
+    void *temp_r4_150;
+    void *temp_r4_306;
 
     temp_r0_105 = arg0->unk0;
     switch (temp_r0_105) {                          /* switch 1; irregular */
@@ -142,11 +149,10 @@ block_14:
                 *temp_r4_145 = this;
             }
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r4_150 = this->unk8 + 0x30;
+        sp60 = M2C_FIELD(temp_r4_150, f64 *, 0) - M2C_FIELD(temp_r3_118, f64 *, 0x10);
         spA0 = sp60;
-        sp68 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) - M2C_FIELD(temp_r3_118, f32 *, 0x18);
+        sp68 = M2C_FIELD(temp_r4_150, f32 *, 8) - M2C_FIELD(temp_r3_118, f32 *, 0x18);
         spA8 = (f64) sp68;
         var_f4_171 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4));
         if (var_f4_171 > 1e-12f) {
@@ -192,14 +198,13 @@ block_14:
         sp58 = (f32) spA8 * var_f3_238;
         spC0 = (f64) sp50;
         spC8 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        temp_f0_256 = spC0 * 5.49408334e-315;
+        sp20 = temp_f0_256;
         temp_r4_261 = this->unk198;
-        sp90 = sp20;
+        sp90 = temp_f0_256;
         sp28 = (f32) spC8 * 50.0f;
         sp98 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+        *M2C_BITWISE(void *, temp_r4_261) = (f64) (*M2C_BITWISE(f64 *, temp_r4_261) + temp_f0_256);
         M2C_FIELD(temp_r4_261, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_261, f32 *, 8) + (f32) sp98);
         M2C_FIELD(temp_r3_118, s8 *, 0x3E) = 1;
         KDSound_Play3d(GS_OBBigHiveHit1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
@@ -208,12 +213,10 @@ block_14:
         return;
     case 5:                                         /* switch 1 */
         temp_r3_304 = checked_cast<BreathHitMessage *, MKMessage>(arg0);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        temp_f2_315 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) - M2C_FIELD(temp_r3_304, f32 *, 0x18);
+        temp_r4_306 = this->unk8 + 0x30;
+        sp40 = M2C_FIELD(temp_r4_306, f64 *, 0) - M2C_FIELD(temp_r3_304, f64 *, 0x10);
         sp80 = sp40;
-        sp48 = temp_f2_315;
+        sp48 = M2C_FIELD(temp_r4_306, f32 *, 8) - M2C_FIELD(temp_r3_304, f32 *, 0x18);
         sp88 = (f64) sp48;
         var_f4_327 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
         if (var_f4_327 > 1e-12f) {
@@ -259,14 +262,13 @@ block_14:
         sp38 = (f32) sp88 * var_f3_394;
         spB0 = (f64) sp30;
         spB8 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        temp_f0_412 = spB0 * 5.41119288e-315;
+        sp10 = temp_f0_412;
         temp_r4_417 = this->unk198;
-        sp70 = sp10;
+        sp70 = temp_f0_412;
         sp18 = (f32) spB8 * 12.5f;
         sp78 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+        *M2C_BITWISE(void *, temp_r4_417) = (f64) (*M2C_BITWISE(f64 *, temp_r4_417) + temp_f0_412);
         M2C_FIELD(temp_r4_417, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_417, f32 *, 8) + (f32) sp78);
         if ((s32) M2C_FIELD(temp_r3_304, s32 *, 0x38) != 3) {
             KDSound_Play3d(GS_OBBigHiveHit4, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);

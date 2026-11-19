@@ -37,7 +37,6 @@ void CutsceneObject::End() {
     this->unk30.Send(NULL);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void CutsceneObject::ReturnToGame() {
     s8 sp62;
     s8 sp61;
@@ -55,6 +54,7 @@ void CutsceneObject::ReturnToGame() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f2_121;
     f32 temp_f2_151;
     f64 temp_f1_125;
@@ -75,9 +75,7 @@ void CutsceneObject::ReturnToGame() {
     }
     if ((u8) this->unk60 != 0) {
         sp2C = 0;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp8 = this->unk10 - M2C_FIELD(this, f64 *, 0x20);
         temp_f2_151 = (f32) M2C_FIELD(this, f64 *, 0x18);
         sp28 = 0x42E;
         sp30 = sp8;
@@ -89,7 +87,6 @@ void CutsceneObject::ReturnToGame() {
         this->unk61 = 1;
     }
 }
-#endif
 
 void CutsceneObject::Begin() {
     this->unk34.Send(NULL);

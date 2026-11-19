@@ -222,12 +222,16 @@ void ElectricSparks::Update() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     M2C_UNK *temp_r4_391;
     M2C_UNK *temp_r4_439;
     M2C_UNK *temp_r5_394;
     M2C_UNK *var_r6_367;
     f32 var_f0_373;
+    f64 temp_f0_411;
+    f64 temp_f0_422;
 
     var_r6_367 = this->unk4C;
 loop_11:
@@ -254,15 +258,15 @@ loop_11:
                 *var_r6_367 = temp_r5_394;
             } else {
                 M2C_FIELD(temp_r4_439, f32 *, 0x14) = (f32) ((2.0f * (-980.0f * gUpdateTimeDelta)) + M2C_FIELD(temp_r4_439, f32 *, 0x14));
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r4, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f4 */);
-                sp28 = sp18;
+                temp_f0_411 = M2C_FIELD(temp_r4_439, f64 *, 0x10) * (f64) gUpdateTimeDelta;
+                sp18 = temp_f0_411;
+                sp28 = temp_f0_411;
                 sp20 = M2C_FIELD(temp_r4_439, f32 *, 0x18) * gUpdateTimeDelta;
                 sp30 = (f64) sp20;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_FIELD(temp_r4_439, f64 *, 0) = sp8;
-                sp38 = sp8;
+                temp_f0_422 = M2C_FIELD(temp_r4_439, f64 *, 0) + temp_f0_411;
+                sp8 = temp_f0_422;
+                M2C_FIELD(temp_r4_439, f64 *, 0) = temp_f0_422;
+                sp38 = temp_f0_422;
                 sp10 = M2C_FIELD(temp_r4_439, f32 *, 8) + (f32) sp30;
                 sp40 = (f64) sp10;
                 M2C_FIELD(temp_r4_439, f32 *, 8) = (f64) sp10;

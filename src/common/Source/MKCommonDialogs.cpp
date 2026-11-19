@@ -108,10 +108,11 @@ s32 CreateWidgetWindow::CreateWidgetWindowHook(MKWidget *arg0, unsigned int arg1
     MKVector3 sp58;
     f64 sp50;
     f64 sp48;
-    M2C_UNK sp38;
+    f64 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -132,7 +133,7 @@ s32 CreateWidgetWindow::CreateWidgetWindowHook(MKWidget *arg0, unsigned int arg1
                     M2C_STRUCT_COPY((s32) &sp84 + 4, MKWidgetIdentityAttributes - 4 + 4, 0x58);
                     MKWidget_GetLocalMousePos(temp_r30_204, &sp58);
                     MKVector(0.0f, 0.0f, 0.0f);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp18 = M2C_BITWISE(f64, sp58) - sp38;
                     sp20 = sp58.unk8 - sp40;
                     sp10 = 0.0f;
                     sp8 = 80.0f;

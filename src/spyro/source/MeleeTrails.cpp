@@ -255,8 +255,7 @@ loop_5:
         temp_r4_498 = *var_r31_456;
         if (temp_r4_498 != NULL) {
             M2C_FIELD(temp_r4_498, f32 *, 0x40) = (f32) (M2C_FIELD(temp_r4_498, f32 *, 0x40) - gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r4_498, f32 *, 0x40) == 0.0f) {
+            if (M2C_FIELD(temp_r4_498, f32 *, 0x40) <= 0.0f) {
                 MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, **M2C_FIELD(temp_r4_498, s32 ***, 0x58), 0U, 1U);
                 temp_r3_475 = M2C_FIELD(this, void ***, 0xD4);
                 M2C_FIELD(this, void ***, 0xD4) = (void **) (temp_r3_475 + 4);

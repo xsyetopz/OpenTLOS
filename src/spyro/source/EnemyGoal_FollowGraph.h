@@ -341,12 +341,17 @@ inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f32 temp_f1_9032;
     f32 temp_f1_9057;
     f32 temp_f29_9019;
     f32 temp_f3_9040;
     f32 temp_f5_9041;
     f32 var_f2_9081;
+    f64 temp_f0_9053;
+    f64 temp_f4_9034;
     void *temp_r31_9001;
 
     temp_r31_9001 = M2C_ERROR(/* Read from unset register $r6 */);
@@ -359,10 +364,10 @@ inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg
     sp70 = M2C_FIELD(temp_r31_9001, f64 *, 8);
     sp78 = M2C_FIELD(arg1, f64 *, 0);
     sp80 = M2C_FIELD(arg1, f64 *, 8);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f4 */);
-    temp_f3_9040 = temp_f29_9019 / (temp_f29_9019 + arg0->GetParabolaApexTimeFromP2((MKVector3) &sp78, (MKVector3) &sp68, arg2, arg3));
+    temp_f1_9032 = arg0->GetParabolaApexTimeFromP2((MKVector3) &sp78, (MKVector3) &sp68, arg2, arg3);
+    temp_f4_9034 = *(f64 *) arg1;
+    sp18 = M2C_FIELD(temp_r31_9001, f64 *, 0) - temp_f4_9034;
+    temp_f3_9040 = temp_f29_9019 / (temp_f29_9019 + temp_f1_9032);
     temp_f5_9041 = (f32) M2C_FIELD(arg1, f64 *, 8);
     spA8 = sp18;
     sp58 = sp18;
@@ -370,10 +375,11 @@ inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg
     sp20 = (f32) M2C_FIELD(temp_r31_9001, f64 *, 8) - temp_f5_9041;
     sp60 = (f64) sp20;
     spB0 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+    temp_f0_9053 = spA8 * (f64) temp_f3_9040;
+    spA8 = temp_f0_9053;
     temp_f1_9057 = (f32) spB0 * temp_f3_9040;
     spB0 = temp_f1_9057;
+    sp8 = temp_f4_9034 + temp_f0_9053;
     sp38 = M2C_FIELD(arg1, f64 *, 0);
     sp28 = M2C_FIELD(temp_r31_9001, f64 *, 0);
     sp10 = temp_f5_9041 + temp_f1_9057;
@@ -383,7 +389,7 @@ inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg
     spC0 = (f64) sp10;
     sp40 = M2C_FIELD(arg1, f64 *, 8);
     sp30 = M2C_FIELD(temp_r31_9001, f64 *, 8);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (unksp3C == unksp2C) {
         var_f2_9081 = arg2;
     } else {
@@ -415,7 +421,7 @@ inline f32 EnemyGoal_GraphJump::GetParabolaApexTimeFromP2(MKVector3 arg0, MKVect
     sp10 = M2C_FIELD(arg1, f64 *, 0);
     sp28 = M2C_FIELD(arg0, f64 *, 8);
     sp18 = M2C_FIELD(arg1, f64 *, 8);
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if (unksp24 == unksp14) {
 
     } else {
@@ -479,7 +485,7 @@ inline f32 EnemyGoal_GraphJump::GetParabolaApexTimeFromP1(MKVector3 arg0, MKVect
     sp10 = M2C_FIELD(arg1, f64 *, 0);
     sp28 = M2C_FIELD(arg0, f64 *, 8);
     sp18 = M2C_FIELD(arg1, f64 *, 8);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (unksp24 == unksp14) {
 
     } else {

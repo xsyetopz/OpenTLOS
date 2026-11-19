@@ -28,18 +28,25 @@ void KDMath_NormalisedSlerp(const MKVector3 &arg0, const MKVector3 &arg1, float 
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_96;
     f32 temp_f26_87;
     f32 temp_f28_94;
     f32 temp_f29_91;
+    f32 temp_f3_130;
     f32 var_f2_97;
     f32 var_f30_58;
     f32 var_f3_228;
     f32 var_f4_161;
+    f64 temp_f0_105;
+    f64 temp_f0_115;
     f64 temp_f1_167;
     f64 temp_f1_173;
     f64 temp_f1_177;
@@ -59,8 +66,7 @@ void KDMath_NormalisedSlerp(const MKVector3 &arg0, const MKVector3 &arg1, float 
     } else {
         var_f30_58 = -1.0f;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((1.0f - var_f30_58) == 0.000001f) {
+    if ((1.0f - var_f30_58) <= 0.000001f) {
         M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(temp_r31_46, f64 *, 0);
         M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(temp_r31_46, f64 *, 8);
         return;
@@ -75,25 +81,26 @@ void KDMath_NormalisedSlerp(const MKVector3 &arg0, const MKVector3 &arg1, float 
     } else {
         var_f2_97 = temp_f1_96;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-    sp50 = sp10;
+    temp_f0_105 = M2C_FIELD(temp_r31_46, f64 *, 0) * (f64) temp_f28_94;
+    sp10 = temp_f0_105;
+    sp50 = temp_f0_105;
     sp18 = (f32) M2C_FIELD(temp_r31_46, f64 *, 8) * temp_f28_94;
     sp58 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    sp60 = sp40;
+    temp_f0_115 = (f64) M2C_FIELD(&arg1, f32 *, 0) * (f64) temp_f29_91;
+    sp40 = temp_f0_115;
+    sp60 = temp_f0_115;
     sp48 = arg1.unk8 * temp_f29_91;
     sp68 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp30 = sp60 + temp_f0_105;
+    temp_f3_130 = 1.0f / var_f2_97;
     sp70 = sp30;
     sp38 = (f32) sp68 + (f32) sp58;
     sp78 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp20 = sp70 * (f64) temp_f3_130;
     sp80 = sp20;
-    sp28 = (f32) sp78 * (1.0f / var_f2_97);
+    sp28 = (f32) sp78 * temp_f3_130;
     sp88 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if (var_f30_58 == -1.0f) {
         var_f4_161 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
         if (var_f4_161 > 0.000001f) {
@@ -154,19 +161,26 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_345;
     f32 temp_f26_327;
     f32 temp_f28_343;
     f32 temp_f29_340;
+    f32 temp_f3_379;
     f32 var_f27_329;
     f32 var_f2_346;
     f32 var_f30_299;
     f32 var_f3_477;
     f32 var_f4_410;
+    f64 temp_f0_354;
+    f64 temp_f0_364;
     f64 temp_f1_416;
     f64 temp_f1_422;
     f64 temp_f1_426;
@@ -186,8 +200,7 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     } else {
         var_f30_299 = -1.0f;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((1.0f - var_f30_299) == 0.000001f) {
+    if ((1.0f - var_f30_299) <= 0.000001f) {
         M2C_FIELD(&arg0, f64 *, 0) = (f64) M2C_FIELD(temp_r31_287, f64 *, 0);
         M2C_FIELD(&arg0, f64 *, 8) = (f64) M2C_FIELD(temp_r31_287, f64 *, 8);
         return;
@@ -208,25 +221,26 @@ void KDMath_Slerp(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     } else {
         var_f2_346 = temp_f1_345;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-    sp50 = sp10;
+    temp_f0_354 = M2C_FIELD(temp_r31_287, f64 *, 0) * (f64) temp_f28_343;
+    sp10 = temp_f0_354;
+    sp50 = temp_f0_354;
     sp18 = (f32) M2C_FIELD(temp_r31_287, f64 *, 8) * temp_f28_343;
     sp58 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    sp60 = sp40;
+    temp_f0_364 = (f64) M2C_FIELD(&arg1, f32 *, 0) * (f64) temp_f29_340;
+    sp40 = temp_f0_364;
+    sp60 = temp_f0_364;
     sp48 = arg1.unk8 * temp_f29_340;
     sp68 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp30 = sp60 + temp_f0_354;
+    temp_f3_379 = 1.0f / var_f2_346;
     sp70 = sp30;
     sp38 = (f32) sp68 + (f32) sp58;
     sp78 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp20 = sp70 * (f64) temp_f3_379;
     sp80 = sp20;
-    sp28 = (f32) sp78 * (1.0f / var_f2_346);
+    sp28 = (f32) sp78 * temp_f3_379;
     sp88 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if (var_f30_299 == -1.0f) {
         var_f4_410 = ((f32) sp88 * (f32) sp88) + (((f32) sp80 * (f32) sp80) + (unksp84 * unksp84));
         if (var_f4_410 > 0.000001f) {
@@ -839,8 +853,7 @@ void KDMath_TurnToAngle(float arg0, float arg1, float arg2, float arg3) {
     } else {
         var_f0_1530 = temp_f1_1525;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (var_f0_1530 == temp_f2_1527) {
+    if (var_f0_1530 <= temp_f2_1527) {
         var_f1_1538 = arg1;
     } else if ((temp_f1_1525 > 3.1415927f) || (temp_f1_1525 < 0.0f)) {
         var_f1_1538 = arg0 - temp_f2_1527;
@@ -872,8 +885,7 @@ f32 KDMath_NormaliseAngle(float arg0) {
     f32 var_f1_0;
 
     var_f1_0 = arg0;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (var_f1_0 == 6.2831855f) {
+    if (var_f1_0 >= 6.2831855f) {
         return -((6.2831855f * (f32) (s32) (0.15915494f * var_f1_0)) - var_f1_0);
     }
     if (var_f1_0 < 0.0f) {

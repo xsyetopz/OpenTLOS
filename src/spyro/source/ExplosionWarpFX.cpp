@@ -29,7 +29,9 @@ void ExplosionWarpFX::UpdateWarp() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -40,6 +42,8 @@ void ExplosionWarpFX::UpdateWarp() {
     f32 temp_f5_196;
     f32 temp_f6_198;
     f32 var_f0_28;
+    f64 temp_f0_154;
+    f64 temp_f13_114;
     s32 temp_r0_144;
     s32 temp_r5_136;
     s32 temp_r6_88;
@@ -51,6 +55,7 @@ void ExplosionWarpFX::UpdateWarp() {
     void *temp_r5_158;
     void *temp_r5_186;
     void *temp_r5_90;
+    void *temp_r6_152;
     void *temp_r6_176;
     void *temp_r6_195;
 
@@ -66,8 +71,7 @@ void ExplosionWarpFX::UpdateWarp() {
         var_f0_28 = 0.0f;
     }
     this->unk64 = var_f0_28;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk64 != 0.0f) {
+    if (!(this->unk64 <= 0.0f)) {
         this->unk68 += 1;
         M2C_STRUCT_COPY((s32) &sp6C + 4, (s32) &this->unk1C + 4, 0x40);
         spA0 = 0.0f;
@@ -89,14 +93,13 @@ loop_10:
                 sp18 = 0.0f + ((temp_f27_94 * sp98) + ((temp_f28_92 * sp78) + (temp_f13_91 * sp88)));
                 sp50 = (f64) sp10;
                 sp58 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f13, $f13, $f4 */);
-                sp60 = sp30;
+                temp_f13_114 = sp50 * 5.811479333e-315;
+                sp30 = temp_f13_114;
+                sp60 = temp_f13_114;
                 temp_r4_122 = this->unk4 + (temp_r6_88 + 0x20);
                 sp38 = (f32) sp58 * 10000.0f;
                 sp68 = (f64) sp38;
-                M2C_ERROR(/* unknown instruction: psq_lx $f31, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f13, $f31, $f13 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f13, $zero, $r4, 0x0, qr0 */);
+                M2C_FIELD(temp_r4_122, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_122, f64 *, 0) + temp_f13_114);
                 var_r7_72 += 1;
                 M2C_FIELD(temp_r4_122, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_122, f32 *, 8) + (f32) sp68);
                 goto loop_10;
@@ -108,32 +111,26 @@ loop_10:
         if (temp_r0_144 > 0) {
             do {
                 temp_r0_150 = this->unk4;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r6, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f1 */);
+                temp_r6_152 = temp_r0_150 + (var_r4_141 + 0x20);
+                temp_f0_154 = M2C_FIELD(temp_r6_152, f64 *, 0) * (f64) gUpdateTimeDelta;
+                sp20 = temp_f0_154;
                 temp_r5_158 = temp_r0_150 + (var_r4_141 + 0x10);
-                sp40 = sp20;
-                sp28 = M2C_FIELD((temp_r0_150 + (var_r4_141 + 0x20)), f32 *, 8) * gUpdateTimeDelta;
+                sp40 = temp_f0_154;
+                sp28 = M2C_FIELD(temp_r6_152, f32 *, 8) * gUpdateTimeDelta;
                 sp48 = (f64) sp28;
-                M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r5, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r5, 0x0, qr0 */);
+                M2C_FIELD(temp_r5_158, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_158, f64 *, 0) + temp_f0_154);
                 M2C_FIELD(temp_r5_158, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_158, f32 *, 8) + (f32) sp48);
                 temp_r6_176 = this->unk4 + (var_r4_141 + 0x10);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r6, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r6, 0x0, qr0 */);
+                M2C_FIELD(temp_r6_176, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_176, f64 *, 0) * 5.180653787e-315);
                 M2C_FIELD(temp_r6_176, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_176, f32 *, 8) * 0.25f);
                 temp_r5_186 = this->unk4 + (var_r4_141 + 0x20);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r5, 0x0, qr0 */);
+                M2C_FIELD(temp_r5_186, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_186, f64 *, 0) * 5.24282163e-315);
                 M2C_FIELD(temp_r5_186, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_186, f32 *, 8) * 0.75f);
                 temp_r6_195 = this->unk4 + (var_r4_141 + 0x20);
                 temp_f5_196 = M2C_FIELD(temp_r6_195, f32 *, 0);
                 temp_f0_197 = M2C_FIELD(temp_r6_195, f32 *, 4);
                 temp_f6_198 = M2C_FIELD(temp_r6_195, f32 *, 8);
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (((temp_f6_198 * temp_f6_198) + ((temp_f5_196 * temp_f5_196) + (temp_f0_197 * temp_f0_197))) == 100.0f) {
+                if (((temp_f6_198 * temp_f6_198) + ((temp_f5_196 * temp_f5_196) + (temp_f0_197 * temp_f0_197))) <= 100.0f) {
                     M2C_FIELD(temp_r6_195, f32 *, 0) = 0.0f;
                     M2C_FIELD(temp_r6_195, f32 *, 4) = 0.0f;
                     M2C_FIELD(temp_r6_195, f32 *, 8) = 0.0f;
@@ -367,11 +364,15 @@ void ExplosionWarpFX::Draw() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f1_655;
     f32 var_f0_681;
     f32 var_f0_698;
     f32 var_f31_642;
+    f64 temp_f0_767;
+    f64 temp_f0_793;
     s32 temp_r0_807;
     s32 temp_r26_753;
     s32 temp_r27_752;
@@ -387,8 +388,7 @@ void ExplosionWarpFX::Draw() {
     void *temp_r5_763;
     void *temp_r5_789;
 
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk64 != 0.0f) {
+    if (!(this->unk64 <= 0.0f)) {
         MKMaterial_SetMaterial(this->unk60);
         MKPrimitive(0xC, 0x10);
         MKSetMatrix(Matrix::identity);
@@ -466,10 +466,9 @@ loop_24:
                 temp_r3_757 = this->unk8 + (temp_r27_752 * 8);
                 MKSetTexCoord1F(M2C_FIELD(temp_r3_757, f32 *, 0), M2C_FIELD(temp_r3_757, f32 *, 4));
                 temp_r5_763 = this->unk4 + (temp_r27_752 * 0x30);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp50 = sp20;
+                temp_f0_767 = M2C_FIELD(temp_r5_763, f64 *, 0) + *(temp_r5_763 + 0x10);
+                sp20 = temp_f0_767;
+                sp50 = temp_f0_767;
                 sp28 = M2C_FIELD(temp_r5_763, f32 *, 8) + M2C_FIELD(temp_r5_763, f32 *, 0x18);
                 sp58 = (f64) sp28;
                 MKSetPositionV(*((MKVector3 *) &sp50));
@@ -477,10 +476,9 @@ loop_24:
                 temp_r3_783 = this->unk8 + (temp_r26_753 * 8);
                 MKSetTexCoord1F(M2C_FIELD(temp_r3_783, f32 *, 0), M2C_FIELD(temp_r3_783, f32 *, 4));
                 temp_r5_789 = this->unk4 + (temp_r26_753 * 0x30);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp40 = sp10;
+                temp_f0_793 = M2C_FIELD(temp_r5_789, f64 *, 0) + *(temp_r5_789 + 0x10);
+                sp10 = temp_f0_793;
+                sp40 = temp_f0_793;
                 sp18 = M2C_FIELD(temp_r5_789, f32 *, 8) + M2C_FIELD(temp_r5_789, f32 *, 0x18);
                 sp48 = (f64) sp18;
                 MKSetPositionV(*((MKVector3 *) &sp40));

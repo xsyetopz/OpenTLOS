@@ -52,19 +52,37 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     f64 spD0;
     f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     M2C_UNK sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f64 sp10;
     f64 sp8;
     Enemy *temp_r4_302;
+    f64 temp_f0_105;
+    f64 temp_f0_125;
+    f64 temp_f0_137;
+    f64 temp_f0_221;
+    f64 temp_f0_231;
+    f64 temp_f0_251;
+    f64 temp_f0_263;
+    f64 temp_f0_95;
     u8 var_r30_158;
 
     sp8 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -81,37 +99,40 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
         sp198.GetPos();
         this->unkC->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp198), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
         sp178.operator*(100.0f);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
+        sp68 = sp1D8 + M2C_BITWISE(f64, sp178);
         sp188 = sp68;
         sp70 = (f32) sp1E0 + sp178.unk8;
         sp1C8 = sp68;
         sp190 = (f64) sp70;
         sp1D0 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp158 = spB8;
+        temp_f0_95 = sp1B8 * 5.263544247e-315;
+        spB8 = temp_f0_95;
+        sp158 = temp_f0_95;
         spC0 = (f32) sp1C0 * 1.0f;
         sp160 = (f64) spC0;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        sp168 = spA8;
+        temp_f0_105 = sp1D8 + temp_f0_95;
+        spA8 = temp_f0_105;
+        sp168 = temp_f0_105;
         spB0 = (f32) sp1E0 + (f32) sp160;
         sp170 = (f64) spB0;
         if (this->unkC->unk750.unkA0.GetFirstIntersectionPlane(*((MKVector3 *) &sp168), *((MKVector3 *) &sp1C8), (MKVector3 *) &sp1C8, (MKVector3 *) &sp1A8) != 0) {
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp138 = sp28;
+            temp_f0_125 = sp1C8 - sp1D8;
+            sp28 = temp_f0_125;
+            sp138 = temp_f0_125;
             sp30 = (f32) sp1D0 - (f32) sp1E0;
             sp140 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp148 = sp58;
+            temp_f0_137 = temp_f0_125 * 5.222099017e-315;
+            sp58 = temp_f0_137;
+            sp148 = temp_f0_137;
             sp60 = (f32) sp140 * 0.5f;
             sp150 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp1D8 += temp_f0_137;
             sp1E0 = (f32) sp1E0 + (f32) sp150;
         } else {
             var_r30_158 = 0;
             if (this->unkC->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
                 sp98.GetRegionPos();
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((f32) fabs(sp9C - unksp1CC) == 500.0f) {
+                if ((f32) fabs(sp9C - unksp1CC) <= 500.0f) {
                     var_r30_158 = 1;
                 }
             }
@@ -123,33 +144,37 @@ void EnemyGoal_AlertMode::CalculateRegionEdgeMoveTarget(bool arg0) {
     } else {
         sp128.GetPos();
         this->unkC->unk800.unk28.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp128), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp1B8 *= 1.58735232e-314;
         sp1C0 = (f32) sp1C0 * -1.0f;
         sp108.operator*(100.0f);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
+        sp48 = sp1D8 + M2C_BITWISE(f64, sp108);
         sp118 = sp48;
         sp50 = (f32) sp1E0 + sp108.unk8;
         sp1C8 = sp48;
         sp120 = (f64) sp50;
         sp1D0 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        spE8 = sp88;
+        temp_f0_221 = sp1B8 * 5.263544247e-315;
+        sp88 = temp_f0_221;
+        spE8 = temp_f0_221;
         sp90 = sp1C0 * 1.0f;
         spF0 = (f64) sp90;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        spF8 = sp78;
+        temp_f0_231 = sp1D8 + temp_f0_221;
+        sp78 = temp_f0_231;
+        spF8 = temp_f0_231;
         sp80 = (f32) sp1E0 + (f32) spF0;
         sp100 = (f64) sp80;
         if (this->unkC->unk800.unk28.GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp1C8), (MKVector3 *) &sp1C8, (MKVector3 *) &sp1A8) != 0) {
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            spC8 = sp18;
+            temp_f0_251 = sp1C8 - sp1D8;
+            sp18 = temp_f0_251;
+            spC8 = temp_f0_251;
             sp20 = (f32) sp1D0 - (f32) sp1E0;
             spD0 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spD8 = sp38;
+            temp_f0_263 = temp_f0_251 * 5.222099017e-315;
+            sp38 = temp_f0_263;
+            spD8 = temp_f0_263;
             sp40 = (f32) spD0 * 0.5f;
             spE0 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp1D8 += temp_f0_263;
             sp1E0 = (f32) sp1E0 + (f32) spE0;
         } else if (this->unkC->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp1C8)) == 0) {
             sp1D8 = sp1C8;
@@ -234,12 +259,17 @@ u8 EnemyGoal_AlertMode::AddGoal_RangedAttackMode() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     AttackerManager *temp_r30_597;
     Enemy *temp_r3_543;
     Enemy *temp_r3_551;
     Frustum *temp_r28_547;
     f32 temp_f1_576;
+    f64 temp_f0_571;
+    f64 temp_f1_550;
+    f64 temp_f1_561;
     s32 temp_r28_589;
     s32 var_r29_610;
     s32 var_r30_628;
@@ -249,18 +279,20 @@ u8 EnemyGoal_AlertMode::AddGoal_RangedAttackMode() {
 
     temp_r3_543 = this->unkC;
     temp_r28_547 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+    temp_f1_550 = temp_r3_543->GetCollisionRadius(M2C_FIELD(&gb, s32 *, 0x3B8));
     temp_r3_551 = this->unkC;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp18 = M2C_FIELD(temp_r3_551, f64 *, 0xD0) * temp_f1_550;
     temp_r4_558 = temp_r3_551->unk8;
-    sp20 = temp_r3_551->unkD8 * temp_r3_543->GetCollisionRadius(M2C_FIELD(&gb, s32 *, 0x3B8));
+    temp_f1_561 = M2C_FIELD(temp_r4_558, f64 *, 0x30);
+    sp20 = temp_r3_551->unkD8 * (f32) temp_f1_550;
     sp28 = sp18;
-    sp38 = M2C_FIELD(temp_r4_558, f64 *, 0x30);
+    sp38 = temp_f1_561;
     sp30 = (f64) sp20;
     sp40 = M2C_FIELD(temp_r4_558, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_f0_571 = temp_f1_561 + sp28;
+    sp8 = temp_f0_571;
     temp_f1_576 = (f32) sp40 + (f32) sp30;
-    sp48 = sp8;
+    sp48 = temp_f0_571;
     sp10 = temp_f1_576;
     sp50 = (f64) sp10;
     temp_r28_589 = temp_r28_547->IsVisible(*((MKVector3 *) &sp48), temp_r3_551->GetCollisionRadius(temp_r4_558, temp_f1_576, (f32) sp40, sp18));
@@ -347,11 +379,16 @@ u8 EnemyGoal_AlertMode::AddGoal_OnlyRangeAttack() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     Enemy *temp_r3_786;
     Enemy *temp_r3_800;
     Frustum *temp_r31_797;
     f32 temp_f1_825;
+    f64 temp_f0_820;
+    f64 temp_f1_799;
+    f64 temp_f1_810;
     s32 temp_r3_836;
     u8 temp_r4_787;
     void *temp_r4_807;
@@ -360,18 +397,20 @@ u8 EnemyGoal_AlertMode::AddGoal_OnlyRangeAttack() {
     temp_r4_787 = M2C_FIELD(temp_r3_786, u8 *, 0xB00);
     if ((temp_r4_787 & 1) && ((temp_r4_787 >> 6U) & 1)) {
         temp_r31_797 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_f1_799 = M2C_FIELD(temp_r3_786->__vptr, f64 (**)(s32), 0x100)(M2C_FIELD(&gb, s32 *, 0x3B8));
         temp_r3_800 = this->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp18 = M2C_FIELD(temp_r3_800, f64 *, 0xD0) * temp_f1_799;
         temp_r4_807 = temp_r3_800->unk8;
-        sp20 = temp_r3_800->unkD8 * M2C_FIELD(temp_r3_786->__vptr, f32 (**)(s32), 0x100)(M2C_FIELD(&gb, s32 *, 0x3B8));
+        temp_f1_810 = M2C_FIELD(temp_r4_807, f64 *, 0x30);
+        sp20 = temp_r3_800->unkD8 * (f32) temp_f1_799;
         sp28 = sp18;
-        sp38 = M2C_FIELD(temp_r4_807, f64 *, 0x30);
+        sp38 = temp_f1_810;
         sp30 = (f64) sp20;
         sp40 = M2C_FIELD(temp_r4_807, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_820 = temp_f1_810 + sp28;
+        sp8 = temp_f0_820;
         temp_f1_825 = (f32) sp40 + (f32) sp30;
-        sp48 = sp8;
+        sp48 = temp_f0_820;
         sp10 = temp_f1_825;
         sp50 = (f64) sp10;
         temp_r3_836 = temp_r31_797->IsVisible(*((MKVector3 *) &sp48), temp_r3_800->GetCollisionRadius(temp_r4_807, temp_f1_825, (f32) sp40, sp18));
@@ -408,11 +447,14 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f64 sp10;
     f64 sp8;
     Enemy *temp_r3_1024;
@@ -426,6 +468,10 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
     f32 temp_f31_901;
     f32 temp_f3_937;
     f32 var_f30_912;
+    f64 temp_f0_918;
+    f64 temp_f0_945;
+    f64 temp_f0_987;
+    f64 temp_f5_929;
 
     temp_r3_879 = this->unkC;
     if (((void *) temp_r3_879->unk638 != NULL) && (temp_r3_879->IsInsideEnemyRegion() == 0)) {
@@ -445,11 +491,13 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
         } else {
             var_f30_912 = temp_f0_909;
         }
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spA8 = sp18;
+        temp_f0_918 = spB8 * (f64) var_f30_912;
+        sp18 = temp_f0_918;
+        spA8 = temp_f0_918;
         sp20 = (f32) spC0 * var_f30_912;
         spB0 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f5, $f1, $f0 */);
+        temp_f5_929 = spC8 + temp_f0_918;
+        spC8 = temp_f5_929;
         sp60 = 0.0f;
         temp_f3_937 = (f32) spD0 + (f32) spB0;
         sp58 = 0.0f;
@@ -457,8 +505,9 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
         spD0 = temp_f3_937;
         sp88 = (f64) sp58;
         sp90 = (f64) sp60;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-        sp98 = sp48;
+        temp_f0_945 = temp_f5_929 + sp88;
+        sp48 = temp_f0_945;
+        sp98 = temp_f0_945;
         sp50 = temp_f3_937 + (f32) sp90;
         spA0 = (f64) sp50;
         if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp98), 300.0f, &spD8, 0x04000000, 2, NULL, (MKCollisionMode) 7) != 0) {
@@ -471,8 +520,9 @@ u8 EnemyGoal_AlertMode::AddGoal_MoveToRegion() {
             sp40 = 0.0f;
             sp68 = (f64) sp38;
             sp70 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp78 = sp28;
+            temp_f0_987 = spC8 + sp68;
+            sp28 = temp_f0_987;
+            sp78 = temp_f0_987;
             sp30 = spD0 + (f32) sp70;
             sp80 = (f64) sp30;
             if (MKCollision_SphereCollide(*((MKVector3 *) &sp78), temp_f31_901, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0) {
@@ -607,13 +657,14 @@ void EnemyGoal_AlertMode::Terminate() {
 #if 0 // DRAFT: expression syntax error
 u8 EnemyGoal_AlertMode::Update() {
     AITargetData sp48;
-    M2C_UNK sp38;
+    f64 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     AITargetData *temp_r3_1284;
     AITargetData *temp_r3_1411;
     Enemy *temp_r3_1334;
@@ -654,8 +705,7 @@ u8 EnemyGoal_AlertMode::Update() {
                     sp30 = (f64) sp20;
                     sp28 = (f64) sp18;
                     sp38.GetPos();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                    sp8 = sp38 + sp28;
                     temp_f3_1364 = 2.0f * temp_f30_1339;
                     var_f31_1365 = 200.0f;
                     sp48.unk20 = sp8;
@@ -688,8 +738,7 @@ u8 EnemyGoal_AlertMode::Update() {
             var_r30_1415 = 1;
         }
         if (var_r30_1415 != 0) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk48) && (IsActive(0x21) != 0) && !(((u8) M2C_FIELD(M2C_FIELD(this->unk2C, void **, 0x28), u8 *, 0x30) >> 4U) & 1)) {
+            if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk48) && (IsActive(0x21) != 0) && !(((u8) M2C_FIELD(M2C_FIELD(this->unk2C, void **, 0x28), u8 *, 0x30) >> 4U) & 1)) {
                 temp_r3_1447 = this->unkC;
                 if (temp_r3_1447->IsTargetBehindWall() != 0) {
                     this->unk8 = 3;

@@ -27,8 +27,7 @@ f32 NormaliseAngle(float arg0) {
     f32 var_f1_0;
 
     var_f1_0 = arg0;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (var_f1_0 == 6.2831855f) {
+    if (var_f1_0 >= 6.2831855f) {
         return -((6.2831855f * (f32) (s32) (0.15915494f * var_f1_0)) - var_f1_0);
     }
     if (var_f1_0 < 0.0f) {

@@ -130,8 +130,7 @@ u8 ElecTier3Goal_Spawn::Update() {
         }
         this->unk14 = var_f0_263;
         M2C_FIELD(this->unk10, f32 *, 0xB50) = (f32) (0.6f * (1.0f - _table_sinf((3.9826f * this->unk14) + 1.5707964f)));
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk14 == 1.0f) {
+        if (this->unk14 >= 1.0f) {
             M2C_FIELD(this->unk10, f32 *, 0xB50) = 1.0f;
             M2C_FIELD(M2C_FIELD(this->unkC, void **, 0x630), f32 *, 0x38) = 1.0f;
         }
@@ -401,10 +400,12 @@ u8 ElecTier3Goal_Think::AddGoal_MoveToLastPlayerPos() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     M2C_UNK sp18;
     u8 sp14;
     void *sp10;
@@ -425,6 +426,8 @@ u8 ElecTier3Goal_Think::AddGoal_MoveToLastPlayerPos() {
     f32 temp_f1_945;
     f32 temp_f2_948;
     f32 temp_f31_848;
+    f64 temp_f0_863;
+    f64 temp_f0_960;
     u8 var_r0_823;
     u8 var_r29_999;
     u8 var_r30_883;
@@ -448,9 +451,9 @@ u8 ElecTier3Goal_Think::AddGoal_MoveToLastPlayerPos() {
         sp5C = 50.0f + temp_f31_848;
         sp80 = (f64) sp60;
         sp78 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spB8 = sp48;
+        temp_f0_863 = M2C_FIELD(temp_r3_853, f64 *, 0x720) + (f64) sp58;
+        sp48 = temp_f0_863;
+        spB8 = temp_f0_863;
         sp50 = temp_r3_853->unk710.unk8 + (f32) sp80;
         spC0 = (f64) sp50;
         temp_r4_873 = temp_r3_853->unk634;
@@ -491,9 +494,9 @@ u8 ElecTier3Goal_Think::AddGoal_MoveToLastPlayerPos() {
         sp3C = temp_f2_948;
         sp70 = (f64) sp40;
         sp68 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        spA8 = sp28;
+        temp_f0_960 = M2C_FIELD(temp_r3_949, f64 *, 0x720) + (f64) sp38;
+        sp28 = temp_f0_960;
+        spA8 = temp_f0_960;
         sp30 = temp_r3_949->unk710.unk8 + (f32) sp70;
         spB0 = (f64) sp30;
         temp_r4_970 = temp_r3_949->unk634;
@@ -513,8 +516,7 @@ u8 ElecTier3Goal_Think::AddGoal_MoveToLastPlayerPos() {
         var_r29_999 = 0;
         if (temp_r28_998->unk750.unkA0.IsPointWithin(temp_r28_998->unk710) != 0) {
             sp18.GetRegionPos();
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((f32) fabs(sp1C - temp_r28_998->unk710.unk4) == 500.0f) {
+            if ((f32) fabs(sp1C - temp_r28_998->unk710.unk4) <= 500.0f) {
                 var_r29_999 = 1;
             }
         }
@@ -746,12 +748,11 @@ void ElecTier3Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
         }
     }
     temp_r0_1579 = ((u8) arg0->unk34 >> 4U) & 1;
-    if ((temp_r0_1579 != 0) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unkC->unkAB4 == 0.0f) != 0)) && ((var_r26_1429 == 0) || (var_r26_1429 == 4) || (var_r26_1429 == 5))) {
+    if ((temp_r0_1579 != 0) && (this->unkC->unkAB4 <= 0.0f) && ((var_r26_1429 == 0) || (var_r26_1429 == 4) || (var_r26_1429 == 5))) {
         var_r26_1429 = 7;
     } else if (temp_r0_1579 != 0) {
         temp_r3_1599 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_1599->unkAB4 == 0.0f) {
+        if (temp_r3_1599->unkAB4 <= 0.0f) {
             temp_r3_1599->Armour_Destroy();
         }
     }
@@ -891,15 +892,13 @@ void ElecTier3Goal_Think::Arbitrate() {
         }
         if ((sp8.unk20 & 4) && (sp8.unk2C == 0)) {
             temp_r3_1876 = this->unkC;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((temp_r3_1876->unkAB0 == 0.0f) || (M2C_FIELD(temp_r3_1876->__vptr, u8 (**)(s32, M2C_UNK, f32, f32), 0x1D0)(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1, 1, sp8.unk24, 1.0f) != 0)) {
+            if ((temp_r3_1876->unkAB0 <= 0.0f) || (M2C_FIELD(temp_r3_1876->__vptr, u8 (**)(s32, M2C_UNK, f32, f32), 0x1D0)(((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1, 1, sp8.unk24, 1.0f) != 0)) {
                 sp8.unk28 = 0xB;
             } else {
                 sp8.unk28 = 0xE;
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkC->unkAB0 == 0.0f) {
+        if (this->unkC->unkAB0 <= 0.0f) {
             AddGoal_Death(&sp8);
             return;
         }

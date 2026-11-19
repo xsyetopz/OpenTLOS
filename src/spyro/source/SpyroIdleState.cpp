@@ -206,7 +206,7 @@ void SpyroIdleState::SelectAnimation() {
     void *var_r3_488;
 
     temp_r5_418 = this->unk3C;
-    if ((temp_r5_418 == 0) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk28) != 0)) && ((u8) M2C_FIELD(&gb, u8 *, 0x35D) == 0)) {
+    if ((temp_r5_418 == 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk28) && ((u8) M2C_FIELD(&gb, u8 *, 0x35D) == 0)) {
         if ((s32) this->unk2C == 5) {
             this->unk3C = 2;
             this->unk2C = 0;

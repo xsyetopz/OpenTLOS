@@ -145,11 +145,15 @@ void GlowingProp::EndGlowingPropDraw() {
 void GlowingProp::BeginGlowingPropDraw(MKProp *arg0) {
     f64 sp28;
     f64 sp20;
+    f64 sp18;
+    f64 sp10;
     f32 sp8;
     f32 var_f0_308;
     f32 var_f1_292;
     f32 var_f30_219;
+    f32 var_f31_318;
     f64 *temp_r3_324;
+    f64 temp_f0_334;
     f64 temp_f1_223;
     f64 temp_f1_229;
     f64 temp_f1_233;
@@ -210,17 +214,18 @@ void GlowingProp::BeginGlowingPropDraw(MKProp *arg0) {
                 var_f0_308 = 1.0f;
             }
             if (var_f0_308 > 0.0f) {
-
+                var_f31_318 = var_f0_308;
+            } else {
+                var_f31_318 = 0.0f;
             }
             temp_r3_324 = MKMaterial_GetColor(this->unk10);
             this->unk0 = M2C_FIELD(temp_r3_324, f64 *, 0);
             this->unk8 = M2C_FIELD(temp_r3_324, f64 *, 8);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp10 = this->unk0 * (f64) var_f31_318;
+            temp_f0_334 = this->unk8 * (f64) var_f31_318;
+            sp18 = temp_f0_334;
             sp20 = sp10;
-            sp28 = sp18;
+            sp28 = temp_f0_334;
             MKMaterial_SetColor(this->unk10, *((MKVector4 *) &sp20));
             gRenderState = this->unk10;
         }

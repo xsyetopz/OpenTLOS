@@ -44,17 +44,13 @@ void TimeDeltaModifier::Begin() {
 
     this->unk18 = gUpdateTimeDelta;
     temp_f2_60 = this->unk14;
-    if (temp_f2_60 > 0.0f) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk1C == 0.0f) {
-            this->unk14 = temp_f2_60 - this->unk18;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk14 == 0.0f) {
-                this->unk24 = 0;
-                this->unk1C = this->unk10;
-                this->unk0 = this->unk4;
-                this->unk8 = 1.0f;
-            }
+    if ((temp_f2_60 > 0.0f) && (this->unk1C <= 0.0f)) {
+        this->unk14 = temp_f2_60 - this->unk18;
+        if (this->unk14 <= 0.0f) {
+            this->unk24 = 0;
+            this->unk1C = this->unk10;
+            this->unk0 = this->unk4;
+            this->unk8 = 1.0f;
         }
     }
     temp_f1_83 = this->unk1C;

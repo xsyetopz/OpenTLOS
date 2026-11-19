@@ -42,12 +42,12 @@ void HotSpit::Update() {
     M2C_UNK sp148;
     f64 sp140;
     f64 sp138;
-    M2C_UNK sp128;
-    M2C_UNK sp118;
+    f64 sp128;
+    f64 sp118;
     f64 sp110;
     f64 sp108;
     MKVector3 spF8;
-    M2C_UNK spE8;
+    f64 spE8;
     f64 spE0;
     f64 spD8;
     f64 spD0;
@@ -67,10 +67,15 @@ void HotSpit::Update() {
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 temp_f1_230;
@@ -83,6 +88,10 @@ void HotSpit::Update() {
     f32 var_f29_244;
     f32 var_f4_78;
     f32 var_f5_99;
+    f64 temp_f0_207;
+    f64 temp_f0_269;
+    f64 temp_f0_342;
+    f64 temp_f0_354;
     f64 temp_f1_104;
     f64 temp_f1_110;
     f64 temp_f1_114;
@@ -151,14 +160,12 @@ void HotSpit::Update() {
         temp_f28_192 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
         MKVector(MKRand_Float(&gViewSeed, 1.0f, 3.0f), temp_f28_192, temp_f29_187);
         sp158.operator*(3.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp168 = sp38;
+        temp_f0_207 = sp158 * (f64) temp_f31_182;
+        sp38 = temp_f0_207;
+        sp168 = temp_f0_207;
         sp40 = sp158.unk8 * temp_f31_182;
         sp170 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        M2C_FIELD(this, f64 *, 0x150) = (f64) (M2C_FIELD(this, f64 *, 0x150) + temp_f0_207);
         this->unk158 += (f32) sp170;
         KDMath_BuildMatrixFromFwd(&sp1B0, *((MKVector3 *) &sp198), (MKVector3 *) &sp188);
         temp_f1_230 = _table_sinf(this->unk158);
@@ -179,9 +186,9 @@ void HotSpit::Update() {
         }
         MKVector(var_f1_250, var_f29_244, 0.25f * var_f28_234);
         MKVector(1.0f, 1.0f, 1.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp138 = sp28;
+        temp_f0_269 = sp128 + sp118;
+        sp28 = temp_f0_269;
+        sp138 = temp_f0_269;
         sp30 = sp130 + sp120;
         sp140 = (f64) sp30;
         sp1B0.Scale3x3(&sp1B0, *((MKVector3 *) &sp138));
@@ -193,8 +200,7 @@ void HotSpit::Update() {
     }
     MKVector(0.0f, 200.0f, 0.0f);
     spF8.operator*(0.5f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp18 = spF8 + spE8;
     sp80 = -1.0f;
     sp70 = 1.0f;
     sp20 = spF8.unk8 + spF0;
@@ -211,14 +217,14 @@ void HotSpit::Update() {
     sp98 = (f64) sp68;
     spA0 = (f64) sp70;
     KDRand_Vector(spB8, *((MKVector3 *) &spA8));
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    spC8 = sp58;
+    temp_f0_342 = spB8 * 5.45263811e-315;
+    sp58 = temp_f0_342;
+    spC8 = temp_f0_342;
     sp60 = spB8.unk8 * 25.0f;
     spD0 = (f64) sp60;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spD8 = sp48;
+    temp_f0_354 = sp1F0.unk30 + temp_f0_342;
+    sp48 = temp_f0_354;
+    spD8 = temp_f0_354;
     sp50 = sp1F0.unk38 + (f32) spD0;
     spE0 = (f64) sp50;
     sp14 = MKRand_Float(&gViewSeed, 8.0f, 12.0f);
@@ -304,9 +310,13 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     f64 sp88;
     f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -321,6 +331,8 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
     MKPtrList<MKProp> *temp_r6_620;
     f32 var_f4_650;
     f32 var_f5_688;
+    f64 temp_f0_815;
+    f64 temp_f0_826;
     f64 temp_f1_693;
     f64 temp_f1_699;
     f64 temp_f1_703;
@@ -353,8 +365,7 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
         KDRand_Vector(sp178, sp168);
         sp188.operator*(3000.0f);
         sp198.operator*(2.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp48 = sp198 + M2C_BITWISE(f64, sp188);
         sp98 = 1.0f;
         sp9C = 1.0f;
         sp50 = sp198.unk8 + sp188.unk8;
@@ -377,8 +388,7 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
         KDRand_Vector(sp108, spF8);
         sp118.operator*(1000.0f);
         sp128.operator*(0.5f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp38 = sp128 + M2C_BITWISE(f64, sp118);
         sp138 = sp38;
         sp40 = sp128.unk8 + sp118.unk8;
         sp1C8 = sp38;
@@ -545,13 +555,14 @@ block_24:
         sp2B0 = 0.0f;
     }
     sp2C9 = 0;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    spA8 = sp68;
+    temp_f0_815 = (f64) sp1B8 * 5.64367472e-315;
+    sp68 = temp_f0_815;
+    spA8 = temp_f0_815;
     sp70 = sp1C0 * 600.0f;
     spB0 = (f64) sp70;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spB8 = sp58;
+    temp_f0_826 = sp1E0.unk30 + temp_f0_815;
+    sp58 = temp_f0_826;
+    spB8 = temp_f0_826;
     sp60 = sp1E0.unk38 + (f32) spB0;
     spC0 = (f64) sp60;
     if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp1E0.unk30), *((MKVector3 *) &spB8), 200.0f, (MKCollisionResult *) &sp220, (MKCollisionMode) 2, 0x08000000) != 0) {

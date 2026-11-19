@@ -89,11 +89,13 @@ void SpyroFuryState::Update() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_137;
     void *temp_r8_153;
 
     if (((u8) this->unk39 != 0) && (this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1)) {
         this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk38 = 1.0f;
-        if (((u8) this->unk38 != 0) || (sp18 = 0.0f, sp1C = -50.0f, sp20 = 0.0f, sp28 = (f64) sp18, sp30 = (f64) sp20, M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */), M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */), sp38 = sp8, sp10 = this->unk30 + (f32) sp30, sp40 = (f64) sp10, temp_r8_153 = this->unk10->unk8, sp48 = M2C_FIELD(temp_r8_153, f64 *, 0x30), sp50 = M2C_FIELD(temp_r8_153, f64 *, 0x38), ((MKCollision_RayCollide(*((MKVector3 *) &sp48), *((MKVector3 *) &sp38), NULL, (MKCollisionMode) 7, 0x04000000) == 0) != 0))) {
+        if (((u8) this->unk38 != 0) || (sp18 = 0.0f, sp1C = -50.0f, sp20 = 0.0f, sp28 = (f64) sp18, sp30 = (f64) sp20, temp_f0_137 = this->unk28 + sp28, sp8 = temp_f0_137, sp38 = temp_f0_137, sp10 = this->unk30 + (f32) sp30, sp40 = (f64) sp10, temp_r8_153 = this->unk10->unk8, sp48 = M2C_FIELD(temp_r8_153, f64 *, 0x30), sp50 = M2C_FIELD(temp_r8_153, f64 *, 0x38), ((MKCollision_RayCollide(*((MKVector3 *) &sp48), *((MKVector3 *) &sp38), NULL, (MKCollisionMode) 7, 0x04000000) == 0) != 0))) {
             this->unk10->SetAnim(0x49U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
         } else {
             this->unk10->SetAnim(0x47U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);

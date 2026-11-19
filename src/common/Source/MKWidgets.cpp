@@ -84,20 +84,24 @@ void MKWidget_GetWidgetUnderPoint(MKWidgetSystem *arg0, const MKVector3 &arg1) {
 }
 #endif
 
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 f32 MKWidget_GetLocalMousePos(MKWidget *arg0, MKVector3 *arg1) {
     Matrix sp10;
+    f32 temp_f28_110;
+    f64 temp_f1_123;
+    f64 temp_f2_117;
 
     MKWidget_GetMousePos(arg1);
     arg0->GetLocalToWorldMatrix(&sp10);
     sp10.Inverse(&sp10);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f31, $f30, $f28, $f31 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f28, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f31, $f29, $f2, $f31 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f0, $f1, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f2, $f0 */);
-    arg1->unk8 = M2C_ERROR(/* unknown instruction: ps_madds0 $f31, $f30, $f2, $f31 */);
-    return M2C_ERROR(/* psq_l unimplemented */);
+    temp_f28_110 = arg1->unk8;
+    temp_f2_117 = M2C_FIELD(arg1, f64 *, 0);
+    temp_f1_123 = M2C_BITWISE(f64, sp10);
+    arg1->unk8 = (f32) (((f64) sp10.unk8 * temp_f2_117) + (((f64) sp10.unk18 * temp_f2_117) + (((f64) sp10.unk28 * (f64) temp_f28_110) + (f64) sp10.unk38)));
+    M2C_FIELD(arg1, f64 *, 0) = (f64) ((temp_f1_123 * temp_f2_117) + (((f64) sp10.unk10 * temp_f2_117) + (((f64) sp10.unk20 * (f64) temp_f28_110) + (f64) sp10.unk30)));
+    return (f32) temp_f1_123;
 }
+#endif
 
 void MKWidget_BringToFront(MKWidget *arg0) {
     MKWidget *temp_r3_151;
@@ -306,6 +310,7 @@ void MKWidget_CreateEditable(const char *arg0, const char *arg1, const MKWidgetA
     MKWidgetAttributes *var_r28_675;
     f32 temp_f1_727;
     f32 temp_f4_738;
+    f64 temp_f2_722;
 
     var_r28_675 = arg2;
     if (var_r28_675 == NULL) {
@@ -317,21 +322,18 @@ void MKWidget_CreateEditable(const char *arg0, const char *arg1, const MKWidgetA
     sp20 = 0.0f;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp48 -= sp38;
     sp10 = 0.0f;
     sp8 = 8.0f;
     spC = 8.0f;
     sp50 -= (f32) sp40;
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f2, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f2, $zero, $r0, 0x0, qr0 */);
+    temp_f2_722 = sp78 + sp28;
+    sp78 = temp_f2_722;
     temp_f1_727 = sp80 + (f32) sp30;
     sp80 = temp_f1_727;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r0, 0x0, qr0 */);
+    sp78 = temp_f2_722 * sp58;
     temp_f4_738 = temp_f1_727 * sp60;
     sp80 = temp_f4_738;
     sp58 = M2C_FIELD(&MKVector3::one, f64 *, 0);

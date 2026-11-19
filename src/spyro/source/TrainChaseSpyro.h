@@ -259,15 +259,18 @@ inline void TrainChaseSpyro::GetCollisionInfo() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void TrainChaseSpyro::GetVel() {
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_6055;
+    void *temp_r5_6051;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r4, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD((M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30), f32 *, 8) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x1F0);
+    temp_r5_6051 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30;
+    temp_f0_6055 = M2C_FIELD(temp_r5_6051, f64 *, 0) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x1E8);
+    sp8 = temp_f0_6055;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_6055;
+    sp10 = M2C_FIELD(temp_r5_6051, f32 *, 8) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x1F0);
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
 #endif
@@ -276,14 +279,14 @@ inline void TrainChaseSpyro::GetVel() {
 inline s32 TrainChaseSpyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKVector(0.0f, 160.0f, 0.0f);
     sp28.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;
     sp38 = sp8;
@@ -297,14 +300,14 @@ inline s32 TrainChaseSpyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) 
 inline s32 TrainChaseSpyro::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKVector(0.0f, 160.0f, 0.0f);
     sp28.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;
     sp38 = sp8;

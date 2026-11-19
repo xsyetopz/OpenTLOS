@@ -267,41 +267,44 @@ inline s32 SteamTrain::GetCollisionInfo() {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
 inline void SteamTrain::GetVel() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
+    f32 temp_f4_93;
+    f64 temp_f0_109;
     void *temp_r5_92;
 
     temp_r5_92 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
+    temp_f4_93 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x108);
     sp8 = -M2C_FIELD(temp_r5_92, f32 *, 0x20);
     spC = -M2C_FIELD(temp_r5_92, f32 *, 0x24);
     sp10 = -M2C_FIELD(temp_r5_92, f32 *, 0x28);
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    M2C_FIELD(this, f64 *, 0) = sp18;
-    sp20 = (f32) sp30 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x108);
+    temp_f0_109 = sp28 * (f64) temp_f4_93;
+    sp18 = temp_f0_109;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_109;
+    sp20 = (f32) sp30 * temp_f4_93;
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 inline s32 SteamTrain::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKVector(0.0f, 400.0f, 0.0f);
     sp28.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;
     sp38 = sp8;
@@ -315,14 +318,14 @@ inline s32 SteamTrain::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 inline s32 SteamTrain::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKVector(0.0f, 400.0f, 0.0f);
     sp28.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp28 + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = sp30 + sp20;
     sp38 = sp8;

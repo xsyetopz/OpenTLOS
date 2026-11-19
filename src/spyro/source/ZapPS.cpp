@@ -13,6 +13,7 @@ void ZapPS::UpdateParticles() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     MKParticleChunk *var_r31_64;
     MKParticleSystem::Envelope *temp_r3_108;
     f32 temp_f30_71;
@@ -20,6 +21,7 @@ void ZapPS::UpdateParticles() {
     f32 temp_f5_115;
     f32 temp_f6_110;
     f32 var_f0_126;
+    f64 temp_f0_83;
     s32 temp_r4_107;
     s32 temp_r6_111;
     void *temp_r30_67;
@@ -35,14 +37,12 @@ loop_10:
         if (temp_f30_71 > this->unk12C) {
             var_r31_64 = DestroyParticle(&unksp8);
         } else {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp20 = sp10;
+            temp_f0_83 = M2C_FIELD(temp_r30_67, f64 *, 0) * (f64) gUpdateTimeDelta;
+            sp10 = temp_f0_83;
+            sp20 = temp_f0_83;
             sp18 = M2C_FIELD(temp_r30_67, f32 *, 8) * gUpdateTimeDelta;
             sp28 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r31, 0x0, qr0 */);
+            M2C_FIELD(var_r31_64, f64 *, 0) = (f64) (M2C_FIELD(var_r31_64, f64 *, 0) + temp_f0_83);
             var_r31_64->unk8 += (f32) sp28;
             var_r31_64->unk24 = 2.0f * MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
             temp_r4_107 = M2C_FIELD(temp_r30_67, s32 *, 0x14);

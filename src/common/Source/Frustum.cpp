@@ -4,7 +4,7 @@
 #include "common/Source/Matrix.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'sp60'
+#if 0 // DRAFT: undefined identifier 'unksp144'
 s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     Matrix sp150;
     f64 sp148;
@@ -33,11 +33,14 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -83,16 +86,15 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     f32 var_f5_361;
     f32 var_f6_345;
     f32 var_f7_353;
+    f64 temp_f0_94;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r5, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
+    sp60 = M2C_FIELD(arg1, f64 *, 0x10) * 5.222099017e-315;
     sp130 = sp60;
     sp68 = arg1->unk18 * 0.5f;
     sp100 = sp60;
     sp108 = (f64) sp68;
     sp138 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp50 = M2C_FIELD(arg1, f64 *, 0) + sp130;
     sp140 = sp50;
     sp58 = arg1->unk8 + (f32) sp138;
     sp148 = (f64) sp58;
@@ -103,9 +105,9 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
     spE0 = (f64) sp90;
     spF8 = (f64) sp58;
     spE8 = (f64) sp98;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp120 = sp80;
+    temp_f0_94 = (f64) sp90 - this->unk50;
+    sp80 = temp_f0_94;
+    sp120 = temp_f0_94;
     sp88 = (f32) spE8 - this->unk58;
     sp128 = (f64) sp88;
     sp150.Scale3x3(arg0, *((MKVector3 *) &sp130));
@@ -239,7 +241,7 @@ s32 Frustum::IsVisible(const Matrix *arg0, const BoundingVolume *arg1) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: undefined identifier 'unksp5C'
 s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
     f64 sp60;
     f64 sp58;
@@ -248,8 +250,11 @@ s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f10_454;
     f32 temp_f10_488;
     f32 temp_f10_522;
@@ -282,19 +287,18 @@ s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
     f32 var_f9_491;
     f32 var_f9_525;
     f32 var_f9_559;
+    f64 temp_f0_404;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r4, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    sp58 = sp28;
+    temp_f0_404 = M2C_FIELD(arg0, f64 *, 0x10) * 5.222099017e-315;
+    sp28 = temp_f0_404;
+    sp58 = temp_f0_404;
     sp30 = arg0->unk18 * 0.5f;
     sp60 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp18 = M2C_FIELD(arg0, f64 *, 0) + temp_f0_404;
     sp48 = sp18;
     sp20 = arg0->unk8 + (f32) sp60;
     sp50 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+    sp8 = sp48 - this->unk50;
     temp_f8_434 = this->unk4;
     sp10 = (f32) sp50 - this->unk58;
     var_f5_438 = temp_f8_434 * unksp5C;
@@ -394,18 +398,17 @@ s32 Frustum::IsVisible(const BoundingVolume *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: undefined identifier 'unksp1C'
 s32 Frustum::IsVisible(const MKVector3 &arg0, float arg1) const {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f4_650;
     f32 temp_f6_662;
     s32 var_r0_664;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
+    sp8 = M2C_FIELD(&arg0, f64 *, 0) - this->unk50;
     sp18 = sp8;
     sp10 = arg0.unk8 - this->unk58;
     sp20 = (f64) sp10;

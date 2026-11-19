@@ -198,6 +198,7 @@ void SkiffterCritter::Update() {
     f32 sp19C;
     f32 sp198;
     f32 sp190;
+    f64 sp188;
     f32 sp180;
     f32 sp17C;
     f32 sp178;
@@ -205,9 +206,13 @@ void SkiffterCritter::Update() {
     f32 sp16C;
     f32 sp168;
     f32 sp160;
+    f64 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp140;
+    f64 sp138;
     f32 sp130;
+    f64 sp128;
     f32 sp120;
     f32 sp11C;
     f32 sp118;
@@ -215,8 +220,11 @@ void SkiffterCritter::Update() {
     f32 sp10C;
     f32 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
     f32 spCC;
     f32 spC8;
@@ -239,6 +247,7 @@ void SkiffterCritter::Update() {
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -303,12 +312,21 @@ void SkiffterCritter::Update() {
     f32 var_f7_1140;
     f32 var_f8_1035;
     f32 var_f9_542;
+    f64 temp_f0_1420;
+    f64 temp_f0_1430;
+    f64 temp_f0_1442;
+    f64 temp_f0_908;
+    f64 temp_f0_937;
+    f64 temp_f0_947;
+    f64 temp_f0_959;
+    f64 temp_f1_1022;
     f64 temp_f1_1636;
     f64 temp_f1_1642;
     f64 temp_f1_1646;
     f64 temp_f1_349;
     f64 temp_f1_355;
     f64 temp_f1_359;
+    f64 temp_f1_529;
     f64 temp_f2_1069;
     f64 temp_f2_1075;
     f64 temp_f2_1079;
@@ -499,8 +517,7 @@ loop_197:
                 if (temp_cr0_gt_477 != 0) {
                     M2C_FIELD(temp_r30_187, f32 *, 0x54) = (f32) (temp_f1_476 - 1.0f);
                 }
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (M2C_FIELD(temp_r30_187, f32 *, 0x64) == 0.0f) {
+                if (M2C_FIELD(temp_r30_187, f32 *, 0x64) <= 0.0f) {
                     M2C_FIELD(temp_r30_187, f32 *, 0x64) = 0.0f;
                     M2C_FIELD(temp_r30_187, s32 *, 0x60) = 1;
                     temp_r27_491 = M2C_FIELD(temp_r30_187, s32 *, 0x60);
@@ -512,10 +529,10 @@ loop_197:
                         M2C_FIELD(temp_r30_187, s32 *, 0x68) = 0;
                     }
                     var_r3_0 = temp_r29_180->unk174 + (M2C_FIELD(temp_r30_187, s32 *, 0x68) * 0x10);
-                    sp388 = M2C_FIELD(var_r3_0, f64 *, 0);
+                    temp_f1_529 = M2C_FIELD(var_r3_0, f64 *, 0);
+                    sp388 = temp_f1_529;
                     sp390 = M2C_FIELD(var_r3_0, f64 *, 8);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp188 = temp_f1_529 - (f64) M2C_FIELD(temp_r30_187, f32 *, 0x30);
                     sp358 = sp188;
                     var_f9_542 = 0.0f;
                     sp190 = (f32) sp390 - temp_r30_187->unk38;
@@ -712,9 +729,9 @@ loop_197:
         case 1:                                     /* switch 1 */
             temp_f30_901 = gUpdateTimeDelta;
             sp248.operator*(200.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp258 = sp58;
+            temp_f0_908 = sp248 * (f64) temp_f30_901;
+            sp58 = temp_f0_908;
+            sp258 = temp_f0_908;
             sp60 = sp248.unk8 * temp_f30_901;
             sp260 = (f64) sp60;
             temp_r30_187->Translate(temp_r30_187, *((MKVector3 *) &sp258));
@@ -723,27 +740,27 @@ loop_197:
             if (temp_f1_927 > 1.0f) {
                 M2C_FIELD(temp_r30_187, f32 *, 0x54) = (f32) (temp_f1_927 - 1.0f);
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp228 = sp158;
+            temp_f0_937 = M2C_FIELD(temp_r30_187, f64 *, 0x40) * 5.60222949e-315;
+            sp158 = temp_f0_937;
+            sp228 = temp_f0_937;
             sp160 = M2C_FIELD(temp_r30_187, f32 *, 0x48) * 300.0f;
             sp230 = (f64) sp160;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+            temp_f0_947 = temp_f0_937 * (f64) gUpdateTimeDelta;
+            sp148 = temp_f0_947;
             var_r3_0 = (SkiffterCritter *) &temp_r30_187->unk30;
-            sp238 = sp148;
+            sp238 = temp_f0_947;
             sp150 = (f32) sp230 * gUpdateTimeDelta;
             sp240 = (f64) sp150;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp348 = sp138;
+            temp_f0_959 = *var_r3_0 + temp_f0_947;
+            sp138 = temp_f0_959;
+            sp348 = temp_f0_959;
             sp140 = temp_r30_187->unk38 + (f32) sp240;
             temp_r30_187->unk30 = (f32) sp348;
             sp350 = (f64) sp140;
             temp_r30_187->unk34 = unksp34C;
             temp_r30_187->unk38 = (f32) sp350;
             temp_r30_187->unk3C = 1.0f;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r30_187, f32 *, 0x64) == 0.0f) {
+            if (M2C_FIELD(temp_r30_187, f32 *, 0x64) <= 0.0f) {
                 M2C_FIELD(temp_r30_187, s32 *, 0x60) = 3;
                 temp_r27_984 = M2C_FIELD(temp_r30_187, s32 *, 0x60);
                 M2C_FIELD(temp_r30_187, SkiffterCritter **, 0x50) = (SkiffterCritter *) *(checked_cast<SkiffterCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r29_180->unk0) + ((temp_r27_984 * 4) + 0x70));
@@ -754,10 +771,10 @@ loop_197:
                     M2C_FIELD(temp_r30_187, s32 *, 0x68) = 0;
                 }
                 var_r3_0 = temp_r29_180->unk174 + (M2C_FIELD(temp_r30_187, s32 *, 0x68) * 0x10);
-                sp338 = M2C_FIELD(var_r3_0, f64 *, 0);
+                temp_f1_1022 = M2C_FIELD(var_r3_0, f64 *, 0);
+                sp338 = temp_f1_1022;
                 sp340 = M2C_FIELD(var_r3_0, f64 *, 8);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp128 = temp_f1_1022 - (f64) M2C_FIELD(temp_r30_187, f32 *, 0x30);
                 sp318 = sp128;
                 var_f8_1035 = 0.0f;
                 sp130 = (f32) sp340 - temp_r30_187->unk38;
@@ -943,7 +960,7 @@ loop_197:
         default:                                    /* switch 1 */
             M2C_FIELD(temp_r30_187, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_187, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_187, f32 *, 0x54));
             temp_r0_1372 = M2C_FIELD(temp_r30_187, s32 *, 0x60);
-            if ((temp_r0_1372 == 3) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(temp_r30_187, f32 *, 0x54) == 1.0f) != 0))) {
+            if ((temp_r0_1372 == 3) && (M2C_FIELD(temp_r30_187, f32 *, 0x54) >= 1.0f)) {
                 M2C_FIELD(temp_r30_187, s32 *, 0x60) = 4;
                 temp_r27_1382 = M2C_FIELD(temp_r30_187, s32 *, 0x60);
                 M2C_FIELD(temp_r30_187, SkiffterCritter **, 0x50) = (SkiffterCritter *) *(checked_cast<SkiffterCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r29_180->unk0) + ((temp_r27_1382 * 4) + 0x70));
@@ -955,27 +972,27 @@ loop_197:
                     M2C_FIELD(temp_r30_187, f32 *, 0x54) = (f32) (temp_f1_1409 - 1.0f);
                 }
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            sp1E8 = spF8;
+            temp_f0_1420 = M2C_FIELD(temp_r30_187, f64 *, 0x40) * 5.634608575e-315;
+            spF8 = temp_f0_1420;
+            sp1E8 = temp_f0_1420;
             sp100 = M2C_FIELD(temp_r30_187, f32 *, 0x48) * 500.0f;
             sp1F0 = (f64) sp100;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            temp_f0_1430 = temp_f0_1420 * (f64) gUpdateTimeDelta;
+            spE8 = temp_f0_1430;
             var_r3_0 = (SkiffterCritter *) &temp_r30_187->unk30;
-            sp1F8 = spE8;
+            sp1F8 = temp_f0_1430;
             spF0 = (f32) sp1F0 * gUpdateTimeDelta;
             sp200 = (f64) spF0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp2F8 = spD8;
+            temp_f0_1442 = *var_r3_0 + temp_f0_1430;
+            spD8 = temp_f0_1442;
+            sp2F8 = temp_f0_1442;
             spE0 = temp_r30_187->unk38 + (f32) sp200;
             temp_r30_187->unk30 = (f32) sp2F8;
             sp300 = (f64) spE0;
             temp_r30_187->unk34 = unksp2FC;
             temp_r30_187->unk38 = (f32) sp300;
             temp_r30_187->unk3C = 1.0f;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r30_187, f32 *, 0x64) == 0.0f) {
+            if (M2C_FIELD(temp_r30_187, f32 *, 0x64) <= 0.0f) {
                 M2C_FIELD(temp_r30_187, s32 *, 0x60) = 5;
                 temp_r27_1467 = M2C_FIELD(temp_r30_187, s32 *, 0x60);
                 M2C_FIELD(temp_r30_187, SkiffterCritter **, 0x50) = (SkiffterCritter *) *(checked_cast<SkiffterCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r29_180->unk0) + ((temp_r27_1467 * 4) + 0x70));
@@ -986,8 +1003,7 @@ loop_197:
             break;
         case 5:                                     /* switch 1 */
             M2C_FIELD(temp_r30_187, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_187, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_187, f32 *, 0x54));
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(temp_r30_187, f32 *, 0x54) == 1.0f) {
+            if (M2C_FIELD(temp_r30_187, f32 *, 0x54) >= 1.0f) {
                 M2C_FIELD(temp_r30_187, s32 *, 0x60) = 2;
                 M2C_FIELD(temp_r30_187, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.75f, 1.0f));
                 temp_r27_1510 = M2C_FIELD(temp_r30_187, s32 *, 0x60);

@@ -147,27 +147,41 @@ void FallingDustProp::Update() {
     MKVector3 spF0;
     M2C_UNK spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
     f32 spC4;
     f32 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f2_495;
     f32 temp_f2_499;
     f32 temp_f4_280;
     f32 var_f3_488;
+    f64 temp_f0_295;
+    f64 temp_f0_518;
+    f64 temp_f5_274;
     s32 temp_r0_192;
     s32 var_r25_322;
     s32 var_r25_520;
@@ -176,6 +190,7 @@ void FallingDustProp::Update() {
     void *temp_r27_586;
     void *temp_r31_161;
     void *temp_r3_167;
+    void *temp_r3_272;
     void *temp_r3_571;
     void *temp_r3_583;
 
@@ -211,7 +226,7 @@ void FallingDustProp::Update() {
             sp308 = 0.0f;
             MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk90, &sp340);
             MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk94, &sp330);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            spD0 = M2C_BITWISE(f64, sp330) - M2C_BITWISE(f64, sp340);
             spD8 = sp330.unk8 - sp340.unk8;
             spA8 = 0.0f;
             spA0 = 0.0f;
@@ -240,11 +255,12 @@ void FallingDustProp::Update() {
             sp39C = -1;
             sp3A0 = 0;
             sp240 = (f64) spA0;
+            temp_r3_272 = this->unk8 + 0x30;
             sp248 = (f64) spA8;
-            M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+            temp_f5_274 = M2C_FIELD(temp_r3_272, f64 *, 0);
+            sp90 = temp_f5_274 + sp240;
             spC8 = 0.0f;
-            temp_f4_280 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8);
+            temp_f4_280 = M2C_FIELD(temp_r3_272, f32 *, 8);
             spC0 = 0.0f;
             spC4 = 100.0f;
             sp98 = temp_f4_280 + (f32) sp248;
@@ -252,8 +268,9 @@ void FallingDustProp::Update() {
             sp250 = sp90;
             sp258 = (f64) sp98;
             sp268 = (f64) spC8;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-            sp270 = spB0;
+            temp_f0_295 = temp_f5_274 + sp260;
+            spB0 = temp_f0_295;
+            sp270 = temp_f0_295;
             spB8 = temp_f4_280 + (f32) sp268;
             sp278 = (f64) spB8;
             if (MKCollision_RayCollide(*((MKVector3 *) &sp270), *((MKVector3 *) &sp250), (MKCollisionResult *) &sp350, (MKCollisionMode) 7, 0) != 0) {
@@ -263,7 +280,7 @@ void FallingDustProp::Update() {
             var_r25_322 = 0;
             do {
                 sp220.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp70 = M2C_BITWISE(f64, sp340) + M2C_BITWISE(f64, sp220);
                 sp230 = sp70;
                 sp78 = sp340.unk8 + sp220.unk8;
                 sp320 = sp70;
@@ -272,8 +289,7 @@ void FallingDustProp::Update() {
                 MKVector(1.0f, 1.0f, 1.0f);
                 MKVector(-1.0f, -1.0f, -1.0f);
                 KDRand_Vector(sp200, sp1F0);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                sp60 = sp200 * 5.328646264e-315;
                 sp210 = sp60;
                 sp68 = sp200.unk8 * 3.1415927f;
                 sp2F0 = sp60;
@@ -282,8 +298,7 @@ void FallingDustProp::Update() {
                 MKVector(0.5f, -0.5f, 0.5f);
                 MKVector(-0.5f, -1.0f, -0.5f);
                 KDRand_Vector(sp1C0, sp1B0);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                sp50 = sp1C0 * 5.676053805e-315;
                 sp1D0 = sp50;
                 sp58 = sp1C0.unk8 * 1000.0f;
                 sp310 = sp50;
@@ -291,7 +306,7 @@ void FallingDustProp::Update() {
                 sp318 = (f64) sp58;
                 gb.unkA4->Emit(*((MKVector3 *) &sp320), *((MKVector3 *) &sp310), *((MKVector3 *) &sp300), *((MKVector3 *) &sp2F0), MKRand_Float(&gViewSeed, 0.2f, 0.4f), *((MKVector4 *) &sp2E0), 0, NULL);
                 sp180.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp40 = M2C_BITWISE(f64, sp340) + M2C_BITWISE(f64, sp180);
                 sp190 = sp40;
                 sp48 = sp340.unk8 + sp180.unk8;
                 sp320 = sp40;
@@ -300,8 +315,7 @@ void FallingDustProp::Update() {
                 MKVector(0.25f, -0.5f, 0.25f);
                 MKVector(-0.25f, -1.0f, -0.25f);
                 KDRand_Vector(sp160, sp150);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                sp30 = sp160 * 5.717499035e-315;
                 sp170 = sp30;
                 sp38 = sp160.unk8 * 2000.0f;
                 sp310 = sp30;
@@ -313,8 +327,7 @@ void FallingDustProp::Update() {
             } while (var_r25_322 < 3);
         }
         this->unkA0 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkA0 == -0.5f) {
+        if (this->unkA0 <= -0.5f) {
             var_f3_488 = 0.5f * (5.0f * gUpdateTimeDelta);
             if (var_f3_488 < 1.0f) {
 
@@ -327,14 +340,15 @@ void FallingDustProp::Update() {
             if (this->unkA0 > (-0.5f - gUpdateTimeDelta)) {
                 MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk98, &sp2C0);
                 MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk9C, &sp2B0);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                temp_f0_518 = M2C_BITWISE(f64, sp2B0) - M2C_BITWISE(f64, sp2C0);
+                sp80 = temp_f0_518;
                 var_r25_520 = 0;
-                sp280 = sp80;
+                sp280 = temp_f0_518;
                 sp88 = sp2B0.unk8 - sp2C0.unk8;
                 sp288 = (f64) sp88;
                 do {
                     sp120.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                    sp20 = M2C_BITWISE(f64, sp2C0) + M2C_BITWISE(f64, sp120);
                     sp130 = sp20;
                     sp28 = sp2C0.unk8 + sp120.unk8;
                     sp2A0 = sp20;
@@ -343,8 +357,7 @@ void FallingDustProp::Update() {
                     MKVector(0.5f, 0.1f, 0.5f);
                     MKVector(-0.5f, 0.1f, -0.5f);
                     KDRand_Vector(sp100, spF0);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                    sp10 = sp100 * 5.676053805e-315;
                     temp_r3_571 = M2C_FIELD(temp_r31_161, void **, 0x70);
                     sp110 = sp10;
                     sp18 = sp100.unk8 * 1000.0f;
@@ -368,8 +381,7 @@ void FallingDustProp::Update() {
                 } while (var_r25_520 < 5);
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkA0 == -1.0f) {
+        if (this->unkA0 <= -1.0f) {
             this->unkA4 = 0;
             this->unkB0.unkC = 0.0f;
         }

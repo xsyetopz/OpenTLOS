@@ -141,7 +141,7 @@ void FloorSwitch::Update() {
     f64 spF8;
     f64 spF0;
     f64 spE8;
-    M2C_UNK spD8;
+    f64 spD8;
     f64 spD0;
     f64 spC8;
     f64 spC0;
@@ -158,7 +158,9 @@ void FloorSwitch::Update() {
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -166,6 +168,7 @@ void FloorSwitch::Update() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     s32 sp8;
     KDSoundPlayer *temp_r3_281;
@@ -178,6 +181,8 @@ void FloorSwitch::Update() {
     f32 temp_f29_350;
     f32 var_f3_487;
     f32 var_f4_420;
+    f64 temp_f0_507;
+    f64 temp_f0_520;
     f64 temp_f1_426;
     f64 temp_f1_432;
     f64 temp_f1_436;
@@ -189,6 +194,7 @@ void FloorSwitch::Update() {
     void *temp_r4_290;
     void *temp_r4_309;
     void *temp_r4_328;
+    void *temp_r4_514;
 
     GameProp::Update();
     temp_r3_281 = this->unk114;
@@ -213,8 +219,7 @@ void FloorSwitch::Update() {
         temp_f29_350 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f28_355 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_355, temp_f29_350);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp18 = spD8 * 5.398241246e-315;
         sp118 = 0x417;
         sp20 = spE0 * 10.0f;
         sp120 = sp18;
@@ -280,14 +285,16 @@ void FloorSwitch::Update() {
     sp40 = spA8.unk8 * var_f3_487;
     spB8 = (f64) sp38;
     spC0 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    spC8 = sp58;
+    temp_f0_507 = spB8 * 5.53552857e-315;
+    sp58 = temp_f0_507;
+    spC8 = temp_f0_507;
+    temp_r4_514 = this->unk8 + 0x30;
     sp60 = (f32) spC0 * 100.0f;
     spD0 = (f64) sp60;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp108 = sp48;
-    sp50 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) spD0;
+    temp_f0_520 = M2C_FIELD(temp_r4_514, f64 *, 0) + temp_f0_507;
+    sp48 = temp_f0_520;
+    sp108 = temp_f0_520;
+    sp50 = M2C_FIELD(temp_r4_514, f32 *, 8) + (f32) spD0;
     sp110 = (f64) sp50;
     temp_f1_536 = 1000.0f * MKRand_Float(&gViewSeed, 1.0f, 2.0f);
     sp30 = 0.0f;

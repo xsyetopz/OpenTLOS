@@ -222,6 +222,7 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
     f64 sp60;
     f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -339,9 +340,7 @@ void MKShape_DrawCapsule(const MKVector3 &arg0, const MKVector3 &arg1, float arg
 
     temp_r26_405 = arg4 + (1 - (arg4 & 1));
     M2C_STRUCT_COPY((s32) &spCC + 4, (s32) (&arg6 - 4) + 4, 0x40);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r24, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp48 = M2C_FIELD(&arg1, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0);
     spB8 = sp48;
     sp50 = arg1.unk8 - arg0.unk8;
     spC0 = (f64) sp50;
@@ -927,7 +926,7 @@ void MKShape_DrawBox(const MKCollisionAABB &arg0, const MKVector4 &arg1, const M
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: undefined identifier 'unksp5C'
 void MKShape_DrawBox(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, const Matrix &arg3, bool arg4) {
     f64 sp60;
     f64 sp58;
@@ -936,9 +935,16 @@ void MKShape_DrawBox(const MKVector3 &arg0, const MKVector3 &arg1, const MKVecto
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f3_1955;
+    f64 temp_f0_1952;
+    f64 temp_f0_1964;
+    f64 temp_f0_1974;
+    f64 temp_f2_1951;
 
     if (arg4 != 0) {
         MKPrimitive(0x109, 3);
@@ -970,19 +976,21 @@ void MKShape_DrawBox(const MKVector3 &arg0, const MKVector3 &arg1, const MKVecto
         MKSetPositionF(arg1.unk0, arg1.unk4, arg0.unk8);
         MKSetPositionF(arg1.unk0, arg1.unk4, arg1.unk8);
         MKEnd();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
+        temp_f2_1951 = (f64) M2C_FIELD(&arg0, f32 *, 0);
+        temp_f0_1952 = (f64) M2C_FIELD(&arg1, f32 *, 0) - temp_f2_1951;
+        sp28 = temp_f0_1952;
         temp_f3_1955 = arg0.unk8;
-        sp38 = sp28;
+        sp38 = temp_f0_1952;
         sp30 = arg1.unk8 - temp_f3_1955;
         sp40 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp48 = sp18;
+        temp_f0_1964 = temp_f0_1952 * 5.222099017e-315;
+        sp18 = temp_f0_1964;
+        sp48 = temp_f0_1964;
         sp20 = (f32) sp40 * 0.5f;
         sp50 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        sp58 = sp8;
+        temp_f0_1974 = temp_f2_1951 + temp_f0_1964;
+        sp8 = temp_f0_1974;
+        sp58 = temp_f0_1974;
         sp10 = temp_f3_1955 + (f32) sp50;
         sp60 = (f64) sp10;
         MKBegin(2);

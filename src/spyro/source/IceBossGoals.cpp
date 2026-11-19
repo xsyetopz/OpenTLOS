@@ -73,7 +73,7 @@ u8 IceBossGoal_MoveToTarget::Update() {
     if (((u8) M2C_FIELD(temp_r3_59, u8 *, 0x8B8) == 2) || (temp_r3_59->unk870.unk30.Get() != NULL)) {
         var_r31_60 = 1;
     }
-    if ((var_r31_60 == 0) || (temp_r3_73 = this->unkC, (((((u8) M2C_FIELD(temp_r3_73, u8 *, 0x8B9) >> 6U) & 1) == 0) != 0)) || (temp_r3_73->unk838.unk28.GetDist() < 500.0f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) != 0))) {
+    if ((var_r31_60 == 0) || (temp_r3_73 = this->unkC, (((((u8) M2C_FIELD(temp_r3_73, u8 *, 0x8B9) >> 6U) & 1) == 0) != 0)) || (temp_r3_73->unk838.unk28.GetDist() < 500.0f) || (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk10)) {
         this->unk8 = 2;
     }
     return this->unk8;
@@ -220,7 +220,7 @@ u8 IceBossGoal_MoveToPoint::Update() {
             temp_r5_395->SetAnim(temp_r4_396, (AnimTransition *) temp_r4_396, 0.15f, 0U);
         }
     }
-    if ((this->unk10.GetDist() < 300.0f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk60) != 0))) {
+    if ((this->unk10.GetDist() < 300.0f) || (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk60)) {
         this->unk8 = 2;
     }
     return this->unk8;
@@ -302,7 +302,7 @@ u8 IceBossGoal_IceBreath::Update() {
     MKVector3 sp158;
     f64 sp150;
     f64 sp148;
-    M2C_UNK sp138;
+    f64 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
@@ -311,11 +311,14 @@ u8 IceBossGoal_IceBreath::Update() {
     f32 sp10C;
     f32 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
     f32 spEC;
     f32 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC4;
     f32 spC0;
     f32 spBC;
@@ -327,10 +330,12 @@ u8 IceBossGoal_IceBreath::Update() {
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp64;
     f32 sp60;
     f32 sp5C;
@@ -342,7 +347,9 @@ u8 IceBossGoal_IceBreath::Update() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     CharacterZapFX *var_r4_1006;
@@ -359,6 +366,10 @@ u8 IceBossGoal_IceBreath::Update() {
     f32 temp_f26_637;
     f32 temp_f27_642;
     f32 temp_f31_620;
+    f64 temp_f0_656;
+    f64 temp_f0_667;
+    f64 temp_f0_679;
+    f64 temp_f0_761;
     s32 temp_r0_565;
     s32 temp_r0_906;
     s32 temp_r3_556;
@@ -413,16 +424,19 @@ u8 IceBossGoal_IceBreath::Update() {
                 sp110 = temp_f26_637;
                 sp1F8 = (f64) sp108;
                 sp200 = (f64) sp110;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp208 = spF8;
+                temp_f0_656 = sp1F8 * 5.222099017e-315;
+                spF8 = temp_f0_656;
+                sp208 = temp_f0_656;
                 sp100 = (f32) sp200 * 0.5f;
                 sp210 = (f64) sp100;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp218 = spD8;
+                temp_f0_667 = sp208 + sp1E8;
+                spD8 = temp_f0_667;
+                sp218 = temp_f0_667;
                 spE0 = (f32) sp210 + (f32) sp1F0;
                 sp220 = (f64) spE0;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                sp228 = spC8;
+                temp_f0_679 = temp_f0_667 * 5.717903774e-315;
+                spC8 = temp_f0_679;
+                sp228 = temp_f0_679;
                 spD0 = (f32) sp220 * 2010.0f;
                 sp230 = (f64) spD0;
                 temp_f1_691 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
@@ -455,12 +469,12 @@ u8 IceBossGoal_IceBreath::Update() {
             sp198 = (f64) sp98;
             sp1A0 = (f64) spA0;
             KDRand_Vector(sp1B8, *((MKVector3 *) &sp1A8));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp1C8 = sp88;
+            temp_f0_761 = sp1B8 * 5.222099017e-315;
+            sp88 = temp_f0_761;
+            sp1C8 = temp_f0_761;
             sp90 = sp1B8.unk8 * 0.5f;
             sp1D0 = (f64) sp90;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp68 = sp1C8 + sp188;
             sp58 = 1.0f;
             sp5C = 0.0f;
             sp70 = (f32) sp1D0 + (f32) sp190;
@@ -519,14 +533,14 @@ u8 IceBossGoal_IceBreath::Update() {
         sp258 = sp2B0;
         sp260 = sp2B8;
         sp158.operator*(-1000.0f);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp28 = sp258 + M2C_BITWISE(f64, sp158);
         sp168 = sp28;
         sp30 = (f32) sp260 + sp158.unk8;
         sp248 = sp28;
         sp170 = (f64) sp30;
         sp250 = (f64) sp30;
         MKVector(0.0f, 200.0f, 0.0f);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp18 = sp248 - sp138;
         sp238 = sp18;
         sp20 = (f32) sp250 - sp140;
         sp148 = sp18;
@@ -589,9 +603,10 @@ loop_47:
 void IceBossGoal_IceBreath::Activate() {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     Enemy *temp_r3_1125;
     Enemy *temp_r4_1133;
     ManagedLight *temp_r3_1172;
@@ -634,8 +649,7 @@ loop_4:
         }
         MKVector(0.0f, 1000.0f, 0.0f);
         sp28.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp8 = sp28 + sp18;
         temp_r3_1205 = M2C_FIELD(this->unkC, ManagedLight **, 0xFFC);
         sp38 = sp8;
         sp10 = sp30 + sp20;
@@ -735,8 +749,11 @@ u8 IceBossGoal_IceWave::Update() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     Enemy *temp_r3_1386;
     Enemy *temp_r3_1420;
     Enemy *temp_r4_1404;
@@ -744,6 +761,9 @@ u8 IceBossGoal_IceWave::Update() {
     Enemy *temp_r6_1479;
     f32 temp_f1_1491;
     f32 temp_f2_1480;
+    f64 temp_f0_1465;
+    f64 temp_f0_1484;
+    f64 temp_f1_1455;
     u8 var_r30_1387;
     u8 var_r30_1418;
     void *temp_r3_1434;
@@ -778,24 +798,25 @@ u8 IceBossGoal_IceWave::Update() {
                 temp_r3_1440 = M2C_FIELD(this->unkC, void **, 0xFDC);
                 M2C_FIELD(M2C_FIELD(temp_r3_1440, void **, 0x44), M2C_UNK (**)(void *), 0x40)(temp_r3_1440);
                 temp_r4_1445 = this->unkC;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                sp28 = M2C_FIELD(temp_r4_1445, f64 *, 0xC0) * 5.5769738e-315;
                 temp_r3_1452 = temp_r4_1445->unk8;
+                temp_f1_1455 = M2C_FIELD(temp_r3_1452, f64 *, 0x30);
                 sp30 = temp_r4_1445->unkC8 * 200.0f;
                 sp48 = sp28;
-                sp58 = M2C_FIELD(temp_r3_1452, f64 *, 0x30);
+                sp58 = temp_f1_1455;
                 sp50 = (f64) sp30;
                 sp60 = M2C_FIELD(temp_r3_1452, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp68 = sp18;
+                temp_f0_1465 = temp_f1_1455 + sp48;
+                sp18 = temp_f0_1465;
+                sp68 = temp_f0_1465;
                 sp20 = (f32) sp60 + (f32) sp50;
                 sp70 = (f64) sp20;
                 temp_r6_1479 = this->unkC;
                 temp_f2_1480 = 100.0f * M2C_FIELD(checked_cast<IceBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r4_1445->unk0), f32 *, 0x2CC);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                temp_f0_1484 = M2C_FIELD(temp_r6_1479, f64 *, 0xC0) * (f64) temp_f2_1480;
+                sp8 = temp_f0_1484;
                 temp_f1_1491 = temp_r6_1479->unkC8 * temp_f2_1480;
-                sp38 = sp8;
+                sp38 = temp_f0_1484;
                 sp10 = temp_f1_1491;
                 sp40 = (f64) sp10;
                 temp_r3_1497 = M2C_FIELD(temp_r6_1479, void **, 0xFDC);
@@ -1455,11 +1476,8 @@ u8 IceBossGoal_MeleeAttack1::Update() {
                             var_r5_2718 = 1;
                         }
                     }
-                    if (var_r5_2718 != 0) {
-                        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                        if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) {
-                            goto block_35;
-                        }
+                    if ((var_r5_2718 != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk10)) {
+                        goto block_35;
                     }
                 } else {
 block_35:
@@ -1598,32 +1616,23 @@ u8 IceBossGoal_AttackPhase3::Update() {
     }
     if ((var_r30_2984 != 0) && (this->unkC->unk838.unk28.IsAttackable() == 0)) {
         AddGoal_AttackIdle();
-    } else {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this->unkC, f32 *, 0xFD0)) && (temp_r3_3014 = this->unk28, ((M2C_FIELD(*temp_r3_3014, u8 (**)(void **), 0x28)(temp_r3_3014) == 0) == 0))) {
+    } else if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this->unkC, f32 *, 0xFD0)) && (temp_r3_3014 = this->unk28, ((M2C_FIELD(*temp_r3_3014, u8 (**)(void **), 0x28)(temp_r3_3014) == 0) == 0))) {
+        RemoveAllSubgoals();
+        AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk38);
+        AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
+    } else if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this->unkC, f32 *, 0xFD4)) && (temp_r3_3037 = this->unk28, ((M2C_FIELD(*temp_r3_3037, u8 (**)(void **), 0x28)(temp_r3_3037) == 0) == 0))) {
+        RemoveAllSubgoals();
+        AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk2C);
+    } else if (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkC->unkFC0) {
+        temp_r3_3057 = this->unk28;
+        if (M2C_FIELD(*temp_r3_3057, u8 (**)(void **), 0x28)(temp_r3_3057) != 0) {
             RemoveAllSubgoals();
-            AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk38);
-            AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
-        } else {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this->unkC, f32 *, 0xFD4)) && (temp_r3_3037 = this->unk28, ((M2C_FIELD(*temp_r3_3037, u8 (**)(void **), 0x28)(temp_r3_3037) == 0) == 0))) {
-                RemoveAllSubgoals();
-                AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk2C);
-            } else {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unkC->unkFC0) {
-                    temp_r3_3057 = this->unk28;
-                    if (M2C_FIELD(*temp_r3_3057, u8 (**)(void **), 0x28)(temp_r3_3057) != 0) {
-                        RemoveAllSubgoals();
-                        sp8.GetDir();
-                        temp_r3_3070 = this->unkC;
-                        if (((temp_r3_3070->unkC8 * sp10) + ((temp_r3_3070->unkC0 * sp8) + (temp_r3_3070->unkC4 * spC))) < 0.95f) {
-                            AddGoal_Taunt();
-                        }
-                        AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
-                    }
-                }
+            sp8.GetDir();
+            temp_r3_3070 = this->unkC;
+            if (((temp_r3_3070->unkC8 * sp10) + ((temp_r3_3070->unkC0 * sp8) + (temp_r3_3070->unkC4 * spC))) < 0.95f) {
+                AddGoal_Taunt();
             }
+            AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
         }
     }
     this->unk8 = UpdateSubgoals();
@@ -1670,8 +1679,7 @@ void IceBossGoal_AttackPhase3::Activate() {
     }
     if (temp_r3_3153->unk838.unk28.GetDist() < 500.0f) {
         temp_r4_3168 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_FIELD(&gb, f32 *, 0x30C) != temp_r4_3168->unkA7C) || ((u8) *(temp_r4_3168 + ((M2C_FIELD(temp_r4_3168, s32 *, 0xB18) * 0x28) + 0xE54)) != 0)) {
+        if (!(M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_3168->unkA7C) || ((u8) *(temp_r4_3168 + ((M2C_FIELD(temp_r4_3168, s32 *, 0xB18) * 0x28) + 0xE54)) != 0)) {
             AddGoal_AttackIdle();
             return;
         }
@@ -1679,14 +1687,12 @@ void IceBossGoal_AttackPhase3::Activate() {
         return;
     }
     temp_r4_3192 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_3192, f32 *, 0xFD4)) && (temp_r4_3192->unk838.unk28.GetDist() > 1000.0f)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_3192, f32 *, 0xFD4)) && (temp_r4_3192->unk838.unk28.GetDist() > 1000.0f)) {
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk2C);
         return;
     }
     temp_r3_3210 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == temp_r3_3210->unkFC0) && (temp_r3_3210->unk838.unk28.GetDist() > 1000.0f)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r3_3210->unkFC0) && (temp_r3_3210->unk838.unk28.GetDist() > 1000.0f)) {
         sp8.GetDir();
         temp_r3_3225 = this->unkC;
         if (((temp_r3_3225->unkC8 * sp10) + ((temp_r3_3225->unkC0 * sp8) + (temp_r3_3225->unkC4 * spC))) < 0.95f) {
@@ -1849,31 +1855,25 @@ u8 IceBossGoal_AttackPhase2::Update() {
     }
     if ((var_r29_3528 != 0) && (this->unkC->unk838.unk28.IsAttackable() == 0)) {
         AddGoal_AttackIdle();
+    } else if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this->unkC, f32 *, 0xFD4)) && (temp_r3_3558 = this->unk28, ((M2C_FIELD(*temp_r3_3558, u8 (**)(void **), 0x28)(temp_r3_3558) == 0) == 0))) {
+        RemoveAllSubgoals();
+        AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk2C);
     } else {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this->unkC, f32 *, 0xFD4)) && (temp_r3_3558 = this->unk28, ((M2C_FIELD(*temp_r3_3558, u8 (**)(void **), 0x28)(temp_r3_3558) == 0) == 0))) {
-            RemoveAllSubgoals();
-            AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk2C);
-        } else {
-            temp_r3_3572 = this->unkC;
-            var_r30_3573 = 0;
-            if (((u8) M2C_FIELD(temp_r3_3572, u8 *, 0x8B8) == 2) || (temp_r3_3572->unk870.unk30.Get() != NULL)) {
-                var_r30_3573 = 1;
-            }
-            if (var_r30_3573 != 0) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unkC->unkFC0) {
-                    temp_r3_3592 = this->unk28;
-                    if (M2C_FIELD(*temp_r3_3592, u8 (**)(void **), 0x28)(temp_r3_3592) != 0) {
-                        RemoveAllSubgoals();
-                        sp8.GetDir();
-                        temp_r3_3605 = this->unkC;
-                        if (((temp_r3_3605->unkC8 * sp10) + ((temp_r3_3605->unkC0 * sp8) + (temp_r3_3605->unkC4 * spC))) < 0.95f) {
-                            AddGoal_Taunt();
-                        }
-                        AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
-                    }
+        temp_r3_3572 = this->unkC;
+        var_r30_3573 = 0;
+        if (((u8) M2C_FIELD(temp_r3_3572, u8 *, 0x8B8) == 2) || (temp_r3_3572->unk870.unk30.Get() != NULL)) {
+            var_r30_3573 = 1;
+        }
+        if ((var_r30_3573 != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkC->unkFC0)) {
+            temp_r3_3592 = this->unk28;
+            if (M2C_FIELD(*temp_r3_3592, u8 (**)(void **), 0x28)(temp_r3_3592) != 0) {
+                RemoveAllSubgoals();
+                sp8.GetDir();
+                temp_r3_3605 = this->unkC;
+                if (((temp_r3_3605->unkC8 * sp10) + ((temp_r3_3605->unkC0 * sp8) + (temp_r3_3605->unkC4 * spC))) < 0.95f) {
+                    AddGoal_Taunt();
                 }
+                AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
             }
         }
     }
@@ -1919,8 +1919,7 @@ void IceBossGoal_AttackPhase2::Activate() {
     }
     if (temp_r3_3688->unk838.unk28.GetDist() < 500.0f) {
         temp_r4_3703 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_FIELD(&gb, f32 *, 0x30C) != temp_r4_3703->unkA7C) || ((u8) *(temp_r4_3703 + ((M2C_FIELD(temp_r4_3703, s32 *, 0xB18) * 0x28) + 0xE54)) != 0)) {
+        if (!(M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_3703->unkA7C) || ((u8) *(temp_r4_3703 + ((M2C_FIELD(temp_r4_3703, s32 *, 0xB18) * 0x28) + 0xE54)) != 0)) {
             AddGoal_AttackIdle();
             return;
         }
@@ -1928,14 +1927,12 @@ void IceBossGoal_AttackPhase2::Activate() {
         return;
     }
     temp_r4_3727 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_3727, f32 *, 0xFD4)) && (temp_r4_3727->unk838.unk28.GetDist() > 1000.0f)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_3727, f32 *, 0xFD4)) && (temp_r4_3727->unk838.unk28.GetDist() > 1000.0f)) {
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk2C);
         return;
     }
     temp_r3_3745 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == temp_r3_3745->unkFC0) && (temp_r3_3745->unk838.unk28.GetDist() > 1000.0f)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r3_3745->unkFC0) && (temp_r3_3745->unk838.unk28.GetDist() > 1000.0f)) {
         AddGoal_Taunt();
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
         return;
@@ -2110,31 +2107,25 @@ u8 IceBossGoal_AttackPhase1::Update() {
     }
     if ((var_r29_4095 != 0) && (this->unkC->unk838.unk28.IsAttackable() == 0)) {
         AddGoal_AttackIdle();
+    } else if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this->unkC, f32 *, 0xFD4)) && (temp_r3_4125 = this->unk28, ((M2C_FIELD(*temp_r3_4125, u8 (**)(void **), 0x28)(temp_r3_4125) == 0) == 0))) {
+        RemoveAllSubgoals();
+        AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk2C);
     } else {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this->unkC, f32 *, 0xFD4)) && (temp_r3_4125 = this->unk28, ((M2C_FIELD(*temp_r3_4125, u8 (**)(void **), 0x28)(temp_r3_4125) == 0) == 0))) {
-            RemoveAllSubgoals();
-            AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk2C);
-        } else {
-            temp_r3_4139 = this->unkC;
-            var_r30_4140 = 0;
-            if (((u8) M2C_FIELD(temp_r3_4139, u8 *, 0x8B8) == 2) || (temp_r3_4139->unk870.unk30.Get() != NULL)) {
-                var_r30_4140 = 1;
-            }
-            if (var_r30_4140 != 0) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(this->unkC, f32 *, 0xFD8)) {
-                    temp_r3_4159 = this->unk28;
-                    if (M2C_FIELD(*temp_r3_4159, u8 (**)(void **), 0x28)(temp_r3_4159) != 0) {
-                        RemoveAllSubgoals();
-                        sp8.GetDir();
-                        temp_r3_4172 = this->unkC;
-                        if (((temp_r3_4172->unkC8 * sp10) + ((temp_r3_4172->unkC0 * sp8) + (temp_r3_4172->unkC4 * spC))) < 0.95f) {
-                            AddGoal_Taunt();
-                        }
-                        AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
-                    }
+        temp_r3_4139 = this->unkC;
+        var_r30_4140 = 0;
+        if (((u8) M2C_FIELD(temp_r3_4139, u8 *, 0x8B8) == 2) || (temp_r3_4139->unk870.unk30.Get() != NULL)) {
+            var_r30_4140 = 1;
+        }
+        if ((var_r30_4140 != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(this->unkC, f32 *, 0xFD8))) {
+            temp_r3_4159 = this->unk28;
+            if (M2C_FIELD(*temp_r3_4159, u8 (**)(void **), 0x28)(temp_r3_4159) != 0) {
+                RemoveAllSubgoals();
+                sp8.GetDir();
+                temp_r3_4172 = this->unkC;
+                if (((temp_r3_4172->unkC8 * sp10) + ((temp_r3_4172->unkC0 * sp8) + (temp_r3_4172->unkC4 * spC))) < 0.95f) {
+                    AddGoal_Taunt();
                 }
+                AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
             }
         }
     }
@@ -2180,8 +2171,7 @@ void IceBossGoal_AttackPhase1::Activate() {
     }
     if (temp_r3_4255->unk838.unk28.GetDist() < 500.0f) {
         temp_r4_4270 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((M2C_FIELD(&gb, f32 *, 0x30C) != temp_r4_4270->unkA7C) || ((u8) *(temp_r4_4270 + ((M2C_FIELD(temp_r4_4270, s32 *, 0xB18) * 0x28) + 0xE54)) != 0)) {
+        if (!(M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_4270->unkA7C) || ((u8) *(temp_r4_4270 + ((M2C_FIELD(temp_r4_4270, s32 *, 0xB18) * 0x28) + 0xE54)) != 0)) {
             AddGoal_AttackIdle();
             return;
         }
@@ -2189,14 +2179,12 @@ void IceBossGoal_AttackPhase1::Activate() {
         return;
     }
     temp_r4_4294 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_4294, f32 *, 0xFD4)) && (temp_r4_4294->unk838.unk28.GetDist() > 1000.0f)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_4294, f32 *, 0xFD4)) && (temp_r4_4294->unk838.unk28.GetDist() > 1000.0f)) {
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk2C);
         return;
     }
     temp_r3_4312 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r3_4312, f32 *, 0xFD8)) && (temp_r3_4312->unk838.unk28.GetDist() > 1000.0f)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r3_4312, f32 *, 0xFD8)) && (temp_r3_4312->unk838.unk28.GetDist() > 1000.0f)) {
         AddGoal_Taunt();
         AddSubgoal__23CompositeGoal<7IceBoss>FP14Goal<7IceBoss>((CompositeGoal<IceBoss> *) this, (Goal<IceBoss> *) this->unk30);
         return;
@@ -2467,8 +2455,7 @@ block_7:
         temp_r3_4914 = this->unkC;
         temp_r3_4914->Despawn(1);
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk10 == 3.0f) {
+    if (this->unk10 >= 3.0f) {
         this->unk8 = 2;
     }
     temp_r29_4929 = this->unkC;
@@ -2486,7 +2473,7 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp40'
+#if 0 // DRAFT: undefined identifier 'unkspA4'
 void IceBossGoal_Cutscene3::Activate() {
     f64 spA8;                                       /* compiler-managed */
     f64 spA0;                                       /* compiler-managed */
@@ -2501,10 +2488,12 @@ void IceBossGoal_Cutscene3::Activate() {
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     s32 sp1C;
     s32 sp18;
     s32 sp14;
@@ -2523,6 +2512,8 @@ void IceBossGoal_Cutscene3::Activate() {
     f32 var_f3_5198;
     f32 var_f4_5024;
     f32 var_f4_5131;
+    f64 temp_f0_5240;
+    f64 temp_f1_4997;
     f64 temp_f1_5030;
     f64 temp_f1_5036;
     f64 temp_f1_5040;
@@ -2548,11 +2539,12 @@ void IceBossGoal_Cutscene3::Activate() {
     M2C_FIELD(M2C_FIELD(temp_r3_4981, void **, 0x44), M2C_UNK (**)(void *), 0x34)(temp_r3_4981);
     temp_r5_4994 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
     temp_r3_4995 = this->unkC->unk8;
+    temp_f1_4997 = M2C_FIELD(temp_r3_4995, f64 *, 0x30);
     sp70 = M2C_FIELD(temp_r5_4994, f64 *, 0x30);
-    sp80 = M2C_FIELD(temp_r3_4995, f64 *, 0x30);
+    sp80 = temp_f1_4997;
     sp78 = M2C_FIELD(temp_r5_4994, f64 *, 0x38);
     sp88 = M2C_FIELD(temp_r3_4995, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp40 = temp_f1_4997 - sp70;
     spA0 = sp40;
     sp48 = (f32) sp88 - (f32) sp78;
     spA8 = (f64) sp48;
@@ -2660,11 +2652,12 @@ void IceBossGoal_Cutscene3::Activate() {
     if ((u32) temp_r3_5230->unkAF8 != 0U) {
         sp60 = M2C_FIELD(temp_r3_5230, f64 *, 0xC0);
         sp68 = M2C_FIELD(temp_r3_5230, f64 *, 0xC8);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp50 = sp20;
+        temp_f0_5240 = (f64) sp90 * 5.60222949e-315;
+        sp20 = temp_f0_5240;
+        sp50 = temp_f0_5240;
         sp28 = sp98 * 300.0f;
         sp58 = (f64) sp28;
-        temp_r3_5230->SetupCameraSpline(1000.0f, M2C_ERROR(/* unknown instruction: ps_mr $f2, $f31 */), (MKVector3) &sp60, (MKVector3) &sp50);
+        temp_r3_5230->SetupCameraSpline(1000.0f, 300.0f, (MKVector3) &sp60, (MKVector3) &sp50);
         M2C_FIELD(this->unkC->unkAF8, f32 *, 0xBC) = 10.0f;
         temp_r3_5262 = this->unkC->unkAF8;
         sp1C = 0;
@@ -2727,11 +2720,8 @@ u8 IceBossGoal_Cutscene2::Update() {
     }
     this->unk10 += gUpdateTimeDelta;
     temp_r3_5391 = this->unkC;
-    if ((u8) M2C_FIELD((temp_r3_5391 + (M2C_FIELD(temp_r3_5391, s32 *, 0xB18) * 0x28)), u8 *, 0xE54) == 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk10 == 9.4333f) {
-            temp_r3_5391->DestroyWeapon();
-        }
+    if (((u8) M2C_FIELD((temp_r3_5391 + (M2C_FIELD(temp_r3_5391, s32 *, 0xB18) * 0x28)), u8 *, 0xE54) == 0) && (this->unk10 >= 9.4333f)) {
+        temp_r3_5391->DestroyWeapon();
     }
     temp_r30_5405 = this->unkC;
     var_r31_5406 = 0;
@@ -2748,7 +2738,7 @@ u8 IceBossGoal_Cutscene2::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: undefined identifier 'unkspAC'
 void IceBossGoal_Cutscene2::Activate() {
     f64 spB0;                                       /* compiler-managed */
     f64 spA8;                                       /* compiler-managed */
@@ -2764,6 +2754,7 @@ void IceBossGoal_Cutscene2::Activate() {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -2786,6 +2777,7 @@ void IceBossGoal_Cutscene2::Activate() {
     f32 var_f4_5606;
     f32 var_f4_5673;
     f64 temp_f1_5467;
+    f64 temp_f1_5475;
     f64 temp_f1_5505;
     f64 temp_f1_5511;
     f64 temp_f1_5515;
@@ -2813,9 +2805,10 @@ void IceBossGoal_Cutscene2::Activate() {
     sp78 = temp_f1_5467;
     sp80 = M2C_FIELD(temp_r4_5465, f64 *, 0x38);
     temp_r3_5474 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *, f64), 0xC)(gb, temp_r4_5465, temp_f1_5467), void **, 8);
-    sp88 = M2C_FIELD(temp_r3_5474, f64 *, 0x30);
+    temp_f1_5475 = M2C_FIELD(temp_r3_5474, f64 *, 0x30);
+    sp88 = temp_f1_5475;
     sp90 = M2C_FIELD(temp_r3_5474, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp38 = temp_f1_5475 - sp78;
     spA8 = sp38;
     sp40 = (f32) sp90 - (f32) sp80;
     spB0 = (f64) sp40;
@@ -3238,15 +3231,19 @@ void IceBossGoal_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: pointer/array required
 void IceBossGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     f64 sp50;
     f64 sp48;
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     M2C_UNK sp8;
+    f64 temp_f0_6463;
+    f64 temp_f0_6475;
     s32 temp_r0_6434;
     s32 temp_r0_6525;
     s32 temp_r28_6459;
@@ -3266,21 +3263,20 @@ void IceBossGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     }
     if ((s32) arg0->unk28 == 1) {
         temp_r28_6459 = this->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-        sp38 = sp28;
+        temp_f0_6463 = *(temp_r28_6459 + 0xC0) * 5.64367472e-315;
+        sp28 = temp_f0_6463;
+        sp38 = temp_f0_6463;
         sp30 = M2C_FIELD(temp_r28_6459, f32 *, 0xC8) * 600.0f;
         sp40 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_f0_6475 = *(temp_r28_6459 + 0x588) - temp_f0_6463;
+        sp18 = temp_f0_6475;
         var_r29_6481 = 0;
-        sp48 = sp18;
+        sp48 = temp_f0_6475;
         sp20 = M2C_FIELD(temp_r28_6459, f32 *, 0x590) - (f32) sp40;
         sp50 = (f64) sp20;
         if (((EnemyRegion *) (temp_r28_6459 + 0x800))->IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
             sp8.GetRegionPos();
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((f32) fabs(spC - unksp4C) == 500.0f) {
+            if ((f32) fabs(spC - unksp4C) <= 500.0f) {
                 var_r29_6481 = 1;
             }
         }
@@ -3340,11 +3336,8 @@ u8 IceBossGoal_Think::HasToFormShield() {
 
     if (this->unkC->GetPhase() == 0) {
         temp_r4_6637 = this->unkC;
-        if (((u8) M2C_FIELD(temp_r4_6637, u8 *, 0xEC8) != 0) && ((u8) M2C_FIELD(temp_r4_6637, u8 *, 0xEC9) == 0)) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_6637, f32 *, 0xFCC)) {
-                return 1U;
-            }
+        if (((u8) M2C_FIELD(temp_r4_6637, u8 *, 0xEC8) != 0) && ((u8) M2C_FIELD(temp_r4_6637, u8 *, 0xEC9) == 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_6637, f32 *, 0xFCC))) {
+            return 1U;
         }
     }
     return 0U;
@@ -3359,11 +3352,8 @@ u8 IceBossGoal_Think::HasToFormWeapon() {
     if (this->unkC->GetPhase() < 2) {
         temp_r4_6675 = this->unkC;
         temp_r3_6677 = M2C_FIELD(temp_r4_6675, s32 *, 0xB18) * 0x28;
-        if (((u8) *(temp_r4_6675 + (temp_r3_6677 + 0xE54)) != 0) && ((u8) *(temp_r4_6675 + (temp_r3_6677 + 0xE55)) == 0)) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r4_6675, f32 *, 0xFC8)) {
-                return 1U;
-            }
+        if (((u8) *(temp_r4_6675 + (temp_r3_6677 + 0xE54)) != 0) && ((u8) *(temp_r4_6675 + (temp_r3_6677 + 0xE55)) == 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r4_6675, f32 *, 0xFC8))) {
+            return 1U;
         }
     }
     return 0U;
@@ -3377,8 +3367,12 @@ u8 IceBossGoal_Think::Update() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     M2C_UNK sp8;
+    f64 temp_f0_6759;
+    f64 temp_f0_6771;
     s32 temp_r29_6755;
     s32 temp_r3_6722;
     s32 temp_r3_6810;
@@ -3402,21 +3396,20 @@ u8 IceBossGoal_Think::Update() {
     this->unk8 = UpdateSubgoals();
     if (IsActive(0x12) != 0) {
         temp_r29_6755 = this->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp38 = sp28;
+        temp_f0_6759 = *(temp_r29_6755 + 0xC0) * 5.64367472e-315;
+        sp28 = temp_f0_6759;
+        sp38 = temp_f0_6759;
         sp30 = M2C_FIELD(temp_r29_6755, f32 *, 0xC8) * 600.0f;
         sp40 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_f0_6771 = *(temp_r29_6755 + 0x588) - temp_f0_6759;
+        sp18 = temp_f0_6771;
         var_r30_6777 = 0;
-        sp48 = sp18;
+        sp48 = temp_f0_6771;
         sp20 = M2C_FIELD(temp_r29_6755, f32 *, 0x590) - (f32) sp40;
         sp50 = (f64) sp20;
         if (((EnemyRegion *) (temp_r29_6755 + 0x800))->IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
             sp8.GetRegionPos();
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((f32) fabs(spC - unksp4C) == 500.0f) {
+            if ((f32) fabs(spC - unksp4C) <= 500.0f) {
                 var_r30_6777 = 1;
             }
         }
@@ -3508,20 +3501,16 @@ void IceBossGoal_Think::Arbitrate() {
                 AddGoal_CutScene();
                 return;
             }
-            if ((temp_r3_7002->IsIceKing() == 0) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((M2C_FIELD(this->unkC, f32 *, 0xAC8) == 0.0f) == 0))) {
+            if ((temp_r3_7002->IsIceKing() == 0) || !(M2C_FIELD(this->unkC, f32 *, 0xAC8) <= 0.0f)) {
                 temp_r3_7020 = this->unkC;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (M2C_FIELD(temp_r3_7020, f32 *, 0xAC8) == 0.0f) {
+                if (M2C_FIELD(temp_r3_7020, f32 *, 0xAC8) <= 0.0f) {
                     temp_r3_7020->ClearHitAndDeathFX();
                     AddGoal_Death(&sp38);
                     ((EventMessage *) (this->unkC + 0xFEC))->Send(NULL);
                     return;
                 }
-                if ((sp38.unk34 >> 5U) & 1) {
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if ((M2C_FIELD(temp_r3_7020, f32 *, 0xAD0) == 0.0f) && ((u8) M2C_FIELD(temp_r3_7020, u8 *, 0xEC8) == 0)) {
-                        temp_r3_7020->DestroyShield();
-                    }
+                if (((sp38.unk34 >> 5U) & 1) && (M2C_FIELD(temp_r3_7020, f32 *, 0xAD0) <= 0.0f) && ((u8) M2C_FIELD(temp_r3_7020, u8 *, 0xEC8) == 0)) {
+                    temp_r3_7020->DestroyShield();
                 }
                 if (sp10 != 0) {
                     sp38.unk28 = 7;

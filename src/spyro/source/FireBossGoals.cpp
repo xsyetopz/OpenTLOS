@@ -62,16 +62,13 @@ u8 FireBossGoal_Think::Update() {
         temp_r3_37 = this->unkC;
         temp_r30_38 = M2C_FIELD(temp_r3_37, s32 *, 0xB10);
         temp_f31_39 = M2C_FIELD(temp_r3_37, f32 *, 0xAC8);
-        if (temp_r30_38 != 4) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_f31_39 == 0.0f) {
-                M2C_FIELD(temp_r3_37, s32 *, 0xB10) = (s32) (temp_r30_38 + 1);
-                temp_r4_48 = this->unkC;
-                if ((s32) M2C_FIELD(temp_r4_48, s32 *, 0xB10) != 4) {
-                    M2C_FIELD(temp_r4_48, s32 *, 0xAE8) = (s32) (M2C_FIELD(temp_r4_48, s32 *, 0xAE8) + 1);
-                    this->unkC->GetMaxHealth();
-                    this->unkC->SetHealth(M2C_ERROR(/* Read from unset register $f1 */));
-                }
+        if ((temp_r30_38 != 4) && (temp_f31_39 <= 0.0f)) {
+            M2C_FIELD(temp_r3_37, s32 *, 0xB10) = (s32) (temp_r30_38 + 1);
+            temp_r4_48 = this->unkC;
+            if ((s32) M2C_FIELD(temp_r4_48, s32 *, 0xB10) != 4) {
+                M2C_FIELD(temp_r4_48, s32 *, 0xAE8) = (s32) (M2C_FIELD(temp_r4_48, s32 *, 0xAE8) + 1);
+                this->unkC->GetMaxHealth();
+                this->unkC->SetHealth(M2C_ERROR(/* Read from unset register $f1 */));
             }
         }
         if (temp_r30_38 != (s32) M2C_FIELD(this->unkC, s32 *, 0xB10)) {
@@ -407,8 +404,8 @@ u8 FireBossGoal_Death::Update() {
     f64 sp118;
     f64 sp110;
     f64 sp108;
-    M2C_UNK spF8;
-    M2C_UNK spE8;
+    f64 spF8;
+    f64 spE8;
     MKVector3 spD8;
     MKVector3 spC8;
     MKVector3 spB8;
@@ -422,12 +419,16 @@ u8 FireBossGoal_Death::Update() {
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -444,9 +445,14 @@ u8 FireBossGoal_Death::Update() {
     MKProp *temp_r5_839;
     f32 temp_f1_945;
     f32 var_f0_716;
+    f64 temp_f0_826;
+    f64 temp_f0_901;
+    f64 temp_f0_913;
+    f64 temp_f0_925;
     s32 var_r28_848;
     u8 temp_r0_774;
     void *temp_r3_773;
+    void *temp_r4_823;
     void *temp_r5_858;
 
     ActivateIfInactive();
@@ -466,8 +472,7 @@ u8 FireBossGoal_Death::Update() {
         }
         M2C_FIELD(temp_r3_714, f32 *, 0xB24) = var_f0_716;
         temp_r3_725 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((M2C_FIELD(temp_r3_725, f32 *, 0xB20) == 0.0f) && ((u8) this->unk14 == 0) && ((u32) M2C_FIELD(temp_r3_725, u32 *, 0xA44) != 0U)) {
+        if ((M2C_FIELD(temp_r3_725, f32 *, 0xB20) <= 0.0f) && ((u8) this->unk14 == 0) && ((u32) M2C_FIELD(temp_r3_725, u32 *, 0xA44) != 0U)) {
             this->unk14 = 1;
             temp_r4_738 = this->unkC;
             ((EventMessage *) (M2C_FIELD(temp_r4_738, u32 *, 0xA44) + 8))->Send(temp_r4_738);
@@ -513,10 +518,11 @@ u8 FireBossGoal_Death::Update() {
     temp_r3_817 = this->unkC;
     M2C_FIELD(temp_r3_817, f64 *, 0x588) = sp158;
     M2C_FIELD(temp_r3_817, f64 *, 0x590) = sp160;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp138 = sp58;
-    sp60 = M2C_FIELD((this->unkC + 0x588), f32 *, 8) - (f32) sp190;
+    temp_r4_823 = this->unkC + 0x588;
+    temp_f0_826 = M2C_FIELD(temp_r4_823, f64 *, 0) - sp188;
+    sp58 = temp_f0_826;
+    sp138 = temp_f0_826;
+    sp60 = M2C_FIELD(temp_r4_823, f32 *, 8) - (f32) sp190;
     sp140 = (f64) sp60;
     Normalise(sp148);
     temp_r5_839 = this->unkC;
@@ -538,18 +544,20 @@ u8 FireBossGoal_Death::Update() {
         spD8.operator*(200.0f);
         MKVector(0.0f, 300.0f, 0.0f);
         spF8.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp108 = sp28;
+        temp_f0_901 = spF8 + spE8;
+        sp28 = temp_f0_901;
+        sp108 = temp_f0_901;
         sp30 = sp100 + spF0;
         sp110 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp118 = sp18;
+        temp_f0_913 = sp108 + M2C_BITWISE(f64, spD8);
+        sp18 = temp_f0_913;
+        sp118 = temp_f0_913;
         sp20 = (f32) sp110 + spD8.unk8;
         sp120 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp128 = sp48;
-        sp168.unk10 = sp48;
+        temp_f0_925 = sp118 + M2C_BITWISE(f64, sp98);
+        sp48 = temp_f0_925;
+        sp128 = temp_f0_925;
+        sp168.unk10 = temp_f0_925;
         sp50 = (f32) sp120 + sp98.unk8;
         sp130 = (f64) sp50;
         sp180 = (f64) sp50;
@@ -594,8 +602,7 @@ u8 FireBossGoal_Turn::Update() {
 
     ActivateIfInactive();
     temp_r3_1043 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (((temp_r3_1043->unkC8 * temp_r3_1043->unkE8) + ((temp_r3_1043->unkC0 * temp_r3_1043->unkE0) + (temp_r3_1043->unkC4 * temp_r3_1043->unkE4))) == 0.98f) {
+    if (((temp_r3_1043->unkC8 * temp_r3_1043->unkE8) + ((temp_r3_1043->unkC0 * temp_r3_1043->unkE0) + (temp_r3_1043->unkC4 * temp_r3_1043->unkE4))) >= 0.98f) {
         this->unk8 = 2;
     }
     return this->unk8;
@@ -681,7 +688,7 @@ u8 FireBossGoal_Crash::Update() {
         M2C_FIELD(this->unkC, s8 *, 0xFC9) = 0;
     }
     temp_r5_1218 = this->unkC;
-    if (((u32) temp_r5_1218->unkA54 == &temp_r5_1218->unkA50->unk20) && (((s32) M2C_FIELD(M2C_FIELD(temp_r5_1218, void **, 0x630), s32 *, 0x44) >= (s32) (4 - temp_r5_1218->unkB10)) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(temp_r5_1218, f32 *, 0xC48) == 20.0f) != 0)))) {
+    if (((u32) temp_r5_1218->unkA54 == &temp_r5_1218->unkA50->unk20) && (((s32) M2C_FIELD(M2C_FIELD(temp_r5_1218, void **, 0x630), s32 *, 0x44) >= (s32) (4 - temp_r5_1218->unkB10)) || (M2C_FIELD(temp_r5_1218, f32 *, 0xC48) >= 20.0f))) {
         M2C_FIELD(temp_r5_1218, f32 *, 0xC48) = 0.0f;
         M2C_FIELD(this->unkC, f32 *, 0xB24) = 0.0f;
         M2C_FIELD(this->unkC, f32 *, 0xB1C) = -100.0f;
@@ -744,6 +751,7 @@ u8 FireBossGoal_Stage4::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     FireBoss *temp_r27_1473;
@@ -756,6 +764,7 @@ u8 FireBossGoal_Stage4::Update() {
     FireBoss *temp_r3_1464;
     FireBoss *temp_r3_1550;
     FireBoss *temp_r3_1575;
+    FireBoss *temp_r3_1580;
     FireBoss *temp_r4_1378;
     FireBoss *temp_r4_1389;
     FireBoss *temp_r4_1417;
@@ -763,6 +772,7 @@ u8 FireBossGoal_Stage4::Update() {
     FireBoss *temp_r4_1544;
     FireBoss *temp_r4_1566;
     FireBoss *temp_r4_1597;
+    f64 temp_f0_1584;
     s32 temp_r3_1483;
     s32 var_ctr_1493;
     s32 var_r29_1492;
@@ -785,8 +795,7 @@ u8 FireBossGoal_Stage4::Update() {
     temp_r4_1389 = this->unkC;
     temp_r4_1389->unkD10.unk230 -= gUpdateTimeDelta;
     temp_r3_1396 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_r3_1396->unkD10.unk230 == 0.0f) {
+    if (temp_r3_1396->unkD10.unk230 <= 0.0f) {
         if ((u8) temp_r3_1396->unkD10.unk78 != 0) {
             temp_r3_1396->unkD10.unk230 = temp_r3_1396->unkD10.unk238;
         } else {
@@ -815,8 +824,7 @@ u8 FireBossGoal_Stage4::Update() {
         temp_r3_1458 = this->unkC;
         temp_r3_1458->unkD10.unk228 -= gUpdateTimeDelta;
         temp_r3_1464 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_1464->unkD10.unk228 == 0.0f) {
+        if (temp_r3_1464->unkD10.unk228 <= 0.0f) {
             temp_r3_1464->TriggerFireball();
         }
     }
@@ -875,10 +883,11 @@ block_34:
         temp_r3_1575 = this->unkC;
         M2C_FIELD(temp_r3_1575, f64 *, 0x588) = sp40;
         M2C_FIELD(temp_r3_1575, f64 *, 0x590) = sp48;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp20 = sp10;
-        sp18 = this->unkC->unk588.unk4 - (f32) sp68;
+        temp_r3_1580 = this->unkC;
+        temp_f0_1584 = M2C_FIELD(temp_r3_1580, f64 *, 0x588) - sp60;
+        sp10 = temp_f0_1584;
+        sp20 = temp_f0_1584;
+        sp18 = temp_r3_1580->unk588.unk4 - (f32) sp68;
         sp28 = (f64) sp18;
         Normalise(sp30);
         temp_r4_1597 = this->unkC;
@@ -924,6 +933,7 @@ u8 FireBossGoal_Stage3::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     FireBoss *temp_r27_1807;
@@ -935,6 +945,7 @@ u8 FireBossGoal_Stage3::Update() {
     FireBoss *temp_r3_1798;
     FireBoss *temp_r3_1888;
     FireBoss *temp_r3_1913;
+    FireBoss *temp_r3_1918;
     FireBoss *temp_r4_1700;
     FireBoss *temp_r4_1711;
     FireBoss *temp_r4_1747;
@@ -943,6 +954,7 @@ u8 FireBossGoal_Stage3::Update() {
     FireBoss *temp_r4_1882;
     FireBoss *temp_r4_1904;
     FireBoss *temp_r4_1935;
+    f64 temp_f0_1922;
     s32 temp_r3_1822;
     s32 var_ctr_1831;
     s32 var_r29_1830;
@@ -966,8 +978,7 @@ u8 FireBossGoal_Stage3::Update() {
     if ((u8) M2C_FIELD(temp_r4_1711->unkC1C, u8 *, 0x1D) == 0) {
         temp_r4_1711->unkD10.unk230 -= gUpdateTimeDelta;
         temp_r3_1722 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_1722->unkD10.unk230 == 0.0f) {
+        if (temp_r3_1722->unkD10.unk230 <= 0.0f) {
             if ((u8) temp_r3_1722->unkD10.unk78 != 0) {
                 temp_r3_1722->unkD10.unk230 = temp_r3_1722->unkD10.unk238;
             } else {
@@ -1000,8 +1011,7 @@ u8 FireBossGoal_Stage3::Update() {
         if ((u8) M2C_FIELD(temp_r4_1788->unkC1C, u8 *, 0x1D) == 0) {
             temp_r4_1788->unkD10.unk228 -= gUpdateTimeDelta;
             temp_r3_1798 = this->unkC;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r3_1798->unkD10.unk228 == 0.0f) {
+            if (temp_r3_1798->unkD10.unk228 <= 0.0f) {
                 temp_r3_1798->TriggerFireball();
             }
         }
@@ -1063,10 +1073,11 @@ block_38:
         temp_r3_1913 = this->unkC;
         M2C_FIELD(temp_r3_1913, f64 *, 0x588) = sp40;
         M2C_FIELD(temp_r3_1913, f64 *, 0x590) = sp48;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp20 = sp10;
-        sp18 = this->unkC->unk588.unk4 - (f32) sp68;
+        temp_r3_1918 = this->unkC;
+        temp_f0_1922 = M2C_FIELD(temp_r3_1918, f64 *, 0x588) - sp60;
+        sp10 = temp_f0_1922;
+        sp20 = temp_f0_1922;
+        sp18 = temp_r3_1918->unk588.unk4 - (f32) sp68;
         sp28 = (f64) sp18;
         Normalise(sp30);
         temp_r4_1935 = this->unkC;
@@ -1112,6 +1123,7 @@ u8 FireBossGoal_Stage2::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     FireBoss *temp_r27_2143;
@@ -1123,6 +1135,7 @@ u8 FireBossGoal_Stage2::Update() {
     FireBoss *temp_r3_2134;
     FireBoss *temp_r3_2224;
     FireBoss *temp_r3_2249;
+    FireBoss *temp_r3_2254;
     FireBoss *temp_r4_2036;
     FireBoss *temp_r4_2047;
     FireBoss *temp_r4_2083;
@@ -1131,6 +1144,7 @@ u8 FireBossGoal_Stage2::Update() {
     FireBoss *temp_r4_2218;
     FireBoss *temp_r4_2240;
     FireBoss *temp_r4_2271;
+    f64 temp_f0_2258;
     s32 temp_r3_2158;
     s32 var_ctr_2167;
     s32 var_r29_2166;
@@ -1154,8 +1168,7 @@ u8 FireBossGoal_Stage2::Update() {
     if ((u8) M2C_FIELD(temp_r4_2047->unkC1C, u8 *, 0x1D) == 0) {
         temp_r4_2047->unkD10.unk230 -= gUpdateTimeDelta;
         temp_r3_2058 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_2058->unkD10.unk230 == 0.0f) {
+        if (temp_r3_2058->unkD10.unk230 <= 0.0f) {
             if ((u8) temp_r3_2058->unkD10.unk78 != 0) {
                 temp_r3_2058->unkD10.unk230 = temp_r3_2058->unkD10.unk238;
             } else {
@@ -1188,8 +1201,7 @@ u8 FireBossGoal_Stage2::Update() {
         if ((u8) M2C_FIELD(temp_r4_2124->unkC1C, u8 *, 0x1D) == 0) {
             temp_r4_2124->unkD10.unk228 -= gUpdateTimeDelta;
             temp_r3_2134 = this->unkC;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r3_2134->unkD10.unk228 == 0.0f) {
+            if (temp_r3_2134->unkD10.unk228 <= 0.0f) {
                 temp_r3_2134->TriggerFireball();
             }
         }
@@ -1251,10 +1263,11 @@ block_38:
         temp_r3_2249 = this->unkC;
         M2C_FIELD(temp_r3_2249, f64 *, 0x588) = sp40;
         M2C_FIELD(temp_r3_2249, f64 *, 0x590) = sp48;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp20 = sp10;
-        sp18 = this->unkC->unk588.unk4 - (f32) sp68;
+        temp_r3_2254 = this->unkC;
+        temp_f0_2258 = M2C_FIELD(temp_r3_2254, f64 *, 0x588) - sp60;
+        sp10 = temp_f0_2258;
+        sp20 = temp_f0_2258;
+        sp18 = temp_r3_2254->unk588.unk4 - (f32) sp68;
         sp28 = (f64) sp18;
         Normalise(sp30);
         temp_r4_2271 = this->unkC;
@@ -1300,6 +1313,7 @@ u8 FireBossGoal_Stage1::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     FireBoss *temp_r27_2451;
@@ -1309,6 +1323,7 @@ u8 FireBossGoal_Stage1::Update() {
     FireBoss *temp_r3_2441;
     FireBoss *temp_r3_2532;
     FireBoss *temp_r3_2557;
+    FireBoss *temp_r3_2562;
     FireBoss *temp_r4_2374;
     FireBoss *temp_r4_2385;
     FireBoss *temp_r4_2398;
@@ -1316,6 +1331,7 @@ u8 FireBossGoal_Stage1::Update() {
     FireBoss *temp_r4_2526;
     FireBoss *temp_r4_2548;
     FireBoss *temp_r4_2579;
+    f64 temp_f0_2566;
     s32 temp_r3_2466;
     s32 var_ctr_2475;
     s32 var_r29_2474;
@@ -1358,8 +1374,7 @@ u8 FireBossGoal_Stage1::Update() {
                 temp_r4_2427->unkD10.unk228 -= gUpdateTimeDelta;
             }
             temp_r3_2441 = this->unkC;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r3_2441->unkD10.unk228 == 0.0f) {
+            if (temp_r3_2441->unkD10.unk228 <= 0.0f) {
                 temp_r3_2441->TriggerFireball();
             }
         }
@@ -1421,10 +1436,11 @@ block_33:
         temp_r3_2557 = this->unkC;
         M2C_FIELD(temp_r3_2557, f64 *, 0x588) = sp40;
         M2C_FIELD(temp_r3_2557, f64 *, 0x590) = sp48;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp20 = sp10;
-        sp18 = this->unkC->unk588.unk4 - (f32) sp68;
+        temp_r3_2562 = this->unkC;
+        temp_f0_2566 = M2C_FIELD(temp_r3_2562, f64 *, 0x588) - sp60;
+        sp10 = temp_f0_2566;
+        sp20 = temp_f0_2566;
+        sp18 = temp_r3_2562->unk588.unk4 - (f32) sp68;
         sp28 = (f64) sp18;
         Normalise(sp30);
         temp_r4_2579 = this->unkC;

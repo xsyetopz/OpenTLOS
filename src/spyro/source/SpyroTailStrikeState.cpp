@@ -129,11 +129,12 @@ void SpyroTailStrikeState::LandUpdate() {
     f64 sp48;
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     MKCollisionInfo *temp_r5_274;
     MKProp *var_r4_279;
     f32 temp_f29_221;
@@ -159,13 +160,13 @@ void SpyroTailStrikeState::LandUpdate() {
         sp70 = temp_f3_202;
         sp60 = temp_f3_202;
         sp50 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp58 += sp48;
         var_r31_218 = 0;
         temp_f29_221 = (f32) sp60 + (f32) sp50;
         sp60 = temp_f29_221;
         do {
             MKVector((f32) (var_r31_218 & 1) * 300.0f, 0.0f, (f32) -(var_r31_218 / 2) * 300.0f);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp8 = sp58 + sp28;
             sp38 = sp8;
             sp10 = temp_f29_221 + sp30;
             sp68 = sp8;
@@ -208,7 +209,7 @@ void SpyroTailStrikeState::LandEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal type
 s32 SpyroTailStrikeState::DescentTransition() {
     MKCollisionResult sp58;
     f64 sp50;
@@ -221,6 +222,9 @@ s32 SpyroTailStrikeState::DescentTransition() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_374;
+    f64 temp_f1_364;
     u8 var_r31_358;
     void *temp_r3_362;
 
@@ -228,13 +232,15 @@ s32 SpyroTailStrikeState::DescentTransition() {
     sp20 = 0.0f;
     temp_r3_362 = this->unk10->unk8;
     sp18 = 0.0f;
+    temp_f1_364 = M2C_FIELD(temp_r3_362, f64 *, 0x30);
     sp1C = 220.0f;
     sp30 = (f64) sp20;
     sp28 = (f64) sp18;
-    sp38 = M2C_FIELD(temp_r3_362, f64 *, 0x30);
+    sp38 = temp_f1_364;
     sp40 = M2C_FIELD(temp_r3_362, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp48 = sp8;
+    temp_f0_374 = temp_f1_364 - sp28;
+    sp8 = temp_f0_374;
+    sp48 = temp_f0_374;
     sp10 = (f32) sp40 - (f32) sp30;
     sp50 = (f64) sp10;
     if (MKCollision_SphereCollide(*((MKVector3 *) &sp48), 100.0f, &sp58, 0xA, (MKCollisionMode) 7, 0x04000220) != 0) {

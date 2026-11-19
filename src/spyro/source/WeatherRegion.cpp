@@ -41,17 +41,21 @@ u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
     f64 sp68;
     f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_258;
-    f32 temp_f2_63;
     f32 var_f4_90;
     f32 var_f5_79;
+    f64 temp_f0_195;
     f64 temp_f1_101;
     f64 temp_f1_105;
     f64 temp_f1_95;
@@ -59,22 +63,17 @@ u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
     s32 var_r0_134;
     u8 var_r31_253;
     void *temp_r30_55;
-    void *temp_r31_53;
     void *temp_r3_52;
 
     temp_r3_52 = checked_cast<WeatherRegionDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r31_53 = temp_r3_52;
-    temp_r30_55 = temp_r31_53 + 0x90;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    temp_f2_63 = M2C_FIELD(temp_r31_53, f32 *, 0x98) - M2C_FIELD(temp_r31_53, f32 *, 0xD8);
+    temp_r30_55 = temp_r3_52 + 0x90;
+    sp50 = M2C_FIELD(temp_r30_55, f64 *, 0) - *(temp_r3_52 + 0xD0);
     sp100 = sp50;
-    sp58 = temp_f2_63;
+    sp58 = M2C_FIELD(temp_r3_52, f32 *, 0x98) - M2C_FIELD(temp_r3_52, f32 *, 0xD8);
     sp108 = (f64) sp58;
     var_f5_79 = 0.0f;
-    spF0 = M2C_FIELD(temp_r31_53, f64 *, 0x80);
-    spF8 = M2C_FIELD(temp_r31_53, f64 *, 0x88);
+    spF0 = M2C_FIELD(temp_r3_52, f64 *, 0x80);
+    spF8 = M2C_FIELD(temp_r3_52, f64 *, 0x88);
     unkspF4 = 0.0f;
     var_f4_90 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (0.0f * 0.0f));
     if (var_f4_90 > 0.000001f) {
@@ -121,12 +120,12 @@ u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
     spA0.operator*(2.0f);
     spB0.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
     spC0.operator*(1000.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spD0 = sp10;
+    temp_f0_195 = M2C_FIELD(temp_r30_55, f64 *, 0) + M2C_BITWISE(f64, spC0);
+    sp10 = temp_f0_195;
+    spD0 = temp_f0_195;
     sp18 = M2C_FIELD(temp_r30_55, f32 *, 8) + spC0.unk8;
     spD8 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp40 = spD0 + M2C_BITWISE(f64, spA0);
     M2C_FIELD(&arg0, f64 *, 0) = sp40;
     sp48 = (f32) spD8 + spA0.unk8;
     spE0 = sp40;
@@ -137,26 +136,18 @@ u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
     sp38 = 0.0f;
     sp70 = (f64) sp30;
     sp78 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + sp70);
     arg0.unk8 += (f32) sp78;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp20 = sp100 * 5.439686476e-315;
     sp28 = (f32) sp108 * 20.0f;
     sp60 = sp20;
     sp68 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + sp60);
     var_r31_253 = 0;
     arg0.unk8 += (f32) sp68;
     temp_f1_258 = arg0.unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f1_258 == this->unk80.unk4.unk18) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((temp_f1_258 == this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
-            var_r31_253 = 1;
-        }
+    if ((temp_f1_258 >= this->unk80.unk4.unk18) && (temp_f1_258 <= this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
+        var_r31_253 = 1;
     }
     if (var_r31_253 != 0) {
         return 1U;
@@ -195,15 +186,22 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
     f64 spA8;
     f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -212,11 +210,11 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
     f32 temp_f1_521;
     f32 temp_f28_638;
     f32 temp_f29_666;
-    f32 temp_f2_322;
     f32 var_f3_627;
     f32 var_f4_349;
     f32 var_f4_560;
     f32 var_f5_338;
+    f64 temp_f0_458;
     f64 temp_f1_354;
     f64 temp_f1_360;
     f64 temp_f1_364;
@@ -228,23 +226,18 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
     s32 var_r0_393;
     s32 var_r0_605;
     u8 var_r28_516;
-    void *temp_r28_312;
     void *temp_r3_311;
     void *temp_r5_314;
 
     temp_r3_311 = checked_cast<WeatherRegionDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r28_312 = temp_r3_311;
-    temp_r5_314 = temp_r28_312 + 0x90;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    temp_f2_322 = M2C_FIELD(temp_r28_312, f32 *, 0x98) - M2C_FIELD(temp_r28_312, f32 *, 0xD8);
+    temp_r5_314 = temp_r3_311 + 0x90;
+    sp90 = M2C_FIELD(temp_r5_314, f64 *, 0) - *(temp_r3_311 + 0xD0);
     sp190 = sp90;
-    sp98 = temp_f2_322;
+    sp98 = M2C_FIELD(temp_r3_311, f32 *, 0x98) - M2C_FIELD(temp_r3_311, f32 *, 0xD8);
     sp198 = (f64) sp98;
     var_f5_338 = 0.0f;
-    sp180 = M2C_FIELD(temp_r28_312, f64 *, 0x80);
-    sp188 = M2C_FIELD(temp_r28_312, f64 *, 0x88);
+    sp180 = M2C_FIELD(temp_r3_311, f64 *, 0x80);
+    sp188 = M2C_FIELD(temp_r3_311, f64 *, 0x88);
     unksp184 = 0.0f;
     var_f4_349 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (0.0f * 0.0f));
     if (var_f4_349 > 0.000001f) {
@@ -286,18 +279,19 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
     sp180 = (f32) sp180 * var_f5_338;
     unksp184 *= var_f5_338;
     sp188 = (f32) sp188 * var_f5_338;
-    sp170 = M2C_FIELD(temp_r5_314, f64 *, 0);
+    sp170 = M2C_FIELD(temp_r3_311, f64 *, 0x90);
     sp178 = M2C_FIELD(temp_r5_314, f64 *, 8);
     spF0.operator*(MKRand_Float(&gViewSeed, -0.1f, 1.0f));
     sp100.operator*(2000.0f);
     sp110.operator*(2.0f);
     sp120.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
     sp130.operator*(1000.0f);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp140 = sp20;
+    temp_f0_458 = sp170 + M2C_BITWISE(f64, sp130);
+    sp20 = temp_f0_458;
+    sp140 = temp_f0_458;
     sp28 = (f32) sp178 + sp130.unk8;
     sp148 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp70 = sp140 + M2C_BITWISE(f64, sp110);
     M2C_FIELD(&arg0, f64 *, 0) = sp70;
     sp78 = (f32) sp148 + sp110.unk8;
     sp150 = sp70;
@@ -308,31 +302,21 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
     sp68 = 0.0f;
     spE0 = (f64) sp60;
     spE8 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + spE0);
     arg0.unk8 += (f32) spE8;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp50 = sp190 * 5.439686476e-315;
     sp58 = (f32) sp198 * 20.0f;
     spD0 = sp50;
     spD8 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + spD0);
     var_r28_516 = 0;
     arg0.unk8 += (f32) spD8;
     temp_f1_521 = arg0.unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f1_521 == this->unk80.unk4.unk18) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((temp_f1_521 == this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
-            var_r28_516 = 1;
-        }
+    if ((temp_f1_521 >= this->unk80.unk4.unk18) && (temp_f1_521 <= this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
+        var_r28_516 = 1;
     }
     if (var_r28_516 != 0) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp80 = M2C_FIELD(&arg0, f64 *, 0) - this->unk50;
         sp160 = sp80;
         sp88 = arg0.unk8 - this->unk58;
         sp168 = (f64) sp88;
@@ -379,21 +363,19 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
         sp160 = (f32) sp160 * var_f3_627;
         unksp164 *= var_f3_627;
         sp168 = temp_f28_638;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp40 = (f64) sp160 * 5.676053805e-315;
         sp48 = temp_f28_638 * 1000.0f;
         spC0 = sp40;
         spC8 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+        M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + spC0);
         arg0.unk8 += (f32) spC8;
-        temp_f29_666 = MKRand_Float(&gViewSeed, M2C_ERROR(/* unknown instruction: ps_mr $f1, $f30 */), 2000.0f);
+        temp_f29_666 = MKRand_Float(&gViewSeed, 1000.0f, 2000.0f);
         sp18 = -temp_f28_638;
         sp10 = -sp160;
         sp14 = -unksp164;
         spA8 = (f64) sp18;
         spA0 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+        sp30 = spA0 * (f64) temp_f29_666;
         M2C_FIELD(&arg1, f64 *, 0) = sp30;
         sp38 = (f32) spA8 * temp_f29_666;
         spB0 = sp30;
@@ -425,17 +407,21 @@ u8 WeatherRegion::CalculateEmissionPointSpores(MKVector3 &arg0) {
     f64 sp68;
     f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_928;
-    f32 temp_f2_733;
     f32 var_f4_760;
     f32 var_f5_749;
+    f64 temp_f0_865;
     f64 temp_f1_765;
     f64 temp_f1_771;
     f64 temp_f1_775;
@@ -443,22 +429,17 @@ u8 WeatherRegion::CalculateEmissionPointSpores(MKVector3 &arg0) {
     s32 var_r0_804;
     u8 var_r31_923;
     void *temp_r30_725;
-    void *temp_r31_723;
     void *temp_r3_722;
 
     temp_r3_722 = checked_cast<WeatherRegionDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r31_723 = temp_r3_722;
-    temp_r30_725 = temp_r31_723 + 0x90;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    temp_f2_733 = M2C_FIELD(temp_r31_723, f32 *, 0x98) - M2C_FIELD(temp_r31_723, f32 *, 0xD8);
+    temp_r30_725 = temp_r3_722 + 0x90;
+    sp50 = M2C_FIELD(temp_r30_725, f64 *, 0) - *(temp_r3_722 + 0xD0);
     sp100 = sp50;
-    sp58 = temp_f2_733;
+    sp58 = M2C_FIELD(temp_r3_722, f32 *, 0x98) - M2C_FIELD(temp_r3_722, f32 *, 0xD8);
     sp108 = (f64) sp58;
     var_f5_749 = 0.0f;
-    spF0 = M2C_FIELD(temp_r31_723, f64 *, 0x80);
-    spF8 = M2C_FIELD(temp_r31_723, f64 *, 0x88);
+    spF0 = M2C_FIELD(temp_r3_722, f64 *, 0x80);
+    spF8 = M2C_FIELD(temp_r3_722, f64 *, 0x88);
     unkspF4 = 0.0f;
     var_f4_760 = ((f32) spF8 * (f32) spF8) + (((f32) spF0 * (f32) spF0) + (0.0f * 0.0f));
     if (var_f4_760 > 0.000001f) {
@@ -505,12 +486,12 @@ u8 WeatherRegion::CalculateEmissionPointSpores(MKVector3 &arg0) {
     spA0.operator*(2.0f);
     spB0.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
     spC0.operator*(1000.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spD0 = sp10;
+    temp_f0_865 = M2C_FIELD(temp_r30_725, f64 *, 0) + M2C_BITWISE(f64, spC0);
+    sp10 = temp_f0_865;
+    spD0 = temp_f0_865;
     sp18 = M2C_FIELD(temp_r30_725, f32 *, 8) + spC0.unk8;
     spD8 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp40 = spD0 + M2C_BITWISE(f64, spA0);
     M2C_FIELD(&arg0, f64 *, 0) = sp40;
     sp48 = (f32) spD8 + spA0.unk8;
     spE0 = sp40;
@@ -521,26 +502,18 @@ u8 WeatherRegion::CalculateEmissionPointSpores(MKVector3 &arg0) {
     sp38 = 0.0f;
     sp70 = (f64) sp30;
     sp78 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + sp70);
     arg0.unk8 += (f32) sp78;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp20 = sp100 * 5.439686476e-315;
     sp28 = (f32) sp108 * 20.0f;
     sp60 = sp20;
     sp68 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + sp60);
     var_r31_923 = 0;
     arg0.unk8 += (f32) sp68;
     temp_f1_928 = arg0.unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f1_928 == this->unk80.unk4.unk18) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((temp_f1_928 == this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
-            var_r31_923 = 1;
-        }
+    if ((temp_f1_928 >= this->unk80.unk4.unk18) && (temp_f1_928 <= this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
+        var_r31_923 = 1;
     }
     if (var_r31_923 != 0) {
         return 1U;
@@ -571,7 +544,9 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     f64 sp80;
     f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -579,17 +554,19 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f1_1242;
     f32 temp_f1_1278;
     f32 temp_f29_1237;
-    f32 temp_f2_989;
     f32 var_f4_1001;
     f32 var_f4_1081;
     f32 var_f5_1065;
+    f64 temp_f0_1186;
     f64 temp_f1_1004;
     f64 temp_f1_1010;
     f64 temp_f1_1014;
@@ -602,18 +579,13 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     s32 var_r0_1125;
     u8 var_r30_1273;
     void *temp_r30_981;
-    void *temp_r31_979;
     void *temp_r3_978;
 
     temp_r3_978 = checked_cast<WeatherRegionDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r31_979 = temp_r3_978;
-    temp_r30_981 = temp_r31_979 + 0x90;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    temp_f2_989 = M2C_FIELD(temp_r31_979, f32 *, 0x98) - M2C_FIELD(temp_r31_979, f32 *, 0xD8);
+    temp_r30_981 = temp_r3_978 + 0x90;
+    sp68 = M2C_FIELD(temp_r30_981, f64 *, 0) - *(temp_r3_978 + 0xD0);
     sp128 = sp68;
-    sp70 = temp_f2_989;
+    sp70 = M2C_FIELD(temp_r3_978, f32 *, 0x98) - M2C_FIELD(temp_r3_978, f32 *, 0xD8);
     sp130 = (f64) sp70;
     var_f4_1001 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + (unksp12C * unksp12C));
     if (var_f4_1001 > 0.0f) {
@@ -650,8 +622,8 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
         }
     }
     var_f5_1065 = 0.0f;
-    sp118 = M2C_FIELD(temp_r31_979, f64 *, 0x80);
-    sp120 = M2C_FIELD(temp_r31_979, f64 *, 0x88);
+    sp118 = M2C_FIELD(temp_r3_978, f64 *, 0x80);
+    sp120 = M2C_FIELD(temp_r3_978, f64 *, 0x88);
     unksp11C = 0.0f;
     var_f4_1081 = ((f32) sp120 * (f32) sp120) + (((f32) sp118 * (f32) sp118) + (0.0f * 0.0f));
     if (var_f4_1081 > 0.000001f) {
@@ -698,12 +670,12 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     spC8.operator*(2.0f);
     spD8.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
     spE8.operator*(1000.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spF8 = sp18;
+    temp_f0_1186 = M2C_FIELD(temp_r30_981, f64 *, 0) + M2C_BITWISE(f64, spE8);
+    sp18 = temp_f0_1186;
+    spF8 = temp_f0_1186;
     sp20 = M2C_FIELD(temp_r30_981, f32 *, 8) + spE8.unk8;
     sp100 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp58 = spF8 + M2C_BITWISE(f64, spC8);
     M2C_FIELD(&arg0, f64 *, 0) = sp58;
     sp60 = (f32) sp100 + spC8.unk8;
     sp108 = sp58;
@@ -714,9 +686,7 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     sp50 = 0.0f;
     sp98 = (f64) sp48;
     spA0 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + sp98);
     arg0.unk8 += (f32) spA0;
     sp10 = 1.0f - ((var_f4_1001 / 100.0f) + 1.0f);
     temp_f29_1237 = MKRand_Float(&gViewSeed, 500.0f, 1500.0f);
@@ -726,26 +696,18 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     sp3C = temp_f1_1242;
     sp90 = (f64) sp40;
     sp88 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + sp88);
     arg0.unk8 += (f32) sp90;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp28 = sp128 * 5.439686476e-315;
     sp30 = (f32) sp130 * 20.0f;
     sp78 = sp28;
     sp80 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+    M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + sp78);
     var_r30_1273 = 0;
     arg0.unk8 += (f32) sp80;
     temp_f1_1278 = arg0.unk4;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f1_1278 == this->unk80.unk4.unk18) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((temp_f1_1278 == this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
-            var_r30_1273 = 1;
-        }
+    if ((temp_f1_1278 >= this->unk80.unk4.unk18) && (temp_f1_1278 <= this->unk80.unk4.unk1C) && (this->unk80.unk4.IsPointWithin(arg0) != 0)) {
+        var_r30_1273 = 1;
     }
     if (var_r30_1273 != 0) {
         return 1U;

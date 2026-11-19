@@ -205,8 +205,7 @@ void KDPathFollowerProperty::UpdateSplinePath() {
     temp_f2_438 = M2C_FIELD(temp_r4_435, f32 *, 0x14) * gUpdateTimeDelta;
     if ((u8) M2C_FIELD(temp_r4_435, u8 *, 1) == 0) {
         M2C_FIELD(temp_r4_435, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r4_435, f32 *, 0x18) + temp_f2_438);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(temp_r4_435, f32 *, 0x18) == 1.0f) {
+        if (M2C_FIELD(temp_r4_435, f32 *, 0x18) >= 1.0f) {
             M2C_FIELD(temp_r4_435, u8 *, 0) = (u8) M2C_FIELD(temp_r4_435, u8 *, 2);
             M2C_FIELD(temp_r4_435, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r4_435, f32 *, 0x18) - 1.0f);
         }
@@ -238,22 +237,29 @@ void KDPathFollowerProperty::UpdateNormalPath() {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_706;
     f32 temp_f2_686;
     f32 temp_f4_684;
     f32 temp_f5_669;
     f32 var_f5_599;
+    f64 temp_f0_702;
+    f64 temp_f1_681;
     f64 temp_f2_602;
     f64 temp_f2_608;
     f64 temp_f2_612;
+    f64 temp_f3_680;
     s32 temp_r0_552;
     s32 temp_r0_563;
     s32 temp_r5_631;
@@ -268,14 +274,15 @@ void KDPathFollowerProperty::UpdateNormalPath() {
     void *temp_r3_715;
     void *temp_r4_513;
     void *temp_r4_677;
+    void *temp_r5_578;
     void *temp_r5_678;
+    void *temp_r6_579;
     void *temp_r7_571;
     void *temp_r7_668;
 
     temp_r4_513 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(temp_r4_513, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r4_513, f32 *, 0x18) + (gUpdateTimeDelta * (M2C_FIELD(temp_r4_513, f32 *, 0x14) / M2C_FIELD(temp_r4_513, f32 *, 8))));
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_FIELD(temp_r4_513, f32 *, 0x18) == 1.0f) {
+    if (M2C_FIELD(temp_r4_513, f32 *, 0x18) >= 1.0f) {
         if ((u8) M2C_FIELD(temp_r4_513, u8 *, 1) == 0) {
             temp_r6_529 = M2C_FIELD(temp_r4_513, s32 *, 0xC) + 1;
             M2C_FIELD(temp_r4_513, s32 *, 0xC) = temp_r6_529;
@@ -304,11 +311,11 @@ void KDPathFollowerProperty::UpdateNormalPath() {
         temp_r7_571 = M2C_FIELD(temp_r4_513, void **, 4);
         temp_r6_573 = M2C_FIELD(temp_r7_571, s32 *, 0x1C);
         temp_r7_576 = M2C_FIELD(temp_r7_571, s32 *, 0x24);
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r6, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+        temp_r5_578 = temp_r7_576 + (M2C_FIELD(temp_r4_513, s32 *, 0x10) * temp_r6_573);
+        temp_r6_579 = temp_r7_576 + (M2C_FIELD(temp_r4_513, s32 *, 0xC) * temp_r6_573);
+        sp60 = M2C_FIELD(temp_r6_579, f64 *, 0) - M2C_FIELD(temp_r5_578, f64 *, 0);
         sp70 = sp60;
-        sp68 = M2C_FIELD((temp_r7_576 + (M2C_FIELD(temp_r4_513, s32 *, 0xC) * temp_r6_573)), f32 *, 8) - M2C_FIELD((temp_r7_576 + (M2C_FIELD(temp_r4_513, s32 *, 0x10) * temp_r6_573)), f32 *, 8);
+        sp68 = M2C_FIELD(temp_r6_579, f32 *, 8) - M2C_FIELD(temp_r5_578, f32 *, 8);
         sp78 = (f64) sp68;
         var_f5_599 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (unksp74 * unksp74));
         if (var_f5_599 > 0.0f) {
@@ -353,24 +360,26 @@ void KDPathFollowerProperty::UpdateNormalPath() {
     temp_r6_675 = M2C_FIELD(temp_r7_668, s32 *, 0x24);
     temp_r4_677 = temp_r6_675 + (M2C_FIELD(temp_r4_513, s32 *, 0x10) * temp_r5_671);
     temp_r5_678 = temp_r6_675 + (M2C_FIELD(temp_r4_513, s32 *, 0xC) * temp_r5_671);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f1, $f3 */);
+    temp_f3_680 = M2C_FIELD(temp_r5_678, f64 *, 0);
+    temp_f1_681 = M2C_FIELD(temp_r4_677, f64 *, 0) - temp_f3_680;
+    sp30 = temp_f1_681;
     temp_f4_684 = M2C_FIELD(temp_r5_678, f32 *, 8);
     temp_f2_686 = M2C_FIELD(temp_r4_677, f32 *, 8) - temp_f4_684;
-    sp50 = sp30;
+    sp50 = temp_f1_681;
     sp38 = temp_f2_686;
     sp58 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
+    sp20 = temp_f1_681 * (f64) temp_f5_669;
     sp40 = sp20;
     sp28 = (f32) sp58 * temp_f5_669;
     sp48 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+    temp_f0_702 = temp_f3_680 + sp20;
+    sp10 = temp_f0_702;
     temp_r3_705 = this->unk18;
     temp_f1_706 = temp_f4_684 + (f32) sp48;
-    sp80 = sp10;
+    sp80 = temp_f0_702;
     sp18 = temp_f1_706;
     sp88 = (f64) sp18;
-    temp_r3_715 = M2C_FIELD(*temp_r3_705, void *(**)(void **, void *, void *, s32, void *, f32, f32, M2C_UNK, f32, f32), 0x54)(temp_r3_705, temp_r4_677, temp_r5_678, temp_r6_675, temp_r7_668, temp_f1_706, temp_f2_686, M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r5, 0x0, qr0 */), temp_f4_684, temp_f5_669);
+    temp_r3_715 = M2C_FIELD(*temp_r3_705, void *(**)(void **, void *, void *, s32, void *, f32, f32, f64, f32, f32), 0x54)(temp_r3_705, temp_r4_677, temp_r5_678, temp_r6_675, temp_r7_668, temp_f1_706, temp_f2_686, temp_f3_680, temp_f4_684, temp_f5_669);
     M2C_FIELD(temp_r3_715, f32 *, 0x30) = (f32) sp80;
     M2C_FIELD(temp_r3_715, f32 *, 0x34) = unksp84;
     M2C_FIELD(temp_r3_715, f32 *, 0x38) = (f32) sp88;
@@ -468,22 +477,30 @@ void KDPathFollowerProperty::Command(int arg0) {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_1147;
     f32 temp_f2_1127;
     f32 temp_f4_1125;
     f32 temp_f5_1110;
     f32 var_f5_1045;
+    f64 temp_f0_1143;
+    f64 temp_f1_1029;
+    f64 temp_f1_1122;
     f64 temp_f2_1048;
     f64 temp_f2_1054;
     f64 temp_f2_1058;
+    f64 temp_f3_1121;
     s32 temp_r3_987;
     s32 temp_r5_1077;
     s32 temp_r5_1112;
@@ -496,8 +513,10 @@ void KDPathFollowerProperty::Command(int arg0) {
     void *temp_r4_1118;
     void *temp_r4_976;
     void *temp_r4_998;
+    void *temp_r5_1025;
     void *temp_r5_1119;
     void *temp_r6_1008;
+    void *temp_r6_1026;
     void *temp_r7_1018;
     void *temp_r7_1109;
 
@@ -534,11 +553,12 @@ void KDPathFollowerProperty::Command(int arg0) {
             temp_r7_1018 = M2C_FIELD(temp_r4_998, void **, 4);
             temp_r6_1020 = M2C_FIELD(temp_r7_1018, s32 *, 0x1C);
             temp_r7_1023 = M2C_FIELD(temp_r7_1018, s32 *, 0x24);
-            M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r6, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-            sp70 = sp60;
-            sp68 = M2C_FIELD((temp_r7_1023 + (M2C_FIELD(temp_r4_998, s32 *, 0xC) * temp_r6_1020)), f32 *, 8) - M2C_FIELD((temp_r7_1023 + (M2C_FIELD(temp_r4_998, s32 *, 0x10) * temp_r6_1020)), f32 *, 8);
+            temp_r5_1025 = temp_r7_1023 + (M2C_FIELD(temp_r4_998, s32 *, 0x10) * temp_r6_1020);
+            temp_r6_1026 = temp_r7_1023 + (M2C_FIELD(temp_r4_998, s32 *, 0xC) * temp_r6_1020);
+            temp_f1_1029 = M2C_FIELD(temp_r6_1026, f64 *, 0) - M2C_FIELD(temp_r5_1025, f64 *, 0);
+            sp60 = temp_f1_1029;
+            sp70 = temp_f1_1029;
+            sp68 = M2C_FIELD(temp_r6_1026, f32 *, 8) - M2C_FIELD(temp_r5_1025, f32 *, 8);
             sp78 = (f64) sp68;
             var_f5_1045 = ((f32) sp78 * (f32) sp78) + (((f32) sp70 * (f32) sp70) + (unksp74 * unksp74));
             if (var_f5_1045 > 0.0f) {
@@ -582,24 +602,26 @@ void KDPathFollowerProperty::Command(int arg0) {
         temp_r6_1116 = M2C_FIELD(temp_r7_1109, s32 *, 0x24);
         temp_r4_1118 = temp_r6_1116 + (M2C_FIELD(temp_r4_998, s32 *, 0x10) * temp_r5_1112);
         temp_r5_1119 = temp_r6_1116 + (M2C_FIELD(temp_r4_998, s32 *, 0xC) * temp_r5_1112);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f1, $f3 */);
+        temp_f3_1121 = M2C_FIELD(temp_r5_1119, f64 *, 0);
+        temp_f1_1122 = M2C_FIELD(temp_r4_1118, f64 *, 0) - temp_f3_1121;
+        sp30 = temp_f1_1122;
         temp_f4_1125 = M2C_FIELD(temp_r5_1119, f32 *, 8);
         temp_f2_1127 = M2C_FIELD(temp_r4_1118, f32 *, 8) - temp_f4_1125;
-        sp50 = sp30;
+        sp50 = temp_f1_1122;
         sp38 = temp_f2_1127;
         sp58 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
+        sp20 = temp_f1_1122 * (f64) temp_f5_1110;
         sp40 = sp20;
         sp28 = (f32) sp58 * temp_f5_1110;
         sp48 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+        temp_f0_1143 = temp_f3_1121 + sp20;
+        sp10 = temp_f0_1143;
         temp_r3_1146 = this->unk18;
         temp_f1_1147 = temp_f4_1125 + (f32) sp48;
-        sp80 = sp10;
+        sp80 = temp_f0_1143;
         sp18 = temp_f1_1147;
         sp88 = (f64) sp18;
-        temp_r3_1156 = M2C_FIELD(*temp_r3_1146, void *(**)(void **, void *, void *, s32, void *, f32, f32, M2C_UNK, f32, f32), 0x54)(temp_r3_1146, temp_r4_1118, temp_r5_1119, temp_r6_1116, temp_r7_1109, temp_f1_1147, temp_f2_1127, M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r5, 0x0, qr0 */), temp_f4_1125, temp_f5_1110);
+        temp_r3_1156 = M2C_FIELD(*temp_r3_1146, void *(**)(void **, void *, void *, s32, void *, f32, f32, f64, f32, f32), 0x54)(temp_r3_1146, temp_r4_1118, temp_r5_1119, temp_r6_1116, temp_r7_1109, temp_f1_1147, temp_f2_1127, temp_f3_1121, temp_f4_1125, temp_f5_1110);
         M2C_FIELD(temp_r3_1156, f32 *, 0x30) = (f32) sp80;
         M2C_FIELD(temp_r3_1156, f32 *, 0x34) = unksp84;
         M2C_FIELD(temp_r3_1156, f32 *, 0x38) = (f32) sp88;

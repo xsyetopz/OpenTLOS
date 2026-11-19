@@ -35,7 +35,7 @@ void MKCollisionCapsuleItem::GetRadius() {
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: illegal operand
 void MKCollisionCapsuleItem::Update() {
     f64 sp80;
     f64 sp78;
@@ -49,7 +49,9 @@ void MKCollisionCapsuleItem::Update() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKVector3 *temp_r6_89;
     MKVector3 *temp_r6_96;
     f32 temp_f1_101;
@@ -67,16 +69,14 @@ void MKCollisionCapsuleItem::Update() {
     sp80 = (f64) sp30;
     sp78 = (f64) sp28;
     Min(sp58, this->unk60);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp18 = sp58 - sp78;
     this->unk10 = sp18;
     sp20 = sp58.unk8 - (f32) sp80;
     sp68 = sp18;
     sp70 = (f64) sp20;
     this->unk18 = (f64) sp20;
     Max(sp38, this->unk60);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp38 + sp78;
     this->unk20 = sp8;
     sp10 = sp38.unk8 + (f32) sp80;
     sp48 = sp8;
@@ -85,7 +85,7 @@ void MKCollisionCapsuleItem::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spA8'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp1C8;
     f64 sp1C0;
@@ -123,11 +123,14 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
     f64 spC8;
     MKVector3 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
     f32 sp6C;
     f32 sp68;
@@ -135,10 +138,12 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -162,6 +167,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
     f32 temp_f28_185;
     f32 temp_f30_213;
     f32 temp_f31_366;
+    f32 temp_f31_369;
     f32 temp_f3_253;
     f32 temp_f4_331;
     f32 temp_f5_184;
@@ -176,6 +182,10 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
     f32 var_f1_422;
     f32 var_f28_348;
     f32 var_f29_286;
+    f64 temp_f0_242;
+    f64 temp_f0_305;
+    f64 temp_f0_316;
+    f64 temp_f0_371;
     s32 var_r26_320;
     s32 var_r30_324;
     u8 var_r27_180;
@@ -214,9 +224,9 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
     sp138 = (f64) sp58;
     sp140 = (f64) sp60;
     arg1->unk40 = 0.0f;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp188 = spA8;
+    temp_f0_242 = sp1C0 - sp1B0;
+    spA8 = temp_f0_242;
+    sp188 = temp_f0_242;
     spB0 = (f32) sp1C8 - (f32) sp1B8;
     sp190 = (f64) spB0;
     temp_f3_253 = this->unkA0;
@@ -241,15 +251,17 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
         }
         var_f29_286 = var_f0_290;
     }
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    sp128 = sp88;
+    temp_f0_305 = sp188 * (f64) var_f29_286;
+    sp88 = temp_f0_305;
+    sp128 = temp_f0_305;
     sp90 = (f32) sp190 * var_f29_286;
     sp130 = (f64) sp90;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_f0_316 = sp1B0 + temp_f0_305;
+    sp78 = temp_f0_316;
     var_r26_320 = 0;
     var_r30_324 = 0;
     temp_f7_326 = this->unkA0;
-    sp168 = sp78;
+    sp168 = temp_f0_316;
     sp80 = (f32) sp1B8 + (f32) sp130;
     temp_f4_331 = temp_f7_326 + arg0.unk80;
     temp_f8_334 = temp_f7_326 + arg0.unk84;
@@ -268,12 +280,13 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
         temp_f25_362 = *(&sp198 + var_r30_324);
         temp_f31_366 = 0.01f + temp_f25_362;
         sp108.operator*(1.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp118 = sp48;
-        sp50 = sp108.unk8 * (1.0f / temp_f31_366);
+        temp_f31_369 = 1.0f / temp_f31_366;
+        temp_f0_371 = sp108 * (f64) temp_f31_369;
+        sp48 = temp_f0_371;
+        sp118 = temp_f0_371;
+        sp50 = sp108.unk8 * temp_f31_369;
         sp120 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp158 += temp_f0_371;
         sp160 = (f32) sp160 + (f32) sp120;
         if (var_f28_348 < temp_f25_362) {
 
@@ -307,7 +320,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
         sp20 = arg0.unk38 + (((f32) sp170 * arg0.unk28) + (((f32) sp168 * arg0.unk8) + (unksp16C * arg0.unk18)));
         spC8 = (f64) sp18;
         spD0 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp28 = (f64) sp18 + M2C_BITWISE(f64, spB8);
         M2C_FIELD(arg1, f64 *, 0) = sp28;
         sp30 = (f32) spD0 + spB8.unk8;
         spD8 = sp28;
@@ -320,7 +333,7 @@ s32 MKCollisionCapsuleItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp80'
+#if 0 // DRAFT: undefined identifier 'unksp124'
 s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp148;
     f64 sp140;
@@ -343,14 +356,23 @@ s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResul
     f64 spB0;
     MKVector3 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f12_555;
     f32 temp_f13_529;
@@ -366,32 +388,42 @@ s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResul
     f32 var_f1_738;
     f32 var_f31_671;
     f32 var_f7_583;
+    f64 temp_f0_525;
+    f64 temp_f0_617;
+    f64 temp_f0_627;
+    f64 temp_f0_761;
+    f64 temp_f11_523;
     f64 temp_f1_677;
     f64 temp_f1_683;
     f64 temp_f1_687;
+    f64 temp_f3_526;
+    f64 temp_f3_607;
+    f64 temp_f5_537;
     s32 temp_r3_706;
     s32 var_r0_716;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f11, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f3, $f11, $f0 */);
+    temp_f11_523 = M2C_FIELD(this, f64 *, 0x70);
+    temp_f0_525 = M2C_FIELD(this, f64 *, 0x60);
+    temp_f3_526 = temp_f11_523 - temp_f0_525;
+    sp80 = temp_f3_526;
     temp_f13_529 = this->unk70.unk8;
     temp_f2_530 = this->unk60.unk8;
     temp_f4_532 = temp_f13_529 - temp_f2_530;
     sp110 = sp80;
     sp88 = temp_f4_532;
     sp118 = (f64) sp88;
-    M2C_ERROR(/* unknown instruction: psq_lx $f5, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f6, $f0, $f5 */);
+    temp_f5_537 = arg0.unk20;
+    sp90 = temp_f0_525 - temp_f5_537;
     temp_f6_540 = arg0.unk28;
     sp120 = sp90;
     sp98 = temp_f2_530 - temp_f6_540;
     sp128 = (f64) sp98;
     temp_f12_555 = ((f32) sp128 * (f32) sp118) + (((f32) sp120 * (f32) sp110) + (unksp124 * unksp114));
-    M2C_ERROR(/* unknown instruction: ps_sub $f7, $f11, $f5 */);
+    sp60 = temp_f3_526;
     sp68 = temp_f4_532;
     spF0 = sp60;
     spF8 = (f64) sp68;
+    sp70 = temp_f11_523 - temp_f5_537;
     sp78 = temp_f13_529 - temp_f6_540;
     sp100 = sp70;
     sp108 = (f64) sp78;
@@ -411,19 +443,23 @@ s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResul
         }
         var_f1_578 = var_f7_583;
     }
+    sp50 = temp_f3_526;
     sp58 = temp_f4_532;
     spD0 = sp50;
     spD8 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f3, $f3, $f1 */);
-    spE0 = sp40;
+    temp_f3_607 = spD0 * (f64) var_f1_578;
+    sp40 = temp_f3_607;
+    spE0 = temp_f3_607;
     sp48 = (f32) spD8 * var_f1_578;
     spE8 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f3 */);
-    sp140 = sp30;
+    temp_f0_617 = temp_f0_525 + temp_f3_607;
+    sp30 = temp_f0_617;
+    sp140 = temp_f0_617;
     sp38 = temp_f2_530 + (f32) spE8;
     sp148 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f5, $f0 */);
-    sp130 = sp20;
+    temp_f0_627 = temp_f5_537 - temp_f0_617;
+    sp20 = temp_f0_627;
+    sp130 = temp_f0_627;
     sp28 = temp_f6_540 - (f32) sp148;
     temp_f4_637 = arg0.unk50 + this->unkA0;
     sp138 = (f64) sp28;
@@ -482,10 +518,11 @@ s32 MKCollisionCapsuleItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResul
         arg1->unk18 *= var_f1_738;
         arg1->unk48 = this->unk8;
         spA0.operator*(this->unkA0);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_FIELD(arg1, f64 *, 0) = sp10;
+        temp_f0_761 = sp140 + M2C_BITWISE(f64, spA0);
+        sp10 = temp_f0_761;
+        M2C_FIELD(arg1, f64 *, 0) = temp_f0_761;
         sp18 = (f32) sp148 + spA0.unk8;
-        spB0 = sp10;
+        spB0 = temp_f0_761;
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp18;
         spB8 = (f64) sp18;
         arg1->unk40 = (this->unkA0 + arg0.unk50) - var_f31_671;
@@ -508,13 +545,22 @@ s32 MKCollisionCapsuleItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f0_837;
     f32 temp_f1_836;
+    f32 temp_f2_926;
     f32 temp_f3_839;
     f32 var_f1_911;
     f32 var_f4_844;
+    f64 temp_f0_1061;
+    f64 temp_f0_1082;
+    f64 temp_f0_929;
     f64 temp_f1_850;
     f64 temp_f1_856;
     f64 temp_f1_860;
@@ -577,79 +623,68 @@ s32 MKCollisionCapsuleItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *
         arg1->unk10 *= var_f1_911;
         arg1->unk14 *= var_f1_911;
         arg1->unk18 *= var_f1_911;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp70 = sp30;
-        sp38 = arg1->unk18 * this->unkA0;
+        temp_f2_926 = this->unkA0;
+        temp_f0_929 = (f64) M2C_FIELD(arg1, f32 *, 0x10) * (f64) temp_f2_926;
+        sp30 = temp_f0_929;
+        sp70 = temp_f0_929;
+        sp38 = arg1->unk18 * temp_f2_926;
         sp78 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+        M2C_FIELD(arg1, f64 *, 0) = (f64) (M2C_FIELD(arg1, f64 *, 0) + temp_f0_929);
         arg1->unk8 += (f32) sp78;
     }
     M2C_STRUCT_COPY((s32) &unksp7C + 4, (s32) (arg1 - 4) + 4, 0x58);
-    if (MKCollision_RayToSphere(arg0, this->unk60, this->unkA0, &sp80) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (sp80.unk40 == arg1->unk40) {
-            var_r31_834 = 1;
-            spC = 0.0f;
-            M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp80);
-            M2C_FIELD(arg1, f32 *, 8) = (f64) sp80.unk8;
-            M2C_FIELD(arg1, f32 *, 0x10) = (f64) sp80.unk10;
-            M2C_FIELD(arg1, f32 *, 0x18) = (f64) sp80.unk18;
-            M2C_FIELD(arg1, f64 *, 0x20) = (f64) sp80.unk20;
-            M2C_FIELD(arg1, f64 *, 0x28) = (f64) sp80.unk28;
-            arg1->unk30 = sp80.unk30;
-            arg1->unk34 = sp80.unk34;
-            arg1->unk38 = sp80.unk38;
-            arg1->unk3C = sp80.unk3C;
-            arg1->unk40 = sp80.unk40;
-            arg1->unk44 = sp80.unk44;
-            arg1->unk48 = sp80.unk48;
-            arg1->unk4C = sp80.unk4C;
-            arg1->unk50 = sp80.unk50;
-        }
+    if ((MKCollision_RayToSphere(arg0, this->unk60, this->unkA0, &sp80) != 0) && (sp80.unk40 <= arg1->unk40)) {
+        var_r31_834 = 1;
+        spC = 0.0f;
+        M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp80);
+        M2C_FIELD(arg1, f32 *, 8) = (f64) sp80.unk8;
+        M2C_FIELD(arg1, f32 *, 0x10) = (f64) sp80.unk10;
+        M2C_FIELD(arg1, f32 *, 0x18) = (f64) sp80.unk18;
+        M2C_FIELD(arg1, f64 *, 0x20) = (f64) sp80.unk20;
+        M2C_FIELD(arg1, f64 *, 0x28) = (f64) sp80.unk28;
+        arg1->unk30 = sp80.unk30;
+        arg1->unk34 = sp80.unk34;
+        arg1->unk38 = sp80.unk38;
+        arg1->unk3C = sp80.unk3C;
+        arg1->unk40 = sp80.unk40;
+        arg1->unk44 = sp80.unk44;
+        arg1->unk48 = sp80.unk48;
+        arg1->unk4C = sp80.unk4C;
+        arg1->unk50 = sp80.unk50;
     }
-    if (MKCollision_RayToSphere(arg0, this->unk70, this->unkA0, &sp80) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (sp80.unk40 == arg1->unk40) {
-            var_r31_834 = 1;
-            spC = 1.0f;
-            M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp80);
-            M2C_FIELD(arg1, f32 *, 8) = (f64) sp80.unk8;
-            M2C_FIELD(arg1, f32 *, 0x10) = (f64) sp80.unk10;
-            M2C_FIELD(arg1, f32 *, 0x18) = (f64) sp80.unk18;
-            M2C_FIELD(arg1, f64 *, 0x20) = (f64) sp80.unk20;
-            M2C_FIELD(arg1, f64 *, 0x28) = (f64) sp80.unk28;
-            arg1->unk30 = sp80.unk30;
-            arg1->unk34 = sp80.unk34;
-            arg1->unk38 = sp80.unk38;
-            arg1->unk3C = sp80.unk3C;
-            arg1->unk40 = sp80.unk40;
-            arg1->unk44 = sp80.unk44;
-            arg1->unk48 = sp80.unk48;
-            arg1->unk4C = sp80.unk4C;
-            arg1->unk50 = sp80.unk50;
-        }
+    if ((MKCollision_RayToSphere(arg0, this->unk70, this->unkA0, &sp80) != 0) && (sp80.unk40 <= arg1->unk40)) {
+        var_r31_834 = 1;
+        spC = 1.0f;
+        M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp80);
+        M2C_FIELD(arg1, f32 *, 8) = (f64) sp80.unk8;
+        M2C_FIELD(arg1, f32 *, 0x10) = (f64) sp80.unk10;
+        M2C_FIELD(arg1, f32 *, 0x18) = (f64) sp80.unk18;
+        M2C_FIELD(arg1, f64 *, 0x20) = (f64) sp80.unk20;
+        M2C_FIELD(arg1, f64 *, 0x28) = (f64) sp80.unk28;
+        arg1->unk30 = sp80.unk30;
+        arg1->unk34 = sp80.unk34;
+        arg1->unk38 = sp80.unk38;
+        arg1->unk3C = sp80.unk3C;
+        arg1->unk40 = sp80.unk40;
+        arg1->unk44 = sp80.unk44;
+        arg1->unk48 = sp80.unk48;
+        arg1->unk4C = sp80.unk4C;
+        arg1->unk50 = sp80.unk50;
     }
     if (var_r31_834 != 0) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp10 = M2C_FIELD(this, f64 *, 0x90) - M2C_FIELD(this, f64 *, 0x80);
+        temp_f0_1061 = this->unk98 - M2C_FIELD(this, f64 *, 0x88);
+        sp18 = temp_f0_1061;
         sp40 = sp10;
-        sp48 = sp18;
+        sp48 = temp_f0_1061;
         sp50.operator*(Clamp<float>(0.0f, spC, 1.0f));
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp20 = M2C_FIELD(this, f64 *, 0x80) + M2C_BITWISE(f64, sp50);
+        temp_f0_1082 = M2C_FIELD(this, f64 *, 0x88) + (f64) sp50.unk8;
+        sp28 = temp_f0_1082;
         M2C_FIELD(arg1, f64 *, 0x20) = sp20;
         sp60 = sp20;
-        sp68 = sp28;
-        M2C_FIELD(arg1, f64 *, 0x28) = sp28;
+        sp68 = temp_f0_1082;
+        M2C_FIELD(arg1, f64 *, 0x28) = temp_f0_1082;
         return 1;
     }
     return 0;
@@ -670,7 +705,9 @@ void MKCollisionCapsuleItem::Init(MKVector3 *arg0, MKVector3 *arg1, float arg2, 
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_1410;
 
     Init(arg6, arg7, arg_sp8, arg_spC);
@@ -698,16 +735,14 @@ void MKCollisionCapsuleItem::Init(MKVector3 *arg0, MKVector3 *arg1, float arg2, 
     sp80 = (f64) sp30;
     sp78 = (f64) sp28;
     Min(sp58, this->unk60);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp18 = sp58 - sp78;
     this->unk10 = sp18;
     sp20 = sp58.unk8 - (f32) sp80;
     sp68 = sp18;
     sp70 = (f64) sp20;
     this->unk18 = (f64) sp20;
     Max(sp38, this->unk60);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp38 + sp78;
     this->unk20 = sp8;
     sp10 = sp38.unk8 + (f32) sp80;
     sp48 = sp8;
@@ -736,7 +771,7 @@ void MKCollisionSphereItem::Update() {
     f64 sp88;
     f64 sp80;
     f64 sp78;
-    M2C_UNK sp68;
+    f64 sp68;
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -745,15 +780,20 @@ void MKCollisionSphereItem::Update() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    MKVector3 *temp_r3_1493;
     f32 temp_f1_1508;
+    f64 temp_f0_1519;
 
     MKVector(0.0f, this->unk88, 0.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_r3_1493 = this->unk80;
+    sp28 = M2C_FIELD(temp_r3_1493, f64 *, 0) + sp68;
     this->unk60 = sp28;
-    sp30 = this->unk80->unk8 + sp70;
+    sp30 = temp_r3_1493->unk8 + sp70;
     sp78 = sp28;
     this->unk68 = (f64) sp30;
     temp_f1_1508 = this->unk84;
@@ -763,15 +803,14 @@ void MKCollisionSphereItem::Update() {
     sp3C = temp_f1_1508;
     sp90 = (f64) sp40;
     sp88 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-    this->unk10 = sp18;
-    sp58 = sp18;
+    temp_f0_1519 = this->unk60 - sp88;
+    sp18 = temp_f0_1519;
+    this->unk10 = temp_f0_1519;
+    sp58 = temp_f0_1519;
     sp20 = (f32) M2C_FIELD(this, f64 *, 0x68) - (f32) sp90;
     this->unk18 = (f64) sp20;
     sp60 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
+    sp8 = this->unk60 + sp88;
     this->unk20 = sp8;
     sp10 = (f32) M2C_FIELD(this, f64 *, 0x68) + (f32) sp90;
     sp48 = sp8;
@@ -834,10 +873,15 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
     f32 spCC;
     f32 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
     f32 sp6C;
     f32 sp68;
@@ -845,8 +889,11 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -862,8 +909,10 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
     f32 temp_f31_2220;
     f32 temp_f3_1584;
     f32 temp_f3_1887;
+    f32 temp_f3_2011;
     f32 temp_f5_2208;
     f32 temp_f6_1593;
+    f32 temp_f6_1882;
     f32 temp_f6_2215;
     f32 temp_f7_2205;
     f32 temp_f8_2213;
@@ -877,6 +926,11 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
     f32 var_f5_1930;
     f32 var_f6_1807;
     f32 var_f6_2120;
+    f64 temp_f0_2283;
+    f64 temp_f1_1894;
+    f64 temp_f1_1904;
+    f64 temp_f1_2024;
+    f64 temp_f1_2036;
     f64 temp_f2_1693;
     f64 temp_f2_1699;
     f64 temp_f2_1703;
@@ -886,6 +940,7 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
     f64 temp_f2_1936;
     f64 temp_f2_1942;
     f64 temp_f2_1946;
+    f64 temp_f2_2014;
     f64 temp_f3_2123;
     f64 temp_f3_2129;
     f64 temp_f3_2133;
@@ -929,7 +984,7 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
     sp228 = M2C_BITWISE(f64, sp1E8);
     temp_f2_1642 = this->unk84;
     sp230 = (f64) sp1E8.unk8;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp38 = sp238 - sp228;
     spE8 = sp38;
     sp40 = (f32) sp240 - (f32) sp230;
     spF8 = sp38;
@@ -990,7 +1045,7 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
             var_r0_1768 = 1;
         }
         if (var_r0_1768 == 0) {
-            M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+            sp88 = sp228 - sp238;
             sp218 = sp88;
             sp90 = (f32) sp230 - (f32) sp240;
             sp220 = (f64) sp90;
@@ -1036,19 +1091,22 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
                 var_f5_1874 = 0.0f;
                 var_f6_1807 = 0.0f;
             }
+            temp_f6_1882 = var_f6_1807 / this->unk84;
             temp_f3_1887 = (f32) sp220 * var_f5_1874;
             sp218 = (f32) sp218 * var_f5_1874;
             unksp21C *= var_f5_1874;
             sp220 = temp_f3_1887;
-            M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-            sp198 = sp28;
+            temp_f1_1894 = (f64) sp218 - sp208;
+            sp28 = temp_f1_1894;
+            sp198 = temp_f1_1894;
             sp30 = temp_f3_1887 - (f32) sp210;
             sp1A0 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f30 */);
-            sp1A8 = sp78;
-            sp80 = (f32) sp1A0 * (var_f6_1807 / this->unk84);
+            temp_f1_1904 = temp_f1_1894 * (f64) temp_f6_1882;
+            sp78 = temp_f1_1904;
+            sp1A8 = temp_f1_1904;
+            sp80 = (f32) sp1A0 * temp_f6_1882;
             sp1B0 = (f64) sp80;
-            M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
+            sp208 += temp_f1_1904;
             sp210 = (f32) sp210 + (f32) sp1B0;
         }
         var_f5_1930 = (sp210 * sp210) + (((f32) sp208 * (f32) sp208) + (unksp20C * unksp20C));
@@ -1094,16 +1152,20 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
         sp208 = (f32) sp208 * var_f4_1997;
         unksp20C *= var_f4_1997;
         sp210 = temp_f1_2007;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f31 */);
-        spC0 = temp_f1_2007 * this->unk84;
-        sp188 = spB8;
+        temp_f3_2011 = this->unk84;
+        temp_f2_2014 = (f64) sp208 * (f64) temp_f3_2011;
+        spB8 = temp_f2_2014;
+        spC0 = temp_f1_2007 * temp_f3_2011;
+        sp188 = temp_f2_2014;
         sp190 = (f64) spC0;
-        M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
-        sp1F8 = spA8;
+        temp_f1_2024 = sp238 + sp188;
+        spA8 = temp_f1_2024;
+        sp1F8 = temp_f1_2024;
         spB0 = (f32) sp240 + (f32) sp190;
         sp200 = (f64) spB0;
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-        sp178 = sp98;
+        temp_f1_2036 = sp1F8 - sp228;
+        sp98 = temp_f1_2036;
+        sp178 = temp_f1_2036;
         spA0 = (f32) sp200 - (f32) sp230;
         sp180 = (f64) spA0;
         var_f1_2052 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
@@ -1213,18 +1275,18 @@ void MKCollisionSphereItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult
 loop_108:
         temp_r30_2263 = arg2 + var_r28_2204;
         temp_f2_2264 = M2C_FIELD(temp_r30_2263, f32 *, 0x34);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((temp_f2_2264 == 0.0f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f2_2264 == 1.0f) != 0))) {
+        if ((temp_f2_2264 <= 0.0f) || (temp_f2_2264 >= 1.0f)) {
             temp_r5_2272 = arg2 + var_r28_2204;
             M2C_FIELD(temp_r5_2272, f32 *, 0x30) = var_f1_2052;
             M2C_FIELD(temp_r5_2272, f64 *, 0x10) = sp1F8;
             M2C_FIELD(temp_r5_2272, f64 *, 0x18) = sp200;
             sp138.operator*(var_f1_2052);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_f0_2283 = sp1F8 - M2C_BITWISE(f64, sp138);
+            sp48 = temp_f0_2283;
             temp_r3_2285 = arg2 + var_r28_2204;
-            M2C_FIELD(temp_r30_2263, f64 *, 0) = sp48;
+            M2C_FIELD(temp_r30_2263, f64 *, 0) = temp_f0_2283;
             sp50 = (f32) sp200 - sp138.unk8;
-            sp148 = sp48;
+            sp148 = temp_f0_2283;
             M2C_FIELD(temp_r30_2263, f64 *, 8) = (f64) sp50;
             M2C_FIELD(temp_r3_2285, f32 *, 0x34) = var_f30_2187;
             sp150 = (f64) sp50;
@@ -1245,7 +1307,7 @@ loop_108:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: undefined identifier 'spC8'
 s32 MKCollisionSphereItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *arg1, int arg2) {
     M2C_UNK spB0;
     s32 sp98;
@@ -1259,8 +1321,11 @@ s32 MKCollisionSphereItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *a
     f64 sp58;
     MKVector3 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -1268,6 +1333,7 @@ s32 MKCollisionSphereItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *a
     f32 temp_f1_2444;
     f32 temp_f1_2548;
     f32 temp_f2_2546;
+    f32 temp_f3_2423;
     f32 temp_f3_2448;
     f32 temp_f3_2542;
     f32 temp_f6_2379;
@@ -1279,6 +1345,7 @@ s32 MKCollisionSphereItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *a
     f32 var_f3_2522;
     f32 var_f4_2455;
     f32 var_f4_2551;
+    f64 temp_f1_2427;
     f64 temp_f1_2461;
     f64 temp_f1_2467;
     f64 temp_f1_2471;
@@ -1305,6 +1372,7 @@ s32 MKCollisionSphereItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *a
     s32 var_r6_2418;
     s32 var_r7_2349;
     void *temp_r8_2352;
+    void *temp_r8_2424;
 
     var_f31_2340 = 1e11f;
     var_r3_2342 = 0;
@@ -1315,9 +1383,7 @@ s32 MKCollisionSphereItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *a
     var_ctr_2350 = 6;
 loop_1:
     temp_r8_2352 = &arg0 + var_r7_2349;
-    M2C_ERROR(/* unknown instruction: psq_lx $f6, $r8, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f6, $f1 */);
+    sp38 = M2C_FIELD(temp_r8_2352, f64 *, 0xB8) - this->unk60;
     sp78 = sp38;
     sp40 = M2C_FIELD(temp_r8_2352, f32 *, 0xC0) - M2C_FIELD(this, f32 *, 0x68);
     sp80 = (f64) sp40;
@@ -1355,12 +1421,14 @@ loop_1:
         sp90 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         var_ctr_2420 = 6;
         do {
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r8, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-            sp68 = sp28;
-            sp30 = M2C_FIELD((&arg0 + var_r5_2416), f32 *, 0xD0) * *(&spB0 + var_r6_2418);
+            temp_f3_2423 = *(&spB0 + var_r6_2418);
+            temp_r8_2424 = &arg0 + var_r5_2416;
+            temp_f1_2427 = M2C_FIELD(temp_r8_2424, f64 *, 0xC8) * (f64) temp_f3_2423;
+            sp28 = temp_f1_2427;
+            sp68 = temp_f1_2427;
+            sp30 = M2C_FIELD(temp_r8_2424, f32 *, 0xD0) * temp_f3_2423;
             sp70 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+            sp88 -= temp_f1_2427;
             var_r5_2416 += 0x20;
             var_r6_2418 += 4;
             temp_f1_2444 = (f32) sp90 - (f32) sp70;
@@ -1508,8 +1576,7 @@ block_74:
             var_f1_2761 = temp_f0_2762;
         }
         sp48.operator*(var_f1_2761);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp18 = this->unk60 + M2C_BITWISE(f64, sp48);
         M2C_FIELD(arg1, f64 *, 0) = sp18;
         sp20 = M2C_FIELD(this, f32 *, 0x68) + sp48.unk8;
         sp58 = sp18;
@@ -1526,7 +1593,7 @@ block_74:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp54'
 s32 MKCollisionSphereItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp58;
     f64 sp50;
@@ -1534,7 +1601,9 @@ s32 MKCollisionSphereItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult
     f64 sp40;
     MKVector3 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f0_2837;
     f32 temp_f1_2859;
@@ -1542,15 +1611,14 @@ s32 MKCollisionSphereItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult
     f32 temp_f3_2860;
     f32 var_f1_2932;
     f32 var_f31_2865;
+    f64 temp_f0_2956;
     f64 temp_f1_2871;
     f64 temp_f1_2877;
     f64 temp_f1_2881;
     s32 temp_r3_2900;
     s32 var_r0_2910;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp20 = arg0.unk20 - this->unk60;
     sp50 = sp20;
     sp28 = arg0.unk28 - M2C_FIELD(this, f32 *, 0x68);
     temp_f0_2837 = arg0.unk50 + this->unk84;
@@ -1609,11 +1677,11 @@ s32 MKCollisionSphereItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult
         arg1->unk18 *= var_f1_2932;
         arg1->unk48 = this->unk8;
         sp30.operator*(this->unk84);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_FIELD(arg1, f64 *, 0) = sp10;
+        temp_f0_2956 = this->unk60 + M2C_BITWISE(f64, sp30);
+        sp10 = temp_f0_2956;
+        M2C_FIELD(arg1, f64 *, 0) = temp_f0_2956;
         sp18 = M2C_FIELD(this, f32 *, 0x68) + sp30.unk8;
-        sp40 = sp10;
+        sp40 = temp_f0_2956;
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp18;
         sp48 = (f64) sp18;
         arg1->unk40 = (this->unk84 + arg0.unk50) - var_f31_2865;
@@ -1649,7 +1717,7 @@ void MKCollisionSphereItem::Init(MKVector3 *arg0, float arg1, float arg2, const 
     f64 sp88;
     f64 sp80;
     f64 sp78;
-    M2C_UNK sp68;
+    f64 sp68;
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -1658,17 +1726,20 @@ void MKCollisionSphereItem::Init(MKVector3 *arg0, float arg1, float arg2, const 
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f0_3094;
+    f64 temp_f0_3105;
 
     Init(arg5, arg6, arg7, arg8);
     this->unk70 = M2C_FIELD(&arg3, f64 *, 0);
     this->unk78 = M2C_FIELD(&arg3, f64 *, 8);
     this->unk88 = arg2;
     MKVector(0.0f, this->unk88, 0.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp28 = M2C_FIELD(arg0, f64 *, 0) + sp68;
     this->unk60 = sp28;
     sp30 = arg0->unk8 + sp70;
     sp78 = sp28;
@@ -1687,15 +1758,14 @@ void MKCollisionSphereItem::Init(MKVector3 *arg0, float arg1, float arg2, const 
     sp40 = temp_f0_3094;
     sp88 = (f64) sp38;
     sp90 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r27, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-    this->unk10 = sp18;
-    sp58 = sp18;
+    temp_f0_3105 = this->unk60 - sp88;
+    sp18 = temp_f0_3105;
+    this->unk10 = temp_f0_3105;
+    sp58 = temp_f0_3105;
     sp20 = (f32) M2C_FIELD(this, f64 *, 0x68) - (f32) sp90;
     this->unk18 = (f64) sp20;
     sp60 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r27, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
+    sp8 = this->unk60 + sp88;
     this->unk20 = sp8;
     sp10 = (f32) M2C_FIELD(this, f64 *, 0x68) + (f32) sp90;
     sp48 = sp8;
@@ -1834,23 +1904,31 @@ void MKCollisionModelItem::ToWorldResult(const MKCollisionResult &arg0, MKCollis
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MKCollisionModelItem::GetRadius() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_3371;
+    f64 temp_f0_3383;
     s32 temp_r4_3366;
+    void *temp_r4_3368;
+    void *temp_r5_3367;
 
     temp_r4_3366 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0x120);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp28 = sp8;
-    sp10 = M2C_FIELD((temp_r4_3366 + 0x18), f32 *, 8) - M2C_FIELD((temp_r4_3366 + 8), f32 *, 8);
+    temp_r5_3367 = temp_r4_3366 + 8;
+    temp_r4_3368 = temp_r4_3366 + 0x18;
+    temp_f0_3371 = M2C_FIELD(temp_r4_3368, f64 *, 0) - M2C_FIELD(temp_r5_3367, f64 *, 0);
+    sp8 = temp_f0_3371;
+    sp28 = temp_f0_3371;
+    sp10 = M2C_FIELD(temp_r4_3368, f32 *, 8) - M2C_FIELD(temp_r5_3367, f32 *, 8);
     sp30 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    M2C_FIELD(this, f64 *, 0) = sp18;
+    temp_f0_3383 = temp_f0_3371 * 5.222099017e-315;
+    sp18 = temp_f0_3383;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_3383;
     sp20 = (f32) sp30 * 0.5f;
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }

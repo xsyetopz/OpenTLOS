@@ -85,10 +85,12 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     M2C_UNK sp18;
     u8 sp14;
     void *sp10;
@@ -109,6 +111,8 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
     f32 temp_f1_397;
     f32 temp_f2_291;
     f32 temp_f31_191;
+    f64 temp_f0_206;
+    f64 temp_f0_303;
     u8 var_r0_166;
     u8 var_r29_342;
     u8 var_r30_226;
@@ -132,9 +136,9 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
         sp5C = 50.0f + temp_f31_191;
         sp80 = (f64) sp60;
         sp78 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spB8 = sp48;
+        temp_f0_206 = M2C_FIELD(temp_r3_196, f64 *, 0x720) + (f64) sp58;
+        sp48 = temp_f0_206;
+        spB8 = temp_f0_206;
         sp50 = temp_r3_196->unk710.unk8 + (f32) sp80;
         spC0 = (f64) sp50;
         temp_r4_216 = temp_r3_196->unk634;
@@ -175,9 +179,9 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
         sp3C = temp_f2_291;
         sp70 = (f64) sp40;
         sp68 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        spA8 = sp28;
+        temp_f0_303 = M2C_FIELD(temp_r3_292, f64 *, 0x720) + (f64) sp38;
+        sp28 = temp_f0_303;
+        spA8 = temp_f0_303;
         sp30 = temp_r3_292->unk710.unk8 + (f32) sp70;
         spB0 = (f64) sp30;
         temp_r4_313 = temp_r3_292->unk634;
@@ -197,8 +201,7 @@ u8 DojoGoal_Think::AddGoal_MoveToLastPlayerPos() {
         var_r29_342 = 0;
         if (temp_r28_341->unk750.unkA0.IsPointWithin(temp_r28_341->unk710) != 0) {
             sp18.GetRegionPos();
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((f32) fabs(sp1C - temp_r28_341->unk710.unk4) == 500.0f) {
+            if ((f32) fabs(sp1C - temp_r28_341->unk710.unk4) <= 500.0f) {
                 var_r29_342 = 1;
             }
         }
@@ -408,12 +411,11 @@ void DojoGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
         }
     }
     temp_r0_873 = ((u8) arg0->unk34 >> 4U) & 1;
-    if ((temp_r0_873 != 0) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk20->unkAB4 == 0.0f) != 0)) && ((var_r28_728 == 0) || (var_r28_728 == 4) || (var_r28_728 == 5))) {
+    if ((temp_r0_873 != 0) && (this->unk20->unkAB4 <= 0.0f) && ((var_r28_728 == 0) || (var_r28_728 == 4) || (var_r28_728 == 5))) {
         var_r28_728 = 7;
     } else if (temp_r0_873 != 0) {
         temp_r3_893 = this->unk20;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_893->unkAB4 == 0.0f) {
+        if (temp_r3_893->unkAB4 <= 0.0f) {
             temp_r3_893->Armour_Destroy();
         }
     }
@@ -577,8 +579,7 @@ block_16:
         this->unk20->TakeDamage(&sp8, 0U);
         temp_r3_1217 = this->unk20;
         M2C_FIELD(temp_r3_1217, u8 *, 0xB0A) = (u8) (M2C_FIELD(temp_r3_1217, u8 *, 0xB0A) & ~1);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk20->unkAB0 == 0.0f) && (IsPresent(0x29) == 0)) {
+        if ((this->unk20->unkAB0 <= 0.0f) && (IsPresent(0x29) == 0)) {
             AddGoal_Death(&sp8);
             return;
         }
@@ -588,8 +589,7 @@ block_16:
         }
         if ((sp8.unk34 >> 4U) & 1) {
             temp_r3_1252 = this->unk20;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r3_1252->unkAB4 == 0.0f) {
+            if (temp_r3_1252->unkAB4 <= 0.0f) {
                 temp_r3_1252->Armour_Destroy();
             }
         }

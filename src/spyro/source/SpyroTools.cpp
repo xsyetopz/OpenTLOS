@@ -110,8 +110,11 @@ void ****SpyroTargetList::UpdateTargetList() {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -132,7 +135,12 @@ void ****SpyroTargetList::UpdateTargetList() {
     f32 var_f4_254;
     f32 var_f4_331;
     f32 var_f5_357;
+    f64 temp_f0_162;
+    f64 temp_f0_183;
+    f64 temp_f1_157;
+    f64 temp_f1_177;
     f64 temp_f1_222;
+    f64 temp_f1_230;
     f64 temp_f1_260;
     f64 temp_f1_266;
     f64 temp_f1_270;
@@ -180,21 +188,24 @@ loop_55:
         temp_r24_148 = *(&sp140 + var_r22_143);
         if ((u8) this->unk14 != 0) {
             temp_r21_154 = M2C_FIELD(&gb, void **, 0x3B8) + 0xB0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            temp_f1_167 = MKVector3::up.unk8 * M2C_FIELD(*temp_r24_148, f32 (**)(void **, void *, f32), 0x38)(temp_r24_148, M2C_FIELD(&gb, void **, 0x3B8));
-            spE0 = sp60;
+            temp_f1_157 = M2C_FIELD(*temp_r24_148, f64 (**)(void **, void *, f32), 0x38)(temp_r24_148, M2C_FIELD(&gb, void **, 0x3B8));
+            temp_f0_162 = M2C_FIELD(&MKVector3::up, f64 *, 0) * temp_f1_157;
+            sp60 = temp_f0_162;
+            temp_f1_167 = MKVector3::up.unk8 * (f32) temp_f1_157;
+            spE0 = temp_f0_162;
             sp68 = temp_f1_167;
             spE8 = (f64) sp68;
             temp_r3_176 = M2C_FIELD(M2C_FIELD(*temp_r24_148, void *(**)(void **, f32, f64), 8)(temp_r24_148, temp_f1_167), void **, 8);
-            spF0 = M2C_FIELD(temp_r3_176, f64 *, 0x30);
+            temp_f1_177 = M2C_FIELD(temp_r3_176, f64 *, 0x30);
+            spF0 = temp_f1_177;
             spF8 = M2C_FIELD(temp_r3_176, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            temp_f0_183 = temp_f1_177 + temp_f0_162;
+            sp50 = temp_f0_183;
             temp_f1_189 = (f32) spF8 + (f32) spE8;
-            sp100 = sp50;
+            sp100 = temp_f0_183;
             sp58 = temp_f1_189;
             sp108 = (f64) sp58;
-            var_r3_147 = temp_r21_154->IsVisible(*((MKVector3 *) &sp100), M2C_FIELD(*temp_r24_148, f32 (**)(void **, void *, f32), 0x38)(temp_r24_148, M2C_BITWISE(void *, temp_f1_189), (f32) spF8));
+            var_r3_147 = temp_r21_154->IsVisible(*((MKVector3 *) &sp100), M2C_FIELD(*temp_r24_148, f64 (**)(void **, void *, f32), 0x38)(temp_r24_148, M2C_BITWISE(void *, temp_f1_189), (f32) spF8));
         }
         if (((u8) var_r3_147 != 0) && (M2C_FIELD(M2C_FIELD(*temp_r24_148, void *(**)(void **, f32, f64), 8)(temp_r24_148), s32 *, 0x10) & 0x40000)) {
             temp_r4_219 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0xC)(M2C_FIELD(&gb, void ***, 0)), void **, 8);
@@ -202,9 +213,10 @@ loop_55:
             spB0 = temp_f1_222;
             spB8 = M2C_FIELD(temp_r4_219, f64 *, 0x38);
             temp_r3_229 = M2C_FIELD(M2C_FIELD(*temp_r24_148, void *(**)(void **, f32, f64), 8)(temp_r24_148, M2C_BITWISE(f32, temp_r4_219), temp_f1_222), void **, 8);
-            spC0 = M2C_FIELD(temp_r3_229, f64 *, 0x30);
+            temp_f1_230 = M2C_FIELD(temp_r3_229, f64 *, 0x30);
+            spC0 = temp_f1_230;
             spC8 = M2C_FIELD(temp_r3_229, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp40 = temp_f1_230 - spB0;
             spD0 = sp40;
             sp48 = (f32) spC8 - (f32) spB8;
             spD8 = (f64) sp48;
@@ -479,7 +491,7 @@ void SpyroTargetList::Init(float arg0, unsigned int arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp34'
 void SpyroStuck::Update() {
     s8 spA1;
     s8 spA0;
@@ -505,6 +517,7 @@ void SpyroStuck::Update() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp8;
     MKProp *temp_r3_1087;
     f32 var_f4_967;
@@ -519,8 +532,7 @@ void SpyroStuck::Update() {
     sp40 = M2C_FIELD(temp_r3_941, f64 *, 0x30);
     sp48 = M2C_FIELD(temp_r3_941, f64 *, 0x38);
     this->unk10 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp20 = sp40 - this->unk0;
     sp30 = sp20;
     sp28 = (f32) sp48 - this->unk8;
     sp38 = (f64) sp28;
@@ -561,8 +573,7 @@ void SpyroStuck::Update() {
     this->unk14 += var_f4_967;
     this->unk0 = sp40;
     M2C_FIELD(this, f32 *, 8) = sp48;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk10 == 0.0f) {
+    if (this->unk10 <= 0.0f) {
         if (this->unk14 < 100.0f) {
             sp54 = 0;
             sp50 = 7;
@@ -615,7 +626,7 @@ void SpyroStuck::Init(MKProp *arg0) {
     this->unk14 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SpyroLighting::ApplyPointLight(MKVector3 arg0, float arg1, float arg2) {
     f64 sp40;
     f64 sp38;
@@ -624,17 +635,21 @@ void SpyroLighting::ApplyPointLight(MKVector3 arg0, float arg1, float arg2) {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f4_1139;
     f32 var_f0_1165;
+    f64 temp_f0_1149;
+    f64 temp_f1_1143;
     void *temp_r5_1142;
 
     temp_f4_1139 = arg1 * arg1;
     temp_r5_1142 = M2C_FIELD(this->unk28, void **, 8);
-    sp28 = M2C_FIELD(temp_r5_1142, f64 *, 0x30);
+    temp_f1_1143 = M2C_FIELD(temp_r5_1142, f64 *, 0x30);
+    sp28 = temp_f1_1143;
     sp30 = M2C_FIELD(temp_r5_1142, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp38 = sp8;
+    temp_f0_1149 = temp_f1_1143 - *(f64 *) arg0;
+    sp8 = temp_f0_1149;
+    sp38 = temp_f0_1149;
     sp10 = (f32) sp30 - M2C_FIELD(arg0, f32 *, 8);
     sp40 = (f64) sp10;
     var_f0_1165 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
@@ -651,25 +666,25 @@ void SpyroLighting::ApplyPointLight(MKVector3 arg0, float arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SpyroLighting::SetLight(MKVector3 arg0, float arg1) {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 var_f2_1195;
+    f64 temp_f0_1203;
 
     var_f2_1195 = arg1;
     if (var_f2_1195 < 0.0f) {
         var_f2_1195 = 0.0f;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    sp18 = sp8;
+    temp_f0_1203 = *(f64 *) arg0 * (f64) var_f2_1195;
+    sp8 = temp_f0_1203;
+    sp18 = temp_f0_1203;
     sp10 = M2C_FIELD(arg0, f32 *, 8) * var_f2_1195;
     sp20 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r3, $r0, 0x0, qr0 */);
+    M2C_FIELD(this, f64 *, 0x10) = (f64) (M2C_FIELD(this, f64 *, 0x10) + temp_f0_1203);
     this->unk18 += (f32) sp20;
     this->unk20 += var_f2_1195;
 }

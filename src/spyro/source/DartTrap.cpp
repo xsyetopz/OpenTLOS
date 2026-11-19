@@ -51,11 +51,16 @@ void DartTrap::Shoot() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 var_f4_140;
     f32 var_f4_207;
+    f64 temp_f0_241;
+    f64 temp_f0_297;
     f64 temp_f1_146;
     f64 temp_f1_152;
     f64 temp_f1_156;
@@ -129,17 +134,18 @@ void DartTrap::Shoot() {
         unksp94 *= var_f4_207;
         sp98 = (f32) sp98 * var_f4_207;
         sp70.operator*(2000.0f);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp20 = M2C_BITWISE(f64, spB0) + M2C_BITWISE(f64, sp70);
         sp80 = sp20;
         sp28 = spB0.unk8 + sp70.unk8;
         spA0 = sp20;
         sp88 = (f64) sp28;
         spA8 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp60 = sp10;
+        temp_f0_241 = (f64) sp90 * 5.53552857e-315;
+        sp10 = temp_f0_241;
+        sp60 = temp_f0_241;
         sp18 = sp98 * 100.0f;
         sp68 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        spB0 = M2C_BITWISE(f64, spB0) + temp_f0_241;
         spB0.unk8 += (f32) sp68;
         if (MKCollision_RayCollide(spB0, *((MKVector3 *) &spA0), &spC0, (MKCollisionMode) 7, 0) != 0) {
             spA0 = M2C_BITWISE(f64, spC0);
@@ -150,8 +156,9 @@ void DartTrap::Shoot() {
         KDSound_Play3d(GS_DartTrapFire, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
         temp_r3_290 = this->unk90;
         M2C_FIELD(M2C_FIELD(temp_r3_290, void **, 0x44), M2C_UNK (**)(void *), 0x24)(temp_r3_290);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp50 = sp30;
+        temp_f0_297 = (f64) sp90 * 5.60222949e-315;
+        sp30 = temp_f0_297;
+        sp50 = temp_f0_297;
         sp38 = sp98 * 300.0f;
         sp58 = (f64) sp38;
         gb.EmitDust(spB0, *((MKVector3 *) &sp50), 1.0f, 0.0f);
@@ -209,33 +216,28 @@ void DartTrap::Update() {
         break;
     case 2:
         this->unk9C -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk9C == 0.0f) && (this->unk80->unk2C & 1)) {
+        if ((this->unk9C <= 0.0f) && (this->unk80->unk2C & 1)) {
             SetAnim(2);
             this->unk9C = 1.0f / this->unkA0;
         }
         if (this->unk80->CheckEvent(0) != 0) {
             Shoot();
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkAC == 0.0f) {
+        if (this->unkAC <= 0.0f) {
             SetState(3);
             SetAnim(3);
             this->unkAC = this->unkA8;
         }
         break;
     case 3:
-        if (this->unk80->unk2C & 1) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unkAC == 0.0f) {
-                if ((u8) this->unkB0 != 0) {
-                    SetState(0);
-                    SetAnim(0);
-                } else {
-                    SetState(1);
-                    SetAnim(1);
-                    this->unkAC = this->unkA4;
-                }
+        if ((this->unk80->unk2C & 1) && (this->unkAC <= 0.0f)) {
+            if ((u8) this->unkB0 != 0) {
+                SetState(0);
+                SetAnim(0);
+            } else {
+                SetState(1);
+                SetAnim(1);
+                this->unkAC = this->unkA4;
             }
         }
         break;

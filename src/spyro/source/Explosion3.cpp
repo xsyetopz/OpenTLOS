@@ -69,7 +69,9 @@ void Explosion3::Trigger(const MKVector3 &arg0, const float &arg1, bool arg2, bo
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp34;
@@ -79,6 +81,7 @@ void Explosion3::Trigger(const MKVector3 &arg0, const float &arg1, bool arg2, bo
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     ManagedLight *temp_r3_210;
@@ -90,6 +93,7 @@ void Explosion3::Trigger(const MKVector3 &arg0, const float &arg1, bool arg2, bo
     f32 temp_f24_122;
     f32 temp_f29_185;
     f32 temp_f31_99;
+    f64 temp_f0_136;
     f64 temp_f3_287;
     f64 temp_f4_285;
     s32 temp_r3_320;
@@ -125,11 +129,12 @@ loop_2:
         sp68 = temp_f23_117;
         spE0 = (f64) sp60;
         spE8 = (f64) sp68;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        spF0 = sp50;
+        temp_f0_136 = spE0 * 5.717499035e-315;
+        sp50 = temp_f0_136;
+        spF0 = temp_f0_136;
         sp58 = (f32) spE8 * 2000.0f;
         spF8 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp40 = temp_f0_136 * (f64) temp_f31_99;
         sp30 = 1.0f;
         sp34 = 0.8f;
         sp48 = (f32) spF8 * temp_f31_99;
@@ -182,8 +187,7 @@ loop_2:
         }
         sp90.operator*(100.0f);
         spA0.operator*(this->unk64);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp10 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, spA0);
         temp_r3_265 = this->unk58;
         spB0 = sp10;
         sp18 = arg0.unk8 + spA0.unk8;
@@ -243,10 +247,12 @@ void Explosion3::Deinit() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier 'unksp24'
 void Explosion3::Update() {
     f64 sp20;
     f64 sp18;
+    f64 sp10;
+    f64 sp8;
     ManagedLight *temp_r4_440;
     ManagedLight *temp_r4_450;
     ManagedLight *temp_r4_471;
@@ -264,8 +270,7 @@ void Explosion3::Update() {
     } else {
         this->unk60 -= gUpdateTimeDelta;
         temp_f3_434 = this->unk60;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f3_434 == 0.0f) {
+        if (temp_f3_434 <= 0.0f) {
             this->unk5C = 0;
             temp_r4_440 = this->unk58;
             if (temp_r4_440 != NULL) {
@@ -284,10 +289,8 @@ void Explosion3::Update() {
                     M2C_FIELD(temp_r4_458, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r4_458, f32 *, 0x24));
                 }
                 temp_r4_471 = this->unk58;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
+                sp8 = temp_r4_471->unk20 * (f64) temp_f3_434;
+                sp10 = temp_r4_471->unk28 * (f64) temp_f3_434;
                 sp20 = sp10;
                 unksp24 = 1.0f;
                 temp_r4_471->unk20 = sp8;

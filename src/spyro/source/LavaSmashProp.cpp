@@ -68,6 +68,7 @@ void LavaSmashProp::PostShatter() {
     f64 sp118;
     f64 sp110;
     f32 sp108;
+    f64 sp100;
     f32 spF8;
     f32 spF4;
     f32 spF0;
@@ -78,11 +79,14 @@ void LavaSmashProp::PostShatter() {
     f32 spD4;
     f32 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
@@ -93,7 +97,9 @@ void LavaSmashProp::PostShatter() {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -108,14 +114,20 @@ void LavaSmashProp::PostShatter() {
     f32 temp_f1_203;
     f32 temp_f1_255;
     f32 temp_f1_416;
+    f32 temp_f4_340;
     f32 temp_f4_417;
     f32 var_f0_126;
     f32 var_f3_330;
     f32 var_f4_263;
     f32 var_f4_59;
+    f64 temp_f0_166;
+    f64 temp_f0_178;
+    f64 temp_f0_351;
+    f64 temp_f0_392;
     f64 temp_f1_269;
     f64 temp_f1_275;
     f64 temp_f1_279;
+    f64 temp_f1_34;
     f64 temp_f1_433;
     f64 temp_f1_62;
     f64 temp_f1_68;
@@ -132,11 +144,12 @@ void LavaSmashProp::PostShatter() {
         temp_r5_27 = this->unk8;
         temp_r30_29 = checked_cast<LavaSmashPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         temp_r3_32 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
+        temp_f1_34 = M2C_FIELD(temp_r3_32, f64 *, 0x30);
         sp220 = M2C_FIELD(temp_r5_27, f64 *, 0x30);
-        sp230 = M2C_FIELD(temp_r3_32, f64 *, 0x30);
+        sp230 = temp_f1_34;
         sp228 = M2C_FIELD(temp_r5_27, f64 *, 0x38);
         sp238 = M2C_FIELD(temp_r3_32, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp100 = temp_f1_34 - sp220;
         sp240 = sp100;
         sp108 = (f32) sp238 - (f32) sp228;
         sp248 = (f64) sp108;
@@ -197,14 +210,14 @@ void LavaSmashProp::PostShatter() {
         sp1C0 = (f64) sp60;
         sp1C8 = (f64) sp68;
         KDRand_Vector(sp1E0, *((MKVector3 *) &sp1D0));
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp1F0 = sp50;
+        temp_f0_166 = sp1E0 * 5.49408334e-315;
+        sp50 = temp_f0_166;
+        sp1F0 = temp_f0_166;
         sp58 = sp1E0.unk8 * 50.0f;
         sp1F8 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp200 = sp40;
+        temp_f0_178 = this->unk1D8 + temp_f0_166;
+        sp40 = temp_f0_178;
+        sp200 = temp_f0_178;
         sp48 = M2C_FIELD(this, f32 *, 0x1E0) + (f32) sp1F8;
         sp208 = (f64) sp48;
         KDMath_Smooth<MKVector3>(sp210, *((MKVector3 *) &this->unk1D8), 2.0f, gUpdateTimeDelta);
@@ -212,8 +225,7 @@ void LavaSmashProp::PostShatter() {
         M2C_FIELD(this, f64 *, 0x1F0) = (f64) sp210.unk8;
         this->unk1E8.unk0 += M2C_FIELD(temp_r30_29, f32 *, 0x178) * gUpdateTimeDelta;
         temp_f1_203 = this->unk1E8.unk0;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f1_203 == M2C_FIELD(temp_r30_29, f32 *, 0x174)) {
+        if (temp_f1_203 <= M2C_FIELD(temp_r30_29, f32 *, 0x174)) {
             SetSmashPropState((SmashPropState) 3);
             M2C_FIELD(this, u8 *, 0x1A1) = (u8) (M2C_FIELD(this, u8 *, 0x1A1) & ~0x40);
             this->unk1D0 = 0;
@@ -278,17 +290,18 @@ void LavaSmashProp::PostShatter() {
             } else {
                 var_f3_330 = 0.0f;
             }
+            temp_f4_340 = M2C_FIELD(temp_r30_29, f32 *, 0x16C);
             spD0 = M2C_BITWISE(f32, sp1A0) * var_f3_330;
             spD4 = sp1A0.unk4 * var_f3_330;
             spD8 = sp1A0.unk8 * var_f3_330;
             sp260 = (f64) spD0;
             sp268 = (f64) spD8;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp170 = spC0;
-            spC8 = (f32) sp268 * M2C_FIELD(temp_r30_29, f32 *, 0x16C);
+            temp_f0_351 = sp260 * (f64) temp_f4_340;
+            spC0 = temp_f0_351;
+            sp170 = temp_f0_351;
+            spC8 = (f32) sp268 * temp_f4_340;
             sp178 = (f64) spC8;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            spB0 = this->unk1D8 + temp_f0_351;
             sp88 = 1.0f;
             spA8 = 0.0f;
             sp80 = 1.0f;
@@ -302,8 +315,9 @@ void LavaSmashProp::PostShatter() {
             sp150 = (f64) spA0;
             sp258 = (f64) spB8;
             sp158 = (f64) spA8;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp160 = sp90;
+            temp_f0_392 = sp250 + sp150;
+            sp90 = temp_f0_392;
+            sp160 = temp_f0_392;
             sp98 = (f32) sp258 + (f32) sp158;
             sp168 = (f64) sp98;
             ((LavaBubbleFX *) (M2C_FIELD(&gb, LavaBubbleFX **, 0x90)))->CreateBubble(*((MKVector3 *) &sp160), *((MKVector3 *) &sp140));

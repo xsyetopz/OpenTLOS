@@ -330,8 +330,7 @@ void TimerProperty::Update() {
     if ((u8) M2C_FIELD(temp_r4_769, u8 *, 4) != 0) {
         M2C_FIELD(temp_r4_769, f32 *, 0) = (f32) (M2C_FIELD(temp_r4_769, f32 *, 0) + gUpdateTimeDelta);
         temp_r5_780 = *KDProperty::pInstanceMem + this->unk8;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(temp_r5_780, f32 *, 0) == this->unk1C) {
+        if (M2C_FIELD(temp_r5_780, f32 *, 0) >= this->unk1C) {
             M2C_FIELD(temp_r5_780, s8 *, 4) = 0;
             KDScriptProperty::Command(1);
         }

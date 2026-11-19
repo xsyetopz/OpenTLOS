@@ -339,11 +339,14 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f64 sp10;
     f64 sp8;
     Enemy *temp_r3_567;
@@ -357,6 +360,10 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
     f32 temp_f31_589;
     f32 temp_f3_625;
     f32 var_f30_600;
+    f64 temp_f0_606;
+    f64 temp_f0_633;
+    f64 temp_f0_675;
+    f64 temp_f5_617;
 
     temp_r3_567 = this->unkC;
     if (((void *) temp_r3_567->unk638 != NULL) && (temp_r3_567->IsInsideEnemyRegion() == 0)) {
@@ -376,11 +383,13 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
         } else {
             var_f30_600 = temp_f0_597;
         }
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spA8 = sp18;
+        temp_f0_606 = spB8 * (f64) var_f30_600;
+        sp18 = temp_f0_606;
+        spA8 = temp_f0_606;
         sp20 = (f32) spC0 * var_f30_600;
         spB0 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f5, $f1, $f0 */);
+        temp_f5_617 = spC8 + temp_f0_606;
+        spC8 = temp_f5_617;
         sp60 = 0.0f;
         temp_f3_625 = (f32) spD0 + (f32) spB0;
         sp58 = 0.0f;
@@ -388,8 +397,9 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
         spD0 = temp_f3_625;
         sp88 = (f64) sp58;
         sp90 = (f64) sp60;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-        sp98 = sp48;
+        temp_f0_633 = temp_f5_617 + sp88;
+        sp48 = temp_f0_633;
+        sp98 = temp_f0_633;
         sp50 = temp_f3_625 + (f32) sp90;
         spA0 = (f64) sp50;
         if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp98), 300.0f, &spD8, 0x04000000, 2, NULL, (MKCollisionMode) 7) != 0) {
@@ -402,8 +412,9 @@ u8 EnemyGoal_GroundAttackMode::AddGoal_MoveToRegion() {
             sp40 = 0.0f;
             sp68 = (f64) sp38;
             sp70 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp78 = sp28;
+            temp_f0_675 = spC8 + sp68;
+            sp28 = temp_f0_675;
+            sp78 = temp_f0_675;
             sp30 = spD0 + (f32) sp70;
             sp80 = (f64) sp30;
             if (MKCollision_SphereCollide(*((MKVector3 *) &sp78), temp_f31_589, NULL, 0, (MKCollisionMode) 7, 0x04000000) != 0) {
@@ -543,7 +554,9 @@ void EnemyGoal_GroundAttackMode::Activate() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     AITargetData *temp_r3_977;
     EAPItem *temp_r0_1076;
     Enemy *temp_r3_1007;
@@ -553,6 +566,9 @@ void EnemyGoal_GroundAttackMode::Activate() {
     Enemy *temp_r5_1049;
     Frustum *temp_r31_1004;
     f32 temp_f1_1032;
+    f64 temp_f0_1027;
+    f64 temp_f1_1006;
+    f64 temp_f1_1017;
     s32 temp_r31_1045;
     s32 temp_r3_1152;
     u8 var_r31_981;
@@ -579,18 +595,20 @@ void EnemyGoal_GroundAttackMode::Activate() {
         }
         temp_r3_998 = this->unkC;
         temp_r31_1004 = M2C_FIELD(&gb, s32 *, 0x3B8) + 0xB0;
+        temp_f1_1006 = temp_r3_998->GetCollisionRadius(M2C_FIELD(&gb, s32 *, 0x3B8));
         temp_r3_1007 = this->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp18 = M2C_FIELD(temp_r3_1007, f64 *, 0xD0) * temp_f1_1006;
         temp_r4_1014 = temp_r3_1007->unk8;
-        sp20 = temp_r3_1007->unkD8 * temp_r3_998->GetCollisionRadius(M2C_FIELD(&gb, s32 *, 0x3B8));
+        temp_f1_1017 = M2C_FIELD(temp_r4_1014, f64 *, 0x30);
+        sp20 = temp_r3_1007->unkD8 * (f32) temp_f1_1006;
         sp28 = sp18;
-        sp38 = M2C_FIELD(temp_r4_1014, f64 *, 0x30);
+        sp38 = temp_f1_1017;
         sp30 = (f64) sp20;
         sp40 = M2C_FIELD(temp_r4_1014, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_1027 = temp_f1_1017 + sp28;
+        sp8 = temp_f0_1027;
         temp_f1_1032 = (f32) sp40 + (f32) sp30;
-        sp48 = sp8;
+        sp48 = temp_f0_1027;
         sp10 = temp_f1_1032;
         sp50 = (f64) sp10;
         temp_r31_1045 = temp_r31_1004->IsVisible(*((MKVector3 *) &sp48), temp_r3_1007->GetCollisionRadius(temp_r4_1014, temp_f1_1032, (f32) sp40, sp18));
@@ -623,8 +641,7 @@ void EnemyGoal_GroundAttackMode::Activate() {
         }
 block_13:
         if ((AddGoal_Summon() == 0) && (AddGoal_MoveToRegion() == 0) && (AddGoal_OnlyRangeAttack((u8) temp_r31_1045) == 0) && (AddGoal_StrafeIfObscuringCamera() == 0)) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unkA7C) && ((u8) temp_r31_1045 != 0)) {
+            if (!(M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkC->unkA7C) && ((u8) temp_r31_1045 != 0)) {
                 AddGoal_AttackIdleOrStrafe();
             }
             temp_r4_1140 = this->unkC->unkA44;

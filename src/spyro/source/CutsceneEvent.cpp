@@ -50,6 +50,7 @@ void LavaBubbleCE::Update() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -60,13 +61,13 @@ void LavaBubbleCE::Update() {
     f32 temp_f30_83;
     f32 temp_f31_63;
     f32 temp_f3_56;
+    f64 temp_f0_98;
 
     this->unk20 += gUpdateTimeDelta;
     temp_f3_56 = M2C_BITWISE(f32, KDSynkerPlayerEvent::updateData.__vptr);
     if (temp_f3_56 > 0.0f) {
         temp_f31_63 = (1.0f / this->unk1C) / temp_f3_56;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk20 == temp_f31_63) {
+        if (this->unk20 >= temp_f31_63) {
             temp_f1_70 = MKRand_Float(&gViewSeed, 0.5f, 1.5f);
             sp10 = temp_f1_70;
             sp8 = temp_f1_70;
@@ -82,9 +83,9 @@ void LavaBubbleCE::Update() {
             sp2C = 0.0f;
             sp50 = (f64) sp30;
             sp48 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp58 = sp18;
+            temp_f0_98 = M2C_FIELD(this, f64 *, 8) + sp48;
+            sp18 = temp_f0_98;
+            sp58 = temp_f0_98;
             sp20 = this->unk8.unk8 + (f32) sp50;
             sp60 = (f64) sp20;
             ((LavaBubbleFX *) (M2C_FIELD(&gb, LavaBubbleFX **, 0x90)))->CreateBubble(*((MKVector3 *) &sp58), *((MKVector3 *) &sp38));
@@ -106,6 +107,7 @@ void LavaBubbleCE::Enter() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -114,6 +116,7 @@ void LavaBubbleCE::Enter() {
     f32 temp_f2_153;
     f32 temp_f2_156;
     f32 temp_f31_157;
+    f64 temp_f0_172;
 
     this->unk20 = 0.0f;
     temp_f1_144 = MKRand_Float(&gViewSeed, 0.5f, 1.5f);
@@ -131,9 +134,9 @@ void LavaBubbleCE::Enter() {
     sp2C = 0.0f;
     sp50 = (f64) sp30;
     sp48 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp58 = sp18;
+    temp_f0_172 = M2C_FIELD(this, f64 *, 8) + sp48;
+    sp18 = temp_f0_172;
+    sp58 = temp_f0_172;
     sp20 = this->unk8.unk8 + (f32) sp50;
     sp60 = (f64) sp20;
     ((LavaBubbleFX *) (M2C_FIELD(&gb, LavaBubbleFX **, 0x90)))->CreateBubble(*((MKVector3 *) &sp58), *((MKVector3 *) &sp38));
@@ -548,7 +551,7 @@ void ColorCE::Enter() {
     M2C_FIELD(this, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_1395, f64 *, 8);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void ColorCE::Update() {
     f64 sp60;
     f64 sp58;
@@ -556,26 +559,38 @@ void ColorCE::Update() {
     f64 sp48;
     f64 sp40;
     f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
+    f64 sp8;
     MKModel *temp_r5_1413;
+    f32 temp_f3_1431;
+    f32 temp_f4_1418;
+    f64 temp_f0_1439;
+    f64 temp_f0_1451;
+    f64 temp_f1_1421;
 
     temp_r5_1413 = this->unk28;
     if (temp_r5_1413 != NULL) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-        sp38 = sp18;
+        temp_f4_1418 = M2C_BITWISE(f32, KDSynkerPlayerEvent::updateData.__vptr);
+        temp_f1_1421 = M2C_FIELD(this, f64 *, 0x18) * (f64) temp_f4_1418;
+        sp18 = temp_f1_1421;
+        sp20 = M2C_FIELD(this, f64 *, 0x20) * (f64) temp_f4_1418;
+        temp_f3_1431 = 1.0f - temp_f4_1418;
+        sp38 = temp_f1_1421;
         sp40 = sp20;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
+        sp28 = M2C_FIELD(this, f64 *, 8) * (f64) temp_f3_1431;
+        temp_f0_1439 = M2C_FIELD(this, f64 *, 0x10) * (f64) temp_f3_1431;
+        sp30 = temp_f0_1439;
         sp48 = sp28;
-        sp50 = sp30;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp50 = temp_f0_1439;
+        sp8 = sp28 + sp38;
+        temp_f0_1451 = sp50 + sp20;
+        sp10 = temp_f0_1451;
         sp58 = sp8;
-        sp60 = sp10;
+        sp60 = temp_f0_1451;
         unksp64 = 1.0f;
         MKModel_SetColor(temp_r5_1413, *((MKVector4 *) &sp58));
     }
@@ -826,12 +841,15 @@ void ScaleCE::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
+    f64 temp_f0_2141;
 
     M2C_STRUCT_COPY((s32) &sp3C + 4, MKModel_GetWorldMatrix(this->unk18) - 4 + 4, 0x40);
     sp30 = sp70;
     sp38 = sp78;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp20 = sp10;
+    temp_f0_2141 = sp30 * 1.58735232e-314;
+    sp10 = temp_f0_2141;
+    sp20 = temp_f0_2141;
     sp18 = (f32) sp38 * -1.0f;
     sp28 = (f64) sp18;
     sp40.Translate((Matrix *) &sp40, *((MKVector3 *) &sp20));

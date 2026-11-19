@@ -147,12 +147,8 @@ loop_17:
     if (!(var_r29_291->unk18 & 0x80000000)) {
         temp_f1_297 = arg0.unk4;
         var_r31_298 = 0;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_297 == var_r29_291->unk50.unk4.unk18) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((temp_f1_297 == var_r29_291->unk50.unk4.unk1C) && (var_r29_291->unk50.unk4.IsPointWithin(arg0) != 0)) {
-                var_r31_298 = 1;
-            }
+        if ((temp_f1_297 >= var_r29_291->unk50.unk4.unk18) && (temp_f1_297 <= var_r29_291->unk50.unk4.unk1C) && (var_r29_291->unk50.unk4.IsPointWithin(arg0) != 0)) {
+            var_r31_298 = 1;
         }
         if (var_r31_298 != 0) {
             return var_r29_291->UpdateState();

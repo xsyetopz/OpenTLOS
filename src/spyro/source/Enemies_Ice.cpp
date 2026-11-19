@@ -229,17 +229,17 @@ void IceTier2::Deinit() {
 s32 IceTier2::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     if ((u32) M2C_FIELD(checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u32 *, 0x270) != -1U) {
         MKModel_CalculateNodeWorldPosition(this->unk4, M2C_FIELD(checked_cast<IceTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x270), arg1);
     } else {
         MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
         sp28.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp8 = sp28 + sp18;
         M2C_FIELD(arg1, f64 *, 0) = sp8;
         sp10 = sp30 + sp20;
         sp38 = sp8;
@@ -337,13 +337,19 @@ void IceTier1::Update() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     u16 sp10;
     Animation *temp_r3_736;
-    f32 temp_f1_792;
-    f32 temp_f3_820;
+    f64 temp_f0_788;
+    f64 temp_f0_799;
+    f64 temp_f0_815;
+    f64 temp_f1_785;
+    f64 temp_f1_812;
     s32 temp_r31_734;
     s32 var_r29_754;
     u16 temp_r30_731;
@@ -373,20 +379,22 @@ void IceTier1::Update() {
                 spA0 = (f64) spC0.unk8;
             }
             unksp9C = 1.0f;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            temp_f1_792 = spC0.unk28 * MKRand_Float(&gViewSeed, 80.0f, 150.0f);
-            sp68 = sp38;
-            sp40 = temp_f1_792;
+            temp_f1_785 = MKRand_Float(&gViewSeed, 80.0f, 150.0f);
+            temp_f0_788 = spC0.unk20 * temp_f1_785;
+            sp38 = temp_f0_788;
+            sp68 = temp_f0_788;
+            sp40 = spC0.unk28 * (f32) temp_f1_785;
             sp70 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp78 = sp28;
+            temp_f0_799 = M2C_BITWISE(f64, spA8) - temp_f0_788;
+            sp28 = temp_f0_799;
+            sp78 = temp_f0_799;
             sp30 = spA8.unk8 - (f32) sp70;
             sp80 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            temp_f3_820 = (f32) spA0 * MKRand_Float(&gViewSeed, 200.0f, 400.0f);
-            sp58 = sp18;
-            sp20 = temp_f3_820;
+            temp_f1_812 = MKRand_Float(&gViewSeed, 200.0f, 400.0f);
+            temp_f0_815 = sp98 * temp_f1_812;
+            sp18 = temp_f0_815;
+            sp58 = temp_f0_815;
+            sp20 = (f32) spA0 * (f32) temp_f1_812;
             sp60 = (f64) sp20;
             sp14 = MKRand_Float(&gViewSeed, 0.13f, 0.2f);
             gb.EmitCrud(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58), sp14);

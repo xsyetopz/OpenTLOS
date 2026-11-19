@@ -475,16 +475,19 @@ s32 MKWidgetEnvelope::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidgetEnvelope *spB0;
     f64 spA8;
     f64 spA0;
-    M2C_UNK sp90;
+    f64 sp90;
     f64 sp88;
     f64 sp80;
-    M2C_UNK sp70;
+    f64 sp70;
     f64 sp68;
     f64 sp60;
-    M2C_UNK sp50;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -503,6 +506,8 @@ s32 MKWidgetEnvelope::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 var_f31_588;
     f32 var_f4_399;
     f32 var_f4_619;
+    f64 temp_f0_382;
+    f64 temp_f0_602;
     f64 temp_f1_402;
     f64 temp_f1_408;
     f64 temp_f1_412;
@@ -562,9 +567,9 @@ loop_36:
                 temp_r4_473 = M2C_FIELD(temp_r3_472, s32 *, 0xE8);
                 if (var_r31_371 < temp_r4_473) {
                     MKWidgetEnvelope_GetEnvelopePos((MKWidgetEnvelope *) &sp90, (s32) this, var_r31_371);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r26, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    spA0 = sp40;
+                    temp_f0_382 = sp90 - M2C_BITWISE(f64, spE0);
+                    sp40 = temp_f0_382;
+                    spA0 = temp_f0_382;
                     sp48 = sp98 - spE0.unk8;
                     spA8 = (f64) sp48;
                     var_f4_399 = ((f32) spA8 * (f32) spA8) + (((f32) spA0 * (f32) spA0) + (unkspA4 * unkspA4));
@@ -662,8 +667,7 @@ loop_40:
                 } else {
                     this->unk28 = (s32) var_r30_372;
                     MKWidgetEnvelope_GetEnvelopePos((MKWidgetEnvelope *) &sp70, (s32) this, (MKWidgetBoundingVolume *) this->unk28);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp20 = sp70 - M2C_BITWISE(f64, spE0);
                     this->unk30 = sp20;
                     sp28 = sp78 - spE0.unk8;
                     sp80 = sp20;
@@ -681,9 +685,9 @@ loop_70:
             temp_r3_693 = M2C_FIELD(temp_r4_692, s32 *, 0xE8);
             if (var_r30_591 < temp_r3_693) {
                 MKWidgetEnvelope_GetEnvelopePos((MKWidgetEnvelope *) &sp50, (s32) this, var_r30_591);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r26, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp60 = sp30;
+                temp_f0_602 = sp50 - M2C_BITWISE(f64, spE0);
+                sp30 = temp_f0_602;
+                sp60 = temp_f0_602;
                 sp38 = sp58 - spE0.unk8;
                 sp68 = (f64) sp38;
                 var_f4_619 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + (unksp64 * unksp64));
@@ -727,8 +731,7 @@ loop_70:
                 var_r30_591 += 1;
                 goto loop_70;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (var_f31_588 == 6.0f) {
+            if (var_f31_588 <= 6.0f) {
                 var_r7_701 = var_r31_592;
                 M2C_FIELD(temp_r4_692, s32 *, 0xE8) = (s32) (temp_r3_693 - 1);
                 var_r3_703 = (s32) var_r31_592 * 8;
@@ -759,8 +762,7 @@ block_110:
         if ((s32) this->unk28 > -1) {
             MKWidget_GetBoundingVolume((MKWidget *) this, &spF0);
             MKWidget_GetLocalMousePos((MKWidget *) this, &spC0);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r27, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            spC0 = M2C_BITWISE(f64, spC0) + this->unk30;
             spC0.unk8 += this->unk38;
             MKWidgetEnvelope_GetEnvelopeValuesFromPoint(&spF0, &spC0, &sp14, &sp10);
             if ((s32) this->unk28 == 0) {
@@ -1811,18 +1813,29 @@ u32 MKWidgetEditable::EditableMessageHook(MKWidget *arg0, unsigned int arg1, uns
     f64 sp70;
     f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f3_3219;
+    f64 temp_f0_3065;
+    f64 temp_f0_3079;
+    f64 temp_f0_3108;
+    f64 temp_f0_3235;
     s32 (*temp_r12_3018)(s32);
     s32 var_r0_3011;
     s8 **temp_r3_3058;
     u32 temp_r31_3130;
+    void *temp_r4_3073;
+    void *temp_r4_3232;
 
     var_r0_3011 = 1;
     if (arg2 != 0) {
@@ -1867,8 +1880,7 @@ block_20:
         case 46:                                    /* switch 2 */
             if ((u8) M2C_FIELD(arg2, u8 *, 0x50) != 0) {
                 MKWidget_GetLocalMousePos((MKWidget *) this, &spA8);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp8 = M2C_BITWISE(f64, spA8) - M2C_FIELD(arg2, f64 *, 0x40);
                 sp78 = sp8;
                 sp10 = spA8.unk8 - M2C_FIELD(arg2, f32 *, 0x48);
                 spA8 = sp8;
@@ -1879,10 +1891,11 @@ block_20:
                     spA8 = M2C_BITWISE(f32, spA8) - temp_f3_3219;
                     spA8.unk4 -= (f32) fmod(spA8.unk4, 10.0, temp_f3_3219);
                 }
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp68 = sp18;
-                sp20 = M2C_FIELD((M2C_FIELD(arg2, s32 *, 4) + 8), f32 *, 8) + spA8.unk8;
+                temp_r4_3232 = M2C_FIELD(arg2, s32 *, 4) + 8;
+                temp_f0_3235 = M2C_FIELD(temp_r4_3232, f64 *, 0) + (f64) spA8;
+                sp18 = temp_f0_3235;
+                sp68 = temp_f0_3235;
+                sp20 = M2C_FIELD(temp_r4_3232, f32 *, 8) + spA8.unk8;
                 sp70 = (f64) sp20;
                 MKWidget_Move((MKWidget *) arg2, *((MKVector3 *) &sp68));
             }
@@ -1894,15 +1907,16 @@ block_20:
             temp_r3_3058 = this->unk4;
             spD8 = M2C_FIELD(temp_r3_3058, f64 *, 8);
             spE0 = M2C_FIELD(temp_r3_3058, f64 *, 0x10);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            spC8 = sp58;
+            temp_f0_3065 = M2C_FIELD(arg1, f64 *, 0) - spD8;
+            sp58 = temp_f0_3065;
+            spC8 = temp_f0_3065;
+            temp_r4_3073 = M2C_FIELD(arg2, s32 *, 4) + 8;
             sp60 = M2C_FIELD(arg1, f32 *, 8) - (f32) spE0;
             spD0 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp98 = sp48;
-            sp50 = M2C_FIELD((M2C_FIELD(arg2, s32 *, 4) + 8), f32 *, 8) + (f32) spD0;
+            temp_f0_3079 = M2C_FIELD(temp_r4_3073, f64 *, 0) + temp_f0_3065;
+            sp48 = temp_f0_3079;
+            sp98 = temp_f0_3079;
+            sp50 = M2C_FIELD(temp_r4_3073, f32 *, 8) + (f32) spD0;
             spA0 = (f64) sp50;
             MKWidget_Move((MKWidget *) arg2, *((MKVector3 *) &sp98));
         }
@@ -1914,9 +1928,9 @@ block_20:
             sp40 = 0.0f;
             sp88 = (f64) sp38;
             sp90 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spB8 = sp28;
+            temp_f0_3108 = M2C_FIELD(arg1, f64 *, 0) + sp88;
+            sp28 = temp_f0_3108;
+            spB8 = temp_f0_3108;
             sp30 = M2C_FIELD(arg1, f32 *, 8) + (f32) sp90;
             spC0 = (f64) sp30;
             MKWidget_Resize((MKWidget *) arg2, *((MKVector3 *) &spB8));
@@ -1971,6 +1985,7 @@ void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     f32 sp10C;
     f32 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF4;
     f32 spF0;
     f32 spEC;
@@ -1989,10 +2004,12 @@ void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp6C;
@@ -2020,6 +2037,10 @@ void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     f32 temp_f1_3423;
     f32 temp_f2_3458;
     f32 temp_f4_3377;
+    f64 temp_f0_3392;
+    f64 temp_f5_3371;
+    s8 **temp_r3_3369;
+    s8 **temp_r6_3295;
 
     MKWidget::Render(arg0);
     MKMaterial_SetMaterial(pWidgetBlank);
@@ -2036,12 +2057,12 @@ void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     sp208 = (f64) spE8;
     sp210 = (f64) spF0;
     sp218 = (f64) sp108;
+    temp_r6_3295 = this->unk4 + 0x38;
     sp220 = (f64) sp110;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r6, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spF8 = M2C_FIELD(temp_r6_3295, f64 *, 0) + sp218;
     sp120 = 0.0f;
     sp118 = -2.0f;
-    sp100 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) + (f32) sp220;
+    sp100 = M2C_FIELD(temp_r6_3295, f32 *, 8) + (f32) sp220;
     sp11C = -2.0f;
     sp228 = spF8;
     sp230 = (f64) sp100;
@@ -2075,11 +2096,12 @@ void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     sp188 = (f64) sp68;
     sp190 = (f64) sp70;
     sp198 = (f64) sp88;
+    temp_r3_3369 = this->unk4 + 0x38;
     sp1A0 = (f64) sp90;
-    M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f5, $f0 */);
+    temp_f5_3371 = M2C_FIELD(temp_r3_3369, f64 *, 0);
+    sp78 = temp_f5_3371 - sp198;
     spB0 = 0.0f;
-    temp_f4_3377 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8);
+    temp_f4_3377 = M2C_FIELD(temp_r3_3369, f32 *, 8);
     spA8 = 12.0f;
     spAC = 12.0f;
     sp80 = temp_f4_3377 - (f32) sp1A0;
@@ -2087,8 +2109,9 @@ void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     sp1A8 = sp78;
     sp1B0 = (f64) sp80;
     sp1C0 = (f64) spB0;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f5, $f0 */);
-    sp1C8 = sp98;
+    temp_f0_3392 = temp_f5_3371 - sp1B8;
+    sp98 = temp_f0_3392;
+    sp1C8 = temp_f0_3392;
     spA0 = temp_f4_3377 - (f32) sp1C0;
     sp1D0 = (f64) spA0;
     WidgetDrawBox(*((MKVector3 *) &sp1C8), *((MKVector3 *) &sp1A8), *((MKVector4 *) &sp188));
@@ -2146,10 +2169,10 @@ s32 MKWidgetEditable::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 spC8;
     f64 spC0;
     f64 spB8;
-    M2C_UNK spA8;
+    f64 spA8;
     f64 spA0;
     f64 sp98;
-    M2C_UNK sp88;
+    f64 sp88;
     f64 sp80;
     f64 sp78;
     f64 sp70;
@@ -2158,16 +2181,21 @@ s32 MKWidgetEditable::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKWidget *temp_r3_3503;
     MKWidget *temp_r3_3514;
     f32 temp_f3_3565;
     f32 temp_f3_3589;
+    f64 temp_f0_3699;
     s32 temp_r0_3733;
     s32 temp_r0_3786;
     s32 temp_r0_3802;
@@ -2220,24 +2248,18 @@ block_56:
         temp_f3_3565 = this->unk40.unk0;
         if (temp_f3_3565 < 6.0f) {
             this->unk58 = 0;
+        } else if (temp_f3_3565 >= ((-4.0f + M2C_FIELD(this->unk4, f32 *, 0x38)) - 10.0f)) {
+            this->unk58 = 2;
         } else {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f3_3565 == ((-4.0f + M2C_FIELD(this->unk4, f32 *, 0x38)) - 10.0f)) {
-                this->unk58 = 2;
-            } else {
-                this->unk58 = 1;
-            }
+            this->unk58 = 1;
         }
         temp_f3_3589 = this->unk40.unk4;
         if (temp_f3_3589 < 6.0f) {
             this->unk5C = 0;
+        } else if (temp_f3_3589 >= ((-4.0f + M2C_FIELD(this->unk4, f32 *, 0x3C)) - 10.0f)) {
+            this->unk5C = 2;
         } else {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f3_3589 == ((-4.0f + M2C_FIELD(this->unk4, f32 *, 0x3C)) - 10.0f)) {
-                this->unk5C = 2;
-            } else {
-                this->unk5C = 1;
-            }
+            this->unk5C = 1;
         }
         MKWidget_SetMouseFocus((MKWidget *) this);
         goto block_56;
@@ -2245,7 +2267,7 @@ block_56:
         temp_r28_3620 = MKWidgetContainer::MessageHandler(arg0, arg1);
         MKWidget_GetPos((MKWidget *) this, &sp118);
         MKVector(4.0f, 4.0f, 0.0f);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp28 = M2C_BITWISE(f64, sp118) + spA8;
         M2C_FIELD(this, f64 *, 0x30) = sp28;
         sp30 = sp118.unk8 + spB0;
         spB8 = sp28;
@@ -2258,8 +2280,7 @@ block_56:
     case 0x4:                                       /* switch 1 */
         if ((MKWidget *) this->unk28 != NULL) {
             MKVector(4.0f, 4.0f, 0.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp18 = M2C_FIELD(arg1, f64 *, 0) + sp88;
             M2C_FIELD(this, f64 *, 0x30) = sp18;
             sp20 = (f32) M2C_FIELD(arg1, f64 *, 8) + sp90;
             sp98 = sp18;
@@ -2277,9 +2298,9 @@ block_56:
             sp60 = 0.0f;
             sp78 = (f64) sp58;
             sp80 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp108 = sp48;
+            temp_f0_3699 = M2C_FIELD(arg1, f64 *, 0) - sp78;
+            sp48 = temp_f0_3699;
+            sp108 = temp_f0_3699;
             sp50 = (f32) M2C_FIELD(arg1, f64 *, 8) - (f32) sp80;
             sp110 = (f64) sp50;
             this->unk51 = 1;
@@ -2290,8 +2311,7 @@ block_56:
     case 0x2E:                                      /* switch 1 */
         if ((s32) this->unk54 != 0) {
             MKWidget_GetLocalMousePos((MKWidget *) this, &spF8);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp8 = M2C_BITWISE(f64, spF8) - (f64) M2C_FIELD(this, f32 *, 0x40);
             temp_r0_3733 = this->unk54;
             sp68 = sp8;
             sp10 = spF8.unk8 - this->unk40.unk8;
@@ -2694,7 +2714,7 @@ s32 MKWidgetTabStrip::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKWidgetTabStrip *spB8;
     f64 spB0;
     f64 spA8;
-    M2C_UNK sp98;
+    f64 sp98;
     f64 sp90;
     f64 sp88;
     f64 sp80;
@@ -2707,6 +2727,7 @@ s32 MKWidgetTabStrip::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -2714,9 +2735,11 @@ s32 MKWidgetTabStrip::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     MKWidget *temp_r3_4596;
     MKWidget *temp_r3_4640;
     f32 temp_f2_4615;
+    f64 temp_f0_4685;
     s32 temp_r0_4804;
     s32 temp_r0_4864;
     s32 temp_r26_4664;
@@ -2730,6 +2753,8 @@ s32 MKWidgetTabStrip::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 var_r29_4669;
     s32 var_r31_4557;
     s32 var_r31_4852;
+    s8 **temp_r3_4575;
+    s8 **temp_r4_4677;
     u32 temp_r25_4659;
 
     switch ((s32) arg0) {                           /* irregular */
@@ -2754,10 +2779,10 @@ loop_22:
             spCC = 26.0f;
             spD0 = 0.0f;
             MKVector(0.0f, 26.0f, 0.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_r3_4575 = this->unk4 + 0x38;
+            sp8 = M2C_FIELD(temp_r3_4575, f64 *, 0) - sp98;
             spA8 = sp8;
-            sp10 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) - spA0;
+            sp10 = M2C_FIELD(temp_r3_4575, f32 *, 8) - spA0;
             spF8 = sp8;
             spB0 = (f64) sp10;
             sp100 = (f64) sp10;
@@ -2788,13 +2813,14 @@ loop_26:
         if (var_r24_4661 < temp_r26_4664) {
             sp48 = 0.0f;
             sp4C = 26.0f;
+            temp_r4_4677 = this->unk4 + 0x38;
             sp50 = 0.0f;
             sp78 = (f64) sp48;
             sp80 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp88 = sp38;
-            sp40 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) - (f32) sp80;
+            temp_f0_4685 = M2C_FIELD(temp_r4_4677, f64 *, 0) - sp78;
+            sp38 = temp_f0_4685;
+            sp88 = temp_f0_4685;
+            sp40 = M2C_FIELD(temp_r4_4677, f32 *, 8) - (f32) sp80;
             sp90 = (f64) sp40;
             GetChild(var_r29_4669);
             MKWidget_Resize(M2C_ERROR(/* Read from unset register $r3 */), *((MKVector3 *) &sp88));
@@ -3127,7 +3153,7 @@ void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
     f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
-    M2C_UNK sp1A8;
+    f64 sp1A8;
     f64 sp1A0;
     f64 sp198;
     f64 sp190;
@@ -3157,6 +3183,7 @@ void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
     f32 spDC;
     f32 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
     f32 spBC;
     f32 spB8;
@@ -3164,15 +3191,19 @@ void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -3180,7 +3211,9 @@ void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKVector4 *temp_r31_5380;
     f32 temp_f1_5800;
     f32 temp_f27_5359;
@@ -3192,6 +3225,9 @@ void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
     f32 var_f2_5475;
     f32 var_f30_5487;
     f32 var_f31_5338;
+    f64 temp_f0_5550;
+    f64 temp_f0_5590;
+    f64 temp_f0_5697;
     s32 temp_r0_5330;
     s32 temp_r0_5467;
     s32 temp_r26_5673;
@@ -3205,7 +3241,9 @@ void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
     s32 var_r5_5681;
     s8 **temp_r28_5365;
     s8 **temp_r3_5329;
+    s8 **temp_r3_5414;
     s8 **temp_r3_5466;
+    s8 **temp_r3_5544;
     s8 *var_r28_5637;
     s8 *var_r31_5509;
     void *var_r3_5643;
@@ -3248,13 +3286,13 @@ void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
             }
             spD8 = temp_f27_5359;
             spDC = temp_f27_5359;
+            temp_r3_5414 = this->unk4 + 0x38;
             spE0 = 0.0f;
             sp1C8 = (f64) spD8;
             sp1D0 = (f64) spE0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            spC8 = M2C_FIELD(temp_r3_5414, f64 *, 0) - sp1C8;
             spF0 = 0.0f;
-            spD0 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) - (f32) sp1D0;
+            spD0 = M2C_FIELD(temp_r3_5414, f32 *, 8) - (f32) sp1D0;
             spE8 = temp_f27_5359;
             spEC = temp_f27_5359;
             sp1D8 = spC8;
@@ -3301,8 +3339,7 @@ void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
             var_r31_5509 = gpDebugFont;
         }
         MKVector(var_f31_5338, var_f31_5338, 0.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp18 = M2C_FIELD(arg0, f64 *, 0x30) + sp1A8;
         spA8 = temp_f27_5508;
         sp20 = arg0->unk38 + sp1B0;
         spAC = temp_f27_5508;
@@ -3310,22 +3347,24 @@ void MKWidgetTextBox::Render(MKWidgetRenderContext *arg0) {
         sp248 = sp18;
         sp250 = (f64) sp20;
         sp188 = (f64) spA8;
+        temp_r3_5544 = this->unk4 + 0x38;
         sp1B8 = sp18;
         sp1C0 = (f64) sp20;
         sp190 = (f64) spB0;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp198 = sp98;
-        spA0 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) - (f32) sp190;
+        temp_f0_5550 = M2C_FIELD(temp_r3_5544, f64 *, 0) - sp188;
+        sp98 = temp_f0_5550;
+        sp198 = temp_f0_5550;
+        spA0 = M2C_FIELD(temp_r3_5544, f32 *, 8) - (f32) sp190;
         sp1A0 = (f64) spA0;
         sp88 = ((f32) sp1A0 * arg0->unk20) + (((f32) sp198 * arg0->unk0) + (unksp19C * arg0->unk10));
         sp8C = ((f32) sp1A0 * arg0->unk24) + (((f32) sp198 * arg0->unk4) + (unksp19C * arg0->unk14));
         sp90 = ((f32) sp1A0 * arg0->unk28) + (((f32) sp198 * arg0->unk8) + (unksp19C * arg0->unk18));
         sp228 = (f64) sp88;
         sp230 = (f64) sp90;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp178 = sp8;
-        sp258 = sp8;
+        temp_f0_5590 = sp248 + sp228;
+        sp8 = temp_f0_5590;
+        sp178 = temp_f0_5590;
+        sp258 = temp_f0_5590;
         sp10 = (f32) sp250 + (f32) sp230;
         sp180 = (f64) sp10;
         sp260 = (f64) sp10;
@@ -3370,16 +3409,17 @@ loop_45:
                         sp60 = 0.0f;
                         sp128 = (f64) sp58;
                         sp130 = (f64) sp60;
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f3 */);
+                        temp_f0_5697 = sp238 + sp218;
+                        sp68 = temp_f0_5697;
                         temp_f4_5702 = (f32) sp240 + (f32) sp220;
-                        sp138 = sp68;
+                        sp138 = temp_f0_5697;
                         sp70 = temp_f4_5702;
                         sp140 = (f64) sp70;
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f3 */);
+                        sp48 = sp138 + sp128;
                         sp148 = sp48;
                         sp50 = (f32) sp140 + (f32) sp130;
                         sp150 = (f64) sp50;
+                        sp78 = sp238 + sp218;
                         sp80 = temp_f4_5702;
                         sp158 = sp78;
                         sp160 = (f64) sp80;
@@ -4469,12 +4509,16 @@ void MKWidgetListBox::Draw(MKWidgetRenderContext arg0) {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     MKVector4 *var_r3_7654;
     MKWidget *var_r30_7678;
+    f64 temp_f0_7595;
+    f64 temp_f0_7662;
 
     if (IsFlagSet(2U) != 0) {
         Render(arg0);
@@ -4486,9 +4530,10 @@ void MKWidgetListBox::Draw(MKWidgetRenderContext arg0) {
         sp80 = (f64) sp40;
         spD8 = M2C_FIELD(arg0, f64 *, 0x38);
         sp88 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spE0 = sp20;
-        sp70 = sp20;
+        temp_f0_7595 = spD0 + sp80;
+        sp20 = temp_f0_7595;
+        spE0 = temp_f0_7595;
+        sp70 = temp_f0_7595;
         sp28 = (f32) spD8 + (f32) sp88;
         spE8 = (f64) sp28;
         sp78 = (f64) sp28;
@@ -4510,8 +4555,9 @@ void MKWidgetListBox::Draw(MKWidgetRenderContext arg0) {
                 } else {
                     var_r3_7654 = MKWidget_GetMetric(5);
                 }
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp50 = sp30;
+                temp_f0_7662 = M2C_BITWISE(f64, sp90) + (f64) sp90.unk10;
+                sp30 = temp_f0_7662;
+                sp50 = temp_f0_7662;
                 sp38 = (f32) sp90.unk8 + spA8;
                 sp58 = (f64) sp38;
                 WidgetDrawBox(*((MKVector3 *) &sp90), *((MKVector3 *) &sp50), *var_r3_7654);
@@ -4776,7 +4822,7 @@ void MKWidgetScrollableFrame::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp54'
 void MKWidgetScrollableFrame::CheckScrollBarRequirements() {
     MKWidgetBoundingVolume sp60;
     f64 sp58;
@@ -4788,6 +4834,7 @@ void MKWidgetScrollableFrame::CheckScrollBarRequirements() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -4798,6 +4845,7 @@ void MKWidgetScrollableFrame::CheckScrollBarRequirements() {
     f32 var_f1_8466;
     f32 var_f2_8415;
     f32 var_f2_8515;
+    f64 temp_f0_8400;
     s32 temp_r0_8573;
     s32 temp_r0_8590;
     s32 var_r28_8414;
@@ -4806,10 +4854,9 @@ void MKWidgetScrollableFrame::CheckScrollBarRequirements() {
     s32 var_r31_8582;
 
     GetChildrenRange(&this->unk40, &this->unk50);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp50 = sp20;
+    temp_f0_8400 = M2C_FIELD(this, f64 *, 0x50) - M2C_FIELD(this, f64 *, 0x40);
+    sp20 = temp_f0_8400;
+    sp50 = temp_f0_8400;
     sp28 = this->unk50.unk8 - this->unk40.unk8;
     sp58 = (f64) sp28;
     MKWidget_GetClientVolume((MKWidget *) this, &sp60);
@@ -4913,10 +4960,14 @@ void MKWidgetScrollableFrame::GetChildrenRange(MKVector3 *arg0, MKVector3 *arg1)
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKWidget *temp_r6_8657;
     MKWidget *var_r31_8681;
+    f64 temp_f0_8698;
     s8 **temp_r3_8693;
+    s8 **temp_r3_8695;
     s8 **temp_r4_8660;
+    s8 **temp_r5_8694;
 
     temp_r6_8657 = this->unk28;
     if (temp_r6_8657 != NULL) {
@@ -4938,11 +4989,12 @@ loop_5:
         M2C_FIELD(arg0, f64 *, 0) = M2C_BITWISE(f64, sp38);
         M2C_FIELD(arg0, f64 *, 8) = (f64) sp38.unk8;
         temp_r3_8693 = var_r31_8681->unk4;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp18 = sp8;
-        sp10 = M2C_FIELD((temp_r3_8693 + 8), f32 *, 8) + M2C_FIELD((temp_r3_8693 + 0x38), f32 *, 8);
+        temp_r5_8694 = temp_r3_8693 + 0x38;
+        temp_r3_8695 = temp_r3_8693 + 8;
+        temp_f0_8698 = M2C_FIELD(temp_r3_8695, f64 *, 0) + M2C_FIELD(temp_r5_8694, f64 *, 0);
+        sp8 = temp_f0_8698;
+        sp18 = temp_f0_8698;
+        sp10 = M2C_FIELD(temp_r3_8695, f32 *, 8) + M2C_FIELD(temp_r5_8694, f32 *, 8);
         sp20 = (f64) sp10;
         Max(sp28, *arg1);
         M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, sp28);
@@ -4986,7 +5038,7 @@ MKWidget *MKWidgetScrollableFrame::TestPoint(MKVector3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void MKWidgetScrollableFrame::UpdateState() {
     MKVector3 sp98;
     MKVector3 sp88;
@@ -4999,24 +5051,30 @@ void MKWidgetScrollableFrame::UpdateState() {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f5_8800;
+    f64 temp_f0_8795;
+    f64 temp_f3_8794;
+    f64 temp_f4_8792;
 
     MKWidget::UpdateState();
     if (IsFlagSet(0x4000U) != 0) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f4, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f3, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f4, $f3 */);
+        temp_f4_8792 = this->unk60;
+        temp_f3_8794 = M2C_FIELD(this, f64 *, 0x30);
+        temp_f0_8795 = temp_f4_8792 - temp_f3_8794;
+        sp38 = temp_f0_8795;
         temp_f5_8800 = this->unk68 - this->unk38;
-        sp68 = sp38;
+        sp68 = temp_f0_8795;
         sp40 = temp_f5_8800;
         sp70 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f4, $f3 */);
+        sp28 = temp_f0_8795 * 5.122630465e-315;
         sp20 = 0.01f;
         sp18 = 0.01f;
         sp30 = (f32) sp70 * 0.1f;
@@ -5025,14 +5083,13 @@ void MKWidgetScrollableFrame::UpdateState() {
         sp80 = (f64) sp30;
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
+        sp8 = temp_f4_8792 - temp_f3_8794;
         sp10 = temp_f5_8800;
         sp48 = sp8;
         sp50 = (f64) sp10;
         Max(sp88, *((MKVector3 *) &sp78));
         Min(sp98, sp88);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        M2C_FIELD(this, f64 *, 0x30) = (f64) (M2C_FIELD(this, f64 *, 0x30) + M2C_BITWISE(f64, sp98));
         this->unk38 += sp98.unk8;
         return;
     }
@@ -5787,8 +5844,7 @@ block_139:
             if (IsFlagSet(0x100U) != 0) {
                 temp_r3_10204 = this->unk4;
                 temp_f1_10206 = M2C_FIELD(temp_r3_10204, f32 *, 0x68);
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (temp_f1_10206 == 0.0f) {
+                if (temp_f1_10206 >= 0.0f) {
                     var_f0_10221 = (f32) (s32) (0.5f + temp_f1_10206);
                 } else {
                     var_f0_10221 = (f32) (s32) (temp_f1_10206 - 0.5f);
@@ -6034,7 +6090,7 @@ void MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp78'
+#if 0 // DRAFT: illegal type
 s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp1F0;                                      /* compiler-managed */
     f64 sp1E8;
@@ -6083,16 +6139,38 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp90;
     f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f2_11074;
+    f64 temp_f0_10860;
+    f64 temp_f0_10924;
+    f64 temp_f0_11009;
+    f64 temp_f0_11024;
+    f64 temp_f0_11057;
+    f64 temp_f1_10852;
+    f64 temp_f1_10916;
+    f64 temp_f1_11049;
+    s8 **temp_r3_10858;
+    s8 **temp_r3_10922;
     s8 **temp_r3_10999;
+    s8 **temp_r3_11011;
     s8 **temp_r3_11054;
+    s8 **temp_r4_10829;
+    s8 **temp_r4_10893;
+    s8 **temp_r4_11001;
     u8 var_r0_11070;
 
     switch ((s32) arg0) {                           /* irregular */
@@ -6100,23 +6178,25 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(arg1, f64 *, 0);
         this->unk30 = M2C_FIELD(arg1, f64 *, 8);
         sp168.operator*(0.5f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_r4_10829 = this->unk4 + 8;
+        sp78 = M2C_FIELD(temp_r4_10829, f64 *, 0) + M2C_BITWISE(f64, sp168);
         sp178 = sp78;
-        sp80 = M2C_FIELD((this->unk4 + 8), f32 *, 8) + sp168.unk8;
+        sp80 = M2C_FIELD(temp_r4_10829, f32 *, 8) + sp168.unk8;
         sp1E8 = sp78;
         sp180 = (f64) sp80;
         sp1F0 = (f64) sp80;
         Max(sp148, *((MKVector3 *) &sp1E8));
         Min(sp158, sp148);
-        sp1E8 = M2C_BITWISE(f64, sp158);
+        temp_f1_10852 = M2C_BITWISE(f64, sp158);
+        sp1E8 = temp_f1_10852;
         sp1F0 = (f64) sp158.unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp138 = sp68;
-        sp70 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) * 0.5f;
+        temp_r3_10858 = this->unk4 + 0x38;
+        temp_f0_10860 = M2C_FIELD(temp_r3_10858, f64 *, 0) * 5.222099017e-315;
+        sp68 = temp_f0_10860;
+        sp138 = temp_f0_10860;
+        sp70 = M2C_FIELD(temp_r3_10858, f32 *, 8) * 0.5f;
         sp140 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp1E8 = temp_f1_10852 - temp_f0_10860;
         sp1F0 = (f32) sp1F0 - (f32) sp140;
         MKWidget_Move((MKWidget *) this, *((MKVector3 *) &sp1E8));
         return 0;
@@ -6124,23 +6204,25 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         M2C_FIELD(this, f64 *, 0x38) = (f64) M2C_FIELD(arg1, f64 *, 0);
         this->unk40 = M2C_FIELD(arg1, f64 *, 8);
         sp118.operator*(0.5f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_r4_10893 = this->unk4 + 8;
+        sp58 = M2C_FIELD(temp_r4_10893, f64 *, 0) + M2C_BITWISE(f64, sp118);
         sp128 = sp58;
-        sp60 = M2C_FIELD((this->unk4 + 8), f32 *, 8) + sp118.unk8;
+        sp60 = M2C_FIELD(temp_r4_10893, f32 *, 8) + sp118.unk8;
         sp1D8 = sp58;
         sp130 = (f64) sp60;
         sp1E0 = (f64) sp60;
         Max(spF8, *((MKVector3 *) &sp1D8));
         Min(sp108, spF8);
-        sp1D8 = M2C_BITWISE(f64, sp108);
+        temp_f1_10916 = M2C_BITWISE(f64, sp108);
+        sp1D8 = temp_f1_10916;
         sp1E0 = (f64) sp108.unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spE8 = sp48;
-        sp50 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) * 0.5f;
+        temp_r3_10922 = this->unk4 + 0x38;
+        temp_f0_10924 = M2C_FIELD(temp_r3_10922, f64 *, 0) * 5.222099017e-315;
+        sp48 = temp_f0_10924;
+        spE8 = temp_f0_10924;
+        sp50 = M2C_FIELD(temp_r3_10922, f32 *, 8) * 0.5f;
         spF0 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp1D8 = temp_f1_10916 - temp_f0_10924;
         sp1E0 = (f32) sp1E0 - (f32) spF0;
         MKWidget_Move((MKWidget *) this, *((MKVector3 *) &sp1D8));
         return 0;
@@ -6174,39 +6256,41 @@ block_23:
     case 0x2E:
         if ((u8) this->unk58 != 0) {
             MKWidget_GetLocalMousePos((MKWidget *) this, &sp1A8);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp38 = M2C_BITWISE(f64, sp1A8) - M2C_FIELD(this, f64 *, 0x48);
             temp_r3_10999 = this->unk4;
             sp198 = sp38;
+            temp_r4_11001 = temp_r3_10999 + 8;
             sp40 = sp1A8.unk8 - this->unk48.unk8;
             spD8 = sp38;
             spE0 = (f64) sp40;
             sp1A0 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp1A8 = sp28;
-            spC8 = sp28;
-            sp30 = M2C_FIELD((temp_r3_10999 + 8), f32 *, 8) + (f32) sp1A0;
+            temp_f0_11009 = M2C_FIELD(temp_r4_11001, f64 *, 0) + sp198;
+            sp28 = temp_f0_11009;
+            temp_r3_11011 = temp_r3_10999 + 0x38;
+            sp1A8 = temp_f0_11009;
+            spC8 = temp_f0_11009;
+            sp30 = M2C_FIELD(temp_r4_11001, f32 *, 8) + (f32) sp1A0;
             sp1A8.unk8 = (f64) sp30;
             spD0 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spB8 = sp18;
-            sp20 = M2C_FIELD((temp_r3_10999 + 0x38), f32 *, 8) * 0.5f;
+            temp_f0_11024 = M2C_FIELD(temp_r3_11011, f64 *, 0) * 5.222099017e-315;
+            sp18 = temp_f0_11024;
+            spB8 = temp_f0_11024;
+            sp20 = M2C_FIELD(temp_r3_11011, f32 *, 8) * 0.5f;
             spC0 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp1A8 = M2C_BITWISE(f64, sp1A8) + temp_f0_11024;
             sp1A8.unk8 += (f32) spC0;
-            Max(sp98, sp1A8);
+            Max(sp98, *((MKVector3 *) &sp1A8));
             Min(spA8, sp98);
-            sp1A8 = M2C_BITWISE(f64, spA8);
+            temp_f1_11049 = M2C_BITWISE(f64, spA8);
+            sp1A8 = temp_f1_11049;
             sp1A8.unk8 = (f64) spA8.unk8;
             temp_r3_11054 = this->unk4;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp88 = sp8;
+            temp_f0_11057 = *(temp_r3_11054 + 0x38) * 5.222099017e-315;
+            sp8 = temp_f0_11057;
+            sp88 = temp_f0_11057;
             sp10 = M2C_FIELD(temp_r3_11054, f32 *, 0x40) * 0.5f;
             sp90 = (f64) sp10;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp1A8 = temp_f1_11049 - temp_f0_11057;
             var_r0_11070 = 0;
             temp_f2_11074 = (f32) sp1A8.unk8 - (f32) sp90;
             sp1A8.unk8 = temp_f2_11074;
@@ -6436,10 +6520,12 @@ void MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     MKVector4 *temp_r30_11518;
     s8 **temp_r29_11515;
     s8 **temp_r3_11603;
     s8 **temp_r3_11614;
+    s8 **temp_r4_11558;
     void *temp_r3_11539;
     void *temp_r3_11547;
 
@@ -6462,14 +6548,14 @@ void MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
     }
     sp18 = 1.0f;
     sp1C = 1.0f;
+    temp_r4_11558 = this->unk4 + 0x38;
     sp20 = 0.0f;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp8 = M2C_FIELD(temp_r4_11558, f64 *, 0) - sp38;
     sp30 = 0.0f;
     sp28 = 1.0f;
-    sp10 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) - (f32) sp40;
+    sp10 = M2C_FIELD(temp_r4_11558, f32 *, 8) - (f32) sp40;
     sp2C = 1.0f;
     sp48 = sp8;
     sp50 = (f64) sp10;
@@ -6528,7 +6614,7 @@ s32 MKWidgetCheckMark::MessageHandler(unsigned int arg0, unsigned int arg1) {
             if ((u8) this->unk28 != 0) {
                 MKWidget_GetLocalMousePos((MKWidget *) this, &sp28);
                 temp_f1_11695 = M2C_BITWISE(f32, sp28);
-                if ((temp_f1_11695 < 0.0f) || (sp28.unk4 < 0.0f) || (temp_r3_11702 = this->unk4, M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_11695 == M2C_FIELD(temp_r3_11702, f32 *, 0x38)) != 0)) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((sp28.unk4 == M2C_FIELD(temp_r3_11702, f32 *, 0x3C)) != 0))) {
+                if ((temp_f1_11695 < 0.0f) || (sp28.unk4 < 0.0f) || (temp_r3_11702 = this->unk4, ((temp_f1_11695 >= M2C_FIELD(temp_r3_11702, f32 *, 0x38)) != 0)) || (sp28.unk4 >= M2C_FIELD(temp_r3_11702, f32 *, 0x3C))) {
                     this->unk29 = 0;
                 } else {
                     this->unk29 = 1;
@@ -6630,11 +6716,13 @@ void MKWidgetButton::Render(MKWidgetRenderContext *arg0) {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     MKVector4 *temp_r29_11883;
     s32 var_r5_11897;
+    s8 **temp_r3_11907;
     u8 var_r28_11872;
 
     MKWidget::Render(arg0);
@@ -6654,13 +6742,13 @@ void MKWidgetButton::Render(MKWidgetRenderContext *arg0) {
     }
     sp30 = 1.0f;
     sp34 = 1.0f;
+    temp_r3_11907 = this->unk4 + 0x38;
     sp38 = 0.0f;
     sp60 = (f64) sp30;
     sp68 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp20 = M2C_FIELD(temp_r3_11907, f64 *, 0) - sp60;
     sp48 = 0.0f;
-    sp28 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) - (f32) sp68;
+    sp28 = M2C_FIELD(temp_r3_11907, f32 *, 8) - (f32) sp68;
     sp40 = 1.0f;
     sp44 = 1.0f;
     sp70 = sp20;
@@ -6692,7 +6780,7 @@ void MKWidgetButton::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp88'
+#if 0 // DRAFT: illegal type
 s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 sp1C4;
     u32 sp1C0;
@@ -6749,6 +6837,7 @@ s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
@@ -6756,6 +6845,7 @@ s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -6769,13 +6859,20 @@ s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_12338;
     f32 temp_f30_12166;
     f32 temp_f31_12169;
+    f64 temp_f0_12139;
+    f64 temp_f0_12194;
+    f64 temp_f0_12262;
     s32 temp_r0_12389;
     s32 temp_r30_12109;
     s32 temp_r30_12292;
     s8 **temp_r3_12345;
+    s8 **temp_r4_12131;
+    s8 **temp_r4_12187;
+    s8 **temp_r4_12254;
 
     if ((s32) arg0 != 0x2F) {
         if ((s32) arg0 < 0x2F) {
@@ -6795,13 +6892,14 @@ s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
                         MKWidget_Move(&this->unk54, *((MKVector3 *) &sp158));
                         sp98 = 2.0f;
                         sp9C = 2.0f;
+                        temp_r4_12131 = this->unk4 + 0x38;
                         spA0 = 0.0f;
                         sp138 = (f64) sp98;
                         sp140 = (f64) spA0;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        sp148 = sp88;
-                        sp90 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) - (f32) sp140;
+                        temp_f0_12139 = M2C_FIELD(temp_r4_12131, f64 *, 0) - sp138;
+                        sp88 = temp_f0_12139;
+                        sp148 = temp_f0_12139;
+                        sp90 = M2C_FIELD(temp_r4_12131, f32 *, 8) - (f32) sp140;
                         sp150 = (f64) sp90;
                         MKWidget_Resize(&this->unk54, *((MKVector3 *) &sp148));
                     } else if (IsFlagSet(0x1000U) != 0) {
@@ -6815,13 +6913,14 @@ s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
                         MKWidget_Move(&this->unk28, *((MKVector3 *) &sp128));
                         sp70 = 0.0f;
                         sp6C = 6.0f;
+                        temp_r4_12187 = this->unk4 + 0x38;
                         sp68 = 2.0f + (6.0f + temp_f30_12166);
                         sp110 = (f64) sp70;
                         sp108 = (f64) sp68;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        sp118 = sp58;
-                        sp60 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) - (f32) sp110;
+                        temp_f0_12194 = M2C_FIELD(temp_r4_12187, f64 *, 0) - sp108;
+                        sp58 = temp_f0_12194;
+                        sp118 = temp_f0_12194;
+                        sp60 = M2C_FIELD(temp_r4_12187, f32 *, 8) - (f32) sp110;
                         sp120 = (f64) sp60;
                         MKWidget_Resize(&this->unk28, *((MKVector3 *) &sp118));
                         sp48 = 3.0f;
@@ -6845,13 +6944,14 @@ s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
                         MKWidget_Move(&this->unk28, *((MKVector3 *) &spD8));
                         sp18 = 6.0f;
                         sp1C = 6.0f;
+                        temp_r4_12254 = this->unk4 + 0x38;
                         sp20 = 0.0f;
                         spB8 = (f64) sp18;
                         spC0 = (f64) sp20;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        spC8 = sp8;
-                        sp10 = M2C_FIELD((this->unk4 + 0x38), f32 *, 8) - (f32) spC0;
+                        temp_f0_12262 = M2C_FIELD(temp_r4_12254, f64 *, 0) - spB8;
+                        sp8 = temp_f0_12262;
+                        spC8 = temp_f0_12262;
+                        sp10 = M2C_FIELD(temp_r4_12254, f32 *, 8) - (f32) spC0;
                         spD0 = (f64) sp10;
                         MKWidget_Resize(&this->unk28, *((MKVector3 *) &spC8));
                     }
@@ -6880,7 +6980,7 @@ block_40:
                     if ((u8) this->unk84 != 0) {
                         MKWidget_GetLocalMousePos((MKWidget *) this, &sp1A8);
                         temp_f1_12338 = M2C_BITWISE(f32, sp1A8);
-                        if ((temp_f1_12338 < 0.0f) || (sp1A8.unk4 < 0.0f) || (temp_r3_12345 = this->unk4, M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_12338 == M2C_FIELD(temp_r3_12345, f32 *, 0x38)) != 0)) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((sp1A8.unk4 == M2C_FIELD(temp_r3_12345, f32 *, 0x3C)) != 0))) {
+                        if ((temp_f1_12338 < 0.0f) || (sp1A8.unk4 < 0.0f) || (temp_r3_12345 = this->unk4, ((temp_f1_12338 >= M2C_FIELD(temp_r3_12345, f32 *, 0x38)) != 0)) || (sp1A8.unk4 >= M2C_FIELD(temp_r3_12345, f32 *, 0x3C))) {
                             this->unk85 = 0;
                         } else {
                             this->unk85 = 1;
@@ -7030,11 +7130,9 @@ void MKWidgetString::Render(MKWidgetRenderContext *arg0) {
         }
         temp_r6_12595 = this->unk4;
         temp_f1_12597 = M2C_FIELD(temp_r6_12595, f32 *, 0x38);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_12597 == 1.0f) {
+        if (temp_f1_12597 >= 1.0f) {
             temp_f2_12601 = M2C_FIELD(temp_r6_12595, f32 *, 0x3C);
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f2_12601 == 1.0f) {
+            if (temp_f2_12601 >= 1.0f) {
                 MKFont_DrawStringJustified(var_r31_12576, M2C_FIELD(temp_r6_12595, s8 **, 0x68), MKVector3::zero, temp_f1_12597, temp_f2_12601, (FontJustify) M2C_FIELD(temp_r6_12595, s32 *, 0x70), var_f3_12589, arg0->unk40, -1, *((Matrix *) arg0));
             }
         }
@@ -7177,7 +7275,7 @@ void MKWidgetWindowTitleBar::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 s32 MKWidgetWindowTitleBar::MessageHandler(unsigned int arg0, unsigned int arg1) {
     MKVector3 sp98;
     f64 sp90;
@@ -7200,6 +7298,7 @@ s32 MKWidgetWindowTitleBar::MessageHandler(unsigned int arg0, unsigned int arg1)
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f2_12948;
     f32 temp_f3_12920;
 
@@ -7234,15 +7333,14 @@ s32 MKWidgetWindowTitleBar::MessageHandler(unsigned int arg0, unsigned int arg1)
             case 46:                                /* switch 1 */
                 if ((u8) this->unkEC != 0) {
                     MKWidget_GetLocalMousePos((MKWidget *) this, &sp98);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp8 = M2C_BITWISE(f64, sp98) - M2C_FIELD(this, f64 *, 0x28);
                     sp48 = sp8;
                     sp10 = sp98.unk8 - this->unk28.unk8;
                     sp88 = sp8;
                     sp50 = (f64) sp10;
                     sp90 = (f64) sp10;
                     MKWidget_SendMessage(this->unk18, 9U, (u32) &sp98);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                    sp98 = M2C_BITWISE(f64, sp98) + sp88;
                     sp98.unk8 += (f32) sp90;
                     MKWidget_SendMessage(this->unk18, 4U, (u32) &sp98);
                 }
@@ -7346,24 +7444,32 @@ void MKWidgetWindow::Render(MKWidgetRenderContext *arg0) {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
+    f32 temp_f2_13238;
+    f32 temp_f31_13212;
+    f64 temp_f0_13214;
+    f64 temp_f0_13241;
     s8 **temp_r3_13207;
 
     if (IsFlagSet(0x20000U) != 0) {
         temp_r3_13207 = this->unk4;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp40 = sp20;
-        sp28 = arg0->unk18 * (-M2C_FIELD(temp_r3_13207, f32 *, 0x80) * M2C_FIELD(temp_r3_13207, f32 *, 0x1C));
+        temp_f31_13212 = -M2C_FIELD(temp_r3_13207, f32 *, 0x80) * M2C_FIELD(temp_r3_13207, f32 *, 0x1C);
+        temp_f0_13214 = M2C_FIELD(arg0, f64 *, 0x10) * (f64) temp_f31_13212;
+        sp20 = temp_f0_13214;
+        sp40 = temp_f0_13214;
+        sp28 = arg0->unk18 * temp_f31_13212;
         sp48 = (f64) sp28;
         arg0->Translate((Matrix *) arg0, *((MKVector3 *) &sp40));
     }
     MKWidgetFrame::Render(arg0);
     if (IsFlagSet(0x20000U) != 0) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp30 = sp10;
-        sp18 = arg0->unk18 * M2C_FIELD(this->unk4, f32 *, 0x80);
+        temp_f2_13238 = M2C_FIELD(this->unk4, f32 *, 0x80);
+        temp_f0_13241 = M2C_FIELD(arg0, f64 *, 0x10) * (f64) temp_f2_13238;
+        sp10 = temp_f0_13241;
+        sp30 = temp_f0_13241;
+        sp18 = arg0->unk18 * temp_f2_13238;
         sp38 = (f64) sp18;
         arg0->Translate((Matrix *) arg0, *((MKVector3 *) &sp30));
     }
@@ -7392,7 +7498,7 @@ s32 MKWidgetWindow::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 spBC;
     f32 spB8;                                       /* compiler-managed */
     f32 spB0;
-    M2C_UNK spA8;
+    f64 spA8;
     f64 sp98;
     MKVector3 sp88;
     f64 sp80;
@@ -7410,7 +7516,9 @@ s32 MKWidgetWindow::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKWidgetWindow *var_r3_0;
     f32 temp_f1_13621;
     f32 temp_f1_13624;
@@ -7432,6 +7540,7 @@ s32 MKWidgetWindow::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f32 var_f3_13967;
     f32 var_f4_13675;
     f32 var_f4_13990;
+    f64 temp_f0_13859;
     s32 temp_r0_13717;
     s32 temp_r0_13762;
     s32 temp_r0_13770;
@@ -7550,15 +7659,14 @@ block_158:
         MKWidget_GetLocalMousePos((MKWidget *) var_r3_0, &var_r3_0->unk140);
         if ((s32) var_r3_0->unk150 == 0) {
             temp_f3_13559 = var_r3_0->unk140.unk0;
-            if (!(temp_f3_13559 < 0.0f) && !(var_r3_0->unk140.unk4 < 0.0f) && (temp_r3_13566 = var_r3_0->unk4, M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f3_13559 == -((2.0f * M2C_FIELD(temp_r3_13566, f32 *, 0x70)) - M2C_FIELD(temp_r3_13566, f32 *, 0x38))) == 0))) {
+            if (!(temp_f3_13559 < 0.0f) && !(var_r3_0->unk140.unk4 < 0.0f) && (temp_r3_13566 = var_r3_0->unk4, ((temp_f3_13559 >= -((2.0f * M2C_FIELD(temp_r3_13566, f32 *, 0x70)) - M2C_FIELD(temp_r3_13566, f32 *, 0x38))) == 0))) {
                 if (var_r3_0->IsFlagSet(0x20000U) != 0) {
                     var_f3_13580 = M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
                 } else {
                     var_f3_13580 = 0.0f;
                 }
                 temp_r3_13585 = var_r3_0->unk4;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (var_r3_0->unk140.unk4 == -((2.0f * M2C_FIELD(temp_r3_13585, f32 *, 0x70)) - (M2C_FIELD(temp_r3_13585, f32 *, 0x3C) - var_f3_13580))) {
+                if (var_r3_0->unk140.unk4 >= -((2.0f * M2C_FIELD(temp_r3_13585, f32 *, 0x70)) - (M2C_FIELD(temp_r3_13585, f32 *, 0x3C) - var_f3_13580))) {
                     goto block_46;
                 }
             } else {
@@ -7583,13 +7691,10 @@ block_46:
                 temp_f1_13624 = 3.0f * temp_f1_13621;
                 if (temp_f3_13622 < (temp_f2_13623 + temp_f1_13624)) {
                     var_r3_0->unk154 = 0;
+                } else if (temp_f3_13622 >= ((temp_f2_13623 + M2C_FIELD(temp_r3_13619, f32 *, 0x38)) - temp_f1_13624)) {
+                    var_r3_0->unk154 = 2;
                 } else {
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (temp_f3_13622 == ((temp_f2_13623 + M2C_FIELD(temp_r3_13619, f32 *, 0x38)) - temp_f1_13624)) {
-                        var_r3_0->unk154 = 2;
-                    } else {
-                        var_r3_0->unk154 = 1;
-                    }
+                    var_r3_0->unk154 = 1;
                 }
                 if (var_r3_0->IsFlagSet(0x20000U) != 0) {
                     var_f3_13651 = M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
@@ -7607,8 +7712,7 @@ block_46:
                     }
                     temp_r3_13680 = var_r3_0->unk4;
                     temp_f5_13682 = M2C_FIELD(temp_r3_13680, f32 *, 0x70);
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (var_r3_0->unk140.unk4 == -((3.0f * temp_f5_13682) - (M2C_FIELD(temp_r3_13680, f32 *, 0x3C) + (-temp_f5_13682 - var_f4_13675)))) {
+                    if (var_r3_0->unk140.unk4 >= -((3.0f * temp_f5_13682) - (M2C_FIELD(temp_r3_13680, f32 *, 0x3C) + (-temp_f5_13682 - var_f4_13675)))) {
                         var_r3_0->unk158 = 2;
                     } else {
                         var_r3_0->unk158 = 1;
@@ -7621,8 +7725,7 @@ block_46:
     case 0x2E:                                      /* switch 1 */
         if ((s32) var_r3_0->unk150 != 0) {
             MKWidget_GetLocalMousePos((MKWidget *) var_r3_0, &spD8);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp18 = M2C_BITWISE(f64, spD8) - (f64) M2C_FIELD(var_r3_0, f32 *, 0x140);
             temp_r0_13717 = var_r3_0->unk150;
             sp58 = sp18;
             sp20 = spD8.unk8 - var_r3_0->unk140.unk8;
@@ -7673,14 +7776,15 @@ block_46:
                 } else if (temp_r0_13841 == 2) {
                     spBC += unkspCC;
                 }
-                M2C_ERROR(/* unknown instruction: ps_div $f0, $f1, $f0 */);
-                spB8 = sp8;
-                sp48 = sp8;
+                temp_f0_13859 = (f64) spB8 / sp98;
+                sp8 = temp_f0_13859;
+                spB8 = temp_f0_13859;
+                sp48 = temp_f0_13859;
                 sp10 = (f32) spC0 / (f32) spA0;
                 spC0 = (f64) sp10;
                 sp50 = (f64) sp10;
                 spC0 = 1.0f;
-                M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
+                spA8 *= temp_f0_13859;
                 spB0 *= 1.0f;
                 MKWidget_SendMessage((MKWidget *) var_r3_0, 6U, (u32) &spB8);
             }
@@ -7692,15 +7796,14 @@ block_46:
                 } else {
                     var_f1_13899 = 0.0f;
                 }
-                if (!(sp88.unk4 < var_f1_13899) && (temp_r3_13907 = var_r3_0->unk4, M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_BITWISE(f32, sp88) == -((2.0f * M2C_FIELD(temp_r3_13907, f32 *, 0x70)) - M2C_FIELD(temp_r3_13907, f32 *, 0x38))) == 0))) {
+                if (!(sp88.unk4 < var_f1_13899) && (temp_r3_13907 = var_r3_0->unk4, ((M2C_BITWISE(f32, sp88) >= -((2.0f * M2C_FIELD(temp_r3_13907, f32 *, 0x70)) - M2C_FIELD(temp_r3_13907, f32 *, 0x38))) == 0))) {
                     if (var_r3_0->IsFlagSet(0x20000U) != 0) {
                         var_f3_13922 = M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
                     } else {
                         var_f3_13922 = 0.0f;
                     }
                     temp_r3_13927 = var_r3_0->unk4;
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (sp88.unk4 == -((2.0f * M2C_FIELD(temp_r3_13927, f32 *, 0x70)) - (M2C_FIELD(temp_r3_13927, f32 *, 0x3C) - var_f3_13922))) {
+                    if (sp88.unk4 >= -((2.0f * M2C_FIELD(temp_r3_13927, f32 *, 0x70)) - (M2C_FIELD(temp_r3_13927, f32 *, 0x3C) - var_f3_13922))) {
                         goto block_113;
                     }
                     gWidgetCursor = 0;
@@ -7716,13 +7819,10 @@ block_113:
                 temp_f1_13943 = 3.0f * temp_f1_13940;
                 if (temp_f3_13941 < (temp_f2_13942 + temp_f1_13943)) {
                     var_r28_13947 = 0;
+                } else if (temp_f3_13941 >= ((temp_f2_13942 + M2C_FIELD(temp_r3_13938, f32 *, 0x38)) - temp_f1_13943)) {
+                    var_r28_13947 = 2;
                 } else {
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (temp_f3_13941 == ((temp_f2_13942 + M2C_FIELD(temp_r3_13938, f32 *, 0x38)) - temp_f1_13943)) {
-                        var_r28_13947 = 2;
-                    } else {
-                        var_r28_13947 = 1;
-                    }
+                    var_r28_13947 = 1;
                 }
                 if (var_r3_0->IsFlagSet(0x20000U) != 0) {
                     var_f3_13967 = M2C_FIELD(var_r3_0->unk4, f32 *, 0x80);
@@ -7740,8 +7840,7 @@ block_113:
                     }
                     temp_r3_13995 = var_r3_0->unk4;
                     temp_f5_13997 = M2C_FIELD(temp_r3_13995, f32 *, 0x70);
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (sp88.unk4 == -((3.0f * temp_f5_13997) - (M2C_FIELD(temp_r3_13995, f32 *, 0x3C) + (-temp_f5_13997 - var_f4_13990)))) {
+                    if (sp88.unk4 >= -((3.0f * temp_f5_13997) - (M2C_FIELD(temp_r3_13995, f32 *, 0x3C) + (-temp_f5_13997 - var_f4_13990)))) {
                         var_r0_13981 = 2;
                     } else {
                         var_r0_13981 = 1;
@@ -7878,23 +7977,36 @@ void MKWidgetFrame::Render(MKWidgetRenderContext *arg0) {
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKVector4 *temp_r30_14463;
     f32 temp_f1_14369;
     f32 temp_f3_14334;
     f32 temp_f3_14350;
     f32 var_f2_14360;
     f32 var_f31_14379;
+    f64 temp_f0_14387;
+    f64 temp_f0_14431;
+    f64 temp_f0_14485;
+    f64 temp_f0_14520;
     s32 temp_r27_14342;
     s32 temp_r5_14337;
     s8 **temp_r28_14427;
@@ -7946,32 +8058,32 @@ void MKWidgetFrame::Render(MKWidgetRenderContext *arg0) {
             } else {
                 var_f31_14379 = 1.0f;
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-            sp138 = sp88;
+            temp_f0_14387 = *(temp_r29_14377 + 0x38) - sp168;
+            sp88 = temp_f0_14387;
+            sp138 = temp_f0_14387;
             sp90 = M2C_FIELD(temp_r29_14377, f32 *, 0x40) - (f32) sp170;
             sp140 = (f64) sp90;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f1 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f1 */);
+            sp78 = temp_f0_14387 - sp188;
             sp148 = sp78;
             sp80 = (f32) sp140 - (f32) sp190;
             sp150 = (f64) sp80;
+            sp98 = sp168 - sp188;
             spA0 = (f32) sp170 - (f32) sp190;
             sp158 = sp98;
             sp160 = (f64) spA0;
             WidgetDrawSquare(*((MKVector3 *) &sp158), *((MKVector3 *) &sp148), var_f31_14379 * M2C_FIELD(temp_r29_14377, f32 *, 0x68), *(MKWidget_GetMetric(0x16)));
         } else {
             temp_r28_14427 = this->unk4;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-            sp108 = sp58;
+            temp_f0_14431 = *(temp_r28_14427 + 0x38) - sp168;
+            sp58 = temp_f0_14431;
+            sp108 = temp_f0_14431;
             sp60 = M2C_FIELD(temp_r28_14427, f32 *, 0x40) - (f32) sp170;
             sp110 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f1 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f1 */);
+            sp48 = temp_f0_14431 - sp188;
             sp118 = sp48;
             sp50 = (f32) sp110 - (f32) sp190;
             sp120 = (f64) sp50;
+            sp68 = sp168 - sp188;
             sp70 = (f32) sp170 - (f32) sp190;
             sp128 = sp68;
             sp130 = (f64) sp70;
@@ -7981,12 +8093,12 @@ void MKWidgetFrame::Render(MKWidgetRenderContext *arg0) {
     }
     if (IsFlagSet(0x100U) != 0) {
         temp_r5_14481 = this->unk4;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        spC8 = sp18;
+        temp_f0_14485 = *(temp_r5_14481 + 0x38) - sp188;
+        sp18 = temp_f0_14485;
+        spC8 = temp_f0_14485;
         sp20 = M2C_FIELD(temp_r5_14481, f32 *, 0x40) - (f32) sp190;
         spD0 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f5 */);
+        sp8 = temp_f0_14485 - (f64) sp178;
         sp40 = -(f32) sp190;
         sp38 = -(f32) sp188;
         sp3C = -unksp18C;
@@ -7995,8 +8107,9 @@ void MKWidgetFrame::Render(MKWidgetRenderContext *arg0) {
         spD8 = sp8;
         spE0 = (f64) sp10;
         spF0 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f5 */);
-        spF8 = sp28;
+        temp_f0_14520 = spE8 + (f64) sp178;
+        sp28 = temp_f0_14520;
+        spF8 = temp_f0_14520;
         sp30 = (f32) spF0 + sp180;
         sp100 = (f64) sp30;
         WidgetDrawBox(*((MKVector3 *) &spF8), *((MKVector3 *) &spD8), M2C_FIELD(temp_r5_14481, s32 *, 0x78));
@@ -8113,6 +8226,7 @@ s32 SystemReceiverCallback(MKInputEvent *arg0, void *arg1) {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKWidget *temp_r3_14819;
     MKWidget *temp_r3_14970;
     MKWidget *temp_r3_14980;
@@ -8158,7 +8272,7 @@ block_51:
                     MKWidget_GetLocalMousePos(temp_r3_14819, &sp68);
                     MKWidget_GetBoundingVolume(M2C_FIELD(arg1, MKWidget **, 0x50), &sp78);
                     temp_f1_14827 = M2C_BITWISE(f32, sp68);
-                    if ((temp_f1_14827 < 0.0f) || (sp68.unk4 < 0.0f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_14827 == sp78.unk10) != 0)) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((sp68.unk4 == sp78.unk14) != 0))) {
+                    if ((temp_f1_14827 < 0.0f) || (sp68.unk4 < 0.0f) || (temp_f1_14827 >= sp78.unk10) || (sp68.unk4 >= sp78.unk14)) {
                         M2C_FIELD(arg1, s32 *, 0x60) = 0;
                         M2C_FIELD(arg1, s32 *, 0x5C) = 0;
                     } else {
@@ -8179,8 +8293,7 @@ block_51:
                         }
                         if (temp_r28_14863 != 0) {
                             MKWidget_GetMousePos(&sp58);
-                            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                            sp8 = M2C_BITWISE(f64, sp58) - M2C_FIELD(&clickPos, f64 *, 0);
                             sp18 = sp8;
                             sp10 = sp58.unk8 - clickPos.unk8;
                             sp20 = (f64) sp10;
@@ -8344,10 +8457,12 @@ void MKWidgetSystem::Draw(MKWidgetRenderContext arg0) {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     MKWidget *temp_r3_15377;
     MKWidget *temp_r3_15404;
     MKWidget *temp_r3_15431;
@@ -8358,6 +8473,8 @@ void MKWidgetSystem::Draw(MKWidgetRenderContext arg0) {
     f32 temp_f31_15436;
     f32 temp_f31_15465;
     f32 temp_f31_15481;
+    f64 temp_f0_15293;
+    f64 temp_f0_15317;
     s8 *var_r3_15338;
     s8 *var_r3_15358;
     s8 *var_r3_15382;
@@ -8410,8 +8527,9 @@ loop_4:
             sp48 = 0.0f;
             sp70 = (f64) sp40;
             sp78 = (f64) sp48;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp80 = sp30;
+            temp_f0_15293 = spA0 + sp70;
+            sp30 = temp_f0_15293;
+            sp80 = temp_f0_15293;
             sp38 = (f32) spA8 + (f32) sp78;
             sp88 = (f64) sp38;
             MKSetPositionV(*((MKVector3 *) &sp80));
@@ -8420,8 +8538,9 @@ loop_4:
             sp28 = 0.0f;
             sp50 = (f64) sp20;
             sp58 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp60 = sp10;
+            temp_f0_15317 = spA0 + sp50;
+            sp10 = temp_f0_15317;
+            sp60 = temp_f0_15317;
             sp18 = (f32) spA8 + (f32) sp58;
             sp68 = (f64) sp18;
             MKSetPositionV(*((MKVector3 *) &sp60));
@@ -8580,13 +8699,10 @@ MKWidget *MKWidgetContainer::GetWidgetUnderPoint(MKVector3 arg0) {
     }
     MKWidget_GetClientVolume((MKWidget *) this, &sp18);
     temp_f1_15668 = M2C_FIELD(arg0, f32 *, 0);
-    if ((temp_f1_15668 < 0.0f) || (temp_f2_15672 = M2C_FIELD(arg0, f32 *, 4), ((temp_f2_15672 < 0.0f) != 0)) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_15668 == sp18.unk10) != 0)) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f2_15672 == sp18.unk14) != 0))) {
+    if ((temp_f1_15668 < 0.0f) || (temp_f2_15672 = M2C_FIELD(arg0, f32 *, 4), ((temp_f2_15672 < 0.0f) != 0)) || (temp_f1_15668 >= sp18.unk10) || (temp_f2_15672 >= sp18.unk14)) {
         return var_r31_15660;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+    *(void *) arg0 = (f64) (*(f64 *) arg0 + M2C_FIELD(this, f64 *, 0x30));
     M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 8) + this->unk38);
     var_r30_15696 = this->unk28;
 loop_13:
@@ -8637,10 +8753,12 @@ void MKWidgetContainer::Draw(MKWidgetRenderContext arg0) {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     MKWidget *var_r30_15849;
+    f64 temp_f0_15816;
 
     if (IsFlagSet(2U) != 0) {
         Render(arg0);
@@ -8652,9 +8770,10 @@ void MKWidgetContainer::Draw(MKWidgetRenderContext arg0) {
         sp60 = (f64) sp30;
         sp98 = M2C_FIELD(arg0, f64 *, 0x38);
         sp68 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spA0 = sp20;
-        sp50 = sp20;
+        temp_f0_15816 = sp90 + sp60;
+        sp20 = temp_f0_15816;
+        spA0 = temp_f0_15816;
+        sp50 = temp_f0_15816;
         sp28 = (f32) sp98 + (f32) sp68;
         spA8 = (f64) sp28;
         sp58 = (f64) sp28;
@@ -8931,45 +9050,39 @@ MKWidget *MKWidget::GetWidgetUnderPoint(MKVector3 arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKWidgetBoundingVolume' to
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 MKWidget *MKWidget::TestPoint(MKVector3 *arg0) {
     Matrix sp30;
     MKWidgetBoundingVolume sp10;
     f32 temp_f1_16347;
+    f32 temp_f28_16324;
     f32 temp_f2_16346;
     f32 temp_f3_16353;
     f32 temp_f4_16352;
     f32 temp_f5_16359;
     f32 temp_f6_16358;
+    f64 temp_f2_16333;
     s8 **temp_r3_16363;
 
     GetWidgetMatrix(&sp30);
     sp30.Inverse(&sp30);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f31, $f30, $f28, $f31 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f28, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f31, $f29, $f2, $f31 */);
-    M2C_ERROR(/* unknown instruction: ps_madds1 $f0, $f1, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_madds0 $f0, $f1, $f2, $f0 */);
-    arg0->unk8 = M2C_ERROR(/* unknown instruction: ps_madds0 $f31, $f30, $f2, $f31 */);
+    temp_f28_16324 = arg0->unk8;
+    temp_f2_16333 = M2C_FIELD(arg0, f64 *, 0);
+    arg0->unk8 = (f32) (((f64) sp30.unk8 * temp_f2_16333) + (((f64) sp30.unk18 * temp_f2_16333) + (((f64) sp30.unk28 * (f64) temp_f28_16324) + (f64) sp30.unk38)));
+    M2C_FIELD(arg0, f64 *, 0) = (f64) ((M2C_BITWISE(f64, sp30) * temp_f2_16333) + (((f64) sp30.unk10 * temp_f2_16333) + (((f64) sp30.unk20 * (f64) temp_f28_16324) + (f64) sp30.unk30)));
     MKWidget_GetClientVolume(this, &sp10);
     temp_f2_16346 = arg0->unk0;
     temp_f1_16347 = -M2C_BITWISE(f32, sp10);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f2_16346 == temp_f1_16347) {
+    if (temp_f2_16346 >= temp_f1_16347) {
         temp_f4_16352 = arg0->unk4;
         temp_f3_16353 = -sp10.unk4;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f4_16352 == temp_f3_16353) {
+        if (temp_f4_16352 >= temp_f3_16353) {
             temp_f6_16358 = arg0->unk8;
             temp_f5_16359 = -(f32) sp10.unk8;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f6_16358 == temp_f5_16359) {
+            if (temp_f6_16358 >= temp_f5_16359) {
                 temp_r3_16363 = this->unk4;
-                if ((temp_f2_16346 < (temp_f1_16347 + M2C_FIELD(temp_r3_16363, f32 *, 0x38))) && (temp_f4_16352 < (temp_f3_16353 + M2C_FIELD(temp_r3_16363, f32 *, 0x3C)))) {
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if (temp_f6_16358 == (temp_f5_16359 + M2C_FIELD(temp_r3_16363, f32 *, 0x40))) {
-                        return this;
-                    }
+                if ((temp_f2_16346 < (temp_f1_16347 + M2C_FIELD(temp_r3_16363, f32 *, 0x38))) && (temp_f4_16352 < (temp_f3_16353 + M2C_FIELD(temp_r3_16363, f32 *, 0x3C))) && (temp_f6_16358 <= (temp_f5_16359 + M2C_FIELD(temp_r3_16363, f32 *, 0x40)))) {
+                    return this;
                 }
             }
         }
@@ -8997,17 +9110,13 @@ void MKWidget::Draw(MKWidgetRenderContext arg0) {
 #if 0 // DRAFT: undefined identifier 'Multiply4x4'
 void MKWidget::Render(MKWidgetRenderContext *arg0) {
     Matrix sp10;
+    s8 **temp_r4_16467;
 
     GetWidgetMatrix(&sp10);
     arg0->Multiply4x4(&sp10, (Matrix *) arg0);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r4, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r3, 0x0, qr0 */);
+    temp_r4_16467 = this->unk4 + 0x48;
+    M2C_FIELD(arg0, f64 *, 0x40) = (f64) (M2C_FIELD(arg0, f64 *, 0x40) * M2C_FIELD(temp_r4_16467, f64 *, 0));
+    M2C_FIELD(arg0, f64 *, 0x48) = (f64) (M2C_FIELD(arg0, f64 *, 0x48) * M2C_FIELD(temp_r4_16467, f64 *, 8));
     return 0x48;
 }
 #endif
@@ -9414,13 +9523,16 @@ void WidgetDrawBevel(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, c
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     MKVector4 *var_r3_17250;
     MKVector4 *var_r3_17296;
     f32 temp_f1_17335;
+    f64 temp_f0_17365;
 
     MKBegin(0xE);
     if (arg5 != 0) {
@@ -9457,8 +9569,7 @@ void WidgetDrawBevel(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, c
         sp1C = temp_f1_17335;
         sp50 = (f64) sp20;
         sp48 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp8 = (f64) M2C_FIELD(&arg1, f32 *, 0) + sp48;
         sp40 = 0.0f;
         sp10 = arg1.unk8 + (f32) sp50;
         sp38 = arg2;
@@ -9467,9 +9578,9 @@ void WidgetDrawBevel(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, c
         sp68 = (f64) sp38;
         sp60 = (f64) sp10;
         sp70 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r26, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp78 = sp28;
+        temp_f0_17365 = (f64) M2C_FIELD(&arg0, f32 *, 0) + sp68;
+        sp28 = temp_f0_17365;
+        sp78 = temp_f0_17365;
         sp30 = arg0.unk8 + (f32) sp70;
         sp80 = (f64) sp30;
         WidgetDrawBevel(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58), arg2, arg3, arg4, arg5 == 0, 0U);
@@ -9489,6 +9600,8 @@ u8 PushScissorRect(MKWidgetScissorRect *arg0) {
     MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_17442;
 
     if ((MKWidgetScissorRect *) pScissorRectStack != NULL) {
         Max(sp28, *((MKVector3 *) arg0));
@@ -9498,10 +9611,9 @@ u8 PushScissorRect(MKWidgetScissorRect *arg0) {
         M2C_FIELD(arg0, f64 *, 0x10) = M2C_BITWISE(f64, sp18);
         M2C_FIELD(arg0, f64 *, 0x18) = (f64) sp18.unk8;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp38 = sp8;
+    temp_f0_17442 = M2C_FIELD(arg0, f64 *, 0x10) - arg0->unk0;
+    sp8 = temp_f0_17442;
+    sp38 = temp_f0_17442;
     sp10 = arg0->unk10.unk8 - (f32) M2C_FIELD(arg0, f64 *, 8);
     sp40 = (f64) sp10;
     if (((f32) sp38 > 0.0001f) && (unksp3C > 0.0001f)) {

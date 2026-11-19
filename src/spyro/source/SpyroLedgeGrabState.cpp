@@ -72,8 +72,7 @@ void SpyroLedgeGrabState::PullUpDescendEnter() {
 
 #if 0 // DRAFT: undefined identifier 'unk14'
 s32 SpyroLedgeGrabState::PullUpAscendTransition() {
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((this->unk10->unk33C == 0.0f) && ((s32) this->unk14.unk0 != 2)) {
+    if ((this->unk10->unk33C <= 0.0f) && ((s32) this->unk14.unk0 != 2)) {
         this->unk14.SetState(this, 2, 0U);
         return 1;
     }
@@ -81,17 +80,18 @@ s32 SpyroLedgeGrabState::PullUpAscendTransition() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
 void SpyroLedgeGrabState::PullUpAscendUpdate() {
     f64 sp40;
     f64 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
     Spyro *temp_r3_169;
+    f64 temp_f0_185;
     void *temp_r4_170;
 
     temp_r3_169 = this->unk10;
@@ -101,14 +101,14 @@ void SpyroLedgeGrabState::PullUpAscendUpdate() {
     sp10 = -M2C_FIELD(temp_r4_170, f32 *, 0x28);
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    sp38 = sp18;
+    temp_f0_185 = sp28 * 5.60222949e-315;
+    sp18 = temp_f0_185;
+    sp38 = temp_f0_185;
     sp20 = (f32) sp30 * 300.0f;
     sp40 = (f64) sp20;
     temp_r3_169->SetDesiredVelocityHoriz(*((MKVector3 *) &sp38), 3800.0f);
     PullUpAscendTransition();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SpyroLedgeGrabState::PullUpAscendEnter() {
@@ -152,20 +152,25 @@ s32 SpyroLedgeGrabState::AttachTransition() {
 void SpyroLedgeGrabState::AttachUpdate() {
     f64 sp50;
     f64 sp48;
-    M2C_UNK sp38;
+    f64 sp38;
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     Spyro *temp_r3_322;
+    f32 temp_f2_387;
+    f64 temp_f0_320;
+    f64 temp_f0_390;
     u8 var_r0_338;
     u8 var_r0_370;
 
     sp38.GetRefPos((Spyro::RefPoints) this->unk10);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_320 = M2C_FIELD(this, f64 *, 0x28) - sp38;
+    sp18 = temp_f0_320;
     temp_r3_322 = this->unk10;
-    sp48 = sp18;
+    sp48 = temp_f0_320;
     sp20 = this->unk30 - sp40;
     sp50 = (f64) sp20;
     if ((s32) M2C_FIELD(temp_r3_322->unk26C.unk8, s32 *, 0x2D4) > 0) {
@@ -185,9 +190,11 @@ void SpyroLedgeGrabState::AttachUpdate() {
             var_r0_370 = 1;
         }
         if (var_r0_370 != 0) {
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp28 = sp8;
-            sp10 = (f32) sp50 * (1.0f / gUpdateTimeDelta);
+            temp_f2_387 = 1.0f / gUpdateTimeDelta;
+            temp_f0_390 = sp48 * (f64) temp_f2_387;
+            sp8 = temp_f0_390;
+            sp28 = temp_f0_390;
+            sp10 = (f32) sp50 * temp_f2_387;
             sp30 = (f64) sp10;
             this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp28), 540000.0f);
         }
@@ -324,10 +331,12 @@ void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKProp *temp_r3_736;
     MKProp *temp_r4_729;
     Spyro *temp_r3_760;
     Spyro *temp_r4_723;
+    f64 temp_f0_764;
     u8 var_r30_737;
     void *temp_r29_717;
 
@@ -354,9 +363,9 @@ void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
     M2C_FIELD(this, f64 *, 0x40) = (f64) M2C_FIELD(temp_r29_717, f64 *, 0x20);
     this->unk14.SetState(this, 0, 0U);
     temp_r3_760 = this->unk10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp18 = sp8;
+    temp_f0_764 = M2C_FIELD(temp_r3_760, f64 *, 0x338) * 5.222099017e-315;
+    sp8 = temp_f0_764;
+    sp18 = temp_f0_764;
     sp10 = temp_r3_760->unk338 * 0.5f;
     sp20 = (f64) sp10;
     temp_r3_760->SetDesiredVelocity(*((MKVector3 *) &sp18), 540000.0f);

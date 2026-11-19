@@ -12,7 +12,7 @@
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: undefined identifier 'sp48'
+#if 0 // DRAFT: undefined identifier 'unksp7C'
 void LockOnTarget::Draw() {
     f32 sp118;
     f32 sp114;
@@ -36,17 +36,21 @@ void LockOnTarget::Draw() {
     f64 sp60;
     f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 temp_f0_241;
     f32 temp_f11_264;
     f32 temp_f28_267;
     f32 temp_f29_265;
-    f32 temp_f2_148;
+    f32 temp_f30_292;
+    f32 temp_f31_256;
     f32 var_f4_161;
     f32 var_f5_228;
     f64 temp_f1_167;
@@ -56,16 +60,17 @@ void LockOnTarget::Draw() {
     s32 var_ctr_253;
     s32 var_r0_206;
     s32 var_r3_236;
+    void *temp_r3_140;
+    void *temp_r3_99;
     void *temp_r4_257;
 
     if ((s32) this->unk60 != 0) {
         if ((u8) this->unk78 == 0) {
             return;
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp50 = M2C_FIELD(this->unk4C, f32 *, 8) + this->unk58;
+        temp_r3_99 = this->unk4C;
+        sp48 = M2C_FIELD(temp_r3_99, f64 *, 0) + this->unk50;
+        sp50 = M2C_FIELD(temp_r3_99, f32 *, 8) + this->unk58;
         spE0 = -35.0f;
         spE4 = -35.0f;
         spE8 = 0.0f;
@@ -82,11 +87,10 @@ void LockOnTarget::Draw() {
         sp90 = (f64) sp50;
         spA0.SetRotationRoll(this->unk6C);
         spA0.Multiply3x3(&spA0, MKView_GetCameraMatrix());
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        temp_f2_148 = M2C_FIELD((MKView_GetCameraMatrix() + 0x30), f32 *, 8) - (f32) sp90;
+        temp_r3_140 = MKView_GetCameraMatrix() + 0x30;
+        sp38 = M2C_FIELD(temp_r3_140, f64 *, 0) - sp88;
         sp78 = sp38;
-        sp40 = temp_f2_148;
+        sp40 = M2C_FIELD(temp_r3_140, f32 *, 8) - (f32) sp90;
         sp80 = (f64) sp40;
         var_f4_161 = ((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + (unksp7C * unksp7C));
         if (var_f4_161 > 0.000001f) {
@@ -134,32 +138,28 @@ void LockOnTarget::Draw() {
         sp80 = temp_f0_241;
         var_ctr_253 = 4;
         do {
+            temp_f31_256 = this->unk64;
             temp_r4_257 = &spE0 + var_r3_236;
-            M2C_ERROR(/* unknown instruction: psq_lx $f11, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f11, $f11, $f31 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f11, $zero, $r4, 0x0, qr0 */);
-            M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) * this->unk64);
+            M2C_FIELD(temp_r4_257, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_257, f64 *, 0) * (f64) temp_f31_256);
+            M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) * temp_f31_256);
             temp_f11_264 = M2C_FIELD(temp_r4_257, f32 *, 4);
-            temp_f29_265 = M2C_FIELD(temp_r4_257, f32 *, 0);
+            temp_f29_265 = (f32) M2C_FIELD(temp_r4_257, f64 *, 0);
             temp_f28_267 = M2C_FIELD(temp_r4_257, f32 *, 8);
             sp28 = (temp_f28_267 * spA0.unk20) + ((temp_f29_265 * M2C_BITWISE(f32, spA0)) + (temp_f11_264 * spA0.unk10));
             sp2C = (temp_f28_267 * spA0.unk24) + ((temp_f29_265 * spA0.unk4) + (temp_f11_264 * spA0.unk14));
             sp30 = (temp_f28_267 * spA0.unk28) + ((temp_f29_265 * spA0.unk8) + (temp_f11_264 * spA0.unk18));
-            M2C_FIELD(temp_r4_257, f32 *, 0) = (f64) sp28;
+            M2C_FIELD(temp_r4_257, f64 *, 0) = (f64) sp28;
             M2C_FIELD(temp_r4_257, f32 *, 8) = (f64) sp30;
             sp68 = (f64) sp28;
             sp70 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: psq_lx $f12, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f11, $f12, $f11 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f11, $zero, $r4, 0x0, qr0 */);
+            M2C_FIELD(temp_r4_257, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_257, f64 *, 0) + sp88);
             M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) + (f32) sp90);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f11, $f11, $f30 */);
-            sp20 = temp_f0_241 * this->unk68;
+            temp_f30_292 = this->unk68;
+            sp18 = (f64) sp78 * (f64) temp_f30_292;
+            sp20 = temp_f0_241 * temp_f30_292;
             sp58 = sp18;
             sp60 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f12, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f11, $f12, $f11 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f11, $zero, $r4, 0x0, qr0 */);
+            M2C_FIELD(temp_r4_257, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_257, f64 *, 0) + sp58);
             var_r3_236 += 0x10;
             M2C_FIELD(temp_r4_257, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_257, f32 *, 8) + (f32) sp60);
             var_ctr_253 -= 1;
@@ -197,8 +197,7 @@ void LockOnTarget::Update() {
     case 1:
         this->unk64 = -((4.0f * gUpdateTimeDelta * M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68)) - this->unk64);
         this->unk6C += 1.570796f * gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk64 == M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68)) {
+        if (this->unk64 <= M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68)) {
             this->unk60 = 2;
             this->unk64 = M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68);
             return;

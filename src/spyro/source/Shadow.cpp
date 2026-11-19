@@ -36,7 +36,7 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void Shadow::Draw() {
     MKVector3 sp48;
     f64 sp40;
@@ -44,19 +44,24 @@ void Shadow::Draw() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f4_69;
+    f64 temp_f0_72;
+    f64 temp_f0_83;
 
     if (((MKProp *) this->unk14 == NULL) || (M2C_FIELD(*gMK, u8 (**)(void **, s32), 0x9C)(gMK, *MKResource::sWorkingChunkID) != 0)) {
         MKModel_CalculateCentre(this->unk10, &sp48);
         temp_f4_69 = this->unk20;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp28 = sp18;
+        temp_f0_72 = M2C_FIELD(this, f64 *, 0) * (f64) temp_f4_69;
+        sp18 = temp_f0_72;
+        sp28 = temp_f0_72;
         sp20 = this->unk8 * temp_f4_69;
         sp30 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp38 = sp8;
+        temp_f0_83 = M2C_BITWISE(f64, sp48) - temp_f0_72;
+        sp8 = temp_f0_83;
+        sp38 = temp_f0_83;
         sp10 = sp48.unk8 - (f32) sp30;
         sp40 = (f64) sp10;
         MKShadow_Render(this->unk10, *((MKVector3 *) &sp38), 100.0f + (temp_f4_69 + (sp48.unk4 - this->unk28)), MKVector3::zero, NULL, 1U);
@@ -64,17 +69,18 @@ void Shadow::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void Shadow::GetLightPos(MKVector3 *arg0) {
     MKVector3 sp38;
     f64 sp30;
     f64 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKModel_CalculateCentre(this->unk10, &sp38);
     sp18.operator*(this->unk20);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp8 = M2C_BITWISE(f64, sp38) - M2C_BITWISE(f64, sp18);
     M2C_FIELD(arg0, f64 *, 0) = sp8;
     sp10 = sp38.unk8 - sp18.unk8;
     sp28 = sp8;

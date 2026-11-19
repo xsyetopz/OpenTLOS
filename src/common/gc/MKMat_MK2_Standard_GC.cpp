@@ -70,7 +70,6 @@ static u8 MKMaterial_NumTexGens = 1;
 #endif
 
 static s32 lit_484 = 4;
-#if 0 // DRAFT: undefined identifier 'sp28'
 static M2C_UNK lit_599;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_610;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_637;                                /* unable to generate initializer: unknown type; const */
@@ -97,6 +96,7 @@ void DrawFilteredQuad(_GXTexObj *arg0, MKVector3 *arg1, const MKVector3 &arg2) {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -107,6 +107,7 @@ void DrawFilteredQuad(_GXTexObj *arg0, MKVector3 *arg1, const MKVector3 &arg2) {
     f32 temp_f24_141;
     f32 temp_f25_140;
     f32 temp_f26_119;
+    f64 temp_f0_178;
     s32 var_r27_105;
     s32 var_r31_107;
     u16 temp_r28_97;
@@ -158,9 +159,9 @@ void DrawFilteredQuad(_GXTexObj *arg0, MKVector3 *arg1, const MKVector3 &arg2) {
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
         sp70 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r26, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp78 = sp28;
+        temp_f0_178 = M2C_FIELD(&arg2, f64 *, 0) + sp68;
+        sp28 = temp_f0_178;
+        sp78 = temp_f0_178;
         sp30 = temp_f23_117 + (f32) sp70;
         sp80 = (f64) sp30;
         DrawQuad(arg2, *((MKVector3 *) &sp78), *((MKVector3 *) &sp58), *((MKVector3 *) &sp48), temp_r3_143 | ((temp_r3_143 << 8) | ((temp_r3_143 << 0x18) | (temp_r3_143 << 0x10))));
@@ -168,7 +169,6 @@ void DrawFilteredQuad(_GXTexObj *arg0, MKVector3 *arg1, const MKVector3 &arg2) {
         var_r31_107 += 0x10;
     } while (var_r27_105 < 4);
 }
-#endif
 
 void DrawQuad(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, unsigned int arg4) {
     f32 temp_f1_256;
@@ -508,7 +508,7 @@ void MKMat_MK2_ApplyGlow(float arg0, MKMat_Glow_Viewport arg1) {
         GXSetBlendMode(GX_BM_BLEND, GX_BL_SRCALPHA, GX_BL_ZERO, GX_LO_NOOP);
         temp_f3_543 = 1.0f - arg0;
         temp_r5_547 = (s8) (255.0f * arg0);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+        M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
         if (temp_f3_543 == 0.5f) {
             var_r26_551 = GX_CS_SCALE_2;
             var_r6_555 = (s8) (255.0f * (0.5f / temp_f3_543));

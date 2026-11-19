@@ -32,7 +32,7 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: undefined identifier 'unksp1C'
 inline u8 KDCameraHeroData::IsMoving() {
     f64 sp50;
     f64 sp48;
@@ -43,12 +43,15 @@ inline u8 KDCameraHeroData::IsMoving() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f1_4107;
 
+    temp_f1_4107 = M2C_FIELD(this, f64 *, 0x40);
     sp38 = this->unkC8;
-    sp48 = M2C_FIELD(this, f64 *, 0x40);
+    sp48 = temp_f1_4107;
     sp40 = M2C_FIELD(this, f64 *, 0xD0);
     sp50 = M2C_FIELD(this, f64 *, 0x48);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp8 = temp_f1_4107 - sp38;
     sp18 = sp8;
     sp10 = (f32) sp50 - (f32) sp40;
     sp28 = sp8;
@@ -77,6 +80,7 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f64 sp10;
     f64 sp8;
     f64 temp_f0_818;
@@ -128,8 +132,7 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
     sp8 = temp_f1_888;
     sp10 = temp_f0_890;
     sp80 = temp_f0_890;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp18 = this->unkC8 - sp78;
     sp28 = sp18;
     sp20 = this->unkD0 - (f32) sp80;
     sp38 = sp18;
@@ -157,14 +160,18 @@ inline void KDCameraHeroData::Copy(HeroDataMessage &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal implicit conversion from 'int' to
 inline void KDCameraHeroData::GetDir() {
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_5287;
+    void *temp_r4_5284;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    M2C_FIELD(this, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD((M2C_ERROR(/* Read from unset register $r4 */) + 0x30), f32 *, 8) * -1.0f;
+    temp_r4_5284 = M2C_ERROR(/* Read from unset register $r4 */) + 0x30;
+    temp_f0_5287 = M2C_FIELD(temp_r4_5284, f64 *, 0) * 1.58735232e-314;
+    sp8 = temp_f0_5287;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_5287;
+    sp10 = M2C_FIELD(temp_r4_5284, f32 *, 8) * -1.0f;
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
 #endif

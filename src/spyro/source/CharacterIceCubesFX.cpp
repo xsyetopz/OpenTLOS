@@ -126,7 +126,9 @@ void CharacterIceCubesFX::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f31_321;
+    f64 temp_f0_347;
     s32 var_r28_237;
     s32 var_r28_320;
     s32 var_r29_238;
@@ -137,6 +139,7 @@ void CharacterIceCubesFX::Update() {
     void *temp_r3_268;
     void *temp_r3_281;
     void *temp_r3_325;
+    void *temp_r4_345;
 
     if ((CharacterBodyFXData *) this->unk8 != NULL) {
         CharacterBodyFX::Update();
@@ -170,8 +173,7 @@ loop_9:
         }
         if ((u8) this->unk20 != 0) {
             this->unk1C += gUpdateTimeDelta;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (this->unk1C == 0.25f) {
+            if (this->unk1C >= 0.25f) {
                 this->unk1C = 0.25f;
             }
             var_r31_317 = 0;
@@ -183,10 +185,11 @@ loop_18:
                 temp_r3_325 = *(this->unk14 + var_r28_320);
                 if ((temp_r3_325 != NULL) && ((s32) M2C_FIELD(temp_r3_325, s32 *, 0x16C) == 2)) {
                     M2C_STRUCT_COPY((s32) &sp2C + 4, MKModel_GetWorldMatrix(M2C_FIELD(temp_r3_325, MKModel **, 4)) - 4 + 4, 0x40);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    sp20 = sp10;
-                    sp18 = M2C_FIELD((*(this->unk4 + var_r29_319) + 0x10), f32 *, 8) * temp_f31_321;
+                    temp_r4_345 = *(this->unk4 + var_r29_319) + 0x10;
+                    temp_f0_347 = M2C_FIELD(temp_r4_345, f64 *, 0) * (f64) temp_f31_321;
+                    sp10 = temp_f0_347;
+                    sp20 = temp_f0_347;
+                    sp18 = M2C_FIELD(temp_r4_345, f32 *, 8) * temp_f31_321;
                     sp28 = (f64) sp18;
                     sp30.Scale3x3(&sp30, *((MKVector3 *) &sp20));
                     MKModel_SetWorldMatrix(M2C_FIELD(*(this->unk14 + var_r28_320), MKModel **, 4), sp30);

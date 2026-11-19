@@ -376,8 +376,7 @@ void GameGlobals::Fade::Update() {
     switch (temp_r0_338) {                          /* irregular */
     case 1:
         M2C_FIELD(this, f32 *, 0xC) = (f32) (M2C_FIELD(this, f32 *, 0xC) - gUpdateTimeDelta);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(this, f32 *, 0xC) == 0.0f) {
+        if (M2C_FIELD(this, f32 *, 0xC) <= 0.0f) {
             M2C_FIELD(this, f32 *, 0xC) = 0.0f;
             M2C_FIELD(this, s32 *, 0x20) = 0;
             if (((u8) M2C_FIELD(this, u8 *, 0x28) != 0) && ((u8) M2C_FIELD(this, u8 *, 0x29) == 0)) {
@@ -389,8 +388,7 @@ void GameGlobals::Fade::Update() {
         return;
     case 2:
         M2C_FIELD(this, f32 *, 0xC) = (f32) (M2C_FIELD(this, f32 *, 0xC) + gUpdateTimeDelta);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(this, f32 *, 0xC) == 1.0f) {
+        if (M2C_FIELD(this, f32 *, 0xC) >= 1.0f) {
             M2C_FIELD(this, f32 *, 0xC) = 1.0f;
             M2C_FIELD(this, s32 *, 0x20) = 3;
         }

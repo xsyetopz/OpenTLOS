@@ -730,7 +730,7 @@ void InGame_Update() {
 
     temp_f1_1422 = nextCheck - gUpdateTimeDelta;
     nextCheck = temp_f1_1422;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
     if (temp_f1_1422 == 0.0f) {
         var_r5_1428 = 0U;
         var_r6_1430 = 0;

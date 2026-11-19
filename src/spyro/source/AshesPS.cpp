@@ -14,6 +14,7 @@ void AshesPS::UpdateParticles() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     MKParticleChunk *var_r30_64;
     MKParticleSystem::Envelope *temp_r3_138;
     f32 temp_f30_71;
@@ -22,6 +23,7 @@ void AshesPS::UpdateParticles() {
     f32 temp_f5_145;
     f32 temp_f6_140;
     f32 var_f0_156;
+    f64 temp_f0_88;
     s32 temp_r3_112;
     s32 temp_r3_126;
     s32 temp_r4_137;
@@ -40,14 +42,12 @@ loop_12:
             var_r30_64 = DestroyParticle(&unksp8);
         } else {
             M2C_FIELD(temp_r29_67, f32 *, 4) = (f32) -((1000.0f * gUpdateTimeDelta) - M2C_FIELD(temp_r29_67, f32 *, 4));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp20 = sp10;
+            temp_f0_88 = M2C_FIELD(temp_r29_67, f64 *, 0) * (f64) gUpdateTimeDelta;
+            sp10 = temp_f0_88;
+            sp20 = temp_f0_88;
             sp18 = M2C_FIELD(temp_r29_67, f32 *, 8) * gUpdateTimeDelta;
             sp28 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+            M2C_FIELD(var_r30_64, f64 *, 0) = (f64) (M2C_FIELD(var_r30_64, f64 *, 0) + temp_f0_88);
             var_r30_64->unk8 += (f32) sp28;
             var_r30_64->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r29_67, f32 *, 0x18);
             temp_r3_112 = M2C_FIELD(checked_cast<AshesPSDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80);

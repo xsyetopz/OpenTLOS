@@ -28,6 +28,7 @@ void ExpSmokeAndFlamesPS::UpdateParticles() {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp54;
@@ -37,7 +38,9 @@ void ExpSmokeAndFlamesPS::UpdateParticles() {
     f32 sp44;
     f32 sp40;
     f64 sp38;
+    f64 sp30;
     f64 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -50,6 +53,7 @@ void ExpSmokeAndFlamesPS::UpdateParticles() {
     f32 temp_f5_146;
     f32 temp_f6_141;
     f32 var_f0_157;
+    f64 temp_f0_89;
     s32 temp_r3_113;
     s32 temp_r3_127;
     s32 temp_r4_138;
@@ -67,14 +71,12 @@ loop_12:
         if (temp_f29_77 > this->unk12C) {
             var_r27_67 = DestroyParticle(&unksp8);
         } else {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spD0 = sp60;
+            temp_f0_89 = M2C_FIELD(temp_r26_73, f64 *, 0) * (f64) gUpdateTimeDelta;
+            sp60 = temp_f0_89;
+            spD0 = temp_f0_89;
             sp68 = M2C_FIELD(temp_r26_73, f32 *, 8) * gUpdateTimeDelta;
             spD8 = (f64) sp68;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r27, 0x0, qr0 */);
+            M2C_FIELD(var_r27_67, f64 *, 0) = (f64) (M2C_FIELD(var_r27_67, f64 *, 0) + temp_f0_89);
             var_r27_67->unk8 += (f32) spD8;
             var_r27_67->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r26_73, f32 *, 0x18);
             temp_r3_113 = M2C_FIELD(checked_cast<ExpSmokeAndFlamesPSDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80);
@@ -118,18 +120,12 @@ loop_12:
             spB8 = (f64) sp58;
             sp80 = (f64) sp40;
             sp88 = (f64) sp48;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+            sp30 = sp80 * 5.325712093e-315;
+            sp38 = sp88 * 5.325712093e-315;
             sp90 = sp30;
             sp98 = sp38;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r27, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r27, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
+            sp20 = M2C_FIELD(var_r27_67, f64 *, 0x10) - sp90;
+            sp28 = M2C_FIELD(var_r27_67, f64 *, 0x18) - sp98;
             sp10 = 1.0f;
             sp14 = 1.0f;
             sp18 = 1.0f;

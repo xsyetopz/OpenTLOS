@@ -115,8 +115,7 @@ void CynderConcurrentGoal_Think::Arbitrate() {
             this->unkC->TakeDamage(&sp10, 0U);
             this->unkC->UpdateEnemyHud();
             temp_r3_224 = this->unkC;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r3_224, f32 *, 0xAC8) == 0.0f) {
+            if (M2C_FIELD(temp_r3_224, f32 *, 0xAC8) <= 0.0f) {
                 ((EventMessage *) (temp_r3_224 + 0x1000))->Send(NULL);
                 temp_r3_233 = this->unkC;
                 M2C_FIELD(temp_r3_233, u8 *, 0xB01) = (u8) (M2C_FIELD(temp_r3_233, u8 *, 0xB01) | 0x80);

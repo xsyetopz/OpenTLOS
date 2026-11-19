@@ -25,8 +25,7 @@ void *MKParticleSystem::HitFloor(MKBaseParticleSystem::ParticleRec *arg1, bool *
     temp_r5_28 = M2C_FIELD(arg1, void **, 4);
     temp_f2_30 = M2C_FIELD(temp_r5_28, f32 *, 4);
     temp_r6_32 = M2C_FIELD(temp_r5_28, void **, 0x2C);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f2_30 == (temp_f1_27 - this->unk120)) {
+    if (temp_f2_30 >= (temp_f1_27 - this->unk120)) {
         M2C_FIELD(temp_r5_28, f32 *, 4) = temp_f1_27;
         M2C_FIELD(temp_r6_32, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r6_32, f32 *, 4) = 0.0f;
@@ -39,7 +38,7 @@ void *MKParticleSystem::HitFloor(MKBaseParticleSystem::ParticleRec *arg1, bool *
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: undefined identifier 'unkspC'
 void MKParticleSystem::UpdateParticles() {
     f64 sp70;
     f64 sp68;
@@ -48,17 +47,24 @@ void MKParticleSystem::UpdateParticles() {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     u8 sp8;
     MKParticleChunk *var_r30_113;
     MKParticleSystem::Envelope *temp_r3_201;
     f32 temp_f26_121;
     f32 temp_f27_85;
+    f32 temp_f31_157;
     f32 temp_f3_215;
     f32 temp_f5_208;
     f32 temp_f6_203;
     f32 var_f0_219;
+    f64 temp_f0_140;
+    f64 temp_f0_87;
+    f64 temp_f0_98;
     s32 temp_r3_189;
     s32 temp_r4_200;
     s32 temp_r6_204;
@@ -70,14 +76,14 @@ void MKParticleSystem::UpdateParticles() {
     this->unk128 += gUpdateTimeDelta;
     temp_r31_84 = this->unk0;
     temp_f27_85 = gUpdateTimeDelta * this->unkF0;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    sp68 = sp38;
+    temp_f0_87 = M2C_FIELD(this, f64 *, 0xF8) * (f64) gUpdateTimeDelta;
+    sp38 = temp_f0_87;
+    sp68 = temp_f0_87;
     sp40 = this->unk100 * gUpdateTimeDelta;
     sp70 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    sp58 = sp28;
+    temp_f0_98 = M2C_FIELD(this, f64 *, 0x108) * (f64) gUpdateTimeDelta;
+    sp28 = temp_f0_98;
+    sp58 = temp_f0_98;
     sp30 = this->unk110 * gUpdateTimeDelta;
     sp60 = (f64) sp30;
     if ((u8) this->unkF4 == 0) {
@@ -89,26 +95,19 @@ loop_16:
             if (temp_f26_121 > this->unk12C) {
                 var_r30_113 = DestroyParticle(&unkspC);
             } else {
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+                M2C_FIELD(var_r30_113, f64 *, 0) = (f64) (M2C_FIELD(var_r30_113, f64 *, 0) + sp68);
                 var_r30_113->unk8 += (f32) sp70;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp48 = sp18;
+                temp_f0_140 = M2C_FIELD(temp_r29_117, f64 *, 0) * (f64) gUpdateTimeDelta;
+                sp18 = temp_f0_140;
+                sp48 = temp_f0_140;
                 sp20 = M2C_FIELD(temp_r29_117, f32 *, 8) * gUpdateTimeDelta;
                 sp50 = (f64) sp20;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+                M2C_FIELD(var_r30_113, f64 *, 0) = (f64) (M2C_FIELD(var_r30_113, f64 *, 0) + temp_f0_140);
                 var_r30_113->unk8 += (f32) sp50;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_FIELD(temp_r29_117, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_117, f32 *, 8) * this->unk118);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+                temp_f31_157 = this->unk118;
+                M2C_FIELD(temp_r29_117, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_117, f64 *, 0) * (f64) temp_f31_157);
+                M2C_FIELD(temp_r29_117, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_117, f32 *, 8) * temp_f31_157);
+                M2C_FIELD(temp_r29_117, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_117, f64 *, 0) + sp58);
                 M2C_FIELD(temp_r29_117, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_117, f32 *, 8) + (f32) sp60);
                 var_r30_113->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r29_117, f32 *, 0x18);
                 var_r30_113->unk20 = (f32) fmod(var_r30_113->unk20 + temp_f27_85, (f32) M2C_FIELD(temp_r31_84, s32 *, 0x80), gUpdateTimeDelta);
@@ -139,8 +138,7 @@ loop_16:
                 temp_r3_238 = this->unk134 + temp_r6_204;
                 var_r30_113->unk28 = M2C_FIELD(temp_r29_117, f32 *, 0x1C) * ((temp_f3_215 * M2C_FIELD(temp_r3_238, f32 *, 0x10)) + M2C_FIELD(temp_r3_238, f32 *, 8));
                 sp8 = 0;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (var_r30_113->unk4 == this->unk11C) {
+                if (var_r30_113->unk4 <= this->unk11C) {
                     var_r30_113 = HitFloor(&unkspC, &sp8);
                 }
                 if (sp8 == 0) {

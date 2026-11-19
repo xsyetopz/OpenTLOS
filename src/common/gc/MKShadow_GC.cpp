@@ -123,8 +123,11 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
     f64 sp68;
     MKVector3 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     s32 sp20;
     s32 sp1C;
     s32 sp18;
@@ -142,6 +145,7 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
     Matrix *var_r29_347;
     Matrix *var_r3_365;
     f32 temp_r5_499;
+    f64 temp_f0_269;
     s16 temp_r23_353;
     s16 temp_r27_478;
     s32 temp_r28_419;
@@ -162,8 +166,9 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
             spE8 = M2C_FIELD(arg4, f64 *, 0);
             spF0 = M2C_FIELD(arg4, f64 *, 8);
         } else {
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp98 = sp48;
+            temp_f0_269 = M2C_BITWISE(f64, spB8) - spF8;
+            sp48 = temp_f0_269;
+            sp98 = temp_f0_269;
             sp50 = spB8.unk8 - (f32) sp100;
             spA0 = (f64) sp50;
             Normalise(spA8);
@@ -174,7 +179,7 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
         spE0 = (f64) spB8.unk8;
         if (arg5 != 0) {
             sp78.operator*(arg2);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp38 = spF8 + M2C_BITWISE(f64, sp78);
             sp88 = sp38;
             sp40 = (f32) sp100 + sp78.unk8;
             spC8 = sp38;
@@ -182,7 +187,7 @@ void MKShadow_Render(MKModel *arg0, const MKVector3 &arg1, float arg2, const MKV
             spD0 = (f64) sp40;
         } else {
             sp58.operator*(100.0f + arg2);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp28 = M2C_BITWISE(f64, spB8) + M2C_BITWISE(f64, sp58);
             sp68 = sp28;
             sp30 = spB8.unk8 + sp58.unk8;
             spC8 = sp28;
@@ -331,14 +336,12 @@ void RenderEdges(MKVector3 *arg0, MKShadowSubObjectMP::Edge *arg1, int arg2, int
             temp_r5_612 = pShadowEdgeResultBuffer + var_r3_604;
             temp_f2_613 = M2C_FIELD(temp_r5_612, f32 *, 0);
             temp_f3_614 = M2C_FIELD(temp_r5_612, f32 *, 4);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((temp_f2_613 == 0.0f) && (temp_f3_614 > 0.0f)) {
+            if ((temp_f2_613 <= 0.0f) && (temp_f3_614 > 0.0f)) {
                 var_r8_625 = pShadowVertexBuffer + (M2C_FIELD(temp_r6_611, s32 *, 0) * 0x10);
                 var_r9_626 = pShadowVertexBuffer + (M2C_FIELD(temp_r6_611, s32 *, 4) * 0x10);
                 goto block_7;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((temp_f3_614 == 0.0f) && (temp_f2_613 > 0.0f)) {
+            if ((temp_f3_614 <= 0.0f) && (temp_f2_613 > 0.0f)) {
                 var_r9_626 = pShadowVertexBuffer + (M2C_FIELD(temp_r6_611, s32 *, 0) * 0x10);
                 var_r8_625 = pShadowVertexBuffer + (M2C_FIELD(temp_r6_611, s32 *, 4) * 0x10);
 block_7:
@@ -521,6 +524,7 @@ void DetectEdges(MKVector3 *arg0, MKShadowSubObjectMP::Edge *arg1, int arg2, int
 }
 #endif
 
+#if 0 // DRAFT: pointer/array required
 void MKShadow_ApplyAlphaTint(unsigned char arg0, float arg1) {
     f32 sp60;
     f32 sp5C;
@@ -562,40 +566,41 @@ void MKShadow_ApplyAlphaTint(unsigned char arg0, float arg1) {
     MK_SetVDMode((MK_VertexDescriptorMode) 0);
     GXBegin(GX_TRIANGLESTRIP, GX_VTXFMT1, 4U);
     *(f32 *)0xCC008000 = 0.0f;
-    M2C_ERROR(/* unknown instruction: ps_merge00 $f1, $f29, $f29 */);
     *(f32 *)0xCC008000 = 0.0f;
     *(f32 *)0xCC008000 = 0.0f;
     *(f32 *)0xCC008000 = 0xFF;
     *(f32 *)0xCC008000 = 0xFF;
     *(f32 *)0xCC008000 = 0xFF;
     *(f32 *)0xCC008000 = arg0;
+    *(0xCC010000 - 0x8000) = 0.0;
     *(f32 *)0xCC008000 = 0.0f;
-    M2C_ERROR(/* unknown instruction: ps_merge00 $f1, $f29, $f28 */);
     *(f32 *)0xCC008000 = arg1;
     *(f32 *)0xCC008000 = 0.0f;
     *(f32 *)0xCC008000 = 0xFF;
     *(f32 *)0xCC008000 = 0xFF;
     *(f32 *)0xCC008000 = 0xFF;
     *(f32 *)0xCC008000 = arg0;
+    *(0xCC010000 - 0x8000) = 0.0;
     *(f32 *)0xCC008000 = arg1;
-    M2C_ERROR(/* unknown instruction: ps_merge00 $f1, $f31, $f29 */);
     *(f32 *)0xCC008000 = 0.0f;
-    *(f32 *)0xCC008000 = 0.0f;
-    *(f32 *)0xCC008000 = 0xFF;
-    *(f32 *)0xCC008000 = 0xFF;
-    *(f32 *)0xCC008000 = 0xFF;
-    *(f32 *)0xCC008000 = arg0;
-    M2C_ERROR(/* unknown instruction: ps_merge00 $f1, $f31, $f28 */);
-    *(f32 *)0xCC008000 = arg1;
-    *(f32 *)0xCC008000 = arg1;
     *(f32 *)0xCC008000 = 0.0f;
     *(f32 *)0xCC008000 = 0xFF;
     *(f32 *)0xCC008000 = 0xFF;
     *(f32 *)0xCC008000 = 0xFF;
     *(f32 *)0xCC008000 = arg0;
+    *(0xCC010000 - 0x8000) = 5.263544247e-315;
+    *(f32 *)0xCC008000 = arg1;
+    *(f32 *)0xCC008000 = arg1;
+    *(f32 *)0xCC008000 = 0.0f;
+    *(f32 *)0xCC008000 = 0xFF;
+    *(f32 *)0xCC008000 = 0xFF;
+    *(f32 *)0xCC008000 = 0xFF;
+    *(f32 *)0xCC008000 = arg0;
+    *(0xCC010000 - 0x8000) = 5.263544247e-315;
     GXSetProjectionv(&sp8);
     GXSetCurrentMtx(0U);
 }
+#endif
 
 void MKShadow_VolumeRenderStage2() {
     GXSetCullMode(GX_CULL_BACK);

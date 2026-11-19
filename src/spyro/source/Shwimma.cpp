@@ -93,16 +93,24 @@ void ShwimmaCritter::Update() {
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKProp *temp_r0_174;
     MKProp *temp_r0_316;
     MKProp *temp_r27_352;
@@ -111,6 +119,15 @@ void ShwimmaCritter::Update() {
     Shwimma *temp_r30_165;
     f32 temp_f0_516;
     f32 temp_f1_377;
+    f32 temp_f29_440;
+    f32 temp_f31_386;
+    f64 temp_f0_254;
+    f64 temp_f0_388;
+    f64 temp_f0_398;
+    f64 temp_f0_410;
+    f64 temp_f0_442;
+    f64 temp_f0_452;
+    f64 temp_f0_464;
     s32 var_r28_160;
     s32 var_r31_159;
 
@@ -131,41 +148,44 @@ loop_38:
                             if (temp_f1_377 > 1.0f) {
                                 temp_r30_165->unk30.unk24 = temp_f1_377 - 1.0f;
                             }
-                            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                            spC8 = sp58;
-                            sp60 = M2C_FIELD(temp_r30_165, f32 *, 0x80) * M2C_FIELD(temp_r30_165, f32 *, 0x88);
+                            temp_f31_386 = M2C_FIELD(temp_r30_165, f32 *, 0x88);
+                            temp_f0_388 = M2C_FIELD(temp_r30_165, f64 *, 0x78) * (f64) temp_f31_386;
+                            sp58 = temp_f0_388;
+                            spC8 = temp_f0_388;
+                            sp60 = M2C_FIELD(temp_r30_165, f32 *, 0x80) * temp_f31_386;
                             spD0 = (f64) sp60;
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                            spD8 = sp48;
+                            temp_f0_398 = temp_f0_388 * (f64) gUpdateTimeDelta;
+                            sp48 = temp_f0_398;
+                            spD8 = temp_f0_398;
                             sp50 = (f32) spD0 * gUpdateTimeDelta;
                             spE0 = (f64) sp50;
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            sp128.unk20 = sp38;
+                            temp_f0_410 = *(temp_r30_165 + 0x30) + temp_f0_398;
+                            sp38 = temp_f0_410;
+                            sp128.unk20 = temp_f0_410;
                             sp40 = temp_r30_165->unk30.unk8 + (f32) spE0;
                             temp_r30_165->unk30.unk0 = (f32) sp128.unk20;
                             sp128.unk28 = (f64) sp40;
                             temp_r30_165->unk30.unk4 = unksp14C;
                             temp_r30_165->unk30.unk8 = (f32) sp128.unk28;
                             temp_r30_165->unk30.unkC = 1.0f;
-                            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                            if (temp_r30_165->unk30.unk34 == 0.0f) {
+                            if (temp_r30_165->unk30.unk34 <= 0.0f) {
                                 SetAlertState(temp_r30_165);
                             }
                         } else {
-                            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                            spA8 = sp28;
-                            sp30 = M2C_FIELD(temp_r30_165, f32 *, 0x80) * M2C_FIELD(temp_r30_165, f32 *, 0x88);
+                            temp_f29_440 = M2C_FIELD(temp_r30_165, f32 *, 0x88);
+                            temp_f0_442 = M2C_FIELD(temp_r30_165, f64 *, 0x78) * (f64) temp_f29_440;
+                            sp28 = temp_f0_442;
+                            spA8 = temp_f0_442;
+                            sp30 = M2C_FIELD(temp_r30_165, f32 *, 0x80) * temp_f29_440;
                             spB0 = (f64) sp30;
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                            spB8 = sp18;
+                            temp_f0_452 = temp_f0_442 * (f64) gUpdateTimeDelta;
+                            sp18 = temp_f0_452;
+                            spB8 = temp_f0_452;
                             sp20 = (f32) spB0 * gUpdateTimeDelta;
                             spC0 = (f64) sp20;
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            sp128.unk10 = sp8;
+                            temp_f0_464 = (f64) M2C_FIELD(temp_r30_165, f32 *, 0x30) + temp_f0_452;
+                            sp8 = temp_f0_464;
+                            sp128.unk10 = temp_f0_464;
                             sp10 = M2C_BITWISE(f32, temp_r30_165->unk30.unk8) + (f32) spC0;
                             temp_r30_165->unk30.unk0 = (f32) sp128.unk10;
                             sp128.unk18 = (f64) sp10;
@@ -173,8 +193,7 @@ loop_38:
                             temp_r30_165->unk30.unk8 = (f32) sp128.unk18;
                             temp_r30_165->unk30.unkC = 1.0f;
                             if ((MKProp *) temp_r30_165->unk30.unk30 == (MKProp *)3) {
-                                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                                if (temp_r30_165->unk30.unk24 == 1.0f) {
+                                if (temp_r30_165->unk30.unk24 >= 1.0f) {
                                     temp_r30_165->unk30.unk30 = (MKProp *)4;
                                     temp_r27_491 = temp_r30_165->unk30.unk30;
                                     temp_r30_165->unk30.unk20 = *(checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (((s32) temp_r27_491 * 4) + 0x70));
@@ -186,8 +205,7 @@ loop_38:
                                 if (temp_f0_516 > 1.0f) {
                                     temp_r30_165->unk30.unk24 = temp_f0_516 - 1.0f;
                                 }
-                                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                                if (M2C_BITWISE(f32, temp_r30_165->unk30.unk34) == 0.0f) {
+                                if (M2C_BITWISE(f32, temp_r30_165->unk30.unk34) <= 0.0f) {
                                     temp_r30_165->unk30.unk30 = (MKProp *)5;
                                     temp_r27_529 = temp_r30_165->unk30.unk30;
                                     temp_r30_165->unk30.unk20 = *(checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (((s32) temp_r27_529 * 4) + 0x70));
@@ -228,7 +246,7 @@ loop_38:
                     sp1B4 = -1;
                     sp1B8 = 0;
                     spF0 = (f64) sp80;
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+                    sp68 = sp128.unk30 + spE8;
                     spA0 = 0.0f;
                     sp98 = 0.0f;
                     sp9C = 200.0f;
@@ -237,8 +255,9 @@ loop_38:
                     spF8 = sp68;
                     sp100 = (f64) sp70;
                     sp110 = (f64) spA0;
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-                    sp118 = sp88;
+                    temp_f0_254 = sp128.unk30 + sp108;
+                    sp88 = temp_f0_254;
+                    sp118 = temp_f0_254;
                     sp90 = (f32) sp128.unk38 + (f32) sp110;
                     sp120 = (f64) sp90;
                     if (MKCollision_RayCollide(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8), (MKCollisionResult *) &sp128.unk40, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -253,8 +272,7 @@ loop_38:
                     SetAlertState(temp_r30_165);
                 }
             } else if (temp_r0_174 < 0xB) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (temp_r30_165->unk30.unk24 == 1.0f) {
+                if (temp_r30_165->unk30.unk24 >= 1.0f) {
                     if (M2C_BITWISE(f32, temp_r30_165->unk30.unk34) < 0.0f) {
                         temp_r30_165->unk30.unk30 = MKRand_Int(&gViewSeed, 0, 3) + 1;
                         temp_r0_316 = temp_r30_165->unk30.unk30;
@@ -279,11 +297,8 @@ loop_38:
                     }
                 }
             }
-        } else {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_r30_165->unk30.unk24 == 1.0f) {
-                SetAlertState(temp_r30_165);
-            }
+        } else if (temp_r30_165->unk30.unk24 >= 1.0f) {
+            SetAlertState(temp_r30_165);
         }
         var_r31_159 += 1;
         var_r28_160 += 0x90;
@@ -366,19 +381,24 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
     f32 spC4;
     f32 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -398,6 +418,8 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
     f32 var_f3_918;
     f32 var_f4_851;
     f32 var_f5_1006;
+    f64 temp_f0_747;
+    f64 temp_f0_810;
     f64 temp_f1_1011;
     f64 temp_f1_1017;
     f64 temp_f1_1021;
@@ -447,7 +469,7 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
     sp228 = 0;
     sp22C = -1;
     sp230 = 0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+    sp90 = sp1D0 + sp140;
     sp98 = (f32) sp1D8 + (f32) sp148;
     spC8 = 0.0f;
     spC0 = 0.0f;
@@ -456,8 +478,9 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
     sp160 = (f64) spC0;
     sp158 = (f64) sp98;
     sp168 = (f64) spC8;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
-    sp170 = spB0;
+    temp_f0_747 = sp1D0 + sp160;
+    spB0 = temp_f0_747;
+    sp170 = temp_f0_747;
     spB8 = (f32) sp1D8 + (f32) sp168;
     sp178 = (f64) spB8;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp170), *((MKVector3 *) &sp150), (MKCollisionResult *) &sp1E0, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -474,7 +497,7 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
     spF0 = (f64) sp60;
     sp1B8 = sp138;
     spF8 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
+    sp50 = sp1B0 + spF0;
     sp88 = 0.0f;
     sp80 = 0.0f;
     sp84 = 200.0f;
@@ -483,15 +506,16 @@ void ShwimmaCritter::FindNewMoveParameters(Shwimma *arg0, float arg1) {
     sp100 = sp50;
     sp108 = (f64) sp58;
     sp118 = (f64) sp88;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f6, $f0 */);
-    sp120 = sp70;
+    temp_f0_810 = sp1B0 + sp110;
+    sp70 = temp_f0_810;
+    sp120 = temp_f0_810;
     sp78 = (f32) sp1B8 + (f32) sp118;
     sp128 = (f64) sp78;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp120), *((MKVector3 *) &sp100), (MKCollisionResult *) &sp1E0, (MKCollisionMode) 4, 0x0C000000) != 0) {
         sp1B0 = (f64) sp1E0;
         sp1B8 = (f64) sp1E8;
     }
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp40 = sp1B0 - sp1D0;
     sp1A0 = sp40;
     sp48 = (f32) sp1B8 - (f32) sp1D8;
     sp1A8 = (f64) sp48;

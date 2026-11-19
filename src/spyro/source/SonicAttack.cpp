@@ -140,7 +140,9 @@ void SonicAttack::UpdateSonicRings() {
     f64 sp48;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -152,6 +154,7 @@ void SonicAttack::UpdateSonicRings() {
     MKPtrList<MKProp> *temp_r3_256;
     MKPtrList<MKProp> *temp_r4_337;
     f32 temp_f29_175;
+    f64 temp_f0_190;
     u8 var_r27_211;
     void **temp_r3_339;
     void **var_r3_259;
@@ -172,9 +175,9 @@ loop_24:
             sp60 = (f64) sp10;
             Normalise(sp68);
             sp78.operator*(3000.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp88 = sp28;
+            temp_f0_190 = sp78 * (f64) temp_f29_175;
+            sp28 = temp_f0_190;
+            sp88 = temp_f0_190;
             sp30 = sp78.unk8 * temp_f29_175;
             sp90 = (f64) sp30;
             temp_r30_362->Translate((Matrix *) temp_r30_362, *((MKVector3 *) &sp88));
@@ -228,8 +231,7 @@ loop_13:
                     } else {
 block_16:
                         sp9C = 0;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                        sp18 = M2C_BITWISE(f64, M2C_FIELD(temp_r30_362, s8 **, 0x20)) * 1.58735232e-314;
                         temp_r4_286 = this->unk130;
                         sp20 = M2C_BITWISE(f32, temp_r30_362->unk28) * -1.0f;
                         sp48 = sp18;
@@ -266,8 +268,7 @@ block_16:
                     }
                 }
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((M2C_BITWISE(f32, temp_r30_362->unk40) == 0.0f) || (var_r27_211 != 0)) {
+            if ((M2C_BITWISE(f32, temp_r30_362->unk40) <= 0.0f) || (var_r27_211 != 0)) {
                 temp_r3_350 = this->unk15C;
                 this->unk15C = (MKHeap *) &temp_r3_350->unk4;
                 temp_r4_353 = temp_r3_350->unk0;
@@ -355,17 +356,20 @@ void SonicAttack::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unksp34'
 void SonicAttack::Update() {
     f64 sp48;
     f64 sp40;
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     f32 sp8;
+    MKVector3 *temp_r3_592;
+    MKVector3 *temp_r4_591;
     f32 var_f4_584;
     f32 var_f5_612;
     f64 temp_f1_617;
@@ -378,13 +382,12 @@ void SonicAttack::Update() {
     if (((u8) this->unk158 != 0) && ((MKVector3 *) this->unk150 != NULL) && ((MKVector3 *) this->unk154 != NULL)) {
         var_f4_584 = 0.0f;
         this->unk164 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk164 == 0.0f) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        if (this->unk164 <= 0.0f) {
+            temp_r4_591 = this->unk150;
+            temp_r3_592 = this->unk154;
+            sp20 = M2C_FIELD(temp_r3_592, f64 *, 0) - M2C_FIELD(temp_r4_591, f64 *, 0);
             sp30 = sp20;
-            sp28 = this->unk154->unk8 - this->unk150->unk8;
+            sp28 = temp_r3_592->unk8 - temp_r4_591->unk8;
             sp38 = (f64) sp28;
             var_f5_612 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
             if (var_f5_612 > 1e-12f) {

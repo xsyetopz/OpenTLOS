@@ -38,8 +38,7 @@ void ScriptProp::Message(MKMessage *arg0) {
             PropFlagsSet((u32 *) &this->unk10, 0x80000U);
             this->unk56 = 0;
             this->unk50 = this->unk4C;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk4C == 0.0f) {
+            if (this->unk4C <= 0.0f) {
                 Execute();
             }
         }
@@ -63,8 +62,7 @@ void ScriptProp::Message(MKMessage *arg0) {
     case 0xE5:
         if ((u8) this->unk55 != 0) {
             this->unk55 = 0;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk4C == 0.0f) {
+            if (this->unk4C <= 0.0f) {
                 Execute();
             }
         }
@@ -92,7 +90,7 @@ void ScriptProp::Update() {
         if (!(temp_r3_218 & 0x80000)) {
             return;
         }
-        if (((u8) this->unk55 == 0) && (this->unk50 -= gUpdateTimeDelta, M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk50 == 0.0f) != 0))) {
+        if (((u8) this->unk55 == 0) && (this->unk50 -= gUpdateTimeDelta, ((this->unk50 <= 0.0f) != 0))) {
             if ((u8) this->unk54 != 0) {
                 temp_r3_240 = this->unk56;
                 this->unk56 = temp_r3_240 + 1;

@@ -43,18 +43,32 @@ void ConveyorBucket::DirtParticles() {
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f1_158;
     f32 temp_f30_151;
+    f64 temp_f0_111;
+    f64 temp_f0_123;
+    f64 temp_f0_135;
+    f64 temp_f0_171;
+    f64 temp_f0_183;
+    f64 temp_f0_99;
+    void *temp_r3_162;
+    void *temp_r3_96;
 
     this->unkE8 += gUpdateTimeDelta * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
     if (!(this->unkE8 < 0.1f)) {
@@ -65,39 +79,45 @@ void ConveyorBucket::DirtParticles() {
         sp100.operator*(140.0f);
         sp110.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
         sp120.operator*(200.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp130 = sp30;
-        sp38 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + sp120.unk8;
+        temp_r3_96 = this->unk8 + 0x30;
+        temp_f0_99 = M2C_FIELD(temp_r3_96, f64 *, 0) + M2C_BITWISE(f64, sp120);
+        sp30 = temp_f0_99;
+        sp130 = temp_f0_99;
+        sp38 = M2C_FIELD(temp_r3_96, f32 *, 8) + sp120.unk8;
         sp138 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp140 = sp20;
+        temp_f0_111 = sp130 + M2C_BITWISE(f64, sp100);
+        sp20 = temp_f0_111;
+        sp140 = temp_f0_111;
         sp28 = (f32) sp138 + sp100.unk8;
         sp148 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp150 = sp10;
+        temp_f0_123 = sp140 + M2C_BITWISE(f64, spE0);
+        sp10 = temp_f0_123;
+        sp150 = temp_f0_123;
         sp18 = (f32) sp148 + spE0.unk8;
         sp158 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp160 = sp40;
-        sp170 = sp40;
+        temp_f0_135 = sp150 + M2C_BITWISE(f64, spD0);
+        sp40 = temp_f0_135;
+        sp160 = temp_f0_135;
+        sp170 = temp_f0_135;
         sp48 = (f32) sp158 + spD0.unk8;
         sp168 = (f64) sp48;
         sp178 = (f64) sp48;
         temp_f30_151 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f1_158 = 0.5f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         sp84 = 0.0f;
+        temp_r3_162 = this->unk8 + 0x10;
         sp80 = temp_f1_158;
         sp88 = 0.5f * temp_f30_151;
         spA0 = (f64) sp80;
         spA8 = (f64) sp88;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spB0 = sp70;
-        sp78 = M2C_FIELD((this->unk8 + 0x10), f32 *, 8) + (f32) spA8;
+        temp_f0_171 = M2C_FIELD(temp_r3_162, f64 *, 0) + spA0;
+        sp70 = temp_f0_171;
+        spB0 = temp_f0_171;
+        sp78 = M2C_FIELD(temp_r3_162, f32 *, 8) + (f32) spA8;
         spB8 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spC0 = sp60;
+        temp_f0_183 = temp_f0_171 * 5.593163344e-315;
+        sp60 = temp_f0_183;
+        spC0 = temp_f0_183;
         sp68 = (f32) spB8 * 250.0f;
         spC8 = (f64) sp68;
         spC = MKRand_Float(&gViewSeed, 0.2f, 0.5f);
@@ -131,8 +151,11 @@ void ConveyorBucket::Message(MKMessage *arg0) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f2_293;
+    f64 temp_f1_270;
     void **temp_r3_252;
     void *temp_r3_256;
     void *temp_r4_267;
@@ -144,15 +167,15 @@ void ConveyorBucket::Message(MKMessage *arg0) {
         temp_r3_256 = M2C_FIELD(*temp_r3_252, void *(**)(void **), 0x2C)(temp_r3_252);
         if (temp_r3_256 != NULL) {
             sp6C = 0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp18 = this->unkD8 * 5.222099017e-315;
             temp_r4_267 = M2C_FIELD(temp_r3_256, void **, 8);
+            temp_f1_270 = M2C_FIELD(temp_r4_267, f64 *, 0x30);
             sp20 = this->unkE0 * 0.5f;
             sp28 = sp18;
-            sp38 = M2C_FIELD(temp_r4_267, f64 *, 0x30);
+            sp38 = temp_f1_270;
             sp30 = (f64) sp20;
             sp40 = M2C_FIELD(temp_r4_267, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp8 = temp_f1_270 + sp28;
             sp58 = sp8;
             temp_f2_293 = (f32) sp40 + (f32) sp30;
             sp48 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -172,19 +195,20 @@ void ConveyorBucket::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal type
 void ConveyorBucket::Update() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
+    void *temp_r4_339;
     void *temp_r4_355;
 
     GameProp::Update();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_r4_339 = this->unk8 + 0x30;
+    sp8 = M2C_FIELD(temp_r4_339, f64 *, 0) - this->unkC8;
     this->unkD8 = sp8;
-    sp10 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) - this->unkD0;
+    sp10 = M2C_FIELD(temp_r4_339, f32 *, 8) - this->unkD0;
     sp18 = sp8;
     M2C_FIELD(this, f64 *, 0xE0) = (f64) sp10;
     temp_r4_355 = this->unk8;

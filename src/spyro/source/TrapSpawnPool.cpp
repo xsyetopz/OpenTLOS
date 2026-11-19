@@ -69,7 +69,7 @@ void TrapSpawnPool::Resolve() {
     MKCollisionResult sp60;
     f32 sp58;
     f32 sp54;
-    f32 sp50;
+    f32 sp50;                                       /* compiler-managed */
     f64 sp48;
     f64 sp40;
     f64 sp38;
@@ -77,9 +77,11 @@ void TrapSpawnPool::Resolve() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f0_188;
     f32 temp_f1_187;
+    f32 temp_f2_245;
     f32 temp_f2_254;
     f32 temp_f3_190;
     f32 var_f4_288;
@@ -98,7 +100,9 @@ void TrapSpawnPool::Resolve() {
     s32 var_r29_376;
     s32 var_r31_377;
     void *temp_r3_172;
+    void *temp_r3_265;
     void *temp_r3_381;
+    void *temp_r4_266;
 
     MKProp::Resolve();
     sp50 = 0.0f;
@@ -112,8 +116,7 @@ void TrapSpawnPool::Resolve() {
         do {
             temp_r3_172 = this->unkB4.unk20 + (var_r29_158 * M2C_FIELD(this, s32 *, 0xD0));
             M2C_FIELD(temp_r3_172, f32 *, 4) = (f32) (M2C_FIELD(temp_r3_172, f32 *, 4) + this->unk108);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp50 = (f64) sp50 + M2C_FIELD(temp_r3_172, f64 *, 0);
             var_r29_158 += 1;
             sp58 += M2C_FIELD(temp_r3_172, f32 *, 8);
             var_ctr_164 -= 1;
@@ -134,20 +137,21 @@ void TrapSpawnPool::Resolve() {
         M2C_FIELD(this->unkB4.unk20, f32 *, 4) = (f32) (sp60.unk4 + this->unk108);
         M2C_FIELD(this, s8 *, 0x110) = (s8) ((this->unkB4.unk34 - M2C_FIELD(this->unkB4.unk20, f32 *, 4)) > (2.0f * this->unk108));
     }
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    temp_f2_254 = sp58 * (1.0f / (f32) var_r29_158);
-    this->unk50.unk30 = sp50;
+    temp_f2_245 = 1.0f / (f32) var_r29_158;
+    sp50 *= (f64) temp_f2_245;
+    temp_f2_254 = sp58 * temp_f2_245;
+    this->unk50.unk30 = (f32) sp50;
     this->unk50.unk34 = sp54;
     this->unk50.unk38 = temp_f2_254;
     this->unk50.unk3C = 1.0f;
     temp_r4_260 = M2C_FIELD(this, s32 *, 0xD0);
     temp_r5_261 = this->unkB4.unk20;
     sp58 = temp_f2_254;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_r3_265 = temp_r5_261 + ((temp_r31_152 - 2) * temp_r4_260);
+    temp_r4_266 = temp_r5_261 + ((temp_r31_152 - 1) * temp_r4_260);
+    sp10 = M2C_FIELD(temp_r4_266, f64 *, 0) - M2C_FIELD(temp_r3_265, f64 *, 0);
     sp30 = sp10;
-    sp18 = M2C_FIELD((temp_r5_261 + ((temp_r31_152 - 1) * temp_r4_260)), f32 *, 8) - M2C_FIELD((temp_r5_261 + ((temp_r31_152 - 2) * temp_r4_260)), f32 *, 8);
+    sp18 = M2C_FIELD(temp_r4_266, f32 *, 8) - M2C_FIELD(temp_r3_265, f32 *, 8);
     sp20 = sp10;
     sp38 = (f64) sp18;
     sp28 = (f64) sp18;

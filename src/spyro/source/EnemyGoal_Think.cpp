@@ -505,12 +505,11 @@ void EnemyGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
             var_r25_1010 = 0xE;
         }
     }
-    if ((((u8) arg0->unk34 >> 4U) & 1) && (temp_r5_1205 = this->unkC, M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((M2C_FIELD(temp_r5_1205, f32 *, 0xACC) == 0.0f) != 0)) && ((var_r25_1010 == 0) || ((u32) (var_r25_1010 - 4) <= 1U) || (((EnemyDescriptor *) (M2C_FIELD(temp_r5_1205, EnemyDescriptor **, 0xA38)))->GetAnimSequence(2, 0x2A, M2C_FIELD(temp_r5_1205, s32 *, 0xAE4), NULL) == NULL))) {
+    if ((((u8) arg0->unk34 >> 4U) & 1) && (temp_r5_1205 = this->unkC, ((M2C_FIELD(temp_r5_1205, f32 *, 0xACC) <= 0.0f) != 0)) && ((var_r25_1010 == 0) || ((u32) (var_r25_1010 - 4) <= 1U) || (((EnemyDescriptor *) (M2C_FIELD(temp_r5_1205, EnemyDescriptor **, 0xA38)))->GetAnimSequence(2, 0x2A, M2C_FIELD(temp_r5_1205, s32 *, 0xAE4), NULL) == NULL))) {
         var_r25_1010 = 7;
     } else if (((u8) arg0->unk34 >> 4U) & 1) {
         temp_r3_1231 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r3_1231, f32 *, 0xACC) == 0.0f) {
+        if (M2C_FIELD(temp_r3_1231, f32 *, 0xACC) <= 0.0f) {
             temp_r3_1231->Armour_Destroy();
         }
     }
@@ -577,7 +576,7 @@ void EnemyGoal_Think::AddGoal_Strafe() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp48'
+#if 0 // DRAFT: pointer/array required
 u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
     f64 spC0;
     f64 spB8;
@@ -593,10 +592,12 @@ u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     M2C_UNK sp18;
     u8 sp14;
     void *sp10;
@@ -608,6 +609,8 @@ u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
     f32 temp_f1_1621;
     f32 temp_f2_1515;
     f32 temp_f31_1415;
+    f64 temp_f0_1430;
+    f64 temp_f0_1527;
     s32 temp_r28_1565;
     s32 temp_r3_1386;
     s32 temp_r3_1420;
@@ -641,9 +644,9 @@ u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
         sp5C = 50.0f + temp_f31_1415;
         sp80 = (f64) sp60;
         sp78 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spB8 = sp48;
+        temp_f0_1430 = *(temp_r3_1420 + 0x720) + (f64) sp58;
+        sp48 = temp_f0_1430;
+        spB8 = temp_f0_1430;
         sp50 = M2C_FIELD(temp_r3_1420, f32 *, 0x728) + (f32) sp80;
         spC0 = (f64) sp50;
         temp_r4_1440 = M2C_FIELD(temp_r3_1420, void **, 0x634);
@@ -684,9 +687,9 @@ u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
         sp3C = temp_f2_1515;
         sp70 = (f64) sp40;
         sp68 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        spA8 = sp28;
+        temp_f0_1527 = *(temp_r3_1516 + 0x720) + (f64) sp38;
+        sp28 = temp_f0_1527;
+        spA8 = temp_f0_1527;
         sp30 = M2C_FIELD(temp_r3_1516, f32 *, 0x728) + (f32) sp70;
         spB0 = (f64) sp30;
         temp_r4_1537 = M2C_FIELD(temp_r3_1516, void **, 0x634);
@@ -707,8 +710,7 @@ u8 EnemyGoal_Think::AddGoal_MoveToLastPlayerPos() {
         temp_r30_1567 = temp_r28_1565 + 0x720;
         if (((EnemyRegion *) (temp_r28_1565 + 0x800))->IsPointWithin(*temp_r30_1567) != 0) {
             sp18.GetRegionPos();
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((f32) fabs(sp1C - temp_r30_1567->unk4) == 500.0f) {
+            if ((f32) fabs(sp1C - temp_r30_1567->unk4) <= 500.0f) {
                 var_r29_1566 = 1;
             }
         }
@@ -812,8 +814,7 @@ void EnemyGoal_Think::ArbitrateOld() {
     void *temp_r3_1932;
 
     temp_r3_1829 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if ((M2C_FIELD(temp_r3_1829, f32 *, 0xAC8) != 0.0f) && (M2C_FIELD(M2C_FIELD(temp_r3_1829, void **, 0x44), u8 (**)(), 0x134)() == 0) && (this->unkC->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x26) == 0)) {
+    if (!(M2C_FIELD(temp_r3_1829, f32 *, 0xAC8) <= 0.0f) && (M2C_FIELD(M2C_FIELD(temp_r3_1829, void **, 0x44), u8 (**)(), 0x134)() == 0) && (this->unkC->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0)) && (IsPresent(0x26) == 0)) {
         if (IsPresent(0x28) != 0) {
             return;
         }
@@ -924,8 +925,7 @@ void EnemyGoal_Think::Arbitrate() {
         temp_r3_2156 = this->unkC;
         M2C_FIELD(temp_r3_2156, u8 *, 0xB0A) = (u8) (M2C_FIELD(temp_r3_2156, u8 *, 0xB0A) & ~1);
         temp_r5_2162 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r5_2162, f32 *, 0xAC8) == 0.0f) {
+        if (M2C_FIELD(temp_r5_2162, f32 *, 0xAC8) <= 0.0f) {
             temp_r4_2168 = M2C_FIELD(temp_r5_2162, s32 *, 0xAE8);
             if (temp_r4_2168 < (s32) (M2C_FIELD(M2C_FIELD(temp_r5_2162, void **, 0xA38), s32 *, 0x11C) - 1)) {
                 M2C_FIELD(temp_r5_2162, s32 *, 0xAE8) = (s32) (temp_r4_2168 + 1);
@@ -938,8 +938,7 @@ void EnemyGoal_Think::Arbitrate() {
             }
         }
         temp_r3_2191 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r3_2191, f32 *, 0xAC8) == 0.0f) {
+        if (M2C_FIELD(temp_r3_2191, f32 *, 0xAC8) <= 0.0f) {
             AddGoal_Death(&sp28);
             return;
         }
@@ -962,11 +961,8 @@ void EnemyGoal_Think::Arbitrate() {
             AddGoal_Hit(&sp28);
             return;
         }
-        if ((sp28.unk34 >> 4U) & 1) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r3_2191, f32 *, 0xACC) == 0.0f) {
-                temp_r3_2191->Armour_Destroy();
-            }
+        if (((sp28.unk34 >> 4U) & 1) && (M2C_FIELD(temp_r3_2191, f32 *, 0xACC) <= 0.0f)) {
+            temp_r3_2191->Armour_Destroy();
         }
         goto block_46;
     }

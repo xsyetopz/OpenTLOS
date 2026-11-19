@@ -202,6 +202,7 @@ void EnemyGeneratorDoor::GetDoorDir() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 temp_f2_542;
     f32 temp_f5_539;
@@ -226,8 +227,7 @@ void EnemyGeneratorDoor::GetDoorDir() {
     }
     sp48.GetSpawnPos();
     sp48.unk10.GetDoorPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp18 = sp48.unk10 - M2C_BITWISE(f64, sp48);
     sp48.unk20 = sp18;
     sp20 = M2C_BITWISE(f32, sp48.unk18) - (f32) sp48.unk8;
     temp_f5_539 = M2C_BITWISE(f32, sp48.unk24);
@@ -610,6 +610,7 @@ void EnemyGenerator::Resolve() {
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f64 sp38;
     f64 sp30;
     f32 sp28;
@@ -630,6 +631,7 @@ void EnemyGenerator::Resolve() {
     f32 temp_f8_1618;
     f32 var_f4_1515;
     f32 var_f6_1498;
+    f64 temp_f0_1492;
     f64 temp_f1_1520;
     f64 temp_f1_1526;
     f64 temp_f1_1530;
@@ -741,8 +743,9 @@ loop_54:
             sp70.GetDoorPos();
             sp80.unk20 = sp70;
             sp80.unk28 = sp78;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp30 = sp40;
+            temp_f0_1492 = M2C_BITWISE(f64, sp80.unk20) - spB0;
+            sp40 = temp_f0_1492;
+            sp30 = temp_f0_1492;
             var_f6_1498 = 0.0f;
             unksp34 = 0.0f;
             sp48 = M2C_BITWISE(f32, sp80.unk28) - (f32) spB8;

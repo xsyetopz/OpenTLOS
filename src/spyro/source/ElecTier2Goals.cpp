@@ -27,16 +27,19 @@ void ElecTier2Goal_FlyToTarget::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unk18'
 u8 ElecTier2Goal_FlyToTarget::Update() {
     f64 sp48;                                       /* compiler-managed */
     f64 sp40;                                       /* compiler-managed */
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     Character *temp_r3_150;
+    Character *temp_r3_29;
     f32 temp_f4_129;
     f32 var_f30_139;
     f32 var_f31_52;
@@ -51,11 +54,10 @@ u8 ElecTier2Goal_FlyToTarget::Update() {
     void *temp_r5_163;
 
     ActivateIfInactive();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_r3_29 = this->unkC;
+    sp20 = this->unk18 - M2C_FIELD(temp_r3_29, f64 *, 0x588);
     sp40 = sp20;
-    sp28 = this->unk20 - this->unkC->unk588.unk4;
+    sp28 = this->unk20 - temp_r3_29->unk588.unk4;
     sp48 = (f64) sp28;
     var_f31_52 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44));
     if (var_f31_52 > 0.000001f) {
@@ -106,7 +108,7 @@ u8 ElecTier2Goal_FlyToTarget::Update() {
     } else {
         var_f30_139 = temp_f4_129;
     }
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+    sp10 = (f64) sp40 * (f64) var_f30_139;
     temp_r3_150 = this->unkC;
     sp30 = sp10;
     sp18 = sp48 * var_f30_139;
@@ -278,10 +280,7 @@ u8 ElecTier2Goal_Land::Update() {
 
     ActivateIfInactive();
     temp_r3_485 = this->unkC;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+    M2C_FIELD(temp_r3_485, f64 *, 0x598) = (f64) (M2C_FIELD(temp_r3_485, f64 *, 0x598) + M2C_FIELD(temp_r3_485, f64 *, 0x90));
     temp_r3_485->unk59C += temp_r3_485->unk98;
     if (this->unkC->HasAnimFinished() != 0) {
         M2C_FIELD(this->unk10, s8 *, 0xB11) = 1;
@@ -322,10 +321,7 @@ u8 ElecTier2Goal_TakeOff::Update() {
 
     ActivateIfInactive();
     temp_r3_593 = this->unkC;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+    M2C_FIELD(temp_r3_593, f64 *, 0x598) = (f64) (M2C_FIELD(temp_r3_593, f64 *, 0x598) + M2C_FIELD(temp_r3_593, f64 *, 0x90));
     temp_r3_593->unk59C += temp_r3_593->unk98;
     if (this->unkC->HasAnimFinished() != 0) {
         M2C_FIELD(this->unk10, s8 *, 0xB11) = 0;
@@ -462,8 +458,7 @@ u8 ElecTier2Goal_PatrolMode::Update() {
             this->unk20->unkAFC = (temp_r3_890 + 1) % M2C_FIELD(M2C_FIELD(this->unkC->unkA2C, void **, 0x18), s32 *, 0x20);
         }
         temp_r3_903 = this->unk20;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_BITWISE(f32, temp_r3_903->unkB04) == 0.0f) {
+        if (M2C_BITWISE(f32, temp_r3_903->unkB04) <= 0.0f) {
             if (temp_r3_903->FindLandingPos(&sp8) != 0) {
                 M2C_FIELD(this->unk20, s8 *, 0xB12) = 1;
             } else {
@@ -499,8 +494,7 @@ void ElecTier2Goal_PatrolMode::Activate() {
         AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
     }
     temp_r4_963 = this->unkC;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_FIELD(&gb, f32 *, 0x30C) == temp_r4_963->unkA7C) {
+    if (M2C_FIELD(&gb, f32 *, 0x30C) >= temp_r4_963->unkA7C) {
         var_r30_972 = 0;
         if (((u8) M2C_FIELD(temp_r4_963, u8 *, 0x8B8) == 2) || (temp_r4_963->unk870.unk30.Get() != NULL)) {
             var_r30_972 = 1;
@@ -692,8 +686,7 @@ u8 ElecTier2Goal_GroundMode::Update() {
     this->unk8 = UpdateSubgoals();
     if ((u8) this->unk8 == 2) {
         temp_r3_1333 = this->unk20;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r3_1333, f32 *, 0xB18) == 0.0f) {
+        if (M2C_FIELD(temp_r3_1333, f32 *, 0xB18) <= 0.0f) {
             M2C_FIELD(temp_r3_1333, s8 *, 0xB12) = 0;
         } else {
             Activate();
@@ -909,8 +902,7 @@ void ElecTier2Goal_Think::Arbitrate() {
         if ((sp8.unk28 == 4) || (sp8.unk28 == 5) || (sp8.unk28 == 2) || (sp8.unk28 == 3)) {
             sp8.unk28 = 0xE;
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkC->unkAB0 == 0.0f) {
+        if (this->unkC->unkAB0 <= 0.0f) {
             AddGoal_Death(&sp8);
             return;
         }

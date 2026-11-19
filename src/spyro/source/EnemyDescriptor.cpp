@@ -97,12 +97,9 @@ void EnemyDescriptor::InitArmour() {
     void *var_r3_167;
 
     temp_r0_41 = this->unk1D6;
-    if ((temp_r0_41 != 0) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unkF0 == 0.0f) == 0))) {
-        if (temp_r0_41 != 0) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (GetEnemySetting((EnemySettingType) 1) == 0.0f) {
-                return;
-            }
+    if ((temp_r0_41 != 0) || !(this->unkF0 <= 0.0f)) {
+        if ((temp_r0_41 != 0) && (GetEnemySetting((EnemySettingType) 1) <= 0.0f)) {
+            return;
         }
         var_r30_64 = 0;
         var_r28_65 = 0;
@@ -1338,7 +1335,7 @@ void EnemyDescriptor::Init() {
 void SumAnimTranslation(MKAnimScript *arg0, MKAnim *arg1, float arg2) {
     f32 sp20;
     f32 sp1C;
-    f32 sp18;
+    f32 sp18;                                       /* compiler-managed */
     MKVector3 sp8;
     MKAnim *temp_r31_2905;
     s32 temp_r3_2942;
@@ -1356,12 +1353,12 @@ loop_4:
         temp_r3_2942 = arg1->unk2C;
         if (!(temp_r3_2942 & 1) && !(temp_r3_2942 & 2)) {
             arg1->Animate(MKModel_GetAnimation(M2C_FIELD(arg1, MKModel **, 8)), -1, &sp8);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp18 = (f64) sp18 + M2C_BITWISE(f64, sp8);
             sp20 += sp8.unk8;
             goto loop_4;
         }
     }
-    M2C_FIELD(arg0, f64 *, 0) = (f64) sp18;
+    M2C_FIELD(arg0, f64 *, 0) = sp18;
     M2C_FIELD(arg0, f64 *, 8) = (f64) sp20;
 }
 #endif

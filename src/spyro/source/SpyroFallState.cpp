@@ -193,11 +193,15 @@ void SpyroFallState::SetStrafeJump(bool arg0) {
 
 #if 0 // DRAFT: illegal type
 void SpyroFallState::GetFallVel() {
-    M2C_UNK sp38;
-    M2C_UNK sp28;
+    f64 sp38;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
-    f32 temp_f1_142;
+    f64 sp8;
+    f32 temp_f31_136;
+    f64 temp_f0_118;
+    f64 temp_f0_138;
     s32 temp_r3_89;
     void *temp_r31_84;
     void *temp_r3_87;
@@ -222,17 +226,19 @@ void SpyroFallState::GetFallVel() {
 block_6:
     if ((u8) M2C_FIELD(temp_r31_84, u8 *, 0x34) != 0) {
         sp38.CalcYawTurnDir(3.5f);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_FIELD(this, f64 *, 0) = sp18;
+        temp_f0_118 = sp38 * 5.655816876e-315;
+        sp18 = temp_f0_118;
+        M2C_FIELD(this, f64 *, 0) = temp_f0_118;
         sp20 = sp40 * 750.0f;
         this->unk8 = (f64) sp20;
         return;
     }
     sp28.CalcVelTurnDir(2.3999999f);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    temp_f1_142 = sp30 * (750.0f * ((KDInput *) (((Spyro *) (M2C_FIELD(temp_r31_84, Spyro **, 0x10)))->GetInput()))->GetLeftMag());
-    M2C_FIELD(this, f64 *, 0) = sp8;
-    sp10 = temp_f1_142;
+    temp_f31_136 = 750.0f * ((KDInput *) (((Spyro *) (M2C_FIELD(temp_r31_84, Spyro **, 0x10)))->GetInput()))->GetLeftMag();
+    temp_f0_138 = sp28 * (f64) temp_f31_136;
+    sp8 = temp_f0_138;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_138;
+    sp10 = sp30 * temp_f31_136;
     this->unk8 = (f64) sp10;
 }
 #endif
@@ -363,7 +369,7 @@ void SpyroFallState::HoverEnter() {
     this->unk4C = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: illegal type
 u8 SpyroFallState::GlideTransition() {
     f64 sp60;
     f64 sp58;
@@ -374,29 +380,36 @@ u8 SpyroFallState::GlideTransition() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     InputModifier *temp_r3_458;
     f32 var_f1_471;
+    f64 temp_f0_411;
+    f64 temp_f0_424;
     f64 temp_f2_407;
     f64 temp_f3_405;
     u8 var_r3_450;
     u8 var_r4_460;
     void *temp_r3_404;
+    void *temp_r4_406;
 
     temp_r3_404 = this->unk10->unk8;
     temp_f3_405 = M2C_FIELD(temp_r3_404, f64 *, 0x30);
+    temp_r4_406 = temp_r3_404 + 0x20;
     temp_f2_407 = M2C_FIELD(temp_r3_404, f64 *, 0x38);
     sp58 = temp_f3_405;
     sp60 = temp_f2_407;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f4 */);
+    temp_f0_411 = M2C_FIELD(temp_r4_406, f64 *, 0) * 5.53552857e-315;
+    sp18 = temp_f0_411;
     sp38 = temp_f3_405;
-    sp28 = sp18;
-    sp20 = M2C_FIELD((temp_r3_404 + 0x20), f32 *, 8) * 100.0f;
+    sp28 = temp_f0_411;
+    sp20 = M2C_FIELD(temp_r4_406, f32 *, 8) * 100.0f;
     sp40 = temp_f2_407;
     sp30 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp48 = sp8;
+    temp_f0_424 = sp38 - temp_f0_411;
+    sp8 = temp_f0_424;
+    sp48 = temp_f0_424;
     sp10 = (f32) sp40 - (f32) sp30;
     sp50 = (f64) sp10;
     if ((MKCollision_RayCollide(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), NULL, (MKCollisionMode) 4, 0x04000000) != 0) && ((s32) this->unk14.unk0 != 0)) {
@@ -441,16 +454,19 @@ u8 SpyroFallState::GlideTransition() {
 void SpyroFallState::GlideUpdate() {
     f64 sp30;
     f64 sp28;
-    M2C_UNK sp18;
+    f64 sp18;
     f32 sp10;
-    f32 temp_f2_554;
+    f64 sp8;
+    f32 temp_f31_547;
+    f64 temp_f0_549;
 
     this->unk6C.Update(this->unk10);
     sp18.CalcYawTurnDir(2.3999999f);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    temp_f2_554 = sp20 * (1000.0f * ((KDInput *) (this->unk10->GetInput()))->GetLeftMag());
-    sp28 = sp8;
-    sp10 = temp_f2_554;
+    temp_f31_547 = 1000.0f * ((KDInput *) (this->unk10->GetInput()))->GetLeftMag();
+    temp_f0_549 = sp18 * (f64) temp_f31_547;
+    sp8 = temp_f0_549;
+    sp28 = temp_f0_549;
+    sp10 = sp20 * temp_f31_547;
     sp30 = (f64) sp10;
     this->unk10->SetDesiredVelocityHoriz(*((MKVector3 *) &sp28), 3800.0f);
     this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp28), 900.0f);
@@ -943,11 +959,8 @@ s32 SpyroFallState::Transition() {
     var_r5_1286 = 0;
     temp_r3_1287 = this->unk10;
     temp_r29_1294 = M2C_FIELD(temp_r3_1287->unk26C.unk8, s32 *, 0x16C) > 0;
-    if ((u8) this->unk38 == 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unk2C) {
-            var_r5_1286 = 1;
-        }
+    if (((u8) this->unk38 == 0) && !(M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk2C)) {
+        var_r5_1286 = 1;
     }
     if (var_r5_1286 != 0) {
         temp_r3_1307 = temp_r3_1287->GetInput();
@@ -970,11 +983,8 @@ s32 SpyroFallState::Transition() {
     var_r28_1340 = 0;
     var_r18_1341 = 0;
     var_r0_1343 = 0;
-    if ((u8) this->unk38 == 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unk30) {
-            var_r0_1343 = 1;
-        }
+    if (((u8) this->unk38 == 0) && !(M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk30)) {
+        var_r0_1343 = 1;
     }
     if (var_r0_1343 != 0) {
         temp_r3_1357 = this->unk10->GetInput();
@@ -1273,6 +1283,7 @@ void SpyroFallState::Update() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -1284,6 +1295,7 @@ void SpyroFallState::Update() {
     f32 var_f1_1905;
     f32 var_f4_1969;
     f32 var_f5_1986;
+    f64 temp_f0_1967;
     f64 temp_f1_1991;
     f64 temp_f1_1997;
     f64 temp_f1_2001;
@@ -1324,9 +1336,10 @@ void SpyroFallState::Update() {
                 sp58 = M2C_FIELD(temp_r3_1956, f64 *, 0x30);
                 sp80 = M2C_FIELD(temp_r5_1955, f64 *, 0x38);
                 sp60 = M2C_FIELD(temp_r3_1956, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                temp_f0_1967 = sp78 - sp58;
+                sp28 = temp_f0_1967;
                 var_f4_1969 = 0.0f;
-                sp68 = sp28;
+                sp68 = temp_f0_1967;
                 unksp6C = 0.0f;
                 sp30 = (f32) sp80 - (f32) sp60;
                 sp70 = (f64) sp30;

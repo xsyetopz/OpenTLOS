@@ -47,8 +47,7 @@ void Autosave_Draw() {
     RenderContext sp10;
     f32 var_f0_66;
 
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (autosaveIconOffset != 0.0f) {
+    if (!(autosaveIconOffset <= 0.0f)) {
         ((GameData *) ((GameData *) GameData::gameData))->GetGameSettings();
         if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11) != 0) {
             var_f0_66 = 60.0f;
@@ -104,18 +103,15 @@ void Autosave_Update() {
     void *temp_r7_341;
 
     if ((s32) autosave_state == 4) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (autosaveIconThrob == 0.0f) {
+        if (autosaveIconThrob <= 0.0f) {
             autosaveIconOffset = -((3.0f * gUpdateTimeDelta) - autosaveIconOffset);
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (autosaveIconOffset == 0.0f) {
+        if (autosaveIconOffset <= 0.0f) {
             autosaveIconOffset = 0.0f;
             autosave_state = 0;
         }
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (autosaveIconOffset == 1.0f) {
+    if (autosaveIconOffset >= 1.0f) {
         temp_f1_236 = (6.2831855f * gUpdateTimeDelta) + autosaveIconThrob;
         autosaveIconThrob = temp_f1_236;
         if (temp_f1_236 > 3.1415927f) {

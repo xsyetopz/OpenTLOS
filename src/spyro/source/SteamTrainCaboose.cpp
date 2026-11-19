@@ -205,11 +205,11 @@ void SteamTrainCaboose::Enable() {
     EnemyHud_Modified((MKProp *) this, temp_f1_322, temp_f1_322, 50.0f);
 }
 
-#if 0 // DRAFT: undefined identifier 'sp28'
 void SteamTrainCaboose::GetVel() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -217,6 +217,8 @@ void SteamTrainCaboose::GetVel() {
     f32 spC;
     f32 sp8;
     SteamTrain *temp_r3_345;
+    f32 temp_f3_349;
+    f64 temp_f0_365;
     void *temp_r31_341;
     void *temp_r3_376;
     void *temp_r4_348;
@@ -225,14 +227,16 @@ void SteamTrainCaboose::GetVel() {
     temp_r3_345 = checked_cast<SteamTrain *, MKProp>(((MKSceneManager *) (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKSceneManager **, 0xD0)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     if (temp_r3_345 != NULL) {
         temp_r4_348 = M2C_FIELD(temp_r31_341, void **, 8);
+        temp_f3_349 = temp_r3_345->unk104;
         sp8 = -M2C_FIELD(temp_r4_348, f32 *, 0x20);
         spC = -M2C_FIELD(temp_r4_348, f32 *, 0x24);
         sp10 = -M2C_FIELD(temp_r4_348, f32 *, 0x28);
         sp38 = (f64) sp8;
         sp40 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_FIELD(this, f64 *, 0) = sp28;
-        sp30 = (f32) sp40 * temp_r3_345->unk104;
+        temp_f0_365 = sp38 * (f64) temp_f3_349;
+        sp28 = temp_f0_365;
+        M2C_FIELD(this, f64 *, 0) = temp_f0_365;
+        sp30 = (f32) sp40 * temp_f3_349;
         M2C_FIELD(this, f64 *, 8) = (f64) sp30;
         return;
     }
@@ -243,7 +247,6 @@ void SteamTrainCaboose::GetVel() {
     M2C_FIELD(this, f64 *, 0) = (f64) sp18;
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }
-#endif
 
 void SteamTrainCaboose::SetState(SteamTrainCabooseState arg0) {
     this->unkC8 = (s32) arg0;
@@ -279,10 +282,12 @@ void SteamTrainCaboose::Message(MKMessage *arg0) {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     s32 spC;
     s32 sp8;
     Collectable2 *temp_r3_542;
@@ -296,6 +301,10 @@ void SteamTrainCaboose::Message(MKMessage *arg0) {
     f32 temp_f30_718;
     f32 temp_f31_549;
     f32 temp_f31_724;
+    f64 temp_f0_611;
+    f64 temp_f0_647;
+    f64 temp_f1_599;
+    f64 temp_f1_635;
     s32 temp_r0_475;
     s32 temp_r0_661;
     s32 temp_r30_762;
@@ -342,14 +351,16 @@ block_34:
         if (temp_r3_592 != NULL) {
             temp_r4_597 = this->unk8;
             sp40 = 0.0f;
+            temp_f1_599 = M2C_FIELD(temp_r4_597, f64 *, 0x30);
             sp44 = 500.0f;
             sp48 = 0.0f;
             sp70 = (f64) sp40;
-            sp80 = M2C_FIELD(temp_r4_597, f64 *, 0x30);
+            sp80 = temp_f1_599;
             sp78 = (f64) sp48;
             sp88 = M2C_FIELD(temp_r4_597, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spA0 = sp30;
+            temp_f0_611 = temp_f1_599 + sp70;
+            sp30 = temp_f0_611;
+            spA0 = temp_f0_611;
             sp38 = (f32) sp88 + (f32) sp78;
             spA8 = (f64) sp38;
             temp_r3_592->TriggerDamageFX(*((MKVector3 *) &spA0), 1.0f);
@@ -360,14 +371,16 @@ block_34:
         if (temp_r3_628 != NULL) {
             temp_r4_633 = this->unk8;
             sp20 = 0.0f;
+            temp_f1_635 = M2C_FIELD(temp_r4_633, f64 *, 0x30);
             sp24 = 500.0f;
             sp28 = 0.0f;
             sp50 = (f64) sp20;
-            sp60 = M2C_FIELD(temp_r4_633, f64 *, 0x30);
+            sp60 = temp_f1_635;
             sp58 = (f64) sp28;
             sp68 = M2C_FIELD(temp_r4_633, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp90 = sp10;
+            temp_f0_647 = temp_f1_635 + sp50;
+            sp10 = temp_f0_647;
+            sp90 = temp_f0_647;
             sp18 = (f32) sp68 + (f32) sp58;
             sp98 = (f64) sp18;
             temp_r3_628->TriggerDamageFX(*((MKVector3 *) &sp90), 1.0f);
@@ -482,11 +495,14 @@ void SteamTrainCaboose::Update() {
     f32 sp144;
     f32 sp140;
     f32 sp138;
+    f64 sp130;
     f32 sp128;
     f32 sp124;
     f32 sp120;
     f32 sp118;
+    f64 sp110;
     f32 sp108;
+    f64 sp100;
     f32 spF8;
     f32 spF4;
     f32 spF0;
@@ -494,11 +510,14 @@ void SteamTrainCaboose::Update() {
     f32 spE4;
     f32 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
     f32 spB4;
     f32 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp9C;
     f32 sp98;
     f32 sp94;
@@ -535,6 +554,12 @@ void SteamTrainCaboose::Update() {
     f32 temp_f2_1282;
     f32 temp_f30_1026;
     f32 temp_f31_994;
+    f64 temp_f0_1008;
+    f64 temp_f0_880;
+    f64 temp_f0_900;
+    f64 temp_f0_956;
+    f64 temp_f0_969;
+    f64 temp_f1_894;
     s32 temp_r0_824;
     s32 var_r28_1162;
     u64 temp_r3_816;
@@ -545,6 +570,7 @@ void SteamTrainCaboose::Update() {
     void *temp_r3_1147;
     void *temp_r3_1327;
     void *temp_r3_893;
+    void *temp_r4_963;
 
     GameProp::Update();
     if ((s32) this->unkC8 != 0) {
@@ -621,7 +647,7 @@ block_20:
                         sp148 = -5.0f;
                         sp2C0 = (f64) sp140;
                         sp2C8 = (f64) sp148;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                        sp130 = sp2C0 * 5.53552857e-315;
                         sp128 = 5.0f;
                         sp138 = (f32) sp2C8 * 100.0f;
                         sp120 = 5.0f;
@@ -630,16 +656,19 @@ block_20:
                         sp2A0 = (f64) sp120;
                         sp2D8 = (f64) sp138;
                         sp2A8 = (f64) sp128;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                        sp2B0 = sp110;
+                        temp_f0_880 = sp2A0 * 5.53552857e-315;
+                        sp110 = temp_f0_880;
+                        sp2B0 = temp_f0_880;
                         sp118 = (f32) sp2A8 * 100.0f;
                         sp2B8 = (f64) sp118;
                         KDRand_Vector(sp2E0, *((MKVector3 *) &sp2D0));
                         temp_r3_893 = this->unk8;
-                        sp2F0 = M2C_FIELD(temp_r3_893, f64 *, 0x30);
+                        temp_f1_894 = M2C_FIELD(temp_r3_893, f64 *, 0x30);
+                        sp2F0 = temp_f1_894;
                         sp2F8 = M2C_FIELD(temp_r3_893, f64 *, 0x38);
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp300 = sp100;
+                        temp_f0_900 = temp_f1_894 + M2C_BITWISE(f64, sp2E0);
+                        sp100 = temp_f0_900;
+                        sp300 = temp_f0_900;
                         sp108 = (f32) sp2F8 + sp2E0.unk8;
                         sp308 = (f64) sp108;
                         temp_f1_913 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
@@ -658,14 +687,16 @@ block_20:
                     spE8 = temp_f28_937;
                     sp270 = (f64) spE0;
                     sp278 = (f64) spE8;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    sp280 = spD0;
+                    temp_f0_956 = sp270 * 5.60222949e-315;
+                    spD0 = temp_f0_956;
+                    sp280 = temp_f0_956;
+                    temp_r4_963 = this->unk8 + 0x30;
                     spD8 = (f32) sp278 * 300.0f;
                     sp288 = (f64) spD8;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    sp320 = spC0;
-                    spC8 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) sp288;
+                    temp_f0_969 = M2C_FIELD(temp_r4_963, f64 *, 0) + temp_f0_956;
+                    spC0 = temp_f0_969;
+                    sp320 = temp_f0_969;
+                    spC8 = M2C_FIELD(temp_r4_963, f32 *, 8) + (f32) sp288;
                     sp328 = (f64) spC8;
                     if (MKRand_Int(&gViewSeed, 0, 4) == 0) {
                         temp_f29_989 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -675,8 +706,9 @@ block_20:
                         spB8 = temp_f29_989;
                         sp250 = (f64) spB0;
                         sp258 = (f64) spB8;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                        sp260 = spA0;
+                        temp_f0_1008 = sp250 * 5.65986426e-315;
+                        spA0 = temp_f0_1008;
+                        sp260 = temp_f0_1008;
                         spA8 = (f32) sp258 * 800.0f;
                         sp268 = (f64) spA8;
                         sp14 = MKRand_Float(&gViewSeed, 5.0f, 8.0f);

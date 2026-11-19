@@ -66,7 +66,6 @@ static f32 cameraYOffset = -200.0f;
 static f32 cameraXOffset = -3000.0f;
 
 s32 TrainChaseSpyro::IsDead() {
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 
@@ -97,7 +96,7 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
     f64 sp138;
     f64 sp130;
     f64 sp128;
-    M2C_UNK sp118;
+    f64 sp118;
     MKVector3 sp108;
     f64 sp100;
     f64 spF8;
@@ -107,16 +106,27 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
     f32 spDC;
     f32 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     s32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -137,13 +147,20 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
     f32 temp_f4_410;
     f32 temp_f4_530;
     f32 temp_f6_533;
-    f32 var_f29_219;
     f32 var_f30_430;
     f32 var_f31_351;
     f32 var_f3_650;
     f32 var_f4_583;
     f32 var_f4_71;
     f32 var_f5_80;
+    f64 *temp_r4_242;
+    f64 temp_f0_197;
+    f64 temp_f0_229;
+    f64 temp_f0_248;
+    f64 temp_f0_265;
+    f64 temp_f0_480;
+    f64 temp_f0_491;
+    f64 temp_f1_189;
     f64 temp_f1_335;
     f64 temp_f1_341;
     f64 temp_f1_345;
@@ -153,9 +170,14 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
     f64 temp_f1_589;
     f64 temp_f1_595;
     f64 temp_f1_599;
+    f64 temp_f1_665;
     f64 temp_f1_85;
     f64 temp_f1_91;
     f64 temp_f1_95;
+    f64 temp_f2_489;
+    f64 temp_f3_240;
+    f64 temp_f3_258;
+    f64 var_f29_219;
     s32 temp_r31_697;
     s32 temp_r3_114;
     s32 temp_r3_364;
@@ -172,9 +194,11 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
     void *temp_r3_177;
     void *temp_r3_187;
     void *temp_r3_227;
+    void *temp_r3_260;
     void *temp_r3_287;
     void *temp_r3_401;
     void *temp_r3_45;
+    void *temp_r3_477;
     void *temp_r4_183;
     void *temp_r4_39;
     void *temp_ret_45;
@@ -247,44 +271,50 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
     if ((u8) M2C_FIELD(temp_r3_177, u8 *, 0x6C) == 1) {
         temp_r4_183 = M2C_FIELD(temp_r3_45, void **, 8);
         temp_r3_187 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
+        temp_f1_189 = M2C_FIELD(temp_r3_187, f64 *, 0x30);
         sp1B8 = M2C_FIELD(temp_r4_183, f64 *, 0x30);
-        sp1C8 = M2C_FIELD(temp_r3_187, f64 *, 0x30);
+        sp1C8 = temp_f1_189;
         sp1C0 = M2C_FIELD(temp_r4_183, f64 *, 0x38);
         sp1D0 = M2C_FIELD(temp_r3_187, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp1E8.unk60 = spC8;
+        temp_f0_197 = temp_f1_189 - sp1B8;
+        spC8 = temp_f0_197;
+        sp1E8.unk60 = temp_f0_197;
         spD0 = (f32) sp1D0 - (f32) sp1C0;
         sp1E8.unk60.unk8 = (f64) spD0;
         if (((M2C_FIELD(temp_r4_183, f32 *, 0x28) * sp1E8.unk60.unk8) + ((M2C_FIELD(temp_r4_183, f32 *, 0x20) * M2C_BITWISE(f32, sp1E8.unk60)) + (M2C_FIELD(temp_r4_183, f32 *, 0x24) * M2C_BITWISE(f32, sp1E8.unk60.unk4)))) > 0.0f) {
-            var_f29_219 = 250.0f;
+            var_f29_219 = 5.593163344e-315;
         } else {
-            var_f29_219 = -250.0f;
+            var_f29_219 = 1.62031423e-314;
         }
         temp_r3_227 = this->unk8->unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp1A8 = sp78;
-        sp80 = M2C_FIELD(temp_r3_227, f32 *, 8) * var_f29_219;
+        temp_f0_229 = M2C_FIELD(temp_r3_227, f64 *, 0) * var_f29_219;
+        sp78 = temp_f0_229;
+        sp1A8 = temp_f0_229;
+        sp80 = M2C_FIELD(temp_r3_227, f32 *, 8) * (f32) var_f29_219;
         sp1B0 = (f64) sp80;
-        M2C_ERROR(/* unknown instruction: ps_add $f3, $f1, $f0 */);
+        temp_f3_240 = M2C_BITWISE(f64, sp1E8.unk60.unk10) + temp_f0_229;
+        sp1E8.unk60.unk10 = temp_f3_240;
+        temp_r4_242 = temp_r3_227 + 0x10;
         temp_f2_245 = M2C_BITWISE(f32, sp1E8.unk74.unk4) + (f32) sp1B0;
         sp1E8.unk74.unk4 = temp_f2_245;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f4 */);
-        sp198 = sp68;
+        temp_f0_248 = *temp_r4_242 * 0.0;
+        sp68 = temp_f0_248;
+        sp198 = temp_f0_248;
         sp70 = M2C_FIELD(temp_r3_227, f32 *, 0x18) * 0.0f;
         sp1A0 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: ps_add $f3, $f3, $f0 */);
+        temp_f3_258 = temp_f3_240 + temp_f0_248;
+        sp1E8.unk60.unk10 = temp_f3_258;
+        temp_r3_260 = temp_r3_227 + 0x20;
         temp_f2_262 = temp_f2_245 + (f32) sp1A0;
         sp1E8.unk74.unk4 = temp_f2_262;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        sp188 = sp58;
-        sp60 = M2C_FIELD((temp_r3_227 + 0x20), f32 *, 8) * -150.0f;
+        temp_f0_265 = M2C_FIELD(temp_r3_260, f64 *, 0) * 1.6170763213e-314;
+        sp58 = temp_f0_265;
+        sp188 = temp_f0_265;
+        sp60 = M2C_FIELD(temp_r3_260, f32 *, 8) * -150.0f;
         sp190 = (f64) sp60;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+        sp1E8.unk60.unk10 = temp_f3_258 + temp_f0_265;
         sp1E8.unk74.unk4 = temp_f2_262 + (f32) sp190;
-        temp_ret_282 = checked_cast<SteamTrainCaboose *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r3_177, MKSceneManager **, 0x54)))->PropResolver_Resolve((s32) (temp_r3_227 + 0x10)));
+        temp_ret_282 = checked_cast<SteamTrainCaboose *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r3_177, MKSceneManager **, 0x54)))->PropResolver_Resolve((s32) temp_r4_242));
         temp_r3_282 = temp_ret_282;
         temp_r3_287 = checked_cast<SteamTrain *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r3_177, MKSceneManager **, 0x50)))->PropResolver_Resolve((s32) (u32) temp_ret_282));
         var_r31_289 = 0;
@@ -382,20 +412,23 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
                     var_f30_430 = temp_f4_410;
                 }
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp138 = spB8;
-            spC0 = M2C_FIELD(M2C_FIELD(var_r31_289, void **, 8), f32 *, 0x28) * var_f30_430;
+            temp_r3_477 = M2C_FIELD(var_r31_289, void **, 8);
+            temp_f0_480 = *(temp_r3_477 + 0x20) * (f64) var_f30_430;
+            spB8 = temp_f0_480;
+            sp138 = temp_f0_480;
+            spC0 = M2C_FIELD(temp_r3_477, f32 *, 0x28) * var_f30_430;
             sp140 = (f64) spC0;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
-            sp1E8.unk30 = spA8;
+            temp_f2_489 = M2C_BITWISE(f64, sp1E8.unk40);
+            temp_f0_491 = temp_f2_489 - temp_f0_480;
+            spA8 = temp_f0_491;
+            sp1E8.unk30 = temp_f0_491;
             spB0 = sp1E8.unk48 - (f32) sp140;
             sp1E8.unk38 = (f64) spB0;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f1 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f1 */);
+            sp98 = M2C_BITWISE(f64, sp1E8.unk30) - sp288;
             sp1E8.unk20 = sp98;
             spA0 = M2C_BITWISE(f32, sp1E8.unk38) - (f32) sp290;
             sp1E8.unk28 = (f64) spA0;
+            sp88 = temp_f2_489 - sp288;
             sp90 = sp1E8.unk48 - (f32) sp290;
             sp1E8.unk10 = sp88;
             sp1E8.unk18 = (f64) sp90;
@@ -405,14 +438,13 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
             temp_f6_533 = M2C_BITWISE(f32, sp1E8.unk28);
             sp108.operator*(4.0f * (((temp_f2_528 * temp_f2_528) + ((temp_f4_530 * temp_f4_530) + (temp_f2_523 * temp_f2_523))) / ((temp_f6_533 * temp_f6_533) + ((sp1E8.unk20 * sp1E8.unk20) + (sp1E8.unk24 * sp1E8.unk24)))) * sp1E8.unk4C.unk4.Magnitude());
             sp118.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp48 = sp118 - M2C_BITWISE(f64, sp108);
             sp1E8.unk40 = sp48;
             sp50 = sp120 - sp108.unk8;
             sp128 = sp48;
             sp130 = (f64) sp50;
             sp1E8.unk48 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp38 = sp48 - sp288;
             sp1E8.unk74.unkC = sp38;
             sp40 = (f32) sp1E8.unk48 - (f32) sp290;
             temp_f1_574 = M2C_BITWISE(f32, sp1E8.unk74.unk10);
@@ -462,11 +494,12 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
             sp1E8.unk74.unkC = (f32) sp1E8.unk74.unkC * var_f3_650;
             sp1E8.unk74.unk10 = M2C_BITWISE(f32, sp1E8.unk74.unk10) * var_f3_650;
             sp1E8.unk88 = temp_f0_660;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
+            temp_f1_665 = (f64) sp1E8.unk74.unkC * (f64) var_f31_351;
+            sp28 = temp_f1_665;
             sp30 = temp_f0_660 * var_f31_351;
-            spE8 = sp28;
+            spE8 = temp_f1_665;
             spF0 = (f64) sp30;
-            sp1E8.unk74.unkC = sp28;
+            sp1E8.unk74.unkC = temp_f1_665;
             sp1E8.unk88 = (f64) sp30;
         }
     }
@@ -529,6 +562,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -583,8 +617,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
             temp_r3_917 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
             sp78 = M2C_FIELD(temp_r3_917, f64 *, 0x30);
             sp80 = M2C_FIELD(temp_r3_917, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp38 = M2C_FIELD(temp_r3_905, f64 *, 0x10) - sp78;
             sp88 = sp38;
             sp40 = M2C_FIELD(temp_r3_905, f32 *, 0x18) - (f32) sp80;
             sp90 = (f64) sp40;
@@ -635,7 +668,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
             temp_f31_1032 = gb.unk0->GetCollideRadius(temp_f1_1022, temp_f2_1020);
             sp68.GetPos();
             temp_f4_1041 = sp6C - M2C_FIELD(temp_r3_905, f32 *, 0x14);
-            temp_f5_1043 = M2C_BITWISE(f32, sp68) - M2C_FIELD(temp_r3_905, f32 *, 0x10);
+            temp_f5_1043 = M2C_BITWISE(f32, sp68) - (f32) M2C_FIELD(temp_r3_905, f64 *, 0x10);
             temp_f4_1047 = sp70 - M2C_FIELD(temp_r3_905, f32 *, 0x18);
             temp_f3_1049 = M2C_FIELD(temp_r3_905, f32 *, 0x20) + temp_f31_1032;
             if (((temp_f4_1047 * temp_f4_1047) + ((temp_f5_1043 * temp_f5_1043) + (temp_f4_1041 * temp_f4_1041))) < (temp_f3_1049 * temp_f3_1049)) {
@@ -702,8 +735,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
         }
         break;
     case 0xC7:                                      /* switch 1 */
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unkD4 == 4500.0f) {
+        if (this->unkD4 >= 4500.0f) {
             KDSound_Play3d(GS_SPCartDip, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
         }
         break;
@@ -747,7 +779,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp50'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void TrainChaseSpyro::EmitSparks(const MKVector3 &arg0) {
     f64 spC8;
     f64 spC0;
@@ -765,11 +797,14 @@ void TrainChaseSpyro::EmitSparks(const MKVector3 &arg0) {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -778,17 +813,23 @@ void TrainChaseSpyro::EmitSparks(const MKVector3 &arg0) {
     f32 temp_f27_1403;
     f32 temp_f28_1408;
     f32 temp_f31_1451;
+    f32 temp_f4_1369;
+    f64 temp_f0_1385;
+    f64 temp_f0_1422;
+    f64 temp_f0_1433;
     void *temp_r5_1367;
 
     temp_r5_1367 = this->unk8;
+    temp_f4_1369 = this->unkD4;
     sp60 = -M2C_FIELD(temp_r5_1367, f32 *, 0x20);
     sp64 = -M2C_FIELD(temp_r5_1367, f32 *, 0x24);
     sp68 = -M2C_FIELD(temp_r5_1367, f32 *, 0x28);
     spB0 = (f64) sp60;
     spB8 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    spC0 = sp50;
-    sp58 = (f32) spB8 * this->unkD4;
+    temp_f0_1385 = spB0 * (f64) temp_f4_1369;
+    sp50 = temp_f0_1385;
+    spC0 = temp_f0_1385;
+    sp58 = (f32) spB8 * temp_f4_1369;
     spC8 = (f64) sp58;
     temp_f27_1403 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
     temp_f28_1408 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
@@ -797,12 +838,14 @@ void TrainChaseSpyro::EmitSparks(const MKVector3 &arg0) {
     sp48 = temp_f27_1403;
     sp80 = (f64) sp40;
     sp88 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp90 = sp30;
+    temp_f0_1422 = sp80 * 5.65986426e-315;
+    sp30 = temp_f0_1422;
+    sp90 = temp_f0_1422;
     sp38 = (f32) sp88 * 800.0f;
     sp98 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spA0 = sp20;
+    temp_f0_1433 = sp90 + temp_f0_1385;
+    sp20 = temp_f0_1433;
+    spA0 = temp_f0_1433;
     sp28 = (f32) sp98 + (f32) spC8;
     spA8 = (f64) sp28;
     sp8 = MKRand_Float(&gViewSeed, 5.0f, 8.0f);
@@ -831,7 +874,7 @@ void TrainChaseSpyro::Hurt(float arg0) {
 
 #if 0 // DRAFT: expression syntax error
 u8 TrainChaseSpyro::DealDamage(float arg0) {
-    if ((this->unk260.GetState() == 3) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((M2C_FIELD(GameData::gameData, f32 *, 0x70) == 0.0f) != 0))) {
+    if ((this->unk260.GetState() == 3) || (M2C_FIELD(GameData::gameData, f32 *, 0x70) <= 0.0f)) {
         return 0U;
     }
     if ((u8) M2C_FIELD(&gb, u8 *, 0x3B4) == 0) {
@@ -895,14 +938,20 @@ void TrainChaseSpyro::RepositionLightProp() {
     f32 spCC;
     f32 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -910,12 +959,12 @@ void TrainChaseSpyro::RepositionLightProp() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
     f32 temp_f1_1613;
-    f32 temp_f1_1755;
     f32 temp_f2_1705;
     f32 temp_f4_1707;
     f32 temp_f5_1704;
@@ -923,12 +972,19 @@ void TrainChaseSpyro::RepositionLightProp() {
     f32 temp_f7_1703;
     f32 temp_r3_1914;
     f32 var_f0_1616;
-    f32 var_f27_1925;
     f32 var_f3_1846;
     f32 var_f4_1779;
+    f64 temp_f0_1736;
+    f64 temp_f0_1751;
+    f64 temp_f0_1864;
+    f64 temp_f0_1875;
+    f64 temp_f0_1931;
+    f64 temp_f1_1723;
+    f64 temp_f1_1748;
     f64 temp_f1_1785;
     f64 temp_f1_1791;
     f64 temp_f1_1795;
+    f64 var_f27_1925;
     s32 temp_r3_1603;
     s32 temp_r3_1814;
     s32 temp_ret_1603;
@@ -959,7 +1015,7 @@ void TrainChaseSpyro::RepositionLightProp() {
         sp188 = (f64) sp48;
         sp198.unk4C.unkC = M2C_BITWISE(f64, sp198.unk8);
         sp190 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp198.unk4C.unk4 = M2C_BITWISE(f64, sp198.unk4C.unk4) + sp188;
         sp240 = 0.0f;
         sp244 = 0.0f;
         sp198.unk4C.unkC = M2C_BITWISE(f32, sp198.unk4C.unkC) + (f32) sp190;
@@ -998,20 +1054,23 @@ void TrainChaseSpyro::RepositionLightProp() {
         spC8 = (temp_f5_1704 * sp198.unk48) - (temp_f4_1707 * temp_f6_1708);
         sp198.unk28 = (f64) spD0;
         sp198.unk20 = (f64) spC8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spB0 = sp198.unk48 * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f1_1723 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        spA8 = M2C_BITWISE(f64, sp198.unk40) * temp_f1_1723;
+        spB0 = sp198.unk48 * (f32) temp_f1_1723;
         sp128 = spA8;
         sp130 = (f64) spB0;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp138 = sp98;
+        temp_f0_1736 = sp128 * 5.222099017e-315;
+        sp98 = temp_f0_1736;
+        sp138 = temp_f0_1736;
         spA0 = (f32) sp130 * 0.5f;
         sp140 = (f64) spA0;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        temp_f1_1755 = M2C_BITWISE(f32, sp198.unk28) * MKRand_Float(&gViewSeed, 0.1f, 1.0f);
-        sp148 = spB8;
-        spC0 = temp_f1_1755;
+        temp_f1_1748 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+        temp_f0_1751 = (f64) sp198.unk20 * temp_f1_1748;
+        spB8 = temp_f0_1751;
+        sp148 = temp_f0_1751;
+        spC0 = M2C_BITWISE(f32, sp198.unk28) * (f32) temp_f1_1748;
         sp150 = (f64) spC0;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp88 = sp148 + temp_f0_1736;
         sp158 = sp88;
         sp90 = (f32) sp150 + (f32) sp140;
         sp160 = (f64) sp90;
@@ -1059,12 +1118,14 @@ void TrainChaseSpyro::RepositionLightProp() {
         sp80 = (f32) sp160 * var_f3_1846;
         sp198.unk10 = (f64) sp78;
         sp198.unk18 = (f64) sp80;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        sp108 = sp68;
+        temp_f0_1864 = M2C_BITWISE(f64, sp198.unk10) * 5.717499035e-315;
+        sp68 = temp_f0_1864;
+        sp108 = temp_f0_1864;
         sp70 = M2C_BITWISE(f32, sp198.unk18) * 2000.0f;
         sp110 = (f64) sp70;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp118 = sp58;
+        temp_f0_1875 = sp198.unk4C.unk4 + temp_f0_1864;
+        sp58 = temp_f0_1875;
+        sp118 = temp_f0_1875;
         sp60 = sp198.unk4C.unkC + (f32) sp110;
         sp120 = (f64) sp60;
         if (MKCollision_RayCollide(*((MKVector3 *) &sp198.unk4C.unk4), *((MKVector3 *) &sp118), (MKCollisionResult *) &sp240, (MKCollisionMode) 7, 0) != 0) {
@@ -1084,15 +1145,16 @@ void TrainChaseSpyro::RepositionLightProp() {
                 var_r0_1915 = 1;
             }
             if (var_r0_1915 != 0) {
-                var_f27_1925 = 3000.0f;
+                var_f27_1925 = 5.738707337e-315;
             } else {
-                var_f27_1925 = 1000.0f;
+                var_f27_1925 = 5.676053805e-315;
             }
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-            spE8 = sp28;
-            sp30 = (f32) sp198.unk18 * var_f27_1925;
+            temp_f0_1931 = sp198.unk10 * var_f27_1925;
+            sp28 = temp_f0_1931;
+            spE8 = temp_f0_1931;
+            sp30 = (f32) sp198.unk18 * (f32) var_f27_1925;
             spF0 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp198.unk4C.unk4 += temp_f0_1931;
             sp20 = -(f32) sp198.unk18;
             sp18 = -(f32) sp198.unk10;
             sp1C = -M2C_BITWISE(f32, sp198.unk14);
@@ -1178,20 +1240,35 @@ void TrainChaseSpyro::UpdateCameraInfo() {
     f32 sp104;
     f32 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f1_2194;
     f32 temp_f29_2348;
     f32 temp_f30_2153;
@@ -1200,6 +1277,17 @@ void TrainChaseSpyro::UpdateCameraInfo() {
     f32 var_f0_2462;
     f32 var_f0_2612;
     f32 var_f31_2200;
+    f64 temp_f0_2249;
+    f64 temp_f0_2261;
+    f64 temp_f0_2318;
+    f64 temp_f0_2330;
+    f64 temp_f0_2384;
+    f64 temp_f0_2396;
+    f64 temp_f0_2515;
+    f64 temp_f0_2527;
+    f64 temp_f0_2584;
+    f64 temp_f0_2657;
+    f64 temp_f0_2669;
     s32 temp_r3_2137;
 
     sp630.unk4 = 0;
@@ -1237,8 +1325,7 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                 sp540.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
                 sp550.operator*(cameraYOffset);
                 sp560.GetTrackPos(temp_r3_2137, temp_f30_2153, 0);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                spF0 = sp560 + M2C_BITWISE(f64, sp550);
                 sp560.unk10 = spF0;
                 spF8 = M2C_BITWISE(f32, sp560.unk8) + sp550.unk8;
                 sp560.unk74.unk4 = spF0;
@@ -1266,18 +1353,17 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                     sp490.unk60.GetTrackXAxis(temp_r3_2137, this->unkE0);
                     sp490.unk60.unk10.operator*(cameraXOffset);
                     sp490.unk74.unkC.operator*(var_f31_2200);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp490.unk88.unk8 = sp60;
+                    temp_f0_2249 = sp490.unk74.unkC - M2C_BITWISE(f64, sp490.unk4C.unk4);
+                    sp60 = temp_f0_2249;
+                    sp490.unk88.unk8 = temp_f0_2249;
                     sp68 = M2C_BITWISE(f32, sp490.unk88) - M2C_BITWISE(f32, sp490.unk4C.unkC);
                     sp490.unk88.unk10 = (f64) sp68;
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp530 = spE0;
+                    temp_f0_2261 = (f64) sp490.unk88.unk8 - (f64) sp490.unk20;
+                    spE0 = temp_f0_2261;
+                    sp530 = temp_f0_2261;
                     spE8 = M2C_BITWISE(f32, sp490.unk88.unk10) - M2C_BITWISE(f32, sp490.unk28);
                     sp538 = (f64) spE8;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+                    sp580.unk48 = (f64) (sp580.unk48 + temp_f0_2261);
                     sp560.unk60.unk10 = M2C_BITWISE(f32, sp560.unk60.unk10) + (f32) sp538;
                     sp3F0.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
                     sp3F0.unk10.operator*(cameraYOffset);
@@ -1287,14 +1373,15 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                     sp3F0.unk4C.unk4.operator*(1428.0f);
                     sp3F0.unk60.operator*(var_f31_2200);
                     sp3F0.unk60.unk10.GetTrackPos(temp_r3_2137, this->unkE0, 0);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp3F0.unk74.unkC = sp50;
+                    temp_f0_2318 = sp3F0.unk60.unk10 - M2C_BITWISE(f64, sp3F0.unk60);
+                    sp50 = temp_f0_2318;
+                    sp3F0.unk74.unkC = temp_f0_2318;
                     sp58 = M2C_BITWISE(f32, sp3F0.unk74.unk4) - sp3F0.unk60.unk8;
                     sp3F0.unk88 = (f64) sp58;
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp3F0.unk88.unk8 = spD0;
-                    sp560.unk74.unk4 = spD0;
+                    temp_f0_2330 = M2C_BITWISE(f64, sp3F0.unk74.unkC) - M2C_BITWISE(f64, sp3F0.unk30);
+                    spD0 = temp_f0_2330;
+                    sp3F0.unk88.unk8 = temp_f0_2330;
+                    sp560.unk74.unk4 = temp_f0_2330;
                     spD8 = M2C_BITWISE(f32, sp3F0.unk88) - M2C_BITWISE(f32, sp3F0.unk38);
                     sp3F0.unk88.unk10 = (f64) spD8;
                     sp560.unk74.unkC = (f64) spD8;
@@ -1309,18 +1396,17 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                     sp350.unk4C.unk4.operator*(temp_f29_2348);
                     sp350.unk60.GetTrackXAxis(temp_r3_2137, this->unkE0);
                     sp350.unk60.unk10.operator*(-temp_f29_2348);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp350.unk74.unkC = sp40;
+                    temp_f0_2384 = sp350.unk60.unk10 - M2C_BITWISE(f64, sp350.unk4C.unk4);
+                    sp40 = temp_f0_2384;
+                    sp350.unk74.unkC = temp_f0_2384;
                     sp48 = M2C_BITWISE(f32, sp350.unk74.unk4) - M2C_BITWISE(f32, sp350.unk4C.unkC);
                     sp350.unk88 = (f64) sp48;
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp350.unk88.unk8 = spC0;
+                    temp_f0_2396 = M2C_BITWISE(f64, sp350.unk74.unkC) - M2C_BITWISE(f64, sp350.unk30);
+                    spC0 = temp_f0_2396;
+                    sp350.unk88.unk8 = temp_f0_2396;
                     spC8 = M2C_BITWISE(f32, sp350.unk88) - M2C_BITWISE(f32, sp350.unk38);
                     sp350.unk88.unk10 = (f64) spC8;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+                    sp580.unk48 = (f64) (sp580.unk48 + (f64) sp350.unk88.unk8);
                     sp560.unk60.unk10 = M2C_BITWISE(f32, sp560.unk60.unk10) + M2C_BITWISE(f32, sp350.unk88.unk10);
                     sp2E0.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
                     sp2F0.operator*(cameraYOffset);
@@ -1328,8 +1414,7 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                     sp310.operator*(0.375f);
                     sp320.operator*(1.0f - M2C_BITWISE(f32, this->unk738));
                     sp330.GetTrackPos(temp_r3_2137, this->unkE0, 0);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    spB0 = sp330 - M2C_BITWISE(f64, sp320);
                     sp560.unk74.unk4 = spB0;
                     spB8 = M2C_BITWISE(f32, sp330.unk8) - sp320.unk8;
                     sp330.unk10 = spB0;
@@ -1356,18 +1441,17 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                 sp230.unk60.GetTrackXAxis(temp_r3_2137, this->unkE0);
                 sp230.unk60.unk10.operator*(cameraXOffset);
                 sp230.unk74.unkC.operator*(M2C_BITWISE(f32, this->unk738));
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp230.unk88.unk8 = sp30;
+                temp_f0_2515 = sp230.unk74.unkC - M2C_BITWISE(f64, sp230.unk4C.unk4);
+                sp30 = temp_f0_2515;
+                sp230.unk88.unk8 = temp_f0_2515;
                 sp38 = M2C_BITWISE(f32, sp230.unk88) - M2C_BITWISE(f32, sp230.unk4C.unkC);
                 sp230.unk88.unk10 = (f64) sp38;
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp2D0 = spA0;
+                temp_f0_2527 = (f64) sp230.unk88.unk8 - (f64) sp230.unk20;
+                spA0 = temp_f0_2527;
+                sp2D0 = temp_f0_2527;
                 spA8 = M2C_BITWISE(f32, sp230.unk88.unk10) - M2C_BITWISE(f32, sp230.unk28);
                 sp2D8 = (f64) spA8;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+                sp580.unk48 = (f64) (sp580.unk48 + temp_f0_2527);
                 sp560.unk60.unk10 += (f32) sp2D8;
                 sp190.GetTrackYAxis(temp_r3_2137, temp_f30_2153);
                 sp190.unk10.operator*(cameraYOffset);
@@ -1377,12 +1461,12 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                 sp190.unk4C.unk4.operator*(1428.0f);
                 sp190.unk60.operator*(M2C_BITWISE(f32, this->unk738));
                 sp190.unk60.unk10.GetTrackPos(temp_r3_2137, this->unkE0, 0);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp190.unk74.unkC = sp20;
+                temp_f0_2584 = sp190.unk60.unk10 - M2C_BITWISE(f64, sp190.unk60);
+                sp20 = temp_f0_2584;
+                sp190.unk74.unkC = temp_f0_2584;
                 sp28 = M2C_BITWISE(f32, sp190.unk74.unk4) - sp190.unk60.unk8;
                 sp190.unk88 = (f64) sp28;
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp90 = M2C_BITWISE(f64, sp190.unk74.unkC) - M2C_BITWISE(f64, sp190.unk30);
                 sp560.unk74.unk4 = sp90;
                 sp190.unk88.unk8 = sp90;
                 sp98 = M2C_BITWISE(f32, sp190.unk88) - M2C_BITWISE(f32, sp190.unk38);
@@ -1405,21 +1489,21 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                 gb.unk0->GetProp();
                 sp150.operator*(700.0f);
                 sp160.GetPos();
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp170 = sp10;
+                temp_f0_2657 = sp160 - M2C_BITWISE(f64, sp150);
+                sp10 = temp_f0_2657;
+                sp170 = temp_f0_2657;
                 sp18 = sp168 - sp150.unk8;
                 sp178 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp180 = sp80;
-                sp560.unk60.unk8 = sp80;
+                temp_f0_2669 = sp170 + M2C_BITWISE(f64, sp140);
+                sp80 = temp_f0_2669;
+                sp180 = temp_f0_2669;
+                sp560.unk60.unk8 = temp_f0_2669;
                 sp88 = (f32) sp178 + sp140.unk8;
                 sp188 = (f64) sp88;
                 sp560.unk60.unk10 = (f64) sp88;
                 sp110.operator*(300.0f);
                 sp120.GetPos();
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp70 = sp120 + M2C_BITWISE(f64, sp110);
                 sp130 = sp70;
                 sp78 = sp128 + sp110.unk8;
                 sp560.unk74.unk4 = sp70;
@@ -1609,15 +1693,13 @@ loop_56:
         if (var_f1_3086 < 0.0f) {
             var_f1_3086 = -var_f1_3086;
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (var_f1_3086 == 0.7853982f) {
+        if (var_f1_3086 <= 0.7853982f) {
             if (temp_f25_3083 < 0.0f) {
                 var_f1_3097 = -temp_f25_3083;
             } else {
                 var_f1_3097 = temp_f25_3083;
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (var_f1_3097 == 0.7853982f) {
+            if (var_f1_3097 <= 0.7853982f) {
                 var_r27_3046 = moveAnimTable[var_r26_3066];
             } else {
                 goto block_64;
@@ -1829,21 +1911,27 @@ u8 TrainChaseSpyro::LeaningLeft() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void TrainChaseSpyro::GetEffectsVelocity() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_3512;
+    f64 temp_f0_3524;
+    void *temp_r5_3508;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r4, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp28 = sp8;
-    sp10 = M2C_FIELD((M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30), f32 *, 8) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x1F0);
+    temp_r5_3508 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30;
+    temp_f0_3512 = M2C_FIELD(temp_r5_3508, f64 *, 0) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x1E8);
+    sp8 = temp_f0_3512;
+    sp28 = temp_f0_3512;
+    sp10 = M2C_FIELD(temp_r5_3508, f32 *, 8) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x1F0);
     sp30 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    M2C_FIELD(this, f64 *, 0) = sp18;
+    temp_f0_3524 = temp_f0_3512 * 5.481131706e-315;
+    sp18 = temp_f0_3524;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_3524;
     sp20 = (f32) sp30 * 40.0f;
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }
@@ -1874,20 +1962,26 @@ void TrainChaseSpyro::UpdateCartCollisions() {
     f64 sp100;                                      /* compiler-managed */
     f64 spF8;                                       /* compiler-managed */
     TrainTrack spD8;
-    M2C_UNK spC8;
+    f64 spC8;
     TrainTrack spA8;
-    M2C_UNK sp98;
+    f64 sp98;
     f64 sp90;
     f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     s32 sp14;
     s32 sp10;
     f32 spC;
@@ -1911,6 +2005,9 @@ void TrainChaseSpyro::UpdateCartCollisions() {
     f32 var_f2_3832;
     f32 var_f4_3757;
     f32 var_f4_3915;
+    f64 temp_f0_3671;
+    f64 temp_f0_3683;
+    f64 temp_f0_3695;
     f64 temp_f1_3760;
     f64 temp_f1_3766;
     f64 temp_f1_3770;
@@ -1979,8 +2076,7 @@ void TrainChaseSpyro::UpdateCartCollisions() {
                 }
                 this->unkE0 = var_f0_3628;
                 temp_r4_3644 = this->unk8;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                sp48 = *(temp_r4_3644 + 0x10) * 5.53552857e-315;
                 sp78 = -M2C_FIELD(temp_r4_3644, f32 *, 0x20);
                 sp7C = -M2C_FIELD(temp_r4_3644, f32 *, 0x24);
                 sp50 = M2C_FIELD(temp_r4_3644, f32 *, 0x18) * 100.0f;
@@ -1989,18 +2085,20 @@ void TrainChaseSpyro::UpdateCartCollisions() {
                 spF8 = sp48;
                 sp100 = (f64) sp50;
                 sp110 = (f64) sp80;
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp118 = sp68;
+                temp_f0_3671 = sp108 * 5.5769738e-315;
+                sp68 = temp_f0_3671;
+                sp118 = temp_f0_3671;
                 sp70 = (f32) sp110 * 200.0f;
                 sp120 = (f64) sp70;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp128 = sp58;
+                temp_f0_3683 = *(temp_r4_3644 + 0x30) + temp_f0_3671;
+                sp58 = temp_f0_3683;
+                sp128 = temp_f0_3683;
                 sp60 = M2C_FIELD(temp_r4_3644, f32 *, 0x38) + (f32) sp120;
                 sp130 = (f64) sp60;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                temp_f0_3695 = sp128 + spF8;
+                sp38 = temp_f0_3695;
                 var_r29_3697 = 0;
-                sp138 = sp38;
+                sp138 = temp_f0_3695;
                 sp40 = (f32) sp130 + (f32) sp100;
                 sp140 = (f64) sp40;
                 do {
@@ -2017,8 +2115,7 @@ void TrainChaseSpyro::UpdateCartCollisions() {
         case 5:                                     /* switch 1 */
             spC8.GetTrackPos(temp_r3_3569, this->unkE0, 0);
             spD8.GetTrackPos(temp_r3_3569, this->unkE0, 1);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp28 = spD8 - spC8;
             spD8.unk10 = sp28;
             sp30 = M2C_BITWISE(f32, spD8.unk8) - spD0;
             temp_f1_3749 = M2C_BITWISE(f32, spD8.unk14);
@@ -2105,8 +2202,7 @@ void TrainChaseSpyro::UpdateCartCollisions() {
         case 6:                                     /* switch 1 */
             sp98.GetTrackPos(temp_r3_3569, this->unkE0, 0);
             spA8.GetTrackPos(temp_r3_3569, this->unkE0, 1);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp18 = spA8 - sp98;
             spA8.unk10 = sp18;
             sp20 = M2C_BITWISE(f32, spA8.unk8) - spA0;
             temp_f1_3907 = M2C_BITWISE(f32, spA8.unk14);
@@ -2409,8 +2505,7 @@ void TrainChaseSpyro::StateFlinchUpdate() {
     } else {
         var_f0_4427 = 1000.0f;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (M2C_BITWISE(f32, this->unk284) == (this->unkE0 - var_f0_4427)) {
+    if (M2C_BITWISE(f32, this->unk284) <= (this->unkE0 - var_f0_4427)) {
         RepositionLightProp();
     }
     sp1C = 0;
@@ -2475,8 +2570,7 @@ void TrainChaseSpyro::StateChaseUpdate() {
         } else {
             var_f0_4564 = 1000.0f;
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_BITWISE(f32, this->unk284) == (this->unkE0 - var_f0_4564)) {
+        if (M2C_BITWISE(f32, this->unk284) <= (this->unkE0 - var_f0_4564)) {
             RepositionLightProp();
         }
         sp1C = 0;
@@ -2674,8 +2768,7 @@ void TrainChaseSpyro::Update() {
     sp8 = 1;
     this->unk138.Update(GS_SpyroCartExtra4, 1U, ((u8) this->unkE4 >> 5U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_f2_4969 = this->unkD4;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f2_4969 == 1800.0f) {
+    if (temp_f2_4969 <= 1800.0f) {
         KDSound_SetPitch(this->unk110, 0.9f);
     } else {
         KDSound_SetPitch(this->unk110, (0.000025f * temp_f2_4969) + 0.98f);
@@ -2694,8 +2787,7 @@ void TrainChaseSpyro::Update() {
         temp_r0_5021 = var_r3_5014 + 0x180;
         *(this + temp_r0_5021) = (gUpdateTimeDelta * (40.0f * (this->unkD4 / 6555.0005f))) + *(this + temp_r0_5021);
         temp_f0_5026 = *(this + temp_r0_5021);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f0_5026 == 6.2831855f) {
+        if (temp_f0_5026 >= 6.2831855f) {
             *(this + temp_r0_5021) = temp_f0_5026 - 6.2831855f;
         }
         var_r3_5014 += 0x18;

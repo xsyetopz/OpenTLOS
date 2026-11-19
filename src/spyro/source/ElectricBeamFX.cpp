@@ -38,10 +38,12 @@ void ElectricBeam::EmitSparks() {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_57;
     f32 temp_f30_26;
     f32 temp_f31_31;
+    f64 temp_f0_45;
 
     temp_f30_26 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
     temp_f31_31 = MKRand_Float(&gViewSeed, 1.0f, 2.5f);
@@ -50,8 +52,9 @@ void ElectricBeam::EmitSparks() {
     sp28 = temp_f30_26;
     sp40 = (f64) sp20;
     sp48 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    sp60 = sp10;
+    temp_f0_45 = sp40 * 5.61841903e-315;
+    sp10 = temp_f0_45;
+    sp60 = temp_f0_45;
     sp18 = (f32) sp48 * 400.0f;
     sp68 = (f64) sp18;
     temp_f1_57 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
@@ -112,8 +115,7 @@ void ElectricBeam::Update() {
     UpdateWiggleBones();
     this->unk48->Animate(MKModel_GetAnimation(this->unk48->unk8), -1, NULL);
     this->unk1E0 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk1E0 == 0.0f) {
+    if (this->unk1E0 <= 0.0f) {
         this->unk1E0 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
         this->unk48->JumpToPos(MKRand_Float(&gViewSeed, 0.0f, 0.8f), -1);
         this->unk1E8 = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
@@ -138,9 +140,13 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     f64 sp70;
     f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -148,6 +154,9 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     Matrix *temp_r3_428;
     f32 temp_f4_281;
     f32 var_f31_300;
+    f64 temp_f0_348;
+    f64 temp_f0_359;
+    f64 temp_f0_371;
     f64 temp_f1_284;
     f64 temp_f1_290;
     f64 temp_f1_294;
@@ -163,9 +172,7 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     this->unk38 = 0.0f;
     this->unk34 = 0;
     this->unk30.AddNode(*((MKVector3 *) &this->unk10));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp58 = this->unk20 - this->unk10;
     sp68 = sp58;
     sp60 = (f32) M2C_FIELD(this, f64 *, 0x28) - (f32) M2C_FIELD(this, f64 *, 0x18);
     sp70 = (f64) sp60;
@@ -205,18 +212,19 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
             var_f31_300 = temp_f4_281;
         }
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp78 = sp48;
+    temp_f0_348 = *(f64 *) arg2 * (f64) var_f31_300;
+    sp48 = temp_f0_348;
+    sp78 = temp_f0_348;
     sp50 = (f32) M2C_FIELD(arg2, f64 *, 8) * var_f31_300;
     sp80 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp88 = sp38;
+    temp_f0_359 = temp_f0_348 * 5.222099017e-315;
+    sp38 = temp_f0_359;
+    sp88 = temp_f0_359;
     sp40 = (f32) sp80 * 0.5f;
     sp90 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spA8 = sp28;
+    temp_f0_371 = this->unk10 + temp_f0_359;
+    sp28 = temp_f0_371;
+    spA8 = temp_f0_371;
     sp30 = (f32) M2C_FIELD(this, f64 *, 0x18) + (f32) sp90;
     spB0 = (f64) sp30;
     this->unk30.AddNode(*((MKVector3 *) &spA8));
@@ -257,9 +265,13 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     f64 sp70;
     f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -267,6 +279,9 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     Matrix *temp_r3_664;
     f32 temp_f4_517;
     f32 var_f31_536;
+    f64 temp_f0_584;
+    f64 temp_f0_595;
+    f64 temp_f0_607;
     f64 temp_f1_520;
     f64 temp_f1_526;
     f64 temp_f1_530;
@@ -283,9 +298,7 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     this->unk38 = 0.0f;
     this->unk34 = 0;
     this->unk30.AddNode(*((MKVector3 *) &this->unk10));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp58 = this->unk20 - this->unk10;
     sp68 = sp58;
     sp60 = (f32) M2C_FIELD(this, f64 *, 0x28) - (f32) M2C_FIELD(this, f64 *, 0x18);
     sp70 = (f64) sp60;
@@ -325,18 +338,19 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
             var_f31_536 = temp_f4_517;
         }
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp78 = sp48;
+    temp_f0_584 = *(f64 *) arg2 * (f64) var_f31_536;
+    sp48 = temp_f0_584;
+    sp78 = temp_f0_584;
     sp50 = (f32) M2C_FIELD(arg2, f64 *, 8) * var_f31_536;
     sp80 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp88 = sp38;
+    temp_f0_595 = temp_f0_584 * 5.222099017e-315;
+    sp38 = temp_f0_595;
+    sp88 = temp_f0_595;
     sp40 = (f32) sp80 * 0.5f;
     sp90 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spB8 = sp28;
+    temp_f0_607 = this->unk10 + temp_f0_595;
+    sp28 = temp_f0_607;
+    spB8 = temp_f0_607;
     sp30 = (f32) M2C_FIELD(this, f64 *, 0x18) + (f32) sp90;
     spC0 = (f64) sp30;
     this->unk30.AddNode(*((MKVector3 *) &spB8));
@@ -411,6 +425,7 @@ void ElectricBeam::UpdateWiggleBones() {
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
@@ -435,6 +450,7 @@ void ElectricBeam::UpdateWiggleBones() {
     f32 temp_f5_1026;
     f32 var_f3_978;
     f32 var_f4_911;
+    f64 temp_f0_894;
     f64 temp_f1_917;
     f64 temp_f1_923;
     f64 temp_f1_927;
@@ -468,8 +484,9 @@ void ElectricBeam::UpdateWiggleBones() {
             sp120.GetMeasure((f32) var_r29_859 / 3.0f, (Matrix *) &this->unk30, KDSpline_PositionMixer);
             sp160 = sp120;
             sp168 = sp128;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp110 = sp80;
+            temp_f0_894 = sp150 - sp160;
+            sp80 = temp_f0_894;
+            sp110 = temp_f0_894;
             sp88 = (f32) sp158 - (f32) sp168;
             sp118 = (f64) sp88;
             var_f4_911 = ((f32) sp118 * (f32) sp118) + (((f32) sp110 * (f32) sp110) + (unksp114 * unksp114));

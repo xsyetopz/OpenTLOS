@@ -32,12 +32,8 @@ s32 TriggerPolyObject::CheckTarget() {
     var_r31_47 = 0;
     sp8 = M2C_FIELD(temp_r3_46, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r3_46, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (unkspC == this->unk88.unk1C) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((unkspC == this->unkA8) && (this->unk88.IsPointWithin(*((MKVector3 *) &sp8)) != 0)) {
-            var_r31_47 = 1;
-        }
+    if ((unkspC >= this->unk88.unk1C) && (unkspC <= this->unkA8) && (this->unk88.IsPointWithin(*((MKVector3 *) &sp8)) != 0)) {
+        var_r31_47 = 1;
     }
     return var_r31_47;
 }
@@ -49,12 +45,8 @@ s32 TriggerPolyObject::CheckPos(const MKVector3 &arg0) {
 
     temp_f1_81 = arg0.unk4;
     var_r31_84 = 0;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f1_81 == this->unk88.unk1C) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((temp_f1_81 == this->unkA8) && (this->unk88.IsPointWithin(arg0) != 0)) {
-            var_r31_84 = 1;
-        }
+    if ((temp_f1_81 >= this->unk88.unk1C) && (temp_f1_81 <= this->unkA8) && (this->unk88.IsPointWithin(arg0) != 0)) {
+        var_r31_84 = 1;
     }
     return var_r31_84;
 }
@@ -387,29 +379,29 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void TriggerSphereObject::LoadDone() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f0_875;
     f32 temp_f0_890;
+    f64 temp_f0_880;
 
     temp_f0_875 = -this->unk80;
     this->unk60 = temp_f0_875;
     this->unk64 = temp_f0_875;
     this->unk68 = temp_f0_875;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    M2C_FIELD(this, f64 *, 0x70) = sp8;
+    temp_f0_880 = (f64) M2C_FIELD(this, f32 *, 0x60) * 1.591496843e-314;
+    sp8 = temp_f0_880;
+    M2C_FIELD(this, f64 *, 0x70) = temp_f0_880;
     sp10 = this->unk68 * -2.0f;
-    sp18 = sp8;
+    sp18 = temp_f0_880;
     M2C_FIELD(this, f64 *, 0x78) = (f64) sp10;
     temp_f0_890 = this->unk80;
     sp20 = (f64) sp10;
     this->unk80 = temp_f0_890 * temp_f0_890;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 TriggerSphereObject::LoadLine(char *arg0, MKIniLine *arg1) {

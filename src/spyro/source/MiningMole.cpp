@@ -56,8 +56,10 @@ void Exhumor::Update() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     s32 sp8;
+    f64 temp_f0_131;
     s32 temp_cr0_eq_197;
     u8 var_r31_154;
     u8 var_r31_196;
@@ -67,12 +69,12 @@ void Exhumor::Update() {
     MKVector(1.0f, 1.0f, 1.0f);
     MKVector(-1.0f, -1.0f, -1.0f);
     KDRand_Vector(sp68, sp58);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp78 = sp18;
+    temp_f0_131 = sp68 * 5.263544247e-315;
+    sp18 = temp_f0_131;
+    sp78 = temp_f0_131;
     sp20 = sp68.unk8 * 1.0f;
     sp80 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp88 = M2C_BITWISE(f64, sp88) + temp_f0_131;
     sp88.unk8 += (f32) sp80;
     if ((void *) M2C_FIELD(&gb, void **, 0xC) != NULL) {
         var_r31_154 = 0;
@@ -152,7 +154,7 @@ void MiningMoleLeader::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: undefined identifier 'unkspCC'
 void MiningMoleLeader::Update() {
     f64 spE0;
     f64 spD8;
@@ -172,15 +174,18 @@ void MiningMoleLeader::Update() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     s32 sp8;
     f32 var_f3_472;
     f32 var_f4_405;
+    f64 temp_f0_519;
     f64 temp_f1_411;
     f64 temp_f1_417;
     f64 temp_f1_421;
@@ -199,7 +204,7 @@ void MiningMoleLeader::Update() {
     spD8 = (f64) sp48;
     spE0 = (f64) sp50;
     spB0 = M2C_FIELD(temp_r3_372, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp38 = spD8 - spA8;
     spC8 = sp38;
     sp40 = (f32) spE0 - (f32) spB0;
     spD0 = (f64) sp40;
@@ -254,12 +259,12 @@ void MiningMoleLeader::Update() {
     MKVector(1.0f, 1.0f, 1.0f);
     MKVector(-1.0f, -1.0f, -1.0f);
     KDRand_Vector(sp88, sp78);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp98 = sp18;
+    temp_f0_519 = sp88 * 5.263544247e-315;
+    sp18 = temp_f0_519;
+    sp98 = temp_f0_519;
     sp20 = sp88.unk8 * 1.0f;
     spA0 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spB8 = M2C_BITWISE(f64, spB8) + temp_f0_519;
     spB8.unk8 += (f32) spA0;
     if ((void *) M2C_FIELD(&gb, void **, 0xC) != NULL) {
         var_r30_542 = 0;
@@ -383,22 +388,30 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     f64 sp80;
     f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     s32 sp14;
     s32 sp10;
+    f64 temp_f0_809;
+    f64 temp_f0_886;
     s32 temp_r3_772;
     s32 temp_r3_920;
     s32 temp_r3_925;
     void *temp_r3_787;
+    void *temp_r3_807;
     void *temp_r4_805;
+    void *temp_r4_811;
 
     if (M2C_FIELD(this->unkA2C, s32 *, 4) & 0x100000) {
         temp_r3_772 = this->unkAFC;
@@ -410,15 +423,16 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
         if ((temp_r3_787 != NULL) && (M2C_FIELD(temp_r3_787, s32 *, 4) & 0x100000)) {
             M2C_STRUCT_COPY((s32) &spDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r4_805 = this->unk8;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spB8 = sp68;
-            sp70 = M2C_FIELD((temp_r4_805 + 0x20), f32 *, 8) * 200.0f;
+            temp_r3_807 = temp_r4_805 + 0x20;
+            temp_f0_809 = M2C_FIELD(temp_r3_807, f64 *, 0) * 5.5769738e-315;
+            sp68 = temp_f0_809;
+            temp_r4_811 = temp_r4_805 + 0x30;
+            spB8 = temp_f0_809;
+            sp70 = M2C_FIELD(temp_r3_807, f32 *, 8) * 200.0f;
             spC0 = (f64) sp70;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp58 = M2C_FIELD(temp_r4_811, f64 *, 0) + temp_f0_809;
             sp30 = 0.0f;
-            sp60 = M2C_FIELD((temp_r4_805 + 0x30), f32 *, 8) + (f32) spC0;
+            sp60 = M2C_FIELD(temp_r4_811, f32 *, 8) + (f32) spC0;
             sp28 = 0.0f;
             sp2C = -200.0f;
             spC8 = sp58;
@@ -446,7 +460,7 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             sp78 = (f64) sp28;
             spD0 = (f64) sp60;
             sp80 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+            sp18 = spC8 + sp78;
             sp50 = 0.0f;
             sp48 = 0.0f;
             sp20 = (f32) spD0 + (f32) sp80;
@@ -455,8 +469,9 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             sp90 = (f64) sp20;
             sp98 = (f64) sp48;
             spA0 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-            spA8 = sp38;
+            temp_f0_886 = spC8 + sp98;
+            sp38 = temp_f0_886;
+            spA8 = temp_f0_886;
             sp40 = (f32) spD0 + (f32) spA0;
             spB0 = (f64) sp40;
             if (MKCollision_RayCollide(*((MKVector3 *) &spA8), *((MKVector3 *) &sp88), (MKCollisionResult *) &sp120, (MKCollisionMode) 4, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) | 0x0C000000) != 0) {

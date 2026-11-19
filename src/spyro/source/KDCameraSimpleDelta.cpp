@@ -267,7 +267,7 @@ void KDCameraSimpleDelta::OverrideUpdate() {
         sp38 = (f64) sp8;
         sp40 = (f64) sp10;
         KDMath_CriticalDamp<MKVector3>(sp28, *((MKVector3 *) &sp48), *((MKVector3 *) &sp38), this->unk50, gUpdateTimeDelta);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp48 += M2C_BITWISE(f64, sp28);
         sp50 = (f32) sp50 + sp28.unk8;
         this->unk18 = unksp4C;
         this->unk1C = sp50;

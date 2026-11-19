@@ -81,7 +81,9 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -99,6 +101,8 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     f32 var_f3_327;
     f32 var_f4_132;
     f32 var_f4_260;
+    f64 temp_f0_346;
+    f64 temp_f0_356;
     f64 temp_f1_138;
     f64 temp_f1_144;
     f64 temp_f1_148;
@@ -255,17 +259,18 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     sp20 = spC8.unk8 * var_f3_327;
     spD8 = (f64) sp18;
     spE0 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    spE8 = sp38;
+    temp_f0_346 = spD8 * (f64) temp_f31_231;
+    sp38 = temp_f0_346;
+    spE8 = temp_f0_346;
     sp40 = (f32) spE0 * temp_f31_231;
     spF0 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    spF8 = sp28;
+    temp_f0_356 = temp_f0_346 * (f64) temp_f30_78;
+    sp28 = temp_f0_356;
+    spF8 = temp_f0_356;
     sp30 = (f32) spF0 * temp_f30_78;
     sp100 = (f64) sp30;
     gb.unk230->Emit(*((MKVector3 *) arg1), *((MKVector3 *) &spF8), temp_f30_78 * (M2C_FIELD(arg1, f32 *, 0x14) * MKRand_Float(&gViewSeed, 2.0f, 3.0f)), 1U);
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (M2C_FIELD(arg1, f32 *, 0x10) == 0.0f) {
+    if (M2C_FIELD(arg1, f32 *, 0x10) <= 0.0f) {
         return 0U;
     }
 block_51:
@@ -353,6 +358,7 @@ void DynamiteExplosion::TriggerElec(const MKVector3 &arg0, float arg1, bool arg2
     f32 sp15C;
     f32 sp158;
     f32 sp150;
+    f64 sp148;
     f32 sp144;
     f32 sp140;
     f32 sp13C;
@@ -380,14 +386,17 @@ void DynamiteExplosion::TriggerElec(const MKVector3 &arg0, float arg1, bool arg2
     f32 spCC;
     f32 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp74;
     f32 sp70;
     f32 sp6C;
@@ -396,7 +405,9 @@ void DynamiteExplosion::TriggerElec(const MKVector3 &arg0, float arg1, bool arg2
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -428,6 +439,9 @@ void DynamiteExplosion::TriggerElec(const MKVector3 &arg0, float arg1, bool arg2
     f32 var_f4_728;
     f32 var_f4_863;
     f32 var_f5_998;
+    f64 temp_f0_632;
+    f64 temp_f0_949;
+    f64 temp_f1_1083;
     f64 temp_f1_552;
     f64 temp_f1_558;
     f64 temp_f1_562;
@@ -540,8 +554,9 @@ loop_24:
         sp130 = sp2E8.unk8 * var_f3_613;
         sp2F8 = (f64) sp128;
         sp300 = (f64) sp130;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-        sp308 = sp148;
+        temp_f0_632 = sp2F8 * (f64) temp_f1_519;
+        sp148 = temp_f0_632;
+        sp308 = temp_f0_632;
         sp150 = (f32) sp300 * temp_f1_519;
         sp310 = (f64) sp150;
         sp24 = MKRand_Float(&gViewSeed, 12.0f, 20.0f);
@@ -687,8 +702,9 @@ loop_70:
         spB0 = sp238.unk8 * var_f3_930;
         sp248 = (f64) spA8;
         sp250 = (f64) spB0;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp258 = spB8;
+        temp_f0_949 = sp248 * (f64) temp_f1_836;
+        spB8 = temp_f0_949;
+        sp258 = temp_f0_949;
         spC0 = (f32) sp250 * temp_f1_836;
         sp260 = (f64) spC0;
         gb.unk230->Emit(arg0, *((MKVector3 *) &sp258), MKRand_Float(&gViewSeed, 2.0f, 3.0f), 1U);
@@ -698,8 +714,7 @@ loop_70:
     temp_r3_974 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     sp338 = M2C_FIELD(temp_r3_974, f64 *, 0x30);
     sp340 = M2C_FIELD(temp_r3_974, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp98 = M2C_FIELD(&arg0, f64 *, 0) - sp338;
     sp208 = sp98;
     spA0 = arg0.unk8 - (f32) sp340;
     sp210 = (f64) spA0;
@@ -747,15 +762,14 @@ loop_70:
     sp90 = (f32) sp210 * var_f4_1065;
     sp328 = (f64) sp88;
     sp330 = (f64) sp90;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-    sp1F8 = sp78;
+    temp_f1_1083 = sp338 - M2C_FIELD(&arg0, f64 *, 0);
+    sp78 = temp_f1_1083;
+    sp1F8 = temp_f1_1083;
     sp80 = (f32) sp340 - arg0.unk8;
     temp_f0_1095 = 100.0f * (112.0f * arg1);
     sp200 = (f64) sp80;
     temp_f21_1103 = ((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + (unksp1FC * unksp1FC));
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f21_1103 == (temp_f0_1095 * temp_f0_1095)) {
+    if (temp_f21_1103 <= (temp_f0_1095 * temp_f0_1095)) {
         M2C_STRUCT_COPY((s32) &sp370.unk3C + 4, (s32) (M2C_FIELD(&gb, void **, 0x3B8) + 0xAC) + 4, 0x70);
         if (sp3B0.IsVisible(arg0, 100.0f * (25.0f * arg1)) != 0) {
             sp68 = 1.0f;
@@ -773,8 +787,7 @@ loop_70:
                 sp34C = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
                 sp1C8.operator*(500.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+                sp48 = sp1C8 * (f64) temp_f30_1157;
                 sp348 = 0x417;
                 sp350 = sp48;
                 sp50 = sp1C8.unk8 * temp_f30_1157;
@@ -801,8 +814,7 @@ loop_70:
     sp180 = (f64) sp30;
     sp188.operator*(700.0f);
     sp198.operator*(arg1);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp38 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp198);
     sp1A8 = sp38;
     sp40 = arg0.unk8 + sp198.unk8;
     sp1B0 = (f64) sp40;
@@ -903,12 +915,14 @@ void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2)
     f64 sp1C0;
     f64 sp1B8;
     f64 sp1B0;
-    M2C_UNK sp1A0;
+    f64 sp1A0;
     f32 sp198;
+    f64 sp190;
     f32 sp188;
     f32 sp184;
     f32 sp180;
     f32 sp178;
+    f64 sp170;
     f32 sp16C;
     f32 sp168;
     f32 sp164;
@@ -923,6 +937,7 @@ void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2)
     f32 sp134;
     f32 sp130;
     f32 sp128;
+    f64 sp120;
     f32 sp11C;
     f32 sp118;
     f32 sp114;
@@ -934,6 +949,7 @@ void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2)
     f32 spF4;
     f32 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
     f32 spD4;
     f32 spD0;
@@ -954,10 +970,15 @@ void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2)
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -985,6 +1006,9 @@ void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2)
     f32 var_f4_1867;
     f32 var_f5_1621;
     f32 var_f7_1554;
+    f64 temp_f0_1537;
+    f64 temp_f0_1953;
+    f64 temp_f0_2095;
     f64 temp_f1_1873;
     f64 temp_f1_1879;
     f64 temp_f1_1883;
@@ -1044,8 +1068,7 @@ loop_4:
             M2C_FIELD(temp_r3_1407, f32 *, 0x18) = 0.25f;
             M2C_FIELD(temp_r3_1407, f32 *, 0x1C) = 1.0f;
             sp3A0.operator*(1000.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+            sp70 = sp3A0 * (f64) arg1;
             M2C_FIELD(temp_r23_1410, f64 *, 0) = sp70;
             sp78 = sp3A0.unk8 * arg1;
             sp3B0 = sp70;
@@ -1093,9 +1116,9 @@ loop_4:
     temp_r3_1530 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     sp3F0 = M2C_FIELD(temp_r3_1530, f64 *, 0x30);
     sp3F8 = M2C_FIELD(temp_r3_1530, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp390 = sp190;
+    temp_f0_1537 = M2C_FIELD(&arg0, f64 *, 0) - sp3F0;
+    sp190 = temp_f0_1537;
+    sp390 = temp_f0_1537;
     sp198 = arg0.unk8 - (f32) sp3F8;
     sp398 = (f64) sp198;
     var_f7_1554 = ((f32) sp398 * (f32) sp398) + (((f32) sp390 * (f32) sp390) + (unksp394 * unksp394));
@@ -1142,15 +1165,13 @@ loop_4:
     sp188 = (f32) sp398 * var_f5_1621;
     sp3E0 = (f64) sp180;
     sp3E8 = (f64) sp188;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp170 = sp3F0 - M2C_FIELD(&arg0, f64 *, 0);
     sp380 = sp170;
     sp178 = (f32) sp3F8 - arg0.unk8;
     temp_f0_1651 = 100.0f * (112.0f * arg1);
     sp388 = (f64) sp178;
     temp_f23_1659 = ((f32) sp388 * (f32) sp388) + (((f32) sp380 * (f32) sp380) + (unksp384 * unksp384));
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f23_1659 == (temp_f0_1651 * temp_f0_1651)) {
+    if (temp_f23_1659 <= (temp_f0_1651 * temp_f0_1651)) {
         M2C_STRUCT_COPY((s32) &sp470.unk3C + 4, (s32) (M2C_FIELD(&gb, void **, 0x3B8) + 0xAC) + 4, 0x70);
         if (sp4B0.IsVisible(arg0, 100.0f * (25.0f * arg1)) != 0) {
             sp160 = 1.0f;
@@ -1168,8 +1189,7 @@ loop_4:
                 sp414 = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
                 sp350.operator*(500.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+                sp60 = sp350 * (f64) temp_f28_1711;
                 sp410 = 0x417;
                 sp418 = sp60;
                 sp68 = sp350.unk8 * temp_f28_1711;
@@ -1196,8 +1216,7 @@ loop_4:
     sp308 = (f64) sp28;
     sp310.operator*(700.0f);
     sp320.operator*(arg1);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp50 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp320);
     sp330 = sp50;
     sp58 = arg0.unk8 + sp320.unk8;
     sp338 = (f64) sp58;
@@ -1266,8 +1285,9 @@ loop_57:
         sp108 = sp2D0.unk8 * var_f3_1934;
         sp2E0 = (f64) sp100;
         sp2E8 = (f64) sp108;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp2F0 = sp120;
+        temp_f0_1953 = sp2E0 * (f64) temp_f1_1840;
+        sp120 = temp_f0_1953;
+        sp2F0 = temp_f0_1953;
         sp128 = (f32) sp2E8 * temp_f1_1840;
         sp2F8 = (f64) sp128;
         sp18 = MKRand_Float(&gViewSeed, 12.0f, 20.0f);
@@ -1291,8 +1311,7 @@ loop_60:
         MKVector(-1.0f, 0.5f, -1.0f);
         KDRand_Vector(sp270, sp260);
         Normalise(sp280);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp40 = sp280 * (f64) temp_f30_2015;
         sp90 = 0.5f;
         sp94 = 0.5f;
         sp48 = sp280.unk8 * temp_f30_2015;
@@ -1330,9 +1349,9 @@ loop_60:
         sp210 = (f64) spD0;
         sp218 = (f64) spD8;
         sp238 = (f64) spF8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp240 = spE0;
+        temp_f0_2095 = M2C_FIELD(&arg0, f64 *, 0) + sp230;
+        spE0 = temp_f0_2095;
+        sp240 = temp_f0_2095;
         spE8 = temp_f22_2008 + (f32) sp238;
         sp248 = (f64) spE8;
         KDRand_Vector(sp1F0, *((MKVector3 *) &sp1E0));
@@ -1354,8 +1373,7 @@ loop_66:
                 M2C_STRUCT_COPY((s32) &sp42C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 sp430.Scale3x3(&sp430, temp_f21_2128);
                 MKVector(0.0f, 50.0f, 0.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp30 = M2C_FIELD(&arg0, f64 *, 0) + sp1A0;
                 sp1B0 = sp30;
                 sp38 = arg0.unk8 + sp1A8;
                 sp1B8 = (f64) sp38;
@@ -1453,10 +1471,12 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     f64 sp1A0;
     f64 sp198;
     f32 sp190;
+    f64 sp188;
     f32 sp180;
     f32 sp17C;
     f32 sp178;
     f32 sp170;
+    f64 sp168;
     f32 sp164;
     f32 sp160;
     f32 sp15C;
@@ -1471,6 +1491,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     f32 sp12C;
     f32 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp114;
     f32 sp110;
     f32 sp10C;
@@ -1482,6 +1503,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     f32 spEC;
     f32 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
     f32 spCC;
     f32 spC8;
@@ -1499,10 +1521,15 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -1527,6 +1554,9 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     f32 var_f4_2688;
     f32 var_f5_2441;
     f32 var_f7_2374;
+    f64 temp_f0_2357;
+    f64 temp_f0_2774;
+    f64 temp_f0_3017;
     f64 temp_f1_2694;
     f64 temp_f1_2700;
     f64 temp_f1_2704;
@@ -1586,9 +1616,9 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     temp_r3_2350 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     sp438 = M2C_FIELD(temp_r3_2350, f64 *, 0x30);
     sp440 = M2C_FIELD(temp_r3_2350, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp408 = sp188;
+    temp_f0_2357 = M2C_FIELD(&arg0, f64 *, 0) - sp438;
+    sp188 = temp_f0_2357;
+    sp408 = temp_f0_2357;
     sp190 = arg0.unk8 - (f32) sp440;
     sp410 = (f64) sp190;
     var_f7_2374 = ((f32) sp410 * (f32) sp410) + (((f32) sp408 * (f32) sp408) + (unksp40C * unksp40C));
@@ -1635,15 +1665,13 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     sp180 = (f32) sp410 * var_f5_2441;
     sp428 = (f64) sp178;
     sp430 = (f64) sp180;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp168 = sp438 - M2C_FIELD(&arg0, f64 *, 0);
     sp3F8 = sp168;
     sp170 = (f32) sp440 - arg0.unk8;
     temp_f0_2471 = 100.0f * (112.0f * arg1);
     sp400 = (f64) sp170;
     temp_f25_2479 = ((f32) sp400 * (f32) sp400) + (((f32) sp3F8 * (f32) sp3F8) + (unksp3FC * unksp3FC));
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f25_2479 == (temp_f0_2471 * temp_f0_2471)) {
+    if (temp_f25_2479 <= (temp_f0_2471 * temp_f0_2471)) {
         M2C_STRUCT_COPY((s32) &sp480.unk3C + 4, (s32) (M2C_FIELD(&gb, void **, 0x3B8) + 0xAC) + 4, 0x70);
         if (sp4C0.IsVisible(arg0, 100.0f * (25.0f * arg1)) != 0) {
             sp158 = 0.5f;
@@ -1661,8 +1689,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
                 sp45C = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
                 sp3C8.operator*(500.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
+                sp78 = sp3C8 * (f64) temp_f26_2532;
                 sp458 = 0x417;
                 sp460 = sp78;
                 sp80 = sp3C8.unk8 * temp_f26_2532;
@@ -1689,8 +1716,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     sp380 = (f64) sp30;
     sp388.operator*(700.0f);
     sp398.operator*(arg1);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp68 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp398);
     sp3A8 = sp68;
     sp70 = arg0.unk8 + sp398.unk8;
     sp3B0 = (f64) sp70;
@@ -1760,8 +1786,9 @@ loop_52:
         sp100 = sp348.unk8 * var_f3_2755;
         sp358 = (f64) spF8;
         sp360 = (f64) sp100;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp368 = sp118;
+        temp_f0_2774 = sp358 * (f64) temp_f1_2661;
+        sp118 = temp_f0_2774;
+        sp368 = temp_f0_2774;
         sp120 = (f32) sp360 * temp_f1_2661;
         sp370 = (f64) sp120;
         sp20 = MKRand_Float(&gViewSeed, 12.0f, 20.0f);
@@ -1784,8 +1811,7 @@ loop_55:
         MKVector(-1.0f, 0.5f, -1.0f);
         KDRand_Vector(sp2E8, sp2D8);
         Normalise(sp2F8);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
+        sp58 = sp2F8 * (f64) temp_f24_2827;
         sp308 = sp58;
         sp60 = sp2F8.unk8 * temp_f24_2827;
         sp448 = sp58;
@@ -1798,8 +1824,7 @@ loop_55:
         MKVector(-1.0f, 0.5f, -1.0f);
         KDRand_Vector(sp298, sp288);
         Normalise(sp2A8);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
+        sp48 = sp2A8 * (f64) temp_f23_2871;
         sp2B8 = sp48;
         sp50 = sp2A8.unk8 * temp_f23_2871;
         sp448 = sp48;
@@ -1819,8 +1844,7 @@ loop_58:
         MKVector(-1.0f, 0.5f, -1.0f);
         KDRand_Vector(sp248, sp238);
         Normalise(sp258);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp38 = sp258 * (f64) temp_f31_2937;
         sp88 = 0.5f;
         sp8C = 0.5f;
         sp40 = sp258.unk8 * temp_f31_2937;
@@ -1858,9 +1882,9 @@ loop_58:
         sp1E8 = (f64) spC8;
         sp1F0 = (f64) spD0;
         sp210 = (f64) spF0;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp218 = spD8;
+        temp_f0_3017 = M2C_FIELD(&arg0, f64 *, 0) + sp208;
+        spD8 = temp_f0_3017;
+        sp218 = temp_f0_3017;
         spE0 = temp_f24_2928 + (f32) sp210;
         sp220 = (f64) spE0;
         KDRand_Vector(sp1C8, *((MKVector3 *) &sp1B8));
@@ -1948,10 +1972,12 @@ void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2
     f64 sp1A8;
     f64 sp1A0;
     f32 sp198;
+    f64 sp190;
     f32 sp188;
     f32 sp184;
     f32 sp180;
     f32 sp178;
+    f64 sp170;
     f32 sp16C;
     f32 sp168;
     f32 sp164;
@@ -1966,6 +1992,7 @@ void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2
     f32 sp134;
     f32 sp130;
     f32 sp128;
+    f64 sp120;
     f32 sp11C;
     f32 sp118;
     f32 sp114;
@@ -1977,6 +2004,7 @@ void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2
     f32 spF4;
     f32 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
     f32 spD4;
     f32 spD0;
@@ -1997,10 +2025,15 @@ void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -2024,6 +2057,9 @@ void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2
     f32 var_f4_3415;
     f32 var_f4_3663;
     f32 var_f5_3348;
+    f64 temp_f0_3749;
+    f64 temp_f0_3888;
+    f64 temp_f1_3433;
     f64 temp_f1_3669;
     f64 temp_f1_3675;
     f64 temp_f1_3679;
@@ -2097,8 +2133,7 @@ loop_8:
             M2C_FIELD(temp_r3_3202, f32 *, 0x28) = 0.0f;
             M2C_FIELD(temp_r3_3202, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
             sp3A0.operator*(1000.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            sp70 = sp3A0 * (f64) arg1;
             M2C_FIELD(temp_r24_3205, f64 *, 0) = sp70;
             sp78 = sp3A0.unk8 * arg1;
             sp3B0 = sp70;
@@ -2118,8 +2153,7 @@ loop_8:
             M2C_FIELD(temp_r3_3248, f32 *, 0x28) = 0.0f;
             M2C_FIELD(temp_r3_3248, f32 *, 0x24) = 0.0f;
             sp380.operator*(500.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            sp60 = sp380 * (f64) arg1;
             M2C_FIELD(temp_r24_3251, f64 *, 0) = sp60;
             sp68 = sp380.unk8 * arg1;
             sp390 = sp60;
@@ -2151,8 +2185,7 @@ loop_8:
     temp_r3_3324 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     sp3F0 = M2C_FIELD(temp_r3_3324, f64 *, 0x30);
     sp3F8 = M2C_FIELD(temp_r3_3324, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp190 = M2C_FIELD(&arg0, f64 *, 0) - sp3F0;
     sp370 = sp190;
     sp198 = arg0.unk8 - (f32) sp3F8;
     sp378 = (f64) sp198;
@@ -2200,15 +2233,14 @@ loop_8:
     sp188 = (f32) sp378 * var_f4_3415;
     sp3E0 = (f64) sp180;
     sp3E8 = (f64) sp188;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
-    sp360 = sp170;
+    temp_f1_3433 = sp3F0 - M2C_FIELD(&arg0, f64 *, 0);
+    sp170 = temp_f1_3433;
+    sp360 = temp_f1_3433;
     sp178 = (f32) sp3F8 - arg0.unk8;
     temp_f0_3445 = 100.0f * (112.0f * arg1);
     sp368 = (f64) sp178;
     temp_f25_3453 = ((f32) sp368 * (f32) sp368) + (((f32) sp360 * (f32) sp360) + (unksp364 * unksp364));
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_f25_3453 == (temp_f0_3445 * temp_f0_3445)) {
+    if (temp_f25_3453 <= (temp_f0_3445 * temp_f0_3445)) {
         M2C_STRUCT_COPY((s32) &sp430.unk3C + 4, (s32) (M2C_FIELD(&gb, void **, 0x3B8) + 0xAC) + 4, 0x70);
         if (sp470.IsVisible(arg0, 100.0f * (25.0f * arg1)) != 0) {
             sp160 = 1.0f;
@@ -2226,8 +2258,7 @@ loop_8:
                 sp414 = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
                 sp330.operator*(500.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f21 */);
+                sp50 = sp330 * (f64) temp_f21_3506;
                 sp410 = 0x417;
                 sp418 = sp50;
                 sp58 = sp330.unk8 * temp_f21_3506;
@@ -2254,8 +2285,7 @@ loop_8:
     sp2E8 = (f64) sp28;
     sp2F0.operator*(700.0f);
     sp300.operator*(arg1);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp40 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp300);
     sp310 = sp40;
     sp48 = arg0.unk8 + sp300.unk8;
     sp318 = (f64) sp48;
@@ -2324,8 +2354,9 @@ loop_59:
         sp108 = sp2B0.unk8 * var_f3_3730;
         sp2C0 = (f64) sp100;
         sp2C8 = (f64) sp108;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp2D0 = sp120;
+        temp_f0_3749 = sp2C0 * (f64) temp_f1_3636;
+        sp120 = temp_f0_3749;
+        sp2D0 = temp_f0_3749;
         sp128 = (f32) sp2C8 * temp_f1_3636;
         sp2D8 = (f64) sp128;
         sp18 = MKRand_Float(&gViewSeed, 12.0f, 20.0f);
@@ -2348,8 +2379,7 @@ loop_62:
         MKVector(-1.0f, 0.5f, -1.0f);
         KDRand_Vector(sp250, sp240);
         Normalise(sp260);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp30 = sp260 * (f64) temp_f31_3808;
         sp90 = 0.5f;
         sp94 = 0.5f;
         sp38 = sp260.unk8 * temp_f31_3808;
@@ -2387,9 +2417,9 @@ loop_62:
         sp1F0 = (f64) spD0;
         sp1F8 = (f64) spD8;
         sp218 = (f64) spF8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp220 = spE0;
+        temp_f0_3888 = M2C_FIELD(&arg0, f64 *, 0) + sp210;
+        spE0 = temp_f0_3888;
+        sp220 = temp_f0_3888;
         spE8 = temp_f21_3799 + (f32) sp218;
         sp228 = (f64) spE8;
         KDRand_Vector(sp1D0, *((MKVector3 *) &sp1C0));

@@ -97,8 +97,7 @@ void FireTier2Goal_Think::Arbitrate() {
             StopFollowingSpawnPath();
         }
         temp_r3_147 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r3_147, f32 *, 0xAC8) == 0.0f) {
+        if (M2C_FIELD(temp_r3_147, f32 *, 0xAC8) <= 0.0f) {
             AddGoal_Death(&sp8);
             return;
         }
@@ -233,7 +232,7 @@ u8 FireTier2Goal_JumpOutOfLava::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: expression syntax error
 u8 FireTier2Goal_JumpOutOfLava::FindLavaEdge(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2) {
     MKCollisionResult spF8;
     f64 spF0;
@@ -261,10 +260,14 @@ u8 FireTier2Goal_JumpOutOfLava::FindLavaEdge(const MKVector3 &arg0, MKVector3 *a
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
-    f32 temp_f2_610;
+    f64 sp8;
     f32 temp_f31_597;
+    f64 temp_f0_585;
+    f64 temp_f1_574;
     f64 temp_f3_608;
     f64 temp_f4_609;
     s32 var_r31_602;
@@ -273,27 +276,27 @@ u8 FireTier2Goal_JumpOutOfLava::FindLavaEdge(const MKVector3 &arg0, MKVector3 *a
 
     sp40 = 0.0f;
     temp_r3_572 = this->unkC->unk8;
+    temp_f1_574 = M2C_FIELD(temp_r3_572, f64 *, 0x30);
     sp38 = 0.0f;
     sp3C = 300.0f;
     sp70 = (f64) sp40;
     sp68 = (f64) sp38;
-    sp78 = M2C_FIELD(temp_r3_572, f64 *, 0x30);
+    sp78 = temp_f1_574;
     sp80 = M2C_FIELD(temp_r3_572, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp88 = sp28;
+    temp_f0_585 = temp_f1_574 + sp68;
+    sp28 = temp_f0_585;
+    sp88 = temp_f0_585;
     sp30 = (f32) sp80 + (f32) sp70;
     sp90 = (f64) sp30;
     temp_f31_597 = sp88.GetWaterSurface(arg0);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+    sp18 = M2C_FIELD(&arg0, f64 *, 0) * 5.5769738e-315;
     var_r31_602 = 0;
     temp_r3_605 = this->unkC->unk8;
     temp_f3_608 = M2C_FIELD(temp_r3_605, f64 *, 0x38);
     temp_f4_609 = M2C_FIELD(temp_r3_605, f64 *, 0x30);
-    temp_f2_610 = 300.0f + temp_f31_597;
     sp20 = arg0.unk8 * 200.0f;
     spD8 = temp_f4_609;
-    unkspDC = temp_f2_610;
+    unkspDC = 300.0f + temp_f31_597;
     spF0 = (f64) sp20;
     spC8 = temp_f4_609;
     spE8 = sp18;
@@ -321,8 +324,7 @@ loop_1:
             M2C_FIELD(arg1, f64 *, 0) = M2C_BITWISE(f64, spF8);
             M2C_FIELD(arg1, f64 *, 8) = (f64) spF8.unk8;
             sp48.operator*(150.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp8 = M2C_FIELD(arg1, f64 *, 0) + M2C_BITWISE(f64, sp48);
             M2C_FIELD(arg2, f64 *, 0) = sp8;
             sp10 = arg1->unk8 + sp48.unk8;
             sp58 = sp8;
@@ -336,9 +338,9 @@ loop_1:
 block_6:
     spB8 = spD8;
     spC0 = spE0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f1 */);
+    spD8 += spE8;
     spE0 = (f32) spE0 + (f32) spF0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f1 */);
+    spC8 += spE8;
     var_r31_602 += 1;
     spD0 = (f32) spD0 + (f32) spF0;
     if (var_r31_602 >= 0xA) {
@@ -399,6 +401,7 @@ void FireTier2Goal_JumpOutOfLava::Activate() {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     AITargetData *var_r3_874;
     Enemy *temp_r3_831;
@@ -416,6 +419,7 @@ void FireTier2Goal_JumpOutOfLava::Activate() {
     f32 var_f2_1097;
     f32 var_f31_934;
     f32 var_f4_1033;
+    f64 temp_f0_1015;
     f64 temp_f1_1036;
     f64 temp_f1_1042;
     f64 temp_f1_1046;
@@ -504,10 +508,9 @@ block_8:
             AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
             this->unkC->unk870.unk40.Set(this->unk38, 0U);
             this->unkC->unk870.unk40.SetInsideRegion(1U);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp60.unk10 = sp10;
+            temp_f0_1015 = (f64) M2C_FIELD(this, f32 *, 0x48) - (f64) M2C_FIELD(this, f32 *, 0x38);
+            sp10 = temp_f0_1015;
+            sp60.unk10 = temp_f0_1015;
             sp18 = this->unk48.unk8 - this->unk38.unk8;
             unksp74 = 0.0f;
             sp60.unk18 = (f64) sp18;
@@ -778,23 +781,33 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
     f64 sp88;
     f64 sp80;
     f64 sp78;
-    M2C_UNK sp68;
+    f64 sp68;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     Enemy *temp_r3_1465;
     Enemy *temp_r3_1483;
     Enemy *temp_r3_1492;
     Enemy *temp_r3_1515;
     Enemy *temp_r3_1613;
     Enemy *temp_r3_1639;
-    f32 temp_f1_1505;
     f32 temp_f1_1534;
     f32 temp_f31_1546;
     f32 var_f0_1643;
+    f64 temp_f0_1501;
+    f64 temp_f0_1512;
+    f64 temp_f0_1529;
+    f64 temp_f0_1551;
+    f64 temp_f1_1496;
+    f64 temp_f1_1520;
     u8 var_r30_1466;
     void *temp_r4_1518;
     void *temp_r5_1485;
@@ -814,33 +827,36 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
         spC0 = M2C_FIELD(temp_r5_1485, f64 *, 0x38);
         temp_r3_1483->unk870.unk40.Update(*((MKVector3 *) &spB8));
         temp_r3_1492 = this->unkC;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        temp_f1_1505 = MKVector3::up.unk8 * temp_r3_1492->GetCollisionHeight();
-        sp88 = sp48;
-        sp50 = temp_f1_1505;
+        temp_f1_1496 = temp_r3_1492->GetCollisionHeight();
+        temp_f0_1501 = M2C_FIELD(&MKVector3::up, f64 *, 0) * temp_f1_1496;
+        sp48 = temp_f0_1501;
+        sp88 = temp_f0_1501;
+        sp50 = MKVector3::up.unk8 * (f32) temp_f1_1496;
         sp90 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+        temp_f0_1512 = temp_f0_1501 * 5.222099017e-315;
+        sp38 = temp_f0_1512;
         temp_r3_1515 = this->unkC;
         temp_r4_1518 = temp_r3_1515->unk8;
-        sp98 = sp38;
+        sp98 = temp_f0_1512;
+        temp_f1_1520 = M2C_FIELD(temp_r4_1518, f64 *, 0x30);
         sp40 = (f32) sp90 * 0.5f;
-        spA8 = M2C_FIELD(temp_r4_1518, f64 *, 0x30);
+        spA8 = temp_f1_1520;
         spA0 = (f64) sp40;
         spB0 = M2C_FIELD(temp_r4_1518, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_1529 = temp_f1_1520 + temp_f0_1512;
+        sp28 = temp_f0_1529;
         temp_f1_1534 = (f32) spB0 + (f32) spA0;
-        spD8 = sp28;
+        spD8 = temp_f0_1529;
         sp30 = temp_f1_1534;
         spE0 = (f64) sp30;
         temp_f31_1546 = 150.0f + temp_r3_1515->GetCollisionRadius(temp_r4_1518, temp_f1_1534, (f32) spB0);
         sp68.GetDir();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp78 = sp18;
+        temp_f0_1551 = sp68 * (f64) temp_f31_1546;
+        sp18 = temp_f0_1551;
+        sp78 = temp_f0_1551;
         sp20 = sp70 * temp_f31_1546;
         sp80 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp8 = spD8 + temp_f0_1551;
         sp10 = (f32) spE0 + (f32) sp80;
         spC8 = sp8;
         spD0 = (f64) sp10;
@@ -866,7 +882,7 @@ u8 FireTier2Goal_MoveToLavaEdge::Update() {
         sp134 = -1;
         sp138 = 0;
         MKCollision_RayCollide(*((MKVector3 *) &spD8), *((MKVector3 *) &spC8), (MKCollisionResult *) &spE8, (MKCollisionMode) 4, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18));
-        if (((sp138 != 0) && (sp58.GetDir(), temp_r3_1613 = this->unkC, ((((temp_r3_1613->unkC8 * sp60) + ((temp_r3_1613->unkC0 * sp58) + (temp_r3_1613->unkC4 * sp5C))) > 0.95f) != 0))) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unkC->unk870.unk40.GetDist() == this->unk14) != 0))) {
+        if (((sp138 != 0) && (sp58.GetDir(), temp_r3_1613 = this->unkC, ((((temp_r3_1613->unkC8 * sp60) + ((temp_r3_1613->unkC0 * sp58) + (temp_r3_1613->unkC4 * sp5C))) > 0.95f) != 0))) || (this->unkC->unk870.unk40.GetDist() <= this->unk14)) {
             this->unk8 = 2;
         } else {
             temp_r3_1639 = this->unkC;

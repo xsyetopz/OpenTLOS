@@ -1058,7 +1058,7 @@ void SpyroHud_Draw(void *arg0, HudItemState arg1, float arg2) {
                 sp25C = sp2C;
                 sp250 = sp20;
                 sp254 = sp24;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+                M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
                 if (temp_f0_1515 == 1.0f) {
                     var_f3_1567 = (M2C_FIELD(&gb, f32 *, 0x30C) - (f32) (s32) M2C_FIELD(&gb, f32 *, 0x30C)) - 0.5f;
                     if (var_f3_1567 < 0.0f) {
@@ -1114,6 +1114,10 @@ void Hud_DrawBarVert(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
     f64 spD8;
     f64 spD0;
     f64 spC8;
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;
+    f64 spA8;
     f32 spA4;
     f32 spA0;
     f32 sp9C;
@@ -1179,6 +1183,8 @@ void Hud_DrawBarVert(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
     f32 var_f4_2004;
     f32 var_f5_1960;
     f32 var_f5_2026;
+    f64 temp_f0_1823;
+    f64 temp_f0_1834;
 
     temp_f6_1728 = arg4.unk4;
     temp_f5_1730 = arg3.unk4;
@@ -1221,18 +1227,16 @@ void Hud_DrawBarVert(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
         MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
         MKPrimitive(0xC, 3);
         MKBegin(4);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r25, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r26, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        spB8 = M2C_FIELD(&arg6, f64 *, 0) + M2C_FIELD(&arg7, f64 *, 0);
+        temp_f0_1823 = M2C_FIELD(&arg6, f64 *, 8) + M2C_FIELD(&arg7, f64 *, 8);
+        spC0 = temp_f0_1823;
         spC8 = spB8;
-        spD0 = spC0;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        spD0 = temp_f0_1823;
+        spA8 = spC8 * 5.222099017e-315;
+        temp_f0_1834 = temp_f0_1823 * 5.222099017e-315;
+        spB0 = temp_f0_1834;
         spD8 = spA8;
-        spE0 = spB0;
+        spE0 = temp_f0_1834;
         MKSetColorV(*((MKVector4 *) &spD8));
         MKSetPositionF(temp_f28_1756, var_f27_1755, 0.0f);
         MKSetPositionF(temp_f29_1791, var_f27_1755, 0.0f);
@@ -1358,6 +1362,10 @@ void Hud_DrawBarHorz(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
     f64 sp178;
     f64 sp170;
     f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
     f32 sp144;
     f32 sp140;
     f32 sp13C;
@@ -1463,6 +1471,8 @@ void Hud_DrawBarHorz(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
     f32 var_f2_2529;
     f32 var_f4_2162;
     f32 var_f4_2372;
+    f64 temp_f0_2243;
+    f64 temp_f0_2254;
 
     temp_f6_2148 = arg4.unk0;
     temp_f5_2150 = arg3.unk0;
@@ -1505,18 +1515,16 @@ void Hud_DrawBarHorz(const MKVector2 &arg0, const MKVector2 &arg1, const MKVecto
         MKMaterial_SetMaterial(M2C_FIELD(&gb, MKMaterial **, 0x328));
         MKPrimitive(0xC, 3);
         MKBegin(4);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r25, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r26, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp158 = M2C_FIELD(&arg6, f64 *, 0) + M2C_FIELD(&arg7, f64 *, 0);
+        temp_f0_2243 = M2C_FIELD(&arg6, f64 *, 8) + M2C_FIELD(&arg7, f64 *, 8);
+        sp160 = temp_f0_2243;
         sp168 = sp158;
-        sp170 = sp160;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp170 = temp_f0_2243;
+        sp148 = sp168 * 5.222099017e-315;
+        temp_f0_2254 = temp_f0_2243 * 5.222099017e-315;
+        sp150 = temp_f0_2254;
         sp178 = sp148;
-        sp180 = sp150;
+        sp180 = temp_f0_2254;
         MKSetColorV(*((MKVector4 *) &sp178));
         MKSetPositionF(var_f29_2175, temp_f28_2176, 0.0f);
         if (arg9 > arg10) {

@@ -152,6 +152,8 @@ s32 FireAndIceFX::Draw(unsigned short *arg0) {
     f32 sp58;
     f32 sp54;
     f32 sp50;
+    f64 sp48;
+    f64 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp34;
@@ -175,6 +177,7 @@ s32 FireAndIceFX::Draw(unsigned short *arg0) {
     f64 *temp_r3_421;
     f64 *temp_r3_454;
     f64 *temp_r3_496;
+    f64 temp_f0_479;
     f64 temp_f0_499;
     f64 temp_f1_497;
     f64 temp_f3_424;
@@ -280,10 +283,11 @@ s32 FireAndIceFX::Draw(unsigned short *arg0) {
         temp_f30_472 = 1.0f - (this->unk80 / this->unk88);
         spC0 = (f64) sp50;
         spC8 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp40 = spC0 * (f64) temp_f30_472;
+        temp_f0_479 = (f64) sp58 * (f64) temp_f30_472;
+        sp48 = temp_f0_479;
         sp120 = sp40;
-        sp128 = sp48;
+        sp128 = temp_f0_479;
         unksp12C = 1.0f;
         MKModel_SetColor(this->unk74, *((MKVector4 *) &sp120));
         MKModel_Draw(this->unk74, NULL);
@@ -338,12 +342,14 @@ void FireAndIceFX::Update() {
     M2C_UNK sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f2_657;
     f32 temp_f2_784;
     f32 var_f0_625;
     f32 var_f0_658;
     f32 var_f0_752;
     f32 var_f0_785;
+    f64 temp_f0_694;
     s32 temp_r0_608;
 
     temp_r0_608 = this->unk78;
@@ -361,8 +367,7 @@ void FireAndIceFX::Update() {
             var_f0_625 = 0.0f;
         }
         this->unk94 = var_f0_625;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk94 == 0.99f) {
+        if (this->unk94 >= 0.99f) {
             this->unk94 = 1.0f;
         }
         if (((u8) this->unkA4 != 0) && (this->unk94 == 1.0f)) {
@@ -379,16 +384,15 @@ void FireAndIceFX::Update() {
                 var_f0_658 = 0.0f;
             }
             this->unk80 = var_f0_658;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (this->unk80 == this->unk8C) {
+            if (this->unk80 >= this->unk8C) {
                 this->unk78 = 0;
                 return;
             }
             MKVector(100.0f, 100.0f, 100.0f);
             sp38.operator*(gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp48 = sp8;
+            temp_f0_694 = M2C_FIELD(this, f64 *, 0x40) + M2C_BITWISE(f64, sp38);
+            sp8 = temp_f0_694;
+            sp48 = temp_f0_694;
             sp10 = this->unk48 + sp38.unk8;
             sp50 = (f64) sp10;
             MKVector(1.0f, 0.1f, 1.0f);
@@ -422,8 +426,7 @@ block_27:
             var_f0_752 = 0.0f;
         }
         this->unk94 = var_f0_752;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk94 == 0.99f) {
+        if (this->unk94 >= 0.99f) {
             this->unk94 = 1.0f;
         }
         if (((u8) this->unkA4 != 0) && (this->unk94 == 1.0f)) {
@@ -440,8 +443,7 @@ block_27:
                 var_f0_785 = 0.0f;
             }
             this->unk80 = var_f0_785;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (this->unk80 == this->unk88) {
+            if (this->unk80 >= this->unk88) {
                 this->unk78 = 0;
                 return;
             }
@@ -453,16 +455,14 @@ block_27:
             this->unk9C = 0.125f;
         }
         this->unkA0 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkA0 == 0.0f) {
+        if (this->unkA0 <= 0.0f) {
             SetState(lit_539, 1.0f);
             return;
         }
         break;
     case 5:
         this->unkA0 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkA0 == 0.0f) {
+        if (this->unkA0 <= 0.0f) {
             SetState(lit_543, 1.0f);
         }
         break;

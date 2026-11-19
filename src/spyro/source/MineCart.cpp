@@ -91,10 +91,14 @@ void MineCart::Message(MKMessage *arg0) {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f2_274;
+    f64 temp_f1_251;
     s32 temp_r0_123;
     void **temp_r3_155;
     void *temp_r3_159;
@@ -125,7 +129,7 @@ void MineCart::Message(MKMessage *arg0) {
                 sp98 = M2C_FIELD(temp_r3_167, f64 *, 0x30);
                 spB0 = M2C_FIELD(temp_r4_166, f64 *, 0x38);
                 spA0 = M2C_FIELD(temp_r3_167, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp38 = spA8 - sp98;
                 sp88 = sp38;
                 spDC = 0;
                 sp40 = (f32) spB0 - (f32) spA0;
@@ -158,15 +162,15 @@ void MineCart::Message(MKMessage *arg0) {
                 M2C_FIELD(M2C_FIELD(temp_r3_159, void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(temp_r3_159, &spD8);
             } else {
                 spBC = 0;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                sp18 = this->unkD8 * 5.222099017e-315;
                 temp_r4_248 = M2C_FIELD(temp_r3_159, void **, 8);
+                temp_f1_251 = M2C_FIELD(temp_r4_248, f64 *, 0x30);
                 sp20 = this->unkE0 * 0.5f;
                 sp48 = sp18;
-                sp58 = M2C_FIELD(temp_r4_248, f64 *, 0x30);
+                sp58 = temp_f1_251;
                 sp50 = (f64) sp20;
                 sp60 = M2C_FIELD(temp_r4_248, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp8 = temp_f1_251 + sp48;
                 sp78 = sp8;
                 temp_f2_274 = (f32) sp60 + (f32) sp50;
                 sp68 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -218,16 +222,23 @@ void MineCart::UpdateEffects() {
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_529;
     f32 temp_f25_454;
@@ -237,15 +248,23 @@ void MineCart::UpdateEffects() {
     f32 temp_f6_349;
     f32 temp_f6_360;
     f32 temp_f7_352;
+    f64 temp_f0_392;
+    f64 temp_f0_414;
+    f64 temp_f0_441;
+    f64 temp_f0_473;
+    f64 temp_f0_484;
+    f64 temp_f0_534;
     s32 temp_r3_342;
     s32 var_r30_436;
     void *temp_r3_347;
+    void *temp_r3_389;
+    void *temp_r3_411;
     void *temp_r4_344;
     void *temp_r4_530;
+    void *temp_r5_531;
 
     this->unk118 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk118 == 0.0f) {
+    if (this->unk118 <= 0.0f) {
         this->unk118 = MKRand_Float(&gViewSeed, 0.125f, 0.25f);
         temp_r3_342 = MKRand_Int(&gViewSeed, 0, 2);
         temp_r4_344 = this->unk8;
@@ -262,28 +281,30 @@ void MineCart::UpdateEffects() {
         unksp154 = temp_f3_368;
         if (temp_r3_342 == 1) {
             if (MKRand_Int(&gViewSeed, -1, 1) != 0) {
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                sp140 = sp40;
-                sp48 = M2C_FIELD(this->unk8, f32 *, 8) * 130.0f;
+                temp_r3_389 = this->unk8;
+                temp_f0_392 = (f64) M2C_FIELD(temp_r3_389, f32 *, 0) * 5.55430844e-315;
+                sp40 = temp_f0_392;
+                sp140 = temp_f0_392;
+                sp48 = M2C_FIELD(temp_r3_389, f32 *, 8) * 130.0f;
                 sp148 = (f64) sp48;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp150 += temp_f0_392;
                 sp158 = (f32) sp158 + (f32) sp148;
             } else {
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                sp130 = sp30;
-                sp38 = M2C_FIELD(this->unk8, f32 *, 8) * 130.0f;
+                temp_r3_411 = this->unk8;
+                temp_f0_414 = (f64) M2C_FIELD(temp_r3_411, f32 *, 0) * 5.55430844e-315;
+                sp30 = temp_f0_414;
+                sp130 = temp_f0_414;
+                sp38 = M2C_FIELD(temp_r3_411, f32 *, 8) * 130.0f;
                 sp138 = (f64) sp38;
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp150 -= temp_f0_414;
                 sp158 -= (f32) sp138;
             }
         }
         var_r30_436 = 0;
         do {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spF0 = sp70;
+            temp_f0_441 = this->unkD8 * 5.398241246e-315;
+            sp70 = temp_f0_441;
+            spF0 = temp_f0_441;
             sp78 = this->unkE0 * 10.0f;
             spF8 = (f64) sp78;
             temp_f25_454 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -293,12 +314,14 @@ void MineCart::UpdateEffects() {
             sp98 = temp_f25_454;
             sp100 = (f64) sp90;
             sp108 = (f64) sp98;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp110 = sp80;
+            temp_f0_473 = sp100 * 5.65986426e-315;
+            sp80 = temp_f0_473;
+            sp110 = temp_f0_473;
             sp88 = (f32) sp108 * 800.0f;
             sp118 = (f64) sp88;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp120 = sp60;
+            temp_f0_484 = sp110 + temp_f0_441;
+            sp60 = temp_f0_484;
+            sp120 = temp_f0_484;
             sp68 = (f32) sp118 + (f32) spF8;
             sp128 = (f64) sp68;
             sp8 = MKRand_Float(&gViewSeed, 5.0f, 8.0f);
@@ -314,15 +337,14 @@ void MineCart::UpdateEffects() {
         } while (var_r30_436 < 5);
         temp_f1_529 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_r4_530 = this->unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        spB0 = sp10;
-        sp18 = M2C_FIELD(temp_r4_530, f32 *, 8) + M2C_FIELD((temp_r4_530 + 0x20), f32 *, 8);
+        temp_r5_531 = temp_r4_530 + 0x20;
+        temp_f0_534 = (f64) M2C_FIELD(temp_r4_530, f32 *, 0) + M2C_FIELD(temp_r5_531, f64 *, 0);
+        sp10 = temp_f0_534;
+        spB0 = temp_f0_534;
+        sp18 = M2C_FIELD(temp_r4_530, f32 *, 8) + M2C_FIELD(temp_r5_531, f32 *, 8);
         spB8 = (f64) sp18;
         spC0.operator*(temp_f1_529);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+        sp20 = spC0 * 5.398241246e-315;
         this->unk168 = sp20;
         sp28 = spC0.unk8 * 10.0f;
         spD0 = sp20;
@@ -339,9 +361,11 @@ void MineCart::Update() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     s32 sp8;
     KDSynkerPlayer3 *temp_r3_627;
     f32 temp_f0_724;
+    f32 temp_f31_736;
     s32 temp_r0_719;
     s32 var_ctr_717;
     s32 var_r3_699;
@@ -353,6 +377,7 @@ void MineCart::Update() {
     u8 var_r3_596;
     u8 var_r3_609;
     void *temp_r27_625;
+    void *temp_r3_692;
     void *temp_r3_744;
     void *temp_r4_594;
     void *temp_r4_676;
@@ -400,12 +425,11 @@ void MineCart::Update() {
         ((KDSoundFader *) (this + 0x17C))->Update(M2C_FIELD(temp_r4_676, s32 *, 0xE4), 1U, var_r31_666, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((void *) M2C_FIELD(this, void **, 0x178) != NULL) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r3_692 = this->unk8 + 0x30;
+        sp10 = M2C_FIELD(temp_r3_692, f64 *, 0) - this->unkC8;
         var_r3_699 = 0;
         this->unkD8 = sp10;
-        sp18 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) - this->unkD0;
+        sp18 = M2C_FIELD(temp_r3_692, f32 *, 8) - this->unkD0;
         sp30 = sp10;
         M2C_FIELD(this, f64 *, 0xE0) = (f64) sp18;
         temp_r4_708 = this->unk8;
@@ -417,17 +441,15 @@ void MineCart::Update() {
             temp_r0_719 = var_r3_699 + 0x130;
             *(this + temp_r0_719) = (20.0f * gUpdateTimeDelta) + *(this + temp_r0_719);
             temp_f0_724 = *(this + temp_r0_719);
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f0_724 == 6.2831855f) {
+            if (temp_f0_724 >= 6.2831855f) {
                 *(this + temp_r0_719) = temp_f0_724 - 6.2831855f;
             }
             var_r3_699 += 0x18;
             var_ctr_717 -= 1;
         } while (var_ctr_717 != 0);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_FIELD(this, f32 *, 0x170) = (f32) (M2C_FIELD(this, f32 *, 0x170) * (f32) pow(0.125, gUpdateTimeDelta));
+        temp_f31_736 = (f32) pow(0.125, gUpdateTimeDelta);
+        this->unk168 *= (f64) temp_f31_736;
+        M2C_FIELD(this, f32 *, 0x170) = (f32) (M2C_FIELD(this, f32 *, 0x170) * temp_f31_736);
         temp_r3_744 = this->unk8;
         sp20 = M2C_FIELD(temp_r3_744, f64 *, 0x30);
         sp28 = M2C_FIELD(temp_r3_744, f64 *, 0x38);

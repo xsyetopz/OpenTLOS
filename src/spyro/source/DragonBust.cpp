@@ -628,9 +628,10 @@ void DragonBust::ActivatingAEnter() {
     f64 sp50;
     f64 sp48;
     f64 sp40;
-    M2C_UNK sp30;
+    f64 sp30;
     MKVector3 sp20;
     f32 sp18;
+    f64 sp10;
     ManagedLight *temp_r3_791;
     ManagedLight *temp_r3_804;
     ManagedLight *temp_r4_766;
@@ -655,8 +656,7 @@ void DragonBust::ActivatingAEnter() {
         gb.unk80->EnableLight(temp_r4_766, 1U);
         sp20.operator*(150.0f);
         sp30.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp10 = sp30 + M2C_BITWISE(f64, sp20);
         temp_r3_791 = this->unk118;
         sp40 = sp10;
         sp18 = sp38 + sp20.unk8;
@@ -681,7 +681,7 @@ void DragonBust::ActivatingAEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void DragonBust::SlidingIntoPlaceUpdate() {
     f64 sp70;
     f64 sp68;
@@ -692,30 +692,38 @@ void DragonBust::SlidingIntoPlaceUpdate() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_879;
     f32 temp_f3_862;
+    f64 temp_f0_847;
+    f64 temp_f0_873;
+    f64 temp_f1_863;
     void *temp_r4_859;
 
     this->unk158 = 1;
     if (this->unk104 > 0.0f) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-        sp38 = sp28;
+        temp_f0_847 = M2C_FIELD(this, f64 *, 0xF8) * 5.53552857e-315;
+        sp28 = temp_f0_847;
+        sp38 = temp_f0_847;
         sp30 = this->unk100 * 100.0f;
         sp40 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
+        sp18 = temp_f0_847 * (f64) gUpdateTimeDelta;
         temp_r4_859 = this->unk8;
         temp_f3_862 = (f32) sp40 * gUpdateTimeDelta;
+        temp_f1_863 = M2C_FIELD(temp_r4_859, f64 *, 0x30);
         sp48 = sp18;
         sp20 = temp_f3_862;
-        sp58 = M2C_FIELD(temp_r4_859, f64 *, 0x30);
+        sp58 = temp_f1_863;
         sp50 = (f64) sp20;
         sp60 = M2C_FIELD(temp_r4_859, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_873 = temp_f1_863 + sp48;
+        sp8 = temp_f0_873;
         temp_f1_879 = (f32) sp60 + (f32) sp50;
-        sp68 = sp8;
+        sp68 = temp_f0_873;
         sp10 = temp_f1_879;
         sp70 = (f64) sp10;
         M2C_FIELD(this->__vptr, M2C_UNK (**)(f64 *, f32, f32, f32, f32), 0x38)(&sp68, temp_f1_879, (f32) sp60, temp_f3_862, gUpdateTimeDelta);
@@ -726,13 +734,14 @@ void DragonBust::SlidingIntoPlaceUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier 'unksp34'
 void DragonBust::SlidingIntoPlaceEnter() {
     f64 sp38;
     f64 sp30;                                       /* compiler-managed */
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 var_f3_1002;
     f32 var_f4_936;
@@ -746,8 +755,7 @@ void DragonBust::SlidingIntoPlaceEnter() {
     temp_r4_909 = this->unk8;
     sp20 = M2C_FIELD(temp_r4_909, f64 *, 0x30);
     sp28 = M2C_FIELD(temp_r4_909, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = this->unkE8 - sp20;
     var_r5_918 = 1;
     sp30 = sp10;
     sp18 = this->unkF0 - (f32) sp28;
@@ -830,6 +838,7 @@ void DragonBust::SlideUpdate() {
     f64 spB8;
     f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
     f32 sp94;
     f32 sp90;
@@ -837,12 +846,19 @@ void DragonBust::SlideUpdate() {
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_1156;
     f32 temp_f27_1192;
@@ -852,9 +868,16 @@ void DragonBust::SlideUpdate() {
     f32 temp_f5_1171;
     f32 var_f28_1076;
     f32 var_f3_1143;
+    f64 temp_f0_1231;
+    f64 temp_f0_1241;
+    f64 temp_f0_1267;
+    f64 temp_f0_1281;
+    f64 temp_f0_1292;
+    f64 temp_f1_1049;
     f64 temp_f1_1082;
     f64 temp_f1_1088;
     f64 temp_f1_1092;
+    f64 temp_f1_1257;
     s32 temp_r3_1111;
     s32 var_r0_1121;
     void *temp_r3_1047;
@@ -866,11 +889,12 @@ void DragonBust::SlideUpdate() {
 
     temp_r4_1046 = M2C_FIELD(gb.unk0->GetProp(&gb), void **, 8);
     temp_r3_1047 = this->unk8;
+    temp_f1_1049 = M2C_FIELD(temp_r3_1047, f64 *, 0x30);
     sp150 = M2C_FIELD(temp_r4_1046, f64 *, 0x30);
-    sp160 = M2C_FIELD(temp_r3_1047, f64 *, 0x30);
+    sp160 = temp_f1_1049;
     sp158 = M2C_FIELD(temp_r4_1046, f64 *, 0x38);
     sp168 = M2C_FIELD(temp_r3_1047, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    spA0 = temp_f1_1049 - sp150;
     sp180 = spA0;
     spA8 = (f32) sp168 - (f32) sp158;
     sp188 = (f64) spA8;
@@ -937,44 +961,47 @@ void DragonBust::SlideUpdate() {
     sp138 = (f64) sp88;
     this->unk158 = 0;
     if ((temp_f27_1192 > 0.7f) && (((sp188 * (f32) sp138) + ((temp_f2_1154 * (f32) sp130) + (temp_f1_1156 * unksp134))) > 0.85f)) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spF0 = sp70;
+        temp_f0_1231 = (f64) M2C_FIELD(this, f32 *, 0xF8) * 5.53552857e-315;
+        sp70 = temp_f0_1231;
+        spF0 = temp_f0_1231;
         sp78 = this->unk100 * 100.0f;
         spF8 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        sp100 = sp60;
+        temp_f0_1241 = temp_f0_1231 * (f64) temp_f27_1192;
+        sp60 = temp_f0_1241;
+        sp100 = temp_f0_1241;
         sp68 = (f32) spF8 * temp_f27_1192;
         sp108 = (f64) sp68;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp50 = temp_f0_1241 * (f64) gUpdateTimeDelta;
         temp_r3_1253 = this->unk8;
+        temp_f1_1257 = M2C_FIELD(temp_r3_1253, f64 *, 0x30);
         sp110 = sp50;
         sp58 = (f32) sp108 * gUpdateTimeDelta;
-        sp120 = M2C_FIELD(temp_r3_1253, f64 *, 0x30);
+        sp120 = temp_f1_1257;
         sp118 = (f64) sp58;
         sp128 = M2C_FIELD(temp_r3_1253, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp170 = sp40;
+        temp_f0_1267 = temp_f1_1257 + sp110;
+        sp40 = temp_f0_1267;
+        sp170 = temp_f0_1267;
         sp48 = (f32) sp128 + (f32) sp118;
         sp178 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        spD0 = sp30;
+        temp_f0_1281 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.49408334e-315;
+        sp30 = temp_f0_1281;
+        spD0 = temp_f0_1281;
         sp38 = MKVector3::up.unk8 * 50.0f;
         spD8 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spE0 = sp20;
+        temp_f0_1292 = sp170 + temp_f0_1281;
+        sp20 = temp_f0_1292;
+        spE0 = temp_f0_1292;
         sp28 = (f32) sp178 + (f32) spD8;
         spE8 = (f64) sp28;
-        Tools_GetFloor(*((MKVector3 *) &spE0), M2C_ERROR(/* unknown instruction: ps_mr $f1, $f30 */), &unksp174);
+        Tools_GetFloor(*((MKVector3 *) &spE0), 100.0f, &unksp174);
         this->unk158 = 1;
         SetPos(sp170);
     }
     temp_r3_1315 = this->unk8;
     spB0 = M2C_FIELD(temp_r3_1315, f64 *, 0x30);
     spB8 = M2C_FIELD(temp_r3_1315, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = this->unkE8 - spB0;
     spC0 = sp10;
     sp18 = this->unkF0 - (f32) spB8;
     spC8 = (f64) sp18;
@@ -995,7 +1022,7 @@ void DragonBust::IdleUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void DragonBust::IdleEnter() {
     f64 sp80;
     f64 sp78;
@@ -1009,8 +1036,11 @@ void DragonBust::IdleEnter() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f64 temp_f0_1409;
+    f64 temp_f0_1421;
     f64 temp_f1_1408;
     void *temp_r3_1407;
     void *temp_r3_1413;
@@ -1028,9 +1058,9 @@ void DragonBust::IdleEnter() {
         sp80 = temp_f0_1409;
         sp48 = M2C_FIELD(temp_r3_1413, f64 *, 0x30);
         sp50 = M2C_FIELD(temp_r3_1413, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp58 = sp8;
+        temp_f0_1421 = this->unkE8 - sp48;
+        sp8 = temp_f0_1421;
+        sp58 = temp_f0_1421;
         sp10 = this->unkF0 - (f32) sp50;
         sp60 = (f64) sp10;
         Normalise(sp68);
@@ -1039,8 +1069,7 @@ void DragonBust::IdleEnter() {
         temp_r3_1439 = this->unk8;
         sp28 = M2C_FIELD(temp_r3_1439, f64 *, 0x30);
         sp30 = M2C_FIELD(temp_r3_1439, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp18 = this->unkE8 - sp28;
         sp38 = sp18;
         sp20 = this->unkF0 - (f32) sp30;
         sp40 = (f64) sp20;

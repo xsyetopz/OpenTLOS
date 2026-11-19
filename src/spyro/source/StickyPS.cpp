@@ -28,7 +28,7 @@ void StickyPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, fl
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp30'
+#if 0 // DRAFT: undefined identifier 'unksp8'
 void StickyPS::UpdateParticles() {
     s8 spD0;
     s32 spCC;
@@ -60,14 +60,21 @@ void StickyPS::UpdateParticles() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     MKParticleChunk *var_r28_139;
     f32 temp_f0_253;
     f32 temp_f27_147;
     f32 temp_f2_259;
+    f32 temp_f31_190;
     f32 temp_f3_272;
     f32 temp_f4_267;
+    f64 temp_f0_116;
+    f64 temp_f0_127;
+    f64 temp_f0_173;
     s32 temp_r29_114;
     s32 var_r3_252;
     s32 var_r4_251;
@@ -78,14 +85,14 @@ void StickyPS::UpdateParticles() {
     this->unkF4 += gUpdateTimeDelta;
     temp_r30_112 = this->unk0;
     temp_r29_114 = M2C_FIELD(temp_r30_112, s32 *, 0xD4);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    sp70 = sp30;
+    temp_f0_116 = M2C_FIELD(temp_r30_112, f64 *, 0xA0) * (f64) gUpdateTimeDelta;
+    sp30 = temp_f0_116;
+    sp70 = temp_f0_116;
     sp38 = M2C_FIELD(temp_r30_112, f32 *, 0xA8) * gUpdateTimeDelta;
     sp78 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    sp60 = sp20;
+    temp_f0_127 = M2C_FIELD(temp_r30_112, f64 *, 0xB0) * (f64) gUpdateTimeDelta;
+    sp20 = temp_f0_127;
+    sp60 = temp_f0_127;
     sp28 = M2C_FIELD(temp_r30_112, f32 *, 0xB8) * gUpdateTimeDelta;
     sp68 = (f64) sp28;
     var_r28_139 = GetFirstParticle(&unksp8);
@@ -99,26 +106,19 @@ loop_10:
             if ((u8) M2C_FIELD(temp_r27_143, u8 *, 0x1C) == 0) {
                 sp50 = M2C_FIELD(var_r28_139, f64 *, 0);
                 sp58 = M2C_FIELD(var_r28_139, f64 *, 8);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
+                M2C_FIELD(var_r28_139, f64 *, 0) = (f64) (M2C_FIELD(var_r28_139, f64 *, 0) + sp70);
                 var_r28_139->unk8 += (f32) sp78;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp40 = sp10;
+                temp_f0_173 = M2C_FIELD(temp_r27_143, f64 *, 0) * (f64) gUpdateTimeDelta;
+                sp10 = temp_f0_173;
+                sp40 = temp_f0_173;
                 sp18 = M2C_FIELD(temp_r27_143, f32 *, 8) * gUpdateTimeDelta;
                 sp48 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
+                M2C_FIELD(var_r28_139, f64 *, 0) = (f64) (M2C_FIELD(var_r28_139, f64 *, 0) + temp_f0_173);
                 var_r28_139->unk8 += (f32) sp48;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r27, 0x0, qr0 */);
-                M2C_FIELD(temp_r27_143, f32 *, 8) = (f32) (M2C_FIELD(temp_r27_143, f32 *, 8) * M2C_FIELD(temp_r30_112, f32 *, 0xC4));
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r27, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r27, 0x0, qr0 */);
+                temp_f31_190 = M2C_FIELD(temp_r30_112, f32 *, 0xC4);
+                M2C_FIELD(temp_r27_143, f64 *, 0) = (f64) (M2C_FIELD(temp_r27_143, f64 *, 0) * (f64) temp_f31_190);
+                M2C_FIELD(temp_r27_143, f32 *, 8) = (f32) (M2C_FIELD(temp_r27_143, f32 *, 8) * temp_f31_190);
+                M2C_FIELD(temp_r27_143, f64 *, 0) = (f64) (M2C_FIELD(temp_r27_143, f64 *, 0) + sp60);
                 M2C_FIELD(temp_r27_143, f32 *, 8) = (f32) (M2C_FIELD(temp_r27_143, f32 *, 8) + (f32) sp68);
                 var_r28_139->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r27_143, f32 *, 0x10);
                 sp80 = 0.0f;

@@ -77,12 +77,8 @@ void KDCameraDeltaDrag::Update(const MKVector3 &arg0) {
             temp_f1_118 = arg0.unk8;
             var_r0_119 = 0;
             var_f2_121 = -temp_f1_118;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_f1_118 == -0.05f) {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (temp_f1_118 == 0.05f) {
-                    var_r0_119 = 1;
-                }
+            if ((temp_f1_118 >= -0.05f) && (temp_f1_118 <= 0.05f)) {
+                var_r0_119 = 1;
             }
             if (var_r0_119 != 0) {
                 var_f2_121 = 0.0f;

@@ -44,7 +44,6 @@ loop_1:
             goto loop_1;
         }
     }
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 

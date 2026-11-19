@@ -241,11 +241,17 @@ void Catapult::SetBall(Ball *arg0) {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_134;
+    f64 temp_f0_146;
+    f64 temp_f0_157;
     void *temp_r5_113;
 
     M2C_FIELD(this, Ball **, 0x12C) = arg0;
@@ -260,16 +266,19 @@ void Catapult::SetBall(Ball *arg0) {
     spA0 = sp80;
     sp48 = (f64) sp18;
     sp50 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp58 = sp38;
+    temp_f0_134 = spA8 + sp98;
+    sp38 = temp_f0_134;
+    sp58 = temp_f0_134;
     sp40 = (f32) spB0 + (f32) spA0;
     sp60 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp68 = sp28;
+    temp_f0_146 = temp_f0_134 * 5.222099017e-315;
+    sp28 = temp_f0_146;
+    sp68 = temp_f0_146;
     sp30 = (f32) sp60 * 0.5f;
     sp70 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp88 = sp8;
+    temp_f0_157 = sp68 + sp48;
+    sp8 = temp_f0_157;
+    sp88 = temp_f0_157;
     sp10 = (f32) sp70 + (f32) sp50;
     sp90 = (f64) sp10;
     this->unk118.unk4 = 0.0f;
@@ -359,9 +368,11 @@ void Catapult::WindBackUpdate() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f0_423;
     f32 temp_f31_353;
     f32 var_f3_422;
+    f64 temp_f1_381;
     void *temp_r3_379;
     void *temp_r3_464;
     void *temp_r4_378;
@@ -374,11 +385,12 @@ void Catapult::WindBackUpdate() {
     } else {
         temp_r4_378 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         temp_r3_379 = this->unk8;
+        temp_f1_381 = M2C_FIELD(temp_r3_379, f64 *, 0x30);
         sp38 = M2C_FIELD(temp_r4_378, f64 *, 0x30);
-        sp48 = M2C_FIELD(temp_r3_379, f64 *, 0x30);
+        sp48 = temp_f1_381;
         sp40 = M2C_FIELD(temp_r4_378, f64 *, 0x38);
         sp50 = M2C_FIELD(temp_r3_379, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp8 = temp_f1_381 - sp38;
         sp18 = sp8;
         sp10 = (f32) sp50 - (f32) sp40;
         sp28 = sp8;
@@ -458,6 +470,7 @@ void Catapult::FireUpdate() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -473,7 +486,7 @@ void Catapult::FireUpdate() {
         sp60.operator*(temp_r30_546->unk270);
         sp70.operator*(temp_r30_546->unk27C);
         sp80.operator*(0.5f);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp20 = spC0 + M2C_BITWISE(f64, sp80);
         temp_r3_576 = M2C_FIELD(this, Ball **, 0x12C);
         sp90 = sp20;
         sp28 = (f32) spC8 + sp80.unk8;
@@ -534,6 +547,7 @@ void Catapult::LoadAmmoUpdate() {
     MKVector3 sp30;
     M2C_UNK sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f0_771;
     f32 var_f3_770;
@@ -556,7 +570,7 @@ void Catapult::LoadAmmoUpdate() {
         sp50.operator*(0.5f);
         sp8 = 0.0f;
         sp60.GetMeasure(M2C_BITWISE(f32, this->unk134), (Matrix *) &this->unk114, KDSpline_PositionMixer);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp10 = M2C_BITWISE(f64, sp60) + M2C_BITWISE(f64, sp50);
         temp_r3_813 = M2C_FIELD(this, void **, 0x12C);
         sp60.unk10 = sp10;
         sp18 = sp60.unk8 + sp50.unk8;
@@ -602,8 +616,7 @@ void Catapult::Update() {
     this->unkF8.Update(this, 0);
     if ((s32) M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x84) != 0) {
         temp_f1_915 = this->unk138;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_915 == 0.3f) {
+        if (temp_f1_915 >= 0.3f) {
             var_f1_923 = (0.714f * (temp_f1_915 - 0.3f)) + 0.7f;
         } else {
             var_f1_923 = 0.7f;

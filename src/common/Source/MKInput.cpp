@@ -88,15 +88,11 @@ void MKInput_DespatchEvents() {
                     temp_f1_82 = MKInput_GetState(0x10, (MKInputDevices) var_r30_22, &sp14, NULL);
                     var_r3_84 = 1;
                     var_r0_85 = 0;
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if ((temp_f30_77 == -0.98f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f30_77 == 0.98f) != 0)) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_82 == -0.98f) != 0))) {
+                    if ((temp_f30_77 <= -0.98f) || (temp_f30_77 >= 0.98f) || (temp_f1_82 <= -0.98f)) {
                         var_r0_85 = 1;
                     }
-                    if (var_r0_85 == 0) {
-                        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                        if (temp_f1_82 != 0.98f) {
-                            var_r3_84 = 0;
-                        }
+                    if ((var_r0_85 == 0) && !(temp_f1_82 >= 0.98f)) {
+                        var_r3_84 = 0;
                     }
                     if ((temp_f30_77 != sp18) || (temp_f1_82 != sp14) || (((u8) repeatEventsEnabled != 0) && (var_r3_84 != 0) && (spA != 0))) {
                         sp1C = 1;
@@ -113,15 +109,11 @@ void MKInput_DespatchEvents() {
                     temp_f1_150 = MKInput_GetState(0x12, (MKInputDevices) var_r30_22, &sp14, NULL);
                     var_r3_152 = 1;
                     var_r0_153 = 0;
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if ((temp_f30_145 == -0.98f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f30_145 == 0.98f) != 0)) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_150 == -0.98f) != 0))) {
+                    if ((temp_f30_145 <= -0.98f) || (temp_f30_145 >= 0.98f) || (temp_f1_150 <= -0.98f)) {
                         var_r0_153 = 1;
                     }
-                    if (var_r0_153 == 0) {
-                        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                        if (temp_f1_150 != 0.98f) {
-                            var_r3_152 = 0;
-                        }
+                    if ((var_r0_153 == 0) && !(temp_f1_150 >= 0.98f)) {
+                        var_r3_152 = 0;
                     }
                     if ((temp_f30_145 != sp18) || (temp_f1_150 != sp14) || (((u8) repeatEventsEnabled != 0) && (var_r3_152 != 0) && (spA != 0))) {
                         sp1C = 1;

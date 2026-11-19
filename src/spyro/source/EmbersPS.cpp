@@ -14,8 +14,10 @@ static MKParticleSystem::Envelope gEmbersPSEnv;     /* unable to generate initia
 void EmbersPS::ApplyWind(WindFX *arg0) {
     WindFX sp20;
     f32 sp18;
+    f64 sp10;
     MKParticleChunk *var_r30_73;
     f32 temp_f31_81;
+    f64 temp_f0_87;
     void *temp_r29_76;
 
     var_r30_73 = GetFirstParticle(&unksp8);
@@ -24,14 +26,12 @@ loop_2:
         temp_r29_76 = var_r30_73->unk2C;
         temp_f31_81 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
         sp20.GetVelocity(*((MKVector3 *) arg0));
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp20.unk10 = sp10;
+        temp_f0_87 = sp20.unk0 * (f64) temp_f31_81;
+        sp10 = temp_f0_87;
+        sp20.unk10 = temp_f0_87;
         sp18 = (f32) sp20.unk8 * temp_f31_81;
         sp20.unk18 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+        M2C_FIELD(temp_r29_76, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_76, f64 *, 0) + (f64) sp20.unk10);
         M2C_FIELD(temp_r29_76, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_76, f32 *, 8) + (f32) (f64) sp18);
         var_r30_73 = GetNextParticle(&unksp8);
         goto loop_2;

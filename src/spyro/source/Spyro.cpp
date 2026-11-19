@@ -169,19 +169,24 @@ void Spyro::UpdateRage() {
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp1C;
@@ -202,10 +207,16 @@ void Spyro::UpdateRage() {
     f32 var_f1_459;
     f32 var_f4_709;
     f32 var_f7_783;
+    f64 temp_f0_833;
     f64 temp_f1_581;
+    f64 temp_f1_589;
+    f64 temp_f1_679;
     f64 temp_f1_714;
     f64 temp_f1_720;
     f64 temp_f1_724;
+    f64 temp_f1_821;
+    f64 temp_f2_643;
+    f64 temp_f2_659;
     s32 temp_r3_743;
     s32 var_r0_753;
     u8 var_r28_377;
@@ -299,43 +310,46 @@ loop_73:
                                 sp158 = temp_f1_581;
                                 sp160 = M2C_FIELD(temp_r4_579, f64 *, 0x38);
                                 temp_r3_588 = M2C_FIELD((*temp_r28_860)->unk8.unk0(temp_r28_860, temp_r4_579, temp_f1_581), void **, 8);
-                                sp168 = M2C_FIELD(temp_r3_588, f64 *, 0x30);
+                                temp_f1_589 = M2C_FIELD(temp_r3_588, f64 *, 0x30);
+                                sp168 = temp_f1_589;
                                 sp170 = M2C_FIELD(temp_r3_588, f64 *, 0x38);
-                                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                                sp98 = temp_f1_589 - sp158;
                                 sp198 = sp98;
                                 spA0 = (f32) sp170 - (f32) sp160;
                                 sp1A0 = (f64) spA0;
-                                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                                if ((((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C))) == 250000.0f) {
+                                if ((((f32) sp1A0 * (f32) sp1A0) + (((f32) sp198 * (f32) sp198) + (unksp19C * unksp19C))) <= 250000.0f) {
                                     temp_r28_623 = (*temp_r28_860)->unk8.unk0(temp_r28_860);
                                     sp1A8.unk4 = 0;
                                     sp1A8.Init((MKProp *) this, ((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetBreathAttackDamage(1, 0, 0), 0, 0, 1, 0, 0, -1);
                                     var_f0_639 = 0.0f;
                                     temp_r3_641 = this->unk8;
                                     sp68 = 0.0f;
+                                    temp_f2_643 = M2C_FIELD(temp_r3_641, f64 *, 0x30);
                                     sp6C = 100.0f;
                                     sp70 = 0.0f;
                                     spF8 = (f64) sp68;
-                                    sp108 = M2C_FIELD(temp_r3_641, f64 *, 0x30);
+                                    sp108 = temp_f2_643;
                                     sp100 = (f64) sp70;
                                     sp110 = M2C_FIELD(temp_r3_641, f64 *, 0x38);
-                                    M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
+                                    sp58 = temp_f2_643 + spF8;
                                     temp_r3_657 = M2C_FIELD(temp_r28_623, void **, 8);
                                     sp90 = 0.0f;
+                                    temp_f2_659 = M2C_FIELD(temp_r3_657, f64 *, 0x30);
                                     sp88 = 0.0f;
                                     sp8C = 100.0f;
                                     sp60 = (f32) sp110 + (f32) sp100;
                                     sp128 = (f64) sp88;
-                                    sp138 = M2C_FIELD(temp_r3_657, f64 *, 0x30);
+                                    sp138 = temp_f2_659;
                                     sp118 = sp58;
                                     sp120 = (f64) sp60;
                                     sp130 = (f64) sp90;
                                     sp140 = M2C_FIELD(temp_r3_657, f64 *, 0x38);
-                                    M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
-                                    sp148 = sp78;
+                                    temp_f1_679 = temp_f2_659 + sp128;
+                                    sp78 = temp_f1_679;
+                                    sp148 = temp_f1_679;
                                     sp80 = (f32) sp140 + (f32) sp130;
                                     sp150 = (f64) sp80;
-                                    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+                                    sp48 = sp148 - sp118;
                                     sp188 = sp48;
                                     sp50 = (f32) sp150 - (f32) sp120;
                                     sp190 = (f64) sp50;
@@ -401,14 +415,16 @@ loop_73:
                                     spC = var_f7_783;
                                     temp_r3_819 = this->unk8;
                                     sp40 = 0.0f;
+                                    temp_f1_821 = M2C_FIELD(temp_r3_819, f64 *, 0x30);
                                     sp38 = 0.0f;
                                     sp3C = 100.0f;
-                                    spD8 = M2C_FIELD(temp_r3_819, f64 *, 0x30);
+                                    spD8 = temp_f1_821;
                                     spC8 = (f64) sp38;
                                     spD0 = (f64) sp40;
                                     spE0 = M2C_FIELD(temp_r3_819, f64 *, 0x38);
-                                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                                    spE8 = sp28;
+                                    temp_f0_833 = temp_f1_821 + spC8;
+                                    sp28 = temp_f0_833;
+                                    spE8 = temp_f0_833;
                                     sp30 = (f32) spE0 + (f32) spD0;
                                     spF0 = (f64) sp30;
                                     gb.unk94->Trigger(*((MKVector3 *) &spE8), *((MKVector3 *) &sp188), spC, lit_2937, (MKVector4) &spB8);
@@ -585,7 +601,7 @@ void Spyro::EmitWallHeadbuttEffects(const MKVector3 &arg0) {
     f64 sp168;
     f64 sp160;
     f64 sp158;
-    M2C_UNK sp148;
+    f64 sp148;
     f64 sp140;
     f64 sp138;
     f64 sp130;
@@ -605,13 +621,21 @@ void Spyro::EmitWallHeadbuttEffects(const MKVector3 &arg0) {
     f64 spC0;
     f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -624,17 +648,26 @@ void Spyro::EmitWallHeadbuttEffects(const MKVector3 &arg0) {
     MKProp *temp_r3_1251;
     f32 temp_f14_1330;
     f32 temp_f15_1326;
-    f32 temp_f1_1396;
-    f32 temp_f1_1453;
-    f32 temp_f3_1382;
-    f32 temp_f3_1439;
+    f64 temp_f0_1267;
+    f64 temp_f0_1377;
+    f64 temp_f0_1392;
+    f64 temp_f0_1403;
+    f64 temp_f0_1434;
+    f64 temp_f0_1449;
+    f64 temp_f0_1460;
+    f64 temp_f1_1372;
+    f64 temp_f1_1389;
+    f64 temp_f1_1429;
+    f64 temp_f1_1446;
     s32 var_r27_1298;
     u8 var_r28_1244;
+    void *temp_r4_1265;
+    void *temp_r4_1375;
+    void *temp_r4_1432;
 
     sp17C = 0;
     MKVector(0.7f, 0.7f, 0.7f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f14 */);
+    sp38 = sp148 * 5.634608575e-315;
     sp178 = 0x417;
     sp40 = sp150 * 500.0f;
     sp180 = sp38;
@@ -651,10 +684,11 @@ void Spyro::EmitWallHeadbuttEffects(const MKVector3 &arg0) {
         var_r28_1244 = 1;
     }
     if (var_r28_1244 == 0) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f15 */);
-        sp138 = spA8;
-        spB0 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * 200.0f;
+        temp_r4_1265 = this->unk8 + 0x20;
+        temp_f0_1267 = M2C_FIELD(temp_r4_1265, f64 *, 0) * 5.5769738e-315;
+        spA8 = temp_f0_1267;
+        sp138 = temp_f0_1267;
+        spB0 = M2C_FIELD(temp_r4_1265, f32 *, 8) * 200.0f;
         sp140 = (f64) spB0;
         gb.EmitDust(arg0, *((MKVector3 *) &sp138), 2.0f, 0.0f);
     }
@@ -684,37 +718,43 @@ void Spyro::EmitWallHeadbuttEffects(const MKVector3 &arg0) {
         sp168 = (f64) sp18;
         sp170 = (f64) sp20;
         if (var_r28_1244 != 0) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-            temp_f3_1382 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * MKRand_Float(&gViewSeed, 200.0f, 400.0f);
-            spE8 = sp88;
-            sp90 = temp_f3_1382;
+            temp_f1_1372 = MKRand_Float(&gViewSeed, 200.0f, 400.0f);
+            temp_r4_1375 = this->unk8 + 0x20;
+            temp_f0_1377 = M2C_FIELD(temp_r4_1375, f64 *, 0) * temp_f1_1372;
+            sp88 = temp_f0_1377;
+            spE8 = temp_f0_1377;
+            sp90 = M2C_FIELD(temp_r4_1375, f32 *, 8) * (f32) temp_f1_1372;
             spF0 = (f64) sp90;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-            temp_f1_1396 = (f32) sp170 * MKRand_Float(&gViewSeed, 0.0f, 500.0f);
-            spF8 = sp98;
-            spA0 = temp_f1_1396;
+            temp_f1_1389 = MKRand_Float(&gViewSeed, 0.0f, 500.0f);
+            temp_f0_1392 = sp168 * temp_f1_1389;
+            sp98 = temp_f0_1392;
+            spF8 = temp_f0_1392;
+            spA0 = (f32) sp170 * (f32) temp_f1_1389;
             sp100 = (f64) spA0;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp108 = sp78;
+            temp_f0_1403 = spF8 + temp_f0_1377;
+            sp78 = temp_f0_1403;
+            sp108 = temp_f0_1403;
             sp80 = (f32) sp100 + (f32) spF0;
             sp110 = (f64) sp80;
             sp14 = MKRand_Float(&gViewSeed, 0.03f, 0.09f);
             gb.EmitSnowCrud(arg0, *((MKVector3 *) &sp108), sp14);
         } else {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-            temp_f3_1439 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * MKRand_Float(&gViewSeed, 200.0f, 400.0f);
-            spB8 = sp58;
-            sp60 = temp_f3_1439;
+            temp_f1_1429 = MKRand_Float(&gViewSeed, 200.0f, 400.0f);
+            temp_r4_1432 = this->unk8 + 0x20;
+            temp_f0_1434 = M2C_FIELD(temp_r4_1432, f64 *, 0) * temp_f1_1429;
+            sp58 = temp_f0_1434;
+            spB8 = temp_f0_1434;
+            sp60 = M2C_FIELD(temp_r4_1432, f32 *, 8) * (f32) temp_f1_1429;
             spC0 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-            temp_f1_1453 = (f32) sp170 * MKRand_Float(&gViewSeed, 0.0f, 500.0f);
-            spC8 = sp68;
-            sp70 = temp_f1_1453;
+            temp_f1_1446 = MKRand_Float(&gViewSeed, 0.0f, 500.0f);
+            temp_f0_1449 = sp168 * temp_f1_1446;
+            sp68 = temp_f0_1449;
+            spC8 = temp_f0_1449;
+            sp70 = (f32) sp170 * (f32) temp_f1_1446;
             spD0 = (f64) sp70;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spD8 = sp48;
+            temp_f0_1460 = spC8 + temp_f0_1434;
+            sp48 = temp_f0_1460;
+            spD8 = temp_f0_1460;
             sp50 = (f32) spD0 + (f32) spC0;
             spE0 = (f64) sp50;
             sp10 = MKRand_Float(&gViewSeed, 0.1f, 0.3f);
@@ -735,7 +775,6 @@ void Spyro::Spawn() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp18'
 void Spyro::GetCenterPos() {
     f64 sp60;
     f64 sp58;
@@ -747,28 +786,34 @@ void Spyro::GetCenterPos() {
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_1573;
+    f64 temp_f0_1586;
+    f64 temp_f1_1561;
     void *temp_r5_1559;
 
     temp_r5_1559 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
     sp2C = 100.0f;
+    temp_f1_1561 = M2C_FIELD(temp_r5_1559, f64 *, 0x30);
     sp28 = 0.0f;
     sp30 = 0.0f;
     sp58 = (f64) sp28;
-    sp48 = M2C_FIELD(temp_r5_1559, f64 *, 0x30);
+    sp48 = temp_f1_1561;
     sp60 = (f64) sp30;
     sp50 = M2C_FIELD(temp_r5_1559, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp38 = sp18;
+    temp_f0_1573 = temp_f1_1561 + sp58;
+    sp18 = temp_f0_1573;
+    sp38 = temp_f0_1573;
     sp20 = (f32) sp50 + (f32) sp60;
     sp40 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r4, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0) = sp8;
+    temp_f0_1586 = sp38 + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x368);
+    sp8 = temp_f0_1586;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_1586;
     sp10 = (f32) sp40 + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x370);
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
-#endif
 
 s32 Spyro::GetCrowdCount() {
     s32 var_ctr_1607;
@@ -812,41 +857,54 @@ void Spyro::UpdateCrowdTest() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_1675;
+    f64 temp_f0_1687;
+    f64 temp_f0_1709;
+    f64 temp_f1_1658;
     void *temp_r3_1654;
 
     KDMath_GetDirection(0.785398f * (f32) this->unkB90.unk10);
     spE8 = spB8;
     spF0 = spC0;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+    sp38 = spE8 * 5.53552857e-315;
     temp_r3_1654 = this->unk8;
     sp60 = 0.0f;
+    temp_f1_1658 = M2C_FIELD(temp_r3_1654, f64 *, 0x30);
     sp40 = (f32) spF0 * 100.0f;
     sp58 = 0.0f;
     sp5C = 100.0f;
-    sp98 = M2C_FIELD(temp_r3_1654, f64 *, 0x30);
+    sp98 = temp_f1_1658;
     sp88 = (f64) sp58;
     sp78 = sp38;
     sp80 = (f64) sp40;
     sp90 = (f64) sp60;
     spA0 = M2C_FIELD(temp_r3_1654, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spA8 = sp48;
+    temp_f0_1675 = temp_f1_1658 + sp88;
+    sp48 = temp_f0_1675;
+    spA8 = temp_f0_1675;
     sp50 = (f32) spA0 + (f32) sp90;
     spB0 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spD8 = sp28;
+    temp_f0_1687 = spA8 + sp78;
+    sp28 = temp_f0_1687;
+    spD8 = temp_f0_1687;
     sp30 = (f32) spB0 + (f32) sp80;
     spE0 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp18 = spE8 * 5.5769738e-315;
     sp20 = (f32) spF0 * 200.0f;
     sp68 = sp18;
     sp70 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spC8 = sp8;
+    temp_f0_1709 = spD8 + sp68;
+    sp8 = temp_f0_1709;
+    spC8 = temp_f0_1709;
     sp10 = (f32) spE0 + (f32) sp70;
     spD0 = (f64) sp10;
     if (MKCollision_SweepSphereCollide(*((MKVector3 *) &spD8), *((MKVector3 *) &spC8), 20.0f, &spF8, (MKCollisionMode) 7, 0) != 0) {
@@ -949,18 +1007,33 @@ void Spyro::SetLighting() {
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f64 sp58;
     f64 sp50;
     f64 sp48;
     f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f30_1867;
+    f32 var_f31_2062;
     f32 var_f3_1958;
     f32 var_f4_1891;
+    f64 *temp_r3_2110;
+    f64 temp_f0_2118;
+    f64 temp_f0_2128;
+    f64 temp_f0_2138;
     f64 temp_f1_1897;
     f64 temp_f1_1903;
     f64 temp_f1_1907;
+    f64 temp_f1_2046;
+    f64 temp_f1_2052;
+    f64 temp_f1_2056;
     s32 temp_r3_1926;
     s32 temp_r3_2075;
     s32 var_r0_1936;
@@ -978,8 +1051,7 @@ void Spyro::SetLighting() {
     spF8 = (f64) sp78;
     temp_f30_1867 = this->unk430.unk1C;
     MKModel_CalculateCentre(this->unk4, &spE0);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp60 = M2C_BITWISE(f64, spE0) - M2C_FIELD(this, f64 *, 0x430);
     spD0 = sp60;
     sp68 = spE0.unk8 - this->unk430.unk0;
     spD8 = (f64) sp68;
@@ -1056,9 +1128,12 @@ void Spyro::SetLighting() {
         var_r30_2027 += 0x10;
     } while (var_r29_2025 < 3);
     if (temp_f30_1867 > 0.0f) {
-
+        temp_f1_2046 = __frsqrte(temp_f30_1867);
+        temp_f1_2052 = 0.5 * temp_f1_2046 * -(((f64) temp_f30_1867 * (temp_f1_2046 * temp_f1_2046)) - 3.0);
+        temp_f1_2056 = 0.5 * temp_f1_2052 * -(((f64) temp_f30_1867 * (temp_f1_2052 * temp_f1_2052)) - 3.0);
+        var_f31_2062 = (f32) ((f64) temp_f30_1867 * (0.5 * temp_f1_2056 * -(((f64) temp_f30_1867 * (temp_f1_2056 * temp_f1_2056)) - 3.0)));
     } else if (temp_f30_1867 < M2C_BITWISE(f32, 0.0)) {
-
+        var_f31_2062 = __float_nan;
     } else {
         spC = temp_f30_1867;
         temp_r3_2075 = M2C_BITWISE(s32, spC) & 0x7F800000;
@@ -1082,34 +1157,37 @@ void Spyro::SetLighting() {
             break;
         }
         if (var_r0_2085 == 1) {
-
+            var_f31_2062 = __float_nan;
+        } else {
+            var_f31_2062 = temp_f30_1867;
         }
     }
-    MKModel_GetColor(this->unk4);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
+    temp_r3_2110 = MKModel_GetColor(this->unk4);
+    sp10 = M2C_FIELD(temp_r3_2110, f64 *, 0) - spF0;
+    temp_f0_2118 = M2C_FIELD(temp_r3_2110, f64 *, 8) - spF8;
+    sp18 = temp_f0_2118;
     sp50 = sp10;
-    sp58 = sp18;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp58 = temp_f0_2118;
+    sp20 = sp50 * (f64) var_f31_2062;
+    temp_f0_2128 = temp_f0_2118 * (f64) var_f31_2062;
+    sp28 = temp_f0_2128;
     sp40 = sp20;
-    sp48 = sp28;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+    sp48 = temp_f0_2128;
+    sp30 = spF0 + sp40;
+    temp_f0_2138 = spF8 + temp_f0_2128;
+    sp38 = temp_f0_2138;
     sp80 = sp30;
-    sp88 = sp38;
+    sp88 = temp_f0_2138;
     MKModel_SetColor(this->unk4, *((MKVector4 *) &sp80));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp30'
+#if 0 // DRAFT: illegal type
 void Spyro::UpdateLighting() {
     MKVector3 spC0;
     f64 spB8;                                       /* compiler-managed */
     f64 spB0;                                       /* compiler-managed */
-    M2C_UNK spA0;
+    f64 spA0;
     f64 sp98;
     f64 sp90;
     f64 sp88;
@@ -1123,33 +1201,41 @@ void Spyro::UpdateLighting() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
+    f32 temp_f31_2373;
     f32 var_f4_2267;
     f32 var_f5_2334;
+    f64 temp_f0_2229;
     f64 temp_f1_2273;
     f64 temp_f1_2279;
     f64 temp_f1_2283;
     s32 temp_r3_2302;
     s32 var_r0_2312;
+    void *temp_r3_2246;
+    void *temp_r4_2221;
 
     if ((M2C_BITWISE(u32, this->unk1D0.unkC) != 0U) && (this->unk428 & 0x80000)) {
         sp40 = 0.0f;
         sp44 = 100.0f;
+        temp_r4_2221 = this->unk8 + 0x30;
         sp48 = 0.0f;
         sp80 = (f64) sp40;
         sp88 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp90 = sp30;
-        sp38 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) sp88;
+        temp_f0_2229 = M2C_FIELD(temp_r4_2221, f64 *, 0) + sp80;
+        sp30 = temp_f0_2229;
+        sp90 = temp_f0_2229;
+        sp38 = M2C_FIELD(temp_r4_2221, f32 *, 8) + (f32) sp88;
         sp98 = (f64) sp38;
         spA0.CalculateLightPosForShadow(*((MKVector3 *) gb.unk80));
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r3_2246 = this->unk8 + 0x30;
+        sp20 = M2C_FIELD(temp_r3_2246, f64 *, 0) - spA0;
         spB0 = sp20;
-        sp28 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) - spA8;
+        sp28 = M2C_FIELD(temp_r3_2246, f32 *, 8) - spA8;
         spB8 = (f64) sp28;
         var_f4_2267 = ((f32) spB8 * (f32) spB8) + (((f32) spB0 * (f32) spB0) + (unkspB4 * unkspB4));
         if (var_f4_2267 > 0.000001f) {
@@ -1200,10 +1286,10 @@ void Spyro::UpdateLighting() {
         sp60 = M2C_BITWISE(f64, spC0);
         sp68 = (f64) spC0.unk8;
         this->unk428.SetLight((MKVector3) &sp60, 0.5f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        temp_f31_2373 = 1.0f / this->unk430.unk18;
+        sp10 = M2C_FIELD(this, f64 *, 0x440) * (f64) temp_f31_2373;
         M2C_FIELD(this, f64 *, 0x430) = sp10;
-        sp18 = this->unk430.unk10 * (1.0f / this->unk430.unk18);
+        sp18 = this->unk430.unk10 * temp_f31_2373;
         sp50 = sp10;
         M2C_FIELD(this, f64 *, 0x438) = (f64) sp18;
         sp58 = (f64) sp18;
@@ -1277,12 +1363,8 @@ loop_34:
             sp78 = M2C_FIELD(temp_r4_2435, f64 *, 0x38);
             if (temp_r3_2431->IsKnockedUp() != 0) {
                 var_r0_2451 = 0;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (temp_f29_2445 == 100.0f) {
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if (temp_f29_2445 == 900.0f) {
-                        var_r0_2451 = 1;
-                    }
+                if ((temp_f29_2445 >= 100.0f) && (temp_f29_2445 <= 900.0f)) {
+                    var_r0_2451 = 1;
                 }
                 if (var_r0_2451 != 0) {
                     temp_r6_2463 = this->unk8;
@@ -1413,8 +1495,7 @@ void Spyro::UpdateMeleeButtonState(bool arg0) {
     M2C_FIELD(this, u8 *, 0x4CE) = var_r29_2671;
     if ((u8) M2C_FIELD(this, u8 *, 0x4CF) != 0) {
         this->unk4C8 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk4C8 == 0.0f) {
+        if (this->unk4C8 <= 0.0f) {
             temp_r4_2712 = M2C_FIELD(this, u8 *, 0x4CC);
             if ((temp_r4_2712 != 0) || ((u8) M2C_FIELD(this, u8 *, 0x4CD) != 0)) {
                 var_r3_2720 = 0;
@@ -1444,7 +1525,7 @@ void Spyro::UpdateMeleeButtonState(bool arg0) {
             this->unk4C4 += gUpdateTimeDelta;
         }
         temp_r0_2775 = M2C_FIELD(this, u8 *, 0x4CE);
-        if ((temp_r0_2775 != 0) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((this->unk4C4 == fMaxKnockupHoldButtonTime) != 0))) {
+        if ((temp_r0_2775 != 0) && (this->unk4C4 >= fMaxKnockupHoldButtonTime)) {
             M2C_FIELD(this, u8 *, 0x4CC) = 1U;
             this->unk4C4 = 0.0f;
             M2C_FIELD(this, u8 *, 0x4CE) = 0U;
@@ -1505,7 +1586,7 @@ s32 Spyro::ChargeCombatArcTest() {
     f32 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     MKVector3 sp48;
     MKVector3 sp38;
     f64 sp30;
@@ -1514,6 +1595,7 @@ s32 Spyro::ChargeCombatArcTest() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     M2C_UNK *temp_r29_2895;
     MKProp **temp_r6_3007;
     MKProp **var_r3_2988;
@@ -1521,6 +1603,7 @@ s32 Spyro::ChargeCombatArcTest() {
     MKProp *var_r28_2981;
     MKVector3 *temp_r4_2974;
     f32 temp_f31_2899;
+    f64 temp_f0_2930;
     s32 temp_r29_2967;
     s32 var_r27_2969;
     s32 var_r30_2970;
@@ -1542,14 +1625,12 @@ s32 Spyro::ChargeCombatArcTest() {
     MKModel_CalculateNodeWorldPosition(this->unk4, M2C_FIELD(this->unk4F0, s32 *, 4), (MKVector3 *) temp_r29_2895);
     if ((u8) M2C_FIELD(this->unk4F0, u8 *, 9) != 0) {
         sp58.GetDir();
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp68 = sp8;
+        temp_f0_2930 = sp58 * 5.53552857e-315;
+        sp8 = temp_f0_2930;
+        sp68 = temp_f0_2930;
         sp10 = sp60 * 100.0f;
         sp70 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        M2C_FIELD(this, f64 *, 0x4F8) = (f64) (M2C_FIELD(this, f64 *, 0x4F8) + temp_f0_2930);
         this->unk500 += (f32) sp70;
     }
 loop_3:
@@ -1711,8 +1792,101 @@ void Spyro::SetupMeleeAttackHitMsg(int arg0, MeleeAttackHitMsg *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp20'
+#if 0 // DRAFT: undefined identifier 'unk4'
 void Spyro::CombatArcCollisionTest(int arg0) {
+    MKCollisionResult sp2C8;
+    s8 sp2C1;
+    s8 sp2C0;
+    s32 sp2BC;
+    f32 sp2B8;
+    s32 sp2B4;
+    s8 sp2B2;
+    s8 sp2B1;
+    s8 sp2B0;
+    f64 sp2A8;                                      /* compiler-managed */
+    f64 sp2A0;                                      /* compiler-managed */
+    MKProp *sp29C;
+    s32 sp298;
+    f64 sp290;
+    f64 sp288;
+    f64 sp280;
+    f64 sp278;
+    s32 sp274;
+    s32 sp270;
+    MeleeAttackHitMsg sp230;
+    u8 sp228;
+    f32 sp220;
+    f32 sp21C;
+    f32 sp218;
+    s32 sp214;
+    s32 sp210;
+    s8 sp208;
+    f64 sp200;
+    f64 sp1F8;
+    s32 sp1F4;
+    s32 sp1F0;
+    f64 sp1E8;
+    f64 sp1E0;
+    f64 sp1D8;
+    f64 sp1D0;
+    f64 sp1C8;
+    f64 sp1C0;
+    f64 sp1B8;
+    f64 sp1B0;
+    f64 sp1A8;                                      /* compiler-managed */
+    f64 sp1A0;
+    MKVector3 sp190;
+    MKVector3 sp180;
+    f64 sp178;
+    f64 sp170;
+    f64 sp168;
+    f64 sp160;
+    f64 sp158;
+    f64 sp150;
+    f64 sp148;
+    f64 sp140;
+    f64 sp138;
+    f64 sp130;
+    f64 sp128;
+    f64 sp120;
+    f64 sp118;
+    f64 sp110;
+    f64 sp108;
+    f64 sp100;
+    f64 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
+    f64 spC8;
+    f64 spC0;
+    f32 spB8;
+    f64 spB0;
+    f32 spA8;
+    f64 spA0;
+    f32 sp98;
+    f64 sp90;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp78;
+    f64 sp70;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f64 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f64 sp10;
+    f32 sp8;
     MKProp **var_r3_3340;
     MKProp *temp_r4_3349;
     MKProp *var_r0_3333;
@@ -1725,12 +1899,13 @@ void Spyro::CombatArcCollisionTest(int arg0) {
     MKProp *var_r3_3640;
     MKProp *var_r4_3677;
     MKVector3 *temp_r27_3326;
-    f32 temp_f0_3589;
-    f32 temp_f0_3805;
     f32 temp_f31_3293;
     f32 var_f25_3296;
     f32 var_f4_3703;
     f32 var_f5_3735;
+    f64 temp_f1_3509;
+    f64 temp_f1_3521;
+    f64 temp_f1_3531;
     f64 temp_f1_3740;
     f64 temp_f1_3746;
     f64 temp_f1_3750;
@@ -1764,25 +1939,25 @@ void Spyro::CombatArcCollisionTest(int arg0) {
     temp_r3_3271 = this->unk8;
     temp_r21_3272 = arg0 << 5;
     temp_r20_3273 = this + temp_r21_3272;
-    unksp20 = -M2C_FIELD(temp_r3_3271, f32 *, 0x20);
-    unksp24 = -M2C_FIELD(temp_r3_3271, f32 *, 0x24);
-    unksp28 = -M2C_FIELD(temp_r3_3271, f32 *, 0x28);
-    unksp1E0 = unksp20;
-    unksp1E8 = unksp28;
+    sp20 = -M2C_FIELD(temp_r3_3271, f32 *, 0x20);
+    sp24 = -M2C_FIELD(temp_r3_3271, f32 *, 0x24);
+    sp28 = -M2C_FIELD(temp_r3_3271, f32 *, 0x28);
+    sp1E0 = (f64) sp20;
+    sp1E8 = (f64) sp28;
     temp_f31_3293 = _table_sinf(1.5707964f + M2C_FIELD(M2C_FIELD(temp_r20_3273, void **, 0x4D0), f32 *, 0x14));
-    unksp234 = 0;
+    sp230.unk4 = 0;
     var_f25_3296 = 3.4028235e38f;
     var_r24_3299 = 0;
     var_r25_3300 = 0;
     var_r26_3301 = 1;
     var_r28_3302 = NULL;
-    SetupMeleeAttackHitMsg(arg0, (MeleeAttackHitMsg *) &unksp230);
-    temp_r22_3318 = MKCollision_SphereCollide(*(this + (temp_r21_3272 + 0x4D8)), M2C_FIELD(M2C_FIELD(temp_r20_3273, void **, 0x4D0), f32 *, 0x10), (MKCollisionResult *) &unksp2C8, 0x14, (MKCollisionMode) 2, 0x04200000);
+    SetupMeleeAttackHitMsg(arg0, &sp230);
+    temp_r22_3318 = MKCollision_SphereCollide(*(this + (temp_r21_3272 + 0x4D8)), M2C_FIELD(M2C_FIELD(temp_r20_3273, void **, 0x4D0), f32 *, 0x10), &sp2C8, 0x14, (MKCollisionMode) 2, 0x04200000);
     var_r31_3321 = 0;
     var_r29_3322 = 0;
 loop_71:
     if (var_r31_3321 < temp_r22_3318) {
-        temp_r27_3326 = &unksp2C8 + var_r29_3322;
+        temp_r27_3326 = &sp2C8 + var_r29_3322;
         if (((u8) M2C_FIELD(temp_r27_3326, u8 *, 0x50) != 0) && (temp_r3_3330 = M2C_FIELD(temp_r27_3326, void **, 0x48), ((temp_r3_3330 == NULL) == 0)) && (var_r0_3333 = M2C_FIELD(temp_r3_3330, MKProp **, 8), ((var_r0_3333 == NULL) == 0))) {
 
         } else {
@@ -1801,29 +1976,29 @@ loop_10:
         }
         if (var_r3_3340 == NULL) {
             temp_r6_3356 = this->unk8;
-            unksp170 = M2C_FIELD(temp_r6_3356, f64 *, 0x30);
-            unksp178 = M2C_FIELD(temp_r6_3356, f64 *, 0x38);
-            KDMath_Sub2D(*((MKVector3 *) &unksp180), *temp_r27_3326);
-            Normalise(*((MKVector3 *) &unksp190));
-            unksp1D0 = unksp190;
-            unksp1D8 = unksp198;
-            if (!(((unksp1E8 * unksp1D8) + ((unksp1E0 * unksp1D0) + (unksp1E4 * unksp1D4))) < temp_f31_3293)) {
+            sp170 = M2C_FIELD(temp_r6_3356, f64 *, 0x30);
+            sp178 = M2C_FIELD(temp_r6_3356, f64 *, 0x38);
+            KDMath_Sub2D(sp180, *temp_r27_3326);
+            Normalise(sp190);
+            sp1D0 = M2C_BITWISE(f64, sp190);
+            sp1D8 = (f64) sp190.unk8;
+            if (!((((f32) sp1E8 * (f32) sp1D8) + (((f32) sp1E0 * (f32) sp1D0) + (unksp1E4 * unksp1D4))) < temp_f31_3293)) {
                 temp_r3_3383 = M2C_FIELD(temp_r27_3326, void **, 0x48);
-                unksp26E = 0;
-                unksp26D = 0;
-                unksp268 = temp_r3_3383;
+                sp230.unk3E = 0;
+                sp230.unk3D = 0;
+                sp230.unk38 = (s32) temp_r3_3383;
                 if (((u8) M2C_FIELD(temp_r27_3326, u8 *, 0x50) != 0) && (temp_r3_3383 != NULL) && (var_r3_3391 = M2C_FIELD(temp_r3_3383, MKProp **, 8), ((var_r3_3391 == NULL) == 0))) {
 
                 } else {
                     var_r3_3391 = NULL;
                 }
-                M2C_FIELD(var_r3_3391->__vptr, M2C_UNK (**)(M2C_UNK *), 0x2C)(&unksp230);
+                M2C_FIELD(var_r3_3391->__vptr, M2C_UNK (**)(MeleeAttackHitMsg *), 0x2C)(&sp230);
                 var_r3_3404 = 0;
-                if ((var_r25_3300 != 0) || (unksp26E != 0)) {
+                if ((var_r25_3300 != 0) || ((u8) sp230.unk3E != 0)) {
                     var_r3_3404 = 1;
                 }
                 var_r25_3300 = var_r3_3404;
-                if ((unksp26D != 0) && ((var_r28_3302 == NULL) || (M2C_FIELD(temp_r27_3326, f32 *, 0x40) < var_f25_3296))) {
+                if (((u8) sp230.unk3D != 0) && ((var_r28_3302 == NULL) || (M2C_FIELD(temp_r27_3326, f32 *, 0x40) < var_f25_3296))) {
                     if (((u8) M2C_FIELD(temp_r27_3326, u8 *, 0x50) != 0) && (temp_r4_3425 = M2C_FIELD(temp_r27_3326, void **, 0x48), ((temp_r4_3425 == NULL) == 0)) && (var_r0_3428 = M2C_FIELD(temp_r4_3425, MKProp **, 8), ((var_r0_3428 == NULL) == 0))) {
 
                     } else {
@@ -1839,69 +2014,70 @@ loop_10:
                         var_r3_3446 = NULL;
                     }
                     temp_r5_3453 = var_r3_3446->unk8;
-                    unksp1C0 = M2C_FIELD(temp_r5_3453, f64 *, 0x30);
-                    unksp1C8 = M2C_FIELD(temp_r5_3453, f64 *, 0x38);
-                    unksp214 = 0;
-                    unksp210 = 0x77;
-                    unksp228 = 0;
-                    unksp218 = 0.0f;
-                    unksp21C = 0.0f;
-                    unksp220 = 0.0f;
+                    sp1C0 = M2C_FIELD(temp_r5_3453, f64 *, 0x30);
+                    sp1C8 = M2C_FIELD(temp_r5_3453, f64 *, 0x38);
+                    sp214 = 0;
+                    sp210 = 0x77;
+                    sp228 = 0;
+                    sp218 = 0.0f;
+                    sp21C = 0.0f;
+                    sp220 = 0.0f;
                     if (((u8) M2C_FIELD(temp_r27_3326, u8 *, 0x50) != 0) && (temp_r3_3470 = M2C_FIELD(temp_r27_3326, void **, 0x48), ((temp_r3_3470 == NULL) == 0)) && (var_r3_3473 = M2C_FIELD(temp_r3_3470, MKProp **, 8), ((var_r3_3473 == NULL) == 0))) {
 
                     } else {
                         var_r3_3473 = NULL;
                     }
-                    M2C_FIELD(var_r3_3473->__vptr, M2C_UNK (**)(M2C_UNK *), 0x2C)(&unksp210);
-                    if (unksp228 != 0) {
-                        unksp1C0 = unksp218;
-                        unksp1C8 = unksp220;
+                    M2C_FIELD(var_r3_3473->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp210);
+                    if (sp228 != 0) {
+                        sp1C0 = (f64) sp218;
+                        sp1C8 = (f64) sp220;
                     }
                     temp_r3_3494 = this->unk8;
-                    unksp88 = 0.0f;
-                    unksp80 = 0.0f;
-                    unksp84 = 125.0f;
-                    unksp130 = M2C_FIELD(temp_r3_3494, f64 *, 0x30);
-                    unksp120 = unksp80;
-                    unksp128 = unksp88;
-                    unksp138 = M2C_FIELD(temp_r3_3494, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f1, $f4 */);
-                    unksp140 = unkspB0;
-                    unkspB8 = unksp138 - unksp1C8;
-                    unksp148 = unkspB8;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f30 */);
-                    unksp150 = unkspA0;
-                    unkspA8 = unksp148 * 0.5f;
-                    unksp158 = unkspA8;
-                    M2C_ERROR(/* unknown instruction: ps_add $f1, $f4, $f1 */);
-                    unksp160 = unksp90;
-                    unksp98 = unksp1C8 + unksp158;
-                    unksp168 = unksp98;
-                    M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
-                    unksp68 = 0.0f;
-                    unksp60 = 0.0f;
+                    sp88 = 0.0f;
+                    sp80 = 0.0f;
+                    sp84 = 125.0f;
+                    sp130 = M2C_FIELD(temp_r3_3494, f64 *, 0x30);
+                    sp120 = (f64) sp80;
+                    sp128 = (f64) sp88;
+                    sp138 = M2C_FIELD(temp_r3_3494, f64 *, 0x38);
+                    temp_f1_3509 = sp130 - sp1C0;
+                    spB0 = temp_f1_3509;
+                    sp140 = temp_f1_3509;
+                    spB8 = (f32) sp138 - (f32) sp1C8;
+                    sp148 = (f64) spB8;
+                    temp_f1_3521 = temp_f1_3509 * 5.222099017e-315;
+                    spA0 = temp_f1_3521;
+                    sp150 = temp_f1_3521;
+                    spA8 = (f32) sp148 * 0.5f;
+                    sp158 = (f64) spA8;
+                    temp_f1_3531 = sp1C0 + temp_f1_3521;
+                    sp90 = temp_f1_3531;
+                    sp160 = temp_f1_3531;
+                    sp98 = (f32) sp1C8 + (f32) sp158;
+                    sp168 = (f64) sp98;
+                    sp70 = sp160 + sp120;
+                    sp68 = 0.0f;
+                    sp60 = 0.0f;
                     temp_r20_3553 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-                    unksp64 = 1.0f;
-                    unksp78 = unksp168 + unksp128;
-                    unksp1B0 = unksp70;
-                    unksp1B8 = unksp78;
-                    unksp110 = 0.0;
-                    unksp118 = unksp68;
-                    ((HitFX *) (M2C_FIELD(M2C_FIELD(this, void **, 0x264), HitFX **, 0x10)))->Trigger(*((MKVector3 *) &unksp1B0), *((MKVector3 *) &unksp110), *((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetCurrentBreathColor(), temp_r20_3553);
+                    sp64 = 1.0f;
+                    sp78 = (f32) sp168 + (f32) sp128;
+                    sp1B0 = sp70;
+                    sp1B8 = (f64) sp78;
+                    sp110 = (f64) sp60;
+                    sp118 = (f64) sp68;
+                    ((HitFX *) (M2C_FIELD(M2C_FIELD(this, void **, 0x264), HitFX **, 0x10)))->Trigger(*((MKVector3 *) &sp1B0), *((MKVector3 *) &sp110), *((GameStats *) ((GameStats *) &GameData::gameData[0x70]))->GetCurrentBreathColor(), temp_r20_3553);
                     if (var_r26_3301 != 0) {
-                        unksp1F4 = 0;
+                        sp1F4 = 0;
                         MKVector(1.0f, 1.0f, 1.0f);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                        temp_f0_3589 = unkspF8 * 200.0f;
-                        unksp1F0 = 0x417;
-                        unksp1F8 = unksp10;
-                        unksp18 = temp_f0_3589;
-                        unksp208 = 1;
-                        unksp200 = (f64) temp_f0_3589;
-                        unksp100 = unksp10;
-                        unksp108 = (f64) temp_f0_3589;
-                        M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &unksp1F0, unksp10);
+                        sp10 = spF0 * 5.5769738e-315;
+                        sp1F0 = 0x417;
+                        sp1F8 = sp10;
+                        sp18 = spF8 * 200.0f;
+                        sp208 = 1;
+                        sp200 = (f64) sp18;
+                        sp100 = sp10;
+                        sp108 = (f64) sp18;
+                        M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp1F0, sp10);
                         var_r26_3301 = 0;
                     }
                     this->unk430.unk28.GetLastCombatEnemy();
@@ -1944,19 +2120,19 @@ loop_10:
     }
     if (var_r28_3302 != NULL) {
         var_f4_3703 = 0.0f;
-        unksp274 = 0;
+        sp274 = 0;
         temp_r4_3706 = var_r28_3302->unk8;
         temp_r3_3707 = this->unk8;
-        unkspC0 = M2C_FIELD(temp_r4_3706, f64 *, 0x30);
-        unkspD0 = M2C_FIELD(temp_r3_3707, f64 *, 0x30);
-        unkspC8 = M2C_FIELD(temp_r4_3706, f64 *, 0x38);
-        unkspD8 = M2C_FIELD(temp_r3_3707, f64 *, 0x38);
-        unksp54 = 0.0f;
-        unksp50 = unkspD0 - unkspC0;
-        unksp58 = unkspD8 - unkspC8;
-        unkspE0 = unksp50;
-        unkspE8 = unksp58;
-        var_f5_3735 = (unkspE8 * unkspE8) + ((unkspE0 * unkspE0) + (unkspE4 * unkspE4));
+        spC0 = M2C_FIELD(temp_r4_3706, f64 *, 0x30);
+        spD0 = M2C_FIELD(temp_r3_3707, f64 *, 0x30);
+        spC8 = M2C_FIELD(temp_r4_3706, f64 *, 0x38);
+        spD8 = M2C_FIELD(temp_r3_3707, f64 *, 0x38);
+        sp54 = 0.0f;
+        sp50 = (f32) spD0 - (f32) spC0;
+        sp58 = (f32) spD8 - (f32) spC8;
+        spE0 = (f64) sp50;
+        spE8 = (f64) sp58;
+        var_f5_3735 = ((f32) spE8 * (f32) spE8) + (((f32) spE0 * (f32) spE0) + (unkspE4 * unkspE4));
         if (var_f5_3735 > 1e-12f) {
             if (var_f5_3735 > 0.0f) {
                 temp_f1_3740 = __frsqrte(var_f5_3735);
@@ -1966,18 +2142,18 @@ loop_10:
             } else if (var_f5_3735 < M2C_BITWISE(f32, 0.0)) {
                 var_f5_3735 = __float_nan;
             } else {
-                unksp8 = var_f5_3735;
-                temp_r3_3769 = unksp8 & 0x7F800000;
+                sp8 = var_f5_3735;
+                temp_r3_3769 = M2C_BITWISE(s32, sp8) & 0x7F800000;
                 switch (temp_r3_3769) {             /* irregular */
                 case 0x7F800000:
-                    if (unksp8 & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
                         var_r0_3779 = 1;
                     } else {
                         var_r0_3779 = 2;
                     }
                     break;
                 case 0x0:
-                    if (unksp8 & 0x7FFFFF) {
+                    if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
                         var_r0_3779 = 5;
                     } else {
                         var_r0_3779 = 3;
@@ -1993,39 +2169,38 @@ loop_10:
             }
             var_f4_3703 = 1.0f / var_f5_3735;
         }
-        temp_f0_3805 = unkspE8 * var_f4_3703;
-        unksp44 = unkspE4 * var_f4_3703;
-        unksp40 = unkspE0 * var_f4_3703;
-        unksp48 = temp_f0_3805;
-        unksp1A0 = unksp40;
-        unksp1A8 = (f64) temp_f0_3805;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        unksp1A8 = temp_f0_3805 * 500.0f;
-        unksp270 = 7;
-        unksp298 = 6;
-        unksp29C = var_r28_3302;
-        unksp278 = unksp1A0;
-        unksp280 = unksp1A8;
-        unksp2B0 = 1;
-        unksp2BC = 1;
-        unksp2B8 = 0.0f;
-        unksp2B1 = 0;
-        unksp2B2 = 0;
-        unksp2B4 = -1;
-        unksp288 = M2C_FIELD(&MKVector3::one, f64 *, 0);
-        unksp290 = M2C_FIELD(&MKVector3::one, f64 *, 8);
-        unksp2C0 = 0;
+        sp44 = unkspE4 * var_f4_3703;
+        sp40 = (f32) spE0 * var_f4_3703;
+        sp48 = (f32) spE8 * var_f4_3703;
+        sp1A0 = (f64) sp40;
+        sp1A8 = (f64) sp48;
+        sp1A0 *= 5.634608575e-315;
+        sp1A8 = (f32) sp1A8 * 500.0f;
+        sp270 = 7;
+        sp298 = 6;
+        sp29C = var_r28_3302;
+        sp278 = sp1A0;
+        sp280 = (f64) sp1A8;
+        sp2B0 = 1;
+        sp2BC = 1;
+        sp2B8 = 0.0f;
+        sp2B1 = 0;
+        sp2B2 = 0;
+        sp2B4 = -1;
+        sp288 = M2C_FIELD(&MKVector3::one, f64 *, 0);
+        sp290 = M2C_FIELD(&MKVector3::one, f64 *, 8);
+        sp2C0 = 0;
         if (var_r28_3302 != NULL) {
-            unksp30.GetPos();
-            unksp2A0 = unksp30;
-            unksp2A8 = unksp38;
+            sp30.GetPos();
+            sp2A0 = sp30;
+            sp2A8 = sp38;
         } else {
-            unksp2A0 = 0.0f;
+            sp2A0 = 0.0f;
             unksp2A4 = 0.0f;
-            unksp2A8 = 0.0f;
+            sp2A8 = 0.0f;
         }
-        unksp2C1 = 0;
-        Hurt((HurtMessage *) &unksp270);
+        sp2C1 = 0;
+        Hurt((HurtMessage *) &sp270);
     }
 }
 #endif
@@ -2034,10 +2209,13 @@ loop_10:
 void Spyro::UpdateCombatArcs() {
     MKProp sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f0_3920;
     f32 temp_f1_3921;
     f32 temp_f2_3922;
     f32 var_f0_3910;
+    f64 *temp_r28_3919;
+    f64 temp_f0_3950;
     s32 var_r27_3902;
     s32 var_r31_3904;
     void *temp_r29_3906;
@@ -2053,6 +2231,7 @@ void Spyro::UpdateCombatArcs() {
             var_f0_3910 = 0.0f;
         }
         if (var_f0_3910 != 0.0f) {
+            temp_r28_3919 = temp_r29_3906 + 0x4D8;
             temp_f0_3920 = M2C_FIELD(temp_r29_3906, f32 *, 0x4DC);
             temp_f1_3921 = M2C_FIELD(temp_r29_3906, f32 *, 0x4D8);
             temp_f2_3922 = M2C_FIELD(temp_r29_3906, f32 *, 0x4E0);
@@ -2060,14 +2239,12 @@ void Spyro::UpdateCombatArcs() {
                 MKModel_CalculateNodeWorldPosition(this->unk4, M2C_FIELD(M2C_FIELD(temp_r29_3906, void **, 0x4D0), s32 *, 4), temp_r29_3906 + 0x4D8);
                 if ((u8) M2C_FIELD(M2C_FIELD(temp_r29_3906, void **, 0x4D0), u8 *, 9) != 0) {
                     sp18.GetDir();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    sp18.unk10 = sp8;
+                    temp_f0_3950 = sp18 * 5.53552857e-315;
+                    sp8 = temp_f0_3950;
+                    sp18.unk10 = temp_f0_3950;
                     sp10 = M2C_BITWISE(f32, sp18.unk8) * 100.0f;
                     sp18.unk18 = (f64) sp10;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
+                    *temp_r28_3919 += M2C_BITWISE(f64, sp18.unk10);
                     M2C_FIELD(temp_r29_3906, f32 *, 0x4E0) = (f32) (M2C_FIELD(temp_r29_3906, f32 *, 0x4E0) + M2C_BITWISE(f32, sp18.unk18));
                 }
             }
@@ -2089,7 +2266,7 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
     f64 sp170;                                      /* compiler-managed */
     f64 sp168;                                      /* compiler-managed */
     MKProp sp148;
-    M2C_UNK sp138;
+    f64 sp138;
     MKVector3 sp128;
     f64 sp120;
     f64 sp118;
@@ -2103,18 +2280,22 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
     f64 spD0;                                       /* compiler-managed */
     f64 spC8;                                       /* compiler-managed */
     MKProp spA8;
-    M2C_UNK sp98;
+    f64 sp98;
     f64 sp90;
     f64 sp88;
-    M2C_UNK sp78;
+    f64 sp78;
     MKVector3 sp68;
     f32 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
@@ -2134,6 +2315,7 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
     f32 var_f3_4375;
     f32 var_f3_4560;
     f32 var_f4_4308;
+    f64 temp_f0_4412;
     f64 temp_f1_4183;
     f64 temp_f1_4189;
     f64 temp_f1_4193;
@@ -2142,6 +2324,7 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
     f64 temp_f1_4320;
     f64 temp_f1_4324;
     f64 temp_f1_4398;
+    f64 temp_f1_4406;
     f64 temp_f1_4499;
     f64 temp_f1_4505;
     f64 temp_f1_4509;
@@ -2203,8 +2386,7 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
         sp138.GetPos();
         (*var_r29_4007)->unk8.unk0(var_r29_4007);
         sp148.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp48 = sp148 - sp138;
         sp198 = sp48;
         sp50 = M2C_BITWISE(f32, sp148.unk8) - sp140;
         sp1A0 = (f64) sp50;
@@ -2321,10 +2503,12 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
             spC8 = temp_f1_4398;
             spD0 = M2C_FIELD(temp_r4_4396, f64 *, 0x38);
             temp_r3_4405 = M2C_FIELD(M2C_FIELD(*var_r31_4003, void *(**)(void **, void *, f64), 8)(var_r31_4003, temp_r4_4396, temp_f1_4398), void **, 8);
-            spD8 = M2C_FIELD(temp_r3_4405, f64 *, 0x30);
+            temp_f1_4406 = M2C_FIELD(temp_r3_4405, f64 *, 0x30);
+            spD8 = temp_f1_4406;
             spE0 = M2C_FIELD(temp_r3_4405, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            spE8 = sp38;
+            temp_f0_4412 = temp_f1_4406 - spC8;
+            sp38 = temp_f0_4412;
+            spE8 = temp_f0_4412;
             sp40 = (f32) spE0 - (f32) spD0;
             spF0 = (f64) sp40;
             Normalise(spF8);
@@ -2350,8 +2534,7 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
                 sp98.GetPos();
                 M2C_FIELD(var_r30_4005->__vptr, M2C_UNK (**)(Targetable *), 8)(var_r30_4005);
                 spA8.GetPos();
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp28 = spA8 - sp98;
                 sp198 = sp28;
                 sp30 = M2C_BITWISE(f32, spA8.unk8) - spA0;
                 sp1A0 = (f64) sp30;
@@ -2424,8 +2607,7 @@ block_100:
     if (arg0 != NULL) {
         sp68.operator*(SPYRO_COMBAT_SCALE_MAG);
         sp78.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp18 = sp78 + M2C_BITWISE(f64, sp68);
         M2C_FIELD(arg0, f64 *, 0) = sp18;
         sp20 = sp80 + sp68.unk8;
         sp88 = sp18;
@@ -2438,8 +2620,7 @@ block_100:
 
 #if 0 // DRAFT: undefined identifier 'unk30C'
 u8 Spyro::IsInvincible() {
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (((gb.unk30C != M2C_FIELD(this, f32 *, 0x3DC)) && ((u8) M2C_FIELD(&gb, u8 *, 0x3B4) == 0)) || (this->unk428 & 0x4000)) {
+    if ((!(gb.unk30C >= M2C_FIELD(this, f32 *, 0x3DC)) && ((u8) M2C_FIELD(&gb, u8 *, 0x3B4) == 0)) || (this->unk428 & 0x4000)) {
         return 1U;
     }
     return 0U;
@@ -2598,11 +2779,13 @@ void Spyro::GetJoyDir() {
     f64 sp38;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
     Spyro *temp_r31_5103;
     f32 temp_f31_5108;
+    f64 temp_f0_5127;
 
     temp_r31_5103 = M2C_ERROR(/* Read from unset register $r4 */);
     temp_f31_5108 = ((KDInput *) (temp_r31_5103->GetInput()))->GetLeftMag();
@@ -2612,8 +2795,9 @@ void Spyro::GetJoyDir() {
     sp10 = -sp30;
     sp38 = (f64) sp8;
     sp40 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_FIELD(this, f64 *, 0) = sp18;
+    temp_f0_5127 = sp38 * (f64) temp_f31_5108;
+    sp18 = temp_f0_5127;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_5127;
     sp20 = (f32) sp40 * temp_f31_5108;
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }
@@ -2654,7 +2838,7 @@ void Spyro::SetForce(const MKVector3 &arg0, float arg1) {
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     f64 sp50;
     f64 sp48;
     f32 sp40;
@@ -2665,11 +2849,13 @@ void Spyro::SetForce(const MKVector3 &arg0, float arg1) {
     f32 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f0_5287;
     f32 temp_f1_5285;
     f32 temp_f2_5252;
     f32 temp_f31_5255;
     f32 var_f2_5286;
+    f64 temp_f0_5267;
 
     sp40 = arg1;
     sp38 = arg1;
@@ -2692,14 +2878,12 @@ void Spyro::SetForce(const MKVector3 &arg0, float arg1) {
     sp48 = (f64) sp98;
     sp50 = (f64) spA0;
     sp58.ApplyPhysics((MKVector3) this);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp68 = sp8;
+    temp_f0_5267 = sp58 * (f64) temp_f31_5255;
+    sp8 = temp_f0_5267;
+    sp68 = temp_f0_5267;
     sp10 = sp60 * temp_f31_5255;
     sp70 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+    M2C_FIELD(this, f64 *, 0x338) = (f64) (M2C_FIELD(this, f64 *, 0x338) + temp_f0_5267);
     this->unk338 += (f32) sp70;
     temp_f1_5285 = this->unk388;
     var_f2_5286 = this->unk33C;
@@ -2719,10 +2903,7 @@ void Spyro::SetForce(const MKVector3 &arg0, float arg1) {
 #endif
 
 void Spyro::SetDeltaPos(const MKVector3 &arg0) {
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r3, $r0, 0x0, qr0 */);
+    M2C_FIELD(this, f64 *, 0x348) = (f64) (M2C_FIELD(this, f64 *, 0x348) + M2C_FIELD(&arg0, f64 *, 0));
     this->unk348 += arg0.unk8;
 }
 
@@ -2775,14 +2956,25 @@ void Spyro::SetDesiredVelocity(const MKVector3 &arg0, float arg1) {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
+    f32 temp_f3_5529;
+    f32 temp_f3_5562;
     f32 temp_f4_5407;
     f32 var_f30_5426;
+    f64 temp_f0_5494;
+    f64 temp_f0_5539;
+    f64 temp_f0_5572;
     f64 temp_f1_5410;
     f64 temp_f1_5416;
     f64 temp_f1_5420;
@@ -2834,40 +3026,41 @@ void Spyro::SetDesiredVelocity(const MKVector3 &arg0, float arg1) {
 
             }
             Projection(spB0, *((MKVector3 *) &spF0));
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            spC0 = sp10;
+            temp_f0_5494 = spF0 - M2C_BITWISE(f64, spB0);
+            sp10 = temp_f0_5494;
+            spC0 = temp_f0_5494;
             sp18 = (f32) spF8 - spB0.unk8;
             spC8 = (f64) sp18;
             Normalise(spD0);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+            sp20 = spD0 * (f64) var_f30_5426;
             spE0 = sp20;
             sp28 = spD0.unk8 * var_f30_5426;
             spF0 = sp20;
             spE8 = (f64) sp28;
             spF8 = (f64) sp28;
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp60 = spF0 - M2C_FIELD(this, f64 *, 0x338);
+        temp_f3_5529 = 1.0f / gUpdateTimeDelta;
         sp90 = sp60;
         sp68 = (f32) spF8 - this->unk338;
         sp98 = (f64) sp68;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spA0 = sp50;
-        sp58 = (f32) sp98 * (1.0f / gUpdateTimeDelta);
+        temp_f0_5539 = sp90 * (f64) temp_f3_5529;
+        sp50 = temp_f0_5539;
+        spA0 = temp_f0_5539;
+        sp58 = (f32) sp98 * temp_f3_5529;
         spA8 = (f64) sp58;
         SetForce(*((MKVector3 *) &spA0), arg1);
         return;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp40 = M2C_FIELD(&arg0, f64 *, 0) - M2C_FIELD(this, f64 *, 0x338);
+    temp_f3_5562 = 1.0f / gUpdateTimeDelta;
     sp70 = sp40;
     sp48 = arg0.unk8 - this->unk338;
     sp78 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f4 */);
-    sp80 = sp30;
-    sp38 = (f32) sp78 * (1.0f / gUpdateTimeDelta);
+    temp_f0_5572 = sp70 * (f64) temp_f3_5562;
+    sp30 = temp_f0_5572;
+    sp80 = temp_f0_5572;
+    sp38 = (f32) sp78 * temp_f3_5562;
     sp88 = (f64) sp38;
     SetForce(*((MKVector3 *) &sp80), arg1);
 }
@@ -3055,13 +3248,14 @@ void Spyro::Teleport(const MKVector3 &arg0, float arg1, int arg2, bool arg3, boo
     MKVector3 sp68;
     f64 sp60;
     f64 sp58;
-    M2C_UNK sp48;
+    f64 sp48;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     u8 sp14;
     void ***sp10;
     BoneBlurFX *temp_r3_6093;
@@ -3101,9 +3295,8 @@ void Spyro::Teleport(const MKVector3 &arg0, float arg1, int arg2, bool arg3, boo
     M2C_FIELD(temp_r4_6014->unk0, M2C_UNK (**)(MKVector3 *, MKProp *), 0x4C)(&sp68, temp_r4_6014);
     SetPos(sp68);
     temp_r4_6023 = this->unk26C.unk8;
-    M2C_FIELD(temp_r4_6023->unk0, M2C_UNK (**)(M2C_UNK *, MKProp *), 0x4C)(&sp48, temp_r4_6023);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    M2C_FIELD(temp_r4_6023->unk0, M2C_UNK (**)(f64 *, MKProp *), 0x4C)(&sp48, temp_r4_6023);
+    sp18 = sp48 - sp88;
     sp88 = sp18;
     sp20 = sp50 - (f32) sp90;
     sp58 = sp18;
@@ -3255,7 +3448,6 @@ u8 Spyro::SlipTest() {
     sp28 = M2C_BITWISE(f64, sp18);
     sp30 = (f64) sp18.unk8;
     sp8.GetJoyDir();
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     var_r3_6366 = 0;
     var_r0_6371 = 0;
     if ((((this->unk338 * (f32) sp30) + ((this->unk330 * (f32) sp28) + (this->unk33C * unksp2C))) > 200.0f) && ((u32) (((u32) M2C_ERROR(/* unknown instruction: mfcr $r4 */) >> 0x1DU) & 1) != 0)) {
@@ -3334,13 +3526,17 @@ u8 Spyro::TailSweepTailStrikeTransition() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     InputModifier *temp_r3_6532;
     InputModifier *temp_r3_6560;
     InputModifier *temp_r3_6736;
+    f64 temp_f0_6630;
+    f64 temp_f1_6598;
     s32 var_r3_6545;
     s32 var_r3_6573;
     s32 var_r3_6749;
@@ -3410,13 +3606,14 @@ u8 Spyro::TailSweepTailStrikeTransition() {
         if (GetMeleeButtonState() == 2) {
             temp_r3_6596 = this->unk8;
             sp38 = 0.0f;
+            temp_f1_6598 = M2C_FIELD(temp_r3_6596, f64 *, 0x30);
             sp3C = 10.0f;
             sp40 = 0.0f;
             sp58 = (f64) sp38;
-            sp68 = M2C_FIELD(temp_r3_6596, f64 *, 0x30);
+            sp68 = temp_f1_6598;
             sp60 = (f64) sp40;
             sp70 = M2C_FIELD(temp_r3_6596, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp28 = temp_f1_6598 + sp58;
             sp20 = 0.0f;
             sp18 = 0.0f;
             sp1C = 180.0f;
@@ -3425,8 +3622,9 @@ u8 Spyro::TailSweepTailStrikeTransition() {
             sp48 = (f64) sp18;
             spA0 = (f64) sp30;
             sp50 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp88 = sp8;
+            temp_f0_6630 = sp98 - sp48;
+            sp8 = temp_f0_6630;
+            sp88 = temp_f0_6630;
             sp10 = (f32) spA0 - (f32) sp50;
             sp90 = (f64) sp10;
             if (MKCollision_RayCollide(*((MKVector3 *) &sp98), *((MKVector3 *) &sp88), &spA8, (MKCollisionMode) 7, 0x08000000) != 0) {
@@ -3720,7 +3918,7 @@ s32 Spyro::AirToStrafeDodgeTransition() {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp70'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 u8 Spyro::AirToLedgeGrabTransition() {
     MKProp *sp118;
     f64 sp110;
@@ -3741,17 +3939,24 @@ u8 Spyro::AirToLedgeGrabTransition() {
     f64 sp88;
     f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f64 sp38;
     f64 sp30;
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     MKProp *sp8;
+    f64 temp_f0_7152;
+    f64 temp_f0_7163;
+    f64 temp_f0_7175;
 
     if (CheckForLedge(MKVector3::zero, &spE0, &spC0, &spD0, &sp8) != 0) {
         sp58 = 0.0f;
@@ -3759,16 +3964,19 @@ u8 Spyro::AirToLedgeGrabTransition() {
         sp54 = 120.0f;
         sp88 = (f64) sp58;
         sp80 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp90 = sp70;
+        temp_f0_7152 = M2C_BITWISE(f64, spD0) * 1.6145507526e-314;
+        sp70 = temp_f0_7152;
+        sp90 = temp_f0_7152;
         sp78 = spD0.unk8 * -100.0f;
         sp98 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spA0 = sp60;
+        temp_f0_7163 = M2C_BITWISE(f64, spE0) + temp_f0_7152;
+        sp60 = temp_f0_7163;
+        spA0 = temp_f0_7163;
         sp68 = spE0.unk8 + (f32) sp98;
         spA8 = (f64) sp68;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spB0 = sp40;
+        temp_f0_7175 = spA0 + sp80;
+        sp40 = temp_f0_7175;
+        spB0 = temp_f0_7175;
         sp48 = (f32) spA8 + (f32) sp88;
         spB8 = (f64) sp48;
         if (MKCollision_SphereCollide(*((MKVector3 *) &spB0), 100.0f, NULL, 0, (MKCollisionMode) 7, 0x220) == 0) {
@@ -3779,7 +3987,7 @@ u8 Spyro::AirToLedgeGrabTransition() {
             sp108 = M2C_BITWISE(f64, spD0);
             sp110 = (f64) spD0.unk8;
             sp118 = sp8;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp10 = M2C_BITWISE(f64, spE0) - M2C_BITWISE(f64, spC0);
             sp20 = sp10;
             sp18 = spE0.unk8 - spC0.unk8;
             sp30 = sp10;
@@ -3868,7 +4076,6 @@ u8 Spyro::LandToMoveTransition(bool arg0, bool arg1) {
             var_r3_7338 = M2C_ERROR(/* Read from unset register $r3 */) == 0;
         }
         if (var_r3_7338 != 0) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
             var_r3_7338 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
         }
         spB8.unk50 = 0;
@@ -4229,7 +4436,7 @@ void Spyro::CheckForKnockBack(ContextInfo &arg0, float arg1) {
             sp48 = (f64) sp28;
             unksp4C = 0.2f;
             sp50 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f5 */);
+            sp48 *= 5.634608575e-315;
             var_r3_7974 = NULL;
             sp5C = NULL;
             temp_r5_7978 = arg0.unk164;
@@ -4414,7 +4621,7 @@ void Spyro::UpdateInvincibility() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: undefined identifier 'unksp44'
 void Spyro::UpdateSlidingSounds() {
     f64 sp48;
     f64 sp40;
@@ -4423,10 +4630,14 @@ void Spyro::UpdateSlidingSounds() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     MKProp *temp_r3_8337;
+    f32 temp_f3_8479;
+    f32 var_f31_8489;
     f32 var_f4_8464;
     f32 var_f5_8397;
+    f64 temp_f1_8326;
     f64 temp_f1_8403;
     f64 temp_f1_8409;
     f64 temp_f1_8413;
@@ -4439,10 +4650,10 @@ void Spyro::UpdateSlidingSounds() {
     void *var_r3_8354;
 
     temp_r3_8325 = this->unk8;
-    sp20 = M2C_FIELD(temp_r3_8325, f64 *, 0x30);
+    temp_f1_8326 = M2C_FIELD(temp_r3_8325, f64 *, 0x30);
+    sp20 = temp_f1_8326;
     sp28 = M2C_FIELD(temp_r3_8325, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp10 = temp_f1_8326 - M2C_FIELD(this, f64 *, 0x310);
     temp_r3_8337 = this->unk26C.unk8;
     temp_r3_8342 = M2C_FIELD(temp_r3_8337, s32 *, 0x16C);
     sp18 = (f32) sp28 - this->unk310;
@@ -4505,6 +4716,7 @@ void Spyro::UpdateSlidingSounds() {
                 var_f5_8397 = 0.0f;
             }
             sp30 = (f32) sp30 * var_f4_8464;
+            temp_f3_8479 = -200.0f;
             unksp34 *= var_f4_8464;
             sp38 = (f32) sp38 * var_f4_8464;
             if (var_f5_8397 < 200.0f) {
@@ -4512,10 +4724,12 @@ void Spyro::UpdateSlidingSounds() {
             } else {
                 var_f5_8397 = 200.0f;
             }
-            if (var_f5_8397 > -200.0f) {
-
+            if (var_f5_8397 > temp_f3_8479) {
+                var_f31_8489 = var_f5_8397;
+            } else {
+                var_f31_8489 = temp_f3_8479;
             }
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp30 = (f64) sp30 * (f64) var_f31_8489;
             if (this->unk6F8.SoundIsFadingIn(3) == 0) {
                 this->unk6F8.FadeIn(3, -1);
             }
@@ -4632,7 +4846,7 @@ void Spyro::UpdateWaterSurfaceFX(bool arg0) {
         }
         sp78 = (f32) sp78 * var_f4_8596;
         unksp7C *= var_f4_8596;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+        M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
         if (var_f5_8606 == 25.0f) {
             this->unk6F8.FadeIn(0, -1);
         } else if (this->unk6F8.SoundIsFadingIn(0) != 0) {
@@ -4670,7 +4884,7 @@ void Spyro::UpdateWaterSurfaceFX(bool arg0) {
 void Spyro::UpdateEffects(MKVector3 *arg0) {
     Matrix spF0;
     MKVector3 spE0;
-    M2C_UNK spD0;
+    f64 spD0;
     f64 spC8;
     f64 spC0;
     f64 spB8;
@@ -4682,8 +4896,9 @@ void Spyro::UpdateEffects(MKVector3 *arg0) {
     f64 sp80;
     f64 sp78;
     f64 sp70;
-    M2C_UNK sp60;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -4697,12 +4912,14 @@ void Spyro::UpdateEffects(MKVector3 *arg0) {
     f32 var_f31_8822;
     f32 var_f4_8876;
     f32 var_f4_8943;
+    f64 temp_f0_8847;
     f64 temp_f1_8882;
     f64 temp_f1_8888;
     f64 temp_f1_8892;
     s32 temp_r3_8911;
     s32 temp_r4_8829;
     s32 var_r0_8921;
+    void *temp_r4_9003;
 
     CheckForKnockBack(*((ContextInfo *) &this->unk26C.unk8->unk8), 0.0f);
     CheckForKnockBack(*(this->unk26C.unk8 + 0x170), 1.0f);
@@ -4722,10 +4939,10 @@ void Spyro::UpdateEffects(MKVector3 *arg0) {
             temp_r4_8829 = this->unk1B4.unk8;
             if ((u32) temp_r4_8829 != 0U) {
                 sp14.Set((MKProp *) temp_r4_8829);
-                if (M2C_FIELD(sp14.Get()->__vptr, u8 (**)(MKVector3 *, M2C_UNK *), 0x28)(&MKVector3::zero, &spD0) != 0) {
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    spC0 = sp50;
+                if (M2C_FIELD(sp14.Get()->__vptr, u8 (**)(MKVector3 *, f64 *), 0x28)(&MKVector3::zero, &spD0) != 0) {
+                    temp_f0_8847 = spD0 - spF0.unk30;
+                    sp50 = temp_f0_8847;
+                    spC0 = temp_f0_8847;
                     sp58 = spD8 - spF0.unk38;
                     spC8 = (f64) sp58;
                     var_f31_8822 = KDMath_GetPitch(*((MKVector3 *) &spC0));
@@ -4794,10 +5011,10 @@ void Spyro::UpdateEffects(MKVector3 *arg0) {
     M2C_FIELD(this, f32 *, 0x248) = (f32) (M2C_FIELD(this, f32 *, 0x248) - gUpdateTimeDelta);
     UpdateInvincibility();
     MKVector(0.0f, 100.0f, 0.0f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_r4_9003 = this->unk8 + 0x30;
+    sp14.unkC = M2C_FIELD(temp_r4_9003, f64 *, 0) + sp60;
     this->unk238 = (f64) sp14.unkC;
-    sp28 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + sp68;
+    sp28 = M2C_FIELD(temp_r4_9003, f32 *, 8) + sp68;
     sp70 = (f64) sp14.unkC;
     sp78 = (f64) sp28;
     this->unk238 = (f64) sp28;
@@ -4857,6 +5074,7 @@ void Spyro::AddFootEffect(int arg0) {
     MKProp *temp_r3_9195;
     MKProp *temp_r3_9347;
     MKProp *temp_r3_9406;
+    f32 temp_f3_9150;
     f32 var_f0_9250;
     f32 var_f0_9268;
     f32 var_f0_9290;
@@ -4864,6 +5082,7 @@ void Spyro::AddFootEffect(int arg0) {
     f32 var_f1_9259;
     f32 var_f1_9282;
     f32 var_f1_9299;
+    f32 var_f31_9160;
     f32 var_f4_9135;
     f32 var_f4_9227;
     f32 var_f5_9068;
@@ -4933,6 +5152,7 @@ void Spyro::AddFootEffect(int arg0) {
             var_f5_9068 = 0.0f;
         }
         sp100 = (f32) sp100 * var_f4_9135;
+        temp_f3_9150 = -200.0f;
         unksp104 *= var_f4_9135;
         sp108 = (f32) sp108 * var_f4_9135;
         if (var_f5_9068 < 200.0f) {
@@ -4940,10 +5160,12 @@ void Spyro::AddFootEffect(int arg0) {
         } else {
             var_f5_9068 = 200.0f;
         }
-        if (var_f5_9068 > -200.0f) {
-
+        if (var_f5_9068 > temp_f3_9150) {
+            var_f31_9160 = var_f5_9068;
+        } else {
+            var_f31_9160 = temp_f3_9150;
         }
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp100 = (f64) sp100 * (f64) var_f31_9160;
         sp88 = 0.0f;
         sp80 = 0.0f;
         sp84 = 1.0f;
@@ -5093,7 +5315,7 @@ void Spyro::AddFootEffect(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: undefined identifier 'unkspDC'
 void Spyro::ColorSpyroFromGround(float arg0) {
     f64 spE0;
     f64 spD8;
@@ -5116,8 +5338,22 @@ void Spyro::ColorSpyroFromGround(float arg0) {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
+    f64 sp8;
     f32 temp_r3_9546;
     f32 temp_r3_9560;
+    f64 *temp_r3_9583;
+    f64 temp_f0_9593;
+    f64 temp_f0_9603;
+    f64 temp_f0_9613;
+    f64 temp_f1_9492;
+    f64 temp_f2_9586;
+    f64 temp_f3_9592;
     u8 temp_r4_9543;
     void **var_r0_9549;
     void **var_r3_9563;
@@ -5147,13 +5383,14 @@ void Spyro::ColorSpyroFromGround(float arg0) {
     M2C_FIELD(this, u8 *, 0x2F0) = 0U;
     temp_r3_9490 = this->unk8;
     sp50 = 0.0f;
+    temp_f1_9492 = M2C_FIELD(temp_r3_9490, f64 *, 0x30);
     sp48 = 0.0f;
     sp4C = 100.0f;
     sp90 = (f64) sp50;
     sp88 = (f64) sp48;
-    sp78 = M2C_FIELD(temp_r3_9490, f64 *, 0x30);
+    sp78 = temp_f1_9492;
     sp80 = M2C_FIELD(temp_r3_9490, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp38 = temp_f1_9492 + sp88;
     spD8 = sp38;
     spC8 = sp38;
     sp40 = (f32) sp80 + (f32) sp90;
@@ -5188,23 +5425,24 @@ block_13:
             Tools_GroundColor((MKCollisionResult *) &spA8);
             M2C_FIELD(this, f64 *, 0x288) = spA8;
             this->unk288 = spB0;
-            MKModel_GetColor(this->unk4);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f3, $r3, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
+            temp_r3_9583 = MKModel_GetColor(this->unk4);
+            temp_f2_9586 = M2C_FIELD(temp_r3_9583, f64 *, 0);
+            sp28 = M2C_FIELD(this, f64 *, 0x288) - temp_f2_9586;
+            temp_f3_9592 = M2C_FIELD(temp_r3_9583, f64 *, 8);
+            temp_f0_9593 = this->unk288 - temp_f3_9592;
+            sp30 = temp_f0_9593;
             sp68 = sp28;
-            sp70 = sp30;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp70 = temp_f0_9593;
+            sp18 = sp68 * (f64) arg0;
+            temp_f0_9603 = temp_f0_9593 * (f64) arg0;
+            sp20 = temp_f0_9603;
             sp58 = sp18;
-            sp60 = sp20;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+            sp60 = temp_f0_9603;
+            sp8 = temp_f2_9586 + sp58;
+            temp_f0_9613 = temp_f3_9592 + temp_f0_9603;
+            sp10 = temp_f0_9613;
             sp98 = sp8;
-            spA0 = sp10;
+            spA0 = temp_f0_9613;
             MKModel_SetColor(this->unk4, *((MKVector4 *) &sp98));
             goto block_14;
         }
@@ -5238,33 +5476,41 @@ void Spyro::BridgeHit(float arg0, float arg1) {
     f64 sp60;
     f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
+    f64 temp_f1_9679;
+    f64 temp_f1_9705;
+    f64 temp_f2_9653;
     void *temp_r4_9643;
     void *temp_r5_9646;
 
     temp_r4_9643 = this->unk40C;
     if (temp_r4_9643 != NULL) {
         temp_r5_9646 = this->unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f4 */);
+        sp48 = M2C_FIELD(temp_r5_9646, f64 *, 0) * (f64) arg0;
+        temp_f2_9653 = M2C_FIELD(temp_r5_9646, f64 *, 0x30);
         sp88 = sp48;
         sp50 = M2C_FIELD(temp_r5_9646, f32 *, 8) * arg0;
-        sp98 = M2C_FIELD(temp_r5_9646, f64 *, 0x30);
+        sp98 = temp_f2_9653;
         sp90 = (f64) sp50;
         spA0 = M2C_FIELD(temp_r5_9646, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
+        sp38 = temp_f2_9653 + sp88;
         sp78 = M2C_FIELD(this, f64 *, 0x338);
         spB8 = sp38;
         sp40 = (f32) spA0 + (f32) sp90;
         sp80 = M2C_FIELD(this, f64 *, 0x340);
         spC0 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f7 */);
-        spA8 = sp28;
+        temp_f1_9679 = sp78 * 4.89153186e-315;
+        sp28 = temp_f1_9679;
+        spA8 = temp_f1_9679;
         sp30 = (f32) sp80 * 0.002f;
         spC = -1.0f;
         spB0 = (f64) sp30;
@@ -5274,16 +5520,17 @@ void Spyro::BridgeHit(float arg0, float arg1) {
         sp58 = (f64) sp8;
         spCC = 0;
         sp60 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
+        temp_f1_9705 = sp58 * (f64) arg1;
+        sp18 = temp_f1_9705;
         spD0 = sp38;
         spD8 = (f64) sp40;
         sp20 = (f32) sp60 * arg1;
-        spE0 = sp18;
+        spE0 = temp_f1_9705;
         spE8 = (f64) sp20;
         spC8 = 0x3C;
-        sp68 = sp18;
+        sp68 = temp_f1_9705;
         sp70 = (f64) sp20;
-        M2C_FIELD(M2C_FIELD(temp_r4_9643, void **, 0x44), M2C_UNK (**)(void *, s32 *, void *, f64, f32, f32, f64, f64, f64, f32), 0x2C)(temp_r4_9643, &spC8, temp_r5_9646, sp18, (f32) sp60, 1.0f, (f64) sp30, (f64) sp40, sp38, 0.002f);
+        M2C_FIELD(M2C_FIELD(temp_r4_9643, void **, 0x44), M2C_UNK (**)(void *, s32 *, void *, f64, f32, f32, f64, f64, f64, f32), 0x2C)(temp_r4_9643, &spC8, temp_r5_9646, temp_f1_9705, (f32) sp60, 1.0f, (f64) sp30, (f64) sp40, sp38, 0.002f);
     }
 }
 #endif
@@ -5569,7 +5816,9 @@ void Spyro::UpdateAnimation() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f7_10233;
+    f64 temp_f0_10257;
     s32 var_r28_10209;
     s32 var_r30_10211;
     s32 var_r31_10210;
@@ -5590,9 +5839,9 @@ void Spyro::UpdateAnimation() {
                 sp20 = (sp48.unk8 * M2C_FIELD(temp_r3_10225, f32 *, 0x28)) + ((temp_f7_10233 * M2C_FIELD(temp_r3_10225, f32 *, 8)) + (sp48.unk4 * M2C_FIELD(temp_r3_10225, f32 *, 0x18)));
                 sp28 = (f64) sp18;
                 sp30 = (f64) sp20;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r27, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-                sp38 = sp8;
+                temp_f0_10257 = this->unk68 * sp28;
+                sp8 = temp_f0_10257;
+                sp38 = temp_f0_10257;
                 sp10 = M2C_FIELD(this, f32 *, 0x70) * (f32) sp30;
                 sp40 = (f64) sp10;
                 SetDeltaPos(*((MKVector3 *) &sp38));
@@ -5774,7 +6023,7 @@ void Spyro::Message(MKMessage *arg0) {
     MKProp sp140;
     f64 sp138;
     f64 sp130;
-    M2C_UNK sp120;
+    f64 sp120;
     f64 sp118;
     f64 sp110;
     f64 sp108;
@@ -5785,8 +6034,11 @@ void Spyro::Message(MKMessage *arg0) {
     f32 spA0;
     MKProp sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     s32 sp1C;
     s32 sp18;
     s32 sp14;
@@ -5798,6 +6050,7 @@ void Spyro::Message(MKMessage *arg0) {
     KDCamera *temp_r3_11347;
     KDCameraPoint *temp_r3_11349;
     KDS_Message_PropResolve *temp_r29_11281;
+    MKVector3 *temp_r3_10869;
     Sparx *temp_r3_11560;
     Spyro *var_r0_11539;
     f32 temp_f0_11014;
@@ -5805,6 +6058,9 @@ void Spyro::Message(MKMessage *arg0) {
     f32 temp_f4_11024;
     f32 temp_f5_11020;
     f32 temp_r3_11305;
+    f64 temp_f0_10872;
+    f64 temp_f0_10952;
+    f64 temp_f0_11360;
     f64 temp_f2_11192;
     f64 temp_f3_11190;
     s32 temp_r0_10513;
@@ -5822,6 +6078,7 @@ void Spyro::Message(MKMessage *arg0) {
     void *temp_r3_10767;
     void *temp_r3_10861;
     void *temp_r3_10934;
+    void *temp_r3_10949;
     void *temp_r3_11000;
     void *temp_r3_11010;
     void *temp_r3_11106;
@@ -5838,8 +6095,7 @@ void Spyro::Message(MKMessage *arg0) {
     if (temp_r0_10513 != 0x5B) {
         switch (temp_r0_10513) {                    /* irregular */
         case 0x1A:
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (gb.unk30C == M2C_FIELD(this, f32 *, 0x3DC)) {
+            if (gb.unk30C >= M2C_FIELD(this, f32 *, 0x3DC)) {
                 sp344 = 0;
                 temp_r9_10711 = this->unk428;
                 this->unk428 = temp_r9_10711 | 0x80;
@@ -5932,14 +6188,13 @@ void Spyro::Message(MKMessage *arg0) {
             temp_r3_10861 = checked_cast<PlatformMoveMsg *, MKMessage>(arg0);
             if ((u8) M2C_FIELD(temp_r3_10861, u8 *, 0x18) == 0) {
                 sp140.GetPos();
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                sp140.unk10 = sp40;
-                sp48 = M2C_FIELD(temp_r3_10861, MKVector3 **, 8)->unk8 - M2C_BITWISE(f32, sp140.unk8);
+                temp_r3_10869 = M2C_FIELD(temp_r3_10861, MKVector3 **, 8);
+                temp_f0_10872 = M2C_FIELD(temp_r3_10869, f64 *, 0) - M2C_BITWISE(f64, sp140);
+                sp40 = temp_f0_10872;
+                sp140.unk10 = temp_f0_10872;
+                sp48 = temp_r3_10869->unk8 - M2C_BITWISE(f32, sp140.unk8);
                 sp140.unk18 = (f64) sp48;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+                M2C_FIELD(this, f64 *, 0x348) = (f64) (M2C_FIELD(this, f64 *, 0x348) + M2C_BITWISE(f64, sp140.unk10));
                 this->unk348 += M2C_BITWISE(f32, sp140.unk18);
             } else {
                 KDMath_GetYaw((Matrix *) this->unk8);
@@ -5963,14 +6218,13 @@ void Spyro::Message(MKMessage *arg0) {
         case 0x9B:
             temp_r29_10945 = checked_cast<RopeBridgeMoveMsg *, MKMessage>(arg0);
             sp120.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp130 = sp30;
-            sp38 = M2C_FIELD(M2C_FIELD(temp_r29_10945, void **, 8), f32 *, 8) - sp128;
+            temp_r3_10949 = M2C_FIELD(temp_r29_10945, void **, 8);
+            temp_f0_10952 = M2C_FIELD(temp_r3_10949, f64 *, 0) - sp120;
+            sp30 = temp_f0_10952;
+            sp130 = temp_f0_10952;
+            sp38 = M2C_FIELD(temp_r3_10949, f32 *, 8) - sp128;
             sp138 = (f64) sp38;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+            M2C_FIELD(this, f64 *, 0x348) = (f64) (M2C_FIELD(this, f64 *, 0x348) + temp_f0_10952);
             this->unk348 += (f32) sp138;
             goto block_216;
         case 0x7:
@@ -6086,7 +6340,7 @@ void Spyro::Message(MKMessage *arg0) {
                     spA8 = 0.0f;
                     spB0.unk20 = (f64) spA0;
                     spB0.unk28 = (f64) spA8;
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                    sp50.unk40 = M2C_BITWISE(f64, sp290) + (f64) spB0.unk20;
                     spB0.unk30 = M2C_BITWISE(f64, sp50.unk40);
                     sp50.unk48 = sp290.unk8 + M2C_BITWISE(f32, spB0.unk28);
                     spB0.unk38 = (f64) sp50.unk48;
@@ -6138,7 +6392,7 @@ void Spyro::Message(MKMessage *arg0) {
             goto block_216;
         case 0x48:
             this->unk324 = M2C_FIELD(checked_cast<SetAlphaMessage *, MKMessage>(arg0), f32 *, 8);
-            if ((this->unk324 < 1.0f) || ((temp_r3_11347 = GetCamera(), temp_r4_11348 = temp_r3_11347->unk8, temp_r3_11349 = temp_r3_11347->unkA4, sp50.unk30 = M2C_FIELD(temp_r4_11348, f64 *, 0x30), sp50.unk20 = temp_r3_11349->unk0, sp50.unk38 = M2C_FIELD(temp_r4_11348, f64 *, 0x38), sp50.unk28 = M2C_FIELD(temp_r3_11349, f64 *, 8), M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */), sp50.unk10 = sp20, sp28 = M2C_BITWISE(f32, sp50.unk28) - M2C_BITWISE(f32, sp50.unk38), sp50.unk18 = (f64) sp28, ((KDMath_GetPitch(*((MKVector3 *) &sp50.unk10)) < 0.0f) != 0)) && (GetCamera()->unk20C > 0.0f))) {
+            if ((this->unk324 < 1.0f) || ((temp_r3_11347 = GetCamera(), temp_r4_11348 = temp_r3_11347->unk8, temp_r3_11349 = temp_r3_11347->unkA4, sp50.unk30 = M2C_FIELD(temp_r4_11348, f64 *, 0x30), sp50.unk20 = temp_r3_11349->unk0, sp50.unk38 = M2C_FIELD(temp_r4_11348, f64 *, 0x38), sp50.unk28 = M2C_FIELD(temp_r3_11349, f64 *, 8), temp_f0_11360 = (f64) sp50.unk20 - M2C_BITWISE(f64, sp50.unk30), sp20 = temp_f0_11360, sp50.unk10 = temp_f0_11360, sp28 = M2C_BITWISE(f32, sp50.unk28) - M2C_BITWISE(f32, sp50.unk38), sp50.unk18 = (f64) sp28, ((KDMath_GetPitch(*((MKVector3 *) &sp50.unk10)) < 0.0f) != 0)) && (GetCamera()->unk20C > 0.0f))) {
                 sp14 = 0;
                 sp10 = 0x4A;
                 Message(&sp10);
@@ -6654,8 +6908,7 @@ u8 Spyro::DealDamage(float arg0, bool arg1, bool arg2, HurtMessage *arg3) {
     ((Stat *) ((Stat *) &GameData::gameData[0x70]))->Add(-var_f31_12210, 1U);
     this->unk3DC = 2.0f;
     this->unkB74 = gb.unk30C;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((gb.unk30C == M2C_FIELD(this, f32 *, 0x3DC)) && (arg1 != 0) && ((M2C_FIELD(GameData::gameData, f32 *, 0x70) / M2C_FIELD(GameData::gameData, f32 *, 0x74)) > 0.0f)) {
+    if ((gb.unk30C >= M2C_FIELD(this, f32 *, 0x3DC)) && (arg1 != 0) && ((M2C_FIELD(GameData::gameData, f32 *, 0x70) / M2C_FIELD(GameData::gameData, f32 *, 0x74)) > 0.0f)) {
         SetInvincibilityTimeOut(gb.unk390);
     }
     return 1U;
@@ -6692,11 +6945,11 @@ void Spyro::UpdateLastSafePos() {
     f64 sp220;
     f64 sp218;
     f64 sp210;
-    M2C_UNK sp200;
-    M2C_UNK sp1F0;
+    f64 sp200;
+    f64 sp1F0;
     f64 sp1E8;
     f64 sp1E0;
-    M2C_UNK sp1D0;
+    f64 sp1D0;
     f64 sp1C8;
     f64 sp1C0;
     f64 sp1B8;
@@ -6734,15 +6987,22 @@ void Spyro::UpdateLastSafePos() {
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     u8 sp18;
     void ***sp14;
     f32 sp10;
@@ -6755,6 +7015,7 @@ void Spyro::UpdateLastSafePos() {
     f32 temp_r3_12666;
     f32 temp_r3_12753;
     f64 temp_f0_12556;
+    f64 temp_f0_12860;
     f64 temp_f1_12555;
     s32 temp_r0_12752;
     s32 temp_r0_12763;
@@ -6819,8 +7080,7 @@ void Spyro::UpdateLastSafePos() {
 
                             }
                             sp250.GetPos();
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                            sp50 = sp250.unk0 - sp240;
                             sp120 = sp50;
                             sp58 = (f32) sp250.unk8 - (f32) sp248;
                             sp128 = (f64) sp58;
@@ -6837,8 +7097,7 @@ block_25:
                         sp238 = M2C_FIELD(temp_r6_12507, f64 *, 0x38);
                         if ((sp230.IsWithin(*NULL, &sp10, (s32 *) temp_r6_12507) == 0) || ((M2C_BITWISE(s32, sp10) != 1) && (M2C_BITWISE(s32, sp10) != 4))) {
                             temp_r4_12524 = this->unk26C.unk8;
-                            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                            if (((temp_r4_12524->unk20 * MKVector3::up.unk8) + ((M2C_BITWISE(f32, temp_r4_12524->unk18) * MKVector3::up.unk0) + (M2C_FIELD(temp_r4_12524, f32 *, 0x1C) * MKVector3::up.unk4))) == maxStandAngle) {
+                            if (((temp_r4_12524->unk20 * MKVector3::up.unk8) + ((M2C_BITWISE(f32, temp_r4_12524->unk18) * MKVector3::up.unk0) + (M2C_FIELD(temp_r4_12524, f32 *, 0x1C) * MKVector3::up.unk4))) >= maxStandAngle) {
                                 temp_r4_12540 = this->unk8;
                                 sp220 = M2C_FIELD(temp_r4_12540, f64 *, 0x30);
                                 sp228 = M2C_FIELD(temp_r4_12540, f64 *, 0x38);
@@ -6871,9 +7130,7 @@ block_25:
 
                     }
                     sp200.GetPos();
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp40 = sp200 - M2C_FIELD(this, f64 *, 0x2A0);
                     sp100 = sp40;
                     sp48 = sp208 - this->unk2A0;
                     sp108 = (f64) sp48;
@@ -6886,8 +7143,7 @@ block_25:
             } else {
 block_42:
                 if (((this->unk298.IsWithin(*NULL, &spC, M2C_ERROR(/* Read from unset register $r6 */)) == 0) || ((M2C_BITWISE(s32, spC) != 1) && (M2C_BITWISE(s32, spC) != 4))) && ((u8) (MKCollision_SphereCollide(*((MKVector3 *) &this->unk298), 400.0f, NULL, 1, (MKCollisionMode) 7, -0x10000184) == 0) != 0)) {
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (((this->unk2B0 * MKVector3::up.unk8) + ((this->unk2A8 * MKVector3::up.unk0) + (this->unk2B4 * MKVector3::up.unk4))) == maxStandAngle) {
+                    if (((this->unk2B0 * MKVector3::up.unk8) + ((this->unk2A8 * MKVector3::up.unk0) + (this->unk2B4 * MKVector3::up.unk4))) >= maxStandAngle) {
                         if (((u8) M2C_FIELD(this, u8 *, 0x2F0) != 0) && (temp_r3_12666 = this->unk2E0, ((M2C_BITWISE(u32, temp_r3_12666) == 0U) == 0)) && (var_r5_12669 = M2C_FIELD(temp_r3_12666, MKProp **, 8), ((var_r5_12669 == NULL) == 0))) {
 
                         } else {
@@ -6919,8 +7175,7 @@ loop_67:
 
             }
             sp1F0.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp30 = sp1F0 - sp1E0;
             spE0 = sp30;
             sp38 = sp1F8 - (f32) sp1E8;
             spE8 = (f64) sp38;
@@ -6950,8 +7205,7 @@ loop_67:
 
             }
             sp1D0.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp20 = sp1D0 - sp1C0;
             spC0 = sp20;
             sp28 = sp1D8 - (f32) sp1C8;
             spC8 = (f64) sp28;
@@ -6974,13 +7228,14 @@ loop_67:
                 sp270 = (f64) spB0;
                 sp278 = (f64) spB8;
                 sp1A8 = (f64) spA8;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-                sp250.unk10 = sp90;
+                temp_f0_12860 = sp280 + sp1A0;
+                sp90 = temp_f0_12860;
+                sp250.unk10 = temp_f0_12860;
                 sp98 = (f32) sp288 + (f32) sp1A8;
                 sp268 = (f64) sp98;
                 sp170.operator*(100.0f);
                 sp180.operator*(2.0f);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp70 = sp280 + M2C_BITWISE(f64, sp180);
                 sp290 = sp70;
                 sp78 = (f32) sp288 + sp180.unk8;
                 sp190 = sp70;
@@ -6989,7 +7244,7 @@ loop_67:
                 unksp294 -= 200.0f;
                 sp140.operator*(100.0f);
                 sp150.operator*(2.0f);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp60 = sp280 - M2C_BITWISE(f64, sp150);
                 var_r28_12906 = 0;
                 var_r26_12908 = 0;
                 sp2A0 = sp60;
@@ -7005,7 +7260,7 @@ loop_75:
                     if ((MKCollision_SphereCollide(*((MKVector3 *) &sp308), 100.0f, &sp2B0, 1, (MKCollisionMode) 7, -0x10000184) == 0) || ((u32) sp2B0.unk44 == 0U)) {
                         var_r30_12938 = 1;
                     }
-                    if ((var_r30_12938 != 0) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((((sp308.unk18 * MKVector3::up.unk8) + ((sp308.unk10 * MKVector3::up.unk0) + (sp308.unk14 * MKVector3::up.unk4))) == maxStandAngle) != 0)) && ((sp308.IsWithin(*NULL, &sp8, M2C_ERROR(/* Read from unset register $r6 */)) == 0) || ((M2C_BITWISE(s32, sp8) != 1) && (M2C_BITWISE(s32, sp8) != 4)))) {
+                    if ((var_r30_12938 != 0) && (((sp308.unk18 * MKVector3::up.unk8) + ((sp308.unk10 * MKVector3::up.unk0) + (sp308.unk14 * MKVector3::up.unk4))) >= maxStandAngle) && ((sp308.IsWithin(*NULL, &sp8, M2C_ERROR(/* Read from unset register $r6 */)) == 0) || ((M2C_BITWISE(s32, sp8) != 1) && (M2C_BITWISE(s32, sp8) != 4)))) {
                         if ((sp308.unk50 != 0) && (sp308.unk48 != NULL) && (var_r5_12984 = M2C_FIELD(sp308.unk48, MKProp **, 8), ((var_r5_12984 == NULL) == 0))) {
 
                         } else {
@@ -7060,19 +7315,20 @@ void Spyro::UpdateShockwavePosition() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void Spyro::ModelOffsetPostUpdate() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
-    f32 temp_f1_13089;
+    f64 sp8;
+    f64 temp_f0_13083;
+    void *temp_r3_13079;
 
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    temp_f1_13089 = M2C_FIELD((MKModel_GetWorldMatrix(this->unk4) + 0x30), f32 *, 8) + M2C_FIELD(this, f32 *, 0x370);
-    sp18 = sp8;
-    sp10 = temp_f1_13089;
+    temp_r3_13079 = MKModel_GetWorldMatrix(this->unk4) + 0x30;
+    temp_f0_13083 = M2C_FIELD(temp_r3_13079, f64 *, 0) + M2C_FIELD(this, f64 *, 0x368);
+    sp8 = temp_f0_13083;
+    sp18 = temp_f0_13083;
+    sp10 = M2C_FIELD(temp_r3_13079, f32 *, 8) + M2C_FIELD(this, f32 *, 0x370);
     sp20 = (f64) sp10;
     MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp18));
     MKModel_GetAnimation(this->unk4);
@@ -7089,9 +7345,12 @@ void Spyro::ModelOffsetPreUpdate() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
-    f32 temp_f1_13183;
+    f64 sp8;
+    f64 temp_f0_13177;
     u8 var_r0_13111;
+    void *temp_r3_13173;
 
     var_r0_13111 = 0;
     if ((M2C_FIELD(this, f32 *, 0x378) == M2C_BITWISE(f32, this->unk360)) && (M2C_FIELD(this, f32 *, 0x37C) == M2C_BITWISE(f32, this->unk364)) && (M2C_FIELD(this, f32 *, 0x380) == M2C_FIELD(this, f32 *, 0x370))) {
@@ -7101,9 +7360,7 @@ void Spyro::ModelOffsetPreUpdate() {
         KDMath_Smooth<MKVector3>(sp58, *((MKVector3 *) &this->unk360), 5.0f, gUpdateTimeDelta);
         M2C_FIELD(this, s32 *, 0x368) = M2C_BITWISE(f64, sp58);
         this->unk368 = (f64) sp58.unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp8 = M2C_BITWISE(f64, M2C_FIELD(this, s32 *, 0x368)) - this->unk370;
         sp28 = sp8;
         sp10 = M2C_FIELD(this, f32 *, 0x370) - M2C_FIELD(this, f32 *, 0x380);
         sp30 = (f64) sp10;
@@ -7114,12 +7371,11 @@ void Spyro::ModelOffsetPreUpdate() {
             this->unk368 = this->unk378;
         }
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    temp_f1_13183 = M2C_FIELD((MKModel_GetWorldMatrix(this->unk4) + 0x30), f32 *, 8) - M2C_FIELD(this, f32 *, 0x370);
-    sp48 = sp18;
-    sp20 = temp_f1_13183;
+    temp_r3_13173 = MKModel_GetWorldMatrix(this->unk4) + 0x30;
+    temp_f0_13177 = M2C_FIELD(temp_r3_13173, f64 *, 0) - M2C_BITWISE(f64, M2C_FIELD(this, s32 *, 0x368));
+    sp18 = temp_f0_13177;
+    sp48 = temp_f0_13177;
+    sp20 = M2C_FIELD(temp_r3_13173, f32 *, 8) - M2C_FIELD(this, f32 *, 0x370);
     sp50 = (f64) sp20;
     MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp48));
 }
@@ -7142,6 +7398,8 @@ void Spyro::ApplyEdgePhysics(MKVector3 arg0) {
     MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_13356;
     s32 temp_r0_13305;
     void *temp_r31_13303;
     void *temp_r3_13304;
@@ -7161,9 +7419,9 @@ void Spyro::ApplyEdgePhysics(MKVector3 arg0) {
     sp48 = M2C_BITWISE(f64, sp28);
     sp50 = (f64) sp28.unk8;
     __ml(-5000.0f * (((f32) sp50 * MKVector3::up.unk8) + (((f32) sp48 * MKVector3::up.unk0) + (unksp4C * MKVector3::up.unk4))), sp18);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0) = sp8;
+    temp_f0_13356 = M2C_FIELD(temp_r31_13303, f64 *, 0) + M2C_BITWISE(f64, sp18);
+    sp8 = temp_f0_13356;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_13356;
     sp10 = (f32) M2C_FIELD(temp_r31_13303, f64 *, 8) + sp18.unk8;
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
@@ -7177,6 +7435,8 @@ void Spyro::ApplyIcePhysics(MKVector3 arg0) {
     MKVector3 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_13417;
     void *temp_r31_13383;
 
     temp_r31_13383 = M2C_ERROR(/* Read from unset register $r5 */);
@@ -7187,9 +7447,9 @@ void Spyro::ApplyIcePhysics(MKVector3 arg0) {
     sp48 = M2C_BITWISE(f64, sp28);
     sp50 = (f64) sp28.unk8;
     __ml(-5000.0f * (((f32) sp50 * MKVector3::up.unk8) + (((f32) sp48 * MKVector3::up.unk0) + (unksp4C * MKVector3::up.unk4))), sp18);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0) = sp8;
+    temp_f0_13417 = M2C_FIELD(temp_r31_13383, f64 *, 0) + M2C_BITWISE(f64, sp18);
+    sp8 = temp_f0_13417;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_13417;
     sp10 = (f32) M2C_FIELD(temp_r31_13383, f64 *, 8) + sp18.unk8;
     M2C_FIELD(this, f64 *, 8) = (f64) sp10;
 }
@@ -7209,11 +7469,20 @@ void Spyro::ApplySlipperyPhysics(MKVector3 arg0) {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f3_13467;
     f32 var_f7_13465;
+    f64 temp_f0_13545;
+    f64 temp_f0_13556;
+    f64 temp_f1_13536;
+    f64 temp_f2_13533;
+    f64 temp_f3_13503;
     f64 temp_f6_13453;
     s32 temp_r3_13479;
     void *temp_r31_13449;
@@ -7248,26 +7517,28 @@ void Spyro::ApplySlipperyPhysics(MKVector3 arg0) {
         }
     } else {
 block_8:
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f29 */);
-        sp10 = (f32) spA0 * -var_f7_13465;
+        temp_f3_13503 = -var_f7_13465;
+        sp8 = sp98 * temp_f3_13503;
+        sp10 = (f32) spA0 * (f32) temp_f3_13503;
         sp58 = sp8;
         sp60 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f2, $f3, $f2 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f2, $zero, $r31, 0x0, qr0 */);
+        M2C_FIELD(temp_r31_13449, f32 *, 0) = (f64) ((f64) M2C_FIELD(temp_r31_13449, f32 *, 0) + sp58);
         M2C_FIELD(temp_r31_13449, f32 *, 8) = (f32) (M2C_FIELD(temp_r31_13449, f32 *, 8) + (f32) sp60);
     }
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f30 */);
+    temp_f2_13533 = -(((f32) spA0 * MKVector3::up.unk8) + (((f32) sp98 * MKVector3::up.unk0) + (unksp9C * MKVector3::up.unk4)));
+    temp_f1_13536 = sp98 * 5.72858887e-315;
+    sp38 = temp_f1_13536;
     sp40 = (f32) spA0 * 2500.0f;
-    sp48 = sp38;
+    sp48 = temp_f1_13536;
     sp50 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp78 = sp28;
-    sp30 = (f32) sp50 * -(((f32) spA0 * MKVector3::up.unk8) + (((f32) sp98 * MKVector3::up.unk0) + (unksp9C * MKVector3::up.unk4)));
+    temp_f0_13545 = sp48 * temp_f2_13533;
+    sp28 = temp_f0_13545;
+    sp78 = temp_f0_13545;
+    sp30 = (f32) sp50 * (f32) temp_f2_13533;
     sp80 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_FIELD(this, f64 *, 0) = sp18;
+    temp_f0_13556 = (f64) M2C_FIELD(temp_r31_13449, f32 *, 0) + temp_f0_13545;
+    sp18 = temp_f0_13556;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_13556;
     sp20 = M2C_FIELD(temp_r31_13449, f32 *, 8) + (f32) sp80;
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }
@@ -7293,6 +7564,9 @@ void Spyro::ApplyPhysics(MKVector3 arg0) {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_13700;
+    f64 temp_f1_13688;
     s32 temp_r3_13591;
     s32 temp_r3_13654;
     s32 temp_r5_13620;
@@ -7354,14 +7628,16 @@ void Spyro::ApplyPhysics(MKVector3 arg0) {
         if (M2C_FIELD(arg0, f32 *, 0x298) > 20.0f) {
             temp_r3_13686 = M2C_FIELD(arg0, void **, 8);
             sp18 = 0.0f;
+            temp_f1_13688 = M2C_FIELD(temp_r3_13686, f64 *, 0x30);
             sp1C = 20.0f;
             sp20 = 0.0f;
             sp38 = (f64) sp18;
-            sp48 = M2C_FIELD(temp_r3_13686, f64 *, 0x30);
+            sp48 = temp_f1_13688;
             sp40 = (f64) sp20;
             sp50 = M2C_FIELD(temp_r3_13686, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp58 = sp8;
+            temp_f0_13700 = temp_f1_13688 - sp38;
+            sp8 = temp_f0_13700;
+            sp58 = temp_f0_13700;
             sp10 = (f32) sp50 - (f32) sp40;
             sp60 = (f64) sp10;
             if (MKCollision_SphereCollide(*((MKVector3 *) &sp58), 10.0f, NULL, 0, (MKCollisionMode) 7, 1) == 0) {
@@ -7396,7 +7672,9 @@ void Spyro::ClipVelToEdge(const MKVector3 &arg0) {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     s32 sp10;
     f32 spC;
     f32 sp8;
@@ -7405,10 +7683,12 @@ void Spyro::ClipVelToEdge(const MKVector3 &arg0) {
     f32 temp_f1_13752;
     f32 temp_f2_13759;
     f32 temp_f31_13922;
+    f32 temp_f31_13929;
     f32 temp_f3_13917;
     f32 temp_r3_13838;
     f32 var_f4_13766;
     f32 var_f6_13833;
+    f64 temp_f0_13941;
     f64 temp_f1_13772;
     f64 temp_f1_13778;
     f64 temp_f1_13782;
@@ -7487,13 +7767,14 @@ void Spyro::ClipVelToEdge(const MKVector3 &arg0) {
         temp_f31_13922 = -((temp_f3_13917 * (f32) sp90) + ((temp_r31_13750->unk0 * (f32) sp88) + (temp_r31_13750->unk4 * unksp8C)));
         spC = temp_f31_13922;
         sp10 = (M2C_BITWISE(s32, spC) & 0x80000000) | 0x3F800000;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp20 = (f32) sp90 * ((0.05f * M2C_BITWISE(f32, sp10)) + temp_f31_13922);
+        temp_f31_13929 = (0.05f * M2C_BITWISE(f32, sp10)) + temp_f31_13922;
+        sp18 = sp88 * (f64) temp_f31_13929;
+        sp20 = (f32) sp90 * temp_f31_13929;
         sp58 = sp18;
         sp60 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_FIELD(this, f64 *, 0) = sp28;
+        temp_f0_13941 = (f64) M2C_FIELD(temp_r31_13750, f32 *, 0) + sp58;
+        sp28 = temp_f0_13941;
+        M2C_FIELD(this, f64 *, 0) = temp_f0_13941;
         sp30 = temp_f3_13917 + (f32) sp60;
         M2C_FIELD(this, f64 *, 8) = (f64) sp30;
         return;
@@ -7592,7 +7873,7 @@ u8 Spyro::CheckForEdge(float arg0, const MKVector3 &arg1, bool arg2, MKVector3 *
             spE0 = (35.0f * (f32) spD0) + (f32) spE0;
             spD8 = (35.0f * (f32) spC8) + (f32) spD8;
             if (MKCollision_RayCollide(*((MKVector3 *) &spE8), *((MKVector3 *) &spD8), &sp108, (MKCollisionMode) 7, 0x200) == 0) {
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                spF8 += spC8;
                 var_r27_14023 = 1;
                 sp100 = (f32) sp100 + (f32) spD0;
             } else if ((arg2 != 0) && ((u32) sp108.unk44 == 1U)) {
@@ -7740,29 +8021,41 @@ u8 Spyro::CheckForLedge(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2,
     f32 sp14C;
     f32 sp148;
     f32 sp140;
+    f64 sp138;
     f32 sp130;
+    f64 sp128;
     f32 sp120;
+    f64 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
     f32 spFC;
     f32 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -7770,14 +8063,23 @@ u8 Spyro::CheckForLedge(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2,
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     MKProp *var_r0_14688;
     f32 temp_f0_14331;
     f32 temp_f11_14277;
     f32 temp_f12_14275;
     f32 temp_f8_14278;
+    f64 temp_f0_14316;
+    f64 temp_f0_14434;
+    f64 temp_f1_14327;
+    f64 temp_f1_14403;
     f64 temp_f2_14304;
+    f64 temp_f2_14392;
     f64 temp_f3_14303;
+    f64 temp_f8_14339;
+    f64 temp_f8_14361;
     void **var_r0_14565;
     void **var_r3_14579;
     void *temp_r3_14271;
@@ -7810,29 +8112,32 @@ u8 Spyro::CheckForLedge(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2,
     sp240 = (f64) sp150;
     sp248 = temp_f3_14303;
     sp250 = temp_f2_14304;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp258 = sp138;
+    temp_f0_14316 = sp248 + sp238;
+    sp138 = temp_f0_14316;
+    sp258 = temp_f0_14316;
     sp140 = (f32) sp250 + (f32) sp240;
     sp260 = (f64) sp140;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f1 */);
+    temp_f1_14327 = M2C_FIELD(&arg0, f64 *, 0);
+    sp128 = temp_f0_14316 + temp_f1_14327;
     temp_f0_14331 = arg0.unk8;
     sp2D8 = sp128;
     sp130 = (f32) sp260 + temp_f0_14331;
     sp2E0 = (f64) sp130;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f8, $f8, $f7 */);
-    sp228 = sp118;
+    temp_f8_14339 = sp2F8 * 5.55430844e-315;
+    sp118 = temp_f8_14339;
+    sp228 = temp_f8_14339;
     sp120 = (f32) sp300 * 130.0f;
     sp230 = (f64) sp120;
-    M2C_ERROR(/* unknown instruction: ps_add $f8, $f9, $f8 */);
+    sp108 = sp2D8 + temp_f8_14339;
     sp110 = (f32) sp2E0 + (f32) sp230;
     sp2C8 = sp108;
     sp2D0 = (f64) sp110;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f8, $f8, $f7 */);
-    sp1C8 = spC8;
+    temp_f8_14361 = sp2E8 * 5.55430844e-315;
+    spC8 = temp_f8_14361;
+    sp1C8 = temp_f8_14361;
     spD0 = (f32) sp2F0 * 130.0f;
     sp1D0 = (f64) spD0;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f7, $f7, $f6 */);
+    spB8 = sp1C8 * 5.222099017e-315;
     sp100 = 0.0f;
     spF8 = 0.0f;
     spFC = 50.0f;
@@ -7843,15 +8148,17 @@ u8 Spyro::CheckForLedge(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2,
     sp1E0 = (f64) spC0;
     sp1F0 = (f64) sp100;
     sp200 = temp_f2_14304;
-    M2C_ERROR(/* unknown instruction: ps_add $f2, $f3, $f2 */);
-    sp208 = spE8;
+    temp_f2_14392 = temp_f3_14303 + sp1E8;
+    spE8 = temp_f2_14392;
+    sp208 = temp_f2_14392;
     spF0 = (f32) sp200 + (f32) sp1F0;
     sp210 = (f64) spF0;
-    M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
-    sp218 = spD8;
+    temp_f1_14403 = temp_f2_14392 + temp_f1_14327;
+    spD8 = temp_f1_14403;
+    sp218 = temp_f1_14403;
     spE0 = (f32) sp210 + temp_f0_14331;
     sp220 = (f64) spE0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spA8 = temp_f1_14403 + sp1D8;
     spA0 = 0.0f;
     sp98 = 0.0f;
     sp9C = 70.0f;
@@ -7860,16 +8167,17 @@ u8 Spyro::CheckForLedge(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2,
     sp2B8 = spA8;
     sp2C0 = (f64) spB0;
     sp1C0 = (f64) spA0;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    temp_f0_14434 = sp2C8 + sp1B8;
+    sp88 = temp_f0_14434;
     sp78 = 0.0f;
-    sp2A8 = sp88;
+    sp2A8 = temp_f0_14434;
     sp90 = (f32) sp2D0 + (f32) sp1C0;
     sp2B0 = (f64) sp90;
     sp80 = 0.0f;
     sp7C = -140.0f;
     sp1B0 = (f64) sp80;
     sp1A8 = (f64) sp78;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp68 = sp2B8 + sp1A8;
     sp298 = sp68;
     sp70 = (f32) sp2C0 + (f32) sp1B0;
     sp3B8 = 0.0f;
@@ -7915,68 +8223,64 @@ u8 Spyro::CheckForLedge(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2,
     sp3A8 = NULL;
     sp3AC = -1;
     sp3B0 = 0;
-    if ((MKCollision_RayCollide(*((MKVector3 *) &sp2D8), *((MKVector3 *) &sp2C8), (MKCollisionResult *) &sp3B8, (MKCollisionMode) 7, 0x2A2) != 0) && (MKCollision_RayCollide(*((MKVector3 *) &sp2C8), *((MKVector3 *) &sp2A8), (MKCollisionResult *) &sp360, (MKCollisionMode) 7, 0x2A3) != 0) && (MKCollision_RayCollide(*((MKVector3 *) &sp2B8), *((MKVector3 *) &sp298), &sp308, (MKCollisionMode) 7, 0x2A3) == 0) && (((sp378 * MKVector3::up.unk8) + ((sp370 * MKVector3::up.unk0) + (sp374 * MKVector3::up.unk4))) < -0.7f)) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (((sp3D0 * MKVector3::up.unk8) + ((sp3C8 * MKVector3::up.unk0) + (sp3CC * MKVector3::up.unk4))) == 0.3f) {
-            if ((sp408 != 0) && (sp400 != NULL) && (var_r0_14565 = M2C_FIELD(sp400, void ***, 8), ((var_r0_14565 == NULL) == 0))) {
+    if ((MKCollision_RayCollide(*((MKVector3 *) &sp2D8), *((MKVector3 *) &sp2C8), (MKCollisionResult *) &sp3B8, (MKCollisionMode) 7, 0x2A2) != 0) && (MKCollision_RayCollide(*((MKVector3 *) &sp2C8), *((MKVector3 *) &sp2A8), (MKCollisionResult *) &sp360, (MKCollisionMode) 7, 0x2A3) != 0) && (MKCollision_RayCollide(*((MKVector3 *) &sp2B8), *((MKVector3 *) &sp298), &sp308, (MKCollisionMode) 7, 0x2A3) == 0) && (((sp378 * MKVector3::up.unk8) + ((sp370 * MKVector3::up.unk0) + (sp374 * MKVector3::up.unk4))) < -0.7f) && (((sp3D0 * MKVector3::up.unk8) + ((sp3C8 * MKVector3::up.unk0) + (sp3CC * MKVector3::up.unk4))) <= 0.3f)) {
+        if ((sp408 != 0) && (sp400 != NULL) && (var_r0_14565 = M2C_FIELD(sp400, void ***, 8), ((var_r0_14565 == NULL) == 0))) {
+
+        } else {
+            var_r0_14565 = NULL;
+        }
+        if (var_r0_14565 != NULL) {
+            if ((sp408 != 0) && (sp400 != NULL) && (var_r3_14579 = M2C_FIELD(sp400, void ***, 8), ((var_r3_14579 == NULL) == 0))) {
 
             } else {
-                var_r0_14565 = NULL;
+                var_r3_14579 = NULL;
             }
-            if (var_r0_14565 != NULL) {
-                if ((sp408 != 0) && (sp400 != NULL) && (var_r3_14579 = M2C_FIELD(sp400, void ***, 8), ((var_r3_14579 == NULL) == 0))) {
-
-                } else {
-                    var_r3_14579 = NULL;
-                }
-                if (M2C_FIELD(*var_r3_14579, s32 *, 0xC) & 0x80000) {
-                    return 0U;
-                }
-                goto block_18;
+            if (M2C_FIELD(*var_r3_14579, s32 *, 0xC) & 0x80000) {
+                return 0U;
             }
-block_18:
-            if (arg1 != NULL) {
-                sp58 = -(f32) sp2F8;
-                sp5C = -unksp2FC;
-                sp60 = -(f32) sp300;
-                sp288 = (f64) sp58;
-                sp290 = (f64) sp60;
-                M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
-                sp278 = sp48;
-                sp50 = sp3C0 - sp368;
-                sp280 = (f64) sp50;
-                sp188.operator*((((f32) sp280 * sp3D0) + (((f32) sp278 * sp3C8) + (unksp27C * sp3CC))) / (((f32) sp290 * sp3D0) + (((f32) sp288 * sp3C8) + (unksp28C * sp3CC))));
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_FIELD(arg1, f64 *, 0) = sp18;
-                sp20 = sp188.unk8 + sp368;
-                sp198 = sp18;
-                sp1A0 = (f64) sp20;
-                M2C_FIELD(arg1, f64 *, 8) = (f64) sp20;
-            }
-            if (arg2 != NULL) {
-                sp168.operator*(120.0f);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_FIELD(arg2, f64 *, 0) = sp8;
-                sp10 = (f32) sp2E0 + sp168.unk8;
-                sp178 = sp8;
-                sp180 = (f64) sp10;
-                M2C_FIELD(arg2, f64 *, 8) = (f64) sp10;
-            }
-            if (arg3 != NULL) {
-                M2C_FIELD(arg3, f64 *, 0) = (f64) sp3C8;
-                M2C_FIELD(arg3, f64 *, 8) = (f64) sp3D0;
-            }
-            if (arg4 != NULL) {
-                if ((sp3B0 != 0) && (sp3A8 != NULL) && (var_r0_14688 = M2C_FIELD(sp3A8, MKProp **, 8), ((var_r0_14688 == NULL) == 0))) {
-
-                } else {
-                    var_r0_14688 = NULL;
-                }
-                *arg4 = var_r0_14688;
-            }
-            return 1U;
+            goto block_18;
         }
+block_18:
+        if (arg1 != NULL) {
+            sp58 = -(f32) sp2F8;
+            sp5C = -unksp2FC;
+            sp60 = -(f32) sp300;
+            sp288 = (f64) sp58;
+            sp290 = (f64) sp60;
+            sp48 = (f64) sp3B8 - (f64) sp360;
+            sp278 = sp48;
+            sp50 = sp3C0 - sp368;
+            sp280 = (f64) sp50;
+            sp188.operator*((((f32) sp280 * sp3D0) + (((f32) sp278 * sp3C8) + (unksp27C * sp3CC))) / (((f32) sp290 * sp3D0) + (((f32) sp288 * sp3C8) + (unksp28C * sp3CC))));
+            sp18 = sp188 + (f64) sp360;
+            M2C_FIELD(arg1, f64 *, 0) = sp18;
+            sp20 = sp188.unk8 + sp368;
+            sp198 = sp18;
+            sp1A0 = (f64) sp20;
+            M2C_FIELD(arg1, f64 *, 8) = (f64) sp20;
+        }
+        if (arg2 != NULL) {
+            sp168.operator*(120.0f);
+            sp8 = sp2D8 + M2C_BITWISE(f64, sp168);
+            M2C_FIELD(arg2, f64 *, 0) = sp8;
+            sp10 = (f32) sp2E0 + sp168.unk8;
+            sp178 = sp8;
+            sp180 = (f64) sp10;
+            M2C_FIELD(arg2, f64 *, 8) = (f64) sp10;
+        }
+        if (arg3 != NULL) {
+            M2C_FIELD(arg3, f64 *, 0) = (f64) sp3C8;
+            M2C_FIELD(arg3, f64 *, 8) = (f64) sp3D0;
+        }
+        if (arg4 != NULL) {
+            if ((sp3B0 != 0) && (sp3A8 != NULL) && (var_r0_14688 = M2C_FIELD(sp3A8, MKProp **, 8), ((var_r0_14688 == NULL) == 0))) {
+
+            } else {
+                var_r0_14688 = NULL;
+            }
+            *arg4 = var_r0_14688;
+        }
+        return 1U;
     }
     return 0U;
 }
@@ -7996,7 +8300,7 @@ void Spyro::UpdateMovement() {
     f64 spE0;
     f64 spD8;
     f64 spD0;
-    M2C_UNK spC0;
+    f64 spC0;
     f64 spB0;
     f64 spA8;
     f64 spA0;
@@ -8006,11 +8310,14 @@ void Spyro::UpdateMovement() {
     MKVector3 sp70;
     M2C_UNK sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -8029,6 +8336,9 @@ void Spyro::UpdateMovement() {
     f32 temp_f1_14719;
     f32 temp_f3_14764;
     f32 var_f1_14765;
+    f64 temp_f0_14731;
+    f64 temp_f0_14830;
+    f64 temp_f0_14880;
     u8 temp_r3_14895;
     void ***temp_r4_14857;
 
@@ -8036,13 +8346,12 @@ void Spyro::UpdateMovement() {
     if (temp_f1_14719 != this->unk3A8.unk0) {
         this->unk3A0.RollTowards(temp_f1_14719, 10.0f);
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp130 = sp50;
+    temp_f0_14731 = M2C_FIELD(this, f64 *, 0x338) * (f64) gUpdateTimeDelta;
+    sp50 = temp_f0_14731;
+    sp130 = temp_f0_14731;
     sp58 = this->unk338 * gUpdateTimeDelta;
     sp138 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp130 += M2C_FIELD(this, f64 *, 0x348);
     sp138 = (f32) sp138 + this->unk348;
     this->unk340 = 0.0f;
     this->unk34C = 0.0f;
@@ -8076,10 +8385,10 @@ void Spyro::UpdateMovement() {
     temp_r3_14814 = this->unk26C.unk8;
     M2C_FIELD(temp_r3_14814->unk0, M2C_UNK (**)(MKProp *, f64 *, s32, f32), 0x10)(temp_r3_14814, &sp130, ((u32) this->unk428 >> 5U) & 1, 0.0f);
     temp_r4_14821 = this->unk26C.unk8;
-    M2C_FIELD(temp_r4_14821->unk0, M2C_UNK (**)(M2C_UNK *, MKProp *), 0x4C)(&spC0, temp_r4_14821);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    spD0 = sp40;
+    M2C_FIELD(temp_r4_14821->unk0, M2C_UNK (**)(f64 *, MKProp *), 0x4C)(&spC0, temp_r4_14821);
+    temp_f0_14830 = spC0 - sp120;
+    sp40 = temp_f0_14830;
+    spD0 = temp_f0_14830;
     sp48 = spC8 - (f32) sp128;
     spD8 = (f64) sp48;
     deltaMove = ((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (unkspD4 * unkspD4));
@@ -8099,8 +8408,9 @@ void Spyro::UpdateMovement() {
         sp38 = 0.0f;
         sp90 = (f64) sp30;
         sp98 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spA0 = sp20;
+        temp_f0_14880 = sp110 + sp90;
+        sp20 = temp_f0_14880;
+        spA0 = temp_f0_14880;
         sp28 = (f32) sp118 + (f32) sp98;
         spA8 = (f64) sp28;
         temp_r3_14895 = MKCollision_RayCollide(*((MKVector3 *) &sp110), *((MKVector3 *) &spA0), NULL, (MKCollisionMode) 7, 0x220);
@@ -8565,6 +8875,7 @@ void Spyro::UpdateCameraInfo(const MKVector3 &arg0) {
     MKProp sp40;
     M2C_UNK sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -8574,8 +8885,7 @@ void Spyro::UpdateCameraInfo(const MKVector3 &arg0) {
             sp70.unk34 = NULL;
             sp70.GetPos();
             sp70.unk10.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp20 = sp70.unk10 - M2C_BITWISE(f64, sp70);
             sp70.unk20 = sp20;
             sp28 = M2C_BITWISE(f32, sp70.unk18) - M2C_BITWISE(f32, sp70.unk8);
             sp70.unk30 = (MKProp *)0x432;
@@ -8615,28 +8925,30 @@ void Spyro::UpdateCameraInfo(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void Spyro::UpdateSpyroCameraInfo() {
     f64 sp30;
     f64 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_15826;
+    f64 temp_f1_15819;
     void *temp_r4_15818;
 
     if (this->unk428 & 0x400) {
         temp_r4_15818 = this->unk8;
-        sp18 = M2C_FIELD(temp_r4_15818, f64 *, 0x30);
+        temp_f1_15819 = M2C_FIELD(temp_r4_15818, f64 *, 0x30);
+        sp18 = temp_f1_15819;
         sp20 = M2C_FIELD(temp_r4_15818, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp28 = sp8;
+        temp_f0_15826 = temp_f1_15819 + M2C_FIELD(this, f64 *, 0x368);
+        sp8 = temp_f0_15826;
+        sp28 = temp_f0_15826;
         sp10 = (f32) sp20 + M2C_FIELD(this, f32 *, 0x370);
         sp30 = (f64) sp10;
         UpdateCameraInfo(*((MKVector3 *) &sp28));
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void Spyro::Resolve() {
@@ -9285,14 +9597,14 @@ void SpyroCombatArcDescriptor::Init() {
 void SafePosInfo::SetPos(const MKVector3 &arg0, MKProp *arg1) {
     f64 sp30;
     f64 sp28;
-    M2C_UNK sp18;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     this->unk10 = arg1;
     if (arg1 != NULL) {
         sp18.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp8 = M2C_FIELD(&arg0, f64 *, 0) - sp18;
         this->unk0 = sp8;
         sp10 = arg0.unk8 - sp20;
         sp28 = sp8;
@@ -9305,22 +9617,26 @@ void SafePosInfo::SetPos(const MKVector3 &arg0, MKProp *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: pointer/array required
 void SafePosInfo::GetPos() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_17398;
+    f64 temp_f1_17392;
     void *temp_r5_17388;
     void *temp_r5_17391;
 
     temp_r5_17388 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 0x10);
     if (temp_r5_17388 != NULL) {
         temp_r5_17391 = M2C_FIELD(temp_r5_17388, void **, 8);
-        sp18 = M2C_FIELD(temp_r5_17391, f64 *, 0x30);
+        temp_f1_17392 = M2C_FIELD(temp_r5_17391, f64 *, 0x30);
+        sp18 = temp_f1_17392;
         sp20 = M2C_FIELD(temp_r5_17391, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        this->unk0 = sp8;
+        temp_f0_17398 = temp_f1_17392 + *M2C_ERROR(/* Read from unset register $r4 */);
+        sp8 = temp_f0_17398;
+        this->unk0 = temp_f0_17398;
         sp10 = (f32) sp20 + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 8);
         this->unk8 = (f64) sp10;
         return;

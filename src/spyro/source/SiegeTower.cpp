@@ -164,15 +164,16 @@ void SiegeTower::Shoot(Targetable *arg0) {
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 void SiegeTower::UpdateShooting(Targetable *arg0) {
-    M2C_UNK sp58;
+    f64 sp58;
     f64 sp50;
     f64 sp48;
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
+    f64 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_r3_330;
     f64 temp_f0_409;
     f64 temp_f1_359;
@@ -187,8 +188,7 @@ void SiegeTower::UpdateShooting(Targetable *arg0) {
 
     if ((u32) this->unk1C0.unk78 != 0U) {
         this->unk270.unkC -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk270.unkC == 0.0f) {
+        if (this->unk270.unkC <= 0.0f) {
             temp_r3_321 = this->unk1C0.unk78;
             M2C_FIELD(M2C_FIELD(temp_r3_321, void **, 0x44), M2C_UNK (**)(s32), 0x54)(temp_r3_321);
             M2C_FIELD(this->unk1C0.unk78, s32 *, 0x130) = 0;
@@ -212,9 +212,9 @@ void SiegeTower::UpdateShooting(Targetable *arg0) {
                 temp_f1_359 = M2C_FIELD(temp_r6_355, f64 *, 0x30);
                 sp48 = temp_f1_359;
                 sp50 = M2C_FIELD(temp_r6_355, f64 *, 0x38);
-                M2C_FIELD(arg0->__vptr, M2C_UNK (**)(Targetable *, f64 *, M2C_UNK *, void *, f64), 0x2C)(arg0, &sp48, &sp58, temp_r6_355, temp_f1_359);
+                M2C_FIELD(arg0->__vptr, M2C_UNK (**)(Targetable *, f64 *, f64 *, void *, f64), 0x2C)(arg0, &sp48, &sp58, temp_r6_355, temp_f1_359);
                 MKVector(0.0f, 100.0f, 0.0f);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp8 = sp58 + sp28;
                 M2C_FIELD(this, f64 *, 0x280) = sp8;
                 sp10 = sp60 + sp30;
                 sp38 = sp8;
@@ -314,7 +314,7 @@ block_17:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void SiegeTower::UpdateTurning(MKVector3 arg0) {
     MKVector3 spB0;
     f64 spA8;
@@ -329,6 +329,7 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -336,6 +337,7 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f0_709;
     f32 temp_f10_710;
@@ -348,6 +350,7 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
     f32 var_f4_635;
     f32 var_f7_622;
     f32 var_f7_765;
+    f64 temp_f0_616;
     f64 temp_f1_640;
     f64 temp_f1_646;
     f64 temp_f1_650;
@@ -365,16 +368,17 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
         MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r4_582, &spB0);
     } else {
         sp60.operator*(100.0f);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp10 = spA0 + M2C_BITWISE(f64, sp60);
         sp70 = sp10;
         sp18 = (f32) spA8 + sp60.unk8;
         spB0 = sp10;
         sp78 = (f64) sp18;
         spB0.unk8 = (f64) sp18;
     }
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_616 = M2C_BITWISE(f64, spB0) - spA0;
+    sp40 = temp_f0_616;
     var_f7_622 = 0.0f;
-    sp90 = sp40;
+    sp90 = temp_f0_616;
     sp48 = spB0.unk8 - (f32) spA8;
     unksp94 = 0.0f;
     sp98 = (f64) sp48;
@@ -455,8 +459,7 @@ void SiegeTower::UpdateTurning(MKVector3 arg0) {
     } else {
         var_f2_780 = var_f7_765;
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (var_f2_780 == 0.02f) {
+    if (var_f2_780 >= 0.02f) {
         var_r0_789 = 1;
     } else {
         var_r0_789 = 0;
@@ -503,6 +506,7 @@ void SiegeTower::Update() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     s32 sp8;
     KDSynkerPlayer3 *temp_r3_1030;
@@ -511,6 +515,7 @@ void SiegeTower::Update() {
     f32 var_f1_1302;
     f32 var_f31_1137;
     f32 var_f4_1124;
+    f64 temp_f0_1118;
     f64 temp_f1_1103;
     f64 temp_f1_1142;
     f64 temp_f1_1148;
@@ -618,9 +623,10 @@ void SiegeTower::Update() {
             temp_r3_1111 = this->unk8;
             sp38 = M2C_FIELD(temp_r3_1111, f64 *, 0x30);
             sp40 = M2C_FIELD(temp_r3_1111, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_f0_1118 = sp68 - sp38;
+            sp18 = temp_f0_1118;
             var_f4_1124 = 0.0f;
-            sp58 = sp18;
+            sp58 = temp_f0_1118;
             sp20 = (f32) sp70 - (f32) sp40;
             unksp5C = 0.0f;
             sp60 = (f64) sp20;
@@ -669,22 +675,18 @@ void SiegeTower::Update() {
             sp28 = (f64) sp58;
             sp30 = (f64) sp60;
             UpdateTurning((MKVector3) &sp28);
-            if ((M2C_ERROR(/* Read from unset register $f1 */) < 0.1f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((var_f31_1137 == this->unk280.unk0) != 0))) {
-                if ((u32) this->unk1C0.unk78 == 0U) {
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if (this->unk31C == 0.0f) {
-                        if ((KDSound_IsVoicePlaying(this->unk328) == 0) || ((u8) M2C_FIELD(this, u8 *, 0x32C) != 0)) {
-                            M2C_FIELD(this, u8 *, 0x32C) = 0U;
-                            this->unk320 = 0.0f;
-                            KDSound_Stop(&this->unk328);
-                            this->unk328 = KDSound_Play3d(GS_SiegeTowerExtra3, (MKVector3 *) &this->unk250.unkC, 0U, -1, 0.0f, 0U);
-                        }
-                        this->unk31C = 1.5f;
+            if ((M2C_ERROR(/* Read from unset register $f1 */) < 0.1f) && (var_f31_1137 <= this->unk280.unk0)) {
+                if (((u32) this->unk1C0.unk78 == 0U) && (this->unk31C <= 0.0f)) {
+                    if ((KDSound_IsVoicePlaying(this->unk328) == 0) || ((u8) M2C_FIELD(this, u8 *, 0x32C) != 0)) {
+                        M2C_FIELD(this, u8 *, 0x32C) = 0U;
+                        this->unk320 = 0.0f;
+                        KDSound_Stop(&this->unk328);
+                        this->unk328 = KDSound_Play3d(GS_SiegeTowerExtra3, (MKVector3 *) &this->unk250.unkC, 0U, -1, 0.0f, 0U);
                     }
+                    this->unk31C = 1.5f;
                 }
                 this->unk31C -= gUpdateTimeDelta;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (this->unk31C == 0.0f) {
+                if (this->unk31C <= 0.0f) {
                     this->unk31C = 0.0f;
                     M2C_FIELD(this, u8 *, 0x32C) = 1U;
                     this->unk320 = 0.75f;
@@ -709,8 +711,7 @@ void SiegeTower::Update() {
             }
             KDSound_SetVolume(this->unk328, var_f1_1302);
             this->unk320 -= gUpdateTimeDelta;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk320 == 0.0f) {
+            if (this->unk320 <= 0.0f) {
                 KDSound_Stop(&this->unk328);
             }
         }

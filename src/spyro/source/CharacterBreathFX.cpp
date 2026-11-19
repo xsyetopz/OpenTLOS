@@ -18,24 +18,19 @@ void CharacterBreathFX::UpdateBreathingFX() {
     temp_r3_16 = this->unk10;
     if ((temp_r3_16 >> 6U) & 1) {
         if ((temp_r3_16 >> 7U) & 1) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unkC) {
+            if (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkC) {
                 this->unkC = M2C_FIELD(&gb, f32 *, 0x30C) + 0.15f;
                 temp_r4_32 = this->unk0;
                 temp_r5_36 = this->unk0;
                 EmitBreathFx(M2C_FIELD(temp_r5_36, s32 *, 4), MKRand_Float(&gViewSeed, M2C_FIELD(temp_r4_32, f32 *, 8), M2C_FIELD(temp_r4_32, f32 *, 0xC)), M2C_FIELD(temp_r5_36, f32 *, 0x10), M2C_FIELD(temp_r5_36, f32 *, 0x14), M2C_FIELD(temp_r5_36, f32 *, 0x18), M2C_FIELD(temp_r5_36, f32 *, 0x1C));
             }
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unk8) {
+            if (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk8) {
                 this->unk8 = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float(&gViewSeed, 1.75f, 2.0f);
                 this->unk10 &= ~0x80;
             }
-        } else {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unk8) {
-                this->unk8 = M2C_FIELD(&gb, f32 *, 0x30C) + 1.25f;
-                this->unk10 |= 0x80;
-            }
+        } else if (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk8) {
+            this->unk8 = M2C_FIELD(&gb, f32 *, 0x30C) + 1.25f;
+            this->unk10 |= 0x80;
         }
     }
 }
@@ -44,8 +39,8 @@ void CharacterBreathFX::UpdateBreathingFX() {
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void CharacterBreathFX::EmitConeBreathFx(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
     MKVector3 sp140;
-    f32 sp130;
-    M2C_UNK sp120;
+    f64 sp130;
+    f64 sp120;
     Matrix spE0;
     M2C_UNK spDC;
     M2C_UNK sp9C;
@@ -60,14 +55,19 @@ void CharacterBreathFX::EmitConeBreathFx(int arg0, float arg1, float arg2, float
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     f32 temp_f2_241;
-    f32 var_f29_215;
-    f32 var_f30_185;
+    f64 temp_f0_191;
+    f64 temp_f0_221;
+    f64 var_f29_215;
+    f64 var_f30_185;
     s32 temp_r4_150;
     s32 var_r27_163;
     void *temp_r26_271;
@@ -85,24 +85,25 @@ loop_13:
             M2C_STRUCT_COPY((s32) &spE0.unk3C + 4, (s32) &spDC + 4, 0x40);
             if (arg5 > 0.0f) {
                 if (MKRand_Float(&gViewSeed, 0.0f, 1.0f) > 0.5f) {
-                    var_f30_185 = 1.0f;
+                    var_f30_185 = 5.263544247e-315;
                 } else {
-                    var_f30_185 = -1.0f;
+                    var_f30_185 = 1.58735232e-314;
                 }
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp80 = sp40;
-                sp48 = sp138 * var_f30_185;
+                temp_f0_191 = sp130 * var_f30_185;
+                sp40 = temp_f0_191;
+                sp80 = temp_f0_191;
+                sp48 = sp138 * (f32) var_f30_185;
                 sp88 = (f64) sp48;
                 Tools_RotateMatrixToDirection((Matrix *) &sp120, sp140, *((MKVector3 *) &sp80), MKRand_Float(&gViewSeed, arg4, arg5));
                 if (MKRand_Float(&gViewSeed, 0.0f, 1.0f) > 0.5f) {
-                    var_f29_215 = 1.0f;
+                    var_f29_215 = 5.263544247e-315;
                 } else {
-                    var_f29_215 = -1.0f;
+                    var_f29_215 = 1.58735232e-314;
                 }
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                sp70 = sp30;
-                sp38 = sp128 * var_f29_215;
+                temp_f0_221 = sp120 * var_f29_215;
+                sp30 = temp_f0_221;
+                sp70 = temp_f0_221;
+                sp38 = sp128 * (f32) var_f29_215;
                 sp78 = (f64) sp38;
                 Tools_RotateMatrixToDirection((Matrix *) &sp120, sp140, *((MKVector3 *) &sp70), MKRand_Float(&gViewSeed, arg4, arg5));
             }
@@ -112,7 +113,7 @@ loop_13:
             sp18 = -sp140.unk8;
             sp50 = (f64) sp10;
             sp58 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
+            sp20 = sp50 * (f64) arg1;
             sp60 = sp20;
             sp28 = (f32) sp58 * arg1;
             sp90 = sp20;
@@ -141,7 +142,7 @@ loop_13:
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void CharacterBreathFX::EmitBreathFx(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
     MKVector3 sp120;
-    f32 sp110;
+    f64 sp110;
     M2C_UNK sp100;
     Matrix spC0;
     M2C_UNK spBC;
@@ -155,12 +156,15 @@ void CharacterBreathFX::EmitBreathFx(int arg0, float arg1, float arg2, float arg
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
     f32 temp_f2_613;
-    f32 var_f30_587;
+    f64 temp_f0_593;
+    f64 var_f30_587;
     s32 temp_r4_552;
     s32 var_r27_565;
     void *temp_r26_643;
@@ -178,14 +182,14 @@ loop_10:
             M2C_STRUCT_COPY((s32) &spC0.unk3C + 4, (s32) &spBC + 4, 0x40);
             if (arg5 > 0.0f) {
                 if (MKRand_Float(&gViewSeed, 0.0f, 1.0f) > 0.5f) {
-                    var_f30_587 = 1.0f;
+                    var_f30_587 = 5.263544247e-315;
                 } else {
-                    var_f30_587 = -1.0f;
+                    var_f30_587 = 1.58735232e-314;
                 }
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp60 = sp30;
-                sp38 = sp118 * var_f30_587;
+                temp_f0_593 = sp110 * var_f30_587;
+                sp30 = temp_f0_593;
+                sp60 = temp_f0_593;
+                sp38 = sp118 * (f32) var_f30_587;
                 sp68 = (f64) sp38;
                 Tools_RotateMatrixToDirection((Matrix *) &sp100, sp120, *((MKVector3 *) &sp60), MKRand_Float(&gViewSeed, arg4, arg5));
             }
@@ -195,7 +199,7 @@ loop_10:
             sp18 = -sp120.unk8;
             sp40 = (f64) sp10;
             sp48 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
+            sp20 = sp40 * (f64) arg1;
             sp50 = sp20;
             sp28 = (f32) sp48 * arg1;
             sp70 = sp20;

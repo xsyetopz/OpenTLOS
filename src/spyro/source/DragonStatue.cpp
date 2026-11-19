@@ -36,13 +36,16 @@ void DragonStatue::EmitDust() {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f0_122;
-    f32 temp_f2_227;
+    f32 temp_f2_219;
     f32 temp_f3_124;
     f32 var_f4_130;
     f32 var_f5_197;
+    f64 temp_f0_222;
+    f64 temp_f0_251;
     f64 temp_f1_121;
     f64 temp_f1_136;
     f64 temp_f1_142;
@@ -109,18 +112,19 @@ loop_22:
         sp48 *= var_f5_197;
         sp50 = (f64) sp40;
         sp58 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        temp_f2_227 = (f32) sp58 * (100.0f * MKRand_Float(&gViewSeed, 5.0f, 12.0f));
+        temp_f2_219 = 100.0f * MKRand_Float(&gViewSeed, 5.0f, 12.0f);
+        temp_f0_222 = sp50 * (f64) temp_f2_219;
+        sp50 = temp_f0_222;
         sp60 = (f64) sp40;
-        sp58 = temp_f2_227;
+        sp58 = (f32) sp58 * temp_f2_219;
         sp68 = (f64) sp48;
         unksp64 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+        sp60 *= 5.53552857e-315;
         sp68 = (f32) sp68 * 100.0f;
         spC = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp30 = sp10;
+        temp_f0_251 = this->unkD8 + temp_f0_222;
+        sp10 = temp_f0_251;
+        sp30 = temp_f0_251;
         sp18 = this->unkE0 + sp58;
         sp38 = (f64) sp18;
         gb.EmitDust(*((MKVector3 *) &sp30), *((MKVector3 *) &sp60), spC, 0.0f);
@@ -144,6 +148,7 @@ void DragonStatue::EmitCrudAboveStatue() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -152,6 +157,7 @@ void DragonStatue::EmitCrudAboveStatue() {
     f32 temp_f28_356;
     f32 temp_f29_327;
     f32 temp_f29_361;
+    f64 temp_f0_375;
     s32 var_r30_312;
 
     var_r30_312 = 0;
@@ -167,7 +173,7 @@ loop_2:
         sp18 = temp_f29_327;
         sp50 = (f64) sp10;
         sp58 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp70 += sp50;
         sp78 = (f32) sp78 + (f32) sp58;
         temp_f28_356 = MKRand_Float(&gViewSeed, -4.0f, 4.0f);
         temp_f29_361 = MKRand_Float(&gViewSeed, -2.0f, 0.5f);
@@ -176,8 +182,9 @@ loop_2:
         sp38 = temp_f28_356;
         sp40 = (f64) sp30;
         sp48 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp60 = sp20;
+        temp_f0_375 = sp40 * 5.53552857e-315;
+        sp20 = temp_f0_375;
+        sp60 = temp_f0_375;
         sp28 = (f32) sp48 * 100.0f;
         sp68 = (f64) sp28;
         sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
@@ -196,19 +203,23 @@ void DragonStatue::EmitCrudAbovePlayer() {
     f64 sp70;
     f64 sp68;
     f64 sp60;
-    M2C_UNK sp50;
+    f64 sp50;
     f64 sp48;
     f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f27_457;
     f32 temp_f27_494;
     f32 temp_f28_462;
     f32 temp_f28_499;
+    f64 temp_f0_473;
+    f64 temp_f0_513;
     s32 var_r29_437;
     void *temp_r4_445;
 
@@ -222,12 +233,12 @@ loop_2:
         temp_f27_457 = MKRand_Float(&gViewSeed, -10.0f, 10.0f);
         temp_f28_462 = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
         MKVector(MKRand_Float(&gViewSeed, -10.0f, 10.0f), temp_f28_462, temp_f27_457);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp60 = sp10;
+        temp_f0_473 = sp50 * 5.53552857e-315;
+        sp10 = temp_f0_473;
+        sp60 = temp_f0_473;
         sp18 = sp58 * 100.0f;
         sp68 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp80 += temp_f0_473;
         sp88 = (f32) sp88 + (f32) sp68;
         temp_f27_494 = MKRand_Float(&gViewSeed, -4.0f, 4.0f);
         temp_f28_499 = MKRand_Float(&gViewSeed, -2.0f, 0.5f);
@@ -236,8 +247,9 @@ loop_2:
         sp38 = temp_f27_494;
         sp40 = (f64) sp30;
         sp48 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp70 = sp20;
+        temp_f0_513 = sp40 * 5.53552857e-315;
+        sp20 = temp_f0_513;
+        sp70 = temp_f0_513;
         sp28 = (f32) sp48 * 100.0f;
         sp78 = (f64) sp28;
         sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
@@ -286,7 +298,7 @@ void DragonStatue::Message(MKMessage *arg0) {
     s32 spB8;
     f64 spB0;
     f64 spA8;
-    M2C_UNK sp98;
+    f64 sp98;
     f64 sp90;
     f64 sp88;
     f64 sp80;
@@ -298,7 +310,9 @@ void DragonStatue::Message(MKMessage *arg0) {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -306,6 +320,8 @@ void DragonStatue::Message(MKMessage *arg0) {
     f32 spC;
     f32 sp8;
     f32 temp_f1_764;
+    f64 temp_f0_757;
+    f64 temp_f1_750;
     s32 temp_r0_674;
     void *temp_r3_749;
 
@@ -318,8 +334,7 @@ void DragonStatue::Message(MKMessage *arg0) {
         sp88 = this->unkD8;
         sp90 = M2C_FIELD(this, f64 *, 0xE0);
         MKVector(0.7f, 0.7f, 0.7f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp28 = sp98 * 5.398241246e-315;
         sp30 = spA0 * 10.0f;
         spB8 = 0x419;
         spD0 = sp28;
@@ -363,12 +378,13 @@ void DragonStatue::Message(MKMessage *arg0) {
             this->unkAC = 2000.0f;
             this->unkB0 = 0.0f;
             temp_r3_749 = this->unk8;
-            sp48 = M2C_FIELD(temp_r3_749, f64 *, 0x30);
+            temp_f1_750 = M2C_FIELD(temp_r3_749, f64 *, 0x30);
+            sp48 = temp_f1_750;
             sp50 = M2C_FIELD(temp_r3_749, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            temp_f0_757 = temp_f1_750 + (f64) M2C_FIELD(this, f32 *, 0xA8);
+            sp38 = temp_f0_757;
             temp_f1_764 = (f32) sp50 + this->unkB0;
-            sp58 = sp38;
+            sp58 = temp_f0_757;
             sp40 = temp_f1_764;
             sp60 = (f64) sp40;
             SetPos(sp58, temp_f1_764, (f32) sp50, (f64) sp10, (f64) sp8, (f64) sp20, (f64) sp18);
@@ -450,18 +466,31 @@ void DragonStatue::Update() {
     MKCollisionInfo sp128;
     MKCollisionInfo sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     s32 sp40;
     s32 sp3C;
     s32 sp38;
@@ -518,6 +547,14 @@ void DragonStatue::Update() {
     f32 var_f4_1548;
     f32 var_f4_1645;
     f32 var_f5_1819;
+    f64 temp_f0_1380;
+    f64 temp_f0_1426;
+    f64 temp_f0_1459;
+    f64 temp_f0_1731;
+    f64 temp_f0_2023;
+    f64 temp_f0_952;
+    f64 temp_f0_985;
+    f64 temp_f1_1046;
     f64 temp_f1_1077;
     f64 temp_f1_1083;
     f64 temp_f1_1087;
@@ -527,6 +564,9 @@ void DragonStatue::Update() {
     f64 temp_f1_1277;
     f64 temp_f1_1283;
     f64 temp_f1_1287;
+    f64 temp_f1_1373;
+    f64 temp_f1_1452;
+    f64 temp_f1_1520;
     f64 temp_f1_1551;
     f64 temp_f1_1557;
     f64 temp_f1_1561;
@@ -536,6 +576,8 @@ void DragonStatue::Update() {
     f64 temp_f1_1941;
     f64 temp_f1_1947;
     f64 temp_f1_1951;
+    f64 temp_f1_2013;
+    f64 temp_f1_978;
     f64 temp_f2_1048;
     f64 temp_f2_1522;
     f64 temp_f2_1751;
@@ -625,26 +667,25 @@ void DragonStatue::Update() {
         temp_f4_936 = this->unkB0;
         temp_f5_939 = this->unkC0;
         if (((temp_f4_936 * temp_f4_936) + ((temp_f0_930 * temp_f0_930) + (temp_f2_931 * temp_f2_931))) < ((temp_f5_939 * temp_f5_939) + ((temp_f1_932 * temp_f1_932) + (temp_f0_934 * temp_f0_934)))) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp258 = sp58;
+            temp_f0_952 = M2C_FIELD(this, f64 *, 0xC8) * (f64) gUpdateTimeDelta;
+            sp58 = temp_f0_952;
+            sp258 = temp_f0_952;
             sp60 = this->unkD0 * gUpdateTimeDelta;
             sp260 = (f64) sp60;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+            M2C_FIELD(this, f32 *, 0xA8) = (f64) ((f64) M2C_FIELD(this, f32 *, 0xA8) + temp_f0_952);
             this->unkB0 += (f32) sp260;
         } else {
             M2C_FIELD(this, f32 *, 0xA8) = (f64) M2C_FIELD(this, f32 *, 0xB8);
             M2C_FIELD(this, f32 *, 0xB0) = (f64) M2C_FIELD(this, f32 *, 0xC0);
         }
         temp_r3_977 = this->unk8;
-        sp238 = M2C_FIELD(temp_r3_977, f64 *, 0x30);
+        temp_f1_978 = M2C_FIELD(temp_r3_977, f64 *, 0x30);
+        sp238 = temp_f1_978;
         sp240 = M2C_FIELD(temp_r3_977, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_985 = temp_f1_978 + (f64) M2C_FIELD(this, f32 *, 0xA8);
+        sp108 = temp_f0_985;
         temp_f1_992 = (f32) sp240 + this->unkB0;
-        sp248 = sp108;
+        sp248 = temp_f0_985;
         sp110 = temp_f1_992;
         sp250 = (f64) sp110;
         SetPos(sp248, temp_f1_992, (f32) sp240);
@@ -661,14 +702,14 @@ void DragonStatue::Update() {
         MKModel_SetWorldMatrix(this->unk4, sp330);
         temp_r4_1044 = this->unk8;
         temp_r3_1045 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
+        temp_f1_1046 = M2C_FIELD(temp_r4_1044, f64 *, 0x30);
         temp_f3_1047 = M2C_FIELD(temp_r3_1045, f64 *, 0x30);
         temp_f2_1048 = M2C_FIELD(temp_r3_1045, f64 *, 0x38);
-        sp288 = M2C_FIELD(temp_r4_1044, f64 *, 0x30);
+        sp288 = temp_f1_1046;
         sp298 = temp_f3_1047;
         sp2A0 = temp_f2_1048;
         sp290 = M2C_FIELD(temp_r4_1044, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        spF8 = temp_f1_1046 - this->unkD8;
         sp228 = spF8;
         sp100 = (f32) sp290 - this->unkE0;
         sp230 = (f64) sp100;
@@ -710,9 +751,8 @@ void DragonStatue::Update() {
             EmitDust();
         }
         unksp28C = unksp29C;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (gb.unk30C == this->unkA0) {
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        if (gb.unk30C >= this->unkA0) {
+            spE8 = sp288 - sp298;
             sp218 = spE8;
             spF0 = (f32) sp290 - (f32) sp2A0;
             sp220 = (f64) spF0;
@@ -760,8 +800,7 @@ void DragonStatue::Update() {
         temp_r3_1249 = this->unk8;
         sp1F8 = M2C_FIELD(temp_r3_1249, f64 *, 0x30);
         sp200 = M2C_FIELD(temp_r3_1249, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        spD8 = this->unkD8 - sp1F8;
         sp208 = spD8;
         spE0 = this->unkE0 - (f32) sp200;
         sp210 = (f64) spE0;
@@ -799,8 +838,7 @@ void DragonStatue::Update() {
                 var_f4_1274 = __float_nan;
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (var_f4_1274 == 4600.0f) {
+        if (var_f4_1274 >= 4600.0f) {
             sp40 = 0;
             sp3C = 0x41A;
             M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp3C);
@@ -812,12 +850,13 @@ void DragonStatue::Update() {
             this->unkAC = -2000.0f;
             this->unkB0 = 0.0f;
             temp_r3_1372 = this->unk8;
-            sp1D8 = M2C_FIELD(temp_r3_1372, f64 *, 0x30);
+            temp_f1_1373 = M2C_FIELD(temp_r3_1372, f64 *, 0x30);
+            sp1D8 = temp_f1_1373;
             sp1E0 = M2C_FIELD(temp_r3_1372, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            temp_f0_1380 = temp_f1_1373 + (f64) M2C_FIELD(this, f32 *, 0xA8);
+            spC8 = temp_f0_1380;
             temp_f1_1387 = (f32) sp1E0 + this->unkB0;
-            sp1E8 = spC8;
+            sp1E8 = temp_f0_1380;
             spD0 = temp_f1_1387;
             sp1F0 = (f64) spD0;
             SetPos(sp1E8, temp_f1_1387, (f32) sp1E0);
@@ -833,26 +872,25 @@ void DragonStatue::Update() {
         temp_f4_1410 = this->unkB0;
         temp_f5_1413 = this->unkC0;
         if (((temp_f4_1410 * temp_f4_1410) + ((temp_f0_1404 * temp_f0_1404) + (temp_f2_1405 * temp_f2_1405))) < ((temp_f5_1413 * temp_f5_1413) + ((temp_f1_1406 * temp_f1_1406) + (temp_f0_1408 * temp_f0_1408)))) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp1C8 = sp48;
+            temp_f0_1426 = M2C_FIELD(this, f64 *, 0xC8) * (f64) gUpdateTimeDelta;
+            sp48 = temp_f0_1426;
+            sp1C8 = temp_f0_1426;
             sp50 = this->unkD0 * gUpdateTimeDelta;
             sp1D0 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+            M2C_FIELD(this, f32 *, 0xA8) = (f64) ((f64) M2C_FIELD(this, f32 *, 0xA8) + temp_f0_1426);
             this->unkB0 += (f32) sp1D0;
         } else {
             M2C_FIELD(this, f32 *, 0xA8) = (f64) M2C_FIELD(this, f32 *, 0xB8);
             M2C_FIELD(this, f32 *, 0xB0) = (f64) M2C_FIELD(this, f32 *, 0xC0);
         }
         temp_r3_1451 = this->unk8;
-        sp1A8 = M2C_FIELD(temp_r3_1451, f64 *, 0x30);
+        temp_f1_1452 = M2C_FIELD(temp_r3_1451, f64 *, 0x30);
+        sp1A8 = temp_f1_1452;
         sp1B0 = M2C_FIELD(temp_r3_1451, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_1459 = temp_f1_1452 + (f64) M2C_FIELD(this, f32 *, 0xA8);
+        spB8 = temp_f0_1459;
         temp_f1_1466 = (f32) sp1B0 + this->unkB0;
-        sp1B8 = spB8;
+        sp1B8 = temp_f0_1459;
         spC0 = temp_f1_1466;
         sp1C0 = (f64) spC0;
         SetPos(sp1B8, temp_f1_1466, (f32) sp1B0);
@@ -869,14 +907,14 @@ void DragonStatue::Update() {
         MKModel_SetWorldMatrix(this->unk4, sp2F0);
         temp_r4_1518 = this->unk8;
         temp_r3_1519 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
+        temp_f1_1520 = M2C_FIELD(temp_r4_1518, f64 *, 0x30);
         temp_f3_1521 = M2C_FIELD(temp_r3_1519, f64 *, 0x30);
         temp_f2_1522 = M2C_FIELD(temp_r3_1519, f64 *, 0x38);
-        sp268 = M2C_FIELD(temp_r4_1518, f64 *, 0x30);
+        sp268 = temp_f1_1520;
         sp278 = temp_f3_1521;
         sp280 = temp_f2_1522;
         sp270 = M2C_FIELD(temp_r4_1518, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        spA8 = temp_f1_1520 - this->unkD8;
         sp198 = spA8;
         spB0 = (f32) sp270 - this->unkE0;
         sp1A0 = (f64) spB0;
@@ -918,9 +956,8 @@ void DragonStatue::Update() {
             EmitDust();
         }
         unksp26C = unksp27C;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (gb.unk30C == this->unkA0) {
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        if (gb.unk30C >= this->unkA0) {
+            sp98 = sp268 - sp278;
             sp188 = sp98;
             spA0 = (f32) sp270 - (f32) sp280;
             sp190 = (f64) spA0;
@@ -968,9 +1005,9 @@ void DragonStatue::Update() {
         temp_r3_1723 = this->unk8;
         sp168 = M2C_FIELD(temp_r3_1723, f64 *, 0x30);
         sp170 = M2C_FIELD(temp_r3_1723, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp178 = sp88;
+        temp_f0_1731 = this->unkD8 - sp168;
+        sp88 = temp_f0_1731;
+        sp178 = temp_f0_1731;
         sp90 = this->unkE0 - (f32) sp170;
         sp180 = (f64) sp90;
         var_f0_1748 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + (unksp17C * unksp17C));
@@ -1044,8 +1081,7 @@ void DragonStatue::Update() {
                 var_f5_1819 = __float_nan;
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (var_f0_1748 == var_f5_1819) {
+        if (var_f0_1748 <= var_f5_1819) {
             SetPos(this->unkD8);
             sp38 = 0;
             sp34 = 0x41A;
@@ -1100,16 +1136,17 @@ void DragonStatue::Update() {
                 var_f31_1957 = temp_f4_1938;
             }
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp78 = M2C_FIELD(&MKVector3::up, f64 *, 0) * (f64) var_f31_1957;
         temp_r3_2010 = this->unk8;
+        temp_f1_2013 = M2C_FIELD(temp_r3_2010, f64 *, 0x30);
         sp80 = MKVector3::up.unk8 * var_f31_1957;
         sp138 = sp78;
-        sp148 = M2C_FIELD(temp_r3_2010, f64 *, 0x30);
+        sp148 = temp_f1_2013;
         sp140 = (f64) sp80;
         sp150 = M2C_FIELD(temp_r3_2010, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp158 = sp68;
+        temp_f0_2023 = temp_f1_2013 + sp138;
+        sp68 = temp_f0_2023;
+        sp158 = temp_f0_2023;
         sp70 = (f32) sp150 + (f32) sp140;
         sp160 = (f64) sp70;
         sp118.GetRadius();

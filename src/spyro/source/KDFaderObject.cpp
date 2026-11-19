@@ -10,10 +10,9 @@ f32 KDFaderObject::GetFadePercentage() {
 
     temp_r4_11 = this->unk4;
     if ((temp_r4_11 == 1) || ((temp_r4_11 == 0) && ((s32) this->unk8 == 1))) {
-        if ((temp_r4_11 != 1) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk10 == 0.0f) == 0))) {
+        if ((temp_r4_11 != 1) || !(this->unk10 <= 0.0f)) {
             temp_f2_28 = this->unk10;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_f2_28 == 0.0f) {
+            if (temp_f2_28 <= 0.0f) {
                 return 1.0f;
             }
             return 1.0f - (this->unkC / temp_f2_28);
@@ -22,8 +21,7 @@ f32 KDFaderObject::GetFadePercentage() {
     }
     if ((temp_r4_11 == 2) || ((temp_r4_11 == 0) && ((s32) this->unk8 == 2))) {
         temp_f1_50 = this->unk14;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_f1_50 == 0.0f) {
+        if (temp_f1_50 <= 0.0f) {
             return 1.0f;
         }
         return this->unkC / temp_f1_50;

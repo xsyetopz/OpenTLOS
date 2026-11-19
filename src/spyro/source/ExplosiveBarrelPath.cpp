@@ -74,10 +74,14 @@ void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg1)
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f30_142;
+    f64 temp_f0_169;
+    f64 temp_f0_181;
 
     temp_f30_142 = (f32) fmod(M2C_FIELD(M2C_ERROR(/* Read from unset register $r5 */), f32 *, 4), 1.0);
     spC = 0.0f;
@@ -88,12 +92,14 @@ void ExplosiveBarrelPath::GetBarrelMiddle(ExplosiveBarrelPath::BarrelData *arg1)
     sp40.GetMeasure(temp_f30_142, arg1 + 0x64, KDSpline_PositionMixer);
     sp50.unk10 = sp40;
     sp68 = sp48;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp30 = sp10;
+    temp_f0_169 = sp70 + M2C_BITWISE(f64, sp50.unk10);
+    sp10 = temp_f0_169;
+    sp30 = temp_f0_169;
     sp18 = (f32) sp78 + (f32) sp68;
     sp38 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_FIELD(this, f64 *, 0) = sp20;
+    temp_f0_181 = temp_f0_169 * 5.222099017e-315;
+    sp20 = temp_f0_181;
+    M2C_FIELD(this, f64 *, 0) = temp_f0_181;
     sp28 = (f32) sp38 * 0.5f;
     M2C_FIELD(this, f64 *, 8) = (f64) sp28;
 }
@@ -156,21 +162,27 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     f64 sp160;
     f64 sp158;
     f64 sp150;
-    M2C_UNK sp140;
+    f64 sp140;
     f64 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
     M2C_UNK sp110;
     f32 sp108;
+    f64 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
     f32 spB4;
     f32 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
     f32 sp94;
     f32 sp90;
@@ -181,11 +193,14 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -201,6 +216,13 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     f32 var_f4_445;
     f32 var_f4_554;
     f32 var_f5_345;
+    f64 temp_f0_677;
+    f64 temp_f0_744;
+    f64 temp_f0_755;
+    f64 temp_f1_295;
+    f64 temp_f1_306;
+    f64 temp_f1_317;
+    f64 temp_f1_430;
     f64 temp_f1_451;
     f64 temp_f1_457;
     f64 temp_f1_461;
@@ -240,23 +262,26 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     sp1C0.GetMeasure(var_f28_228, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
     sp260 = sp1C0;
     sp268 = sp1C8;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp100 = sp290 + sp280;
     sp1B0 = sp100;
     sp108 = (f32) sp298 + (f32) sp288;
     sp1B8 = (f64) sp108;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
-    sp250 = spF0;
+    temp_f1_295 = sp100 * 5.222099017e-315;
+    spF0 = temp_f1_295;
+    sp250 = temp_f1_295;
     spF8 = (f32) sp1B8 * 0.5f;
     sp258 = (f64) spF8;
-    M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
-    sp1A0 = spE0;
+    temp_f1_306 = sp270 + sp1C0;
+    spE0 = temp_f1_306;
+    sp1A0 = temp_f1_306;
     spE8 = (f32) sp278 + (f32) sp268;
     sp1A8 = (f64) spE8;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
-    sp240 = spD0;
+    temp_f1_317 = temp_f1_306 * 5.222099017e-315;
+    spD0 = temp_f1_317;
+    sp240 = temp_f1_317;
     spD8 = (f32) sp1A8 * 0.5f;
     sp248 = (f64) spD8;
-    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+    spC0 = sp250 - temp_f1_317;
     sp190 = spC0;
     spC8 = (f32) sp258 - (f32) sp248;
     sp198 = (f64) spC8;
@@ -304,9 +329,10 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     spB8 = (f32) sp198 * var_f4_412;
     sp230 = (f64) spB0;
     sp238 = (f64) spB8;
-    M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+    temp_f1_430 = sp290 - sp280;
+    spA0 = temp_f1_430;
     spA8 = (f32) sp298 - (f32) sp288;
-    sp180 = spA0;
+    sp180 = temp_f1_430;
     sp188 = (f64) spA8;
     var_f4_445 = ((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184));
     if (var_f4_445 > 1e-12f) {
@@ -410,8 +436,9 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     sp228 = (f64) sp48;
     M2C_STRUCT_COPY((s32) &sp2A0.unk3C + 4, MKModel_GetWorldMatrix(M2C_FIELD(temp_r31_221, MKModel **, 4)) - 4 + 4, 0x40);
     MKVector(0.0f, arg1->unk10, 0.0f);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp150 = sp30;
+    temp_f0_677 = sp290 + sp140;
+    sp30 = temp_f0_677;
+    sp150 = temp_f0_677;
     sp38 = (f32) sp298 + sp148;
     sp158 = (f64) sp38;
     sp310 = (f32) sp150;
@@ -437,13 +464,14 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
     MKModel_SetWorldMatrix(M2C_FIELD(temp_r31_221, MKModel **, 4), *((Matrix *) &sp2E0));
     sp1F0.unk10 = (f64) sp310;
     sp208 = (f64) sp318;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp120 = sp60;
+    temp_f0_744 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.634608575e-315;
+    sp60 = temp_f0_744;
+    sp120 = temp_f0_744;
     sp68 = MKVector3::up.unk8 * 500.0f;
     sp128 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp130 = sp50;
+    temp_f0_755 = M2C_BITWISE(f64, sp1F0.unk10) - temp_f0_744;
+    sp50 = temp_f0_755;
+    sp130 = temp_f0_755;
     sp58 = (f32) sp208 - (f32) sp128;
     sp138 = (f64) sp58;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp1F0.unk10), *((MKVector3 *) &sp130), &sp320, (MKCollisionMode) 4, 0) != 0) {
@@ -556,14 +584,23 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
     f64 spB8;
     f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -575,9 +612,16 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
     f32 temp_f5_1095;
     f32 var_f4_1085;
     f32 var_f5_1101;
+    f64 temp_f0_1001;
+    f64 temp_f0_1021;
+    f64 temp_f0_1061;
+    f64 temp_f0_1181;
+    f64 temp_f0_962;
+    f64 temp_f0_989;
     f64 temp_f1_1106;
     f64 temp_f1_1112;
     f64 temp_f1_1116;
+    f64 temp_f3_999;
     s32 temp_r3_1135;
     s32 var_r0_1145;
 
@@ -585,33 +629,36 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
     sp150.GetMeasure(0.0f, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
     sp18 = 0.0f;
     sp150.unk10.GetMeasure(0.0f, &this->unk50, KDSpline_PositionMixer);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp170 = sp30;
+    temp_f0_962 = M2C_BITWISE(f64, sp150.unk10) + M2C_BITWISE(f64, sp150);
+    sp30 = temp_f0_962;
+    sp170 = temp_f0_962;
     sp38 = sp168 + sp150.unk8;
     sp178 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+    sp60 = temp_f0_962 * 5.222099017e-315;
     this->unk200 = sp60;
     sp68 = (f32) sp178 * 0.5f;
     sp180 = sp60;
     sp188 = (f64) sp68;
     this->unk208 = (f64) sp68;
-    M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f4, $f31 */);
-    sp130 = spA0;
+    temp_f0_989 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.53552857e-315;
+    spA0 = temp_f0_989;
+    sp130 = temp_f0_989;
     spA8 = MKVector3::up.unk8 * 100.0f;
     sp138 = (f64) spA8;
-    M2C_ERROR(/* unknown instruction: psq_lx $f3, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+    temp_f3_999 = this->unk200;
+    temp_f0_1001 = temp_f3_999 + temp_f0_989;
+    sp90 = temp_f0_1001;
     temp_f2_1004 = (f32) M2C_FIELD(this, f64 *, 0x208);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f4, $f4, $f30 */);
-    sp140 = sp90;
+    sp140 = temp_f0_1001;
     sp98 = temp_f2_1004 + (f32) sp138;
     sp148 = (f64) sp98;
+    sp80 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.634608575e-315;
     sp88 = MKVector3::up.unk8 * 500.0f;
     sp110 = sp80;
     sp118 = (f64) sp88;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
-    sp120 = sp70;
+    temp_f0_1021 = temp_f3_999 - sp110;
+    sp70 = temp_f0_1021;
+    sp120 = temp_f0_1021;
     sp78 = temp_f2_1004 - (f32) sp118;
     sp128 = (f64) sp78;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp140), *((MKVector3 *) &sp120), &sp190, (MKCollisionMode) 4, 0) != 0) {
@@ -622,14 +669,13 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
     spC0.GetMeasure(0.01f, (Matrix *) &this->unk50.unk14, KDSpline_PositionMixer);
     sp10 = 0.0f;
     spC0.unk10.GetMeasure(0.01f, &this->unk50, KDSpline_PositionMixer);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spE0 = sp20;
+    temp_f0_1061 = M2C_BITWISE(f64, spC0.unk10) + M2C_BITWISE(f64, spC0);
+    sp20 = temp_f0_1061;
+    spE0 = temp_f0_1061;
     sp28 = spD8 + spC0.unk8;
     spE8 = (f64) sp28;
     spF0.operator*(0.5f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp50 = spF0 - this->unk200;
     var_f4_1085 = 0.0f;
     this->unk210 = sp50;
     sp58 = spF0.unk8 - (f32) M2C_FIELD(this, f64 *, 0x208);
@@ -680,14 +726,12 @@ void ExplosiveBarrelPath::CalcStandPosAndDir() {
     M2C_FIELD(this, f64 *, 0x210) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x210) * var_f4_1085);
     M2C_FIELD(this, f32 *, 0x214) = (f32) (M2C_FIELD(this, f32 *, 0x214) * var_f4_1085);
     M2C_FIELD(this, f64 *, 0x218) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x218) * var_f4_1085);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    spB0 = sp40;
+    temp_f0_1181 = this->unk210 * 5.5769738e-315;
+    sp40 = temp_f0_1181;
+    spB0 = temp_f0_1181;
     sp48 = (f32) M2C_FIELD(this, f64 *, 0x218) * 200.0f;
     spB8 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+    this->unk200 -= temp_f0_1181;
     M2C_FIELD(this, f64 *, 0x208) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x208) - (f32) spB8);
     this->unk1B1 = 1;
 }
@@ -772,6 +816,7 @@ void ExplosiveBarrelPath::Update() {
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -779,12 +824,15 @@ void ExplosiveBarrelPath::Update() {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     s32 sp8;
     ExplosiveBarrel *temp_r28_1381;
     MKProp *temp_r4_1524;
     f32 temp_f1_1572;
     f32 temp_f29_1562;
     f32 temp_f3_1543;
+    f64 temp_f0_1482;
+    f64 temp_f0_1633;
     s32 temp_r3_1361;
     s32 temp_r5_1654;
     s32 var_ctr_1433;
@@ -804,17 +852,14 @@ void ExplosiveBarrelPath::Update() {
     void *temp_r5_1437;
 
     this->unk238 -= gUpdateTimeDelta;
-    if ((u8) this->unk231 != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk238 == 0.0f) {
-            temp_r3_1361 = SpawnBarrel(NULL);
-            if (temp_r3_1361 > -1) {
-                PushBarrel(temp_r3_1361);
-            }
-            this->unk238 = this->unk234;
-            if ((u8) this->unk230 != 0) {
-                this->unk231 = 0;
-            }
+    if (((u8) this->unk231 != 0) && (this->unk238 <= 0.0f)) {
+        temp_r3_1361 = SpawnBarrel(NULL);
+        if (temp_r3_1361 > -1) {
+            PushBarrel(temp_r3_1361);
+        }
+        this->unk238 = this->unk234;
+        if ((u8) this->unk230 != 0) {
+            this->unk231 = 0;
         }
     }
     var_r29_1377 = 0;
@@ -868,8 +913,9 @@ void ExplosiveBarrelPath::Update() {
             sp58 = 0.0f;
             spA0 = (f64) sp50;
             spA8 = (f64) sp58;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            spB0 = sp40;
+            temp_f0_1482 = (f64) spC0.unk20 + spA0;
+            sp40 = temp_f0_1482;
+            spB0 = temp_f0_1482;
             sp48 = M2C_BITWISE(f32, spC0.unk28) + (f32) spA8;
             spB8 = (f64) sp48;
             if (MKCollision_SphereCollide(*((MKVector3 *) &spB0), 100.0f, (MKCollisionResult *) &spC0.unk30, 0xF, (MKCollisionMode) 7, 0) != 0) {
@@ -931,8 +977,9 @@ loop_18:
                         KDRand_Vector(sp90, *((MKVector3 *) &sp80));
                         spC0.unk10 = M2C_BITWISE(f64, sp90);
                         spC0.unk18 = (f64) sp90.unk8;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                        sp60 = sp10;
+                        temp_f0_1633 = M2C_BITWISE(f64, spC0.unk10) * 5.5769738e-315;
+                        sp10 = temp_f0_1633;
+                        sp60 = temp_f0_1633;
                         sp18 = M2C_BITWISE(f32, spC0.unk18) * 200.0f;
                         sp68 = (f64) sp18;
                         EmitDust(*((MKVector3 *) &spC0.unk20), *((MKVector3 *) &sp60), MKRand_Float(&gViewSeed, 0.5f, 1.0f));
@@ -940,12 +987,9 @@ loop_18:
                     } while (var_r25_1606 < 0xF);
                 }
                 temp_r5_1654 = this->unk228;
-                if (temp_r5_1654 > 0) {
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if ((M2C_FIELD(temp_r30_1380, f32 *, 0x88) == 10.0f) && (M2C_FIELD(temp_r30_1380, f32 *, 0x8C) < 0.0f) && (MKRand_Int(&gViewSeed, 0, temp_r5_1654) == 0)) {
-                        M2C_FIELD(temp_r30_1380, f32 *, 0x8C) = MKRand_Float(&gViewSeed, 0.0f, M2C_FIELD(temp_r30_1380, f32 *, 0x84) * this->unk22C);
-                        M2C_FIELD(temp_r30_1380, u8 *, 0x91) = 1U;
-                    }
+                if ((temp_r5_1654 > 0) && (M2C_FIELD(temp_r30_1380, f32 *, 0x88) <= 10.0f) && (M2C_FIELD(temp_r30_1380, f32 *, 0x8C) < 0.0f) && (MKRand_Int(&gViewSeed, 0, temp_r5_1654) == 0)) {
+                    M2C_FIELD(temp_r30_1380, f32 *, 0x8C) = MKRand_Float(&gViewSeed, 0.0f, M2C_FIELD(temp_r30_1380, f32 *, 0x84) * this->unk22C);
+                    M2C_FIELD(temp_r30_1380, u8 *, 0x91) = 1U;
                 }
                 M2C_FIELD(temp_r30_1380, f32 *, 0x88) = (f32) ((M2C_FIELD(temp_r30_1380, f32 *, 0x8C) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_1380, f32 *, 0x88));
                 if (M2C_FIELD(temp_r30_1380, f32 *, 0x88) < 0.0f) {
@@ -975,6 +1019,8 @@ void ExplosiveBarrelPath::LoadDone() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_1788;
     s32 temp_r26_1877;
     s32 var_r27_1807;
     s32 var_r29_1806;
@@ -993,14 +1039,12 @@ void ExplosiveBarrelPath::LoadDone() {
     this->unk208 = this->unk1F8;
     this->unk210 = this->unk1E0;
     this->unk218 = this->unk1E8;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp18 = sp8;
+    temp_f0_1788 = this->unk210 * 5.5769738e-315;
+    sp8 = temp_f0_1788;
+    sp18 = temp_f0_1788;
     sp10 = (f32) M2C_FIELD(this, f64 *, 0x218) * 200.0f;
     sp20 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r28, $r0, 0x0, qr0 */);
+    this->unk200 -= temp_f0_1788;
     var_r29_1806 = 0;
     var_r27_1807 = 0;
     M2C_FIELD(this, f64 *, 0x208) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x208) - (f32) sp20);

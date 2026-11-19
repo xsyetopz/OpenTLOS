@@ -73,11 +73,14 @@ void ElecTier3::DrawScan() {
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp1C;
@@ -88,6 +91,9 @@ void ElecTier3::DrawScan() {
     f32 temp_f1_137;
     f32 temp_f24_135;
     f32 var_f29_94;
+    f64 temp_f0_178;
+    f64 temp_f0_203;
+    f64 temp_f0_214;
     s32 var_r29_126;
     s32 var_r29_165;
     s32 var_r31_128;
@@ -143,9 +149,9 @@ void ElecTier3::DrawScan() {
         MKSetColorV(*((MKVector4 *) &spD8));
         MKSetTexCoord1F(0.0f, 0.0f);
         temp_r30_176 = &spE8 + var_r31_167;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spA8 = sp58;
+        temp_f0_178 = M2C_FIELD(temp_r30_176, f64 *, 0) * 5.122630465e-315;
+        sp58 = temp_f0_178;
+        spA8 = temp_f0_178;
         sp60 = M2C_FIELD(temp_r30_176, f32 *, 8) * 0.1f;
         spB0 = (f64) sp60;
         MKSetPositionV(*((MKVector3 *) &spA8));
@@ -156,13 +162,14 @@ void ElecTier3::DrawScan() {
         sp3C = 0.0f;
         sp80 = (f64) sp40;
         sp78 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp88 = sp48;
+        temp_f0_203 = M2C_FIELD(temp_r30_176, f64 *, 0) * 5.263544247e-315;
+        sp48 = temp_f0_203;
+        sp88 = temp_f0_203;
         sp50 = M2C_FIELD(temp_r30_176, f32 *, 8) * 1.0f;
         sp90 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp98 = sp28;
+        temp_f0_214 = sp88 + sp78;
+        sp28 = temp_f0_214;
+        sp98 = temp_f0_214;
         sp30 = (f32) sp90 + (f32) sp80;
         spA0 = (f64) sp30;
         MKSetPositionV(*((MKVector3 *) &sp98));
@@ -201,7 +208,9 @@ void ElecTier3::UpdateScan() {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
@@ -211,6 +220,8 @@ void ElecTier3::UpdateScan() {
     f32 sp18;
     f32 sp14;
     f32 sp10;
+    f64 temp_f0_397;
+    f64 temp_f0_409;
     u8 var_r31_382;
 
     MKModel_CalculateNodeWorldMatrix(this->unk4, M2C_FIELD(checked_cast<ElecTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2B8), &sp120);
@@ -264,14 +275,14 @@ void ElecTier3::UpdateScan() {
             var_r31_382 = 1;
         }
         if (var_r31_382 != 0) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp80 = sp50;
+            temp_f0_397 = (f64) M2C_FIELD(this, f32 *, 0xB30) * 5.72858887e-315;
+            sp50 = temp_f0_397;
+            sp80 = temp_f0_397;
             sp58 = this->unkB10.unk10 * 2500.0f;
             sp88 = (f64) sp58;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp90 = sp40;
+            temp_f0_409 = (f64) M2C_FIELD(this, f32 *, 0xB40) + temp_f0_397;
+            sp40 = temp_f0_409;
+            sp90 = temp_f0_409;
             sp48 = this->unkB10.unk20 + (f32) sp88;
             sp98 = (f64) sp48;
             sp70.GetPos();
@@ -450,7 +461,7 @@ void ElecTier3Descriptor::LoadDone() {
 #if 0 // DRAFT: ')' expected
 s32 ElecTier2::FindLandingPos(MKVector3 *arg0) {
     MKCollisionResult sp68;
-    MKVector3 sp58;
+    MKVector3 sp58;                                 /* compiler-managed */
     f64 sp50;
     f64 sp48;
     f64 sp40;
@@ -461,7 +472,10 @@ s32 ElecTier2::FindLandingPos(MKVector3 *arg0) {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f31_884;
+    f64 temp_f0_890;
+    void *temp_r4_923;
 
     MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<ElecTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x2BC), &sp58);
     sp18 = 0.0f;
@@ -472,18 +486,19 @@ s32 ElecTier2::FindLandingPos(MKVector3 *arg0) {
     sp28 = (f64) sp18;
     sp50 = M2C_FIELD(this, f64 *, 0x590);
     sp30 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp38 = sp8;
+    temp_f0_890 = sp48 - sp28;
+    sp8 = temp_f0_890;
+    sp38 = temp_f0_890;
     sp10 = (f32) sp50 - (f32) sp30;
     sp40 = (f64) sp10;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp48), *((MKVector3 *) &sp38), &sp68, (MKCollisionMode) 7, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) | 0x0C000000) != 0) {
         sp58 = M2C_BITWISE(f64, sp68);
         sp58.unk8 = (f64) sp68.unk8;
         sp58.unk4 += temp_f31_884;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp58.unk8 -= M2C_FIELD((this->unkA20->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL) + 8), f32 *, 8);
-        M2C_FIELD(arg0, f64 *, 0) = M2C_BITWISE(f64, sp58);
+        temp_r4_923 = this->unkA20->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL) + 8;
+        sp58 = M2C_BITWISE(f64, sp58) - M2C_FIELD(temp_r4_923, f64 *, 0);
+        sp58.unk8 -= M2C_FIELD(temp_r4_923, f32 *, 8);
+        M2C_FIELD(arg0, f64 *, 0) = sp58;
         M2C_FIELD(arg0, f64 *, 8) = (f64) sp58.unk8;
         return 1;
     }
@@ -492,10 +507,7 @@ s32 ElecTier2::FindLandingPos(MKVector3 *arg0) {
 #endif
 
 void ElecTier2::UpdateMovementCustom() {
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r4, 0x0, qr0 */);
+    M2C_FIELD(this, f64 *, 0x588) = (f64) (M2C_FIELD(this, f64 *, 0x588) + M2C_FIELD(this, f64 *, 0x598));
     this->unk588.unk4 += this->unk59C;
     UpdateRotation();
     UpdateModel();
@@ -569,16 +581,25 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
+    f64 temp_f0_1138;
+    f64 temp_f0_1149;
+    f64 temp_f0_1273;
+    f64 temp_f3_1136;
     u8 var_r3_1112;
     void *temp_r4_1117;
 
@@ -601,13 +622,15 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     M2C_FIELD(this, u8 *, 0xB10) = var_r3_1112;
     spE0 = (f64) sp80;
     spE8 = (f64) sp88;
-    M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-    sp100 = sp70;
+    temp_f3_1136 = sp130.unk30;
+    temp_f0_1138 = temp_f3_1136 + spE0;
+    sp70 = temp_f0_1138;
+    sp100 = temp_f0_1138;
     sp78 = sp130.unk38 + (f32) spE8;
     sp108 = (f64) sp78;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-    spF0 = sp60;
+    temp_f0_1149 = temp_f3_1136 + M2C_BITWISE(f64, sp120);
+    sp60 = temp_f0_1149;
+    spF0 = temp_f0_1149;
     sp68 = sp130.unk38 + sp120.unk8;
     spF8 = (f64) sp68;
     if (MKCollision_RayCollide(*((MKVector3 *) &sp100), *((MKVector3 *) &spF0), &sp170, (MKCollisionMode) 7, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) | 0x0C000000) != 0) {
@@ -617,7 +640,7 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             sp28 = -sp110.unk8;
             spC0 = (f64) sp20;
             spC8 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp40 = M2C_BITWISE(f64, sp170) + spC0;
             spD0 = sp40;
             sp48 = sp170.unk8 + (f32) spC8;
             spD8 = (f64) sp48;
@@ -631,7 +654,7 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             sp18 = -sp120.unk8;
             spA0 = (f64) sp10;
             spA8 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp30 = M2C_BITWISE(f64, sp170) + spA0;
             spB0 = sp30;
             sp38 = sp170.unk8 + (f32) spA8;
             spB8 = (f64) sp38;
@@ -653,9 +676,9 @@ s32 ElecTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
         this->unkB04 = 0.0f;
         M2C_FIELD(this, u8 *, 0xB11) = (u8) M2C_FIELD(this, u8 *, 0xB10);
         if ((u8) M2C_FIELD(this, u8 *, 0xB11) != 0) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp90 = sp50;
+            temp_f0_1273 = M2C_BITWISE(f64, sp110) + sp130.unk30;
+            sp50 = temp_f0_1273;
+            sp90 = temp_f0_1273;
             sp58 = sp110.unk8 + sp130.unk38;
             sp98 = (f64) sp58;
             SetupEnemyRegion(*((MKVector3 *) &sp90), 1500.0f);
@@ -813,7 +836,7 @@ void ElecTier1::Despawn(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp18'
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void ElecTier1::CheckAnimEvents() {
     MKCollisionResult spC8;
     f64 spC0;
@@ -828,16 +851,20 @@ void ElecTier1::CheckAnimEvents() {
     f64 sp78;
     f64 sp70;
     f64 sp68;
-    M2C_UNK sp58;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_1764;
 
     if ((((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x16) != 0) && ((u32) this->unkAF8 != 0U)) {
         sp28 = 0.0f;
@@ -847,7 +874,7 @@ void ElecTier1::CheckAnimEvents() {
         sp78 = (f64) sp28;
         spC0 = M2C_FIELD(this, f64 *, 0xB20);
         sp80 = (f64) sp30;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+        sp18 = spB8 + sp78;
         sp50 = 0.0f;
         sp48 = 0.0f;
         sp4C = 100.0f;
@@ -856,13 +883,14 @@ void ElecTier1::CheckAnimEvents() {
         sp88 = sp18;
         sp90 = (f64) sp20;
         spA0 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
-        spA8 = sp38;
+        temp_f0_1764 = spB8 + sp98;
+        sp38 = temp_f0_1764;
+        spA8 = temp_f0_1764;
         sp40 = (f32) spC0 + (f32) spA0;
         spB0 = (f64) sp40;
         if (MKCollision_RayCollide(*((MKVector3 *) &spA8), *((MKVector3 *) &sp88), &spC8, (MKCollisionMode) 7, 0x08000000) != 0) {
             MKVector(0.0f, 5.0f, 0.0f);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp8 = M2C_BITWISE(f64, spC8) + sp58;
             sp68 = sp8;
             sp10 = spC8.unk8 + sp60;
             spB8 = sp8;

@@ -199,7 +199,7 @@ void UIInputTracker::CheckDirection(int arg0, int arg1, float arg2) {
             }
 block_52:
             temp_r4_407 = this + (var_r30_206 * 4);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
             if (M2C_FIELD(temp_r4_407, f32 *, -8) == 0.0f) {
                 M2C_FIELD((this + var_r30_206), s8 *, 0x14) = 1;
                 temp_f0_419 = M2C_FIELD(temp_r4_407, f32 *, -8);

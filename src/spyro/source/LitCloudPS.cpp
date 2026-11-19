@@ -27,8 +27,10 @@ void LitCloudPS::Explode() {
     MKVector3 sp28;
     M2C_UNK sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_95;
     f32 var_f0_96;
+    f64 temp_f0_72;
     s32 var_r29_52;
     s32 var_r31_53;
     void *temp_r3_80;
@@ -41,15 +43,13 @@ loop_5:
         MKVector(1.0f, 1.0f, 1.0f);
         MKVector(-1.0f, -1.0f, -1.0f);
         KDRand_Vector(sp38, sp28);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp48 = sp8;
+        temp_f0_72 = sp38 * 5.676053805e-315;
+        sp8 = temp_f0_72;
+        sp48 = temp_f0_72;
         temp_r3_80 = *(this->unk80 + var_r31_53) + 0x20;
         sp10 = sp38.unk8 * 1000.0f;
         sp50 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+        M2C_FIELD(temp_r3_80, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_80, f64 *, 0) + temp_f0_72);
         M2C_FIELD(temp_r3_80, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_80, f32 *, 8) + (f32) sp50);
         temp_r3_93 = *(this->unk80 + var_r31_53);
         temp_f1_95 = M2C_FIELD(temp_r3_93, f32 *, 0x48);
@@ -107,8 +107,11 @@ void LitCloudPS::StateUpdate() {
     f32 spB4;
     f32 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp74;
@@ -120,8 +123,11 @@ void LitCloudPS::StateUpdate() {
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -134,6 +140,10 @@ void LitCloudPS::StateUpdate() {
     f32 var_f2_254;
     f32 var_f4_187;
     f32 var_f5_275;
+    f64 temp_f0_293;
+    f64 temp_f0_303;
+    f64 temp_f0_369;
+    f64 temp_f0_379;
     f64 temp_f1_193;
     f64 temp_f1_199;
     f64 temp_f1_203;
@@ -217,16 +227,17 @@ void LitCloudPS::StateUpdate() {
             var_f5_275 = 0.0f;
         }
         temp_f6_289 = this->unk4C;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-        sp160 = spA0;
+        temp_f0_293 = sp1C0 * 5.593163344e-315;
+        spA0 = temp_f0_293;
+        sp160 = temp_f0_293;
         spA8 = (f32) sp1C8 * 250.0f;
         sp168 = (f64) spA8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp170 = sp90;
+        temp_f0_303 = temp_f0_293 * (f64) temp_f6_289;
+        sp90 = temp_f0_303;
+        sp170 = temp_f0_303;
         sp98 = (f32) sp168 * temp_f6_289;
         sp178 = (f64) sp98;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp80 = this->unk88 + temp_f0_303;
         sp70 = var_f5_275;
         sp88 = this->unk90 + (f32) sp178;
         sp74 = var_f5_275;
@@ -249,17 +260,17 @@ void LitCloudPS::StateUpdate() {
         spF0 = (f64) sp50;
         spF8 = (f64) sp58;
         KDRand_Vector(sp110, *((MKVector3 *) &sp100));
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        sp120 = sp40;
+        temp_f0_369 = sp110 * 5.593163344e-315;
+        sp40 = temp_f0_369;
+        sp120 = temp_f0_369;
         sp48 = sp110.unk8 * 250.0f;
         sp128 = (f64) sp48;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp130 = sp30;
+        temp_f0_379 = temp_f0_369 * (f64) temp_f29_351;
+        sp30 = temp_f0_379;
+        sp130 = temp_f0_379;
         sp38 = (f32) sp128 * temp_f29_351;
         sp138 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp20 = this->unk88 + temp_f0_379;
         sp10 = 0.75f;
         sp14 = 0.75f;
         sp28 = this->unk90 + (f32) sp138;
@@ -305,6 +316,7 @@ void LitCloudPS::Emit(const MKVector3 &arg0, const MKVector4 &arg1, float arg2, 
     MKVector3 sp28;
     M2C_UNK sp18;
     f32 sp10;
+    f64 sp8;
     MKHeap *temp_r3_500;
     f32 temp_f1_549;
     f32 temp_f31_558;
@@ -339,8 +351,7 @@ loop_2:
             MKVector(-1.0f, -1.0f, -1.0f);
             KDRand_Vector(sp38, sp28);
             sp48.operator*(25.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp8 = sp48 * (f64) temp_f31_558;
             temp_r3_584 = this->unk7C + (var_r30_497 + 0x20);
             M2C_FIELD(temp_r3_584, f64 *, 0) = sp8;
             sp10 = sp48.unk8 * temp_f31_558;
@@ -449,6 +460,10 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     f32 spF8;
     f32 spF4;
     f32 spF0;
+    f64 spE8;
+    f64 spE0;
+    f64 spD8;
+    f64 spD0;
     f32 spCC;
     f32 spC8;
     f32 spC4;
@@ -456,9 +471,13 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     f64 spB8;
     f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp6C;
     f32 sp68;
     f32 sp64;
@@ -479,6 +498,7 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     f32 sp18;
     f32 sp14;
     f32 sp10;
+    f32 temp_f31_873;
     f32 var_f0_924;
     f32 var_f0_942;
     f32 var_f0_964;
@@ -488,6 +508,8 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     f32 var_f1_956;
     f32 var_f1_973;
     f32 var_f3_1003;
+    f64 temp_f0_887;
+    f64 temp_f0_896;
 
     sp108 = 0.0f;
     sp100 = 1.0f;
@@ -506,8 +528,7 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp228 = (f64) sp48;
     sp230.operator*(M2C_FIELD(arg1, f32 *, 0x44));
     sp240.operator*(M2C_FIELD(arg1, f32 *, 0x44));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spA0 = sp240 + M2C_BITWISE(f64, sp230);
     sp350 = spA0;
     spA8 = sp240.unk8 + sp230.unk8;
     sp250 = spA0;
@@ -515,8 +536,7 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp258 = (f64) spA8;
     sp1F0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
     sp200.operator*(M2C_FIELD(arg1, f32 *, 0x44));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp90 = sp200 + M2C_BITWISE(f64, sp1F0);
     sp38 = -(f32) sp278;
     sp98 = sp200.unk8 + sp1F0.unk8;
     sp30 = -(f32) sp270;
@@ -534,8 +554,7 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp1C0 = (f64) sp20;
     sp1C8 = (f64) sp28;
     sp1D0.operator*(M2C_FIELD(arg1, f32 *, 0x44));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp80 = sp1D0 + M2C_BITWISE(f64, sp1B0);
     sp370 = sp80;
     sp88 = sp1D0.unk8 + sp1B0.unk8;
     sp1E0 = sp80;
@@ -548,8 +567,7 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp170 = (f64) sp10;
     sp178 = (f64) sp18;
     sp180.operator*(M2C_FIELD(arg1, f32 *, 0x44));
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp70 = sp180 + M2C_BITWISE(f64, sp160);
     sp190 = sp70;
     sp78 = sp180.unk8 + sp160.unk8;
     sp380 = sp70;
@@ -565,23 +583,22 @@ void LitCloudPS::DrawCloudlet(LitCloudPS::LitParticle *arg1, Matrix *arg2) {
     sp310.unk3C = 1.0f;
     MKSetMatrix(sp290);
     MKSetMatrix(sp310);
+    temp_f31_873 = M2C_FIELD(arg1, f32 *, 0x40);
     spC0 = 1.0f;
     spC4 = 1.0f;
     spC8 = 1.0f;
     spCC = 1.0f;
     sp120 = (f64) spC0;
     sp128 = (f64) spC8;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r26, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r26, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    spE0 = this->unk60 * (f64) temp_f31_873;
+    temp_f0_887 = this->unk68 * (f64) temp_f31_873;
+    spE8 = temp_f0_887;
     sp130 = spE0;
-    sp138 = spE8;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp140 = spD0;
+    sp138 = temp_f0_887;
+    temp_f0_896 = M2C_FIELD(arg1, f64 *, 0x10) + sp130;
+    spD0 = temp_f0_896;
+    spD8 = M2C_FIELD(arg1, f64 *, 0x18) + temp_f0_887;
+    sp140 = temp_f0_896;
     var_f1_908 = (f32) sp140;
     spF0 = 0.0f;
     spF4 = 0.0f;
@@ -708,8 +725,11 @@ void LitCloudPS::Update() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     MKHeap *temp_r6_1173;
     f32 temp_f0_1316;
@@ -719,6 +739,8 @@ void LitCloudPS::Update() {
     f32 var_f0_1147;
     f32 var_f4_1301;
     f32 var_f5_1234;
+    f64 temp_f0_1333;
+    f64 temp_f0_1357;
     f64 temp_f1_1240;
     f64 temp_f1_1246;
     f64 temp_f1_1250;
@@ -735,6 +757,7 @@ void LitCloudPS::Update() {
     void *temp_r3_1330;
     void *temp_r3_1353;
     void *temp_r4_1163;
+    void *temp_r4_1210;
 
     var_r31_1128 = 0;
     this->unk78 -= gUpdateTimeDelta;
@@ -759,8 +782,7 @@ loop_38:
         }
         M2C_FIELD(temp_r3_1144, f32 *, 0x48) = var_f0_1147;
         temp_r4_1163 = *(this->unk80 + temp_r0_1142);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r4_1163, f32 *, 0x48) == 0.0f) {
+        if (M2C_FIELD(temp_r4_1163, f32 *, 0x48) <= 0.0f) {
             temp_r5_1169 = var_r31_1128 + 1;
             M2C_FIELD(temp_r4_1163, s8 *, 0x50) = 0;
             temp_r6_1173 = this->unk80;
@@ -779,11 +801,10 @@ loop_38:
             if (temp_f1_1202 < -6.2831855f) {
                 M2C_FIELD(temp_r3_1201, f32 *, 0x30) = (f32) (6.2831855f - temp_f1_1202);
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_r4_1210 = *(this->unk80 + temp_r0_1142);
+            sp20 = M2C_FIELD(temp_r4_1210, f64 *, 0) - this->unk50;
             sp80 = sp20;
-            sp28 = M2C_FIELD(*(this->unk80 + temp_r0_1142), f32 *, 8) - M2C_FIELD(this, f32 *, 0x58);
+            sp28 = M2C_FIELD(temp_r4_1210, f32 *, 8) - M2C_FIELD(this, f32 *, 0x58);
             sp88 = (f64) sp28;
             sp60 = sp20;
             sp68 = (f64) sp28;
@@ -837,21 +858,19 @@ loop_38:
                 M2C_FIELD(temp_r3_1309, f32 *, 0x40) = 0.0f;
             }
             temp_r3_1330 = *(this->unk80 + temp_r0_1142);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp50 = sp30;
+            temp_f0_1333 = sp70 - M2C_FIELD(temp_r3_1330, f64 *, 0);
+            sp30 = temp_f0_1333;
+            sp50 = temp_f0_1333;
             sp38 = (f32) sp78 - M2C_FIELD(temp_r3_1330, f32 *, 8);
             sp58 = (f64) sp38;
             M2C_FIELD(temp_r3_1330, f32 *, 0x38) = (f32) (((f32) sp58 * (f32) sp58) + (((f32) sp50 * (f32) sp50) + (unksp54 * unksp54)));
             temp_r3_1353 = *(this->unk80 + temp_r0_1142);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp40 = sp10;
+            temp_f0_1357 = *(temp_r3_1353 + 0x20) * (f64) gUpdateTimeDelta;
+            sp10 = temp_f0_1357;
+            sp40 = temp_f0_1357;
             sp18 = M2C_FIELD(temp_r3_1353, f32 *, 0x28) * gUpdateTimeDelta;
             sp48 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+            M2C_FIELD(temp_r3_1353, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_1353, f64 *, 0) + temp_f0_1357);
             M2C_FIELD(temp_r3_1353, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_1353, f32 *, 8) + (f32) sp48);
         }
         var_r31_1128 += 1;

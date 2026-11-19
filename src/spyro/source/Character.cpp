@@ -79,23 +79,23 @@ void Character::UpdateCollisionItems() {
     f64 sp38;
     MKVector3 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     s32 temp_r0_70;
 
     temp_r0_70 = M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x6C);
     switch (temp_r0_70) {                           /* irregular */
     case 0:
         sp48.operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60));
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp18 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp48);
         this->unk60 = sp18;
         sp20 = this->unk588.unk4 + sp48.unk8;
         sp58 = sp18;
         this->unk68 = (f64) sp20;
         sp60 = (f64) sp20;
         sp28.operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x64));
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp8 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp28);
         this->unk70 = sp8;
         sp10 = this->unk588.unk4 + sp28.unk8;
         sp38 = sp8;
@@ -430,7 +430,7 @@ void Character::UpdateRotation() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp60'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 MKVector3 *Character::UpdateVelocity() {
     f64 spF8;
     f64 spF0;
@@ -448,21 +448,35 @@ MKVector3 *Character::UpdateVelocity() {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f0_741;
     f32 temp_f1_740;
     f32 temp_f29_888;
+    f32 temp_f2_727;
+    f32 temp_f2_913;
     f32 temp_f30_860;
     f32 temp_f4_742;
     f32 temp_f4_938;
     f32 temp_f5_940;
     f32 temp_f6_944;
     f32 var_f4_748;
+    f64 temp_f0_730;
+    f64 temp_f0_826;
+    f64 temp_f0_867;
+    f64 temp_f0_893;
+    f64 temp_f0_918;
+    f64 temp_f0_973;
     f64 temp_f1_751;
     f64 temp_f1_757;
     f64 temp_f1_761;
@@ -472,17 +486,15 @@ MKVector3 *Character::UpdateVelocity() {
     var_r3_705 = IsSteeringEnabled();
     if (var_r3_705 == 0) {
         var_r3_705 = 0x598;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r3, 0x0, qr0 */);
+        M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + M2C_FIELD(this, f64 *, 0x90));
         this->unk59C += this->unk98;
     } else if (this->unk698 > 0.0f) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-        M2C_FIELD(this, f64 *, 0x598) = sp60;
-        sp68 = this->unk98 * (1.0f / gUpdateTimeDelta);
-        spF0 = sp60;
+        temp_f2_727 = 1.0f / gUpdateTimeDelta;
+        temp_f0_730 = M2C_FIELD(this, f64 *, 0x90) * (f64) temp_f2_727;
+        sp60 = temp_f0_730;
+        M2C_FIELD(this, f64 *, 0x598) = temp_f0_730;
+        sp68 = this->unk98 * temp_f2_727;
+        spF0 = temp_f0_730;
         M2C_FIELD(this, f32 *, 0x5A0) = (f64) sp68;
         temp_f1_740 = this->unk588.unkC;
         temp_f0_741 = this->unk598;
@@ -532,49 +544,42 @@ MKVector3 *Character::UpdateVelocity() {
         this->unk688 = 0.0f;
     }
     if (((u8) this->unk6B5 >> 2U) & 1) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        spE0 = sp50;
+        temp_f0_826 = M2C_FIELD(this, f64 *, 0xA0) * (f64) gUpdateTimeDelta;
+        sp50 = temp_f0_826;
+        spE0 = temp_f0_826;
         sp58 = this->unkA8 * gUpdateTimeDelta;
         spE8 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_826);
         this->unk59C += (f32) spE8;
     }
     if (!(((u8) this->unk6B5 >> 4U) & 1) && (this->unk5E4 < 0.0f) && ((s32) this->unk110.unk16C <= 0)) {
         if (IsSteeringEnabled() == 0) {
             temp_f30_860 = gUpdateTimeDelta;
             spC0.operator*(this->unk5E4);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            spD0 = sp40;
+            temp_f0_867 = spC0 * (f64) temp_f30_860;
+            sp40 = temp_f0_867;
+            spD0 = temp_f0_867;
             sp48 = spC0.unk8 * temp_f30_860;
             spD8 = (f64) sp48;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+            M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_867);
             this->unk59C += (f32) spD8;
             temp_f29_888 = gUpdateTimeDelta;
             spA0.operator*(this->unk5E4);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            spB0 = sp30;
+            temp_f0_893 = spA0 * (f64) temp_f29_888;
+            sp30 = temp_f0_893;
+            spB0 = temp_f0_893;
             sp38 = spA0.unk8 * temp_f29_888;
             spB8 = (f64) sp38;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+            M2C_FIELD(this, f64 *, 0xA0) = (f64) (M2C_FIELD(this, f64 *, 0xA0) + temp_f0_893);
             this->unkA8 += (f32) spB8;
         } else {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-            sp90 = sp20;
-            sp28 = MKVector3::up.unk8 * this->unk5E4;
+            temp_f2_913 = this->unk5E4;
+            temp_f0_918 = M2C_FIELD(&MKVector3::up, f64 *, 0) * (f64) temp_f2_913;
+            sp20 = temp_f0_918;
+            sp90 = temp_f0_918;
+            sp28 = MKVector3::up.unk8 * temp_f2_913;
             sp98 = (f64) sp28;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+            M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_918);
             this->unk59C += (f32) sp98;
         }
         var_r3_705 = (u8) &MKVector3::up;
@@ -583,19 +588,15 @@ MKVector3 *Character::UpdateVelocity() {
         temp_f6_944 = this->unk59C;
         if (((temp_f6_944 * M2C_FIELD((u8) &MKVector3::up, f32 *, 8)) + ((temp_f5_940 * M2C_FIELD((u8) &MKVector3::up, f32 *, 0)) + (temp_f4_938 * M2C_FIELD((u8) &MKVector3::up, f32 *, 4)))) < -1500.0f) {
             __ml((temp_f6_944 * this->unkD8) + ((temp_f5_940 * this->unkD0) + (temp_f4_938 * this->unkD4)), sp80);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r4, 0x0, qr0 */);
+            M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) - M2C_BITWISE(f64, sp80));
             var_r3_705 = (u8) &MKVector3::up;
             this->unk59C -= sp80.unk8;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            sp70 = sp10;
+            temp_f0_973 = (f64) M2C_FIELD((u8) &MKVector3::up, f32 *, 0) * 1.630724106e-314;
+            sp10 = temp_f0_973;
+            sp70 = temp_f0_973;
             sp18 = M2C_FIELD((u8) &MKVector3::up, f32 *, 8) * -1500.0f;
             sp78 = (f64) sp18;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r4, 0x0, qr0 */);
+            M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_973);
             this->unk59C += (f32) sp78;
         }
     }
@@ -747,7 +748,7 @@ void Character::UpdateModel() {
 }
 #endif
 
-#if 0 // DRAFT: ';' expected
+#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match
 void Character::StopMovement(bool arg0) {
     MKVector3 sp8;
     f32 temp_f1_1240;
@@ -771,7 +772,7 @@ void Character::StopMovement(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: ';' expected
+#if 0 // DRAFT: undefined identifier 'unksp304'
 void Character::UpdateMovementArbitrary() {
     MKCollisionResult sp310;
     f64 sp308;
@@ -824,19 +825,33 @@ void Character::UpdateMovementArbitrary() {
     f64 sp150;
     MKVector3 sp140;
     f32 sp138;
+    f64 sp130;
     f32 sp128;
+    f64 sp120;
     f32 sp118;
+    f64 sp110;
     f32 sp108;
+    f64 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
@@ -844,19 +859,35 @@ void Character::UpdateMovementArbitrary() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 *temp_r29_1450;
     f32 *temp_r29_1647;
-    f32 temp_f1_1383;
-    f32 temp_f1_1422;
     f32 temp_f28_1788;
+    f32 temp_f2_1375;
+    f32 temp_f2_1414;
     f32 temp_f2_1837;
     f32 var_f26_1301;
+    f64 temp_f0_1379;
+    f64 temp_f0_1390;
+    f64 temp_f0_1402;
+    f64 temp_f0_1418;
+    f64 temp_f0_1429;
+    f64 temp_f0_1441;
+    f64 temp_f0_1547;
+    f64 temp_f0_1623;
+    f64 temp_f0_1635;
+    f64 temp_f0_1682;
+    f64 temp_f0_1694;
+    f64 temp_f0_1795;
     f64 temp_f1_1304;
     f64 temp_f1_1310;
     f64 temp_f1_1314;
+    f64 temp_f2_1507;
     s32 temp_r3_1333;
     s32 var_r0_1343;
     u8 var_r31_1373;
@@ -900,33 +931,36 @@ void Character::UpdateMovementArbitrary() {
     UpdateRotation();
     if ((var_f26_1301 > 0.0f) && (((u8) this->unk6B5 >> 5U) & 1)) {
         var_r31_1373 = 0;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        temp_f1_1383 = this->unkD8 * M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60);
-        sp2C0 = sp130;
-        sp138 = temp_f1_1383;
+        temp_f2_1375 = M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60);
+        temp_f0_1379 = M2C_FIELD(this, f64 *, 0xD0) * (f64) temp_f2_1375;
+        sp130 = temp_f0_1379;
+        sp2C0 = temp_f0_1379;
+        sp138 = this->unkD8 * temp_f2_1375;
         sp2C8 = (f64) sp138;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp2D0 = sp120;
+        temp_f0_1390 = temp_f0_1379 * 5.26768877e-315;
+        sp120 = temp_f0_1390;
+        sp2D0 = temp_f0_1390;
         sp128 = (f32) sp2C8 * 1.1f;
         sp2D8 = (f64) sp128;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp2F0 = sp110;
+        temp_f0_1402 = M2C_FIELD(this, f64 *, 0x588) + temp_f0_1390;
+        sp110 = temp_f0_1402;
+        sp2F0 = temp_f0_1402;
         sp118 = this->unk588.unk4 + (f32) sp2D8;
         sp2F8 = (f64) sp118;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        temp_f1_1422 = this->unkC8 * M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60);
-        sp2A0 = sp100;
-        sp108 = temp_f1_1422;
+        temp_f2_1414 = M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60);
+        temp_f0_1418 = M2C_FIELD(this, f64 *, 0xC0) * (f64) temp_f2_1414;
+        sp100 = temp_f0_1418;
+        sp2A0 = temp_f0_1418;
+        sp108 = this->unkC8 * temp_f2_1414;
         sp2A8 = (f64) sp108;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp2B0 = spF0;
+        temp_f0_1429 = sp2F0 + temp_f0_1418;
+        spF0 = temp_f0_1429;
+        sp2B0 = temp_f0_1429;
         spF8 = (f32) sp2F8 + (f32) sp2A8;
         sp2B8 = (f64) spF8;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp2E0 = spE0;
+        temp_f0_1441 = sp2B0 + sp300;
+        spE0 = temp_f0_1441;
+        sp2E0 = temp_f0_1441;
         spE8 = (f32) sp2B8 + (f32) sp308;
         sp2E8 = (f64) spE8;
         temp_r29_1450 = this->unk110.unk460;
@@ -943,10 +977,10 @@ void Character::UpdateMovementArbitrary() {
                 sp270 = (f64) sp40;
                 sp278 = (f64) sp48;
                 Normalise(sp280);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
+                temp_f2_1507 = -var_f26_1301;
+                spD0 = sp280 * temp_f2_1507;
                 sp290 = spD0;
-                spD8 = sp280.unk8 * -var_f26_1301;
+                spD8 = sp280.unk8 * (f32) temp_f2_1507;
                 sp300 = spD0;
                 sp298 = (f64) spD8;
                 sp308 = (f64) spD8;
@@ -957,19 +991,19 @@ void Character::UpdateMovementArbitrary() {
         } else {
             sp220.operator*(M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60));
             sp230.operator*(1.1f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp240 = sp30;
+            temp_f0_1547 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp230);
+            sp30 = temp_f0_1547;
+            sp240 = temp_f0_1547;
             sp38 = this->unk588.unk4 + sp230.unk8;
             sp248 = (f64) sp38;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            spC0 = sp240 + sp300;
             sp2F0 = spC0;
             spC8 = (f32) sp248 + (f32) sp308;
             sp250 = spC0;
             sp2F8 = (f64) spC8;
             sp258 = (f64) spC8;
             sp200.operator*(-((1.1f * M2C_FIELD(checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x60)) + 20.0f));
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            spB0 = sp2F0 + M2C_BITWISE(f64, sp200);
             sp2E0 = spB0;
             spB8 = (f32) sp2F8 + sp200.unk8;
             sp210 = spB0;
@@ -982,14 +1016,15 @@ void Character::UpdateMovementArbitrary() {
             } else {
                 sp1C0.operator*(-200.0f);
                 sp1D0.operator*(-100.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp1E0 = sp20;
+                temp_f0_1623 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp1D0);
+                sp20 = temp_f0_1623;
+                sp1E0 = temp_f0_1623;
                 sp28 = this->unk588.unk4 + sp1D0.unk8;
                 sp1E8 = (f64) sp28;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp2E0 = spA0;
-                sp1F0 = spA0;
+                temp_f0_1635 = sp1E0 + M2C_BITWISE(f64, sp1C0);
+                spA0 = temp_f0_1635;
+                sp2E0 = temp_f0_1635;
+                sp1F0 = temp_f0_1635;
                 spA8 = (f32) sp1E8 + sp1C0.unk8;
                 sp2E8 = (f64) spA8;
                 sp1F8 = (f64) spA8;
@@ -1006,14 +1041,15 @@ void Character::UpdateMovementArbitrary() {
 
         }
         sp190.operator*(10.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp1A0 = sp10;
+        temp_f0_1682 = M2C_FIELD(this, f64 *, 0x588) + sp300;
+        sp10 = temp_f0_1682;
+        sp1A0 = temp_f0_1682;
         sp18 = this->unk588.unk4 + (f32) sp308;
         sp1A8 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp1B0 = sp90;
-        sp2F0 = sp90;
+        temp_f0_1694 = sp1A0 + M2C_BITWISE(f64, sp190);
+        sp90 = temp_f0_1694;
+        sp1B0 = temp_f0_1694;
+        sp2F0 = temp_f0_1694;
         sp98 = (f32) sp1A8 + sp190.unk8;
         sp1B8 = (f64) sp98;
         sp2F8 = (f64) sp98;
@@ -1021,15 +1057,14 @@ void Character::UpdateMovementArbitrary() {
 
         }
         sp170.operator*(50.0f);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp80 = sp2F0 - M2C_BITWISE(f64, sp170);
         sp2E0 = sp80;
         sp88 = (f32) sp2F8 - sp170.unk8;
         sp180 = sp80;
         sp2E8 = (f64) sp88;
         sp188 = (f64) sp88;
         if (MKCollision_RayCollide(*((MKVector3 *) &sp2F0), *((MKVector3 *) &sp2E0), &sp310, (MKCollisionMode) 5, M2C_FIELD(this->unk110.unk460, s32 *, 0x18)) != 0) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp70 = M2C_BITWISE(f64, sp310) - M2C_FIELD(this, f64 *, 0x588);
             this->unk110.unk16C = 1;
             sp78 = sp310.unk8 - this->unk588.unk4;
             this->unk110.unk8 = M2C_BITWISE(f64, sp310);
@@ -1054,14 +1089,12 @@ void Character::UpdateMovementArbitrary() {
         } else {
             temp_f28_1788 = gUpdateTimeDelta;
             sp140.operator*(-980.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            sp150 = sp60;
+            temp_f0_1795 = sp140 * (f64) temp_f28_1788;
+            sp60 = temp_f0_1795;
+            sp150 = temp_f0_1795;
             sp68 = sp140.unk8 * temp_f28_1788;
             sp158 = (f64) sp68;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+            M2C_FIELD(this, f64 *, 0x598) = (f64) (M2C_FIELD(this, f64 *, 0x598) + temp_f0_1795);
             this->unk59C += (f32) sp158;
             sp300 = M2C_FIELD(this, f64 *, 0x598);
             M2C_FIELD(this, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
@@ -1070,9 +1103,7 @@ void Character::UpdateMovementArbitrary() {
             this->unk6B5 |= 0x40;
         }
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+    M2C_FIELD(this, f64 *, 0x588) = (f64) (M2C_FIELD(this, f64 *, 0x588) + sp300);
     temp_f2_1837 = this->unk588.unk4 + (f32) sp308;
     this->unk588.unk4 = temp_f2_1837;
     this->unk100 = sp300;
@@ -1100,8 +1131,10 @@ void Character::UpdateMovementNormal() {
     f64 sp28;
     MKVector3 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_1942;
     f32 temp_f31_1970;
+    f64 temp_f0_1975;
 
     sp84 = &__vt;
     sp58 = 0x30;
@@ -1131,20 +1164,16 @@ void Character::UpdateMovementNormal() {
     temp_f1_1942 = (this->unk59C * this->unkD8) + ((this->unk588.unkC * this->unkD0) + (this->unk598 * this->unkD4));
     if (!(((u8) this->unk6B5 >> 4U) & 1) && (temp_f1_1942 < 0.0f) && ((s32) this->unk110.unk16C > 0) && ((void *) this->unk634 == NULL) && (this->unk5F0 & 1)) {
         __ml(temp_f1_1942, sp38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        M2C_FIELD(this, f32 *, 0x598) = (f64) ((f64) M2C_FIELD(this, f32 *, 0x598) - M2C_BITWISE(f64, sp38));
         this->unk59C -= sp38.unk8;
         temp_f31_1970 = gUpdateTimeDelta;
         sp18.operator*(this->unk5E4);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp28 = sp8;
+        temp_f0_1975 = sp18 * (f64) temp_f31_1970;
+        sp8 = temp_f0_1975;
+        sp28 = temp_f0_1975;
         sp10 = sp18.unk8 * temp_f31_1970;
         sp30 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        M2C_FIELD(this, f32 *, 0x598) = (f64) ((f64) M2C_FIELD(this, f32 *, 0x598) + temp_f0_1975);
         this->unk59C += (f32) sp30;
     }
     UpdateModel();
@@ -1177,7 +1206,7 @@ void Character::UpdateMovement() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp48'
+#if 0 // DRAFT: undefined identifier 'unksp9C'
 void Character::BridgeHit(float arg0, float arg1) {
     f64 spD8;
     f64 spD0;
@@ -1198,32 +1227,39 @@ void Character::BridgeHit(float arg0, float arg1) {
     f64 sp60;
     f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
+    f64 temp_f1_2116;
+    f64 temp_f1_2142;
+    f64 temp_f2_2093;
     void *temp_r4_2083;
     void *temp_r5_2086;
 
     temp_r4_2083 = this->unk664;
     if (temp_r4_2083 != NULL) {
         temp_r5_2086 = this->unk8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f4 */);
+        sp48 = M2C_FIELD(temp_r5_2086, f64 *, 0) * (f64) arg0;
+        temp_f2_2093 = M2C_FIELD(temp_r5_2086, f64 *, 0x30);
         sp78 = sp48;
         sp50 = M2C_FIELD(temp_r5_2086, f32 *, 8) * arg0;
-        sp88 = M2C_FIELD(temp_r5_2086, f64 *, 0x30);
+        sp88 = temp_f2_2093;
         sp80 = (f64) sp50;
         sp90 = M2C_FIELD(temp_r5_2086, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
+        sp38 = temp_f2_2093 + sp78;
         spA8 = sp38;
         sp40 = (f32) sp90 + (f32) sp80;
         spB0 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f7 */);
-        sp98 = sp28;
+        temp_f1_2116 = M2C_FIELD(this, f64 *, 0x598) * 4.89153186e-315;
+        sp28 = temp_f1_2116;
+        sp98 = temp_f1_2116;
         sp30 = this->unk59C * 0.002f;
         spC = -1.0f;
         spA0 = (f64) sp30;
@@ -1233,16 +1269,17 @@ void Character::BridgeHit(float arg0, float arg1) {
         sp58 = (f64) sp8;
         spBC = 0;
         sp60 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
+        temp_f1_2142 = sp58 * (f64) arg1;
+        sp18 = temp_f1_2142;
         spC0 = sp38;
         spC8 = (f64) sp40;
         sp20 = (f32) sp60 * arg1;
-        spD0 = sp18;
+        spD0 = temp_f1_2142;
         spD8 = (f64) sp20;
         spB8 = 0x3C;
-        sp68 = sp18;
+        sp68 = temp_f1_2142;
         sp70 = (f64) sp20;
-        M2C_FIELD(M2C_FIELD(temp_r4_2083, void **, 0x44), M2C_UNK (**)(void *, s32 *, void *, f64, f32, f32, f64, f64, f64, f32), 0x2C)(temp_r4_2083, &spB8, temp_r5_2086, sp18, (f32) sp60, 1.0f, (f64) sp30, (f64) sp40, sp38, 0.002f);
+        M2C_FIELD(M2C_FIELD(temp_r4_2083, void **, 0x44), M2C_UNK (**)(void *, s32 *, void *, f64, f32, f32, f64, f64, f64, f32), 0x2C)(temp_r4_2083, &spB8, temp_r5_2086, temp_f1_2142, (f32) sp60, 1.0f, (f64) sp30, (f64) sp40, sp38, 0.002f);
     }
 }
 #endif
@@ -1569,7 +1606,6 @@ void Character::SetAnim(MKAnim *arg0, float arg1, float arg2, float arg3, unsign
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
 void Character::LerpModelColour(const MKVector4 &arg0, float arg1) {
     f64 sp60;
     f64 sp58;
@@ -1577,27 +1613,39 @@ void Character::LerpModelColour(const MKVector4 &arg0, float arg1) {
     f64 sp48;
     f64 sp40;
     f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
+    f64 sp8;
+    f64 *temp_r3_2781;
+    f64 temp_f0_2789;
+    f64 temp_f0_2799;
+    f64 temp_f0_2809;
+    f64 temp_f2_2783;
+    f64 temp_f3_2788;
 
-    MKModel_GetColor(this->unk4);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f2 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f3, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f3 */);
+    temp_r3_2781 = MKModel_GetColor(this->unk4);
+    temp_f2_2783 = M2C_FIELD(temp_r3_2781, f64 *, 0);
+    sp28 = M2C_FIELD(&arg0, f64 *, 0) - temp_f2_2783;
+    temp_f3_2788 = M2C_FIELD(temp_r3_2781, f64 *, 8);
+    temp_f0_2789 = M2C_FIELD(&arg0, f64 *, 8) - temp_f3_2788;
+    sp30 = temp_f0_2789;
     sp48 = sp28;
-    sp50 = sp30;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp50 = temp_f0_2789;
+    sp18 = sp48 * (f64) arg1;
+    temp_f0_2799 = temp_f0_2789 * (f64) arg1;
+    sp20 = temp_f0_2799;
     sp38 = sp18;
-    sp40 = sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
+    sp40 = temp_f0_2799;
+    sp8 = temp_f2_2783 + sp38;
+    temp_f0_2809 = temp_f3_2788 + temp_f0_2799;
+    sp10 = temp_f0_2809;
     sp58 = sp8;
-    sp60 = sp10;
+    sp60 = temp_f0_2809;
     MKModel_SetColor(this->unk4, *((MKVector4 *) &sp58));
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
 void Character::FindGroundColour(bool arg0, bool arg1) {
@@ -1681,14 +1729,18 @@ void Character::FindAnyCollisionPosY(const MKVector3 &arg0, float arg1, MKCollis
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     u8 spC;
     MKCollisionInfo *sp8;
     MKCollisionInfo *temp_r6_2951;
     f32 temp_f4_2974;
+    f64 temp_f0_2990;
+    f64 temp_f5_2969;
 
     temp_r6_2951 = this->unk634;
     sp8 = temp_r6_2951;
@@ -1701,8 +1753,8 @@ void Character::FindAnyCollisionPosY(const MKVector3 &arg0, float arg1, MKCollis
     sp48 = 0.0f;
     sp60 = (f64) sp40;
     sp68 = (f64) sp48;
-    M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+    temp_f5_2969 = M2C_FIELD(&arg0, f64 *, 0);
+    sp30 = temp_f5_2969 + sp60;
     temp_f4_2974 = arg0.unk8;
     sp28 = 0.0f;
     sp38 = temp_f4_2974 + (f32) sp68;
@@ -1712,8 +1764,9 @@ void Character::FindAnyCollisionPosY(const MKVector3 &arg0, float arg1, MKCollis
     sp50 = (f64) sp20;
     sp88 = (f64) sp38;
     sp58 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-    sp70 = sp10;
+    temp_f0_2990 = temp_f5_2969 + sp50;
+    sp10 = temp_f0_2990;
+    sp70 = temp_f0_2990;
     sp18 = temp_f4_2974 + (f32) sp58;
     sp78 = (f64) sp18;
     MKCollision_RayCollide(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70), &arg2, (MKCollisionMode) 7, M2C_FIELD(this->unk110.unk460, s32 *, 0x18) | 0x200);

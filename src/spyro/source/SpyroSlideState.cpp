@@ -123,7 +123,7 @@ block_19:
     return var_r31_85;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroSlideState::Update() {
     f64 sp80;
     f64 sp78;
@@ -134,35 +134,50 @@ void SpyroSlideState::Update() {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    Spyro *temp_r3_176;
     f32 temp_f0_181;
     f32 temp_f4_192;
     f32 var_f2_184;
+    f64 temp_f0_190;
+    f64 temp_f0_200;
+    f64 temp_f0_210;
+    f64 temp_f0_221;
+    f64 temp_f3_189;
 
+    temp_r3_176 = this->unk10;
     temp_f0_181 = 0.5f * (8.0f * gUpdateTimeDelta);
     if (temp_f0_181 < 1.0f) {
         var_f2_184 = temp_f0_181;
     } else {
         var_f2_184 = 1.0f;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f3, $f2 */);
-    temp_f4_192 = this->unk10->unk338;
-    sp58 = sp38;
+    temp_f3_189 = M2C_FIELD(temp_r3_176, f64 *, 0x338);
+    temp_f0_190 = temp_f3_189 * (f64) var_f2_184;
+    sp38 = temp_f0_190;
+    temp_f4_192 = temp_r3_176->unk338;
+    sp58 = temp_f0_190;
     sp40 = temp_f4_192 * var_f2_184;
     sp60 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f3, $f0 */);
-    sp48 = sp28;
+    temp_f0_200 = temp_f3_189 - temp_f0_190;
+    sp28 = temp_f0_200;
+    sp48 = temp_f0_200;
     sp30 = temp_f4_192 - (f32) sp60;
     sp50 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-    sp68 = sp18;
+    temp_f0_210 = temp_f0_200 * (f64) var_f2_184;
+    sp18 = temp_f0_210;
+    sp68 = temp_f0_210;
     sp20 = (f32) sp50 * var_f2_184;
     sp70 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp78 = sp8;
+    temp_f0_221 = sp48 - temp_f0_210;
+    sp8 = temp_f0_221;
+    sp78 = temp_f0_221;
     sp10 = (f32) sp50 - (f32) sp70;
     sp80 = (f64) sp10;
     this->unk10->SetDesiredVelocity(*((MKVector3 *) &sp78), 540000.0f);

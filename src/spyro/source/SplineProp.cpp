@@ -8,7 +8,7 @@
 #include <m2c_macros.h>
 
 extern f32 *KDSpline_PositionMixer;
-#if 0 // DRAFT: undefined identifier 'sp48'
+#if 0 // DRAFT: undefined identifier 'unkspAC'
 static BoundingVolume volume;                       /* type too large by 0x10; unable to generate initializer: not enough data */
 
 void SplineProp::CalcBounds() {
@@ -25,6 +25,7 @@ void SplineProp::CalcBounds() {
     f64 sp60;
     f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
@@ -52,7 +53,9 @@ void SplineProp::CalcBounds() {
     f32 var_f0_84;
     f32 var_f0_93;
     f32 var_f1_56;
+    f64 temp_f0_47;
     s32 var_r6_12;
+    void *temp_r4_44;
     void *temp_r5_36;
 
     var_r6_12 = 0;
@@ -76,11 +79,12 @@ loop_20:
         temp_r5_36 = this->unk8;
         sp78 = M2C_FIELD(temp_r5_36, f64 *, 0x30);
         sp80 = M2C_FIELD(temp_r5_36, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r4_44 = temp_r4_35->unk24 + (var_r6_12 * temp_r4_35->unk1C);
+        temp_f0_47 = M2C_FIELD(temp_r4_44, f64 *, 0) - sp78;
+        sp48 = temp_f0_47;
         temp_f2_53 = (f32) M2C_FIELD(this, f64 *, 0x90);
-        spA8 = sp48;
-        sp50 = M2C_FIELD((temp_r4_35->unk24 + (var_r6_12 * temp_r4_35->unk1C)), f32 *, 8) - (f32) sp80;
+        spA8 = temp_f0_47;
+        sp50 = M2C_FIELD(temp_r4_44, f32 *, 8) - (f32) sp80;
         var_f1_56 = (f32) spA8;
         spB0 = (f64) sp50;
         if (var_f1_56 < temp_f2_53) {
@@ -139,9 +143,7 @@ loop_20:
         sp20 = temp_f1_117;
         sp68 = (f64) sp18;
         sp70 = (f64) sp20;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r3, $r0, 0x0, qr0 */);
+        this->unk90 -= sp68;
         M2C_FIELD(this, f64 *, 0x98) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x98) - (f32) sp70);
         temp_f1_138 = this->unkB4;
         sp10 = temp_f1_138;
@@ -149,15 +151,10 @@ loop_20:
         spC = temp_f1_138;
         sp60 = (f64) sp10;
         sp58 = (f64) sp8;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r3, $r0, 0x0, qr0 */);
+        this->unkA0 += sp58;
         M2C_FIELD(this, f64 *, 0xA8) = (f32) ((f32) M2C_FIELD(this, f64 *, 0xA8) + (f32) sp60);
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $r3, $r4, 0x0, qr0 */);
+    this->unkA0 -= this->unk90;
     M2C_FIELD(this, f64 *, 0xA8) = (f32) ((f32) M2C_FIELD(this, f64 *, 0xA8) - (f32) M2C_FIELD(this, f64 *, 0x98));
 }
 #endif

@@ -36,15 +36,18 @@ void FXBase::Burst(const MKVector3 &arg0) {
     f64 sp78;
     f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -54,6 +57,7 @@ void FXBase::Burst(const MKVector3 &arg0) {
     f32 temp_f29_109;
     f32 temp_f2_182;
     f32 temp_f30_48;
+    f64 temp_f0_175;
     s32 var_r28_41;
     void *temp_r30_37;
 
@@ -66,8 +70,7 @@ loop_2:
         MKVector(1.0f, 1.0f, 1.0f);
         MKVector(-1.0f, 0.0f, -1.0f);
         KDRand_Vector(spF0, spE0);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+        sp40 = spF0 * (f64) temp_f30_48;
         sp100 = sp40;
         sp48 = spF0.unk8 * temp_f30_48;
         sp120 = sp40;
@@ -89,7 +92,7 @@ loop_2:
         sp18 = sp130.unk38 + ((sp98 * sp130.unk28) + ((sp90 * sp130.unk8) + (sp94 * sp130.unk18)));
         spA0 = (f64) sp10;
         spA8 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+        sp20 = spA0 * (f64) temp_f29_109;
         sp110 = sp20;
         sp28 = (f32) spA8 * temp_f29_109;
         spB0 = sp20;
@@ -102,10 +105,10 @@ loop_2:
         sp5C = 1.0f;
         sp70 = (f64) sp50;
         sp78 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r27, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
+        temp_f0_175 = M2C_FIELD(&arg0, f64 *, 0) + sp120;
+        sp60 = temp_f0_175;
         temp_f2_182 = temp_f28_38 + (f32) sp128;
-        sp80 = sp60;
+        sp80 = temp_f0_175;
         sp68 = temp_f2_182;
         sp88 = (f64) sp68;
         Emit(sp80, sp110, &sp70, *temp_f2_182);

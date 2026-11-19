@@ -112,7 +112,7 @@ void FuryFXFire2::SpawnMeteor() {
     MKVector3 sp98;
     MKVector3 sp88;
     M2C_UNK sp78;
-    M2C_UNK sp68;
+    f64 sp68;
     f64 sp60;
     f64 sp58;
     f64 sp50;
@@ -121,9 +121,15 @@ void FuryFXFire2::SpawnMeteor() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_r3_146;
+    f64 temp_f0_220;
+    f64 temp_f0_232;
+    f64 temp_f0_267;
     u32 *temp_r3_155;
     u32 temp_r31_177;
 
@@ -164,13 +170,14 @@ void FuryFXFire2::SpawnMeteor() {
                 MKVector(-1.0f, 0.0f, -1.0f);
                 KDRand_Vector(sp98, sp88);
                 spA8.operator*(1500.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                spB8 = sp8;
+                temp_f0_220 = M2C_FIELD(this, f64 *, 0xC0) + M2C_BITWISE(f64, spA8);
+                sp8 = temp_f0_220;
+                spB8 = temp_f0_220;
                 sp10 = this->unk90.unk38 + spA8.unk8;
                 spC0 = (f64) sp10;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                spC8 = sp18;
+                temp_f0_232 = spB8 + sp68;
+                sp18 = temp_f0_232;
+                spC8 = temp_f0_232;
                 sp20 = (f32) spC0 + sp70;
                 M2C_FIELD(temp_r31_177, f32 *, 0x30) = (f32) spC8;
                 spD0 = (f64) sp20;
@@ -185,8 +192,9 @@ void FuryFXFire2::SpawnMeteor() {
                 sp48 = (f64) sp38;
                 M2C_FIELD(temp_r31_177, f32 *, 0x40) = (f32) this->unk90.unk34;
                 sp50 = (f64) sp40;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp58 = sp28;
+                temp_f0_267 = spD8 + sp48;
+                sp28 = temp_f0_267;
+                sp58 = temp_f0_267;
                 sp30 = (f32) spE0 + (f32) sp50;
                 sp60 = (f64) sp30;
                 if (MKCollision_RayCollide(*((MKVector3 *) &spD8), *((MKVector3 *) &sp58), (MKCollisionResult *) &spE8, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -252,8 +260,7 @@ loop_9:
                 M2C_FIELD(temp_r31_433, f64 *, 0x38) = (f32) sp18;
                 M2C_FIELD(temp_r31_433, f32 *, 0x3C) = 1.0f;
                 temp_f1_391 = M2C_FIELD(temp_r31_433, f32 *, 0x40);
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (unksp14 == temp_f1_391) {
+                if (unksp14 <= temp_f1_391) {
                     unksp14 = temp_f1_391;
                     KDSound_Stop(temp_r31_433 + 0x48);
                     temp_r6_406 = gb.unk0->GetProp();
@@ -477,7 +484,7 @@ void FuryFXFire2::Update() {
     f64 sp420;
     f64 sp418;
     f64 sp410;
-    M2C_UNK sp400;
+    f64 sp400;
     MKVector3 sp3F0;
     M2C_UNK sp3E0;
     f64 sp3D8;
@@ -518,34 +525,42 @@ void FuryFXFire2::Update() {
     f32 sp2A4;
     f32 sp2A0;
     f32 sp298;
+    f64 sp290;
     f32 sp288;
     f32 sp284;
     f32 sp280;
     f32 sp278;
+    f64 sp270;
     f32 sp268;
     f32 sp264;
     f32 sp260;
     f32 sp258;
+    f64 sp250;
     f32 sp248;
     f32 sp244;
     f32 sp240;
     f32 sp238;
+    f64 sp230;
     f32 sp228;
     f32 sp224;
     f32 sp220;
     f32 sp218;
+    f64 sp210;
     f32 sp208;
     f32 sp204;
     f32 sp200;
     f32 sp1F8;
+    f64 sp1F0;
     f32 sp1E8;
     f32 sp1E4;
     f32 sp1E0;
     f32 sp1D8;
+    f64 sp1D0;
     f32 sp1C8;
     f32 sp1C4;
     f32 sp1C0;
     f32 sp1B8;
+    f64 sp1B0;
     f32 sp1A8;
     f32 sp1A4;
     f32 sp1A0;
@@ -556,12 +571,16 @@ void FuryFXFire2::Update() {
     f32 sp184;
     f32 sp180;
     f32 sp178;
+    f64 sp170;
     f32 sp168;
+    f64 sp160;
     f32 sp158;
     f32 sp154;
     f32 sp150;
     f32 sp148;
+    f64 sp140;
     f32 sp138;
+    f64 sp130;
     f32 sp128;
     f32 sp124;
     f32 sp120;
@@ -569,15 +588,19 @@ void FuryFXFire2::Update() {
     f32 sp114;
     f32 sp110;
     f32 sp108;
+    f64 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
     f32 spE4;
     f32 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
     f32 spC4;
     f32 spC0;
     f32 spB8;
+    f64 spB0;
     MKVector3 spA0;
     MKVector3 sp90;
     MKVector3 sp80;
@@ -585,15 +608,43 @@ void FuryFXFire2::Update() {
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     MKVector3 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
-    f32 temp_f1_1457;
+    f64 sp10;
     f32 temp_f22_1384;
     f32 temp_f23_1387;
     f32 var_f0_1587;
+    f64 temp_f0_1034;
+    f64 temp_f0_1127;
+    f64 temp_f0_1176;
+    f64 temp_f0_1332;
+    f64 temp_f0_1405;
+    f64 temp_f0_1423;
+    f64 temp_f0_1435;
+    f64 temp_f0_1451;
+    f64 temp_f0_1497;
+    f64 temp_f0_1552;
+    f64 temp_f0_833;
+    f64 temp_f0_898;
+    f64 temp_f0_991;
+    f64 temp_f1_1087;
+    f64 temp_f1_1121;
+    f64 temp_f1_1417;
+    f64 temp_f1_1448;
+    f64 temp_f1_1509;
+    f64 temp_f1_726;
+    f64 temp_f1_760;
+    f64 temp_f1_794;
+    f64 temp_f1_827;
+    f64 temp_f1_951;
+    f64 temp_f1_985;
     f64 temp_f2_1297;
     s32 temp_r0_688;
     s32 temp_r29_845;
@@ -622,8 +673,7 @@ void FuryFXFire2::Update() {
         switch (temp_r0_688) {
             return;
         case 1:
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unkE8 == 0.0f) {
+            if (this->unkE8 <= 0.0f) {
                 this->unkD0 = 2;
                 this->unkE8 = 0.25f;
                 sp2A8 = 500.0f;
@@ -632,9 +682,10 @@ void FuryFXFire2::Update() {
                 sp648 = (f64) sp2A8;
                 sp640 = (f64) sp2A0;
                 temp_r3_725 = M2C_FIELD(gb.unk0->GetProp((f64) sp2A0, 500.0f), void **, 8);
-                sp650 = M2C_FIELD(temp_r3_725, f64 *, 0x30);
+                temp_f1_726 = M2C_FIELD(temp_r3_725, f64 *, 0x30);
+                sp650 = temp_f1_726;
                 sp658 = M2C_FIELD(temp_r3_725, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp290 = temp_f1_726 + sp640;
                 sp298 = (f32) sp658 + (f32) sp648;
                 sp288 = 500.0f;
                 sp710 = sp290;
@@ -644,9 +695,10 @@ void FuryFXFire2::Update() {
                 sp628 = (f64) sp288;
                 sp620 = (f64) sp280;
                 temp_r3_759 = M2C_FIELD(gb.unk0->GetProp((f64) sp280, -500.0f, (f64) sp298, sp290), void **, 8);
-                sp630 = M2C_FIELD(temp_r3_759, f64 *, 0x30);
+                temp_f1_760 = M2C_FIELD(temp_r3_759, f64 *, 0x30);
+                sp630 = temp_f1_760;
                 sp638 = M2C_FIELD(temp_r3_759, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp270 = temp_f1_760 + sp620;
                 sp278 = (f32) sp638 + (f32) sp628;
                 sp268 = -500.0f;
                 sp700 = sp270;
@@ -656,9 +708,10 @@ void FuryFXFire2::Update() {
                 sp608 = (f64) sp268;
                 sp600 = (f64) sp260;
                 temp_r3_793 = M2C_FIELD(gb.unk0->GetProp((f64) sp260, 500.0f, (f64) sp278, sp270), void **, 8);
-                sp610 = M2C_FIELD(temp_r3_793, f64 *, 0x30);
+                temp_f1_794 = M2C_FIELD(temp_r3_793, f64 *, 0x30);
+                sp610 = temp_f1_794;
                 sp618 = M2C_FIELD(temp_r3_793, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp250 = temp_f1_794 + sp600;
                 sp248 = -500.0f;
                 sp258 = (f32) sp618 + (f32) sp608;
                 sp6F0 = sp250;
@@ -668,10 +721,12 @@ void FuryFXFire2::Update() {
                 sp5E8 = (f64) sp248;
                 sp5E0 = (f64) sp240;
                 temp_r3_826 = M2C_FIELD(gb.unk0->GetProp((f64) sp240, -500.0f, (f64) sp258, sp250), void **, 8);
-                sp5F0 = M2C_FIELD(temp_r3_826, f64 *, 0x30);
+                temp_f1_827 = M2C_FIELD(temp_r3_826, f64 *, 0x30);
+                sp5F0 = temp_f1_827;
                 sp5F8 = M2C_FIELD(temp_r3_826, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp6E0 = sp230;
+                temp_f0_833 = temp_f1_827 + sp5E0;
+                sp230 = temp_f0_833;
+                sp6E0 = temp_f0_833;
                 sp238 = (f32) sp5F8 + (f32) sp5E8;
                 sp6E8 = (f64) sp238;
                 temp_r29_845 = (KDSound_GetSoundEventVol(GS_SpyroFuryMissile1) >> 1U) & 0x7F;
@@ -689,9 +744,9 @@ void FuryFXFire2::Update() {
             MKVector(3.0f, 5.0f, 3.0f);
             MKVector(6.0f, 0.0f, 6.0f);
             sp5A0.operator*(gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp5B0 = sp40;
+            temp_f0_898 = (f64) M2C_FIELD(this, f32 *, 0xD8) + M2C_BITWISE(f64, sp5A0);
+            sp40 = temp_f0_898;
+            sp5B0 = temp_f0_898;
             sp48 = this->unkE0 + sp5A0.unk8;
             sp5B8 = (f64) sp48;
             MKVector(0.0f, 0.0f, 0.0f);
@@ -699,8 +754,7 @@ void FuryFXFire2::Update() {
             Max(sp5D0, spA0);
             M2C_FIELD(this, f32 *, 0xD8) = M2C_BITWISE(f64, sp5D0);
             M2C_FIELD(this, f32 *, 0xE0) = (f64) sp5D0.unk8;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unkE8 == 0.0f) {
+            if (this->unkE8 <= 0.0f) {
                 this->unkE8 = 1.5f;
                 temp_r4_935 = this->unkD0;
                 sp228 = -1000.0f;
@@ -710,9 +764,10 @@ void FuryFXFire2::Update() {
                 sp568 = (f64) sp228;
                 sp560 = (f64) sp220;
                 temp_r3_950 = M2C_FIELD(gb.unk0->GetProp(temp_r4_935, (f64) sp220), void **, 8);
-                sp570 = M2C_FIELD(temp_r3_950, f64 *, 0x30);
+                temp_f1_951 = M2C_FIELD(temp_r3_950, f64 *, 0x30);
+                sp570 = temp_f1_951;
                 sp578 = M2C_FIELD(temp_r3_950, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp210 = temp_f1_951 + sp560;
                 sp218 = (f32) sp578 + (f32) sp568;
                 sp208 = 1000.0f;
                 sp6D0 = sp210;
@@ -722,10 +777,12 @@ void FuryFXFire2::Update() {
                 sp548 = (f64) sp208;
                 sp540 = (f64) sp200;
                 temp_r3_984 = M2C_FIELD(gb.unk0->GetProp((f64) sp200, 0.0f, (f64) sp218, sp210), void **, 8);
-                sp550 = M2C_FIELD(temp_r3_984, f64 *, 0x30);
+                temp_f1_985 = M2C_FIELD(temp_r3_984, f64 *, 0x30);
+                sp550 = temp_f1_985;
                 sp558 = M2C_FIELD(temp_r3_984, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp6C0 = sp1F0;
+                temp_f0_991 = temp_f1_985 + sp540;
+                sp1F0 = temp_f0_991;
+                sp6C0 = temp_f0_991;
                 sp1F8 = (f32) sp558 + (f32) sp548;
                 sp6C8 = (f64) sp1F8;
                 KDSound_Play3d(GS_SpyroFuryMissile1, (MKVector3 *) &sp6D0, 0U, -1, 0.0f, 0U);
@@ -737,9 +794,9 @@ void FuryFXFire2::Update() {
             MKVector(5.0f, 50.0f, 5.0f);
             MKVector(-1.0f, 4.0f, -1.0f);
             sp500.operator*(gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp510 = sp30;
+            temp_f0_1034 = (f64) M2C_FIELD(this, f32 *, 0xD8) + M2C_BITWISE(f64, sp500);
+            sp30 = temp_f0_1034;
+            sp510 = temp_f0_1034;
             sp38 = this->unkE0 + sp500.unk8;
             sp518 = (f64) sp38;
             MKVector(0.1f, 0.0f, 0.1f);
@@ -747,8 +804,7 @@ void FuryFXFire2::Update() {
             Max(sp530, sp90);
             M2C_FIELD(this, f32 *, 0xD8) = M2C_BITWISE(f64, sp530);
             M2C_FIELD(this, f32 *, 0xE0) = (f64) sp530.unk8;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unkE8 == 0.0f) {
+            if (this->unkE8 <= 0.0f) {
                 this->unkE8 = 3.0f;
                 temp_r4_1071 = this->unkD0;
                 sp1E8 = 0.0f;
@@ -758,9 +814,10 @@ void FuryFXFire2::Update() {
                 sp4C8 = (f64) sp1E8;
                 sp4C0 = (f64) sp1E0;
                 temp_r3_1086 = M2C_FIELD(gb.unk0->GetProp(temp_r4_1071, (f64) sp1E0), void **, 8);
-                sp4D0 = M2C_FIELD(temp_r3_1086, f64 *, 0x30);
+                temp_f1_1087 = M2C_FIELD(temp_r3_1086, f64 *, 0x30);
+                sp4D0 = temp_f1_1087;
                 sp4D8 = M2C_FIELD(temp_r3_1086, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp1D0 = temp_f1_1087 + sp4C0;
                 sp1D8 = (f32) sp4D8 + (f32) sp4C8;
                 sp1C8 = 0.0f;
                 sp6B0 = sp1D0;
@@ -770,10 +827,12 @@ void FuryFXFire2::Update() {
                 sp4A8 = (f64) sp1C8;
                 sp4A0 = (f64) sp1C0;
                 temp_r3_1120 = M2C_FIELD(gb.unk0->GetProp((f64) sp1C0, 1000.0f, (f64) sp1D8, sp1D0), void **, 8);
-                sp4B0 = M2C_FIELD(temp_r3_1120, f64 *, 0x30);
+                temp_f1_1121 = M2C_FIELD(temp_r3_1120, f64 *, 0x30);
+                sp4B0 = temp_f1_1121;
                 sp4B8 = M2C_FIELD(temp_r3_1120, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp6A0 = sp1B0;
+                temp_f0_1127 = temp_f1_1121 + sp4A0;
+                sp1B0 = temp_f0_1127;
+                sp6A0 = temp_f0_1127;
                 sp1B8 = (f32) sp4B8 + (f32) sp4A8;
                 sp6A8 = (f64) sp1B8;
                 KDSound_Play3d(GS_SpyroFuryMissile1, (MKVector3 *) &sp6B0, 0U, -1, 0.0f, 0U);
@@ -787,9 +846,9 @@ void FuryFXFire2::Update() {
             MKVector(5.0f, 50.0f, 5.0f);
             MKVector(-2.0f, -3.0f, -2.0f);
             sp460.operator*(gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp470 = sp20;
+            temp_f0_1176 = (f64) M2C_FIELD(this, f32 *, 0xD8) + M2C_BITWISE(f64, sp460);
+            sp20 = temp_f0_1176;
+            sp470 = temp_f0_1176;
             sp28 = this->unkE0 + sp460.unk8;
             sp478 = (f64) sp28;
             MKVector(0.05f, 0.0f, 0.05f);
@@ -798,8 +857,7 @@ void FuryFXFire2::Update() {
             M2C_FIELD(this, f32 *, 0xD8) = M2C_BITWISE(f64, sp490);
             M2C_FIELD(this, f32 *, 0xE0) = (f64) sp490.unk8;
             SpawnMeteor();
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unkE8 == 0.0f) {
+            if (this->unkE8 <= 0.0f) {
                 this->unkE8 = 0.6f;
                 this->unkD0 += 1;
                 M2C_STRUCT_COPY((s32) &unksp71C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
@@ -821,8 +879,7 @@ void FuryFXFire2::Update() {
                 sp420 = (f64) sp70;
                 sp720.Scale3x3(&sp720, *((MKVector3 *) &sp420));
                 MKVector(0.0f, 300.0f, 0.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp60 = M2C_FIELD(this, f64 *, 0xC0) + sp400;
                 sp410 = sp60;
                 sp68 = this->unk90.unk38 + sp408;
                 sp418 = (f64) sp68;
@@ -845,9 +902,9 @@ void FuryFXFire2::Update() {
             MKVector(500.0f, 500.0f, 500.0f);
             MKVector(20.0f, -10.0f, 20.0f);
             sp3C0.operator*(gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp3D0 = sp10;
+            temp_f0_1332 = (f64) M2C_FIELD(this, f32 *, 0xD8) + M2C_BITWISE(f64, sp3C0);
+            sp10 = temp_f0_1332;
+            sp3D0 = temp_f0_1332;
             sp18 = this->unkE0 + sp3C0.unk8;
             sp3D8 = (f64) sp18;
             MKVector(0.1f, 0.0f, 0.1f);
@@ -855,8 +912,7 @@ void FuryFXFire2::Update() {
             Max(sp3F0, sp50);
             M2C_FIELD(this, f32 *, 0xD8) = M2C_BITWISE(f64, sp3F0);
             M2C_FIELD(this, f32 *, 0xE0) = (f64) sp3F0.unk8;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unkE8 == 0.0f) {
+            if (this->unkE8 <= 0.0f) {
                 this->unkD0 = 6;
                 var_r28_1369 = 0;
                 this->unkE8 = 1.4f;
@@ -873,26 +929,31 @@ void FuryFXFire2::Update() {
                     sp678 = (f64) sp188;
                     sp350 = (f64) sp150;
                     sp358 = (f64) sp158;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                    sp360 = sp170;
+                    temp_f0_1405 = sp670 * 5.5769738e-315;
+                    sp170 = temp_f0_1405;
+                    sp360 = temp_f0_1405;
                     sp178 = (f32) sp678 * 200.0f;
                     sp368 = (f64) sp178;
                     gb.GetSpyro();
                     temp_r3_1416 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 8);
-                    sp370 = M2C_FIELD(temp_r3_1416, f64 *, 0x30);
+                    temp_f1_1417 = M2C_FIELD(temp_r3_1416, f64 *, 0x30);
+                    sp370 = temp_f1_1417;
                     sp378 = M2C_FIELD(temp_r3_1416, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    sp380 = sp160;
+                    temp_f0_1423 = temp_f1_1417 + temp_f0_1405;
+                    sp160 = temp_f0_1423;
+                    sp380 = temp_f0_1423;
                     sp168 = (f32) sp378 + (f32) sp368;
                     sp388 = (f64) sp168;
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    sp390 = sp140;
+                    temp_f0_1435 = sp380 + sp350;
+                    sp140 = temp_f0_1435;
+                    sp390 = temp_f0_1435;
                     sp148 = (f32) sp388 + (f32) sp358;
                     sp398 = (f64) sp148;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f25 */);
-                    temp_f1_1457 = (f32) sp678 * MKRand_Float(&gViewSeed, 3000.0f, 3500.0f);
-                    sp340 = sp130;
-                    sp138 = temp_f1_1457;
+                    temp_f1_1448 = MKRand_Float(&gViewSeed, 3000.0f, 3500.0f);
+                    temp_f0_1451 = sp670 * temp_f1_1448;
+                    sp130 = temp_f0_1451;
+                    sp340 = temp_f0_1451;
+                    sp138 = (f32) sp678 * (f32) temp_f1_1448;
                     sp348 = (f64) sp138;
                     ((ClusterBomb *) (M2C_BITWISE(ClusterBomb *, this->unk15C)))->SpawnClusterBomb(*((MKVector3 *) &sp390), *((MKVector3 *) &sp340));
                     var_r28_1369 += 1;
@@ -910,16 +971,17 @@ void FuryFXFire2::Update() {
                     sp2F0 = (f64) sp110;
                     sp2F8 = (f64) sp118;
                     KDRand_Vector(sp310, *((MKVector3 *) &sp300));
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f24 */);
-                    sp320 = sp100;
+                    temp_f0_1497 = sp310 * 5.697262106e-315;
+                    sp100 = temp_f0_1497;
+                    sp320 = temp_f0_1497;
                     sp108 = sp310.unk8 * 1500.0f;
                     sp328 = (f64) sp108;
                     gb.GetSpyro();
                     temp_r3_1508 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 8);
-                    sp330 = M2C_FIELD(temp_r3_1508, f64 *, 0x30);
+                    temp_f1_1509 = M2C_FIELD(temp_r3_1508, f64 *, 0x30);
+                    sp330 = temp_f1_1509;
                     sp338 = M2C_FIELD(temp_r3_1508, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                    spF0 = temp_f1_1509 + temp_f0_1497;
                     spC8 = 0.0f;
                     spC0 = 0.0f;
                     spC4 = -500.0f;
@@ -928,7 +990,7 @@ void FuryFXFire2::Update() {
                     sp2B0 = (f64) spC0;
                     sp668 = (f64) spF8;
                     sp2B8 = (f64) spC8;
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+                    spB0 = sp660 + sp2B0;
                     spE8 = 0.0f;
                     spE0 = 0.0f;
                     spE4 = 200.0f;
@@ -937,8 +999,9 @@ void FuryFXFire2::Update() {
                     sp2C0 = spB0;
                     sp2C8 = (f64) spB8;
                     sp2D8 = (f64) spE8;
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-                    sp2E0 = spD0;
+                    temp_f0_1552 = sp660 + sp2D0;
+                    spD0 = temp_f0_1552;
+                    sp2E0 = temp_f0_1552;
                     spD8 = (f32) sp668 + (f32) sp2D8;
                     sp2E8 = (f64) spD8;
                     if (MKCollision_RayCollide(*((MKVector3 *) &sp2E0), *((MKVector3 *) &sp2C0), &sp760, (MKCollisionMode) 7, 0x0C000000) != 0) {
@@ -964,8 +1027,7 @@ void FuryFXFire2::Update() {
                 var_f0_1587 = 0.0f;
             }
             this->unkE8 = var_f0_1587;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unkE8 == 0.0f) {
+            if (this->unkE8 <= 0.0f) {
                 this->unkD0 = 0;
                 gb.unk381 = 0;
             }

@@ -76,9 +76,13 @@ void FlyingMonkey::Update() {
     f64 spC0;
     f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
     f32 sp6C;
     f32 sp68;
@@ -89,13 +93,23 @@ void FlyingMonkey::Update() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     s32 sp8;
     f32 var_f4_284;
     f32 var_f5_305;
+    f64 temp_f0_171;
+    f64 temp_f0_182;
+    f64 temp_f0_229;
+    f64 temp_f0_242;
+    f64 temp_f0_414;
+    f64 temp_f0_454;
+    f64 temp_f0_465;
     f64 temp_f1_310;
     f64 temp_f1_316;
     f64 temp_f1_320;
@@ -103,6 +117,7 @@ void FlyingMonkey::Update() {
     s32 var_r0_349;
     u32 var_r3_207;
     u8 temp_r3_159;
+    void *temp_r3_236;
     void *temp_r4_129;
 
     if ((s32 *) this->unk138 != NULL) {
@@ -111,21 +126,21 @@ void FlyingMonkey::Update() {
         this->unk138->Update(M2C_FIELD(temp_r4_129, s32 *, 0xE8), 1U, ((u8) this->unk14C >> 4U) & 1, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     this->unk140 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk140 == 0.0f) {
+    if (this->unk140 <= 0.0f) {
         this->unk140 = 0.0f;
         Disable();
     } else {
         temp_r3_159 = this->unk14C;
         if (((temp_r3_159 >> 7U) & 1) && ((temp_r3_159 >> 6U) & 1)) {
             MKModel_CalculateCentre(this->unk4, &sp188);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            sp138 = spA8;
+            temp_f0_171 = this->unkC8 * (f64) gUpdateTimeDelta;
+            spA8 = temp_f0_171;
+            sp138 = temp_f0_171;
             spB0 = M2C_FIELD(this, f32 *, 0xD0) * gUpdateTimeDelta;
             sp140 = (f64) spB0;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp178 = sp98;
+            temp_f0_182 = M2C_BITWISE(f64, sp188) + temp_f0_171;
+            sp98 = temp_f0_182;
+            sp178 = temp_f0_182;
             spA0 = sp188.unk8 + (f32) sp140;
             sp180 = (f64) spA0;
             if (MKCollision_SweepSphereCollide(sp188, *((MKVector3 *) &sp178), 120.00001f, &sp220, (MKCollisionMode) 7, 0) != 0) {
@@ -141,15 +156,16 @@ void FlyingMonkey::Update() {
                 }
             } else {
 block_14:
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                sp118 = sp88;
+                temp_f0_229 = this->unkC8 * (f64) gUpdateTimeDelta;
+                sp88 = temp_f0_229;
+                sp118 = temp_f0_229;
+                temp_r3_236 = this->unk8 + 0x30;
                 sp90 = M2C_FIELD(this, f32 *, 0xD0) * gUpdateTimeDelta;
                 sp120 = (f64) sp90;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp128 = sp78;
-                sp80 = M2C_FIELD((this->unk8 + 0x30), f32 *, 8) + (f32) sp120;
+                temp_f0_242 = M2C_FIELD(temp_r3_236, f64 *, 0) + temp_f0_229;
+                sp78 = temp_f0_242;
+                sp128 = temp_f0_242;
+                sp80 = M2C_FIELD(temp_r3_236, f32 *, 8) + (f32) sp120;
                 sp130 = (f64) sp80;
                 MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp128));
             }
@@ -220,12 +236,12 @@ block_14:
         MKModel_SetWorldMatrix(this->unk4, sp1A0);
     }
     MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<FlyingMonkeyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x108), &sp148);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-    sp108 = sp18;
+    temp_f0_414 = sp1E0.unk20 * 5.5769738e-315;
+    sp18 = temp_f0_414;
+    sp108 = temp_f0_414;
     sp20 = sp1E0.unk28 * 200.0f;
     sp110 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp148 = M2C_BITWISE(f64, sp148) + temp_f0_414;
     sp60 = -1.0f;
     sp50 = 1.0f;
     sp58 = -1.0f;
@@ -238,13 +254,14 @@ block_14:
     spB8 = (f64) sp48;
     spC0 = (f64) sp50;
     KDRand_Vector(spD8, *((MKVector3 *) &spC8));
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    spE8 = sp38;
+    temp_f0_454 = spD8 * 5.53552857e-315;
+    sp38 = temp_f0_454;
+    spE8 = temp_f0_454;
     sp40 = spD8.unk8 * 100.0f;
     spF0 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spF8 = sp28;
+    temp_f0_465 = M2C_BITWISE(f64, sp148) + temp_f0_454;
+    sp28 = temp_f0_465;
+    spF8 = temp_f0_465;
     sp30 = sp148.unk8 + (f32) spF0;
     sp100 = (f64) sp30;
     sp14 = MKRand_Float(&gViewSeed, 1.0f, 2.5f);

@@ -203,7 +203,7 @@ void Gondola::UpdateMove() {
     f64 sp270;
     MKVector3 sp260;
     MKVector3 sp250;
-    M2C_UNK sp240;
+    f64 sp240;
     f64 sp238;
     f64 sp230;
     f64 sp228;
@@ -228,10 +228,12 @@ void Gondola::UpdateMove() {
     f64 sp190;
     f64 sp180;
     f32 sp178;
+    f64 sp170;
     f64 sp160;
     f64 sp158;
     f64 sp150;
     f32 sp148;
+    f64 sp140;
     f32 sp138;
     f32 sp134;
     f32 sp130;
@@ -245,11 +247,14 @@ void Gondola::UpdateMove() {
     f32 sp104;
     f32 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
+    f64 spE0;
     f32 spD8;
     f32 spD4;
     f32 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
     f32 spB4;
     f32 spB0;
@@ -257,7 +262,9 @@ void Gondola::UpdateMove() {
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
     f32 sp74;
     f32 sp70;
@@ -314,6 +321,11 @@ void Gondola::UpdateMove() {
     f32 var_f8_1065;
     f32 var_f8_1184;
     f32 var_f9_1164;
+    f64 temp_f0_1377;
+    f64 temp_f0_468;
+    f64 temp_f0_903;
+    f64 temp_f0_932;
+    f64 temp_f0_956;
     f64 temp_f1_1003;
     f64 temp_f1_1007;
     f64 temp_f1_1096;
@@ -323,6 +335,7 @@ void Gondola::UpdateMove() {
     f64 temp_f1_1200;
     f64 temp_f1_1204;
     f64 temp_f1_453;
+    f64 temp_f1_462;
     f64 temp_f1_689;
     f64 temp_f1_695;
     f64 temp_f1_699;
@@ -330,6 +343,7 @@ void Gondola::UpdateMove() {
     f64 temp_f1_812;
     f64 temp_f1_816;
     f64 temp_f1_997;
+    f64 temp_f3_915;
     f64 temp_f5_1287;
     f64 temp_f6_1277;
     s32 temp_r0_474;
@@ -409,11 +423,13 @@ void Gondola::UpdateMove() {
             sp320 = temp_f1_453;
             sp328 = M2C_FIELD(temp_r4_450, f64 *, 0x38);
             temp_r3_461 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *, f64), 0xC)(gb, temp_r4_450, temp_f1_453), void **, 8);
-            sp330 = M2C_FIELD(temp_r3_461, f64 *, 0x30);
+            temp_f1_462 = M2C_FIELD(temp_r3_461, f64 *, 0x30);
+            sp330 = temp_f1_462;
             sp338 = M2C_FIELD(temp_r3_461, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_f0_468 = temp_f1_462 - sp320;
+            sp170 = temp_f0_468;
             temp_r0_474 = this->unk240;
-            sp340 = sp170;
+            sp340 = temp_f0_468;
             sp178 = (f32) sp338 - (f32) sp328;
             sp348 = (f64) sp178;
             if (temp_r0_474 == 0) {
@@ -435,7 +451,7 @@ void Gondola::UpdateMove() {
                 sp300.GetVelocity(var_f1_499);
                 sp3F0 = sp300;
                 sp3F8 = sp308;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+                M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
                 if ((((f32) sp348 * (f32) sp348) + (((f32) sp340 * (f32) sp340) + (unksp344 * unksp344))) == 4e8f) {
                     this->unk240 = M2C_BITWISE(s32, this->unk23C);
                     this->unk23C = 1e-45f;
@@ -494,8 +510,7 @@ void Gondola::UpdateMove() {
             }
         }
         this->unk238 = M2C_BITWISE(f32, this->unk238) - gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_BITWISE(f32, this->unk238) == 0.0f) {
+        if (M2C_BITWISE(f32, this->unk238) <= 0.0f) {
             this->unk238 = 10.0f;
             sp3C = 0.0f;
             sp2B0.GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_PositionMixer);
@@ -505,7 +520,7 @@ void Gondola::UpdateMove() {
             sp160.GetMeasure(this->unk1A8, (Matrix *) &this->unk180, KDSpline_VelocityMixer);
             sp150 = sp160;
             sp158 = sp168;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+            sp140 = sp150 * (f64) sp38;
             sp2A0 = sp140;
             sp148 = (f32) sp158 * sp38;
             sp2A8 = (f64) sp148;
@@ -609,20 +624,22 @@ void Gondola::UpdateMove() {
             MKVector(0.0f, MKRand_Float(&gViewSeed, 0.0f, 2000.0f), 0.0f);
             __ml(MKRand_Float(&gViewSeed, -1.0f, 1.0f), sp250);
             sp260.operator*(2000.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp270 = sp80;
+            temp_f0_903 = sp260 + sp240;
+            sp80 = temp_f0_903;
+            sp270 = temp_f0_903;
             sp88 = sp260.unk8 + sp248;
             sp278 = (f64) sp88;
-            M2C_ERROR(/* unknown instruction: ps_add $f3, $f1, $f0 */);
+            temp_f3_915 = sp3E0 + temp_f0_903;
+            sp3E0 = temp_f3_915;
             temp_f2_920 = (f32) sp3E8 + (f32) sp278;
             sp3E8 = temp_f2_920;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            spF0 = sp3D0 * 5.780152567e-315;
             spF8 = (f32) sp3D8 * 6000.0f;
             sp220 = spF0;
             sp228 = (f64) spF8;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-            sp230 = spE0;
+            temp_f0_932 = temp_f3_915 + sp220;
+            spE0 = temp_f0_932;
+            sp230 = temp_f0_932;
             spE8 = temp_f2_920 + (f32) sp228;
             sp238 = (f64) spE8;
             temp_f30_946 = MKRand_Float(&gViewSeed, 1.0f, 1.25f);
@@ -631,8 +648,9 @@ void Gondola::UpdateMove() {
             spD8 = 600.0f;
             sp200 = (f64) spD0;
             sp208 = (f64) spD8;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp210 = spC0;
+            temp_f0_956 = sp200 * (f64) temp_f30_946;
+            spC0 = temp_f0_956;
+            sp210 = temp_f0_956;
             spC8 = (f32) sp208 * temp_f30_946;
             sp218 = (f64) spC8;
             this->unk238->SpawnCloudEmitter(*((MKVector3 *) &sp230), *((MKVector3 *) &sp210), 0.0f);
@@ -797,7 +815,7 @@ void Gondola::UpdateMove() {
         sp380.unk10 = (f64) spA0;
         sp398 = (f64) spA8;
         sp1E8 = (f64) sp78;
-        M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
+        sp400 += sp1E0;
         sp408 = (f32) sp408 + (f32) sp1E8;
         if ((u8) M2C_FIELD(this, u8 *, 0x24C) != 0) {
             temp_f9_1314 = -unksp3F4;
@@ -834,8 +852,9 @@ void Gondola::UpdateMove() {
         } else {
             sp190 = temp_f6_1277;
             sp198 = temp_f5_1287;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp1A0 = sp90;
+            temp_f0_1377 = sp190 + M2C_BITWISE(f64, sp380.unk10);
+            sp90 = temp_f0_1377;
+            sp1A0 = temp_f0_1377;
             sp98 = (f32) sp198 + (f32) sp398;
             sp1A8 = (f64) sp98;
             sp410.SetRotationPYR(*((MKVector3 *) &sp1A0));

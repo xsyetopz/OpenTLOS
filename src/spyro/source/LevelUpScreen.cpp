@@ -454,10 +454,8 @@ void DrawBreathIcon(float arg0, float arg1, float arg2, int arg3, int arg4, cons
     sp8 = M2C_FIELD(&arg5, f64 *, 0);
     sp10 = M2C_FIELD(&arg5, f64 *, 8);
     if (HasAttack(arg3, arg4) == 0) {
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r0, 0x0, qr0 */);
+        sp8 *= 5.2013764e-315;
+        sp10 *= 5.2013764e-315;
         unksp14 = arg5.unkC;
     }
     temp_f3_848 = 73.0f * arg2;
@@ -613,8 +611,7 @@ void LevelUpScreen::Update() {
                     temp_f2_1158 = *(temp_r4_1148 + temp_r6_1147) + var_f30_1149;
                     var_f29_1160 = 0.0f;
                     temp_f1_1161 = M2C_FIELD(&pointsPerUpgrade[var_r5_1136], f32 *, 4);
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (temp_f2_1158 == temp_f1_1161) {
+                    if (temp_f2_1158 >= temp_f1_1161) {
                         M2C_FIELD((&GameData::gameData[0x70] + temp_r7_1121 + temp_r6_1147), s32 *, 0x64) = (s32) (var_r5_1136 + 1);
                         var_f29_1160 = temp_f2_1158 - temp_f1_1161;
                         M2C_FIELD((&GameData::gameData[0x70] + (selectionElement << 5) + (selectionAttack * 4)), f32 *, 0x70) = 0.0f;
@@ -676,7 +673,7 @@ block_60:
                     KDSound_Play(GS_LevelUpEnd, 0U, -1);
                 }
             } else {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                 if ((temp_f31_1114 == 0.0f) && ((u8) M2C_FIELD(this, u8 *, 0x155) != 0)) {
                     M2C_FIELD(this, u8 *, 0x155) = 0U;
                     KDSound_Play(GS_LevelUpEnd, 0U, -1);

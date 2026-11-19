@@ -129,17 +129,22 @@ void Wake::Update() {
     f64 spA0;
     f64 sp98;
     f64 sp90;
-    M2C_UNK sp80;
+    f64 sp80;
     f64 sp78;
     f64 sp70;
     f32 sp68;
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     f32 temp_f1_401;
     f32 temp_f3_395;
@@ -147,6 +152,10 @@ void Wake::Update() {
     f32 var_f0_407;
     f32 var_f0_430;
     f32 var_f29_421;
+    f64 temp_f0_286;
+    f64 temp_f0_307;
+    f64 temp_f0_336;
+    f64 temp_f0_448;
     s32 temp_r0_247;
     s32 temp_r3_228;
     s32 temp_r3_248;
@@ -194,33 +203,29 @@ loop_41:
                     this->unkC0 = 0;
                 }
             } else {
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                spC0 = sp40;
+                temp_f0_286 = M2C_FIELD(var_r28_224, f64 *, 8) * (f64) gUpdateTimeDelta;
+                sp40 = temp_f0_286;
+                spC0 = temp_f0_286;
                 sp48 = M2C_FIELD(var_r28_224, f32 *, 0x10) * gUpdateTimeDelta;
                 spC8 = (f64) sp48;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $r28, $r3, 0x0, qr0 */);
+                M2C_FIELD(var_r28_224, f64 *, 0x38) = (f64) (M2C_FIELD(var_r28_224, f64 *, 0x38) - temp_f0_286);
                 M2C_FIELD(var_r28_224, f32 *, 0x40) = (f32) (M2C_FIELD(var_r28_224, f32 *, 0x40) - (f32) spC8);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                spB0 = sp30;
+                temp_f0_307 = M2C_FIELD(var_r28_224, f64 *, 8) * (f64) gUpdateTimeDelta;
+                sp30 = temp_f0_307;
+                spB0 = temp_f0_307;
                 sp38 = M2C_FIELD(var_r28_224, f32 *, 0x10) * gUpdateTimeDelta;
                 spB8 = (f64) sp38;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $r28, $r0, 0x0, qr0 */);
+                M2C_FIELD(var_r28_224, f64 *, 0x48) = (f64) (M2C_FIELD(var_r28_224, f64 *, 0x48) + temp_f0_307);
                 sp68 = 0.0f;
                 sp60 = 0.0f;
                 sp64 = -10.0f;
                 M2C_FIELD(var_r28_224, f32 *, 0x50) = (f32) (M2C_FIELD(var_r28_224, f32 *, 0x50) + (f32) spB8);
                 spA0 = (f64) sp60;
                 spA8 = (f64) sp68;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                temp_f0_336 = M2C_FIELD(var_r28_224, f64 *, 0x38) + spA0;
+                sp50 = temp_f0_336;
                 sp8 = 0.0f;
-                spD0 = sp50;
+                spD0 = temp_f0_336;
                 sp58 = M2C_FIELD(var_r28_224, f32 *, 0x40) + (f32) spA8;
                 spD8 = (f64) sp58;
                 if (spD0.IsWithin(*((MKVector3 *) &sp8), NULL, M2C_ERROR(/* Read from unset register $r6 */)) != 0) {
@@ -228,8 +233,7 @@ loop_41:
                     M2C_FIELD(var_r28_224, f32 *, 0x3C) = (f32) (M2C_FIELD(var_r28_224, f32 *, 0x3C) + 1.0f);
                 }
                 MKVector(0.0f, -10.0f, 0.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r28, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp20 = M2C_FIELD(var_r28_224, f64 *, 0x48) + sp80;
                 sp90 = sp20;
                 sp28 = M2C_FIELD(var_r28_224, f32 *, 0x50) + sp88;
                 spD0 = sp20;
@@ -270,9 +274,9 @@ loop_41:
                     }
                     var_f29_421 = var_f0_430;
                 }
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                sp70 = sp10;
+                temp_f0_448 = M2C_FIELD(var_r28_224, f64 *, 0x78) * (f64) var_f29_421;
+                sp10 = temp_f0_448;
+                sp70 = temp_f0_448;
                 sp18 = M2C_FIELD(var_r28_224, f32 *, 0x80) * var_f29_421;
                 M2C_FIELD(var_r28_224, f32 *, 0x58) = (f32) sp70;
                 sp78 = (f64) sp18;
@@ -290,11 +294,11 @@ loop_41:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
 void Wake::Reset() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     MKProp::Reset();
     this->unk58 = 0;
@@ -303,15 +307,13 @@ void Wake::Reset() {
     this->unkA0 = -1.0f;
     this->unkA4 = -1.0f;
     this->unkA8 = -1.0f;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    sp8 = (f64) M2C_FIELD(this, f32 *, 0xA0) * 1.591496843e-314;
     this->unkB0 = sp8;
     sp10 = this->unkA8 * -2.0f;
     sp18 = sp8;
     sp20 = (f64) sp10;
     this->unkB8 = (f64) sp10;
 }
-#endif
 
 void Wake::Deinit() {
     MKHeap *temp_r3_547;

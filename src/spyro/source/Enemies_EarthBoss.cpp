@@ -373,6 +373,7 @@ void EarthBoss::DoHitFx(EnemyDamageFeedback *arg0) {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f1_485;
     s32 var_r29_444;
 
@@ -384,8 +385,7 @@ void EarthBoss::DoHitFx(EnemyDamageFeedback *arg0) {
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, 0.0f, -1.0f);
             KDRand_Vector(spF8, spE8);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp8 = spF8 * 5.758944265e-315;
             sp18 = 1.0f;
             sp1C = 0.75f;
             sp10 = spF8.unk8 * 4000.0f;
@@ -557,7 +557,7 @@ void EarthBoss::UpdatePhrasesAndSounds() {
     var_r29_781 = 0;
     var_r30_782 = 0;
 loop_3:
-    if ((temp_f30_775 != 0.0f) && (*(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2D4)) != 0.0f) && (M2C_BITWISE(f32, this->unkCD4) > *(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2D4))) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f30_775 == *(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2D4))) != 0))) {
+    if ((temp_f30_775 != 0.0f) && (*(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2D4)) != 0.0f) && (M2C_BITWISE(f32, this->unkCD4) > *(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2D4))) && (temp_f30_775 <= *(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2D4)))) {
         temp_f31_812 = 2.0f * M2C_FIELD(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x2FC);
         this->unkCD8 = MKRand_Float(&gViewSeed, M2C_FIELD(checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x2FC), temp_f31_812);
         this->unkCD0 = checked_cast<EarthBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_782 + 0x2B4);
@@ -583,7 +583,8 @@ loop_3:
 
 #if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void EarthBoss::UpdateCollisionItems() {
-    Matrix sp150;
+    f64 sp180;
+    M2C_UNK sp150;
     Matrix sp110;
     Matrix spD0;
     f64 spC8;
@@ -602,9 +603,13 @@ void EarthBoss::UpdateCollisionItems() {
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     Animation *temp_r29_887;
     EarthBossArm *temp_r4_1013;
     f32 temp_f30_949;
@@ -612,6 +617,8 @@ void EarthBoss::UpdateCollisionItems() {
     f32 temp_f3_915;
     f32 temp_f6_922;
     f32 temp_f8_928;
+    f64 temp_f0_1050;
+    f64 temp_f0_1062;
     s32 temp_r25_900;
     s32 var_r26_889;
     s32 var_r28_888;
@@ -639,8 +646,7 @@ void EarthBoss::UpdateCollisionItems() {
             spD0.SetIdentity();
             temp_f31_957 = _table_sinf(8.0f * (3.1415927f * M2C_FIELD(temp_r30_891, f32 *, 0xB48)));
             spA0.operator*(temp_f30_949);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+            sp40 = spA0 * (f64) temp_f31_957;
             spB0 = sp40;
             sp48 = spA0.unk8 * temp_f31_957;
             spB8 = (f64) sp48;
@@ -650,8 +656,7 @@ void EarthBoss::UpdateCollisionItems() {
             spD0.unk3C = 1.0f;
             temp_r29_887->SetCustomMatrix(temp_r25_900, &spD0, (AnimationMatrixPosition) 2, 0U);
             M2C_FIELD(temp_r30_891, f32 *, 0xB48) = (f32) (M2C_FIELD(temp_r30_891, f32 *, 0xB48) + gUpdateTimeDelta);
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(temp_r30_891, f32 *, 0xB48) == 1.0f) {
+            if (M2C_FIELD(temp_r30_891, f32 *, 0xB48) >= 1.0f) {
                 M2C_FIELD(temp_r30_891, u8 *, 0xB55) = 0U;
                 ((Animation *) (MKModel_GetAnimation(this->unk4)))->SetCustomMatrix(temp_r25_900, NULL, (AnimationMatrixPosition) 2, 0U);
             }
@@ -659,29 +664,27 @@ void EarthBoss::UpdateCollisionItems() {
         if ((u8) M2C_FIELD(temp_r30_891, u8 *, 0xB54) != 0) {
             sp150.SetIdentity();
             if ((var_r28_888 == 2) && (temp_r4_1013 = this->unkCC0, (((s32) temp_r4_1013->unk38C == 0) == 0))) {
-                MKModel_CalculateNodeWorldMatrix(temp_r4_1013->unk4, temp_r4_1013->unk344, &sp150);
+                MKModel_CalculateNodeWorldMatrix(temp_r4_1013->unk4, temp_r4_1013->unk344, (Matrix *) &sp150);
                 sp80.operator*(200.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp30 = sp180 + M2C_BITWISE(f64, sp80);
                 M2C_FIELD(temp_r30_891, f64 *, 0xB18) = sp30;
-                sp38 = sp150.unk38 + sp80.unk8;
+                sp38 = sp188 + sp80.unk8;
                 sp90 = sp30;
                 sp98 = (f64) sp38;
                 M2C_FIELD(temp_r30_891, f64 *, 0xB20) = (f64) sp38;
             } else {
-                MKModel_CalculateNodeWorldMatrix(this->unk4, M2C_FIELD(temp_r30_891, s32 *, 0xB4C), &sp150);
+                MKModel_CalculateNodeWorldMatrix(this->unk4, M2C_FIELD(temp_r30_891, s32 *, 0xB4C), (Matrix *) &sp150);
                 sp150.YAxis3();
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-                sp60 = sp10;
+                temp_f0_1050 = *M2C_ERROR(/* Read from unset register $r3 */) * M2C_FIELD(temp_r30_891, f64 *, 0xB28);
+                sp10 = temp_f0_1050;
+                sp60 = temp_f0_1050;
                 sp18 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 8) * M2C_FIELD(temp_r30_891, f32 *, 0xB30);
                 sp68 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_FIELD(temp_r30_891, f64 *, 0xB18) = sp20;
-                sp70 = sp20;
-                sp28 = sp150.unk38 + (f32) sp68;
+                temp_f0_1062 = sp180 + temp_f0_1050;
+                sp20 = temp_f0_1062;
+                M2C_FIELD(temp_r30_891, f64 *, 0xB18) = temp_f0_1062;
+                sp70 = temp_f0_1062;
+                sp28 = sp188 + (f32) sp68;
                 sp78 = (f64) sp28;
                 M2C_FIELD(temp_r30_891, f64 *, 0xB20) = (f64) sp28;
             }
@@ -891,6 +894,7 @@ void EarthBoss::CheckAnimEvents() {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     CharacterFireFX *temp_r30_1514;
     f32 temp_f31_1466;
     s32 temp_r0_1516;
@@ -901,8 +905,7 @@ void EarthBoss::CheckAnimEvents() {
         sp7C = 0;
         MKVector(0.025f, 0.4f, 0.025f);
         sp48.operator*(500.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp8 = sp48 * (f64) temp_f31_1466;
         sp78 = 0x417;
         sp10 = sp48.unk8 * temp_f31_1466;
         sp80 = sp8;
@@ -1201,9 +1204,7 @@ void EarthBossDescriptor::LoadDone() {
     sp20 = 500.0f;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+    M2C_FIELD(temp_r3_2065, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_2065, f64 *, 0) - sp38);
     sp10 = 500.0f;
     sp8 = 0.0f;
     spC = 0.0f;
@@ -1211,9 +1212,7 @@ void EarthBossDescriptor::LoadDone() {
     temp_r3_2085 = this->unk1C;
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+    M2C_FIELD(temp_r3_2085, f64 *, 0x10) = (f64) (M2C_FIELD(temp_r3_2085, f64 *, 0x10) + sp28);
     temp_r3_2085->unk18 += (f32) sp30;
 }
 #endif
@@ -1407,7 +1406,7 @@ void EarthBossArm::Draw() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'sp58'
+#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to
 s32 EarthBossArm::CheckMeleeHit(EnemyAttack *arg0) {
     u8 sp180;
     s32 sp17C;
@@ -1453,10 +1452,15 @@ s32 EarthBossArm::CheckMeleeHit(EnemyAttack *arg0) {
     f64 sp70;
     f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     CharacterZapFX *temp_r3_2863;
     CharacterZapFX *var_r4_2807;
@@ -1466,28 +1470,34 @@ s32 EarthBossArm::CheckMeleeHit(EnemyAttack *arg0) {
     MKProp *var_r31_2701;
     f32 var_f4_2716;
     f32 var_f5_2729;
+    f64 temp_f0_2600;
+    f64 temp_f0_2612;
+    f64 temp_f0_2710;
     f64 temp_f1_2734;
     f64 temp_f1_2740;
     f64 temp_f1_2744;
+    f64 temp_f2_2610;
     s32 temp_r3_2763;
     s32 var_r0_2773;
     void *temp_r0_2816;
 
     MKModel_CalculateNodeWorldMatrix(this->unk4, this->unk344, &spF0);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp78 = sp58;
+    temp_f0_2600 = M2C_BITWISE(f64, spF0) * 5.5769738e-315;
+    sp58 = temp_f0_2600;
+    sp78 = temp_f0_2600;
     sp60 = spF0.unk8 * 200.0f;
     sp80 = (f64) sp60;
-    M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    spA8 = sp48;
+    temp_f2_2610 = spF0.unk30;
+    temp_f0_2612 = temp_f2_2610 + temp_f0_2600;
+    sp48 = temp_f0_2612;
+    spA8 = temp_f0_2612;
     sp50 = spF0.unk38 + (f32) sp80;
     spB0 = (f64) sp50;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
+    sp38 = M2C_BITWISE(f64, spF0) * 5.626513803e-315;
     sp40 = spF0.unk8 * 450.0f;
     sp68 = sp38;
     sp70 = (f64) sp40;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
+    sp28 = temp_f2_2610 + sp68;
     sp98 = sp28;
     sp30 = spF0.unk38 + (f32) sp70;
     sp130 = 0.0f;
@@ -1512,7 +1522,7 @@ s32 EarthBossArm::CheckMeleeHit(EnemyAttack *arg0) {
     sp178 = NULL;
     sp17C = -1;
     sp180 = 0;
-    if (MKCollision_SweepSphereCollide(*((MKVector3 *) &spA8), *((MKVector3 *) &sp98), M2C_ERROR(/* unknown instruction: ps_mr $f1, $f31 */), (MKCollisionResult *) &sp130, (MKCollisionMode) 2, (M2C_FIELD(this->unk370->unk110.unk460, s32 *, 0x18) & 0xFBFFFFFF) | 0x08000000) != 0) {
+    if (MKCollision_SweepSphereCollide(*((MKVector3 *) &spA8), *((MKVector3 *) &sp98), 200.0f, (MKCollisionResult *) &sp130, (MKCollisionMode) 2, (M2C_FIELD(this->unk370->unk110.unk460, s32 *, 0x18) & 0xFBFFFFFF) | 0x08000000) != 0) {
         if ((sp180 != 0) && (sp178 != NULL) && (var_r0_2687 = M2C_FIELD(sp178, MKProp **, 8), ((var_r0_2687 == NULL) == 0))) {
 
         } else {
@@ -1524,9 +1534,10 @@ s32 EarthBossArm::CheckMeleeHit(EnemyAttack *arg0) {
             } else {
                 var_r31_2701 = NULL;
             }
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_f0_2710 = (f64) sp130 - sp98;
+            sp18 = temp_f0_2710;
             var_f4_2716 = 0.0f;
-            sp88 = sp18;
+            sp88 = temp_f0_2710;
             sp20 = sp138 - (f32) spA0;
             unksp8C = 0.0f;
             sp90 = (f64) sp20;
@@ -1649,13 +1660,14 @@ void EarthBossArm::Extend() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     Animation *temp_r4_2936;
     f32 temp_f1_2973;
     f32 temp_f2_2976;
     f32 temp_f5_2978;
-    f32 temp_f6_3070;
     f32 var_f4_2983;
     f64 temp_f1_2986;
     f64 temp_f1_2992;
@@ -1682,9 +1694,7 @@ void EarthBossArm::Extend() {
     } else {
         var_r3_2957 = NULL;
     }
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp28 = M2C_FIELD(var_r3_2957, f64 *, 0) - spA0.unk30;
     sp58.unk20 = sp28;
     sp30 = M2C_FIELD(var_r3_2957, f32 *, 8) - spA0.unk38;
     temp_f1_2973 = M2C_BITWISE(f32, sp58.unk24);
@@ -1732,14 +1742,12 @@ void EarthBossArm::Extend() {
     var_ctr_3057 = 4;
     do {
         temp_r6_3060 = this + var_r3_3053;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r6, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+        sp18 = sp58.unk30 - M2C_FIELD(temp_r6_3060, f64 *, 0x70);
         temp_r0_3065 = var_r7_3049 - 1;
-        temp_f6_3070 = (f32) sp90 - M2C_FIELD(temp_r6_3060, f32 *, 0x78);
         var_r7_3049 += 1;
         var_r3_3053 += 0x80;
         sp58.unk10 = sp18;
-        sp20 = temp_f6_3070;
+        sp20 = (f32) sp90 - M2C_FIELD(temp_r6_3060, f32 *, 0x78);
         sp38 = sp18;
         M2C_FIELD(temp_r6_3060, f32 *, 0xCC) = (f32) (((var_f4_2983 - 400.0f) * 0.25f * (f32) temp_r0_3065) + M2C_BITWISE(f32, sp58.unk10));
         sp40 = (f64) sp20;
@@ -1768,11 +1776,13 @@ void EarthBossArm::Aim(const MKVector3 &arg0) {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     Enemy *temp_r4_3136;
     Enemy *temp_r4_3141;
     f32 temp_f2_3183;
     f32 temp_f4_3181;
     f32 temp_f6_3170;
+    f64 temp_f0_3150;
 
     this->unk38C = 3;
     this->unk378 = M2C_FIELD(&arg0, f64 *, 0);
@@ -1785,10 +1795,9 @@ void EarthBossArm::Aim(const MKVector3 &arg0) {
     MKModel_CalculateNodeWorldMatrix(temp_r4_3136->unk4, M2C_FIELD(temp_r4_3136, s32 *, 0xCD0), &spE0);
     temp_r4_3141 = this->unk370;
     MKModel_CalculateNodeWorldMatrix(temp_r4_3141->unk4, M2C_FIELD(temp_r4_3141, s32 *, 0xCD4), &spA0);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp30 = sp10;
+    temp_f0_3150 = spA0.unk30 - spE0.unk30;
+    sp10 = temp_f0_3150;
+    sp30 = temp_f0_3150;
     sp18 = spA0.unk38 - spE0.unk38;
     sp38 = (f64) sp18;
     Normalise(sp40);
@@ -1813,6 +1822,7 @@ void EarthBossArm::Retract() {
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     Animation *temp_r3_3218;
     s32 var_ctr_3234;
     s32 var_r3_3229;
@@ -1827,8 +1837,7 @@ void EarthBossArm::Retract() {
         var_ctr_3234 = 4;
         do {
             temp_r5_3239 = this + var_r3_3229;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r5, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+            sp8 = M2C_BITWISE(f64, sp28.unk20) - M2C_FIELD(temp_r5_3239, f64 *, 0x70);
             var_r3_3229 += 0x80;
             sp28.unk10 = sp8;
             M2C_FIELD(temp_r5_3239, f32 *, 0xD0) = (f32) M2C_FIELD(temp_r5_3239, f32 *, 0xC8);
@@ -1870,11 +1879,14 @@ void EarthBossArm::SetRetracted() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     Animation *temp_r28_3296;
     Enemy *temp_r4_3311;
     Enemy *temp_r4_3316;
     f32 temp_f6_3344;
+    f64 temp_f0_3323;
     s32 var_r27_3337;
     s32 var_r30_3339;
     void *temp_r29_3370;
@@ -1886,8 +1898,9 @@ void EarthBossArm::SetRetracted() {
     MKModel_CalculateNodeWorldPosition(temp_r4_3311->unk4, M2C_FIELD(temp_r4_3311, s32 *, 0xCD0), &sp90);
     temp_r4_3316 = this->unk370;
     MKModel_CalculateNodeWorldPosition(temp_r4_3316->unk4, M2C_FIELD(temp_r4_3316, s32 *, 0xCD4), &spA0);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    sp60 = sp10;
+    temp_f0_3323 = M2C_BITWISE(f64, spA0) - M2C_BITWISE(f64, sp90);
+    sp10 = temp_f0_3323;
+    sp60 = temp_f0_3323;
     sp18 = spA0.unk8 - sp90.unk8;
     sp68 = (f64) sp18;
     Normalise(sp70);
@@ -1907,8 +1920,7 @@ void EarthBossArm::SetRetracted() {
         sp50.GetNodeOrigin((s32) temp_r28_3296);
         spC0 = sp50;
         spC8 = sp58;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp20 = sp50 - M2C_FIELD(temp_r29_3370, f64 *, 0x70);
         var_r27_3337 += 1;
         var_r30_3339 += 0x80;
         spB0 = sp20;
@@ -2176,8 +2188,7 @@ void EarthBossArm::UpdateRetraction() {
             M2C_FIELD(temp_r5_3857, f32 *, 0xD4) = var_f3_3864;
             temp_f3_3874 = M2C_FIELD(temp_r5_3857, f32 *, 0xD0);
             M2C_FIELD(temp_r5_3857, f32 *, 0xC8) = (f32) ((M2C_FIELD(temp_r5_3857, f32 *, 0xD4) * (M2C_FIELD(temp_r5_3857, f32 *, 0xCC) - temp_f3_3874)) + temp_f3_3874);
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((M2C_FIELD(temp_r5_3857, f32 *, 0xD4) == 1.0f) || ((f32) fabs(M2C_FIELD(temp_r5_3857, f32 *, 0xCC) - M2C_FIELD(temp_r5_3857, f32 *, 0xC8)) < 0.01f)) {
+            if ((M2C_FIELD(temp_r5_3857, f32 *, 0xD4) >= 1.0f) || ((f32) fabs(M2C_FIELD(temp_r5_3857, f32 *, 0xCC) - M2C_FIELD(temp_r5_3857, f32 *, 0xC8)) < 0.01f)) {
                 if ((s32) this->unk38C == 1) {
                     this->unk38C = 2;
                 }
@@ -2210,6 +2221,7 @@ void EarthBossArm::UpdateExtension() {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 temp_f0_3934;
     f32 temp_f31_3987;
     f32 temp_f3_3943;
@@ -2233,16 +2245,14 @@ void EarthBossArm::UpdateExtension() {
             M2C_FIELD(temp_r3_3926, f32 *, 0xD4) = var_f3_3933;
             temp_f3_3943 = M2C_FIELD(temp_r3_3926, f32 *, 0xD0);
             M2C_FIELD(temp_r3_3926, f32 *, 0xC8) = (f32) ((M2C_FIELD(temp_r3_3926, f32 *, 0xD4) * (M2C_FIELD(temp_r3_3926, f32 *, 0xCC) - temp_f3_3943)) + temp_f3_3943);
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((M2C_FIELD(temp_r3_3926, f32 *, 0xD4) == 1.0f) || ((f32) fabs(M2C_FIELD(temp_r3_3926, f32 *, 0xCC) - M2C_FIELD(temp_r3_3926, f32 *, 0xC8)) < 0.01f)) {
+            if ((M2C_FIELD(temp_r3_3926, f32 *, 0xD4) >= 1.0f) || ((f32) fabs(M2C_FIELD(temp_r3_3926, f32 *, 0xCC) - M2C_FIELD(temp_r3_3926, f32 *, 0xC8)) < 0.01f)) {
                 M2C_FIELD(temp_r3_3926, u8 *, 0xD8) = 1U;
                 if (((s32) this->unk38C == 4) && ((u8) this->unk390 != 0)) {
                     temp_f31_3987 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
                     sp74 = 0;
                     MKVector(0.05f, 0.8f, 0.05f);
                     sp50.operator*(500.0f);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                    sp10 = sp50 * (f64) temp_f31_3987;
                     sp70 = 0x417;
                     sp78 = sp10;
                     sp18 = sp50.unk8 * temp_f31_3987;
@@ -2308,7 +2318,7 @@ void EarthBossArm::UpdateTarget() {
     f32 sp178;
     f64 sp170;
     f64 sp168;
-    M2C_UNK sp158;
+    f64 sp158;
     MKVector3 sp148;
     f64 sp140;
     f64 sp138;
@@ -2333,14 +2343,20 @@ void EarthBossArm::UpdateTarget() {
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
@@ -2363,6 +2379,7 @@ void EarthBossArm::UpdateTarget() {
     f64 temp_f1_4370;
     f64 temp_f1_4432;
     f64 temp_f1_4561;
+    f64 temp_f5_4292;
     s32 temp_r0_4109;
     s32 temp_r0_4583;
     s32 temp_r3_4110;
@@ -2436,8 +2453,7 @@ loop_9:
             }
             sp148.operator*(this->unk370->unk838.unk28.GetDist());
             sp158.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp48 = sp158 + M2C_BITWISE(f64, sp148);
             this->unk378 = sp48;
             sp50 = sp160 + sp148.unk8;
             sp80 = 0.0f;
@@ -2469,8 +2485,8 @@ loop_9:
             sp168 = sp48;
             sp170 = (f64) sp50;
             sp110 = (f64) sp80;
-            M2C_ERROR(/* unknown instruction: psq_lx $f5, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f5, $f0 */);
+            temp_f5_4292 = this->unk378;
+            sp68 = temp_f5_4292 - sp108;
             spA0 = 0.0f;
             temp_f4_4298 = (f32) M2C_FIELD(this, f64 *, 0x380);
             sp98 = 0.0f;
@@ -2480,7 +2496,7 @@ loop_9:
             sp118 = sp68;
             sp120 = (f64) sp70;
             sp130 = (f64) spA0;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+            sp88 = temp_f5_4292 + sp128;
             sp90 = temp_f4_4298 + (f32) sp130;
             sp138 = sp88;
             sp140 = (f64) sp90;
@@ -2488,8 +2504,7 @@ loop_9:
                 M2C_FIELD(this, f32 *, 0x37C) = sp244;
             }
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp58 = this->unk378 - M2C_BITWISE(f64, sp1E8);
         sp198.unk30 = sp58;
         sp60 = (f32) M2C_FIELD(this, f64 *, 0x380) - sp1E8.unk8;
         sp198.unk38 = (f64) sp60;
@@ -2568,7 +2583,7 @@ loop_9:
 loop_49:
         if (var_r28_4434 < (s32) (var_f29_4354 / 500.0f)) {
             spE8.operator*((f32) var_r28_4434 * 500.0f);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp38 = M2C_BITWISE(f64, sp1E8) + M2C_BITWISE(f64, spE8);
             spF8 = sp38;
             sp40 = sp1E8.unk8 + spE8.unk8;
             var_f1_4508 = (f32) (var_r28_4434 + 1) * 500.0f;
@@ -2581,7 +2596,7 @@ loop_49:
                 var_f1_4508 = var_f29_4354;
             }
             spC8.operator*(var_f1_4508);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp28 = M2C_BITWISE(f64, sp1E8) + M2C_BITWISE(f64, spC8);
             spD8 = sp28;
             sp30 = sp1E8.unk8 + spC8.unk8;
             sp198.unk10 = sp28;
@@ -2631,7 +2646,7 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spF0'
+#if 0 // DRAFT: undefined identifier 'unksp1D4'
 void EarthBossArm::Update() {
     f32 sp3BC;
     f32 sp3B8;
@@ -2695,10 +2710,12 @@ void EarthBossArm::Update() {
     f64 sp110;
     MKVector3 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
     f32 spE4;
     f32 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
     f32 spC4;
     f32 spC0;
@@ -2778,9 +2795,7 @@ void EarthBossArm::Update() {
     MKModel_CalculateNodeWorldMatrix(temp_r4_4650->unk4, M2C_FIELD(temp_r4_4650, s32 *, 0xCD0), &sp310);
     temp_r4_4655 = this->unk370;
     MKModel_CalculateNodeWorldMatrix(temp_r4_4655->unk4, M2C_FIELD(temp_r4_4655, s32 *, 0xCD4), &sp2D0);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    spF0 = sp310.unk30 - sp350.unk30;
     sp1D0 = spF0;
     spF8 = sp310.unk38 - sp350.unk38;
     sp1D8 = (f64) spF8;
@@ -2877,8 +2892,7 @@ void EarthBossArm::Update() {
         M2C_STRUCT_COPY((s32) &sp250.unk3C + 4, (s32) &sp350.unk3C + 4, 0x40);
         sp290.Inverse(&sp290);
         MKModel_CalculateNodeWorldMatrix(this->unk4, this->unk144, &sp250);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        spD0 = sp1F0 - sp250.unk30;
         sp180 = spD0;
         spD8 = (f32) sp1F8 - sp250.unk38;
         sp188 = (f64) spD8;
@@ -3039,15 +3053,12 @@ void EarthBossArm::Update() {
         Normalise(sp100);
         this->unkE0 = M2C_BITWISE(f64, sp100);
         this->unkE8 = (f64) sp100.unk8;
-        if ((s32) this->unk38C == 2) {
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((((f32) sp1E8 * M2C_FIELD(this, f32 *, 0xE8)) + (((f32) sp1E0 * M2C_FIELD(this, f32 *, 0xE0)) + (unksp1E4 * M2C_FIELD(this, f32 *, 0xE4)))) == 1.0f) {
-                this->unk38C = 0;
-                this->unkE0 = sp1E0;
-                this->unkE8 = sp1E8;
-                this->unk370->ShowFist(1U);
-                Disable();
-            }
+        if (((s32) this->unk38C == 2) && ((((f32) sp1E8 * M2C_FIELD(this, f32 *, 0xE8)) + (((f32) sp1E0 * M2C_FIELD(this, f32 *, 0xE0)) + (unksp1E4 * M2C_FIELD(this, f32 *, 0xE4)))) >= 1.0f)) {
+            this->unk38C = 0;
+            this->unkE0 = sp1E0;
+            this->unkE8 = sp1E8;
+            this->unk370->ShowFist(1U);
+            Disable();
         }
         break;
     }

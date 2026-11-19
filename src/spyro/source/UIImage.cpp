@@ -15,7 +15,7 @@
 
 extern MKMaterial *gpMKWhiteMaterial;
 
-#if 0 // DRAFT: undefined identifier 'sp10'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void UIImage::Draw(const RenderContext &arg0) {
     RenderContext sp90;
     f32 sp88;
@@ -35,11 +35,13 @@ void UIImage::Draw(const RenderContext &arg0) {
     MKVector3 sp30;
     MKVector3 sp20;
     f32 sp18;
+    f64 sp10;
     MKMaterial *temp_r3_103;
     f32 temp_f0_90;
     f32 temp_f0_96;
     f32 var_f1_32;
     f32 var_f1_51;
+    f64 temp_f0_70;
     s32 temp_r3_29;
     s32 temp_r3_48;
 
@@ -64,9 +66,9 @@ void UIImage::Draw(const RenderContext &arg0) {
             var_f1_51 = -this->unk18.unk34;
         }
         sp30.operator*(var_f1_51);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp40 = sp10;
+        temp_f0_70 = sp30 + M2C_BITWISE(f64, sp20);
+        sp10 = temp_f0_70;
+        sp40 = temp_f0_70;
         sp18 = sp30.unk8 + sp20.unk8;
         sp48 = (f64) sp18;
         sp90.Translate((Matrix *) &sp90, *((MKVector3 *) &sp40));

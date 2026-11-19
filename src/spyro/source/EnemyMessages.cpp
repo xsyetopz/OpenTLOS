@@ -139,22 +139,33 @@ void Enemy::Message(MKMessage *arg0) {
     f64 sp148;
     f64 sp140;
     f64 sp138;
-    M2C_UNK sp128;
-    M2C_UNK sp118;
+    f64 sp128;
+    f64 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
     f32 spBC;
     f32 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -162,7 +173,9 @@ void Enemy::Message(MKMessage *arg0) {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f64 sp10;
     f64 sp8;
     AttackerManager *var_r3_2090;
@@ -197,6 +210,16 @@ void Enemy::Message(MKMessage *arg0) {
     f32 temp_f5_201;
     f32 var_f31_281;
     f32 var_f5_1563;
+    f64 temp_f0_1439;
+    f64 temp_f0_1595;
+    f64 temp_f0_315;
+    f64 temp_f0_624;
+    f64 temp_f0_873;
+    f64 temp_f0_933;
+    f64 temp_f0_945;
+    f64 temp_f0_958;
+    f64 temp_f0_970;
+    f64 temp_f1_1432;
     f64 temp_f1_1497;
     f64 temp_f1_1757;
     f64 temp_f1_2352;
@@ -350,12 +373,12 @@ block_409:
                 Normalise(*((MKVector3 *) &sp378.unk20));
                 sp378.unk30.operator*(temp_f31_294);
                 sp378.unk40.GetPos();
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                sp448 = sp68;
+                temp_f0_315 = sp378.unk40 + M2C_BITWISE(f64, sp378.unk30);
+                sp68 = temp_f0_315;
+                sp448 = temp_f0_315;
                 var_f31_281 = 0.8f;
                 sp70 = sp378.unk48 + M2C_BITWISE(f32, sp378.unk38);
-                sp3C8 = sp68;
+                sp3C8 = temp_f0_315;
                 sp450 = (f64) sp70;
                 sp3D0 = (f64) sp70;
                 if ((this->unkAB4 > 0.0f) && ((s32) M2C_FIELD(this->unkA20, s32 *, 0x234) > 0)) {
@@ -423,13 +446,10 @@ block_103:
                     if ((s32) temp_r3_272->unk38 == 1) {
                         if ((IsKnockedUp() != 0) || (temp_r3_461 = this->unkA28, ((M2C_FIELD(*temp_r3_461, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_461, 0xC) == 0) == 0))) {
                             var_r26_280 = 9;
+                        } else if ((this->unkAA8 >= 1.0f) || (M2C_BITWISE(s32, this->unk92C) != 1) || !(this->unk920 & 4)) {
+                            var_r26_280 = 0;
                         } else {
-                            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                            if ((this->unkAA8 == 1.0f) || (M2C_BITWISE(s32, this->unk92C) != 1) || !(this->unk920 & 4)) {
-                                var_r26_280 = 0;
-                            } else {
-                                var_r26_280 = 0xE;
-                            }
+                            var_r26_280 = 0xE;
                         }
                     }
                     break;
@@ -461,8 +481,7 @@ block_103:
                             Normalise(*((MKVector3 *) &sp308.unk20));
                             sp308.unk30.operator*(temp_f31_545);
                             sp308.unk40.GetPos();
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                            sp58 = sp308.unk40 + M2C_BITWISE(f64, sp308.unk30);
                             sp358 = sp58;
                             sp60 = sp308.unk48 + M2C_BITWISE(f32, sp308.unk38);
                             temp_r29_578 = *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x64));
@@ -485,8 +504,9 @@ block_103:
                     temp_r3_617 = this->unk8;
                     sp2D8 = M2C_FIELD(temp_r3_617, f64 *, 0x30);
                     sp2E0 = M2C_FIELD(temp_r3_617, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                    sp2E8 = sp108;
+                    temp_f0_624 = sp448 - sp2D8;
+                    sp108 = temp_f0_624;
+                    sp2E8 = temp_f0_624;
                     sp110 = (f32) sp450 - (f32) sp2E0;
                     sp2F0 = (f64) sp110;
                     Normalise(sp2F8);
@@ -589,9 +609,9 @@ block_199:
                         temp_r3_865 = this->unk8;
                         sp298 = M2C_FIELD(temp_r3_865, f64 *, 0x30);
                         sp2A0 = M2C_FIELD(temp_r3_865, f64 *, 0x38);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                        sp2A8 = spF8;
+                        temp_f0_873 = M2C_FIELD(temp_r3_812, f64 *, 0x10) - sp298;
+                        spF8 = temp_f0_873;
+                        sp2A8 = temp_f0_873;
                         sp100 = M2C_FIELD(temp_r3_812, f32 *, 0x18) - (f32) sp2A0;
                         sp2B0 = (f64) sp100;
                         Normalise(sp2B8);
@@ -615,23 +635,26 @@ block_199:
                             sp8 = temp_f4_918;
                             sp10 = temp_f3_920;
                             sp240 = temp_f3_920;
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                            sp248 = spE8;
+                            temp_f0_933 = M2C_FIELD(temp_r3_812, f64 *, 0x10) - sp238;
+                            spE8 = temp_f0_933;
+                            sp248 = temp_f0_933;
                             spF0 = M2C_FIELD(temp_r3_812, f32 *, 0x18) - (f32) sp240;
                             sp250 = (f64) spF0;
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                            temp_f0_945 = temp_f0_933 * 5.222099017e-315;
+                            spD8 = temp_f0_945;
                             sp268 = temp_f4_918;
-                            sp258 = spD8;
+                            sp258 = temp_f0_945;
                             spE0 = (f32) sp250 * 0.5f;
                             sp270 = temp_f3_920;
                             sp260 = (f64) spE0;
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            sp278 = spC8;
+                            temp_f0_958 = sp268 + temp_f0_945;
+                            spC8 = temp_f0_958;
+                            sp278 = temp_f0_958;
                             spD0 = (f32) sp270 + (f32) sp260;
                             sp280 = (f64) spD0;
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            sp408 = spA8;
+                            temp_f0_970 = sp278 + sp228;
+                            spA8 = temp_f0_970;
+                            sp408 = temp_f0_970;
                             spB0 = (f32) sp280 + (f32) sp230;
                             sp410 = (f64) spB0;
                             DoBlockFx(temp_r25_815, *((MKVector3 *) &sp408));
@@ -702,8 +725,7 @@ block_199:
                             sp1E8.GetDir();
                             sp1F8.operator*(temp_f31_1311);
                             sp208.GetPos();
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                            sp28 = sp208 - M2C_BITWISE(f64, sp1F8);
                             sp208.unk10 = sp28;
                             sp30 = M2C_BITWISE(f32, sp208.unk8) - sp1F8.unk8;
                             sp3F8 = sp28;
@@ -747,20 +769,19 @@ block_199:
             var_r4_1429 = 0;
             var_r26_1430 = 0;
             temp_r3_1431 = this->unk8;
-            sp1C8 = M2C_FIELD(temp_r3_1431, f64 *, 0x30);
+            temp_f1_1432 = M2C_FIELD(temp_r3_1431, f64 *, 0x30);
+            sp1C8 = temp_f1_1432;
             sp1D0 = M2C_FIELD(temp_r3_1431, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_f0_1439 = temp_f1_1432 - M2C_FIELD(temp_r29_1426, f64 *, 0x10);
+            sp98 = temp_f0_1439;
             temp_f4_1445 = M2C_FIELD(temp_r29_1426, f32 *, 0x20);
-            sp1D8 = sp98;
+            sp1D8 = temp_f0_1439;
             spA0 = (f32) sp1D0 - M2C_FIELD(temp_r29_1426, f32 *, 0x18);
             sp1E0 = (f64) spA0;
             temp_f1_1457 = ((f32) sp1E0 * (f32) sp1E0) + (((f32) sp1D8 * (f32) sp1D8) + (unksp1DC * unksp1DC));
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_f1_1457 == (temp_f4_1445 * temp_f4_1445)) {
+            if (temp_f1_1457 <= (temp_f4_1445 * temp_f4_1445)) {
                 temp_f0_1462 = 0.5f * temp_f4_1445;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (temp_f1_1457 == (temp_f0_1462 * temp_f0_1462)) {
+                if (temp_f1_1457 <= (temp_f0_1462 * temp_f0_1462)) {
                     var_r4_1429 = 1;
                 } else {
                     var_r26_1430 = 1;
@@ -821,14 +842,14 @@ block_199:
                 temp_f3_1589 = M2C_FIELD(temp_r3_1587, f64 *, 0x38);
                 sp188 = temp_f4_1588;
                 sp190 = temp_f3_1589;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                temp_f0_1595 = sp188 - M2C_FIELD(temp_r29_1426, f64 *, 0x10);
+                sp88 = temp_f0_1595;
                 sp1A8 = temp_f4_1588;
-                sp198 = sp88;
+                sp198 = temp_f0_1595;
                 sp90 = (f32) sp190 - M2C_FIELD(temp_r29_1426, f32 *, 0x18);
                 sp1B0 = temp_f3_1589;
                 sp1A0 = (f64) sp90;
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp78 = sp1A8 + temp_f0_1595;
                 sp4B8 = 4;
                 sp4C0 = 0;
                 sp80 = (f32) sp1B0 + (f32) sp1A0;
@@ -1127,8 +1148,7 @@ block_199:
         temp_r25_2386 = checked_cast<GetConvexFuryTargetPosMsg *, MKMessage>(arg0);
         MKVector(0.0f, 150.0f, 0.0f);
         sp128.GetPos();
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp18 = sp128 + sp118;
         M2C_FIELD(temp_r25_2386, f64 *, 8) = sp18;
         sp20 = sp130 + sp120;
         sp138 = sp18;

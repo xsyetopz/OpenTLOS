@@ -354,13 +354,20 @@ void MKView_TransformPoint2Dto3D(float arg0, float arg1, float arg2, MKVector3 *
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     Matrix *temp_r31_855;
     f32 temp_f26_870;
     f32 temp_f27_871;
     f32 temp_f28_869;
     f32 temp_f29_863;
+    f32 temp_f2_893;
+    f32 temp_f2_919;
+    f64 temp_f0_896;
+    f64 temp_f0_922;
 
     temp_r31_855 = pStack;
     temp_f29_863 = arg2 * (f32) tan(pStack, 0.5f * pStack[1].unk14);
@@ -368,30 +375,27 @@ void MKView_TransformPoint2Dto3D(float arg0, float arg1, float arg2, MKVector3 *
     temp_f26_870 = arg0 - ((0.5f * temp_r31_855[1].unk2C) + temp_r31_855[1].unk24);
     temp_f27_871 = arg1 - ((0.5f * temp_r31_855[1].unk30) + temp_r31_855[1].unk28);
     sp58.operator*(arg2);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp28 = M2C_FIELD(temp_r31_855, f64 *, 0x30) + M2C_BITWISE(f64, sp58);
     M2C_FIELD(arg3, f64 *, 0) = sp28;
     sp30 = temp_r31_855->unk38 + sp58.unk8;
     sp68 = sp28;
     M2C_FIELD(arg3, f64 *, 8) = (f64) sp30;
     sp70 = (f64) sp30;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp48 = sp18;
-    sp20 = temp_r31_855->unk8 * (temp_f28_869 * (temp_f26_870 / (0.5f * pStack[1].unk2C)));
+    temp_f2_893 = temp_f28_869 * (temp_f26_870 / (0.5f * pStack[1].unk2C));
+    temp_f0_896 = M2C_FIELD(temp_r31_855, f64 *, 0) * (f64) temp_f2_893;
+    sp18 = temp_f0_896;
+    sp48 = temp_f0_896;
+    sp20 = temp_r31_855->unk8 * temp_f2_893;
     sp50 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+    M2C_FIELD(arg3, f64 *, 0) = (f64) (M2C_FIELD(arg3, f64 *, 0) + temp_f0_896);
     arg3->unk8 += (f32) sp50;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    sp38 = sp8;
-    sp10 = temp_r31_855->unk18 * (temp_f29_863 * (-temp_f27_871 / (0.5f * pStack[1].unk30)));
+    temp_f2_919 = temp_f29_863 * (-temp_f27_871 / (0.5f * pStack[1].unk30));
+    temp_f0_922 = M2C_FIELD(temp_r31_855, f64 *, 0x10) * (f64) temp_f2_919;
+    sp8 = temp_f0_922;
+    sp38 = temp_f0_922;
+    sp10 = temp_r31_855->unk18 * temp_f2_919;
     sp40 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+    M2C_FIELD(arg3, f64 *, 0) = (f64) (M2C_FIELD(arg3, f64 *, 0) + temp_f0_922);
     arg3->unk8 += (f32) sp40;
 }
 #endif
@@ -413,6 +417,7 @@ f32 MKView_TransformPoint3Dto2D(MKVector3 *arg0, const MKVector3 &arg1) {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
     Matrix *temp_r3_970;
     f32 temp_f3_1019;
     f32 temp_f4_1051;
@@ -438,8 +443,7 @@ f32 MKView_TransformPoint3Dto2D(MKVector3 *arg0, const MKVector3 &arg1) {
     sp58 = (f64) sp18;
     if (unksp64 != 0.0f) {
         var_f31_967 = 1.0f / unksp64;
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp8 = sp58 * (f64) var_f31_967;
         M2C_FIELD(arg0, f64 *, 0) = sp8;
         sp10 = (f32) sp60 * var_f31_967;
         sp38 = sp8;
@@ -600,7 +604,7 @@ void MKView_SetCameraMatrix(const Matrix &arg0) {
     MKView_SettingsCounter += 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'sp38'
+#if 0 // DRAFT: undefined identifier 'unksp7C'
 void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     Matrix spB0;
     f64 spA0;                                       /* compiler-managed */
@@ -617,6 +621,7 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -650,9 +655,7 @@ void MKView_SetCameraLookAt(const MKVector3 &arg0, const MKVector3 &arg1, float 
     sp88 = 0.0f;
     sp8C = 1.0f;
     sp90 = 0.0f;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp38 = M2C_FIELD(&arg1, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0);
     sp78 = sp38;
     sp40 = arg1.unk8 - arg0.unk8;
     sp80 = (f64) sp40;

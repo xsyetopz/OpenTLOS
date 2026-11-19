@@ -41,8 +41,7 @@ void TitleScreen::Update() {
     }
     this->unkBC.unk4 = M2C_BITWISE(f32, this->unkBC.unk4) + gUpdateTimeDelta;
     temp_f1_37 = M2C_BITWISE(f32, this->unkBC.unk4);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f1_37 == 30.0f) {
+    if (temp_f1_37 >= 30.0f) {
         var_f31_41 = temp_f1_37 - 30.0f;
         if (var_f31_41 < 1.0f) {
 
@@ -55,8 +54,7 @@ void TitleScreen::Update() {
             var_f31_41 = 0.0f;
         }
         FrontEnd_SetFade(var_f31_41);
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (var_f31_41 == 1.0f) {
+        if (var_f31_41 >= 1.0f) {
             FrontEnd_PlayBackgroundVideo(0U);
             temp_r3_64 = this->unkC8;
             this->unkC8 = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r3_64) + 1));
@@ -80,8 +78,7 @@ void TitleScreen::Update() {
         ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
     }
     this->unkBC.unk8 = M2C_BITWISE(f32, this->unkBC.unk8) + gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_BITWISE(f32, this->unkBC.unk8) == 1.0f) {
+    if (M2C_BITWISE(f32, this->unkBC.unk8) >= 1.0f) {
         temp_r3_133 = this->unkCC;
         if (M2C_BITWISE(u32, temp_r3_133) != 0U) {
             var_r4_137 = 2;

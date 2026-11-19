@@ -19,10 +19,13 @@ void ArrowTrap::Message(MKMessage *arg0) {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     MKVector3 *temp_r30_74;
-    f32 temp_f3_85;
+    f64 temp_f0_80;
+    f64 temp_f1_75;
     s32 var_r29_67;
+    void *temp_r4_78;
 
     if ((s32) arg0->unk0 != 0xB5) {
 
@@ -31,11 +34,12 @@ void ArrowTrap::Message(MKMessage *arg0) {
         var_r29_67 = 0;
         do {
             temp_r30_74 = this->unk8 + 0x30;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            temp_f3_85 = M2C_FIELD((this->unk8 + 0x20), f32 *, 8) * MKRand_Float(&gViewSeed, -700.0f, -300.0f);
-            sp20 = sp10;
-            sp18 = temp_f3_85;
+            temp_f1_75 = MKRand_Float(&gViewSeed, -700.0f, -300.0f);
+            temp_r4_78 = this->unk8 + 0x20;
+            temp_f0_80 = M2C_FIELD(temp_r4_78, f64 *, 0) * temp_f1_75;
+            sp10 = temp_f0_80;
+            sp20 = temp_f0_80;
+            sp18 = M2C_FIELD(temp_r4_78, f32 *, 8) * (f32) temp_f1_75;
             sp28 = (f64) sp18;
             sp8 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
             gb.EmitDust(*temp_r30_74, *((MKVector3 *) &sp20), sp8, 0.0f);

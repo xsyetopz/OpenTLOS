@@ -60,13 +60,16 @@ void MoltenMetalBucketTrack::Draw() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f27_151;
+    f64 temp_f0_167;
     s32 temp_r0_104;
     s32 var_r29_135;
     s32 var_r30_109;
@@ -101,12 +104,13 @@ loop_6:
         spB8 = (f64) spA0.unk8;
         sp8 = 0.0f;
         sp60.GetMeasure(temp_f27_151, &this->unk4C, KDSpline_PositionMixer);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp60.unk10 = sp10;
+        temp_f0_167 = M2C_BITWISE(f64, sp60) - M2C_BITWISE(f64, spA0.unk10);
+        sp10 = temp_f0_167;
+        sp60.unk10 = temp_f0_167;
         sp18 = sp60.unk8 - (f32) spB8;
         sp78 = (f64) sp18;
         sp80.operator*(0.5f);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp30 = M2C_BITWISE(f64, spA0.unk10) + M2C_BITWISE(f64, sp80);
         sp20 = 0.0f;
         sp24 = 100.0f;
         sp38 = (f32) spB8 + sp80.unk8;
@@ -117,7 +121,7 @@ loop_6:
         spC0 = sp30;
         spC8 = (f64) sp38;
         sp58 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        spA0.unk10 = M2C_BITWISE(f64, spA0.unk10) + sp50;
         spB8 = (f32) spB8 + (f32) sp58;
         MKSetColorV(*((MKVector4 *) &spD0));
         MKSetTexCoord1F(1.0f, (f32) var_r29_135);
@@ -185,14 +189,20 @@ void MoltenMetalBucketTrack::Update() {
     f64 spE8;
     f64 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
     f32 sp64;
     f32 sp60;
@@ -228,6 +238,9 @@ void MoltenMetalBucketTrack::Update() {
     f64 temp_f1_736;
     f64 temp_f1_742;
     f64 temp_f1_746;
+    f64 temp_f2_471;
+    f64 temp_f2_482;
+    f64 temp_f2_493;
     f64 temp_f3_527;
     f64 temp_f3_533;
     f64 temp_f3_537;
@@ -245,8 +258,7 @@ void MoltenMetalBucketTrack::Update() {
     switch (temp_r0_275) {                          /* switch 1; irregular */
     case 0:                                         /* switch 1 */
         this->unkE8 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkE8 == 0.0f) {
+        if (this->unkE8 <= 0.0f) {
             ((MoltenMetalBucket *) (M2C_BITWISE(MoltenMetalBucket *, this->unk4C.unk28)))->Start();
             this->unkE4 = 1;
             this->unkE8 = 3.0f;
@@ -254,8 +266,7 @@ void MoltenMetalBucketTrack::Update() {
         break;
     case 1:                                         /* switch 1 */
         this->unk4C.unk2C += temp_f3_276 * gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk4C.unk2C == 0.99f) {
+        if (this->unk4C.unk2C >= 0.99f) {
             ((MoltenMetalBucket *) (M2C_BITWISE(MoltenMetalBucket *, this->unk4C.unk28)))->Stop();
             this->unk4C.unk2C = 0.99f;
             this->unkE4 = 2;
@@ -264,8 +275,7 @@ void MoltenMetalBucketTrack::Update() {
         break;
     case 2:                                         /* switch 1 */
         this->unkE8 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkE8 == 0.0f) {
+        if (this->unkE8 <= 0.0f) {
             ((MoltenMetalBucket *) (M2C_BITWISE(MoltenMetalBucket *, this->unk4C.unk28)))->Pour();
             this->unkE4 = 3;
             this->unkE8 = 3.0f;
@@ -273,8 +283,7 @@ void MoltenMetalBucketTrack::Update() {
         break;
     case 3:                                         /* switch 1 */
         this->unkE8 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkE8 == 0.0f) {
+        if (this->unkE8 <= 0.0f) {
             ((MoltenMetalBucket *) (M2C_BITWISE(MoltenMetalBucket *, this->unk4C.unk28)))->PourStop();
             this->unkE4 = 4;
             this->unkE8 = 3.0f;
@@ -282,8 +291,7 @@ void MoltenMetalBucketTrack::Update() {
         break;
     case 4:                                         /* switch 1 */
         this->unkE8 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkE8 == 0.0f) {
+        if (this->unkE8 <= 0.0f) {
             ((MoltenMetalBucket *) (M2C_BITWISE(MoltenMetalBucket *, this->unk4C.unk28)))->Stop();
             this->unkE4 = 5;
             this->unkE8 = 3.0f;
@@ -291,8 +299,7 @@ void MoltenMetalBucketTrack::Update() {
         break;
     case 5:                                         /* switch 1 */
         this->unk4C.unk2C = -((temp_f3_276 * gUpdateTimeDelta) - this->unk4C.unk2C);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk4C.unk2C == 0.0f) {
+        if (this->unk4C.unk2C <= 0.0f) {
             ((MoltenMetalBucket *) (M2C_BITWISE(MoltenMetalBucket *, this->unk4C.unk28)))->Start();
             this->unk4C.unk2C = 0.0f;
             this->unkE4 = 0;
@@ -323,23 +330,26 @@ void MoltenMetalBucketTrack::Update() {
     sp1D8 = sp148;
     unksp1E4 = unksp204;
     unksp1D4 = unksp1F4;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    spD0 = sp200 + sp1F0;
     sp130 = spD0;
     spD8 = (f32) sp208 + (f32) sp1F8;
     sp138 = (f64) spD8;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f31 */);
-    sp1C0 = spC0;
+    temp_f2_471 = spD0 * 5.222099017e-315;
+    spC0 = temp_f2_471;
+    sp1C0 = temp_f2_471;
     spC8 = (f32) sp138 * 0.5f;
     sp1C8 = (f64) spC8;
-    M2C_ERROR(/* unknown instruction: ps_add $f2, $f3, $f2 */);
-    sp120 = spB0;
+    temp_f2_482 = sp1E0 + sp1D0;
+    spB0 = temp_f2_482;
+    sp120 = temp_f2_482;
     spB8 = (f32) sp1E8 + (f32) sp1D8;
     sp128 = (f64) spB8;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f2, $f2, $f31 */);
-    sp1B0 = spA0;
+    temp_f2_493 = temp_f2_482 * 5.222099017e-315;
+    spA0 = temp_f2_493;
+    sp1B0 = temp_f2_493;
     spA8 = (f32) sp128 * 0.5f;
     sp1B8 = (f64) spA8;
-    M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
+    sp90 = sp1C0 - temp_f2_493;
     sp110 = sp90;
     sp98 = (f32) sp1C8 - (f32) sp1B8;
     sp118 = (f64) sp98;
@@ -387,7 +397,7 @@ void MoltenMetalBucketTrack::Update() {
     sp88 = (f32) sp118 * var_f5_588;
     sp1A0 = (f64) sp80;
     sp1A8 = (f64) sp88;
-    M2C_ERROR(/* unknown instruction: ps_sub $f2, $f3, $f2 */);
+    sp70 = sp200 - sp1F0;
     sp78 = (f32) sp208 - (f32) sp1F8;
     sp100 = sp70;
     sp108 = (f64) sp78;

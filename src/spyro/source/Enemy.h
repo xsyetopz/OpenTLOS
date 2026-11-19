@@ -556,8 +556,7 @@ inline u8 Enemy::IsInsideEnemyRegion() {
     var_r31_10920 = 0;
     if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &this->unk588)) != 0) {
         sp8.GetRegionPos();
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((f32) fabs(spC - this->unk588.unk0) == 500.0f) {
+        if ((f32) fabs(spC - this->unk588.unk0) <= 500.0f) {
             var_r31_10920 = 1;
         }
     }

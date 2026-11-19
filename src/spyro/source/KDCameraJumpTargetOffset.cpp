@@ -85,8 +85,7 @@ void KDCameraJumpTargetOffset::Update(KDCameraHeroData &arg0) {
                 var_r0_85 = unksp3C > unksp4C;
             }
             if (var_r0_85 != 0) {
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (this->unkC == var_f5_70) {
+                if (this->unkC >= var_f5_70) {
                     this->unkC = var_f5_70;
                 }
             } else {
@@ -100,8 +99,7 @@ void KDCameraJumpTargetOffset::Update(KDCameraHeroData &arg0) {
                     var_r0_113 = unksp1C < unksp2C;
                 }
                 if (var_r0_113 != 0) {
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if (this->unkC == var_f5_70) {
+                    if (this->unkC <= var_f5_70) {
                         this->unkC = var_f5_70;
                     }
                 } else {
@@ -135,12 +133,8 @@ void KDCameraJumpTargetOffset::Update(KDCameraHeroData &arg0) {
         var_r0_183 = 0;
         this->unkC -= var_f3_169;
         temp_f1_187 = this->unkC;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_187 == -0.1f) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_f1_187 == 0.1f) {
-                var_r0_183 = 1;
-            }
+        if ((temp_f1_187 >= -0.1f) && (temp_f1_187 <= 0.1f)) {
+            var_r0_183 = 1;
         }
         if (var_r0_183 != 0) {
             Exit(arg0);

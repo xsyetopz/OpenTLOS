@@ -70,6 +70,7 @@ void FuryFXElectricity2::DestroyAllLightningCages() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
@@ -83,6 +84,8 @@ void FuryFXElectricity2::DestroyAllLightningCages() {
     f32 temp_f2_125;
     f32 temp_r3_170;
     f32 var_r30_99;
+    f64 temp_f0_154;
+    f64 temp_f1_148;
     void ***temp_r31_181;
     void ***temp_r4_173;
     void **temp_r3_114;
@@ -119,10 +122,12 @@ loop_2:
             sp78 = (f64) sp48;
             sp70 = (f64) sp40;
             temp_r3_147 = M2C_FIELD(M2C_FIELD(*temp_r3_135, void *(**)(void **, f64), 8)(temp_r3_135, (f64) sp40), void **, 8);
-            sp80 = M2C_FIELD(temp_r3_147, f64 *, 0x30);
+            temp_f1_148 = M2C_FIELD(temp_r3_147, f64 *, 0x30);
+            sp80 = temp_f1_148;
             sp88 = M2C_FIELD(temp_r3_147, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp90 = sp30;
+            temp_f0_154 = temp_f1_148 + sp70;
+            sp30 = temp_f0_154;
+            sp90 = temp_f0_154;
             sp38 = (f32) sp88 + (f32) sp78;
             sp98 = (f64) sp38;
             this->unkAC->Emit(*((MKVector3 *) &sp90), *((MKVector3 *) &sp60), sp8, (MKVector4) &sp50);
@@ -145,11 +150,13 @@ void FuryFXElectricity2::SpawnLightningCages() {
     f64 sp28;
     f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     TargetManager ***var_r29_214;
     TargetManager **temp_r30_369;
     f32 var_f3_345;
     f32 var_f4_278;
+    f64 temp_f1_253;
     f64 temp_f1_284;
     f64 temp_f1_290;
     f64 temp_f1_294;
@@ -164,10 +171,10 @@ loop_28:
         if (temp_r30_369 != NULL) {
             if (((*temp_r30_369)->unk8.unk0(temp_r30_369) != NULL) && (M2C_FIELD(*temp_r30_369, u8 (**)(TargetManager **), 0x18)(temp_r30_369) != 0) && ((((u32 (*)(TargetManager **)) (*temp_r30_369)->unk8.unk4)(temp_r30_369) == 0U) || (((Character *) (((Character *(*)(TargetManager **)) (*temp_r30_369)->unk8.unk4)(temp_r30_369)))->IsActive() != 0))) {
                 temp_r3_252 = M2C_FIELD((*temp_r30_369)->unk8.unk0(temp_r30_369), void **, 8);
-                sp20 = M2C_FIELD(temp_r3_252, f64 *, 0x30);
+                temp_f1_253 = M2C_FIELD(temp_r3_252, f64 *, 0x30);
+                sp20 = temp_f1_253;
                 sp28 = M2C_FIELD(temp_r3_252, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp10 = temp_f1_253 - this->unk98;
                 sp30 = sp10;
                 sp18 = (f32) sp28 - this->unkA0;
                 sp38 = (f64) sp18;
@@ -213,7 +220,7 @@ loop_28:
                 }
                 sp30 = (f32) sp30 * var_f3_345;
                 unksp34 *= var_f3_345;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                 if (var_f4_278 == 3000.0f) {
                     SpawnLightningCage((Targetable *) temp_r30_369);
                 }
@@ -274,6 +281,7 @@ void FuryFXElectricity2::UpdateLightningCages() {
     f32 spBC;
     f32 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
     f32 sp9C;
     f32 sp98;
@@ -281,7 +289,9 @@ void FuryFXElectricity2::UpdateLightningCages() {
     f32 sp8C;
     f32 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp64;
     f32 sp60;
     f32 sp5C;
@@ -290,6 +300,7 @@ void FuryFXElectricity2::UpdateLightningCages() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -311,6 +322,10 @@ void FuryFXElectricity2::UpdateLightningCages() {
     f32 var_f4_540;
     f32 var_f6_607;
     f32 var_r29_429;
+    f64 temp_f0_474;
+    f64 temp_f0_511;
+    f64 temp_f0_523;
+    f64 temp_f0_712;
     f64 temp_f1_456;
     f64 temp_f1_546;
     f64 temp_f1_552;
@@ -346,9 +361,10 @@ loop_24:
             spBC = temp_f1_464;
             sp130 = (f64) spC0;
             sp128 = (f64) spB8;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            temp_f0_474 = temp_f1_456 + sp128;
+            spA8 = temp_f0_474;
             temp_f1_479 = (f32) sp180 + (f32) sp130;
-            sp168 = spA8;
+            sp168 = temp_f0_474;
             spB0 = temp_f1_479;
             sp170 = (f64) spB0;
             temp_r3_484 = M2C_FIELD(temp_r30_768, void ***, 0);
@@ -365,12 +381,14 @@ loop_24:
             sp108 = (f64) sp98;
             sp110 = (f64) spA0;
             KDRand_Vector(sp118, *((MKVector3 *) &sp108));
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp158 = sp78;
+            temp_f0_511 = sp178 + M2C_BITWISE(f64, sp118);
+            sp78 = temp_f0_511;
+            sp158 = temp_f0_511;
             sp80 = (f32) sp180 + sp118.unk8;
             sp160 = (f64) sp80;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp148 = sp68;
+            temp_f0_523 = sp158 - sp168;
+            sp68 = temp_f0_523;
+            sp148 = temp_f0_523;
             sp70 = (f32) sp160 - (f32) sp170;
             sp150 = (f64) sp70;
             var_f4_540 = ((f32) sp150 * (f32) sp150) + (((f32) sp148 * (f32) sp148) + (unksp14C * unksp14C));
@@ -440,13 +458,13 @@ loop_24:
             sp50 = temp_f21_693;
             spD8 = (f64) sp48;
             spE0 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f23 */);
-            sp138 = sp38;
+            temp_f0_712 = spD8 * 5.64367472e-315;
+            sp38 = temp_f0_712;
+            sp138 = temp_f0_712;
             sp40 = (f32) spE0 * 600.0f;
             sp140 = (f64) sp40;
             ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp158), *((MKVector3 *) &sp138), MKRand_Float(&gViewSeed, 0.5f, 1.0f), 0U);
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(temp_r30_768, f32 *, 4) == 0.0f) {
+            if (M2C_FIELD(temp_r30_768, f32 *, 4) <= 0.0f) {
                 sp30 = 0.0f;
                 sp18 = 1.0f;
                 sp1C = 1.0f;
@@ -499,6 +517,8 @@ s32 FuryFXElectricity2::Trigger(const MKVector3 &arg0) {
     f32 sp1C;
     f32 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f0_917;
     s32 temp_r0_837;
     s32 temp_r28_860;
     s32 temp_r3_835;
@@ -557,9 +577,9 @@ s32 FuryFXElectricity2::Trigger(const MKVector3 &arg0) {
     sp94 = -1;
     sp98 = 0;
     sp30 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp38 = sp8;
+    temp_f0_917 = M2C_FIELD(&arg0, f64 *, 0) + sp28;
+    sp8 = temp_f0_917;
+    sp38 = temp_f0_917;
     sp10 = arg0.unk8 + (f32) sp30;
     sp40 = (f64) sp10;
     if (MKCollision_RayCollide(arg0, *((MKVector3 *) &sp38), (MKCollisionResult *) &sp48, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -640,10 +660,10 @@ void FuryFXElectricity2::Update() {
     f64 sp250;
     f64 sp248;
     f64 sp240;
-    M2C_UNK sp230;
+    f64 sp230;
     f64 sp228;
     f64 sp220;
-    M2C_UNK sp210;
+    f64 sp210;
     f64 sp208;
     f64 sp200;
     f64 sp1F8;
@@ -657,7 +677,7 @@ void FuryFXElectricity2::Update() {
     f64 sp1B0;
     f64 sp1A8;
     f64 sp1A0;
-    M2C_UNK sp190;
+    f64 sp190;
     MKVector3 sp180;
     f64 sp178;
     f64 sp170;
@@ -671,11 +691,12 @@ void FuryFXElectricity2::Update() {
     f64 sp130;
     f64 sp128;
     f64 sp120;
-    M2C_UNK sp110;
+    f64 sp110;
     f32 sp108;
     f32 sp104;
     f32 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
     f32 spE4;
     f32 spE0;
@@ -683,7 +704,9 @@ void FuryFXElectricity2::Update() {
     f32 spD4;
     f32 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spA8;
     f32 spA4;
     f32 spA0;
@@ -702,12 +725,16 @@ void FuryFXElectricity2::Update() {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     ManagedLight *temp_r3_1171;
     ManagedLight *temp_r3_1184;
@@ -729,6 +756,8 @@ void FuryFXElectricity2::Update() {
     f32 var_f1_1290;
     f32 var_f3_1527;
     f32 var_f4_1460;
+    f64 temp_f0_1358;
+    f64 temp_f0_1370;
     f64 temp_f1_1466;
     f64 temp_f1_1472;
     f64 temp_f1_1476;
@@ -745,14 +774,10 @@ void FuryFXElectricity2::Update() {
     void *temp_r3_1670;
 
     temp_f1_1061 = M2C_FIELD(this, f32 *, 0x11C);
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f1_1061 == 0.0f) {
+    if (temp_f1_1061 >= 0.0f) {
         M2C_FIELD(this, f32 *, 0x11C) = (f32) (temp_f1_1061 + gUpdateTimeDelta);
-        if (((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0x3C)(M2C_FIELD(&gb, void ***, 0)), void **, 4), void **, 0xB4), u8 *, 0x16) != 0) && ((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0x3C)(M2C_FIELD(&gb, void ***, 0)), void **, 4), void **, 0xB4), u8 *, 0x17) != 0)) {
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_FIELD(this, f32 *, 0x11C) == 7.0f) {
-                ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay(0.0f, 0.5f, 0.15f, 0, 4.0f, 0U);
-            }
+        if (((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0x3C)(M2C_FIELD(&gb, void ***, 0)), void **, 4), void **, 0xB4), u8 *, 0x16) != 0) && ((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **), 0x3C)(M2C_FIELD(&gb, void ***, 0)), void **, 4), void **, 0xB4), u8 *, 0x17) != 0) && (M2C_FIELD(this, f32 *, 0x11C) <= 7.0f)) {
+            ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay(0.0f, 0.5f, 0.15f, 0, 4.0f, 0U);
         }
         if (M2C_FIELD(this, f32 *, 0x11C) > 7.0f) {
             M2C_FIELD(this, f32 *, 0x11C) = -1.0f;
@@ -763,12 +788,10 @@ void FuryFXElectricity2::Update() {
     temp_r0_1125 = this->unk90;
     switch (temp_r0_1125) {                         /* switch 1; irregular */
     case 1:                                         /* switch 1 */
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk94 == 0.0f) && (this->unk90 = 2, this->unk94 = 0.8f, temp_r4_1149 = this->unkA8, ((temp_r4_1149 == NULL) == 0))) {
+        if ((this->unk94 <= 0.0f) && (this->unk90 = 2, this->unk94 = 0.8f, temp_r4_1149 = this->unkA8, ((temp_r4_1149 == NULL) == 0))) {
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_1149, 1U);
             MKVector(0.0f, 300.0f, 0.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp50 = this->unk98 + sp230;
             temp_r3_1171 = this->unkA8;
             sp240 = sp50;
             sp58 = this->unkA0 + sp238;
@@ -810,8 +833,7 @@ void FuryFXElectricity2::Update() {
         temp_f30_1221 = 1.0f - (var_f1_1201 / 0.8f);
         if ((ManagedLight *) this->unkA8 != NULL) {
             MKVector(0.0f, (400.0f * temp_f30_1221) + 25.0f, 0.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp40 = this->unk98 + sp210;
             temp_r3_1239 = this->unkA8;
             sp220 = sp40;
             sp48 = this->unkA0 + sp218;
@@ -834,8 +856,7 @@ void FuryFXElectricity2::Update() {
                 M2C_FIELD(temp_r3_1263, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_1263, f32 *, 0x24));
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk94 == 0.0f) {
+        if (this->unk94 <= 0.0f) {
             this->unk90 = 3;
             this->unk94 = 2.5f;
             M2C_FIELD(this, f32 *, 0x118) = 1.0f;
@@ -867,8 +888,7 @@ void FuryFXElectricity2::Update() {
         sp1B0 = (f64) spD0;
         sp1B8 = (f64) spD8;
         KDRand_Vector(sp1D0, *((MKVector3 *) &sp1C0));
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        spC0 = sp1D0 * 5.717499035e-315;
         sp100 = 0.0f;
         sp104 = 3000.0f;
         spC8 = sp1D0.unk8 * 2000.0f;
@@ -877,18 +897,19 @@ void FuryFXElectricity2::Update() {
         sp1E0 = spC0;
         sp1E8 = (f64) spC8;
         sp1F8 = (f64) sp108;
-        M2C_ERROR(/* unknown instruction: psq_lx $f2, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        sp200 = spF0;
+        temp_f0_1358 = this->unk98 + sp1F0;
+        spF0 = temp_f0_1358;
+        sp200 = temp_f0_1358;
         spF8 = this->unkA0 + (f32) sp1F8;
         sp208 = (f64) spF8;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-        sp260 = spB0;
+        temp_f0_1370 = sp200 + sp1E0;
+        spB0 = temp_f0_1370;
+        sp260 = temp_f0_1370;
         spB8 = (f32) sp208 + (f32) sp1E8;
         sp268 = (f64) spB8;
         if ((ManagedLight *) this->unkA8 != NULL) {
             MKVector(0.0f, 2500.0f, 0.0f);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp30 = sp260 - sp190;
             temp_r3_1395 = this->unkA8;
             sp1A0 = sp30;
             sp38 = (f32) sp268 - sp198;
@@ -981,8 +1002,7 @@ void FuryFXElectricity2::Update() {
         sp140 = (f64) sp70;
         sp148 = (f64) sp78;
         ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &sp260), *((MKVector3 *) &sp250), 10.0f, lit_817, (MKVector4) &sp140);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk94 == 0.0f) {
+        if (this->unk94 <= 0.0f) {
             this->unk90 = 4;
             this->unk94 = 1.0f;
             this->unkB0.unk50 = 0;
@@ -1002,8 +1022,7 @@ void FuryFXElectricity2::Update() {
         if ((ManagedLight *) this->unkA8 != NULL) {
             MKVector(0.0f, 2000.0f * gUpdateTimeDelta, 0.0f);
             temp_r4_1628 = this->unkA8;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp10 = temp_r4_1628->unk10 + sp110;
             temp_r4_1628->unk10 = sp10;
             sp18 = (f32) M2C_FIELD(temp_r4_1628, f64 *, 0x18) + sp118;
             sp120 = sp10;
@@ -1035,8 +1054,7 @@ void FuryFXElectricity2::Update() {
                 M2C_FIELD(temp_r3_1670, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_1670, f32 *, 0x24));
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk94 == 0.0f) {
+        if (this->unk94 <= 0.0f) {
             this->unk90 = 0;
             temp_r4_1690 = this->unkA8;
             if (temp_r4_1690 != NULL) {

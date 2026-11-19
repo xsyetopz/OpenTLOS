@@ -72,8 +72,7 @@ void MainMenuScreen::Update() {
     case 0:
         if ((u8) M2C_FIELD(&gb, u8 *, 0x382) == 0) {
             this->unkCC = M2C_BITWISE(f32, this->unkCC) - gUpdateTimeDelta;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (M2C_BITWISE(f32, this->unkCC) == 0.0f) {
+            if (M2C_BITWISE(f32, this->unkCC) <= 0.0f) {
                 this->unkCC = 0.0f;
                 this->unkBC.unk8 = NULL;
                 this->unkC8 = this->unkBC.unk8->GetCard((s32) var_r4_43);

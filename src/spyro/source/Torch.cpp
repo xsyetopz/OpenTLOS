@@ -60,7 +60,7 @@ void Torch::Update() {
     f64 sp120;
     f64 sp118;
     f64 sp110;
-    M2C_UNK sp100;
+    f64 sp100;
     f64 spF8;
     f64 spF0;
     f64 spE8;
@@ -73,7 +73,9 @@ void Torch::Update() {
     f32 spB4;
     f32 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
     f32 sp84;
     f32 sp80;
@@ -81,6 +83,7 @@ void Torch::Update() {
     f32 sp74;
     f32 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
@@ -93,6 +96,7 @@ void Torch::Update() {
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -109,6 +113,9 @@ void Torch::Update() {
     f32 temp_f28_257;
     f32 temp_f30_235;
     f32 temp_f31_97;
+    f64 temp_f0_166;
+    f64 temp_f0_197;
+    f64 temp_f0_304;
     void *temp_r3_342;
 
     GameProp::Update();
@@ -127,8 +134,7 @@ void Torch::Update() {
         this->unk108->unk2C = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
     }
     this->unk110 += gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk110 == this->unk10C) {
+    if (this->unk110 >= this->unk10C) {
         this->unk110 = 0.0f;
         temp_f27_147 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f28_152 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -137,8 +143,9 @@ void Torch::Update() {
         spB8 = temp_f27_147;
         sp150 = (f64) spB0;
         sp158 = (f64) spB8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        sp180 = spA0;
+        temp_f0_166 = sp150 * 5.356796015e-315;
+        spA0 = temp_f0_166;
+        sp180 = temp_f0_166;
         spA8 = (f32) sp158 * 5.0f;
         sp188 = (f64) spA8;
         spC = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
@@ -148,16 +155,15 @@ void Torch::Update() {
         sp84 = temp_f1_187;
         sp138 = (f64) sp88;
         sp130 = (f64) sp80;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp140 = sp90;
+        temp_f0_197 = M2C_FIELD(this, f64 *, 0xF8) + temp_f0_166;
+        sp90 = temp_f0_197;
+        sp140 = temp_f0_197;
         sp98 = this->unkF8.unk8 + (f32) sp188;
         sp148 = (f64) sp98;
         ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &sp140), *((MKVector3 *) &sp130), spC);
     }
     this->unk118 += gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk118 == this->unk114) {
+    if (this->unk118 >= this->unk114) {
         this->unk118 = 0.0f;
         temp_f28_230 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f30_235 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -169,8 +175,7 @@ void Torch::Update() {
         temp_f27_252 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f28_257 = MKRand_Float(&gViewSeed, -0.1f, 0.1f);
         MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_257, temp_f27_252);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+        sp20 = sp100 * 5.398241246e-315;
         sp40 = 1.0f;
         sp28 = sp108 * 10.0f;
         sp44 = 1.0f;
@@ -188,9 +193,9 @@ void Torch::Update() {
         sp54 = 0.0f;
         spE8 = (f64) sp58;
         spE0 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        spF0 = sp60;
+        temp_f0_304 = M2C_FIELD(this, f64 *, 0xF8) + sp170;
+        sp60 = temp_f0_304;
+        spF0 = temp_f0_304;
         sp68 = this->unkF8.unk8 + (f32) sp178;
         spF8 = (f64) sp68;
         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &spF0), *((MKVector3 *) &spE0), sp8, *((MKVector4 *) &spD0), 0.0f);

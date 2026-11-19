@@ -107,9 +107,13 @@ void HitFX::Draw() {
     f32 spA4;
     f32 spA0;
     f32 sp98;
+    f64 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
@@ -161,8 +165,7 @@ void HitFX::Draw() {
         sp1B0 = (f64) sp40;
         sp1B8 = (f64) sp48;
         sp1C0.operator*(temp_f31_124);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp90 = sp1C0 + M2C_BITWISE(f64, sp1A0);
         sp1D0 = sp90;
         sp98 = sp1C0.unk8 + sp1A0.unk8;
         sp2D0 = sp90;
@@ -170,8 +173,7 @@ void HitFX::Draw() {
         sp2D8 = (f64) sp98;
         sp170.operator*(temp_f31_124);
         sp180.operator*(temp_f31_124);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp80 = sp180 + M2C_BITWISE(f64, sp170);
         sp30 = -(f32) sp200;
         sp34 = -unksp204;
         sp88 = sp180.unk8 + sp170.unk8;
@@ -189,8 +191,7 @@ void HitFX::Draw() {
         sp140 = (f64) sp20;
         sp148 = (f64) sp28;
         sp150.operator*(temp_f31_124);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp70 = sp150 + M2C_BITWISE(f64, sp130);
         sp10 = -(f32) sp200;
         sp14 = -unksp204;
         sp78 = sp150.unk8 + sp130.unk8;
@@ -203,8 +204,7 @@ void HitFX::Draw() {
         spE8 = (f64) sp18;
         spF0.operator*(temp_f31_124);
         sp100.operator*(temp_f31_124);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp60 = sp100 + M2C_BITWISE(f64, spF0);
         temp_f30_280 = 1.0f - temp_f30_122;
         spAC = 1.0f;
         spA8 = temp_f30_280;
@@ -269,12 +269,14 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     ManagedLight *temp_r3_559;
     ManagedLight *temp_r3_570;
     ManagedLight *temp_r4_551;
     f32 temp_f29_508;
     f32 temp_f30_513;
+    f64 temp_f0_527;
     f64 temp_f0_561;
     f64 temp_f0_572;
     f64 temp_f1_560;
@@ -339,8 +341,9 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
         sp28 = temp_f29_508;
         sp30 = (f64) sp20;
         sp38 = (f64) sp28;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp40 = sp10;
+        temp_f0_527 = sp30 * 5.67904887e-315;
+        sp10 = temp_f0_527;
+        sp40 = temp_f0_527;
         sp18 = (f32) sp38 * 1050.0f;
         sp48 = (f64) sp18;
         sp8 = MKRand_Float(&gViewSeed, 6.0f, 12.0f);
@@ -374,7 +377,7 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp58'
+#if 0 // DRAFT: illegal implicit conversion from 'HitFX' to
 void HitFX::Update() {
     f64 spE0;
     f64 spD8;
@@ -394,6 +397,18 @@ void HitFX::Update() {
     f64 sp78;
     f64 sp70;
     f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
+    f64 sp8;
     ManagedLight *temp_r3_620;
     ManagedLight *temp_r4_645;
     ManagedLight *temp_r4_740;
@@ -401,8 +416,18 @@ void HitFX::Update() {
     f32 temp_f2_627;
     f32 temp_f3_793;
     f32 temp_f4_623;
+    f32 temp_f4_647;
+    f32 var_f0_659;
     f32 var_f0_755;
     f32 var_f1_605;
+    f64 temp_f0_721;
+    f64 temp_f1_671;
+    f64 temp_f1_681;
+    f64 temp_f1_691;
+    f64 temp_f1_701;
+    f64 temp_f1_708;
+    f64 temp_f3_665;
+    f64 temp_f5_670;
     s32 var_ctr_779;
     s32 var_ctr_824;
     s32 var_r3_777;
@@ -442,50 +467,58 @@ void HitFX::Update() {
         }
         temp_r4_645 = this->unk84;
         spB8 = 0.0f;
+        temp_f4_647 = 0.5f * (temp_f4_623 * 1.0f);
         spBC = 0.0f;
         spC0 = 0.0f;
         spC4 = 0.0f;
         spC8 = (f64) spB8;
         spD0 = (f64) spC0;
-        if ((0.5f * (temp_f4_623 * 1.0f)) < 1.0f) {
-
+        if (temp_f4_647 < 1.0f) {
+            var_f0_659 = temp_f4_647;
+        } else {
+            var_f0_659 = 1.0f;
         }
-        M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f4, $f3 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f5, $r3, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f6, $f5 */);
+        temp_f3_665 = temp_r4_645->unk20;
+        sp58 = spC8 - temp_f3_665;
+        temp_f5_670 = temp_r4_645->unk28;
+        temp_f1_671 = spD0 - temp_f5_670;
+        sp60 = temp_f1_671;
         sp88 = sp58;
-        sp90 = sp60;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
+        sp90 = temp_f1_671;
+        sp48 = sp88 * (f64) var_f0_659;
+        temp_f1_681 = temp_f1_671 * (f64) var_f0_659;
+        sp50 = temp_f1_681;
         sp78 = sp48;
-        sp80 = sp50;
-        M2C_ERROR(/* unknown instruction: ps_add $f1, $f3, $f1 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f1, $f5, $f1 */);
+        sp80 = temp_f1_681;
+        sp38 = temp_f3_665 + sp78;
+        temp_f1_691 = temp_f5_670 + temp_f1_681;
+        sp40 = temp_f1_691;
         sp68 = sp38;
-        sp70 = sp40;
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f4, $f3 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f1, $f6, $f4 */);
+        sp70 = temp_f1_691;
+        sp28 = spC8 - sp68;
+        temp_f1_701 = spD0 - sp70;
+        sp30 = temp_f1_701;
         spA8 = sp28;
-        spB0 = sp30;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-        sp98 = sp18;
+        spB0 = temp_f1_701;
+        temp_f1_708 = spA8 * (f64) var_f0_659;
+        sp18 = temp_f1_708;
+        sp20 = temp_f1_701 * (f64) var_f0_659;
+        sp98 = temp_f1_708;
         spA0 = sp20;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+        sp8 = sp68 + sp98;
+        temp_f0_721 = sp70 + sp20;
+        sp10 = temp_f0_721;
         temp_r4_645->unk20 = sp8;
-        temp_r4_645->unk28 = sp10;
+        temp_r4_645->unk28 = temp_f0_721;
         temp_r3_727 = temp_r4_645->unk3C;
         spD8 = sp8;
-        spE0 = sp10;
+        spE0 = temp_f0_721;
         if (temp_r3_727 != NULL) {
             M2C_FIELD(temp_r3_727, f64 *, 0) = sp8;
-            M2C_FIELD(temp_r3_727, f64 *, 8) = sp10;
+            M2C_FIELD(temp_r3_727, f64 *, 8) = temp_f0_721;
         }
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unk90 == 1.0f) {
+    if (this->unk90 >= 1.0f) {
         temp_r4_740 = this->unk84;
         if (temp_r4_740 != NULL) {
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_740, 0U);
@@ -505,8 +538,7 @@ void HitFX::Update() {
         }
         this->unk4C = var_f0_755;
         temp_f1_771 = this->unk4C;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_771 == 0.25f) {
+        if (temp_f1_771 >= 0.25f) {
             var_r3_777 = 0;
             this->unk50 = 0;
             var_ctr_779 = 3;

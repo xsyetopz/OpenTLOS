@@ -178,6 +178,7 @@ void KDParticleEmitter::Emit(int arg0, MKVector3 *arg1) {
     f32 temp_f6_409;
     f32 temp_f7_379;
     f32 temp_f7_418;
+    f64 *temp_r3_432;
     s32 temp_cr0_eq_455;
     s32 var_r29_339;
     void (*temp_r12_347)(KDParticleEmitter *, KDParticleEmitter *, MKParticle *);
@@ -211,10 +212,7 @@ loop_7:
             M2C_FIELD(temp_r4_364, f32 *, 8) = (f64) sp20;
             sp38 = (f64) sp18;
             sp40 = (f64) sp20;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
+            M2C_FIELD(temp_r4_364, f32 *, 0) = (f64) ((f64) M2C_FIELD(temp_r4_364, f32 *, 0) + M2C_FIELD(arg1, f64 *, 0));
             M2C_FIELD(temp_r4_364, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_364, f32 *, 8) + arg1->unk8);
             temp_r3_403 = this->unk70;
             temp_f3_404 = temp_r3_344->unk4;
@@ -229,14 +227,12 @@ loop_7:
             sp10 = (temp_f7_418 * temp_r3_403->unk28) + ((temp_f6_409 * temp_r3_403->unk8) + (temp_f3_404 * temp_r3_403->unk18));
             M2C_FIELD(temp_r3_344, void **, 0) = (f64) sp8;
             temp_r3_344->unk8 = (f64) sp10;
+            temp_r3_432 = this->unk6C;
             sp28 = (f64) sp8;
             sp30 = (f64) sp10;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r31, 0x0, qr0 */);
+            M2C_FIELD(temp_r3_344, void **, 0) = (f64) (M2C_BITWISE(f64, M2C_FIELD(temp_r3_344, void **, 0)) + M2C_FIELD(temp_r3_432, f64 *, 0));
             temp_f1_440 = M2C_FIELD(temp_r3_344, f32 *, 8);
-            M2C_FIELD(temp_r3_344, f32 *, 8) = (f32) (temp_f1_440 + M2C_FIELD(this->unk6C, f32 *, 8));
+            M2C_FIELD(temp_r3_344, f32 *, 8) = (f32) (temp_f1_440 + M2C_FIELD(temp_r3_432, f32 *, 8));
             temp_r3_444 = this->unk28;
             temp_r3_444->unkF0(temp_r3_444, temp_r3_344, temp_f1_440, temp_f2_423, temp_f3_420, temp_f4_421, temp_f5_419, temp_f6_409, temp_f7_418);
             temp_r3_344->unk10 = M2C_FIELD(this, f32 *, 8);
@@ -261,7 +257,7 @@ void KDParticleEmitter::Burst() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: undefined identifier 'unksp4C'
 void KDParticleEmitter::Update() {
     f64 sp50;                                       /* compiler-managed */
     f64 sp48;                                       /* compiler-managed */
@@ -270,8 +266,12 @@ void KDParticleEmitter::Update() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f2_506;
+    f32 temp_f4_518;
+    f64 *temp_r3_510;
     f64 *temp_r4_545;
     s32 temp_r31_562;
 
@@ -281,15 +281,15 @@ void KDParticleEmitter::Update() {
     }
     temp_f2_506 = this->unk34;
     if (temp_f2_506 > 0.0f) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        temp_r3_510 = this->unk6C;
+        sp8 = M2C_FIELD(temp_r3_510, f64 *, 0) - this->unk18;
+        temp_f4_518 = 1.0f / temp_f2_506;
         sp28 = sp8;
-        sp10 = M2C_FIELD(this->unk6C, f32 *, 8) - this->unk20;
+        sp10 = M2C_FIELD(temp_r3_510, f32 *, 8) - this->unk20;
         sp30 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
+        sp18 = sp28 * (f64) temp_f4_518;
         sp38 = sp18;
-        sp20 = (f32) sp30 * (1.0f / temp_f2_506);
+        sp20 = (f32) sp30 * temp_f4_518;
         sp48 = sp18;
         sp40 = (f64) sp20;
         sp50 = (f64) sp20;

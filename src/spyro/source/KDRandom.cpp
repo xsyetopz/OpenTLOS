@@ -67,6 +67,7 @@ void KDRand_UnitVector() {
     f32 temp_f1_136;
     f32 temp_f5_139;
     f32 var_f31_158;
+    f64 temp_f0_206;
     f64 temp_f2_142;
     f64 temp_f2_148;
     f64 temp_f2_152;
@@ -115,10 +116,11 @@ void KDRand_UnitVector() {
             var_f31_158 = temp_f5_139;
         }
     }
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    temp_f0_206 = sp20 * (f64) var_f31_158;
+    sp20 = temp_f0_206;
     unksp24 = temp_f1_136;
     sp28 = (f32) sp28 * var_f31_158;
-    M2C_FIELD(temp_r31_126, f64 *, 0) = sp20;
+    M2C_FIELD(temp_r31_126, f64 *, 0) = temp_f0_206;
     M2C_FIELD(temp_r31_126, f64 *, 8) = (f64) sp28;
 }
 #endif

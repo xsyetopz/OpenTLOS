@@ -94,6 +94,7 @@ void SeeSaw::Update() {
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -108,7 +109,9 @@ void SeeSaw::Update() {
     PlatformAttachment *var_r26_488;
     f32 temp_f2_382;
     f32 temp_f2_524;
+    f32 temp_f30_315;
     f32 temp_f30_386;
+    f32 temp_f31_292;
     f32 temp_f3_229;
     f32 temp_f3_325;
     f32 temp_f3_339;
@@ -178,10 +181,7 @@ loop_8:
         sp78 = (f64) sp38;
         temp_r3_266 = sp1B0 + var_r28_213;
         sp80 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r31, 0x0, qr0 */);
+        sp1A0 += M2C_FIELD(temp_r3_266, f64 *, 0);
         var_r28_213 += 0x10;
         sp1A8 = (f32) sp1A8 + M2C_FIELD(temp_r3_266, f32 *, 8);
         var_r26_211 = var_r26_211->unk8;
@@ -189,18 +189,18 @@ loop_8:
     }
     temp_r0_281 = this->unk13C;
     if (temp_r0_281 > 0) {
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r31, 0x0, qr0 */);
+        temp_f31_292 = 1.0f / (f32) temp_r0_281;
+        sp1A0 *= (f64) temp_f31_292;
         sp98 = sp1A0;
-        sp1A8 *= 1.0f / (f32) temp_r0_281;
+        sp1A8 *= temp_f31_292;
         unksp9C = 0.0f;
         spA0 = (f64) sp1A8;
         ClampMagnitude(sp68, this->unk12C);
         sp98 = M2C_BITWISE(f64, sp68);
         spA0 = (f64) sp68.unk8;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-        spA0 = (f32) spA0 * (this->unk130 / this->unk12C);
+        temp_f30_315 = this->unk130 / this->unk12C;
+        sp98 *= (f64) temp_f30_315;
+        spA0 = (f32) spA0 * temp_f30_315;
         this->unk128 = (f32) sp98;
         temp_f3_325 = this->unk128;
         if (temp_f3_325 < 0.0f) {
@@ -223,8 +223,7 @@ loop_8:
         temp_f3_378 = (f32) M2C_FIELD(this, f64 *, 0xD0) - this->unkE0;
         temp_f2_382 = (f32) M2C_FIELD(this, f64 *, 0xD8) - this->unkE8;
         temp_f30_386 = (temp_f2_382 * temp_f2_382) + ((temp_f3_378 * temp_f3_378) + (temp_f4_376 * temp_f4_376));
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f30_386 == M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x84)) {
+        if (temp_f30_386 >= M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x84)) {
             this->unk140 = 1;
         } else {
             this->unk140 = 0;
@@ -247,9 +246,7 @@ loop_8:
     spD0.Multiply3x3(&spD0, &sp110);
     MKModel_SetWorldMatrix(this->unk4, spD0);
     ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->ForceUpdate((u32) this->unk70.unkC);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    sp28 = this->unkD0 - sp190;
     var_r30_477 = 0;
     sp88 = sp28;
     sp30 = (f32) M2C_FIELD(this, f64 *, 0xD8) - (f32) sp198;

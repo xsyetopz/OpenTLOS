@@ -241,11 +241,8 @@ void FireTier1Goal_Patrol::Init(Enemy *arg0) {
 u8 EnemyGoal_WanderAroundPointArb::Update() {
     ActivateIfInactive();
     this->unk8 = UpdateSubgoals();
-    if ((u8) this->unk8 == 2) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unkA60) {
-            Activate();
-        }
+    if (((u8) this->unk8 == 2) && !(M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkC->unkA60)) {
+        Activate();
     }
     return this->unk8;
 }
@@ -399,8 +396,7 @@ u8 EnemyGoal_WalkToTargetArb::Update() {
     ActivateIfInactive();
     temp_r4_759 = this->unkC;
     temp_r4_759->unk8C0.Update(*((MKVector3 *) &temp_r4_759->unk588));
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unkC->unk8C0.GetDist() == this->unk10) {
+    if (this->unkC->unk8C0.GetDist() <= this->unk10) {
         this->unk8 = 2;
     } else {
         sp8.GetDir();
@@ -409,10 +405,7 @@ u8 EnemyGoal_WalkToTargetArb::Update() {
         M2C_FIELD(temp_r3_778, f64 *, 0xE8) = sp10;
     }
     temp_r3_784 = this->unkC;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+    M2C_FIELD(temp_r3_784, f64 *, 0x598) = (f64) (M2C_FIELD(temp_r3_784, f64 *, 0x598) + M2C_FIELD(temp_r3_784, f64 *, 0x90));
     temp_r3_784->unk59C += temp_r3_784->unk98;
     return this->unk8;
 }
@@ -451,7 +444,7 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
     f64 sp188;
     f64 sp180;
     f64 sp178;
-    M2C_UNK sp168;
+    f64 sp168;
     M2C_UNK sp158;
     f64 sp148;
     f64 sp140;
@@ -463,8 +456,11 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
     AITargetData spD8;
     f64 spC8;
     f32 spC0;
+    f64 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
@@ -478,9 +474,13 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     AITargetData *temp_r3_861;
     Enemy *temp_r3_1220;
@@ -494,7 +494,6 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
     Enemy *temp_r5_1271;
     Enemy *temp_r6_1183;
     f32 temp_f1_1245;
-    f32 temp_f1_896;
     f32 temp_f27_1244;
     f32 temp_f31_1103;
     f32 temp_f4_1051;
@@ -505,6 +504,12 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
     f32 temp_f9_944;
     f32 var_f3_1043;
     f32 var_f4_976;
+    f64 temp_f0_1108;
+    f64 temp_f0_1119;
+    f64 temp_f0_1130;
+    f64 temp_f0_892;
+    f64 temp_f0_903;
+    f64 temp_f1_887;
     f64 temp_f1_982;
     f64 temp_f1_988;
     f64 temp_f1_992;
@@ -521,19 +526,19 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
         }
         if (var_r31_865 != 0) {
             this->unk10->Update(*((MKVector3 *) &this->unkC->unk588));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            temp_f1_896 = MKVector3::up.unk8 * M2C_FIELD(this->unk10->unk40.Get()->__vptr, f32 (**)(), 0x3C)();
-            sp1C8 = spB8;
-            spC0 = temp_f1_896;
+            temp_f1_887 = M2C_FIELD(this->unk10->unk40.Get()->__vptr, f64 (**)(), 0x3C)();
+            temp_f0_892 = M2C_FIELD(&MKVector3::up, f64 *, 0) * temp_f1_887;
+            spB8 = temp_f0_892;
+            sp1C8 = temp_f0_892;
+            spC0 = MKVector3::up.unk8 * (f32) temp_f1_887;
             sp1D0 = (f64) spC0;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-            sp1D8 = spA8;
+            temp_f0_903 = temp_f0_892 * 5.24282163e-315;
+            spA8 = temp_f0_903;
+            sp1D8 = temp_f0_903;
             spB0 = (f32) sp1D0 * 0.75f;
             sp1E0 = (f64) spB0;
             sp1E8.GetPos();
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp98 = sp1E8.unk0 + sp1D8;
             sp238 = sp98;
             spA0 = sp1E8.unk8 + (f32) sp1E0;
             sp1E8.unk40 = M2C_FIELD(&MKVector3::up, f64 *, 0);
@@ -620,17 +625,19 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
             sp250.unk2C = 0.0f;
             temp_f31_1103 = this->unk14;
             sp168.GetDir();
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp178 = sp48;
+            temp_f0_1108 = sp168 * (f64) temp_f31_1103;
+            sp48 = temp_f0_1108;
+            sp178 = temp_f0_1108;
             sp50 = sp170 * temp_f31_1103;
             sp180 = (f64) sp50;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp188 = sp38;
+            temp_f0_1119 = temp_f0_1108 * 5.246966156e-315;
+            sp38 = temp_f0_1119;
+            sp188 = temp_f0_1119;
             sp40 = (f32) sp180 * 0.8f;
             sp190 = (f64) sp40;
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp1E8.unk10 = sp28;
+            temp_f0_1130 = sp238 - temp_f0_1119;
+            sp28 = temp_f0_1130;
+            sp1E8.unk10 = temp_f0_1130;
             sp30 = (f32) sp240 - (f32) sp190;
             sp1E8.unk18 = (f64) sp30;
             if (MKCollision_GetGroundPoint(*((MKVector3 *) &sp1E8.unk10), 500.0f, &sp290, M2C_FIELD(this->unkC->unk110.unk460, s32 *, 0x18), 2, NULL, (MKCollisionMode) 6) != 0) {
@@ -654,8 +661,7 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
                 temp_r4_1197->unk6B5 |= 0x40;
                 sp118.GetDir();
                 __ml(this->unkC->unk80.Magnitude(), sp128);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                sp18 = sp128 * 5.28426686e-315;
                 temp_r3_1220 = this->unkC;
                 sp138 = sp18;
                 sp20 = sp128.unk8 * 1.5f;
@@ -685,13 +691,11 @@ u8 EnemyGoal_FlyToAttackTarget::Update() {
                     temp_r4_1291 = this->unkC;
                     M2C_FIELD(temp_r4_1291, f64 *, 0x598) = (f64) M2C_FIELD(temp_r4_1291, f64 *, 0x90);
                     M2C_FIELD(temp_r4_1291, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r4_1291, f64 *, 0x98);
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                     spC8.GetDir();
                     temp_r4_1308 = this->unkC;
                     M2C_FIELD(temp_r4_1308, f64 *, 0xE0) = spC8;
                     M2C_FIELD(temp_r4_1308, f64 *, 0xE8) = spD0;
                     temp_r4_1308->unk6B5 = (temp_r4_1308->unk6B5 & ~0x40) | ((((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1) == 0) << 6) & 0x40);
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                     temp_r4_1326 = this->unkC;
                     M2C_FIELD(temp_r4_1326, f64 *, 0xF0) = (f64) M2C_FIELD(&MKVector3::up, f64 *, 0);
                     M2C_FIELD(temp_r4_1326, f64 *, 0xF8) = (f64) M2C_FIELD(&MKVector3::up, f32 *, 8);
@@ -730,7 +734,7 @@ void EnemyGoal_FlyToAttackTarget::Activate() {
 #if 0 // DRAFT: undefined identifier '__float_nan'
 u8 EnemyGoal_FlyToTarget::Update() {
     AITargetData sp138;
-    M2C_UNK sp128;
+    f64 sp128;
     f32 sp118;
     MKVector3 sp108;
     f64 sp100;
@@ -751,13 +755,18 @@ u8 EnemyGoal_FlyToTarget::Update() {
     f32 sp7C;
     f32 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     s32 sp10;
     f32 spC;
     f32 sp8;
@@ -771,6 +780,7 @@ u8 EnemyGoal_FlyToTarget::Update() {
     f32 temp_f0_1463;
     f32 temp_f1_1462;
     f32 temp_f28_1553;
+    f32 temp_f29_1639;
     f32 temp_f2_1606;
     f32 temp_f30_1540;
     f32 temp_f3_1465;
@@ -780,6 +790,10 @@ u8 EnemyGoal_FlyToTarget::Update() {
     f32 temp_f6_1601;
     f32 temp_f7_1604;
     f32 var_f4_1470;
+    f64 temp_f0_1670;
+    f64 temp_f0_1680;
+    f64 temp_f0_1691;
+    f64 temp_f0_1703;
     f64 temp_f1_1474;
     f64 temp_f1_1480;
     f64 temp_f1_1484;
@@ -841,16 +855,13 @@ u8 EnemyGoal_FlyToTarget::Update() {
                     }
                 }
                 temp_f30_1540 = KDMath_GetTurningCircleRadius(var_f4_1470 / gUpdateTimeDelta, M2C_BITWISE(f32, this->unkC->unk684) / gUpdateTimeDelta);
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (this->unk14->GetDist() == temp_f30_1540) {
+                if (this->unk14->GetDist() <= temp_f30_1540) {
                     temp_f28_1553 = _table_sinf((1.570796f * (this->unk14->GetDist() / temp_f30_1540)) + 1.5707964f);
                     sp138.GetDir();
                     temp_r3_1557 = this->unkC;
                     if (((temp_r3_1557->unkC8 * sp138.unk8) + ((temp_r3_1557->unkC0 * M2C_BITWISE(f32, sp138)) + (temp_r3_1557->unkC4 * unksp13C))) < temp_f28_1553) {
                         sp128.GetPos();
-                        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                        sp18 = sp128 - this->unk18;
                         sp88 = sp18;
                         sp20 = sp130 - this->unk20;
                         sp90 = (f64) sp20;
@@ -872,6 +883,7 @@ u8 EnemyGoal_FlyToTarget::Update() {
                             sp118.GetDir();
                             spC = ((f32) sp138.unk28 * sp120) + (((f32) sp138.unk20 * sp118) + (unksp15C * sp11C));
                             sp10 = (M2C_BITWISE(s32, spC) & 0x80000000) | 0x3F800000;
+                            temp_f29_1639 = -1.0f * M2C_BITWISE(f32, sp10);
                             spE8.GetDir();
                             sp28 = (MKVector3::up.unk4 * spF0) - (MKVector3::up.unk8 * spEC);
                             sp2C = (MKVector3::up.unk8 * spE8) - (MKVector3::up.unk0 * spF0);
@@ -881,22 +893,25 @@ u8 EnemyGoal_FlyToTarget::Update() {
                             Normalise(sp108);
                             sp138.unk20 = M2C_BITWISE(f64, sp108);
                             sp138.unk28 = (f64) sp108.unk8;
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                            spB8 = sp68;
-                            sp70 = (f32) sp138.unk28 * (-1.0f * M2C_BITWISE(f32, sp10));
+                            temp_f0_1670 = sp138.unk20 * (f64) temp_f29_1639;
+                            sp68 = temp_f0_1670;
+                            spB8 = temp_f0_1670;
+                            sp70 = (f32) sp138.unk28 * temp_f29_1639;
                             spC0 = (f64) sp70;
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                            spC8 = sp58;
+                            temp_f0_1680 = temp_f0_1670 * (f64) temp_f30_1540;
+                            sp58 = temp_f0_1680;
+                            spC8 = temp_f0_1680;
                             sp60 = (f32) spC0 * temp_f30_1540;
                             spD0 = (f64) sp60;
-                            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                            spD8 = sp48;
+                            temp_f0_1691 = temp_f0_1680 * 5.307061737e-315;
+                            sp48 = temp_f0_1691;
+                            spD8 = temp_f0_1691;
                             sp50 = (f32) spD0 * 2.1f;
                             spE0 = (f64) sp50;
-                            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-                            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                            this->unk18 = sp38;
-                            sp138.unk10 = sp38;
+                            temp_f0_1703 = this->unk18 + temp_f0_1691;
+                            sp38 = temp_f0_1703;
+                            this->unk18 = temp_f0_1703;
+                            sp138.unk10 = temp_f0_1703;
                             sp40 = this->unk20 + (f32) spE0;
                             M2C_FIELD(this, f32 *, 0x20) = (f64) sp40;
                             sp138.unk18 = (f64) sp40;
@@ -923,8 +938,7 @@ block_5:
     temp_r3_1744 = this->unkC;
     M2C_FIELD(temp_r3_1744, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_1744, f64 *, 0x90);
     M2C_FIELD(temp_r3_1744, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_1744, f64 *, 0x98);
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk14->GetDist() == this->unk28) {
+    if (this->unk14->GetDist() <= this->unk28) {
         this->unk8 = 2;
     }
     return this->unk8;
@@ -1136,7 +1150,9 @@ void EnemyGoal_FlyLand::Activate() {
     f64 sp48;
     f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -1153,6 +1169,8 @@ void EnemyGoal_FlyLand::Activate() {
     f32 temp_f6_2199;
     f32 temp_f7_2197;
     f32 temp_f8_2195;
+    f64 temp_f0_2237;
+    f64 temp_f0_2249;
 
     this->unk8 = 0;
     temp_r3_2168 = this->unkC;
@@ -1192,14 +1210,14 @@ void EnemyGoal_FlyLand::Activate() {
     unksp8C = 0.0f;
     temp_r3_2194->Teleport(&sp70.unk10, unksp64, (f32) sp60, temp_f3_2208, temp_f4_2205, 0.0f, temp_f6_2199, temp_f7_2197, temp_f8_2195);
     temp_r3_2233 = this->unkC;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp40 = sp30;
+    temp_f0_2237 = (f64) M2C_FIELD(temp_r3_2233, f32 *, 0xC0) * 5.122630465e-315;
+    sp30 = temp_f0_2237;
+    sp40 = temp_f0_2237;
     sp38 = temp_r3_2233->unkC8 * 0.1f;
     sp48 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    sp50 = sp20;
+    temp_f0_2249 = M2C_FIELD(this, f64 *, 0x10) + temp_f0_2237;
+    sp20 = temp_f0_2249;
+    sp50 = temp_f0_2249;
     sp28 = this->unk18 + (f32) sp48;
     sp58 = (f64) sp28;
     temp_r3_2233->unk8C0.Set(*((MKVector3 *) &sp50), 1U);
@@ -1400,8 +1418,7 @@ void FireTier1Goal_Think::Arbitrate() {
     if (temp_r4_2691->WasHit() != 0) {
         sp8.Init();
         this->unkC->TakeDamage(&sp8, 0U);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkC->unkAC8 == 0.0f) {
+        if (this->unkC->unkAC8 <= 0.0f) {
             AddGoal_Death(&sp8);
             if (sp8.unk28 == 6) {
                 AddGoal_Hit(&sp8);

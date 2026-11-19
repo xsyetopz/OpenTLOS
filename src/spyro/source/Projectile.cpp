@@ -245,11 +245,16 @@ void Projectile::Update() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     u8 sp14;
     void *sp10;
     s32 sp8;
     MKProp *temp_r3_551;
+    f64 temp_f0_600;
+    f64 temp_f0_611;
+    f64 temp_f1_594;
     u8 temp_r3_586;
     void *temp_r3_591;
     void *temp_r4_532;
@@ -276,23 +281,24 @@ void Projectile::Update() {
         M2C_FIELD(var_r4_548, u8 *, 4) = 0U;
     }
     this->unk140 -= gUpdateTimeDelta;
-    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unk140 == 0.0f) {
+    if (this->unk140 <= 0.0f) {
         this->unk140 = 0.0f;
         Disable();
     } else {
         temp_r3_586 = this->unk14C;
         if (((temp_r3_586 >> 7U) & 1) && ((temp_r3_586 >> 6U) & 1)) {
             temp_r3_591 = this->unk8;
-            sp58 = M2C_FIELD(temp_r3_591, f64 *, 0x30);
+            temp_f1_594 = M2C_FIELD(temp_r3_591, f64 *, 0x30);
+            sp58 = temp_f1_594;
             sp60 = M2C_FIELD(temp_r3_591, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp38 = sp28;
+            temp_f0_600 = this->unkC8 * (f64) gUpdateTimeDelta;
+            sp28 = temp_f0_600;
+            sp38 = temp_f0_600;
             sp30 = M2C_FIELD(this, f32 *, 0xD0) * gUpdateTimeDelta;
             sp40 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp48 = sp18;
+            temp_f0_611 = temp_f1_594 + temp_f0_600;
+            sp18 = temp_f0_611;
+            sp48 = temp_f0_611;
             sp20 = (f32) sp60 + (f32) sp40;
             sp50 = (f64) sp20;
             if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp58), *((MKVector3 *) &sp48), 10.0f, &sp78, (MKCollisionMode) 7, 0) != 0) {

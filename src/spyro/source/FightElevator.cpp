@@ -31,7 +31,7 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: undefined identifier 'unksp5C'
 s32 FightElevator::GetClosestWaypointToPlayerIndex() {
     f64 sp70;
     f64 sp68;
@@ -42,44 +42,59 @@ s32 FightElevator::GetClosestWaypointToPlayerIndex() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f3_114;
     f32 var_f7_100;
+    f64 temp_f0_110;
+    f64 temp_f0_129;
+    f64 temp_f0_80;
+    f64 temp_f1_74;
+    f64 temp_f4_109;
+    s32 temp_r5_73;
     s32 temp_r5_88;
     s32 var_ctr_102;
     s32 var_r3_72;
     s32 var_r4_84;
     s32 var_r6_82;
     void *temp_r4_71;
+    void *temp_r5_107;
 
     temp_r4_71 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void ***), 0xC)(gb, &gb), void **, 8);
     var_r3_72 = 0;
-    sp68 = M2C_FIELD(temp_r4_71, f64 *, 0x30);
+    temp_r5_73 = this->unk18C;
+    temp_f1_74 = M2C_FIELD(temp_r4_71, f64 *, 0x30);
+    sp68 = temp_f1_74;
     sp70 = M2C_FIELD(temp_r4_71, f64 *, 0x38);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r5, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    temp_f0_80 = temp_f1_74 - M2C_FIELD(temp_r5_73, f64 *, 0);
+    sp28 = temp_f0_80;
     var_r6_82 = 1;
     var_r4_84 = 0x20;
     temp_r5_88 = this->unk184;
-    sp58 = sp28;
-    sp30 = (f32) sp70 - M2C_FIELD(this->unk18C, f32 *, 8);
+    sp58 = temp_f0_80;
+    sp30 = (f32) sp70 - M2C_FIELD(temp_r5_73, f32 *, 8);
     sp60 = (f64) sp30;
     var_f7_100 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C));
     var_ctr_102 = temp_r5_88 - 1;
     if (temp_r5_88 > 1) {
         do {
-            M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r5, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f5, $f4 */);
-            temp_f3_114 = (f32) sp70 - M2C_FIELD((this->unk18C + var_r4_84), f32 *, 8);
-            sp48 = sp18;
+            temp_r5_107 = this->unk18C + var_r4_84;
+            temp_f4_109 = M2C_FIELD(temp_r5_107, f64 *, 0);
+            temp_f0_110 = sp68 - temp_f4_109;
+            sp18 = temp_f0_110;
+            temp_f3_114 = (f32) sp70 - M2C_FIELD(temp_r5_107, f32 *, 8);
+            sp48 = temp_f0_110;
             sp20 = temp_f3_114;
             sp50 = (f64) sp20;
             if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < var_f7_100) {
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f5, $f4 */);
+                temp_f0_129 = sp68 - temp_f4_109;
                 var_r3_72 = var_r6_82;
+                sp8 = temp_f0_129;
                 sp10 = temp_f3_114;
-                sp38 = sp8;
+                sp38 = temp_f0_129;
                 sp40 = (f64) sp10;
                 var_f7_100 = ((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C));
             }
@@ -137,20 +152,24 @@ void FightElevator::ClearAnchors() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp8'
+#if 0 // DRAFT: illegal type
 void FightElevator::FindAnchors() {
     f64 sp30;
     f64 sp28;
     f64 sp20;
     f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f31_232;
+    f64 temp_f0_246;
+    f64 temp_f1_239;
     s32 temp_r4_290;
     s32 var_ctr_276;
     s32 var_r29_233;
     s32 var_r30_234;
     s32 var_r4_275;
     u8 var_r5_274;
+    void *temp_r4_241;
     void *temp_r5_237;
     void *var_r3_231;
 
@@ -161,15 +180,16 @@ void FightElevator::FindAnchors() {
 loop_12:
     if ((var_r3_231 != NULL) && (var_r29_233 < 6)) {
         temp_r5_237 = M2C_FIELD(var_r3_231, void **, 8);
-        sp28 = M2C_FIELD(temp_r5_237, f64 *, 0x30);
+        temp_f1_239 = M2C_FIELD(temp_r5_237, f64 *, 0x30);
+        temp_r4_241 = this->unk8 + 0x30;
+        sp28 = temp_f1_239;
         sp30 = M2C_FIELD(temp_r5_237, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        sp18 = sp8;
-        sp10 = (f32) sp30 - M2C_FIELD((this->unk8 + 0x30), f32 *, 8);
+        temp_f0_246 = temp_f1_239 - M2C_FIELD(temp_r4_241, f64 *, 0);
+        sp8 = temp_f0_246;
+        sp18 = temp_f0_246;
+        sp10 = (f32) sp30 - M2C_FIELD(temp_r4_241, f32 *, 8);
         sp20 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) == temp_f31_232) && (unksp1C < M2C_BITWISE(f32, 209.99998474121094)) && (unksp1C > 0.0f)) {
+        if (((((f32) sp20 * (f32) sp20) + (((f32) sp18 * (f32) sp18) + (unksp1C * unksp1C))) <= temp_f31_232) && (unksp1C < M2C_BITWISE(f32, 209.99998474121094)) && (unksp1C > 0.0f)) {
             var_r5_274 = 0;
             var_r4_275 = 0;
             var_ctr_276 = 6;
@@ -310,7 +330,11 @@ void FightElevator::Message(MKMessage *arg0) {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
+    f64 temp_f1_544;
+    f64 temp_f1_576;
     s32 temp_r0_487;
     s32 var_ctr_711;
     s32 var_ctr_726;
@@ -318,7 +342,9 @@ void FightElevator::Message(MKMessage *arg0) {
     s32 var_r3_724;
     s32 var_r6_622;
     u32 var_r5_620;
+    void *temp_r29_538;
     void *temp_r3_543;
+    void *temp_r3_575;
     void *temp_r3_625;
     void *temp_r4_535;
     void *temp_r4_574;
@@ -338,17 +364,17 @@ void FightElevator::Message(MKMessage *arg0) {
             sp80 = &this->unk108;
             sp84 = 0;
             M2C_FIELD(M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, M2C_UNK, M2C_UNK), 0xC)(gb, 0x25, 0), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp78);
-            if ((sp84 != 0) || (temp_r4_535 = this->unk8, temp_r3_543 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *), 0xC)(gb, temp_r4_535), void **, 8), sp28 = M2C_FIELD(temp_r3_543, f64 *, 0x30), sp30 = M2C_FIELD(temp_r3_543, f64 *, 0x38), M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */), M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */), sp38 = sp18, sp20 = (f32) sp30 - M2C_FIELD((temp_r4_535 + 0x30), f32 *, 8), sp40 = (f64) sp20, M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), (((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) == FIGHT_ELEVATOR_HERO_DETACH_DIST_SQ) == 0))) {
+            if ((sp84 != 0) || (temp_r4_535 = this->unk8, temp_r29_538 = temp_r4_535 + 0x30, temp_r3_543 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *), 0xC)(gb, temp_r4_535), void **, 8), temp_f1_544 = M2C_FIELD(temp_r3_543, f64 *, 0x30), sp28 = temp_f1_544, sp30 = M2C_FIELD(temp_r3_543, f64 *, 0x38), sp18 = temp_f1_544 - M2C_FIELD(temp_r29_538, f64 *, 0), sp38 = sp18, sp20 = (f32) sp30 - M2C_FIELD(temp_r29_538, f32 *, 8), sp40 = (f64) sp20, (((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + (unksp3C * unksp3C))) >= FIGHT_ELEVATOR_HERO_DETACH_DIST_SQ) == 0))) {
                 temp_r4_574 = M2C_FIELD(arg0->unk4, void **, 8);
-                sp68 = M2C_FIELD(temp_r4_574, f64 *, 0x30);
+                temp_r3_575 = this->unk8 + 0x30;
+                temp_f1_576 = M2C_FIELD(temp_r4_574, f64 *, 0x30);
+                sp68 = temp_f1_576;
                 sp70 = M2C_FIELD(temp_r4_574, f64 *, 0x38);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp8 = temp_f1_576 - M2C_FIELD(temp_r3_575, f64 *, 0);
                 sp58 = sp8;
-                sp10 = (f32) sp70 - M2C_FIELD((this->unk8 + 0x30), f32 *, 8);
+                sp10 = (f32) sp70 - M2C_FIELD(temp_r3_575, f32 *, 8);
                 sp60 = (f64) sp10;
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C))) == FIGHT_ELEVATOR_TO_BLOCKER_BLOCK_DISTANCE_SQ) && (unksp5C < 104.99999f) && (unksp5C > 0.0f)) {
+                if (((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C))) <= FIGHT_ELEVATOR_TO_BLOCKER_BLOCK_DISTANCE_SQ) && (unksp5C < 104.99999f) && (unksp5C > 0.0f)) {
                     FreeBeams();
                     ClearAnchors();
                     this->unk1A4 = 1;
@@ -479,6 +505,7 @@ void FightElevator::Update() {
     f64 sp30;
     f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     s32 sp8;
     MKVector3 *temp_r31_907;
@@ -493,6 +520,7 @@ void FightElevator::Update() {
     f32 var_f29_1136;
     f32 var_f29_1303;
     f64 temp_f1_1104;
+    f64 temp_f1_1113;
     f64 temp_f1_1139;
     f64 temp_f1_1145;
     f64 temp_f1_1149;
@@ -543,8 +571,7 @@ void FightElevator::Update() {
             if ((temp_r3_873 == 1) || (temp_r3_873 == 2)) {
                 this->unk1AC = 0.125f;
             } else if (((temp_r0_872 == 1) || (temp_r0_872 == 2)) && ((temp_r3_873 == 0) || (temp_r3_873 == 3))) {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (this->unk1AC == 0.0f) {
+                if (this->unk1AC <= 0.0f) {
                     temp_r31_907 = this->unk8 + 0x30;
                     KDSound_Play3d(M2C_FIELD(checked_cast<FightElevatorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x128), temp_r31_907, 0U, -1, 0.0f, 0U);
                 } else {
@@ -557,8 +584,7 @@ void FightElevator::Update() {
     temp_f2_920 = this->unk1AC;
     if (temp_f2_920 > 0.0f) {
         this->unk1AC = temp_f2_920 - gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk1AC == 0.0f) {
+        if (this->unk1AC <= 0.0f) {
             temp_r31_933 = this->unk8 + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<FightElevatorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x124), temp_r31_933, 0U, -1, 0.0f, 0U);
         }
@@ -599,9 +625,10 @@ void FightElevator::Update() {
                     sp28 = temp_f1_1104;
                     sp30 = M2C_FIELD(temp_r4_1101, f64 *, 0x38);
                     temp_r3_1112 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *, f64), 0xC)(gb, temp_r4_1101, temp_f1_1104), void **, 8);
-                    sp38 = M2C_FIELD(temp_r3_1112, f64 *, 0x30);
+                    temp_f1_1113 = M2C_FIELD(temp_r3_1112, f64 *, 0x30);
+                    sp38 = temp_f1_1113;
                     sp40 = M2C_FIELD(temp_r3_1112, f64 *, 0x38);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp18 = temp_f1_1113 - sp28;
                     sp48 = sp18;
                     sp20 = (f32) sp40 - (f32) sp30;
                     sp50 = (f64) sp20;
@@ -641,38 +668,32 @@ void FightElevator::Update() {
                     }
                     if (var_f29_1136 > M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0xC)) {
                         temp_r0_1206 = this->unk198;
-                        if (temp_r0_1206 == 1) {
-                            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                            if (this->unk194 == temp_f30_1080) {
-                                this->unk1A0 = 2;
-                                this->unk198 = 2;
-                                this->unk1B4 = temp_f30_1080;
-                                this->unk1A4 = 0;
-                                FreeBeams();
-                                ClearAnchors();
-                                return;
-                            }
+                        if ((temp_r0_1206 == 1) && (this->unk194 >= temp_f30_1080)) {
+                            this->unk1A0 = 2;
+                            this->unk198 = 2;
+                            this->unk1B4 = temp_f30_1080;
+                            this->unk1A4 = 0;
+                            FreeBeams();
+                            ClearAnchors();
+                            return;
                         }
-                        if (temp_r0_1206 == 2) {
-                            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                            if (this->unk194 == temp_f30_1080) {
-                                this->unk1A0 = 1;
-                                temp_r5_1234 = temp_r3_1073 + 1;
-                                this->unk198 = 0;
-                                var_r4_1238 = this->unk184 - 1;
-                                if (temp_r5_1234 < var_r4_1238) {
-                                    var_r4_1238 = temp_r5_1234;
-                                }
-                                this->unk1B4 = SplineTools_GetNodeTime(*((KDUniformSpline *) &this->unk180), var_r4_1238);
-                                this->unk1A4 = 0;
-                                FreeBeams();
-                                ClearAnchors();
-                                return;
+                        if ((temp_r0_1206 == 2) && (this->unk194 <= temp_f30_1080)) {
+                            this->unk1A0 = 1;
+                            temp_r5_1234 = temp_r3_1073 + 1;
+                            this->unk198 = 0;
+                            var_r4_1238 = this->unk184 - 1;
+                            if (temp_r5_1234 < var_r4_1238) {
+                                var_r4_1238 = temp_r5_1234;
                             }
+                            this->unk1B4 = SplineTools_GetNodeTime(*((KDUniformSpline *) &this->unk180), var_r4_1238);
+                            this->unk1A4 = 0;
+                            FreeBeams();
+                            ClearAnchors();
+                            return;
                         }
                         goto block_76;
                     }
-                    if ((((s32) this->unk198 == 2) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk194 == temp_f30_1080) != 0))) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk194 == M2C_ERROR(/* Read from unset register $f1 */)) != 0))) {
+                    if ((((s32) this->unk198 == 2) && (this->unk194 <= temp_f30_1080)) || (this->unk194 <= M2C_ERROR(/* Read from unset register $f1 */))) {
                         this->unk1A0 = 1;
                         temp_r5_1269 = temp_r3_1073 + 1;
                         this->unk198 = 0;

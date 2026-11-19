@@ -96,9 +96,13 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -253,8 +257,7 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     sp1A0 = (f64) sp50;
     sp1A8.operator*(arg2);
     sp1B8.operator*(arg2);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp88 = sp1B8 + M2C_BITWISE(f64, sp1A8);
     sp1C8 = sp88;
     sp90 = sp1B8.unk8 + sp1A8.unk8;
     sp260 = sp88;
@@ -262,8 +265,7 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     sp268 = (f64) sp90;
     sp168.operator*(arg2);
     sp178.operator*(arg2);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp78 = sp178 + M2C_BITWISE(f64, sp168);
     sp38 = -sp1F8;
     sp3C = -unksp1FC;
     sp80 = sp178.unk8 + sp168.unk8;
@@ -281,8 +283,7 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     sp138 = (f64) sp28;
     sp140 = (f64) sp30;
     sp148.operator*(arg2);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp68 = sp148 + M2C_BITWISE(f64, sp128);
     sp158 = sp68;
     sp70 = sp148.unk8 + sp128.unk8;
     sp280 = sp68;
@@ -295,8 +296,7 @@ void SparxFX::DrawGlow(MKMaterial *arg0, float arg1, float arg2, MKVector4 arg3,
     spE8 = (f64) sp18;
     spF0 = (f64) sp20;
     spF8.operator*(arg2);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp58 = spF8 + M2C_BITWISE(f64, spD8);
     sp108 = sp58;
     sp60 = spF8.unk8 + spD8.unk8;
     sp290 = sp58;
@@ -456,7 +456,7 @@ void SparxFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'spA0'
+#if 0 // DRAFT: undefined identifier 'unksp104'
 void SparxFX::Update() {
     f64 sp158;
     f64 sp150;
@@ -480,6 +480,7 @@ void SparxFX::Update() {
     f64 spB8;
     f64 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp9C;
     f32 sp98;
     f32 sp94;
@@ -488,6 +489,7 @@ void SparxFX::Update() {
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp6C;
     f32 sp68;
     f32 sp64;
@@ -496,7 +498,11 @@ void SparxFX::Update() {
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -521,6 +527,10 @@ void SparxFX::Update() {
     f32 var_f0_1192;
     f32 var_f0_1214;
     f32 var_f4_944;
+    f64 temp_f0_1108;
+    f64 temp_f0_1162;
+    f64 temp_f0_1174;
+    f64 temp_f0_1289;
     f64 temp_f1_947;
     f64 temp_f1_953;
     f64 temp_f1_957;
@@ -536,9 +546,7 @@ void SparxFX::Update() {
 
     if ((u8) gb.unk35E != 0) {
         this->unk88 -= gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        spA0 = this->unkB8 - M2C_FIELD(this, f64 *, 0x50);
         sp100 = spA0;
         spA8 = M2C_FIELD(this, f32 *, 0xC0) - this->unk58;
         sp108 = (f64) spA8;
@@ -604,8 +612,7 @@ void SparxFX::Update() {
                 M2C_FIELD(temp_r29_1036, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r29_1036, f32 *, 0x14) = (f32) M2C_FIELD(this->unkD4, f32 *, 0xF4);
             }
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk88 == 0.0f) {
+            if (this->unk88 <= 0.0f) {
                 temp_f27_1081 = 5.0f * temp_f26_1009;
                 var_r29_1082 = 0;
 loop_24:
@@ -626,8 +633,9 @@ loop_24:
                     sp88 = temp_f25_1089;
                     spF0 = (f64) sp80;
                     spF8 = (f64) sp88;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                    sp140 = sp70;
+                    temp_f0_1108 = spF0 * 5.481131706e-315;
+                    sp70 = temp_f0_1108;
+                    sp140 = temp_f0_1108;
                     sp78 = (f32) spF8 * 40.0f;
                     sp148 = (f64) sp78;
                     temp_f25_1121 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
@@ -645,13 +653,14 @@ loop_24:
                     sp58 = temp_f24_1143;
                     spD0 = (f64) sp50;
                     spD8 = (f64) sp58;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                    spE0 = sp40;
+                    temp_f0_1162 = spD0 * 5.41119288e-315;
+                    sp40 = temp_f0_1162;
+                    spE0 = temp_f0_1162;
                     sp48 = (f32) spD8 * 12.5f;
                     spE8 = (f64) sp48;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    sp120 = sp30;
+                    temp_f0_1174 = M2C_FIELD(this, f64 *, 0x50) + temp_f0_1162;
+                    sp30 = temp_f0_1174;
+                    sp120 = temp_f0_1174;
                     sp38 = this->unk58 + (f32) spE8;
                     sp128 = (f64) sp38;
                     gb.EmitFairyDandruf(*((MKVector3 *) &sp120), *((MKVector3 *) &sp140), 0.4f, *((MKVector4 *) &sp130));
@@ -674,8 +683,7 @@ loop_24:
         }
         this->unkA8 += gUpdateTimeDelta * ((3.1415927f * temp_f26_1009) + 0.25f);
         temp_f1_1238 = this->unkA8;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f1_1238 == 6.2831855f) {
+        if (temp_f1_1238 >= 6.2831855f) {
             this->unkA8 = temp_f1_1238 - 6.2831855f;
         }
         this->unkAC += 10.0f * gUpdateTimeDelta * this->unkCC;
@@ -692,20 +700,19 @@ loop_24:
                 M2C_FIELD(temp_r3_1274, f64 *, 0x10) = (f64) M2C_FIELD(this, f64 *, 0x50);
                 M2C_FIELD(temp_r3_1274, f64 *, 0x18) = (f64) M2C_FIELD(this, f32 *, 0x58);
             }
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+            sp20 = this->unkD8 * 5.263544247e-315;
+            temp_f0_1289 = this->unkE0 * 5.263544247e-315;
+            sp28 = temp_f0_1289;
             temp_r3_1293 = this->unkD0;
-            sp118 = sp28;
+            sp118 = temp_f0_1289;
             unksp11C = 1.0f;
             temp_r3_1293->unk20 = sp20;
             sp110 = sp20;
-            temp_r3_1293->unk28 = sp28;
+            temp_r3_1293->unk28 = temp_f0_1289;
             temp_r3_1300 = temp_r3_1293->unk3C;
             if (temp_r3_1300 != NULL) {
                 M2C_FIELD(temp_r3_1300, f64 *, 0) = sp20;
-                M2C_FIELD(temp_r3_1300, f64 *, 8) = sp28;
+                M2C_FIELD(temp_r3_1300, f64 *, 8) = temp_f0_1289;
             }
             temp_r3_1312 = this->unkD0;
             temp_f0_1313 = this->unkC8 * ((50.0f * _table_sinf(this->unkAC)) + 800.0f);
@@ -723,9 +730,7 @@ loop_24:
         sp18 = 3.1415927f * gUpdateTimeDelta;
         spB0 = (f64) sp10;
         spB8 = (f64) sp18;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
+        M2C_FIELD(this, f64 *, 0x98) = (f64) (M2C_FIELD(this, f64 *, 0x98) + spB0);
         this->unkA0 += (f32) spB8;
         if ((MKModel *) this->unk4 != NULL) {
             temp_r3_1354 = this->unkE8;

@@ -92,6 +92,7 @@ void WaterDripPS::Draw() {
     f32 spC4;
     f32 spC0;
     f32 spB8;
+    f64 spB0;
     f32 spAC;
     f32 spA8;
     f32 spA4;
@@ -100,9 +101,13 @@ void WaterDripPS::Draw() {
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -148,6 +153,7 @@ void WaterDripPS::Draw() {
     f64 temp_f1_318;
     f64 temp_f1_324;
     f64 temp_f1_328;
+    f64 temp_f2_540;
     s32 temp_r3_219;
     s32 temp_r3_347;
     s32 var_r0_229;
@@ -155,6 +161,7 @@ void WaterDripPS::Draw() {
     s32 var_r25_113;
     s32 var_r27_112;
     void *temp_r3_171;
+    void *temp_r3_538;
     void *temp_r4_119;
 
     spC0 = 0.7f;
@@ -170,8 +177,7 @@ void WaterDripPS::Draw() {
     do {
         sp1F0.GetPos();
         temp_r4_119 = this->unk4C + var_r25_113;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        spB0 = M2C_FIELD(temp_r4_119, f64 *, 0) - M2C_BITWISE(f64, sp1F0);
         sp1F0.unk10 = spB0;
         spB8 = M2C_FIELD(temp_r4_119, f32 *, 8) - M2C_BITWISE(f32, sp1F0.unk8);
         sp1F0.unk20 = spB0;
@@ -319,8 +325,7 @@ void WaterDripPS::Draw() {
                 sp1A0.operator*(temp_f31_397);
                 temp_f30_409 = temp_f30_152 + temp_f29_385;
                 sp1B0.operator*(temp_f30_409);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp80 = sp1B0 + M2C_BITWISE(f64, sp1A0);
                 sp1C0 = sp80;
                 sp88 = sp1B0.unk8 + sp1A0.unk8;
                 sp250 = sp80;
@@ -328,8 +333,7 @@ void WaterDripPS::Draw() {
                 sp258 = (f64) sp88;
                 sp160.operator*(temp_f31_397);
                 sp170.operator*(temp_f30_409);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp70 = sp170 + M2C_BITWISE(f64, sp160);
                 sp30 = -sp1F0.unk30;
                 sp34 = -M2C_BITWISE(f32, sp1F0.unk34);
                 sp78 = sp170.unk8 + sp160.unk8;
@@ -347,8 +351,7 @@ void WaterDripPS::Draw() {
                 sp130 = (f64) sp20;
                 sp138 = (f64) sp28;
                 sp140.operator*(temp_f30_409);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp60 = sp140 + M2C_BITWISE(f64, sp120);
                 sp150 = sp60;
                 sp68 = sp140.unk8 + sp120.unk8;
                 sp270 = sp60;
@@ -361,28 +364,22 @@ void WaterDripPS::Draw() {
                 spE0 = (f64) sp10;
                 spE8 = (f64) sp18;
                 spF0.operator*(temp_f30_409);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp50 = spF0 + M2C_BITWISE(f64, spD0);
                 sp280 = sp50;
                 sp58 = spF0.unk8 + spD0.unk8;
                 sp100 = sp50;
                 sp288 = (f64) sp58;
                 sp108 = (f64) sp58;
-                M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
-                temp_f1_544 = M2C_FIELD((this->unk4C + var_r25_113), f32 *, 8);
+                temp_r3_538 = this->unk4C + var_r25_113;
+                temp_f2_540 = M2C_FIELD(temp_r3_538, f64 *, 0);
+                sp250 += temp_f2_540;
+                temp_f1_544 = M2C_FIELD(temp_r3_538, f32 *, 8);
                 sp258 = (f32) sp258 + temp_f1_544;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+                sp260 += temp_f2_540;
                 sp268 = (f32) sp268 + temp_f1_544;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+                sp270 += temp_f2_540;
                 sp278 = (f32) sp278 + temp_f1_544;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f0, $f2 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
+                sp280 += temp_f2_540;
                 sp288 = (f32) sp288 + temp_f1_544;
                 MKSetMatrix(Matrix::identity);
                 MKBegin(4);
@@ -417,24 +414,32 @@ void WaterDripPS::Update() {
     f64 sp90;
     f64 sp88;
     f64 sp80;
-    M2C_UNK sp70;
+    f64 sp70;
     f64 sp68;
     f64 sp60;
     f64 sp58;
     f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     s32 spC;
     f32 sp8;
     MKVector3 *temp_r4_755;
     f32 temp_f1_756;
     f32 temp_f30_669;
+    f32 temp_f3_844;
     f32 var_f0_736;
     f32 var_f0_977;
     f32 var_f1_951;
     f32 var_f4_871;
+    f64 temp_f0_675;
+    f64 temp_f0_705;
+    f64 temp_f0_854;
     f64 temp_f1_874;
     f64 temp_f1_880;
     f64 temp_f1_884;
@@ -454,6 +459,7 @@ void WaterDripPS::Update() {
     void *temp_r3_995;
     void *temp_r4_638;
     void *temp_r4_660;
+    void *temp_r4_703;
     void *temp_r4_796;
     void *temp_r4_835;
     void *temp_r4_945;
@@ -461,6 +467,7 @@ void WaterDripPS::Update() {
     void *temp_r5_707;
     void *temp_r5_798;
     void *temp_r5_806;
+    void *temp_r6_799;
 
     spC = 0;
 loop_48:
@@ -471,8 +478,7 @@ loop_48:
             if (temp_r3_642 == NULL) {
                 M2C_FIELD(temp_r4_638, f32 *, 0x40) = (f32) (M2C_FIELD(temp_r4_638, f32 *, 0x40) + gUpdateTimeDelta);
                 temp_r3_653 = this->unk4C + (spC * 0x58);
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(temp_r3_653, f32 *, 0x40) == 3.0f) {
+                if (M2C_FIELD(temp_r3_653, f32 *, 0x40) >= 3.0f) {
                     M2C_FIELD(temp_r3_653, s8 *, 0x3C) = 0;
                     temp_r4_660 = M2C_FIELD(temp_r3_653, void **, 0x38);
                     if (temp_r4_660 != NULL) {
@@ -482,27 +488,24 @@ loop_48:
                 }
                 temp_f30_669 = gUpdateTimeDelta;
                 MKVector(0.0f, -2000.0f, 0.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp80 = sp30;
+                temp_f0_675 = sp70 * (f64) temp_f30_669;
+                sp30 = temp_f0_675;
+                sp80 = temp_f0_675;
                 sp38 = sp78 * temp_f30_669;
                 temp_r3_686 = this->unk4C + ((spC * 0x58) + 0x20);
                 sp88 = (f64) sp38;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r3, 0x0, qr0 */);
+                M2C_FIELD(temp_r3_686, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_686, f64 *, 0) + temp_f0_675);
                 M2C_FIELD(temp_r3_686, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_686, f32 *, 8) + (f32) sp88);
                 temp_r3_699 = spC * 0x58;
                 temp_r0_700 = this->unk4C;
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+                temp_r4_703 = temp_r0_700 + (temp_r3_699 + 0x20);
+                temp_f0_705 = M2C_FIELD(temp_r4_703, f64 *, 0) * (f64) gUpdateTimeDelta;
+                sp20 = temp_f0_705;
                 temp_r5_707 = temp_r0_700 + temp_r3_699;
-                sp60 = sp20;
-                sp28 = M2C_FIELD((temp_r0_700 + (temp_r3_699 + 0x20)), f32 *, 8) * gUpdateTimeDelta;
+                sp60 = temp_f0_705;
+                sp28 = M2C_FIELD(temp_r4_703, f32 *, 8) * gUpdateTimeDelta;
                 sp68 = (f64) sp28;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r5, 0x0, qr0 */);
+                M2C_FIELD(temp_r5_707, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_707, f64 *, 0) + temp_f0_705);
                 M2C_FIELD(temp_r5_707, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_707, f32 *, 8) + (f32) sp68);
                 UpdateCollision(spC);
             } else {
@@ -533,12 +536,11 @@ loop_48:
                     temp_r4_796 = this->unk4C;
                     temp_r3_797 = spC * 0x58;
                     temp_r5_798 = temp_r4_796 + temp_r3_797;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r6, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    temp_r6_799 = temp_r5_798 + 0x20;
+                    sp10 = M2C_FIELD(temp_r5_798, f64 *, 0) - M2C_FIELD(temp_r6_799, f64 *, 0);
                     temp_r5_806 = temp_r4_796 + (temp_r3_797 + 0x10);
                     M2C_FIELD(temp_r5_806, f64 *, 0) = sp10;
-                    sp18 = M2C_FIELD(temp_r5_798, f32 *, 8) - M2C_FIELD((temp_r5_798 + 0x20), f32 *, 8);
+                    sp18 = M2C_FIELD(temp_r5_798, f32 *, 8) - M2C_FIELD(temp_r6_799, f32 *, 8);
                     sp50 = sp10;
                     sp58 = (f64) sp18;
                     M2C_FIELD(temp_r5_806, f64 *, 8) = (f64) sp18;
@@ -549,15 +551,15 @@ loop_48:
                     M2C_FIELD(temp_r3_829, f64 *, 0) = M2C_BITWISE(f64, spB0);
                     M2C_FIELD(temp_r3_829, f64 *, 8) = (f64) spB0.unk8;
                     temp_r4_835 = this->unk4C + (spC * 0x58);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                    sp40 = M2C_FIELD(temp_r4_835, f64 *, 0) - *(temp_r4_835 + 0x10);
+                    temp_f3_844 = 1.0f / gUpdateTimeDelta;
                     spA0 = sp40;
                     sp48 = M2C_FIELD(temp_r4_835, f32 *, 8) - M2C_FIELD(temp_r4_835, f32 *, 0x18);
                     spA8 = (f64) sp48;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                    sp90 = spA0;
-                    spA8 = (f32) spA8 * (1.0f / gUpdateTimeDelta);
+                    temp_f0_854 = spA0 * (f64) temp_f3_844;
+                    spA0 = temp_f0_854;
+                    sp90 = temp_f0_854;
+                    spA8 = (f32) spA8 * temp_f3_844;
                     unksp94 = 0.0f;
                     sp98 = (f64) spA8;
                     var_f4_871 = ((f32) sp98 * (f32) sp98) + (((f32) sp90 * (f32) sp90) + (0.0f * 0.0f));
@@ -695,27 +697,40 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
     f64 sp120;
     f64 sp118;
     f32 sp110;
+    f64 sp108;
     f32 sp100;
+    f64 spF8;
     f32 spF0;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
     f32 spBC;
     f32 spB8;
     f32 spB0;
+    f64 spA8;
     f32 spA0;
     f32 sp9C;
     f32 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp50;
+    f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp14;
     f32 sp10;
     f32 spC;
@@ -730,12 +745,25 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
     f32 var_f29_1482;
     f32 var_f4_1344;
     f32 var_f5_1386;
+    f64 temp_f0_1197;
+    f64 temp_f0_1239;
+    f64 temp_f0_1271;
+    f64 temp_f0_1282;
+    f64 temp_f0_1305;
+    f64 temp_f0_1530;
+    f64 temp_f0_1545;
+    f64 temp_f0_1568;
+    f64 temp_f1_1054;
+    f64 temp_f1_1138;
     f64 temp_f1_1391;
     f64 temp_f1_1397;
     f64 temp_f1_1401;
     f64 temp_f1_1466;
     f64 temp_f1_1472;
     f64 temp_f1_1476;
+    f64 temp_f3_1110;
+    f64 temp_f3_1120;
+    f64 temp_f3_1130;
     s32 temp_r3_1420;
     s32 temp_r3_1495;
     s32 temp_r4_1226;
@@ -748,139 +776,139 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
     void *temp_r3_1374;
     void *temp_r3_1565;
     void *temp_r4_1051;
+    void *temp_r4_1084;
     void *temp_r4_1333;
     void *var_r3_1052;
 
     temp_r4_1051 = this->unk4C + (&arg0 * 0x58);
     var_r3_1052 = temp_r4_1051 + 0x10;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f1 */);
+    temp_f1_1054 = M2C_FIELD(temp_r4_1051, f64 *, 0);
+    sp108 = M2C_FIELD(var_r3_1052, f64 *, 0) - temp_f1_1054;
     temp_f0_1058 = M2C_FIELD(temp_r4_1051, f32 *, 8);
     sp1E8 = sp108;
     sp110 = M2C_FIELD(var_r3_1052, f32 *, 8) - temp_f0_1058;
     sp1F0 = (f64) sp110;
     temp_f28_1073 = ((f32) sp1F0 * (f32) sp1F0) + (((f32) sp1E8 * (f32) sp1E8) + (unksp1EC * unksp1EC));
-    if ((u8) M2C_FIELD(temp_r4_1051, u8 *, 0x48) != 0) {
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (temp_f28_1073 == M2C_FIELD(temp_r4_1051, f32 *, 0x4C)) {
-            sp228 = 0.0f;
-            sp22C = 0.0f;
-            sp230 = 0.0f;
-            sp238 = 0.0f;
-            sp23C = 0.0f;
-            sp240 = 0.0f;
-            sp248 = 0.0f;
-            sp24C = 0.0f;
-            sp250 = 0.0f;
-            sp254 = 1.0f;
-            sp258 = 0.0f;
-            sp25C = 0.0f;
-            sp260 = 0;
-            sp262 = 0;
-            sp263 = 0;
-            sp264 = 0;
-            sp268 = 3.4028235e38f;
-            sp26C = 0;
-            sp270 = NULL;
-            sp274 = -1;
-            sp278 = 0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f3, $f3, $f6 */);
-            temp_f5_1114 = M2C_FIELD((temp_r4_1051 + 0x20), f32 *, 8) * gUpdateTimeDelta;
-            sp1C8 = spF8;
-            sp100 = temp_f5_1114;
-            sp1D0 = (f64) sp100;
-            M2C_ERROR(/* unknown instruction: ps_sub $f3, $f1, $f3 */);
-            sp1D8 = spE8;
-            spF0 = temp_f0_1058 - (f32) sp1D0;
-            sp1E0 = (f64) spF0;
-            M2C_ERROR(/* unknown instruction: psq_lx $f3, $zero, $r4, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f3, $f3, $f2 */);
-            spE0 = temp_f5_1114;
-            sp1A8 = spD8;
-            sp1B0 = (f64) spE0;
-            M2C_ERROR(/* unknown instruction: ps_add $f1, $f1, $f2 */);
-            spD0 = temp_f0_1058 + (f32) sp1B0;
-            sp1B8 = spC8;
-            sp1C0 = (f64) spD0;
-            var_r3_1052 = MKCollision_RayCollide(*((MKVector3 *) &sp1D8), *((MKVector3 *) &sp1B8), (MKCollisionResult *) &sp228, (MKCollisionMode) 7, 0);
-            if ((u8) var_r3_1052 != 0) {
-                if ((sp278 != 0) && (sp270 != NULL) && (var_r0_1161 = M2C_FIELD(sp270, u32 *, 8), ((var_r0_1161 == 0U) == 0))) {
+    if (((u8) M2C_FIELD(temp_r4_1051, u8 *, 0x48) != 0) && (temp_f28_1073 >= M2C_FIELD(temp_r4_1051, f32 *, 0x4C))) {
+        temp_r4_1084 = temp_r4_1051 + 0x20;
+        sp228 = 0.0f;
+        sp22C = 0.0f;
+        sp230 = 0.0f;
+        sp238 = 0.0f;
+        sp23C = 0.0f;
+        sp240 = 0.0f;
+        sp248 = 0.0f;
+        sp24C = 0.0f;
+        sp250 = 0.0f;
+        sp254 = 1.0f;
+        sp258 = 0.0f;
+        sp25C = 0.0f;
+        sp260 = 0;
+        sp262 = 0;
+        sp263 = 0;
+        sp264 = 0;
+        sp268 = 3.4028235e38f;
+        sp26C = 0;
+        sp270 = NULL;
+        sp274 = -1;
+        sp278 = 0;
+        temp_f3_1110 = M2C_FIELD(temp_r4_1084, f64 *, 0) * (f64) gUpdateTimeDelta;
+        spF8 = temp_f3_1110;
+        temp_f5_1114 = M2C_FIELD(temp_r4_1084, f32 *, 8) * gUpdateTimeDelta;
+        sp1C8 = temp_f3_1110;
+        sp100 = temp_f5_1114;
+        sp1D0 = (f64) sp100;
+        temp_f3_1120 = temp_f1_1054 - temp_f3_1110;
+        spE8 = temp_f3_1120;
+        sp1D8 = temp_f3_1120;
+        spF0 = temp_f0_1058 - (f32) sp1D0;
+        sp1E0 = (f64) spF0;
+        temp_f3_1130 = M2C_FIELD(temp_r4_1084, f64 *, 0) * (f64) gUpdateTimeDelta;
+        spD8 = temp_f3_1130;
+        spE0 = temp_f5_1114;
+        sp1A8 = temp_f3_1130;
+        sp1B0 = (f64) spE0;
+        temp_f1_1138 = temp_f1_1054 + sp1A8;
+        spC8 = temp_f1_1138;
+        spD0 = temp_f0_1058 + (f32) sp1B0;
+        sp1B8 = temp_f1_1138;
+        sp1C0 = (f64) spD0;
+        var_r3_1052 = MKCollision_RayCollide(*((MKVector3 *) &sp1D8), *((MKVector3 *) &sp1B8), (MKCollisionResult *) &sp228, (MKCollisionMode) 7, 0);
+        if ((u8) var_r3_1052 != 0) {
+            if ((sp278 != 0) && (sp270 != NULL) && (var_r0_1161 = M2C_FIELD(sp270, u32 *, 8), ((var_r0_1161 == 0U) == 0))) {
 
-                } else {
-                    var_r0_1161 = 0U;
-                }
-                if (var_r0_1161 == 0U) {
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if (sp23C == 0.5f) {
-                        temp_f1_1178 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                        temp_r6_1181 = &arg0 * 0x58;
-                        spC0 = 0.0f;
-                        spB8 = 0.0f;
-                        spBC = 0.05f;
-                        sp14 = M2C_FIELD((this->unk4C + temp_r6_1181), f32 *, 0x30) * temp_f1_1178;
-                        sp188 = (f64) spB8;
-                        sp190 = (f64) spC0;
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp198 = spA8;
-                        spB0 = sp230 + (f32) sp190;
-                        sp1A0 = (f64) spB0;
-                        ((PuddleSplash *) (M2C_FIELD(&gb, PuddleSplash **, 0x70)))->Emit(*((MKVector3 *) &sp198), sp14, M2C_FIELD((this->unk4C + temp_r6_1181), u8 *, 0x50));
-                        KDSound_Play3d(GS_WaterDrop, (MKVector3 *) &sp228, sp26C, -1, 0.0f, 0U);
-                    }
-                }
-                temp_r4_1226 = &arg0 * 0x58;
-                if ((u8) M2C_FIELD((this->unk4C + temp_r4_1226), u8 *, 0x34) != 0) {
-                    var_r27_1234 = 0;
-                    do {
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                        sp158 = sp78;
-                        sp80 = sp240 * 200.0f;
-                        sp160 = (f64) sp80;
-                        temp_f23_1252 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f24_1257 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        sp98 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        sp9C = temp_f24_1257;
-                        spA0 = temp_f23_1252;
-                        sp168 = (f64) sp98;
-                        sp170 = (f64) spA0;
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                        sp178 = sp88;
-                        sp90 = (f32) sp170 * 100.0f;
-                        sp180 = (f64) sp90;
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp60 = 0.0f;
-                        sp218 = sp68;
-                        sp70 = (f32) sp180 + (f32) sp160;
-                        sp58 = 0.0f;
-                        sp220 = (f64) sp70;
-                        sp5C = 2.0f;
-                        sp140 = (f64) sp60;
-                        sp138 = (f64) sp58;
-                        sp10 = *(this->unk4C + (temp_r4_1226 + 0x30)) / 3.0f;
-                        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                        sp148 = sp48;
-                        sp50 = sp230 + (f32) sp140;
-                        sp150 = (f64) sp50;
-                        Emit(*((MKVector3 *) &sp148), *((MKVector3 *) &sp218), sp10, 0U, 0U, NULL);
-                        var_r27_1234 += 1;
-                    } while (var_r27_1234 < 3);
-                }
-                var_r3_1052 = this->unk4C + (&arg0 * 0x58);
-                M2C_FIELD(var_r3_1052, s8 *, 0x3C) = 0;
-                temp_r4_1333 = M2C_FIELD(var_r3_1052, void **, 0x38);
-                if (temp_r4_1333 != NULL) {
-                    M2C_FIELD(temp_r4_1333, s32 *, 0x14) = 0;
-                    var_r3_1052 = M2C_FIELD(var_r3_1052, void **, 0x38);
-                    M2C_FIELD(var_r3_1052, s32 *, 0x14) = 0;
-                }
+            } else {
+                var_r0_1161 = 0U;
+            }
+            if ((var_r0_1161 == 0U) && (sp23C >= 0.5f)) {
+                temp_f1_1178 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+                temp_r6_1181 = &arg0 * 0x58;
+                spC0 = 0.0f;
+                spB8 = 0.0f;
+                spBC = 0.05f;
+                sp14 = M2C_FIELD((this->unk4C + temp_r6_1181), f32 *, 0x30) * temp_f1_1178;
+                sp188 = (f64) spB8;
+                sp190 = (f64) spC0;
+                temp_f0_1197 = (f64) sp228 + sp188;
+                spA8 = temp_f0_1197;
+                sp198 = temp_f0_1197;
+                spB0 = sp230 + (f32) sp190;
+                sp1A0 = (f64) spB0;
+                ((PuddleSplash *) (M2C_FIELD(&gb, PuddleSplash **, 0x70)))->Emit(*((MKVector3 *) &sp198), sp14, M2C_FIELD((this->unk4C + temp_r6_1181), u8 *, 0x50));
+                KDSound_Play3d(GS_WaterDrop, (MKVector3 *) &sp228, sp26C, -1, 0.0f, 0U);
+            }
+            temp_r4_1226 = &arg0 * 0x58;
+            if ((u8) M2C_FIELD((this->unk4C + temp_r4_1226), u8 *, 0x34) != 0) {
+                var_r27_1234 = 0;
+                do {
+                    temp_f0_1239 = sp238 * 5.5769738e-315;
+                    sp78 = temp_f0_1239;
+                    sp158 = temp_f0_1239;
+                    sp80 = sp240 * 200.0f;
+                    sp160 = (f64) sp80;
+                    temp_f23_1252 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f24_1257 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    sp98 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    sp9C = temp_f24_1257;
+                    spA0 = temp_f23_1252;
+                    sp168 = (f64) sp98;
+                    sp170 = (f64) spA0;
+                    temp_f0_1271 = sp168 * 5.53552857e-315;
+                    sp88 = temp_f0_1271;
+                    sp178 = temp_f0_1271;
+                    sp90 = (f32) sp170 * 100.0f;
+                    sp180 = (f64) sp90;
+                    temp_f0_1282 = sp178 + temp_f0_1239;
+                    sp68 = temp_f0_1282;
+                    sp60 = 0.0f;
+                    sp218 = temp_f0_1282;
+                    sp70 = (f32) sp180 + (f32) sp160;
+                    sp58 = 0.0f;
+                    sp220 = (f64) sp70;
+                    sp5C = 2.0f;
+                    sp140 = (f64) sp60;
+                    sp138 = (f64) sp58;
+                    sp10 = *(this->unk4C + (temp_r4_1226 + 0x30)) / 3.0f;
+                    temp_f0_1305 = (f64) sp228 + sp138;
+                    sp48 = temp_f0_1305;
+                    sp148 = temp_f0_1305;
+                    sp50 = sp230 + (f32) sp140;
+                    sp150 = (f64) sp50;
+                    Emit(*((MKVector3 *) &sp148), *((MKVector3 *) &sp218), sp10, 0U, 0U, NULL);
+                    var_r27_1234 += 1;
+                } while (var_r27_1234 < 3);
+            }
+            var_r3_1052 = this->unk4C + (&arg0 * 0x58);
+            M2C_FIELD(var_r3_1052, s8 *, 0x3C) = 0;
+            temp_r4_1333 = M2C_FIELD(var_r3_1052, void **, 0x38);
+            if (temp_r4_1333 != NULL) {
+                M2C_FIELD(temp_r4_1333, s32 *, 0x14) = 0;
+                var_r3_1052 = M2C_FIELD(var_r3_1052, void **, 0x38);
+                M2C_FIELD(var_r3_1052, s32 *, 0x14) = 0;
             }
         }
     }
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (temp_f28_1073 == 900.0001f) {
+    if (temp_f28_1073 >= 900.0001f) {
         var_f4_1344 = 0.0f;
         sp228 = 0.0f;
         sp22C = 0.0f;
@@ -981,23 +1009,24 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
                 var_f29_1482 = temp_f28_1073;
             }
         }
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp118 = sp38;
+        temp_f0_1530 = (f64) sp208 * (f64) var_f29_1482;
+        sp38 = temp_f0_1530;
+        sp118 = temp_f0_1530;
         sp40 = sp210 * var_f29_1482;
         temp_r3_1540 = this->unk4C + (&arg0 * 0x58);
         sp120 = (f64) sp40;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp128 = sp28;
+        temp_f0_1545 = M2C_FIELD(temp_r3_1540, f64 *, 0) + temp_f0_1530;
+        sp28 = temp_f0_1545;
+        sp128 = temp_f0_1545;
         sp30 = temp_r3_1540->unk8 + (f32) sp120;
         sp130 = (f64) sp30;
         if (MKCollision_RayCollide(*temp_r3_1540, *((MKVector3 *) &sp128), (MKCollisionResult *) &sp228, (MKCollisionMode) 7, 0) != 0) {
             temp_r4_1564 = &arg0 * 0x58;
             temp_r3_1565 = this->unk4C + temp_r4_1564;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_f0_1568 = (f64) sp228 - M2C_FIELD(temp_r3_1565, f64 *, 0);
+            sp18 = temp_f0_1568;
             M2C_FIELD(temp_r3_1565, s8 *, 0x48) = 1;
-            sp1F8 = sp18;
+            sp1F8 = temp_f0_1568;
             sp20 = sp230 - M2C_FIELD(temp_r3_1565, f32 *, 8);
             sp200 = (f64) sp20;
             M2C_FIELD((this->unk4C + temp_r4_1564), f32 *, 0x4C) = (f32) (((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + (unksp1FC * unksp1FC)));

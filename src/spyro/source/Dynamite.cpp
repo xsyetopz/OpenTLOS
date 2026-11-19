@@ -99,12 +99,18 @@ void Dynamite::Collided(MKCollisionResult &arg0) {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     f32 temp_f28_213;
+    f32 temp_f2_244;
     f32 temp_f4_210;
+    f64 temp_f0_229;
+    f64 temp_f0_247;
 
-    if (((u8) this->unk185 == 0) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), (((f32) fabs(arg0.unk14) == 0.25f) == 0))) {
+    if (((u8) this->unk185 == 0) || !((f32) fabs(arg0.unk14) <= 0.25f)) {
         Projectile::Collided(arg0);
         if (((u8) this->unk184 >> 7U) & 1) {
             this->unk14C &= ~0x40;
@@ -113,29 +119,25 @@ void Dynamite::Collided(MKCollisionResult &arg0) {
         temp_f4_210 = arg0.unk18;
         temp_f28_213 = (M2C_FIELD(this, f32 *, 0xD0) * temp_f4_210) + ((M2C_FIELD(this, f32 *, 0xC8) * arg0.unk10) + (M2C_FIELD(this, f32 *, 0xCC) * arg0.unk14));
         if (temp_f28_213 < 0.0f) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
+            sp28 = (f64) M2C_FIELD(&arg0, f32 *, 0x10) * 5.398241246e-315;
             sp30 = temp_f4_210 * 10.0f;
             sp48 = sp28;
             sp50 = (f64) sp30;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp58 = sp18;
+            temp_f0_229 = M2C_FIELD(&arg0, f64 *, 0) + sp48;
+            sp18 = temp_f0_229;
+            sp58 = temp_f0_229;
             sp20 = arg0.unk8 + (f32) sp50;
             sp60 = (f64) sp20;
             MKModel_SetPosition(this->unk4, *((MKVector3 *) &sp58));
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp38 = sp8;
-            sp10 = arg0.unk18 * (2.0f * temp_f28_213);
+            temp_f2_244 = 2.0f * temp_f28_213;
+            temp_f0_247 = (f64) M2C_FIELD(&arg0, f32 *, 0x10) * (f64) temp_f2_244;
+            sp8 = temp_f0_247;
+            sp38 = temp_f0_247;
+            sp10 = arg0.unk18 * temp_f2_244;
             sp40 = (f64) sp10;
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+            this->unkC8 -= temp_f0_247;
             M2C_FIELD(this, f32 *, 0xD0) = (f32) (M2C_FIELD(this, f32 *, 0xD0) - (f32) sp40);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            M2C_ERROR(/* unknown instruction: psq_stx $f0, $r30, $r0, 0x0, qr0 */);
+            this->unkC8 *= 5.222099017e-315;
             M2C_FIELD(this, f32 *, 0xD0) = (f32) (M2C_FIELD(this, f32 *, 0xD0) * 0.5f);
             this->unk170 = 0.75f * -this->unk170;
             this->unk180 += 1;
@@ -166,7 +168,7 @@ void Dynamite::Activate() {
     this->unk184 |= 0x20;
 }
 
-#if 0 // DRAFT: undefined identifier 'spD8'
+#if 0 // DRAFT: undefined identifier 'unksp1EC'
 void Dynamite::Update() {
     f64 sp200;
     f64 sp1F8;
@@ -199,10 +201,12 @@ void Dynamite::Update() {
     f64 sp118;
     f64 sp110;
     f64 sp108;
-    M2C_UNK spF8;
-    M2C_UNK spE8;
+    f64 spF8;
+    f64 spE8;
     f32 spE0;
+    f64 spD8;
     f32 spD0;
+    f64 spC8;
     f32 spC0;
     f32 spBC;
     f32 spB8;
@@ -210,7 +214,9 @@ void Dynamite::Update() {
     f32 spAC;
     f32 spA8;
     f32 spA0;
+    f64 sp98;
     f32 sp90;
+    f64 sp88;
     f32 sp80;
     f32 sp7C;
     f32 sp78;
@@ -218,10 +224,12 @@ void Dynamite::Update() {
     f32 sp6C;
     f32 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     u8 sp30;
     MKCollisionInfo *sp2C;
     Dynamite *sp28;
@@ -249,9 +257,15 @@ void Dynamite::Update() {
     f32 var_f4_426;
     f32 var_f4_764;
     f32 var_f4_911;
+    f64 temp_f0_610;
+    f64 temp_f0_849;
+    f64 temp_f0_859;
+    f64 temp_f0_996;
+    f64 temp_f1_403;
     f64 temp_f1_429;
     f64 temp_f1_435;
     f64 temp_f1_439;
+    f64 temp_f1_604;
     f64 temp_f1_770;
     f64 temp_f1_776;
     f64 temp_f1_780;
@@ -266,6 +280,7 @@ void Dynamite::Update() {
     s32 var_r0_468;
     s32 var_r0_809;
     s32 var_r0_956;
+    void *temp_r30_598;
     void *temp_r3_402;
     void *temp_r3_603;
     void *temp_r4_392;
@@ -284,9 +299,10 @@ void Dynamite::Update() {
     Projectile::Update();
     if ((u8) this->unk185 != 0) {
         temp_r3_402 = this->unk8;
-        sp1B8 = M2C_FIELD(temp_r3_402, f64 *, 0x30);
+        temp_f1_403 = M2C_FIELD(temp_r3_402, f64 *, 0x30);
+        sp1B8 = temp_f1_403;
         sp1C0 = M2C_FIELD(temp_r3_402, f64 *, 0x38);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        spD8 = temp_f1_403 - sp1F8;
         sp1E8 = spD8;
         spE0 = (f32) sp1C0 - (f32) sp200;
         sp1F0 = (f64) spE0;
@@ -325,8 +341,7 @@ void Dynamite::Update() {
             }
         }
         this->unk17C += var_f4_426;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk17C == 300.0f) {
+        if (this->unk17C >= 300.0f) {
             this->unk185 = 0;
         }
     }
@@ -358,7 +373,7 @@ void Dynamite::Update() {
         }
     }
     if (((u8) this->unk14C >> 7U) & 1) {
-        if ((((u8) this->unk184 >> 6U) & 1) && ((this->unk168 -= gUpdateTimeDelta, M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unk168 == 0.0f) != 0)) || (temp_r4_595 = this->unk8, temp_r3_603 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, void *), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_r4_595), void **, 8), sp198 = M2C_FIELD(temp_r3_603, f64 *, 0x30), sp1A0 = M2C_FIELD(temp_r3_603, f64 *, 0x38), M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */), M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */), temp_f2_616 = this->unk174, sp1A8 = spC8, spD0 = (f32) sp1A0 - M2C_FIELD((temp_r4_595 + 0x30), f32 *, 8), sp1B0 = (f64) spD0, M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), (((((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + (unksp1AC * unksp1AC))) == (temp_f2_616 * temp_f2_616)) != 0)))) {
+        if ((((u8) this->unk184 >> 6U) & 1) && ((this->unk168 -= gUpdateTimeDelta, ((this->unk168 <= 0.0f) != 0)) || (temp_r4_595 = this->unk8, temp_r30_598 = temp_r4_595 + 0x30, temp_r3_603 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, void *), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_r4_595), void **, 8), temp_f1_604 = M2C_FIELD(temp_r3_603, f64 *, 0x30), sp198 = temp_f1_604, sp1A0 = M2C_FIELD(temp_r3_603, f64 *, 0x38), temp_f0_610 = temp_f1_604 - M2C_FIELD(temp_r30_598, f64 *, 0), spC8 = temp_f0_610, temp_f2_616 = this->unk174, sp1A8 = temp_f0_610, spD0 = (f32) sp1A0 - M2C_FIELD(temp_r30_598, f32 *, 8), sp1B0 = (f64) spD0, (((((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + (unksp1AC * unksp1AC))) <= (temp_f2_616 * temp_f2_616)) != 0)))) {
             this->unk14C &= ~0x40;
             this->unk168 = 0.0f;
         }
@@ -374,8 +389,7 @@ void Dynamite::Update() {
             MKModel_SetRotation(this->unk4, *((MKVector3 *) &sp188));
         } else {
             this->unk168 -= gUpdateTimeDelta;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk168 == 0.0f) {
+            if (this->unk168 <= 0.0f) {
                 this->unk168 = 0.0f;
                 this->unk184 &= ~0x20;
                 KDSound_Stop(&this->unk150);
@@ -452,12 +466,14 @@ void Dynamite::Update() {
             sp80 = (f32) sp150 * var_f3_831;
             sp158 = (f64) sp78;
             sp160 = (f64) sp80;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            sp168 = sp98;
+            temp_f0_849 = sp158 * 5.634608575e-315;
+            sp98 = temp_f0_849;
+            sp168 = temp_f0_849;
             spA0 = (f32) sp160 * 500.0f;
             sp170 = (f64) spA0;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            sp178 = sp88;
+            temp_f0_859 = temp_f0_849 * (f64) temp_f30_732;
+            sp88 = temp_f0_859;
+            sp178 = temp_f0_859;
             sp90 = (f32) sp170 * temp_f30_732;
             sp180 = (f64) sp90;
             sp20 = temp_f30_732 * MKRand_Float(&gViewSeed, 1.5f, 3.0f);
@@ -515,8 +531,9 @@ void Dynamite::Update() {
         sp50 = (f32) sp120 * var_f3_978;
         sp128 = (f64) sp48;
         sp130 = (f64) sp50;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-        sp138 = sp58;
+        temp_f0_996 = sp128 * 5.634608575e-315;
+        sp58 = temp_f0_996;
+        sp138 = temp_f0_996;
         sp60 = (f32) sp130 * 500.0f;
         sp140 = (f64) sp60;
         sp1C = MKRand_Float(&gViewSeed, 1.5f, 3.0f);
@@ -524,8 +541,7 @@ void Dynamite::Update() {
     }
     MKVector(0.0f, 50.0f, 0.0f);
     spF8.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp38 = spF8 + spE8;
     this->unk198 = sp38;
     sp40 = sp100 + spF0;
     sp108 = sp38;
@@ -541,15 +557,15 @@ void Dynamite::Update() {
 void Dynamite::SetInitialState() {
     f64 sp40;
     f64 sp38;
-    M2C_UNK sp28;
-    M2C_UNK sp18;
+    f64 sp28;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
 
     this->unk188.unk4 = 1;
     MKVector(0.0f, 50.0f, 0.0f);
     sp28.GetPos();
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp8 = sp28 + sp18;
     this->unk198 = sp8;
     sp10 = sp30 + sp20;
     sp38 = sp8;
@@ -646,8 +662,11 @@ void Dynamite::Message(MKMessage *arg0) {
     f64 sp50;
     f64 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     Dynamite ***temp_r4_1327;
     Dynamite **temp_r3_1349;
@@ -658,9 +677,13 @@ void Dynamite::Message(MKMessage *arg0) {
     f32 temp_f1_1484;
     f32 var_f4_1371;
     f32 var_f5_1384;
+    f64 temp_f0_1365;
+    f64 temp_f0_1478;
+    f64 temp_f1_1358;
     f64 temp_f1_1389;
     f64 temp_f1_1395;
     f64 temp_f1_1399;
+    f64 temp_f1_1463;
     f64 temp_f3_1471;
     f64 temp_f4_1469;
     s32 temp_r0_1272;
@@ -722,12 +745,13 @@ block_16:
                 }
             }
             temp_r3_1357 = this->unk8;
-            sp68 = M2C_FIELD(temp_r3_1357, f64 *, 0x30);
+            temp_f1_1358 = M2C_FIELD(temp_r3_1357, f64 *, 0x30);
+            sp68 = temp_f1_1358;
             sp70 = M2C_FIELD(temp_r3_1357, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            temp_f0_1365 = temp_f1_1358 - M2C_FIELD(temp_r3_1325, f64 *, 0x10);
+            sp38 = temp_f0_1365;
             var_f4_1371 = 0.0f;
-            sp98 = sp38;
+            sp98 = temp_f0_1365;
             sp40 = (f32) sp70 - M2C_FIELD(temp_r3_1325, f32 *, 0x18);
             unksp9C = 0.0f;
             spA0 = (f64) sp40;
@@ -772,19 +796,21 @@ block_16:
             sp98 = (f32) sp98 * var_f4_1371;
             unksp9C *= var_f4_1371;
             spA0 = temp_f0_1458;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
+            temp_f1_1463 = (f64) sp98 * 5.676053805e-315;
+            sp28 = temp_f1_1463;
             temp_r3_1466 = this->unk8;
             sp30 = temp_f0_1458 * 1000.0f;
             temp_f4_1469 = M2C_FIELD(temp_r3_1466, f64 *, 0x30);
             temp_f3_1471 = M2C_FIELD(temp_r3_1466, f64 *, 0x38);
-            sp48 = sp28;
+            sp48 = temp_f1_1463;
             sp58 = temp_f4_1469;
             sp50 = (f64) sp30;
             sp60 = temp_f3_1471;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            temp_f0_1478 = sp58 + sp48;
+            sp18 = temp_f0_1478;
             temp_f1_1484 = (f32) sp60 + (f32) sp50;
             sp78 = temp_f4_1469;
-            sp88 = sp18;
+            sp88 = temp_f0_1478;
             sp20 = temp_f1_1484;
             sp80 = temp_f3_1471;
             sp90 = (f64) sp20;

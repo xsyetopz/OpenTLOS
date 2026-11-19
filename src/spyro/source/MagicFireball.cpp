@@ -86,11 +86,13 @@ void MagicFireball::Update() {
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
     s32 sp8;
     MagicFireball *var_r7_150;
@@ -192,8 +194,7 @@ void MagicFireball::Update() {
         MKVector(-1.0f, -1.0f, -1.0f);
         KDRand_Vector(sp98, sp88);
         spA8.operator*(25.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp38 = sp130.unk30 + M2C_BITWISE(f64, spA8);
         M2C_FIELD(temp_r3_308, f64 *, 0) = sp38;
         sp40 = sp130.unk38 + spA8.unk8;
         spB8 = sp38;
@@ -211,8 +212,7 @@ void MagicFireball::Update() {
         sp70 = (f64) sp30;
         M2C_FIELD(temp_r3_308, f64 *, 0x18) = (f64) sp30;
         M2C_FIELD(temp_r3_308, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f)));
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+        sp18 = this->unkC8 * 5.222099017e-315;
         M2C_FIELD(temp_r28_313, f64 *, 0) = sp18;
         sp20 = (f32) M2C_FIELD(this, f64 *, 0xD0) * 0.5f;
         sp58 = sp18;
@@ -317,13 +317,17 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     f64 sp98;
     f64 sp88;
     f32 sp80;
+    f64 sp78;
     f32 sp70;
+    f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
     f32 sp40;
+    f64 sp38;
     f32 sp30;
     f32 sp2C;
     f32 sp28;
@@ -337,6 +341,8 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     f32 temp_f29_552;
     f32 var_f4_705;
     f32 var_f5_743;
+    f64 temp_f0_870;
+    f64 temp_f0_881;
     f64 temp_f1_748;
     f64 temp_f1_754;
     f64 temp_f1_758;
@@ -371,8 +377,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
             MKVector(-1.0f, 0.0f, -1.0f);
             KDRand_Vector(sp168, sp158);
             sp178.operator*(25.0f);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp58 = sp1C0.unk30 + M2C_BITWISE(f64, sp178);
             M2C_FIELD(temp_r3_509, f64 *, 0) = sp58;
             sp60 = sp1C0.unk38 + sp178.unk8;
             sp188 = sp58;
@@ -394,7 +399,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
             MKVector(-1.0f, 0.0f, -1.0f);
             KDRand_Vector(sp108, spF8);
             sp118.operator*(500.0f);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp38 = sp1A8 + M2C_BITWISE(f64, sp118);
             M2C_FIELD(temp_r25_514, f64 *, 0) = sp38;
             sp40 = (f32) sp1B0 + sp118.unk8;
             sp128 = sp38;
@@ -543,13 +548,14 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
         sp290 = 0.0f;
     }
     sp2A9 = 0;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    spA8 = sp78;
+    temp_f0_870 = (f64) sp198 * 5.64367472e-315;
+    sp78 = temp_f0_870;
+    spA8 = temp_f0_870;
     sp80 = sp1A0 * 600.0f;
     spB0 = (f64) sp80;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spB8 = sp68;
+    temp_f0_881 = sp1C0.unk30 + temp_f0_870;
+    sp68 = temp_f0_881;
+    spB8 = temp_f0_881;
     sp70 = sp1C0.unk38 + (f32) spB0;
     spC0 = (f64) sp70;
     if (MKCollision_SweepSphereCollide(*((MKVector3 *) &sp1C0.unk30), *((MKVector3 *) &spB8), 200.0f, (MKCollisionResult *) &sp200, (MKCollisionMode) 2, 0x08000000) != 0) {

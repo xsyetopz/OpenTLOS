@@ -227,24 +227,13 @@ inline s32 TriggerBoxObject::CheckPos(const MKVector3 &arg0) {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     sp30 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((f32) sp28 == temp_f4_512) {
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((f32) sp28 == (temp_f4_512 + this->unk70)) {
-            temp_f1_531 = this->unk64;
-            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (unksp2C == temp_f1_531) {
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (unksp2C == (temp_f1_531 + this->unk74)) {
-                    temp_f1_541 = this->unk68;
-                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                    if ((f32) sp30 == temp_f1_541) {
-                        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                        if ((f32) sp30 == (temp_f1_541 + this->unk78)) {
-                            var_r0_483 = 1;
-                        }
-                    }
-                }
+    M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
+    if (((f32) sp28 == temp_f4_512) && ((f32) sp28 <= (temp_f4_512 + this->unk70))) {
+        temp_f1_531 = this->unk64;
+        if ((unksp2C >= temp_f1_531) && (unksp2C <= (temp_f1_531 + this->unk74))) {
+            temp_f1_541 = this->unk68;
+            if (((f32) sp30 >= temp_f1_541) && ((f32) sp30 <= (temp_f1_541 + this->unk78))) {
+                var_r0_483 = 1;
             }
         }
     }

@@ -50,10 +50,12 @@ void EnemyRegion::GetNearestPointOnBoundingRegion(const MKVector3 &arg0, MKVecto
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 temp_f0_95;
@@ -197,16 +199,14 @@ loop_5:
             sp150 = (f64) sp60;
             sp158 = (f64) sp68;
             if ((u8) this->unk30 == 0) {
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                sp150 *= 1.58735232e-314;
                 sp158 = (f32) sp158 * -1.0f;
             }
             M2C_FIELD(arg2, f64 *, 0) = sp150;
             M2C_FIELD(arg2, f64 *, 8) = (f64) sp158;
         }
     } else {
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r23, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp30 = this->unk0 - (f64) M2C_FIELD(&arg0, f32 *, 0);
         sp90 = sp30;
         sp38 = (f32) M2C_FIELD(this, f64 *, 8) - arg0.unk8;
         sp98 = (f64) sp38;
@@ -255,8 +255,7 @@ loop_5:
         sp130.unk10 = (f64) sp20;
         sp130.unk18 = (f64) sp28;
         sp70.operator*(this->unk2C);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+        sp10 = this->unk0 - M2C_BITWISE(f64, sp70);
         M2C_FIELD(arg1, f64 *, 0) = sp10;
         sp18 = (f32) M2C_FIELD(this, f64 *, 8) - sp70.unk8;
         sp80 = sp10;
@@ -304,12 +303,15 @@ s32 EnemyRegion::GetFirstIntersectionPlane(const MKVector3 &arg0, const MKVector
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 spC;
     f32 sp8;
     f32 var_f30_473;
     f32 var_f4_587;
     f32 var_f5_606;
+    f64 temp_f0_549;
     f64 temp_f1_611;
     f64 temp_f1_617;
     f64 temp_f1_621;
@@ -353,15 +355,13 @@ loop_6:
             var_r27_470 = temp_r28_469 - 1;
         }
         if (var_r27_470 != -1) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r23, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r22, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            spA0 = sp10;
+            temp_f0_549 = M2C_FIELD(&arg1, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0);
+            sp10 = temp_f0_549;
+            spA0 = temp_f0_549;
             sp18 = arg1.unk8 - arg0.unk8;
             spA8 = (f64) sp18;
             spB0.operator*(var_f30_473);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r22, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            sp20 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, spB0);
             M2C_FIELD(arg2, f64 *, 0) = sp20;
             sp28 = arg0.unk8 + spB0.unk8;
             spC0 = sp20;
@@ -423,10 +423,10 @@ loop_6:
             sp100.unk10 = (f64) sp50;
             sp100.unk18 = (f64) sp58;
             if ((u8) this->unk30 == 0) {
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+                sp100.unk10 = (f64) sp100.unk10 * 1.58735232e-314;
                 sp100.unk18 *= -1.0f;
             }
-            M2C_FIELD(arg3, f64 *, 0) = (f64) sp100.unk10;
+            M2C_FIELD(arg3, f64 *, 0) = sp100.unk10;
             M2C_FIELD(arg3, f64 *, 8) = (f64) sp100.unk18;
             return 1;
         }
@@ -483,8 +483,7 @@ u8 EnemyRegion::IsPointWithin(const MKVector3 &arg0) {
         temp_f5_816 = M2C_FIELD(this, f32 *, 4) - arg0.unk4;
         temp_f4_818 = M2C_FIELD(this, f32 *, 0) - arg0.unk0;
         temp_f3_821 = M2C_FIELD(this, f32 *, 8) - arg0.unk8;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (((temp_f3_821 * temp_f3_821) + ((temp_f4_818 * temp_f4_818) + (temp_f5_816 * temp_f5_816))) == (temp_f1_806 * temp_f1_806)) {
+        if (((temp_f3_821 * temp_f3_821) + ((temp_f4_818 * temp_f4_818) + (temp_f5_816 * temp_f5_816))) <= (temp_f1_806 * temp_f1_806)) {
             var_r0_807 = 1;
         }
     }
@@ -687,11 +686,12 @@ u8 PolygonWindingOrderIsClockWise(KDPathSegment *arg0) {
 void PolygonCentroid(KDPathSegment *arg0) {
     f32 sp10;
     f32 spC;
-    f32 sp8;
+    f32 sp8;                                        /* compiler-managed */
     KDPathSegment *temp_r30_1217;
     f32 temp_f1_1220;
     f32 temp_f2_1249;
     f32 temp_f2_1283;
+    f32 temp_f31_1301;
     f32 temp_f3_1284;
     f32 temp_f5_1254;
     f32 temp_f5_1275;
@@ -761,10 +761,11 @@ void PolygonCentroid(KDPathSegment *arg0) {
         sp8 += (temp_f7_1285 + temp_f3_1284) * temp_f5_1292;
         sp10 += (temp_f2_1283 + temp_f8_1286) * temp_f5_1292;
     }
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */);
-    sp10 *= 1.0f / (6.0f * temp_f1_1220);
+    temp_f31_1301 = 1.0f / (6.0f * temp_f1_1220);
+    sp8 = (f64) sp8 * (f64) temp_f31_1301;
+    sp10 *= temp_f31_1301;
     spC = var_f0_1221 / (f32) temp_r5_1223;
-    arg0->unk0 = (f64) sp8;
+    arg0->unk0 = sp8;
     arg0->unk8 = (f64) sp10;
 }
 #endif

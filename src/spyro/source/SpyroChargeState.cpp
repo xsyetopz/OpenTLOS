@@ -169,7 +169,9 @@ s32 SpyroChargeState::Transition() {
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
@@ -183,6 +185,8 @@ s32 SpyroChargeState::Transition() {
     f32 temp_f6_516;
     f32 var_f4_431;
     f32 var_f5_441;
+    f64 temp_f0_399;
+    f64 temp_f0_410;
     f64 temp_f1_446;
     f64 temp_f1_452;
     f64 temp_f1_456;
@@ -228,12 +232,14 @@ s32 SpyroChargeState::Transition() {
             sp48 = -M2C_FIELD(temp_r3_384, f32 *, 0x28);
             sp60 = (f64) sp40;
             sp68 = (f64) sp48;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-            sp70 = sp30;
+            temp_f0_399 = sp60 * 5.634608575e-315;
+            sp30 = temp_f0_399;
+            sp70 = temp_f0_399;
             sp38 = (f32) sp68 * 500.0f;
             sp78 = (f64) sp38;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            sp90 = sp20;
+            temp_f0_410 = sp70 + spA0;
+            sp20 = temp_f0_410;
+            sp90 = temp_f0_410;
             sp28 = (f32) sp78 + (f32) spA8;
             sp98 = (f64) sp28;
             if (MKCollision_RayCollide(*((MKVector3 *) &spA0), *((MKVector3 *) &sp90), &spC8, (MKCollisionMode) 7, 0x04000000) != 0) {
@@ -325,8 +331,7 @@ block_33:
             var_r26_598 = 4;
         }
         var_r30_604 = 0;
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((this->unk28 == 5.0f) || (this->unk10->IsAgainstMatID(2), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) {
+        if ((this->unk28 >= 5.0f) || (this->unk10->IsAgainstMatID(2), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0))) {
             var_r30_604 = 1;
         }
         if (this->unk10->TryChangeState(var_r30_604, var_r26_598, NULL, 0U) == 0) {
@@ -357,6 +362,7 @@ void SpyroChargeState::Update() {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     s32 spC;
     s32 sp8;
     KDCamera *temp_r3_687;
@@ -364,7 +370,9 @@ void SpyroChargeState::Update() {
     Spyro *temp_r3_747;
     Spyro *temp_r5_700;
     f32 temp_f2_676;
+    f32 temp_f3_750;
     f32 var_f30_702;
+    f64 temp_f0_766;
     s32 temp_r3_708;
     s32 var_r0_722;
     u8 var_r4_701;
@@ -375,8 +383,7 @@ void SpyroChargeState::Update() {
     temp_f2_676 = this->unk2C;
     if (temp_f2_676 > 0.0f) {
         this->unk2C = temp_f2_676 - gUpdateTimeDelta;
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk2C == 0.0f) {
+        if (this->unk2C <= 0.0f) {
             temp_r3_687 = this->unk10->GetCamera();
             spC = 0;
             sp8 = 0x445;
@@ -411,14 +418,16 @@ void SpyroChargeState::Update() {
     this->unk10->unk3A0.YawTowards(*((MKVector3 *) &sp40), 3.5f);
     temp_r3_747 = this->unk10;
     temp_r4_749 = temp_r3_747->unk8;
+    temp_f3_750 = 1400.0f * var_f30_702;
     sp20 = -M2C_FIELD(temp_r4_749, f32 *, 0x20);
     sp24 = -M2C_FIELD(temp_r4_749, f32 *, 0x24);
     sp28 = -M2C_FIELD(temp_r4_749, f32 *, 0x28);
     sp30 = (f64) sp20;
     sp38 = (f64) sp28;
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp50 = sp10;
-    sp18 = (f32) sp38 * (1400.0f * var_f30_702);
+    temp_f0_766 = sp30 * (f64) temp_f3_750;
+    sp10 = temp_f0_766;
+    sp50 = temp_f0_766;
+    sp18 = (f32) sp38 * temp_f3_750;
     sp58 = (f64) sp18;
     temp_r3_747->SetDesiredVelocityHoriz(*((MKVector3 *) &sp50), 100000.0f);
     this->unk14.Update(this, 0);

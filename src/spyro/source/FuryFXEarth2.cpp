@@ -99,8 +99,7 @@ void FuryFXEarth2::CalcMatrixForVortexElement(FuryFXEarth2::VortexAttachmentPoin
     sp30 = (f64) sp10;
     sp20 = (f64) sp10;
     sp38 = (f64) sp18;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp30 = (f64) sp10 + M2C_FIELD(arg1, f64 *, 0xA0);
     temp_f3_146 = (f32) sp38 + M2C_FIELD(arg1, f32 *, 0xA8);
     temp_f2_148 = unksp34 + M2C_FIELD(temp_r31_103, f32 *, 0x28);
     sp38 = temp_f3_146;
@@ -137,11 +136,14 @@ void FuryFXEarth2::EmitTimedSparks() {
     f32 sp64;
     f32 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp1C;
     f32 sp18;
     f32 sp14;
@@ -151,6 +153,9 @@ void FuryFXEarth2::EmitTimedSparks() {
     f32 temp_f1_295;
     f32 temp_f26_264;
     f32 temp_f27_269;
+    f64 temp_f0_231;
+    f64 temp_f0_243;
+    f64 temp_f0_283;
     s32 var_r30_249;
 
     this->unkE4 -= gUpdateTimeDelta;
@@ -168,15 +173,15 @@ void FuryFXEarth2::EmitTimedSparks() {
         spB0 = (f64) sp60;
         spB8 = (f64) sp68;
         KDRand_Vector(spD0, *((MKVector3 *) &spC0));
-        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-        spE0 = sp50;
+        temp_f0_231 = spD0 * 5.61841903e-315;
+        sp50 = temp_f0_231;
+        spE0 = temp_f0_231;
         sp58 = spD0.unk8 * 400.0f;
         spE8 = (f64) sp58;
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        temp_f0_243 = this->unkA0 + temp_f0_231;
+        sp40 = temp_f0_243;
         var_r30_249 = 0;
-        spF0 = sp40;
+        spF0 = temp_f0_243;
         sp48 = this->unkA8 + (f32) spE8;
         spF8 = (f64) sp48;
         do {
@@ -187,8 +192,9 @@ void FuryFXEarth2::EmitTimedSparks() {
             sp38 = temp_f26_264;
             sp90 = (f64) sp30;
             sp98 = (f64) sp38;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-            spA0 = sp20;
+            temp_f0_283 = sp90 * 5.67904887e-315;
+            sp20 = temp_f0_283;
+            spA0 = temp_f0_283;
             sp28 = (f32) sp98 * 1050.0f;
             spA8 = (f64) sp28;
             temp_f1_295 = MKRand_Float(&gViewSeed, 6.0f, 7.0f);
@@ -227,6 +233,7 @@ void FuryFXEarth2::ExplodeVortex() {
     f64 sp70;
     f64 sp68;
     f32 sp60;
+    f64 sp58;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
@@ -247,7 +254,9 @@ void FuryFXEarth2::ExplodeVortex() {
     f32 temp_f1_373;
     f32 temp_f25_371;
     f32 temp_f25_446;
+    f32 temp_f29_382;
     f32 temp_f2_391;
+    f64 temp_f1_387;
 
     var_r29_358 = this->unkC0;
 loop_2:
@@ -263,17 +272,18 @@ loop_2:
             sp100 = (f64) sp10;
             spF8 = (f64) sp8;
             spD8 = (f64) sp8;
+            temp_f29_382 = M2C_FIELD(temp_r30_469, f32 *, 0x30);
             spE0 = (f64) sp10;
             spE8 = (f64) sp8;
             spF0 = (f64) sp10;
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f29 */);
-            temp_f2_391 = (f32) sp100 * M2C_FIELD(temp_r30_469, f32 *, 0x30);
+            temp_f1_387 = (f64) sp8 * (f64) temp_f29_382;
+            spF8 = temp_f1_387;
+            temp_f2_391 = (f32) sp100 * temp_f29_382;
             sp100 = temp_f2_391;
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+            spF8 = temp_f1_387 + this->unkA0;
             sp100 = temp_f2_391 + this->unkA8;
             unkspFC += M2C_FIELD(temp_r30_469, f32 *, 0x28);
-            M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
+            sp58 = spE8 * 5.717499035e-315;
             sp50 = -6.2831855f;
             sp40 = 6.2831855f;
             sp60 = (f32) spF0 * 2000.0f;
@@ -427,7 +437,9 @@ void FuryFXEarth2::UpdateVortex() {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     M2C_UNK *temp_r29_892;
     M2C_UNK *temp_r3_860;
     M2C_UNK *temp_r4_863;
@@ -442,6 +454,8 @@ void FuryFXEarth2::UpdateVortex() {
     f32 var_f1_807;
     f32 var_f3_778;
     f32 var_f4_759;
+    f64 temp_f0_730;
+    f64 temp_f0_824;
     s32 temp_r0_714;
 
     var_r31_711 = this->unkC0;
@@ -452,14 +466,12 @@ loop_24:
             temp_r0_714 = M2C_FIELD(temp_r29_892, s32 *, 0x3C);
             switch (temp_r0_714) {                  /* irregular */
             case 0:
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-                sp40 = sp20;
+                temp_f0_730 = M2C_FIELD(temp_r29_892, f64 *, 0x10) * (f64) gUpdateTimeDelta;
+                sp20 = temp_f0_730;
+                sp40 = temp_f0_730;
                 sp28 = M2C_FIELD(temp_r29_892, f32 *, 0x18) * gUpdateTimeDelta;
                 sp48 = (f64) sp28;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+                M2C_FIELD(temp_r29_892, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_892, f64 *, 0) + temp_f0_730);
                 M2C_FIELD(temp_r29_892, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_892, f32 *, 8) + (f32) sp48);
                 M2C_FIELD(temp_r29_892, f32 *, 0x20) = (f32) ((gUpdateTimeDelta * (M2C_FIELD(temp_r29_892, f32 *, 0x24) * this->unkC4)) + M2C_FIELD(temp_r29_892, f32 *, 0x20));
                 var_f4_759 = 0.5f * (2.0f * gUpdateTimeDelta);
@@ -486,34 +498,29 @@ loop_24:
                 if (var_f1_795 < 0.0f) {
                     var_f1_795 = -var_f1_795;
                 }
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (var_f1_795 == M2C_BITWISE(f32, 2.0)) {
+                if (var_f1_795 <= M2C_BITWISE(f32, 2.0)) {
                     var_f1_807 = M2C_FIELD(temp_r29_892, f32 *, 0x30) - M2C_FIELD(temp_r29_892, f32 *, 0x34);
                     if (var_f1_807 < 0.0f) {
                         var_f1_807 = -var_f1_807;
                     }
-                    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                    if (var_f1_807 == M2C_BITWISE(f32, 2.0)) {
+                    if (var_f1_807 <= M2C_BITWISE(f32, 2.0)) {
                         M2C_FIELD(temp_r29_892, s32 *, 0x3C) = 1;
                     }
                 }
                 break;
             case 1:
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp30 = sp10;
+                temp_f0_824 = M2C_FIELD(temp_r29_892, f64 *, 0x10) * (f64) gUpdateTimeDelta;
+                sp10 = temp_f0_824;
+                sp30 = temp_f0_824;
                 sp18 = M2C_FIELD(temp_r29_892, f32 *, 0x18) * gUpdateTimeDelta;
                 sp38 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+                M2C_FIELD(temp_r29_892, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_892, f64 *, 0) + temp_f0_824);
                 M2C_FIELD(temp_r29_892, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_892, f32 *, 8) + (f32) sp38);
                 M2C_FIELD(temp_r29_892, f32 *, 0x20) = (f32) ((gUpdateTimeDelta * (M2C_FIELD(temp_r29_892, f32 *, 0x24) * this->unkC4)) + M2C_FIELD(temp_r29_892, f32 *, 0x20));
                 break;
             case 2:
                 M2C_FIELD(temp_r29_892, f32 *, 0x30) = (f32) ((3000.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r29_892, f32 *, 0x30));
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(temp_r29_892, f32 *, 0x30) == 40000.0f) {
+                if (M2C_FIELD(temp_r29_892, f32 *, 0x30) >= 40000.0f) {
                     temp_r3_860 = this->unkC0;
                     this->unkC0 = temp_r3_860 + 4;
                     temp_r4_863 = *temp_r3_860;
@@ -532,7 +539,7 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp28'
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FuryFXEarth2::UpdateLightPosition(float arg0, float arg1) {
     f64 sp90;
     f64 sp88;
@@ -542,16 +549,21 @@ void FuryFXEarth2::UpdateLightPosition(float arg0, float arg1) {
     f64 sp68;
     f64 sp60;
     f64 sp58;
-    M2C_UNK sp48;
+    f64 sp48;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
+    f64 sp18;
     f32 sp10;
+    f64 sp8;
     ManagedLight *temp_r3_984;
     f32 temp_f1_940;
     f32 temp_f31_938;
+    f64 temp_f0_950;
+    f64 temp_f0_966;
     void *temp_r3_990;
 
     if ((ManagedLight *) this->unkCC != NULL) {
@@ -563,17 +575,18 @@ void FuryFXEarth2::UpdateLightPosition(float arg0, float arg1) {
         sp3C = 0.0f;
         sp80 = (f64) sp40;
         sp78 = (f64) sp38;
-        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-        sp88 = sp28;
+        temp_f0_950 = sp78 * (f64) arg0;
+        sp28 = temp_f0_950;
+        sp88 = temp_f0_950;
         sp30 = (f32) sp80 * arg0;
         sp90 = (f64) sp30;
         MKVector(0.0f, arg1, 0.0f);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        sp58 = sp8;
+        temp_f0_966 = this->unkA0 + temp_f0_950;
+        sp8 = temp_f0_966;
+        sp58 = temp_f0_966;
         sp10 = this->unkA8 + (f32) sp90;
         sp60 = (f64) sp10;
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp18 = sp58 + sp48;
         temp_r3_984 = this->unkCC;
         sp68 = sp18;
         sp20 = (f32) sp60 + sp50;
@@ -745,7 +758,7 @@ void FuryFXEarth2::Draw() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'spD0'
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
 void FuryFXEarth2::Update() {
     MKCollisionResult sp290;
     s8 sp288;
@@ -788,25 +801,29 @@ void FuryFXEarth2::Update() {
     f64 sp160;
     f64 sp158;
     f64 sp150;
-    M2C_UNK sp140;
+    f64 sp140;
     f64 sp138;
     f64 sp130;
     f64 sp128;
     f64 sp120;
-    M2C_UNK sp110;
+    f64 sp110;
     f32 sp108;
     f32 sp104;
     f32 sp100;
     f32 spF8;
+    f64 spF0;
     f32 spE8;
     f32 spE4;
     f32 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
     f32 spB4;
     f32 spB0;
     f32 spA8;
+    f64 spA0;
     f32 sp98;
     f32 sp94;
     f32 sp90;
@@ -814,17 +831,22 @@ void FuryFXEarth2::Update() {
     f32 sp84;
     f32 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
     f32 sp54;
     f32 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp3C;
     f32 sp38;
     f32 sp34;
     f32 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     Character *temp_r29_1442;
     ManagedLight *temp_r3_1846;
@@ -842,10 +864,17 @@ void FuryFXEarth2::Update() {
     f32 var_f2_1340;
     f32 var_f3_1558;
     f32 var_f4_1491;
+    f64 temp_f0_1402;
+    f64 temp_f0_1594;
+    f64 temp_f0_1649;
+    f64 temp_f0_1660;
+    f64 temp_f0_1681;
+    f64 temp_f1_1468;
     f64 temp_f1_1497;
     f64 temp_f1_1503;
     f64 temp_f1_1507;
     f64 temp_f2_1925;
+    f64 temp_f5_1381;
     s32 temp_r0_1324;
     s32 temp_r27_1904;
     s32 temp_r28_1881;
@@ -882,8 +911,7 @@ void FuryFXEarth2::Update() {
         }
         temp_f2_1358 = 1.0f - var_f2_1340;
         UpdateLightPosition(500.0f * temp_f2_1358, 600.0f * temp_f2_1358);
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk98 == 0.0f) {
+        if (this->unk98 <= 0.0f) {
             spE8 = 0.0f;
             spE0 = 0.0f;
             spE4 = -1000.0f;
@@ -891,8 +919,8 @@ void FuryFXEarth2::Update() {
             this->unk98 = 3.0f;
             sp210 = (f64) spE0;
             sp218 = (f64) spE8;
-            M2C_ERROR(/* unknown instruction: psq_lx $f5, $r29, $r0, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
+            temp_f5_1381 = this->unkA0;
+            spD0 = temp_f5_1381 + sp210;
             sp108 = 0.0f;
             temp_f4_1387 = this->unkA8;
             sp100 = 0.0f;
@@ -902,8 +930,9 @@ void FuryFXEarth2::Update() {
             sp220 = spD0;
             sp228 = (f64) spD8;
             sp238 = (f64) sp108;
-            M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
-            sp240 = spF0;
+            temp_f0_1402 = temp_f5_1381 + sp230;
+            spF0 = temp_f0_1402;
+            sp240 = temp_f0_1402;
             spF8 = temp_f4_1387 + (f32) sp238;
             sp248 = (f64) spF8;
             if (MKCollision_RayCollide(*((MKVector3 *) &sp240), *((MKVector3 *) &sp220), &sp290, (MKCollisionMode) 4, 0x0C000000) != 0) {
@@ -918,9 +947,10 @@ loop_45:
                         temp_r29_1442 = ((Character *(*)(TargetManager **)) (*temp_r27_1616)->unk8.unk4)(temp_r27_1616);
                         if (((*temp_r27_1616)->unk8.unk0(temp_r27_1616) != NULL) && (M2C_FIELD(*temp_r27_1616, u8 (**)(TargetManager **), 0x18)(temp_r27_1616) != 0) && ((temp_r29_1442 == NULL) || (temp_r29_1442->IsActive() != 0))) {
                             temp_r3_1467 = M2C_FIELD((*temp_r27_1616)->unk8.unk0(temp_r27_1616), void **, 8);
-                            sp200 = M2C_FIELD(temp_r3_1467, f64 *, 0x30);
+                            temp_f1_1468 = M2C_FIELD(temp_r3_1467, f64 *, 0x30);
+                            sp200 = temp_f1_1468;
                             sp208 = M2C_FIELD(temp_r3_1467, f64 *, 0x38);
-                            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                            spC0 = temp_f1_1468 - sp260;
                             sp250 = spC0;
                             spC8 = (f32) sp208 - (f32) sp268;
                             sp258 = (f64) spC8;
@@ -966,7 +996,7 @@ loop_45:
                             }
                             sp250 = (f32) sp250 * var_f3_1558;
                             unksp254 *= var_f3_1558;
-                            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                            M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                             if ((var_f4_1491 == 3000.0f) && (temp_r29_1442 != NULL)) {
                                 temp_r4_1576 = temp_r29_1442->unk8;
                                 sp1F0 = M2C_FIELD(temp_r4_1576, f64 *, 0x30);
@@ -976,8 +1006,9 @@ loop_45:
                                 spB8 = 1.5f;
                                 sp1D0 = (f64) spB0;
                                 sp1D8 = (f64) spB8;
-                                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f2 */);
-                                sp1E0 = spA0;
+                                temp_f0_1594 = sp1D0 * 5.28426686e-315;
+                                spA0 = temp_f0_1594;
+                                sp1E0 = temp_f0_1594;
                                 spA8 = (f32) sp1D8 * 1.5f;
                                 sp1E8 = (f64) spA8;
                                 ((EarthBreathWhirlWinds *) (M2C_FIELD(&gb, EarthBreathWhirlWinds **, 0x2C8)))->SpawnWhirlWind(*((MKVector3 *) &sp1F0), *((MKVector3 *) &sp1E0), (Upgrade) 3, 0U, 6.0f);
@@ -1002,13 +1033,14 @@ loop_49:
                     sp180 = (f64) sp80;
                     sp188 = (f64) sp88;
                     KDRand_Vector(sp1A0, *((MKVector3 *) &sp190));
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                    sp1B0 = sp70;
+                    temp_f0_1649 = sp1A0 * 5.634608575e-315;
+                    sp70 = temp_f0_1649;
+                    sp1B0 = temp_f0_1649;
                     sp78 = sp1A0.unk8 * 500.0f;
                     sp1B8 = (f64) sp78;
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    sp1C0 = sp60;
+                    temp_f0_1660 = sp260 + temp_f0_1649;
+                    sp60 = temp_f0_1660;
+                    sp1C0 = temp_f0_1660;
                     sp68 = (f32) sp268 + (f32) sp1B8;
                     sp1C8 = (f64) sp68;
                     temp_f1_1672 = MKRand_Float(&gViewSeed, 1.5f, 2.0f);
@@ -1017,8 +1049,9 @@ loop_49:
                     sp58 = 1.5f;
                     sp160 = (f64) sp50;
                     sp168 = (f64) sp58;
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
-                    sp170 = sp40;
+                    temp_f0_1681 = sp160 * 5.28426686e-315;
+                    sp40 = temp_f0_1681;
+                    sp170 = temp_f0_1681;
                     sp48 = (f32) sp168 * 1.5f;
                     sp178 = (f64) sp48;
                     ((EarthBreathWhirlWinds *) (M2C_FIELD(&gb, EarthBreathWhirlWinds **, 0x2C8)))->SpawnWhirlWind(*((MKVector3 *) &sp1C0), *((MKVector3 *) &sp170), (Upgrade) 3, 0U, 6.0f);
@@ -1045,8 +1078,7 @@ loop_49:
         this->unkC4 = (5.0f * (1.0f - (var_f1_1703 / 3.0f))) + 1.0f;
         UpdateLightPosition(500.0f, 600.0f);
         EmitTimedSparks();
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk98 == 0.0f) {
+        if (this->unk98 <= 0.0f) {
             this->unk94 = 3;
             this->unk98 = 1.0f;
             ExplodeVortex();
@@ -1055,8 +1087,7 @@ loop_49:
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp274 = 0;
                 MKVector(1.0f, 1.0f, 1.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
+                sp20 = sp140 * 5.56078426e-315;
                 sp270 = 0x417;
                 sp278 = sp20;
                 sp28 = sp148 * 150.0f;
@@ -1075,8 +1106,7 @@ loop_49:
             ((ScreenWobbleFX *) (&gb + 0xB8))->EnableScreenFlash(*((MKVector4 *) &sp130), 3.0f * gUpdateTimeDelta);
             if ((ManagedLight *) this->unkCC != NULL) {
                 MKVector(0.0f, 500.0f, 0.0f);
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                sp10 = this->unkA0 + sp110;
                 temp_r3_1846 = this->unkCC;
                 sp120 = sp10;
                 sp18 = this->unkA8 + sp118;
@@ -1143,8 +1173,7 @@ loop_49:
                 M2C_FIELD(temp_r3_1963, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_1963, f32 *, 0x24));
             }
         }
-        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk98 == 0.0f) {
+        if (this->unk98 <= 0.0f) {
             this->unk94 = 0;
             temp_r4_1983 = this->unkCC;
             if (temp_r4_1983 != NULL) {

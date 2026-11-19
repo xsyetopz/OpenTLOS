@@ -107,8 +107,11 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
     f64 sp38;
     f64 sp30;
     f32 sp28;
+    f64 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
+    f32 temp_f2_306;
     f32 temp_f3_296;
     f32 temp_f7_294;
     f32 var_f5_283;
@@ -122,6 +125,7 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
     s32 var_r0_261;
     s32 var_r5_180;
     void *temp_r6_186;
+    void *temp_r6_195;
 
     var_r5_180 = 0;
     sp50 = *M2C_ERROR(/* Read from unset register $r5 */);
@@ -131,10 +135,10 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
         temp_r8_185 = var_r5_180 + 0x4C;
         temp_r6_186 = *(&arg0 + temp_r8_185);
         if ((temp_r6_186 != NULL) && ((u8) M2C_FIELD(temp_r6_186, u8 *, 0x34) != 0) && ((u8) M2C_FIELD(temp_r6_186, u8 *, 0x40) != 0)) {
-            M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r6, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
+            temp_r6_195 = temp_r6_186 + 0x10;
+            sp20 = M2C_FIELD(temp_r6_195, f64 *, 0) - sp50;
             sp40 = sp20;
-            sp28 = M2C_FIELD((temp_r6_186 + 0x10), f32 *, 8) - (f32) sp58;
+            sp28 = M2C_FIELD(temp_r6_195, f32 *, 8) - (f32) sp58;
             sp48 = (f64) sp28;
             var_f6_216 = ((f32) sp48 * (f32) sp48) + (((f32) sp40 * (f32) sp40) + (unksp44 * unksp44));
             if (var_f6_216 > 0.000001f) {
@@ -181,13 +185,14 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
             sp40 = (f32) sp40 * var_f5_283;
             unksp44 *= var_f5_283;
             sp48 = temp_f3_296;
-            M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+            M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
             if (var_f6_216 == temp_f7_294) {
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f0 */);
-                sp18 = temp_f3_296 * (var_f6_216 * (1.0f - (var_f6_216 / temp_f7_294)));
+                temp_f2_306 = var_f6_216 * (1.0f - (var_f6_216 / temp_f7_294));
+                sp10 = (f64) sp40 * (f64) temp_f2_306;
+                sp18 = temp_f3_296 * temp_f2_306;
                 sp30 = sp10;
                 sp38 = (f64) sp18;
-                M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
+                sp50 += sp30;
                 sp58 = (f32) sp58 + (f32) sp38;
             }
         }

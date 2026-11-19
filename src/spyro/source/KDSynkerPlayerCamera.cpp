@@ -415,6 +415,7 @@ void KDSP_Camera::Update(const char *arg0, float arg1, KDSP_EnvelopeList *arg2) 
     f64 sp90;
     f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
     f32 sp64;
     f32 sp60;
@@ -425,6 +426,7 @@ void KDSP_Camera::Update(const char *arg0, float arg1, KDSP_EnvelopeList *arg2) 
     f32 sp44;
     f32 sp40;
     f32 sp38;
+    f64 sp30;
     s32 sp28;
     f32 sp24;
     f32 sp20;
@@ -597,9 +599,7 @@ loop_21:
             sp1E0.unk34 = Endian<float>(*(f32 *) (temp_r27_994 + 0x1C));
             temp_f1_1171 = Endian<float>(*(f32 *) (temp_r27_994 + 0x20));
             sp1E0.unk38 = temp_f1_1171;
-            M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r31, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r25, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f2, $f0 */);
+            sp70 = sp220.unk30 - sp1E0.unk30;
             sp190 = sp70;
             sp78 = sp220.unk38 - (f32) temp_f1_1171;
             sp198 = (f64) sp78;
@@ -821,8 +821,7 @@ loop_21:
         this->unk40 = (f64) M2C_FIELD(this, f32 *, 0x30);
         this->unk48 = (f64) M2C_FIELD(this, f32 *, 0x38);
         __ml(50.0f, spA0);
-        M2C_ERROR(/* unknown instruction: psq_lx $f1, $r26, $r0, 0x0, qr0 */);
-        M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+        sp30 = this->unk40 + M2C_BITWISE(f64, spA0);
         this->unk50 = sp30;
         sp38 = (f32) M2C_FIELD(this, f64 *, 0x48) + spA0.unk8;
         spB0 = sp30;

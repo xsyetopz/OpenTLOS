@@ -54,8 +54,7 @@ void LavaCannon::EmitExplodingEffects() {
     temp_r0_64 = this->unk24C;
     switch (M2C_BITWISE(s32, temp_r0_64)) {         /* irregular */
     case 0:
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk244 == 0.4f) {
+        if (this->unk244 >= 0.4f) {
             MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188), &sp50);
             temp_r3_91 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
             sp8 = 1;
@@ -65,8 +64,7 @@ void LavaCannon::EmitExplodingEffects() {
         }
         break;
     case 1:
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk244 == 0.3f) {
+        if (this->unk244 >= 0.3f) {
             MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x18C), &sp40);
             temp_r3_124 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
             sp8 = 1;
@@ -76,8 +74,7 @@ void LavaCannon::EmitExplodingEffects() {
         }
         break;
     case 2:
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk244 == 0.2f) {
+        if (this->unk244 >= 0.2f) {
             MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x184), &sp30);
             temp_r3_157 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
             sp8 = 1;
@@ -87,8 +84,7 @@ void LavaCannon::EmitExplodingEffects() {
         }
         break;
     case 3:
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk244 == 0.2f) {
+        if (this->unk244 >= 0.2f) {
             MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x18C), &sp20);
             temp_r3_190 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
             sp8 = 1;
@@ -98,8 +94,7 @@ void LavaCannon::EmitExplodingEffects() {
         }
         break;
     case 4:
-        M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (this->unk244 == 0.1f) {
+        if (this->unk244 >= 0.1f) {
             MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188), &sp10);
             temp_r3_223 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
             sp8 = 1;
@@ -123,7 +118,6 @@ void LavaCannon::EmitExplodingEffects() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp50'
 void LavaCannon::EmitFiringEffects() {
     f64 spA8;
     f64 spA0;
@@ -136,24 +130,32 @@ void LavaCannon::EmitFiringEffects() {
     f64 sp68;
     f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
+    f64 sp40;
     f32 sp38;
+    f64 sp30;
     f32 sp28;
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     s32 sp8;
+    f64 temp_f0_319;
+    f64 temp_f0_331;
+    f64 temp_f0_364;
+    f64 temp_f0_375;
     void *temp_r3_315;
 
     temp_r3_315 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    sp90 = sp50;
+    temp_f0_319 = M2C_FIELD(this, f64 *, 0x1E8) * 5.53552857e-315;
+    sp50 = temp_f0_319;
+    sp90 = temp_f0_319;
     sp58 = this->unk1E0 * 100.0f;
     sp98 = (f64) sp58;
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    spA0 = sp40;
+    temp_f0_331 = this->unk1E8 + temp_f0_319;
+    sp40 = temp_f0_331;
+    spA0 = temp_f0_331;
     sp48 = this->unk1F0 + (f32) sp98;
     spA8 = (f64) sp48;
     sp8 = 0;
@@ -163,18 +165,18 @@ void LavaCannon::EmitFiringEffects() {
     sp24 = 1000.0f;
     sp68 = (f64) sp28;
     sp60 = (f64) sp20;
-    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
-    sp70 = sp30;
+    temp_f0_364 = M2C_FIELD(this, f64 *, 0x1E8) * 5.676053805e-315;
+    sp30 = temp_f0_364;
+    sp70 = temp_f0_364;
     sp38 = this->unk1E0 * 1000.0f;
     sp78 = (f64) sp38;
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
-    sp80 = sp10;
+    temp_f0_375 = sp70 + sp60;
+    sp10 = temp_f0_375;
+    sp80 = temp_f0_375;
     sp18 = (f32) sp78 + (f32) sp68;
     sp88 = (f64) sp18;
     gb.EmitDust(*((MKVector3 *) &this->unk1E8), *((MKVector3 *) &sp80), 10.0f, 0.0f);
 }
-#endif
 
 void LavaCannon::SetState(int arg0) {
     if ((M2C_BITWISE(s32, this->unk250) != 4) || ((u8) M2C_FIELD(this, u8 *, 0x264) != 0)) {
@@ -291,6 +293,7 @@ void LavaCannon::Update() {
     f64 sp40;
     f64 sp38;
     f32 sp30;
+    f64 sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -310,6 +313,7 @@ void LavaCannon::Update() {
     s32 var_r28_1001;
     s32 var_r31_1002;
     u8 var_r29_1039;
+    void *temp_r3_816;
     void *temp_r4_809;
 
     Shatterable::Update();
@@ -352,11 +356,11 @@ void LavaCannon::Update() {
             this->unk218.unk0 = M2C_BITWISE(f32, MKRand_Int(&gViewSeed, 0, 3));
             temp_r4_809 = this->unk8;
             sp38 = M2C_FIELD(temp_r4_809, f64 *, 0x30);
+            temp_r3_816 = this + ((M2C_BITWISE(s32, this->unk218.unk0) * 0x10) + 0x1A8);
             sp40 = M2C_FIELD(temp_r4_809, f64 *, 0x38);
-            M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-            M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+            sp28 = M2C_FIELD(temp_r3_816, f64 *, 0) - sp38;
             sp68 = sp28;
-            sp30 = M2C_FIELD((this + ((M2C_BITWISE(s32, this->unk218.unk0) * 0x10) + 0x1A8)), f32 *, 8) - (f32) sp40;
+            sp30 = M2C_FIELD(temp_r3_816, f32 *, 8) - (f32) sp40;
             sp70 = (f64) sp30;
             var_f4_837 = ((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C));
             if (var_f4_837 > 0.0f) {
@@ -399,8 +403,7 @@ void LavaCannon::Update() {
         case 1:                                     /* switch 1 */
             if ((this->unk80->unk2C & 1) && ((u8) M2C_FIELD(this, u8 *, 0x238) != 0) && ((u8) M2C_FIELD(this, u8 *, 0x239) != 0)) {
                 this->unk240 = M2C_BITWISE(f32, this->unk240) + gUpdateTimeDelta;
-                M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_BITWISE(f32, this->unk240) == (0.5f * (1.0f / this->unk248))) {
+                if (M2C_BITWISE(f32, this->unk240) >= (0.5f * (1.0f / this->unk248))) {
                     this->unk240 = 0.5f;
                     SetState(2);
                 }

@@ -243,9 +243,13 @@ void GemMagicFX::Draw() {
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp78;
+    f64 sp70;
     f32 sp68;
+    f64 sp60;
     f32 sp58;
+    f64 sp50;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -278,8 +282,7 @@ void GemMagicFX::Draw() {
     sp178 = (f64) sp48;
     sp180.operator*(30.000002f);
     sp190.operator*(30.000002f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp80 = sp190 + M2C_BITWISE(f64, sp180);
     sp1A0 = sp80;
     sp88 = sp190.unk8 + sp180.unk8;
     sp210 = sp80;
@@ -287,8 +290,7 @@ void GemMagicFX::Draw() {
     sp218 = (f64) sp88;
     sp140.operator*(30.000002f);
     sp150.operator*(30.000002f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp70 = sp150 + M2C_BITWISE(f64, sp140);
     sp38 = -(f32) sp1B8;
     sp78 = sp150.unk8 + sp140.unk8;
     sp30 = -(f32) sp1B0;
@@ -306,8 +308,7 @@ void GemMagicFX::Draw() {
     sp110 = (f64) sp20;
     sp118 = (f64) sp28;
     sp120.operator*(30.000002f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp60 = sp120 + M2C_BITWISE(f64, sp100);
     sp130 = sp60;
     sp68 = sp120.unk8 + sp100.unk8;
     sp230 = sp60;
@@ -320,8 +321,7 @@ void GemMagicFX::Draw() {
     spC0 = (f64) sp10;
     spC8 = (f64) sp18;
     spD0.operator*(30.000002f);
-    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
-    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    sp50 = spD0 + M2C_BITWISE(f64, spB0);
     spE0 = sp50;
     sp58 = spD0.unk8 + spB0.unk8;
     sp240 = sp50;
@@ -344,7 +344,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp100'
+#if 0 // DRAFT: undefined identifier 'unksp224'
 void GemMagicFX::Update() {
     f64 sp228;                                      /* compiler-managed */
     f64 sp220;                                      /* compiler-managed */
@@ -379,6 +379,7 @@ void GemMagicFX::Update() {
     f64 sp120;
     MKVector3 sp110;
     f32 sp108;
+    f64 sp100;
     f32 spF8;
     f32 spF4;
     f32 spF0;
@@ -386,7 +387,9 @@ void GemMagicFX::Update() {
     f32 spE4;
     f32 spE0;
     f32 spD8;
+    f64 spD0;
     f32 spC8;
+    f64 spC0;
     f32 spB8;
     f32 spB4;
     f32 spB0;
@@ -397,11 +400,13 @@ void GemMagicFX::Update() {
     f32 sp94;
     f32 sp90;
     f32 sp88;
+    f64 sp80;
     f32 sp7C;
     f32 sp78;
     f32 sp74;
     f32 sp70;
     f64 sp68;
+    f64 sp60;
     f32 sp5C;
     f32 sp58;
     f32 sp54;
@@ -417,6 +422,7 @@ void GemMagicFX::Update() {
     f32 sp24;
     f32 sp20;
     f32 sp18;
+    f64 sp10;
     f32 sp8;
     MKHeap *temp_r29_993;
     MKHeap *temp_r3_939;
@@ -435,6 +441,9 @@ void GemMagicFX::Update() {
     f32 var_f2_866;
     f32 var_f4_832;
     f32 var_f7_656;
+    f64 temp_f0_694;
+    f64 temp_f0_778;
+    f64 temp_f0_971;
     f64 temp_f1_595;
     f64 temp_f1_601;
     f64 temp_f1_605;
@@ -465,9 +474,7 @@ loop_66:
             temp_r29_993->unk38 = var_f0_551;
             temp_r3_566 = M2C_FIELD(temp_r29_993, void **, 0x30);
             if (temp_r3_566 != NULL) {
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+                sp100 = M2C_FIELD(temp_r3_566, f64 *, 0) - M2C_FIELD(temp_r29_993, f64 *, 0);
                 sp220 = sp100;
                 sp108 = M2C_FIELD(temp_r3_566, f32 *, 8) - M2C_BITWISE(f32, temp_r29_993->unk8);
                 sp228 = (f64) sp108;
@@ -525,13 +532,12 @@ loop_66:
                 sp1B0 = (f64) spE0;
                 sp1B8 = (f64) spE8;
                 KDRand_Vector(sp1D0, *((MKVector3 *) &sp1C0));
-                M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-                sp1E0 = spD0;
+                temp_f0_694 = sp1D0 * 5.398241246e-315;
+                spD0 = temp_f0_694;
+                sp1E0 = temp_f0_694;
                 spD8 = sp1D0.unk8 * 10.0f;
                 sp1E8 = (f64) spD8;
-                M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+                spC0 = M2C_FIELD(temp_r29_993, f64 *, 0) + temp_f0_694;
                 spB8 = 0.0f;
                 spC8 = M2C_BITWISE(f32, temp_r29_993->unk8) + (f32) sp1E8;
                 spB0 = 0.0f;
@@ -541,8 +547,7 @@ loop_66:
                 sp1A0 = (f64) spB0;
                 sp1A8 = (f64) spB8;
                 ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp1F0), *((MKVector3 *) &sp1A0), 3.0f, *((MKVector4 *) &temp_r29_993->unk20), 0.0f);
-                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((var_f26_589 == 100.0f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_r29_993->unk38 == 0.0f) != 0))) {
+                if ((var_f26_589 <= 100.0f) && (temp_r29_993->unk38 <= 0.0f)) {
                     temp_r3_738 = M2C_FIELD(temp_r29_993, void **, 0x34);
                     if (temp_r3_738 != NULL) {
                         M2C_FIELD(temp_r3_738, s8 *, 4) = 0;
@@ -564,9 +569,9 @@ loop_66:
                         sp170 = (f64) sp90;
                         sp178 = (f64) sp98;
                         KDRand_Vector(sp190, *((MKVector3 *) &sp180));
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r26, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
-                        sp210 = sp80;
+                        temp_f0_778 = sp190 * 5.676053805e-315;
+                        sp80 = temp_f0_778;
+                        sp210 = temp_f0_778;
                         sp88 = sp190.unk8 * 1000.0f;
                         sp218 = (f64) sp88;
                         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) temp_r29_993), *((MKVector3 *) &sp210), 3.0f, *((MKVector4 *) &temp_r29_993->unk20), -2000.0f);
@@ -579,11 +584,8 @@ loop_66:
                         sp5C = 1.0f;
                         sp140 = (f64) sp50;
                         sp148 = (f64) sp58;
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                        M2C_ERROR(/* unknown instruction: psq_lx $f0, $r29, $r0, 0x0, qr0 */);
-                        M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
-                        M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r30, 0x0, qr0 */);
+                        sp60 = M2C_FIELD(temp_r29_993, f64 *, 0x20) * 5.205520926e-315;
+                        sp68 = M2C_FIELD(temp_r29_993, f64 *, 0x28) * 5.205520926e-315;
                         sp150 = sp60;
                         var_f4_832 = (f32) sp150;
                         sp70 = 0.0f;
@@ -669,14 +671,12 @@ loop_66:
                     M2C_FIELD(temp_r29_993, f64 *, 0x18) = (f64) sp130.unk8;
                     temp_f27_967 = gUpdateTimeDelta;
                     sp110.operator*((1000.0f * temp_f24_956) + 1000.0f);
-                    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
-                    sp120 = sp10;
+                    temp_f0_971 = sp110 * (f64) temp_f27_967;
+                    sp10 = temp_f0_971;
+                    sp120 = temp_f0_971;
                     sp18 = sp110.unk8 * temp_f27_967;
                     sp128 = (f64) sp18;
-                    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
-                    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                    M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r29, 0x0, qr0 */);
+                    M2C_FIELD(temp_r29_993, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_993, f64 *, 0) + temp_f0_971);
                     temp_r29_993->unk8 = M2C_BITWISE(f32, temp_r29_993->unk8) + (f32) sp128;
                 }
             }
