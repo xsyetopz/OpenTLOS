@@ -175,6 +175,14 @@ def main() -> int:
             if p:
                 text.append(p)
                 protos += 1
+    # Statics get the headers' type: undeclared, m2c guesses the owning class by
+    # value and prints `GameData::gameData.unk70` against a `u8[0x1b4]` member.
+    for n in names:
+        for s in model.classes[n]["statics"]:
+            if not re.fullmatch(r"[A-Za-z_]\w*", s["mangled"]):
+                continue
+            typ = model.static_type(s)
+            text.append(f"extern {cc.ctype(typ)} {s['mangled']};" if typ else f"extern u8 {s['mangled']}[{s['size']:#x}];")
     # Names seen only in field types or signatures (no symbols of their own)
     # stay incomplete; m2c needs at least a declaration of each.
     known = {cname(n) for n in names} | model.sdk

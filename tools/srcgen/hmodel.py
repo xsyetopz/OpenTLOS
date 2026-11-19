@@ -282,6 +282,17 @@ class Model:
                     self._slot_rets[k] = votes.most_common(1)[0][0]
         return self._slot_rets.get((self.slot_root(cls, slot), slot))
 
+    def static_type(self, s: dict) -> str | None:
+        """Declared type of class static `s`, or None for `u8 name[size]`.
+
+        m2c types a static it cannot place as its owning class by value, so a
+        class type stays only if it fits the symbol's size.
+        """
+        typ = self.globs.get(s["mangled"])
+        if typ in self.classes and (not self.embeddable(typ) or self.end(typ) > s["size"]):
+            return None
+        return typ
+
     def decl_rets(self) -> dict[str, str]:
         """Mangled virtual -> the return type its class declaration carries (slot_ret).
 
