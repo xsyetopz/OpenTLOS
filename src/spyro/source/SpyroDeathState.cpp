@@ -74,15 +74,13 @@ extern M2C_UNK gb;
 static M2C_UNK lit_779;                                /* unable to generate initializer: unknown type */
 SpyroDeathState states__15SpyroDeathState;          /* unable to generate initializer: confusing struct layout */
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 s32 SpyroDeathState::SpawnTransition() {
-    if (((u32) *CheckPoint::pCurrentCheckPoint != 0U) && ((s32) this->unk14.unk0 != 3)) {
+    if (((u32) *CheckPoint::pCurrentCheckPoint != 0U) && ((s32) M2C_FIELD(&this->unk14, s32 *, 0) != 3)) {
         this->unk14.SetState(this, 3, 0U);
         return 1;
     }
     return 0;
 }
-#endif
 
 void SpyroDeathState::SpawnUpdate() {
     f64 sp20;
@@ -174,15 +172,13 @@ void SpyroDeathState::SpawnEnter() {
     M2C_FIELD(&gb, s8 *, 0xD0) = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 s32 SpyroDeathState::RespawnTransition() {
-    if ((s32) this->unk14.unk0 != 5) {
+    if ((s32) M2C_FIELD(&this->unk14, s32 *, 0) != 5) {
         this->unk14.SetState(this, 5, 0U);
         return 1;
     }
     return 0;
 }
-#endif
 
 void SpyroDeathState::RespawnUpdate() {
     if ((u8) this->unk28 != 0) {
@@ -212,7 +208,6 @@ void SpyroDeathState::RespawnEnter() {
     DialogBox_ReleaseContexts();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroDeathState::AirTransition() {
     u8 var_r31_358;
     u8 var_r3_390;
@@ -225,7 +220,7 @@ u8 SpyroDeathState::AirTransition() {
     if ((s32) M2C_FIELD(this->unk10->unk27C, s32 *, 0x16C) > 0) {
         this->unk2A = 0;
     }
-    if (((s32) M2C_FIELD(this->unk10->unk27C, s32 *, 0x16C) > 0) && ((s32) this->unk14.unk0 != 0)) {
+    if (((s32) M2C_FIELD(this->unk10->unk27C, s32 *, 0x16C) > 0) && ((s32) M2C_FIELD(&this->unk14, s32 *, 0) != 0)) {
         this->unk14.SetState(this, 0, 0U);
         var_r3_390 = 1;
     } else {
@@ -236,7 +231,7 @@ u8 SpyroDeathState::AirTransition() {
         if (var_r31_358 != 0) {
             var_r3_398 = *CheckPoint::pCurrentCheckPoint != 0;
         }
-        if ((var_r3_398 != 0) && ((s32) this->unk14.unk0 != 4)) {
+        if ((var_r3_398 != 0) && ((s32) M2C_FIELD(&this->unk14, s32 *, 0) != 4)) {
             this->unk14.SetState(this, 4, 0U);
             var_r3_390 = 1;
         } else {
@@ -247,17 +242,15 @@ u8 SpyroDeathState::AirTransition() {
         if (var_r31_358 != 0) {
             var_r31_358 = *CheckPoint::pCurrentCheckPoint == 0;
         }
-        if ((var_r31_358 != 0) && ((s32) this->unk14.unk0 != 3)) {
+        if ((var_r31_358 != 0) && ((s32) M2C_FIELD(&this->unk14, s32 *, 0) != 3)) {
             this->unk14.SetState(this, 3, 0U);
             return 1U;
         }
         var_r3_390 = 0;
-        /* Duplicate return node #23. Try simplifying control flow for better match */
         return var_r3_390;
     }
     return var_r3_390;
 }
-#endif
 
 void SpyroDeathState::AirUpdate() {
     if (((M2C_FIELD(&gb, f32 *, 0x30C) - this->unk2C) > 2.67f) && ((s32) M2C_FIELD(&gb, s32 *, 0x50) < 2)) {
