@@ -50,11 +50,10 @@ loop_11:
     }
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[8], const char[7])' does not match 'stricmp(signed char *, signed char *, signed char *)'
+extern "C" s32 stricmp(const char *, const char *);
 s32 KDScriptProperty::ResolveCommand(const char *arg0) const {
-    return stricmp(arg0, "Trigger", "script") == 0;
+    return stricmp(arg0, "Trigger") == 0;
 }
-#endif
 
 u8 KDPropertyCommandList::LoadLine(MKIniLine *arg0, const char *arg1) {
     KDPropertyCommand **var_r0_203;
@@ -134,21 +133,19 @@ void KDPropertyCommandList::Deinit() {
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDPropertyCommand::Resolve(KDPropertySet *arg0) {
     KDPropertyCommand *temp_r0_327;
     KDPropertyCommand *temp_r3_335;
 
     temp_r0_327 = this->unk0;
     if (temp_r0_327 != NULL) {
-        this->unk0 = (const char *) (arg0->Find((s8 *) temp_r0_327));
+        this->unk0 = arg0->Find((const char *) temp_r0_327);
     }
     temp_r3_335 = this->unk0;
     if ((temp_r3_335 != NULL) && ((u32) this->unk4 != 0U)) {
-        this->unk4 = M2C_FIELD(temp_r3_335->unk0, s32 (**)(), 0x24)();
+        this->unk4 = ((KDProperty *) temp_r3_335)->ResolveCommand((const char *) this->unk4);
     }
 }
-#endif
 
 s32 KDPropertyCommand::LoadLine(MKIniLine *arg0, const char *arg1) {
     if (arg1 != NULL) {
@@ -164,7 +161,6 @@ block_5:
     return 1;
 }
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *, signed char *)'
 KDPropertyClassInfo *KDPropertyClassRegistry::Find(const char *arg0) {
     KDPropertyClassInfo *var_r31_409;
 
@@ -172,17 +168,18 @@ KDPropertyClassInfo *KDPropertyClassRegistry::Find(const char *arg0) {
         return NULL;
     }
     var_r31_409 = this->unk0;
+    goto loop_6_cond;
 loop_6:
-    if (var_r31_409 == NULL) {
-        return NULL;
-    }
-    if (stricmp(var_r31_409->unk0, arg0) == 0) {
+    if (stricmp((const char *) var_r31_409->unk0, arg0) == 0) {
         return var_r31_409;
     }
     var_r31_409 = var_r31_409->unkC;
-    goto loop_6;
+loop_6_cond:
+    if (var_r31_409 != NULL) {
+        goto loop_6;
+    }
+    return NULL;
 }
-#endif
 
 void KDPropertyClassRegistry::Add(KDPropertyClassInfo *arg0) {
     KDPropertyClassInfo *temp_r5_442;
@@ -201,46 +198,43 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match 'stricmp(signed char *, signed char *, signed char *)'
 KDPropertyCommand *KDPropertySet::Find(const char *arg0) {
     KDProperty *var_r30_460;
     KDPropertyCommand *var_r30_482;
-    s32 var_r3_486;
-    s8 *var_r3_463;
+    const char *name;
 
     var_r30_460 = this->unk0;
+    goto loop_7_cond;
 loop_7:
-    if (var_r30_460 == NULL) {
-        var_r30_482 = this->unk8;
-loop_15:
-        if (var_r30_482 == NULL) {
-            return NULL;
-        }
-        var_r3_486 = var_r30_482->unk4;
-        if ((u32) var_r3_486 != 0U) {
-
-        } else {
-            var_r3_486 = (s32) "";
-        }
-        if (stricmp((s8 *) var_r3_486, arg0) == 0) {
-            return var_r30_482;
-        }
-        var_r30_482 = var_r30_482->unkC;
-        goto loop_15;
+    name = (const char *) var_r30_460->unk4;
+    if (name == NULL) {
+        name = "";
     }
-    var_r3_463 = var_r30_460->unk4;
-    if (var_r3_463 != NULL) {
-
-    } else {
-        var_r3_463 = (signed char *) ("");
-    }
-    if (stricmp(var_r3_463, arg0) == 0) {
+    if (stricmp(name, arg0) == 0) {
         return (KDPropertyCommand *) var_r30_460;
     }
     var_r30_460 = var_r30_460->unkC;
-    goto loop_7;
+loop_7_cond:
+    if (var_r30_460 != NULL) {
+        goto loop_7;
+    }
+    var_r30_482 = this->unk8;
+    goto loop_15_cond;
+loop_15:
+    name = (const char *) var_r30_482->unk4;
+    if (name == NULL) {
+        name = "";
+    }
+    if (stricmp(name, arg0) == 0) {
+        return var_r30_482;
+    }
+    var_r30_482 = var_r30_482->unkC;
+loop_15_cond:
+    if (var_r30_482 != NULL) {
+        goto loop_15;
+    }
+    return NULL;
 }
-#endif
 
 s32 KDPropertySet::AllocInstanceMem(int arg0, int arg1) {
     s32 temp_r5_523;
@@ -305,46 +299,46 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'KDPropertyCommand *' and 'KDProperty *'
 void KDPropertySet::Remove(KDProperty *arg0) {
     KDProperty *temp_r5_679;
     KDPropertySet *var_r3_0;
 
     var_r3_0 = this;
-    if ((KDPropertyCommand *) var_r3_0->unk4 == arg0) {
+    if (var_r3_0->unk4 == (KDPropertyCommand *) arg0) {
         var_r3_0->unk4 = (KDPropertyCommand *) arg0->unkC;
     }
+    goto loop_5_cond;
 loop_5:
-    temp_r5_679 = var_r3_0->unk0;
-    if (temp_r5_679 == NULL) {
-        return;
-    }
     if (temp_r5_679 == arg0) {
         var_r3_0->unk0 = arg0->unkC;
         arg0->unkC = NULL;
         return;
     }
     var_r3_0 = (KDPropertySet *) &temp_r5_679->unkC;
-    goto loop_5;
+loop_5_cond:
+    temp_r5_679 = var_r3_0->unk0;
+    if (temp_r5_679 != NULL) {
+        goto loop_5;
+    }
 }
-#endif
 
 void KDPropertySet::AddPublished(KDProperty *arg0) {
     arg0->unkC = (KDProperty *) this->unk8;
     this->unk8 = (KDPropertyCommand *) arg0;
 }
 
-#if 0 // DRAFT: type mismatch 'KDProperty *' and 'KDPropertyCommand *'
 void KDPropertySet::Add(KDProperty *arg0) {
     KDProperty *temp_r3_717;
     KDPropertySet *var_r4_712;
 
     if (arg0->Query(1) != 0) {
         var_r4_712 = this;
+        goto loop_3_cond;
 loop_3:
+        var_r4_712 = (KDPropertySet *) &temp_r3_717->unkC;
+loop_3_cond:
         temp_r3_717 = var_r4_712->unk0;
-        if (temp_r3_717 != (KDPropertyCommand *) this->unk4) {
-            var_r4_712 = (KDPropertySet *) &temp_r3_717->unkC;
+        if (temp_r3_717 != (KDProperty *) this->unk4) {
             goto loop_3;
         }
         var_r4_712->unk0 = arg0;
@@ -355,7 +349,6 @@ loop_3:
     arg0->unkC = this->unk0;
     this->unk0 = arg0;
 }
-#endif
 
 void KDPropertySet::Deinit() {
     KDProperty *var_r31_745;
