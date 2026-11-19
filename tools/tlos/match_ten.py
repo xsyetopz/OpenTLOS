@@ -5,6 +5,7 @@ Stages, strongest first; each accepts only one-to-one pairs:
   exact    identical masked instruction hash, unique in both executables
   strings  same set of referenced C strings, unique in both executables
   calls    aligned call lists of an accepted pair (same callee count and shapes)
+  anchored callees between mapped callees in the call lists of an accepted pair
   order    same function count between two accepted anchors inside one ANB TU
   fuzzy    opcode-shape similarity inside gaps between consecutive anchors (see fuzzy.py)
 
@@ -30,7 +31,7 @@ from symbols import functions, load  # noqa: E402
 import tu_align  # noqa: E402
 import vtables  # noqa: E402
 
-CONFIDENCE = {"exact": "high", "strings": "high", "calls": "medium", "align": "medium", "vtable": "medium", "order": "low", "fuzzy": "medium"}
+CONFIDENCE = {"exact": "high", "strings": "high", "calls": "medium", "align": "medium", "vtable": "medium", "order": "low", "fuzzy": "medium", "anchored": "medium"}
 MIN_EXACT_WORDS = 6  # Shorter bodies (getters, stubs) collide by accident.
 MAX_ORDER_GAP = 12
 
@@ -131,6 +132,45 @@ class Matcher:
                 self.accept(fa[ai + k].addr, self.ten.funcs[ti + k].addr, "order")
 
 
+def dup_pattern(xs: list) -> list:
+    """Each element replaced by the index of its first occurrence."""
+    first = {}
+    return [first.setdefault(x, i) for i, x in enumerate(xs)]
+
+
+def stage_anchored_calls(m, sim, min_sim: float) -> int:
+    """Pairs unmapped callees between mapped ones in the call lists of accepted pairs.
+
+    TEN's engine revision inserts and drops calls, so call lists of a true pair
+    often differ in length. Callees already mapped anchor both lists in order;
+    between two anchors, equal-length runs with the same repeat pattern pair
+    position by position when shapes are equal or similarity reaches `min_sim`.
+    """
+    added = 0
+    for a, t in list(m.a2t.items()):
+        ac, tc = m.anb.sig[a].calls, m.ten.sig[t].calls
+        anchors, start = [(-1, -1)], 0
+        for i, x in enumerate(ac):
+            y = m.a2t.get(x)
+            if y is not None and y in tc[start:]:
+                j = tc.index(y, start)
+                anchors.append((i, j))
+                start = j + 1
+        anchors.append((len(ac), len(tc)))
+        for (i0, j0), (i1, j1) in zip(anchors, anchors[1:]):
+            sa, st = ac[i0 + 1:i1], tc[j0 + 1:j1]
+            if not sa or len(sa) != len(st) or dup_pattern(sa) != dup_pattern(st):
+                continue
+            for x, y in zip(sa, st):
+                if x in m.a2t or y in m.t2a or x not in m.anb.sig or y not in m.ten.sig:
+                    continue
+                if min(m.anb.by_addr[x].size, m.ten.by_addr[y].size) < 4 * MIN_EXACT_WORDS:
+                    continue  # stubs and getters share shapes with their neighbours
+                if m.anb.sig[x].shape == m.ten.sig[y].shape or sim.score(x, y) >= min_sim:
+                    added += m.accept(x, y, "anchored")
+    return added
+
+
 def calibrate(m, splits) -> None:
     """Prints similarity percentiles for string-anchored pairs vs same-TU decoys."""
     sim = tu_align.Similarity(m)
@@ -179,12 +219,13 @@ def main() -> None:
         for addr in sorted(vt_names):
             f.write(f"0x{addr:08X}\t{vt_names[addr]}\t{len(ten_vts[addr])}\n")
     print(f"vtables: ANB {len(anb_vts)}, TEN candidates {len(ten_vts)}, paired {len(vt_names)}")
+    sim = tu_align.Similarity(m)
     for _ in range(4):  # fuzzy pairs split gaps, which lets order, calls and fuzzy add more
         before = len(m.a2t)
         m.stage_order(splits)
         fuzzy.stage(m)
         for _ in range(8):
-            if not m.stage_calls():
+            if not m.stage_calls() + stage_anchored_calls(m, sim, tu_align.MIN_SIM):
                 break
         tu_align.align(m, splits, tu_funcs)
         if len(m.a2t) == before:
