@@ -322,8 +322,9 @@ def main() -> int:
     ap.add_argument("--hdr-root", type=Path, help="generated headers, for including free functions' headers")
     ap.add_argument("--inline-root", type=Path, help="where each TU's header-inline functions go, as <stem>.inl")
     ap.add_argument("--fixes", type=Path, help="hand-fixed functions, as <stem>/<mangled>.cpp")
+    ap.add_argument("--m2c-votes", type=Path, help="m2c run with class context; upgrades untyped globals and returns (hmodel.m2c_types)")
     a = ap.parse_args()
-    model = load_model(a.classes, a.fields, a.m2c_root, a.ctx)
+    model = load_model(a.classes, a.fields, a.m2c_root, a.ctx, a.m2c_votes)
     conv = Converter(model, json.loads(a.cnames.read_text()), model.owner_map(),
                      sdk_index(Path(__file__).resolve().parents[2] / "include"),
                      free_functions(a.hdr_root) if a.hdr_root else {}, a.fixes)

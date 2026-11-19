@@ -12,6 +12,8 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from retvotes import arg_returns
+
 SIZES = {"s8": 1, "u8": 1, "s16": 2, "u16": 2, "s32": 4, "u32": 4, "f32": 4, "f64": 8, "s64": 8, "u64": 8}
 DEF = re.compile(r"^(?:static )?([\w ]+?[\s*]+)(\w+__\w*)\(.*\) \{$")
 DECL = re.compile(r"^(?:extern |static )?([\w ]+?[\s*]+)([A-Za-z_]\w*)(?:\[[^\]]*\])?;")
@@ -22,8 +24,17 @@ VERSION = "G6SE7D"
 TMPL_ARGS = re.compile(r"<(.*)>$")
 
 
-def m2c_types(root: Path) -> tuple[dict, dict]:
-    """Most-voted m2c return type per mangled function and type per global."""
+def m2c_types(root: Path, votes: Path | None = None) -> tuple[dict, dict]:
+    """Most-voted m2c return type per mangled function and type per global.
+
+    `votes` is a further m2c run (the one with class context) whose global
+    declarations are pooled in, but only to upgrade a global whose own type
+    names no class: gMK is `void **` in 171 declarations and
+    `MKSceneManager *` in 128, and only the class type lets the 243 calls
+    through it compile. Contested class types (MenuItem vs UIObject) and
+    globals absent from `root` are left alone. Its nested calls also retype
+    untyped returns (retvotes.arg_returns).
+    """
     rets, globs = defaultdict(Counter), defaultdict(Counter)
     for f in root.rglob("*.c"):
         for line in f.read_text().splitlines():
@@ -34,9 +45,23 @@ def m2c_types(root: Path) -> tuple[dict, dict]:
             m = DECL.match(line)
             if m and "(" not in line and "M2C_UNK" not in m.group(1) and (m.group(1).split() or [""])[0] not in KEYWORDS:
                 globs[m.group(2)][m.group(1).strip()] += 1
+    pick = {k: v.most_common(1)[0][0] for k, v in globs.items()}
+    for f in votes.rglob("*.c") if votes else ():
+        for line in f.read_text().splitlines():
+            m = DECL.match(line)
+            if m and m.group(2) in pick and not type_names(pick[m.group(2)]) and "(" not in line \
+                    and "M2C_UNK" not in m.group(1) and (m.group(1).split() or [""])[0] not in KEYWORDS:
+                globs[m.group(2)][m.group(1).strip()] += 1
+    for k, v in globs.items():
+        cls = max(((n, t) for t, n in v.items() if type_names(t)), default=None)
+        if cls and not type_names(pick[k]) and cls[0] * 3 >= sum(v.values()):
+            pick[k] = cls[1]
     clean = lambda t: "void" if "M2C_UNK" in t else ctype(t)  # noqa: E731
-    return ({k: clean(v.most_common(1)[0][0]) for k, v in rets.items()},
-            {k: ctype(v.most_common(1)[0][0]) for k, v in globs.items()})
+    out = {k: clean(v.most_common(1)[0][0]) for k, v in rets.items()}
+    if votes:
+        out |= {k: t for k, t in arg_returns(votes).items() if out.get(k) in ("void *", "s32", "u32", "void")}
+    return (out,
+            {k: ctype(t) for k, t in pick.items()})
 
 
 def align(typ: str) -> int | None:
@@ -410,11 +435,11 @@ class Model:
         return max(self.end(base, seen), 1) * arr
 
 
-def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path) -> Model:
-    """Model of ANB's game and engine classes from the srcgen artifacts."""
+def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path, votes: Path | None = None) -> Model:
+    """Model of ANB's game and engine classes from the srcgen artifacts; `votes` as in m2c_types."""
     rows = [l.split("\t") for l in (ROOT / "config" / VERSION / "tu_paths.tsv").read_text().splitlines()[1:]]
     stems = {r[1].rsplit(".", 1)[0]: r[1] for r in rows if r[2] in ("game", "engine")}
-    rets, globs = m2c_types(m2c_root)
+    rets, globs = m2c_types(m2c_root, votes)
     model = Model(json.loads(classes.read_text()), json.loads(fields.read_text()), rets, globs, stems)
     model.sdk, model.ctx = sdk_types(ctx), ctx
     proven = {n: c["size"] for n, c in model.classes.items() if c.get("size")}  # classes.py array probe

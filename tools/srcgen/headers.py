@@ -95,9 +95,10 @@ def main() -> int:
     ap.add_argument("out_root", type=Path)
     ap.add_argument("--write-existing", action="store_true")
     ap.add_argument("--inline-root", type=Path)
+    ap.add_argument("--m2c-votes", type=Path, help="m2c run with class context; upgrades untyped globals and returns (hmodel.m2c_types)")
     a = ap.parse_args()
 
-    model = load_model(a.classes, a.fields, a.m2c_root, a.ctx)
+    model = load_model(a.classes, a.fields, a.m2c_root, a.ctx, a.m2c_votes)
     rets, globs, stems, sdk = model.rets, model.globs, model.stems, model.sdk
     free, data = globals_by_tu(stems)
     nested = model.nested = nested_names(model, free)
