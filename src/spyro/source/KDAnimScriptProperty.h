@@ -23,12 +23,12 @@ inline s32 KDAnimScriptProperty::GetInstanceDataSize() const {
 
 #if 0 // DRAFT: expression syntax error
 inline void KDAnimScriptProperty::InitInstance() {
-    *(pInstanceMem.__vptr + this->unk8) = 0;
+    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
 }
 #endif
 
 inline void *KDAnimScriptProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDAnimScriptProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_KDANIMSCRIPTPROPERTY_H

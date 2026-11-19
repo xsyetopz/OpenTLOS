@@ -27,12 +27,12 @@ inline s32 PhrasePlayerProperty::GetInstanceDataSize() const {
 
 #if 0 // DRAFT: expression syntax error
 inline void PhrasePlayerProperty::InitInstance() {
-    *(pInstanceMem.__vptr + this->unk8) = 0;
+    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
 }
 #endif
 
 inline void *PhrasePlayerProperty::GetClassInfo() const {
-    return &classInfo;
+    return &PhrasePlayerProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_PHRASEPLAYERPROPERTY_H

@@ -130,7 +130,7 @@ inline s32 KDParticleBoxEmitterProperty::Query(int arg0) {
 }
 
 inline void *KDParticleBoxEmitterProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDParticleBoxEmitterProperty::classInfo;
 }
 
 inline s32 KDParticleEmitterProperty::GetInstanceDataAlignment() const {
@@ -141,8 +141,8 @@ inline s32 KDParticleEmitterProperty::GetInstanceDataAlignment() const {
 inline s32 KDParticleEmitterProperty::LoadLineInstance(MKIniLine *arg0) {
     void **temp_r3_52;
 
-    temp_r3_52 = pInstanceMem.__vptr + this->unk8;
-    M2C_FIELD(*temp_r3_52, M2C_UNK (**)(void **, void *), 0xC)(temp_r3_52, pInstanceMem.__vptr);
+    temp_r3_52 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    M2C_FIELD(*temp_r3_52, M2C_UNK (**)(void **, void *), 0xC)(temp_r3_52, KDProperty::pInstanceMem.__vptr);
 }
 #endif
 
@@ -150,8 +150,8 @@ inline s32 KDParticleEmitterProperty::LoadLineInstance(MKIniLine *arg0) {
 inline void KDParticleEmitterProperty::LoadDoneInstance() {
     void **temp_r3_71;
 
-    temp_r3_71 = pInstanceMem.__vptr + this->unk8;
-    M2C_FIELD(*temp_r3_71, M2C_UNK (**)(void **, void *), 0x10)(temp_r3_71, pInstanceMem.__vptr);
+    temp_r3_71 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    M2C_FIELD(*temp_r3_71, M2C_UNK (**)(void **, void *), 0x10)(temp_r3_71, KDProperty::pInstanceMem.__vptr);
 }
 #endif
 
@@ -165,7 +165,7 @@ inline void KDParticleEmitterProperty::SetColor(MKVector4 arg0) {
 
     temp_f1_86 = M2C_FIELD(arg0, f64 *, 0);
     temp_f0_90 = M2C_FIELD(arg0, f64 *, 8);
-    temp_r3_91 = pInstanceMem.__vptr + (this->unk8 + 8);
+    temp_r3_91 = KDProperty::pInstanceMem.__vptr + (this->unk8 + 8);
     sp8 = temp_f1_86;
     M2C_FIELD(temp_r3_91, f64 *, 0) = temp_f1_86;
     sp10 = temp_f0_90;
@@ -177,7 +177,7 @@ inline void KDParticleEmitterProperty::SetColor(MKVector4 arg0) {
 inline void KDParticleEmitterProperty::GetColor() {
     void *temp_r4_106;
 
-    temp_r4_106 = pInstanceMem.__vptr + (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 8);
+    temp_r4_106 = KDProperty::pInstanceMem.__vptr + (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 8);
     M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_106, f64 *, 0);
     M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_106, f64 *, 8);
 }
@@ -192,7 +192,7 @@ inline s32 KDParticleEmitterProperty::Query(int arg0) {
 }
 
 inline void *KDParticleEmitterProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDParticleEmitterProperty::classInfo;
 }
 
 inline s32 KDParticleLineEmitterProperty::GetInstanceDataSize() const {
@@ -207,7 +207,7 @@ inline s32 KDParticleLineEmitterProperty::Query(int arg0) {
 }
 
 inline void *KDParticleLineEmitterProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDParticleLineEmitterProperty::classInfo;
 }
 
 inline s32 KDParticleSystemProperty::GetInstanceDataSize() const {
@@ -222,7 +222,7 @@ inline s32 KDParticleSystemProperty::Query(int arg0) {
 }
 
 inline void *KDParticleSystemProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDParticleSystemProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_KDPARTICLEEFFECTS_H

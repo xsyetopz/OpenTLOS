@@ -181,13 +181,13 @@ inline void KDProperty::InitInstance() {
 
 #if 0 // DRAFT: expression syntax error
 inline void KDProperty::SetOwnerProp(MKProp *arg0) {
-    pInstanceMem.__vptr = this;
+    KDProperty::pInstanceMem.__vptr = this;
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 inline u64 KDProperty::GetOwnerProp() {
-    return (u64) pInstanceMem.__vptr;
+    return (u64) KDProperty::pInstanceMem.__vptr;
 }
 #endif
 
@@ -229,7 +229,7 @@ loop_9:
 #endif
 
 inline void *KDScriptProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDScriptProperty::classInfo;
 }
 
 inline void KDScriptProperty::Trigger() {

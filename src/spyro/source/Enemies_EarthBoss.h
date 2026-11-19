@@ -214,12 +214,10 @@ inline f32 EarthBossArm::GetTimeLastHit() {
     return 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'zero'
 inline void EarthBossArm::GetVel() {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
-#endif
 
 inline s32 EarthBossArm::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp10;

@@ -28,13 +28,13 @@ inline s32 KDPathProperty::GetInstanceDataSize() const {
 
 #if 0 // DRAFT: undefined identifier 'KDPathSegment'
 inline void KDPathProperty::InitInstance() {
-    ((KDPathSegment *) (pInstanceMem.__vptr + this->unk8))->Init();
+    ((KDPathSegment *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Init();
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'KDPathSegment'
 inline void KDPathProperty::DeinitInstance() {
-    ((KDPathSegment *) (pInstanceMem.__vptr + this->unk8))->Deinit();
+    ((KDPathSegment *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Deinit();
 }
 #endif
 
@@ -48,24 +48,24 @@ inline s32 KDPathProperty::LoadLineInstance(MKIniLine *arg0) {
     } else {
         var_r5_2976 = "";
     }
-    ((KDPathSegment *) (pInstanceMem.__vptr + this->unk8))->LoadWaypoints(arg0, var_r5_2976);
+    ((KDPathSegment *) (KDProperty::pInstanceMem.__vptr + this->unk8))->LoadWaypoints(arg0, var_r5_2976);
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'KDPathSegment'
 inline void KDPathProperty::LoadDoneInstance() {
-    ((KDPathSegment *) (pInstanceMem.__vptr + this->unk8))->LoadDone();
+    ((KDPathSegment *) (KDProperty::pInstanceMem.__vptr + this->unk8))->LoadDone();
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'KDPathSegment'
 inline void KDPathProperty::ResolveInstance() {
-    ((KDPathSegment *) (pInstanceMem.__vptr + this->unk8))->Resolve();
+    ((KDPathSegment *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Resolve();
 }
 #endif
 
 inline void *KDPathProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDPathProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_KDPATHPROPERTY_H

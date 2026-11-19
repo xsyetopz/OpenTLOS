@@ -23,12 +23,12 @@ inline s32 KDModelProperty::GetInstanceDataSize() const {
 
 #if 0 // DRAFT: expression syntax error
 inline void KDModelProperty::InitInstance() {
-    *(pInstanceMem.__vptr + this->unk8) = 0;
+    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
 }
 #endif
 
 inline void *KDModelProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDModelProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_KDMODELPROPERTY_H

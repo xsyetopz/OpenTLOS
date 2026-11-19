@@ -47,7 +47,7 @@ inline s32 AnimProperty::GetInstanceDataSize() const {
 inline void AnimProperty::InitInstance() {
     void *temp_r3_22;
 
-    temp_r3_22 = pInstanceMem.__vptr + this->unk8;
+    temp_r3_22 = KDProperty::pInstanceMem.__vptr + this->unk8;
     M2C_FIELD(temp_r3_22, s8 *, 0) = 1;
     M2C_FIELD(temp_r3_22, s32 *, 4) = 0;
 }
@@ -58,7 +58,7 @@ inline s32 AnimProperty::Query(int arg0) {
 }
 
 inline void *AnimProperty::GetClassInfo() const {
-    return &classInfo;
+    return &AnimProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_ANIMPROPERTY_H

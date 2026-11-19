@@ -771,7 +771,7 @@ inline MKWidgetEditable *MKWidget::MKWidget_FactoryFunc() {
     operator new(0x28U, NULL, 0);
     var_r0_19731 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19731 != NULL) {
-        var_r0_19731 = ((MKWidget *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidget((MKWidgetDescriptor *) &sMKWidgetDescriptor);
+        var_r0_19731 = ((MKWidget *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidget((MKWidgetDescriptor *) &MKWidget::sMKWidgetDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19731;
 }
@@ -795,7 +795,7 @@ inline MKWidgetEditable *MKWidgetButton::MKWidgetButton_FactoryFunc() {
     operator new(0x88U, NULL, 0);
     var_r0_19467 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19467 != NULL) {
-        var_r0_19467 = ((MKWidgetButton *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetButton((MKWidgetDescriptor *) &sMKWidgetButtonDescriptor);
+        var_r0_19467 = ((MKWidgetButton *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetButton((MKWidgetDescriptor *) &MKWidgetButton::sMKWidgetButtonDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19467;
 }
@@ -819,7 +819,7 @@ inline MKWidgetEditable *MKWidgetCheckBox::MKWidgetCheckBox_FactoryFunc() {
     operator new(0x80U, NULL, 0);
     var_r0_19419 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19419 != NULL) {
-        var_r0_19419 = ((MKWidgetCheckBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetCheckBox((MKWidgetDescriptor *) &sMKWidgetCheckBoxDescriptor);
+        var_r0_19419 = ((MKWidgetCheckBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetCheckBox((MKWidgetDescriptor *) &MKWidgetCheckBox::sMKWidgetCheckBoxDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19419;
 }
@@ -835,7 +835,7 @@ inline MKWidgetEditable *MKWidgetCheckMark::MKWidgetCheckMark_FactoryFunc() {
     operator new(0x2CU, NULL, 0);
     var_r0_19443 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19443 != NULL) {
-        var_r0_19443 = ((MKWidgetCheckMark *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetCheckMark((MKWidgetDescriptor *) &sMKWidgetCheckMarkDescriptor);
+        var_r0_19443 = ((MKWidgetCheckMark *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetCheckMark((MKWidgetDescriptor *) &MKWidgetCheckMark::sMKWidgetCheckMarkDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19443;
 }
@@ -851,7 +851,7 @@ inline MKWidgetEditable *MKWidgetColor::MKWidgetColor_FactoryFunc() {
     operator new(0x28U, NULL, 0);
     var_r0_19251 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19251 != NULL) {
-        var_r0_19251 = ((MKWidgetColor *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetColor((MKWidgetDescriptor *) &sMKWidgetColorDescriptor);
+        var_r0_19251 = ((MKWidgetColor *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetColor((MKWidgetDescriptor *) &MKWidgetColor::sMKWidgetColorDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19251;
 }
@@ -887,7 +887,7 @@ inline MKWidgetEditable *MKWidgetComboBox::MKWidgetComboBox_FactoryFunc() {
     operator new(0x104U, NULL, 0);
     var_r0_19227 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19227 != NULL) {
-        var_r0_19227 = ((MKWidgetComboBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetComboBox((MKWidgetDescriptor *) &sMKWidgetComboBoxDescriptor);
+        var_r0_19227 = ((MKWidgetComboBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetComboBox((MKWidgetDescriptor *) &MKWidgetComboBox::sMKWidgetComboBoxDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19227;
 }
@@ -907,7 +907,7 @@ inline MKWidgetEditable *MKWidgetContainer::MKWidgetContainer_FactoryFunc() {
     operator new(0x40U, NULL, 0);
     var_r0_19707 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19707 != NULL) {
-        var_r0_19707 = ((MKWidgetContainer *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetContainer((MKWidgetDescriptor *) &sMKWidgetContainerDescriptor);
+        var_r0_19707 = ((MKWidgetContainer *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetContainer((MKWidgetDescriptor *) &MKWidgetContainer::sMKWidgetContainerDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19707;
 }
@@ -930,7 +930,7 @@ inline MKWidgetEditable *MKWidgetEditable::MKWidgetEditable_FactoryFunc() {
     operator new(0x68U, NULL, 0);
     var_r0_19155 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19155 != NULL) {
-        var_r0_19155 = ((MKWidgetEditable *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetEditable((MKWidgetDescriptor *) &sMKWidgetEditableDescriptor);
+        var_r0_19155 = ((MKWidgetEditable *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetEditable((MKWidgetDescriptor *) &MKWidgetEditable::sMKWidgetEditableDescriptor);
     }
     return var_r0_19155;
 }
@@ -946,7 +946,7 @@ inline MKWidgetEditable *MKWidgetEnvelope::MKWidgetEnvelope_FactoryFunc() {
     operator new(0x40U, NULL, 0);
     var_r0_19323 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19323 != NULL) {
-        var_r0_19323 = ((MKWidgetEnvelope *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetEnvelope((MKWidgetDescriptor *) &sMKWidgetEnvelopeDescriptor);
+        var_r0_19323 = ((MKWidgetEnvelope *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetEnvelope((MKWidgetDescriptor *) &MKWidgetEnvelope::sMKWidgetEnvelopeDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19323;
 }
@@ -991,7 +991,7 @@ inline MKWidgetEditable *MKWidgetFoldupFrame::MKWidgetFoldupFrame_FactoryFunc() 
     operator new(0x108U, NULL, 0);
     var_r0_19539 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19539 != NULL) {
-        var_r0_19539 = ((MKWidgetFoldupFrame *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetFoldupFrame((MKWidgetDescriptor *) &sMKWidgetFoldupFrameDescriptor);
+        var_r0_19539 = ((MKWidgetFoldupFrame *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetFoldupFrame((MKWidgetDescriptor *) &MKWidgetFoldupFrame::sMKWidgetFoldupFrameDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19539;
 }
@@ -1014,7 +1014,7 @@ inline MKWidgetEditable *MKWidgetFrame::MKWidgetFrame_FactoryFunc() {
     operator new(0x40U, NULL, 0);
     var_r0_19659 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19659 != NULL) {
-        var_r0_19659 = ((MKWidgetFrame *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetFrame((MKWidgetDescriptor *) &sMKWidgetFrameDescriptor);
+        var_r0_19659 = ((MKWidgetFrame *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetFrame((MKWidgetDescriptor *) &MKWidgetFrame::sMKWidgetFrameDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19659;
 }
@@ -1030,7 +1030,7 @@ inline MKWidgetEditable *MKWidgetImage::MKWidgetImage_FactoryFunc() {
     operator new(0x2CU, NULL, 0);
     var_r0_19491 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19491 != NULL) {
-        var_r0_19491 = ((MKWidgetImage *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetImage((MKWidgetDescriptor *) &sMKWidgetImageDescriptor);
+        var_r0_19491 = ((MKWidgetImage *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetImage((MKWidgetDescriptor *) &MKWidgetImage::sMKWidgetImageDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19491;
 }
@@ -1046,7 +1046,7 @@ inline MKWidgetEditable *MKWidgetListBox::MKWidgetListBox_FactoryFunc() {
     operator new(0x3A8U, NULL, 0);
     var_r0_19611 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19611 != NULL) {
-        var_r0_19611 = ((MKWidgetListBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetListBox((MKWidgetDescriptor *) &sMKWidgetListBoxDescriptor);
+        var_r0_19611 = ((MKWidgetListBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetListBox((MKWidgetDescriptor *) &MKWidgetListBox::sMKWidgetListBoxDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19611;
 }
@@ -1067,7 +1067,7 @@ inline MKWidgetEditable *MKWidgetListItem::MKWidgetListItem_FactoryFunc() {
     operator new(0x54U, NULL, 0);
     var_r0_19299 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19299 != NULL) {
-        var_r0_19299 = ((MKWidgetListItem *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetListItem((MKWidgetDescriptor *) &sMKWidgetListItemDescriptor);
+        var_r0_19299 = ((MKWidgetListItem *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetListItem((MKWidgetDescriptor *) &MKWidgetListItem::sMKWidgetListItemDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19299;
 }
@@ -1121,7 +1121,7 @@ inline MKWidgetEditable *MKWidgetScrollBar::MKWidgetScrollBar_FactoryFunc() {
     operator new(0x198U, NULL, 0);
     var_r0_19395 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19395 != NULL) {
-        var_r0_19395 = ((MKWidgetScrollBar *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetScrollBar((MKWidgetDescriptor *) &sMKWidgetScrollBarDescriptor);
+        var_r0_19395 = ((MKWidgetScrollBar *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetScrollBar((MKWidgetDescriptor *) &MKWidgetScrollBar::sMKWidgetScrollBarDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19395;
 }
@@ -1238,7 +1238,7 @@ inline MKWidgetEditable *MKWidgetScrollableFrame::MKWidgetScrollableFrame_Factor
     operator new(0x3A0U, NULL, 0);
     var_r0_19635 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19635 != NULL) {
-        var_r0_19635 = ((MKWidgetScrollableFrame *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetScrollableFrame((MKWidgetDescriptor *) &sMKWidgetScrollableFrameDescriptor);
+        var_r0_19635 = ((MKWidgetScrollableFrame *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetScrollableFrame((MKWidgetDescriptor *) &MKWidgetScrollableFrame::sMKWidgetScrollableFrameDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19635;
 }
@@ -1296,7 +1296,7 @@ inline MKWidgetEditable *MKWidgetSlider::MKWidgetSlider_FactoryFunc() {
     operator new(0x198U, NULL, 0);
     var_r0_19275 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19275 != NULL) {
-        var_r0_19275 = ((MKWidgetSlider *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetSlider((MKWidgetDescriptor *) &sMKWidgetSliderDescriptor);
+        var_r0_19275 = ((MKWidgetSlider *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetSlider((MKWidgetDescriptor *) &MKWidgetSlider::sMKWidgetSliderDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19275;
 }
@@ -1312,7 +1312,7 @@ inline MKWidgetEditable *MKWidgetString::MKWidgetString_FactoryFunc() {
     operator new(0x2CU, NULL, 0);
     var_r0_19515 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19515 != NULL) {
-        var_r0_19515 = ((MKWidgetString *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetString((MKWidgetDescriptor *) &sMKWidgetStringDescriptor);
+        var_r0_19515 = ((MKWidgetString *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetString((MKWidgetDescriptor *) &MKWidgetString::sMKWidgetStringDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19515;
 }
@@ -1335,7 +1335,7 @@ inline MKWidgetEditable *MKWidgetSystem::MKWidgetSystem_FactoryFunc() {
     operator new(0x80U, NULL, 0);
     var_r0_19683 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19683 != NULL) {
-        var_r0_19683 = ((MKWidgetSystem *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetSystem((MKWidgetDescriptor *) &sMKWidgetSystemDescriptor);
+        var_r0_19683 = ((MKWidgetSystem *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetSystem((MKWidgetDescriptor *) &MKWidgetSystem::sMKWidgetSystemDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19683;
 }
@@ -1358,7 +1358,7 @@ inline MKWidgetEditable *MKWidgetTabStrip::MKWidgetTabStrip_FactoryFunc() {
     operator new(0x48U, NULL, 0);
     var_r0_19563 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19563 != NULL) {
-        var_r0_19563 = ((MKWidgetTabStrip *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetTabStrip((MKWidgetDescriptor *) &sMKWidgetTabStripDescriptor);
+        var_r0_19563 = ((MKWidgetTabStrip *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetTabStrip((MKWidgetDescriptor *) &MKWidgetTabStrip::sMKWidgetTabStripDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19563;
 }
@@ -1371,7 +1371,7 @@ inline MKWidgetEditable *MKWidgetTextBox::MKWidgetTextBox_FactoryFunc() {
     operator new(0x50U, NULL, 0);
     var_r0_19371 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19371 != NULL) {
-        var_r0_19371 = ((MKWidgetTextBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetTextBox((MKWidgetDescriptor *) &sMKWidgetTextBoxDescriptor);
+        var_r0_19371 = ((MKWidgetTextBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetTextBox((MKWidgetDescriptor *) &MKWidgetTextBox::sMKWidgetTextBoxDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19371;
 }
@@ -1387,7 +1387,7 @@ inline MKWidgetEditable *MKWidgetThumb::MKWidgetThumb_FactoryFunc() {
     operator new(0x60U, NULL, 0);
     var_r0_19203 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19203 != NULL) {
-        var_r0_19203 = ((MKWidgetThumb *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetThumb((MKWidgetDescriptor *) &sMKWidgetThumbDescriptor);
+        var_r0_19203 = ((MKWidgetThumb *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetThumb((MKWidgetDescriptor *) &MKWidgetThumb::sMKWidgetThumbDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19203;
 }
@@ -1403,7 +1403,7 @@ inline MKWidgetEditable *MKWidgetVector::MKWidgetVector_FactoryFunc() {
     operator new(0x16CU, NULL, 0);
     var_r0_19347 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19347 != NULL) {
-        var_r0_19347 = ((MKWidgetVector *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetVector((MKWidgetDescriptor *) &sMKWidgetVectorDescriptor);
+        var_r0_19347 = ((MKWidgetVector *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetVector((MKWidgetDescriptor *) &MKWidgetVector::sMKWidgetVectorDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19347;
 }
@@ -1457,7 +1457,7 @@ inline MKWidgetEditable *MKWidgetWindow::MKWidgetWindow_FactoryFunc() {
     operator new(0x160U, NULL, 0);
     var_r0_19587 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19587 != NULL) {
-        var_r0_19587 = ((MKWidgetWindow *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetWindow((MKWidgetDescriptor *) &sMKWidgetWindowDescriptor);
+        var_r0_19587 = ((MKWidgetWindow *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetWindow((MKWidgetDescriptor *) &MKWidgetWindow::sMKWidgetWindowDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19587;
 }
@@ -1496,7 +1496,7 @@ inline MKWidgetEditable *MKWidgetWindowTitleBar::MKWidgetWindowTitleBar_FactoryF
     operator new(0xF0U, NULL, 0);
     var_r0_19179 = M2C_ERROR(/* Read from unset register $r3 */);
     if (var_r0_19179 != NULL) {
-        var_r0_19179 = ((MKWidgetWindowTitleBar *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetWindowTitleBar((MKWidgetDescriptor *) &sMKWidgetWindowTitleBarDescriptor);
+        var_r0_19179 = ((MKWidgetWindowTitleBar *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetWindowTitleBar((MKWidgetDescriptor *) &MKWidgetWindowTitleBar::sMKWidgetWindowTitleBarDescriptor);
     }
     return (MKWidgetEditable *) var_r0_19179;
 }

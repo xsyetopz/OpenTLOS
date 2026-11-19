@@ -216,7 +216,7 @@ inline s32 SpeedWaySpyroHeroInterface::IsFuryActive() {
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'StatType'
 inline void SpeedWaySpyroHeroInterface::AddStat(StatType arg0, float arg1) {
-    ((Stat *) (&gameData + ((s32) arg0 * 0x18) + 0x70))->Add(arg1, 1U);
+    ((Stat *) (&GameData::gameData + ((s32) arg0 * 0x18) + 0x70))->Add(arg1, 1U);
 }
 #endif
 

@@ -52,7 +52,7 @@ inline s32 SwayProperty::Query(int arg0) {
 }
 
 inline void *SwayProperty::GetClassInfo() const {
-    return &classInfo;
+    return &SwayProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_SWAYPROPERTY_H

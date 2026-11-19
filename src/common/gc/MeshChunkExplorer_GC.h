@@ -14,7 +14,7 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'zero'
+#if 0 // DRAFT: undefined identifier 'MKVector3'
 inline void MeshChunkExplorer_GC::SetMeshChunk(int arg0, int arg1, int arg2) {
     MeshChunkExplorer_GC *var_r0_429;
     MeshChunkExplorer_GC *var_r0_438;
@@ -29,12 +29,12 @@ inline void MeshChunkExplorer_GC::SetMeshChunk(int arg0, int arg1, int arg2) {
     void *temp_r7_322;
     void *var_r0_332;
 
-    M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0x68) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x70) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0x78) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x68) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x70) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    M2C_FIELD(this, f64 *, 0x78) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
     M2C_FIELD(this, void **, 0x48) = (void *) M2C_FIELD(*M2C_FIELD(this, void ***, 0x40), void **, 0x30);
     temp_r7_322 = M2C_FIELD(this, void **, 0x48);
     temp_r3_328 = *(M2C_FIELD(temp_r7_322, s32 *, 0x68) + ((arg1 + (arg0 * M2C_FIELD(temp_r7_322, s16 *, 4))) * 4));

@@ -36,7 +36,7 @@ inline s32 KDPositionProperty::GetInstanceDataSize() const {
 inline void KDPositionProperty::InitInstance() {
     void *temp_r3_24314;
 
-    temp_r3_24314 = pInstanceMem.__vptr + this->unk8;
+    temp_r3_24314 = KDProperty::pInstanceMem.__vptr + this->unk8;
     M2C_FIELD(temp_r3_24314, f32 *, 0) = 0.0f;
     M2C_FIELD(temp_r3_24314, f32 *, 4) = 0.0f;
     M2C_FIELD(temp_r3_24314, f32 *, 8) = 0.0f;
@@ -53,7 +53,7 @@ inline s32 KDPositionProperty::LoadLineInstance(MKIniLine *arg0) {
     } else {
         var_r6_24327 = "";
     }
-    arg0->LoadVector3(var_r6_24327, pInstanceMem.__vptr + this->unk8, 0);
+    arg0->LoadVector3(var_r6_24327, KDProperty::pInstanceMem.__vptr + this->unk8, 0);
 }
 #endif
 
@@ -61,7 +61,7 @@ inline s32 KDPositionProperty::LoadLineInstance(MKIniLine *arg0) {
 inline void KDPositionProperty::GetPos() const {
     void *temp_r4_24354;
 
-    temp_r4_24354 = pInstanceMem.__vptr + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8);
+    temp_r4_24354 = KDProperty::pInstanceMem.__vptr + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8);
     M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_24354, f64 *, 0);
     M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_24354, f64 *, 8);
 }
@@ -69,12 +69,12 @@ inline void KDPositionProperty::GetPos() const {
 
 #if 0 // DRAFT: expression syntax error
 inline s32 KDPositionProperty::GetPosRef() const {
-    return (s32) (pInstanceMem.__vptr + this->unk8);
+    return (s32) (KDProperty::pInstanceMem.__vptr + this->unk8);
 }
 #endif
 
 inline void *KDPositionProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDPositionProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_KDPOSITIONPROPERTY_H

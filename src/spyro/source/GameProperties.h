@@ -133,7 +133,7 @@ void GameProperties_RegisterAll(void);
 #include <m2c_macros.h>
 
 inline void *CameraShakeProperty::GetClassInfo() const {
-    return &classInfo;
+    return &CameraShakeProperty::classInfo;
 }
 
 inline s32 CollisionSphereProperty::GetInstanceDataSize() const {
@@ -142,12 +142,12 @@ inline s32 CollisionSphereProperty::GetInstanceDataSize() const {
 
 #if 0 // DRAFT: expression syntax error
 inline void CollisionSphereProperty::InitInstance() {
-    *(pInstanceMem.__vptr + this->unk8) = pInstanceMem.__vptr + 0x70;
+    *(KDProperty::pInstanceMem.__vptr + this->unk8) = KDProperty::pInstanceMem.__vptr + 0x70;
 }
 #endif
 
 inline void *CollisionSphereProperty::GetClassInfo() const {
-    return &classInfo;
+    return &CollisionSphereProperty::classInfo;
 }
 
 inline s32 EventMessageProperty::GetInstanceDataSize() const {
@@ -155,7 +155,7 @@ inline s32 EventMessageProperty::GetInstanceDataSize() const {
 }
 
 inline void *EventMessageProperty::GetClassInfo() const {
-    return &classInfo;
+    return &EventMessageProperty::classInfo;
 }
 
 inline s32 MessageBroadcasterProperty::GetInstanceDataSize() const {
@@ -164,7 +164,7 @@ inline s32 MessageBroadcasterProperty::GetInstanceDataSize() const {
 
 #if 0 // DRAFT: expression syntax error
 inline void MessageBroadcasterProperty::InitInstance() {
-    *(pInstanceMem.__vptr + this->unk8) = 1;
+    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 1;
 }
 #endif
 
@@ -173,11 +173,11 @@ inline s32 MessageBroadcasterProperty::Query(int arg0) {
 }
 
 inline void *MessageBroadcasterProperty::GetClassInfo() const {
-    return &classInfo;
+    return &MessageBroadcasterProperty::classInfo;
 }
 
 inline void *MessageHandlerProperty::GetClassInfo() const {
-    return &classInfo;
+    return &MessageHandlerProperty::classInfo;
 }
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
@@ -198,7 +198,7 @@ inline s32 TimerProperty::GetInstanceDataAlignment() const {
 inline void TimerProperty::InitInstance() {
     void *temp_r3_1014;
 
-    temp_r3_1014 = pInstanceMem.__vptr + this->unk8;
+    temp_r3_1014 = KDProperty::pInstanceMem.__vptr + this->unk8;
     M2C_FIELD(temp_r3_1014, f32 *, 0) = 0.0f;
     M2C_FIELD(temp_r3_1014, s8 *, 4) = 0;
 }
@@ -209,7 +209,7 @@ inline s32 TimerProperty::Query(int arg0) {
 }
 
 inline void *TimerProperty::GetClassInfo() const {
-    return &classInfo;
+    return &TimerProperty::classInfo;
 }
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function

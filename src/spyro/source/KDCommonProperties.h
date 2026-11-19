@@ -179,7 +179,7 @@ inline s32 KDAmbientSoundProperty::Query(int arg0) {
 }
 
 inline void *KDAmbientSoundProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDAmbientSoundProperty::classInfo;
 }
 
 #if 0 // DRAFT: expression syntax error
@@ -193,7 +193,7 @@ inline s32 KDAnimEventProperty::Query(int arg0) {
 }
 
 inline void *KDAnimEventProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDAnimEventProperty::classInfo;
 }
 
 #if 0 // DRAFT: expression syntax error
@@ -212,7 +212,7 @@ inline KDAnimEventProperty::KDAnimEventProperty() {
 #endif
 
 inline void *KDAnimProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDAnimProperty::classInfo;
 }
 
 inline s32 KDMessageHandlerProperty::GetInstanceDataSize() const {
@@ -224,7 +224,7 @@ inline s32 KDMessageHandlerProperty::GetInstanceDataAlignment() const {
 }
 
 inline void *KDMessageHandlerProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDMessageHandlerProperty::classInfo;
 }
 
 #if 0 // DRAFT: expression syntax error
@@ -251,7 +251,7 @@ inline s32 KDPathFollowerProperty::Query(int arg0) {
 }
 
 inline void *KDPathFollowerProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDPathFollowerProperty::classInfo;
 }
 
 inline s32 KDRefPointProperty::Query(int arg0) {
@@ -259,7 +259,7 @@ inline s32 KDRefPointProperty::Query(int arg0) {
 }
 
 inline void *KDRefPointProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDRefPointProperty::classInfo;
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
@@ -278,7 +278,7 @@ inline s32 KDSoundAttachmentProperty::GetInstanceDataSize() const {
 }
 
 inline void *KDSoundAttachmentProperty::GetClassInfo() const {
-    return &classInfo;
+    return &KDSoundAttachmentProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_KDCOMMONPROPERTIES_H
