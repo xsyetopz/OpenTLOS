@@ -155,7 +155,6 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void ExpSmokeAndFlamesPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r3_363;
     void *temp_r4_366;
@@ -168,13 +167,12 @@ void ExpSmokeAndFlamesPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, con
         M2C_FIELD(temp_r3_363, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r4_366, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r4_366, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD(temp_r4_366, f32 *, 0x1C) = (f32) &arg2;
+        M2C_FIELD(temp_r4_366, f32 *, 0x1C) = arg2;
         M2C_FIELD(temp_r4_366, f32 *, 0x20) = 1.0f;
         M2C_FIELD(temp_r4_366, f32 *, 0x18) = 7.853982f;
         M2C_FIELD(temp_r3_363, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
     }
 }
-#endif
 
 void ExpSmokeAndFlamesPS::Deinit() {
     MKParticleSystem::Deinit();

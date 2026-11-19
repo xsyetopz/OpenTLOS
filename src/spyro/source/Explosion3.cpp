@@ -316,13 +316,15 @@ void *Explosion3::Update() {
     }
 }
 
-#if 0 // DRAFT: ')' expected
 s32 Explosion3::LoadDone() {
+    Explosion3Descriptor *desc;
+
     MKProp::LoadDone();
-    this->unk68 = M2C_FIELD(checked_cast<Explosion3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60);
-    this->unk6C = M2C_FIELD(checked_cast<Explosion3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x64);
+    desc = checked_cast<Explosion3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk68 = M2C_FIELD(desc, s32 *, 0x60);
+    desc = checked_cast<Explosion3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk6C = M2C_FIELD(desc, s32 *, 0x64);
 }
-#endif
 
 f32 Explosion3::Resolve() {
     f64 sp60;
