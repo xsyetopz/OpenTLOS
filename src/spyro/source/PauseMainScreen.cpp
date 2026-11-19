@@ -113,17 +113,17 @@ void ExitConfirmScreen::OnEnter() {
     }
 }
 
-#if 0 // DRAFT: function call 'stricmp(unsigned long, const char[9])' does not match 'stricmp(unsigned long, void *)'
+extern "C" s32 stricmp(const char *, const char *);
+
 void ExitConfirmScreen::Resolve() {
     UIScreen::Resolve();
     this->unkC8 = (void **) (ui_cast<UIButtonGroup *, UIObject *>(FindChild("buttons")));
-    if (stricmp(this->unk4, "QuitGame") == 0) {
+    if (stricmp((const char *) this->unk4, "QuitGame") == 0) {
         this->unkCC = 0;
         return;
     }
     this->unkCC = 1;
 }
-#endif
 
 void ExitConfirmScreen::Init() {
     UIContainer::Init();

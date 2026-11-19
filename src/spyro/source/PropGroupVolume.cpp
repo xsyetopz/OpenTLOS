@@ -21,56 +21,46 @@ extern s32 zoneDisableMask;
 PropGroupVolume overlay__15PropGroupVolume;
 static s32 zoneEnableMask = 1;
 
-#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[8], int)' does not match 'strnicmp(const char *, const char *, int)'
+extern "C" s32 stricmp(const char *, const char *);
+
 u8 PropGroupVolume::LoadOverlayName(MKIniLine *arg0) {
     s8 *sp8;
-    s32 temp_r28_128;
-    s32 var_ctr_118;
-    s32 var_r29_76;
-    s32 var_r31_116;
-    s32 var_r31_72;
-    s32 var_r3_117;
-    void *temp_r4_93;
+    s32 i;
+    s32 off;
+    s32 slot;
+    s32 n;
 
-    if (strnicmp(arg0->GetFieldName(), "overlay", 7) == 0) {
-        arg0->AsString(0, &sp8);
-        if (stricmp(sp8, "none") == 0) {
+    if (strnicmp((const char *) arg0->GetFieldName(), "overlay", 7) == 0) {
+        arg0->AsString(0, (const char **) &sp8);
+        if (stricmp((const char *) sp8, "none") == 0) {
             return 1U;
         }
-        var_r31_72 = 0;
-        var_r29_76 = 0;
-        M2C_FIELD((this + (this->unk2A4 * 4)), s32 *, 0xA4) = -1;
-loop_8:
-        if (var_r31_72 < (s32) *PropGroupVolume::overlayCount) {
-            if (((s32) M2C_FIELD((&PropGroupVolume::overlay + var_r29_76), s32 *, 0x24) > 0) && (stricmp(sp8) == 0)) {
-                temp_r4_93 = &PropGroupVolume::overlay + var_r29_76;
-                M2C_FIELD((this + (this->unk2A4 * 4)), s32 *, 0xA4) = var_r31_72;
-                M2C_FIELD(temp_r4_93, s32 *, 0x24) = (s32) (M2C_FIELD(temp_r4_93, s32 *, 0x24) + 1);
-            } else {
-                var_r31_72 += 1;
-                var_r29_76 += 0x28;
-                goto loop_8;
+        i = 0;
+        off = 0;
+        *(s32 *) ((s8 *) this + (this->unk2A4 * 4) + 0xA4) = -1;
+        while (i < *(s32 *) PropGroupVolume::overlayCount) {
+            if (M2C_FIELD((s8 *) &PropGroupVolume::overlay + off, s32 *, 0x24) > 0 && stricmp((const char *) sp8, (const char *) ((s8 *) &PropGroupVolume::overlay + off)) == 0) {
+                *(s32 *) ((s8 *) this + (this->unk2A4 * 4) + 0xA4) = i;
+                M2C_FIELD((s8 *) &PropGroupVolume::overlay + off, s32 *, 0x24) = M2C_FIELD((s8 *) &PropGroupVolume::overlay + off, s32 *, 0x24) + 1;
+                break;
             }
+            i += 1;
+            off += 0x28;
         }
-        if ((s32) M2C_FIELD((this + (this->unk2A4 * 4)), s32 *, 0xA4) < 0) {
-            var_r31_116 = 0;
-            var_r3_117 = 0;
-            var_ctr_118 = 0x80;
-loop_11:
-            if ((s32) M2C_FIELD((&PropGroupVolume::overlay + var_r3_117), s32 *, 0x24) != 0) {
-                var_r31_116 += 1;
-                var_r3_117 += 0x28;
-                var_ctr_118 -= 1;
-                if (var_ctr_118 != 0) {
-                    goto loop_11;
-                }
+        slot = *(s32 *) ((s8 *) this + (this->unk2A4 * 4) + 0xA4);
+        if (slot < 0) {
+            n = 0;
+            off = 0;
+            while (n < 0x80 && M2C_FIELD((s8 *) &PropGroupVolume::overlay + off, s32 *, 0x24) != 0) {
+                n += 1;
+                off += 0x28;
             }
-            temp_r28_128 = var_r31_116 * 0x28;
-            strcpy(&PropGroupVolume::overlay + temp_r28_128, sp8);
-            M2C_FIELD((&PropGroupVolume::overlay + temp_r28_128), s32 *, 0x24) = 1;
-            M2C_FIELD((this + (this->unk2A4 * 4)), s32 *, 0xA4) = var_r31_116;
-            if (var_r31_116 == (s32) *PropGroupVolume::overlayCount) {
-                *PropGroupVolume::overlayCount += 1;
+            off = n * 0x28;
+            strcpy((char *) ((s8 *) &PropGroupVolume::overlay + off), (const char *) sp8);
+            M2C_FIELD((s8 *) &PropGroupVolume::overlay + off, s32 *, 0x24) = 1;
+            *(s32 *) ((s8 *) this + (this->unk2A4 * 4) + 0xA4) = n;
+            if (n == *(s32 *) PropGroupVolume::overlayCount) {
+                *(s32 *) PropGroupVolume::overlayCount += 1;
             }
         }
         this->unk2A4 += 1;
@@ -78,7 +68,6 @@ loop_11:
     }
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to 'float'
 void PropGroupVolume::CullGroups(const MKVector3 &arg0) {
@@ -211,17 +200,15 @@ s32 PropGroupVolume::LoadDone() {
     Disable();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 PropGroupVolume::LoadLine(MKIniLine *arg0) {
     s32 var_r31_445;
 
     var_r31_445 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("enableZone", (int *) &this->unkA0, 0) != 0) || (this->unk50.LoadLine("region", arg0) != 0) || (arg0->LoadFloat("distanceMultiplier", &this->unk2A8, 0) != 0) || (arg0->LoadBool("bShowEnvDome", &this->unk2AC, 0) != 0) || (arg0->LoadBool("bEnabled", &this->unk2AD, 0) != 0) || (LoadOverlayName(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("enableZone", (int *) &this->unkA0, 0) != 0) || (this->unk50.LoadLine((char *) "region", arg0) != 0) || (arg0->LoadFloat("distanceMultiplier", &this->unk2A8, 0) != 0) || (arg0->LoadBool("bShowEnvDome", (bool *) &this->unk2AC, 0) != 0) || (arg0->LoadBool("bEnabled", (bool *) &this->unk2AD, 0) != 0) || (LoadOverlayName(arg0) != 0)) {
         var_r31_445 = 1;
     }
     return var_r31_445;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'PropGroupVolume' to 'long'
 void PropGroupVolume::Deinit() {
