@@ -28,42 +28,32 @@ extern MKMaterial *gRenderState;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: illegal explicit conversion from 'DamageShieldEffect' to 'unsigned char'
 void DamageShieldEffect::SpawnRipple(const MKVector3 &arg0, float arg1) {
+    u8 *base;
+    u8 *temp_r5_63;
     f32 temp_f30_76;
     f32 temp_f31_81;
-    s32 var_ctr_56;
-    s32 var_r31_55;
-    void *temp_r3_86;
-    void *temp_r5_63;
+    s32 i;
 
-    var_r31_55 = 0;
-    var_ctr_56 = 0xA;
-loop_1:
-    if ((u8) *(this + (var_r31_55 + 0xB8)) == 0) {
-        temp_r5_63 = this + var_r31_55;
-        M2C_FIELD(temp_r5_63, f64 *, 0xA0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-        M2C_FIELD(temp_r5_63, f64 *, 0xA8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-        M2C_FIELD(temp_r5_63, f32 *, 0xB0) = arg1;
-        M2C_FIELD(temp_r5_63, f32 *, 0xB4) = 0.0f;
-        M2C_FIELD(temp_r5_63, s8 *, 0xB8) = 1;
-        temp_f30_76 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
-        temp_f31_81 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
-        temp_r3_86 = this + var_r31_55;
-        M2C_FIELD(temp_r3_86, f32 *, 0xC0) = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
-        M2C_FIELD(temp_r3_86, f32 *, 0xC4) = temp_f31_81;
-        M2C_FIELD(temp_r3_86, f32 *, 0xC8) = temp_f30_76;
-        M2C_FIELD(temp_r3_86, f32 *, 0xCC) = 1.0f;
-        return;
+    base = (u8 *) this;
+    for (i = 0; i < 0xA; i++) {
+        temp_r5_63 = base + (i * 0x30);
+        if (M2C_FIELD(temp_r5_63, u8 *, 0xB8) == 0) {
+            M2C_FIELD(temp_r5_63, f64 *, 0xA0) = M2C_FIELD(&arg0, f64 *, 0);
+            M2C_FIELD(temp_r5_63, f64 *, 0xA8) = M2C_FIELD(&arg0, f64 *, 8);
+            M2C_FIELD(temp_r5_63, f32 *, 0xB0) = arg1;
+            M2C_FIELD(temp_r5_63, f32 *, 0xB4) = 0.0f;
+            M2C_FIELD(temp_r5_63, u8 *, 0xB8) = 1;
+            temp_f30_76 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
+            temp_f31_81 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
+            M2C_FIELD(temp_r5_63, f32 *, 0xC0) = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
+            M2C_FIELD(temp_r5_63, f32 *, 0xC4) = temp_f31_81;
+            M2C_FIELD(temp_r5_63, f32 *, 0xC8) = temp_f30_76;
+            M2C_FIELD(temp_r5_63, f32 *, 0xCC) = 1.0f;
+            return;
+        }
     }
-    var_r31_55 += 0x30;
-    var_ctr_56 -= 1;
-    if (var_ctr_56 == 0) {
-        return;
-    }
-    goto loop_1;
 }
-#endif
 
 void DamageShieldEffect::Deinit() {
     this->unk90->Destroy();

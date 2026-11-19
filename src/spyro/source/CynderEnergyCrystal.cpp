@@ -82,28 +82,25 @@ void CynderEnergyCrystal::UpdateModel() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'spC'
 void CynderEnergyCrystal::UpdateMovement() {
-    f32 sp8;
-    f32 var_f0_118;
+    typedef void (*MoveFn)(void *, void *, s32, f32);
+    typedef void (*PosFn)(void *, void *);
+    f32 sp8[3];
 
-    if (((Matrix *) this->unkC8 == NULL) && ((u8) this->unk5E8 == 0)) {
+    if ((this->unkC8 == NULL) && (this->unk5E8 == 0)) {
         this->unk15C -= 980.0f * gUpdateTimeDelta * gUpdateTimeDelta;
-        var_f0_118 = this->unk15C;
-        if (var_f0_118 > -1500.0f) {
-
+        if (this->unk15C > -1500.0f) {
         } else {
-            var_f0_118 = -1500.0f;
+            this->unk15C = -1500.0f;
         }
-        this->unk15C = var_f0_118;
-        M2C_FIELD(this->unk168, M2C_UNK (**)(void **, u8 *, M2C_UNK, f32), 0x10)(&this->unk168, &this->unk158, 0, 0.0f);
-        M2C_FIELD(this->unk168, M2C_UNK (**)(f32 *, void **), 0x4C)(&sp8, &this->unk168);
-        this->unkD0.unk30 = sp8;
-        this->unkD0.unk34 = spC;
-        this->unkD0.unk38 = sp10;
+        ((MoveFn) ((void **) this->unk168)[4])((void *) &this->unk168, (void *) &this->unk158, 0, 0.0f);
+        ((PosFn) ((void **) this->unk168)[0x4C / 4])((void *) sp8, (void *) &this->unk168);
+        this->unkD0.unk30 = sp8[0];
+        this->unkD0.unk34 = sp8[1];
+        this->unkD0.unk38 = sp8[2];
         this->unkD0.unk3C = 1.0f;
         this->unk5E8 = this->unk2D4 > 0;
-        if ((u8) this->unk5E8 != 0) {
+        if (this->unk5E8 != 0) {
             KDSound_Play3d(GS_EnergyCrystalBounce, (MKVector3 *) &this->unkD0.unk30, 0U, -1, 0.0f, 0U);
             M2C_FIELD(this, f32 *, 0x158) = 0.0f;
             this->unk15C = 0.0f;
@@ -114,7 +111,6 @@ void CynderEnergyCrystal::UpdateMovement() {
         }
     }
 }
-#endif
 
 void CynderEnergyCrystal::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
@@ -203,12 +199,10 @@ void CynderEnergyCrystal::Init() {
     this->unk160 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void CynderEnergyCrystalDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkE4.Init();
-    this->unkE4.unk18 = 0x0C000000;
-    this->unkE4.unk0 = 100.0f;
-    this->unkE4.unk4 = -50.0f;
+    M2C_FIELD(this, ColObjDescriptor *, 0xE4).Init();
+    M2C_FIELD(this, s32 *, 0xFC) = 0x0C000000;
+    M2C_FIELD(this, f32 *, 0xE4) = 100.0f;
+    this->unkE8 = -50.0f;
 }
-#endif

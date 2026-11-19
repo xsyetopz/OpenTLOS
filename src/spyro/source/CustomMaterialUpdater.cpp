@@ -161,13 +161,12 @@ CustomMaterialUpdater *CustomMaterialUpdateManager::Create(MKMaterial *arg0, int
     return temp_r31_197;
 }
 
-#if 0 // DRAFT: type mismatch 'CustomMaterialUpdater *' and 'CustomMaterialUpdater **'
 void CustomMaterialUpdateManager::Deinit() {
     CustomMaterialUpdater **var_r31_252;
     CustomMaterialUpdater **var_r3_253;
     CustomMaterialUpdater **var_r4_251;
-    CustomMaterialUpdater *temp_r0_256;
-    CustomMaterialUpdater *temp_r0_275;
+    CustomMaterialUpdater **temp_r0_256;
+    CustomMaterialUpdater **temp_r0_275;
     u32 temp_r0_261;
 
     var_r4_251 = this->unk0;
@@ -177,18 +176,18 @@ loop_3:
     temp_r0_261 = M2C_FIELD(var_r3_253, u32 *, -4);
     var_r3_253 -= 4;
     if (temp_r0_261 != 0U) {
-        temp_r0_256 = *var_r3_253;
+        temp_r0_256 = (CustomMaterialUpdater **) *var_r3_253;
         if (temp_r0_256 < var_r31_252) {
-            var_r31_252 = (CustomMaterialUpdater **) temp_r0_256;
+            var_r31_252 = temp_r0_256;
         }
         goto loop_3;
     }
-    if (var_r3_253 != &gEmptyPtrListDL) {
+    if (var_r3_253 != (CustomMaterialUpdater **) &gEmptyPtrListDL) {
 loop_9:
-        temp_r0_275 = *var_r4_251;
+        temp_r0_275 = (CustomMaterialUpdater **) *var_r4_251;
         if (temp_r0_275 != NULL) {
             if (temp_r0_275 < var_r31_252) {
-                var_r31_252 = (CustomMaterialUpdater **) temp_r0_275;
+                var_r31_252 = temp_r0_275;
             }
             var_r4_251 += 4;
             goto loop_9;
@@ -201,7 +200,6 @@ loop_9:
     }
     this->unk0 = NULL;
 }
-#endif
 
 void CustomMaterialUpdateManager::Update() {
     CustomMaterialUpdater **var_r31_308;
