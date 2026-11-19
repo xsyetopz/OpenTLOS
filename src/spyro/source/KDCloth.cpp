@@ -17,7 +17,6 @@
 #include "common/Source/MKWind.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDClothProperty::Resolve(KDPropertySet *arg0) {
     MKModel *temp_r4_81;
     s8 *temp_r0_69;
@@ -25,7 +24,7 @@ void KDClothProperty::Resolve(KDPropertySet *arg0) {
 
     temp_r0_69 = this->unk10;
     if (temp_r0_69 != NULL) {
-        this->unk10 = (const char *) (property_cast<KDModelProperty *, KDProperty *>(arg0->Find(temp_r0_69)));
+        this->unk10 = (s8 *) (property_cast<KDModelProperty *, KDProperty *>((KDProperty *) arg0->Find((const char *) temp_r0_69)));
     }
     temp_r3_78 = this->unk10;
     if (temp_r3_78 != NULL) {
@@ -35,19 +34,16 @@ void KDClothProperty::Resolve(KDPropertySet *arg0) {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 KDClothProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_103;
 
     var_r31_103 = 0;
-    if ((this->unk14.LoadLine(arg0) != 0) || (arg0->LoadString("model", &this->unk10, 0) != 0)) {
+    if ((this->unk14.LoadLine(arg0) != 0) || (arg0->LoadString("model", (const char **) &this->unk10, 0) != 0)) {
         var_r31_103 = 1;
     }
     return var_r31_103;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void KDClothDescriptor::Update(MKModel *arg0) {
@@ -125,28 +121,24 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: function call 'MKModel_GetSubObjectIndex(MKModel *, SubObjectType, signed char *)' does not match 'MKModel_GetSubObjectIndex(const MKModel *, SubObjectType, con
 void KDClothDescriptor::Resolve(MKModel *arg0) {
     s8 *temp_r5_278;
 
     temp_r5_278 = this->unk14;
     if (temp_r5_278 != NULL) {
-        this->unk18 = MKModel_GetSubObjectIndex(arg0, (SubObjectType) 2, temp_r5_278);
+        this->unk18 = MKModel_GetSubObjectIndex(arg0, (SubObjectType) 2, (const char *) temp_r5_278);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 u8 KDClothDescriptor::LoadLine(MKIniLine *arg0) {
     u8 var_r31_305;
 
     var_r31_305 = 0;
-    if ((arg0->LoadInt("lit", (int *) &this->unk10, 0) != 0) || (arg0->LoadFloat("gravity", &this->unk0, 0) != 0) || (arg0->LoadFloat("friction", &this->unk4, 0) != 0) || (arg0->LoadFloat("windMultiplier", &this->unk8, 0) != 0) || (arg0->LoadInt("iterations", (int *) &this->unkC, 0) != 0) || (arg0->LoadString("clothSubObject", &this->unk14, 0) != 0)) {
+    if ((arg0->LoadInt("lit", (int *) &this->unk10, 0) != 0) || (arg0->LoadFloat("gravity", &this->unk0, 0) != 0) || (arg0->LoadFloat("friction", &this->unk4, 0) != 0) || (arg0->LoadFloat("windMultiplier", &this->unk8, 0) != 0) || (arg0->LoadInt("iterations", (int *) &this->unkC, 0) != 0) || (arg0->LoadString("clothSubObject", (const char **) &this->unk14, 0) != 0)) {
         var_r31_305 = 1;
     }
     return var_r31_305;
 }
-#endif
 
 void KDClothDescriptor::Init() {
     this->unk0 = 9810.0f;

@@ -467,53 +467,39 @@ void KDSoundFlangedFader::Stop() {
     KDSound_Stop((int *) &this->unk28);
 }
 
-#if 0 // DRAFT: undefined identifier 'sin'
-void KDSoundFlangedFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, MKVector3 *arg4, unsigned int arg5, int arg6) {
-    s32 sp8;
-    f32 temp_f1_898;
-    f32 temp_f2_923;
-    f32 temp_f3_922;
-    s32 temp_r0_884;
-    s32 temp_r0_946;
+extern "C" double sin(double);
 
-    sp8 = 1;
-    ((KDSoundFader *) this)->Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    sp8 = 1;
-    ((KDSoundFader *) &this->unk28)->Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+void KDSoundFlangedFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, MKVector3 *arg4, unsigned int arg5, int arg6) {
+    ((KDSoundFader *) this)->Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, true);
+    ((KDSoundFader *) &this->unk28)->Update(arg0, arg1, arg2, arg3, arg4, arg5, arg6, true);
     if (arg2 != 0) {
-        temp_r0_884 = this->unk50;
-        switch (temp_r0_884) {                      /* switch 1; irregular */
-        case 0:                                     /* switch 1 */
+        switch (this->unk50) {
+        case 0:
             this->unk6C += gUpdateTimeDelta * this->unk60;
-            temp_f1_898 = this->unk6C;
-            if (temp_f1_898 >= 360.0f) {
-                this->unk6C = temp_f1_898 - 360.0f;
+            if (this->unk6C >= 360.0f) {
+                this->unk6C = this->unk6C - 360.0f;
             }
             KDSound_SetPitch(this->unk28, (this->unk68 * (f32) sin((f64) (0.017453292f * this->unk6C))) + this->unk64);
             return;
-        case 1:                                     /* switch 1 */
+        case 1:
             this->unk6C += gUpdateTimeDelta * this->unk5C;
-            temp_f3_922 = this->unk6C;
-            temp_f2_923 = this->unk58;
-            if (((temp_f3_922 > temp_f2_923) && (this->unk5C > 0.0f)) || ((temp_f3_922 < temp_f2_923) && (this->unk5C < 0.0f))) {
+            if (((this->unk6C > this->unk58) && (this->unk5C > 0.0f)) || ((this->unk6C < this->unk58) && (this->unk5C < 0.0f))) {
                 this->unk6C = this->unk54;
             }
             KDSound_SetPitch(this->unk28, this->unk6C);
             return;
         }
     } else {
-        temp_r0_946 = this->unk50;
-        switch (temp_r0_946) {                      /* switch 2; irregular */
-        case 0:                                     /* switch 2 */
+        switch (this->unk50) {
+        case 0:
             this->unk6C = 0.0f;
             return;
-        case 1:                                     /* switch 2 */
+        case 1:
             this->unk6C = this->unk54;
             return;
         }
     }
 }
-#endif
 
 void KDSoundFlangedFader::Message(MKMessage *arg0) {
     ((KDSoundPlayer *) this)->Message(arg0);
