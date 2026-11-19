@@ -1,0 +1,45 @@
+#ifndef COMMON_SOURCE_MKPARTICLESYSTEM_H
+#define COMMON_SOURCE_MKPARTICLESYSTEM_H
+
+#include <dolphin/types.h>
+#include "common/Source/MKBaseParticleSystem.h"
+
+class MKBaseParticleSystem;
+class MKParticleSystem;
+
+class MKParticleSystem : public MKBaseParticleSystem {  // base: ctor/dtor vtable stores
+public:
+    class Envelope;
+    virtual ~MKParticleSystem(void);
+    virtual void Init(void);
+    virtual void Deinit(void);
+    virtual void GetName(void);
+    virtual void * CreateParticle(void);
+    virtual void UpdateParticles(void);
+    virtual void * HitFloor(MKBaseParticleSystem::ParticleRec *, bool *);
+    void SetMaxParticleAge(float);
+    void CalculateEnvelope(void);
+    void SetEnvelope(MKParticleSystem::Envelope *, int);
+    /* 0x0ec */ u8 padEC[0x4];
+    /* 0x0f0 */ f32 unkF0;
+    /* 0x0f4 */ u8 unkF4;
+    /* 0x0f5 */ u8 padF5[0x3];
+    /* 0x0f8 */ f32 unkF8;
+    /* 0x0fc */ f32 unkFC;
+    /* 0x100 */ f32 unk100;
+    /* 0x104 */ u8 pad104[0x4];
+    /* 0x108 */ f32 unk108;
+    /* 0x10c */ f32 unk10C;
+    /* 0x110 */ f32 unk110;
+    /* 0x114 */ u8 pad114[0x4];
+    /* 0x118 */ f32 unk118;
+    /* 0x11c */ f32 unk11C;
+    /* 0x120 */ f32 unk120;
+    /* 0x124 */ f32 unk124;
+    /* 0x128 */ f32 unk128;
+    /* 0x12c */ f32 unk12C;
+    /* 0x130 */ s32 unk130;
+    /* 0x134 */ MKParticleSystem::Envelope* unk134;
+};
+
+#endif  // COMMON_SOURCE_MKPARTICLESYSTEM_H

@@ -1,0 +1,114 @@
+#include "common/gc/MKMat_MK2_FFTWater_GC.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMat_MK2_Standard.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/Texture.h"
+#include "dolphin/gx.h"
+#include "common/Source/FileSys.h"
+#include "common/Source/Str.h"
+#include <m2c_macros.h>
+
+M2C_UNK free(MKMaterial *);                         /* extern */
+void *malloc(M2C_UNK);                              /* extern */
+static M2C_UNK wState;
+static s8 lit_stringBase0[0x1A] = {
+    0x25,
+    0x73,
+    0x25,
+    0x73,
+    0,
+    0x2E,
+    0x74,
+    0x65,
+    0x78,
+    0,
+    0x4D,
+    0x4B,
+    0x57,
+    0x68,
+    0x69,
+    0x74,
+    0x65,
+    0,
+    0x63,
+    0x61,
+    0x70,
+    0x74,
+    0x75,
+    0x72,
+    0x65,
+    0,
+}; /* const */
+
+s32 MKMat_MK2_FFTWater_BEGIN_INTERNAL() {
+    if ((s32) M2C_FIELD(&wState, s32 *, 4) == 0) {
+        M2C_FIELD(&wState, s32 *, 4) = (s32) (M2C_FIELD(&wState, s32 *, 4) + 1);
+        return 1;
+    }
+    M2C_FIELD(&wState, s32 *, 4) = 0;
+    return 0;
+}
+
+s32 MKMat_MK2_FFTWater_BEGIN(MKMaterial *arg0) {
+    return 0;
+}
+
+void MKMat_MK2_FFTWater_DESTROY(MKMaterial *arg0) {
+    MKHeap *temp_r3_44;
+
+    arg0->unk38->Destroy();
+    temp_r3_44 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
+    if (temp_r3_44 != NULL) {
+        ((MKHeap *) (temp_r3_44->Current()))->Free(arg0, NULL, 0);
+        return;
+    }
+    free(arg0);
+}
+
+#if 0 // DRAFT: undefined identifier 'Current'
+void *MKMat_MK2_FFTWater_INIT(MatInfo *arg0) {
+    MKHeap *temp_r3_72;
+    MKHeap *temp_r3_96;
+    MKHeap *temp_ret_96;
+    Texture *temp_r30_92;
+    f32 temp_f1_96;
+    s32 temp_ret_106;
+    u32 var_r4_90;
+    void *var_r31_80;
+
+    temp_r3_72 = arg0->Current();
+    if (temp_r3_72 != NULL) {
+        var_r31_80 = ((MKHeap *) (temp_r3_72->Current()))->Alloc(0x3C, NULL, 0);
+    } else {
+        var_r31_80 = malloc(0x3C);
+    }
+    var_r4_90 = (u32) (u64) memset(var_r31_80, 0, 0x3CU);
+    M2C_FIELD(var_r31_80, MatInfo **, 0x24) = arg0;
+    temp_r30_92 = &arg0->unkE8;
+    if (((s8) (u8) arg0->unkE8.unk0 != 0) && ((temp_ret_96 = temp_r30_92->Find((s8 *) var_r4_90), temp_f1_96 = M2C_BITWISE(f32, temp_ret_96), temp_r3_96 = temp_ret_96, var_r4_90 = (u32) (u64) temp_ret_96, ((temp_r3_96 == NULL) == 0)) || (temp_ret_106 = MKArchive_Exists(Str_Printf(lit_stringBase0, temp_r30_92, &lit_stringBase0[5], temp_f1_96), NULL), var_r4_90 = (u32) (u64) temp_ret_106, ((temp_ret_106 == 0) == 0)))) {
+        M2C_FIELD(var_r31_80, s8 **, 0x38) = temp_r30_92->Create((s8 *) var_r4_90, 0.0f);
+    } else {
+        M2C_FIELD(var_r31_80, s8 **, 0x38) = ((Texture *) ((Texture *) &lit_stringBase0[0xA]))->Create((s8 *) var_r4_90, 0.0f);
+    }
+    return var_r31_80;
+}
+#endif
+
+void MKMat_MK2_FFTWater_DEREGISTER() {
+    ((Texture *) (M2C_FIELD(&wState, Texture **, 0x14)))->Destroy();
+    ((Texture *) (M2C_FIELD(&wState, Texture **, 0x10)))->Destroy();
+}
+
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+void MKMat_MK2_FFTWater_REGISTER(void *arg0) {
+    GXTexObj *temp_r31_169;
+    s32 temp_r6_166;
+
+    ((Texture *) ((Texture *) &lit_stringBase0[0x12]))->CreateRenderTarget((s8 *)0x100, 0x100, 0, M2C_ERROR(/* Read from unset register $r7 */));
+    temp_r6_166 = M2C_ERROR(/* Read from unset register $r3 */);
+    temp_r31_169 = &wState + 0x18;
+    M2C_FIELD(&wState, s32 *, 0x10) = temp_r6_166;
+    memcpy(temp_r31_169, temp_r6_166 + 0x60, 0x20U);
+    GXInitTexObjWrapMode(temp_r31_169, GX_CLAMP, GX_CLAMP);
+}
+#endif

@@ -1,0 +1,7 @@
+#ifndef COMMON_SOURCE_MKRESOURCEGLOBALS_H
+#define COMMON_SOURCE_MKRESOURCEGLOBALS_H
+
+#include <dolphin/types.h>
+
+extern void ** gMK;
+#endif  // COMMON_SOURCE_MKRESOURCEGLOBALS_H
