@@ -1,14 +1,37 @@
 #include "spyro/source/BoulderRamp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/Ball.h"
+#include "spyro/source/Catapult.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SnowballTree.h"
 #include "spyro/source/Trap.h"
 #include "unplaced_templates.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_PLACEHOLDER;
@@ -386,12 +409,10 @@ void BoulderRamp::SetState(BoulderRamp::State arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void BoulderRamp::Update() {
     ((KDStateMachine<BoulderRamp> *) &this->unkF4.unk18)->Update(this, 0);
     GameProp::Update();
 }
-#endif
 
 void BoulderRamp::Reset() {
     this->unkE4 = 0;
@@ -437,7 +458,7 @@ s32 BoulderRamp::LoadLine(MKIniLine *arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void BoulderRamp::Deinit() {
     s32 var_ctr_582;
     s32 var_r3_577;
@@ -485,7 +506,7 @@ s32 BoulderRampDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_662;
 
     var_r31_662 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "ballJumpSound", &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "ballSinkSound", &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "ballStopSound", &this->unkEC) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "ballJumpSound", (int *) &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "ballSinkSound", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "ballStopSound", (int *) &this->unkEC) != 0)) {
         var_r31_662 = 1;
     }
     return var_r31_662;

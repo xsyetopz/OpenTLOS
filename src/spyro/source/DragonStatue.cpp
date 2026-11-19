@@ -1,16 +1,46 @@
 #include "spyro/source/DragonStatue.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
-#include "common/Source/MKModel.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -22,7 +52,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void DragonStatue::EmitDust() {
     f64 sp68;                                       /* compiler-managed */
     f64 sp60;
@@ -61,10 +91,10 @@ void DragonStatue::EmitDust() {
     sp48 = (f64) sp28;
     sp40 = (f64) sp20;
 loop_22:
-    if (var_r30_102 < (s32) (this->unkFC + MKRand_Int(&gViewSeed, -1, 1))) {
-        sp40 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+    if (var_r30_102 < (s32) (this->unkFC + MKRand_Int((int *) &gViewSeed, -1, 1))) {
+        sp40 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         (*(f32 *) ((u8 *) &sp38 + 0xc)) = 0.0f;
-        temp_f1_121 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f1_121 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f0_122 = (f32) 0.0f;
         temp_f3_124 = (f32) temp_f1_121;
         sp48 = (f32) temp_f1_121;
@@ -112,16 +142,16 @@ loop_22:
         sp48 *= var_f5_197;
         sp50 = (f64) sp40;
         sp58 = (f64) sp48;
-        temp_f2_219 = 100.0f * MKRand_Float(&gViewSeed, 5.0f, 12.0f);
+        temp_f2_219 = 100.0f * MKRand_Float((int *) &gViewSeed, 5.0f, 12.0f);
         temp_f0_222 = sp50 * (f64) temp_f2_219;
         sp50 = temp_f0_222;
         sp60 = (f64) sp40;
         sp58 = (f32) sp58 * temp_f2_219;
         sp68 = (f64) sp48;
-        (*(f32 *) ((u8 *) &sp60 + 0x4)) = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        (*(f32 *) ((u8 *) &sp60 + 0x4)) = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         sp60 *= 5.53552857e-315;
         sp68 = (f32) sp68 * 100.0f;
-        spC = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
+        spC = MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f);
         temp_f0_251 = this->unkD8 + temp_f0_222;
         sp10 = temp_f0_251;
         sp30 = temp_f0_251;
@@ -134,7 +164,6 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void DragonStatue::EmitCrudAboveStatue() {
     f64 sp78;                                       /* compiler-managed */
     f64 sp70;
@@ -166,18 +195,18 @@ loop_2:
         sp70 = this->unkD8;
         sp78 = M2C_FIELD(this, f64 *, 0xE0);
         (*(f32 *) ((u8 *) &sp70 + 0x4)) += 325.0f;
-        temp_f29_327 = MKRand_Float(&gViewSeed, -2500.0f, 2500.0f);
-        temp_f28_332 = MKRand_Float(&gViewSeed, 400.0f, 600.0f);
-        sp10 = MKRand_Float(&gViewSeed, -2500.0f, 2500.0f);
+        temp_f29_327 = MKRand_Float((int *) &gViewSeed, -2500.0f, 2500.0f);
+        temp_f28_332 = MKRand_Float((int *) &gViewSeed, 400.0f, 600.0f);
+        sp10 = MKRand_Float((int *) &gViewSeed, -2500.0f, 2500.0f);
         sp14 = temp_f28_332;
         sp18 = temp_f29_327;
         sp50 = (f64) sp10;
         sp58 = (f64) sp18;
         sp70 += sp50;
         sp78 = (f32) sp78 + (f32) sp58;
-        temp_f28_356 = MKRand_Float(&gViewSeed, -4.0f, 4.0f);
-        temp_f29_361 = MKRand_Float(&gViewSeed, -2.0f, 0.5f);
-        sp30 = MKRand_Float(&gViewSeed, -4.0f, 4.0f);
+        temp_f28_356 = MKRand_Float((int *) &gViewSeed, -4.0f, 4.0f);
+        temp_f29_361 = MKRand_Float((int *) &gViewSeed, -2.0f, 0.5f);
+        sp30 = MKRand_Float((int *) &gViewSeed, -4.0f, 4.0f);
         sp34 = temp_f29_361;
         sp38 = temp_f28_356;
         sp40 = (f64) sp30;
@@ -187,15 +216,14 @@ loop_2:
         sp60 = temp_f0_375;
         sp28 = (f32) sp48 * 100.0f;
         sp68 = (f64) sp28;
-        sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
+        sp8 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
         gb.EmitCrud(*((MKVector3 *) &sp70), *((MKVector3 *) &sp60), sp8);
         var_r30_312 += 1;
         goto loop_2;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void DragonStatue::EmitCrudAbovePlayer() {
     f64 sp88;                                       /* compiler-managed */
     f64 sp80;
@@ -230,9 +258,9 @@ loop_2:
         sp80 = M2C_FIELD(temp_r4_445, f64 *, 0x30);
         sp88 = M2C_FIELD(temp_r4_445, f64 *, 0x38);
         (*(f32 *) ((u8 *) &sp80 + 0x4)) += 200.0f;
-        temp_f27_457 = MKRand_Float(&gViewSeed, -10.0f, 10.0f);
-        temp_f28_462 = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
-        MKVector(MKRand_Float(&gViewSeed, -10.0f, 10.0f), temp_f28_462, temp_f27_457);
+        temp_f27_457 = MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f);
+        temp_f28_462 = MKRand_Float((int *) &gViewSeed, 4.0f, 6.0f);
+        MKVector(MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f), temp_f28_462, temp_f27_457);
         temp_f0_473 = sp50 * 5.53552857e-315;
         sp10 = temp_f0_473;
         sp60 = temp_f0_473;
@@ -240,9 +268,9 @@ loop_2:
         sp68 = (f64) sp18;
         sp80 += temp_f0_473;
         sp88 = (f32) sp88 + (f32) sp68;
-        temp_f27_494 = MKRand_Float(&gViewSeed, -4.0f, 4.0f);
-        temp_f28_499 = MKRand_Float(&gViewSeed, -2.0f, 0.5f);
-        sp30 = MKRand_Float(&gViewSeed, -4.0f, 4.0f);
+        temp_f27_494 = MKRand_Float((int *) &gViewSeed, -4.0f, 4.0f);
+        temp_f28_499 = MKRand_Float((int *) &gViewSeed, -2.0f, 0.5f);
+        sp30 = MKRand_Float((int *) &gViewSeed, -4.0f, 4.0f);
         sp34 = temp_f28_499;
         sp38 = temp_f27_494;
         sp40 = (f64) sp30;
@@ -252,7 +280,7 @@ loop_2:
         sp70 = temp_f0_513;
         sp28 = (f32) sp48 * 100.0f;
         sp78 = (f64) sp28;
-        sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
+        sp8 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
         gb.EmitCrud(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70), sp8);
         var_r29_437 += 1;
         goto loop_2;
@@ -397,13 +425,11 @@ void DragonStatue::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void DragonStatue::Deinit() {
     KDProp::Deinit();
-    KDSound_Stop(&this->unk104);
-    KDSound_Stop(&this->unk12C);
+    KDSound_Stop((int *) &this->unk104);
+    KDSound_Stop((int *) &this->unk12C);
 }
-#endif
 
 void DragonStatue::Draw() {
     if ((s32) this->unk100 != 1) {
@@ -411,7 +437,7 @@ void DragonStatue::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void DragonStatue::Update() {
     Matrix sp330;
     Matrix sp2F0;
@@ -1197,7 +1223,6 @@ void DragonStatue::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DragonStatue::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
         return 1U;
@@ -1220,10 +1245,10 @@ s32 DragonStatue::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadVector3("MoveAccelleration", (MKVector3 *) &this->unkC8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("AmountOfCrud", &this->unkF8, 0) != 0) {
+    if (arg0->LoadInt("AmountOfCrud", (int *) &this->unkF8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("AmountOfDust", &this->unkFC, 0) != 0) {
+    if (arg0->LoadInt("AmountOfDust", (int *) &this->unkFC, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("AngularSpeed", &this->unkE8, 0) != 0) {
@@ -1231,7 +1256,6 @@ s32 DragonStatue::LoadLine(MKIniLine *arg0) {
     }
     return (u8) (arg0->LoadFloat("AngularAcceleration", &this->unkF0, 0) != 0);
 }
-#endif
 
 void DragonStatue::LoadDone() {
     f64 sp10;

@@ -1,9 +1,13 @@
 #include "common/Source/MKView.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKView_GC.h"
 #include <m2c_macros.h>

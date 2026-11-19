@@ -1,16 +1,33 @@
 #include "spyro/source/GoopFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FXBase.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -152,7 +169,7 @@ void GoopFX::Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal type
 void GoopFXDescriptor::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector4 &arg3) {
     f32 sp10C;
     f32 sp108;
@@ -215,12 +232,12 @@ void GoopFXDescriptor::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float 
             var_r30_292 = 0;
             temp_f31_297 = arg1.unk8;
             var_r27_299 = 0;
-            M2C_FIELD(temp_r28_283, f32 *, 0xD8) = (f32) (4.0f * MKRand_Float(&gViewSeed, 0.75f, 1.0f));
+            M2C_FIELD(temp_r28_283, f32 *, 0xD8) = (f32) (4.0f * MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f));
             M2C_FIELD(temp_r28_283, s32 *, 0xE0) = 1;
             M2C_FIELD(temp_r28_283, f64 *, 0xC8) = (f64) M2C_FIELD(&arg3, f64 *, 0);
             M2C_FIELD(temp_r28_283, f64 *, 0xD0) = (f64) M2C_FIELD(&arg3, f64 *, 8);
             do {
-                temp_f1_308 = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+                temp_f1_308 = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
                 sp60 = M2C_FIELD(&arg1, f64 *, 0) * temp_f1_308;
                 temp_r3_314 = temp_r28_283 + var_r30_292;
                 var_r27_299 += 1;

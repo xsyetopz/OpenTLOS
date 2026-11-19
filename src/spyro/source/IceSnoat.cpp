@@ -1,17 +1,24 @@
 #include "spyro/source/IceSnoat.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include <m2c_macros.h>
@@ -286,7 +293,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
     sp1D8 = (f32) sp1D8 * var_f4_360;
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
     if (var_f5_293 == 200.0f) {
-        sp140.operator*(MKRand_Float(&gViewSeed, 100.0f, 200.0f));
+        sp140.operator*(MKRand_Float((int *) &gViewSeed, 100.0f, 200.0f));
         sp20 = sp200 + M2C_BITWISE(f64, sp140);
         sp150 = sp20;
         sp28 = (f32) sp208 + sp140.unk8;

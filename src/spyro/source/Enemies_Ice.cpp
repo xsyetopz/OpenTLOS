@@ -1,26 +1,79 @@
 #include "spyro/source/Enemies_Ice.h"
 #include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/EnemyGoal_Think.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKMaterial.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -36,7 +89,7 @@ extern void **gMK;
 extern s32 gRenderState;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: ';' expected
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit iceTier1BodyFXInit;      /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit iceTier2BodyFXInit;      /* unable to generate initializer: confusing struct layout */
 
@@ -198,14 +251,13 @@ void IceTier2::Update() {
     ((KDSoundFader *) &this->unkB38)->Update(GS_IceOgreGhostIdle, 1U, var_r31_401, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void IceTier2::Deinit() {
     MKCollisionInfo *temp_r31_444;
     MKHeap *temp_r3_447;
 
     this->unk634 = this->unkB10;
     Enemy::Deinit();
-    KDSound_Stop(&this->unkB38);
+    KDSound_Stop((int *) &this->unkB38);
     temp_r31_444 = this->unkB14;
     if (temp_r31_444 != NULL) {
         temp_r3_447 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
@@ -217,7 +269,6 @@ void IceTier2::Deinit() {
     }
     this->unkB14 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 s32 IceTier2::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
@@ -373,7 +424,7 @@ void IceTier1::Update() {
                 spA0 = (f64) spC0.unk8;
             }
             (*(f32 *) ((u8 *) &sp98 + 0x4)) = 1.0f;
-            temp_f1_785 = MKRand_Float(&gViewSeed, 80.0f, 150.0f);
+            temp_f1_785 = MKRand_Float((int *) &gViewSeed, 80.0f, 150.0f);
             temp_f0_788 = spC0.unk20 * temp_f1_785;
             sp38 = temp_f0_788;
             sp68 = temp_f0_788;
@@ -384,13 +435,13 @@ void IceTier1::Update() {
             sp78 = temp_f0_799;
             sp30 = spA8.unk8 - (f32) sp70;
             sp80 = (f64) sp30;
-            temp_f1_812 = MKRand_Float(&gViewSeed, 200.0f, 400.0f);
+            temp_f1_812 = MKRand_Float((int *) &gViewSeed, 200.0f, 400.0f);
             temp_f0_815 = sp98 * temp_f1_812;
             sp18 = temp_f0_815;
             sp58 = temp_f0_815;
             sp20 = (f32) spA0 * (f32) temp_f1_812;
             sp60 = (f64) sp20;
-            sp14 = MKRand_Float(&gViewSeed, 0.13f, 0.2f);
+            sp14 = MKRand_Float((int *) &gViewSeed, 0.13f, 0.2f);
             gb.EmitCrud(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58), sp14);
             var_r29_754 += 1;
         } while (var_r29_754 < 0x14);

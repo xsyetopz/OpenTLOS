@@ -1,30 +1,61 @@
 #include "spyro/source/EarthBombFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EarthBreathWhirlWinds.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplosionWarpFX.h"
 #include "spyro/source/FallingLeaves.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeatDistortPS.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKMaterial.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
@@ -165,7 +196,6 @@ void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2,
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void EarthBombFX::Deinit() {
     ManagedLight *temp_r4_261;
 
@@ -174,10 +204,9 @@ void EarthBombFX::Deinit() {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_261, 0U);
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->FreeManagedLight(this->unk100);
     }
-    KDSound_Stop(&this->unk180);
+    KDSound_Stop((int *) &this->unk180);
     GameProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void EarthBombFX::Draw() {
@@ -444,9 +473,9 @@ void EarthBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollis
 loop_18:
     if ((f32) var_r26_539 < (30.0f * var_f25_372)) {
         temp_r27_547 = ((u8 *) this->unk8) + 0x30;
-        temp_f19_549 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f20_554 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-        sp170 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f19_549 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f20_554 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+        sp170 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp174 = temp_f20_554;
         sp178 = temp_f19_549;
         sp2E0 = (f64) sp170;
@@ -461,9 +490,9 @@ loop_18:
         sp300 = temp_f0_578;
         sp158 = (f32) sp2F8 * var_f25_372;
         sp308 = (f64) sp158;
-        sp18 = MKRand_Float(&gViewSeed, 25.0f, 35.0f);
-        temp_f20_596 = MKRand_Float(&gViewSeed, 0.0f, 0.2f);
-        sp140 = MKRand_Float(&gViewSeed, 0.0f, 0.2f);
+        sp18 = MKRand_Float((int *) &gViewSeed, 25.0f, 35.0f);
+        temp_f20_596 = MKRand_Float((int *) &gViewSeed, 0.0f, 0.2f);
+        sp140 = MKRand_Float((int *) &gViewSeed, 0.0f, 0.2f);
         sp144 = 1.0f;
         sp148 = temp_f20_596;
         sp14C = 1.0f;
@@ -487,7 +516,7 @@ loop_18:
         M2C_FIELD(temp_r3_629, f32 *, 0x20) = 0.0f;
         sp2C8 = (f64) sp88;
         M2C_FIELD(temp_r3_629, f32 *, 0x28) = 0.0f;
-        temp_f0_664 = 3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f0_664 = 3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp78 = 0.0f;
         sp70 = 0.0f;
         sp74 = 0.0f;
@@ -497,7 +526,7 @@ loop_18:
         sp2A0 = (f64) sp70;
         sp2A8 = (f64) sp78;
         M2C_FIELD(temp_r26_634, f32 *, 0x18) = var_f26_377;
-        M2C_FIELD(temp_r26_634, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r26_634, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         M2C_FIELD(temp_r26_634, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r28_535, void **, 0xE8), f32 *, 0xF4);
     }
     var_r27_687 = 0;
@@ -528,7 +557,7 @@ loop_18:
         sp240 = temp_f0_736;
         sp138 = (f32) sp358 * 300.0f;
         sp248 = (f64) sp138;
-        sp14 = MKRand_Int(&gViewSeed, 0, 3);
+        sp14 = MKRand_Int((int *) &gViewSeed, 0, 3);
         ((FallingLeaves *) (M2C_FIELD(temp_r28_535, FallingLeaves **, 0xE4)))->Emit(*((MKVector3 *) &sp360), *((MKVector3 *) &sp240), 2.0f, sp14, 1U);
         var_r27_687 += 1;
     } while (var_r27_687 < 5);
@@ -901,7 +930,7 @@ void EarthBombFX::Update() {
         sp2B8 = temp_f0_1235;
         sp170 = M2C_FIELD(temp_r4_1229, f32 *, 8) + (f32) sp2B0;
         sp2C0 = (f64) sp170;
-        sp15C = MKRand_Float(&gViewSeed, 100.0f, 200.0f);
+        sp15C = MKRand_Float((int *) &gViewSeed, 100.0f, 200.0f);
         sp158 = 0.0f;
         sp160 = 0.0f;
         sp268 = (f64) sp158;
@@ -954,9 +983,9 @@ void EarthBombFX::Update() {
         sp388 = 0;
         sp308 = sp318;
         sp310 = (f64) spB0;
-        temp_f31_1350 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f30_1355 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp148 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f31_1350 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f30_1355 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp148 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp14C = temp_f30_1355;
         sp150 = temp_f31_1350;
         sp218 = (f64) sp148;
@@ -1050,10 +1079,10 @@ void EarthBombFX::Update() {
         sp1D8 = temp_f0_1563;
         sp130 = (f32) sp2E0 * 20.0f;
         sp1E0 = (f64) sp130;
-        sp14 = MKRand_Int(&gViewSeed, 0, 3);
+        sp14 = MKRand_Int((int *) &gViewSeed, 0, 3);
         ((FallingLeaves *) (M2C_FIELD(temp_r31_1166, FallingLeaves **, 0xE4)))->Emit(*((MKVector3 *) &sp2E8), *((MKVector3 *) &sp1D8), 2.0f, sp14, 0U);
         if ((ManagedLight *) this->unk100 != NULL) {
-            temp_f1_1590 = MKRand_Float(&gViewSeed, 0.2f, 0.6f);
+            temp_f1_1590 = MKRand_Float((int *) &gViewSeed, 0.2f, 0.6f);
             temp_r3_1591 = this->unk100;
             temp_r3_1591->unk10 = sp318;
             temp_r3_1591->unk18 = sp320;

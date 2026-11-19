@@ -1,11 +1,25 @@
 #include "spyro/source/GroundFire.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/CrashFirePS.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/Level.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
@@ -159,7 +173,7 @@ loop_8:
             spB8 = temp_f0_184;
             sp30 = M2C_FIELD(temp_r26_306, f32 *, 0x30) + (f32) spB0;
             spC0 = (f64) sp30;
-            temp_f1_198 = 100.0f * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            temp_f1_198 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
             temp_f2_199 = M2C_BITWISE(f32, temp_r26_306->unk40);
             sp20 = 0.0f;
             sp18 = 0.0f;

@@ -1,49 +1,123 @@
 #include "spyro/source/Cynder.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BaseBreathFX.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/ClusterBomb.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/Coronas.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/CynderBossGoals.h"
 #include "spyro/source/CynderBreathFX.h"
 #include "spyro/source/CynderConcurrentGoals.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EarthShockwave.h"
 #include "spyro/source/ElectricSparks.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FireBombFX.h"
+#include "spyro/source/FlameBreathBeamFX.h"
+#include "spyro/source/FlyingBurningBits.h"
 #include "spyro/source/FuryFXFire.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
 #include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
 #include "spyro/source/ScreenWobbleFX.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/ShapedTrailFX.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
 #include "spyro/source/SpyroHud.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
 #include "spyro/source/SuckeyPS.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "common/Source/system_extras.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/PhrasePlayer.h"
-#include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
 f64 acos(f32);                                      /* extern */
@@ -217,7 +291,7 @@ void Cynder::UpdateFuryPowerUp() {
             spF0 = temp_f0_376;
             sp48 = spA0.unk8 * temp_f29_355;
             spF8 = (f64) sp48;
-            sp8 = MKRand_Float(&gViewSeed, 10.0f, 15.0f);
+            sp8 = MKRand_Float((int *) &gViewSeed, 10.0f, 15.0f);
             sp30 = -(f32) spF0;
             sp34 = -(*(f32 *) ((u8 *) &spF0 + 0x4));
             sp38 = -(f32) spF8;
@@ -2195,7 +2269,7 @@ void Cynder::CheckAnimEvents() {
                 spA8 = temp_f0_3784;
                 sp10 = sp98.unk8 * 1000.0f;
                 spB0 = (f64) sp10;
-                ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp108), *((MKVector3 *) &spA8), MKRand_Float(&gViewSeed, 0.5f, 1.0f), 0U);
+                ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp108), *((MKVector3 *) &spA8), MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f), 0U);
                 var_r29_3762 += 1;
             } while (var_r29_3762 < 0xA);
         }
@@ -3085,7 +3159,7 @@ s32 Cynder::LoadLine(MKIniLine *arg0) {
     s32 var_r27_5873;
     s32 var_r29_5875;
 
-    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("bConcurrentSkies", &this->unkD01, 0) != 0) || (arg0->LoadInt("iNavPathID", (s32 *) &this->unkF78, 0) != 0) || (arg0->LoadVector3("vStage3StartPos", &this->unkE98, 0) != 0) || (arg0->LoadVector3("vStage3StartRot", (MKVector3 *) &this->unkEA8, 0) != 0) || (this->unkECC.LoadLine(arg0, "OnStage1End") != 0) || (this->unkED0.LoadLine(arg0, "OnStage2End") != 0) || (this->unkED4.LoadLine(arg0, "OnStage3End") != 0) || (this->unk1000.LoadLine(arg0, "OnConcurrentSkiesEnd") != 0) || (this->unkEC8.LoadLine(arg0, "OnReset") != 0) || (this->unkED8.LoadLine(arg0, "Fury1a") != 0) || (this->unkEDC.LoadLine(arg0, "Fury1b") != 0) || (this->unkEE0.LoadLine(arg0, "Fury1c") != 0) || (this->unkEE4.LoadLine(arg0, "Fury1d") != 0) || (this->unkEE8.LoadLine(arg0, "Fury1e") != 0) || (this->unkEEC.LoadLine(arg0, "Fury2a") != 0) || (this->unkEF0.LoadLine(arg0, "Fury2b") != 0) || (this->unkEF4.LoadLine(arg0, "Fury2c") != 0) || (this->unkEF8.LoadLine(arg0, "Fury2d") != 0) || (this->unkEFC.LoadLine(arg0, "Fury2e") != 0) || (this->unkF00.LoadLine(arg0, "SpyroFury1a") != 0) || (this->unkF04.LoadLine(arg0, "SpyroFury1b") != 0) || (this->unkF08.LoadLine(arg0, "SpyroFury1c") != 0) || (this->unkF0C.LoadLine(arg0, "SpyroFury1d") != 0) || (temp_ret_5865 = this->unkF10.LoadLine(arg0, "SpyroFury1e"), var_f1_5865 = M2C_BITWISE(f32, temp_ret_5865), ((temp_ret_5865 == 0) == 0))) {
+    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("bConcurrentSkies", &this->unkD01, 0) != 0) || (arg0->LoadInt("iNavPathID", (int *) &this->unkF78, 0) != 0) || (arg0->LoadVector3("vStage3StartPos", &this->unkE98, 0) != 0) || (arg0->LoadVector3("vStage3StartRot", (MKVector3 *) &this->unkEA8, 0) != 0) || (this->unkECC.LoadLine(arg0, "OnStage1End") != 0) || (this->unkED0.LoadLine(arg0, "OnStage2End") != 0) || (this->unkED4.LoadLine(arg0, "OnStage3End") != 0) || (this->unk1000.LoadLine(arg0, "OnConcurrentSkiesEnd") != 0) || (this->unkEC8.LoadLine(arg0, "OnReset") != 0) || (this->unkED8.LoadLine(arg0, "Fury1a") != 0) || (this->unkEDC.LoadLine(arg0, "Fury1b") != 0) || (this->unkEE0.LoadLine(arg0, "Fury1c") != 0) || (this->unkEE4.LoadLine(arg0, "Fury1d") != 0) || (this->unkEE8.LoadLine(arg0, "Fury1e") != 0) || (this->unkEEC.LoadLine(arg0, "Fury2a") != 0) || (this->unkEF0.LoadLine(arg0, "Fury2b") != 0) || (this->unkEF4.LoadLine(arg0, "Fury2c") != 0) || (this->unkEF8.LoadLine(arg0, "Fury2d") != 0) || (this->unkEFC.LoadLine(arg0, "Fury2e") != 0) || (this->unkF00.LoadLine(arg0, "SpyroFury1a") != 0) || (this->unkF04.LoadLine(arg0, "SpyroFury1b") != 0) || (this->unkF08.LoadLine(arg0, "SpyroFury1c") != 0) || (this->unkF0C.LoadLine(arg0, "SpyroFury1d") != 0) || (temp_ret_5865 = this->unkF10.LoadLine(arg0, "SpyroFury1e"), var_f1_5865 = M2C_BITWISE(f32, temp_ret_5865), ((temp_ret_5865 == 0) == 0))) {
         return 1;
     }
     var_r27_5873 = 0;
@@ -3105,7 +3179,6 @@ loop_27:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void Cynder::Deinit() {
     s32 sp14;
     s32 sp10;
@@ -3116,7 +3189,7 @@ void Cynder::Deinit() {
     ((KDUniformSpline *) &this->unkCC0)->Deinit();
     ((KDUniformSpline *) &this->unkCD4)->Deinit();
     PhrasePlayer_StopEvent(this->unkD58);
-    KDSound_Stop(&this->unkD6C);
+    KDSound_Stop((int *) &this->unkD6C);
     ((ScreenWobbleFX *) (&gb + 0xB8))->EnableSpeedEffect(0U, 1.0f, 1.0f);
     temp_r4_5928 = this->unkF2C;
     if (temp_r4_5928 != NULL) {
@@ -3141,7 +3214,6 @@ void Cynder::Deinit() {
     }
     Enemy::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void Cynder::Init() {
@@ -3308,7 +3380,7 @@ loop_11:
         return 1;
     }
     var_r30_6365 = 0;
-    if ((arg0->LoadFloat("phraseDelay", &this->unk3B4, 0) != 0) || (KDSound_LoadLine(arg0, "phraseFlinchSound", &this->unk3B0) != 0)) {
+    if ((arg0->LoadFloat("phraseDelay", &this->unk3B4, 0) != 0) || (KDSound_LoadLine(arg0, "phraseFlinchSound", (int *) &this->unk3B0) != 0)) {
         var_r30_6365 = 1;
     }
     return var_r30_6365;

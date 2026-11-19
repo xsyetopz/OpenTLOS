@@ -1,13 +1,22 @@
 #include "spyro/source/HitFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
 #include "spyro/source/Coronas.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
-#include "common/Source/MKMaterial.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -259,7 +268,7 @@ void HitFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'HitFX' to
 void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, int arg3) {
     f64 sp48;
     f64 sp40;
@@ -299,7 +308,7 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
     this->unk50 = 1;
     this->unk88 = 0.0f;
     this->unk90 = 0.0f;
-    this->unk94 = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+    this->unk94 = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
     switch (arg3) {                                 /* irregular */
     case 0:
         this->unk88 = 0.0f;
@@ -334,9 +343,9 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
     } while (var_ctr_480 != 0);
     var_r27_501 = 0;
     do {
-        temp_f29_508 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f30_513 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp20 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f29_508 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f30_513 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp20 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp24 = temp_f30_513;
         sp28 = temp_f29_508;
         sp30 = (f64) sp20;
@@ -346,7 +355,7 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
         sp40 = temp_f0_527;
         sp18 = (f32) sp38 * 1050.0f;
         sp48 = (f64) sp18;
-        sp8 = MKRand_Float(&gViewSeed, 6.0f, 12.0f);
+        sp8 = MKRand_Float((int *) &gViewSeed, 6.0f, 12.0f);
         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(arg0, *((MKVector3 *) &sp40), sp8, arg2, -980.0f);
         var_r27_501 += 1;
     } while (var_r27_501 < 0xA);

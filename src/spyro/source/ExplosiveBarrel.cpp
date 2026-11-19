@@ -1,24 +1,68 @@
 #include "spyro/source/ExplosiveBarrel.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/BurningWick.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/Explosion4.h"
 #include "spyro/source/ExplosiveBarrelPath.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FlyingBurningBits.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/KDVolume.h"
 #include "spyro/source/KDWaterVolume.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -164,9 +208,9 @@ void ExplosiveBarrel::TriggerShatterFX() {
         temp_r4_249 = this->unk8;
         sp118 = M2C_FIELD(temp_r4_249, f64 *, 0x30);
         sp120 = M2C_FIELD(temp_r4_249, f64 *, 0x38);
-        temp_f26_258 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f27_263 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-        MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f27_263, temp_f26_258);
+        temp_f26_258 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f27_263 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_263, temp_f26_258);
         temp_f0_274 = spB8 * 5.53552857e-315;
         sp28 = temp_f0_274;
         spC8 = temp_f0_274;
@@ -174,9 +218,9 @@ void ExplosiveBarrel::TriggerShatterFX() {
         spD0 = (f64) sp30;
         sp118 += temp_f0_274;
         sp120 = (f32) sp120 + (f32) spD0;
-        temp_f26_295 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f27_300 = MKRand_Float(&gViewSeed, 0.0f, 3.0f);
-        sp68 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f26_295 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f27_300 = MKRand_Float((int *) &gViewSeed, 0.0f, 3.0f);
+        sp68 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp6C = temp_f27_300;
         sp70 = temp_f26_295;
         spA8 = (f64) sp68;
@@ -186,7 +230,7 @@ void ExplosiveBarrel::TriggerShatterFX() {
         sp108 = temp_f0_314;
         sp60 = (f32) spB0 * 50.0f;
         sp110 = (f64) sp60;
-        sp14 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
+        sp14 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
         gb.EmitDust(*((MKVector3 *) &sp118), *((MKVector3 *) &sp108), sp14, 0.0f);
         var_r29_247 += 1;
     } while (var_r29_247 < 4);
@@ -195,9 +239,9 @@ void ExplosiveBarrel::TriggerShatterFX() {
         temp_r4_342 = this->unk8;
         spF8 = M2C_FIELD(temp_r4_342, f64 *, 0x30);
         sp100 = M2C_FIELD(temp_r4_342, f64 *, 0x38);
-        temp_f26_351 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f27_356 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-        MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f27_356, temp_f26_351);
+        temp_f26_351 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f27_356 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_356, temp_f26_351);
         temp_f0_367 = sp88 * 5.53552857e-315;
         sp18 = temp_f0_367;
         sp98 = temp_f0_367;
@@ -205,9 +249,9 @@ void ExplosiveBarrel::TriggerShatterFX() {
         spA0 = (f64) sp20;
         spF8 += temp_f0_367;
         sp100 = (f32) sp100 + (f32) spA0;
-        temp_f31_388 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f29_393 = MKRand_Float(&gViewSeed, 0.0f, 6.0f);
-        sp48 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f31_388 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f29_393 = MKRand_Float((int *) &gViewSeed, 0.0f, 6.0f);
+        sp48 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp4C = temp_f29_393;
         sp50 = temp_f31_388;
         sp78 = (f64) sp48;
@@ -217,7 +261,7 @@ void ExplosiveBarrel::TriggerShatterFX() {
         spE8 = temp_f0_407;
         sp40 = (f32) sp80 * 100.0f;
         spF0 = (f64) sp40;
-        sp10 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
+        sp10 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
         gb.EmitCrud(*((MKVector3 *) &spF8), *((MKVector3 *) &spE8), sp10);
         var_r29_340 += 1;
     } while (var_r29_340 < 8);
@@ -424,7 +468,7 @@ void ExplosiveBarrel::Draw() {
     }
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ExplosiveBarrel::SetDefaults() {
     BurningWick *temp_r3_879;
     BurningWick *temp_r3_884;
@@ -434,7 +478,7 @@ void ExplosiveBarrel::SetDefaults() {
     temp_r3_879->Enable();
     temp_r3_884 = this->unk1AC;
     temp_r3_884->Reset();
-    KDSound_Stop(&this->unk1BC);
+    KDSound_Stop((int *) &this->unk1BC);
     this->unk1BA = 0;
     SetState((ExplosiveBarrel::States) 0);
     this->unk1B9 = 0;
@@ -477,12 +521,10 @@ s32 ExplosiveBarrel::LoadLine(MKIniLine *arg0) {
     return var_r31_968;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void ExplosiveBarrel::Deinit() {
-    KDSound_Stop(&this->unk1BC);
+    KDSound_Stop((int *) &this->unk1BC);
     Shatterable::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ExplosiveBarrel::Init() {

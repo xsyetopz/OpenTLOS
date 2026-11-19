@@ -1,23 +1,46 @@
 #include "spyro/source/SoundProp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSoundProp.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/GameEnums.h"
 #include <m2c_macros.h>
 
 extern void **gMK;
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void SoundProp::Disable() {
     if ((s32) this->unk4C != 0) {
-        KDSound_Stop(&this->unkA0);
+        KDSound_Stop((int *) &this->unkA0);
         this->unk4C = 0;
     }
 }
-#endif
 
 void SoundProp::Enable() {
     this->unk4C = 1;
@@ -48,14 +71,12 @@ void SoundProp::Message(MKMessage *arg0) {
     KDSoundProp::Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'PropTypes_LoadLine(MKIniLine *, const char[11], long *)'
 s32 SoundPropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_171;
 
     var_r31_171 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (PropTypes_LoadLine(arg0, "searchMask", &this->unkC) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (PropTypes_LoadLine(arg0, "searchMask", (int *) &this->unkC) != 0)) {
         var_r31_171 = 1;
     }
     return var_r31_171;
 }
-#endif

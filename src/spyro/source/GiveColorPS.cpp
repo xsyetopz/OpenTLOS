@@ -1,6 +1,12 @@
 #include "spyro/source/GiveColorPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDSpline.h"
@@ -171,7 +177,7 @@ void GiveColorPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'gGiveColorPSEnv'
 void GiveColorPS::Init() {
     f64 sp40;
     f64 sp38;
@@ -199,18 +205,18 @@ void GiveColorPS::Init() {
     this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
     this->unk188 = 0;
-    temp_f31_381 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-    temp_f30_386 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-    sp18 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+    temp_f31_381 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+    temp_f30_386 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+    sp18 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
     sp1C = temp_f30_386;
     sp20 = temp_f31_381;
     this->unk158 = (f64) sp18;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
     this->unk160 = (f64) sp20;
-    temp_f30_404 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-    temp_f31_409 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-    sp8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+    temp_f30_404 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+    temp_f31_409 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+    sp8 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
     spC = temp_f31_409;
     sp10 = temp_f30_404;
     this->unk168 = (f64) sp8;

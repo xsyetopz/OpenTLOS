@@ -1,6 +1,13 @@
 #include "spyro/source/CrashMistPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/Matrix.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -38,7 +45,7 @@ void CrashMistPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float
         M2C_FIELD(temp_r31_92, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r31_92, f32 *, 0x1C) = (f32) &arg2;
         M2C_FIELD(temp_r31_92, f32 *, 0x20) = (f32) &arg5;
-        M2C_FIELD(temp_r31_92, f32 *, 0x18) = (f32) (&arg3 * MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f));
+        M2C_FIELD(temp_r31_92, f32 *, 0x18) = (f32) (&arg3 * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
     }
 }
 #endif

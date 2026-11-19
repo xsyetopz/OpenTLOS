@@ -1,4 +1,14 @@
 #include "common/Source/MKHeap.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "dolphin/os.h"
 #include "common/Source/MKSystem.h"
 #include "common/Source/Str.h"
@@ -496,7 +506,7 @@ void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *
             if (this != NULL) {
                 this->unk0 += 1;
             }
-            ((MKHeap *) (MKHeap::heapList[var_r25_798]))->GetMemoryStatistics(&sp10, &spC, &sp8);
+            ((MKHeap *) (MKHeap::heapList[var_r25_798]))->GetMemoryStatistics((int *) &sp10, (int *) &spC, (int *) &sp8);
             if (arg0 != NULL) {
                 *arg0 = sp10 + (spC + sp8 + *arg0);
             }

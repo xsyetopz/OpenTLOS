@@ -1,12 +1,26 @@
 #include "spyro/source/LanguageSelectScreen.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKStringCache.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/GameStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LoadLevel.h"
 #include "spyro/source/MCLoadCheckScreen.h"
 #include "spyro/source/Tools.h"
 #include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIButton.h"
 #include "spyro/source/UIContainer.h"
+#include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UIStringTable.h"
@@ -258,7 +272,7 @@ void LanguageSelectScreen::LoadDone() {
     AddBefore(NULL, (UIObject *) this->unkC8);
     M2C_FIELD(this->unkC8, f32 *, 0x2C) = (f32) -((0.5f * (36.0f * (f32) (numLanguages - 1))) - 256.0f);
     var_r26_557 = numLanguages - 1;
-    if (GameLanguage_GetLast(&sp8, 0U) != 0) {
+    if (GameLanguage_GetLast((int *) &sp8, 0U) != 0) {
         var_r3_563 = &lit_stringBase0;
         do {
             temp_r24_573 = M2C_FIELD(ThrobButton::descriptor, s32 *, 8);
@@ -314,7 +328,7 @@ void LanguageSelectScreen::LoadDone() {
                 this->unkCC = var_r26_557;
             }
             var_r26_557 -= 1;
-            var_r3_563 = GameLanguage_GetPrev(&sp8, 0U);
+            var_r3_563 = GameLanguage_GetPrev((int *) &sp8, 0U);
         } while ((u8) var_r3_563 != 0);
     }
 }

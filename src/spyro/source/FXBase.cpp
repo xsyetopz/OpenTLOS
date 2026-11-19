@@ -1,9 +1,24 @@
 #include "spyro/source/FXBase.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
@@ -11,7 +26,7 @@
 
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FXBase::Burst(const MKVector3 &arg0) {
     Matrix sp130;
     M2C_UNK sp12C;
@@ -66,7 +81,7 @@ void FXBase::Burst(const MKVector3 &arg0) {
     var_r28_41 = 0;
 loop_2:
     if (var_r28_41 < (s32) M2C_FIELD(temp_r30_37, s32 *, 0xC0)) {
-        temp_f30_48 = MKRand_Float(&gViewSeed, M2C_FIELD(temp_r30_37, f32 *, 0xD0), M2C_FIELD(temp_r30_37, f32 *, 0xD4));
+        temp_f30_48 = MKRand_Float((int *) &gViewSeed, M2C_FIELD(temp_r30_37, f32 *, 0xD0), M2C_FIELD(temp_r30_37, f32 *, 0xD4));
         MKVector(1.0f, 1.0f, 1.0f);
         MKVector(-1.0f, 0.0f, -1.0f);
         KDRand_Vector(spF0, spE0);
@@ -77,15 +92,15 @@ loop_2:
         sp108 = (f64) sp48;
         sp128 = (f64) sp48;
         M2C_STRUCT_COPY((s32) &sp12C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        temp_f26_89 = MKRand_Float(&gViewSeed, 0.0f, M2C_FIELD(temp_r30_37, f32 *, 0xC4));
-        temp_f1_93 = MKRand_Float(&gViewSeed, 0.0f, M2C_FIELD(temp_r30_37, f32 *, 0xC4));
+        temp_f26_89 = MKRand_Float((int *) &gViewSeed, 0.0f, M2C_FIELD(temp_r30_37, f32 *, 0xC4));
+        temp_f1_93 = MKRand_Float((int *) &gViewSeed, 0.0f, M2C_FIELD(temp_r30_37, f32 *, 0xC4));
         sp38 = 0.0f;
         sp30 = temp_f1_93;
         sp34 = temp_f26_89;
         spC8 = (f64) sp38;
         spC0 = (f64) sp30;
         sp130.RotatePYR(&sp130, *((MKVector3 *) &spC0));
-        temp_f29_109 = MKRand_Float(&gViewSeed, M2C_FIELD(temp_r30_37, f32 *, 0xC8), M2C_FIELD(temp_r30_37, f32 *, 0xCC));
+        temp_f29_109 = MKRand_Float((int *) &gViewSeed, M2C_FIELD(temp_r30_37, f32 *, 0xC8), M2C_FIELD(temp_r30_37, f32 *, 0xCC));
         MKVector(0.0f, 1.0f, 0.0f);
         sp10 = sp130.unk30 + ((sp98 * sp130.unk20) + ((sp90 * M2C_BITWISE(f32, sp130)) + (sp94 * sp130.unk10)));
         sp14 = sp130.unk34 + ((sp98 * sp130.unk24) + ((sp90 * sp130.unk4) + (sp94 * sp130.unk14)));
@@ -98,7 +113,7 @@ loop_2:
         spB0 = sp20;
         sp118 = (f64) sp28;
         spB8 = (f64) sp28;
-        MKRand_Float(&gViewSeed, M2C_FIELD(temp_r30_37, f32 *, 0xD8), M2C_FIELD(temp_r30_37, f32 *, 0xDC));
+        MKRand_Float((int *) &gViewSeed, M2C_FIELD(temp_r30_37, f32 *, 0xD8), M2C_FIELD(temp_r30_37, f32 *, 0xDC));
         sp50 = 1.0f;
         sp54 = 1.0f;
         sp58 = 1.0f;

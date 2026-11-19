@@ -1,18 +1,60 @@
 #include "spyro/source/Lever.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
 #include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include <m2c_macros.h>
 
 extern s32 GS_LavaLeverPullStart;
@@ -137,7 +179,7 @@ block_28:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: declaration syntax error
 void Lever::Update() {
     s32 sp8;
     KDSoundPlayer *temp_r3_388;
@@ -237,12 +279,12 @@ void Lever::Deinit() {
     ((Targetable *) &this->unkC8)->UnregisterTargetable();
     temp_r3_575 = this->unk100;
     if (temp_r3_575 != NULL) {
-        KDSound_Stop(&temp_r3_575->unk0);
+        KDSound_Stop((int *) &temp_r3_575->unk0);
         temp_r31_579 = this->unk100;
         temp_cr0_eq_580 = temp_r31_579 == NULL;
         if (temp_cr0_eq_580 == 0) {
             if (temp_cr0_eq_580 == 0) {
-                KDSound_Stop(&temp_r31_579->unk0);
+                KDSound_Stop((int *) &temp_r31_579->unk0);
             }
             operator delete(temp_r31_579);
         }
@@ -279,7 +321,7 @@ s32 LeverDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_679;
 
     var_r31_679 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "LoopSound", &this->unkE4) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "LoopSound", (int *) &this->unkE4) != 0)) {
         var_r31_679 = 1;
     }
     return var_r31_679;

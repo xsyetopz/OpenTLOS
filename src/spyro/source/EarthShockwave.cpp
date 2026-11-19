@@ -1,14 +1,25 @@
 #include "spyro/source/EarthShockwave.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/ExplosionWarpFX.h"
 #include "spyro/source/FallingLeaves.h"
 #include "spyro/source/KDProp.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -233,7 +244,6 @@ void EarthShockwave::Draw() {
     }
 }
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void EarthShockwave::Update() {
     Matrix spC0;
     M2C_UNK spBC;
@@ -321,7 +331,7 @@ void EarthShockwave::Update() {
         sp80 = (f64) sp50;
         MKModel_SetColor(this->unk4, *((MKVector4 *) &sp78));
         if ((u8) this->unkAC != 0) {
-            temp_r28_496 = MKRand_Int(&gViewSeed, 0xA, 0xF);
+            temp_r28_496 = MKRand_Int((int *) &gViewSeed, 0xA, 0xF);
             var_r27_507 = 0;
             temp_f25_510 = 200.0f * (temp_f28_444 * this->unkA4);
             temp_f26_516 = 6.2831855f / (f32) (temp_r28_496 - 1);
@@ -337,7 +347,7 @@ loop_14:
                 sp98 = (f64) sp18;
                 spA0 = (f64) sp20;
                 temp_f2_547 = (f32) spA0 * temp_f25_510;
-                spAC = 100.0f * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+                spAC = 100.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
                 spA8 = (f32) sp98 * temp_f25_510;
                 spB0 = temp_f2_547;
                 spA8 = (f64) spA8 + this->unk90;
@@ -347,8 +357,8 @@ loop_14:
                 sp58 = temp_f0_561;
                 sp40 = (f32) spA0 * 300.0f;
                 sp60 = (f64) sp40;
-                sp14 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
-                sp10 = MKRand_Int(&gViewSeed, 0, 3);
+                sp14 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
+                sp10 = MKRand_Int((int *) &gViewSeed, 0, 3);
                 ((FallingLeaves *) (M2C_FIELD(&gb, FallingLeaves **, 0x234)))->Emit(*((MKVector3 *) &spA8), *((MKVector3 *) &sp58), sp14, sp10, 1U);
                 var_r27_507 += 1;
                 goto loop_14;
@@ -359,7 +369,6 @@ loop_14:
         }
     }
 }
-#endif
 
 void EarthShockwave::Init() {
     KDProp::Init();

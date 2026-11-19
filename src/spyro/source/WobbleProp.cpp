@@ -1,17 +1,46 @@
 #include "spyro/source/WobbleProp.h"
 #include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKDynamicBone.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -20,7 +49,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void WobbleProp::Draw() {
     f64 sp20;
     f64 sp18;
@@ -34,9 +62,9 @@ void WobbleProp::Draw() {
     f32 var_f3_100;
 
     if ((MKMaterial *) this->unkD4 != NULL) {
-        var_f31_54 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
+        var_f31_54 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
         if ((u8) this->unkCC != 0) {
-            var_f31_54 *= (0.5f * this->unkD0 * MKRand_Float(&gViewSeed, -0.5f, 0.5f)) + 1.0f;
+            var_f31_54 *= (0.5f * this->unkD0 * MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f)) + 1.0f;
         }
         var_f2_70 = 0.2f * var_f31_54;
         if (var_f2_70 < 1.0f) {
@@ -79,7 +107,6 @@ void WobbleProp::Draw() {
     }
     GameProp::Draw();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'spA0'
 void WobbleProp::Update() {
@@ -161,7 +188,7 @@ void WobbleProp::Update() {
             if ((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp58 + 0x4))))) >= (temp_f2_252 * temp_f2_252)) {
                 this->unkDC = 1;
                 if (KDSound_IsVoicePlaying(this->unkD8) != 0) {
-                    KDSound_Stop(&this->unkD8);
+                    KDSound_Stop((int *) &this->unkD8);
                 }
                 temp_r30_287 = ((u8 *) this->unk8) + 0x30;
                 this->unkD8 = KDSound_Play3d(M2C_FIELD(checked_cast<WobblePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), temp_r30_287, 0U, -1, 0.0f, 0U);
@@ -174,7 +201,7 @@ void WobbleProp::Update() {
         this->unkDC = 0;
     }
     if ((KDSound_IsVoicePlaying(this->unkD8) != 0) && (this->unkE4 == 0.0f)) {
-        KDSound_Stop(&this->unkD8);
+        KDSound_Stop((int *) &this->unkD8);
     }
     temp_ret_322 = KDSound_IsVoicePlaying(this->unkD8);
     var_f1_322 = M2C_BITWISE(f32, temp_ret_322);
@@ -229,7 +256,7 @@ s32 WobblePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_472;
 
     var_r31_472 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("HitSoundSensitivity", &this->unkE8, 0) != 0) || (arg0->LoadString("LampFlickerMatName", &this->unkEC, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", &this->unkE4) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("HitSoundSensitivity", &this->unkE8, 0) != 0) || (arg0->LoadString("LampFlickerMatName", &this->unkEC, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", (int *) &this->unkE4) != 0)) {
         var_r31_472 = 1;
     }
     return var_r31_472;

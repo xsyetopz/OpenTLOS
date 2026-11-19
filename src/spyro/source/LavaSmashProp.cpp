@@ -1,15 +1,47 @@
 #include "spyro/source/LavaSmashProp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/LavaBubbleFX.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
@@ -238,7 +270,7 @@ void LavaSmashProp::PostShatter() {
         sp1B0 = (f64) sp30;
         sp1B8 = (f64) sp38;
         this->unk138 = (f64) sp38;
-        if (MKRand_Int(&gViewSeed, 0, 0xA) == 0) {
+        if (MKRand_Int((int *) &gViewSeed, 0, 0xA) == 0) {
             spF8 = -1.0f;
             spE8 = 1.0f;
             spF0 = -1.0f;
@@ -411,12 +443,10 @@ void LavaSmashProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void LavaSmashProp::Deinit() {
     Shatterable::Deinit();
-    KDSound_Stop(&this->unk1A8);
+    KDSound_Stop((int *) &this->unk1A8);
 }
-#endif
 
 void LavaSmashProp::Init() {
     Shatterable::Init();
@@ -442,7 +472,7 @@ s32 LavaSmashPropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_796;
 
     var_r31_796 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("burnRadius", &this->unk16C, 0) != 0) || (arg0->LoadFloat("lavaBubbleYOffset", &this->unk170, 0) != 0) || (arg0->LoadFloat("sinkSpeed", &this->unk178, 0) != 0) || (arg0->LoadFloat("sinkDepth", &this->unk174, 0) != 0) || (arg0->LoadFloat("LavaSoundFadeIn", &this->unk180, 0) != 0) || (arg0->LoadFloat("LavaSoundFadeOut", &this->unk184, 0) != 0) || (KDSound_LoadLine(arg0, "LavaBubbleSound", &this->unk17C) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("burnRadius", &this->unk16C, 0) != 0) || (arg0->LoadFloat("lavaBubbleYOffset", &this->unk170, 0) != 0) || (arg0->LoadFloat("sinkSpeed", &this->unk178, 0) != 0) || (arg0->LoadFloat("sinkDepth", &this->unk174, 0) != 0) || (arg0->LoadFloat("LavaSoundFadeIn", &this->unk180, 0) != 0) || (arg0->LoadFloat("LavaSoundFadeOut", &this->unk184, 0) != 0) || (KDSound_LoadLine(arg0, "LavaBubbleSound", (int *) &this->unk17C) != 0)) {
         var_r31_796 = 1;
     }
     return var_r31_796;

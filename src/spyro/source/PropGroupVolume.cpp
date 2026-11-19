@@ -1,8 +1,15 @@
 #include "spyro/source/PropGroupVolume.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/BoundingRegion.h"
+#include "spyro/source/PolyRegion.h"
 #include "unplaced_templates.h"
 #include "common/Source/system_extras.h"
 #include <m2c_macros.h>
@@ -204,12 +211,12 @@ void PropGroupVolume::LoadDone() {
     Disable();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 PropGroupVolume::LoadLine(MKIniLine *arg0) {
     s32 var_r31_445;
 
     var_r31_445 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("enableZone", &this->unkA0, 0) != 0) || (this->unk50.LoadLine("region", arg0) != 0) || (arg0->LoadFloat("distanceMultiplier", &this->unk2A8, 0) != 0) || (arg0->LoadBool("bShowEnvDome", &this->unk2AC, 0) != 0) || (arg0->LoadBool("bEnabled", &this->unk2AD, 0) != 0) || (LoadOverlayName(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("enableZone", (int *) &this->unkA0, 0) != 0) || (this->unk50.LoadLine("region", arg0) != 0) || (arg0->LoadFloat("distanceMultiplier", &this->unk2A8, 0) != 0) || (arg0->LoadBool("bShowEnvDome", &this->unk2AC, 0) != 0) || (arg0->LoadBool("bEnabled", &this->unk2AD, 0) != 0) || (LoadOverlayName(arg0) != 0)) {
         var_r31_445 = 1;
     }
     return var_r31_445;

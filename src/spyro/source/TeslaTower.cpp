@@ -1,22 +1,51 @@
 #include "spyro/source/TeslaTower.h"
 #include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKDynamicBone.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EnemyRegion.h"
 #include "spyro/source/EnergyBeam.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDPath.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
@@ -604,12 +633,12 @@ void TeslaTower::DrawLightCone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: ')' expected
 void TeslaTower::Deinit() {
-    KDSound_Stop(&this->unk114);
-    KDSound_Stop(&this->unk13C);
-    KDSound_Stop(&this->unk164);
-    KDSound_Stop(&this->unk18C);
+    KDSound_Stop((int *) &this->unk114);
+    KDSound_Stop((int *) &this->unk13C);
+    KDSound_Stop((int *) &this->unk164);
+    KDSound_Stop((int *) &this->unk18C);
     ((KDSpline *) &this->unk90)->Deinit();
     ((EnergyBeam *) (M2C_FIELD(checked_cast<TeslaTowerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x70)))->FreeEnergyBeam(this->unk110);
     this->unk110 = NULL;
@@ -617,7 +646,7 @@ void TeslaTower::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: declaration syntax error
 void TeslaTower::Draw() {
     u8 var_r31_1046;
 
@@ -645,7 +674,7 @@ void TeslaTower::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: ')' expected
 void TeslaTower::Update() {
     MKVector3 sp58;
     f64 sp50;
@@ -711,7 +740,7 @@ void TeslaTower::Update() {
         sp24 = 1.0f;
         sp38 = (f64) sp18;
         sp40 = (f64) sp20;
-        sp10 = MKRand_Float(&gViewSeed, 16.0f, 20.0f);
+        sp10 = MKRand_Float((int *) &gViewSeed, 16.0f, 20.0f);
         sp30 = 0.0f;
         sp28 = 0.0f;
         sp2C = 0.0f;

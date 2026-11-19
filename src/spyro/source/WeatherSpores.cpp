@@ -1,8 +1,14 @@
 #include "spyro/source/WeatherSpores.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -76,7 +82,7 @@ loop_12:
             M2C_FIELD(temp_r30_77, f32 *, 8) = (f32) (M2C_FIELD(temp_r30_77, f32 *, 8) + (f32) sp78);
             temp_f29_137 = gUpdateTimeDelta;
             temp_f25_140 = 3.0f * (6.2831855f * (temp_f28_81 / this->unk12C));
-            temp_f26_143 = MKRand_Float(&gViewSeed, 0.125f, 0.25f);
+            temp_f26_143 = MKRand_Float((int *) &gViewSeed, 0.125f, 0.25f);
             temp_f27_147 = _table_sinf((0.25f * temp_f25_140) + 1.5707964f);
             MKVector(_table_sinf(temp_f25_140), 0.0f, temp_f27_147);
             sp50.operator*(100.0f * temp_f26_143);
@@ -124,7 +130,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
 void WeatherSporesPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r30_295;
     void *temp_r3_292;
@@ -135,7 +141,7 @@ void WeatherSporesPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const f
         M2C_FIELD(temp_r3_292, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
         M2C_FIELD(temp_r3_292, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_292, f32 *, 0x20) = 0.0f;
-        M2C_FIELD(temp_r3_292, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_292, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r30_295, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r30_295, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r30_295, f32 *, 0x18) = (f32) &arg2;

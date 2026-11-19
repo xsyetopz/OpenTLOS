@@ -53,7 +53,7 @@ public:
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline KDSoundProp::~KDSoundProp() {
     if (&this->unkA0 != NULL) {
-        KDSound_Stop(&this->unkA0);
+        KDSound_Stop((int *) &this->unkA0);
     }
     if (this != NULL) {
     }

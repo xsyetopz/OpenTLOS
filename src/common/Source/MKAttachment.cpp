@@ -1,5 +1,8 @@
 #include "common/Source/MKAttachment.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/Matrix.h"
 #include "unplaced_enums.h"
 #include <m2c_macros.h>

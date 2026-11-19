@@ -1,16 +1,52 @@
 #include "spyro/source/EarthBreathWhirlWinds.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FallingLeaves.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/WindFX.h"
 #include "unplaced_templates.h"
@@ -461,7 +497,7 @@ loop_59:
                 M2C_FIELD(temp_r3_972, f64 *, 8) = (f64) sp190.unk8;
                 M2C_FIELD(temp_r3_972, f32 *, 0x20) = 0.0f;
                 M2C_FIELD(temp_r3_972, f32 *, 0x28) = 0.0f;
-                temp_f21_1013 = MKRand_Float(&gViewSeed, 100.0f, 500.0f);
+                temp_f21_1013 = MKRand_Float((int *) &gViewSeed, 100.0f, 500.0f);
                 sp20 = -(f32) M2C_FIELD(temp_r3_972, f64 *, 0);
                 sp24 = -M2C_FIELD(temp_r3_972, f32 *, 4);
                 sp28 = -(f32) M2C_FIELD(temp_r3_972, f64 *, 8);
@@ -473,11 +509,11 @@ loop_59:
                 sp150 = sp30;
                 sp158 = (f64) sp38;
                 M2C_FIELD(temp_r22_983, f64 *, 8) = (f64) sp38;
-                temp_f1_1041 = MKRand_Float(&gViewSeed, 100.0f, 200.0f);
+                temp_f1_1041 = MKRand_Float((int *) &gViewSeed, 100.0f, 200.0f);
                 M2C_FIELD(temp_r3_972, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_972, f64 *, 0) * temp_f1_1041);
                 M2C_FIELD(temp_r3_972, f64 *, 8) = (f32) ((f32) M2C_FIELD(temp_r3_972, f64 *, 8) * (f32) temp_f1_1041);
-                M2C_FIELD(temp_r22_983, f32 *, 0x18) = MKRand_Float(&gViewSeed, 2.5f, 3.5f);
-                M2C_FIELD(temp_r22_983, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                M2C_FIELD(temp_r22_983, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 2.5f, 3.5f);
+                M2C_FIELD(temp_r22_983, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r22_983, f32 *, 0x14) = (f32) M2C_FIELD(this->unk54, f32 *, 0xF4);
             }
         }
@@ -609,7 +645,7 @@ loop_56:
             sp2A0 = temp_f0_593;
             sp118 = sp290.unk8 * 200.0f;
             sp2A8 = (f64) sp118;
-            sp18 = MKRand_Float(&gViewSeed, 0.2f, 0.4f);
+            sp18 = MKRand_Float((int *) &gViewSeed, 0.2f, 0.4f);
             gb.EmitCrud(*((MKVector3 *) temp_r28_496), *((MKVector3 *) &sp2A0), sp18);
             sp108 = -1.0f;
             spF8 = 1.0f;
@@ -627,7 +663,7 @@ loop_56:
             sp260 = temp_f0_637;
             spE8 = sp250.unk8 * 200.0f;
             sp268 = (f64) spE8;
-            sp14 = MKRand_Float(&gViewSeed, 0.2f, 0.4f);
+            sp14 = MKRand_Float((int *) &gViewSeed, 0.2f, 0.4f);
             gb.EmitSmallRocks(*((MKVector3 *) temp_r28_496), *((MKVector3 *) &sp260), sp14);
             if ((this->unk58 <= 0.0f) && ((u8) M2C_FIELD(temp_r29_962, u8 *, 0x108) != 0)) {
                 var_r24_666 = 0;
@@ -657,7 +693,7 @@ loop_56:
                     sp1D0 = temp_f0_712;
                     spD8 = (f32) sp2D8 * 220.0f;
                     sp1D8 = (f64) spD8;
-                    sp10 = MKRand_Int(&gViewSeed, 0, 3);
+                    sp10 = MKRand_Int((int *) &gViewSeed, 0, 3);
                     ((FallingLeaves *) (M2C_FIELD(temp_r30_487, FallingLeaves **, 0x60)))->Emit(*((MKVector3 *) &sp2E0), *((MKVector3 *) &sp1D0), 2.0f, sp10, 1U);
                     var_r24_666 += 1;
                 } while (var_r24_666 < 5);

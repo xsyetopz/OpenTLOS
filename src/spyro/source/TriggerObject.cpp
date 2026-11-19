@@ -1,10 +1,37 @@
 #include "spyro/source/TriggerObject.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BoundingRegion.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
@@ -535,7 +562,7 @@ u8 TriggerObject::LoadLine(MKIniLine *arg0) {
         this->unk10.unk3C = 1.0f;
         return 1U;
     }
-    return arg0->LoadInt("targetID", &this->unk54, 0);
+    return arg0->LoadInt("targetID", (int *) &this->unk54, 0);
 }
 #endif
 

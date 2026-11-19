@@ -1,21 +1,55 @@
 #include "spyro/source/EnemyGenerator.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EnemySpawner.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "common/Source/Str.h"
 #include "spyro/source/DataMap.h"
@@ -98,7 +132,7 @@ loop_7:
         var_r26_117 = arg0->unkC->GetSubLine(arg0);
 loop_49:
         if (var_r26_117 != NULL) {
-            if ((var_r26_117->LoadInt("spawnPointProps", &this->unk0, 0) == 0) && (var_r26_117->LoadInt("doorProps", &this->unk4, 0) == 0) && (var_r26_117->LoadBool("bLockSpawnPoints", &this->unk18, 0) == 0) && (var_r26_117->LoadBool("bSpawnFromVisibleDoors", &this->unk19, 0) == 0)) {
+            if ((var_r26_117->LoadInt("spawnPointProps", (int *) &this->unk0, 0) == 0) && (var_r26_117->LoadInt("doorProps", (int *) &this->unk4, 0) == 0) && (var_r26_117->LoadBool("bLockSpawnPoints", &this->unk18, 0) == 0) && (var_r26_117->LoadBool("bSpawnFromVisibleDoors", &this->unk19, 0) == 0)) {
                 if (var_r26_117->IsField("Door") != 0) {
                     var_r25_166 = var_r26_117->unkC->GetSubLine(var_r26_117);
 loop_35:
@@ -562,7 +596,7 @@ void EnemyGenerator::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: declaration syntax error
 void EnemyGenerator::Update() {
     KDSynkerPlayer3 *temp_r3_1254;
     u8 var_r30_1251;
@@ -849,7 +883,7 @@ void EnemyGenerator::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 EnemyGenerator::LoadLine(MKIniLine *arg0) {
     s32 var_r27_1724;
     s32 var_r27_1752;
@@ -866,7 +900,7 @@ loop_4:
 loop_9:
         if (var_r27_1752 >= (s32) this->unk50->unk0) {
             var_r31_1781 = 0;
-            if ((SpawnerObject::LoadLine(arg0) != 0) || (arg0->LoadInt("iEnemyWaveStart", &this->unk74, 0) != 0) || (arg0->LoadInt("iEnemyWaveEnd", &this->unk78, 0) != 0) || (arg0->LoadBool("bActive", &this->unk84, 0) != 0) || (this->unk68.LoadLine(arg0, "OnEnemyWaveComplete") != 0) || (this->unk6C.LoadLine(arg0, "OnAllEnemyWavesComplete") != 0)) {
+            if ((SpawnerObject::LoadLine(arg0) != 0) || (arg0->LoadInt("iEnemyWaveStart", (int *) &this->unk74, 0) != 0) || (arg0->LoadInt("iEnemyWaveEnd", (int *) &this->unk78, 0) != 0) || (arg0->LoadBool("bActive", &this->unk84, 0) != 0) || (this->unk68.LoadLine(arg0, "OnEnemyWaveComplete") != 0) || (this->unk6C.LoadLine(arg0, "OnAllEnemyWavesComplete") != 0)) {
                 var_r31_1781 = 1;
             }
             return var_r31_1781;

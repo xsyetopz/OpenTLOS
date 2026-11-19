@@ -1,23 +1,42 @@
 #include "spyro/source/Sludge.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/GoopFX.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/Projectile.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_GrowthExtra1;
@@ -145,9 +164,9 @@ void Sludge::Update() {
     sp160 = (f32) sp160 * var_f4_76;
     if (var_f5_97 != 0.0f) {
         temp_f31_180 = gUpdateTimeDelta;
-        temp_f30_185 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
-        temp_f29_190 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
-        MKVector(MKRand_Float(&gViewSeed, 1.0f, 3.0f), temp_f29_190, temp_f30_185);
+        temp_f30_185 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
+        temp_f29_190 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
+        MKVector(MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f), temp_f29_190, temp_f30_185);
         sp118.operator*(3.0f);
         temp_f0_205 = sp118 * (f64) temp_f31_180;
         sp38 = temp_f0_205;
@@ -198,13 +217,13 @@ void Sludge::Update() {
     sp138 = sp18;
     spD0 = (f64) sp20;
     sp140 = (f64) sp20;
-    sp4C = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+    sp4C = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
     sp48 = 0.5f;
     sp50 = 0.0f;
     sp54 = 1.0f;
     sp68 = (f64) sp48;
     sp70 = (f64) sp50;
-    sp14 = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
+    sp14 = MKRand_Float((int *) &gViewSeed, 10.0f, 20.0f);
     ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp1B0.unk30), *((MKVector3 *) &sp138), sp14, *((MKVector4 *) &sp68), -500.0f);
 }
 #endif
@@ -370,13 +389,13 @@ void Sludge::Collided(MKCollisionResult &arg0) {
         sp1E8 = sp38;
         sp160 = (f64) sp40;
         sp1F0 = (f64) sp40;
-        sp9C = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+        sp9C = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
         sp98 = 0.5f;
         spA0 = 0.0f;
         spA4 = 1.0f;
         spF8 = (f64) sp98;
         sp100 = (f64) spA0;
-        sp14 = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
+        sp14 = MKRand_Float((int *) &gViewSeed, 10.0f, 20.0f);
         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp200.unk30), *((MKVector3 *) &sp1E8), sp14, *((MKVector4 *) &spF8), -500.0f);
         var_r26_486 += 1;
     } while (var_r26_486 < 0xA);

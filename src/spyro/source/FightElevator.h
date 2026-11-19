@@ -106,10 +106,10 @@ inline FightElevator::~FightElevator() {
         this->unk2B4.Deinit();
     }
     if ((&this->unk1E4 != NULL) && (&this->unk1E4 != NULL)) {
-        KDSound_Stop(&this->unk1E4);
+        KDSound_Stop((int *) &this->unk1E4);
     }
     if ((&this->unk1BC != NULL) && (&this->unk1BC != NULL)) {
-        KDSound_Stop(&this->unk1BC);
+        KDSound_Stop((int *) &this->unk1BC);
     }
 }
 #endif

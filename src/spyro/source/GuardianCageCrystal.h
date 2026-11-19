@@ -63,7 +63,7 @@ inline GuardianCageCrystal::GuardianCageCrystal() {
 inline GuardianCageCrystal::~GuardianCageCrystal() {
     this->unkC8 = &__vt.unk48;
     if ((&this->unk1D8 != NULL) && (&this->unk1D8 != NULL)) {
-        KDSound_Stop(&this->unk1D8);
+        KDSound_Stop((int *) &this->unk1D8);
     }
 }
 #endif

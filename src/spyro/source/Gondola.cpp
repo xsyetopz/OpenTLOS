@@ -1,19 +1,48 @@
 #include "spyro/source/Gondola.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EnemyGenerator.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/Platform.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SeeSaw.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SkyClouds.h"
+#include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/PhrasePlayer.h"
 #include <m2c_macros.h>
@@ -620,8 +649,8 @@ void Gondola::UpdateMove() {
             sp108 = (f32) sp298 * var_f0_757;
             sp3C0 = (f64) sp100;
             sp3C8 = (f64) sp108;
-            MKVector(0.0f, MKRand_Float(&gViewSeed, 0.0f, 2000.0f), 0.0f);
-            __ml(MKRand_Float(&gViewSeed, -1.0f, 1.0f), sp250);
+            MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.0f, 2000.0f), 0.0f);
+            __ml(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), sp250);
             sp260.operator*(2000.0f);
             temp_f0_903 = sp260 + sp240;
             sp80 = temp_f0_903;
@@ -641,7 +670,7 @@ void Gondola::UpdateMove() {
             sp230 = temp_f0_932;
             spE8 = temp_f2_920 + (f32) sp228;
             sp238 = (f64) spE8;
-            temp_f30_946 = MKRand_Float(&gViewSeed, 1.0f, 1.25f);
+            temp_f30_946 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.25f);
             spD0 = 600.0f;
             spD4 = 300.0f;
             spD8 = 600.0f;

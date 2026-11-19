@@ -1,20 +1,50 @@
 #include "spyro/source/DragonBust.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FloorSwitch.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Trap.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/Tools.h"
@@ -252,13 +282,12 @@ u8 states__10DragonBust[0xD8] = {
 static s32 lit_709 = 0;
 static u8 lit_710 = 1;
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void DragonBust::Deinit() {
     ManagedLight *temp_r4_58;
 
     ((KDStateMachine<DragonBust> *) &this->unkC8)->Deinit();
     MKMaterial_Destroy(this->unk124);
-    KDSound_Stop(&this->unk130);
+    KDSound_Stop((int *) &this->unk130);
     temp_r4_58 = this->unk118;
     if (temp_r4_58 != NULL) {
         ((LightManager *) gb.unk80)->FreeManagedLight(temp_r4_58);
@@ -267,7 +296,6 @@ void DragonBust::Deinit() {
     MKModel_Destroy(this->unk11C);
     GameProp::Deinit();
 }
-#endif
 
 void DragonBust::Draw() {
     GameProp::Draw();
@@ -507,9 +535,9 @@ void DragonBust::ActivatingBUpdate() {
     (*(f32 *) ((u8 *) &sp40 + 0xc)) *= var_f3_488;
     sp50 = (f32) sp50 * var_f3_488;
     do {
-        sp14 = MKRand_Float(&gViewSeed, 0.4f, 1.0f);
+        sp14 = MKRand_Float((int *) &gViewSeed, 0.4f, 1.0f);
         gb.EmitFairyDandruf(*((MKVector3 *) &sp78), *((MKVector3 *) &sp58), sp14, *((MKVector4 *) &sp88));
-        sp10 = MKRand_Float(&gViewSeed, 0.4f, 1.0f);
+        sp10 = MKRand_Float((int *) &gViewSeed, 0.4f, 1.0f);
         gb.EmitFairyDandruf(*((MKVector3 *) &sp68), *((MKVector3 *) &sp48), sp10, *((MKVector4 *) &sp88));
         var_r29_500 += 1;
     } while (var_r29_500 < 3);
@@ -804,7 +832,7 @@ void DragonBust::SlidingIntoPlaceEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *)' does not match
 void DragonBust::SlideUpdate() {
     f64 sp188;                                      /* compiler-managed */
     f64 sp180;                                      /* compiler-managed */
@@ -1150,17 +1178,15 @@ void DragonBust::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DragonBust::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1627;
 
     var_r31_1627 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("ActivatorPropID", (s32 *) &this->unkE0, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("ActivatorPropID", (int *) &this->unkE0, 0) != 0)) {
         var_r31_1627 = 1;
     }
     return var_r31_1627;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'Init__28KDStateMachine'
 void DragonBust::Init() {

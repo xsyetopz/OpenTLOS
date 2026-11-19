@@ -1,8 +1,15 @@
 #include "spyro/source/WobbleProperty.h"
 #include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/KDProperty.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKDynamicBone.h"
 #include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
@@ -377,7 +384,7 @@ s32 WobbleProperty::LoadLine(MKIniLine *arg0) {
         this->unk10 = M2C_BITWISE(f32, arg0);
     }
     var_r31_708 = 0;
-    if ((arg0->LoadFloat("collisionradius", &this->unk18, 0) != 0) || (arg0->LoadFloat("antispamDelay", &this->unk1C, 0) != 0) || (arg0->LoadFloat("HitSoundSensitivity", &this->unk20, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", &this->unk30) != 0)) {
+    if ((arg0->LoadFloat("collisionradius", &this->unk18, 0) != 0) || (arg0->LoadFloat("antispamDelay", &this->unk1C, 0) != 0) || (arg0->LoadFloat("HitSoundSensitivity", &this->unk20, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", (int *) &this->unk30) != 0)) {
         var_r31_708 = 1;
     }
     return var_r31_708;

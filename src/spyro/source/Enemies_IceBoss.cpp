@@ -1,35 +1,91 @@
 #include "spyro/source/Enemies_IceBoss.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EarthShockwave.h"
 #include "spyro/source/ElementalShield.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
 #include "spyro/source/EventCamera.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/Goal.h"
 #include "spyro/source/IceBitsPS.h"
 #include "spyro/source/IceBossGoals.h"
 #include "spyro/source/IceBossStalactite.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
 #include "spyro/source/SpyroHud.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -40,7 +96,6 @@
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/PhrasePlayer.h"
-#include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
 s32 atoi(s8 *);                                     /* extern */
@@ -213,17 +268,15 @@ s32 IceBoss::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     return Enemy::GetLookToPoint(arg0, arg1);
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void IceBoss::UpdateBreathingFx() {
     CharacterBreathFX *temp_r3_382;
 
     if (((u8) this->unkB20 != 0) || ((u8) this->unkFBB != 0)) {
-        this->unkA0C->unk8 = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float(&gViewSeed, 1.75f, 2.0f);
+        this->unkA0C->unk8 = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float((int *) &gViewSeed, 1.75f, 2.0f);
         temp_r3_382 = this->unkA0C;
         temp_r3_382->unk10 &= ~0x80;
     }
 }
-#endif
 
 void IceBoss::EnableWeaponCollision(bool arg0) {
     this->unkFB8 = arg0;
@@ -476,7 +529,7 @@ void IceBoss::UpdateFormShield() {
             spE0 = (f64) sp30;
             sp78 = (f64) sp18;
             sp80 = (f64) sp20;
-            sp10 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+            sp10 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
             ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &spF0.unk30), *((MKVector3 *) &spD8), sp10, lit_1266, (MKVector4) &sp78);
             this->unk1064 = 1;
         }
@@ -664,8 +717,8 @@ void IceBoss::CheckAnimEvents() {
             sp138 = sp48;
             spF0 = (f64) sp50;
             sp140 = (f64) sp50;
-            (*(f32 *) ((u8 *) &sp138 + 0x4)) = 100.0f * MKRand_Float(&gViewSeed, 10.0f, 17.0f);
-            sp10 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
+            (*(f32 *) ((u8 *) &sp138 + 0x4)) = 100.0f * MKRand_Float((int *) &gViewSeed, 10.0f, 17.0f);
+            sp10 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
             this->unk1068->Emit(*((MKVector3 *) &sp148), *((MKVector3 *) &sp138), sp10);
             var_r30_1267 += 1;
         } while (var_r30_1267 < 0x14);
@@ -835,7 +888,7 @@ void IceBoss::UpdateFormWeapon() {
             spE0 = (f64) sp30;
             sp78 = (f64) sp18;
             sp80 = (f64) sp20;
-            sp10 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+            sp10 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
             ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &spF0.unk30), *((MKVector3 *) &spD8), sp10, lit_1160, (MKVector4) &sp78);
             this->unk1064 = 1;
         }
@@ -1348,17 +1401,15 @@ void IceBoss::Despawn(bool arg0) {
     M2C_FIELD(M2C_FIELD(temp_r3_2677, void **, 0x44), M2C_UNK (**)(void *), 0x34)(temp_r3_2677);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 s32 IceBoss::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     if (Enemy::Spawn(arg0, arg1) != 0) {
         M2C_FIELD(&gb, IceBoss **, 0x360) = this;
         StartPhase1();
-        KDSound_Stop(&this->unk1010);
+        KDSound_Stop((int *) &this->unk1010);
         return 1;
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_959'
 void IceBoss::DrawSubObject(int arg0, float arg1) {
@@ -2086,19 +2137,17 @@ void IceBoss::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 IceBoss::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4375;
 
     var_r31_4375 = 0;
-    if ((Enemy::LoadLine(arg0) != 0) || (this->unkFE4.LoadLine(arg0, "OnPhase1End") != 0) || (this->unkFE8.LoadLine(arg0, "OnPhase2End") != 0) || (this->unkFEC.LoadLine(arg0, "OnPhase3End") != 0) || (arg0->LoadInt("PhaseCameraID", (s32 *) &this->unkB10, 0) != 0) || (arg0->LoadInt("Stalactite1ID", (s32 *) &this->unkF98, 0) != 0) || (arg0->LoadInt("Stalactite2ID", (s32 *) &this->unkF9C, 0) != 0) || (arg0->LoadInt("Stalactite3ID", (s32 *) &this->unkFA0, 0) != 0) || (arg0->LoadInt("Stalactite4ID", (s32 *) &this->unkFA4, 0) != 0)) {
+    if ((Enemy::LoadLine(arg0) != 0) || (this->unkFE4.LoadLine(arg0, "OnPhase1End") != 0) || (this->unkFE8.LoadLine(arg0, "OnPhase2End") != 0) || (this->unkFEC.LoadLine(arg0, "OnPhase3End") != 0) || (arg0->LoadInt("PhaseCameraID", (int *) &this->unkB10, 0) != 0) || (arg0->LoadInt("Stalactite1ID", (int *) &this->unkF98, 0) != 0) || (arg0->LoadInt("Stalactite2ID", (int *) &this->unkF9C, 0) != 0) || (arg0->LoadInt("Stalactite3ID", (int *) &this->unkFA0, 0) != 0) || (arg0->LoadInt("Stalactite4ID", (int *) &this->unkFA4, 0) != 0)) {
         var_r31_4375 = 1;
     }
     return var_r31_4375;
 }
-#endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'IceBoss' to
 void IceBoss::Deinit() {
     IceBossStalactiteSpawner *temp_r29_4496;
     MKCollisionInfo *temp_r27_4542;
@@ -2117,9 +2166,9 @@ void IceBoss::Deinit() {
     s32 var_r30_4538;
 
     Enemy::Deinit();
-    KDSound_Stop(&this->unk1014);
-    KDSound_Stop(&this->unk103C);
-    KDSound_Stop(&this->unk1010);
+    KDSound_Stop((int *) &this->unk1014);
+    KDSound_Stop((int *) &this->unk103C);
+    KDSound_Stop((int *) &this->unk1010);
     PhrasePlayer_StopEvent(this->unk1000);
     temp_r29_4476 = this->unkF90;
     if (temp_r29_4476 != NULL) {

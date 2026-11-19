@@ -1,9 +1,19 @@
 #include "spyro/source/KDParticleEmitter.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -19,9 +29,9 @@ void KDParticleBoxEmitter::InitBoxParticlePostion(KDParticleEmitter *arg0, MKPar
     temp_r3_40 = checked_cast<KDParticleBoxEmitter *, KDParticleEmitter>((KDParticleEmitter *) this);
     M2C_FIELD(arg0, f64 *, 0) = (f64) M2C_FIELD(temp_r3_40, f64 *, 0x78);
     arg0->unk8 = M2C_FIELD(temp_r3_40, f64 *, 0x80);
-    arg0->__vptr = (M2C_FIELD(temp_r3_40, f32 *, 0x88) * MKRand_Float(&gViewSeed, 0.0f, 1.0f)) + M2C_BITWISE(f32, arg0->__vptr);
-    arg0->unk4 += M2C_FIELD(temp_r3_40, f32 *, 0x8C) * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-    M2C_FIELD(arg0, f64 *, 8) = (f32) ((M2C_FIELD(temp_r3_40, f32 *, 0x90) * MKRand_Float(&gViewSeed, 0.0f, 1.0f)) + (f32) M2C_FIELD(arg0, f64 *, 8));
+    arg0->__vptr = (M2C_FIELD(temp_r3_40, f32 *, 0x88) * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f)) + M2C_BITWISE(f32, arg0->__vptr);
+    arg0->unk4 += M2C_FIELD(temp_r3_40, f32 *, 0x8C) * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+    M2C_FIELD(arg0, f64 *, 8) = (f32) ((M2C_FIELD(temp_r3_40, f32 *, 0x90) * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f)) + (f32) M2C_FIELD(arg0, f64 *, 8));
 }
 #endif
 
@@ -32,14 +42,12 @@ void KDParticleBoxEmitter::Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void KDParticleLineEmitter::InitLineParticlePostion(KDParticleEmitter *arg0, MKParticle *arg1) {
     void *temp_r31_106;
 
     temp_r31_106 = checked_cast<KDParticleLineEmitter *, KDParticleEmitter>((KDParticleEmitter *) this);
-    ((KDPathSegment *) (M2C_FIELD(temp_r31_106, KDPathSegment **, 0x78)))->GetPositionAlongPath(MKRand_Float(&gViewSeed, 0.0f, 1.0f), *((MKVector3 *) arg0));
+    ((KDPathSegment *) (M2C_FIELD(temp_r31_106, KDPathSegment **, 0x78)))->GetPositionAlongPath(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), *((MKVector3 *) arg0));
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk44'
 void KDParticleLineEmitter::Init() {
@@ -49,7 +57,7 @@ void KDParticleLineEmitter::Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'unkF4'
 void KDParticleEmitter::InitPointParticleParameters(KDParticleEmitter *arg0, MKParticle *arg1) {
     f32 sp18;
     f32 sp14;
@@ -74,14 +82,14 @@ void KDParticleEmitter::InitPointParticleParameters(KDParticleEmitter *arg0, MKP
     s32 var_r0_226;
     void *temp_r31_164;
 
-    arg0->unk24 = MKRand_Float(&gViewSeed, this->unk58, this->unk54);
+    arg0->unk24 = MKRand_Float((int *) &gViewSeed, this->unk58, this->unk54);
     temp_r31_164 = arg0->unk2C;
     M2C_FIELD(temp_r31_164, f32 *, 0x14) = (f32) this->unk28->unkF4;
     M2C_FIELD(temp_r31_164, f32 *, 0) = 0.0f;
     M2C_FIELD(temp_r31_164, f32 *, 4) = 0.0f;
     M2C_FIELD(temp_r31_164, f32 *, 8) = 0.0f;
     M2C_FIELD(temp_r31_164, f32 *, 0x10) = 0.0f;
-    M2C_FIELD(temp_r31_164, f32 *, 0x10) = MKRand_Float(&gViewSeed, this->unk60, this->unk5C);
+    M2C_FIELD(temp_r31_164, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, this->unk60, this->unk5C);
     temp_r3_176 = this->unk70;
     temp_f2_177 = temp_r3_176->unk0;
     temp_f1_178 = temp_r3_176->unk4;
@@ -121,12 +129,12 @@ void KDParticleEmitter::InitPointParticleParameters(KDParticleEmitter *arg0, MKP
         }
     }
     temp_f31_247 = fabs(var_f4_184);
-    M2C_FIELD(temp_r31_164, f32 *, 0x18) = (f32) ((f32) temp_f31_247 * MKRand_Float(&gViewSeed, this->unk68, this->unk64));
+    M2C_FIELD(temp_r31_164, f32 *, 0x18) = (f32) ((f32) temp_f31_247 * MKRand_Float((int *) &gViewSeed, this->unk68, this->unk64));
     if (this->unk38 > 0.0f) {
-        temp_f31_263 = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
-        MKRand_Float(&gViewSeed, this->unk3C, 1.0f);
+        temp_f31_263 = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
+        MKRand_Float((int *) &gViewSeed, this->unk3C, 1.0f);
         temp_f30_269 = (f32) acos();
-        temp_f29_274 = -MKRand_Float(&gViewSeed, this->unk50, this->unk4C);
+        temp_f29_274 = -MKRand_Float((int *) &gViewSeed, this->unk50, this->unk4C);
         _table_sincosf(temp_f30_269, sp18, sp14);
         _table_sincosf(temp_f31_263, sp10, spC);
         temp_f2_287 = sp18 * temp_f29_274;
@@ -136,7 +144,7 @@ void KDParticleEmitter::InitPointParticleParameters(KDParticleEmitter *arg0, MKP
         M2C_FIELD(temp_r31_164, f32 *, 0xC) = 0.0f;
         return;
     }
-    temp_f0_303 = -MKRand_Float(&gViewSeed, this->unk50, this->unk4C);
+    temp_f0_303 = -MKRand_Float((int *) &gViewSeed, this->unk50, this->unk4C);
     M2C_FIELD(temp_r31_164, f32 *, 0) = 0.0f;
     M2C_FIELD(temp_r31_164, f32 *, 4) = 0.0f;
     M2C_FIELD(temp_r31_164, f32 *, 8) = temp_f0_303;

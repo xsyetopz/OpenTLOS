@@ -1,22 +1,50 @@
 #include "spyro/source/MagicFireball.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/Projectile.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
@@ -202,8 +230,8 @@ void MagicFireball::Update() {
         M2C_FIELD(temp_r3_308, f32 *, 0x20) = 0.0f;
         spC0 = (f64) sp40;
         M2C_FIELD(temp_r3_308, f32 *, 0x28) = 0.0f;
-        temp_f30_352 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
-        sp2C = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+        temp_f30_352 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
+        sp2C = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
         sp28 = temp_f30_352;
         sp30 = temp_f30_352;
         sp34 = 1.0f;
@@ -211,15 +239,15 @@ void MagicFireball::Update() {
         sp68 = (f64) sp28;
         sp70 = (f64) sp30;
         M2C_FIELD(temp_r3_308, f64 *, 0x18) = (f64) sp30;
-        M2C_FIELD(temp_r3_308, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f)));
+        M2C_FIELD(temp_r3_308, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f)));
         sp18 = this->unkC8 * 5.222099017e-315;
         M2C_FIELD(temp_r28_313, f64 *, 0) = sp18;
         sp20 = (f32) M2C_FIELD(this, f64 *, 0xD0) * 0.5f;
         sp58 = sp18;
         sp60 = (f64) sp20;
         M2C_FIELD(temp_r28_313, f64 *, 8) = (f64) sp20;
-        M2C_FIELD(temp_r28_313, f32 *, 0x18) = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-        M2C_FIELD(temp_r28_313, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r28_313, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
+        M2C_FIELD(temp_r28_313, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         M2C_FIELD(temp_r28_313, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r3_302, void **, 0xF0), f32 *, 0xF4);
     }
     temp_r3_403 = this->unk160;
@@ -232,7 +260,7 @@ void MagicFireball::Update() {
             M2C_FIELD(temp_r3_410, f64 *, 0x18) = (f64) sp130.unk38;
         }
         temp_r3_423 = this->unk160;
-        temp_f0_424 = 500.0f * MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+        temp_f0_424 = 500.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
         temp_r3_423->unk38 = temp_f0_424;
         temp_r3_426 = temp_r3_423->unk3C;
         if (temp_r3_426 != NULL) {
@@ -385,8 +413,8 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
             M2C_FIELD(temp_r3_509, f32 *, 0x20) = 0.0f;
             sp190 = (f64) sp60;
             M2C_FIELD(temp_r3_509, f32 *, 0x28) = 0.0f;
-            temp_f29_552 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
-            sp4C = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+            temp_f29_552 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
+            sp4C = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
             sp48 = temp_f29_552;
             sp50 = temp_f29_552;
             sp54 = 1.0f;
@@ -394,7 +422,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
             sp138 = (f64) sp48;
             sp140 = (f64) sp50;
             M2C_FIELD(temp_r3_509, f64 *, 0x18) = (f64) sp50;
-            M2C_FIELD(temp_r3_509, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f)));
+            M2C_FIELD(temp_r3_509, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f)));
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, 0.0f, -1.0f);
             KDRand_Vector(sp108, spF8);
@@ -405,8 +433,8 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
             sp128 = sp38;
             sp130 = (f64) sp40;
             M2C_FIELD(temp_r25_514, f64 *, 8) = (f64) sp40;
-            M2C_FIELD(temp_r25_514, f32 *, 0x18) = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-            M2C_FIELD(temp_r25_514, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+            M2C_FIELD(temp_r25_514, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
+            M2C_FIELD(temp_r25_514, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
             M2C_FIELD(temp_r25_514, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r27_495, void **, 0xF0), f32 *, 0xF4);
         }
         var_r26_499 += 1;
@@ -443,7 +471,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     }
     sp2A9 = 0;
     this->unk18C = 0;
-    KDSound_Stop(&this->unk164);
+    KDSound_Stop((int *) &this->unk164);
     KDSound_Play3d(GS_IceOrgeMagicExplode, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     if (((u8) arg0.unk50 != 0) && (temp_r3_687 = arg0.unk48, ((temp_r3_687 == NULL) == 0)) && (var_r3_690 = M2C_FIELD(temp_r3_687, void **, 8), ((var_r3_690 == NULL) == 0))) {
 
@@ -665,7 +693,6 @@ void MagicFireball::Message(MKMessage *arg0) {
     ((KDSoundPlayer *) &this->unk164)->Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void MagicFireball::Deinit() {
     ManagedLight *temp_r4_1134;
 
@@ -674,10 +701,9 @@ void MagicFireball::Deinit() {
     if (temp_r4_1134 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->FreeManagedLight(temp_r4_1134);
     }
-    KDSound_Stop(&this->unk164);
+    KDSound_Stop((int *) &this->unk164);
     this->unk18C = 0;
 }
-#endif
 
 void MagicFireball::Init() {
     Projectile::Init();

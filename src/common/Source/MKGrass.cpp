@@ -1,17 +1,23 @@
 #include "common/Source/MKGrass.h"
+#include "common/Source/Animation.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKGrass_MP.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/OmniLight.h"
+#include "common/Source/Texture.h"
 #include "common/gc/MKModel_GC.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKShockWave_MP.h"
 #include "common/Source/MKView.h"
@@ -815,11 +821,11 @@ loop_67:
             var_r26_1233 = 0;
             do {
                 if (*(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r26_1233 + 0xAC)) != 1.0f) {
-                    *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r26_1233 + 0xA0)) = MKRand_Float(&spC, 0.0f, 1.0f);
-                    *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r26_1233 + 0xA4)) = MKRand_Float(&spC, 0.0f, 1.0f);
+                    *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r26_1233 + 0xA0)) = MKRand_Float((int *) &spC, 0.0f, 1.0f);
+                    *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r26_1233 + 0xA4)) = MKRand_Float((int *) &spC, 0.0f, 1.0f);
                     temp_r6_1259 = var_r26_1233 + 0xA8;
                     temp_r3_1260 = var_r26_1233 + 0xA4;
-                    *(M2C_FIELD(var_r28_1098, void **, 0x2C) + temp_r6_1259) = MKRand_Float(&spC, 0.0f, 1.0f);
+                    *(M2C_FIELD(var_r28_1098, void **, 0x2C) + temp_r6_1259) = MKRand_Float((int *) &spC, 0.0f, 1.0f);
                     temp_r5_1266 = M2C_FIELD(var_r28_1098, void **, 0x2C) + var_r26_1233;
                     temp_f1_1267 = M2C_FIELD(temp_r5_1266, f32 *, 0xA0);
                     temp_f2_1271 = M2C_FIELD(temp_r5_1266, f32 *, 0xA8) + (temp_f1_1267 + M2C_FIELD(temp_r5_1266, f32 *, 0xA4));
@@ -831,7 +837,7 @@ loop_67:
                     *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r26_1233 + 0xAC)) = 0;
                     if (temp_r3_1212 > 1) {
                         if (var_r30_1214 != 0U) {
-                            var_r3_1290 = MKRand_Int(&spC, 0, (s32) var_r30_1214);
+                            var_r3_1290 = MKRand_Int((int *) &spC, 0, (s32) var_r30_1214);
                             var_r6_1291 = 0;
                             var_r4_1292 = 0;
 loop_33:
@@ -877,11 +883,11 @@ loop_33:
                 }
                 temp_r5_1366 = M2C_FIELD(var_r28_1098, void **, 0x2C);
                 temp_r7_1375 = M2C_FIELD(var_r28_1098, void **, 0x2C) + var_r27_1354;
-                _table_sincosf(0.017453292f * (f32) (MKRand_Int(&spC, M2C_FIELD(temp_r5_1366, s32 *, 0x6C), M2C_FIELD(temp_r5_1366, s32 *, 0x70)) % 360), *(temp_r7_1375 + 0x4A8), *(temp_r7_1375 + 0x4A0));
+                _table_sincosf(0.017453292f * (f32) (MKRand_Int((int *) &spC, M2C_FIELD(temp_r5_1366, s32 *, 0x6C), M2C_FIELD(temp_r5_1366, s32 *, 0x70)) % 360), *(temp_r7_1375 + 0x4A8), *(temp_r7_1375 + 0x4A0));
                 temp_r4_1388 = M2C_FIELD(var_r28_1098, void **, 0x2C) + var_r27_1354;
                 M2C_FIELD(temp_r4_1388, f32 *, 0x4A4) = (f32) -M2C_FIELD(temp_r4_1388, f32 *, 0x4A8);
                 temp_r4_1392 = M2C_FIELD(var_r28_1098, void **, 0x2C);
-                *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r27_1354 + 0x4AC)) = MKRand_Float(&spC, M2C_FIELD(temp_r4_1392, f32 *, 0x64), M2C_FIELD(temp_r4_1392, f32 *, 0x68));
+                *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r27_1354 + 0x4AC)) = MKRand_Float((int *) &spC, M2C_FIELD(temp_r4_1392, f32 *, 0x64), M2C_FIELD(temp_r4_1392, f32 *, 0x68));
                 temp_r4_1400 = M2C_FIELD(var_r28_1098, void **, 0x2C);
                 if (*(temp_r4_1400 + (var_r27_1354 + 0x5AC)) != 1.0f) {
                     sp20 = M2C_FIELD(temp_r4_1400, f64 *, 0x78);
@@ -907,25 +913,25 @@ loop_33:
                     if (var_f1_1482 == sp10) {
 
                     } else {
-                        var_f1_1482 = MKRand_Float(&spC, var_f1_1482, sp10);
+                        var_f1_1482 = MKRand_Float((int *) &spC, var_f1_1482, sp10);
                     }
                     var_f0_1491 = (*(f32 *) ((u8 *) &spC + 0x18));
                     *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r27_1354 + 0x5A0)) = var_f1_1482;
                     if (var_f0_1491 == (*(f32 *) ((u8 *) &spC + 0x8))) {
 
                     } else {
-                        var_f0_1491 = MKRand_Float(&spC, var_f0_1491, (*(f32 *) ((u8 *) &spC + 0x8)));
+                        var_f0_1491 = MKRand_Float((int *) &spC, var_f0_1491, (*(f32 *) ((u8 *) &spC + 0x8)));
                     }
                     var_f1_1505 = sp28;
                     *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r27_1354 + 0x5A4)) = var_f0_1491;
                     if (var_f1_1505 == sp18) {
 
                     } else {
-                        var_f1_1505 = MKRand_Float(&spC, var_f1_1505, sp18);
+                        var_f1_1505 = MKRand_Float((int *) &spC, var_f1_1505, sp18);
                     }
                     *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r27_1354 + 0x5A8)) = var_f1_1505;
                 }
-                *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r29_1352 + 0x6A0)) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+                *(M2C_FIELD(var_r28_1098, void **, 0x2C) + (var_r29_1352 + 0x6A0)) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
                 temp_r4_1528 = M2C_FIELD(var_r28_1098, void **, 0x2C);
                 if ((u8) M2C_FIELD(temp_r4_1528, u8 *, 0x800) != 0) {
                     *(temp_r4_1528 + (var_r29_1352 + 0x720)) = *(temp_r4_1528 + ((*(&sp30 + var_r29_1352) * 4) + 0x7E0));
@@ -1167,7 +1173,7 @@ loop_29:
                                 if (var_r27_1927 >= (s16) var_r31_1849->unk0) {
 
                                 } else {
-                                    var_r31_1849->AsInt(var_r27_1927, &sp18);
+                                    var_r31_1849->AsInt(var_r27_1927, (int *) &sp18);
                                     temp_r0_1936 = var_r29_1928 + 0x760;
                                     var_r27_1927 += 1;
                                     var_r29_1928 += 4;
@@ -1257,7 +1263,7 @@ loop_29:
                             }
                         } else if (stricmp(temp_r3_1856, &lit_stringBase0 + 0x46) == NULL) {
                             sp14 = -1;
-                            if ((var_r31_1849->AsFloat(0, &sp10) != 0) && (var_r31_1849->AsInt(1, &sp14) != 0) && (sp14 >= 0) && (sp14 < 8)) {
+                            if ((var_r31_1849->AsFloat(0, &sp10) != 0) && (var_r31_1849->AsInt(1, (int *) &sp14) != 0) && (sp14 >= 0) && (sp14 < 8)) {
                                 *(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + ((sp14 * 4) + 0x7E0)) = sp10;
                                 M2C_FIELD(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C), s8 *, 0x800) = 1;
                             }
@@ -1564,7 +1570,7 @@ loop_22:
                 }
                 temp_r3_2926 = sp8.GotoLine(&gpGrassTypes[var_r30_2882], &lit_stringBase0 + 0x126);
                 if (temp_r3_2926 != NULL) {
-                    temp_r3_2926->AsInt(0, &M2C_FIELD(&gpGrassTypes[var_r30_2882], s32 *, 0x24));
+                    temp_r3_2926->AsInt(0, (int *) &M2C_FIELD(&gpGrassTypes[var_r30_2882], s32 *, 0x24));
                 }
                 var_r31_2880 += 1;
                 var_r30_2882 += 0x30;

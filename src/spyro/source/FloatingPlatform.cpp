@@ -1,13 +1,40 @@
 #include "spyro/source/FloatingPlatform.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/Platform.h"
-#include "common/Source/MKModel.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SeeSaw.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -121,7 +148,6 @@ void FloatingPlatform::Message(MKMessage *arg0) {
     Platform::Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void FloatingPlatform::PropUpdate() {
     MKVector3 sp50;
     f64 sp48;
@@ -146,14 +172,14 @@ void FloatingPlatform::PropUpdate() {
             this->unk180 = -50.0f;
         }
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk190, &sp50);
-        if (MKRand_Int(&gViewSeed, 0, 3) == 0) {
+        if (MKRand_Int((int *) &gViewSeed, 0, 3) == 0) {
             temp_r4_263 = ((u8 *) this->unk8) + 0x10;
             temp_f0_265 = M2C_FIELD(temp_r4_263, f64 *, 0) * 5.56078426e-315;
             sp20 = temp_f0_265;
             sp40 = temp_f0_265;
             sp28 = M2C_FIELD(temp_r4_263, f32 *, 8) * 150.0f;
             sp48 = (f64) sp28;
-            spC = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
+            spC = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
             ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(sp50, *((MKVector3 *) &sp40), spC);
         }
         if ((s32) this->unk108.unk38 > 0) {
@@ -163,12 +189,11 @@ void FloatingPlatform::PropUpdate() {
             sp30 = temp_f0_294;
             sp18 = M2C_FIELD(temp_r4_292, f32 *, 8) * -1000.0f;
             sp38 = (f64) sp18;
-            sp8 = MKRand_Float(&gViewSeed, 2.0f, 8.0f);
+            sp8 = MKRand_Float((int *) &gViewSeed, 2.0f, 8.0f);
             ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(sp50, *((MKVector3 *) &sp30), sp8);
         }
     }
 }
-#endif
 
 void FloatingPlatform::Reset() {
     KDUniformSpline sp10;

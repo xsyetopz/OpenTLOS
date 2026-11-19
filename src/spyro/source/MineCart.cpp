@@ -1,18 +1,54 @@
 #include "spyro/source/MineCart.h"
 #include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKDynamicBone.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -49,7 +85,7 @@ void MineCart::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: ')' expected
 void MineCart::Message(MKMessage *arg0) {
     s8 sp129;
     s8 sp128;
@@ -111,7 +147,7 @@ void MineCart::Message(MKMessage *arg0) {
     switch (temp_r0_123) {                          /* irregular */
     case 191:
     case -4:
-        KDSound_Stop(&this->unk17C);
+        KDSound_Stop((int *) &this->unk17C);
         this->unkE8.Show(0U);
         break;
     case 190:
@@ -192,7 +228,7 @@ void MineCart::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void MineCart::UpdateEffects() {
     f64 sp158;                                      /* compiler-managed */
     f64 sp150;
@@ -265,8 +301,8 @@ void MineCart::UpdateEffects() {
 
     this->unk118 -= gUpdateTimeDelta;
     if (this->unk118 <= 0.0f) {
-        this->unk118 = MKRand_Float(&gViewSeed, 0.125f, 0.25f);
-        temp_r3_342 = MKRand_Int(&gViewSeed, 0, 2);
+        this->unk118 = MKRand_Float((int *) &gViewSeed, 0.125f, 0.25f);
+        temp_r3_342 = MKRand_Int((int *) &gViewSeed, 0, 2);
         temp_r4_344 = this->unk8;
         temp_r3_347 = this + (temp_r3_342 * 0x18);
         temp_f6_349 = M2C_FIELD(temp_r3_347, f32 *, 0x124);
@@ -280,7 +316,7 @@ void MineCart::UpdateEffects() {
         sp158 = (f64) spA8;
         (*(f32 *) ((u8 *) &sp150 + 0x4)) = temp_f3_368;
         if (temp_r3_342 == 1) {
-            if (MKRand_Int(&gViewSeed, -1, 1) != 0) {
+            if (MKRand_Int((int *) &gViewSeed, -1, 1) != 0) {
                 temp_r3_389 = this->unk8;
                 temp_f0_392 = (f64) M2C_FIELD(temp_r3_389, f32 *, 0) * 5.55430844e-315;
                 sp40 = temp_f0_392;
@@ -307,9 +343,9 @@ void MineCart::UpdateEffects() {
             spF0 = temp_f0_441;
             sp78 = this->unkE0 * 10.0f;
             spF8 = (f64) sp78;
-            temp_f25_454 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f26_459 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-            sp90 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f25_454 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f26_459 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+            sp90 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp94 = temp_f26_459;
             sp98 = temp_f25_454;
             sp100 = (f64) sp90;
@@ -324,9 +360,9 @@ void MineCart::UpdateEffects() {
             sp120 = temp_f0_484;
             sp68 = (f32) sp118 + (f32) spF8;
             sp128 = (f64) sp68;
-            sp8 = MKRand_Float(&gViewSeed, 5.0f, 8.0f);
-            temp_f26_503 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
-            sp50 = MKRand_Float(&gViewSeed, 0.85f, 1.0f);
+            sp8 = MKRand_Float((int *) &gViewSeed, 5.0f, 8.0f);
+            temp_f26_503 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
+            sp50 = MKRand_Float((int *) &gViewSeed, 0.85f, 1.0f);
             sp54 = temp_f26_503;
             sp58 = 0.5f;
             sp5C = 1.0f;
@@ -335,7 +371,7 @@ void MineCart::UpdateEffects() {
             ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp150), *((MKVector3 *) &sp120), sp8, *((MKVector4 *) &spE0), -1000.0f);
             var_r30_436 += 1;
         } while (var_r30_436 < 5);
-        temp_f1_529 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f1_529 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_r4_530 = this->unk8;
         temp_r5_531 = ((u8 *) temp_r4_530) + 0x20;
         temp_f0_534 = (f64) M2C_FIELD(temp_r4_530, f32 *, 0) + M2C_FIELD(temp_r5_531, f64 *, 0);
@@ -354,7 +390,7 @@ void MineCart::UpdateEffects() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: declaration syntax error
 void MineCart::Update() {
     f64 sp38;
     f64 sp30;
@@ -493,13 +529,11 @@ void MineCart::LoadDone() {
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->EnableCustomMatrices(1U);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void MineCart::Deinit() {
     this->unkE8.Deinit();
-    KDSound_Stop(&this->unk17C);
+    KDSound_Stop((int *) &this->unk17C);
     GameProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void MineCart::Init() {
@@ -545,7 +579,7 @@ s32 MineCartDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_934;
 
     var_r31_934 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "travelSound", &this->unkE4) != 0) || (arg0->LoadFloat("soundfadeIn", &this->unkE8, 0) != 0) || (arg0->LoadFloat("soundfadeOut", &this->unkEC, 0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "travelSound", (int *) &this->unkE4) != 0) || (arg0->LoadFloat("soundfadeIn", &this->unkE8, 0) != 0) || (arg0->LoadFloat("soundfadeOut", &this->unkEC, 0) != 0)) {
         var_r31_934 = 1;
     }
     return var_r31_934;

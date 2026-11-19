@@ -1,14 +1,39 @@
 #include "spyro/source/Swarm.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
@@ -315,7 +340,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal operand
 void SwarmProp::Update() {
     f64 sp118;                                      /* compiler-managed */
     f64 sp110;
@@ -384,7 +409,7 @@ loop_30:
     if (temp_r28_710 != NULL) {
         temp_r28_710->unk30 -= gUpdateTimeDelta;
         if (temp_r28_710->unk30 <= 0.0f) {
-            temp_r28_710->unk30 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
+            temp_r28_710->unk30 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
             var_r23_450 = 0;
             var_r25_451 = 0;
             do {
@@ -398,7 +423,7 @@ loop_5:
                 var_r23_450 += 1;
                 temp_r0_471 = var_r25_451 + 0x34;
                 var_r25_451 += 4;
-                *(temp_r28_710 + temp_r0_471) = temp_r24_453[MKRand_Int(&gViewSeed, 0, (s32) (var_r3_454 - temp_r24_453) / 4)];
+                *(temp_r28_710 + temp_r0_471) = temp_r24_453[MKRand_Int((int *) &gViewSeed, 0, (s32) (var_r3_454 - temp_r24_453) / 4)];
             } while (var_r23_450 < 3);
         }
         temp_r4_477 = temp_r28_710->unk34;
@@ -646,14 +671,12 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SwarmProp::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    return arg0->LoadInt("EntityCount", &this->unkF0, 0);
+    return arg0->LoadInt("EntityCount", (int *) &this->unkF0, 0);
 }
-#endif
 
 #if 0 // DRAFT: type mismatch
 void SwarmProp::Deinit() {

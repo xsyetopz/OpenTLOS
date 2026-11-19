@@ -1,33 +1,90 @@
 #include "spyro/source/SteamTrainCaboose.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/Collectable2.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Coronas.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/ExpShock.h"
+#include "spyro/source/ExpSmokeAndFlamesPS.h"
 #include "spyro/source/Explosion3.h"
+#include "spyro/source/ExplosionFX.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDPositionProperty.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/SteamTrain.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/TrainTrack.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -267,7 +324,7 @@ void SteamTrainCaboose::BlowUp() {
     }
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: pointer/array required
 void SteamTrainCaboose::Message(MKMessage *arg0) {
     f64 spA8;
     f64 spA0;
@@ -340,9 +397,9 @@ block_34:
         do {
             temp_r3_542 = checked_cast<Collectable2 *, MKProp>(((MKPropDescriptor *) (gMK->FindDescriptor("MagicGem2")))->CreateInstance());
             if (temp_r3_542 != NULL) {
-                temp_f31_549 = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
-                temp_f30_554 = MKRand_Float(&gViewSeed, -50.0f, 50.0f);
-                temp_f29_560 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+                temp_f31_549 = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
+                temp_f30_554 = MKRand_Float((int *) &gViewSeed, -50.0f, 50.0f);
+                temp_f29_560 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
                 temp_r4_569 = this->unk8;
                 temp_r3_542->InitData(*((Matrix *) temp_r4_569), ((u8 *) temp_r4_569) + 0x30, M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), s32 *, 8) + 0x30, temp_f29_560, temp_f30_554, temp_f31_549);
             }
@@ -398,9 +455,9 @@ block_34:
         do {
             temp_r3_706 = checked_cast<Collectable2 *, MKProp>(((MKPropDescriptor *) (gMK->FindDescriptor("MagicGem2")))->CreateInstance());
             if (temp_r3_706 != NULL) {
-                temp_f29_713 = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
-                temp_f30_718 = MKRand_Float(&gViewSeed, -50.0f, 50.0f);
-                temp_f31_724 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+                temp_f29_713 = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
+                temp_f30_718 = MKRand_Float((int *) &gViewSeed, -50.0f, 50.0f);
+                temp_f31_724 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
                 temp_r4_733 = this->unk8;
                 temp_r3_706->InitData(*((Matrix *) temp_r4_733), ((u8 *) temp_r4_733) + 0x30, M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), s32 *, 8) + 0x30, temp_f31_724, temp_f30_718, temp_f29_713);
             }
@@ -643,7 +700,7 @@ block_20:
                     }
                     goto block_22;
                 case 3:
-                    if (MKRand_Int(&gViewSeed, 0, 7) == 0) {
+                    if (MKRand_Int((int *) &gViewSeed, 0, 7) == 0) {
                         temp_r28_850 = checked_cast<SteamTrainCabooseDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                         sp140 = -5.0f;
                         sp144 = 0.0f;
@@ -674,7 +731,7 @@ block_20:
                         sp300 = temp_f0_900;
                         sp108 = (f32) sp2F8 + sp2E0.unk8;
                         sp308 = (f64) sp108;
-                        temp_f1_913 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+                        temp_f1_913 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
                         spF0 = 0.5f;
                         spF4 = 0.5f;
                         spF8 = 0.0f;
@@ -683,9 +740,9 @@ block_20:
                         sp298 = (f64) spF8;
                         ((Explosion3 *) (M2C_FIELD(temp_r28_850, Explosion3 **, 0xF4)))->Trigger(*((MKVector3 *) &sp300), sp18, 1U, 1U, *((MKVector3 *) &sp290), (MKProp *) this);
                     }
-                    temp_f28_937 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f29_942 = MKRand_Float(&gViewSeed, 0.0f, 2.0f);
-                    spE0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f28_937 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f29_942 = MKRand_Float((int *) &gViewSeed, 0.0f, 2.0f);
+                    spE0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     spE4 = temp_f29_942;
                     spE8 = temp_f28_937;
                     sp270 = (f64) spE0;
@@ -701,10 +758,10 @@ block_20:
                     sp320 = temp_f0_969;
                     spC8 = M2C_FIELD(temp_r4_963, f32 *, 8) + (f32) sp288;
                     sp328 = (f64) spC8;
-                    if (MKRand_Int(&gViewSeed, 0, 4) == 0) {
-                        temp_f29_989 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f31_994 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                        spB0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    if (MKRand_Int((int *) &gViewSeed, 0, 4) == 0) {
+                        temp_f29_989 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                        temp_f31_994 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+                        spB0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                         spB4 = temp_f31_994;
                         spB8 = temp_f29_989;
                         sp250 = (f64) spB0;
@@ -714,9 +771,9 @@ block_20:
                         sp260 = temp_f0_1008;
                         spA8 = (f32) sp258 * 800.0f;
                         sp268 = (f64) spA8;
-                        sp14 = MKRand_Float(&gViewSeed, 5.0f, 8.0f);
-                        temp_f30_1026 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
-                        sp90 = MKRand_Float(&gViewSeed, 0.85f, 1.0f);
+                        sp14 = MKRand_Float((int *) &gViewSeed, 5.0f, 8.0f);
+                        temp_f30_1026 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
+                        sp90 = MKRand_Float((int *) &gViewSeed, 0.85f, 1.0f);
                         sp94 = temp_f30_1026;
                         sp98 = 0.5f;
                         sp9C = 1.0f;
@@ -724,8 +781,8 @@ block_20:
                         sp248 = (f64) sp98;
                         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp320), *((MKVector3 *) &sp260), sp14, *((MKVector4 *) &sp240), -1000.0f);
                     }
-                    if (MKRand_Int(&gViewSeed, 0, 4) == 0) {
-                        sp10 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
+                    if (MKRand_Int((int *) &gViewSeed, 0, 4) == 0) {
+                        sp10 = MKRand_Float((int *) &gViewSeed, 3.0f, 5.0f);
                         sp88 = 0.0f;
                         sp80 = 0.0f;
                         sp84 = 0.0f;
@@ -866,17 +923,15 @@ void SteamTrainCaboose::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SteamTrainCaboose::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1539;
 
     var_r31_1539 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (s32 *) &this->unkCC, 0) != 0) || (arg0->LoadInt("trainID", (s32 *) &this->unkD0, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (int *) &this->unkCC, 0) != 0) || (arg0->LoadInt("trainID", (int *) &this->unkD0, 0) != 0)) {
         var_r31_1539 = 1;
     }
     return var_r31_1539;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void SteamTrainCaboose::Deinit() {

@@ -1,25 +1,63 @@
 #include "spyro/source/FuryFXConvexity.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/CharacterGlowFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPath.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
+#include "spyro/source/WindFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -121,7 +159,7 @@ void FuryFXConvexity::EmitVortexParticles() {
         M2C_FIELD(temp_r3_137, f64 *, 8) = spC8;
         M2C_FIELD(temp_r3_137, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_137, f32 *, 0x28) = (f32) this->unk164;
-        M2C_FIELD(temp_r3_137, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_137, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         sp20 = 0.0f;
         sp24 = 0.0f;
         sp28 = 0.0f;
@@ -141,7 +179,7 @@ void FuryFXConvexity::EmitVortexParticles() {
         M2C_FIELD(temp_r3_175, f64 *, 8) = spC8;
         M2C_FIELD(temp_r3_175, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_175, f32 *, 0x28) = (f32) (1.5f * this->unk164);
-        M2C_FIELD(temp_r3_175, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_175, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         sp10 = 0.0f;
         sp14 = 0.0f;
         sp18 = 0.0f;
@@ -625,7 +663,7 @@ block_105:
                     M2C_FIELD(temp_r3_1395, f32 *, 0x20) = 0.0f;
                     sp248 = (f64) sp78;
                     M2C_FIELD(temp_r3_1395, f32 *, 0x28) = 0.0f;
-                    M2C_FIELD(temp_r3_1395, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+                    M2C_FIELD(temp_r3_1395, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
                     sp60 = 0.0f;
                     sp64 = 0.0f;
                     sp68 = 0.0f;
@@ -634,7 +672,7 @@ block_105:
                     sp230 = (f64) sp60;
                     sp238 = (f64) sp68;
                     M2C_FIELD(temp_r23_1398, f32 *, 0x18) = 1.0f;
-                    M2C_FIELD(temp_r23_1398, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+                    M2C_FIELD(temp_r23_1398, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
                     M2C_FIELD(temp_r23_1398, f32 *, 0x14) = M2C_BITWISE(f32, this->unk15C->unkF4);
                 }
                 temp_r3_1441 = this->unk160;
@@ -649,7 +687,7 @@ block_105:
                     M2C_FIELD(temp_r3_1445, f32 *, 0x20) = 0.0f;
                     sp228 = (f64) sp58;
                     M2C_FIELD(temp_r3_1445, f32 *, 0x28) = 0.0f;
-                    M2C_FIELD(temp_r3_1445, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+                    M2C_FIELD(temp_r3_1445, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
                     sp40 = 0.0f;
                     sp44 = 0.0f;
                     sp48 = 0.0f;
@@ -824,7 +862,7 @@ block_105:
                         M2C_FIELD(temp_r3_1006, f64 *, 8) = (f64) M2C_FIELD(temp_r29_1508, f32 *, 0x68);
                         M2C_FIELD(temp_r3_1006, f32 *, 0x20) = 0.0f;
                         M2C_FIELD(temp_r3_1006, f32 *, 0x28) = 0.0f;
-                        M2C_FIELD(temp_r3_1006, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+                        M2C_FIELD(temp_r3_1006, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
                         spC0 = 0.0f;
                         spC4 = 0.0f;
                         spC8 = 0.0f;
@@ -833,7 +871,7 @@ block_105:
                         sp2F0 = (f64) spC0;
                         sp2F8 = (f64) spC8;
                         M2C_FIELD(temp_r23_1009, f32 *, 0x18) = 6.0f;
-                        M2C_FIELD(temp_r23_1009, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+                        M2C_FIELD(temp_r23_1009, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
                         M2C_FIELD(temp_r23_1009, f32 *, 0x14) = M2C_BITWISE(f32, this->unk15C->unkF4);
                     }
                     temp_r3_1042 = this->unk160;
@@ -844,7 +882,7 @@ block_105:
                         M2C_FIELD(temp_r3_1046, f64 *, 8) = (f64) M2C_FIELD(temp_r29_1508, f32 *, 0x68);
                         M2C_FIELD(temp_r3_1046, f32 *, 0x20) = 0.0f;
                         M2C_FIELD(temp_r3_1046, f32 *, 0x28) = 0.0f;
-                        M2C_FIELD(temp_r3_1046, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+                        M2C_FIELD(temp_r3_1046, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
                         spB0 = 0.0f;
                         spB4 = 0.0f;
                         spB8 = 0.0f;
@@ -967,7 +1005,7 @@ block_105:
                         ((LightManager *) gb.unk80)->EnableLight(temp_r4_1342, 0U);
                         M2C_FIELD(temp_r29_1508, ManagedLight **, 0x84) = NULL;
                     }
-                    KDSound_Stop(&temp_r29_1508->unk0);
+                    KDSound_Stop((int *) &temp_r29_1508->unk0);
                     temp_r3_1353 = this->unk158;
                     this->unk158 = temp_r3_1353 + 4;
                     temp_r4_1356 = *temp_r3_1353;
@@ -1200,7 +1238,7 @@ loop_41:
                 M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                 if ((var_f30_1754 == 5000.0f) && (var_f30_1754 < var_f29_1686)) {
                     if (var_r28_1688 != NULL) {
-                        if (MKRand_Int(&gViewSeed, 0, 3) == 0) {
+                        if (MKRand_Int((int *) &gViewSeed, 0, 3) == 0) {
                             var_f29_1686 = var_f30_1754;
                             var_r28_1688 = (*temp_r30_1868)->unk8.unk0(temp_r30_1868);
                         }
@@ -1242,7 +1280,7 @@ loop_41:
         sp160 = sp20;
         spE8 = (f64) sp28;
         sp168 = (f64) sp28;
-        temp_f1_1958 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        temp_f1_1958 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         var_f0_1959 = 0.5f + temp_f1_1958;
         if (var_f0_1959 < 1.0f) {
 
@@ -1260,7 +1298,7 @@ loop_41:
         sp5C = 1.0f;
         sp80 = (f64) sp50;
         sp88 = (f64) sp58;
-        spC = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
+        spC = MKRand_Float((int *) &gViewSeed, 10.0f, 20.0f);
         ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp170), *((MKVector3 *) &sp160), spC, *((MKVector4 *) &sp80), 0.0f);
         var_r27_1877 += 1;
     } while (var_r27_1877 < 0x14);
@@ -1362,7 +1400,7 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
         do {
             sp120 = M2C_FIELD(this, f64 *, 0xE0);
             sp128 = M2C_FIELD(this, f64 *, 0xE8);
-            temp_f27_2165 = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
+            temp_f27_2165 = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
             temp_f31_2169 = temp_f27_2165;
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, 0.0f, -1.0f);
@@ -1374,13 +1412,13 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
             sp110 = sp20;
             spE8 = (f64) sp28;
             sp118 = (f64) sp28;
-            sp58 = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+            sp58 = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
             sp5C = 1.0f;
             sp50 = 1.0f;
             sp54 = 0.0f;
             sp98 = (f64) sp58;
             sp90 = (f64) sp50;
-            sp8 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
+            sp8 = MKRand_Float((int *) &gViewSeed, 3.0f, 5.0f);
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp120), *((MKVector3 *) &sp110), sp8, *((MKVector4 *) &sp90), -580.0f);
             var_r28_2138 += 1;
         } while (var_r28_2138 < 0x96);
@@ -1425,7 +1463,7 @@ void FuryFXConvexity::SetDefaults() {
     this->unk164 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: type mismatch
 void FuryFXConvexity::Deinit() {
     KDSoundFader **var_r31_2359;
     KDSoundFader **var_r3_2360;
@@ -1443,8 +1481,8 @@ void FuryFXConvexity::Deinit() {
         this->unkF8 = NULL;
     }
     MKModel_Destroy(this->unk1E0);
-    KDSound_Stop(&this->unkFC);
-    KDSound_Stop(&this->unk124);
+    KDSound_Stop((int *) &this->unkFC);
+    KDSound_Stop((int *) &this->unk124);
     var_r4_2358 = this->unk158;
     var_r31_2359 = var_r4_2358;
     var_r3_2360 = var_r4_2358;
@@ -1503,7 +1541,7 @@ loop_2:
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void FuryFXConvexity::Update() {
     f64 sp8B8;
     Matrix sp870;
@@ -1890,7 +1928,7 @@ void FuryFXConvexity::Update() {
             sp748 = sp118;
             sp620 = (f64) sp120;
             sp750 = (f64) sp120;
-            temp_f14_2737 = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
+            temp_f14_2737 = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
             temp_f25_2740 = temp_f14_2737;
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, 0.0f, -1.0f);
@@ -1902,13 +1940,13 @@ void FuryFXConvexity::Update() {
             sp738 = sp108;
             sp5D0 = (f64) sp110;
             sp740 = (f64) sp110;
-            sp230 = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+            sp230 = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
             sp234 = 1.0f;
             sp228 = 1.0f;
             sp22C = 0.0f;
             sp580 = (f64) sp230;
             sp578 = (f64) sp228;
-            sp2C = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
+            sp2C = MKRand_Float((int *) &gViewSeed, 3.0f, 5.0f);
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp748), *((MKVector3 *) &sp738), sp2C, *((MKVector4 *) &sp578), 0.0f);
             if (this->unkF4 <= 0.0f) {
                 this->unkF0 = 2;
@@ -2017,7 +2055,7 @@ void FuryFXConvexity::Update() {
             sp6F8 = spE8;
             sp540 = (f64) spF0;
             sp700 = (f64) spF0;
-            temp_f14_3057 = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
+            temp_f14_3057 = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
             temp_f25_3060 = temp_f14_3057;
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, 0.0f, -1.0f);
@@ -2029,22 +2067,22 @@ void FuryFXConvexity::Update() {
             sp6E8 = spD8;
             sp4F0 = (f64) spE0;
             sp6F0 = (f64) spE0;
-            sp1F0 = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+            sp1F0 = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
             sp1F4 = 1.0f;
             sp1E8 = 1.0f;
             sp1EC = 0.0f;
             sp4A0 = (f64) sp1F0;
             sp498 = (f64) sp1E8;
-            sp28 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
+            sp28 = MKRand_Float((int *) &gViewSeed, 3.0f, 5.0f);
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp6F8), *((MKVector3 *) &sp6E8), sp28, *((MKVector4 *) &sp498), 0.0f);
             if (this->unkF4 <= 0.0f) {
                 this->unkF4 = 0.1f;
                 this->unkF0 += 1;
             } else if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp7AC = 0;
-                temp_f15_3139 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f16_3144 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f16_3144, temp_f15_3139);
+                temp_f15_3139 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f16_3144 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f16_3144, temp_f15_3139);
                 spC8 = sp478 * 5.398241246e-315;
                 sp7A8 = 0x417;
                 sp7B0 = spC8;
@@ -2064,9 +2102,9 @@ void FuryFXConvexity::Update() {
             }
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp78C = 0;
-                temp_f15_3203 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f16_3208 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f16_3208, temp_f15_3203);
+                temp_f15_3203 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f16_3208 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f16_3208, temp_f15_3203);
                 spB8 = sp458 * 5.398241246e-315;
                 sp788 = 0x417;
                 sp790 = spB8;
@@ -2087,7 +2125,7 @@ void FuryFXConvexity::Update() {
             sp6D8 = spA8;
             sp450 = (f64) spB0;
             sp6E0 = (f64) spB0;
-            temp_f14_3281 = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
+            temp_f14_3281 = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
             temp_f25_3284 = temp_f14_3281;
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, 0.0f, -1.0f);
@@ -2099,13 +2137,13 @@ void FuryFXConvexity::Update() {
             sp6C8 = sp98;
             sp400 = (f64) spA0;
             sp6D0 = (f64) spA0;
-            sp1E0 = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+            sp1E0 = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
             sp1E4 = 1.0f;
             sp1D8 = 1.0f;
             sp1DC = 0.0f;
             sp3B0 = (f64) sp1E0;
             sp3A8 = (f64) sp1D8;
-            sp24 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
+            sp24 = MKRand_Float((int *) &gViewSeed, 3.0f, 5.0f);
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp6D8), *((MKVector3 *) &sp6C8), sp24, *((MKVector4 *) &sp3A8), 0.0f);
             goto block_159;
         case 4:                                     /* switch 1 */
@@ -2120,7 +2158,7 @@ void FuryFXConvexity::Update() {
             sp6B8 = sp88;
             sp3A0 = (f64) sp90;
             sp6C0 = (f64) sp90;
-            temp_f14_3383 = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
+            temp_f14_3383 = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
             temp_f26_3386 = temp_f14_3383;
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, 0.0f, -1.0f);
@@ -2132,13 +2170,13 @@ void FuryFXConvexity::Update() {
             sp6A8 = sp78;
             sp350 = (f64) sp80;
             sp6B0 = (f64) sp80;
-            sp1D0 = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+            sp1D0 = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
             sp1D4 = 1.0f;
             sp1C8 = 1.0f;
             sp1CC = 0.0f;
             sp300 = (f64) sp1D0;
             sp2F8 = (f64) sp1C8;
-            sp20 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
+            sp20 = MKRand_Float((int *) &gViewSeed, 3.0f, 5.0f);
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp6B8), *((MKVector3 *) &sp6A8), sp20, *((MKVector4 *) &sp2F8), 0.0f);
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp76C = 0;

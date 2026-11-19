@@ -1,12 +1,60 @@
 #include "spyro/source/CollapsibleProp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
 #include "spyro/source/KDProp.h"
-#include "spyro/source/Spyro.h"
-#include "unplaced_templates.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
+#include "unplaced_templates.h"
 #include <m2c_macros.h>
 
 extern f32 SPYRO_BOUNCE_Y_SPEED;
@@ -64,7 +112,7 @@ void CollapsibleProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'GetHeroType(HeroInterface *, float)' does not match
 void CollapsibleProp::Update() {
     MKAnimScript *temp_r3_269;
     f32 temp_f1_188;
@@ -151,18 +199,16 @@ void CollapsibleProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void CollapsibleProp::Deinit() {
     s32 temp_r3_356;
 
     this->unk98.Deinit();
     temp_r3_356 = this->unkC8;
     if ((temp_r3_356 != 0) && (KDSound_IsVoicePlaying(temp_r3_356) != 0)) {
-        KDSound_Stop(&this->unkC8);
+        KDSound_Stop((int *) &this->unkC8);
     }
     KDProp::Deinit();
 }
-#endif
 
 void CollapsibleProp::Init() {
     KDProp::Init();

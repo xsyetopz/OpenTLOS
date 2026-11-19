@@ -1,12 +1,15 @@
 #include "spyro/source/KDSynkerPlayerActor.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -18,6 +21,7 @@
 #include "spyro/source/KDSynkerPlayerActorList.h"
 #include "spyro/source/KDSynkerPlayerCamera.h"
 #include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Shadow.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -1546,7 +1550,7 @@ void KDSP_Actor::Update(float arg0, const MKVector3 &arg1, bool arg2) {
     sp8 = 0;
     spC = 0;
     UpdateCurrentBars((s32) arg0);
-    UpdatePosRot(arg0, &sp8, &spC);
+    UpdatePosRot(arg0, &sp8, (int *) &spC);
     temp_r3_2565 = this->unk40;
     if (!(temp_r3_2565 & 4)) {
         if (temp_r3_2565 & 8) {
@@ -2360,7 +2364,7 @@ void ModelSubObjectHide(MKIniLine *arg0, MKModel *arg1) {
 loop_8:
         if (var_r29_4201 < temp_r31_4200) {
             temp_r3_4205 = var_r30_4198->GetFieldName();
-            if ((temp_r3_4205 != NULL) && (MKModel_SubObjectExists(arg1, (SubObjectType) 0, temp_r3_4205, &sp8) != 0)) {
+            if ((temp_r3_4205 != NULL) && (MKModel_SubObjectExists(arg1, (SubObjectType) 0, temp_r3_4205, (int *) &sp8) != 0)) {
                 MKModel_EnableSubObject(arg1, (SubObjectType) 0, sp8, 0U, 1U);
             }
             var_r30_4198 = var_r30_4198->unkC->GetNextLine(var_r30_4198);

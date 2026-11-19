@@ -1,21 +1,64 @@
 #include "spyro/source/FireTier1Goal_Think.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/Enemies_Fire.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_AlertMode.h"
+#include "spyro/source/EnemyGoal_Think.h"
 #include "spyro/source/EnemyGoals_Death.h"
 #include "spyro/source/EnemyGoals_Hit.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include <m2c_macros.h>
@@ -88,13 +131,13 @@ void FireTier1Goal_Patrol::Activate() {
                 M2C_FIELD(temp_r4_128, f64 *, 0x18) = (f64) M2C_FIELD(this, f64 *, 0x50);
                 M2C_FIELD(temp_r4_128, f64 *, 0x20) = (f64) sp18;
                 M2C_FIELD(temp_r4_128, f64 *, 0x28) = (f64) sp20;
-                ((EnemyGoal_WanderAroundPointArb *) this->unk30)->SetParams(this->unk48, *((MKVector3 *) &sp18), 200.0f, MKRand_Float(&gViewSeed, 5.0f, 10.0f));
+                ((EnemyGoal_WanderAroundPointArb *) this->unk30)->SetParams(this->unk48, *((MKVector3 *) &sp18), 200.0f, MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f));
                 return;
             }
         }
     }
     AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk30);
-    ((EnemyGoal_WanderAroundPointArb *) this->unk30)->SetParams(this->unk48, MKVector3::up, 200.0f, MKRand_Float(&gViewSeed, 5.0f, 10.0f));
+    ((EnemyGoal_WanderAroundPointArb *) this->unk30)->SetParams(this->unk48, MKVector3::up, 200.0f, MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f));
 }
 #endif
 
@@ -247,13 +290,13 @@ u8 EnemyGoal_WanderAroundPointArb::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_WanderAroundPointArb::Activate() {
     MKVector3 sp8;
     Goal<Enemy> *temp_r8_501;
 
     if ((u8) this->unk8 == 1) {
-        this->unkC->unkA78 = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float(&gViewSeed, 5.0f, 10.0f);
+        this->unkC->unkA78 = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f);
     }
     this->unk8 = 0;
     RemoveAllSubgoals();

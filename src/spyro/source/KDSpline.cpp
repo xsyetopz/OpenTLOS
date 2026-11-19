@@ -1,7 +1,15 @@
 #include "spyro/source/KDSpline.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(s32);                                  /* extern */

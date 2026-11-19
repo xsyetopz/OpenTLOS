@@ -1,18 +1,51 @@
 #include "spyro/source/GuardianCageCrystal.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/EnergyBeam.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/Guardian.h"
 #include "spyro/source/GuardianCage.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -27,7 +60,7 @@ extern M2C_UNK gb;
 void GuardianCageCrystal::Deinit() {
     ((Targetable *) &this->unkC8)->UnregisterTargetable();
     Shatterable::Deinit();
-    KDSound_Stop(&this->unk1D8);
+    KDSound_Stop((int *) &this->unk1D8);
 }
 #endif
 
@@ -46,7 +79,7 @@ void GuardianCageCrystal::Explode() {
         spC = 0;
         sp8 = 0x87;
         M2C_FIELD(M2C_FIELD(temp_r3_95, void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(temp_r3_95, &sp8, 0);
-        KDSound_Stop(&this->unk1D8);
+        KDSound_Stop((int *) &this->unk1D8);
     }
 }
 #endif
@@ -140,8 +173,8 @@ void GuardianCageCrystal::Update() {
         ((GuardianCage *) &spD8)->GetBeamPosition((s32) this->unk1D0);
         this->unk1B8 = spD8;
         this->unk1C0 = spE0;
-        temp_f29_227 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f1_231 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f29_227 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f1_231 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         var_f4_232 = 0.0f;
         sp80 = temp_f29_227;
         sp78 = temp_f1_231;
@@ -201,7 +234,7 @@ void GuardianCageCrystal::Update() {
         spF8 = temp_f0_341;
         sp60 = M2C_FIELD(temp_r4_335, f32 *, 8) + (f32) spD0;
         sp100 = (f64) sp60;
-        sp3C = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        sp3C = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         sp38 = 0.0f;
         sp40 = 0.0f;
         sp98 = (f64) sp38;
@@ -211,14 +244,14 @@ void GuardianCageCrystal::Update() {
         spE8 = temp_f0_365;
         sp30 = (f32) spA0 * 1000.0f;
         spF0 = (f64) sp30;
-        temp_f30_378 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-        sp18 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        temp_f30_378 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+        sp18 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         sp1C = 0.5f;
         sp20 = temp_f30_378;
         sp24 = 1.0f;
         sp88 = (f64) sp18;
         sp90 = (f64) sp20;
-        sp14 = MKRand_Float(&gViewSeed, 8.0f, 10.0f);
+        sp14 = MKRand_Float((int *) &gViewSeed, 8.0f, 10.0f);
         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &spF8), *((MKVector3 *) &spE8), sp14, *((MKVector4 *) &sp88), 0.0f);
     }
 }
@@ -242,17 +275,15 @@ void GuardianCageCrystal::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 GuardianCageCrystal::LoadLine(MKIniLine *arg0) {
     s32 var_r31_484;
 
     var_r31_484 = 0;
-    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadInt("CageLockOnPos", &this->unk1CC, 0) != 0)) {
+    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadInt("CageLockOnPos", (int *) &this->unk1CC, 0) != 0)) {
         var_r31_484 = 1;
     }
     return var_r31_484;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkC8'
 void GuardianCageCrystal::Reset() {

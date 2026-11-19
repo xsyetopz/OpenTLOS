@@ -87,7 +87,7 @@ inline DragonBust::DragonBust() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline DragonBust::~DragonBust() {
     if ((&this->unk130 != NULL) && (&this->unk130 != NULL)) {
-        KDSound_Stop(&this->unk130);
+        KDSound_Stop((int *) &this->unk130);
     }
 }
 #endif

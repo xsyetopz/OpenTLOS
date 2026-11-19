@@ -1,9 +1,38 @@
 #include "spyro/source/CutsceneProp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/CutsceneObject.h"
 #include "spyro/source/CutsceneSystem.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
 #include "spyro/source/GameStateMachine.h"
+#include "spyro/source/GameVideo.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/PropFlags.h"
 #include <m2c_macros.h>
 
@@ -11,12 +40,10 @@ extern s8 bShowLoading;
 extern GameStateMachine gGMState;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void CutsceneProp::Disable() {
     this->unk18 = this->unk18 | 0x80000000;
-    PropFlagsClear((u32 *) &this->unk10, 0x20000U);
+    PropFlagsClear((unsigned int *) &this->unk10, 0x20000U);
 }
-#endif
 
 void CutsceneProp::Resolve() {
     MKProp::Resolve();
@@ -48,15 +75,15 @@ void CutsceneProp::Message(MKMessage *arg0) {
             }
         default:
 block_26:
-            PropFlagsMessage((u32 *) &this->unk10, arg0);
+            PropFlagsMessage((unsigned int *) &this->unk10, arg0);
             MKProp::Message(arg0);
         }
         break;
     case 0xBF:
-        PropFlagsClear((u32 *) &this->unk10, 0x160000U);
+        PropFlagsClear((unsigned int *) &this->unk10, 0x160000U);
         goto block_26;
     case 0xBE:
-        PropFlagsSet((u32 *) &this->unk10, 0x160000U);
+        PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
         goto block_26;
     case 0x2A:
         Disable();
@@ -100,7 +127,7 @@ s32 CutsceneProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_300;
 
     var_r31_300 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadBool("bLevelIntro", &this->unk50.unk6C, 0) != 0) || (arg0->LoadFloat("MusicDuckValue", &this->unk50.unk68, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (this->unk50.LoadLine(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadBool("bLevelIntro", &this->unk50.unk6C, 0) != 0) || (arg0->LoadFloat("MusicDuckValue", &this->unk50.unk68, 0) != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0) || (this->unk50.LoadLine(arg0) != 0)) {
         var_r31_300 = 1;
     }
     return var_r31_300;
@@ -116,7 +143,7 @@ void CutsceneProp::Init() {
     MKProp::Init();
     this->unk50.unk6C = 0;
     this->unk50.unk68 = 0.0f;
-    PropFlagsSet((u32 *) &this->unk10, 0x160000U);
+    PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
     this->unk50.unk6D = 0;
     this->unk50.unk6E = 0;
 }

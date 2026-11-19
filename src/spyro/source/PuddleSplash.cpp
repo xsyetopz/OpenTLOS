@@ -1,10 +1,17 @@
 #include "spyro/source/PuddleSplash.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -259,7 +266,7 @@ loop_1:
         }
         M2C_FIELD((((u8 *) this->unk4C) + var_r30_380), f32 *, 0x18) = 0.35f;
         M2C_FIELD((((u8 *) this->unk4C) + var_r30_380), f32 *, 0x14) = 0.35f;
-        temp_r29_429 = MKRand_Int(&gViewSeed, 0, 3);
+        temp_r29_429 = MKRand_Int((int *) &gViewSeed, 0, 3);
         M2C_FIELD((((u8 *) this->unk4C) + var_r30_380), s32 *, 0x1C) = (s32) M2C_FIELD((checked_cast<PuddleSplashDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (temp_r29_429 * 4)), s32 *, 0x60);
         return;
     }

@@ -1,10 +1,25 @@
 #include "spyro/source/UITools.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKStringCache.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameVideo.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LoadLevel.h"
 #include "spyro/source/MCLoadCheckScreen.h"
 #include "spyro/source/UIAttributes.h"
@@ -21,7 +36,6 @@
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
-#include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "common/Source/system_extras.h"
@@ -238,7 +252,7 @@ void HealthSafetyScreen::Init() {
     this->unkCC = NULL;
 }
 
-#if 0 // DRAFT: function call 'GameLanguage_GetLast(long *, unsigned int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void LanguageButtonGroup::LoadDone() {
     s32 spC;
     s32 sp8;
@@ -254,7 +268,7 @@ void LanguageButtonGroup::LoadDone() {
     s8 *temp_r0_406;
     s8 *temp_r3_418;
 
-    if (GameLanguage_GetLast(&spC, 1U) != 0) {
+    if (GameLanguage_GetLast((int *) &spC, 1U) != 0) {
         var_r3_312 = &lit_stringBase0;
         do {
             temp_r26_320 = M2C_FIELD(OptionButton::descriptor, s32 *, 8);
@@ -309,7 +323,7 @@ void LanguageButtonGroup::LoadDone() {
                 sp8 = 5;
                 temp_r3_347->Message(&sp8);
             }
-            var_r3_312 = GameLanguage_GetPrev(&spC, 1U);
+            var_r3_312 = GameLanguage_GetPrev((int *) &spC, 1U);
         } while ((u8) var_r3_312 != 0);
     }
 }
@@ -1870,7 +1884,7 @@ void PromptGroup::Message(UIMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKFont'
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void PromptText::Message(UIMessage *arg0) {
     s32 temp_r4_3987;
 

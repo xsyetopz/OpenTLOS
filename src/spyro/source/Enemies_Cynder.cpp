@@ -1,34 +1,88 @@
 #include "spyro/source/Enemies_Cynder.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/Frustum.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/Ball.h"
 #include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/Catapult.h"
+#include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/CynderTier2TrainGoal_Think.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/ElectricSparks.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/EnemyGoal_Think.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
 #include "spyro/source/EnemyTestGoals.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FallingLeaves.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/HeroInterface.h"
 #include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/PooledShatterProp.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SnowballTree.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapArcFX.h"
 #include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
@@ -46,7 +100,7 @@ extern s32 GS_PLACEHOLDER;
 extern MKSceneManager *gMK;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: ';' expected
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit cynderTier1BodyFXInit;   /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit cynderTier2BodyFXInit;   /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit cynderTier3BodyFXInit;   /* unable to generate initializer: confusing struct layout */
@@ -357,21 +411,21 @@ void CynderTier3::EmitClubEffects() {
                 sp628 = sp128;
                 sp610 = (f64) sp130;
                 sp630 = (f64) sp130;
-                MKVector(0.0f, MKRand_Float(&gViewSeed, 1.0f, 2.0f), 0.0f);
+                MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f), 0.0f);
                 sp118 = sp5A8 * 5.634608575e-315;
                 sp5B8 = sp118;
                 sp120 = sp5B0 * 500.0f;
                 sp618 = sp118;
                 sp5C0 = (f64) sp120;
                 sp620 = (f64) sp120;
-                temp_f1_288 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
+                temp_f1_288 = MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f);
                 temp_f0_292 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
                 sp1C8 = temp_f0_292;
                 sp598 = temp_f0_292;
                 sp1D0 = this->unkB18.unk8 + (f32) sp630;
                 sp5A0 = (f64) sp1D0;
                 gb.unk240.Emit(*((MKVector3 *) &sp598), *((MKVector3 *) &sp618), temp_f1_288, 0.75f);
-                this->unkB50 = gb.unk30C + MKRand_Float(&gViewSeed, 0.375f, 0.75f);
+                this->unkB50 = gb.unk30C + MKRand_Float((int *) &gViewSeed, 0.375f, 0.75f);
             }
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, -1.0f, -1.0f);
@@ -383,14 +437,14 @@ void CynderTier3::EmitClubEffects() {
             sp628 = sp108;
             sp590 = (f64) sp110;
             sp630 = (f64) sp110;
-            MKVector(0.0f, MKRand_Float(&gViewSeed, 0.5f, 1.0f), 0.0f);
+            MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f), 0.0f);
             spF8 = sp528 * 5.634608575e-315;
             sp538 = spF8;
             sp100 = sp530 * 500.0f;
             sp618 = spF8;
             sp540 = (f64) sp100;
             sp620 = (f64) sp100;
-            sp20 = MKRand_Float(&gViewSeed, 5.0f, 6.0f);
+            sp20 = MKRand_Float((int *) &gViewSeed, 5.0f, 6.0f);
             temp_f0_388 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
             sp1B8 = temp_f0_388;
             sp518 = temp_f0_388;
@@ -407,7 +461,7 @@ void CynderTier3::EmitClubEffects() {
             sp628 = spE8;
             sp510 = (f64) spF0;
             sp630 = (f64) spF0;
-            MKVector(0.0f, MKRand_Float(&gViewSeed, 1.0f, 2.0f), 0.0f);
+            MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f), 0.0f);
             spD8 = sp4A8 * 5.634608575e-315;
             sp198 = 0.5f;
             sp19C = 0.33f;
@@ -420,7 +474,7 @@ void CynderTier3::EmitClubEffects() {
             sp620 = (f64) spE0;
             sp488 = (f64) sp198;
             sp490 = (f64) sp1A0;
-            sp1C = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
+            sp1C = MKRand_Float((int *) &gViewSeed, 4.0f, 6.0f);
             temp_f0_472 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
             sp1A8 = temp_f0_472;
             sp498 = temp_f0_472;
@@ -439,12 +493,12 @@ void CynderTier3::EmitClubEffects() {
                     sp618 = spC8;
                     sp480 = (f64) spD0;
                     sp620 = (f64) spD0;
-                    ((ElectricSparks *) gb.unk230)->Emit(this->unkB18, *((MKVector3 *) &sp618), MKRand_Float(&gViewSeed, 1.0f, 2.0f), 1U);
+                    ((ElectricSparks *) gb.unk230)->Emit(this->unkB18, *((MKVector3 *) &sp618), MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f), 1U);
                     var_r27_498 += 1;
                 } while (var_r27_498 < 2);
                 var_r27_534 = 0;
 loop_17:
-                if (var_r27_534 < MKRand_Int(&gViewSeed, 1, 3)) {
+                if (var_r27_534 < MKRand_Int((int *) &gViewSeed, 1, 3)) {
                     MKVector(1.0f, 1.0f, 1.0f);
                     MKVector(-1.0f, -1.0f, -1.0f);
                     KDRand_Vector(sp438, sp428);
@@ -464,7 +518,7 @@ loop_17:
                     sp620 = sp410;
                     sp3E8 = (f64) sp178;
                     sp3F0 = (f64) sp180;
-                    sp18 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+                    sp18 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
                     temp_f0_590 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
                     sp188 = temp_f0_590;
                     sp3F8 = temp_f0_590;
@@ -474,7 +528,7 @@ loop_17:
                     var_r27_534 += 1;
                     goto loop_17;
                 }
-                this->unkB50 = gb.unk30C + MKRand_Float(&gViewSeed, 0.0f, 0.25f);
+                this->unkB50 = gb.unk30C + MKRand_Float((int *) &gViewSeed, 0.0f, 0.25f);
                 return;
             }
             break;
@@ -496,7 +550,7 @@ loop_17:
             sp618 = sp98;
             sp390 = (f64) spA0;
             sp620 = (f64) spA0;
-            (*(f32 *) ((u8 *) &sp618 + 0x4)) = MKRand_Float(&gViewSeed, 3.0f, 4.0f);
+            (*(f32 *) ((u8 *) &sp618 + 0x4)) = MKRand_Float((int *) &gViewSeed, 3.0f, 4.0f);
             temp_r3_683 = M2C_FIELD(M2C_FIELD(gb.unk2A4, void **, 0x44), void *(**)(void *), 0x3C)(gb.unk2A4);
             if (temp_r3_683 != NULL) {
                 temp_r26_687 = M2C_FIELD(temp_r3_683, void **, 0x2C);
@@ -514,8 +568,8 @@ loop_17:
                 sp370 = (f64) sp90;
                 M2C_FIELD(temp_r26_687, f64 *, 0) = sp618;
                 M2C_FIELD(temp_r26_687, f64 *, 8) = sp620;
-                M2C_FIELD(temp_r26_687, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.25f, 0.8f);
-                M2C_FIELD(temp_r26_687, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                M2C_FIELD(temp_r26_687, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.25f, 0.8f);
+                M2C_FIELD(temp_r26_687, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r26_687, f32 *, 0x14) = (f32) (M2C_FIELD(gb.unk2A4, f32 *, 0xF4) - 0.2f);
                 return;
             }
@@ -539,15 +593,15 @@ loop_17:
                 sp618 = sp68;
                 sp310 = (f64) sp70;
                 sp620 = (f64) sp70;
-                sp10 = MKRand_Int(&gViewSeed, 0, 3);
-                sp14 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+                sp10 = MKRand_Int((int *) &gViewSeed, 0, 3);
+                sp14 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
                 temp_f0_800 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
                 sp168 = temp_f0_800;
                 sp2E8 = temp_f0_800;
                 sp170 = this->unkB18.unk8 + (f32) sp630;
                 sp2F0 = (f64) sp170;
                 ((FallingLeaves *) (M2C_FIELD(checked_cast<CynderTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), FallingLeaves **, 0x2B8)))->Emit(*((MKVector3 *) &sp2E8), *((MKVector3 *) &sp618), sp14, sp10, 1U);
-                this->unkB50 = gb.unk30C + MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+                this->unkB50 = gb.unk30C + MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
             }
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, -1.0f, -1.0f);
@@ -566,7 +620,7 @@ loop_17:
             sp618 = sp48;
             sp290 = (f64) sp50;
             sp620 = (f64) sp50;
-            spC = MKRand_Float(&gViewSeed, 0.1f, 0.5f);
+            spC = MKRand_Float((int *) &gViewSeed, 0.1f, 0.5f);
             temp_f0_889 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
             sp158 = temp_f0_889;
             sp268 = temp_f0_889;
@@ -596,7 +650,7 @@ loop_17:
             sp620 = (f64) sp30;
             sp1D8 = (f64) sp138;
             sp1E0 = (f64) sp140;
-            sp8 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
+            sp8 = MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f);
             temp_f0_966 = M2C_FIELD(this, f64 *, 0xB18) + sp628;
             sp148 = temp_f0_966;
             sp1E8 = temp_f0_966;
@@ -679,11 +733,11 @@ void CynderTier3::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderTier3::Deinit() {
     Goal<Enemy> *temp_r3_1229;
 
-    KDSound_Stop(&this->unkB28);
+    KDSound_Stop((int *) &this->unkB28);
     temp_r3_1229 = this->unkB10;
     if (temp_r3_1229 != NULL) {
         M2C_FIELD(temp_r3_1229->__vptr, M2C_UNK (**)(), 0xC)();
@@ -761,17 +815,15 @@ void CynderTier3Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[14], long *)' does
 s32 CynderTier3Descriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1414;
 
     var_r31_1414 = 0;
-    if ((EnemyDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndClubEffect", &this->unk2B4) != 0)) {
+    if ((EnemyDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndClubEffect", (int *) &this->unk2B4) != 0)) {
         var_r31_1414 = 1;
     }
     return var_r31_1414;
 }
-#endif
 
 void CynderTier3Descriptor::Init() {
     EnemyDescriptor::Init();
@@ -1369,14 +1421,14 @@ loop_50:
                         sp428 = sp108;
                         sp3F0 = (f64) sp110;
                         sp430 = (f64) sp110;
-                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
-                        sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
+                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
+                        sp34 = MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f);
                         ((CrashFirePS *) gb.unk68)->Emit(this->unk588, *((MKVector3 *) &sp428), sp34);
                         sp408 = 1.0f;
                         sp40C = 0.75f;
                         sp410 = 0.75f;
                         sp414 = 1.0f;
-                        sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
+                        sp30 = MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f);
                         ((EmbersPS *) gb.unk74)->Emit(this->unk588, *((MKVector3 *) &sp428), sp30, *((MKVector4 *) &sp408), 0.0f);
                         var_r23_2375 += 1;
                     } while (var_r23_2375 < 0x1E);
@@ -1389,8 +1441,8 @@ loop_50:
                         sp428 = spF8;
                         sp3D0 = (f64) sp100;
                         sp430 = (f64) sp100;
-                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
-                        gb.unk240.Emit(this->unk588, *((MKVector3 *) &sp428), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
+                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
+                        gb.unk240.Emit(this->unk588, *((MKVector3 *) &sp428), MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f), 1.0f);
                         var_r23_2430 += 1;
                     } while (var_r23_2430 < 0xF);
                     var_r23_2468 = 0;
@@ -1402,8 +1454,8 @@ loop_50:
                         sp428 = spE8;
                         sp3B0 = (f64) spF0;
                         sp430 = (f64) spF0;
-                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
-                        sp2C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 8.0f);
+                        sp2C = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
                         gb.EmitDust(this->unk588, *((MKVector3 *) &sp428), sp2C, 0.0f);
                         var_r23_2468 += 1;
                     } while (var_r23_2468 < 5);
@@ -1419,8 +1471,8 @@ loop_50:
                         sp428 = spD8;
                         sp390 = (f64) spE0;
                         sp430 = (f64) spE0;
-                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 20.0f, 27.0f);
-                        sp28 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
+                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float((int *) &gViewSeed, 20.0f, 27.0f);
+                        sp28 = MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f);
                         ((IceBitsPS *) (M2C_FIELD(checked_cast<CynderTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), IceBitsPS **, 0x260)))->Emit(this->unk588, *((MKVector3 *) &sp428), sp28);
                         var_r23_2517 += 1;
                     } while (var_r23_2517 < 0x14);
@@ -1433,7 +1485,7 @@ loop_50:
                         sp428 = spC8;
                         sp370 = (f64) spD0;
                         sp430 = (f64) spD0;
-                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 10.0f, 15.0f);
+                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float((int *) &gViewSeed, 10.0f, 15.0f);
                         temp_r3_2584 = M2C_FIELD(M2C_FIELD(gb.unk2A0, void **, 0x44), void *(**)(void *), 0x3C)(gb.unk2A0);
                         if (temp_r3_2584 != NULL) {
                             temp_r22_2589 = M2C_FIELD(temp_r3_2584, void **, 0x2C);
@@ -1451,8 +1503,8 @@ loop_50:
                             sp350 = (f64) spC0;
                             M2C_FIELD(temp_r22_2589, f64 *, 0) = sp428;
                             M2C_FIELD(temp_r22_2589, f64 *, 8) = sp430;
-                            M2C_FIELD(temp_r22_2589, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.5f, 1.5f);
-                            M2C_FIELD(temp_r22_2589, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                            M2C_FIELD(temp_r22_2589, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.5f, 1.5f);
+                            M2C_FIELD(temp_r22_2589, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                             M2C_FIELD(temp_r22_2589, f32 *, 0x14) = (f32) M2C_FIELD(gb.unk2A0, f32 *, 0xF4);
                         }
                         var_r23_2557 += 1;
@@ -1484,7 +1536,7 @@ loop_50:
                         sp428 = spA8;
                         sp300 = (f64) spB0;
                         sp430 = (f64) spB0;
-                        temp_f1_2732 = MKRand_Float(&gViewSeed, 8.0f, 12.0f);
+                        temp_f1_2732 = MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
                         sp178 = 1.0f;
                         sp17C = 0.0f;
                         sp180 = 0.2f;
@@ -1492,7 +1544,7 @@ loop_50:
                         (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * temp_f1_2732;
                         sp2D8 = (f64) sp178;
                         sp2E0 = (f64) sp180;
-                        sp24 = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
+                        sp24 = MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f);
                         ((ZapPS *) (M2C_FIELD(checked_cast<CynderTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B4)))->Emit(this->unk588, *((MKVector3 *) &sp428), sp24, (MKVector4) &sp2D8);
                         var_r21_2710 += 1;
                     } while (var_r21_2710 < 0xF);
@@ -1504,15 +1556,15 @@ loop_50:
                     sp448 = 5.465589745e-315;
                     sp450 = 5.370091495e-315;
                     do {
-                        temp_r3_2778 = MKRand_Int(&gViewSeed, 4, 8);
+                        temp_r3_2778 = MKRand_Int((int *) &gViewSeed, 4, 8);
                         var_f17_2761 += (f32) sp448;
                         var_r22_2786 = 0;
                         sp440 = (f32) sp450 / (f32) (temp_r3_2778 - 1);
 loop_34:
                         if (var_r22_2786 < temp_r3_2778) {
                             temp_f15_2803 = (f32) var_r22_2786 * sp440;
-                            sp458 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
-                            sp460 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
+                            sp458 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
+                            sp460 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
                             temp_f15_2817 = -_table_sinf((f32) sp468 + temp_f15_2803) * (f32) sp458;
                             MKVector(_table_sinf(temp_f15_2803) * (f32) sp460, 0.0f, temp_f15_2817);
                             sp2B8.operator*(var_f17_2761);
@@ -1531,7 +1583,7 @@ loop_34:
                             sp430 = 0.0f;
                             sp298 = (f64) sp168;
                             sp2A0 = (f64) sp170;
-                            sp20 = MKRand_Float(&gViewSeed, 10.0f, 15.0f);
+                            sp20 = MKRand_Float((int *) &gViewSeed, 10.0f, 15.0f);
                             ((ZapPS *) (M2C_FIELD(checked_cast<CynderTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B4)))->Emit(*((MKVector3 *) &sp418), *((MKVector3 *) &sp428), sp20, (MKVector4) &sp298);
                             var_r22_2786 += 1;
                             goto loop_34;
@@ -1547,7 +1599,7 @@ loop_34:
                         sp428 = sp88;
                         sp290 = (f64) sp90;
                         sp430 = (f64) sp90;
-                        temp_f1_2903 = MKRand_Float(&gViewSeed, 8.0f, 12.0f);
+                        temp_f1_2903 = MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
                         sp158 = 1.0f;
                         sp15C = 0.0f;
                         sp160 = 0.2f;
@@ -1555,7 +1607,7 @@ loop_34:
                         (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * temp_f1_2903;
                         sp268 = (f64) sp158;
                         sp270 = (f64) sp160;
-                        sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+                        sp1C = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
                         ((ZapArcFX *) gb.unk94)->Trigger(this->unk588, *((MKVector3 *) &sp428), sp1C, lit_895, (MKVector4) &sp268);
                         var_r21_2881 += 1;
                     } while (var_r21_2881 < 3);
@@ -1569,7 +1621,7 @@ loop_34:
                         sp428 = sp78;
                         sp260 = (f64) sp80;
                         sp430 = (f64) sp80;
-                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 12.0f, 16.0f);
+                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float((int *) &gViewSeed, 12.0f, 16.0f);
                         sp148 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.51933903e-315;
                         sp150 = temp_f16_2931 * 75.0f;
                         sp228 = sp148;
@@ -1579,7 +1631,7 @@ loop_34:
                         sp238 = temp_f0_2970;
                         sp140 = this->unk588.unk8 - (f32) sp230;
                         sp240 = (f64) sp140;
-                        ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp428), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 1U);
+                        ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp428), MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f), 1U);
                         var_r21_2934 += 1;
                     } while (var_r21_2934 < 0xF);
                     break;
@@ -1595,7 +1647,7 @@ loop_34:
                         sp428 = sp68;
                         sp220 = (f64) sp70;
                         sp430 = (f64) sp70;
-                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
+                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float((int *) &gViewSeed, 2.0f, 4.0f);
                         temp_r24_3031 = checked_cast<CynderTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                         sp128 = M2C_FIELD(&MKVector3::up, f64 *, 0) * 5.49408334e-315;
                         sp130 = temp_f17_3003 * 50.0f;
@@ -1606,8 +1658,8 @@ loop_34:
                         sp1F8 = temp_f0_3045;
                         sp120 = this->unk588.unk8 + (f32) sp1F0;
                         sp200 = (f64) sp120;
-                        sp18 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
-                        sp14 = MKRand_Int(&gViewSeed, 0, 3);
+                        sp18 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
+                        sp14 = MKRand_Int((int *) &gViewSeed, 0, 3);
                         ((FallingLeaves *) (M2C_FIELD(temp_r24_3031, FallingLeaves **, 0x2B8)))->Emit(*((MKVector3 *) &sp1F8), *((MKVector3 *) &sp428), sp18, sp14, 1U);
                         var_r21_3006 += 1;
                     } while (var_r21_3006 < 0xF);
@@ -1620,8 +1672,8 @@ loop_34:
                         sp428 = sp58;
                         sp1E0 = (f64) sp60;
                         sp430 = (f64) sp60;
-                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
-                        sp10 = MKRand_Float(&gViewSeed, 0.1f, 0.5f);
+                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
+                        sp10 = MKRand_Float((int *) &gViewSeed, 0.1f, 0.5f);
                         gb.EmitSmallRocks(this->unk588, *((MKVector3 *) &sp428), sp10);
                         var_r21_3078 += 1;
                     } while (var_r21_3078 < 0x1E);
@@ -1634,8 +1686,8 @@ loop_34:
                         sp428 = sp48;
                         sp1C0 = (f64) sp50;
                         sp430 = (f64) sp50;
-                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
-                        spC = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 8.0f);
+                        spC = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
                         gb.EmitDust(this->unk588, *((MKVector3 *) &sp428), spC, 0.0f);
                         var_r21_3118 += 1;
                     } while (var_r21_3118 < 5);
@@ -1648,8 +1700,8 @@ loop_34:
                         sp428 = sp38;
                         sp1A0 = (f64) sp40;
                         sp430 = (f64) sp40;
-                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
-                        sp8 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+                        (*(f32 *) ((u8 *) &sp420 + 0xc)) = 100.0f * MKRand_Float((int *) &gViewSeed, 2.0f, 4.0f);
+                        sp8 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
                         gb.EmitCrud(this->unk588, *((MKVector3 *) &sp428), sp8);
                         var_r21_3159 += 1;
                     } while (var_r21_3159 < 5);

@@ -1,11 +1,21 @@
 #include "spyro/source/DamageShieldEffect.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
 #include "spyro/source/KDProp.h"
-#include "common/Source/MKModel.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -38,10 +48,10 @@ loop_1:
         M2C_FIELD(temp_r5_63, f32 *, 0xB0) = arg1;
         M2C_FIELD(temp_r5_63, f32 *, 0xB4) = 0.0f;
         M2C_FIELD(temp_r5_63, s8 *, 0xB8) = 1;
-        temp_f30_76 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
-        temp_f31_81 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+        temp_f30_76 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
+        temp_f31_81 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
         temp_r3_86 = this + var_r31_55;
-        M2C_FIELD(temp_r3_86, f32 *, 0xC0) = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+        M2C_FIELD(temp_r3_86, f32 *, 0xC0) = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
         M2C_FIELD(temp_r3_86, f32 *, 0xC4) = temp_f31_81;
         M2C_FIELD(temp_r3_86, f32 *, 0xC8) = temp_f30_76;
         M2C_FIELD(temp_r3_86, f32 *, 0xCC) = 1.0f;
@@ -352,7 +362,6 @@ void DamageShieldEffect::Draw() {
     }
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void DamageShieldEffect::Update() {
     f64 sp20;
     f64 sp18;
@@ -386,8 +395,8 @@ void DamageShieldEffect::Update() {
         } while (var_ctr_574 != 0);
         this->unk9C -= gUpdateTimeDelta;
         if (this->unk9C <= 0.0f) {
-            temp_f31_610 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-            temp_f3_619 = 640.0f * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            temp_f31_610 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+            temp_f3_619 = 640.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
             sp10 = 0.0f;
             sp8 = temp_f3_619;
             spC = 480.0f * temp_f31_610;
@@ -427,7 +436,6 @@ void DamageShieldEffect::Update() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void DamageShieldEffect::Init() {

@@ -221,10 +221,10 @@ inline Ball::~Ball() {
             }
         }
         if ((&this->unk200 != NULL) && (&this->unk200 != NULL)) {
-            KDSound_Stop(&this->unk200);
+            KDSound_Stop((int *) &this->unk200);
         }
         if ((&this->unk1D8 != NULL) && (&this->unk1D8 != NULL)) {
-            KDSound_Stop(&this->unk1D8);
+            KDSound_Stop((int *) &this->unk1D8);
         }
     }
 }

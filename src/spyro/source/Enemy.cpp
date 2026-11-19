@@ -1,26 +1,43 @@
 #include "spyro/source/Enemy.h"
 #include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
 #include "spyro/source/AITargetData.h"
 #include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/CharacterBreathFX.h"
 #include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
 #include "spyro/source/CharacterIceCubesFX.h"
 #include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/Collectable.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Coronas.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/ElectricSparks.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/EnemyAttackPattern.h"
@@ -29,19 +46,45 @@
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FootStepFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/KDVolume.h"
 #include "spyro/source/KDWaterVolume.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
 #include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
@@ -335,7 +378,7 @@ void Enemy::ChillFx_Update() {
                 sp68 = temp_f5_555;
                 sp70 = temp_f4_556;
                 M2C_FIELD(temp_r3_549, f32 *, 0x1C) = 1.0f;
-                MKVector(0.0f, MKRand_Float(&gViewSeed, -50.0f, 25.0f), 0.0f);
+                MKVector(0.0f, MKRand_Float((int *) &gViewSeed, -50.0f, 25.0f), 0.0f);
                 KDRand_UnitVectorXZ();
                 sp48.operator*(150.0f);
                 sp8 = sp48 + sp28;
@@ -344,8 +387,8 @@ void Enemy::ChillFx_Update() {
                 sp58 = sp8;
                 sp60 = (f64) sp10;
                 M2C_FIELD(temp_r28_554, f64 *, 8) = (f64) sp10;
-                M2C_FIELD(temp_r28_554, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
-                M2C_FIELD(temp_r28_554, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                M2C_FIELD(temp_r28_554, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
+                M2C_FIELD(temp_r28_554, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r28_554, f32 *, 0x14) = (f32) M2C_FIELD(gb.unk2A4, f32 *, 0xF4);
                 temp_r3_612 = this->unkA00;
                 if (temp_r3_612 != NULL) {
@@ -536,7 +579,7 @@ void Enemy::ThawIfFrozen() {
             sp70 = temp_f0_953;
             sp18 = sp60.unk8 * 1000.0f;
             sp78 = (f64) sp18;
-            sp8 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+            sp8 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
             this->unkA38->unk260->Emit(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70), sp8);
             var_r30_922 += 1;
         } while (var_r30_922 < 0x1E);
@@ -758,14 +801,12 @@ void Enemy::OnSummon() {
 
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void Enemy::SetShockSoundEvent(int arg0) {
     if ((s32) this->unkAD8 != arg0) {
-        KDSound_Stop(&this->unk9A8);
+        KDSound_Stop((int *) &this->unk9A8);
     }
     this->unkAD8 = arg0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void Enemy::Armour_SpawnFragments() {
@@ -824,9 +865,9 @@ loop_22:
         spA0.Translate(&spA0, *((MKVector3 *) &sp88));
         sp78 = (f64) spA0.unk30;
         sp80 = (f64) spA0.unk38;
-        temp_f28_1553 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f29_1558 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp38 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f28_1553 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f29_1558 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp38 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp3C = temp_f29_1558;
         sp40 = temp_f28_1553;
         sp48 = (f64) sp38;
@@ -1384,7 +1425,7 @@ void Enemy::DoBlockFx(unsigned int arg0, const MKVector3 &arg1) {
         sp38 = temp_f0_2656;
         sp20 = (f32) spB0 * 2000.0f;
         sp40 = (f64) sp20;
-        ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &spB8), *((MKVector3 *) &sp38), MKRand_Float(&gViewSeed, 2.0f, 3.0f), 0U);
+        ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &spB8), *((MKVector3 *) &sp38), MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f), 0U);
         var_r28_2618 += 1;
     } while (var_r28_2618 < 0xA);
 }
@@ -1440,7 +1481,6 @@ void Enemy::ClearHitAndDeathFX() {
     this->unkAA8 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void Enemy::DoDeadFx() {
     f64 sp10;
     f64 sp8;
@@ -1451,11 +1491,10 @@ void Enemy::DoDeadFx() {
     temp_f1_2831 = M2C_FIELD(MKModel_GetBoundingVolume(this->unk4, (SubObjectType) 0, -1), f32 *, 0xC) / 200.0f;
     sp8 = M2C_FIELD(temp_r4_2829, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r4_2829, f64 *, 0x38);
-    ((EnemyDeathFX *) gb.unk98)->Trigger(&this->unkA38->unk108, *((MKVector3 *) &sp8), temp_f1_2831, this->unkAF0);
+    ((EnemyDeathFX *) gb.unk98)->Trigger((int *) &this->unkA38->unk108, *((MKVector3 *) &sp8), temp_f1_2831, this->unkAF0);
 }
-#endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 void Enemy::DoDeathFx(unsigned int arg0) {
     f64 sp88;
     f64 sp80;
@@ -1518,9 +1557,9 @@ void Enemy::DoDeathFx(unsigned int arg0) {
                 temp_r3_2937->Enable(1U, 1.0f, 0U);
             }
             this->unk750.SetState(lit_2211, 3.0f);
-            temp_f30_2953 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f31_2958 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f1_2962 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f30_2953 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f31_2958 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f1_2962 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp48 = temp_f30_2953;
             sp40 = temp_f1_2962;
             sp44 = temp_f31_2958;
@@ -1533,8 +1572,8 @@ void Enemy::DoDeathFx(unsigned int arg0) {
                 sp1C = 1.0f;
                 sp50 = (f64) sp10;
                 sp58 = (f64) sp18;
-                sp8 = MKRand_Float(&gViewSeed, 0.2f, 1.0f);
-                temp_f1_2997 = 100.0f * MKRand_Float(&gViewSeed, 0.0f, 1.5f);
+                sp8 = MKRand_Float((int *) &gViewSeed, 0.2f, 1.0f);
+                temp_f1_2997 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.5f);
                 sp38 = 0.0f;
                 temp_r3_3000 = ((u8 *) this->unk8) + 0x30;
                 sp30 = 0.0f;
@@ -1812,9 +1851,9 @@ loop_34:
                     temp_r3_3384->Enable(1U, 1.0f, 0U);
                 }
                 this->unk750.SetState(lit_2173, 1.0f);
-                temp_f30_3400 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f31_3405 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f1_3409 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f30_3400 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f31_3405 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f1_3409 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 spB8 = temp_f30_3400;
                 spB0 = temp_f1_3409;
                 spB4 = temp_f31_3405;
@@ -1827,8 +1866,8 @@ loop_34:
                     sp8C = 1.0f;
                     spE0 = (f64) sp80;
                     spE8 = (f64) sp88;
-                    sp8 = MKRand_Float(&gViewSeed, 0.2f, 1.0f);
-                    temp_f1_3444 = 100.0f * MKRand_Float(&gViewSeed, 0.0f, 1.5f);
+                    sp8 = MKRand_Float((int *) &gViewSeed, 0.2f, 1.0f);
+                    temp_f1_3444 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.5f);
                     spA8 = 0.0f;
                     temp_r3_3447 = ((u8 *) this->unk8) + 0x30;
                     spA0 = 0.0f;
@@ -1869,7 +1908,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier 'spB4'
 void Enemy::CheckForHazards() {
     MKCollisionResult sp130;
     f64 sp128;
@@ -1928,7 +1967,7 @@ void Enemy::CheckForHazards() {
 
     if (((u8) this->unkA38->unk120 == 0) && (IsDead() == 0) && (this->unkAC8 > 0.0f)) {
         sp8 = 0;
-        if (((u8) this->unkA38->unk121 != 0) && (InWaterVolume(this->unk588, &sp8) != 0)) {
+        if (((u8) this->unkA38->unk121 != 0) && (InWaterVolume(this->unk588, (int *) &sp8) != 0)) {
             sp80 = M2C_FIELD(this, f64 *, 0xC0) * 5.398241246e-315;
             temp_r3_3568 = this->unk8;
             temp_f1_3571 = M2C_FIELD(temp_r3_3568, f64 *, 0x30);
@@ -2992,7 +3031,7 @@ s32 Enemy::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             temp_r4_5929->unk10 |= 0x40;
         }
         AddCameraCollisionItem();
-        this->unkA60 = gb.unk30C + MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        this->unkA60 = gb.unk30C + MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         UpdateAI(&gb);
         return 1;
     }
@@ -3906,15 +3945,13 @@ void Enemy::AddCameraCollisionItem() {
     }
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void Enemy::Deactivate() {
     Character::Deactivate();
-    KDSound_Stop(&this->unk9A8);
+    KDSound_Stop((int *) &this->unk9A8);
     if ((s32) this->unkA58 != 0) {
-        KDSound_Stop(&this->unkA58);
+        KDSound_Stop((int *) &this->unkA58);
     }
 }
-#endif
 
 void Enemy::Activate() {
     Character::Activate();
@@ -3975,7 +4012,6 @@ s32 Enemy::SelectTarget() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
 s32 Enemy::SelectDefensiveAttack(float arg0, unsigned int arg1) {
     f32 var_f31_7785;
     s32 temp_r3_7855;
@@ -4033,7 +4069,7 @@ loop_15:
     if (var_r31_7786 <= 0) {
         return 0;
     }
-    temp_r3_7855 = MKRand_Int(&gViewSeed, 0, var_r31_7786);
+    temp_r3_7855 = MKRand_Int((int *) &gViewSeed, 0, var_r31_7786);
     var_r7_7858 = *this->unkA38->unk228;
 loop_24:
     if ((var_r7_7858 == NULL) || (temp_r6_7890 = *var_r7_7858, ((temp_r6_7890 == NULL) != 0))) {
@@ -4050,7 +4086,6 @@ loop_24:
     var_r7_7858 += 4;
     goto loop_24;
 }
-#endif
 
 s32 Enemy::SelectAttack(int arg0, int arg1) {
     void ****temp_r6_7911;
@@ -4077,7 +4112,6 @@ loop_7:
     goto loop_7;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
 s32 Enemy::SelectAttack(float arg0, unsigned int arg1, bool arg2, bool arg3) {
     f32 var_f31_7956;
     s32 temp_cr0_eq_8045;
@@ -4189,7 +4223,7 @@ loop_53:
     if (var_r11_7955 <= 0) {
         return 0;
     }
-    temp_r3_8140 = MKRand_Int(&gViewSeed, 0, var_r11_7955);
+    temp_r3_8140 = MKRand_Int((int *) &gViewSeed, 0, var_r11_7955);
     var_r7_8143 = *this->unkA38->unk228;
 loop_63:
     if ((var_r7_8143 == NULL) || (temp_r6_8175 = *var_r7_8143, ((temp_r6_8175 == NULL) != 0))) {
@@ -4206,7 +4240,6 @@ loop_63:
     var_r7_8143 += 4;
     goto loop_63;
 }
-#endif
 
 s32 Enemy::CheckForCliff(const MKVector3 &arg0) {
     f64 sp28;
@@ -5855,9 +5888,9 @@ void Enemy::CheckAnimEvents() {
     if (((MKAnimScript *) this->unk630)->CheckEvent(0xB) != 0) {
         var_r29_11496 = 0;
         do {
-            temp_f21_11502 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f22_11507 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp108 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f21_11502 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f22_11507 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp108 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp10C = temp_f22_11507;
             sp110 = temp_f21_11502;
             sp228 = (f64) sp108;
@@ -5883,7 +5916,7 @@ void Enemy::CheckAnimEvents() {
             sp2E0 = (f64) spE0;
             sp218 = (f64) spC8;
             sp220 = (f64) spD0;
-            sp14 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+            sp14 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
             ((EmbersPS *) gb.unk74)->Emit(this->unk588, *((MKVector3 *) &sp2D8), sp14, *((MKVector4 *) &sp218), -580.0f);
             var_r29_11496 += 1;
         } while (var_r29_11496 < 5);
@@ -5903,9 +5936,9 @@ void Enemy::CheckAnimEvents() {
         if (!(var_r4_11596 & 0x01000300)) {
             var_r29_11606 = 0;
             do {
-                temp_f31_11613 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f30_11618 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                spB8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f31_11613 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f30_11618 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
+                spB8 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 spBC = temp_f30_11618;
                 spC0 = temp_f31_11613;
                 sp1E8 = (f64) spB8;
@@ -5926,12 +5959,12 @@ void Enemy::CheckAnimEvents() {
                 sp2C8 = temp_f0_11657;
                 sp90 = (f32) sp210 * 400.0f;
                 sp2D0 = (f64) sp90;
-                sp10 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
+                sp10 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
                 gb.EmitCrud(this->unk588, *((MKVector3 *) &sp2C8), sp10);
                 var_r29_11606 += 1;
             } while (var_r29_11606 < 3);
-            temp_f28_11683 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f1_11687 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f28_11683 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f1_11687 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp80 = temp_f28_11683;
             sp78 = temp_f1_11687;
             sp7C = 0.0f;
@@ -5947,8 +5980,8 @@ void Enemy::CheckAnimEvents() {
             sp1D8 = temp_f0_11710;
             sp60 = this->unk588.unk8 + (f32) sp1D0;
             sp1E0 = (f64) sp60;
-            temp_f27_11724 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f1_11728 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f27_11724 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f1_11728 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp50 = temp_f27_11724;
             sp48 = temp_f1_11728;
             sp4C = 0.1f;
@@ -5967,16 +6000,16 @@ void Enemy::CheckAnimEvents() {
         var_r29_11766 = 0;
 loop_43:
         if (var_r29_11766 < temp_r30_11765) {
-            if (MKRand_Int(&gViewSeed, 0, 2) == 0) {
+            if (MKRand_Int((int *) &gViewSeed, 0, 2) == 0) {
                 MKModel_CalculateNodeWorldPosition(this->unk4, var_r29_11766, &sp2B8);
-                spC = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
+                spC = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
                 sp30 = 0.0f;
                 sp28 = 0.0f;
                 sp2C = 0.0f;
                 sp190 = (f64) sp30;
                 sp188 = (f64) sp28;
                 gb.EmitCrud(sp2B8, *((MKVector3 *) &sp188), spC);
-                sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
+                sp8 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
                 sp20 = 0.0f;
                 sp18 = 0.0f;
                 sp1C = 0.0f;
@@ -6117,7 +6150,7 @@ void Enemy::SetDefaults() {
     this->unkA74 = 0.0f;
     this->unkA7C = 0.0f;
     this->unkA60 = 0.0f;
-    this->unkA60 = gb.unk30C + MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+    this->unkA60 = gb.unk30C + MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
     this->unkA6C = 0.0f;
     this->unkA70 = 0.0f;
     this->unk800.Init();
@@ -6474,10 +6507,10 @@ void Enemy::Deinit() {
     }
     this->unk838.Deinit();
     this->unk800.Deinit();
-    KDSound_Stop(&this->unk9A8);
+    KDSound_Stop((int *) &this->unk9A8);
     this->unk980.Deinit();
     if ((s32) this->unkA58 != 0) {
-        KDSound_Stop(&this->unkA58);
+        KDSound_Stop((int *) &this->unkA58);
     }
     if ((void ****) this->unkA38->unk228 != NULL) {
         do {
@@ -6635,7 +6668,7 @@ void Enemy::Init() {
         this->unkA5C = M2C_ERROR(/* Read from unset register $r3 */);
         this->unkA5C->Init(this->unkA38->unk230);
     }
-    this->unkABC = MKRand_Float(&gViewSeed, -0.1f, 0.1f);
+    this->unkABC = MKRand_Float((int *) &gViewSeed, -0.1f, 0.1f);
 }
 #endif
 

@@ -1,10 +1,18 @@
 #include "spyro/source/HeatDistortPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -498,8 +506,8 @@ loop_11:
             var_r30_692 -= 1;
             this->unkC -= 1;
         } else {
-            temp_f27_743 = MKRand_Float(&gViewSeed, 6.2831855f, 6.2831855f);
-            MKVector(MKRand_Float(&gViewSeed, 3.1415927f, 3.1415927f), temp_f27_743, 0.0f);
+            temp_f27_743 = MKRand_Float((int *) &gViewSeed, 6.2831855f, 6.2831855f);
+            MKVector(MKRand_Float((int *) &gViewSeed, 3.1415927f, 3.1415927f), temp_f27_743, 0.0f);
             sp48.operator*(gUpdateTimeDelta);
             temp_f0_759 = sp48 * 5.263544247e-315;
             sp18 = temp_f0_759;

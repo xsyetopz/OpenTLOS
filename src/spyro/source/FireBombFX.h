@@ -102,7 +102,7 @@ inline FireBombFX::FireBombFX() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline FireBombFX::~FireBombFX() {
     if ((&this->unk188 != NULL) && (&this->unk188 != NULL)) {
-        KDSound_Stop(&this->unk188);
+        KDSound_Stop((int *) &this->unk188);
     }
 }
 #endif

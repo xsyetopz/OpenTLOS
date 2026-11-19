@@ -1,12 +1,36 @@
 #include "spyro/source/ConvexityVortex.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
@@ -20,7 +44,7 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
     f64 spA0;
     f64 sp98;
@@ -48,7 +72,7 @@ void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
         if (temp_r31_57 != NULL) {
             M2C_FIELD(temp_r31_57, f32 *, 0x34) = 0.5f;
             M2C_FIELD(temp_r31_57, s32 *, 0x38) = 1;
-            M2C_FIELD(temp_r31_57, s32 *, 0x3C) = (s32) M2C_FIELD((this + (MKRand_Int(&gViewSeed, 0, 2) * 4)), s32 *, 0x4C);
+            M2C_FIELD(temp_r31_57, s32 *, 0x3C) = (s32) M2C_FIELD((this + (MKRand_Int((int *) &gViewSeed, 0, 2) * 4)), s32 *, 0x4C);
             MKVector(1.0f, 1.0f, 1.0f);
             MKVector(-1.0f, -1.0f, -1.0f);
             KDRand_Vector(sp88, sp78);
@@ -67,7 +91,7 @@ void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
             sp58 = sp8;
             sp60 = (f64) sp10;
             M2C_FIELD(temp_r31_57, f64 *, 0x28) = (f64) sp10;
-            M2C_FIELD(temp_r31_57, f32 *, 0x30) = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+            M2C_FIELD(temp_r31_57, f32 *, 0x30) = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
             M2C_FIELD(temp_r31_57, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
             M2C_FIELD(temp_r31_57, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
             ((KDSoundFader *) (temp_r31_57 + 0x40))->Init(0.25f, 0.25f);
@@ -212,7 +236,7 @@ loop_8:
     }
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void ConvexityVortex::Update() {
     f64 spF0;                                       /* compiler-managed */
     f64 spE8;
@@ -263,7 +287,7 @@ void ConvexityVortex::Update() {
 
     this->unkA4 -= gUpdateTimeDelta;
     if ((this->unkA4 <= 0.0f) && ((u8) this->unkA8 != 0)) {
-        this->unkA4 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+        this->unkA4 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
         temp_r4_407 = this->unk8;
         spE8 = M2C_FIELD(temp_r4_407, f64 *, 0x30);
         spF0 = M2C_FIELD(temp_r4_407, f64 *, 0x38);

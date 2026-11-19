@@ -122,13 +122,13 @@ inline SiegeTower::~SiegeTower() {
     if (this != NULL) {
         this->unkC8 = &__vt.unk48;
         if ((&this->unk2F0 != NULL) && (&this->unk2F0 != NULL)) {
-            KDSound_Stop(&this->unk2F0);
+            KDSound_Stop((int *) &this->unk2F0);
         }
         if ((&this->unk2C8 != NULL) && (&this->unk2C8 != NULL)) {
-            KDSound_Stop(&this->unk2C8);
+            KDSound_Stop((int *) &this->unk2C8);
         }
         if ((&this->unk2A0 != NULL) && (&this->unk2A0 != NULL)) {
-            KDSound_Stop(&this->unk2A0);
+            KDSound_Stop((int *) &this->unk2A0);
         }
         if (&this->unk1C0 != NULL) {
             temp_r3_47 = &this->unk1C0.unk6C;

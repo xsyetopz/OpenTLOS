@@ -57,7 +57,7 @@ inline MoleTether::MoleTether() {
 inline MoleTether::~MoleTether() {
     this->unkC8 = &__vt.unk48;
     if ((&this->unk1C8 != NULL) && (&this->unk1C8 != NULL)) {
-        KDSound_Stop(&this->unk1C8);
+        KDSound_Stop((int *) &this->unk1C8);
     }
 }
 #endif

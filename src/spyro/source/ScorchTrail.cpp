@@ -1,11 +1,17 @@
 #include "spyro/source/ScorchTrail.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
@@ -21,7 +27,6 @@ extern s32 gRenderState;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ScorchTrail::SpawnScorchMark(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     void **temp_r6_45;
     void **temp_r6_49;
@@ -39,11 +44,10 @@ void ScorchTrail::SpawnScorchMark(const MKVector3 &arg0, const MKVector3 &arg1, 
             M2C_FIELD(temp_r31_51, f64 *, 0x18) = (f64) M2C_FIELD(&arg1, f64 *, 8);
             M2C_FIELD(temp_r31_51, f32 *, 0x20) = arg2;
             M2C_FIELD(temp_r31_51, f32 *, 0x24) = 2.0f;
-            M2C_FIELD(temp_r31_51, f32 *, 0x28) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+            M2C_FIELD(temp_r31_51, f32 *, 0x28) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void ScorchTrail::DrawScorchMarks() {

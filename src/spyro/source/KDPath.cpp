@@ -1,10 +1,18 @@
 #include "spyro/source/KDPath.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -579,18 +587,16 @@ loop_11:
     return 0U;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 KDSplinePathSegment::LoadLine(MKIniLine *arg0, const char *arg1) {
     s32 sp8;
 
     sp8 = 0;
-    if (arg0->LoadInt("type", &sp8, 0) != 0) {
+    if (arg0->LoadInt("type", (int *) &sp8, 0) != 0) {
         this->unk18 = (s16) sp8;
         return 1U;
     }
     return LoadWaypoints(arg0, arg1);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 u8 KDSplinePathSegment::LoadLine(MKIniLine *arg0) {
@@ -685,17 +691,15 @@ void KDLocalPathSegmentProp::LoadDone() {
     ((KDPathManager *) &this->unk4C)->AddPath(M2C_ERROR(/* Read from unset register $r4 */));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDLocalPathSegmentProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1356;
 
     var_r31_1356 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (((KDPathSegment *) &this->unk4C)->LoadLine(arg0) != 0) || (arg0->LoadInt("parentID", (s32 *) &this->unk4C.unk34, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (((KDPathSegment *) &this->unk4C)->LoadLine(arg0) != 0) || (arg0->LoadInt("parentID", (int *) &this->unk4C.unk34, 0) != 0)) {
         var_r31_1356 = 1;
     }
     return var_r31_1356;
 }
-#endif
 
 void KDLocalPathSegmentProp::Deinit() {
     MKProp::Deinit();
@@ -956,18 +960,16 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 KDPathSegment::LoadLine(MKIniLine *arg0) {
     s32 sp8;
 
     sp8 = 0;
-    if (arg0->LoadInt("type", &sp8, 0) != 0) {
+    if (arg0->LoadInt("type", (int *) &sp8, 0) != 0) {
         this->unk18 = (s16) sp8;
         return 1U;
     }
     return LoadWaypoints(arg0, "waypoints");
 }
-#endif
 
 void KDPathSegment::Deinit() {
     s32 sp10;

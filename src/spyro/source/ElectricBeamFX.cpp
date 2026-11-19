@@ -1,16 +1,24 @@
 #include "spyro/source/ElectricBeamFX.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKDynamicBone.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/ElectricSparks.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "common/gc/MKModel_GC.h"
@@ -23,7 +31,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'sp38'
 static MKAnimScript lit_stringBase0;                   /* type too large by 0x26; unable to generate initializer: non-zero padding; const */
 
 void ElectricBeam::EmitSparks() {
@@ -45,9 +53,9 @@ void ElectricBeam::EmitSparks() {
     f32 temp_f31_31;
     f64 temp_f0_45;
 
-    temp_f30_26 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-    temp_f31_31 = MKRand_Float(&gViewSeed, 1.0f, 2.5f);
-    sp20 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+    temp_f30_26 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+    temp_f31_31 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.5f);
+    sp20 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
     sp24 = temp_f31_31;
     sp28 = temp_f30_26;
     sp40 = (f64) sp20;
@@ -57,7 +65,7 @@ void ElectricBeam::EmitSparks() {
     sp60 = temp_f0_45;
     sp18 = (f32) sp48 * 400.0f;
     sp68 = (f64) sp18;
-    temp_f1_57 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+    temp_f1_57 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
     sp8 = 0.0f;
     ((KDUniformSpline *) &sp30)->GetMeasure(temp_f1_57, (Matrix *) &this->unk30, KDSpline_PositionMixer);
     sp50 = sp30;
@@ -92,7 +100,7 @@ void ElectricBeam::Draw() {
 
     if ((u8) this->unk1F4 != 0) {
         MKModel_SetWorldMatrix(this->unk44, this->unk1A0);
-        temp_f1_133 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        temp_f1_133 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         temp_f2_137 = 0.75f * temp_f1_133;
         temp_f1_139 = (0.25f * temp_f1_133) + 0.75f;
         sp14 = 1.0f;
@@ -107,21 +115,19 @@ void ElectricBeam::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ElectricBeam::Update() {
     this->unk1E8 += this->unk1EC * gUpdateTimeDelta;
     UpdateWiggleBones();
     this->unk48->Animate(MKModel_GetAnimation(this->unk48->unk8), -1, NULL);
     this->unk1E0 -= gUpdateTimeDelta;
     if (this->unk1E0 <= 0.0f) {
-        this->unk1E0 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-        this->unk48->JumpToPos(MKRand_Float(&gViewSeed, 0.0f, 0.8f), -1);
-        this->unk1E8 = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
-        this->unk1EC = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        this->unk1E0 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
+        this->unk48->JumpToPos(MKRand_Float((int *) &gViewSeed, 0.0f, 0.8f), -1);
+        this->unk1E8 = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
+        this->unk1EC = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
     }
     this->unk1E4 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
@@ -662,8 +668,8 @@ void ElectricBeam::Init() {
         var_r30_1366 += 4;
     } while (var_r26_1364 < 5);
     this->unk1E0 = 0.0f;
-    this->unk1E8 = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
-    this->unk1EC = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+    this->unk1E8 = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
+    this->unk1EC = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
     this->unk1E4 = 0;
     this->unk1F0 = MKMaterial_Create((s8 *) &lit_stringBase0.unk20);
     this->unk1F4 = 0;

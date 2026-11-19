@@ -1,9 +1,19 @@
 #include "spyro/source/Explosion3.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/ExpShock.h"
 #include "spyro/source/ExpSmokeAndFlamesPS.h"
@@ -123,9 +133,9 @@ void Explosion3::Trigger(const MKVector3 &arg0, const float &arg1, bool arg2, bo
     var_r25_104 = 0;
 loop_2:
     if (var_r25_104 < (s32) (10.0f * temp_f31_99)) {
-        temp_f23_117 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f24_122 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp60 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f23_117 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f24_122 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp60 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp64 = temp_f24_122;
         sp68 = temp_f23_117;
         spE0 = (f64) sp60;
@@ -145,7 +155,7 @@ loop_2:
         sp138 = (f64) sp48;
         spD0 = (f64) sp30;
         spD8 = (f64) sp38;
-        sp8 = temp_f31_99 * MKRand_Float(&gViewSeed, 10.0f, 20.0f);
+        sp8 = temp_f31_99 * MKRand_Float((int *) &gViewSeed, 10.0f, 20.0f);
         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(arg0, *((MKVector3 *) &sp130), sp8, *((MKVector4 *) &spD0), 0.0f);
         var_r25_104 += 1;
         goto loop_2;
@@ -154,7 +164,7 @@ loop_2:
         var_r25_184 = 0;
         temp_f29_185 = &arg1;
         do {
-            this->unk54->CreateTendril(arg0, temp_f29_185 * MKRand_Float(&gViewSeed, 0.5f, 2.0f));
+            this->unk54->CreateTendril(arg0, temp_f29_185 * MKRand_Float((int *) &gViewSeed, 0.5f, 2.0f));
             var_r25_184 += 1;
         } while (var_r25_184 < 5);
     }
@@ -369,17 +379,15 @@ void Explosion3::Init() {
     this->unk70 = 1;
 }
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[11], long *)' does
 s32 Explosion3Descriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_633;
 
     var_r31_633 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndExplode", &this->unk60) != 0) || (KDSound_LoadLine(arg0, "sndExplodeRumble", &this->unk64) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndExplode", (int *) &this->unk60) != 0) || (KDSound_LoadLine(arg0, "sndExplodeRumble", (int *) &this->unk64) != 0)) {
         var_r31_633 = 1;
     }
     return var_r31_633;
 }
-#endif
 
 void Explosion3Descriptor::Init() {
     MKPropDescriptor::Init();

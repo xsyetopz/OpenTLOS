@@ -1,13 +1,37 @@
 #include "spyro/source/SpawnEffectBox.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDVolume.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/MessageMap.h"
@@ -20,7 +44,7 @@ extern MKSceneManager *gMK;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'sp38'
 void SpawnEffectBox::Update() {
     f64 sp58;
     f64 sp50;
@@ -45,14 +69,14 @@ void SpawnEffectBox::Update() {
     void *temp_r31_117;
 
     if (((u8) this->unkF0 != 0) && (M2C_FIELD(&gb, f32 *, 0x30C) >= this->unkFC)) {
-        this->unkFC = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float(&gViewSeed, this->unkF4, this->unkF8);
+        this->unkFC = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float((int *) &gViewSeed, this->unkF4, this->unkF8);
         temp_f29_71 = this->unk50.GetWidth();
         temp_f31_74 = this->unk50.GetHeight();
         temp_f30_77 = this->unk50.GetDepth();
         ((KDVolume *) &sp30)->GetCenterPos();
-        temp_f30_85 = MKRand_Float(&gViewSeed, -temp_f30_77, temp_f30_77);
-        temp_f31_90 = MKRand_Float(&gViewSeed, -temp_f31_74, temp_f31_74);
-        sp20 = MKRand_Float(&gViewSeed, -temp_f29_71, temp_f29_71);
+        temp_f30_85 = MKRand_Float((int *) &gViewSeed, -temp_f30_77, temp_f30_77);
+        temp_f31_90 = MKRand_Float((int *) &gViewSeed, -temp_f31_74, temp_f31_74);
+        sp20 = MKRand_Float((int *) &gViewSeed, -temp_f29_71, temp_f29_71);
         sp24 = temp_f31_90;
         sp28 = temp_f30_85;
         sp40 = (f64) sp20;
@@ -79,7 +103,6 @@ void SpawnEffectBox::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void SpawnEffectBox::Message(MKMessage *arg0) {
     s32 temp_r0_411;
 
@@ -87,7 +110,7 @@ void SpawnEffectBox::Message(MKMessage *arg0) {
     switch (temp_r0_411) {                          /* irregular */
     case 0xB5:
         this->unkF0 = 1;
-        this->unkFC = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float(&gViewSeed, this->unkF4, this->unkF8);
+        this->unkFC = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float((int *) &gViewSeed, this->unkF4, this->unkF8);
         break;
     case 0xB4:
         this->unkF0 = 0;
@@ -95,7 +118,6 @@ void SpawnEffectBox::Message(MKMessage *arg0) {
     }
     MKProp::Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'stricmp(const char[1])' does not match
 void SpawnEffectBox::LoadDone() {
@@ -134,7 +156,7 @@ loop_8:
     }
     this->unkEC = 0;
     this->unkFC = 0.0f;
-    this->unkFC = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float(&gViewSeed, this->unkF4, this->unkF8);
+    this->unkFC = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float((int *) &gViewSeed, this->unkF4, this->unkF8);
 }
 #endif
 
@@ -143,7 +165,7 @@ s32 SpawnEffectBox::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r26_592;
     u8 var_r30_604;
 
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadString("SpawnEffectName", &this->unkE0, 0) != 0) || (arg0->LoadInt("createCount", &this->unkE8, 0) != 0) || (arg0->LoadFloat("minSpawnEffectTime", &this->unkF4, 0) != 0) || (arg0->LoadFloat("maxSpawnEffectTime", &this->unkF8, 0) != 0) || (arg0->LoadBool("bInitiallyEnabled", &this->unkF0, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadString("SpawnEffectName", &this->unkE0, 0) != 0) || (arg0->LoadInt("createCount", (int *) &this->unkE8, 0) != 0) || (arg0->LoadFloat("minSpawnEffectTime", &this->unkF4, 0) != 0) || (arg0->LoadFloat("maxSpawnEffectTime", &this->unkF8, 0) != 0) || (arg0->LoadBool("bInitiallyEnabled", &this->unkF0, 0) != 0)) {
         return 1;
     }
     if (arg0->IsField("box") != 0) {
@@ -196,14 +218,12 @@ void SpawnEffectBox::Init() {
     this->unkF8 = 0.5f;
 }
 
-#if 0 // DRAFT: function call 'MessageMap_LoadLine(MKIniLine *, const char[18], long *)'
 s32 SpawnEffectBoxDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_720;
 
     var_r31_720 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (MessageMap_LoadLine(arg0, "effectOnMessageID", &this->unk60) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (MessageMap_LoadLine(arg0, "effectOnMessageID", (int *) &this->unk60) != 0)) {
         var_r31_720 = 1;
     }
     return var_r31_720;
 }
-#endif

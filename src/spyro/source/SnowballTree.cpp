@@ -1,16 +1,41 @@
 #include "spyro/source/SnowballTree.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
-#include "common/Source/MKProp.h"
-#include "common/Source/MKVector3.h"
-#include "spyro/source/Ball.h"
-#include "spyro/source/KDProp.h"
-#include "unplaced_templates.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
-#include "common/Source/StdMath.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Ball.h"
+#include "spyro/source/Catapult.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
+#include "unplaced_templates.h"
+#include "common/Source/StdMath.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -74,7 +99,7 @@ void SnowballTree::Update() {
     }
     if (((s32) M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x7C) != 0) && (KDSound_IsVoicePlaying(this->unkB8) == 0) && (this->unkBC <= 0.0f)) {
         temp_f31_172 = M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x84);
-        this->unkBC = MKRand_Float(&gViewSeed, M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80), temp_f31_172);
+        this->unkBC = MKRand_Float((int *) &gViewSeed, M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x80), temp_f31_172);
     }
     if (((u8) this->unkC4 != 0) && (this->unk80->unk2C & 1)) {
         this->unk80->SetAnim(M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x88), 1.0f, 0.0f, 0, -1);
@@ -119,7 +144,7 @@ void SnowballTree::LoadDone() {
         var_r31_234 += 4;
     } while (var_r28_232 < 3);
     this->unk80->SetAnim(M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x88), 1.0f, 0.0f, 0, -1);
-    this->unk80->unk38 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+    this->unk80->unk38 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
 }
 #endif
 
@@ -134,13 +159,11 @@ s32 SnowballTree::LoadLine(MKIniLine *arg0) {
     return (u8) (arg0->LoadFloat("MaxBallDistance", &this->unkC0, 0) != 0);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void SnowballTree::Deinit() {
     KDProp::Deinit();
-    KDSound_Stop(&this->unkB4);
-    KDSound_Stop(&this->unkB8);
+    KDSound_Stop((int *) &this->unkB4);
+    KDSound_Stop((int *) &this->unkB8);
 }
-#endif
 
 void SnowballTree::Init() {
     KDProp::Init();
@@ -178,17 +201,15 @@ void SnowballTreeDescriptor::LoadDone() {
     this->unk8C = (s32) var_r3_453;
 }
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[16], long *)' does
 s32 SnowballTreeDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_475;
 
     var_r31_475 = 0;
-    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("MinSoundDelay", &this->unk80, 0) != 0) || (arg0->LoadFloat("MaxSoundDelay", &this->unk84, 0) != 0) || (KDSound_LoadLine(arg0, "OccasionalSound", &this->unk7C) != 0)) {
+    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("MinSoundDelay", &this->unk80, 0) != 0) || (arg0->LoadFloat("MaxSoundDelay", &this->unk84, 0) != 0) || (KDSound_LoadLine(arg0, "OccasionalSound", (int *) &this->unk7C) != 0)) {
         var_r31_475 = 1;
     }
     return var_r31_475;
 }
-#endif
 
 void SnowballTreeDescriptor::Init() {
     KDPropDescriptor::Init();

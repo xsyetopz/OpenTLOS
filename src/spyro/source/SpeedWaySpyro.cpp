@@ -1,33 +1,81 @@
 #include "spyro/source/SpeedWaySpyro.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BaseBreathFX.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/ClusterBomb.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/CynderBreathFX.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FireBombFX.h"
+#include "spyro/source/FlameBreathBeamFX.h"
+#include "spyro/source/FlyingBurningBits.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDCameraMessages.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
 #include "spyro/source/ScreenWobbleFX.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/ShapedTrailFX.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SpeedWay.h"
 #include "spyro/source/SpeedwayCynder.h"
+#include "spyro/source/SplineTools.h"
 #include "spyro/source/Spyro.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/MKSystem.h"
 #include "common/Source/Str.h"
 #include "common/gc/MKModel_GC.h"
@@ -3093,17 +3141,15 @@ void SpeedWaySpyro::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SpeedWaySpyro::LoadLine(MKIniLine *arg0) {
     s32 var_r31_6315;
 
     var_r31_6315 = 0;
-    if ((KDProp::LoadLine(arg0) != 0) || (arg0->LoadInt("Speedway", (s32 *) &this->unk2F0, 0) != 0)) {
+    if ((KDProp::LoadLine(arg0) != 0) || (arg0->LoadInt("Speedway", (int *) &this->unk2F0, 0) != 0)) {
         var_r31_6315 = 1;
     }
     return var_r31_6315;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SpeedWaySpyro::Deinit() {
@@ -3121,7 +3167,7 @@ void SpeedWaySpyro::Deinit() {
     this->unk8B1 = 0;
     ((KDSoundFlangedFader *) &this->unk818)->Deinit();
     this->unk8B0 = 0;
-    KDSound_Stop(&this->unk888);
+    KDSound_Stop((int *) &this->unk888);
     temp_r3_6372 = this->unk8C4;
     if (temp_r3_6372 != 0) {
         PhrasePlayer_StopEvent(temp_r3_6372);

@@ -188,11 +188,11 @@ void MKWind::Init(float arg0, float arg1, float arg2, float arg3, const MKVector
     do {
         temp_r27_273 = &this[var_r29_268];
         M2C_FIELD(temp_r27_273, f32 *, 0x24) = (f32) (M2C_FIELD(temp_r27_273, f32 *, 0x24) * ((arg2 / var_f2_120) / var_f28_111));
-        var_f24_281 = MKRand_Float(&gViewSeed, 0.0f, 3.1415927f);
-        if (MKRand_Int(&gViewSeed, 0, 2) != 0) {
+        var_f24_281 = MKRand_Float((int *) &gViewSeed, 0.0f, 3.1415927f);
+        if (MKRand_Int((int *) &gViewSeed, 0, 2) != 0) {
             var_f24_281 += 3.1415927f;
         }
-        temp_f23_295 = MKRand_Float(&gViewSeed, -0.7853982f, 0.7853982f);
+        temp_f23_295 = MKRand_Float((int *) &gViewSeed, -0.7853982f, 0.7853982f);
         temp_f21_297 = 1.5707964f + temp_f23_295;
         temp_f22_299 = _table_sinf(1.5707964f + var_f24_281);
         temp_f22_302 = _table_sinf(temp_f21_297) * temp_f22_299;

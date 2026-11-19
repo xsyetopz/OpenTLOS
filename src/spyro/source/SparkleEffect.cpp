@@ -1,6 +1,14 @@
 #include "spyro/source/SparkleEffect.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "common/gc/MKMaterial_GC.h"
 #include <m2c_macros.h>
 

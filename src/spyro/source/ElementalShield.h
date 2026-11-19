@@ -46,7 +46,7 @@ inline ElementalShield::~ElementalShield() {
 
     if (this != NULL) {
         if ((&this->unkC4 != NULL) && (&this->unkC4 != NULL)) {
-            KDSound_Stop(&this->unkC4);
+            KDSound_Stop((int *) &this->unkC4);
         }
         temp_cr0_eq_28 = this == NULL;
         if (temp_cr0_eq_28 == 0) {

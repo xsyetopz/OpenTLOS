@@ -1,8 +1,16 @@
 #include "spyro/source/KDDropShadow.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
@@ -96,17 +104,15 @@ void KDDropShadow::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDDropShadowDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_213;
 
     var_r31_213 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("listSize", &this->unk60, 0) != 0) || (arg0->LoadFloat("unitSize", &this->unk64, 0) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("listSize", (int *) &this->unk60, 0) != 0) || (arg0->LoadFloat("unitSize", &this->unk64, 0) != 0)) {
         var_r31_213 = 1;
     }
     return var_r31_213;
 }
-#endif
 
 void KDDropShadowDescriptor::Init() {
     MKPropDescriptor::Init();

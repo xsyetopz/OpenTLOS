@@ -70,10 +70,10 @@ inline DragonStatue::~DragonStatue() {
 
     if (this != NULL) {
         if ((&this->unk12C != NULL) && (&this->unk12C != NULL)) {
-            KDSound_Stop(&this->unk12C);
+            KDSound_Stop((int *) &this->unk12C);
         }
         if ((&this->unk104 != NULL) && (&this->unk104 != NULL)) {
-            KDSound_Stop(&this->unk104);
+            KDSound_Stop((int *) &this->unk104);
         }
         if (&this->unk9C != NULL) {
             this->unk9C.Deinit();

@@ -1,38 +1,91 @@
 #include "spyro/source/Ball.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/BoulderRamp.h"
 #include "spyro/source/Catapult.h"
 #include "spyro/source/CrashMistPS.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EnemyGenerator.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SiegeTower.h"
 #include "spyro/source/SnowballTree.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
 #include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
+#include "spyro/source/Trap.h"
 #include "spyro/source/WaterDripPS.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
 f64 atan2(f32, f32);                                /* extern */
@@ -591,7 +644,7 @@ block_4:
                 M2C_FIELD(temp_r27_928, f64 *, 8) = (f64) sp18;
                 sp78 = (f64) sp18;
                 M2C_FIELD(temp_r27_928, f32 *, 0x18) = (f32) (this->unk274 / 100.0f);
-                M2C_FIELD(temp_r27_928, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                M2C_FIELD(temp_r27_928, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r27_928, f32 *, 0x14) = (f32) M2C_FIELD(gb.unk2A0, f32 *, 0xF4);
             }
             var_r28_877 += 1;
@@ -3006,7 +3059,7 @@ void Ball::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void Ball::Reset() {
     f64 sp10;
     f64 sp8;
@@ -3074,10 +3127,10 @@ void Ball::Reset() {
         pDribblee = NULL;
     }
     if (KDSound_IsVoicePlaying(this->unk294) != 0) {
-        KDSound_Stop(&this->unk294);
+        KDSound_Stop((int *) &this->unk294);
     }
     if (KDSound_IsVoicePlaying(this->unk298) != 0) {
-        KDSound_Stop(&this->unk298);
+        KDSound_Stop((int *) &this->unk298);
     }
     SetState((Ball::State) 0);
     UpdateShadow();
@@ -3110,7 +3163,7 @@ void Ball::DropFromTree() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'temp_r4_5381'
 void Ball::PutInTree() {
     SnowballTree *temp_r4_5381;
     f64 temp_f1_5373;
@@ -3186,15 +3239,14 @@ s32 Ball::LoadLine(MKIniLine *arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void Ball::Deinit() {
     SetGroup(0xFF);
     this->unk1A8.Deinit();
     if (KDSound_IsVoicePlaying(this->unk294) != 0) {
-        KDSound_Stop(&this->unk294);
+        KDSound_Stop((int *) &this->unk294);
     }
-    KDSound_Stop(&this->unk1D8);
-    KDSound_Stop(&this->unk200);
+    KDSound_Stop((int *) &this->unk1D8);
+    KDSound_Stop((int *) &this->unk200);
     ((Targetable *) &this->unkC8)->UnregisterTargetable();
     if ((Ball *) pDribblee == this) {
         pDribblee = NULL;
@@ -3202,7 +3254,6 @@ void Ball::Deinit() {
     PlatformDetach();
     GameProp::Deinit();
 }
-#endif
 
 void Ball::Init() {
     GameProp::Init();
@@ -3268,7 +3319,7 @@ s32 BallDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_5705;
 
     var_r31_5705 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("rollFadeIn", &this->unk10C, 0) != 0) || (arg0->LoadFloat("rollFadeOut", &this->unk110, 0) != 0) || (arg0->LoadFloat("flyFadeIn", &this->unk114, 0) != 0) || (arg0->LoadFloat("flyFadeOut", &this->unk118, 0) != 0) || (arg0->LoadFloat("rollCutoffSpeed", &this->unk11C, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "meltSound", &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "placeSound", &this->unkEC) != 0) || (KDSound_LoadLine(arg0, "bounceSound", &this->unkF0) != 0) || (KDSound_LoadLine(arg0, "bounceSound2", &this->unkF4) != 0) || (KDSound_LoadLine(arg0, "flyingSound", &this->unkF8) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero", &this->unkFC) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero2", &this->unk100) != 0) || (KDSound_LoadLine(arg0, "rollSoundLoop", &this->unk108) != 0) || (KDSound_LoadLine(arg0, "hitEnemySound", &this->unk104) != 0) || (DataMap_LoadLine(arg0, "ballType", &ballTypeMap, &this->unk124) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("rollFadeIn", &this->unk10C, 0) != 0) || (arg0->LoadFloat("rollFadeOut", &this->unk110, 0) != 0) || (arg0->LoadFloat("flyFadeIn", &this->unk114, 0) != 0) || (arg0->LoadFloat("flyFadeOut", &this->unk118, 0) != 0) || (arg0->LoadFloat("rollCutoffSpeed", &this->unk11C, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", (int *) &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "meltSound", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "placeSound", (int *) &this->unkEC) != 0) || (KDSound_LoadLine(arg0, "bounceSound", (int *) &this->unkF0) != 0) || (KDSound_LoadLine(arg0, "bounceSound2", (int *) &this->unkF4) != 0) || (KDSound_LoadLine(arg0, "flyingSound", (int *) &this->unkF8) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero", (int *) &this->unkFC) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero2", (int *) &this->unk100) != 0) || (KDSound_LoadLine(arg0, "rollSoundLoop", (int *) &this->unk108) != 0) || (KDSound_LoadLine(arg0, "hitEnemySound", (int *) &this->unk104) != 0) || (DataMap_LoadLine(arg0, "ballType", &ballTypeMap, (unsigned int *) &this->unk124) != 0)) {
         var_r31_5705 = 1;
     }
     return var_r31_5705;

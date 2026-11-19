@@ -1,13 +1,36 @@
 #include "spyro/source/CharacterZapFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -26,7 +49,7 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 static u8 lit_749 = 1;
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: undefined identifier 'unkC'
 void CharacterZapFX::Enable(bool arg0, float arg1, bool arg2) {
     u8 var_r31_48;
 
@@ -241,7 +264,7 @@ loop_23:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: function call 'Normalise(MKVector3)' does not match
 void CharacterZapFX::SpawnZap() {
     MKVector3 spF0;
     f64 spE8;
@@ -301,9 +324,9 @@ void CharacterZapFX::SpawnZap() {
         temp_r30_470 = temp_r3_468->unk0;
         if (temp_r30_470 != NULL) {
             temp_r30_470->unk18 = 0.5f;
-            temp_f30_479 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f29_484 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f1_488 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f30_479 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f29_484 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f1_488 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp18 = temp_f30_479;
             sp10 = temp_f1_488;
             sp14 = temp_f29_484;
@@ -314,9 +337,9 @@ void CharacterZapFX::SpawnZap() {
             M2C_FIELD(temp_r30_470, f64 *, 0x10) = (f64) spF0.unk8;
             temp_r30_470->unk0 = GetRandomNode(NULL);
             temp_r30_470->unk4 = GetRandomNode((CBFXNode *) temp_r30_470->unk0);
-            temp_f30_515 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f29_520 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-            sp70 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f30_515 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f29_520 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+            sp70 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp74 = temp_f29_520;
             sp78 = temp_f30_515;
             spC0 = (f64) sp70;
@@ -326,7 +349,7 @@ void CharacterZapFX::SpawnZap() {
             spD0 = temp_f0_534;
             sp68 = (f32) spC8 * 500.0f;
             spD8 = (f64) sp68;
-            temp_f1_546 = MKRand_Float(&gViewSeed, 5.0f, 7.0f);
+            temp_f1_546 = MKRand_Float((int *) &gViewSeed, 5.0f, 7.0f);
             sp50 = 1.0f;
             sp54 = 1.0f;
             spC = temp_f1_546;
@@ -335,9 +358,9 @@ void CharacterZapFX::SpawnZap() {
             spB0 = (f64) sp50;
             spB8 = (f64) sp58;
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &temp_r30_470->unk0->unk8), *((MKVector3 *) &spD0), spC, *((MKVector4 *) &spB0), -1979.9999f);
-            temp_f29_572 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f30_577 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-            sp40 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f29_572 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f30_577 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+            sp40 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp44 = temp_f30_577;
             sp48 = temp_f29_572;
             sp90 = (f64) sp40;
@@ -347,7 +370,7 @@ void CharacterZapFX::SpawnZap() {
             spA0 = temp_f0_591;
             sp38 = (f32) sp98 * 500.0f;
             spA8 = (f64) sp38;
-            temp_f1_603 = MKRand_Float(&gViewSeed, 5.0f, 7.0f);
+            temp_f1_603 = MKRand_Float((int *) &gViewSeed, 5.0f, 7.0f);
             sp20 = 1.0f;
             sp24 = 1.0f;
             sp8 = temp_f1_603;
@@ -361,7 +384,7 @@ void CharacterZapFX::SpawnZap() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void CharacterZapFX::Update() {
     f64 sp140;
     M2C_UNK sp10C;
@@ -452,9 +475,9 @@ loop_6:
         this->unk1C -= gUpdateTimeDelta;
         this->unk17 = 0;
         if ((this->unk1C <= 0.0f) && (GetRandomNode(NULL) != NULL)) {
-            temp_f30_738 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f29_743 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-            sp78 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f30_738 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f29_743 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+            sp78 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp7C = temp_f29_743;
             sp80 = temp_f30_738;
             spF8 = (f64) sp78;
@@ -507,7 +530,7 @@ loop_6:
             sp100 = (f32) sp100 * var_f7_830;
             spC8 = (f64) sp48;
             spD0 = (f64) sp50;
-            temp_f1_856 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+            temp_f1_856 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
             sp68 = 0.0f;
             sp6C = 75.0f;
             sp70 = 0.0f;
@@ -526,18 +549,18 @@ loop_6:
         this->unk24 -= gUpdateTimeDelta;
         if (this->unk24 <= 0.0f) {
             this->unk24 = 0.1f;
-            temp_f29_909 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f30_914 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp38 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f29_909 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f30_914 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp38 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp3C = temp_f30_914;
             sp40 = temp_f29_909;
             this->unk28 = (f64) sp38;
             spB8 = (f64) sp38;
             spC0 = (f64) sp40;
             this->unk30 = (f64) sp40;
-            temp_f29_932 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f30_937 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f30_937, temp_f29_932);
+            temp_f29_932 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f30_937 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f30_937, temp_f29_932);
             sp28 = sp98 * 5.356796015e-315;
             this->unk38 = sp28;
             sp30 = spA0 * 5.0f;

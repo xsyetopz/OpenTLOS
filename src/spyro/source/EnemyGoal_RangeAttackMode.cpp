@@ -1,19 +1,59 @@
 #include "spyro/source/EnemyGoal_RangeAttackMode.h"
+#include "common/Source/Animation.h"
 #include "common/Source/Frustum.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
 #include "spyro/source/Projectile.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/GameEnums.h"
 #include <m2c_macros.h>
@@ -355,7 +395,7 @@ u8 EnemyGoal_AttackProjectile::Update() {
             if (ProjectileType_IsDynamite((s32) temp_r31_125->unk80) != 0) {
                 this->unk18 = this->unk38;
                 this->unk20 = this->unk40;
-                temp_f1_514 = MKRand_Float(&gViewSeed, 100.0f, 200.0f);
+                temp_f1_514 = MKRand_Float((int *) &gViewSeed, 100.0f, 200.0f);
                 temp_f0_517 = sp228.unk20 * temp_f1_514;
                 sp28 = temp_f0_517;
                 spF8 = temp_f0_517;
@@ -536,7 +576,7 @@ loop_6:
         temp_r3_862->SetAnim(temp_r4_864, (AnimTransition *) temp_r4_864, 0.15f, 0U);
         this->unk18 = this->unk38;
         this->unk20 = this->unk40;
-        temp_f1_874 = MKRand_Float(&gViewSeed, 300.0f, 500.0f);
+        temp_f1_874 = MKRand_Float((int *) &gViewSeed, 300.0f, 500.0f);
         temp_f0_877 = sp88 * temp_f1_874;
         sp8 = temp_f0_877;
         sp28 = temp_f0_877;

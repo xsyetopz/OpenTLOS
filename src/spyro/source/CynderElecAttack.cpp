@@ -1,11 +1,36 @@
 #include "spyro/source/CynderElecAttack.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/EnergyBeam.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/Projectile.h"
@@ -101,7 +126,6 @@ void CynderElecAttack::Draw() {
 
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void CynderElecAttack::Update() {
     MKVector3 *temp_r3_239;
     ManagedLight *temp_r3_264;
@@ -123,7 +147,7 @@ void CynderElecAttack::Update() {
                     M2C_FIELD(temp_r4_252, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_239, f64 *, 0);
                     M2C_FIELD(temp_r4_252, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_239, f64 *, 8);
                 }
-                temp_f1_263 = MKRand_Float(&gViewSeed, 500.0f, 600.0f);
+                temp_f1_263 = MKRand_Float((int *) &gViewSeed, 500.0f, 600.0f);
                 temp_r3_264 = this->unk15C;
                 temp_r3_264->unk38 = temp_f1_263;
                 temp_r3_266 = temp_r3_264->unk3C;
@@ -137,7 +161,6 @@ void CynderElecAttack::Update() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CynderElecAttack::Resolve() {

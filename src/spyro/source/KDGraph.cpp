@@ -1,8 +1,14 @@
 #include "spyro/source/KDGraph.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
@@ -39,18 +45,16 @@ void KDGraphNodeProp::LoadDone() {
     M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(u8 *, f64 *, MKProp *, f64), 0x2C)(&this->unk50, &sp8, &MKProp::loadInfo, M2C_FIELD(&MKProp::loadInfo, f64 *, 0x40));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDGraphNodeProp::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if ((arg0->LoadInt("LinkID1", &this->unk90, 0) != 0) || (arg0->LoadInt("LinkID2", &this->unk94, 0) != 0) || (arg0->LoadInt("LinkID3", &this->unk98, 0) != 0) || (arg0->LoadInt("LinkID4", &this->unk9C, 0) != 0) || (arg0->LoadInt("LinkID5", &this->unkA0, 0) != 0) || (arg0->LoadInt("LinkID6", &this->unkA4, 0) != 0)) {
+    if ((arg0->LoadInt("LinkID1", (int *) &this->unk90, 0) != 0) || (arg0->LoadInt("LinkID2", (int *) &this->unk94, 0) != 0) || (arg0->LoadInt("LinkID3", (int *) &this->unk98, 0) != 0) || (arg0->LoadInt("LinkID4", (int *) &this->unk9C, 0) != 0) || (arg0->LoadInt("LinkID5", (int *) &this->unkA0, 0) != 0) || (arg0->LoadInt("LinkID6", (int *) &this->unkA4, 0) != 0)) {
         this->unk8C += 1;
         return 1;
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void KDGraphNodeProp::Init() {

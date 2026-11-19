@@ -1,14 +1,39 @@
 #include "spyro/source/TotemPolePuzzle.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SeeSaw.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
@@ -179,7 +204,7 @@ loop_8:
         var_r28_288 = arg0->unkC->GetSubLine(arg0);
 loop_13:
         if (var_r29_286 < (s32) this->unkCC) {
-            var_r28_288->AsInt(0, &spC);
+            var_r28_288->AsInt(0, (int *) &spC);
             temp_r3_297 = *(this->unkC8 + var_r30_287);
             temp_r3_297->unkD4 = spC;
             temp_r3_297->SetDesiredYaw(temp_r3_297->unkD0);
@@ -196,7 +221,7 @@ loop_13:
         var_r28_326 = arg0->unkC->GetSubLine(arg0);
 loop_18:
         if (var_r29_324 < (s32) this->unkCC) {
-            var_r28_326->AsInt(0, &sp8);
+            var_r28_326->AsInt(0, (int *) &sp8);
             M2C_FIELD(*(this->unkC8 + var_r30_325), s32 *, 0xD0) = sp8;
             var_r28_326 = var_r28_326->unkC->GetNextLine(var_r28_326);
             var_r29_324 += 1;

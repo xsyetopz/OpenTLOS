@@ -1,14 +1,60 @@
 #include "spyro/source/ZapCage.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
@@ -25,19 +71,17 @@ void ZapCage::Reset() {
     this->unk54 = NULL;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ZapCage::Trigger(MKProp *arg0, float arg1) {
     void *temp_r3_80;
 
     this->unk4C = 1;
     this->unk50 = arg1;
-    this->unk58 = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+    this->unk58 = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
     this->unk54 = arg0;
     this->unk5C = 0.0f;
     temp_r3_80 = checked_cast<Enemy *, MKProp>(this->unk54);
     M2C_FIELD(temp_r3_80, u8 *, 0xB02) = (u8) (M2C_FIELD(temp_r3_80, u8 *, 0xB02) | 0x40);
 }
-#endif
 
 void ZapCage::Deinit() {
     MKProp::Deinit();

@@ -1,26 +1,78 @@
 #include "spyro/source/Enemies_Fire.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_Think.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FireTier1Goal_Think.h"
 #include "spyro/source/FireTier2Goal_Think.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/Goal.h"
 #include "spyro/source/GoopFX.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/KDVolume.h"
 #include "spyro/source/KDWaterVolume.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -30,7 +82,7 @@ extern MKSceneManager *gMK;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: ';' expected
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit fireTier1BodyFXInit;     /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit fireTier2BodyFXInit;     /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit fireTier3BodyFXInit;     /* unable to generate initializer: confusing struct layout */
@@ -163,7 +215,7 @@ void FireTier3::DoDeadFx() {
         spD8 = temp_f0_222;
         sp20 = (f32) spD0 * 2500.0f;
         spE0 = (f64) sp20;
-        MKRand_Float(&gViewSeed, 0.75f, 1.2f);
+        MKRand_Float((int *) &gViewSeed, 0.75f, 1.2f);
         sp8 = 1.0f;
         spC = 1.0f;
         sp10 = 1.0f;
@@ -177,7 +229,7 @@ void FireTier3::DoDeadFx() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void FireTier3::Init() {
     EnemyGoal_Think *temp_r31_300;
 
@@ -326,7 +378,7 @@ void FireTier2::DoDeadFx() {
         spD8 = temp_f0_520;
         sp20 = (f32) spD0 * 2500.0f;
         spE0 = (f64) sp20;
-        MKRand_Float(&gViewSeed, 0.75f, 1.2f);
+        MKRand_Float((int *) &gViewSeed, 0.75f, 1.2f);
         sp8 = 1.0f;
         spC = 1.0f;
         sp10 = 1.0f;
@@ -347,7 +399,6 @@ void FireTier2::UpdateMovementCustom() {
     UpdateModel();
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void FireTier2::CheckAnimEvents() {
     f64 sp140;
     f64 sp138;
@@ -462,7 +513,7 @@ void FireTier2::CheckAnimEvents() {
             spD8 = temp_f0_773;
             sp20 = (f32) spD0 * 1500.0f;
             spE0 = (f64) sp20;
-            MKRand_Float(&gViewSeed, 0.75f, 1.2f);
+            MKRand_Float((int *) &gViewSeed, 0.75f, 1.2f);
             sp8 = 1.0f;
             spC = 0.1f;
             sp10 = 0.0f;
@@ -477,9 +528,7 @@ void FireTier2::CheckAnimEvents() {
     }
     Enemy::CheckAnimEvents();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 FireTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     Matrix spA0;
     M2C_UNK sp9C;
@@ -528,7 +577,7 @@ s32 FireTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
 loop_5:
     if ((var_r4_872 == 0) && (var_r28_874 < 0xA)) {
         var_r29_894 = 0;
-        if ((InWaterVolume(*((MKVector3 *) &sp68), &sp10) != 0) && (sp10 & 1)) {
+        if ((InWaterVolume(*((MKVector3 *) &sp68), (int *) &sp10) != 0) && (sp10 & 1)) {
             var_r29_894 = 1;
         }
         var_r4_872 = var_r29_894;
@@ -561,7 +610,7 @@ loop_5:
     }
     if (Enemy::Spawn(&spA0, arg1) != 0) {
         if (((u8) this->unkB10 >> 7U) & 1) {
-            PropFlagsClear((u32 *) &this->unk10, 0x40000U);
+            PropFlagsClear((unsigned int *) &this->unk10, 0x40000U);
         }
         M2C_FIELD(this, f64 *, 0x5B8) = sp88;
         M2C_FIELD(this, f64 *, 0x5C0) = sp90;
@@ -569,7 +618,6 @@ loop_5:
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void FireTier2::Message(MKMessage *arg0) {
@@ -588,7 +636,7 @@ void FireTier2::Deinit() {
     Enemy::Deinit();
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'FireTier2Goal_Think' to
 void FireTier2::Init() {
     FireTier2Goal_Think *var_r31_1051;
 
@@ -723,7 +771,7 @@ s32 FireTier1::SelectMoveToWallPos(const MKVector3 &arg0, const MKVector3 &arg1,
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 FireTier1::SelectFlyToWallPos(const MKVector3 &arg0, MKVector3 *arg1, MKVector3 *arg2, MKVector3 *arg3) {
     MKCollisionResult sp200;
     Matrix sp1C0;
@@ -812,7 +860,7 @@ s32 FireTier1::SelectFlyToWallPos(const MKVector3 &arg0, MKVector3 *arg1, MKVect
     var_r26_1316 = 0;
 loop_1:
     temp_r4_1325 = M2C_FIELD(this->unkA44, void **, 0x1C);
-    temp_r3_1329 = M2C_FIELD(temp_r4_1325, s32 *, 0x24) + (MKRand_Int(&gViewSeed, 0, M2C_FIELD(M2C_FIELD(this->unkA44, void **, 0x1C), s32 *, 0x20)) * M2C_FIELD(temp_r4_1325, s32 *, 0x1C));
+    temp_r3_1329 = M2C_FIELD(temp_r4_1325, s32 *, 0x24) + (MKRand_Int((int *) &gViewSeed, 0, M2C_FIELD(M2C_FIELD(this->unkA44, void **, 0x1C), s32 *, 0x20)) * M2C_FIELD(temp_r4_1325, s32 *, 0x1C));
     temp_f1_1330 = M2C_FIELD(temp_r3_1329, f64 *, 0);
     sp1B0 = temp_f1_1330;
     sp1B8 = M2C_FIELD(temp_r3_1329, f64 *, 8);
@@ -1073,7 +1121,7 @@ void FireTier1::DoDeadFx() {
         spD8 = temp_f0_1846;
         sp20 = (f32) spD0 * 2500.0f;
         spE0 = (f64) sp20;
-        MKRand_Float(&gViewSeed, 0.75f, 1.2f);
+        MKRand_Float((int *) &gViewSeed, 0.75f, 1.2f);
         sp8 = 1.0f;
         spC = 1.0f;
         sp10 = 1.0f;
@@ -1209,7 +1257,7 @@ void FireTier1::GetCharacterName() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void FireTier1::Init() {
     FireTier1Goal_Think *temp_r31_2133;
 

@@ -1,21 +1,46 @@
 #include "spyro/source/ExplosiveBarrelPath.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BurningWick.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplosiveBarrel.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
@@ -53,7 +78,7 @@ void ExplosiveBarrelPath::EmitDust(const MKVector3 &arg0, const MKVector3 &arg1,
         M2C_FIELD(temp_r31_83, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r31_83, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r31_83, f32 *, 0x18) = arg2;
-        M2C_FIELD(temp_r31_83, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        M2C_FIELD(temp_r31_83, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         if ((u8) this->unk232 != 0) {
             var_f0_107 = M2C_FIELD(M2C_FIELD(checked_cast<ExplosiveBarrelPathDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x94), f32 *, 0xF4);
         } else {
@@ -982,13 +1007,13 @@ loop_18:
                         sp60 = temp_f0_1633;
                         sp18 = M2C_BITWISE(f32, spC0.unk18) * 200.0f;
                         sp68 = (f64) sp18;
-                        EmitDust(*((MKVector3 *) &spC0.unk20), *((MKVector3 *) &sp60), MKRand_Float(&gViewSeed, 0.5f, 1.0f));
+                        EmitDust(*((MKVector3 *) &spC0.unk20), *((MKVector3 *) &sp60), MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
                         var_r25_1606 += 1;
                     } while (var_r25_1606 < 0xF);
                 }
                 temp_r5_1654 = this->unk228;
-                if ((temp_r5_1654 > 0) && (M2C_FIELD(temp_r30_1380, f32 *, 0x88) <= 10.0f) && (M2C_FIELD(temp_r30_1380, f32 *, 0x8C) < 0.0f) && (MKRand_Int(&gViewSeed, 0, temp_r5_1654) == 0)) {
-                    M2C_FIELD(temp_r30_1380, f32 *, 0x8C) = MKRand_Float(&gViewSeed, 0.0f, M2C_FIELD(temp_r30_1380, f32 *, 0x84) * this->unk22C);
+                if ((temp_r5_1654 > 0) && (M2C_FIELD(temp_r30_1380, f32 *, 0x88) <= 10.0f) && (M2C_FIELD(temp_r30_1380, f32 *, 0x8C) < 0.0f) && (MKRand_Int((int *) &gViewSeed, 0, temp_r5_1654) == 0)) {
+                    M2C_FIELD(temp_r30_1380, f32 *, 0x8C) = MKRand_Float((int *) &gViewSeed, 0.0f, M2C_FIELD(temp_r30_1380, f32 *, 0x84) * this->unk22C);
                     M2C_FIELD(temp_r30_1380, u8 *, 0x91) = 1U;
                 }
                 M2C_FIELD(temp_r30_1380, f32 *, 0x88) = (f32) ((M2C_FIELD(temp_r30_1380, f32 *, 0x8C) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_1380, f32 *, 0x88));
@@ -1188,7 +1213,7 @@ loop_18:
         return 1;
     }
     var_r31_2077 = 0;
-    if ((arg0->LoadFloat("Speed", &this->unk220, 0) != 0) || (arg0->LoadFloat("Acceleration", &this->unk224, 0) != 0) || (arg0->LoadInt("BounceChance", &this->unk228, 0) != 0) || (arg0->LoadFloat("BounceSpeed", &this->unk22C, 0) != 0) || (arg0->LoadBool("bAutoShootBarrels", &this->unk231, 0) != 0) || (arg0->LoadBool("bOneShot", &this->unk230, 0) != 0) || (arg0->LoadFloat("fAutoShootDelay", &this->unk234, 0) != 0) || (arg0->LoadFloat("fExplosionRadiusScale", &this->unk23C, 0) != 0)) {
+    if ((arg0->LoadFloat("Speed", &this->unk220, 0) != 0) || (arg0->LoadFloat("Acceleration", &this->unk224, 0) != 0) || (arg0->LoadInt("BounceChance", (int *) &this->unk228, 0) != 0) || (arg0->LoadFloat("BounceSpeed", &this->unk22C, 0) != 0) || (arg0->LoadBool("bAutoShootBarrels", &this->unk231, 0) != 0) || (arg0->LoadBool("bOneShot", &this->unk230, 0) != 0) || (arg0->LoadFloat("fAutoShootDelay", &this->unk234, 0) != 0) || (arg0->LoadFloat("fExplosionRadiusScale", &this->unk23C, 0) != 0)) {
         var_r31_2077 = 1;
     }
     return var_r31_2077;
@@ -1271,17 +1296,15 @@ void ExplosiveBarrelPathDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[16], long *)' does
 s32 ExplosiveBarrelPathDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2324;
 
     var_r31_2324 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "barrelRollSound", &this->unk60) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "barrelRollSound", (int *) &this->unk60) != 0)) {
         var_r31_2324 = 1;
     }
     return var_r31_2324;
 }
-#endif
 
 void ExplosiveBarrelPathDescriptor::Init() {
     MKPropDescriptor::Init();

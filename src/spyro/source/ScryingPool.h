@@ -48,7 +48,7 @@ inline ScryingPool::~ScryingPool() {
 
     if (this != NULL) {
         if ((&this->unk98 != NULL) && (&this->unk98 != NULL)) {
-            KDSound_Stop(&this->unk98);
+            KDSound_Stop((int *) &this->unk98);
         }
         temp_cr0_eq_28 = this == NULL;
         if (temp_cr0_eq_28 == 0) {

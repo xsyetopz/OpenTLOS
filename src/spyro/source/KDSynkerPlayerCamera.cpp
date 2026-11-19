@@ -1,13 +1,24 @@
 #include "spyro/source/KDSynkerPlayerCamera.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDBasicEnvelope.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/KDSynkerPlayerActor.h"
 #include "spyro/source/KDSynkerPlayerActorList.h"
 #include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/StdMath.h"
@@ -62,11 +73,11 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Load(const char *, long *, int, int)' does not
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDSP_Camera::ParseMCDFile(const char *arg0) {
     u32 *var_r31_101;
 
-    this->unk94 = MKArchive_Load(arg0, &this->unk90, NULL, -1);
+    this->unk94 = MKArchive_Load(arg0, (int *) &this->unk90, NULL, -1);
     this->unk98 = NULL;
     var_r31_101 = this->unk94;
 loop_5:

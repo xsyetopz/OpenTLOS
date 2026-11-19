@@ -1,32 +1,57 @@
 #include "spyro/source/FuryFXEarth2.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/EarthBreathWhirlWinds.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EnemyRegion.h"
 #include "spyro/source/FallingLeaves.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/KDPath.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/SB2.h"
 #include "spyro/source/ScreenWobbleFX.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -113,7 +138,7 @@ void FuryFXEarth2::CalcMatrixForVortexElement(FuryFXEarth2::VortexAttachmentPoin
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void FuryFXEarth2::EmitTimedSparks() {
     f64 spF8;
     f64 spF0;
@@ -161,7 +186,7 @@ void FuryFXEarth2::EmitTimedSparks() {
 
     this->unkE4 -= gUpdateTimeDelta;
     if (!(this->unkE4 > 0.0f)) {
-        temp_f1_204 = MKRand_Float(&gViewSeed, 0.125f, 0.5f);
+        temp_f1_204 = MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f);
         sp78 = -1.0f;
         sp68 = 1.0f;
         this->unkE4 = temp_f1_204;
@@ -186,9 +211,9 @@ void FuryFXEarth2::EmitTimedSparks() {
         sp48 = this->unkA8 + (f32) spE8;
         spF8 = (f64) sp48;
         do {
-            temp_f26_264 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f27_269 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp30 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f26_264 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f27_269 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp30 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp34 = temp_f27_269;
             sp38 = temp_f26_264;
             sp90 = (f64) sp30;
@@ -198,7 +223,7 @@ void FuryFXEarth2::EmitTimedSparks() {
             spA0 = temp_f0_283;
             sp28 = (f32) sp98 * 1050.0f;
             spA8 = (f64) sp28;
-            temp_f1_295 = MKRand_Float(&gViewSeed, 6.0f, 7.0f);
+            temp_f1_295 = MKRand_Float((int *) &gViewSeed, 6.0f, 7.0f);
             sp10 = 0.0f;
             sp14 = 1.0f;
             sp8 = temp_f1_295;
@@ -308,7 +333,7 @@ loop_2:
             sp80 = (f64) sp30;
             sp68 = (f64) sp18;
             sp70 = (f64) sp20;
-            temp_f25_446 = MKRand_Float(&gViewSeed, 0.3f, 1.0f);
+            temp_f25_446 = MKRand_Float((int *) &gViewSeed, 0.3f, 1.0f);
             KDRand_Vector(sp88, *((MKVector3 *) &sp78));
             KDRand_Vector(spB8, *((MKVector3 *) &spA8));
             ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xA4)))->Emit(*((MKVector3 *) &spF8), *((MKVector3 *) &spC8), spB8, sp88, temp_f25_446, this->unkD0, 4, NULL);
@@ -385,13 +410,13 @@ void FuryFXEarth2::SpawnVortexElement() {
                 KDRand_Vector(sp70, *((MKVector3 *) &sp60));
                 M2C_FIELD(temp_r31_521, f64 *, 0x10) = M2C_BITWISE(f64, sp70);
                 M2C_FIELD(temp_r31_521, f64 *, 0x18) = (f64) sp70.unk8;
-                M2C_FIELD(temp_r31_521, f32 *, 0x20) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
-                M2C_FIELD(temp_r31_521, f32 *, 0x24) = MKRand_Float(&gViewSeed, 3.1415927f, 6.2831855f);
+                M2C_FIELD(temp_r31_521, f32 *, 0x20) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
+                M2C_FIELD(temp_r31_521, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 3.1415927f, 6.2831855f);
                 M2C_FIELD(temp_r31_521, f32 *, 0x28) = -200.0f;
-                M2C_FIELD(temp_r31_521, f32 *, 0x2C) = MKRand_Float(&gViewSeed, 100.0f, 1000.0f);
-                M2C_FIELD(temp_r31_521, f32 *, 0x30) = MKRand_Float(&gViewSeed, 1800.0f, 2500.0f);
-                M2C_FIELD(temp_r31_521, f32 *, 0x34) = MKRand_Float(&gViewSeed, 20.0f, 300.0f);
-                M2C_FIELD(temp_r31_521, f32 *, 0x38) = MKRand_Float(&gViewSeed, 0.05f, 0.2f);
+                M2C_FIELD(temp_r31_521, f32 *, 0x2C) = MKRand_Float((int *) &gViewSeed, 100.0f, 1000.0f);
+                M2C_FIELD(temp_r31_521, f32 *, 0x30) = MKRand_Float((int *) &gViewSeed, 1800.0f, 2500.0f);
+                M2C_FIELD(temp_r31_521, f32 *, 0x34) = MKRand_Float((int *) &gViewSeed, 20.0f, 300.0f);
+                M2C_FIELD(temp_r31_521, f32 *, 0x38) = MKRand_Float((int *) &gViewSeed, 0.05f, 0.2f);
                 M2C_FIELD(temp_r31_521, s32 *, 0x3C) = 0;
                 ((FuryFXEarth2 *) &spB0)->CalcMatrixForVortexElement((FuryFXEarth2::VortexAttachmentPoint *) this);
                 M2C_STRUCT_COPY((s32) &spEC + 4, (s32) &spA0.unkC + 4, 0x40);
@@ -1002,7 +1027,7 @@ loop_45:
                                 temp_r4_1576 = temp_r29_1442->unk8;
                                 sp1F0 = M2C_FIELD(temp_r4_1576, f64 *, 0x30);
                                 sp1F8 = M2C_FIELD(temp_r4_1576, f64 *, 0x38);
-                                spB4 = MKRand_Float(&gViewSeed, 1.5f, 2.0f);
+                                spB4 = MKRand_Float((int *) &gViewSeed, 1.5f, 2.0f);
                                 spB0 = 1.5f;
                                 spB8 = 1.5f;
                                 sp1D0 = (f64) spB0;
@@ -1044,7 +1069,7 @@ loop_49:
                     sp1C0 = temp_f0_1660;
                     sp68 = (f32) sp268 + (f32) sp1B8;
                     sp1C8 = (f64) sp68;
-                    temp_f1_1672 = MKRand_Float(&gViewSeed, 1.5f, 2.0f);
+                    temp_f1_1672 = MKRand_Float((int *) &gViewSeed, 1.5f, 2.0f);
                     sp50 = 1.5f;
                     sp54 = temp_f1_1672;
                     sp58 = 1.5f;
@@ -1243,7 +1268,7 @@ loop_2:
         temp_r6_2089 = ((u8 *) this->unkC0) - 4;
         this->unkC0 = temp_r6_2089;
         temp_r31_2091 = *temp_r6_2089;
-        M2C_FIELD(temp_r31_2091, s32 *, 0x40) = MKRand_Int(&gViewSeed, 0, 4);
+        M2C_FIELD(temp_r31_2091, s32 *, 0x40) = MKRand_Int((int *) &gViewSeed, 0, 4);
         goto loop_2;
     }
 loop_5:

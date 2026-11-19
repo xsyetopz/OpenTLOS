@@ -1,30 +1,73 @@
 #include "spyro/source/FuryFXElectricity.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/LitCloudPS.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/NodeLookAt.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "spyro/source/WaterDripPS.h"
 #include "spyro/source/ZapArcFX.h"
 #include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_Rumble1;
@@ -520,7 +563,7 @@ void FuryFXElectricity::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void FuryFXElectricity::Update() {
     s8 sp8F0;
     f64 sp8E8;
@@ -963,9 +1006,9 @@ void FuryFXElectricity::Update() {
             }
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp8DC = 0;
-                temp_f22_1206 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f23_1211 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f23_1211, temp_f22_1206);
+                temp_f22_1206 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f23_1211 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f23_1211, temp_f22_1206);
                 sp168 = sp7B8 * 5.398241246e-315;
                 sp8D8 = 0x417;
                 sp8E0 = sp168;
@@ -989,10 +1032,10 @@ block_172:
         var_r31_2666 = 0;
         do {
             temp_r29_2673 = this + var_r31_2666;
-            M2C_FIELD(temp_r29_2673, f32 *, 0xD4) = (f32) ((gUpdateTimeDelta * (3.1415927f * MKRand_Float(&gViewSeed, 0.1f, 1.0f))) + M2C_FIELD(temp_r29_2673, f32 *, 0xD4));
+            M2C_FIELD(temp_r29_2673, f32 *, 0xD4) = (f32) ((gUpdateTimeDelta * (3.1415927f * MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f))) + M2C_FIELD(temp_r29_2673, f32 *, 0xD4));
             var_r28_2664 += 1;
             var_r31_2666 += 0x10;
-            M2C_FIELD(temp_r29_2673, f32 *, 0xD0) = (f32) ((gUpdateTimeDelta * (2.0f * (3.1415927f * MKRand_Float(&gViewSeed, 0.1f, 1.0f)))) + M2C_FIELD(temp_r29_2673, f32 *, 0xD0));
+            M2C_FIELD(temp_r29_2673, f32 *, 0xD0) = (f32) ((gUpdateTimeDelta * (2.0f * (3.1415927f * MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f)))) + M2C_FIELD(temp_r29_2673, f32 *, 0xD0));
         } while (var_r28_2664 < 3);
         temp_r3_2692 = this->unk90;
         if (temp_r3_2692 != 4) {
@@ -1059,9 +1102,9 @@ block_172:
                 sp6E0 = (f64) sp140;
                 if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                     sp8BC = 0;
-                    temp_f22_1419 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f23_1424 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f23_1424, temp_f22_1419);
+                    temp_f22_1419 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f23_1424 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f23_1424, temp_f22_1419);
                     sp128 = sp6B8 * 5.49408334e-315;
                     sp8B8 = 0x417;
                     sp8C0 = sp128;
@@ -1160,7 +1203,7 @@ block_172:
                 M2C_FIELD(temp_r3_1650, f64 *, 0x18) = (f64) sp100;
             }
             temp_r3_1664 = this->unkC4;
-            temp_f1_1666 = (1.0f + var_f22_1602) * (1000.0f * MKRand_Float(&gViewSeed, 1.0f, 1.2f));
+            temp_f1_1666 = (1.0f + var_f22_1602) * (1000.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 1.2f));
             temp_r3_1664->unk38 = temp_f1_1666;
             temp_r3_1668 = temp_r3_1664->unk3C;
             if (temp_r3_1668 != NULL) {
@@ -1325,7 +1368,7 @@ block_172:
                 M2C_FIELD(temp_r3_2009, f64 *, 0x18) = sp840;
             }
             temp_r3_2024 = this->unkC4;
-            temp_f1_2026 = (1.0f + temp_f26_1727) * (1000.0f * MKRand_Float(&gViewSeed, 1.0f, 2.0f));
+            temp_f1_2026 = (1.0f + temp_f26_1727) * (1000.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f));
             temp_r3_2024->unk38 = temp_f1_2026;
             temp_r3_2028 = temp_r3_2024->unk3C;
             if (temp_r3_2028 != NULL) {
@@ -1337,9 +1380,9 @@ block_172:
         }
         if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
             sp89C = 0;
-            temp_f22_2051 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f23_2056 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f23_2056, temp_f22_2051);
+            temp_f22_2051 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f23_2056 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f23_2056, temp_f22_2051);
             spC8 = sp478 * 5.49408334e-315;
             sp898 = 0x417;
             sp8A0 = spC8;
@@ -1401,9 +1444,9 @@ block_172:
             ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.99f, 0.99f, 0.65f, 0, 4.0f, 0U);
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp87C = 0;
-                temp_f22_2231 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f23_2236 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f23_2236, temp_f22_2231);
+                temp_f22_2231 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f23_2236 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f23_2236, temp_f22_2231);
                 spA8 = sp408 * 5.64367472e-315;
                 sp878 = 0x417;
                 sp880 = spA8;
@@ -1470,16 +1513,16 @@ block_172:
                 M2C_FIELD(temp_r3_2387, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_2387, f32 *, 0x24));
             }
         }
-        temp_r29_2404 = MKRand_Int(&gViewSeed, 0xF, 0x1E);
+        temp_r29_2404 = MKRand_Int((int *) &gViewSeed, 0xF, 0x1E);
         var_r28_2411 = 0;
         temp_f25_2418 = 6.2831855f / (f32) (temp_r29_2404 - 1);
 loop_151:
         if (var_r28_2411 < temp_r29_2404) {
             temp_f28_2423 = this->unk98.unk0;
             temp_f21_2430 = (f32) var_r28_2411 * temp_f25_2418;
-            temp_f23_2432 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
+            temp_f23_2432 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
             temp_f22_2439 = -_table_sinf(1.5707964f + temp_f21_2430) * temp_f23_2432;
-            temp_f23_2441 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
+            temp_f23_2441 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
             temp_f1_2444 = _table_sinf(temp_f21_2430) * temp_f23_2441;
             sp1F0 = temp_f22_2439;
             sp1E8 = temp_f1_2444;
@@ -1528,9 +1571,9 @@ loop_151:
         }
         if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
             sp85C = 0;
-            temp_f22_2538 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f23_2543 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f23_2543, temp_f22_2538);
+            temp_f22_2538 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f23_2543 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f23_2543, temp_f22_2538);
             sp318.operator*(200.0f);
             sp78 = sp318 * (f64) var_f26_2522;
             sp858 = 0x417;

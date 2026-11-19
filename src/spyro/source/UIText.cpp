@@ -1,9 +1,11 @@
 #include "spyro/source/UIText.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKFont.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/UIAttributes.h"
+#include "spyro/source/UIContainer.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIStringTable.h"
@@ -144,7 +146,7 @@ s32 UIText::LoadLine(UIDataLine *arg0) {
         this->unk6C = -1;
         return 1;
     }
-    if (((MKIniLine *) arg0)->LoadInt("stringId", &this->unk6C, 0) != 0) {
+    if (((MKIniLine *) arg0)->LoadInt("stringId", (int *) &this->unk6C, 0) != 0) {
         return 1;
     }
     return UIObject::LoadLine(arg0);

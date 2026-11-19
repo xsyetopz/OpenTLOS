@@ -1,10 +1,16 @@
 #include "spyro/source/KDProp.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
@@ -13,7 +19,24 @@
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKMaterial.h"
@@ -379,7 +402,7 @@ void KDProp::LoadDone() {
         if (var_r4_633 != NULL) {
             this->unk80->SetAnim(var_r4_633, 1.0f, 0.0f, 0, -1);
             if (M2C_FIELD(temp_r3_584, s32 *, 0x60) & 8) {
-                this->unk80->JumpToPos(MKRand_Float(&gViewSeed, 0.0f, 1.0f), -1);
+                this->unk80->JumpToPos(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), -1);
             }
         }
         this->unk10 &= 0xFFFFFFFB;
@@ -480,11 +503,11 @@ void KDPropDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: function call 'KDProp_LoadMaterialID(MKIniLine *, const char[11], long *)'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("defaultScale", &this->unk68, 0) != 0) || (KDProp_LoadMaterialID(arg0, "materialID", &this->unk64) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("defaultScale", &this->unk68, 0) != 0) || (KDProp_LoadMaterialID(arg0, "materialID", (int *) &this->unk64) != 0)) {
         return 1U;
     }
     if (arg0->LoadBool("bUseGroundColor", &sp8, 0) != 0) {

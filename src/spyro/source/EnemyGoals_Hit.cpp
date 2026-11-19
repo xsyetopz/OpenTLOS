@@ -1,23 +1,87 @@
 #include "spyro/source/EnemyGoals_Hit.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "spyro/source/GameConsole.h"
@@ -158,7 +222,6 @@ void EnemyGoal_Hit::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 EnemyGoal_Hit::Update() {
     f64 sp58;
     f64 sp50;
@@ -182,7 +245,7 @@ u8 EnemyGoal_Hit::Update() {
     this->unk8 = UpdateSubgoals();
     sp8 = 0;
     temp_r3_266 = this->unkC;
-    if (((temp_r3_266->unkAC8 <= 0.0f) || ((u8) temp_r3_266->unkA38->unk121 != 0)) && (temp_r3_266->InWaterVolume(temp_r3_266->unk588, &sp8) != 0)) {
+    if (((temp_r3_266->unkAC8 <= 0.0f) || ((u8) temp_r3_266->unkA38->unk121 != 0)) && (temp_r3_266->InWaterVolume(temp_r3_266->unk588, (int *) &sp8) != 0)) {
         temp_r3_281 = this->unkC;
         sp20 = M2C_FIELD(temp_r3_281, f64 *, 0xC0) * 5.398241246e-315;
         temp_r4_288 = temp_r3_281->unk8;
@@ -206,7 +269,6 @@ u8 EnemyGoal_Hit::Update() {
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Hit::Activate() {
@@ -905,7 +967,6 @@ void EnemyGoal_HitFall::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 EnemyGoal_HitFall::Update() {
     s32 sp8;
     AnimSequence *temp_r4_1750;
@@ -976,7 +1037,7 @@ u8 EnemyGoal_HitFall::Update() {
     }
     sp8 = 0;
     temp_r3_1850 = this->unkC;
-    if (((u8) temp_r3_1850->unkA38->unk121 != 0) && (temp_r3_1850->InWaterVolume(temp_r3_1850->unk588, &sp8) != 0)) {
+    if (((u8) temp_r3_1850->unkA38->unk121 != 0) && (temp_r3_1850->InWaterVolume(temp_r3_1850->unk588, (int *) &sp8) != 0)) {
         temp_r3_1860 = this->unkC;
         var_r4_1862 = 0x4000;
         temp_r3_1860->unkB08 &= ~8;
@@ -987,7 +1048,6 @@ u8 EnemyGoal_HitFall::Update() {
     }
     return this->unk8;
 }
-#endif
 
 void EnemyGoal_HitFall::Activate() {
     AnimSequence *temp_r5_1900;
@@ -1170,7 +1230,7 @@ block_23:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: illegal type
 void EnemyGoal_HitAirCombo::Activate() {
     s8 spD0;
     s32 spCC;
@@ -1361,7 +1421,7 @@ void EnemyGoal_HitAirCombo::Activate() {
         var_r30_2478 = 0;
     }
     if ((temp_r3_2477->unkAC8 > 0.0f) && ((s32) temp_r3_2477->unkAF4 < 3)) {
-        this->unkC->SpawnGems(MKRand_Int(&gViewSeed, 0, 4), var_r30_2478, 1U);
+        this->unkC->SpawnGems(MKRand_Int((int *) &gViewSeed, 0, 4), var_r30_2478, 1U);
     }
     this->unk14 &= ~0x40;
 }
@@ -1397,7 +1457,7 @@ loop_2:
     if ((s32) temp_r4_2564->unkA58 == (s32) this->unk10) {
         temp_r4_2564->unkA58 = 0;
     }
-    KDSound_Stop(&this->unk10);
+    KDSound_Stop((int *) &this->unk10);
     temp_r3_2573 = this->unkC;
     if (temp_r3_2573->unkAC8 > 0.0f) {
         ((Enemy *) temp_r3_2573)->ThawIfFrozen();
@@ -1872,7 +1932,6 @@ void EnemyGoal_HitKnockdown::TryTriggerEventCamera(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void EnemyGoal_HitKnockdown::Terminate() {
     s32 spC;
     s32 sp8;
@@ -1913,7 +1972,7 @@ loop_2:
     if ((s32) temp_r4_3389->unkA58 == (s32) this->unk14) {
         temp_r4_3389->unkA58 = 0;
     }
-    KDSound_Stop(&this->unk14);
+    KDSound_Stop((int *) &this->unk14);
     temp_r3_3398 = this->unkC;
     if (temp_r3_3398->unkAC8 > 0.0f) {
         temp_r3_3398->ThawIfFrozen();
@@ -1930,7 +1989,6 @@ loop_2:
     }
     this->unk8 = 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk30C'
 u8 EnemyGoal_HitKnockdown::Update() {
@@ -3086,7 +3144,7 @@ void EnemyGoal_HitBurn::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'GetHeroType(HeroInterface *, float *)' does not match
 u8 EnemyGoal_HitBurn::Update() {
     AnimSequence *temp_r4_5532;
     AnimSequence *temp_r4_5554;
@@ -3282,7 +3340,7 @@ void EnemyGoal_HitShock::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'GetHeroType(HeroInterface *, Enemy *, int)' does not match
 u8 EnemyGoal_HitShock::Update() {
     AnimSequence *temp_r4_5872;
     AnimSequence *temp_r4_5897;
@@ -3331,7 +3389,6 @@ u8 EnemyGoal_HitShock::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 void EnemyGoal_HitShock::Activate() {
     AnimSequence *temp_r4_5941;
     Enemy *temp_r3_5936;
@@ -3364,7 +3421,6 @@ void EnemyGoal_HitShock::Activate() {
         temp_r5_5980->unk6B5 |= 0x40;
     }
 }
-#endif
 
 u8 EnemyGoal_HitFlinch::Update() {
     ActivateIfInactive();
@@ -3374,7 +3430,7 @@ u8 EnemyGoal_HitFlinch::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: undefined identifier 'temp_r3_6039'
+#if 0 // DRAFT: undefined identifier 'unkA38'
 void EnemyGoal_HitFlinch::Activate() {
     Character *temp_r3_6039;
     Character *temp_r3_6051;

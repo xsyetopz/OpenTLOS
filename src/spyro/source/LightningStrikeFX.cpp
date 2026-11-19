@@ -1,14 +1,22 @@
 #include "spyro/source/LightningStrikeFX.h"
+#include "common/Source/Animation.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/ScreenWobbleFX.h"
@@ -253,21 +261,21 @@ void LightningStrikeFX::Strike() {
         sp188 = temp_f0_325;
         sp50 = (f32) sp120 * 800.0f;
         sp190 = (f64) sp50;
-        sp30 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+        sp30 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
         sp34 = 1.0f;
         sp28 = 0.75f;
         sp2C = 0.5f;
         spE0 = (f64) sp30;
         spD8 = (f64) sp28;
-        sp10 = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
+        sp10 = MKRand_Float((int *) &gViewSeed, 10.0f, 20.0f);
         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*this->unk4C, *((MKVector3 *) &sp188), sp10, *((MKVector4 *) &spD8), -500.0f);
         var_r28_209 += 1;
     } while (var_r28_209 < 0x14);
     var_r28_361 = 0;
     do {
-        temp_r29_368 = MKRand_Int(&gViewSeed, 0, this->unk50);
+        temp_r29_368 = MKRand_Int((int *) &gViewSeed, 0, this->unk50);
         temp_r5_372 = this->unk4C;
-        temp_r31_61->SpawnStrikeArc(temp_r5_372[MKRand_Int(&gViewSeed, 0, this->unk50)], temp_r5_372[temp_r29_368], 3.0f, 0.125f);
+        temp_r31_61->SpawnStrikeArc(temp_r5_372[MKRand_Int((int *) &gViewSeed, 0, this->unk50)], temp_r5_372[temp_r29_368], 3.0f, 0.125f);
         var_r28_361 += 1;
     } while (var_r28_361 < 3);
     this->unkC0 = 0.0f;
@@ -309,7 +317,7 @@ void LightningStrikeFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'P27LightningStrikeFXDescriptor'
 void LightningStrikeFX::Update() {
     MKVector3 *temp_r5_543;
     f32 temp_f31_515;
@@ -333,9 +341,9 @@ void LightningStrikeFX::Update() {
     this->unkC0 -= gUpdateTimeDelta;
     temp_f31_515 = this->unkC4;
     if ((temp_f31_515 > 0.0f) && (this->unkC0 <= 0.0f)) {
-        this->unkC0 = -((temp_f31_515 * 0.25f) - 1.0f) * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-        temp_r30_536 = MKRand_Int(&gViewSeed, 0, this->unk50);
-        temp_r31_540 = MKRand_Int(&gViewSeed, 0, this->unk50);
+        this->unkC0 = -((temp_f31_515 * 0.25f) - 1.0f) * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+        temp_r30_536 = MKRand_Int((int *) &gViewSeed, 0, this->unk50);
+        temp_r31_540 = MKRand_Int((int *) &gViewSeed, 0, this->unk50);
         temp_r5_543 = this->unk4C;
         ((LightningStrikeFXDescriptor *) (checked_cast<P27LightningStrikeFXDescriptor))->SpawnStrikeArc(*(16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)), temp_r5_543[temp_r31_540], &temp_r5_543[temp_r30_536], 2.0f, 0.125f);
     }
@@ -1289,7 +1297,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'unksp24'
 void LightningStrikeFXDescriptor::Update() {
     Frustum sp28;
     f64 sp20;
@@ -1351,7 +1359,7 @@ loop_4:
             ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2149, 0U);
         } else {
             temp_f31_2167 = temp_f2_2152 / 0.75f;
-            temp_f1_2169 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+            temp_f1_2169 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
             sp10 = temp_f31_2167 * temp_f1_2169;
             temp_r3_2177 = this->unk60;
             sp14 = 1.0f;
@@ -1382,8 +1390,8 @@ loop_22:
             }
         }
         if ((var_r28_2208 != 0) && ((s32) this->unkA4 > 0xA)) {
-            ((LightningStrikeFX *) (checked_cast<P17LightningStrikeFX))->Strike(6MKProp>__FP6MKProp((&sp98[0])[MKRand_Int(&gViewSeed, 0, var_r28_2208)]));
-            this->unk90 = MKRand_Float(&gViewSeed, 4.0f, 5.0f);
+            ((LightningStrikeFX *) (checked_cast<P17LightningStrikeFX))->Strike(6MKProp>__FP6MKProp((&sp98[0])[MKRand_Int((int *) &gViewSeed, 0, var_r28_2208)]));
+            this->unk90 = MKRand_Float((int *) &gViewSeed, 4.0f, 5.0f);
         }
         this->unkA4 += 1;
     }

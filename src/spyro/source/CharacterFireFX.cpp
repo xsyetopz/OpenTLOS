@@ -1,9 +1,26 @@
 #include "spyro/source/CharacterFireFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -38,7 +55,7 @@ void CharacterFireFX::EmitFire() {
             temp_r3_40 = GetRandomNode(NULL);
             if (temp_r3_40 != NULL) {
                 sp8 = 3.0f * M2C_FIELD(*temp_r3_40, f32 *, 0x10);
-                temp_f1_56 = 100.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+                temp_f1_56 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
                 sp28 = 0.0f;
                 sp20 = 0.0f;
                 sp24 = temp_f1_56;
@@ -50,8 +67,8 @@ void CharacterFireFX::EmitFire() {
         } while (var_r29_36 < 5);
     }
     temp_r31_76 = GetRandomNode(NULL);
-    temp_f31_80 = MKRand_Float(&gViewSeed, 1.5f, 2.5f);
-    sp14 = MKRand_Float(&gViewSeed, 400.0f, 600.0f);
+    temp_f31_80 = MKRand_Float((int *) &gViewSeed, 1.5f, 2.5f);
+    sp14 = MKRand_Float((int *) &gViewSeed, 400.0f, 600.0f);
     sp10 = 0.0f;
     sp18 = 0.0f;
     sp30 = (f64) sp10;
@@ -77,7 +94,7 @@ void CharacterFireFX::EmitSmoke() {
         temp_r3_129 = GetRandomNode(NULL);
         if (temp_r3_129 != NULL) {
             sp8 = 0.5f * M2C_FIELD(*temp_r3_129, f32 *, 0x10);
-            temp_f2_144 = 100.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+            temp_f2_144 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
             sp18 = 0.0f;
             sp10 = 0.0f;
             sp14 = temp_f2_144;

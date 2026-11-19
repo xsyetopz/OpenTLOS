@@ -1,4 +1,6 @@
 #include "spyro/source/TrapSpawnPool.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKDistanceLevelChunk.h"
@@ -6,9 +8,13 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -243,17 +249,15 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 TrapSpawnPool::LoadLine(MKIniLine *arg0) {
     s32 var_r31_462;
 
     var_r31_462 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("numberInPool", &this->unk90, 0) != 0) || (arg0->LoadInt("timeComplete", (s32 *) &this->unk110, 0) != 0) || (arg0->LoadFloat("spawnTime", &this->unk98, 0) != 0) || (arg0->LoadFloat("bolFallSpeed", (f32 *) &this->unk114, 0) != 0) || (arg0->LoadFloat("bounceHeight", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceLength", &this->unkFC, 0) != 0) || (arg0->LoadFloat("bounceTime", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceDropOff", &this->unk118, 0) != 0) || (arg0->LoadFloat("scale", &this->unk100, 0) != 0) || (arg0->LoadVector3("dropPos", (MKVector3 *) &this->unkB4.unk30, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (((KDPathSegment *) &this->unkB4)->LoadLine(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("numberInPool", (int *) &this->unk90, 0) != 0) || (arg0->LoadInt("timeComplete", (int *) &this->unk110, 0) != 0) || (arg0->LoadFloat("spawnTime", &this->unk98, 0) != 0) || (arg0->LoadFloat("bolFallSpeed", (f32 *) &this->unk114, 0) != 0) || (arg0->LoadFloat("bounceHeight", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceLength", &this->unkFC, 0) != 0) || (arg0->LoadFloat("bounceTime", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceDropOff", &this->unk118, 0) != 0) || (arg0->LoadFloat("scale", &this->unk100, 0) != 0) || (arg0->LoadVector3("dropPos", (MKVector3 *) &this->unkB4.unk30, 0) != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0) || (((KDPathSegment *) &this->unkB4)->LoadLine(arg0) != 0)) {
         var_r31_462 = 1;
     }
     return var_r31_462;
 }
-#endif
 
 void TrapSpawnPool::Deinit() {
     MKHeap *temp_r3_589;
@@ -289,7 +293,7 @@ void TrapSpawnPool::Init() {
     this->unkB4.unk30 = 0.0f;
     this->unkB4.unk34 = 0.0f;
     this->unkEC = 0.0f;
-    PropFlagsInit((u32 *) &this->unk10, 0x160000U);
+    PropFlagsInit((unsigned int *) &this->unk10, 0x160000U);
     this->unk8 = &this->unk50;
     M2C_FIELD(this, s32 *, 0x114) = 0xA;
     this->unk114 = 600.0f;

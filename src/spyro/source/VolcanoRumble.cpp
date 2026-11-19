@@ -1,12 +1,39 @@
 #include "spyro/source/VolcanoRumble.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FlyingChunkPS.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
@@ -123,7 +150,7 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void VolcanoRumble::EmitCrudAbovePlayer() {
     f64 sp1F8;                                      /* compiler-managed */
     f64 sp1F0;
@@ -232,9 +259,9 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
                 sp1F0 = M2C_FIELD(temp_r4_313, f64 *, 0x30);
                 sp1F8 = M2C_FIELD(temp_r4_313, f64 *, 0x38);
                 (*(f32 *) ((u8 *) &sp1F0 + 0x4)) += 1000.0f;
-                temp_f19_323 = MKRand_Float(&gViewSeed, -10.0f, 10.0f);
-                temp_f20_328 = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
-                MKVector(MKRand_Float(&gViewSeed, -10.0f, 10.0f), temp_f20_328, temp_f19_323);
+                temp_f19_323 = MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f);
+                temp_f20_328 = MKRand_Float((int *) &gViewSeed, 4.0f, 6.0f);
+                MKVector(MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f), temp_f20_328, temp_f19_323);
                 temp_f0_339 = sp1C0 * 5.53552857e-315;
                 sp10 = temp_f0_339;
                 sp1D0 = temp_f0_339;
@@ -322,9 +349,9 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
                 sp150 = temp_f0_511;
                 sp78 = (f32) sp148 * 1.0f;
                 sp158 = (f64) sp78;
-                temp_f20_524 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f19_529 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                sp60 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f20_524 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f19_529 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                sp60 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 sp64 = temp_f19_529;
                 sp68 = temp_f20_524;
                 sp120 = (f64) sp60;
@@ -334,9 +361,9 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
                 sp130 = temp_f0_543;
                 sp58 = (f32) sp128 * 3.1415927f;
                 sp138 = (f64) sp58;
-                temp_f19_556 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f20_561 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                sp40 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f19_556 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f20_561 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                sp40 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 sp44 = temp_f20_561;
                 sp48 = temp_f19_556;
                 sp100 = (f64) sp40;
@@ -346,7 +373,7 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
                 sp110 = temp_f0_575;
                 sp38 = (f32) sp108 * 3.1415927f;
                 sp118 = (f64) sp38;
-                temp_f1_587 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+                temp_f1_587 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
                 sp20 = 1.0f;
                 sp24 = 1.0f;
                 sp28 = 1.0f;
@@ -363,7 +390,7 @@ void VolcanoRumble::EmitCrudAbovePlayer() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void VolcanoRumble::MakeCrudRainSound() {
     f64 sp98;                                       /* compiler-managed */
     f64 sp90;
@@ -408,9 +435,9 @@ void VolcanoRumble::MakeCrudRainSound() {
                 temp_r4_704 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
                 sp90 = M2C_FIELD(temp_r4_704, f64 *, 0x30);
                 sp98 = M2C_FIELD(temp_r4_704, f64 *, 0x38);
-                temp_f30_713 = MKRand_Float(&gViewSeed, -10.0f, 10.0f);
-                temp_f29_718 = MKRand_Float(&gViewSeed, 4.0f, 10.0f);
-                MKVector(MKRand_Float(&gViewSeed, -10.0f, 10.0f), temp_f29_718, temp_f30_713);
+                temp_f30_713 = MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f);
+                temp_f29_718 = MKRand_Float((int *) &gViewSeed, 4.0f, 10.0f);
+                MKVector(MKRand_Float((int *) &gViewSeed, -10.0f, 10.0f), temp_f29_718, temp_f30_713);
                 temp_f0_730 = sp50 * 5.53552857e-315;
                 sp20 = temp_f0_730;
                 sp60 = temp_f0_730;
@@ -432,9 +459,9 @@ void VolcanoRumble::MakeCrudRainSound() {
                 temp_r4_784 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
                 sp80 = M2C_FIELD(temp_r4_784, f64 *, 0x30);
                 sp88 = M2C_FIELD(temp_r4_784, f64 *, 0x38);
-                temp_f29_793 = MKRand_Float(&gViewSeed, -2.0f, 2.0f);
-                temp_f30_798 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
-                MKVector(MKRand_Float(&gViewSeed, -2.0f, 2.0f), temp_f30_798, temp_f29_793);
+                temp_f29_793 = MKRand_Float((int *) &gViewSeed, -2.0f, 2.0f);
+                temp_f30_798 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
+                MKVector(MKRand_Float((int *) &gViewSeed, -2.0f, 2.0f), temp_f30_798, temp_f29_793);
                 temp_f0_809 = sp30 * 5.53552857e-315;
                 sp10 = temp_f0_809;
                 sp40 = temp_f0_809;

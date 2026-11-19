@@ -107,7 +107,7 @@ inline Platform::~Platform() {
 
     if (this != NULL) {
         if (&this->unk178 != NULL) {
-            KDSound_Stop(&this->unk178);
+            KDSound_Stop((int *) &this->unk178);
         }
         if ((this + 0x15C) != NULL) {
             temp_r0_19878 = this->unk164;

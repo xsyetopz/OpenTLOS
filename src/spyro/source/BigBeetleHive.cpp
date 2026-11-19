@@ -1,23 +1,64 @@
 #include "spyro/source/BigBeetleHive.h"
 #include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/BeetleNestSmall.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
 #include "spyro/source/StickyPS.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
+#include "spyro/source/shatterwaypointspawn.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKDynamicBone.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
-#include "spyro/source/KDSound.h"
-#include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
 extern s32 GS_OBBigHiveHit1;
@@ -31,7 +72,6 @@ extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void BigBeetleHive::EmitGoopDrips() {
     MKVector3 sp28;
     f64 sp20;
@@ -46,8 +86,8 @@ void BigBeetleHive::EmitGoopDrips() {
     if (!(this->unk1E8 > 0.0f)) {
         this->unk1E8 = 1.0f;
         temp_r31_58 = checked_cast<BigBeetleHiveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD((((u8 *) temp_r31_58) + (MKRand_Int(&gViewSeed, 0, 5) * 4)), s32 *, 0x170), &sp28);
-        temp_f1_73 = MKRand_Float(&gViewSeed, 0.2f, 0.5f);
+        MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD((((u8 *) temp_r31_58) + (MKRand_Int((int *) &gViewSeed, 0, 5) * 4)), s32 *, 0x170), &sp28);
+        temp_f1_73 = MKRand_Float((int *) &gViewSeed, 0.2f, 0.5f);
         sp10 = 0.0f;
         sp8 = 0.0f;
         spC = 0.0f;
@@ -56,7 +96,6 @@ void BigBeetleHive::EmitGoopDrips() {
         ((StickyPS *) (M2C_FIELD(temp_r31_58, StickyPS **, 0x16C)))->Emit(sp28, *((MKVector3 *) &sp18), temp_f1_73, 0.0f);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 void BigBeetleHive::Message(MKMessage *arg0) {

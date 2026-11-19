@@ -39,7 +39,6 @@ u8 boundingVolume__6Volume[0x20] = {
     0,
 };
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void Volume::GetRandPos() {
     f64 sp50;
     f64 sp48;
@@ -60,9 +59,9 @@ void Volume::GetRandPos() {
     void *temp_r31_22;
 
     temp_r31_22 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_f30_30 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x18) * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-    temp_f31_38 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x14) * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-    temp_f1_40 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+    temp_f30_30 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x18) * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+    temp_f31_38 = M2C_FIELD(Volume::boundingVolume, f32 *, 0x14) * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+    temp_f1_40 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
     sp30 = temp_f30_30;
     sp2C = temp_f31_38;
     sp40 = (f64) sp30;
@@ -79,7 +78,6 @@ void Volume::GetRandPos() {
     this->unk0 = (f64) sp8;
     this->unk8 = (f64) sp10;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void Volume::UpdateMatrix(Matrix &arg0) {

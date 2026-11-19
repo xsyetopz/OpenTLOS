@@ -156,7 +156,7 @@ inline ElecTier1::ElecTier1() {
 inline ElecTier1::~ElecTier1() {
     this->unk6B8 = &__vt.unk84;
     if ((&this->unkB28 != NULL) && (&this->unkB28 != NULL)) {
-        KDSound_Stop(&this->unkB28);
+        KDSound_Stop((int *) &this->unkB28);
     }
 }
 #endif

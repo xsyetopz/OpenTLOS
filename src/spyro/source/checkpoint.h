@@ -69,7 +69,7 @@ inline CheckPoint::~CheckPoint() {
 
     if (this != NULL) {
         if ((&this->unk190 != NULL) && (&this->unk190 != NULL)) {
-            KDSound_Stop(&this->unk190);
+            KDSound_Stop((int *) &this->unk190);
         }
         temp_cr0_eq_28 = this == NULL;
         if (temp_cr0_eq_28 == 0) {

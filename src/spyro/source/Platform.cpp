@@ -1,20 +1,44 @@
 #include "spyro/source/Platform.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/SeeSaw.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -299,8 +323,8 @@ void Platform::Reset() {
     M2C_STRUCT_COPY((s32) &unksp1C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
     sp20.SetRotationPYR(*((MKVector3 *) &sp10));
     MKModel_SetWorldMatrix(this->unk4, sp20);
-    this->unk16C = MKRand_Float(&gViewSeed, 0.9f, 1.1f);
-    this->unk170 = MKRand_Float(&gViewSeed, 0.9f, 1.1f);
+    this->unk16C = MKRand_Float((int *) &gViewSeed, 0.9f, 1.1f);
+    this->unk170 = MKRand_Float((int *) &gViewSeed, 0.9f, 1.1f);
 }
 #endif
 
@@ -346,13 +370,11 @@ s32 Platform::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void Platform::Deinit() {
-    KDSound_Stop(&this->unk178);
+    KDSound_Stop((int *) &this->unk178);
     this->unk108.Deinit();
     GameProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'P18PlatformDescriptor'
 void Platform::Init() {

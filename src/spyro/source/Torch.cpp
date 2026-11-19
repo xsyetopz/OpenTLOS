@@ -1,17 +1,34 @@
 #include "spyro/source/Torch.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/gc/System_GC.h"
 #include "spyro/source/Coronas.h"
 #include "spyro/source/CrashFirePS.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -42,7 +59,7 @@ void Torch::Deinit() {
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void Torch::Update() {
     f64 sp188;
     f64 sp180;
@@ -119,9 +136,9 @@ void Torch::Update() {
     void *temp_r3_342;
 
     GameProp::Update();
-    temp_f31_97 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+    temp_f31_97 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
     if ((Corona *) this->unk108 != NULL) {
-        this->unk108->unk24 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+        this->unk108->unk24 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
         sp30 = -((0.1f * temp_f31_97) - 1.0f);
         temp_r4_117 = this->unk108;
         sp34 = -((0.5f * temp_f31_97) - 1.0f);
@@ -131,14 +148,14 @@ void Torch::Update() {
         sp160 = (f64) sp30;
         sp168 = (f64) sp38;
         M2C_FIELD(temp_r4_117, f64 *, 0x18) = (f64) sp38;
-        this->unk108->unk2C = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        this->unk108->unk2C = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
     }
     this->unk110 += gUpdateTimeDelta;
     if (this->unk110 >= this->unk10C) {
         this->unk110 = 0.0f;
-        temp_f27_147 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f28_152 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        spB0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f27_147 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f28_152 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        spB0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         spB4 = temp_f28_152;
         spB8 = temp_f27_147;
         sp150 = (f64) spB0;
@@ -148,8 +165,8 @@ void Torch::Update() {
         sp180 = temp_f0_166;
         spA8 = (f32) sp158 * 5.0f;
         sp188 = (f64) spA8;
-        spC = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-        temp_f1_187 = 50.0f * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        spC = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
+        temp_f1_187 = 50.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         sp88 = 0.0f;
         sp80 = 0.0f;
         sp84 = temp_f1_187;
@@ -165,16 +182,16 @@ void Torch::Update() {
     this->unk118 += gUpdateTimeDelta;
     if (this->unk118 >= this->unk114) {
         this->unk118 = 0.0f;
-        temp_f28_230 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f30_235 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp70 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f28_230 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f30_235 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp70 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp74 = temp_f30_235;
         sp78 = temp_f28_230;
         sp120 = (f64) sp70;
         sp128 = (f64) sp78;
-        temp_f27_252 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f28_257 = MKRand_Float(&gViewSeed, -0.1f, 0.1f);
-        MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_257, temp_f27_252);
+        temp_f27_252 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f28_257 = MKRand_Float((int *) &gViewSeed, -0.1f, 0.1f);
+        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_257, temp_f27_252);
         sp20 = sp100 * 5.398241246e-315;
         sp40 = 1.0f;
         sp28 = sp108 * 10.0f;
@@ -187,7 +204,7 @@ void Torch::Update() {
         sp178 = (f64) sp28;
         spD0 = (f64) sp40;
         spD8 = (f64) sp48;
-        sp8 = MKRand_Float(&gViewSeed, 0.2f, 1.0f);
+        sp8 = MKRand_Float((int *) &gViewSeed, 0.2f, 1.0f);
         sp58 = 0.0f;
         sp50 = 0.0f;
         sp54 = 0.0f;

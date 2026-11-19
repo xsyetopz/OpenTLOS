@@ -341,7 +341,7 @@ inline Cynder::~Cynder() {
         this->unkEC8.Deinit();
     }
     if ((&this->unkD6C != NULL) && (&this->unkD6C != NULL)) {
-        KDSound_Stop(&this->unkD6C);
+        KDSound_Stop((int *) &this->unkD6C);
     }
 }
 #endif

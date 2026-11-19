@@ -1,45 +1,89 @@
 #include "spyro/source/TrainChaseSpyro.h"
 #include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKDynamicBone.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BaseBreathFX.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/ClusterBomb.h"
+#include "spyro/source/Coronas.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/Enemy.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplodeMsg.h"
+#include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FlameBreathBeamFX.h"
 #include "spyro/source/FlameBreathFX.h"
+#include "spyro/source/FlameBreathPS.h"
+#include "spyro/source/FuryFX.h"
+#include "spyro/source/FuryFXFire.h"
+#include "spyro/source/FuryFXFire2.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/GroundFire.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDCameraMessages.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightProp.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/SpyroEffects.h"
 #include "spyro/source/SpyroUtils.h"
 #include "spyro/source/SteamTrain.h"
 #include "spyro/source/SteamTrainCaboose.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "spyro/source/TrainController.h"
 #include "spyro/source/TrainTrack.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/PhrasePlayer.h"
-#include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
 M2C_UNK __destroy_arr(SpyroSoundPlayer *, SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16), M2C_UNK, M2C_UNK); /* extern */
@@ -778,7 +822,6 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void TrainChaseSpyro::EmitSparks(const MKVector3 &arg0) {
     f64 spC8;
     f64 spC0;
@@ -830,9 +873,9 @@ void TrainChaseSpyro::EmitSparks(const MKVector3 &arg0) {
     spC0 = temp_f0_1385;
     sp58 = (f32) spB8 * temp_f4_1369;
     spC8 = (f64) sp58;
-    temp_f27_1403 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-    temp_f28_1408 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-    sp40 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+    temp_f27_1403 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+    temp_f28_1408 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+    sp40 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
     sp44 = temp_f28_1408;
     sp48 = temp_f27_1403;
     sp80 = (f64) sp40;
@@ -847,9 +890,9 @@ void TrainChaseSpyro::EmitSparks(const MKVector3 &arg0) {
     spA0 = temp_f0_1433;
     sp28 = (f32) sp98 + (f32) spC8;
     spA8 = (f64) sp28;
-    sp8 = MKRand_Float(&gViewSeed, 5.0f, 8.0f);
-    temp_f31_1451 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
-    sp10 = MKRand_Float(&gViewSeed, 0.85f, 1.0f);
+    sp8 = MKRand_Float((int *) &gViewSeed, 5.0f, 8.0f);
+    temp_f31_1451 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
+    sp10 = MKRand_Float((int *) &gViewSeed, 0.85f, 1.0f);
     sp14 = temp_f31_1451;
     sp18 = 0.5f;
     sp1C = 1.0f;
@@ -857,7 +900,6 @@ void TrainChaseSpyro::EmitSparks(const MKVector3 &arg0) {
     sp78 = (f64) sp18;
     ((EmbersPS *) gb.unk74)->Emit(arg0, *((MKVector3 *) &spA0), sp8, *((MKVector4 *) &sp70), -1000.0f);
 }
-#endif
 
 void TrainChaseSpyro::Hurt(float arg0) {
     if (DealDamage(-arg0) != 0) {
@@ -1051,7 +1093,7 @@ void TrainChaseSpyro::RepositionLightProp() {
         spC8 = (temp_f5_1704 * sp198.unk48) - (temp_f4_1707 * temp_f6_1708);
         sp198.unk28 = (f64) spD0;
         sp198.unk20 = (f64) spC8;
-        temp_f1_1723 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f1_1723 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         spA8 = M2C_BITWISE(f64, sp198.unk40) * temp_f1_1723;
         spB0 = sp198.unk48 * (f32) temp_f1_1723;
         sp128 = spA8;
@@ -1061,7 +1103,7 @@ void TrainChaseSpyro::RepositionLightProp() {
         sp138 = temp_f0_1736;
         spA0 = (f32) sp130 * 0.5f;
         sp140 = (f64) spA0;
-        temp_f1_1748 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+        temp_f1_1748 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
         temp_f0_1751 = (f64) sp198.unk20 * temp_f1_1748;
         spB8 = temp_f0_1751;
         sp148 = temp_f0_1751;
@@ -2915,17 +2957,15 @@ void TrainChaseSpyro::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 TrainChaseSpyro::LoadLine(MKIniLine *arg0) {
     s32 var_r31_5405;
 
     var_r31_5405 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (s32 *) &this->unk1F8, 0) != 0) || (arg0->LoadInt("trainID", (s32 *) &this->unk1FC, 0) != 0) || (arg0->LoadInt("cabooseID", (s32 *) &this->unk200, 0) != 0) || (arg0->LoadInt("controllerID", (s32 *) &this->unk204, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (int *) &this->unk1F8, 0) != 0) || (arg0->LoadInt("trainID", (int *) &this->unk1FC, 0) != 0) || (arg0->LoadInt("cabooseID", (int *) &this->unk200, 0) != 0) || (arg0->LoadInt("controllerID", (int *) &this->unk204, 0) != 0)) {
         var_r31_5405 = 1;
     }
     return var_r31_5405;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void TrainChaseSpyro::Deinit() {
@@ -2939,9 +2979,9 @@ void TrainChaseSpyro::Deinit() {
     this->unkE4 &= ~0x80;
     this->unkE4 &= ~0x40;
     this->unkE4 &= ~0x20;
-    KDSound_Stop(&this->unkE8);
-    KDSound_Stop(&this->unk110);
-    KDSound_Stop(&this->unk138);
+    KDSound_Stop((int *) &this->unkE8);
+    KDSound_Stop((int *) &this->unk110);
+    KDSound_Stop((int *) &this->unk138);
     temp_r3_5489 = this->unk164;
     if (temp_r3_5489 != 0) {
         PhrasePlayer_StopEvent(temp_r3_5489);
@@ -2960,7 +3000,7 @@ void TrainChaseSpyro::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: pointer/array required
 void TrainChaseSpyro::Init() {
     s32 temp_r0_5569;
     s32 var_ctr_5567;

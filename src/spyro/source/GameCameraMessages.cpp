@@ -1,5 +1,11 @@
 #include "spyro/source/GameCameraMessages.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/Matrix.h"
 #include <m2c_macros.h>
 
 void AddCameraTrackedShakePropMessage::Init(MKProp *arg0, float arg1, float arg2, bool arg3, float arg4) {

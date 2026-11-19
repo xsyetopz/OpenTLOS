@@ -1,18 +1,25 @@
 #include "spyro/source/FlowerCritter.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -215,14 +222,14 @@ loop_26:
             } else {
                 M2C_FIELD(temp_r30_197, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_197, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_197, f32 *, 0x54));
                 if (M2C_FIELD(temp_r30_197, f32 *, 0x54) > 1.0f) {
-                    M2C_FIELD(temp_r30_197, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 2);
+                    M2C_FIELD(temp_r30_197, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 0, 2);
                     temp_r27_226 = M2C_FIELD(temp_r30_197, s32 *, 0x60);
                     M2C_FIELD(temp_r30_197, void **, 0x50) = (void *) *(checked_cast<FlowerCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_226 * 4) + 0x70));
                     M2C_FIELD(temp_r30_197, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_197, void **, 0x50), s16 *, 4) / 30.0f)));
                     M2C_FIELD(temp_r30_197, f32 *, 0x54) = 0.0f;
                 } else if (M2C_FIELD(temp_r30_197, f32 *, 0x64) <= 0.0f) {
                     M2C_FIELD(temp_r30_197, f32 *, 0x64) = 4.0f;
-                    M2C_FIELD(temp_r30_197, s32 *, 0x60) = MKRand_Int(&gViewSeed, 3, 5);
+                    M2C_FIELD(temp_r30_197, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 3, 5);
                     temp_r27_263 = M2C_FIELD(temp_r30_197, s32 *, 0x60);
                     M2C_FIELD(temp_r30_197, void **, 0x50) = (void *) *(checked_cast<FlowerCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_263 * 4) + 0x70));
                     spD0 = 0.0f;
@@ -341,8 +348,8 @@ loop_26:
             M2C_FIELD(temp_r30_197, f32 *, 0x68) = (f32) (3.1415927f * -((var_f1_486 * 0.25f) - 1.0f));
             if (M2C_FIELD(temp_r30_197, f32 *, 0x64) <= 0.0f) {
                 if ((u8) this->unk174 != 0) {
-                    M2C_FIELD(temp_r30_197, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
-                    M2C_FIELD(temp_r30_197, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 2);
+                    M2C_FIELD(temp_r30_197, f32 *, 0x64) = (f32) (5.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
+                    M2C_FIELD(temp_r30_197, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 0, 2);
                 } else {
                     sp40 = 0.0f;
                     sp38 = 0.0f;
@@ -361,7 +368,7 @@ loop_26:
                     M2C_FIELD(temp_r30_197, f64 *, 0x40) = M2C_BITWISE(f64, spE8);
                     M2C_FIELD(temp_r30_197, f64 *, 0x48) = (f64) spE8.unk8;
                     KDMath_BuildMatrixFromUp(temp_r30_197, *((MKVector3 *) &sp1E8), *(MKVector3 *) (temp_r30_197 + 0x40));
-                    M2C_FIELD(temp_r30_197, s32 *, 0x60) = MKRand_Int(&gViewSeed, 3, 5);
+                    M2C_FIELD(temp_r30_197, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 3, 5);
                     M2C_FIELD(temp_r30_197, f32 *, 0x64) = 4.0f;
                 }
                 temp_r27_573 = M2C_FIELD(temp_r30_197, s32 *, 0x60);
@@ -447,10 +454,10 @@ loop_13:
     if (var_r31_645 < (s32) this->unk90) {
         temp_r26_657 = ((u8 *) this->unk170) + var_r29_647;
         if ((u8) this->unk174 != 0) {
-            M2C_FIELD(temp_r26_657, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 2);
-            M2C_FIELD(temp_r26_657, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
+            M2C_FIELD(temp_r26_657, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 0, 2);
+            M2C_FIELD(temp_r26_657, f32 *, 0x64) = (f32) (5.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
         } else {
-            M2C_FIELD(temp_r26_657, s32 *, 0x60) = MKRand_Int(&gViewSeed, 3, 5);
+            M2C_FIELD(temp_r26_657, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 3, 5);
             M2C_FIELD(temp_r26_657, f32 *, 0x64) = 4.0f;
         }
         temp_r27_681 = M2C_FIELD(temp_r26_657, s32 *, 0x60);

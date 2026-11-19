@@ -1,10 +1,15 @@
 #include "spyro/source/MovementObject.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/CollisionObject.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;

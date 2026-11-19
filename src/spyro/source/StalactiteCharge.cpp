@@ -1,22 +1,55 @@
 #include "spyro/source/StalactiteCharge.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/CutsceneObject.h"
 #include "spyro/source/CutsceneProp.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/IceBossStalactite.h"
 #include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include <m2c_macros.h>
@@ -169,7 +202,7 @@ loop_25:
         sp90 = (f64) sp10;
         spD0.unk30 = (f64) sp10;
         spD0.unk30.unk8 = (f64) sp18;
-        temp_f1_314 = MKRand_Float(&gViewSeed, -temp_f2_303, temp_f2_303);
+        temp_f1_314 = MKRand_Float((int *) &gViewSeed, -temp_f2_303, temp_f2_303);
         sp50 = M2C_BITWISE(f64, spD0.unk30) * temp_f1_314;
         sp58 = (f32) (f64) sp18 * (f32) temp_f1_314;
         sp60 = sp50;
@@ -921,7 +954,6 @@ void StalactiteCharge::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 StalactiteCharge::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1U;
@@ -929,7 +961,7 @@ s32 StalactiteCharge::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadFloat("Width", &this->unkD0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("NumStalactites", &this->unkE0, 0) != 0) {
+    if (arg0->LoadInt("NumStalactites", (int *) &this->unkE0, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("DropSpeed", &this->unkD4, 0) != 0) {
@@ -950,9 +982,8 @@ s32 StalactiteCharge::LoadLine(MKIniLine *arg0) {
         this->unkEC->LoadLine(arg0);
         return 1U;
     }
-    return (u8) (arg0->LoadInt("CutscenePlayerID", (s32 *) &this->unkF0, 0) != 0);
+    return (u8) (arg0->LoadInt("CutscenePlayerID", (int *) &this->unkF0, 0) != 0);
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void StalactiteCharge::Deinit() {
@@ -975,7 +1006,7 @@ void StalactiteCharge::Deinit() {
         operator delete(this->unkEC);
     }
     if ((s32) M2C_FIELD(checked_cast<StalactiteChargeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60) != 0) {
-        KDSound_Stop(&this->unk144);
+        KDSound_Stop((int *) &this->unk144);
     }
     MKProp::Deinit();
 }
@@ -1032,17 +1063,15 @@ StalactiteCharge::StalactiteCharge() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[14], long *)' does
 s32 StalactiteChargeDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1977;
 
     var_r31_1977 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndRumbleLoop", &this->unk60) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndRumbleLoop", (int *) &this->unk60) != 0)) {
         var_r31_1977 = 1;
     }
     return var_r31_1977;
 }
-#endif
 
 void StalactiteChargeDescriptor::Init() {
     MKPropDescriptor::Init();

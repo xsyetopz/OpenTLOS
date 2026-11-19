@@ -1,18 +1,58 @@
 #include "spyro/source/FuryFXFire2.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/ClusterBomb.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/Explosion4.h"
+#include "spyro/source/FlyingBurningBits.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GroundFire.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/NodeLookAt.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -392,7 +432,7 @@ void FuryFXFire2::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, double, float)' does not match
 void FuryFXFire2::Update() {
     MKCollisionResult sp760;
     Matrix sp720;
@@ -944,7 +984,7 @@ void FuryFXFire2::Update() {
                     sp390 = temp_f0_1435;
                     sp148 = (f32) sp388 + (f32) sp358;
                     sp398 = (f64) sp148;
-                    temp_f1_1448 = MKRand_Float(&gViewSeed, 3000.0f, 3500.0f);
+                    temp_f1_1448 = MKRand_Float((int *) &gViewSeed, 3000.0f, 3500.0f);
                     temp_f0_1451 = sp670 * temp_f1_1448;
                     sp130 = temp_f0_1451;
                     sp340 = temp_f0_1451;
@@ -1003,7 +1043,7 @@ void FuryFXFire2::Update() {
                         sp660 = M2C_BITWISE(f64, sp760);
                         sp668 = (f64) sp760.unk8;
                     }
-                    this->unk164.Emit(*((MKVector3 *) &sp660), MKRand_Float(&gViewSeed, 3.0f, 5.0f), 0U);
+                    this->unk164.Emit(*((MKVector3 *) &sp660), MKRand_Float((int *) &gViewSeed, 3.0f, 5.0f), 0U);
                     var_r28_1474 += 1;
                 } while (var_r28_1474 < 0xA);
                 return;

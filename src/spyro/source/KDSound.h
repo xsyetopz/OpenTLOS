@@ -261,18 +261,16 @@ extern u8 soundPlayFollowArray;
 extern u8 bSplitScreen;
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 inline KDSoundFader::~KDSoundFader() {
     s32 temp_cr0_eq_4916;
 
     temp_cr0_eq_4916 = this == NULL;
     if (temp_cr0_eq_4916 == 0) {
         if (temp_cr0_eq_4916 == 0) {
-            KDSound_Stop(&this->unk0);
+            KDSound_Stop((int *) &this->unk0);
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline KDSoundFader::KDSoundFader() {

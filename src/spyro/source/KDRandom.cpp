@@ -4,7 +4,6 @@
 
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void KDRand_Box(float arg0) {
     f32 sp10;
     f32 spC;
@@ -16,15 +15,14 @@ void KDRand_Box(float arg0) {
 
     temp_r31_18 = M2C_ERROR(/* Read from unset register $r3 */);
     temp_f29_20 = -arg0;
-    temp_f30_24 = MKRand_Float(&gViewSeed, temp_f29_20, arg0);
-    temp_f31_29 = MKRand_Float(&gViewSeed, temp_f29_20, arg0);
-    sp8 = MKRand_Float(&gViewSeed, temp_f29_20, arg0);
+    temp_f30_24 = MKRand_Float((int *) &gViewSeed, temp_f29_20, arg0);
+    temp_f31_29 = MKRand_Float((int *) &gViewSeed, temp_f29_20, arg0);
+    sp8 = MKRand_Float((int *) &gViewSeed, temp_f29_20, arg0);
     spC = temp_f31_29;
     sp10 = temp_f30_24;
     M2C_FIELD(temp_r31_18, f64 *, 0) = (f64) sp8;
     M2C_FIELD(temp_r31_18, f64 *, 8) = (f64) sp10;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 void KDRand_Vector(const MKVector3 &arg0, const MKVector3 &arg1) {
@@ -34,15 +32,14 @@ void KDRand_Vector(const MKVector3 &arg0, const MKVector3 &arg1) {
     void *temp_r31_61;
 
     temp_r31_61 = M2C_ERROR(/* Read from unset register $r5 */);
-    sp8 = MKRand_Float(&gViewSeed, arg1.unk0, *M2C_ERROR(/* Read from unset register $r5 */));
-    spC = MKRand_Float(&gViewSeed, arg1.unk4, M2C_FIELD(temp_r31_61, f32 *, 4));
-    sp10 = MKRand_Float(&gViewSeed, arg1.unk8, M2C_FIELD(temp_r31_61, f32 *, 8));
+    sp8 = MKRand_Float((int *) &gViewSeed, arg1.unk0, *M2C_ERROR(/* Read from unset register $r5 */));
+    spC = MKRand_Float((int *) &gViewSeed, arg1.unk4, M2C_FIELD(temp_r31_61, f32 *, 4));
+    sp10 = MKRand_Float((int *) &gViewSeed, arg1.unk8, M2C_FIELD(temp_r31_61, f32 *, 8));
     M2C_FIELD(&arg0, f64 *, 0) = (f64) sp8;
     M2C_FIELD(&arg0, f64 *, 8) = (f64) sp10;
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void KDRand_UnitVectorXZ() {
     f32 sp10;
     f32 spC;
@@ -50,13 +47,12 @@ void KDRand_UnitVectorXZ() {
     void *temp_r31_95;
 
     temp_r31_95 = M2C_ERROR(/* Read from unset register $r3 */);
-    _table_sincosf(MKRand_Float(&gViewSeed, 0.0f, 6.2831855f), sp8, sp10);
+    _table_sincosf(MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f), sp8, sp10);
     spC = 0.0f;
     sp10 = -sp10;
     M2C_FIELD(temp_r31_95, f64 *, 0) = (f64) sp8;
     M2C_FIELD(temp_r31_95, f64 *, 8) = (f64) sp10;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp18'
 void KDRand_UnitVector() {
@@ -79,7 +75,7 @@ void KDRand_UnitVector() {
     KDRand_UnitVectorXZ();
     sp20 = sp10;
     sp28 = sp18;
-    temp_f1_136 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+    temp_f1_136 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
     temp_f5_139 = -((temp_f1_136 * temp_f1_136) - 1.0f);
     if (temp_f5_139 > 0.0f) {
         temp_f2_142 = __frsqrte(temp_f5_139);
@@ -125,7 +121,6 @@ void KDRand_UnitVector() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 f32 KDRand_Gaussian() {
     f32 temp_f31_255;
     f32 var_f30_257;
@@ -137,13 +132,12 @@ f32 KDRand_Gaussian() {
     temp_f3_245 = 0.5 * temp_f3_238 * -((7.5 * (temp_f3_238 * temp_f3_238)) - 3.0);
     temp_f3_249 = 0.5 * temp_f3_245 * -((7.5 * (temp_f3_245 * temp_f3_245)) - 3.0);
     temp_f31_255 = (f32) (7.5 * (0.5 * temp_f3_249 * -((7.5 * (temp_f3_249 * temp_f3_249)) - 3.0)));
-    var_f30_257 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-    if (MKRand_Float(&gViewSeed, 0.0f, 1.0f) > (1.0f + ((var_f30_257 * (2.0f * var_f30_257 * var_f30_257)) - (3.0f * var_f30_257 * var_f30_257)))) {
+    var_f30_257 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+    if (MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f) > (1.0f + ((var_f30_257 * (2.0f * var_f30_257 * var_f30_257)) - (3.0f * var_f30_257 * var_f30_257)))) {
         var_f30_257 -= 1.0f;
     }
     return var_f30_257 * temp_f31_255;
 }
-#endif
 
 void KDRand_SetSeed(int arg0) {
     gViewSeed = arg0;

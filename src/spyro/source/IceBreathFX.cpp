@@ -1,34 +1,63 @@
 #include "spyro/source/IceBreathFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
 #include "spyro/source/BaseBreathFX.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FuryFX.h"
 #include "spyro/source/FuryFXIce.h"
 #include "spyro/source/FuryFXIce2.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/IceBreathSnowFlakes.h"
 #include "spyro/source/IceExplosion.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/LiquidFX.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/TargetManager.h"
+#include "spyro/source/WindFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(Matrix **);                            /* extern */
@@ -554,15 +583,15 @@ u8 IceBreathFX::ShootIceShard(const MKVector3 &arg0, const MKVector3 &arg1, cons
         M2C_FIELD(temp_r3_417, f32 *, 0x20) = 0.0f;
         sp420 = (f64) spD0;
         M2C_FIELD(temp_r3_417, f32 *, 0x28) = 0.0f;
-        temp_f1_459 = MKRand_Float(&gViewSeed, 500.0f, 2000.0f);
+        temp_f1_459 = MKRand_Float((int *) &gViewSeed, 500.0f, 2000.0f);
         spB8 = M2C_FIELD(&arg1, f64 *, 0) * temp_f1_459;
         M2C_FIELD(temp_r28_422, f64 *, 0) = spB8;
         spC0 = arg1.unk8 * (f32) temp_f1_459;
         sp3C8 = spB8;
         sp3D0 = (f64) spC0;
         M2C_FIELD(temp_r28_422, f64 *, 8) = (f64) spC0;
-        M2C_FIELD(temp_r28_422, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.125f, 0.5f);
-        M2C_FIELD(temp_r28_422, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        M2C_FIELD(temp_r28_422, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f);
+        M2C_FIELD(temp_r28_422, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r28_422, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(&gb, void **, 0x2A0), f32 *, 0xF4);
     }
     if (this->unkAC > 0.0f) {
@@ -676,9 +705,9 @@ u8 IceBreathFX::ShootIceShard(const MKVector3 &arg0, const MKVector3 &arg1, cons
         this->unk178->Trigger(*((MKVector3 *) &sp488), this->unk1A0);
         var_r27_753 = 0;
         do {
-            temp_f22_759 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f23_764 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp178 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f22_759 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f23_764 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp178 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp17C = temp_f23_764;
             sp180 = temp_f22_759;
             sp378 = (f64) sp178;
@@ -693,7 +722,7 @@ u8 IceBreathFX::ShootIceShard(const MKVector3 &arg0, const MKVector3 &arg1, cons
             sp398 = temp_f0_790;
             sp160 = (f32) sp390 * 800.0f;
             sp3A0 = (f64) sp160;
-            temp_f1_802 = MKRand_Float(&gViewSeed, 6.0f, 10.0f);
+            temp_f1_802 = MKRand_Float((int *) &gViewSeed, 6.0f, 10.0f);
             sp148 = 0.5f;
             sp14C = 0.5f;
             sp150 = 1.0f;
@@ -896,9 +925,9 @@ loop_71:
         M2C_FIELD((this->unkA8 + var_r22_833), s8 *, 0x20) = 1;
         sp298.operator*(350.0f);
         sp2A8.operator*(this->unk1A0);
-        temp_f22_1280 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f23_1285 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f23_1285, temp_f22_1280);
+        temp_f22_1280 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f23_1285 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f23_1285, temp_f22_1280);
         sp2C8.operator*(20.0f);
         sp2D8.operator*(this->unk1A0);
         temp_f0_1304 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp2D8);
@@ -1049,9 +1078,9 @@ loop_71:
         }
         var_r25_1624 = 0;
         do {
-            temp_f29_1630 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f26_1635 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp118 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f29_1630 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f26_1635 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp118 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp11C = temp_f26_1635;
             sp120 = temp_f29_1630;
             sp1D8 = (f64) sp118;
@@ -1067,14 +1096,14 @@ loop_71:
             sp428 = temp_f0_1662;
             sp100 = M2C_FIELD(temp_r4_1656, f32 *, 8) + (f32) sp1F0;
             sp430 = (f64) sp100;
-            temp_f1_1675 = MKRand_Float(&gViewSeed, 0.1f, 0.4f);
+            temp_f1_1675 = MKRand_Float((int *) &gViewSeed, 0.1f, 0.4f);
             temp_r4_1679 = this->unkA8 + (var_r22_833 + 0x10);
             temp_f0_1681 = M2C_FIELD(temp_r4_1679, f64 *, 0) * temp_f1_1675;
             spE8 = temp_f0_1681;
             sp1C8 = temp_f0_1681;
             spF0 = M2C_FIELD(temp_r4_1679, f32 *, 8) * (f32) temp_f1_1675;
             sp1D0 = (f64) spF0;
-            temp_f1_1693 = MKRand_Float(&gViewSeed, 3.0f, 3.5f);
+            temp_f1_1693 = MKRand_Float((int *) &gViewSeed, 3.0f, 3.5f);
             spD8 = 0.5f;
             spDC = 0.5f;
             sp1C = temp_f1_1693;
@@ -2014,8 +2043,8 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp8 = 0;
             spC = 0;
             this->unk184->Emit(lit_887, arg1, *((MKVector3 *) &sp418), *((MKVector3 *) &sp408), 1.5f, 0.0f, 0U, &this->unk110, M2C_ERROR(/* Unable to find stack arg 0x0 in block */), M2C_ERROR(/* Unable to find stack arg 0x4 in block */));
-            temp_f28_3324 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), 0.0f, temp_f28_3324);
+            temp_f28_3324 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), 0.0f, temp_f28_3324);
             MKVector(0.0f, 0.5f, 0.0f);
             temp_f0_3340 = M2C_FIELD(&arg2, f64 *, 0) + sp3C8;
             sp58 = temp_f0_3340;
@@ -2063,7 +2092,7 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             M2C_FIELD(temp_r3_3417, f32 *, 0x20) = 0.0f;
             sp390 = (f64) spE0;
             M2C_FIELD(temp_r3_3417, f32 *, 0x28) = 0.0f;
-            temp_f31_3460 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+            temp_f31_3460 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
             MKVector(0.0f, 0.5f, 0.0f);
             temp_f0_3468 = M2C_FIELD(&arg2, f64 *, 0) + sp2E8;
             sp38 = temp_f0_3468;
@@ -2083,8 +2112,8 @@ u8 IceBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &ar
             sp338 = spC8;
             sp340 = (f64) spD0;
             M2C_FIELD(temp_r24_3422, f64 *, 8) = (f64) spD0;
-            M2C_FIELD(temp_r24_3422, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.125f, 0.5f);
-            M2C_FIELD(temp_r24_3422, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+            M2C_FIELD(temp_r24_3422, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f);
+            M2C_FIELD(temp_r24_3422, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
             M2C_FIELD(temp_r24_3422, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(&gb, void **, 0x2A0), f32 *, 0xF4);
         }
         this->unk19C = (u8) var_r25_1853;
@@ -2548,9 +2577,9 @@ void IceBreathFX::Update() {
                 sp270.unk38 = M2C_FIELD(temp_r3_4100, f32 *, 8);
                 sp270.unk3C = 1.0f;
                 MKModel_SetWorldMatrix(this->unkB4, sp270);
-                temp_f24_4114 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f23_4119 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                spF0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f24_4114 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f23_4119 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                spF0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 spF4 = temp_f23_4119;
                 spF8 = temp_f24_4114;
                 sp1F0 = (f64) spF0;
@@ -2560,7 +2589,7 @@ void IceBreathFX::Update() {
                 sp200 = temp_f0_4133;
                 spE8 = (f32) sp1F8 * 30.000002f;
                 sp208 = (f64) spE8;
-                temp_f1_4145 = MKRand_Float(&gViewSeed, 5.0f, 8.0f);
+                temp_f1_4145 = MKRand_Float((int *) &gViewSeed, 5.0f, 8.0f);
                 spD0 = 0.5f;
                 spD4 = 0.5f;
                 spD8 = 1.0f;
@@ -2608,9 +2637,9 @@ void IceBreathFX::Update() {
                 sp250 = (f64) sp2B0;
                 sp258 = (f64) sp2B8;
                 do {
-                    temp_f23_4246 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f24_4251 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    spC0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f23_4246 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f24_4251 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    spC0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     spC4 = temp_f24_4251;
                     spC8 = temp_f23_4246;
                     sp1B0 = (f64) spC0;
@@ -2625,7 +2654,7 @@ void IceBreathFX::Update() {
                     sp1D0 = temp_f0_4277;
                     spA8 = (f32) sp1C8 * 800.0f;
                     sp1D8 = (f64) spA8;
-                    temp_f1_4289 = MKRand_Float(&gViewSeed, 6.0f, 10.0f);
+                    temp_f1_4289 = MKRand_Float((int *) &gViewSeed, 6.0f, 10.0f);
                     sp90 = 0.5f;
                     sp94 = 0.5f;
                     sp98 = 1.0f;

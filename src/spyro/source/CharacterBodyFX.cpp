@@ -1,10 +1,17 @@
 #include "spyro/source/CharacterBodyFX.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -265,7 +272,7 @@ void CharacterBodyFXManager::Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
+#if 0 // DRAFT: illegal operand
 void *CharacterBodyFX::GetRandomNode(CBFXNode *arg0) {
     CharacterBodyFXData *temp_r3_432;
     s32 temp_r31_453;
@@ -277,7 +284,7 @@ void *CharacterBodyFX::GetRandomNode(CBFXNode *arg0) {
     if (temp_r3_432 == NULL) {
         return NULL;
     }
-    temp_r3_442 = MKRand_Int(&gViewSeed, 0, temp_r3_432->unk4 - 1);
+    temp_r3_442 = MKRand_Int((int *) &gViewSeed, 0, temp_r3_432->unk4 - 1);
     temp_r5_444 = this->unk4;
     var_r4_445 = temp_r3_442;
     if (((u32) (temp_r5_444 + (temp_r3_442 * 0x70)) == arg0) && (temp_r3_442 > 0)) {

@@ -1,5 +1,15 @@
 #include "common/Source/FileSys.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/File.h"
 #include "common/Source/MKSystem.h"
@@ -36,7 +46,7 @@ u32 MKArchive_GetOffset(const char *arg0) {
     RkvFileEntry *temp_r3_15;
     u8 var_r6_17;
 
-    temp_r3_15 = FindBestEntry(arg0, &sp8);
+    temp_r3_15 = FindBestEntry(arg0, (int *) &sp8);
     var_r6_17 = 0;
     if ((temp_r3_15 != NULL) && (sp8 == (s32) (nmbrRkvs - 1))) {
         var_r6_17 = 1;
@@ -83,7 +93,7 @@ s32 MKArchive_Open(const char *arg0, int *arg1, bool arg2) {
     s32 var_r3_99;
 
     var_r30_87 = -1;
-    temp_r3_88 = FindBestEntry(arg0, &sp8);
+    temp_r3_88 = FindBestEntry(arg0, (int *) &sp8);
     if (temp_r3_88 != NULL) {
         MKArchive_SetOrder(temp_r3_88);
         if (arg2 != 0) {
@@ -278,7 +288,7 @@ s8 *MKArchive_Load(const char *arg0, int *arg1, void *arg2, int arg3) {
     var_r28_396 = arg2;
     var_r29_397 = arg3;
     var_r31_399 = -1;
-    temp_r3_400 = FindBestEntry(arg0, &spC);
+    temp_r3_400 = FindBestEntry(arg0, (int *) &spC);
     if (temp_r3_400 != NULL) {
         var_r31_399 = rkv[spC].unk60;
     }
@@ -542,12 +552,12 @@ block_34:
         break;
     case 3:
         if (File_IsBusy(this->unk60) == 0) {
-            FlipEndian(&asyncReg + 4);
-            FlipEndian(&asyncReg + 8);
+            FlipEndian((unsigned int *) &asyncReg + 4);
+            FlipEndian((unsigned int *) &asyncReg + 8);
             FlipEndian(sp8);
-            FlipEndian(&asyncReg + 0x10);
-            FlipEndian(&asyncReg + 0x14);
-            FlipEndian(&asyncReg + 0x18);
+            FlipEndian((unsigned int *) &asyncReg + 0x10);
+            FlipEndian((unsigned int *) &asyncReg + 0x14);
+            FlipEndian((unsigned int *) &asyncReg + 0x18);
             FlipEndian(&asyncReg + 0x1C);
             FlipEndian(&asyncReg + 0x1E);
             FlipEndian(&asyncReg + 0x20);
@@ -607,10 +617,10 @@ block_34:
             var_r30_1067 = 0;
 loop_27:
             if (var_r16_1065 < (s32) this->unk64) {
-                FlipEndian((s32 *) &M2C_FIELD(&asyncReg, s8 **, 0x8C)[var_r30_1067]);
-                FlipEndian(&M2C_FIELD(&M2C_FIELD(&asyncReg, s8 **, 0x8C)[var_r30_1067], s32 *, 8));
-                FlipEndian(&M2C_FIELD(&M2C_FIELD(&asyncReg, s8 **, 0x8C)[var_r30_1067], u32 *, 0xC));
-                FlipEndian(&M2C_FIELD(&M2C_FIELD(&asyncReg, s8 **, 0x8C)[var_r30_1067], u32 *, 0x10));
+                FlipEndian((int *) &M2C_FIELD(&asyncReg, s8 **, 0x8C)[var_r30_1067]);
+                FlipEndian((int *) &M2C_FIELD(&M2C_FIELD(&asyncReg, s8 **, 0x8C)[var_r30_1067], s32 *, 8));
+                FlipEndian((unsigned int *) &M2C_FIELD(&M2C_FIELD(&asyncReg, s8 **, 0x8C)[var_r30_1067], u32 *, 0xC));
+                FlipEndian((unsigned int *) &M2C_FIELD(&M2C_FIELD(&asyncReg, s8 **, 0x8C)[var_r30_1067], u32 *, 0x10));
                 temp_r5_1088 = var_r31_1066 + 4;
                 temp_r6_1090 = this->unk68;
                 temp_r4_1092 = var_r30_1067 + 0xC;
@@ -731,7 +741,7 @@ s32 MKArchive_RegisterArchive(const char *arg0, bool arg1) {
     RkvFileEntry *temp_r3_1331;
     s32 temp_r3_1365;
 
-    temp_r3_1331 = FindBestEntry(arg0, &sp8);
+    temp_r3_1331 = FindBestEntry(arg0, (int *) &sp8);
     if (temp_r3_1331 != NULL) {
         MKArchive_SetOrder(temp_r3_1331);
         ((RkvTOC *) &rkv[nmbrRkvs])->Init(&rkv[sp8].unk0, arg1, temp_r3_1331->unk8, (s32) temp_r3_1331->unk4, arg0);

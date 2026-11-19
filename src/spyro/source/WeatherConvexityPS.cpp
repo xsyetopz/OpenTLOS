@@ -1,8 +1,14 @@
 #include "spyro/source/WeatherConvexityPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -76,7 +82,7 @@ loop_12:
             M2C_FIELD(temp_r30_77, f32 *, 8) = (f32) (M2C_FIELD(temp_r30_77, f32 *, 8) + (f32) sp78);
             temp_f29_137 = gUpdateTimeDelta;
             temp_f25_140 = 3.0f * (6.2831855f * (temp_f28_81 / this->unk12C));
-            temp_f26_143 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+            temp_f26_143 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
             temp_f27_147 = _table_sinf((0.25f * temp_f25_140) + 1.5707964f);
             MKVector(_table_sinf(temp_f25_140), 0.0f, temp_f27_147);
             sp50.operator*(100.0f * temp_f26_143);
@@ -138,7 +144,7 @@ void WeatherConvexityPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, cons
         M2C_FIELD(temp_r31_295, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r31_295, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r31_295, f32 *, 0x18) = (f32) &arg2;
-        M2C_FIELD(temp_r31_295, f32 *, 0x1C) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        M2C_FIELD(temp_r31_295, f32 *, 0x1C) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r31_295, s32 *, 0x14) = 0;
     }
 }

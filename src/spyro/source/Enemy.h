@@ -362,7 +362,7 @@ inline Enemy::~Enemy() {
     if (this != NULL) {
         this->vtable6B8 = &__vt + 0x84;
         if ((&this->unk9A8 != NULL) && (&this->unk9A8 != NULL)) {
-            KDSound_Stop(&this->unk9A8);
+            KDSound_Stop((int *) &this->unk9A8);
         }
         if (this != NULL) {
             if (&this->unk670 != NULL) {

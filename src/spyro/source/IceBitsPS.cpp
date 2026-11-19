@@ -1,7 +1,13 @@
 #include "spyro/source/IceBitsPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -88,7 +94,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
 void IceBitsPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r30_214;
     void *temp_r3_211;
@@ -99,12 +105,12 @@ void IceBitsPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &
         M2C_FIELD(temp_r3_211, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
         M2C_FIELD(temp_r3_211, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_211, f32 *, 0x20) = 0.0f;
-        M2C_FIELD(temp_r3_211, f32 *, 0x24) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r3_211, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         M2C_FIELD(temp_r30_214, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r30_214, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r30_214, f32 *, 0x1C) = (f32) &arg2;
         M2C_FIELD(temp_r30_214, f32 *, 0x20) = 1.0f;
-        M2C_FIELD(temp_r30_214, f32 *, 0x18) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r30_214, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
     }
 }
 #endif

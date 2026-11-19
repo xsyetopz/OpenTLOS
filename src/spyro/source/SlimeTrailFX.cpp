@@ -1,10 +1,18 @@
 #include "spyro/source/SlimeTrailFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -507,7 +515,7 @@ void SlimeTrailFX::Draw() {
             sp1D0 = M2C_BITWISE(f64, sp190.unk10);
             sp1D8 = sp1A8;
             temp_f25_708 = 1.0f - temp_f24_685;
-            temp_f26_709 = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+            temp_f26_709 = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
             Normalise(sp150);
             temp_f2_732 = M2C_BITWISE(f32, sp150);
             sp18 = (temp_f2_732 * (*(f32 *) ((u8 *) &sp1D0 + 0x4))) - (sp150.unk4 * (f32) sp1D0);

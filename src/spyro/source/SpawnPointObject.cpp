@@ -1,8 +1,15 @@
 #include "spyro/source/SpawnPointObject.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/Tools.h"
@@ -68,12 +75,12 @@ s32 SpawnPointObject::LoadLine(MKIniLine *arg0) {
     if (((temp_r3_108 != NULL) && (M2C_FIELD(*temp_r3_108, u8 (**)(), 0x14)() != 0)) || (arg0->LoadInt("spawnerID", (s32 *) this, 0) != 0)) {
         return 1;
     }
-    if (arg0->LoadInt("attachPropID", &this->unk10, 0) != 0) {
+    if (arg0->LoadInt("attachPropID", (int *) &this->unk10, 0) != 0) {
         this->unk50 = 1;
         return 1;
     }
     sp8 = 0;
-    if (arg0->LoadInt("attachIndex", &sp8, 0) != 0) {
+    if (arg0->LoadInt("attachIndex", (int *) &sp8, 0) != 0) {
         this->unk14 = 0xFFFF;
         this->unk18 = sp8;
         return 1;

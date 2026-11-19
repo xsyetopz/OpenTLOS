@@ -1,63 +1,127 @@
 #include "spyro/source/Level.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKChunkSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFFTWater.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKLevelChunk.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKOcean.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKStringCache.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
 #include "spyro/source/AshesPS.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/BoundingRegion.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/CharacterGraph.h"
 #include "spyro/source/ChunkData.h"
 #include "spyro/source/Collectable.h"
 #include "spyro/source/Coronas.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/CustomMaterialUpdater.h"
+#include "spyro/source/CutsceneObject.h"
 #include "spyro/source/CutsceneSystem.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/DynamiteExplosion.h"
 #include "spyro/source/EarthBreathWhirlWinds.h"
 #include "spyro/source/ElectricSparks.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/EnemyDeathFX.h"
 #include "spyro/source/EventCamera.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/Explosion4.h"
 #include "spyro/source/ExplosionWarpFX.h"
 #include "spyro/source/FallingLeaves.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FlyingBurningBits.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/FootStepFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameProp.h"
 #include "spyro/source/GameStateMachine.h"
+#include "spyro/source/GameVideo.h"
 #include "spyro/source/GemMagicFX.h"
 #include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeatDistortPS.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
 #include "spyro/source/LavaBubbleFX.h"
 #include "spyro/source/LensFlare.h"
 #include "spyro/source/LightManager.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/Points.h"
+#include "spyro/source/PolyRegion.h"
 #include "spyro/source/PropGroupVolume.h"
 #include "spyro/source/PuddleSplash.h"
 #include "spyro/source/ScreenWobbleFX.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/ShotgunWarpFX.h"
 #include "spyro/source/SlimeTrailFX.h"
 #include "spyro/source/SparksPS.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/TimeDeltaModifier.h"
+#include "spyro/source/Tools.h"
+#include "spyro/source/TriggerObject.h"
 #include "spyro/source/TriggerProp.h"
 #include "spyro/source/UIStringTable.h"
 #include "spyro/source/WaterDripPS.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKGrass.h"
 #include "common/Source/MKMat_MK2_Standard.h"
 #include "common/Source/MKRumble.h"
@@ -69,20 +133,16 @@
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKModel_GC.h"
 #include "common/gc/MKView_GC.h"
-#include "common/gc/System_GC.h"
 #include "spyro/source/Autosave.h"
 #include "spyro/source/DataMap.h"
 #include "spyro/source/EnemySpawnPool.h"
 #include "spyro/source/FrontEnd.h"
 #include "spyro/source/GameConsole.h"
 #include "spyro/source/Hud.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Music.h"
 #include "spyro/source/Names.h"
 #include "spyro/source/PauseMenu.h"
 #include "spyro/source/PhrasePlayer.h"
-#include "spyro/source/Shadow.h"
-#include "spyro/source/Tools.h"
 #include "spyro/source/UIObject.h"
 #include <m2c_macros.h>
 
@@ -201,7 +261,6 @@ void ChunkProp::Init() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK), void **, 0xC), void **, 4), ChunkProp **, 0x1C) = this;
 }
 
-#if 0 // DRAFT: function call 'MKModel_RefPointExists(MKModel *, const char[1], long *)'
 void Level::EnvDomeChanged() {
     s32 sp8;
     MKModel *temp_r30_253;
@@ -216,7 +275,7 @@ void Level::EnvDomeChanged() {
     temp_cr0_eq_253 = temp_r30_253 == NULL;
     sp8 = -1;
     var_r31_255 = 0;
-    if ((temp_cr0_eq_253 == 0) && (MKModel_RefPointExists(temp_r3_251, "", &sp8) != 0)) {
+    if ((temp_cr0_eq_253 == 0) && (MKModel_RefPointExists(temp_r3_251, "", (int *) &sp8) != 0)) {
         var_r31_255 = 1;
     }
     temp_r31_268 = var_r31_255 != 0;
@@ -228,7 +287,6 @@ void Level::EnvDomeChanged() {
         M2C_FIELD(temp_r3_276, u8 *, 0x98) = temp_r31_268;
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void *Level::GetStartLevelInfo() {
@@ -2352,7 +2410,7 @@ s32 ChunkInfo::LoadLine(MKIniLine *arg0) {
             var_f1_4388 = 1.0f;
         }
         this->unk4C = var_f1_4388;
-        return DataMap_LoadLine(arg0, "", &pChunkPropQueue + 0x98, &this->unk48);
+        return DataMap_LoadLine(arg0, "", &pChunkPropQueue + 0x98, (unsigned int *) &this->unk48);
     }
     if (arg0->IsField("") != 0) {
         temp_r3_4412 = arg0->unkC->GetSubLine(arg0);
@@ -2387,7 +2445,7 @@ loop_14:
         }
     }
     var_r31_4478 = 0;
-    if ((arg0->LoadString("", &this->unk38, 0) != 0) || (arg0->LoadString("", &this->unk3C, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unk36, 0) != 0) || (arg0->LoadInt("", &this->unk20, 0) != 0) || (arg0->LoadFloat("", &this->unk50, 0) != 0) || (arg0->LoadFloat("", &this->unk54, 0) != 0) || (arg0->LoadFloat("", &this->unk58, 0) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0xD0, &this->unk28) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0x108, &this->unk2C) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0x130, &this->unk30) != 0)) {
+    if ((arg0->LoadString("", &this->unk38, 0) != 0) || (arg0->LoadString("", &this->unk3C, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unk36, 0) != 0) || (arg0->LoadInt("", (int *) &this->unk20, 0) != 0) || (arg0->LoadFloat("", &this->unk50, 0) != 0) || (arg0->LoadFloat("", &this->unk54, 0) != 0) || (arg0->LoadFloat("", &this->unk58, 0) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0xD0, (unsigned int *) &this->unk28) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0x108, (unsigned int *) &this->unk2C) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0x130, (unsigned int *) &this->unk30) != 0)) {
         var_r31_4478 = 1;
     }
     return var_r31_4478;
@@ -2520,7 +2578,7 @@ s32 LevelInfo::LoadLine(MKIniLine *arg0) {
     u8 temp_r3_5007;
     void *temp_r27_5105;
 
-    if ((arg0->LoadString("", &this->unkC, 0) != 0) || (arg0->LoadInt("", &this->unk10, 0) != 0) || (arg0->LoadString("", &this->unk8, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unk18, 0) != 0) || (arg0->LoadBool("", this + 0x19, 0) != 0) || (arg0->LoadBool("", this + 0x1A, 0) != 0) || (arg0->LoadBool("", this + 0x1B, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unk1C, 0) != 0) || (arg0->LoadString("", &this->unk14, 0) != 0) || (arg0->LoadVector4("", &this->unkC0, 0) != 0) || (arg0->LoadVector3("", &this->unkD0, 0) != 0) || (arg0->LoadFloat("", &this->unkE0, 0) != 0) || (arg0->LoadFloat("", &this->unk24, 0) != 0) || (arg0->LoadVector4("", &this->unk30, 0) != 0) || (arg0->LoadInt("", &this->unk28, 0) != 0) || (arg0->LoadFloat("", &this->unk108, 0) != 0) || (arg0->LoadFloat("", &this->unk10C, 0) != 0)) {
+    if ((arg0->LoadString("", &this->unkC, 0) != 0) || (arg0->LoadInt("", (int *) &this->unk10, 0) != 0) || (arg0->LoadString("", &this->unk8, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unk18, 0) != 0) || (arg0->LoadBool("", this + 0x19, 0) != 0) || (arg0->LoadBool("", this + 0x1A, 0) != 0) || (arg0->LoadBool("", this + 0x1B, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unk1C, 0) != 0) || (arg0->LoadString("", &this->unk14, 0) != 0) || (arg0->LoadVector4("", &this->unkC0, 0) != 0) || (arg0->LoadVector3("", &this->unkD0, 0) != 0) || (arg0->LoadFloat("", &this->unkE0, 0) != 0) || (arg0->LoadFloat("", &this->unk24, 0) != 0) || (arg0->LoadVector4("", &this->unk30, 0) != 0) || (arg0->LoadInt("", (int *) &this->unk28, 0) != 0) || (arg0->LoadFloat("", &this->unk108, 0) != 0) || (arg0->LoadFloat("", &this->unk10C, 0) != 0)) {
         return 1;
     }
     if (arg0->IsField("") != 0) {
@@ -2704,7 +2762,7 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 WorldInfo::LoadLine(MKIniLine *arg0) {
     f32 var_f1_5673;
     s32 temp_ret_5673;
@@ -2714,7 +2772,7 @@ s32 WorldInfo::LoadLine(MKIniLine *arg0) {
     s32 var_r29_5689;
     void *temp_r27_5695;
 
-    if ((arg0->LoadFloat("", &this->unk0, 0) != 0) || (arg0->LoadInt("", &this->unk4, 0) != 0) || (arg0->LoadFloat("", &this->unk8, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unkC, 0) != 0) || (arg0->LoadFloat("", &this->unk1C, 0) != 0) || (arg0->LoadFloat("", &this->unk10, 0) != 0) || (arg0->LoadInt("", &this->unk4C, 0) != 0) || (arg0->LoadInt("", &this->unk50, 0) != 0) || (arg0->LoadInt("", &this->unk54, 0) != 0) || (LoadSize(arg0, "", &this->unk58, NULL, M2C_FIELD(&gMKDefaults, s32 *, 0xD8)) != 0) || (LoadSize(arg0, "", &this->unk5C, NULL, 0) != 0) || (LoadSize(arg0, "", &this->unk60, NULL, 0) != 0) || (LoadSize(arg0, "", &this->unk64, NULL, 0) != 0) || (LoadSize(arg0, "", &this->unk68, NULL, 0) != 0) || (arg0->LoadFloat("", &this->unk6C, 0) != 0) || (arg0->LoadFloat("", &this->unk78, 0) != 0) || (arg0->LoadFloat("", &this->unk70, 0) != 0) || (LoadSize(arg0, "", &this->unk2C, &this->unk3C, 0) != 0) || (LoadSize(arg0, "", &this->unk30, &this->unk40, 0) != 0) || (LoadSize(arg0, "", &this->unk34, &this->unk44, 0) != 0) || (LoadSize(arg0, "", &this->unk38, &this->unk48, 0) != 0) || (arg0->LoadVector4("", &this->unkE0, 0) != 0) || (arg0->LoadFloat("", &this->unk20, 0) != 0) || (arg0->LoadFloat("", &this->unk24, 0) != 0) || (LoadSize(arg0, "", &this->unkF8, NULL, 0) != 0) || (LoadSize(arg0, "", &this->unkFC, NULL, 0) != 0) || (arg0->LoadFloat("", (f32 *) (&gb + 0x384), 0) != 0) || (arg0->LoadFloat("", (f32 *) (&gb + 0x388), 0) != 0) || (arg0->LoadFloat("", (f32 *) (&gb + 0x38C), 0) != 0)) {
+    if ((arg0->LoadFloat("", &this->unk0, 0) != 0) || (arg0->LoadInt("", (int *) &this->unk4, 0) != 0) || (arg0->LoadFloat("", &this->unk8, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unkC, 0) != 0) || (arg0->LoadFloat("", &this->unk1C, 0) != 0) || (arg0->LoadFloat("", &this->unk10, 0) != 0) || (arg0->LoadInt("", (int *) &this->unk4C, 0) != 0) || (arg0->LoadInt("", (int *) &this->unk50, 0) != 0) || (arg0->LoadInt("", (int *) &this->unk54, 0) != 0) || (LoadSize(arg0, "", (int *) &this->unk58, NULL, M2C_FIELD(&gMKDefaults, s32 *, 0xD8)) != 0) || (LoadSize(arg0, "", (int *) &this->unk5C, NULL, 0) != 0) || (LoadSize(arg0, "", (int *) &this->unk60, NULL, 0) != 0) || (LoadSize(arg0, "", (int *) &this->unk64, NULL, 0) != 0) || (LoadSize(arg0, "", (int *) &this->unk68, NULL, 0) != 0) || (arg0->LoadFloat("", &this->unk6C, 0) != 0) || (arg0->LoadFloat("", &this->unk78, 0) != 0) || (arg0->LoadFloat("", &this->unk70, 0) != 0) || (LoadSize(arg0, "", (int *) &this->unk2C, (int *) &this->unk3C, 0) != 0) || (LoadSize(arg0, "", (int *) &this->unk30, (int *) &this->unk40, 0) != 0) || (LoadSize(arg0, "", (int *) &this->unk34, (int *) &this->unk44, 0) != 0) || (LoadSize(arg0, "", (int *) &this->unk38, (int *) &this->unk48, 0) != 0) || (arg0->LoadVector4("", &this->unkE0, 0) != 0) || (arg0->LoadFloat("", &this->unk20, 0) != 0) || (arg0->LoadFloat("", &this->unk24, 0) != 0) || (LoadSize(arg0, "", (int *) &this->unkF8, NULL, 0) != 0) || (LoadSize(arg0, "", (int *) &this->unkFC, NULL, 0) != 0) || (arg0->LoadFloat("", (f32 *) (&gb + 0x384), 0) != 0) || (arg0->LoadFloat("", (f32 *) (&gb + 0x388), 0) != 0) || (arg0->LoadFloat("", (f32 *) (&gb + 0x38C), 0) != 0)) {
         return 1;
     }
     temp_ret_5673 = arg0->IsField("");

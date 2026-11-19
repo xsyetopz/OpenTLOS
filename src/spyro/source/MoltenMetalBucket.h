@@ -90,13 +90,13 @@ inline MoltenMetalBucket::MoltenMetalBucket() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline MoltenMetalBucket::~MoltenMetalBucket() {
     if ((&this->unk13C != NULL) && (&this->unk13C != NULL)) {
-        KDSound_Stop(&this->unk13C);
+        KDSound_Stop((int *) &this->unk13C);
     }
     if ((&this->unk114 != NULL) && (&this->unk114 != NULL)) {
-        KDSound_Stop(&this->unk114);
+        KDSound_Stop((int *) &this->unk114);
     }
     if ((&this->unkEC != NULL) && (&this->unkEC != NULL)) {
-        KDSound_Stop(&this->unkEC);
+        KDSound_Stop((int *) &this->unkEC);
     }
 }
 #endif

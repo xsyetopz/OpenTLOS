@@ -1,18 +1,62 @@
 #include "spyro/source/InGame.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/BoundingRegion.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/CustomMaterialUpdater.h"
+#include "spyro/source/CutsceneObject.h"
 #include "spyro/source/CutsceneSystem.h"
 #include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameProp.h"
 #include "spyro/source/GameVideo.h"
 #include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDInput.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
 #include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/PolyRegion.h"
 #include "spyro/source/PropGroupVolume.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -31,7 +75,6 @@
 #include "spyro/source/Credits.h"
 #include "spyro/source/FrontEnd.h"
 #include "spyro/source/Hud.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Music.h"
 #include "spyro/source/PauseMenu.h"
 #include "spyro/source/SpyroHud.h"
@@ -709,7 +752,7 @@ void InGame_Draw() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'unkC'
 void InGame_Update() {
     f64 sp10;
     f64 sp8;
@@ -747,7 +790,7 @@ loop_3:
         if (var_r5_1428 != (u32) M2C_FIELD(&fingerprintData, u32 *, 0x108)) {
             gb.unk32C->SwitchTo(NULL);
         }
-        nextCheck = MKRand_Float(&gViewSeed, 300.0f, 900.0f);
+        nextCheck = MKRand_Float((int *) &gViewSeed, 300.0f, 900.0f);
     }
     gb.unk35C = 0;
     if ((u8) M2C_FIELD(gb.unk32C, u8 *, 0x6C) != 0) {
@@ -909,7 +952,7 @@ void InGame_Init() {
     Music_Update();
     SpyroHud_Init();
     bShowLoading = 0;
-    nextCheck = MKRand_Float(&gViewSeed, 300.0f, 900.0f);
+    nextCheck = MKRand_Float((int *) &gViewSeed, 300.0f, 900.0f);
 }
 #endif
 

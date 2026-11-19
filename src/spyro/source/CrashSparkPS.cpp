@@ -1,11 +1,18 @@
 #include "spyro/source/CrashSparkPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKView.h"
@@ -415,7 +422,7 @@ void CrashSparkPS::Draw() {
             sp368 += temp_f2_633;
             sp370 = (f32) sp370 + temp_f1_637;
             MKSetMatrix(Matrix::identity);
-            temp_f14_665 = MKRand_Float(&gViewSeed, 0.2f, 1.0f);
+            temp_f14_665 = MKRand_Float((int *) &gViewSeed, 0.2f, 1.0f);
             MKVector(1.0f, 1.0f, 0.8f, 1.0f);
             sp168.operator*(temp_f14_665);
             sp58 = M2C_FIELD(&sp168, f64 *, 0) * (f64) temp_f1_488;

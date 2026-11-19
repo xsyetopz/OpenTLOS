@@ -1,35 +1,101 @@
 #include "spyro/source/DojoController.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
 #include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/DragonStatue.h"
 #include "spyro/source/ElementalWall.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SparxHint.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/SplineProp.h"
 #include "spyro/source/Spyro.h"
 #include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
 #include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
+#include "spyro/source/TriggerObject.h"
 #include "spyro/source/TriggerProp.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/DialogBox.h"
 #include "spyro/source/InGame.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PhrasePlayer.h"
 #include <m2c_macros.h>
 
@@ -1228,7 +1294,6 @@ s32 IceDojoLesson::IsBreath2Complete() {
     return this->unk10 > 1;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void IceDojoLesson::SetupBreath2SpawnPoints() {
     CharacterGraphNode *sp8;
     DojoController *temp_r3_2415;
@@ -1248,12 +1313,12 @@ void IceDojoLesson::SetupBreath2SpawnPoints() {
     switch (temp_r0_2367) {                         /* switch 1; irregular */
     case 0:                                         /* switch 1 */
         temp_f31_2389 = (f32) this->unkC / 9.0f;
-        if (MKRand_Float(&gViewSeed, 0.0f, 1.0f) > temp_f31_2389) {
+        if (MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f) > temp_f31_2389) {
             var_r31_2393 = 0x10000200 | 0x800000;
         } else {
             var_r31_2393 = 0x10000200 | 0x800;
         }
-        temp_r3_2401 = MKRand_Int(&gViewSeed, 0, 2);
+        temp_r3_2401 = MKRand_Int((int *) &gViewSeed, 0, 2);
         switch (temp_r3_2401) {                     /* switch 2; irregular */
         case 0:                                     /* switch 2 */
             temp_r3_2415 = this->unk4;
@@ -1283,7 +1348,6 @@ void IceDojoLesson::SetupBreath2SpawnPoints() {
         break;
     }
 }
-#endif
 
 void IceDojoLesson::SetupNumBreath2Enemies() {
     DojoController *temp_r3_2536;
@@ -4978,7 +5042,6 @@ void DojoController::StateDojoFailEnter() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void DojoController::StateDojoFightExit() {
     s32 sp24;
     s32 sp20;
@@ -5009,10 +5072,9 @@ void DojoController::StateDojoFightExit() {
     spC = 0;
     sp8 = 0xB4;
     M2C_FIELD(temp_r3_9691->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_9691, &sp8, 0);
-    KDSound_Stop(&this->unk818);
-    KDSound_Stop(&this->unk81C);
+    KDSound_Stop((int *) &this->unk818);
+    KDSound_Stop((int *) &this->unk81C);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void DojoController::StateDojoFightUpdate() {
@@ -5871,7 +5933,7 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNode *' to
 void DojoController::SetupSpawnPointsRandomGraph(DojoTiers arg0, CharacterGraphNode *arg1, int arg2, int arg3, CharacterGraphNode **arg4, bool arg5, float arg6, float arg7, unsigned int arg8) {
     f64 spE0;
     f64 spD8;
@@ -5950,7 +6012,7 @@ loop_76:
 loop_69:
                 if (var_r31_11551 == 0) {
                     var_r31_11551 = 1;
-                    *(arg4 + var_r22_11565) = arg1->GetRandomLink(MKRand_Int(&gViewSeed, arg2, arg3));
+                    *(arg4 + var_r22_11565) = arg1->GetRandomLink(MKRand_Int((int *) &gViewSeed, arg2, arg3));
                     temp_r4_11579 = *(arg4 + var_r22_11565);
                     M2C_FIELD(*temp_r4_11579, M2C_UNK (**)(f64 *, void **), 0x30)(&spB8, temp_r4_11579);
                     var_r16_11585 = 0;
@@ -6150,7 +6212,7 @@ loop_92:
 loop_85:
             if (var_r31_11551 == 0) {
                 var_r31_11551 = 1;
-                *(arg4 + var_r23_11966) = arg1->GetRandomLink(MKRand_Int(&gViewSeed, 2, 0x10));
+                *(arg4 + var_r23_11966) = arg1->GetRandomLink(MKRand_Int((int *) &gViewSeed, 2, 0x10));
                 temp_r4_11980 = *(arg4 + var_r23_11966);
                 M2C_FIELD(*temp_r4_11980, M2C_UNK (**)(f64 *, void **), 0x30)(&sp48, temp_r4_11980);
                 var_r3_11986 = 0;
@@ -6627,7 +6689,6 @@ void DojoController::LoadDone() {
     MKProp::LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DojoController::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1U;
@@ -6644,19 +6705,19 @@ s32 DojoController::LoadLine(MKIniLine *arg0) {
     if (this->unk58.LoadLine(arg0, "OnEarthLessonComplete") != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ResetTriggerID", (s32 *) &this->unk60, 0) != 0) {
+    if (arg0->LoadInt("ResetTriggerID", (int *) &this->unk60, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("InstructionalEventCameraID", (s32 *) &this->unk5C, 0) != 0) {
+    if (arg0->LoadInt("InstructionalEventCameraID", (int *) &this->unk5C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthResetTriggerID", (s32 *) &this->unk64, 0) != 0) {
+    if (arg0->LoadInt("EarthResetTriggerID", (int *) &this->unk64, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SparxHintResetPointID", (s32 *) &this->unk68, 0) != 0) {
+    if (arg0->LoadInt("SparxHintResetPointID", (int *) &this->unk68, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SparxHintEarthResetPointID", (s32 *) &this->unk6C, 0) != 0) {
+    if (arg0->LoadInt("SparxHintEarthResetPointID", (int *) &this->unk6C, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadVector3("DojoCentrePoint", &this->unk378, 0) != 0) {
@@ -6668,43 +6729,43 @@ s32 DojoController::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadVector3("PlayerStartPosition", (MKVector3 *) &this->unk388, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("RunAroundGraphID", (s32 *) &this->unk3D8, 0) != 0) {
+    if (arg0->LoadInt("RunAroundGraphID", (int *) &this->unk3D8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ShootingGraphID", (s32 *) &this->unk3DC, 0) != 0) {
+    if (arg0->LoadInt("ShootingGraphID", (int *) &this->unk3DC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("RoundShootingGraphID", (s32 *) &this->unk3E0, 0) != 0) {
+    if (arg0->LoadInt("RoundShootingGraphID", (int *) &this->unk3E0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("DragonStatueID", (s32 *) &this->unk404, 0) != 0) {
+    if (arg0->LoadInt("DragonStatueID", (int *) &this->unk404, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("DragonStatueDoor", (s32 *) &this->unk408, 0) != 0) {
+    if (arg0->LoadInt("DragonStatueDoor", (int *) &this->unk408, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireElementalWall", (s32 *) &this->unk3E4, 0) != 0) {
+    if (arg0->LoadInt("FireElementalWall", (int *) &this->unk3E4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectircElementalWall", (s32 *) &this->unk3E8, 0) != 0) {
+    if (arg0->LoadInt("ElectircElementalWall", (int *) &this->unk3E8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceElementalWall", (s32 *) &this->unk3EC, 0) != 0) {
+    if (arg0->LoadInt("IceElementalWall", (int *) &this->unk3EC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthElementalWall", (s32 *) &this->unk3F0, 0) != 0) {
+    if (arg0->LoadInt("EarthElementalWall", (int *) &this->unk3F0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SmashProp1ID", &this->unk3F4, 0) != 0) {
+    if (arg0->LoadInt("SmashProp1ID", (int *) &this->unk3F4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SmashProp2ID", &this->unk3F8, 0) != 0) {
+    if (arg0->LoadInt("SmashProp2ID", (int *) &this->unk3F8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SmashProp3ID", &this->unk3FC, 0) != 0) {
+    if (arg0->LoadInt("SmashProp3ID", (int *) &this->unk3FC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SmashProp4ID", &this->unk400, 0) != 0) {
+    if (arg0->LoadInt("SmashProp4ID", (int *) &this->unk400, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("InstructToFightDelay", &this->unk45C, 0) != 0) {
@@ -6716,284 +6777,283 @@ s32 DojoController::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadFloat("TaskFailToInstructDelay", &this->unk464, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel1NumTier1", &this->unk680, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel1NumTier1", (int *) &this->unk680, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel1NumTier2", &this->unk684, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel1NumTier2", (int *) &this->unk684, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel1Timer", &this->unk688, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel1Timer", (int *) &this->unk688, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel2NumTier1", &this->unk68C, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel2NumTier1", (int *) &this->unk68C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel2NumTier2", &this->unk690, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel2NumTier2", (int *) &this->unk690, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel2Timer", &this->unk694, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel2Timer", (int *) &this->unk694, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel3NumTier1", &this->unk698, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel3NumTier1", (int *) &this->unk698, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel3NumTier2", &this->unk69C, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel3NumTier2", (int *) &this->unk69C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel3Timer", &this->unk6A0, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel3Timer", (int *) &this->unk6A0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel4NumTier1", &this->unk6A4, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel4NumTier1", (int *) &this->unk6A4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel4NumTier2", &this->unk6A8, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel4NumTier2", (int *) &this->unk6A8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockUpLevel4Timer", &this->unk6AC, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockUpLevel4Timer", (int *) &this->unk6AC, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("FireMeleeKnockUpVanguardDistance", &this->unk6B0, 0) != 0) {
         this->unk6B0 *= 100.0f;
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel1NumTier1", &this->unk6B4, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel1NumTier1", (int *) &this->unk6B4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel1NumTier2", &this->unk6B8, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel1NumTier2", (int *) &this->unk6B8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel1Timer", &this->unk6BC, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel1Timer", (int *) &this->unk6BC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel2NumTier1", &this->unk6C0, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel2NumTier1", (int *) &this->unk6C0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel2NumTier2", &this->unk6C4, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel2NumTier2", (int *) &this->unk6C4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel2Timer", &this->unk6C8, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel2Timer", (int *) &this->unk6C8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel3NumTier1", &this->unk6CC, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel3NumTier1", (int *) &this->unk6CC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel3NumTier2", &this->unk6D0, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel3NumTier2", (int *) &this->unk6D0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel3Timer", &this->unk6D4, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel3Timer", (int *) &this->unk6D4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel4NumTier1", &this->unk6D8, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel4NumTier1", (int *) &this->unk6D8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel4NumTier2", &this->unk6DC, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel4NumTier2", (int *) &this->unk6DC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel4Timer", &this->unk6E0, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel4Timer", (int *) &this->unk6E0, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("FireMeleeKnockBackVanguardDistance", &this->unk6E4, 0) != 0) {
         this->unk6E4 *= 100.0f;
         return 1U;
     }
-    if (arg0->LoadInt("FireMeleeKnockBackLevel3Iterations", &this->unk6E8, 0) != 0) {
+    if (arg0->LoadInt("FireMeleeKnockBackLevel3Iterations", (int *) &this->unk6E8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level1NumTier1", &this->unk6EC, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level1NumTier1", (int *) &this->unk6EC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level1NumTier2", &this->unk6F0, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level1NumTier2", (int *) &this->unk6F0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level1Timer", &this->unk6F4, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level1Timer", (int *) &this->unk6F4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level2NumTier1", &this->unk6F8, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level2NumTier1", (int *) &this->unk6F8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level2NumTier2", &this->unk6FC, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level2NumTier2", (int *) &this->unk6FC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath1Level2Timer", &this->unk700, 0) != 0) {
+    if (arg0->LoadInt("FireBreath1Level2Timer", (int *) &this->unk700, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level1NumTier1", &this->unk704, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level1NumTier1", (int *) &this->unk704, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level1NumTier2", &this->unk708, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level1NumTier2", (int *) &this->unk708, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level1Timer", &this->unk70C, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level1Timer", (int *) &this->unk70C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level2NumTier1", &this->unk710, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level2NumTier1", (int *) &this->unk710, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level2NumTier2", &this->unk714, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level2NumTier2", (int *) &this->unk714, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireBreath2Level2Timer", &this->unk718, 0) != 0) {
+    if (arg0->LoadInt("FireBreath2Level2Timer", (int *) &this->unk718, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("FireBreath2VanguardDistance", &this->unk71C, 0) != 0) {
         this->unk71C *= 100.0f;
         return 1U;
     }
-    if (arg0->LoadInt("FireFuryNumTier1", &this->unk720, 0) != 0) {
+    if (arg0->LoadInt("FireFuryNumTier1", (int *) &this->unk720, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("FireFuryNumTier2", &this->unk724, 0) != 0) {
+    if (arg0->LoadInt("FireFuryNumTier2", (int *) &this->unk724, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("FireFuryDojoRadiusMul", &this->unk728, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level1NumTier1", &this->unk72C, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level1NumTier1", (int *) &this->unk72C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level1NumTier2", &this->unk730, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level1NumTier2", (int *) &this->unk730, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level1Timer", &this->unk734, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level1Timer", (int *) &this->unk734, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level2NumTier1", &this->unk738, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level2NumTier1", (int *) &this->unk738, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level2NumTier2", &this->unk73C, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level2NumTier2", (int *) &this->unk73C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath1Level2Timer", &this->unk740, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath1Level2Timer", (int *) &this->unk740, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level1NumTier1", &this->unk744, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level1NumTier1", (int *) &this->unk744, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level1NumTier2", &this->unk748, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level1NumTier2", (int *) &this->unk748, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level1Timer", &this->unk74C, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level1Timer", (int *) &this->unk74C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level2NumTier1", &this->unk750, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level2NumTier1", (int *) &this->unk750, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level2NumTier2", &this->unk754, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level2NumTier2", (int *) &this->unk754, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricBreath2Level2Timer", &this->unk758, 0) != 0) {
+    if (arg0->LoadInt("ElectricBreath2Level2Timer", (int *) &this->unk758, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("ElectricBreath2VanguardDistance", &this->unk75C, 0) != 0) {
         this->unk75C *= 100.0f;
         return 1U;
     }
-    if (arg0->LoadInt("ElectricFuryNumTier1", &this->unk760, 0) != 0) {
+    if (arg0->LoadInt("ElectricFuryNumTier1", (int *) &this->unk760, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("ElectricFuryNumTier2", &this->unk764, 0) != 0) {
+    if (arg0->LoadInt("ElectricFuryNumTier2", (int *) &this->unk764, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("ElectricFuryDojoRadiusMul", &this->unk768, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level1NumTier1", &this->unk76C, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level1NumTier1", (int *) &this->unk76C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level1NumTier2", &this->unk770, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level1NumTier2", (int *) &this->unk770, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level1Timer", &this->unk774, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level1Timer", (int *) &this->unk774, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level2NumTier1", &this->unk778, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level2NumTier1", (int *) &this->unk778, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level2NumTier2", &this->unk77C, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level2NumTier2", (int *) &this->unk77C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath1Level2Timer", &this->unk780, 0) != 0) {
+    if (arg0->LoadInt("IceBreath1Level2Timer", (int *) &this->unk780, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level1NumTier1", &this->unk784, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level1NumTier1", (int *) &this->unk784, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level1NumTier2", &this->unk788, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level1NumTier2", (int *) &this->unk788, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level1Timer", &this->unk78C, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level1Timer", (int *) &this->unk78C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level2NumTier1", &this->unk790, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level2NumTier1", (int *) &this->unk790, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level2NumTier2", &this->unk794, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level2NumTier2", (int *) &this->unk794, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2Level2Timer", &this->unk798, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2Level2Timer", (int *) &this->unk798, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("IceBreath2VanguardDistance", &this->unk79C, 0) != 0) {
         this->unk79C *= 100.0f;
         return 1U;
     }
-    if (arg0->LoadInt("IceBreath2NumLevel1Iterations", &this->unk7A0, 0) != 0) {
+    if (arg0->LoadInt("IceBreath2NumLevel1Iterations", (int *) &this->unk7A0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceFuryNumTier1", &this->unk7A4, 0) != 0) {
+    if (arg0->LoadInt("IceFuryNumTier1", (int *) &this->unk7A4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("IceFuryNumTier2", &this->unk7A8, 0) != 0) {
+    if (arg0->LoadInt("IceFuryNumTier2", (int *) &this->unk7A8, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("IceFuryDojoRadiusMul", &this->unk7AC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level1NumTier1", &this->unk7B0, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level1NumTier1", (int *) &this->unk7B0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level1NumTier2", &this->unk7B4, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level1NumTier2", (int *) &this->unk7B4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level1Timer", &this->unk7B8, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level1Timer", (int *) &this->unk7B8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level2NumTier1", &this->unk7BC, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level2NumTier1", (int *) &this->unk7BC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level2NumTier2", &this->unk7C0, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level2NumTier2", (int *) &this->unk7C0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath1Level2Timer", &this->unk7C4, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath1Level2Timer", (int *) &this->unk7C4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level1NumTier1", &this->unk7C8, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level1NumTier1", (int *) &this->unk7C8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level1NumTier2", &this->unk7CC, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level1NumTier2", (int *) &this->unk7CC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level1Timer", &this->unk7D0, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level1Timer", (int *) &this->unk7D0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level2NumTier1", &this->unk7D4, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level2NumTier1", (int *) &this->unk7D4, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level2NumTier2", &this->unk7D8, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level2NumTier2", (int *) &this->unk7D8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthBreath2Level2Timer", &this->unk7DC, 0) != 0) {
+    if (arg0->LoadInt("EarthBreath2Level2Timer", (int *) &this->unk7DC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthFuryNumTier1", &this->unk7E0, 0) != 0) {
+    if (arg0->LoadInt("EarthFuryNumTier1", (int *) &this->unk7E0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("EarthFuryNumTier2", &this->unk7E4, 0) != 0) {
+    if (arg0->LoadInt("EarthFuryNumTier2", (int *) &this->unk7E4, 0) != 0) {
         return 1U;
     }
     return (u8) (arg0->LoadFloat("EarthFuryDojoRadiusMul", &this->unk7E8, 0) != 0);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'DojoController' to
 void DojoController::Deinit() {

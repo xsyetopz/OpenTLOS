@@ -67,7 +67,7 @@ inline Exhumor::Exhumor() {
 inline Exhumor::~Exhumor() {
     this->unk6B8 = &__vt.unk84;
     if ((&this->unkB14 != NULL) && (&this->unkB14 != NULL)) {
-        KDSound_Stop(&this->unkB14);
+        KDSound_Stop((int *) &this->unkB14);
     }
 }
 #endif
@@ -97,7 +97,7 @@ inline MiningMoleLeader::MiningMoleLeader() {
 inline MiningMoleLeader::~MiningMoleLeader() {
     this->unk6B8 = &__vt.unk84;
     if ((&this->unkB14 != NULL) && (&this->unkB14 != NULL)) {
-        KDSound_Stop(&this->unkB14);
+        KDSound_Stop((int *) &this->unkB14);
     }
 }
 #endif

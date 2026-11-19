@@ -62,7 +62,7 @@ inline MineCart::MineCart() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline MineCart::~MineCart() {
     if ((&this->unk17C != NULL) && (&this->unk17C != NULL)) {
-        KDSound_Stop(&this->unk17C);
+        KDSound_Stop((int *) &this->unk17C);
     }
 }
 #endif

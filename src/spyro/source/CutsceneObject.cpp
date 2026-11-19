@@ -1,8 +1,17 @@
 #include "spyro/source/CutsceneObject.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/Level.h"
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
 
@@ -156,7 +165,7 @@ loop_4:
         return 1;
     }
     var_r31_344 = 0;
-    if ((arg0->LoadInt("disabledZone", &this->unk50, 0) != 0) || (arg0->LoadInt("cutscene1", &this->unk48, 0) != 0) || (arg0->LoadInt("altCutscene1", &this->unk4C, 0) != 0) || (arg0->LoadBool("bBlankScreenAfter", &this->unk5C, 0) != 0) || (arg0->LoadBool("bBlankThroughLoadScreen", &this->unk5D, 0) != 0) || (arg0->LoadBool("bSetHeroPos", &this->unk5E, 0) != 0) || (arg0->LoadBool("bSetCameraPos", &this->unk60, 0) != 0) || (arg0->LoadBool("bVideo", &this->unk59, 0) != 0) || (arg0->LoadVector3("heroPos", (MKVector3 *) &this->unk10, 0) != 0) || (arg0->LoadFloat("heroLookYaw", &this->unk44, 0) != 0) || (arg0->LoadBool("bLeaveHeroVisible", &this->unk5F, 0) != 0) || (arg0->LoadBool("bUseLoadingScreen", &this->unk62, 0) != 0) || (arg0->LoadBool("bZoomVideo", &this->unk63, 0) != 0) || (this->unk30.LoadLine(arg0, "onCompletion") != 0) || (this->unk34.LoadLine(arg0, "onActivation") != 0) || (this->unk38.LoadLine(arg0, "onPlay") != 0) || (this->unk3C.LoadLine(arg0, "onStop") != 0) || (this->unk40.LoadLine(arg0, "skipQuery") != 0) || (arg0->LoadVector4("BlankColour", (MKVector4 *) this, 0) != 0)) {
+    if ((arg0->LoadInt("disabledZone", (int *) &this->unk50, 0) != 0) || (arg0->LoadInt("cutscene1", (int *) &this->unk48, 0) != 0) || (arg0->LoadInt("altCutscene1", (int *) &this->unk4C, 0) != 0) || (arg0->LoadBool("bBlankScreenAfter", &this->unk5C, 0) != 0) || (arg0->LoadBool("bBlankThroughLoadScreen", &this->unk5D, 0) != 0) || (arg0->LoadBool("bSetHeroPos", &this->unk5E, 0) != 0) || (arg0->LoadBool("bSetCameraPos", &this->unk60, 0) != 0) || (arg0->LoadBool("bVideo", &this->unk59, 0) != 0) || (arg0->LoadVector3("heroPos", (MKVector3 *) &this->unk10, 0) != 0) || (arg0->LoadFloat("heroLookYaw", &this->unk44, 0) != 0) || (arg0->LoadBool("bLeaveHeroVisible", &this->unk5F, 0) != 0) || (arg0->LoadBool("bUseLoadingScreen", &this->unk62, 0) != 0) || (arg0->LoadBool("bZoomVideo", &this->unk63, 0) != 0) || (this->unk30.LoadLine(arg0, "onCompletion") != 0) || (this->unk34.LoadLine(arg0, "onActivation") != 0) || (this->unk38.LoadLine(arg0, "onPlay") != 0) || (this->unk3C.LoadLine(arg0, "onStop") != 0) || (this->unk40.LoadLine(arg0, "skipQuery") != 0) || (arg0->LoadVector4("BlankColour", (MKVector4 *) this, 0) != 0)) {
         var_r31_344 = 1;
     }
     return var_r31_344;

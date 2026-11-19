@@ -158,10 +158,10 @@ inline SpeedwayCynder::~SpeedwayCynder() {
 
     if (this != NULL) {
         if ((&this->unk3D0 != NULL) && (&this->unk3D0 != NULL)) {
-            KDSound_Stop(&this->unk3D0);
+            KDSound_Stop((int *) &this->unk3D0);
         }
         if ((&this->unk3A8 != NULL) && (&this->unk3A8 != NULL)) {
-            KDSound_Stop(&this->unk3A8);
+            KDSound_Stop((int *) &this->unk3A8);
         }
         temp_cr0_eq_35 = this == NULL;
         if (temp_cr0_eq_35 == 0) {

@@ -1,7 +1,15 @@
 #include "common/gc/Sound_GC.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "dolphin/ai.h"
 #include "dolphin/ar.h"
@@ -1499,7 +1507,7 @@ loop_59:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Open(signed char *, long *, unsigned int)' does
+#if 0 // DRAFT: function call 'MKArchive_Open(signed char *, int *, unsigned int)' does
 s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
     s32 sp8;
     MKHeap *temp_r3_2316;
@@ -1508,7 +1516,7 @@ s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
     s32 temp_r3_2314;
 
     if (arg1 != 0) {
-        temp_r3_2288 = MKArchive_Open(Str_Printf("%s.gsb", arg0, "%s.mus"), &soundBankFileSize, 1U);
+        temp_r3_2288 = MKArchive_Open(Str_Printf("%s.gsb", arg0, "%s.mus"), (int *) &soundBankFileSize, 1U);
         soundBankFileHandle = temp_r3_2288;
         if (temp_r3_2288 < 0) {
             return 0;
@@ -1516,7 +1524,7 @@ s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
         Sound_LoadBankAsyncUpdate(1U, arg2);
         return 0;
     }
-    temp_r3_2310 = MKArchive_Load(Str_Printf("%s.gsb", arg0, "%s.mus"), &sp8, NULL, -1);
+    temp_r3_2310 = MKArchive_Load(Str_Printf("%s.gsb", arg0, "%s.mus"), (int *) &sp8, NULL, -1);
     temp_r3_2314 = Sound_LoadBankFromMemory(temp_r3_2310, arg1, arg2);
     soundLastBankId = temp_r3_2314;
     temp_r3_2316 = ((MKHeap *) temp_r3_2314)->Current();

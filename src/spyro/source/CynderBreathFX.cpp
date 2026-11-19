@@ -1,16 +1,32 @@
 #include "spyro/source/CynderBreathFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/BaseBreathFX.h"
+#include "spyro/source/FlameBreathBeamFX.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/ScreenWobbleFX.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
@@ -324,10 +340,10 @@ void CynderBreathFX::BreathFire() {
         M2C_FIELD(temp_r3_515, f64 *, 8) = sp138;
         M2C_FIELD(temp_r3_515, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_515, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_515, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f)));
+        M2C_FIELD(temp_r3_515, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f)));
         M2C_FIELD(temp_r29_518, f64 *, 0) = sp120;
         M2C_FIELD(temp_r29_518, f64 *, 8) = sp128;
-        M2C_FIELD(temp_r29_518, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        M2C_FIELD(temp_r29_518, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         M2C_FIELD(temp_r29_518, f32 *, 0x10) = 0.0f;
         M2C_FIELD(temp_r29_518, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r30_470, void **, 0x70), f32 *, 0xF4);
     }
@@ -352,17 +368,17 @@ void CynderBreathFX::BreathFire() {
         M2C_FIELD(temp_r3_595, f64 *, 8) = sp28;
         M2C_FIELD(temp_r3_595, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_595, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_595, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f)));
+        M2C_FIELD(temp_r3_595, f32 *, 0x24) = (f32) (2.0f * (3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f)));
         M2C_FIELD(temp_r29_598, f64 *, 0) = sp10;
         M2C_FIELD(temp_r29_598, f64 *, 8) = sp18;
-        M2C_FIELD(temp_r29_598, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        M2C_FIELD(temp_r29_598, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         M2C_FIELD(temp_r29_598, f32 *, 0x10) = 0.0f;
         M2C_FIELD(temp_r29_598, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r30_470, void **, 0x74), f32 *, 0xF4);
     }
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void CynderBreathFX::Update() {
     s8 spA0;
     f64 sp98;
@@ -410,9 +426,9 @@ void CynderBreathFX::Update() {
             ((ScreenWobbleFX *) (&gb + 0xB8))->EnableSpeedEffect(1U, 0.25f, 1.0f);
             sp8C = 0;
             temp_f28_709 = 1.0f - (temp_f30_693 / 3.6e7f);
-            temp_f30_712 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f29_717 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f29_717, temp_f30_712);
+            temp_f30_712 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f29_717 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f29_717, temp_f30_712);
             sp38.operator*(this->unk1D0);
             sp8 = sp38 * (f64) temp_f28_709;
             sp88 = 0x417;

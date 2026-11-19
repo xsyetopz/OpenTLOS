@@ -1,13 +1,38 @@
 #include "spyro/source/ConvexityDebris.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -79,7 +104,6 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ConvexityDebris::Message(MKMessage *arg0) {
     MKHeap *temp_r31_160;
     MKHeap *temp_r3_129;
@@ -111,14 +135,13 @@ loop_10:
             temp_r31_160 = var_r30_146->unk0;
             if (temp_r31_160 != NULL) {
                 var_r30_146 += 4;
-                temp_r31_160->unk6C = this->unk78 * MKRand_Float(&gViewSeed, 0.5f, 1.5f);
+                temp_r31_160->unk6C = this->unk78 * MKRand_Float((int *) &gViewSeed, 0.5f, 1.5f);
                 goto loop_10;
             }
         }
     }
     MKProp::Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDSpline' to
 void ConvexityDebris::Draw() {
@@ -320,8 +343,8 @@ loop_4:
             sp68 = sp8;
             sp70 = (f64) sp10;
             M2C_FIELD(temp_r30_469, f64 *, 0x50) = (f64) sp10;
-            temp_r30_469->unk70 = *(temp_r31_456 + ((MKRand_Int(&gViewSeed, 0, 2) * 4) + 0x60));
-            temp_r30_469->unk6C = this->unk78 * MKRand_Float(&gViewSeed, 0.5f, 1.5f);
+            temp_r30_469->unk70 = *(temp_r31_456 + ((MKRand_Int((int *) &gViewSeed, 0, 2) * 4) + 0x60));
+            temp_r30_469->unk6C = this->unk78 * MKRand_Float((int *) &gViewSeed, 0.5f, 1.5f);
             temp_r30_469->unk58 = 0.0f;
             temp_r30_469->unk5C = 0.0f;
             temp_r30_469->unk60 = 0.0f;

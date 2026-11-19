@@ -74,7 +74,7 @@ public:
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline ElectricFence::~ElectricFence() {
     if ((&this->unk114 != NULL) && (&this->unk114 != NULL)) {
-        KDSound_Stop(&this->unk114);
+        KDSound_Stop((int *) &this->unk114);
     }
     if (this != NULL) {
     }

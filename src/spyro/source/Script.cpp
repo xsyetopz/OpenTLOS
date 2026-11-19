@@ -1,8 +1,33 @@
 #include "spyro/source/Script.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "common/Source/Str.h"
 #include "spyro/source/PropFlags.h"
 #include <m2c_macros.h>
@@ -10,7 +35,6 @@
 M2C_UNK __destroy_arr(ScriptProp *, EventMessage *(*)(EventMessage *, s16), M2C_UNK, M2C_UNK); /* extern */
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void ScriptProp::Execute() {
     u8 temp_r3_66;
 
@@ -22,12 +46,10 @@ loop_2:
         goto loop_2;
     }
     if (((u8) this->unk55 == 0) && ((s8) temp_r3_66 == 0xA)) {
-        PropFlagsClear((u32 *) &this->unk10, 0x80000U);
+        PropFlagsClear((unsigned int *) &this->unk10, 0x80000U);
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void ScriptProp::Message(MKMessage *arg0) {
     s32 temp_r0_100;
 
@@ -35,7 +57,7 @@ void ScriptProp::Message(MKMessage *arg0) {
     switch (temp_r0_100) {                          /* irregular */
     case 0xB5:
         if (this->unk10 & 0x160000) {
-            PropFlagsSet((u32 *) &this->unk10, 0x80000U);
+            PropFlagsSet((unsigned int *) &this->unk10, 0x80000U);
             this->unk56 = 0;
             this->unk50 = this->unk4C;
             if (this->unk4C <= 0.0f) {
@@ -45,14 +67,14 @@ void ScriptProp::Message(MKMessage *arg0) {
         break;
     case 0xB4:
         if (this->unk10 & 0x160000) {
-            PropFlagsClear((u32 *) &this->unk10, 0x80000U);
+            PropFlagsClear((unsigned int *) &this->unk10, 0x80000U);
         }
         break;
     case 0xBE:
-        PropFlagsSet((u32 *) &this->unk10, 0x160000U);
+        PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
         break;
     case 0xBF:
-        PropFlagsClear((u32 *) &this->unk10, 0x160000U);
+        PropFlagsClear((unsigned int *) &this->unk10, 0x160000U);
         break;
     case 0xE4:
         if (this->unk10 & 0x80000) {
@@ -70,7 +92,6 @@ void ScriptProp::Message(MKMessage *arg0) {
     }
     MKProp::Message(arg0);
 }
-#endif
 
 void ScriptProp::Reset() {
     MKProp::Reset();
@@ -79,7 +100,6 @@ void ScriptProp::Reset() {
     this->unk55 = 0;
 }
 
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void ScriptProp::Update() {
     s32 temp_r3_218;
     u8 temp_r3_240;
@@ -96,7 +116,7 @@ void ScriptProp::Update() {
                 this->unk56 = temp_r3_240 + 1;
                 ((EventMessage *) (this + (((s8) temp_r3_240 * 4) + 0x58)))->Send((MKProp *) this);
                 if ((s32) this->unk56 == 0xA) {
-                    PropFlagsClear((u32 *) &this->unk10, 0x80000U);
+                    PropFlagsClear((unsigned int *) &this->unk10, 0x80000U);
                     return;
                 }
                 this->unk50 = this->unk4C;
@@ -106,7 +126,6 @@ void ScriptProp::Update() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 ScriptProp::LoadLine(MKIniLine *arg0) {
@@ -134,7 +153,7 @@ loop_3:
     var_r31_289 += 4;
     if (var_r29_287 >= 0xA) {
         var_r31_314 = 0;
-        if ((arg0->LoadFloat("delay", &this->unk4C, 0) != 0) || (arg0->LoadBool("bDelayEachMessage", &this->unk54, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0)) {
+        if ((arg0->LoadFloat("delay", &this->unk4C, 0) != 0) || (arg0->LoadBool("bDelayEachMessage", &this->unk54, 0) != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0)) {
             var_r31_314 = 1;
         }
         return var_r31_314;
@@ -143,7 +162,6 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsInit(unsigned long *, unsigned int)' does not
 void ScriptProp::Init() {
     MKProp::Init();
     this->unk4C = 0.0f;
@@ -151,6 +169,5 @@ void ScriptProp::Init() {
     this->unk54 = 0;
     this->unk55 = 0;
     this->unk56 = 0;
-    PropFlagsInit((u32 *) &this->unk10, 0x160000U);
+    PropFlagsInit((unsigned int *) &this->unk10, 0x160000U);
 }
-#endif

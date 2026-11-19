@@ -1,5 +1,15 @@
 #include "common/Source/OmniLight.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKView.h"
 #include <m2c_macros.h>
 
@@ -9,7 +19,7 @@ extern u8 bSuspendAll;
 extern M2C_UNK gEmptyPtrListDL;
 extern M2C_UNK *lightList;
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp48;                                       /* compiler-managed */
     f64 sp40;                                       /* compiler-managed */
@@ -111,7 +121,7 @@ void OmniLight::CalculateColor(const MKVector3 &arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 OmniLight_FindNearestGroup(const MKVector3 &arg0, float arg1, OmniLight **arg2, int arg3) {
     M2C_UNK spDC;
     M2C_UNK sp58;
@@ -216,7 +226,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void OmniLight_FindNearest(const MKVector3 &arg0, float arg1) {
     f64 sp50;
     f64 sp48;

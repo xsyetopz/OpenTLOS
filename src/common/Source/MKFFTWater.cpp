@@ -1,12 +1,20 @@
 #include "common/Source/MKFFTWater.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKOcean.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
@@ -836,17 +844,15 @@ void MKFFTNormalMap::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 MKFFTNormalMap::LoadLine(MKIniLine *arg0) {
     u8 var_r31_1310;
 
     var_r31_1310 = 0;
-    if ((arg0->LoadFloat("directionality", &this->unk501C, 0) != 0) || (arg0->LoadFloat("gravity", &this->unk5000, 0) != 0) || (arg0->LoadFloat("overallWaveHeight", &this->unk5010, 0) != 0) || (arg0->LoadFloat("patchWidth", &this->unk5008, 0) != 0) || (arg0->LoadInt("randomSeed", &this->unk5020, 0) != 0) || (arg0->LoadFloat("smoothness", &this->unk500C, 0) != 0) || (arg0->LoadFloat("waterDepth", &this->unk5024, 0) != 0) || (arg0->LoadFloat("windAngle", &this->unk5014, 0) != 0) || (arg0->LoadFloat("windSpeed", &this->unk5018, 0) != 0)) {
+    if ((arg0->LoadFloat("directionality", &this->unk501C, 0) != 0) || (arg0->LoadFloat("gravity", &this->unk5000, 0) != 0) || (arg0->LoadFloat("overallWaveHeight", &this->unk5010, 0) != 0) || (arg0->LoadFloat("patchWidth", &this->unk5008, 0) != 0) || (arg0->LoadInt("randomSeed", (int *) &this->unk5020, 0) != 0) || (arg0->LoadFloat("smoothness", &this->unk500C, 0) != 0) || (arg0->LoadFloat("waterDepth", &this->unk5024, 0) != 0) || (arg0->LoadFloat("windAngle", &this->unk5014, 0) != 0) || (arg0->LoadFloat("windSpeed", &this->unk5018, 0) != 0)) {
         var_r31_1310 = 1;
     }
     return var_r31_1310;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
 void MKFFTNormalMap::Init() {
@@ -1033,7 +1039,7 @@ s32 MKFFTWaterType::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1720;
 
     var_r31_1720 = 0;
-    if ((MKFFTBaseType::LoadLine(arg0) != 0) || (arg0->LoadVector4("specularLight", &this->unk5140, 0) != 0) || (arg0->LoadFloat("specularRed", &this->unk5140.unk0, 0) != 0) || (arg0->LoadFloat("specularGreen", &this->unk5140.unk4, 0) != 0) || (arg0->LoadFloat("specularBlue", &this->unk5140.unk8, 0) != 0) || (arg0->LoadFloat("specularScale", &this->unk5120, 0) != 0) || (arg0->LoadInt("specularPower", &this->unk5154, 0) != 0) || (arg0->LoadFloat("specularVariance", &this->unk5158, 0) != 0) || (arg0->LoadBool("subTractiveBase", (u8 *) &this->unk515C, 0) != 0) || (this->unk50D4.LoadLine(arg0) != 0)) {
+    if ((MKFFTBaseType::LoadLine(arg0) != 0) || (arg0->LoadVector4("specularLight", &this->unk5140, 0) != 0) || (arg0->LoadFloat("specularRed", &this->unk5140.unk0, 0) != 0) || (arg0->LoadFloat("specularGreen", &this->unk5140.unk4, 0) != 0) || (arg0->LoadFloat("specularBlue", &this->unk5140.unk8, 0) != 0) || (arg0->LoadFloat("specularScale", &this->unk5120, 0) != 0) || (arg0->LoadInt("specularPower", (int *) &this->unk5154, 0) != 0) || (arg0->LoadFloat("specularVariance", &this->unk5158, 0) != 0) || (arg0->LoadBool("subTractiveBase", (u8 *) &this->unk515C, 0) != 0) || (this->unk50D4.LoadLine(arg0) != 0)) {
         var_r31_1720 = 1;
     }
     return var_r31_1720;
@@ -1487,7 +1493,6 @@ block_40:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(unsigned char (*)[4], float, float)' does not
 f32 MKRand_Gaussian() {
     f32 temp_f31_2766;
     f32 var_f30_2772;
@@ -1499,10 +1504,9 @@ f32 MKRand_Gaussian() {
     temp_f3_2756 = 0.5 * temp_f3_2749 * -((7.5 * (temp_f3_2749 * temp_f3_2749)) - 3.0);
     temp_f3_2760 = 0.5 * temp_f3_2756 * -((7.5 * (temp_f3_2756 * temp_f3_2756)) - 3.0);
     temp_f31_2766 = (f32) (7.5 * (0.5 * temp_f3_2760 * -((7.5 * (temp_f3_2760 * temp_f3_2760)) - 3.0)));
-    var_f30_2772 = MKRand_Float(&gRandomSeed, 0.0f, 1.0f);
-    if (MKRand_Float(&gRandomSeed, 0.0f, 1.0f) > (1.0f + ((var_f30_2772 * (2.0f * var_f30_2772 * var_f30_2772)) - (3.0f * var_f30_2772 * var_f30_2772)))) {
+    var_f30_2772 = MKRand_Float((int *) &gRandomSeed, 0.0f, 1.0f);
+    if (MKRand_Float((int *) &gRandomSeed, 0.0f, 1.0f) > (1.0f + ((var_f30_2772 * (2.0f * var_f30_2772 * var_f30_2772)) - (3.0f * var_f30_2772 * var_f30_2772)))) {
         var_f30_2772 -= 1.0f;
     }
     return var_f30_2772 * temp_f31_2766;
 }
-#endif

@@ -1,16 +1,46 @@
 #include "spyro/source/ElementalCombatController.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EnemySpawner.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
@@ -232,12 +262,11 @@ void ElementalCombatController::LoadDone() {
     MKProp::LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 ElementalCombatController::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("Element", &this->unk3E0, 0) != 0) {
+    if (arg0->LoadInt("Element", (int *) &this->unk3E0, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadFloat("WaveSpawnDelay", &this->unk3EC, 0) != 0) {
@@ -246,52 +275,52 @@ s32 ElementalCombatController::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadVector3("PlayerStart", (MKVector3 *) &this->unkB8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave1", &this->unk360, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave1", (int *) &this->unk360, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave2", &this->unk364, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave2", (int *) &this->unk364, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave3", &this->unk368, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave3", (int *) &this->unk368, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave4", &this->unk36C, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave4", (int *) &this->unk36C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave5", &this->unk370, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave5", (int *) &this->unk370, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave6", &this->unk374, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave6", (int *) &this->unk374, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave7", &this->unk378, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave7", (int *) &this->unk378, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave8", &this->unk37C, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave8", (int *) &this->unk37C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave9", &this->unk380, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave9", (int *) &this->unk380, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave10", &this->unk384, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave10", (int *) &this->unk384, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave11", &this->unk388, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave11", (int *) &this->unk388, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave12", &this->unk38C, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave12", (int *) &this->unk38C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave13", &this->unk390, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave13", (int *) &this->unk390, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave14", &this->unk394, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave14", (int *) &this->unk394, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave15", &this->unk398, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave15", (int *) &this->unk398, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("SpawnPointIDWave16", &this->unk39C, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave16", (int *) &this->unk39C, 0) != 0) {
         return 1U;
     }
     if (this->unkB0.LoadLine(arg0, "OnComplete") != 0) {
@@ -344,7 +373,6 @@ s32 ElementalCombatController::LoadLine(MKIniLine *arg0) {
     }
     return (u8) (this->unk3DC.LoadLine(arg0, "OnWave16Complete") != 0);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'ElementalCombatController' to
 void ElementalCombatController::Deinit() {

@@ -3,6 +3,7 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDPositionProperty.h"
 #include "spyro/source/KDProperty.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>

@@ -1,6 +1,13 @@
 #include "spyro/source/ZapPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/Matrix.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -44,7 +51,7 @@ loop_10:
             sp28 = (f64) sp18;
             M2C_FIELD(var_r31_64, f64 *, 0) = (f64) (M2C_FIELD(var_r31_64, f64 *, 0) + temp_f0_83);
             var_r31_64->unk8 += (f32) sp28;
-            var_r31_64->unk24 = 2.0f * MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+            var_r31_64->unk24 = 2.0f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
             temp_r4_107 = M2C_FIELD(temp_r30_67, s32 *, 0x14);
             temp_r3_108 = this->unk134;
             temp_f6_110 = this->unk12C;
@@ -74,7 +81,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
 void ZapPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, MKVector4 arg3) {
     void *temp_r30_185;
     void *temp_r3_182;
@@ -84,15 +91,15 @@ void ZapPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2
         temp_r30_185 = M2C_FIELD(temp_r3_182, void **, 0x2C);
         M2C_FIELD(temp_r3_182, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
         M2C_FIELD(temp_r3_182, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-        M2C_FIELD(temp_r3_182, f32 *, 0x20) = (f32) MKRand_Int(&gViewSeed, 0, 3);
+        M2C_FIELD(temp_r3_182, f32 *, 0x20) = (f32) MKRand_Int((int *) &gViewSeed, 0, 3);
         M2C_FIELD(temp_r30_185, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r30_185, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r30_185, f32 *, 0x1C) = (f32) &arg2;
         M2C_FIELD(temp_r30_185, f32 *, 0x20) = 1.0f;
-        M2C_FIELD(temp_r30_185, f32 *, 0x18) = (f32) (2.0f * MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f));
+        M2C_FIELD(temp_r30_185, f32 *, 0x18) = (f32) (2.0f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
         M2C_FIELD(temp_r3_182, f64 *, 0x10) = (f64) M2C_FIELD(arg3, f64 *, 0);
         M2C_FIELD(temp_r3_182, f64 *, 0x18) = (f64) M2C_FIELD(arg3, f64 *, 8);
-        M2C_FIELD(temp_r3_182, f32 *, 0x24) = (f32) (2.0f * MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f));
+        M2C_FIELD(temp_r3_182, f32 *, 0x24) = (f32) (2.0f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
     }
 }
 #endif

@@ -1,30 +1,58 @@
 #include "spyro/source/IceBossStomp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
 #include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/PooledShatterProp.h"
 #include "spyro/source/Projectile.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"
 #include "spyro/source/KDMath.h"
@@ -460,7 +488,7 @@ loop_20:
                     sp380 = temp_f0_507;
                     sp1A8 = sp370.unk8 * 600.0f;
                     sp388 = (f64) sp1A8;
-                    sp1C = MKRand_Float(&gViewSeed, 1.0f, 1.1f);
+                    sp1C = MKRand_Float((int *) &gViewSeed, 1.0f, 1.1f);
                     ((IceBitsPS *) (M2C_FIELD(temp_r3_485, IceBitsPS **, 0xF4)))->Emit(*((MKVector3 *) &sp3A0), *((MKVector3 *) &sp380), sp1C);
                     var_r26_480 += 1;
                 } while (var_r26_480 < 5);
@@ -484,19 +512,19 @@ loop_20:
                     sp340 = sp30;
                     sp348 = (f64) sp38;
                     M2C_FIELD(temp_r26_536, f64 *, 8) = (f64) sp38;
-                    M2C_FIELD(temp_r26_536, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                    M2C_FIELD(temp_r26_536, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                    M2C_FIELD(temp_r26_536, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+                    M2C_FIELD(temp_r26_536, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                     M2C_FIELD(temp_r26_536, f32 *, 0x14) = (f32) M2C_FIELD(this->unk170, f32 *, 0xF4);
                 }
-                temp_f31_590 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+                temp_f31_590 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
                 sp168 = 0.0f;
                 sp160 = 0.0f;
                 sp164 = 200.0f;
                 sp2E8 = (f64) sp168;
                 sp2E0 = (f64) sp160;
-                temp_f29_603 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f28_608 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                sp190 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f29_603 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f28_608 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                sp190 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 sp194 = temp_f28_608;
                 sp198 = temp_f29_603;
                 sp2F0 = (f64) sp190;
@@ -516,8 +544,8 @@ loop_20:
                 sp320 = temp_f0_645;
                 sp158 = (f32) sp318 + (f32) sp2E8;
                 sp328 = (f64) sp158;
-                temp_f28_659 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f1_663 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f28_659 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f1_663 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 sp148 = temp_f28_659;
                 sp140 = temp_f1_663;
                 sp144 = 1.0f;
@@ -528,7 +556,7 @@ loop_20:
                 sp2D0 = temp_f0_674;
                 sp138 = (f32) sp2C8 * 310.0f;
                 sp2D8 = (f64) sp138;
-                sp18 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
+                sp18 = MKRand_Float((int *) &gViewSeed, 7.1f, 15.0f);
                 sp120 = temp_f31_590;
                 sp124 = temp_f31_590;
                 sp128 = 1.0f;
@@ -538,9 +566,9 @@ loop_20:
                 ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp320), *((MKVector3 *) &sp2D0), sp18, *((MKVector4 *) &sp2B0), 0.0f);
                 break;
             case 1:
-                temp_f29_710 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f28_715 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                sp110 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f29_710 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f28_715 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                sp110 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 sp114 = temp_f28_715;
                 sp118 = temp_f29_710;
                 sp280 = (f64) sp110;
@@ -555,13 +583,13 @@ loop_20:
                 sp2A0 = temp_f0_740;
                 spF8 = (f32) sp3A8 + (f32) sp298;
                 sp2A8 = (f64) spF8;
-                temp_f28_754 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                spE0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f28_754 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                spE0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 spE4 = 1.0f;
                 spE8 = temp_f28_754;
                 sp270 = (f64) spE0;
                 sp278 = (f64) spE8;
-                temp_f1_770 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+                temp_f1_770 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
                 spD0 = 1.0f;
                 spD4 = 0.0f;
                 spD8 = 0.25f;
@@ -570,15 +598,15 @@ loop_20:
                 sp260 = (f64) spD0;
                 sp268 = (f64) spD8;
                 ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) &sp2A0), *((MKVector3 *) &sp270), sp14, lit_845, (MKVector4) &sp260);
-                temp_f31_795 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+                temp_f31_795 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
                 sp98 = 0.0f;
                 sp90 = 0.0f;
                 sp94 = 200.0f;
                 sp218 = (f64) sp98;
                 sp210 = (f64) sp90;
-                temp_f29_808 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f28_813 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                spC0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f29_808 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f28_813 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                spC0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 spC4 = temp_f28_813;
                 spC8 = temp_f29_808;
                 sp220 = (f64) spC0;
@@ -598,8 +626,8 @@ loop_20:
                 sp250 = temp_f0_850;
                 sp88 = (f32) sp248 + (f32) sp218;
                 sp258 = (f64) sp88;
-                temp_f28_864 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f1_868 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f28_864 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f1_868 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 sp78 = temp_f28_864;
                 sp70 = temp_f1_868;
                 sp74 = 1.0f;
@@ -610,7 +638,7 @@ loop_20:
                 sp200 = temp_f0_879;
                 sp68 = (f32) sp1F8 * 310.0f;
                 sp208 = (f64) sp68;
-                sp10 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
+                sp10 = MKRand_Float((int *) &gViewSeed, 7.1f, 15.0f);
                 sp50 = temp_f31_795;
                 sp54 = 0.0f;
                 sp58 = 0.5f * temp_f31_795;
@@ -679,7 +707,7 @@ void IceBossStomp::EmitSnowRing() {
             M2C_FIELD(temp_r28_1017, f64 *, 8) = (f64) sp10;
             sp50 = (f64) sp10;
             M2C_FIELD(temp_r28_1017, f32 *, 0x18) = 0.6f;
-            M2C_FIELD(temp_r28_1017, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+            M2C_FIELD(temp_r28_1017, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
             M2C_FIELD(temp_r28_1017, f32 *, 0x14) = (f32) M2C_FIELD(gb.unk2A0, f32 *, 0xF4);
         }
         var_r29_983 += 1;
@@ -747,7 +775,7 @@ void IceBossStomp::SpawnIceCrystal(const MKVector3 &arg0) {
         temp_r30_1108->unk18 = 0.0f;
         temp_r30_1108->unk1C = 0.0f;
         temp_r30_1108->unk20 = 0.0f;
-        temp_r30_1108->unk28 = -3.1415927f * MKRand_Float(&gViewSeed, 0.25f, 0.4f);
+        temp_r30_1108->unk28 = -3.1415927f * MKRand_Float((int *) &gViewSeed, 0.25f, 0.4f);
         temp_r30_1108->unk2C = checked_cast<PooledShatterProp *, MKProp>(((MKPropDescriptor *) (M2C_FIELD(checked_cast<IceBossStompDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKPropDescriptor **, 0xF0)))->CreateInstance());
         temp_r3_1134 = temp_r30_1108->unk2C;
         if ((u32) temp_r3_1134 != 0U) {
@@ -791,7 +819,7 @@ void IceBossStomp::SpawnIceCrystal(const MKVector3 &arg0) {
                 spC0 = temp_f0_1222;
                 sp48 = spB0.unk8 * 600.0f;
                 spC8 = (f64) sp48;
-                sp8 = MKRand_Float(&gViewSeed, 1.0f, 1.1f);
+                sp8 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.1f);
                 ((IceBitsPS *) (M2C_FIELD(temp_r3_1200, IceBitsPS **, 0xF4)))->Emit(*((MKVector3 *) &spE0), *((MKVector3 *) &spC0), sp8);
                 var_r29_1195 += 1;
             } while (var_r29_1195 < 5);
@@ -815,8 +843,8 @@ void IceBossStomp::SpawnIceCrystal(const MKVector3 &arg0) {
                 sp80 = sp20;
                 sp88 = (f64) sp28;
                 M2C_FIELD(temp_r29_1251, f64 *, 8) = (f64) sp28;
-                M2C_FIELD(temp_r29_1251, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                M2C_FIELD(temp_r29_1251, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                M2C_FIELD(temp_r29_1251, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+                M2C_FIELD(temp_r29_1251, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r29_1251, f32 *, 0x14) = (f32) M2C_FIELD(this->unk170, f32 *, 0xF4);
             }
         }
@@ -1232,7 +1260,7 @@ block_22:
             M2C_FIELD(temp_r3_1828, f64 *, 0x18) = (f64) sp30;
         }
         temp_r3_1840 = this->unk160;
-        temp_f0_1841 = 1000.0f * MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+        temp_f0_1841 = 1000.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
         temp_r3_1840->unk38 = temp_f0_1841;
         temp_r3_1843 = temp_r3_1840->unk3C;
         if (temp_r3_1843 != NULL) {
@@ -1257,9 +1285,9 @@ block_22:
         temp_f27_1901 = 1.0f - (temp_f1_1892 / 4000000.0f);
         if (temp_f27_1901 > 0.0f) {
             sp32C = 0;
-            temp_f26_1909 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f28_1914 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_1914, temp_f26_1909);
+            temp_f26_1909 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f28_1914 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_1914, temp_f26_1909);
             sp198.operator*(50.0f);
             sp18 = sp198 * (f64) temp_f27_1901;
             sp328 = 0x417;
@@ -1747,7 +1775,7 @@ s32 IceBossStompDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2685;
 
     var_r31_2685 = 0;
-    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("CrystalName", &this->unkF8, 0) != 0) || (DataMap_LoadLine(arg0, "Element", &ElementTypeDataMap, (u32 *) &this->unkFC) != 0)) {
+    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("CrystalName", &this->unkF8, 0) != 0) || (DataMap_LoadLine(arg0, "Element", &ElementTypeDataMap, (unsigned int *) &this->unkFC) != 0)) {
         var_r31_2685 = 1;
     }
     return var_r31_2685;

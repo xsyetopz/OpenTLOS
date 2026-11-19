@@ -1,16 +1,24 @@
 #include "spyro/source/Bird.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -170,7 +178,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     sp178.unk30 = M2C_BITWISE(f64, sp178);
     sp178.unk38 = sp178.unk8;
     if ((arg1 != 0) && (temp_r5_196 = this->unk178, ((temp_r5_196 == 0) == 0))) {
-        temp_r3_205 = ((u8 *) this->unk174) + (MKRand_Int(&gViewSeed, 0, temp_r5_196) * 0x10);
+        temp_r3_205 = ((u8 *) this->unk174) + (MKRand_Int((int *) &gViewSeed, 0, temp_r5_196) * 0x10);
         temp_f1_206 = M2C_FIELD(temp_r3_205, f64 *, 0);
         sp18 = temp_f1_206;
         sp20 = M2C_FIELD(temp_r3_205, f64 *, 8);
@@ -485,17 +493,15 @@ void BirdCritter::SetFlyingEnterState(Bird *arg0) {
     arg0->unk54 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void BirdCritter::SetIdleState(Bird *arg0) {
     s32 temp_r31_1022;
 
-    arg0->unk60 = MKRand_Int(&gViewSeed, 0, 3);
+    arg0->unk60 = MKRand_Int((int *) &gViewSeed, 0, 3);
     temp_r31_1022 = arg0->unk60;
     arg0->unk50 = M2C_FIELD((checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (temp_r31_1022 * 4)), void **, 0x70);
     arg0->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk50, s16 *, 4) / 30.0f));
     arg0->unk54 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void BirdCritter::Update() {
@@ -575,7 +581,7 @@ loop_63:
             if (temp_f1_1082 <= 0.0f) {
                 KDSound_Play3d(M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x90), temp_r30_1068 + 0x30, 0U, -1, 0.0f, 0U);
                 temp_f31_1098 = M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C);
-                temp_r30_1068->unk8C = MKRand_Float(&gViewSeed, M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x88), temp_f31_1098);
+                temp_r30_1068->unk8C = MKRand_Float((int *) &gViewSeed, M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x88), temp_f31_1098);
             } else {
                 temp_r30_1068->unk8C = temp_f1_1082 - gUpdateTimeDelta;
             }
@@ -740,7 +746,7 @@ loop_63:
                 if ((u8) temp_r30_1068->unk88 != 0) {
                     SetFlyingExitState(temp_r30_1068);
                 } else {
-                    FindNewFlyParameters(temp_r30_1068, MKRand_Int(&gViewSeed, 0, 4) == 0);
+                    FindNewFlyParameters(temp_r30_1068, MKRand_Int((int *) &gViewSeed, 0, 4) == 0);
                 }
             }
             break;
@@ -780,14 +786,14 @@ loop_7:
         ((KDUniformSpline *) (temp_r30_1502 + 0x68))->Init(5, 0U);
         if ((s32) M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x90) != 0) {
             temp_f30_1514 = M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x8C);
-            temp_r30_1502->unk8C = MKRand_Float(&gViewSeed, M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x88), temp_f30_1514);
+            temp_r30_1502->unk8C = MKRand_Float((int *) &gViewSeed, M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x88), temp_f30_1514);
         }
         ((Volume *) &sp8)->GetRandPos();
         temp_r5_1526 = this->unk178;
         sp18 = sp8;
         sp20 = sp10;
         if (temp_r5_1526 != 0) {
-            temp_r4_1540 = ((u8 *) this->unk174) + (MKRand_Int(&gViewSeed, 0, temp_r5_1526) * 0x10);
+            temp_r4_1540 = ((u8 *) this->unk174) + (MKRand_Int((int *) &gViewSeed, 0, temp_r5_1526) * 0x10);
             sp18 = M2C_FIELD(temp_r4_1540, f64 *, 0);
             sp20 = M2C_FIELD(temp_r4_1540, f64 *, 8);
             M2C_STRUCT_COPY(temp_r30_1502, &Matrix::identity, 0x40);
@@ -935,17 +941,15 @@ void BirdCritterDescriptor::LoadDone() {
     this->unk84 = (s32) var_r3_1860;
 }
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[12], long *)' does
 s32 BirdCritterDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1882;
 
     var_r31_1882 = 0;
-    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "randomSound", &this->unk90) != 0) || (arg0->LoadFloat("minSoundDelay", &this->unk88, 0) != 0) || (arg0->LoadFloat("maxSoundDelay", &this->unk8C, 0) != 0)) {
+    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "randomSound", (int *) &this->unk90) != 0) || (arg0->LoadFloat("minSoundDelay", &this->unk88, 0) != 0) || (arg0->LoadFloat("maxSoundDelay", &this->unk8C, 0) != 0)) {
         var_r31_1882 = 1;
     }
     return var_r31_1882;
 }
-#endif
 
 void BirdCritterDescriptor::Init() {
     KDPropDescriptor::Init();

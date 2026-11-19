@@ -113,7 +113,7 @@ inline Catapult::~Catapult() {
             this->unk10C.Deinit();
         }
         if ((&this->unkA0 != NULL) && (&this->unkA0 != NULL)) {
-            KDSound_Stop(&this->unkA0);
+            KDSound_Stop((int *) &this->unkA0);
         }
         temp_cr0_eq_43 = this == NULL;
         if (temp_cr0_eq_43 == 0) {

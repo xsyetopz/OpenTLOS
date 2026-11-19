@@ -1,7 +1,13 @@
 #include "spyro/source/PropPool.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/Matrix.h"
 #include <m2c_macros.h>
 
 extern MKSceneManager *gMK;
@@ -211,17 +217,15 @@ loop_74:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 PropPool::LoadLine(MKIniLine *arg0) {
     s32 var_r31_488;
 
     var_r31_488 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("LavaBalls", &this->unk4C, 0) != 0) || (arg0->LoadInt("FireDynamite", &this->unk50, 0) != 0) || (arg0->LoadInt("ElecDynamite", &this->unk54, 0) != 0) || (arg0->LoadInt("IceDynamite", &this->unk58, 0) != 0) || (arg0->LoadInt("EarthDynamite", &this->unk5C, 0) != 0) || (arg0->LoadInt("SteamFireBall", &this->unk60, 0) != 0) || (arg0->LoadInt("Gems", &this->unk64, 0) != 0) || (arg0->LoadInt("MagmaSquirts", &this->unk68, 0) != 0) || (arg0->LoadInt("Sludges", &this->unk6C, 0) != 0) || (arg0->LoadInt("MagicFireballs", &this->unk70, 0) != 0) || (arg0->LoadInt("IceBossStomps", &this->unk74, 0) != 0) || (arg0->LoadInt("HotSpits", &this->unk78, 0) != 0) || (arg0->LoadInt("FireDropBoxes", &this->unk7C, 0) != 0) || (arg0->LoadInt("EarthDropBoxes", &this->unk80, 0) != 0) || (arg0->LoadInt("IceDropBoxes", &this->unk84, 0) != 0) || (arg0->LoadInt("ElecDropBoxes", &this->unk88, 0) != 0) || (arg0->LoadInt("SonicAttacks", &this->unk8C, 0) != 0) || (arg0->LoadInt("BambooShards", &this->unk90, 0) != 0) || (arg0->LoadInt("IceShards", &this->unk94, 0) != 0) || (arg0->LoadInt("SpeedwayAA", &this->unk98, 0) != 0) || (arg0->LoadInt("CynderElec", &this->unk9C, 0) != 0) || (arg0->LoadInt("IceSquirts", &this->unkA0, 0) != 0) || (arg0->LoadInt("PoisonBombs", &this->unkA4, 0) != 0) || (arg0->LoadInt("MagicDrains", &this->unkA8, 0) != 0) || (arg0->LoadInt("FlyingMonkeys", &this->unkAC, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("LavaBalls", (int *) &this->unk4C, 0) != 0) || (arg0->LoadInt("FireDynamite", (int *) &this->unk50, 0) != 0) || (arg0->LoadInt("ElecDynamite", (int *) &this->unk54, 0) != 0) || (arg0->LoadInt("IceDynamite", (int *) &this->unk58, 0) != 0) || (arg0->LoadInt("EarthDynamite", (int *) &this->unk5C, 0) != 0) || (arg0->LoadInt("SteamFireBall", (int *) &this->unk60, 0) != 0) || (arg0->LoadInt("Gems", (int *) &this->unk64, 0) != 0) || (arg0->LoadInt("MagmaSquirts", (int *) &this->unk68, 0) != 0) || (arg0->LoadInt("Sludges", (int *) &this->unk6C, 0) != 0) || (arg0->LoadInt("MagicFireballs", (int *) &this->unk70, 0) != 0) || (arg0->LoadInt("IceBossStomps", (int *) &this->unk74, 0) != 0) || (arg0->LoadInt("HotSpits", (int *) &this->unk78, 0) != 0) || (arg0->LoadInt("FireDropBoxes", (int *) &this->unk7C, 0) != 0) || (arg0->LoadInt("EarthDropBoxes", (int *) &this->unk80, 0) != 0) || (arg0->LoadInt("IceDropBoxes", (int *) &this->unk84, 0) != 0) || (arg0->LoadInt("ElecDropBoxes", (int *) &this->unk88, 0) != 0) || (arg0->LoadInt("SonicAttacks", (int *) &this->unk8C, 0) != 0) || (arg0->LoadInt("BambooShards", (int *) &this->unk90, 0) != 0) || (arg0->LoadInt("IceShards", (int *) &this->unk94, 0) != 0) || (arg0->LoadInt("SpeedwayAA", (int *) &this->unk98, 0) != 0) || (arg0->LoadInt("CynderElec", (int *) &this->unk9C, 0) != 0) || (arg0->LoadInt("IceSquirts", (int *) &this->unkA0, 0) != 0) || (arg0->LoadInt("PoisonBombs", (int *) &this->unkA4, 0) != 0) || (arg0->LoadInt("MagicDrains", (int *) &this->unkA8, 0) != 0) || (arg0->LoadInt("FlyingMonkeys", (int *) &this->unkAC, 0) != 0)) {
         var_r31_488 = 1;
     }
     return var_r31_488;
 }
-#endif
 
 void PropPool::Init() {
     MKProp::Init();

@@ -1,10 +1,21 @@
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKChunkSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFFTWater.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKLevelChunk.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKOcean.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "dolphin/os.h"
 #include "common/Source/Utils.h"
 #include <m2c_macros.h>
@@ -65,7 +76,7 @@ loop_1:
             var_r28_49 = temp_r3_57->GetSectionName();
         }
         if ((var_r28_49 != NULL) && (stricmp(var_r28_49, "HEADER") != 0) && (stricmp(var_r28_49, "BOUNDING_REGION") != 0) && (stricmp(var_r28_49, "SWAP_GROUP_INFO") != 0)) {
-            this->unkC0->LoadInt("pool", &this->unkBC, 0);
+            this->unkC0->LoadInt("pool", (int *) &this->unkBC, 0);
             this->unkCC = CreateDescriptor(var_r28_49, &this->unkC8);
         }
         if (((u32) (OSGetTick() - temp_r30_30) <= temp_r31_34) || ((u8) *MKChunkSceneManager::bChunksUseHeaps == 0)) {

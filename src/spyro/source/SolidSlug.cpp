@@ -1,15 +1,32 @@
 #include "spyro/source/SolidSlug.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/Projectile.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_PLACEHOLDER;
@@ -263,7 +280,7 @@ s32 SolidSlugDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_461;
 
     var_r31_461 = 0;
-    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (arg0->LoadBool("PlayHitMissSounds", (u8 *) &this->unkF0, 0) != 0) || (KDSound_LoadLine(arg0, "sndMiss", &this->unkF4) != 0)) {
+    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (arg0->LoadBool("PlayHitMissSounds", (u8 *) &this->unkF0, 0) != 0) || (KDSound_LoadLine(arg0, "sndMiss", (int *) &this->unkF4) != 0)) {
         var_r31_461 = 1;
     }
     return var_r31_461;

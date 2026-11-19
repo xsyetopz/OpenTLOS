@@ -1,26 +1,70 @@
 #include "spyro/source/EnemyGoals_Death.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
 #include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -821,15 +865,15 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
                 spC8 = temp_f0_1388;
                 sp30 = (f32) sp120 * 800.0f;
                 spD0 = (f64) sp30;
-                sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+                sp10 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
                 gb.EmitDust(*((MKVector3 *) &spE8), *((MKVector3 *) &spC8), sp10, 0.0f);
                 var_r28_1338 += 1;
             } while (var_r28_1338 < 0x14);
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp14C = 0;
-                temp_f23_1422 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f25_1427 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f25_1427, temp_f23_1422);
+                temp_f23_1422 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f25_1427 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f25_1427, temp_f23_1422);
                 sp18 = spA8 * 5.398241246e-315;
                 sp148 = 0x417;
                 sp150 = sp18;
@@ -1087,7 +1131,6 @@ u8 EnemyGoal_DyingStoned::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void EnemyGoal_DyingStoned::Activate() {
     f64 spE8;
     f64 spE0;
@@ -1156,9 +1199,9 @@ void EnemyGoal_DyingStoned::Activate() {
     }
     var_r30_1972 = 0;
     do {
-        temp_f29_1979 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f28_1984 = MKRand_Float(&gViewSeed, 0.0f, 3.0f);
-        sp50 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f29_1979 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f28_1984 = MKRand_Float((int *) &gViewSeed, 0.0f, 3.0f);
+        sp50 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp54 = temp_f28_1984;
         sp58 = temp_f29_1979;
         sp90 = (f64) sp50;
@@ -1174,9 +1217,9 @@ void EnemyGoal_DyingStoned::Activate() {
         spE0 = temp_f0_2011;
         sp38 = temp_r3_2003->unk588.unk8 + (f32) spA8;
         spE8 = (f64) sp38;
-        temp_f28_2025 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f29_2030 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp20 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f28_2025 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f29_2030 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp20 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp24 = temp_f29_2030;
         sp28 = temp_f28_2025;
         sp80 = (f64) sp20;
@@ -1186,12 +1229,11 @@ void EnemyGoal_DyingStoned::Activate() {
         spD0 = temp_f0_2044;
         sp18 = (f32) sp88 * 300.0f;
         spD8 = (f64) sp18;
-        sp8 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
+        sp8 = MKRand_Float((int *) &gViewSeed, 3.0f, 5.0f);
         gb.EmitDust(*((MKVector3 *) &spE0), *((MKVector3 *) &spD0), sp8, 0.0f);
         var_r30_1972 += 1;
     } while (var_r30_1972 < 5);
 }
-#endif
 
 void EnemyGoal_DyingFrozen::Terminate() {
     this->unk8 = 1;

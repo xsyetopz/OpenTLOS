@@ -1,4 +1,5 @@
 #include "common/Source/Debug.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKFont.h"
 #include <m2c_macros.h>
 

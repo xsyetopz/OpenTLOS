@@ -1,34 +1,69 @@
 #include "spyro/source/Projectile.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
 #include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/CynderElecAttack.h"
 #include "spyro/source/Dynamite.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FlyingMonkey.h"
+#include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HotSpit.h"
 #include "spyro/source/IceBossStomp.h"
 #include "spyro/source/IceShard.h"
 #include "spyro/source/IceSquirt.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/LavaBall.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/LiquidFX.h"
 #include "spyro/source/MagicDrain.h"
 #include "spyro/source/MagicFireball.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/PoisonBomb.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/ShapedTrailFX.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/Sludge.h"
 #include "spyro/source/SolidSlug.h"
 #include "spyro/source/SonicAttack.h"
 #include "spyro/source/SpeedwayAA.h"
 #include "spyro/source/SteamFireBall.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -459,12 +494,12 @@ void Projectile::Init() {
     this->unk128 = 0;
 }
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[10], long *)' does
+#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 ProjectileDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_920;
 
     var_r31_920 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndTravel", &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "sndLaunch", &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "sndCollide", &this->unkEC) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndTravel", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "sndLaunch", (int *) &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "sndCollide", (int *) &this->unkEC) != 0)) {
         var_r31_920 = 1;
     }
     return var_r31_920;

@@ -1,6 +1,16 @@
 #include "spyro/source/CharacterDojoFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/EmbersPS.h"
 #include "common/Source/StdMath.h"
@@ -10,7 +20,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void CharacterDojoFX::Emit() {
     f64 sp88;
     f64 sp80;
@@ -55,7 +64,7 @@ void CharacterDojoFX::Emit() {
                 sp80 = sp30;
                 sp88 = (f64) sp38;
                 sp8 = 3.0f * M2C_FIELD(M2C_FIELD(temp_r31_41, void **, 0), f32 *, 0x10);
-                temp_f1_85 = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+                temp_f1_85 = 100.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
                 sp18 = 0.0f;
                 sp10 = 0.0f;
                 sp14 = temp_f1_85;
@@ -72,7 +81,6 @@ void CharacterDojoFX::Emit() {
         } while (var_r29_36 < 5);
     }
 }
-#endif
 
 void CharacterDojoFX::Enable(bool arg0, MKVector4 arg1) {
     if (arg0 != 0) {

@@ -1,11 +1,44 @@
 #include "spyro/source/Elevator.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -245,7 +278,6 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void Elevator::PropUpdate() {
     s32 temp_r0_469;
 
@@ -254,7 +286,7 @@ void Elevator::PropUpdate() {
         temp_r0_469 = this->unk150;
         switch (temp_r0_469) {                      /* irregular */
         case 0:
-            this->unk148 = this->unkB8 + MKRand_Float(&gViewSeed, 0.0f, 2.0f);
+            this->unk148 = this->unkB8 + MKRand_Float((int *) &gViewSeed, 0.0f, 2.0f);
             this->unk150 = 1;
             break;
         case 1:
@@ -273,9 +305,7 @@ void Elevator::PropUpdate() {
         ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->ForceUpdate((u32) this->unk70.unkC);
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void Elevator::Reset() {
     f64 sp10;
     f64 sp8;
@@ -290,7 +320,7 @@ void Elevator::Reset() {
     this->unkE0.unk38 = (f32) sp10;
     (*(f32 *) ((u8 *) &sp8 + 0x4)) = temp_f3_540;
     this->unkE0.unk3C = 1.0f;
-    this->unk148 = this->unkB8 + MKRand_Float(&gViewSeed, 0.0f, 2.0f);
+    this->unk148 = this->unkB8 + MKRand_Float((int *) &gViewSeed, 0.0f, 2.0f);
     this->unk150 = 1;
     if (this->unk140 >= this->unk128) {
         this->unk154 = 1;
@@ -300,7 +330,6 @@ void Elevator::Reset() {
     this->unk13C = 50.0f;
     ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->ForceUpdate((u32) this->unk70.unkC);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void Elevator::LoadDone() {

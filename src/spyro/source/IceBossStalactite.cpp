@@ -1,29 +1,58 @@
 #include "spyro/source/IceBossStalactite.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Collectable.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/WaterDripPS.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -179,18 +208,16 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void IceBossStalactiteSpawner::SpawnSingleAtPos(const MKVector3 &arg0) {
     IceBossStalactite ***temp_r3_292;
 
-    M2C_FIELD(this, f32 *, 0x1C) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+    M2C_FIELD(this, f32 *, 0x1C) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
     temp_r3_292 = this->unk10 - 4;
     this->unk10 = temp_r3_292;
     ((IceBossStalactite *) (**temp_r3_292))->Spawn(arg0, 1U, 0U);
 }
-#endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'IceBossStalactiteSpawner' to
 void IceBossStalactiteSpawner::Spawn(const MKVector3 &arg0) {
     IceBossStalactiteSpawner sp8;
     IceBossStalactite ***temp_r5_331;
@@ -208,7 +235,7 @@ loop_2:
     }
     this->unk0 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk8 = M2C_FIELD(&arg0, f64 *, 8);
-    M2C_FIELD(this, f32 *, 0x1C) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+    M2C_FIELD(this, f32 *, 0x1C) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
     temp_r5_331 = this->unk10;
     var_r3_332 = temp_r5_331;
     do {
@@ -557,7 +584,7 @@ void IceBossStalactite::Collided(MKCollisionResult *arg0) {
                 spE0 = temp_f0_862;
                 sp38 = spD0.unk8 * 600.0f;
                 spE8 = (f64) sp38;
-                sp8 = MKRand_Float(&gViewSeed, 0.4f, 0.8f);
+                sp8 = MKRand_Float((int *) &gViewSeed, 0.4f, 0.8f);
                 ((IceBitsPS *) (M2C_FIELD(temp_r3_840, IceBitsPS **, 0x16C)))->Emit(*((MKVector3 *) &this->unk1E8), *((MKVector3 *) &spE0), sp8);
                 var_r28_834 += 1;
             } while (var_r28_834 < 0x19);
@@ -580,8 +607,8 @@ void IceBossStalactite::Collided(MKCollisionResult *arg0) {
                 spA0 = sp20;
                 spA8 = (f64) sp28;
                 M2C_FIELD(temp_r28_891, f64 *, 8) = (f64) sp28;
-                M2C_FIELD(temp_r28_891, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                M2C_FIELD(temp_r28_891, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                M2C_FIELD(temp_r28_891, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+                M2C_FIELD(temp_r28_891, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r28_891, f32 *, 0x14) = (f32) M2C_FIELD(this->unk224, f32 *, 0xF4);
             }
             if (!(((u8) this->unk244 >> 2U) & 1)) {
@@ -598,7 +625,7 @@ block_46:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void IceBossStalactite::StickInGround(const MKVector3 &arg0) {
     MKVector3 sp58;
     f64 sp50;
@@ -614,10 +641,10 @@ void IceBossStalactite::StickInGround(const MKVector3 &arg0) {
     f64 temp_f0_1010;
 
     MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk240, &sp58);
-    KDSound_Stop(&this->unk230);
+    KDSound_Stop((int *) &this->unk230);
     KDSound_Play3d(GS_IceBossIceEmbed, &sp58, 0U, -1, 0.0f, 0U);
     this->unk244 |= 0x20;
-    temp_f1_1006 = MKRand_Float(&gViewSeed, 0.85f, 0.95f);
+    temp_f1_1006 = MKRand_Float((int *) &gViewSeed, 0.85f, 0.95f);
     temp_f0_1010 = this->unk208 - M2C_BITWISE(f64, sp58);
     sp8 = temp_f0_1010;
     sp28 = temp_f0_1010;
@@ -637,7 +664,6 @@ void IceBossStalactite::StickInGround(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void IceBossStalactite::Fire(const MKVector3 &arg0) {
     this->unk244 |= 0x80;
     this->unk244 &= ~0x10;
@@ -645,9 +671,8 @@ void IceBossStalactite::Fire(const MKVector3 &arg0) {
     this->unk1A8 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk1B0 = M2C_FIELD(&arg0, f64 *, 8);
     this->unk228 = 6.2831855f;
-    this->unk218 = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+    this->unk218 = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
 }
-#endif
 
 void IceBossStalactite::Drop(bool arg0, bool arg1) {
     f64 sp20;
@@ -791,13 +816,12 @@ void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void IceBossStalactite::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {
     f32 temp_f1_1367;
     s32 var_r5_1364;
 
     Shatterable::Shatter(arg0, arg1, arg2, arg3, this->unk244 & 1, (((u8) this->unk246 >> 7U) & 1) == 0);
-    KDSound_Stop(&this->unk230);
+    KDSound_Stop((int *) &this->unk230);
     this->unk244 &= ~0x80;
     this->unk244 &= ~0x20;
     this->unk228 = 0.0f;
@@ -814,7 +838,6 @@ void IceBossStalactite::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 
         ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x18)))->Spawn(*((MKVector3 *) &this->unk208), var_r5_1364, 200.0f, 500.0f, -1, NULL);
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void IceBossStalactite::Message(MKMessage *arg0) {
@@ -837,7 +860,7 @@ void IceBossStalactite::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void IceBossStalactite::MeltFX() {
     Matrix sp140;
     M2C_UNK sp13C;
@@ -907,13 +930,13 @@ void IceBossStalactite::MeltFX() {
             var_f30_1487 = 1.0f;
         }
         var_f29_1499 = this->unk23C;
-        temp_f30_1500 = MKRand_Float(&gViewSeed, -5.0f, 5.0f) * var_f30_1487;
+        temp_f30_1500 = MKRand_Float((int *) &gViewSeed, -5.0f, 5.0f) * var_f30_1487;
         if (var_f29_1499 < 1.0f) {
 
         } else {
             var_f29_1499 = 1.0f;
         }
-        temp_f0_1512 = MKRand_Float(&gViewSeed, -5.0f, 5.0f) * var_f29_1499;
+        temp_f0_1512 = MKRand_Float((int *) &gViewSeed, -5.0f, 5.0f) * var_f29_1499;
         sp88 = temp_f30_1500;
         sp80 = temp_f0_1512;
         sp84 = 0.0f;
@@ -1347,15 +1370,15 @@ block_6:
                 temp_r0_2107 = this->unk220->unk20;
                 switch (temp_r0_2107) {             /* switch 1; irregular */
                 case 2:                             /* switch 1 */
-                    temp_f31_2120 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+                    temp_f31_2120 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
                     sp180 = 0.0f;
                     sp178 = 0.0f;
                     sp17C = 200.0f;
                     sp330 = (f64) sp180;
                     sp328 = (f64) sp178;
-                    temp_f28_2133 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f27_2138 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    sp1A8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f28_2133 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f27_2138 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    sp1A8 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     sp1AC = temp_f27_2138;
                     sp1B0 = temp_f28_2133;
                     sp338 = (f64) sp1A8;
@@ -1378,8 +1401,8 @@ block_6:
                     sp378 = temp_f0_2180;
                     sp170 = (f32) sp370 + (f32) sp330;
                     sp380 = (f64) sp170;
-                    temp_f27_2194 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f1_2198 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f27_2194 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f1_2198 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     sp160 = temp_f27_2194;
                     sp158 = temp_f1_2198;
                     sp15C = 1.0f;
@@ -1390,7 +1413,7 @@ block_6:
                     sp318 = temp_f0_2209;
                     sp150 = (f32) sp310 * 310.0f;
                     sp320 = (f64) sp150;
-                    sp18 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
+                    sp18 = MKRand_Float((int *) &gViewSeed, 7.1f, 15.0f);
                     sp138 = temp_f31_2120;
                     sp13C = temp_f31_2120;
                     sp140 = 1.0f;
@@ -1400,15 +1423,15 @@ block_6:
                     ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp378), *((MKVector3 *) &sp318), sp18, *((MKVector4 *) &sp2F8), 0.0f);
                     break;
                 case 1:                             /* switch 1 */
-                    temp_f31_2248 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+                    temp_f31_2248 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
                     sp100 = 0.0f;
                     spF8 = 0.0f;
                     spFC = 200.0f;
                     sp2A0 = (f64) sp100;
                     sp298 = (f64) spF8;
-                    temp_f27_2261 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f28_2266 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    sp128 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f27_2261 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f28_2266 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    sp128 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     sp12C = temp_f28_2266;
                     sp130 = temp_f27_2261;
                     sp2A8 = (f64) sp128;
@@ -1431,8 +1454,8 @@ block_6:
                     sp2E8 = temp_f0_2308;
                     spF0 = (f32) sp2E0 + (f32) sp2A0;
                     sp2F0 = (f64) spF0;
-                    temp_f29_2322 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f1_2326 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f29_2322 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f1_2326 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     spE0 = temp_f29_2322;
                     spD8 = temp_f1_2326;
                     spDC = 1.0f;
@@ -1443,7 +1466,7 @@ block_6:
                     sp288 = temp_f0_2337;
                     spD0 = (f32) sp280 * 310.0f;
                     sp290 = (f64) spD0;
-                    temp_f1_2349 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
+                    temp_f1_2349 = MKRand_Float((int *) &gViewSeed, 7.1f, 15.0f);
                     spB8 = temp_f31_2248;
                     spBC = 0.0f;
                     sp14 = temp_f1_2349;
@@ -1458,10 +1481,10 @@ block_6:
                     spA4 = 1.0f;
                     sp238 = (f64) sp98;
                     sp240 = (f64) spA0;
-                    sp10 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                    temp_f30_2389 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f29_2394 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f1_2398 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    sp10 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+                    temp_f30_2389 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f29_2394 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f1_2398 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     spB0 = temp_f30_2389;
                     spA8 = temp_f1_2398;
                     spAC = temp_f29_2394;

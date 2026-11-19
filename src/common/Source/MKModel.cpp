@@ -1,13 +1,16 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKDynamicBone.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKGrass.h"
@@ -555,14 +558,12 @@ s32 MKModel_IsSubObjectEnabled(const MKModel *arg0, SubObjectType arg1, int arg2
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_SubObjectExists(const MKModel *, SubObjectType,
 s32 MKModel_GetSubObjectIndex(const MKModel *arg0, SubObjectType arg1, const char *arg2) {
     s32 sp8;
 
-    MKModel_SubObjectExists(arg0, arg1, arg2, &sp8);
+    MKModel_SubObjectExists(arg0, arg1, arg2, (int *) &sp8);
     return sp8;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 s32 MKModel_SubObjectExists(const MKModel *arg0, SubObjectType arg1, const char *arg2, int *arg3) {
@@ -773,15 +774,13 @@ s8 *MKModel_GetRefPointName(const MKModel *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_RefPointExists(const MKModel *, const char *, long
 s32 MKModel_GetRefPointIndex(const MKModel *arg0, const char *arg1) {
     s32 sp8;
 
     sp8 = 0;
-    MKModel_RefPointExists(arg0, arg1, &sp8);
+    MKModel_RefPointExists(arg0, arg1, (int *) &sp8);
     return sp8;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 s32 MKModel_RefPointExists(const MKModel *arg0, const char *arg1, int *arg2) {

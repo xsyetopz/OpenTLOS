@@ -1,24 +1,51 @@
 #include "spyro/source/Crate.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Collectable.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDShatter2.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SeeSaw.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/ShockWave.h"
 #include "spyro/source/SpyroTools.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -26,7 +53,6 @@
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 f64 fmod(void ***, f32, f64, f64);                  /* extern */
@@ -219,7 +245,7 @@ loop_3:
         temp_r0_385 = this->unk0;
         if (var_r25_367 < (s32) temp_r0_385) {
             temp_r0_378 = var_r27_368 + 2;
-            gAssertBool = MKModel_SubObjectExists(arg0, (SubObjectType) 0, *(unshatteredNames + var_r28_369), &sp10);
+            gAssertBool = MKModel_SubObjectExists(arg0, (SubObjectType) 0, *(unshatteredNames + var_r28_369), (int *) &sp10);
             var_r28_369 += 4;
             var_r25_367 += 1;
             var_r27_368 += 2;
@@ -236,7 +262,7 @@ loop_8:
         temp_r0_416 = this->unk24;
         if (var_r25_398 < (s32) temp_r0_416) {
             temp_r0_409 = var_r28_399 + 0x26;
-            gAssertBool = MKModel_SubObjectExists(arg0, (SubObjectType) 0, *(unshatteredNames + 0x40 + var_r27_400), &spC);
+            gAssertBool = MKModel_SubObjectExists(arg0, (SubObjectType) 0, *(unshatteredNames + 0x40 + var_r27_400), (int *) &spC);
             var_r27_400 += 4;
             var_r25_398 += 1;
             var_r28_399 += 2;
@@ -253,7 +279,7 @@ loop_13:
         temp_r0_447 = this->unk48;
         if (var_r26_429 < (s32) temp_r0_447) {
             temp_r0_440 = var_r31_430 + 0x4A;
-            gAssertBool = MKModel_SubObjectExists(arg0, (SubObjectType) 0, *(unshatteredNames + 0x80 + var_r28_431), &sp8);
+            gAssertBool = MKModel_SubObjectExists(arg0, (SubObjectType) 0, *(unshatteredNames + 0x80 + var_r28_431), (int *) &sp8);
             var_r28_431 += 4;
             var_r26_429 += 1;
             var_r31_430 += 2;
@@ -271,7 +297,7 @@ u8 ShatterObjectDescriptor::LoadLine(MKIniLine *arg0, const char *arg1) {
     MKIniLine *var_r31_601;
     MKIniLine *var_r31_633;
 
-    if ((arg0->LoadString("", &pCollisionName, 0) != 0) || (arg0->LoadFloat("", &this->unk6C, 0) != 0) || (arg0->LoadFloat("", &this->unk70, 0) != 0) || (arg0->LoadFloat("", &this->unk78, 0) != 0) || (arg0->LoadFloat("", &this->unk7C, 0) != 0) || (arg0->LoadFloat("", &this->unk80, 0) != 0) || (arg0->LoadFloat("", &this->unk84, 0) != 0) || (arg0->LoadFloat("", &this->unk74, 0) != 0) || (KDSound_LoadLine(arg0, "", &this->unk8C) != 0)) {
+    if ((arg0->LoadString("", &pCollisionName, 0) != 0) || (arg0->LoadFloat("", &this->unk6C, 0) != 0) || (arg0->LoadFloat("", &this->unk70, 0) != 0) || (arg0->LoadFloat("", &this->unk78, 0) != 0) || (arg0->LoadFloat("", &this->unk7C, 0) != 0) || (arg0->LoadFloat("", &this->unk80, 0) != 0) || (arg0->LoadFloat("", &this->unk84, 0) != 0) || (arg0->LoadFloat("", &this->unk74, 0) != 0) || (KDSound_LoadLine(arg0, "", (int *) &this->unk8C) != 0)) {
         return 1U;
     }
     if (arg0->IsField("") != 0) {
@@ -943,7 +969,7 @@ s32 Crate::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1907;
 
     var_r31_1907 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadString("", (s8 **) &this->unk17C, 1) != 0) || (arg0->LoadInt("", &this->unk180, 0) != 0) || (arg0->LoadInt("", &this->unk184, 0) != 0) || (this->unkE0.LoadLine(arg0), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0))) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadString("", (s8 **) &this->unk17C, 1) != 0) || (arg0->LoadInt("", (int *) &this->unk180, 0) != 0) || (arg0->LoadInt("", (int *) &this->unk184, 0) != 0) || (this->unkE0.LoadLine(arg0), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0))) {
         var_r31_1907 = 1;
     }
     return var_r31_1907;
@@ -1007,7 +1033,7 @@ void Crate::Init() {
 #if 0 // DRAFT: undefined identifier 'CRATE_REF_TARGET'
 void CrateDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    MKModel_RefPointExists(this->unk2C, CRATE_REF_TARGET, &this->unk108);
+    MKModel_RefPointExists(this->unk2C, CRATE_REF_TARGET, (int *) &this->unk108);
     this->unk114 = ((MKVector3 *) (MKModel_GetBoundingVolume(this->unk2C, (SubObjectType) 0, -1)))->Magnitude();
     this->unk118 = 0.1f * this->unk114;
     if ((u8) this->unk1B8 != 0) {
@@ -1028,7 +1054,7 @@ s32 CrateDescriptor::LoadLine(MKIniLine *arg0) {
         if ((arg0->LoadFloat("", &this->unk110, 0) != 0) || (arg0->LoadBool("", &this->unk121, 0) != 0)) {
             var_r28_2271 = 1;
         }
-        if ((var_r28_2271 != 0) || (arg0->LoadBool("", &this->unk1B8, 0) != 0) || (arg0->LoadFloat("", &this->unk1BC, 0) != 0) || (arg0->LoadFloat("", &this->unk1C0, 0) != 0) || (arg0->LoadFloat("", &this->unk1C4, 0) != 0) || (arg0->LoadInt("", &this->unk1C8, 0) != 0) || (arg0->LoadBool("", &this->unk124, 0) != 0) || (this->unk128.LoadLine(arg0, this->unk0) != 0)) {
+        if ((var_r28_2271 != 0) || (arg0->LoadBool("", &this->unk1B8, 0) != 0) || (arg0->LoadFloat("", &this->unk1BC, 0) != 0) || (arg0->LoadFloat("", &this->unk1C0, 0) != 0) || (arg0->LoadFloat("", &this->unk1C4, 0) != 0) || (arg0->LoadInt("", (int *) &this->unk1C8, 0) != 0) || (arg0->LoadBool("", &this->unk124, 0) != 0) || (this->unk128.LoadLine(arg0, this->unk0) != 0)) {
             goto block_20;
         }
         var_r29_2355 = 0;

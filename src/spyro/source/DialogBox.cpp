@@ -1,10 +1,13 @@
 #include "spyro/source/DialogBox.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
@@ -369,7 +372,6 @@ void DialogBox_ReleaseContext(DialogBoxContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void *DialogBox_InitContext() {
     f64 sp80;
     f64 sp78;
@@ -452,11 +454,10 @@ loop_4:
     sp48 = (f64) sp8;
     sp50 = (f64) sp10;
     M2C_FIELD(var_r31_484, f32 *, 0x34) = 1.0f;
-    M2C_FIELD(var_r31_484, s32 *, 0xA8) = MKRand_Int(&gViewSeed, 0, 0x1869F);
+    M2C_FIELD(var_r31_484, s32 *, 0xA8) = MKRand_Int((int *) &gViewSeed, 0, 0x1869F);
     M2C_FIELD(var_r31_484, u8 *, 0xAC) = (u8) M2C_FIELD(&gb, u8 *, 0x395);
     return var_r31_484;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'DialogBoxTheme' to
 void DialogBox_FreeTheme(DialogBoxTheme *arg0) {

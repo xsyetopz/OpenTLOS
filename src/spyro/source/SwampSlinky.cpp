@@ -1,17 +1,24 @@
 #include "spyro/source/SwampSlinky.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -171,7 +178,7 @@ loop_20:
         switch (temp_r0_159) {                      /* irregular */
         case 0:
             if (M2C_FIELD(temp_r30_144, f32 *, 0x64) <= 0.0f) {
-                M2C_FIELD(temp_r30_144, f32 *, 0x64) = (f32) (3.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
+                M2C_FIELD(temp_r30_144, f32 *, 0x64) = (f32) (3.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
                 M2C_FIELD(temp_r30_144, s32 *, 0x60) = 1;
                 M2C_FIELD(temp_r30_144, void **, 0x50) = (void *) M2C_FIELD(checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x74);
                 spB0 = 0.0f;
@@ -277,7 +284,7 @@ loop_20:
                 temp_r30_144->Translate(temp_r30_144, *((MKVector3 *) &spC8));
             }
             if ((M2C_FIELD(temp_r30_144, f32 *, 0x64) <= 0.0f) && ((temp_f1_404 = M2C_FIELD(temp_r30_144, f32 *, 0x54), ((temp_f1_404 >= 0.95f) != 0)) || (temp_f1_404 <= 0.05f))) {
-                M2C_FIELD(temp_r30_144, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
+                M2C_FIELD(temp_r30_144, f32 *, 0x64) = (f32) (5.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
                 M2C_FIELD(temp_r30_144, s32 *, 0x60) = 0;
                 M2C_FIELD(temp_r30_144, void **, 0x50) = (void *) M2C_FIELD(checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x70);
                 M2C_FIELD(temp_r30_144, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_144, void **, 0x50), s16 *, 4) / 30.0f)));
@@ -371,7 +378,7 @@ loop_27:
         M2C_FIELD(temp_r30_523, void **, 0x50) = (void *) *(checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r26_525 * 4) + 0x70));
         M2C_FIELD(temp_r30_523, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_523, void **, 0x50), s16 *, 4) / 30.0f)));
         M2C_FIELD(temp_r30_523, f32 *, 0x54) = 0.0f;
-        M2C_FIELD(temp_r30_523, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
+        M2C_FIELD(temp_r30_523, f32 *, 0x64) = (f32) (5.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
         sp100.GetRandPos();
         sp50 = 0.0f;
         temp_f5_555 = M2C_BITWISE(f64, sp100);

@@ -1,17 +1,28 @@
 #include "spyro/source/KDSynkerPlayerEvents.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/KDBasicEnvelope.h"
+#include "spyro/source/KDInput.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/KDSynkerPlayerActor.h"
 #include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
 #include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/Level.h"
 #include "common/Source/Str.h"
 #include "common/Source/system_extras.h"
 #include "common/gc/Sound_GC.h"
@@ -142,19 +153,17 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDSynkerPlayerEvent::LoadProp(const char *arg0, MKProp **arg1) {
     s32 sp8;
     u8 temp_ret_68;
 
-    temp_ret_68 = LoadInt(arg0, &sp8);
+    temp_ret_68 = LoadInt(arg0, (int *) &sp8);
     if (temp_ret_68 != 0) {
         *arg1 = ((MKSceneManager *) sp8)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_68);
         return 1;
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadVector3(const char *arg0, MKVector3 *arg1) {
@@ -216,11 +225,11 @@ void KDSynkerPlayerEvent::LoadNode(const char *arg0, MKModel **arg1, int *arg2) 
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadActorModel(const char *arg0, MKModel **arg1) {
     s32 sp8;
 
-    if (LoadActorID(arg0, &sp8) != 0) {
+    if (LoadActorID(arg0, (int *) &sp8) != 0) {
         ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr)->GetActorModel(sp8);
         *arg1 = M2C_ERROR(/* Read from unset register $r3 */);
         return 1;
@@ -229,11 +238,11 @@ s32 KDSynkerPlayerEvent::LoadActorModel(const char *arg0, MKModel **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDSynkerPlayerEvent::LoadActorAnimScript(const char *arg0, MKAnimScript **arg1) {
     s32 sp8;
 
-    if (LoadActorID(arg0, &sp8) != 0) {
+    if (LoadActorID(arg0, (int *) &sp8) != 0) {
         *arg1 = ((KDSynkerPlayer3 *) KDSynkerPlayerEvent::pSynker.__vptr)->GetActorAnimScript(sp8);
         return 1;
     }
@@ -788,7 +797,7 @@ loop_58:
 loop_27:
                     if (var_r23_1317 != NULL) {
                         var_r19_1323 = 0;
-                        if ((var_r23_1317->LoadInt("", &sp18, 0) != 0) || (var_r23_1317->LoadString("", &sp14, 0) != 0) || (var_r23_1317->LoadInt("", &sp10, 0) != 0) || (var_r23_1317->LoadInt("", &spC, 0) != 0)) {
+                        if ((var_r23_1317->LoadInt("", (int *) &sp18, 0) != 0) || (var_r23_1317->LoadString("", &sp14, 0) != 0) || (var_r23_1317->LoadInt("", (int *) &sp10, 0) != 0) || (var_r23_1317->LoadInt("", (int *) &spC, 0) != 0)) {
                             var_r19_1323 = 1;
                         }
                         if (var_r19_1323 == 0) {

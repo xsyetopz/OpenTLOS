@@ -1,15 +1,42 @@
 #include "spyro/source/LoadLevel.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKStringCache.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/CustomMaterialUpdater.h"
+#include "spyro/source/CutsceneObject.h"
 #include "spyro/source/CutsceneSystem.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameStateMachine.h"
+#include "spyro/source/GameVideo.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/MCLoadCheckScreen.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/Tools.h"
 #include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIContainer.h"
+#include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UIStringTable.h"
@@ -165,7 +192,6 @@ void LoadLevel_Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void LoadLevel_Deactivate(bool arg0) {
     s32 sp1C;
     s32 sp18;
@@ -196,9 +222,8 @@ void LoadLevel_Deactivate(bool arg0) {
     LoadLevel_Deinit();
     gb.unk396 = 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *)' does not match
 void LoadLevel_Activate(ChunkInfo *arg0) {
     s32 sp1C;
     s32 sp18;

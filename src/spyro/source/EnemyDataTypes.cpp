@@ -1,11 +1,54 @@
 #include "spyro/source/EnemyDataTypes.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "spyro/source/DataMap.h"
 #include "spyro/source/Tools.h"
@@ -462,7 +505,7 @@ loop_10:
         this->unk20 = var_f0_835;
         return 1;
     }
-    if (DataMap_LoadLine(arg0, "ProjectileType", &projectileTypeDataMap, &this->unk80) != 0) {
+    if (DataMap_LoadLine(arg0, "ProjectileType", &projectileTypeDataMap, (unsigned int *) &this->unk80) != 0) {
         if ((s32) this->unk80 == 0) {
             temp_r0_866 = arg1->unk1D0;
             switch (temp_r0_866) {                  /* irregular */
@@ -527,7 +570,7 @@ loop_10:
         return 1;
     }
     var_r30_999 = 0;
-    if ((arg0->LoadFloat("fAttackDelay", &this->unk8, 0) != 0) || (arg0->LoadFloat("fRangeMin", &this->unk14, 0) != 0) || (arg0->LoadFloat("fRangeMax", &this->unk18, 0) != 0) || (arg0->LoadFloat("iDamage", &this->unk4, 0) != 0) || (arg0->LoadInt("iAnimSet", &this->unk3C, 0) != 0) || (arg0->LoadInt("iAttackChance", &this->unk40, 0) != 0) || (arg0->LoadInt("iRunASV", &this->unk44, 0) != 0) || (arg0->LoadFloat("fProjectileSpeed", &this->unk88, 0) != 0) || (arg0->LoadFloat("fKnockbackForce", &this->unk34, 0) != 0) || (arg0->LoadFloat("fDefensiveThreshold", &this->unkC, 0) != 0) || (arg0->LoadFloat("fDefensivePenalty", &this->unk10, 0) != 0) || (DataMap_LoadLineBitfield(arg0, "uProperties", &dataMapEAP, (u32 *) &this->unk38) != 0)) {
+    if ((arg0->LoadFloat("fAttackDelay", &this->unk8, 0) != 0) || (arg0->LoadFloat("fRangeMin", &this->unk14, 0) != 0) || (arg0->LoadFloat("fRangeMax", &this->unk18, 0) != 0) || (arg0->LoadFloat("iDamage", &this->unk4, 0) != 0) || (arg0->LoadInt("iAnimSet", (int *) &this->unk3C, 0) != 0) || (arg0->LoadInt("iAttackChance", (int *) &this->unk40, 0) != 0) || (arg0->LoadInt("iRunASV", (int *) &this->unk44, 0) != 0) || (arg0->LoadFloat("fProjectileSpeed", &this->unk88, 0) != 0) || (arg0->LoadFloat("fKnockbackForce", &this->unk34, 0) != 0) || (arg0->LoadFloat("fDefensiveThreshold", &this->unkC, 0) != 0) || (arg0->LoadFloat("fDefensivePenalty", &this->unk10, 0) != 0) || (DataMap_LoadLineBitfield(arg0, "uProperties", &dataMapEAP, (unsigned int *) &this->unk38) != 0)) {
         var_r30_999 = 1;
     }
     return var_r30_999;

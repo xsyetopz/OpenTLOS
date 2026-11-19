@@ -1,14 +1,23 @@
 #include "spyro/source/FireWall.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/Coronas.h"
 #include "spyro/source/CrashFirePS.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -461,15 +470,15 @@ loop_11:
 loop_16:
     if (var_r29_740 < (s32) this->unk4C) {
         if ((u32) *(this->unk50 + (var_r30_741 + 0x2C)) != 0U) {
-            M2C_FIELD(*(this->unk50 + (var_r30_741 + 0x2C)), f32 *, 0x24) = (f32) (1.5f * MKRand_Float(&gViewSeed, 0.9f, 1.0f));
-            M2C_FIELD(*(this->unk50 + (var_r30_741 + 0x2C)), f32 *, 0x2C) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+            M2C_FIELD(*(this->unk50 + (var_r30_741 + 0x2C)), f32 *, 0x24) = (f32) (1.5f * MKRand_Float((int *) &gViewSeed, 0.9f, 1.0f));
+            M2C_FIELD(*(this->unk50 + (var_r30_741 + 0x2C)), f32 *, 0x2C) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         }
         temp_r3_772 = this->unk50;
         temp_r0_773 = var_r30_741 + 0x24;
         var_r29_740 += 1;
         temp_f0_776 = *(temp_r3_772 + temp_r0_773);
         var_r30_741 += 0x30;
-        *(temp_r3_772 + temp_r0_773) = (gUpdateTimeDelta * MKRand_Float(&gViewSeed, 0.1f, 0.75f)) + temp_f0_776;
+        *(temp_r3_772 + temp_r0_773) = (gUpdateTimeDelta * MKRand_Float((int *) &gViewSeed, 0.1f, 0.75f)) + temp_f0_776;
         goto loop_16;
     }
     var_f0_787 = this->unk64 + gUpdateTimeDelta;
@@ -486,7 +495,7 @@ loop_16:
     this->unk64 = var_f0_787;
     if (this->unk64 >= 0.0015f) {
         this->unk64 = 0.0f;
-        temp_r3_813 = MKRand_Int(&gViewSeed, 0, this->unk4C - 1);
+        temp_r3_813 = MKRand_Int((int *) &gViewSeed, 0, this->unk4C - 1);
         temp_r4_815 = this->unk50;
         temp_r29_816 = temp_r3_813 * 0x30;
         temp_r5_818 = temp_r4_815 + temp_r29_816;
@@ -501,7 +510,7 @@ loop_16:
             temp_r4_841 = temp_r29_816 + this->unk50;
             sp80 = M2C_FIELD(temp_r4_841, f64 *, 0);
             sp88 = M2C_FIELD(temp_r4_841, f64 *, 8);
-            sp60.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+            sp60.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             temp_r4_852 = this->unk50 + temp_r29_816;
             sp10 = M2C_FIELD(temp_r4_852, f64 *, 0) + M2C_BITWISE(f64, sp60);
             sp70 = sp10;
@@ -509,8 +518,8 @@ loop_16:
             sp80 = sp10;
             sp78 = (f64) sp18;
             sp88 = (f64) sp18;
-            sp8 = MKRand_Float(&gViewSeed, 3.0f, 4.0f);
-            temp_f1_876 = 100.0f * MKRand_Float(&gViewSeed, 0.0f, 0.1f);
+            sp8 = MKRand_Float((int *) &gViewSeed, 3.0f, 4.0f);
+            temp_f1_876 = 100.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 0.1f);
             sp28 = 0.0f;
             sp20 = 0.0f;
             sp24 = temp_f1_876;
@@ -519,7 +528,7 @@ loop_16:
             ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp80), *((MKVector3 *) &sp50), sp8);
             var_r28_828 += 1;
         } while (var_r28_828 < 3);
-        sp40.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+        sp40.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
     }
 }
 #endif
@@ -887,8 +896,8 @@ loop_130:
                     sp160.unk10 = (f32) sp160.unk10 * var_f5_1445;
                     sp174 *= var_f5_1445;
                     sp178 = (f32) sp178 * var_f5_1445;
-                    temp_f18_1463 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    sp40 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f18_1463 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    sp40 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     temp_r4_1469 = var_r28_1201 + 0x10;
                     sp44 = 0.0f;
                     temp_r3_1472 = this->unk50 + temp_r4_1469;
@@ -997,9 +1006,9 @@ loop_130:
                     M2C_FIELD(temp_r6_1593, f32 *, 0) = (f32) (M2C_FIELD(temp_r6_1593, f32 *, 0) * var_f1_1668);
                     M2C_FIELD(temp_r6_1593, f32 *, 4) = (f32) (M2C_FIELD(temp_r6_1593, f32 *, 4) * var_f1_1668);
                     M2C_FIELD(temp_r6_1593, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_1593, f32 *, 8) * var_f1_1668);
-                    *(this->unk50 + (var_r28_1201 + 0x28)) = MKRand_Int(&gViewSeed, 0, 0x3F);
+                    *(this->unk50 + (var_r28_1201 + 0x28)) = MKRand_Int((int *) &gViewSeed, 0, 0x3F);
                     *(this->unk50 + (var_r28_1201 + 0x20)) = 300.0f;
-                    temp_f1_1695 = MKRand_Float(&gViewSeed, 0.0f, 10.0f);
+                    temp_f1_1695 = MKRand_Float((int *) &gViewSeed, 0.0f, 10.0f);
                     sp60 = 1.0f;
                     sp64 = 0.75f;
                     sp68 = 0.5f;

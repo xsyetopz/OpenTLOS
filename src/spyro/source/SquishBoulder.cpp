@@ -1,23 +1,59 @@
 #include "spyro/source/SquishBoulder.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FallingLeaves.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPositionProperty.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/PooledShatterProp.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
@@ -30,7 +66,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void SquishBoulder::EmitLandingEffects() {
     Matrix sp310;
     M2C_UNK sp30C;
@@ -176,7 +212,7 @@ void SquishBoulder::EmitLandingEffects() {
         sp2E8 = temp_f21_105;
         sp2E0 = (f64) sp2E0 * 5.697262106e-315;
         sp2E8 = (f32) temp_f21_105 * 1500.0f;
-        temp_f1_121 = MKRand_Float(&gViewSeed, 0.8f, 1.2f);
+        temp_f1_121 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.2f);
         sp130 = 0.0f;
         sp134 = 100.0f;
         sp138 = 0.0f;
@@ -193,9 +229,9 @@ void SquishBoulder::EmitLandingEffects() {
     } while (var_r27_92 < 0x14);
     var_r29_153 = 0;
     do {
-        temp_f27_160 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f26_165 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-        sp110 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f27_160 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f26_165 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+        sp110 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp114 = temp_f26_165;
         sp118 = temp_f27_160;
         sp250 = (f64) sp110;
@@ -205,9 +241,9 @@ void SquishBoulder::EmitLandingEffects() {
         sp260 = temp_f0_179;
         sp108 = (f32) sp258 * 1000.0f;
         sp268 = (f64) sp108;
-        sp18 = MKRand_Float(&gViewSeed, 25.0f, 35.0f);
-        temp_f26_197 = MKRand_Float(&gViewSeed, 0.0f, 0.2f);
-        spF0 = MKRand_Float(&gViewSeed, 0.0f, 0.2f);
+        sp18 = MKRand_Float((int *) &gViewSeed, 25.0f, 35.0f);
+        temp_f26_197 = MKRand_Float((int *) &gViewSeed, 0.0f, 0.2f);
+        spF0 = MKRand_Float((int *) &gViewSeed, 0.0f, 0.2f);
         spF4 = 1.0f;
         spF8 = temp_f26_197;
         spFC = 1.0f;
@@ -229,7 +265,7 @@ void SquishBoulder::EmitLandingEffects() {
         M2C_FIELD(temp_r3_224, f32 *, 0x20) = 0.0f;
         sp238 = (f64) sp88;
         M2C_FIELD(temp_r3_224, f32 *, 0x28) = 0.0f;
-        temp_f1_257 = 3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f1_257 = 3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp78 = 0.0f;
         sp70 = 0.0f;
         sp74 = 0.0f;
@@ -239,7 +275,7 @@ void SquishBoulder::EmitLandingEffects() {
         sp210 = (f64) sp70;
         sp218 = (f64) sp78;
         M2C_FIELD(temp_r27_229, f32 *, 0x18) = 30.0f;
-        M2C_FIELD(temp_r27_229, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r27_229, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         M2C_FIELD(temp_r27_229, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r28_88, void **, 0x16C), f32 *, 0xF4);
     }
     var_r29_281 = 0;
@@ -269,7 +305,7 @@ void SquishBoulder::EmitLandingEffects() {
         sp1B0 = temp_f0_328;
         spE8 = (f32) sp2C8 * 300.0f;
         sp1B8 = (f64) spE8;
-        sp14 = MKRand_Int(&gViewSeed, 0, 3);
+        sp14 = MKRand_Int((int *) &gViewSeed, 0, 3);
         ((FallingLeaves *) (M2C_FIELD(temp_r28_88, FallingLeaves **, 0x170)))->Emit(*((MKVector3 *) &sp2D0), *((MKVector3 *) &sp1B0), 2.0f, sp14, 1U);
         var_r29_281 += 1;
     } while (var_r29_281 < 0x14);
@@ -413,12 +449,10 @@ void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float 
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void SquishBoulder::Deinit() {
-    KDSound_Stop(&this->unk1D8);
+    KDSound_Stop((int *) &this->unk1D8);
     Shatterable::Deinit();
 }
-#endif
 
 void SquishBoulder::Draw() {
     s32 temp_r0_750;

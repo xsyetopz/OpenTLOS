@@ -1,14 +1,24 @@
 #include "spyro/source/FootStepFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/WaterDripPS.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKMaterial.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -216,7 +226,7 @@ loop_5:
                 M2C_FIELD(temp_r27_154, f64 *, 0) = sp380;
                 M2C_FIELD(temp_r27_154, f64 *, 8) = sp388;
                 M2C_FIELD(temp_r27_154, f32 *, 0x18) = (f32) (0.25f * arg4);
-                M2C_FIELD(temp_r27_154, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                M2C_FIELD(temp_r27_154, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r27_154, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r31_70, void **, 0x64), f32 *, 0xF4);
             }
             var_r24_77 += 1;
@@ -236,7 +246,7 @@ loop_5:
             sp380 = sp110;
             sp2F8 = (f64) sp118;
             sp388 = (f64) sp118;
-            sp8 = MKRand_Float(&gViewSeed, 2.0f, 2.5f);
+            sp8 = MKRand_Float((int *) &gViewSeed, 2.0f, 2.5f);
             ((WaterDripPS *) (M2C_FIELD(&gb, WaterDripPS **, 0x6C)))->Emit(arg0, *((MKVector3 *) &sp380), sp8, 1U, 1U, NULL);
             var_r24_191 += 1;
         } while (var_r24_191 < 5);
@@ -292,7 +302,7 @@ loop_19:
                 M2C_FIELD(temp_r27_327, f64 *, 8) = (f64) spF8;
                 sp238 = (f64) spF8;
                 M2C_FIELD(temp_r27_327, f32 *, 0x18) = (f32) (0.1f * arg4);
-                M2C_FIELD(temp_r27_327, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                M2C_FIELD(temp_r27_327, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r27_327, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r31_70, void **, 0x60), f32 *, 0xF4);
             }
             var_r24_250 += 1;
@@ -346,7 +356,7 @@ loop_26:
                 M2C_FIELD(temp_r24_451, f64 *, 0) = sp380;
                 M2C_FIELD(temp_r24_451, f64 *, 8) = sp388;
                 M2C_FIELD(temp_r24_451, f32 *, 0x18) = (f32) (0.25f * arg4);
-                M2C_FIELD(temp_r24_451, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                M2C_FIELD(temp_r24_451, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r24_451, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r31_70, void **, 0x68), f32 *, 0xF4);
             }
             var_r27_381 += 1;
@@ -400,7 +410,7 @@ loop_34:
                 M2C_FIELD(temp_r24_569, f64 *, 0) = sp380;
                 M2C_FIELD(temp_r24_569, f64 *, 8) = sp388;
                 M2C_FIELD(temp_r24_569, f32 *, 0x18) = (f32) (0.25f * arg4);
-                M2C_FIELD(temp_r24_569, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                M2C_FIELD(temp_r24_569, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                 M2C_FIELD(temp_r24_569, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r31_70, void **, 0x68), f32 *, 0xF4);
             }
             var_r27_499 += 1;

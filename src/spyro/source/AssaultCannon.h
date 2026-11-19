@@ -149,10 +149,10 @@ public:
 inline AssaultCannon::~AssaultCannon() {
     this->unkC8 = &__vt.unk48;
     if ((&this->unk294 != NULL) && (&this->unk294 != NULL)) {
-        KDSound_Stop(&this->unk294);
+        KDSound_Stop((int *) &this->unk294);
     }
     if ((&this->unk26C != NULL) && (&this->unk26C != NULL)) {
-        KDSound_Stop(&this->unk26C);
+        KDSound_Stop((int *) &this->unk26C);
     }
 }
 #endif

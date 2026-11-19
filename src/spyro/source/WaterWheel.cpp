@@ -1,9 +1,37 @@
 #include "spyro/source/WaterWheel.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/Platform.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SeeSaw.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include <m2c_macros.h>
 
 extern s32 GS_WaterwheelMoveLP;
@@ -19,12 +47,10 @@ void WaterWheel::Message(MKMessage *arg0) {
     ((KDSoundPlayer *) &this->unk184)->Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void WaterWheel::Deinit() {
-    KDSound_Stop(&this->unk184);
+    KDSound_Stop((int *) &this->unk184);
     Platform::Deinit();
 }
-#endif
 
 void WaterWheel::UpdateMove() {
     f64 sp20;

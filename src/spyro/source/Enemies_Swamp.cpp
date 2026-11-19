@@ -1,25 +1,72 @@
 #include "spyro/source/Enemies_Swamp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EarthShockwave.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FallingLeaves.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/SwampTier1Goal_Think.h"
 #include "spyro/source/SwampTier2Goal_Think.h"
 #include "spyro/source/SwampTier3Goals.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 f64 fmod(f32, f64, f64, f32, f64, f64, f32);        /* extern */
@@ -30,7 +77,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: ';' expected
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit swampTier1BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit swampTier2BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit swampTier3BodyFXInit;    /* unable to generate initializer: confusing struct layout */
@@ -48,7 +95,7 @@ u8 SwampTier3::CanMoveAwayFromHero() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: undefined identifier 'sp80'
 void SwampTier3::CheckAnimEvents() {
     f64 spC0;
     f64 spB8;
@@ -80,7 +127,7 @@ void SwampTier3::CheckAnimEvents() {
 
     Enemy::CheckAnimEvents();
     if ((((MKAnimScript *) this->unk630)->CheckEvent(0x16) != 0) && (KDSound_IsVoicePlaying(this->unkB04) != 0)) {
-        KDSound_Stop(&this->unkB04);
+        KDSound_Stop((int *) &this->unkB04);
     }
     if (((MKAnimScript *) this->unk630)->CheckEvent(0x10) != 0) {
         temp_r0_100 = this->unkA38->unk27C;
@@ -98,8 +145,8 @@ loop_9:
                     spC0 = (f64) sp30;
                     sp90 = (f64) sp30;
                     MKModel_CalculateNodeWorldPosition(this->unk4, (s32) var_r27_104->unk0, &spA8);
-                    spC = MKRand_Int(&gViewSeed, 2, 4);
-                    sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+                    spC = MKRand_Int((int *) &gViewSeed, 2, 4);
+                    sp10 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
                     ((FallingLeaves *) gb.unk234)->Emit(spA8, *((MKVector3 *) &spB8), sp10, spC, 1U);
                     KDRand_UnitVectorXZ();
                     sp18 = sp58 * 5.53552857e-315;
@@ -108,7 +155,7 @@ loop_9:
                     spB8 = sp18;
                     sp70 = (f64) sp20;
                     spC0 = (f64) sp20;
-                    sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
+                    sp8 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
                     gb.EmitCrud(spA8, *((MKVector3 *) &spB8), sp8);
                     var_r26_110 += 1;
                 } while (var_r26_110 < 2);
@@ -133,7 +180,6 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'SpawnerObject'
 s32 SwampTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     this->unkB10 = 1;
     this->unkB14 = 0.0f;
@@ -147,7 +193,6 @@ s32 SwampTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     }
     return 0;
 }
-#endif
 
 void SwampTier3::LoadDone() {
     Enemy::LoadDone();
@@ -196,7 +241,7 @@ void SwampTier3Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: undefined identifier 'sp60'
 void SwampTier2::CheckAnimEvents() {
     f64 sp90;
     f64 sp88;
@@ -220,7 +265,7 @@ void SwampTier2::CheckAnimEvents() {
 
     Enemy::CheckAnimEvents();
     if ((((MKAnimScript *) this->unk630)->CheckEvent(0x16) != 0) && (KDSound_IsVoicePlaying(this->unkB04) != 0)) {
-        KDSound_Stop(&this->unkB04);
+        KDSound_Stop((int *) &this->unkB04);
     }
     if (((MKAnimScript *) this->unk630)->CheckEvent(0x10) != 0) {
         temp_r0_417 = this->unkA38->unk27C;
@@ -239,8 +284,8 @@ loop_9:
                     sp68 = sp28;
                     sp70 = (f64) sp30;
                     MKModel_CalculateNodeWorldPosition(this->unk4, (s32) var_r28_423->unk0, &sp78);
-                    spC = MKRand_Int(&gViewSeed, 2, 4);
-                    sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+                    spC = MKRand_Int((int *) &gViewSeed, 2, 4);
+                    sp10 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
                     ((FallingLeaves *) gb.unk234)->Emit(sp78, *((MKVector3 *) &sp88), sp10, spC, 1U);
                     KDRand_UnitVectorXZ();
                     sp18 = sp38 * 5.53552857e-315;
@@ -250,7 +295,7 @@ loop_9:
                     sp50 = (f64) sp20;
                     sp90 = (f64) sp20;
                     (*(f32 *) ((u8 *) &sp88 + 0x4)) = 600.0f;
-                    sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
+                    sp8 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
                     gb.EmitCrud(sp78, *((MKVector3 *) &sp88), sp8);
                     var_r27_428 += 1;
                 } while (var_r27_428 < 2);
@@ -369,7 +414,7 @@ void SwampTier2::Init() {
     this->unkA3C = &temp_r31_651->__vptr;
     this->unkB14 = 0;
     this->unkB10 = 0;
-    this->unkB18 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+    this->unkB18 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
     this->unkB1C = 0.0f;
 }
 #endif
@@ -428,8 +473,8 @@ loop_8:
                     sp68 = sp28;
                     sp70 = (f64) sp30;
                     MKModel_CalculateNodeWorldPosition(this->unk4, (s32) var_r28_754->unk0, &sp78);
-                    spC = MKRand_Int(&gViewSeed, 2, 4);
-                    sp10 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+                    spC = MKRand_Int((int *) &gViewSeed, 2, 4);
+                    sp10 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
                     ((FallingLeaves *) gb.unk234)->Emit(sp78, *((MKVector3 *) &sp88), sp10, spC, 1U);
                     var_r27_759 += 1;
                 } while (var_r27_759 < 4);
@@ -443,7 +488,7 @@ loop_8:
                     sp50 = (f64) sp20;
                     sp90 = (f64) sp20;
                     (*(f32 *) ((u8 *) &sp88 + 0x4)) = 400.0f;
-                    sp8 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
+                    sp8 = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
                     gb.EmitCrud(this->unk588, *((MKVector3 *) &sp88), sp8);
                     var_r27_801 += 1;
                 } while (var_r27_801 < 3);
@@ -487,7 +532,7 @@ void SwampTier1Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'swampTier1BodyFXInit'
+#if 0 // DRAFT: illegal type
 void Enemies_Swamp_cpp::__sinit() {
     f32 sp340;
     f32 sp33C;

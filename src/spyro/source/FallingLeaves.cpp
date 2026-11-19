@@ -1,16 +1,41 @@
 #include "spyro/source/FallingLeaves.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/WindFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
@@ -456,7 +481,7 @@ loop_51:
                 M2C_FIELD(var_r31_467, f64 *, 0) = (f64) (M2C_FIELD(var_r31_467, f64 *, 0) + temp_f0_497);
                 var_r31_467->unk8 += (f32) sp1E8;
                 temp_f30_517 = gUpdateTimeDelta;
-                sp1C0.operator*(MKRand_Float(&gViewSeed, 0.0f, 0.25f));
+                sp1C0.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 0.25f));
                 temp_f0_524 = sp1C0 * (f64) temp_f30_517;
                 sp70 = temp_f0_524;
                 sp1D0 = temp_f0_524;
@@ -506,7 +531,7 @@ loop_51:
                 sp198 = (f64) sp58;
                 sp210 = (f64) sp50;
                 sp218 = (f64) sp58;
-                temp_f23_659 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+                temp_f23_659 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
                 temp_f28_668 = gUpdateTimeDelta * (2000.0f * temp_f23_659 * Clamp<float>(0.25f, sp14, 0.5f));
                 temp_f0_670 = sp210 * (f64) temp_f28_668;
                 sp40 = temp_f0_670;
@@ -634,11 +659,11 @@ loop_51:
                     (*(f32 *) ((u8 *) &sp1F0 + 0x14)) *= var_f3_904;
                     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
                     if (var_f4_837 == M2C_FIELD(temp_r4_809, f32 *, 0x170)) {
-                        M2C_FIELD(temp_r30_470, f32 *, 0x24) = MKRand_Float(&gViewSeed, 7.5f, 85.0f);
+                        M2C_FIELD(temp_r30_470, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 7.5f, 85.0f);
                         temp_f24_931 = 1.0f - (M2C_FIELD(temp_r30_470, f32 *, 0x24) / 90.0f);
-                        temp_f23_933 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f25_938 = MKRand_Float(&gViewSeed, 0.0f, 0.1f);
-                        sp90 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                        temp_f23_933 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                        temp_f25_938 = MKRand_Float((int *) &gViewSeed, 0.0f, 0.1f);
+                        sp90 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                         sp94 = temp_f25_938;
                         sp98 = temp_f23_933;
                         sp1F0 = (f64) sp90;
@@ -648,8 +673,8 @@ loop_51:
                         M2C_FIELD(temp_r30_470, f64 *, 0) = temp_f0_952;
                         sp1F8 = (f32) sp1F8 * 25.0f;
                         M2C_FIELD(temp_r30_470, f32 *, 8) = (f64) sp1F8;
-                        temp_f23_965 = MKRand_Float(&gViewSeed, -0.5f, 0.5f);
-                        MKVector(MKRand_Float(&gViewSeed, -0.5f, 0.5f), 1.0f, temp_f23_965);
+                        temp_f23_965 = MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f);
+                        MKVector(MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f), 1.0f, temp_f23_965);
                         temp_f0_977 = sp110 * 5.60222949e-315;
                         sp20 = temp_f0_977;
                         sp120 = temp_f0_977;
@@ -699,7 +724,7 @@ loop_6:
     if (var_r31_1079 != NULL) {
         temp_r30_1082 = var_r31_1079->unk2C;
         if ((u8) M2C_FIELD(temp_r30_1082, u8 *, 0x28) == 0) {
-            temp_f29_1090 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            temp_f29_1090 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
             sp70.GetVelocity(*((MKVector3 *) arg0));
             temp_f0_1097 = sp70.unk0 * (f64) temp_f29_1090;
             sp20 = temp_f0_1097;
@@ -709,17 +734,17 @@ loop_6:
             M2C_FIELD(temp_r30_1082, f64 *, 0) = (f64) (M2C_FIELD(temp_r30_1082, f64 *, 0) + (f64) sp70.unk10);
             M2C_FIELD(temp_r30_1082, f32 *, 8) = (f32) (M2C_FIELD(temp_r30_1082, f32 *, 8) + (f32) (f64) sp28);
         } else {
-            temp_f31_1120 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            temp_f31_1120 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
             ((WindFX *) &sp60)->GetVelocity(*((MKVector3 *) arg0));
             sp30 = sp60 * (f64) temp_f31_1120;
             sp70.unk20 = sp30;
             sp38 = sp68 * temp_f31_1120;
             sp70.unk28 = (f64) sp38;
             if ((((f32) sp70.unk28 * (f32) sp70.unk28) + (((f32) sp70.unk20 * (f32) sp70.unk20) + ((*(f32 *) ((u8 *) &sp70 + 0x24)) * (*(f32 *) ((u8 *) &sp70 + 0x24))))) != 0.0f) {
-                M2C_FIELD(temp_r30_1082, f32 *, 0x24) = MKRand_Float(&gViewSeed, 7.5f, 85.0f);
+                M2C_FIELD(temp_r30_1082, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 7.5f, 85.0f);
                 temp_f28_1159 = 1.0f - (M2C_FIELD(temp_r30_1082, f32 *, 0x24) / 90.0f);
-                temp_f27_1161 = MKRand_Float(&gViewSeed, -0.5f, 0.5f);
-                MKVector(MKRand_Float(&gViewSeed, -0.5f, 0.5f), 1.0f, temp_f27_1161);
+                temp_f27_1161 = MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f);
+                MKVector(MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f), 1.0f, temp_f27_1161);
                 temp_f0_1173 = sp40 * 5.60222949e-315;
                 sp10 = temp_f0_1173;
                 sp50 = temp_f0_1173;
@@ -792,7 +817,7 @@ void FallingLeaves::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
     MKCollisionResult spD8;
     f64 spD0;                                       /* compiler-managed */
@@ -836,9 +861,9 @@ void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
 
     temp_f30_1359 = M2C_FIELD(&arg0, f64 *, 0);
     temp_f31_1361 = M2C_FIELD(&arg0, f64 *, 8);
-    temp_f28_1367 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-    temp_f29_1372 = MKRand_Float(&gViewSeed, 0.0f, 0.1f);
-    sp48 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+    temp_f28_1367 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+    temp_f29_1372 = MKRand_Float((int *) &gViewSeed, 0.0f, 0.1f);
+    sp48 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
     sp4C = temp_f29_1372;
     sp50 = temp_f28_1367;
     spC8 = (f64) sp48;
@@ -847,8 +872,8 @@ void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
     spB8 = temp_f30_1359;
     spC0 = temp_f31_1361;
     spD0 = (f32) spD0 * 25.0f;
-    temp_f27_1397 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-    MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), 0.0f, temp_f27_1397);
+    temp_f27_1397 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+    MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), 0.0f, temp_f27_1397);
     temp_f0_1408 = sp98 * 5.634608575e-315;
     sp18 = temp_f0_1408;
     spA8 = temp_f0_1408;
@@ -864,10 +889,10 @@ void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
         M2C_FIELD(temp_r3_1429, f64 *, 8) = (f64) spC0;
         M2C_FIELD(temp_r30_1432, f64 *, 0) = spC8;
         M2C_FIELD(temp_r30_1432, f64 *, 8) = (f64) spD0;
-        M2C_FIELD(temp_r30_1432, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.1f, 0.25f);
+        M2C_FIELD(temp_r30_1432, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.1f, 0.25f);
         M2C_FIELD(temp_r30_1432, f32 *, 0x1C) = 1.0f;
-        M2C_FIELD(temp_r30_1432, f32 *, 0x24) = MKRand_Float(&gViewSeed, 7.5f, 85.0f);
-        temp_f3_1465 = (f32) MKRand_Int(&gViewSeed, 0, 4);
+        M2C_FIELD(temp_r30_1432, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 7.5f, 85.0f);
+        temp_f3_1465 = (f32) MKRand_Int((int *) &gViewSeed, 0, 4);
         sp40 = 0.0f;
         M2C_FIELD(temp_r3_1429, f32 *, 0x20) = temp_f3_1465;
         sp38 = 0.0f;
@@ -899,7 +924,7 @@ void FallingLeaves::SpawnGround(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FallingLeaves::Emit() {
     MKCollisionResult spC8;
     f64 spC0;                                       /* compiler-managed */
@@ -940,9 +965,9 @@ void FallingLeaves::Emit() {
 
     var_r29_1571 = 0;
     do {
-        temp_f28_1577 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f29_1582 = MKRand_Float(&gViewSeed, 0.0f, 0.1f);
-        sp48 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f28_1577 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f29_1582 = MKRand_Float((int *) &gViewSeed, 0.0f, 0.1f);
+        sp48 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp4C = temp_f29_1582;
         sp50 = temp_f28_1577;
         spB8 = (f64) sp48;
@@ -952,8 +977,8 @@ void FallingLeaves::Emit() {
         spA8 = temp_f1_1600;
         spC0 = (f32) spC0 * 25.0f;
         spB0 = this->unk148;
-        temp_f28_1609 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), 0.0f, temp_f28_1609);
+        temp_f28_1609 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), 0.0f, temp_f28_1609);
         temp_f0_1620 = sp88 * 5.65176949e-315;
         sp18 = temp_f0_1620;
         sp98 = temp_f0_1620;
@@ -961,7 +986,7 @@ void FallingLeaves::Emit() {
         spA0 = (f64) sp20;
         spA8 = temp_f1_1600 + temp_f0_1620;
         spB0 = (f32) spB0 + (f32) spA0;
-        (*(f32 *) ((u8 *) &spA8 + 0x4)) += MKRand_Float(&gViewSeed, 725.0f, 800.0f);
+        (*(f32 *) ((u8 *) &spA8 + 0x4)) += MKRand_Float((int *) &gViewSeed, 725.0f, 800.0f);
         temp_r3_1648 = CreateParticle();
         if (temp_r3_1648 != NULL) {
             temp_r28_1651 = M2C_FIELD(temp_r3_1648, void **, 0x2C);
@@ -969,11 +994,11 @@ void FallingLeaves::Emit() {
             M2C_FIELD(temp_r3_1648, f64 *, 8) = (f64) spB0;
             M2C_FIELD(temp_r28_1651, f64 *, 0) = spB8;
             M2C_FIELD(temp_r28_1651, f64 *, 8) = (f64) spC0;
-            M2C_FIELD(temp_r28_1651, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.1f, 0.25f);
+            M2C_FIELD(temp_r28_1651, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.1f, 0.25f);
             M2C_FIELD(temp_r28_1651, f32 *, 0x1C) = 1.0f;
-            M2C_FIELD(temp_r28_1651, f32 *, 0x24) = MKRand_Float(&gViewSeed, 7.5f, 85.0f);
-            M2C_FIELD(temp_r3_1648, f32 *, 0x20) = (f32) MKRand_Int(&gViewSeed, 0, 4);
-            M2C_FIELD(temp_r3_1648, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 270.0f);
+            M2C_FIELD(temp_r28_1651, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 7.5f, 85.0f);
+            M2C_FIELD(temp_r3_1648, f32 *, 0x20) = (f32) MKRand_Int((int *) &gViewSeed, 0, 4);
+            M2C_FIELD(temp_r3_1648, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 270.0f);
             sp10 = 0.0f;
             sp40 = 0.0f;
             sp8 = 0.0f;
@@ -1073,9 +1098,9 @@ void FallingLeaves::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const flo
         M2C_FIELD(temp_r30_1788, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r30_1788, f32 *, 0x18) = (f32) &arg2;
         M2C_FIELD(temp_r30_1788, f32 *, 0x1C) = 1.0f;
-        M2C_FIELD(temp_r30_1788, f32 *, 0x24) = MKRand_Float(&gViewSeed, 7.5f, 55.0f);
+        M2C_FIELD(temp_r30_1788, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 7.5f, 55.0f);
         M2C_FIELD(temp_r3_1785, f32 *, 0x20) = (f32) &arg3;
-        temp_f31_1819 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        temp_f31_1819 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         MKVector(1.0f, 1.0f, 1.0f, 1.0f);
         sp18 = M2C_FIELD(&spB8, f64 *, 0) * (f64) temp_f31_1819;
         temp_f0_1832 = M2C_FIELD(&spB8, f64 *, 8) * (f64) temp_f31_1819;
@@ -1084,7 +1109,7 @@ void FallingLeaves::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const flo
         spC8 = sp18;
         spD0 = temp_f0_1832;
         M2C_FIELD(temp_r3_1785, f64 *, 0x18) = temp_f0_1832;
-        M2C_FIELD(temp_r3_1785, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 270.0f);
+        M2C_FIELD(temp_r3_1785, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 270.0f);
         sp10 = 0.0f;
         sp8 = 0.0f;
         spC = 1.0f;
@@ -1160,7 +1185,7 @@ void FallingLeaves::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'gFallingLeavesEnvelope'
+#if 0 // DRAFT: illegal operand
 void FallingLeaves::Init() {
     s32 temp_r0_2027;
     s32 var_ctr_2025;

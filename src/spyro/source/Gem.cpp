@@ -1,17 +1,61 @@
 #include "spyro/source/Gem.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/Collectable.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FlyingChunkPS.h"
+#include "spyro/source/GameProp.h"
 #include "spyro/source/GemMagicFX.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
@@ -67,7 +111,7 @@ void Gem::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2) {
     f32 sp8;
 
     Collectable::Spawn(arg0, arg1, arg2);
-    this->unk148 = MKRand_Int(&gViewSeed, 0, M2C_FIELD(GetDescriptor(), s32 *, 0xCC));
+    this->unk148 = MKRand_Int((int *) &gViewSeed, 0, M2C_FIELD(GetDescriptor(), s32 *, 0xCC));
     sp8 = 1.0f;
     spC = 1.0f;
     sp10 = 1.0f;
@@ -91,7 +135,7 @@ void Gem::Init() {
     this->unk148 = -1;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void Gem::CollectEffects() {
     f64 sp1D8;
     f64 sp1D0;
@@ -200,9 +244,9 @@ void Gem::CollectEffects() {
 
     var_r29_280 = 0;
     do {
-        temp_f27_286 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f26_291 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
-        spF0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f27_286 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f26_291 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
+        spF0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         spF4 = temp_f26_291;
         spF8 = temp_f27_286;
         sp1C0 = (f64) spF0;
@@ -213,9 +257,9 @@ void Gem::CollectEffects() {
         spE8 = (f32) sp1C8 * 600.0f;
         sp1D8 = (f64) spE8;
         temp_r30_318 = ((u8 *) this->unk8) + 0x30;
-        temp_f27_320 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f26_325 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        spD0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f27_320 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f26_325 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        spD0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         spD4 = temp_f26_325;
         spD8 = temp_f27_320;
         sp1A0 = (f64) spD0;
@@ -225,9 +269,9 @@ void Gem::CollectEffects() {
         sp1B0 = temp_f0_339;
         spC8 = (f32) sp1A8 * 3.1415927f;
         sp1B8 = (f64) spC8;
-        temp_f26_352 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f27_357 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        spB0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f26_352 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f27_357 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        spB0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         spB4 = temp_f27_357;
         spB8 = temp_f26_352;
         sp180 = (f64) spB0;

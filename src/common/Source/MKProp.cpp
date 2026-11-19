@@ -1,8 +1,10 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
@@ -11,8 +13,26 @@
 #include "common/Source/MKResource.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKMat_MK2_Standard.h"
@@ -240,7 +260,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: ')' expected
 s32 MKPropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 sp8;
     s32 temp_r30_548;
@@ -249,7 +269,7 @@ s32 MKPropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r29_540;
 
     if (arg0->IsField("UpdatePriority") != 0) {
-        arg0->AsInt(0, &this->unk18);
+        arg0->AsInt(0, (int *) &this->unk18);
         return 1;
     }
     if (arg0->IsField("MaxDrawDist") != 0) {
@@ -265,7 +285,7 @@ s32 MKPropDescriptor::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     if (arg0->IsField("CanHandleMissingFiles") != 0) {
-        arg0->AsFlag(0, &sp8);
+        arg0->AsFlag(0, (int *) &sp8);
         if (sp8 != 0) {
             var_r0_522 = this->unk14 | 0x20;
         } else {
@@ -515,11 +535,11 @@ void MKProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 s32 MKProp::LoadLine(MKIniLine *arg0) {
     s32 var_r4_1383;
 
-    if (arg0->LoadInt("ID", &this->unk14, 0) != 0) {
+    if (arg0->LoadInt("ID", (int *) &this->unk14, 0) != 0) {
         if ((s32) this->unk14 != 0) {
             var_r4_1383 = arg0->GetString(1);
             if (var_r4_1383 != 0) {
@@ -531,7 +551,7 @@ s32 MKProp::LoadLine(MKIniLine *arg0) {
         }
         return 1;
     }
-    if (arg0->LoadInt("zone", &this->unk18, 0) != 0) {
+    if (arg0->LoadInt("zone", (int *) &this->unk18, 0) != 0) {
         if ((u32) this->unk18 == 0U) {
             this->unk18 = 1;
         }
@@ -545,7 +565,7 @@ s32 MKProp::LoadLine(MKIniLine *arg0) {
         }
         goto block_17;
     }
-    if (arg0->LoadInt("groupMask", &this->unk18, 0) != 0) {
+    if (arg0->LoadInt("groupMask", (int *) &this->unk18, 0) != 0) {
         return 1;
     }
 block_17:

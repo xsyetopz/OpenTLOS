@@ -1,14 +1,22 @@
 #include "spyro/source/SwampFlutter.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include <m2c_macros.h>
@@ -342,7 +350,7 @@ loop_2:
         temp_r30_560->unk50 = *(checked_cast<SwampFlutterCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r25_588 * 4) + 0x70));
         temp_r30_560->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_560->unk50, s16 *, 4) / 30.0f));
         temp_r30_560->unk54 = 0.0f;
-        temp_r30_560->unk54 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        temp_r30_560->unk54 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         var_r31_551 += 1;
         var_r28_553 += 0x80;
         goto loop_2;

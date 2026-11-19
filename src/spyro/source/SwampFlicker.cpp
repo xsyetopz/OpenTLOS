@@ -1,17 +1,24 @@
 #include "spyro/source/SwampFlicker.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -170,7 +177,7 @@ loop_16:
                 } else {
                     M2C_FIELD(temp_r30_141, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_141, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_141, f32 *, 0x54));
                     if (M2C_FIELD(temp_r30_141, f32 *, 0x54) > 1.0f) {
-                        M2C_FIELD(temp_r30_141, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 1);
+                        M2C_FIELD(temp_r30_141, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 0, 1);
                         temp_r27_167 = M2C_FIELD(temp_r30_141, s32 *, 0x60);
                         M2C_FIELD(temp_r30_141, void **, 0x50) = (void *) *(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_167 * 4) + 0x70));
                         M2C_FIELD(temp_r30_141, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_141, void **, 0x50), s16 *, 4) / 30.0f)));
@@ -282,8 +289,8 @@ loop_16:
             temp_r30_141->Translate(temp_r30_141, *((MKVector3 *) &spC8));
             M2C_FIELD(temp_r30_141, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_141, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_141, f32 *, 0x54));
             if (M2C_FIELD(temp_r30_141, f32 *, 0x54) >= 1.0f) {
-                M2C_FIELD(temp_r30_141, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
-                M2C_FIELD(temp_r30_141, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 1);
+                M2C_FIELD(temp_r30_141, f32 *, 0x64) = (f32) (5.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
+                M2C_FIELD(temp_r30_141, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 0, 1);
                 temp_r27_433 = M2C_FIELD(temp_r30_141, s32 *, 0x60);
                 M2C_FIELD(temp_r30_141, void **, 0x50) = (void *) *(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_433 * 4) + 0x70));
                 M2C_FIELD(temp_r30_141, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_141, void **, 0x50), s16 *, 4) / 30.0f)));
@@ -371,12 +378,12 @@ void SwampFlicker::LoadDone() {
 loop_27:
     if (var_r31_517 < (s32) this->unk90) {
         temp_r30_536 = ((u8 *) this->unk170) + var_r28_519;
-        M2C_FIELD(temp_r30_536, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 1);
+        M2C_FIELD(temp_r30_536, s32 *, 0x60) = MKRand_Int((int *) &gViewSeed, 0, 1);
         temp_r26_539 = M2C_FIELD(temp_r30_536, s32 *, 0x60);
         M2C_FIELD(temp_r30_536, void **, 0x50) = (void *) *(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r26_539 * 4) + 0x70));
         M2C_FIELD(temp_r30_536, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_536, void **, 0x50), s16 *, 4) / 30.0f)));
         M2C_FIELD(temp_r30_536, f32 *, 0x54) = 0.0f;
-        M2C_FIELD(temp_r30_536, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
+        M2C_FIELD(temp_r30_536, f32 *, 0x64) = (f32) (5.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
         sp100.GetRandPos();
         sp50 = 0.0f;
         temp_f5_569 = M2C_BITWISE(f64, sp100);

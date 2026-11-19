@@ -1,22 +1,49 @@
 #include "spyro/source/GuardianCage.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/Guardian.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -181,7 +208,7 @@ void GuardianCage::StateDeadUpdate() {
 
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void GuardianCage::StateDeadEnter() {
     f64 sp140;
     f64 sp138;
@@ -248,9 +275,9 @@ void GuardianCage::StateDeadEnter() {
 
     var_r30_78 = 0;
     do {
-        temp_f26_85 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f25_90 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
-        sp98 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f26_85 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f25_90 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
+        sp98 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp9C = temp_f25_90;
         spA0 = temp_f26_85;
         sp128 = (f64) sp98;
@@ -260,9 +287,9 @@ void GuardianCage::StateDeadEnter() {
         sp138 = temp_f0_104;
         sp90 = (f32) sp130 * 1000.0f;
         sp140 = (f64) sp90;
-        temp_f26_117 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f25_122 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-        sp78 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f26_117 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f25_122 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+        sp78 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp7C = temp_f25_122;
         sp80 = temp_f26_117;
         spF8 = (f64) sp78;
@@ -278,9 +305,9 @@ void GuardianCage::StateDeadEnter() {
         sp118 = temp_f0_149;
         sp60 = M2C_FIELD(temp_r4_143, f32 *, 8) + (f32) sp110;
         sp120 = (f64) sp60;
-        temp_f26_163 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f25_168 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp48 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f26_163 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f25_168 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp48 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp4C = temp_f25_168;
         sp50 = temp_f26_163;
         spD8 = (f64) sp48;
@@ -290,9 +317,9 @@ void GuardianCage::StateDeadEnter() {
         spE8 = temp_f0_182;
         sp40 = (f32) spE0 * 3.1415927f;
         spF0 = (f64) sp40;
-        temp_f25_195 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f26_200 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp28 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f25_195 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f26_200 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp28 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp2C = temp_f26_200;
         sp30 = temp_f25_195;
         spB8 = (f64) sp28;
@@ -302,7 +329,7 @@ void GuardianCage::StateDeadEnter() {
         spC8 = temp_f0_214;
         sp20 = (f32) spC0 * 3.1415927f;
         spD0 = (f64) sp20;
-        temp_f1_226 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+        temp_f1_226 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
         sp8 = 1.0f;
         spC = 1.0f;
         sp10 = 1.0f;
@@ -317,7 +344,6 @@ void GuardianCage::StateDeadEnter() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void GuardianCage::StateDyingExit() {
     f64 sp88;
     f64 sp80;
@@ -359,9 +385,9 @@ void GuardianCage::StateDyingExit() {
         sp80 = temp_f0_314;
         sp38 = M2C_FIELD(temp_r4_306, f32 *, 8) + (f32) sp78;
         sp88 = (f64) sp38;
-        temp_f27_328 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f28_333 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-        sp20 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f27_328 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f28_333 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+        sp20 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp24 = temp_f28_333;
         sp28 = temp_f27_328;
         sp50 = (f64) sp20;
@@ -371,7 +397,7 @@ void GuardianCage::StateDyingExit() {
         sp60 = temp_f0_347;
         sp18 = (f32) sp58 * 1500.0f;
         sp68 = (f64) sp18;
-        sp8 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
+        sp8 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
         gb.EmitDust(*((MKVector3 *) &sp80), *((MKVector3 *) &sp60), sp8, 0.0f);
         var_r30_301 += 1;
     } while (var_r30_301 < 0x14);
@@ -380,7 +406,6 @@ void GuardianCage::StateDyingExit() {
         temp_r3_370->AttachToCage(0U);
     }
 }
-#endif
 
 void GuardianCage::StateDyingUpdate() {
     Matrix spD0;
@@ -760,17 +785,15 @@ void GuardianCage::LoadDone() {
     this->unkD0 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "guardian");
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 GuardianCage::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1132;
 
     var_r31_1132 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("NumCrystals", &this->unk138, 0) != 0) || (this->unk148.LoadLine(arg0, "OnDestruction") != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("NumCrystals", (int *) &this->unk138, 0) != 0) || (this->unk148.LoadLine(arg0, "OnDestruction") != 0)) {
         var_r31_1132 = 1;
     }
     return var_r31_1132;
 }
-#endif
 
 void GuardianCage::Reset() {
     Matrix sp10;

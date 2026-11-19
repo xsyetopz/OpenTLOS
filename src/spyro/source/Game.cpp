@@ -1,27 +1,68 @@
 #include "spyro/source/Game.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/MKView.h"
+#include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/CustomMaterialUpdater.h"
+#include "spyro/source/CutsceneObject.h"
 #include "spyro/source/CutsceneSystem.h"
 #include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplosionWarpFX.h"
 #include "spyro/source/GameCamera2.h"
+#include "spyro/source/GameCameraEmuStateMachine.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameStateMachine.h"
+#include "spyro/source/GameVideo.h"
 #include "spyro/source/HeatDistortPS.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDShatter2.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
 #include "spyro/source/Level.h"
+#include "spyro/source/NodeLookAt.h"
 #include "spyro/source/ScreenWobbleFX.h"
 #include "spyro/source/ShotgunWarpFX.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/TimeDeltaModifier.h"
 #include "spyro/source/Tools.h"
@@ -48,7 +89,6 @@
 #include "spyro/source/GameLanguage.h"
 #include "spyro/source/GameProperties.h"
 #include "spyro/source/GameSounds.h"
-#include "spyro/source/GameVideo.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/LoadLevel.h"
@@ -525,7 +565,7 @@ void GameGlobals::EmitSnowCrud(const MKVector3 &arg0, const MKVector3 &arg1, con
         M2C_FIELD(temp_r31_629, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r31_629, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r31_629, f32 *, 0x18) = (f32) &arg2;
-        M2C_FIELD(temp_r31_629, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        M2C_FIELD(temp_r31_629, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r31_629, f32 *, 0x14) = (f32) M2C_FIELD(this->unk78, f32 *, 0xF4);
     }
 }
@@ -548,7 +588,7 @@ void GameGlobals::EmitDust(const MKVector3 &arg0, const MKVector3 &arg1, const f
         M2C_FIELD(temp_r31_680, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r31_680, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r31_680, f32 *, 0x18) = (f32) &arg2;
-        M2C_FIELD(temp_r31_680, f32 *, 0x10) = (f32) (arg3 * MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f));
+        M2C_FIELD(temp_r31_680, f32 *, 0x10) = (f32) (arg3 * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
         M2C_FIELD(temp_r31_680, f32 *, 0x14) = (f32) M2C_FIELD(this->unk7C, f32 *, 0xF4);
     }
 }
@@ -571,7 +611,7 @@ void GameGlobals::EmitSmallRocks(const MKVector3 &arg0, const MKVector3 &arg1, c
         M2C_FIELD(temp_r31_731, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r31_731, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r31_731, f32 *, 0x18) = (f32) &arg2;
-        M2C_FIELD(temp_r31_731, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r31_731, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         M2C_FIELD(temp_r31_731, f32 *, 0x14) = (f32) M2C_FIELD(this->unk2B4, f32 *, 0xF4);
     }
 }
@@ -594,7 +634,7 @@ void GameGlobals::EmitCrud(const MKVector3 &arg0, const MKVector3 &arg1, const f
         M2C_FIELD(temp_r31_779, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r31_779, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
         M2C_FIELD(temp_r31_779, f32 *, 0x18) = (f32) &arg2;
-        M2C_FIELD(temp_r31_779, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r31_779, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         M2C_FIELD(temp_r31_779, f32 *, 0x14) = (f32) M2C_FIELD(this->unk78, f32 *, 0xF4);
     }
 }

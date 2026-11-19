@@ -1,14 +1,45 @@
 #include "spyro/source/FloorSwitch.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/Trap.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
@@ -128,7 +159,7 @@ void FloorSwitch::Draw() {
     GameProp::Draw();
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FloorSwitch::Update() {
     s8 sp130;
     f64 sp128;
@@ -216,9 +247,9 @@ void FloorSwitch::Update() {
     }
     if (((u8) this->unk110 >> 5U) & 1) {
         sp11C = 0;
-        temp_f29_350 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f28_355 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_355, temp_f29_350);
+        temp_f29_350 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f28_355 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_355, temp_f29_350);
         sp18 = spD8 * 5.398241246e-315;
         sp118 = 0x417;
         sp20 = spE0 * 10.0f;
@@ -296,7 +327,7 @@ void FloorSwitch::Update() {
     sp108 = temp_f0_520;
     sp50 = M2C_FIELD(temp_r4_514, f32 *, 8) + (f32) spD0;
     sp110 = (f64) sp50;
-    temp_f1_536 = 1000.0f * MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+    temp_f1_536 = 1000.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
     sp30 = 0.0f;
     sp28 = 0.0f;
     sp2C = temp_f1_536;
@@ -394,19 +425,16 @@ void FloorSwitch::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 FloorSwitch::LoadLine(MKIniLine *arg0) {
     s32 var_r31_786;
 
     var_r31_786 = 0;
-    if ((Trap::LoadLine(arg0) != 0) || (this->unk120.LoadLine(arg0, "OnPressed") != 0) || (this->unk124.LoadLine(arg0, "OnReleased") != 0) || (arg0->LoadInt("ActivatorPropID", &this->unkE4, 0) != 0) || (arg0->LoadFloat("ActivationRange", &this->unkE8, 0) != 0) || (arg0->LoadVector4("SwitchColor", &this->unkF0, 0) != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (this->unk120.LoadLine(arg0, "OnPressed") != 0) || (this->unk124.LoadLine(arg0, "OnReleased") != 0) || (arg0->LoadInt("ActivatorPropID", (int *) &this->unkE4, 0) != 0) || (arg0->LoadFloat("ActivationRange", &this->unkE8, 0) != 0) || (arg0->LoadVector4("SwitchColor", &this->unkF0, 0) != 0)) {
         var_r31_786 = 1;
     }
     return var_r31_786;
 }
-#endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void FloorSwitch::Deinit() {
     KDSoundPlayer *temp_r31_863;
     KDSoundPlayer *temp_r31_880;
@@ -426,12 +454,12 @@ void FloorSwitch::Deinit() {
     }
     temp_r3_859 = this->unk114;
     if (temp_r3_859 != NULL) {
-        KDSound_Stop(&temp_r3_859->unk0);
+        KDSound_Stop((int *) &temp_r3_859->unk0);
         temp_r31_863 = this->unk114;
         temp_cr0_eq_864 = temp_r31_863 == NULL;
         if (temp_cr0_eq_864 == 0) {
             if (temp_cr0_eq_864 == 0) {
-                KDSound_Stop(&temp_r31_863->unk0);
+                KDSound_Stop((int *) &temp_r31_863->unk0);
             }
             operator delete(temp_r31_863);
         }
@@ -439,12 +467,12 @@ void FloorSwitch::Deinit() {
     }
     temp_r3_876 = this->unk118;
     if (temp_r3_876 != NULL) {
-        KDSound_Stop(&temp_r3_876->unk0);
+        KDSound_Stop((int *) &temp_r3_876->unk0);
         temp_r31_880 = this->unk118;
         temp_cr0_eq_881 = temp_r31_880 == NULL;
         if (temp_cr0_eq_881 == 0) {
             if (temp_cr0_eq_881 == 0) {
-                KDSound_Stop(&temp_r31_880->unk0);
+                KDSound_Stop((int *) &temp_r31_880->unk0);
             }
             operator delete(temp_r31_880);
         }
@@ -452,12 +480,12 @@ void FloorSwitch::Deinit() {
     }
     temp_r3_893 = this->unk11C;
     if (temp_r3_893 != NULL) {
-        KDSound_Stop(&temp_r3_893->unk0);
+        KDSound_Stop((int *) &temp_r3_893->unk0);
         temp_r31_897 = this->unk11C;
         temp_cr0_eq_898 = temp_r31_897 == NULL;
         if (temp_cr0_eq_898 == 0) {
             if (temp_cr0_eq_898 == 0) {
-                KDSound_Stop(&temp_r31_897->unk0);
+                KDSound_Stop((int *) &temp_r31_897->unk0);
             }
             operator delete(temp_r31_897);
         }
@@ -465,7 +493,6 @@ void FloorSwitch::Deinit() {
     }
     GameProp::Deinit();
 }
-#endif
 
 void FloorSwitch::Init() {
     f64 sp40;
@@ -529,7 +556,7 @@ s32 FloorSwitchDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1032;
 
     var_r31_1032 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "beckonSoundLoop", &this->unkEC) != 0) || (KDSound_LoadLine(arg0, "activeSoundLoop", &this->unkF0) != 0) || (KDSound_LoadLine(arg0, "dropSoundLoop", &this->unkF4) != 0) || (KDSound_LoadLine(arg0, "activationSound", &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "beginActivationSound", &this->unkE4) != 0) || (arg0->LoadFloat("AnimSpeed", &this->unk108, 0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "beckonSoundLoop", (int *) &this->unkEC) != 0) || (KDSound_LoadLine(arg0, "activeSoundLoop", (int *) &this->unkF0) != 0) || (KDSound_LoadLine(arg0, "dropSoundLoop", (int *) &this->unkF4) != 0) || (KDSound_LoadLine(arg0, "activationSound", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "beginActivationSound", (int *) &this->unkE4) != 0) || (arg0->LoadFloat("AnimSpeed", &this->unk108, 0) != 0)) {
         var_r31_1032 = 1;
     }
     return var_r31_1032;

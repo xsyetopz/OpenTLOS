@@ -108,7 +108,7 @@ inline ShatterableBoat::ShatterableBoat() {
 inline ShatterableBoat::~ShatterableBoat() {
     this->unkC8 = &__vt.unk48;
     if ((&this->unk338 != NULL) && (&this->unk338 != NULL)) {
-        KDSound_Stop(&this->unk338);
+        KDSound_Stop((int *) &this->unk338);
     }
 }
 #endif

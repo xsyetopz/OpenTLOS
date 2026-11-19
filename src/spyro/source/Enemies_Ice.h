@@ -121,7 +121,7 @@ inline IceTier2::IceTier2() {
 inline IceTier2::~IceTier2() {
     this->unk6B8 = &__vt.unk84;
     if ((&this->unkB38 != NULL) && (&this->unkB38 != NULL)) {
-        KDSound_Stop(&this->unkB38);
+        KDSound_Stop((int *) &this->unkB38);
     }
 }
 #endif

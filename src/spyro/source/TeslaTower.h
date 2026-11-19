@@ -74,16 +74,16 @@ inline TeslaTower::~TeslaTower() {
 
     if (this != NULL) {
         if ((&this->unk18C != NULL) && (&this->unk18C != NULL)) {
-            KDSound_Stop(&this->unk18C);
+            KDSound_Stop((int *) &this->unk18C);
         }
         if ((&this->unk164 != NULL) && (&this->unk164 != NULL)) {
-            KDSound_Stop(&this->unk164);
+            KDSound_Stop((int *) &this->unk164);
         }
         if ((&this->unk13C != NULL) && (&this->unk13C != NULL)) {
-            KDSound_Stop(&this->unk13C);
+            KDSound_Stop((int *) &this->unk13C);
         }
         if ((&this->unk114 != NULL) && (&this->unk114 != NULL)) {
-            KDSound_Stop(&this->unk114);
+            KDSound_Stop((int *) &this->unk114);
         }
         temp_cr0_eq_49 = this == NULL;
         if (temp_cr0_eq_49 == 0) {

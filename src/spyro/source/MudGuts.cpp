@@ -1,14 +1,22 @@
 #include "spyro/source/MudGuts.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -213,7 +221,7 @@ loop_15:
                 M2C_FIELD(temp_r29_339, f32 *, 0x38) = (f32) sp40;
                 M2C_FIELD(temp_r29_339, f32 *, 0x3C) = 1.0f;
                 if (((temp_r29_339->unk64 <= 0.0f) && ((s32) temp_r29_339->unk60 == 0)) || (((s32) temp_r29_339->unk60 == 1) && (temp_r29_339->unk54 >= 1.0f))) {
-                    if (MKRand_Int(&gViewSeed, 0, 5) == 0) {
+                    if (MKRand_Int((int *) &gViewSeed, 0, 5) == 0) {
                         temp_r29_339->unk60 = 1;
                     } else {
                         temp_r29_339->unk60 = 0;

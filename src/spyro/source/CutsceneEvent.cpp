@@ -1,27 +1,65 @@
 #include "spyro/source/CutsceneEvent.h"
 #include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKDynamicBone.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKSoftBody.h"
+#include "common/Source/MKStringCache.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
 #include "spyro/source/Collectable.h"
+#include "spyro/source/Coronas.h"
+#include "spyro/source/CustomMaterialUpdater.h"
+#include "spyro/source/ElectricBeamFX.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FlyingBurningBits.h"
+#include "spyro/source/FuryFX.h"
+#include "spyro/source/FuryFXElectricity.h"
+#include "spyro/source/FuryFXElectricity2.h"
+#include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
 #include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
 #include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
 #include "spyro/source/LavaBubbleFX.h"
 #include "spyro/source/Level.h"
+#include "spyro/source/LitCloudPS.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/ScorchTrail.h"
 #include "spyro/source/Shadow.h"
 #include "spyro/source/Tools.h"
 #include "spyro/source/UIStringTable.h"
 #include "spyro/source/ZapBreathFX.h"
+#include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
@@ -68,7 +106,7 @@ void LavaBubbleCE::Update() {
     if (temp_f3_56 > 0.0f) {
         temp_f31_63 = (1.0f / this->unk1C) / temp_f3_56;
         if (this->unk20 >= temp_f31_63) {
-            temp_f1_70 = MKRand_Float(&gViewSeed, 0.5f, 1.5f);
+            temp_f1_70 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.5f);
             sp10 = temp_f1_70;
             sp8 = temp_f1_70;
             spC = temp_f1_70;
@@ -76,8 +114,8 @@ void LavaBubbleCE::Update() {
             sp38 = (f64) sp8;
             temp_f2_79 = this->unk18;
             temp_f2_82 = this->unk18;
-            temp_f30_83 = MKRand_Float(&gViewSeed, -temp_f2_79, temp_f2_79);
-            temp_f1_86 = MKRand_Float(&gViewSeed, -temp_f2_82, temp_f2_82);
+            temp_f30_83 = MKRand_Float((int *) &gViewSeed, -temp_f2_79, temp_f2_79);
+            temp_f1_86 = MKRand_Float((int *) &gViewSeed, -temp_f2_82, temp_f2_82);
             sp30 = temp_f30_83;
             sp28 = temp_f1_86;
             sp2C = 0.0f;
@@ -95,7 +133,6 @@ void LavaBubbleCE::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void LavaBubbleCE::Enter() {
     f64 sp60;
     f64 sp58;
@@ -119,7 +156,7 @@ void LavaBubbleCE::Enter() {
     f64 temp_f0_172;
 
     this->unk20 = 0.0f;
-    temp_f1_144 = MKRand_Float(&gViewSeed, 0.5f, 1.5f);
+    temp_f1_144 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.5f);
     sp10 = temp_f1_144;
     sp8 = temp_f1_144;
     spC = temp_f1_144;
@@ -127,8 +164,8 @@ void LavaBubbleCE::Enter() {
     sp38 = (f64) sp8;
     temp_f2_153 = this->unk18;
     temp_f2_156 = this->unk18;
-    temp_f31_157 = MKRand_Float(&gViewSeed, -temp_f2_153, temp_f2_153);
-    temp_f1_160 = MKRand_Float(&gViewSeed, -temp_f2_156, temp_f2_156);
+    temp_f31_157 = MKRand_Float((int *) &gViewSeed, -temp_f2_153, temp_f2_153);
+    temp_f1_160 = MKRand_Float((int *) &gViewSeed, -temp_f2_156, temp_f2_156);
     sp30 = temp_f31_157;
     sp28 = temp_f1_160;
     sp2C = 0.0f;
@@ -141,7 +178,6 @@ void LavaBubbleCE::Enter() {
     sp60 = (f64) sp20;
     ((LavaBubbleFX *) (M2C_FIELD(&gb, LavaBubbleFX **, 0x90)))->CreateBubble(*((MKVector3 *) &sp58), *((MKVector3 *) &sp38));
 }
-#endif
 
 s32 LavaBubbleCE::LoadLine() {
     s32 var_r31_208;
@@ -265,18 +301,16 @@ void SpawnGemsCE::Enter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SpawnGemsCE::LoadLine() {
     s32 var_r31_540;
 
     var_r31_540 = 0;
-    LoadNode("node", &this->unk14, &this->unk18);
-    if (((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) || (LoadInt("gemsHealth", &this->unk4) != 0) || (LoadInt("gemsMagic", &this->unkC) != 0) || (LoadInt("gemsSpirit", &this->unk8) != 0) || (LoadInt("gemsFury", &this->unk10) != 0)) {
+    LoadNode("node", &this->unk14, (int *) &this->unk18);
+    if (((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) || (LoadInt("gemsHealth", (int *) &this->unk4) != 0) || (LoadInt("gemsMagic", (int *) &this->unkC) != 0) || (LoadInt("gemsSpirit", (int *) &this->unk8) != 0) || (LoadInt("gemsFury", (int *) &this->unk10) != 0)) {
         var_r31_540 = 1;
     }
     return var_r31_540;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void DisableShadowCE::Exit() {
@@ -290,11 +324,9 @@ void DisableShadowCE::Enter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DisableShadowCE::LoadLine() {
-    LoadActorID("actor", &this->unk4);
+    LoadActorID("actor", (int *) &this->unk4);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void BreathEffectCE::Update() {
@@ -410,7 +442,7 @@ s32 BreathEffectCE::LoadLine() {
         this->unk50 = DataMap_GetValue(&attackMap, &sp8);
         return;
     }
-    LoadNode("headNode", &this->unk48, &this->unk58);
+    LoadNode("headNode", &this->unk48, (int *) &this->unk58);
 }
 #endif
 
@@ -429,7 +461,7 @@ void PlaySecondaryAnimCE::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 PlaySecondaryAnimCE::LoadLine() {
     s32 var_r31_1080;
 
@@ -438,7 +470,7 @@ s32 PlaySecondaryAnimCE::LoadLine() {
         return 1;
     }
     var_r31_1080 = 0;
-    LoadNode("node", &this->unk84, &this->unk8C);
+    LoadNode("node", &this->unk84, (int *) &this->unk8C);
     if (((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) || (LoadString("anim", &this->unk4) != 0)) {
         var_r31_1080 = 1;
     }
@@ -633,18 +665,16 @@ void DropShadowCE::Update() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DropShadowCE::LoadLine() {
     s32 var_r31_1634;
 
     var_r31_1634 = 0;
-    LoadNode("node", &this->unk4, &this->unk8);
+    LoadNode("node", &this->unk4, (int *) &this->unk8);
     if (((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) || (LoadFloat("scale", &this->unkC) != 0)) {
         var_r31_1634 = 1;
     }
     return var_r31_1634;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void TeleportCE::Update() {
@@ -757,17 +787,15 @@ void ExplosionNodeCE::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 ExplosionNodeCE::LoadLine() {
     s32 var_r31_1897;
 
     var_r31_1897 = 0;
-    if ((LoadActorModel("actor", &this->unk4) != 0) || (LoadNode("node", &this->unk4, &this->unk8), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0)) || (LoadFloat("scale", &this->unkC) != 0)) {
+    if ((LoadActorModel("actor", &this->unk4) != 0) || (LoadNode("node", &this->unk4, (int *) &this->unk8), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0)) || (LoadFloat("scale", &this->unkC) != 0)) {
         var_r31_1897 = 1;
     }
     return var_r31_1897;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void ExplosionCE::Update() {
@@ -818,17 +846,15 @@ void AttachScaleOffsetCE::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 AttachScaleOffsetCE::LoadLine() {
     s32 var_r31_2069;
 
     var_r31_2069 = 0;
-    if ((LoadVector3("offset", &this->unk8) != 0) || (LoadActorModel("actor", &this->unk18) != 0) || (LoadFloat("scale", &this->unk8.unkC) != 0) || (LoadNode("node", &this->unk1C, &this->unk20), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0))) {
+    if ((LoadVector3("offset", &this->unk8) != 0) || (LoadActorModel("actor", &this->unk18) != 0) || (LoadFloat("scale", &this->unk8.unkC) != 0) || (LoadNode("node", &this->unk1C, (int *) &this->unk20), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0))) {
         var_r31_2069 = 1;
     }
     return var_r31_2069;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp70'
 void ScaleCE::Update() {
@@ -978,17 +1004,15 @@ void AttachPropCE::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 AttachPropCE::LoadLine() {
     s32 var_r31_2532;
 
     var_r31_2532 = 0;
-    if ((LoadProp("prop", &this->unk4) != 0) || (LoadNode("node", &this->unk8, &this->unkC), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0))) {
+    if ((LoadProp("prop", &this->unk4) != 0) || (LoadNode("node", &this->unk8, (int *) &this->unkC), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0))) {
         var_r31_2532 = 1;
     }
     return var_r31_2532;
 }
-#endif
 
 void AttachPropCE::Init() {
     this->unk8 = NULL;
@@ -1066,17 +1090,15 @@ void AttachCE::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 AttachCE::LoadLine() {
     s32 var_r31_2764;
 
     var_r31_2764 = 0;
-    if ((LoadActorModel("actor", &this->unk18) != 0) || (LoadNode("node", &this->unk1C, &this->unk20), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0)) || (LoadInt("bUseOrientation", &this->unk24) != 0) || (LoadVector3("offset", &this->unk8) != 0)) {
+    if ((LoadActorModel("actor", &this->unk18) != 0) || (LoadNode("node", &this->unk1C, (int *) &this->unk20), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0)) || (LoadInt("bUseOrientation", (int *) &this->unk24) != 0) || (LoadVector3("offset", &this->unk8) != 0)) {
         var_r31_2764 = 1;
     }
     return var_r31_2764;
 }
-#endif
 
 void AttachCE::Init() {
     this->unk1C = NULL;

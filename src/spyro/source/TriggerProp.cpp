@@ -1,9 +1,39 @@
 #include "spyro/source/TriggerProp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/CutsceneObject.h"
 #include "spyro/source/CutsceneSystem.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GameVideo.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/Tools.h"
 #include "spyro/source/TriggerObject.h"
 #include "unplaced_templates.h"
@@ -55,7 +85,7 @@ void TriggerPlaneGroupPropDescriptor::Init() {
     this->unk80 = 0;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKSceneManager'
+#if 0 // DRAFT: ')' expected
 void TriggerPlaneProp::Resolve() {
     MKProp *var_r3_198;
     TriggerPlaneGroupObject *temp_r31_211;
@@ -264,7 +294,7 @@ void TriggerProp::Message(MKMessage *arg0) {
         break;
     }
     MKProp::Message(arg0);
-    PropFlagsMessage((u32 *) &this->unk10, arg0);
+    PropFlagsMessage((unsigned int *) &this->unk10, arg0);
 }
 #endif
 
@@ -433,7 +463,7 @@ void TriggerProp::LoadDone() {
     this->unkC = (BoundingVolume *) &this->unkA8->unk60;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 TriggerProp::LoadLine(MKIniLine *arg0) {
     TriggerObject *temp_r3_1155;
     s32 temp_r3_1188;
@@ -443,7 +473,7 @@ s32 TriggerProp::LoadLine(MKIniLine *arg0) {
     s32 temp_r3_1272;
     u8 var_r29_1290;
 
-    if ((MKProp::LoadLine(arg0) != 0) || (temp_r3_1155 = this->unkA8, ((temp_r3_1155->LoadLine(arg0) == 0) == 0)) || (arg0->LoadInt("textID", &this->unkBC, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (temp_r3_1155 = this->unkA8, ((temp_r3_1155->LoadLine(arg0) == 0) == 0)) || (arg0->LoadInt("textID", (int *) &this->unkBC, 0) != 0)) {
         return 1U;
     }
     if (arg0->IsField("bEnterOnceOnly") != 0) {
@@ -475,7 +505,7 @@ s32 TriggerProp::LoadLine(MKIniLine *arg0) {
         var_r29_1290 = 1;
     } else {
         var_r29_1290 = 0;
-        if ((this->unkAC.LoadLine(arg0, "OnEnter") != 0) || (this->unkB0.LoadLine(arg0, "OnAction") != 0) || (this->unkB4.LoadLine(arg0, "OnExit") != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0)) {
+        if ((this->unkAC.LoadLine(arg0, "OnEnter") != 0) || (this->unkB0.LoadLine(arg0, "OnAction") != 0) || (this->unkB4.LoadLine(arg0, "OnExit") != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0)) {
             var_r29_1290 = 1;
         }
     }
@@ -509,10 +539,10 @@ void TriggerProp::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsInit(unsigned long *, unsigned int)' does not
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void TriggerProp::Init() {
     MKProp::Init();
-    PropFlagsInit((u32 *) &this->unk10, 0x160000U);
+    PropFlagsInit((unsigned int *) &this->unk10, 0x160000U);
     this->unkA8 = NULL;
     this->unkBC = 0;
     this->unk4C = 0;

@@ -1,9 +1,15 @@
 #include "spyro/source/LiquidStream.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
@@ -352,9 +358,9 @@ loop_18:
                     goto loop_18;
                 }
             } else {
-                temp_f25_472 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f26_477 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                sp80 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f25_472 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f26_477 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                sp80 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 sp84 = temp_f26_477;
                 sp88 = temp_f25_472;
                 spE0 = (f64) sp80;
@@ -423,9 +429,9 @@ loop_18:
             goto loop_41;
         }
         if ((u8) this->unk60 == 0) {
-            temp_f30_638 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f28_643 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp60 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f30_638 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f28_643 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp60 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp64 = temp_f28_643;
             sp68 = temp_f30_638;
             spB0 = (f64) sp60;

@@ -1,11 +1,26 @@
 #include "spyro/source/ZapArcFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -130,9 +145,9 @@ void ZapArcFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const float
         if (temp_r0_57 == 0) {
             this->unkCC = 0.0f;
         }
-        temp_f26_79 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f25_84 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        spC8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f26_79 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f25_84 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        spC8 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         spCC = temp_f25_84;
         spD0 = temp_f26_79;
         sp198 = (f64) spC8;
@@ -189,9 +204,9 @@ loop_25:
             temp_r3_196 = ((u8 *) this->unkC8) + var_r27_187;
             if ((u8) M2C_FIELD(temp_r3_196, u8 *, 0x48) == 0) {
                 if (var_r31_177 < 2) {
-                    temp_f26_206 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f25_211 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    spB8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f26_206 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f25_211 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    spB8 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     spBC = temp_f25_211;
                     spC0 = temp_f26_206;
                     sp178 = (f64) spB8;
@@ -238,9 +253,9 @@ loop_25:
                     sp178 = (f32) sp178 * var_f5_298;
                     (*(f32 *) ((u8 *) &sp160 + 0x1c)) *= var_f5_298;
                     sp180 = (f32) sp180 * var_f5_298;
-                    temp_f25_316 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f26_321 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    sp98 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f25_316 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f26_321 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    sp98 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     sp9C = temp_f26_321;
                     spA0 = temp_f25_316;
                     sp128 = (f64) sp98;
@@ -302,7 +317,7 @@ loop_25:
                     sp168 = (f32) sp168 * var_f4_442;
                     (*(f32 *) ((u8 *) &sp160 + 0xc)) *= var_f4_442;
                     sp170 = (f32) sp170 * var_f4_442;
-                    temp_f1_460 = MKRand_Float(&gViewSeed, 0.35f, 1.0f);
+                    temp_f1_460 = MKRand_Float((int *) &gViewSeed, 0.35f, 1.0f);
                     temp_f0_463 = sp188 * temp_f1_460;
                     sp68 = temp_f0_463;
                     spF8 = temp_f0_463;
@@ -325,7 +340,7 @@ loop_25:
                     sp160 = (f64) sp40;
                     ((Matrix *) (((u8 *) this->unkC8) + var_r27_187))->SetIdentity();
                     KDMath_BuildMatrixFromFwd(((u8 *) this->unkC8) + var_r27_187, *((MKVector3 *) &sp168), (MKVector3 *) &sp178);
-                    temp_f1_519 = temp_f31_453 * MKRand_Float(&gViewSeed, 0.2f, 0.5f);
+                    temp_f1_519 = temp_f31_453 * MKRand_Float((int *) &gViewSeed, 0.2f, 0.5f);
                     sp30 = temp_f1_519;
                     sp28 = temp_f1_519;
                     sp2C = temp_f1_519;
@@ -366,7 +381,7 @@ loop_25:
                 *(this->unkC8 + (var_r27_187 + 0x48)) = 1;
                 *(this->unkC8 + (var_r27_187 + 0x44)) = 0.0f;
                 var_r31_177 -= 1;
-                *(this->unkC8 + (var_r27_187 + 0x4C)) = MKRand_Int(&gViewSeed, 0, this->unkD0);
+                *(this->unkC8 + (var_r27_187 + 0x4C)) = MKRand_Int((int *) &gViewSeed, 0, this->unkD0);
             }
             var_r30_179 += 1;
             var_r27_187 += 0x60;

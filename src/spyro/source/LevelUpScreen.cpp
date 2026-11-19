@@ -1,13 +1,26 @@
 #include "spyro/source/LevelUpScreen.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/CutsceneEvent.h"
 #include "spyro/source/DialogBox.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIContainer.h"
+#include "spyro/source/UIMessage.h"
+#include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -572,7 +585,7 @@ void LevelUpScreen::Update() {
             var_r28_1052 = HasAttack(selectionElement, selectionAttack);
         }
         if ((s32) this->unk150 != (s32) this->unk14C) {
-            KDSound_Stop((s32 *) &this->unkC8.unk28);
+            KDSound_Stop((int *) &this->unkC8.unk28);
         }
         this->unk150 = this->unk14C;
         sp8 = 1;
@@ -636,8 +649,8 @@ void LevelUpScreen::Update() {
                                 var_r0_1223 = *(temp_r6_1189 + (temp_r0_1209 * 4));
                             }
                             if (var_r0_1223 == 3) {
-                                KDSound_Stop((s32 *) &this->unkC8.unk28);
-                                KDSound_Stop((s32 *) &this->unkC8.unk50);
+                                KDSound_Stop((int *) &this->unkC8.unk28);
+                                KDSound_Stop((int *) &this->unkC8.unk50);
                                 DialogBox_ReleaseContext(this->unk140);
                                 this->unk140 = NULL;
                                 DialogBox_ReleaseContext(this->unk144);
@@ -725,7 +738,6 @@ void DialogCallback(DialogBoxContext *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void LevelUpScreen::OnExit() {
     UIScreen::OnExit();
     DialogBox_ReleaseContext(this->unk144);
@@ -735,11 +747,10 @@ void LevelUpScreen::OnExit() {
     this->unk140 = NULL;
     this->unk155 = 1;
     this->unk156 = 0;
-    KDSound_Stop(&this->unkC8.unk0);
-    KDSound_Stop((s32 *) &this->unkC8.unk50);
-    KDSound_Stop((s32 *) &this->unkC8.unk28);
+    KDSound_Stop((int *) &this->unkC8.unk0);
+    KDSound_Stop((int *) &this->unkC8.unk50);
+    KDSound_Stop((int *) &this->unkC8.unk28);
 }
-#endif
 
 void LevelUpScreen::OnEnter() {
     UIScreen::OnEnter();

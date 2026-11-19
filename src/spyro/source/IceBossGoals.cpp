@@ -1,39 +1,80 @@
 #include "spyro/source/IceBossGoals.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EarthShockwave.h"
 #include "spyro/source/ElementalShield.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/Enemies_IceBoss.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoals_Death.h"
 #include "spyro/source/EnemyGoals_Hit.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/IceBitsPS.h"
 #include "spyro/source/IceBossStalactite.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
 #include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -406,15 +447,15 @@ u8 IceBossGoal_IceBreath::Update() {
             this->unkC->unkA0C->EmitConeBreathFx(3, 4000.0f, 0.5f, 1.5f, 0.0f, 0.5235987f);
             var_r28_613 = 0;
             do {
-                temp_f31_620 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+                temp_f31_620 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
                 spE8 = -temp_r29_592->unk20;
                 spEC = -temp_r29_592->unk24;
                 spF0 = -temp_r29_592->unk28;
                 sp1E8 = (f64) spE8;
                 sp1F0 = (f64) spF0;
-                temp_f26_637 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f27_642 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                sp108 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f26_637 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f27_642 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                sp108 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 sp10C = temp_f27_642;
                 sp110 = temp_f26_637;
                 sp1F8 = (f64) sp108;
@@ -434,7 +475,7 @@ u8 IceBossGoal_IceBreath::Update() {
                 sp228 = temp_f0_679;
                 spD0 = (f32) sp220 * 2010.0f;
                 sp230 = (f64) spD0;
-                temp_f1_691 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
+                temp_f1_691 = MKRand_Float((int *) &gViewSeed, 7.1f, 15.0f);
                 spB8 = temp_f31_620;
                 spBC = temp_f31_620;
                 sp14 = temp_f1_691;
@@ -479,7 +520,7 @@ u8 IceBossGoal_IceBreath::Update() {
             sp270 = (f64) sp70;
             sp178 = (f64) sp58;
             sp180 = (f64) sp60;
-            sp10 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
+            sp10 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
             ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &sp2C0.unk30), *((MKVector3 *) &sp268), sp10, lit_1598, (MKVector4) &sp178);
             M2C_FIELD(this->unkC, s8 *, 0x1064) = 1;
         }
@@ -492,7 +533,7 @@ u8 IceBossGoal_IceBreath::Update() {
                 M2C_FIELD(temp_r3_818, f64 *, 0x10) = (f64) M2C_FIELD(temp_r29_592, f64 *, 0x30);
                 M2C_FIELD(temp_r3_818, f64 *, 0x18) = (f64) M2C_FIELD(temp_r29_592, f64 *, 0x38);
             }
-            temp_f0_832 = 100.0f * MKRand_Float(&gViewSeed, 10.0f, 15.0f);
+            temp_f0_832 = 100.0f * MKRand_Float((int *) &gViewSeed, 10.0f, 15.0f);
             temp_r3_833 = M2C_FIELD(this->unkC, void **, 0xFFC);
             M2C_FIELD(temp_r3_833, f32 *, 0x38) = temp_f0_832;
             temp_r3_835 = M2C_FIELD(temp_r3_833, void **, 0x3C);
@@ -1137,7 +1178,7 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
+#if 0 // DRAFT: undefined identifier 'sp10'
 void IceBossGoal_MeleeAttack3::Activate() {
     f64 sp8;
     AnimSequence *temp_r5_2154;
@@ -1154,7 +1195,7 @@ void IceBossGoal_MeleeAttack3::Activate() {
     u8 var_r30_2208;
 
     this->unk8 = 0;
-    if (MKRand_Int(&gViewSeed, 0, 0x64) >= 0x32) {
+    if (MKRand_Int((int *) &gViewSeed, 0, 0x64) >= 0x32) {
         this->unkC->SelectAttack(0x10, 0x3E);
     } else {
         this->unkC->SelectAttack(0x10, 0x3F);

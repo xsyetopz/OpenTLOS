@@ -1,11 +1,24 @@
 #include "spyro/source/EnemyDeathFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/gc/System_GC.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Collectable.h"
 #include "spyro/source/Coronas.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDSound.h"
@@ -19,7 +32,6 @@ extern M2C_UNK gb;
 static s32 lit_634 = 2;
 static u8 lit_635 = 0;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg3) {
     f64 sp98;
     f64 sp90;
@@ -80,9 +92,9 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
     this->unk60 = 0.5f;
     do {
         temp_f31_88 = this->unk68;
-        temp_f28_93 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f27_98 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-        sp40 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f28_93 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f27_98 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+        sp40 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp44 = temp_f27_98;
         sp48 = temp_f28_93;
         sp60 = (f64) sp40;
@@ -97,15 +109,15 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
         sp90 = temp_f0_122;
         sp28 = (f32) sp78 * temp_f31_88;
         sp98 = (f64) sp28;
-        temp_f27_135 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-        temp_f28_140 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-        sp10 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        temp_f27_135 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+        temp_f28_140 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+        sp10 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         sp14 = temp_f28_140;
         sp18 = temp_f27_135;
         sp1C = 1.0f;
         sp50 = (f64) sp10;
         sp58 = (f64) sp18;
-        sp8 = this->unk68 * MKRand_Float(&gViewSeed, 12.0f, 20.0f);
+        sp8 = this->unk68 * MKRand_Float((int *) &gViewSeed, 12.0f, 20.0f);
         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &this->unk50), *((MKVector3 *) &sp90), sp8, *((MKVector4 *) &sp50), 0.0f);
         var_r28_81 += 1;
     } while (var_r28_81 < 0xF);
@@ -168,7 +180,6 @@ void EnemyDeathFX::Trigger(int *arg0, const MKVector3 &arg1, float arg2, int arg
         ((CollectableSpawner *) (M2C_FIELD(&gb, CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp80), 1, 200.0f, 500.0f, -1, NULL);
     }
 }
-#endif
 
 void EnemyDeathFX::Deinit() {
     Corona *temp_r4_403;

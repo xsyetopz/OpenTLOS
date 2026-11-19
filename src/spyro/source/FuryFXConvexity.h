@@ -86,10 +86,10 @@ inline FuryFXConvexity::~FuryFXConvexity() {
 
     if (this != NULL) {
         if ((&this->unk124 != NULL) && (&this->unk124 != NULL)) {
-            KDSound_Stop(&this->unk124);
+            KDSound_Stop((int *) &this->unk124);
         }
         if ((&this->unkFC != NULL) && (&this->unkFC != NULL)) {
-            KDSound_Stop(&this->unkFC);
+            KDSound_Stop((int *) &this->unkFC);
         }
         temp_cr0_eq_35 = this == NULL;
         if (temp_cr0_eq_35 == 0) {

@@ -1,6 +1,13 @@
 #include "spyro/source/IceExplosion.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/Matrix.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -8,7 +15,6 @@
 extern MKSceneManager *gMK;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void IceExplosion::Trigger(const MKVector3 &arg0, float arg1) {
     f64 temp_f1_52;
     void *temp_r29_67;
@@ -35,7 +41,7 @@ void IceExplosion::Trigger(const MKVector3 &arg0, float arg1) {
         M2C_FIELD(temp_r3_64, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_64, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_64, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_64, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_64, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r29_67, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r29_67, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r29_67, f32 *, 8) = 0.0f;
@@ -51,7 +57,7 @@ void IceExplosion::Trigger(const MKVector3 &arg0, float arg1) {
         M2C_FIELD(temp_r3_94, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_94, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_94, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_94, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_94, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r29_97, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r29_97, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r29_97, f32 *, 8) = 0.0f;
@@ -60,7 +66,6 @@ void IceExplosion::Trigger(const MKVector3 &arg0, float arg1) {
         M2C_FIELD(temp_r29_97, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r30_55, void **, 0x64), f32 *, 0xF4);
     }
 }
-#endif
 
 void IceExplosion::Draw() {
 

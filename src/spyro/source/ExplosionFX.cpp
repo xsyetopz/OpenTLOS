@@ -1,10 +1,17 @@
 #include "spyro/source/ExplosionFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -49,7 +56,6 @@ void ExplosionFX::CreateShockwave(const MKVector3 &arg0, const MKVector3 &arg1, 
     }
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ExplosionFX::CreateTendril(const MKVector3 &arg0, float arg1) {
     Matrix **temp_r5_104;
     Matrix **temp_r5_108;
@@ -64,10 +70,9 @@ void ExplosionFX::CreateTendril(const MKVector3 &arg0, float arg1) {
         temp_r31_113->unk18 = arg1;
         M2C_FIELD(temp_r31_113, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
         M2C_FIELD(temp_r31_113, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-        temp_r31_113->unk10 = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        temp_r31_113->unk10 = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
     }
 }
-#endif
 
 #if 0 // DRAFT: type mismatch
 void ExplosionFX::Deinit() {

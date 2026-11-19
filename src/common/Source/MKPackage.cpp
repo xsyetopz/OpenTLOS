@@ -1,6 +1,16 @@
 #include "common/Source/MKPackage.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "dolphin/os.h"
 #include "dolphin/vi.h"
 #include "common/Source/File.h"
@@ -515,7 +525,7 @@ void MKPackage_Load(char *arg0, bool arg1) {
     pPackageText = NULL;
     packageTextSize = -1U;
     strncpy(packageName, Str_Printf("%s.pkg", arg0, binaryPackageName, 0, temp_r7_834, *MKHeap::tempMemOverride, M2C_BITWISE(f32, temp_ret_825)), 0x20U);
-    if (((u8) gDisablePackages != 0) || (temp_ret_856 = MKArchive_Exists(packageName, (s32 *) &packageTextSize), ((temp_ret_856 == 0) != 0)) || ((s32) packageTextSize == 0)) {
+    if (((u8) gDisablePackages != 0) || (temp_ret_856 = MKArchive_Exists(packageName, (int *) &packageTextSize), ((temp_ret_856 == 0) != 0)) || ((s32) packageTextSize == 0)) {
         MKPackage_LoadInternal(arg1);
         return;
     }
@@ -538,7 +548,7 @@ void MKPackage_Load(char *arg0, bool arg1) {
     }
     pPackageText = (s8 *) var_r3_901;
     if (arg1 == 0) {
-        MKArchive_Load(packageName, (s32 *) &packageTextSize, var_r3_901, -1);
+        MKArchive_Load(packageName, (int *) &packageTextSize, var_r3_901, -1);
         pPackageText[packageTextSize] = 0;
         MKPackage_LoadInternal(arg1);
         return;
@@ -690,7 +700,7 @@ loop_3:
             goto loop_3;
         }
     }
-    if ((var_r27_1165 == (s32) nmbrOfPackageEntries) && (MKArchive_Exists(arg0, &pPackageEntries[nmbrOfPackageEntries].unk8) != 0)) {
+    if ((var_r27_1165 == (s32) nmbrOfPackageEntries) && (MKArchive_Exists(arg0, (int *) &pPackageEntries[nmbrOfPackageEntries].unk8) != 0)) {
         pPackageEntries[nmbrOfPackageEntries].unk0 = arg0;
         var_r29_1204 = 0;
         temp_r4_1207 = &pPackageEntries[nmbrOfPackageEntries];

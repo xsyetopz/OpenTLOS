@@ -57,7 +57,7 @@ inline MagicFireball::MagicFireball() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline MagicFireball::~MagicFireball() {
     if ((&this->unk164 != NULL) && (&this->unk164 != NULL)) {
-        KDSound_Stop(&this->unk164);
+        KDSound_Stop((int *) &this->unk164);
     }
 }
 #endif

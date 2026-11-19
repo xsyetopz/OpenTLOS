@@ -1,24 +1,50 @@
 #include "spyro/source/DropBox.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FlyingBurningBits.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/Str.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -33,21 +59,19 @@ void DropBox::SetAnim(int arg0) {
     this->unk80->SetAnim(M2C_FIELD((this + (arg0 * 4)), MKAnim **, 0x1D0), 1.0f, 0.0f, 0, -1);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void DropBox::SetDefaults() {
     Enable();
     Activate();
     this->unk1C8 = 0;
     this->unk1C0 = 0;
     this->unk1FC = 0;
-    KDSound_Stop(&this->unk218);
+    KDSound_Stop((int *) &this->unk218);
     this->unk1A8 = 0.0f;
     this->unk1AC = 0.0f;
     this->unk1B0 = 0.0f;
     this->unk214 = 0;
     Shatterable::Reset();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
 void DropBox::Drop() {
@@ -265,29 +289,27 @@ void DropBox::Deinit() {
         operator delete(temp_r31_414);
     }
     MKModel_Destroy(this->unk1C4);
-    KDSound_Stop(&this->unk218);
+    KDSound_Stop((int *) &this->unk218);
     Shatterable::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 s32 DropBox::LoadLine(MKIniLine *arg0) {
     this->unk1FD = 0;
-    PropFlagsClear((u32 *) &this->unk10, 0x40000U);
+    PropFlagsClear((unsigned int *) &this->unk10, 0x40000U);
     if (Shatterable::LoadLine(arg0) != 0) {
         return 1U;
     }
     if ((this->unk1D8.LoadLine(arg0, "OnAllChildrenDead") != 0) && ((u32) this->unk1D8.unk0 != 0U)) {
         return 1U;
     }
-    if (arg0->LoadInt("NumberToSpawn", &this->unk210, 0) != 0) {
+    if (arg0->LoadInt("NumberToSpawn", (int *) &this->unk210, 0) != 0) {
         return 1U;
     }
-    return (u8) (arg0->LoadInt("SpawnTier", &this->unk214, 0) != 0);
+    return (u8) (arg0->LoadInt("SpawnTier", (int *) &this->unk214, 0) != 0);
 }
-#endif
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
+#if 0 // DRAFT: ')' expected
 void DropBox::Message(MKMessage *arg0) {
     s8 spA9;
     s8 spA8;
@@ -329,7 +351,7 @@ void DropBox::Message(MKMessage *arg0) {
             SetAnim(0);
             SetPos(this->unk200);
             SetDefaults();
-            PropFlagsSet((u32 *) &this->unk10, 0x40000U);
+            PropFlagsSet((unsigned int *) &this->unk10, 0x40000U);
             this->unk1C0 = 1;
             Drop();
         }
@@ -648,7 +670,7 @@ void DropBox::Update() {
             sp8 = 1;
             ((Explosion4 *) (M2C_FIELD(temp_r3_1079, Explosion4 **, 0x16C)))->Trigger(*((MKVector3 *) &spE0), 0.66f, 1U, NULL, 0, 1U, 0U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             KDSound_Play3d(GS_DBIceShake, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
-            KDSound_Stop(&this->unk218);
+            KDSound_Stop((int *) &this->unk218);
             this->unkD0.Show(0U);
             sp28 = 0;
             sp24 = 0xE0;
@@ -837,7 +859,7 @@ void DropBox::Init() {
     this->unk210 = 4;
 }
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void DropBox::InitSpawnerObject() {
     SpawnPointData *temp_r28_1604;
     SpawnerObject *temp_r29_1550;
@@ -896,17 +918,15 @@ void DropBoxDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DropBoxDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1683;
 
     var_r31_1683 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("Element", &this->unk170, 0) != 0) || (KDSound_LoadLine(arg0, "sndDrop", &this->unk174) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("Element", (int *) &this->unk170, 0) != 0) || (KDSound_LoadLine(arg0, "sndDrop", (int *) &this->unk174) != 0)) {
         var_r31_1683 = 1;
     }
     return var_r31_1683;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk16C'
 void DropBoxDescriptor::Init() {

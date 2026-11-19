@@ -1,7 +1,15 @@
 #include "common/Source/MKIni.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/Str.h"
 #include "common/Source/Utils.h"
@@ -97,7 +105,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Load(const char *, long *, int, int)' does not
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void MKIni::ReadBinary(const char *arg0) {
     MKIniLine *temp_r5_215;
     s32 temp_r0_241;
@@ -105,7 +113,7 @@ void MKIni::ReadBinary(const char *arg0) {
     s32 var_r6_216;
     s8 *temp_r3_214;
 
-    temp_r3_214 = MKArchive_Load(arg0, &this->unk40, NULL, -1);
+    temp_r3_214 = MKArchive_Load(arg0, (int *) &this->unk40, NULL, -1);
     temp_r5_215 = temp_r3_214 + 0x44;
     var_r6_216 = 0;
     this->unk10 = temp_r5_215;
@@ -658,7 +666,7 @@ s32 MKIni::Init(const char *arg0, int arg1, const char *arg2) {
     }
     temp_r31_1483 = Str_Printf("%s%s", ".bni");
     strncpy(&this->unk1C, arg0, 0x1FU);
-    if (MKArchive_Exists(temp_r31_1483, &sp8) != 0) {
+    if (MKArchive_Exists(temp_r31_1483, (int *) &sp8) != 0) {
         ReadBinary(temp_r31_1483);
         return 1;
     }

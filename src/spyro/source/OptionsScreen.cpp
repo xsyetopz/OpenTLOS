@@ -1,7 +1,18 @@
 #include "spyro/source/OptionsScreen.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKVector3.h"
+#include "spyro/source/KDInput.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIButton.h"
 #include "spyro/source/UIContainer.h"
+#include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
 #include "unplaced_templates.h"
@@ -14,7 +25,7 @@
 extern s32 GS_MenuSelect;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void OptionsScreen::OnExit() {
     KDSynkerPlayer3 *temp_r3_49;
     u8 var_r31_46;
@@ -22,7 +33,7 @@ void OptionsScreen::OnExit() {
 
     UIScreen::OnExit();
     if (KDSound_IsVoicePlaying(this->unkCC) != 0) {
-        KDSound_Stop(&this->unkCC);
+        KDSound_Stop((int *) &this->unkCC);
     }
     if ((u8) this->unkC8 != 0) {
         KDSound_PauseMusic(0U, 0U);

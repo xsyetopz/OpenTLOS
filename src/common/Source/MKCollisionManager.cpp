@@ -1,16 +1,23 @@
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionModel.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 
@@ -178,7 +185,7 @@ void MKCollisionManager::UpdateItemLinks(MKCollisionItem *arg0, MKCollisionMode 
         M2C_FIELD(arg0, f32 *, 0x38) = (f64) M2C_FIELD(arg0, f32 *, 0x18);
         M2C_FIELD(arg0, f32 *, 0x40) = (f64) M2C_FIELD(arg0, f32 *, 0x20);
         M2C_FIELD(arg0, f32 *, 0x48) = (f64) M2C_FIELD(arg0, f32 *, 0x28);
-        FindGridOverlap(*((MKCollisionAABB *) &arg0->unk10), &sp14, &sp10, &spC, &sp8);
+        FindGridOverlap(*((MKCollisionAABB *) &arg0->unk10), (int *) &sp14, (int *) &sp10, (int *) &spC, (int *) &sp8);
         var_r5_221 = arg0->unk58;
 loop_24:
         temp_r4_232 = var_r5_221->unk0;
@@ -488,7 +495,7 @@ block_15:
     sp10 = 0;
     spC = 0;
     sp8 = 0;
-    FindGridOverlap(*((MKCollisionAABB *) &sp18), &sp14, &sp10, &spC, &sp8);
+    FindGridOverlap(*((MKCollisionAABB *) &sp18), (int *) &sp14, (int *) &sp10, (int *) &spC, (int *) &sp8);
     var_r22_716 = sp10;
     var_r28_719 = var_r22_716 << 5;
 loop_92:
@@ -800,7 +807,7 @@ loop_15:
     sp10 = 0;
     spC = 0;
     sp8 = 0;
-    FindGridOverlap(*((MKCollisionAABB *) &sp70), &sp14, &sp10, &spC, &sp8);
+    FindGridOverlap(*((MKCollisionAABB *) &sp70), (int *) &sp14, (int *) &sp10, (int *) &spC, (int *) &sp8);
     var_r28_1161 = sp10;
     var_r23_1164 = var_r28_1161 << 5;
 loop_91:
@@ -1145,7 +1152,7 @@ loop_6:
     sp10 = 0;
     spC = 0;
     sp8 = 0;
-    FindGridOverlap(*((MKCollisionAABB *) &spA0), &sp14, &sp10, &spC, &sp8);
+    FindGridOverlap(*((MKCollisionAABB *) &spA0), (int *) &sp14, (int *) &sp10, (int *) &spC, (int *) &sp8);
     var_r28_1649 = sp10;
     var_r21_1652 = var_r28_1649 << 5;
 loop_86:
@@ -1534,7 +1541,7 @@ loop_15:
     sp10 = 0;
     spC = 0;
     sp8 = 0;
-    FindGridOverlap(*((MKCollisionAABB *) &sp70), &sp14, &sp10, &spC, &sp8);
+    FindGridOverlap(*((MKCollisionAABB *) &sp70), (int *) &sp14, (int *) &sp10, (int *) &spC, (int *) &sp8);
     var_r28_2263 = sp10;
     var_r23_2266 = var_r28_2263 << 5;
 loop_91:

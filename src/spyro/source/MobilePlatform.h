@@ -110,7 +110,7 @@ inline MobilePlatform::MobilePlatform() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline MobilePlatform::~MobilePlatform() {
     if ((&this->unk218 != NULL) && (&this->unk218 != NULL)) {
-        KDSound_Stop((s32 *) &this->unk218);
+        KDSound_Stop((int *) &this->unk218);
     }
     if (&this->unk200 != NULL) {
         this->unk200.Deinit();

@@ -1,10 +1,33 @@
 #include "spyro/source/IceSquirt.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/LiquidFX.h"
 #include "spyro/source/ManagedLight.h"
@@ -140,7 +163,7 @@ void IceSquirt::Update() {
                     M2C_FIELD(temp_r4_273, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_268, f64 *, 0);
                     M2C_FIELD(temp_r4_273, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_268, f64 *, 8);
                 }
-                temp_f1_284 = MKRand_Float(&gViewSeed, 500.0f, 600.0f);
+                temp_f1_284 = MKRand_Float((int *) &gViewSeed, 500.0f, 600.0f);
                 temp_r3_285 = this->unk160;
                 temp_r3_285->unk38 = temp_f1_284;
                 temp_r3_287 = temp_r3_285->unk3C;

@@ -1,9 +1,33 @@
 #include "spyro/source/KDSoundProp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/Sound_GC.h"
 #include <m2c_macros.h>
@@ -11,27 +35,23 @@
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void KDSoundProp::Play() {
     s32 sp8;
 
     sp8 = 1;
     ((KDSoundPlayer *) &this->unkA0)->Update(this->unk50, 0U, 1U, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    this->unk54 = MKRand_Float(&gViewSeed, this->unk58, this->unk5C);
+    this->unk54 = MKRand_Float((int *) &gViewSeed, this->unk58, this->unk5C);
 }
-#endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSoundProp::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != -4) {
 
     } else if ((s32) this->unk4C != 0) {
-        KDSound_Stop(&this->unkA0);
+        KDSound_Stop((int *) &this->unkA0);
         this->unk4C = 1;
     }
     MKProp::Message(arg0);
 }
-#endif
 
 void KDSoundProp::Update() {
     s32 sp8;
@@ -66,14 +86,12 @@ void KDSoundProp::Update() {
     }
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSoundProp::Reset() {
     MKProp::Reset();
-    KDSound_Stop(&this->unkA0);
+    KDSound_Stop((int *) &this->unkA0);
     this->unk54 = 0.0f;
     this->unk4C = 1;
 }
-#endif
 
 void KDSoundProp::LoadDone() {
     MKProp::LoadDone();
@@ -107,12 +125,10 @@ s32 KDSoundProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSoundProp::Deinit() {
     MKProp::Deinit();
-    KDSound_Stop(&this->unkA0);
+    KDSound_Stop((int *) &this->unkA0);
 }
-#endif
 
 void KDSoundProp::Init() {
     MKProp::Init();

@@ -1,23 +1,63 @@
 #include "spyro/source/SwampTier3Goals.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/EarthShockwave.h"
 #include "spyro/source/Enemies_Swamp.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_AlertMode.h"
 #include "spyro/source/EnemyGoal_FollowGraph.h"
 #include "spyro/source/EnemyGoals_Death.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include <m2c_macros.h>
@@ -71,14 +111,14 @@ void SwampTier3Goal_Patrol::Activate() {
     if ((var_r30_64 != 0) || (temp_r5_69 != 0)) {
         M2C_FIELD(temp_r4_68, u8 *, 0xB10) = 1U;
         AddSubgoal__27CompositeGoal<10SwampTier3>FP18Goal<10SwampTier3>((CompositeGoal<SwampTier3> *) this, (Goal<SwampTier3> *) this->unk24);
-        temp_r3_94 = MKRand_Int(&gViewSeed, 1, 3);
+        temp_r3_94 = MKRand_Int((int *) &gViewSeed, 1, 3);
         temp_r4_96 = this->unk24;
         M2C_FIELD(temp_r4_96, s8 *, 0x14) = (s8) (var_r30_64 == 0);
         M2C_FIELD(temp_r4_96, s32 *, 0x10) = temp_r3_94;
     } else {
         AddSubgoal__27CompositeGoal<10SwampTier3>FP18Goal<10SwampTier3>((CompositeGoal<SwampTier3> *) this, (Goal<SwampTier3> *) this->unk20);
         temp_r30_110 = this->unkC->unk688;
-        temp_r3_111 = MKRand_Int(&gViewSeed, 1, 3);
+        temp_r3_111 = MKRand_Int((int *) &gViewSeed, 1, 3);
         temp_r5_112 = this->unk20;
         M2C_FIELD(temp_r5_112, s32 *, 0x10) = 0;
         M2C_FIELD(temp_r5_112, s32 *, 0x14) = temp_r3_111;
@@ -91,7 +131,7 @@ void SwampTier3Goal_Patrol::Activate() {
     if ((temp_r4_124 != NULL) && (M2C_FIELD(temp_r4_124, s32 *, 4) & 2)) {
         if (temp_r3_123->HasWaypoints() != 0) {
             AddSubgoal__27CompositeGoal<10SwampTier3>FP18Goal<10SwampTier3>((CompositeGoal<SwampTier3> *) this, (Goal<SwampTier3> *) this->unk28);
-            temp_f1_139 = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
+            temp_f1_139 = MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f);
             temp_r7_142 = this->unk28;
             M2C_FIELD(temp_r7_142, s32 *, 0x10) = (s32) M2C_FIELD(this->unkC->unkA44, s32 *, 0x18);
             M2C_FIELD(temp_r7_142, f32 *, 0x14) = temp_f1_139;
@@ -106,7 +146,7 @@ void SwampTier3Goal_Patrol::Activate() {
         }
         AddSubgoal__27CompositeGoal<10SwampTier3>FP18Goal<10SwampTier3>((CompositeGoal<SwampTier3> *) this, (Goal<SwampTier3> *) this->unk2C);
         temp_r5_174 = this->unk2C;
-        M2C_FIELD(temp_r5_174, f32 *, 0x10) = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
+        M2C_FIELD(temp_r5_174, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f);
         M2C_FIELD(temp_r5_174, s32 *, 0x14) = 0xC;
         M2C_FIELD(temp_r5_174, s32 *, 0x1C) = 5;
         M2C_FIELD(temp_r5_174, s32 *, 0x18) = 0x12;
@@ -1008,7 +1048,6 @@ void SwampTier3Goal_Hit::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 SwampTier3Goal_Hit::Update() {
     f64 sp58;
     f64 sp50;
@@ -1032,7 +1071,7 @@ u8 SwampTier3Goal_Hit::Update() {
     this->unk8 = UpdateSubgoals();
     sp8 = 0;
     temp_r3_1722 = this->unkC;
-    if (((u8) temp_r3_1722->unkA38->unk121 != 0) && (temp_r3_1722->InWaterVolume(temp_r3_1722->unk588, &sp8) != 0)) {
+    if (((u8) temp_r3_1722->unkA38->unk121 != 0) && (temp_r3_1722->InWaterVolume(temp_r3_1722->unk588, (int *) &sp8) != 0)) {
         temp_r3_1732 = this->unkC;
         sp20 = M2C_FIELD(temp_r3_1732, f64 *, 0xC0) * 5.398241246e-315;
         temp_r4_1739 = temp_r3_1732->unk8;
@@ -1056,7 +1095,6 @@ u8 SwampTier3Goal_Hit::Update() {
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'AddSubgoal__27CompositeGoal'
 void SwampTier3Goal_Hit::Activate() {

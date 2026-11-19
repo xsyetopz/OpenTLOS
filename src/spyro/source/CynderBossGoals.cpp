@@ -1,14 +1,45 @@
 #include "spyro/source/CynderBossGoals.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BaseBreathFX.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Coronas.h"
 #include "spyro/source/Cynder.h"
 #include "spyro/source/CynderBreathFX.h"
+#include "spyro/source/CynderConcurrentGoals.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EarthShockwave.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyAttackPattern.h"
@@ -17,21 +48,57 @@
 #include "spyro/source/EnemyGoals_Death.h"
 #include "spyro/source/EnemyGoals_Hit.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FlameBreathBeamFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
 #include "spyro/source/SpyroHud.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/SuckeyPS.h"
 #include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Music.h"
 #include "spyro/source/PhrasePlayer.h"
 #include <m2c_macros.h>
@@ -461,7 +528,7 @@ void CynderBossGoal_HoverAttackMode::Activate() {
         }
         temp_r0_855 = this->unk38;
         if ((temp_r0_855 >= -1) && (temp_r0_855 <= 1)) {
-            if (MKRand_Float(&gViewSeed, 0.0f, 1.0f) > 0.5f) {
+            if (MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f) > 0.5f) {
                 this->unk38 -= 1;
                 AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
                 AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
@@ -6566,7 +6633,7 @@ void CynderBossGoal_AttackFlight::Activate() {
     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
-    temp_r3_12377 = MKRand_Int(&gViewSeed, 0, 0xA);
+    temp_r3_12377 = MKRand_Int((int *) &gViewSeed, 0, 0xA);
     if (temp_r3_12377 < 3) {
         if (temp_r3_12377 < 0) {
             goto block_6;
@@ -7140,7 +7207,7 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 CynderBossGoal_Think::Update() {
     s32 sp8;
     EAPManager *temp_r4_13580;
@@ -7208,7 +7275,7 @@ u8 CynderBossGoal_Think::Update() {
                     temp_r4_13580->unk10 |= 0x40;
                     sp8 = 7;
                     temp_r4_13589 = this->unkC;
-                    temp_r3_13592 = temp_r4_13589->unkA5C->Evaluate(temp_r4_13589, &temp_r4_13589->unk870, &sp8, 1);
+                    temp_r3_13592 = temp_r4_13589->unkA5C->Evaluate(temp_r4_13589, &temp_r4_13589->unk870, (int *) &sp8, 1);
                     if (temp_r3_13592 != 0) {
                         RemoveAllSubgoals();
                         if ((s32) this->unkC->unkAE8 == 1) {

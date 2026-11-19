@@ -1,11 +1,36 @@
 #include "spyro/source/CharacterGraph.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/KDGraph.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -105,7 +130,6 @@ void CharacterGraphNodeProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 CharacterGraphNodeProp::LoadLine(MKIniLine *arg0) {
     s32 sp14;
     s32 sp10;
@@ -118,7 +142,7 @@ s32 CharacterGraphNodeProp::LoadLine(MKIniLine *arg0) {
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if (arg0->LoadInt("ArriveInfo", &spC, 0) != 0) {
+    if (arg0->LoadInt("ArriveInfo", (int *) &spC, 0) != 0) {
         if (spC != 0) {
             this->unk50.unk44 = spC;
             this->unk50.unk80 |= 0x80;
@@ -126,51 +150,51 @@ s32 CharacterGraphNodeProp::LoadLine(MKIniLine *arg0) {
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if (arg0->LoadInt("Count", &sp8, 0) != 0) {
+    if (arg0->LoadInt("Count", (int *) &sp8, 0) != 0) {
         this->unk50.unk48 = sp8;
         this->unk50.unk80 |= 0x40;
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if (arg0->LoadInt("PropID", &this->unk50.unkBC, 0) != 0) {
+    if (arg0->LoadInt("PropID", (int *) &this->unk50.unkBC, 0) != 0) {
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if (arg0->LoadInt("LinkInfo1", &sp10, 0) != 0) {
+    if (arg0->LoadInt("LinkInfo1", (int *) &sp10, 0) != 0) {
         this->unk50.unk50 = sp10;
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if (arg0->LoadInt("LinkInfo2", &sp10, 0) != 0) {
+    if (arg0->LoadInt("LinkInfo2", (int *) &sp10, 0) != 0) {
         this->unk50.unk54 = sp10;
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if (arg0->LoadInt("LinkInfo3", &sp10, 0) != 0) {
+    if (arg0->LoadInt("LinkInfo3", (int *) &sp10, 0) != 0) {
         this->unk50.unk58 = sp10;
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if (arg0->LoadInt("LinkInfo4", &sp10, 0) != 0) {
+    if (arg0->LoadInt("LinkInfo4", (int *) &sp10, 0) != 0) {
         this->unk50.unk5C = sp10;
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if (arg0->LoadInt("LinkInfo5", &sp10, 0) != 0) {
+    if (arg0->LoadInt("LinkInfo5", (int *) &sp10, 0) != 0) {
         this->unk50.unk60 = sp10;
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if (arg0->LoadInt("LinkInfo6", &sp10, 0) != 0) {
+    if (arg0->LoadInt("LinkInfo6", (int *) &sp10, 0) != 0) {
         this->unk50.unk64 = sp10;
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if ((arg0->LoadInt("PathID1", &this->unk50.unkA4, 0) != 0) || (arg0->LoadInt("PathID2", &this->unk50.unkA8, 0) != 0) || (arg0->LoadInt("PathID3", &this->unk50.unkAC, 0) != 0) || (arg0->LoadInt("PathID4", &this->unk50.unkB0, 0) != 0) || (arg0->LoadInt("PathID4", &this->unk50.unkB4, 0) != 0) || (arg0->LoadInt("PathID4", &this->unk50.unkB8, 0) != 0)) {
+    if ((arg0->LoadInt("PathID1", (int *) &this->unk50.unkA4, 0) != 0) || (arg0->LoadInt("PathID2", (int *) &this->unk50.unkA8, 0) != 0) || (arg0->LoadInt("PathID3", (int *) &this->unk50.unkAC, 0) != 0) || (arg0->LoadInt("PathID4", (int *) &this->unk50.unkB0, 0) != 0) || (arg0->LoadInt("PathID4", (int *) &this->unk50.unkB4, 0) != 0) || (arg0->LoadInt("PathID4", (int *) &this->unk50.unkB8, 0) != 0)) {
         ((EventMessage *) &sp14)->Deinit();
         return 1;
     }
-    if ((arg0->LoadInt("LinkID1", &this->unk50.unk8C, 0) != 0) || (arg0->LoadInt("LinkID2", &this->unk50.unk90, 0) != 0) || (arg0->LoadInt("LinkID3", &this->unk50.unk94, 0) != 0) || (arg0->LoadInt("LinkID4", &this->unk50.unk98, 0) != 0) || (arg0->LoadInt("LinkID4", &this->unk50.unk9C, 0) != 0) || (arg0->LoadInt("LinkID4", &this->unk50.unkA0, 0) != 0)) {
+    if ((arg0->LoadInt("LinkID1", (int *) &this->unk50.unk8C, 0) != 0) || (arg0->LoadInt("LinkID2", (int *) &this->unk50.unk90, 0) != 0) || (arg0->LoadInt("LinkID3", (int *) &this->unk50.unk94, 0) != 0) || (arg0->LoadInt("LinkID4", (int *) &this->unk50.unk98, 0) != 0) || (arg0->LoadInt("LinkID4", (int *) &this->unk50.unk9C, 0) != 0) || (arg0->LoadInt("LinkID4", (int *) &this->unk50.unkA0, 0) != 0)) {
         this->unk50.unk88 += 1;
         ((EventMessage *) &sp14)->Deinit();
         return 1;
@@ -183,7 +207,6 @@ s32 CharacterGraphNodeProp::LoadLine(MKIniLine *arg0) {
     ((EventMessage *) &sp14)->Deinit();
     return 0;
 }
-#endif
 
 void CharacterGraphNodeProp::Init() {
     s32 var_ctr_569;
@@ -269,7 +292,7 @@ block_5:
     return NULL;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'CharacterGraphNode' to
 CharacterGraphNode *CharacterGraphNode::GetRandomLink(int arg0) {
     CharacterGraphNode *var_r31_690;
     KDGraphNode *temp_r3_707;
@@ -280,11 +303,11 @@ CharacterGraphNode *CharacterGraphNode::GetRandomLink(int arg0) {
     var_r30_691 = 0;
 loop_5:
     if ((var_r30_691 < arg0) && (var_r31_690->GetNumLinks() != 0)) {
-        var_r3_697 = MKRand_Int(&gViewSeed, 0, 5);
+        var_r3_697 = MKRand_Int((int *) &gViewSeed, 0, 5);
 loop_3:
         temp_r3_707 = *(var_r31_690 + ((var_r3_697 * 4) + 0x18));
         if (temp_r3_707 == NULL) {
-            var_r3_697 = MKRand_Int(&gViewSeed, 0, 6);
+            var_r3_697 = MKRand_Int((int *) &gViewSeed, 0, 6);
             goto loop_3;
         }
         var_r31_690 = checked_cast<CharacterGraphNode *, KDGraphNode>(temp_r3_707);

@@ -1,19 +1,49 @@
 #include "spyro/source/Catapult.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/Ball.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplodeMsg.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SnowballTree.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKView.h"
 #include "spyro/source/KDMath.h"
@@ -715,7 +745,7 @@ void Catapult::Deinit() {
     this->unkF8.Deinit();
     this->unk118.Deinit();
     this->unkC8.Deinit();
-    KDSound_Stop(&this->unkA0);
+    KDSound_Stop((int *) &this->unkA0);
     temp_r3_1174 = this->unk148;
     if (temp_r3_1174 != 0) {
         PhrasePlayer_StopEvent(temp_r3_1174);
@@ -743,17 +773,15 @@ void CatapultDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[8], long *)' does
 s32 CatapultDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1266;
 
     var_r31_1266 = 0;
-    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndFire", &this->unk80) != 0) || (KDSound_LoadLine(arg0, "sndClick", &this->unk88) != 0) || (KDSound_LoadLine(arg0, "sndWindUpLP", &this->unk84) != 0)) {
+    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndFire", (int *) &this->unk80) != 0) || (KDSound_LoadLine(arg0, "sndClick", (int *) &this->unk88) != 0) || (KDSound_LoadLine(arg0, "sndWindUpLP", (int *) &this->unk84) != 0)) {
         var_r31_1266 = 1;
     }
     return var_r31_1266;
 }
-#endif
 
 void CatapultDescriptor::Init() {
     KDPropDescriptor::Init();

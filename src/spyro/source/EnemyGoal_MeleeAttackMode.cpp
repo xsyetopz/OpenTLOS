@@ -1,23 +1,65 @@
 #include "spyro/source/EnemyGoal_MeleeAttackMode.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/Frustum.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/ElementalRing.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
@@ -76,7 +118,6 @@ void EnemyGoal_AttackMagicWall::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 u8 EnemyGoal_AttackMagicWall::Update() {
     MKCollisionResult sp120;
     f64 sp118;
@@ -200,7 +241,7 @@ u8 EnemyGoal_AttackMagicWall::Update() {
                     spC0 = temp_f0_239;
                     sp38 = (f32) spB8 * (f32) var_f31_224;
                     spC8 = (f64) sp38;
-                    sp8 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+                    sp8 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
                     gb.EmitDust(*((MKVector3 *) &sp110), *((MKVector3 *) &spC0), sp8, 0.0f);
                 }
                 if ((u8) this->unk14 != 0) {
@@ -232,7 +273,6 @@ u8 EnemyGoal_AttackMagicWall::Update() {
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_AttackMagicWall::Activate() {
@@ -407,7 +447,6 @@ void EnemyGoal_LeapAttackRecover::Init(Enemy *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void EnemyGoal_LeapAttackMiss::Terminate() {
     Enemy *temp_r3_724;
     Enemy *temp_r4_731;
@@ -420,10 +459,9 @@ void EnemyGoal_LeapAttackMiss::Terminate() {
     if ((s32) temp_r4_731->unkA58 == (s32) this->unk14) {
         temp_r4_731->unkA58 = 0;
     }
-    KDSound_Stop(&this->unk14);
+    KDSound_Stop((int *) &this->unk14);
     this->unk8 = 1;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 EnemyGoal_LeapAttackMiss::Update() {
@@ -533,7 +571,7 @@ u8 EnemyGoal_LeapAttackMiss::Update() {
     if (!(((u8) this->unk3C >> 6U) & 1) && (((s32) this->unkC->unk110.unk170.unk164 > 0) || ((((f32) sp98 * (f32) spA8) + (((f32) sp90 * (f32) spA0) + ((*(f32 *) ((u8 *) &sp90 + 0x4)) * (*(f32 *) ((u8 *) &spA0 + 0x4))))) < 0.0f))) {
         this->unk3C |= 0x40;
         this->unk3C &= ~0x80;
-        this->unk10 = gb.unk30C + MKRand_Float(&gViewSeed, 0.25f, 0.75f);
+        this->unk10 = gb.unk30C + MKRand_Float((int *) &gViewSeed, 0.25f, 0.75f);
         ((Character *) this->unkC)->StopMovement(1U);
     }
     temp_r29_932 = this->unkC;
@@ -1202,7 +1240,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_MeleeAttackMode::AddGoal_AttackIdleOrStrafe() {
     Enemy *temp_r3_2192;
     Enemy *temp_r3_2205;
@@ -1216,7 +1254,7 @@ void EnemyGoal_MeleeAttackMode::AddGoal_AttackIdleOrStrafe() {
     if (((u8) this->unkC->unkB08 >> 1U) & 1) {
         AddGoal_AttackIdle();
     } else {
-        MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         var_r28_2177 = 0;
         temp_r29_2178 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
         if ((temp_r29_2178 != 0) && (M2C_FIELD(this->unkC->__vptr, u8 (**)(AITargetData *), 0x13C)(this->unk20) != 0)) {
@@ -1237,7 +1275,7 @@ void EnemyGoal_MeleeAttackMode::AddGoal_AttackIdleOrStrafe() {
             AddGoal_AttackIdle();
         } else {
             if ((var_r28_2177 != 0) && (var_r29_2190 != 0)) {
-                MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+                MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
                 var_r28_2177 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
             }
             AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);

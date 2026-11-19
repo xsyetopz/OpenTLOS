@@ -1,17 +1,47 @@
 #include "spyro/source/ElectricFence.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
+#include "common/Source/MKCollisionUtil.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EnergyBeam.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -26,7 +56,7 @@ extern s32 GS_SpyroZapBurn;
 extern void **gMK;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ElectricFence::AllocBeams() {
     f64 sp10;
     f64 sp8;
@@ -71,12 +101,12 @@ void ElectricFence::AllocBeams() {
     var_r31_87 = 0;
     do {
         temp_r30_95 = this + var_r31_87;
-        temp_r4_100 = ((u8 *) this->unk4C) + ((MKRand_Int(&gViewSeed, 0, this->unk50) * 0x70) + 0x30);
+        temp_r4_100 = ((u8 *) this->unk4C) + ((MKRand_Int((int *) &gViewSeed, 0, this->unk50) * 0x70) + 0x30);
         M2C_FIELD(temp_r30_95, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r4_100, f64 *, 0);
         M2C_FIELD(temp_r30_95, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r4_100, f64 *, 8);
         var_r28_86 += 1;
         var_r31_87 += 0x18;
-        M2C_FIELD(temp_r30_95, f32 *, 0xDC) = (f32) ((1000.0f * MKRand_Float(&gViewSeed, 0.0f, 1.0f)) + M2C_FIELD(temp_r30_95, f32 *, 0xDC));
+        M2C_FIELD(temp_r30_95, f32 *, 0xDC) = (f32) ((1000.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f)) + M2C_FIELD(temp_r30_95, f32 *, 0xDC));
     } while (var_r28_86 < 2);
     temp_r30_115 = checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     var_r28_116 = 0;
@@ -146,7 +176,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: illegal type
 void ElectricFence::Deinit() {
     MKHeap *temp_r3_248;
     MKModel *temp_r3_227;
@@ -155,7 +185,7 @@ void ElectricFence::Deinit() {
     s32 var_r31_222;
     void *temp_r31_247;
 
-    KDSound_Stop(&this->unk114);
+    KDSound_Stop((int *) &this->unk114);
     var_r30_221 = 0;
     var_r31_222 = 0;
 loop_6:
@@ -302,12 +332,12 @@ void ElectricFence::Update() {
         var_r31_464 = 0;
         do {
             temp_r30_472 = this + var_r31_464;
-            temp_r4_477 = ((u8 *) this->unk4C) + ((MKRand_Int(&gViewSeed, 0, this->unk50) * 0x70) + 0x30);
+            temp_r4_477 = ((u8 *) this->unk4C) + ((MKRand_Int((int *) &gViewSeed, 0, this->unk50) * 0x70) + 0x30);
             M2C_FIELD(temp_r30_472, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r4_477, f64 *, 0);
             M2C_FIELD(temp_r30_472, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r4_477, f64 *, 8);
             var_r29_463 += 1;
             var_r31_464 += 0x18;
-            M2C_FIELD(temp_r30_472, f32 *, 0xDC) = (f32) ((1000.0f * MKRand_Float(&gViewSeed, 0.0f, 1.0f)) + M2C_FIELD(temp_r30_472, f32 *, 0xDC));
+            M2C_FIELD(temp_r30_472, f32 *, 0xDC) = (f32) ((1000.0f * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f)) + M2C_FIELD(temp_r30_472, f32 *, 0xDC));
         } while (var_r29_463 < 2);
     }
 }
@@ -757,7 +787,7 @@ loop_8:
         }
     }
     var_r29_1274 = 0;
-    if ((arg0->LoadBool("StartOn", &this->unk54, 0) != 0) || (arg0->LoadInt("JellyFishID", (s32 *) &this->unk110, 0) != 0)) {
+    if ((arg0->LoadBool("StartOn", &this->unk54, 0) != 0) || (arg0->LoadInt("JellyFishID", (int *) &this->unk110, 0) != 0)) {
         var_r29_1274 = 1;
     }
     return var_r29_1274;
@@ -795,14 +825,12 @@ void ElectricFenceDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[19], long *)' does
 s32 ElectricFenceDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1373;
 
     var_r31_1373 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("fenceSoundFadeIn", &this->unk8C, 0) != 0) || (arg0->LoadFloat("fenceSoundFadeOut", &this->unk90, 0) != 0) || (KDSound_LoadLine(arg0, "fenceShutDownSound", &this->unk88) != 0) || (KDSound_LoadLine(arg0, "fenceSound", &this->unk84) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("fenceSoundFadeIn", &this->unk8C, 0) != 0) || (arg0->LoadFloat("fenceSoundFadeOut", &this->unk90, 0) != 0) || (KDSound_LoadLine(arg0, "fenceShutDownSound", (int *) &this->unk88) != 0) || (KDSound_LoadLine(arg0, "fenceSound", (int *) &this->unk84) != 0)) {
         var_r31_1373 = 1;
     }
     return var_r31_1373;
 }
-#endif

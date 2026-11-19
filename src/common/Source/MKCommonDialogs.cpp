@@ -1,10 +1,13 @@
 #include "common/Source/MKCommonDialogs.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/MKWidgets.h"
 #include "common/Source/MKWidgetsInternal.h"
+#include "common/Source/Texture.h"
 #include <m2c_macros.h>
 
 extern s8 *MKWIDGETTYPE_BUTTON;

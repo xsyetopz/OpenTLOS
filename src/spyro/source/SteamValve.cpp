@@ -1,19 +1,46 @@
 #include "spyro/source/SteamValve.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/Steam.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_SpyroSteamBurn1;
@@ -185,7 +212,7 @@ void SteamValve::Update() {
                 sp198 = temp_f0_142;
                 spE0 = M2C_FIELD(temp_r4_140, f32 *, 8) * -1000.0f;
                 sp1A0 = (f64) spE0;
-                sp10 = MKRand_Float(&gViewSeed, 3.0f, 7.0f);
+                sp10 = MKRand_Float((int *) &gViewSeed, 3.0f, 7.0f);
                 this->unkC8->Emit(sp1C8, *((MKVector3 *) &sp198), sp10);
                 var_r30_136 += 1;
             } while (var_r30_136 < 3);
@@ -199,7 +226,7 @@ void SteamValve::Update() {
             var_f28_175 = (0.75f * (this->unkD8 / temp_f1_173)) + 0.25f;
         }
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SteamValveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), &sp1B8);
-        temp_f1_194 = MKRand_Float(&gViewSeed, -1500.0f, -1000.0f);
+        temp_f1_194 = MKRand_Float((int *) &gViewSeed, -1500.0f, -1000.0f);
         temp_r3_197 = ((u8 *) this->unk8) + 0x20;
         temp_f0_199 = M2C_FIELD(temp_r3_197, f64 *, 0) * temp_f1_194;
         spC8 = temp_f0_199;
@@ -211,7 +238,7 @@ void SteamValve::Update() {
         sp188 = temp_f0_209;
         spC0 = (f32) sp180 * var_f28_175;
         sp190 = (f64) spC0;
-        spC = var_f28_175 * MKRand_Float(&gViewSeed, 3.0f, 4.75f);
+        spC = var_f28_175 * MKRand_Float((int *) &gViewSeed, 3.0f, 4.75f);
         this->unkC8->Emit(sp1B8, *((MKVector3 *) &sp188), spC);
         sp230 = 0.0f;
         sp234 = 0.0f;
@@ -315,14 +342,14 @@ void SteamValve::Update() {
         }
     } else {
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SteamValveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), &sp1A8);
-        temp_f1_421 = MKRand_Float(&gViewSeed, -300.0f, -100.0f);
+        temp_f1_421 = MKRand_Float((int *) &gViewSeed, -300.0f, -100.0f);
         temp_r4_424 = ((u8 *) this->unk8) + 0x20;
         temp_f0_426 = M2C_FIELD(temp_r4_424, f64 *, 0) * temp_f1_421;
         sp28 = temp_f0_426;
         spE8 = temp_f0_426;
         sp30 = M2C_FIELD(temp_r4_424, f32 *, 8) * (f32) temp_f1_421;
         spF0 = (f64) sp30;
-        sp8 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+        sp8 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
         this->unkC8->Emit(sp1A8, *((MKVector3 *) &spE8), sp8);
     }
 }

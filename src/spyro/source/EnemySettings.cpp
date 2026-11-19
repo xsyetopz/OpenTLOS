@@ -1,6 +1,16 @@
 #include "spyro/source/EnemySettings.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/CustomMaterialUpdater.h"
 #include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "spyro/source/DataMap.h"
@@ -51,7 +61,7 @@ f32 EnemySettings_GetEnemySetting(EnemySettingType arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier 'ddaSettings'
 void EnemySettings_ParseDDASettings(MKIniLine *arg0) {
     s32 sp8;
     MKIniLine *var_r30_67;
@@ -69,7 +79,7 @@ loop_5:
     }
 loop_10:
     if (var_r30_67 != NULL) {
-        if (var_r30_67->LoadInt("difficulty", &sp8, 0) != 0) {
+        if (var_r30_67->LoadInt("difficulty", (int *) &sp8, 0) != 0) {
             ((EnemySettings *) &ddaSettings[sp8])->LoadLine(var_r30_67->unkC->GetSubLine(var_r30_67));
         }
         var_r30_67 = var_r30_67->unkC->GetNextLine(var_r30_67);

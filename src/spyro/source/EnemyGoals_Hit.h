@@ -243,7 +243,7 @@ inline void EnemyGoal_HitFlinch::Reset() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline EnemyGoal_HitKnockdown::~EnemyGoal_HitKnockdown() {
     if ((&this->unk14 != NULL) && (&this->unk14 != NULL)) {
-        KDSound_Stop(&this->unk14);
+        KDSound_Stop((int *) &this->unk14);
     }
 }
 #endif
@@ -259,7 +259,7 @@ inline void EnemyGoal_HitKnockdown::Reset() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline EnemyGoal_HitKnockdownSlide::~EnemyGoal_HitKnockdownSlide() {
     if ((&this->unk10 != NULL) && (&this->unk10 != NULL)) {
-        KDSound_Stop(&this->unk10);
+        KDSound_Stop((int *) &this->unk10);
     }
 }
 #endif

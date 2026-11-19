@@ -1,5 +1,15 @@
 #include "common/Source/MKMemoryCard.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "dolphin/card.h"
 #include "dolphin/dvd.h"
 #include "dolphin/os.h"
@@ -1442,7 +1452,7 @@ void MKMemoryCard_InitModule() {
         var_ctr_2818 -= 1;
     } while (var_ctr_2818 != 0);
     if (DVDConvertPathToEntrynum(Str_Printf("%s%s", "/icons/", "icon.tpl", temp_f1_2796)) != -1) {
-        CardTemplate->unk68 = LoadIconFile("icon.tpl", (s32 *) &CardTemplate->unk64, (s32 *) &CardTemplate->unk6C, &CardTemplate->unk70);
+        CardTemplate->unk68 = LoadIconFile("icon.tpl", (int *) &CardTemplate->unk64, (int *) &CardTemplate->unk6C, &CardTemplate->unk70);
     }
     CARDInit();
 }

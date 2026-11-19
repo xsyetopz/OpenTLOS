@@ -1,7 +1,16 @@
 #include "common/Source/Texture.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "dolphin/gx.h"
 #include "dolphin/mtx.h"
 #include "dolphin/os.h"
@@ -54,7 +63,7 @@ void Texture::ReloadGuts(float arg0) {
             M2C_FIELD(this, u8 *, 0x3C) = 0U;
             if ((u8) attemptToLockTextureInCache != 0) {
                 temp_r3_22->ActivateTempMemOverride();
-                temp_r3_40 = MKArchive_Load(Str_Printf(&lit_stringBase0.unk8, this), &spC, NULL, -1);
+                temp_r3_40 = MKArchive_Load(Str_Printf(&lit_stringBase0.unk8, this), (int *) &spC, NULL, -1);
                 var_r31_0 = temp_r3_40;
                 ((MKHeap *) temp_r3_40)->DeactivateTempMemOverride();
                 DCStoreRange(var_r31_0, (u32) spC);
@@ -62,7 +71,7 @@ void Texture::ReloadGuts(float arg0) {
                 this->unk34 = var_r3_46 - 0x20;
                 if ((s32) M2C_FIELD(var_r31_0, s32 *, 0x14) == 0) {
                     temp_r29_55 = (this->unk34 + 0x1F) & 0xFFFFFFE0;
-                    var_r3_46 = RequestPreloadedTextureRegion(temp_r29_55, &sp8);
+                    var_r3_46 = RequestPreloadedTextureRegion(temp_r29_55, (unsigned int *) &sp8);
                     if (var_r3_46 != 0) {
                         this->unk48 = (GXTexRegion *) var_r3_46;
                         this->unk38 = 0;
@@ -93,7 +102,7 @@ void Texture::ReloadGuts(float arg0) {
             }
 block_11:
             if ((u8) M2C_FIELD(this, u8 *, 0x3C) == 0) {
-                temp_r3_134 = MKArchive_Load(Str_Printf(&lit_stringBase0.unk8, this), &spC, NULL, -1);
+                temp_r3_134 = MKArchive_Load(Str_Printf(&lit_stringBase0.unk8, this), (int *) &spC, NULL, -1);
                 var_r31_0 = temp_r3_134;
                 DCStoreRange(temp_r3_134, (u32) spC);
                 this->unk48 = (GXTexRegion *) var_r31_0;

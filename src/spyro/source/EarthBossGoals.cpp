@@ -1,23 +1,65 @@
 #include "spyro/source/EarthBossGoals.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/EarthShockwave.h"
 #include "spyro/source/Enemies_EarthBoss.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoals_Death.h"
 #include "spyro/source/EnemyGoals_Hit.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -1353,7 +1395,7 @@ u8 EarthBossGoal_AttackPhase1::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 u8 EarthBossGoal_AttackPhase1::SelectAttack() {
     AITargetData sp8;
     Enemy *temp_r3_2709;
@@ -1436,7 +1478,7 @@ loop_20:
         return 0U;
     }
     var_r26_2823 = 0;
-    temp_r3_2826 = MKRand_Int(&gViewSeed, 0, var_r30_2710);
+    temp_r3_2826 = MKRand_Int((int *) &gViewSeed, 0, var_r30_2710);
     var_r7_2828 = 0;
     var_r6_2832 = *this->unkC->unkA38->unk228;
 loop_30:

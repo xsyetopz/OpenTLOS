@@ -1,10 +1,18 @@
 #include "common/Source/MKMaterial.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMat_MK2_Standard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
@@ -56,15 +64,13 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Load(const char[19], long *, int, int)' does not
 void MKMaterial_InitMaterialIDs() {
     s32 sp8;
 
     sp8 = 0;
-    pMatIDTable = MKArchive_Load("[_lastupdate_].tmp", &sp8, NULL, 0);
+    pMatIDTable = MKArchive_Load("[_lastupdate_].tmp", (int *) &sp8, NULL, 0);
     materialIdCount = sp8 / 65;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 s32 StringHash(const char *arg0, int arg1) {

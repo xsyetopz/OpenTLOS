@@ -1,8 +1,23 @@
 #include "spyro/source/PhrasePlayer.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKStringCache.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "common/gc/Sound_GC.h"
+#include "spyro/source/CutsceneObject.h"
 #include "spyro/source/CutsceneSystem.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/GameVideo.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/UIStringTable.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKPackage.h"
@@ -52,13 +67,13 @@ s32 PhrasePlayer_IsLevelIniLoaded() {
 
 #if 0 // DRAFT: pointer/array required
 void PhrasePlayer_UnloadLevelIni() {
-    PhrasePlayer_UnloadIniData((PhraseEvent **) &phraseData[0x40], (s32 *) &phraseData[0x4C], &levelstringTable);
+    PhrasePlayer_UnloadIniData((PhraseEvent **) &phraseData[0x40], (int *) &phraseData[0x4C], &levelstringTable);
 }
 #endif
 
 #if 0 // DRAFT: pointer/array required
 void PhrasePlayer_LoadLevelIni(const char *arg0) {
-    PhrasePlayer_LoadIni(arg0, (PhraseEvent **) &phraseData[0x40], (s32 *) &phraseData[0x4C], &levelstringTable);
+    PhrasePlayer_LoadIni(arg0, (PhraseEvent **) &phraseData[0x40], (int *) &phraseData[0x4C], &levelstringTable);
 }
 #endif
 
@@ -122,11 +137,11 @@ block_26:
         M2C_FIELD(phraseData, f32 *, 0x34) = temp_f1_222;
         return 1U;
     case 1:
-        var_r30_100 = MKRand_Int(&gViewSeed, 0, M2C_FIELD(M2C_FIELD(phraseData, void **, 0x44), s32 *, 0xC));
+        var_r30_100 = MKRand_Int((int *) &gViewSeed, 0, M2C_FIELD(M2C_FIELD(phraseData, void **, 0x44), s32 *, 0xC));
 loop_14:
         temp_r5_153 = M2C_FIELD(M2C_FIELD(phraseData, void **, 0x44), s32 *, 0xC);
         if ((temp_r5_153 > 1) && (var_r30_100 == (s32) M2C_FIELD(M2C_FIELD(phraseData, void **, 0x44), s32 *, 8))) {
-            var_r30_100 = MKRand_Int(&gViewSeed, 0, temp_r5_153);
+            var_r30_100 = MKRand_Int((int *) &gViewSeed, 0, temp_r5_153);
             goto loop_14;
         }
         M2C_FIELD(M2C_FIELD(phraseData, void **, 0x44), s32 *, 8) = var_r30_100;
@@ -307,7 +322,7 @@ loop_3:
 #if 0 // DRAFT: undefined identifier 'Phrase_Unload'
 void PhrasePlayer_Deinit() {
     Phrase_Unload();
-    PhrasePlayer_UnloadIniData((PhraseEvent **) &phraseData[0x3C], (s32 *) &phraseData[0x48], &globalstringTable);
+    PhrasePlayer_UnloadIniData((PhraseEvent **) &phraseData[0x3C], (int *) &phraseData[0x48], &globalstringTable);
 }
 #endif
 
@@ -442,7 +457,7 @@ void PhrasePlayer_Init() {
     memset(phraseData, 0, 0x50U);
     M2C_FIELD(phraseData, s32 *, 0x28) = -1;
     M2C_FIELD(phraseData, s32 *, 0x2C) = -1;
-    PhrasePlayer_LoadIni("phrases.ini", (PhraseEvent **) &phraseData[0x3C], (s32 *) &phraseData[0x48], &globalstringTable);
+    PhrasePlayer_LoadIni("phrases.ini", (PhraseEvent **) &phraseData[0x3C], (int *) &phraseData[0x48], &globalstringTable);
 }
 #endif
 
@@ -462,7 +477,7 @@ loop_3:
         M2C_FIELD(phraseData, s32 *, 0x28) = -1;
     }
     if ((s32) M2C_FIELD(phraseData, s32 *, 0x20) > -1) {
-        KDSound_Stop((s32 *) &phraseData[0x20]);
+        KDSound_Stop((int *) &phraseData[0x20]);
         M2C_FIELD(phraseData, s32 *, 0x20) = 0;
     }
     temp_r30_943 = M2C_FIELD(phraseData, PhraseEvent **, 0x38);
@@ -521,7 +536,7 @@ void Phrase_LoadSound() {
     temp_r3_1054 = Str_Printf("%s%s.sub", phraseData, temp_r30_1006, "");
     temp_r29_1056 = temp_r3_1054;
     sp8 = 0;
-    temp_r3_1059 = MKArchive_Exists(temp_r3_1054, &sp8);
+    temp_r3_1059 = MKArchive_Exists(temp_r3_1054, (int *) &sp8);
     if (temp_r3_1059 != 0) {
         ((MKHeap *) temp_r3_1059)->ActivateTempMemOverride();
         temp_r30_1064 = sp8 + 1;

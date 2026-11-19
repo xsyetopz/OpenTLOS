@@ -1,10 +1,48 @@
 #include "spyro/source/TrainController.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/Enemy.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDInput.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/LightProp.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/SpyroEffects.h"
+#include "spyro/source/SpyroUtils.h"
 #include "spyro/source/SteamTrain.h"
 #include "spyro/source/SteamTrainCaboose.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "spyro/source/TrainChaseSpyro.h"
 #include "unplaced_templates.h"
 #include "common/Source/Str.h"
@@ -16,7 +54,7 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKSceneManager'
+#if 0 // DRAFT: illegal implicit conversion from 'TrainControllerDescriptor *' to
 void TrainController::SetStage(int arg0) {
     SteamTrain *temp_r3_74;
     u32 var_r4_61;
@@ -41,7 +79,7 @@ void TrainController::SetStage(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKSceneManager'
+#if 0 // DRAFT: illegal explicit conversion from 'void' to
 void TrainController::Message(MKMessage *arg0) {
     s32 sp54;
     s32 sp50;
@@ -282,7 +320,7 @@ void TrainController::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKSceneManager'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void TrainController::Reset() {
     s32 spC;
     s32 sp8;
@@ -325,17 +363,15 @@ void TrainController::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 TrainController::LoadLine(MKIniLine *arg0) {
     s32 var_r31_602;
 
     var_r31_602 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (s32 *) &this->unk4C, 0) != 0) || (arg0->LoadInt("trainID", (s32 *) &this->unk50, 0) != 0) || (arg0->LoadInt("cabooseID", (s32 *) &this->unk54, 0) != 0) || (arg0->LoadInt("spyroCartID", (s32 *) &this->unk58, 0) != 0) || (this->unk64.LoadLine(arg0, "OnFinish") != 0) || (this->unk68.LoadLine(arg0, "OnReset") != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (int *) &this->unk4C, 0) != 0) || (arg0->LoadInt("trainID", (int *) &this->unk50, 0) != 0) || (arg0->LoadInt("cabooseID", (int *) &this->unk54, 0) != 0) || (arg0->LoadInt("spyroCartID", (int *) &this->unk58, 0) != 0) || (this->unk64.LoadLine(arg0, "OnFinish") != 0) || (this->unk68.LoadLine(arg0, "OnReset") != 0)) {
         var_r31_602 = 1;
     }
     return var_r31_602;
 }
-#endif
 
 void TrainController::Init() {
     MKProp::Init();

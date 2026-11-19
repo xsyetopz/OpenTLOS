@@ -1,6 +1,8 @@
 #include "common/gc/MKPrimitive_GC.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Texture.h"
 #include "common/gc/MKMaterial_GC.h"
 #include <m2c_macros.h>
 

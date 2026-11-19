@@ -75,7 +75,7 @@ inline ExplosiveBarrel::ExplosiveBarrel() {
 inline ExplosiveBarrel::~ExplosiveBarrel() {
     this->unkC8 = &__vt.unk48;
     if (&this->unk1BC != NULL) {
-        KDSound_Stop(&this->unk1BC);
+        KDSound_Stop((int *) &this->unk1BC);
     }
 }
 #endif

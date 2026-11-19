@@ -1,33 +1,69 @@
 #include "spyro/source/EarthBreathFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
+#include "spyro/source/AITargetData.h"
 #include "spyro/source/BaseBreathFX.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Coronas.h"
 #include "spyro/source/EarthBombFX.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FallingLeaves.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FuryFX.h"
 #include "spyro/source/FuryFXEarth.h"
 #include "spyro/source/FuryFXEarth2.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/ShotgunWarpFX.h"
+#include "spyro/source/SuckeyPS.h"
 #include "spyro/source/TargetManager.h"
+#include "spyro/source/WindFX.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -650,9 +686,9 @@ block_27:
         sp208 = temp_f0_1009;
         spF0 = temp_f29_988 + (f32) sp200;
         sp210 = (f64) spF0;
-        temp_f21_1022 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f19_1027 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        spD8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f21_1022 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f19_1027 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        spD8 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         spDC = temp_f19_1027;
         spE0 = temp_f21_1022;
         sp1C8 = (f64) spD8;
@@ -668,9 +704,9 @@ block_27:
         spC0 = temp_f31_992 + (f32) sp1E0;
         sp1F0 = (f64) spC0;
         SpawnSeedBullet(*((MKVector3 *) &sp208), *((MKVector3 *) &sp1E8), arg2, var_f23_763, var_r29_768);
-        temp_f19_1072 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f21_1077 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        spA8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f19_1072 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f21_1077 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        spA8 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         spAC = temp_f21_1077;
         spB0 = temp_f19_1072;
         sp178 = (f64) spA8;
@@ -695,9 +731,9 @@ block_27:
         sp1B8 = temp_f0_1124;
         sp70 = (f32) sp1B0 + temp_f20_994;
         sp1C0 = (f64) sp70;
-        sp10 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
-        temp_f21_1142 = MKRand_Float(&gViewSeed, 0.0f, 0.5f);
-        sp5C = MKRand_Float(&gViewSeed, 0.6f, 1.0f);
+        sp10 = MKRand_Float((int *) &gViewSeed, 3.0f, 5.0f);
+        temp_f21_1142 = MKRand_Float((int *) &gViewSeed, 0.0f, 0.5f);
+        sp5C = MKRand_Float((int *) &gViewSeed, 0.6f, 1.0f);
         sp58 = 0.1f;
         sp60 = temp_f21_1142;
         sp64 = 1.0f;
@@ -1210,9 +1246,9 @@ loop_54:
                             spC0 = temp_f0_2064;
                             sp78 = sp188 * 1.5f;
                             spC8 = (f64) sp78;
-                            temp_f21_2077 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                            temp_f22_2082 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                            sp80 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                            temp_f21_2077 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                            temp_f22_2082 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                            sp80 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                             sp84 = temp_f22_2082;
                             sp88 = temp_f21_2077;
                             spD0 = (f64) sp80;
@@ -1227,7 +1263,7 @@ loop_54:
                             spF0 = temp_f0_2108;
                             sp58 = (f32) spE8 * 150.0f;
                             spF8 = (f64) sp58;
-                            temp_f1_2120 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
+                            temp_f1_2120 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
                             sp40 = 0.0f;
                             sp44 = 1.0f;
                             spC = temp_f1_2120;

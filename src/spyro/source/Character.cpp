@@ -1,11 +1,16 @@
 #include "spyro/source/Character.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
@@ -16,19 +21,48 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/CharacterDescriptor.h"
+#include "spyro/source/CharacterGraph.h"
 #include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDInput.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/MovementObject.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKWind.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/SpyroHud.h"
 #include "spyro/source/Tools.h"
@@ -2051,34 +2085,26 @@ void Character::EnableCollision(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void Character::Deactivate() {
-    PropFlagsClear((u32 *) &this->unk10, 0x60000U);
+    PropFlagsClear((unsigned int *) &this->unk10, 0x60000U);
     EnableCollision(0);
     this->unk600.Show(0U);
 }
-#endif
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void Character::Activate() {
-    PropFlagsSet((u32 *) &this->unk10, 0x60000U);
+    PropFlagsSet((unsigned int *) &this->unk10, 0x60000U);
     EnableCollision(1);
 }
-#endif
 
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void Character::Disable() {
     this->unk18 = this->unk18 | 0x80000000;
-    PropFlagsClear((u32 *) &this->unk10, 0x160000U);
+    PropFlagsClear((unsigned int *) &this->unk10, 0x160000U);
 }
-#endif
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void Character::Enable() {
     this->unk18 = this->unk18 & 0x7FFFFFFF;
-    PropFlagsSet((u32 *) &this->unk10, 0x160000U);
+    PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
 void Character::Message(MKMessage *arg0) {
@@ -2153,12 +2179,12 @@ void Character::Message(MKMessage *arg0) {
             goto block_88;
         case 2051:
             if (this->unk10 & 0x01000000) {
-                PropFlagsClear((u32 *) &this->unk10, 0x20000U);
+                PropFlagsClear((unsigned int *) &this->unk10, 0x20000U);
             }
             goto block_88;
         case 2052:
             if (this->unk10 & 0x01000000) {
-                PropFlagsSet((u32 *) &this->unk10, 0x20000U);
+                PropFlagsSet((unsigned int *) &this->unk10, 0x20000U);
             }
             goto block_88;
         case 2053:
@@ -2194,12 +2220,12 @@ void Character::Message(MKMessage *arg0) {
                 }
             }
             this->unk600.Show(var_r31_3868);
-            PropFlagsSet((u32 *) &this->unk10, 0x20000U);
+            PropFlagsSet((unsigned int *) &this->unk10, 0x20000U);
             goto block_88;
         case -4:
             this->unk110.ResetResults();
             this->unk600.Show(0U);
-            PropFlagsClear((u32 *) &this->unk10, 0x20000U);
+            PropFlagsClear((unsigned int *) &this->unk10, 0x20000U);
             goto block_88;
         case 28:
         case 31:
@@ -2286,13 +2312,13 @@ void Character::Message(MKMessage *arg0) {
         this->unk110.unk16C = 0;
     case 2055:
 block_88:
-        PropFlagsMessage((u32 *) &this->unk10, arg0);
+        PropFlagsMessage((unsigned int *) &this->unk10, arg0);
         MKProp::Message(arg0);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: declaration syntax error
 void Character::Draw() {
     KDSynkerPlayer3 *temp_r3_4127;
     f32 temp_f0_4172;
@@ -2332,7 +2358,7 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: declaration syntax error
 void Character::Update() {
     MKVector3 sp18;
     f64 sp10;
@@ -2577,18 +2603,18 @@ void Character::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
+#if 0 // DRAFT: expression syntax error
 s32 Character::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
     sp8 = 0;
     if ((arg0->IsField("bSynkerLookAt") != 0) && (arg0->GetBool(0) != 0)) {
-        PropFlagsSet((u32 *) &this->unk10, 0x800000U);
+        PropFlagsSet((unsigned int *) &this->unk10, 0x800000U);
     }
     if ((arg0->IsField("bSynkerAnimate") != 0) && (arg0->GetBool(0) != 0)) {
-        PropFlagsSet((u32 *) &this->unk10, 0x01000000U);
+        PropFlagsSet((unsigned int *) &this->unk10, 0x01000000U);
     }
-    if ((MKProp::LoadLine(arg0) != 0) || (((MovementObject *) &this->unk588)->LoadLine(arg0) != 0) || (PropFlagsLoadLine(&this->unk680, arg0) != 0) || (arg0->LoadInt("platformID", (s32 *) &this->unk63C, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (((MovementObject *) &this->unk588)->LoadLine(arg0) != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk680, arg0) != 0) || (arg0->LoadInt("platformID", (int *) &this->unk63C, 0) != 0)) {
         return 1;
     }
     if (arg0->LoadBool("bDrawInCutscenes", &sp8, 0) != 0) {

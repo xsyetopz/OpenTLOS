@@ -1,9 +1,19 @@
 #include "common/Source/MKOcean.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKFFTWater.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -31,7 +41,7 @@ void MKOcean::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void MKOcean::BuildOceanWaves() {
     s32 sp8C;
     s32 sp88;
@@ -100,8 +110,8 @@ void MKOcean::BuildOceanWaves() {
     var_r29_110 = 0;
     temp_f23_112 = 0.5f * (100.0f * (temp_f2_97 + this->unk5180));
     do {
-        var_f20_120 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-        if (MKRand_Float(&gViewSeed, 0.0f, 1.0f) > var_f20_120) {
+        var_f20_120 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+        if (MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f) > var_f20_120) {
             var_f20_120 = 1.0f - var_f20_120;
         }
         temp_r3_134 = var_r31_107 >> 0x1FU;

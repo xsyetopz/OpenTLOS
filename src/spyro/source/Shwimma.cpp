@@ -1,17 +1,24 @@
 #include "spyro/source/Shwimma.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include <m2c_macros.h>
@@ -272,7 +279,7 @@ loop_38:
             } else if (temp_r0_174 < 0xB) {
                 if (temp_r30_165->unk30.unk24 >= 1.0f) {
                     if (M2C_BITWISE(f32, temp_r30_165->unk30.unk34) < 0.0f) {
-                        temp_r30_165->unk30.unk30 = MKRand_Int(&gViewSeed, 0, 3) + 1;
+                        temp_r30_165->unk30.unk30 = MKRand_Int((int *) &gViewSeed, 0, 3) + 1;
                         temp_r0_316 = temp_r30_165->unk30.unk30;
                         switch (temp_r0_316) {      /* irregular */
                         case 1:
@@ -287,7 +294,7 @@ loop_38:
                             break;
                         }
                     } else {
-                        temp_r30_165->unk30.unk30 = MKRand_Int(&gViewSeed, 0, 5) + 6;
+                        temp_r30_165->unk30.unk30 = MKRand_Int((int *) &gViewSeed, 0, 5) + 6;
                         temp_r27_352 = temp_r30_165->unk30.unk30;
                         temp_r30_165->unk30.unk20 = *(checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (((s32) temp_r27_352 * 4) + 0x70));
                         temp_r30_165->unk30.unk28 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_165->unk30.unk20, s16 *, 4) / 30.0f));
@@ -305,12 +312,12 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void ShwimmaCritter::SetAlertState(Shwimma *arg0) {
     MKProp *temp_r31_606;
 
-    arg0->unk30.unk34 = 4.0f * MKRand_Float(&gViewSeed, 0.75f, 1.0f);
-    arg0->unk30.unk30 = MKRand_Int(&gViewSeed, 0, 5) + 6;
+    arg0->unk30.unk34 = 4.0f * MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
+    arg0->unk30.unk30 = MKRand_Int((int *) &gViewSeed, 0, 5) + 6;
     temp_r31_606 = arg0->unk30.unk30;
     arg0->unk30.unk20 = M2C_FIELD((checked_cast<ShwimmaCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((s32) temp_r31_606 * 4)), f32 *, 0x70);
     arg0->unk30.unk28 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk30.unk20, s16 *, 4) / 30.0f));

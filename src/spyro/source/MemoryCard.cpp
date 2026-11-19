@@ -1,11 +1,18 @@
 #include "spyro/source/MemoryCard.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/AutosaveWarningScreen.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameStateMachine.h"
 #include "spyro/source/KDMemoryCard.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LoadLevel.h"
 #include "spyro/source/MCActionScreen.h"
 #include "spyro/source/MCFileInfo.h"
@@ -15,12 +22,12 @@
 #include "spyro/source/MCSelectFileScreen.h"
 #include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIContainer.h"
+#include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIScreen.h"
 #include "spyro/source/UISystem.h"
 #include "spyro/source/UIText.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKMemoryCard.h"
 #include "common/Source/system_extras.h"
 #include "spyro/source/Autosave.h"
 #include "spyro/source/FrontEnd.h"
@@ -350,7 +357,7 @@ void MemoryCard_InitModule() {
     M2C_FIELD(&memCardSlotSizes, s32 *, 0xC) = temp_r3_704;
     M2C_FIELD(&memCardSlotSizes, s32 *, 8) = temp_r3_704;
     M2C_FIELD(&memCardSlotSizes, s32 *, 4) = temp_r3_704;
-    MKMemoryCard_SetAppInfo(pDirectoryName, gameNameBuffer, &memCardSlotSizes);
+    MKMemoryCard_SetAppInfo(pDirectoryName, gameNameBuffer, (int *) &memCardSlotSizes);
     ((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->InitModule();
     Autosave_InitModule();
     var_r4_717 = &UIObjectDescriptor::list;

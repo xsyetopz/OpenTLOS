@@ -39,7 +39,7 @@ inline WaterWheel::WaterWheel() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline WaterWheel::~WaterWheel() {
     if ((&this->unk184 != NULL) && (&this->unk184 != NULL)) {
-        KDSound_Stop(&this->unk184);
+        KDSound_Stop((int *) &this->unk184);
     }
 }
 #endif

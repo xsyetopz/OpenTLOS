@@ -1,17 +1,45 @@
 #include "spyro/source/ShatterableBoat.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SeeSaw.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/ShatterablePlatformDescriptor.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/WaterSurfaceFX.h"
 #include "unplaced_templates.h"
 #include "common/Source/OmniLight.h"
@@ -105,7 +133,7 @@ void ShatterableBoat::Deinit() {
     ((KDUniformSpline *) &this->unk218)->Deinit();
     MKModel_Destroy(this->unk310);
     if ((s32) M2C_FIELD(checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x16C) != 0) {
-        KDSound_Stop(&this->unk338);
+        KDSound_Stop((int *) &this->unk338);
     }
     ShatterablePlatform::Deinit();
 }
@@ -445,7 +473,7 @@ void ShatterableBoat::EmitWaterSpray() {
         var_r28_716 = 0;
 loop_2:
         if (var_r29_704 != 0) {
-            sp198.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+            sp198.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp88 = sp2D8 + M2C_BITWISE(f64, sp198);
             sp1A8 = sp88;
             sp90 = (f32) sp2E0 + sp198.unk8;
@@ -453,7 +481,7 @@ loop_2:
             sp1B0 = (f64) sp90;
             sp300 = (f64) sp90;
         } else {
-            sp178.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+            sp178.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp78 = sp2B8 + M2C_BITWISE(f64, sp178);
             sp188 = sp78;
             sp80 = (f32) sp2C0 + sp178.unk8;
@@ -462,7 +490,7 @@ loop_2:
             sp300 = (f64) sp80;
         }
         temp_r5_767 = this->unk8;
-        temp_f31_768 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        temp_f31_768 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         sp8 = -M2C_FIELD(temp_r5_767, f32 *, 0x20);
         spC = -M2C_FIELD(temp_r5_767, f32 *, 0x24);
         sp10 = -M2C_FIELD(temp_r5_767, f32 *, 0x28);
@@ -488,7 +516,7 @@ loop_2:
             M2C_FIELD(temp_r3_826, f64 *, 8) = sp300;
             M2C_FIELD(temp_r3_826, f32 *, 0x20) = 0.0f;
             M2C_FIELD(temp_r3_826, f32 *, 0x28) = 0.0f;
-            temp_f0_844 = 3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f0_844 = 3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp58 = 0.25f;
             sp5C = 0.25f;
             M2C_FIELD(temp_r3_826, f32 *, 0x24) = (f32) (2.0f * temp_f0_844);
@@ -500,7 +528,7 @@ loop_2:
             spE8 = (f64) sp58;
             spF0 = (f64) sp60;
             M2C_FIELD(temp_r27_829, f64 *, 8) = sp2F0;
-            M2C_FIELD(temp_r27_829, f32 *, 0x18) = MKRand_Float(&gViewSeed, 3.0f, 6.0f);
+            M2C_FIELD(temp_r27_829, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 3.0f, 6.0f);
             M2C_FIELD(temp_r27_829, f32 *, 0x10) = 0.0f;
             M2C_FIELD(temp_r27_829, f32 *, 0x14) = (f32) M2C_FIELD(this->unk240, f32 *, 0xF4);
         }
@@ -1070,7 +1098,7 @@ void ShatterableBoat::Update() {
             var_r26_1750 = 0;
 loop_42:
             temp_r5_1756 = this->unk8;
-            temp_f28_1757 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+            temp_f28_1757 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
             sp40 = -M2C_FIELD(temp_r5_1756, f32 *, 0x20);
             sp44 = -M2C_FIELD(temp_r5_1756, f32 *, 0x24);
             sp48 = -M2C_FIELD(temp_r5_1756, f32 *, 0x28);
@@ -1096,7 +1124,7 @@ loop_42:
                 M2C_FIELD(temp_r3_1815, f64 *, 8) = (f64) sp2A0.unk8;
                 M2C_FIELD(temp_r3_1815, f32 *, 0x20) = 0.0f;
                 M2C_FIELD(temp_r3_1815, f32 *, 0x28) = 0.0f;
-                temp_f0_1833 = 3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f0_1833 = 3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 sp70 = 0.25f;
                 sp74 = 0.25f;
                 M2C_FIELD(temp_r3_1815, f32 *, 0x24) = (f32) (2.0f * temp_f0_1833);
@@ -1108,7 +1136,7 @@ loop_42:
                 sp1A0 = (f64) sp70;
                 sp1A8 = (f64) sp78;
                 M2C_FIELD(temp_r25_1818, f64 *, 8) = sp2B8;
-                M2C_FIELD(temp_r25_1818, f32 *, 0x18) = MKRand_Float(&gViewSeed, 3.0f, 6.0f);
+                M2C_FIELD(temp_r25_1818, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 3.0f, 6.0f);
                 M2C_FIELD(temp_r25_1818, f32 *, 0x10) = 0.0f;
                 M2C_FIELD(temp_r25_1818, f32 *, 0x14) = (f32) M2C_FIELD(this->unk240, f32 *, 0xF4);
             }
@@ -1135,7 +1163,7 @@ loop_42:
             var_r25_1899 = 0;
 loop_49:
             temp_r5_1905 = this->unk8;
-            temp_f28_1906 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+            temp_f28_1906 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
             sp30 = -M2C_FIELD(temp_r5_1905, f32 *, 0x20);
             sp34 = -M2C_FIELD(temp_r5_1905, f32 *, 0x24);
             sp38 = -M2C_FIELD(temp_r5_1905, f32 *, 0x28);
@@ -1161,7 +1189,7 @@ loop_49:
                 M2C_FIELD(temp_r3_1964, f64 *, 8) = (f64) sp2A0.unk8;
                 M2C_FIELD(temp_r3_1964, f32 *, 0x20) = 0.0f;
                 M2C_FIELD(temp_r3_1964, f32 *, 0x28) = 0.0f;
-                temp_f0_1982 = 3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                temp_f0_1982 = 3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                 sp50 = 0.25f;
                 sp54 = 0.25f;
                 M2C_FIELD(temp_r3_1964, f32 *, 0x24) = (f32) (2.0f * temp_f0_1982);
@@ -1173,7 +1201,7 @@ loop_49:
                 sp100.unk10 = (f64) sp50;
                 sp118 = (f64) sp58;
                 M2C_FIELD(temp_r26_1967, f64 *, 8) = sp28;
-                M2C_FIELD(temp_r26_1967, f32 *, 0x18) = MKRand_Float(&gViewSeed, 3.0f, 6.0f);
+                M2C_FIELD(temp_r26_1967, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 3.0f, 6.0f);
                 M2C_FIELD(temp_r26_1967, f32 *, 0x10) = 0.0f;
                 M2C_FIELD(temp_r26_1967, f32 *, 0x14) = (f32) M2C_FIELD(this->unk240, f32 *, 0xF4);
             }
@@ -1358,7 +1386,7 @@ s32 ShatterableBoatDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2425;
 
     var_r31_2425 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "AmbientSoundLoop", &this->unk16C) != 0) || (KDSound_LoadLine(arg0, "sndSink", &this->unk170) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "AmbientSoundLoop", (int *) &this->unk16C) != 0) || (KDSound_LoadLine(arg0, "sndSink", (int *) &this->unk170) != 0)) {
         var_r31_2425 = 1;
     }
     return var_r31_2425;

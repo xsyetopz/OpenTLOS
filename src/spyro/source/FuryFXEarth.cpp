@@ -1,27 +1,102 @@
 #include "spyro/source/FuryFXEarth.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/Coronas.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FallingLeaves.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
+#include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PooledShatterProp.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
 #include "spyro/source/SquishBoulder.h"
 #include "spyro/source/SuckeyPS.h"
 #include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
+#include "spyro/source/WindFX.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_SpyroFuryEarth1;
@@ -210,8 +285,8 @@ loop_37:
         temp_r3_301 = this->unk1C0->CreateInstance();
         if (temp_r3_301 != NULL) {
             temp_r29_306 = checked_cast<SquishBoulder *, MKProp>(temp_r3_301);
-            temp_f30_310 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f1_314 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f30_310 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f1_314 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp58 = temp_f30_310;
             sp50 = temp_f1_314;
             sp54 = 0.0f;
@@ -475,7 +550,7 @@ void FuryFXEarth::EmitLeaves() {
             sp50 = temp_f0_821;
             sp48 = (f32) spB8 * 220.0f;
             sp58 = (f64) sp48;
-            sp8 = MKRand_Int(&gViewSeed, 0, 3);
+            sp8 = MKRand_Int((int *) &gViewSeed, 0, 3);
             this->unk100->Emit(*((MKVector3 *) &spC0), *((MKVector3 *) &sp50), 2.0f, sp8, 1U);
             var_r31_772 += 1;
         } while (var_r31_772 < 0xA);
@@ -618,7 +693,7 @@ void FuryFXEarth::Update() {
             sp298 = sp68;
             sp250 = (f64) sp70;
             sp2A0 = (f64) sp70;
-            sp18 = MKRand_Float(&gViewSeed, 3.5f, 4.0f);
+            sp18 = MKRand_Float((int *) &gViewSeed, 3.5f, 4.0f);
             spB8 = -(f32) sp298;
             spBC = -(*(f32 *) ((u8 *) &sp298 + 0x4));
             spC0 = -(f32) sp2A0;
@@ -629,7 +704,7 @@ void FuryFXEarth::Update() {
         } while (var_r29_899 < 4);
         if ((Corona *) this->unk164 != NULL) {
             temp_r3_963 = this->unk164;
-            temp_r3_963->unk24 += gUpdateTimeDelta * MKRand_Float(&gViewSeed, 2.0f, 2.5f);
+            temp_r3_963->unk24 += gUpdateTimeDelta * MKRand_Float((int *) &gViewSeed, 2.0f, 2.5f);
             temp_r3_969 = this->unk164;
             temp_r3_969->unk2C += 2.0f * gUpdateTimeDelta;
         }
@@ -668,7 +743,7 @@ void FuryFXEarth::Update() {
         EmitLeaves();
         this->unk100->ApplyWind(&this->unk90);
         if ((Corona *) this->unk164 != NULL) {
-            this->unk164->unk24 = MKRand_Float(&gViewSeed, 8.0f, 8.5f);
+            this->unk164->unk24 = MKRand_Float((int *) &gViewSeed, 8.0f, 8.5f);
             temp_r3_1059 = this->unk164;
             temp_r3_1059->unk2C += 2.0f * gUpdateTimeDelta;
             temp_r3_1064 = this->unk164;
@@ -688,7 +763,7 @@ void FuryFXEarth::Update() {
             sp278 = sp58;
             sp200 = (f64) sp60;
             sp280 = (f64) sp60;
-            sp14 = MKRand_Float(&gViewSeed, 3.5f, 4.0f);
+            sp14 = MKRand_Float((int *) &gViewSeed, 3.5f, 4.0f);
             spA8 = -(f32) sp278;
             spAC = -(*(f32 *) ((u8 *) &sp278 + 0x4));
             spB0 = -(f32) sp280;
@@ -709,7 +784,7 @@ void FuryFXEarth::Update() {
             sp278 = sp48;
             sp1B0 = (f64) sp50;
             sp280 = (f64) sp50;
-            temp_f1_1170 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+            temp_f1_1170 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
             spA0 = 0.0f;
             sp98 = 0.0f;
             sp9C = 2000.0f;
@@ -727,7 +802,7 @@ void FuryFXEarth::Update() {
             sp278 = sp38;
             sp150 = (f64) sp40;
             sp280 = (f64) sp40;
-            temp_f1_1220 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+            temp_f1_1220 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
             sp90 = 0.0f;
             sp88 = 0.0f;
             sp8C = 2000.0f;
@@ -848,7 +923,7 @@ loop_59:
                 M2C_FIELD(temp_r3_1468, f64 *, 0x18) = (f64) sp30;
             }
             temp_r3_1482 = this->unk1CC;
-            temp_f1_1484 = (1.0f + temp_f31_1441) * (1000.0f * MKRand_Float(&gViewSeed, 0.5f, 1.2f));
+            temp_f1_1484 = (1.0f + temp_f31_1441) * (1000.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.2f));
             temp_r3_1482->unk38 = temp_f1_1484;
             temp_r3_1486 = temp_r3_1482->unk3C;
             if (temp_r3_1486 != NULL) {

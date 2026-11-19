@@ -212,12 +212,10 @@ void KDMemoryCard::CheckCard_Update(int arg0) {
     SetState((KDMCState) 0);
 }
 
-#if 0 // DRAFT: function call 'MKMemoryCard_GetInfo(long, long *, long *, long *, long *)'
 void KDMemoryCard::CheckCard_Init() {
     Reset(1U);
-    MKMemoryCard_GetInfo(this->unk0, &this->unk18, &this->unk14, &this->unk10, &this->unk1C);
+    MKMemoryCard_GetInfo(this->unk0, (int *) &this->unk18, (int *) &this->unk14, (int *) &this->unk10, (int *) &this->unk1C);
 }
-#endif
 
 void KDMemoryCard::IsAttached_Update(int arg0) {
     if ((arg0 == -2) || (arg0 == -3)) {

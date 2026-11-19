@@ -1,10 +1,17 @@
 #include "spyro/source/LitCloudPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
-#include "common/Source/MKMaterial.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -67,7 +74,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void LitCloudPS::StateUpdate() {
     f64 sp1C8;
     f64 sp1C0;
@@ -158,7 +165,7 @@ void LitCloudPS::StateUpdate() {
         }
     } else if (!(this->unk78 > 0.0f)) {
         this->unk78 = 0.0f;
-        temp_f31_158 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+        temp_f31_158 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
         spD8 = -1.0f;
         spC8 = 1.0f;
         spD0 = -1.0f;
@@ -280,7 +287,7 @@ void LitCloudPS::StateUpdate() {
         sp148 = (f64) sp28;
         spE0 = (f64) sp10;
         spE8 = (f64) sp18;
-        SetLight(*((MKVector3 *) &sp140), *((MKVector4 *) &spE0), this->unk4C * (100.0f * MKRand_Float(&gViewSeed, 1.0f, 1.5f)));
+        SetLight(*((MKVector3 *) &sp140), *((MKVector4 *) &spE0), this->unk4C * (100.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f)));
     }
 }
 #endif
@@ -341,9 +348,9 @@ loop_2:
             M2C_FIELD(temp_r4_521, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
             M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x44) = arg2;
             M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x40) = 0.0f;
-            M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x30) = (f32) (2.0f * MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f));
-            M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x34) = (f32) (0.125f * MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f));
-            temp_f1_549 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
+            M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x30) = (f32) (2.0f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
+            M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x34) = (f32) (0.125f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
+            temp_f1_549 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
             M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x4C) = temp_f1_549;
             M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x48) = temp_f1_549;
             temp_f31_558 = this->unk4C;

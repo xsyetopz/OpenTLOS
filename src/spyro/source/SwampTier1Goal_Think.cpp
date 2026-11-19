@@ -1,17 +1,61 @@
 #include "spyro/source/SwampTier1Goal_Think.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/Enemies_Swamp.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_AlertMode.h"
 #include "spyro/source/EnemyGoals_Death.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/SwampTier3Goals.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -22,7 +66,6 @@ void SwampTier1Goal_Hit::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 SwampTier1Goal_Hit::Update() {
     f64 sp58;
     f64 sp50;
@@ -46,7 +89,7 @@ u8 SwampTier1Goal_Hit::Update() {
     this->unk8 = UpdateSubgoals();
     sp8 = 0;
     temp_r3_63 = this->unkC;
-    if (((u8) temp_r3_63->unkA38->unk121 != 0) && (temp_r3_63->InWaterVolume(temp_r3_63->unk588, &sp8) != 0)) {
+    if (((u8) temp_r3_63->unkA38->unk121 != 0) && (temp_r3_63->InWaterVolume(temp_r3_63->unk588, (int *) &sp8) != 0)) {
         temp_r3_73 = this->unkC;
         sp20 = M2C_FIELD(temp_r3_73, f64 *, 0xC0) * 5.398241246e-315;
         temp_r4_80 = temp_r3_73->unk8;
@@ -70,7 +113,6 @@ u8 SwampTier1Goal_Hit::Update() {
     }
     return this->unk8;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'AddSubgoal__27CompositeGoal'
 void SwampTier1Goal_Hit::Activate() {

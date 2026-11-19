@@ -1,38 +1,102 @@
 #include "spyro/source/Enemies_FireBoss.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/Enemies_FireBossDriver.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FireBossGoals.h"
+#include "spyro/source/FlyingBurningBits.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/Projectile.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
 #include "spyro/source/SpyroHud.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/SteamTrain.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "common/Source/system_extras.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/PhrasePlayer.h"
-#include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
 s32 atoi(s8 *);                                     /* extern */
@@ -321,7 +385,7 @@ void FireBossDirectedGraph::Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void FireBoss::InsideEdgeChange() {
     FireBossGraphEdge *temp_r3_541;
     FireBossGraphEdge *var_r30_538;
@@ -335,7 +399,7 @@ void FireBoss::InsideEdgeChange() {
             RemoveCrashEdgeFromNextBranch();
         }
     }
-    var_r30_538 = M2C_FIELD((this + (MKRand_Int(&gViewSeed, 0, this->unkC24) * 4)), FireBossGraphEdge **, 0xC28);
+    var_r30_538 = M2C_FIELD((this + (MKRand_Int((int *) &gViewSeed, 0, this->unkC24) * 4)), FireBossGraphEdge **, 0xC28);
     if ((u8) this->unkC41 != 0) {
         temp_r3_541 = GetCrashEdgeFromNextBranch();
         if (temp_r3_541 != NULL) {
@@ -1026,7 +1090,7 @@ s32 FireBoss::HasRunOverSpyro() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *)' does not match
 u8 FireBoss::IsSpyroOnInsideTrack(int arg0) {
     f64 sp30;
     f64 sp28;
@@ -1148,7 +1212,7 @@ f32 FireBoss::CalcEdgeSplineStartTime(FireBossGraphEdge *arg0) {
     return arg0->unkC;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'IsFuryActive(HeroInterface *, GameGlobals *)' does not
 void FireBoss::MoveAlongCurrentSpline(float arg0) {
     f32 temp_f0_2126;
     f32 temp_f1_2094;
@@ -2191,7 +2255,7 @@ void FireBoss::UpdatePhrasesAndSounds() {
 loop_3:
     if ((temp_f30_4086 != 0.0f) && (*(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_4093 + 0x2D4)) != 0.0f) && (this->unk107C > *(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_4093 + 0x2D4))) && (temp_f30_4086 <= *(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_4093 + 0x2D4)))) {
         temp_f31_4123 = 2.0f * M2C_FIELD(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x3D4);
-        this->unk1080 = MKRand_Float(&gViewSeed, M2C_FIELD(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x3D4), temp_f31_4123);
+        this->unk1080 = MKRand_Float((int *) &gViewSeed, M2C_FIELD(checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x3D4), temp_f31_4123);
         this->unk1078 = checked_cast<FireBossDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_4093 + 0x2B4);
     } else {
         var_r29_4092 += 1;
@@ -2443,14 +2507,14 @@ loop_4:
     } else {
         free((MKHeap *) temp_r31_4633);
     }
-    KDSound_Stop(&this->unkFCC);
-    KDSound_Stop(&this->unkFF4);
-    KDSound_Stop(&this->unk1044);
-    KDSound_Stop(&this->unk101C);
+    KDSound_Stop((int *) &this->unkFCC);
+    KDSound_Stop((int *) &this->unkFF4);
+    KDSound_Stop((int *) &this->unk1044);
+    KDSound_Stop((int *) &this->unk101C);
     this->unkFC9 = 0;
     this->unkFCA = 0;
     this->unkFCB = 0;
-    KDSound_Stop(&this->unk106C);
+    KDSound_Stop((int *) &this->unk106C);
     PhrasePlayer_StopEvent(this->unk1070);
     Enemy::Deinit();
 }

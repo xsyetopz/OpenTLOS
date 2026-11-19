@@ -1,9 +1,14 @@
 #include "spyro/source/FireAndIceFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include <m2c_macros.h>
@@ -96,7 +101,6 @@ void FireAndIceFX::DrawCleanup() {
     }
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 s32 FireAndIceFX::Draw(unsigned short *arg0) {
     Matrix sp2F0;
     Matrix sp2B0;
@@ -233,9 +237,9 @@ s32 FireAndIceFX::Draw(unsigned short *arg0) {
         MKModel_SetColor(this->unk74, *((MKVector4 *) &spF0));
         M2C_STRUCT_COPY((s32) &sp270.unk3C + 4, MKModel_GetWorldMatrix(this->unk74) - 4 + 4, 0x40);
         M2C_STRUCT_COPY((s32) &sp230.unk3C + 4, (s32) &sp270.unk3C + 4, 0x40);
-        temp_f31_343 = MKRand_Float(&gViewSeed, 1.01f, 1.05f);
-        temp_f30_348 = MKRand_Float(&gViewSeed, 1.01f, 1.05f);
-        temp_f1_352 = MKRand_Float(&gViewSeed, 1.01f, 1.05f);
+        temp_f31_343 = MKRand_Float((int *) &gViewSeed, 1.01f, 1.05f);
+        temp_f30_348 = MKRand_Float((int *) &gViewSeed, 1.01f, 1.05f);
+        temp_f1_352 = MKRand_Float((int *) &gViewSeed, 1.01f, 1.05f);
         sp28 = temp_f31_343;
         sp20 = temp_f1_352;
         sp24 = temp_f30_348;
@@ -306,9 +310,9 @@ s32 FireAndIceFX::Draw(unsigned short *arg0) {
         MKModel_SetColor(this->unk74, *((MKVector4 *) &spB0));
         M2C_STRUCT_COPY((s32) &sp170.unk3C + 4, MKModel_GetWorldMatrix(this->unk74) - 4 + 4, 0x40);
         M2C_STRUCT_COPY((s32) &sp16C + 4, (s32) &sp170.unk3C + 4, 0x40);
-        temp_f30_541 = MKRand_Float(&gViewSeed, 1.01f, 1.05f);
-        temp_f31_546 = MKRand_Float(&gViewSeed, 1.01f, 1.05f);
-        temp_f1_550 = MKRand_Float(&gViewSeed, 1.01f, 1.05f);
+        temp_f30_541 = MKRand_Float((int *) &gViewSeed, 1.01f, 1.05f);
+        temp_f31_546 = MKRand_Float((int *) &gViewSeed, 1.01f, 1.05f);
+        temp_f1_550 = MKRand_Float((int *) &gViewSeed, 1.01f, 1.05f);
         sp18 = temp_f30_541;
         sp10 = temp_f1_550;
         sp14 = temp_f31_546;
@@ -330,7 +334,6 @@ s32 FireAndIceFX::Draw(unsigned short *arg0) {
         return 0;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'MKVector'
 void FireAndIceFX::Update() {

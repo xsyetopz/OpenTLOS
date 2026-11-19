@@ -1,21 +1,55 @@
 #include "spyro/source/PoisonBomb.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/ExpShock.h"
+#include "spyro/source/ExpSmokeAndFlamesPS.h"
 #include "spyro/source/Explosion3.h"
+#include "spyro/source/ExplosionFX.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeatDistortPS.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/Projectile.h"
 #include "spyro/source/ScreenWobbleFX.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKMaterial.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
@@ -75,7 +109,7 @@ void PoisonBomb::EmitPoisonTrail() {
     sp68 = temp_f0_107;
     sp10 = sp58.unk8 * 100.0f;
     sp70 = (f64) sp10;
-    ((HeatDistortPS *) (&gb + 0x240))->Emit(*temp_r31_91, *((MKVector3 *) &sp68), 1.0f, MKRand_Float(&gViewSeed, 3.0f, 4.0f));
+    ((HeatDistortPS *) (&gb + 0x240))->Emit(*temp_r31_91, *((MKVector3 *) &sp68), 1.0f, MKRand_Float((int *) &gViewSeed, 3.0f, 4.0f));
 }
 #endif
 
@@ -220,7 +254,7 @@ void PoisonBomb::Activate() {
     GameProp::Activate();
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: declaration syntax error
 void PoisonBomb::Update() {
     s8 sp101;
     u8 sp100;
@@ -421,7 +455,7 @@ void PoisonBomb::Update() {
             temp_r30_829 = ((u8 *) this->unk8) + 0x30;
             ((Explosion3 *) (M2C_FIELD(checked_cast<PoisonBombDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), Explosion3 **, 0xF0)))->Trigger(*temp_r30_829, 0.25f, 0U, 0U, *((MKVector3 *) &sp60), this->unk130);
             this->unk1C0 = 0;
-            KDSound_Stop(&this->unk190);
+            KDSound_Stop((int *) &this->unk190);
             this->unk180 = 4;
             this->unk160 = 2.0f;
             return;
@@ -452,7 +486,6 @@ void PoisonBomb::SetInitialState() {
 
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void PoisonBomb::Reset() {
     Projectile::Reset();
     this->unk170 = 0;
@@ -465,11 +498,10 @@ void PoisonBomb::Reset() {
     this->unk17C = 0.0f;
     this->unk180 = 0;
     this->unk184 = 0.0f;
-    KDSound_Stop(&this->unk1B8);
+    KDSound_Stop((int *) &this->unk1B8);
     this->unk1C0 = 0;
-    KDSound_Stop(&this->unk190);
+    KDSound_Stop((int *) &this->unk190);
 }
-#endif
 
 PoisonBomb *PoisonBomb::CreateInstance() {
     PoisonBomb *temp_r3_943;
@@ -517,11 +549,10 @@ void PoisonBomb::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void PoisonBomb::Deinit() {
     PlatformDetach();
-    KDSound_Stop(&this->unk190);
-    KDSound_Stop(&this->unk1B8);
+    KDSound_Stop((int *) &this->unk190);
+    KDSound_Stop((int *) &this->unk1B8);
     MKModel_Destroy(this->unk1C4);
     if ((s32) this->unk180 >= 1) {
         ((ScreenWobbleFX *) (&gb + 0xB8))->SetMotionBlurCapEnable(0U);
@@ -529,9 +560,8 @@ void PoisonBomb::Deinit() {
     this->unk180 = 0;
     Projectile::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void PoisonBomb::Draw() {
     Matrix sp110;
     f32 sp10C;
@@ -614,7 +644,7 @@ void PoisonBomb::Draw() {
         Projectile::Draw();
     }
     if ((u8) M2C_FIELD(&gb, u8 *, 0x118) != 0) {
-        this->unk1C8 += 6.2831855f * gUpdateTimeDelta * MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+        this->unk1C8 += 6.2831855f * gUpdateTimeDelta * MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
         M2C_STRUCT_COPY((s32) &sp10C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
         temp_f29_1134 = (fTexScale - 1.0f) * fScaleMul;
         temp_f31_1135 = -((this->unk1D0 * 0.5f) - 1.0f);

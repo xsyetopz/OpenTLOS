@@ -1,21 +1,49 @@
 #include "spyro/source/ScryingPool.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
 extern s32 GS_PLACEHOLDER;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void ScryingPool::Deinit() {
-    KDSound_Stop(&this->unk98);
+    KDSound_Stop((int *) &this->unk98);
     KDPropEx::Deinit();
 }
-#endif
 
 void ScryingPool::Message(MKMessage *arg0) {
     ((KDSoundPlayer *) &this->unk98)->Message(arg0);
@@ -74,17 +102,15 @@ void ScryingPool::Init() {
     this->unk94 = GS_PLACEHOLDER;
 }
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[12], long *)' does
 s32 ScryingPoolDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_251;
 
     var_r31_251 = 0;
-    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "normalSound", &this->unkC0) != 0) || (KDSound_LoadLine(arg0, "cutsceneSound", &this->unkC4) != 0)) {
+    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "normalSound", (int *) &this->unkC0) != 0) || (KDSound_LoadLine(arg0, "cutsceneSound", (int *) &this->unkC4) != 0)) {
         var_r31_251 = 1;
     }
     return var_r31_251;
 }
-#endif
 
 void ScryingPoolDescriptor::Init() {
     KDPropExDescriptor::Init();

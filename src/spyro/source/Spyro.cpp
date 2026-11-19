@@ -1,60 +1,151 @@
 #include "spyro/source/Spyro.h"
 #include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
 #include "spyro/source/AnimUtils.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BaseBreathFX.h"
 #include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
 #include "spyro/source/CharacterGlowFX.h"
+#include "spyro/source/CharacterGraph.h"
 #include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/ConvexityBreathFX.h"
+#include "spyro/source/Coronas.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EarthBreathFX.h"
 #include "spyro/source/EarthShockwave.h"
+#include "spyro/source/ElectricBeamFX.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplodeMsg.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FlameBreathBeamFX.h"
+#include "spyro/source/FlameBreathFX.h"
+#include "spyro/source/FlameBreathPS.h"
 #include "spyro/source/FootStepFX.h"
+#include "spyro/source/FuryFX.h"
+#include "spyro/source/FuryFXConvexity.h"
+#include "spyro/source/FuryFXEarth.h"
+#include "spyro/source/FuryFXEarth2.h"
+#include "spyro/source/FuryFXElectricity.h"
+#include "spyro/source/FuryFXElectricity2.h"
+#include "spyro/source/FuryFXFire.h"
+#include "spyro/source/FuryFXFire2.h"
+#include "spyro/source/FuryFXIce.h"
+#include "spyro/source/FuryFXIce2.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameCameraMessages.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/GroundFire.h"
 #include "spyro/source/HeroInterface.h"
 #include "spyro/source/HitFX.h"
+#include "spyro/source/IceBitsPS.h"
+#include "spyro/source/IceBreathFX.h"
+#include "spyro/source/IceExplosion.h"
 #include "spyro/source/InputModifier.h"
 #include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
+#include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
 #include "spyro/source/KDCameraMessages.h"
 #include "spyro/source/KDCameraPoint.h"
+#include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
+#include "spyro/source/KDCollisionObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/KDVolume.h"
 #include "spyro/source/KDWaterVolume.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/LineSegmentTrail.h"
+#include "spyro/source/LiquidFX.h"
+#include "spyro/source/ManagedLight.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
 #include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/ScorchTrail.h"
 #include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/Sparx.h"
+#include "spyro/source/SparxFX.h"
+#include "spyro/source/SparxPath.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/SplineProp.h"
 #include "spyro/source/SpyroCollisionObject.h"
+#include "spyro/source/SpyroCombatState.h"
 #include "spyro/source/SpyroEffects.h"
 #include "spyro/source/SpyroState.h"
 #include "spyro/source/SpyroTools.h"
 #include "spyro/source/SpyroUtils.h"
 #include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "spyro/source/WaterSurfaceFX.h"
+#include "spyro/source/WindFX.h"
 #include "spyro/source/ZapArcFX.h"
+#include "spyro/source/ZapBreathFX.h"
+#include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKGrass.h"
@@ -67,10 +158,8 @@
 #include "spyro/source/DataMap.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Music.h"
 #include "spyro/source/SpyroHud.h"
-#include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: identifier 'EventCamera_bRemainTargetable' redeclared
@@ -296,8 +385,8 @@ block_7:
                 temp_r0_476 = this->unk254;
                 switch (temp_r0_476) {              /* switch 1; irregular */
                 case 0:                             /* switch 1 */
-                    sp10 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
-                    spAC = MKRand_Float(&gViewSeed, 100.0f, 200.0f);
+                    sp10 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
+                    spAC = MKRand_Float((int *) &gViewSeed, 100.0f, 200.0f);
                     spA8 = 0.0f;
                     spB0 = 0.0f;
                     sp178 = (f64) spA8;
@@ -461,8 +550,8 @@ loop_73:
                         M2C_FIELD(temp_r27_876, f32 *, 0) = 0.0f;
                         M2C_FIELD(temp_r27_876, f32 *, 4) = 0.0f;
                         M2C_FIELD(temp_r27_876, f32 *, 8) = 0.0f;
-                        M2C_FIELD(temp_r27_876, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
-                        M2C_FIELD(temp_r27_876, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                        M2C_FIELD(temp_r27_876, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.25f, 0.5f);
+                        M2C_FIELD(temp_r27_876, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                         M2C_FIELD(temp_r27_876, f32 *, 0x14) = (f32) M2C_FIELD(gb.unk2A4, f32 *, 0xF4);
                         return;
                     }
@@ -727,14 +816,14 @@ void Spyro::EmitWallHeadbuttEffects(const MKVector3 &arg0) {
         sp168 = (f64) sp18;
         sp170 = (f64) sp20;
         if (var_r28_1244 != 0) {
-            temp_f1_1372 = MKRand_Float(&gViewSeed, 200.0f, 400.0f);
+            temp_f1_1372 = MKRand_Float((int *) &gViewSeed, 200.0f, 400.0f);
             temp_r4_1375 = ((u8 *) this->unk8) + 0x20;
             temp_f0_1377 = M2C_FIELD(temp_r4_1375, f64 *, 0) * temp_f1_1372;
             sp88 = temp_f0_1377;
             spE8 = temp_f0_1377;
             sp90 = M2C_FIELD(temp_r4_1375, f32 *, 8) * (f32) temp_f1_1372;
             spF0 = (f64) sp90;
-            temp_f1_1389 = MKRand_Float(&gViewSeed, 0.0f, 500.0f);
+            temp_f1_1389 = MKRand_Float((int *) &gViewSeed, 0.0f, 500.0f);
             temp_f0_1392 = sp168 * temp_f1_1389;
             sp98 = temp_f0_1392;
             spF8 = temp_f0_1392;
@@ -745,17 +834,17 @@ void Spyro::EmitWallHeadbuttEffects(const MKVector3 &arg0) {
             sp108 = temp_f0_1403;
             sp80 = (f32) sp100 + (f32) spF0;
             sp110 = (f64) sp80;
-            sp14 = MKRand_Float(&gViewSeed, 0.03f, 0.09f);
+            sp14 = MKRand_Float((int *) &gViewSeed, 0.03f, 0.09f);
             gb.EmitSnowCrud(arg0, *((MKVector3 *) &sp108), sp14);
         } else {
-            temp_f1_1429 = MKRand_Float(&gViewSeed, 200.0f, 400.0f);
+            temp_f1_1429 = MKRand_Float((int *) &gViewSeed, 200.0f, 400.0f);
             temp_r4_1432 = ((u8 *) this->unk8) + 0x20;
             temp_f0_1434 = M2C_FIELD(temp_r4_1432, f64 *, 0) * temp_f1_1429;
             sp58 = temp_f0_1434;
             spB8 = temp_f0_1434;
             sp60 = M2C_FIELD(temp_r4_1432, f32 *, 8) * (f32) temp_f1_1429;
             spC0 = (f64) sp60;
-            temp_f1_1446 = MKRand_Float(&gViewSeed, 0.0f, 500.0f);
+            temp_f1_1446 = MKRand_Float((int *) &gViewSeed, 0.0f, 500.0f);
             temp_f0_1449 = sp168 * temp_f1_1446;
             sp68 = temp_f0_1449;
             spC8 = temp_f0_1449;
@@ -766,7 +855,7 @@ void Spyro::EmitWallHeadbuttEffects(const MKVector3 &arg0) {
             spD8 = temp_f0_1460;
             sp50 = (f32) spD0 + (f32) spC0;
             spE0 = (f64) sp50;
-            sp10 = MKRand_Float(&gViewSeed, 0.1f, 0.3f);
+            sp10 = MKRand_Float((int *) &gViewSeed, 0.1f, 0.3f);
             gb.EmitCrud(arg0, *((MKVector3 *) &spD8), sp10);
         }
         var_r27_1298 += 1;
@@ -9194,7 +9283,7 @@ void Spyro::LoadDone() {
         var_r31_16373 += 4;
     } while (var_r26_16372 < 6);
     temp_ret_16397 = checked_cast<SpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    MKModel_RefPointExists(this->unk4, Str_Printf("%s%s", M2C_FIELD(temp_ret_16397, s32 *, 0xB4), *Spyro::pRefPointNames, M2C_BITWISE(f32, temp_ret_16397)), &this->unkB0);
+    MKModel_RefPointExists(this->unk4, Str_Printf("%s%s", M2C_FIELD(temp_ret_16397, s32 *, 0xB4), *Spyro::pRefPointNames, M2C_BITWISE(f32, temp_ret_16397)), (int *) &this->unkB0);
     this->unkC0.SetAnim(M2C_FIELD(this->unkB4, MKAnim **, 4), 1.0f, 0.0f, 0, -1);
     this->unk3A8.Init(this->unk4, -1);
     MKModel_GetWorldMatrix(this->unk4);
@@ -9562,7 +9651,7 @@ s32 SpyroCombatArcDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_17250;
 
     var_r31_17250 = 0;
-    if ((arg0->LoadString("node", &this->unk0, 0) != 0) || (arg0->LoadFloat("life", &this->unkC, 0) != 0) || (arg0->LoadFloat("radius", &this->unk10, 0) != 0) || (arg0->LoadFloat("arc", &this->unk14, 0) != 0) || (arg0->LoadInt("damage", &this->unk18, 0) != 0) || (arg0->LoadBool("bStayAtSpawnPos", &this->unk8, 0) != 0) || (arg0->LoadBool("bOffsetFwd", &this->unk9, 0) != 0)) {
+    if ((arg0->LoadString("node", &this->unk0, 0) != 0) || (arg0->LoadFloat("life", &this->unkC, 0) != 0) || (arg0->LoadFloat("radius", &this->unk10, 0) != 0) || (arg0->LoadFloat("arc", &this->unk14, 0) != 0) || (arg0->LoadInt("damage", (int *) &this->unk18, 0) != 0) || (arg0->LoadBool("bStayAtSpawnPos", &this->unk8, 0) != 0) || (arg0->LoadBool("bOffsetFwd", &this->unk9, 0) != 0)) {
         var_r31_17250 = 1;
     }
     return var_r31_17250;

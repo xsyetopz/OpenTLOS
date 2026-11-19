@@ -1,10 +1,17 @@
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/Str.h"
@@ -1418,7 +1425,7 @@ loop_4:
         goto block_13;
     }
     temp_r3_2584 = Str_Printf("%s.bbi", arg0);
-    temp_ret_2587 = MKArchive_Exists(temp_r3_2584, &sp8);
+    temp_ret_2587 = MKArchive_Exists(temp_r3_2584, (int *) &sp8);
     if (temp_ret_2587 != 0) {
         ReadBinary(temp_r3_2584);
         goto block_12;
@@ -1622,7 +1629,7 @@ loop_10:
                     } else if (strnicmp(&var_r26_2927->unk0->unk0, "s_", 2) == 0) {
                         var_r24_2935 = 1;
                     }
-                    MKModel_SubObjectExists(this->unk8, (SubObjectType) var_r24_2935, &var_r26_2927->unk0->unk0, &var_r26_2927->unk8);
+                    MKModel_SubObjectExists(this->unk8, (SubObjectType) var_r24_2935, &var_r26_2927->unk0->unk0, (int *) &var_r26_2927->unk8);
                 }
                 var_r26_2927 += 0x10;
                 var_r25_2931 += 1;

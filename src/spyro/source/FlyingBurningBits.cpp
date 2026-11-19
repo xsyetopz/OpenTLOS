@@ -1,13 +1,23 @@
 #include "spyro/source/FlyingBurningBits.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
-#include "common/Source/MKMaterial.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -583,7 +593,7 @@ loop_7:
                     spB0 = temp_f0_775;
                     sp28 = (f32) spA8 + M2C_FIELD(temp_r3_833, f32 *, 0x18);
                     spB8 = (f64) sp28;
-                    sp8 = MKRand_Float(&gViewSeed, 6.0f, 7.0f);
+                    sp8 = MKRand_Float((int *) &gViewSeed, 6.0f, 7.0f);
                     ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*temp_r3_833, *((MKVector3 *) &spB0), sp8);
                     var_r27_741 += 1;
                 } while (var_r27_741 < 4);

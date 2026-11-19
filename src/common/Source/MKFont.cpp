@@ -1,8 +1,14 @@
 #include "common/Source/MKFont.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKMat_MK2_Standard.h"
 #include "common/Source/MKView.h"
@@ -41,7 +47,7 @@ f32 MKFont_DrawStringJustified(MKFont *arg0, const char *arg1, const MKVector3 &
         var_f27_46 = 0.0f;
 loop_3:
         if ((s8) (u8) *var_r30_40 != 0) {
-            MKFont_GetNextWrapPoint(arg0, var_r30_40, arg3, arg6, &sp8);
+            MKFont_GetNextWrapPoint(arg0, var_r30_40, arg3, arg6, (int *) &sp8);
             var_f27_46 += temp_f31_43;
             var_r30_40 = &var_r30_40[M2C_ERROR(/* Read from unset register $r3 */)];
             goto loop_3;
@@ -56,7 +62,7 @@ loop_3:
     temp_f28_79 = arg2.unk8;
 loop_20:
     if ((s8) (u8) *var_r30_40 != 0) {
-        MKFont_GetNextWrapPoint(arg0, var_r30_40, arg3, arg6, &sp8);
+        MKFont_GetNextWrapPoint(arg0, var_r30_40, arg3, arg6, (int *) &sp8);
         temp_r31_90 = M2C_ERROR(/* Read from unset register $r3 */);
         if (((s32) arg5 != 0) && ((s32) arg5 != 4) && ((s32) arg5 != 8)) {
             temp_f1_102 = MKFont_CalculateWidth(arg0, var_r30_40, arg6, arg3, temp_r31_90, NULL);
@@ -105,7 +111,7 @@ void MKFont_GetCharPosJustified(MKFont *arg0, const char *arg1, int arg2, float 
         var_f30_200 = 0.0f;
 loop_3:
         if ((s8) *var_r31_193 != 0) {
-            MKFont_GetNextWrapPoint((MKFont *) arg1, (s8 *) var_r31_193, arg3, arg6, &sp8);
+            MKFont_GetNextWrapPoint((MKFont *) arg1, (s8 *) var_r31_193, arg3, arg6, (int *) &sp8);
             var_f30_200 += temp_f31_197;
             var_r31_193 += M2C_ERROR(/* Read from unset register $r3 */);
             goto loop_3;
@@ -119,7 +125,7 @@ loop_3:
     }
 loop_22:
     if ((s8) *var_r31_193 != 0) {
-        MKFont_GetNextWrapPoint((MKFont *) arg1, (s8 *) var_r31_193, arg3, arg6, &sp8);
+        MKFont_GetNextWrapPoint((MKFont *) arg1, (s8 *) var_r31_193, arg3, arg6, (int *) &sp8);
         temp_r5_239 = M2C_ERROR(/* Read from unset register $r3 */);
         if ((var_r29_191 < temp_r5_239) || ((s8) *(var_r31_193 + temp_r5_239) == 0)) {
             if ((temp_r30_192 != 0) && (temp_r30_192 != 4) && (temp_r30_192 != 8)) {

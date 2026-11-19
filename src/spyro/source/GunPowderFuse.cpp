@@ -1,23 +1,69 @@
 #include "spyro/source/GunPowderFuse.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/BaseBreathFX.h"
 #include "spyro/source/BurnPoint.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/ClusterBomb.h"
 #include "spyro/source/Coronas.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FireBombFX.h"
+#include "spyro/source/FlyingBurningBits.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LiquidFX.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/ShapedTrailFX.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SparksPS.h"
 #include "spyro/source/SplineProp.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -95,15 +141,15 @@ void GunPowderFuse::EmitBurn(float arg0) {
     spF0 = (f64) sp30;
     temp_f3_105 = this->unkB4;
     spD0 = (f64) sp30;
-    spEC = 100.0f * MKRand_Float(&gViewSeed, temp_f3_105 / 10.0f, temp_f3_105 / 3.3333f);
+    spEC = 100.0f * MKRand_Float((int *) &gViewSeed, temp_f3_105 / 10.0f, temp_f3_105 / 3.3333f);
     temp_f3_116 = this->unkB4;
-    sp10 = MKRand_Float(&gViewSeed, temp_f3_116 / 40.0f, temp_f3_116 / 20.0f);
+    sp10 = MKRand_Float((int *) &gViewSeed, temp_f3_116 / 40.0f, temp_f3_116 / 20.0f);
     gb.EmitDust(*((MKVector3 *) &spF8), *((MKVector3 *) &spD8.unk10), sp10, 0.0f);
     temp_f2_128 = this->unkB4;
-    temp_f29_135 = MKRand_Float(&gViewSeed, -temp_f2_128 / 10.0f, temp_f2_128 / 10.0f);
+    temp_f29_135 = MKRand_Float((int *) &gViewSeed, -temp_f2_128 / 10.0f, temp_f2_128 / 10.0f);
     temp_f2_140 = this->unkB4;
-    temp_f28_141 = MKRand_Float(&gViewSeed, 0.0f, this->unkB4);
-    MKVector(MKRand_Float(&gViewSeed, -temp_f2_140 / 10.0f, temp_f2_140 / 10.0f), temp_f28_141, temp_f29_135);
+    temp_f28_141 = MKRand_Float((int *) &gViewSeed, 0.0f, this->unkB4);
+    MKVector(MKRand_Float((int *) &gViewSeed, -temp_f2_140 / 10.0f, temp_f2_140 / 10.0f), temp_f28_141, temp_f29_135);
     Normalise(sp98);
     sp18 = sp98 * 5.634608575e-315;
     spD8.unk10 = sp18;
@@ -124,7 +170,7 @@ void GunPowderFuse::EmitBurn(float arg0) {
     sp40 = (f32) sp100 + (f32) sp70;
     sp80 = (f64) sp40;
     temp_f2_198 = this->unkB4;
-    spC = MKRand_Float(&gViewSeed, temp_f2_198 / 6.6666f, temp_f2_198 / 3.3333f);
+    spC = MKRand_Float((int *) &gViewSeed, temp_f2_198 / 6.6666f, temp_f2_198 / 3.3333f);
     ((SparksPS *) gb.unk84)->Emit(*((MKVector3 *) &sp78), *((MKVector3 *) &spD8.unk10), spC);
 }
 #endif
@@ -749,7 +795,7 @@ loop_44:
                 sp120 = (f32) sp330 + (f32) sp290;
                 sp2A0 = (f64) sp120;
                 MKSetPositionV(*((MKVector3 *) &sp298));
-                MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
+                MKRand_Float((int *) &gViewSeed, 0.0f, 30.000002f);
                 sp108 = 1.0f;
                 sp10C = 1.0f;
                 sp110 = 1.0f;
@@ -978,7 +1024,7 @@ loop_114:
                 spC0 = (f32) sp330 + (f32) sp180;
                 sp190 = (f64) spC0;
                 MKSetPositionV(*((MKVector3 *) &sp188));
-                MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
+                MKRand_Float((int *) &gViewSeed, 0.0f, 30.000002f);
                 spA8 = 1.0f;
                 spAC = 1.0f;
                 spB0 = 1.0f;
@@ -1010,7 +1056,7 @@ loop_114:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void GunPowderFuse::Update() {
     f64 sp178;
     f64 sp170;
@@ -1235,7 +1281,7 @@ loop_33:
                     M2C_FIELD(temp_r4_2000, f64 *, 0) = spA0;
                     M2C_FIELD(temp_r4_2000, f64 *, 8) = spA8;
                     temp_r3_2009 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
-                    M2C_FIELD(temp_r3_2009, f32 *, 0x2C) = (f32) (M2C_FIELD(temp_r3_2009, f32 *, 0x2C) + MKRand_Float(&gViewSeed, -1.0f, 1.0f));
+                    M2C_FIELD(temp_r3_2009, f32 *, 0x2C) = (f32) (M2C_FIELD(temp_r3_2009, f32 *, 0x2C) + MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
                 }
                 M2C_FIELD(temp_r31_1965, f32 *, 0xCC) = (f32) ((M2C_FIELD(temp_r31_1965, f32 *, 0xD0) * (this->unk2A8 * gUpdateTimeDelta)) + M2C_FIELD(temp_r31_1965, f32 *, 0xCC));
                 temp_r0_2021 = M2C_FIELD(temp_r31_1965, s32 *, 0xD4);
@@ -1540,7 +1586,6 @@ void GunPowderFuse::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 GunPowderFuse::LoadLine(MKIniLine *arg0) {
     if (SplineProp::LoadLine(arg0) != 0) {
         return 1U;
@@ -1556,12 +1601,11 @@ s32 GunPowderFuse::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadFloat("NumSecondsBeforeBurnEnd", &this->unk2B0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("Subdivisions", &this->unk2B4, 0) != 0) {
+    if (arg0->LoadInt("Subdivisions", (int *) &this->unk2B4, 0) != 0) {
         return 1U;
     }
     return (u8) (this->unkC0.LoadLine(arg0, "OnNumSecondsBeforeBurnEnd") != 0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
 void GunPowderFuse::Deinit() {

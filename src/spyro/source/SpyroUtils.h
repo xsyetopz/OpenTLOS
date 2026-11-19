@@ -48,7 +48,7 @@ inline SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds() {
     temp_cr0_eq_4881 = this == NULL;
     if (temp_cr0_eq_4881 == 0) {
         if ((temp_cr0_eq_4881 == 0) && (temp_cr0_eq_4881 == 0)) {
-            KDSound_Stop(&this->unk0);
+            KDSound_Stop((int *) &this->unk0);
         }
         if (arg1 > 0) {
             operator delete(this);

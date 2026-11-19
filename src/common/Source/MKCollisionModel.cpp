@@ -1,10 +1,18 @@
 #include "common/Source/MKCollisionModel.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKCollisionManager.h"
@@ -5295,7 +5303,7 @@ MKCollisionModel *MKCollisionModel::Create(const char *arg0, MKModel *arg1) {
         return NULL;
     }
     sp8 = 0;
-    temp_r3_8116 = MKArchive_Load(Str_Printf("%s.cgr", this, M2C_BITWISE(f32, temp_ret_8100)), &sp8, NULL, -1);
+    temp_r3_8116 = MKArchive_Load(Str_Printf("%s.cgr", this, M2C_BITWISE(f32, temp_ret_8100)), (int *) &sp8, NULL, -1);
     if (temp_r3_8116 != NULL) {
         return ((MKCollisionModel *) temp_r3_8116)->Create((void *) sp8, M2C_ERROR(/* Read from unset register $r5 */));
     }

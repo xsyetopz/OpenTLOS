@@ -1,11 +1,50 @@
 #include "spyro/source/FireTrap.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SparksPS.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/Trap.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/PropFlags.h"
@@ -29,7 +68,7 @@ void FireTrap::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, void *, double)' does not match
 void FireTrap::Update() {
     s8 sp199;
     s8 sp198;
@@ -165,7 +204,7 @@ void FireTrap::Update() {
                 gb.unk0->Message(&sp148);
             }
         }
-        if ((this->unkE0 < 1.0f) && (MKRand_Int(&gViewSeed, 0, 0xA) == 0)) {
+        if ((this->unkE0 < 1.0f) && (MKRand_Int((int *) &gViewSeed, 0, 0xA) == 0)) {
             temp_r3_226 = this->unk8;
             sp48 = 0.0f;
             temp_f1_228 = M2C_FIELD(temp_r3_226, f64 *, 0x30);
@@ -188,7 +227,7 @@ void FireTrap::Update() {
             ((SparksPS *) gb.unk84)->Emit(*((MKVector3 *) &spD8), *((MKVector3 *) &spA8), 5.0f);
         }
         temp_f1_271 = this->unkE0;
-        if (((temp_f1_271 > 0.5f) && (temp_f1_271 < 1.0f)) || (MKRand_Int(&gViewSeed, 0, 0xA) == 0)) {
+        if (((temp_f1_271 > 0.5f) && (temp_f1_271 < 1.0f)) || (MKRand_Int((int *) &gViewSeed, 0, 0xA) == 0)) {
             temp_r5_286 = this->unk8;
             sp98 = M2C_FIELD(temp_r5_286, f64 *, 0x30);
             spA0 = M2C_FIELD(temp_r5_286, f64 *, 0x38);
@@ -204,14 +243,12 @@ void FireTrap::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void FireTrap::Reset() {
-    PropFlagsSet((u32 *) &this->unk10, 0x80000U);
+    PropFlagsSet((unsigned int *) &this->unk10, 0x80000U);
     Trap::Reset();
     this->unkE0 = 0.0f;
-    PropFlagsClear((u32 *) &this->unk10, 0x80000U);
+    PropFlagsClear((unsigned int *) &this->unk10, 0x80000U);
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void FireTrapDescriptor::Init() {

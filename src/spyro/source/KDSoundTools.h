@@ -128,11 +128,11 @@ inline KDSoundFlangedFader::~KDSoundFlangedFader() {
 
     if (this != NULL) {
         if ((&this->unk28 != NULL) && (&this->unk28 != NULL)) {
-            KDSound_Stop(&this->unk28);
+            KDSound_Stop((int *) &this->unk28);
         }
         temp_cr0_eq_5031 = this == NULL;
         if ((temp_cr0_eq_5031 == 0) && (temp_cr0_eq_5031 == 0)) {
-            KDSound_Stop(&this->unk0);
+            KDSound_Stop((int *) &this->unk0);
         }
     }
 }
@@ -145,7 +145,7 @@ inline KDSound_SoundWall::~KDSound_SoundWall() {
     temp_cr0_eq_11235 = this == NULL;
     if (temp_cr0_eq_11235 == 0) {
         if ((temp_cr0_eq_11235 == 0) && (temp_cr0_eq_11235 == 0)) {
-            KDSound_Stop(&this->unk0);
+            KDSound_Stop((int *) &this->unk0);
         }
     }
 }

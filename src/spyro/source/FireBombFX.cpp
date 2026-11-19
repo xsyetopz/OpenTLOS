@@ -1,31 +1,66 @@
 #include "spyro/source/FireBombFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/ClusterBomb.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FlyingBurningBits.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/ShapedTrailFX.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -320,7 +355,6 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void FireBombFX::Deinit() {
     ManagedLight *temp_r4_493;
 
@@ -330,10 +364,9 @@ void FireBombFX::Deinit() {
         ((LightManager *) gb.unk80)->FreeManagedLight(this->unk108);
     }
     ((KDUniformSpline *) &this->unk1C0)->Deinit();
-    KDSound_Stop(&this->unk188);
+    KDSound_Stop((int *) &this->unk188);
     GameProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void FireBombFX::DrawFlameBall() {
@@ -657,7 +690,7 @@ void FireBombFX::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: illegal implicit conversion from 'BreathHitMessage *' to
 void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionInfo *arg2) {
     f64 spF8;
     f64 spF0;
@@ -809,7 +842,7 @@ void FireBombFX::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void FireBombFX::Update() {
     u8 sp5E0;
     s32 sp5DC;
@@ -1134,7 +1167,7 @@ void FireBombFX::Update() {
         sp478 = temp_f0_1579;
         sp270 = M2C_FIELD(temp_r4_1573, f32 *, 8) + (f32) sp470;
         sp480 = (f64) sp270;
-        sp25C = MKRand_Float(&gViewSeed, 100.0f, 200.0f);
+        sp25C = MKRand_Float((int *) &gViewSeed, 100.0f, 200.0f);
         sp258 = 0.0f;
         sp260 = 0.0f;
         sp428 = (f64) sp258;
@@ -1214,9 +1247,9 @@ void FireBombFX::Update() {
         sp5E0 = 0;
         sp4D8 = sp4E8;
         sp4E0 = sp4F0;
-        temp_f29_1742 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f28_1747 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp248 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f29_1742 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f28_1747 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp248 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp24C = temp_f28_1747;
         sp250 = temp_f29_1742;
         sp3C8 = (f64) sp248;
@@ -1317,7 +1350,7 @@ void FireBombFX::Update() {
             sp200 = (f32) sp4F0 + (f32) sp3C0;
             sp4A0 = (f64) sp200;
             if ((s32) this->unk1BC == 2) {
-                sp24 = MKRand_Float(&gViewSeed, 6.0f, 8.0f);
+                sp24 = MKRand_Float((int *) &gViewSeed, 6.0f, 8.0f);
                 sp1F0 = 0.0f;
                 sp1E8 = 0.0f;
                 sp1EC = 0.0f;
@@ -1339,9 +1372,9 @@ void FireBombFX::Update() {
         }
         if ((s32) this->unk1BC == 2) {
             temp_f30_2070 = this->unkC8;
-            temp_f28_2075 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f27_2080 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp1C8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f28_2075 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f27_2080 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp1C8 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp1CC = temp_f27_2080;
             sp1D0 = temp_f28_2075;
             sp368 = (f64) sp1C8;
@@ -1356,9 +1389,9 @@ void FireBombFX::Update() {
             sp388 = temp_f0_2104;
             sp1B0 = (f32) sp4F0 + (f32) sp380;
             sp390 = (f64) sp1B0;
-            temp_f28_2118 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f27_2123 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-            sp198 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f28_2118 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f27_2123 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+            sp198 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp19C = temp_f27_2123;
             sp1A0 = temp_f28_2118;
             sp348 = (f64) sp198;
@@ -1368,7 +1401,7 @@ void FireBombFX::Update() {
             sp358 = temp_f0_2137;
             sp190 = (f32) sp350 * 1000.0f;
             sp360 = (f64) sp190;
-            temp_f1_2149 = MKRand_Float(&gViewSeed, 15.0f, 20.0f);
+            temp_f1_2149 = MKRand_Float((int *) &gViewSeed, 15.0f, 20.0f);
             sp178 = 1.0f;
             sp17C = 0.2f;
             sp1C = temp_f1_2149;
@@ -1379,9 +1412,9 @@ void FireBombFX::Update() {
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp388), *((MKVector3 *) &sp358), sp1C, *((MKVector4 *) &sp338), -1000.0f);
         } else {
             temp_f30_2173 = this->unkC8;
-            temp_f28_2178 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f27_2183 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp168 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f28_2178 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f27_2183 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp168 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp16C = temp_f27_2183;
             sp170 = temp_f28_2178;
             sp308 = (f64) sp168;
@@ -1396,9 +1429,9 @@ void FireBombFX::Update() {
             sp328 = temp_f0_2207;
             sp150 = (f32) sp4F0 + (f32) sp320;
             sp330 = (f64) sp150;
-            temp_f28_2221 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f27_2226 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp138 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f28_2221 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f27_2226 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp138 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp13C = temp_f27_2226;
             sp140 = temp_f28_2221;
             sp2E8 = (f64) sp138;
@@ -1408,9 +1441,9 @@ void FireBombFX::Update() {
             sp2F8 = temp_f0_2240;
             sp130 = (f32) sp2F0 * 400.0f;
             sp300 = (f64) sp130;
-            sp18 = MKRand_Float(&gViewSeed, 2.5f, 8.0f);
-            temp_f26_2258 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
-            sp118 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
+            sp18 = MKRand_Float((int *) &gViewSeed, 2.5f, 8.0f);
+            temp_f26_2258 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
+            sp118 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
             sp11C = temp_f26_2258;
             sp120 = 0.0f;
             sp124 = 1.0f;
@@ -1419,7 +1452,7 @@ void FireBombFX::Update() {
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp328), *((MKVector3 *) &sp2F8), sp18, *((MKVector4 *) &sp2D8), -1000.0f);
         }
         if ((ManagedLight *) this->unk108 != NULL) {
-            temp_f1_2289 = MKRand_Float(&gViewSeed, 0.2f, 0.6f);
+            temp_f1_2289 = MKRand_Float((int *) &gViewSeed, 0.2f, 0.6f);
             temp_r3_2290 = this->unk108;
             temp_r3_2290->unk10 = sp4E8;
             temp_r3_2290->unk18 = sp4F0;

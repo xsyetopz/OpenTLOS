@@ -1,16 +1,40 @@
 #include "spyro/source/KDSound.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKStringCache.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/CustomMaterialUpdater.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "dolphin/os.h"
 #include "common/Source/FileSys.h"
@@ -229,7 +253,7 @@ void KDSound_SoundDucking_Init(float arg0, float arg1, float arg2, bool arg3) {
     M2C_FIELD(&soundDuckData, f32 *, 0x10) = (f32) (1.0f / (f32) var_f3_0);
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: function call 'Sound_GetID(signed char *)' does not match
 s32 SoundMaterial::Play(const MKVector3 *arg0, SoundEvent *arg1, int arg2, float *arg3) {
     f32 temp_f1_515;
     f32 temp_f1_524;
@@ -264,7 +288,7 @@ s32 SoundMaterial::Play(const MKVector3 *arg0, SoundEvent *arg1, int arg2, float
         var_r29_405 = (s32) this->unkC;
     }
     if (((u8) this->unkD != 0) && (M2C_FIELD(this->unk10, f32 *, 4) != 1.0f)) {
-        var_f31_400 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        var_f31_400 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
     }
     var_r31_426 = 0;
     var_r25_427 = 0;
@@ -296,7 +320,7 @@ loop_46:
             Sound_Play3d(M2C_FIELD(temp_r25_468, s32 *, 8), (u8) var_r29_405, arg0, (f32) arg1->unk4, (f32) arg1->unk8);
             var_r24_512 = M2C_ERROR(/* Read from unset register $r3 */);
             if ((var_r24_512 > 0) && ((temp_f1_515 = this->unk4, ((temp_f1_515 == 1.0f) == 0)) || (this->unk8 != 1.0f))) {
-                temp_f1_524 = MKRand_Float(&gViewSeed, temp_f1_515, this->unk8);
+                temp_f1_524 = MKRand_Float((int *) &gViewSeed, temp_f1_515, this->unk8);
                 Sound_SetPitch3d(var_r24_512, temp_f1_524);
                 if (arg3 != NULL) {
                     *arg3 = temp_f1_524;
@@ -315,7 +339,7 @@ loop_46:
             Sound_PlayV(M2C_FIELD(temp_r25_534, s32 *, 8), (u8) var_r29_405, (u8) var_r29_405);
             var_r24_512 = M2C_ERROR(/* Read from unset register $r3 */);
             if ((var_r24_512 > 0) && ((temp_f1_567 = this->unk4, ((temp_f1_567 == 1.0f) == 0)) || (this->unk8 != 1.0f))) {
-                temp_f1_576 = MKRand_Float(&gViewSeed, temp_f1_567, this->unk8);
+                temp_f1_576 = MKRand_Float((int *) &gViewSeed, temp_f1_567, this->unk8);
                 Sound_SetPitch(var_r24_512, temp_f1_576);
                 if (arg3 != NULL) {
                     *arg3 = temp_f1_576;
@@ -333,7 +357,7 @@ loop_46:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: declaration syntax error
 s32 SoundEvent::Play(const MKVector3 *arg0, unsigned int arg1, int arg2) {
     f32 spC;
     SoundEventInstance *sp8;
@@ -572,7 +596,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: function call 'stricmp(const char[11], signed char *, const char[8])' does
 MKIniLine *GlobalSoundData::ParseSoundMaterial(SoundMaterial *arg0, MKIniLine *arg1, unsigned char arg2, float arg3, float arg4) {
     s32 sp14;
     f32 sp10;
@@ -588,7 +612,7 @@ MKIniLine *GlobalSoundData::ParseSoundMaterial(SoundMaterial *arg0, MKIniLine *a
     sp14 = 0;
     sp10 = arg3;
     spC = arg4;
-    if (arg1->AsInt(0, &sp14) != 0) {
+    if (arg1->AsInt(0, (int *) &sp14) != 0) {
         var_r30_1080 = sp14;
     }
     var_r29_1093 = arg1->unkC->GetNextLine(arg1);
@@ -603,7 +627,7 @@ loop_17:
                 } else if (stricmp("maxPitch", var_r29_1093->GetFieldName(), "Default") == 0) {
                     var_r29_1093->AsFloat(0, &spC);
                 } else if (stricmp("volume", var_r29_1093->GetFieldName(), "Default") == 0) {
-                    var_r29_1093->AsInt(0, &sp8);
+                    var_r29_1093->AsInt(0, (int *) &sp8);
                     var_r31_1077 = (u8) sp8;
                 } else {
                     var_r29_1093->unkC->Warning("Unknown SoundMaterial field");
@@ -686,11 +710,11 @@ loop_5:
             } else if (stricmp("maxPitch", var_r27_1259->GetFieldName(), "Default") == 0) {
                 var_r27_1259->AsFloat(0, &sp14);
             } else if (stricmp("range", var_r27_1259->GetFieldName(), "Default") == 0) {
-                var_r27_1259->AsInt(0, &sp10);
+                var_r27_1259->AsInt(0, (int *) &sp10);
             } else if (stricmp("minRange", var_r27_1259->GetFieldName(), "Default") == 0) {
-                var_r27_1259->AsInt(0, &spC);
+                var_r27_1259->AsInt(0, (int *) &spC);
             } else if (stricmp("volume", var_r27_1259->GetFieldName(), "Default") == 0) {
-                var_r27_1259->AsInt(0, &sp8);
+                var_r27_1259->AsInt(0, (int *) &sp8);
                 var_r25_1233 = (u8) sp8;
             } else if (stricmp("Comment", var_r27_1259->GetFieldName(), "Default") != 0) {
                 if (var_r27_1259->IsField("throttle") != 0) {
@@ -1197,11 +1221,11 @@ void KDSoundPlayer::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, const M
         }
     } else {
         if (arg2 == 0) {
-            KDSound_Stop(&this->unk0);
+            KDSound_Stop((int *) &this->unk0);
             return;
         }
         if ((var_r23_2462 != 0) && (var_r3_2470 == 0)) {
-            KDSound_Stop(&this->unk0);
+            KDSound_Stop((int *) &this->unk0);
             return;
         }
         if (Sound_IsVoicePlaying(temp_r4_2479) == 0) {
@@ -1229,13 +1253,11 @@ void KDSoundPlayer::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, const M
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSoundPlayer::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 == -4) {
-        KDSound_Stop(&this->unk0);
+        KDSound_Stop((int *) &this->unk0);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDS_FollowSndPosArrayShuffleDown(int arg0) {
@@ -2099,7 +2121,7 @@ void KDSound_EnableChronoSoundWarp(bool arg0, bool arg1) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: declaration syntax error
 void KDSound_ProcessChronoSound() {
     SoundEventInstance **var_r28_4692;
     SoundEventInstance *temp_r3_4699;

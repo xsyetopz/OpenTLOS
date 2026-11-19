@@ -1,12 +1,19 @@
 #include "spyro/source/WeatherRegion.h"
+#include "common/Source/Animation.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/BoundingRegion.h"
+#include "spyro/source/PolyRegion.h"
 #include "spyro/source/WeatherAshPS.h"
 #include "spyro/source/WeatherConvexityPS.h"
 #include "spyro/source/WeatherEmbersPS.h"
@@ -116,10 +123,10 @@ u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
     spF0 = (f32) spF0 * var_f5_79;
     (*(f32 *) ((u8 *) &spE8 + 0xc)) *= var_f5_79;
     spF8 = (f32) spF8 * var_f5_79;
-    sp80.operator*(MKRand_Float(&gViewSeed, -0.1f, 1.0f));
+    sp80.operator*(MKRand_Float((int *) &gViewSeed, -0.1f, 1.0f));
     sp90.operator*(2000.0f);
     spA0.operator*(2.0f);
-    spB0.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
+    spB0.operator*(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
     spC0.operator*(1000.0f);
     temp_f0_195 = M2C_FIELD(temp_r30_55, f64 *, 0) + M2C_BITWISE(f64, spC0);
     sp10 = temp_f0_195;
@@ -132,7 +139,7 @@ u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
     spE0 = sp40;
     spE8 = (f64) sp48;
     M2C_FIELD(&arg0, f64 *, 8) = (f64) sp48;
-    sp34 = MKRand_Float(&gViewSeed, 1500.0f, 2500.0f);
+    sp34 = MKRand_Float((int *) &gViewSeed, 1500.0f, 2500.0f);
     sp30 = 0.0f;
     sp38 = 0.0f;
     sp70 = (f64) sp30;
@@ -282,10 +289,10 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
     sp188 = (f32) sp188 * var_f5_338;
     sp170 = M2C_FIELD(temp_r3_311, f64 *, 0x90);
     sp178 = M2C_FIELD(temp_r5_314, f64 *, 8);
-    spF0.operator*(MKRand_Float(&gViewSeed, -0.1f, 1.0f));
+    spF0.operator*(MKRand_Float((int *) &gViewSeed, -0.1f, 1.0f));
     sp100.operator*(2000.0f);
     sp110.operator*(2.0f);
-    sp120.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
+    sp120.operator*(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
     sp130.operator*(1000.0f);
     temp_f0_458 = sp170 + M2C_BITWISE(f64, sp130);
     sp20 = temp_f0_458;
@@ -298,7 +305,7 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
     sp150 = sp70;
     sp158 = (f64) sp78;
     M2C_FIELD(&arg0, f64 *, 8) = (f64) sp78;
-    sp64 = MKRand_Float(&gViewSeed, -500.0f, 1500.0f);
+    sp64 = MKRand_Float((int *) &gViewSeed, -500.0f, 1500.0f);
     sp60 = 0.0f;
     sp68 = 0.0f;
     spE0 = (f64) sp60;
@@ -370,7 +377,7 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
         spC8 = (f64) sp48;
         M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + spC0);
         arg0.unk8 += (f32) spC8;
-        temp_f29_666 = MKRand_Float(&gViewSeed, 1000.0f, 2000.0f);
+        temp_f29_666 = MKRand_Float((int *) &gViewSeed, 1000.0f, 2000.0f);
         sp18 = -temp_f28_638;
         sp10 = -sp160;
         sp14 = -(*(f32 *) ((u8 *) &sp158 + 0xc));
@@ -482,10 +489,10 @@ u8 WeatherRegion::CalculateEmissionPointSpores(MKVector3 &arg0) {
     spF0 = (f32) spF0 * var_f5_749;
     (*(f32 *) ((u8 *) &spE8 + 0xc)) *= var_f5_749;
     spF8 = (f32) spF8 * var_f5_749;
-    sp80.operator*(MKRand_Float(&gViewSeed, -0.1f, 1.0f));
+    sp80.operator*(MKRand_Float((int *) &gViewSeed, -0.1f, 1.0f));
     sp90.operator*(2000.0f);
     spA0.operator*(2.0f);
-    spB0.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
+    spB0.operator*(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
     spC0.operator*(1000.0f);
     temp_f0_865 = M2C_FIELD(temp_r30_725, f64 *, 0) + M2C_BITWISE(f64, spC0);
     sp10 = temp_f0_865;
@@ -498,7 +505,7 @@ u8 WeatherRegion::CalculateEmissionPointSpores(MKVector3 &arg0) {
     spE0 = sp40;
     spE8 = (f64) sp48;
     M2C_FIELD(&arg0, f64 *, 8) = (f64) sp48;
-    sp34 = MKRand_Float(&gViewSeed, -500.0f, 1500.0f);
+    sp34 = MKRand_Float((int *) &gViewSeed, -500.0f, 1500.0f);
     sp30 = 0.0f;
     sp38 = 0.0f;
     sp70 = (f64) sp30;
@@ -666,10 +673,10 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     sp118 = (f32) sp118 * var_f5_1065;
     (*(f32 *) ((u8 *) &sp110 + 0xc)) *= var_f5_1065;
     sp120 = (f32) sp120 * var_f5_1065;
-    spA8.operator*(MKRand_Float(&gViewSeed, -0.1f, 1.0f));
+    spA8.operator*(MKRand_Float((int *) &gViewSeed, -0.1f, 1.0f));
     spB8.operator*(2000.0f);
     spC8.operator*(2.0f);
-    spD8.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
+    spD8.operator*(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
     spE8.operator*(1000.0f);
     temp_f0_1186 = M2C_FIELD(temp_r30_981, f64 *, 0) + M2C_BITWISE(f64, spE8);
     sp18 = temp_f0_1186;
@@ -682,7 +689,7 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     sp108 = sp58;
     sp110 = (f64) sp60;
     M2C_FIELD(&arg0, f64 *, 8) = (f64) sp60;
-    sp4C = MKRand_Float(&gViewSeed, 500.0f, 1500.0f);
+    sp4C = MKRand_Float((int *) &gViewSeed, 500.0f, 1500.0f);
     sp48 = 0.0f;
     sp50 = 0.0f;
     sp98 = (f64) sp48;
@@ -690,7 +697,7 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     M2C_FIELD(&arg0, f64 *, 0) = (f64) (M2C_FIELD(&arg0, f64 *, 0) + sp98);
     arg0.unk8 += (f32) spA0;
     sp10 = 1.0f - ((var_f4_1001 / 100.0f) + 1.0f);
-    temp_f29_1237 = MKRand_Float(&gViewSeed, 500.0f, 1500.0f);
+    temp_f29_1237 = MKRand_Float((int *) &gViewSeed, 500.0f, 1500.0f);
     temp_f1_1242 = temp_f29_1237 * Clamp<float>(-1.0f, sp10, 100.0f);
     sp40 = 0.0f;
     sp38 = 0.0f;
@@ -726,7 +733,7 @@ void WeatherRegion::Draw() {
 
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: ')' expected
 void WeatherRegion::Update() {
     Frustum spE0;
     MKVector3 spD0;
@@ -774,7 +781,7 @@ void WeatherRegion::Update() {
     this->unk78 -= gUpdateTimeDelta;
     M2C_STRUCT_COPY((s32) &spD0.unkC + 4, M2C_FIELD(&gb, s32 *, 0x3B8) + 0xAC + 4, 0x70);
     if ((spE0.IsVisible((BoundingVolume *) &this->unk80.unk30) != 0) && !(this->unk78 > 0.0f)) {
-        this->unk78 = MKRand_Float(&gViewSeed, this->unk6C, this->unk70);
+        this->unk78 = MKRand_Float((int *) &gViewSeed, this->unk6C, this->unk70);
         temp_r0_1396 = this->unk60;
         switch (temp_r0_1396) {                     /* irregular */
         case 1:
@@ -782,7 +789,7 @@ void WeatherRegion::Update() {
 loop_15:
             if (var_r30_1412 < (s32) this->unk74) {
                 if (CalculateEmissionPoint(spD0) != 0) {
-                    sp1C = MKRand_Float(&gViewSeed, this->unk64, this->unk68);
+                    sp1C = MKRand_Float((int *) &gViewSeed, this->unk64, this->unk68);
                     sp68 = 0.0f;
                     sp60 = 0.0f;
                     sp64 = 0.0f;
@@ -799,7 +806,7 @@ loop_15:
 loop_21:
             if (var_r30_1448 < (s32) this->unk74) {
                 if (CalculateEmissionPoint(spD0) != 0) {
-                    sp18 = MKRand_Float(&gViewSeed, this->unk64, this->unk68);
+                    sp18 = MKRand_Float((int *) &gViewSeed, this->unk64, this->unk68);
                     sp58 = 0.0f;
                     sp50 = 0.0f;
                     sp54 = 0.0f;
@@ -816,7 +823,7 @@ loop_21:
 loop_27:
             if (var_r30_1484 < (s32) this->unk74) {
                 if (CalculateEmissionPoint(spD0) != 0) {
-                    sp14 = MKRand_Float(&gViewSeed, this->unk64, this->unk68);
+                    sp14 = MKRand_Float((int *) &gViewSeed, this->unk64, this->unk68);
                     sp48 = 0.0f;
                     sp40 = 0.0f;
                     sp44 = 0.0f;
@@ -833,7 +840,7 @@ loop_27:
 loop_33:
             if (var_r30_1520 < (s32) this->unk74) {
                 if (CalculateEmissionPointSpores(spD0) != 0) {
-                    sp10 = MKRand_Float(&gViewSeed, this->unk64, this->unk68);
+                    sp10 = MKRand_Float((int *) &gViewSeed, this->unk64, this->unk68);
                     sp38 = 0.0f;
                     sp30 = 0.0f;
                     sp34 = 0.0f;
@@ -850,7 +857,7 @@ loop_33:
 loop_39:
             if (var_r30_1556 < (s32) this->unk74) {
                 if (CalculateEmissionParametersConvexity(spD0, spC0) != 0) {
-                    spC = MKRand_Float(&gViewSeed, this->unk64, this->unk68);
+                    spC = MKRand_Float((int *) &gViewSeed, this->unk64, this->unk68);
                     ((WeatherConvexityPS *) (M2C_FIELD(checked_cast<WeatherRegionDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), WeatherConvexityPS **, 0xF0)))->Emit(spD0, spC0, spC);
                 }
                 var_r30_1556 += 1;
@@ -862,7 +869,7 @@ loop_39:
 loop_45:
             if (var_r30_1585 < (s32) this->unk74) {
                 if (CalculateEmissionPointRain(spD0) != 0) {
-                    temp_f1_1596 = MKRand_Float(&gViewSeed, this->unk64, this->unk68);
+                    temp_f1_1596 = MKRand_Float((int *) &gViewSeed, this->unk64, this->unk68);
                     sp28 = 0.0f;
                     sp20 = 0.0f;
                     sp24 = -1000.0f;
@@ -886,17 +893,15 @@ void WeatherRegion::LoadDone() {
     M2C_FIELD(this, f64 *, 0x58) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x48);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 WeatherRegion::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1659;
 
     var_r31_1659 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("Type", &this->unk60, 0) != 0) || (arg0->LoadFloat("MinScale", &this->unk64, 0) != 0) || (arg0->LoadFloat("MaxScale", &this->unk68, 0) != 0) || (arg0->LoadFloat("MinRate", &this->unk6C, 0) != 0) || (arg0->LoadFloat("MaxRate", &this->unk70, 0) != 0) || (arg0->LoadInt("NumPerEmit", &this->unk74, 0) != 0) || (this->unk80.LoadLine("waypoints", arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("Type", (int *) &this->unk60, 0) != 0) || (arg0->LoadFloat("MinScale", &this->unk64, 0) != 0) || (arg0->LoadFloat("MaxScale", &this->unk68, 0) != 0) || (arg0->LoadFloat("MinRate", &this->unk6C, 0) != 0) || (arg0->LoadFloat("MaxRate", &this->unk70, 0) != 0) || (arg0->LoadInt("NumPerEmit", (int *) &this->unk74, 0) != 0) || (this->unk80.LoadLine("waypoints", arg0) != 0)) {
         var_r31_1659 = 1;
     }
     return var_r31_1659;
 }
-#endif
 
 void WeatherRegion::Init() {
     MKProp::Init();

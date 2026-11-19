@@ -1,17 +1,45 @@
 #include "spyro/source/MobilePlatform.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/Platform.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SeeSaw.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/PropFlags.h"
@@ -360,7 +388,7 @@ block_73:
         if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x134) != 0) {
             ((KDSoundPlayer *) &this->unk218)->Message(arg0);
         }
-        PropFlagsMessage((u32 *) &this->unk10, arg0);
+        PropFlagsMessage((unsigned int *) &this->unk10, arg0);
         Platform::Message(arg0);
         return;
     case 0xD5:
@@ -600,7 +628,7 @@ void MobilePlatform::LoadDone() {
     this->unk190 = this->unk18C * var_f1_1389;
     this->unk194 = (this->unk190 + M2C_FIELD(this, f32 *, 0x1E8)) - (f32) fmod(this->unkB8, M2C_FIELD(this, f32 *, 0x1E8));
     if (M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x124) != 0.0f) {
-        this->unk198 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        this->unk198 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
     }
     this->unk204.unk0 = -1.0f;
     this->unk1F4 = -1.0f;
@@ -630,7 +658,7 @@ void MobilePlatform::Reset() {
 #if 0 // DRAFT: ')' expected
 void MobilePlatform::Deinit() {
     if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x134) != 0) {
-        KDSound_Stop((s32 *) &this->unk218);
+        KDSound_Stop((int *) &this->unk218);
     }
     ((KDSplinePathSegment *) &this->unk19C)->Deinit();
     Platform::Deinit();
@@ -701,7 +729,7 @@ s32 MobilePlatformDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1719;
 
     var_r31_1719 = 0;
-    if ((PlatformDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("BobFreq", &this->unk124, 0) != 0) || (arg0->LoadFloat("BobMag", &this->unk128, 0) != 0) || (arg0->LoadFloat("MaxSag", &this->unk140, 0) != 0) || (KDSound_LoadLine(arg0, "sndScaleOut", &this->unk130) != 0) || (KDSound_LoadLine(arg0, "sndScaleIn", &this->unk12C) != 0) || (KDSound_LoadLine(arg0, "sndMoving", &this->unk134) != 0) || (KDSound_LoadLine(arg0, "sndStart", &this->unk13C) != 0) || (KDSound_LoadLine(arg0, "sndStop", &this->unk138) != 0)) {
+    if ((PlatformDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("BobFreq", &this->unk124, 0) != 0) || (arg0->LoadFloat("BobMag", &this->unk128, 0) != 0) || (arg0->LoadFloat("MaxSag", &this->unk140, 0) != 0) || (KDSound_LoadLine(arg0, "sndScaleOut", (int *) &this->unk130) != 0) || (KDSound_LoadLine(arg0, "sndScaleIn", (int *) &this->unk12C) != 0) || (KDSound_LoadLine(arg0, "sndMoving", (int *) &this->unk134) != 0) || (KDSound_LoadLine(arg0, "sndStart", (int *) &this->unk13C) != 0) || (KDSound_LoadLine(arg0, "sndStop", (int *) &this->unk138) != 0)) {
         var_r31_1719 = 1;
     }
     return var_r31_1719;

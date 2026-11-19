@@ -1,26 +1,59 @@
 #include "spyro/source/ElementalWall.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/ElectricSparks.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FallingLeaves.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/PooledShatterProp.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SplineProp.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
@@ -427,7 +460,7 @@ void ElementalWall::EmitEarthParticles(float arg0, float arg1) {
     s32 var_r26_867;
 
     if (gb.unk30C >= this->unkFC) {
-        temp_f1_802 = MKRand_Float(&gViewSeed, arg0, arg1);
+        temp_f1_802 = MKRand_Float((int *) &gViewSeed, arg0, arg1);
         sp10 = 0.0f;
         spF8.GetMeasure(temp_f1_802, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp118 = M2C_BITWISE(f64, spF8);
@@ -440,14 +473,14 @@ void ElementalWall::EmitEarthParticles(float arg0, float arg1) {
         sp110 = (f64) sp50;
         temp_f3_833 = this->unk110;
         spF0 = (f64) sp50;
-        sp10C = MKRand_Float(&gViewSeed, temp_f3_833 / 3.0f, temp_f3_833 / 1.5f);
-        sp1C = MKRand_Int(&gViewSeed, 0, 3);
-        sp20 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+        sp10C = MKRand_Float((int *) &gViewSeed, temp_f3_833 / 3.0f, temp_f3_833 / 1.5f);
+        sp1C = MKRand_Int((int *) &gViewSeed, 0, 3);
+        sp20 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
         ((FallingLeaves *) (M2C_FIELD(checked_cast<ElementalWallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), FallingLeaves **, 0x60)))->Emit(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8.unk10), sp20, sp1C, 1U);
         var_r26_867 = 0;
 loop_3:
         if ((f32) var_r26_867 < (1.5f * (f32) this->unk104)) {
-            temp_f1_874 = MKRand_Float(&gViewSeed, arg0, arg1);
+            temp_f1_874 = MKRand_Float((int *) &gViewSeed, arg0, arg1);
             spC = 0.0f;
             ((KDUniformSpline *) &spC8)->GetMeasure(temp_f1_874, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp118 = spC8;
@@ -460,10 +493,10 @@ loop_3:
             sp110 = (f64) sp40;
             temp_f2_901 = this->unk110;
             spC0 = (f64) sp40;
-            sp10C = MKRand_Float(&gViewSeed, 0.75f * temp_f2_901, 1.5f * temp_f2_901);
-            sp18 = MKRand_Float(&gViewSeed, 0.1f, 0.5f);
+            sp10C = MKRand_Float((int *) &gViewSeed, 0.75f * temp_f2_901, 1.5f * temp_f2_901);
+            sp18 = MKRand_Float((int *) &gViewSeed, 0.1f, 0.5f);
             gb.EmitSmallRocks(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8.unk10), sp18);
-            temp_f1_920 = MKRand_Float(&gViewSeed, arg0, arg1);
+            temp_f1_920 = MKRand_Float((int *) &gViewSeed, arg0, arg1);
             sp8 = 0.0f;
             ((KDUniformSpline *) &sp98)->GetMeasure(temp_f1_920, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp118 = sp98;
@@ -476,7 +509,7 @@ loop_3:
             sp110 = (f64) sp30;
             temp_f2_947 = this->unk110;
             sp90 = (f64) sp30;
-            temp_f1_951 = MKRand_Float(&gViewSeed, 0.75f * temp_f2_947, 1.5f * temp_f2_947);
+            temp_f1_951 = MKRand_Float((int *) &gViewSeed, 0.75f * temp_f2_947, 1.5f * temp_f2_947);
             sp58 = 0.0f;
             sp5C = 1.0f;
             sp10C = temp_f1_951;
@@ -484,7 +517,7 @@ loop_3:
             sp64 = 1.0f;
             sp68 = (f64) sp58;
             sp70 = (f64) sp60;
-            sp14 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
+            sp14 = MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f);
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8.unk10), sp14, *((MKVector4 *) &sp68), 0.0f);
             var_r26_867 += 1;
             goto loop_3;
@@ -519,7 +552,7 @@ void ElementalWall::EmitIceParticles(float arg0, float arg1) {
 
     if (gb.unk30C >= this->unkFC) {
         temp_r29_1053 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
-        temp_f1_1056 = MKRand_Float(&gViewSeed, arg0, arg1);
+        temp_f1_1056 = MKRand_Float((int *) &gViewSeed, arg0, arg1);
         spC = 0.0f;
         sp50.GetMeasure(temp_f1_1056, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp70 = M2C_BITWISE(f64, sp50);
@@ -536,7 +569,7 @@ void ElementalWall::EmitIceParticles(float arg0, float arg1) {
     var_r28_1110 = 0;
 loop_8:
     if (var_r28_1110 < (s32) ((s32) this->unk104 / 2)) {
-        temp_f1_1116 = MKRand_Float(&gViewSeed, arg0, arg1);
+        temp_f1_1116 = MKRand_Float((int *) &gViewSeed, arg0, arg1);
         sp8 = 0.0f;
         ((KDUniformSpline *) &sp40)->GetMeasure(temp_f1_1116, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp70 = sp40;
@@ -548,7 +581,7 @@ loop_8:
         sp50.unk10 = sp10;
         sp38 = (f64) sp18;
         sp68 = (f64) sp18;
-        sp64 = this->unk110 * MKRand_Float(&gViewSeed, 2.0f, 3.0f);
+        sp64 = this->unk110 * MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
         temp_r3_1154 = M2C_FIELD(M2C_FIELD(gb.unk2A0, void **, 0x44), void *(**)(void *), 0x3C)(gb.unk2A0);
         if (temp_r3_1154 != NULL) {
             temp_r27_1157 = M2C_FIELD(temp_r3_1154, void **, 0x2C);
@@ -558,8 +591,8 @@ loop_8:
             M2C_FIELD(temp_r3_1154, f32 *, 0x28) = 0.0f;
             M2C_FIELD(temp_r27_1157, f64 *, 0) = M2C_BITWISE(f64, sp50.unk10);
             M2C_FIELD(temp_r27_1157, f64 *, 8) = sp68;
-            M2C_FIELD(temp_r27_1157, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
-            M2C_FIELD(temp_r27_1157, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+            M2C_FIELD(temp_r27_1157, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
+            M2C_FIELD(temp_r27_1157, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
             M2C_FIELD(temp_r27_1157, f32 *, 0x14) = (f32) M2C_FIELD(gb.unk2A0, f32 *, 0xF4);
         }
         var_r28_1110 += 1;
@@ -598,12 +631,12 @@ void ElementalWall::EmitElectricityParticles(float arg0, float arg1) {
         var_r29_1232 = 0;
 loop_3:
         if (var_r29_1232 < (s32) ((s32) this->unk104 / 2)) {
-            temp_f1_1238 = MKRand_Float(&gViewSeed, arg0, arg1);
+            temp_f1_1238 = MKRand_Float((int *) &gViewSeed, arg0, arg1);
             spC = 0.0f;
             sp88.GetMeasure(temp_f1_1238, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             spA8 = M2C_BITWISE(f64, sp88);
             spB0 = (f64) sp88.unk8;
-            (*(f32 *) ((u8 *) &spA8 + 0x4)) += this->unk110 * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            (*(f32 *) ((u8 *) &spA8 + 0x4)) += this->unk110 * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
             KDRand_UnitVector();
             sp18 = sp68 * 5.60222949e-315;
             sp78 = sp18;
@@ -611,16 +644,16 @@ loop_3:
             sp88.unk10 = sp18;
             sp80 = (f64) sp20;
             spA0 = (f64) sp20;
-            ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &spA8), *((MKVector3 *) &sp88.unk10), MKRand_Float(&gViewSeed, 1.0f, 2.0f), 1U);
+            ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) &spA8), *((MKVector3 *) &sp88.unk10), MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f), 1U);
             var_r29_1232 += 1;
             goto loop_3;
         }
-        temp_f1_1292 = MKRand_Float(&gViewSeed, arg0, arg1);
+        temp_f1_1292 = MKRand_Float((int *) &gViewSeed, arg0, arg1);
         sp8 = 0.0f;
         ((KDUniformSpline *) &sp58)->GetMeasure(temp_f1_1292, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         spA8 = sp58;
         spB0 = sp60;
-        (*(f32 *) ((u8 *) &spA8 + 0x4)) += this->unk10C * (this->unk118 * (f32) (s32) ((f32) this->unk108 * MKRand_Float(&gViewSeed, 0.0f, 1.0f)));
+        (*(f32 *) ((u8 *) &spA8 + 0x4)) += this->unk10C * (this->unk118 * (f32) (s32) ((f32) this->unk108 * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f)));
         KDRand_UnitVector();
         sp28 = 1.0f;
         sp2C = 0.0f;
@@ -682,7 +715,7 @@ void ElementalWall::EmitFireParticles(float arg0, float arg1) {
     s32 var_r27_1475;
 
     if (gb.unk30C >= this->unkFC) {
-        temp_f1_1420 = MKRand_Float(&gViewSeed, arg0, arg1);
+        temp_f1_1420 = MKRand_Float((int *) &gViewSeed, arg0, arg1);
         sp10 = 0.0f;
         spF0.GetMeasure(temp_f1_1420, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp110 = M2C_BITWISE(f64, spF0);
@@ -695,12 +728,12 @@ void ElementalWall::EmitFireParticles(float arg0, float arg1) {
         sp108 = (f64) sp48;
         temp_f1_1450 = this->unk110;
         spE8 = (f64) sp48;
-        sp104 = MKRand_Float(&gViewSeed, temp_f1_1450, 2.0f * temp_f1_1450);
-        gb.unk240.Emit(*((MKVector3 *) &sp110), *((MKVector3 *) &spF0.unk10), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
+        sp104 = MKRand_Float((int *) &gViewSeed, temp_f1_1450, 2.0f * temp_f1_1450);
+        gb.unk240.Emit(*((MKVector3 *) &sp110), *((MKVector3 *) &spF0.unk10), MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f), 1.0f);
         var_r27_1475 = 0;
 loop_3:
         if (var_r27_1475 < (s32) this->unk104) {
-            temp_f1_1481 = MKRand_Float(&gViewSeed, arg0, arg1);
+            temp_f1_1481 = MKRand_Float((int *) &gViewSeed, arg0, arg1);
             spC = 0.0f;
             ((KDUniformSpline *) &spC0)->GetMeasure(temp_f1_1481, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp110 = spC0;
@@ -713,10 +746,10 @@ loop_3:
             sp108 = (f64) sp38;
             temp_f2_1508 = this->unk110;
             spB8 = (f64) sp38;
-            sp104 = MKRand_Float(&gViewSeed, 0.5f * temp_f2_1508, temp_f2_1508);
-            sp18 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
+            sp104 = MKRand_Float((int *) &gViewSeed, 0.5f * temp_f2_1508, temp_f2_1508);
+            sp18 = MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f);
             ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp110), *((MKVector3 *) &spF0.unk10), sp18);
-            temp_f1_1526 = MKRand_Float(&gViewSeed, arg0, arg1);
+            temp_f1_1526 = MKRand_Float((int *) &gViewSeed, arg0, arg1);
             sp8 = 0.0f;
             ((KDUniformSpline *) &sp90)->GetMeasure(temp_f1_1526, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp110 = sp90;
@@ -729,7 +762,7 @@ loop_3:
             sp108 = (f64) sp28;
             temp_f1_1553 = this->unk110;
             sp88 = (f64) sp28;
-            temp_f1_1556 = MKRand_Float(&gViewSeed, temp_f1_1553, 2.0f * temp_f1_1553);
+            temp_f1_1556 = MKRand_Float((int *) &gViewSeed, temp_f1_1553, 2.0f * temp_f1_1553);
             sp50 = 1.0f;
             sp54 = 0.1f;
             sp104 = temp_f1_1556;
@@ -737,7 +770,7 @@ loop_3:
             sp5C = 1.0f;
             sp60 = (f64) sp50;
             sp68 = (f64) sp58;
-            sp14 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
+            sp14 = MKRand_Float((int *) &gViewSeed, 2.0f, 5.0f);
             ((EmbersPS *) gb.unk74)->Emit(*((MKVector3 *) &sp110), *((MKVector3 *) &spF0.unk10), sp14, *((MKVector4 *) &sp60), 0.0f);
             var_r27_1475 += 1;
             goto loop_3;
@@ -1049,7 +1082,7 @@ loop_61:
         sp208 += temp_f0_2073;
         sp210 = (f32) sp210 + (f32) sp150;
         temp_f18_2105 = 4.0f * ((f32) var_r27_1790 / (f32) this->unk104);
-        temp_f1_2106 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
+        temp_f1_2106 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
         spA8 = 0.0f;
         spAC = temp_f1_2106;
         spB0 = 0.0f;
@@ -1077,7 +1110,7 @@ loop_61:
         sp100 = (f64) sp20;
         sp208 += temp_f0_2149;
         sp210 += (f32) sp100;
-        MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
+        MKRand_Float((int *) &gViewSeed, 0.0f, 30.000002f);
         MKSetColorV(*((MKVector4 *) &sp1B8.unk20));
         MKSetTexCoord1F(temp_f18_2105, 0.05f);
         temp_f1_2181 = (f32) var_r27_1790 * this->unk114;
@@ -1088,7 +1121,7 @@ loop_61:
         } else {
             var_f18_2185 = 0.9f;
         }
-        temp_f1_2200 = MKRand_Float(&gViewSeed, -33.0f, 33.0f);
+        temp_f1_2200 = MKRand_Float((int *) &gViewSeed, -33.0f, 33.0f);
         sp80 = 0.0f;
         sp78 = 0.0f;
         sp7C = (this->unk10C * var_f18_2185) + temp_f1_2200;
@@ -1388,7 +1421,7 @@ loop_61:
         sp208 += temp_f0_2665;
         sp210 = (f32) sp210 + (f32) sp150;
         temp_f18_2697 = 4.0f * ((f32) var_r27_2382 / (f32) this->unk104);
-        temp_f1_2698 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
+        temp_f1_2698 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
         spA8 = 0.0f;
         spAC = 0.0f;
         spB0 = temp_f1_2698;
@@ -1416,7 +1449,7 @@ loop_61:
         sp100 = (f64) sp20;
         sp208 += temp_f0_2741;
         sp210 += (f32) sp100;
-        MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
+        MKRand_Float((int *) &gViewSeed, 0.0f, 30.000002f);
         MKSetColorV(*((MKVector4 *) &sp1B8.unk20));
         MKSetTexCoord1F(temp_f18_2697, 0.05f);
         temp_f1_2773 = (f32) var_r27_2382 * this->unk114;
@@ -1427,7 +1460,7 @@ loop_61:
         } else {
             var_f18_2777 = 0.9f;
         }
-        temp_f1_2792 = MKRand_Float(&gViewSeed, -33.0f, 33.0f);
+        temp_f1_2792 = MKRand_Float((int *) &gViewSeed, -33.0f, 33.0f);
         sp80 = 0.0f;
         sp78 = 0.0f;
         sp7C = (this->unk10C * var_f18_2777) + temp_f1_2792;
@@ -1542,7 +1575,7 @@ loop_7:
             MKSetTexCoord1F(temp_f24_3063, 0.95f);
             MKSetPositionV(*((MKVector3 *) &sp110));
             (*(f32 *) ((u8 *) &sp110 + 0x4)) += 10.0f;
-            MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
+            MKRand_Float((int *) &gViewSeed, 0.0f, 30.000002f);
             sp40 = 1.0f;
             sp44 = 0.0f;
             sp48 = 0.2f;
@@ -1929,7 +1962,7 @@ loop_61:
         sp3C0 += temp_f0_3537;
         sp3C8 = (f32) sp3C8 + (f32) sp308;
         temp_f15_3569 = 4.0f * ((f32) var_r25_3254 / (f32) this->unk104);
-        temp_f1_3570 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
+        temp_f1_3570 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
         sp150 = temp_f1_3570;
         sp154 = temp_f1_3570;
         sp158 = temp_f1_3570;
@@ -1957,7 +1990,7 @@ loop_61:
         sp2B8 = (f64) sp78;
         sp3C0 += temp_f0_3613;
         sp3C8 += (f32) sp2B8;
-        MKRand_Float(&gViewSeed, 0.0f, 30.000002f);
+        MKRand_Float((int *) &gViewSeed, 0.0f, 30.000002f);
         MKSetColorV(*((MKVector4 *) &sp370.unk20));
         MKSetTexCoord1F(temp_f15_3569, 0.05f);
         temp_f1_3645 = (f32) var_r25_3254 * this->unk114;
@@ -1968,7 +2001,7 @@ loop_61:
         } else {
             var_f15_3649 = 0.9f;
         }
-        temp_f1_3664 = MKRand_Float(&gViewSeed, -33.0f, 33.0f);
+        temp_f1_3664 = MKRand_Float((int *) &gViewSeed, -33.0f, 33.0f);
         sp128 = 0.0f;
         sp120 = 0.0f;
         sp124 = (this->unk10C * var_f15_3649) + temp_f1_3664;
@@ -2132,7 +2165,7 @@ loop_117:
         sp370.unk30.unk4 = M2C_BITWISE(f32, sp370.unk30.unk4) * var_f2_3999;
         sp370.unk30.unk8 = (f32) sp370.unk30.unk8 * var_f2_3999;
         temp_f16_4028 = 4.0f * ((f32) var_r26_3712 / (f32) this->unk104);
-        temp_f1_4029 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
+        temp_f1_4029 = MKRand_Float((int *) &gViewSeed, 0.8f, 1.0f);
         sp100 = temp_f1_4029;
         sp104 = temp_f1_4029;
         sp108 = temp_f1_4029;
@@ -2170,7 +2203,7 @@ loop_117:
         } else {
             var_f15_4104 = 0.9f;
         }
-        temp_f1_4119 = MKRand_Float(&gViewSeed, -33.0f, 33.0f);
+        temp_f1_4119 = MKRand_Float((int *) &gViewSeed, -33.0f, 33.0f);
         spD8 = 0.0f;
         spD0 = 0.0f;
         spD4 = (this->unk10C * var_f15_4104) + temp_f1_4119;
@@ -2314,12 +2347,12 @@ void ElementalWall::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 ElementalWall::LoadLine(MKIniLine *arg0) {
     if (SplineProp::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("Element", &this->unk100, 0) != 0) {
+    if (arg0->LoadInt("Element", (int *) &this->unk100, 0) != 0) {
         return 1U;
     }
     if (arg0->LoadBool("InfiniteCollision", &this->unk11C, 0) != 0) {
@@ -2330,10 +2363,10 @@ s32 ElementalWall::LoadLine(MKIniLine *arg0) {
         this->unk10C = 0.0f;
         return 1U;
     }
-    if (arg0->LoadInt("HSubDivisions", &this->unk104, 0) != 0) {
+    if (arg0->LoadInt("HSubDivisions", (int *) &this->unk104, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt("VSubDivisions", &this->unk108, 0) != 0) {
+    if (arg0->LoadInt("VSubDivisions", (int *) &this->unk108, 0) != 0) {
         return 1U;
     }
     return (u8) (arg0->LoadFloat("IgniteTime", &this->unk120, 0) != 0);

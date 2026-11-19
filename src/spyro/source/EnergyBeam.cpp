@@ -1,11 +1,22 @@
 #include "spyro/source/EnergyBeam.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDSpline.h"
-#include "common/Source/MKMaterial.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -89,7 +100,7 @@ loop_4:
     MKEndPrimitive();
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal type
 void EnergyBeam::DrawBeam(EnergyBeam::Beam *arg1) {
     M2C_UNK sp1DC;
     f64 sp1D0;
@@ -183,7 +194,7 @@ void EnergyBeam::DrawBeam(EnergyBeam::Beam *arg1) {
 
     temp_f23_180 = M2C_FIELD(arg1, f32 *, 8) / 1000.0f;
     var_r29_184 = 0;
-    temp_f24_185 = temp_f23_180 * MKRand_Float(&gViewSeed, 50.0f, 70.0f);
+    temp_f24_185 = temp_f23_180 * MKRand_Float((int *) &gViewSeed, 50.0f, 70.0f);
     var_r30_186 = 0;
     this->unk94.unk8 = 0.0f;
     this->unk94.unk4 = 0;
@@ -486,7 +497,7 @@ void EnergyBeam::UpdateTargetVelocities(EnergyBeam::Beam *arg1) {
     var_r31_779 = 0;
     do {
         temp_r3_785 = arg1 + var_r31_779;
-        temp_f30_787 = MKRand_Float(&gViewSeed, 50.0f, 100.0f);
+        temp_f30_787 = MKRand_Float((int *) &gViewSeed, 50.0f, 100.0f);
         temp_f0_791 = M2C_FIELD(temp_r3_785, f64 *, 0x40) - M2C_FIELD(temp_r3_785, f64 *, 0x20);
         sp8 = temp_f0_791;
         sp28 = temp_f0_791;
@@ -542,7 +553,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
     f64 sp80;
     f64 sp78;
@@ -584,9 +595,9 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
         var_r31_919 = 0;
         do {
             temp_f30_924 = M2C_BITWISE(f32, temp_r29_907->unk8) / 1000.0f;
-            temp_f28_927 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f27_932 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f27_932, temp_f28_927);
+            temp_f28_927 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f27_932 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_932, temp_f28_927);
             sp68.operator*(2500.0f);
             sp18 = sp68 * (f64) temp_f30_924;
             temp_r28_948 = temp_r29_907 + var_r31_919;
@@ -595,9 +606,9 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
             sp78 = sp18;
             sp80 = (f64) sp20;
             M2C_FIELD(temp_r28_948, f64 *, 0x38) = (f64) sp20;
-            temp_f27_962 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f28_967 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_967, temp_f27_962);
+            temp_f27_962 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f28_967 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_967, temp_f27_962);
             sp38.operator*(200.0f);
             sp8 = M2C_FIELD(temp_r28_948, f64 *, 0x40) + M2C_BITWISE(f64, sp38);
             M2C_FIELD(temp_r28_948, f64 *, 0x20) = sp8;
@@ -605,7 +616,7 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
             sp48 = sp8;
             sp50 = (f64) sp10;
             M2C_FIELD(temp_r28_948, f64 *, 0x28) = (f64) sp10;
-            M2C_FIELD(temp_r28_948, f32 *, 0x60) = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
+            M2C_FIELD(temp_r28_948, f32 *, 0x60) = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
             var_r27_918 += 1;
             var_r31_919 += 0x50;
             temp_r29_907->unkC = arg2;
@@ -694,10 +705,10 @@ loop_11:
                         M2C_FIELD(temp_r29_1086, f32 *, 0x28) = (f32) (M2C_FIELD(temp_r29_1086, f32 *, 0x28) + (f32) sp80);
                         M2C_FIELD(temp_r29_1086, f32 *, 0x60) = (f32) (M2C_FIELD(temp_r29_1086, f32 *, 0x60) - gUpdateTimeDelta);
                         if (M2C_FIELD(temp_r29_1086, f32 *, 0x60) <= 0.0f) {
-                            M2C_FIELD(temp_r29_1086, f32 *, 0x60) = MKRand_Float(&gViewSeed, 0.25f, 1.0f);
-                            temp_f27_1147 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                            temp_f26_1152 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f26_1152, temp_f27_1147);
+                            M2C_FIELD(temp_r29_1086, f32 *, 0x60) = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
+                            temp_f27_1147 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                            temp_f26_1152 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f26_1152, temp_f27_1147);
                             sp18 = sp58 * 5.180653787e-315;
                             sp98 = sp18;
                             sp20 = sp60 * 0.25f;

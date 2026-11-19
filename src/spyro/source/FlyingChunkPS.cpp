@@ -1,18 +1,45 @@
 #include "spyro/source/FlyingChunkPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/GamePropColored.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
@@ -93,7 +120,7 @@ void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
             M2C_FIELD(temp_r31_61, f64 *, 0x58) = (f64) M2C_FIELD(&arg1, f64 *, 8);
             M2C_FIELD(temp_r31_61, f32 *, 0x84) = (f32) temp_r5_67->unkF0;
             M2C_FIELD(temp_r31_61, f32 *, 0x88) = arg4;
-            M2C_FIELD(temp_r31_61, s32 *, 0x94) = MKRand_Int(&gViewSeed, 0, temp_r5_67->unkEC);
+            M2C_FIELD(temp_r31_61, s32 *, 0x94) = MKRand_Int((int *) &gViewSeed, 0, temp_r5_67->unkEC);
             M2C_FIELD(temp_r31_61, f64 *, 0x60) = (f64) M2C_FIELD(&arg5, f64 *, 0);
             M2C_FIELD(temp_r31_61, f64 *, 0x68) = (f64) M2C_FIELD(&arg5, f64 *, 8);
             M2C_FIELD(temp_r31_61, s8 *, 0x9D) = 0;
@@ -1248,7 +1275,7 @@ loop_205:
                             sp2C8 = temp_f0_1885;
                             sp150 = (f32) sp2C0 * temp_f27_1857;
                             sp2D0 = (f64) sp150;
-                            sp34 = M2C_FIELD(temp_r28_1998, f32 *, 0x88) * MKRand_Float(&gViewSeed, 0.6f, 0.9f);
+                            sp34 = M2C_FIELD(temp_r28_1998, f32 *, 0x88) * MKRand_Float((int *) &gViewSeed, 0.6f, 0.9f);
                             gb.EmitDust(*((MKVector3 *) &sp4A8.unk10), *((MKVector3 *) &sp2C8), sp34, 0.0f);
                         }
                         if (M2C_FIELD(temp_r28_1998, s32 *, 0x98) & 8) {
@@ -1274,7 +1301,7 @@ loop_205:
                             sp278 = temp_f0_1946;
                             sp110 = (f32) sp270 * temp_f28_1918;
                             sp280 = (f64) sp110;
-                            sp30 = M2C_FIELD(temp_r28_1998, f32 *, 0x88) * MKRand_Float(&gViewSeed, 3.5f, 3.6f);
+                            sp30 = M2C_FIELD(temp_r28_1998, f32 *, 0x88) * MKRand_Float((int *) &gViewSeed, 3.5f, 3.6f);
                             ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &sp4A8.unk10), *((MKVector3 *) &sp278), sp30);
                         }
                         var_r25_1807 += 1;
@@ -1348,12 +1375,12 @@ void FlyingChunkPSDescriptor::LoadDone() {
     this->unkEC = MKModel_GetNmbrOfSubObjects(this->unk2C, (SubObjectType) 0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 FlyingChunkPSDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2136;
 
     var_r31_2136 = 0;
-    if ((GamePropColoredDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("MaxNumChunks", &this->unkE8, 0) != 0) || (arg0->LoadFloat("MaxAge", &this->unkF0, 0) != 0) || (arg0->LoadBool("Collide", (u8 *) &this->unkF4, 0) != 0) || (arg0->LoadVector3("Accel", &this->unkF8, 0) != 0)) {
+    if ((GamePropColoredDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("MaxNumChunks", (int *) &this->unkE8, 0) != 0) || (arg0->LoadFloat("MaxAge", &this->unkF0, 0) != 0) || (arg0->LoadBool("Collide", (u8 *) &this->unkF4, 0) != 0) || (arg0->LoadVector3("Accel", &this->unkF8, 0) != 0)) {
         var_r31_2136 = 1;
     }
     return var_r31_2136;

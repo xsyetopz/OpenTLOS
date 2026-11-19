@@ -1,10 +1,43 @@
 #include "spyro/source/ConveyorBucket.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -13,7 +46,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ConveyorBucket::DirtParticles() {
     f64 sp178;
     f64 sp170;
@@ -70,14 +103,14 @@ void ConveyorBucket::DirtParticles() {
     void *temp_r3_162;
     void *temp_r3_96;
 
-    this->unkE8 += gUpdateTimeDelta * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+    this->unkE8 += gUpdateTimeDelta * MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
     if (!(this->unkE8 < 0.1f)) {
         this->unkE8 = 0.0f;
         spD0.operator*(200.0f);
         spE0.operator*(350.0f);
-        spF0.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
+        spF0.operator*(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
         sp100.operator*(140.0f);
-        sp110.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
+        sp110.operator*(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f));
         sp120.operator*(200.0f);
         temp_r3_96 = ((u8 *) this->unk8) + 0x30;
         temp_f0_99 = M2C_FIELD(temp_r3_96, f64 *, 0) + M2C_BITWISE(f64, sp120);
@@ -102,8 +135,8 @@ void ConveyorBucket::DirtParticles() {
         sp48 = (f32) sp158 + spD0.unk8;
         sp168 = (f64) sp48;
         sp178 = (f64) sp48;
-        temp_f30_151 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f1_158 = 0.5f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f30_151 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f1_158 = 0.5f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp84 = 0.0f;
         temp_r3_162 = ((u8 *) this->unk8) + 0x10;
         sp80 = temp_f1_158;
@@ -120,9 +153,9 @@ void ConveyorBucket::DirtParticles() {
         spC0 = temp_f0_183;
         sp68 = (f32) spB8 * 250.0f;
         spC8 = (f64) sp68;
-        spC = MKRand_Float(&gViewSeed, 0.2f, 0.5f);
+        spC = MKRand_Float((int *) &gViewSeed, 0.2f, 0.5f);
         gb.EmitCrud(*((MKVector3 *) &sp170), *((MKVector3 *) &spC0), spC);
-        sp8 = MKRand_Float(&gViewSeed, 2.5f, 3.5f);
+        sp8 = MKRand_Float((int *) &gViewSeed, 2.5f, 3.5f);
         sp58 = 0.0f;
         sp50 = 0.0f;
         sp54 = 0.0f;

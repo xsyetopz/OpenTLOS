@@ -1,28 +1,63 @@
 #include "spyro/source/SteamTrain.h"
 #include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKDynamicBone.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/ExpShock.h"
+#include "spyro/source/ExpSmokeAndFlamesPS.h"
 #include "spyro/source/Explosion3.h"
+#include "spyro/source/ExplosionFX.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
+#include "spyro/source/LightProp.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpyroEffects.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "spyro/source/TrainChaseSpyro.h"
 #include "spyro/source/TrainTrack.h"
 #include "unplaced_templates.h"
@@ -30,7 +65,6 @@
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "spyro/source/SpyroHud.h"
-#include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
 f64 asin(f32);                                      /* extern */
@@ -272,7 +306,6 @@ static s8 *pSteamAnimEvents = "SteamPuff";
 static s32 lit_1019 = 0;
 static u8 lit_1020 = 1;
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SteamTrain::Stop(bool arg0) {
     if (arg0 != 0) {
         ((KDStateMachine<SteamTrain> *) &this->unk378)->SetState(this, 3, 0U);
@@ -280,7 +313,6 @@ void SteamTrain::Stop(bool arg0) {
     }
     ((KDStateMachine<SteamTrain> *) &this->unk378)->SetState(this, 4, 0U);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'TrainTrack *' to
 void SteamTrain::StateRamUpdate() {
@@ -1174,7 +1206,7 @@ void SteamTrain::StateFleeEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void SteamTrain::Message(MKMessage *arg0) {
     f64 sp80;
     f64 sp78;
@@ -1288,7 +1320,6 @@ block_30:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void SteamTrain::Deinit() {
     MKMaterial *temp_r3_1984;
     ManagedLight *temp_r4_1974;
@@ -1305,20 +1336,18 @@ void SteamTrain::Deinit() {
         this->unk100 = NULL;
     }
     this->unkD0.Deinit();
-    KDSound_Stop(&this->unk394);
-    KDSound_Stop(&this->unk3BC);
+    KDSound_Stop((int *) &this->unk394);
+    KDSound_Stop((int *) &this->unk3BC);
     this->unk3EF = 0;
     this->unk3F0 = 0;
     GameProp::Deinit();
 }
-#endif
 
 void SteamTrain::Draw() {
     GameProp::Draw();
     this->unk138.Draw();
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void SteamTrain::TriggerDamageFX(const MKVector3 &arg0, float arg1) {
     f64 sp140;
     f64 sp138;
@@ -1382,9 +1411,9 @@ void SteamTrain::TriggerDamageFX(const MKVector3 &arg0, float arg1) {
 
     var_r30_2060 = 0;
     do {
-        temp_f24_2066 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f23_2071 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
-        sp98 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f24_2066 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f23_2071 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
+        sp98 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp9C = temp_f23_2071;
         spA0 = temp_f24_2066;
         sp118 = (f64) sp98;
@@ -1409,9 +1438,9 @@ void SteamTrain::TriggerDamageFX(const MKVector3 &arg0, float arg1) {
         sp108 = temp_f0_2115;
         sp60 = M2C_FIELD(temp_r4_2111, f32 *, 8) + (f32) sp100;
         sp110 = (f64) sp60;
-        temp_f24_2129 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f23_2134 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp48 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f24_2129 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f23_2134 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp48 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp4C = temp_f23_2134;
         sp50 = temp_f24_2129;
         spD8 = (f64) sp48;
@@ -1421,9 +1450,9 @@ void SteamTrain::TriggerDamageFX(const MKVector3 &arg0, float arg1) {
         spE8 = temp_f0_2148;
         sp40 = (f32) spE0 * 3.1415927f;
         spF0 = (f64) sp40;
-        temp_f23_2161 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f24_2166 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp28 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f23_2161 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f24_2166 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp28 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp2C = temp_f24_2166;
         sp30 = temp_f23_2161;
         spB8 = (f64) sp28;
@@ -1433,7 +1462,7 @@ void SteamTrain::TriggerDamageFX(const MKVector3 &arg0, float arg1) {
         spC8 = temp_f0_2180;
         sp20 = (f32) spC0 * 3.1415927f;
         spD0 = (f64) sp20;
-        temp_f1_2192 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
+        temp_f1_2192 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
         sp8 = 1.0f;
         spC = 1.0f;
         sp10 = 1.0f;
@@ -1448,9 +1477,8 @@ void SteamTrain::TriggerDamageFX(const MKVector3 &arg0, float arg1) {
         KDSound_Play3d(GS_CabooseExtra1, &arg0, 0U, -1, 0.0f, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'KDStateMachine'
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void SteamTrain::Update() {
     f32 sp2C;
     f32 sp28;
@@ -1574,17 +1602,15 @@ void SteamTrain::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SteamTrain::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2549;
 
     var_r31_2549 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (s32 *) &this->unk124, 0) != 0) || (arg0->LoadInt("cabooseID", (s32 *) &this->unk128, 0) != 0) || (arg0->LoadInt("SpyroCartID", (s32 *) &this->unk12C, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (int *) &this->unk124, 0) != 0) || (arg0->LoadInt("cabooseID", (int *) &this->unk128, 0) != 0) || (arg0->LoadInt("SpyroCartID", (int *) &this->unk12C, 0) != 0)) {
         var_r31_2549 = 1;
     }
     return var_r31_2549;
 }
-#endif
 
 void SteamTrain::Init() {
     GameProp::Init();
@@ -1647,7 +1673,7 @@ void SteamTrainEffects::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
     ((Animation *) (MKModel_GetAnimation(this->unk24)))->SetCustomMatrix((s32) temp_r31_2757, &sp30, (AnimationMatrixPosition) 4, 0U);
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void SteamTrainEffects::UpdateAnimEvents() {
     f64 sp50;
     f64 sp48;
@@ -1681,18 +1707,18 @@ void SteamTrainEffects::UpdateAnimEvents() {
                 sp48 = (f64) sp18;
                 sp50 = (f64) sp20;
                 M2C_FIELD(temp_r3_2797, f32 *, 0x20) = 0.0f;
-                M2C_FIELD(temp_r3_2797, f32 *, 0x24) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
-                temp_f30_2821 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                temp_f29_2826 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
-                MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f29_2826, temp_f30_2821);
+                M2C_FIELD(temp_r3_2797, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
+                temp_f30_2821 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                temp_f29_2826 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
+                MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f29_2826, temp_f30_2821);
                 sp8 = sp28 * 5.65986426e-315;
                 M2C_FIELD(temp_r29_2802, f64 *, 0) = sp8;
                 sp10 = sp30 * 800.0f;
                 sp38 = sp8;
                 sp40 = (f64) sp10;
                 M2C_FIELD(temp_r29_2802, f64 *, 8) = (f64) sp10;
-                M2C_FIELD(temp_r29_2802, f32 *, 0x18) = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                M2C_FIELD(temp_r29_2802, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+                M2C_FIELD(temp_r29_2802, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+                M2C_FIELD(temp_r29_2802, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
                 M2C_FIELD(temp_r29_2802, f32 *, 0x14) = (f32) M2C_FIELD(this->unk1E4, f32 *, 0xF4);
             }
             var_r30_2791 += 1;
@@ -1745,7 +1771,6 @@ void SteamTrainEffects::Draw() {
     DrawEffects();
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void SteamTrainEffects::EmitSparks(const MKVector3 &arg0) {
     f64 spC8;
     f64 spC0;
@@ -1797,9 +1822,9 @@ void SteamTrainEffects::EmitSparks(const MKVector3 &arg0) {
     spC0 = temp_f0_3015;
     sp58 = (f32) spB8 * temp_f4_2999;
     spC8 = (f64) sp58;
-    temp_f27_3033 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-    temp_f28_3038 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-    sp40 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+    temp_f27_3033 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+    temp_f28_3038 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
+    sp40 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
     sp44 = temp_f28_3038;
     sp48 = temp_f27_3033;
     sp80 = (f64) sp40;
@@ -1814,9 +1839,9 @@ void SteamTrainEffects::EmitSparks(const MKVector3 &arg0) {
     spA0 = temp_f0_3063;
     sp28 = (f32) sp98 + (f32) spC8;
     spA8 = (f64) sp28;
-    sp8 = MKRand_Float(&gViewSeed, 5.0f, 8.0f);
-    temp_f31_3081 = MKRand_Float(&gViewSeed, 0.75f, 1.0f);
-    sp10 = MKRand_Float(&gViewSeed, 0.85f, 1.0f);
+    sp8 = MKRand_Float((int *) &gViewSeed, 5.0f, 8.0f);
+    temp_f31_3081 = MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f);
+    sp10 = MKRand_Float((int *) &gViewSeed, 0.85f, 1.0f);
     sp14 = temp_f31_3081;
     sp18 = 0.5f;
     sp1C = 1.0f;
@@ -1824,9 +1849,8 @@ void SteamTrainEffects::EmitSparks(const MKVector3 &arg0) {
     sp78 = (f64) sp18;
     ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(arg0, *((MKVector3 *) &spA0), sp8, *((MKVector4 *) &sp70), -1000.0f);
 }
-#endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void SteamTrainEffects::EmitSmoke() {
     f64 sp30;
     f64 sp28;
@@ -1843,16 +1867,16 @@ void SteamTrainEffects::EmitSmoke() {
         temp_r30_3137 = M2C_FIELD(temp_r3_3134, void **, 0x2C);
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk200, temp_r3_3134);
         M2C_FIELD(temp_r3_3134, f32 *, 0x20) = 0.0f;
-        M2C_FIELD(temp_r3_3134, f32 *, 0x24) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
-        MKVector(0.0f, MKRand_Float(&gViewSeed, 0.75f, 1.0f), 0.0f);
+        M2C_FIELD(temp_r3_3134, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
+        MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f), 0.0f);
         sp8 = sp18 * 5.61841903e-315;
         M2C_FIELD(temp_r30_3137, f64 *, 0) = sp8;
         sp10 = sp20 * 400.0f;
         sp28 = sp8;
         sp30 = (f64) sp10;
         M2C_FIELD(temp_r30_3137, f64 *, 8) = (f64) sp10;
-        M2C_FIELD(temp_r30_3137, f32 *, 0x18) = (f32) (this->unk238 * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
-        M2C_FIELD(temp_r30_3137, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r30_3137, f32 *, 0x18) = (f32) (this->unk238 * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
+        M2C_FIELD(temp_r30_3137, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         M2C_FIELD(temp_r30_3137, f32 *, 0x14) = (f32) M2C_FIELD(this->unk1DC, f32 *, 0xF4);
     }
 }
@@ -1889,7 +1913,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void SteamTrainEffects::EmitSteam() {
     f64 sp30;
     f64 sp28;
@@ -1906,22 +1930,22 @@ void SteamTrainEffects::EmitSteam() {
         temp_r30_3265 = M2C_FIELD(temp_r3_3262, void **, 0x2C);
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk200, temp_r3_3262);
         M2C_FIELD(temp_r3_3262, f32 *, 0x20) = 0.0f;
-        M2C_FIELD(temp_r3_3262, f32 *, 0x24) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
-        MKVector(0.0f, MKRand_Float(&gViewSeed, 0.75f, 1.0f), 0.0f);
+        M2C_FIELD(temp_r3_3262, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
+        MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f), 0.0f);
         sp8 = sp18 * 5.61841903e-315;
         M2C_FIELD(temp_r30_3265, f64 *, 0) = sp8;
         sp10 = sp20 * 400.0f;
         sp28 = sp8;
         sp30 = (f64) sp10;
         M2C_FIELD(temp_r30_3265, f64 *, 8) = (f64) sp10;
-        M2C_FIELD(temp_r30_3265, f32 *, 0x18) = (f32) (this->unk238 * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
-        M2C_FIELD(temp_r30_3265, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r30_3265, f32 *, 0x18) = (f32) (this->unk238 * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
+        M2C_FIELD(temp_r30_3265, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         M2C_FIELD(temp_r30_3265, f32 *, 0x14) = (f32) M2C_FIELD(this->unk1E0, f32 *, 0xF4);
     }
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void SteamTrainEffects::UpdateEffects() {
     f64 sp60;
     f64 sp58;
@@ -1962,9 +1986,9 @@ void SteamTrainEffects::UpdateEffects() {
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
         M2C_FIELD(temp_r3_3339, f32 *, 0x20) = 0.0f;
-        M2C_FIELD(temp_r3_3339, f32 *, 0x24) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r3_3339, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         temp_f31_3361 = this->unk224;
-        MKVector(0.0f, 0.0f, -MKRand_Float(&gViewSeed, 0.75f, 1.0f));
+        MKVector(0.0f, 0.0f, -MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f));
         sp38.operator*(1000.0f);
         sp8 = sp38 * (f64) temp_f31_3361;
         M2C_FIELD(temp_r30_3344, f64 *, 0) = sp8;
@@ -1972,8 +1996,8 @@ void SteamTrainEffects::UpdateEffects() {
         sp48 = sp8;
         sp50 = (f64) sp10;
         M2C_FIELD(temp_r30_3344, f64 *, 8) = (f64) sp10;
-        M2C_FIELD(temp_r30_3344, f32 *, 0x18) = (f32) (this->unk224 * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
-        M2C_FIELD(temp_r30_3344, f32 *, 0x10) = MKRand_Float(&gViewSeed, -6.2831855f, 6.2831855f);
+        M2C_FIELD(temp_r30_3344, f32 *, 0x18) = (f32) (this->unk224 * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
+        M2C_FIELD(temp_r30_3344, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
         M2C_FIELD(temp_r30_3344, f32 *, 0x14) = (f32) M2C_FIELD(this->unk1D8, f32 *, 0xF4);
     }
     var_f3_3403 = 0.0f;

@@ -1,21 +1,51 @@
 #include "spyro/source/FallingDustProp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
-#include "common/Source/MKMaterial.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include "spyro/source/Tools.h"
@@ -60,7 +90,7 @@ void FallingDustProp::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'GetInput(HeroInterface *, GameGlobals *)' does not match
 void FallingDustProp::Update() {
     s8 sp3A0;
     s32 sp39C;
@@ -278,7 +308,7 @@ void FallingDustProp::Update() {
             }
             var_r25_322 = 0;
             do {
-                sp220.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+                sp220.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
                 sp70 = M2C_BITWISE(f64, sp340) + M2C_BITWISE(f64, sp220);
                 sp230 = sp70;
                 sp78 = sp340.unk8 + sp220.unk8;
@@ -303,8 +333,8 @@ void FallingDustProp::Update() {
                 sp310 = sp50;
                 sp1D8 = (f64) sp58;
                 sp318 = (f64) sp58;
-                ((FlyingChunkPS *) gb.unkA4)->Emit(*((MKVector3 *) &sp320), *((MKVector3 *) &sp310), *((MKVector3 *) &sp300), *((MKVector3 *) &sp2F0), MKRand_Float(&gViewSeed, 0.2f, 0.4f), *((MKVector4 *) &sp2E0), 0, NULL);
-                sp180.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+                ((FlyingChunkPS *) gb.unkA4)->Emit(*((MKVector3 *) &sp320), *((MKVector3 *) &sp310), *((MKVector3 *) &sp300), *((MKVector3 *) &sp2F0), MKRand_Float((int *) &gViewSeed, 0.2f, 0.4f), *((MKVector4 *) &sp2E0), 0, NULL);
+                sp180.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
                 sp40 = M2C_BITWISE(f64, sp340) + M2C_BITWISE(f64, sp180);
                 sp190 = sp40;
                 sp48 = sp340.unk8 + sp180.unk8;
@@ -320,7 +350,7 @@ void FallingDustProp::Update() {
                 sp310 = sp30;
                 sp178 = (f64) sp38;
                 sp318 = (f64) sp38;
-                sp8 = MKRand_Float(&gViewSeed, 0.125f, 0.5f);
+                sp8 = MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f);
                 gb.EmitSmallRocks(*((MKVector3 *) &sp320), *((MKVector3 *) &sp310), sp8);
                 var_r25_322 += 1;
             } while (var_r25_322 < 3);
@@ -346,7 +376,7 @@ void FallingDustProp::Update() {
                 sp88 = sp2B0.unk8 - sp2C0.unk8;
                 sp288 = (f64) sp88;
                 do {
-                    sp120.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+                    sp120.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
                     sp20 = M2C_BITWISE(f64, sp2C0) + M2C_BITWISE(f64, sp120);
                     sp130 = sp20;
                     sp28 = sp2C0.unk8 + sp120.unk8;
@@ -372,8 +402,8 @@ void FallingDustProp::Update() {
                         M2C_FIELD(temp_r3_583, f32 *, 0x28) = 0.0f;
                         M2C_FIELD(temp_r27_586, f64 *, 0) = sp290;
                         M2C_FIELD(temp_r27_586, f64 *, 8) = sp298;
-                        M2C_FIELD(temp_r27_586, f32 *, 0x18) = MKRand_Float(&gViewSeed, 3.0f, 3.5f);
-                        M2C_FIELD(temp_r27_586, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+                        M2C_FIELD(temp_r27_586, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 3.0f, 3.5f);
+                        M2C_FIELD(temp_r27_586, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
                         M2C_FIELD(temp_r27_586, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r31_161, void **, 0x70), f32 *, 0xF4);
                     }
                     var_r25_520 += 1;

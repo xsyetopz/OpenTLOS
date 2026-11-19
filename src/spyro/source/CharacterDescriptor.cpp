@@ -1,6 +1,13 @@
 #include "spyro/source/CharacterDescriptor.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/KDProp.h"
 #include <m2c_macros.h>
 
@@ -13,12 +20,12 @@ void CharacterDescriptor::LoadDone() {
     this->unk64 = this->unk68 + this->unk60;
 }
 
-#if 0 // DRAFT: function call 'KDProp_LoadMaterialID(MKIniLine *, const char[11], long *)'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 CharacterDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_46;
 
     var_r31_46 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDProp_LoadMaterialID(arg0, "materialID", &this->unk70) != 0) || (arg0->LoadInt("colItemType", &this->unk6C, 0) != 0) || (arg0->LoadFloat("charaColRadius", &this->unk60, 0) != 0) || (arg0->LoadFloat("charaColHeight", &this->unk64, 0) != 0) || (arg0->LoadFloat("charaColOffsetY", &this->unk68, 0) != 0) || (arg0->LoadBool("bFindGroundColour", (u8 *) &this->unk74, 0) != 0) || (arg0->LoadBool("bStoreGroundColourResult", this + 0x75, 0) != 0) || (arg0->LoadString("overrideMaterial", &this->unkDC, 0) != 0) || (arg0->LoadBool("bUseSteeringBehaviours", this + 0x77, 0) != 0) || (arg0->LoadBool("bPlayAnimSndsInCutscenes", (u8 *) &this->unk78, 0) != 0) || (arg0->LoadBool("bUseQuickCollision", this + 0x76, 0) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDProp_LoadMaterialID(arg0, "materialID", (int *) &this->unk70) != 0) || (arg0->LoadInt("colItemType", (int *) &this->unk6C, 0) != 0) || (arg0->LoadFloat("charaColRadius", &this->unk60, 0) != 0) || (arg0->LoadFloat("charaColHeight", &this->unk64, 0) != 0) || (arg0->LoadFloat("charaColOffsetY", &this->unk68, 0) != 0) || (arg0->LoadBool("bFindGroundColour", (u8 *) &this->unk74, 0) != 0) || (arg0->LoadBool("bStoreGroundColourResult", this + 0x75, 0) != 0) || (arg0->LoadString("overrideMaterial", &this->unkDC, 0) != 0) || (arg0->LoadBool("bUseSteeringBehaviours", this + 0x77, 0) != 0) || (arg0->LoadBool("bPlayAnimSndsInCutscenes", (u8 *) &this->unk78, 0) != 0) || (arg0->LoadBool("bUseQuickCollision", this + 0x76, 0) != 0)) {
         var_r31_46 = 1;
     }
     return var_r31_46;

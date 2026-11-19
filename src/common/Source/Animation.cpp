@@ -1,9 +1,15 @@
 #include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
@@ -1533,7 +1539,7 @@ loop_24:
     if (var_r30_2843 < (s8) M2C_FIELD(temp_r3_2892, u8 *, 8)) {
         temp_r27_2849 = *(temp_r3_2892->unk1C + var_r28_2845);
         temp_ret_2851 = strlen(temp_r27_2849);
-        if (((Animation *) var_r29_2722)->NodeExists(Str_Printf("z%.*s", temp_ret_2851 - 4, temp_r27_2849 + 1, M2C_BITWISE(f32, temp_ret_2851)), &sp8) != 0) {
+        if (((Animation *) var_r29_2722)->NodeExists(Str_Printf("z%.*s", temp_ret_2851 - 4, temp_r27_2849 + 1, M2C_BITWISE(f32, temp_ret_2851)), (int *) &sp8) != 0) {
             *(var_r29_2722->unk0->unk28->unk1C + (var_r28_2845 + 8)) = (s8) sp8;
             *(var_r29_2722->unk0->unk28 + ((sp8 << 5) + 0x3C)) = var_r30_2843;
         } else {
@@ -1574,7 +1580,7 @@ loop_4:
         M2C_FIELD(var_r31_2925, s32 *, 0x24) = (s32) (M2C_FIELD(var_r31_2925, s32 *, 0x24) + 1);
     } else {
         temp_r3_2955 = Str_Printf("%s.anm", arg0);
-        temp_r3_2959 = ((MKHeap *) (MKArchive_Exists(temp_r3_2955, &sp8)))->Current();
+        temp_r3_2959 = ((MKHeap *) (MKArchive_Exists(temp_r3_2955, (int *) &sp8)))->Current();
         if (temp_r3_2959 != NULL) {
             var_r31_2925 = ((MKHeap *) (temp_r3_2959->Current()))->Alloc(0x34, NULL, 0);
         } else {
@@ -1589,7 +1595,7 @@ loop_4:
             M2C_FIELD(temp_r3_2978, s8 **, 0x30) = var_r31_2925;
         }
         strncpy(var_r31_2925, arg0, 0x1FU);
-        M2C_FIELD(var_r31_2925, s8 **, 0x28) = MKArchive_Load(temp_r3_2955, &sp8, NULL, -1);
+        M2C_FIELD(var_r31_2925, s8 **, 0x28) = MKArchive_Load(temp_r3_2955, (int *) &sp8, NULL, -1);
         ((AnimationData *) M2C_FIELD(var_r31_2925, s8 **, 0x28))->UnpackTemplatePointers(0U);
         var_r4_3001 = 0;
         var_r6_3003 = 0;

@@ -1,17 +1,24 @@
 #include "spyro/source/LavaFiddler.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -66,7 +73,6 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void LavaFiddlerCritter::SetIdleState(LavaFiddler *arg0) {
     s32 temp_r31_149;
 
@@ -75,9 +81,8 @@ void LavaFiddlerCritter::SetIdleState(LavaFiddler *arg0) {
     arg0->unk50 = M2C_FIELD((checked_cast<LavaFiddlerCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (temp_r31_149 * 4)), void **, 0x70);
     arg0->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk50, s16 *, 4) / 30.0f));
     arg0->unk54 = 0.0f;
-    arg0->unk64 = 5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+    arg0->unk64 = 5.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp150'
 void LavaFiddlerCritter::FindNewWalkParameters(LavaFiddler *arg0) {

@@ -1,5 +1,15 @@
 #include "spyro/source/KDSynkerPlayerActorList.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/KDSynkerPlayerActor.h"
@@ -157,16 +167,14 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(const char *, long *)' does not match
 void KDSP_Subtitles::HeapAddSize(KDSynkerHeap *arg0, const char *arg1) {
     s32 temp_r4_245;
 
-    if (MKArchive_Exists(arg1, &this->unkA0) != 0) {
+    if (MKArchive_Exists(arg1, (int *) &this->unkA0) != 0) {
         temp_r4_245 = arg0->unk8 - 1;
         arg0->unk4 += (this->unkA0 + temp_r4_245) & ~temp_r4_245;
     }
 }
-#endif
 
 void KDSP_Subtitles::Reset() {
     s32 var_ctr_266;

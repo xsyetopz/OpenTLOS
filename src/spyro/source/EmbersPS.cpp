@@ -1,7 +1,14 @@
 #include "spyro/source/EmbersPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/WindFX.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -24,7 +31,7 @@ void EmbersPS::ApplyWind(WindFX *arg0) {
 loop_2:
     if (var_r30_73 != NULL) {
         temp_r29_76 = var_r30_73->unk2C;
-        temp_f31_81 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        temp_f31_81 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         sp20.GetVelocity(*((MKVector3 *) arg0));
         temp_f0_87 = sp20.unk0 * (f64) temp_f31_81;
         sp10 = temp_f0_87;

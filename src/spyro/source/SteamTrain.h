@@ -234,10 +234,10 @@ inline SteamTrain::SteamTrain() {
 inline SteamTrain::~SteamTrain() {
     this->unkC8 = &__vt.unk48;
     if ((&this->unk3BC != NULL) && (&this->unk3BC != NULL)) {
-        KDSound_Stop(&this->unk3BC);
+        KDSound_Stop((int *) &this->unk3BC);
     }
     if ((&this->unk394 != NULL) && (&this->unk394 != NULL)) {
-        KDSound_Stop(&this->unk394);
+        KDSound_Stop((int *) &this->unk394);
     }
 }
 #endif

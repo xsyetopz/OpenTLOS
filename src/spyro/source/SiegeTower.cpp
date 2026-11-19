@@ -1,19 +1,62 @@
 #include "spyro/source/SiegeTower.h"
 #include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKDynamicBone.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/Ball.h"
+#include "spyro/source/Catapult.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/EnergyBeam.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/Projectile.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SnowballTree.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
@@ -681,7 +724,7 @@ void SiegeTower::Update() {
                     if ((KDSound_IsVoicePlaying(this->unk328) == 0) || ((u8) this->unk32C != 0)) {
                         this->unk32C = 0;
                         this->unk320 = 0.0f;
-                        KDSound_Stop(&this->unk328);
+                        KDSound_Stop((int *) &this->unk328);
                         this->unk328 = KDSound_Play3d(GS_SiegeTowerExtra3, &this->unk270, 0U, -1, 0.0f, 0U);
                     }
                     this->unk31C = 1.5f;
@@ -713,7 +756,7 @@ void SiegeTower::Update() {
             KDSound_SetVolume(this->unk328, var_f1_1302);
             this->unk320 -= gUpdateTimeDelta;
             if (this->unk320 <= 0.0f) {
-                KDSound_Stop(&this->unk328);
+                KDSound_Stop((int *) &this->unk328);
             }
         }
         UpdateShooting(var_r31_1066);
@@ -789,7 +832,7 @@ s32 SiegeTower::LoadLine(MKIniLine *arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: undefined identifier 'siegeTowerGroups'
 void SiegeTower::Deinit() {
     s32 var_ctr_1542;
     s32 var_r3_1537;
@@ -802,10 +845,10 @@ void SiegeTower::Deinit() {
         M2C_FIELD(temp_r3_1516, s32 *, 0x130) = 0;
     }
     this->unk248 = NULL;
-    KDSound_Stop(&this->unk2A0);
-    KDSound_Stop(&this->unk2C8);
-    KDSound_Stop(&this->unk2F0);
-    KDSound_Stop(&this->unk328);
+    KDSound_Stop((int *) &this->unk2A0);
+    KDSound_Stop((int *) &this->unk2C8);
+    KDSound_Stop((int *) &this->unk2F0);
+    KDSound_Stop((int *) &this->unk328);
     FreeElecBeams();
     if ((s32) this->unk29C < 0xFF) {
         var_r3_1537 = 0;
@@ -854,17 +897,15 @@ void SiegeTowerDescriptor::LoadDone() {
     this->unk174 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "fxemit1");
 }
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[13], long *)' does
 s32 SiegeTowerDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1674;
 
     var_r31_1674 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "ZapSoundLoop", &this->unk178) != 0) || (KDSound_LoadLine(arg0, "ZapSoundLoop2", &this->unk17C) != 0) || (KDSound_LoadLine(arg0, "TurningSoundLoop", &this->unk180) != 0) || (this->unk184.LoadLine(arg0) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "ZapSoundLoop", (int *) &this->unk178) != 0) || (KDSound_LoadLine(arg0, "ZapSoundLoop2", (int *) &this->unk17C) != 0) || (KDSound_LoadLine(arg0, "TurningSoundLoop", (int *) &this->unk180) != 0) || (this->unk184.LoadLine(arg0) != 0)) {
         var_r31_1674 = 1;
     }
     return var_r31_1674;
 }
-#endif
 
 void SiegeTowerDescriptor::Deinit() {
     this->unk184.Deinit();

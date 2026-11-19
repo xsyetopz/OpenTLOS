@@ -1,10 +1,38 @@
 #include "spyro/source/Barricade.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
@@ -54,7 +82,7 @@ s32 BarricadeProp::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKAnimScript'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void BarricadeProp::Message(MKMessage *arg0) {
     f64 spA8;
     f64 spA0;
@@ -93,7 +121,7 @@ void BarricadeProp::Message(MKMessage *arg0) {
         var_r29_162 = 0;
         do {
             temp_r5_170 = this->unk8;
-            temp_f26_171 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+            temp_f26_171 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
             sp48 = -1.0f;
             sp38 = 1.0f;
             sp40 = -1.0f;
@@ -112,7 +140,7 @@ void BarricadeProp::Message(MKMessage *arg0) {
             sp90 = temp_f0_196;
             sp28 = sp80.unk8 * 2000.0f;
             sp98 = (f64) sp28;
-            temp_f1_208 = MKRand_Float(&gViewSeed, 10.0f, 15.0f);
+            temp_f1_208 = MKRand_Float((int *) &gViewSeed, 10.0f, 15.0f);
             sp10 = 1.0f;
             sp14 = temp_f26_171;
             sp8 = temp_f1_208;

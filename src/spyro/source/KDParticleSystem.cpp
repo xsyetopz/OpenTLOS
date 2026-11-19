@@ -1,9 +1,18 @@
 #include "spyro/source/KDParticleSystem.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include <m2c_macros.h>
 
 f64 fmod(f32, f32);                                 /* extern */
@@ -159,7 +168,7 @@ void KDEnvParticleSystemDescriptor::LoadDone() {
     CalculateEnvelope();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 KDEnvParticleSystemDescriptor::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_314;
     MKIniLine *var_r30_334;
@@ -173,7 +182,7 @@ s32 KDEnvParticleSystemDescriptor::LoadLine(MKIniLine *arg0) {
     u8 temp_r3_309;
     void *var_r3_321;
 
-    temp_r3_309 = arg0->LoadInt("Envelope", &this->unkD0, 0);
+    temp_r3_309 = arg0->LoadInt("Envelope", (int *) &this->unkD0, 0);
     if (temp_r3_309 != 0) {
         temp_r27_313 = this->unkD0 * 0x14;
         temp_r3_314 = ((MKHeap *) temp_r3_309)->Current();
@@ -351,17 +360,15 @@ void KDParticleSystemDescriptor::LoadDone() {
     this->unk84 = 1.0f / (f32) this->unk80;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDParticleSystemDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_727;
 
     var_r31_727 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("numSubTextures", &this->unk80, 0) != 0) || (arg0->LoadFloat("textureAnimSpeed", &this->unk90, 0) != 0) || (arg0->LoadFloat("halfWidth", &this->unk94, 0) != 0) || (arg0->LoadFloat("halfHeight", &this->unk98, 0) != 0) || (arg0->LoadVector3("accel", &this->unkB0, 0) != 0) || (arg0->LoadVector3("drift", &this->unkA0, 0) != 0) || (arg0->LoadFloat("damping", &this->unkC0, 0) != 0) || (arg0->LoadFloat("lifetime", &this->unkC8, 0) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("numSubTextures", (int *) &this->unk80, 0) != 0) || (arg0->LoadFloat("textureAnimSpeed", &this->unk90, 0) != 0) || (arg0->LoadFloat("halfWidth", &this->unk94, 0) != 0) || (arg0->LoadFloat("halfHeight", &this->unk98, 0) != 0) || (arg0->LoadVector3("accel", &this->unkB0, 0) != 0) || (arg0->LoadVector3("drift", &this->unkA0, 0) != 0) || (arg0->LoadFloat("damping", &this->unkC0, 0) != 0) || (arg0->LoadFloat("lifetime", &this->unkC8, 0) != 0)) {
         var_r31_727 = 1;
     }
     return var_r31_727;
 }
-#endif
 
 void KDParticleSystemDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();

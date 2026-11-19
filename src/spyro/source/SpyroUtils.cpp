@@ -1,9 +1,40 @@
 #include "spyro/source/SpyroUtils.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/CameraData.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/EventCamera.h"
 #include <m2c_macros.h>
 
@@ -587,7 +618,6 @@ void SpyroSoundPlayer::Message(MKMessage *arg0) {
     } while (var_r30_937 < 0xD);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void SpyroSoundPlayer::Deinit() {
     s32 var_r30_963;
     s32 var_r31_964;
@@ -595,12 +625,11 @@ void SpyroSoundPlayer::Deinit() {
     var_r30_963 = 0;
     var_r31_964 = 0;
     do {
-        KDSound_Stop((s32 *) &this[var_r31_964]);
+        KDSound_Stop((int *) &this[var_r31_964]);
         var_r30_963 += 1;
         var_r31_964 += 0x58;
     } while (var_r30_963 < 0xD);
 }
-#endif
 
 void SpyroSoundPlayer::Init() {
     SpyroSoundPlayer *temp_r30_1001;

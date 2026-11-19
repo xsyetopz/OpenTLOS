@@ -1,23 +1,55 @@
 #include "spyro/source/Sparx.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SparxFX.h"
 #include "spyro/source/SparxPath.h"
+#include "spyro/source/SplineProp.h"
 #include "spyro/source/SpyroTools.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/PhrasePlayer.h"
@@ -740,8 +772,8 @@ loop_35:
         this->unk1DC = var_r27_1162;
         return;
     }
-    temp_f27_1203 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-    sp70 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+    temp_f27_1203 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+    sp70 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
     sp74 = 0.0f;
     sp78 = temp_f27_1203;
     sp120 = (f64) sp70;
@@ -788,7 +820,7 @@ loop_35:
     sp120 = (f32) sp120 * var_f5_1288;
     (*(f32 *) ((u8 *) &sp118 + 0xc)) *= var_f5_1288;
     sp128 = (f32) sp128 * var_f5_1288;
-    sp100.operator*(MKRand_Float(&gViewSeed, 250.0f, 5250.0f));
+    sp100.operator*(MKRand_Float((int *) &gViewSeed, 250.0f, 5250.0f));
     sp20 = this->unk2B0 + M2C_BITWISE(f64, sp100);
     sp40 = 0.0f;
     sp44 = 10000.0f;
@@ -817,7 +849,7 @@ loop_35:
     sp58 = temp_f4_1336 + (f32) spE8;
     spF8 = (f64) sp58;
     if (MKCollision_RayCollide(*((MKVector3 *) &spF0), *((MKVector3 *) &spD0), &this->unk220, (MKCollisionMode) 7, 0x04000000) != 0) {
-        MKVector(0.0f, MKRand_Float(&gViewSeed, 500.0f, 1500.0f), 0.0f);
+        MKVector(0.0f, MKRand_Float((int *) &gViewSeed, 500.0f, 1500.0f), 0.0f);
         sp10 = M2C_FIELD(this, f64 *, 0x220) + spA0;
         this->unk1B8 = sp10;
         sp18 = this->unk220.unk8 + spA8;
@@ -963,7 +995,7 @@ void Sparx::StateAction_SpyroLongIdle1Enter() {
     this->unkF4 = 1.0f;
     sp40 = (f64) sp10;
     this->unkFC = 0;
-    this->unk100 = MKRand_Int(&gViewSeed, 0, 2);
+    this->unk100 = MKRand_Int((int *) &gViewSeed, 0, 2);
 }
 #endif
 
@@ -981,10 +1013,10 @@ void Sparx::StateAction_SpyroIdleUpdate() {
     if (this->unkCC > M2C_FIELD(checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x9C)) {
         this->unkCC = 0.0f;
         if ((u8) this->unkD4 == 1) {
-            var_r3_1860 = MKRand_Int(&gViewSeed, 1, 3);
+            var_r3_1860 = MKRand_Int((int *) &gViewSeed, 1, 3);
 loop_6:
             if (var_r3_1860 == (s32) this->unkF8) {
-                var_r3_1860 = MKRand_Int(&gViewSeed, 1, 3);
+                var_r3_1860 = MKRand_Int((int *) &gViewSeed, 1, 3);
                 goto loop_6;
             }
             this->unkF8 = var_r3_1860;
@@ -1040,19 +1072,17 @@ void Sparx::ResetLongIdle2() {
     this->unk1E5 = 0;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void Sparx::GetNextLocalIdlePos() {
     s32 var_r3_1986;
 
-    var_r3_1986 = MKRand_Int(&gViewSeed, 2, 6);
+    var_r3_1986 = MKRand_Int((int *) &gViewSeed, 2, 6);
 loop_2:
     if (var_r3_1986 == (s32) this->unkD0) {
-        var_r3_1986 = MKRand_Int(&gViewSeed, 1, 3);
+        var_r3_1986 = MKRand_Int((int *) &gViewSeed, 1, 3);
         goto loop_2;
     }
     this->unkD0 = var_r3_1986;
 }
-#endif
 
 void Sparx::Disable() {
     SparxFX *temp_r3_2014;
@@ -1643,7 +1673,7 @@ void Sparx::ResetHint() {
     this->unk1F0 = 0;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'Message(HeroInterface *)' does not match
 void Sparx::Message(MKMessage *arg0) {
     s32 temp_r0_3103;
     void *temp_r0_3154;
@@ -1702,7 +1732,7 @@ u8 Sparx::GetTaskMode() {
     return var_r4_3210;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: function call 'IsDying(HeroInterface *, GameGlobals *)' does not match
 void Sparx::Spawn() {
     f64 sp60;
     f64 sp58;
@@ -1744,7 +1774,7 @@ void Sparx::Spawn() {
     this->unk50.unk38 = (f32) M2C_FIELD(this, f64 *, 0x2B8);
     sp30 = (f64) sp10;
     this->unk50.unk3C = 1.0f;
-    this->unkC0 = (struct _struct_localOffset_0x10 (*)[]) &localOffset[MKRand_Int(&gViewSeed, 2, 5)];
+    this->unkC0 = (struct _struct_localOffset_0x10 (*)[]) &localOffset[MKRand_Int((int *) &gViewSeed, 2, 5)];
     SetState(0, 0U);
 }
 #endif
@@ -1768,8 +1798,8 @@ void Sparx::RespawnOnSpyroDeath() {
     this->unkC0 = NULL;
     this->unkCC = 0.0f;
     this->unkC8 = 0.0f;
-    this->unkF8 = MKRand_Int(&gViewSeed, 1, 3);
-    this->unkD0 = MKRand_Int(&gViewSeed, 1, 3);
+    this->unkF8 = MKRand_Int((int *) &gViewSeed, 1, 3);
+    this->unkD0 = MKRand_Int((int *) &gViewSeed, 1, 3);
     this->unk1EC = -1;
     memset(&this->unk2B0, 0, 0x28U);
     this->unk220.unk0 = 0.0f;
@@ -1818,7 +1848,7 @@ void Sparx::RespawnOnSpyroDeath() {
         this->unk50.unk38 = (f32) M2C_FIELD(this, f64 *, 0x2B8);
         sp30 = (f64) sp10;
         this->unk50.unk3C = 1.0f;
-        this->unkC0 = (struct _struct_localOffset_0x10 (*)[]) &localOffset[MKRand_Int(&gViewSeed, 2, 5)];
+        this->unkC0 = (struct _struct_localOffset_0x10 (*)[]) &localOffset[MKRand_Int((int *) &gViewSeed, 2, 5)];
         SetState(0, 0U);
     }
 }
@@ -1830,8 +1860,8 @@ void Sparx::Reset() {
     this->unkC0 = NULL;
     this->unkCC = 0.0f;
     this->unkC8 = 0.0f;
-    this->unkF8 = MKRand_Int(&gViewSeed, 1, 3);
-    this->unkD0 = MKRand_Int(&gViewSeed, 1, 3);
+    this->unkF8 = MKRand_Int((int *) &gViewSeed, 1, 3);
+    this->unkD0 = MKRand_Int((int *) &gViewSeed, 1, 3);
     this->unk1E8 = NULL;
     this->unk1EC = -1;
     memset(&this->unk2B0, 0, 0x28U);
@@ -1933,8 +1963,8 @@ void Sparx::Init() {
     this->unkC8 = 0.0f;
     this->unk2AC = 0.0f;
     this->unkC4 = 0.0f;
-    this->unkF8 = MKRand_Int(&gViewSeed, 1, 3);
-    this->unkD0 = MKRand_Int(&gViewSeed, 1, 3);
+    this->unkF8 = MKRand_Int((int *) &gViewSeed, 1, 3);
+    this->unkD0 = MKRand_Int((int *) &gViewSeed, 1, 3);
     this->unk1EC = -1;
     this->unk1E8 = NULL;
     this->unk98 = checked_cast<SparxFX *, MKProp>(gMK->CreateProp("SparxFX"));
@@ -1978,17 +2008,15 @@ void SparxDescriptor::LoadDone() {
     this->unk1C = (BoundingVolume *) &this->unk60;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SparxDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_3793;
 
     var_r31_3793 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("attackwoldyoffset", &this->unk84, 0) != 0) || (arg0->LoadFloat("attackworlddistance", &this->unk88, 0) != 0) || (arg0->LoadFloat("attacktimerdelay", &this->unk80, 0) != 0) || (arg0->LoadFloat("velocityfalloffpct", &this->unk8C, 0) != 0) || (arg0->LoadFloat("afterattackholdtime", &this->unk90, 0) != 0) || (arg0->LoadFloat("movechaselerppct", &this->unk94, 0) != 0) || (arg0->LoadFloat("moveattacklerppct", &this->unk98, 0) != 0) || (arg0->LoadFloat("longidletime", &this->unk9C, 0) != 0) || (arg0->LoadFloat("shortidletime", &this->unkA0, 0) != 0) || (arg0->LoadInt("longidleloops", &this->unkA4, 0) != 0) || (arg0->LoadFloat("longidleyoffsetmin", &this->unkA8, 0) != 0) || (arg0->LoadFloat("longidleyoffsetmax", &this->unkAC, 0) != 0) || (arg0->LoadFloat("hintphrasedelay", &this->unkB4, 0) != 0) || (arg0->LoadInt("idlePhraseChance", &this->unkB8, 0) != 0) || (arg0->LoadFloat("longidlerotspeed", &this->unkB0, 0) != 0) || (arg0->LoadFloat("longidle2speed", &this->unkBC, 0) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("attackwoldyoffset", &this->unk84, 0) != 0) || (arg0->LoadFloat("attackworlddistance", &this->unk88, 0) != 0) || (arg0->LoadFloat("attacktimerdelay", &this->unk80, 0) != 0) || (arg0->LoadFloat("velocityfalloffpct", &this->unk8C, 0) != 0) || (arg0->LoadFloat("afterattackholdtime", &this->unk90, 0) != 0) || (arg0->LoadFloat("movechaselerppct", &this->unk94, 0) != 0) || (arg0->LoadFloat("moveattacklerppct", &this->unk98, 0) != 0) || (arg0->LoadFloat("longidletime", &this->unk9C, 0) != 0) || (arg0->LoadFloat("shortidletime", &this->unkA0, 0) != 0) || (arg0->LoadInt("longidleloops", (int *) &this->unkA4, 0) != 0) || (arg0->LoadFloat("longidleyoffsetmin", &this->unkA8, 0) != 0) || (arg0->LoadFloat("longidleyoffsetmax", &this->unkAC, 0) != 0) || (arg0->LoadFloat("hintphrasedelay", &this->unkB4, 0) != 0) || (arg0->LoadInt("idlePhraseChance", (int *) &this->unkB8, 0) != 0) || (arg0->LoadFloat("longidlerotspeed", &this->unkB0, 0) != 0) || (arg0->LoadFloat("longidle2speed", &this->unkBC, 0) != 0)) {
         var_r31_3793 = 1;
     }
     return var_r31_3793;
 }
-#endif
 
 void SparxDescriptor::Init() {
     MKPropDescriptor::Init();

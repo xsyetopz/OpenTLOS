@@ -1,11 +1,38 @@
 #include "spyro/source/SpawnerObject.h"
+#include "common/Source/Animation.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -241,7 +268,6 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
 SpawnPointObject *SpawnerObject::GetSpawnPointObject() {
     f64 sp40;
     f64 sp38;
@@ -272,7 +298,7 @@ loop_2:
     }
     temp_r30_356 = (s32) (var_r3_344 - temp_r4_343) / 4;
     var_r28_360 = NULL;
-    var_r29_361 = MKRand_Int(&gViewSeed, 0, temp_r30_356);
+    var_r29_361 = MKRand_Int((int *) &gViewSeed, 0, temp_r30_356);
     var_r27_362 = 0;
 loop_9:
     if (var_r27_362 < temp_r30_356) {
@@ -310,7 +336,6 @@ block_8:
     this->unk1C = temp_r3_420 | temp_r4_421;
     return var_r28_360;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SpawnerObject::FreeSpawnItemObject(SpawnItemObject *arg0) {
@@ -1041,14 +1066,14 @@ void SpawnerObject::LoadDone(int arg0, int arg1, bool arg2, unsigned int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 SpawnerObject::LoadLine(MKIniLine *arg0) {
     s32 spC;
     u8 sp8;
 
     sp8 = 0;
     spC = 0;
-    if ((arg0->LoadFloat("fSpawnDelay", &this->unk30, 0) != 0) || (arg0->LoadFloat("fDelayBetweenSpawns", &this->unk34, 0) != 0) || (arg0->LoadInt("iMaxSpawnItems", &this->unk28, 0) != 0) || (arg0->LoadInt("iMaxSpawnAmount", &this->unk24, 0) != 0) || (this->unk3C.LoadLine(arg0, "OnAllDead") != 0) || (this->unk40.LoadLine(arg0, "OnChildSpawnerAllDead") != 0)) {
+    if ((arg0->LoadFloat("fSpawnDelay", &this->unk30, 0) != 0) || (arg0->LoadFloat("fDelayBetweenSpawns", &this->unk34, 0) != 0) || (arg0->LoadInt("iMaxSpawnItems", (int *) &this->unk28, 0) != 0) || (arg0->LoadInt("iMaxSpawnAmount", (int *) &this->unk24, 0) != 0) || (this->unk3C.LoadLine(arg0, "OnAllDead") != 0) || (this->unk40.LoadLine(arg0, "OnChildSpawnerAllDead") != 0)) {
         return 1;
     }
     if (arg0->LoadBool("bOnlySpawnOffscreen", &sp8, 0) != 0) {
@@ -1059,7 +1084,7 @@ s32 SpawnerObject::LoadLine(MKIniLine *arg0) {
         this->unk4C = (this->unk4C & ~0x10) | ((sp8 << 4) & 0x10);
         goto block_14;
     }
-    if (arg0->LoadInt("zone", &spC, 0) != 0) {
+    if (arg0->LoadInt("zone", (int *) &spC, 0) != 0) {
         this->unk18 = spC;
 block_14:
         return 1;

@@ -1,7 +1,33 @@
 #include "spyro/source/CounterProp.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include <m2c_macros.h>
 
 void CounterProp::Deinit() {
@@ -35,12 +61,12 @@ void CounterProp::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 CounterProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_131;
 
     var_r31_131 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("iCountSize", &this->unk50, 0) != 0) || (arg0->LoadBool("bResetOnCount", &this->unk58, 0) != 0) || (this->unk4C.LoadLine(arg0, "OnCount") != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("iCountSize", (int *) &this->unk50, 0) != 0) || (arg0->LoadBool("bResetOnCount", &this->unk58, 0) != 0) || (this->unk4C.LoadLine(arg0, "OnCount") != 0)) {
         var_r31_131 = 1;
     }
     return var_r31_131;

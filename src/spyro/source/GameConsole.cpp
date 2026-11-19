@@ -1,7 +1,17 @@
 #include "spyro/source/GameConsole.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKInput.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/MKWidgetsInternal.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
@@ -1913,7 +1923,7 @@ f32 CmdBind(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, long *)' does not match
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int *)' does not match
 f32 CmdExec(int arg0, char **arg1) {
     s32 sp8;
     ConVar *var_r31_3173;
@@ -1927,7 +1937,7 @@ f32 CmdExec(int arg0, char **arg1) {
         fLastResult = 0.0f;
     } else {
         sp8 = 0;
-        if (MKArchive_Exists(M2C_FIELD(arg1, s8 **, 4), &sp8) != 0) {
+        if (MKArchive_Exists(M2C_FIELD(arg1, s8 **, 4), (int *) &sp8) != 0) {
             temp_r31_3163 = sp8 + 1;
             temp_r3_3164 = ((MKHeap *) sp8)->Current();
             if (temp_r3_3164 != NULL) {
@@ -1935,7 +1945,7 @@ f32 CmdExec(int arg0, char **arg1) {
             } else {
                 var_r31_3173 = malloc(temp_r31_3163);
             }
-            MKArchive_Load(M2C_FIELD(arg1, s8 **, 4), &sp8, var_r31_3173, -1);
+            MKArchive_Load(M2C_FIELD(arg1, s8 **, 4), (int *) &sp8, var_r31_3173, -1);
             *(var_r31_3173 + sp8) = 0;
             temp_r3_3190 = ((MKHeap *) (M2C_BITWISE(MKHeap *, Console_ExecuteBuffer((s8 *) var_r31_3173))))->Current();
             if (temp_r3_3190 != NULL) {

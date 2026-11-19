@@ -1,10 +1,27 @@
 #include "spyro/source/KDSynkerPlayer3.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/KDInput.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
 #include "spyro/source/KDSynkerPlayerActor.h"
+#include "spyro/source/KDSynkerPlayerActorList.h"
+#include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/KDSynkerPlayerEvents.h"
+#include "spyro/source/KDSynkerPlayerSounds.h"
+#include "spyro/source/KDSynkerPlayerTools.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKPackage.h"
 #include "common/Source/Str.h"
 #include "spyro/source/GameLanguage.h"
@@ -322,17 +339,15 @@ void KDSynkerPlayer3::SkipToEnd(bool arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void KDSynkerPlayer3::Update_Unloading_Playing() {
     if (!(this->unk50 & 8)) {
-        this->unk148.UnloadPlaying(&this->unk250);
+        this->unk148.UnloadPlaying((int *) &this->unk250);
     }
     this->unk254 -= 1;
     if (((s32) this->unk254 <= 0) && ((s32) this->unk148.unk14 == -1)) {
         this->unk4C = 8;
     }
 }
-#endif
 
 void KDSynkerPlayer3::Update_Unloading_Loading() {
     u32 temp_r3_695;
@@ -382,7 +397,7 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDSynkerPlayer3::Update_Playing(bool arg0) {
     KDS_Message_SetCamera spC;
     s32 sp8;
@@ -391,7 +406,7 @@ void KDSynkerPlayer3::Update_Playing(bool arg0) {
     u32 temp_r3_847;
 
     if (arg0 == 0) {
-        this->unk240 = this->unk148.Update(this->unk24C, this->unk48, this->unk23C, &this->unk250, &sp8) == 0;
+        this->unk240 = this->unk148.Update(this->unk24C, this->unk48, this->unk23C, (int *) &this->unk250, (int *) &sp8) == 0;
         if (((u8) this->unk148.unk0 != 0) && ((u8) this->unk148.unk1 != 0)) {
             this->unk120.UpdateSfx(&this->unk100, this->unk24C, this->unk48);
         }
@@ -403,7 +418,7 @@ void KDSynkerPlayer3::Update_Playing(bool arg0) {
             this->unk50 |= 4;
         }
         temp_r3_847 = this->unk50;
-        if (!(temp_r3_847 & 2) && !(temp_r3_847 & 4) && ((temp_r3_847 & 8) || (this->unk148.WaitingForSoundPackage(&this->unk250) == 0))) {
+        if (!(temp_r3_847 & 2) && !(temp_r3_847 & 4) && ((temp_r3_847 & 8) || (this->unk148.WaitingForSoundPackage((int *) &this->unk250) == 0))) {
             this->unk244 += gUpdateTimeDelta * this->unk48;
             this->unk248 = 30.0f * this->unk244;
             this->unk24C = (s32) this->unk248;
@@ -448,7 +463,7 @@ void KDSynkerPlayer3::Update_ParseData() {
         MKPackage_QFree(this->unk250);
         this->unk250 = 0;
     }
-    if (this->unk148.LoadDynamicSoundBank(&this->unk250, ((u32) this->unk50 >> 3U) & 1) != 0) {
+    if (this->unk148.LoadDynamicSoundBank((int *) &this->unk250, ((u32) this->unk50 >> 3U) & 1) != 0) {
         this->unk4C = 3;
         return;
     }

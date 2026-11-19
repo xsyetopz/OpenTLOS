@@ -1,18 +1,45 @@
 #include "spyro/source/GameProp.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SpyroTools.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "spyro/source/GameEnums.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -212,7 +239,7 @@ void GameProp::Message(MKMessage *arg0) {
         Tools_ResetEachInstance((MKPropDescriptor *) this->unk0);
         break;
     }
-    PropFlagsMessage((u32 *) &this->unk10, arg0);
+    PropFlagsMessage((unsigned int *) &this->unk10, arg0);
     KDPropEx::Message(arg0);
 }
 #endif
@@ -243,9 +270,9 @@ void GameProp::Draw() {
     }
 }
 
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
+#if 0 // DRAFT: ')' expected
 void GameProp::Deactivate() {
-    PropFlagsClear((u32 *) &this->unk10, 0x160000U);
+    PropFlagsClear((unsigned int *) &this->unk10, 0x160000U);
     this->unk70.unk4 = 0;
     if ((u32) M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u32 *, 0xC8) != 0U) {
         this->unk80->SetAnim(M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0xC8), 1.0f, 0.0f, 0, -1);
@@ -253,9 +280,9 @@ void GameProp::Deactivate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
+#if 0 // DRAFT: ')' expected
 void GameProp::Activate() {
-    PropFlagsSet((u32 *) &this->unk10, 0x160000U);
+    PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
     if (this->unk10 & 0x100000) {
         this->unk70.unk4 = 1;
     }
@@ -401,19 +428,16 @@ void GameProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsLoadLine(unsigned long *, MKIniLine *)' does not
 s32 GameProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_658;
 
     var_r31_658 = 0;
-    if ((KDPropEx::LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0)) {
+    if ((KDPropEx::LoadLine(arg0) != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0)) {
         var_r31_658 = 1;
     }
     return var_r31_658;
 }
-#endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void GameProp::Deinit() {
     FireAndIceFX *temp_r3_686;
     s32 temp_r3_695;
@@ -426,24 +450,21 @@ void GameProp::Deinit() {
     }
     temp_r3_695 = this->unkBC;
     if ((temp_r3_695 != 0) && (KDSound_IsVoicePlaying(temp_r3_695) != 0)) {
-        KDSound_Stop(&this->unkBC);
+        KDSound_Stop((int *) &this->unkBC);
     }
     if ((MKAnimScript *) this->unk80 != NULL) {
         this->unk90.Deinit();
     }
     KDPropEx::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void GameProp::Init() {
     KDPropEx::Init();
-    PropFlagsSet((u32 *) &this->unk10, 0x160000U);
+    PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
     this->unkB8 = 0.0f;
     this->unkBC = 0;
     this->unkC0 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match
 void GamePropDescriptor::LoadDone() {
@@ -472,12 +493,12 @@ void GamePropDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropTypes_LoadLine(MKIniLine *, const char[1], long *)'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 GamePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_794;
 
     var_r31_794 = 0;
-    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (PropTypes_LoadLine(arg0, "", &this->unkC) != 0) || (arg0->LoadString("", &this->unkC0, 0) != 0) || (KDSound_LoadLine(arg0, "", &this->unkDC) != 0) || (arg0->LoadString("", &this->unkC4, 0) != 0) || (arg0->LoadString("", &this->unkC8, 0) != 0) || (KDSound_LoadLine(arg0, "soundLoop01", &this->unkD0.unk0) != 0) || (KDSound_LoadLine(arg0, "", &this->unkD4) != 0) || (KDSound_LoadLine(arg0, "", &this->unkD8) != 0) || (arg0->LoadBool("", this + 0xE1, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unkE0, 0) != 0) || (arg0->LoadFloat("", (f32 *) &this->unkCC, 0) != 0)) {
+    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (PropTypes_LoadLine(arg0, "", (int *) &this->unkC) != 0) || (arg0->LoadString("", &this->unkC0, 0) != 0) || (KDSound_LoadLine(arg0, "", (int *) &this->unkDC) != 0) || (arg0->LoadString("", &this->unkC4, 0) != 0) || (arg0->LoadString("", &this->unkC8, 0) != 0) || (KDSound_LoadLine(arg0, "soundLoop01", (int *) &this->unkD0.unk0) != 0) || (KDSound_LoadLine(arg0, "", (int *) &this->unkD4) != 0) || (KDSound_LoadLine(arg0, "", (int *) &this->unkD8) != 0) || (arg0->LoadBool("", this + 0xE1, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unkE0, 0) != 0) || (arg0->LoadFloat("", (f32 *) &this->unkCC, 0) != 0)) {
         var_r31_794 = 1;
     }
     return var_r31_794;

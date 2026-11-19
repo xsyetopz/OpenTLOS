@@ -1,18 +1,32 @@
 #include "spyro/source/SB2.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/AITargetData.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/KDPath.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
 #include "dolphin/os.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
@@ -1146,7 +1160,7 @@ s32 SB2::GraphFollowing_EvadeSelectLink() {
 
     temp_r3_1709 = this->unk0;
     temp_r30_1714 = M2C_FIELD(M2C_FIELD(temp_r3_1709->__vptr, void *(**)(Character *), 0xD4)(temp_r3_1709), void **, 0xA38);
-    if (MKRand_Float(&gViewSeed, 0.0f, 1.0f) < M2C_FIELD(temp_r30_1714, f32 *, 0x144)) {
+    if (MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f) < M2C_FIELD(temp_r30_1714, f32 *, 0x144)) {
         return GraphFollowing_RandomSelectLink();
     }
     temp_r4_1728 = this->unk0->unk8;
@@ -2066,25 +2080,23 @@ void SB2::GraphFollowing_RandomNoMoreNodes() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 s32 SB2::GraphFollowing_RandomSelectLink() {
     CharacterGraphNode *temp_r3_3378;
     s32 var_r31_3369;
 
-    var_r31_3369 = MKRand_Int(&gViewSeed, 0, 6);
+    var_r31_3369 = MKRand_Int((int *) &gViewSeed, 0, 6);
 loop_2:
     temp_r3_3378 = this->unk448;
     if (temp_r3_3378->IsFreeLink(var_r31_3369) != 0) {
 block_1:
-        var_r31_3369 = MKRand_Int(&gViewSeed, 0, 6);
+        var_r31_3369 = MKRand_Int((int *) &gViewSeed, 0, 6);
         goto loop_2;
     }
-    if ((this->unk448->GetLink(var_r31_3369) == (CharacterGraphNode *) this->unk44C) && (MKRand_Int(&gViewSeed, 0, 0x7F) <= 0x40)) {
+    if ((this->unk448->GetLink(var_r31_3369) == (CharacterGraphNode *) this->unk44C) && (MKRand_Int((int *) &gViewSeed, 0, 0x7F) <= 0x40)) {
         goto block_1;
     }
     return var_r31_3369;
 }
-#endif
 
 void SB2::GraphFollowing() {
     Seek();

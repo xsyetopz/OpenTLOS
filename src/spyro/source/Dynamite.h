@@ -105,7 +105,7 @@ inline Dynamite::~Dynamite() {
             }
         }
         if (&this->unk150 != NULL) {
-            KDSound_Stop(&this->unk150);
+            KDSound_Stop((int *) &this->unk150);
         }
     }
 }

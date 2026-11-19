@@ -155,7 +155,7 @@ inline void EnemyGoal_AttackMeleeLoop::Reset() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline EnemyGoal_LeapAttackMiss::~EnemyGoal_LeapAttackMiss() {
     if ((&this->unk14 != NULL) && (&this->unk14 != NULL)) {
-        KDSound_Stop(&this->unk14);
+        KDSound_Stop((int *) &this->unk14);
     }
 }
 #endif

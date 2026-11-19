@@ -386,7 +386,7 @@ inline SpeedWaySpyro::~SpeedWaySpyro() {
     if (this != NULL) {
         this->unk90 = &__vt.unk3C;
         if ((&this->unk888 != NULL) && (&this->unk888 != NULL)) {
-            KDSound_Stop(&this->unk888);
+            KDSound_Stop((int *) &this->unk888);
         }
         temp_cr0_eq_33 = this == NULL;
         if (temp_cr0_eq_33 == 0) {

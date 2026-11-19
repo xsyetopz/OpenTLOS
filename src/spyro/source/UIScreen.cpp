@@ -1,4 +1,7 @@
 #include "spyro/source/UIScreen.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKVector3.h"
+#include "spyro/source/UIAttributes.h"
 #include "spyro/source/UIContainer.h"
 #include "spyro/source/UIMessage.h"
 #include "spyro/source/UIObject.h"

@@ -1,10 +1,12 @@
 #include "common/Source/MKCollisionUtil.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKResource.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 

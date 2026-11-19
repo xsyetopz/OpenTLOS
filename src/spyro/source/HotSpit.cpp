@@ -1,22 +1,41 @@
 #include "spyro/source/HotSpit.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/GoopFX.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/Projectile.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_BBFireballSplat;
@@ -156,9 +175,9 @@ void HotSpit::Update() {
     sp1A0 = (f32) sp1A0 * var_f4_78;
     if (var_f5_99 != 0.0f) {
         temp_f31_182 = gUpdateTimeDelta;
-        temp_f29_187 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
-        temp_f28_192 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
-        MKVector(MKRand_Float(&gViewSeed, 1.0f, 3.0f), temp_f28_192, temp_f29_187);
+        temp_f29_187 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
+        temp_f28_192 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
+        MKVector(MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f), temp_f28_192, temp_f29_187);
         sp158.operator*(3.0f);
         temp_f0_207 = sp158 * (f64) temp_f31_182;
         sp38 = temp_f0_207;
@@ -227,7 +246,7 @@ void HotSpit::Update() {
     spD8 = temp_f0_354;
     sp50 = sp1F0.unk38 + (f32) spD0;
     spE0 = (f64) sp50;
-    sp14 = MKRand_Float(&gViewSeed, 8.0f, 12.0f);
+    sp14 = MKRand_Float((int *) &gViewSeed, 8.0f, 12.0f);
     ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &spD8), *((MKVector3 *) &sp178), sp14);
 }
 #endif
@@ -394,7 +413,7 @@ void HotSpit::Collided(MKCollisionResult &arg0) {
         sp1C8 = sp38;
         sp140 = (f64) sp40;
         sp1D0 = (f64) sp40;
-        sp14 = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
+        sp14 = MKRand_Float((int *) &gViewSeed, 10.0f, 20.0f);
         ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &sp1E0.unk30), *((MKVector3 *) &sp1C8), sp14);
         var_r26_498 += 1;
     } while (var_r26_498 < 0xA);

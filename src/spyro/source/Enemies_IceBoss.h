@@ -223,10 +223,10 @@ inline IceBoss::IceBoss() {
 inline IceBoss::~IceBoss() {
     this->unk6B8 = &__vt.unk84;
     if ((&this->unk103C != NULL) && (&this->unk103C != NULL)) {
-        KDSound_Stop(&this->unk103C);
+        KDSound_Stop((int *) &this->unk103C);
     }
     if ((&this->unk1014 != NULL) && (&this->unk1014 != NULL)) {
-        KDSound_Stop(&this->unk1014);
+        KDSound_Stop((int *) &this->unk1014);
     }
     if (&this->unkFEC != NULL) {
         this->unkFEC.Deinit();

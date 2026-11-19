@@ -1,9 +1,23 @@
 #include "spyro/source/Subtitles.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/CutsceneObject.h"
 #include "spyro/source/CutsceneSystem.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/GameVideo.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/Str.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -150,13 +164,13 @@ void Subtitles_Update() {
 loop_38:
         if (((u32) sub.unk64 != 0) && (((MKIniLine *) sub.unk64)->GetFloat(0) <= M2C_BITWISE(f32, sub.unk70))) {
             if (((MKIniLine *) sub.unk64)->IsField("subtitle") != 0) {
-                sub.unk4 = Subtitles_GetText(((MKIniLine *) sub.unk64)->GetString(2), (s32 *) &sub.unk80);
+                sub.unk4 = Subtitles_GetText(((MKIniLine *) sub.unk64)->GetString(2), (int *) &sub.unk80);
                 temp_f1_292 = ((MKIniLine *) sub.unk64)->GetFloat(1);
                 sub.unk8 = 0;
                 sub.unk0 = temp_f1_292;
                 ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle((s8 *) sub.unk4, 9, 0U);
             } else if (((MKIniLine *) sub.unk64)->IsField("credit") != 0) {
-                sub.unk4 = Subtitles_GetText(((MKIniLine *) sub.unk64)->GetString(2), (s32 *) &sub.unk80);
+                sub.unk4 = Subtitles_GetText(((MKIniLine *) sub.unk64)->GetString(2), (int *) &sub.unk80);
                 temp_f1_320 = ((MKIniLine *) sub.unk64)->GetFloat(1);
                 sub.unk8 = 1;
                 sub.unk0 = temp_f1_320;
@@ -319,7 +333,7 @@ void Subtitles_Init(const char *arg0) {
         sp8 = 0;
         GameLanguage_GetCode(-1);
         temp_r3_639 = Str_Printf("%s%s.sub", arg0, M2C_ERROR(/* Read from unset register $r3 */), "subtitle");
-        var_r3_642 = MKArchive_Exists(temp_r3_639, &sp8);
+        var_r3_642 = MKArchive_Exists(temp_r3_639, (int *) &sp8);
         if ((u8) var_r3_642 != 0) {
             temp_r28_646 = sp8 + 1;
             temp_r3_647 = ((MKHeap *) sp8)->Current();

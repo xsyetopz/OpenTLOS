@@ -1,22 +1,57 @@
 #include "spyro/source/LavaCannon.h"
 #include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AnimUtils.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FlyingBurningBits.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/Projectile.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -355,7 +390,7 @@ void LavaCannon::Update() {
         case 0:                                     /* switch 1 */
             this->unk238 = 0;
             this->unk239 = 0;
-            this->unk228 = MKRand_Int(&gViewSeed, 0, 3);
+            this->unk228 = MKRand_Int((int *) &gViewSeed, 0, 3);
             temp_r4_809 = this->unk8;
             sp38 = M2C_FIELD(temp_r4_809, f64 *, 0x30);
             temp_r3_816 = this + ((this->unk228 * 0x10) + 0x1A8);
@@ -543,10 +578,9 @@ void LavaCannon::Deinit() {
     Shatterable::Deinit();
 }
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void LavaCannon::Init() {
     Shatterable::Init();
-    PropFlagsSet((u32 *) &this->unk10, 0x80000U);
+    PropFlagsSet((unsigned int *) &this->unk10, 0x80000U);
     this->unk248 = 0.0f;
     this->unk24C = 0.0f;
     this->unk1D8 = 1.0f;
@@ -559,7 +593,6 @@ void LavaCannon::Init() {
     this->unk258 = 1.0f;
     this->unk240 = NULL;
 }
-#endif
 
 void LavaCannonDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
@@ -634,17 +667,15 @@ void LavaCannonDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[9], long *)' does
 s32 LavaCannonDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1545;
 
     var_r31_1545 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndFire1", &this->unk194) != 0) || (KDSound_LoadLine(arg0, "sndFire2", &this->unk194) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndFire1", (int *) &this->unk194) != 0) || (KDSound_LoadLine(arg0, "sndFire2", (int *) &this->unk194) != 0)) {
         var_r31_1545 = 1;
     }
     return var_r31_1545;
 }
-#endif
 
 void LavaCannonDescriptor::Init() {
     ShatterableDescriptor::Init();

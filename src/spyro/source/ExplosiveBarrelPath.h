@@ -109,7 +109,7 @@ inline ExplosiveBarrelPath::~ExplosiveBarrelPath() {
 #if 0 // DRAFT: undefined identifier 'unk1C'
 inline ExplosiveBarrelPath::BarrelData::~BarrelData() {
     if ((&this->unk1C != NULL) && (&this->unk1C != NULL)) {
-        KDSound_Stop(&this->unk1C);
+        KDSound_Stop((int *) &this->unk1C);
     }
     if (arg1 > 0) {
         operator delete(this);

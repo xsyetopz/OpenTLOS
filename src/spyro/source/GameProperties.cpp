@@ -1,18 +1,34 @@
 #include "spyro/source/GameProperties.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/BobProperty.h"
 #include "spyro/source/ControllerRumbleProperty.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/GameCameraMessages.h"
+#include "spyro/source/GameProp.h"
 #include "spyro/source/HurtProperty.h"
 #include "spyro/source/KDCommonProperties.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDPositionProperty.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDProperty.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/MessageMap.h"
 #include "spyro/source/RotateProperty.h"
 #include "spyro/source/SwayProperty.h"
@@ -129,12 +145,12 @@ void CollisionSphereProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDProp_LoadMaterialID(MKIniLine *, const char[11], long *)'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 CollisionSphereProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_261;
 
     var_r31_261 = 0;
-    if ((arg0->LoadFloat("CollisionRadius", &this->unk14, 0) != 0) || (arg0->LoadFloat("YOffset", &this->unk18, 0) != 0) || (KDProp_LoadMaterialID(arg0, "MaterialID", (s32 *) &this->unk1C) != 0) || (arg0->LoadString("origin", &this->unk10, 0) != 0)) {
+    if ((arg0->LoadFloat("CollisionRadius", &this->unk14, 0) != 0) || (arg0->LoadFloat("YOffset", &this->unk18, 0) != 0) || (KDProp_LoadMaterialID(arg0, "MaterialID", (int *) &this->unk1C) != 0) || (arg0->LoadString("origin", &this->unk10, 0) != 0)) {
         var_r31_261 = 1;
     }
     return var_r31_261;
@@ -237,9 +253,9 @@ s32 MessageBroadcasterProperty::ResolveCommand(const char *arg0) const {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropTypes_LoadLine(MKIniLine *, const char[12], long *)'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 MessageBroadcasterProperty::LoadLine(MKIniLine *arg0) {
-    if ((PropTypes_LoadLine(arg0, "MessageMask", &this->unk18) != 0) || (arg0->LoadFloat("Radius", &this->unk10, 0) != 0)) {
+    if ((PropTypes_LoadLine(arg0, "MessageMask", (int *) &this->unk18) != 0) || (arg0->LoadFloat("Radius", &this->unk10, 0) != 0)) {
         return 1;
     }
     if (arg0->IsField("MessageID") != 0) {

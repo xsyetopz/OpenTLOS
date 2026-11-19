@@ -1,15 +1,44 @@
 #include "spyro/source/Collectable2.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/gc/System_GC.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Coronas.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -31,7 +60,7 @@ void Collectable2Descriptor::Init() {
     this->unkC = 2;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void Collectable2::Collect() {
     f64 spC0;
     f64 spB8;
@@ -83,9 +112,9 @@ void Collectable2::Collect() {
     Disable();
     var_r29_65 = 0;
     do {
-        temp_f28_72 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f27_77 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
-        sp58 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f28_72 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f27_77 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
+        sp58 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp5C = temp_f27_77;
         sp60 = temp_f28_72;
         spA8 = (f64) sp58;
@@ -96,9 +125,9 @@ void Collectable2::Collect() {
         sp50 = (f32) spB0 * 600.0f;
         spC0 = (f64) sp50;
         temp_r30_104 = ((u8 *) this->unk8) + 0x30;
-        temp_f28_106 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f27_111 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp38 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f28_106 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f27_111 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp38 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp3C = temp_f27_111;
         sp40 = temp_f28_106;
         sp88 = (f64) sp38;
@@ -108,9 +137,9 @@ void Collectable2::Collect() {
         sp98 = temp_f0_125;
         sp30 = (f32) sp90 * 3.1415927f;
         spA0 = (f64) sp30;
-        temp_f27_138 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f28_143 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp18 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f27_138 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f28_143 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp18 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp1C = temp_f28_143;
         sp20 = temp_f27_138;
         sp68 = (f64) sp18;
@@ -120,7 +149,7 @@ void Collectable2::Collect() {
         sp78 = temp_f0_157;
         sp10 = (f32) sp70 * 3.1415927f;
         sp80 = (f64) sp10;
-        temp_f27_170 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
+        temp_f27_170 = MKRand_Float((int *) &gViewSeed, 3.0f, 5.0f);
         ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0x9C)))->Emit(*temp_r30_104, *((MKVector3 *) &spB8), *((MKVector3 *) &sp98), *((MKVector3 *) &sp78), temp_f27_170, *(MKModel_GetColor(this->unk4)), 0, NULL);
         var_r29_65 += 1;
     } while (var_r29_65 < 4);

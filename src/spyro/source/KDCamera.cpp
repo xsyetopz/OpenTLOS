@@ -1,27 +1,55 @@
 #include "spyro/source/KDCamera.h"
+#include "common/Source/Animation.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/KDCameraDeltaDrag.h"
 #include "spyro/source/KDCameraHeroData.h"
 #include "spyro/source/KDCameraHeroMoveYaw.h"
 #include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
 #include "spyro/source/KDCameraMessages.h"
 #include "spyro/source/KDCameraPoint.h"
 #include "spyro/source/KDCameraSimpleDelta.h"
 #include "spyro/source/KDCameraState.h"
 #include "spyro/source/KDCollisionObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/MKCollisionTempDisableHelper.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/ShakeCameraMessage.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
@@ -29,8 +57,6 @@
 #include "common/Source/StdMath.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDProp.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK __construct_array(M2C_UNK *, void (*)(MKCollisionTempDisableHelper *), MKCollisionTempDisableHelper *(*)(MKCollisionTempDisableHelper *, s16), M2C_UNK, M2C_UNK); /* extern */
@@ -361,7 +387,7 @@ void KDCamera::GetUpdatedTarget() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
+#if 0 // DRAFT: undefined identifier 'P15HeroDataMessage'
 void KDCamera::MiscMessage(MKMessage *arg0) {
     f64 sp48;
     f64 sp40;
@@ -1117,7 +1143,7 @@ u8 KDCamera::RayCollide(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisio
     return temp_r31_2125;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
+#if 0 // DRAFT: ')' expected
 void KDCamera::CutSceneUpdate() {
     Matrix sp10;
     M2C_UNK spC;
@@ -1218,7 +1244,6 @@ void KDCamera::PreStateEnter() {
     this->unk158 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xC);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
 void KDCamera::PostCameraUpdate() {
     s32 spC;
     s32 sp8;
@@ -1239,7 +1264,6 @@ void KDCamera::PostCameraUpdate() {
         M2C_FIELD(M2C_FIELD(temp_r3_2410, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     }
 }
-#endif
 
 void KDCamera::PreCameraUpdate() {
     this->unk164 = 0;
@@ -2787,7 +2811,7 @@ void KDCamera::LoadDone() {
     KDSound_SetListener((Matrix *) this->unk8);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
+#if 0 // DRAFT: illegal type
 void KDCamera::Deinit() {
     MKHeap *temp_r0_5382;
     MKHeap *temp_r3_5404;
@@ -3036,12 +3060,12 @@ void KDCameraDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: function call 'KDProp_LoadMaterialID(MKIniLine *, const char[20], long *)'
 s32 KDCameraDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_5742;
 
     var_r31_5742 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("collisionRadius", this->unkA4, 0) != 0) || (arg0->LoadInt("maxCameraCollisionInfoItems", &this->unk6C, 0) != 0) || (arg0->LoadFloat("fieldOfView", &this->unk70, 0) != 0) || (arg0->LoadFloat("dragTowardCamera", &this->unk74, 0) != 0) || (arg0->LoadFloat("dragAwayFromCamera", &this->unk78, 0) != 0) || (arg0->LoadFloat("maxHeroJumpHeight", &this->unk84, 0) != 0) || (arg0->LoadFloat("playerRotateDefaultSpeed", &this->unk88, 0) != 0) || (arg0->LoadFloat("visibleTargetIgnoreRatio", &this->unk8C, 0) != 0) || (arg0->LoadFloat("snapToSafetyDistance", &this->unk90, 0) != 0) || (arg0->LoadInt("maxCameraStates", &this->unk94, 0) != 0) || (arg0->LoadInt("maxStateMessagesStored", &this->unk98, 0) != 0) || (KDProp_LoadMaterialID(arg0, "noCollideMaterialID", (s32 *) (this->unkA4 + 0x18)) != 0) || (KDProp_LoadMaterialID(arg0, "fadeMaterialID", &this->unk60) != 0) || (KDProp_LoadMaterialID(arg0, "noVisibleTargetMaterialID", &this->unk64) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("collisionRadius", this->unkA4, 0) != 0) || (arg0->LoadInt("maxCameraCollisionInfoItems", (int *) &this->unk6C, 0) != 0) || (arg0->LoadFloat("fieldOfView", &this->unk70, 0) != 0) || (arg0->LoadFloat("dragTowardCamera", &this->unk74, 0) != 0) || (arg0->LoadFloat("dragAwayFromCamera", &this->unk78, 0) != 0) || (arg0->LoadFloat("maxHeroJumpHeight", &this->unk84, 0) != 0) || (arg0->LoadFloat("playerRotateDefaultSpeed", &this->unk88, 0) != 0) || (arg0->LoadFloat("visibleTargetIgnoreRatio", &this->unk8C, 0) != 0) || (arg0->LoadFloat("snapToSafetyDistance", &this->unk90, 0) != 0) || (arg0->LoadInt("maxCameraStates", (int *) &this->unk94, 0) != 0) || (arg0->LoadInt("maxStateMessagesStored", (int *) &this->unk98, 0) != 0) || (KDProp_LoadMaterialID(arg0, "noCollideMaterialID", (s32 *) (this->unkA4 + 0x18)) != 0) || (KDProp_LoadMaterialID(arg0, "fadeMaterialID", (int *) &this->unk60) != 0) || (KDProp_LoadMaterialID(arg0, "noVisibleTargetMaterialID", (int *) &this->unk64) != 0)) {
         var_r31_5742 = 1;
     }
     return var_r31_5742;

@@ -1,22 +1,63 @@
 #include "spyro/source/Dynamite.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/DynamiteExplosion.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/Projectile.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SparksPS.h"
+#include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"
 #include <m2c_macros.h>
@@ -392,7 +433,7 @@ void Dynamite::Update() {
             if (this->unk168 <= 0.0f) {
                 this->unk168 = 0.0f;
                 this->unk184 &= ~0x20;
-                KDSound_Stop(&this->unk150);
+                KDSound_Stop((int *) &this->unk150);
                 ((DynamiteExplosion *) (M2C_FIELD(&gb, DynamiteExplosion **, 0x2F4)))->Trigger(*(this->unk8 + 0x30), 1.0f, 1U, M2C_FIELD(checked_cast<DynamiteDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xF4), NULL);
                 this->unk14C &= ~0x80;
                 Disable();
@@ -415,9 +456,9 @@ void Dynamite::Update() {
         }
         temp_f30_732 = var_f0_717 / temp_f1_718;
         if (temp_f30_732 > 0.1f) {
-            temp_f28_740 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f29_745 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            spA8 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f28_740 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f29_745 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            spA8 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             spAC = temp_f29_745;
             spB0 = temp_f28_740;
             sp148 = (f64) spA8;
@@ -476,13 +517,13 @@ void Dynamite::Update() {
             sp178 = temp_f0_859;
             sp90 = (f32) sp170 * temp_f30_732;
             sp180 = (f64) sp90;
-            sp20 = temp_f30_732 * MKRand_Float(&gViewSeed, 1.5f, 3.0f);
+            sp20 = temp_f30_732 * MKRand_Float((int *) &gViewSeed, 1.5f, 3.0f);
             ((SparksPS *) (M2C_FIELD(&gb, SparksPS **, 0x84)))->Emit(sp1C8, *((MKVector3 *) &sp178), sp20);
         }
     } else {
-        temp_f29_887 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f30_892 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp68 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f29_887 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f30_892 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp68 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp6C = temp_f30_892;
         sp70 = temp_f29_887;
         sp118 = (f64) sp68;
@@ -536,7 +577,7 @@ void Dynamite::Update() {
         sp138 = temp_f0_996;
         sp60 = (f32) sp130 * 500.0f;
         sp140 = (f64) sp60;
-        sp1C = MKRand_Float(&gViewSeed, 1.5f, 3.0f);
+        sp1C = MKRand_Float((int *) &gViewSeed, 1.5f, 3.0f);
         ((SparksPS *) (M2C_FIELD(&gb, SparksPS **, 0x84)))->Emit(sp1C8, *((MKVector3 *) &sp138), sp1C);
     }
     MKVector(0.0f, 50.0f, 0.0f);
@@ -825,13 +866,11 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void Dynamite::Deinit() {
-    KDSound_Stop(&this->unk150);
+    KDSound_Stop((int *) &this->unk150);
     PlatformDetach();
     Projectile::Deinit();
 }
-#endif
 
 void Dynamite::Init() {
     Projectile::Init();
@@ -879,17 +918,15 @@ void DynamiteDescriptor::LoadDone() {
     this->unkF0 = MKModel_GetRefPointIndex(this->unk2C, "r_fxemit0");
 }
 
-#if 0 // DRAFT: function call 'DataMap_LoadLine(MKIniLine *, const char[8], DataMap *,
 s32 DynamiteDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1656;
 
     var_r31_1656 = 0;
-    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (DataMap_LoadLine(arg0, "Element", &ElementTypeDataMap, (u32 *) &this->unkF4) != 0)) {
+    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (DataMap_LoadLine(arg0, "Element", &ElementTypeDataMap, (unsigned int *) &this->unkF4) != 0)) {
         var_r31_1656 = 1;
     }
     return var_r31_1656;
 }
-#endif
 
 void DynamiteDescriptor::Deinit() {
     s32 temp_r0_1687;

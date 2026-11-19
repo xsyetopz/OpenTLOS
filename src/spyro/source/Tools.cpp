@@ -1,8 +1,12 @@
 #include "spyro/source/Tools.h"
 #include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
@@ -10,18 +14,37 @@
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/MKView.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/KDVolume.h"
 #include "spyro/source/KDWaterVolume.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKSystem.h"
 #include "common/Source/Str.h"
 #include "common/Source/Timer.h"
 #include "common/gc/MKMaterial_GC.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -739,12 +762,12 @@ void Tools_PropCreator::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 Tools_PropCreator::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1318;
 
     var_r31_1318 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("createPropCount", &Tools_PropCreator_Count, 0) != 0) || (arg0->LoadString("createPropName", &Tools_PropCreator_Name, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("createPropCount", (int *) &Tools_PropCreator_Count, 0) != 0) || (arg0->LoadString("createPropName", &Tools_PropCreator_Name, 0) != 0)) {
         var_r31_1318 = 1;
     }
     return var_r31_1318;
@@ -887,7 +910,7 @@ void Tools_GetClosestSplineTimeXZ(KDUniformSpline *arg0, const MKVector3 &arg1, 
     Tools_GetClosestSplineTimeXZ(arg0, arg1, arg2, 0.0f, 1.0f);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 f32 Tools_GetClosestSplineTimeXZ(KDUniformSpline *arg0, const MKVector3 &arg1, int arg2, float arg3, float arg4) {
     s32 sp40;
     M2C_UNK sp3C;
@@ -919,7 +942,7 @@ loop_6:
         if (var_f22_1717 > 1.0f) {
             var_f22_1717 -= 1.0f;
         }
-        sp18.GetNextPositionFast(var_f22_1717, (Matrix *) arg0, &sp40, &sp14);
+        sp18.GetNextPositionFast(var_f22_1717, (Matrix *) arg0, (int *) &sp40, &sp14);
         sp30 = (f64) sp18.unk8;
         sp18.unk10 = M2C_BITWISE(f64, sp18);
         temp_f2_1734 = (f32) sp30 - temp_f29_1714;
@@ -940,7 +963,7 @@ void Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, in
     Tools_GetClosestSplineTime(arg0, arg1, arg2, 0.0f, 1.0f);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 f32 Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, int arg2, float arg3, float arg4) {
     s32 sp60;
     M2C_UNK sp5C;
@@ -970,7 +993,7 @@ f32 Tools_GetClosestSplineTime(KDUniformSpline *arg0, const MKVector3 &arg1, int
 loop_4:
     if (var_f27_1847 < (f32) arg2) {
         temp_f26_1859 = (((arg4 - arg3) / (f32) arg2) * var_f27_1847) + arg3;
-        sp38.GetNextPositionFast(temp_f26_1859, (Matrix *) arg0, &sp60, &sp14);
+        sp38.GetNextPositionFast(temp_f26_1859, (Matrix *) arg0, (int *) &sp60, &sp14);
         sp38.unk10 = M2C_BITWISE(f64, sp38);
         sp50 = (f64) sp38.unk8;
         temp_f0_1873 = M2C_BITWISE(f64, sp38.unk10) - M2C_FIELD(&arg1, f64 *, 0);
@@ -1241,11 +1264,9 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void Tools_ResolvableProp::LoadLine(MKIniLine *arg0, const char *arg1) {
-    arg0->LoadInt(arg1, &this->unk4, 0);
+    arg0->LoadInt(arg1, (int *) &this->unk4, 0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
 void Tools_SetMatrixScale(Matrix *arg0, float arg1) {

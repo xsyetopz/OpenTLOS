@@ -67,7 +67,7 @@ inline LavaSmashProp::LavaSmashProp() {
 inline LavaSmashProp::~LavaSmashProp() {
     this->unkC8 = &__vt + 0x48;
     if ((&this->unk1A8 != NULL) && (&this->unk1A8 != NULL)) {
-        KDSound_Stop(&this->unk1A8);
+        KDSound_Stop((int *) &this->unk1A8);
     }
 }
 #endif

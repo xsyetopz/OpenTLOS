@@ -1,11 +1,17 @@
 #include "spyro/source/SkyClouds.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -169,8 +175,8 @@ void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, 
                 spB8 = M2C_BITWISE(f64, spA8);
                 spC0 = (f64) spA8.unk8;
                 temp_f26_269 = (0.25f * (1.0f + (*(f32 *) ((u8 *) &spB8 + 0x4)))) + 0.5f;
-                temp_f31_271 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                temp_f1_275 = MKRand_Float(&gViewSeed, 0.1f, 0.5f);
+                temp_f31_271 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
+                temp_f1_275 = MKRand_Float((int *) &gViewSeed, 0.1f, 0.5f);
                 sp8 = temp_f26_269;
                 spC = temp_f26_269;
                 sp10 = temp_f26_269;
@@ -194,7 +200,7 @@ void SkyClouds::SpawnCloudEmitter(const MKVector3 &arg0, const MKVector3 &arg1, 
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'SkyClouds::CloudEmitter **' to
 void SkyClouds::Emit(const MKVector3 &arg1, const MKVector4 &arg2, float farg0, SkyClouds::CloudEmitter *arg3) {
     SkyClouds::CloudEmitter **temp_r3_358;
     s32 var_ctr_356;
@@ -217,8 +223,8 @@ loop_2:
             M2C_FIELD(temp_r4_378, f64 *, 0) = (f64) M2C_FIELD(&arg2, f64 *, 0);
             M2C_FIELD(temp_r4_378, f64 *, 8) = (f64) M2C_FIELD(&arg2, f64 *, 8);
             M2C_FIELD((this->unk50 + var_r29_355), f32 *, 0x3C) = farg0;
-            M2C_FIELD((this->unk50 + var_r29_355), f32 *, 0x30) = (f32) (2.0f * MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f));
-            M2C_FIELD((this->unk50 + var_r29_355), f32 *, 0x34) = (f32) (0.125f * MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f));
+            M2C_FIELD((this->unk50 + var_r29_355), f32 *, 0x30) = (f32) (2.0f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
+            M2C_FIELD((this->unk50 + var_r29_355), f32 *, 0x34) = (f32) (0.125f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
             M2C_FIELD((this->unk50 + var_r29_355), f32 *, 0x40) = 2.0f;
             temp_r4_407 = this->unk50 + (var_r29_355 + 0x20);
             M2C_FIELD(temp_r4_407, f32 *, 0) = 0.0f;

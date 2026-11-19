@@ -222,13 +222,13 @@ inline TrainChaseSpyro::~TrainChaseSpyro() {
         __destroy_arr(&this->unk2A8, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD);
     }
     if ((&this->unk138 != NULL) && (&this->unk138 != NULL)) {
-        KDSound_Stop(&this->unk138);
+        KDSound_Stop((int *) &this->unk138);
     }
     if ((&this->unk110 != NULL) && (&this->unk110 != NULL)) {
-        KDSound_Stop(&this->unk110);
+        KDSound_Stop((int *) &this->unk110);
     }
     if ((&this->unkE8 != NULL) && (&this->unkE8 != NULL)) {
-        KDSound_Stop(&this->unkE8);
+        KDSound_Stop((int *) &this->unkE8);
     }
 }
 #endif

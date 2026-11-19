@@ -1,15 +1,28 @@
 #include "common/Source/MKLevelChunk.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKChunkSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKFFTWater.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKOcean.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/CustomMaterialUpdater.h"
 #include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKGrass.h"
 #include "common/Source/MKPackage.h"
 #include "common/Source/MKSystem.h"
@@ -221,7 +234,7 @@ s32 MKLevelChunk::Update_LoadSound() {
     var_r30_446 = 0;
     sp8 = -1;
     temp_r3_451 = Str_Printf("sfx_%s%s", &this->unk14.unkAC, ".gsb");
-    if (((s32) M2C_FIELD(this, s32 *, 0x130) == -1) || (MKArchive_Exists(temp_r3_451, NULL) == 0) || (this->unk138 & 0x40000) || (System_GetCommandLineParameter("sound", 1U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) != 0)) || (Sound_IsBankLoaded(&sp8) != 0)) {
+    if (((s32) M2C_FIELD(this, s32 *, 0x130) == -1) || (MKArchive_Exists(temp_r3_451, NULL) == 0) || (this->unk138 & 0x40000) || (System_GetCommandLineParameter("sound", 1U), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) != 0)) || (Sound_IsBankLoaded((int *) &sp8) != 0)) {
         if ((s32) M2C_FIELD(this, s32 *, 0x130) == -2) {
             M2C_FIELD(this, s32 *, 0x130) = sp8;
         }

@@ -1,23 +1,65 @@
 #include "spyro/source/SpeedwayCynder.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/BaseBreathFX.h"
+#include "spyro/source/ClusterBomb.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/CynderBreathFX.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FireBombFX.h"
+#include "spyro/source/FlameBreathBeamFX.h"
+#include "spyro/source/FlyingBurningBits.h"
+#include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPath.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
 #include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/ShapedTrailFX.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SpeedWay.h"
 #include "spyro/source/SpeedWaySpyro.h"
+#include "spyro/source/SplineTools.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKInput.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
@@ -320,7 +362,7 @@ void SpeedwayCynder::UpdateFireBomb() {
         spB8 = -sp1E8;
         sp170 = (f64) spB0;
         sp178 = (f64) spB8;
-        temp_f1_545 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f1_545 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f0_548 = sp1C0 * temp_f1_545;
         sp70 = temp_f0_548;
         spF0 = temp_f0_548;
@@ -331,7 +373,7 @@ void SpeedwayCynder::UpdateFireBomb() {
         sp100 = temp_f0_559;
         sp68 = (f32) spF8 * 1000.0f;
         sp108 = (f64) sp68;
-        temp_f1_571 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f1_571 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f0_575 = sp1D0 * temp_f1_571;
         spA0 = temp_f0_575;
         sp110 = temp_f0_575;
@@ -1108,11 +1150,9 @@ void SpeedwayCynder::BiteUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void SpeedwayCynder::BiteExit() {
-    this->unk244 = MKRand_Float(&gViewSeed, 1.5f, 3.0f);
+    this->unk244 = MKRand_Float((int *) &gViewSeed, 1.5f, 3.0f);
 }
-#endif
 
 void SpeedwayCynder::BiteEnter() {
     StateEnter();
@@ -1146,7 +1186,7 @@ void SpeedwayCynder::GlideUpdate() {
     GlideTransition();
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CynderBreathFX'
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void SpeedwayCynder::GlideExit() {
     this->unk384->End();
     this->unk3F8 = 0;
@@ -1221,9 +1261,9 @@ void SpeedwayCynder::Deinit() {
         }
     }
     this->unk3FC.unk0 = NULL;
-    KDSound_Stop(&this->unk3A8);
-    KDSound_Stop(&this->unk3D0);
-    KDSound_Stop(&this->unk370);
+    KDSound_Stop((int *) &this->unk3A8);
+    KDSound_Stop((int *) &this->unk3D0);
+    KDSound_Stop((int *) &this->unk370);
     KDProp::Deinit();
 }
 #endif

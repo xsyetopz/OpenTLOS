@@ -1,33 +1,67 @@
 #include "spyro/source/Shatterable.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Collectable.h"
 #include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/FXBase.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/InputModifier.h"
+#include "spyro/source/KDCamera.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDProperty.h"
 #include "spyro/source/KDShatter2.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
+#include "spyro/source/NodeLookAt.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/ShatterExtendedMsg.h"
 #include "spyro/source/ShatterOnCollisionMsg.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/Spyro.h"
+#include "spyro/source/SpyroCombatState.h"
+#include "spyro/source/SpyroState.h"
+#include "spyro/source/SpyroTools.h"
+#include "spyro/source/SpyroUtils.h"
+#include "spyro/source/TargetManager.h"
+#include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/DataMap.h"
 #include "spyro/source/KDRandom.h"
@@ -578,7 +612,7 @@ loop_31:
             sp7D0 = temp_f0_336;
             sp348 = sp7C0.unk8 * 6.2831855f;
             sp7D8 = (f64) sp348;
-            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xA0)))->Emit(arg0, *((MKVector3 *) &sp820), *((MKVector3 *) &sp810), *((MKVector3 *) &sp7D0), MKRand_Float(&gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
+            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xA0)))->Emit(arg0, *((MKVector3 *) &sp820), *((MKVector3 *) &sp810), *((MKVector3 *) &sp7D0), MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
             var_r22_157 += 1;
             goto loop_31;
         }
@@ -682,7 +716,7 @@ loop_55:
             sp710 = temp_f0_554;
             sp2A8 = sp700.unk8 * 6.2831855f;
             sp718 = (f64) sp2A8;
-            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xA4)))->Emit(arg0, *((MKVector3 *) &sp760), *((MKVector3 *) &sp750), *((MKVector3 *) &sp710), MKRand_Float(&gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
+            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xA4)))->Emit(arg0, *((MKVector3 *) &sp760), *((MKVector3 *) &sp750), *((MKVector3 *) &sp710), MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
             var_r22_375 += 1;
             goto loop_55;
         }
@@ -786,7 +820,7 @@ loop_79:
             sp650 = temp_f0_772;
             sp208 = sp640.unk8 * 6.2831855f;
             sp658 = (f64) sp208;
-            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xAC)))->Emit(arg0, *((MKVector3 *) &sp6A0), *((MKVector3 *) &sp690), *((MKVector3 *) &sp650), MKRand_Float(&gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
+            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xAC)))->Emit(arg0, *((MKVector3 *) &sp6A0), *((MKVector3 *) &sp690), *((MKVector3 *) &sp650), MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
             var_r22_593 += 1;
             goto loop_79;
         }
@@ -890,7 +924,7 @@ loop_103:
             sp590 = temp_f0_990;
             sp168 = sp580.unk8 * 6.2831855f;
             sp598 = (f64) sp168;
-            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xA8)))->Emit(arg0, *((MKVector3 *) &sp5E0), *((MKVector3 *) &sp5D0), *((MKVector3 *) &sp590), MKRand_Float(&gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
+            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xA8)))->Emit(arg0, *((MKVector3 *) &sp5E0), *((MKVector3 *) &sp5D0), *((MKVector3 *) &sp590), MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
             var_r22_811 += 1;
             goto loop_103;
         }
@@ -994,7 +1028,7 @@ loop_127:
             sp4D0 = temp_f0_1208;
             spC8 = sp4C0.unk8 * 6.2831855f;
             sp4D8 = (f64) spC8;
-            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xB0)))->Emit(arg0, *((MKVector3 *) &sp520), *((MKVector3 *) &sp510), *((MKVector3 *) &sp4D0), MKRand_Float(&gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
+            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xB0)))->Emit(arg0, *((MKVector3 *) &sp520), *((MKVector3 *) &sp510), *((MKVector3 *) &sp4D0), MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
             var_r22_1029 += 1;
             goto loop_127;
         }
@@ -1098,7 +1132,7 @@ loop_151:
             sp410 = temp_f0_1426;
             sp28 = sp400.unk8 * 6.2831855f;
             sp418 = (f64) sp28;
-            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xB4)))->Emit(arg0, *((MKVector3 *) &sp460), *((MKVector3 *) &sp450), *((MKVector3 *) &sp410), MKRand_Float(&gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
+            ((FlyingChunkPS *) (M2C_FIELD(&gb, FlyingChunkPS **, 0xB4)))->Emit(arg0, *((MKVector3 *) &sp460), *((MKVector3 *) &sp450), *((MKVector3 *) &sp410), MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f), arg2, 0, arg3);
             var_r22_1247 += 1;
             goto loop_151;
         }
@@ -1151,7 +1185,7 @@ void Shatterable::SpawnGems(int arg0) {
         var_r26_1532 = 0;
 loop_9:
         if (var_r26_1532 < arg0) {
-            temp_r29_1540 = MKRand_Int(&gViewSeed, 0, 4);
+            temp_r29_1540 = MKRand_Int((int *) &gViewSeed, 0, 4);
             if ((((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkF8 != 0) || (temp_r29_1540 != 3)) && (((GameStats *) &GameData::gameData[0x70])->GetGemAvailable((StatType) temp_r29_1540) != 0)) {
                 ((CollectableSpawner *) (M2C_FIELD(&(&gb)[temp_r29_1540], CollectableSpawner **, 0x10)))->Spawn(*((MKVector3 *) &sp48), 1, 200.0f, 500.0f, -1, (MKProp *) this);
                 var_r27_1530 += 1;
@@ -1313,16 +1347,16 @@ void Shatterable::SetStateAnim(int arg0) {
     }
 }
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
+#if 0 // DRAFT: illegal type
 void Shatterable::EnableCollision() {
-    PropFlagsSet((u32 *) &this->unk10, 0x100000U);
+    PropFlagsSet((unsigned int *) &this->unk10, 0x100000U);
     *(this->unk168 + ((this->unk180 << 7) + 0x6C)) = 1;
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
+#if 0 // DRAFT: illegal type
 void Shatterable::DisableCollision() {
-    PropFlagsClear((u32 *) &this->unk10, 0x100000U);
+    PropFlagsClear((unsigned int *) &this->unk10, 0x100000U);
     *(this->unk168 + ((this->unk180 << 7) + 0x6C)) = 0;
 }
 #endif
@@ -2589,12 +2623,12 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 Shatterable::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4647;
 
     var_r31_4647 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (this->unk15C.LoadLine(arg0, "onDestruction") != 0) || (arg0->LoadInt("shattererID", (s32 *) &this->unk184, 0) != 0) || (arg0->LoadBool("bRespawnWhenNotInView", &this->unk19D, 0) != 0) || (arg0->LoadBool("bStartActive", &this->unk19F, 0) != 0) || (this->unk160.LoadLine(arg0, "onShatter") != 0) || (this->unk164.LoadLine(arg0, "onHit") != 0) || (arg0->LoadBool("bGlowHint", &this->unk1A0, 0) != 0) || (arg0->LoadBool("bPlayShatterNote", &this->unk1A2, 0) != 0) || (arg0->LoadInt("platformAttachID", (s32 *) &this->unk174, 0) != 0) || (arg0->LoadFloat("shakeCameraStrength", &this->unk18C, 0) != 0) || (arg0->LoadFloat("ShatteredPercentage", &this->unk198, 0) != 0) || (arg0->LoadBool("Hitable", &this->unk19C, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (this->unk15C.LoadLine(arg0, "onDestruction") != 0) || (arg0->LoadInt("shattererID", (int *) &this->unk184, 0) != 0) || (arg0->LoadBool("bRespawnWhenNotInView", &this->unk19D, 0) != 0) || (arg0->LoadBool("bStartActive", &this->unk19F, 0) != 0) || (this->unk160.LoadLine(arg0, "onShatter") != 0) || (this->unk164.LoadLine(arg0, "onHit") != 0) || (arg0->LoadBool("bGlowHint", &this->unk1A0, 0) != 0) || (arg0->LoadBool("bPlayShatterNote", &this->unk1A2, 0) != 0) || (arg0->LoadInt("platformAttachID", (int *) &this->unk174, 0) != 0) || (arg0->LoadFloat("shakeCameraStrength", &this->unk18C, 0) != 0) || (arg0->LoadFloat("ShatteredPercentage", &this->unk198, 0) != 0) || (arg0->LoadBool("Hitable", &this->unk19C, 0) != 0)) {
         var_r31_4647 = 1;
     }
     return var_r31_4647;
@@ -2626,12 +2660,12 @@ loop_3:
     this->unkD0.Deinit();
     temp_r3_4791 = this->unk100;
     if (temp_r3_4791 != NULL) {
-        KDSound_Stop(&temp_r3_4791->unk0);
+        KDSound_Stop((int *) &temp_r3_4791->unk0);
         temp_r30_4795 = this->unk100;
         temp_cr0_eq_4796 = temp_r30_4795 == NULL;
         if (temp_cr0_eq_4796 == 0) {
             if (temp_cr0_eq_4796 == 0) {
-                KDSound_Stop(&temp_r30_4795->unk0);
+                KDSound_Stop((int *) &temp_r30_4795->unk0);
             }
             operator delete(temp_r30_4795);
         }
@@ -2829,7 +2863,7 @@ loop_48:
 loop_16:
             temp_r3_5051 = this->unk11C;
             if (var_r23_5030 < (s32) *(var_r24_5022 + temp_r3_5051)) {
-                gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + var_r25_5021 + var_r28_5033), &sp18);
+                gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + var_r25_5021 + var_r28_5033), (int *) &sp18);
                 var_r23_5030 += 1;
                 var_r28_5033 += 4;
                 temp_r3_5046 = ((u8 *) this->unk11C) + var_r26_5032;
@@ -2847,7 +2881,7 @@ loop_16:
 loop_21:
             temp_r3_5090 = this->unk11C;
             if (var_r23_5069 < (s32) *(var_r24_5022 + (((u8 *) temp_r3_5090) + 0x44))) {
-                gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0x500 + var_r25_5021 + var_r28_5072), &sp14);
+                gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0x500 + var_r25_5021 + var_r28_5072), (int *) &sp14);
                 var_r23_5069 += 1;
                 var_r28_5072 += 4;
                 temp_r3_5085 = ((u8 *) this->unk11C) + var_r26_5071;
@@ -2865,7 +2899,7 @@ loop_21:
 loop_26:
             temp_r3_5130 = this->unk11C;
             if (var_r23_5109 < (s32) *(var_r24_5022 + (((u8 *) temp_r3_5130) + 0x88))) {
-                gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0xA00 + var_r25_5021 + var_r28_5112), &sp10);
+                gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0xA00 + var_r25_5021 + var_r28_5112), (int *) &sp10);
                 var_r23_5109 += 1;
                 var_r28_5112 += 4;
                 temp_r3_5125 = ((u8 *) this->unk11C) + var_r26_5111;
@@ -2906,7 +2940,7 @@ loop_37:
 loop_40:
             temp_r3_5236 = this->unk11C;
             if (var_r23_5215 < (s32) *(var_r24_5022 + (((u8 *) temp_r3_5236) + 0xCC))) {
-                gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0xF00 + var_r25_5021 + var_r28_5218), &spC);
+                gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0xF00 + var_r25_5021 + var_r28_5218), (int *) &spC);
                 var_r23_5215 += 1;
                 var_r28_5218 += 4;
                 temp_r3_5231 = ((u8 *) this->unk11C) + var_r26_5217;
@@ -2924,7 +2958,7 @@ loop_40:
 loop_45:
             temp_r3_5276 = this->unk11C;
             if (var_r23_5255 < (s32) *(var_r24_5022 + (((u8 *) temp_r3_5276) + 0x110))) {
-                gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0x1400 + var_r25_5021 + var_r28_5258), &sp8);
+                gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0x1400 + var_r25_5021 + var_r28_5258), (int *) &sp8);
                 var_r23_5255 += 1;
                 var_r28_5258 += 4;
                 temp_r3_5271 = ((u8 *) this->unk11C) + var_r26_5257;
@@ -2969,7 +3003,7 @@ loop_45:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 ShatterableDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *spC;
     u8 sp8;
@@ -3006,7 +3040,7 @@ s32 ShatterableDescriptor::LoadLine(MKIniLine *arg0) {
     void *temp_r6_6086;
     void *var_r3_5800;
 
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("gemCount", &this->unkF4, 0) != 0) || (arg0->LoadBool("SpawnFuryGems", &this->unkF8, 0) != 0) || (KDSound_LoadLine(arg0, "sndAmbient", &this->unkFC) != 0) || (KDSound_LoadLine(arg0, "sndHit", &this->unk100) != 0) || (KDSound_LoadLine(arg0, "sndSpawnGems", &this->unk10C) != 0) || (arg0->LoadBool("bPlayShatterOnLastStage", &this->unk108, 0) != 0) || (arg0->LoadFloat("hitPoints", &this->unkF0, 0) != 0) || (arg0->LoadString("hitAnimation", &this->unkE8, 0) != 0) || (arg0->LoadString("idleAnimation", &this->unkE4, 0) != 0) || (arg0->LoadString("shatterFX", &this->unk110, 0) != 0) || (arg0->LoadFloat("upVel", &this->unk130, 0) != 0) || (arg0->LoadFloat("power", &this->unk134, 0) != 0) || (arg0->LoadFloat("bounce", &this->unk13C, 0) != 0) || (arg0->LoadFloat("gravity", &this->unk140, 0) != 0) || (arg0->LoadFloat("life", &this->unk144, 0) != 0) || (arg0->LoadFloat("airResistance", &this->unk148, 0) != 0) || (arg0->LoadFloat("spinRate", &this->unk138, 0) != 0) || (arg0->LoadFloat("controlerLrg", &this->unk14C, 0) != 0) || (arg0->LoadFloat("controlerSml", &this->unk150, 0) != 0) || (arg0->LoadFloat("controlerRmbl", &this->unk154, 0) != 0) || (KDSound_LoadLine(arg0, "sndShatter", &this->unk15C) != 0) || (KDSound_LoadLine(arg0, "sndShatterNote", &this->unk104) != 0) || (KDProp_LoadMaterialID(arg0, "ignoreMaterialID", &this->unk158) != 0) || (arg0->LoadBool("ShrinkFade", &this->unk165, 0) != 0) || (arg0->LoadBool("shakeCameraOnDamage", &this->unk166, 0) != 0) || (arg0->LoadBool("Targetable", &this->unk114, 0) != 0) || (arg0->LoadBool("hitable", &this->unk115, 0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("gemCount", (int *) &this->unkF4, 0) != 0) || (arg0->LoadBool("SpawnFuryGems", &this->unkF8, 0) != 0) || (KDSound_LoadLine(arg0, "sndAmbient", (int *) &this->unkFC) != 0) || (KDSound_LoadLine(arg0, "sndHit", (int *) &this->unk100) != 0) || (KDSound_LoadLine(arg0, "sndSpawnGems", (int *) &this->unk10C) != 0) || (arg0->LoadBool("bPlayShatterOnLastStage", &this->unk108, 0) != 0) || (arg0->LoadFloat("hitPoints", &this->unkF0, 0) != 0) || (arg0->LoadString("hitAnimation", &this->unkE8, 0) != 0) || (arg0->LoadString("idleAnimation", &this->unkE4, 0) != 0) || (arg0->LoadString("shatterFX", &this->unk110, 0) != 0) || (arg0->LoadFloat("upVel", &this->unk130, 0) != 0) || (arg0->LoadFloat("power", &this->unk134, 0) != 0) || (arg0->LoadFloat("bounce", &this->unk13C, 0) != 0) || (arg0->LoadFloat("gravity", &this->unk140, 0) != 0) || (arg0->LoadFloat("life", &this->unk144, 0) != 0) || (arg0->LoadFloat("airResistance", &this->unk148, 0) != 0) || (arg0->LoadFloat("spinRate", &this->unk138, 0) != 0) || (arg0->LoadFloat("controlerLrg", &this->unk14C, 0) != 0) || (arg0->LoadFloat("controlerSml", &this->unk150, 0) != 0) || (arg0->LoadFloat("controlerRmbl", &this->unk154, 0) != 0) || (KDSound_LoadLine(arg0, "sndShatter", (int *) &this->unk15C) != 0) || (KDSound_LoadLine(arg0, "sndShatterNote", (int *) &this->unk104) != 0) || (KDProp_LoadMaterialID(arg0, "ignoreMaterialID", (int *) &this->unk158) != 0) || (arg0->LoadBool("ShrinkFade", &this->unk165, 0) != 0) || (arg0->LoadBool("shakeCameraOnDamage", &this->unk166, 0) != 0) || (arg0->LoadBool("Targetable", &this->unk114, 0) != 0) || (arg0->LoadBool("hitable", &this->unk115, 0) != 0)) {
         return 1;
     }
     var_r24_5604 = 0;

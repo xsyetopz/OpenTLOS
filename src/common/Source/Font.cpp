@@ -1,9 +1,18 @@
 #include "common/Source/Font.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/MKMat_MK2_Standard.h"
@@ -861,7 +870,7 @@ loop_49:
 loop_24:
             if ((var_f24_1466 <= arg1) || (arg1 == 0.0f)) {
                 sp8 = var_r29_1459 - arg0;
-                var_r22_1478 = GetCharacter(arg0, &sp8, &spC);
+                var_r22_1478 = GetCharacter(arg0, (int *) &sp8, &spC);
                 var_r29_1459 = &arg0[sp8];
                 temp_r4_1491 = (u8) *var_r29_1459;
                 if ((temp_r4_1491 <= 0x20U) || ((s32) var_r22_1478->unk1C == 0)) {
@@ -1143,7 +1152,6 @@ void MKFont::InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 f32 MKFont::CalcLength(const char *arg0) {
     s32 spC;
     FontPage *sp8;
@@ -1157,7 +1165,7 @@ f32 MKFont::CalcLength(const char *arg0) {
     spC = 0;
 loop_4:
     if (spC < (s32) temp_r31_2001) {
-        temp_r3_2009 = GetCharacter(arg0, &spC, &sp8);
+        temp_r3_2009 = GetCharacter(arg0, (int *) &spC, &sp8);
         if (temp_r3_2009 != NULL) {
             var_f31_1994 += GetWidthOfCharacter((s8) (u8) arg0[spC], temp_r3_2009, sp8);
         }
@@ -1166,7 +1174,6 @@ loop_4:
     }
     return var_f31_1994;
 }
-#endif
 
 f32 MKFont::GetScale(float arg0) {
     return arg0 / GetHeight();

@@ -1,23 +1,47 @@
 #include "spyro/source/RopeBridge.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionItem.h"
 #include "common/Source/MKCollisionManager.h"
+#include "common/Source/MKCollisionModel.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKCollisionUtil.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/CustomMaterialUpdater.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKView.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDProp.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -120,7 +144,7 @@ void RopeBridge::Detach(RopeBridgeAttachment *arg0) {
     arg0->unk10 = M2C_FIELD(&gb, f32 *, 0x30C);
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 u8 RopeBridge::Attach(RopeBridgeAttachment *arg0, MKCollisionInfo *arg1) {
     f64 sp10;
     f64 sp8;
@@ -134,7 +158,7 @@ u8 RopeBridge::Attach(RopeBridgeAttachment *arg0, MKCollisionInfo *arg1) {
 
     if ((M2C_FIELD(&gb, f32 *, 0x30C) - arg0->unk10) >= 0.5f) {
         if (KDSound_IsVoicePlaying(arg0->unk14) != 0) {
-            KDSound_Stop(&arg0->unk14);
+            KDSound_Stop((int *) &arg0->unk14);
         }
         temp_r3_211 = M2C_FIELD(arg0->unk18, void **, 8);
         temp_f2_214 = M2C_FIELD(temp_r3_211, f64 *, 0x30);
@@ -2304,17 +2328,15 @@ void RopeBridge::Init() {
     this->unk1AC = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'KDProp_LoadMaterialID(MKIniLine *, const char[11], long *)'
 s32 RopeBridgeDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_3874;
 
     var_r31_3874 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDProp_LoadMaterialID(arg0, "materialID", &this->unk60) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDProp_LoadMaterialID(arg0, "materialID", (int *) &this->unk60) != 0)) {
         var_r31_3874 = 1;
     }
     return var_r31_3874;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'RopeBridgeDescriptor *' to
 void RopeBridgeDescriptor::Deinit() {

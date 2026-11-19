@@ -1,5 +1,15 @@
 #include "spyro/source/Names.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/Level.h"
 #include "common/Source/FileSys.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
@@ -48,7 +58,6 @@ void Name::Create(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
 u8 *Names::GetRandom() {
     u8 *temp_r5_90;
     u8 *var_r3_81;
@@ -60,7 +69,7 @@ u8 *Names::GetRandom() {
     var_r3_81 = NULL;
     if ((u8 *) this->unk0 != NULL) {
         temp_r5_90 = this->unk0;
-        var_r3_81 = &temp_r5_90[MKRand_Int(&gViewSeed, 0, this->unk4 - 3)];
+        var_r3_81 = &temp_r5_90[MKRand_Int((int *) &gViewSeed, 0, this->unk4 - 3)];
         temp_r4_92 = *var_r3_81;
         if (((s8) temp_r4_92 == 0) || ((s8) temp_r4_92 == 0xA) || ((s8) temp_r4_92 == 0xD)) {
             var_r3_81 -= 2;
@@ -88,7 +97,6 @@ loop_18:
     }
     return var_r3_81;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void Names::Deinit() {
@@ -109,10 +117,10 @@ void Names::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Load(const char *, long *, int, int)' does not
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void Names::Init(const char *arg0) {
     if (MKArchive_Exists(arg0, NULL) != 0) {
-        this->unk0 = MKArchive_Load(arg0, &this->unk4, NULL, 0);
+        this->unk0 = MKArchive_Load(arg0, (int *) &this->unk4, NULL, 0);
     }
 }
 #endif

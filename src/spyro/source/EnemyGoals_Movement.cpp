@@ -1,22 +1,59 @@
 #include "spyro/source/EnemyGoals_Movement.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
 #include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/EnemyDataTypes.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -497,7 +534,7 @@ void EnemyGoal_PatrolMode::Activate() {
     if ((temp_r4_906 != NULL) && (M2C_FIELD(temp_r4_906, s32 *, 4) & 2)) {
         if (temp_r3_905->HasWaypoints() != 0) {
             AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk28);
-            temp_f1_921 = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
+            temp_f1_921 = MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f);
             temp_r6_924 = this->unk28;
             M2C_FIELD(temp_r6_924, s32 *, 0x10) = (s32) M2C_FIELD(this->unkC->unkA44, s32 *, 0x18);
             M2C_FIELD(temp_r6_924, f32 *, 0x14) = temp_f1_921;
@@ -511,7 +548,7 @@ void EnemyGoal_PatrolMode::Activate() {
         } else {
             AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk2C);
             temp_r5_955 = this->unk2C;
-            M2C_FIELD(temp_r5_955, f32 *, 0x10) = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
+            M2C_FIELD(temp_r5_955, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f);
             M2C_FIELD(temp_r5_955, s32 *, 0x14) = 1;
             M2C_FIELD(temp_r5_955, s32 *, 0x1C) = 5;
             M2C_FIELD(temp_r5_955, s32 *, 0x18) = 0;
@@ -519,7 +556,7 @@ void EnemyGoal_PatrolMode::Activate() {
     }
     AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
     temp_r30_971 = this->unkC->unk688;
-    temp_r3_972 = MKRand_Int(&gViewSeed, 1, 3);
+    temp_r3_972 = MKRand_Int((int *) &gViewSeed, 1, 3);
     temp_r5_973 = this->unk24;
     M2C_FIELD(temp_r5_973, s32 *, 0x10) = 0;
     M2C_FIELD(temp_r5_973, s32 *, 0x14) = temp_r3_972;

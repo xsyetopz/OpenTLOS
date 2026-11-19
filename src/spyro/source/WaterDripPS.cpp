@@ -1,22 +1,46 @@
 #include "spyro/source/WaterDripPS.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/PuddleSplash.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(void *);                               /* extern */
@@ -188,7 +212,7 @@ void WaterDripPS::Draw() {
             if (((temp_f3_140 * temp_f3_140) + ((sp1F0.unk20 * sp1F0.unk20) + (sp1F0.unk24 * sp1F0.unk24))) > 90000.0f) {
                 temp_f30_152 = 3.0f * M2C_FIELD(temp_r4_119, f32 *, 0x30);
                 temp_f31_155 = temp_f30_152 / 1.5f;
-                temp_f1_160 = 1.0f - MKRand_Float(&gViewSeed, 0.0f, 0.5f);
+                temp_f1_160 = 1.0f - MKRand_Float((int *) &gViewSeed, 0.0f, 0.5f);
                 spA8 = 1.0f;
                 spAC = 1.0f;
                 spA0 = temp_f1_160;
@@ -841,7 +865,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
                 var_r0_1161 = 0U;
             }
             if ((var_r0_1161 == 0U) && (sp23C >= 0.5f)) {
-                temp_f1_1178 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+                temp_f1_1178 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
                 temp_r6_1181 = &arg0 * 0x58;
                 spC0 = 0.0f;
                 spB8 = 0.0f;
@@ -866,9 +890,9 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
                     sp158 = temp_f0_1239;
                     sp80 = sp240 * 200.0f;
                     sp160 = (f64) sp80;
-                    temp_f23_1252 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    temp_f24_1257 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                    sp98 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                    temp_f23_1252 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    temp_f24_1257 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                    sp98 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                     sp9C = temp_f24_1257;
                     spA0 = temp_f23_1252;
                     sp168 = (f64) sp98;

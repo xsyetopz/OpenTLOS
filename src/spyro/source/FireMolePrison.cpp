@@ -1,13 +1,45 @@
 #include "spyro/source/FireMolePrison.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FireMolePrisonDescriptor.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/shatterwaypointspawn.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern s32 GS_MoleHelpMe;
@@ -56,7 +88,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void FireMolePrison::Update() {
     f32 temp_f1_117;
 
@@ -66,10 +98,10 @@ void FireMolePrison::Update() {
         this->unk20C = temp_f1_117 - gUpdateTimeDelta;
     }
     if ((IsDead() == 0) && (KDSound_IsVoicePlaying(this->unk208) == 0) && (this->unk20C <= 0.0f)) {
-        this->unk20C = MKRand_Float(&gViewSeed, 1.0f, 4.0f);
+        this->unk20C = MKRand_Float((int *) &gViewSeed, 1.0f, 4.0f);
         this->unk208 = KDSound_Play3d(GS_MoleHelpMe, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     } else if ((IsDead() != 0) && (KDSound_IsVoicePlaying(this->unk208) != 0)) {
-        KDSound_Stop(&this->unk208);
+        KDSound_Stop((int *) &this->unk208);
     }
     if ((IsDead() != 0) && ((u8) this->unk210 == 0)) {
         this->unk210 = 1;
@@ -78,12 +110,10 @@ void FireMolePrison::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void FireMolePrison::Deinit() {
-    KDSound_Stop(&this->unk208);
+    KDSound_Stop((int *) &this->unk208);
     ShatterWaypointSpawn::Deinit();
 }
-#endif
 
 void FireMolePrison::Init() {
     ShatterWaypointSpawn::Init();

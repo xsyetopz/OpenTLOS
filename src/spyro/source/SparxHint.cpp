@@ -1,10 +1,50 @@
 #include "spyro/source/SparxHint.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/Sparx.h"
+#include "spyro/source/SparxFX.h"
+#include "spyro/source/SparxPath.h"
+#include "spyro/source/SplineProp.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
@@ -246,12 +286,12 @@ void SparxHint::LoadDone() {
     M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 SparxHint::LoadLine(MKIniLine *arg0) {
     s32 var_r31_394;
 
     var_r31_394 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("Priority", &this->unk94, 0) != 0) || (arg0->LoadFloat("RadiusNotify", &this->unkA0, 0) != 0) || (arg0->LoadFloat("RadiusdeActivate", &this->unkA4, 0) != 0) || (arg0->LoadInt("NumUses", &this->unk98, 0) != 0) || (arg0->LoadInt("SpeechMode", &this->unkAC, 0) != 0) || (arg0->LoadBool("Snap", &this->unkAB, 0) != 0) || (this->unk90.LoadLine(arg0, "OnReleaseSparx") != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("Priority", (int *) &this->unk94, 0) != 0) || (arg0->LoadFloat("RadiusNotify", &this->unkA0, 0) != 0) || (arg0->LoadFloat("RadiusdeActivate", &this->unkA4, 0) != 0) || (arg0->LoadInt("NumUses", (int *) &this->unk98, 0) != 0) || (arg0->LoadInt("SpeechMode", (int *) &this->unkAC, 0) != 0) || (arg0->LoadBool("Snap", &this->unkAB, 0) != 0) || (this->unk90.LoadLine(arg0, "OnReleaseSparx") != 0)) {
         var_r31_394 = 1;
     }
     return var_r31_394;

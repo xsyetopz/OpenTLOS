@@ -1,12 +1,23 @@
 #include "spyro/source/ElecZapCrystal.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/EmbersPS.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "common/gc/MKModel_GC.h"
@@ -202,8 +213,8 @@ loop_10:
     switch (temp_r0_249) {                          /* irregular */
     case 0:
         if (this->unkBC <= 0.0f) {
-            temp_f27_266 = MKRand_Float(&gViewSeed, 0.2f, 0.5f);
-            TriggerSubObjFader(M2C_FIELD((this + (MKRand_Int(&gViewSeed, 0, 4) * 4)), s32 *, 0xA0), temp_f27_266);
+            temp_f27_266 = MKRand_Float((int *) &gViewSeed, 0.2f, 0.5f);
+            TriggerSubObjFader(M2C_FIELD((this + (MKRand_Int((int *) &gViewSeed, 0, 4) * 4)), s32 *, 0xA0), temp_f27_266);
             this->unkB4 = 1;
             this->unkBC = 0.5f;
             MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkB8, &this->unkD8);
@@ -233,8 +244,8 @@ loop_10:
                 spA0 = temp_f0_340;
                 sp28 = sp90.unk8 * 2000.0f;
                 spA8 = (f64) sp28;
-                sp8 = MKRand_Float(&gViewSeed, 10.0f, 20.0f);
-                sp18 = MKRand_Float(&gViewSeed, 0.4f, 1.0f);
+                sp8 = MKRand_Float((int *) &gViewSeed, 10.0f, 20.0f);
+                sp18 = MKRand_Float((int *) &gViewSeed, 0.4f, 1.0f);
                 sp1C = 1.0f;
                 sp10 = 1.0f;
                 sp14 = 0.4f;
@@ -249,14 +260,14 @@ loop_10:
     case 1:
         this->unkC0 -= gUpdateTimeDelta;
         if (this->unkC0 <= 0.0f) {
-            temp_f27_391 = MKRand_Float(&gViewSeed, 0.1f, 0.4f);
-            TriggerSubObjFader(M2C_FIELD((this + (MKRand_Int(&gViewSeed, 0, 3) * 4)), s32 *, 0x94), temp_f27_391);
+            temp_f27_391 = MKRand_Float((int *) &gViewSeed, 0.1f, 0.4f);
+            TriggerSubObjFader(M2C_FIELD((this + (MKRand_Int((int *) &gViewSeed, 0, 3) * 4)), s32 *, 0x94), temp_f27_391);
             KDSound_Play3d(GS_LightningCrystal2, &this->unkD8, 0U, -1, 0.0f, 0U);
-            this->unkC0 = MKRand_Float(&gViewSeed, 0.1f, 0.2f);
+            this->unkC0 = MKRand_Float((int *) &gViewSeed, 0.1f, 0.2f);
         }
         if (this->unkBC <= 0.0f) {
             this->unkB4 = 0;
-            this->unkBC = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+            this->unkBC = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         }
         break;
     }

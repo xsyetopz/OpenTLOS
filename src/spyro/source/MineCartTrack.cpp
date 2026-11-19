@@ -1,15 +1,38 @@
 #include "spyro/source/MineCartTrack.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/MineCart.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include <m2c_macros.h>
 
 f64 fmod(f32, f64);                                 /* extern */
@@ -707,7 +730,7 @@ loop_18:
         return 1;
     }
     var_r31_1156 = 0;
-    if ((arg0->LoadInt("EntryDoorID_1", &this->unk104, 0) != 0) || (arg0->LoadInt("ExitDoorID_1", &this->unk108, 0) != 0) || (arg0->LoadInt("EntryDoorID_2", &this->unk10C, 0) != 0) || (arg0->LoadInt("ExitDoorID_2", &this->unk110, 0) != 0) || (arg0->LoadInt("EntryDoorID_3", &this->unk114, 0) != 0) || (arg0->LoadInt("ExitDoorID_3", &this->unk118, 0) != 0) || (arg0->LoadInt("EntryDoorID_4", &this->unk11C, 0) != 0) || (arg0->LoadInt("ExitDoorID_4", &this->unk120, 0) != 0) || (arg0->LoadBool("SpeedwayTrack", &this->unk4C, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_1", &this->unk50.unk3C, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_2", &this->unk90, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_3", &this->unk94, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_4", &this->unk98, 0) != 0)) {
+    if ((arg0->LoadInt("EntryDoorID_1", (int *) &this->unk104, 0) != 0) || (arg0->LoadInt("ExitDoorID_1", (int *) &this->unk108, 0) != 0) || (arg0->LoadInt("EntryDoorID_2", (int *) &this->unk10C, 0) != 0) || (arg0->LoadInt("ExitDoorID_2", (int *) &this->unk110, 0) != 0) || (arg0->LoadInt("EntryDoorID_3", (int *) &this->unk114, 0) != 0) || (arg0->LoadInt("ExitDoorID_3", (int *) &this->unk118, 0) != 0) || (arg0->LoadInt("EntryDoorID_4", (int *) &this->unk11C, 0) != 0) || (arg0->LoadInt("ExitDoorID_4", (int *) &this->unk120, 0) != 0) || (arg0->LoadBool("SpeedwayTrack", &this->unk4C, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_1", &this->unk50.unk3C, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_2", &this->unk90, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_3", &this->unk94, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_4", &this->unk98, 0) != 0)) {
         var_r31_1156 = 1;
     }
     return var_r31_1156;

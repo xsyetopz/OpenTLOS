@@ -34,7 +34,7 @@ inline SoundProp::~SoundProp() {
     if (temp_cr0_eq_15 == 0) {
         if (temp_cr0_eq_15 == 0) {
             if (&this->unkA0 != NULL) {
-                KDSound_Stop(&this->unkA0);
+                KDSound_Stop((int *) &this->unkA0);
             }
             if (this != NULL) {
             }

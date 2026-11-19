@@ -1,27 +1,65 @@
 #include "spyro/source/EnemyGoals.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBodyFX.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
 #include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CharacterZapFX.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Coronas.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyAttackPattern.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDeathFX.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGenerator.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EnemySettings.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplosiveBarrelPath.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/Goal.h"
+#include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Lever.h"
+#include "spyro/source/MeleeTrails.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
 #include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/SpawnPointObject.h"
 #include "spyro/source/SpawnerObject.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/PropFlags.h"
@@ -1163,7 +1201,7 @@ u8 EnemyGoal_Frozen::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
+#if 0 // DRAFT: undefined identifier 'FrozenInfo'
 void EnemyGoal_Frozen::Activate() {
     Enemy *temp_r3_1926;
     s32 temp_r3_1937;
@@ -1173,10 +1211,10 @@ void EnemyGoal_Frozen::Activate() {
     ((Character *) this->unkC)->StopMovement(1U);
     temp_r3_1926 = this->unkC;
     temp_r3_1926->TryFreeze(1, 0, 0.0f);
-    temp_r3_1937 = MKRand_Int(&gViewSeed, 0, 5);
+    temp_r3_1937 = MKRand_Int((int *) &gViewSeed, 0, 5);
     this->unkC->SetAnim((AnimSequenceType) FrozenInfo[temp_r3_1937].unk0, FrozenInfo[temp_r3_1937].unk4, 0, 0.15f, 0U, 0U);
     temp_r5_1953 = &FrozenInfo[temp_r3_1937];
-    ((MKAnimScript *) this->unkC->unk630)->SetCurrentFrame(MKRand_Int(&gViewSeed, temp_r5_1953->unk8, temp_r5_1953->unkC));
+    ((MKAnimScript *) this->unkC->unk630)->SetCurrentFrame(MKRand_Int((int *) &gViewSeed, temp_r5_1953->unk8, temp_r5_1953->unkC));
     M2C_FIELD(this->unkC->unk630, f32 *, 0x38) = 0.0f;
 }
 #endif
@@ -1660,17 +1698,15 @@ u8 EnemyGoal_Spawn::Update() {
     return this->unk8;
 }
 
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void EnemyGoal_Spawn::Activate() {
     this->unk8 = 0;
     ((Character *) this->unkC)->StopMovement(1U);
     this->unkC->SetAnim((AnimSequenceType) 0xF, this->unk10, 0, 0.15f, 0U, 0U);
     ((Character *) this->unkC)->SetMovementType((CharacterMoveType) 2);
-    PropFlagsSet((u32 *) &this->unkC->unk10, 0x40000U);
+    PropFlagsSet((unsigned int *) &this->unkC->unk10, 0x40000U);
     this->unkC->SetInvulnerableToMeleeAttacks(1U, 0U);
     this->unkC->SetInvulnerableToBreathAttacks(1U, 0U);
 }
-#endif
 
 void EnemyGoal_Spawn::Reset() {
     this->unk8 = 1;

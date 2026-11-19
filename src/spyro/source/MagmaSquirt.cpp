@@ -1,11 +1,36 @@
 #include "spyro/source/MagmaSquirt.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/LiquidFX.h"
 #include "spyro/source/ManagedLight.h"
@@ -243,7 +268,7 @@ void MagmaSquirt::Update() {
             sp108 = temp_f0_399;
             sp30 = (f32) sp100 * 700.0f;
             sp110 = (f64) sp30;
-            sp14 = MKRand_Float(&gViewSeed, 5.0f, 7.0f);
+            sp14 = MKRand_Float((int *) &gViewSeed, 5.0f, 7.0f);
             ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*this->unk154, *((MKVector3 *) &sp108), sp14);
             temp_r4_420 = this->unk160;
             if (temp_r4_420 != NULL) {
@@ -255,7 +280,7 @@ void MagmaSquirt::Update() {
                     M2C_FIELD(temp_r4_428, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_423, f64 *, 0);
                     M2C_FIELD(temp_r4_428, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_423, f64 *, 8);
                 }
-                temp_f1_439 = MKRand_Float(&gViewSeed, 500.0f, 600.0f);
+                temp_f1_439 = MKRand_Float((int *) &gViewSeed, 500.0f, 600.0f);
                 temp_r3_440 = this->unk160;
                 temp_r3_440->unk38 = temp_f1_439;
                 temp_r3_442 = temp_r3_440->unk3C;

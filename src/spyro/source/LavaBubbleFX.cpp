@@ -1,15 +1,31 @@
 #include "spyro/source/LavaBubbleFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/Coronas.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "common/Source/MKMat_MK2_Standard.h"
-#include "common/Source/MKMaterial.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKModel_GC.h"
@@ -691,9 +707,9 @@ void LavaBubbleFX::Update() {
                     *(this->unkC8 + (var_r27_655 + 0x58)) = 260.0f;
                     *(this->unkC8 + (var_r27_655 + 0x38)) = 0.25f;
                     do {
-                        temp_f23_985 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f22_990 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        spC0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                        temp_f23_985 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                        temp_f22_990 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                        spC0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                         spC4 = temp_f22_990;
                         spC8 = temp_f23_985;
                         sp160 = (f64) spC0;
@@ -709,9 +725,9 @@ void LavaBubbleFX::Update() {
                         sp180 = temp_f0_1017;
                         spA8 = M2C_FIELD(temp_r4_1011, f32 *, 8) + (f32) sp178;
                         sp188 = (f64) spA8;
-                        temp_f22_1031 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                        temp_f23_1036 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
-                        sp90 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                        temp_f22_1031 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                        temp_f23_1036 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
+                        sp90 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                         sp94 = temp_f23_1036;
                         sp98 = temp_f22_1031;
                         sp140 = (f64) sp90;
@@ -721,7 +737,7 @@ void LavaBubbleFX::Update() {
                         sp150 = temp_f0_1050;
                         sp88 = (f32) sp148 * 350.0f;
                         sp158 = (f64) sp88;
-                        temp_f1_1062 = MKRand_Float(&gViewSeed, 3.0f, 8.0f);
+                        temp_f1_1062 = MKRand_Float((int *) &gViewSeed, 3.0f, 8.0f);
                         sp70 = 1.0f;
                         sp74 = 0.75f;
                         spC = temp_f1_1062;

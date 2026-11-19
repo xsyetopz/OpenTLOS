@@ -1,11 +1,16 @@
 #include "spyro/source/FlameBreathBeamFX.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/HeatDistortPS.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKCollision.h"
@@ -905,7 +910,7 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     sp150 = temp_f0_1428;
     spB8 = sp140.unk8 * 100.0f;
     sp158 = (f64) spB8;
-    temp_f1_1440 = MKRand_Float(&gViewSeed, 0.125f, 1.0f);
+    temp_f1_1440 = MKRand_Float((int *) &gViewSeed, 0.125f, 1.0f);
     spC = 0.0f;
     sp160.GetMeasure(temp_f1_1440, (Matrix *) &this->unkC8, KDSpline_PositionMixer);
     temp_f0_1450 = M2C_BITWISE(f64, sp160) + sp150;
@@ -913,12 +918,12 @@ void FlameBreathBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2)
     sp160.unk10 = temp_f0_1450;
     spA8 = sp160.unk8 + (f32) sp158;
     sp178 = (f64) spA8;
-    sp94 = MKRand_Float(&gViewSeed, 400.0f, 600.0f);
+    sp94 = MKRand_Float((int *) &gViewSeed, 400.0f, 600.0f);
     sp90 = 0.0f;
     sp98 = 0.0f;
     sp110 = (f64) sp90;
     sp118 = (f64) sp98;
-    ((HeatDistortPS *) (&gb + 0x240))->Emit(*((MKVector3 *) &sp160.unk10), *((MKVector3 *) &sp110), MKRand_Float(&gViewSeed, 1.5f, 2.5f), 1.0f);
+    ((HeatDistortPS *) (&gb + 0x240))->Emit(*((MKVector3 *) &sp160.unk10), *((MKVector3 *) &sp110), MKRand_Float((int *) &gViewSeed, 1.5f, 2.5f), 1.0f);
 }
 #endif
 
@@ -952,10 +957,10 @@ void FlameBreathBeam::Init(const char *arg0, const char *arg1, const char *arg2,
     this->unk64 = 3.1415927f;
     do {
         temp_r30_1643 = this + var_r31_1613;
-        M2C_FIELD(temp_r30_1643, f32 *, 0x10) = MKRand_Float(&gViewSeed, 0.5f, 2.0f);
+        M2C_FIELD(temp_r30_1643, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, 0.5f, 2.0f);
         M2C_FIELD(temp_r30_1643, f32 *, 8) = (f32) M2C_FIELD(temp_r30_1643, f32 *, 0x10);
         var_r29_1611 += 1;
-        M2C_FIELD(temp_r30_1643, f32 *, 0xC) = MKRand_Float(&gViewSeed, 1.0f, 1.25f);
+        M2C_FIELD(temp_r30_1643, f32 *, 0xC) = MKRand_Float((int *) &gViewSeed, 1.0f, 1.25f);
         var_r31_1613 += 0x18;
     } while (var_r29_1611 < 5);
     this->unk100 = 0.0f;

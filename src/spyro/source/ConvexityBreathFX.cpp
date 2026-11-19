@@ -1,24 +1,58 @@
 #include "spyro/source/ConvexityBreathFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/BaseBreathFX.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDPath.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SB2.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -395,7 +429,7 @@ loop_32:
     ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay(1.0f, 1.0f, 0.15f, 0, 4.0f, 0U);
     var_r28_698 = 0;
     do {
-        temp_f31_704 = MKRand_Float(&gViewSeed, 50.0f, 2000.0f);
+        temp_f31_704 = MKRand_Float((int *) &gViewSeed, 50.0f, 2000.0f);
         MKVector(1.0f, 1.0f, 1.0f);
         MKVector(-1.0f, -1.0f, -1.0f);
         KDRand_Vector(spB8, spA8);
@@ -412,14 +446,14 @@ loop_32:
         sp138 = sp28;
         sp100 = (f64) sp30;
         sp140 = (f64) sp30;
-        temp_f1_753 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        temp_f1_753 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         sp48 = temp_f1_753;
         sp54 = 1.0f;
         sp4C = 0.25f * temp_f1_753;
         sp50 = 0.75f * temp_f1_753;
         sp88 = (f64) sp48;
         sp90 = (f64) sp50;
-        sp10 = MKRand_Float(&gViewSeed, 20.0f, 25.0f);
+        sp10 = MKRand_Float((int *) &gViewSeed, 20.0f, 25.0f);
         ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(*((MKVector3 *) &sp148), *((MKVector3 *) &sp138), sp10, *((MKVector4 *) &sp88), -200.0f);
         var_r28_698 += 1;
     } while (var_r28_698 < 0x3C);
@@ -470,7 +504,7 @@ loop_9:
         }
     }
     this->unk118 = NULL;
-    KDSound_Stop(&this->unk124);
+    KDSound_Stop((int *) &this->unk124);
     MKModel_Destroy(this->unk160);
     BaseBreathFX::Deinit();
 }

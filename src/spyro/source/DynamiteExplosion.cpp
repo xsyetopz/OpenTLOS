@@ -1,26 +1,57 @@
 #include "spyro/source/DynamiteExplosion.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/Frustum.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/ElectricSparks.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FlyingChunkPS.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDParticleSystem.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/PooledShatterProp.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapArcFX.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 M2C_UNK free(DynamiteExplosion::Explosion **);      /* extern */
@@ -44,7 +75,7 @@ static u8 lit_1080 = 1;
 
 static u8 lit_1149 = 1;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     f64 sp150;
     f64 sp148;
@@ -141,7 +172,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     }
     M2C_FIELD(arg1, f32 *, 0x10) = var_f0_60;
     temp_f30_78 = M2C_FIELD(arg1, f32 *, 0x10);
-    temp_f1_80 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+    temp_f1_80 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
     sp90 = -1.0f;
     sp80 = 1.0f;
     sp88 = -1.0f;
@@ -156,7 +187,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     sp130 = (f64) sp90;
     sp118 = (f64) sp78;
     sp120 = (f64) sp80;
-    temp_f1_116 = M2C_FIELD(arg1, f32 *, 0x14) * MKRand_Float(&gViewSeed, 2.0f, 3.0f);
+    temp_f1_116 = M2C_FIELD(arg1, f32 *, 0x14) * MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
     sp108 = (f64) sp98;
     sp110 = (f64) spA0;
     sp10 = temp_f30_78 * temp_f1_116;
@@ -207,7 +238,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     sp148 = (f64) sp68;
     sp150 = (f64) sp70;
     ((ZapArcFX *) gb.unk94)->Trigger(*((MKVector3 *) arg1), *((MKVector3 *) &sp148), sp10, lit_1149, (MKVector4) &sp108);
-    temp_f31_231 = MKRand_Float(&gViewSeed, 2000.0f, 3000.0f);
+    temp_f31_231 = MKRand_Float((int *) &gViewSeed, 2000.0f, 3000.0f);
     sp60 = -1.0f;
     sp50 = 1.0f;
     sp58 = -1.0f;
@@ -274,7 +305,7 @@ u8 DynamiteExplosion::UpdateElec(DynamiteExplosion::Explosion *arg1) {
     spF8 = temp_f0_356;
     sp30 = (f32) spF0 * temp_f30_78;
     sp100 = (f64) sp30;
-    ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) arg1), *((MKVector3 *) &spF8), temp_f30_78 * (M2C_FIELD(arg1, f32 *, 0x14) * MKRand_Float(&gViewSeed, 2.0f, 3.0f)), 1U);
+    ((ElectricSparks *) gb.unk230)->Emit(*((MKVector3 *) arg1), *((MKVector3 *) &spF8), temp_f30_78 * (M2C_FIELD(arg1, f32 *, 0x14) * MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f)), 1U);
     if (M2C_FIELD(arg1, f32 *, 0x10) <= 0.0f) {
         return 0U;
     }
@@ -295,7 +326,7 @@ u8 DynamiteExplosion::UpdateFire(DynamiteExplosion::Explosion *arg1) {
     return 1U;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void DynamiteExplosion::TriggerElec(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp3B0;
     Matrix sp370;
@@ -486,7 +517,7 @@ void DynamiteExplosion::TriggerElec(const MKVector3 &arg0, float arg1, bool arg2
         M2C_FIELD(temp_r3_465, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_465, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_465, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_465, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_465, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r3_465, f32 *, 0x10) = 1.0f;
         M2C_FIELD(temp_r3_465, f32 *, 0x14) = 0.0f;
         M2C_FIELD(temp_r3_465, f32 *, 0x18) = 0.5f;
@@ -495,14 +526,14 @@ void DynamiteExplosion::TriggerElec(const MKVector3 &arg0, float arg1, bool arg2
         M2C_FIELD(temp_r27_468, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r27_468, f32 *, 8) = 0.0f;
         M2C_FIELD(temp_r27_468, f32 *, 0x18) = (f32) (3.0f * arg1);
-        M2C_FIELD(temp_r27_468, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        M2C_FIELD(temp_r27_468, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r27_468, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r3_459, void **, 0x6C), f32 *, 0xF4);
     }
     var_r27_509 = 0;
     temp_r31_513 = (s32) (20.0f * arg1);
 loop_24:
     if (var_r27_509 < temp_r31_513) {
-        temp_f1_519 = MKRand_Float(&gViewSeed, 2000.0f, 3000.0f);
+        temp_f1_519 = MKRand_Float((int *) &gViewSeed, 2000.0f, 3000.0f);
         sp170 = -1.0f;
         sp160 = 1.0f;
         sp168 = -1.0f;
@@ -564,8 +595,8 @@ loop_24:
         sp308 = temp_f0_632;
         sp150 = (f32) sp300 * temp_f1_519;
         sp310 = (f64) sp150;
-        sp24 = MKRand_Float(&gViewSeed, 12.0f, 20.0f);
-        sp140 = MKRand_Float(&gViewSeed, 0.125f, 1.0f);
+        sp24 = MKRand_Float((int *) &gViewSeed, 12.0f, 20.0f);
+        sp140 = MKRand_Float((int *) &gViewSeed, 0.125f, 1.0f);
         sp144 = 1.0f;
         sp138 = 1.0f;
         sp13C = 0.0f;
@@ -578,7 +609,7 @@ loop_24:
     var_r27_674 = 0;
 loop_47:
     if (var_r27_674 < temp_r31_513) {
-        temp_f1_685 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        temp_f1_685 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         sp120 = -1.0f;
         sp110 = 1.0f;
         sp118 = -1.0f;
@@ -589,7 +620,7 @@ loop_47:
         sp290 = (f64) sp120;
         sp278 = (f64) sp108;
         sp280 = (f64) sp110;
-        temp_f1_704 = MKRand_Float(&gViewSeed, 2.0f, 3.0f);
+        temp_f1_704 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
         spF8 = 1.0f;
         sp104 = 1.0f;
         spFC = (0.2f * temp_f1_685) + 0.1f;
@@ -650,7 +681,7 @@ loop_47:
     var_r27_829 = 0;
 loop_70:
     if (var_r27_829 < temp_r31_513) {
-        temp_f1_836 = MKRand_Float(&gViewSeed, 2000.0f, 3000.0f);
+        temp_f1_836 = MKRand_Float((int *) &gViewSeed, 2000.0f, 3000.0f);
         spE0 = -1.0f;
         spD0 = 1.0f;
         spD8 = -1.0f;
@@ -712,7 +743,7 @@ loop_70:
         sp258 = temp_f0_949;
         spC0 = (f32) sp250 * temp_f1_836;
         sp260 = (f64) spC0;
-        ((ElectricSparks *) gb.unk230)->Emit(arg0, *((MKVector3 *) &sp258), MKRand_Float(&gViewSeed, 2.0f, 3.0f), 1U);
+        ((ElectricSparks *) gb.unk230)->Emit(arg0, *((MKVector3 *) &sp258), MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f), 1U);
         var_r27_829 += 1;
         goto loop_70;
     }
@@ -845,7 +876,7 @@ loop_70:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void DynamiteExplosion::TriggerIce(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp4B0;
     Matrix sp470;
@@ -1067,7 +1098,7 @@ loop_4:
             M2C_FIELD(temp_r3_1407, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
             M2C_FIELD(temp_r3_1407, f32 *, 0x20) = 0.0f;
             M2C_FIELD(temp_r3_1407, f32 *, 0x28) = 0.0f;
-            M2C_FIELD(temp_r3_1407, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+            M2C_FIELD(temp_r3_1407, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
             M2C_FIELD(temp_r3_1407, f32 *, 0x10) = 0.25f;
             M2C_FIELD(temp_r3_1407, f32 *, 0x14) = 0.25f;
             M2C_FIELD(temp_r3_1407, f32 *, 0x18) = 0.25f;
@@ -1080,7 +1111,7 @@ loop_4:
             M2C_FIELD(temp_r23_1410, f64 *, 8) = (f64) sp78;
             sp3B8 = (f64) sp78;
             M2C_FIELD(temp_r23_1410, f32 *, 0x18) = temp_f29_1366;
-            M2C_FIELD(temp_r23_1410, f32 *, 0x10) = MKRand_Float(&gViewSeed, -0.5f, 0.5f);
+            M2C_FIELD(temp_r23_1410, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f);
             M2C_FIELD(temp_r23_1410, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r26_1361, void **, 0x80), f32 *, 0xF4);
         }
         var_r25_1363 += 1;
@@ -1094,12 +1125,12 @@ loop_4:
         M2C_FIELD(temp_r3_1463, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_1463, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_1463, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_1463, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_1463, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r23_1466, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r23_1466, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r23_1466, f32 *, 8) = 0.0f;
         M2C_FIELD(temp_r23_1466, f32 *, 0x18) = (f32) (12.0f * arg1);
-        M2C_FIELD(temp_r23_1466, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        M2C_FIELD(temp_r23_1466, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r23_1466, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r26_1361, void **, 0x70), f32 *, 0xF4);
     }
     temp_r3_1494 = M2C_FIELD(temp_r26_1361, void **, 0x74);
@@ -1110,12 +1141,12 @@ loop_4:
         M2C_FIELD(temp_r3_1498, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_1498, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_1498, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_1498, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_1498, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r23_1501, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r23_1501, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r23_1501, f32 *, 8) = 0.0f;
         M2C_FIELD(temp_r23_1501, f32 *, 0x18) = temp_f22_1364;
-        M2C_FIELD(temp_r23_1501, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        M2C_FIELD(temp_r23_1501, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r23_1501, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r26_1361, void **, 0x74), f32 *, 0xF4);
     }
     temp_r3_1530 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
@@ -1233,7 +1264,7 @@ loop_4:
     var_r27_1830 = 0;
 loop_57:
     if (var_r27_1830 < (s32) (20.0f * arg1)) {
-        temp_f1_1840 = MKRand_Float(&gViewSeed, 2000.0f, 3000.0f);
+        temp_f1_1840 = MKRand_Float((int *) &gViewSeed, 2000.0f, 3000.0f);
         sp148 = -1.0f;
         sp138 = 1.0f;
         sp140 = -1.0f;
@@ -1295,9 +1326,9 @@ loop_57:
         sp2F0 = temp_f0_1953;
         sp128 = (f32) sp2E8 * temp_f1_1840;
         sp2F8 = (f64) sp128;
-        sp18 = MKRand_Float(&gViewSeed, 12.0f, 20.0f);
-        temp_f22_1971 = MKRand_Float(&gViewSeed, 0.35f, 5.0f);
-        sp110 = MKRand_Float(&gViewSeed, 0.35f, 5.0f);
+        sp18 = MKRand_Float((int *) &gViewSeed, 12.0f, 20.0f);
+        temp_f22_1971 = MKRand_Float((int *) &gViewSeed, 0.35f, 5.0f);
+        sp110 = MKRand_Float((int *) &gViewSeed, 0.35f, 5.0f);
         sp114 = temp_f22_1971;
         sp118 = 1.0f;
         sp11C = 1.0f;
@@ -1311,7 +1342,7 @@ loop_57:
     temp_f22_2008 = arg0.unk8;
 loop_60:
     if (var_r28_2002 < (s32) temp_f29_1366) {
-        temp_f30_2015 = MKRand_Float(&gViewSeed, 2500.0f, 3500.0f);
+        temp_f30_2015 = MKRand_Float((int *) &gViewSeed, 2500.0f, 3500.0f);
         MKVector(1.0f, 1.0f, 1.0f);
         MKVector(-1.0f, 0.5f, -1.0f);
         KDRand_Vector(sp270, sp260);
@@ -1328,7 +1359,7 @@ loop_60:
         sp408 = (f64) sp48;
         sp1C0 = (f64) sp90;
         sp1C8 = (f64) sp98;
-        temp_f1_2056 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+        temp_f1_2056 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
         spF0 = 0.0f;
         spF4 = 75.0f;
         spA8 = 3.1415927f;
@@ -1396,7 +1427,7 @@ loop_66:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp4C0;
     Matrix sp480;
@@ -1594,12 +1625,12 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
         M2C_FIELD(temp_r3_2281, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_2281, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_2281, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_2281, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_2281, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r26_2284, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r26_2284, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r26_2284, f32 *, 8) = 0.0f;
         M2C_FIELD(temp_r26_2284, f32 *, 0x18) = (f32) (12.0f * arg1);
-        M2C_FIELD(temp_r26_2284, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        M2C_FIELD(temp_r26_2284, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r26_2284, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r3_2275, void **, 0x78), f32 *, 0xF4);
     }
     temp_r3_2312 = M2C_FIELD(temp_r3_2275, void **, 0x7C);
@@ -1610,12 +1641,12 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
         M2C_FIELD(temp_r3_2316, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_2316, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_2316, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_2316, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_2316, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r26_2319, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r26_2319, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r26_2319, f32 *, 8) = 0.0f;
         M2C_FIELD(temp_r26_2319, f32 *, 0x18) = (f32) (3.0f * arg1);
-        M2C_FIELD(temp_r26_2319, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        M2C_FIELD(temp_r26_2319, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r26_2319, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r3_2275, void **, 0x7C), f32 *, 0xF4);
     }
     temp_r3_2350 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
@@ -1734,7 +1765,7 @@ void DynamiteExplosion::TriggerEarth(const MKVector3 &arg0, float arg1, bool arg
     temp_r31_2655 = (s32) (20.0f * arg1);
 loop_52:
     if (var_r26_2651 < temp_r31_2655) {
-        temp_f1_2661 = MKRand_Float(&gViewSeed, 2000.0f, 3000.0f);
+        temp_f1_2661 = MKRand_Float((int *) &gViewSeed, 2000.0f, 3000.0f);
         sp140 = -1.0f;
         sp130 = 1.0f;
         sp138 = -1.0f;
@@ -1796,9 +1827,9 @@ loop_52:
         sp368 = temp_f0_2774;
         sp120 = (f32) sp360 * temp_f1_2661;
         sp370 = (f64) sp120;
-        sp20 = MKRand_Float(&gViewSeed, 12.0f, 20.0f);
-        temp_f22_2792 = MKRand_Float(&gViewSeed, 0.35f, 5.0f);
-        sp108 = MKRand_Float(&gViewSeed, 0.35f, 5.0f);
+        sp20 = MKRand_Float((int *) &gViewSeed, 12.0f, 20.0f);
+        temp_f22_2792 = MKRand_Float((int *) &gViewSeed, 0.35f, 5.0f);
+        sp108 = MKRand_Float((int *) &gViewSeed, 0.35f, 5.0f);
         sp10C = 1.0f;
         sp110 = temp_f22_2792;
         sp114 = 1.0f;
@@ -1811,7 +1842,7 @@ loop_52:
     var_r26_2820 = 0;
 loop_55:
     if (var_r26_2820 < temp_r31_2655) {
-        temp_f24_2827 = MKRand_Float(&gViewSeed, 500.0f, 1500.0f);
+        temp_f24_2827 = MKRand_Float((int *) &gViewSeed, 500.0f, 1500.0f);
         MKVector(1.0f, 1.0f, 1.0f);
         MKVector(-1.0f, 0.5f, -1.0f);
         KDRand_Vector(sp2E8, sp2D8);
@@ -1822,9 +1853,9 @@ loop_55:
         sp448 = sp58;
         sp310 = (f64) sp60;
         sp450 = (f64) sp60;
-        sp1C = MKRand_Float(&gViewSeed, 0.125f, 0.5f);
+        sp1C = MKRand_Float((int *) &gViewSeed, 0.125f, 0.5f);
         gb.EmitCrud(arg0, *((MKVector3 *) &sp448), sp1C);
-        temp_f23_2871 = MKRand_Float(&gViewSeed, 500.0f, 1500.0f);
+        temp_f23_2871 = MKRand_Float((int *) &gViewSeed, 500.0f, 1500.0f);
         MKVector(1.0f, 1.0f, 1.0f);
         MKVector(-1.0f, 0.5f, -1.0f);
         KDRand_Vector(sp298, sp288);
@@ -1835,7 +1866,7 @@ loop_55:
         sp448 = sp48;
         sp2C0 = (f64) sp50;
         sp450 = (f64) sp50;
-        sp18 = MKRand_Float(&gViewSeed, 0.5f, 0.75f);
+        sp18 = MKRand_Float((int *) &gViewSeed, 0.5f, 0.75f);
         gb.EmitSmallRocks(arg0, *((MKVector3 *) &sp448), sp18);
         var_r26_2820 += 1;
         goto loop_55;
@@ -1844,7 +1875,7 @@ loop_55:
     temp_f24_2928 = arg0.unk8;
 loop_58:
     if (var_r29_2924 < (s32) (5.0f * arg1)) {
-        temp_f31_2937 = MKRand_Float(&gViewSeed, 2500.0f, 3500.0f);
+        temp_f31_2937 = MKRand_Float((int *) &gViewSeed, 2500.0f, 3500.0f);
         MKVector(1.0f, 1.0f, 1.0f);
         MKVector(-1.0f, 0.5f, -1.0f);
         KDRand_Vector(sp248, sp238);
@@ -1861,7 +1892,7 @@ loop_58:
         sp450 = (f64) sp40;
         sp198 = (f64) sp88;
         sp1A0 = (f64) sp90;
-        temp_f1_2978 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+        temp_f1_2978 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
         spE8 = 0.0f;
         spEC = 75.0f;
         spA0 = 3.1415927f;
@@ -1901,7 +1932,7 @@ loop_58:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2) {
     Frustum sp470;
     Matrix sp430;
@@ -2107,12 +2138,12 @@ void DynamiteExplosion::TriggerFire(const MKVector3 &arg0, float arg1, bool arg2
         M2C_FIELD(temp_r3_3127, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_3127, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_3127, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_3127, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_3127, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r26_3130, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r26_3130, f32 *, 4) = (f32) (1000.0f * arg1);
         M2C_FIELD(temp_r26_3130, f32 *, 8) = 0.0f;
         M2C_FIELD(temp_r26_3130, f32 *, 0x18) = (f32) (2.0f * arg1);
-        M2C_FIELD(temp_r26_3130, f32 *, 0x10) = MKRand_Float(&gViewSeed, -0.5f, 0.5f);
+        M2C_FIELD(temp_r26_3130, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f);
         M2C_FIELD(temp_r26_3130, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r3_3115, void **, 0x60), f32 *, 0xF4);
     }
     var_r26_3163 = 0;
@@ -2136,7 +2167,7 @@ loop_8:
             M2C_FIELD(temp_r3_3202, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
             M2C_FIELD(temp_r3_3202, f32 *, 0x20) = 0.0f;
             M2C_FIELD(temp_r3_3202, f32 *, 0x28) = 0.0f;
-            M2C_FIELD(temp_r3_3202, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+            M2C_FIELD(temp_r3_3202, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
             sp3A0.operator*(1000.0f);
             sp70 = sp3A0 * (f64) arg1;
             M2C_FIELD(temp_r24_3205, f64 *, 0) = sp70;
@@ -2145,7 +2176,7 @@ loop_8:
             M2C_FIELD(temp_r24_3205, f64 *, 8) = (f64) sp78;
             sp3B8 = (f64) sp78;
             M2C_FIELD(temp_r24_3205, f32 *, 0x18) = (f32) (2.0f * arg1);
-            M2C_FIELD(temp_r24_3205, f32 *, 0x10) = MKRand_Float(&gViewSeed, -0.5f, 0.5f);
+            M2C_FIELD(temp_r24_3205, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -0.5f, 0.5f);
             M2C_FIELD(temp_r24_3205, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r3_3115, void **, 0x60), f32 *, 0xF4);
         }
         temp_r3_3244 = M2C_FIELD(temp_r3_3115, void **, 0x68);
@@ -2179,12 +2210,12 @@ loop_8:
         M2C_FIELD(temp_r3_3292, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         M2C_FIELD(temp_r3_3292, f32 *, 0x20) = 0.0f;
         M2C_FIELD(temp_r3_3292, f32 *, 0x28) = 0.0f;
-        M2C_FIELD(temp_r3_3292, f32 *, 0x24) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        M2C_FIELD(temp_r3_3292, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r24_3295, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r24_3295, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r24_3295, f32 *, 8) = 0.0f;
         M2C_FIELD(temp_r24_3295, f32 *, 0x18) = temp_f22_3119;
-        M2C_FIELD(temp_r24_3295, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+        M2C_FIELD(temp_r24_3295, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r24_3295, f32 *, 0x14) = (f32) M2C_FIELD(M2C_FIELD(temp_r3_3115, void **, 0x64), f32 *, 0xF4);
     }
     temp_r3_3324 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
@@ -2302,7 +2333,7 @@ loop_8:
     var_r28_3625 = 0;
 loop_59:
     if (var_r28_3625 < (s32) (20.0f * arg1)) {
-        temp_f1_3636 = MKRand_Float(&gViewSeed, 2000.0f, 3000.0f);
+        temp_f1_3636 = MKRand_Float((int *) &gViewSeed, 2000.0f, 3000.0f);
         sp148 = -1.0f;
         sp138 = 1.0f;
         sp140 = -1.0f;
@@ -2364,8 +2395,8 @@ loop_59:
         sp2D0 = temp_f0_3749;
         sp128 = (f32) sp2C8 * temp_f1_3636;
         sp2D8 = (f64) sp128;
-        sp18 = MKRand_Float(&gViewSeed, 12.0f, 20.0f);
-        sp114 = MKRand_Float(&gViewSeed, 0.35f, 1.0f);
+        sp18 = MKRand_Float((int *) &gViewSeed, 12.0f, 20.0f);
+        sp114 = MKRand_Float((int *) &gViewSeed, 0.35f, 1.0f);
         sp110 = 1.0f;
         sp118 = 0.125f;
         sp11C = 1.0f;
@@ -2379,7 +2410,7 @@ loop_59:
     temp_f21_3799 = arg0.unk8;
 loop_62:
     if (var_r29_3795 < (s32) (5.0f * arg1)) {
-        temp_f31_3808 = MKRand_Float(&gViewSeed, 2500.0f, 3500.0f);
+        temp_f31_3808 = MKRand_Float((int *) &gViewSeed, 2500.0f, 3500.0f);
         MKVector(1.0f, 1.0f, 1.0f);
         MKVector(-1.0f, 0.5f, -1.0f);
         KDRand_Vector(sp250, sp240);
@@ -2396,7 +2427,7 @@ loop_62:
         sp408 = (f64) sp38;
         sp1A0 = (f64) sp90;
         sp1A8 = (f64) sp98;
-        temp_f1_3849 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+        temp_f1_3849 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
         spF0 = 0.0f;
         spF4 = 75.0f;
         spA8 = 3.1415927f;
@@ -2436,7 +2467,7 @@ loop_62:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
+#if 0 // DRAFT: undefined identifier 'unkC'
 void DynamiteExplosion::Trigger(const MKVector3 &arg0, float arg1, bool arg2, int arg3, MKProp *arg4) {
     s32 sp48;
     f32 sp44;

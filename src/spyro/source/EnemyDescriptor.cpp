@@ -1,26 +1,49 @@
 #include "spyro/source/EnemyDescriptor.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/CharacterBreathFX.h"
 #include "spyro/source/CharacterDescriptor.h"
+#include "spyro/source/CollisionObject.h"
+#include "spyro/source/Crate.h"
 #include "spyro/source/ElementalRing.h"
 #include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemySettings.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/IceBitsPS.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/PooledShatterProp.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/Source/Str.h"
 #include "spyro/source/DataMap.h"
-#include "spyro/source/EnemySettings.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -374,7 +397,7 @@ void *EnemyDescriptor::GetAnimSequence(int arg0, int arg1, int arg2, AnimSequenc
     }
     if (var_r29_473 > 0) {
         var_f30_506 = 0.0f;
-        temp_f1_510 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        temp_f1_510 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         var_r7_512 = 0;
         var_r8_514 = 0;
         var_r6_516 = 0;
@@ -681,7 +704,7 @@ loop_27:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void EnemyDescriptor::LoadLine_AnimSequence(MKIniLine *arg0, AnimSequence *arg1) {
     MKIniLine *var_r29_1030;
     s8 *temp_r26_1097;
@@ -698,7 +721,7 @@ void EnemyDescriptor::LoadLine_AnimSequence(MKIniLine *arg0, AnimSequence *arg1)
     arg1->unk68 = 0;
 loop_20:
     if (var_r29_1030 != NULL) {
-        if ((var_r29_1030->LoadInt("iVariation", &arg1->unk68, 0) == 0) && (var_r29_1030->LoadFloat("fWeighting", &arg1->unk60, 0) == 0) && (var_r29_1030->LoadFloat("fAnimSpeed", &arg1->unk64, 0) == 0)) {
+        if ((var_r29_1030->LoadInt("iVariation", (int *) &arg1->unk68, 0) == 0) && (var_r29_1030->LoadFloat("fWeighting", &arg1->unk60, 0) == 0) && (var_r29_1030->LoadFloat("fAnimSpeed", &arg1->unk64, 0) == 0)) {
             if (var_r29_1030->IsField("pEnter") != 0) {
                 temp_r3_1069 = var_r29_1030->GetString(0);
                 temp_r27_1070 = this->unk34;
@@ -820,7 +843,7 @@ loop_9:
         }
     }
     var_r31_1333 = 0;
-    if ((arg0->LoadFloat("iMaxHealth", &this->unkE8, 0) != 0) || (arg0->LoadFloat("iMaxShieldHealth", &this->unkEC, 0) != 0) || (arg0->LoadFloat("iMaxArmour", &this->unkF0, 0) != 0) || (arg0->LoadInt("uArmourType", (s32 *) &this->unk104, 0) != 0) || (arg0->LoadInt("iFuryDamage", &this->unkF8, 0) != 0) || (arg0->LoadBool("bCanSquish", &this->unkFC, 0) != 0) || (arg0->LoadInt("iBreathDamage", &this->unk100, 0) != 0) || (arg0->LoadInt("iGemsHealth", &this->unk108, 0) != 0) || (arg0->LoadInt("iGemsSpirit", &this->unk10C, 0) != 0) || (arg0->LoadInt("iGemsMagic", &this->unk110, 0) != 0) || (arg0->LoadInt("iGemsFury", &this->unk114, 0) != 0) || (arg0->LoadInt("iTier", &this->unk118, 0) != 0) || (arg0->LoadInt("iHealthBarStages", &this->unk11C, 0) != 0) || (DataMap_LoadLine(arg0, "race", &dataMapRaces, (u32 *) &this->unk1CC) != 0) || (arg0->LoadBool("bImmortal", &this->unk120, 0) != 0) || (arg0->LoadBool("bDieInLava", &this->unk121, 0) != 0) || (arg0->LoadBool("bDieInWater", &this->unk122, 0) != 0) || (arg0->LoadFloat("fMaxFreezeCount", &this->unk124, 0) != 0) || (arg0->LoadFloat("fFreezeDuration", &this->unk128, 0) != 0) || (arg0->LoadFloat("fAlertRange", &this->unk12C, 0) != 0) || (arg0->LoadFloat("fCriticalAlertRange", &this->unk130, 0) != 0) || (arg0->LoadFloat("fRemainAlertRange", &this->unk134, 0) != 0) || (arg0->LoadFloat("fMeleeDistanceMode", &this->unk138, 0) != 0) || (arg0->LoadFloat("fRangedDistanceMode", &this->unk13C, 0) != 0) || (arg0->LoadFloat("fVisibleAngle", &this->unk14C, 0) != 0) || (arg0->LoadFloat("fFocalPointDistance", &this->unk148, 0) != 0) || (arg0->LoadFloat("fDodgeChance", &this->unk150, 0) != 0) || (arg0->LoadFloat("fEvadeDistance", &this->unk140, 0) != 0) || (arg0->LoadFloat("fEvadeRandomChance", &this->unk144, 0) != 0) || (arg0->LoadFloat("fFlySpeed", &this->unk164, 0) != 0) || (arg0->LoadFloat("fIdleRotSpeed", &this->unk154, 0) != 0) || (arg0->LoadFloat("fWalkRotSpeed", &this->unk158, 0) != 0) || (arg0->LoadFloat("fRunRotSpeed", &this->unk15C, 0) != 0) || (arg0->LoadFloat("fAlertRotSpeed", &this->unk160, 0) != 0) || (arg0->LoadFloat("fMass", &this->unk168, 0) != 0) || (arg0->LoadFloat("fDefensiveMax", &this->unk170, 0) != 0) || (arg0->LoadFloat("fDefensiveHitWeight", &this->unk174, 0) != 0) || (arg0->LoadFloat("fDefensivenessDecayRate", &this->unk178, 0) != 0) || (arg0->LoadBool("bRandomPursuit", &this->unk17C, 0) != 0) || (arg0->LoadBool("bSeekToAttackTarget", &this->unk17D, 0) != 0) || (arg0->LoadBool("bFinishMovementAnim", &this->unk17E, 0) != 0) || (arg0->LoadBool("bUseEnemySettings", &this->unk1D6, 0) != 0) || (arg0->LoadBool("bOldArmourSystem", &this->unk1D7, 0) != 0) || (KDSound_LoadLine(arg0, "soundLoop01", &this->unk1A4) != 0) || (KDSound_LoadLine(arg0, "soundLoop02", &this->unk1A8) != 0) || (KDSound_LoadLine(arg0, "soundLoop03", &this->unk1AC) != 0) || (KDSound_LoadLine(arg0, "sndAirFlinch", &this->unk1C0) != 0) || (KDSound_LoadLine(arg0, "sndAirSpin", &this->unk1C4) != 0) || (KDSound_LoadLine(arg0, "sndBurnFlee", &this->unk1C8) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathFire", &this->unk194) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathEarth", &this->unk198) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathIce", &this->unk19C) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathElectricity", &this->unk1A0) != 0) || (KDSound_LoadLine(arg0, "sndSpit", &this->unk1B8) != 0) || (KDSound_LoadLine(arg0, "sndSpitSplat", &this->unk1BC) != 0)) {
+    if ((arg0->LoadFloat("iMaxHealth", &this->unkE8, 0) != 0) || (arg0->LoadFloat("iMaxShieldHealth", &this->unkEC, 0) != 0) || (arg0->LoadFloat("iMaxArmour", &this->unkF0, 0) != 0) || (arg0->LoadInt("uArmourType", (int *) &this->unk104, 0) != 0) || (arg0->LoadInt("iFuryDamage", (int *) &this->unkF8, 0) != 0) || (arg0->LoadBool("bCanSquish", &this->unkFC, 0) != 0) || (arg0->LoadInt("iBreathDamage", (int *) &this->unk100, 0) != 0) || (arg0->LoadInt("iGemsHealth", (int *) &this->unk108, 0) != 0) || (arg0->LoadInt("iGemsSpirit", (int *) &this->unk10C, 0) != 0) || (arg0->LoadInt("iGemsMagic", (int *) &this->unk110, 0) != 0) || (arg0->LoadInt("iGemsFury", (int *) &this->unk114, 0) != 0) || (arg0->LoadInt("iTier", (int *) &this->unk118, 0) != 0) || (arg0->LoadInt("iHealthBarStages", (int *) &this->unk11C, 0) != 0) || (DataMap_LoadLine(arg0, "race", &dataMapRaces, (unsigned int *) &this->unk1CC) != 0) || (arg0->LoadBool("bImmortal", &this->unk120, 0) != 0) || (arg0->LoadBool("bDieInLava", &this->unk121, 0) != 0) || (arg0->LoadBool("bDieInWater", &this->unk122, 0) != 0) || (arg0->LoadFloat("fMaxFreezeCount", &this->unk124, 0) != 0) || (arg0->LoadFloat("fFreezeDuration", &this->unk128, 0) != 0) || (arg0->LoadFloat("fAlertRange", &this->unk12C, 0) != 0) || (arg0->LoadFloat("fCriticalAlertRange", &this->unk130, 0) != 0) || (arg0->LoadFloat("fRemainAlertRange", &this->unk134, 0) != 0) || (arg0->LoadFloat("fMeleeDistanceMode", &this->unk138, 0) != 0) || (arg0->LoadFloat("fRangedDistanceMode", &this->unk13C, 0) != 0) || (arg0->LoadFloat("fVisibleAngle", &this->unk14C, 0) != 0) || (arg0->LoadFloat("fFocalPointDistance", &this->unk148, 0) != 0) || (arg0->LoadFloat("fDodgeChance", &this->unk150, 0) != 0) || (arg0->LoadFloat("fEvadeDistance", &this->unk140, 0) != 0) || (arg0->LoadFloat("fEvadeRandomChance", &this->unk144, 0) != 0) || (arg0->LoadFloat("fFlySpeed", &this->unk164, 0) != 0) || (arg0->LoadFloat("fIdleRotSpeed", &this->unk154, 0) != 0) || (arg0->LoadFloat("fWalkRotSpeed", &this->unk158, 0) != 0) || (arg0->LoadFloat("fRunRotSpeed", &this->unk15C, 0) != 0) || (arg0->LoadFloat("fAlertRotSpeed", &this->unk160, 0) != 0) || (arg0->LoadFloat("fMass", &this->unk168, 0) != 0) || (arg0->LoadFloat("fDefensiveMax", &this->unk170, 0) != 0) || (arg0->LoadFloat("fDefensiveHitWeight", &this->unk174, 0) != 0) || (arg0->LoadFloat("fDefensivenessDecayRate", &this->unk178, 0) != 0) || (arg0->LoadBool("bRandomPursuit", &this->unk17C, 0) != 0) || (arg0->LoadBool("bSeekToAttackTarget", &this->unk17D, 0) != 0) || (arg0->LoadBool("bFinishMovementAnim", &this->unk17E, 0) != 0) || (arg0->LoadBool("bUseEnemySettings", &this->unk1D6, 0) != 0) || (arg0->LoadBool("bOldArmourSystem", &this->unk1D7, 0) != 0) || (KDSound_LoadLine(arg0, "soundLoop01", (int *) &this->unk1A4) != 0) || (KDSound_LoadLine(arg0, "soundLoop02", (int *) &this->unk1A8) != 0) || (KDSound_LoadLine(arg0, "soundLoop03", (int *) &this->unk1AC) != 0) || (KDSound_LoadLine(arg0, "sndAirFlinch", (int *) &this->unk1C0) != 0) || (KDSound_LoadLine(arg0, "sndAirSpin", (int *) &this->unk1C4) != 0) || (KDSound_LoadLine(arg0, "sndBurnFlee", (int *) &this->unk1C8) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathFire", (int *) &this->unk194) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathEarth", (int *) &this->unk198) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathIce", (int *) &this->unk19C) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathElectricity", (int *) &this->unk1A0) != 0) || (KDSound_LoadLine(arg0, "sndSpit", (int *) &this->unk1B8) != 0) || (KDSound_LoadLine(arg0, "sndSpitSplat", (int *) &this->unk1BC) != 0)) {
         var_r31_1333 = 1;
     }
     return var_r31_1333;
@@ -1089,12 +1112,12 @@ loop_27:
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[11], long *)' does
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 EnemyDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2421;
 
     var_r31_2421 = 0;
-    if ((CharacterDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndHeroHit", &this->unk180) != 0) || (KDSound_LoadLine(arg0, "sndHurt", &this->unk190) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero", &this->unk184) != 0) || (KDSound_LoadLine(arg0, "sndHitByExplosion", &this->unk188) != 0) || (KDSound_LoadLine(arg0, "sndHitByHeroBlocked", &this->unk18C) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitMelee", &this->unk1B0) != 0) || (KDSound_LoadLine(arg0, "sndArmourShatter", &this->unk1B4) != 0) || (arg0->LoadString("meleeTrailsPropName", &this->unk274, 0) != 0) || (DataMap_LoadLine(arg0, "iElementType", &ElementTypeDataMap, (u32 *) &this->unk1D0) != 0) || (arg0->LoadString("addfile", &this->unk278, 0) != 0) || (arg0->LoadBool("bBreathFX", &this->unk264, 0) != 0) || (arg0->LoadBool("bBodyEffects", &this->unk265, 0) != 0) || (arg0->LoadInt("iInitialAttackPattern", &this->unk22C, 0) != 0)) {
+    if ((CharacterDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndHeroHit", (int *) &this->unk180) != 0) || (KDSound_LoadLine(arg0, "sndHurt", (int *) &this->unk190) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero", (int *) &this->unk184) != 0) || (KDSound_LoadLine(arg0, "sndHitByExplosion", (int *) &this->unk188) != 0) || (KDSound_LoadLine(arg0, "sndHitByHeroBlocked", (int *) &this->unk18C) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitMelee", (int *) &this->unk1B0) != 0) || (KDSound_LoadLine(arg0, "sndArmourShatter", (int *) &this->unk1B4) != 0) || (arg0->LoadString("meleeTrailsPropName", &this->unk274, 0) != 0) || (DataMap_LoadLine(arg0, "iElementType", &ElementTypeDataMap, (unsigned int *) &this->unk1D0) != 0) || (arg0->LoadString("addfile", &this->unk278, 0) != 0) || (arg0->LoadBool("bBreathFX", &this->unk264, 0) != 0) || (arg0->LoadBool("bBodyEffects", &this->unk265, 0) != 0) || (arg0->LoadInt("iInitialAttackPattern", (int *) &this->unk22C, 0) != 0)) {
         var_r31_2421 = 1;
     }
     return var_r31_2421;

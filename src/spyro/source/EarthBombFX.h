@@ -73,7 +73,7 @@ inline EarthBombFX::EarthBombFX() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline EarthBombFX::~EarthBombFX() {
     if ((&this->unk180 != NULL) && (&this->unk180 != NULL)) {
-        KDSound_Stop(&this->unk180);
+        KDSound_Stop((int *) &this->unk180);
     }
 }
 #endif

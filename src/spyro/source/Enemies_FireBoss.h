@@ -223,16 +223,16 @@ inline FireBoss::~FireBoss() {
         this->unk1084.Deinit();
     }
     if ((&this->unk1044 != NULL) && (&this->unk1044 != NULL)) {
-        KDSound_Stop(&this->unk1044);
+        KDSound_Stop((int *) &this->unk1044);
     }
     if ((&this->unk101C != NULL) && (&this->unk101C != NULL)) {
-        KDSound_Stop(&this->unk101C);
+        KDSound_Stop((int *) &this->unk101C);
     }
     if ((&this->unkFF4 != NULL) && (&this->unkFF4 != NULL)) {
-        KDSound_Stop(&this->unkFF4);
+        KDSound_Stop((int *) &this->unkFF4);
     }
     if ((&this->unkFCC != NULL) && (&this->unkFCC != NULL)) {
-        KDSound_Stop(&this->unkFCC);
+        KDSound_Stop((int *) &this->unkFCC);
     }
 }
 #endif

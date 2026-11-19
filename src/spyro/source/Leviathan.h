@@ -64,7 +64,7 @@ inline Leviathan::Leviathan() {
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline Leviathan::~Leviathan() {
     if ((&this->unk1C0 != NULL) && (&this->unk1C0 != NULL)) {
-        KDSound_Stop(&this->unk1C0);
+        KDSound_Stop((int *) &this->unk1C0);
     }
 }
 #endif

@@ -1,11 +1,22 @@
 #include "spyro/source/KDSynkerPlayerTools.h"
 #include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/KDBasicEnvelope.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDSynkerPlayerActor.h"
 #include "spyro/source/KDSynkerPlayerActorList.h"
 #include "spyro/source/KDSynkerPlayerCamera.h"
+#include "spyro/source/Level.h"
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to

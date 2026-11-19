@@ -1,19 +1,43 @@
 #include "spyro/source/Leviathan.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/Platform.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/SeeSaw.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/WaterSurfaceFX.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/OmniLight.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -159,14 +183,12 @@ void Leviathan::SetDefaults() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void Leviathan::Deinit() {
     ((KDUniformSpline *) &this->unk180)->Deinit();
-    KDSound_Stop(&this->unk1C0);
+    KDSound_Stop((int *) &this->unk1C0);
     MKModel_Destroy(this->unk1B8);
     Platform::Deinit();
 }
-#endif
 
 void Leviathan::Draw() {
     f64 sp78;
@@ -407,7 +429,7 @@ void Leviathan::EmitWaterSpray() {
         var_r28_379 = 0;
 loop_2:
         if (var_r29_367 != 0) {
-            sp198.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+            sp198.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp88 = sp2D8 + M2C_BITWISE(f64, sp198);
             sp1A8 = sp88;
             sp90 = (f32) sp2E0 + sp198.unk8;
@@ -415,7 +437,7 @@ loop_2:
             sp1B0 = (f64) sp90;
             sp300 = (f64) sp90;
         } else {
-            sp178.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+            sp178.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp78 = sp2B8 + M2C_BITWISE(f64, sp178);
             sp188 = sp78;
             sp80 = (f32) sp2C0 + sp178.unk8;
@@ -424,7 +446,7 @@ loop_2:
             sp300 = (f64) sp80;
         }
         temp_r5_430 = this->unk8;
-        temp_f31_431 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        temp_f31_431 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         sp8 = -M2C_FIELD(temp_r5_430, f32 *, 0x20);
         spC = -M2C_FIELD(temp_r5_430, f32 *, 0x24);
         sp10 = -M2C_FIELD(temp_r5_430, f32 *, 0x28);
@@ -450,7 +472,7 @@ loop_2:
             M2C_FIELD(temp_r3_489, f64 *, 8) = sp300;
             M2C_FIELD(temp_r3_489, f32 *, 0x20) = 0.0f;
             M2C_FIELD(temp_r3_489, f32 *, 0x28) = 0.0f;
-            temp_f0_507 = 3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f0_507 = 3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp58 = 0.5f;
             sp5C = 0.5f;
             M2C_FIELD(temp_r3_489, f32 *, 0x24) = (f32) (2.0f * temp_f0_507);
@@ -462,7 +484,7 @@ loop_2:
             spE8 = (f64) sp58;
             spF0 = (f64) sp60;
             M2C_FIELD(temp_r27_492, f64 *, 8) = sp2F0;
-            M2C_FIELD(temp_r27_492, f32 *, 0x18) = MKRand_Float(&gViewSeed, 3.0f, 6.0f);
+            M2C_FIELD(temp_r27_492, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 3.0f, 6.0f);
             M2C_FIELD(temp_r27_492, f32 *, 0x10) = 0.0f;
             M2C_FIELD(temp_r27_492, f32 *, 0x14) = (f32) M2C_FIELD(this->unk1A0, f32 *, 0xF4);
         }
@@ -644,7 +666,7 @@ void Leviathan::EmitHugeSplash() {
         var_r28_712 = 0;
 loop_2:
         if (var_r29_700 != 0) {
-            sp198.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+            sp198.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp88 = sp2D8 + M2C_BITWISE(f64, sp198);
             sp1A8 = sp88;
             sp90 = (f32) sp2E0 + sp198.unk8;
@@ -652,7 +674,7 @@ loop_2:
             sp1B0 = (f64) sp90;
             sp300 = (f64) sp90;
         } else {
-            sp178.operator*(MKRand_Float(&gViewSeed, 0.0f, 1.0f));
+            sp178.operator*(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f));
             sp78 = sp2B8 + M2C_BITWISE(f64, sp178);
             sp188 = sp78;
             sp80 = (f32) sp2C0 + sp178.unk8;
@@ -661,7 +683,7 @@ loop_2:
             sp300 = (f64) sp80;
         }
         temp_r5_763 = this->unk8;
-        temp_f31_764 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        temp_f31_764 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
         sp8 = -M2C_FIELD(temp_r5_763, f32 *, 0x20);
         spC = -M2C_FIELD(temp_r5_763, f32 *, 0x24);
         sp10 = -M2C_FIELD(temp_r5_763, f32 *, 0x28);
@@ -687,7 +709,7 @@ loop_2:
             M2C_FIELD(temp_r3_822, f64 *, 8) = sp300;
             M2C_FIELD(temp_r3_822, f32 *, 0x20) = 0.0f;
             M2C_FIELD(temp_r3_822, f32 *, 0x28) = 0.0f;
-            temp_f0_840 = 3.1415927f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f0_840 = 3.1415927f * MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp58 = 0.5f;
             sp5C = 0.5f;
             M2C_FIELD(temp_r3_822, f32 *, 0x24) = (f32) (2.0f * temp_f0_840);
@@ -699,7 +721,7 @@ loop_2:
             spE8 = (f64) sp58;
             spF0 = (f64) sp60;
             M2C_FIELD(temp_r27_825, f64 *, 8) = sp2F0;
-            M2C_FIELD(temp_r27_825, f32 *, 0x18) = MKRand_Float(&gViewSeed, 3.0f, 6.0f);
+            M2C_FIELD(temp_r27_825, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, 3.0f, 6.0f);
             M2C_FIELD(temp_r27_825, f32 *, 0x10) = 0.0f;
             M2C_FIELD(temp_r27_825, f32 *, 0x14) = (f32) M2C_FIELD(this->unk1A0, f32 *, 0xF4);
         }
@@ -1165,7 +1187,7 @@ void Leviathan::SetAnim(int arg0) {
     this->unk80->SetAnim(M2C_FIELD((this + (arg0 * 4)), MKAnim **, 0x1A8), 1.0f, 0.5f, 0, -1);
 }
 
-#if 0 // DRAFT: undefined identifier 'pLeviathanAnimEvents'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *[3]' to
 void Leviathan::LoadDone() {
     Platform::LoadDone();
     if ((u32) this->unk18C != 0U) {

@@ -104,7 +104,7 @@ inline PoisonBomb::~PoisonBomb() {
 
     if (this != NULL) {
         if ((&this->unk190 != NULL) && (&this->unk190 != NULL)) {
-            KDSound_Stop(&this->unk190);
+            KDSound_Stop((int *) &this->unk190);
         }
         if (&this->unk150 != NULL) {
             temp_r0_30 = this->unk158;

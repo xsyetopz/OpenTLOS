@@ -89,7 +89,7 @@ inline SeeSaw::~SeeSaw() {
             }
         }
         if ((&this->unkF0 != NULL) && (&this->unkF0 != NULL)) {
-            KDSound_Stop(&this->unkF0);
+            KDSound_Stop((int *) &this->unkF0);
         }
         temp_cr0_eq_44 = this == NULL;
         if (temp_cr0_eq_44 == 0) {

@@ -1,17 +1,25 @@
 #include "spyro/source/Skiffter.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include <m2c_macros.h>
@@ -377,12 +385,12 @@ loop_197:
         switch (temp_r0_191) {                      /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             M2C_FIELD(temp_r30_187, s32 *, 0x60) = 2;
-            M2C_FIELD(temp_r30_187, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.75f, 1.0f));
+            M2C_FIELD(temp_r30_187, f32 *, 0x64) = (f32) (5.0f * MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f));
             temp_r27_214 = M2C_FIELD(temp_r30_187, s32 *, 0x60);
             M2C_FIELD(temp_r30_187, SkiffterCritter **, 0x50) = (SkiffterCritter *) *(checked_cast<SkiffterCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r29_180->unk0) + ((temp_r27_214 * 4) + 0x70));
             M2C_FIELD(temp_r30_187, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_187, SkiffterCritter **, 0x50), s16 *, 4) / 30.0f)));
             M2C_FIELD(temp_r30_187, f32 *, 0x54) = 0.0f;
-            M2C_FIELD(temp_r30_187, s32 *, 0x68) = (s32) (MKRand_Int(&gViewSeed, 0, (s32) temp_r29_180->unk178 / 2) * 2);
+            M2C_FIELD(temp_r30_187, s32 *, 0x68) = (s32) (MKRand_Int((int *) &gViewSeed, 0, (s32) temp_r29_180->unk178 / 2) * 2);
             sp1C0 = 0.0f;
             temp_r9_255 = temp_r29_180->unk174 + (M2C_FIELD(temp_r30_187, s32 *, 0x68) * 0x10);
             sp1B0 = 1.0f;
@@ -1003,7 +1011,7 @@ loop_197:
             M2C_FIELD(temp_r30_187, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_187, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_187, f32 *, 0x54));
             if (M2C_FIELD(temp_r30_187, f32 *, 0x54) >= 1.0f) {
                 M2C_FIELD(temp_r30_187, s32 *, 0x60) = 2;
-                M2C_FIELD(temp_r30_187, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.75f, 1.0f));
+                M2C_FIELD(temp_r30_187, f32 *, 0x64) = (f32) (5.0f * MKRand_Float((int *) &gViewSeed, 0.75f, 1.0f));
                 temp_r27_1510 = M2C_FIELD(temp_r30_187, s32 *, 0x60);
                 temp_r3_1517 = *(checked_cast<SkiffterCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) temp_r29_180->unk0) + ((temp_r27_1510 * 4) + 0x70));
                 spD0 = 0.0f;

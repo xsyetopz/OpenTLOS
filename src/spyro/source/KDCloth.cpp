@@ -1,10 +1,17 @@
 #include "spyro/source/KDCloth.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/KDModelProperty.h"
 #include "spyro/source/KDProperty.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKWind.h"
@@ -127,12 +134,12 @@ void KDClothDescriptor::Resolve(MKModel *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 u8 KDClothDescriptor::LoadLine(MKIniLine *arg0) {
     u8 var_r31_305;
 
     var_r31_305 = 0;
-    if ((arg0->LoadInt("lit", &this->unk10, 0) != 0) || (arg0->LoadFloat("gravity", &this->unk0, 0) != 0) || (arg0->LoadFloat("friction", &this->unk4, 0) != 0) || (arg0->LoadFloat("windMultiplier", &this->unk8, 0) != 0) || (arg0->LoadInt("iterations", &this->unkC, 0) != 0) || (arg0->LoadString("clothSubObject", &this->unk14, 0) != 0)) {
+    if ((arg0->LoadInt("lit", (int *) &this->unk10, 0) != 0) || (arg0->LoadFloat("gravity", &this->unk0, 0) != 0) || (arg0->LoadFloat("friction", &this->unk4, 0) != 0) || (arg0->LoadFloat("windMultiplier", &this->unk8, 0) != 0) || (arg0->LoadInt("iterations", (int *) &this->unkC, 0) != 0) || (arg0->LoadString("clothSubObject", &this->unk14, 0) != 0)) {
         var_r31_305 = 1;
     }
     return var_r31_305;

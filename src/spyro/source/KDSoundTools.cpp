@@ -1,11 +1,35 @@
 #include "spyro/source/KDSoundTools.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
@@ -112,11 +136,9 @@ void KDSound_SoundWall::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSound_SoundWall::Deinit() {
-    KDSound_Stop(&this->unk0);
+    KDSound_Stop((int *) &this->unk0);
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void KDSound_SoundWall::Init(KDUniformSpline *arg0, float arg1, int arg2, int arg3, int arg4, float arg5, float arg6, float arg7, float arg8) {
@@ -194,7 +216,6 @@ void KDSound_LoopSoundEvent::Message(MKMessage *arg0) {
     }
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSound_LoopSoundEvent::Deinit() {
     KDSoundFader *temp_r31_394;
     KDSoundFader *temp_r31_408;
@@ -208,44 +229,43 @@ void KDSound_LoopSoundEvent::Deinit() {
 
     temp_r3_390 = this->unk0;
     if (temp_r3_390 != NULL) {
-        KDSound_Stop(&temp_r3_390->unk0);
+        KDSound_Stop((int *) &temp_r3_390->unk0);
         temp_r31_394 = this->unk0;
         temp_cr0_eq_395 = temp_r31_394 == NULL;
         if (temp_cr0_eq_395 == 0) {
             if (temp_cr0_eq_395 == 0) {
-                KDSound_Stop(&temp_r31_394->unk0);
+                KDSound_Stop((int *) &temp_r31_394->unk0);
             }
             operator delete(temp_r31_394);
         }
     }
     temp_r3_404 = this->unk4;
     if (temp_r3_404 != NULL) {
-        KDSound_Stop(&temp_r3_404->unk0);
+        KDSound_Stop((int *) &temp_r3_404->unk0);
         temp_r31_408 = this->unk4;
         temp_cr0_eq_409 = temp_r31_408 == NULL;
         if (temp_cr0_eq_409 == 0) {
             if (temp_cr0_eq_409 == 0) {
-                KDSound_Stop(&temp_r31_408->unk0);
+                KDSound_Stop((int *) &temp_r31_408->unk0);
             }
             operator delete(temp_r31_408);
         }
     }
     temp_r3_418 = this->unk8;
     if (temp_r3_418 != NULL) {
-        KDSound_Stop(&temp_r3_418->unk0);
+        KDSound_Stop((int *) &temp_r3_418->unk0);
         temp_r31_422 = this->unk8;
         temp_cr0_eq_423 = temp_r31_422 == NULL;
         if (temp_cr0_eq_423 == 0) {
             if (temp_cr0_eq_423 == 0) {
-                KDSound_Stop(&temp_r31_422->unk0);
+                KDSound_Stop((int *) &temp_r31_422->unk0);
             }
             operator delete(temp_r31_422);
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+#if 0 // DRAFT: pointer/array required
 void KDSound_LoopSoundEvent::Init(MKAnimScript *arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
     this->unk10 = arg2;
     this->unk14 = arg4;
@@ -310,7 +330,6 @@ void KDSound_AfterRumble::Init() {
     this->unk68 = 0;
 }
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSound_AfterRumble::Stop() {
     s32 temp_r3_568;
     s32 temp_r3_577;
@@ -319,22 +338,21 @@ void KDSound_AfterRumble::Stop() {
 
     temp_r3_568 = this->unk0;
     if ((temp_r3_568 != 0) && (KDSound_IsVoicePlaying(temp_r3_568) != 0)) {
-        KDSound_Stop(&this->unk0);
+        KDSound_Stop((int *) &this->unk0);
     }
     temp_r3_577 = this->unk4;
     if ((temp_r3_577 != 0) && (KDSound_IsVoicePlaying(temp_r3_577) != 0)) {
-        KDSound_Stop(&this->unk4);
+        KDSound_Stop((int *) &this->unk4);
     }
     temp_r3_586 = this->unk8;
     if ((temp_r3_586 != 0) && (KDSound_IsVoicePlaying(temp_r3_586) != 0)) {
-        KDSound_Stop(&this->unk8);
+        KDSound_Stop((int *) &this->unk8);
     }
     temp_r3_595 = this->unkC;
     if ((temp_r3_595 != 0) && (KDSound_IsVoicePlaying(temp_r3_595) != 0)) {
-        KDSound_Stop(&this->unkC);
+        KDSound_Stop((int *) &this->unkC);
     }
 }
-#endif
 
 void KDSound_AfterRumble::Update() {
     s32 temp_r0_619;
@@ -434,7 +452,6 @@ void KDSound_AfterRumble::Trigger(MKVector3 arg0, int arg1, float arg2, float ar
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSoundFlangedFader::Stop() {
     s32 temp_r0_827;
 
@@ -447,10 +464,9 @@ void KDSoundFlangedFader::Stop() {
         this->unk6C = this->unk54;
         break;
     }
-    KDSound_Stop(&this->unk0);
-    KDSound_Stop(&this->unk28);
+    KDSound_Stop((int *) &this->unk0);
+    KDSound_Stop((int *) &this->unk28);
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void KDSoundFlangedFader::Update(int arg0, bool arg1, bool arg2, MKProp *arg3, MKVector3 *arg4, unsigned int arg5, int arg6) {
@@ -510,12 +526,10 @@ void KDSoundFlangedFader::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void KDSoundFlangedFader::Deinit() {
-    KDSound_Stop(&this->unk0);
-    KDSound_Stop(&this->unk28);
+    KDSound_Stop((int *) &this->unk0);
+    KDSound_Stop((int *) &this->unk28);
 }
-#endif
 
 void KDSoundFlangedFader::RecalcVariables(int arg0, float arg1, float arg2, float arg3) {
     this->unk50 = arg0;

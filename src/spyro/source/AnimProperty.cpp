@@ -1,10 +1,22 @@
 #include "spyro/source/AnimProperty.h"
+#include "common/Source/Animation.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
+#include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
 #include "spyro/source/KDAnimScriptProperty.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDProperty.h"
+#include "spyro/source/Level.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -31,7 +43,7 @@ void AnimProperty::Update() {
         var_r29_72 = 0;
         if ((s32) this->unk18 > 1) {
 loop_4:
-            var_f1_79 = MKRand_Float(&gViewSeed, 0.0f, this->unk20);
+            var_f1_79 = MKRand_Float((int *) &gViewSeed, 0.0f, this->unk20);
             temp_r5_80 = this->unk18;
             var_r6_81 = 0;
             var_r3_82 = 0;

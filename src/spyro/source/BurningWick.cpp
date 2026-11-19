@@ -1,10 +1,18 @@
 #include "spyro/source/BurningWick.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/SparksPS.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -320,9 +328,9 @@ void BurningWick::Update() {
     this->unk50 += temp_f0_506;
     this->unk58 += (f32) sp138;
     if ((u8) this->unk84 != 0) {
-        temp_f29_531 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f28_536 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        spB0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f29_531 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f28_536 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        spB0 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         spB4 = temp_f28_536;
         spB8 = temp_f29_531;
         spF0 = (f64) spB0;
@@ -381,7 +389,7 @@ void BurningWick::Update() {
         sp120 = temp_f0_650;
         sp98 = (f32) sp118 * temp_f27_139;
         sp128 = (f64) sp98;
-        sp1C = temp_f27_139 * MKRand_Float(&gViewSeed, 1.5f, 3.0f);
+        sp1C = temp_f27_139 * MKRand_Float((int *) &gViewSeed, 1.5f, 3.0f);
         ((SparksPS *) (M2C_FIELD(&gb, SparksPS **, 0x84)))->Emit(*((MKVector3 *) &this->unk50), *((MKVector3 *) &sp120), sp1C);
     }
 }

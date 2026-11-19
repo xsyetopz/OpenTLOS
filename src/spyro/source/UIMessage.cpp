@@ -1,5 +1,8 @@
 #include "spyro/source/UIMessage.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKVector3.h"
+#include "spyro/source/UIAttributes.h"
+#include "spyro/source/UIContainer.h"
 #include "spyro/source/UIObject.h"
 #include "spyro/source/UIStringTable.h"
 #include <m2c_macros.h>

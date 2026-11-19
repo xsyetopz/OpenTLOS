@@ -1,18 +1,42 @@
 #include "spyro/source/FlyingMonkey.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/DialogBox.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/Projectile.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
@@ -24,27 +48,23 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 extern MKPropDescriptor *pFlyingMonkeyDescriptor;
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void FlyingMonkey::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, int arg4, int arg5) {
     s32 temp_r31_49;
 
     Projectile::FireAtTarget(arg0, arg1, arg2, arg3, arg4, arg5);
-    temp_r31_49 = MKRand_Int(&gViewSeed, 0, 6);
+    temp_r31_49 = MKRand_Int((int *) &gViewSeed, 0, 6);
     this->unk80->SetAnim(M2C_FIELD((checked_cast<FlyingMonkeyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (temp_r31_49 * 4)), MKAnim **, 0xF0), 1.0f, 0.0f, 0, -1);
     this->unk140 = 4.0f;
 }
-#endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void FlyingMonkey::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, int arg3, int arg4) {
     s32 temp_r31_83;
 
     Projectile::Fire(arg0, arg1, arg2, arg3, arg4);
-    temp_r31_83 = MKRand_Int(&gViewSeed, 0, 6);
+    temp_r31_83 = MKRand_Int((int *) &gViewSeed, 0, 6);
     this->unk80->SetAnim(M2C_FIELD((checked_cast<FlyingMonkeyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (temp_r31_83 * 4)), MKAnim **, 0xF0), 1.0f, 0.0f, 0, -1);
     this->unk140 = 4.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void FlyingMonkey::Update() {
@@ -265,7 +285,7 @@ block_14:
     spF8 = temp_f0_465;
     sp30 = sp148.unk8 + (f32) spF0;
     sp100 = (f64) sp30;
-    sp14 = MKRand_Float(&gViewSeed, 1.0f, 2.5f);
+    sp14 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.5f);
     gb.EmitDust(*((MKVector3 *) &spF8), MKVector3::zero, sp14, 0.0f);
 }
 #endif

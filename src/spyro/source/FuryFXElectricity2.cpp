@@ -1,25 +1,54 @@
 #include "spyro/source/FuryFXElectricity2.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
+#include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AITargetData.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterGraph.h"
+#include "spyro/source/CollisionObject.h"
 #include "spyro/source/ElectricSparks.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
+#include "spyro/source/SB2.h"
 #include "spyro/source/ScreenWobbleFX.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/TargetManager.h"
 #include "spyro/source/ZapArcFX.h"
 #include "spyro/source/ZapPS.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
@@ -450,9 +479,9 @@ loop_24:
             temp_r3_668 = M2C_FIELD(temp_r30_768, void ***, 0);
             temp_r27_673 = M2C_FIELD(*temp_r3_668, void *(**)(void **), 8)(temp_r3_668);
             ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.0f, 0.5f, 0.15f, M2C_FIELD(temp_r27_673, s32 *, 8) + 0x30, 37.0f, 0, 4.0f, 0U);
-            temp_f21_693 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f22_698 = MKRand_Float(&gViewSeed, 1.0f, 2.5f);
-            sp48 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f21_693 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f22_698 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.5f);
+            sp48 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp4C = temp_f22_698;
             sp50 = temp_f21_693;
             spD8 = (f64) sp48;
@@ -462,7 +491,7 @@ loop_24:
             sp138 = temp_f0_712;
             sp40 = (f32) spE0 * 600.0f;
             sp140 = (f64) sp40;
-            ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp158), *((MKVector3 *) &sp138), MKRand_Float(&gViewSeed, 0.5f, 1.0f), 0U);
+            ((ElectricSparks *) (M2C_FIELD(&gb, ElectricSparks **, 0x230)))->Emit(*((MKVector3 *) &sp158), *((MKVector3 *) &sp138), MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f), 0U);
             if (M2C_FIELD(temp_r30_768, f32 *, 4) <= 0.0f) {
                 sp30 = 0.0f;
                 sp18 = 1.0f;
@@ -476,7 +505,7 @@ loop_24:
                 spC8 = (f64) sp28;
                 spD0 = (f64) sp30;
                 ((ZapArcFX *) (M2C_FIELD(&gb, ZapArcFX **, 0x94)))->Trigger(*((MKVector3 *) &sp168), *((MKVector3 *) &spC8), sp14, lit_898, (MKVector4) &spE8);
-                M2C_FIELD(temp_r30_768, f32 *, 4) = MKRand_Float(&gViewSeed, 0.05f, 0.125f);
+                M2C_FIELD(temp_r30_768, f32 *, 4) = MKRand_Float((int *) &gViewSeed, 0.05f, 0.125f);
             }
             var_r29_429 += 4;
             goto loop_24;
@@ -845,7 +874,7 @@ void FuryFXElectricity2::Update() {
                 M2C_FIELD(temp_r3_1245, f64 *, 0x18) = (f64) sp48;
             }
             temp_r3_1259 = this->unkA8;
-            temp_f1_1261 = (1.0f + temp_f30_1221) * (1000.0f * MKRand_Float(&gViewSeed, 1.0f, 1.2f));
+            temp_f1_1261 = (1.0f + temp_f30_1221) * (1000.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 1.2f));
             temp_r3_1259->unk38 = temp_f1_1261;
             temp_r3_1263 = temp_r3_1259->unk3C;
             if (temp_r3_1263 != NULL) {
@@ -921,7 +950,7 @@ void FuryFXElectricity2::Update() {
                 M2C_FIELD(temp_r3_1401, f64 *, 0x18) = (f64) sp38;
             }
             temp_r3_1415 = this->unkA8;
-            temp_f1_1417 = (1.0f + (1.0f - (var_f1_1290 / 2.5f))) * (1000.0f * MKRand_Float(&gViewSeed, 1.0f, 2.0f));
+            temp_f1_1417 = (1.0f + (1.0f - (var_f1_1290 / 2.5f))) * (1000.0f * MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f));
             temp_r3_1415->unk38 = temp_f1_1417;
             temp_r3_1419 = temp_r3_1415->unk3C;
             if (temp_r3_1419 != NULL) {

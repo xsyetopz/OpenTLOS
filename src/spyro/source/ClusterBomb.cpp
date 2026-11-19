@@ -1,18 +1,34 @@
 #include "spyro/source/ClusterBomb.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/CameraData.h"
 #include "spyro/source/CrashFirePS.h"
+#include "spyro/source/ExpShock.h"
+#include "spyro/source/ExpSmokeAndFlamesPS.h"
 #include "spyro/source/Explosion3.h"
+#include "spyro/source/ExplosionFX.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/ManagedLight.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDRandom.h"
@@ -338,7 +354,7 @@ loop_52:
                 sp140 = (f64) sp80;
                 spE8 = (f64) sp68;
                 spF0 = (f64) sp70;
-                sp10 = MKRand_Float(&gViewSeed, 4.0f, 6.0f);
+                sp10 = MKRand_Float((int *) &gViewSeed, 4.0f, 6.0f);
                 ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &sp138), *((MKVector3 *) &spE8), sp10);
                 if (M2C_FIELD(temp_r28_593, f32 *, 0x28) <= 0.0f) {
                     sp50 = 1.0f;
@@ -382,7 +398,6 @@ loop_52:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void ClusterBomb::SpawnClusterBomb(const MKVector3 &arg0, const MKVector3 &arg1) {
     MKVector3 **temp_r6_621;
     MKVector3 **temp_r6_625;
@@ -398,12 +413,11 @@ void ClusterBomb::SpawnClusterBomb(const MKVector3 &arg0, const MKVector3 &arg1)
             M2C_FIELD(temp_r31_627, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
             M2C_FIELD(temp_r31_627, f64 *, 0x10) = (f64) M2C_FIELD(&arg1, f64 *, 0);
             M2C_FIELD(temp_r31_627, f64 *, 0x18) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-            M2C_FIELD(temp_r31_627, f32 *, 0x28) = (f32) (2.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
+            M2C_FIELD(temp_r31_627, f32 *, 0x28) = (f32) (2.0f * MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f));
             M2C_FIELD(temp_r31_627, s32 *, 0x24) = 1;
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: type mismatch
 void ClusterBomb::Deinit() {

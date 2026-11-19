@@ -1,33 +1,54 @@
 #include "spyro/source/LiquidFX.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKHeap.h"
+#include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
 #include "spyro/source/CrashFirePS.h"
 #include "spyro/source/CrashMistPS.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/HeatDistortPS.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
 #include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
+#include "spyro/source/KDVolume.h"
 #include "spyro/source/KDWaterVolume.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LightManager.h"
 #include "spyro/source/ManagedLight.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
 #include "common/gc/MKModel_GC.h"
 #include "common/gc/MKPrimitive_GC.h"
 #include "spyro/source/EventCamera.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 extern MKSceneManager *gMK;
@@ -38,7 +59,7 @@ extern M2C_UNK gb;
 static s32 lit_688 = 0;
 static u8 lit_689 = 1;
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier '__float_nan'
 static f32 IMPACT_LIGHT_RADIUS = 1000.0f;           /* const */
 
 void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
@@ -119,8 +140,8 @@ void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
     switch (temp_r0_70) {                           /* switch 1; irregular */
     case 1:                                         /* switch 1 */
         var_f27_84 = 0.0f;
-        temp_f26_91 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        sp98 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+        temp_f26_91 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp98 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         sp9C = 0.0f;
         spA0 = temp_f26_91;
         sp128 = (f64) sp98;
@@ -170,17 +191,17 @@ void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
         sp90 = temp_f0_184 * 410.0f;
         sp118 = sp88;
         sp120 = (f64) sp90;
-        sp10 = MKRand_Float(&gViewSeed, 6.1f, 8.0f);
+        sp10 = MKRand_Float((int *) &gViewSeed, 6.1f, 8.0f);
         ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) arg0), *((MKVector3 *) &sp118), sp10);
         return;
     case 3:                                         /* switch 1 */
         var_r29_212 = 0;
         do {
-            temp_f31_218 = MKRand_Float(&gViewSeed, 0.1f, 1.0f);
+            temp_f31_218 = MKRand_Float((int *) &gViewSeed, 0.1f, 1.0f);
             temp_f30_219 = arg0->unk28;
-            temp_f26_224 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f25_229 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp78 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f26_224 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f25_229 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp78 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp7C = temp_f25_229;
             sp80 = temp_f26_224;
             spD8 = (f64) sp78;
@@ -200,9 +221,9 @@ void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
             sp108 = temp_f0_264;
             sp50 = arg0->unk8 + (f32) sp100;
             sp110 = (f64) sp50;
-            temp_f25_278 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f26_283 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            sp38 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f25_278 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f26_283 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            sp38 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp3C = temp_f26_283;
             sp40 = temp_f25_278;
             spB8 = (f64) sp38;
@@ -212,7 +233,7 @@ void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
             spC8 = temp_f0_297;
             sp30 = (f32) spC0 * 310.0f;
             spD0 = (f64) sp30;
-            temp_f1_309 = MKRand_Float(&gViewSeed, 7.1f, 15.0f);
+            temp_f1_309 = MKRand_Float((int *) &gViewSeed, 7.1f, 15.0f);
             sp18 = temp_f31_218;
             sp1C = temp_f31_218;
             spC = temp_f1_309;
@@ -349,9 +370,9 @@ s32 LiquidFX::Emit(const int &arg0, const MKVector3 &arg1, const MKVector3 &arg2
     temp_r4_493 = this + ((this->unk3F5C * 0xA0) + 0xD8);
     M2C_FIELD(temp_r4_493, f64 *, 0) = (f64) M2C_FIELD(&arg2, f64 *, 0);
     M2C_FIELD(temp_r4_493, f64 *, 8) = (f64) M2C_FIELD(&arg2, f64 *, 8);
-    temp_f29_497 = MKRand_Float(&gViewSeed, 0.0f, 20.0f);
-    temp_f30_502 = MKRand_Float(&gViewSeed, 0.0f, 20.0f);
-    sp18 = MKRand_Float(&gViewSeed, 0.0f, 20.0f);
+    temp_f29_497 = MKRand_Float((int *) &gViewSeed, 0.0f, 20.0f);
+    temp_f30_502 = MKRand_Float((int *) &gViewSeed, 0.0f, 20.0f);
+    sp18 = MKRand_Float((int *) &gViewSeed, 0.0f, 20.0f);
     sp1C = temp_f30_502;
     sp20 = temp_f29_497;
     temp_r4_517 = this + ((this->unk3F5C * 0xA0) + 0x108);
@@ -359,9 +380,9 @@ s32 LiquidFX::Emit(const int &arg0, const MKVector3 &arg1, const MKVector3 &arg2
     sp68 = (f64) sp18;
     sp70 = (f64) sp20;
     M2C_FIELD(temp_r4_517, f64 *, 8) = (f64) sp20;
-    temp_f29_524 = MKRand_Float(&gViewSeed, 20.0f, 60.0f);
-    temp_f30_529 = MKRand_Float(&gViewSeed, 20.0f, 60.0f);
-    MKVector(MKRand_Float(&gViewSeed, 20.0f, 60.0f), temp_f30_529, temp_f29_524);
+    temp_f29_524 = MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f);
+    temp_f30_529 = MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f);
+    MKVector(MKRand_Float((int *) &gViewSeed, 20.0f, 60.0f), temp_f30_529, temp_f29_524);
     sp8 = sp48 * 5.081185235e-315;
     sp10 = sp50 * 0.05f;
     temp_r3_554 = this + ((this->unk3F5C * 0xA0) + 0x118);
@@ -2364,23 +2385,23 @@ void LiquidFX::Update() {
                 } else {
                     M2C_FIELD(temp_r27_2717, f32 *, 0x160) = (f32) (M2C_FIELD(temp_r27_2717, f32 *, 0x160) + gUpdateTimeDelta);
                     if ((u8) M2C_FIELD(temp_r27_2717, u8 *, 0x159) == 0) {
-                        if (MKRand_Int(&gViewSeed, 0, 0xA) == 0) {
-                            temp_f24_3670 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                            sp12C = MKRand_Float(&gViewSeed, 400.0f, 600.0f);
+                        if (MKRand_Int((int *) &gViewSeed, 0, 0xA) == 0) {
+                            temp_f24_3670 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
+                            sp12C = MKRand_Float((int *) &gViewSeed, 400.0f, 600.0f);
                             sp128 = 0.0f;
                             sp130 = 0.0f;
                             sp198 = (f64) sp128;
                             sp1A0 = (f64) sp130;
                             ((HeatDistortPS *) (&gb + 0x240))->Emit(*(temp_r27_2717 + 0xC8), *((MKVector3 *) &sp198), temp_f24_3670, 1.0f);
                         }
-                        if (M2C_FIELD(temp_r27_2717, f32 *, 0x160) >= MKRand_Float(&gViewSeed, 0.01f, 0.135f)) {
+                        if (M2C_FIELD(temp_r27_2717, f32 *, 0x160) >= MKRand_Float((int *) &gViewSeed, 0.01f, 0.135f)) {
                             M2C_FIELD(temp_r27_2717, f32 *, 0x160) = 0.0f;
                         }
                         temp_r24_3701 = ((u8 *) temp_r27_2717) + 0xC8;
                         if ((temp_r24_3701->IsWithin(sp24, &sp20, M2C_ERROR(/* Read from unset register $r6 */)) != 0) && (M2C_BITWISE(s32, sp20) == 0)) {
-                            temp_f24_3715 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-                            temp_f25_3720 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
-                            sp118 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+                            temp_f24_3715 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+                            temp_f25_3720 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+                            sp118 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
                             sp11C = temp_f25_3720;
                             sp120 = temp_f24_3715;
                             sp178 = (f64) sp118;
@@ -2390,7 +2411,7 @@ void LiquidFX::Update() {
                             sp188 = temp_f0_3734;
                             sp110 = (f32) sp180 * 200.0f;
                             sp190 = (f64) sp110;
-                            sp1C = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
+                            sp1C = MKRand_Float((int *) &gViewSeed, 5.0f, 10.0f);
                             spF8 = 1.0f;
                             spFC = 1.0f;
                             sp100 = 1.0f;

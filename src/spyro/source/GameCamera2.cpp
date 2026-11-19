@@ -1,31 +1,60 @@
 #include "spyro/source/GameCamera2.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMemoryCard.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "spyro/source/AssaultCannon.h"
 #include "spyro/source/CameraData.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/GameCameraEmuStateMachine.h"
 #include "spyro/source/GameCameraMessages.h"
 #include "spyro/source/GameData.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDCameraHeroData.h"
+#include "spyro/source/KDCameraHeroMoveYaw.h"
 #include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraMessageStorage.h"
 #include "spyro/source/KDCameraPoint.h"
 #include "spyro/source/KDCameraSimpleDelta.h"
+#include "spyro/source/KDCameraState.h"
 #include "spyro/source/KDCollisionObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/KDVolume.h"
 #include "spyro/source/KDWaterVolume.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/MKInput.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/KDMath.h"
-#include "spyro/source/KDSound.h"
 #include <m2c_macros.h>
 
 MKSceneManager *atoi(s32);                          /* extern */
@@ -1252,7 +1281,7 @@ void GameCamera2::LockOnTargetableEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
+#if 0 // DRAFT: undefined identifier 'KDDataMessage'
 void GameCamera2::StrafeUpdate() {
     f64 sp30;
     f64 sp28;
@@ -1367,7 +1396,7 @@ void GameCamera2::SlowMoAirCombatEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp2C'
+#if 0 // DRAFT: undefined identifier 'sp30'
 void GameCamera2::GlideSetYawOffset() {
     f32 sp28;
     f64 sp20;
@@ -1409,7 +1438,7 @@ void GameCamera2::GlideEnter() {
     this->unk290 = 0.2f;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
+#if 0 // DRAFT: undefined identifier 'SmoothCameraToDirectionUpdateMessage'
 void GameCamera2::SmoothToDirectionUpdate() {
     f32 temp_f31_2813;
     void *temp_r3_2807;
@@ -1424,7 +1453,7 @@ void GameCamera2::SmoothToDirectionUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
+#if 0 // DRAFT: undefined identifier 'HoldGivenDirectionMessage'
 void GameCamera2::HoldGivenDirectionUpdate() {
     KDCamera sp28;
     f64 sp18;
@@ -1778,7 +1807,7 @@ void GameCamera2::PlayerAdjustExit() {
     ((KDCameraSimpleDelta *) this->unk54)->DisablePitchOverride(5.0f);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
+#if 0 // DRAFT: illegal operand
 s32 GameCamera2::CameraStatesMessage(MKMessage *arg0) {
     KDCameraStateChangeRequest *temp_r5_3534;
 
@@ -1795,13 +1824,11 @@ s32 GameCamera2::CameraStatesMessage(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
 void GameCamera2::EmuStatesUpdate() {
     if (TestUserStateFlag(0x800U) != 0) {
         this->unk26C->UpdateStates(this);
     }
 }
-#endif
 
 void GameCamera2::PostStateUpdate() {
 
@@ -2179,7 +2206,7 @@ void GameCamera2::StaticPosEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
+#if 0 // DRAFT: undefined identifier 'TrainCameraUpdateDataMessage'
 void GameCamera2::TrainUpdate() {
     Matrix sp80;
     f64 sp70;
@@ -2292,7 +2319,6 @@ void GameCamera2::TrainEnter() {
     M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(this, f64 *, 0x228);
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
 u8 GameCamera2::ProcessCameraStateRequest(int arg0) {
     KDCamera::ProcessCameraStateRequest(arg0);
     if (arg0 != 0x800) {
@@ -2301,7 +2327,6 @@ u8 GameCamera2::ProcessCameraStateRequest(int arg0) {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void GameCamera2::IsUnderwater() {
@@ -2413,7 +2438,6 @@ void GameCamera2::DrawCamera() {
     KDCamera::DrawCamera();
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
 void GameCamera2::ClearData() {
     this->unk2B0 = 1;
     KDCamera::ClearData();
@@ -2438,7 +2462,6 @@ void GameCamera2::ClearData() {
     this->unk2B4 = 0.0f;
     this->unk2B0 = 0;
 }
-#endif
 
 void GameCamera2::ResetCamera() {
     s32 temp_r3_4843;
@@ -2525,7 +2548,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'GameCameraEmuStateMachine'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void GameCamera2::Init() {
     GameCamera2Descriptor *temp_r3_5023;
     MKHeap *temp_r3_5032;
@@ -2764,17 +2787,15 @@ void GameCamera2Descriptor::LoadDone() {
     this->unkA8 = this->unkB8;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 GameCamera2Descriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_5402;
 
     var_r31_5402 = 0;
-    if ((KDCameraDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("trackedShakePropMax", &this->unkB4, 0) != 0) || (LoadDeltaStages(arg0) != 0)) {
+    if ((KDCameraDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("trackedShakePropMax", (int *) &this->unkB4, 0) != 0) || (LoadDeltaStages(arg0) != 0)) {
         var_r31_5402 = 1;
     }
     return var_r31_5402;
 }
-#endif
 
 #if 0 // DRAFT: function call 'operator delete(GameCamera2Descriptor)' does not match
 void GameCamera2Descriptor::Deinit() {

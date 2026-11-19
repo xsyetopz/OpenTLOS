@@ -1,18 +1,25 @@
 #include "common/gc/System_GC.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAttachment.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKDynamicBone.h"
 #include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "common/Source/Texture.h"
+#include "spyro/source/Level.h"
 #include "unplaced_enums.h"
 #include "dolphin/ar.h"
 #include "dolphin/dvd.h"
 #include "dolphin/gx.h"
 #include "dolphin/os.h"
 #include "dolphin/vi.h"
-#include "common/Source/Animation.h"
 #include "common/Source/Debug.h"
 #include "common/Source/DiscErrors.h"
 #include "common/Source/File.h"
@@ -25,7 +32,6 @@
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKMetadata.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/MKPackage.h"
 #include "common/Source/MKShape.h"
 #include "common/Source/MKSystem.h"
@@ -1061,7 +1067,7 @@ void System_SetDisplayMode(int arg0, int arg1, int arg2, int arg3, int arg4) {
     M2C_FIELD(&gDisplay, f32 *, 0xC) = (f32) (1.0f / M2C_FIELD(&gDisplay, f32 *, 8));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void System_GameDraw() {
     Matrix sp10;
     f32 temp_f30_1418;
@@ -1109,7 +1115,7 @@ void System_GameDraw() {
             temp_r3_1397 = counter_757 + 1;
             counter_757 = temp_r3_1397;
             if (!(temp_r3_1397 & 0x1F)) {
-                heapCount_754.GetHeapStatistics(&reservedMem_755, &usedNormalMem_752, &usedTempMem_753, &lostMem_756, M2C_ERROR(/* Read from unset register $r8 */));
+                heapCount_754.GetHeapStatistics((int *) &reservedMem_755, (int *) &usedNormalMem_752, (int *) &usedTempMem_753, (int *) &lostMem_756, M2C_ERROR(/* Read from unset register $r8 */));
             }
             temp_r3_1408 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetPeak();
             if ((s32) peakNormal_760 < temp_r3_1408) {

@@ -112,7 +112,7 @@ public:
 #if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline StalactiteCharge::~StalactiteCharge() {
     if ((&this->unk144 != NULL) && (&this->unk144 != NULL)) {
-        KDSound_Stop(&this->unk144);
+        KDSound_Stop((int *) &this->unk144);
     }
     if (this != NULL) {
     }

@@ -1,22 +1,57 @@
 #include "spyro/source/GameParticleEmitter.h"
+#include "common/Source/Animation.h"
+#include "common/Source/Font.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
+#include "common/Source/MKFont.h"
+#include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
+#include "common/Source/MKModel.h"
+#include "common/Source/MKParticleSystem.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EmbersPS.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/Explosion4.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/FlyingBurningBits.h"
 #include "spyro/source/FoundryGas.h"
 #include "spyro/source/Game.h"
+#include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
+#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
 #include "spyro/source/LavaBubbleFX.h"
 #include "spyro/source/LavaSteamPS.h"
+#include "spyro/source/Level.h"
 #include "spyro/source/LiquidFX.h"
+#include "spyro/source/ManagedLight.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
 #include "spyro/source/SparksPS.h"
+#include "spyro/source/TargetManager.h"
 #include "spyro/source/WaterDripPS.h"
 #include "unplaced_templates.h"
 #include "common/Source/StdMath.h"
@@ -39,7 +74,7 @@ void PointDirEmitter::SetDirection(const MKVector3 &arg0) {
     this->unk20 = M2C_FIELD(&arg0, f64 *, 8);
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector3 *arg2, MKVector4 *arg3) {
     Matrix sp100;
     M2C_UNK spFC;
@@ -104,11 +139,11 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
         if ((temp_f1_57 == temp_f2_58) || (temp_f1_57 > temp_f2_58)) {
             var_f27_64 = 0.0f;
         } else {
-            var_f27_64 = MKRand_Float(&gViewSeed, temp_f1_57, temp_f2_58);
+            var_f27_64 = MKRand_Float((int *) &gViewSeed, temp_f1_57, temp_f2_58);
         }
-        temp_f29_75 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        temp_f28_80 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-        MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_80, temp_f29_75);
+        temp_f29_75 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_f28_80 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_80, temp_f29_75);
         temp_f0_91 = spC8 * (f64) var_f27_64;
         sp28 = temp_f0_91;
         spD8 = temp_f0_91;
@@ -194,12 +229,12 @@ void PointDirEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp20;
         sp78 = (f64) sp18;
         sp80 = (f64) sp20;
-        temp_f1_294 = MKRand_Float(&gViewSeed, this->unk10, this->unkC);
+        temp_f1_294 = MKRand_Float((int *) &gViewSeed, this->unk10, this->unkC);
         M2C_FIELD(arg1, f64 *, 0) = (f64) (M2C_FIELD(arg1, f64 *, 0) * temp_f1_294);
         arg1->unk8 *= (f32) temp_f1_294;
     }
     if (arg2 != NULL) {
-        temp_f1_308 = MKRand_Float(&gViewSeed, this->unk8, this->unk4);
+        temp_f1_308 = MKRand_Float((int *) &gViewSeed, this->unk8, this->unk4);
         arg2->unk0 = temp_f1_308;
         arg2->unk4 = temp_f1_308;
         arg2->unk8 = temp_f1_308;
@@ -248,7 +283,7 @@ void PointDirEmitter::Init() {
     this->unk40 = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVector3 *arg2, MKVector4 *arg3) {
     MKVector3 sp168;
     MKVector3 sp158;
@@ -314,7 +349,7 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
     if (arg0 != NULL) {
         temp_r3_448 = this->unk9C;
         if (temp_r3_448 & 1) {
-            this->unk38 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            this->unk38 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
             ((KDPathSegment *) &this->unk3C)->GetPositionAlongPath(this->unk38, *arg0);
         } else if (temp_r3_448 & 2) {
             if ((s32) this->unkA0 == 0) {
@@ -351,7 +386,7 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
         temp_r3_530 = this->unk9C;
         if (temp_r3_530 & 8) {
             ((KDPathSegment *) &this->unk3C.unk2C)->GetPositionAlongPath(this->unk38, sp168);
-            temp_f31_541 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+            temp_f31_541 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
             temp_f3_543 = M2C_FIELD(arg0, f64 *, 0);
             temp_f0_544 = M2C_BITWISE(f64, sp168) - temp_f3_543;
             sp8 = temp_f0_544;
@@ -388,11 +423,11 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             if ((temp_f1_629 == temp_f2_630) || (temp_f1_629 > temp_f2_630)) {
                 var_f29_636 = 0.0f;
             } else {
-                var_f29_636 = MKRand_Float(&gViewSeed, temp_f1_629, temp_f2_630);
+                var_f29_636 = MKRand_Float((int *) &gViewSeed, temp_f1_629, temp_f2_630);
             }
-            temp_f31_647 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f28_652 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            MKVector(MKRand_Float(&gViewSeed, -1.0f, 1.0f), temp_f28_652, temp_f31_647);
+            temp_f31_647 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f28_652 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_652, temp_f31_647);
             temp_f0_663 = spB8 * (f64) var_f29_636;
             sp38 = temp_f0_663;
             spC8 = temp_f0_663;
@@ -403,7 +438,7 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
         }
     }
     if (arg2 != NULL) {
-        temp_f1_686 = MKRand_Float(&gViewSeed, this->unk8, this->unk4);
+        temp_f1_686 = MKRand_Float((int *) &gViewSeed, this->unk8, this->unk4);
         arg2->unk0 = temp_f1_686;
         arg2->unk4 = temp_f1_686;
         arg2->unk8 = temp_f1_686;
@@ -424,9 +459,9 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             M2C_FIELD(arg1, f64 *, 8) = (f64) spA8.unk8;
             break;
         case 1:
-            temp_f31_731 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f29_736 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
-            temp_f1_740 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
+            temp_f31_731 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f29_736 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+            temp_f1_740 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp20 = temp_f31_731;
             sp18 = temp_f1_740;
             sp1C = temp_f29_736;
@@ -441,7 +476,7 @@ void DirectedLineEmitter::GetEmissionData(MKVector3 *arg0, MKVector3 *arg1, MKVe
             M2C_FIELD(arg1, f64 *, 8) = (f64) this->unk20;
             break;
         }
-        temp_f1_767 = MKRand_Float(&gViewSeed, this->unk10, this->unkC);
+        temp_f1_767 = MKRand_Float((int *) &gViewSeed, this->unk10, this->unkC);
         M2C_FIELD(arg1, f64 *, 0) = (f64) (M2C_FIELD(arg1, f64 *, 0) * temp_f1_767);
         arg1->unk8 *= (f32) temp_f1_767;
     }
@@ -466,16 +501,15 @@ void DirectedLineEmitter::LoadDone() {
     ((KDPathSegment *) &this->unk3C)->LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DirectedLineEmitter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r30_865;
 
     var_r30_865 = arg0;
 loop_2:
     if (var_r30_865 != NULL) {
-        var_r30_865->LoadInt("EmissionPosType", &this->unk9C, 0);
-        var_r30_865->LoadInt("DirectionType", &this->unk9C, 0);
-        var_r30_865->LoadInt("LinearDirectionType", &this->unkA0, 0);
+        var_r30_865->LoadInt("EmissionPosType", (int *) &this->unk9C, 0);
+        var_r30_865->LoadInt("DirectionType", (int *) &this->unk9C, 0);
+        var_r30_865->LoadInt("LinearDirectionType", (int *) &this->unkA0, 0);
         var_r30_865->LoadFloat("MinRadialOffs", (f32 *) &this->unkA4, 0);
         var_r30_865->LoadFloat("MaxRadialOffs", &this->unkA8, 0);
         var_r30_865->LoadFloat("MinScale", &this->unk8, 0);
@@ -489,7 +523,6 @@ loop_2:
     }
     return 0;
 }
-#endif
 
 void DirectedLineEmitter::SetPosition(const MKVector3 &arg0) {
     this->unk28 = M2C_FIELD(&arg0, f64 *, 0);
@@ -774,7 +807,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: undefined identifier 'unk240'
 void GameParticleEmitter::EmitHeat() {
     MKVector3 sp58;
     f32 sp48;
@@ -798,7 +831,7 @@ loop_3:
         if (var_r30_1486 < (s32) this->unkDC) {
             temp_r3_1490 = this->unkC8;
             M2C_FIELD(*temp_r3_1490, M2C_UNK (**)(void **, MKVector3 *, M2C_UNK, f32 *, M2C_UNK), 0x20)(temp_r3_1490, &sp58, 0, &sp48, 0);
-            temp_f1_1502 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
+            temp_f1_1502 = MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f);
             sp18 = 0.0f;
             sp1C = temp_f1_1502;
             sp20 = 0.0f;
@@ -989,7 +1022,7 @@ void GameParticleEmitter::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 GameParticleEmitter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r29_2006;
     s32 temp_r0_2019;
@@ -998,7 +1031,7 @@ s32 GameParticleEmitter::LoadLine(MKIniLine *arg0) {
     void **temp_r3_2069;
     void **temp_r3_2074;
 
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("ParticleType", (s32 *) &this->unkCC, 0) != 0) || (arg0->LoadFloat("EmitRate", &this->unkD4, 0) != 0) || (arg0->LoadInt("NumPerEmit", &this->unkDC, 0) != 0) || (arg0->LoadBool("StartEnabled", &this->unkE0, 0) != 0) || (arg0->LoadBool("OneShot", &this->unkE1, 0) != 0) || (arg0->LoadFloat("UpdateDist", &this->unkE4, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("ParticleType", (int *) &this->unkCC, 0) != 0) || (arg0->LoadFloat("EmitRate", &this->unkD4, 0) != 0) || (arg0->LoadInt("NumPerEmit", (int *) &this->unkDC, 0) != 0) || (arg0->LoadBool("StartEnabled", &this->unkE0, 0) != 0) || (arg0->LoadBool("OneShot", &this->unkE1, 0) != 0) || (arg0->LoadFloat("UpdateDist", &this->unkE4, 0) != 0)) {
         return 1;
     }
     if (arg0->IsField("EmitterProperty") != 0) {
@@ -1006,7 +1039,7 @@ s32 GameParticleEmitter::LoadLine(MKIniLine *arg0) {
 loop_23:
         if (var_r29_2006 != NULL) {
             if (var_r29_2006->IsField("EmissionType") != 0) {
-                var_r29_2006->AsInt(0, &this->unkD0);
+                var_r29_2006->AsInt(0, (int *) &this->unkD0);
                 temp_r0_2019 = this->unkD0;
                 switch (temp_r0_2019) {             /* irregular */
                 case 0:

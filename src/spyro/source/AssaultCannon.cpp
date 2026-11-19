@@ -1,27 +1,62 @@
 #include "spyro/source/AssaultCannon.h"
 #include "common/Source/Animation.h"
+#include "common/Source/Font.h"
 #include "common/Source/Frustum.h"
 #include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKDynamicBone.h"
+#include "common/Source/MKFont.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/MKPtrList.h"
+#include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
+#include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "common/gc/System_GC.h"
+#include "spyro/source/Coronas.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/DialogBox.h"
 #include "spyro/source/EnemyDeathFX.h"
 #include "spyro/source/EnergyBeam.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/ExplodeMsg.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDFaderObject.h"
 #include "spyro/source/KDInput.h"
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDMatrixRefProperty.h"
+#include "spyro/source/KDPositionProperty.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDProperty.h"
 #include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
 #include "spyro/source/Projectile.h"
+#include "spyro/source/SeeSaw.h"
+#include "spyro/source/Shadow.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/ShatterablePlatformDescriptor.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
 #include "common/Source/StdMath.h"
@@ -231,19 +266,19 @@ u8 states__13AssaultCannon[0xB4] = {
 static s8 *pTurretAnimEvents = "Fire";
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
+#if 0 // DRAFT: pointer/array required
 void AssaultCannon::CalcSpikeBeamPositions() {
     ShatterableDescriptor *temp_r3_153;
 
     temp_r3_153 = checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     if ((s32) M2C_FIELD(temp_r3_153, s32 *, 0x174) == 2) {
-        MKModel_CalculateRefPointWorldPosition(this->unk4, *(M2C_FIELD(temp_r3_153, s32 *, 0x17C) + (MKRand_Int(&gViewSeed, 0, 5) * 4)), &this->unk308);
-        MKModel_CalculateRefPointWorldPosition(this->unk4, *(M2C_FIELD(temp_r3_153, s32 *, 0x17C) + (MKRand_Int(&gViewSeed, 0, 5) * 4)), &this->unk318);
+        MKModel_CalculateRefPointWorldPosition(this->unk4, *(M2C_FIELD(temp_r3_153, s32 *, 0x17C) + (MKRand_Int((int *) &gViewSeed, 0, 5) * 4)), &this->unk308);
+        MKModel_CalculateRefPointWorldPosition(this->unk4, *(M2C_FIELD(temp_r3_153, s32 *, 0x17C) + (MKRand_Int((int *) &gViewSeed, 0, 5) * 4)), &this->unk318);
     }
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void AssaultCannon::CalcBarrelBeamPositions() {
     MKVector3 spB8;
     MKVector3 spA8;
@@ -275,7 +310,7 @@ void AssaultCannon::CalcBarrelBeamPositions() {
     if ((s32) M2C_FIELD(temp_r3_195, s32 *, 0x174) == 2) {
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r3_195, s32 *, 0x180), &spB8);
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r3_195, s32 *, 0x184), &spA8);
-        temp_f1_211 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        temp_f1_211 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         temp_f0_214 = M2C_BITWISE(f64, spA8) - M2C_BITWISE(f64, spB8);
         sp18 = temp_f0_214;
         sp78 = temp_f0_214;
@@ -290,7 +325,7 @@ void AssaultCannon::CalcBarrelBeamPositions() {
         spA0 = (f64) sp40;
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r3_195, s32 *, 0x188), &spB8);
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r3_195, s32 *, 0x18C), &spA8);
-        temp_f1_252 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
+        temp_f1_252 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
         temp_f0_255 = M2C_BITWISE(f64, spA8) - M2C_BITWISE(f64, spB8);
         sp8 = temp_f0_255;
         sp48 = temp_f0_255;
@@ -428,7 +463,7 @@ void AssaultCannon::EmitShootingFX() {
         sp28 = temp_f0_484 * 500.0f;
         sp50 = sp20;
         sp58 = (f64) sp28;
-        spC = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+        spC = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
         gb.EmitDust(sp70, *((MKVector3 *) &sp50), spC, 0.0f);
         return;
     case 3:                                         /* switch 2 */
@@ -446,7 +481,7 @@ void AssaultCannon::EmitShootingFX() {
             M2C_FIELD(temp_r30_533, f64 *, 8) = (f64) sp18;
             sp48 = (f64) sp18;
             M2C_FIELD(temp_r30_533, f32 *, 0x18) = 0.6f;
-            M2C_FIELD(temp_r30_533, f32 *, 0x10) = MKRand_Float(&gViewSeed, -3.1415927f, 3.1415927f);
+            M2C_FIELD(temp_r30_533, f32 *, 0x10) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
             M2C_FIELD(temp_r30_533, f32 *, 0x14) = (f32) M2C_FIELD(gb.unk2A0, f32 *, 0xF4);
         }
         /* fallthrough */
@@ -486,7 +521,7 @@ void AssaultCannon::StateDeadExit() {
 
 }
 
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void AssaultCannon::StateDeadUpdate() {
     f64 spF8;
     f64 spF0;
@@ -527,7 +562,7 @@ void AssaultCannon::StateDeadUpdate() {
     f64 temp_f0_719;
     void *temp_r3_701;
 
-    if (MKRand_Int(&gViewSeed, 0, 3) == 0) {
+    if (MKRand_Int((int *) &gViewSeed, 0, 3) == 0) {
         sp38 = 0.0f;
         sp78 = -1.0f;
         sp68 = 1.0f;
@@ -560,12 +595,12 @@ void AssaultCannon::StateDeadUpdate() {
         spF0 = temp_f0_719;
         sp28 = (f32) spE8 + (f32) sp98;
         spF8 = (f64) sp28;
-        sp14 = MKRand_Float(&gViewSeed, 1300.0f, 2000.0f);
+        sp14 = MKRand_Float((int *) &gViewSeed, 1300.0f, 2000.0f);
         sp10 = 0.0f;
         sp18 = 0.0f;
         sp80 = (f64) sp10;
         sp88 = (f64) sp18;
-        sp8 = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
+        sp8 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
         gb.EmitDust(*((MKVector3 *) &spF0), *((MKVector3 *) &sp80), sp8, 0.0f);
     }
     if ((u8) this->unk2F1 == 0) {
@@ -3134,7 +3169,7 @@ void AssaultCannon::TakeDamage(float arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
+#if 0 // DRAFT: illegal operand
 void AssaultCannon::Deinit() {
     void *temp_r3_5070;
 
@@ -3144,8 +3179,8 @@ void AssaultCannon::Deinit() {
         this->unk2E0 = NULL;
     }
     this->unk218.Deinit();
-    KDSound_Stop(&this->unk26C);
-    KDSound_Stop(&this->unk294);
+    KDSound_Stop((int *) &this->unk26C);
+    KDSound_Stop((int *) &this->unk294);
     this->unk2F0 = 0;
     if (EnemyHud_GetEnemy() == this) {
         EnemyHud_Modified(NULL, 0.0f, 0.0f, 0.0f);
@@ -3808,7 +3843,7 @@ void AssaultCannonDescriptor::LoadDone() {
 s32 AssaultCannonDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
 
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("turretSubObject", &this->unk16C, 0) != 0) || (arg0->LoadInt("GemsOnDeath", &this->unk1A8, 0) != 0) || (arg0->LoadFloat("spitFadeIn", &this->unk198, 0) != 0) || (arg0->LoadFloat("spitFadeOut", &this->unk19C, 0) != 0) || (arg0->LoadFloat("splatFadeIn", &this->unk1A0, 0) != 0) || (arg0->LoadFloat("splatFadeOut", &this->unk1A4, 0) != 0) || (KDSound_LoadLine(arg0, "spitSound", &this->unk190) != 0) || (KDSound_LoadLine(arg0, "splatSound", &this->unk194) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("turretSubObject", &this->unk16C, 0) != 0) || (arg0->LoadInt("GemsOnDeath", (int *) &this->unk1A8, 0) != 0) || (arg0->LoadFloat("spitFadeIn", &this->unk198, 0) != 0) || (arg0->LoadFloat("spitFadeOut", &this->unk19C, 0) != 0) || (arg0->LoadFloat("splatFadeIn", &this->unk1A0, 0) != 0) || (arg0->LoadFloat("splatFadeOut", &this->unk1A4, 0) != 0) || (KDSound_LoadLine(arg0, "spitSound", (int *) &this->unk190) != 0) || (KDSound_LoadLine(arg0, "splatSound", (int *) &this->unk194) != 0)) {
         return 1;
     }
     if (arg0->IsField("TurretType") != 0) {

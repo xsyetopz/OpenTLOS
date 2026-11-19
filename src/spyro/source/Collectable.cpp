@@ -1,22 +1,46 @@
 #include "spyro/source/Collectable.h"
+#include "common/Source/Animation.h"
+#include "common/Source/MKAnimScript.h"
+#include "common/Source/MKAttachment.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
+#include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
+#include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKResource.h"
+#include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
+#include "common/Source/Texture.h"
+#include "spyro/source/AssaultCannon.h"
+#include "spyro/source/Crate.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/FireAndIceFX.h"
 #include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+#include "spyro/source/GlowingPropManager.h"
 #include "spyro/source/HeroInterface.h"
+#include "spyro/source/KDProp.h"
+#include "spyro/source/KDPropEx.h"
+#include "spyro/source/KDSound.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/KDStateMachine.h"
+#include "spyro/source/KDVolume.h"
 #include "spyro/source/KDWaterVolume.h"
+#include "spyro/source/Level.h"
+#include "spyro/source/PlatformObject.h"
+#include "spyro/source/Shadow.h"
+#include "spyro/source/Shatterable.h"
+#include "spyro/source/ShatterablePlatform.h"
+#include "spyro/source/TargetManager.h"
 #include "unplaced_templates.h"
 #include "unplaced_enums.h"
-#include "common/Source/MKCollision.h"
 #include "common/Source/MKShape.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKMaterial_GC.h"
@@ -24,7 +48,6 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include "common/gc/Sound_GC.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PropFlags.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -94,7 +117,7 @@ loop_3:
             var_f29_111 -= 6.2831855f;
             goto loop_3;
         }
-        temp_f30_122 = MKRand_Float(&gViewSeed, arg0->unk10, temp_f2_105);
+        temp_f30_122 = MKRand_Float((int *) &gViewSeed, arg0->unk10, temp_f2_105);
         temp_f31_125 = _table_sinf(1.5707964f + var_f29_111);
         temp_f1_127 = _table_sinf(var_f29_111);
         sp30 = temp_f31_125;
@@ -164,7 +187,6 @@ void CollectableSpawner::Spawn(const MKVector3 &arg0, float arg1, float arg2) {
     M2C_FIELD(temp_r3_256, s32 *, 0x24) = 0;
 }
 
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void CollectableSpawner::Spawn(const MKVector3 &arg0, int arg1, float arg2, float arg3, int arg4, MKProp *arg5) {
     f32 temp_f26_353;
     f32 temp_f27_304;
@@ -180,7 +202,7 @@ void CollectableSpawner::Spawn(const MKVector3 &arg0, int arg1, float arg2, floa
     void *temp_r24_354;
 
     if (arg1 >= 1) {
-        temp_f27_304 = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+        temp_f27_304 = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
         temp_f28_305 = M2C_FIELD(&arg0, f64 *, 0);
         temp_f29_306 = M2C_FIELD(&arg0, f64 *, 8);
         var_r31_309 = 0;
@@ -210,7 +232,7 @@ loop_12:
             M2C_FIELD(temp_r24_354, f32 *, 0x14) = arg3;
             M2C_FIELD(temp_r24_354, f32 *, 0x18) = temp_f27_304;
             var_r0_365 = arg4;
-            M2C_FIELD(temp_r24_354, f32 *, 0x1C) = (f32) (temp_f26_353 * ((f32) var_r31_309 + MKRand_Float(&gViewSeed, 0.0f, temp_f26_353)));
+            M2C_FIELD(temp_r24_354, f32 *, 0x1C) = (f32) (temp_f26_353 * ((f32) var_r31_309 + MKRand_Float((int *) &gViewSeed, 0.0f, temp_f26_353)));
             if (arg4 > -1) {
                 var_r0_365 = arg4 + var_r31_309;
             }
@@ -221,7 +243,6 @@ loop_12:
         }
     }
 }
-#endif
 
 void CollectableSpawner::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
@@ -507,7 +528,6 @@ void Collectable::RotateCameraFacing() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void Collectable::SetState(CollectableState arg0) {
     u8 *temp_r4_1005;
 
@@ -517,10 +537,10 @@ void Collectable::SetState(CollectableState arg0) {
         case 1:
         case 10:
             if (!((s32) this->unk124->unk9C & 0x1000)) {
-                PropFlagsClear((u32 *) &this->unk10, 0x160000U);
+                PropFlagsClear((unsigned int *) &this->unk10, 0x160000U);
                 Disable();
             } else {
-                this->unkF8 = (this->unk124->unk7C * MKRand_Float(&gViewSeed, 1.0f, 1.5f)) + M2C_FIELD(&gb, f32 *, 0x30C);
+                this->unkF8 = (this->unk124->unk7C * MKRand_Float((int *) &gViewSeed, 1.0f, 1.5f)) + M2C_FIELD(&gb, f32 *, 0x30C);
             }
             temp_r4_1005 = &this->unk128;
             M2C_FIELD(this->unk130, void **, 4) = (void *) this->unk12C;
@@ -531,36 +551,35 @@ void Collectable::SetState(CollectableState arg0) {
             PlatformDetach();
             break;
         case 8:
-            PropFlagsInit((u32 *) &this->unk10, 0x160000U);
+            PropFlagsInit((unsigned int *) &this->unk10, 0x160000U);
             Enable();
             CollectingStateInit();
             PlatformDetach();
             break;
         case 3:
-            PropFlagsInit((u32 *) &this->unk10, 0x160000U);
+            PropFlagsInit((unsigned int *) &this->unk10, 0x160000U);
             Enable();
             this->unkF8 = 0.5f;
             break;
         case 7:
-            PropFlagsInit((u32 *) &this->unk10, 0x160000U);
+            PropFlagsInit((unsigned int *) &this->unk10, 0x160000U);
             Enable();
             this->unk7C = 0.0f;
             break;
         case 2:
-            PropFlagsInit((u32 *) &this->unk10, 0x160000U);
+            PropFlagsInit((unsigned int *) &this->unk10, 0x160000U);
             Enable();
             this->unkF8 = 0.5f;
             break;
         case 6:
         case 9:
-            PropFlagsInit((u32 *) &this->unk10, 0x160000U);
+            PropFlagsInit((unsigned int *) &this->unk10, 0x160000U);
             Enable();
             break;
         }
     }
     this->unkD4 = (s32) arg0;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'int' to
 void Collectable::CollectedState() {
@@ -1291,7 +1310,7 @@ void Collectable::SpawnDynamic(const MKVector3 &arg0) {
     this->unk134 = 1.0f;
     this->unk138 = 0.0f;
     this->unk13C = 0;
-    temp_f31_2694 = MKRand_Float(&gViewSeed, 100.0f, 280.0f);
+    temp_f31_2694 = MKRand_Float((int *) &gViewSeed, 100.0f, 280.0f);
     KDRand_UnitVector();
     sp28.operator*(temp_f31_2694);
     sp8 = M2C_FIELD(&arg0, f64 *, 0) + M2C_BITWISE(f64, sp28);
@@ -1453,7 +1472,7 @@ void Collectable::SpawnStatic(const MKVector3 &arg0, const MKVector3 &arg1) {
     this->unk70 = this->unk50;
     M2C_FIELD(this, f64 *, 0x78) = (f64) this->unk58;
     this->unk7C = 0.0f;
-    this->unk100 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+    this->unk100 = MKRand_Float((int *) &gViewSeed, 0.5f, 1.0f);
 }
 #endif
 
@@ -1766,7 +1785,7 @@ block_81:
             MKModel_SetPosition(this->unk4, *((MKVector3 *) &this->unk50));
             break;
         case 1:                                     /* switch 2 */
-            PropFlagsSet((u32 *) &this->unk10, 0x160000U);
+            PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
             this->unkE0 = 0.0f;
             this->unkE4 = 1.0f;
             break;
@@ -1836,11 +1855,11 @@ block_81:
         MKModel_SetPosition(this->unk4, *((MKVector3 *) &this->unk50));
         goto block_81;
     case 0xBE:                                      /* switch 1 */
-        PropFlagsMessage((u32 *) &this->unk10, arg0);
+        PropFlagsMessage((unsigned int *) &this->unk10, arg0);
         SetState(3);
         goto block_81;
     case 0xBF:                                      /* switch 1 */
-        PropFlagsMessage((u32 *) &this->unk10, arg0);
+        PropFlagsMessage((unsigned int *) &this->unk10, arg0);
         SetState(1);
         goto block_81;
     case 0x5B:                                      /* switch 1 */
@@ -2315,17 +2334,15 @@ void Collectable::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropFlagsLoadLine(unsigned long *, MKIniLine *)' does not
 s32 Collectable::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4614;
 
     var_r31_4614 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (arg0->LoadInt("type", &this->unkD0, 0) != 0) || (arg0->LoadInt("platformID", (s32 *) &this->unk104, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((unsigned int *) &this->unk10, arg0) != 0) || (arg0->LoadInt("type", (int *) &this->unkD0, 0) != 0) || (arg0->LoadInt("platformID", (int *) &this->unk104, 0) != 0)) {
         var_r31_4614 = 1;
     }
     return var_r31_4614;
 }
-#endif
 
 void Collectable::Deinit() {
     MKHeap *temp_r3_4660;
@@ -2379,7 +2396,7 @@ void Collectable::Init() {
     this->unkE8 = 1.0f;
     this->unkF0 = 1.0f;
     this->unkE4 = 0.0f;
-    this->unkEC = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
+    this->unkEC = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
     this->unkF8 = 0.0f;
     this->unkFC = 0.0f;
     this->unkC0 = NULL;
@@ -2398,7 +2415,7 @@ void Collectable::Init() {
     this->unk134 = 1.0f;
     this->unk138 = 0.0f;
     this->unk13C = 0;
-    PropFlagsSet((u32 *) &this->unk10, 0x160000U);
+    PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
     M2C_FIELD(this, Collectable **, 0xB0) = this;
     this->unk108 = 980.0f * gUpdateTimeDelta;
     this->unk10C = 1.0f;
@@ -2439,7 +2456,7 @@ s32 CollectableDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4856;
 
     var_r31_4856 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("respawnTime", &this->unk7C, 0) != 0) || (arg0->LoadBool("bChangeModelColor", (u8 *) &this->unk66, 0) != 0) || (arg0->LoadBool("bMagnetic", (u8 *) &this->unk68, 0) != 0) || (arg0->LoadBool("bShadow", this + 0x67, 0) != 0) || (arg0->LoadFloat("timeout", &this->unk80, 0) != 0) || (arg0->LoadFloat("spawnSpeedMultiplier", &this->unk84, 0) != 0) || (arg0->LoadFloat("magRange", &this->unkA4, 0) != 0) || (arg0->LoadFloat("sndBounceVolDropOff", &this->unkC4, 0) != 0) || (arg0->LoadVector4("color", (MKVector4 *) &this->unkA8, 0) != 0) || (KDSound_LoadLine(arg0, "sndCollect", &this->unkBC) != 0) || (KDSound_LoadLine(arg0, "sndBounce", &this->unkC0) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("respawnTime", &this->unk7C, 0) != 0) || (arg0->LoadBool("bChangeModelColor", (u8 *) &this->unk66, 0) != 0) || (arg0->LoadBool("bMagnetic", (u8 *) &this->unk68, 0) != 0) || (arg0->LoadBool("bShadow", this + 0x67, 0) != 0) || (arg0->LoadFloat("timeout", &this->unk80, 0) != 0) || (arg0->LoadFloat("spawnSpeedMultiplier", &this->unk84, 0) != 0) || (arg0->LoadFloat("magRange", &this->unkA4, 0) != 0) || (arg0->LoadFloat("sndBounceVolDropOff", &this->unkC4, 0) != 0) || (arg0->LoadVector4("color", (MKVector4 *) &this->unkA8, 0) != 0) || (KDSound_LoadLine(arg0, "sndCollect", (int *) &this->unkBC) != 0) || (KDSound_LoadLine(arg0, "sndBounce", (int *) &this->unkC0) != 0)) {
         var_r31_4856 = 1;
     }
     return var_r31_4856;
