@@ -30,18 +30,49 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from asmdata import objects  # noqa: E402
+from asmdata import bindings, objects  # noqa: E402
 from cxxtypes import K, parse, render  # noqa: E402
 from hmodel import Model, header_key, load_model, type_names  # noqa: E402
 from hrender import member_name  # noqa: E402
-from m2ccalls import CallRewriter, split_args  # noqa: E402
+from m2ccalls import CallRewriter, devirtualize, split_args  # noqa: E402
 
 FUNC = re.compile(r"^(?P<ret>[^\s/#].*?)\s*\b(?P<name>[A-Za-z_][\w<>,@$]*)\((?P<params>.*)\) \{$")
 LOCAL_PROTO = re.compile(r"^(?P<ret>[^\s/#].*?)\s*\b(?P<name>[A-Za-z_][\w<>,@$]*)\((?P<params>.*)\);\s*/\* static \*/$")
 LITERAL = re.compile(r"^static (f32|f64) (@\d+) = (.+?);.*$", re.M)
 STRING = re.compile(r"^static (?:const )?s8 (@stringBase\d+)\[\d+\] = \{ (.*?) \};.*$", re.M)
 UNTYPED = re.compile(r"^static M2C_UNK (@stringBase\d+);", re.M)
-MANGLED_EXTERN = re.compile(r"^[^\n]*\b\w+__\w*[(;][^\n]*/\* extern \*/\n|^extern [^\n]*\b\w*__\w+[^\n]*;\n", re.M)
+MANGLED_EXTERN = re.compile(r"^[^\n]*\b[\w<>,]+__[\w<>,]*[(;][^\n]*/\* extern \*/\n|^extern [^\n]*\b[\w<>,]*__[\w<>,]+[^\n]*;\n", re.M)
+TEMPLATE_FN = re.compile(r"^[A-Za-z_]\w*<")
+UNPLACED = re.compile(r"\b(?:checked_cast|ui_cast|ui_cast_ptr|property_cast|property_cast_ptr|safe_delete|Clamp|Min|"
+                      r"KDMath_Smooth|KDMath_CriticalDamp|KDMath_Dampen|ByteReverse|Endian|Model_RenderChunkGC)\s*<")
+
+
+SDK_HEADERS = ["os", "gx", "dvd", "pad", "vi", "ai", "ar", "card", "ax", "mtx", "dsp", "exi", "si", "axfx", "mix"]
+SDK_NAME = re.compile(r"\b(?:OS|GX|DVD|PAD|VI|AI|AR|ARQ|CARD|AX|PSMTX|PSVEC|PSQUAT|C_MTX|C_VEC|MTX|VEC|DSP|EXI|SI|MIX|Mtx|Vec|Quaternion)\w*\b")
+# Prologue/epilogue of functions with over-aligned locals, which m2c leaves in the body.
+ALIGNED_STACK = re.compile(r"^\s*\*\(sp \+ \(-0x[0-9A-Fa-f]+ - \(\(s32\) sp & 0x[0-9A-Fa-f]+\)\)\) = sp;\n"
+                           r"|^[^\n]*\bM2C_FIELD\(sp, [^\n]*\bsaved_reg_\w+;\n|^[^\n]*\bsaved_reg_\w+ = [^\n]*\bsp\b[^\n]*;\n", re.M)
+
+
+def sdk_index(include_root: Path) -> dict[str, str]:
+    """{SDK identifier: `dolphin/<x>.h`} for names the converted code may use without a game header."""
+    index = {}
+    for h in SDK_HEADERS:
+        root = include_root / "dolphin"
+        for f in [root / f"{h}.h", *sorted((root / h).rglob("*.h"))] if (root / h).is_dir() else [root / f"{h}.h"]:
+            if f.exists():
+                for n in SDK_NAME.findall(f.read_text(errors="replace")):
+                    index.setdefault(n, f"dolphin/{h}.h")
+    return index
+
+
+def free_functions(hdr_root: Path) -> dict[str, str]:
+    """{free function name: header} from the generated headers' top-level prototypes."""
+    out = {}
+    for h in sorted(hdr_root.rglob("*.h")):
+        for n in re.findall(r"^(?!typedef|#|//|class|struct|template)[A-Za-z_][^\n(;]*?\b(\w+)\(", h.read_text(), re.M):
+            out.setdefault(n, h.relative_to(hdr_root).as_posix())
+    return out
 
 
 def drop_types(text: str) -> str:
@@ -132,9 +163,10 @@ def params_of(sig: str) -> list[tuple[str, str]]:
 
 
 class Converter:
-    def __init__(self, model: Model, cnames: dict, owner_of: dict):
-        self.model, self.cnames, self.owner_of = model, cnames, owner_of
+    def __init__(self, model: Model, cnames: dict, owner_of: dict, sdk: dict, free: dict):
+        self.model, self.cnames, self.owner_of, self.sdk, self.free = model, cnames, owner_of, sdk, free
         self.virtuals, self.statics, self.method_cls = set(), set(), {}
+        self.vtables = {n: c["vtable"] for n, c in model.classes.items() if c.get("vtable")}
         for n, c in model.classes.items():
             for m in c["methods"]:
                 self.method_cls[m["mangled"]] = n
@@ -191,12 +223,26 @@ class Converter:
         text = f"{head}{qual}{name}({', '.join(decl_params)}){' const' if const else ''} {body}"
         return text, names
 
-    def convert(self, text: str, tu: str, pools: dict[str, bytes]) -> str:
+    def convert(self, text: str, tu: str, pools: dict[str, bytes], binds: dict[str, str]) -> tuple[str, str]:
+        """(TU source, header-inline functions) for one m2c output.
+
+        Weak functions and local template instances are copies of header
+        inlines that MWCC emitted into this TU; they belong in headers, so
+        they are returned separately instead of being defined here.
+        """
         text = fold_literals(drop_types(text), pools)
         text = MANGLED_EXTERN.sub("", text)
-        out, used, lines, i = [], set(), text.split("\n"), 0
+        # The 16-byte stack realignment MWCC emits for aligned locals is not source.
+        text = ALIGNED_STACK.sub("", text)
+        text = re.sub(r"^[^\n]*\b__ptmf_\w+\([^\n]*/\* extern \*/\n", "", text, flags=re.M)
+        # Function-local statics are emitted as `name$NNN`.
+        text = re.sub(r"\b(\w+)\$(\d+)\b", r"\1_\2", text)
+        out, inline, used, lines, i = [], [], set(), text.split("\n"), 0
         while i < len(lines):
             p = LOCAL_PROTO.match(lines[i])
+            if p and TEMPLATE_FN.match(p.group("name")):
+                i += 1
+                continue
             if p:
                 # A local function used before its definition: the source forward-declared it.
                 # Methods are declared by their class header instead.
@@ -216,20 +262,29 @@ class Converter:
                 j += 1
             body = "{\n" + "\n".join(lines[i + 1:j]) + "\n}"
             fn, names = self.function(m.group("ret"), m.group("name"), m.group("params"), body)
-            used |= names
             if out and out[-1].startswith("/* ") and out[-1].endswith(" */"):
                 out.pop()  # m2c's demangled-name comment repeats the signature
-            out.append(fn)
+            name = m.group("name")
+            if binds.get(name) == "weak" or (binds.get(name) == "local" and TEMPLATE_FN.match(name)):
+                inline.append(fn)
+            else:
+                used |= names
+                out.append(fn)
             i = j + 1
-        body = self.cxx_names("\n".join(out))
+        body = devirtualize(self.cxx_names("\n".join(out)), self.vtables)
         body = re.sub(r"\n{3,}", "\n\n", body).strip() + "\n"
         code = re.sub(r'"(?:\\.|[^"\\])*"', '""', body)
         used |= {n for n in re.findall(r"\b([A-Z]\w*(?:::\w+)*?)(?=\s*\*|::|\s+\w+;)", code) if n in self.owner_of}
         stem = tu.rsplit(".", 1)[0]
         includes = sorted({self.owner_of[header_key(n)].rsplit(".", 1)[0] + ".h" for n in used
                            if header_key(n) in self.owner_of} - {stem + ".h"})
+        if UNPLACED.search(code):
+            includes.append("unplaced_templates.h")
+        includes += sorted({self.sdk[n] for n in SDK_NAME.findall(code) if n in self.sdk})
+        includes += sorted({self.free[n] for n in re.findall(r"\b(\w+)\s*\(", code)
+                            if n in self.free and self.free[n] != stem + ".h"} - set(includes))
         head = [f'#include "{stem}.h"'] + [f'#include "{i}"' for i in includes] + ["#include <m2c_macros.h>", ""]
-        return "\n".join(head) + "\n" + body
+        return "\n".join(head) + "\n" + body, self.cxx_names("\n\n".join(inline))
 
 
 def main() -> int:
@@ -238,9 +293,13 @@ def main() -> int:
         ap.add_argument(a, type=Path)
     ap.add_argument("--prefix", nargs="*", default=["spyro", "common"])
     ap.add_argument("--write-existing", action="store_true")
+    ap.add_argument("--hdr-root", type=Path, help="generated headers, for including free functions' headers")
+    ap.add_argument("--inline-root", type=Path, help="where each TU's header-inline functions go, as <stem>.inl")
     a = ap.parse_args()
     model = load_model(a.classes, a.fields, a.m2c_root, a.ctx)
-    conv = Converter(model, json.loads(a.cnames.read_text()), model.owner_map())
+    conv = Converter(model, json.loads(a.cnames.read_text()), model.owner_map(),
+                     sdk_index(Path(__file__).resolve().parents[2] / "include"),
+                     free_functions(a.hdr_root) if a.hdr_root else {})
     written = 0
     for stem, tu in sorted(model.stems.items()):
         if not any(stem.startswith(p + "/") for p in a.prefix):
@@ -251,7 +310,13 @@ def main() -> int:
             continue
         out.parent.mkdir(parents=True, exist_ok=True)
         asm = a.asm_root / (stem + ".s")
-        out.write_text(conv.convert(src.read_text(), tu, objects(asm) if asm.exists() else {}))
+        pools, binds = (objects(asm), bindings(asm)) if asm.exists() else ({}, {})
+        source, inline = conv.convert(src.read_text(), tu, pools, binds)
+        out.write_text(source)
+        if inline and a.inline_root:
+            dest = a.inline_root / (stem + ".inl")
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_text(inline + "\n")
         written += 1
     print(f"{written} sources written")
     return 0

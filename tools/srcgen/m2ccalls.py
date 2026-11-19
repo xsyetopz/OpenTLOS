@@ -138,3 +138,39 @@ class CallRewriter:
                 pos = m.end()
         out.append(body[pos:])
         return "".join(out)
+
+
+VCALL = re.compile(r"\(\*\((?P<ret>[^()]*?) ?\(\*\*\)\((?P<cls>[\w:<>, ]+?) \*[^;]*?\)\)\(\(s8\*\)\((?P<obj>[^()]*?)->__vptr\) \+ \((?P<off>0x[0-9A-Fa-f]+|\d+)\)\)\)\(")
+
+VFIELD = re.compile(r"M2C_FIELD\((?P<obj>[^()]*?)->__vptr, (?P<ret>[^()]*?) ?\(\*\*\)\((?P<cls>[\w:<>, ]+?) \*[^;]*?\), (?P<off>0x[0-9A-Fa-f]+|\d+)\)\(")
+
+
+def devirtualize(body: str, vtables: dict) -> str:
+    """Turn m2c's vtable-slot calls back into virtual member calls.
+
+    MWCC vtables hold the RTTI pointer and this-offset first, so slot `i`
+    sits at 8 + 4*i; the slot's function names the method. Calls whose
+    class or slot is unknown stay as they are.
+    """
+    out, pos = [], 0
+    for m in sorted([*VCALL.finditer(body), *VFIELD.finditer(body)], key=lambda m: m.start()):
+        if m.start() < pos:
+            continue
+        slots = vtables.get(m.group("cls").strip())
+        i = (int(m.group("off"), 0) - 8) // 4
+        if not slots or i < 0 or i >= len(slots):
+            continue
+        end = close_paren(body, m.end() - 1)
+        if end < 0:
+            continue
+        try:
+            sym = Symbol(slots[i])
+        except Exception:  # noqa: BLE001 - slot holds a non-method (pure virtual stub)
+            continue
+        args = split_args(body[m.end():end])[1:]
+        args = [ref_arg(a) if k < len(sym.refs) and sym.refs[k] else a for k, a in enumerate(args)]
+        obj = m.group("obj")
+        call = f"{sym.name}({', '.join(args)})"
+        out += [body[pos:m.start()], call if obj == "this" else f"{obj}->{call}"]
+        pos = end + 1
+    return "".join(out) + body[pos:]
