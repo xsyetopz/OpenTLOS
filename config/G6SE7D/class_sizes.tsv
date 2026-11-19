@@ -1,0 +1,2 @@
+class	size	evidence
+MKVector3	0x10	Max__FRC9MKVector3RC9MKVector3 (0x803069D4): lfs x/y/z at 0/4/8, result copied with lfd/stfd at 0x0 and 0x8 of r3

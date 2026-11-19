@@ -181,6 +181,11 @@ class Model:
         `MKProp` collects SteamTrain's 0xD10 field. A field goes when it lies
         past the class's allocation bound, or when only TUs owning strict
         descendants (and not the class itself) voted for it.
+
+        m2c also unifies unrelated pointers with a class type, so one stray
+        TU can add `MKVector3::unk394`. A field voted by a single TU that owns
+        neither the class nor a descendant is dropped as such noise; the
+        padding still covers its bytes.
         """
         owners = defaultdict(set)
         for name, c in self.classes.items():
@@ -193,7 +198,31 @@ class Model:
             mine = (c.get("owner") or "").rsplit(".", 1)[0]
             desc = owners[name] - {mine}
             f["fields"] = {o: v for o, v in f["fields"].items()
-                           if (limit is None or int(o) < limit) and not (desc and set(v["tus"]) <= desc)}
+                           if (limit is None or int(o) < limit) and not (desc and set(v["tus"]) <= desc)
+                           and not (len(v["tus"]) == 1 and v["tus"][0] not in owners[name] | {mine})}
+
+    def apply_sizes(self, sizes: dict) -> None:
+        """Exact sizes proven from the asm (config class_sizes.tsv) cap each class.
+
+        m2c unifies unrelated pointers with a value type, so `MKVector3`
+        collects votes up to 0xB8 although `Max(const MKVector3&, ...)` copies
+        exactly 0x10 bytes. Fields past a proven size go. MWCC also copies
+        small structs with lfd/stfd pairs, so an f64 vote that competes with
+        f32 at the same offset is such a copy and becomes f32.
+        """
+        for f in self.fields.values():
+            for v in f["fields"].values():
+                if v["type"][0] == "f64" and "f32" in v["alt"]:
+                    v["type"] = ["f32", v["alt"]["f32"]]
+        for name, size in sizes.items():
+            c = self.classes.get(name)
+            if not c:
+                continue
+            c["size"] = c["size_max"] = size
+            f = self.fields.get(name)
+            if f:
+                f["fields"] = {o: v for o, v in f["fields"].items() if int(o) + self.type_size(v["type"][0]) <= size}
+        self.size_cache.clear()
 
     def vptr_of(self, name):
         """vptr offset of a polymorphic class: its own ctor's, else its nearest
@@ -266,6 +295,7 @@ class Model:
         c = self.classes.get(name, {})
         vp = self.vptr_of(name)
         best = self.end(c["base"], (*seen, name)) if c.get("base") else 0
+        best = max(best, c.get("size") or 0)
         if vp is not None:
             best = max(best, vp + 4)
         for off, f in self.fields.get(name, {}).get("fields", {}).items():
@@ -292,4 +322,7 @@ def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path) -> Model:
     rets, globs = m2c_types(m2c_root)
     model = Model(json.loads(classes.read_text()), json.loads(fields.read_text()), rets, globs, stems)
     model.sdk = sdk_types(ctx)
+    sizes = ROOT / "config" / VERSION / "class_sizes.tsv"
+    if sizes.exists():
+        model.apply_sizes({r[0]: int(r[1], 0) for r in (l.split("\t") for l in sizes.read_text().splitlines()[1:]) if r[0]})
     return model
