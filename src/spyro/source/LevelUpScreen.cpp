@@ -60,7 +60,8 @@ static s32 lit_638 = 2;
 static s32 pointsPerUpgrade[4] = { 0, 0x43C80000, 0x44480000, 0x44C80000 }; /* const */
 static s32 attackMasks[2] = { 1, 2 };               /* const */
 
-#if 0 // DRAFT: undefined identifier 'GetBreathAttackName'
+u32 GetBreathAttackName();
+u32 GetBreathAttackDesc();
 void LevelUpScreen::SetBreathText() {
     DialogBoxContext *temp_r3_45;
     DialogBoxContext *temp_r3_85;
@@ -72,7 +73,7 @@ void LevelUpScreen::SetBreathText() {
 
     temp_r4_17 = this->unk140;
     temp_r30_18 = GetBreathAttackName();
-    if ((temp_r4_17 == NULL) || (temp_r30_18 != (s8 *) temp_r4_17->unk30)) {
+    if ((temp_r4_17 == NULL) || (temp_r30_18 != (u32) temp_r4_17->unk30)) {
         DialogBox_ReleaseContext(temp_r4_17);
         if (temp_r30_18 != 0) {
             this->unk140 = (DialogBoxContext *) (DialogBox_InitContext());
@@ -88,7 +89,7 @@ void LevelUpScreen::SetBreathText() {
     }
     temp_r4_57 = this->unk144;
     temp_r30_58 = GetBreathAttackDesc();
-    if ((temp_r4_57 == NULL) || (temp_r30_58 != (s8 *) temp_r4_57->unk30)) {
+    if ((temp_r4_57 == NULL) || (temp_r30_58 != (u32) temp_r4_57->unk30)) {
         DialogBox_ReleaseContext(temp_r4_57);
         if (temp_r30_58 != 0) {
             this->unk144 = (DialogBoxContext *) (DialogBox_InitContext());
@@ -104,254 +105,177 @@ void LevelUpScreen::SetBreathText() {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'HasAttack'
+u8 HasAttack(int arg0, int arg1);
+void DrawUpgradeBar(UpgradeBar *arg0, const MKVector2 &arg1, float arg2, const MKVector4 &arg3, const MKVector4 &arg4, float arg5);
+void DrawBreathIcon(float arg0, float arg1, float arg2, int arg3, int arg4, const MKVector4 &arg5);
+void DrawBreathSelection(float arg0, float arg1, float arg2, float arg3);
 void LevelUpScreen::Draw(const RenderContext &arg0) {
     Matrix spA0;
-    f32 sp94;
     f32 sp90;
-    f32 sp8C;
+    f32 sp94;
     f32 sp88;
-    f32 sp84;
+    f32 sp8C;
     f32 sp80;
-    f32 sp7C;
+    f32 sp84;
     f32 sp78;
-    f32 sp74;
+    f32 sp7C;
     f32 sp70;
-    f32 sp6C;
+    f32 sp74;
     f32 sp68;
-    f32 sp64;
-    f32 sp60;
-    f32 sp5C;
-    f32 sp58;
-    f32 sp54;
-    f32 sp50;
-    f32 sp4C;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    M2C_UNK *temp_r23_192;
-    f32 temp_f28_441;
-    f32 temp_f28_458;
-    f32 temp_f28_563;
-    f32 temp_f28_580;
-    f32 temp_f2_374;
-    f32 temp_f2_496;
-    f32 temp_f3_166;
-    f32 temp_f3_312;
-    f32 temp_f3_372;
-    f32 temp_f3_494;
-    f32 temp_f4_310;
-    f32 temp_f4_433;
-    f32 temp_f4_555;
-    f32 temp_f5_431;
-    f32 temp_f5_553;
-    f32 var_f1_149;
-    f32 var_f2_211;
-    s32 var_r0_224;
-    s32 var_r0_247;
-    s32 var_r14_357;
-    s32 var_r14_479;
-    s32 var_r17_200;
-    s32 var_r18_190;
-    s32 var_r19_179;
-    s32 var_r19_293;
-    s32 var_r19_355;
-    s32 var_r19_477;
-    s32 var_r26_203;
-    s32 var_r27_202;
-    s32 var_r28_195;
-    s32 var_r29_194;
-    s32 var_r30_181;
-    s32 var_r31_180;
-    u8 *temp_r20_187;
-    u8 var_r3_214;
-    u8 var_r3_237;
+    f32 sp6C;
+    f32 barAngle;
+    f32 barScale;
+    f32 scale;
+    f32 var_f1;
+    f32 var_f3;
+    f32 temp_f2;
+    f32 temp_f3;
+    f32 temp_f4;
+    f32 temp_f5;
+    s32 var_r0;
+    s32 var_r14;
+    s32 var_r17;
+    s32 var_r18;
+    s32 var_r19;
+    s32 var_r26;
+    s32 var_r27;
+    s32 var_r28;
+    s32 var_r29;
+    s32 var_r30;
+    s32 var_r31;
+    u8 *temp_r20;
+    u8 *temp_r23;
 
-    sp38 = 48.0f;
-    sp3C = 386.0f;
-    sp90 = sp38;
-    sp94 = sp3C;
-    if ((s32 *) pContextFury == NULL) {
+    sp90 = 48.0f;
+    sp94 = 386.0f;
+    if (pContextFury == NULL) {
         DialogBox_Draw();
     }
     spA0.SetIdentity();
     spA0.SetRotationRoll(this->unk148);
-    var_f1_149 = M2C_FIELD(GameData::gameData, f32 *, 0x88);
-    if (var_f1_149 < 800.0f) {
+    var_f1 = M2C_FIELD(GameData::gameData, f32 *, 0x88);
+    if (!(var_f1 < 800.0f)) {
+        var_f1 = 800.0f;
+    }
+    var_f3 = 230.0f * (var_f1 / 800.0f);
+    Hud_DrawIcon(0, 0xE, sp90, sp94, var_f3, var_f3, MKVector4::one, 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, spA0);
 
-    } else {
-        var_f1_149 = 800.0f;
-    }
-    temp_f3_166 = 230.0f * (var_f1_149 / 800.0f);
-    Hud_DrawIcon(0, 0xE, sp90, sp94, temp_f3_166, temp_f3_166, MKVector4::one, 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, spA0);
-    var_r19_179 = 0;
-    var_r31_180 = 0;
-    var_r30_181 = 0;
+    var_r19 = 0;
+    var_r31 = 0;
+    var_r30 = 0;
     do {
-        temp_r20_187 = &(LevelUpScreen::descriptor + 0xE8)[var_r31_180];
-        var_r18_190 = 0;
-        temp_r23_192 = &M2C_FIELD(&(&GameData::gameData[0x70])[var_r30_181], M2C_UNK *, 0x64);
-        var_r29_194 = 0;
-        var_r28_195 = 0;
-loop_7:
-        var_r17_200 = 0;
-        var_r27_202 = 0;
-        var_r26_203 = 0;
-loop_8:
-        if (HasAttack(var_r19_179, var_r17_200) != 0) {
-            var_f2_211 = 0.0f;
-            if (var_r17_200 == 3) {
-                var_r3_214 = 0;
-                if (((s32) M2C_FIELD(&(&GameData::gameData[0x70])[var_r30_181], s32 *, 0x64) == 3) && ((s32) M2C_FIELD(&(&GameData::gameData[0x70])[var_r30_181], s32 *, 0x68) == 3)) {
-                    var_r3_214 = 1;
-                }
-                var_r0_224 = var_r3_214 != 0;
-            } else {
-                var_r0_224 = *(temp_r23_192 + var_r26_203);
-            }
-            if (var_r0_224 > var_r18_190) {
-                var_f2_211 = 1.0f;
-            } else {
-                if (var_r17_200 == 3) {
-                    var_r3_237 = 0;
-                    if (((s32) M2C_FIELD(&(&GameData::gameData[0x70])[var_r30_181], s32 *, 0x64) == 3) && ((s32) M2C_FIELD(&(&GameData::gameData[0x70])[var_r30_181], s32 *, 0x68) == 3)) {
-                        var_r3_237 = 1;
+        barAngle = -0.3926991f * (f32) var_r19;
+        temp_r20 = (u8 *) LevelUpScreen::descriptor + 0xE8 + var_r31;
+        temp_r23 = (u8 *) GameData::gameData + 0x70 + var_r30 + 0x64;
+        var_r18 = 0;
+        var_r28 = 0;
+        var_r29 = 0;
+        do {
+            var_r17 = 0;
+            var_r27 = 0;
+            var_r26 = 0;
+            do {
+                if (HasAttack(var_r19, var_r17) != 0) {
+                    barScale = 0.0f;
+                    if (var_r17 == 3) {
+                        var_r0 = (M2C_FIELD(temp_r23, s32 *, 0) == 3) && (M2C_FIELD(temp_r23, s32 *, 4) == 3);
+                    } else {
+                        var_r0 = M2C_FIELD(temp_r23, s32 *, var_r26);
                     }
-                    var_r0_247 = var_r3_237 != 0;
-                } else {
-                    var_r0_247 = *(temp_r23_192 + var_r26_203);
+                    if (var_r0 > var_r18) {
+                        barScale = 1.0f;
+                    } else {
+                        if (var_r17 == 3) {
+                            var_r0 = (M2C_FIELD(temp_r23, s32 *, 0) == 3) && (M2C_FIELD(temp_r23, s32 *, 4) == 3);
+                        } else {
+                            var_r0 = M2C_FIELD(temp_r23, s32 *, var_r26);
+                        }
+                        if (var_r18 == var_r0) {
+                            barScale = M2C_FIELD((u8 *) GameData::gameData + 0xE0 + var_r26, f32 *, var_r30) / M2C_FIELD((u8 *) pointsPerUpgrade + var_r28, f32 *, 4);
+                        }
+                    }
+                    DrawUpgradeBar((UpgradeBar *) ((u8 *) LevelUpScreen::descriptor + 0x24 + var_r27 + var_r29), *((MKVector2 *) &sp90), barAngle, *((MKVector4 *) temp_r20), *((MKVector4 *) (temp_r20 + 0x10)), barScale);
                 }
-                if (var_r18_190 == var_r0_247) {
-                    var_f2_211 = (&(&GameData::gameData[0x70])[var_r26_203] + 0x70)[var_r30_181] / M2C_FIELD((pointsPerUpgrade + var_r28_195), f32 *, 4);
-                }
-            }
-            DrawUpgradeBar((UpgradeBar *) &(LevelUpScreen::descriptor + 0x24)[var_r27_202 + var_r29_194], *((MKVector2 *) &sp90), -0.3926991f * (f32) var_r19_179, *((MKVector4 *) temp_r20_187), *(MKVector4 *) (temp_r20_187 + 0x10), var_f2_211);
-        }
-        var_r17_200 += 1;
-        var_r26_203 += 4;
-        var_r27_202 += 0x60;
-        if (var_r17_200 < 2) {
-            goto loop_8;
-        }
-        var_r18_190 += 1;
-        var_r28_195 += 4;
-        var_r29_194 += 0x20;
-        if (var_r18_190 < 3) {
-            goto loop_7;
-        }
-        var_r19_179 += 1;
-        var_r30_181 += 0x20;
-        var_r31_180 += 0x30;
-    } while (var_r19_179 < 4);
+                var_r17 += 1;
+                var_r26 += 4;
+                var_r27 += 0x60;
+            } while (var_r17 < 2);
+            var_r18 += 1;
+            var_r28 += 4;
+            var_r29 += 0x20;
+        } while (var_r18 < 3);
+        var_r19 += 1;
+        var_r30 += 0x20;
+        var_r31 += 0x30;
+    } while (var_r19 < 4);
+
     spA0.SetIdentity();
-    var_r19_293 = 0;
+    var_r19 = 0;
     do {
-        _table_sincosf((-0.3926991f * (f32) (var_r19_293 + 1)) + -0.044f, sp88, sp8C);
-        temp_f4_310 = sp88 * 194.0f;
-        temp_f3_312 = sp8C * 194.0f;
-        sp30 = sp90 - temp_f4_310;
-        sp34 = sp94 - temp_f3_312;
-        sp60 = sp30;
-        sp64 = sp34;
-        sp88 = temp_f4_310;
-        sp8C = temp_f3_312;
-        sp88 = sp60;
-        sp8C = sp64;
-        spA0.SetRotationRoll(-0.3926991f * (f32) var_r19_293);
+        _table_sincosf((-0.3926991f * (f32) (var_r19 + 1)) + -0.044f, sp88, sp8C);
+        temp_f4 = sp88 * 194.0f;
+        temp_f3 = sp8C * 194.0f;
+        sp88 = sp90 - temp_f4;
+        sp8C = sp94 - temp_f3;
+        spA0.SetRotationRoll(-0.3926991f * (f32) var_r19);
         Hud_DrawIcon(0, 0xF, sp88, sp8C, 124.0f, 72.0f, MKVector4::one, 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, spA0);
-        var_r19_293 += 1;
-    } while (var_r19_293 < 4);
-    var_r19_355 = 0;
-    var_r14_357 = 0;
+        var_r19 += 1;
+    } while (var_r19 < 4);
+
+    var_r19 = 0;
+    var_r14 = 0;
     do {
-        _table_sincosf(-0.3926991f * (f32) (var_r19_355 + 1), sp80, sp84);
-        temp_f3_372 = sp80 * 276.0f;
-        temp_f2_374 = sp84 * 276.0f;
-        sp80 = temp_f3_372;
-        sp28 = sp90 - temp_f3_372;
-        sp2C = sp94 - temp_f2_374;
-        sp58 = sp28;
-        sp5C = sp2C;
-        sp84 = temp_f2_374;
-        sp80 = sp58;
-        sp84 = sp5C;
-        if (((s32) selectionAttack != 0) || (var_r19_355 != (s32) selectionElement)) {
-            DrawBreathIcon(sp80, sp84, 1.0f, (LevelUpScreen::descriptor + 0x14)[var_r14_357], 0, MKVector4::one);
+        _table_sincosf(-0.3926991f * (f32) (var_r19 + 1), sp80, sp84);
+        temp_f3 = sp80 * 276.0f;
+        temp_f2 = sp84 * 276.0f;
+        sp80 = sp90 - temp_f3;
+        sp84 = sp94 - temp_f2;
+        if ((selectionAttack != 0) || (var_r19 != selectionElement)) {
+            DrawBreathIcon(sp80, sp84, 1.0f, M2C_FIELD(LevelUpScreen::descriptor, s32 *, 0x14 + var_r14), 0, MKVector4::one);
         }
-        var_r19_355 += 1;
-        var_r14_357 += 4;
-    } while (var_r19_355 < 4);
-    if ((s32) selectionAttack == 0) {
+        var_r19 += 1;
+        var_r14 += 4;
+    } while (var_r19 < 4);
+
+    if (selectionAttack == 0) {
         _table_sincosf(-0.3926991f * (f32) (selectionElement + 1), sp78, sp7C);
-        temp_f5_431 = sp78 * 276.0f;
-        temp_f4_433 = sp7C * 276.0f;
-        sp78 = temp_f5_431;
-        temp_f28_441 = pulseMag;
-        sp20 = sp90 - temp_f5_431;
-        sp24 = sp94 - temp_f4_433;
-        sp50 = sp20;
-        sp54 = sp24;
-        sp7C = temp_f4_433;
-        sp78 = sp50;
-        sp7C = sp54;
-        temp_f28_458 = 1.0f + ((temp_f28_441 * _table_sinf(pulseRot * pulseRate)) + temp_f28_441);
-        DrawBreathSelection(sp78, sp7C, 0.9f * temp_f28_458, 1.0f);
-        DrawBreathIcon(sp78, sp7C, temp_f28_458, *(LevelUpScreen::descriptor + 0x14 + (selectionElement * 4)), 0, MKVector4::one);
+        temp_f5 = sp78 * 276.0f;
+        temp_f4 = sp7C * 276.0f;
+        sp78 = sp90 - temp_f5;
+        sp7C = sp94 - temp_f4;
+        scale = 1.0f + ((pulseMag * _table_sinf(pulseRot * pulseRate)) + pulseMag);
+        DrawBreathSelection(sp78, sp7C, 0.9f * scale, 1.0f);
+        DrawBreathIcon(sp78, sp7C, scale, M2C_FIELD(LevelUpScreen::descriptor, s32 *, 0x14 + selectionElement * 4), 0, MKVector4::one);
     }
-    var_r19_477 = 0;
-    var_r14_479 = 0;
+
+    var_r19 = 0;
+    var_r14 = 0;
     do {
-        _table_sincosf(-0.3926991f * (f32) (var_r19_477 + 1), sp70, sp74);
-        temp_f3_494 = sp70 * 150.0f;
-        temp_f2_496 = sp74 * 150.0f;
-        sp70 = temp_f3_494;
-        sp18 = sp90 - temp_f3_494;
-        sp1C = sp94 - temp_f2_496;
-        sp48 = sp18;
-        sp4C = sp1C;
-        sp74 = temp_f2_496;
-        sp70 = sp48;
-        sp74 = sp4C;
-        if (((s32) selectionAttack != 1) || (var_r19_477 != (s32) selectionElement)) {
-            DrawBreathIcon(sp70, sp74, 0.55f, (LevelUpScreen::descriptor + 0x14)[var_r14_479], 1, MKVector4::one);
+        _table_sincosf(-0.3926991f * (f32) (var_r19 + 1), sp70, sp74);
+        temp_f3 = sp70 * 150.0f;
+        temp_f2 = sp74 * 150.0f;
+        sp70 = sp90 - temp_f3;
+        sp74 = sp94 - temp_f2;
+        if ((selectionAttack != 1) || (var_r19 != selectionElement)) {
+            DrawBreathIcon(sp70, sp74, 0.55f, M2C_FIELD(LevelUpScreen::descriptor, s32 *, 0x14 + var_r14), 1, MKVector4::one);
         }
-        var_r19_477 += 1;
-        var_r14_479 += 4;
-    } while (var_r19_477 < 4);
-    if ((s32) selectionAttack == 1) {
+        var_r19 += 1;
+        var_r14 += 4;
+    } while (var_r19 < 4);
+
+    if (selectionAttack == 1) {
         _table_sincosf(-0.3926991f * (f32) (selectionElement + 1), sp68, sp6C);
-        temp_f5_553 = sp68 * 150.0f;
-        temp_f4_555 = sp6C * 150.0f;
-        sp68 = temp_f5_553;
-        temp_f28_563 = pulseMag;
-        sp10 = sp90 - temp_f5_553;
-        sp14 = sp94 - temp_f4_555;
-        sp40 = sp10;
-        sp44 = sp14;
-        sp6C = temp_f4_555;
-        sp68 = sp40;
-        sp6C = sp44;
-        temp_f28_580 = 1.0f + ((temp_f28_563 * _table_sinf(pulseRot * pulseRate)) + temp_f28_563);
-        DrawBreathSelection(sp68, sp6C, 0.5f * temp_f28_580, 1.0f);
-        DrawBreathIcon(sp68, sp6C, 0.55f * temp_f28_580, *(LevelUpScreen::descriptor + 0x14 + (selectionElement * 4)), 1, MKVector4::one);
+        temp_f5 = sp68 * 150.0f;
+        temp_f4 = sp6C * 150.0f;
+        sp68 = sp90 - temp_f5;
+        sp6C = sp94 - temp_f4;
+        scale = 1.0f + ((pulseMag * _table_sinf(pulseRot * pulseRate)) + pulseMag);
+        DrawBreathSelection(sp68, sp6C, 0.5f * scale, 1.0f);
+        DrawBreathIcon(sp68, sp6C, 0.55f * scale, M2C_FIELD(LevelUpScreen::descriptor, s32 *, 0x14 + selectionElement * 4), 1, MKVector4::one);
     }
     UIContainer::Draw(arg0);
 }
-#endif
 
 void DrawUpgradeBar(UpgradeBar *arg0, const MKVector2 &arg1, float arg2, const MKVector4 &arg3, const MKVector4 &arg4, float arg5) {
     Matrix sp90;
@@ -454,26 +378,26 @@ void DrawUpgradeBar(UpgradeBar *arg0, const MKVector2 &arg1, float arg2, const M
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'HasAttack'
+u8 HasAttack(int arg0, int arg1);
 void DrawBreathIcon(float arg0, float arg1, float arg2, int arg3, int arg4, const MKVector4 &arg5) {
-    f64 sp10;
-    f64 sp8;
+    MKVector4 sp8;
     f32 temp_f3_848;
     f32 temp_f3_865;
 
-    sp8 = M2C_FIELD(&arg5, f64 *, 0);
-    sp10 = M2C_FIELD(&arg5, f64 *, 8);
+    sp8.unk0 = arg5.unk0;
+    sp8.unk4 = arg5.unk4;
+    sp8.unk8 = arg5.unk8;
+    sp8.unkC = arg5.unkC;
     if (HasAttack(arg3, arg4) == 0) {
-        sp8 *= 5.2013764e-315;
-        sp10 *= 5.2013764e-315;
-        (*(f32 *) ((u8 *) &sp10 + 0x4)) = arg5.unkC;
+        sp8.unk0 *= 0.375f;
+        sp8.unk4 *= 0.375f;
+        sp8.unk8 *= 0.375f;
     }
     temp_f3_848 = 73.0f * arg2;
-    Hud_DrawIcon(arg3, arg4, arg0 + arg2, arg1, temp_f3_848, temp_f3_848, *((MKVector4 *) &sp8), 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
+    Hud_DrawIcon(arg3, arg4, arg0 + arg2, arg1, temp_f3_848, temp_f3_848, sp8, 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
     temp_f3_865 = 106.0f * arg2;
     Hud_DrawIcon(arg3, 3, arg0, arg1, temp_f3_865, temp_f3_865, arg5, 0.0f, 0.0f, 1.0f, 1.0f, 0U, 0U, Matrix::identity);
 }
-#endif
 
 void DrawBreathSelection(float arg0, float arg1, float arg2, float arg3) {
     f32 sp3C;
@@ -726,17 +650,15 @@ block_60:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'long *' and 'DialogBoxContext *'
 void DialogCallback(DialogBoxContext *arg0, int arg1) {
-    if ((arg1 == 0) && ((s32 *) pContextFury == arg0)) {
-        arg0->unk8->SetBreathText();
+    if ((arg1 == 0) && ((void *) pContextFury == (void *) arg0)) {
+        M2C_FIELD(arg0, LevelUpScreen **, 0x8)->SetBreathText();
         DialogBox_ReleaseContext(arg0);
-    } else if ((arg1 == 7) && ((s32 *) pContextFury == arg0)) {
+    } else if ((arg1 == 7) && ((void *) pContextFury == (void *) arg0)) {
         pContextFury = NULL;
     }
-    PauseMenu_AllowStartToQuit(1U);
+    PauseMenu_AllowStartToQuit(1);
 }
-#endif
 
 void LevelUpScreen::OnExit() {
     UIScreen::OnExit();
@@ -784,16 +706,15 @@ void LevelUpScreen::Init() {
     this->unk150 = this->unk14C;
 }
 
-#if 0 // DRAFT: undefined identifier 'HasAttack'
 u32 GetBreathAttackDesc() {
     s32 var_r5_1640;
     u8 var_r3_1630;
-    void *temp_r3_1626;
-    void *temp_r4_1627;
+    u8 *temp_r3_1626;
+    u8 *temp_r4_1627;
 
     if (HasAttack(selectionElement, selectionAttack) != 0) {
         temp_r3_1626 = GameData::gameData + (selectionElement << 5);
-        temp_r4_1627 = ((u8 *) temp_r3_1626) + 0xD4;
+        temp_r4_1627 = temp_r3_1626 + 0xD4;
         if ((s32) selectionAttack == 3) {
             var_r3_1630 = 0;
             if (((s32) M2C_FIELD(temp_r3_1626, s32 *, 0xD4) == 3) && ((s32) M2C_FIELD(temp_r4_1627, s32 *, 4) == 3)) {
@@ -801,27 +722,25 @@ u32 GetBreathAttackDesc() {
             }
             var_r5_1640 = var_r3_1630 != 0;
         } else {
-            var_r5_1640 = *(temp_r4_1627 + (selectionAttack * 4));
+            var_r5_1640 = M2C_FIELD(temp_r4_1627, s32 *, selectionAttack * 4);
         }
         if ((s32) lit_638 < var_r5_1640) {
             var_r5_1640 = lit_638;
         }
-        return *(gpTranslation_StringArray + (((selectionElement * 6) + (selectionAttack * 3) + var_r5_1640 + 0x258) * 4));
+        return M2C_FIELD((s8 *) gpTranslation_StringArray, s32 *, (((selectionElement * 6) + (selectionAttack * 3) + var_r5_1640 + 0x258) * 4));
     }
     return 0U;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'HasAttack'
 u32 GetBreathAttackName() {
     s32 var_r5_1700;
     u8 var_r3_1690;
-    void *temp_r3_1686;
-    void *temp_r4_1687;
+    u8 *temp_r3_1686;
+    u8 *temp_r4_1687;
 
     if (HasAttack(selectionElement, selectionAttack) != 0) {
         temp_r3_1686 = GameData::gameData + (selectionElement << 5);
-        temp_r4_1687 = ((u8 *) temp_r3_1686) + 0xD4;
+        temp_r4_1687 = temp_r3_1686 + 0xD4;
         if ((s32) selectionAttack == 3) {
             var_r3_1690 = 0;
             if (((s32) M2C_FIELD(temp_r3_1686, s32 *, 0xD4) == 3) && ((s32) M2C_FIELD(temp_r4_1687, s32 *, 4) == 3)) {
@@ -829,16 +748,15 @@ u32 GetBreathAttackName() {
             }
             var_r5_1700 = var_r3_1690 != 0;
         } else {
-            var_r5_1700 = *(temp_r4_1687 + (selectionAttack * 4));
+            var_r5_1700 = M2C_FIELD(temp_r4_1687, s32 *, selectionAttack * 4);
         }
         if ((s32) lit_629 < var_r5_1700) {
             var_r5_1700 = lit_629;
         }
-        return *(gpTranslation_StringArray + (((selectionElement * 6) + (selectionAttack * 3) + var_r5_1700 + 0x271) * 4));
+        return M2C_FIELD((s8 *) gpTranslation_StringArray, s32 *, (((selectionElement * 6) + (selectionAttack * 3) + var_r5_1700 + 0x271) * 4));
     }
     return 0U;
 }
-#endif
 
 u8 HasAttack(int arg0, int arg1) {
     return (attackMasks[arg1] & M2C_FIELD((GameData::gameData + (arg0 << 5)), s32 *, 0xD0)) != 0;
