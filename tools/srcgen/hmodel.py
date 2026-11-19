@@ -113,6 +113,14 @@ class Model:
             cur = self.classes[cur].get("base")
         return out
 
+    def all_bases(self, name: str) -> set:
+        """Primary ancestors plus secondary bases (and their ancestors) along the chain."""
+        out = set()
+        for n in [name, *self.ancestors(name)]:
+            for sec in self.classes.get(n, {}).get("secondary", {}):
+                out |= {sec, *self.ancestors(sec)}
+        return out | set(self.ancestors(name))
+
     def derives(self, name: str, base: str) -> bool:
         return base in self.ancestors(name)
 
@@ -202,7 +210,7 @@ class Model:
         owners = defaultdict(set)
         for name, c in self.classes.items():
             if c.get("owner"):
-                for a in self.ancestors(name):
+                for a in self.all_bases(name):
                     owners[a].add(c["owner"].rsplit(".", 1)[0])
         for name, f in self.fields.items():
             c = self.classes.get(name, {})

@@ -12,9 +12,14 @@ Per class the output records:
   base     inferred base class with "base_evidence":
            "ctor/dtor vtable stores": a __ct__ stores the base vtable then its own
              (a __dt__ the reverse), the strongest evidence short of source;
+           "inlined ctor vtable stores": the same sequence where a ctor was
+             inlined into another function, kept only if the base's vtable is
+             a prefix of this one (which also rules out reversed dtor order);
            "vtable prefix": otherwise, the class with the longest vtable whose every
              slot this class shares or overrides by name, and which implements at
              least one shared slot itself (siblings only share their parent's slots).
+  secondary  {base: offset} of secondary bases: a base vtable at this+offset
+           overwritten by an address inside this class's vtable.
   vptr     offset where the class's own ctor stores its vtable pointer.
   owner    the TU defining most of the class's methods (header placement).
   size_max upper bound on sizeof from `new(N)` followed by the class's ctor, or
@@ -29,6 +34,7 @@ import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
+from typing import NamedTuple
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "tools/tlos"))
@@ -74,11 +80,32 @@ def class_name(mangled: str):
     return str(term) if term.kind == CxxTerm.Kind.QUALIFIED and not rest else None
 
 
-VT_ADDI = re.compile(r"\taddi (r\d+), r\d+, __vt__(\w+)@l$")
+VT_ADDI = re.compile(r"\taddi (r\d+), r\d+, \"?__vt__([^\"@]+)\"?@l$")
+INSN = re.compile(r"\t([a-z][\w.]*)\s+(r\d+)?")
+VT_INNER = re.compile(r"\taddi (r\d+), (r\d+), (0x[0-9a-f]+|\d+)$")
 STW = re.compile(r"\tstw (r\d+), (-?0x[0-9a-f]+|\d+)\((r\d+)\)$")
 
 
-def vtable_store_pairs(asm_root: Path) -> tuple[Counter, dict]:
+def prefix_of(theirs: list | None, mine: list, member) -> bool:
+    """Whether vtable `theirs` can be a base of `mine`: each slot kept, overridden, or pure.
+
+    A zero slot is a pure virtual (CodeWarrior leaves it null), overridable by
+    anything; a filled base slot cannot become pure in a derived class.
+    """
+    return bool(theirs) and len(theirs) <= len(mine) and all(
+        a == b or a == PURE or member(a) == member(b) for a, b in zip(theirs, mine))
+
+
+class VtableStores(NamedTuple):
+    """Class relations evidenced by vtable stores; see `vtable_store_pairs`."""
+
+    pairs: Counter
+    inline_pairs: Counter
+    vptr: dict
+    secondary: dict
+
+
+def vtable_store_pairs(asm_root: Path) -> VtableStores:
     """(base vtable, derived vtable) pairs from successive vtable stores to one slot.
 
     A ctor stores the base vtable into `this`, then its own (a dtor the reverse).
@@ -87,14 +114,24 @@ def vtable_store_pairs(asm_root: Path) -> tuple[Counter, dict]:
     Also returns each class's vptr offset: where its own ctor stores its vtable.
     MWCC puts the vptr where the first virtual function is declared among the
     data members, so it is not always 0 (MKProp's is 0x44).
+    Ctors inlined into other functions (`new SpyroHeroInterface` in Spyro) give
+    a third result, `inline_pairs`, in store order; a slot's sequence restarts
+    when its base register is redefined, and the caller must still settle the
+    direction, since an inlined dtor stores in reverse.
+    A secondary base's vtable is replaced by an address inside the derived
+    vtable (`addi r6, r7, 0x3c` on `__vt__13SpeedWaySpyro`, stored over
+    Targetable's vtable at 0x90); `secondary` maps each derived class to its
+    secondary bases and their offsets.
     """
     pairs: Counter = Counter()
+    sec: dict = defaultdict(Counter)
+    inline_pairs: Counter = Counter()
     vptr: dict = defaultdict(Counter)
     for f in sorted(asm_root.glob("*/**/*.s")):
-        cur, regs, slots = None, {}, defaultdict(list)
+        cur, regs, slots, done = None, {}, defaultdict(list), []
         for line in f.read_text().splitlines():
             if line.startswith(".fn "):
-                cur, regs, slots = line[4:].split(",")[0], {}, defaultdict(list)
+                cur, regs, slots, done = line[4:].split(",")[0], {}, defaultdict(list), []
             elif line.startswith(".endfn"):
                 if cur and cur.startswith(("__ct__", "__dt__")):
                     for vts in slots.values():
@@ -102,18 +139,43 @@ def vtable_store_pairs(asm_root: Path) -> tuple[Counter, dict]:
                         if cur.startswith("__dt__"):
                             seq.reverse()
                         pairs.update(zip(seq, seq[1:]))
+                elif cur:
+                    for vts in done + list(slots.values()):
+                        seq = [v for i, v in enumerate(vts) if i == 0 or vts[i - 1] != v]
+                        inline_pairs.update(zip(seq, seq[1:]))
                 cur = None
             elif cur:
+                d = INSN.search(line)
+                if d:
+                    op, dst = d.groups()
+                    clobbered = {f"r{i}" for i in range(3, 13)} if op.startswith("bl") else (
+                        set() if op.startswith(("st", "cmp", "b", "mt", "tw")) else {dst})
+                    for r in clobbered:
+                        regs.pop(r, None)
+                    if not cur.startswith(("__ct__", "__dt__")):
+                        for k in [k for k in slots if k[0] in clobbered]:
+                            done.append(slots.pop(k))
                 m = VT_ADDI.search(line)
                 if m:
                     regs[m.group(1)] = m.group(2)
                     continue
+                m = VT_INNER.search(line)
+                if m and isinstance(regs.get(m.group(2)), str):
+                    regs[m.group(1)] = (regs[m.group(2)],)
+                    continue
                 m = STW.search(line)
-                if m and m.group(1) in regs:
+                if m and isinstance(regs.get(m.group(1)), tuple):
+                    prev = slots.get((m.group(3), m.group(2)))
+                    if prev and prev[-1] != regs[m.group(1)][0]:
+                        sec[(regs[m.group(1)][0], prev[-1])][int(m.group(2), 0)] += 1
+                elif m and m.group(1) in regs:
                     slots[(m.group(3), m.group(2))].append(regs[m.group(1)])
                     if cur.startswith(f"__ct__{regs[m.group(1)]}F"):
                         vptr[regs[m.group(1)]][int(m.group(2), 0)] += 1
-    return pairs, {k: v.most_common(1)[0][0] for k, v in vptr.items()}
+    secondary: dict = defaultdict(dict)
+    for (derived, base), offs in sec.items():
+        secondary[derived][base] = offs.most_common(1)[0][0]
+    return VtableStores(pairs, inline_pairs, {k: v.most_common(1)[0][0] for k, v in vptr.items()}, dict(secondary))
 
 
 NEW = re.compile(r"\tli r3, (0x[0-9a-fA-F]+|\d+)$")
@@ -220,7 +282,11 @@ def main() -> int:
         return q[1] + q[2] if q else slot
 
     stored = {}
-    pairs, vptr = vtable_store_pairs(ROOT / "build" / VERSION / "asm")
+    pairs, inline_pairs, vptr, secondary = vtable_store_pairs(ROOT / "build" / VERSION / "asm")
+    for derived, bases in secondary.items():
+        d = class_name(derived)
+        if d in classes:
+            classes[d]["secondary"] = {class_name(b): off for b, off in bases.items() if class_name(b)}
     for mangled, off in vptr.items():
         cls = class_name(mangled)
         if cls in classes:
@@ -236,14 +302,19 @@ def main() -> int:
             continue
         if not mine:
             continue
+        inl = [b for (b, d), _ in inline_pairs.most_common()
+               if class_name(d) == name and class_name(b) in classes and class_name(b) != name
+               and prefix_of(classes[class_name(b)]["vtable"], mine, member)]
+        if inl:
+            c["base"], c["base_evidence"] = class_name(inl[0]), "inlined ctor vtable stores"
+            continue
         best = None
         for other, o in classes.items():
             theirs = o["vtable"]
             if other == name or not theirs or len(theirs) > len(mine):
                 continue
             own = (qualified(a) for a, b in zip(theirs, mine) if a == b)
-            # A zero slot is a pure virtual (CodeWarrior leaves it null), overridable by anything.
-            if all(a == b or a == PURE or member(a) == member(b) for a, b in zip(theirs, mine)) and any(q and q[0] == other for q in own):
+            if prefix_of(theirs, mine, member) and any(q and q[0] == other for q in own):
                 if best is None or len(theirs) > len(classes[best]["vtable"]):
                     best = other
         if best:
