@@ -73,23 +73,22 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void BaseBreathFX::CreateCollisionTest(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, unsigned int arg3, void (*arg4)(BreathFXCollisionSphereTest *)) {
     s32 var_ctr_101;
     s32 var_r8_99;
-    void *temp_r11_133;
-    void *temp_r4_129;
-    void *temp_r4_139;
-    void *temp_r9_103;
+    u8 *temp_r9_103;
+    u8 *temp_r4_129;
+    u8 *temp_r11_133;
+    u8 *temp_r4_139;
 
     if (this->unk94 >= 0.125f) {
         var_r8_99 = 0;
         this->unk94 = 0.0f;
         var_ctr_101 = 0x1E;
 loop_2:
-        temp_r9_103 = this->unk90;
+        temp_r9_103 = (u8 *) this->unk90;
         if ((u8) *(temp_r9_103 + (var_r8_99 + 0x6C)) == 0) {
-            M2C_FIELD((((u8 *) temp_r9_103) + var_r8_99), s8 *, 0x6C) = 1;
+            M2C_FIELD((((u8 *) this->unk90) + var_r8_99), s8 *, 0x6C) = 1;
             M2C_FIELD((((u8 *) this->unk90) + var_r8_99), u32 *, 0x68) = arg3;
             M2C_FIELD((((u8 *) this->unk90) + var_r8_99), f32 *, 0x30) = 0.0f;
             M2C_FIELD((((u8 *) this->unk90) + var_r8_99), f32 *, 0x34) = arg2;
@@ -115,7 +114,6 @@ loop_2:
         goto loop_2;
     }
 }
-#endif
 
 void BaseBreathFX::Deinit() {
     MKHeap *temp_r3_166;
@@ -294,17 +292,9 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void BaseBreathFX::Init() {
-    s32 temp_r0_446;
-    s32 temp_r10_442;
-    s32 temp_r4_445;
-    s32 temp_r5_443;
-    s32 temp_r6_441;
-    s32 temp_r7_439;
     s32 var_ctr_434;
     s32 var_r3_433;
-    void *temp_r10_452;
     void *var_r3_424;
 
     KDProp::Init();
@@ -319,25 +309,17 @@ void BaseBreathFX::Init() {
     var_r3_433 = 0;
     var_ctr_434 = 0x1E;
     do {
-        temp_r7_439 = var_r3_433 + 0x30;
-        *(this->unk90 + (var_r3_433 + 0x6C)) = 0;
-        temp_r6_441 = var_r3_433 + 0x34;
-        temp_r10_442 = var_r3_433 + 0x20;
-        temp_r5_443 = var_r3_433 + 0x38;
-        temp_r4_445 = var_r3_433 + 0x3C;
-        temp_r0_446 = var_r3_433 + 0x40;
+        M2C_FIELD((((u8 *) this->unk90) + var_r3_433), s8 *, 0x6C) = 0;
+        M2C_FIELD((((u8 *) this->unk90) + var_r3_433), f32 *, 0x30) = 0.0f;
+        M2C_FIELD((((u8 *) this->unk90) + var_r3_433), f32 *, 0x34) = 0.0f;
+        M2C_FIELD((((u8 *) this->unk90) + (var_r3_433 + 0x20)), f32 *, 0) = 0.0f;
+        M2C_FIELD((((u8 *) this->unk90) + (var_r3_433 + 0x20)), f32 *, 4) = 0.0f;
+        M2C_FIELD((((u8 *) this->unk90) + (var_r3_433 + 0x20)), f32 *, 8) = 0.0f;
+        M2C_FIELD((((u8 *) this->unk90) + var_r3_433), s32 *, 0x38) = 0;
+        M2C_FIELD((((u8 *) this->unk90) + var_r3_433), s32 *, 0x3C) = 0;
+        M2C_FIELD((((u8 *) this->unk90) + var_r3_433), s32 *, 0x40) = 0;
         var_r3_433 += 0x70;
-        *(this->unk90 + temp_r7_439) = 0.0f;
-        *(this->unk90 + temp_r6_441) = 0.0f;
-        temp_r10_452 = ((u8 *) this->unk90) + temp_r10_442;
-        M2C_FIELD(temp_r10_452, f32 *, 0) = 0.0f;
-        M2C_FIELD(temp_r10_452, f32 *, 4) = 0.0f;
-        M2C_FIELD(temp_r10_452, f32 *, 8) = 0.0f;
-        *(this->unk90 + temp_r5_443) = 0;
-        *(this->unk90 + temp_r4_445) = 0;
-        *(this->unk90 + temp_r0_446) = 0;
         var_ctr_434 -= 1;
     } while (var_ctr_434 != 0);
     this->unkA0 = 1200.0f;
 }
-#endif
