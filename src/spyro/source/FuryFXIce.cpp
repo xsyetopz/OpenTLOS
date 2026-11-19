@@ -331,89 +331,78 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void FuryFXIce::UpdateIcePatches() {
-    MKMaterial *temp_r4_502;
-    MKMaterial *var_r6_397;
-    f32 temp_f3_486;
-    f32 temp_f4_487;
-    f32 temp_r5_505;
-    f32 temp_r5_514;
-    f32 var_f0_420;
-    f32 var_f0_468;
-    s32 temp_r0_408;
+    void **slot;
+    void **freeSlot;
+    u8 *patch;
+    void *tmp;
+    f32 t;
+    f32 frac;
+    f32 base;
+    s32 state;
 
     this->unkB0 &= ~0x80;
-    var_r6_397 = this->unk114;
-loop_26:
-    if (var_r6_397 != NULL) {
-        temp_r5_514 = var_r6_397->unk0;
-        if (M2C_BITWISE(u32, temp_r5_514) == 0U) {
+    slot = (void **) this->unk110;
+    while (slot != NULL) {
+        patch = (u8 *) *slot;
+        if (patch == NULL) {
             return;
         }
-        M2C_FIELD(temp_r5_514, f32 *, 0x48) = (f32) (M2C_FIELD(temp_r5_514, f32 *, 0x48) - gUpdateTimeDelta);
+        M2C_FIELD(patch, f32 *, 0x48) = M2C_FIELD(patch, f32 *, 0x48) - gUpdateTimeDelta;
         this->unkB0 |= 0x80;
-        temp_r0_408 = M2C_FIELD(temp_r5_514, s32 *, 0x50);
-        switch (temp_r0_408) {                      /* irregular */
+        state = M2C_FIELD(patch, s32 *, 0x50);
+        switch (state) {
         case 1:
-            var_f0_420 = M2C_FIELD(temp_r5_514, f32 *, 0x48);
-            if (var_f0_420 < 0.5f) {
-
-            } else {
-                var_f0_420 = 0.5f;
+            t = M2C_FIELD(patch, f32 *, 0x48);
+            if (t >= 0.5f) {
+                t = 0.5f;
             }
-            if (var_f0_420 > 0.0f) {
-
-            } else {
-                var_f0_420 = 0.0f;
+            if (t <= 0.0f) {
+                t = 0.0f;
             }
-            M2C_FIELD(temp_r5_514, f32 *, 0x48) = var_f0_420;
-            M2C_FIELD(temp_r5_514, f32 *, 0x44) = (f32) (M2C_FIELD(temp_r5_514, f32 *, 0x40) * (1.0f - (M2C_FIELD(temp_r5_514, f32 *, 0x48) / 0.5f)));
-            if (M2C_FIELD(temp_r5_514, f32 *, 0x48) <= 0.0f) {
-                M2C_FIELD(temp_r5_514, s32 *, 0x50) = 2;
-                M2C_FIELD(temp_r5_514, f32 *, 0x48) = 1.5f;
-                M2C_FIELD(temp_r5_514, f32 *, 0x44) = (f32) M2C_FIELD(temp_r5_514, f32 *, 0x40);
+            M2C_FIELD(patch, f32 *, 0x48) = t;
+            M2C_FIELD(patch, f32 *, 0x44) = M2C_FIELD(patch, f32 *, 0x40) * (1.0f - (t / 0.5f));
+            if (t <= 0.0f) {
+                M2C_FIELD(patch, s32 *, 0x50) = 2;
+                M2C_FIELD(patch, f32 *, 0x48) = 1.5f;
+                M2C_FIELD(patch, f32 *, 0x44) = M2C_FIELD(patch, f32 *, 0x40);
             }
             break;
         case 2:
-            if (M2C_FIELD(temp_r5_514, f32 *, 0x48) <= 0.0f) {
-                M2C_FIELD(temp_r5_514, s32 *, 0x50) = 3;
-                M2C_FIELD(temp_r5_514, f32 *, 0x48) = 0.25f;
+            if (M2C_FIELD(patch, f32 *, 0x48) <= 0.0f) {
+                M2C_FIELD(patch, s32 *, 0x50) = 3;
+                M2C_FIELD(patch, f32 *, 0x48) = 0.25f;
             }
             break;
         case 3:
-            var_f0_468 = M2C_FIELD(temp_r5_514, f32 *, 0x48);
-            if (var_f0_468 < 0.25f) {
-
-            } else {
-                var_f0_468 = 0.25f;
+            t = M2C_FIELD(patch, f32 *, 0x48);
+            if (t >= 0.25f) {
+                t = 0.25f;
             }
-            if (var_f0_468 > 0.0f) {
-
-            } else {
-                var_f0_468 = 0.0f;
+            if (t <= 0.0f) {
+                t = 0.0f;
             }
-            M2C_FIELD(temp_r5_514, f32 *, 0x48) = var_f0_468;
-            temp_f3_486 = M2C_FIELD(temp_r5_514, f32 *, 0x40);
-            temp_f4_487 = M2C_FIELD(temp_r5_514, f32 *, 0x48) / 0.25f;
-            M2C_FIELD(temp_r5_514, f32 *, 0x44) = (f32) ((0.25f * temp_f3_486 * (1.0f - temp_f4_487)) + temp_f3_486);
-            M2C_FIELD(temp_r5_514, f32 *, 0x4C) = temp_f4_487;
-            if (M2C_FIELD(temp_r5_514, f32 *, 0x48) <= 0.0f) {
-                M2C_FIELD(temp_r5_514, s32 *, 0x50) = 0;
-                M2C_FIELD(temp_r5_514, f32 *, 0x48) = 0.0f;
-                temp_r4_502 = this->unk114;
-                this->unk114 = (MKMaterial *) &temp_r4_502->unk4;
-                temp_r5_505 = temp_r4_502->unk0;
-                temp_r4_502->unk0 = var_r6_397->unk0;
-                var_r6_397->unk0 = temp_r5_505;
+            M2C_FIELD(patch, f32 *, 0x48) = t;
+            base = M2C_FIELD(patch, f32 *, 0x40);
+            frac = t / 0.25f;
+            M2C_FIELD(patch, f32 *, 0x44) = (0.25f * base) * (1.0f - frac) + base;
+            M2C_FIELD(patch, f32 *, 0x4C) = frac;
+            if (t <= 0.0f) {
+                M2C_FIELD(patch, s32 *, 0x50) = 0;
+                M2C_FIELD(patch, f32 *, 0x48) = 0.0f;
+                freeSlot = (void **) this->unk110;
+                this->unk110 = freeSlot + 1;
+                tmp = *freeSlot;
+                *freeSlot = *slot;
+                *slot = tmp;
             }
             break;
+        default:
+            break;
         }
-        var_r6_397 += 4;
-        goto loop_26;
+        slot = slot + 1;
     }
 }
-#endif
 
 void FuryFXIce::SpawnIcePatch(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     MKVector3 sp48;
@@ -1259,75 +1248,56 @@ f32 FuryFXIce::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKMaterial *' to 'float'
 void FuryFXIce::Init() {
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f64 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    IceBreathSnowFlakes *temp_r3_2171;
-    MKMaterial *temp_r3_2147;
-    MKMaterial *temp_r4_2153;
-    MKMaterial *var_r3_2132;
-    MKMaterial *var_r5_2141;
-    Matrix *temp_r3_2211;
-    s32 var_ctr_2145;
+    MKVector3 vecA;
+    MKVector3 vecB;
+    u8 *list;
+    u8 *cursor;
+    u8 *blk;
+    s32 ctr;
 
     FuryFX::Init();
     SetDefaults();
     this->unk98 = NULL;
     if (MKHeap::Current() != NULL) {
-        var_r3_2132 = (MKMaterial *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x2718, NULL, 0));
+        this->unk110 = ((MKHeap *) MKHeap::Current())->Alloc(0x2718, NULL, 0);
     } else {
-        var_r3_2132 = malloc(0x2718);
+        this->unk110 = malloc(0x2718);
     }
-    this->unk114 = var_r3_2132;
-    var_r5_2141 = this->unk114;
-    this->unk114 = var_r5_2141 + 0x2580;
-    M2C_FIELD(var_r5_2141, s32 *, 0x2580) = 0;
-    var_ctr_2145 = 0x64;
+    list = (u8 *) this->unk110;
+    this->unk110 = list + 0x2580;
+    *(s32 *) (list + 0x2580) = 0;
+    blk = list;
+    ctr = 0x64;
     do {
-        temp_r3_2147 = this->unk114;
-        this->unk114 = (MKMaterial *) &temp_r3_2147->unk4;
-        temp_r3_2147->unk4 = M2C_BITWISE(f32, var_r5_2141);
-        var_r5_2141 += 0x60;
-        var_ctr_2145 -= 1;
-    } while (var_ctr_2145 != 0);
-    temp_r4_2153 = this->unk114;
-    this->unk114 = (MKMaterial *) &temp_r4_2153->unk4;
-    temp_r4_2153->unk4 = 0.0f;
+        cursor = (u8 *) this->unk110;
+        this->unk110 = cursor + 4;
+        *(u8 **) (cursor + 4) = blk;
+        blk += 0x60;
+        ctr -= 1;
+    } while (ctr != 0);
+    cursor = (u8 *) this->unk110;
+    this->unk110 = cursor + 4;
+    *(s32 *) (cursor + 4) = 0;
     this->unkB0 &= ~0x80;
-    this->unk118 = MKMaterial_Create"fx_372";
-    temp_r3_2171 = checked_cast<IceBreathSnowFlakes *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceBreathSnowFlakes"));
-    sp10 = 0.0f;
-    sp20 = 0.0f;
-    this->unk118 = temp_r3_2171;
-    sp8 = 0.0f;
-    spC = 0.2f;
-    sp18 = 0.0f;
-    sp1C = 0.0f;
-    sp28 = (f64) sp8;
-    sp30 = (f64) sp10;
-    sp38 = (f64) sp18;
-    sp40 = (f64) sp20;
-    this->unk120.Init(1, 1.0f, *((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
+    this->unk114 = (MKMaterial *) MKMaterial_Create("fx_372");
+    this->unk118 = checked_cast<IceBreathSnowFlakes *, MKProp>(((MKSceneManager *) gMK)->CreateProp("IceBreathSnowFlakes"));
+    vecA.unk0 = 0.0f;
+    vecA.unk4 = 0.0f;
+    vecA.unk8 = 0.0f;
+    vecB.unk0 = 0.0f;
+    vecB.unk4 = 0.2f;
+    vecB.unk8 = 0.0f;
+    this->unk120.Init(1, 1.0f, vecA, vecB);
     this->unk120.unk18 = 2000.0f;
     this->unk120.unk1C = 1000.0f;
-    M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-    temp_r3_2211 = &this->unk150;
-    temp_r3_2211->RotateYaw(temp_r3_2211, 0.3926991f);
+    M2C_STRUCT_COPY(&this->unk150, &Matrix::identity, 0x40);
+    this->unk150.RotateYaw(&this->unk150, 0.3926991f);
     this->unk120.unk10 = 50.0f;
     this->unk190 = MKModel_Create("Fx0020_earthshock", NULL, 2, NULL);
-    this->unk194 = MKMaterial_Create"FX_IceFuryMat";
+    this->unk194 = (MKMaterial *) MKMaterial_Create("FX_IceFuryMat");
     this->unk198 = -1;
 }
-#endif
 
 void FuryFXIce_cpp::__sinit() {
     f32 temp_f0_2280;
