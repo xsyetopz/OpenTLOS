@@ -32,30 +32,27 @@ void SwayProperty::UpdateDynamicBone(MKDynamicBone *arg0, void *arg1) {
     }
 }
 
-#if 0 // DRAFT: pointer/array required
 void SwayProperty::Command(int arg0) {
-    switch (arg0) {                                 /* irregular */
+    switch (arg0) {
     case 1:
-        *(*KDProperty::pInstanceMem + (this->unk8 + 0x88)) = 1;
+        *(*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 0x88)) = 1;
         return;
     case 2:
-        *(*KDProperty::pInstanceMem + (this->unk8 + 0x88)) = 0;
+        *(*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 0x88)) = 0;
         return;
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match 'stricmp(signed char *, long *)'
+extern "C" s32 stricmp(const char *, const char *);
 s32 SwayProperty::ResolveCommand(const char *arg0) const {
-    s32 temp_r3_105;
-
     if (stricmp(arg0, "Activate") == 0) {
         return 1;
     }
-    temp_r3_105 = stricmp(arg0, "Deactivate") - 1;
-    return 2 & ((temp_r3_105 - temp_r3_105) - !M2C_CARRY);
+    if (stricmp(arg0, "Deactivate") == 0) {
+        return 2;
+    }
+    return 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void SwayProperty::Update() {
@@ -211,11 +208,9 @@ void SwayProperty::ResolveInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to 'bool *'
 s32 SwayProperty::LoadLineInstance(MKIniLine *arg0) {
-    arg0->LoadBool("Enabled", *KDProperty::pInstanceMem + (this->unk8 + 0x88), 0);
+    return arg0->LoadBool("Enabled", (bool *) (*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 0x88)), 0);
 }
-#endif
 
 void SwayProperty::InitInstance() {
     MKIniLine *var_r31_496;
@@ -245,16 +240,14 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: ')' expected
+extern "C" s32 stricmp(const char *, const char *);
 void SwayProperty::Resolve(KDPropertySet *arg0) {
-    if (((u32) this->unk14 == 0) && ((s8 *) this->unk10 != NULL) && (stricmp"localToWorld" == 0)) {
-        this->unk14 = property_cast<KDMatrixProperty *, KDProperty *>(arg0->Find(this->unk10));
+    if (((u32) this->unk14 == 0) && (this->unk10 != NULL) && (stricmp((const char *) this->unk10, "localToWorld") == 0)) {
+        this->unk14 = (u32) property_cast<KDMatrixProperty *, KDProperty *>((KDProperty *) arg0->Find((const char *) this->unk10));
     }
     this->unk30 = 6.2831855f / this->unk30;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 SwayProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_576;
 
@@ -262,12 +255,11 @@ s32 SwayProperty::LoadLine(MKIniLine *arg0) {
         this->unk18 = arg0;
     }
     var_r31_576 = 0;
-    if ((arg0->LoadString("subObject", &this->unk10, 0) != 0) || (arg0->LoadVector3("Range", (MKVector3 *) &this->unk20, 0) != 0) || (arg0->LoadFloat("Period", &this->unk30, 0) != 0)) {
+    if ((arg0->LoadString("subObject", (const char **) &this->unk10, 0) != 0) || (arg0->LoadVector3("Range", (MKVector3 *) &this->unk20, 0) != 0) || (arg0->LoadFloat("Period", &this->unk30, 0) != 0)) {
         var_r31_576 = 1;
     }
     return var_r31_576;
 }
-#endif
 
 SwayProperty::SwayProperty() {
     f64 sp20;
