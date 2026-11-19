@@ -1,0 +1,9 @@
+s32 TriggerPolyProp::LoadLine(MKIniLine *arg0) {
+    s32 result;
+
+    result = 0;
+    if ((TriggerProp::LoadLine(arg0) != 0) || (((TriggerPolyObject *) ((u8 *) this + 0xD0))->LoadLine("waypoints", arg0) != 0)) {
+        result = 1;
+    }
+    return result;
+}

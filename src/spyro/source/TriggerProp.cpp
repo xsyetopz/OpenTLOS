@@ -43,17 +43,15 @@
 extern void **gMK;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[10]' to 'long *'
 s32 TriggerPolyProp::LoadLine(MKIniLine *arg0) {
-    s32 var_r31_68;
+    s32 result;
 
-    var_r31_68 = 0;
-    if ((TriggerProp::LoadLine(arg0) != 0) || (M2C_FIELD(this->unkD0, u8 (**)(void **, M2C_UNK *, MKIniLine *), 0x38)(&this->unkD0, "waypoints", arg0) != 0)) {
-        var_r31_68 = 1;
+    result = 0;
+    if ((TriggerProp::LoadLine(arg0) != 0) || (((TriggerPolyObject *) ((u8 *) this + 0xD0))->LoadLine("waypoints", arg0) != 0)) {
+        result = 1;
     }
-    return var_r31_68;
+    return result;
 }
-#endif
 
 void TriggerPolyProp::Init() {
     TriggerProp::Init();
@@ -114,30 +112,26 @@ s32 TriggerPlaneProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkD0'
 void TriggerPlaneProp::Init() {
-    TriggerObject *temp_r3_277;
+    TriggerObject *temp_r3;
 
     TriggerProp::Init();
-    this->unkA8 = &this->unkD0;
-    temp_r3_277 = this->unkA8;
-    temp_r3_277->Init();
+    this->unkA8 = (TriggerObject *) ((u8 *) this + 0xD0);
+    temp_r3 = this->unkA8;
+    temp_r3->Init();
     this->unk1A0 = NULL;
     this->unk1A4 = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const char[7]' to 'void *'
 s32 TriggerSphereProp::LoadLine(MKIniLine *arg0) {
-    s32 var_r31_301;
+    s32 result;
 
-    var_r31_301 = 0;
-    if ((TriggerProp::LoadLine(arg0) != 0) || (M2C_FIELD(M2C_FIELD(this, void **, 0xD0), u8 (**)(void *, void *, MKIniLine *), 0x3C)(this + 0xD0, "sphere", arg0) != 0)) {
-        var_r31_301 = 1;
+    result = 0;
+    if ((TriggerProp::LoadLine(arg0) != 0) || (((TriggerSphereObject *) ((u8 *) this + 0xD0))->LoadLine("sphere", arg0) != 0)) {
+        result = 1;
     }
-    return var_r31_301;
+    return result;
 }
-#endif
 
 void TriggerSphereProp::Init() {
     TriggerProp::Init();
@@ -145,25 +139,21 @@ void TriggerSphereProp::Init() {
     this->unkA8 = (TriggerObject *) (this + 0xD0);
 }
 
-#if 0 // DRAFT: undefined identifier 'unkD0'
 s32 TriggerBoxProp::LoadLine(MKIniLine *arg0) {
-    s32 var_r31_360;
+    s32 result;
 
-    var_r31_360 = 0;
-    if ((TriggerProp::LoadLine(arg0) != 0) || (M2C_FIELD(this->unkD0.__vptr, u8 (**)(TriggerObject *, void *, MKIniLine *), 0x38)(&this->unkD0, "box", arg0) != 0)) {
-        var_r31_360 = 1;
+    result = 0;
+    if ((TriggerProp::LoadLine(arg0) != 0) || (((TriggerBoxObject *) ((u8 *) this + 0xD0))->LoadLine("box", arg0) != 0)) {
+        result = 1;
     }
-    return var_r31_360;
+    return result;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkD0'
 void TriggerBoxProp::Init() {
     TriggerProp::Init();
-    this->unkD0.Init();
-    this->unkA8 = &this->unkD0;
+    ((TriggerBoxObject *) ((u8 *) this + 0xD0))->Init();
+    this->unkA8 = (TriggerObject *) ((u8 *) this + 0xD0);
 }
-#endif
 
 void TriggerProp::UpdateActiveList() {
     void *temp_r29_423;
@@ -183,17 +173,16 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: type mismatch 'MKPropDescriptor *' and 'TriggerProp *'
 void TriggerProp::RemoveFromActiveList(TriggerProp *arg0) {
     MKPropDescriptor *temp_r4_467;
     TriggerProp *temp_r4_473;
 
-    if ((MKPropDescriptor *) *TriggerProp::pFirstActiveTrigger == arg0) {
-        *TriggerProp::pFirstActiveTrigger = (unsigned char) (arg0->unk90);
+    if (*(TriggerProp **) TriggerProp::pFirstActiveTrigger == arg0) {
+        *(TriggerProp **) TriggerProp::pFirstActiveTrigger = (TriggerProp *) arg0->unk90;
     }
     temp_r4_467 = arg0->unk90;
     if (temp_r4_467 != NULL) {
-        M2C_FIELD(temp_r4_467, TriggerProp **, 0x94) = (TriggerProp *) arg0->unk94;
+        M2C_FIELD(temp_r4_467, TriggerProp **, 0x94) = arg0->unk94;
     }
     temp_r4_473 = arg0->unk94;
     if (temp_r4_473 != NULL) {
@@ -202,7 +191,6 @@ void TriggerProp::RemoveFromActiveList(TriggerProp *arg0) {
     arg0->unk90 = NULL;
     arg0->unk94 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void TriggerProp::AddToActiveList(TriggerProp *arg0) {
@@ -458,7 +446,6 @@ s32 TriggerProp::LoadDone() {
     this->unkC = (BoundingVolume *) &this->unkA8->unk60;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 TriggerProp::LoadLine(MKIniLine *arg0) {
     TriggerObject *temp_r3_1155;
     s32 temp_r3_1188;
@@ -496,7 +483,7 @@ s32 TriggerProp::LoadLine(MKIniLine *arg0) {
         this->unk10 |= 0x80000000 & ((temp_r3_1272 - temp_r3_1272) - !M2C_CARRY);
         return 1U;
     }
-    if (arg0->LoadBool("bAllowQueuedActions", &this->unkC0, 0) != 0) {
+    if (arg0->LoadBool("bAllowQueuedActions", (bool *) &this->unkC0, 0) != 0) {
         var_r29_1290 = 1;
     } else {
         var_r29_1290 = 0;
@@ -506,16 +493,14 @@ s32 TriggerProp::LoadLine(MKIniLine *arg0) {
     }
     return var_r29_1290;
 }
-#endif
 
-#if 0 // DRAFT: type mismatch 'MKPropDescriptor *' and 'TriggerProp *'
 void TriggerProp::Deinit() {
     MKPropDescriptor *temp_r3_1349;
     TriggerObject *temp_r3_1366;
     TriggerProp *temp_r3_1355;
 
-    if ((MKPropDescriptor *) *TriggerProp::pFirstTrigger == this) {
-        *TriggerProp::pFirstTrigger = (unsigned char) (this->unk98);
+    if (*(TriggerProp **) TriggerProp::pFirstTrigger == this) {
+        *(TriggerProp **) TriggerProp::pFirstTrigger = (TriggerProp *) this->unk98;
     }
     temp_r3_1349 = this->unk98;
     if (temp_r3_1349 != NULL) {
@@ -532,7 +517,6 @@ void TriggerProp::Deinit() {
     temp_r3_1366->Deinit();
     MKProp::Deinit();
 }
-#endif
 
 void TriggerProp::Init() {
     MKProp::Init();
