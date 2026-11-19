@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import shlex
 import subprocess
 import sys
@@ -37,3 +38,30 @@ def compile_one(src: Path, out: Path, includes: list[Path], maxerrors: int = 1, 
     line = lines[caret - 1].split(":", 1)[-1].strip() if caret else ""
     count = max(1, sum(1 for l in lines if l.startswith("#   Error:")))
     return count, f"{where} | {msg} | {line}"
+
+
+def diagnostics(src: Path, out: Path, includes: list[Path], maxerrors: int = 50,
+                timeout: int = 300) -> tuple[bool, list[tuple[str, int, str]]]:
+    """(compiled, [(file name, line, message)]) for every error mwcc printed.
+
+    mwcc prints `#    File:` or `#      In:` for the file, `#   NN: <source>`,
+    a caret line `#   Error: ... ^`, then the message on the following line(s).
+    """
+    try:
+        p = subprocess.run(command(src, out, includes, maxerrors), capture_output=True, text=True,
+                           timeout=timeout, cwd=ROOT)
+    except subprocess.TimeoutExpired:
+        return False, [("", 0, "timeout")]
+    if p.returncode == 0:
+        return True, []
+    errs, cur, line = [], "", 0
+    lines = (p.stdout + p.stderr).splitlines()
+    for i, l in enumerate(lines):
+        if l.startswith(("#    File:", "#      In:")):
+            cur = l.split(":", 1)[1].strip().split("\\")[-1]
+        elif m := re.match(r"^#\s+(\d+): ", l):
+            line = int(m.group(1))
+        elif l.startswith("#   Error:"):
+            msg = lines[i + 1].lstrip("# ").strip() if i + 1 < len(lines) else ""
+            errs.append((cur, line, msg))
+    return False, errs or [("", 0, "unparsed failure")]
