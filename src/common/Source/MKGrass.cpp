@@ -1268,9 +1268,9 @@ loop_29:
                             var_r31_1849->AsInt(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x2C);
                         } else if (stricmp(temp_r3_1856, &lit_stringBase0 + 0x86) == NULL) {
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x64);
-                        } else if (stricmp(temp_r3_1856, &lit_stringBase0.unk8F) == NULL) {
+                        } else if (stricmp(temp_r3_1856, &lit_stringBase0 + 0x8F) == NULL) {
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x68);
-                        } else if (stricmp(temp_r3_1856, &lit_stringBase0.unk98) == NULL) {
+                        } else if (stricmp(temp_r3_1856, (f32 *) &lit_stringBase0.unk98) == NULL) {
                             var_r31_1849->AsInt(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x6C);
 loop_97:
                             temp_r3_2280 = M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C);
@@ -1296,7 +1296,7 @@ loop_102:
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x3C);
                         } else if (stricmp(temp_r3_1856, &lit_stringBase0.unkD5) == NULL) {
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x40);
-                        } else if (stricmp(temp_r3_1856, &lit_stringBase0.unkE4) == NULL) {
+                        } else if (stricmp(temp_r3_1856, (f32 *) &lit_stringBase0.unkE4) == NULL) {
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x48);
                             if (var_r31_1849->AsFloat(1, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x4C) != 0) {
                                 var_r31_1849->AsFloat(2, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x50);
@@ -1356,7 +1356,7 @@ loop_102:
                             M2C_FIELD(temp_r4_2419, f32 *, 0x4C) = (f32) (M2C_FIELD(temp_r4_2419, f32 *, 0x4C) * var_f1_2495);
                             M2C_FIELD(temp_r4_2419, f64 *, 0x50) = (f32) ((f32) M2C_FIELD(temp_r4_2419, f64 *, 0x50) * var_f1_2495);
                             M2C_FIELD(M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C), f32 *, 0x54) = spC;
-                        } else if (stricmp(temp_r3_1856, &lit_stringBase0.unkED) == NULL) {
+                        } else if (stricmp(temp_r3_1856, &lit_stringBase0 + 0xED) == NULL) {
                             var_r31_1849->AsFloat(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x58);
                         } else if (stricmp(temp_r3_1856, &lit_stringBase0.unkFB) == NULL) {
                             var_r31_1849->AsBool(0, M2C_FIELD(var_r30_1709, MKGrassType::Data **, 0x2C) + 0x60);
@@ -1476,11 +1476,11 @@ void MKGrass_InitModule() {
     MKIniLine *var_r28_2807;
     MKIniLine *var_r28_2853;
     MKIniLine *var_r3_2806;
+    f32 temp_r28_2947;
+    f32 var_ctr_2975;
     s32 temp_r0_2865;
     s32 temp_r27_2895;
     s32 temp_r28_2828;
-    s32 temp_r28_2947;
-    s32 var_ctr_2975;
     s32 var_ctr_3010;
     s32 var_r26_2894;
     s32 var_r29_2896;
@@ -1566,26 +1566,26 @@ loop_22:
         }
         sp8.Deinit();
     }
-    temp_r28_2947 = M2C_FIELD(&gMKDefaults, s32 *, 0x8C);
-    if (temp_r28_2947 == 0) {
+    temp_r28_2947 = gMKDefaults.unk88.unk4;
+    if (M2C_BITWISE(s32, temp_r28_2947) == 0) {
         var_r3_2950 = &gEmptyPtrList;
         grassModelsList = (void ***) &gEmptyPtrList.unk4;
     } else {
         temp_r3_2955 = gMKDefaults.Current();
         if (temp_r3_2955 != NULL) {
-            var_r3_2963 = ((MKHeap *) (((MKHeap *) (&*temp_r3_2955))->Current()))->Alloc((temp_r28_2947 + 2) * 4, NULL, 0);
+            var_r3_2963 = ((MKHeap *) (((MKHeap *) (&*temp_r3_2955))->Current()))->Alloc((M2C_BITWISE(s32, temp_r28_2947) + 2) * 4, NULL, 0);
         } else {
-            var_r3_2963 = malloc((temp_r28_2947 + 2) * 4);
+            var_r3_2963 = malloc((M2C_BITWISE(s32, temp_r28_2947) + 2) * 4);
         }
         grassModelsList = (void ***) var_r3_2963;
         *var_r3_2963 = 0;
         var_ctr_2975 = temp_r28_2947;
-        if (temp_r28_2947 > 0) {
+        if (M2C_BITWISE(s32, temp_r28_2947) > 0) {
             do {
                 grassModelsList += 4;
                 M2C_FIELD(grassModelsList, s32 *, 4) = 0xDEADBEEF;
-                var_ctr_2975 -= 1;
-            } while (var_ctr_2975 != 0);
+                var_ctr_2975 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_ctr_2975) - 1));
+            } while (M2C_BITWISE(s32, var_ctr_2975) != 0);
         }
         var_r3_2950 = (MKHeap *) (grassModelsList + 4);
         grassModelsList = (void ***) var_r3_2950;

@@ -9364,7 +9364,7 @@ void MKWidgetSerialise::SerialiseVersion() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: function call 'MKMetadata_Resolve(unsigned char, unsigned char, int)' does
 u8 MKWidgetSerialise::GetMetaData(MKWidgetMetaData *&arg0, unsigned int arg1) {
     MKHeap *temp_r3_17751;
     s8 *var_r3_17758;

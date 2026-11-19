@@ -392,7 +392,7 @@ block_7:
                     *(void *)0xCC008000 = (f32) ((temp_f10_704 * temp_f4_710) + temp_f1_647);
                     *(void *)0xCC008000 = -1;
                 }
-                *(void *)0xCC008000 = (f64) M2C_FIELD(arg_sp8, f64 *, 0);
+                *(void *)0xCC008000 = (f64) arg_sp8->unk0;
                 *(void *)0xCC008000 = (f64) M2C_FIELD(arg_sp8, f64 *, 8);
             }
             var_r3_604 += 8;

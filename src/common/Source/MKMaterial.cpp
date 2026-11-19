@@ -444,9 +444,9 @@ MKResource *MKMaterial_Create(const char *arg0) {
     var_r30_756 = NULL;
     var_r31_757 = &materialList + (StringHash(arg0, 0x200) * 4);
 loop_5:
-    if ((MKResource *) var_r31_757->unk0 == NULL) {
+    if ((MKResource *) *var_r31_757 == NULL) {
         temp_r3_783 = arg0->Create(var_r4_753);
-        var_r31_757->unk0 = temp_r3_783;
+        *var_r31_757 = temp_r3_783;
         temp_r3_783->unk28 = 1;
         temp_r3_783->InitialiseResource();
         if (var_r30_756 != NULL) {
@@ -458,15 +458,15 @@ loop_5:
     temp_ret_761 = stricmp(arg0);
     var_r4_753 = (s8 *) (u32) (u64) temp_ret_761;
     if (temp_ret_761 == 0) {
-        temp_ret_765 = var_r31_757->unk0->IsResourceAvailable();
+        temp_ret_765 = ((MKResource *) (*var_r31_757))->IsResourceAvailable();
         var_r4_753 = (s8 *) (u32) (u64) temp_ret_765;
         if (temp_ret_765 != 0) {
-            temp_r4_768 = var_r31_757->unk0;
+            temp_r4_768 = *var_r31_757;
             temp_r4_768->unk28 += 1;
-            return var_r31_757->unk0;
+            return *var_r31_757;
         }
     }
-    temp_r3_775 = var_r31_757->unk0;
+    temp_r3_775 = *var_r31_757;
     var_r30_756 = temp_r3_775;
     var_r31_757 = temp_r3_775 + 0x2C;
     goto loop_5;

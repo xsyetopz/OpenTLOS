@@ -1705,7 +1705,6 @@ void MKCollisionModelItem::LocaliseRay(const MKCollisionRay &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
 void MKCollisionModelItem::ToWorldResult(const MKCollisionResult &arg0, MKCollisionResult *arg1) {
     f64 sp40;
     f64 sp38;
@@ -1762,7 +1761,6 @@ void MKCollisionModelItem::ToWorldResult(const MKCollisionResult &arg0, MKCollis
         M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp8'
 void MKCollisionModelItem::GetRadius() {

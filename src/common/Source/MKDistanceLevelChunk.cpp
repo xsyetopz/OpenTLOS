@@ -2031,7 +2031,7 @@ block_19:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk110'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 s32 MKDistanceLevelChunk::ResolveAllProps() {
     MKProp *temp_r3_3576;
     MKProp *temp_r3_3658;
@@ -2093,7 +2093,7 @@ block_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk110'
+#if 0 // DRAFT: undefined identifier 'temp_r3_3699'
 s32 MKDistanceLevelChunk::ResetAllProps() {
     MKProp *temp_r3_3699;
     MKProp *temp_r3_3741;

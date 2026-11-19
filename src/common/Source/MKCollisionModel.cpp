@@ -2776,7 +2776,7 @@ block_73:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk4'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 MKCollisionGroundHint::Update(const MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     f64 sp120;
     f64 sp118;
@@ -4476,7 +4476,7 @@ s32 MKCollisionModel::GetVerts(unsigned int arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCC'
+#if 0 // DRAFT: illegal type
 MKVector3 *MKCollisionModel::GetVerts(MKVector3 *arg0, const unsigned short *arg1) {
     f64 sp90;
     f64 sp88;
@@ -4575,7 +4575,7 @@ s32 MKCollisionModel::Load(void *arg0, int arg1) {
     this->unk30 = (MKHeap *) arg0;
     temp_r28_7990 = this->unk30;
     temp_r28_7990->unkC4 = &temp_r28_7990->unkD0;
-    temp_r28_7990->unkC8 += temp_r28_7990->unkC4;
+    temp_r28_7990->unkC8 = &temp_r28_7990->unkC4[temp_r28_7990->unkC8];
     temp_r28_7990->unkCC += temp_r28_7990->unkC8;
     if ((MKHeap *) temp_r28_7990->unk0 == (MKHeap *)2U) {
         var_r29_8004 = 0U;

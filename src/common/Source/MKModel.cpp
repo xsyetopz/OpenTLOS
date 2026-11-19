@@ -1573,29 +1573,29 @@ loop_83:
         if (var_r26_2988 < var_r23_2809) {
             temp_r31_2996 = arg0->unk84->unk8 + var_r25_2990;
             temp_r31_2996->unkC = arg0;
-            temp_r31_2996->unk4 = var_r22_2808 + var_r24_2989;
+            M2C_FIELD(temp_r31_2996, MKHeap **, 4) = (MKHeap *) (var_r22_2808 + var_r24_2989);
             temp_r31_2996->Init();
             var_r6_3001 = 0;
             var_r3_3002 = NULL;
 loop_43:
-            temp_r5_3018 = temp_r31_2996->unk4;
-            if (var_r6_3001 < M2C_BITWISE(s32, temp_r5_3018->unk18)) {
+            temp_r5_3018 = M2C_FIELD(temp_r31_2996, MKHeap **, 4);
+            if (var_r6_3001 < (s32) temp_r5_3018->unk18) {
                 var_r6_3001 += 1;
                 temp_r5_3009 = temp_r5_3018->unk1C + var_r3_3002;
                 var_r3_3002 += 0x10;
                 M2C_FIELD(temp_r5_3009, s32 *, 0) = (s32) *(M2C_FIELD(M2C_FIELD(temp_r31_2996->unkC->unk0, void **, 0x30), s32 *, 0x54) + (M2C_FIELD(temp_r5_3009, s32 *, 4) * 4));
                 goto loop_43;
             }
-            temp_r15_3023 = (s32) temp_r5_3018->unk0 * 0x38;
+            temp_r15_3023 = temp_r5_3018->unk0 * 0x38;
             temp_r3_3024 = var_r3_3002->Current();
             if (temp_r3_3024 != NULL) {
                 var_r3_3031 = ((MKHeap *) (temp_r3_3024->Current()))->Alloc(temp_r15_3023, NULL, 0);
             } else {
                 var_r3_3031 = malloc(temp_r15_3023);
             }
-            temp_r31_2996->unk0 = var_r3_3031;
-            temp_r3_3038 = temp_r31_2996->unk4;
-            temp_r15_3040 = M2C_BITWISE(s32, temp_r3_3038->unk10) * 0xC;
+            M2C_FIELD(temp_r31_2996, s8 **, 0) = var_r3_3031;
+            temp_r3_3038 = M2C_FIELD(temp_r31_2996, MKHeap **, 4);
+            temp_r15_3040 = temp_r3_3038->unk10 * 0xC;
             temp_r3_3041 = temp_r3_3038->Current();
             if (temp_r3_3041 != NULL) {
                 var_r3_3048 = ((MKHeap *) (temp_r3_3041->Current()))->Alloc(temp_r15_3040, NULL, 0);
@@ -1603,7 +1603,7 @@ loop_43:
                 var_r3_3048 = malloc(temp_r15_3040);
             }
             temp_r31_2996->unk30 = var_r3_3048;
-            memcpy(temp_r31_2996->unk30, (void *) temp_r31_2996->unk4->unk14, (u32) temp_r15_3040);
+            memcpy(temp_r31_2996->unk30, (void *) M2C_FIELD(temp_r31_2996, MKHeap **, 4)->unk14, (u32) temp_r15_3040);
             temp_r31_2996->Create();
             if (var_r27_2928 != 0) {
                 if (var_r29_2931 != 0) {

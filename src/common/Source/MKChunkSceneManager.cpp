@@ -304,7 +304,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk10C'
+#if 0 // DRAFT: type mismatch
 void MKChunkSceneManager::SetWorkingChunk(MKLevelChunk *arg0) {
     MKLevelChunk **temp_r0_475;
     MKLevelChunk **var_ctr_476;

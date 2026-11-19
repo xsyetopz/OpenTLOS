@@ -1147,7 +1147,6 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 void MKFFTWater::Deinit() {
     MKHeap *temp_r3_2184;
     MKHeap *temp_r3_2203;
@@ -1190,9 +1189,8 @@ loop_2:
     }
     MKModel_Destroy(this->unk4);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: pointer/array required
 void MKFFTWater::PostDrawOcean(unsigned short *arg0) {
     MKOcean *temp_r3_2272;
     MKOcean *temp_r9_2241;
@@ -1234,7 +1232,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: pointer/array required
 void MKFFTWater::PreDrawOcean(unsigned short *arg0) {
     MKOcean *temp_r3_2334;
     MKOcean *temp_r3_2339;

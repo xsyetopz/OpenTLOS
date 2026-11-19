@@ -845,8 +845,8 @@ void MKDynamicBoneSystem::Init() {
     MKHeap *temp_r3_1610;
     MKModel *temp_r30_1549;
     MKModel *var_ctr_1583;
-    s32 temp_r30_1602;
-    s32 var_ctr_1635;
+    f32 temp_r30_1602;
+    f32 var_ctr_1635;
 
     temp_r30_1549 = gMKDefaults.unk9C;
     if (temp_r30_1549 == NULL) {
@@ -878,27 +878,27 @@ void MKDynamicBoneSystem::Init() {
         M2C_FIELD(temp_r3_1594, MKDynamicBone ***, 4) = NULL;
     }
     temp_r30_1602 = gMKDefaults.unkA0;
-    if (temp_r30_1602 == 0) {
+    if (M2C_BITWISE(s32, temp_r30_1602) == 0) {
         spareTemplates = &gEmptyPtrListDL + 4;
     } else {
         temp_r3_1610 = gMKDefaults.Current();
         if (temp_r3_1610 != NULL) {
-            var_r3_1620 = ((MKHeap *) (temp_r3_1610->Current()))->Alloc(((temp_r30_1602 + 2) * 4) + (temp_r30_1602 << 7), NULL, 0);
+            var_r3_1620 = ((MKHeap *) (temp_r3_1610->Current()))->Alloc(((M2C_BITWISE(s32, temp_r30_1602) + 2) * 4) + (M2C_BITWISE(s32, temp_r30_1602) << 7), NULL, 0);
         } else {
-            var_r3_1620 = malloc(((temp_r30_1602 + 2) * 4) + (temp_r30_1602 << 7));
+            var_r3_1620 = malloc(((M2C_BITWISE(s32, temp_r30_1602) + 2) * 4) + (M2C_BITWISE(s32, temp_r30_1602) << 7));
         }
         spareTemplates = var_r3_1620;
-        temp_r4_1631 = var_r3_1620 + (temp_r30_1602 << 7);
+        temp_r4_1631 = var_r3_1620 + (M2C_BITWISE(s32, temp_r30_1602) << 7);
         spareTemplates = temp_r4_1631;
         *temp_r4_1631 = NULL;
         var_ctr_1635 = temp_r30_1602;
-        if (temp_r30_1602 > 0) {
+        if (M2C_BITWISE(s32, temp_r30_1602) > 0) {
             do {
                 spareTemplates += 4;
                 M2C_FIELD(spareTemplates, MKDynamicBone ***, 4) = var_r3_1620;
                 var_r3_1620 += 0x80;
-                var_ctr_1635 -= 1;
-            } while (var_ctr_1635 != 0);
+                var_ctr_1635 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_ctr_1635) - 1));
+            } while (M2C_BITWISE(s32, var_ctr_1635) != 0);
         }
         spareTemplates += 4;
         M2C_FIELD(spareTemplates, MKDynamicBone ***, 4) = NULL;

@@ -352,7 +352,7 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unkB0'
+#if 0 // DRAFT: pointer/array required
 void MKFont::ResetFontStack(MKFont *arg0, unsigned int arg1) {
     s32 temp_r0_586;
     s32 temp_r5_584;
@@ -364,7 +364,7 @@ void MKFont::ResetFontStack(MKFont *arg0, unsigned int arg1) {
     var_r3_570 = 0;
     var_r30_574 = 0U;
 loop_2:
-    if (var_r30_574 < (u32) gMKDefaults.unkB0) {
+    if (var_r30_574 < M2C_BITWISE(u32, gMKDefaults.unkB0)) {
         temp_r8_582 = var_r3_570 + 4;
         temp_r7_583 = var_r3_570 + 8;
         temp_r5_584 = var_r3_570 + 0xC;
@@ -390,13 +390,13 @@ loop_2:
 CharInfo *MKFont::GetCharacter(const char *arg0, int *arg1, FontPage **arg2) {
     CharInfo *var_r3_703;
     FontPage *temp_r5_684;
+    f32 var_ctr_680;
     s32 *temp_r4_692;
     s32 temp_cr0_eq_648;
     s32 temp_r7_685;
     s32 var_r3_678;
     s8 *temp_r3_646;
     s8 *temp_r4_656;
-    u32 var_ctr_680;
     u8 temp_r3_657;
 
     if (IsToken(arg0, (u32) *arg1) != 0) {
@@ -420,7 +420,7 @@ block_7:
     }
     var_r3_678 = 0;
     var_ctr_680 = gMKDefaults.unkB0;
-    if ((u32) gMKDefaults.unkB0 > 0U) {
+    if (M2C_BITWISE(u32, gMKDefaults.unkB0) > 0U) {
 loop_13:
         temp_r5_684 = *MKFont::currentFontStack + var_r3_678;
         temp_r7_685 = *arg1;
@@ -437,8 +437,8 @@ loop_13:
             }
         }
         var_r3_678 += 0x14;
-        var_ctr_680 -= 1;
-        if (var_ctr_680 == 0) {
+        var_ctr_680 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_ctr_680) - 1));
+        if (M2C_BITWISE(s32, var_ctr_680) == 0) {
             goto block_19;
         }
         goto loop_13;
@@ -494,21 +494,21 @@ f32 MKFont::DrawString2dWrapped(const char *arg0, float arg1, float arg2, float 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkB0'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void *MKFont::GetCharacterFontPage(unsigned int arg0) {
+    f32 var_ctr_865;
     s32 var_r5_863;
-    u32 var_ctr_865;
     void *temp_r3_869;
 
     var_r5_863 = 0;
     var_ctr_865 = gMKDefaults.unkB0;
-    if ((u32) gMKDefaults.unkB0 > 0U) {
+    if (M2C_BITWISE(u32, gMKDefaults.unkB0) > 0U) {
 loop_1:
         temp_r3_869 = *MKFont::currentFontStack + var_r5_863;
         if (((u32) M2C_FIELD(temp_r3_869, u32 *, 8) > arg0) || ((u32) M2C_FIELD(temp_r3_869, u32 *, 0xC) < arg0)) {
             var_r5_863 += 0x14;
-            var_ctr_865 -= 1;
-            if (var_ctr_865 == 0) {
+            var_ctr_865 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_ctr_865) - 1));
+            if (M2C_BITWISE(s32, var_ctr_865) == 0) {
                 /* Duplicate return node #4. Try simplifying control flow for better match */
                 return NULL;
             }
@@ -725,13 +725,13 @@ loop_31:
     var_r17_1248 = 0U;
     var_r20_1250 = 0;
 loop_75:
-    if (var_r17_1248 < (u32) gMKDefaults.unkB0) {
+    if (var_r17_1248 < M2C_BITWISE(u32, gMKDefaults.unkB0)) {
         temp_r18_1254 = *MKFont::currentFontStack + var_r20_1250;
         if (((void *) M2C_FIELD(temp_r18_1254, void **, 0) != NULL) && ((s32) M2C_FIELD(temp_r18_1254, s32 *, 0x10) != -1)) {
             var_r8_1261 = var_r17_1248 + 1;
             var_r3_1263 = var_r8_1261 * 0x14;
 loop_59:
-            if (var_r8_1261 < (u32) gMKDefaults.unkB0) {
+            if (var_r8_1261 < M2C_BITWISE(u32, gMKDefaults.unkB0)) {
                 temp_r7_1267 = var_r3_1263 + 0x10;
                 if ((s32) *(var_r20_1250 + (*MKFont::currentFontStack + 0x10)) == (s32) *(*MKFont::currentFontStack + temp_r7_1267)) {
                     *(*MKFont::currentFontStack + temp_r7_1267) = -1;
@@ -1051,7 +1051,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkAC'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKFont::InitModule() {
     MKHeap *temp_r3_1843;
     MKHeap *temp_r3_1859;
@@ -1066,15 +1066,15 @@ void MKFont::InitModule() {
     MKHeap *var_r3_1908;
     MKHeap *var_r3_1953;
     MKHeap *var_r3_1971;
+    f32 temp_r30_1873;
     s32 temp_r30_1842;
     s32 temp_r30_1858;
-    s32 temp_r30_1873;
     s32 temp_r30_1890;
     s32 temp_r30_1945;
     s32 temp_r30_1963;
     s32 var_ctr_1923;
 
-    temp_r30_1842 = gMKDefaults.unkAC * 0x78;
+    temp_r30_1842 = M2C_BITWISE(s32, gMKDefaults.unkAC) * 0x78;
     temp_r3_1843 = gMKDefaults.Current();
     if (temp_r3_1843 != NULL) {
         var_r3_1850 = ((MKHeap *) (temp_r3_1843->Current()))->Alloc(temp_r30_1842, NULL, 0);
@@ -1082,7 +1082,7 @@ void MKFont::InitModule() {
         var_r3_1850 = malloc(temp_r30_1842);
     }
     drawStringChars = var_r3_1850;
-    temp_r30_1858 = gMKDefaults.unkAC * 4;
+    temp_r30_1858 = M2C_BITWISE(s32, gMKDefaults.unkAC) * 4;
     temp_r3_1859 = var_r3_1850->Current();
     if (temp_r3_1859 != NULL) {
         var_r3_1866 = ((MKHeap *) (temp_r3_1859->Current()))->Alloc(temp_r30_1858, NULL, 0);
@@ -1093,9 +1093,9 @@ void MKFont::InitModule() {
     temp_r30_1873 = gMKDefaults.unkAC;
     temp_r3_1874 = var_r3_1866->Current();
     if (temp_r3_1874 != NULL) {
-        var_r3_1881 = ((MKHeap *) (temp_r3_1874->Current()))->Alloc(temp_r30_1873, NULL, 0);
+        var_r3_1881 = ((MKHeap *) (temp_r3_1874->Current()))->Alloc(M2C_BITWISE(s32, temp_r30_1873), NULL, 0);
     } else {
-        var_r3_1881 = malloc(temp_r30_1873);
+        var_r3_1881 = malloc(M2C_BITWISE(s32, temp_r30_1873));
     }
     pWorkingText = (s8 *) var_r3_1881;
     temp_r30_1890 = gMKDefaults.unkB8;
@@ -1125,7 +1125,7 @@ void MKFont::InitModule() {
         (*MKFont::fontList)->unk4 = 0;
     }
     *MKFont::bInitialised = 1;
-    temp_r30_1945 = gMKDefaults.unkB0 * 0x14;
+    temp_r30_1945 = M2C_BITWISE(s32, gMKDefaults.unkB0) * 0x14;
     temp_r3_1946 = gMKDefaults.Current();
     if (temp_r3_1946 != NULL) {
         var_r3_1953 = ((MKHeap *) (temp_r3_1946->Current()))->Alloc(temp_r30_1945, NULL, 0);

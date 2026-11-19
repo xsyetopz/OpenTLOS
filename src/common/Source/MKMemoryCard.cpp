@@ -205,7 +205,7 @@ loop_99:
                 var_r25_325 += 0xC0;
             } while (var_r24_324 < 0xE);
             fileSlot_783 = 0;
-            CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName->unk0, &CardTemplate->unkD0);
+            CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName->unk0, (CARDFileInfo *) &CardTemplate->unkD0);
             M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
             break;
         case 1:                                     /* switch 1 */
@@ -226,7 +226,7 @@ loop_99:
                 fileSlot_783 = temp_r0_387;
                 if (temp_r0_387 < 0xE) {
                     var_r26_306 = 0;
-                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_387].unk0, &CardTemplate->unkD0);
+                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_387].unk0, (CARDFileInfo *) &CardTemplate->unkD0);
                     M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
                 } else {
                     SetFinishedStep(0);
@@ -237,7 +237,7 @@ loop_99:
                 break;
             case 0:                                 /* switch 2 */
                 var_r26_306 = 0;
-                CARDGetStatus(M2C_BITWISE(s32, temp_r27_302), CardTemplate->unkD0.fileNo, &stat_786);
+                CARDGetStatus(M2C_BITWISE(s32, temp_r27_302), CardTemplate->unkD4, &stat_786);
                 M2C_FIELD(CardTemplate, s32 *, 0x34) = 2;
                 break;
             }
@@ -259,7 +259,7 @@ loop_99:
                 fileSize_787 = (s32) stat_786.length;
                 SetDataBuffer((s32) stat_786.length);
                 var_r26_306 = 0;
-                CARDReadAsync(&CardTemplate->unkD0, CardTemplate->unk48, fileSize_787, 0, NULL);
+                CARDReadAsync((CARDFileInfo *) &CardTemplate->unkD0, CardTemplate->unk48, fileSize_787, 0, NULL);
                 M2C_FIELD(CardTemplate, s32 *, 0x34) = 3;
                 break;
             case -4:                                /* switch 3 */
@@ -267,7 +267,7 @@ loop_99:
                 fileSlot_783 = temp_r0_472;
                 if (temp_r0_472 < 0xE) {
                     var_r26_306 = 0;
-                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_472].unk0, &CardTemplate->unkD0);
+                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_472].unk0, (CARDFileInfo *) &CardTemplate->unkD0);
                     M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
                 } else {
                     SetFinishedStep(0);
@@ -294,7 +294,7 @@ loop_99:
                 fileSlot_783 = temp_r0_531;
                 if (temp_r0_531 < 0xE) {
                     var_r26_306 = 0;
-                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_531].unk0, &CardTemplate->unkD0);
+                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_531].unk0, (CARDFileInfo *) &CardTemplate->unkD0);
                     M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
                 } else {
                     SetFinishedStep(0);
@@ -318,7 +318,7 @@ loop_99:
                     }
                 }
                 var_r26_306 = 0;
-                CARDClose(&CardTemplate->unkD0);
+                CARDClose((CARDFileInfo *) &CardTemplate->unkD0);
                 M2C_FIELD(CardTemplate, s32 *, 0x34) = 4;
                 break;
             }
@@ -340,7 +340,7 @@ loop_99:
                 fileSlot_783 = temp_r0_644;
                 if (temp_r0_644 < 0xE) {
                     var_r26_306 = 0;
-                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_644].unk0, &CardTemplate->unkD0);
+                    CARDOpen(M2C_BITWISE(s32, temp_r27_302), &slotName[temp_r0_644].unk0, (CARDFileInfo *) &CardTemplate->unkD0);
                     M2C_FIELD(CardTemplate, s32 *, 0x34) = 1;
                 } else {
                     SetFinishedStep(0);
@@ -454,7 +454,7 @@ loop_156:
                 memcpy(temp_r3_816, M2C_BITWISE(void *, CardTemplate->unk10), (u32) M2C_FIELD(CardTemplate, s32 *, 0x4C));
                 pBuffer_671 += M2C_FIELD(CardTemplate, s32 *, 0x4C);
             }
-            memcpy(pBuffer_671, &CardTemplate->unk90, 0x40U);
+            memcpy(pBuffer_671, &CardTemplate->unk88.unk8, 0x40U);
             temp_r3_833 = &pBuffer_671->unk40;
             pBuffer_671 = (MKHeap *) temp_r3_833;
             if (((u32) CardTemplate->unk60 != 0U) && ((s32) CardTemplate->unk5C > 0)) {
@@ -1422,7 +1422,7 @@ void MKMemoryCard_InitModule() {
     CardTemplate->unk40 = 0;
     CardTemplate->unk3C = 0;
     CardTemplate->unk48 = NULL;
-    temp_f1_2796 = M2C_BITWISE(f32, memset(&CardTemplate->unk90, 0, 0x40U));
+    temp_f1_2796 = M2C_BITWISE(f32, memset(&CardTemplate->unk88.unk8, 0, 0x40U));
     var_r3_2802 = 0;
     CardTemplate->unk5C = 0;
     CardTemplate->unk60 = 0;
@@ -1491,7 +1491,7 @@ void MKMemoryCard_Save(int arg0, int arg1, void *arg2, int arg3, const char *arg
         var_r25_2945 = &sp8;
     }
     memset(&CardTemplate->unkB0, 0, 0x20U);
-    strcpy(&CardTemplate->unkB0, var_r25_2945);
+    strcpy((s8 *) &CardTemplate->unkB0, var_r25_2945);
     CardTemplate->unk40 = arg3;
     CardTemplate->unk44 = (s32) &slotName[arg1];
     CardTemplate->unk10 = M2C_BITWISE(f32, arg2);
@@ -1531,7 +1531,7 @@ void MKMemoryCard_SetAppInfo(const char *arg0, const char *arg1, int *arg2) {
     s32 var_r28_3064;
     s32 var_r31_3066;
 
-    var_f1_3056 = M2C_BITWISE(f32, strcpy(&CardTemplate->unk90, arg1));
+    var_f1_3056 = M2C_BITWISE(f32, strcpy((s8 *) &CardTemplate->unk88.unk8, arg1));
     M2C_FIELD(CardTemplate, s32 *, 0x4C) = 0x80;
     var_r28_3064 = 0;
     var_r31_3066 = 0;

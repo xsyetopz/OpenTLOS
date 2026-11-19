@@ -847,7 +847,12 @@ loop_36:
 
 #if 0 // DRAFT: undefined identifier 'unk18'
 s16 CalculateGrassVertex(GrassVertex *arg0, GrassStrip *arg1, MeshChunkExplorer *arg2, bool arg3, int arg4, OmniLight **arg5, const MKVector4 *arg6, const Matrix *arg7) {
-    OmniLight sp28;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    M2C_UNK sp28;
     f32 sp20;
     f32 sp1C;
     f32 sp18;
@@ -865,14 +870,14 @@ s16 CalculateGrassVertex(GrassVertex *arg0, GrassStrip *arg1, MeshChunkExplorer 
     temp_r23_1556 = (s16) (u16) M2C_FIELD(temp_r4_1548, s32 *, 0) + (s16) (u16) M2C_FIELD(temp_r4_1548, s32 *, 8);
     if (arg7 != NULL) {
         temp_f3_1558 = M2C_FIELD(temp_r4_1548, f32 *, 4);
-        var_r3_1559 = &sp28.unk20;
+        var_r3_1559 = &sp48;
         temp_f6_1565 = M2C_BITWISE(f32, M2C_FIELD(temp_r4_1548, s32 *, 0));
         temp_f7_1571 = M2C_BITWISE(f32, M2C_FIELD(temp_r4_1548, s32 *, 8));
         sp18 = arg7->unk30 + ((temp_f7_1571 * arg7->unk20) + ((temp_f6_1565 * arg7->unk0) + (temp_f3_1558 * arg7->unk10)));
         sp1C = arg7->unk34 + ((temp_f7_1571 * arg7->unk24) + ((temp_f6_1565 * arg7->unk4) + (temp_f3_1558 * arg7->unk14)));
         sp20 = arg7->unk38 + ((temp_f7_1571 * arg7->unk28) + ((temp_f6_1565 * arg7->unk8) + (temp_f3_1558 * arg7->unk18)));
-        sp28.unk20 = (f64) sp18;
-        sp28.unk28 = (f64) sp20;
+        sp48 = (f64) sp18;
+        sp50 = (f64) sp20;
     } else {
         var_r3_1559 = temp_r4_1548;
     }
@@ -885,9 +890,9 @@ s16 CalculateGrassVertex(GrassVertex *arg0, GrassStrip *arg1, MeshChunkExplorer 
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r9, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_mul $f0, $f1, $f0 */);
-        var_r3_1613 = &sp28.unk10;
-        sp28.unk10 = sp8;
-        sp28.unk18 = sp10;
+        var_r3_1613 = &sp38;
+        sp38 = sp8;
+        sp40 = sp10;
     } else {
         var_r3_1613 = arg2->unk24;
     }

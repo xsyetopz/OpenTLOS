@@ -485,7 +485,7 @@ void MKZRequest_Destroy(MKZRequest *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk98'
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
 void *MKZRequest_Create() {
     s32 var_ctr_244;
     s32 var_r3_242;
@@ -516,7 +516,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk98'
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to
 void MKZRequest_DeinitModule() {
     MKHeap *temp_r29_295;
     MKHeap *temp_r29_315;
@@ -553,7 +553,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk98'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKZRequest_InitModule() {
     MKHeap *temp_r3_352;
     MKHeap *temp_r3_383;
@@ -744,7 +744,7 @@ void *TexRegionCallback(const _GXTexObj *arg0, _GXTexMapID arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'TMEMCacheSegments'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void Init_TexCache() {
     GXTexRegion *temp_r27_623;
     s32 temp_r0_647;
@@ -1208,7 +1208,7 @@ void System_DeinitModule() {
     Debug_DeinitModule();
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'Init_TexCache'
 void System_InitModule(void *arg0, char *arg1) {
     Init_TexCache();
     ARInit(NULL, 0U);
@@ -1221,13 +1221,13 @@ void System_InitModule(void *arg0, char *arg1) {
     if (arg1 != NULL) {
         System_InitCommandLineArgs(arg1);
     }
-    gMainHeap.Init((OSCheckHeap(0) - ((gMKDefaults.unk64 * 0x10) + 0x100)) - 0x860, (s32) gMKDefaults.unk64, &lit_stringBase0.unk8C, NULL);
+    gMainHeap.Init((OSCheckHeap(0) - ((gMKDefaults.unk64 * 0x10) + 0x100)) - 0x860, (s32) gMKDefaults.unk64, (s8 *) &lit_stringBase0.unk88.unk4, NULL);
     gMainHeap.Push();
     Debug_InitModule();
     MKInput_InitModule();
     MKWidget_InitModule();
     File_InitModule();
-    File_FileServerFilename(&lit_stringBase0.unk91);
+    File_FileServerFilename(&lit_stringBase0 + 0x91);
     DVDOpen(M2C_ERROR(/* Read from unset register $r3 */), &seekHack);
     seekFinished = 1;
     MKArchive_InitModule();
@@ -1235,7 +1235,7 @@ void System_InitModule(void *arg0, char *arg1) {
     MKArchive_RegisterArchive(M2C_ERROR(/* Read from unset register $r3 */), 0U);
     File_FileServerFilename(&lit_stringBase0 + 0xA9);
     MKArchive_RegisterArchive(M2C_ERROR(/* Read from unset register $r3 */), 0U);
-    File_FileServerFilename(&lit_stringBase0.unk91);
+    File_FileServerFilename(&lit_stringBase0 + 0x91);
     MKArchive_RegisterArchive(M2C_ERROR(/* Read from unset register $r3 */), 0U);
     MKPackage_InitModule();
     ((MKFont *) (M2C_ERROR(/* Read from unset register $r3 */)))->InitModule();

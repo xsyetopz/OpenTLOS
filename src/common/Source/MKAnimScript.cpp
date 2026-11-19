@@ -1558,7 +1558,7 @@ void MKAnimScript::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
+#if 0 // DRAFT: function call 'Init(signed char *, MKModel *)' does not match
 void MKAnimScript::Init(MKAnimScript *arg0, MKModel *arg1) {
     Init(&arg0->unk4->unk0, arg1);
 }
