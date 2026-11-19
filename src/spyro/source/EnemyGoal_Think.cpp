@@ -765,7 +765,6 @@ block_39:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to 'AITargetData *'
 void EnemyGoal_Think::AddGoal_GroundAttackMode() {
     Goal<Enemy> *temp_r4_1701;
 
@@ -779,10 +778,9 @@ void EnemyGoal_Think::AddGoal_GroundAttackMode() {
             M2C_FIELD(temp_r4_1701, f32 *, 0x18) = 0.0f;
         }
         AddSubgoal((Goal<Enemy> *) this->unk64);
-        ((EnemyGoal_GroundAttackMode *) this->unk64)->SetParams(this->unkC + 0x870, 1U, NULL);
+        ((EnemyGoal_GroundAttackMode *) this->unk64)->SetParams((AITargetData *) (this->unkC + 0x870), 1U, NULL);
     }
 }
-#endif
 
 void EnemyGoal_Think::AddGoal_AlertMode(AITargetData *arg0) {
     Goal<Enemy> *temp_r4_1746;
