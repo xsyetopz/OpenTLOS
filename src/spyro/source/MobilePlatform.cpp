@@ -58,8 +58,8 @@ extern s32 gViewSeed;
 extern void **gb;
 u8 mpfLoadInfo__14MobilePlatform[0x10];
 
-#if 0 // DRAFT: ')' expected
 void MobilePlatform::UpdateSag() {
+    MobilePlatformDescriptor *desc;
     f32 temp_f1_111;
     f32 temp_f1_114;
     f32 temp_f31_76;
@@ -69,10 +69,12 @@ void MobilePlatform::UpdateSag() {
     f32 var_f2_104;
     f32 var_f5_85;
 
-    if (M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x140) > 0.0f) {
+    desc = checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if (desc->unk140 > 0.0f) {
         temp_f31_76 = gUpdateTimeDelta;
+        desc = checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         var_f5_85 = 0.5f * (2.0f * temp_f31_76);
-        temp_f3_86 = this->unk244 * M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x140);
+        temp_f3_86 = this->unk248 * desc->unk140;
         if (var_f5_85 < 1.0f) {
 
         } else {
@@ -87,12 +89,11 @@ void MobilePlatform::UpdateSag() {
         } else {
             var_f2_104 = 1.0f;
         }
-        temp_f1_111 = this->unk244;
+        temp_f1_111 = this->unk248;
         temp_f1_114 = (var_f2_104 * (0.0f - temp_f1_111)) + temp_f1_111;
-        this->unk244 = (var_f2_104 * (0.0f - temp_f1_114)) + temp_f1_114;
+        this->unk248 = (var_f2_104 * (0.0f - temp_f1_114)) + temp_f1_114;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'spA0'
 void MobilePlatform::SetYaw(float arg0, float arg1) {
@@ -525,40 +526,41 @@ block_73:
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 void MobilePlatform::PropUpdate() {
-    s32 sp8;
-    f32 temp_f0_1243;
+    MobilePlatformDescriptor *desc;
     f32 temp_f2_1213;
     f32 temp_f2_1238;
-    void *temp_r4_1194;
+    f32 temp_f0_1243;
 
-    if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x134) != 0) {
-        temp_r4_1194 = checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        sp8 = 1;
-        ((KDSoundFader *) &this->unk218)->Update(M2C_FIELD(temp_r4_1194, s32 *, 0x134), 1U, M2C_FIELD(this, u8 *, 0x218), (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    desc = checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if (desc->unk134 != 0) {
+        desc = checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        ((KDSoundFader *) &this->unk21C)->Update(desc->unk134, true, *(bool *) &this->unk218, (MKProp *) this, NULL, 0U, -1, true);
     }
     if (!(this->unk10 & 0x20000)) {
         this->unk70.unk4 = 0;
         return;
     }
-    temp_f2_1213 = M2C_FIELD(this, f32 *, 0x210);
-    if (((temp_f2_1213 >= 1.0f) && (this->unk210 > 0.0f)) || ((temp_f2_1213 <= 0.0f) && (this->unk210 < 0.0f))) {
+    temp_f2_1213 = this->unk210;
+    if (((temp_f2_1213 < 1.0f) && (this->unk214 > 0.0f)) || ((temp_f2_1213 > 0.0f) && (this->unk214 < 0.0f))) {
         this->unk70.unk4 = 1;
     }
     UpdateSag();
     Platform::PropUpdate();
-    temp_f2_1238 = M2C_BITWISE(f32, this->unk204.unk0);
-    if ((temp_f2_1238 > 0.0f) && (temp_f0_1243 = temp_f2_1238 - gUpdateTimeDelta, this->unk204.unk0 = temp_f0_1243, M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */), ((temp_f0_1243 == 0.0f) != 0))) {
-        this->unk204.unk0 = -1.0f;
-        if ((u8) M2C_FIELD(this, u8 *, 0x20C) != 0) {
-            ((EventMessage *) &this->unk1FC)->Send((MKProp *) this);
-            return;
+    temp_f2_1238 = this->unk208;
+    if (temp_f2_1238 > 0.0f) {
+        temp_f0_1243 = temp_f2_1238 - gUpdateTimeDelta;
+        this->unk208 = temp_f0_1243;
+        if (temp_f0_1243 <= 0.0f) {
+            this->unk208 = -1.0f;
+            if ((u8) this->unk20C != 0) {
+                this->unk200.Send((MKProp *) this);
+            } else {
+                this->unk204.Send((MKProp *) this);
+            }
         }
-        this->unk200.Send((MKProp *) this);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk11'
 s32 MobilePlatform::LoadDone() {
@@ -637,17 +639,15 @@ s32 MobilePlatform::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 MobilePlatform::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1449;
 
     var_r31_1449 = 0;
-    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("turnSpeed", &this->unk180, 0) != 0) || (arg0->LoadFloat("speed", (f32 *) MobilePlatform::mpfLoadInfo, 0) != 0) || (arg0->LoadFloat("period", (f32 *) &MobilePlatform::mpfLoadInfo[4], 0) != 0) || (arg0->LoadFloat("startTime", (f32 *) &MobilePlatform::mpfLoadInfo[8], 0) != 0) || (arg0->LoadBool("bMoveOne", (u8 *) &this->unk19C.unk44, 0) != 0) || (arg0->LoadBool("bNonCircular", &MobilePlatform::mpfLoadInfo[0xC], 0) != 0) || (arg0->LoadBool("bSingleMove", (u8 *) &this->unk1E8, 0) != 0) || (arg0->LoadFloat("fFlipDelay", &this->unk1F8, 0) != 0) || (((EventMessage *) &this->unk1FC)->LoadLine(arg0, "OnAttach") != 0) || (this->unk200.LoadLine(arg0, "OnDetach") != 0) || (((KDSplinePathSegment *) &this->unk19C)->LoadLine(arg0) != 0)) {
+    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("turnSpeed", &this->unk180, 0) != 0) || (arg0->LoadFloat("speed", (f32 *) MobilePlatform::mpfLoadInfo, 0) != 0) || (arg0->LoadFloat("period", (f32 *) &MobilePlatform::mpfLoadInfo[4], 0) != 0) || (arg0->LoadFloat("startTime", (f32 *) &MobilePlatform::mpfLoadInfo[8], 0) != 0) || (arg0->LoadBool("bMoveOne", (bool *) &this->unk1E4, 0) != 0) || (arg0->LoadBool("bNonCircular", (bool *) &MobilePlatform::mpfLoadInfo[0xC], 0) != 0) || (arg0->LoadBool("bSingleMove", (bool *) &this->unk1EC, 0) != 0) || (arg0->LoadFloat("fFlipDelay", &this->unk1FC, 0) != 0) || (this->unk200.LoadLine(arg0, "OnAttach") != 0) || (this->unk204.LoadLine(arg0, "OnDetach") != 0) || (((KDSplinePathSegment *) &this->unk19C)->LoadLine(arg0) != 0)) {
         var_r31_1449 = 1;
     }
     return var_r31_1449;
 }
-#endif
 
 void MobilePlatform::Reset() {
     Platform::Reset();
@@ -655,18 +655,20 @@ void MobilePlatform::Reset() {
     M2C_FIELD(this, s8 *, 0x218) = 0;
 }
 
-#if 0 // DRAFT: ')' expected
 void MobilePlatform::Deinit() {
-    if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x134) != 0) {
-        KDSound_Stop((int *) &this->unk218);
+    MobilePlatformDescriptor *desc;
+
+    desc = checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if (desc->unk134 != 0) {
+        KDSound_Stop((int *) &this->unk21C);
     }
     ((KDSplinePathSegment *) &this->unk19C)->Deinit();
     Platform::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: expression syntax error
 void MobilePlatform::Init() {
+    MobilePlatformDescriptor *desc;
+
     Platform::Init();
     MobilePlatform::mpfLoadInfo[0xC] = 0;
     M2C_FIELD(MobilePlatform::mpfLoadInfo, f32 *, 0) = 7.0f;
@@ -675,23 +677,23 @@ void MobilePlatform::Init() {
     ((KDSplinePathSegment *) &this->unk19C)->Init();
     this->unk184 = 0;
     this->unk188 = 2;
-    this->unk19C.unk44 = 0;
+    this->unk1E4 = 0;
     this->unk18C = 0.0f;
     this->unk180 = 0.0f;
     this->unk190 = 0.0f;
     this->unk198 = 0.0f;
-    M2C_FIELD(this, s32 *, 0x1F0) = 0;
-    this->unk1F0 = 1.0f;
-    this->unk1F4 = -1.0f;
-    M2C_FIELD(this, s8 *, 0x1EC) = 0;
+    this->unk1F0 = 0;
+    this->unk1F4 = 1.0f;
+    this->unk1F8 = -1.0f;
+    this->unk1EC = 0;
     this->unk244 = 0.0f;
-    this->unk244 = 0.0f;
-    M2C_FIELD(this, s8 *, 0x218) = 0;
-    if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x134) != 0) {
-        ((KDSoundFader *) &this->unk218)->Init(1.0f, 1.0f);
+    this->unk248 = 0.0f;
+    this->unk218 = 0;
+    desc = checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if (desc->unk134 != 0) {
+        ((KDSoundFader *) &this->unk21C)->Init(1.0f, 1.0f);
     }
 }
-#endif
 
 s32 MobilePlatformDescriptor::IsDescriptor(MKPropDescriptor *arg0) {
     void *var_r4_1682;
@@ -722,17 +724,15 @@ loop_9:
     goto loop_12;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk124'
 s32 MobilePlatformDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1719;
 
     var_r31_1719 = 0;
-    if ((PlatformDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("BobFreq", &this->unk124, 0) != 0) || (arg0->LoadFloat("BobMag", &this->unk128, 0) != 0) || (arg0->LoadFloat("MaxSag", &this->unk140, 0) != 0) || (KDSound_LoadLine(arg0, "sndScaleOut", (int *) &this->unk130) != 0) || (KDSound_LoadLine(arg0, "sndScaleIn", (int *) &this->unk12C) != 0) || (KDSound_LoadLine(arg0, "sndMoving", (int *) &this->unk134) != 0) || (KDSound_LoadLine(arg0, "sndStart", (int *) &this->unk13C) != 0) || (KDSound_LoadLine(arg0, "sndStop", (int *) &this->unk138) != 0)) {
+    if ((PlatformDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("BobFreq", &M2C_FIELD(this, f32 *, 0x124), 0) != 0) || (arg0->LoadFloat("BobMag", &this->unk128, 0) != 0) || (arg0->LoadFloat("MaxSag", &this->unk140, 0) != 0) || (KDSound_LoadLine(arg0, "sndScaleOut", (int *) &this->unk130) != 0) || (KDSound_LoadLine(arg0, "sndScaleIn", (int *) &this->unk12C) != 0) || (KDSound_LoadLine(arg0, "sndMoving", (int *) &this->unk134) != 0) || (KDSound_LoadLine(arg0, "sndStart", (int *) &this->unk13C) != 0) || (KDSound_LoadLine(arg0, "sndStop", (int *) &this->unk138) != 0)) {
         var_r31_1719 = 1;
     }
     return var_r31_1719;
 }
-#endif
 
 void MobilePlatformDescriptor::Deinit() {
     MobilePlatformDescriptor *temp_r4_1813;
