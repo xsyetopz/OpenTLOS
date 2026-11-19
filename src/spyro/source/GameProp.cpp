@@ -161,27 +161,23 @@ void GameProp::Draw() {
     }
 }
 
-#if 0 // DRAFT: ')' expected
 void GameProp::Deactivate() {
     PropFlagsClear((unsigned int *) &this->unk10, 0x160000U);
     this->unk70.unk4 = 0;
-    if ((u32) M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u32 *, 0xC8) != 0U) {
-        this->unk80->SetAnim(M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0xC8), 1.0f, 0.0f, 0, -1);
+    if ((u32) checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkC8 != 0U) {
+        this->unk80->SetAnim((MKAnim *) checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkC8, 1.0f, 0.0f, 0, -1);
     }
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void GameProp::Activate() {
     PropFlagsSet((unsigned int *) &this->unk10, 0x160000U);
     if (this->unk10 & 0x100000) {
         this->unk70.unk4 = 1;
     }
-    if ((u32) M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u32 *, 0xC4) != 0U) {
-        this->unk80->SetAnim(M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0xC4), 1.0f, 0.0f, 0, -1);
+    if ((u32) checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkC4 != 0U) {
+        this->unk80->SetAnim((MKAnim *) checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkC4, 1.0f, 0.0f, 0, -1);
     }
 }
-#endif
 
 void GameProp::PropUpdate() {
 
@@ -271,7 +267,6 @@ void *GameProp::Update() {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 void GameProp::Reset() {
     KDProp::Reset();
     this->unkB8 = 0.0f;
@@ -279,14 +274,13 @@ void GameProp::Reset() {
         this->unk70.unk4 = 0;
     }
     if (this->unk10 & 0x80000) {
-        if ((u32) M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u32 *, 0xC4) != 0U) {
-            this->unk80->SetAnim(M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0xC4), 1.0f, 0.0f, 0, -1);
+        if ((u32) checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkC4 != 0U) {
+            this->unk80->SetAnim((MKAnim *) checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkC4, 1.0f, 0.0f, 0, -1);
         }
-    } else if ((u32) M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u32 *, 0xC8) != 0U) {
-        this->unk80->SetAnim(M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0xC8), 1.0f, 0.0f, 0, -1);
+    } else if ((u32) checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkC8 != 0U) {
+        this->unk80->SetAnim((MKAnim *) checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unkC8, 1.0f, 0.0f, 0, -1);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'pLoopingSoundEvents'
 s32 GameProp::LoadDone() {
@@ -357,44 +351,31 @@ void GameProp::Init() {
     this->unkC0 = NULL;
 }
 
-#if 0 // DRAFT: function call 'GetAnim(signed char *)' does not match 'MKAnimScript::GetAnim(int)' 'MKAnimScript::GetAnim(const char *)'
 void GamePropDescriptor::LoadDone() {
-    s8 *temp_r3_752;
-    s8 *temp_r4_755;
-    s8 *temp_r4_761;
-    s8 *temp_r4_768;
-
     KDPropExDescriptor::LoadDone();
-    temp_r3_752 = this->unk34;
-    if (temp_r3_752 != NULL) {
-        temp_r4_755 = this->unkC0;
-        if (temp_r4_755 != NULL) {
-            this->unkC0 = ((MKAnimScript *) temp_r3_752)->GetAnim(temp_r4_755);
+    if (this->unk34 != NULL) {
+        if (this->unkC0 != NULL) {
+            this->unkC0 = (s8 *) ((MKAnimScript *) this->unk34)->GetAnim((const char *) this->unkC0);
         }
-        temp_r4_761 = this->unkC4;
-        if (temp_r4_761 != NULL) {
-            this->unkC4 = ((MKAnimScript *) this->unk34)->GetAnim(temp_r4_761);
+        if (this->unkC4 != NULL) {
+            this->unkC4 = (s8 *) ((MKAnimScript *) this->unk34)->GetAnim((const char *) this->unkC4);
         }
-        temp_r4_768 = this->unkC8;
-        if (temp_r4_768 != NULL) {
-            this->unkC8 = ((MKAnimScript *) this->unk34)->GetAnim(temp_r4_768);
+        if (this->unkC8 != NULL) {
+            this->unkC8 = (s8 *) ((MKAnimScript *) this->unk34)->GetAnim((const char *) this->unkC8);
         }
     }
     this->unkC |= 0x20;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 GamePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_794;
 
     var_r31_794 = 0;
-    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (PropTypes_LoadLine(arg0, "", (int *) &this->unkC) != 0) || (arg0->LoadString("", &this->unkC0, 0) != 0) || (KDSound_LoadLine(arg0, "", (int *) &this->unkDC) != 0) || (arg0->LoadString("", &this->unkC4, 0) != 0) || (arg0->LoadString("", &this->unkC8, 0) != 0) || (KDSound_LoadLine(arg0, "soundLoop01", (int *) &this->unkD0.unk0) != 0) || (KDSound_LoadLine(arg0, "", (int *) &this->unkD4) != 0) || (KDSound_LoadLine(arg0, "", (int *) &this->unkD8) != 0) || (arg0->LoadBool("", this + 0xE1, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unkE0, 0) != 0) || (arg0->LoadFloat("", (f32 *) &this->unkCC, 0) != 0)) {
+    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (PropTypes_LoadLine(arg0, (char *) "searchMask", (int *) &this->unkC) != 0) || (arg0->LoadString("animHit", (const char **) &this->unkC0, 0) != 0) || (KDSound_LoadLine(arg0, "sndHitHero", (int *) &this->unkDC) != 0) || (arg0->LoadString("animEnable", (const char **) &this->unkC4, 0) != 0) || (arg0->LoadString("animDisable", (const char **) &this->unkC8, 0) != 0) || (KDSound_LoadLine(arg0, "soundLoop01", (int *) &this->unkD0.unk0) != 0) || (KDSound_LoadLine(arg0, "soundLoop02", (int *) &this->unkD4) != 0) || (KDSound_LoadLine(arg0, "soundLoop03", (int *) &this->unkD8) != 0) || (arg0->LoadBool("CanFreeze", (bool *) ((u8 *) this + 0xE1), 0) != 0) || (arg0->LoadBool("CanBurn", (bool *) &this->unkE0, 0) != 0) || (arg0->LoadFloat("pointLightRadius", (f32 *) &this->unkCC, 0) != 0)) {
         var_r31_794 = 1;
     }
     return var_r31_794;
 }
-#endif
 
 void GamePropDescriptor::Init() {
     KDPropExDescriptor::Init();
