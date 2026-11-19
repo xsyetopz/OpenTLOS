@@ -35,12 +35,11 @@ void KDParticleBoxEmitter::InitBoxParticlePostion(KDParticleEmitter *arg0, MKPar
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk44'
+extern "C" void InitBoxParticlePostion__20KDParticleBoxEmitterFP17KDParticleEmitterP10MKParticle(KDParticleEmitter *, MKParticle *);
 void KDParticleBoxEmitter::Init() {
     KDParticleEmitter::Init();
-    this->unk44 = &KDParticleBoxEmitter::InitBoxParticlePostion;
+    M2C_FIELD(this, void **, 0x44) = (void *) InitBoxParticlePostion__20KDParticleBoxEmitterFP17KDParticleEmitterP10MKParticle;
 }
-#endif
 
 void KDParticleLineEmitter::InitLineParticlePostion(KDParticleEmitter *arg0, MKParticle *arg1) {
     void *temp_r31_106;
@@ -49,15 +48,15 @@ void KDParticleLineEmitter::InitLineParticlePostion(KDParticleEmitter *arg0, MKP
     ((KDPathSegment *) (M2C_FIELD(temp_r31_106, KDPathSegment **, 0x78)))->GetPositionAlongPath(MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f), *((MKVector3 *) arg0));
 }
 
-#if 0 // DRAFT: undefined identifier 'unk44'
+extern "C" void InitLineParticlePostion__21KDParticleLineEmitterFP17KDParticleEmitterP10MKParticle(KDParticleEmitter *, MKParticle *);
 void KDParticleLineEmitter::Init() {
     KDParticleEmitter::Init();
     this->unk78 = 0;
-    this->unk44 = &KDParticleLineEmitter::InitLineParticlePostion;
+    M2C_FIELD(this, void **, 0x44) = (void *) InitLineParticlePostion__21KDParticleLineEmitterFP17KDParticleEmitterP10MKParticle;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkF4'
+extern "C" f64 fabs(f64);
+extern "C" f64 acos(f64);
 void KDParticleEmitter::InitPointParticleParameters(KDParticleEmitter *arg0, MKParticle *arg1) {
     f32 sp18;
     f32 sp14;
@@ -84,7 +83,7 @@ void KDParticleEmitter::InitPointParticleParameters(KDParticleEmitter *arg0, MKP
 
     arg0->unk24 = MKRand_Float((int *) &gViewSeed, this->unk58, this->unk54);
     temp_r31_164 = arg0->unk2C;
-    M2C_FIELD(temp_r31_164, f32 *, 0x14) = (f32) this->unk28->unkF4;
+    M2C_FIELD(temp_r31_164, f32 *, 0x14) = M2C_FIELD(this->unk28, f32 *, 0xF4);
     M2C_FIELD(temp_r31_164, f32 *, 0) = 0.0f;
     M2C_FIELD(temp_r31_164, f32 *, 4) = 0.0f;
     M2C_FIELD(temp_r31_164, f32 *, 8) = 0.0f;
@@ -132,8 +131,7 @@ void KDParticleEmitter::InitPointParticleParameters(KDParticleEmitter *arg0, MKP
     M2C_FIELD(temp_r31_164, f32 *, 0x18) = (f32) ((f32) temp_f31_247 * MKRand_Float((int *) &gViewSeed, this->unk68, this->unk64));
     if (this->unk38 > 0.0f) {
         temp_f31_263 = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
-        MKRand_Float((int *) &gViewSeed, this->unk3C, 1.0f);
-        temp_f30_269 = (f32) acos();
+        temp_f30_269 = (f32) acos(MKRand_Float((int *) &gViewSeed, this->unk3C, 1.0f));
         temp_f29_274 = -MKRand_Float((int *) &gViewSeed, this->unk50, this->unk4C);
         _table_sincosf(temp_f30_269, sp18, sp14);
         _table_sincosf(temp_f31_263, sp10, spC);
@@ -149,7 +147,6 @@ void KDParticleEmitter::InitPointParticleParameters(KDParticleEmitter *arg0, MKP
     M2C_FIELD(temp_r31_164, f32 *, 4) = 0.0f;
     M2C_FIELD(temp_r31_164, f32 *, 8) = temp_f0_303;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void KDParticleEmitter::InitPointParticlePosition(KDParticleEmitter *arg0, MKParticle *arg1) {
@@ -252,7 +249,6 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to 'float'
 void KDParticleEmitter::Burst() {
     f32 sp10;
     f32 spC;
@@ -261,83 +257,65 @@ void KDParticleEmitter::Burst() {
     sp8 = 0.0f;
     spC = 0.0f;
     sp10 = 0.0f;
-    Emit((s32) M2C_BITWISE(f32, this->unk2C), (MKVector3 *) &sp8);
+    Emit((s32) M2C_FIELD(this, f32 *, 0x2C), (MKVector3 *) &sp8);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to 'float'
 void KDParticleEmitter::Update() {
-    f64 sp50;                                       /* compiler-managed */
-    f64 sp48;                                       /* compiler-managed */
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f64 sp28;
-    f32 sp20;
-    f64 sp18;
-    f32 sp10;
-    f64 sp8;
-    f32 temp_f2_506;
-    f32 temp_f4_518;
+    MKVector3 sp48;
+    f32 inv;
+    f32 dx;
+    f32 dy;
+    f32 dz;
     f64 *temp_r3_510;
-    f64 *temp_r4_545;
-    s32 temp_r31_562;
 
     if (((u8) this->unk40 == 0) && ((MKBaseParticleSystem *) this->unk28 == NULL)) {
         this->unk30 = 0.0f;
         return;
     }
-    temp_f2_506 = this->unk34;
-    if (temp_f2_506 > 0.0f) {
+    if (this->unk34 > 0.0f) {
         temp_r3_510 = this->unk6C;
-        sp8 = M2C_FIELD(temp_r3_510, f64 *, 0) - this->unk18;
-        temp_f4_518 = 1.0f / temp_f2_506;
-        sp28 = sp8;
-        sp10 = M2C_FIELD(temp_r3_510, f32 *, 8) - this->unk20;
-        sp30 = (f64) sp10;
-        sp18 = sp28 * (f64) temp_f4_518;
-        sp38 = sp18;
-        sp20 = (f32) sp30 * temp_f4_518;
-        sp48 = sp18;
-        sp40 = (f64) sp20;
-        sp50 = (f64) sp20;
+        dx = M2C_FIELD(temp_r3_510, f32 *, 0) - M2C_FIELD(this, f32 *, 0x18);
+        dy = M2C_FIELD(temp_r3_510, f32 *, 4) - M2C_FIELD(this, f32 *, 0x1C);
+        dz = M2C_FIELD(temp_r3_510, f32 *, 8) - this->unk20;
+        inv = 1.0f / this->unk34;
+        sp48.unk0 = dx * inv;
+        sp48.unk4 = dy * inv;
+        sp48.unk8 = dz * inv;
     } else {
-        sp48 = 0.0f;
-        (*(f32 *) ((u8 *) &sp40 + 0xc)) = 0.0f;
-        sp50 = 0.0f;
+        sp48.unk0 = 0.0f;
+        sp48.unk4 = 0.0f;
+        sp48.unk8 = 0.0f;
     }
-    temp_r4_545 = this->unk6C;
-    this->unk18 = M2C_FIELD(temp_r4_545, f64 *, 0);
-    M2C_FIELD(this, f32 *, 0x20) = (f64) M2C_FIELD(temp_r4_545, f32 *, 8);
+    *(MKVector3 *) &this->unk18 = *(MKVector3 *) this->unk6C;
     this->unk34 = gUpdateTimeDelta;
-    this->unk30 += M2C_BITWISE(f32, this->unk2C) * gUpdateTimeDelta;
-    temp_r31_562 = (s32) this->unk30;
-    Emit(temp_r31_562, (MKVector3 *) &sp48);
-    this->unk30 -= (f32) temp_r31_562;
+    this->unk30 += M2C_FIELD(this, f32 *, 0x2C) * gUpdateTimeDelta;
+    {
+        s32 count = (s32) this->unk30;
+        Emit(count, &sp48);
+        this->unk30 -= (f32) count;
+    }
 }
-#endif
 
 void KDParticleEmitter::LoadDone() {
     this->unk3C = _table_sinf(1.5707964f + this->unk38);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 KDParticleEmitter::LoadLine(MKIniLine *arg0) {
     s32 var_r31_615;
 
     var_r31_615 = 0;
-    if ((arg0->LoadBool("active", &this->unk40, 0) != 0) || (arg0->LoadFloat("rate", (f32 *) &this->unk2C, 0) != 0) || (arg0->LoadFloat("angle", &this->unk38, 0) != 0) || (arg0->LoadFloat("minScale", &this->unk68, 0) != 0) || (arg0->LoadFloat("maxScale", &this->unk64, 0) != 0) || (arg0->LoadFloat("minVel", &this->unk50, 0) != 0) || (arg0->LoadFloat("maxVel", &this->unk4C, 0) != 0) || (arg0->LoadFloat("minRot", &this->unk58, 0) != 0) || (arg0->LoadFloat("maxRot", &this->unk54, 0) != 0) || (arg0->LoadFloat("minRotVel", &this->unk60, 0) != 0) || (arg0->LoadFloat("maxRotVel", &this->unk5C, 0) != 0)) {
+    if ((arg0->LoadBool("active", (bool *) &this->unk40, 0) != 0) || (arg0->LoadFloat("rate", (f32 *) &this->unk2C, 0) != 0) || (arg0->LoadFloat("angle", &this->unk38, 0) != 0) || (arg0->LoadFloat("minScale", &this->unk68, 0) != 0) || (arg0->LoadFloat("maxScale", &this->unk64, 0) != 0) || (arg0->LoadFloat("minVel", &this->unk50, 0) != 0) || (arg0->LoadFloat("maxVel", &this->unk4C, 0) != 0) || (arg0->LoadFloat("minRot", &this->unk58, 0) != 0) || (arg0->LoadFloat("maxRot", &this->unk54, 0) != 0) || (arg0->LoadFloat("minRotVel", &this->unk60, 0) != 0) || (arg0->LoadFloat("maxRotVel", &this->unk5C, 0) != 0)) {
         var_r31_615 = 1;
     }
     return var_r31_615;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'void *'
+extern "C" void InitPointParticlePosition__17KDParticleEmitterFP17KDParticleEmitterP10MKParticle(KDParticleEmitter *, MKParticle *);
+extern "C" void InitPointParticleParameters__17KDParticleEmitterFP17KDParticleEmitterP10MKParticle(KDParticleEmitter *, MKParticle *);
 void KDParticleEmitter::Init() {
     this->unk28 = NULL;
     this->unk40 = 1;
-    this->unk2C = 0.0f;
+    M2C_FIELD(this, f32 *, 0x2C) = 0.0f;
     this->unk30 = 0.0f;
     this->unk38 = 0.0f;
     this->unk3C = 1.0f;
@@ -349,8 +327,7 @@ void KDParticleEmitter::Init() {
     this->unk60 = 0.0f;
     this->unk64 = 1.0f;
     this->unk68 = 1.0f;
-    this->unk18 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x20) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    *(MKVector3 *) &this->unk18 = MKVector3::zero;
     this->unk34 = 0.0f;
     this->unk70 = &Matrix::identity;
     this->unk6C = (f64 *) &MKVector3::zero;
@@ -358,7 +335,6 @@ void KDParticleEmitter::Init() {
     M2C_FIELD(this, f32 *, 0xC) = 1.0f;
     this->unk10 = 1.0f;
     this->unk14 = 1.0f;
-    this->unk44 = &KDParticleEmitter::InitPointParticlePosition;
-    this->unk48 = &KDParticleEmitter::InitPointParticleParameters;
+    M2C_FIELD(this, void **, 0x44) = (void *) InitPointParticlePosition__17KDParticleEmitterFP17KDParticleEmitterP10MKParticle;
+    M2C_FIELD(this, void **, 0x48) = (void *) InitPointParticleParameters__17KDParticleEmitterFP17KDParticleEmitterP10MKParticle;
 }
-#endif
