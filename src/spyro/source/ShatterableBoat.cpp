@@ -81,60 +81,41 @@ void ShatterableBoat::SetDefaults() {
     Update();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 ShatterableBoat::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    f64 sp30;
-    f64 sp28;
     MKVector3 sp18;
-    f32 sp10;
-    f64 sp8;
     void *temp_r4_191;
 
     sp18 = MKVector(0.0f, 100.0f, 0.0f);
     temp_r4_191 = ((u8 *) this->unk8) + 0x30;
-    sp8 = M2C_FIELD(temp_r4_191, f64 *, 0) + M2C_BITWISE(f64, sp18);
-    M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD(temp_r4_191, f32 *, 8) + sp18.unk8;
-    sp28 = sp8;
-    sp30 = (f64) sp10;
-    M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
+    arg1->unk0 = M2C_FIELD(temp_r4_191, f32 *, 0) + sp18.unk0;
+    arg1->unk4 = M2C_FIELD(temp_r4_191, f32 *, 4) + sp18.unk4;
+    arg1->unk8 = M2C_FIELD(temp_r4_191, f32 *, 8) + sp18.unk8;
     return 1;
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 ShatterableBoat::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
-    f64 sp30;
-    f64 sp28;
     MKVector3 sp18;
-    f32 sp10;
-    f64 sp8;
     void *temp_r4_229;
 
     sp18 = MKVector(0.0f, 100.0f, 0.0f);
     temp_r4_229 = ((u8 *) this->unk8) + 0x30;
-    sp8 = M2C_FIELD(temp_r4_229, f64 *, 0) + M2C_BITWISE(f64, sp18);
-    M2C_FIELD(arg1, f64 *, 0) = sp8;
-    sp10 = M2C_FIELD(temp_r4_229, f32 *, 8) + sp18.unk8;
-    sp28 = sp8;
-    sp30 = (f64) sp10;
-    M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
+    arg1->unk0 = M2C_FIELD(temp_r4_229, f32 *, 0) + sp18.unk0;
+    arg1->unk4 = M2C_FIELD(temp_r4_229, f32 *, 4) + sp18.unk4;
+    arg1->unk8 = M2C_FIELD(temp_r4_229, f32 *, 8) + sp18.unk8;
     return 1;
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void ShatterableBoat::Deinit() {
     this->unk24C->Destroy();
     this->unk258->Destroy();
     ((KDUniformSpline *) &this->unk218)->Deinit();
     MKModel_Destroy(this->unk310);
-    if ((s32) M2C_FIELD(checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x16C) != 0) {
+    ShatterableBoatDescriptor *desc = checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if ((s32) M2C_FIELD(desc, s32 *, 0x16C) != 0) {
         KDSound_Stop((int *) &this->unk338);
     }
     ShatterablePlatform::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void ShatterableBoat::Draw() {
@@ -247,26 +228,28 @@ void ShatterableBoat::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 void ShatterableBoat::Message(MKMessage *arg0) {
     s32 temp_r0_469;
     s32 temp_r0_511;
     s32 temp_r3_539;
     s32 var_r0_516;
     s32 var_r4_510;
+    ShatterableBoatDescriptor *desc;
 
-    if ((s32) M2C_FIELD(checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x16C) != 0) {
+    desc = checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if ((s32) M2C_FIELD(desc, s32 *, 0x16C) != 0) {
         ((KDSoundPlayer *) &this->unk338)->Message(arg0);
     }
     temp_r0_469 = arg0->unk0;
-    switch (temp_r0_469) {                          /* irregular */
+    switch (temp_r0_469) {
     case 0xB5:
         if ((s32) this->unk234 == 1) {
             this->unk234 = 0;
             this->unk24C->SetAnim(this->unk250, 1.0f, 0.0f, 0, -1);
             this->unk258->SetAnim(this->unk25C, 1.0f, 0.0f, 0, -1);
         } else {
-            var_r4_510 = M2C_FIELD(checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160) - 1;
+            desc = checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            var_r4_510 = M2C_FIELD(desc, s32 *, 0x160) - 1;
             temp_r0_511 = this->unk238 + 1;
             if (temp_r0_511 < var_r4_510) {
                 var_r4_510 = temp_r0_511;
@@ -285,7 +268,7 @@ block_23:
         this->unk234 = 1;
         return;
     case 0x5:
-        KDSound_Play3d(GS_ShipExtra2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_ShipExtra2, (const MKVector3 *) (((u8 *) this->unk8) + 0x30), 0U, -1, 0.0f, 0U);
         goto block_23;
     case 0xBA:
         temp_r3_539 = this->unk238;
@@ -299,7 +282,6 @@ block_23:
         goto block_23;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void ShatterableBoat::EmitWaterSpray() {
@@ -1210,15 +1192,14 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 f32 ShatterableBoat::Resolve() {
     Shatterable::Resolve();
     InitOars();
-    if ((s32) M2C_FIELD(checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x16C) != 0) {
+    ShatterableBoatDescriptor *desc = checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if ((s32) M2C_FIELD(desc, s32 *, 0x16C) != 0) {
         ((KDSoundFader *) &this->unk338)->Init(0.25f, 0.25f);
     }
 }
-#endif
 
 s32 ShatterableBoat::LoadDone() {
     f64 sp10;
@@ -1242,7 +1223,7 @@ s32 ShatterableBoat::LoadDone() {
     this->unk330 = temp_f0_2086;
 }
 
-#if 0 // DRAFT: ')' expected
+extern "C" s32 stricmp(const char *, const char *);
 s32 ShatterableBoat::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r30_2160;
@@ -1251,8 +1232,7 @@ s32 ShatterableBoat::LoadLine(MKIniLine *arg0) {
     if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadFloat("speed", &this->unk230, 0) != 0) || (arg0->LoadFloat("waterheight", &this->unk314, 0) != 0)) {
         return 1;
     }
-    arg0->GetFieldName();
-    if (stricmp"waypoints" == 0) {
+    if (stricmp((const char *) arg0->GetFieldName(), "waypoints") == 0) {
         if ((u32) this->unk224 != 0U) {
             return 0;
         }
@@ -1262,20 +1242,16 @@ s32 ShatterableBoat::LoadLine(MKIniLine *arg0) {
         }
         ((KDUniformSpline *) &this->unk218)->Init(temp_r3_2147, 0U);
         var_r30_2160 = arg0->unkC->GetSubLine(arg0);
-loop_11:
-        if (var_r30_2160 != NULL) {
+        while (var_r30_2160 != NULL) {
             var_r30_2160->AsVector3(0, &sp8);
             ((KDUniformSpline *) &this->unk218)->AddNode(sp8);
             var_r30_2160 = var_r30_2160->unkC->GetNextLine(var_r30_2160);
-            goto loop_11;
         }
         return 1;
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 void ShatterableBoat::InitOars() {
     MKAnim *var_r3_2218;
     MKAnim *var_r3_2236;
@@ -1297,7 +1273,7 @@ void ShatterableBoat::InitOars() {
     u16 temp_r3_2332;
 
     this->unk24C = MKAnimScript::Create("p7007_ship_oar_left", 1);
-    this->unk24C->InitEvents(&pLeftOarAnimEvents);
+    this->unk24C->InitEvents((const char **) &pLeftOarAnimEvents);
     temp_r29_2206 = this->unk24C;
     if (temp_r29_2206->Exists("row") != 0) {
         var_r3_2218 = (MKAnim *) (temp_r29_2206->GetAnim("row"));
@@ -1313,7 +1289,7 @@ void ShatterableBoat::InitOars() {
     }
     this->unk254 = var_r3_2236;
     this->unk258 = MKAnimScript::Create("p7008_ship_oar_right", 1);
-    this->unk258->InitEvents(&pRightOarAnimEvents);
+    this->unk258->InitEvents((const char **) &pRightOarAnimEvents);
     temp_r29_2251 = this->unk258;
     if (temp_r29_2251->Exists("row") != 0) {
         var_r3_2263 = (MKAnim *) (temp_r29_2251->GetAnim("row"));
@@ -1335,7 +1311,7 @@ void ShatterableBoat::InitOars() {
     do {
         temp_r0_2306 = var_r3_2302 + 0x270;
         var_r3_2302 += 0x10;
-        *(this + temp_r0_2306) = this->unk258->unk8;
+        M2C_FIELD(this, MKModel **, temp_r0_2306) = this->unk258->unk8;
         var_ctr_2303 -= 1;
     } while (var_ctr_2303 != 0);
     var_r3_2312 = 0x50;
@@ -1343,22 +1319,21 @@ void ShatterableBoat::InitOars() {
     do {
         temp_r0_2316 = var_r3_2312 + 0x270;
         var_r3_2312 += 0x10;
-        *(this + temp_r0_2316) = this->unk24C->unk8;
+        M2C_FIELD(this, MKModel **, temp_r0_2316) = this->unk24C->unk8;
         var_ctr_2313 -= 1;
     } while (var_ctr_2313 != 0);
     var_r28_2322 = 0;
     var_r30_2324 = 0;
     do {
-        temp_r3_2332 = Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf("r_position_oar%d", var_r28_2322 + 1));
+        temp_r3_2332 = Tools_GetMatchingRefPointIndex(this->unk4, (const char *) Str_Printf("r_position_oar%d", var_r28_2322 + 1));
         var_r28_2322 += 1;
         temp_r0_2334 = var_r30_2324 + 0x274;
         var_r30_2324 += 0x10;
-        *(this + temp_r0_2334) = (s32) temp_r3_2332;
+        M2C_FIELD(this, s32 *, temp_r0_2334) = (s32) temp_r3_2332;
     } while (var_r28_2322 < 0xA);
     this->unk360 = (s32) Tools_GetMatchingRefPointIndex(this->unk24C->unk8, "fxemitL0");
     this->unk364 = (s32) Tools_GetMatchingRefPointIndex(this->unk258->unk8, "fxemitR0");
 }
-#endif
 
 void ShatterableBoat::Init() {
     ShatterablePlatform::Init();
@@ -1375,22 +1350,18 @@ void ShatterableBoat::Init() {
     this->unk314 = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 s32 ShatterableBoatDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2425;
 
     var_r31_2425 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "AmbientSoundLoop", (int *) &this->unk16C) != 0) || (KDSound_LoadLine(arg0, "sndSink", (int *) &this->unk170) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "AmbientSoundLoop", (int *) &M2C_FIELD(this, s32 *, 0x16C)) != 0) || (KDSound_LoadLine(arg0, "sndSink", (int *) &this->unk170) != 0)) {
         var_r31_2425 = 1;
     }
     return var_r31_2425;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void ShatterableBoatDescriptor::Init() {
     ShatterableDescriptor::Init();
-    this->unk16C = GS_PLACEHOLDER;
+    M2C_FIELD(this, s32 *, 0x16C) = GS_PLACEHOLDER;
     this->unk170 = GS_PLACEHOLDER;
 }
-#endif
