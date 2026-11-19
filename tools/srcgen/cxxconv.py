@@ -36,6 +36,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from asmdata import bindings, objects  # noqa: E402
 from stackslots import resolve, slot_types  # noqa: E402
+from voidarith import byte_offsets, void_fields  # noqa: E402
 from cxxtypes import K, parse, render  # noqa: E402
 from henums import HEADER as ENUM_HEADER, mentions, value_enums  # noqa: E402
 from hmodel import Model, header_key, load_model, type_names  # noqa: E402
@@ -239,7 +240,7 @@ class Converter:
         head = "" if special else ret + (" " if not ret.endswith("*") else "")
         qual = f"{cls}::" if cls else ""
         text = f"{head}{qual}{name}({', '.join(decl_params)}){' const' if const else ''} {body}"
-        return text, names
+        return byte_offsets(text, void_fields(self.model, cls)), names
 
     def convert(self, text: str, tu: str, pools: dict[str, bytes], binds: dict[str, str],
                 slots: dict[str, dict[int, str]]) -> tuple[str, str]:
