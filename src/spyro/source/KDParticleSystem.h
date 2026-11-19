@@ -63,7 +63,6 @@ public:
     virtual void Deinit(void);
     KDEnvParticleSystemDescriptor(void);
     void CalculateEnvelope(void);
-    /* 0x0cc */ u8 padCC[0x4];
     /* 0x0d0 */ s32 unkD0;
     /* 0x0d4 */ void* unkD4;
     /* 0x0d8 */ u8 unkD8;

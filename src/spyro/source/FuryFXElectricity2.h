@@ -38,7 +38,6 @@ public:
     /* 0x0a8 */ ManagedLight* unkA8;
     /* 0x0ac */ ZapPS* unkAC;
     /* 0x0b0 */ BreathHitMessage unkB0;
-    /* 0x104 */ u8 pad104[0x4];
     /* 0x108 */ f64 unk108;
     /* 0x110 */ f64 unk110;
     /* 0x118 */ f32 unk118;

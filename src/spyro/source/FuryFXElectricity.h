@@ -59,7 +59,6 @@ public:
     /* 0x100 */ ZapPS* unk100;
     /* 0x104 */ u8 pad104[0x4];
     /* 0x108 */ BreathHitMessage unk108;
-    /* 0x15c */ u8 pad15C[0x4];
     /* 0x160 */ f32 unk160;
     /* 0x164 */ f32 unk164;
     /* 0x168 */ f32 unk168;

@@ -55,7 +55,6 @@ public:
     /* 0x128 */ f32 unk128;
     /* 0x12c */ u8 pad12C[0x4];
     /* 0x130 */ BreathHitMessage unk130;
-    /* 0x184 */ u8 pad184[0x4];
     /* 0x188 */ s32 unk188;
     /* 0x18c */ u8 pad18C[0x24];
     /* 0x1b0 */ u8 unk1B0;
@@ -91,8 +90,8 @@ public:
 inline FireBombFX::FireBombFX() {
     this->unk130.unk4 = 0;
     this->unk188 = 0;
-    this->unk1C0 = 0;
     this->unk1C4 = 0;
+    this->unk1C8 = 0.0f;
     this->unk1C8 = 0.0f;
     this->unk1CC = 0;
 }

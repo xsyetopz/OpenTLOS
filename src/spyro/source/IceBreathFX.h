@@ -38,9 +38,7 @@ public:
     /* 0x0b0 */ s32 unkB0;
     /* 0x0b4 */ MKModel* unkB4;
     /* 0x0b8 */ BreathHitMessage unkB8;
-    /* 0x10c */ u8 pad10C[0x4];
     /* 0x110 */ BreathHitMessage unk110;
-    /* 0x164 */ u8 pad164[0x4];
     /* 0x168 */ ManagedLight* unk168;
     /* 0x16c */ f32 unk16C;
     /* 0x170 */ FuryFXIce* unk170;

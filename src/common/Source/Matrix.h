@@ -30,14 +30,14 @@ public:
     void Transpose3x3(const Matrix *);
     void Transpose(const Matrix *);
     void SetLookAt(const MKVector3 &, const MKVector3 &);
-    void GetRotationRPY(void) const;
-    void GetRotationPRY(void) const;
-    void GetRotationPYR(void) const;
+    MKVector3 GetRotationRPY(void) const;
+    MKVector3 GetRotationPRY(void) const;
+    MKVector3 GetRotationPYR(void) const;
     void SetRotationPYR(const MKVector3 &);
     void SetRotationRoll(float);
     void SetRotationYaw(float);
     void SetRotationPitch(float);
-    void NormaliseScale(void);
+    MKVector3 NormaliseScale(void);
     void SetRotationToNone(void);
     void SetZero(void);
     void SetIdentity(void);

@@ -51,7 +51,6 @@ public:
     /* 0x160 */ SuckeyPS* unk160;
     /* 0x164 */ Corona* unk164;
     /* 0x168 */ BreathHitMessage unk168;
-    /* 0x1bc */ u8 pad1BC[0x4];
     /* 0x1c0 */ MKPropDescriptor* unk1C0;
     /* 0x1c4 */ s32 unk1C4;
     /* 0x1c8 */ u8 unk1C8;

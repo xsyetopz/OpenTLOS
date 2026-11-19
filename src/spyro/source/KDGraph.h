@@ -22,7 +22,7 @@ public:
     virtual s32 IsLinked(KDGraphNode *) const;
     virtual s32 GetLink(int);
     virtual void SetPos(MKVector3);
-    virtual void GetPos(void) const;
+    virtual MKVector3 GetPos(void) const;
     KDGraphNode(void);
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ f64 unk8;
@@ -55,12 +55,13 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal assignment to constant
-inline void KDGraphNode::GetPos() const {
-    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 8);
-    this->unk8 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x10);
+inline MKVector3 KDGraphNode::GetPos() const {
+    MKVector3 result;
+    MKVector3 *sret = &result;
+    M2C_FIELD(sret, f64 *, 0) = (f64) this->unk8;
+    M2C_FIELD(sret, f64 *, 8) = (f64) this->unk10;
+    return result;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 inline void KDGraphNode::SetPos(MKVector3 arg0) {
