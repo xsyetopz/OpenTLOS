@@ -69,89 +69,83 @@ void LavaCannon::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) 
     }
 }
 
-#if 0 // DRAFT: ')' expected
 void LavaCannon::EmitExplodingEffects() {
     MKVector3 sp50;
     MKVector3 sp40;
     MKVector3 sp30;
     MKVector3 sp20;
     MKVector3 sp10;
-    s32 sp8;
-    s32 temp_r0_64;
-    s32 temp_r29_262;
-    u8 var_r30_260;
-    void *temp_r3_124;
-    void *temp_r3_157;
-    void *temp_r3_190;
-    void *temp_r3_223;
-    void *temp_r3_91;
+    LavaCannonDescriptor *desc;
+    void *cutscene;
+    s32 sound;
+    u8 playing;
 
-    temp_r0_64 = this->unk25C;
-    switch (temp_r0_64) {                           /* irregular */
+    switch (this->unk25C) {
     case 0:
         if (this->unk254 >= 0.4f) {
-            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188), &sp50);
-            temp_r3_91 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-            sp8 = 1;
-            ((Explosion4 *) (M2C_FIELD(temp_r3_91, Explosion4 **, 0x19C)))->Trigger(sp50, 0.75f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, desc->unk188, &sp50);
+            desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            ((Explosion4 *) desc->unk19C)->Trigger(sp50, 0.75f, 0, NULL, 5, 0, 1, 1, 1);
             this->unk254 = 0.0f;
             this->unk25C += 1;
         }
         break;
     case 1:
         if (this->unk254 >= 0.3f) {
-            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x18C), &sp40);
-            temp_r3_124 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-            sp8 = 1;
-            ((Explosion4 *) (M2C_FIELD(temp_r3_124, Explosion4 **, 0x19C)))->Trigger(sp40, 0.75f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, desc->unk18C, &sp40);
+            desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            ((Explosion4 *) desc->unk19C)->Trigger(sp40, 0.75f, 0, NULL, 5, 0, 1, 1, 1);
             this->unk254 = 0.0f;
             this->unk25C += 1;
         }
         break;
     case 2:
         if (this->unk254 >= 0.2f) {
-            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x184), &sp30);
-            temp_r3_157 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-            sp8 = 1;
-            ((Explosion4 *) (M2C_FIELD(temp_r3_157, Explosion4 **, 0x19C)))->Trigger(sp30, 0.75f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, desc->unk184, &sp30);
+            desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            ((Explosion4 *) desc->unk19C)->Trigger(sp30, 0.75f, 0, NULL, 5, 0, 1, 1, 1);
             this->unk254 = 0.0f;
             this->unk25C += 1;
         }
         break;
     case 3:
         if (this->unk254 >= 0.2f) {
-            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x18C), &sp20);
-            temp_r3_190 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-            sp8 = 1;
-            ((Explosion4 *) (M2C_FIELD(temp_r3_190, Explosion4 **, 0x19C)))->Trigger(sp20, 1.0f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, desc->unk18C, &sp20);
+            desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            ((Explosion4 *) desc->unk19C)->Trigger(sp20, 1.0f, 0, NULL, 5, 0, 1, 1, 1);
             this->unk254 = 0.0f;
             this->unk25C += 1;
         }
         break;
     case 4:
         if (this->unk254 >= 0.1f) {
-            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188), &sp10);
-            temp_r3_223 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-            sp8 = 1;
-            ((Explosion4 *) (M2C_FIELD(temp_r3_223, Explosion4 **, 0x19C)))->Trigger(sp10, 1.0f, 0U, NULL, 5, 0U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            MKModel_CalculateNodeWorldPosition(this->unk80->unk8, desc->unk188, &sp10);
+            desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            ((Explosion4 *) desc->unk19C)->Trigger(sp10, 1.0f, 0, NULL, 5, 0, 1, 1, 1);
             this->unk254 = 0.0f;
             this->unk25C += 1;
-            Shatterable::Shatter(0U, NULL, -1, NULL, 1U, 0U);
+            Shatterable::Shatter(0, NULL, -1, NULL, 1, 0);
             this->unk264 = 1;
-            var_r30_260 = 0;
-            temp_r29_262 = KDSound_Play3d(GS_TowerHit, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
-            if ((((u32) M2C_FIELD(gb.unkC, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(gb.unkC, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (gb.unkC + 0x24))->GetState() != 0)) {
-                var_r30_260 = 1;
+            playing = 0;
+            sound = KDSound_Play3d(GS_TowerHit, (const MKVector3 *) ((s8 *) this->unk8 + 0x30), 0, -1, 0.0f, 0);
+            cutscene = M2C_FIELD(&gb, void **, 0xC);
+            if (((M2C_FIELD(cutscene, u32 *, 0x78) != 0) || (M2C_FIELD(cutscene, u32 *, 0x84) != 0)) &&
+                (((KDStateMachine<CutsceneSystem> *) ((s8 *) cutscene + 0x24))->GetState() != 0)) {
+                playing = 1;
             }
-            if (var_r30_260 != 0) {
-                KDSound_SetVolume(temp_r29_262, 0.25f * (f32) KDSound_GetSoundEventVol(GS_TowerHit));
+            if (playing != 0) {
+                KDSound_SetVolume(sound, 0.25f * (f32) KDSound_GetSoundEventVol(GS_TowerHit));
             }
         }
         break;
     }
     this->unk254 += gUpdateTimeDelta;
 }
-#endif
 
 void LavaCannon::EmitFiringEffects() {
     f64 spA8;
@@ -225,24 +219,19 @@ void LavaCannon::SetState(int arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal operand
 void LavaCannon::Message(MKMessage *arg0) {
-    s32 temp_r0_459;
-
-    temp_r0_459 = arg0->unk0;
-    switch (temp_r0_459) {                          /* irregular */
+    switch (arg0->unk0) {
     case 0xB5:
         Shatter(0, 0, -1, 0);
         break;
     case 0x4E:
-        if ((void *) this->unk240 == (u32) arg0->unk4) {
+        if ((u32) this->unk240 == arg0->unk4) {
             this->unk240 = NULL;
         }
         break;
     }
     Shatterable::Message(arg0);
 }
-#endif
 
 void LavaCannon::Reset() {
     Shatterable::Reset();
@@ -255,69 +244,53 @@ void LavaCannon::Reset() {
     this->unk264 = 0;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void LavaCannon::Draw() {
     Matrix sp110;
     Matrix spD0;
     Matrix sp90;
-    f64 sp88;
-    f64 sp80;
+    MKVector3 sp80;
     MKVector3 sp70;
     MKVector3 sp60;
-    f64 sp58;
-    f64 sp50;
+    MKVector3 sp50;
     MKVector3 sp40;
     MKVector3 sp30;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    s32 temp_r30_590;
-    s32 temp_r30_653;
-    void *temp_r30_545;
-    void *temp_r30_576;
-    void *temp_r30_608;
-    void *temp_r30_639;
+    LavaCannonDescriptor *desc;
+    s32 index;
 
     sp90.SetIdentity();
     sp90.SetRotationPitch(this->unk248);
     sp110.SetIdentity();
-    temp_r30_545 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    sp70 = ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->GetNodeOrigin(M2C_FIELD(temp_r30_545, s32 *, 0x188));
-    sp20 = -M2C_BITWISE(f32, sp70);
-    sp24 = -sp70.unk4;
-    sp28 = -sp70.unk8;
-    sp80 = (f64) sp20;
-    sp88 = (f64) sp28;
-    sp110.Translate(&sp110, *((MKVector3 *) &sp80));
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    sp70 = MKModel_GetAnimation(this->unk80->unk8)->GetNodeOrigin(desc->unk188);
+    sp80.unk0 = -sp70.unk0;
+    sp80.unk4 = -sp70.unk4;
+    sp80.unk8 = -sp70.unk8;
+    sp110.Translate(&sp110, sp80);
     sp110.Multiply(&sp110, &sp90);
-    temp_r30_576 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    sp60 = ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->GetNodeOrigin(M2C_FIELD(temp_r30_576, s32 *, 0x188));
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    sp60 = MKModel_GetAnimation(this->unk80->unk8)->GetNodeOrigin(desc->unk188);
     sp110.Translate(&sp110, sp60);
-    temp_r30_590 = M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x188);
-    ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_590, &sp110, (AnimationMatrixPosition) 2, 0U);
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    index = desc->unk188;
+    MKModel_GetAnimation(this->unk80->unk8)->SetCustomMatrix(index, &sp110, (AnimationMatrixPosition) 2, 0);
     sp90.SetIdentity();
     sp90.SetRotationYaw(this->unk24C);
     spD0.SetIdentity();
-    temp_r30_608 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    sp40 = ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->GetNodeOrigin(M2C_FIELD(temp_r30_608, s32 *, 0x184));
-    sp10 = -M2C_BITWISE(f32, sp40);
-    sp14 = -sp40.unk4;
-    sp18 = -sp40.unk8;
-    sp50 = (f64) sp10;
-    sp58 = (f64) sp18;
-    spD0.Translate(&spD0, *((MKVector3 *) &sp50));
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    sp40 = MKModel_GetAnimation(this->unk80->unk8)->GetNodeOrigin(desc->unk184);
+    sp50.unk0 = -sp40.unk0;
+    sp50.unk4 = -sp40.unk4;
+    sp50.unk8 = -sp40.unk8;
+    spD0.Translate(&spD0, sp50);
     spD0.Multiply(&spD0, &sp90);
-    temp_r30_639 = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    sp30 = ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->GetNodeOrigin(M2C_FIELD(temp_r30_639, s32 *, 0x184));
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    sp30 = MKModel_GetAnimation(this->unk80->unk8)->GetNodeOrigin(desc->unk184);
     spD0.Translate(&spD0, sp30);
-    temp_r30_653 = M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x184);
-    ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->SetCustomMatrix(temp_r30_653, &spD0, (AnimationMatrixPosition) 2, 0U);
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    index = desc->unk184;
+    MKModel_GetAnimation(this->unk80->unk8)->SetCustomMatrix(index, &spD0, (AnimationMatrixPosition) 2, 0);
     Shatterable::Draw();
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void *LavaCannon::Update() {
@@ -505,39 +478,32 @@ void *LavaCannon::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'P20LavaCannonDescriptor'
 f32 LavaCannon::Resolve() {
-    Shatterable::Resolve();
-    this->unk208.Init(checked_cast<P20LavaCannonDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x1A4);
-    ((Animation *) (MKModel_GetAnimation(this->unk80->unk8)))->EnableCustomMatrices(1U);
-}
-#endif
+    LavaCannonDescriptor *desc;
 
-#if 0 // DRAFT: undefined identifier 'unksp2C'
+    Shatterable::Resolve();
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk208.Init((AnimEventDesc *) ((u8 *) desc + 0x1A4));
+    MKModel_GetAnimation(this->unk80->unk8)->EnableCustomMatrices(1);
+}
+
 s32 LavaCannon::LoadDone() {
     Matrix sp70;
     Matrix sp30;
-    f64 sp28;
-    f64 sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
+    MKVector3 sp20;
 
     Shatterable::LoadDone();
     this->unk244 = M2C_FIELD(&MKProp::loadInfo, f32 *, 0x54);
-    M2C_STRUCT_COPY((s32) &sp30.unk3C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    sp18 = 0.0f;
-    sp10 = 0.0f;
-    sp14 = 0.0f;
-    sp28 = (f64) sp18;
-    sp20 = (f64) sp10;
-    sp70.SetRotationPYR(*((MKVector3 *) &sp20));
+    M2C_STRUCT_COPY(&sp70, (const void *) MKModel_GetWorldMatrix(this->unk4), 0x40);
+    sp20.unk0 = 0.0f;
+    sp20.unk4 = 0.0f;
+    sp20.unk8 = 0.0f;
+    sp70.SetRotationPYR(sp20);
     MKModel_SetWorldMatrix(this->unk4, sp70);
-    M2C_STRUCT_COPY((s32) &unksp2C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
-    sp30.Scale3x3(&sp30, MKProp::loadInfo + 0x60);
+    M2C_STRUCT_COPY(&sp30, (const void *) MKModel_GetWorldMatrix(this->unk4), 0x40);
+    sp30.Scale3x3(&sp30, *(MKVector3 *) ((s8 *) &MKProp::loadInfo + 0x60));
     MKModel_SetWorldMatrix(this->unk4, sp30);
 }
-#endif
 
 s32 LavaCannon::LoadLine(MKIniLine *arg0) {
     MKVector3 sp28;
@@ -593,73 +559,61 @@ void LavaCannonDescriptor::Resolve() {
     this->unk1A4.Init(&this->unk1AC, 2, (MKAnimScript *) this->unk34);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void LavaCannonDescriptor::LoadDone() {
-    s8 *temp_r30_1378;
-    s8 *temp_r30_1398;
-    s8 *temp_r30_1416;
-    s8 *temp_r30_1434;
-    s8 *temp_r30_1452;
-    s8 *temp_r30_1470;
-    void *var_r3_1390;
-    void *var_r3_1408;
-    void *var_r3_1426;
-    void *var_r3_1444;
-    void *var_r3_1462;
-    void *var_r3_1480;
+    MKAnimScript *anims;
+    void *anim;
 
     ShatterableDescriptor::LoadDone();
-    temp_r30_1378 = this->unk34;
-    if (((MKAnimScript *) temp_r30_1378)->Exists("idle") != 0) {
-        var_r3_1390 = ((MKAnimScript *) temp_r30_1378)->GetAnim("idle");
+    anims = (MKAnimScript *) this->unk34;
+    if (anims->Exists("idle") != 0) {
+        anim = anims->GetAnim("idle");
     } else {
-        var_r3_1390 = NULL;
+        anim = NULL;
     }
-    this->unk16C = (s32) var_r3_1390;
-    temp_r30_1398 = this->unk34;
-    if (((MKAnimScript *) temp_r30_1398)->Exists("idle") != 0) {
-        var_r3_1408 = ((MKAnimScript *) temp_r30_1398)->GetAnim("idle");
+    M2C_FIELD(this, s32 *, 0x16C) = (s32) anim;
+    anims = (MKAnimScript *) this->unk34;
+    if (anims->Exists("idle") != 0) {
+        anim = anims->GetAnim("idle");
     } else {
-        var_r3_1408 = NULL;
+        anim = NULL;
     }
-    this->unk170 = (s32) var_r3_1408;
-    temp_r30_1416 = this->unk34;
-    if (((MKAnimScript *) temp_r30_1416)->Exists("idle") != 0) {
-        var_r3_1426 = ((MKAnimScript *) temp_r30_1416)->GetAnim("idle");
+    this->unk170 = (s32) anim;
+    anims = (MKAnimScript *) this->unk34;
+    if (anims->Exists("idle") != 0) {
+        anim = anims->GetAnim("idle");
     } else {
-        var_r3_1426 = NULL;
+        anim = NULL;
     }
-    this->unk174 = (s32) var_r3_1426;
-    temp_r30_1434 = this->unk34;
-    if (((MKAnimScript *) temp_r30_1434)->Exists("firing") != 0) {
-        var_r3_1444 = ((MKAnimScript *) temp_r30_1434)->GetAnim("firing");
+    this->unk174 = (s32) anim;
+    anims = (MKAnimScript *) this->unk34;
+    if (anims->Exists("firing") != 0) {
+        anim = anims->GetAnim("firing");
     } else {
-        var_r3_1444 = NULL;
+        anim = NULL;
     }
-    this->unk178 = (s32) var_r3_1444;
-    temp_r30_1452 = this->unk34;
-    if (((MKAnimScript *) temp_r30_1452)->Exists("exploding") != 0) {
-        var_r3_1462 = ((MKAnimScript *) temp_r30_1452)->GetAnim("exploding");
+    this->unk178 = (s32) anim;
+    anims = (MKAnimScript *) this->unk34;
+    if (anims->Exists("exploding") != 0) {
+        anim = anims->GetAnim("exploding");
     } else {
-        var_r3_1462 = NULL;
+        anim = NULL;
     }
-    this->unk17C = (s32) var_r3_1462;
-    temp_r30_1470 = this->unk34;
-    if (((MKAnimScript *) temp_r30_1470)->Exists("idle") != 0) {
-        var_r3_1480 = ((MKAnimScript *) temp_r30_1470)->GetAnim("idle");
+    this->unk17C = (s32) anim;
+    anims = (MKAnimScript *) this->unk34;
+    if (anims->Exists("idle") != 0) {
+        anim = anims->GetAnim("idle");
     } else {
-        var_r3_1480 = NULL;
+        anim = NULL;
     }
-    this->unk180 = (s32) var_r3_1480;
-    this->unk184 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex("z_yaw");
-    this->unk188 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex("z_pitch");
-    this->unk18C = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex("z_barrel1");
+    this->unk180 = (s32) anim;
+    this->unk184 = MKModel_GetAnimation(((MKAnimScript *) this->unk34)->unk8)->GetNodeIndex("z_yaw");
+    this->unk188 = MKModel_GetAnimation(((MKAnimScript *) this->unk34)->unk8)->GetNodeIndex("z_pitch");
+    this->unk18C = MKModel_GetAnimation(((MKAnimScript *) this->unk34)->unk8)->GetNodeIndex("z_barrel1");
     this->unk190 = MKModel_GetRefPointIndex(this->unk2C, "r_emitter");
-    this->unk19C = (long) (checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4")));
-    this->unk1AC.unk0 = (signed char *) ("fire");
-    this->unk1B4 = (signed char *) ("firesound");
+    this->unk19C = (s32) checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
+    this->unk1AC.unk0 = (s8 *) "fire";
+    this->unk1B4 = (s8 *) "firesound";
 }
-#endif
 
 s32 LavaCannonDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1545;

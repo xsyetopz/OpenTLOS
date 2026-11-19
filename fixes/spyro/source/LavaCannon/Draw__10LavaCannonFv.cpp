@@ -1,0 +1,47 @@
+void LavaCannon::Draw() {
+    Matrix sp110;
+    Matrix spD0;
+    Matrix sp90;
+    MKVector3 sp80;
+    MKVector3 sp70;
+    MKVector3 sp60;
+    MKVector3 sp50;
+    MKVector3 sp40;
+    MKVector3 sp30;
+    LavaCannonDescriptor *desc;
+    s32 index;
+
+    sp90.SetIdentity();
+    sp90.SetRotationPitch(this->unk248);
+    sp110.SetIdentity();
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    sp70 = MKModel_GetAnimation(this->unk80->unk8)->GetNodeOrigin(desc->unk188);
+    sp80.unk0 = -sp70.unk0;
+    sp80.unk4 = -sp70.unk4;
+    sp80.unk8 = -sp70.unk8;
+    sp110.Translate(&sp110, sp80);
+    sp110.Multiply(&sp110, &sp90);
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    sp60 = MKModel_GetAnimation(this->unk80->unk8)->GetNodeOrigin(desc->unk188);
+    sp110.Translate(&sp110, sp60);
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    index = desc->unk188;
+    MKModel_GetAnimation(this->unk80->unk8)->SetCustomMatrix(index, &sp110, (AnimationMatrixPosition) 2, 0);
+    sp90.SetIdentity();
+    sp90.SetRotationYaw(this->unk24C);
+    spD0.SetIdentity();
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    sp40 = MKModel_GetAnimation(this->unk80->unk8)->GetNodeOrigin(desc->unk184);
+    sp50.unk0 = -sp40.unk0;
+    sp50.unk4 = -sp40.unk4;
+    sp50.unk8 = -sp40.unk8;
+    spD0.Translate(&spD0, sp50);
+    spD0.Multiply(&spD0, &sp90);
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    sp30 = MKModel_GetAnimation(this->unk80->unk8)->GetNodeOrigin(desc->unk184);
+    spD0.Translate(&spD0, sp30);
+    desc = checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    index = desc->unk184;
+    MKModel_GetAnimation(this->unk80->unk8)->SetCustomMatrix(index, &spD0, (AnimationMatrixPosition) 2, 0);
+    Shatterable::Draw();
+}
