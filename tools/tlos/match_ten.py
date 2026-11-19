@@ -6,6 +6,8 @@ Stages, strongest first; each accepts only one-to-one pairs:
   strings  same set of referenced C strings, unique in both executables
   calls    aligned call lists of an accepted pair (same callee count and shapes)
   order    same function count between two accepted anchors inside one ANB TU
+  fuzzy    opcode-shape similarity inside gaps between consecutive anchors (see fuzzy.py),
+           followed by one rerun of calls
 
 Output TSV columns: ten_addr ten_size anb_name anb_addr anb_size anb_tu method confidence
 
@@ -17,13 +19,14 @@ from collections import defaultdict
 
 sys.path.insert(0, __import__("os").path.dirname(__file__))
 from dol import Dol  # noqa: E402
+import fuzzy  # noqa: E402
 from ppc_sig import signature, small_data_bases  # noqa: E402
 from splits import Splits  # noqa: E402
 from symbols import functions, load  # noqa: E402
 import tu_align  # noqa: E402
 import vtables  # noqa: E402
 
-CONFIDENCE = {"exact": "high", "strings": "high", "calls": "medium", "align": "medium", "vtable": "medium", "order": "low"}
+CONFIDENCE = {"exact": "high", "strings": "high", "calls": "medium", "align": "medium", "vtable": "medium", "order": "low", "fuzzy": "medium"}
 MIN_EXACT_WORDS = 6  # Shorter bodies (getters, stubs) collide by accident.
 MAX_ORDER_GAP = 12
 
@@ -173,6 +176,8 @@ def main() -> None:
             f.write(f"0x{addr:08X}\t{vt_names[addr]}\t{len(ten_vts[addr])}\n")
     print(f"vtables: ANB {len(anb_vts)}, TEN candidates {len(ten_vts)}, paired {len(vt_names)}")
     m.stage_order(splits)
+    if fuzzy.stage(m):
+        m.stage_calls()
     counts = defaultdict(int)
     with open(out, "w", encoding="utf-8") as f:
         f.write("ten_addr\tten_size\tanb_name\tanb_addr\tanb_size\tanb_tu\tmethod\tconfidence\n")
