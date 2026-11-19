@@ -510,25 +510,22 @@ void ExplosiveBarrelPath::UpdateBarrelModel(ExplosiveBarrelPath::BarrelData *arg
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'ExplosiveBarrelPath' to 'ExplosiveBarrel *'
 s32 ExplosiveBarrelPath::GetNextInactiveBarrelID() {
-    s32 var_r30_804;
-    s32 var_r31_805;
+    s32 count;
+    s32 off;
 
-    var_r30_804 = 0;
-    var_r31_805 = 0;
-loop_1:
-    if (((ExplosiveBarrel *) (*(this + (var_r31_805 + 0x78))))->IsActive() == 0) {
-        return var_r30_804;
-    }
-    var_r30_804 += 1;
-    var_r31_805 += 0x44;
-    if (var_r30_804 >= 4) {
-        return -1;
-    }
-    goto loop_1;
+    count = 0;
+    off = 0;
+    do {
+        ExplosiveBarrel *barrel = M2C_FIELD(this, ExplosiveBarrel **, off + 0x78);
+        if (barrel->IsActive() == 0) {
+            return count;
+        }
+        count += 1;
+        off += 0x44;
+    } while (count < 4);
+    return -1;
 }
-#endif
 
 void ExplosiveBarrelPath::PushBarrel(int arg0) {
     void *temp_r3_835;
@@ -561,32 +558,28 @@ void ExplosiveBarrelPath::ExplodeBarrel(int arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'ExplosiveBarrelPath *' to 'ExplosiveBarrelPath::BarrelData *'
 s32 ExplosiveBarrelPath::SpawnBarrel(MKProp *arg0) {
-    s32 temp_r31_900;
-    s32 temp_r3_896;
-    void *temp_r31_914;
-    void *temp_r5_904;
+    s32 id;
+    s32 off;
+    s8 *slot;
 
-    temp_r3_896 = GetNextInactiveBarrelID();
-    if (temp_r3_896 > -1) {
-        temp_r31_900 = temp_r3_896 * 0x44;
-        temp_r5_904 = this + temp_r31_900;
-        M2C_FIELD(temp_r5_904, f32 *, 0x7C) = 0.0f;
-        M2C_FIELD(temp_r5_904, f32 *, 0x80) = 0.0f;
-        M2C_FIELD(temp_r5_904, f32 *, 0x84) = 0.0f;
-        M2C_FIELD(temp_r5_904, f32 *, 0x88) = 0.0f;
-        M2C_FIELD(temp_r5_904, f32 *, 0x8C) = 0.0f;
-        M2C_FIELD(temp_r5_904, s8 *, 0x90) = 0;
-        UpdateBarrelModel(this + (temp_r31_900 + 0x78));
-        temp_r31_914 = this + temp_r31_900;
-        ((ExplosiveBarrel *) (M2C_FIELD(temp_r31_914, ExplosiveBarrel **, 0x78)))->SetDefaults();
-        ((ExplosiveBarrel *) (M2C_FIELD(temp_r31_914, ExplosiveBarrel **, 0x78)))->SetActive(1U);
+    id = GetNextInactiveBarrelID();
+    if (id > -1) {
+        off = id * 0x44;
+        slot = (s8 *) this + off;
+        M2C_FIELD(slot, f32 *, 0x7C) = 0.0f;
+        M2C_FIELD(slot, f32 *, 0x80) = 0.0f;
+        M2C_FIELD(slot, f32 *, 0x84) = 0.0f;
+        M2C_FIELD(slot, f32 *, 0x88) = 0.0f;
+        M2C_FIELD(slot, f32 *, 0x8C) = 0.0f;
+        M2C_FIELD(slot, s8 *, 0x90) = 0;
+        UpdateBarrelModel((ExplosiveBarrelPath::BarrelData *) (slot + 0x78));
+        M2C_FIELD(slot, ExplosiveBarrel **, 0x78)->SetDefaults();
+        M2C_FIELD(slot, ExplosiveBarrel **, 0x78)->SetActive(1);
     }
     this->unk4C = arg0;
-    return temp_r3_896;
+    return id;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'double'
 void ExplosiveBarrelPath::CalcStandPosAndDir() {
@@ -1138,12 +1131,7 @@ s32 ExplosiveBarrelPath::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 s32 ExplosiveBarrelPath::LoadLine(MKIniLine *arg0) {
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    f64 sp68;
     MKVector3 sp58;
     MKVector3 sp48;
     MKVector3 sp38;
@@ -1152,8 +1140,6 @@ s32 ExplosiveBarrelPath::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r30_1936;
     MKIniLine *var_r30_2010;
-    f64 temp_f1_1950;
-    f64 temp_f1_2024;
     s32 temp_r3_1937;
     s32 temp_r3_2011;
     s32 var_r31_2077;
@@ -1165,28 +1151,21 @@ s32 ExplosiveBarrelPath::LoadLine(MKIniLine *arg0) {
         var_r30_1936 = arg0->unkC->GetSubLine(arg0);
         temp_r3_1937 = arg0->GetNmbrOfSubLines();
         if (temp_r3_1937 != 0) {
-            ((KDUniformSpline *) &this->unk50)->Init(temp_r3_1937, 0U);
-loop_9:
-            if (var_r30_1936 != NULL) {
+            ((KDUniformSpline *) &this->unk50)->Init(temp_r3_1937, 0);
+            while (var_r30_1936 != NULL) {
                 sp58 = var_r30_1936->GetVector3(0);
-                temp_f1_1950 = M2C_BITWISE(f64, sp58);
-                sp78 = temp_f1_1950;
-                sp80 = (f64) sp58.unk8;
                 if ((u8) this->unk1B0 != 0) {
-                    this->unk190 = temp_f1_1950;
-                    this->unk198 = (f64) sp58.unk8;
-                    this->unk1A0 = sp78;
-                    this->unk1A8 = sp80;
+                    *(MKVector3 *) &this->unk190 = sp58;
+                    *(MKVector3 *) &this->unk1A0 = sp58;
                     this->unk1B0 = 0;
                 } else {
-                    sp48 = Min(*((MKVector3 *) &this->unk190), *((MKVector3 *) &sp78));
+                    sp48 = Min(*(MKVector3 *) &this->unk190, sp58);
                     *(MKVector3 *) &this->unk190 = sp48;
-                    sp38 = Max(*((MKVector3 *) &this->unk1A0), *((MKVector3 *) &sp78));
+                    sp38 = Max(*(MKVector3 *) &this->unk1A0, sp58);
                     *(MKVector3 *) &this->unk1A0 = sp38;
                 }
-                ((KDUniformSpline *) &this->unk50)->AddNode(*((MKVector3 *) &sp78));
+                ((KDUniformSpline *) &this->unk50)->AddNode(sp58);
                 var_r30_1936 = var_r30_1936->unkC->GetNextLine(var_r30_1936);
-                goto loop_9;
             }
         }
         return 1;
@@ -1195,39 +1174,31 @@ loop_9:
         var_r30_2010 = arg0->unkC->GetSubLine(arg0);
         temp_r3_2011 = arg0->GetNmbrOfSubLines();
         if (temp_r3_2011 != 0) {
-            ((KDUniformSpline *) &this->unk50.unk14)->Init(temp_r3_2011, 0U);
-loop_18:
-            if (var_r30_2010 != NULL) {
+            ((KDUniformSpline *) &this->unk50.unk14)->Init(temp_r3_2011, 0);
+            while (var_r30_2010 != NULL) {
                 sp28 = var_r30_2010->GetVector3(0);
-                temp_f1_2024 = M2C_BITWISE(f64, sp28);
-                sp68 = temp_f1_2024;
-                sp70 = (f64) sp28.unk8;
                 if ((u8) this->unk1B0 != 0) {
-                    this->unk190 = temp_f1_2024;
-                    this->unk198 = (f64) sp28.unk8;
-                    this->unk1A0 = sp68;
-                    this->unk1A8 = sp70;
+                    *(MKVector3 *) &this->unk190 = sp28;
+                    *(MKVector3 *) &this->unk1A0 = sp28;
                     this->unk1B0 = 0;
                 } else {
-                    sp18 = Min(*((MKVector3 *) &this->unk190), *((MKVector3 *) &sp68));
+                    sp18 = Min(*(MKVector3 *) &this->unk190, sp28);
                     *(MKVector3 *) &this->unk190 = sp18;
-                    sp8 = Max(*((MKVector3 *) &this->unk1A0), *((MKVector3 *) &sp68));
+                    sp8 = Max(*(MKVector3 *) &this->unk1A0, sp28);
                     *(MKVector3 *) &this->unk1A0 = sp8;
                 }
-                ((KDUniformSpline *) &this->unk50.unk14)->AddNode(*((MKVector3 *) &sp68));
+                ((KDUniformSpline *) &this->unk50.unk14)->AddNode(sp28);
                 var_r30_2010 = var_r30_2010->unkC->GetNextLine(var_r30_2010);
-                goto loop_18;
             }
         }
         return 1;
     }
     var_r31_2077 = 0;
-    if ((arg0->LoadFloat("Speed", &this->unk220, 0) != 0) || (arg0->LoadFloat("Acceleration", &this->unk224, 0) != 0) || (arg0->LoadInt("BounceChance", (int *) &this->unk228, 0) != 0) || (arg0->LoadFloat("BounceSpeed", &this->unk22C, 0) != 0) || (arg0->LoadBool("bAutoShootBarrels", &this->unk231, 0) != 0) || (arg0->LoadBool("bOneShot", &this->unk230, 0) != 0) || (arg0->LoadFloat("fAutoShootDelay", &this->unk234, 0) != 0) || (arg0->LoadFloat("fExplosionRadiusScale", &this->unk23C, 0) != 0)) {
+    if ((arg0->LoadFloat("Speed", &this->unk220, 0) != 0) || (arg0->LoadFloat("Acceleration", &this->unk224, 0) != 0) || (arg0->LoadInt("BounceChance", (int *) &this->unk228, 0) != 0) || (arg0->LoadFloat("BounceSpeed", &this->unk22C, 0) != 0) || (arg0->LoadBool("bAutoShootBarrels", (bool *) &this->unk231, 0) != 0) || (arg0->LoadBool("bOneShot", (bool *) &this->unk230, 0) != 0) || (arg0->LoadFloat("fAutoShootDelay", &this->unk234, 0) != 0) || (arg0->LoadFloat("fExplosionRadiusScale", &this->unk23C, 0) != 0)) {
         var_r31_2077 = 1;
     }
     return var_r31_2077;
 }
-#endif
 
 #if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match 'KDSound_Stop(int *)'
 void ExplosiveBarrelPath::Deinit() {
