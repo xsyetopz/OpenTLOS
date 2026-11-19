@@ -140,27 +140,21 @@ void GoopFXDescriptor::DrawGoop(GoopFXDescriptor::Goop *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'P16GoopFXDescriptor'
 void GoopFX::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector4 &arg3) {
-    ((GoopFXDescriptor *) (checked_cast<P16GoopFXDescriptor))->Emit(*(16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)), arg0, &arg1, *arg2, &arg3);
+    checked_cast<GoopFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->Emit(arg0, arg1, arg2, arg3);
 }
-#endif
 
 void GoopFX::Deinit() {
     ((KDPropEx *) this)->KDPropEx::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'P16GoopFXDescriptor'
 void GoopFX::Draw() {
-    ((GoopFXDescriptor *) (checked_cast<P16GoopFXDescriptor))->DrawGoopList(16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0));
+    checked_cast<GoopFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->DrawGoopList();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'P16GoopFXDescriptor'
 void *GoopFX::Update() {
-    ((GoopFXDescriptor *) (checked_cast<P16GoopFXDescriptor))->UpdateGoopList(16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0));
+    checked_cast<GoopFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->UpdateGoopList();
 }
-#endif
 
 void GoopFX::Init() {
     ((KDPropEx *) this)->KDPropEx::Init();
@@ -422,25 +416,18 @@ void GoopFXDescriptor::UpdateGoopNodes(GoopFXDescriptor::GoopNode *arg1, GoopFXD
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 u8 GoopFXDescriptor::TwoFrozenNodes(GoopFXDescriptor::Goop *arg1) {
-    s32 var_ctr_662;
-    s32 var_r3_661;
-    s32 var_r5_660;
+    s32 count;
+    s32 i;
 
-    var_r5_660 = 0;
-    var_r3_661 = 0;
-    var_ctr_662 = 4;
-    do {
-        if ((u8) *(arg1 + (var_r3_661 + 0x20)) != 0) {
-            var_r5_660 += 1;
+    count = 0;
+    for (i = 0; i < 4; i++) {
+        if (M2C_FIELD(arg1, u8 *, 0x20 + i * 0x28) != 0) {
+            count++;
         }
-        var_r3_661 += 0x28;
-        var_ctr_662 -= 1;
-    } while (var_ctr_662 != 0);
-    return var_r5_660 > 1;
+    }
+    return count > 1;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 u8 GoopFXDescriptor::UpdateGoop(GoopFXDescriptor::Goop *arg1) {
@@ -742,7 +729,6 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: type mismatch 'GoopFXDescriptor::Goop *' and 'GoopFXDescriptor::Goop **'
 void GoopFXDescriptor::Deinit() {
     GoopFXDescriptor::Goop **var_r31_1207;
     GoopFXDescriptor::Goop **var_r3_1208;
@@ -758,29 +744,27 @@ void GoopFXDescriptor::Deinit() {
     }
     var_r4_1206 = this->unkE8;
     var_r31_1207 = var_r4_1206;
-    var_r3_1208 = var_r4_1206;
-loop_5:
-    temp_r0_1216 = M2C_FIELD(var_r3_1208, u32 *, -4);
-    var_r3_1208 -= 4;
-    if (temp_r0_1216 != 0U) {
+    var_r3_1208 = var_r4_1206 - 1;
+    temp_r0_1216 = (u32) *var_r3_1208;
+    while (temp_r0_1216 != 0U) {
         temp_r0_1211 = *var_r3_1208;
-        if (temp_r0_1211 < var_r31_1207) {
+        if ((void *) temp_r0_1211 < (void *) var_r31_1207) {
             var_r31_1207 = (GoopFXDescriptor::Goop **) temp_r0_1211;
         }
-        goto loop_5;
+        var_r3_1208 -= 1;
+        temp_r0_1216 = (u32) *var_r3_1208;
     }
-    if (var_r3_1208 != &gEmptyPtrListDL) {
-loop_11:
+    if ((void *) var_r3_1208 != (void *) &gEmptyPtrListDL) {
         temp_r0_1230 = *var_r4_1206;
-        if (temp_r0_1230 != NULL) {
-            if (temp_r0_1230 < var_r31_1207) {
+        while (temp_r0_1230 != NULL) {
+            if ((void *) temp_r0_1230 < (void *) var_r31_1207) {
                 var_r31_1207 = (GoopFXDescriptor::Goop **) temp_r0_1230;
             }
-            var_r4_1206 += 4;
-            goto loop_11;
+            var_r4_1206 += 1;
+            temp_r0_1230 = *var_r4_1206;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1207, NULL, 0);
+            MKHeap::Current()->Free(var_r31_1207, NULL, 0);
         } else {
             free(var_r31_1207);
         }
@@ -788,23 +772,20 @@ loop_11:
     this->unkE8 = NULL;
     KDPropExDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 GoopFXDescriptor::LoadLine(MKIniLine *arg0) {
-    s8 *sp8;
+    const char *sp8;
 
-    if (((FXBaseDescriptor *) this)->FXBaseDescriptor::LoadLine(arg0) != 0) {
+    if (((u8) ((FXBaseDescriptor *) this)->FXBaseDescriptor::LoadLine(arg0)) != 0) {
         return 1;
     }
     sp8 = NULL;
-    if ((arg0->LoadString("GoopMaterial", &sp8, 0) != 0) && ((MKMaterial *) this->unkE0 == NULL)) {
-        this->unkE0 = MKMaterial_Create(sp8);
+    if (((u8) arg0->LoadString("GoopMaterial", &sp8, 0) != 0) && (this->unkE0 == NULL)) {
+        this->unkE0 = (MKMaterial *) MKMaterial_Create(sp8);
         return 1;
     }
     return 0;
 }
-#endif
 
 void GoopFXDescriptor::Init() {
     GoopFXDescriptor::Goop **temp_r3_1333;
