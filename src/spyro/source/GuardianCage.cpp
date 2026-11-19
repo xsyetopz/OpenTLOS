@@ -209,141 +209,70 @@ void GuardianCage::StateDeadUpdate() {
 
 }
 
-#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int, float, unsigned int)' does not match 'KDSound_Play3d(MKAnimScript *, const MKVector3 *, 
 void GuardianCage::StateDeadEnter() {
-    f64 sp140;
-    f64 sp138;
-    f64 sp130;
-    f64 sp128;
-    f64 sp120;
-    f64 sp118;
-    f64 sp110;
-    f64 sp108;
-    f64 sp100;
-    f64 spF8;
-    f64 spF0;
-    f64 spE8;
-    f64 spE0;
-    f64 spD8;
-    f64 spD0;
-    f64 spC8;
-    f64 spC0;
-    f64 spB8;
-    f64 spB0;
-    f64 spA8;
-    f32 spA0;
-    f32 sp9C;
-    f32 sp98;
-    f32 sp90;
-    f64 sp88;
-    f32 sp80;
-    f32 sp7C;
-    f32 sp78;
-    f32 sp70;
-    f64 sp68;
-    f32 sp60;
-    f64 sp58;
-    f32 sp50;
-    f32 sp4C;
-    f32 sp48;
-    f32 sp40;
-    f64 sp38;
-    f32 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp20;
-    f64 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    f32 temp_f1_226;
-    f32 temp_f25_122;
-    f32 temp_f25_168;
-    f32 temp_f25_195;
-    f32 temp_f25_90;
-    f32 temp_f26_117;
-    f32 temp_f26_163;
-    f32 temp_f26_200;
-    f32 temp_f26_85;
-    f64 temp_f0_104;
-    f64 temp_f0_136;
-    f64 temp_f0_149;
-    f64 temp_f0_182;
-    f64 temp_f0_214;
+    MKVector3 vA;
+    MKVector3 vC;
+    MKVector3 vD;
+    MKVector3 vF;
+    MKVector4 vW;
+    f32 rA;
+    f32 rB;
+    f32 rC;
+    f32 rD;
+    f32 rE;
+    f32 rF;
+    f32 rG;
+    f32 rH;
+    f32 rI;
+    f32 rJ;
+    f32 rK;
+    f32 rL;
+    f32 rScale;
+    u8 *temp_r4;
     s32 var_r30_78;
-    void *temp_r4_143;
 
     var_r30_78 = 0;
     do {
-        temp_f26_85 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        temp_f25_90 = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
-        sp98 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        sp9C = temp_f25_90;
-        spA0 = temp_f26_85;
-        sp128 = (f64) sp98;
-        sp130 = (f64) spA0;
-        temp_f0_104 = sp128 * 5.676053805e-315;
-        sp88 = temp_f0_104;
-        sp138 = temp_f0_104;
-        sp90 = (f32) sp130 * 1000.0f;
-        sp140 = (f64) sp90;
-        temp_f26_117 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        temp_f25_122 = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
-        sp78 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        sp7C = temp_f25_122;
-        sp80 = temp_f26_117;
-        spF8 = (f64) sp78;
-        sp100 = (f64) sp80;
-        temp_f0_136 = spF8 * 5.61841903e-315;
-        sp68 = temp_f0_136;
-        sp108 = temp_f0_136;
-        temp_r4_143 = ((u8 *) this->unk8) + 0x30;
-        sp70 = (f32) sp100 * 400.0f;
-        sp110 = (f64) sp70;
-        temp_f0_149 = M2C_FIELD(temp_r4_143, f64 *, 0) + temp_f0_136;
-        sp58 = temp_f0_149;
-        sp118 = temp_f0_149;
-        sp60 = M2C_FIELD(temp_r4_143, f32 *, 8) + (f32) sp110;
-        sp120 = (f64) sp60;
-        temp_f26_163 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        temp_f25_168 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        sp48 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        sp4C = temp_f25_168;
-        sp50 = temp_f26_163;
-        spD8 = (f64) sp48;
-        spE0 = (f64) sp50;
-        temp_f0_182 = spD8 * 5.328646264e-315;
-        sp38 = temp_f0_182;
-        spE8 = temp_f0_182;
-        sp40 = (f32) spE0 * 3.1415927f;
-        spF0 = (f64) sp40;
-        temp_f25_195 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        temp_f26_200 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        sp28 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        sp2C = temp_f26_200;
-        sp30 = temp_f25_195;
-        spB8 = (f64) sp28;
-        spC0 = (f64) sp30;
-        temp_f0_214 = spB8 * 5.328646264e-315;
-        sp18 = temp_f0_214;
-        spC8 = temp_f0_214;
-        sp20 = (f32) spC0 * 3.1415927f;
-        spD0 = (f64) sp20;
-        temp_f1_226 = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
-        sp8 = 1.0f;
-        spC = 1.0f;
-        sp10 = 1.0f;
-        sp14 = 1.0f;
-        spA8 = (f64) sp8;
-        spB0 = (f64) sp10;
-        ((FlyingChunkPS *) gb.unkA0)->Emit(*((MKVector3 *) &sp118), *((MKVector3 *) &sp138), *((MKVector3 *) &spE8), *((MKVector3 *) &spC8), temp_f1_226, *((MKVector4 *) &spA8), 0, NULL);
+        rA = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        rB = MKRand_Float((int *) &gViewSeed, 1.0f, 3.0f);
+        rC = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        vA.unk0 = rC * 1000.0f;
+        vA.unk4 = rB * 1000.0f;
+        vA.unk8 = rA * 1000.0f;
+
+        rD = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        rE = MKRand_Float((int *) &gViewSeed, 0.0f, 1.0f);
+        rF = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        temp_r4 = ((u8 *) this->unk8) + 0x30;
+        vC.unk0 = M2C_FIELD(temp_r4, f32 *, 0x0) + rF * 400.0f;
+        vC.unk4 = M2C_FIELD(temp_r4, f32 *, 0x4) + rE * 400.0f;
+        vC.unk8 = M2C_FIELD(temp_r4, f32 *, 0x8) + rD * 400.0f;
+
+        rG = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        rH = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        rI = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        vD.unk0 = rI * 3.1415927f;
+        vD.unk4 = rH * 3.1415927f;
+        vD.unk8 = rG * 3.1415927f;
+
+        rJ = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        rK = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        rL = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        vF.unk0 = rL * 3.1415927f;
+        vF.unk4 = rK * 3.1415927f;
+        vF.unk8 = rJ * 3.1415927f;
+
+        rScale = MKRand_Float((int *) &gViewSeed, 1.0f, 2.0f);
+        vW.unk0 = 1.0f;
+        vW.unk4 = 1.0f;
+        vW.unk8 = 1.0f;
+        vW.unkC = 1.0f;
+        ((FlyingChunkPS *) gb.unkA0)->Emit(vC, vA, vD, vF, rScale, vW, 0, NULL);
         var_r30_78 += 1;
     } while (var_r30_78 < 0xF);
-    KDSound_Play3d(GS_PrisonBallShatter, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_PrisonBallShatter, (const MKVector3 *) (((u8 *) this->unk8) + 0x30), 0U, -1, 0.0f, false);
     this->unk148.Send(NULL);
 }
-#endif
 
 void GuardianCage::StateDyingExit() {
     f64 sp88;
@@ -493,113 +422,77 @@ void GuardianCage::StateDyingUpdate() {
     MKModel_SetWorldMatrix(this->unk4, spD0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void GuardianCage::StateDyingEnter() {
-    s8 spE8;
-    s32 spE4;
-    s32 spE0;
-    s32 spDC;
-    f32 spD8;
-    s32 spD4;
-    s8 spD3;
-    s8 spD2;
-    s16 spD0;
-    f32 spCC;
-    f32 spC8;
-    f32 spC4;
-    f32 spC0;
-    f32 spBC;
-    f32 spB8;
-    f32 spB0;
-    f32 spAC;
-    f32 spA8;
-    f32 spA0;
-    f32 sp9C;
-    f32 sp98;
-    f64 sp90;
-    f64 sp88;
+    u8 spRes[0x58];
     MKVector3 sp78;
-    f64 sp70;
-    f64 sp68;
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f64 sp48;
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp30;
-    f64 sp28;
-    f32 sp20;
+    MKVector3 sp68;
     f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    MKVector3 *temp_r3_616;
-    f64 temp_f0_622;
+    f64 sp20;
+    f64 spPair;
+    f64 sp10Pair;
+    f32 p2x;
+    f32 p2y;
+    f32 p2z;
     void *temp_r4_569;
+    MKVector3 *temp_r3_616;
 
     sp78 = MKVector(0.0f, 800.0f, 0.0f);
     temp_r4_569 = ((u8 *) this->unk8) + 0x30;
-    sp18 = M2C_FIELD(temp_r4_569, f64 *, 0) - M2C_BITWISE(f64, sp78);
+    M2C_FIELD(&sp18, f32 *, 0) = M2C_FIELD(temp_r4_569, f32 *, 0) - sp78.unk0;
+    M2C_FIELD(&sp18, f32 *, 4) = M2C_FIELD(temp_r4_569, f32 *, 4) - sp78.unk4;
     M2C_FIELD(this, f64 *, 0x108) = sp18;
-    sp20 = M2C_FIELD(temp_r4_569, f32 *, 8) - sp78.unk8;
-    sp40 = 0.0f;
-    this->unk110 = (f64) sp20;
-    sp38 = 0.0f;
-    sp3C = -10000.0f;
-    sp98 = 0.0f;
-    sp9C = 0.0f;
-    spA0 = 0.0f;
-    spA8 = 0.0f;
-    spAC = 0.0f;
-    spB0 = 0.0f;
-    spB8 = 0.0f;
-    spBC = 0.0f;
-    spC0 = 0.0f;
-    spC4 = 1.0f;
-    spC8 = 0.0f;
-    spCC = 0.0f;
-    spD0 = 0;
-    spD2 = 0;
-    spD3 = 0;
-    spD4 = 0;
-    spD8 = 3.4028235e38f;
-    spDC = 0;
-    spE0 = 0;
-    spE4 = -1;
-    spE8 = 0;
-    sp58 = (f64) sp38;
+    M2C_FIELD(&sp20, f32 *, 0) = M2C_FIELD(temp_r4_569, f32 *, 8) - sp78.unk8;
+    M2C_FIELD(this, f64 *, 0x110) = sp20;
+
+    M2C_FIELD(spRes, f32 *, 0x00) = 0.0f;
+    M2C_FIELD(spRes, f32 *, 0x04) = 0.0f;
+    M2C_FIELD(spRes, f32 *, 0x08) = 0.0f;
+    M2C_FIELD(spRes, f32 *, 0x10) = 0.0f;
+    M2C_FIELD(spRes, f32 *, 0x14) = 0.0f;
+    M2C_FIELD(spRes, f32 *, 0x18) = 0.0f;
+    M2C_FIELD(spRes, f32 *, 0x20) = 0.0f;
+    M2C_FIELD(spRes, f32 *, 0x24) = 0.0f;
+    M2C_FIELD(spRes, f32 *, 0x28) = 0.0f;
+    M2C_FIELD(spRes, f32 *, 0x2C) = 1.0f;
+    M2C_FIELD(spRes, f32 *, 0x30) = 0.0f;
+    M2C_FIELD(spRes, f32 *, 0x34) = 0.0f;
+    M2C_FIELD(spRes, s16 *, 0x38) = 0;
+    M2C_FIELD(spRes, s8 *, 0x3A) = 0;
+    M2C_FIELD(spRes, s8 *, 0x3B) = 0;
+    M2C_FIELD(spRes, s32 *, 0x3C) = 0;
+    M2C_FIELD(spRes, f32 *, 0x40) = 3.4028235e38f;
+    M2C_FIELD(spRes, s32 *, 0x44) = 0;
+    M2C_FIELD(spRes, s32 *, 0x48) = 0;
+    M2C_FIELD(spRes, s32 *, 0x4C) = -1;
+    M2C_FIELD(spRes, s8 *, 0x50) = 0;
+
+    p2x = M2C_FIELD(temp_r4_569, f32 *, 0) + 0.0f;
+    p2y = M2C_FIELD(temp_r4_569, f32 *, 4) + -10000.0f;
+    p2z = M2C_FIELD(temp_r4_569, f32 *, 8) + 0.0f;
+    sp68.unk0 = p2x;
+    sp68.unk4 = p2y;
+    sp68.unk8 = p2z;
+
     temp_r3_616 = (MKVector3 *) (((u8 *) this->unk8) + 0x30);
-    sp88 = sp18;
-    sp90 = (f64) sp20;
-    sp60 = (f64) sp40;
-    temp_f0_622 = M2C_FIELD(temp_r3_616, f64 *, 0) + sp58;
-    sp28 = temp_f0_622;
-    sp68 = temp_f0_622;
-    sp30 = temp_r3_616->unk8 + (f32) sp60;
-    sp70 = (f64) sp30;
-    if (MKCollision_RayCollide(*temp_r3_616, *((MKVector3 *) &sp68), (MKCollisionResult *) &sp98, (MKCollisionMode) 7, 0) != 0) {
-        M2C_FIELD(this, f64 *, 0x108) = (f64) sp98;
-        this->unk110 = (f64) spA0;
+    if (MKCollision_RayCollide(*temp_r3_616, sp68, (MKCollisionResult *) spRes, (MKCollisionMode) 7, 0) != 0) {
+        M2C_FIELD(this, f64 *, 0x108) = M2C_FIELD(spRes, f64 *, 0x00);
+        M2C_FIELD(this, f64 *, 0x110) = M2C_FIELD(spRes, f64 *, 0x08);
     }
-    sp8 = 0.0f;
-    spC = -1960.0f;
-    sp10 = 0.0f;
-    M2C_FIELD(this, f64 *, 0x118) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 0x120) = (f64) sp10;
-    sp48 = (f64) sp8;
-    this->unk128 = this->unkD8;
-    sp50 = (f64) sp10;
-    M2C_FIELD(this, f64 *, 0x130) = (f64) this->unkE0;
+
+    M2C_FIELD(&spPair, f32 *, 0) = 0.0f;
+    M2C_FIELD(&spPair, f32 *, 4) = -1960.0f;
+    M2C_FIELD(this, f64 *, 0x118) = spPair;
+    M2C_FIELD(&sp10Pair, f32 *, 0) = 0.0f;
+    M2C_FIELD(this, f64 *, 0x120) = sp10Pair;
+    M2C_FIELD(this, f64 *, 0x128) = M2C_FIELD(this, f64 *, 0xD8);
+    M2C_FIELD(this, f64 *, 0x130) = M2C_FIELD(this, f64 *, 0xE0);
 }
-#endif
 
 void GuardianCage::StateFloatingExit() {
     MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, this->unk140, 0U, 1U);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void GuardianCage::StateFloatingUpdate() {
     Matrix spE0;
     M2C_UNK spDC;
@@ -692,11 +585,13 @@ void GuardianCage::StateFloatingEnter() {
     }
 }
 
-void GuardianCage::GetBeamPosition(int arg0) {
+MKVector3 GuardianCage::GetBeamPosition(int arg2) {
     MKVector3 sp8;
+    s32 temp_r4;
 
-    MKModel_CalculateRefPointWorldPosition(M2C_FIELD(arg0, MKModel **, 4), M2C_FIELD((arg0 + (M2C_ERROR(/* Read from unset register $r5 */) * 4)), s32 *, 0xC8), &sp8);
-    M2C_FIELD(this, MKVector3 *, 0) = sp8;
+    temp_r4 = *((s32 *) (((u8 *) this) + (arg2 * 4) + 0xC8));
+    MKModel_CalculateRefPointWorldPosition(this->unk4, temp_r4, &sp8);
+    return sp8;
 }
 
 void GuardianCage::Deinit() {
