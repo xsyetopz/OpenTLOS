@@ -237,32 +237,22 @@ loop_60:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void MCFileInfo::Resolve() {
-    s8 *temp_r3_629;
-    s8 *temp_r3_646;
-    s8 *temp_r3_663;
-    u32 temp_r3_566;
-    u32 var_r4_570;
-    u8 temp_r3_591;
-    void *temp_r30_626;
-    void *temp_r30_643;
-    void *temp_r30_660;
+    const char *p;
+    s8 c;
+    UIText *obj;
 
     UIContainer::Resolve();
-    temp_r3_566 = this->unk4;
+    p = (const char *) this->unk4;
     this->unk218 = 0;
-    var_r4_570 = temp_r3_566;
-    if (temp_r3_566 != 0) {
-loop_6:
-        temp_r3_591 = *var_r4_570;
-        if ((s8) temp_r3_591 != 0) {
-            if (((s8) temp_r3_591 >= 0x30) && ((s8) temp_r3_591 <= 0x39)) {
+    if (p != NULL) {
+        while (*p != 0) {
+            c = *p;
+            if (c >= 0x30 && c <= 0x39) {
                 this->unk218 *= 0xA;
-                this->unk218 = ((s8) *var_r4_570 + this->unk218) - 0x30;
+                this->unk218 = (c + this->unk218) - 0x30;
             }
-            var_r4_570 += 1;
-            goto loop_6;
+            p++;
         }
     }
     this->unk218 -= 1;
@@ -270,41 +260,35 @@ loop_6:
     this->unk6C = ui_cast<UIText *, UIObject *>(FindChild("Time"));
     this->unk74 = ui_cast<UIText *, UIObject *>(FindChild("Location"));
     this->unk70 = ui_cast<UIText *, UIObject *>(FindChild("Message"));
-    temp_r30_626 = this->unk68;
-    if (temp_r30_626 != NULL) {
-        temp_r3_629 = M2C_FIELD(temp_r30_626, s8 **, 0x68);
-        if (temp_r3_629 != NULL) {
-            UIStringTable_Remove(temp_r3_629);
+
+    obj = (UIText *) this->unk68;
+    if (obj != NULL) {
+        if (obj->unk68 != NULL) {
+            UIStringTable_Remove((const char *) obj->unk68);
         }
         UIStringTable_Add(NULL);
-        M2C_FIELD(temp_r30_626, s8 **, 0x68) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
-        M2C_FIELD(temp_r30_626, s32 *, 0x6C) = -1;
-        M2C_FIELD(this->unk68, s8 **, 0x68) = &this->unk178;
+        obj->unk6C = -1;
+        obj->unk68 = (s8 *) &this->unk178;
     }
-    temp_r30_643 = this->unk6C;
-    if (temp_r30_643 != NULL) {
-        temp_r3_646 = M2C_FIELD(temp_r30_643, s8 **, 0x68);
-        if (temp_r3_646 != NULL) {
-            UIStringTable_Remove(temp_r3_646);
+    obj = (UIText *) this->unk6C;
+    if (obj != NULL) {
+        if (obj->unk68 != NULL) {
+            UIStringTable_Remove((const char *) obj->unk68);
         }
         UIStringTable_Add(NULL);
-        M2C_FIELD(temp_r30_643, s8 **, 0x68) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
-        M2C_FIELD(temp_r30_643, s32 *, 0x6C) = -1;
-        M2C_FIELD(this->unk6C, s8 **, 0x68) = &this->unk1B8;
+        obj->unk6C = -1;
+        obj->unk68 = (s8 *) &this->unk1B8;
     }
-    temp_r30_660 = this->unk74;
-    if (temp_r30_660 != NULL) {
-        temp_r3_663 = M2C_FIELD(temp_r30_660, s8 **, 0x68);
-        if (temp_r3_663 != NULL) {
-            UIStringTable_Remove(temp_r3_663);
+    obj = (UIText *) this->unk74;
+    if (obj != NULL) {
+        if (obj->unk68 != NULL) {
+            UIStringTable_Remove((const char *) obj->unk68);
         }
         UIStringTable_Add(NULL);
-        M2C_FIELD(temp_r30_660, s8 **, 0x68) = (s8 *) M2C_ERROR(/* Read from unset register $r3 */);
-        M2C_FIELD(temp_r30_660, s32 *, 0x6C) = -1;
-        M2C_FIELD(this->unk74, s8 **, 0x68) = &this->unk78;
+        obj->unk6C = -1;
+        obj->unk68 = (s8 *) &this->unk78;
     }
 }
-#endif
 
 void MCFileInfo::Deinit() {
     void *temp_r4_690;
