@@ -499,26 +499,22 @@ void BoulderRampDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 s32 BoulderRampDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_662;
 
     var_r31_662 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "ballJumpSound", (int *) &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "ballSinkSound", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "ballStopSound", (int *) &this->unkEC) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "ballJumpSound", (int *) &M2C_FIELD(this, s32 *, 0xE4)) != 0) || (KDSound_LoadLine(arg0, "ballSinkSound", (int *) &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "ballStopSound", (int *) &this->unkEC) != 0)) {
         var_r31_662 = 1;
     }
     return var_r31_662;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void BoulderRampDescriptor::Init() {
     TrapDescriptor::Init();
-    this->unkE4 = GS_PLACEHOLDER;
+    M2C_FIELD(this, s32 *, 0xE4) = GS_PLACEHOLDER;
     this->unkE8 = GS_PLACEHOLDER;
     this->unkEC = GS_PLACEHOLDER;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'boulderRampGroups'
 s32 BoulderRamp_GetCatapult(int arg0, int arg1) {
