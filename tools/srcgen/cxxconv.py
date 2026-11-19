@@ -301,6 +301,7 @@ class Converter:
         body = re.sub(r"\n{3,}", "\n\n", body).strip() + "\n"
         code = re.sub(r'"(?:\\.|[^"\\])*"', '""', body)
         used |= {n for n in re.findall(r"\b([A-Z]\w*(?:::\w+)*?)(?=\s*\*|::|\s+\w+;)", code) if n in self.owner_of}
+        used |= {n for n in self.model.reached(used) if n in self.owner_of}
         stem = tu.rsplit(".", 1)[0]
         includes = sorted({self.owner_of[header_key(n)].rsplit(".", 1)[0] + ".h" for n in used
                            if header_key(n) in self.owner_of} - {stem + ".h"})

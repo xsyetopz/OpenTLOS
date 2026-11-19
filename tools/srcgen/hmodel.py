@@ -165,6 +165,27 @@ class Model:
             cur = self.classes[cur].get("base")
         return out
 
+    def reached(self, names: set, depth: int = 2) -> set:
+        """Classes a body can reach from `names` without naming them.
+
+        `gGame->unk0->x` uses HeroInterface through Game's field type alone,
+        and `GetFoo()->x` uses Foo through a return type; both need Foo
+        complete. Fields and method returns of the classes and their
+        ancestors are followed `depth` levels.
+        """
+        out, todo = set(), set(names)
+        for _ in range(depth):
+            found = set()
+            for n in todo:
+                for k in (n, *self.ancestors(n)):
+                    for f in self.fields.get(k, {}).get("fields", {}).values():
+                        found |= type_names(f["type"][0])
+                    for m in self.classes.get(k, {}).get("methods", []):
+                        found |= type_names(self.rets.get(m["mangled"], ""))
+            todo = found - out - set(names)
+            out |= found
+        return out
+
     def all_bases(self, name: str) -> set:
         """Primary ancestors plus secondary bases (and their ancestors) along the chain."""
         out = set()
@@ -275,6 +296,23 @@ class Model:
             f["fields"] = {o: v for o, v in f["fields"].items()
                            if (limit is None or int(o) < limit) and not (desc and set(v["tus"]) <= desc)
                            and not (len(v["tus"]) == 1 and v["tus"][0] not in owners[name] | {mine})}
+
+    def apply_fields(self, rows: list) -> None:
+        """Fields proven from the asm (config class_fields.tsv) replace a class's votes.
+
+        m2c reaches some structs only through byte arithmetic, so they get no
+        votes and stay incomplete: `MKParticleSystem::Envelope` is indexed as
+        `unk134 + i * 0x14` and read as f32 at 0..0x10. A nested class takes
+        its outer class's header.
+        """
+        proven = defaultdict(dict)
+        for name, off, typ in rows:
+            proven[name][str(off)] = {"type": [typ, 1], "alt": {}, "tus": []}
+        for name, fields in proven.items():
+            if name not in self.classes:
+                outer = self.classes.get(name.rsplit("::", 1)[0], {}) if "::" in name else {}
+                self.classes[name] = {"methods": [], "statics": [], "vtable": None, "owner": outer.get("owner")}
+            self.fields[name] = {"fields": fields}
 
     def apply_sizes(self, sizes: dict) -> None:
         """Exact sizes proven from the asm (config class_sizes.tsv) cap each class.
@@ -475,6 +513,10 @@ def load_model(classes: Path, fields: Path, m2c_root: Path, ctx: Path, votes: Pa
     rets, globs = m2c_types(m2c_root, votes)
     model = Model(json.loads(classes.read_text()), json.loads(fields.read_text()), rets, globs, stems)
     model.sdk, model.ctx = sdk_types(ctx), ctx
+    layouts = ROOT / "config" / VERSION / "class_fields.tsv"
+    if layouts.exists():
+        model.apply_fields([(r[0], int(r[1], 0), r[2]) for r in
+                            (l.split("\t") for l in layouts.read_text().splitlines()[1:]) if r[0]])
     proven = {n: c["size"] for n, c in model.classes.items() if c.get("size")}  # classes.py array probe
     sizes = ROOT / "config" / VERSION / "class_sizes.tsv"
     if sizes.exists():
