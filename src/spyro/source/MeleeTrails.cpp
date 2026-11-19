@@ -190,70 +190,46 @@ loop_22:
     GameProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unksp4C'
 void MeleeTrails::Draw() {
     Matrix sp90;
     Matrix sp50;
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 temp_f1_381;
-    f32 temp_f29_327;
-    s32 *temp_r3_324;
+    MKVector4 sp40;
+    u8 *temp_r3_324;
     void **var_r30_316;
     void *temp_r31_427;
+    f32 temp_f29_327;
+    f32 temp_f1_381;
 
     var_r30_316 = M2C_FIELD(this, void ***, 0xD4);
-loop_7:
-    if (var_r30_316 != NULL) {
-        temp_r31_427 = *var_r30_316;
-        if (temp_r31_427 != NULL) {
-            temp_r3_324 = *M2C_FIELD(temp_r31_427, s32 ***, 0x58);
-            temp_f29_327 = M2C_FIELD(temp_r31_427, f32 *, 0x40) / M2C_FIELD(temp_r3_324, f32 *, 8);
-            if ((u8) M2C_FIELD(temp_r3_324, u8 *, 0xC) != 0) {
-                M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, MKModel_GetWorldMatrix(this->unkC8->unk8) - 4 + 4, 0x40);
-            } else {
-                M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, (s32) (((u8 *) temp_r31_427) - 4) + 4, 0x40);
-            }
-            if ((u8) M2C_FIELD(temp_r31_427, u8 *, 0x5C) != 0) {
-                sp90.Scale3x3(&sp90, ((1.0f - temp_f29_327) * M2C_FIELD(temp_r31_427, f32 *, 0x50)) + 1.0f);
-            }
-            MKModel_SetWorldMatrix(this->unk4, sp90);
-            MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, **M2C_FIELD(temp_r31_427, s32 ***, 0x58), 1U, 1U);
-            sp2C = 1.0f;
-            temp_f1_381 = temp_f29_327 * M2C_FIELD(temp_r31_427, f32 *, 0x4C);
-            sp28 = temp_f1_381;
-            sp20 = temp_f1_381;
-            sp24 = temp_f1_381;
-            sp48 = (f64) sp28;
-            sp40 = (f64) sp20;
-            MKModel_SetColor(this->unk4, *((MKVector4 *) &sp40));
-            M2C_STRUCT_COPY((s32) &unksp4C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            sp18 = 0.0f;
-            sp10 = M2C_FIELD(temp_r31_427, f32 *, 0x44);
-            sp14 = M2C_FIELD(temp_r31_427, f32 *, 0x48);
-            sp38 = (f64) sp18;
-            sp30 = (f64) sp10;
-            sp50.unk30 = (f32) sp30;
-            sp50.unk34 = (*(f32 *) ((u8 *) &sp30 + 0x4));
-            sp50.unk38 = (f32) sp38;
-            sp50.unk3C = 1.0f;
-            MKMaterial_SetTextureMatrix(this->unkCC, &sp50);
-            MKModel_Draw(this->unk4, NULL);
-            var_r30_316 += 4;
-            goto loop_7;
+    while (var_r30_316 != NULL && (temp_r31_427 = *var_r30_316) != NULL) {
+        temp_r3_324 = (u8 *) *M2C_FIELD(temp_r31_427, s32 ***, 0x58);
+        temp_f29_327 = M2C_FIELD(temp_r31_427, f32 *, 0x40) / M2C_FIELD(temp_r3_324, f32 *, 8);
+        if (temp_r3_324[0xC] != 0) {
+            M2C_STRUCT_COPY(&sp90, (const void *) MKModel_GetWorldMatrix(this->unkC8->unk8), 0x40);
+        } else {
+            M2C_STRUCT_COPY(&sp90, temp_r31_427, 0x40);
         }
+        if (((u8 *) temp_r31_427)[0x5C] != 0) {
+            sp90.Scale3x3(&sp90, ((1.0f - temp_f29_327) * M2C_FIELD(temp_r31_427, f32 *, 0x50)) + 1.0f);
+        }
+        MKModel_SetWorldMatrix(this->unk4, sp90);
+        MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, **M2C_FIELD(temp_r31_427, s32 ***, 0x58), 1U, 1U);
+        temp_f1_381 = temp_f29_327 * M2C_FIELD(temp_r31_427, f32 *, 0x4C);
+        sp40.unk0 = temp_f1_381;
+        sp40.unk4 = temp_f1_381;
+        sp40.unk8 = temp_f1_381;
+        sp40.unkC = 1.0f;
+        MKModel_SetColor(this->unk4, sp40);
+        M2C_STRUCT_COPY(&sp50, &Matrix::identity, 0x40);
+        sp50.unk30 = M2C_FIELD(temp_r31_427, f32 *, 0x44);
+        sp50.unk34 = M2C_FIELD(temp_r31_427, f32 *, 0x48);
+        sp50.unk38 = 0.0f;
+        sp50.unk3C = 1.0f;
+        MKMaterial_SetTextureMatrix(this->unkCC, &sp50);
+        MKModel_Draw(this->unk4, NULL);
+        var_r30_316 += 1;
     }
 }
-#endif
 
 void *MeleeTrails::Update() {
     void **temp_r3_475;
@@ -344,31 +320,30 @@ void MeleeTrails::Init() {
     this->unkC8 = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void MeleeTrailsDescriptor::Deinit() {
-    MKHeap *temp_r0_628;
-    MKHeap *temp_r0_647;
-    MKHeap *var_r31_624;
-    MKHeap *var_r3_625;
-    MKHeap *var_r4_623;
+    u8 *temp_r0_628;
+    u8 *temp_r0_647;
+    u8 *var_r31_624;
+    u8 *var_r3_625;
+    u8 *var_r4_623;
     u32 temp_r0_633;
 
-    var_r4_623 = this->unkE4;
+    var_r4_623 = M2C_FIELD(this, u8 **, 0xE4);
     var_r31_624 = var_r4_623;
     var_r3_625 = var_r4_623;
 loop_3:
     temp_r0_633 = M2C_FIELD(var_r3_625, u32 *, -4);
     var_r3_625 -= 4;
     if (temp_r0_633 != 0U) {
-        temp_r0_628 = var_r3_625->unk0;
+        temp_r0_628 = M2C_FIELD(var_r3_625, u8 **, 0);
         if (temp_r0_628 < var_r31_624) {
             var_r31_624 = temp_r0_628;
         }
         goto loop_3;
     }
-    if (var_r3_625 != &gEmptyPtrListDL) {
+    if (var_r3_625 != (u8 *) &gEmptyPtrListDL) {
 loop_9:
-        temp_r0_647 = var_r4_623->unk0;
+        temp_r0_647 = M2C_FIELD(var_r4_623, u8 **, 0);
         if (temp_r0_647 != NULL) {
             if (temp_r0_647 < var_r31_624) {
                 var_r31_624 = temp_r0_647;
@@ -382,105 +357,90 @@ loop_9:
             free((M2C_UNK *) var_r31_624);
         }
     }
-    this->unkE4 = NULL;
+    M2C_FIELD(this, u8 **, 0xE4) = NULL;
     KDPropExDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'char *'
 void MeleeTrailsDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    InitMeleeTrailData(&this->unkE8);
+    InitMeleeTrailData((char *) &this->unkE8);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void MeleeTrailsDescriptor::InitMeleeTrailData(char *arg0) {
     MKIni spC;
-    s8 *sp8;
-    MKHeap *temp_r27_733;
-    MKHeap *temp_r5_730;
-    MKIniLine *var_r26_729;
-    MKIniLine *var_r30_714;
+    const char *sp8;
+    u8 *temp_r27;
+    u8 *temp_r5;
+    MKIniLine *var_r26;
+    MKIniLine *var_r30;
 
-    spC.Init(Str_Printf("%s.ini", "ELEMENT_Fire"), 0, NULL);
-    var_r30_714 = spC.GetFirstLine();
-loop_12:
-    if (var_r30_714 != NULL) {
-        if (var_r30_714->IsSection("Anim") != 0) {
-            var_r26_729 = var_r30_714->unkC->GetSubLine(var_r30_714);
-            temp_r5_730 = this->unkE4 - 4;
-            this->unkE4 = temp_r5_730;
-            temp_r27_733 = temp_r5_730->unk0;
-            temp_r27_733->unk10 = 0.0f;
-            temp_r27_733->unk14 = 0;
-            M2C_FIELD(temp_r27_733, s8 *, 0xC) = 0;
-loop_10:
-            if (var_r26_729 != NULL) {
-                if (var_r26_729->IsField("Name") != 0) {
-                    var_r26_729->AsString(0, (s8 **) &temp_r27_733->unk10);
+    spC.Init((const char *) Str_Printf("%s.ini", arg0), 0, NULL);
+    var_r30 = spC.GetFirstLine();
+    while (var_r30 != NULL) {
+        if (var_r30->IsSection("Anim") != 0) {
+            var_r26 = var_r30->unkC->GetSubLine(var_r30);
+            temp_r5 = M2C_FIELD(this, u8 **, 0xE4) - 4;
+            M2C_FIELD(this, u8 **, 0xE4) = temp_r5;
+            temp_r27 = M2C_FIELD(temp_r5, u8 **, 0);
+            M2C_FIELD(temp_r27, u8 **, 0x10) = NULL;
+            M2C_FIELD(temp_r27, u8 **, 0x14) = NULL;
+            temp_r27[0xC] = 0;
+            while (var_r26 != NULL) {
+                if (var_r26->IsField("Name") != 0) {
+                    var_r26->AsString(0, (const char **) (temp_r27 + 0x10));
                 }
-                if (var_r26_729->IsField("EventName") != 0) {
-                    var_r26_729->AsString(0, (s8 **) &temp_r27_733->unk14);
+                if (var_r26->IsField("EventName") != 0) {
+                    var_r26->AsString(0, (const char **) (temp_r27 + 0x14));
                 }
-                var_r26_729->LoadFloat("ScrollSpeed", (f32 *) &temp_r27_733->unk4, 0);
-                var_r26_729->LoadFloat("TrailLife", (f32 *) &temp_r27_733->unk8, 0);
-                if (var_r26_729->IsField("Subobject") != 0) {
-                    var_r26_729->AsString(0, &sp8);
-                    temp_r27_733->unk0 = MKModel_GetSubObjectIndex(this->unk2C, (SubObjectType) 0, sp8);
+                var_r26->LoadFloat("ScrollSpeed", (f32 *) (temp_r27 + 4), 0);
+                var_r26->LoadFloat("TrailLife", (f32 *) (temp_r27 + 8), 0);
+                if (var_r26->IsField("Subobject") != 0) {
+                    var_r26->AsString(0, &sp8);
+                    M2C_FIELD(temp_r27, s32 *, 0) = MKModel_GetSubObjectIndex(M2C_FIELD(this, MKModel **, 0x2C), (SubObjectType) 0, sp8);
                 }
-                var_r26_729->LoadBool("Follow", (u8 *) &temp_r27_733->unkC, 0);
-                var_r26_729 = var_r26_729->unkC->GetNextLine(var_r26_729);
-                goto loop_10;
+                var_r26->LoadBool("Follow", (bool *) (temp_r27 + 0xC), 0);
+                var_r26 = var_r26->unkC->GetNextLine(var_r26);
             }
         }
-        var_r30_714 = var_r30_714->unkC->GetNextLine(var_r30_714);
-        goto loop_12;
+        var_r30 = var_r30->unkC->GetNextLine(var_r30);
     }
     spC.Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 MeleeTrailsDescriptor::LoadLine(MKIniLine *arg0) {
-    s8 *sp8;
+    const char *sp8;
 
     if ((arg0->IsField("mtdFile") != 0) && (arg0->AsString(0, &sp8) != 0)) {
-        strncpy(&this->unkE8, sp8, 0x40U);
+        strncpy((char *) &this->unkE8, sp8, 0x40U);
         this->unk127 = 0;
     }
-    GamePropDescriptor::LoadLine(arg0);
+    return GamePropDescriptor::LoadLine(arg0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void MeleeTrailsDescriptor::Init() {
-    MKHeap *temp_r3_883;
-    MKHeap *temp_r3_889;
-    MKHeap *var_r3_868;
-    MKHeap *var_r5_877;
-    s32 var_ctr_881;
+    u8 *var_r5;
+    u8 *temp;
+    s32 var_ctr;
 
     GamePropDescriptor::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_868 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x38C, NULL, 0));
+        var_r5 = (u8 *) (((MKHeap *) (MKHeap::Current()))->Alloc(0x38C, NULL, 0));
     } else {
-        var_r3_868 = malloc(0x38C);
+        var_r5 = (u8 *) malloc(0x38C);
     }
-    this->unkE4 = var_r3_868;
-    var_r5_877 = this->unkE4;
-    this->unkE4 = var_r5_877 + 0x320;
-    M2C_FIELD(var_r5_877, s32 *, 0x320) = 0;
-    var_ctr_881 = 0x19;
+    M2C_FIELD(this, u8 **, 0xE4) = var_r5;
+    var_r5 = M2C_FIELD(this, u8 **, 0xE4);
+    M2C_FIELD(this, u8 **, 0xE4) = var_r5 + 0x320;
+    M2C_FIELD(var_r5, s32 *, 0x320) = 0;
+    var_ctr = 0x19;
     do {
-        temp_r3_883 = this->unkE4;
-        this->unkE4 = (MKHeap *) &temp_r3_883->unk4;
-        temp_r3_883->unk4 = (s32) var_r5_877;
-        var_r5_877 += 0x20;
-        var_ctr_881 -= 1;
-    } while (var_ctr_881 != 0);
-    temp_r3_889 = this->unkE4;
-    this->unkE4 = (MKHeap *) &temp_r3_889->unk4;
-    temp_r3_889->unk4 = 0;
+        temp = M2C_FIELD(this, u8 **, 0xE4) + 4;
+        M2C_FIELD(this, u8 **, 0xE4) = temp;
+        M2C_FIELD(temp, u8 **, 0) = var_r5;
+        var_r5 += 0x20;
+        var_ctr -= 1;
+    } while (var_ctr != 0);
+    temp = M2C_FIELD(this, u8 **, 0xE4) + 4;
+    M2C_FIELD(this, u8 **, 0xE4) = temp;
+    M2C_FIELD(temp, s32 *, 0) = 0;
 }
-#endif
