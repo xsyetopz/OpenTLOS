@@ -30,7 +30,6 @@ extern M2C_UNK gb;
 static s32 lit_509 = 0;
 static u8 lit_510 = 0;
 
-#if 0 // DRAFT: illegal implicit conversion from 'HitFX' to 'Corona *'
 void HitFX::Deinit() {
     Corona *temp_r4_53;
     ManagedLight *temp_r4_63;
@@ -41,7 +40,7 @@ void HitFX::Deinit() {
     var_r29_48 = 0;
     var_r31_50 = 0;
     do {
-        temp_r4_53 = *(this + (var_r31_50 + 0x78));
+        temp_r4_53 = M2C_FIELD(this, Corona **, var_r31_50 + 0x78);
         if (temp_r4_53 != NULL) {
             ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(temp_r4_53);
         }
@@ -55,7 +54,6 @@ void HitFX::Deinit() {
     }
     MKMaterial_Destroy(this->unk8C);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp20C'
 void HitFX::Draw() {
@@ -268,37 +266,24 @@ void HitFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'HitFX' to 'void *'
 void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, int arg3) {
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp18;
-    f64 sp10;
-    f32 sp8;
-    ManagedLight *temp_r3_559;
-    ManagedLight *temp_r3_570;
-    ManagedLight *temp_r4_551;
-    f32 temp_f29_508;
-    f32 temp_f30_513;
-    f64 temp_f0_527;
+    MKVector3 sp40;
     f64 temp_f0_561;
     f64 temp_f0_572;
     f64 temp_f1_560;
     f64 temp_f1_571;
-    s32 temp_r6_482;
-    s32 var_ctr_480;
+    f32 sp8;
+    f32 temp_f29_508;
+    f32 temp_f30_513;
+    f32 temp_f31_514;
+    ManagedLight *temp_r3_559;
+    ManagedLight *temp_r3_570;
+    ManagedLight *temp_r4_551;
     s32 var_r27_501;
     s32 var_r3_475;
+    s32 var_ctr_480;
     void *temp_r3_564;
     void *temp_r3_575;
-    void *temp_r4_483;
-    void *temp_r4_489;
-    void *temp_r4_494;
 
     M2C_FIELD(this, f64 *, 0x68) = (f64) M2C_FIELD(&arg0, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x70) = (f64) M2C_FIELD(&arg0, f64 *, 8);
@@ -309,15 +294,15 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
     this->unk88 = 0.0f;
     this->unk90 = 0.0f;
     this->unk94 = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
-    switch (arg3) {                                 /* irregular */
+    switch (arg3) {
     case 0:
         this->unk88 = 0.0f;
         break;
-    case 2:
-        this->unk88 = 0.5f;
-        break;
     case 1:
         this->unk88 = 0.25f;
+        break;
+    case 2:
+        this->unk88 = 0.5f;
         break;
     case 3:
         this->unk88 = 0.75f;
@@ -326,17 +311,14 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
     var_r3_475 = 0;
     var_ctr_480 = 3;
     do {
-        temp_r6_482 = var_r3_475 + 0x78;
-        temp_r4_483 = *(this + temp_r6_482);
-        if (temp_r4_483 != NULL) {
-            M2C_FIELD(temp_r4_483, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_483, u8 *, 0x31) | 0x40);
-            temp_r4_489 = *(this + temp_r6_482);
-            M2C_FIELD(temp_r4_489, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-            M2C_FIELD(temp_r4_489, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-            M2C_FIELD(*(this + temp_r6_482), f32 *, 0x24) = 1.0f;
-            temp_r4_494 = *(this + temp_r6_482);
-            M2C_FIELD(temp_r4_494, f64 *, 0x10) = (f64) M2C_FIELD(&arg2, f64 *, 0);
-            M2C_FIELD(temp_r4_494, f64 *, 0x18) = (f64) M2C_FIELD(&arg2, f64 *, 8);
+        if (M2C_FIELD(this, void **, var_r3_475 + 0x78) != NULL) {
+            M2C_FIELD(M2C_FIELD(this, void **, var_r3_475 + 0x78), u8 *, 0x31) =
+                (u8) (M2C_FIELD(M2C_FIELD(this, void **, var_r3_475 + 0x78), u8 *, 0x31) | 0x40);
+            M2C_FIELD(M2C_FIELD(this, void **, var_r3_475 + 0x78), f64 *, 0) = M2C_FIELD(&arg0, f64 *, 0);
+            M2C_FIELD(M2C_FIELD(this, void **, var_r3_475 + 0x78), f64 *, 8) = M2C_FIELD(&arg0, f64 *, 8);
+            M2C_FIELD(M2C_FIELD(this, void **, var_r3_475 + 0x78), f32 *, 0x24) = 1.0f;
+            M2C_FIELD(M2C_FIELD(this, void **, var_r3_475 + 0x78), f64 *, 0x10) = M2C_FIELD(&arg2, f64 *, 0);
+            M2C_FIELD(M2C_FIELD(this, void **, var_r3_475 + 0x78), f64 *, 0x18) = M2C_FIELD(&arg2, f64 *, 8);
         }
         var_r3_475 += 4;
         var_ctr_480 -= 1;
@@ -345,23 +327,17 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
     do {
         temp_f29_508 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
         temp_f30_513 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        sp20 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
-        sp24 = temp_f30_513;
-        sp28 = temp_f29_508;
-        sp30 = (f64) sp20;
-        sp38 = (f64) sp28;
-        temp_f0_527 = sp30 * 5.67904887e-315;
-        sp10 = temp_f0_527;
-        sp40 = temp_f0_527;
-        sp18 = (f32) sp38 * 1050.0f;
-        sp48 = (f64) sp18;
+        temp_f31_514 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
+        sp40.unk0 = temp_f31_514 * 1050.0f;
+        sp40.unk4 = temp_f30_513 * 1050.0f;
+        sp40.unk8 = temp_f29_508 * 1050.0f;
         sp8 = MKRand_Float((int *) &gViewSeed, 6.0f, 12.0f);
-        ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(arg0, *((MKVector3 *) &sp40), sp8, arg2, -980.0f);
+        ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(arg0, sp40, sp8, arg2, -980.0f);
         var_r27_501 += 1;
     } while (var_r27_501 < 0xA);
     temp_r4_551 = this->unk84;
     if (temp_r4_551 != NULL) {
-        ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_551, 1U);
+        ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_551, 1);
         temp_r3_559 = this->unk84;
         temp_f1_560 = M2C_FIELD(&arg2, f64 *, 0);
         temp_f0_561 = M2C_FIELD(&arg2, f64 *, 8);
@@ -384,7 +360,6 @@ void HitFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'HitFX' to 'void *'
 void *HitFX::Update() {
@@ -635,11 +610,9 @@ f32 HitFX::Resolve() {
     this->unk8C = (MKMaterial *) (MKMaterial_Create("FX_346"));
 }
 
-#if 0 // DRAFT: illegal operand
 void HitFX::Init() {
-    s32 temp_r0_929;
-    s32 var_ctr_927;
     s32 var_r3_922;
+    s32 var_ctr_927;
 
     MKProp::Init();
     this->unk4C = 0.0f;
@@ -650,10 +623,8 @@ void HitFX::Init() {
     this->unk90 = 0.0f;
     var_ctr_927 = 3;
     do {
-        temp_r0_929 = var_r3_922 + 0x78;
+        M2C_FIELD(this, void **, var_r3_922 + 0x78) = NULL;
         var_r3_922 += 4;
-        *(this + temp_r0_929) = 0;
         var_ctr_927 -= 1;
     } while (var_ctr_927 != 0);
 }
-#endif
