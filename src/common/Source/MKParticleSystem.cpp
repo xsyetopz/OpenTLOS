@@ -18,30 +18,28 @@ void MKParticleSystem::SetMaxParticleAge(float arg0) {
     CalculateEnvelope();
 }
 
-#if 0 // DRAFT: undefined identifier 'fabs'
 void *MKParticleSystem::HitFloor(MKBaseParticleSystem::ParticleRec *arg1, bool *arg2) {
     f32 temp_f1_27;
     f32 temp_f2_30;
-    void *temp_r5_28;
+    MKParticleChunk *temp_r5_28;
     void *temp_r6_32;
 
     *arg2 = 0;
     temp_f1_27 = this->unk11C;
-    temp_r5_28 = M2C_FIELD(arg1, void **, 4);
-    temp_f2_30 = M2C_FIELD(temp_r5_28, f32 *, 4);
-    temp_r6_32 = M2C_FIELD(temp_r5_28, void **, 0x2C);
+    temp_r5_28 = M2C_FIELD(arg1, MKParticleChunk **, 4);
+    temp_f2_30 = temp_r5_28->unk4;
+    temp_r6_32 = temp_r5_28->unk2C;
     if (temp_f2_30 >= (temp_f1_27 - this->unk120)) {
-        M2C_FIELD(temp_r5_28, f32 *, 4) = temp_f1_27;
+        temp_r5_28->unk4 = temp_f1_27;
         M2C_FIELD(temp_r6_32, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r6_32, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r6_32, f32 *, 8) = 0.0f;
     } else {
-        M2C_FIELD(temp_r5_28, f32 *, 4) = (f32) (temp_f1_27 + (temp_f1_27 - temp_f2_30));
-        M2C_FIELD(temp_r6_32, f32 *, 4) = (f32) (this->unk124 * (f32) fabs(M2C_FIELD(temp_r6_32, f32 *, 4)));
+        temp_r5_28->unk4 = (f32) (temp_f1_27 + (temp_f1_27 - temp_f2_30));
+        M2C_FIELD(temp_r6_32, f32 *, 4) = (f32) (this->unk124 * (f32) __fabs(M2C_FIELD(temp_r6_32, f32 *, 4)));
     }
-    return M2C_FIELD(arg1, void **, 4);
+    return M2C_FIELD(arg1, MKParticleChunk **, 4);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkspC'
 void MKParticleSystem::UpdateParticles() {
@@ -156,7 +154,6 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void MKParticleSystem::CalculateEnvelope() {
     MKParticleSystem::Envelope *temp_r5_300;
     MKParticleSystem::Envelope *temp_r5_310;
@@ -172,26 +169,23 @@ void MKParticleSystem::CalculateEnvelope() {
     var_r8_293 = 0;
     var_r4_294 = 0;
     temp_r9_295 = this->unk130 - 1;
-    var_ctr_296 = temp_r9_295;
     if (temp_r9_295 > 0) {
-        do {
+        for (var_ctr_296 = 0; var_ctr_296 < temp_r9_295; var_ctr_296++) {
             temp_r5_300 = this->unk134;
             temp_r7_301 = (var_r8_293 + 1) * 0x14;
             var_r8_293 += 1;
-            temp_r6_303 = temp_r5_300 + var_r4_294;
-            M2C_FIELD(temp_r6_303, f32 *, 0xC) = (f32) (*(temp_r5_300 + (temp_r7_301 + 4)) - M2C_FIELD(temp_r6_303, f32 *, 4));
+            temp_r6_303 = (u8 *) temp_r5_300 + var_r4_294;
+            M2C_FIELD(temp_r6_303, f32 *, 0xC) = (f32) (M2C_FIELD(temp_r5_300, f32 *, temp_r7_301 + 4) - M2C_FIELD(temp_r6_303, f32 *, 4));
             temp_r5_310 = this->unk134;
-            temp_r6_311 = temp_r5_310 + var_r4_294;
+            temp_r6_311 = (u8 *) temp_r5_310 + var_r4_294;
             temp_f0_313 = M2C_FIELD(temp_r6_311, f32 *, 8);
             var_r4_294 += 0x14;
-            M2C_FIELD(temp_r6_311, f32 *, 0x10) = (f32) (*(temp_r5_310 + (temp_r7_301 + 8)) - temp_f0_313);
-            var_ctr_296 -= 1;
-        } while (var_ctr_296 != 0);
+            M2C_FIELD(temp_r6_311, f32 *, 0x10) = (f32) (M2C_FIELD(temp_r5_310, f32 *, temp_r7_301 + 8) - temp_f0_313);
+        }
     }
     this->unk134[temp_r9_295].unkC = 0.0f;
     this->unk134[temp_r9_295].unk10 = 0.0f;
 }
-#endif
 
 void MKParticleSystem::SetEnvelope(MKParticleSystem::Envelope *arg1, int arg2) {
     this->unk134 = arg1;
