@@ -35,8 +35,12 @@ def blocks(lines: list[str]) -> list[tuple[int, int]]:
     A block starts at a column-0 line outside braces and ends where its brace
     depth returns to zero (`}` at column 0 for functions) or at its `;`.
     """
-    out, depth, start, fenced = [], 0, None, 0
+    out, depth, start, fenced, comment = [], 0, None, 0, False
     for i, l in enumerate(lines):
+        # m2c's failure notes are multi-line comments whose body lines sit at column 0.
+        if comment or (depth == 0 and start is None and l.startswith("/*")):
+            comment = "*/" not in l
+            continue
         if l.startswith(FENCE):
             fenced += 1
             continue
