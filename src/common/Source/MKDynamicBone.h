@@ -10,7 +10,7 @@ class Matrix;
 
 class MKDynamicBone {
 public:
-    void DefaultUpdater(MKDynamicBone *, void *);
+    static void DefaultUpdater(MKDynamicBone *, void *);
     void Reset(void);
     void Update(void);
     /* 0x000 */ f32 unk0;
@@ -24,7 +24,7 @@ public:
     /* 0x020 */ Matrix* unk20;
     /* 0x024 */ MKModel* unk24;
     /* 0x028 */ void* unk28;
-    /* 0x02c */ u8 pad2C[0x4];
+    /* 0x02c */ void (*unk2C)(MKDynamicBone *, void *);
     /* 0x030 */ u8 unk30;
     /* 0x031 */ u8 pad31[0x3f];
     /* 0x070 */ s16 unk70;
