@@ -1423,7 +1423,6 @@ loop_44:
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'unsigned long *' and 'long *'
 void Explosion4::Deinit() {
     ManagedLight *temp_r4_2254;
     u32 *temp_r31_2271;
@@ -1435,11 +1434,11 @@ void Explosion4::Deinit() {
     }
     this->unk5C.Deinit();
     do {
-        temp_r3_2266 = this->unk98 - 4;
+        temp_r3_2266 = (u32 *) ((u8 *) this->unk98 - 4);
         this->unk98 = temp_r3_2266;
     } while ((u32) *temp_r3_2266 != 0);
     temp_r31_2271 = this->unk98;
-    if (temp_r31_2271 != &gEmptyPtrList) {
+    if (temp_r31_2271 != (u32 *) &gEmptyPtrList) {
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(temp_r31_2271, NULL, 0);
         } else {
@@ -1449,7 +1448,6 @@ void Explosion4::Deinit() {
     this->unk98 = NULL;
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: ';' expected
 void Explosion4::Draw() {
@@ -2050,13 +2048,15 @@ f32 Explosion4::Resolve() {
     }
 }
 
-#if 0 // DRAFT: ')' expected
 s32 Explosion4::LoadDone() {
+    Explosion4Descriptor *temp_r3_desc;
+
     MKProp::LoadDone();
-    this->unk88 = M2C_FIELD(checked_cast<Explosion4Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x6C);
-    this->unk8C = M2C_FIELD(checked_cast<Explosion4Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x70);
+    temp_r3_desc = checked_cast<Explosion4Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk88 = M2C_FIELD(temp_r3_desc, s32 *, 0x6C);
+    temp_r3_desc = checked_cast<Explosion4Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk8C = M2C_FIELD(temp_r3_desc, s32 *, 0x70);
 }
-#endif
 
 void Explosion4::Init() {
     s32 var_ctr_3260;

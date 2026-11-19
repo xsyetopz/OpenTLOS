@@ -81,18 +81,15 @@ void EnemyTestGoal_MoveToTarget::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk9E8'
 u8 EnemyTestGoal_MoveToTarget::Update() {
     ActivateIfInactive();
-    this->unkC->unk9E8.Update();
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk18) || (this->unk10->GetDist() < this->unk14) || (this->unkC->unk640->PathFollowingHasLooped() != 0)) {
+    ((Enemy *) this->unkC)->unk9E8.Update();
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) >= this->unk18) || (this->unk10->GetDist() < this->unk14) || ((u8) this->unkC->unk640->PathFollowingHasLooped() != 0)) {
         this->unk8 = 2;
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyTestGoal_MoveToTarget::Activate() {
     Character *temp_r3_148;
     SB2 *temp_r3_128;
@@ -107,13 +104,13 @@ void EnemyTestGoal_MoveToTarget::Activate() {
     this->unkC->unk640->HazardAvoidanceOn();
     temp_r3_148 = this->unkC;
     if (temp_r3_148->unk640->unk460 & 0x40) {
-        if (M2C_FIELD(temp_r3_148->__vptr, u8 (**)(), 0x190)() != 0) {
-            this->unkC->unk9E8.Set(0xFU, 0xA, 0, 0x11);
+        if ((u8) ((Enemy *) temp_r3_148)->CanPanic() != 0) {
+            ((Enemy *) this->unkC)->unk9E8.Set(0xFU, 0xA, 0, 0x11);
         } else {
-            this->unkC->unk9E8.Set(0xBU, 0xA, 0, 0);
+            ((Enemy *) this->unkC)->unk9E8.Set(0xBU, 0xA, 0, 0);
         }
     } else {
-        temp_r3_148->unk9E8.Set(0xFU, 0xA, 0, 0);
+        ((Enemy *) temp_r3_148)->unk9E8.Set(0xFU, 0xA, 0, 0);
     }
     this->unkC->unk69C = 0.0f;
     this->unkC->SetMovementType((CharacterMoveType) 0);
@@ -123,7 +120,6 @@ void EnemyTestGoal_MoveToTarget::Activate() {
     }
     this->unk18 = M2C_FIELD(&gb, f32 *, 0x30C) + 10.0f;
 }
-#endif
 
 void EnemyTest_Think::AddGoal_Death(EnemyDamageFeedback *arg0) {
     s32 temp_r0_286;
