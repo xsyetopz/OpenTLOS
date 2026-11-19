@@ -43,11 +43,11 @@ inline s32 AnimProperty::GetInstanceDataSize() const {
     return 8;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void AnimProperty::InitInstance() {
     void *temp_r3_22;
 
-    temp_r3_22 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r3_22 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(temp_r3_22, s8 *, 0) = 1;
     M2C_FIELD(temp_r3_22, s32 *, 4) = 0;
 }
@@ -58,7 +58,7 @@ inline s32 AnimProperty::Query(int arg0) {
 }
 
 inline void *AnimProperty::GetClassInfo() const {
-    return &AnimProperty::classInfo;
+    return (AnimProperty *) AnimProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_ANIMPROPERTY_H

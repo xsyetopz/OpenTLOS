@@ -133,21 +133,21 @@ void GameProperties_RegisterAll(void);
 #include <m2c_macros.h>
 
 inline void *CameraShakeProperty::GetClassInfo() const {
-    return &CameraShakeProperty::classInfo;
+    return (CameraShakeProperty *) CameraShakeProperty::classInfo;
 }
 
 inline s32 CollisionSphereProperty::GetInstanceDataSize() const {
     return 4;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 inline void CollisionSphereProperty::InitInstance() {
-    *(KDProperty::pInstanceMem.__vptr + this->unk8) = KDProperty::pInstanceMem.__vptr + 0x70;
+    *(*KDProperty::pInstanceMem + this->unk8) = *KDProperty::pInstanceMem + 0x70;
 }
 #endif
 
 inline void *CollisionSphereProperty::GetClassInfo() const {
-    return &CollisionSphereProperty::classInfo;
+    return (CollisionSphereProperty *) CollisionSphereProperty::classInfo;
 }
 
 inline s32 EventMessageProperty::GetInstanceDataSize() const {
@@ -155,16 +155,16 @@ inline s32 EventMessageProperty::GetInstanceDataSize() const {
 }
 
 inline void *EventMessageProperty::GetClassInfo() const {
-    return &EventMessageProperty::classInfo;
+    return (EventMessageProperty *) EventMessageProperty::classInfo;
 }
 
 inline s32 MessageBroadcasterProperty::GetInstanceDataSize() const {
     return 1;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 inline void MessageBroadcasterProperty::InitInstance() {
-    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 1;
+    *(*KDProperty::pInstanceMem + this->unk8) = 1;
 }
 #endif
 
@@ -173,11 +173,11 @@ inline s32 MessageBroadcasterProperty::Query(int arg0) {
 }
 
 inline void *MessageBroadcasterProperty::GetClassInfo() const {
-    return &MessageBroadcasterProperty::classInfo;
+    return (MessageBroadcasterProperty *) MessageBroadcasterProperty::classInfo;
 }
 
 inline void *MessageHandlerProperty::GetClassInfo() const {
-    return &MessageHandlerProperty::classInfo;
+    return (MessageHandlerProperty *) MessageHandlerProperty::classInfo;
 }
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
@@ -194,11 +194,11 @@ inline s32 TimerProperty::GetInstanceDataAlignment() const {
     return 4;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void TimerProperty::InitInstance() {
     void *temp_r3_1014;
 
-    temp_r3_1014 = KDProperty::pInstanceMem.__vptr + this->unk8;
+    temp_r3_1014 = *KDProperty::pInstanceMem + this->unk8;
     M2C_FIELD(temp_r3_1014, f32 *, 0) = 0.0f;
     M2C_FIELD(temp_r3_1014, s8 *, 4) = 0;
 }
@@ -209,7 +209,7 @@ inline s32 TimerProperty::Query(int arg0) {
 }
 
 inline void *TimerProperty::GetClassInfo() const {
-    return &TimerProperty::classInfo;
+    return (TimerProperty *) TimerProperty::classInfo;
 }
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function

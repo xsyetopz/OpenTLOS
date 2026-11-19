@@ -179,7 +179,7 @@ inline s32 KDAmbientSoundProperty::Query(int arg0) {
 }
 
 inline void *KDAmbientSoundProperty::GetClassInfo() const {
-    return &KDAmbientSoundProperty::classInfo;
+    return (KDAmbientSoundProperty *) KDAmbientSoundProperty::classInfo;
 }
 
 #if 0 // DRAFT: expression syntax error
@@ -193,7 +193,7 @@ inline s32 KDAnimEventProperty::Query(int arg0) {
 }
 
 inline void *KDAnimEventProperty::GetClassInfo() const {
-    return &KDAnimEventProperty::classInfo;
+    return (KDAnimEventProperty *) KDAnimEventProperty::classInfo;
 }
 
 #if 0 // DRAFT: expression syntax error
@@ -212,7 +212,7 @@ inline KDAnimEventProperty::KDAnimEventProperty() {
 #endif
 
 inline void *KDAnimProperty::GetClassInfo() const {
-    return &KDAnimProperty::classInfo;
+    return (KDAnimProperty *) KDAnimProperty::classInfo;
 }
 
 inline s32 KDMessageHandlerProperty::GetInstanceDataSize() const {
@@ -224,7 +224,7 @@ inline s32 KDMessageHandlerProperty::GetInstanceDataAlignment() const {
 }
 
 inline void *KDMessageHandlerProperty::GetClassInfo() const {
-    return &KDMessageHandlerProperty::classInfo;
+    return (KDMessageHandlerProperty *) KDMessageHandlerProperty::classInfo;
 }
 
 #if 0 // DRAFT: expression syntax error
@@ -251,7 +251,7 @@ inline s32 KDPathFollowerProperty::Query(int arg0) {
 }
 
 inline void *KDPathFollowerProperty::GetClassInfo() const {
-    return &KDPathFollowerProperty::classInfo;
+    return (KDPathFollowerProperty *) KDPathFollowerProperty::classInfo;
 }
 
 inline s32 KDRefPointProperty::Query(int arg0) {
@@ -259,7 +259,7 @@ inline s32 KDRefPointProperty::Query(int arg0) {
 }
 
 inline void *KDRefPointProperty::GetClassInfo() const {
-    return &KDRefPointProperty::classInfo;
+    return (KDRefPointProperty *) KDRefPointProperty::classInfo;
 }
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
@@ -278,7 +278,7 @@ inline s32 KDSoundAttachmentProperty::GetInstanceDataSize() const {
 }
 
 inline void *KDSoundAttachmentProperty::GetClassInfo() const {
-    return &KDSoundAttachmentProperty::classInfo;
+    return (KDSoundAttachmentProperty *) KDSoundAttachmentProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_KDCOMMONPROPERTIES_H

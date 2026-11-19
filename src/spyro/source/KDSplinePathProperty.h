@@ -28,13 +28,13 @@ inline s32 KDSplinePathProperty::GetInstanceDataSize() const {
 
 #if 0 // DRAFT: undefined identifier 'KDSplinePathSegment'
 inline void KDSplinePathProperty::InitInstance() {
-    ((KDSplinePathSegment *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Init();
+    ((KDSplinePathSegment *) (*KDProperty::pInstanceMem + this->unk8))->Init();
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'KDSplinePathSegment'
 inline void KDSplinePathProperty::DeinitInstance() {
-    ((KDSplinePathSegment *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Deinit();
+    ((KDSplinePathSegment *) (*KDProperty::pInstanceMem + this->unk8))->Deinit();
 }
 #endif
 
@@ -48,19 +48,19 @@ inline s32 KDSplinePathProperty::LoadLineInstance(MKIniLine *arg0) {
     } else {
         var_r5_2872 = "";
     }
-    ((KDSplinePathSegment *) (KDProperty::pInstanceMem.__vptr + this->unk8))->LoadWaypoints(arg0, var_r5_2872);
+    ((KDSplinePathSegment *) (*KDProperty::pInstanceMem + this->unk8))->LoadWaypoints(arg0, var_r5_2872);
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'KDSplinePathSegment'
 inline void KDSplinePathProperty::LoadDoneInstance() {
-    ((KDSplinePathSegment *) (KDProperty::pInstanceMem.__vptr + this->unk8))->LoadDone();
+    ((KDSplinePathSegment *) (*KDProperty::pInstanceMem + this->unk8))->LoadDone();
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'KDPathSegment'
 inline void KDSplinePathProperty::ResolveInstance() {
-    ((KDPathSegment *) (KDProperty::pInstanceMem.__vptr + this->unk8))->Resolve();
+    ((KDPathSegment *) (*KDProperty::pInstanceMem + this->unk8))->Resolve();
 }
 #endif
 

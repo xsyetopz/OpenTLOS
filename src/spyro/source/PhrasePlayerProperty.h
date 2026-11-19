@@ -25,9 +25,9 @@ inline s32 PhrasePlayerProperty::GetInstanceDataSize() const {
     return 4;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 inline void PhrasePlayerProperty::InitInstance() {
-    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
+    *(*KDProperty::pInstanceMem + this->unk8) = 0;
 }
 #endif
 

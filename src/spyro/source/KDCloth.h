@@ -49,20 +49,20 @@ inline s32 KDClothProperty::Query(int arg0) {
     return arg0 == 1;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 inline void KDClothProperty::LoadDoneInstance() {
-    this->unk14.Apply(*(KDProperty::pInstanceMem.__vptr + M2C_FIELD(this->unk10, s32 *, 8)));
+    this->unk14.Apply(*(*KDProperty::pInstanceMem + M2C_FIELD(this->unk10, s32 *, 8)));
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 inline void KDClothProperty::Update() {
-    this->unk14.Update(*(KDProperty::pInstanceMem.__vptr + M2C_FIELD(this->unk10, s32 *, 8)));
+    this->unk14.Update(*(*KDProperty::pInstanceMem + M2C_FIELD(this->unk10, s32 *, 8)));
 }
 #endif
 
 inline void *KDClothProperty::GetClassInfo() const {
-    return &KDClothProperty::classInfo;
+    return (KDClothProperty *) KDClothProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_KDCLOTH_H

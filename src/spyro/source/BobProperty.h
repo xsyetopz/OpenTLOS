@@ -53,7 +53,7 @@ inline s32 BobProperty::Query(int arg0) {
 }
 
 inline void *BobProperty::GetClassInfo() const {
-    return &BobProperty::classInfo;
+    return (BobProperty *) BobProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_BOBPROPERTY_H

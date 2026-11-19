@@ -54,7 +54,7 @@ inline s32 WobbleProperty::Query(int arg0) {
 }
 
 inline void *WobbleProperty::GetClassInfo() const {
-    return &WobbleProperty::classInfo;
+    return (WobbleProperty *) WobbleProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_WOBBLEPROPERTY_H

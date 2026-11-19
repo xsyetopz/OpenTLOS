@@ -179,17 +179,15 @@ inline void KDProperty::InitInstance() {
 
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: illegal implicit conversion from 'KDProperty *' to
 inline void KDProperty::SetOwnerProp(MKProp *arg0) {
-    KDProperty::pInstanceMem.__vptr = this;
+    *KDProperty::pInstanceMem = this;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 inline u64 KDProperty::GetOwnerProp() {
-    return (u64) KDProperty::pInstanceMem.__vptr;
+    return (u64) *KDProperty::pInstanceMem;
 }
-#endif
 
 inline void KDScriptProperty::Deinit() {
     this->unk10.Deinit();
@@ -229,7 +227,7 @@ loop_9:
 #endif
 
 inline void *KDScriptProperty::GetClassInfo() const {
-    return &KDScriptProperty::classInfo;
+    return (KDScriptProperty *) KDScriptProperty::classInfo;
 }
 
 inline void KDScriptProperty::Trigger() {

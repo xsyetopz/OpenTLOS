@@ -47,7 +47,7 @@ inline s32 HurtProperty::Query(int arg0) {
 }
 
 inline void *HurtProperty::GetClassInfo() const {
-    return &HurtProperty::classInfo;
+    return (HurtProperty *) HurtProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_HURTPROPERTY_H

@@ -326,15 +326,15 @@ inline ChunkProp::~ChunkProp() {
     }
 }
 
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 inline void *Level::GetLevelInfo(int arg0) {
-    return Level::pLevelInfo + ((s32) this * 0x128);
-}
-
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
-inline s32 Level::GetLevelCount() {
-    return Level::levelInfoCount;
+    return *Level::pLevelInfo + ((s32) this * 0x128);
 }
 #endif
+
+inline s32 Level::GetLevelCount() {
+    return *Level::levelInfoCount;
+}
 
 inline void Level::GetNextLevel(LevelInfo *arg0) {
     if (this != NULL) {

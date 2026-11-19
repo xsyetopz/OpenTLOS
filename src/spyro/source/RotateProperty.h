@@ -52,7 +52,7 @@ inline s32 RotateProperty::Query(int arg0) {
 }
 
 inline void *RotateProperty::GetClassInfo() const {
-    return &RotateProperty::classInfo;
+    return (RotateProperty *) RotateProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_ROTATEPROPERTY_H

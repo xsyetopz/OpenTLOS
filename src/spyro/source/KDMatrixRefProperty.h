@@ -38,37 +38,37 @@ inline s32 KDMatrixRefProperty::GetInstanceDataSize() const {
     return 4;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk8'
 inline void KDMatrixRefProperty::InitInstance() {
-    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
+    *(*KDProperty::pInstanceMem + this->unk8) = 0;
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk8'
 inline s32 KDMatrixRefProperty::GetMatrixRef() const {
-    return *(KDProperty::pInstanceMem.__vptr + this->unk8);
+    return *(*KDProperty::pInstanceMem + this->unk8);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk8'
 inline void KDMatrixRefProperty::GetMatrix(Matrix *arg0) const {
-    M2C_STRUCT_COPY(arg0, *(KDProperty::pInstanceMem.__vptr + this->unk8), 0x40);
+    M2C_STRUCT_COPY(arg0, *(*KDProperty::pInstanceMem + this->unk8), 0x40);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: pointer/array required
 inline void KDMatrixRefProperty::GetPos() const {
     void *temp_r4_24102;
 
-    temp_r4_24102 = *(KDProperty::pInstanceMem.__vptr + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8));
+    temp_r4_24102 = *(*KDProperty::pInstanceMem + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8));
     M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_24102, f64 *, 0x30);
     M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_24102, f64 *, 0x38);
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk8'
 inline s32 KDMatrixRefProperty::GetPosRef() const {
-    return *(KDProperty::pInstanceMem.__vptr + this->unk8) + 0x30;
+    return *(*KDProperty::pInstanceMem + this->unk8) + 0x30;
 }
 #endif
 

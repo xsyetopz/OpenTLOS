@@ -21,9 +21,9 @@ inline s32 KDModelProperty::GetInstanceDataSize() const {
     return 4;
 }
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk8'
 inline void KDModelProperty::InitInstance() {
-    *(KDProperty::pInstanceMem.__vptr + this->unk8) = 0;
+    *(*KDProperty::pInstanceMem + this->unk8) = 0;
 }
 #endif
 

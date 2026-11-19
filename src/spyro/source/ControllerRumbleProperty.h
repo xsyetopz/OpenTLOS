@@ -42,7 +42,7 @@ inline s32 ControllerRumbleProperty::Query(int arg0) {
 }
 
 inline void *ControllerRumbleProperty::GetClassInfo() const {
-    return &ControllerRumbleProperty::classInfo;
+    return (ControllerRumbleProperty *) ControllerRumbleProperty::classInfo;
 }
 
 #endif  // SPYRO_SOURCE_CONTROLLERRUMBLEPROPERTY_H
