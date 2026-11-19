@@ -29,37 +29,38 @@ loop_3:
     return (u8 *) var_r3_0;
 }
 
-#if 0 // DRAFT: type mismatch 'signed char *' and 'const char *'
 s8 *Str_GetFilenameFromPath(const char *arg0) {
-    s32 temp_r3_103;
-    s8 *temp_r31_95;
-    s8 *var_r4_65;
-    u8 temp_r0_72;
-    u8 temp_r0_81;
+    const char *p;
+    s8 *dst;
+    s32 newIndex;
+    u32 len;
 
-    var_r4_65 = (signed char *) (&arg0[strlen(arg0)]);
-loop_2:
-    if (var_r4_65 != arg0) {
-        temp_r0_72 = (u8) *var_r4_65;
-        if (((s8) temp_r0_72 != 0x2F) && ((s8) temp_r0_72 != 0x3A) && ((s8) temp_r0_72 != 0x5C)) {
-            var_r4_65 -= 1;
-            goto loop_2;
-        }
+    p = arg0 + strlen(arg0);
+    goto scan_check;
+scan_step:
+    p -= 1;
+scan_check:
+    if (p == arg0) {
+        goto scan_done;
     }
-    temp_r0_81 = (u8) *var_r4_65;
-    if (((s8) temp_r0_81 == 0x3A) || ((s8) temp_r0_81 == 0x2F) || ((s8) temp_r0_81 == 0x5C)) {
-        var_r4_65 += 1;
+    if (*p == '/' || *p == ':' || *p == '\\') {
+        goto scan_done;
     }
-    temp_r31_95 = (signed char *) (&buffer + bufferIndex);
-    strcpy(temp_r31_95, var_r4_65);
-    temp_r3_103 = bufferIndex + ((strlen(temp_r31_95) + 0x10) & 0xFFFFFFF0);
-    bufferIndex = temp_r3_103;
-    if ((s32) (temp_r3_103 + 0x400) > 0x4000) {
+    goto scan_step;
+scan_done:
+    if (*p == ':' || *p == '/' || *p == '\\') {
+        p += 1;
+    }
+    dst = (s8 *) ((u8 *) &buffer + bufferIndex);
+    strcpy((char *) dst, p);
+    len = strlen((char *) dst);
+    newIndex = bufferIndex + ((len + 0x10) & 0xFFFFFFF0);
+    bufferIndex = newIndex;
+    if ((s32) (newIndex + 0x400) > 0x4000) {
         bufferIndex = 0;
     }
-    return temp_r31_95;
+    return dst;
 }
-#endif
 
 void Str_Lower(const char *arg0) {
     Str_Dup(arg0);
@@ -71,23 +72,21 @@ void Str_Upper(const char *arg0) {
     strupr();
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 s8 *Str_Dup(const char *arg0) {
-    s32 temp_r3_167;
-    s8 *temp_r30_160;
-    u32 temp_r31_159;
+    s32 newIndex;
+    s8 *dst;
+    u32 len;
 
-    temp_r31_159 = strlen(arg0);
-    temp_r30_160 = (signed char *) (&buffer + bufferIndex);
-    strcpy(temp_r30_160, arg0);
-    temp_r3_167 = bufferIndex + ((temp_r31_159 + 0x10) & 0xFFFFFFF0);
-    bufferIndex = temp_r3_167;
-    if ((s32) (temp_r3_167 + 0x400) > 0x4000) {
+    len = strlen(arg0);
+    dst = (s8 *) ((u8 *) &buffer + bufferIndex);
+    strcpy((char *) dst, arg0);
+    newIndex = bufferIndex + ((len + 0x10) & 0xFFFFFFF0);
+    bufferIndex = newIndex;
+    if ((s32) (newIndex + 0x400) > 0x4000) {
         bufferIndex = 0;
     }
-    return temp_r30_160;
+    return dst;
 }
-#endif
 
 u8 *Str_CopyString(const char *arg0, int arg1) {
     s32 temp_r3_209;

@@ -5,25 +5,42 @@
 static M2C_UNK _sinTable;                           /* unable to generate initializer: unknown type */
 #endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 s32 MKLinesIntersect(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3) {
-    f32 temp_f2_11;
-    f32 temp_f3_15;
-    f32 temp_f6_26;
-    f32 temp_f8_27;
-    s32 var_r7_12;
+    f32 ax;
+    f32 az;
+    f32 bx;
+    f32 bz;
+    f32 cx;
+    f32 cz;
+    f32 dx;
+    f32 dz;
+    s32 result;
+    s32 sideA;
+    s32 sideB;
+    s32 sideC;
+    s32 sideD;
 
-    temp_f2_11 = arg0.unk8;
-    var_r7_12 = 0;
-    temp_f3_15 = arg0.unk0;
-    temp_f6_26 = arg2.unk8;
-    temp_f8_27 = arg2.unk0;
-    if (((u32) (((arg1.unk0 - temp_f3_15) * (temp_f6_26 - temp_f2_11)) > ((temp_f8_27 - temp_f3_15) * (arg1.unk8 - temp_f2_11))) != (u32) (((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1)) && ((u32) (((arg3.unk0 - temp_f8_27) * (temp_f2_11 - temp_f6_26)) > ((temp_f3_15 - temp_f8_27) * (arg3.unk8 - temp_f6_26))) != (u32) (((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1))) {
-        var_r7_12 = 1;
+    az = M2C_FIELD(&arg0, f32 *, 0x8);
+    dz = M2C_FIELD(&arg3, f32 *, 0x8);
+    bz = M2C_FIELD(&arg1, f32 *, 0x8);
+    ax = M2C_FIELD(&arg0, f32 *, 0x0);
+    bx = M2C_FIELD(&arg1, f32 *, 0x0);
+    dx = M2C_FIELD(&arg3, f32 *, 0x0);
+    cz = M2C_FIELD(&arg2, f32 *, 0x8);
+    cx = M2C_FIELD(&arg2, f32 *, 0x0);
+
+    result = 0;
+    sideA = ((bx - ax) * (dz - az)) > ((dx - ax) * (bz - az));
+    sideB = ((bx - ax) * (cz - az)) > ((cx - ax) * (bz - az));
+    if (sideA != sideB) {
+        sideC = ((dx - cx) * (bz - cz)) > ((bx - cx) * (dz - cz));
+        sideD = ((dx - cx) * (az - cz)) > ((ax - cx) * (dz - cz));
+        if (sideC != sideD) {
+            result = 1;
+        }
     }
-    return var_r7_12;
+    return result;
 }
-#endif
 
 f32 NormaliseAngle(float arg0) {
     f32 var_f1_0;
@@ -41,47 +58,43 @@ f32 NormaliseAngle(float arg0) {
     return var_f1_0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4100]' to 'float'
 void _table_sincosf(float arg0, float &arg1, float &arg2) {
-    f32 temp_f1_142;
-    f32 temp_f2_139;
-    f32 temp_f6_130;
-    s32 temp_r0_129;
-    s32 temp_r5_125;
-    s32 temp_r7_131;
-    s32 temp_r9_127;
-    void *temp_r8_120;
+    s32 r5;
+    s32 sinIdx;
+    s32 cosIdx;
+    f32 frac;
+    f32 lo;
+    f32 hi;
 
-    temp_r8_120 = &_sinTable + 4;
-    temp_r5_125 = (s32) (325.9493f * arg0);
-    temp_r9_127 = temp_r5_125 + 0x200;
-    temp_r0_129 = (temp_r5_125 * 4) & 0xFFC;
-    temp_f6_130 = *(&_sinTable + temp_r0_129);
-    temp_r7_131 = (temp_r9_127 * 4) & 0xFFC;
-    temp_f2_139 = 325.9493f * -((0.0030679617f * (f32) temp_r5_125) - arg0);
-    &arg1 = (temp_f2_139 * (*(temp_r8_120 + temp_r0_129) - temp_f6_130)) + temp_f6_130;
-    temp_f1_142 = *(&_sinTable + temp_r7_131);
-    &arg2 = (temp_f2_139 * (*(temp_r8_120 + temp_r7_131) - temp_f1_142)) + temp_f1_142;
-    &arg1 = M2C_BITWISE(f32, (M2C_BITWISE(s32, &arg1) | ((temp_r5_125 << 0x15) & 0x80000000)));
-    &arg2 = M2C_BITWISE(f32, (M2C_BITWISE(s32, &arg2) | ((temp_r9_127 << 0x15) & 0x80000000)));
+    r5 = (s32) (325.9493f * arg0);
+    frac = 325.9493f * (arg0 - (0.0030679617f * (f32) r5));
+    sinIdx = (r5 * 4) & 0xFFC;
+    cosIdx = ((r5 + 0x200) * 4) & 0xFFC;
+    lo = M2C_FIELD(_sinTable, f32 *, sinIdx);
+    hi = M2C_FIELD((_sinTable + 4), f32 *, sinIdx);
+    arg1 = frac * (hi - lo) + lo;
+    lo = M2C_FIELD(_sinTable, f32 *, cosIdx);
+    hi = M2C_FIELD((_sinTable + 4), f32 *, cosIdx);
+    arg2 = frac * (hi - lo) + lo;
+    *(s32 *) &arg1 = *(s32 *) &arg1 | (((u32) r5 << 21) & 0x80000000);
+    *(s32 *) &arg2 = *(s32 *) &arg2 | (((u32) (r5 + 0x200) << 21) & 0x80000000);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4100]' to 'float'
 f32 _table_sinf(float arg0) {
-    f32 sp8;                                        /* compiler-managed */
-    f32 temp_f6_176;
-    s32 temp_r5_173;
-    s32 temp_r6_171;
+    s32 idx;
+    s32 r6;
+    f32 lo;
+    f32 hi;
+    f32 res;
 
-    temp_r6_171 = (s32) (325.9493f * arg0);
-    temp_r5_173 = (temp_r6_171 * 4) & 0xFFC;
-    temp_f6_176 = *(&_sinTable + temp_r5_173);
-    sp8 = (325.9493f * -((0.0030679617f * (f32) temp_r6_171) - arg0) * (M2C_FIELD((&_sinTable + temp_r5_173), f32 *, 4) - temp_f6_176)) + temp_f6_176;
-    sp8 = M2C_BITWISE(s32, sp8) | ((temp_r6_171 << 0x15) & 0x80000000);
-    return M2C_BITWISE(f32, sp8);
+    r6 = (s32) (325.9493f * arg0);
+    idx = (r6 * 4) & 0xFFC;
+    lo = M2C_FIELD(_sinTable, f32 *, idx);
+    hi = M2C_FIELD(_sinTable, f32 *, idx + 4);
+    res = (325.9493f * (arg0 - (0.0030679617f * (f32) r6))) * (hi - lo) + lo;
+    *(s32 *) &res = *(s32 *) &res | (((u32) r6 << 21) & 0x80000000);
+    return res;
 }
-#endif
 
 f32 ApproxMagnitude(float arg0, float arg1) {
     f32 temp_f4_228;
