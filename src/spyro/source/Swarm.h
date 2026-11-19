@@ -61,4 +61,18 @@ public:
     /* 0x090 */ s32 unk90;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline SwarmProp::~SwarmProp() {
+    s32 temp_cr0_eq_1135;
+
+    temp_cr0_eq_1135 = this == NULL;
+    if (temp_cr0_eq_1135 == 0) {
+        if (temp_cr0_eq_1135 == 0) {
+            if (temp_cr0_eq_1135 == 0) {
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_SWARM_H

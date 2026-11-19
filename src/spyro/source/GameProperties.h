@@ -128,4 +128,102 @@ public:
 };
 
 void GameProperties_RegisterAll(void);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline void *CameraShakeProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+inline s32 CollisionSphereProperty::GetInstanceDataSize() const {
+    return 4;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline void CollisionSphereProperty::InitInstance() {
+    *(pInstanceMem.__vptr + this->unk8) = pInstanceMem.__vptr + 0x70;
+}
+#endif
+
+inline void *CollisionSphereProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+inline s32 EventMessageProperty::GetInstanceDataSize() const {
+    return 4;
+}
+
+inline void *EventMessageProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+inline s32 MessageBroadcasterProperty::GetInstanceDataSize() const {
+    return 1;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline void MessageBroadcasterProperty::InitInstance() {
+    *(pInstanceMem.__vptr + this->unk8) = 1;
+}
+#endif
+
+inline s32 MessageBroadcasterProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *MessageBroadcasterProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+inline void *MessageHandlerProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MessageHandlerProperty::MessageHandlerProperty() {
+    return this;
+}
+#endif
+
+inline s32 TimerProperty::GetInstanceDataSize() const {
+    return 8;
+}
+
+inline s32 TimerProperty::GetInstanceDataAlignment() const {
+    return 4;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline void TimerProperty::InitInstance() {
+    void *temp_r3_1014;
+
+    temp_r3_1014 = pInstanceMem.__vptr + this->unk8;
+    M2C_FIELD(temp_r3_1014, f32 *, 0) = 0.0f;
+    M2C_FIELD(temp_r3_1014, s8 *, 4) = 0;
+}
+#endif
+
+inline s32 TimerProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *TimerProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline TimerProperty::TimerProperty() {
+    this->unk4 = 0;
+    this->unkC = NULL;
+    this->unk8 = 0;
+    this->unk10.unk0 = 0;
+    this->unk10.unk4 = NULL;
+    this->unk10.unk4 = NULL;
+    this->unk10.unk8 = 0;
+    this->unk1C = 1.0f;
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_GAMEPROPERTIES_H

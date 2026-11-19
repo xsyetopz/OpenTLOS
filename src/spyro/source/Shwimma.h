@@ -63,4 +63,32 @@ public:
     /* 0x098 */ s32 unk98;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ShwimmaCritter::ShwimmaCritter() {
+    return this;
+}
+#endif
+
+inline ShwimmaCritter::~ShwimmaCritter() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ShwimmaCritterDescriptor::ShwimmaCritterDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SHWIMMA_H

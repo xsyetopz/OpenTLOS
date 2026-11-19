@@ -46,4 +46,18 @@ public:
     /* 0x07c */ s32 unk7C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline DartTrap::~DartTrap() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_DARTTRAP_H

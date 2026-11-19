@@ -140,4 +140,37 @@ public:
     /* 0x041 */ u8 unk41;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void EnemyGoal_AttackMelee::Reset() {
+    this->unk8 = 1;
+    this->unk14 = 0;
+}
+
+inline void EnemyGoal_AttackMeleeLoop::Reset() {
+    this->unk8 = 1;
+    this->unk10 = 0;
+}
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline EnemyGoal_LeapAttackMiss::~EnemyGoal_LeapAttackMiss() {
+    if ((&this->unk14 != NULL) && (&this->unk14 != NULL)) {
+        KDSound_Stop(&this->unk14);
+    }
+}
+#endif
+
+inline void EnemyGoal_LeapAttackRecover::Reset() {
+    this->unk8 = 1;
+    RemoveAllSubgoals();
+}
+
+inline void EnemyGoal_MeleeAttackMode::Reset() {
+    this->unk8 = 1;
+    RemoveAllSubgoals();
+    this->unk20 = NULL;
+    this->unk40 = 0;
+    this->unk41 = 0;
+}
+
 #endif  // SPYRO_SOURCE_ENEMYGOAL_MELEEATTACKMODE_H

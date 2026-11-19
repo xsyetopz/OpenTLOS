@@ -89,4 +89,32 @@ public:
     /* 0x090 */ s32 unk90;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline BirdCritter::~BirdCritter() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline BirdCritter::BirdCritter() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline BirdCritterDescriptor::BirdCritterDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_BIRD_H

@@ -42,4 +42,19 @@ public:
     /* 0x1b8 */ MKVector3 unk1B8;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk19C'
+inline FloatingPlatform::FloatingPlatform() {
+    this->unk198 = 0;
+    this->unk19C = 0;
+    this->unk1A0 = 0.0f;
+    this->unk1A4 = 0;
+    return this;
+}
+#endif
+
+inline FloatingPlatform::~FloatingPlatform() {
+}
+
 #endif  // SPYRO_SOURCE_FLOATINGPLATFORM_H

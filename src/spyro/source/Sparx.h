@@ -218,4 +218,16 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline Sparx::~Sparx() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_SPARX_H

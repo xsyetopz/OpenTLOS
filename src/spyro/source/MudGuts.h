@@ -57,4 +57,32 @@ public:
     /* 0x074 */ s32 unk74;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MudGutsCritter::MudGutsCritter() {
+    return this;
+}
+#endif
+
+inline MudGutsCritter::~MudGutsCritter() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MudGutsCritterDescriptor::MudGutsCritterDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MUDGUTS_H

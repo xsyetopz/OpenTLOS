@@ -436,4 +436,100 @@ public:
     /* 0x014 */ s32 unk14;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline DojoController::~DojoController() {
+    EventMessage *temp_r3_14988;
+    EventMessage *temp_r3_15001;
+    EventMessage *temp_r3_15007;
+    f32 *temp_r3_14994;
+
+    if (this != NULL) {
+        if (&this->unk310 != NULL) {
+            temp_r3_14988 = &this->unk310.unk3C;
+            M2C_FIELD(this, M2C_UNK **, 0x310) = &__vt;
+            if (temp_r3_14988 != NULL) {
+                temp_r3_14988->Deinit();
+            }
+            temp_r3_14994 = &this->unk310.unk38;
+            if (temp_r3_14994 != NULL) {
+                temp_r3_14994->Deinit();
+            }
+        }
+        if (&this->unk2C0 != NULL) {
+            temp_r3_15001 = &this->unk2C0.unk40;
+            this->unk2C0.__vptr = &__vt;
+            if (temp_r3_15001 != NULL) {
+                temp_r3_15001->Deinit();
+            }
+            temp_r3_15007 = &this->unk2C0.unk3C;
+            if (temp_r3_15007 != NULL) {
+                temp_r3_15007->Deinit();
+            }
+        }
+        if (&this->unk58 != NULL) {
+            this->unk58.Deinit();
+        }
+        if (&this->unk54 != NULL) {
+            this->unk54.Deinit();
+        }
+        if (&this->unk50 != NULL) {
+            this->unk50.Deinit();
+        }
+        if (&this->unk4C != NULL) {
+            this->unk4C.Deinit();
+        }
+        if (this != NULL) {
+        }
+    }
+}
+#endif
+
+inline void DojoLesson::Init(DojoController *arg0, int arg1) {
+    this->unk4 = arg0;
+    this->unk8 = arg1;
+    this->unkC = 0;
+    this->unk10 = 0;
+    this->unk14 = 0;
+}
+
+inline void EarthDojoLesson::Init(DojoController *arg0, int arg1) {
+    this->unk4 = arg0;
+    this->unk8 = arg1;
+    this->unkC = 0;
+    this->unk10 = 0;
+    this->unk14 = 0;
+    this->unk14 = 0x17;
+}
+
+inline void ElectricDojoLesson::Init(DojoController *arg0, int arg1) {
+    this->unk4 = arg0;
+    this->unk8 = arg1;
+    this->unkC = 0;
+    this->unk10 = 0;
+    this->unk14 = 0;
+    this->unk14 = 0xD;
+}
+
+inline void FireDojoLesson::Init(DojoController *arg0, int arg1) {
+    this->unk4 = arg0;
+    this->unk8 = arg1;
+    this->unkC = 0;
+    this->unk10 = 0;
+    this->unk14 = 0;
+    this->unk14 = 0;
+}
+
+inline void IceDojoLesson::Init(DojoController *arg0, int arg1) {
+    this->unk4 = arg0;
+    this->unk8 = arg1;
+    this->unkC = 0;
+    this->unk10 = 0;
+    this->unk14 = 0;
+    this->unk14 = 0x12;
+}
+
 #endif  // SPYRO_SOURCE_DOJOCONTROLLER_H

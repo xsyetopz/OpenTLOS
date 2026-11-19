@@ -193,4 +193,51 @@ public:
     /* 0x034 */ Goal<Enemy>* unk34;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline void EnemyGoal_FlyIdle::Reset() {
+    this->unk8 = 1;
+    this->unk10 = NULL;
+    this->unk14 = 0;
+}
+
+inline void EnemyGoal_FlyLand::Reset() {
+    this->unk8 = 1;
+    this->unk10 = 0.0f;
+    this->unk14 = 0.0f;
+    this->unk18 = 0.0f;
+    M2C_FIELD(this, f32 *, 0x20) = 0.0f;
+    M2C_FIELD(this, f32 *, 0x24) = 0.0f;
+    M2C_FIELD(this, f32 *, 0x28) = 0.0f;
+}
+
+inline void EnemyGoal_FlyTakeoff::Reset() {
+    this->unk8 = 1;
+    this->unk10 &= ~0x80;
+}
+
+inline void EnemyGoal_FlyToAttackTarget::Reset() {
+    this->unk8 = 1;
+    this->unk10 = NULL;
+    this->unk14 = 0.0f;
+    this->unk18 = 0.0f;
+}
+
+inline void EnemyGoal_FlyToTarget::Reset() {
+    this->unk8 = 1;
+    this->unk2C &= ~0x80;
+    this->unk14 = NULL;
+    this->unk28 = 0.0f;
+    M2C_FIELD(this, f32 *, 0x18) = 0.0f;
+    M2C_FIELD(this, f32 *, 0x1C) = 0.0f;
+    this->unk20 = 0.0f;
+}
+
+inline void EnemyGoal_WalkToTargetArb::Reset() {
+    this->unk8 = 1;
+    this->unk10 = 0.0f;
+}
+
 #endif  // SPYRO_SOURCE_FIRETIER1GOAL_THINK_H

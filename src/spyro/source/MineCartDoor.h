@@ -34,4 +34,21 @@ public:
     /* 0x0f0 */ s32 unkF0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MineCartDoor::MineCartDoor() {
+    return this;
+}
+#endif
+
+inline MineCartDoor::~MineCartDoor() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MineCartDoorDescriptor::MineCartDoorDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MINECARTDOOR_H

@@ -66,4 +66,25 @@ public:
     /* 0x1b4 */ s8* unk1B4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline LavaCannon::LavaCannon() {
+    this->unkC8 = &__vt + 0x48;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline LavaCannon::~LavaCannon() {
+    this->unkC8 = &__vt.unk48;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline LavaCannonDescriptor::LavaCannonDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_LAVACANNON_H

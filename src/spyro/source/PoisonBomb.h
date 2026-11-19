@@ -76,4 +76,57 @@ public:
     /* 0x0f4 */ s32 unkF4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unk150'
+inline PoisonBomb::PoisonBomb() {
+    M2C_UNK *temp_r0_22553;
+
+    temp_r0_22553 = &this->unk150;
+    M2C_FIELD(this, s32 *, 0x150) = 0;
+    this->unk154 = 0;
+    this->unk158 = temp_r0_22553;
+    this->unk15C = temp_r0_22553;
+    this->unk190 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline PoisonBomb::~PoisonBomb() {
+    M2C_UNK *temp_r0_30;
+    M2C_UNK *temp_r4_33;
+
+    if (this != NULL) {
+        if ((&this->unk190 != NULL) && (&this->unk190 != NULL)) {
+            KDSound_Stop(&this->unk190);
+        }
+        if (&this->unk150 != NULL) {
+            temp_r0_30 = this->unk158;
+            if (temp_r0_30 != NULL) {
+                temp_r4_33 = &this->unk150;
+                if (temp_r0_30 != temp_r4_33) {
+                    M2C_FIELD(this->unk15C, M2C_UNK **, 8) = temp_r0_30;
+                    M2C_FIELD(this->unk158, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk15C;
+                    this->unk15C = temp_r4_33;
+                    this->unk158 = temp_r4_33;
+                }
+            }
+        }
+    }
+}
+#endif
+
+inline void PoisonBomb::SetExplodeTimer(float arg0) {
+
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline PoisonBombDescriptor::PoisonBombDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_POISONBOMB_H

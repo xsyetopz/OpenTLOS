@@ -71,4 +71,32 @@ public:
     /* 0x078 */ s32 unk78;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline IceSnoatCritter::IceSnoatCritter() {
+    return this;
+}
+#endif
+
+inline IceSnoatCritter::~IceSnoatCritter() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline IceSnoatCritterDescriptor::IceSnoatCritterDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ICESNOAT_H

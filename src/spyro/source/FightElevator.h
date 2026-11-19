@@ -85,4 +85,40 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FightElevator::FightElevator() {
+    this->unk180 = 0;
+    this->unk184 = 0;
+    this->unk188 = 0.0f;
+    this->unk18C = 0;
+    this->unk1BC = 0;
+    this->unk1E4 = 0;
+    this->unk2B4.unk0 = 0;
+    this->unk2B4.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline FightElevator::~FightElevator() {
+    if (&this->unk2B4 != NULL) {
+        this->unk2B4.Deinit();
+    }
+    if ((&this->unk1E4 != NULL) && (&this->unk1E4 != NULL)) {
+        KDSound_Stop(&this->unk1E4);
+    }
+    if ((&this->unk1BC != NULL) && (&this->unk1BC != NULL)) {
+        KDSound_Stop(&this->unk1BC);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FightElevatorDescriptor::FightElevatorDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_FIGHTELEVATOR_H

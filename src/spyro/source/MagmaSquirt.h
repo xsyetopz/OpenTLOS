@@ -54,4 +54,26 @@ public:
     MagmaSquirtDescriptor(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline MagmaSquirt::MagmaSquirt() {
+    this->unk170.unk4 = 0;
+    return this;
+}
+#endif
+
+inline MagmaSquirt::~MagmaSquirt() {
+}
+
+inline s32 MagmaSquirt::IsBurst() {
+    return 1;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MagmaSquirtDescriptor::MagmaSquirtDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MAGMASQUIRT_H

@@ -85,4 +85,53 @@ public:
     /* 0x0ec */ s32 unkEC;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline Projectile::~Projectile() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline Projectile::Projectile() {
+    return this;
+}
+#endif
+
+inline s32 Projectile::IsBurst() {
+    return 0;
+}
+
+inline void Projectile::Activate() {
+    GameProp::Activate();
+}
+
+inline void Projectile::Deactivate() {
+    GameProp::Deactivate();
+}
+
+inline void Projectile::SetExplodeOnContact(bool arg0) {
+
+}
+
+inline void Projectile::SetExplodeNearHero(bool arg0, float arg1) {
+
+}
+
+inline void Projectile::SetExplodeTimer(float arg0) {
+
+}
+
+inline void Projectile::SetHeroHurtType(int arg0) {
+    this->unk144 = arg0;
+}
+
+inline void Projectile::SetHitList(MKPtrList<MKProp> *arg0) {
+    this->unk134 = (MKPtrList<MKProp> *) arg0;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ProjectileDescriptor::ProjectileDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_PROJECTILE_H

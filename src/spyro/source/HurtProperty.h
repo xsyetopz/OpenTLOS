@@ -36,4 +36,18 @@ public:
     /* 0x020 */ u8 unk20;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 HurtProperty::GetInstanceDataSize() const {
+    return 1;
+}
+
+inline s32 HurtProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *HurtProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_HURTPROPERTY_H

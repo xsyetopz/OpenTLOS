@@ -74,4 +74,35 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline FloorSwitch::FloorSwitch() {
+    this->unkC8 = &__vt + 0x48;
+    this->unk118 = NULL;
+    this->unk118.Init();
+    this->unk11C = NULL;
+    this->unk11C.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline FloorSwitch::~FloorSwitch() {
+    this->unkC8 = &__vt.unk48;
+    if (&this->unk11C != NULL) {
+        this->unk11C.Deinit();
+    }
+    if (&this->unk118 != NULL) {
+        this->unk118.Deinit();
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FloorSwitchDescriptor::FloorSwitchDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_FLOORSWITCH_H

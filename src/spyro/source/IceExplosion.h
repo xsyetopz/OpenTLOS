@@ -30,4 +30,16 @@ public:
     /* 0x064 */ MKProp* unk64;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline IceExplosion::~IceExplosion() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_ICEEXPLOSION_H

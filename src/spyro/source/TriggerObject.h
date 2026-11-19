@@ -165,4 +165,190 @@ public:
     /* 0x080 */ f32 unk80;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unk44'
+inline s32 TriggerBoxObject::CheckTarget() {
+    f64 sp10;
+    f64 sp8;
+    f32 temp_r3_439;
+    f64 temp_f1_459;
+    s32 var_r31_454;
+    void *temp_r5_456;
+    void *var_r3_442;
+
+    temp_r3_439 = this->unk10.unk44;
+    if (M2C_BITWISE(s32, temp_r3_439) > 0) {
+        var_r3_442 = ((MKSceneManager *) (M2C_BITWISE(MKSceneManager *, temp_r3_439)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+    } else {
+        var_r3_442 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
+    }
+    var_r31_454 = 0;
+    if (var_r3_442 != NULL) {
+        temp_r5_456 = M2C_FIELD(var_r3_442, void **, 8);
+        temp_f1_459 = M2C_FIELD(temp_r5_456, f64 *, 0x30);
+        sp8 = temp_f1_459;
+        sp10 = M2C_FIELD(temp_r5_456, f64 *, 0x38);
+        if (M2C_FIELD(this->__vptr, u8 (**)(TriggerBoxObject *, f64 *, void *, f64), 0x30)(this, &sp8, temp_r5_456, temp_f1_459) != 0) {
+            var_r31_454 = 1;
+        }
+    }
+    return var_r31_454;
+}
+#endif
+
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline s32 TriggerBoxObject::CheckPos(const MKVector3 &arg0) {
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+    f32 temp_f1_531;
+    f32 temp_f1_541;
+    f32 temp_f4_512;
+    f32 temp_f6_484;
+    f32 temp_f7_488;
+    f32 temp_f8_494;
+    s32 var_r0_483;
+
+    var_r0_483 = 0;
+    temp_f6_484 = arg0.unk4;
+    temp_f7_488 = arg0.unk0;
+    temp_f8_494 = arg0.unk8;
+    sp8 = this->unkB0 + ((temp_f8_494 * this->unkA0) + ((temp_f7_488 * this->unk10.unk70) + (temp_f6_484 * this->unk10.unk80)));
+    spC = this->unkB4 + ((temp_f8_494 * this->unkA4) + ((temp_f7_488 * this->unk10.unk74) + (temp_f6_484 * this->unk10.unk84)));
+    temp_f4_512 = this->unk10.unk50;
+    sp28 = (f64) sp8;
+    sp10 = this->unkB8 + ((temp_f8_494 * this->unkA8) + ((temp_f7_488 * this->unk10.unk78) + (temp_f6_484 * this->unk10.unk88)));
+    sp18 = (f64) sp8;
+    sp20 = (f64) sp10;
+    sp30 = (f64) sp10;
+    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    if ((f32) sp28 == temp_f4_512) {
+        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+        if ((f32) sp28 == (temp_f4_512 + M2C_BITWISE(f32, this->unk10.unk60))) {
+            temp_f1_531 = this->unk10.unk54;
+            M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+            if (unksp2C == temp_f1_531) {
+                M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                if (unksp2C == (temp_f1_531 + this->unk10.unk64)) {
+                    temp_f1_541 = this->unk10.unk58;
+                    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+                    if ((f32) sp30 == temp_f1_541) {
+                        M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+                        if ((f32) sp30 == (temp_f1_541 + this->unk10.unk68)) {
+                            var_r0_483 = 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return var_r0_483;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC'
+inline void TriggerBoxObject::SetPos(const Matrix &arg0) {
+    M2C_STRUCT_COPY((s32) &this->unkC + 4, (s32) (&arg0 - 4) + 4, 0x40);
+    this->unk10.unk70.InverseSimple(&this->unk10);
+}
+#endif
+
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline void TriggerBoxObject::SetPos(const MKVector3 &arg0) {
+    this->unk10.unk30 = arg0.unk0;
+    this->unk10.unk34 = arg0.unk4;
+    this->unk10.unk38 = arg0.unk8;
+    this->unk10.unk3C = 1.0f;
+    this->unk10.unk70.InverseSimple(&this->unk10);
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC'
+inline void TriggerObject::SetPos(const Matrix &arg0) {
+    M2C_STRUCT_COPY((s32) &this->unkC + 4, (s32) (&arg0 - 4) + 4, 0x40);
+}
+#endif
+
+inline void TriggerObject::LoadDone() {
+
+}
+
+inline void TriggerObject::Deinit() {
+
+}
+
+inline void TriggerObject::Resolve() {
+
+}
+
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline void TriggerObject::SetPos(const MKVector3 &arg0) {
+    this->unk10.unk30 = arg0.unk0;
+    this->unk10.unk34 = arg0.unk4;
+    this->unk10.unk38 = arg0.unk8;
+    this->unk10.unk3C = 1.0f;
+}
+#endif
+
+inline s32 TriggerPlaneGroupObject::CheckPos(const MKVector3 &arg0) {
+    return 0;
+}
+
+#if 0 // DRAFT: undefined identifier 'unk70'
+inline f32 TriggerSphereObject::GetRadiusSquared() {
+    return this->unk10.unk70;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk70'
+inline void TriggerSphereObject::SetRadius(float arg0) {
+    this->unk10.unk70 = arg0 * arg0;
+}
+#endif
+
+inline s32 TriggerSphereObject::CheckPos(const MKVector3 &arg0) {
+    return (u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU;
+}
+
+#if 0 // DRAFT: undefined identifier 'unk44'
+inline s32 TriggerSphereObject::CheckTarget() {
+    f64 sp10;
+    f64 sp8;
+    f32 temp_f3_1397;
+    f32 temp_f4_1392;
+    f32 temp_f5_1391;
+    f32 temp_r3_1365;
+    s32 var_r0_1380;
+    void *temp_r3_1382;
+    void *var_r3_1368;
+
+    temp_r3_1365 = this->unk10.unk44;
+    if (M2C_BITWISE(s32, temp_r3_1365) > 0) {
+        var_r3_1368 = ((MKSceneManager *) (M2C_BITWISE(MKSceneManager *, temp_r3_1365)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+    } else {
+        var_r3_1368 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
+    }
+    var_r0_1380 = 0;
+    if (var_r3_1368 != NULL) {
+        temp_r3_1382 = M2C_FIELD(var_r3_1368, void **, 8);
+        sp8 = M2C_FIELD(temp_r3_1382, f64 *, 0x30);
+        sp10 = M2C_FIELD(temp_r3_1382, f64 *, 0x38);
+        temp_f5_1391 = this->unk10.unk34 - unkspC;
+        temp_f4_1392 = this->unk10.unk30 - (f32) sp8;
+        temp_f3_1397 = this->unk10.unk38 - (f32) sp10;
+        if (((temp_f3_1397 * temp_f3_1397) + ((temp_f4_1392 * temp_f4_1392) + (temp_f5_1391 * temp_f5_1391))) < this->unk10.unk70) {
+            var_r0_1380 = 1;
+        }
+    }
+    return var_r0_1380;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_TRIGGEROBJECT_H

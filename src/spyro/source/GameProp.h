@@ -57,4 +57,32 @@ public:
     /* 0x0e0 */ s32 unkE0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline GameProp::~GameProp() {
+    s32 temp_cr0_eq_17649;
+
+    temp_cr0_eq_17649 = this == NULL;
+    if (temp_cr0_eq_17649 == 0) {
+        if (temp_cr0_eq_17649 == 0) {
+            if (temp_cr0_eq_17649 == 0) {
+                if (temp_cr0_eq_17649 == 0) {
+                }
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline GameProp::GameProp() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline GamePropDescriptor::GamePropDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_GAMEPROP_H

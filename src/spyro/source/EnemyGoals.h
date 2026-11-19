@@ -309,4 +309,36 @@ public:
     /* 0x015 */ u8 unk15;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void EnemyGoal_Alert::Reset() {
+    this->unk8 = 1;
+    this->unk10 = NULL;
+    this->unk14 = NULL;
+}
+
+inline void EnemyGoal_Hide::Reset() {
+    this->unk8 = 1;
+    this->unk14 = 0;
+    this->unk10 = 0;
+}
+
+#if 0 // DRAFT: ambiguous access to overloaded function
+inline void EnemyGoal_PullLever::Reset() {
+    this->unk8 = 1;
+    this->unk10.Set(NULL);
+}
+#endif
+
+inline void EnemyGoal_PushBarrel::Reset() {
+    this->unk8 = 1;
+    this->unk10 = NULL;
+    this->unk14 = -1;
+}
+
+inline void EnemyGoal_Turn::Reset() {
+    this->unk8 = 1;
+    this->unk10 = NULL;
+}
+
 #endif  // SPYRO_SOURCE_ENEMYGOALS_H

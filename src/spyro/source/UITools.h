@@ -431,4 +431,150 @@ PromptGroup * FindPrompt(UIContainer *);
 void UITools_RegisterAll(void);
 extern u8 buttonLabel[0x1c];
 extern u8 buttonString[0x1c];
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline GameText::GameText() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+inline HealthSafetyScreen::HealthSafetyScreen() {
+    this->unk60 = NULL;
+    this->unk64 = 0;
+    this->unk68.unk0 = NULL;
+    this->unk68.unk4 = 0;
+    this->unk68.unk8 = NULL;
+    this->unk74.unk0 = NULL;
+    this->unk74.unk4 = 0;
+    this->unk74.unk8 = NULL;
+    this->unk80.unk0 = NULL;
+    this->unk80.unk4 = 0;
+    this->unk80.unk8 = NULL;
+    this->unk8C.unk0 = NULL;
+    this->unk8C.unk4 = 0;
+    this->unk8C.unk8 = NULL;
+    this->unk98.unk0 = NULL;
+    this->unk98.unk4 = 0;
+    this->unk98.unk8 = NULL;
+    this->unkA4.unk0 = NULL;
+    this->unkA4.unk4 = 0;
+    this->unkA4.unk8 = NULL;
+    this->unkB0.unk0 = NULL;
+    this->unkB0.unk4 = 0;
+    this->unkB0.unk8 = NULL;
+    this->unkBC.unk0 = NULL;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+inline void ImageArc::Init() {
+    UIImage::Init();
+    this->unk70 = 2.0f;
+    this->unk74 = 2.0f;
+    this->unk78 = 0.0f;
+    this->unk7C = 6.2831855f;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline LanguageButtonGroup::LanguageButtonGroup() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline LocalizedVideoScreen::LocalizedVideoScreen() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk80'
+inline MarkerButtonGroup::MarkerButtonGroup() {
+    this->unk80 = &__vt;
+    this->unk80 = &__vt;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline NoisyButtonGroup::NoisyButtonGroup() {
+    this->unk64 = 0;
+    this->unk68 = 0;
+    this->unk6C.unk0 = NULL;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline NoisySystem::NoisySystem() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline OptionButton::OptionButton() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline PromptText::PromptText() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline RadialButtonGroup::RadialButtonGroup() {
+    this->unk64 = 0;
+    this->unk68 = 0;
+    this->unk6C.unk0 = NULL;
+    this->unk6C.unk4 = (s32) &__vt;
+    this->unk6C.unk4 = (s32) &__vt;
+    this->unk6C.unk4 = (s32) &__vt;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ScriptButton::ScriptButton() {
+    this->unk60 = NULL;
+    this->unk64 = 0;
+    this->unk68.unk0 = NULL;
+    this->unk68.unk4 = 0;
+    this->unk68.unk8 = NULL;
+    this->unk74.unk0 = NULL;
+    this->unk74.unk4 = 0;
+    this->unk74.unk8 = NULL;
+    this->unk80.unk0 = NULL;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ScriptButtonGroup::ScriptButtonGroup() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ScriptProgressBar::ScriptProgressBar() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ScriptVideoScreen::ScriptVideoScreen() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ThrobButton::ThrobButton() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_UITOOLS_H

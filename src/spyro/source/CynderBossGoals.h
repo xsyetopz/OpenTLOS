@@ -692,4 +692,29 @@ public:
     /* 0x00c */ Character* unkC;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void CynderBossGoal_FlyAlongSpline::Reset() {
+    this->unk10 = NULL;
+    this->unk14 = 0.0f;
+    this->unk18 = 0.0f;
+    this->unk1C = 0.0f;
+    this->unk20 = 0.0f;
+    this->unk24 &= ~0x80;
+    this->unk24 &= ~0x40;
+    this->unk24 &= ~0x20;
+}
+
+inline void CynderBossGoal_Leap::Reset() {
+    this->unk20 &= ~0x80;
+    this->unk20 &= ~0x40;
+}
+
+inline void CynderBossGoal_MoveToTarget::Reset() {
+    this->unk20 = NULL;
+    this->unk38 = 0.0f;
+    this->unk3C = 0;
+    this->unk3D = 0;
+}
+
 #endif  // SPYRO_SOURCE_CYNDERBOSSGOALS_H

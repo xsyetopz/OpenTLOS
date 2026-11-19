@@ -46,4 +46,21 @@ public:
     /* 0x127 */ s8 unk127;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MeleeTrails::MeleeTrails() {
+    return this;
+}
+#endif
+
+inline MeleeTrails::~MeleeTrails() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MeleeTrailsDescriptor::MeleeTrailsDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MELEETRAILS_H

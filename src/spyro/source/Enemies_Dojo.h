@@ -83,4 +83,63 @@ public:
 
 extern u8 dojoMovementThresholds[0x3c];
 extern u8 dojoMovementAnims[0xf0];
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline DojoEnemy::~DojoEnemy() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline DojoEnemy::DojoEnemy() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline DojoEnemyDescriptor::DojoEnemyDescriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline DojoTier1::DojoTier1() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline DojoTier1::~DojoTier1() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline DojoTier1Descriptor::DojoTier1Descriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline DojoTier2::DojoTier2() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline DojoTier2::~DojoTier2() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline DojoTier2Descriptor::DojoTier2Descriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMIES_DOJO_H

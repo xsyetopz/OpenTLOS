@@ -314,4 +314,246 @@ public:
     /* 0x011 */ u8 unk11;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: pointer/array required
+inline void EnemyGoal_GraphJump::GetParabolaCentre(MKVector3 arg0, MKVector3 arg1, float arg2, float arg3) {
+    f64 spC0;
+    f64 spB8;
+    f64 spB0;                                       /* compiler-managed */
+    f64 spA8;
+    f64 spA0;
+    f64 sp98;
+    f64 sp90;
+    f64 sp88;
+    f64 sp80;
+    f64 sp78;
+    f64 sp70;
+    f64 sp68;
+    f64 sp60;
+    f64 sp58;
+    f64 sp50;
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f32 sp20;
+    f32 sp10;
+    f32 temp_f1_9057;
+    f32 temp_f29_9019;
+    f32 temp_f3_9040;
+    f32 temp_f5_9041;
+    f32 var_f2_9081;
+    void *temp_r31_9001;
+
+    temp_r31_9001 = M2C_ERROR(/* Read from unset register $r6 */);
+    sp88 = *M2C_ERROR(/* Read from unset register $r6 */);
+    sp90 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r6 */), f64 *, 8);
+    sp98 = M2C_FIELD(arg1, f64 *, 0);
+    spA0 = M2C_FIELD(arg1, f64 *, 8);
+    temp_f29_9019 = arg0->GetParabolaApexTimeFromP1((MKVector3) &sp98, (MKVector3) &sp88, arg2, arg3);
+    sp68 = M2C_FIELD(temp_r31_9001, f64 *, 0);
+    sp70 = M2C_FIELD(temp_r31_9001, f64 *, 8);
+    sp78 = M2C_FIELD(arg1, f64 *, 0);
+    sp80 = M2C_FIELD(arg1, f64 *, 8);
+    M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: psq_lx $f4, $zero, $r30, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f0, $f4 */);
+    temp_f3_9040 = temp_f29_9019 / (temp_f29_9019 + arg0->GetParabolaApexTimeFromP2((MKVector3) &sp78, (MKVector3) &sp68, arg2, arg3));
+    temp_f5_9041 = (f32) M2C_FIELD(arg1, f64 *, 8);
+    spA8 = sp18;
+    sp58 = sp18;
+    unkspAC = 0.0f;
+    sp20 = (f32) M2C_FIELD(temp_r31_9001, f64 *, 8) - temp_f5_9041;
+    sp60 = (f64) sp20;
+    spB0 = (f64) sp20;
+    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f4, $f0 */);
+    temp_f1_9057 = (f32) spB0 * temp_f3_9040;
+    spB0 = temp_f1_9057;
+    sp38 = M2C_FIELD(arg1, f64 *, 0);
+    sp28 = M2C_FIELD(temp_r31_9001, f64 *, 0);
+    sp10 = temp_f5_9041 + temp_f1_9057;
+    sp48 = sp8;
+    sp50 = (f64) sp10;
+    spB8 = sp8;
+    spC0 = (f64) sp10;
+    sp40 = M2C_FIELD(arg1, f64 *, 8);
+    sp30 = M2C_FIELD(temp_r31_9001, f64 *, 8);
+    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    if (unksp3C == unksp2C) {
+        var_f2_9081 = arg2;
+    } else {
+        var_f2_9081 = arg2 + (unksp2C - unksp3C);
+    }
+    unkspBC = M2C_FIELD(arg1, f32 *, 4) + var_f2_9081;
+    M2C_FIELD(this, f64 *, 0) = spB8;
+    M2C_FIELD(this, f64 *, 8) = spC0;
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+inline f32 EnemyGoal_GraphJump::GetParabolaApexTimeFromP2(MKVector3 arg0, MKVector3 arg1, float arg2, float arg3) {
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
+    f32 sp8;
+    f32 var_f1_0;
+    f32 var_f1_9134;
+    f64 temp_f2_9137;
+    f64 temp_f2_9143;
+    f64 temp_f2_9147;
+    s32 temp_r3_9166;
+    s32 var_r0_9176;
+
+    var_f1_0 = arg2;
+    sp20 = M2C_FIELD(arg0, f64 *, 0);
+    sp10 = M2C_FIELD(arg1, f64 *, 0);
+    sp28 = M2C_FIELD(arg0, f64 *, 8);
+    sp18 = M2C_FIELD(arg1, f64 *, 8);
+    M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
+    if (unksp24 == unksp14) {
+
+    } else {
+        var_f1_0 += unksp24 - unksp14;
+    }
+    var_f1_9134 = var_f1_0 / (-0.5f * arg3);
+    if (var_f1_9134 > 0.0f) {
+        temp_f2_9137 = __frsqrte(var_f1_9134);
+        temp_f2_9143 = 0.5 * temp_f2_9137 * -(((f64) var_f1_9134 * (temp_f2_9137 * temp_f2_9137)) - 3.0);
+        temp_f2_9147 = 0.5 * temp_f2_9143 * -(((f64) var_f1_9134 * (temp_f2_9143 * temp_f2_9143)) - 3.0);
+        return (f32) ((f64) var_f1_9134 * (0.5 * temp_f2_9147 * -(((f64) var_f1_9134 * (temp_f2_9147 * temp_f2_9147)) - 3.0)));
+    }
+    if (var_f1_9134 < M2C_BITWISE(f32, 0.0)) {
+        return __float_nan;
+    }
+    sp8 = var_f1_9134;
+    temp_r3_9166 = M2C_BITWISE(s32, sp8) & 0x7F800000;
+    switch (temp_r3_9166) {                         /* irregular */
+    case 0x7F800000:
+        if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+            var_r0_9176 = 1;
+        } else {
+            var_r0_9176 = 2;
+        }
+        break;
+    case 0x0:
+        if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+            var_r0_9176 = 5;
+        } else {
+            var_r0_9176 = 3;
+        }
+        break;
+    default:
+        var_r0_9176 = 4;
+        break;
+    }
+    if (var_r0_9176 == 1) {
+        var_f1_9134 = __float_nan;
+    }
+    return var_f1_9134;
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+inline f32 EnemyGoal_GraphJump::GetParabolaApexTimeFromP1(MKVector3 arg0, MKVector3 arg1, float arg2, float arg3) {
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
+    f32 sp8;
+    f32 var_f1_0;
+    f32 var_f1_9227;
+    f64 temp_f2_9230;
+    f64 temp_f2_9236;
+    f64 temp_f2_9240;
+    s32 temp_r3_9259;
+    s32 var_r0_9269;
+
+    var_f1_0 = arg2;
+    sp20 = M2C_FIELD(arg0, f64 *, 0);
+    sp10 = M2C_FIELD(arg1, f64 *, 0);
+    sp28 = M2C_FIELD(arg0, f64 *, 8);
+    sp18 = M2C_FIELD(arg1, f64 *, 8);
+    M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
+    if (unksp24 == unksp14) {
+
+    } else {
+        var_f1_0 += unksp14 - unksp24;
+    }
+    var_f1_9227 = -var_f1_0 / (0.5f * arg3);
+    if (var_f1_9227 > 0.0f) {
+        temp_f2_9230 = __frsqrte(var_f1_9227);
+        temp_f2_9236 = 0.5 * temp_f2_9230 * -(((f64) var_f1_9227 * (temp_f2_9230 * temp_f2_9230)) - 3.0);
+        temp_f2_9240 = 0.5 * temp_f2_9236 * -(((f64) var_f1_9227 * (temp_f2_9236 * temp_f2_9236)) - 3.0);
+        return (f32) ((f64) var_f1_9227 * (0.5 * temp_f2_9240 * -(((f64) var_f1_9227 * (temp_f2_9240 * temp_f2_9240)) - 3.0)));
+    }
+    if (var_f1_9227 < M2C_BITWISE(f32, 0.0)) {
+        return __float_nan;
+    }
+    sp8 = var_f1_9227;
+    temp_r3_9259 = M2C_BITWISE(s32, sp8) & 0x7F800000;
+    switch (temp_r3_9259) {                         /* irregular */
+    case 0x7F800000:
+        if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+            var_r0_9269 = 1;
+        } else {
+            var_r0_9269 = 2;
+        }
+        break;
+    case 0x0:
+        if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+            var_r0_9269 = 5;
+        } else {
+            var_r0_9269 = 3;
+        }
+        break;
+    default:
+        var_r0_9269 = 4;
+        break;
+    }
+    if (var_r0_9269 == 1) {
+        var_f1_9227 = __float_nan;
+    }
+    return var_f1_9227;
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+inline f32 EnemyGoal_GraphJump::GetTotalTime(MKVector3 arg0, MKVector3 arg1, float arg2, float arg3) {
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f64 sp28;
+    f64 sp20;
+    f64 sp18;
+    f64 sp10;
+    f64 sp8;
+    f32 temp_f31_9325;
+    f64 temp_f0_9313;
+    f64 temp_f3_9311;
+    f64 temp_f4_9309;
+    f64 temp_f5_9307;
+
+    temp_f5_9307 = M2C_FIELD(arg1, f64 *, 0);
+    temp_f4_9309 = M2C_FIELD(arg1, f64 *, 8);
+    temp_f3_9311 = M2C_FIELD(arg0, f64 *, 0);
+    temp_f0_9313 = M2C_FIELD(arg0, f64 *, 8);
+    sp8 = temp_f5_9307;
+    sp10 = temp_f4_9309;
+    sp18 = temp_f3_9311;
+    sp20 = temp_f0_9313;
+    sp28 = temp_f5_9307;
+    sp30 = temp_f4_9309;
+    sp38 = temp_f3_9311;
+    sp40 = temp_f0_9313;
+    temp_f31_9325 = GetParabolaApexTimeFromP2((MKVector3) &sp18, (MKVector3) &sp8, arg2, arg3);
+    return 0.5f * (GetParabolaApexTimeFromP1((MKVector3) &sp38, (MKVector3) &sp28, arg2, arg3) + temp_f31_9325);
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMYGOAL_FOLLOWGRAPH_H

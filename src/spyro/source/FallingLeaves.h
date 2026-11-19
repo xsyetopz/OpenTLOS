@@ -49,4 +49,26 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FallingLeaves::FallingLeaves() {
+    return this;
+}
+#endif
+
+inline FallingLeaves::~FallingLeaves() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_FALLINGLEAVES_H

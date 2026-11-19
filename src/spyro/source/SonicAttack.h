@@ -54,4 +54,25 @@ public:
     SonicAttackDescriptor(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SonicAttack::SonicAttack() {
+    return this;
+}
+#endif
+
+inline SonicAttack::~SonicAttack() {
+}
+
+inline s32 SonicAttack::IsBurst() {
+    return 1;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SonicAttackDescriptor::SonicAttackDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SONICATTACK_H

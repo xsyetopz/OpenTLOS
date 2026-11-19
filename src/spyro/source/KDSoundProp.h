@@ -46,4 +46,16 @@ public:
     /* 0x07c */ s32 unk7C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk40'
+inline KDSoundProp::~KDSoundProp() {
+    if (&this->unk60.unk40 != NULL) {
+        KDSound_Stop((s32 *) &this->unk60.unk40);
+    }
+    if (this != NULL) {
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_KDSOUNDPROP_H

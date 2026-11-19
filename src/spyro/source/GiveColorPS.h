@@ -26,4 +26,30 @@ public:
     /* 0x188 */ u8 unk188;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk144'
+inline GiveColorPS::GiveColorPS() {
+    this->unk140 = 0;
+    this->unk144 = 0;
+    this->unk148 = 0.0f;
+    this->unk14C = 0;
+    return this;
+}
+#endif
+
+inline GiveColorPS::~GiveColorPS() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_GIVECOLORPS_H

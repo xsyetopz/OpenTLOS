@@ -69,4 +69,54 @@ public:
     /* 0x0d8 */ u8 unkD8;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline KDEnvParticleSystem::KDEnvParticleSystem() {
+    return this;
+}
+#endif
+
+inline KDEnvParticleSystem::~KDEnvParticleSystem() {
+    s32 temp_cr0_eq_9982;
+
+    temp_cr0_eq_9982 = this == NULL;
+    if (temp_cr0_eq_9982 == 0) {
+        if (temp_cr0_eq_9982 == 0) {
+            if (temp_cr0_eq_9982 == 0) {
+                if (temp_cr0_eq_9982 == 0) {
+                }
+            }
+        }
+    }
+}
+
+inline void KDEnvParticleSystem::GetName() {
+
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline KDEnvParticleSystemDescriptor::KDEnvParticleSystemDescriptor() {
+    return this;
+}
+#endif
+
+inline KDParticleSystem::~KDParticleSystem() {
+    s32 temp_cr0_eq_8259;
+
+    temp_cr0_eq_8259 = this == NULL;
+    if (temp_cr0_eq_8259 == 0) {
+        if (temp_cr0_eq_8259 == 0) {
+            if (temp_cr0_eq_8259 == 0) {
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline void KDParticleSystem::GetName() {
+    return "KDParticles";
+}
+#endif
+
 #endif  // SPYRO_SOURCE_KDPARTICLESYSTEM_H

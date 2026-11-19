@@ -58,4 +58,57 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline EarthTier1::EarthTier1() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline EarthTier1::~EarthTier1() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline EarthTier1Descriptor::EarthTier1Descriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline EarthTier2::EarthTier2() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline EarthTier2::~EarthTier2() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline EarthTier3::EarthTier3() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline EarthTier3::~EarthTier3() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline EarthTier3Descriptor::EarthTier3Descriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMIES_EARTH_H

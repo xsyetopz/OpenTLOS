@@ -56,4 +56,32 @@ public:
     /* 0x080 */ s32 unk80;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline GrubbleCritter::GrubbleCritter() {
+    return this;
+}
+#endif
+
+inline GrubbleCritter::~GrubbleCritter() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline GrubbleCritterDescriptor::GrubbleCritterDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_GRUBBLE_H

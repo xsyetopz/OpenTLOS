@@ -40,4 +40,30 @@ public:
     /* 0x174 */ s32 unk174;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline DropBox::DropBox() {
+    this->unkC8 = &__vt + 0x48;
+    this->unk1C8 = 0;
+    this->unk1C8.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline DropBox::~DropBox() {
+    this->unkC8 = &__vt.unk48;
+    if (&this->unk1C8 != NULL) {
+        this->unk1C8.Deinit();
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline DropBoxDescriptor::DropBoxDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_DROPBOX_H

@@ -30,4 +30,27 @@ public:
     /* 0x03e */ s8 unk3E;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unk0'
+inline void MeleeAttackHitMsg::Init(MKProp *arg0, const MKVector3 &arg1, float arg2, bool arg3, int arg4, unsigned int arg5, MKPtrList<MKProp> *arg6, float arg7) {
+    this->unk0 = 4;
+    this->unk8 = (Spyro *) arg0;
+    this->unk10 = M2C_FIELD(&arg1, f64 *, 0);
+    this->unk18 = M2C_FIELD(&arg1, f64 *, 8);
+    this->unk20 = arg2;
+    this->unk3C = arg3;
+    this->unk28 = arg4;
+    this->unk30 = (s32) arg5;
+    this->unk3D = 0;
+    this->unk3E = 0;
+    this->unk2C = -1;
+    this->unk34 = &arg6->unk0;
+    this->unk38 = 0;
+    this->unk24 = arg7;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MELEEATTACKHITMSG_H

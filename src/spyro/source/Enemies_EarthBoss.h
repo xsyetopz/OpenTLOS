@@ -147,4 +147,109 @@ public:
     /* 0x2fc */ f32 unk2FC;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline EarthBoss::EarthBoss() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    this->unkCF4.unk0 = 0;
+    this->unkCF4.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline EarthBoss::~EarthBoss() {
+    this->unk110.unk5A8 = &__vt.unk84;
+    if (&this->unkCF4 != NULL) {
+        this->unkCF4.Deinit();
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline EarthBossArm::~EarthBossArm() {
+    s32 temp_cr0_eq_5706;
+
+    temp_cr0_eq_5706 = this == NULL;
+    if (temp_cr0_eq_5706 == 0) {
+        M2C_FIELD(this, s32 **, 0x4C) = &__vt.unk38;
+        if (temp_cr0_eq_5706 == 0) {
+        }
+    }
+}
+#endif
+
+inline s32 EarthBossArm::GetAttackerManager() {
+    return 0;
+}
+
+inline s32 EarthBossArm::IsAttacking() {
+    return 0;
+}
+
+inline f32 EarthBossArm::GetTimeLastHit() {
+    return 0.0f;
+}
+
+#if 0 // DRAFT: undefined identifier 'zero'
+inline void EarthBossArm::GetVel() {
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+}
+#endif
+
+inline s32 EarthBossArm::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    f64 sp10;
+    f64 sp8;
+    f64 temp_f0_5770;
+    f64 temp_f1_5769;
+    void *temp_r4_5767;
+
+    temp_r4_5767 = this->unk8;
+    temp_f1_5769 = M2C_FIELD(temp_r4_5767, f64 *, 0x30);
+    temp_f0_5770 = M2C_FIELD(temp_r4_5767, f64 *, 0x38);
+    sp8 = temp_f1_5769;
+    M2C_FIELD(arg1, f64 *, 0) = temp_f1_5769;
+    sp10 = temp_f0_5770;
+    M2C_FIELD(arg1, f64 *, 8) = temp_f0_5770;
+    return 1;
+}
+
+inline s32 EarthBossArm::IsDead() {
+    return 0;
+}
+
+inline s32 EarthBossArm::IsShatterable() {
+    return 0;
+}
+
+inline s32 EarthBossArm::IsEnemy() {
+    return 1;
+}
+
+inline s32 EarthBossArm::IsFriend() {
+    return 0;
+}
+
+inline s32 EarthBossArm::IsHero() {
+    return 0;
+}
+
+inline s32 EarthBossArm::GetEnemy() {
+    return 0;
+}
+
+inline void EarthBossArm::GetProp() {
+
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline EarthBossDescriptor::EarthBossDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMIES_EARTHBOSS_H

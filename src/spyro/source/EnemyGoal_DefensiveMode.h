@@ -83,4 +83,19 @@ public:
     /* 0x014 */ f32 unk14;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void EnemyGoal_DefensiveMode::Reset() {
+    this->unk8 = 1;
+    RemoveAllSubgoals();
+}
+
+inline void EnemyGoal_ShieldBlock::Reset() {
+    this->unk8 = 1;
+    this->unk10 = NULL;
+    this->unk1C = 0;
+    this->unk1D = 0;
+    this->unk18 = 1.0f;
+}
+
 #endif  // SPYRO_SOURCE_ENEMYGOAL_DEFENSIVEMODE_H

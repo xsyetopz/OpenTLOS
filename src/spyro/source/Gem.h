@@ -61,4 +61,56 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unk128'
+inline Gem::~Gem() {
+    M2C_UNK *temp_r0_26;
+    M2C_UNK *temp_r0_42;
+    M2C_UNK *temp_r5_29;
+    M2C_UNK *temp_r5_45;
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (&this->unk128 != NULL) {
+                temp_r0_26 = this->unk12C;
+                if (temp_r0_26 != NULL) {
+                    temp_r5_29 = &this->unk128;
+                    if (temp_r0_26 != temp_r5_29) {
+                        M2C_FIELD(this->unk130, M2C_UNK **, 4) = temp_r0_26;
+                        M2C_FIELD(this->unk12C, M2C_UNK **, 8) = (M2C_UNK *) this->unk130;
+                        this->unk130 = temp_r5_29;
+                        this->unk12C = temp_r5_29;
+                    }
+                }
+            }
+            if (&this->unkB0 != NULL) {
+                temp_r0_42 = this->unkB8;
+                if (temp_r0_42 != NULL) {
+                    temp_r5_45 = &this->unkB0;
+                    if (temp_r0_42 != temp_r5_45) {
+                        M2C_FIELD(this->unkBC, M2C_UNK **, 8) = temp_r0_42;
+                        M2C_FIELD(this->unkB8, M2C_UNK **, 0xC) = (M2C_UNK *) this->unkBC;
+                        this->unkBC = temp_r5_45;
+                        this->unkB8 = temp_r5_45;
+                    }
+                }
+            }
+            if (this != NULL) {
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'checked_cast'
+inline void Gem::GetDescriptor() {
+    checked_cast<GemDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+}
+#endif
+
 #endif  // SPYRO_SOURCE_GEM_H

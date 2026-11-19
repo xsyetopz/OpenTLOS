@@ -31,4 +31,26 @@ public:
     /* 0x084 */ f32 unk84;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ZapPS::ZapPS() {
+    return this;
+}
+#endif
+
+inline ZapPS::~ZapPS() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_ZAPPS_H

@@ -61,4 +61,33 @@ public:
     /* 0x090 */ f32 unk90;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline ElectricFence::~ElectricFence() {
+    if ((&this->unk114 != NULL) && (&this->unk114 != NULL)) {
+        KDSound_Stop(&this->unk114);
+    }
+    if (this != NULL) {
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'zero'
+inline void ElectricFenceDescriptor::Init() {
+    MKPropDescriptor::Init();
+    M2C_FIELD(this, f64 *, 0x60) = (f64) M2C_FIELD(&zero, f64 *, 0);
+    this->unk68 = M2C_FIELD(&zero, f64 *, 8);
+    this->unk70 = M2C_FIELD(&zero, f64 *, 0);
+    this->unk78 = M2C_FIELD(&zero, f64 *, 8);
+    this->unk1C = (BoundingVolume *) &this->unk60;
+    this->unk84 = 0;
+    this->unk8C = 0.25f;
+    this->unk90 = 0.25f;
+    this->unk88 = 0;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ELECTRICFENCE_H

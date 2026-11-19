@@ -25,4 +25,15 @@ public:
     /* 0x0d0 */ s32 unkD0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ZapArcFX::ZapArcFX() {
+    return this;
+}
+#endif
+
+inline ZapArcFX::~ZapArcFX() {
+}
+
 #endif  // SPYRO_SOURCE_ZAPARCFX_H

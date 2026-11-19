@@ -13,4 +13,16 @@ public:
     FireMolePrisonDescriptor(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FireMolePrisonDescriptor::FireMolePrisonDescriptor() {
+    return this;
+}
+#endif
+
+inline s32 FireMolePrisonDescriptor::GetSpawnEnemyType() {
+    return 0x15;
+}
+
 #endif  // SPYRO_SOURCE_FIREMOLEPRISONDESCRIPTOR_H

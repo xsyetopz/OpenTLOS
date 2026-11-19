@@ -83,4 +83,22 @@ public:
     /* 0x02c */ Goal<Enemy>* unk2C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void CynderTier2TrainGoal_Think::Reset() {
+    this->unk8 = 1;
+    RemoveAllSubgoals();
+    this->unk30 = 0;
+}
+
+inline void EnemyGoal_SpawnOnTrain::Reset() {
+    this->unk8 = 1;
+}
+
+inline void EnemyGoal_TrainAttackMode::Reset() {
+    this->unk8 = 1;
+    RemoveAllSubgoals();
+    this->unk24 = NULL;
+}
+
 #endif  // SPYRO_SOURCE_CYNDERTIER2TRAINGOAL_THINK_H

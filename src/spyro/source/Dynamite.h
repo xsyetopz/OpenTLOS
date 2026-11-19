@@ -68,4 +68,57 @@ public:
     /* 0x0f4 */ s32 unkF4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unk154'
+inline Dynamite::Dynamite() {
+    M2C_UNK *temp_r0_23670;
+
+    temp_r0_23670 = &this->unk154;
+    this->unk150 = 0;
+    M2C_FIELD(this, s32 *, 0x154) = 0;
+    this->unk158 = 0;
+    this->unk15C = temp_r0_23670;
+    this->unk160 = temp_r0_23670;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk154'
+inline Dynamite::~Dynamite() {
+    M2C_UNK *temp_r0_23;
+    M2C_UNK *temp_r4_26;
+
+    if (this != NULL) {
+        if (&this->unk154 != NULL) {
+            temp_r0_23 = this->unk15C;
+            if (temp_r0_23 != NULL) {
+                temp_r4_26 = &this->unk154;
+                if (temp_r0_23 != temp_r4_26) {
+                    M2C_FIELD(this->unk160, M2C_UNK **, 8) = temp_r0_23;
+                    M2C_FIELD(this->unk15C, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk160;
+                    this->unk160 = temp_r4_26;
+                    this->unk15C = temp_r4_26;
+                }
+            }
+        }
+        if (&this->unk150 != NULL) {
+            KDSound_Stop(&this->unk150);
+        }
+    }
+}
+#endif
+
+inline void Dynamite::SetExplodeTimer(float arg0) {
+    this->unk168 = arg0;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline DynamiteDescriptor::DynamiteDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_DYNAMITE_H

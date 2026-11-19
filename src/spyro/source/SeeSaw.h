@@ -68,4 +68,37 @@ public:
     /* 0x084 */ f32 unk84;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk88'
+inline SeeSaw::~SeeSaw() {
+    PlatformAttachment *temp_r0_23;
+    f32 *temp_r4_26;
+    s32 temp_cr0_eq_44;
+
+    if (this != NULL) {
+        if (&this->unk90.unk88 != NULL) {
+            temp_r0_23 = this->unk120;
+            if (temp_r0_23 != NULL) {
+                temp_r4_26 = &this->unk90.unk88;
+                if (temp_r0_23 != temp_r4_26) {
+                    this->unk124->unk8 = temp_r0_23;
+                    this->unk120->unkC = this->unk124;
+                    this->unk124 = (PlatformAttachment *) temp_r4_26;
+                    this->unk120 = (PlatformAttachment *) temp_r4_26;
+                }
+            }
+        }
+        if ((&this->unk90.unk60 != NULL) && (&this->unk90.unk60 != NULL)) {
+            KDSound_Stop(&this->unk90.unk60);
+        }
+        temp_cr0_eq_44 = this == NULL;
+        if (temp_cr0_eq_44 == 0) {
+            if (temp_cr0_eq_44 == 0) {
+            }
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SEESAW_H

@@ -182,4 +182,151 @@ public:
 };
 
 void Ball_InitModule(void);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline Ball::~Ball() {
+    M2C_UNK *temp_r4_28;
+    MKProp **temp_r0_41;
+    MKProp **temp_r4_44;
+    void *temp_r0_25;
+
+    if (this != NULL) {
+        this->unkC8 = &__vt.unk48;
+        if (&this->unk248 != NULL) {
+            temp_r0_25 = this->unk264;
+            if (temp_r0_25 != NULL) {
+                temp_r4_28 = &this->unk248;
+                if (temp_r0_25 != temp_r4_28) {
+                    M2C_FIELD(this->unk26C, void **, 0x20) = temp_r0_25;
+                    M2C_FIELD(this->unk264, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk26C;
+                    this->unk26C = temp_r4_28;
+                    this->unk264 = temp_r4_28;
+                }
+            }
+        }
+        if (&this->unk234 != NULL) {
+            temp_r0_41 = this->unk240;
+            if (temp_r0_41 != NULL) {
+                temp_r4_44 = &this->unk234;
+                if (temp_r0_41 != temp_r4_44) {
+                    M2C_FIELD(this->unk244, MKProp ***, 8) = temp_r0_41;
+                    M2C_FIELD(this->unk240, MKProp ***, 0xC) = (MKProp **) this->unk244;
+                    this->unk244 = temp_r4_44;
+                    this->unk240 = temp_r4_44;
+                }
+            }
+        }
+        if ((&this->unk200 != NULL) && (&this->unk200 != NULL)) {
+            KDSound_Stop(&this->unk200);
+        }
+        if ((&this->unk1D8 != NULL) && (&this->unk1D8 != NULL)) {
+            KDSound_Stop(&this->unk1D8);
+        }
+    }
+}
+#endif
+
+inline s32 Ball::IsAttacking() {
+    return 0;
+}
+
+inline f32 Ball::GetTimeLastHit() {
+    return 0.0f;
+}
+
+inline f32 Ball::GetCollisionHeight() {
+    return 200.0f;
+}
+
+inline f32 Ball::GetCollisionRadius() {
+    return 100.0f;
+}
+
+inline MKCollisionInfo *Ball::GetCollisionInfo() {
+    return &this->unk70;
+}
+
+#if 0 // DRAFT: undefined identifier 'zero'
+inline void Ball::GetVel() {
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+}
+#endif
+
+inline s32 Ball::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    return 0;
+}
+
+inline s32 Ball::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    return 0;
+}
+
+inline s32 Ball::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    return 0;
+}
+
+inline s32 Ball::IsDead() {
+    return 0;
+}
+
+inline s32 Ball::IsShatterable() {
+    return 0;
+}
+
+inline s32 Ball::IsEnemy() {
+    return 0;
+}
+
+inline s32 Ball::IsFriend() {
+    return 0;
+}
+
+inline s32 Ball::IsHero() {
+    return 0;
+}
+
+inline s32 Ball::GetEnemy() {
+    return 0;
+}
+
+inline void Ball::GetProp() {
+
+}
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline Ball::Ball() {
+    M2C_UNK *temp_r0_20650;
+    MKProp **temp_r4_20649;
+
+    this->unkC8 = &__vt.unk0;
+    this->unkCC = -1;
+    temp_r4_20649 = &this->unk234;
+    temp_r0_20650 = &this->unk248;
+    this->unkC8 = &__vt + 0x48;
+    this->unk1D8 = 0;
+    this->unk200 = 0;
+    this->unk234 = NULL;
+    this->unk23C = 0;
+    this->unk240 = temp_r4_20649;
+    this->unk244 = temp_r4_20649;
+    this->unk260 = 0;
+    this->unk260 = NULL;
+    this->unk264 = temp_r0_20650;
+    this->unk26C = temp_r0_20650;
+    this->unk25C = 0;
+    this->unk258 = 0.0f;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline BallDescriptor::BallDescriptor() {
+    this->unk124 = 0;
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_BALL_H

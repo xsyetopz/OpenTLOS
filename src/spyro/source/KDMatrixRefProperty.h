@@ -21,4 +21,59 @@ public:
     static KDMatrixRefProperty classInfo;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline KDMatrixRefProperty::KDMatrixRefProperty() {
+    this->unk4 = 0;
+    this->unkC = NULL;
+    this->unk8 = 0;
+    return this;
+}
+#endif
+
+inline s32 KDMatrixRefProperty::GetInstanceDataSize() const {
+    return 4;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline void KDMatrixRefProperty::InitInstance() {
+    *(pInstanceMem.__vptr + this->unk8) = 0;
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+inline s32 KDMatrixRefProperty::GetMatrixRef() const {
+    return *(pInstanceMem.__vptr + this->unk8);
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+inline void KDMatrixRefProperty::GetMatrix(Matrix *arg0) const {
+    M2C_STRUCT_COPY(arg0, *(pInstanceMem.__vptr + this->unk8), 0x40);
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+inline void KDMatrixRefProperty::GetPos() const {
+    void *temp_r4_24102;
+
+    temp_r4_24102 = *(pInstanceMem.__vptr + M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8));
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_24102, f64 *, 0x30);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_24102, f64 *, 0x38);
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+inline s32 KDMatrixRefProperty::GetPosRef() const {
+    return *(pInstanceMem.__vptr + this->unk8) + 0x30;
+}
+#endif
+
+inline void *KDMatrixRefProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_KDMATRIXREFPROPERTY_H

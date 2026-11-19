@@ -57,4 +57,12 @@ public:
     /* 0x028 */ Goal<Enemy>* unk28;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void EnemyGoal_RangeAttackMode::Reset() {
+    this->unk8 = 1;
+    RemoveAllSubgoals();
+    this->unk20 = NULL;
+}
+
 #endif  // SPYRO_SOURCE_ENEMYGOAL_RANGEATTACKMODE_H

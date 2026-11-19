@@ -45,4 +45,26 @@ public:
     /* 0x0ec */ s32 unkEC;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline TrainGate::TrainGate() {
+    this->unkC8.unk0 = 0;
+    this->unkC8.Init();
+    return this;
+}
+#endif
+
+inline TrainGate::~TrainGate() {
+    if (&this->unkC8 != NULL) {
+        this->unkC8.Deinit();
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline TrainGateDescriptor::TrainGateDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_TRAINGATE_H

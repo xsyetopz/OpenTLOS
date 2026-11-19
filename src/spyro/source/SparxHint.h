@@ -46,4 +46,14 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline SparxHint::~SparxHint() {
+    if (&this->unk90 != NULL) {
+        this->unk90.Deinit();
+    }
+    if (this != NULL) {
+    }
+}
+
 #endif  // SPYRO_SOURCE_SPARXHINT_H

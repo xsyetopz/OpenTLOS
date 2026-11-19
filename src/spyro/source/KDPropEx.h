@@ -59,4 +59,36 @@ public:
 extern u8 pLocalToWorldPropertyName[0x4];
 extern u8 pModelPropertyName[0x4];
 extern u8 pAnimScriptPropertyName[0x4];
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline KDPropEx::~KDPropEx() {
+    s32 temp_cr0_eq_17705;
+
+    temp_cr0_eq_17705 = this == NULL;
+    if (temp_cr0_eq_17705 == 0) {
+        if (temp_cr0_eq_17705 == 0) {
+            if (temp_cr0_eq_17705 == 0) {
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: undefined identifier 'vtable88'
+inline KDPropExDescriptor::KDPropExDescriptor() {
+    this->vtable88 = &__vt;
+    this->unk8C = 0;
+    this->unk94 = 0;
+    this->unk90 = 0;
+    this->vtable88 = (struct __vt *) &__vt;
+    this->unk98 = 0;
+    this->vtable9C = &__vt;
+    this->unkA0 = 0;
+    this->unkA8 = 0;
+    this->unkA4 = 0;
+    this->vtable9C = (struct __vt *) &__vt;
+    this->unkAC = 0;
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_KDPROPEX_H

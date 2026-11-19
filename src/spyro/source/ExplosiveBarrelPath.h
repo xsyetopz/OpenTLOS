@@ -85,4 +85,32 @@ public:
     /* 0x094 */ s32 unk94;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: '(' expected
+inline ExplosiveBarrelPath::~ExplosiveBarrelPath() {
+    __destroy_arr(&this->unk50.unk28, &ExplosiveBarrelPath::BarrelData::~BarrelData, 0x44, 4);
+    if (this != NULL) {
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1C'
+inline ExplosiveBarrelPath::BarrelData::~BarrelData() {
+    if ((&this->unk1C != NULL) && (&this->unk1C != NULL)) {
+        KDSound_Stop(&this->unk1C);
+    }
+    if (arg1 > 0) {
+        operator delete(this);
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk1C'
+inline ExplosiveBarrelPath::BarrelData::BarrelData() {
+    this->unk1C = 0;
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_EXPLOSIVEBARRELPATH_H

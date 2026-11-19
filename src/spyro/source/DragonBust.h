@@ -72,4 +72,25 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkCC'
+inline DragonBust::DragonBust() {
+    this->unkC8 = -1;
+    this->unkCC = -1;
+    this->unkD0 = 0;
+    this->unkD4 = 0;
+    this->unk130 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline DragonBust::~DragonBust() {
+    if ((&this->unk130 != NULL) && (&this->unk130 != NULL)) {
+        KDSound_Stop(&this->unk130);
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_DRAGONBUST_H

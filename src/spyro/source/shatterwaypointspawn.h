@@ -32,4 +32,48 @@ public:
     /* 0x16c */ s32 unk16C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline ShatterWaypointSpawn::~ShatterWaypointSpawn() {
+    f32 *temp_r3_21055;
+    s32 *temp_r3_21061;
+
+    if (this != NULL) {
+        this->unkC8 = &__vt + 0x48;
+        if (&this->unk198 != NULL) {
+            temp_r3_21055 = &this->unk1A8.unk30;
+            this->unk198 = M2C_BITWISE(f32, &__vt);
+            if (temp_r3_21055 != NULL) {
+                temp_r3_21055->Deinit();
+            }
+            temp_r3_21061 = &this->unk1A8.unk2C;
+            if (temp_r3_21061 != NULL) {
+                temp_r3_21061->Deinit();
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline ShatterWaypointSpawn::ShatterWaypointSpawn() {
+    this->unkC8 = &__vt + 0x48;
+    this->unk198 = M2C_BITWISE(f32, &__vt);
+    this->unk1A8.unk2C = 0;
+    this->unk1A8.unk2C.Init();
+    this->unk1A8.unk30 = 0.0f;
+    this->unk1A8.unk30.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ShatterWaypointSpawnDescriptor::ShatterWaypointSpawnDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SHATTERWAYPOINTSPAWN_H

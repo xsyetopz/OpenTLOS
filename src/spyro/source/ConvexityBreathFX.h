@@ -52,4 +52,32 @@ public:
     /* 0x1b0 */ f32 unk1B0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk54'
+inline ConvexityBreathFX::~ConvexityBreathFX() {
+    s32 temp_cr0_eq_28;
+
+    if (this != NULL) {
+        if ((&this->unkD0.unk54 != NULL) && (&this->unkD0.unk54 != NULL)) {
+            KDSound_Stop((s32 *) &this->unkD0.unk54);
+        }
+        temp_cr0_eq_28 = this == NULL;
+        if (temp_cr0_eq_28 == 0) {
+            if (temp_cr0_eq_28 == 0) {
+                if (temp_cr0_eq_28 == 0) {
+                }
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk54'
+inline ConvexityBreathFX::ConvexityBreathFX() {
+    this->unkD0.unk54 = 0.0f;
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_CONVEXITYBREATHFX_H

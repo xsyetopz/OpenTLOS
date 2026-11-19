@@ -25,4 +25,14 @@ public:
     /* 0x056 */ u8 unk56;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'EventMessage'
+inline ScriptProp::~ScriptProp() {
+    __destroy_arr(this + 0x58, &EventMessage::~EventMessage, 4, 0xA);
+    if (this != NULL) {
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SCRIPT_H

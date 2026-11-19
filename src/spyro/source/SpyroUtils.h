@@ -38,4 +38,29 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk0'
+inline SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds() {
+    s32 temp_cr0_eq_4881;
+
+    temp_cr0_eq_4881 = this == NULL;
+    if (temp_cr0_eq_4881 == 0) {
+        if ((temp_cr0_eq_4881 == 0) && (temp_cr0_eq_4881 == 0)) {
+            KDSound_Stop(&this->unk0);
+        }
+        if (arg1 > 0) {
+            operator delete(this);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk0'
+inline SpyroSoundPlayer::SpyroLoopSounds::SpyroLoopSounds() {
+    this->unk0 = 0;
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SPYROUTILS_H

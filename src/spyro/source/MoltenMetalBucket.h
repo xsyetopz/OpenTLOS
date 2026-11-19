@@ -77,4 +77,36 @@ public:
     /* 0x124 */ f32 unk124;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline MoltenMetalBucket::MoltenMetalBucket() {
+    this->unkEC = 0;
+    this->unk114 = 0;
+    this->unk13C = 0;
+    this->unk180.unk4 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline MoltenMetalBucket::~MoltenMetalBucket() {
+    if ((&this->unk13C != NULL) && (&this->unk13C != NULL)) {
+        KDSound_Stop(&this->unk13C);
+    }
+    if ((&this->unk114 != NULL) && (&this->unk114 != NULL)) {
+        KDSound_Stop(&this->unk114);
+    }
+    if ((&this->unkEC != NULL) && (&this->unkEC != NULL)) {
+        KDSound_Stop(&this->unkEC);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MoltenMetalBucketDescriptor::MoltenMetalBucketDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MOLTENMETALBUCKET_H

@@ -91,4 +91,43 @@ public:
     /* 0x14c */ MobilePlatformDescriptor* unk14C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: expression syntax error
+inline MobilePlatform::MobilePlatform() {
+    this->unk19C.unk30.unk0 = 0;
+    this->unk19C.unk30.unk4 = 0;
+    this->unk19C.unk30.unk8 = 0.0f;
+    this->unk19C.unk30.unkC = 0;
+    this->unk1FC = 0.0f;
+    this->unk1FC.Init();
+    this->unk200.unk0 = 0;
+    this->unk200.Init();
+    M2C_FIELD(this, s32 *, 0x21C) = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline MobilePlatform::~MobilePlatform() {
+    if ((&this->unk218 != NULL) && (&this->unk218 != NULL)) {
+        KDSound_Stop((s32 *) &this->unk218);
+    }
+    if (&this->unk200 != NULL) {
+        this->unk200.Deinit();
+    }
+    if (&this->unk1FC != NULL) {
+        this->unk1FC.Deinit();
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MobilePlatformDescriptor::MobilePlatformDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MOBILEPLATFORM_H

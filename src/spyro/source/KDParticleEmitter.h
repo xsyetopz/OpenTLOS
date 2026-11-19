@@ -65,4 +65,12 @@ public:
     /* 0x078 */ s32 unk78;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline KDParticleBoxEmitter::~KDParticleBoxEmitter() {
+}
+
+inline KDParticleLineEmitter::~KDParticleLineEmitter() {
+}
+
 #endif  // SPYRO_SOURCE_KDPARTICLEEMITTER_H

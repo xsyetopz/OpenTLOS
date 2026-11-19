@@ -41,4 +41,28 @@ public:
     /* 0x014 */ KDClothDescriptor unk14;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline s32 KDClothProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline void KDClothProperty::LoadDoneInstance() {
+    this->unk14.Apply(*(pInstanceMem.__vptr + M2C_FIELD(this->unk10, s32 *, 8)));
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+inline void KDClothProperty::Update() {
+    this->unk14.Update(*(pInstanceMem.__vptr + M2C_FIELD(this->unk10, s32 *, 8)));
+}
+#endif
+
+inline void *KDClothProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_KDCLOTH_H

@@ -90,4 +90,58 @@ public:
     /* 0x050 */ SpawnPointObject unk50;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline EnemySpawnPointData::~EnemySpawnPointData() {
+    if (&this->unk14 != NULL) {
+        this->unk14.Deinit();
+    }
+    if (&this->unk10 != NULL) {
+        this->unk10.Deinit();
+    }
+    if (&this->unkC != NULL) {
+        this->unkC.Deinit();
+    }
+    if (&this->unk8 != NULL) {
+        this->unk8.Deinit();
+    }
+    if (this != NULL) {
+    }
+}
+
+#if 0 // DRAFT: undefined identifier 'unk40'
+inline EnemySpawner::~EnemySpawner() {
+    EventMessage *temp_r3_24;
+    EventMessage *temp_r3_30;
+
+    if (this != NULL) {
+        if (&this->unk50.unk40 != NULL) {
+            temp_r3_24 = &this->unk50.unk80;
+            this->unk50.unk40 = M2C_BITWISE(f32, &__vt);
+            if (temp_r3_24 != NULL) {
+                temp_r3_24->Deinit();
+            }
+            temp_r3_30 = &this->unk50.unk7C;
+            if (temp_r3_30 != NULL) {
+                temp_r3_30->Deinit();
+            }
+        }
+        if (this != NULL) {
+        }
+    }
+}
+#endif
+
+inline SpawnPoint::~SpawnPoint() {
+    s32 temp_cr0_eq_938;
+
+    temp_cr0_eq_938 = this == NULL;
+    if (temp_cr0_eq_938 == 0) {
+        if (temp_cr0_eq_938 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_ENEMYSPAWNER_H

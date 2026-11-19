@@ -35,4 +35,19 @@ public:
 u8 PolygonWindingOrderIsClockWise(KDPathSegment *);
 void PolygonCentroid(KDPathSegment *);
 f32 PolygonArea(KDPathSegment *);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk14'
+inline EnemyRegion::EnemyRegion() {
+    this->unk10 = 0;
+    this->unk14 = 0;
+    this->unk18 = 0;
+    this->unk1C = 0.0f;
+    this->unk20 = 0.0f;
+    this->unk24 = 0.0f;
+    this->unk28 = 0.0f;
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMYREGION_H

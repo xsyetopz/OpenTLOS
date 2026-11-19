@@ -41,4 +41,18 @@ public:
     /* 0x030 */ s32 unk30;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 RotateProperty::GetInstanceDataSize() const {
+    return 0x90;
+}
+
+inline s32 RotateProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *RotateProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_ROTATEPROPERTY_H

@@ -80,4 +80,28 @@ public:
 u8 MKCollision_Scissor(MKVector3 *, MKVector3 *, int &, int, float);
 u8 FindClippedLocalRay(const MKVector3 &, ColGridData *, MKVector3 *, MKVector3 *);
 u8 MKCollision_Clip2(float, float, float, float &, float &);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline void MKCollisionGroundHint::Set(MKCollisionGroundHint *arg0) {
+    this->unk8 = arg0->unk8;
+    this->unk10 = arg0->unk10;
+    this->unk18 = arg0->unk18;
+    this->unk20 = arg0->unk20;
+    this->unk28 = arg0->unk28;
+    this->unk2C = arg0->unk2C;
+    this->unk30 = arg0->unk30;
+    this->unk34 = arg0->unk34;
+}
+
+inline void MKCollisionGroundHint::Set(ColGridData *arg0, const MKVector3 &arg1, unsigned int arg2, unsigned int arg3, unsigned short *arg4) {
+    this->unk34 = (s32) arg0;
+    this->unk8 = M2C_FIELD(&arg1, f64 *, 0);
+    this->unk10 = M2C_FIELD(&arg1, f64 *, 8);
+    this->unk28 = (s32) arg2;
+    this->unk2C = (s32) arg3;
+    this->unk30 = (s32) arg4;
+}
+
 #endif  // COMMON_SOURCE_MKCOLLISIONMODEL_H

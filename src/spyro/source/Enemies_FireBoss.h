@@ -123,4 +123,56 @@ public:
     /* 0x01c */ s32 unk1C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline FireBoss::FireBoss() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    this->unk110.unkA28 = 0;
+    this->unk110.unkA2C = 0;
+    this->unk110.unkA30 = 0.0f;
+    this->unk110.unkA34 = 0;
+    __construct_array(&this->unk110.unkA3C, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 2);
+    __construct_array(&this->unk110.unkA64, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 8);
+    this->unkFCC = 0;
+    this->unkFF4 = 0;
+    this->unk101C = 0;
+    this->unk1044 = 0;
+    this->unk1084.unk0 = 0;
+    this->unk1084.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline FireBoss::~FireBoss() {
+    this->unk110.unk5A8 = &__vt.unk84;
+    if (&this->unk1084 != NULL) {
+        this->unk1084.Deinit();
+    }
+    if ((&this->unk1044 != NULL) && (&this->unk1044 != NULL)) {
+        KDSound_Stop(&this->unk1044);
+    }
+    if ((&this->unk101C != NULL) && (&this->unk101C != NULL)) {
+        KDSound_Stop(&this->unk101C);
+    }
+    if ((&this->unkFF4 != NULL) && (&this->unkFF4 != NULL)) {
+        KDSound_Stop(&this->unkFF4);
+    }
+    if ((&this->unkFCC != NULL) && (&this->unkFCC != NULL)) {
+        KDSound_Stop(&this->unkFCC);
+    }
+}
+#endif
+
+inline s32 FireBoss::TryFreeze(float arg0, bool arg1, bool arg2) {
+    return 0;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FireBossDescriptor::FireBossDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMIES_FIREBOSS_H

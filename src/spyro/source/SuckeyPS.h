@@ -19,4 +19,26 @@ public:
     /* 0x140 */ s32 unk140;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SuckeyPS::SuckeyPS() {
+    return this;
+}
+#endif
+
+inline SuckeyPS::~SuckeyPS() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_SUCKEYPS_H

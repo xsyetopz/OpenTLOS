@@ -21,4 +21,26 @@ public:
     void Emit(const MKVector3 &, const MKVector3 &, const float &);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline IceBreathSnowFlakes::IceBreathSnowFlakes() {
+    return this;
+}
+#endif
+
+inline IceBreathSnowFlakes::~IceBreathSnowFlakes() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_ICEBREATHSNOWFLAKES_H

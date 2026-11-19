@@ -67,4 +67,16 @@ public:
     /* 0x088 */ f32 unk88;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline TrapSpawnPool::~TrapSpawnPool() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_TRAPSPAWNPOOL_H

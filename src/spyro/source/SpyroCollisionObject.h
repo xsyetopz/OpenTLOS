@@ -41,4 +41,13 @@ public:
     /* 0x488 */ f64 unk488;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline void SpyroCollisionObject::GetOffset() {
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x480);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x488);
+}
+
 #endif  // SPYRO_SOURCE_SPYROCOLLISIONOBJECT_H

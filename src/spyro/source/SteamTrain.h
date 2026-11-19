@@ -214,4 +214,171 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline SteamTrain::SteamTrain() {
+    this->unkC8 = &__vt.unk0;
+    this->unkCC = -1;
+    this->unkC8 = &__vt + 0x48;
+    this->unk378 = -1;
+    this->unk378 = -1;
+    this->unk380 = 0;
+    this->unk384 = 0;
+    this->unk390 = NULL;
+    this->unk3BC = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline SteamTrain::~SteamTrain() {
+    this->unkC8 = &__vt.unk48;
+    if ((&this->unk3BC != NULL) && (&this->unk3BC != NULL)) {
+        KDSound_Stop(&this->unk3BC);
+    }
+    if ((&this->unk390 != NULL) && (&this->unk390 != NULL)) {
+        KDSound_Stop((s32 *) &this->unk390);
+    }
+}
+#endif
+
+inline s32 SteamTrain::IsAttacking() {
+    return 0;
+}
+
+inline f32 SteamTrain::GetTimeLastHit() {
+    return 0.0f;
+}
+
+inline f32 SteamTrain::GetCollisionHeight() {
+    return 500.0f;
+}
+
+inline f32 SteamTrain::GetCollisionRadius() {
+    return 500.0f;
+}
+
+inline s32 SteamTrain::GetCollisionInfo() {
+    return 0;
+}
+
+#if 0 // DRAFT: undefined identifier 'sp18'
+inline void SteamTrain::GetVel() {
+    f64 sp30;
+    f64 sp28;
+    f32 sp20;
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+    void *temp_r5_92;
+
+    temp_r5_92 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
+    sp8 = -M2C_FIELD(temp_r5_92, f32 *, 0x20);
+    spC = -M2C_FIELD(temp_r5_92, f32 *, 0x24);
+    sp10 = -M2C_FIELD(temp_r5_92, f32 *, 0x28);
+    sp28 = (f64) sp8;
+    sp30 = (f64) sp10;
+    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f3 */);
+    M2C_FIELD(this, f64 *, 0) = sp18;
+    sp20 = (f32) sp30 * M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x108);
+    M2C_FIELD(this, f64 *, 8) = (f64) sp20;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'MKVector'
+inline s32 SteamTrain::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    f64 sp40;
+    f64 sp38;
+    M2C_UNK sp28;
+    M2C_UNK sp18;
+    f32 sp10;
+
+    MKVector(0.0f, 400.0f, 0.0f);
+    sp28.GetPos();
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    M2C_FIELD(arg1, f64 *, 0) = sp8;
+    sp10 = sp30 + sp20;
+    sp38 = sp8;
+    sp40 = (f64) sp10;
+    M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
+    return 1;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'MKVector'
+inline s32 SteamTrain::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    f64 sp40;
+    f64 sp38;
+    M2C_UNK sp28;
+    M2C_UNK sp18;
+    f32 sp10;
+
+    MKVector(0.0f, 400.0f, 0.0f);
+    sp28.GetPos();
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    M2C_FIELD(arg1, f64 *, 0) = sp8;
+    sp10 = sp30 + sp20;
+    sp38 = sp8;
+    sp40 = (f64) sp10;
+    M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
+    return 1;
+}
+#endif
+
+inline s32 SteamTrain::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    f64 sp10;
+    f64 sp8;
+    f64 temp_f0_209;
+    f64 temp_f1_208;
+    void *temp_r4_206;
+
+    temp_r4_206 = this->unk8;
+    temp_f1_208 = M2C_FIELD(temp_r4_206, f64 *, 0x30);
+    temp_f0_209 = M2C_FIELD(temp_r4_206, f64 *, 0x38);
+    sp8 = temp_f1_208;
+    M2C_FIELD(arg1, f64 *, 0) = temp_f1_208;
+    sp10 = temp_f0_209;
+    M2C_FIELD(arg1, f64 *, 8) = temp_f0_209;
+    return 1;
+}
+
+inline s32 SteamTrain::IsDead() {
+    return 0;
+}
+
+inline s32 SteamTrain::IsShatterable() {
+    return 0;
+}
+
+inline s32 SteamTrain::IsEnemy() {
+    return 1;
+}
+
+inline s32 SteamTrain::IsFriend() {
+    return 0;
+}
+
+inline s32 SteamTrain::IsHero() {
+    return 0;
+}
+
+inline s32 SteamTrain::GetEnemy() {
+    return 0;
+}
+
+inline void SteamTrain::GetProp() {
+
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SteamTrainDescriptor::SteamTrainDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_STEAMTRAIN_H

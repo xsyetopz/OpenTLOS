@@ -35,4 +35,30 @@ public:
     /* 0x020 */ f32 unk20;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline s32 AnimProperty::GetInstanceDataSize() const {
+    return 8;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline void AnimProperty::InitInstance() {
+    void *temp_r3_22;
+
+    temp_r3_22 = pInstanceMem.__vptr + this->unk8;
+    M2C_FIELD(temp_r3_22, s8 *, 0) = 1;
+    M2C_FIELD(temp_r3_22, s32 *, 4) = 0;
+}
+#endif
+
+inline s32 AnimProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *AnimProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_ANIMPROPERTY_H

@@ -123,4 +123,140 @@ public:
     virtual s32 LoadLine(MKIniLine *);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline TriggerBoxProp::~TriggerBoxProp() {
+    s32 temp_cr0_eq_12475;
+
+    temp_cr0_eq_12475 = this == NULL;
+    if (temp_cr0_eq_12475 == 0) {
+        if (temp_cr0_eq_12475 == 0) {
+            if (&this->unkB4 != NULL) {
+                this->unkB4.Deinit();
+            }
+            if (&this->unkB0 != NULL) {
+                this->unkB0.Deinit();
+            }
+            if (&this->unkAC != NULL) {
+                this->unkAC.Deinit();
+            }
+            if (this != NULL) {
+            }
+        }
+    }
+}
+
+inline TriggerPlaneGroupProp::~TriggerPlaneGroupProp() {
+    s32 temp_cr0_eq_1506;
+
+    temp_cr0_eq_1506 = this == NULL;
+    if (temp_cr0_eq_1506 == 0) {
+        if (temp_cr0_eq_1506 == 0) {
+            if (&this->unkB4 != NULL) {
+                this->unkB4.Deinit();
+            }
+            if (&this->unkB0 != NULL) {
+                this->unkB0.Deinit();
+            }
+            if (&this->unkAC != NULL) {
+                this->unkAC.Deinit();
+            }
+            if (this != NULL) {
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: undefined identifier 'unkD0'
+inline TriggerPlaneProp::TriggerPlaneProp() {
+    this->unkAC.unk0 = 0;
+    this->unkAC.Init();
+    this->unkB0.unk0 = 0;
+    this->unkB0.Init();
+    this->unkB4.unk0 = 0;
+    this->unkB4.Init();
+    this->unkD0 = &__vt;
+    this->unkD0 = &__vt;
+    this->unkD0 = &__vt;
+    return this;
+}
+#endif
+
+inline TriggerPlaneProp::~TriggerPlaneProp() {
+    s32 temp_cr0_eq_1557;
+
+    temp_cr0_eq_1557 = this == NULL;
+    if (temp_cr0_eq_1557 == 0) {
+        if (temp_cr0_eq_1557 == 0) {
+            if (&this->unkB4 != NULL) {
+                this->unkB4.Deinit();
+            }
+            if (&this->unkB0 != NULL) {
+                this->unkB0.Deinit();
+            }
+            if (&this->unkAC != NULL) {
+                this->unkAC.Deinit();
+            }
+            if (this != NULL) {
+            }
+        }
+    }
+}
+
+inline TriggerPolyProp::~TriggerPolyProp() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (&this->unkB4 != NULL) {
+                this->unkB4.Deinit();
+            }
+            if (&this->unkB0 != NULL) {
+                this->unkB0.Deinit();
+            }
+            if (&this->unkAC != NULL) {
+                this->unkAC.Deinit();
+            }
+            if (this != NULL) {
+            }
+        }
+    }
+}
+
+inline TriggerProp::~TriggerProp() {
+    if (&this->unkB4 != NULL) {
+        this->unkB4.Deinit();
+    }
+    if (&this->unkB0 != NULL) {
+        this->unkB0.Deinit();
+    }
+    if (&this->unkAC != NULL) {
+        this->unkAC.Deinit();
+    }
+    if (this != NULL) {
+    }
+}
+
+inline TriggerSphereProp::~TriggerSphereProp() {
+    s32 temp_cr0_eq_1608;
+
+    temp_cr0_eq_1608 = this == NULL;
+    if (temp_cr0_eq_1608 == 0) {
+        if (temp_cr0_eq_1608 == 0) {
+            if (&this->unkB4 != NULL) {
+                this->unkB4.Deinit();
+            }
+            if (&this->unkB0 != NULL) {
+                this->unkB0.Deinit();
+            }
+            if (&this->unkAC != NULL) {
+                this->unkAC.Deinit();
+            }
+            if (this != NULL) {
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_TRIGGERPROP_H

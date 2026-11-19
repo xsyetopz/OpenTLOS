@@ -100,4 +100,125 @@ public:
     /* 0x470 */ MKProp* unk470;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline s32 CollisionObject::HasHitFloor() {
+    return this->unk16C > 0;
+}
+
+inline s32 CollisionObject::HasHitWall() {
+    return this->unk170.unk164 > 0;
+}
+
+inline s32 CollisionObject::HasHitRoof() {
+    return this->unk2D8.unk164 > 0;
+}
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline s32 CollisionObject::HasHitAnything() {
+    s32 var_r31_46;
+
+    var_r31_46 = 0;
+    if ((M2C_FIELD(this->__vptr, u8 (**)(CollisionObject *), 0x18)(this) != 0) || (M2C_FIELD(this->__vptr, u8 (**)(CollisionObject *), 0x1C)(this) != 0) || (M2C_FIELD(this->__vptr, u8 (**)(CollisionObject *), 0x20)(this) != 0)) {
+        var_r31_46 = 1;
+    }
+    return var_r31_46;
+}
+#endif
+
+inline u32 CollisionObject::GetFloorProp() {
+    u32 temp_r3_87;
+    void *temp_r3_84;
+
+    if (((u8) this->unk58 == 0) || (temp_r3_84 = this->unk50, ((temp_r3_84 == NULL) != 0)) || (temp_r3_87 = M2C_FIELD(temp_r3_84, u32 *, 8), ((temp_r3_87 == 0) != 0))) {
+        return 0U;
+    }
+    return temp_r3_87;
+}
+
+inline void CollisionObject::SetOwner(MKProp *arg0) {
+    this->unk470 = arg0;
+}
+
+inline s32 CollisionObject::GetFloorMaterialID() {
+    s32 temp_r4_105;
+    void *var_r3_112;
+
+    temp_r4_105 = this->unk16C;
+    if (temp_r4_105 > 0) {
+        if (temp_r4_105 != 0) {
+            var_r3_112 = this + ((temp_r4_105 - 1) * 0x58) + 8;
+        } else {
+            var_r3_112 = NULL;
+        }
+        return M2C_FIELD(var_r3_112, s32 *, 0x44);
+    }
+    return 0;
+}
+
+#if 0 // DRAFT: undefined identifier 'unk50'
+inline u32 CollisionObject::GetProp() {
+    u32 temp_r3_150;
+    u32 var_r0_136;
+    u8 temp_r5_130;
+    void *temp_r3_147;
+    void *temp_r4_133;
+
+    if ((s32) this->unk170.unk164 > 0) {
+        temp_r5_130 = this->unk170.unk50;
+        if ((temp_r5_130 != 0) && (temp_r4_133 = this->unk170.unk48, ((temp_r4_133 == NULL) == 0)) && (var_r0_136 = M2C_FIELD(temp_r4_133, u32 *, 8), ((var_r0_136 == 0) == 0))) {
+
+        } else {
+            var_r0_136 = 0;
+        }
+        if (var_r0_136 != 0) {
+            if ((temp_r5_130 == 0) || (temp_r3_147 = this->unk170.unk48, ((temp_r3_147 == NULL) != 0)) || (temp_r3_150 = M2C_FIELD(temp_r3_147, u32 *, 8), ((temp_r3_150 == 0) != 0))) {
+                return 0U;
+            }
+            return temp_r3_150;
+        }
+        /* Duplicate return node #11. Try simplifying control flow for better match */
+        return 0U;
+    }
+    return 0U;
+}
+#endif
+
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
+inline void CollisionObject::SetRotation(MKVector3 *arg0, MKVector3 arg1) {
+
+}
+#endif
+
+inline void CollisionObject::SetScale(float arg0) {
+
+}
+
+inline void CollisionObject::Reset(const MKVector3 &arg0, const MKVector3 &arg1) {
+
+}
+
+inline void CollisionObject::GetPos() {
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x450);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x458);
+}
+
+inline void CollisionObject::GetOffset() {
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+
+    sp8 = 0.0f;
+    sp10 = 0.0f;
+    spC = M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 0x460), f32 *, 4);
+    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+}
+
+inline s32 CollisionObject::GetOwner() {
+    return (s32) this->unk470;
+}
+
 #endif  // SPYRO_SOURCE_COLLISIONOBJECT_H

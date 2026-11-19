@@ -313,4 +313,37 @@ public:
 extern u8 pGlobalLevelName[0x4];
 extern u8 pGlobalLV3Name[0x4];
 extern u8 pGlobalModelName[0x4];
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline ChunkProp::~ChunkProp() {
+    if (&this->unk50 != NULL) {
+        this->unk50.Deinit();
+    }
+    if (&this->unk4C != NULL) {
+        this->unk4C.Deinit();
+    }
+    if (this != NULL) {
+    }
+}
+
+inline void *Level::GetLevelInfo(int arg0) {
+    return pLevelInfo + ((s32) this * 0x128);
+}
+
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
+inline s32 Level::GetLevelCount() {
+    return levelInfoCount;
+}
+#endif
+
+inline void Level::GetNextLevel(LevelInfo *arg0) {
+    if (this != NULL) {
+
+    }
+}
+
+inline void Level::GetWorldInfo() {
+
+}
+
 #endif  // SPYRO_SOURCE_LEVEL_H

@@ -56,4 +56,22 @@ public:
     /* 0x0e4 */ ColObjDescriptor unkE4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk168'
+inline CynderEnergyCrystal::CynderEnergyCrystal() {
+    this->unk168 = &__vt;
+    return this;
+}
+#endif
+
+inline CynderEnergyCrystal::~CynderEnergyCrystal() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline CynderEnergyCrystalDescriptor::CynderEnergyCrystalDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_CYNDERENERGYCRYSTAL_H

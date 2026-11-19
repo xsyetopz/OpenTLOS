@@ -25,4 +25,10 @@ public:
     /* 0x02c */ s32 unk2C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void CharacterDojoFX::Draw() {
+
+}
+
 #endif  // SPYRO_SOURCE_CHARACTERDOJOFX_H

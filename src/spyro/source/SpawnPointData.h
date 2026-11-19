@@ -21,4 +21,9 @@ public:
     /* 0x014 */ s32 unk14;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline SpawnPointData::~SpawnPointData() {
+}
+
 #endif  // SPYRO_SOURCE_SPAWNPOINTDATA_H

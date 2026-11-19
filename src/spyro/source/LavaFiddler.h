@@ -62,4 +62,32 @@ public:
     /* 0x084 */ s32 unk84;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline LavaFiddlerCritter::LavaFiddlerCritter() {
+    return this;
+}
+#endif
+
+inline LavaFiddlerCritter::~LavaFiddlerCritter() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline LavaFiddlerCritterDescriptor::LavaFiddlerCritterDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_LAVAFIDDLER_H

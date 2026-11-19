@@ -52,4 +52,26 @@ public:
     IceSquirtDescriptor(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline IceSquirt::IceSquirt() {
+    this->unk168.unk4 = 0;
+    return this;
+}
+#endif
+
+inline IceSquirt::~IceSquirt() {
+}
+
+inline s32 IceSquirt::IsBurst() {
+    return 1;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline IceSquirtDescriptor::IceSquirtDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ICESQUIRT_H

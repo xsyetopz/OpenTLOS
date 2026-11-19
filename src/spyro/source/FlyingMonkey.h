@@ -37,4 +37,21 @@ public:
     /* 0x108 */ s32 unk108;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FlyingMonkey::FlyingMonkey() {
+    return this;
+}
+#endif
+
+inline FlyingMonkey::~FlyingMonkey() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FlyingMonkeyDescriptor::FlyingMonkeyDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_FLYINGMONKEY_H

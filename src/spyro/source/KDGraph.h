@@ -49,4 +49,67 @@ public:
     /* 0x0a4 */ s32 unkA4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: illegal assignment to constant
+inline void KDGraphNode::GetPos() const {
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 8);
+    this->unk8 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x10);
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
+inline void KDGraphNode::SetPos(MKVector3 arg0) {
+    this->unk8 = M2C_FIELD(arg0, f64 *, 0);
+    this->unk10 = M2C_FIELD(arg0, f64 *, 8);
+}
+#endif
+
+#if 0 // DRAFT: illegal explicit conversion from 'KDGraphNode' to
+inline s32 KDGraphNode::FreeLinkAvaliable() {
+    s32 var_ctr_418;
+    s32 var_r4_417;
+    s32 var_r5_416;
+
+    var_r5_416 = 0;
+    var_r4_417 = 0;
+    var_ctr_418 = 6;
+loop_1:
+    if ((u32) *(this + (var_r4_417 + 0x18)) == 0U) {
+        return var_r5_416;
+    }
+    var_r5_416 += 1;
+    var_r4_417 += 4;
+    var_ctr_418 -= 1;
+    if (var_ctr_418 == 0) {
+        return -1;
+    }
+    goto loop_1;
+}
+#endif
+
+inline s32 KDGraphNode::IsFreeLink(int arg0) const {
+    return M2C_FIELD((this + (arg0 * 4)), s32 *, 0x18) == 0;
+}
+
+inline s32 KDGraphNode::GetNumLinks() const {
+    return this->unk30;
+}
+
+inline KDGraphNodeProp::~KDGraphNodeProp() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
+inline void KDGraphNodeProp::Deinit() {
+    MKProp::Deinit();
+}
+
 #endif  // SPYRO_SOURCE_KDGRAPH_H

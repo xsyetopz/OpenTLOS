@@ -22,4 +22,16 @@ public:
     /* 0x05c */ f32 unk5C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline ZapCage::~ZapCage() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_ZAPCAGE_H

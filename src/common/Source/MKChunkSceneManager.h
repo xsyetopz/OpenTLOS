@@ -98,4 +98,10 @@ public:
     /* 0x004 */ s32 unk4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 MKChunkSceneManager::GetChunkArray() {
+    return this->unkE8;
+}
+
 #endif  // COMMON_SOURCE_MKCHUNKSCENEMANAGER_H

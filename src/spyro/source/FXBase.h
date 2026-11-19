@@ -35,4 +35,32 @@ public:
     /* 0x0dc */ f32 unkDC;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline FXBase::~FXBase() {
+    s32 temp_cr0_eq_18241;
+
+    temp_cr0_eq_18241 = this == NULL;
+    if (temp_cr0_eq_18241 == 0) {
+        if (temp_cr0_eq_18241 == 0) {
+            if (temp_cr0_eq_18241 == 0) {
+                if (temp_cr0_eq_18241 == 0) {
+                }
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FXBase::FXBase() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FXBaseDescriptor::FXBaseDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_FXBASE_H

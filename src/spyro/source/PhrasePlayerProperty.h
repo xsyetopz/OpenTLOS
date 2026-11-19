@@ -19,4 +19,20 @@ public:
     /* 0x008 */ s32 unk8;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 PhrasePlayerProperty::GetInstanceDataSize() const {
+    return 4;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline void PhrasePlayerProperty::InitInstance() {
+    *(pInstanceMem.__vptr + this->unk8) = 0;
+}
+#endif
+
+inline void *PhrasePlayerProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_PHRASEPLAYERPROPERTY_H

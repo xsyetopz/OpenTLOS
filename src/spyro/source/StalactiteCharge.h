@@ -100,4 +100,16 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline StalactiteCharge::~StalactiteCharge() {
+    if ((&this->unk144 != NULL) && (&this->unk144 != NULL)) {
+        KDSound_Stop(&this->unk144);
+    }
+    if (this != NULL) {
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_STALACTITECHARGE_H

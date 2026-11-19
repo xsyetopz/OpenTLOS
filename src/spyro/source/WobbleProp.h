@@ -47,4 +47,21 @@ public:
     /* 0x0ec */ s8* unkEC;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline WobbleProp::WobbleProp() {
+    return this;
+}
+#endif
+
+inline WobbleProp::~WobbleProp() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline WobblePropDescriptor::WobblePropDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_WOBBLEPROP_H

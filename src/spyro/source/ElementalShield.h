@@ -39,4 +39,23 @@ public:
     /* 0x0c4 */ s32 unkC4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline ElementalShield::~ElementalShield() {
+    s32 temp_cr0_eq_28;
+
+    if (this != NULL) {
+        if ((&this->unkC4 != NULL) && (&this->unkC4 != NULL)) {
+            KDSound_Stop(&this->unkC4);
+        }
+        temp_cr0_eq_28 = this == NULL;
+        if (temp_cr0_eq_28 == 0) {
+            if (temp_cr0_eq_28 == 0) {
+            }
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ELEMENTALSHIELD_H

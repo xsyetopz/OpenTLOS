@@ -120,4 +120,93 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline ElecTier1::ElecTier1() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    this->unk110.unkA18 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline ElecTier1::~ElecTier1() {
+    this->unk110.unk5A8 = &__vt.unk84;
+    if ((&this->unk110.unkA18 != NULL) && (&this->unk110.unkA18 != NULL)) {
+        KDSound_Stop((s32 *) &this->unk110.unkA18);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ElecTier1Descriptor::ElecTier1Descriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkA40'
+inline ElecTier2::ElecTier2() {
+    M2C_UNK *temp_r0_6579;
+
+    temp_r0_6579 = &this->unk110.unkA40;
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, s32 *, 0xB50) = 0;
+    this->unk110.unkA44 = 0;
+    this->unk110.unkA48 = temp_r0_6579;
+    this->unk110.unkA4C = temp_r0_6579;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline ElecTier2::~ElecTier2() {
+    f32 *temp_r0_2119;
+    f32 *temp_r4_2117;
+
+    if (this != NULL) {
+        this->unk110.unk5A8 = &__vt.unk84;
+        if (&this->unk110.unkA18 != NULL) {
+            temp_r4_2117 = &this->unk110.unkA40;
+            if (temp_r4_2117 != NULL) {
+                temp_r0_2119 = this->unk110.unkA48;
+                if ((temp_r0_2119 != NULL) && (temp_r0_2119 != temp_r4_2117)) {
+                    M2C_FIELD(this->unk110.unkA4C, f32 **, 8) = temp_r0_2119;
+                    M2C_FIELD(this->unk110.unkA48, f32 **, 0xC) = (f32 *) this->unk110.unkA4C;
+                    this->unk110.unkA4C = temp_r4_2117;
+                    this->unk110.unkA48 = temp_r4_2117;
+                }
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ElecTier2Descriptor::ElecTier2Descriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline ElecTier3::ElecTier3() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline ElecTier3::~ElecTier3() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ElecTier3Descriptor::ElecTier3Descriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMIES_ELEC_H

@@ -31,4 +31,15 @@ public:
     /* 0x0e8 */ f32 unkE8;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline ConveyorBucket::~ConveyorBucket() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ConveyorBucket::ConveyorBucket() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_CONVEYORBUCKET_H

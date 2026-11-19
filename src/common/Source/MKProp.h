@@ -105,4 +105,47 @@ public:
     /* 0x070 */ MKVector4 unk70;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MKProp::MKProp() {
+    return this;
+}
+#endif
+
+inline MKProp::~MKProp() {
+}
+
+inline void MKProp::GetDir() {
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+    void *temp_r4_2427;
+
+    temp_r4_2427 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
+    sp8 = -M2C_FIELD(temp_r4_2427, f32 *, 0x20);
+    spC = -M2C_FIELD(temp_r4_2427, f32 *, 0x24);
+    sp10 = -M2C_FIELD(temp_r4_2427, f32 *, 0x28);
+    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+}
+
+inline void MKProp::Enable() {
+    this->unk18 &= 0x7FFFFFFF;
+}
+
+inline void MKProp::Disable() {
+    this->unk18 |= 0x80000000;
+}
+
+inline void MKProp::GetPos() {
+    void *temp_r4_571;
+
+    temp_r4_571 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_571, f64 *, 0x30);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_571, f64 *, 0x38);
+}
+
 #endif  // COMMON_SOURCE_MKPROP_H

@@ -20,4 +20,16 @@ public:
     /* 0x04c */ MKHeap* unk4C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline WhirlWindFX::~WhirlWindFX() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_WHIRLWINDFX_H

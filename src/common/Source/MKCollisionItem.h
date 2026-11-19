@@ -169,4 +169,38 @@ public:
     /* 0x088 */ f32 unk88;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline void MKCollisionCapsuleItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
+    M2C_FIELD(this->__vptr, M2C_UNK (**)(MKCollisionCapsuleItem *), 0xC)(this);
+}
+#endif
+
+inline void MKCollisionCapsuleItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCollisionAABB arg2, MKCollisionResult *arg3) {
+
+}
+
+inline s32 MKCollisionItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResult *arg1, MKCollisionGroundHint *arg2) {
+    return 0;
+}
+
+inline s32 MKCollisionItem::GetVerts(unsigned int arg0, MKVector3 *arg1) {
+    return 0;
+}
+
+inline void MKCollisionItem::UnLoad() {
+
+}
+
+inline void MKCollisionItem::ReLoad(MKModel *arg0) {
+
+}
+
+inline void MKCollisionSphereItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCollisionAABB arg2, MKCollisionResult *arg3) {
+
+}
+
 #endif  // COMMON_SOURCE_MKCOLLISIONITEM_H

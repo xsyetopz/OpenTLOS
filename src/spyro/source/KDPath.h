@@ -169,4 +169,98 @@ public:
     /* 0x04c */ KDSplinePathSegment unk4C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline KDLocalPathSegmentProp::~KDLocalPathSegmentProp() {
+    s32 temp_cr0_eq_2212;
+
+    temp_cr0_eq_2212 = this == NULL;
+    if (temp_cr0_eq_2212 == 0) {
+        if (temp_cr0_eq_2212 == 0) {
+        }
+    }
+}
+
+inline KDPathSegmentProp::~KDPathSegmentProp() {
+    s32 temp_cr0_eq_2242;
+
+    temp_cr0_eq_2242 = this == NULL;
+    if (temp_cr0_eq_2242 == 0) {
+        if (temp_cr0_eq_2242 == 0) {
+        }
+    }
+}
+
+inline s32 KDPathSegmentProp::LoadLine(MKIniLine *arg0) {
+    s32 var_r31_2274;
+
+    var_r31_2274 = 0;
+    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0) != 0)) {
+        var_r31_2274 = 1;
+    }
+    return var_r31_2274;
+}
+
+inline void KDPathSegmentProp::Resolve() {
+    MKProp::Resolve();
+    this->unk4C.Resolve();
+}
+
+#if 0 // DRAFT: illegal implicit conversion from 'int' to
+inline void KDSplinePathSegment::GetVelocity(float arg0) {
+    KDUniformSpline sp30;
+    f64 sp28;
+    f64 sp20;
+    f32 sp18;
+    f32 sp8;
+
+    sp8 = 0.0f;
+    sp30.GetMeasure(arg0, M2C_ERROR(/* Read from unset register $r4 */) + 0x30, KDSpline_VelocityMixer);
+    sp20 = M2C_BITWISE(f64, sp30);
+    sp28 = (f64) sp30.unk8;
+    M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
+    this->unk0 = sp10;
+    sp18 = (f32) sp28 * sp8;
+    this->unk8 = (f64) sp18;
+}
+#endif
+
+#if 0 // DRAFT: illegal use of non-static member
+inline void KDSplinePathSegment::GetPosition(float arg0) {
+    f32 sp8;
+
+    sp8 = 0.0f;
+    KDUniformSpline::GetMeasure(arg0, M2C_ERROR(/* Read from unset register $r4 */) + 0x30, KDSpline_PositionMixer);
+}
+#endif
+
+inline KDSplinePathSegmentProp::~KDSplinePathSegmentProp() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
+inline s32 KDSplinePathSegmentProp::LoadLine(MKIniLine *arg0) {
+    s32 var_r31_47;
+
+    var_r31_47 = 0;
+    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0) != 0)) {
+        var_r31_47 = 1;
+    }
+    return var_r31_47;
+}
+
+#if 0 // DRAFT: undefined identifier 'Resolve'
+inline void KDSplinePathSegmentProp::Resolve() {
+    MKProp::Resolve();
+    this->unk4C.Resolve();
+}
+#endif
+
 #endif  // SPYRO_SOURCE_KDPATH_H

@@ -142,4 +142,22 @@ public:
     /* 0x0b8 */ s32 unkB8;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline GameCamera2::~GameCamera2() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+            }
+        }
+    }
+}
+
+inline f32 GameCamera2::GetDefaultDeltaTime() {
+    return 0.5f;
+}
+
 #endif  // SPYRO_SOURCE_GAMECAMERA2_H

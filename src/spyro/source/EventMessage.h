@@ -19,4 +19,18 @@ public:
     /* 0x000 */ s32 unk0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline EventMessage::~EventMessage() {
+    Deinit();
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline EventMessage::EventMessage() {
+    this->unk0 = 0;
+    Init();
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_EVENTMESSAGE_H

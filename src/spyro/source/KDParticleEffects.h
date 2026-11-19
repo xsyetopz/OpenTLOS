@@ -114,4 +114,115 @@ public:
 };
 
 void KDParticleEffects_RegisterAll(KDPropertyClassRegistry *);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline s32 KDParticleBoxEmitterProperty::GetInstanceDataSize() const {
+    return 0x98;
+}
+
+inline s32 KDParticleBoxEmitterProperty::Query(int arg0) {
+    if (arg0 == 1) {
+        return 1;
+    }
+    return arg0 == 1;
+}
+
+inline void *KDParticleBoxEmitterProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+inline s32 KDParticleEmitterProperty::GetInstanceDataAlignment() const {
+    return 0x10;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline s32 KDParticleEmitterProperty::LoadLineInstance(MKIniLine *arg0) {
+    void **temp_r3_52;
+
+    temp_r3_52 = pInstanceMem.__vptr + this->unk8;
+    M2C_FIELD(*temp_r3_52, M2C_UNK (**)(void **, void *), 0xC)(temp_r3_52, pInstanceMem.__vptr);
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+inline void KDParticleEmitterProperty::LoadDoneInstance() {
+    void **temp_r3_71;
+
+    temp_r3_71 = pInstanceMem.__vptr + this->unk8;
+    M2C_FIELD(*temp_r3_71, M2C_UNK (**)(void **, void *), 0x10)(temp_r3_71, pInstanceMem.__vptr);
+}
+#endif
+
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector4'
+inline void KDParticleEmitterProperty::SetColor(MKVector4 arg0) {
+    f64 sp10;
+    f64 sp8;
+    f64 temp_f0_90;
+    f64 temp_f1_86;
+    void *temp_r3_91;
+
+    temp_f1_86 = M2C_FIELD(arg0, f64 *, 0);
+    temp_f0_90 = M2C_FIELD(arg0, f64 *, 8);
+    temp_r3_91 = pInstanceMem.__vptr + (this->unk8 + 8);
+    sp8 = temp_f1_86;
+    M2C_FIELD(temp_r3_91, f64 *, 0) = temp_f1_86;
+    sp10 = temp_f0_90;
+    M2C_FIELD(temp_r3_91, f64 *, 8) = temp_f0_90;
+}
+#endif
+
+#if 0 // DRAFT: expression syntax error
+inline void KDParticleEmitterProperty::GetColor() {
+    void *temp_r4_106;
+
+    temp_r4_106 = pInstanceMem.__vptr + (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 8);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_106, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_106, f64 *, 8);
+}
+#endif
+
+inline s32 KDParticleEmitterProperty::GetInstanceDataSize() const {
+    return 0x78;
+}
+
+inline s32 KDParticleEmitterProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *KDParticleEmitterProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+inline s32 KDParticleLineEmitterProperty::GetInstanceDataSize() const {
+    return 0x80;
+}
+
+inline s32 KDParticleLineEmitterProperty::Query(int arg0) {
+    if (arg0 == 1) {
+        return 1;
+    }
+    return arg0 == 1;
+}
+
+inline void *KDParticleLineEmitterProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+inline s32 KDParticleSystemProperty::GetInstanceDataSize() const {
+    return 4;
+}
+
+inline s32 KDParticleSystemProperty::Query(int arg0) {
+    if (arg0 == 1) {
+        return this->unk18;
+    }
+    return 0U;
+}
+
+inline void *KDParticleSystemProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_KDPARTICLEEFFECTS_H

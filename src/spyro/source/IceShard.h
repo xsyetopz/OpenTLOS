@@ -27,4 +27,21 @@ public:
     IceShardDescriptor(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline IceShard::IceShard() {
+    return this;
+}
+#endif
+
+inline IceShard::~IceShard() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline IceShardDescriptor::IceShardDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ICESHARD_H

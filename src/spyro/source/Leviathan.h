@@ -49,4 +49,25 @@ public:
     /* 0x1c0 */ s32 unk1C0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk184'
+inline Leviathan::Leviathan() {
+    this->unk180 = 0;
+    this->unk184 = 0;
+    this->unk188 = 0.0f;
+    this->unk18C = 0;
+    this->unk1C0 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline Leviathan::~Leviathan() {
+    if ((&this->unk1C0 != NULL) && (&this->unk1C0 != NULL)) {
+        KDSound_Stop(&this->unk1C0);
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_LEVIATHAN_H

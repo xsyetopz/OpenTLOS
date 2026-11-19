@@ -27,4 +27,10 @@ public:
     /* 0x020 */ s32 unk20;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void CharacterFireFX::Draw() {
+
+}
+
 #endif  // SPYRO_SOURCE_CHARACTERFIREFX_H

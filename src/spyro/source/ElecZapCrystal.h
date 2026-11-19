@@ -32,4 +32,18 @@ public:
     /* 0x0d8 */ MKVector3 unkD8;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline ElecZapCrystal::~ElecZapCrystal() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_ELECZAPCRYSTAL_H

@@ -168,4 +168,117 @@ public:
 };
 
 void KDCommonProperties_RegisterAll(KDPropertyClassRegistry *);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 KDAmbientSoundProperty::GetInstanceDataSize() const {
+    return 0x2C;
+}
+
+inline s32 KDAmbientSoundProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *KDAmbientSoundProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline void KDAnimEventProperty::Deinit() {
+    this->unk10.Deinit();
+}
+#endif
+
+inline s32 KDAnimEventProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *KDAnimEventProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline KDAnimEventProperty::KDAnimEventProperty() {
+    this->unk4 = NULL;
+    this->unkC = NULL;
+    this->unk8 = 0;
+    this->unk10.unk0 = 0;
+    this->unk10.unk4 = NULL;
+    this->unk10.unk4 = NULL;
+    this->unk10.unk8 = 0;
+    this->unk1C = NULL;
+    this->unk20 = NULL;
+    return this;
+}
+#endif
+
+inline void *KDAnimProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+inline s32 KDMessageHandlerProperty::GetInstanceDataSize() const {
+    return 1;
+}
+
+inline s32 KDMessageHandlerProperty::GetInstanceDataAlignment() const {
+    return 4;
+}
+
+inline void *KDMessageHandlerProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline KDMessageHandlerProperty::KDMessageHandlerProperty() {
+    this->unk4 = NULL;
+    this->unkC = NULL;
+    this->unk8 = 0;
+    this->unk10.unk0 = 0;
+    this->unk10.unk4 = NULL;
+    this->unk10.unk4 = NULL;
+    this->unk10.unk8 = 0;
+    this->unk1C = 0;
+    this->unk20 = NULL;
+    return this;
+}
+#endif
+
+inline s32 KDPathFollowerProperty::GetInstanceDataSize() const {
+    return 0x1C;
+}
+
+inline s32 KDPathFollowerProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *KDPathFollowerProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+inline s32 KDRefPointProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *KDRefPointProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
+#if 0 // DRAFT: illegal implicit conversion from 'const char[13]' to
+inline KDRefPointProperty::KDRefPointProperty() {
+    this->unk4 = NULL;
+    this->unkC = NULL;
+    this->unk8 = 0;
+    this->unk10 = "defaultModel";
+    this->unk14 = 0;
+    return this;
+}
+#endif
+
+inline s32 KDSoundAttachmentProperty::GetInstanceDataSize() const {
+    return 4;
+}
+
+inline void *KDSoundAttachmentProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_KDCOMMONPROPERTIES_H

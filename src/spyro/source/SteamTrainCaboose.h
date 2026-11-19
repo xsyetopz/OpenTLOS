@@ -83,4 +83,46 @@ public:
     /* 0x014 */ EventMessage unk14;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline SteamTrainCaboose::SteamTrainCaboose() {
+    this->unk110 = &__vt;
+    this->unk110.unk38 = 0.0f;
+    this->unk110.unk38.Init();
+    this->unk110.unk3C.unk0 = 0;
+    this->unk110.unk3C.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline SteamTrainCaboose::~SteamTrainCaboose() {
+    EventMessage *temp_r3_24;
+    f32 *temp_r3_30;
+
+    if (this != NULL) {
+        if (&this->unk110 != NULL) {
+            temp_r3_24 = &this->unk110.unk3C;
+            M2C_FIELD(this, void **, 0x110) = &__vt;
+            if (temp_r3_24 != NULL) {
+                temp_r3_24->Deinit();
+            }
+            temp_r3_30 = &this->unk110.unk38;
+            if (temp_r3_30 != NULL) {
+                temp_r3_30->Deinit();
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SteamTrainCabooseDescriptor::SteamTrainCabooseDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_STEAMTRAINCABOOSE_H

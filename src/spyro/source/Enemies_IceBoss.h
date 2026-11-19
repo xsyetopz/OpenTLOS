@@ -108,4 +108,48 @@ public:
 };
 
 void IceBoss_UpdateParams(void *);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline IceBoss::IceBoss() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    this->unkFE4.unk0 = 0;
+    this->unkFE4.Init();
+    this->unkFE8.unk0 = 0;
+    this->unkFE8.Init();
+    this->unkFEC.unk0 = 0;
+    this->unkFEC.Init();
+    this->unk1014 = 0;
+    this->unk103C = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline IceBoss::~IceBoss() {
+    this->unk110.unk5A8 = &__vt.unk84;
+    if ((&this->unk103C != NULL) && (&this->unk103C != NULL)) {
+        KDSound_Stop(&this->unk103C);
+    }
+    if ((&this->unk1014 != NULL) && (&this->unk1014 != NULL)) {
+        KDSound_Stop(&this->unk1014);
+    }
+    if (&this->unkFEC != NULL) {
+        this->unkFEC.Deinit();
+    }
+    if (&this->unkFE8 != NULL) {
+        this->unkFE8.Deinit();
+    }
+    if (&this->unkFE4 != NULL) {
+        this->unkFE4.Deinit();
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline IceBossDescriptor::IceBossDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMIES_ICEBOSS_H

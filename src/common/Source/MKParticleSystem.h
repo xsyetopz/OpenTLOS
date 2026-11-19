@@ -42,4 +42,22 @@ public:
     /* 0x134 */ MKParticleSystem::Envelope* unk134;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void MKParticleSystem::GetName() {
+
+}
+
+inline MKParticleSystem::~MKParticleSystem() {
+    s32 temp_cr0_eq_7354;
+
+    temp_cr0_eq_7354 = this == NULL;
+    if (temp_cr0_eq_7354 == 0) {
+        if (temp_cr0_eq_7354 == 0) {
+            if (temp_cr0_eq_7354 == 0) {
+            }
+        }
+    }
+}
+
 #endif  // COMMON_SOURCE_MKPARTICLESYSTEM_H

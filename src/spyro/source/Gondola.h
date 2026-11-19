@@ -74,4 +74,73 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk184'
+inline Gondola::Gondola() {
+    EnemyGenerator *temp_r30_21538;
+
+    temp_r30_21538 = &this->unk1B0;
+    this->unk180 = 0;
+    this->unk184 = 0;
+    this->unk188 = 0.0f;
+    this->unk18C = 0;
+    this->unk194 = 0;
+    this->unk198 = 0;
+    this->unk19C = 0.0f;
+    this->unk1A0 = 0;
+    this->unk1B0.__vptr = &__vt;
+    this->unk1B0.unk3C.unk0 = 0;
+    temp_r30_21538->unk3C.Init();
+    this->unk1B0.unk40.unk0 = 0;
+    temp_r30_21538->unk40.Init();
+    this->unk1B0.__vptr = &__vt;
+    this->unk1B0.unk68.unk0 = 0;
+    temp_r30_21538->unk68.Init();
+    this->unk1B0.unk6C.unk0 = 0;
+    temp_r30_21538->unk6C.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline Gondola::~Gondola() {
+    EventMessage *temp_r3_24;
+    EventMessage *temp_r3_30;
+    EventMessage *temp_r3_37;
+    EventMessage *temp_r3_43;
+
+    if (this != NULL) {
+        if (&this->unk1B0 != NULL) {
+            temp_r3_24 = &this->unk1B0.unk6C;
+            this->unk1B0.__vptr = &__vt;
+            if (temp_r3_24 != NULL) {
+                temp_r3_24->Deinit();
+            }
+            temp_r3_30 = &this->unk1B0.unk68;
+            if (temp_r3_30 != NULL) {
+                temp_r3_30->Deinit();
+            }
+            if (&this->unk1B0 != NULL) {
+                temp_r3_37 = &this->unk1B0.unk40;
+                this->unk1B0.__vptr = &__vt;
+                if (temp_r3_37 != NULL) {
+                    temp_r3_37->Deinit();
+                }
+                temp_r3_43 = &this->unk1B0.unk3C;
+                if (temp_r3_43 != NULL) {
+                    temp_r3_43->Deinit();
+                }
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline GondolaDescriptor::GondolaDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_GONDOLA_H

@@ -131,4 +131,113 @@ public:
     EnemyTestDescriptor(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline CynderTier1::CynderTier1() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline CynderTier1::~CynderTier1() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkA08'
+inline s32 CynderTier1::IsInFrozenBall() {
+    return M2C_BITWISE(s32, this->unk110.unkA08.unk4) != 0;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline CynderTier1Descriptor::CynderTier1Descriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline CynderTier2::CynderTier2() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline CynderTier2::~CynderTier2() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline CynderTier2Descriptor::CynderTier2Descriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline CynderTier2Train::CynderTier2Train() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline CynderTier2Train::~CynderTier2Train() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline CynderTier2TrainDescriptor::CynderTier2TrainDescriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline CynderTier3::CynderTier3() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    this->unk110.unkA18 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline CynderTier3::~CynderTier3() {
+    this->unk110.unk5A8 = &__vt.unk84;
+    if ((&this->unk110.unkA18 != NULL) && (&this->unk110.unkA18 != NULL)) {
+        KDSound_Stop(&this->unk110.unkA18.unk0);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline CynderTier3Descriptor::CynderTier3Descriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline EnemyTest::EnemyTest() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline EnemyTest::~EnemyTest() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline EnemyTestDescriptor::EnemyTestDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMIES_CYNDER_H

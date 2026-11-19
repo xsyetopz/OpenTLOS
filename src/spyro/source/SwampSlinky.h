@@ -34,4 +34,32 @@ public:
     /* 0x074 */ s32 unk74;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SwampSlinky::SwampSlinky() {
+    return this;
+}
+#endif
+
+inline SwampSlinky::~SwampSlinky() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SwampSlinkyDescriptor::SwampSlinkyDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SWAMPSLINKY_H

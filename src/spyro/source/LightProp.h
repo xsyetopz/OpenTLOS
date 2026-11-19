@@ -27,4 +27,15 @@ public:
     /* 0x0e0 */ s32 unkE0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline LightProp::LightProp() {
+    return this;
+}
+#endif
+
+inline LightProp::~LightProp() {
+}
+
 #endif  // SPYRO_SOURCE_LIGHTPROP_H

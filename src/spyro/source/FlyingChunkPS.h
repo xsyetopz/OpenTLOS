@@ -42,4 +42,21 @@ public:
     /* 0x0f8 */ MKVector3 unkF8;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FlyingChunkPS::FlyingChunkPS() {
+    return this;
+}
+#endif
+
+inline FlyingChunkPS::~FlyingChunkPS() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FlyingChunkPSDescriptor::FlyingChunkPSDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_FLYINGCHUNKPS_H

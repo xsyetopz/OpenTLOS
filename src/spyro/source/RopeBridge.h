@@ -140,4 +140,58 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline RopeBridge::~RopeBridge() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
+#if 0 // DRAFT: undefined identifier 'unk20'
+inline RopeBridge::BridgePiece::~BridgePiece() {
+    M2C_UNK *temp_r0_3590;
+    M2C_UNK *temp_r5_3593;
+
+    if (this != NULL) {
+        if (&this->unk20 != NULL) {
+            temp_r0_3590 = this->unk40;
+            if (temp_r0_3590 != NULL) {
+                temp_r5_3593 = &this->unk20;
+                if (temp_r0_3590 != temp_r5_3593) {
+                    M2C_FIELD(this->unk44, M2C_UNK **, 0x20) = temp_r0_3590;
+                    M2C_FIELD(this->unk40, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk44;
+                    this->unk44 = temp_r5_3593;
+                    this->unk40 = temp_r5_3593;
+                }
+            }
+        }
+        if (arg1 > 0) {
+            operator delete(this);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk20'
+inline RopeBridge::BridgePiece::BridgePiece() {
+    M2C_UNK *temp_r0_3621;
+
+    temp_r0_3621 = &this->unk20;
+    this->unk38 = 0;
+    this->unk3C = 0;
+    this->unk40 = temp_r0_3621;
+    this->unk44 = temp_r0_3621;
+    this->unk34 = 0;
+    this->unk30 = 0.0f;
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ROPEBRIDGE_H

@@ -42,4 +42,18 @@ public:
     /* 0x034 */ s32 unk34;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 BobProperty::GetInstanceDataSize() const {
+    return 0x70;
+}
+
+inline s32 BobProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *BobProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_BOBPROPERTY_H

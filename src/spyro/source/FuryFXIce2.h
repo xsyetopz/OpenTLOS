@@ -47,4 +47,27 @@ public:
     /* 0x114 */ IceExplosion* unk114;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline FuryFXIce2::FuryFXIce2() {
+    this->unkA8.unk4 = 0;
+    return this;
+}
+#endif
+
+inline FuryFXIce2::~FuryFXIce2() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_FURYFXICE2_H

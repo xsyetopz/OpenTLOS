@@ -34,4 +34,12 @@ public:
     /* 0x0f4 */ s32 unkF4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MCActionScreen::MCActionScreen() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MCACTIONSCREEN_H

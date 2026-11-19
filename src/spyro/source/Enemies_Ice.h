@@ -76,4 +76,70 @@ public:
     IceTier3(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline IceTier1::IceTier1() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline IceTier1::~IceTier1() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline IceTier1Descriptor::IceTier1Descriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline IceTier2::IceTier2() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    this->unk110.unkA28 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline IceTier2::~IceTier2() {
+    this->unk110.unk5A8 = &__vt.unk84;
+    if ((&this->unk110.unkA28 != NULL) && (&this->unk110.unkA28 != NULL)) {
+        KDSound_Stop(&this->unk110.unkA28.unk0);
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk9D4'
+inline void *IceTier2::GetCollisionInfo() {
+    if ((s32) this->unk110.unk9D4 == 0) {
+        return this->unk110.unk524;
+    }
+    return this->unk110.unkA04;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline IceTier2Descriptor::IceTier2Descriptor() {
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline IceTier3::IceTier3() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline IceTier3::~IceTier3() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMIES_ICE_H

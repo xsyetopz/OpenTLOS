@@ -42,4 +42,16 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline SplineProp::~SplineProp() {
+    s32 temp_cr0_eq_10665;
+
+    temp_cr0_eq_10665 = this == NULL;
+    if (temp_cr0_eq_10665 == 0) {
+        if (temp_cr0_eq_10665 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_SPLINEPROP_H

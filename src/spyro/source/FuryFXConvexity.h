@@ -71,4 +71,36 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk6C'
+inline FuryFXConvexity::FuryFXConvexity() {
+    this->unk90.unk6C = 0.0f;
+    this->unk124 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline FuryFXConvexity::~FuryFXConvexity() {
+    s32 temp_cr0_eq_35;
+
+    if (this != NULL) {
+        if ((&this->unk124 != NULL) && (&this->unk124 != NULL)) {
+            KDSound_Stop(&this->unk124);
+        }
+        if ((&this->unk90.unk6C != NULL) && (&this->unk90.unk6C != NULL)) {
+            KDSound_Stop((s32 *) &this->unk90.unk6C);
+        }
+        temp_cr0_eq_35 = this == NULL;
+        if (temp_cr0_eq_35 == 0) {
+            if (temp_cr0_eq_35 == 0) {
+                if (temp_cr0_eq_35 == 0) {
+                }
+            }
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_FURYFXCONVEXITY_H

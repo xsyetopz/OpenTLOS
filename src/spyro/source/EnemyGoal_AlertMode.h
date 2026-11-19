@@ -53,4 +53,15 @@ public:
     /* 0x050 */ u8 unk50;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void EnemyGoal_AlertMode::Reset() {
+    this->unk8 = 1;
+    RemoveAllSubgoals();
+    this->unk20 = NULL;
+    this->unk4C = 0xFF;
+    this->unk50 &= ~0x80;
+    this->unk50 &= ~0x40;
+}
+
 #endif  // SPYRO_SOURCE_ENEMYGOAL_ALERTMODE_H

@@ -76,4 +76,24 @@ public:
 };
 
 extern DataMap CharacterGraphLinkDataMap;
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline CharacterGraphNodeProp::~CharacterGraphNodeProp() {
+    EventMessage *temp_r3_24;
+
+    if (this != NULL) {
+        if (&this->unk50 != NULL) {
+            temp_r3_24 = &this->unk50.unk38;
+            this->unk50.__vptr = &__vt;
+            if (temp_r3_24 != NULL) {
+                temp_r3_24->Deinit();
+            }
+        }
+        if (this != NULL) {
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_CHARACTERGRAPH_H

@@ -63,4 +63,38 @@ public:
     /* 0x154 */ f32 unk154;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline DragonStatue::~DragonStatue() {
+    s32 temp_cr0_eq_55;
+
+    if (this != NULL) {
+        if ((&this->unk12C != NULL) && (&this->unk12C != NULL)) {
+            KDSound_Stop(&this->unk12C);
+        }
+        if ((&this->unk104 != NULL) && (&this->unk104 != NULL)) {
+            KDSound_Stop(&this->unk104);
+        }
+        if (&this->unk9C != NULL) {
+            this->unk9C.Deinit();
+        }
+        if (&this->unk98 != NULL) {
+            this->unk98.Deinit();
+        }
+        if (&this->unk94 != NULL) {
+            this->unk94.Deinit();
+        }
+        if (&this->unk90 != NULL) {
+            this->unk90.Deinit();
+        }
+        temp_cr0_eq_55 = this == NULL;
+        if (temp_cr0_eq_55 == 0) {
+            if (temp_cr0_eq_55 == 0) {
+            }
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_DRAGONSTATUE_H

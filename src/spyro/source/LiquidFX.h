@@ -68,4 +68,25 @@ public:
     /* 0x0f0 */ LiquidFXDescriptor* unkF0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk3F54'
+inline LiquidFX::LiquidFX() {
+    this->unk3F48 = 0;
+    this->unk3F4C = 0;
+    this->unk3F50 = 0.0f;
+    this->unk3F54 = 0;
+    return this;
+}
+#endif
+
+inline LiquidFX::~LiquidFX() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline LiquidFXDescriptor::LiquidFXDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_LIQUIDFX_H

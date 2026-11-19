@@ -28,4 +28,18 @@ public:
     /* 0x0e0 */ Volume unkE0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline Critters::~Critters() {
+    s32 temp_cr0_eq_13429;
+
+    temp_cr0_eq_13429 = this == NULL;
+    if (temp_cr0_eq_13429 == 0) {
+        if (temp_cr0_eq_13429 == 0) {
+            if (temp_cr0_eq_13429 == 0) {
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_CRITTERS_H

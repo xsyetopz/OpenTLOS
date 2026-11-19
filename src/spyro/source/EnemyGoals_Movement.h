@@ -192,4 +192,65 @@ public:
     /* 0x018 */ s32 unk18;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline void EnemyGoal_BackupFromTarget::Reset() {
+    this->unk8 = 1;
+    this->unk10 = NULL;
+    this->unk14 = 0.0f;
+    this->unk18 = 0.0f;
+}
+
+inline void EnemyGoal_Jump::Reset() {
+    this->unk8 = 1;
+    this->unk10 = NULL;
+    this->unk14 = 0.0f;
+    this->unk18 = 0.0f;
+    this->unk1C = 0.0f;
+}
+
+inline void EnemyGoal_MoveToTarget::Reset() {
+    this->unk8 = 1;
+    this->unk10 = NULL;
+    this->unk14 = NULL;
+    this->unk18 = 0.0f;
+    this->unk30 &= ~0x80;
+    this->unk30 |= 0x40;
+    this->unk1C = 0.0f;
+    this->unk20 = 3;
+    this->unk24 = 0;
+    this->unk28 = -1;
+    this->unk30 &= ~0x10;
+    this->unk30 |= 0x20;
+}
+
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKProp'
+inline void EnemyGoal_Panic::Reset() {
+    f64 sp10;
+    f64 sp8;
+    f64 temp_f1_2846;
+    f64 temp_f2_2845;
+    void *temp_r4_2844;
+
+    this->unk8 = 1;
+    temp_r4_2844 = this->unkC->unk8;
+    temp_f2_2845 = M2C_FIELD(temp_r4_2844, f64 *, 0x30);
+    temp_f1_2846 = M2C_FIELD(temp_r4_2844, f64 *, 0x38);
+    sp8 = temp_f2_2845;
+    this->unk10 = temp_f2_2845;
+    this->unk18 = temp_f1_2846;
+    this->unk20 = 0.0f;
+    sp10 = temp_f1_2846;
+    this->unk24 = 0.0f;
+}
+#endif
+
+inline void EnemyGoal_Strafe::Reset() {
+    this->unk8 = 1;
+    this->unk14 = 0;
+    this->unk10 = NULL;
+}
+
 #endif  // SPYRO_SOURCE_ENEMYGOALS_MOVEMENT_H

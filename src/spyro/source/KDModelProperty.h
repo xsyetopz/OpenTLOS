@@ -15,4 +15,20 @@ public:
     static KDModelProperty classInfo;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 KDModelProperty::GetInstanceDataSize() const {
+    return 4;
+}
+
+#if 0 // DRAFT: expression syntax error
+inline void KDModelProperty::InitInstance() {
+    *(pInstanceMem.__vptr + this->unk8) = 0;
+}
+#endif
+
+inline void *KDModelProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_KDMODELPROPERTY_H

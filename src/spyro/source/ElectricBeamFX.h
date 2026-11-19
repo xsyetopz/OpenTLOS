@@ -48,4 +48,16 @@ public:
     /* 0x1f4 */ u8 unk1F4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk3C'
+inline ElectricBeam::ElectricBeam() {
+    this->unk30 = 0;
+    this->unk34 = 0;
+    this->unk38 = 0.0f;
+    this->unk3C = 0;
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ELECTRICBEAMFX_H

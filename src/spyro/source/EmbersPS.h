@@ -32,4 +32,30 @@ public:
     /* 0x084 */ f32 unk84;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline EmbersPS::EmbersPS() {
+    return this;
+}
+#endif
+
+inline EmbersPS::~EmbersPS() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
+inline void EmbersPS::Deinit() {
+    MKParticleSystem::Deinit();
+}
+
 #endif  // SPYRO_SOURCE_EMBERSPS_H

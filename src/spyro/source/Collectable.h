@@ -197,4 +197,91 @@ public:
     /* 0x024 */ s32 unk24;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline s32 Collectable::SetTypeID(int arg0) {
+    this->unkD0 = arg0;
+    return this->unkD0;
+}
+
+#if 0 // DRAFT: undefined identifier 'checked_cast'
+inline void Collectable::GetDescriptor() {
+    checked_cast<CollectableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+}
+#endif
+
+inline void Collectable::SetPos(const MKVector3 &arg0) {
+    this->unk50 = M2C_FIELD(&arg0, f64 *, 0);
+    this->unk58 = M2C_FIELD(&arg0, f64 *, 8);
+}
+
+inline s32 Collectable::GetTypeID() {
+    return this->unkD0;
+}
+
+inline void Collectable::SetPlatformId(int arg0) {
+    this->unk104 = (MKSceneManager *) arg0;
+}
+
+#if 0 // DRAFT: undefined identifier 'unk128'
+inline Collectable::~Collectable() {
+    M2C_UNK *temp_r0_11026;
+    M2C_UNK *temp_r0_11042;
+    M2C_UNK *temp_r5_11029;
+    M2C_UNK *temp_r5_11045;
+
+    if (this != NULL) {
+        if (&this->unk128 != NULL) {
+            temp_r0_11026 = this->unk12C;
+            if (temp_r0_11026 != NULL) {
+                temp_r5_11029 = &this->unk128;
+                if (temp_r0_11026 != temp_r5_11029) {
+                    M2C_FIELD(this->unk130, M2C_UNK **, 4) = temp_r0_11026;
+                    M2C_FIELD(this->unk12C, M2C_UNK **, 8) = (M2C_UNK *) this->unk130;
+                    this->unk130 = temp_r5_11029;
+                    this->unk12C = temp_r5_11029;
+                }
+            }
+        }
+        if (&this->unkB0 != NULL) {
+            temp_r0_11042 = this->unkB8;
+            if (temp_r0_11042 != NULL) {
+                temp_r5_11045 = &this->unkB0;
+                if (temp_r0_11042 != temp_r5_11045) {
+                    M2C_FIELD(this->unkBC, M2C_UNK **, 8) = temp_r0_11042;
+                    M2C_FIELD(this->unkB8, M2C_UNK **, 0xC) = (M2C_UNK *) this->unkBC;
+                    this->unkBC = temp_r5_11045;
+                    this->unkB8 = temp_r5_11045;
+                }
+            }
+        }
+        if (this != NULL) {
+        }
+    }
+}
+#endif
+
+inline void Collectable::GetPos() {
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x50);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x58);
+}
+
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKHeap'
+inline s32 Collectable::GetItemType() {
+    return this->unk124->unk98;
+}
+#endif
+
+inline CollectableSpawner::~CollectableSpawner() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_COLLECTABLE_H

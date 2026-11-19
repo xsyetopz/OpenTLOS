@@ -90,4 +90,38 @@ public:
 
 extern u8 PLAYSOUND3D_STRING[0x4];
 extern u8 HEADTWEEN_STRING[0x4];
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void KDSynkerPlayerEvent::Init() {
+
+}
+
+inline void KDSynkerPlayerEvent::Deinit() {
+
+}
+
+inline void KDSynkerPlayerEvent::LoadDone() {
+
+}
+
+inline void KDSynkerPlayerEvent::Exit() {
+
+}
+
+inline void KDSynkerPlayerEvent::Draw() {
+
+}
+
+inline void KDSynkerPlayerEvent::Enter() {
+
+}
+
+inline void KDSynkerPlayerEvent::Update() {
+
+}
+
+inline s32 KDSynkerPlayerEvent::LoadLine() {
+    return 0;
+}
+
 #endif  // SPYRO_SOURCE_KDSYNKERPLAYEREVENTS_H

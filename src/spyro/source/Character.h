@@ -118,4 +118,50 @@ public:
     /* 0x110 */ CollisionObject unk110;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline void Character::UpdateMovementCustom() {
+
+}
+
+#if 0 // DRAFT: undefined identifier 'unk560'
+inline Character::~Character() {
+    M2C_UNK *temp_r0_5407;
+    M2C_UNK *temp_r0_5423;
+    M2C_UNK *temp_r5_5410;
+    M2C_UNK *temp_r5_5426;
+
+    if (this != NULL) {
+        if (&this->unk110.unk560 != NULL) {
+            temp_r0_5407 = this->unk110.unk568;
+            if (temp_r0_5407 != NULL) {
+                temp_r5_5410 = &this->unk110.unk560;
+                if (temp_r0_5407 != temp_r5_5410) {
+                    M2C_FIELD(this->unk110.unk56C, M2C_UNK **, 8) = temp_r0_5407;
+                    M2C_FIELD(this->unk110.unk568, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk110.unk56C;
+                    this->unk110.unk56C = temp_r5_5410;
+                    this->unk110.unk568 = temp_r5_5410;
+                }
+            }
+        }
+        if (&this->unk110.unk538 != NULL) {
+            temp_r0_5423 = this->unk110.unk558;
+            if (temp_r0_5423 != NULL) {
+                temp_r5_5426 = &this->unk110.unk538;
+                if (temp_r0_5423 != temp_r5_5426) {
+                    M2C_FIELD(this->unk110.unk55C, M2C_UNK **, 0x20) = temp_r0_5423;
+                    M2C_FIELD(this->unk110.unk558, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk110.unk55C;
+                    this->unk110.unk55C = temp_r5_5426;
+                    this->unk110.unk558 = temp_r5_5426;
+                }
+            }
+        }
+        if (this != NULL) {
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_CHARACTER_H

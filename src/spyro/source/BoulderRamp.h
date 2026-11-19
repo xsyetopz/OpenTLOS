@@ -63,4 +63,38 @@ public:
 s32 BoulderRamp_GetCatapult(int, int);
 s32 BoulderRamp_GetMaxPerGroup(void);
 void BoulderRamp_InitModule(void);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline BoulderRamp::~BoulderRamp() {
+    this->unkC8 = &__vt.unk48;
+    if (&this->unkF4.unk10 != NULL) {
+        this->unkF4.unk10.Deinit();
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline BoulderRamp::BoulderRamp() {
+    this->unkC8 = &__vt + 0x48;
+    this->unkF0 = NULL;
+    this->unkF4.unk0 = 0.0f;
+    this->unkF4.unk4 = 0.0f;
+    this->unkF4.unk8 = 0.0f;
+    this->unkF4.unk10 = 0.0f;
+    this->unkF4.unk10.Init();
+    this->unkF4.unk14 = nanf;
+    this->unkF4.unk18 = nanf;
+    this->unkF4.unk1C = 0.0f;
+    this->unkF4.unk20 = 0.0f;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline BoulderRampDescriptor::BoulderRampDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_BOULDERRAMP_H

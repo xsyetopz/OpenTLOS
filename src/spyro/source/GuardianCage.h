@@ -73,4 +73,26 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline GuardianCage::GuardianCage() {
+    this->unk148.unk0 = 0;
+    this->unk148.Init();
+    this->unk14C = -1;
+    M2C_FIELD(this, s32 *, 0x150) = -1;
+    M2C_FIELD(this, s32 *, 0x154) = 0;
+    M2C_FIELD(this, s32 *, 0x158) = 0;
+    return this;
+}
+#endif
+
+inline GuardianCage::~GuardianCage() {
+    if (&this->unk148 != NULL) {
+        this->unk148.Deinit();
+    }
+}
+
 #endif  // SPYRO_SOURCE_GUARDIANCAGE_H

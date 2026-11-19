@@ -90,4 +90,32 @@ public:
 s32 Catapult_GetCatapult(int, int);
 s32 Catapult_GetMaxPerGroup(void);
 void Catapult_InitModule(void);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline Catapult::~Catapult() {
+    s32 temp_cr0_eq_43;
+
+    if (this != NULL) {
+        if (&this->unk110 != NULL) {
+            this->unk110.Deinit();
+        }
+        if (&this->unk10C != NULL) {
+            this->unk10C.Deinit();
+        }
+        if (&this->unk10C != NULL) {
+            this->unk10C.Deinit();
+        }
+        if ((&this->unkA0 != NULL) && (&this->unkA0 != NULL)) {
+            KDSound_Stop(&this->unkA0);
+        }
+        temp_cr0_eq_43 = this == NULL;
+        if (temp_cr0_eq_43 == 0) {
+            if (temp_cr0_eq_43 == 0) {
+            }
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_CATAPULT_H

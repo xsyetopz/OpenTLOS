@@ -76,4 +76,15 @@ public:
     /* 0x03d */ u8 unk3D;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void SwampTier1Goal_Hit::Reset() {
+    this->unk8 = 1;
+    RemoveAllSubgoals();
+    this->unk30 = 0.0f;
+    this->unk34 = 0.0f;
+    this->unk38 = 0.0f;
+    this->unk40 = 0;
+}
+
 #endif  // SPYRO_SOURCE_SWAMPTIER1GOAL_THINK_H

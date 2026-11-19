@@ -24,4 +24,15 @@ public:
     /* 0x184 */ f32 unk184;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline YawPlatform::YawPlatform() {
+    return this;
+}
+#endif
+
+inline YawPlatform::~YawPlatform() {
+}
+
 #endif  // SPYRO_SOURCE_YAWPLATFORM_H

@@ -25,4 +25,14 @@ public:
     /* 0x059 */ u8 unk59;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline CounterProp::~CounterProp() {
+    if (&this->unk4C != NULL) {
+        this->unk4C.Deinit();
+    }
+    if (this != NULL) {
+    }
+}
+
 #endif  // SPYRO_SOURCE_COUNTERPROP_H

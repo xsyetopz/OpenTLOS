@@ -43,4 +43,21 @@ public:
     /* 0x0f0 */ s32 unkF0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SteamFireBall::SteamFireBall() {
+    return this;
+}
+#endif
+
+inline SteamFireBall::~SteamFireBall() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SteamFireBallDescriptor::SteamFireBallDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_STEAMFIREBALL_H

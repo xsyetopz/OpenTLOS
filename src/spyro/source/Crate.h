@@ -179,4 +179,77 @@ public:
 };
 
 extern u8 crateDescFlags[0x50];
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline Crate::~Crate() {
+    EventMessage *temp_r3_56;
+    PlatformAttachment *temp_r0_41;
+    ShockWave **temp_r4_26;
+    f32 *temp_r4_39;
+    void *temp_r0_23;
+
+    if (this != NULL) {
+        if (&this->unk1D8 != NULL) {
+            temp_r0_23 = this->unk1DC.unk0;
+            if (temp_r0_23 != NULL) {
+                temp_r4_26 = &this->unk1D8;
+                if (temp_r0_23 != temp_r4_26) {
+                    this->unk1DC.unk4->unk4 = (Attachment *) temp_r0_23;
+                    M2C_FIELD(this->unk1DC.unk0, Attachment **, 8) = (Attachment *) this->unk1DC.unk4;
+                    this->unk1DC.unk4 = (Attachment *) temp_r4_26;
+                    this->unk1DC.unk0 = temp_r4_26;
+                }
+            }
+        }
+        if (&this->unk190 != NULL) {
+            temp_r4_39 = &this->unk190.unk18.unkC;
+            if (temp_r4_39 != NULL) {
+                temp_r0_41 = this->unk190.unk28.unk4;
+                if ((temp_r0_41 != NULL) && (temp_r0_41 != temp_r4_39)) {
+                    this->unk190.unk28.unk8->unk8 = temp_r0_41;
+                    this->unk190.unk28.unk4->unkC = this->unk190.unk28.unk8;
+                    this->unk190.unk28.unk8 = (PlatformAttachment *) temp_r4_39;
+                    this->unk190.unk28.unk4 = (PlatformAttachment *) temp_r4_39;
+                }
+            }
+        }
+        if (&this->unkE0 != NULL) {
+            temp_r3_56 = &this->unkE0.unk78;
+            if (temp_r3_56 != NULL) {
+                temp_r3_56->Deinit();
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline Crate::Crate() {
+    ShockWave **temp_r0_18686;
+    f32 *temp_r4_18684;
+
+    this->unkE0.unk78.unk0 = 0;
+    this->unkE0.unk78.Init();
+    temp_r4_18684 = &this->unk190.unk18.unkC;
+    this->unk190.unk18.unkC = 0.0f;
+    temp_r0_18686 = &this->unk1D8;
+    this->unk190.unk28.unk0 = NULL;
+    this->unk190.unk28.unk4 = temp_r4_18684;
+    this->unk190.unk28.unk8 = (PlatformAttachment *) temp_r4_18684;
+    this->unk1D8 = NULL;
+    this->unk1DC.unk0 = temp_r0_18686;
+    this->unk1DC.unk4 = (Attachment *) temp_r0_18686;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline CrateDescriptor::CrateDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_CRATE_H

@@ -71,4 +71,109 @@ public:
     /* 0x0e8 */ f64 unkE8;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'vtableC8'
+inline TotemPolePiece::TotemPolePiece() {
+    this->vtableC8 = &__vt;
+    this->unkCC = -1;
+    this->vtableC8 = &__vt + 0x48;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline TotemPolePiece::~TotemPolePiece() {
+    M2C_FIELD(this, s32 **, 0xC8) = &__vt.unk48;
+}
+#endif
+
+inline s32 TotemPolePiece::IsAttacking() {
+    return 0;
+}
+
+inline f32 TotemPolePiece::GetTimeLastHit() {
+    return 0.0f;
+}
+
+inline f32 TotemPolePiece::GetCollisionHeight() {
+    return 100.0f;
+}
+
+inline f32 TotemPolePiece::GetCollisionRadius() {
+    return 100.0f;
+}
+
+inline void TotemPolePiece::GetCollisionInfo() {
+
+}
+
+inline void TotemPolePiece::GetVel() {
+    f32 sp10;
+    f32 spC;
+    f32 sp8;
+
+    sp8 = 0.0f;
+    spC = 0.0f;
+    sp10 = 0.0f;
+    M2C_FIELD(this, f64 *, 0) = (f64) sp8;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+}
+
+inline s32 TotemPolePiece::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    return 0;
+}
+
+inline s32 TotemPolePiece::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    return 0;
+}
+
+inline s32 TotemPolePiece::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    return 0;
+}
+
+inline s32 TotemPolePiece::IsDead() {
+    return 0;
+}
+
+inline s32 TotemPolePiece::IsShatterable() {
+    return 0;
+}
+
+inline s32 TotemPolePiece::IsEnemy() {
+    return 1;
+}
+
+inline s32 TotemPolePiece::IsFriend() {
+    return 0;
+}
+
+inline s32 TotemPolePiece::IsHero() {
+    return 0;
+}
+
+inline s32 TotemPolePiece::GetEnemy() {
+    return 0;
+}
+
+inline void TotemPolePiece::GetProp() {
+
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline TotemPolePuzzle::TotemPolePuzzle() {
+    this->unkD4.unk0 = 0;
+    this->unkD4.Init();
+    return this;
+}
+#endif
+
+inline TotemPolePuzzle::~TotemPolePuzzle() {
+    if (&this->unkD4 != NULL) {
+        this->unkD4.Deinit();
+    }
+}
+
 #endif  // SPYRO_SOURCE_TOTEMPOLEPUZZLE_H

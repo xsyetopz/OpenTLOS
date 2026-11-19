@@ -73,4 +73,22 @@ public:
 u8 KDProp_LoadMaterialID(MKIniLine *, const char *, int *);
 void KDProp_InitModule(KDPropModuleInfo *);
 extern u8 gUpdateCameraAlpha[0x1];
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'MKModel_SetPosition'
+inline void KDProp::SetPos(const MKVector3 &arg0) {
+    MKModel_SetPosition(this->unk4, arg0);
+}
+#endif
+
+inline KDProp::~KDProp() {
+    s32 temp_cr0_eq_5057;
+
+    temp_cr0_eq_5057 = this == NULL;
+    if (temp_cr0_eq_5057 == 0) {
+        if (temp_cr0_eq_5057 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_KDPROP_H

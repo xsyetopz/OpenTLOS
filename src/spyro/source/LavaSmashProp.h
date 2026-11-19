@@ -40,4 +40,29 @@ public:
     /* 0x184 */ f32 unk184;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline LavaSmashProp::LavaSmashProp() {
+    this->unkC8 = &__vt + 0x48;
+    this->unk198 = 0.0f;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline LavaSmashProp::~LavaSmashProp() {
+    this->unkC8 = &__vt + 0x48;
+    if ((&this->unk198 != NULL) && (&this->unk198 != NULL)) {
+        KDSound_Stop((s32 *) &this->unk198);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline LavaSmashPropDescriptor::LavaSmashPropDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_LAVASMASHPROP_H

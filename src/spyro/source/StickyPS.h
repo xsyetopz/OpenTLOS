@@ -18,4 +18,15 @@ public:
     /* 0x0f4 */ f32 unkF4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline StickyPS::StickyPS() {
+    return this;
+}
+#endif
+
+inline StickyPS::~StickyPS() {
+}
+
 #endif  // SPYRO_SOURCE_STICKYPS_H

@@ -99,4 +99,85 @@ public:
     /* 0x120 */ f32 unk120;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline Platform::~Platform() {
+    PlatformAttachment *temp_r0_19896;
+    PlatformAttachment *temp_r4_19894;
+    void *temp_r0_19878;
+    void *temp_r4_19881;
+
+    if (this != NULL) {
+        if (&this->unk178 != NULL) {
+            KDSound_Stop(&this->unk178);
+        }
+        if ((this + 0x15C) != NULL) {
+            temp_r0_19878 = this->unk164;
+            if (temp_r0_19878 != NULL) {
+                temp_r4_19881 = this + 0x15C;
+                if (temp_r0_19878 != temp_r4_19881) {
+                    M2C_FIELD(this->unk168, void **, 8) = temp_r0_19878;
+                    M2C_FIELD(this->unk164, void **, 0xC) = (void *) this->unk168;
+                    this->unk168 = temp_r4_19881;
+                    this->unk164 = temp_r4_19881;
+                }
+            }
+        }
+        if (&this->unk108 != NULL) {
+            temp_r4_19894 = &this->unk108.unk28;
+            if (temp_r4_19894 != NULL) {
+                temp_r0_19896 = this->unk108.unk28.unk8;
+                if ((temp_r0_19896 != NULL) && (temp_r0_19896 != temp_r4_19894)) {
+                    this->unk108.unk28.unkC->unk8 = temp_r0_19896;
+                    this->unk108.unk28.unk8->unkC = this->unk108.unk28.unkC;
+                    this->unk108.unk28.unkC = temp_r4_19894;
+                    this->unk108.unk28.unk8 = temp_r4_19894;
+                }
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline Platform::Platform() {
+    PlatformAttachment *temp_r4_19937;
+    void *temp_r0_19939;
+
+    temp_r4_19937 = &this->unk108.unk28;
+    temp_r0_19939 = this + 0x15C;
+    this->unk108.unk28.unk0 = NULL;
+    this->unk108.unk28.unk4 = NULL;
+    this->unk108.unk28.unk8 = temp_r4_19937;
+    this->unk108.unk28.unkC = temp_r4_19937;
+    M2C_FIELD(this, s32 *, 0x15C) = 0;
+    this->unk160 = 0;
+    this->unk164 = temp_r0_19939;
+    this->unk168 = temp_r0_19939;
+    this->unk178 = 0;
+    return this;
+}
+#endif
+
+inline void Platform::UpdateRotate() {
+
+}
+
+inline void Platform::UpdateMove() {
+
+}
+
+inline void Platform::UpdateScale() {
+
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline PlatformDescriptor::PlatformDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_PLATFORM_H

@@ -58,4 +58,16 @@ public:
 extern u8 gBoneBlurFXPool[0xc];
 extern s32 BONE_BLUR_FX_NODE_POOL_MAX_ALLOCS;
 extern s32 BONE_BLUR_FX_NODE_POOL_MAX_NODES;
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline BoneBlurFX::~BoneBlurFX() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_BONEBLURFX_H

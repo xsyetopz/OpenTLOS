@@ -20,4 +20,18 @@ public:
     /* 0x090 */ u8 unk90;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline CollideBox::~CollideBox() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_COLLIDEBOX_H

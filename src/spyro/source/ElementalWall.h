@@ -84,4 +84,29 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkE4'
+inline ElementalWall::ElementalWall() {
+    this->unkE0 = -1;
+    this->unkE4 = -1;
+    this->unkE8 = 0;
+    this->unkEC = 0;
+    this->unk130 = 0;
+    return this;
+}
+#endif
+
+inline ElementalWall::~ElementalWall() {
+    s32 temp_cr0_eq_24;
+
+    if (this != NULL) {
+        temp_cr0_eq_24 = this == NULL;
+        if (temp_cr0_eq_24 == 0) {
+            if (temp_cr0_eq_24 == 0) {
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_ELEMENTALWALL_H

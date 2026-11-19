@@ -43,4 +43,18 @@ public:
     /* 0x040 */ u8 unk40;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 WobbleProperty::GetInstanceDataSize() const {
+    return 0x10;
+}
+
+inline s32 WobbleProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *WobbleProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_WOBBLEPROPERTY_H

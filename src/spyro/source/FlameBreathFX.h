@@ -71,4 +71,30 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline FlameBreathFX::FlameBreathFX() {
+    this->unk148.unkC8.unk0 = 0;
+    this->unk148.unkC8.unk4 = 0;
+    this->unk148.unkC8.unk8 = 0.0f;
+    this->unk148.unkC8.unkC = 0;
+    return this;
+}
+#endif
+
+inline FlameBreathFX::~FlameBreathFX() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_FLAMEBREATHFX_H

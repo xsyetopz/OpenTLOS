@@ -88,4 +88,16 @@ public:
     /* 0x148 */ s32 unk148;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline MKLevelChunk::~MKLevelChunk() {
+    this->unk8 = &__vt;
+}
+#endif
+
+inline MKPropDescriptor *MKLevelChunk::GetDescriptorList() const {
+    return 0;
+}
+
 #endif  // COMMON_SOURCE_MKLEVELCHUNK_H

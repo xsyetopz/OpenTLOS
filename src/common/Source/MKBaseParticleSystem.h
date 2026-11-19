@@ -105,4 +105,16 @@ void MKParticleSystem_FreeChunk(MKParticleChunk *);
 MKParticleChunk * MKParticleSystem_AllocChunk(int);
 void MKParticleSystem_DeinitModule(void);
 void MKParticleSystem_InitModule(int);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline MKBaseParticleSystem::~MKBaseParticleSystem() {
+    s32 temp_cr0_eq_7388;
+
+    temp_cr0_eq_7388 = this == NULL;
+    if (temp_cr0_eq_7388 == 0) {
+        if (temp_cr0_eq_7388 == 0) {
+        }
+    }
+}
+
 #endif  // COMMON_SOURCE_MKBASEPARTICLESYSTEM_H

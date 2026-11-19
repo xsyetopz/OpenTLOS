@@ -27,4 +27,14 @@ public:
     /* 0x0f0 */ u8 unkF0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: '(' expected
+inline VolcanoRumble::~VolcanoRumble() {
+    __destroy_arr((KDSoundFader *) &this->unk4C, &KDSoundFader::~KDSoundFader, 0x28, 4);
+    if (this != NULL) {
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_VOLCANORUMBLE_H

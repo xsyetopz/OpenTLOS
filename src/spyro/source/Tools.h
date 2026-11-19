@@ -108,4 +108,16 @@ u16 Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *, const char *);
 u16 Tools_GetMatchingRefPointIndex(MKModel *, const char *);
 u16 Tools_GetMatchingNodeIndex(MKModel *, const char *);
 extern s32 pauseSndCount;
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline Tools_PropCreator::~Tools_PropCreator() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_TOOLS_H

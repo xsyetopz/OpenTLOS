@@ -19,4 +19,19 @@ public:
     void GetZapAnchorPos(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline FightElevatorAnchor::FightElevatorAnchor() {
+    this->unkC8 = &__vt + 0x48;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline FightElevatorAnchor::~FightElevatorAnchor() {
+    this->unkC8 = &__vt.unk48;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_FIGHTELEVATORANCHOR_H

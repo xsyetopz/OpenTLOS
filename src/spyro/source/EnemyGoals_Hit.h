@@ -225,4 +225,43 @@ public:
 };
 
 u8 GetPushOutWallNormal(Enemy *, MKVector3 *);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void EnemyGoal_HitAirCombo::Reset() {
+    this->unk8 = 1;
+    this->unk10 = 0.0f;
+    this->unk14 &= ~0x80;
+    this->unk14 &= ~0x40;
+    this->unk14 &= ~0x20;
+}
+
+inline void EnemyGoal_HitFlinch::Reset() {
+    this->unk8 = 1;
+    this->unk10 = 0;
+}
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline EnemyGoal_HitKnockdown::~EnemyGoal_HitKnockdown() {
+    if ((&this->unk14 != NULL) && (&this->unk14 != NULL)) {
+        KDSound_Stop(&this->unk14);
+    }
+}
+#endif
+
+inline void EnemyGoal_HitKnockdown::Reset() {
+    this->unk8 = 1;
+    this->unk40 &= ~0x40;
+    this->unk40 &= ~0x20;
+    this->unk40 &= ~0x10;
+    this->unk10 = NULL;
+}
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline EnemyGoal_HitKnockdownSlide::~EnemyGoal_HitKnockdownSlide() {
+    if ((&this->unk10 != NULL) && (&this->unk10 != NULL)) {
+        KDSound_Stop(&this->unk10);
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMYGOALS_HIT_H

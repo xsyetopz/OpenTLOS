@@ -20,4 +20,24 @@ public:
     NPCGuardian(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline NPCGuardian::NPCGuardian() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    this->unk110.unkA04 = 0;
+    this->unk110.unkA04.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline NPCGuardian::~NPCGuardian() {
+    this->unk110.unk5A8 = &__vt.unk84;
+    if (&this->unk110.unkA04 != NULL) {
+        this->unk110.unkA04.Deinit();
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_NPCGUARDIAN_H

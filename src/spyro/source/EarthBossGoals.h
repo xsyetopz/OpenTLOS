@@ -202,4 +202,12 @@ public:
     /* 0x040 */ void** unk40;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void EarthBossGoal_MoveToTarget::Reset() {
+    this->unk8 = 1;
+    this->unk10 = 0.0f;
+    this->unk14 = 0.0f;
+}
+
 #endif  // SPYRO_SOURCE_EARTHBOSSGOALS_H

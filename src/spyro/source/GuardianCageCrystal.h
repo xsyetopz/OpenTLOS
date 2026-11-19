@@ -37,4 +37,29 @@ public:
     /* 0x16c */ s32 unk16C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline GuardianCageCrystal::GuardianCageCrystal() {
+    this->unkC8 = &__vt + 0x48;
+    this->unk1C8 = NULL;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline GuardianCageCrystal::~GuardianCageCrystal() {
+    this->unkC8 = &__vt.unk48;
+    if ((&this->unk1C8 != NULL) && (&this->unk1C8 != NULL)) {
+        KDSound_Stop((s32 *) &this->unk1C8);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline GuardianCageCrystalDescriptor::GuardianCageCrystalDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_GUARDIANCAGECRYSTAL_H

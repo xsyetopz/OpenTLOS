@@ -87,4 +87,33 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: '(' expected
+inline ElementalCombatController::~ElementalCombatController() {
+    EventMessage *temp_r3_30;
+    EventMessage *temp_r3_36;
+
+    if (this != NULL) {
+        __destroy_arr(&this->unk39C, &EventMessage::~EventMessage, 4, 0x10);
+        if (&this->unkC8 != NULL) {
+            temp_r3_30 = &this->unkC8.unk40;
+            this->unkC8.__vptr = &__vt;
+            if (temp_r3_30 != NULL) {
+                temp_r3_30->Deinit();
+            }
+            temp_r3_36 = &this->unkC8.unk3C;
+            if (temp_r3_36 != NULL) {
+                temp_r3_36->Deinit();
+            }
+        }
+        if (&this->unkB0 != NULL) {
+            this->unkB0.Deinit();
+        }
+        if (this != NULL) {
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ELEMENTALCOMBATCONTROLLER_H

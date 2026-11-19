@@ -68,4 +68,32 @@ public:
     /* 0x078 */ s32 unk78;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline TeslaTower::~TeslaTower() {
+    s32 temp_cr0_eq_49;
+
+    if (this != NULL) {
+        if ((&this->unk18C != NULL) && (&this->unk18C != NULL)) {
+            KDSound_Stop(&this->unk18C);
+        }
+        if ((&this->unk164 != NULL) && (&this->unk164 != NULL)) {
+            KDSound_Stop(&this->unk164);
+        }
+        if ((&this->unk13C != NULL) && (&this->unk13C != NULL)) {
+            KDSound_Stop(&this->unk13C);
+        }
+        if ((&this->unk90.unk84 != NULL) && (&this->unk90.unk84 != NULL)) {
+            KDSound_Stop(&this->unk90.unk84);
+        }
+        temp_cr0_eq_49 = this == NULL;
+        if (temp_cr0_eq_49 == 0) {
+            if (temp_cr0_eq_49 == 0) {
+            }
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_TESLATOWER_H

@@ -61,4 +61,18 @@ public:
     /* 0x03c */ f32 unk3C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void Matrix::YAxis3() const {
+
+}
+
+inline void Matrix::XAxis3() const {
+
+}
+
+inline void Matrix::ZAxis3() const {
+
+}
+
 #endif  // COMMON_SOURCE_MATRIX_H

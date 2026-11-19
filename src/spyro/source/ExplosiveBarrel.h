@@ -52,4 +52,33 @@ public:
     /* 0x178 */ f32 unk178;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline ExplosiveBarrel::ExplosiveBarrel() {
+    this->unkC8 = &__vt + 0x48;
+    this->unk1AC = NULL;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline ExplosiveBarrel::~ExplosiveBarrel() {
+    this->unkC8 = &__vt.unk48;
+    if (&this->unk1AC != NULL) {
+        KDSound_Stop((s32 *) &this->unk1AC);
+    }
+}
+#endif
+
+inline s32 ExplosiveBarrel::IsDead() {
+    return GetState() == 4;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ExplosiveBarrelDescriptor::ExplosiveBarrelDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_EXPLOSIVEBARREL_H

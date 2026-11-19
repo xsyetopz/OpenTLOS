@@ -333,4 +333,11 @@ public:
     /* 0x068 */ Goal<IceBoss>* unk68;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void IceBossGoal_MoveToTarget::Reset() {
+    this->unk8 = 1;
+    this->unk10 = 0.0f;
+}
+
 #endif  // SPYRO_SOURCE_ICEBOSSGOALS_H

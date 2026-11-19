@@ -28,4 +28,21 @@ public:
     /* 0x1c0 */ u8 unk1C0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline WaterWheel::WaterWheel() {
+    this->unk184 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline WaterWheel::~WaterWheel() {
+    if ((&this->unk184 != NULL) && (&this->unk184 != NULL)) {
+        KDSound_Stop(&this->unk184);
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_WATERWHEEL_H

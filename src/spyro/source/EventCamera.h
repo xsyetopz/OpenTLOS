@@ -93,4 +93,16 @@ public:
 
 EventCamera * EventCamera_GetCurrent(void);
 extern s8 EventCamera_bRemainTargetable;
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline EventCamera::~EventCamera() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_EVENTCAMERA_H

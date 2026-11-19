@@ -113,4 +113,14 @@ public:
 };
 
 void ComparePropCreatorFunc(const void *, const void *);
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void MKSceneManager::DrawDebug() {
+
+}
+
+inline void MKSceneManager::DumpState() {
+
+}
+
 #endif  // COMMON_SOURCE_MKBASESCENEMANAGER_H

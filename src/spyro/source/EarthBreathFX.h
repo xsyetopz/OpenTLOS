@@ -64,4 +64,27 @@ public:
     /* 0x19c */ f32 unk19C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline EarthBreathFX::EarthBreathFX() {
+    this->unkD0.unk4 = 0;
+    return this;
+}
+#endif
+
+inline EarthBreathFX::~EarthBreathFX() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_EARTHBREATHFX_H

@@ -32,4 +32,31 @@ public:
     /* 0x16c */ s32 unk16C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline MoleTether::MoleTether() {
+    this->unkC8 = &__vt + 0x48;
+    M2C_FIELD(this, s32 *, 0x1C8) = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline MoleTether::~MoleTether() {
+    this->unkC8 = &__vt.unk48;
+    if ((&this->unk1B8 != NULL) && (&this->unk1B8 != NULL)) {
+        KDSound_Stop((s32 *) &this->unk1B8);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MoleTetherDescriptor::MoleTetherDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MOLETETHER_H

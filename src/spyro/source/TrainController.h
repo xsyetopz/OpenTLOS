@@ -47,4 +47,17 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline TrainController::~TrainController() {
+    if (&this->unk68 != NULL) {
+        this->unk68.Deinit();
+    }
+    if (&this->unk64 != NULL) {
+        this->unk64.Deinit();
+    }
+    if (this != NULL) {
+    }
+}
+
 #endif  // SPYRO_SOURCE_TRAINCONTROLLER_H

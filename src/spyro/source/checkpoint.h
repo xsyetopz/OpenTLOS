@@ -60,4 +60,23 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline CheckPoint::~CheckPoint() {
+    s32 temp_cr0_eq_28;
+
+    if (this != NULL) {
+        if ((&this->unk190 != NULL) && (&this->unk190 != NULL)) {
+            KDSound_Stop(&this->unk190);
+        }
+        temp_cr0_eq_28 = this == NULL;
+        if (temp_cr0_eq_28 == 0) {
+            if (temp_cr0_eq_28 == 0) {
+            }
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_CHECKPOINT_H

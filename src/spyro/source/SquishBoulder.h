@@ -34,4 +34,32 @@ public:
     /* 0x170 */ void* unk170;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline SquishBoulder::SquishBoulder() {
+    this->unkC8 = &__vt + 0x48;
+    M2C_FIELD(this, s32 *, 0x1D8) = 0;
+    this->unk204 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline SquishBoulder::~SquishBoulder() {
+    this->unkC8 = &__vt.unk48;
+    if ((&this->unk1C8 != NULL) && (&this->unk1C8 != NULL)) {
+        KDSound_Stop((s32 *) &this->unk1C8);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SquishBoulderDescriptor::SquishBoulderDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SQUISHBOULDER_H

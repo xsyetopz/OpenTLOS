@@ -45,4 +45,27 @@ public:
     /* 0x0f0 */ s32 unkF0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MagicFireball::MagicFireball() {
+    this->unk164 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline MagicFireball::~MagicFireball() {
+    if ((&this->unk164 != NULL) && (&this->unk164 != NULL)) {
+        KDSound_Stop(&this->unk164);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MagicFireballDescriptor::MagicFireballDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MAGICFIREBALL_H

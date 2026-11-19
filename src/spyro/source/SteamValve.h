@@ -42,4 +42,21 @@ public:
     /* 0x0e4 */ s32 unkE4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SteamValve::SteamValve() {
+    return this;
+}
+#endif
+
+inline SteamValve::~SteamValve() {
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline SteamValveDescriptor::SteamValveDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_STEAMVALVE_H

@@ -27,4 +27,14 @@ public:
     /* 0x064 */ u8 unk64;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void UIReference::LoadResources() {
+
+}
+
+inline void UIReference::FreeResources() {
+
+}
+
 #endif  // SPYRO_SOURCE_UIREFERENCE_H

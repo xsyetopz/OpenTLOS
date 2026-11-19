@@ -44,4 +44,16 @@ public:
     /* 0x078 */ f64 unk78;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline WaterTrickleEmitter::~WaterTrickleEmitter() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_WATERTRICKLEEMITTER_H

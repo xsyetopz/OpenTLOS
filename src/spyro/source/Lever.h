@@ -77,4 +77,61 @@ public:
     /* 0x0f8 */ s32 unkF8;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'vtableC8'
+inline Lever::Lever() {
+    this->vtableC8 = &__vt;
+    this->unkCC = -1;
+    this->vtableC8 = &__vt + 0x48;
+    this->unkF8.unk0 = 0;
+    this->unkF8.Init();
+    this->unkFC.unk0 = 0;
+    this->unkFC.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline Lever::~Lever() {
+    this->unkC8 = &__vt.unk48;
+    if (&this->unkFC != NULL) {
+        this->unkFC.Deinit();
+    }
+    if (&this->unkF8 != NULL) {
+        this->unkF8.Deinit();
+    }
+}
+#endif
+
+inline s32 Lever::IsAttacking() {
+    return 0;
+}
+
+inline f32 Lever::GetTimeLastHit() {
+    return 0.0f;
+}
+
+inline s32 Lever::GetCollisionInfo() {
+    return 0;
+}
+
+inline s32 Lever::IsDead() {
+    return 0;
+}
+
+inline s32 Lever::IsShatterable() {
+    return 0;
+}
+
+inline s32 Lever::GetEnemy() {
+    return 0;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline LeverDescriptor::LeverDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_LEVER_H

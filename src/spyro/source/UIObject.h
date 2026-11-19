@@ -49,4 +49,18 @@ public:
 void UIObject_MenuStringsDeinit(void);
 void UIObject_MenuStringsInit(int);
 extern UIStringTable menuStrings;
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void UIObject::LoadDone() {
+
+}
+
+inline void UIObject::Update() {
+
+}
+
+inline s32 UIObject::IsContainer() const {
+    return 0;
+}
+
 #endif  // SPYRO_SOURCE_UIOBJECT_H

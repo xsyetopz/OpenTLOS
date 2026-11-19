@@ -39,4 +39,10 @@ public:
     /* 0x064 */ s32 unk64;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 UIContainer::IsContainer() const {
+    return 1;
+}
+
 #endif  // SPYRO_SOURCE_UICONTAINER_H

@@ -42,4 +42,36 @@ public:
     /* 0x068 */ f32 unk68;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline LockOnTarget::~LockOnTarget() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline void LockOnTarget::Reset() {
+    this->unk60 = 0;
+    M2C_FIELD(this->__vptr, M2C_UNK (**)(LockOnTarget *), 0x34)(this);
+    this->unk64 = 3.0f * M2C_FIELD(checked_cast<LockOnTargetDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x68);
+    this->unk68 = 0.0f;
+    this->unk70 = 0.0f;
+    this->unk74 = 1.0f;
+    this->unk4C = NULL;
+}
+#endif
+
+inline void LockOnTargetDescriptor::Init() {
+    MKPropDescriptor::Init();
+    this->unk14 |= 0x20;
+    this->unk68 = 1.0f;
+}
+
 #endif  // SPYRO_SOURCE_LOCKONTARGET_H

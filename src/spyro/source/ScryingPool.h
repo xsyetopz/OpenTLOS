@@ -34,4 +34,38 @@ public:
     /* 0x0c4 */ s32 unkC4;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ScryingPool::ScryingPool() {
+    this->unk98 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline ScryingPool::~ScryingPool() {
+    s32 temp_cr0_eq_28;
+
+    if (this != NULL) {
+        if ((&this->unk98 != NULL) && (&this->unk98 != NULL)) {
+            KDSound_Stop(&this->unk98);
+        }
+        temp_cr0_eq_28 = this == NULL;
+        if (temp_cr0_eq_28 == 0) {
+            if (temp_cr0_eq_28 == 0) {
+                if (temp_cr0_eq_28 == 0) {
+                }
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ScryingPoolDescriptor::ScryingPoolDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SCRYINGPOOL_H

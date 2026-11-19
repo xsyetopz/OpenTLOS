@@ -124,4 +124,25 @@ public:
     /* 0x11c */ s32 unk11C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: illegal type
+inline s32 GameStats::GetCurrentBreathUpgrade(int arg0) {
+    u8 var_r3_4478;
+    void *temp_r5_4475;
+
+    temp_r5_4475 = this + ((this->unkE8 << 5) + 0x64);
+    if (arg0 == 3) {
+        var_r3_4478 = 0;
+        if (((s32) M2C_FIELD(temp_r5_4475, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r5_4475, s32 *, 4) == 3)) {
+            var_r3_4478 = 1;
+        }
+        return var_r3_4478 != 0;
+    }
+    return *(temp_r5_4475 + (arg0 * 4));
+}
+#endif
+
 #endif  // SPYRO_SOURCE_GAMEDATA_H

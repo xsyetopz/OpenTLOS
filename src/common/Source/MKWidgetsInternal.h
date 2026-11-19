@@ -756,4 +756,750 @@ extern u8 MKWIDGETTYPE_TEXTBOX[0x4];
 extern s8 * MKWIDGETTYPE_SLIDER;
 extern s8 * MKWIDGETTYPE_LISTITEM;
 extern s8 * MKWIDGETTYPE_COLOR;
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline u8 MKWidget::IsContainer() {
+    return 0U;
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidget::MKWidget_FactoryFunc() {
+    MKWidget *var_r0_19731;
+
+    operator new(0x28U, NULL, 0);
+    var_r0_19731 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19731 != NULL) {
+        var_r0_19731 = ((MKWidget *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidget((MKWidgetDescriptor *) &sMKWidgetDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19731;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline MKWidgetButton::~MKWidgetButton() {
+    if (&this->unk54 != NULL) {
+        this->unk54.__vptr = &__vt;
+    }
+    if (&this->unk28 != NULL) {
+        this->unk28.__vptr = &__vt;
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetButton::MKWidgetButton_FactoryFunc() {
+    MKWidgetButton *var_r0_19467;
+
+    operator new(0x88U, NULL, 0);
+    var_r0_19467 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19467 != NULL) {
+        var_r0_19467 = ((MKWidgetButton *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetButton((MKWidgetDescriptor *) &sMKWidgetButtonDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19467;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline MKWidgetCheckBox::~MKWidgetCheckBox() {
+    if (&this->unk54 != NULL) {
+        this->unk54.__vptr = &__vt;
+    }
+    if (&this->unk28 != NULL) {
+        this->unk28.__vptr = &__vt;
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetCheckBox::MKWidgetCheckBox_FactoryFunc() {
+    MKWidgetCheckBox *var_r0_19419;
+
+    operator new(0x80U, NULL, 0);
+    var_r0_19419 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19419 != NULL) {
+        var_r0_19419 = ((MKWidgetCheckBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetCheckBox((MKWidgetDescriptor *) &sMKWidgetCheckBoxDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19419;
+}
+#endif
+
+inline MKWidgetCheckMark::~MKWidgetCheckMark() {
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetCheckMark::MKWidgetCheckMark_FactoryFunc() {
+    MKWidgetCheckMark *var_r0_19443;
+
+    operator new(0x2CU, NULL, 0);
+    var_r0_19443 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19443 != NULL) {
+        var_r0_19443 = ((MKWidgetCheckMark *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetCheckMark((MKWidgetDescriptor *) &sMKWidgetCheckMarkDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19443;
+}
+#endif
+
+inline MKWidgetColor::~MKWidgetColor() {
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetColor::MKWidgetColor_FactoryFunc() {
+    MKWidgetColor *var_r0_19251;
+
+    operator new(0x28U, NULL, 0);
+    var_r0_19251 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19251 != NULL) {
+        var_r0_19251 = ((MKWidgetColor *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetColor((MKWidgetDescriptor *) &sMKWidgetColorDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19251;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline MKWidgetComboBox::~MKWidgetComboBox() {
+    MKWidget *temp_r3_18038;
+    MKWidget *temp_r3_18048;
+
+    if (this != NULL) {
+        if (&this->unk28 != NULL) {
+            temp_r3_18038 = &this->unk7C;
+            this->unk28.__vptr = &__vt;
+            if (temp_r3_18038 != NULL) {
+                this->unk7C.__vptr = &__vt;
+                temp_r3_18038->MKWidget::~MKWidget(0);
+            }
+            temp_r3_18048 = &this->unk50;
+            if (temp_r3_18048 != NULL) {
+                this->unk50.__vptr = &__vt;
+                temp_r3_18048->MKWidget::~MKWidget(0);
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetComboBox::MKWidgetComboBox_FactoryFunc() {
+    MKWidgetComboBox *var_r0_19227;
+
+    operator new(0x104U, NULL, 0);
+    var_r0_19227 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19227 != NULL) {
+        var_r0_19227 = ((MKWidgetComboBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetComboBox((MKWidgetDescriptor *) &sMKWidgetComboBoxDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19227;
+}
+#endif
+
+inline MKWidgetContainer::~MKWidgetContainer() {
+}
+
+inline u8 MKWidgetContainer::IsContainer() {
+    return 1;
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetContainer::MKWidgetContainer_FactoryFunc() {
+    MKWidgetContainer *var_r0_19707;
+
+    operator new(0x40U, NULL, 0);
+    var_r0_19707 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19707 != NULL) {
+        var_r0_19707 = ((MKWidgetContainer *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetContainer((MKWidgetDescriptor *) &sMKWidgetContainerDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19707;
+}
+#endif
+
+inline MKWidgetEditable::~MKWidgetEditable() {
+    s32 temp_cr0_eq_18083;
+
+    temp_cr0_eq_18083 = this == NULL;
+    if (temp_cr0_eq_18083 == 0) {
+        if (temp_cr0_eq_18083 == 0) {
+        }
+    }
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetEditable::MKWidgetEditable_FactoryFunc() {
+    MKWidgetEditable *var_r0_19155;
+
+    operator new(0x68U, NULL, 0);
+    var_r0_19155 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19155 != NULL) {
+        var_r0_19155 = ((MKWidgetEditable *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetEditable((MKWidgetDescriptor *) &sMKWidgetEditableDescriptor);
+    }
+    return var_r0_19155;
+}
+#endif
+
+inline MKWidgetEnvelope::~MKWidgetEnvelope() {
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetEnvelope::MKWidgetEnvelope_FactoryFunc() {
+    MKWidgetEnvelope *var_r0_19323;
+
+    operator new(0x40U, NULL, 0);
+    var_r0_19323 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19323 != NULL) {
+        var_r0_19323 = ((MKWidgetEnvelope *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetEnvelope((MKWidgetDescriptor *) &sMKWidgetEnvelopeDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19323;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline MKWidgetFoldupFrame::~MKWidgetFoldupFrame() {
+    MKWidget *temp_r3_17964;
+    MKWidget *temp_r3_17974;
+    s32 temp_cr0_eq_17986;
+
+    if (this != NULL) {
+        if (&this->unkDC != NULL) {
+            this->unkDC.__vptr = &__vt;
+        }
+        if (&this->unk54 != NULL) {
+            temp_r3_17964 = &this->unkA8;
+            this->unk54.__vptr = &__vt;
+            if (temp_r3_17964 != NULL) {
+                this->unkA8.__vptr = &__vt;
+                temp_r3_17964->MKWidget::~MKWidget(0);
+            }
+            temp_r3_17974 = &this->unk7C;
+            if (temp_r3_17974 != NULL) {
+                this->unk7C.__vptr = &__vt;
+                temp_r3_17974->MKWidget::~MKWidget(0);
+            }
+        }
+        temp_cr0_eq_17986 = this == NULL;
+        if (temp_cr0_eq_17986 == 0) {
+            if (temp_cr0_eq_17986 == 0) {
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetFoldupFrame::MKWidgetFoldupFrame_FactoryFunc() {
+    MKWidgetFoldupFrame *var_r0_19539;
+
+    operator new(0x108U, NULL, 0);
+    var_r0_19539 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19539 != NULL) {
+        var_r0_19539 = ((MKWidgetFoldupFrame *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetFoldupFrame((MKWidgetDescriptor *) &sMKWidgetFoldupFrameDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19539;
+}
+#endif
+
+inline MKWidgetFrame::~MKWidgetFrame() {
+    s32 temp_cr0_eq_2255;
+
+    temp_cr0_eq_2255 = this == NULL;
+    if (temp_cr0_eq_2255 == 0) {
+        if (temp_cr0_eq_2255 == 0) {
+        }
+    }
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetFrame::MKWidgetFrame_FactoryFunc() {
+    MKWidgetFrame *var_r0_19659;
+
+    operator new(0x40U, NULL, 0);
+    var_r0_19659 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19659 != NULL) {
+        var_r0_19659 = ((MKWidgetFrame *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetFrame((MKWidgetDescriptor *) &sMKWidgetFrameDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19659;
+}
+#endif
+
+inline MKWidgetImage::~MKWidgetImage() {
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetImage::MKWidgetImage_FactoryFunc() {
+    MKWidgetImage *var_r0_19491;
+
+    operator new(0x2CU, NULL, 0);
+    var_r0_19491 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19491 != NULL) {
+        var_r0_19491 = ((MKWidgetImage *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetImage((MKWidgetDescriptor *) &sMKWidgetImageDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19491;
+}
+#endif
+
+inline MKWidgetListBox::~MKWidgetListBox() {
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetListBox::MKWidgetListBox_FactoryFunc() {
+    MKWidgetListBox *var_r0_19611;
+
+    operator new(0x3A8U, NULL, 0);
+    var_r0_19611 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19611 != NULL) {
+        var_r0_19611 = ((MKWidgetListBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetListBox((MKWidgetDescriptor *) &sMKWidgetListBoxDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19611;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline MKWidgetListItem::~MKWidgetListItem() {
+    if (&this->unk28 != NULL) {
+        this->unk28.__vptr = &__vt;
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetListItem::MKWidgetListItem_FactoryFunc() {
+    MKWidgetListItem *var_r0_19299;
+
+    operator new(0x54U, NULL, 0);
+    var_r0_19299 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19299 != NULL) {
+        var_r0_19299 = ((MKWidgetListItem *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetListItem((MKWidgetDescriptor *) &sMKWidgetListItemDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19299;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline MKWidgetScrollBar::~MKWidgetScrollBar() {
+    MKWidget *temp_r3_9170;
+    MKWidget *temp_r3_9180;
+    MKWidget *temp_r3_9195;
+    MKWidget *temp_r3_9205;
+
+    if (this != NULL) {
+        if (&this->unk138 != NULL) {
+            this->unk138.__vptr = &__vt;
+        }
+        if (&this->unkB0 != NULL) {
+            temp_r3_9170 = &this->unk104;
+            this->unkB0.__vptr = &__vt;
+            if (temp_r3_9170 != NULL) {
+                this->unk104.__vptr = &__vt;
+                temp_r3_9170->MKWidget::~MKWidget(0);
+            }
+            temp_r3_9180 = &this->unkD8;
+            if (temp_r3_9180 != NULL) {
+                this->unkD8.__vptr = &__vt;
+                temp_r3_9180->MKWidget::~MKWidget(0);
+            }
+        }
+        if (&this->unk28 != NULL) {
+            temp_r3_9195 = &this->unk7C;
+            this->unk28.__vptr = &__vt;
+            if (temp_r3_9195 != NULL) {
+                this->unk7C.__vptr = &__vt;
+                temp_r3_9195->MKWidget::~MKWidget(0);
+            }
+            temp_r3_9205 = &this->unk50;
+            if (temp_r3_9205 != NULL) {
+                this->unk50.__vptr = &__vt;
+                temp_r3_9205->MKWidget::~MKWidget(0);
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetScrollBar::MKWidgetScrollBar_FactoryFunc() {
+    MKWidgetScrollBar *var_r0_19395;
+
+    operator new(0x198U, NULL, 0);
+    var_r0_19395 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19395 != NULL) {
+        var_r0_19395 = ((MKWidgetScrollBar *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetScrollBar((MKWidgetDescriptor *) &sMKWidgetScrollBarDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19395;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline MKWidgetScrollableFrame::~MKWidgetScrollableFrame() {
+    MKWidget *temp_r29_8224;
+    MKWidget *temp_r29_8249;
+    MKWidget *temp_r29_8291;
+    MKWidget *temp_r29_8316;
+    MKWidget *temp_r3_8214;
+    MKWidget *temp_r3_8227;
+    MKWidget *temp_r3_8237;
+    MKWidget *temp_r3_8252;
+    MKWidget *temp_r3_8262;
+    MKWidget *temp_r3_8281;
+    MKWidget *temp_r3_8294;
+    MKWidget *temp_r3_8304;
+    MKWidget *temp_r3_8319;
+    MKWidget *temp_r3_8329;
+    s32 temp_cr0_eq_8345;
+
+    if (this != NULL) {
+        if (&this->unk208 != NULL) {
+            temp_r3_8214 = &this->unk340;
+            this->unk208.__vptr = &__vt;
+            if (temp_r3_8214 != NULL) {
+                this->unk340.__vptr = &__vt;
+                temp_r3_8214->MKWidget::~MKWidget(0);
+            }
+            temp_r29_8224 = &this->unk2B8;
+            if (temp_r29_8224 != NULL) {
+                temp_r3_8227 = temp_r29_8224 + 0x54;
+                this->unk2B8.__vptr = &__vt;
+                if (temp_r3_8227 != NULL) {
+                    this->vtable30C = &__vt;
+                    temp_r3_8227->MKWidget::~MKWidget(0);
+                }
+                temp_r3_8237 = temp_r29_8224 + 0x28;
+                if (temp_r3_8237 != NULL) {
+                    this->vtable2E0 = &__vt;
+                    temp_r3_8237->MKWidget::~MKWidget(0);
+                }
+                temp_r29_8224->MKWidget::~MKWidget(0);
+            }
+            temp_r29_8249 = &this->unk230;
+            if (temp_r29_8249 != NULL) {
+                temp_r3_8252 = temp_r29_8249 + 0x54;
+                this->unk230.__vptr = &__vt;
+                if (temp_r3_8252 != NULL) {
+                    this->vtable284 = &__vt;
+                    temp_r3_8252->MKWidget::~MKWidget(0);
+                }
+                temp_r3_8262 = temp_r29_8249 + 0x28;
+                if (temp_r3_8262 != NULL) {
+                    this->vtable258 = &__vt;
+                    temp_r3_8262->MKWidget::~MKWidget(0);
+                }
+                temp_r29_8249->MKWidget::~MKWidget(0);
+            }
+        }
+        if (&this->unk70 != NULL) {
+            temp_r3_8281 = &this->unk1A8;
+            this->unk70.__vptr = &__vt;
+            if (temp_r3_8281 != NULL) {
+                this->unk1A8.__vptr = &__vt;
+                temp_r3_8281->MKWidget::~MKWidget(0);
+            }
+            temp_r29_8291 = &this->unk120;
+            if (temp_r29_8291 != NULL) {
+                temp_r3_8294 = temp_r29_8291 + 0x54;
+                this->unk120.__vptr = &__vt;
+                if (temp_r3_8294 != NULL) {
+                    this->vtable174 = &__vt;
+                    temp_r3_8294->MKWidget::~MKWidget(0);
+                }
+                temp_r3_8304 = temp_r29_8291 + 0x28;
+                if (temp_r3_8304 != NULL) {
+                    this->vtable148 = &__vt;
+                    temp_r3_8304->MKWidget::~MKWidget(0);
+                }
+                temp_r29_8291->MKWidget::~MKWidget(0);
+            }
+            temp_r29_8316 = &this->unk98;
+            if (temp_r29_8316 != NULL) {
+                temp_r3_8319 = temp_r29_8316 + 0x54;
+                this->unk98.__vptr = &__vt;
+                if (temp_r3_8319 != NULL) {
+                    this->vtableEC = &__vt;
+                    temp_r3_8319->MKWidget::~MKWidget(0);
+                }
+                temp_r3_8329 = temp_r29_8316 + 0x28;
+                if (temp_r3_8329 != NULL) {
+                    this->vtableC0 = &__vt;
+                    temp_r3_8329->MKWidget::~MKWidget(0);
+                }
+                temp_r29_8316->MKWidget::~MKWidget(0);
+            }
+        }
+        temp_cr0_eq_8345 = this == NULL;
+        if (temp_cr0_eq_8345 == 0) {
+            if (temp_cr0_eq_8345 == 0) {
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetScrollableFrame::MKWidgetScrollableFrame_FactoryFunc() {
+    MKWidgetScrollableFrame *var_r0_19635;
+
+    operator new(0x3A0U, NULL, 0);
+    var_r0_19635 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19635 != NULL) {
+        var_r0_19635 = ((MKWidgetScrollableFrame *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetScrollableFrame((MKWidgetDescriptor *) &sMKWidgetScrollableFrameDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19635;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline MKWidgetSlider::~MKWidgetSlider() {
+    MKWidget *temp_r3_17834;
+    MKWidget *temp_r3_17844;
+    MKWidget *temp_r3_17859;
+    MKWidget *temp_r3_17869;
+    s32 temp_cr0_eq_17812;
+
+    temp_cr0_eq_17812 = this == NULL;
+    if (temp_cr0_eq_17812 == 0) {
+        if (temp_cr0_eq_17812 == 0) {
+            if (&this->unk138 != NULL) {
+                this->unk138.__vptr = &__vt;
+            }
+            if (&this->unkB0 != NULL) {
+                temp_r3_17834 = &this->unk104;
+                this->unkB0.__vptr = &__vt;
+                if (temp_r3_17834 != NULL) {
+                    this->unk104.__vptr = &__vt;
+                    temp_r3_17834->MKWidget::~MKWidget(0);
+                }
+                temp_r3_17844 = &this->unkD8;
+                if (temp_r3_17844 != NULL) {
+                    this->unkD8.__vptr = &__vt;
+                    temp_r3_17844->MKWidget::~MKWidget(0);
+                }
+            }
+            if (&this->unk28 != NULL) {
+                temp_r3_17859 = &this->unk7C;
+                this->unk28.__vptr = &__vt;
+                if (temp_r3_17859 != NULL) {
+                    this->unk7C.__vptr = &__vt;
+                    temp_r3_17859->MKWidget::~MKWidget(0);
+                }
+                temp_r3_17869 = &this->unk50;
+                if (temp_r3_17869 != NULL) {
+                    this->unk50.__vptr = &__vt;
+                    temp_r3_17869->MKWidget::~MKWidget(0);
+                }
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetSlider::MKWidgetSlider_FactoryFunc() {
+    MKWidgetSlider *var_r0_19275;
+
+    operator new(0x198U, NULL, 0);
+    var_r0_19275 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19275 != NULL) {
+        var_r0_19275 = ((MKWidgetSlider *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetSlider((MKWidgetDescriptor *) &sMKWidgetSliderDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19275;
+}
+#endif
+
+inline MKWidgetString::~MKWidgetString() {
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetString::MKWidgetString_FactoryFunc() {
+    MKWidgetString *var_r0_19515;
+
+    operator new(0x2CU, NULL, 0);
+    var_r0_19515 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19515 != NULL) {
+        var_r0_19515 = ((MKWidgetString *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetString((MKWidgetDescriptor *) &sMKWidgetStringDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19515;
+}
+#endif
+
+inline MKWidgetSystem::~MKWidgetSystem() {
+    s32 temp_cr0_eq_18367;
+
+    temp_cr0_eq_18367 = this == NULL;
+    if (temp_cr0_eq_18367 == 0) {
+        if (temp_cr0_eq_18367 == 0) {
+        }
+    }
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetSystem::MKWidgetSystem_FactoryFunc() {
+    MKWidgetSystem *var_r0_19683;
+
+    operator new(0x80U, NULL, 0);
+    var_r0_19683 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19683 != NULL) {
+        var_r0_19683 = ((MKWidgetSystem *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetSystem((MKWidgetDescriptor *) &sMKWidgetSystemDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19683;
+}
+#endif
+
+inline MKWidgetTabStrip::~MKWidgetTabStrip() {
+    s32 temp_cr0_eq_18144;
+
+    temp_cr0_eq_18144 = this == NULL;
+    if (temp_cr0_eq_18144 == 0) {
+        if (temp_cr0_eq_18144 == 0) {
+        }
+    }
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetTabStrip::MKWidgetTabStrip_FactoryFunc() {
+    MKWidgetTabStrip *var_r0_19563;
+
+    operator new(0x48U, NULL, 0);
+    var_r0_19563 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19563 != NULL) {
+        var_r0_19563 = ((MKWidgetTabStrip *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetTabStrip((MKWidgetDescriptor *) &sMKWidgetTabStripDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19563;
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetTextBox::MKWidgetTextBox_FactoryFunc() {
+    MKWidgetTextBox *var_r0_19371;
+
+    operator new(0x50U, NULL, 0);
+    var_r0_19371 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19371 != NULL) {
+        var_r0_19371 = ((MKWidgetTextBox *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetTextBox((MKWidgetDescriptor *) &sMKWidgetTextBoxDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19371;
+}
+#endif
+
+inline MKWidgetThumb::~MKWidgetThumb() {
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetThumb::MKWidgetThumb_FactoryFunc() {
+    MKWidgetThumb *var_r0_19203;
+
+    operator new(0x60U, NULL, 0);
+    var_r0_19203 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19203 != NULL) {
+        var_r0_19203 = ((MKWidgetThumb *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetThumb((MKWidgetDescriptor *) &sMKWidgetThumbDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19203;
+}
+#endif
+
+inline MKWidgetVector::~MKWidgetVector() {
+}
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetVector::MKWidgetVector_FactoryFunc() {
+    MKWidgetVector *var_r0_19347;
+
+    operator new(0x16CU, NULL, 0);
+    var_r0_19347 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19347 != NULL) {
+        var_r0_19347 = ((MKWidgetVector *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetVector((MKWidgetDescriptor *) &sMKWidgetVectorDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19347;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline MKWidgetWindow::~MKWidgetWindow() {
+    MKWidget *temp_r28_18300;
+    MKWidget *temp_r3_18304;
+    MKWidget *temp_r3_18312;
+    MKWidget *temp_r3_18323;
+    s32 temp_cr0_eq_18334;
+
+    if (this != NULL) {
+        if (&this->unk40 != NULL) {
+            temp_r28_18300 = &this->unkA4;
+            this->unk40.__vptr = &gMKWidgetMetrics + 0xEA0;
+            if (temp_r28_18300 != NULL) {
+                temp_r3_18304 = temp_r28_18300 + 0x54;
+                this->unkA4.__vptr = &gMKWidgetMetrics + 0xE28;
+                if (temp_r3_18304 != NULL) {
+                    this->unkF8 = &gMKWidgetMetrics + 0xBC8;
+                    temp_r3_18304->MKWidget::~MKWidget(0);
+                }
+                temp_r3_18312 = temp_r28_18300 + 0x28;
+                if (temp_r3_18312 != NULL) {
+                    this->unkCC = &gMKWidgetMetrics + 0xE64;
+                    temp_r3_18312->MKWidget::~MKWidget(0);
+                }
+                temp_r28_18300->MKWidget::~MKWidget(0);
+            }
+            temp_r3_18323 = &this->unk78;
+            if (temp_r3_18323 != NULL) {
+                this->unk78.__vptr = &gMKWidgetMetrics + 0xE64;
+                temp_r3_18323->MKWidget::~MKWidget(0);
+            }
+        }
+        temp_cr0_eq_18334 = this == NULL;
+        if (temp_cr0_eq_18334 == 0) {
+            if (temp_cr0_eq_18334 == 0) {
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetWindow::MKWidgetWindow_FactoryFunc() {
+    MKWidgetWindow *var_r0_19587;
+
+    operator new(0x160U, NULL, 0);
+    var_r0_19587 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19587 != NULL) {
+        var_r0_19587 = ((MKWidgetWindow *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetWindow((MKWidgetDescriptor *) &sMKWidgetWindowDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19587;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline MKWidgetWindowTitleBar::~MKWidgetWindowTitleBar() {
+    MKWidget *temp_r3_14195;
+    MKWidget *temp_r3_14205;
+
+    if (this != NULL) {
+        if (&this->unk64 != NULL) {
+            temp_r3_14195 = &this->unkB8;
+            this->unk64.__vptr = &__vt;
+            if (temp_r3_14195 != NULL) {
+                this->unkB8.__vptr = &__vt;
+                temp_r3_14195->MKWidget::~MKWidget(0);
+            }
+            temp_r3_14205 = &this->unk8C;
+            if (temp_r3_14205 != NULL) {
+                this->unk8C.__vptr = &__vt;
+                temp_r3_14205->MKWidget::~MKWidget(0);
+            }
+        }
+        if (&this->unk38 != NULL) {
+            this->unk38.__vptr = &__vt;
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
+inline MKWidgetEditable *MKWidgetWindowTitleBar::MKWidgetWindowTitleBar_FactoryFunc() {
+    MKWidgetWindowTitleBar *var_r0_19179;
+
+    operator new(0xF0U, NULL, 0);
+    var_r0_19179 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (var_r0_19179 != NULL) {
+        var_r0_19179 = ((MKWidgetWindowTitleBar *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKWidgetWindowTitleBar((MKWidgetDescriptor *) &sMKWidgetWindowTitleBarDescriptor);
+    }
+    return (MKWidgetEditable *) var_r0_19179;
+}
+#endif
+
 #endif  // COMMON_SOURCE_MKWIDGETSINTERNAL_H

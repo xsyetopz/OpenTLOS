@@ -14,4 +14,19 @@ public:
     PooledShatterProp(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline PooledShatterProp::PooledShatterProp() {
+    this->unkC8 = &__vt + 0x48;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline PooledShatterProp::~PooledShatterProp() {
+    this->unkC8 = &__vt + 0x48;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_POOLEDSHATTERPROP_H

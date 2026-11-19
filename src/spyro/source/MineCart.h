@@ -55,4 +55,29 @@ public:
     /* 0x0ec */ f32 unkEC;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MineCart::MineCart() {
+    M2C_FIELD(this, s32 *, 0x17C) = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline MineCart::~MineCart() {
+    if (((this + 0x17C) != NULL) && ((this + 0x17C) != NULL)) {
+        KDSound_Stop(this + 0x17C);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline MineCartDescriptor::MineCartDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_MINECART_H

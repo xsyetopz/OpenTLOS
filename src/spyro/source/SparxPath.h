@@ -30,4 +30,23 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk74'
+inline SparxPath::~SparxPath() {
+    s32 temp_cr0_eq_26;
+
+    if (this != NULL) {
+        if (&this->unk50.unk74 != NULL) {
+            this->unk50.unk74.Deinit();
+        }
+        temp_cr0_eq_26 = this == NULL;
+        if (temp_cr0_eq_26 == 0) {
+            if (temp_cr0_eq_26 == 0) {
+            }
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SPARXPATH_H

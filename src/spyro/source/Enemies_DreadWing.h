@@ -42,4 +42,37 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'vtable5A8'
+inline DreadWing::DreadWing() {
+    this->unk110.vtable5A8 = &__vt + 0x84;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unk5A8'
+inline DreadWing::~DreadWing() {
+    this->unk110.unk5A8 = &__vt.unk84;
+}
+#endif
+
+inline s32 DreadWing::CanPickUp() {
+    return 1;
+}
+
+inline s32 DreadWing::CanDrop() {
+    return 1;
+}
+
+inline s32 DreadWing::CanPanic() {
+    return 0;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline DreadWingDescriptor::DreadWingDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ENEMIES_DREADWING_H

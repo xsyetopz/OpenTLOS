@@ -180,4 +180,54 @@ public:
     /* 0x010 */ SMTree unk10;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline void *MKDistanceLevelChunk::ChunkCreator(const char *arg0) {
+    void *temp_r31_1737;
+
+    operator new(0x2D70U, NULL, 0);
+    temp_r31_1737 = M2C_ERROR(/* Read from unset register $r3 */);
+    if (temp_r31_1737 != NULL) {
+        M2C_FIELD(temp_r31_1737, M2C_UNK **, 8) = &__vt;
+        M2C_FIELD(temp_r31_1737, M2C_UNK **, 8) = &__vt;
+        __construct_array(temp_r31_1737 + 0x16C, &MKProp::MKProp, &MKProp::~MKProp, 0x4C, 2);
+        M2C_FIELD(temp_r31_1737, M2C_UNK **, 0x2A24) = &__vt;
+        M2C_FIELD(temp_r31_1737, M2C_UNK **, 0x2A70) = &__vt;
+        M2C_FIELD(temp_r31_1737, M2C_UNK **, 0x2ABC) = &__vt;
+    }
+    return temp_r31_1737;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline MKDistanceLevelChunk::~MKDistanceLevelChunk() {
+    this->unk8 = &__vt;
+    if (&this->unk2A2C.__vptr != NULL) {
+        this->unk2A78.unk3C = &__vt;
+    }
+    if (&this->unk29E0.__vptr != NULL) {
+        this->unk2A2C.unk3C = &__vt;
+    }
+    if (&this->unk29E0 != NULL) {
+        this->unk29E0.unk3C = &__vt;
+    }
+    __destroy_arr(this + 0x16C, &MKProp::~MKProp, 0x4C, 2);
+    if (this != NULL) {
+        this->unk8 = &__vt;
+    }
+}
+#endif
+
+inline MKPropDescriptor *MKDistanceLevelChunk::GetDescriptorList() const {
+    return (MKPropDescriptor *) this->unk148;
+}
+
+inline void MKDistanceLevelChunk::SetActivePoint(const MKVector3 &arg0) {
+    this->unk158 = M2C_FIELD(&arg0, f64 *, 0);
+    this->unk158 = M2C_FIELD(&arg0, f64 *, 8);
+}
+
 #endif  // COMMON_SOURCE_MKDISTANCELEVELCHUNK_H

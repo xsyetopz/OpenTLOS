@@ -56,4 +56,56 @@ public:
     TrapDescriptor(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 Trap::IsAttacking() {
+    return 0;
+}
+
+inline f32 Trap::GetTimeLastHit() {
+    return 0.0f;
+}
+
+inline s32 Trap::GetCollisionInfo() {
+    return 0;
+}
+
+inline s32 Trap::IsDead() {
+    return 0;
+}
+
+inline s32 Trap::IsShatterable() {
+    return 0;
+}
+
+inline s32 Trap::GetEnemy() {
+    return 0;
+}
+
+#if 0 // DRAFT: undefined identifier 'vtableC8'
+inline Trap::~Trap() {
+    this->vtableC8 = &__vt + 0x48;
+    if (&this->unkD9 != NULL) {
+        this->unkD9.Deinit();
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtableC8'
+inline Trap::Trap() {
+    this->vtableC8 = &__vt;
+    this->unkCC = -1;
+    this->vtableC8 = &__vt + 0x48;
+    this->unkD9 = 0;
+    this->unkD9.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline TrapDescriptor::TrapDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_TRAP_H

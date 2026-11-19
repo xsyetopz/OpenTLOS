@@ -31,4 +31,18 @@ public:
     /* 0x018 */ MKIniLine* unk18;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline s32 ControllerRumbleProperty::GetInstanceDataSize() const {
+    return 0x14;
+}
+
+inline s32 ControllerRumbleProperty::Query(int arg0) {
+    return arg0 == 1;
+}
+
+inline void *ControllerRumbleProperty::GetClassInfo() const {
+    return &classInfo;
+}
+
 #endif  // SPYRO_SOURCE_CONTROLLERRUMBLEPROPERTY_H

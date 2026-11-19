@@ -164,4 +164,150 @@ public:
 };
 
 extern DataMap ShatterableHitFXDataMap;
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'vtableC8'
+inline Shatterable::~Shatterable() {
+    M2C_UNK *temp_r0_18991;
+    M2C_UNK *temp_r4_18994;
+    f64 *temp_r0_19007;
+    f64 *temp_r4_19010;
+
+    if (this != NULL) {
+        this->vtableC8 = &__vt + 0x48;
+        if (&this->unk154 != NULL) {
+            this->unk154.Deinit();
+        }
+        if (&this->unk160 != NULL) {
+            this->unk160.Deinit();
+        }
+        if (&this->unk15C != NULL) {
+            this->unk15C.Deinit();
+        }
+        if (&this->unk150 != NULL) {
+            temp_r0_18991 = this->unk154;
+            if (temp_r0_18991 != NULL) {
+                temp_r4_18994 = &this->unk150;
+                if (temp_r0_18991 != temp_r4_18994) {
+                    M2C_FIELD(this->unk158, M2C_UNK **, 4) = temp_r0_18991;
+                    M2C_FIELD(this->unk154, M2C_UNK **, 8) = (M2C_UNK *) this->unk158;
+                    this->unk158 = temp_r4_18994;
+                    this->unk154 = temp_r4_18994;
+                }
+            }
+        }
+        if (&this->unk130 != NULL) {
+            temp_r0_19007 = M2C_FIELD(this, f64 **, 0x148);
+            if (temp_r0_19007 != NULL) {
+                temp_r4_19010 = &this->unk130;
+                if (temp_r0_19007 != temp_r4_19010) {
+                    M2C_FIELD(M2C_FIELD(this, f64 **, 0x14C), f64 **, 8) = temp_r0_19007;
+                    M2C_FIELD(M2C_FIELD(this, f64 **, 0x148), f64 **, 0xC) = (f64 *) M2C_FIELD(this, f64 **, 0x14C);
+                    M2C_FIELD(this, f64 **, 0x14C) = temp_r4_19010;
+                    M2C_FIELD(this, f64 **, 0x148) = temp_r4_19010;
+                }
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'vtableC8'
+inline Shatterable::Shatterable() {
+    M2C_UNK *temp_r0_19056;
+    f64 *temp_r4_19055;
+
+    this->vtableC8 = &__vt;
+    this->unkCC = -1;
+    temp_r4_19055 = &this->unk130;
+    temp_r0_19056 = &this->unk150;
+    this->vtableC8 = &__vt + 0x48;
+    M2C_FIELD(this, s32 *, 0x140) = 0;
+    M2C_FIELD(this, s32 *, 0x144) = 0;
+    M2C_FIELD(this, f64 **, 0x148) = temp_r4_19055;
+    M2C_FIELD(this, f64 **, 0x14C) = temp_r4_19055;
+    M2C_FIELD(this, s32 *, 0x150) = 0;
+    this->unk154 = temp_r0_19056;
+    this->unk158 = temp_r0_19056;
+    this->unk15C.unk0 = 0;
+    this->unk15C.Init();
+    this->unk160.unk0 = 0;
+    this->unk160.Init();
+    this->unk154 = NULL;
+    this->unk154.Init();
+    return this;
+}
+#endif
+
+inline s32 Shatterable::IsAttacking() {
+    return 0;
+}
+
+inline f32 Shatterable::GetTimeLastHit() {
+    return 0.0f;
+}
+
+inline f32 Shatterable::GetCollisionHeight() {
+    return 200.0f;
+}
+
+inline f32 Shatterable::GetCollisionRadius() {
+    return 100.0f;
+}
+
+inline void Shatterable::GetCollisionInfo() {
+
+}
+
+#if 0 // DRAFT: undefined identifier 'zero'
+inline void Shatterable::GetVel() {
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(&zero, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+}
+#endif
+
+inline s32 Shatterable::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    return 0;
+}
+
+inline s32 Shatterable::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    return 0;
+}
+
+inline s32 Shatterable::IsDead() {
+    return this->unk16C == 3;
+}
+
+inline s32 Shatterable::IsShatterable() {
+    return 1;
+}
+
+inline s32 Shatterable::IsEnemy() {
+    return 0;
+}
+
+inline s32 Shatterable::IsFriend() {
+    return 0;
+}
+
+inline s32 Shatterable::IsHero() {
+    return 0;
+}
+
+inline s32 Shatterable::GetEnemy() {
+    return 0;
+}
+
+inline void Shatterable::GetProp() {
+
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ShatterableDescriptor::ShatterableDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SHATTERABLE_H

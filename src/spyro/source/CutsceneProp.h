@@ -30,4 +30,11 @@ public:
     /* 0x0be */ u8 unkBE;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline CutsceneProp::~CutsceneProp() {
+    if (this != NULL) {
+    }
+}
+
 #endif  // SPYRO_SOURCE_CUTSCENEPROP_H

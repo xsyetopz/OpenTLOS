@@ -118,4 +118,33 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkB8'
+inline ZapBreathFX::ZapBreathFX() {
+    this->unkB4 = 0;
+    this->unkB8 = 0;
+    this->unkBC = 0.0f;
+    this->unkC0 = 0;
+    this->unk108.unk4 = 0;
+    this->unk160.unk0 = 0;
+    __construct_array(&this->unk1C0, (MKAnimScript *(*)(MKAnimScript *)) &ElectricBeam::ElectricBeam, NULL, 0x200, 4);
+    return this;
+}
+#endif
+
+inline ZapBreathFX::~ZapBreathFX() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_ZAPBREATHFX_H

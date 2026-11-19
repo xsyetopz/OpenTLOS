@@ -40,4 +40,35 @@ public:
     /* 0x0f0 */ s32 unkF0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline Button::~Button() {
+    this->unkC8 = &__vt.unk48;
+    if (&this->unkE4 != NULL) {
+        this->unkE4.Deinit();
+    }
+    if (&this->unkE0 != NULL) {
+        this->unkE0.Deinit();
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline Button::Button() {
+    this->unkC8 = &__vt + 0x48;
+    this->unkE0 = 0;
+    this->unkE0.Init();
+    this->unkE4.unk0 = 0;
+    this->unkE4.Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline ButtonDescriptor::ButtonDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_BUTTON_H

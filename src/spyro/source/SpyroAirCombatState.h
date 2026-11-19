@@ -92,4 +92,12 @@ public:
 extern u8 bAirCombatSlowMo[0x1];
 extern u8 HornDiveZSpeed[0x4];
 extern u8 HornDiveYSpeed[0x4];
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk14'
+inline void SpyroAirCombatState::GetStateInfo() {
+    this->unk14.GetStateName(-1);
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SPYROAIRCOMBATSTATE_H

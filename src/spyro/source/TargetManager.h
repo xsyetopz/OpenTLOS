@@ -93,4 +93,12 @@ public:
     /* 0xa7c */ f32 unkA7C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline void Targetable::GetAttackerManager() {
+    return 0;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_TARGETMANAGER_H

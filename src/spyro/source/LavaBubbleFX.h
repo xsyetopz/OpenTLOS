@@ -28,4 +28,15 @@ public:
     /* 0x0d0 */ MKMaterial* unkD0;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline LavaBubbleFX::LavaBubbleFX() {
+    return this;
+}
+#endif
+
+inline LavaBubbleFX::~LavaBubbleFX() {
+}
+
 #endif  // SPYRO_SOURCE_LAVABUBBLEFX_H

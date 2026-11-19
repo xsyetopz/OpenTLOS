@@ -350,4 +350,172 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline SpeedWaySpyro::SpeedWaySpyro() {
+    this->unk90 = &__vt.unk0;
+    this->unk94 = -1;
+    this->unk90 = &__vt + 0x3C;
+    this->unk180 = -1;
+    this->unk184 = -1;
+    this->unk188 = 0;
+    this->unk18C = 0;
+    this->unk398 = &__vt;
+    this->unk818 = 0;
+    this->unk840 = 0;
+    this->unk888 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline SpeedWaySpyro::~SpeedWaySpyro() {
+    s32 temp_cr0_eq_33;
+
+    if (this != NULL) {
+        this->unk90 = &__vt.unk3C;
+        if ((&this->unk888 != NULL) && (&this->unk888 != NULL)) {
+            KDSound_Stop(&this->unk888);
+        }
+        temp_cr0_eq_33 = this == NULL;
+        if (temp_cr0_eq_33 == 0) {
+            if (temp_cr0_eq_33 == 0) {
+            }
+        }
+    }
+}
+#endif
+
+inline AttackerManager *SpeedWaySpyro::GetAttackerManager() {
+    return &this->unk17C;
+}
+
+inline u8 SpeedWaySpyro::IsAttacking() {
+    return this->unk300;
+}
+
+inline f32 SpeedWaySpyro::GetTimeLastHit() {
+    return this->unk2EC;
+}
+
+inline f32 SpeedWaySpyro::GetCollisionHeight() {
+    return 200.0f;
+}
+
+inline f32 SpeedWaySpyro::GetCollisionRadius() {
+    return 100.0f;
+}
+
+inline void SpeedWaySpyro::GetCollisionInfo() {
+
+}
+
+inline void SpeedWaySpyro::GetVel() {
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x2C8);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x2D0);
+}
+
+#if 0 // DRAFT: undefined identifier 'MKVector'
+inline s32 SpeedWaySpyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    f64 sp40;
+    f64 sp38;
+    M2C_UNK sp28;
+    M2C_UNK sp18;
+    f32 sp10;
+
+    MKVector(0.0f, 160.0f, 0.0f);
+    sp28.GetPos();
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    M2C_FIELD(arg1, f64 *, 0) = sp8;
+    sp10 = sp30 + sp20;
+    sp38 = sp8;
+    sp40 = (f64) sp10;
+    M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
+    return 1;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'MKVector'
+inline s32 SpeedWaySpyro::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    f64 sp40;
+    f64 sp38;
+    M2C_UNK sp28;
+    M2C_UNK sp18;
+    f32 sp10;
+
+    MKVector(0.0f, 160.0f, 0.0f);
+    sp28.GetPos();
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    M2C_FIELD(arg1, f64 *, 0) = sp8;
+    sp10 = sp30 + sp20;
+    sp38 = sp8;
+    sp40 = (f64) sp10;
+    M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
+    return 1;
+}
+#endif
+
+inline s32 SpeedWaySpyro::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    f64 sp10;
+    f64 sp8;
+    f64 temp_f0_195;
+    f64 temp_f1_194;
+    void *temp_r4_192;
+
+    temp_r4_192 = this->unk8;
+    temp_f1_194 = M2C_FIELD(temp_r4_192, f64 *, 0x30);
+    temp_f0_195 = M2C_FIELD(temp_r4_192, f64 *, 0x38);
+    sp8 = temp_f1_194;
+    M2C_FIELD(arg1, f64 *, 0) = temp_f1_194;
+    sp10 = temp_f0_195;
+    M2C_FIELD(arg1, f64 *, 8) = temp_f0_195;
+    return 1;
+}
+
+inline s32 SpeedWaySpyro::IsShatterable() {
+    return 0;
+}
+
+inline s32 SpeedWaySpyro::IsEnemy() {
+    return 0;
+}
+
+inline s32 SpeedWaySpyro::IsFriend() {
+    return 0;
+}
+
+inline s32 SpeedWaySpyro::IsHero() {
+    return 1;
+}
+
+inline s32 SpeedWaySpyro::GetEnemy() {
+    return 0;
+}
+
+inline void SpeedWaySpyro::GetProp() {
+
+}
+
+#if 0 // DRAFT: ')' expected
+inline f32 SpeedWaySpyro::GetCurrXYDriftFactor() const {
+    s32 var_r31_1737;
+
+    if ((s32) M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x15C) > 0) {
+        var_r31_1737 = M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x15C);
+    } else {
+        var_r31_1737 = this->unk2F4;
+    }
+    return M2C_FIELD((checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r31_1737 * 0x38)), f32 *, 0x84);
+}
+#endif
+
+inline f32 SpeedWaySpyro::GetCurrCameraZ() const {
+    return this->unk14C;
+}
+
 #endif  // SPYRO_SOURCE_SPEEDWAYSPYRO_H

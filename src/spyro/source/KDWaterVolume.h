@@ -39,4 +39,16 @@ public:
     /* 0x068 */ KDWaterVolumeDescriptor* unk68;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline KDWaterVolume::~KDWaterVolume() {
+    s32 temp_cr0_eq_12554;
+
+    temp_cr0_eq_12554 = this == NULL;
+    if (temp_cr0_eq_12554 == 0) {
+        if (temp_cr0_eq_12554 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_KDWATERVOLUME_H

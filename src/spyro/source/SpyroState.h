@@ -57,4 +57,30 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline void SpyroState::Init(Spyro *arg0) {
+    M2C_FIELD(this, Spyro **, 0x10) = arg0;
+}
+
+inline void SpyroState::Deinit() {
+
+}
+
+inline void SpyroState::ProcessAnimEvent(unsigned int arg0) {
+
+}
+
+inline void SpyroState::Message(MKMessage *arg0) {
+
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline void SpyroState::GetStateInfo() {
+    return "";
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SPYROSTATE_H

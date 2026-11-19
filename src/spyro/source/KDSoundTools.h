@@ -120,4 +120,35 @@ public:
     /* 0x06c */ u8 unk6C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline KDSoundFlangedFader::~KDSoundFlangedFader() {
+    s32 temp_cr0_eq_5031;
+
+    if (this != NULL) {
+        if ((&this->unk28 != NULL) && (&this->unk28 != NULL)) {
+            KDSound_Stop(&this->unk28);
+        }
+        temp_cr0_eq_5031 = this == NULL;
+        if ((temp_cr0_eq_5031 == 0) && (temp_cr0_eq_5031 == 0)) {
+            KDSound_Stop(&this->unk0);
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline KDSound_SoundWall::~KDSound_SoundWall() {
+    s32 temp_cr0_eq_11235;
+
+    temp_cr0_eq_11235 = this == NULL;
+    if (temp_cr0_eq_11235 == 0) {
+        if ((temp_cr0_eq_11235 == 0) && (temp_cr0_eq_11235 == 0)) {
+            KDSound_Stop(&this->unk0);
+        }
+    }
+}
+#endif
+
 #endif  // SPYRO_SOURCE_KDSOUNDTOOLS_H

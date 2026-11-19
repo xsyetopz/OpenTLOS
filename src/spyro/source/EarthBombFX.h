@@ -62,4 +62,28 @@ public:
     /* 0x0ec */ MKMaterial* unkEC;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline EarthBombFX::EarthBombFX() {
+    this->unk128.unk4 = 0;
+    this->unk180 = 0;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
+inline EarthBombFX::~EarthBombFX() {
+    if ((&this->unk180 != NULL) && (&this->unk180 != NULL)) {
+        KDSound_Stop(&this->unk180);
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline EarthBombFXDescriptor::EarthBombFXDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_EARTHBOMBFX_H

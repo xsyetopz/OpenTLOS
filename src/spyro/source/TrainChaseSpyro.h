@@ -196,4 +196,163 @@ public:
 };
 
 extern u8 moveAnimTable[0x20];
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'vtableC8'
+inline TrainChaseSpyro::TrainChaseSpyro() {
+    this->vtableC8 = &__vt;
+    this->unkCC = -1;
+    this->vtableC8 = &__vt + 0x48;
+    this->unkE8 = 0;
+    this->unk110 = 0;
+    this->unk138 = 0;
+    this->unk260 = -1;
+    this->unk264 = -1;
+    this->unk260 = 0;
+    this->unk26C = 0;
+    __construct_array(&this->unk2A8, (MKAnimScript *(*)(MKAnimScript *)) &SpyroSoundPlayer::SpyroLoopSounds::SpyroLoopSounds, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD, (void *)-1);
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier '__vt'
+inline TrainChaseSpyro::~TrainChaseSpyro() {
+    M2C_FIELD(this, s32 **, 0xC8) = &__vt.unk48;
+    if (&this->unk2A8 != NULL) {
+        __destroy_arr(&this->unk2A8, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD);
+    }
+    if ((&this->unk138 != NULL) && (&this->unk138 != NULL)) {
+        KDSound_Stop(&this->unk138);
+    }
+    if ((&this->unk110 != NULL) && (&this->unk110 != NULL)) {
+        KDSound_Stop(&this->unk110);
+    }
+    if ((&this->unkE8 != NULL) && (&this->unkE8 != NULL)) {
+        KDSound_Stop(&this->unkE8);
+    }
+}
+#endif
+
+inline AttackerManager *TrainChaseSpyro::GetAttackerManager() {
+    return (AttackerManager *) &this->unk72C;
+}
+
+inline u8 TrainChaseSpyro::IsAttacking() {
+    return M2C_FIELD(this, u8 *, 0x2A0);
+}
+
+inline f32 TrainChaseSpyro::GetTimeLastHit() {
+    return M2C_BITWISE(f32, this->unk728);
+}
+
+inline f32 TrainChaseSpyro::GetCollisionHeight() {
+    return 200.0f;
+}
+
+inline f32 TrainChaseSpyro::GetCollisionRadius() {
+    return 100.0f;
+}
+
+inline void TrainChaseSpyro::GetCollisionInfo() {
+
+}
+
+#if 0 // DRAFT: undefined identifier 'sp8'
+inline void TrainChaseSpyro::GetVel() {
+    f32 sp10;
+
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r5, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: psq_lx $f0, $r4, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
+    M2C_FIELD(this, f64 *, 0) = sp8;
+    sp10 = M2C_FIELD((M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 8) + 0x30), f32 *, 8) - M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f32 *, 0x1F0);
+    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'MKVector'
+inline s32 TrainChaseSpyro::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    f64 sp40;
+    f64 sp38;
+    M2C_UNK sp28;
+    M2C_UNK sp18;
+    f32 sp10;
+
+    MKVector(0.0f, 160.0f, 0.0f);
+    sp28.GetPos();
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    M2C_FIELD(arg1, f64 *, 0) = sp8;
+    sp10 = sp30 + sp20;
+    sp38 = sp8;
+    sp40 = (f64) sp10;
+    M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
+    return 1;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'MKVector'
+inline s32 TrainChaseSpyro::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    f64 sp40;
+    f64 sp38;
+    M2C_UNK sp28;
+    M2C_UNK sp18;
+    f32 sp10;
+
+    MKVector(0.0f, 160.0f, 0.0f);
+    sp28.GetPos();
+    M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
+    M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
+    M2C_FIELD(arg1, f64 *, 0) = sp8;
+    sp10 = sp30 + sp20;
+    sp38 = sp8;
+    sp40 = (f64) sp10;
+    M2C_FIELD(arg1, f64 *, 8) = (f64) sp10;
+    return 1;
+}
+#endif
+
+inline s32 TrainChaseSpyro::GetMoveToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
+    f64 sp10;
+    f64 sp8;
+    f64 temp_f0_6156;
+    f64 temp_f1_6155;
+    void *temp_r4_6153;
+
+    temp_r4_6153 = this->unk8;
+    temp_f1_6155 = M2C_FIELD(temp_r4_6153, f64 *, 0x30);
+    temp_f0_6156 = M2C_FIELD(temp_r4_6153, f64 *, 0x38);
+    sp8 = temp_f1_6155;
+    M2C_FIELD(arg1, f64 *, 0) = temp_f1_6155;
+    sp10 = temp_f0_6156;
+    M2C_FIELD(arg1, f64 *, 8) = temp_f0_6156;
+    return 1;
+}
+
+inline s32 TrainChaseSpyro::IsShatterable() {
+    return 0;
+}
+
+inline s32 TrainChaseSpyro::IsEnemy() {
+    return 0;
+}
+
+inline s32 TrainChaseSpyro::IsFriend() {
+    return 0;
+}
+
+inline s32 TrainChaseSpyro::IsHero() {
+    return 1;
+}
+
+inline s32 TrainChaseSpyro::GetEnemy() {
+    return 0;
+}
+
+inline void TrainChaseSpyro::GetProp() {
+
+}
+
 #endif  // SPYRO_SOURCE_TRAINCHASESPYRO_H

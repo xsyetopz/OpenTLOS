@@ -249,4 +249,191 @@ public:
 };
 
 extern u8 cameraCollPushOut[0x4];
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+inline KDCamera::~KDCamera() {
+    s32 temp_cr0_eq_5151;
+
+    temp_cr0_eq_5151 = this == NULL;
+    if (temp_cr0_eq_5151 == 0) {
+        if (temp_cr0_eq_5151 == 0) {
+        }
+    }
+}
+
+inline void KDCamera::GetDir(bool arg0) {
+    void *temp_r4_1263;
+
+    temp_r4_1263 = M2C_FIELD(arg0, void **, 8);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_1263, f64 *, 0x20);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_1263, f64 *, 0x28);
+}
+
+#if 0 // DRAFT: undefined identifier '__vptr'
+inline f32 KDCamera::GetIdealFieldOfView() {
+    M2C_FIELD(this->__vptr, M2C_UNK (**)(KDCamera *), 0x50)(this);
+}
+#endif
+
+inline void KDCamera::PostStateEnter() {
+
+}
+
+inline void KDCamera::PreStateExit() {
+
+}
+
+inline void KDCamera::PostStateExit() {
+    this->unk158 = 0;
+}
+
+inline void KDCamera::PreStateUpdate() {
+
+}
+
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKCollisionResult'
+inline s32 KDCamera::IgnoreCollision(MKCollisionResult &arg0) {
+    return (arg0.unk44 & M2C_FIELD(M2C_FIELD(this->unk0, void **, 0xA4), s32 *, 0x18)) != 0;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkspC'
+inline void KDCamera::GetYaw() {
+    f64 sp10;
+    f64 sp8;
+    void *temp_r3_2251;
+
+    temp_r3_2251 = this->unk8;
+    sp8 = M2C_FIELD(temp_r3_2251, f64 *, 0x20);
+    sp10 = M2C_FIELD(temp_r3_2251, f64 *, 0x28);
+    if ((((f32) sp10 * (f32) sp10) + (((f32) sp8 * (f32) sp8) + (unkspC * unkspC))) != 0.0f) {
+        NormaliseAngle(KDMath_GetYaw(*((MKVector3 *) &sp8)));
+    }
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unksp34'
+inline void KDCamera::GetXZDir() {
+    f64 sp48;
+    f64 sp40;
+    f64 sp38;
+    f64 sp30;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    f32 sp8;
+    f32 var_f4_2648;
+    f32 var_f5_2670;
+    f64 temp_f1_2675;
+    f64 temp_f1_2681;
+    f64 temp_f1_2685;
+    s32 temp_r4_2704;
+    s32 var_r0_2714;
+    void *temp_r4_2649;
+
+    var_f4_2648 = 0.0f;
+    temp_r4_2649 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 8);
+    sp14 = 0.0f;
+    sp40 = M2C_FIELD(temp_r4_2649, f64 *, 0x20);
+    sp48 = M2C_FIELD(temp_r4_2649, f64 *, 0x28);
+    sp10 = (f32) sp40;
+    sp18 = (f32) sp48;
+    sp30 = (f64) sp10;
+    sp38 = (f64) sp18;
+    var_f5_2670 = ((f32) sp38 * (f32) sp38) + (((f32) sp30 * (f32) sp30) + (unksp34 * unksp34));
+    if (var_f5_2670 > 1e-12f) {
+        if (var_f5_2670 > 0.0f) {
+            temp_f1_2675 = __frsqrte(var_f5_2670);
+            temp_f1_2681 = 0.5 * temp_f1_2675 * -(((f64) var_f5_2670 * (temp_f1_2675 * temp_f1_2675)) - 3.0);
+            temp_f1_2685 = 0.5 * temp_f1_2681 * -(((f64) var_f5_2670 * (temp_f1_2681 * temp_f1_2681)) - 3.0);
+            var_f5_2670 = (f32) ((f64) var_f5_2670 * (0.5 * temp_f1_2685 * -(((f64) var_f5_2670 * (temp_f1_2685 * temp_f1_2685)) - 3.0)));
+        } else if (var_f5_2670 < M2C_BITWISE(f32, 0.0)) {
+            var_f5_2670 = __float_nan;
+        } else {
+            sp8 = var_f5_2670;
+            temp_r4_2704 = M2C_BITWISE(s32, sp8) & 0x7F800000;
+            switch (temp_r4_2704) {                 /* irregular */
+            case 0x7F800000:
+                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                    var_r0_2714 = 1;
+                } else {
+                    var_r0_2714 = 2;
+                }
+                break;
+            case 0x0:
+                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+                    var_r0_2714 = 5;
+                } else {
+                    var_r0_2714 = 3;
+                }
+                break;
+            default:
+                var_r0_2714 = 4;
+                break;
+            }
+            if (var_r0_2714 == 1) {
+                var_f5_2670 = __float_nan;
+            }
+        }
+        var_f4_2648 = 1.0f / var_f5_2670;
+    }
+    sp24 = unksp34 * var_f4_2648;
+    sp20 = (f32) sp30 * var_f4_2648;
+    sp28 = (f32) sp38 * var_f4_2648;
+    M2C_FIELD(this, f64 *, 0) = (f64) sp20;
+    M2C_FIELD(this, f64 *, 8) = (f64) sp28;
+}
+#endif
+
+inline void KDCamera::GetTarget() {
+    void *temp_r4_2903;
+
+    temp_r4_2903 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 0xA4);
+    M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(temp_r4_2903, f64 *, 0);
+    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_2903, f64 *, 8);
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline void KDCamera::GetFieldOfView() {
+    return M2C_FIELD(this->unk0, f32 *, 0x70);
+}
+#endif
+
+inline f32 KDCamera::GetDefaultDeltaTime() {
+    return 0.2f;
+}
+
+inline void KDCamera::PostStateUpdate() {
+
+}
+
+inline void KDCamera::CollSlideUpdate(const MKVector3 &arg0) {
+
+}
+
+inline f32 *KDCamera::GetForceDirectionPtr() {
+    f32 temp_f1_2284;
+    f32 temp_f2_2283;
+    f32 temp_f3_2286;
+
+    temp_f2_2283 = this->unk128;
+    temp_f1_2284 = this->unk12C;
+    temp_f3_2286 = this->unk130;
+    if (((temp_f3_2286 * temp_f3_2286) + ((temp_f2_2283 * temp_f2_2283) + (temp_f1_2284 * temp_f1_2284))) != 0.0f) {
+        return &this->unk128;
+    }
+    return NULL;
+}
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline void KDCamera::IsUnderwater() {
+    return 0;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_KDCAMERA_H

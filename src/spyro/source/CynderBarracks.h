@@ -42,4 +42,69 @@ public:
     /* 0x16c */ EnemyGeneratorDescriptor unk16C;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier 'unk1B4'
+inline CynderBarracks::CynderBarracks() {
+    M2C_UNK *temp_r30_21742;
+
+    temp_r30_21742 = &this->unk1B4;
+    this->unkC8 = &__vt + 0x48;
+    M2C_FIELD(this, M2C_UNK **, 0x1B4) = &__vt;
+    this->unk1B4.unk2C = 0;
+    ((EventMessage *) (temp_r30_21742 + 0x3C))->Init();
+    this->unk1B4.unk30 = 0.0f;
+    ((EventMessage *) (temp_r30_21742 + 0x40))->Init();
+    M2C_FIELD(this, M2C_UNK **, 0x1B4) = &__vt;
+    this->unk1B4.unk58 = NULL;
+    ((EventMessage *) (temp_r30_21742 + 0x68))->Init();
+    this->unk1B4.unk5C = NULL;
+    ((EventMessage *) (temp_r30_21742 + 0x6C))->Init();
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline CynderBarracks::~CynderBarracks() {
+    f32 *temp_r3_39;
+    s32 *temp_r3_45;
+    void **temp_r3_26;
+    void **temp_r3_32;
+
+    if (this != NULL) {
+        this->unkC8 = &__vt.unk48;
+        if (&this->unk1B4 != NULL) {
+            temp_r3_26 = &this->unk1B4.unk5C;
+            M2C_FIELD(this, void **, 0x1B4) = &__vt;
+            if (temp_r3_26 != NULL) {
+                temp_r3_26->Deinit();
+            }
+            temp_r3_32 = &this->unk1B4.unk58;
+            if (temp_r3_32 != NULL) {
+                temp_r3_32->Deinit();
+            }
+            if (&this->unk1B4 != NULL) {
+                temp_r3_39 = &this->unk1B4.unk30;
+                M2C_FIELD(this, void **, 0x1B4) = &__vt;
+                if (temp_r3_39 != NULL) {
+                    temp_r3_39->Deinit();
+                }
+                temp_r3_45 = &this->unk1B4.unk2C;
+                if (temp_r3_45 != NULL) {
+                    temp_r3_45->Deinit();
+                }
+            }
+        }
+    }
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline CynderBarracksDescriptor::CynderBarracksDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_CYNDERBARRACKS_H

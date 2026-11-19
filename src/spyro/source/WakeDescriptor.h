@@ -12,4 +12,11 @@ public:
     virtual void Init(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void WakeDescriptor::Init() {
+    MKPropDescriptor::Init();
+    this->unk14 |= 0x20;
+}
+
 #endif  // SPYRO_SOURCE_WAKEDESCRIPTOR_H

@@ -58,4 +58,25 @@ public:
     /* 0x020 */ s32 unk20;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline IceBossStalactite::IceBossStalactite() {
+    this->unkC8 = &__vt + 0x48;
+    return this;
+}
+#endif
+
+#if 0 // DRAFT: undefined identifier 'unkC8'
+inline IceBossStalactite::~IceBossStalactite() {
+    this->unkC8 = &__vt.unk48;
+}
+#endif
+
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
+inline IceBossStalactiteDescriptor::IceBossStalactiteDescriptor() {
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_ICEBOSSSTALACTITE_H

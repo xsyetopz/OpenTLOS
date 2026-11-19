@@ -36,4 +36,16 @@ public:
     /* 0x060 */ s32 unk60;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline EarthBreathWhirlWinds::~EarthBreathWhirlWinds() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_EARTHBREATHWHIRLWINDS_H

@@ -56,4 +56,12 @@ public:
     /* 0x034 */ Goal<Enemy>* unk34;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline void EnemyTestGoal_MoveToTarget::Reset() {
+    this->unk8 = 1;
+    this->unk10 = NULL;
+    this->unk14 = 0.0f;
+}
+
 #endif  // SPYRO_SOURCE_ENEMYTESTGOALS_H

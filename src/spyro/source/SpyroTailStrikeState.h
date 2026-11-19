@@ -53,4 +53,12 @@ public:
     void __sinit(void);
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk14'
+inline void SpyroTailStrikeState::GetStateInfo() {
+    this->unk14.GetStateName(-1);
+}
+#endif
+
 #endif  // SPYRO_SOURCE_SPYROTAILSTRIKESTATE_H

@@ -62,4 +62,28 @@ public:
     /* 0x1a8 */ f32 unk1A8;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+#if 0 // DRAFT: undefined identifier 'unk4'
+inline IceBreathFX::IceBreathFX() {
+    this->unkB8.unk4 = 0;
+    this->unk110.unk0 = 0;
+    return this;
+}
+#endif
+
+inline IceBreathFX::~IceBreathFX() {
+    s32 temp_cr0_eq_15;
+
+    temp_cr0_eq_15 = this == NULL;
+    if (temp_cr0_eq_15 == 0) {
+        if (temp_cr0_eq_15 == 0) {
+            if (temp_cr0_eq_15 == 0) {
+                if (temp_cr0_eq_15 == 0) {
+                }
+            }
+        }
+    }
+}
+
 #endif  // SPYRO_SOURCE_ICEBREATHFX_H

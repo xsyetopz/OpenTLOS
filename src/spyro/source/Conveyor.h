@@ -26,4 +26,16 @@ public:
     /* 0x118 */ Matrix unk118;
 };
 
+// Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
+
+inline Conveyor::~Conveyor() {
+}
+
+#if 0 // DRAFT: '(' expected
+inline Conveyor::Conveyor() {
+    __construct_array((f64 *) &this->unk118, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 2);
+    return this;
+}
+#endif
+
 #endif  // SPYRO_SOURCE_CONVEYOR_H
