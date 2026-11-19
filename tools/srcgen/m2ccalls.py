@@ -14,7 +14,7 @@ from __future__ import annotations
 import re
 
 from classes import qualified
-from cxxtypes import K, parse
+from cxxtypes import K, parse, render
 from hrender import member_name
 
 TOKEN = re.compile(r"(?<![\w@])[A-Za-z_][\w<>,]*\w(?=\s*\(|\b)")
@@ -74,6 +74,7 @@ class Symbol:
         fn = terms[-1] if self.is_func else None
         params = [p for p in (fn.function_params or [])] if fn else []
         self.refs = [bool(p.terms) and p.terms[0].kind == K.REFERENCE for p in params]
+        self.nparams = len([p for p in params if render(p) != "void"])
         if self.raw in OPERATORS:
             self.name = OPERATORS[self.raw]
         elif self.cls:
@@ -151,26 +152,47 @@ VFIELD = re.compile(r"M2C_FIELD\((?P<obj>[^()]*?)(?P<acc>->|\.)__vptr, (?P<ret>[
 
 
 THIS_VFIELD = re.compile(r"M2C_FIELD\(this->__vptr, (?P<ret>[^()]*?) ?\(\*\*\)\((?P<params>[^()]*)\), "
-                         r"(?P<off>0x[0-9A-Fa-f]+|\d+)\)\((?P<arg>this\b|\))")
+                         r"(?P<off>0x[0-9A-Fa-f]+|\d+)\)\(")
 
 
-def type_this_vcalls(body: str, cls: str) -> str:
+def type_this_vcalls(body: str, cls: str, slot_fn=None) -> str:
     """Retype `this`'s vtable calls in a method of `cls` to take `cls *`.
 
     m2c types the receiver from register use, often as M2C_UNK or a wrong
     pointer, but a call on `this` with `this` as first argument dispatches
-    through the enclosing method's class. A call m2c printed with no
-    arguments at all (`(**)()`, `()`) left r3 untouched, so it holds `this`.
+    through the enclosing method's class. m2c also drops r3 when it still
+    holds `this` from entry (`li r4, 0x2a; lwz r12, 0(r3); ...; bctrl`
+    prints as `(0x2A)`). When the slot's function takes as many explicit
+    parameters as m2c printed arguments, `this` is the missing first one.
     """
-    def fix(m: re.Match) -> str:
-        if m.group("arg") == ")":
-            if m.group("params").strip():
-                return m.group(0)
-            return f"M2C_FIELD(this->__vptr, {m.group('ret')} (**)({cls} *), {m.group('off')})(this)"
-        rest = split_args(m.group("params"))[1:]
-        params = ", ".join([f"{cls} *", *rest])
-        return f"M2C_FIELD(this->__vptr, {m.group('ret')} (**)({params}), {m.group('off')})(this"
-    return THIS_VFIELD.sub(fix, body)
+    out, pos = [], 0
+    for m in THIS_VFIELD.finditer(body):
+        if m.start() < pos:
+            continue
+        end = close_paren(body, m.end() - 1)
+        if end < 0:
+            continue
+        inner = body[m.end():end]
+        args = split_args(inner) if inner.strip() else []
+        params = split_args(m.group("params")) if m.group("params").strip() else []
+        if args and args[0] == "this":
+            params = params[1:]
+        else:
+            i = (int(m.group("off"), 0) - 8) // 4
+            fn = slot_fn(cls, i) if slot_fn and i >= 0 else None
+            try:
+                want = Symbol(fn).nparams if fn else None
+            except Exception:  # noqa: BLE001 - slot holds a non-method
+                want = None
+            if want is None and (args or params):
+                continue  # unknown slot: only the bare `()` call is certain
+            if want is not None and len(args) != want:
+                continue  # r3 holds another object
+            args, params = ["this", *args], params[:len(args)]
+        sig = ", ".join([f"{cls} *", *params])
+        out += [body[pos:m.start()], f"M2C_FIELD(this->__vptr, {m.group('ret')} (**)({sig}), {m.group('off')})({', '.join(args)})"]
+        pos = end + 1
+    return "".join(out) + body[pos:]
 
 
 def devirtualize(body: str, slot_fn) -> str:

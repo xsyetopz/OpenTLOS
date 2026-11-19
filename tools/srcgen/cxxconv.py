@@ -269,7 +269,7 @@ class Converter:
                 j += 1
             body = "{\n" + "\n".join(lines[i + 1:j]) + "\n}"
             if m.group("name") in self.method_cls:
-                body = type_this_vcalls(body, self.method_cls[m.group("name")])
+                body = type_this_vcalls(body, self.method_cls[m.group("name")], self.model.slot_fn)
             fn, names = self.function(m.group("ret"), m.group("name"), m.group("params"), body)
             if out and out[-1].startswith("/* ") and out[-1].endswith(" */"):
                 out.pop()  # m2c's demangled-name comment repeats the signature
