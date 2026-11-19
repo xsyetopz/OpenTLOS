@@ -23,25 +23,21 @@
 #include "spyro/source/TargetManager.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal operand
 void GameCameraEmuStateMachine::SetDisabledStates() {
-    s32 var_r30_17;
     s32 var_r31_15;
+    s32 var_r30_17;
 
     var_r31_15 = 0;
     var_r30_17 = 0;
     this->unk4 = 0;
-loop_4:
-    if (var_r30_17 < (s32) this->unkC) {
-        if (IsStateActive(this->unk8 + var_r31_15, 0U) != 0) {
-            this->unk4 |= *(this->unk8 + (var_r31_15 + 0x34));
+    while (var_r30_17 < (s32) this->unkC) {
+        if (IsStateActive((GameCameraEmuStateDescriptor *) ((s8 *) this->unk8 + var_r31_15), 0U) != 0) {
+            this->unk4 |= *(s32 *) ((s8 *) this->unk8 + (var_r31_15 + 0x34));
         }
         var_r30_17 += 1;
         var_r31_15 += 0x38;
-        goto loop_4;
     }
 }
-#endif
 
 u8 GameCameraEmuStateMachine::IsStateActive(GameCameraEmuStateDescriptor *arg0, bool arg1) {
     s32 temp_r7_51;
@@ -192,7 +188,6 @@ loop_4:
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'GameCameraEmuStateDescriptor' to 'unsigned long'
 void GameCameraEmuStateMachine::Init(GameCamera2 *arg0, GameCameraEmuStateDescriptor *arg1) {
     s32 temp_r5_324;
 
@@ -200,12 +195,11 @@ void GameCameraEmuStateMachine::Init(GameCamera2 *arg0, GameCameraEmuStateDescri
     this->unkC = 0;
     do {
         temp_r5_324 = this->unkC;
-        if ((u32) *(this->unk8 + (temp_r5_324 * 0x38)) != 0U) {
+        if (M2C_FIELD((s8 *) this->unk8, u32 *, temp_r5_324 * 0x38) != 0U) {
             this->unkC = temp_r5_324 + 1;
         }
-    } while ((u32) *(this->unk8 + (this->unkC * 0x38)) != 0U);
+    } while (M2C_FIELD((s8 *) this->unk8, u32 *, this->unkC * 0x38) != 0U);
     this->unk0 = 0;
     this->unk4 = 0;
     ClearData(arg0);
 }
-#endif
