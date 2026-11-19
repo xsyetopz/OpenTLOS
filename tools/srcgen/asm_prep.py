@@ -75,11 +75,65 @@ def aligned_frames(lines: list) -> list:
     return out
 
 
+_PS = {
+    "ps_add": "fadd", "ps_sub": "fsub", "ps_mul": "fmul", "ps_div": "fdiv",
+    "ps_muls0": "fmul", "ps_muls1": "fmul", "ps_madd": "fmadd", "ps_madds0": "fmadd",
+    "ps_madds1": "fmadd", "ps_msub": "fmsub", "ps_nmadd": "fnmadd", "ps_nmsub": "fnmsub",
+    "ps_mr": "fmr", "ps_neg": "fneg", "ps_abs": "fabs", "ps_nabs": "fnabs",
+}
+_CR = {"lt": "0", "gt": "1", "eq": "2"}
+_SAVE = re.compile(r"(f(?:1[4-9]|2\d|3[01])),\s*(0x[0-9a-fA-F]+)\(r1\)")
+
+
+def _callee_save(lines: list, i: int, op: str, args: str) -> bool:
+    """Whether `psq_l`/`psq_st` at `i` is half of MWCC's paired save of a callee-saved FPR."""
+    m = _SAVE.match(args)
+    if not m:
+        return False
+    twin = "stfd" if op == "psq_st" else "lfd"
+    near = [_ins(lines[k]) for k in (i - 1, i + 1) if 0 <= k < len(lines)]
+    return any(o == twin and a.startswith(m.group(1) + ",") for _, o, a in near)
+
+
+def paired_singles(lines: list) -> list:
+    """`lines` with Gekko paired-single code lowered to scalar ops m2c decodes.
+
+    m2c has no paired-single model: `psq_l` becomes an error expression, `psq_st`
+    is dropped and every `ps_*` op is unknown, so the inlined MKVector3 arithmetic
+    loses its stores and later reads name undeclared `spN` locals. Lowering keeps
+    only lane ps0 (pairs read as f64), which makes the draft compile; the vector
+    source still has to be restored by hand. `cror eq, lt|gt, eq` is spelled in
+    the numeric form m2c's fcmpo/cror pattern matches. Callee-saved FPR pair
+    saves (`stfd fN` next to `psq_st fN`) become `nop` because the `stfd` already
+    carries the save.
+    """
+    out = list(lines)
+    for i, line in enumerate(out):
+        pre, op, args = _ins(line)
+        if not op:
+            continue
+        a = [x.strip() for x in args.split(",")]
+        if op in ("psq_l", "psq_st") and len(a) == 4:
+            out[i] = pre + ("nop" if _callee_save(out, i, op, args)
+                            else f"{'lfd' if op == 'psq_l' else 'stfd'} {a[0]}, {a[1]}")
+        elif op in ("psq_lx", "psq_stx") and len(a) == 5:
+            out[i] = f"{pre}{'lfdx' if op == 'psq_lx' else 'stfdx'} {', '.join(a[:3])}"
+        elif op in _PS:
+            out[i] = f"{pre}{_PS[op]} {args}"
+        elif op in ("ps_merge00", "ps_merge01", "ps_merge10", "ps_merge11") and len(a) == 3:
+            out[i] = f"{pre}fmr {a[0]}, {a[1]}"
+        elif op in ("ps_sum0", "ps_sum1") and len(a) == 4:
+            out[i] = f"{pre}fadd {a[0]}, {a[1]}, {a[3]}"
+        elif op == "cror" and len(a) == 3 and all(x in _CR for x in a):
+            out[i] = f"{pre}cror {', '.join(_CR[x] for x in a)}"
+    return out
+
+
 def prepare(text: str) -> str:
-    """Returns `text` with jump-table symbols renamed and aligned frames made plain for m2c."""
+    """Returns `text` with jump-table symbols renamed and aligned frames and paired-single code made plain for m2c."""
     lines = text.splitlines()
     tables = jump_tables(lines)
-    text = "\n".join(aligned_frames(lines)) + ("\n" if text.endswith("\n") else "")
+    text = "\n".join(paired_singles(aligned_frames(lines))) + ("\n" if text.endswith("\n") else "")
     if not tables:
         return text
     pat = re.compile("|".join(re.escape(t) for t in tables))

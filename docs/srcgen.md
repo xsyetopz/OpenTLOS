@@ -19,6 +19,7 @@ tools/srcgen/install.sh $TMPDIR/run                # copies into src/, rebuilds,
 | Field votes from m2c's per-TU inferences | `fields.py` | `build/srcgen/fields.json` |
 | C context of all classes for m2c | `cctx.py` | `ctx.c`, `cnames.json` |
 | m2c with context | `run_m2c.py` | `m2c/` |
+| m2c input fixes: jump-table names, realigned frames, paired-single code lowered to lane ps0 (vector source restored by hand) | `asm_prep.py` | used by `run_m2c.py` |
 | C to C++ | `cxxconv.py` | `stage/`, header inlines |
 | Headers | `headers.py` | `hdr/` |
 | By-value enums (no forward declaration in C++03; real header unknown) | `henums.py` | `hdr/unplaced_enums.h` |
