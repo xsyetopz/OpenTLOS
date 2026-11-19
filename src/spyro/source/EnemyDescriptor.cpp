@@ -456,40 +456,35 @@ block_24:
     return NULL;
 }
 
-#if 0 // DRAFT: type mismatch 'void ***' and 'long *'
 void EnemyDescriptor::Deinit_Attacks() {
     void ****temp_r31_603;
     void ****temp_r31_630;
     void ****temp_r3_586;
-    void ***temp_r30_611;
-    void ***temp_r3_606;
-    void ***var_r30_589;
-    void **temp_r3_599;
+    u8 *temp_r30_611;
+    u8 *temp_r3_606;
+    u8 *var_r30_589;
+    void *temp_r3_599;
 
     temp_r3_586 = this->unk228;
     if (temp_r3_586 != NULL) {
-        var_r30_589 = *temp_r3_586;
-loop_3:
-        if (var_r30_589 != NULL) {
-            temp_r3_599 = *var_r30_589;
-            if (temp_r3_599 != NULL) {
-                ((EnemyAttack *) temp_r3_599)->Deinit();
-                operator delete(*var_r30_589);
-                var_r30_589 += 4;
-                goto loop_3;
-            }
+        var_r30_589 = (u8 *) *temp_r3_586;
+        while ((var_r30_589 != NULL) && (*(void **) var_r30_589 != NULL)) {
+            temp_r3_599 = *(void **) var_r30_589;
+            ((EnemyAttack *) temp_r3_599)->Deinit();
+            operator delete(*(void **) var_r30_589);
+            var_r30_589 += 4;
         }
         temp_r31_603 = this->unk228;
         do {
-            temp_r3_606 = *temp_r31_603 - 4;
-            *temp_r31_603 = temp_r3_606;
-        } while ((void **) *temp_r3_606 != NULL);
-        temp_r30_611 = *temp_r31_603;
-        if (temp_r30_611 != &gEmptyPtrList) {
+            temp_r3_606 = (u8 *) *temp_r31_603 - 4;
+            *temp_r31_603 = (void ***) temp_r3_606;
+        } while (*(void **) temp_r3_606 != NULL);
+        temp_r30_611 = (u8 *) *temp_r31_603;
+        if ((void *) temp_r30_611 != (void *) &gEmptyPtrList) {
             if (MKHeap::Current() != NULL) {
                 ((MKHeap *) (MKHeap::Current()))->Free(temp_r30_611, NULL, 0);
             } else {
-                free(temp_r30_611);
+                free((void ***) temp_r30_611);
             }
         }
         *temp_r31_603 = NULL;
@@ -502,65 +497,57 @@ loop_3:
         this->unk228 = NULL;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void EnemyDescriptor::Deinit_Animation() {
     s32 var_r26_662;
     s32 var_r27_667;
     s32 var_r30_666;
     s32 var_r31_663;
-    void ***temp_r28_672;
+    void *temp_r28_672;
     void ***temp_r28_701;
-    void *temp_r0_691;
+    u8 *temp_r0_691;
 
     var_r26_662 = 0;
     var_r31_663 = 0;
-loop_8:
-    if (var_r26_662 < (s32) this->unk200) {
+    while (var_r26_662 < this->unk200) {
         var_r30_666 = 0;
         var_r27_667 = 0;
         do {
-            temp_r28_672 = (void ***) (*(var_r31_663 + (this->unk1FC + var_r30_666)));
+            temp_r28_672 = *(void **) ((u8 *) this->unk1FC + var_r30_666 + var_r31_663);
             if (temp_r28_672 != NULL) {
                 if (MKHeap::Current() != NULL) {
                     ((MKHeap *) (MKHeap::Current()))->Free(temp_r28_672, NULL, 0);
                 } else {
-                    free(temp_r28_672);
+                    free((void ***) temp_r28_672);
                 }
             }
             var_r27_667 += 1;
-            temp_r0_691 = this->unk1FC + var_r30_666;
+            temp_r0_691 = (u8 *) this->unk1FC + var_r30_666;
             var_r30_666 += 8;
-            *(var_r31_663 + temp_r0_691) = 0;
+            *(s32 *) (temp_r0_691 + var_r31_663) = 0;
         } while (var_r27_667 < 0x13);
         var_r26_662 += 1;
         var_r31_663 += 0x98;
-        goto loop_8;
     }
     temp_r28_701 = this->unk1FC;
     if (temp_r28_701 != NULL) {
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(temp_r28_701, NULL, 0);
-            return;
+        } else {
+            free(temp_r28_701);
         }
-        free(temp_r28_701);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 s32 EnemyDescriptor::LoadLine_DamageMultipliers(MKIniLine *arg0) {
     MKHeap *var_r3_747;
     MKIniLine *var_r26_789;
     MKIniLine *var_r30_780;
     s32 temp_r0_736;
-    s32 temp_r0_763;
     s32 temp_r27_739;
-    s32 temp_r3_762;
-    s32 var_r28_777;
     s32 var_r4_753;
     s32 var_r8_758;
+    s32 var_r28_777;
 
     this->unk2B0 = arg0->GetNmbrOfSubLines();
     temp_r0_736 = this->unk2B0;
@@ -571,44 +558,35 @@ s32 EnemyDescriptor::LoadLine_DamageMultipliers(MKIniLine *arg0) {
         } else {
             var_r3_747 = (MKHeap *) (malloc(temp_r27_739));
         }
-        var_r4_753 = 0;
         this->unk2AC = var_r3_747;
+        var_r4_753 = 0;
         var_r8_758 = 0;
-loop_6:
-        if (var_r8_758 < (s32) this->unk2B0) {
-            temp_r3_762 = var_r4_753 + 4;
-            temp_r0_763 = var_r4_753 + 8;
+        while (var_r8_758 < this->unk2B0) {
             var_r8_758 += 1;
-            *(this->unk2AC + var_r4_753) = 0;
+            *(s32 *) ((u8 *) this->unk2AC + var_r4_753) = 0;
+            *(s32 *) ((u8 *) this->unk2AC + var_r4_753 + 4) = 0;
+            *(f32 *) ((u8 *) this->unk2AC + var_r4_753 + 8) = 1.0f;
             var_r4_753 += 0xC;
-            *(this->unk2AC + temp_r3_762) = 0;
-            *(this->unk2AC + temp_r0_763) = 1.0f;
-            goto loop_6;
         }
         var_r28_777 = 0;
         var_r30_780 = arg0->unkC->GetSubLine(arg0);
-loop_15:
-        if (var_r30_780 != NULL) {
+        while (var_r30_780 != NULL) {
             var_r26_789 = var_r30_780->unkC->GetSubLine(var_r30_780);
-            *(this->unk2AC + var_r28_777) = DataMap_GetValue(&enemyDamageTypesDataMap, var_r30_780->GetFieldName());
-            if ((u32) *(this->unk2AC + var_r28_777) != 0U) {
-loop_13:
-                if (var_r26_789 != NULL) {
-                    if (var_r26_789->LoadInt("iAttackLevel", this->unk2AC + (var_r28_777 + 4), 0) == 0) {
-                        var_r26_789->LoadFloat("value", this->unk2AC + (var_r28_777 + 8), 0);
+            *(s32 *) ((u8 *) this->unk2AC + var_r28_777) = DataMap_GetValue(&enemyDamageTypesDataMap, (const char *) var_r30_780->GetFieldName());
+            if (*(u32 *) ((u8 *) this->unk2AC + var_r28_777) != 0U) {
+                while (var_r26_789 != NULL) {
+                    if (var_r26_789->LoadInt("iAttackLevel", (int *) ((u8 *) this->unk2AC + (var_r28_777 + 4)), 0) == 0) {
+                        var_r26_789->LoadFloat("value", (float *) ((u8 *) this->unk2AC + (var_r28_777 + 8)), 0);
                     }
                     var_r26_789 = var_r26_789->unkC->GetNextLine(var_r26_789);
-                    goto loop_13;
                 }
             }
             var_r30_780 = var_r30_780->unkC->GetNextLine(var_r30_780);
             var_r28_777 += 0xC;
-            goto loop_15;
         }
     }
     return 1;
 }
-#endif
 
 s32 EnemyDescriptor::LoadLine_Attacks(MKIniLine *arg0) {
     MKIniLine *var_r28_921;
@@ -703,47 +681,39 @@ loop_27:
     return 1;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void EnemyDescriptor::LoadLine_AnimSequence(MKIniLine *arg0, AnimSequence *arg1) {
     MKIniLine *var_r29_1030;
-    s8 *temp_r26_1097;
-    s8 *temp_r26_1124;
-    s8 *temp_r27_1070;
-    s8 *temp_r3_1069;
-    s8 *temp_r3_1096;
-    s8 *temp_r3_1123;
+    const char *temp_r3_1069;
+    const char *temp_r3_1096;
+    const char *temp_r3_1123;
     void *var_r3_1079;
     void *var_r3_1106;
     void *var_r3_1133;
 
     var_r29_1030 = arg0;
     arg1->unk68 = 0;
-loop_20:
-    if (var_r29_1030 != NULL) {
+    while (var_r29_1030 != NULL) {
         if ((var_r29_1030->LoadInt("iVariation", (int *) &arg1->unk68, 0) == 0) && (var_r29_1030->LoadFloat("fWeighting", &arg1->unk60, 0) == 0) && (var_r29_1030->LoadFloat("fAnimSpeed", &arg1->unk64, 0) == 0)) {
             if (var_r29_1030->IsField("pEnter") != 0) {
-                temp_r3_1069 = (signed char *) (var_r29_1030->GetString(0));
-                temp_r27_1070 = this->unk34;
-                if (((MKAnimScript *) temp_r27_1070)->Exists(temp_r3_1069) != 0) {
-                    var_r3_1079 = ((MKAnimScript *) temp_r27_1070)->GetAnim(temp_r3_1069);
+                temp_r3_1069 = (const char *) (var_r29_1030->GetString(0));
+                if (((MKAnimScript *) this->unk34)->Exists(temp_r3_1069) != 0) {
+                    var_r3_1079 = ((MKAnimScript *) this->unk34)->GetAnim(temp_r3_1069);
                 } else {
                     var_r3_1079 = NULL;
                 }
                 arg1->unk0 = (u32) var_r3_1079;
             } else if (var_r29_1030->IsField("pLoop") != 0) {
-                temp_r3_1096 = (signed char *) (var_r29_1030->GetString(0));
-                temp_r26_1097 = this->unk34;
-                if (((MKAnimScript *) temp_r26_1097)->Exists(temp_r3_1096) != 0) {
-                    var_r3_1106 = ((MKAnimScript *) temp_r26_1097)->GetAnim(temp_r3_1096);
+                temp_r3_1096 = (const char *) (var_r29_1030->GetString(0));
+                if (((MKAnimScript *) this->unk34)->Exists(temp_r3_1096) != 0) {
+                    var_r3_1106 = ((MKAnimScript *) this->unk34)->GetAnim(temp_r3_1096);
                 } else {
                     var_r3_1106 = NULL;
                 }
                 arg1->unk20 = (u32) var_r3_1106;
             } else if (var_r29_1030->IsField("pExit") != 0) {
-                temp_r3_1123 = (signed char *) (var_r29_1030->GetString(0));
-                temp_r26_1124 = this->unk34;
-                if (((MKAnimScript *) temp_r26_1124)->Exists(temp_r3_1123) != 0) {
-                    var_r3_1133 = ((MKAnimScript *) temp_r26_1124)->GetAnim(temp_r3_1123);
+                temp_r3_1123 = (const char *) (var_r29_1030->GetString(0));
+                if (((MKAnimScript *) this->unk34)->Exists(temp_r3_1123) != 0) {
+                    var_r3_1133 = ((MKAnimScript *) this->unk34)->GetAnim(temp_r3_1123);
                 } else {
                     var_r3_1133 = NULL;
                 }
@@ -751,12 +721,9 @@ loop_20:
             }
         }
         var_r29_1030 = var_r29_1030->unkC->GetNextLine(var_r29_1030);
-        goto loop_20;
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap, signed char *)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 s32 EnemyDescriptor::LoadLine_Animation(MKIniLine *arg0, int arg1) {
     MKIniLine *var_r27_1209;
     s32 temp_r29_1185;
@@ -767,9 +734,9 @@ s32 EnemyDescriptor::LoadLine_Animation(MKIniLine *arg0, int arg1) {
     void *var_r3_1193;
 
     if (arg0->GetFieldName() != NULL) {
-        temp_r3_1173 = DataMap_GetValue(dataMapAnimSequence, arg0->GetFieldName());
+        temp_r3_1173 = DataMap_GetValue(&dataMapAnimSequence, (const char *) arg0->GetFieldName());
         if (temp_r3_1173 != 0) {
-            temp_r28_1181 = this->unk1FC + ((arg1 * 0x98) + (temp_r3_1173 * 8));
+            temp_r28_1181 = (u8 *) this->unk1FC + ((arg1 * 0x98) + (temp_r3_1173 * 8));
             M2C_FIELD(temp_r28_1181, s32 *, 4) = arg0->GetNmbrOfSubLines();
             temp_r29_1185 = M2C_FIELD(temp_r28_1181, s32 *, 4) * 0x70;
             if (MKHeap::Current() != NULL) {
@@ -782,23 +749,20 @@ s32 EnemyDescriptor::LoadLine_Animation(MKIniLine *arg0, int arg1) {
             var_r26_1207 = 0;
             var_r29_1208 = 0;
             var_r27_1209 = arg0->unkC->GetSubLine(arg0);
-loop_7:
-            if ((var_r27_1209 != NULL) && (var_r26_1207 < (s32) M2C_FIELD(temp_r28_1181, s32 *, 4))) {
-                ((AnimSequence *) (M2C_FIELD(temp_r28_1181, void **, 0) + var_r29_1208))->Init(temp_r3_1173);
-                LoadLine_AnimSequence(var_r27_1209->unkC->GetSubLine(var_r27_1209), M2C_FIELD(temp_r28_1181, void **, 0) + var_r29_1208);
+            while ((var_r27_1209 != NULL) && (var_r26_1207 < (s32) M2C_FIELD(temp_r28_1181, s32 *, 4))) {
+                ((AnimSequence *) ((u8 *) M2C_FIELD(temp_r28_1181, void **, 0) + var_r29_1208))->Init(temp_r3_1173);
+                LoadLine_AnimSequence(var_r27_1209->unkC->GetSubLine(var_r27_1209), (AnimSequence *) ((u8 *) M2C_FIELD(temp_r28_1181, void **, 0) + var_r29_1208));
                 var_r26_1207 += 1;
                 var_r29_1208 += 0x70;
                 var_r27_1209 = var_r27_1209->unkC->GetNextLine(var_r27_1209);
-                goto loop_7;
             }
             return 1;
         }
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
+extern DataMap dataMapRaces;
 s32 EnemyDescriptor::LoadLine_General(MKIniLine *arg0) {
     u8 sp8;
     MKHeap *var_r3_1295;
@@ -809,7 +773,7 @@ s32 EnemyDescriptor::LoadLine_General(MKIniLine *arg0) {
     u16 temp_r0_1320;
 
     sp8 = 0;
-    if ((arg0->LoadBool("bFriend", &sp8, 0) != 0) && (sp8 != 0)) {
+    if ((arg0->LoadBool("bFriend", (bool *) &sp8, 0) != 0) && (sp8 != 0)) {
         this->unkC &= 0xFFFFFFF7;
         this->unkC |= 4;
     }
@@ -823,23 +787,20 @@ s32 EnemyDescriptor::LoadLine_General(MKIniLine *arg0) {
         this->unk27C = var_r3_1295;
         var_r27_1307 = 0;
         var_r31_1308 = 0;
-        M2C_FIELD((this->unk27C + (temp_r28_1287 * 4)), s32 *, -4) = 0xFFFF;
-loop_9:
-        if (var_r27_1307 < (s32) (temp_r28_1287 - 1)) {
-            temp_r0_1320 = Tools_GetMatchingNodeIndex(this->unk2C, arg0->GetString(var_r27_1307));
+        M2C_FIELD(((u8 *) this->unk27C + (temp_r28_1287 * 4)), s32 *, -4) = 0xFFFF;
+        while (var_r27_1307 < (s32) (temp_r28_1287 - 1)) {
+            temp_r0_1320 = Tools_GetMatchingNodeIndex(this->unk2C, (const char *) arg0->GetString(var_r27_1307));
             var_r27_1307 += 1;
-            *(this->unk27C + var_r31_1308) = (s32) temp_r0_1320;
+            *(s32 *) ((u8 *) this->unk27C + var_r31_1308) = (s32) temp_r0_1320;
             var_r31_1308 += 4;
-            goto loop_9;
         }
     }
     var_r31_1333 = 0;
-    if ((arg0->LoadFloat("iMaxHealth", &this->unkE8, 0) != 0) || (arg0->LoadFloat("iMaxShieldHealth", &this->unkEC, 0) != 0) || (arg0->LoadFloat("iMaxArmour", &this->unkF0, 0) != 0) || (arg0->LoadInt("uArmourType", (int *) &this->unk104, 0) != 0) || (arg0->LoadInt("iFuryDamage", (int *) &this->unkF8, 0) != 0) || (arg0->LoadBool("bCanSquish", &this->unkFC, 0) != 0) || (arg0->LoadInt("iBreathDamage", (int *) &this->unk100, 0) != 0) || (arg0->LoadInt("iGemsHealth", (int *) &this->unk108, 0) != 0) || (arg0->LoadInt("iGemsSpirit", (int *) &this->unk10C, 0) != 0) || (arg0->LoadInt("iGemsMagic", (int *) &this->unk110, 0) != 0) || (arg0->LoadInt("iGemsFury", (int *) &this->unk114, 0) != 0) || (arg0->LoadInt("iTier", (int *) &this->unk118, 0) != 0) || (arg0->LoadInt("iHealthBarStages", (int *) &this->unk11C, 0) != 0) || (DataMap_LoadLine(arg0, "race", dataMapRaces, (unsigned int *) &this->unk1CC) != 0) || (arg0->LoadBool("bImmortal", &this->unk120, 0) != 0) || (arg0->LoadBool("bDieInLava", &this->unk121, 0) != 0) || (arg0->LoadBool("bDieInWater", &this->unk122, 0) != 0) || (arg0->LoadFloat("fMaxFreezeCount", &this->unk124, 0) != 0) || (arg0->LoadFloat("fFreezeDuration", &this->unk128, 0) != 0) || (arg0->LoadFloat("fAlertRange", &this->unk12C, 0) != 0) || (arg0->LoadFloat("fCriticalAlertRange", &this->unk130, 0) != 0) || (arg0->LoadFloat("fRemainAlertRange", &this->unk134, 0) != 0) || (arg0->LoadFloat("fMeleeDistanceMode", &this->unk138, 0) != 0) || (arg0->LoadFloat("fRangedDistanceMode", &this->unk13C, 0) != 0) || (arg0->LoadFloat("fVisibleAngle", &this->unk14C, 0) != 0) || (arg0->LoadFloat("fFocalPointDistance", &this->unk148, 0) != 0) || (arg0->LoadFloat("fDodgeChance", &this->unk150, 0) != 0) || (arg0->LoadFloat("fEvadeDistance", &this->unk140, 0) != 0) || (arg0->LoadFloat("fEvadeRandomChance", &this->unk144, 0) != 0) || (arg0->LoadFloat("fFlySpeed", &this->unk164, 0) != 0) || (arg0->LoadFloat("fIdleRotSpeed", &this->unk154, 0) != 0) || (arg0->LoadFloat("fWalkRotSpeed", &this->unk158, 0) != 0) || (arg0->LoadFloat("fRunRotSpeed", &this->unk15C, 0) != 0) || (arg0->LoadFloat("fAlertRotSpeed", &this->unk160, 0) != 0) || (arg0->LoadFloat("fMass", &this->unk168, 0) != 0) || (arg0->LoadFloat("fDefensiveMax", &this->unk170, 0) != 0) || (arg0->LoadFloat("fDefensiveHitWeight", &this->unk174, 0) != 0) || (arg0->LoadFloat("fDefensivenessDecayRate", &this->unk178, 0) != 0) || (arg0->LoadBool("bRandomPursuit", &this->unk17C, 0) != 0) || (arg0->LoadBool("bSeekToAttackTarget", &this->unk17D, 0) != 0) || (arg0->LoadBool("bFinishMovementAnim", &this->unk17E, 0) != 0) || (arg0->LoadBool("bUseEnemySettings", &this->unk1D6, 0) != 0) || (arg0->LoadBool("bOldArmourSystem", &this->unk1D7, 0) != 0) || (KDSound_LoadLine(arg0, "soundLoop01", (int *) &this->unk1A4) != 0) || (KDSound_LoadLine(arg0, "soundLoop02", (int *) &this->unk1A8) != 0) || (KDSound_LoadLine(arg0, "soundLoop03", (int *) &this->unk1AC) != 0) || (KDSound_LoadLine(arg0, "sndAirFlinch", (int *) &this->unk1C0) != 0) || (KDSound_LoadLine(arg0, "sndAirSpin", (int *) &this->unk1C4) != 0) || (KDSound_LoadLine(arg0, "sndBurnFlee", (int *) &this->unk1C8) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathFire", (int *) &this->unk194) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathEarth", (int *) &this->unk198) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathIce", (int *) &this->unk19C) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathElectricity", (int *) &this->unk1A0) != 0) || (KDSound_LoadLine(arg0, "sndSpit", (int *) &this->unk1B8) != 0) || (KDSound_LoadLine(arg0, "sndSpitSplat", (int *) &this->unk1BC) != 0)) {
+    if ((arg0->LoadFloat("iMaxHealth", &this->unkE8, 0) != 0) || (arg0->LoadFloat("iMaxShieldHealth", &this->unkEC, 0) != 0) || (arg0->LoadFloat("iMaxArmour", &this->unkF0, 0) != 0) || (arg0->LoadInt("uArmourType", (int *) &this->unk104, 0) != 0) || (arg0->LoadInt("iFuryDamage", (int *) &this->unkF8, 0) != 0) || (arg0->LoadBool("bCanSquish", (bool *) &this->unkFC, 0) != 0) || (arg0->LoadInt("iBreathDamage", (int *) &this->unk100, 0) != 0) || (arg0->LoadInt("iGemsHealth", (int *) &this->unk108, 0) != 0) || (arg0->LoadInt("iGemsSpirit", (int *) &this->unk10C, 0) != 0) || (arg0->LoadInt("iGemsMagic", (int *) &this->unk110, 0) != 0) || (arg0->LoadInt("iGemsFury", (int *) &this->unk114, 0) != 0) || (arg0->LoadInt("iTier", (int *) &this->unk118, 0) != 0) || (arg0->LoadInt("iHealthBarStages", (int *) &this->unk11C, 0) != 0) || (DataMap_LoadLine(arg0, "race", &dataMapRaces, (unsigned int *) &this->unk1CC) != 0) || (arg0->LoadBool("bImmortal", (bool *) &this->unk120, 0) != 0) || (arg0->LoadBool("bDieInLava", (bool *) &this->unk121, 0) != 0) || (arg0->LoadBool("bDieInWater", (bool *) &this->unk122, 0) != 0) || (arg0->LoadFloat("fMaxFreezeCount", &this->unk124, 0) != 0) || (arg0->LoadFloat("fFreezeDuration", &this->unk128, 0) != 0) || (arg0->LoadFloat("fAlertRange", &this->unk12C, 0) != 0) || (arg0->LoadFloat("fCriticalAlertRange", &this->unk130, 0) != 0) || (arg0->LoadFloat("fRemainAlertRange", &this->unk134, 0) != 0) || (arg0->LoadFloat("fMeleeDistanceMode", &this->unk138, 0) != 0) || (arg0->LoadFloat("fRangedDistanceMode", &this->unk13C, 0) != 0) || (arg0->LoadFloat("fVisibleAngle", &this->unk14C, 0) != 0) || (arg0->LoadFloat("fFocalPointDistance", &this->unk148, 0) != 0) || (arg0->LoadFloat("fDodgeChance", &this->unk150, 0) != 0) || (arg0->LoadFloat("fEvadeDistance", &this->unk140, 0) != 0) || (arg0->LoadFloat("fEvadeRandomChance", &this->unk144, 0) != 0) || (arg0->LoadFloat("fFlySpeed", &this->unk164, 0) != 0) || (arg0->LoadFloat("fIdleRotSpeed", &this->unk154, 0) != 0) || (arg0->LoadFloat("fWalkRotSpeed", &this->unk158, 0) != 0) || (arg0->LoadFloat("fRunRotSpeed", &this->unk15C, 0) != 0) || (arg0->LoadFloat("fAlertRotSpeed", &this->unk160, 0) != 0) || (arg0->LoadFloat("fMass", &this->unk168, 0) != 0) || (arg0->LoadFloat("fDefensiveMax", &this->unk170, 0) != 0) || (arg0->LoadFloat("fDefensiveHitWeight", &this->unk174, 0) != 0) || (arg0->LoadFloat("fDefensivenessDecayRate", &this->unk178, 0) != 0) || (arg0->LoadBool("bRandomPursuit", (bool *) &this->unk17C, 0) != 0) || (arg0->LoadBool("bSeekToAttackTarget", (bool *) &this->unk17D, 0) != 0) || (arg0->LoadBool("bFinishMovementAnim", (bool *) &this->unk17E, 0) != 0) || (arg0->LoadBool("bUseEnemySettings", (bool *) &this->unk1D6, 0) != 0) || (arg0->LoadBool("bOldArmourSystem", (bool *) &this->unk1D7, 0) != 0) || (KDSound_LoadLine(arg0, "soundLoop01", (int *) &this->unk1A4) != 0) || (KDSound_LoadLine(arg0, "soundLoop02", (int *) &this->unk1A8) != 0) || (KDSound_LoadLine(arg0, "soundLoop03", (int *) &this->unk1AC) != 0) || (KDSound_LoadLine(arg0, "sndAirFlinch", (int *) &this->unk1C0) != 0) || (KDSound_LoadLine(arg0, "sndAirSpin", (int *) &this->unk1C4) != 0) || (KDSound_LoadLine(arg0, "sndBurnFlee", (int *) &this->unk1C8) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathFire", (int *) &this->unk194) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathEarth", (int *) &this->unk198) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathIce", (int *) &this->unk19C) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitBreathElectricity", (int *) &this->unk1A0) != 0) || (KDSound_LoadLine(arg0, "sndSpit", (int *) &this->unk1B8) != 0) || (KDSound_LoadLine(arg0, "sndSpitSplat", (int *) &this->unk1BC) != 0)) {
         var_r31_1333 = 1;
     }
     return var_r31_1333;
 }
-#endif
 
 #if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 void EnemyDescriptor::LoadDescriptorData() {
@@ -940,7 +901,6 @@ void EnemyDescriptor::Resolve() {
     this->unk254 = gMK->FindDescriptor("EnemyStonedShatter");
 }
 
-#if 0 // DRAFT: function call 'DataMap_GetValue(DataMap *, signed char *)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 void EnemyDescriptor::LoadDone() {
     MKVector3 sp10;
     f32 sp8;
@@ -968,12 +928,12 @@ void EnemyDescriptor::LoadDone() {
     void *temp_r3_2223;
 
     CharacterDescriptor::LoadDone();
-    this->unkF4 = DataMap_GetValue(&enemyTypeDataMap, this->unk0);
+    this->unkF4 = DataMap_GetValue(&enemyTypeDataMap, (const char *) this->unk0);
     this->unk7C.unk0 = this->unk60;
     this->unk7C.unk4 = this->unk7C.unk0;
     LoadDescriptorData();
     if ((u8) this->unk1D6 != 0) {
-        EnemySettings_RegisterSettings(this->unk278, &this->unk1D8);
+        EnemySettings_RegisterSettings((const char *) this->unk278, &this->unk1D8);
     }
     var_r29_2101 = 0;
     var_r23_2102 = 0;
@@ -985,7 +945,7 @@ loop_30:
             var_r27_2109 = 0;
             var_r21_2110 = 0;
 loop_27:
-            temp_r3_2223 = var_r23_2102 + var_r22_2106 + this->unk1FC;
+            temp_r3_2223 = (u8 *) this->unk1FC + var_r23_2102 + var_r22_2106;
             if (var_r27_2109 < (s32) M2C_FIELD(temp_r3_2223, s32 *, 4)) {
                 var_r25_2114 = 0;
                 var_r20_2115 = 0;
@@ -1069,10 +1029,10 @@ loop_27:
     this->unk290 = GetAnimSequence(4, 0x14, 0, NULL);
     this->unk294 = GetAnimSequence(4, 0x15, 0, NULL);
     InitArmour();
-    this->unk29C = MKMaterial_Create"FX_FireOverride";
-    this->unk2A0 = MKMaterial_Create"FX_ElectricityOverride";
-    this->unk2A4 = MKMaterial_Create"FX_IceOverride";
-    this->unk2A8 = MKMaterial_Create"FX_EarthOverride";
+    this->unk29C = (long) MKMaterial_Create("FX_FireOverride");
+    this->unk2A0 = (long) MKMaterial_Create("FX_ElectricityOverride");
+    this->unk2A4 = (long) MKMaterial_Create("FX_IceOverride");
+    this->unk2A8 = (long) MKMaterial_Create("FX_EarthOverride");
     this->unk298 = (u32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "shield");
     this->unk284 = (MKHeap *) Tools_GetMatchingRefPointIndex(this->unk2C, "breath");
     if (((u8) this->unk264 != 0) && ((MKHeap *) this->unk284 != (MKHeap *)-1U)) {
@@ -1090,21 +1050,17 @@ loop_27:
         this->unk25C = (long) (checked_cast<ElementalRing *, MKProp>(gMK->CreateProp("ElementalRing")));
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 EnemyDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2421;
 
     var_r31_2421 = 0;
-    if ((CharacterDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndHeroHit", (int *) &this->unk180) != 0) || (KDSound_LoadLine(arg0, "sndHurt", (int *) &this->unk190) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero", (int *) &this->unk184) != 0) || (KDSound_LoadLine(arg0, "sndHitByExplosion", (int *) &this->unk188) != 0) || (KDSound_LoadLine(arg0, "sndHitByHeroBlocked", (int *) &this->unk18C) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitMelee", (int *) &this->unk1B0) != 0) || (KDSound_LoadLine(arg0, "sndArmourShatter", (int *) &this->unk1B4) != 0) || (arg0->LoadString("meleeTrailsPropName", &this->unk274, 0) != 0) || (DataMap_LoadLine(arg0, "iElementType", &ElementTypeDataMap, (unsigned int *) &this->unk1D0) != 0) || (arg0->LoadString("addfile", &this->unk278, 0) != 0) || (arg0->LoadBool("bBreathFX", &this->unk264, 0) != 0) || (arg0->LoadBool("bBodyEffects", &this->unk265, 0) != 0) || (arg0->LoadInt("iInitialAttackPattern", (int *) &this->unk22C, 0) != 0)) {
+    if ((CharacterDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndHeroHit", (int *) &this->unk180) != 0) || (KDSound_LoadLine(arg0, "sndHurt", (int *) &this->unk190) != 0) || (KDSound_LoadLine(arg0, "sndHitByHero", (int *) &this->unk184) != 0) || (KDSound_LoadLine(arg0, "sndHitByExplosion", (int *) &this->unk188) != 0) || (KDSound_LoadLine(arg0, "sndHitByHeroBlocked", (int *) &this->unk18C) != 0) || (KDSound_LoadLine(arg0, "sndArmourHitMelee", (int *) &this->unk1B0) != 0) || (KDSound_LoadLine(arg0, "sndArmourShatter", (int *) &this->unk1B4) != 0) || (arg0->LoadString("meleeTrailsPropName", (const char **) &this->unk274, 0) != 0) || (DataMap_LoadLine(arg0, "iElementType", &ElementTypeDataMap, (unsigned int *) &this->unk1D0) != 0) || (arg0->LoadString("addfile", (const char **) &this->unk278, 0) != 0) || (arg0->LoadBool("bBreathFX", (bool *) &this->unk264, 0) != 0) || (arg0->LoadBool("bBodyEffects", (bool *) &this->unk265, 0) != 0) || (arg0->LoadInt("iInitialAttackPattern", (int *) &this->unk22C, 0) != 0)) {
         var_r31_2421 = 1;
     }
     return var_r31_2421;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'void ***'
 void EnemyDescriptor::Deinit() {
     CharacterBreathFXDescriptor *temp_r29_2578;
     EAPManagerDescriptor *temp_r3_2555;
@@ -1154,7 +1110,7 @@ void EnemyDescriptor::Deinit() {
         var_r30_2614 = 0;
 loop_20:
         if (var_r27_2613 < (s32) this->unk234) {
-            temp_r29_2618 = *(this->unk23C + var_r30_2614);
+            temp_r29_2618 = *(void ****) ((u8 *) this->unk23C + var_r30_2614);
             if (MKHeap::Current() != NULL) {
                 ((MKHeap *) (MKHeap::Current()))->Free(temp_r29_2618, NULL, 0);
             } else {
@@ -1193,9 +1149,9 @@ loop_20:
     var_r30_2689 = 0;
     do {
         temp_r28_2692 = var_r30_2689 + 0x29C;
-        MKMaterial_Destroy(*(this + temp_r28_2692));
+        MKMaterial_Destroy(*(MKMaterial **) ((u8 *) this + temp_r28_2692));
         var_r27_2688 += 1;
-        *(this + temp_r28_2692) = 0;
+        *(s32 *) ((u8 *) this + temp_r28_2692) = 0;
         var_r30_2689 += 4;
     } while (var_r27_2688 < 4);
     if ((u8) this->unk1D6 != 0) {
@@ -1203,7 +1159,6 @@ loop_20:
     }
     MKPropDescriptor::Deinit();
 }
-#endif
 
 void EnemyDescriptor::Init() {
     CharacterDescriptor::Init();
