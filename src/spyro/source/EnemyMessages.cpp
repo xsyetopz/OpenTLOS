@@ -12,7 +12,6 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
 #include "spyro/source/MeleeTrails.h"
@@ -656,34 +655,34 @@ block_199:
                         switch (temp_r26_817) {     /* switch 4 */
                         case 0:                     /* switch 4 */
                         case 14:                    /* switch 4 */
-                            ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.4f, 0.2f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.4f, 0.2f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
                             break;
                         case 1:                     /* switch 4 */
-                            ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
                             break;
                         case 2:                     /* switch 4 */
-                            ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.8f, 0.6f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.6f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
                             break;
                         case 3:                     /* switch 4 */
                         case 8:                     /* switch 4 */
-                            if ((((u32) arg0->unk4 == 0) || ((u32) arg0->unk4 == M2C_FIELD(gb.unk0->__vptr, u32 (**)(HeroInterface *), 0xC)(gb.unk0))) && (KDSound_IsChronoSoundWarpEnabled() != 0) && (gb.unk2D0 != 1.0f)) {
-                                ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 1U);
+                            if ((((u32) arg0->unk4 == 0) || ((u32) arg0->unk4 == gb.unk0->GetProp())) && (KDSound_IsChronoSoundWarpEnabled() != 0) && (gb.unk2D0 != 1.0f)) {
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 1U);
                             } else {
-                                ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
                             }
                             break;
                         case 9:                     /* switch 4 */
-                            if ((((u32) arg0->unk4 == 0) || ((u32) arg0->unk4 == M2C_FIELD(gb.unk0->__vptr, u32 (**)(HeroInterface *), 0xC)(gb.unk0))) && (KDSound_IsChronoSoundWarpEnabled() != 0) && (gb.unk2D0 != 1.0f)) {
-                                ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 1U);
+                            if ((((u32) arg0->unk4 == 0) || ((u32) arg0->unk4 == gb.unk0->GetProp())) && (KDSound_IsChronoSoundWarpEnabled() != 0) && (gb.unk2D0 != 1.0f)) {
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 1U);
                             } else {
-                                ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
                             }
                             break;
                         case 10:                    /* switch 4 */
-                            if ((((u32) arg0->unk4 == 0) || ((u32) arg0->unk4 == M2C_FIELD(gb.unk0->__vptr, u32 (**)(HeroInterface *), 0xC)(gb.unk0))) && (KDSound_IsChronoSoundWarpEnabled() != 0) && (gb.unk2D0 != 1.0f)) {
-                                ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 1U);
+                            if ((((u32) arg0->unk4 == 0) || ((u32) arg0->unk4 == gb.unk0->GetProp())) && (KDSound_IsChronoSoundWarpEnabled() != 0) && (gb.unk2D0 != 1.0f)) {
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 1U);
                             } else {
-                                ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
                             }
                             break;
                         }
@@ -775,7 +774,7 @@ block_199:
                 temp_f1_1497 = M2C_FIELD(temp_r4_1493, f64 *, 0x30);
                 sp1B8 = temp_f1_1497;
                 sp1C0 = M2C_FIELD(temp_r4_1493, f64 *, 0x38);
-                sp4C0 = M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *, void *, f64), 0xC)(gb.unk0, temp_r4_1493, temp_f1_1497);
+                sp4C0 = gb.unk0->GetProp(temp_r4_1493, temp_f1_1497);
                 sp4B8 = 4;
                 sp4C8 = sp1B8;
                 sp4D0 = sp1C0;
@@ -1017,10 +1016,10 @@ block_199:
         } else {
             var_r25_2136 = 0U;
         }
-        if ((var_r25_2136 != 0U) && (var_r25_2136 == M2C_FIELD(gb.unk0->__vptr, u32 (**)(HeroInterface *), 0xC)(gb.unk0)) && (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 0)) {
-            temp_r3_2167 = M2C_FIELD(gb.unk0->__vptr, void **(**)(HeroInterface *), 0x10)(gb.unk0);
+        if ((var_r25_2136 != 0U) && (var_r25_2136 == gb.unk0->GetProp()) && (gb.unk0->GetHeroType() == 0)) {
+            temp_r3_2167 = gb.unk0->GetTargetable();
             M2C_FIELD(*temp_r3_2167, M2C_UNK (**)(f32 *, void **), 0x30)(&sp158, temp_r3_2167);
-            if ((((sp160 * sp160) + ((sp158 * sp158) + (sp15C * sp15C))) > 1.0f) && ((gb.GetSpyro(), ((((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetCrowdCount() < 5) == 0)) || (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x64)(gb.unk0) != 0))) {
+            if ((((sp160 * sp160) + ((sp158 * sp158) + (sp15C * sp15C))) > 1.0f) && ((gb.GetSpyro(), ((((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetCrowdCount() < 5) == 0)) || (gb.unk0->InAir() != 0))) {
                 M2C_FIELD(this, u8 *, 0xB09) = (u8) (M2C_FIELD(this, u8 *, 0xB09) | 0x40);
             }
         }

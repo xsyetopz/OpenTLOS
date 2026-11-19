@@ -275,7 +275,7 @@ void StalactiteCharge::StateSCLerpCameraUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void StalactiteCharge::StateSCLerpCameraEnter() {
     s8 sp251;
     u8 sp250;
@@ -382,7 +382,7 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     temp_f5_721 = M2C_BITWISE(f64, sp1C8);
     sp208 = 0x421;
     sp210 = temp_f5_721;
-    sp218 = sp1C8.unk8;
+    sp218 = sp1D0;
     sp220 = sp1B8;
     sp228 = sp1C0;
     sp230 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
@@ -393,7 +393,7 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
     sp251 = 0;
     sp28 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     sp30 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, f64, f64, f64, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp208, 0x421, M2C_FIELD(&MKVector3::zero, f64 *, 0), sp1C0, sp1B8, sp1C8.unk8, temp_f5_721);
+    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, f64, f64, f64, f64, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp208, 0x421, M2C_FIELD(&MKVector3::zero, f64 *, 0), sp1C0, sp1B8, sp1D0, temp_f5_721);
     if (sp250 != 0) {
         this->unk110 = sp230;
         this->unk118 = sp238;
@@ -402,14 +402,14 @@ void StalactiteCharge::StateSCLerpCameraEnter() {
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
         sp178 = sp38;
-        sp40 = (f32) M2C_FIELD(this, f64 *, 0x108) - (f32) sp168.unk8;
+        sp40 = (f32) M2C_FIELD(this, f64 *, 0x108) - sp170;
         sp180 = (f64) sp40;
         KDMath_GetReflectedVector(sp188, *((MKVector3 *) &sp178));
         sp198.GetPos();
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         this->unk110 = sp98;
-        spA0 = (f32) sp198.unk8 + sp188.unk8;
+        spA0 = sp1A0 + sp188.unk8;
         sp1A8 = sp98;
         sp1B0 = (f64) spA0;
         this->unk118 = (f64) spA0;
@@ -527,7 +527,7 @@ void StalactiteCharge::StateSCDropExit() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8);
 }
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void StalactiteCharge::StateSCDropUpdate() {
     f64 spD0;
     f64 spC8;
@@ -673,11 +673,11 @@ void StalactiteCharge::StateSCDropUpdate() {
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     spA8 = 0x42E;
     spB0 = sp18;
-    sp20 = (f32) sp48.unk8 - sp40;
+    sp20 = sp50 - sp40;
     sp58 = sp18;
     spB8 = (f64) sp20;
     sp60 = (f64) sp20;
-    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64, f32), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &spA8, sp18, (f32) sp48.unk8);
+    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64, f32), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &spA8, sp18, sp50);
 }
 #endif
 

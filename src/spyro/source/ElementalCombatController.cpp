@@ -44,7 +44,7 @@ void ElementalCombatController::AttemptSpawn() {
     }
 }
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void ElementalCombatController::SetupSpawnPoints() {
     f64 sp30;
     f64 sp28;
@@ -72,7 +72,7 @@ loop_2:
         M2C_FIELD(M2C_FIELD(temp_r26_159, void **, 0x124), s32 *, 4) = (s32) (this->unk3DC.unk0 | 0x4200);
         sp8.GetPos();
         sp18 = M2C_BITWISE(f64, sp8);
-        sp20 = sp8.unk8;
+        sp20 = sp10;
         unksp1C = unksp2C;
         this->unkC8.AddSpawnPoint(temp_r26_159 + 0x120);
         temp_r25_183 = temp_r26_159 + 0x130;

@@ -29,7 +29,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: ';' expected
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit swampTier1BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit swampTier2BodyFXInit;    /* unable to generate initializer: confusing struct layout */
 static CharacterBodyFxInit swampTier3BodyFXInit;    /* unable to generate initializer: confusing struct layout */

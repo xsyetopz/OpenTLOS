@@ -508,7 +508,7 @@ void TrainChaseSpyro::WheelSparksLeft() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void TrainChaseSpyro::Message(MKMessage *arg0) {
     s8 spB5;
     s8 spB4;
@@ -578,7 +578,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
     case 0x1:                                       /* switch 1 */
         temp_r3_905 = checked_cast<ExplodeMsg *, MKMessage>(arg0);
         if ((u32) M2C_FIELD(temp_r3_905, u32 *, 8) != this) {
-            temp_r3_917 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+            temp_r3_917 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
             sp78 = M2C_FIELD(temp_r3_917, f64 *, 0x30);
             sp80 = M2C_FIELD(temp_r3_917, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
@@ -630,11 +630,11 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
             sp88 = temp_f2_1020;
             unksp8C = temp_f1_1022;
             sp90 = (f32) sp90 * var_f3_1010;
-            temp_f31_1032 = M2C_FIELD(gb.unk0->__vptr, f32 (**)(HeroInterface *, f32, f32), 0x28)(gb.unk0, temp_f1_1022, temp_f2_1020);
+            temp_f31_1032 = gb.unk0->GetCollideRadius(temp_f1_1022, temp_f2_1020);
             sp68.GetPos();
-            temp_f4_1041 = M2C_BITWISE(f32, sp68.unk4) - M2C_FIELD(temp_r3_905, f32 *, 0x14);
+            temp_f4_1041 = sp6C - M2C_FIELD(temp_r3_905, f32 *, 0x14);
             temp_f5_1043 = M2C_BITWISE(f32, sp68) - M2C_FIELD(temp_r3_905, f32 *, 0x10);
-            temp_f4_1047 = (f32) sp68.unk8 - M2C_FIELD(temp_r3_905, f32 *, 0x18);
+            temp_f4_1047 = sp70 - M2C_FIELD(temp_r3_905, f32 *, 0x18);
             temp_f3_1049 = M2C_FIELD(temp_r3_905, f32 *, 0x20) + temp_f31_1032;
             if (((temp_f4_1047 * temp_f4_1047) + ((temp_f5_1043 * temp_f5_1043) + (temp_f4_1041 * temp_f4_1041))) < (temp_f3_1049 * temp_f3_1049)) {
                 temp_r3_1056 = this->unk8;
@@ -654,7 +654,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
         break;
     case 0xB5:                                      /* switch 1 */
         if (this->unk18 & 0x80000000) {
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *), 0x24)(gb.unk0);
+            gb.unk0->Disable();
             Enable();
             this->unk290 = gb.SetHero(M2C_BITWISE(HeroInterface *, this->unk28C));
             this->unkC8.RegisterTargetable();
@@ -678,7 +678,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
                 M2C_FIELD(this, u8 *, 0x72C) = 0U;
             }
             this->unkE4 &= ~0x40;
-            gb.SetHero(&this->unk290->unk0);
+            gb.SetHero((HeroInterface *) this->unk290);
             sp9C = 0;
             KDMath_GetYaw((Matrix *) this->unk8);
             temp_r5_1192 = this->unk8;
@@ -692,11 +692,11 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
             spB5 = 0;
             sp48 = temp_f2_1196;
             sp50 = temp_f0_1198;
-            M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, M2C_UNK, void *), 0xC)(gb.unk0, 0x38, temp_r5_1192), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp98);
+            M2C_FIELD(M2C_FIELD(gb.unk0->GetProp(0x38, temp_r5_1192), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp98);
             this->unk290 = NULL;
             this->unkC8.UnregisterTargetable();
             Disable();
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *), 0x20)(gb.unk0);
+            gb.unk0->Enable();
         }
         break;
     case 0xC7:                                      /* switch 1 */
@@ -706,7 +706,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
         }
         break;
     case 0x57:                                      /* switch 1 */
-        temp_r31_1257 = M2C_FIELD(gb.unk0->__vptr, u32 (**)(HeroInterface *), 0xC)(gb.unk0);
+        temp_r31_1257 = gb.unk0->GetProp();
         temp_ret_1259 = checked_cast<JustDiedMessage *, MKMessage>(arg0);
         if ((u32) M2C_FIELD(temp_ret_1259, u32 *, 4) == temp_r31_1257) {
             temp_r3_1265 = checked_cast<TrainController *, MKProp>(this->unk1FC->PropResolver_Resolve((s32) (u32) (u64) temp_ret_1259));
@@ -1267,7 +1267,7 @@ void TrainChaseSpyro::UpdateCameraInfo() {
                 break;
             case 8:
                 arg_sp140.operator*(300.0f);
-                M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *), 0xC)(gb.unk0);
+                gb.unk0->GetProp();
                 arg_sp150.operator*(700.0f);
                 arg_sp160.GetPos();
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
@@ -1325,7 +1325,7 @@ void TrainChaseSpyro::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: function call 'GetInput(HeroInterface *, int)' does not match
 void TrainChaseSpyro::UpdateControls() {
     f64 sp20;
     f64 sp18;
@@ -1366,7 +1366,7 @@ void TrainChaseSpyro::UpdateControls() {
     this->unkE4 &= ~0x80;
     this->unkE4 &= ~0x20;
     var_f28_2865 = 0.0f;
-    temp_r30_2866 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, M2C_UNK), 0x40)(gb.unk0, 0);
+    temp_r30_2866 = gb.unk0->GetInput(0);
     temp_r0_2867 = this->unk730;
     var_f29_2868 = 0.0f;
     switch (M2C_BITWISE(s32, temp_r0_2867)) {       /* irregular */
@@ -2367,7 +2367,7 @@ void TrainChaseSpyro::UpdateSpyro() {
         temp_r3_4756 = MKModel_GetAnimation(this->unk720);
         arg_sp10 = (s16) temp_r30_4754;
         temp_r3_4756->CalculateMatrices((Matrix *) &arg_sp110, 1, &arg_sp10, (Matrix *) temp_r29_4753);
-        MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) this->unk294->unk4->unk38, (MKVector3 *) &arg_sp78);
+        MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(M2C_FIELD(this->unk294, void **, 4), s32 *, 0x38), (MKVector3 *) &arg_sp78);
         var_f4_4777 = (arg_sp138 * arg_sp138) + ((arg_sp130 * arg_sp130) + (arg_sp134 * arg_sp134));
         if (var_f4_4777 > 1e-12f) {
             if (var_f4_4777 > 0.0f) {

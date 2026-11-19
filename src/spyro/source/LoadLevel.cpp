@@ -5,7 +5,6 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameStateMachine.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/MCLoadCheckScreen.h"
 #include "spyro/source/UIContainer.h"
@@ -161,7 +160,7 @@ void LoadLevel_Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void LoadLevel_Deactivate(bool arg0) {
     s32 sp1C;
     s32 sp18;
@@ -177,15 +176,15 @@ void LoadLevel_Deactivate(bool arg0) {
         loadState = 4;
         return;
     }
-    temp_r3_316 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0);
+    temp_r3_316 = gb.unk0->GetProp();
     sp1C = 0;
     sp18 = 0xAC;
     M2C_FIELD(M2C_FIELD(temp_r3_316, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp18);
-    temp_r3_332 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0);
+    temp_r3_332 = gb.unk0->GetProp();
     sp14 = 0;
     sp10 = 0xAA;
     M2C_FIELD(M2C_FIELD(temp_r3_332, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp10);
-    temp_r3_348 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0);
+    temp_r3_348 = gb.unk0->GetProp();
     spC = 0;
     sp8 = 0xB1;
     M2C_FIELD(M2C_FIELD(temp_r3_348, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
@@ -194,7 +193,7 @@ void LoadLevel_Deactivate(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void LoadLevel_Activate(ChunkInfo *arg0) {
     s32 sp1C;
     s32 sp18;
@@ -207,15 +206,15 @@ void LoadLevel_Activate(ChunkInfo *arg0) {
     void *temp_r3_415;
 
     pChunk = arg0;
-    temp_r3_383 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, GameGlobals *), 0xC)(gb.unk0, &gb);
+    temp_r3_383 = gb.unk0->GetProp(&gb);
     sp1C = 0;
     sp18 = 0xAB;
     M2C_FIELD(M2C_FIELD(temp_r3_383, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp18);
-    temp_r3_399 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0);
+    temp_r3_399 = gb.unk0->GetProp();
     sp14 = 0;
     sp10 = 0xA9;
     M2C_FIELD(M2C_FIELD(temp_r3_399, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp10);
-    temp_r3_415 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0);
+    temp_r3_415 = gb.unk0->GetProp();
     spC = 0;
     sp8 = 0xB0;
     M2C_FIELD(M2C_FIELD(temp_r3_415, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);

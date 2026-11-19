@@ -10,7 +10,6 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/Spyro.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
@@ -55,7 +54,7 @@ loop_4:
                 sp10 = M2C_FIELD(temp_r30_100, f64 *, 0x30);
                 sp18 = M2C_FIELD(temp_r30_100, f64 *, 0x38);
                 KDSound_Stop(temp_r30_100 + 0x48);
-                temp_r6_75 = M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0);
+                temp_r6_75 = gb.unk0->GetProp();
                 sp8 = 1;
                 this->unk150->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_75, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                 M2C_FIELD(temp_r30_100, s32 *, 0x44) = 2;
@@ -256,7 +255,7 @@ loop_9:
                 if (unksp14 == temp_f1_391) {
                     unksp14 = temp_f1_391;
                     KDSound_Stop(temp_r31_433 + 0x48);
-                    temp_r6_406 = M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0);
+                    temp_r6_406 = gb.unk0->GetProp();
                     sp8 = 1;
                     this->unk150->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_406, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                     M2C_FIELD(temp_r31_433, s32 *, 0x44) = 2;
@@ -306,7 +305,7 @@ s32 FuryFXFire2::Trigger(const MKVector3 &arg0) {
             var_r30_488 = *(temp_r5_474 + (temp_r0_472 * 4));
         }
         temp_r29_495 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-        this->unkF0.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r30_488, temp_r29_495, temp_r29_495, 0, -1);
+        this->unkF0.Init(gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r30_488, temp_r29_495, temp_r29_495, 0, -1);
         gb.unk381 = 1;
         return 1;
     }
@@ -432,7 +431,7 @@ void FuryFXFire2::Update() {
                 arg_sp2A4 = -1000.0f;
                 arg_sp648 = (f64) arg_sp2A8;
                 arg_sp640 = (f64) arg_sp2A0;
-                temp_r3_725 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, f64, f32), 0xC)(gb.unk0, (f64) arg_sp2A0, 500.0f), void **, 8);
+                temp_r3_725 = M2C_FIELD(gb.unk0->GetProp((f64) arg_sp2A0, 500.0f), void **, 8);
                 arg_sp650 = M2C_FIELD(temp_r3_725, f64 *, 0x30);
                 arg_sp658 = M2C_FIELD(temp_r3_725, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -444,7 +443,7 @@ void FuryFXFire2::Update() {
                 arg_sp284 = -1000.0f;
                 arg_sp628 = (f64) arg_sp288;
                 arg_sp620 = (f64) arg_sp280;
-                temp_r3_759 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, f64, f32, f64, f64), 0xC)(gb.unk0, (f64) arg_sp280, -500.0f, (f64) arg_sp298, arg_sp290), void **, 8);
+                temp_r3_759 = M2C_FIELD(gb.unk0->GetProp((f64) arg_sp280, -500.0f, (f64) arg_sp298, arg_sp290), void **, 8);
                 arg_sp630 = M2C_FIELD(temp_r3_759, f64 *, 0x30);
                 arg_sp638 = M2C_FIELD(temp_r3_759, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -456,7 +455,7 @@ void FuryFXFire2::Update() {
                 arg_sp264 = -1000.0f;
                 arg_sp608 = (f64) arg_sp268;
                 arg_sp600 = (f64) arg_sp260;
-                temp_r3_793 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, f64, f32, f64, f64), 0xC)(gb.unk0, (f64) arg_sp260, 500.0f, (f64) arg_sp278, arg_sp270), void **, 8);
+                temp_r3_793 = M2C_FIELD(gb.unk0->GetProp((f64) arg_sp260, 500.0f, (f64) arg_sp278, arg_sp270), void **, 8);
                 arg_sp610 = M2C_FIELD(temp_r3_793, f64 *, 0x30);
                 arg_sp618 = M2C_FIELD(temp_r3_793, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -468,7 +467,7 @@ void FuryFXFire2::Update() {
                 arg_sp244 = -1000.0f;
                 arg_sp5E8 = (f64) arg_sp248;
                 arg_sp5E0 = (f64) arg_sp240;
-                temp_r3_826 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, f64, f32, f64, f64), 0xC)(gb.unk0, (f64) arg_sp240, -500.0f, (f64) arg_sp258, arg_sp250), void **, 8);
+                temp_r3_826 = M2C_FIELD(gb.unk0->GetProp((f64) arg_sp240, -500.0f, (f64) arg_sp258, arg_sp250), void **, 8);
                 arg_sp5F0 = M2C_FIELD(temp_r3_826, f64 *, 0x30);
                 arg_sp5F8 = M2C_FIELD(temp_r3_826, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -510,7 +509,7 @@ void FuryFXFire2::Update() {
                 arg_sp224 = -1000.0f;
                 arg_sp568 = (f64) arg_sp228;
                 arg_sp560 = (f64) arg_sp220;
-                temp_r3_950 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, s32, f64), 0xC)(gb.unk0, temp_r4_935, (f64) arg_sp220), void **, 8);
+                temp_r3_950 = M2C_FIELD(gb.unk0->GetProp(temp_r4_935, (f64) arg_sp220), void **, 8);
                 arg_sp570 = M2C_FIELD(temp_r3_950, f64 *, 0x30);
                 arg_sp578 = M2C_FIELD(temp_r3_950, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -522,7 +521,7 @@ void FuryFXFire2::Update() {
                 arg_sp204 = -1000.0f;
                 arg_sp548 = (f64) arg_sp208;
                 arg_sp540 = (f64) arg_sp200;
-                temp_r3_984 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, f64, f32, f64, f64), 0xC)(gb.unk0, (f64) arg_sp200, 0.0f, (f64) arg_sp218, arg_sp210), void **, 8);
+                temp_r3_984 = M2C_FIELD(gb.unk0->GetProp((f64) arg_sp200, 0.0f, (f64) arg_sp218, arg_sp210), void **, 8);
                 arg_sp550 = M2C_FIELD(temp_r3_984, f64 *, 0x30);
                 arg_sp558 = M2C_FIELD(temp_r3_984, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -558,7 +557,7 @@ void FuryFXFire2::Update() {
                 arg_sp1E4 = -1000.0f;
                 arg_sp4C8 = (f64) arg_sp1E8;
                 arg_sp4C0 = (f64) arg_sp1E0;
-                temp_r3_1086 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, s32, f64), 0xC)(gb.unk0, temp_r4_1071, (f64) arg_sp1E0), void **, 8);
+                temp_r3_1086 = M2C_FIELD(gb.unk0->GetProp(temp_r4_1071, (f64) arg_sp1E0), void **, 8);
                 arg_sp4D0 = M2C_FIELD(temp_r3_1086, f64 *, 0x30);
                 arg_sp4D8 = M2C_FIELD(temp_r3_1086, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -570,7 +569,7 @@ void FuryFXFire2::Update() {
                 arg_sp1C4 = -1000.0f;
                 arg_sp4A8 = (f64) arg_sp1C8;
                 arg_sp4A0 = (f64) arg_sp1C0;
-                temp_r3_1120 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, f64, f32, f64, f64), 0xC)(gb.unk0, (f64) arg_sp1C0, 1000.0f, (f64) arg_sp1D8, arg_sp1D0), void **, 8);
+                temp_r3_1120 = M2C_FIELD(gb.unk0->GetProp((f64) arg_sp1C0, 1000.0f, (f64) arg_sp1D8, arg_sp1D0), void **, 8);
                 arg_sp4B0 = M2C_FIELD(temp_r3_1120, f64 *, 0x30);
                 arg_sp4B8 = M2C_FIELD(temp_r3_1120, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);

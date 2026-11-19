@@ -12,7 +12,6 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/Spyro.h"
 #include "spyro/source/SquishBoulder.h"
@@ -340,7 +339,7 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
         var_r31_588 = *(temp_r4_574 + (temp_r0_572 * 4));
     }
     temp_r29_595 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-    this->unk168.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r31_588, temp_r29_595, temp_r29_595, 0, -1);
+    this->unk168.Init(gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r31_588, temp_r29_595, temp_r29_595, 0, -1);
     temp_r4_616 = M2C_FIELD(this, ManagedLight **, 0x1CC);
     if ((temp_r4_616 != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x1C8) == 0)) {
         gb.unk80->EnableLight(temp_r4_616, 1U);

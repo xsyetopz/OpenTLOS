@@ -10,7 +10,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CharacterFireFX::EmitFire() {
     f64 sp48;
     f64 sp40;
@@ -35,7 +35,7 @@ void CharacterFireFX::EmitFire() {
         this->unk14 = 0.0f;
         var_r29_36 = 0;
         do {
-            temp_r3_40 = CharacterBodyFX::GetRandomNode(NULL);
+            temp_r3_40 = GetRandomNode(NULL);
             if (temp_r3_40 != NULL) {
                 sp8 = 3.0f * M2C_FIELD(*temp_r3_40, f32 *, 0x10);
                 temp_f1_56 = 100.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
@@ -49,7 +49,7 @@ void CharacterFireFX::EmitFire() {
             var_r29_36 += 1;
         } while (var_r29_36 < 5);
     }
-    temp_r31_76 = CharacterBodyFX::GetRandomNode(NULL);
+    temp_r31_76 = GetRandomNode(NULL);
     temp_f31_80 = MKRand_Float(&gViewSeed, 1.5f, 2.5f);
     sp14 = MKRand_Float(&gViewSeed, 400.0f, 600.0f);
     sp10 = 0.0f;
@@ -60,7 +60,7 @@ void CharacterFireFX::EmitFire() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CharacterFireFX::EmitSmoke() {
     f64 sp28;
     f64 sp20;
@@ -75,7 +75,7 @@ void CharacterFireFX::EmitSmoke() {
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     if (this->unk18 == 0.0f) {
         this->unk18 = 0.1f;
-        temp_r3_129 = CharacterBodyFX::GetRandomNode(NULL);
+        temp_r3_129 = GetRandomNode(NULL);
         if (temp_r3_129 != NULL) {
             sp8 = 0.5f * M2C_FIELD(*temp_r3_129, f32 *, 0x10);
             temp_f2_144 = 100.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
@@ -90,7 +90,6 @@ void CharacterFireFX::EmitSmoke() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterFireFX::Enable(bool arg0, float arg1) {
     if (arg0 != 0) {
         this->unk20 = 1;
@@ -98,21 +97,17 @@ void CharacterFireFX::Enable(bool arg0, float arg1) {
     } else {
         this->unk20 = 0;
     }
-    CharacterBodyFX::SetDataActive(arg0);
+    SetDataActive(arg0);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterFireFX::Deinit() {
     CharacterBodyFX::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterFireFX::Update() {
     s32 temp_r0_217;
 
-    if ((u32) this->unk8 != 0) {
+    if ((CharacterBodyFXData *) this->unk8 != NULL) {
         CharacterBodyFX::Update();
         this->unk1C -= gUpdateTimeDelta;
         temp_r0_217 = this->unk20;
@@ -132,25 +127,21 @@ void CharacterFireFX::Update() {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (this->unk1C == 0.0f) {
                 this->unk20 = 0;
-                CharacterBodyFX::SetDataActive(0U);
+                SetDataActive(0U);
             }
             break;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterFireFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
     if ((s32) arg0->unk4 == 0) {
-        this->unk8 = 0;
+        this->unk8 = NULL;
         return;
     }
     CharacterBodyFX::InitData(arg0, arg1, arg2);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterFireFX::Init() {
     CharacterBodyFX::Init();
     this->unk14 = 0.0f;
@@ -158,4 +149,3 @@ void CharacterFireFX::Init() {
     this->unk1C = 0.0f;
     this->unk20 = 0;
 }
-#endif

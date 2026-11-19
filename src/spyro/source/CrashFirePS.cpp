@@ -132,10 +132,8 @@ void CrashFirePS::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CrashFirePSDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();
     this->unk80 = 1;
     this->unk84 = 1.0f / (f32) this->unk80;
 }
-#endif

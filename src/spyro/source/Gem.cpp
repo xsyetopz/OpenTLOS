@@ -378,28 +378,28 @@ void Gem::Message(MKMessage *arg0) {
     Collectable::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void GemDescriptor::Deinit() {
-    MKMaterial *temp_r3_702;
+    f32 temp_r3_702;
 
-    temp_r3_702 = this->unkD4;
-    if (temp_r3_702 != NULL) {
-        MKMaterial_Destroy(temp_r3_702);
-        this->unkD4 = NULL;
+    temp_r3_702 = this->unkD0;
+    if (M2C_BITWISE(u32, temp_r3_702) != 0U) {
+        MKMaterial_Destroy(M2C_BITWISE(MKMaterial *, temp_r3_702));
+        this->unkD0 = 0.0f;
     }
     CollectableDescriptor::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void GemDescriptor::LoadDone() {
     s32 var_r6_740;
     u32 var_r5_737;
     void *temp_r3_743;
 
     CollectableDescriptor::LoadDone();
-    this->unkCC = MKModel_GetNmbrOfSubObjects(this->unk2C, (SubObjectType) 0);
-    this->unkD4 = MKMaterial_Create("p_gem_white");
+    this->unkC8 = MKModel_GetNmbrOfSubObjects(this->unk2C, (SubObjectType) 0);
+    this->unkD0 = M2C_BITWISE(f32, MKMaterial_Create("p_gem_white"));
     var_r5_737 = 0U;
     this->unk66 = 0;
     var_r6_740 = 0;
@@ -411,12 +411,12 @@ loop_2:
         goto loop_2;
     }
     if (var_r5_737 != (u32) M2C_FIELD(&fingerprintData, u32 *, 0x108)) {
-        this->unkD0 = 0.0f;
+        this->unkCC = 0.0f;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 GemDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
 
@@ -425,33 +425,31 @@ s32 GemDescriptor::LoadLine(MKIniLine *arg0) {
     }
     if (arg0->LoadString("gemType", &sp8, 0) != 0) {
         if (stricmp(sp8, "Health") == 0) {
-            this->unkC8 = 0;
+            this->unkC4 = 0.0f;
         } else if (stricmp(sp8, "Spirit") == 0) {
-            this->unkC8 = 1;
+            this->unkC4 = 1e-45f;
         } else if (stricmp(sp8, "Magic") == 0) {
-            this->unkC8 = 2;
+            this->unkC4 = 3e-45f;
         } else if (stricmp(sp8, "Fury") == 0) {
-            this->unkC8 = 3;
+            this->unkC4 = 4e-45f;
         }
         return 1;
     }
-    return arg0->LoadFloat("statValue", &this->unkD0, 0);
+    return arg0->LoadFloat("statValue", (f32 *) &this->unkCC, 0);
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void GemDescriptor::Init() {
     CollectableDescriptor::Init();
-    this->unk9C |= 0x6000;
+    this->unk98 |= 0x6000;
     this->unk6C = 6.2831855f;
-    this->unk78 = 15.0f;
-    this->unk74 = 4.0f;
-    this->unk98 = 0;
-    this->unkC8 = 0;
-    this->unkD0 = 1.0f;
-    this->unkD4 = NULL;
+    this->unk74 = 15.0f;
+    this->unk70 = 4.0f;
+    this->unk94 = 0.0f;
+    this->unkC4 = 0.0f;
+    this->unkCC = 1.0f;
+    this->unkD0 = 0.0f;
 }
-#endif
 
 void Gem_cpp::__sinit() {
     f32 temp_f0_925;

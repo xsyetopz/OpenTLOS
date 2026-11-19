@@ -4061,9 +4061,9 @@ void SB2::SetRegion(EnemyRegion *arg0) {
     this->unk4 = arg0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SB2::SetVehicle(Targetable *arg0) {
-    this->unk0 = arg0->Deinit();
+    this->unk0 = M2C_FIELD(arg0->__vptr, Character *(**)(Targetable *), 0xC)(arg0);
 }
 #endif
 

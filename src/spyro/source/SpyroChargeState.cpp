@@ -145,7 +145,7 @@ void SpyroChargeState::Message(MKMessage *arg0) {
 }
 
 #if 0 // DRAFT: undefined identifier 'unkspA4'
-u8 SpyroChargeState::Transition() {
+s32 SpyroChargeState::Transition() {
     MKCollisionResult spC8;
     s8 spC5;
     s8 spC4;

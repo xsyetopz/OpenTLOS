@@ -606,7 +606,7 @@ void AssaultCannon::StateFireExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void AssaultCannon::StateFireUpdate() {
     f64 sp558;
     f64 sp550;
@@ -903,11 +903,11 @@ void AssaultCannon::StateFireUpdate() {
             this->unk218.SetState(this, 1, 0U);
             return;
         }
-        if (M2C_FIELD(gb.unk0->__vptr, u32 (**)(HeroInterface *), 0x10)(gb.unk0) != 0U) {
+        if (gb.unk0->GetTargetable() != 0U) {
             temp_r4_973 = this->unk8;
-            temp_r3_980 = M2C_FIELD(gb.unk0->__vptr, void **(**)(HeroInterface *, void *), 0x10)(gb.unk0, temp_r4_973);
+            temp_r3_980 = gb.unk0->GetTargetable(temp_r4_973);
             M2C_FIELD(*temp_r3_980, M2C_UNK (**)(M2C_UNK *, void **), 0x30)(&sp480, temp_r3_980);
-            temp_r3_994 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+            temp_r3_994 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
             sp490 = M2C_FIELD(temp_r3_994, f64 *, 0x30);
             sp498 = M2C_FIELD(temp_r3_994, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -977,7 +977,7 @@ void AssaultCannon::StateFireUpdate() {
                     var_f2_1119 = 0.0f;
                 }
                 temp_r4_1135 = this->unk8;
-                temp_r3_1148 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *, f32), 0xC)(gb.unk0, temp_r4_1135, 0.05f), void **, 8);
+                temp_r3_1148 = M2C_FIELD(gb.unk0->GetProp(temp_r4_1135, 0.05f), void **, 8);
                 sp450 = M2C_FIELD(temp_r3_1148, f64 *, 0x30);
                 sp458 = M2C_FIELD(temp_r3_1148, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
@@ -1107,9 +1107,9 @@ void AssaultCannon::StateFireUpdate() {
             return;
         }
         temp_r4_1403 = this->unk8;
-        temp_r3_1410 = M2C_FIELD(gb.unk0->__vptr, void **(**)(HeroInterface *, void *), 0x10)(gb.unk0, temp_r4_1403);
+        temp_r3_1410 = gb.unk0->GetTargetable(temp_r4_1403);
         M2C_FIELD(*temp_r3_1410, M2C_UNK (**)(M2C_UNK *, void **), 0x30)(&sp3F0, temp_r3_1410);
-        temp_r3_1424 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+        temp_r3_1424 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         sp400 = M2C_FIELD(temp_r3_1424, f64 *, 0x30);
         sp408 = M2C_FIELD(temp_r3_1424, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -1180,7 +1180,7 @@ void AssaultCannon::StateFireUpdate() {
             if (temp_r3_1566 != 0) {
                 M2C_FIELD(temp_r3_1566, AssaultCannon **, 0x130) = this;
                 temp_r4_1573 = this->unk8;
-                temp_r3_1579 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *), 0xC)(gb.unk0, temp_r4_1573), void **, 8);
+                temp_r3_1579 = M2C_FIELD(gb.unk0->GetProp(temp_r4_1573), void **, 8);
                 sp3C0 = M2C_FIELD(temp_r3_1579, f64 *, 0x30);
                 sp3C8 = M2C_FIELD(temp_r3_1579, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
@@ -1324,9 +1324,9 @@ void AssaultCannon::StateFireUpdate() {
             return;
         }
         temp_r4_1881 = this->unk8;
-        temp_r3_1888 = M2C_FIELD(gb.unk0->__vptr, void **(**)(HeroInterface *, void *), 0x10)(gb.unk0, temp_r4_1881);
+        temp_r3_1888 = gb.unk0->GetTargetable(temp_r4_1881);
         M2C_FIELD(*temp_r3_1888, M2C_UNK (**)(M2C_UNK *, void **), 0x30)(&sp360, temp_r3_1888);
-        temp_r3_1902 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+        temp_r3_1902 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         sp370 = M2C_FIELD(temp_r3_1902, f64 *, 0x30);
         sp378 = M2C_FIELD(temp_r3_1902, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -1397,7 +1397,7 @@ void AssaultCannon::StateFireUpdate() {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             this->unk240 = sp70;
-            sp78 = (f32) sp330.unk8 + sp328;
+            sp78 = sp338 + sp328;
             sp340 = sp70;
             sp348 = (f64) sp78;
             M2C_FIELD(this, f64 *, 0x248) = (f64) sp78;
@@ -1411,11 +1411,11 @@ void AssaultCannon::StateFireUpdate() {
             this->unk218.SetState(this, 1, 0U);
             return;
         }
-        if (M2C_FIELD(gb.unk0->__vptr, u32 (**)(HeroInterface *), 0x10)(gb.unk0) != 0U) {
+        if (gb.unk0->GetTargetable() != 0U) {
             temp_r4_2095 = this->unk8;
-            temp_r3_2102 = M2C_FIELD(gb.unk0->__vptr, void **(**)(HeroInterface *, void *), 0x10)(gb.unk0, temp_r4_2095);
+            temp_r3_2102 = gb.unk0->GetTargetable(temp_r4_2095);
             M2C_FIELD(*temp_r3_2102, M2C_UNK (**)(M2C_UNK *, void **), 0x30)(&sp2F0, temp_r3_2102);
-            temp_r3_2116 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+            temp_r3_2116 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
             sp300 = M2C_FIELD(temp_r3_2116, f64 *, 0x30);
             sp308 = M2C_FIELD(temp_r3_2116, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -1485,7 +1485,7 @@ void AssaultCannon::StateFireUpdate() {
                     var_f2_2241 = 0.0f;
                 }
                 temp_r4_2257 = this->unk8;
-                temp_r3_2270 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *, f32), 0xC)(gb.unk0, temp_r4_2257, 0.05f), void **, 8);
+                temp_r3_2270 = M2C_FIELD(gb.unk0->GetProp(temp_r4_2257, 0.05f), void **, 8);
                 sp2C0 = M2C_FIELD(temp_r3_2270, f64 *, 0x30);
                 sp2C8 = M2C_FIELD(temp_r3_2270, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
@@ -1617,7 +1617,7 @@ void AssaultCannon::StateFireUpdate() {
         break;
     case 4:                                         /* switch 1 */
         temp_r4_2534 = this->unk8;
-        temp_r3_2542 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *), 0xC)(gb.unk0, temp_r4_2534), void **, 8);
+        temp_r3_2542 = M2C_FIELD(gb.unk0->GetProp(temp_r4_2534), void **, 8);
         sp260 = M2C_FIELD(temp_r3_2542, f64 *, 0x30);
         sp268 = M2C_FIELD(temp_r3_2542, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
@@ -1666,7 +1666,7 @@ void AssaultCannon::StateFireUpdate() {
         sp544 = this;
         sp550 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
         sp558 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
-        M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *, f64), 0x1C)(gb.unk0, &sp540, M2C_FIELD(&MKVector3::zero, f64 *, 0));
+        gb.unk0->Message(&sp540, M2C_FIELD(&MKVector3::zero, f64 *, 0));
         this->unk240 = sp550;
         M2C_FIELD(this, f64 *, 0x248) = sp558;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
@@ -2030,7 +2030,7 @@ void AssaultCannon::StateFireEnter() {
                 var_f2_3115 = 0.0f;
             }
             temp_r4_3130 = this->unk8;
-            temp_r3_3143 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *, f32), 0xC)(gb.unk0, temp_r4_3130, 0.05f), void **, 8);
+            temp_r3_3143 = M2C_FIELD(gb.unk0->GetProp(temp_r4_3130, 0.05f), void **, 8);
             sp1D0 = M2C_FIELD(temp_r3_3143, f64 *, 0x30);
             sp1D8 = M2C_FIELD(temp_r3_3143, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
@@ -2178,7 +2178,7 @@ void AssaultCannon::StateFireEnter() {
                 var_f1_3419 = 0.0f;
             }
             temp_r4_3436 = this->unk8;
-            temp_r3_3448 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *, f32, f32), 0xC)(gb.unk0, temp_r4_3436, 1.0f, 0.05f), void **, 8);
+            temp_r3_3448 = M2C_FIELD(gb.unk0->GetProp(temp_r4_3436, 1.0f, 0.05f), void **, 8);
             sp180 = M2C_FIELD(temp_r3_3448, f64 *, 0x30);
             sp188 = M2C_FIELD(temp_r3_3448, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
@@ -2330,7 +2330,7 @@ void AssaultCannon::StateFireEnter() {
             }
             sp271 = 0;
             sp264 = GS_SpyroZapBurn;
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *), 0x1C)(gb.unk0, &sp220);
+            gb.unk0->Message(&sp220);
             return;
         }
         break;
@@ -2353,7 +2353,7 @@ void AssaultCannon::StateFireEnter() {
                 var_f2_3772 = 0.0f;
             }
             temp_r4_3787 = this->unk8;
-            temp_r3_3800 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *, f32), 0xC)(gb.unk0, temp_r4_3787, 0.05f), void **, 8);
+            temp_r3_3800 = M2C_FIELD(gb.unk0->GetProp(temp_r4_3787, 0.05f), void **, 8);
             sp120 = M2C_FIELD(temp_r3_3800, f64 *, 0x30);
             sp128 = M2C_FIELD(temp_r3_3800, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r30, 0x0, qr0 */);
@@ -2493,7 +2493,7 @@ void AssaultCannon::StateTurnToFaceExit() {
 
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: function call 'GetTargetable(HeroInterface *, GameGlobals *, double)' does
 void AssaultCannon::StateTurnToFaceUpdate() {
     f64 sp98;
     f64 sp90;
@@ -2535,14 +2535,14 @@ void AssaultCannon::StateTurnToFaceUpdate() {
     sp34 = 0.0f;
     sp98 = (f64) sp38;
     sp90 = (f64) sp30;
-    if (M2C_FIELD(gb.unk0->__vptr, u32 (**)(HeroInterface *, GameGlobals *, f64), 0x10)(gb.unk0, &gb, (f64) sp30) != 0U) {
-        temp_r3_4122 = M2C_FIELD(gb.unk0->__vptr, void **(**)(HeroInterface *), 0x10)(gb.unk0);
+    if (gb.unk0->GetTargetable(&gb, (f64) sp30) != 0U) {
+        temp_r3_4122 = gb.unk0->GetTargetable();
         M2C_FIELD(*temp_r3_4122, M2C_UNK (**)(f64 *, void **), 0x30)(&sp70, temp_r3_4122);
         sp90 = sp70;
         sp98 = sp78;
     }
     temp_r4_4135 = this->unk8;
-    temp_r3_4143 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *), 0xC)(gb.unk0, temp_r4_4135), void **, 8);
+    temp_r3_4143 = M2C_FIELD(gb.unk0->GetProp(temp_r4_4135), void **, 8);
     sp50 = M2C_FIELD(temp_r3_4143, f64 *, 0x30);
     sp58 = M2C_FIELD(temp_r3_4143, f64 *, 0x38);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -2718,7 +2718,7 @@ void AssaultCannon::StateIdleUpdate() {
     }
     if (var_r5_4420 != 0) {
         temp_r4_4480 = this->unk8;
-        temp_r3_4488 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *), 0xC)(gb.unk0, temp_r4_4480), void **, 8);
+        temp_r3_4488 = M2C_FIELD(gb.unk0->GetProp(temp_r4_4480), void **, 8);
         sp18 = M2C_FIELD(temp_r3_4488, f64 *, 0x30);
         sp20 = M2C_FIELD(temp_r3_4488, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r31, 0x0, qr0 */);
@@ -2992,7 +2992,7 @@ void AssaultCannon::TakeDamage(float arg0, const MKVector3 &arg1) {
         temp_r31_4996 = this->unk8 + 0x30;
         M2C_FIELD(this, s32 *, 0x268) = KDSound_Play3d(checked_cast<P23AssaultCannonDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unk100, temp_r31_4996, 0U, -1, 0.0f, 0U);
     }
-    ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.6f, 0.4f, 0.1f, 0, 4.0f, 0U);
+    ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.6f, 0.4f, 0.1f, 0, 4.0f, 0U);
     EnemyHud_Modified((MKProp *) this, temp_f30_4965, var_f31_4968, 20.0f);
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     if (M2C_BITWISE(f32, this->unk2C4) == 0.0f) {

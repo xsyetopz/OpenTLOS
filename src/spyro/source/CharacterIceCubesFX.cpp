@@ -16,7 +16,7 @@ void *malloc(s32);                                  /* extern */
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: pointer/array required
 void CharacterIceCubesFX::Trigger() {
     s32 var_r28_21;
     s32 var_r29_23;
@@ -24,8 +24,8 @@ void CharacterIceCubesFX::Trigger() {
     void *temp_r3_38;
     void *temp_r3_46;
 
-    if ((MKHeap *) this->unk8 != NULL) {
-        CharacterBodyFX::SetDataActive(1U);
+    if ((CharacterBodyFXData *) this->unk8 != NULL) {
+        SetDataActive(1U);
         var_r28_21 = 0;
         var_r30_22 = 0;
         var_r29_23 = 0;
@@ -81,7 +81,7 @@ void CharacterIceCubesFX::Draw() {
 
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal type
 void CharacterIceCubesFX::Shatter() {
     s32 var_r28_150;
     s32 var_r29_149;
@@ -90,8 +90,8 @@ void CharacterIceCubesFX::Shatter() {
     void *temp_r3_187;
     this->unk20 = 0;
     this->unk21 = 1;
-    if ((MKHeap *) this->unk8 != NULL) {
-        CharacterBodyFX::SetDataActive(0U);
+    if ((CharacterBodyFXData *) this->unk8 != NULL) {
+        SetDataActive(0U);
         var_r31_148 = 0;
         var_r29_149 = 0;
         var_r28_150 = 0;
@@ -116,7 +116,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal type
 void CharacterIceCubesFX::Update() {
     f32 temp_f31_321;
     s32 var_r28_237;
@@ -129,7 +129,7 @@ void CharacterIceCubesFX::Update() {
     void *temp_r3_268;
     void *temp_r3_281;
     void *temp_r3_325;
-    if ((MKHeap *) this->unk8 != NULL) {
+    if ((CharacterBodyFXData *) this->unk8 != NULL) {
         CharacterBodyFX::Update();
         if ((u8) this->unk10 != 0) {
             var_r31_236 = 0;
@@ -192,9 +192,9 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 void CharacterIceCubesFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
-    MKHeap *temp_r3_401;
+    CharacterBodyFXData *temp_r3_401;
     MKHeap *temp_r3_404;
     s32 temp_r31_403;
     s32 var_r4_417;
@@ -227,7 +227,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'const char[8]' to
 void CharacterIceCubesFX::Init() {
     CharacterBodyFX::Init();
     this->unk14 = NULL;

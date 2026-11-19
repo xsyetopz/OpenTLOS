@@ -6,7 +6,6 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/PooledShatterProp.h"
@@ -1863,7 +1862,7 @@ loop_62:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void DynamiteExplosion::Trigger(const MKVector3 &arg0, float arg1, bool arg2, int arg3, MKProp *arg4) {
     s32 sp48;
     f32 sp44;
@@ -1888,7 +1887,7 @@ void DynamiteExplosion::Trigger(const MKVector3 &arg0, float arg1, bool arg2, in
     switch (arg3) {                                 /* irregular */
     case 0:
         var_r3_3987 = GS_TNTExplodeFire;
-        if (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 2) {
+        if (gb.unk0->GetHeroType() == 2) {
             var_r3_3987 = GS_Explosion6;
         }
         KDSound_Play3d(var_r3_3987, &arg0, 0U, -1, 0.0f, 0U);
@@ -1901,7 +1900,7 @@ block_14:
             var_r31_4080 = 1;
         }
         if (var_r31_4080 == 0) {
-            ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(arg1, arg1, 0.5f, &arg0, 30.0f, 0, 4.0f, 0U);
+            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(arg1, arg1, 0.5f, &arg0, 30.0f, 0, 4.0f, 0U);
         }
         temp_f5_4117 = M2C_FIELD(&arg0, f64 *, 0);
         temp_f3_4119 = 400.0f * arg1;

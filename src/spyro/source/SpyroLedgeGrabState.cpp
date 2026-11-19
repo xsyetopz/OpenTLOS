@@ -264,7 +264,7 @@ void SpyroLedgeGrabState::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
-void SpyroLedgeGrabState::Transition() {
+s32 SpyroLedgeGrabState::Transition() {
     void *sp10;
     s32 spC;
     s32 sp8;

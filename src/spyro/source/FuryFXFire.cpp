@@ -1,7 +1,6 @@
 #include "spyro/source/FuryFXFire.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKMaterial.h"
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -10,7 +9,6 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDSound.h"
@@ -219,7 +217,7 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
             var_r30_286 = *(temp_r5_272 + (temp_r0_270 * 4));
         }
         temp_r29_293 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-        this->unk290.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r30_286, temp_r29_293, temp_r29_293, 0, -1);
+        this->unk290.Init(gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r30_286, temp_r29_293, temp_r29_293, 0, -1);
         return 1;
     }
     return 0;
@@ -459,7 +457,7 @@ void FuryFXFire::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void FuryFXFire::Update() {
     Corona *temp_r3_1342;
     Corona *temp_r3_1652;
@@ -572,19 +570,19 @@ void FuryFXFire::Update() {
                     }
                 }
                 temp_f20_932 = this->unkFC;
-                ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(temp_f20_932, temp_f20_932, 0.033f, 0, 4.0f, 0U);
+                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(temp_f20_932, temp_f20_932, 0.033f, 0, 4.0f, 0U);
             } else {
                 M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                 if ((temp_f1_869 == 5.1f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_869 == 5.4f) != 0)) && ((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0)) {
-                    ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.6f, 0.0f, 0.05f, 0, 4.0f, 0U);
+                    ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.6f, 0.0f, 0.05f, 0, 4.0f, 0U);
                 } else {
                     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                     if ((temp_f1_869 == 6.1f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_869 == 6.4f) != 0)) && ((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0)) {
-                        ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.0f, 0.4f, 0.05f, 0, 4.0f, 0U);
+                        ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.0f, 0.4f, 0.05f, 0, 4.0f, 0U);
                     } else {
                         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                         if ((temp_f1_869 == 7.0f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_869 == 7.4f) != 0)) && ((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0)) {
-                            ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.3f, 0.0f, 0.05f, 0, 4.0f, 0U);
+                            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.3f, 0.0f, 0.05f, 0, 4.0f, 0U);
                         } else if (temp_f1_869 > 7.4f) {
                             this->unkF8 = -1.0f;
                         }
@@ -704,7 +702,7 @@ void FuryFXFire::Update() {
                 }
                 this->unk104 += 1;
                 if (((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
-                    ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.5f, 0.5f, 0.33f, 0, 4.0f, 0U);
+                    ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.5f, 0.5f, 0.33f, 0, 4.0f, 0U);
                 }
                 temp_r4_1331 = this->unkF4;
                 if (temp_r4_1331 != NULL) {
@@ -996,10 +994,10 @@ loop_87:
                 arg_sp4F8 = (f64) arg_sp258;
                 gb.unkB8.EnableScreenFlash(*((MKVector4 *) &arg_sp4F0), 3.0f * gUpdateTimeDelta);
                 if (((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
-                    ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.99f, 0.99f, 0.66f, 0, 4.0f, 0U);
+                    ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.99f, 0.99f, 0.66f, 0, 4.0f, 0U);
                 }
                 if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
-                    ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.99f, 0.99f, 0.66f, (MKVector3 *) &this->unk90.unk30, 50.0f, 0, 4.0f, 1U);
+                    ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.99f, 0.66f, (MKVector3 *) &this->unk90.unk30, 50.0f, 0, 4.0f, 1U);
                 }
                 M2C_STRUCT_COPY((s32) &arg_sp8FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_sp248 = 1.0f;
@@ -1061,7 +1059,7 @@ loop_87:
                     arg_sp974 = 0.0f;
                     arg_sp978 = 0.0f;
                     arg_sp990 = 0;
-                    M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp940);
+                    M2C_FIELD(M2C_FIELD(gb.unk0->GetProp(), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&arg_sp940);
                 }
                 var_r3_2323 = GS_SpyroFuryAttack2;
                 if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {

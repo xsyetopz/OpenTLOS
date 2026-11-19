@@ -103,7 +103,7 @@ u8 SpyroMoveState::SelectState(float arg0) {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'long' to
-u8 SpyroMoveState::Transition() {
+s32 SpyroMoveState::Transition() {
     InputModifier *temp_r3_340;
     InputModifier *temp_r3_422;
     M2C_UNK var_r23_470;

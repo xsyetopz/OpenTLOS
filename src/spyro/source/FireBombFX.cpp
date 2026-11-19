@@ -14,7 +14,6 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/ShapedTrailFX.h"
@@ -205,7 +204,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         temp_f1_245 = M2C_FIELD(&arg1, f64 *, 0);
         this->unkD0 = temp_f1_245;
         this->unkD8 = M2C_FIELD(&arg1, f64 *, 8);
-        temp_r3_255 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, f64), 0x34)(gb.unk0, temp_f1_245);
+        temp_r3_255 = gb.unk0->GetCollisionInfo(temp_f1_245);
         spC = temp_r3_255;
         if (temp_r3_255 != NULL) {
             sp10 = M2C_FIELD(temp_r3_255, u8 *, 4);
@@ -304,7 +303,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         this->unk1BC.AddNode(arg7);
         this->unk1D4 = 0.0f;
         this->unk1D4 = 10000.0f / M2C_BITWISE(f32, this->unk1C4);
-        if (((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) && (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 0)) {
+        if (((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) && (gb.unk0->GetHeroType() == 0)) {
             KDSound_Play3d(GS_CynderBreathStart2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
         }
         break;
@@ -564,7 +563,7 @@ void FireBombFX::Draw() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisionInfo *arg2) {
     f64 spF8;
     f64 spF0;
@@ -611,10 +610,10 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
     if ((s32) this->unk130.unk3C == 0) {
         var_r31_1121 = 0;
     }
-    if (((s32) M2C_FIELD(this, s32 *, 0x1BC) == 1) || (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 2)) {
+    if (((s32) M2C_FIELD(this, s32 *, 0x1BC) == 1) || (gb.unk0->GetHeroType() == 2)) {
         this->unkF8->unk88 = GS_Explosion7;
     } else if ((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) {
-        if (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 1) {
+        if (gb.unk0->GetHeroType() == 1) {
             this->unkF8->unk88 = GS_SWCynderFireball3;
         } else {
             this->unkF8->unk88 = GS_CynderBreathEnd2;
@@ -638,7 +637,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
         if ((u8) gb.unk35D != 0) {
             var_f26_1207 = 400.0f;
         }
-        temp_r3_1221 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+        temp_r3_1221 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         spC0 = M2C_FIELD(temp_r3_1221, f64 *, 0x30);
         spC8 = M2C_FIELD(temp_r3_1221, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
@@ -650,10 +649,10 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
         if ((((f32) spD8 * (f32) spD8) + (((f32) spD0 * (f32) spD0) + (unkspD4 * unkspD4))) == (var_f26_1207 * var_f26_1207)) {
             this->unk130.unk50 = 0;
             this->unk130.unk30 = NULL;
-            if (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 0) {
+            if (gb.unk0->GetHeroType() == 0) {
                 this->unk130.unk4C = GS_CynderBreathHitSpyro;
             }
-            M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 0x44), M2C_UNK (**)(BreathHitMessage *), 0x2C)(&this->unk130);
+            M2C_FIELD(M2C_FIELD(gb.unk0->GetProp(), void **, 0x44), M2C_UNK (**)(BreathHitMessage *), 0x2C)(&this->unk130);
         }
     } else {
         temp_f2_1279 = M2C_FIELD(&arg1, f64 *, 0);
@@ -769,7 +768,7 @@ void FireBombFX::Update() {
         this->unk188.Update(GS_SpyroSWFireballLP, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         break;
     case 2:                                         /* switch 1 */
-        if (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 1) {
+        if (gb.unk0->GetHeroType() == 1) {
             arg_sp8 = 1;
             this->unk188.Update(GS_SWCynderFireball2, 1U, this->unkE0, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         } else {
@@ -958,7 +957,7 @@ void FireBombFX::Update() {
             } else {
                 var_r29_1873 = NULL;
             }
-            if ((var_r29_1873 != NULL) && (var_r29_1873 != M2C_FIELD(gb.unk0->__vptr, u32 (**)(HeroInterface *), 0xC)(gb.unk0))) {
+            if ((var_r29_1873 != NULL) && (var_r29_1873 != gb.unk0->GetProp())) {
                 var_r31_1713 = 1;
             } else if (var_r29_1873 == NULL) {
                 var_r31_1713 = 1;

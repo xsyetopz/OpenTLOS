@@ -7,7 +7,6 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDProp.h"
 #include "unplaced_templates.h"
@@ -58,7 +57,7 @@ void FallingDustProp::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void FallingDustProp::Update() {
     s8 sp3A0;
     s32 sp39C;
@@ -178,7 +177,7 @@ void FallingDustProp::Update() {
 
     KDProp::Update();
     temp_r31_161 = checked_cast<FallingDustPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r3_167 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, GameGlobals *), 0x40)(gb.unk0, &gb);
+    temp_r3_167 = gb.unk0->GetInput(&gb);
     var_r4_169 = 0;
     if (((u8) M2C_FIELD(temp_r3_167, u8 *, 5) != 0) || ((u8) M2C_FIELD(temp_r3_167, u8 *, 4) != 0)) {
         var_r4_169 = 1;

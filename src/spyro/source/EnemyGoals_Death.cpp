@@ -11,7 +11,6 @@
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EventMessage.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/SpawnerObject.h"
@@ -722,7 +721,7 @@ u8 EnemyGoal_DyingWhirlwind::Update() {
             temp_r3_1301 = this->unkC;
             temp_r3_1301->unkB0A &= ~2;
             KDSound_Play3d(GS_EnemyTornadoImpact, this->unkC->unk8 + 0x30, 0U, -1, 0.0f, 0U);
-            ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unkC->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unkC->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
             this->unk8 = 2;
             var_r28_1338 = 0;
             do {

@@ -23,7 +23,7 @@ extern void **gb;
 extern u8 init_625;
 extern u8 init_661;
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
     s8 sp190;
     f64 sp188;
@@ -84,7 +84,7 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         sp108 = sp38;
-        sp40 = (f32) spF8.unk8 + spF0;
+        sp40 = sp100 + spF0;
         sp168 = sp38;
         sp110 = (f64) sp40;
         sp170 = (f64) sp40;
@@ -93,7 +93,7 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         spD8 = sp28;
-        sp30 = (f32) spC8.unk8 + spC0;
+        sp30 = spD0 + spC0;
         sp158 = sp28;
         spE0 = (f64) sp30;
         sp160 = (f64) sp30;
@@ -102,7 +102,7 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         spA8 = sp18;
-        sp20 = (f32) sp98.unk8 + sp90;
+        sp20 = spA0 + sp90;
         sp148 = sp18;
         spB0 = (f64) sp20;
         sp150 = (f64) sp20;
@@ -111,7 +111,7 @@ void VolcanoRumble::MakeRumbleSoundCameraShakeCrud() {
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         sp78 = sp8;
-        sp10 = (f32) sp68.unk8 + sp60;
+        sp10 = sp70 + sp60;
         sp138 = sp8;
         sp80 = (f64) sp10;
         sp140 = (f64) sp10;

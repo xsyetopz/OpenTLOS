@@ -10,7 +10,6 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/Spyro.h"
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKModel.h"
@@ -1319,7 +1318,7 @@ void EnemyGoal_HitAirCombo::Activate() {
     if (temp_r3_2364->unk920 & 0x200) {
         temp_r3_2364->unk598 *= 0.5f;
     }
-    if ((M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 0) && ((gb.GetSpyro(), ((((KDStateMachine<Spyro> *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x7C))->GetState() == 2) == 0)) || (gb.GetSpyro(), ((((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->IsInMelee() == 0) != 0)) || !(this->unkC->unk920 & 0x100F))) {
+    if ((gb.unk0->GetHeroType() == 0) && ((gb.GetSpyro(), ((((KDStateMachine<Spyro> *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x7C))->GetState() == 2) == 0)) || (gb.GetSpyro(), ((((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->IsInMelee() == 0) != 0)) || !(this->unkC->unk920 & 0x100F))) {
         temp_r4_2400 = this->unkC;
         temp_r4_2400->unkADC += 1;
     }
@@ -3047,7 +3046,7 @@ void EnemyGoal_HitBurn::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 u8 EnemyGoal_HitBurn::Update() {
     AnimSequence *temp_r4_5532;
     AnimSequence *temp_r4_5554;
@@ -3064,7 +3063,7 @@ u8 EnemyGoal_HitBurn::Update() {
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r4, 0x0, qr0 */);
     temp_r3_5491->unkA8 *= (f32) pow(0.125, gUpdateTimeDelta);
-    if (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *, f32 *), 8)(gb.unk0, &temp_r3_5491->unkA0) == 0) {
+    if (gb.unk0->GetHeroType(&temp_r3_5491->unkA0) == 0) {
         gb.GetSpyro();
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s8 *, 0x268) = 1;
     }
@@ -3240,7 +3239,7 @@ void EnemyGoal_HitShock::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 u8 EnemyGoal_HitShock::Update() {
     Enemy *temp_r29_5856;
     Enemy *temp_r3_5886;
@@ -3253,7 +3252,7 @@ u8 EnemyGoal_HitShock::Update() {
     ActivateIfInactive();
     temp_r4_5836 = this->unkC;
     M2C_FIELD(temp_r4_5836, u8 *, 0xB02) = (u8) (M2C_FIELD(temp_r4_5836, u8 *, 0xB02) | 0x20);
-    if (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *, Enemy *, M2C_UNK), 8)(gb.unk0, temp_r4_5836, 1) == 0) {
+    if (gb.unk0->GetHeroType(temp_r4_5836, 1) == 0) {
         gb.GetSpyro();
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s8 *, 0x268) = 1;
     }

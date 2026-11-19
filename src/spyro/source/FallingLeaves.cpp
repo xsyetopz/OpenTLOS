@@ -993,11 +993,9 @@ void FallingLeaves::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void FallingLeavesDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();
 }
-#endif
 
 void FallingLeaves_cpp::__sinit() {
     f32 temp_f0_2096;

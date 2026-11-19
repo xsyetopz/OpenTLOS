@@ -310,7 +310,7 @@ void SpyroIdleState::NormalEnter() {
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unk14'
-u8 SpyroIdleState::Transition() {
+s32 SpyroIdleState::Transition() {
     M2C_UNK var_r28_760;
     s32 var_r29_726;
     u8 var_r30_727;

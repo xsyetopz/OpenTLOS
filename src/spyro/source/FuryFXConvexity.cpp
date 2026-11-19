@@ -3,7 +3,6 @@
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKModel.h"
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -11,7 +10,6 @@
 #include "spyro/source/CharacterGlowFX.h"
 #include "spyro/source/FuryFX.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDProp.h"
@@ -584,7 +582,7 @@ block_105:
                 if ((var_f22_667 == 200.0f) && ((void *) M2C_FIELD(temp_r29_1508, void **, 0x80) != NULL)) {
                     M2C_FIELD(temp_r29_1508, f32 *, 0x8C) = 0.0f;
                     arg_sp5B4 = 0;
-                    arg_sp5B0.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 0.5f, 3, 0, 4, 0, 1, -1);
+                    arg_sp5B0.Init(gb.unk0->GetProp(), 0.5f, 3, 0, 4, 0, 1, -1);
                     temp_r3_978 = M2C_FIELD(temp_r29_1508, void **, 0x80);
                     M2C_FIELD(M2C_FIELD(temp_r3_978, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x2C)(temp_r3_978, &arg_sp5B0);
                     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
@@ -1376,7 +1374,7 @@ void FuryFXConvexity::Update() {
             this->unk150 = -1.0f;
         }
         temp_f15_2623 = this->unk154;
-        ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.7f * temp_f15_2623, temp_f15_2623, 0.033f, 0, 4.0f, 0U);
+        ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.7f * temp_f15_2623, temp_f15_2623, 0.033f, 0, 4.0f, 0U);
         this->unk150 += gUpdateTimeDelta;
     }
     temp_r0_2643 = this->unkF0;

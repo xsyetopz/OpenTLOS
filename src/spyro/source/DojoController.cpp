@@ -94,7 +94,7 @@ u8 EarthDojoLesson::HasSucceededFury() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: expression syntax error
 u8 EarthDojoLesson::HasSucceededBreath2() {
     s32 spC;
     s32 sp8;
@@ -106,7 +106,7 @@ u8 EarthDojoLesson::HasSucceededBreath2() {
     s32 var_r0_145;
     s32 var_r0_154;
 
-    DojoLesson::UpdateCombatArcs();
+    UpdateCombatArcs();
     if ((s32) this->unk10 == 1) {
         temp_r4_111 = this->unk4;
         if (((MKSceneManager *) temp_r4_111->unk408 != (MKSceneManager *)1U) && ((u32) temp_r4_111->unk40C != 1) && ((u32) temp_r4_111->unk410 != 1) && ((u32) temp_r4_111->unk414 != 1) && ((u32) temp_r4_111->unk418 != 1) && ((u32) temp_r4_111->unk41C != 1) && ((u32) temp_r4_111->unk420 != 1)) {
@@ -1612,7 +1612,7 @@ u8 ElectricDojoLesson::HasSucceededFury() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'lit_2532'
 u8 ElectricDojoLesson::HasSucceededBreath2() {
     s32 spC;
     s32 sp8;
@@ -1631,7 +1631,7 @@ u8 ElectricDojoLesson::HasSucceededBreath2() {
     s32 var_r0_3323;
     s32 var_r0_3332;
 
-    DojoLesson::UpdateCombatArcs();
+    UpdateCombatArcs();
     temp_r0_3212 = this->unk10;
     switch (temp_r0_3212) {                         /* irregular */
     case 0:
@@ -2687,7 +2687,7 @@ u8 FireDojoLesson::HasSucceededBreath1() {
     return 0U;
 }
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal operand
 u8 FireDojoLesson::HasSucceededMeleeKnockBack() {
     DojoController *temp_r3_5245;
     DojoController *temp_r3_5313;
@@ -2714,7 +2714,7 @@ u8 FireDojoLesson::HasSucceededMeleeKnockBack() {
     void *temp_r3_5422;
     void *temp_r3_5568;
 
-    DojoLesson::UpdateCombatArcs();
+    UpdateCombatArcs();
     temp_r0_5209 = this->unk10;
     switch (temp_r0_5209) {                         /* irregular */
     case 0:
@@ -2875,7 +2875,7 @@ loop_64:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal operand
 u8 FireDojoLesson::HasSucceededMeleeKnockUp() {
     s32 spC;
     s32 sp8;
@@ -2896,7 +2896,7 @@ u8 FireDojoLesson::HasSucceededMeleeKnockUp() {
     s32 temp_r0_5619;
     s32 temp_r6_5763;
 
-    DojoLesson::UpdateCombatArcs();
+    UpdateCombatArcs();
     temp_r0_5619 = this->unk10;
     switch (temp_r0_5619) {                         /* irregular */
     case 0:

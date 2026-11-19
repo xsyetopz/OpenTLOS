@@ -1601,7 +1601,7 @@ void Collectable::Spawn(const MKVector3 *arg0, const MKVector3 *arg1, bool arg2)
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void Collectable::Message(MKMessage *arg0) {
     f64 spA0;
     f64 sp98;
@@ -1655,7 +1655,7 @@ void Collectable::Message(MKMessage *arg0) {
         sp68.GetPos();
         temp_f1_3345 = M2C_BITWISE(f64, sp68);
         this->unk50 = temp_f1_3345;
-        this->unk58 = sp68.unk8;
+        this->unk58 = sp70;
         M2C_FIELD(this, f32 *, 0x54) = (f32) (M2C_FIELD(this, f32 *, 0x54) + M2C_FIELD(*gb, f32 (**)(void **, f64), 0x6C)(gb, temp_f1_3345));
         SetState(6);
         Update();
@@ -1767,7 +1767,7 @@ block_81:
                         sp48.GetPos();
                         temp_f1_3632 = M2C_BITWISE(f64, sp48);
                         this->unk50 = temp_f1_3632;
-                        this->unk58 = sp48.unk8;
+                        this->unk58 = sp50;
                         M2C_FIELD(this, f32 *, 0x54) = (f32) (M2C_FIELD(this, f32 *, 0x54) + M2C_FIELD(*gb, f32 (**)(void **, f64), 0x6C)(gb, temp_f1_3632));
                         SetState(6);
                         Update();

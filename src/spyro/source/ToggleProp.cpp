@@ -55,13 +55,11 @@ void ToggleProp::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void TogglePropDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void TogglePropDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
     this->unk78 = MKModel_GetSubObjectIndex(this->unk2C, (SubObjectType) 0, this->unk70);
@@ -69,7 +67,7 @@ void TogglePropDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 TogglePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_217;
 
@@ -81,7 +79,6 @@ s32 TogglePropDescriptor::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void TogglePropDescriptor::Init() {
     KDPropDescriptor::Init();
     this->unk78 = -1;
@@ -89,4 +86,3 @@ void TogglePropDescriptor::Init() {
     M2C_FIELD(this, s8 *, 0x80) = 0;
     M2C_FIELD(this, s8 *, 0x81) = 1;
 }
-#endif

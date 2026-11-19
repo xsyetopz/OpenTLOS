@@ -275,7 +275,7 @@ void EventCamera::CalculateCircleTangent(MKVector3 arg0, MKVector3 arg1, float a
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: function call 'GetProp(HeroInterface *, GameGlobals *, void *, double)'
 void EventCamera::FunctionOff() {
     s8 spC9;
     u8 spC8;
@@ -323,11 +323,11 @@ void EventCamera::FunctionOff() {
 
     if (!(this->unk18 & 0x80000000)) {
         if ((u8) this->unkFC != 0) {
-            temp_r5_465 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+            temp_r5_465 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
             temp_f1_468 = M2C_FIELD(temp_r5_465, f64 *, 0x30);
             sp70 = temp_f1_468;
             sp78 = M2C_FIELD(temp_r5_465, f64 *, 0x38);
-            temp_r6_476 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, GameGlobals *, void *, f64), 0xC)(gb.unk0, &gb, temp_r5_465, temp_f1_468), void **, 8);
+            temp_r6_476 = M2C_FIELD(gb.unk0->GetProp(&gb, temp_r5_465, temp_f1_468), void **, 8);
             sp30 = -M2C_FIELD(temp_r6_476, f32 *, 0x20);
             sp34 = -M2C_FIELD(temp_r6_476, f32 *, 0x24);
             sp38 = -M2C_FIELD(temp_r6_476, f32 *, 0x28);
@@ -522,8 +522,8 @@ void EventCamera::FunctionOn() {
     void *temp_r6_1160;
     void *temp_r7_947;
 
-    if (((s32) gb.unk34C != 0) && (this->unk18 & 0x80000000) && (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x54)(gb.unk0) == 0)) {
-        if (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x60)(gb.unk0) != 0) {
+    if (((s32) gb.unk34C != 0) && (this->unk18 & 0x80000000) && (gb.unk0->IsDying() == 0)) {
+        if (gb.unk0->IsRespawning() != 0) {
             return;
         }
         if ((u8) M2C_FIELD(gb.unkC, u8 *, 0xA9) != 0) {
@@ -726,7 +726,7 @@ void EventCamera::FunctionOn() {
             sp20 = 0x402;
             spC0 = temp_f0_1162;
             M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, void *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp20, 0, temp_r6_1160, temp_f1_1161);
-            if (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 0) {
+            if (gb.unk0->GetHeroType() == 0) {
                 gb.GetSpyro();
                 if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                     gb.GetSpyro();
@@ -895,7 +895,7 @@ void EventCamera::GetTargetStart() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void EventCamera::Update() {
     EventCamera *temp_r3_2815;
     f32 temp_f0_1756;
@@ -955,9 +955,9 @@ void EventCamera::Update() {
     void *temp_r4_2319;
     void *temp_r4_2705;
     MKProp::Update();
-    temp_ret_1483 = M2C_FIELD(gb.unk0->__vptr, u64 (**)(HeroInterface *), 0x54)(gb.unk0);
+    temp_ret_1483 = gb.unk0->IsDying();
     var_r4_1483 = (u32) temp_ret_1483;
-    if (((temp_ret_1483 != 0) || (temp_ret_1492 = M2C_FIELD(gb.unk0->__vptr, u64 (**)(HeroInterface *), 0x60)(gb.unk0), var_r4_1483 = (u32) temp_ret_1492, ((temp_ret_1492 == 0) == 0))) && (this == (EventCamera *) pCurrentCamera)) {
+    if (((temp_ret_1483 != 0) || (temp_ret_1492 = gb.unk0->IsRespawning(), var_r4_1483 = (u32) temp_ret_1492, ((temp_ret_1492 == 0) == 0))) && (this == (EventCamera *) pCurrentCamera)) {
         FunctionOff();
         return;
     }
@@ -1619,7 +1619,7 @@ void EventCamera::Reset() {
             sp8 = 0xAA;
             M2C_FIELD(M2C_FIELD(temp_r3_3128, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
         }
-        if (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 0) {
+        if (gb.unk0->GetHeroType() == 0) {
             gb.GetSpyro();
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 gb.GetSpyro();
@@ -1639,7 +1639,7 @@ void EventCamera::Reset() {
             sp10 = M2C_FIELD(&InitialCameraPos, f64 *, 0);
             sp18 = M2C_FIELD(&InitialCameraPos, f64 *, 8);
             M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp30, 0, M2C_FIELD(&InitialCameraPos, f64 *, 0));
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *), 0x20)(gb.unk0);
+            gb.unk0->Enable();
             Hud_Show(1U);
             pCurrentCamera = NULL;
         }

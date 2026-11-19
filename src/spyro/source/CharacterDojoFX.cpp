@@ -10,7 +10,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'sp40'
 void CharacterDojoFX::Emit() {
     f64 sp88;
     f64 sp80;
@@ -38,8 +38,8 @@ void CharacterDojoFX::Emit() {
         this->unk28 = 0.0f;
         var_r29_36 = 0;
         do {
-            temp_r31_41 = CharacterBodyFX::GetRandomNode(NULL);
-            temp_r3_44 = CharacterBodyFX::GetRandomNode(NULL);
+            temp_r31_41 = GetRandomNode(NULL);
+            temp_r3_44 = GetRandomNode(NULL);
             if ((temp_r31_41 != NULL) && (temp_r3_44 != NULL)) {
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
@@ -80,17 +80,14 @@ void CharacterDojoFX::Enable(bool arg0, MKVector4 arg1) {
     }
     M2C_FIELD(this, f64 *, 0x18) = (f64) M2C_FIELD(arg1, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x20) = (f64) M2C_FIELD(arg1, f64 *, 8);
-    CharacterBodyFX::SetDataActive(arg0);
+    SetDataActive(arg0);
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterDojoFX::Deinit() {
     CharacterBodyFX::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterDojoFX::Update() {
     s32 temp_r0_174;
 
@@ -104,15 +101,11 @@ void CharacterDojoFX::Update() {
         Emit();
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterDojoFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
     CharacterBodyFX::InitData(arg0, arg1, arg2);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterDojoFX::Init() {
     f64 sp20;
     f64 sp18;
@@ -133,4 +126,3 @@ void CharacterDojoFX::Init() {
     sp20 = (f64) sp10;
     M2C_FIELD(this, f64 *, 0x20) = (f64) sp10;
 }
-#endif

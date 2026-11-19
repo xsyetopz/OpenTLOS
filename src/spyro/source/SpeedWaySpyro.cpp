@@ -2860,7 +2860,7 @@ void SpeedWaySpyro::LoadDone() {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
     this->unk388 = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk388->unk4 = this;
+    M2C_FIELD(this->unk388, SpeedWaySpyro **, 4) = this;
     this->unk38C = NULL;
     this->unk2F4 = 2;
     ClearData();
@@ -2919,14 +2919,11 @@ void SpeedWaySpyro::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void SpeedWaySpyroDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
     this->unk190 = MKModel_GetRefPointIndex(this->unk2C, "r_a001_nose");
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 s32 SpeedWaySpyroDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_6452;
 
@@ -2936,15 +2933,12 @@ s32 SpeedWaySpyroDescriptor::LoadLine(MKIniLine *arg0) {
     }
     return var_r31_6452;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void SpeedWaySpyroDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'unk70'
 void SpeedWaySpyroDescriptor::Init() {
     void *temp_r3_6624;
 

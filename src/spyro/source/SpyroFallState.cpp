@@ -837,7 +837,7 @@ void SpyroFallState::Message(MKMessage *arg0) {
 #endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'long' to
-u8 SpyroFallState::Transition() {
+s32 SpyroFallState::Transition() {
     s8 sp81;
     s8 sp80;
     s32 sp7C;

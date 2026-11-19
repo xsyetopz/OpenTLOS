@@ -10,7 +10,6 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/IceBitsPS.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
@@ -1294,7 +1293,7 @@ loop_8:
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp120));
     this->unk140 = 2.0f;
     EmitSnowRing();
-    ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.8f, 0.8f, 0.04f, this->unk8 + 0x30, 50.0f, 0, 4.0f, 0U);
+    ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.8f, 0.04f, this->unk8 + 0x30, 50.0f, 0, 4.0f, 0U);
     var_r23_2410 = 0;
     arg_sp30 = 0.0f;
     arg_sp2C = 0.0f;

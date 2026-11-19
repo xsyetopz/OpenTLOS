@@ -10,7 +10,6 @@
 #include "spyro/source/ExplosiveBarrelPath.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
@@ -325,7 +324,7 @@ void ExplosiveBarrel::Message(MKMessage *arg0) {
                 if (temp_r3_677 & 0x2000) {
                     this->unk1B4 = 2;
                 } else if (temp_r3_677 & 0x400) {
-                    ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.12f, 0.4f, 0.1f, 0, 4.0f, 0U);
+                    ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.12f, 0.4f, 0.1f, 0, 4.0f, 0U);
                     KDSound_Play3d(M2C_FIELD(temp_r30_674, s32 *, 0x2C), this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
                 }
                 goto block_50;

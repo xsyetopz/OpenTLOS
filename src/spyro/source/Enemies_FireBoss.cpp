@@ -18,7 +18,6 @@
 #include "spyro/source/FireBossGoals.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameMessages.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/MeleeAttackHitMsg.h"
 #include "spyro/source/Projectile.h"
@@ -632,7 +631,7 @@ void FireBoss::SquashHero() {
                 }
                 spD9 = 0;
             }
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, f32 *), 0x1C)(gb.unk0, &sp58.unk30);
+            gb.unk0->Message(&sp58.unk30);
             if (spD8 != 0) {
                 if ((u8) this->unkC1C->unk1D == 1) {
                     this->unkC43 = 1;
@@ -775,7 +774,7 @@ void FireBoss::HurtHero() {
             spA8 = 0.0f;
         }
         spC1 = 0;
-        M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, f32 *), 0x1C)(gb.unk0, &sp40.unk30);
+        gb.unk0->Message(&sp40.unk30);
         if (spC0 != 0) {
             if ((u8) this->unkC1C->unk1D == 1) {
                 this->unkC43 = 1;
@@ -984,7 +983,7 @@ s32 FireBoss::HasRunOverSpyro() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 u8 FireBoss::IsSpyroOnInsideTrack(int arg0) {
     f64 sp30;
     f64 sp28;
@@ -1000,7 +999,7 @@ u8 FireBoss::IsSpyroOnInsideTrack(int arg0) {
     void *temp_r3_1788;
     void *temp_r4_1784;
 
-    temp_r4_1784 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, GameGlobals *), 0xC)(gb.unk0, &gb), void **, 8);
+    temp_r4_1784 = M2C_FIELD(gb.unk0->GetProp(&gb), void **, 8);
     var_r0_1786 = 0;
     temp_r3_1788 = this + (arg0 * 0x60);
     sp28 = M2C_FIELD(temp_r4_1784, f64 *, 0x30);
@@ -1119,7 +1118,7 @@ f32 FireBoss::CalcEdgeSplineStartTime(FireBossGraphEdge *arg0) {
     return arg0->unkC;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void FireBoss::MoveAlongCurrentSpline(float arg0) {
     f32 temp_f0_2126;
     f32 temp_f1_2094;
@@ -1127,7 +1126,7 @@ void FireBoss::MoveAlongCurrentSpline(float arg0) {
     u8 var_r31_2076;
 
     var_r31_2076 = 0;
-    if (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *, GameGlobals *), 0x70)(gb.unk0, &gb) != 0) {
+    if (gb.unk0->IsFuryActive(&gb) != 0) {
         this->unkD24 = 1.5f;
     } else {
         temp_f1_2094 = gUpdateTimeDelta * (arg0 * this->unkB18 * M2C_BITWISE(f32, this->unkB14));

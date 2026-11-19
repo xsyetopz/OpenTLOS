@@ -11,7 +11,6 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/IceBreathSnowFlakes.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/ManagedLight.h"
@@ -384,7 +383,7 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
         var_r28_646 = *(temp_r5_632 + (temp_r29_630 * 4));
     }
     temp_r27_653 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-    temp_r4_661 = M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0);
+    temp_r4_661 = gb.unk0->GetProp();
     sp8 = -1;
     this->unkB8.Init(temp_r4_661, 0, temp_r29_630, var_r28_646, temp_r27_653, temp_r27_653, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unk190 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
@@ -588,7 +587,7 @@ void FuryFXIce::Update() {
                 this->unk94 = 0.5f;
                 this->unk90 = 2;
                 KDSound_Play3d(GS_SpyroFuryIce1, (MKVector3 *) &this->unkA0, 0U, -1, 0.0f, 0U);
-                ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.1f, 0.3f, 2.0f, 0, 4.0f, 0U);
+                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.1f, 0.3f, 2.0f, 0, 4.0f, 0U);
                 M2C_STRUCT_COPY((s32) &arg_sp4AC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
                 arg_spA0 = 0.0f;
                 arg_sp98 = 0.0f;
@@ -738,7 +737,7 @@ loop_31:
                 if (((s32) M2C_FIELD(temp_r3_1396, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r3_1396, s32 *, 4) == 3)) {
                     var_r4_1391 = 1;
                 }
-                temp_r4_1416 = M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *, u8), 0xC)(gb.unk0, var_r4_1391);
+                temp_r4_1416 = gb.unk0->GetProp(var_r4_1391);
                 arg_sp8 = -1;
                 this->unkB8.Init(temp_r4_1416, 0, 3, var_r4_1391 != 0, 2, 2, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                 temp_f2_1426 = this->unkA0;
@@ -758,13 +757,13 @@ loop_31:
                 if (((s32) M2C_FIELD(temp_r3_1468, s32 *, 0) == 3) && ((s32) M2C_FIELD(temp_r3_1468, s32 *, 4) == 3)) {
                     var_r4_1463 = 1;
                 }
-                this->unkB8.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *, u8), 0xC)(gb.unk0, var_r4_1463), 15.0f * gb.unk37C, 3, var_r4_1463 != 0, 2, 2, 0, -1);
+                this->unkB8.Init(gb.unk0->GetProp(var_r4_1463), 15.0f * gb.unk37C, 3, var_r4_1463 != 0, 2, 2, 0, -1);
                 temp_f2_1501 = this->unkA0;
                 M2C_FIELD(this, f64 *, 0xC8) = temp_f2_1501;
                 M2C_FIELD(this, f64 *, 0xD0) = (f64) this->unkA8;
                 M2C_FIELD(*gMK, M2C_UNK (**)(void **, BreathHitMessage *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32, f64), 0x94)(gMK, &this->unkB8, 0, 0, &this->unkA0, 1, 3000.0f, temp_f2_1501);
                 KDSound_Play3d(GS_SpyroFuryIce2, (MKVector3 *) &this->unkA0, 0U, -1, 0.0f, 0U);
-                ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.99f, 0.99f, 1.0f, 0, 4.0f, 0U);
+                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.99f, 0.99f, 1.0f, 0, 4.0f, 0U);
                 if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                     arg_sp3AC = 0;
                     temp_f18_1548 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);

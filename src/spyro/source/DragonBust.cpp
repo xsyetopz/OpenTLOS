@@ -10,7 +10,6 @@
 #include "spyro/source/FloorSwitch.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/ManagedLight.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
@@ -777,7 +776,7 @@ void DragonBust::SlidingIntoPlaceEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void DragonBust::SlideUpdate() {
     f64 sp188;                                      /* compiler-managed */
     f64 sp180;                                      /* compiler-managed */
@@ -842,7 +841,7 @@ void DragonBust::SlideUpdate() {
     void *temp_r4_1046;
     void *temp_r4_1165;
 
-    temp_r4_1046 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, GameGlobals *), 0xC)(gb.unk0, &gb), void **, 8);
+    temp_r4_1046 = M2C_FIELD(gb.unk0->GetProp(&gb), void **, 8);
     temp_r3_1047 = this->unk8;
     sp150 = M2C_FIELD(temp_r4_1046, f64 *, 0x30);
     sp160 = M2C_FIELD(temp_r3_1047, f64 *, 0x30);
@@ -897,7 +896,7 @@ void DragonBust::SlideUpdate() {
     sp180 = temp_f2_1154;
     unksp184 = temp_f1_1156;
     sp188 = (f32) sp188 * var_f3_1143;
-    temp_r4_1165 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, f32, f32), 0xC)(gb.unk0, temp_f1_1156, temp_f2_1154), void **, 8);
+    temp_r4_1165 = M2C_FIELD(gb.unk0->GetProp(temp_f1_1156, temp_f2_1154), void **, 8);
     temp_f5_1171 = -M2C_FIELD(temp_r4_1165, f32 *, 0x20);
     temp_f2_1176 = this->unkF8;
     sp90 = temp_f5_1171;
@@ -907,7 +906,7 @@ void DragonBust::SlideUpdate() {
     sp140 = (f64) sp90;
     sp148 = (f64) sp98;
     temp_f27_1192 = (temp_f4_1180 * (f32) sp148) + ((temp_f2_1176 * (f32) sp140) + (this->unkFC * unksp144));
-    temp_r3_1195 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *, f32, f32, f32, f32, f32), 0xC)(gb.unk0, temp_r4_1165, (f32) sp140, temp_f2_1176, (f32) sp148, temp_f4_1180, temp_f5_1171), void **, 8);
+    temp_r3_1195 = M2C_FIELD(gb.unk0->GetProp(temp_r4_1165, (f32) sp140, temp_f2_1176, (f32) sp148, temp_f4_1180, temp_f5_1171), void **, 8);
     sp80 = -M2C_FIELD(temp_r3_1195, f32 *, 0x20);
     sp84 = -M2C_FIELD(temp_r3_1195, f32 *, 0x24);
     sp88 = -M2C_FIELD(temp_r3_1195, f32 *, 0x28);

@@ -3,7 +3,6 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKProp.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/Spyro.h"
 #include "unplaced_templates.h"
@@ -65,7 +64,7 @@ void CollapsibleProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void CollapsibleProp::Update() {
     MKAnimScript *temp_r3_269;
     f32 temp_f1_188;
@@ -81,7 +80,7 @@ void CollapsibleProp::Update() {
         temp_f1_188 = this->unk94;
         var_r30_192 = 0;
         this->unk94 = temp_f1_188 + gUpdateTimeDelta;
-        if (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *, f32), 8)(gb.unk0, temp_f1_188) == 0) {
+        if (gb.unk0->GetHeroType(temp_f1_188) == 0) {
             var_r29_203 = 1;
             gb.GetSpyro();
             if (((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->IsCharging() == 0) {

@@ -48,7 +48,7 @@ u8 states__15SpyroSlideState[0x24] = {
 };
 
 #if 0 // DRAFT: undefined identifier 'unk10'
-u8 SpyroSlideState::Transition() {
+s32 SpyroSlideState::Transition() {
     MKProp *temp_r4_32;
     Spyro *temp_r3_121;
     Spyro *temp_r3_31;

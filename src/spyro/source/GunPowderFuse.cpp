@@ -12,7 +12,6 @@
 #include "spyro/source/FireBombFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/LiquidFX.h"
@@ -905,7 +904,7 @@ loop_114:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void GunPowderFuse::Update() {
     f64 sp178;
     f64 sp170;
@@ -1004,11 +1003,11 @@ void GunPowderFuse::Update() {
 
     MKProp::Update();
     if (IsBurntOut() == 0) {
-        temp_r3_1665 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0x3C)(gb.unk0);
+        temp_r3_1665 = gb.unk0->GetEffects();
         if (temp_r3_1665 != NULL) {
             gb.GetSpyro();
             if (((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x3D3) != 0) && ((s32) M2C_FIELD(GameData::gameData, s32 *, 0x158) == 0) && ((s32) *(&GameData::gameData[0x70] + ((M2C_FIELD(GameData::gameData, s32 *, 0x158) << 5) + 0x7C)) == 0)) {
-                temp_r3_1692 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+                temp_r3_1692 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
                 sp170 = M2C_FIELD(temp_r3_1692, f64 *, 0x30);
                 sp178 = M2C_FIELD(temp_r3_1692, f64 *, 0x38);
                 Tools_GetClosestSplineTime(&this->unkB0->unk30, *((MKVector3 *) &sp170), this->unk2B4);
@@ -1042,7 +1041,7 @@ loop_15:
                     temp_f4_1788 = (f32) sp150 - (f32) sp140;
                     temp_f3_1792 = (f32) sp158 - (f32) sp148;
                     temp_f9_1793 = M2C_FIELD(var_r28_1747, f32 *, 0x128);
-                    temp_r3_1795 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, f64), 0xC)(gb.unk0, spC0), void **, 8);
+                    temp_r3_1795 = M2C_FIELD(gb.unk0->GetProp(spC0), void **, 8);
                     temp_f5_1796 = 500.0f * temp_f9_1793;
                     sp130 = M2C_FIELD(temp_r3_1795, f64 *, 0x30);
                     sp138 = M2C_FIELD(temp_r3_1795, f64 *, 0x38);

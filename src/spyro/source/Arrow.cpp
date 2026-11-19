@@ -2,7 +2,6 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/Trap.h"
 #include "common/Source/MKModel.h"
 #include "spyro/source/PropFlags.h"
@@ -94,7 +93,7 @@ void Arrow::Update() {
         temp_f1_180 = M2C_FIELD(temp_r4_177, f64 *, 0x30);
         sp78 = temp_f1_180;
         sp80 = M2C_FIELD(temp_r4_177, f64 *, 0x38);
-        temp_r3_188 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *, f64), 0xC)(gb.unk0, temp_r4_177, temp_f1_180), void **, 8);
+        temp_r3_188 = M2C_FIELD(gb.unk0->GetProp(temp_r4_177, temp_f1_180), void **, 8);
         sp88 = M2C_FIELD(temp_r3_188, f64 *, 0x30);
         sp90 = M2C_FIELD(temp_r3_188, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
@@ -132,7 +131,7 @@ void Arrow::Update() {
                 sp100 = 0.0f;
             }
             sp119 = 0;
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *), 0x1C)(gb.unk0, &spC8);
+            gb.unk0->Message(&spC8);
             Disable();
         }
         temp_r5_282 = this->unk8;

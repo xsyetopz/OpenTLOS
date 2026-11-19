@@ -3,7 +3,6 @@
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameProp.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/Trap.h"
 #include "common/Source/StdMath.h"
 #include "spyro/source/PropFlags.h"
@@ -107,7 +106,7 @@ void FireTrap::Update() {
             temp_f1_117 = M2C_FIELD(temp_r4_114, f64 *, 0x30);
             spF8 = temp_f1_117;
             sp100 = M2C_FIELD(temp_r4_114, f64 *, 0x38);
-            temp_r3_125 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *, f64), 0xC)(gb.unk0, temp_r4_114, temp_f1_117), void **, 8);
+            temp_r3_125 = M2C_FIELD(gb.unk0->GetProp(temp_r4_114, temp_f1_117), void **, 8);
             sp108 = M2C_FIELD(temp_r3_125, f64 *, 0x30);
             sp110 = M2C_FIELD(temp_r3_125, f64 *, 0x38);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
@@ -145,7 +144,7 @@ void FireTrap::Update() {
                     sp180 = 0.0f;
                 }
                 sp199 = 0;
-                M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *), 0x1C)(gb.unk0, &sp148);
+                gb.unk0->Message(&sp148);
             }
         }
         if ((this->unkE0 < 1.0f) && (MKRand_Int(&gViewSeed, 0, 0xA) == 0)) {

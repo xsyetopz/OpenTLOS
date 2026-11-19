@@ -2712,15 +2712,13 @@ KDCameraDeltaStages *GameCamera2Descriptor::GetDeltaStages(int arg0) {
     return M2C_FIELD((this + (arg0 * 4)), KDCameraDeltaStages **, 0xB8);
 }
 
-#if 0 // DRAFT: illegal use of non-static member
 void GameCamera2Descriptor::LoadDone() {
     KDCameraDescriptor::LoadDone();
     this->unk94 = 4;
     this->unkA8 = this->unkB8;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 GameCamera2Descriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_5402;
 
@@ -2751,7 +2749,7 @@ void GameCamera2Descriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal operand
 void GameCamera2Descriptor::Init() {
     s32 temp_r0_5479;
     s32 var_r30_5472;

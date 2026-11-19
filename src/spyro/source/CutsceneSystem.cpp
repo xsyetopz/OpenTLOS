@@ -1189,19 +1189,15 @@ void CutsceneSystem::InitModule() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void GameSynkerPlayer::Deinit() {
     KDSynkerPlayer3::Deinit();
     this->unk260.Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void GameSynkerPlayer::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) {
     this->unk260.Init(0x800);
     KDSynkerPlayer3::Init(arg0, arg1, arg2, arg3);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'lit_752'
 void CutsceneSystem_cpp::__sinit() {

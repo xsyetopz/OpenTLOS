@@ -6,7 +6,6 @@
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
 #include "common/Source/MKModel.h"
@@ -188,7 +187,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void DragonStatue::EmitCrudAbovePlayer() {
     f64 sp88;                                       /* compiler-managed */
     f64 sp80;
@@ -215,7 +214,7 @@ void DragonStatue::EmitCrudAbovePlayer() {
     var_r29_437 = 0;
 loop_2:
     if (var_r29_437 < (s32) this->unkF8) {
-        temp_r4_445 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+        temp_r4_445 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         sp80 = M2C_FIELD(temp_r4_445, f64 *, 0x30);
         sp88 = M2C_FIELD(temp_r4_445, f64 *, 0x38);
         unksp84 += 200.0f;
@@ -520,7 +519,7 @@ void DragonStatue::Update() {
             } else {
                 var_f30_892 = 50.0f;
             }
-            ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.5f, 0.05f, 0.05f, this->unk8 + 0x30, var_f30_892, 0, 4.0f, 0U);
+            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.5f, 0.05f, 0.05f, this->unk8 + 0x30, var_f30_892, 0, 4.0f, 0U);
         }
         temp_f1_915 = this->unk154;
         if (temp_f1_915 > 2.5f) {
@@ -574,7 +573,7 @@ void DragonStatue::Update() {
         arg_sp330.SetRotateAroundAxis(MKVector3::up, this->unkF4);
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp330));
         temp_r4_1044 = this->unk8;
-        temp_r3_1045 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+        temp_r3_1045 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         temp_f3_1047 = M2C_FIELD(temp_r3_1045, f64 *, 0x30);
         temp_f2_1048 = M2C_FIELD(temp_r3_1045, f64 *, 0x38);
         arg_sp288 = M2C_FIELD(temp_r4_1044, f64 *, 0x30);
@@ -782,7 +781,7 @@ void DragonStatue::Update() {
         arg_sp2F0.SetRotateAroundAxis(MKVector3::up, this->unkF4);
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp2F0));
         temp_r4_1518 = this->unk8;
-        temp_r3_1519 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+        temp_r3_1519 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         temp_f3_1521 = M2C_FIELD(temp_r3_1519, f64 *, 0x30);
         temp_f2_1522 = M2C_FIELD(temp_r3_1519, f64 *, 0x38);
         arg_sp268 = M2C_FIELD(temp_r4_1518, f64 *, 0x30);

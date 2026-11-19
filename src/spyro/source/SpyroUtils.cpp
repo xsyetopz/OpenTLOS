@@ -94,7 +94,7 @@ void SpyroSoundPlayer::PlaySounds(int arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void SpyroSoundPlayer::DetermineSoundPos(int arg0) {
     f64 spE8;
     f64 spE0;
@@ -185,67 +185,67 @@ void SpyroSoundPlayer::DetermineSoundPos(int arg0) {
         case 0:                                     /* switch 2 */
             spD0.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, spD0);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = spD0.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = spD8;
             return;
         case 2:                                     /* switch 2 */
             spC0.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, spC0);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = spC0.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = spC8;
             return;
         case 1:                                     /* switch 2 */
             spB0.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, spB0);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = spB0.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = spB8;
             return;
         case 3:                                     /* switch 2 */
             spA0.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, spA0);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = spA0.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = spA8;
             return;
         case 4:                                     /* switch 2 */
             sp90.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp90);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp90.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = sp98;
             return;
         case 5:                                     /* switch 2 */
             sp80.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp80);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp80.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = sp88;
             return;
         case 6:                                     /* switch 2 */
             sp70.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp70);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp70.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = sp78;
             return;
         case 7:                                     /* switch 2 */
             sp60.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp60);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp60.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = sp68;
             return;
         case 8:                                     /* switch 2 */
             sp50.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp50);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp50.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = sp58;
             return;
         case 9:                                     /* switch 2 */
             sp40.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp40);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp40.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = sp48;
             return;
         case 10:                                    /* switch 2 */
             sp30.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp30);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp30.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = sp38;
             return;
         case 12:                                    /* switch 2 */
             sp20.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp20);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp20.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = sp28;
             return;
         case 11:                                    /* switch 2 */
             sp10.GetPos();
             M2C_FIELD(temp_r31_120, f64 *, 0) = M2C_BITWISE(f64, sp10);
-            M2C_FIELD(temp_r31_120, f64 *, 8) = sp10.unk8;
+            M2C_FIELD(temp_r31_120, f64 *, 8) = sp18;
             break;
         }
     }

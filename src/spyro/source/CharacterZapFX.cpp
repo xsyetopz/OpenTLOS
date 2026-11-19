@@ -6,7 +6,6 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/CharacterBodyFX.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/SpyroUtils.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -24,17 +23,17 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 static u8 lit_749 = 1;
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void CharacterZapFX::Enable(bool arg0, float arg1, bool arg2) {
     u8 var_r31_48;
 
     this->unk14 = arg0;
     this->unk15 = arg0;
-    CharacterBodyFX::SetDataActive(arg0);
+    SetDataActive(arg0);
     this->unk16 = arg2;
     if (arg0 != 0) {
         this->unk20 = arg1;
-        if (((u8) this->unk16 != 0) && (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 0) && (EventCamera_GetCurrent() == NULL)) {
+        if (((u8) this->unk16 != 0) && (gb.unk0->GetHeroType() == 0) && (EventCamera_GetCurrent() == NULL)) {
             if ((void *) gb.unkC != NULL) {
                 var_r31_48 = 0;
                 if ((((u32) M2C_FIELD(gb.unkC, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(gb.unkC, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (gb.unkC + 0x24))->GetState() != 0)) {
@@ -49,7 +48,7 @@ block_10:
                 ((SpyroSoundPlayer *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x6F8))->FadeIn(0xB, -1);
             }
         }
-    } else if (((u8) this->unk16 != 0) && (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 0)) {
+    } else if (((u8) this->unk16 != 0) && (gb.unk0->GetHeroType() == 0)) {
         gb.GetSpyro();
         ((SpyroSoundPlayer *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x6F8))->FadeOut(0xB);
     }
@@ -264,7 +263,7 @@ void CharacterZapFX::SpawnZap() {
     f32 temp_f30_515;
     f32 temp_f30_577;
 
-    if ((u32) this->unk8 != 0) {
+    if ((CharacterBodyFXData *) this->unk8 != NULL) {
         temp_r3_468 = this->unk48 - 4;
         this->unk48 = temp_r3_468;
         temp_r30_470 = temp_r3_468->unk0;
@@ -281,8 +280,8 @@ void CharacterZapFX::SpawnZap() {
             Normalise(spF0);
             M2C_FIELD(temp_r30_470, f64 *, 8) = M2C_BITWISE(f64, spF0);
             M2C_FIELD(temp_r30_470, f64 *, 0x10) = (f64) spF0.unk8;
-            temp_r30_470->unk0 = CharacterBodyFX::GetRandomNode(NULL);
-            temp_r30_470->unk4 = CharacterBodyFX::GetRandomNode((CBFXNode *) temp_r30_470->unk0);
+            temp_r30_470->unk0 = GetRandomNode(NULL);
+            temp_r30_470->unk4 = GetRandomNode((CBFXNode *) temp_r30_470->unk0);
             temp_f30_515 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f29_520 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
             sp70 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -328,7 +327,7 @@ void CharacterZapFX::SpawnZap() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: undefined identifier 'arg_sp10C'
 void CharacterZapFX::Update() {
     MKHeap *temp_r3_688;
     MKHeap *temp_r3_700;
@@ -380,7 +379,7 @@ loop_6:
         this->unk1C -= gUpdateTimeDelta;
         this->unk17 = 0;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((this->unk1C == 0.0f) && (CharacterBodyFX::GetRandomNode(NULL) != NULL)) {
+        if ((this->unk1C == 0.0f) && (GetRandomNode(NULL) != NULL)) {
             temp_f30_738 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
             temp_f29_743 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
             arg_sp78 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -490,7 +489,7 @@ loop_6:
     this->unk20 -= gUpdateTimeDelta;
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     if (this->unk20 == 0.0f) {
-        if (((u8) this->unk16 != 0) && (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 0)) {
+        if (((u8) this->unk16 != 0) && (gb.unk0->GetHeroType() == 0)) {
             if ((u8) this->unk15 == 0) {
                 var_r30_1010 = 0;
                 if ((((u32) M2C_FIELD(gb.unkC, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(gb.unkC, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (gb.unkC + 0x24))->GetState() != 0)) {
@@ -507,10 +506,10 @@ block_46:
         }
         this->unk15 = 0;
         this->unk14 = 0;
-        CharacterBodyFX::SetDataActive(0U);
+        SetDataActive(0U);
         return;
     }
-    if (((u8) this->unk16 != 0) && ((u8) this->unk15 != 0) && (M2C_FIELD(gb.unk0->__vptr, s32 (**)(HeroInterface *), 8)(gb.unk0) == 0) && (EventCamera_GetCurrent() == NULL)) {
+    if (((u8) this->unk16 != 0) && ((u8) this->unk15 != 0) && (gb.unk0->GetHeroType() == 0) && (EventCamera_GetCurrent() == NULL)) {
         if ((void *) gb.unkC != NULL) {
             var_r31_1071 = 0;
             if ((((u32) M2C_FIELD(gb.unkC, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(gb.unkC, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (gb.unkC + 0x24))->GetState() != 0)) {
@@ -528,13 +527,11 @@ block_58:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterZapFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
     CharacterBodyFX::InitData(arg0, arg1, arg2);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CharacterZapFX::Init() {
     MKHeap *temp_r3_1131;
     MKHeap *temp_r3_1153;

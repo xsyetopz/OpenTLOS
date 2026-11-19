@@ -9,7 +9,6 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Character.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/ManagedLight.h"
@@ -902,7 +901,7 @@ loop_44:
     }
     if ((var_r14_2126 == 0) && (temp_r21_87 != 0)) {
         temp_f14_2145 = this->unk58;
-        ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(temp_f14_2145, temp_f14_2145, 0.5f, (MKVector3 *) &this->unk68, 50.0f, 0, 4.0f, 0U);
+        ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(temp_f14_2145, temp_f14_2145, 0.5f, (MKVector3 *) &this->unk68, 50.0f, 0, 4.0f, 0U);
     }
 }
 #endif

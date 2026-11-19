@@ -8,7 +8,6 @@
 #include "spyro/source/FallingLeaves.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDParticleSystem.h"
 #include "spyro/source/KDProp.h"
@@ -296,7 +295,7 @@ void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float 
         var_r29_686 = *(temp_r4_672 + (temp_r0_670 * 4));
     }
     temp_r28_693 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-    this->unk200.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r29_686, temp_r28_693, temp_r28_693, 0, -1);
+    this->unk200.Init(gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r29_686, temp_r28_693, temp_r28_693, 0, -1);
     M2C_FIELD(this, f64 *, 0x210) = (f64) M2C_FIELD(&arg1, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x218) = (f64) M2C_FIELD(&arg1, f64 *, 8);
 }
@@ -397,7 +396,7 @@ block_15:
                 M2C_FIELD(M2C_FIELD(temp_r3_899, void **, 0x44), M2C_UNK (**)(M2C_UNK *), 0x2C)(&this->unk200);
             }
             KDSound_Play3d(GS_SpyroEarthFurySmash, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
-            ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.3f, 0.1f, 0.3f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.3f, 0.1f, 0.3f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
             EmitLandingEffects();
         }
         goto block_15;

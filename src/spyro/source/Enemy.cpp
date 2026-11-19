@@ -6072,12 +6072,12 @@ void Enemy::LoadDone() {
         do {
             temp_r3_12565 = this->unkA04;
             this->unkA04 = (CharacterZapFX *) &temp_r3_12565->unk4;
-            M2C_FIELD(temp_r3_12565, s32 *, 4) = 0xDEADBEEF;
+            temp_r3_12565->unk4 = -0x21524111;
             var_ctr_12563 -= 1;
         } while (var_ctr_12563 != 0);
         temp_r3_12570 = this->unkA04;
         this->unkA04 = (CharacterZapFX *) &temp_r3_12570->unk4;
-        M2C_FIELD(temp_r3_12570, s32 *, 4) = 0;
+        temp_r3_12570->unk4 = 0;
     }
     this->unk740.Init(this->unk4, 0.75f, 0.25f);
     if ((u8) M2C_FIELD(this->unkA20, u8 *, 0x265) != 0) {

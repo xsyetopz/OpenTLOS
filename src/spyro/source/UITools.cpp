@@ -430,7 +430,7 @@ void ImageArc::Draw(const RenderContext &arg0) {
         if ((s32) lit_1179 > var_r29_679) {
             var_r29_679 = lit_1179;
         }
-        temp_f24_687 = this->unk68 - this->unk68;
+        temp_f24_687 = this->unk68 - M2C_BITWISE(f32, this->unk60);
         MKMaterial_SetMaterial(this->unk64);
         MKPrimitive(0xC, 1);
         MKSetMatrix(*((Matrix *) &arg_sp20));
@@ -441,7 +441,7 @@ loop_20:
         if (var_r28_702 <= var_r29_679) {
             temp_f23_717 = (f32) var_r28_702 / (f32) var_r29_679;
             _table_sincosf((temp_f23_717 * (var_f28_605 - var_f29_604)) + var_f29_604, arg_sp14, arg_sp10);
-            temp_f23_722 = (temp_f24_687 * temp_f23_717) + this->unk68;
+            temp_f23_722 = (temp_f24_687 * temp_f23_717) + M2C_BITWISE(f32, this->unk60);
             MKSetTexCoord1F(temp_f23_722, this->unk6C);
             MKSetPositionF(arg_sp14 * var_f27_635, arg_sp10 * -var_f2_636, 0.0f);
             MKSetTexCoord1F(temp_f23_722, M2C_BITWISE(f32, this->unk64));

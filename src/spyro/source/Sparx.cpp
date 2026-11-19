@@ -11,7 +11,6 @@
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/SparxFX.h"
 #include "spyro/source/SparxPath.h"
@@ -1626,7 +1625,7 @@ void Sparx::ResetHint() {
     this->unk1F0 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void Sparx::Message(MKMessage *arg0) {
     s32 temp_r0_3103;
     u32 temp_r0_3154;
@@ -1634,7 +1633,7 @@ void Sparx::Message(MKMessage *arg0) {
     temp_r0_3103 = arg0->unk0;
     switch (temp_r0_3103) {                         /* irregular */
     case 0xA:
-        M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *), 0x1C)(gb.unk0);
+        gb.unk0->Message();
     default:
 block_19:
         MKProp::Message(arg0);
@@ -1687,7 +1686,7 @@ u8 Sparx::GetTaskMode() {
     return var_r4_3210;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void Sparx::Spawn() {
     f64 sp60;
     f64 sp58;
@@ -1701,7 +1700,7 @@ void Sparx::Spawn() {
     f32 sp8;
     void *temp_r4_3268;
 
-    if (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *, GameGlobals *), 0x54)(gb.unk0, &gb) != 0) {
+    if (gb.unk0->IsDying(&gb) != 0) {
         RespawnOnSpyroDeath();
         return;
     }

@@ -14,24 +14,20 @@
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterGlowFX::Enable(bool arg0, const MKVector4 &arg1, float arg2) {
     this->unk20 = arg2;
     this->unk1C = arg2;
     this->unk28 = M2C_FIELD(&arg1, f64 *, 0);
     this->unk30 = M2C_FIELD(&arg1, f64 *, 8);
-    CharacterBodyFX::SetDataActive(arg0);
+    SetDataActive(arg0);
     this->unk14 = arg0;
-    CharacterBodyFX::CalculateNodeData(-1);
+    CalculateNodeData(-1);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterGlowFX::Deinit() {
     MKMaterial_Destroy(this->unk18);
     CharacterBodyFX::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void CharacterGlowFX::Draw() {
@@ -88,7 +84,7 @@ void CharacterGlowFX::Draw() {
             var_r24_167 = 0;
             var_r22_168 = 0;
 loop_49:
-            if (var_r24_167 < (s32) M2C_FIELD(this->unk8, s32 *, 4)) {
+            if (var_r24_167 < (s32) this->unk8->unk4) {
                 arg_spC8 = arg_sp2F0 + (((f32) arg_sp2A0 * arg_sp2E0) + (((f32) arg_sp298 * arg_sp2C0) + (arg_sp29C * arg_sp2D0)));
                 arg_spCC = arg_sp2F4 + (((f32) arg_sp2A0 * arg_sp2E4) + (((f32) arg_sp298 * arg_sp2C4) + (arg_sp29C * arg_sp2D4)));
                 arg_spD0 = arg_sp2F8 + (((f32) arg_sp2A0 * arg_sp2E8) + (((f32) arg_sp298 * arg_sp2C8) + (arg_sp29C * arg_sp2D8)));
@@ -296,7 +292,6 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterGlowFX::Update() {
     f64 sp20;
     f64 sp18;
@@ -307,7 +302,7 @@ void CharacterGlowFX::Update() {
     f32 temp_f2_700;
     f32 var_f0_701;
 
-    if (((void *) this->unk8 != NULL) && ((u8) this->unk14 != 0)) {
+    if (((CharacterBodyFXData *) this->unk8 != NULL) && ((u8) this->unk14 != 0)) {
         this->unk38 += gUpdateTimeDelta;
         temp_f2_700 = this->unk20;
         var_f0_701 = this->unk1C - gUpdateTimeDelta;
@@ -335,9 +330,7 @@ void CharacterGlowFX::Update() {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void CharacterGlowFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNode *arg2) {
     if ((s32) arg0->unk4 == 0) {
         this->unk8 = NULL;
@@ -345,9 +338,8 @@ void CharacterGlowFX::InitData(CharacterBodyFXData *arg0, MKModel *arg1, CBFXNod
     }
     CharacterBodyFX::InitData(arg0, arg1, arg2);
 }
-#endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void CharacterGlowFX::Init() {
     CharacterBodyFX::Init();
     this->unk14 = 0;

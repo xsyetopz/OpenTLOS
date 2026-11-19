@@ -193,17 +193,17 @@ void ElementalWall::StateEWOnUpdate() {
     this->unk124 += gUpdateTimeDelta;
     if ((u8) this->unk128 == 0) {
         var_r30_259 = 0;
-        if ((M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x54)(gb.unk0) == 0) && (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x60)(gb.unk0) == 0)) {
+        if ((gb.unk0->IsDying() == 0) && (gb.unk0->IsRespawning() == 0)) {
             var_r30_259 = 1;
         }
         this->unk128 = var_r30_259;
-    } else if (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x60)(gb.unk0) != 0) {
+    } else if (gb.unk0->IsRespawning() != 0) {
         this->unkC0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
         this->unkC8 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
         this->unk128 = 1;
     }
-    if (((HeroInterface *) gb.unk0 != NULL) && ((u8) this->unk128 != 0) && (M2C_FIELD(gb.unk0->__vptr, u8 (**)(), 0x54)() == 0) && (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x60)(gb.unk0) == 0)) {
-        temp_r3_329 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+    if (((HeroInterface *) gb.unk0 != NULL) && ((u8) this->unk128 != 0) && (M2C_FIELD(gb.unk0->__vptr, u8 (**)(), 0x54)() == 0) && (gb.unk0->IsRespawning() == 0)) {
+        temp_r3_329 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         sp80 = M2C_FIELD(temp_r3_329, f64 *, 0x30);
         sp88 = M2C_FIELD(temp_r3_329, f64 *, 0x38);
         Tools_GetClosestSplineTime(&this->unkB0->unk30, *((MKVector3 *) &sp80), this->unk104);
@@ -263,7 +263,7 @@ void ElementalWall::StateEWOnUpdate() {
         }
         if ((u8) this->unk11C != 0) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (var_f30_371 == (1.5f * M2C_FIELD(gb.unk0->__vptr, f32 (**)(HeroInterface *), 0x28)(gb.unk0))) {
+            if (var_f30_371 == (1.5f * gb.unk0->GetCollideRadius())) {
                 sp110 = 7;
                 sp114 = 0;
                 sp138 = 2;
@@ -289,12 +289,12 @@ void ElementalWall::StateEWOnUpdate() {
                     sp148 = 0.0f;
                 }
                 sp161 = 0;
-                M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *), 0x1C)(gb.unk0, &sp110);
+                gb.unk0->Message(&sp110);
                 return;
             }
         }
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((var_f30_371 == (1.5f * M2C_FIELD(gb.unk0->__vptr, f32 (**)(HeroInterface *), 0x28)(gb.unk0))) && (unksp84 > -((2.0f * M2C_FIELD(gb.unk0->__vptr, f32 (**)(HeroInterface *), 0x28)(gb.unk0)) - unksp74))) {
+        if ((var_f30_371 == (1.5f * gb.unk0->GetCollideRadius())) && (unksp84 > -((2.0f * gb.unk0->GetCollideRadius()) - unksp74))) {
             var_f1_555 = unksp84 - unksp74;
             if (var_f1_555 < 0.0f) {
                 var_f1_555 = -var_f1_555;
@@ -325,7 +325,7 @@ void ElementalWall::StateEWOnUpdate() {
                     spF0 = 0.0f;
                 }
                 sp109 = 0;
-                M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *), 0x1C)(gb.unk0, &spB8);
+                gb.unk0->Message(&spB8);
                 return;
             }
             goto block_51;
@@ -333,7 +333,7 @@ void ElementalWall::StateEWOnUpdate() {
 block_51:
         if ((((f32) M2C_FIELD(this, f64 *, 0xC8) * (f32) sp68) + (((f32) M2C_FIELD(this, f64 *, 0xC0) * M2C_BITWISE(f32, sp50.unk10)) + (M2C_FIELD(this, f32 *, 0xC4) * 0.0f))) < 0.5f) {
             sp94 = 0;
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *), 0xC)(gb.unk0);
+            gb.unk0->GetProp();
             sp40.GetRotationPRY();
             sp90 = 0xE;
             temp_f1_646 = this->unkD0;
@@ -345,7 +345,7 @@ block_51:
             spB0 = 0;
             spB2 = 1;
             spB1 = 1;
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *, M2C_UNK, f64, f32), 0x1C)(gb.unk0, &sp90, 0, temp_f1_646, sp40.unk4);
+            gb.unk0->Message(&sp90, 0, temp_f1_646, sp40.unk4);
             return;
         }
         this->unkC0 = M2C_FIELD(&MKVector3::zero, f64 *, 0);

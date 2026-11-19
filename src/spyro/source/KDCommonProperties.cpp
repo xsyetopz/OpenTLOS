@@ -33,18 +33,18 @@ u8 classInfo__22KDPathFollowerProperty[0x10];
 u8 classInfo__25KDSoundAttachmentProperty[0x10];
 u8 classInfo__22KDAmbientSoundProperty[0x10];
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to
+#if 0 // DRAFT: illegal implicit conversion from 'void **' to
 void KDAmbientSoundProperty::Update() {
     s32 sp8;
     KDSoundFader *temp_r30_44;
     MKVector3 *temp_r8_51;
+    s8 *temp_r3_40;
     u32 temp_r31_47;
-    void **temp_r3_40;
 
     temp_r3_40 = this->unk14;
     temp_r30_44 = *KDProperty::pInstanceMem + this->unk8;
     temp_r31_47 = (u32) M2C_FIELD(temp_r30_44, u32 *, 0x28) >> 0x1FU;
-    temp_r8_51 = M2C_FIELD(*temp_r3_40, MKVector3 *(**)(void **, s32), 0x50)(temp_r3_40, *KDProperty::pInstanceMem);
+    temp_r8_51 = M2C_FIELD(*temp_r3_40, MKVector3 *(**)(s8 *, s32), 0x50)(temp_r3_40, *KDProperty::pInstanceMem);
     sp8 = 1;
     temp_r30_44->Update(this->unk10, 1U, (u8) temp_r31_47, NULL, temp_r8_51, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
@@ -71,7 +71,7 @@ void KDAmbientSoundProperty::InitInstance() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 KDAmbientSoundProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_134;
 
@@ -83,14 +83,12 @@ s32 KDAmbientSoundProperty::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of non-static member
 void KDAmbientSoundProperty::Init(const char *arg0) {
     KDSoundAttachmentProperty::Init(arg0);
     this->unk1C = 1;
     this->unk20 = 0.25f;
     this->unk24 = 0.25f;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDAmbientSoundProperty::Command(int arg0) {

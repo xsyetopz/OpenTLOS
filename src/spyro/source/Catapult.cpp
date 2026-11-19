@@ -10,7 +10,6 @@
 #include "spyro/source/Ball.h"
 #include "spyro/source/ExplodeMsg.h"
 #include "spyro/source/Game.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDSpline.h"
@@ -369,7 +368,7 @@ void Catapult::WindBackUpdate() {
     if (MKView_VisibilityTest(*(M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), BoundingVolume **, 0x1C)), *((Matrix *) this->unk8)) == 0) {
         this->unk138 = 1.0f;
     } else {
-        temp_r4_378 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+        temp_r4_378 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
         temp_r3_379 = this->unk8;
         sp38 = M2C_FIELD(temp_r4_378, f64 *, 0x30);
         sp48 = M2C_FIELD(temp_r3_379, f64 *, 0x30);
@@ -475,7 +474,7 @@ void Catapult::FireUpdate() {
         arg_sp48 = (f64) arg_sp18;
         ((Ball *) (M2C_FIELD(this, Ball **, 0x12C)))->Fire(*((MKVector3 *) &arg_spB0));
         M2C_FIELD(this, Ball **, 0x12C) = NULL;
-        ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay3D(0.8f, 0.0f, 0.3f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+        ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.0f, 0.3f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
     }
     if (this->unk80->unk2C & 1) {
         SetState((Catapult::State) 4);

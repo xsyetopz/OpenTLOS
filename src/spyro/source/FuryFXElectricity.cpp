@@ -1,7 +1,6 @@
 #include "spyro/source/FuryFXElectricity.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKMaterial.h"
-#include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
 #include "common/Source/Matrix.h"
@@ -9,7 +8,6 @@
 #include "spyro/source/Game.h"
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameMessages.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/LitCloudPS.h"
 #include "spyro/source/ManagedLight.h"
@@ -335,7 +333,7 @@ s32 FuryFXElectricity::Trigger(const MKVector3 &arg0, bool arg1) {
         var_r28_618 = *(temp_r4_604 + (temp_r0_602 * 4));
     }
     temp_r27_625 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
-    this->unk108.Init(M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0), 15.0f * gb.unk37C, 3, var_r28_618, temp_r27_625, temp_r27_625, 0, -1);
+    this->unk108.Init(gb.unk0->GetProp(), 15.0f * gb.unk37C, 3, var_r28_618, temp_r27_625, temp_r27_625, 0, -1);
     sp38 = 0.0f;
     sp3C = -5000.0f;
     sp40 = 0.0f;
@@ -448,7 +446,7 @@ void FuryFXElectricity::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroInterface'
 void FuryFXElectricity::Update() {
     ManagedLight *temp_r3_1168;
     ManagedLight *temp_r3_1181;
@@ -535,8 +533,8 @@ void FuryFXElectricity::Update() {
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (temp_f1_889 == 0.0f) {
         M2C_FIELD(this, f32 *, 0x180) = (f32) (temp_f1_889 + gUpdateTimeDelta);
-        if (((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0x3C)(gb.unk0), void **, 4), void **, 0xB4), u8 *, 0x16) != 0) && ((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0x3C)(gb.unk0), void **, 4), void **, 0xB4), u8 *, 0x17) != 0) && (((temp_f1_920 = M2C_FIELD(this, f32 *, 0x180), M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_920 == 0.0f) != 0)) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_920 == 1.0f) != 0))) || ((M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_920 == 5.0f) != 0)) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_920 == 7.0f) != 0))))) {
-            ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.0f, 0.5f, 0.15f, 0, 4.0f, 0U);
+        if (((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->GetEffects(), void **, 4), void **, 0xB4), u8 *, 0x16) != 0) && ((u8) M2C_FIELD(M2C_FIELD(M2C_FIELD(gb.unk0->GetEffects(), void **, 4), void **, 0xB4), u8 *, 0x17) != 0) && (((temp_f1_920 = M2C_FIELD(this, f32 *, 0x180), M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_920 == 0.0f) != 0)) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_920 == 1.0f) != 0))) || ((M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_920 == 5.0f) != 0)) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_920 == 7.0f) != 0))))) {
+            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.0f, 0.5f, 0.15f, 0, 4.0f, 0U);
         } else {
             temp_f2_955 = M2C_FIELD(this, f32 *, 0x180);
             if ((temp_f2_955 > 1.0f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f2_955 == 4.4f) != 0))) {
@@ -553,7 +551,7 @@ void FuryFXElectricity::Update() {
                     }
                 }
                 temp_f22_1025 = M2C_FIELD(this, f32 *, 0x184);
-                ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.7f * temp_f22_1025, temp_f22_1025, 0.033f, 0, 4.0f, 0U);
+                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.7f * temp_f22_1025, temp_f22_1025, 0.033f, 0, 4.0f, 0U);
             } else if (temp_f2_955 > 7.0f) {
                 M2C_FIELD(this, f32 *, 0x180) = -1.0f;
             }
@@ -1077,7 +1075,7 @@ block_172:
             gb.unkB8.EnableScreenFlash(*((MKVector4 *) &unksp428), 3.0f * gUpdateTimeDelta);
             KDSound_Play3d(GS_SpyroFuryAttackLightning2, (MKVector3 *) &this->unkB0, 0U, -1, 0.0f, 0U);
             KDSound_Play3d(GS_Rumble1, (MKVector3 *) &this->unkB0, 0U, -1, 0.0f, 0U);
-            ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.99f, 0.99f, 0.65f, 0, 4.0f, 0U);
+            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.99f, 0.99f, 0.65f, 0, 4.0f, 0U);
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 unksp87C = 0;
                 temp_f22_2231 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);

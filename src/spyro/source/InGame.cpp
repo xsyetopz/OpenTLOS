@@ -9,7 +9,6 @@
 #include "spyro/source/GameData.h"
 #include "spyro/source/GameVideo.h"
 #include "spyro/source/GlowingPropManager.h"
-#include "spyro/source/HeroInterface.h"
 #include "spyro/source/Level.h"
 #include "spyro/source/Tools.h"
 #include "unplaced_templates.h"
@@ -225,7 +224,7 @@ void InGame_SystemMessage(MKMessage *arg0) {
             gb.unk320->unk64 = 7.5f;
             gb.unk320->unk4 = NULL;
             if ((s32) arg0->unk0 == 0x12F) {
-                temp_r3_216 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0);
+                temp_r3_216 = gb.unk0->GetProp();
                 spC = 0;
                 sp8 = 0xA9;
                 M2C_FIELD(M2C_FIELD(temp_r3_216, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
@@ -277,7 +276,7 @@ void DialogCallback(DialogBoxContext *arg0, int arg1) {
     if ((DialogBoxContext *) gb.unk320 == arg0) {
         switch (arg1) {                             /* irregular */
         case 0:
-            temp_r3_448 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0);
+            temp_r3_448 = gb.unk0->GetProp();
             spC = 0;
             sp8 = 0xAA;
             M2C_FIELD(M2C_FIELD(temp_r3_448, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
@@ -426,7 +425,7 @@ loop_37:
             }
             pCutsceneInfo_953 = var_r4_714;
             autoSwitchState_939 = 3;
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *), 0x24)(gb.unk0);
+            gb.unk0->Disable();
             return;
         case 3:
             var_r30_732 = 0;
@@ -453,7 +452,7 @@ loop_37:
                 M2C_FIELD(pCutsceneChunkInfo_950, s8 *, 0x35) = 1;
             }
             autoSwitchState_939 = 2;
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *), 0x20)(gb.unk0);
+            gb.unk0->Enable();
             return;
         case 5:
             autoSwitchState_939 = 6;
@@ -770,7 +769,7 @@ loop_3:
             } else {
                 var_r3_1529 = MKInput_Pressed(3, (MKInputDevices) M2C_FIELD(gb.unk354, s32 *, 0));
             }
-            if (((u8) var_r3_1529 != 0) && (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x54)(gb.unk0) == 0)) {
+            if (((u8) var_r3_1529 != 0) && (gb.unk0->IsDying() == 0)) {
                 UIControls_SetDevice((MKInputDevices) M2C_FIELD(gb.unk354, s32 *, 0));
                 gb.SetGamePaused(1U, (u8 (*)()) PauseMenu_Update, PauseMenu_Draw, 1U);
                 PauseMenu_Reset(NULL);
@@ -812,8 +811,8 @@ block_27:
         if (var_r29_1613 != 0) {
             gb.unk30C += gUpdateTimeDelta;
             gb.unk32C->Update();
-            if (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x54)(gb.unk0) == 0) {
-                temp_r4_1672 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+            if (gb.unk0->IsDying() == 0) {
+                temp_r4_1672 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
                 sp8 = M2C_FIELD(temp_r4_1672, f64 *, 0x30);
                 sp10 = M2C_FIELD(temp_r4_1672, f64 *, 0x38);
                 Connector_Update(*((MKVector3 *) &sp8));
@@ -886,7 +885,7 @@ void InGame_Init() {
     sp20 = gb.unk330;
     M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, f32), 0x94)(gMK, &sp18, 0, 1, 0, 1, 0x29, 0.0f);
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *), 0x40)(M2C_FIELD(&gb, void **, 0x3B8));
-    temp_r4_1867 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), MKVector3 **, 8);
+    temp_r4_1867 = M2C_FIELD(gb.unk0->GetProp(), MKVector3 **, 8);
     sp8 = M2C_FIELD(temp_r4_1867, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r4_1867, f64 *, 0x38);
     sp8.CullGroups(*temp_r4_1867);

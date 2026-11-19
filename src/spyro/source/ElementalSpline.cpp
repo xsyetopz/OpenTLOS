@@ -173,7 +173,7 @@ void ElementalSpline::StateESTurningOffUpdate() {
                 }
             }
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (var_f31_180 == M2C_FIELD(gb.unk0->__vptr, f32 (**)(HeroInterface *), 0x28)(gb.unk0)) {
+            if (var_f31_180 == gb.unk0->GetCollideRadius()) {
                 sp74 = 0;
                 sp70 = 7;
                 sp98 = 5;
@@ -199,7 +199,7 @@ void ElementalSpline::StateESTurningOffUpdate() {
                     spA8 = 0.0f;
                 }
                 spC1 = 0;
-                M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *), 0x1C)(gb.unk0, &sp70);
+                gb.unk0->Message(&sp70);
             }
         }
     }
@@ -311,7 +311,7 @@ void ElementalSpline::StateESOnUpdate() {
             }
         }
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (var_f31_424 == M2C_FIELD(gb.unk0->__vptr, f32 (**)(HeroInterface *), 0x28)(gb.unk0)) {
+        if (var_f31_424 == gb.unk0->GetCollideRadius()) {
             sp74 = 0;
             sp70 = 7;
             sp98 = 5;
@@ -337,7 +337,7 @@ void ElementalSpline::StateESOnUpdate() {
                 spA8 = 0.0f;
             }
             spC1 = 0;
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *), 0x1C)(gb.unk0, &sp70);
+            gb.unk0->Message(&sp70);
         }
     }
     this->unk10C += gUpdateTimeDelta;
@@ -450,7 +450,7 @@ void ElementalSpline::StateESTurningOnUpdate() {
                 }
             }
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (var_f31_678 == M2C_FIELD(gb.unk0->__vptr, f32 (**)(HeroInterface *), 0x28)(gb.unk0)) {
+            if (var_f31_678 == gb.unk0->GetCollideRadius()) {
                 sp74 = 0;
                 sp70 = 7;
                 sp98 = 5;
@@ -476,7 +476,7 @@ void ElementalSpline::StateESTurningOnUpdate() {
                     spA8 = 0.0f;
                 }
                 spC1 = 0;
-                M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *), 0x1C)(gb.unk0, &sp70);
+                gb.unk0->Message(&sp70);
             }
         }
     }

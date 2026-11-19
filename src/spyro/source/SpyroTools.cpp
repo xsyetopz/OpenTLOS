@@ -80,7 +80,7 @@ s32 SpyroTargetList::CompareTargets(const void *arg0, const void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void ****SpyroTargetList::UpdateTargetList() {
     Targetable *sp140;
     f64 sp138;
@@ -300,7 +300,7 @@ loop_55:
             sp110 = (f64) sp10;
             sp118 = (f64) sp18;
             sp90.GetXZDir();
-            if (!((((f32) sp118 * (f32) sp90.unk8) + (((f32) sp110 * M2C_BITWISE(f32, sp90)) + (unksp114 * M2C_BITWISE(f32, sp90.unk4)))) < 0.25f)) {
+            if (!((((f32) sp118 * sp98) + (((f32) sp110 * M2C_BITWISE(f32, sp90)) + (unksp114 * sp94))) < 0.25f)) {
                 temp_r5_460 = M2C_FIELD(M2C_FIELD(*temp_r24_148, void *(**)(void **, f32, f64), 8)(temp_r24_148), void **, 8);
                 temp_f1_463 = M2C_FIELD(temp_r5_460, f64 *, 0x30);
                 sp70 = temp_f1_463;

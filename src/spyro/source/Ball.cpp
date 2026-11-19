@@ -811,7 +811,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void Ball::CheckForHero() {
     f64 sp180;                                      /* compiler-managed */
     f64 sp178;                                      /* compiler-managed */
@@ -890,14 +890,14 @@ void Ball::CheckForHero() {
 
     gb.GetSpyro();
     if (M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x44), u8 (**)(), 0xC0)() == 0) {
-        if (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x64)(gb.unk0) != 0) {
+        if (gb.unk0->InAir() != 0) {
             return;
         }
         temp_f1_1498 = M2C_BITWISE(f32, this->unk270);
         temp_f29_1502 = temp_f1_1498 * this->unk27C;
-        temp_f1_1508 = temp_f29_1502 + M2C_FIELD(gb.unk0->__vptr, f32 (**)(HeroInterface *, f32), 0x28)(gb.unk0, temp_f1_1498);
+        temp_f1_1508 = temp_f29_1502 + gb.unk0->GetCollideRadius(temp_f1_1498);
         temp_f28_1512 = (1.2f * temp_f29_1502) + temp_f1_1508;
-        temp_r4_1517 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, f32), 0xC)(gb.unk0, temp_f1_1508), void **, 8);
+        temp_r4_1517 = M2C_FIELD(gb.unk0->GetProp(temp_f1_1508), void **, 8);
         temp_r3_1518 = this->unk8;
         sp148 = M2C_FIELD(temp_r4_1517, f64 *, 0x30);
         sp158 = M2C_FIELD(temp_r3_1518, f64 *, 0x30);
@@ -917,7 +917,7 @@ void Ball::CheckForHero() {
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                     this->unkF0 = sp48;
-                    sp50 = this->unkE8 - (f32) sp128.unk8;
+                    sp50 = this->unkE8 - sp130;
                     sp138 = sp48;
                     M2C_FIELD(this, f64 *, 0xF8) = (f64) sp50;
                     M2C_FIELD(this, f32 *, 0xF4) = 0.0f;
@@ -971,7 +971,7 @@ void Ball::CheckForHero() {
             unksp17C *= var_f5_1585;
             sp180 = (f32) sp180 * var_f5_1585;
             if ((((u8) M2C_FIELD(this, u8 *, 0x2AC) >> 2U) & 1) && (((Ball *) pDribblee == NULL) || ((Ball *) pDribblee == this))) {
-                temp_r4_1687 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
+                temp_r4_1687 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
                 sp78 = -M2C_FIELD(temp_r4_1687, f32 *, 0x20);
                 sp7C = -M2C_FIELD(temp_r4_1687, f32 *, 0x24);
                 sp80 = -M2C_FIELD(temp_r4_1687, f32 *, 0x28);
@@ -1020,14 +1020,14 @@ void Ball::CheckForHero() {
                     } else {
                         var_f29_1787 = 1.0f;
                     }
-                    temp_r4_1802 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), s32 *, 8) + 0x20;
+                    temp_r4_1802 = M2C_FIELD(gb.unk0->GetProp(), s32 *, 8) + 0x20;
                     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
                     temp_f1_1810 = M2C_FIELD(temp_r4_1802, f32 *, 8) * temp_f28_1512;
                     spF8 = sp68;
                     sp70 = temp_f1_1810;
                     sp100 = (f64) sp70;
-                    temp_r3_1820 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *, void *, f32), 0xC)(gb.unk0, temp_r4_1802, temp_f1_1810), void **, 8);
+                    temp_r3_1820 = M2C_FIELD(gb.unk0->GetProp(temp_r4_1802, temp_f1_1810), void **, 8);
                     sp108 = M2C_FIELD(temp_r3_1820, f64 *, 0x30);
                     sp110 = M2C_FIELD(temp_r3_1820, f64 *, 0x38);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
@@ -1540,7 +1540,7 @@ void Ball::PushOutOfThings() {
             M2C_FIELD(temp_r6_2765, s8 *, 0x50) = 0;
             var_ctr_2761 -= 1;
         } while (var_ctr_2761 != 0);
-        temp_r3_2798 = M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0x34)(gb.unk0);
+        temp_r3_2798 = gb.unk0->GetCollisionInfo();
         unksp8 = temp_r3_2798;
         if (temp_r3_2798 != NULL) {
             unkspC = M2C_FIELD(temp_r3_2798, u8 *, 4);
@@ -2100,7 +2100,7 @@ void Ball::UpdatePhysics() {
     } while (var_r29_2989 < 0xA);
     this->unk2A0 = 0.0f;
     var_r29_3552 = 0;
-    M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0x34)(gb.unk0), s8 *, 4) = 0;
+    M2C_FIELD(gb.unk0->GetCollisionInfo(), s8 *, 4) = 0;
 loop_80:
     if ((s32) this->unk270 != 1) {
         sp408 = this->unkE0;
@@ -2261,7 +2261,7 @@ block_107:
         }
     }
     var_r4_3902 = 1;
-    M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0x34)(gb.unk0), s8 *, 4) = 1;
+    M2C_FIELD(gb.unk0->GetCollisionInfo(), s8 *, 4) = 1;
     temp_f2_3905 = this->unk120;
     temp_f1_3906 = this->unk124;
     temp_f3_3908 = this->unk128;
@@ -2468,7 +2468,7 @@ block_107:
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void Ball::Message(MKMessage *arg0) {
     f64 sp138;                                      /* compiler-managed */
     f64 sp130;
@@ -2607,8 +2607,8 @@ block_93:
         if ((u32) this->unk228 == 0U) {
             if ((s32) M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xFC) != 0) {
                 if ((u32) M2C_FIELD(temp_r29_4611, u32 *, 0x30) != 0x1000U) {
-                    ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.7f, 0.3f, 0.06f, 0, 4.0f, 0U);
-                    if ((u32) M2C_FIELD(temp_r29_4611, u32 *, 8) == M2C_FIELD(gb.unk0->__vptr, u32 (**)(HeroInterface *), 0xC)(gb.unk0)) {
+                    ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.7f, 0.3f, 0.06f, 0, 4.0f, 0U);
+                    if ((u32) M2C_FIELD(temp_r29_4611, u32 *, 8) == gb.unk0->GetProp()) {
                         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
                         if (M2C_BITWISE(f32, this->unk298) == 0.0f) {
                             this->unk294 = KDSound_Play(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xFC), 0U, -1);
@@ -2655,7 +2655,7 @@ block_62:
                 sp98 = M2C_FIELD(temp_r3_4720, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                 spA0 = sp20;
-                sp28 = (f32) sp98 - (f32) sp80.unk8;
+                sp28 = (f32) sp98 - sp88;
                 spA8 = (f64) sp28;
                 Normalise(spB0);
                 sp120 = M2C_BITWISE(f64, spB0);

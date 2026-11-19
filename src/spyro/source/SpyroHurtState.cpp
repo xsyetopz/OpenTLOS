@@ -919,7 +919,7 @@ void SpyroHurtState::FlinchEnter() {
 }
 #endif
 
-u8 SpyroHurtState::Transition() {
+s32 SpyroHurtState::Transition() {
     return 0;
 }
 

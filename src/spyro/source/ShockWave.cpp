@@ -274,7 +274,7 @@ void ShockWave::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::pure_slot0()')
+#if 0 // DRAFT: illegal use of abstract class ('HeroInterface::GetHeroType()')
 void ShockWave::Update() {
     s8 spD1;
     s8 spD0;
@@ -337,7 +337,7 @@ void ShockWave::Update() {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r27, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-            sp18 = (f32) sp40.unk8 - M2C_FIELD(temp_r27_640, f32 *, 8);
+            sp18 = sp48 - M2C_FIELD(temp_r27_640, f32 *, 8);
             var_f29_658 = -((0.166f * M2C_FIELD(temp_r31_628, f32 *, 0x94)) - M2C_FIELD(temp_r31_628, f32 *, 0x9C));
             sp70 = sp10;
             sp50 = sp10;
