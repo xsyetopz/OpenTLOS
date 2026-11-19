@@ -36,23 +36,19 @@ void ControllerRumbleProperty::Command(int arg0) {
     DoRumble();
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[6])' does not match 'stricmp(signed char *, long *)'
 s32 ControllerRumbleProperty::ResolveCommand(const char *arg0) const {
-    return stricmp(arg0, "Burst") == 0;
+    return stricmp((s8 *) arg0, (M2C_UNK *) "Burst") == 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long' to 'float *'
 s32 ControllerRumbleProperty::LoadLineInstance(MKIniLine *arg0) {
-    s32 var_r31_148;
+    s32 result;
 
-    var_r31_148 = 0;
-    if ((arg0->LoadFloat("LargeAct", *KDProperty::pInstanceMem + this->unk8, 0) != 0) || (arg0->LoadFloat("SmallAct", *KDProperty::pInstanceMem + (this->unk8 + 4), 0) != 0) || (arg0->LoadFloat("Duration", *KDProperty::pInstanceMem + (this->unk8 + 8), 0) != 0) || (arg0->LoadFloat("DropOffDistance", *KDProperty::pInstanceMem + (this->unk8 + 0xC), 0) != 0) || (arg0->LoadBool("CameraSensitive", *KDProperty::pInstanceMem + (this->unk8 + 0x10), 0) != 0)) {
-        var_r31_148 = 1;
+    result = 0;
+    if (((u8) arg0->LoadFloat("LargeAct", (f32 *) (*(u8 **) KDProperty::pInstanceMem + this->unk8), 0) != 0) || ((u8) arg0->LoadFloat("SmallAct", (f32 *) (*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 4)), 0) != 0) || ((u8) arg0->LoadFloat("Duration", (f32 *) (*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 8)), 0) != 0) || ((u8) arg0->LoadFloat("DropOffDistance", (f32 *) (*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 0xC)), 0) != 0) || ((u8) arg0->LoadBool("CameraSensitive", (bool *) (*(u8 **) KDProperty::pInstanceMem + (this->unk8 + 0x10)), 0) != 0)) {
+        result = 1;
     }
-    return var_r31_148;
+    return result;
 }
-#endif
 
 void ControllerRumbleProperty::InitInstance() {
     MKIniLine *var_r31_235;
@@ -73,27 +69,23 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void ControllerRumbleProperty::Resolve(KDPropertySet *arg0) {
     s8 *temp_r0_269;
 
-    if ((void **) this->unk14 == NULL) {
+    if (this->unk14 == NULL) {
         temp_r0_269 = this->unk10;
         if (temp_r0_269 != NULL) {
-            this->unk14 = (const char *) (property_cast<KDMatrixProperty *, KDProperty *>(arg0->Find(temp_r0_269)));
+            this->unk14 = (void **) (property_cast<KDMatrixProperty *, KDProperty *>((KDProperty *) arg0->Find((const char *) temp_r0_269)));
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 ControllerRumbleProperty::LoadLine(MKIniLine *arg0) {
-    if ((MKIniLine *) this->unk18 == NULL) {
+    if (this->unk18 == NULL) {
         this->unk18 = arg0;
     }
-    return (const char **) ((u8) (arg0->LoadString("origin", &this->unk10, 0) != 0));
+    return (u8) arg0->LoadString("origin", (const char **) &this->unk10, 0) != 0;
 }
-#endif
 
 ControllerRumbleProperty::ControllerRumbleProperty() {
     this->unk4 = NULL;
