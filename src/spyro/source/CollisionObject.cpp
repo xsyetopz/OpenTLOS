@@ -57,36 +57,23 @@ void CollisionObject::IgnoreAll(bool arg0) {
     this->unk468 &= 0xFFFFFFFD;
 }
 
-#if 0 // DRAFT: illegal operand
 s32 ContextInfo::HitID(unsigned int arg0) {
-    s32 temp_cr0_gt_227;
-    s32 temp_r0_226;
-    s32 var_ctr_233;
-    s32 var_r5_232;
+    s32 count;
+    s32 off;
 
-    temp_r0_226 = this->unk164;
-    temp_cr0_gt_227 = temp_r0_226 > 0;
-    if (temp_cr0_gt_227 == 0) {
+    count = this->unk164;
+    if (count <= 0) {
         return 0;
     }
-    var_r5_232 = 0;
-    var_ctr_233 = temp_r0_226;
-    if (temp_cr0_gt_227 != 0) {
-loop_3:
-        if (arg0 & *(this + (var_r5_232 + 0x44))) {
+    off = 0;
+    do {
+        if (arg0 & *(u32 *)((u8 *)this + off + 0x44)) {
             return 1;
         }
-        var_r5_232 += 0x58;
-        var_ctr_233 -= 1;
-        if (var_ctr_233 == 0) {
-            /* Duplicate return node #6. Try simplifying control flow for better match */
-            return 0;
-        }
-        goto loop_3;
-    }
+        off += 0x58;
+    } while (--count != 0);
     return 0;
 }
-#endif
 
 void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg1, float arg2, ContextInfo *arg3, MKCollisionResult *arg4, const MKVector3 &arg5) {
     f64 sp208;
