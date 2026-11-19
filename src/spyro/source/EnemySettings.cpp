@@ -156,7 +156,6 @@ loop_5:
     goto loop_5;
 }
 
-#if 0 // DRAFT: illegal type
 void EnemySettings_ParseIniFile(const char *arg0) {
     MKIni sp8;
     MKIniLine *temp_r3_317;
@@ -173,19 +172,16 @@ void EnemySettings_ParseIniFile(const char *arg0) {
         EnemySettings_ParseDDASettings(temp_r3_317);
         var_r30_324 = 0;
         var_r31_325 = 0;
-loop_3:
-        if (var_r30_324 < (s32) iLevels) {
-            EnemySettings_ParseLevelSettings(temp_r3_317, M2C_FIELD(Level::GetLevelInfo(var_r30_324), s8 **, 4), pLevelSettings + var_r31_325);
+        while (var_r30_324 < (s32) iLevels) {
+            EnemySettings_ParseLevelSettings(temp_r3_317, (const char *) M2C_FIELD(Level::GetLevelInfo(var_r30_324), s8 **, 4), (EnemySettings *) ((u8 *) pLevelSettings + var_r31_325));
             var_r30_324 += 1;
             var_r31_325 += 0x24;
-            goto loop_3;
         }
         MKHeap::ActivateTempMemOverride();
         sp8.Deinit();
         MKHeap::DeactivateTempMemOverride();
     }
 }
-#endif
 
 void EnemySettings_DeinitModule() {
     void *temp_r31_369;
@@ -278,17 +274,10 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
-void EnemySettings::InitToOne() {
-    s32 var_ctr_550;
-    s32 var_r4_549;
+void EnemySettings::InitToOne(void) {
+    s32 i;
 
-    var_r4_549 = 0;
-    var_ctr_550 = 9;
-    do {
-        this[var_r4_549] = 1.0f;
-        var_r4_549 += 4;
-        var_ctr_550 -= 1;
-    } while (var_ctr_550 != 0);
+    for (i = 0; i < 9; i++) {
+        M2C_FIELD(this, f32 *, i * 4) = 1.0f;
+    }
 }
-#endif
