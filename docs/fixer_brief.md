@@ -29,6 +29,11 @@ the coordinator's: a fixer never runs them.
   halves) becomes per-lane f32 math on the components. A function that
   cannot be expressed that way is skipped: compiling f64 arithmetic changes
   its results.
+- Double-precision asm (`lfd`/`fmul`/`fadd` on f64 fields, no `ps_` ops)
+  stays f64: only paired-single code becomes per-lane f32.
+- A call that returns a struct through a hidden buffer (sret: buffer in r3,
+  `this` in r4) to a function a header declares void blocks the function.
+  The sret buffer is never `this`, and stack objects never stand in for it.
 - Constants come from the asm's literal pool, not from guesses.
 - A draft over 250 lines, or one blocked on a type no header declares, is
   skipped with the reason.

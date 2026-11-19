@@ -23,12 +23,11 @@ static MKParticleSystem::Envelope gSparksPSEnv[5] = {
     { 1.0f, 0.0f, 1.0f, 0.0f, 0.0f },
 };
 
-#if 0 // DRAFT: undefined identifier 'unksp8'
 void SparksPS::UpdateParticles() {
-    f64 sp28;
-    f64 sp20;
-    f32 sp18;
-    f64 sp10;
+    u8 sp8[0x8];
+    f32 sp60;
+    f32 sp64;
+    f32 sp68;
     MKParticleChunk *var_r30_64;
     MKParticleSystem::Envelope *temp_r3_138;
     MKParticleSystem::Envelope *temp_r5_143;
@@ -39,32 +38,33 @@ void SparksPS::UpdateParticles() {
     f32 temp_f5_145;
     f32 temp_f6_140;
     f32 var_f0_156;
-    f64 temp_f0_88;
     s32 temp_r0_139;
     s32 temp_r3_112;
     s32 temp_r3_126;
     s32 temp_r4_137;
     void *temp_r29_67;
+    SparksPSDescriptor *desc;
 
     this->unk128 += gUpdateTimeDelta;
-    var_r30_64 = GetFirstParticle(&unksp8);
+    var_r30_64 = GetFirstParticle((MKBaseParticleSystem::ParticleRec *) sp8);
 loop_12:
     if (var_r30_64 != NULL) {
         temp_r29_67 = var_r30_64->unk2C;
         temp_f30_71 = this->unk128 - M2C_FIELD(temp_r29_67, f32 *, 0x10);
         if (temp_f30_71 > this->unk12C) {
-            var_r30_64 = DestroyParticle(&unksp8);
+            var_r30_64 = DestroyParticle((MKBaseParticleSystem::ParticleRec *) sp8);
         } else {
             M2C_FIELD(temp_r29_67, f32 *, 4) = (f32) -((1000.0f * gUpdateTimeDelta) - M2C_FIELD(temp_r29_67, f32 *, 4));
-            temp_f0_88 = M2C_FIELD(temp_r29_67, f64 *, 0) * (f64) gUpdateTimeDelta;
-            sp10 = temp_f0_88;
-            sp20 = temp_f0_88;
-            sp18 = M2C_FIELD(temp_r29_67, f32 *, 8) * gUpdateTimeDelta;
-            sp28 = (f64) sp18;
-            M2C_FIELD(var_r30_64, f64 *, 0) = (f64) (M2C_FIELD(var_r30_64, f64 *, 0) + temp_f0_88);
-            var_r30_64->unk8 += (f32) sp28;
+            /* Position and z advance: per-lane f32 of velocity * delta, as the paired-single asm does. */
+            sp60 = M2C_FIELD(temp_r29_67, f32 *, 0) * gUpdateTimeDelta;
+            sp64 = M2C_FIELD(temp_r29_67, f32 *, 4) * gUpdateTimeDelta;
+            M2C_FIELD(var_r30_64, f32 *, 0) += sp60;
+            M2C_FIELD(var_r30_64, f32 *, 4) += sp64;
+            sp68 = M2C_FIELD(temp_r29_67, f32 *, 8) * gUpdateTimeDelta;
+            var_r30_64->unk8 += sp68;
             var_r30_64->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r29_67, f32 *, 0x18);
-            temp_r3_112 = M2C_FIELD(checked_cast<SparksPSDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80);
+            desc = checked_cast<SparksPSDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+            temp_r3_112 = M2C_FIELD(desc, s32 *, 0x80);
             temp_f3_116 = var_r30_64->unk20;
             var_r30_64->unk20 = (f32) fmod(temp_r3_112, temp_f3_116 + this->unkF0, (f32) temp_r3_112, temp_f3_116);
             temp_r3_126 = M2C_FIELD(temp_r29_67, s32 *, 0x14);
@@ -93,14 +93,12 @@ loop_12:
             var_r30_64->unk1C = var_f0_156;
             temp_r5_176 = &this->unk134[temp_r0_139];
             var_r30_64->unk28 = M2C_FIELD(temp_r29_67, f32 *, 0x1C) * ((temp_f3_152 * temp_r5_176->unk10) + temp_r5_176->unk8);
-            var_r30_64 = GetNextParticle(&unksp8);
+            var_r30_64 = GetNextParticle((MKBaseParticleSystem::ParticleRec *) sp8);
         }
         goto loop_12;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void SparksPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r30_214;
     void *temp_r3_211;
@@ -113,13 +111,12 @@ void SparksPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &a
         M2C_FIELD(temp_r3_211, f32 *, 0x20) = (f32) MKRand_Int((int *) &gViewSeed, 0, 3);
         M2C_FIELD(temp_r30_214, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r30_214, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD(temp_r30_214, f32 *, 0x1C) = (f32) &arg2;
+        M2C_FIELD(temp_r30_214, f32 *, 0x1C) = arg2;
         M2C_FIELD(temp_r30_214, f32 *, 0x20) = 1.0f;
         M2C_FIELD(temp_r30_214, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r3_211, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
     }
 }
-#endif
 
 void SparksPS::Deinit() {
     MKParticleSystem::Deinit();

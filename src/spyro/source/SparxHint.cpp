@@ -53,51 +53,21 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern GameGlobals gb;
 static BoundingVolume volume;                       /* type too large by 0x10; unable to generate initializer: not enough data */
 
-#if 0 // DRAFT: ')' expected
 void SparxHint::Message(MKMessage *arg0) {
-    SparxHint *sp64;
-    s32 sp60;
-    u8 sp5E;
-    s8 sp5D;
-    s8 sp5C;
-    s32 sp58;
-    s32 sp54;
-    s32 sp50;
-    s32 sp4C;
-    s32 sp48;
-    s8 sp46;
-    s8 sp45;
-    s8 sp44;
-    s32 sp40;
-    s32 sp3C;
-    s32 sp38;
-    SparxHint *sp34;
-    s32 sp30;
-    u8 sp2E;
-    s8 sp2D;
-    s8 sp2C;
-    s32 sp28;
-    s32 sp24;
-    s32 sp20;
-    s32 sp1C;
-    s32 sp18;
-    s8 sp16;
-    s8 sp15;
-    s8 sp14;
-    s32 sp10;
-    s32 spC;
-    s32 sp8;
+    SparxHintMsg msg;
+    SparxHintMsg *temp_r3_hint;
     s32 temp_r0_54;
-    s32 temp_r5_106;
+    void *spyro;
+    void *temp_r3_90;
     void *temp_r3_126;
     void *temp_r3_153;
     void *temp_r3_191;
-    void *temp_r3_90;
 
     temp_r0_54 = arg0->unk0;
-    switch (temp_r0_54) {                           /* irregular */
+    switch (temp_r0_54) {
     case 0x18:
-        if ((u32) M2C_FIELD(checked_cast<SparxHintMsg *, MKMessage>(arg0), u32 *, 0x14) != 0U) {
+        temp_r3_hint = checked_cast<SparxHintMsg *, MKMessage>(arg0);
+        if (temp_r3_hint->unk14 != NULL) {
             this->unkA9 = 1;
         } else {
             this->unkA9 = 0;
@@ -105,80 +75,65 @@ void SparxHint::Message(MKMessage *arg0) {
         }
         break;
     case 0xB5:
-        gb.GetSpyro();
-        temp_r3_90 = checked_cast<Sparx *, Sparx>(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), Sparx **, 0xB70));
+        spyro = (gb.*(void *(GameGlobals::*)(void)) &GameGlobals::GetSpyro)();
+        temp_r3_90 = checked_cast<Sparx *, Sparx>(M2C_FIELD(spyro, Sparx **, 0xB70));
         if ((u8) this->unkA9 == 0) {
-            sp54 = 0;
-            sp50 = 0x18;
-            sp58 = 0;
-            sp64 = NULL;
-            sp5C = 0;
-            sp5D = 0;
-            sp60 = 0;
-            sp5E = 0;
-            temp_r5_106 = this->unk94;
-            sp58 = temp_r5_106;
-            sp64 = this;
-            sp5D = 1;
-            sp5E = this->unkAB;
-            sp60 = this->unkAC;
-            M2C_FIELD(M2C_FIELD(temp_r3_90, void **, 0x44), M2C_UNK (**)(s32 *, s32, M2C_UNK), 0x2C)(&sp50, temp_r5_106, 0);
+            M2C_FIELD(&msg, s32 *, 0) = 0x18;
+            M2C_FIELD(&msg, s32 *, 4) = 0;
+            msg.unk8 = this->unk94;
+            msg.unkC = 0;
+            msg.unkD = 1;
+            msg.unkE = this->unkAB;
+            msg.unk10 = this->unkAC;
+            msg.unk14 = this;
+            M2C_FIELD(M2C_FIELD(temp_r3_90, void **, 0x44), void (**)(void *, void *, s32, s32), 0x2C)(temp_r3_90, &msg, this->unk94, 0);
             this->unkAA = 1;
         }
         break;
     case 0xB4:
-        gb.GetSpyro();
-        temp_r3_126 = checked_cast<Sparx *, Sparx>(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), Sparx **, 0xB70));
-        sp4C = 0;
-        sp3C = 0;
-        sp38 = 0x18;
-        sp40 = 0;
-        sp44 = 0;
-        sp45 = 0;
-        sp48 = 0;
-        sp46 = 0;
-        sp4C = 0;
-        M2C_FIELD(M2C_FIELD(temp_r3_126, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp38, 0);
+        spyro = (gb.*(void *(GameGlobals::*)(void)) &GameGlobals::GetSpyro)();
+        temp_r3_126 = checked_cast<Sparx *, Sparx>(M2C_FIELD(spyro, Sparx **, 0xB70));
+        M2C_FIELD(&msg, s32 *, 0) = 0x18;
+        M2C_FIELD(&msg, s32 *, 4) = 0;
+        msg.unk8 = 0;
+        msg.unkC = 0;
+        msg.unkD = 0;
+        msg.unkE = 0;
+        msg.unk10 = 0;
+        msg.unk14 = NULL;
+        M2C_FIELD(M2C_FIELD(temp_r3_126, void **, 0x44), void (**)(void *, void *, s32), 0x2C)(temp_r3_126, &msg, 0);
         this->unkAA = 0;
         this->unkA9 = 0;
         this->unkA8 = 0;
         break;
     case 0xB7:
-        gb.GetSpyro();
-        temp_r3_153 = checked_cast<Sparx *, Sparx>(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), Sparx **, 0xB70));
+        spyro = (gb.*(void *(GameGlobals::*)(void)) &GameGlobals::GetSpyro)();
+        temp_r3_153 = checked_cast<Sparx *, Sparx>(M2C_FIELD(spyro, Sparx **, 0xB70));
         if ((u8) this->unkA9 == 0) {
-            sp24 = 0;
-            sp20 = 0x18;
-            sp28 = 0;
-            sp34 = NULL;
-            sp2C = 0;
-            sp2D = 0;
-            sp30 = 0;
-            sp2E = 0;
-            sp28 = this->unk94;
-            sp34 = this;
-            sp2D = 1;
-            sp2E = this->unkAB;
-            sp30 = this->unkAC;
-            sp2C = 1;
-            sp2D = 0;
-            M2C_FIELD(M2C_FIELD(temp_r3_153, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK, M2C_UNK), 0x2C)(&sp20, 1, 0);
+            M2C_FIELD(&msg, s32 *, 0) = 0x18;
+            M2C_FIELD(&msg, s32 *, 4) = 0;
+            msg.unk8 = this->unk94;
+            msg.unkC = 1;
+            msg.unkD = 0;
+            msg.unkE = this->unkAB;
+            msg.unk10 = this->unkAC;
+            msg.unk14 = this;
+            M2C_FIELD(M2C_FIELD(temp_r3_153, void **, 0x44), void (**)(void *, void *, s32, s32), 0x2C)(temp_r3_153, &msg, 1, 0);
             this->unkAA = 1;
         }
         break;
     case 0xB6:
-        gb.GetSpyro();
-        temp_r3_191 = checked_cast<Sparx *, Sparx>(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), Sparx **, 0xB70));
-        sp1C = 0;
-        spC = 0;
-        sp8 = 0x18;
-        sp10 = 0;
-        sp14 = 0;
-        sp15 = 0;
-        sp18 = 0;
-        sp16 = 0;
-        sp1C = 0;
-        M2C_FIELD(M2C_FIELD(temp_r3_191, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp8, 0);
+        spyro = (gb.*(void *(GameGlobals::*)(void)) &GameGlobals::GetSpyro)();
+        temp_r3_191 = checked_cast<Sparx *, Sparx>(M2C_FIELD(spyro, Sparx **, 0xB70));
+        M2C_FIELD(&msg, s32 *, 0) = 0x18;
+        M2C_FIELD(&msg, s32 *, 4) = 0;
+        msg.unk8 = 0;
+        msg.unkC = 0;
+        msg.unkD = 0;
+        msg.unkE = 0;
+        msg.unk10 = 0;
+        msg.unk14 = NULL;
+        M2C_FIELD(M2C_FIELD(temp_r3_191, void **, 0x44), void (**)(void *, void *, s32), 0x2C)(temp_r3_191, &msg, 0);
         this->unkAA = 0;
         this->unkA9 = 0;
         this->unkA8 = 0;
@@ -186,7 +141,6 @@ void SparxHint::Message(MKMessage *arg0) {
     }
     MKProp::Message(arg0);
 }
-#endif
 
 void *SparxHint::Update() {
     SparxHint *sp54;
@@ -286,17 +240,15 @@ s32 SparxHint::LoadDone() {
     M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 SparxHint::LoadLine(MKIniLine *arg0) {
     s32 var_r31_394;
 
     var_r31_394 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("Priority", (int *) &this->unk94, 0) != 0) || (arg0->LoadFloat("RadiusNotify", &this->unkA0, 0) != 0) || (arg0->LoadFloat("RadiusdeActivate", &this->unkA4, 0) != 0) || (arg0->LoadInt("NumUses", (int *) &this->unk98, 0) != 0) || (arg0->LoadInt("SpeechMode", (int *) &this->unkAC, 0) != 0) || (arg0->LoadBool("Snap", &this->unkAB, 0) != 0) || (this->unk90.LoadLine(arg0, "OnReleaseSparx") != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("Priority", (int *) &this->unk94, 0) != 0) || (arg0->LoadFloat("RadiusNotify", &this->unkA0, 0) != 0) || (arg0->LoadFloat("RadiusdeActivate", &this->unkA4, 0) != 0) || (arg0->LoadInt("NumUses", (int *) &this->unk98, 0) != 0) || (arg0->LoadInt("SpeechMode", (int *) &this->unkAC, 0) != 0) || (arg0->LoadBool("Snap", (bool *) &this->unkAB, 0) != 0) || (this->unk90.LoadLine(arg0, "OnReleaseSparx") != 0)) {
         var_r31_394 = 1;
     }
     return var_r31_394;
 }
-#endif
 
 void SparxHint::Init() {
     MKProp::Init();

@@ -19,10 +19,11 @@ extern M2C_UNK gb;
 extern MKInputReceiver *pReceiver;
 static f32 timer = 15.0f;
 
-#if 0 // DRAFT: undefined identifier 'StopRumbling'
 void RumbleTimer_Update() {
+    u8 StopRumbling(void);
+
     ((GameData *) GameData::gameData)->GetGameSettings();
-    if ((u8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x12) != 0) {
+    if ((u8) M2C_FIELD(GameData::gameData, u8 *, 0x52) != 0) {
         timer -= gUpdateTimeDelta;
         if (StopRumbling() != 0) {
             if ((u8) bStopped == 0) {
@@ -36,7 +37,6 @@ void RumbleTimer_Update() {
         }
     }
 }
-#endif
 
 u8 StopRumbling() {
     s32 var_r30_68;
@@ -59,13 +59,13 @@ void RumbleTimer_Deinit() {
     pReceiver = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'InputReceiver'
 void RumbleTimer_Init() {
+    s32 InputReceiver(MKInputEvent *, void *);
+
     bStopped = 0;
     timer = 15.0f;
-    pReceiver = MKInputReceiver_Create((u8 (*)(MKInputEvent *, void *)) InputReceiver, -1, 5, NULL);
+    pReceiver = MKInputReceiver_Create((bool (*)(MKInputEvent *, void *)) InputReceiver, -1, 5, NULL);
 }
-#endif
 
 s32 InputReceiver(MKInputEvent *arg0, void *arg1) {
     timer = 15.0f;
